@@ -5,7 +5,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.text.TextUtils;
 import android.webkit.URLUtil;
-import bjnd;
+import bkyp;
 import com.tencent.common.app.AppInterface;
 import com.tencent.component.network.utils.thread.PriorityThreadPool;
 import com.tencent.component.network.utils.thread.PriorityThreadPool.Priority;
@@ -19,7 +19,7 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
-import npo;
+import nwp;
 
 public class QzoneZipCacheHelper
 {
@@ -193,7 +193,7 @@ public class QzoneZipCacheHelper
     if (!URLUtil.isNetworkUrl(paramString)) {
       return null;
     }
-    Map localMap = bjnd.a(paramString);
+    Map localMap = bkyp.a(paramString);
     return getFileIfExists(paramAppInterface, getUrlBase(paramString), getFileName(paramString), (String)localMap.get("business"), (String)localMap.get("dir"), null);
   }
   
@@ -306,7 +306,7 @@ public class QzoneZipCacheHelper
   public static void unzipFile(String paramString1, String paramString2)
   {
     createAndClearFile(new File(paramString2));
-    npo.a(paramString1, paramString2);
+    nwp.a(paramString1, paramString2);
   }
   
   private static void updateLruFileInNewThread(String paramString1, String paramString2)

@@ -1,8 +1,4 @@
-public abstract interface aeuq
-{
-  public abstract void a(int paramInt);
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeuq

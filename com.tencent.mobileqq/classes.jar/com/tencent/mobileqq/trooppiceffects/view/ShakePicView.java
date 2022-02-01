@@ -14,13 +14,13 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bfle;
-import bflg;
+import bgtv;
+import bgtx;
 import com.tencent.mobileqq.util.DisplayUtil;
 
 public class ShakePicView
   extends FrameLayout
-  implements bfle
+  implements bgtv
 {
   public Handler a;
   protected ImageView a;
@@ -89,7 +89,7 @@ public class ShakePicView
     localAnimatorSet.play((Animator)localObject2).with((Animator)localObject3).with((Animator)localObject1);
     localAnimatorSet.start();
     this.c.setTag(localAnimatorSet);
-    localAnimatorSet.addListener(new bflg(this));
+    localAnimatorSet.addListener(new bgtx(this));
   }
   
   public void setBitmap(Bitmap paramBitmap)

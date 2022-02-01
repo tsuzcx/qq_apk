@@ -1,114 +1,74 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.graphics.Bitmap;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.rebuild.GameMsgChatPie.GameUsrAvatarClickLis.1;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.gamecenter.message.GameUserInfo;
-import com.tencent.mobileqq.transfile.AbsDownloader;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.videoplatform.api.VideoPlayParam;
+import com.tencent.mobileqq.videoplatform.api.VideoPlayerCallback;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.net.URLEncoder;
-import mqq.os.MqqHandler;
-import mqq.util.WeakReference;
+import com.tencent.widget.ListView;
 
-public class ahgb
-  implements View.OnClickListener
+class ahgb
+  implements VideoPlayerCallback
 {
-  private long jdField_a_of_type_Long;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  WeakReference<Context> jdField_a_of_type_MqqUtilWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  ahgb(ahfz paramahfz, VideoPlayParam paramVideoPlayParam) {}
   
-  public ahgb(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean, Context paramContext)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Boolean = false;
-    this.b = paramBoolean;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramContext);
-  }
+  public void onCapFrame(long paramLong, boolean paramBoolean, int paramInt1, int paramInt2, Bitmap paramBitmap) {}
   
-  private void a()
+  public void onDownloadComplete(long paramLong)
   {
-    try
-    {
-      String str = ((atyd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(358)).d();
-      Context localContext = (Context)this.jdField_a_of_type_MqqUtilWeakReference.get();
-      if ((!TextUtils.isEmpty(str)) && (localContext != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-      {
-        if (str.contains("?")) {}
-        for (str = str + "&roleId=" + URLEncoder.encode(this.jdField_a_of_type_JavaLangString, "utf-8");; str = str + "?roleId=" + URLEncoder.encode(this.jdField_a_of_type_JavaLangString, "utf-8"))
-        {
-          Intent localIntent = new Intent(localContext, QQBrowserActivity.class);
-          localIntent.putExtra("url", str);
-          localContext.startActivity(localIntent);
-          return;
-        }
+    if (QLog.isColorLevel()) {
+      QLog.i("ShortVideoItemBuilder", 2, "onDownloadComplete, id = " + paramLong);
+    }
+    if (ahfz.a(this.jdField_a_of_type_Ahfz) == null) {
+      if (QLog.isColorLevel()) {
+        QLog.e("ShortVideoItemBuilder", 2, "onDownloadComplete , mListView is null.");
       }
-      return;
     }
-    catch (Throwable localThrowable)
-    {
-      QLog.e(ahfp.b, 1, localThrowable, new Object[0]);
-    }
-  }
-  
-  private void a(String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    boolean bool;
+    Object localObject;
     do
     {
-      return;
-      GameUserInfo localGameUserInfo = ((atyd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(358)).a(paramString);
-      if (localGameUserInfo == null)
+      do
       {
-        QLog.w(ahfp.b, 1, "GameUsrAvatarClickLis, usrInfo is null, roleId:" + paramString);
         return;
-      }
-      if (TextUtils.isEmpty(localGameUserInfo.mFaceUrl))
-      {
-        QLog.w(ahfp.b, 1, "GameUsrAvatarClickLis, faceurl is null, roleId:" + paramString);
-        return;
-      }
-      paramString = URLDrawable.URLDrawableOptions.obtain();
-      Drawable localDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130840312);
-      paramString.mFailedDrawable = localDrawable;
-      paramString.mLoadingDrawable = localDrawable;
-      paramString.mRequestWidth = AIOUtils.dp2px(60.0F, BaseApplicationImpl.getContext().getResources());
-      paramString.mRequestHeight = AIOUtils.dp2px(60.0F, BaseApplicationImpl.getContext().getResources());
-      URLDrawable.removeMemoryCacheByUrl(localGameUserInfo.mFaceUrl, paramString);
-      bool = FileUtils.deleteFile(AbsDownloader.getFilePath(localGameUserInfo.mFaceUrl));
-    } while (!QLog.isColorLevel());
-    QLog.d(ahfp.b, 2, "GameUsrAvatarClickLis del ret:" + bool);
+        localObject = AIOUtils.findMessage(paramLong, ahfz.a(this.jdField_a_of_type_Ahfz).getAdapter());
+      } while (!(localObject instanceof MessageForShortVideo));
+      localObject = (MessageForShortVideo)localObject;
+    } while (((((MessageForShortVideo)localObject).fileType != 6) && (((MessageForShortVideo)localObject).fileType != 17) && (((MessageForShortVideo)localObject).fileType != 9)) || (((MessageForShortVideo)localObject).videoFileStatus == 2003));
+    ((MessageForShortVideo)localObject).videoFileStatus = 2003;
+    ((MessageForShortVideo)localObject).transferedSize = 0;
+    ((MessageForShortVideo)localObject).videoFileProgress = 100;
+    ((MessageForShortVideo)localObject).serial();
+    this.jdField_a_of_type_Ahfz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().updateMsgContentByUniseq(((MessageForShortVideo)localObject).frienduin, this.jdField_a_of_type_Ahfz.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, ((MessageForShortVideo)localObject).uniseq, ((MessageForShortVideo)localObject).msgData);
   }
   
-  public void onClick(View paramView)
+  public void onDownloadProgress(long paramLong1, long paramLong2) {}
+  
+  public void onFirstFrameRendered(long paramLong) {}
+  
+  public void onLoopBack(long paramLong1, long paramLong2)
   {
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {
-      QLog.w(ahfp.b, 1, "GameUsrAvatarClickLis, click too fast!!!");
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoItemBuilder", 2, "onLoopBack, id = " + paramLong1 + " ,position = " + paramLong2);
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      ThreadManager.getSubThreadHandler().post(new GameMsgChatPie.GameUsrAvatarClickLis.1(this));
+    MessageForShortVideo localMessageForShortVideo = bhbz.a().a(Long.valueOf(paramLong1));
+    ahfz.a(this.jdField_a_of_type_Ahfz, localMessageForShortVideo, paramLong2);
+  }
+  
+  public void onPlayError(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
+  {
+    ahfz.a(this.jdField_a_of_type_Ahfz, paramLong, paramInt1, paramInt2, paramInt3, paramString, this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam);
+  }
+  
+  public void onPlayProgress(long paramLong1, long paramLong2) {}
+  
+  public void onStateChange(long paramLong, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoItemBuilder", 2, "onStateChange , state = " + paramInt + ", msgUniseq=" + paramLong + " , getAIOState() = " + this.jdField_a_of_type_Ahfz.a());
     }
+    ahfz.a(this.jdField_a_of_type_Ahfz, paramLong, paramInt);
   }
 }
 

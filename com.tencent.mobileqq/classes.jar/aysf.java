@@ -1,26 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import java.util.List;
 
-class aysf
-  extends bgaf
+public class aysf
+  implements PopupWindow.OnDismissListener
 {
-  aysf(aysb paramaysb, int paramInt)
-  {
-    super(paramInt);
-  }
+  public aysf(OCRResultActivity paramOCRResultActivity) {}
   
-  public void a()
+  public void onDismiss()
   {
-    if (this.a.a.a == 0) {}
-    for (boolean bool = true;; bool = false)
+    this.a.b = null;
+    if ((OCRResultActivity.b(this.a) != null) && (OCRResultActivity.b(this.a).size() > 1))
     {
-      if (aysb.a(this.a) != null) {
-        aysb.a(this.a).a(bool);
-      }
-      VasWebviewUtil.reportCommercialDrainage(aysb.f(this.a).getCurrentAccountUin(), "defaultcard", "click_customized", "", 1, 0, 0, "", "", "");
-      aysb.a(this.a, 3);
-      return;
+      Drawable localDrawable = this.a.getResources().getDrawable(2130845604);
+      this.a.a.setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
     }
   }
 }

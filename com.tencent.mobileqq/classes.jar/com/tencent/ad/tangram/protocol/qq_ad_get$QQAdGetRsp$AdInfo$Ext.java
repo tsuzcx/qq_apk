@@ -11,7 +11,7 @@ public final class qq_ad_get$QQAdGetRsp$AdInfo$Ext
   public boolean no_clkcgi_jump = false;
   public int relation_target = 0;
   public int render_pos_type = 0;
-  public qq_ad_get.QQAdGetRsp.AdInfo.OfflinePageInfo xj_offline = new qq_ad_get.QQAdGetRsp.AdInfo.OfflinePageInfo();
+  public qq_ad_get.QQAdGetRsp.AdInfo.OfflinePageInfo xj_offline;
 }
 
 

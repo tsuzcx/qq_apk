@@ -1,17 +1,11 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
 
 class bktc
-  extends amyh
+  extends ntf
 {
-  bktc(bktb parambktb, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener) {}
+  bktc(bkta parambkta) {}
   
-  public void onFollowPublicAccount(boolean paramBoolean, String paramString)
-  {
-    paramString = new Bundle();
-    paramString.putBoolean("isSuccess", paramBoolean);
-    this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener.onInvokeFinish(paramString);
-  }
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle) {}
 }
 
 

@@ -1,40 +1,33 @@
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.text.TextUtils;
 
-public class apvu
-  extends apvq
+public abstract class apvu
+  implements apvj
 {
-  public apvk a(String paramString)
+  private final String a;
+  
+  public apvu(String paramString)
   {
-    QLog.d("ArkMsgAIDisableConfProcessor", 1, "[onParsed] type=" + type() + ", content = " + paramString);
-    try
-    {
-      apwi localapwi = (apwi)apul.a(paramString, apwi.class);
-      return new apvo(paramString, localapwi);
-    }
-    catch (QStorageInstantiateException localQStorageInstantiateException)
-    {
-      for (;;)
-      {
-        QLog.i("ArkMsgAIDisableConfProcessor", 1, "loadConfig:" + paramString + "fail", localQStorageInstantiateException);
-        Object localObject = null;
-      }
-    }
+    this.a = paramString;
   }
   
-  public boolean isAccountRelated()
+  public Bundle a()
   {
-    return true;
+    Bundle localBundle = new Bundle();
+    if (!TextUtils.isEmpty(this.a)) {
+      localBundle.putString("Domain", this.a);
+    }
+    return localBundle;
   }
   
-  public int type()
+  public String a()
   {
-    return 159;
+    return "QQ.GetPSKey";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apvu
  * JD-Core Version:    0.7.0.1
  */

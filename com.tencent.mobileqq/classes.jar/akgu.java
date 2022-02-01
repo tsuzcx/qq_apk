@@ -1,34 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-
-class akgu
-  implements mng
+public class akgu
 {
-  akgu(akgt paramakgt) {}
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VoiceRedPacketHelper", 1, "convertMp3ToPcm onError " + paramInt);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VoiceRedPacketHelper", 1, "convertMp3ToPcm onStart " + paramString);
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VoiceRedPacketHelper", 1, "convertMp3ToPcm onFinish " + paramString);
-    }
-  }
+  public int a;
+  public String a;
+  public boolean a = true;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akgu
  * JD-Core Version:    0.7.0.1
  */

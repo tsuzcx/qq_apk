@@ -4,29 +4,29 @@ import android.content.Context;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.widget.QQToast;
 import cooperation.plugin.PluginBaseActivity;
-import sig;
-import sir;
-import sit;
-import siu;
-import slt;
+import suw;
+import svh;
+import svj;
+import svk;
+import szd;
 
 public class VideoShareHelper$ReportDislikeAction$2$1$1
   implements Runnable
 {
-  public VideoShareHelper$ReportDislikeAction$2$1$1(siu paramsiu) {}
+  public VideoShareHelper$ReportDislikeAction$2$1$1(svk paramsvk) {}
   
   public void run()
   {
-    sig.a(this.a.jdField_a_of_type_Sit.jdField_a_of_type_Sir.a).a(this.a.jdField_a_of_type_Sit.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-    if ((sig.a(this.a.jdField_a_of_type_Sit.jdField_a_of_type_Sir.a) instanceof BaseActivity)) {
-      QQToast.a(sig.a(this.a.jdField_a_of_type_Sit.jdField_a_of_type_Sir.a), -1, sig.a(this.a.jdField_a_of_type_Sit.jdField_a_of_type_Sir.a).getString(2131698822), 0).b(((BaseActivity)sig.a(this.a.jdField_a_of_type_Sit.jdField_a_of_type_Sir.a)).getTitleBarHeight());
+    suw.a(this.a.jdField_a_of_type_Svj.jdField_a_of_type_Svh.a).a(this.a.jdField_a_of_type_Svj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+    if ((suw.a(this.a.jdField_a_of_type_Svj.jdField_a_of_type_Svh.a) instanceof BaseActivity)) {
+      QQToast.a(suw.a(this.a.jdField_a_of_type_Svj.jdField_a_of_type_Svh.a), -1, suw.a(this.a.jdField_a_of_type_Svj.jdField_a_of_type_Svh.a).getString(2131699166), 0).b(((BaseActivity)suw.a(this.a.jdField_a_of_type_Svj.jdField_a_of_type_Svh.a)).getTitleBarHeight());
     }
     for (;;)
     {
-      sig.a(this.a.jdField_a_of_type_Sit.jdField_a_of_type_Sir.a).a(sig.b(this.a.jdField_a_of_type_Sit.jdField_a_of_type_Sir.a), this.a.jdField_a_of_type_Sit.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.a.jdField_a_of_type_JavaUtilArrayList);
+      suw.a(this.a.jdField_a_of_type_Svj.jdField_a_of_type_Svh.a).a(suw.b(this.a.jdField_a_of_type_Svj.jdField_a_of_type_Svh.a), this.a.jdField_a_of_type_Svj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.a.jdField_a_of_type_JavaUtilArrayList);
       return;
-      if ((sig.a(this.a.jdField_a_of_type_Sit.jdField_a_of_type_Sir.a) instanceof PluginBaseActivity)) {
-        QQToast.a(sig.a(this.a.jdField_a_of_type_Sit.jdField_a_of_type_Sir.a), -1, sig.a(this.a.jdField_a_of_type_Sit.jdField_a_of_type_Sir.a).getString(2131698822), 0).b(((PluginBaseActivity)sig.a(this.a.jdField_a_of_type_Sit.jdField_a_of_type_Sir.a)).g());
+      if ((suw.a(this.a.jdField_a_of_type_Svj.jdField_a_of_type_Svh.a) instanceof PluginBaseActivity)) {
+        QQToast.a(suw.a(this.a.jdField_a_of_type_Svj.jdField_a_of_type_Svh.a), -1, suw.a(this.a.jdField_a_of_type_Svj.jdField_a_of_type_Svh.a).getString(2131699166), 0).b(((PluginBaseActivity)suw.a(this.a.jdField_a_of_type_Svj.jdField_a_of_type_Svh.a)).g());
       }
     }
   }

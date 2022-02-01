@@ -1,6 +1,5 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import amtj;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Handler;
@@ -16,31 +15,32 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import anvx;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import vtp;
-import vts;
-import vty;
-import vuq;
-import vux;
-import xvv;
-import xwa;
-import xys;
-import xyt;
-import xyu;
-import xzb;
-import xzd;
-import xzp;
-import yan;
-import ydh;
-import yro;
-import ytg;
+import wik;
+import win;
+import wit;
+import wjl;
+import wjs;
+import ykq;
+import ykv;
+import ynl;
+import ynm;
+import ynn;
+import ynu;
+import ynw;
+import yoi;
+import ypg;
+import ysa;
+import zgh;
+import zhz;
 
 public class EditVideoGuide
-  extends xzb
+  extends ynu
   implements View.OnClickListener
 {
   public int a;
@@ -53,25 +53,25 @@ public class EditVideoGuide
   protected AtomicBoolean a;
   public int b;
   
-  public EditVideoGuide(@NonNull xzd paramxzd)
+  public EditVideoGuide(@NonNull ynw paramynw)
   {
-    super(paramxzd);
+    super(paramynw);
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean();
   }
   
   private boolean a(int paramInt)
   {
-    xvv.b("Q.qqstory.publish.edit.EditVideoGuide", "initTipGuide. guideType = %d", Integer.valueOf(paramInt));
+    ykq.b("Q.qqstory.publish.edit.EditVideoGuide", "initTipGuide. guideType = %d", Integer.valueOf(paramInt));
     int j = -AIOUtils.dp2px(1.0F, a().getResources());
     int i = View.MeasureSpec.makeMeasureSpec(0, 0);
     int k = View.MeasureSpec.makeMeasureSpec(0, 0);
     switch (paramInt)
     {
     default: 
-      xvv.e("Q.qqstory.publish.edit.EditVideoGuide", "initTipGuide error. unknown guideType = %d", new Object[] { Integer.valueOf(paramInt) });
+      ykq.e("Q.qqstory.publish.edit.EditVideoGuide", "initTipGuide error. unknown guideType = %d", new Object[] { Integer.valueOf(paramInt) });
       return false;
     case 1: 
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131702957));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131703308));
       i = AIOUtils.dp2px(12.0F, a().getResources());
       paramInt = 0;
     }
@@ -85,7 +85,7 @@ public class EditVideoGuide
       this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
       return true;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131703044));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131703395));
       this.jdField_a_of_type_AndroidWidgetTextView.measure(i, k);
       i = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth();
       paramInt = AIOUtils.dp2px(114.0F, a().getResources());
@@ -93,7 +93,7 @@ public class EditVideoGuide
       i = AIOUtils.dp2px(108.0F, a().getResources());
       paramInt -= k;
       continue;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131702983));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131703334));
       this.jdField_a_of_type_AndroidWidgetTextView.measure(i, k);
       i = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth();
       paramInt = AIOUtils.dp2px(162.0F, a().getResources());
@@ -101,7 +101,7 @@ public class EditVideoGuide
       i = AIOUtils.dp2px(156.0F, a().getResources());
       paramInt -= k;
       continue;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131702985));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131703336));
       this.jdField_a_of_type_AndroidWidgetTextView.measure(i, k);
       i = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth();
       paramInt = AIOUtils.dp2px(114.0F, a().getResources());
@@ -109,7 +109,7 @@ public class EditVideoGuide
       i = AIOUtils.dp2px(108.0F, a().getResources());
       paramInt -= k;
       continue;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131702973));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131703324));
       paramInt = AIOUtils.dp2px(15.0F, a());
       k = AIOUtils.dp2px(12.0F, a());
       i = AIOUtils.dp2px(12.0F, a());
@@ -124,7 +124,7 @@ public class EditVideoGuide
   
   private boolean b()
   {
-    return ((Boolean)((vuq)vux.a(10)).b("has_show_fragment_guide", Boolean.valueOf(false))).booleanValue();
+    return ((Boolean)((wjl)wjs.a(10)).b("has_show_fragment_guide", Boolean.valueOf(false))).booleanValue();
   }
   
   private void j()
@@ -146,7 +146,7 @@ public class EditVideoGuide
     localAnimationSet.addAnimation(localAlphaAnimation2);
     localAnimationSet.setFillAfter(false);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(localAnimationSet);
-    localTranslateAnimation.setAnimationListener(new xyu(this));
+    localTranslateAnimation.setAnimationListener(new ynn(this));
   }
   
   private void k()
@@ -157,19 +157,19 @@ public class EditVideoGuide
       return;
     case 3: 
     case 6: 
-      ((ydh)vux.a(8)).a(false);
-      this.jdField_a_of_type_Xzd.a(6);
+      ((ysa)wjs.a(8)).a(false);
+      this.jdField_a_of_type_Ynw.a(6);
       return;
     case 4: 
-      this.jdField_a_of_type_Xzd.a(2);
+      this.jdField_a_of_type_Ynw.a(2);
       return;
     }
-    this.jdField_a_of_type_Xzd.a(7);
+    this.jdField_a_of_type_Ynw.a(7);
   }
   
-  public void Q_()
+  public void S_()
   {
-    super.Q_();
+    super.S_();
     if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
       g();
     }
@@ -178,20 +178,20 @@ public class EditVideoGuide
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131374493));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131374494));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131374495));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131374731));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131374732));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131374733));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    boolean bool1 = xzd.a(this.jdField_a_of_type_Xzd.a.mEnableMasks, 32768);
+    boolean bool1 = ynw.a(this.jdField_a_of_type_Ynw.a.mEnableMasks, 32768);
     boolean bool2 = b();
     if ((!bool1) || (bool2))
     {
-      xvv.b("Q.qqstory.publish.edit.EditVideoGuide", "enableMultiVideoFragment = %s, hasShowFragmentGuide = %s.", Boolean.valueOf(bool1), Boolean.valueOf(bool2));
+      ykq.b("Q.qqstory.publish.edit.EditVideoGuide", "enableMultiVideoFragment = %s, hasShowFragmentGuide = %s.", Boolean.valueOf(bool1), Boolean.valueOf(bool2));
       a(false);
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
       return;
     }
-    xvv.c("Q.qqstory.publish.edit.EditVideoGuide", "wait for fragment list message.");
+    ykq.c("Q.qqstory.publish.edit.EditVideoGuide", "wait for fragment list message.");
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
       this.jdField_a_of_type_AndroidOsHandler = new Handler();
@@ -204,7 +204,7 @@ public class EditVideoGuide
   
   public void a(int paramInt, Object paramObject)
   {
-    paramObject = (vuq)vux.a(10);
+    paramObject = (wjl)wjs.a(10);
     switch (paramInt)
     {
     case 1: 
@@ -247,44 +247,44 @@ public class EditVideoGuide
                   do
                   {
                     return;
-                    ytg localytg = new ytg(this.jdField_a_of_type_Yan.a());
-                    localytg.a(amtj.a(2131702987));
-                    localytg.show();
-                    localytg.setOnDismissListener(new xys(this));
+                    zhz localzhz = new zhz(this.jdField_a_of_type_Ypg.a());
+                    localzhz.a(anvx.a(2131703338));
+                    localzhz.show();
+                    localzhz.setOnDismissListener(new ynl(this));
                     paramObject.b("has_show_basal_guide", Boolean.valueOf(true));
-                    xwa.a("video_edit", "guide_txt", 0, 0, new String[0]);
+                    ykv.a("video_edit", "guide_txt", 0, 0, new String[0]);
                     return;
-                    paramObject = new yro(this.jdField_a_of_type_Yan.a());
-                    paramObject.a(amtj.a(2131703032));
+                    paramObject = new zgh(this.jdField_a_of_type_Ypg.a());
+                    paramObject.a(anvx.a(2131703383));
                   } while (((Activity)a()).isFinishing());
                   paramObject.show();
-                  paramObject.setOnDismissListener(new xyt(this));
-                  xwa.a("video_edit", "guide_filter", 0, 0, new String[0]);
+                  paramObject.setOnDismissListener(new ynm(this));
+                  ykv.a("video_edit", "guide_filter", 0, 0, new String[0]);
                   return;
                 } while (!a(2));
                 j();
-                xwa.a("video_edit", "guide_sticker", 0, 0, new String[0]);
+                ykv.a("video_edit", "guide_sticker", 0, 0, new String[0]);
                 return;
               } while (!a(3));
               j();
               paramObject.b("has_show_music_guide", Boolean.valueOf(true));
-              xwa.a("video_edit", "guide_music", 0, 0, new String[0]);
+              ykv.a("video_edit", "guide_music", 0, 0, new String[0]);
               return;
             } while (!a(1));
             j();
             paramObject.b("has_show_draw_line_guide", Boolean.valueOf(true));
-            xwa.a("video_edit", "guide_graffiti", 0, 0, new String[0]);
+            ykv.a("video_edit", "guide_graffiti", 0, 0, new String[0]);
             return;
           } while (!a(4));
           j();
           paramObject.b("has_show_add_poi_paster_guide", Boolean.valueOf(true));
-          xwa.a("video_edit", "guide_place", 0, 0, new String[0]);
+          ykv.a("video_edit", "guide_place", 0, 0, new String[0]);
           return;
         } while (!a(5));
         j();
         paramObject.b("has_show_fragment_guide", Boolean.valueOf(true));
         return;
-        if (this.jdField_a_of_type_Xzd.a.mBusinessId == 1) {
+        if (this.jdField_a_of_type_Ynw.a.mBusinessId == 1) {
           paramObject.b("has_show_draw_line_guide", Boolean.valueOf(true));
         }
         h();
@@ -297,7 +297,7 @@ public class EditVideoGuide
       h();
       return;
     }
-    if (this.jdField_a_of_type_Xzd.a.mBusinessId == 1) {
+    if (this.jdField_a_of_type_Ynw.a.mBusinessId == 1) {
       paramObject.b("has_show_music_guide", Boolean.valueOf(true));
     }
     h();
@@ -305,42 +305,42 @@ public class EditVideoGuide
   
   protected void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Xzd.a.mBusinessId != 1)
+    if (this.jdField_a_of_type_Ynw.a.mBusinessId != 1)
     {
       this.jdField_a_of_type_Int = 8;
       this.b = 8;
-      xvv.c("Q.qqstory.publish.edit.EditVideoGuide", "not story business, initial guideType = GUIDE_NULL.");
+      ykq.c("Q.qqstory.publish.edit.EditVideoGuide", "not story business, initial guideType = GUIDE_NULL.");
       return;
     }
-    xvv.b("Q.qqstory.publish.edit.EditVideoGuide", "initGuideType. enableMultiFragment = %s.", Boolean.valueOf(paramBoolean));
-    vuq localvuq = (vuq)vux.a(10);
-    if ((paramBoolean) && (!((Boolean)localvuq.b("has_show_fragment_guide", Boolean.valueOf(false))).booleanValue()))
+    ykq.b("Q.qqstory.publish.edit.EditVideoGuide", "initGuideType. enableMultiFragment = %s.", Boolean.valueOf(paramBoolean));
+    wjl localwjl = (wjl)wjs.a(10);
+    if ((paramBoolean) && (!((Boolean)localwjl.b("has_show_fragment_guide", Boolean.valueOf(false))).booleanValue()))
     {
       this.jdField_a_of_type_Int = 7;
       this.b = 7;
       return;
     }
-    if (!((Boolean)localvuq.b("has_show_basal_guide", Boolean.valueOf(false))).booleanValue())
+    if (!((Boolean)localwjl.b("has_show_basal_guide", Boolean.valueOf(false))).booleanValue())
     {
       this.jdField_a_of_type_Int = 1;
       this.b = 1;
       return;
     }
-    paramBoolean = ((Boolean)localvuq.b("has_show_music_guide", Boolean.valueOf(false))).booleanValue();
-    vtp localvtp = (vtp)((vty)vux.a(20)).a(1);
-    if ((!paramBoolean) && (!localvtp.a((vts)localvtp.a())))
+    paramBoolean = ((Boolean)localwjl.b("has_show_music_guide", Boolean.valueOf(false))).booleanValue();
+    wik localwik = (wik)((wit)wjs.a(20)).a(1);
+    if ((!paramBoolean) && (!localwik.a((win)localwik.a())))
     {
       this.jdField_a_of_type_Int = 4;
       this.b = 4;
       return;
     }
-    if (!((Boolean)localvuq.b("has_show_draw_line_guide", Boolean.valueOf(false))).booleanValue())
+    if (!((Boolean)localwjl.b("has_show_draw_line_guide", Boolean.valueOf(false))).booleanValue())
     {
       this.jdField_a_of_type_Int = 5;
       this.b = 5;
       return;
     }
-    if (!((Boolean)localvuq.b("has_show_add_poi_paster_guide", Boolean.valueOf(false))).booleanValue())
+    if (!((Boolean)localwjl.b("has_show_add_poi_paster_guide", Boolean.valueOf(false))).booleanValue())
     {
       this.jdField_a_of_type_Int = 6;
       this.b = 6;
@@ -358,14 +358,14 @@ public class EditVideoGuide
     do
     {
       return super.a(paramMessage);
-      xvv.b("Q.qqstory.publish.edit.EditVideoGuide", "handleEditVideoMessage. mWaitForFragmentMsg = %s.", Boolean.valueOf(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()));
+      ykq.b("Q.qqstory.publish.edit.EditVideoGuide", "handleEditVideoMessage. mWaitForFragmentMsg = %s.", Boolean.valueOf(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()));
     } while (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false));
     if ((this.jdField_a_of_type_AndroidOsHandler != null) && (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoGuide$InitGuideTypeDelayRunnable != null))
     {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoGuide$InitGuideTypeDelayRunnable);
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoGuide$InitGuideTypeDelayRunnable = null;
     }
-    paramMessage = (xzp)a(xzp.class);
+    paramMessage = (yoi)a(yoi.class);
     if (paramMessage != null) {}
     for (paramMessage = paramMessage.a();; paramMessage = null)
     {
@@ -374,8 +374,8 @@ public class EditVideoGuide
       {
         i = 0;
         int j = i;
-        if (i > this.jdField_a_of_type_Xzd.a.getExpectFragmentCount()) {
-          j = this.jdField_a_of_type_Xzd.a.getExpectFragmentCount();
+        if (i > this.jdField_a_of_type_Ynw.a.getExpectFragmentCount()) {
+          j = this.jdField_a_of_type_Ynw.a.getExpectFragmentCount();
         }
         if (j >= 2) {
           break label171;
@@ -416,7 +416,7 @@ public class EditVideoGuide
   
   protected void g()
   {
-    xvv.b("Q.qqstory.publish.edit.EditVideoGuide", "checkShowGuide. guideType = %d.", Integer.valueOf(this.jdField_a_of_type_Int));
+    ykq.b("Q.qqstory.publish.edit.EditVideoGuide", "checkShowGuide. guideType = %d.", Integer.valueOf(this.jdField_a_of_type_Int));
     switch (this.jdField_a_of_type_Int)
     {
     case 2: 
@@ -424,19 +424,19 @@ public class EditVideoGuide
     default: 
       return;
     case 7: 
-      this.jdField_a_of_type_Xzd.a(24);
+      this.jdField_a_of_type_Ynw.a(24);
       return;
     case 1: 
-      this.jdField_a_of_type_Xzd.a(13);
+      this.jdField_a_of_type_Ynw.a(13);
       return;
     case 4: 
-      this.jdField_a_of_type_Xzd.a(15);
+      this.jdField_a_of_type_Ynw.a(15);
       return;
     case 5: 
-      this.jdField_a_of_type_Xzd.a(16);
+      this.jdField_a_of_type_Ynw.a(16);
       return;
     }
-    this.jdField_a_of_type_Xzd.a(17);
+    this.jdField_a_of_type_Ynw.a(17);
   }
   
   public void h()

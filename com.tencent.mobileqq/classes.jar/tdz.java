@@ -1,131 +1,35 @@
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
+import android.support.v7.widget.RecyclerView.RecycledViewPool;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.pubaccount.readinjoy.view.RecyclerViewWithHeaderFooterFix;
+import java.util.List;
 
-public final class tdz
+public class tdz
+  extends RecyclerView.RecycledViewPool
 {
-  private int jdField_a_of_type_Int = -1;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private View jdField_a_of_type_AndroidViewView;
-  public TabLayoutCompat a;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private Object jdField_a_of_type_JavaLangObject;
-  public tea a;
-  private CharSequence b;
+  public tdz(RecyclerViewWithHeaderFooterFix paramRecyclerViewWithHeaderFooterFix) {}
   
-  public int a()
+  public RecyclerView.ViewHolder getRecycledView(int paramInt)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  @Nullable
-  public Drawable a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  }
-  
-  @Nullable
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  @Nullable
-  public CharSequence a()
-  {
-    return this.jdField_a_of_type_JavaLangCharSequence;
-  }
-  
-  @Nullable
-  public Object a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  @NonNull
-  public tdz a(int paramInt)
-  {
-    return a(LayoutInflater.from(this.jdField_a_of_type_Tea.getContext()).inflate(paramInt, this.jdField_a_of_type_Tea, false));
-  }
-  
-  @NonNull
-  public tdz a(@Nullable View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    c();
-    return this;
-  }
-  
-  @NonNull
-  public tdz a(@Nullable CharSequence paramCharSequence)
-  {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    c();
-    return this;
-  }
-  
-  @NonNull
-  public tdz a(@Nullable Object paramObject)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    return this;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat == null) {
-      throw new IllegalArgumentException("Tab not attached to a TabLayout");
+    Object localObject = this.a.getAdapter();
+    RecyclerView.ViewHolder localViewHolder = super.getRecycledView(paramInt);
+    if ((localViewHolder != null) && ((localObject instanceof bljb)))
+    {
+      localObject = (bljb)localObject;
+      if (((bljb)localObject).d(paramInt))
+      {
+        if (!RecyclerViewWithHeaderFooterFix.a(this.a).contains(localViewHolder.itemView))
+        {
+          putRecycledView(localViewHolder);
+          return null;
+        }
+      }
+      else if ((((bljb)localObject).c(paramInt)) && (!RecyclerViewWithHeaderFooterFix.b(this.a).contains(localViewHolder.itemView)))
+      {
+        putRecycledView(localViewHolder);
+        return null;
+      }
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.e(this);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat == null) {
-      throw new IllegalArgumentException("Tab not attached to a TabLayout");
-    }
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.b() == this.jdField_a_of_type_Int;
-  }
-  
-  @Nullable
-  public CharSequence b()
-  {
-    return this.b;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat == null) {
-      throw new IllegalArgumentException("Tab not attached to a TabLayout");
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.c(this, true);
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Tea != null) {
-      this.jdField_a_of_type_Tea.b();
-    }
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat = null;
-    this.jdField_a_of_type_Tea = null;
-    this.jdField_a_of_type_JavaLangObject = null;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    this.jdField_a_of_type_JavaLangCharSequence = null;
-    this.b = null;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidViewView = null;
+    return localViewHolder;
   }
 }
 

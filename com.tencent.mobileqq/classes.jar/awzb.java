@@ -1,16 +1,25 @@
-import android.app.Dialog;
-import android.view.View;
+import mqq.manager.Manager;
 
-class awzb
-  implements axhp
+public abstract interface awzb
+  extends Manager
 {
-  awzb(awyf paramawyf) {}
+  public abstract int a();
   
-  public void a(Dialog paramDialog, View paramView, axho paramaxho)
-  {
-    axhq.a(this.a.a, paramaxho, "data_card");
-    paramDialog.dismiss();
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract boolean b();
 }
 
 

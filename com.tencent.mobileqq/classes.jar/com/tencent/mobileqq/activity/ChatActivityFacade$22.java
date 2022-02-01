@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import awcg;
-import bbli;
+import axii;
+import bcsa;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.transfile.TransFileController;
 import com.tencent.qphone.base.util.QLog;
@@ -23,12 +24,12 @@ public final class ChatActivityFacade$22
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController().removeProcessor(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController().makeKey(localMessageRecord.frienduin, localMessageRecord.uniseq));
       }
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().removeMsgByUniseq(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, this.jdField_a_of_type_Long);
-      localMessageRecord = bbli.a(localMessageRecord);
+      localMessageRecord = bcsa.a(localMessageRecord);
       if ((localMessageRecord != null) && (localMessageRecord.msgtype == -1051))
       {
-        awcg localawcg = (awcg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(166);
+        axii localaxii = (axii)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.LONG_TEXT_MSG_MANAGER);
         localMessageRecord.extStr = null;
-        localawcg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord, true);
+        localaxii.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord, true);
         return;
       }
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().addAndSendMessage(localMessageRecord, null, true);

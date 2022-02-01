@@ -1,91 +1,48 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.BusinessObserver;
-import java.util.ArrayList;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.Switch;
 
-public class obx
-  implements BusinessObserver
+class obx
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public void a(vfz paramvfz) {}
+  obx(obm paramobm, oji paramoji, Switch paramSwitch) {}
   
-  public void a(boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean, int paramInt) {}
-  
-  public void a(boolean paramBoolean, String paramString) {}
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt) {}
-  
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
-  
-  public void a(boolean paramBoolean, ArrayList<vgc> paramArrayList) {}
-  
-  public void a(boolean paramBoolean, vfz paramvfz, byte[] paramArrayOfByte, String paramString) {}
-  
-  public void b(boolean paramBoolean, int paramInt) {}
-  
-  public void c(boolean paramBoolean, int paramInt) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    switch (paramInt)
+    if (!this.jdField_a_of_type_Obm.c)
     {
-    case 3: 
-    case 5: 
-    case 6: 
-    default: 
+      this.jdField_a_of_type_Obm.c = true;
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
-    case 2: 
-      if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Bundle)))
+    }
+    if (this.jdField_a_of_type_Oji.f == 1) {
+      this.jdField_a_of_type_Obm.a(this.jdField_a_of_type_Oji, paramBoolean);
+    }
+    for (;;)
+    {
+      obm.a(this.jdField_a_of_type_Obm, this.jdField_a_of_type_Oji.a);
+      break;
+      if (this.jdField_a_of_type_Oji.f == 2)
       {
-        paramObject = (Bundle)paramObject;
-        a(true, paramObject.getString("VALUE_ARTICLE_ID"), paramObject.getInt("VALUE_ARTICLE_LIKE_COUNT"));
-        return;
-      }
-      a(false, null, 0);
-      return;
-    case 0: 
-      if ((paramObject != null) && ((paramObject instanceof Bundle)))
-      {
-        a(paramBoolean, ((Bundle)paramObject).getString("VALUE_ARTICLE_ID"));
-        return;
-      }
-      a(false, null);
-      return;
-    case 1: 
-      if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Bundle)))
-      {
-        paramObject = (Bundle)paramObject;
-        a(true, paramObject.getString("VALUE_ARTICLE_ID"), Boolean.valueOf(paramObject.getBoolean("VALUE_ARTICLE_IS_LIKED")).booleanValue());
-        return;
-      }
-      a(false, null, false);
-      return;
-    case 4: 
-      if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Bundle)))
-      {
-        paramObject = (Bundle)paramObject;
-        if (paramObject.getBoolean("VALUE_ARTICLE_IMAGEE_IS_SUCCESS", false))
-        {
-          b(true, paramObject.getInt("VALUE_ARTICLE_COMMENT_COUNT"));
-          return;
+        if (paramBoolean) {
+          this.jdField_a_of_type_Obm.a(this.jdField_a_of_type_Oji, this.jdField_a_of_type_ComTencentWidgetSwitch, paramBoolean);
+        } else {
+          this.jdField_a_of_type_Obm.a(this.jdField_a_of_type_Oji, paramBoolean);
         }
-        b(false, 0);
-        return;
       }
-      b(false, 0);
-      return;
-    }
-    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Bundle)))
-    {
-      if (((Bundle)paramObject).getBoolean("VALUE_ARTICLE_IMAGEE_IS_SUCCESS", false))
+      else if (this.jdField_a_of_type_Oji.f == 3)
       {
-        a(true);
-        return;
+        if (!paramBoolean) {
+          this.jdField_a_of_type_Obm.a(this.jdField_a_of_type_Oji, this.jdField_a_of_type_ComTencentWidgetSwitch, paramBoolean);
+        } else {
+          this.jdField_a_of_type_Obm.a(this.jdField_a_of_type_Oji, paramBoolean);
+        }
       }
-      a(false);
-      return;
+      else {
+        this.jdField_a_of_type_Obm.a(this.jdField_a_of_type_Oji, paramBoolean);
+      }
     }
-    a(false);
   }
 }
 

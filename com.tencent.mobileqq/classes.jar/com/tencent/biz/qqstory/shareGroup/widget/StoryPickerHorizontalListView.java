@@ -9,18 +9,18 @@ import android.widget.BaseAdapter;
 import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.widget.HorizontalListView;
 import java.util.List;
-import xey;
-import xfb;
-import xfe;
-import xlu;
+import xtt;
+import xtw;
+import xtz;
+import yap;
 
 @TargetApi(9)
 public class StoryPickerHorizontalListView
   extends HorizontalListView
 {
   int a;
-  public xey a;
-  public xfe a;
+  public xtt a;
+  public xtz a;
   int b;
   
   public StoryPickerHorizontalListView(Context paramContext)
@@ -39,21 +39,21 @@ public class StoryPickerHorizontalListView
   {
     this.jdField_a_of_type_Int = paramContext.getResources().getDisplayMetrics().widthPixels;
     this.b = DisplayUtil.dip2px(paramContext, 105.0F);
-    this.jdField_a_of_type_Xey = new xey(getContext());
-    super.setAdapter(this.jdField_a_of_type_Xey);
-    super.setOnItemClickListener(this.jdField_a_of_type_Xey);
-    super.setOnScrollStateChangedListener(new xfb(this));
+    this.jdField_a_of_type_Xtt = new xtt(getContext());
+    super.setAdapter(this.jdField_a_of_type_Xtt);
+    super.setOnItemClickListener(this.jdField_a_of_type_Xtt);
+    super.setOnScrollStateChangedListener(new xtw(this));
     setOverScrollMode(1);
   }
   
   public BaseAdapter a()
   {
-    return this.jdField_a_of_type_Xey;
+    return this.jdField_a_of_type_Xtt;
   }
   
-  public void setData(List<xlu> paramList, String paramString)
+  public void setData(List<yap> paramList, String paramString)
   {
-    this.jdField_a_of_type_Xey.a(paramList, paramString);
+    this.jdField_a_of_type_Xtt.a(paramList, paramString);
     int i = this.jdField_a_of_type_Int / this.b;
     if (paramList.size() >= i)
     {
@@ -63,9 +63,9 @@ public class StoryPickerHorizontalListView
     setOverScrollMode(1);
   }
   
-  public void setOnHorizontalScrollListener(xfe paramxfe)
+  public void setOnHorizontalScrollListener(xtz paramxtz)
   {
-    this.jdField_a_of_type_Xfe = paramxfe;
+    this.jdField_a_of_type_Xtz = paramxtz;
   }
 }
 

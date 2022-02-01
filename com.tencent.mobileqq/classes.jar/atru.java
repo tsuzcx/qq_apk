@@ -1,32 +1,34 @@
-import android.graphics.Bitmap;
-import android.widget.LinearLayout;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import java.util.HashMap;
 
 public class atru
-  extends awos
 {
-  public atru(NearbyHybridFragment paramNearbyHybridFragment) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  private int c;
+  public long c;
+  public long d;
   
-  protected void a(int paramInt, String paramString) {}
-  
-  protected void a(int paramInt, String paramString, Bitmap paramBitmap)
+  public atru()
   {
-    if ((this.a.d != null) && (this.a.d.equals(paramString)) && (paramBitmap != null) && (this.a.b != null) && (this.a.b.getVisibility() == 0)) {
-      this.a.jdField_a_of_type_ComTencentImageURLImageView.setImageBitmap(paramBitmap);
-    }
+    this.jdField_c_of_type_Int = 3;
   }
   
-  protected void b()
+  public HashMap<String, String> a()
   {
-    if (this.a.jdField_a_of_type_Awih != null) {
-      this.a.jdField_a_of_type_Awih.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface);
-    }
-    this.a.l();
-    this.a.m();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_Result", String.valueOf(this.jdField_a_of_type_Long));
+    localHashMap.put("param_SubReason", String.valueOf(this.jdField_b_of_type_Long));
+    localHashMap.put("param_XTFReceiverType", String.valueOf(this.jdField_a_of_type_Int));
+    localHashMap.put("param_Suffix", String.valueOf(this.jdField_a_of_type_JavaLangString));
+    localHashMap.put("param_TargetUin", String.valueOf(this.jdField_c_of_type_Long));
+    localHashMap.put("param_TargetType", String.valueOf(this.jdField_b_of_type_Int));
+    localHashMap.put("param_FileSize", String.valueOf(this.d));
+    localHashMap.put("param_TranferPlatform", String.valueOf(this.jdField_c_of_type_Int));
+    return localHashMap;
   }
-  
-  protected void b(int paramInt, String paramString) {}
 }
 
 

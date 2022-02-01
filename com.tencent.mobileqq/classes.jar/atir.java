@@ -1,30 +1,22 @@
-import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudWrite.StDoFollowRsp;
-import java.util.HashMap;
-import java.util.Map;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class atir
-  implements VSDispatchObserver.onVSRspCallBack<FeedCloudWrite.StDoFollowRsp>
+  implements DialogInterface.OnClickListener
 {
-  atir(atip paramatip, String paramString, int paramInt) {}
+  atir(atip paramatip, ativ paramativ) {}
   
-  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoFollowRsp paramStDoFollowRsp)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.d("flutter.QQCircleChannelHandler", 1, "[onReceive] isSuccess=" + paramBoolean + ", retCode=" + paramLong + ", errMsg=" + paramString + ", uin=" + this.jdField_a_of_type_JavaLangString);
-    if ((paramBoolean) && (0L == paramLong))
-    {
-      paramVSBaseRequest = new HashMap();
-      paramVSBaseRequest.put("userId", this.jdField_a_of_type_JavaLangString);
-      paramVSBaseRequest.put("followState", Integer.valueOf(this.jdField_a_of_type_Int));
-      this.jdField_a_of_type_Atip.a.a("tencent_qqcircle/follow", paramVSBaseRequest);
+    bdla.b(null, "dc00898", "", "", "0X800AE41", "0X800AE41", 0, 0, "", "", "", "");
+    if (this.jdField_a_of_type_Ativ != null) {
+      this.jdField_a_of_type_Ativ.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atir
  * JD-Core Version:    0.7.0.1
  */

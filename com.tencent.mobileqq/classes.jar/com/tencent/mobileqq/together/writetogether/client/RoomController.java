@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.together.writetogether.client;
 
-import bdgd;
-import bdge;
-import bdhf;
-import bdjk;
+import beng;
+import benh;
+import beoi;
+import beqn;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.together.writetogether.websocket.msg.BaseWriteTogetherMsg.Type;
 import com.tencent.mobileqq.together.writetogether.websocket.msg.ClientReadyReqMsg;
@@ -15,21 +16,21 @@ import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
 public class RoomController
-  implements bdge, Runnable
+  implements benh, Runnable
 {
   int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private bdgd jdField_a_of_type_Bdgd;
-  private bdhf jdField_a_of_type_Bdhf;
-  private bdjk jdField_a_of_type_Bdjk;
+  private beng jdField_a_of_type_Beng;
+  private beoi jdField_a_of_type_Beoi;
+  private beqn jdField_a_of_type_Beqn;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
   private String b;
   private String c;
   
-  public RoomController(QQAppInterface paramQQAppInterface, bdjk parambdjk, String paramString1, String paramString2, int paramInt, String paramString3)
+  public RoomController(QQAppInterface paramQQAppInterface, beqn parambeqn, String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    this.jdField_a_of_type_Bdjk = parambdjk;
+    this.jdField_a_of_type_Beqn = parambeqn;
     this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
     try
     {
@@ -37,22 +38,22 @@ public class RoomController
       this.b = paramString2;
       this.jdField_a_of_type_Int = paramInt;
       this.c = paramString3;
-      this.jdField_a_of_type_Bdgd = ((bdgd)paramQQAppInterface.getManager(377));
-      this.jdField_a_of_type_Bdgd.a(this);
+      this.jdField_a_of_type_Beng = ((beng)paramQQAppInterface.getManager(QQManagerFactory.WRITE_TOGETHER_MANAGER));
+      this.jdField_a_of_type_Beng.a(this);
       return;
     }
-    catch (NumberFormatException parambdjk)
+    catch (NumberFormatException parambeqn)
     {
       for (;;)
       {
-        QLog.e("RoomController", 1, parambdjk, new Object[0]);
+        QLog.e("RoomController", 1, parambeqn, new Object[0]);
       }
     }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Bdjk.a(new ClientReadyReqMsg(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.c));
+    this.jdField_a_of_type_Beqn.a(new ClientReadyReqMsg(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.c));
   }
   
   public void a(int paramInt)
@@ -60,14 +61,14 @@ public class RoomController
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(bdhf parambdhf)
+  public void a(beoi parambeoi)
   {
-    this.jdField_a_of_type_Bdhf = parambdhf;
+    this.jdField_a_of_type_Beoi = parambeoi;
   }
   
   public void a(BaseWriteTogetherMsg.Type paramType, boolean paramBoolean, Object paramObject)
   {
-    switch (bdhe.a[paramType.ordinal()])
+    switch (beoh.a[paramType.ordinal()])
     {
     default: 
     case 1: 
@@ -78,19 +79,19 @@ public class RoomController
         if (QLog.isColorLevel()) {
           QLog.d("RoomController", 2, "isSuccesss: " + paramBoolean + ", ret: " + paramType.result);
         }
-        if (this.jdField_a_of_type_Bdhf != null) {
-          this.jdField_a_of_type_Bdhf.a(paramBoolean, paramType.result);
+        if (this.jdField_a_of_type_Beoi != null) {
+          this.jdField_a_of_type_Beoi.a(paramBoolean, paramType.result);
         }
       } while (paramType.result != 60010);
       ThreadManager.getSubThreadHandler().postDelayed(this, 10000L);
       return;
     }
-    this.jdField_a_of_type_Bdhf.a();
+    this.jdField_a_of_type_Beoi.a();
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Bdgd.b(this);
+    this.jdField_a_of_type_Beng.b(this);
     this.jdField_a_of_type_Boolean = true;
   }
   

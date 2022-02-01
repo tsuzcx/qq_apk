@@ -1,19 +1,8 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IntimateInfo.CommonTroopInfo;
+import android.view.View;
 
-public final class aqqq
-  implements Parcelable.Creator<IntimateInfo.CommonTroopInfo>
+public abstract interface aqqq
 {
-  public IntimateInfo.CommonTroopInfo a(Parcel paramParcel)
-  {
-    return new IntimateInfo.CommonTroopInfo(paramParcel);
-  }
-  
-  public IntimateInfo.CommonTroopInfo[] a(int paramInt)
-  {
-    return new IntimateInfo.CommonTroopInfo[paramInt];
-  }
+  public abstract void a(View paramView, int paramInt, boolean paramBoolean);
 }
 
 

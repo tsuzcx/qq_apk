@@ -1,38 +1,16 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.widget.MonitorSizeChangeHSV;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class awoc
-  implements View.OnKeyListener
+class awoc
+  implements View.OnClickListener
 {
-  public awoc(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  awoc(awnx paramawnx, awnm paramawnm) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 67) && (paramKeyEvent.getAction() == 0)) {
-      if (ChooseInterestTagActivity.a(this.a).getText() == null)
-      {
-        paramView = "";
-        if (TextUtils.isEmpty(paramView))
-        {
-          ChooseInterestTagActivity.a(this.a).fullScroll(66);
-          ChooseInterestTagActivity.a(this.a, ChooseInterestTagActivity.d(this.a) + 1);
-        }
-      }
-    }
-    for (;;)
-    {
-      return false;
-      paramView = ChooseInterestTagActivity.a(this.a).getText().toString();
-      break;
-      if ((paramInt == 66) && (paramKeyEvent.getAction() == 0)) {
-        bjmm.b(ChooseInterestTagActivity.a(this.a));
-      }
-    }
+    this.jdField_a_of_type_Awnm.b();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

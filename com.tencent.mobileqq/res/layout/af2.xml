@@ -31,7 +31,21 @@
                             <TextView android:id="@id/jfq" android:layout_width="94.0dip" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/e9d" style="@style/tl" />
                             <TextView android:textColor="@color/tr" android:id="@id/dbb" android:layout_width="fill_parent" android:hint="@string/e9c" android:singleLine="true" android:maxLength="18" style="@style/to" />
                         </LinearLayout>
+                        <View style="@style/ta" />
                         <View android:background="@color/w9" android:layout_width="fill_parent" android:layout_height="25.0dip" />
+                        <View style="@style/ta" />
+                        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="42.0dip">
+                            <TextView android:layout_width="94.0dip" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/x1g" style="@style/t9" />
+                            <TextView android:id="@id/o1c" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/t9" />
+                        </LinearLayout>
+                        <View style="@style/ta" />
+                        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="42.0dip">
+                            <TextView android:layout_width="94.0dip" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/e3i" style="@style/t9" />
+                            <com.tenpay.sdk.view.ClearableEditText android:textSize="17.0sp" android:textColorHint="@color/wb" android:id="@id/my9" android:layout_width="0.0dip" android:hint="@string/x1d" android:singleLine="true" android:maxLength="11" android:layout_weight="1.0" android:inputType="number" style="@style/to" />
+                        </LinearLayout>
+                        <View style="@style/ta" />
+                        <View android:background="@color/w9" android:layout_width="fill_parent" android:layout_height="25.0dip" />
+                        <View style="@style/ta" />
                         <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/e2j" android:background="@drawable/a3q" android:layout_width="fill_parent" android:layout_height="42.0dip">
                             <TextView android:layout_width="94.0dip" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/e95" style="@style/tl" />
                             <TextView android:textColor="@color/tr" android:id="@id/da_" android:layout_width="0.0dip" android:hint="@string/q4d" android:singleLine="true" android:maxLength="18" android:layout_weight="1.0" style="@style/to" />

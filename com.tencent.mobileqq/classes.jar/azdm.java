@@ -1,61 +1,50 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.qassistant.audio.AudioUploadThread;
-import com.tencent.mobileqq.utils.FileUtils;
-import java.io.IOException;
-import java.util.HashMap;
+import android.text.TextUtils;
+import com.tencent.lbssearch.httpresponse.AdInfo;
+import com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiBean;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import mqq.util.WeakReference;
 
-public class azdm
-  implements ITransactionCallback
+class azdm
+  implements azel
 {
-  private final long jdField_a_of_type_Long = System.currentTimeMillis();
+  azdm(azdl paramazdl, LatLng paramLatLng, int paramInt) {}
   
-  public azdm(AudioUploadThread paramAudioUploadThread, String paramString, azdo paramazdo) {}
-  
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public void a(PoiBean paramPoiBean)
   {
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    azeu.a("AudioUploadThread", "onFailed, duration:" + (l1 - l2) + ", retCode:" + paramInt);
-    FileUtils.deleteFile(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
-  {
-    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    azeu.a("AudioUploadThread", "onSuccess duration:" + l);
-    FileUtils.deleteFile(this.jdField_a_of_type_JavaLangString);
-    try
+    azdn localazdn = (azdn)azdl.a(this.jdField_a_of_type_Azdl).get();
+    if (localazdn == null)
     {
-      AudioUploadThread.a(this.jdField_a_of_type_ComTencentMobileqqQassistantAudioAudioUploadThread, this.jdField_a_of_type_Azdo, paramArrayOfByte, l);
+      if (QLog.isColorLevel()) {
+        QLog.e("OnlineStatusWeatherLocationListener", 2, "[MovementDetector] getPoiWithLatLng error. mCallback is null ");
+      }
       return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    if ((paramPoiBean == null) || (paramPoiBean.adInfo == null))
     {
-      azeu.a("AudioUploadThread", "onSuccess, parse rsp error:" + paramArrayOfByte.getMessage());
-      paramArrayOfByte.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.e("OnlineStatusWeatherLocationListener", 2, "[MovementDetector] getPoiWithLatLng error. adInfo is null ");
+      }
+      localazdn.a(404, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng.latitude, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng.longitude, "", "", azdl.a(this.jdField_a_of_type_Azdl), azdl.a(this.jdField_a_of_type_Azdl));
       return;
     }
-    catch (IOException paramArrayOfByte)
+    String str1;
+    if (TextUtils.isEmpty(paramPoiBean.adInfo.city))
     {
-      paramArrayOfByte.printStackTrace();
+      str1 = "";
+      if (!TextUtils.isEmpty(paramPoiBean.adInfo.district)) {
+        break label213;
+      }
     }
-  }
-  
-  public void onSwitch2BackupChannel()
-  {
-    azeu.a("AudioUploadThread", "onSwitch2BackupChannel");
-  }
-  
-  public void onTransStart()
-  {
-    azeu.a("AudioUploadThread", "onTransStart");
-  }
-  
-  public void onUpdateProgress(int paramInt)
-  {
-    azeu.a("AudioUploadThread", "onUpdateProgress transferedSize:" + paramInt);
+    label213:
+    for (String str2 = "";; str2 = paramPoiBean.adInfo.district)
+    {
+      str1 = str1 + str2;
+      localazdn.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng.latitude, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng.longitude, paramPoiBean.adInfo.adcode, str1, azdl.a(this.jdField_a_of_type_Azdl), azdl.a(this.jdField_a_of_type_Azdl));
+      return;
+      str1 = paramPoiBean.adInfo.city;
+      break;
+    }
   }
 }
 

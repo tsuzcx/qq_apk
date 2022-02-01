@@ -1,63 +1,25 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeShareView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class qib
-  extends ViewBase
+  implements qhl
 {
-  private NativeShareView a;
+  public qib(UserOperationModule.1 param1) {}
   
-  public qib(VafContext paramVafContext)
+  public void onLoadUserInfoFailed(String paramString1, String paramString2)
   {
-    super(paramVafContext);
-    this.a = new NativeShareView(paramVafContext.getContext());
+    QLog.e("UserOperationModule", 1, "handle0x978Resp onLoadUserInfoFailed, uin=" + paramString1 + ", errMsg=" + paramString2);
+    qia.a(this.a.this$0, this.a.jdField_a_of_type_Int, "", this.a.b, 2, this.a.jdField_a_of_type_Boolean);
   }
   
-  public void a(Bitmap paramBitmap)
+  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
   {
-    this.a.setScreenBitmap(paramBitmap);
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    this.a.setInitRunnable(paramRunnable);
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.setCurrentPath(paramString);
-  }
-  
-  public int getComMeasuredHeight()
-  {
-    return this.a.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.a.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.a;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.a.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
+    paramString = "";
+    if (paramReadInJoyUserInfo != null) {
+      paramString = paramReadInJoyUserInfo.faceUrl;
+    }
+    qia.a(this.a.this$0, this.a.jdField_a_of_type_Int, paramString, this.a.b, 2, this.a.jdField_a_of_type_Boolean);
   }
 }
 

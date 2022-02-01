@@ -1,40 +1,31 @@
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.LruCache;
-import android.widget.ImageView;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class xpp
-  extends yru<xps>
+  extends QQUIEventReceiver<xpn, wcx>
 {
-  private LruCache<xps, Drawable> a = new xpq(this, 5242880);
-  
-  public LruCache<xps, Drawable> a()
+  public xpp(@NonNull xpn paramxpn)
   {
-    return this.a;
+    super(paramxpn);
   }
   
-  public yrv a(ImageView paramImageView, xps paramxps)
+  public void a(@NonNull xpn paramxpn, @NonNull wcx paramwcx)
   {
-    return new xpt(paramImageView, paramxps);
-  }
-  
-  public void a()
-  {
-    super.a();
-    b();
-  }
-  
-  public void b()
-  {
-    super.b();
-    try
+    if ((paramxpn.a == null) || (paramwcx.a == null) || (!TextUtils.equals(paramxpn.a.a, paramwcx.a.mVid))) {}
+    do
     {
-      this.a.evictAll();
       return;
-    }
-    catch (Exception localException)
-    {
-      this.a = new xpr(this, 5242880);
-    }
+      paramxpn.i();
+      paramxpn = (xhh)paramxpn.a(xhh.class);
+    } while (paramxpn == null);
+    paramxpn.d();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wcx.class;
   }
 }
 

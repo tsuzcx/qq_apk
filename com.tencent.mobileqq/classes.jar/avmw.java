@@ -1,6 +1,22 @@
-public abstract interface avmw
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+
+class avmw
+  implements Animation.AnimationListener
 {
-  public abstract void onPlayEnd();
+  avmw(avmv paramavmv) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (this.a.a == 3) {
+      this.a.d.setVisibility(8);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

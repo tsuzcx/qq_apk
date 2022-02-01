@@ -1,18 +1,46 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.Intent;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.widget.PatchedButton;
+import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
 
-class agft
-  extends aghj
+public class agft
+  implements agin, agja
 {
-  agft(agcw paramagcw)
+  private BaseChatPie a;
+  protected PatchedButton a;
+  public AIOLongCaptureCtrl a;
+  
+  agft(BaseChatPie paramBaseChatPie)
   {
-    super(paramagcw, null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
   }
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void a(int paramInt)
   {
-    return new ShortVideoRealItemBuilder(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentWidgetPatchedButton = ((PatchedButton)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mAIORootView.findViewById(2131380830));
+      this.jdField_a_of_type_DovComQqImPtvAIOLongCaptureCtrl = new AIOLongCaptureCtrl(new agfu(this));
+      boqt.a(this.jdField_a_of_type_ComTencentWidgetPatchedButton, this.jdField_a_of_type_DovComQqImPtvAIOLongCaptureCtrl);
+      return;
+    }
+    boqt.b(this.jdField_a_of_type_ComTencentWidgetPatchedButton, this.jdField_a_of_type_DovComQqImPtvAIOLongCaptureCtrl);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if (this.jdField_a_of_type_DovComQqImPtvAIOLongCaptureCtrl != null) {
+      this.jdField_a_of_type_DovComQqImPtvAIOLongCaptureCtrl.a(paramInt1, paramInt2, paramIntent);
+    }
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 0, 9 };
   }
 }
 

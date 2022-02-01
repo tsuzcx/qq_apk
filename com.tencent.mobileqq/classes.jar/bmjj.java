@@ -1,27 +1,8 @@
-import android.view.View;
-import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment;
-import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment.15.1;
-import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment.15.2;
-import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackContainerView;
-
-public class bmjj
-  implements bmpl
+public abstract interface bmjj
 {
-  public bmjj(AEEditorMultiCutEditFragment paramAEEditorMultiCutEditFragment) {}
+  public abstract void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3);
   
-  public void a(bmod parambmod, boolean paramBoolean, int paramInt)
-  {
-    this.a.a.b();
-    if (paramBoolean)
-    {
-      ((View)parambmod).post(new AEEditorMultiCutEditFragment.15.1(this, parambmod));
-      if (AEEditorMultiCutEditFragment.a(this.a).a()) {
-        AEEditorMultiCutEditFragment.a(this.a).b();
-      }
-      return;
-    }
-    ((View)parambmod).post(new AEEditorMultiCutEditFragment.15.2(this));
-  }
+  public abstract void a(String paramString, long paramLong1, long paramLong2);
 }
 
 

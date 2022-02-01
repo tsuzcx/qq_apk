@@ -1,29 +1,60 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
-import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.qun.group_effect.group_effect.EffectInfo;
+import tencent.qun.group_effect.group_effect.UserConfig;
+import tencent.qun.group_effect.group_effect_commu.TEffectDetail;
 
-class bfki
-  implements ValueAnimator.AnimatorUpdateListener
+public class bfki
 {
-  bfki(bfkh parambfkh) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public bfki() {}
+  
+  public bfki(long paramLong, int paramInt, String paramString)
   {
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    ((RelativeLayout.LayoutParams)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getLayoutParams()).topMargin = paramValueAnimator.intValue();
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.requestLayout();
-    if ((paramValueAnimator.intValue() >= this.a.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299076)) && (AppSetting.c) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getChildCount() > 0))
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public group_effect_commu.TEffectDetail a()
+  {
+    group_effect_commu.TEffectDetail localTEffectDetail = new group_effect_commu.TEffectDetail();
+    Object localObject = new group_effect.UserConfig();
+    ((group_effect.UserConfig)localObject).effect_id.set(this.jdField_a_of_type_Int);
+    ((group_effect.UserConfig)localObject).group_code.set(this.jdField_a_of_type_Long);
+    localObject = ((group_effect.UserConfig)localObject).status;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (long l = 1L;; l = 0L)
     {
-      paramValueAnimator = this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getChildAt(0);
-      if (paramValueAnimator != null) {
-        paramValueAnimator.requestFocusFromTouch();
-      }
+      ((PBUInt64Field)localObject).set(l);
+      new group_effect.EffectInfo().name.set(this.jdField_a_of_type_JavaLangString);
+      return localTEffectDetail;
     }
+  }
+  
+  public void a(group_effect_commu.TEffectDetail paramTEffectDetail)
+  {
+    group_effect.UserConfig localUserConfig = (group_effect.UserConfig)paramTEffectDetail.st_userconfig.get();
+    paramTEffectDetail = (group_effect.EffectInfo)paramTEffectDetail.st_effectinfo.get();
+    this.jdField_a_of_type_Int = localUserConfig.effect_id.get();
+    this.jdField_a_of_type_JavaLangString = paramTEffectDetail.name.get();
+    this.jdField_a_of_type_Long = localUserConfig.group_code.get();
+    if (localUserConfig.status.get() != 0L) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      return;
+    }
+  }
+  
+  public String toString()
+  {
+    return "{groupCode: " + this.jdField_a_of_type_Long + ", effectId: " + this.jdField_a_of_type_Int + ", isOn: " + this.jdField_a_of_type_Boolean + "}";
   }
 }
 

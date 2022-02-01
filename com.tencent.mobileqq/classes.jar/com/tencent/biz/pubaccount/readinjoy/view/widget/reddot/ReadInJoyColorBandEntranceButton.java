@@ -10,8 +10,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import tfd;
-import tfe;
+import tsq;
 
 public class ReadInJoyColorBandEntranceButton
   extends ColorBandVideoEntranceButton
@@ -41,12 +40,12 @@ public class ReadInJoyColorBandEntranceButton
       if (this.jdField_a_of_type_Int == 1)
       {
         i = getResources().getInteger(2131427364);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setImageDrawable(getResources().getDrawable(2130849294));
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setImageDrawable(getResources().getDrawable(2130849386));
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setVisibility(0);
         localAnimatorSet = new AnimatorSet();
         localAnimatorSet.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "scaleX", new float[] { 1.0F, 0.0F }), ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "scaleY", new float[] { 1.0F, 0.0F }), ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "alpha", new float[] { 1.0F, 0.0F }), ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView, "translationX", new float[] { 0.0F, -AIOUtils.dp2px(58.0F, getResources()) }), ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView, "translationY", new float[] { 0.0F, AIOUtils.dp2px(54.0F, getResources()) }) });
         localAnimatorSet.setDuration(i);
-        localAnimatorSet.addListener(new tfd(this));
+        localAnimatorSet.addListener(new tsq(this));
         localAnimatorSet.start();
         return;
       }
@@ -54,8 +53,6 @@ public class ReadInJoyColorBandEntranceButton
     int i = getResources().getInteger(2131427365);
     AnimatorSet localAnimatorSet = new AnimatorSet();
     localAnimatorSet.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.b, "rotation", new float[] { 0.0F, 360.0F }) });
-    setClickable(false);
-    localAnimatorSet.addListener(new tfe(this));
     localAnimatorSet.setDuration(i);
     localAnimatorSet.start();
   }
@@ -67,7 +64,7 @@ public class ReadInJoyColorBandEntranceButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ReadInJoyColorBandEntranceButton
  * JD-Core Version:    0.7.0.1
  */

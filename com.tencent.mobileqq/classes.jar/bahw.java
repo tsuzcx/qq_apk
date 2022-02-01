@@ -1,8 +1,12 @@
 public abstract interface bahw
 {
-  public abstract void a(long paramLong);
+  public abstract void a();
   
-  public abstract void a(long paramLong, int paramInt);
+  public abstract void a(int paramInt);
+  
+  public abstract void a(bahv parambahv, int paramInt1, int paramInt2);
+  
+  public abstract void f();
 }
 
 

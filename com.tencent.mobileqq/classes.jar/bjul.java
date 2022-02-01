@@ -1,12 +1,26 @@
-import android.graphics.Canvas;
-
-public abstract interface bjul
+public class bjul
+  extends bjuj
 {
-  public abstract void a(Canvas paramCanvas);
+  private static bjul jdField_a_of_type_Bjul;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
   
-  public abstract int getHeight();
+  public static bjul a()
+  {
+    if (jdField_a_of_type_Bjul == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_a_of_type_Bjul == null) {
+        jdField_a_of_type_Bjul = new bjul();
+      }
+      return jdField_a_of_type_Bjul;
+    }
+  }
   
-  public abstract int getWidth();
+  public void a()
+  {
+    super.a();
+    jdField_a_of_type_Bjul = null;
+  }
 }
 
 

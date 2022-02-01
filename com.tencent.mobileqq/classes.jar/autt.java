@@ -1,17 +1,33 @@
-class autt
-  extends axkv
+import android.app.Activity;
+import android.app.PendingIntent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+
+public class autt
+  implements DialogInterface.OnClickListener
 {
-  autt(auts paramauts, aujs paramaujs) {}
+  public autt(ForwardSdkShareOption paramForwardSdkShareOption) {}
   
-  public void ipJudgeSuccess(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    auts.a(this.jdField_a_of_type_Auts, this.jdField_a_of_type_Aujs);
-  }
-  
-  public void onFailedResponse(String paramString1, int paramInt, String paramString2)
-  {
-    bcef.a(null, "dc00898", "", "", "0X800B0EB", "0X800B0EB", 0, 0, "", "", "", "");
-    auts.a(this.jdField_a_of_type_Auts, this.jdField_a_of_type_Aujs);
+    if (this.a.c) {
+      bjgx.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", String.valueOf(this.a.jdField_a_of_type_Long), "1000", "52", "0", false, true);
+    }
+    paramDialogInterface = new Intent();
+    paramDialogInterface.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=complete&response={\"ret\":0}", new Object[] { Long.valueOf(this.a.jdField_a_of_type_Long), "addToQQFavorites" })));
+    paramDialogInterface.setPackage(this.a.jdField_a_of_type_AndroidAppActivity.getIntent().getStringExtra("pkg_name"));
+    paramDialogInterface = PendingIntent.getActivity(this.a.jdField_a_of_type_AndroidAppActivity, 0, paramDialogInterface, 268435456);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("is_share_flag", true);
+    if (this.a.jdField_a_of_type_Long > 0L) {
+      localIntent.putExtra("activity_finish_run_pendingIntent", paramDialogInterface);
+    }
+    bmaf.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), localIntent, -1, true);
+    bman.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2, 0);
   }
 }
 

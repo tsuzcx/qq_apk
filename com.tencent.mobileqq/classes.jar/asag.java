@@ -1,44 +1,51 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class asag
-  implements View.OnClickListener
+public class asag
 {
-  asag(asaf paramasaf, View paramView) {}
+  public asah a;
+  public String a;
   
-  public void onClick(View paramView)
+  public JSONObject a()
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((localObject instanceof arvu))
+    JSONObject localJSONObject1 = new JSONObject();
+    try
     {
-      localObject = (FileManagerEntity)((arvu)localObject).a;
-      if (paramView.getId() != 2131365376) {
-        break label121;
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("user_id", this.jdField_a_of_type_Asah.jdField_a_of_type_JavaLangString);
+      localJSONObject2.put("source_md5", this.jdField_a_of_type_Asah.jdField_b_of_type_JavaLangString);
+      localJSONObject2.put("source_url", this.jdField_a_of_type_Asah.c);
+      localJSONArray = new JSONArray();
+      localIterator = this.jdField_a_of_type_Asah.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext()) {
+        localJSONArray.put((String)localIterator.next());
       }
-      bjnw localbjnw = (bjnw)bjon.a(this.jdField_a_of_type_Asaf.a.a, null);
-      localbjnw.a(amtj.a(2131708732));
-      localbjnw.a(amtj.a(2131708736), 3);
-      localbjnw.d(amtj.a(2131708734));
-      localbjnw.a(new asah(this, (FileManagerEntity)localObject, localbjnw));
-      localbjnw.show();
+      localException.put("expose_md5s", localJSONArray);
     }
-    for (;;)
+    catch (Exception localException)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localObject = (FileManagerEntity)((asao)localObject).a;
-      break;
-      label121:
-      if (paramView.getId() == 2131367097) {
-        this.jdField_a_of_type_Asaf.a.c((FileManagerEntity)localObject);
-      } else if (paramView.getId() == 2131377104) {
-        ApolloUtil.a(paramView, (FileManagerEntity)localObject, QfileBaseRecentFileTabView.r(this.jdField_a_of_type_Asaf.a));
+      if (QLog.isColorLevel()) {
+        QLog.e("DoutuReportData", 2, "convert error:" + localException);
       }
+      return localJSONObject1;
     }
+    JSONArray localJSONArray = new JSONArray();
+    Iterator localIterator = this.jdField_a_of_type_Asah.jdField_b_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      localJSONArray.put((String)localIterator.next());
+    }
+    localException.put("expose_urls", localJSONArray);
+    localException.put("click_md5", this.jdField_a_of_type_Asah.d);
+    localException.put("click_url", this.jdField_a_of_type_Asah.e);
+    localException.put("aio_type", this.jdField_a_of_type_Asah.f);
+    localException.put("mobile_type", this.jdField_a_of_type_Asah.g);
+    localException.put("to_user_id", this.jdField_a_of_type_Asah.h);
+    localJSONObject1.put("dcId", this.jdField_a_of_type_JavaLangString);
+    localJSONObject1.put("data", localException);
+    return localJSONObject1;
   }
 }
 

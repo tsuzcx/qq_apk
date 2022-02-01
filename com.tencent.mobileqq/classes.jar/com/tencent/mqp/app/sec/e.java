@@ -841,7 +841,7 @@ public class e
     //   237: aload_0
     //   238: astore 4
     //   240: aload_1
-    //   241: invokestatic 255	bjkf:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   241: invokestatic 255	bkvq:a	(Ljava/lang/String;)Ljava/lang/String;
     //   244: astore 8
     //   246: aload 8
     //   248: ifnull +461 -> 709
@@ -963,7 +963,7 @@ public class e
     //   498: astore_0
     //   499: goto -294 -> 205
     //   502: aload_0
-    //   503: invokestatic 255	bjkf:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   503: invokestatic 255	bkvq:a	(Ljava/lang/String;)Ljava/lang/String;
     //   506: astore_1
     //   507: aload_1
     //   508: putstatic 260	com/tencent/mqp/app/sec/e:sCachedMd5	Ljava/lang/String;

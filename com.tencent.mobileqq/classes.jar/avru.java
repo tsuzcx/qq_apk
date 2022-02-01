@@ -1,24 +1,34 @@
-import java.util.Map;
+import com.tencent.shadow.core.common.ILoggerFactory;
+import com.tencent.shadow.core.common.Logger;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
-class avru
-  extends avrr<avrt>
+public class avru
+  implements ILoggerFactory
 {
-  public avru(avrt paramavrt)
+  private static avru jdField_a_of_type_Avru = new avru();
+  private final ConcurrentMap<String, Logger> jdField_a_of_type_JavaUtilConcurrentConcurrentMap = new ConcurrentHashMap();
+  
+  public static ILoggerFactory a()
   {
-    super(paramavrt);
+    return jdField_a_of_type_Avru;
   }
   
-  public void a(avrt paramavrt, boolean paramBoolean, avro paramavro)
+  public Logger getLogger(String paramString)
   {
-    if (paramavrt == null) {
-      return;
+    Logger localLogger = (Logger)this.jdField_a_of_type_JavaUtilConcurrentConcurrentMap.get(paramString);
+    if (localLogger != null) {
+      paramString = localLogger;
     }
-    if (paramBoolean)
+    avrv localavrv;
+    do
     {
-      avrt.a(paramavrt, (avrl)avrt.a(paramavrt).get(paramavro.h));
-      return;
-    }
-    avrt.a(paramavrt, paramavro.jdField_a_of_type_JavaLangString, paramavro.jdField_a_of_type_Int, 1001);
+      return paramString;
+      localavrv = new avrv(this, paramString);
+      localLogger = (Logger)this.jdField_a_of_type_JavaUtilConcurrentConcurrentMap.putIfAbsent(paramString, localavrv);
+      paramString = localLogger;
+    } while (localLogger != null);
+    return localavrv;
   }
 }
 

@@ -1,32 +1,48 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.XListView;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
-import cooperation.qqpim.QQPimTipsInfo;
+import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajme
-  implements View.OnClickListener
+  extends aoav
 {
-  public ajme(ContactListView paramContactListView) {}
+  public ajme(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public void onClick(View paramView)
+  public void onFollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
   {
-    bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006710", "0X8006710", 0, 0, "", "", "", "");
-    ContactListView.a(this.a).removeHeaderView(ContactListView.a(this.a));
-    ContactListView.a(this.a, null);
-    bksm.a(this.a.getContext(), QQPimGetTipsInfoIPC.a().a);
-    QQPimGetTipsInfoIPC.a().c();
-    String str = ContactListView.a(this.a).getAccount();
-    Bundle localBundle = new Bundle();
-    localBundle.putString(bksb.o, bksb.j);
-    localBundle.putInt(bksb.p, QQPimGetTipsInfoIPC.a().a.b);
-    localBundle.putString(bksb.l, str);
-    new bksh().a(ContactListView.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localBundle);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("Contacts.PublicAccountFragment", 2, "onFollowPublicAccount errCode: " + paramInt);
+    }
+    if (paramInt == 0) {
+      this.a.i();
+    }
+  }
+  
+  public void onUnfollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Contacts.PublicAccountFragment", 2, "onUnfollowPublicAccount errCode: " + paramInt);
+    }
+    if (paramInt == 0) {
+      this.a.i();
+    }
+  }
+  
+  public void onUpdateUserFollowList(int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Contacts.PublicAccountFragment", 2, "onUpdateUserFollowList errCode: " + paramInt + " isFinish:" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      if (PublicAccountFragment.a(this.a))
+      {
+        if (PublicAccountFragment.a(this.a) != null) {
+          PublicAccountFragment.b(this.a).a(this.a.b(), true, null);
+        }
+        PublicAccountFragment.a(this.a, false);
+      }
+      this.a.i();
+    }
   }
 }
 

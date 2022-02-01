@@ -1,18 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qqmini.proxyimpl.VideoJsProxyImpl.2;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.agent.datamodel.Friend;
 
-public class bjgo
-  implements DialogInterface.OnClickListener
+public final class bjgo
+  implements Parcelable.Creator<Friend>
 {
-  public bjgo(VideoJsProxyImpl.2 param2) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Friend a(Parcel paramParcel)
   {
-    bjgl.a(this.a.this$0, this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_Boolean);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    Friend localFriend = new Friend();
+    localFriend.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localFriend.b = paramParcel.readString();
+    localFriend.c = paramParcel.readString();
+    localFriend.d = paramParcel.readString();
+    localFriend.jdField_a_of_type_Int = paramParcel.readInt();
+    localFriend.e = paramParcel.readString();
+    return localFriend;
+  }
+  
+  public Friend[] a(int paramInt)
+  {
+    return new Friend[paramInt];
   }
 }
 

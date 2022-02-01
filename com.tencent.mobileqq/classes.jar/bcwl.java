@@ -1,36 +1,43 @@
-import android.util.SparseArray;
-import android.view.View;
-import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
-
 public class bcwl
-  implements bjoe
 {
-  public bcwl(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment, SparseArray paramSparseArray, bjnw parambjnw) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  private static int a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null)
-    {
-      paramInt = -1;
-      switch (paramInt)
-      {
-      }
+    int i = 100;
+    if (a(paramInt)) {
+      i = 1;
     }
-    for (;;)
+    do
     {
-      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment);
-      if (this.jdField_a_of_type_Bjnw.isShowing()) {
-        this.jdField_a_of_type_Bjnw.dismiss();
+      return i;
+      if (b(paramInt)) {
+        return 2;
       }
-      return;
-      paramInt = ((Integer)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).intValue();
-      break;
-      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 2);
-      continue;
-      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 1);
-      continue;
-      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 0);
-    }
+      if (paramInt == 140) {
+        return 3;
+      }
+      if (paramInt == 141) {
+        return 4;
+      }
+      if (paramInt == 142) {
+        return 5;
+      }
+    } while (paramInt != 143);
+    return 6;
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    bdla.b(null, "dc00898", "", "", paramString, paramString, a(paramInt), 0, "", "", "", "");
+  }
+  
+  private static boolean a(int paramInt)
+  {
+    return (paramInt == 11) || (paramInt == 9) || (paramInt == 10) || (paramInt == 100);
+  }
+  
+  private static boolean b(int paramInt)
+  {
+    return (paramInt == 125) || (paramInt == 126) || (paramInt == 127) || (paramInt == 128) || (paramInt == 129) || (paramInt == 130);
   }
 }
 

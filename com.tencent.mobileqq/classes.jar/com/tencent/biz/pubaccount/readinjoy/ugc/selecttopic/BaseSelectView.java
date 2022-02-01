@@ -21,19 +21,19 @@ import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import pxh;
-import pxp;
-import rpj;
-import rpk;
-import rpl;
-import rpm;
-import rpn;
-import rpo;
+import qjl;
+import qjt;
+import sby;
+import sbz;
+import sca;
+import scb;
+import scc;
+import scd;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/BaseSelectView;", "BEAN", "HOLDER", "Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/BaseSelectAdapter$BaseSelectViewHolder;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/IOnActivityResult;", "Lcom/tencent/biz/pubaccount/readinjoy/mvp/ListContract$IListView;", "context", "Landroid/app/Activity;", "listPresenter", "Lcom/tencent/biz/pubaccount/readinjoy/mvp/ListPresenter;", "(Landroid/app/Activity;Lcom/tencent/biz/pubaccount/readinjoy/mvp/ListPresenter;)V", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/BaseSelectAdapter;", "getAdapter", "()Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/BaseSelectAdapter;", "errorLayout", "Landroid/view/View;", "isLoadingMore", "", "listView", "Landroid/widget/ListView;", "loadingLayout", "onScrollListener", "com/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/BaseSelectView$onScrollListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/BaseSelectView$onScrollListener$1;", "rightActionBtn", "Landroid/widget/TextView;", "rightActionText", "", "getRightActionText", "()Ljava/lang/String;", "selectCallback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "bean", "", "getSelectCallback", "()Lkotlin/jvm/functions/Function1;", "setSelectCallback", "(Lkotlin/jvm/functions/Function1;)V", "selectTip", "getSelectTip", "selectTipView", "addItemToTop", "(Ljava/lang/Object;)V", "handleRightActionClick", "onActivityResult", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onAttachedToWindow", "onDetachedFromWindow", "setCenterEmpty", "setCenterError", "errorCode", "errorMsg", "setCenterHide", "setCenterLoading", "setFooterError", "setFooterHasMore", "setFooterHide", "setFooterLoading", "setFooterNoMore", "setHeaderError", "setHeaderLoading", "setHeaderSuccess", "setListData", "allList", "", "isAppend", "setTotal", "total", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract class BaseSelectView<BEAN, HOLDER extends rpk>
+public abstract class BaseSelectView<BEAN, HOLDER extends sbz>
   extends RelativeLayout
-  implements pxh<BEAN>
+  implements qjl<BEAN>
 {
   private View jdField_a_of_type_AndroidViewView;
   private ListView jdField_a_of_type_AndroidWidgetListView;
@@ -42,36 +42,36 @@ public abstract class BaseSelectView<BEAN, HOLDER extends rpk>
   private final String jdField_a_of_type_JavaLangString;
   @Nullable
   private Function1<? super BEAN, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1;
-  private final pxp<BEAN, pxh<BEAN>> jdField_a_of_type_Pxp;
-  private rpo jdField_a_of_type_Rpo;
+  private final qjt<BEAN, qjl<BEAN>> jdField_a_of_type_Qjt;
+  private scd jdField_a_of_type_Scd;
   private boolean jdField_a_of_type_Boolean;
   private View jdField_b_of_type_AndroidViewView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   @NotNull
   private final String jdField_b_of_type_JavaLangString;
   
-  public BaseSelectView(@NotNull Activity paramActivity, @NotNull pxp<BEAN, pxh<BEAN>> parampxp)
+  public BaseSelectView(@NotNull Activity paramActivity, @NotNull qjt<BEAN, qjl<BEAN>> paramqjt)
   {
     super((Context)paramActivity);
-    this.jdField_a_of_type_Pxp = parampxp;
-    this.jdField_a_of_type_Rpo = new rpo(this);
-    LayoutInflater.from((Context)paramActivity).inflate(2131560273, (ViewGroup)this, true);
-    paramActivity = findViewById(2131377011);
+    this.jdField_a_of_type_Qjt = paramqjt;
+    this.jdField_a_of_type_Scd = new scd(this);
+    LayoutInflater.from((Context)paramActivity).inflate(2131560319, (ViewGroup)this, true);
+    paramActivity = findViewById(2131377284);
     Intrinsics.checkExpressionValueIsNotNull(paramActivity, "findViewById(R.id.selectTipView)");
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramActivity);
-    paramActivity = findViewById(2131366135);
+    paramActivity = findViewById(2131366236);
     Intrinsics.checkExpressionValueIsNotNull(paramActivity, "findViewById(R.id.errorLayout)");
     this.jdField_a_of_type_AndroidViewView = paramActivity;
-    paramActivity = findViewById(2131376409);
+    paramActivity = findViewById(2131376664);
     Intrinsics.checkExpressionValueIsNotNull(paramActivity, "findViewById(R.id.rightActionBtn)");
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramActivity);
-    paramActivity = findViewById(2131370016);
+    paramActivity = findViewById(2131370187);
     Intrinsics.checkExpressionValueIsNotNull(paramActivity, "findViewById(R.id.listView)");
     this.jdField_a_of_type_AndroidWidgetListView = ((ListView)paramActivity);
-    paramActivity = findViewById(2131370269);
+    paramActivity = findViewById(2131370448);
     Intrinsics.checkExpressionValueIsNotNull(paramActivity, "findViewById(R.id.loadingLayout)");
     this.jdField_b_of_type_AndroidViewView = paramActivity;
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener((View.OnClickListener)new rpl(this));
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener((View.OnClickListener)new sca(this));
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_b_of_type_JavaLangString = "";
   }
@@ -89,7 +89,7 @@ public abstract class BaseSelectView<BEAN, HOLDER extends rpk>
   }
   
   @NotNull
-  public abstract rpj<BEAN, HOLDER> a();
+  public abstract sby<BEAN, HOLDER> a();
   
   public void a() {}
   
@@ -120,20 +120,20 @@ public abstract class BaseSelectView<BEAN, HOLDER extends rpk>
       if (i != 0)
       {
         this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)b());
-        this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener((View.OnClickListener)new rpm(this));
+        this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener((View.OnClickListener)new scb(this));
       }
       this.jdField_a_of_type_AndroidWidgetListView.setAdapter((ListAdapter)a());
-      this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener((AdapterView.OnItemClickListener)new rpn(this));
-      this.jdField_a_of_type_AndroidWidgetListView.setOnScrollListener((AbsListView.OnScrollListener)this.jdField_a_of_type_Rpo);
-      this.jdField_a_of_type_Pxp.a((pxh)this);
-      this.jdField_a_of_type_Pxp.b();
+      this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener((AdapterView.OnItemClickListener)new scc(this));
+      this.jdField_a_of_type_AndroidWidgetListView.setOnScrollListener((AbsListView.OnScrollListener)this.jdField_a_of_type_Scd);
+      this.jdField_a_of_type_Qjt.a((qjl)this);
+      this.jdField_a_of_type_Qjt.b();
       return;
     }
   }
   
   protected void onDetachedFromWindow()
   {
-    this.jdField_a_of_type_Pxp.a();
+    this.jdField_a_of_type_Qjt.a();
     super.onDetachedFromWindow();
   }
   

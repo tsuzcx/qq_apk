@@ -1,10 +1,24 @@
-import android.content.Intent;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.data.MessageForMedalNews;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
-public abstract interface ahbn
+class ahbn
+  extends afos
 {
-  public abstract void a(Intent paramIntent);
+  public long a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  MessageForMedalNews jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews;
+  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
+  public String a;
+  TextView b;
+  TextView c;
+  TextView d;
+  TextView e;
   
-  public abstract boolean a(int paramInt);
+  ahbn(ahbl paramahbl) {}
 }
 
 

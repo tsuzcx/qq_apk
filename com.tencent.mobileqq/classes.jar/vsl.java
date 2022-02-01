@@ -1,15 +1,6 @@
-public class vsl
-  extends vko
+public abstract interface vsl
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  public abstract void a();
 }
 
 

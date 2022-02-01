@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
 
-class bdjd
-  extends bdji<UserState>
+public final class bdjd
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bdjd(bdiu parambdiu, UserState paramUserState, List paramList)
-  {
-    super(paramUserState, paramList);
-  }
+  public bdjd(View paramView) {}
   
-  public void a(UserState paramUserState)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    bdiu.a(this.a);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.setAlpha(1.0F - f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdjd
  * JD-Core Version:    0.7.0.1
  */

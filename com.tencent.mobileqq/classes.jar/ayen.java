@@ -1,15 +1,29 @@
-public abstract class ayen
-  implements ayel
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.nearby.widget.AutoScrollImageView;
+
+class ayen
+  implements URLDrawable.URLDrawableListener
 {
-  public final void a(int paramInt, aydt paramaydt) {}
+  ayen(ayek paramayek) {}
   
-  public final void a_(int paramInt, boolean paramBoolean) {}
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public final void b(int paramInt, aydt paramaydt) {}
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  public final void c(int paramInt, aydt paramaydt) {}
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public final void d(int paramInt, aydt paramaydt) {}
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    paramURLDrawable = paramURLDrawable.getCurrDrawable();
+    if ((paramURLDrawable instanceof RegionDrawable))
+    {
+      paramURLDrawable = ((RegionDrawable)paramURLDrawable).getBitmap();
+      ayek.a(this.a).setImageBitmap(paramURLDrawable);
+      ayek.a(this.a).setVisibility(0);
+    }
+  }
 }
 
 

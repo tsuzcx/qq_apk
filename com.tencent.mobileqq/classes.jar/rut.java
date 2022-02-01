@@ -1,8 +1,11 @@
-import java.util.HashMap;
+import android.widget.ImageView;
 
-abstract interface rut
+class rut
 {
-  public abstract void a(int paramInt, String paramString, HashMap<Integer, ruu> paramHashMap, long paramLong);
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ImageView b;
+  
+  private rut(rur paramrur) {}
 }
 
 

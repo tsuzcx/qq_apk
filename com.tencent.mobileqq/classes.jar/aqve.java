@@ -1,51 +1,76 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.data.RecentSayHelloListItem;
-import com.tencent.mobileqq.dating.FansEntity;
-import com.tencent.mobileqq.dating.SayHelloMsgListActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
 public class aqve
-  extends awjx
 {
-  public aqve(SayHelloMsgListActivity paramSayHelloMsgListActivity) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public int g;
   
-  public void a(boolean paramBoolean, List<FansEntity> paramList)
+  public static aqve a(String paramString)
   {
-    int i = 0;
-    if (paramBoolean)
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    aqve localaqve = new aqve();
+    try
     {
-      Iterator localIterator = paramList.iterator();
-      while (localIterator.hasNext())
-      {
-        FansEntity localFansEntity = (FansEntity)localIterator.next();
-        RecentBaseData localRecentBaseData = (RecentBaseData)this.a.jdField_a_of_type_JavaUtilMap.get(String.valueOf(localFansEntity.uin));
-        if ((localRecentBaseData != null) && ((localRecentBaseData instanceof RecentSayHelloListItem))) {
-          ((RecentSayHelloListItem)localRecentBaseData).a(localFansEntity);
-        }
-      }
-      bcef.b(this.a.app, "dc00899", "grp_lbs", "", "c2c_tmp", "exp_hi_list", 0, 0, "", "", "", "");
+      paramString = new JSONObject(paramString);
+      localaqve.jdField_a_of_type_Int = paramString.optInt("nTopicId");
+      localaqve.jdField_b_of_type_Int = paramString.optInt("nBGType");
+      localaqve.jdField_c_of_type_Int = paramString.optInt("nConfessorSex");
+      localaqve.jdField_a_of_type_JavaLangString = paramString.optString("strRecNick");
+      localaqve.jdField_b_of_type_JavaLangString = paramString.optString("strRecUin");
+      localaqve.jdField_c_of_type_JavaLangString = paramString.optString("strConfessorUin");
+      localaqve.jdField_d_of_type_JavaLangString = paramString.optString("strConfessorDesc");
+      localaqve.jdField_e_of_type_JavaLangString = paramString.optString("strConfessorNick");
+      localaqve.g = paramString.optInt("flag");
+      localaqve.jdField_a_of_type_Long = paramString.optInt("confessTime");
+      localaqve.jdField_d_of_type_Int = paramString.optInt("nConfessNum");
+      localaqve.jdField_e_of_type_Int = paramString.optInt("nGetConfessSex");
+      localaqve.f = paramString.optInt("nBizType");
+      return localaqve;
     }
-    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null)
+    catch (Exception paramString) {}
+    return null;
+  }
+  
+  public String a()
+  {
+    try
     {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(0);
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(0);
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("nTopicId", this.jdField_a_of_type_Int);
+      ((JSONObject)localObject).put("nBGType", this.jdField_b_of_type_Int);
+      ((JSONObject)localObject).put("nConfessorSex", this.jdField_c_of_type_Int);
+      ((JSONObject)localObject).put("strRecNick", this.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("strRecUin", this.jdField_b_of_type_JavaLangString);
+      ((JSONObject)localObject).put("strConfessorUin", this.jdField_c_of_type_JavaLangString);
+      ((JSONObject)localObject).put("strConfessorDesc", this.jdField_d_of_type_JavaLangString);
+      ((JSONObject)localObject).put("strConfessorNick", this.jdField_e_of_type_JavaLangString);
+      ((JSONObject)localObject).put("flag", this.g);
+      ((JSONObject)localObject).put("confessTime", this.jdField_a_of_type_Long);
+      ((JSONObject)localObject).put("nConfessNum", this.jdField_d_of_type_Int);
+      ((JSONObject)localObject).put("nGetConfessSex", this.jdField_e_of_type_Int);
+      ((JSONObject)localObject).put("nBizType", this.f);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
     }
-    if (QLog.isDevelopLevel()) {
-      if (paramList != null) {
-        break label187;
-      }
-    }
-    for (;;)
+    catch (Exception localException)
     {
-      QLog.d("Q.msg_box", 4, "get tags, size is " + i);
-      return;
-      label187:
-      i = paramList.size();
+      localException.printStackTrace();
     }
+    return "";
   }
 }
 

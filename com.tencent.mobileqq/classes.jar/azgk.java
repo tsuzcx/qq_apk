@@ -1,32 +1,17 @@
-import android.app.Activity;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
 
-final class azgk
-  implements bczp
+class azgk
+  extends azgm
 {
-  azgk(List paramList, Activity paramActivity) {}
+  azgk(azgg paramazgg) {}
   
-  public void a(int paramInt)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    azgj.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_AndroidAppActivity);
-  }
-  
-  public void a(String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      localArrayList.addAll(this.jdField_a_of_type_JavaUtilList);
+    super.a(paramBoolean, paramBundle);
+    this.a.a();
+    if ((azgg.a(this.a)) && (azgg.a(this.a) != null)) {
+      azgg.b(this.a).a();
     }
-    if (paramString != null) {
-      localArrayList.add(paramString);
-    }
-    azgj.a(localArrayList, this.jdField_a_of_type_AndroidAppActivity);
-  }
-  
-  public void b(int paramInt)
-  {
-    azgj.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_AndroidAppActivity);
   }
 }
 

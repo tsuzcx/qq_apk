@@ -1,29 +1,82 @@
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.viola.core.ViolaInstance;
+import com.tencent.viola.core.ViolaInstance.ViolaPageListener;
 
-class ucl
-  implements View.OnClickListener
+public class ucl
+  implements ViolaInstance.ViolaPageListener
 {
-  ucl(ucj paramucj, uci paramuci) {}
+  public ucl(ViolaBaseView paramViolaBaseView) {}
   
-  public void onClick(View paramView)
+  public void onComponentFloatBottom(View paramView, float paramFloat)
   {
-    bcef.b(this.jdField_a_of_type_Ucj.jdField_a_of_type_Uci.a, "P_CliOper", "Pb_account_lifeservice", "", "0X8005731", "0X8005731", 0, 0, "", "", "", "");
-    bcef.b(this.jdField_a_of_type_Ucj.jdField_a_of_type_Uci.a, "CliOper", "", "", "0X800642E", "0X800642E", 0, 0, String.valueOf(this.jdField_a_of_type_Ucj.jdField_a_of_type_Uch.a), "", "", "");
-    if ((this.jdField_a_of_type_Ucj.jdField_a_of_type_Uch == null) || (TextUtils.isEmpty(String.valueOf(this.jdField_a_of_type_Ucj.jdField_a_of_type_Uch.a)))) {}
-    for (;;)
+    if (((ViolaBaseView.a(this.a) instanceof ViolaFragment)) && (((ViolaFragment)ViolaBaseView.a(this.a)).getCommonSuspensionGestureLayout() != null)) {
+      ((ViolaFragment)ViolaBaseView.a(this.a)).getCommonSuspensionGestureLayout().c(paramView, paramFloat);
+    }
+  }
+  
+  public void onComponentFloatCenter(View paramView, float paramFloat)
+  {
+    if (((ViolaBaseView.a(this.a) instanceof ViolaFragment)) && (((ViolaFragment)ViolaBaseView.a(this.a)).getCommonSuspensionGestureLayout() != null)) {
+      ((ViolaFragment)ViolaBaseView.a(this.a)).getCommonSuspensionGestureLayout().b(paramView, paramFloat);
+    }
+  }
+  
+  public void onComponentTopIndex(View paramView, float paramFloat)
+  {
+    if (((ViolaBaseView.a(this.a) instanceof ViolaFragment)) && (((ViolaFragment)ViolaBaseView.a(this.a)).getCommonSuspensionGestureLayout() != null)) {
+      ((ViolaFragment)ViolaBaseView.a(this.a)).getCommonSuspensionGestureLayout().a(paramView, paramFloat);
+    }
+  }
+  
+  public void onDispatchTouchEvent(String paramString, int paramInt1, MotionEvent paramMotionEvent, int paramInt2)
+  {
+    if (paramString.equals(ViolaBaseView.a(this.a).getMasterListRef())) {
+      ViolaBaseView.b(this.a, paramInt2);
+    }
+  }
+  
+  public void onScroll(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
+  {
+    if (paramString.equals(ViolaBaseView.a(this.a).getMasterListRef()))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      ucj.a(this.jdField_a_of_type_Ucj);
+      ViolaBaseView.b(this.a, paramInt5);
+      ViolaBaseView.b(this.a, true);
+      if (ViolaBaseView.a(this.a) != null) {
+        ViolaBaseView.a(this.a).a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramBoolean);
+      }
+    }
+  }
+  
+  public void onScrollStateChanged(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    if (ViolaBaseView.a(this.a) != null) {
+      ViolaBaseView.a(this.a).a(paramString, paramInt1);
+    }
+    if (paramString.equals(ViolaBaseView.a(this.a).getMasterListRef()))
+    {
+      ViolaBaseView.b(this.a, paramInt2);
+      ViolaBaseView.b(this.a, true);
+    }
+  }
+  
+  public void pageOpenSuccess()
+  {
+    ViolaBaseView.a(this.a, 3);
+    ViolaBaseView.e(this.a);
+    ViolaBaseView.f(this.a);
+    if ((!TextUtils.isEmpty(this.a.a)) && (this.a.a.contains("VideoFeeds.js"))) {
+      olh.a(null, null, "0X800AF0E", "0X800AF0E", 0, 0, null, null, null, "" + System.currentTimeMillis(), false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ucl
  * JD-Core Version:    0.7.0.1
  */

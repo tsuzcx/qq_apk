@@ -1,29 +1,101 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-public class apiw
-  extends RecyclerView.ViewHolder
+class apiw
+  implements ITransactionCallback
 {
-  public ViewGroup a;
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public TextView b;
-  public TextView c;
+  apiw(apiu paramapiu, apkn paramapkn, long paramLong) {}
   
-  public apiw(apiq paramapiq, View paramView)
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131364126));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364124));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364128));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131364125));
-    this.b = ((TextView)paramView.findViewById(2131364127));
-    this.c = ((TextView)paramView.findViewById(2131364129));
+    String str = "";
+    for (;;)
+    {
+      synchronized (apiu.a(this.jdField_a_of_type_Apiu))
+      {
+        if (apiu.a(this.jdField_a_of_type_Apiu) != null)
+        {
+          int i = 0;
+          if (i < apiu.a(this.jdField_a_of_type_Apiu).size())
+          {
+            if (((apiz)apiu.a(this.jdField_a_of_type_Apiu).get(i)).jdField_a_of_type_Apkn.a.equals(this.jdField_a_of_type_Apkn.a))
+            {
+              paramArrayOfByte = ((apiz)apiu.a(this.jdField_a_of_type_Apiu).get(i)).jdField_a_of_type_Apix;
+              str = ((apiz)apiu.a(this.jdField_a_of_type_Apiu).get(i)).jdField_a_of_type_Apkn.a;
+              apiu.a(this.jdField_a_of_type_Apiu).remove(i);
+              QLog.i("AREngine_ARCloudFileUpload", 1, "Upload failed. retCode = " + paramInt + ", IP = " + (String)paramHashMap.get("ip") + ", sessionId = " + str);
+              if (paramArrayOfByte != null) {
+                paramArrayOfByte.a(paramInt, str, null);
+              }
+              return;
+            }
+            i += 1;
+          }
+        }
+      }
+      paramArrayOfByte = null;
+    }
+  }
+  
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  {
+    Object localObject2 = null;
+    String str2 = "";
+    Object localObject3 = apiu.a(this.jdField_a_of_type_Apiu);
+    String str1 = str2;
+    Object localObject1 = localObject2;
+    for (;;)
+    {
+      try
+      {
+        if (apiu.a(this.jdField_a_of_type_Apiu) != null)
+        {
+          i = 0;
+          str1 = str2;
+          localObject1 = localObject2;
+          if (i < apiu.a(this.jdField_a_of_type_Apiu).size())
+          {
+            if (!((apiz)apiu.a(this.jdField_a_of_type_Apiu).get(i)).jdField_a_of_type_Apkn.a.equals(this.jdField_a_of_type_Apkn.a)) {
+              continue;
+            }
+            localObject1 = ((apiz)apiu.a(this.jdField_a_of_type_Apiu).get(i)).jdField_a_of_type_Apix;
+            str1 = ((apiz)apiu.a(this.jdField_a_of_type_Apiu).get(i)).jdField_a_of_type_Apkn.a;
+            apiu.a(this.jdField_a_of_type_Apiu).remove(i);
+          }
+        }
+        paramArrayOfByte = apiu.a(this.jdField_a_of_type_Apiu, paramArrayOfByte, this.jdField_a_of_type_Apkn);
+        if (paramArrayOfByte == null)
+        {
+          QLog.i("AREngine_ARCloudFileUpload", 1, "Upload successfully. retCode = " + 9058 + ", IP = " + (String)paramHashMap.get("ip") + ", sessionId = " + str1 + ". deserialize pb failed.");
+          i = 9058;
+          if (localObject1 != null) {
+            ((apix)localObject1).a(i, str1, paramArrayOfByte);
+          }
+          return;
+          i += 1;
+          continue;
+        }
+        QLog.i("AREngine_ARCloudFileUpload", 1, "Upload successfully. retCode = " + 0 + ", IP = " + (String)paramHashMap.get("ip") + ", sessionId = " + str1);
+      }
+      finally {}
+      int i = 0;
+    }
+  }
+  
+  public void onSwitch2BackupChannel() {}
+  
+  public void onTransStart()
+  {
+    QLog.i("AREngine_ARCloudFileUpload", 1, "Upload start. sessionId = " + this.jdField_a_of_type_Apkn.a);
+  }
+  
+  public void onUpdateProgress(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARCloudFileUpload", 2, "onUpdateProgress. sessionId = " + this.jdField_a_of_type_Apkn.a + ". total size = " + this.jdField_a_of_type_Long + ", transfered size = " + paramInt);
+    }
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.gamecenter.share;
 
-import agzi;
-import aham;
+import ahsj;
+import ahtm;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.widget.TextView;
-import atyx;
-import bciz;
+import avem;
+import bdpx;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
 import mqq.util.WeakReference;
@@ -17,18 +17,18 @@ import mqq.util.WeakReference;
 public class GameShareUtil$2$1
   implements Runnable
 {
-  public GameShareUtil$2$1(atyx paramatyx, Drawable paramDrawable) {}
+  public GameShareUtil$2$1(avem paramavem, Drawable paramDrawable) {}
   
   public void run()
   {
     Object localObject1 = (Context)this.this$0.jdField_a_of_type_MqqUtilWeakReference.get();
     TextView localTextView = (TextView)this.this$0.jdField_b_of_type_MqqUtilWeakReference.get();
-    Object localObject2 = (agzi)this.this$0.c.get();
-    if (((localObject1 instanceof Activity)) && (!((Activity)localObject1).isFinishing()) && (localTextView != null) && (localObject2 != null) && (((agzi)localObject2).a() != null) && (((agzi)localObject2).a().a != null) && (((agzi)localObject2).a().a.jdField_f_of_type_Long == this.this$0.jdField_a_of_type_Long) && (((agzi)localObject2).a().a.jdField_f_of_type_Int == this.this$0.jdField_b_of_type_Long))
+    Object localObject2 = (ahsj)this.this$0.c.get();
+    if (((localObject1 instanceof Activity)) && (!((Activity)localObject1).isFinishing()) && (localTextView != null) && (localObject2 != null) && (((ahsj)localObject2).a() != null) && (((ahsj)localObject2).a().a != null) && (((ahsj)localObject2).a().a.jdField_f_of_type_Long == this.this$0.jdField_a_of_type_Long) && (((ahsj)localObject2).a().a.jdField_f_of_type_Int == this.this$0.jdField_b_of_type_Long))
     {
       localObject2 = this.a;
       localObject1 = ((Context)localObject1).getResources();
-      localObject2 = new BitmapDrawable(bciz.a((Drawable)localObject2));
+      localObject2 = new BitmapDrawable(bdpx.a((Drawable)localObject2));
       localTextView.setCompoundDrawablePadding(AIOUtils.dp2px(3.0F, (Resources)localObject1));
       ((Drawable)localObject2).setBounds(0, 0, AIOUtils.dp2px(20.0F, (Resources)localObject1), AIOUtils.dp2px(20.0F, (Resources)localObject1));
       localTextView.setCompoundDrawables((Drawable)localObject2, null, null, null);

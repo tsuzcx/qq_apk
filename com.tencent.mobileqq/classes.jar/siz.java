@@ -1,19 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.widget.TextView;
 
-class siz
-  extends sif
+final class siz
+  extends ClickableSpan
 {
-  siz(sig paramsig) {}
+  siz(TextView paramTextView) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    return 2;
+    this.a.performClick();
   }
   
-  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    sig.a(this.a).d(paramString + "&sourcefrom=6");
+    paramTextPaint.setColor(Color.parseColor("#FF00CAFC"));
   }
 }
 

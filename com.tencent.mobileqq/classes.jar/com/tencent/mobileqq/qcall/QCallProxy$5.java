@@ -1,13 +1,14 @@
 package com.tencent.mobileqq.qcall;
 
-import abwz;
-import amsw;
+import acnh;
 import android.text.TextUtils;
-import avsy;
-import azjg;
-import azjj;
-import bftf;
+import anvk;
+import awyz;
+import bapo;
+import bapr;
+import bhbx;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.PhoneContact;
 import com.tencent.mobileqq.data.QCallRecent;
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ import java.util.List;
 public class QCallProxy$5
   implements Runnable
 {
-  public QCallProxy$5(azjg paramazjg, azjj paramazjj) {}
+  public QCallProxy$5(bapo parambapo, bapr parambapr) {}
   
   public void run()
   {
@@ -30,59 +31,59 @@ public class QCallProxy$5
     int j;
     Object localObject9;
     Object localObject10;
-    label224:
-    label242:
+    label226:
+    label244:
     int m;
     for (;;)
     {
       Object localObject11;
-      synchronized (azjg.a(this.this$0))
+      synchronized (bapo.a(this.this$0))
       {
         Object localObject1 = new ArrayList();
         localObject8 = new ArrayList();
         localObject7 = new ArrayList();
         localObject6 = new ArrayList();
-        localObject5 = (avsy)azjg.a(this.this$0).getManager(11);
-        localObject4 = (amsw)azjg.b(this.this$0).getManager(51);
+        localObject5 = (awyz)bapo.a(this.this$0).getManager(QQManagerFactory.CONTACT_MANAGER);
+        localObject4 = (anvk)bapo.b(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER);
         k = 0;
         i = 0;
         j = k;
         if (localObject5 == null) {
-          break label1088;
+          break label1090;
         }
         j = k;
-        if (!((avsy)localObject5).d()) {
-          break label1088;
+        if (!((awyz)localObject5).d()) {
+          break label1090;
         }
         j = k;
         if (localObject4 == null) {
-          break label1088;
+          break label1090;
         }
-        localObject9 = azjg.a(this.this$0).iterator();
+        localObject9 = bapo.a(this.this$0).iterator();
         if (((Iterator)localObject9).hasNext())
         {
           localObject10 = (QCallRecent)((Iterator)localObject9).next();
           j = i;
           if (localObject10 == null) {
-            break label1227;
+            break label1229;
           }
           j = i;
           if (((QCallRecent)localObject10).uin == null) {
-            break label1227;
+            break label1229;
           }
           j = i;
           if (((QCallRecent)localObject10).uin.length() < 2) {
-            break label1227;
+            break label1229;
           }
           if (((QCallRecent)localObject10).type == 1006)
           {
-            localObject11 = ((avsy)localObject5).c(((QCallRecent)localObject10).uin);
-            if ((localObject11 == null) || (!((amsw)localObject4).b(((PhoneContact)localObject11).uin))) {
-              break label1232;
+            localObject11 = ((awyz)localObject5).c(((QCallRecent)localObject10).uin);
+            if ((localObject11 == null) || (!((anvk)localObject4).b(((PhoneContact)localObject11).uin))) {
+              break label1234;
             }
             j = 1;
             if ((localObject11 == null) || (!TextUtils.isEmpty(((PhoneContact)localObject11).uin))) {
-              break label1237;
+              break label1239;
             }
             k = 1;
             if (j != 0)
@@ -92,27 +93,27 @@ public class QCallProxy$5
             }
             j = i;
             if (k == 0) {
-              break label1227;
+              break label1229;
             }
             ((List)localObject8).add(localObject10);
             i = 1;
-            break label1229;
+            break label1231;
           }
           j = i;
           if (((QCallRecent)localObject10).type != 56938) {
-            break label1227;
+            break label1229;
           }
-          localObject11 = ((avsy)localObject5).b(((QCallRecent)localObject10).uin);
-          if ((localObject11 == null) || (!((amsw)localObject4).b(((PhoneContact)localObject11).uin))) {
-            break label1242;
+          localObject11 = ((awyz)localObject5).b(((QCallRecent)localObject10).uin);
+          if ((localObject11 == null) || (!((anvk)localObject4).b(((PhoneContact)localObject11).uin))) {
+            break label1244;
           }
           j = 1;
-          label325:
+          label327:
           if ((localObject11 == null) || (TextUtils.isEmpty(((PhoneContact)localObject11).uin))) {
-            break label1247;
+            break label1249;
           }
           k = 1;
-          label343:
+          label345:
           if (j != 0)
           {
             ((List)localObject7).add(localObject10);
@@ -120,11 +121,11 @@ public class QCallProxy$5
           }
           j = i;
           if (k == 0) {
-            break label1227;
+            break label1229;
           }
           ((List)localObject6).add(localObject10);
           i = 1;
-          break label1229;
+          break label1231;
         }
         localObject9 = ((List)localObject1).iterator();
         if (!((Iterator)localObject9).hasNext()) {
@@ -133,13 +134,13 @@ public class QCallProxy$5
         localObject4 = (QCallRecent)((Iterator)localObject9).next();
         localObject10 = ((QCallRecent)localObject4).uin;
         this.this$0.a((QCallRecent)localObject4);
-        localObject1 = ((avsy)localObject5).c((String)localObject10);
+        localObject1 = ((awyz)localObject5).c((String)localObject10);
         if (localObject1 == null) {
           continue;
         }
         this.this$0.a((QCallRecent)localObject4);
         localObject11 = ((PhoneContact)localObject1).uin;
-        int[] arrayOfInt = abwz.q;
+        int[] arrayOfInt = acnh.q;
         k = arrayOfInt.length;
         localObject1 = null;
         j = 0;
@@ -152,10 +153,10 @@ public class QCallProxy$5
         else
         {
           if (localObject1 == null) {
-            break label637;
+            break label639;
           }
           if (((QCallRecent)localObject4).lastCallTime <= ((QCallRecent)localObject1).lastCallTime) {
-            break label616;
+            break label618;
           }
           ((QCallRecent)localObject4).uin = ((String)localObject11);
           ((QCallRecent)localObject4).type = ((QCallRecent)localObject1).type;
@@ -169,11 +170,11 @@ public class QCallProxy$5
       }
       j += 1;
       continue;
-      label616:
+      label618:
       j = localObject2.missedCallCount;
       localObject2.missedCallCount = (((QCallRecent)localObject4).missedCallCount + j);
       continue;
-      label637:
+      label639:
       ((QCallRecent)localObject4).uin = ((String)localObject11);
       ((QCallRecent)localObject4).type = 0;
       localObject3 = localObject4;
@@ -189,13 +190,13 @@ public class QCallProxy$5
     while (((Iterator)localObject7).hasNext())
     {
       localObject4 = (QCallRecent)((Iterator)localObject7).next();
-      localObject3 = ((avsy)localObject5).b(((QCallRecent)localObject4).uin);
+      localObject3 = ((awyz)localObject5).b(((QCallRecent)localObject4).uin);
       if (localObject3 != null)
       {
         this.this$0.a((QCallRecent)localObject4);
         localObject8 = ((PhoneContact)localObject3).mobileCode;
         localObject9 = ((PhoneContact)localObject3).uin;
-        localObject10 = abwz.q;
+        localObject10 = acnh.q;
         k = localObject10.length;
         localObject3 = null;
         j = 0;
@@ -243,7 +244,7 @@ public class QCallProxy$5
           }
           localObject4 = (QCallRecent)((Iterator)localObject3).next();
           localObject6 = ((QCallRecent)localObject4).uin;
-          localObject7 = ((avsy)localObject5).b((String)localObject6);
+          localObject7 = ((awyz)localObject5).b((String)localObject6);
           if (localObject7 != null)
           {
             this.this$0.a((QCallRecent)localObject4);
@@ -254,16 +255,16 @@ public class QCallProxy$5
             this.this$0.d((QCallRecent)localObject4);
           }
         }
-        label1088:
+        label1090:
         if ((j != 0) && (this.a != null))
         {
           localObject3 = new ArrayList();
-          localObject4 = azjg.a(this.this$0).iterator();
+          localObject4 = bapo.a(this.this$0).iterator();
           while (((Iterator)localObject4).hasNext())
           {
             localObject5 = (QCallRecent)((Iterator)localObject4).next();
             if ((localObject5 == null) || (((QCallRecent)localObject5).uin == null) || (((QCallRecent)localObject5).uin.length() < 2)) {
-              bftf.a("QCallProxy");
+              bhbx.a("QCallProxy");
             }
             if ((localObject5 != null) && (((QCallRecent)localObject5).uin != null) && (((QCallRecent)localObject5).uin.length() >= 2)) {
               ((List)localObject3).add(localObject5);
@@ -272,22 +273,22 @@ public class QCallProxy$5
           this.a.a((List)localObject3);
         }
         return;
-        label1227:
-        i = j;
         label1229:
+        i = j;
+        label1231:
         break;
-        label1232:
+        label1234:
         j = 0;
-        break label224;
-        label1237:
+        break label226;
+        label1239:
         k = 0;
-        break label242;
-        label1242:
+        break label244;
+        label1244:
         j = 0;
-        break label325;
-        label1247:
+        break label327;
+        label1249:
         k = 0;
-        break label343;
+        break label345;
       }
       j += 1;
     }

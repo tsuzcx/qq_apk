@@ -1,63 +1,77 @@
+import SWEET_NEW_BASE.sweet_req_comm;
+import SWEET_NEW_ICON.lighting_sweet_key_req;
+import SWEET_NEW_ICON.lighting_sweet_key_rsp;
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QUA;
+import cooperation.qzone.QzoneExternalRequest;
 
 public class aozc
+  extends QzoneExternalRequest
 {
-  public int a;
-  public long a;
-  public String a;
-  public HashMap<String, String> a;
-  public boolean a;
-  public long b;
-  public long c;
-  public long d;
+  private lighting_sweet_key_req jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req;
+  private String jdField_a_of_type_JavaLangString;
   
-  public JSONObject a()
+  public aozc() {}
+  
+  public aozc(long paramLong)
   {
-    JSONObject localJSONObject = new JSONObject();
-    String str;
-    for (;;)
-    {
-      try
-      {
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-        {
-          Object localObject = this.jdField_a_of_type_JavaLangString;
-          localJSONObject.put("evt", localObject);
-          localJSONObject.put("index", this.jdField_a_of_type_Int);
-          localJSONObject.put("result", this.jdField_a_of_type_Boolean);
-          localJSONObject.put("startTime", this.jdField_a_of_type_Long);
-          localJSONObject.put("endTime", this.b);
-          localJSONObject.put("costTime", this.c);
-          localJSONObject.put("net", this.d);
-          localObject = new JSONObject();
-          if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-            break;
-          }
-          Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          Map.Entry localEntry = (Map.Entry)localIterator.next();
-          ((JSONObject)localObject).put((String)localEntry.getKey(), localEntry.getValue());
-          continue;
-        }
-        str = "";
-      }
-      catch (JSONException localJSONException)
-      {
-        QLog.e("ArkVipReportItem", 1, "getJsonObject()", localJSONException);
-        return localJSONObject;
-      }
+    super.setHostUin(paramLong);
+    super.setLoginUserId(paramLong);
+    this.needCompress = false;
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req = new lighting_sweet_key_req();
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm = new sweet_req_comm();
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.opuin = paramLong;
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.uin = paramLong;
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.loveuin = 0L;
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.qua = QUA.getQUA3();
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.pf = 1;
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.src = 3;
+    this.jdField_a_of_type_JavaLangString = a();
+  }
+  
+  public static lighting_sweet_key_rsp a(byte[] paramArrayOfByte, String paramString)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
     }
-    localJSONObject.put("param", str);
-    return localJSONObject;
+    try
+    {
+      paramArrayOfByte = (lighting_sweet_key_rsp)decode(paramArrayOfByte, paramString);
+      return paramArrayOfByte;
+    }
+    catch (Throwable paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static String a()
+  {
+    if (TextUtils.isEmpty("SweetQzoneService.lightingSweetKey")) {}
+    String[] arrayOfString;
+    do
+    {
+      return null;
+      arrayOfString = "SweetQzoneService.lightingSweetKey".split("\\.");
+    } while ((arrayOfString == null) || (arrayOfString.length <= 0));
+    return arrayOfString[(arrayOfString.length - 1)];
+  }
+  
+  public String getCmdString()
+  {
+    return "SweetQzoneService.lightingSweetKey";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req;
+  }
+  
+  public String uniKey()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

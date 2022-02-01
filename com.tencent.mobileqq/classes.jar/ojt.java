@@ -1,10 +1,11 @@
+import android.widget.ImageView;
+import android.widget.TextView;
+
 public class ojt
-  extends bkww
 {
-  protected void a(String paramString, long paramLong1, long[] paramArrayOfLong, long paramLong2)
-  {
-    ojq.a().a(paramString, paramLong1, paramArrayOfLong, paramLong2);
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public ojr a;
 }
 
 

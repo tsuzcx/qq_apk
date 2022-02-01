@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.webprocess;
 
 import android.text.TextUtils;
-import bgcw;
-import bgda;
+import bhln;
+import bhlr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -24,7 +24,7 @@ final class WebProcessManager$6
     {
       if (WebProcessManager.a() == -1)
       {
-        Object localObject = new File(BaseApplicationImpl.getContext().getFilesDir(), bgcw.e.a);
+        Object localObject = new File(BaseApplicationImpl.getContext().getFilesDir(), bhln.e.a);
         if ((localObject == null) || (!((File)localObject).exists()))
         {
           WebProcessManager.a(-1);

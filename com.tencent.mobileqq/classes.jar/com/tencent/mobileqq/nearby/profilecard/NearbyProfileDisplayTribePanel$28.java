@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import awzr;
-import bcef;
+import ayfx;
+import bdla;
 
 public class NearbyProfileDisplayTribePanel$28
   implements Runnable
 {
-  public NearbyProfileDisplayTribePanel$28(awzr paramawzr, int paramInt) {}
+  public NearbyProfileDisplayTribePanel$28(ayfx paramayfx, int paramInt) {}
   
   public void run()
   {
-    bcef.b(this.this$0.a.app, "CliOper", "", "", awzr.b[(this.a - 1)], awzr.b[(this.a - 1)], 0, 0, "", "", "", "");
-    bcef.b(this.this$0.a.app, "dc00898", "", "", "0X800698A", "0X800698A", 0, 0, "", "", "", "");
+    bdla.b(this.this$0.a.app, "CliOper", "", "", ayfx.b[(this.a - 1)], ayfx.b[(this.a - 1)], 0, 0, "", "", "", "");
+    bdla.b(this.this$0.a.app, "dc00898", "", "", "0X800698A", "0X800698A", 0, 0, "", "", "", "");
   }
 }
 

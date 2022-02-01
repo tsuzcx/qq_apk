@@ -1,19 +1,19 @@
-public abstract class uvx
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+
+public class uvx
 {
-  private int a;
+  public final int a;
+  public long a;
+  public BaseArticleInfo a;
   
   public uvx(int paramInt)
   {
-    this.a = paramInt;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  abstract String a();
-  
-  abstract String b();
-  
-  public String c()
+  public String toString()
   {
-    return uyo.a(this.a);
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo + "_duration : " + this.jdField_a_of_type_Long;
   }
 }
 

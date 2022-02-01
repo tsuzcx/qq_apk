@@ -1,5 +1,6 @@
 import android.view.View;
 import com.dataline.activities.LiteActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.DataLineMsgSet;
@@ -8,9 +9,9 @@ import java.util.Iterator;
 import java.util.List;
 
 public class ax
-  implements bjoe
+  implements bkzq
 {
-  public ax(LiteActivity paramLiteActivity, long paramLong, DataLineMsgSet paramDataLineMsgSet, List paramList, bjnw parambjnw) {}
+  public ax(LiteActivity paramLiteActivity, long paramLong, DataLineMsgSet paramDataLineMsgSet, List paramList, bkzi parambkzi) {}
   
   public void OnClick(View paramView, int paramInt)
   {
@@ -19,11 +20,11 @@ public class ax
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bjnw.cancel();
+      this.jdField_a_of_type_Bkzi.cancel();
       return;
       if (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(this.jdField_a_of_type_Long))
       {
-        paramView = (amqd)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getBusinessHandler(8);
+        paramView = (ansr)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
         this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.setPaused(false);
         if (paramView.a(this.jdField_a_of_type_JavaUtilList))
         {
@@ -42,7 +43,7 @@ public class ax
         }
         else
         {
-          aszk.a(2131693467);
+          audr.a(2131693648);
         }
       }
     }

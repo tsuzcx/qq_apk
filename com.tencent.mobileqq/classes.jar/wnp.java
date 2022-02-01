@@ -1,43 +1,62 @@
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 class wnp
-  implements wof
+  extends SimpleObserver<List<wzh>>
 {
-  wnp(wnn paramwnn) {}
+  wnp(wno paramwno, wns paramwns, wly paramwly) {}
   
-  public void a()
+  public void a(List<wzh> paramList)
   {
-    wnn.a(this.a, this.a.a.a(wnn.a(this.a), 5));
-    List localList = wnn.a(this.a).a;
-    if ((wnn.a(this.a) == null) && (localList.size() > 0)) {
-      wnn.a(this.a, ((woe)localList.get(0)).a);
+    super.onNext(paramList);
+    ArrayList localArrayList;
+    int i;
+    wzh localwzh;
+    if (this.jdField_a_of_type_Wns != null)
+    {
+      localArrayList = new ArrayList();
+      if ((paramList != null) && (!paramList.isEmpty()))
+      {
+        Collections.sort(paramList, new wnq(this));
+        paramList = paramList.iterator();
+        i = 0;
+        if (paramList.hasNext())
+        {
+          localwzh = (wzh)paramList.next();
+          if (i < wno.a(this.jdField_a_of_type_Wno)) {
+            break label100;
+          }
+        }
+      }
+      this.jdField_a_of_type_Wns.a(this.jdField_a_of_type_Wly, localArrayList);
     }
-    label199:
+    else
+    {
+      return;
+    }
+    label100:
+    if ((localwzh != null) && (!localwzh.jdField_a_of_type_Boolean) && (localwzh.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null))
+    {
+      localArrayList.add(localwzh.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+      i += 1;
+    }
     for (;;)
     {
-      xvv.d("Q.qqstory.player.data.SimpleDataProvider", "current group:%s", new Object[] { wnn.a(this.a) });
-      wnn.a(this.a).a(wnn.a(this.a), "");
-      return;
-      int i = 0;
-      for (;;)
-      {
-        if (i >= localList.size()) {
-          break label199;
-        }
-        if (((woe)localList.get(i)).a.equals(wnn.a(this.a)))
-        {
-          if (localList.size() <= i + 1) {
-            break;
-          }
-          wnn.a(this.a, ((woe)localList.get(i + 1)).a);
-          break;
-        }
-        i += 1;
-      }
+      break;
     }
   }
   
-  public void a(wod paramwod, String paramString, boolean paramBoolean) {}
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    if (this.jdField_a_of_type_Wns != null) {
+      this.jdField_a_of_type_Wns.a(this.jdField_a_of_type_Wly, paramError);
+    }
+  }
 }
 
 

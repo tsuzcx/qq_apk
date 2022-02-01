@@ -1,9 +1,33 @@
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
+import com.tencent.mobileqq.troop.widget.LoadMoreXListView;
+
 public class bftj
+  implements TextWatcher
 {
-  public int a;
-  public String a;
-  public int b = -3000;
-  public int c;
+  public bftj(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
+  
+  public void afterTextChanged(Editable paramEditable)
+  {
+    if (paramEditable.length() == 0)
+    {
+      this.a.e();
+      this.a.a(false);
+      return;
+    }
+    this.a.jdField_a_of_type_Bfts.a();
+    this.a.jdField_a_of_type_Bfts.notifyDataSetChanged();
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetLoadMoreXListView.a.a(false);
+    this.a.b = 0;
+    this.a.a(true);
+    paramEditable = paramEditable.toString();
+    this.a.b(paramEditable);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

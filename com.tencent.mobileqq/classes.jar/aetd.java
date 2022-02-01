@@ -1,43 +1,43 @@
-import android.graphics.Bitmap;
 import android.view.View;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.activity.RecentLoginDevActivity;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class aetd
-  implements bamo
+  implements bkzq
 {
-  public aetd(VisitorsActivity paramVisitorsActivity) {}
+  public aetd(RecentLoginDevActivity paramRecentLoginDevActivity, String paramString, ArrayList paramArrayList, int paramInt) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void OnClick(View paramView, int paramInt)
   {
-    int i = 0;
-    if ((paramBitmap != null) && (paramInt2 == 200))
+    switch (paramInt)
     {
-      paramBitmap = this.a.a;
-      if (paramBitmap == null) {
-        break label108;
-      }
-      paramInt2 = paramBitmap.getChildCount();
     }
     for (;;)
     {
-      if (i < paramInt2)
+      if ((RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity) != null) && (RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity).isShowing()) && (!this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity.isFinishing()))
       {
-        Object localObject = paramBitmap.getChildAt(i).getTag();
-        if ((localObject != null) && ((localObject instanceof aetu)))
-        {
-          localObject = (aetu)localObject;
-          if ((((aetu)localObject).b == paramInt1) && (((aetu)localObject).e != null)) {
-            VisitorsActivity.a(this.a, ((aetu)localObject).e, paramInt1);
-          }
-        }
-        i += 1;
+        RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity).dismiss();
+        RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity).cancel();
+        RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity, null);
+      }
+      return;
+      if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity))
+      {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity, this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity.getString(2131692125), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity.getTitleBarHeight());
       }
       else
       {
-        return;
-        label108:
-        paramInt2 = 0;
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.devlock.RecentLoginDevActivity", 2, "OnClick begin to delHistoryDev");
+        }
+        if (asll.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity.app, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int)) {
+          RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity);
+        } else if (QLog.isColorLevel()) {
+          QLog.d("Q.devlock.RecentLoginDevActivity", 2, "showDelDevActionSheet.OnClick delHistoryDev failed");
+        }
       }
     }
   }

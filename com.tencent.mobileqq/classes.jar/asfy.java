@@ -1,232 +1,35 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.QQFavProxy.1;
-import com.tencent.mobileqq.filemanager.app.QQFavProxy.2;
-import com.tencent.mobileqq.filemanager.app.QQFavProxy.3;
-import com.tencent.mobileqq.filemanager.app.QQFavProxy.4;
-import com.tencent.mobileqq.filemanager.data.FavFileInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
 
-public class asfy
+class asfy
+  extends GestureDetector.SimpleOnGestureListener
 {
-  static String jdField_a_of_type_JavaLangString = "QQFavProxy<FileAssistant>";
-  static String b = "FavFileS ";
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private HashMap<Long, asfz> jdField_a_of_type_JavaUtilHashMap;
-  private HashSet<asga> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  asfy(asfx paramasfx) {}
   
-  public asfy(QQAppInterface paramQQAppInterface)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    if ((!this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.b()) && (this.a.d != -1)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setTapPos(this.a.d);
+    }
+    return false;
   }
   
-  private void b(long paramLong, List<FavFileInfo> paramList, Bundle paramBundle)
+  public final boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    Object localObject = jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder().append(b).append("onGettedFileList. reqTimeStamp:").append(paramLong).append(" size:");
-    int i;
-    if (paramList != null)
-    {
-      i = paramList.size();
-      QLog.i((String)localObject, 1, i);
-      if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-        if (paramBundle == null) {
-          break label257;
-        }
-      }
-    }
-    label257:
-    for (boolean bool = paramBundle.getBoolean("fecth_operate_end");; bool = true)
-    {
-      localObject = (asfz)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-      if (localObject == null) {}
-      do
-      {
-        return;
-        i = 0;
-        break;
-        if (((asfz)localObject).jdField_a_of_type_JavaUtilList == null) {
-          ((asfz)localObject).jdField_a_of_type_JavaUtilList = new ArrayList();
-        }
-        if (bool)
-        {
-          this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramLong));
-          if (paramList != null) {
-            ((asfz)localObject).jdField_a_of_type_JavaUtilList.addAll(paramList);
-          }
-          if (paramBundle != null) {
-            ((asfz)localObject).jdField_a_of_type_Long = paramBundle.getLong("resultTimestamp");
-          }
-          ((asfz)localObject).a(0, ((asfz)localObject).jdField_a_of_type_JavaUtilList, paramBundle);
-          return;
-        }
-        QLog.i(jdField_a_of_type_JavaLangString, 1, b + "onGettedFileList. fav is getting and waiting");
-        if (paramList != null) {
-          ((asfz)localObject).jdField_a_of_type_JavaUtilList.addAll(paramList);
-        }
-      } while (paramBundle == null);
-      ((asfz)localObject).jdField_a_of_type_Long = paramBundle.getLong("resultTimestamp");
-      return;
-    }
+    return false;
   }
   
-  public long a(long paramLong, List<FavFileInfo> paramList)
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
-    {
-      asfz localasfz = (asfz)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-      if (paramList != null) {
-        paramList.addAll(localasfz.jdField_a_of_type_JavaUtilList);
-      }
-      if (localasfz != null) {
-        return localasfz.jdField_a_of_type_Long;
-      }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.b()) || (Math.abs(paramFloat1) <= Math.abs(paramFloat2)) || (this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.c()) || (this.a.c) || (Math.abs(paramFloat1) <= this.a.jdField_a_of_type_Float) || ((paramFloat1 < 0.0F) && (this.a.jdField_a_of_type_Int == 2))) {}
+    while ((paramFloat1 > 0.0F) && (this.a.jdField_a_of_type_Int == 1)) {
+      return false;
     }
-    return 0L;
-  }
-  
-  public void a(long paramLong)
-  {
-    QLog.i(jdField_a_of_type_JavaLangString, 1, b + "cancelGetFileList. reqTimeStamp:" + paramLong);
-    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramLong));
-    }
-  }
-  
-  public void a(long paramLong, String paramString)
-  {
-    QLog.i(jdField_a_of_type_JavaLangString, 1, b + "onFileDownloaded. favId:" + paramLong + " strSavePath:" + paramString + "lz:" + this.jdField_a_of_type_JavaUtilHashSet.size());
-    if (this.jdField_a_of_type_JavaUtilHashSet.size() == 0) {}
-    for (;;)
-    {
-      return;
-      Object localObject = Looper.getMainLooper();
-      if (Thread.currentThread() != ((Looper)localObject).getThread())
-      {
-        new Handler((Looper)localObject).post(new QQFavProxy.4(this, paramLong, paramString));
-        return;
-      }
-      localObject = this.jdField_a_of_type_JavaUtilHashSet.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((asga)((Iterator)localObject).next()).a(paramLong, paramString);
-      }
-    }
-  }
-  
-  public void a(long paramLong, String paramString, int paramInt)
-  {
-    int i = 0;
-    QLog.i(jdField_a_of_type_JavaLangString, 1, b + "onFileThumbUpdated. favId:" + paramLong + " strThumbPath:" + paramString + " format:" + paramInt + " lz:" + this.jdField_a_of_type_JavaUtilHashSet.size());
-    if (this.jdField_a_of_type_JavaUtilHashSet.size() == 0) {}
-    for (;;)
-    {
-      return;
-      if (paramInt == 64) {}
-      for (;;)
-      {
-        localObject = Looper.getMainLooper();
-        if (Thread.currentThread() == ((Looper)localObject).getThread()) {
-          break;
-        }
-        new Handler((Looper)localObject).post(new QQFavProxy.3(this, paramLong, i, paramString));
-        return;
-        if (paramInt == 128) {
-          i = 1;
-        } else if (paramInt == 320) {
-          i = 2;
-        }
-      }
-      Object localObject = this.jdField_a_of_type_JavaUtilHashSet.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((asga)((Iterator)localObject).next()).a(paramLong, i, paramString);
-      }
-    }
-  }
-  
-  public void a(long paramLong, List<FavFileInfo> paramList, Bundle paramBundle)
-  {
-    new Handler(Looper.getMainLooper()).post(new QQFavProxy.1(this, paramLong, paramList, paramBundle));
-  }
-  
-  public void a(long paramLong, boolean paramBoolean, Bundle paramBundle, asfz paramasfz)
-  {
-    QLog.i(jdField_a_of_type_JavaLangString, 1, b + "getFileList. lastTimestamp:" + paramLong);
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    }
-    if (paramasfz != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), paramasfz);
-    }
-    bkox.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), paramLong, Boolean.valueOf(paramBoolean), paramBundle);
-  }
-  
-  public void a(asga paramasga)
-  {
-    if (paramasga == null) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilHashSet.add(paramasga);
-  }
-  
-  public void a(FavFileInfo paramFavFileInfo, int paramInt)
-  {
-    int i = 64;
-    if (paramInt == 0) {}
-    for (;;)
-    {
-      QLog.i(jdField_a_of_type_JavaLangString, 1, b + "downloadThumb. favId:" + paramFavFileInfo.jdField_a_of_type_Long + " format:" + i);
-      bkox.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), paramFavFileInfo, i);
-      return;
-      if (paramInt == 1) {
-        i = 128;
-      } else if (paramInt == 2) {
-        i = 320;
-      } else if (paramInt == 3) {
-        i = 640;
-      } else if (paramInt == 4) {
-        i = 1024;
-      }
-    }
-  }
-  
-  public void a(List<FavFileInfo> paramList, String paramString, int paramInt, Bundle paramBundle)
-  {
-    QLog.i(jdField_a_of_type_JavaLangString, 1, b + "sendFavFiles. size:" + paramList.size() + " strToUin:" + paramString + " toUinType:" + paramInt);
-    bkox.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramList, paramString, paramInt);
-  }
-  
-  public void a(boolean paramBoolean, Bundle paramBundle)
-  {
-    String str = "";
-    if (paramBundle != null) {
-      str = paramBundle.getString("delete_favids");
-    }
-    QLog.i(jdField_a_of_type_JavaLangString, 1, b + "onFileListRefreshed. bSuc:" + paramBoolean + " delFavIds:" + str);
-    if (this.jdField_a_of_type_JavaUtilHashSet.size() == 0) {
-      return;
-    }
-    new Handler(Looper.getMainLooper()).post(new QQFavProxy.2(this, paramBoolean, paramBundle));
-  }
-  
-  public boolean a(Bundle paramBundle)
-  {
-    QLog.i(jdField_a_of_type_JavaLangString, 1, b + "refreshList.");
-    return bkox.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), paramBundle);
-  }
-  
-  public void b(asga paramasga)
-  {
-    if (paramasga == null) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilHashSet.remove(paramasga);
+    int i = this.a.d;
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setSrcPos(i);
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.c();
+    return false;
   }
 }
 

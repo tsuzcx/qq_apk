@@ -1,24 +1,18 @@
-import android.view.View;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.concurrent.atomic.AtomicBoolean;
 
-class wzt
-  implements bjoe
+public final class wzt
+  extends vzj
 {
-  wzt(wzo paramwzo, StoryVideoItem paramStoryVideoItem, AtomicBoolean paramAtomicBoolean, bjnw parambjnw) {}
+  public int a;
+  public StoryVideoItem a;
+  public String a;
+  public String b;
   
-  public void OnClick(View paramView, int paramInt)
+  public wzt(String paramString, int paramInt, StoryVideoItem paramStoryVideoItem)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-      wzo.a(this.jdField_a_of_type_Wzo, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
   }
 }
 

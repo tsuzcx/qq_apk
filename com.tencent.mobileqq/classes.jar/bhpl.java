@@ -1,31 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.AuthorityAccountView;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class bhpl
-  implements View.OnClickListener
 {
-  public bhpl(AuthorityAccountView paramAuthorityAccountView, String paramString) {}
-  
-  public void onClick(View paramView)
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10)
   {
-    if ((AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView) instanceof AuthorityActivity)) {
-      ((AuthorityActivity)AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView)).a(this.jdField_a_of_type_JavaLangString, true);
-    }
-    for (;;)
-    {
-      if (AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView) != null) {
-        AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView).dismiss();
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView) instanceof QuickLoginAuthorityActivity)) {
-        ((QuickLoginAuthorityActivity)AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView)).a(this.jdField_a_of_type_JavaLangString, true);
-      }
-    }
+    paramString6 = new StringBuilder();
+    paramString6.append(paramString1).append("|");
+    paramString6.append(paramString2).append("|");
+    paramString6.append(paramString3).append("|");
+    paramString6.append(paramString4).append("|");
+    paramString6.append(paramString5).append("|");
+    paramString6.append(paramString7).append("|");
+    paramString6.append(paramString8).append("|");
+    paramString6.append(paramString9).append("|");
+    paramString6.append(paramString10);
+    bdka.a(null, "sendtdbank|b_sng_qqvip_vas_status_report|vas_errorcode_report", paramString6.toString(), true);
   }
 }
 

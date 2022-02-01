@@ -1,24 +1,14 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-
-public class aton
-  implements Handler.Callback
+class aton
+  extends atob
 {
-  public aton(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public aton(atno paramatno)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) && (this.a.jdField_a_of_type_Atov != null)) {
-      this.a.jdField_a_of_type_Atov.a();
-    }
-    return true;
+    super(paramatno);
+  }
+  
+  protected String a()
+  {
+    return "StateSaveToWeiYunByPC";
   }
 }
 

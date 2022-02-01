@@ -1,74 +1,100 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
-import com.tencent.mobileqq.widget.CircleProgress;
+import android.content.Context;
 import com.tencent.qphone.base.util.QLog;
 
 public class apbv
-  implements View.OnTouchListener
+  implements apfi
 {
-  public apbv(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
+  public static int a;
+  private long jdField_a_of_type_Long;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private apbw jdField_a_of_type_Apbw;
+  private apfg jdField_a_of_type_Apfg;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int = 0;
+  private boolean jdField_b_of_type_Boolean = true;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  static
   {
-    boolean bool = true;
-    if (!this.a.jdField_c_of_type_Boolean) {
-      bool = false;
+    jdField_a_of_type_Int = 8;
+  }
+  
+  public apbv(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Apfg = new apfg();
+  }
+  
+  private void b(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
+  {
+    long l;
+    if (this.jdField_a_of_type_Long != 0L)
+    {
+      l = System.currentTimeMillis();
+      if (l - this.jdField_a_of_type_Long >= 1000L) {}
     }
+    label35:
+    label241:
     do
     {
-      return bool;
-      if ((paramView == this.a.jdField_a_of_type_AndroidWidgetImageView) || (paramView == this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress)) {}
-      switch (paramMotionEvent.getAction())
+      return;
+      this.jdField_a_of_type_Long = l;
+      if (paramFloat2 > jdField_a_of_type_Int) {}
+      for (int i = 1;; i = 2)
       {
-      case 2: 
-      default: 
-        return false;
-      case 0: 
-        this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
-        this.a.jdField_b_of_type_AndroidWidgetButton.setVisibility(4);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("0\"");
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-        this.a.jdField_c_of_type_AndroidWidgetTextView.setVisibility(4);
-        this.a.d.setVisibility(4);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-        this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setVisibility(0);
-        this.a.e.setVisibility(4);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(0.0F);
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a = System.currentTimeMillis();
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.e();
-        if (this.a.jdField_b_of_type_Int == 1) {}
-        for (int i = 0;; i = 1)
-        {
-          bcef.b(null, "dc00898", "", "", "0X8007106", "0X8007106", i, 0, "", "", "", "");
-          return true;
+        if (QLog.isDebugVersion()) {
+          QLog.d("ARPhonePoseDetectManager", 1, "ARPhonePoseDetectManager current value:=" + this.jdField_b_of_type_Int + ";nextPhonepose:=" + i);
         }
+        if (this.jdField_b_of_type_Int == i) {
+          break;
+        }
+        QLog.i("ARPhonePoseDetectManager", 1, "detectPhonePose. data = " + paramFloat1 + "," + paramFloat2 + "," + paramFloat3 + "," + paramLong + ", mPhonePose = " + this.jdField_b_of_type_Int + ", phonePose = " + i);
+        if ((i == 2) && (this.jdField_b_of_type_Boolean)) {
+          this.jdField_b_of_type_Boolean = false;
+        }
+        this.jdField_b_of_type_Int = i;
+        if (this.jdField_a_of_type_Apbw == null) {
+          break;
+        }
+        if (this.jdField_b_of_type_Int != 1) {
+          break label241;
+        }
+        this.jdField_a_of_type_Apbw.a(true);
+        return;
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
+        break label35;
       }
-      if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a()) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("DynamicAvatarRecordActivity", 2, "ACTION_UP, current state is already preview!");
-    return true;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.e();
-    }
-    if (System.currentTimeMillis() - this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a < 500L)
+    } while (this.jdField_b_of_type_Int != 2);
+    this.jdField_a_of_type_Apbw.a(false);
+  }
+  
+  public void a()
+  {
+    if (!this.jdField_a_of_type_Boolean)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.b(false);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.d();
-      DynamicAvatarRecordActivity.a(this.a);
-      return true;
+      this.jdField_a_of_type_Apfg.a(this.jdField_a_of_type_AndroidContentContext, this);
+      this.jdField_a_of_type_Boolean = true;
+      return;
     }
-    DynamicAvatarRecordActivity.b(this.a);
-    return true;
+    this.jdField_a_of_type_Apfg.b();
+    this.jdField_b_of_type_Int = 0;
+  }
+  
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
+  {
+    b(paramFloat1, paramFloat2, paramFloat3, paramLong);
+  }
+  
+  public void a(apbw paramapbw)
+  {
+    this.jdField_a_of_type_Apbw = paramapbw;
+  }
+  
+  public void a(float[] paramArrayOfFloat) {}
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Apfg.c();
+    this.jdField_b_of_type_Int = 0;
   }
 }
 

@@ -1,15 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.TalkBack.Proxy;
 
-class bdip
-  implements DialogInterface.OnClickListener
+public final class bdip
+  implements IMCoreProxyRoute.TalkBack.Proxy
 {
-  bdip(bdio parambdio) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean getTalkBackStatus()
   {
-    bdid.a(this.a.a).finish();
+    return AppSetting.c;
   }
 }
 

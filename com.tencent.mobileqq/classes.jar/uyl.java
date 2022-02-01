@@ -1,14 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
+import android.support.v7.widget.RecyclerView.Recycler;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class uyl
-  implements DialogInterface.OnShowListener
+public class uyl
+  extends StaggeredGridLayoutManager
 {
-  uyl(uwy paramuwy) {}
-  
-  public void onShow(DialogInterface paramDialogInterface)
+  public uyl(int paramInt1, int paramInt2)
   {
-    uyd.a(this.a);
+    super(paramInt1, paramInt2);
+  }
+  
+  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  {
+    try
+    {
+      super.onLayoutChildren(paramRecycler, paramState);
+      return;
+    }
+    catch (Exception paramRecycler)
+    {
+      vmp.d("WSStaggeredGridLayoutManager", "onLayoutChildren exception: " + paramRecycler.getLocalizedMessage());
+    }
+  }
+  
+  public void scrollToPosition(int paramInt)
+  {
+    try
+    {
+      super.scrollToPosition(paramInt);
+      EventCollector.getInstance().onRecyclerViewScrollToPosition(this);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        vmp.d("WSStaggeredGridLayoutManager", "scrollToPosition exception: " + localException.getLocalizedMessage());
+      }
+    }
   }
 }
 

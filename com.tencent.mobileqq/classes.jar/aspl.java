@@ -1,33 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.support.v4.app.FragmentActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class aspl
-  implements View.OnClickListener
+public class aspl
+  implements CompoundButton.OnCheckedChangeListener
 {
-  aspl(FileManagerEntity paramFileManagerEntity, asqp paramasqp) {}
+  public aspl(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    try
+    ExtendFriendProfileEditFragment.a(this.a.getActivity().app, paramBoolean, new aspm(this, paramBoolean));
+    if (paramBoolean) {}
+    for (String str = "0X8009F0F";; str = "0X8009F10")
     {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-      localQQAppInterface.getFileManagerEngine().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin);
-      aszk.d(BaseActivity.sTopActivity.getString(2131692493));
-      if ((this.jdField_a_of_type_Asqp != null) && (this.jdField_a_of_type_Asqp.c())) {
-        aszt.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-      }
-      label70:
-      EventCollector.getInstance().onViewClicked(paramView);
+      bdla.b(this.a.getActivity().app, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
-    }
-    catch (Exception localException)
-    {
-      break label70;
     }
   }
 }

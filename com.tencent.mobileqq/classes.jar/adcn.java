@@ -1,25 +1,36 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class adcn
-  implements Comparator<PhoneContact>
 {
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  private static Map<String, adab> a;
+  
+  public static Map<String, adab> a()
   {
-    boolean bool1 = TextUtils.isEmpty(paramPhoneContact1.pinyinFirst);
-    boolean bool2 = TextUtils.isEmpty(paramPhoneContact2.pinyinFirst);
-    if ((bool1) || (bool2))
+    if (a == null) {}
+    try
     {
-      if ((bool1) && (bool2)) {
-        return 0;
+      if (a == null)
+      {
+        HashMap localHashMap = new HashMap();
+        localHashMap.putAll(adcm.a());
+        localHashMap.put("config", new adab("config", 3, 0, adci.class));
+        localHashMap.put("setShareInfo", new adab("setShareInfo", 25, 0, adcj.class));
+        localHashMap.put("closeWebview", new adab("closeWebview", 2, 0, adcj.class));
+        localHashMap.put("refreshTitle", new adab("refreshTitle", 22, 0, adcj.class));
+        localHashMap.put("setShareListener", new adab("setShareListener", 26, 0, adcj.class));
+        localHashMap.put("lightappGetSDKVersion", new adab("lightappGetSDKVersion", 13, 0, aqab.class));
+        localHashMap.put("lightappShareCallback", new adab("lightappShareCallback", 15, 0, aqab.class));
+        localHashMap.put("lightappShareMessage", new adab("lightappShareMessage", 16, 0, aqab.class));
+        localHashMap.put("lightappOpenApp", new adab("lightappOpenApp", 14, 0, aqab.class));
+        localHashMap.put("lightappDisableLongPress", new adab("lightappDisableLongPress", 11, 0, aqab.class));
+        localHashMap.put("lightappDisableWebViewLongPress", new adab("lightappDisableWebViewLongPress", 12, 0, aqab.class));
+        a = Collections.unmodifiableMap(localHashMap);
       }
-      if (bool2) {
-        return -1;
-      }
-      return 1;
+      return a;
     }
-    return paramPhoneContact1.pinyinFirst.toLowerCase().charAt(0) - paramPhoneContact2.pinyinFirst.toLowerCase().charAt(0);
+    finally {}
   }
 }
 

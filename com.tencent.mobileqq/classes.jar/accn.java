@@ -1,36 +1,20 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0xc1.submsgtype0xc1.MsgBody;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.gdtad.api.motivebrowsing.GdtMotiveBrowsingDialog.Companion.startMotiveBrowsingDialog.1;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class accn
-  implements abzb
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gdtad/api/motivebrowsing/GdtMotiveBrowsingDialog$Companion;", "", "()V", "TAG", "", "startMotiveBrowsingDialog", "", "activity", "Landroid/app/Activity;", "data", "Lcom/tencent/gdtad/api/motivevideo/GdtMotiveVideoPageData;", "intent", "Landroid/content/Intent;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class accn
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
+  public final void a(@NotNull Activity paramActivity, @NotNull GdtMotiveVideoPageData paramGdtMotiveVideoPageData, @NotNull Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("QAV.Random.push", 2, "[random room owner] onLinePush receive 0x210_0xc1");
-    }
-    try
-    {
-      submsgtype0xc1.MsgBody localMsgBody = new submsgtype0xc1.MsgBody();
-      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-      paramQQAppInterface.getGAudioHandler().a(localMsgBody);
-      return;
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QAV.Random.push", 2, "[random room owner] onLinePush 0x210_0xc1 push exception", paramQQAppInterface);
-    }
-  }
-  
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
-  {
-    a(paramabxc.a(), paramMsgType0x210);
-    return null;
+    Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
+    Intrinsics.checkParameterIsNotNull(paramGdtMotiveVideoPageData, "data");
+    Intrinsics.checkParameterIsNotNull(paramIntent, "intent");
+    paramActivity.runOnUiThread((Runnable)new GdtMotiveBrowsingDialog.Companion.startMotiveBrowsingDialog.1(paramActivity, paramGdtMotiveVideoPageData, paramIntent));
   }
 }
 

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.util;
 
-import bfro;
-import bfrp;
+import bhaf;
+import bhag;
 import com.tencent.mobileqq.data.Setting;
 
 public class QQAvatarFHDDecoder$1$1
   implements Runnable
 {
-  public QQAvatarFHDDecoder$1$1(bfrp parambfrp, Setting paramSetting) {}
+  public QQAvatarFHDDecoder$1$1(bhag parambhag, Setting paramSetting) {}
   
   public void run()
   {
-    if (bfro.a(this.jdField_a_of_type_Bfrp.a)) {
+    if (bhaf.a(this.jdField_a_of_type_Bhag.a)) {
       return;
     }
-    this.jdField_a_of_type_Bfrp.a.a(this.jdField_a_of_type_ComTencentMobileqqDataSetting);
+    this.jdField_a_of_type_Bhag.a.a(this.jdField_a_of_type_ComTencentMobileqqDataSetting);
   }
 }
 

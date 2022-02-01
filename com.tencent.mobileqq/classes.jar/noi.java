@@ -1,28 +1,19 @@
-import com.tencent.biz.common.offline.BidDownloader;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.avgame.gamelogic.data.RoomInfo;
+import com.tencent.avgame.ui.AVGameActivity;
 
 public class noi
-  extends AbsPreDownloadTask
+  extends nrn
 {
-  public BidDownloader a;
+  public noi(AVGameActivity paramAVGameActivity) {}
   
-  public noi(QQAppInterface paramQQAppInterface, String paramString, BidDownloader paramBidDownloader)
+  public void a(boolean paramBoolean, int paramInt, String paramString, RoomInfo paramRoomInfo, byte[] paramArrayOfByte, long paramLong)
   {
-    super(paramQQAppInterface, paramString);
-    this.a = paramBidDownloader;
+    AVGameActivity.a(this.a, true, paramInt, paramString, paramRoomInfo, paramArrayOfByte, paramLong);
   }
   
-  public void realCancel()
+  public void b(boolean paramBoolean, int paramInt, String paramString, RoomInfo paramRoomInfo, byte[] paramArrayOfByte, long paramLong)
   {
-    QLog.i(nof.a, 1, "cancel predown bid=" + this.a.a);
-  }
-  
-  public void realStart()
-  {
-    QLog.i(nof.a, 1, "start predown bid=" + this.a.a);
-    this.a.a();
+    AVGameActivity.a(this.a, false, paramInt, paramString, paramRoomInfo, paramArrayOfByte, paramLong);
   }
 }
 

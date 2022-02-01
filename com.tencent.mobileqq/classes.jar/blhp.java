@@ -1,20 +1,22 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import android.os.Handler;
+import android.view.GestureDetector;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
 
-final class blhp
-  implements DialogInterface.OnClickListener
+class blhp
+  implements blhm
 {
-  blhp(int paramInt, Activity paramActivity) {}
+  private final GestureDetector a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public blhp(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener, Handler paramHandler)
   {
-    if (blho.b(this.jdField_a_of_type_Int))
-    {
-      blho.a(this.jdField_a_of_type_AndroidAppActivity, null, false);
-      return;
-    }
-    blho.b(this.jdField_a_of_type_AndroidAppActivity, "mvip.n.a.zcwy_popup", false);
+    this.a = new GestureDetector(paramContext, paramOnGestureListener, paramHandler);
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    return this.a.onTouchEvent(paramMotionEvent);
   }
 }
 

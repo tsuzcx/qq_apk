@@ -1,31 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class afbl
-  implements DialogInterface.OnClickListener
+public class afbl
+  implements View.OnClickListener
 {
-  afbl(afbj paramafbj) {}
+  public afbl(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    try
+    if (this.a.isFinishing()) {}
+    for (;;)
     {
-      if ((afbj.a(this.a) != null) && (afbj.a(this.a).isShowing())) {
-        afbj.a(this.a).dismiss();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("intimate_relationship", 2, "disband cancel");
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      for (;;)
+      this.a.c = false;
+      if (this.a.a != null)
       {
-        paramDialogInterface.printStackTrace();
+        this.a.a.a(4);
+        this.a.d();
+        this.a.c();
       }
+      if (awtz.a().c()) {
+        awtz.a().f(this.a.app);
+      }
+      TroopAssistantActivity.b(this.a);
     }
   }
 }

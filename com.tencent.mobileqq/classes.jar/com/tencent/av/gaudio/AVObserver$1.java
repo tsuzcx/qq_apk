@@ -1,11 +1,11 @@
 package com.tencent.av.gaudio;
 
-import lmt;
+import lng;
 
 public class AVObserver$1
   implements Runnable
 {
-  public AVObserver$1(lmt paramlmt, Object paramObject) {}
+  public AVObserver$1(lng paramlng, Object paramObject) {}
   
   public void run()
   {

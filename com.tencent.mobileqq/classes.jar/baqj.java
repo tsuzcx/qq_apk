@@ -1,88 +1,118 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.robotchat.RobotChatPanelLayout;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import java.nio.ByteBuffer;
+import java.util.HashSet;
+import java.util.Set;
+import org.jetbrains.annotations.NotNull;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class baqj
-  implements bfdu
+  extends BusinessHandler
 {
-  public baqj(RobotChatPanelLayout paramRobotChatPanelLayout, long paramLong, int paramInt, String paramString, bfft parambfft) {}
-  
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  public baqj(QQAppInterface paramQQAppInterface)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    if (paramInt == 0)
+    super(paramQQAppInterface);
+  }
+  
+  @NotNull
+  private ToServiceMsg a(byte paramByte, long paramLong)
+  {
+    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+    localOIDBSSOPkg.uint32_command.set(1156);
+    localOIDBSSOPkg.uint32_service_type.set(15);
+    Object localObject = ByteBuffer.allocate(20);
+    ((ByteBuffer)localObject).put(paramByte);
+    localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((ByteBuffer)localObject).array()));
+    localObject = createToServiceMsg("OidbSvc.0x484_15");
+    ((ToServiceMsg)localObject).putWupBuffer(localOIDBSSOPkg.toByteArray());
+    ((ToServiceMsg)localObject).extraData.putLong("mark_extra_tag", paramLong);
+    ((ToServiceMsg)localObject).setTimeout(30000L);
+    return localObject;
+  }
+  
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    QLog.d("QuickLoginHandler", 1, "handleSetPCVerify");
+    boolean bool2;
+    long l;
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
     {
-      if (RobotChatPanelLayout.a(this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout) == null) {
-        if (QLog.isColorLevel()) {
-          QLog.e("RobotChatPanelLayout", 2, "troopRobotManager = null");
-        }
-      }
-      do
+      bool2 = true;
+      l = paramToServiceMsg.extraData.getLong("mark_extra_tag");
+      bool1 = bool2;
+      if (!bool2) {}
+    }
+    for (;;)
+    {
+      try
       {
-        return;
-        if (paramRspBody.robot_uin.get() == this.jdField_a_of_type_Long) {
-          break;
+        paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
+        paramToServiceMsg.mergeFrom((byte[])paramObject);
+        int i = paramToServiceMsg.uint32_result.get();
+        if (i != 0) {
+          continue;
         }
-      } while (!QLog.isColorLevel());
-      QLog.e("RobotChatPanelLayout", 2, "data not match :" + this.jdField_a_of_type_Long);
-      return;
-      paramInt = paramRspBody.version.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("RobotChatPanelLayout", 2, "initData->reqPanelList oldVer:" + this.jdField_a_of_type_Int + " newVer:" + paramInt);
+        bool1 = true;
       }
-      if (this.jdField_a_of_type_Int != paramInt)
+      catch (Exception paramToServiceMsg)
       {
-        RobotChatPanelLayout.b(this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout).a("1", this.jdField_a_of_type_JavaLangString, paramRspBody);
-        paramRspBody = RobotChatPanelLayout.a(this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout, paramRspBody);
-        if ((paramRspBody != null) && (paramRspBody.size() > 0))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.a(false);
-          this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.a(paramRspBody, true);
-          paramRspBody = this.jdField_a_of_type_Bfft;
-          if (this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.b() <= 0) {
-            break label297;
-          }
-        }
-      }
-      for (;;)
-      {
-        paramRspBody.a(bool1, this.jdField_a_of_type_JavaLangString);
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.a(true);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("RobotChatPanelLayout", 2, "listDatas is null in new version");
-        break;
-        if (this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.b() == 0)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("RobotChatPanelLayout", 2, "item count == 0");
-          }
-          RobotChatPanelLayout.a(this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout, this.jdField_a_of_type_JavaLangString);
-          break;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.c();
-        break;
-        label297:
+        QLog.e("QuickLoginHandler", 1, "handleSetPCVerify exception: " + paramToServiceMsg.getMessage());
         bool1 = false;
+        continue;
       }
+      notifyUI(1, bool1, new Object[] { Long.valueOf(l) });
+      return;
+      bool2 = false;
+      break;
+      bool1 = false;
     }
-    RobotChatPanelLayout.a(this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout, this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.b() > 0) {}
-    for (bool1 = bool2;; bool1 = false)
+  }
+  
+  public void a(int paramInt, long paramLong)
+  {
+    try
     {
-      this.jdField_a_of_type_Bfft.a(bool1, this.jdField_a_of_type_JavaLangString);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("RobotChatPanelLayout", 2, "initData->reqPanelList: errorCode = " + paramInt + " hasdata:" + bool1);
+      QLog.d("QuickLoginHandler", 1, "setPCVerify switchOn: " + paramInt + " pbMark: " + paramLong);
+      sendPbReq(a((byte)paramInt, paramLong));
       return;
     }
+    catch (Exception localException)
+    {
+      QLog.e("QuickLoginHandler", 1, "setPCVerify exception: " + localException.getMessage());
+    }
+  }
+  
+  public boolean msgCmdFilter(String paramString)
+  {
+    if (this.allowCmdSet == null)
+    {
+      this.allowCmdSet = new HashSet();
+      this.allowCmdSet.add("OidbSvc.0x484_15");
+    }
+    return !this.allowCmdSet.contains(paramString);
+  }
+  
+  public Class<? extends BusinessObserver> observerClass()
+  {
+    return baqk.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    QLog.d("QuickLoginHandler", 1, "onReceive");
+    if (msgCmdFilter(paramFromServiceMsg.getServiceCmd())) {}
+    while (!"OidbSvc.0x484_15".equals(paramFromServiceMsg.getServiceCmd())) {
+      return;
+    }
+    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 

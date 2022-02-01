@@ -12,16 +12,16 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.HorizontalListView;
 import java.util.ArrayList;
-import lez;
-import mak;
-import mbq;
-import mgr;
-import mgx;
-import mhr;
-import mlp;
-import mlq;
-import mlr;
-import mlt;
+import lfe;
+import mbf;
+import mcl;
+import mhn;
+import mht;
+import min;
+import mmm;
+import mmn;
+import mmo;
+import mmq;
 
 public class VoiceChangeToolbar
   extends BaseToolbar
@@ -29,46 +29,46 @@ public class VoiceChangeToolbar
 {
   public static String TAG = "VoiceChangeToolbar";
   private static VoiceChangeToolbar mToolbarInstance;
-  mgr mAdapter;
+  mhn mAdapter;
   Button mEarbackBtn = null;
-  ArrayList<mhr> mItemInfo;
+  ArrayList<min> mItemInfo;
   HorizontalListView mListView;
-  mbq mUIInfo = null;
-  mgx mVoiceClickCallback = new mlt(this);
+  mcl mUIInfo = null;
+  mht mVoiceClickCallback = new mmq(this);
   
   public VoiceChangeToolbar(VideoAppInterface paramVideoAppInterface, AVActivity paramAVActivity)
   {
     super(paramVideoAppInterface, paramAVActivity);
   }
   
-  private ArrayList<mhr> getList()
+  private ArrayList<min> getList()
   {
-    mlq[] arrayOfmlq = mlp.a().a();
-    if (arrayOfmlq == null) {}
+    mmn[] arrayOfmmn = mmm.a().a();
+    if (arrayOfmmn == null) {}
     ArrayList localArrayList;
-    for (int i = 1;; i = arrayOfmlq.length + 1)
+    for (int i = 1;; i = arrayOfmmn.length + 1)
     {
       localArrayList = new ArrayList(i);
-      Object localObject = new mhr();
-      ((mhr)localObject).jdField_a_of_type_JavaLangString = "-1";
+      Object localObject = new min();
+      ((min)localObject).jdField_a_of_type_JavaLangString = "-1";
       localArrayList.add(localObject);
-      if (arrayOfmlq == null) {
+      if (arrayOfmmn == null) {
         break;
       }
       i = 0;
-      while (i < arrayOfmlq.length)
+      while (i < arrayOfmmn.length)
       {
-        localObject = arrayOfmlq[i];
-        mhr localmhr = new mhr();
-        localmhr.jdField_a_of_type_Int = 2;
-        localmhr.jdField_a_of_type_JavaLangString = (((mlq)localObject).jdField_a_of_type_Int + "");
-        localmhr.c = ((mlq)localObject).jdField_a_of_type_JavaLangString;
-        localmhr.jdField_b_of_type_JavaLangString = ((mlq)localObject).c;
-        localmhr.jdField_b_of_type_Int = ((mlq)localObject).jdField_b_of_type_Int;
-        localmhr.d = ((mlq)localObject).jdField_a_of_type_JavaLangString;
-        localmhr.jdField_a_of_type_Boolean = true;
-        localmhr.jdField_a_of_type_JavaLangObject = localObject;
-        localArrayList.add(localmhr);
+        localObject = arrayOfmmn[i];
+        min localmin = new min();
+        localmin.jdField_a_of_type_Int = 2;
+        localmin.jdField_a_of_type_JavaLangString = (((mmn)localObject).jdField_a_of_type_Int + "");
+        localmin.c = ((mmn)localObject).jdField_a_of_type_JavaLangString;
+        localmin.jdField_b_of_type_JavaLangString = ((mmn)localObject).c;
+        localmin.jdField_b_of_type_Int = ((mmn)localObject).jdField_b_of_type_Int;
+        localmin.d = ((mmn)localObject).jdField_a_of_type_JavaLangString;
+        localmin.jdField_a_of_type_Boolean = true;
+        localmin.jdField_a_of_type_JavaLangObject = localObject;
+        localArrayList.add(localmin);
         i += 1;
       }
     }
@@ -81,29 +81,29 @@ public class VoiceChangeToolbar
       return;
     }
     mToolbarInstance.setSelectedItem(paramString);
-    mhr localmhr = new mhr();
-    localmhr.jdField_a_of_type_JavaLangString = paramString;
-    mToolbarInstance.mVoiceClickCallback.a(paramLong, localmhr);
+    min localmin = new min();
+    localmin.jdField_a_of_type_JavaLangString = paramString;
+    mToolbarInstance.mVoiceClickCallback.a(paramLong, localmin);
   }
   
   private void updateEarbackBtn()
   {
-    int i = 2130842325;
+    int i = 2130842339;
     if (this.mApp.a().a().aA) {
-      i = 2130842326;
+      i = 2130842340;
     }
     this.mEarbackBtn.setCompoundDrawablesWithIntrinsicBounds(i, 0, 0, 0);
   }
   
-  protected mbq getUIInfo()
+  protected mcl getUIInfo()
   {
     if (this.mUIInfo == null)
     {
-      this.mUIInfo = new mbq();
+      this.mUIInfo = new mcl();
       this.mUIInfo.d = 5;
-      this.mUIInfo.f = 2131559788;
-      this.mUIInfo.e = 2130842307;
-      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getString(2131695453);
+      this.mUIInfo.f = 2131559825;
+      this.mUIInfo.e = 2130842321;
+      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getString(2131695670);
     }
     return this.mUIInfo;
   }
@@ -122,7 +122,7 @@ public class VoiceChangeToolbar
       int i = 1;
       while (i < this.mItemInfo.size())
       {
-        if (((mhr)this.mItemInfo.get(i)).jdField_a_of_type_JavaLangString.equals(paramString)) {
+        if (((min)this.mItemInfo.get(i)).jdField_a_of_type_JavaLangString.equals(paramString)) {
           return false;
         }
         i += 1;
@@ -138,13 +138,13 @@ public class VoiceChangeToolbar
       EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    lez locallez = this.mApp.a().a();
+    lfe locallfe = this.mApp.a().a();
     boolean bool;
     if (!this.mApp.a().a().aA)
     {
       bool = true;
       label61:
-      locallez.aA = bool;
+      locallfe.aA = bool;
       if (this.mApp.a().a().U != 0) {
         this.mApp.a().c(this.mApp.a().a().aA);
       }
@@ -152,8 +152,8 @@ public class VoiceChangeToolbar
       if (this.mApp.a().a().aA) {
         break label162;
       }
-      mak.a(this.mApp, 1017);
-      mlr.a("0X8007EF4", "");
+      mbf.a(this.mApp, 1017);
+      mmo.a("0X8007EF4", "");
     }
     for (;;)
     {
@@ -162,26 +162,26 @@ public class VoiceChangeToolbar
       bool = false;
       break label61;
       label162:
-      mlr.a("0X8007EF3", "");
+      mmo.a("0X8007EF3", "");
     }
   }
   
   protected void onCreate(long paramLong, AVActivity paramAVActivity)
   {
     mToolbarInstance = this;
-    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131368218));
+    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131368362));
     this.mListView.setStayDisplayOffsetZero(true);
     this.mItemInfo = getList();
-    this.mAdapter = new mgr(this.mApp, paramAVActivity, this.mItemInfo, this.mListView);
+    this.mAdapter = new mhn(this.mApp, paramAVActivity, this.mItemInfo, this.mListView);
     this.mAdapter.a(true);
     this.mAdapter.b(true);
     this.mAdapter.a(this.mVoiceClickCallback);
     this.mListView.setAdapter(this.mAdapter);
-    this.mEarbackBtn = ((Button)this.toolbarView.findViewById(2131364373));
+    this.mEarbackBtn = ((Button)this.toolbarView.findViewById(2131364454));
     this.mEarbackBtn.setTextSize(ViewUtils.pxTosp(AIOUtils.dp2px(12.0F, paramAVActivity.getResources())));
     this.mEarbackBtn.setOnClickListener(this);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.setMargins(mgr.a(paramAVActivity.getResources(), this.mAdapter.a(), 0.1666667F), 0, 0, 0);
+    localLayoutParams.setMargins(mhn.a(paramAVActivity.getResources(), this.mAdapter.a(), 0.1666667F), 0, 0, 0);
     this.mEarbackBtn.setLayoutParams(localLayoutParams);
     updateEarbackBtn();
   }
@@ -213,7 +213,7 @@ public class VoiceChangeToolbar
     }
     int i = 1;
     if (i < this.mItemInfo.size()) {
-      if (!((mhr)this.mItemInfo.get(i)).jdField_a_of_type_JavaLangString.equals(paramString)) {}
+      if (!((min)this.mItemInfo.get(i)).jdField_a_of_type_JavaLangString.equals(paramString)) {}
     }
     for (;;)
     {

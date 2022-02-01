@@ -1,17 +1,17 @@
 package com.tencent.biz.common.offline;
 
 import mqq.app.AppRuntime;
-import nnv;
-import nny;
+import nuw;
+import nuz;
 
 public final class HtmlOffline$2
   implements Runnable
 {
-  public HtmlOffline$2(String paramString, AppRuntime paramAppRuntime, nnv paramnnv) {}
+  public HtmlOffline$2(String paramString, AppRuntime paramAppRuntime, nuw paramnuw) {}
   
   public void run()
   {
-    nny.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqAppAppRuntime, false, this.jdField_a_of_type_Nnv);
+    nuz.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqAppAppRuntime, false, this.jdField_a_of_type_Nuw);
   }
 }
 

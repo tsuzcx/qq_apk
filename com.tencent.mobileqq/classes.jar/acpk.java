@@ -1,19 +1,34 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.s2c.msgtype0x210.submsgtype0x101.SubMsgType0x27.MsgBody;
 
 public class acpk
-  implements View.OnTouchListener
+  implements acpi
 {
-  public acpk(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  private static void a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
   {
-    ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(this.a.leftView.getWindowToken(), 2);
-    return false;
+    SubMsgType0x27.MsgBody localMsgBody = new SubMsgType0x27.MsgBody();
+    try
+    {
+      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+      ((awtm)paramQQAppInterface.getManager(QQManagerFactory.PUSH_NOTICE_MANAGER)).a(localMsgBody, paramMsgInfo.shMsgSeq, paramMsgInfo.lMsgUid);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramQQAppInterface)
+    {
+      QLog.e("Q.msg.BaseMessageProcessor", 1, paramQQAppInterface, new Object[0]);
+    }
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramMsgInfo, paramMsgType0x210);
+    return null;
   }
 }
 

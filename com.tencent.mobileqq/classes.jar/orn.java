@@ -1,22 +1,179 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyDropFrameHelper.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.NetworkState;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initExposeCommentClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class orn
-  implements oqp
+public class orn
+  implements pwk
 {
-  public void a(int paramInt, @NotNull Container paramContainer, @NotNull ouc paramouc, @NotNull ouo paramouo, @NotNull ViewBase paramViewBase)
+  private Map<Integer, Double> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private orq jdField_a_of_type_Orq = new orq();
+  private Map<Integer, List<orp>> b = new HashMap();
+  private Map<String, List<Double>> c = new HashMap();
+  
+  private orn()
   {
-    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
-    Intrinsics.checkParameterIsNotNull(paramouc, "adapter");
-    Intrinsics.checkParameterIsNotNull(paramouo, "commentViewItem");
-    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
-    if (((paramViewBase instanceof oyg)) && ((paramouc instanceof osu))) {
-      ((oyg)paramViewBase).a((osu)paramouc);
+    pwf.a(this);
+    bmie.a().a(this.jdField_a_of_type_Orq);
+  }
+  
+  private int a(String paramString)
+  {
+    int i = -1;
+    if ("list_new_kandian".equals(paramString)) {
+      i = 0;
     }
+    do
+    {
+      int j;
+      do
+      {
+        return i;
+        if ("list_subscript".equals(paramString)) {
+          return 70;
+        }
+        if ((paramString == null) || (!paramString.startsWith("list_kandian_channel_"))) {
+          break;
+        }
+        j = "list_kandian_channel_".length();
+      } while (j >= paramString.length());
+      return Integer.parseInt(paramString.substring(j));
+      if ("list_comment_kandian".equals(paramString)) {
+        return 6666;
+      }
+      if ("proteus_family_feeds".equals(paramString)) {
+        return 8888;
+      }
+      if ("list_kandian_native_web".equals(paramString)) {
+        return 5555;
+      }
+    } while (!"list_kandian_daily_new".equals(paramString));
+    return 9999;
+  }
+  
+  private JSONObject a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    localJSONObject.put("proteus_bid", bmhv.a("default_feeds_proteus_offline_bid"));
+    localJSONObject.put("cpu_type", DeviceInfoUtil.getCpuType());
+    localJSONObject.put("cpu_frequency", DeviceInfoUtil.getCpuFrequency());
+    localJSONObject.put("cache_memory", DeviceInfoUtil.getSystemTotalMemory());
+    localJSONObject.put("device_model", DeviceInfoUtil.getDeviceModel());
+    localJSONObject.put("os_version", DeviceInfoUtil.getDeviceOSVersion());
+    if (NetworkState.isWifiConn()) {}
+    for (int i = 1;; i = 2)
+    {
+      localJSONObject.put("network_type", i);
+      localJSONObject.put("package_name", "8.4.10.4875");
+      return localJSONObject;
+    }
+  }
+  
+  public static orn a()
+  {
+    return oro.a();
+  }
+  
+  private void a(String paramString, double paramDouble)
+  {
+    ThreadManager.executeOnSubThread(new ReadInJoyDropFrameHelper.2(this, paramString, paramDouble));
+  }
+  
+  public static boolean a()
+  {
+    boolean bool = ((Boolean)bmhv.a("sp_key_readinjoy_feeds_drop_frame_switch", Boolean.valueOf(true))).booleanValue();
+    QLog.d("ReadInJoyDropFrameHelper", 1, "ReadInJoyDropFrameHelper | Report enable :" + bool);
+    return bool;
+  }
+  
+  public void a(int paramInt, orp paramorp)
+  {
+    if (this.b != null) {
+      if (!this.b.containsKey(Integer.valueOf(paramInt))) {
+        break label74;
+      }
+    }
+    label74:
+    for (Object localObject = (List)this.b.get(Integer.valueOf(paramInt));; localObject = new ArrayList())
+    {
+      if (!((List)localObject).contains(paramorp)) {
+        ((List)localObject).add(paramorp);
+      }
+      this.b.put(Integer.valueOf(paramInt), localObject);
+      return;
+    }
+  }
+  
+  public void a(String paramString, long paramLong1, long[] paramArrayOfLong, long paramLong2)
+  {
+    if (!a()) {
+      return;
+    }
+    int i = a(paramString);
+    double d = (paramArrayOfLong[0] * 16.699999999999999D + paramArrayOfLong[1] * 16.699999999999999D * 1.5D + paramArrayOfLong[2] * 16.699999999999999D * 3.0D + paramArrayOfLong[3] * 16.699999999999999D * 6.0D) / paramLong2;
+    if (d < 1.0D) {}
+    for (;;)
+    {
+      QLog.d("ReadInJoyDropFrameHelper", 1, "caculateFeedsFlunency | channelId " + i + " fluencyVal " + d);
+      if (this.c != null)
+      {
+        if (this.c.get(String.valueOf(i)) == null) {
+          this.c.put(String.valueOf(i), new ArrayList());
+        }
+        QLog.d("ReadInJoyDropFrameHelper", 1, "addFluency into reportMap | channelId " + i + " fluencyVal " + d);
+        ((List)this.c.get(String.valueOf(i))).add(Double.valueOf(d));
+      }
+      if (this.jdField_a_of_type_JavaUtilMap == null) {
+        break;
+      }
+      return;
+      d = 1.0D;
+    }
+  }
+  
+  public void b(int paramInt, orp paramorp)
+  {
+    if ((this.b != null) && (this.b.get(Integer.valueOf(paramInt)) != null)) {
+      ((List)this.b.get(Integer.valueOf(paramInt))).remove(paramorp);
+    }
+  }
+  
+  public void l() {}
+  
+  public void m()
+  {
+    if ((this.c == null) || (this.c.isEmpty()))
+    {
+      QLog.d("ReadInJoyDropFrameHelper", 2, "background | reportMap is empty");
+      return;
+    }
+    QLog.d("ReadInJoyDropFrameHelper", 2, "background | reporFeeds Fluency");
+    Iterator localIterator1 = this.c.keySet().iterator();
+    while (localIterator1.hasNext())
+    {
+      String str = (String)localIterator1.next();
+      List localList = (List)this.c.get(str);
+      if ((localList != null) && (localList.size() > 0))
+      {
+        Iterator localIterator2 = new ArrayList(localList).iterator();
+        while (localIterator2.hasNext())
+        {
+          Double localDouble = (Double)localIterator2.next();
+          a(str, localDouble.doubleValue());
+          QLog.d("ReadInJoyDropFrameHelper", 2, "background | reportFeedsFluency channelid " + str + " fluencyVal " + localDouble);
+        }
+        localList.clear();
+      }
+    }
+    uda.a();
   }
 }
 

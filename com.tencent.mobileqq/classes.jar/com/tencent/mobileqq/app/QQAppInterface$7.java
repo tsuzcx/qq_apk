@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import amtj;
 import android.content.Intent;
+import anvx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
@@ -21,8 +21,8 @@ class QQAppInterface$7
         this.this$0.logout(true);
       }
       Intent localIntent = new Intent("mqq.intent.action.ACCOUNT_KICKED");
-      localIntent.putExtra("title", amtj.a(2131709228));
-      localIntent.putExtra("msg", amtj.a(2131709230));
+      localIntent.putExtra("title", anvx.a(2131709575));
+      localIntent.putExtra("msg", anvx.a(2131709577));
       localIntent.putExtra("reason", Constants.LogoutReason.kicked);
       localIntent.addFlags(268435456);
       BaseApplicationImpl.sApplication.startActivity(localIntent);

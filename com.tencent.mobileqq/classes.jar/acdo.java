@@ -1,52 +1,26 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.now.enter.pb.NowPushMsgList.MsgBody;
-import com.tencent.mobileqq.now.enter.pb.NowPushMsgList.NowPushMsg;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingLandView;
 
-public class acdo
-  implements abzb
+class acdo
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private static void a(abxc paramabxc, MsgType0x210 paramMsgType0x210)
+  acdo(acdn paramacdn, RelativeLayout.LayoutParams paramLayoutParams, int paramInt1, int paramInt2) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0xfb");
-    }
-    try
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    paramValueAnimator = this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams;
+    int i = this.jdField_a_of_type_Int;
+    paramValueAnimator.topMargin = ((int)(f * this.b) + i);
+    if (((this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin <= acdn.a(this.jdField_a_of_type_Acdn)) || (this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin >= acdn.b(this.jdField_a_of_type_Acdn))) && (acdn.a(this.jdField_a_of_type_Acdn).a))
     {
-      Object localObject = new NowPushMsgList.MsgBody();
-      if (paramabxc.a(paramMsgType0x210))
-      {
-        ((NowPushMsgList.MsgBody)localObject).mergeFrom(paramMsgType0x210.vProtobuf);
-        paramMsgType0x210 = ((NowPushMsgList.MsgBody)localObject).rpt_now_push_msg.get().iterator();
-        while (paramMsgType0x210.hasNext())
-        {
-          localObject = (NowPushMsgList.NowPushMsg)paramMsgType0x210.next();
-          ((axir)paramabxc.a().getManager(266)).a((NowPushMsgList.NowPushMsg)localObject);
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0xfb " + ((NowPushMsgList.NowPushMsg)localObject).uint32_switch.get() + "  uint32_task_id " + ((NowPushMsgList.NowPushMsg)localObject).uint32_task_id.get() + "  uint32_type " + ((NowPushMsgList.NowPushMsg)localObject).uint32_type.get() + "  uint64_start_time " + ((NowPushMsgList.NowPushMsg)localObject).uint64_start_time.get() + "  uint64_end_time " + ((NowPushMsgList.NowPushMsg)localObject).uint64_end_time.get());
-          }
-        }
-      }
+      acdn.a(this.jdField_a_of_type_Acdn);
       return;
     }
-    catch (Exception paramabxc)
-    {
-      QLog.e("Q.msg.BaseMessageProcessor", 1, "[msg0x210.uSubMsgType == 0xfb], errInfo->" + paramabxc.getMessage());
-    }
-  }
-  
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
-  {
-    a(paramabxc, paramMsgType0x210);
-    return null;
+    acdn.a(this.jdField_a_of_type_Acdn).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    this.jdField_a_of_type_Acdn.a((this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin - acdn.a(this.jdField_a_of_type_Acdn)) * 1.0F / (acdn.b(this.jdField_a_of_type_Acdn) - acdn.a(this.jdField_a_of_type_Acdn)));
   }
 }
 

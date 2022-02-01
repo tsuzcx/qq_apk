@@ -1,21 +1,18 @@
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
+import android.animation.ValueAnimator;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
 
-class zje
+public class zje
   implements Animator.AnimatorListener
 {
-  zje(zjc paramzjc, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public zje(RotateCircleImageView paramRotateCircleImageView) {}
   
   public void onAnimationCancel(Animator paramAnimator) {}
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    paramAnimator = (FrameLayout.LayoutParams)zjc.b(this.jdField_a_of_type_Zjc).getLayoutParams();
-    paramAnimator.height = this.jdField_a_of_type_Int;
-    paramAnimator.width = this.b;
-    paramAnimator.setMargins(this.c, this.d, 0, 0);
+    RotateCircleImageView.b(this.a).start();
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}

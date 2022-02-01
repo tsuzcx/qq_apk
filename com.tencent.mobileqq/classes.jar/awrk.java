@@ -1,30 +1,60 @@
-import android.text.TextUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import java.io.File;
 
-final class awrk
-  implements WXShareHelper.WXShareListener
+public class awrk
 {
-  awrk(String paramString, awro paramawro) {}
+  public int a;
+  public boolean a;
+  public String[] a;
+  public int b;
+  public String[] b;
+  public int c;
+  public int d;
   
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public awrk()
   {
-    if ((paramBaseResp != null) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
+    a();
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 1;
+    this.c = 100;
+    this.d = 0;
+    this.jdField_a_of_type_ArrayOfJavaLangString = null;
+    this.jdField_b_of_type_ArrayOfJavaLangString = null;
+  }
+  
+  public boolean a()
+  {
+    int i;
+    if ((this.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.jdField_a_of_type_ArrayOfJavaLangString.length > 0))
     {
-      WXShareHelper.getInstance().removeObserver(this);
-      if (paramBaseResp.errCode != 0) {
-        break label50;
-      }
-      if (this.jdField_a_of_type_Awro != null) {
-        this.jdField_a_of_type_Awro.a(true);
+      i = 0;
+      while (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
+      {
+        if (!new File(this.jdField_a_of_type_ArrayOfJavaLangString[i]).exists()) {
+          return false;
+        }
+        i += 1;
       }
     }
-    label50:
-    while (this.jdField_a_of_type_Awro == null) {
-      return;
+    if ((this.jdField_b_of_type_ArrayOfJavaLangString != null) && (this.jdField_b_of_type_ArrayOfJavaLangString.length > 0))
+    {
+      i = 0;
+      for (;;)
+      {
+        if (i >= this.jdField_b_of_type_ArrayOfJavaLangString.length) {
+          break label106;
+        }
+        if (!new File(this.jdField_b_of_type_ArrayOfJavaLangString[i]).exists()) {
+          break;
+        }
+        i += 1;
+      }
     }
-    this.jdField_a_of_type_Awro.a(false);
+    label106:
+    return true;
   }
 }
 

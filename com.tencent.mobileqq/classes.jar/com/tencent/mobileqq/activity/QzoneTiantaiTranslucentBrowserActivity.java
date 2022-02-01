@@ -5,9 +5,10 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import blco;
+import bmpf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -18,9 +19,9 @@ public class QzoneTiantaiTranslucentBrowserActivity
   extends QQTranslucentBrowserActivity
 {
   private static volatile long jdField_a_of_type_Long;
-  private blco jdField_a_of_type_Blco;
+  private bmpf jdField_a_of_type_Bmpf;
   
-  private blco a()
+  private bmpf a()
   {
     Intent localIntent = getIntent();
     if (localIntent != null)
@@ -28,11 +29,11 @@ public class QzoneTiantaiTranslucentBrowserActivity
       switch (localIntent.getIntExtra("translucent_controller", 0))
       {
       default: 
-        return new blco(this);
+        return new bmpf(this);
       }
-      return new blco(this);
+      return new bmpf(this);
     }
-    return new blco(this);
+    return new bmpf(this);
   }
   
   public static void a(QQAppInterface paramQQAppInterface)
@@ -59,7 +60,7 @@ public class QzoneTiantaiTranslucentBrowserActivity
         if (BaseApplicationImpl.getApplication().getRuntime() == null) {}
       }
     }
-    for (paramQQAppInterface = (WebProcessManager)BaseApplicationImpl.getApplication().getRuntime().getManager(13);; paramQQAppInterface = (WebProcessManager)paramQQAppInterface.getManager(13))
+    for (paramQQAppInterface = (WebProcessManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.WEBPROCESS_MANAGER);; paramQQAppInterface = (WebProcessManager)paramQQAppInterface.getManager(QQManagerFactory.WEBPROCESS_MANAGER))
     {
       if (paramQQAppInterface != null) {
         paramQQAppInterface.a(1);
@@ -71,8 +72,8 @@ public class QzoneTiantaiTranslucentBrowserActivity
   public void a(WebView paramWebView, String paramString)
   {
     super.a(paramWebView, paramString);
-    if (this.jdField_a_of_type_Blco != null) {
-      this.jdField_a_of_type_Blco.e();
+    if (this.jdField_a_of_type_Bmpf != null) {
+      this.jdField_a_of_type_Bmpf.e();
     }
   }
   
@@ -87,7 +88,7 @@ public class QzoneTiantaiTranslucentBrowserActivity
   
   public void doOnBackPressed()
   {
-    if ((this.jdField_a_of_type_Blco != null) && (this.jdField_a_of_type_Blco.a())) {
+    if ((this.jdField_a_of_type_Bmpf != null) && (this.jdField_a_of_type_Bmpf.a())) {
       super.doOnBackPressed();
     }
   }
@@ -95,8 +96,8 @@ public class QzoneTiantaiTranslucentBrowserActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
-    if (this.jdField_a_of_type_Blco != null) {
-      this.jdField_a_of_type_Blco.a();
+    if (this.jdField_a_of_type_Bmpf != null) {
+      this.jdField_a_of_type_Bmpf.a();
     }
     return bool;
   }
@@ -104,24 +105,24 @@ public class QzoneTiantaiTranslucentBrowserActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Blco != null) {
-      this.jdField_a_of_type_Blco.d();
+    if (this.jdField_a_of_type_Bmpf != null) {
+      this.jdField_a_of_type_Bmpf.d();
     }
   }
   
   public void doOnPause()
   {
     super.doOnPause();
-    if (this.jdField_a_of_type_Blco != null) {
-      this.jdField_a_of_type_Blco.b();
+    if (this.jdField_a_of_type_Bmpf != null) {
+      this.jdField_a_of_type_Bmpf.b();
     }
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    if (this.jdField_a_of_type_Blco != null) {
-      this.jdField_a_of_type_Blco.c();
+    if (this.jdField_a_of_type_Bmpf != null) {
+      this.jdField_a_of_type_Bmpf.c();
     }
   }
   
@@ -134,13 +135,13 @@ public class QzoneTiantaiTranslucentBrowserActivity
   
   public void onCreate(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Blco = a();
+    this.jdField_a_of_type_Bmpf = a();
     super.onCreate(paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QzoneTiantaiTranslucentBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

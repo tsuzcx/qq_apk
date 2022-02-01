@@ -1,15 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.Window;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-class oba
-  implements DialogInterface.OnShowListener
+final class oba
+  implements BusinessObserver
 {
-  oba(oaw paramoaw) {}
+  oba(QQAppInterface paramQQAppInterface, boolean paramBoolean, aoav paramaoav) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    oaw.a(this.a).getWindow().clearFlags(8);
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList isSuccess:" + String.valueOf(paramBoolean));
+    }
+    paramBundle = paramBundle.getByteArray("data");
+    if ((paramBoolean) && (paramBundle != null)) {}
+    for (paramInt = oaz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Boolean, paramBundle, false);; paramInt = 1)
+    {
+      if (this.jdField_a_of_type_Aoav != null) {
+        this.jdField_a_of_type_Aoav.onDynamicListGet(paramBoolean, paramInt);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList onReceiveerrCode:" + paramInt);
+      }
+      return;
+    }
   }
 }
 

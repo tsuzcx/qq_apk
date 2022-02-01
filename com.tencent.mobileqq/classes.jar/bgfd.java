@@ -1,13 +1,6 @@
-import com.tencent.mobileqq.vas.PendantInfo;
-
 public class bgfd
 {
-  public String a;
-  
-  public bgfd(PendantInfo paramPendantInfo, String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public bgfb a;
 }
 
 

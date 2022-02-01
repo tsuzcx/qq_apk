@@ -1,24 +1,29 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class bacd
-  implements Animation.AnimationListener
+class bacd
+  implements bide
 {
-  public bacd(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager, View paramView, int paramInt) {}
+  private WeakReference<avli> a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  bacd(avli paramavli)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    if (this.jdField_a_of_type_Int == CaptureVideoFilterViewPager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager)) {
-      CaptureVideoFilterViewPager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager, false);
-    }
+    this.a = new WeakReference(paramavli);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onResult(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      avli localavli = (avli)this.a.get();
+      if (localavli != null) {
+        localavli.a();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileQZoneComponent", 2, "check friend's profile and preload web-process!");
+      }
+    }
+  }
 }
 
 

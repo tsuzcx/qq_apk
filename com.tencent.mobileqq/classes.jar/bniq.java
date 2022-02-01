@@ -1,35 +1,25 @@
-import android.animation.ValueAnimator;
-import android.view.animation.AccelerateDecelerateInterpolator;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.cmshow.AECMShowPhotoPreviewFragment;
+import dov.com.qq.im.ae.cmshow.AECMShowPhotoPreviewFragment.1.1;
+import dov.com.qq.im.ae.cmshow.AECMShowPhotoPreviewFragment.1.2;
+import dov.com.qq.im.ae.cmshow.AECMShowRequestController.CmShowDataWrapper;
+import mqq.os.MqqHandler;
 
 public class bniq
-  extends ValueAnimator
+  implements bnjc
 {
-  private bnir jdField_a_of_type_Bnir;
-  private boolean jdField_a_of_type_Boolean;
+  public bniq(AECMShowPhotoPreviewFragment paramAECMShowPhotoPreviewFragment) {}
   
-  public bniq()
+  public void a(int paramInt, @Nullable AECMShowRequestController.CmShowDataWrapper paramCmShowDataWrapper)
   {
-    setInterpolator(new AccelerateDecelerateInterpolator());
+    bnrh.a("AECMShowPhotoPreviewFragment", "[AECMShowRequestController.onComplete], resultCode=" + paramInt + ", dataWrapper=" + paramCmShowDataWrapper);
+    ThreadManager.getUIHandler().post(new AECMShowPhotoPreviewFragment.1.2(this, paramInt, paramCmShowDataWrapper));
   }
   
-  public void a(bnip parambnip1, bnip parambnip2)
+  public void c(int paramInt)
   {
-    setObjectValues(new Object[] { parambnip1, parambnip2 });
-    this.jdField_a_of_type_Boolean = bnip.a(parambnip1, parambnip2);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void setObjectValues(Object... paramVarArgs)
-  {
-    super.setObjectValues(paramVarArgs);
-    if (this.jdField_a_of_type_Bnir == null) {
-      this.jdField_a_of_type_Bnir = new bnir();
-    }
-    setEvaluator(this.jdField_a_of_type_Bnir);
+    ThreadManager.getUIHandler().post(new AECMShowPhotoPreviewFragment.1.1(this, paramInt));
   }
 }
 

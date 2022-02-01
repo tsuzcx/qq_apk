@@ -1,38 +1,29 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileYearNodeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.YearNodeInfo;
+import com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class wtm
-  implements DialogInterface.OnDismissListener
+  extends wfh
 {
-  private final WeakReference<VideoViewVideoHolder> jdField_a_of_type_JavaLangRefWeakReference;
-  private final boolean jdField_a_of_type_Boolean;
+  public List<MomeriesYearNode> a = new ArrayList();
   
-  public wtm(VideoViewVideoHolder paramVideoViewVideoHolder, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramVideoViewVideoHolder);
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  public wtm() {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public wtm(qqstory_service.RspProfileYearNodeList paramRspProfileYearNodeList)
   {
-    paramDialogInterface = (VideoViewVideoHolder)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramDialogInterface != null)
+    super(paramRspProfileYearNodeList.result);
+    paramRspProfileYearNodeList = paramRspProfileYearNodeList.year_node_list.get().iterator();
+    while (paramRspProfileYearNodeList.hasNext())
     {
-      if ((paramDialogInterface.a()) && (!paramDialogInterface.a().isFinishing())) {
-        break label40;
-      }
-      xvv.b("OnNewGuideDialogDismissListener", "activity token invalid, preventing from showing dialog");
+      qqstory_struct.YearNodeInfo localYearNodeInfo = (qqstory_struct.YearNodeInfo)paramRspProfileYearNodeList.next();
+      MomeriesYearNode localMomeriesYearNode = new MomeriesYearNode();
+      localMomeriesYearNode.convertFrom(localYearNodeInfo);
+      this.a.add(localMomeriesYearNode);
     }
-    label40:
-    while (paramDialogInterface.e()) {
-      return;
-    }
-    paramDialogInterface.c(this.jdField_a_of_type_Boolean);
-    paramDialogInterface.d();
-    paramDialogInterface.a = null;
   }
 }
 

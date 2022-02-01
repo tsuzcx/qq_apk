@@ -1,21 +1,66 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.IInterface;
+import com.tencent.mobileqq.music.SongInfo;
 
-public class axkb
-  extends axip
+public abstract interface axkb
+  extends IInterface
 {
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
+  public abstract int a();
   
-  public axkb(View paramView)
-  {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376208));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370294));
-    this.b = ((ImageView)paramView.findViewById(2131366309));
-  }
+  public abstract Intent a();
+  
+  public abstract Bundle a();
+  
+  public abstract SongInfo a();
+  
+  public abstract String a();
+  
+  public abstract String a(int paramInt, String paramString);
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(Intent paramIntent);
+  
+  public abstract void a(Bundle paramBundle);
+  
+  public abstract void a(axjy paramaxjy);
+  
+  public abstract void a(String paramString, SongInfo[] paramArrayOfSongInfo, int paramInt);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract SongInfo[] a();
+  
+  public abstract int b();
+  
+  public abstract SongInfo b();
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(axjy paramaxjy);
+  
+  public abstract int c();
+  
+  public abstract void c();
+  
+  public abstract int d();
+  
+  public abstract void d();
+  
+  public abstract int e();
+  
+  public abstract void e();
+  
+  public abstract int f();
+  
+  public abstract int g();
 }
 
 

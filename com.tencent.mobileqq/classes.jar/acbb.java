@@ -1,27 +1,22 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class acbb
-  implements abzb
+class acbb
+  implements AdExposureChecker.ExposureCallback
 {
-  private static void a(abxc paramabxc, MsgType0x210 paramMsgType0x210)
-  {
-    paramMsgType0x210 = nmj.a(paramabxc.a(), paramMsgType0x210.vProtobuf);
-    if (paramMsgType0x210 != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("storyRedDotDebug", 2, "receive push");
-      }
-      paramabxc.a(105, true, paramMsgType0x210);
-    }
-  }
+  acbb(acav paramacav) {}
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void onExposure(WeakReference<View> paramWeakReference)
   {
-    a(paramabxc, paramMsgType0x210);
-    return null;
+    paramWeakReference = (View)paramWeakReference.get();
+    if (paramWeakReference == null)
+    {
+      QLog.i("GdtAdBoxDialog", 1, "onExposure view == null");
+      return;
+    }
+    this.a.a(paramWeakReference);
   }
 }
 

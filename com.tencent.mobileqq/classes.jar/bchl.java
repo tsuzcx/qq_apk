@@ -1,16 +1,32 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class bchl
-  implements View.OnTouchListener
+class bchl
+  extends aofu
 {
-  public bchl(StructMsgForGeneralShare paramStructMsgForGeneralShare, afce paramafce) {}
+  bchl(bchk parambchk) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onQueryJoinTroopWhetherHighRisk(boolean paramBoolean, String paramString, int paramInt)
   {
-    return this.jdField_a_of_type_Afce.onTouch(paramView, paramMotionEvent);
+    if ((bchk.a(this.a) == null) || (!bchk.a(this.a).b.equals(paramString))) {
+      bchk.a(this.a).removeObserver(bchk.a(this.a));
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.uniteSearch.ActiveEntitySearchResultPresenter", 2, "onQueryJoinTroopCanNoVerify result:" + paramBoolean + "highRiskTroop" + paramInt);
+      }
+      bchk.a(this.a).removeObserver(bchk.a(this.a));
+    } while (bchk.a(this.a) == null);
+    if ((paramBoolean) && (paramInt != 0))
+    {
+      ajgr.a(bchk.a(this.a).getContext(), bchk.a(this.a), new Object[] { bchk.a(this.a), bchk.a(this.a) });
+      return;
+    }
+    bchk.a(this.a, bchk.a(this.a).getContext(), bchk.a(this.a));
+    bchk.a(this.a);
   }
 }
 

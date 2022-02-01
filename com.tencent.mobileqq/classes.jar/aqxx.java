@@ -1,85 +1,38 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.QQDingdongSoundData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import androidx.annotation.NonNull;
+import org.json.JSONObject;
 
 public class aqxx
-  extends aqxl
 {
-  public aqxx(QQAppInterface paramQQAppInterface)
-  {
-    super("qq.android.dingdong.ring", paramQQAppInterface);
-  }
+  public int a;
   
-  public int a()
+  public static aqxx a(String paramString)
   {
-    return 10050;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return QQDingdongSoundData.class;
-  }
-  
-  public String a()
-  {
-    return "dingdongDownloadAudioSoundDuration";
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQDingdongSoundHandler", 2, "download success: " + paramString);
+    if (TextUtils.isEmpty(paramString)) {
+      return new aqxx();
     }
+    aqxx localaqxx = new aqxx();
     try
     {
-      FileUtils.uncompressZip(paramString, mrh.a(), false);
-      super.a(paramString);
-      return;
+      localaqxx.a = new JSONObject(paramString).optInt("enable", 0);
+      return localaqxx;
     }
-    catch (Exception localException)
+    catch (Throwable paramString)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      paramString.printStackTrace();
     }
+    return localaqxx;
   }
   
-  public void a(boolean paramBoolean)
+  @NonNull
+  public String toString()
   {
-    QQDingdongSoundData localQQDingdongSoundData = (QQDingdongSoundData)a();
-    if ((localQQDingdongSoundData != null) && (!localQQDingdongSoundData.autoDownload))
-    {
-      localQQDingdongSoundData.autoDownload = true;
-      aqxb.a(localQQDingdongSoundData, new String[] { "autoDownload" });
-    }
-    super.a(paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public boolean h()
-  {
-    QQDingdongSoundData localQQDingdongSoundData = (QQDingdongSoundData)a();
-    if (localQQDingdongSoundData == null) {
-      return super.h();
-    }
-    return localQQDingdongSoundData.autoDownload;
+    return "switch = " + this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqxx
  * JD-Core Version:    0.7.0.1
  */

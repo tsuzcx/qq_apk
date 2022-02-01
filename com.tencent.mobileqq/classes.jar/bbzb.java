@@ -1,15 +1,8 @@
-import com.tencent.mobileqq.soload.LoadExtResult;
-import com.tencent.mobileqq.soload.LoadParam;
-
 public abstract interface bbzb
 {
-  public abstract LoadExtResult a(LoadParam paramLoadParam);
+  public abstract void a();
   
-  public abstract void a(LoadParam paramLoadParam, bbzh parambbzh);
-  
-  public abstract void a(String paramString);
-  
-  public abstract boolean a(String paramString);
+  public abstract void b();
 }
 
 

@@ -8,7 +8,7 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import android.util.Xml;
-import bfnn;
+import bgwe;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.FileUtils;
@@ -22,7 +22,7 @@ import org.xmlpull.v1.XmlPullParser;
 public class UpgradeTIMWrapper
   implements Parcelable
 {
-  public static final Parcelable.Creator<UpgradeTIMWrapper> CREATOR = new bfnn();
+  public static final Parcelable.Creator<UpgradeTIMWrapper> CREATOR = new bgwe();
   public int a;
   public String a;
   public String b;

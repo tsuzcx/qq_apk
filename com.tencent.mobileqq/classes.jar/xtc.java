@@ -1,86 +1,155 @@
-import android.app.Activity;
-import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.qqstory.app.QQStoryContext;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.model.BannerFeedItem;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
 import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 import java.util.List;
 
-class xtc
-  extends xqa
+public class xtc
+  extends xsq
+  implements View.OnClickListener
 {
-  xtc(xss paramxss) {}
+  final Button jdField_a_of_type_AndroidWidgetButton;
+  final ImageView jdField_a_of_type_AndroidWidgetImageView;
+  final LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  final TextView jdField_a_of_type_AndroidWidgetTextView;
+  List<QQUserUIItem> jdField_a_of_type_JavaUtilList = new ArrayList();
+  final xsw jdField_a_of_type_Xsw;
+  final ImageView jdField_b_of_type_AndroidWidgetImageView;
+  final TextView jdField_b_of_type_AndroidWidgetTextView;
   
-  public void a(int paramInt, View paramView, Object paramObject, xsh paramxsh)
+  public xtc(View paramView, xsw paramxsw)
   {
-    if (paramView.getVisibility() != 0) {}
-    while (UIUtils.isFastDoubleClick()) {
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_Xsw = paramxsw;
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378768));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378794));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131373170));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131378249));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131370852));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368544));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
+  }
+  
+  private void a(List<String> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
       return;
     }
-    paramxsh = (xmy)this.a.jdField_a_of_type_Xoi.a().get(paramInt);
-    paramObject = (BannerFeedItem)paramxsh.a();
+    this.jdField_a_of_type_JavaUtilList.clear();
+    Object localObject1 = (wke)wjs.a(2);
+    Object localObject2 = new ArrayList();
+    int j = Math.min(paramList.size(), 6);
+    int i = 0;
+    if (i < j)
+    {
+      String str = (String)paramList.get(i);
+      QQUserUIItem localQQUserUIItem = ((wke)localObject1).b(str);
+      if ((localQQUserUIItem != null) && (!TextUtils.isEmpty(localQQUserUIItem.headUrl))) {
+        this.jdField_a_of_type_JavaUtilList.add(localQQUserUIItem);
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        ((List)localObject2).add(new wkz("", str));
+      }
+    }
+    if (!((List)localObject2).isEmpty()) {
+      new wrb(1, (List)localObject2).a();
+    }
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
+    int k = this.jdField_a_of_type_JavaUtilList.size();
+    j = 0;
+    label181:
+    label193:
+    int m;
+    if (j < k)
+    {
+      if (j != 0) {
+        break label274;
+      }
+      i = -1;
+      paramList = this.jdField_a_of_type_Xsw.jdField_a_of_type_AndroidContentContext;
+      localObject1 = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+      localObject2 = (QQUserUIItem)this.jdField_a_of_type_JavaUtilList.get(j);
+      m = this.jdField_a_of_type_Xsw.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.memberCount;
+      if (this.jdField_a_of_type_Xsw.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.memberCount <= 6) {
+        break label292;
+      }
+    }
+    label274:
+    label292:
+    for (boolean bool = true;; bool = false)
+    {
+      xqr.a(paramList, (LinearLayout)localObject1, 34, (QQUserUIItem)localObject2, i, m, bool);
+      j += 1;
+      break label181;
+      break;
+      if (j == k - 1)
+      {
+        i = 1;
+        break label193;
+      }
+      i = 0;
+      break label193;
+    }
+  }
+  
+  public void a(VideoCollectionItem paramVideoCollectionItem, View paramView, int paramInt)
+  {
+    if (this.jdField_a_of_type_Xsw.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem == null) {
+      return;
+    }
+    paramView = this.jdField_a_of_type_Xsw.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem;
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramView.name);
+    if (paramView.type == 1)
+    {
+      paramVideoCollectionItem = anvx.a(2131713376);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846820);
+      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+    }
+    for (;;)
+    {
+      if (!TextUtils.isEmpty(paramView.backgroundUrl)) {
+        UIUtils.setImageWithAnim(this.jdField_b_of_type_AndroidWidgetImageView, paramView.backgroundUrl, 0, 0, null);
+      }
+      if (paramView.headerUnionIdList != null) {
+        paramView.memberCount = Math.max(paramView.headerUnionIdList.size(), paramView.memberCount);
+      }
+      paramVideoCollectionItem = paramVideoCollectionItem + " · " + paramView.memberCount + anvx.a(2131713378);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramVideoCollectionItem);
+      a(paramView.headerUnionIdList);
+      return;
+      paramVideoCollectionItem = null;
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
     switch (paramView.getId())
     {
-    default: 
-      return;
-    case 2131362134: 
-      if (!ypp.a(xss.a(this.a)))
-      {
-        QQToast.a(xss.a(this.a), 1, amtj.a(2131703602), 0).a();
-        return;
-      }
-    case 2131374364: 
-      vpl.a(xss.a(this.a), 4, paramObject.getOwner().getUnionId());
-      paramInt = xwa.a(paramObject);
-      int i = xwa.b(paramObject);
-      if (this.a.jdField_a_of_type_Int == 11) {}
-      for (paramView = "3";; paramView = "1")
-      {
-        xwa.a("home_page", "clk_head_nick", paramInt, 0, new String[] { String.valueOf(i), paramView, paramObject.feedId, "" });
-        return;
-      }
-    case 2131374326: 
-    case 2131374334: 
-      String str1 = paramObject.getOwner().getUnionId();
-      String str2 = paramObject.feedId;
-      if (paramView.getId() == 2131374326) {}
-      for (paramView = "1";; paramView = "2")
-      {
-        xwa.a("home_page", "clk_ac_card", 0, 0, new String[] { paramView, "", str1, str2 });
-        if (!TextUtils.isEmpty(paramObject.schema)) {
-          break;
-        }
-        xvv.e("Q.qqstory.home:FeedSegment", "The schema url is null!!");
-        return;
-      }
-      xvv.a("Q.qqstory.home:FeedSegment", "click banner feed and jump to %s", paramObject.schema);
-      if (((BannerFeedItem)paramxsh.a()).schema.startsWith("mqqapi:"))
-      {
-        QQStoryContext.a();
-        bfwg.a((QQAppInterface)QQStoryContext.a(), xss.a(this.a), paramObject.schema).a();
-        return;
-      }
-      if (!ypp.a(xss.a(this.a)))
-      {
-        QQToast.a(xss.a(this.a), 1, amtj.a(2131703596), 0).a();
-        return;
-      }
-      paramView = new Intent(xss.a(this.a), QQBrowserActivity.class);
-      paramView.putExtra("url", paramObject.schema);
-      xss.a(this.a).startActivity(paramView);
-      return;
-      paramObject = ((BannerFeedItem)paramxsh.a()).getOwner();
-      ((vkz)wkp.a().getBusinessHandler(98)).a(1, paramObject.getUnionId(), 0, 12);
-      paramView.setVisibility(8);
-      xwa.a("home_page", "follow_recom", 0, 0, new String[] { "3", "1", paramObject.getUnionId(), ((BannerFeedItem)paramxsh.a()).feedId });
-      return;
     }
-    xss.a(this.a, paramInt);
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_Xsw.jdField_a_of_type_Xtg.a(this.jdField_a_of_type_AndroidWidgetButton);
+      continue;
+      this.jdField_a_of_type_Xsw.jdField_a_of_type_Xtg.b(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+      continue;
+      this.jdField_a_of_type_Xsw.jdField_a_of_type_Xtg.b(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+    }
   }
 }
 

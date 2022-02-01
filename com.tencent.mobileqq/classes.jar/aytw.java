@@ -1,22 +1,18 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ocr.data.OcrConfig;
 
-public class aytw
-  implements View.OnClickListener
+public final class aytw
+  implements Parcelable.Creator<OcrConfig>
 {
-  public aytw(AbsProfileHeaderView paramAbsProfileHeaderView, View paramView) {}
-  
-  public void onClick(View paramView)
+  public OcrConfig a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView.a.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView.a.getCurrentAccountUin(), 0).edit().putBoolean("common_topic_friend_list_should_show", false).apply();
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new OcrConfig(paramParcel);
+  }
+  
+  public OcrConfig[] a(int paramInt)
+  {
+    return new OcrConfig[paramInt];
   }
 }
 

@@ -1,25 +1,54 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
 
 public class arli
-  implements View.OnClickListener
+  extends arjj<arlh>
 {
-  public arli(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment, ExtendFriendProfileEditFragment.ExtendFriendInfo paramExtendFriendInfo) {}
-  
-  public void onClick(View paramView)
+  @NonNull
+  public static arlh c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.getActivity() != null) {
-      aroj.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.g, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.h, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.d, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.c);
+    arlh localarlh2 = (arlh)aqxe.a().a(562);
+    arlh localarlh1 = localarlh2;
+    if (localarlh2 == null) {
+      localarlh1 = arlh.a();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return localarlh1;
+  }
+  
+  @NonNull
+  public arlh a()
+  {
+    return arlh.a();
+  }
+  
+  @NonNull
+  public arlh a(@NonNull aqxa[] paramArrayOfaqxa)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QVIP.SDK.ConfigProcessor", 1, paramArrayOfaqxa[0].a);
+    }
+    return arlh.a(paramArrayOfaqxa[0].a);
+  }
+  
+  @NonNull
+  public arlh b()
+  {
+    return arlh.a();
+  }
+  
+  public Class<arlh> clazz()
+  {
+    return arlh.class;
+  }
+  
+  public int type()
+  {
+    return 562;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arli
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.config.splashlogo;
 
-import aqma;
-import bkwm;
+import arpl;
+import bmhv;
 import com.tencent.qphone.base.util.QLog;
 
 public class KandianConfigServlet$1
   implements Runnable
 {
-  public KandianConfigServlet$1(aqma paramaqma) {}
+  public KandianConfigServlet$1(arpl paramarpl) {}
   
   public void run()
   {
-    bkwm.a("remote_kd_tab_switch");
+    bmhv.a("remote_kd_tab_switch");
     QLog.i("KandianConfigServlet", 1, "preload sp file finish!");
   }
 }

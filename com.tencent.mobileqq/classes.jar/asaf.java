@@ -1,26 +1,12 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-
-public class asaf
-  implements View.OnLongClickListener
+class asaf
 {
-  public asaf(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  long jdField_a_of_type_Long;
+  long b;
   
-  public boolean onLongClick(View paramView)
+  public asaf(asaa paramasaa, long paramLong1, long paramLong2)
   {
-    if ((paramView == null) || (QfileBaseRecentFileTabView.a(this.a))) {
-      return false;
-    }
-    paramView.setSelected(true);
-    bgaz localbgaz = new bgaz();
-    localbgaz.a(2131367097, paramView.getContext().getString(2131692448));
-    localbgaz.a(2131365376, paramView.getContext().getString(2131691363));
-    ApolloUtil.a(paramView, QfileBaseRecentFileTabView.n(this.a), localbgaz);
-    this.a.a = bfue.a(paramView, localbgaz, new asag(this, paramView), new asai(this, paramView));
-    return true;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
   }
 }
 

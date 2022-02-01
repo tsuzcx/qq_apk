@@ -1,36 +1,33 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.contact.addfriendverifi.AddFriendBlockedInfo;
+import com.tencent.mobileqq.activity.contact.addfriendverifi.NewFriendVerifyBlockedListFragment;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 import mqq.os.MqqHandler;
 
 public class aixp
-  extends asbj
+  extends aixn
 {
-  private aixp(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment) {}
+  public aixp(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
   
-  protected void onFileTransferEnd(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public void a(boolean paramBoolean, List<AddFriendBlockedInfo> paramList, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ChatHistoryMediaBaseFragment", 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
+      QLog.i("BlockedListFragment", 2, "onGetAddFriendBlockedList, success=" + paramBoolean);
     }
-    paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramLong2);
-    if ((paramString1 != null) && (paramString1.nOpType == 6) && (bleg.a(paramInt2)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
+    if ((!paramBoolean) || (NewFriendVerifyBlockedListFragment.a(this.a) == null) || (NewFriendVerifyBlockedListFragment.a(this.a).isFinishing()) || (NewFriendVerifyBlockedListFragment.a(this.a) == null) || (NewFriendVerifyBlockedListFragment.a(this.a) == null)) {
+      return;
     }
+    this.a.a.removeMessages(1);
+    this.a.a.sendEmptyMessage(1);
   }
   
-  protected void onOfflineSendToWeiYunFaild(int paramInt, long paramLong, String paramString)
+  protected void b(boolean paramBoolean, Object paramObject)
   {
-    if ((bleg.a(paramInt)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
-    }
-  }
-  
-  protected void onOfflineSendToWeiYunSuccess(long paramLong, String paramString1, int paramInt, String paramString2)
-  {
-    if ((bleg.a(paramInt)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
+    if (paramBoolean)
+    {
+      this.a.a.removeMessages(1);
+      this.a.a.sendEmptyMessage(1);
     }
   }
 }

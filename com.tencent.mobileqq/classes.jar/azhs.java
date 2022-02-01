@@ -1,189 +1,153 @@
-import com.wx.voice.vad.WXVadData;
-import java.util.ArrayList;
-import java.util.HashSet;
+import android.database.Cursor;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SQLiteOpenHelper;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.NoColumnErrorHandler;
+import com.tencent.mobileqq.persistence.OGEntityManager;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Set;
+import java.util.List;
 
 public class azhs
+  extends OGEntityManager
 {
-  private final int jdField_a_of_type_Int = 20;
-  private bfzs jdField_a_of_type_Bfzs;
-  private Queue<byte[]> jdField_a_of_type_JavaUtilQueue = new LinkedList();
-  private Set<byte[]> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private final int jdField_b_of_type_Int = 7;
-  private Queue<byte[]> jdField_b_of_type_JavaUtilQueue = new LinkedList();
-  private int c = 3;
-  private int d = 0;
-  
-  public azhs()
+  public azhs(SQLiteOpenHelper paramSQLiteOpenHelper, String paramString)
   {
-    if ((this.jdField_a_of_type_Bfzs == null) || (this.jdField_a_of_type_Bfzs.a))
-    {
-      this.jdField_a_of_type_Bfzs = new bfzs();
-      this.jdField_a_of_type_Bfzs.c();
-      this.jdField_a_of_type_Bfzs.a();
-    }
+    super(paramSQLiteOpenHelper, paramString);
   }
   
-  private void a(byte[] paramArrayOfByte)
+  public List<MessageRecord> a(String paramString1, String paramString2, String paramString3, String[] paramArrayOfString, QQAppInterface paramQQAppInterface)
   {
-    if (paramArrayOfByte != null) {}
-    try
+    paramString1 = rawQuery(MessageRecord.class, paramString1, paramString2, paramString3, paramArrayOfString);
+    if ((paramString1 != null) && (paramString1.size() > 0))
     {
-      this.jdField_b_of_type_JavaUtilQueue.offer(paramArrayOfByte);
-      this.jdField_a_of_type_JavaUtilSet.remove(paramArrayOfByte);
-      return;
-    }
-    finally
-    {
-      paramArrayOfByte = finally;
-      throw paramArrayOfByte;
-    }
-  }
-  
-  /* Error */
-  private byte[] a()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 34	azhs:jdField_b_of_type_JavaUtilQueue	Ljava/util/Queue;
-    //   6: invokeinterface 68 1 0
-    //   11: ifeq +24 -> 35
-    //   14: sipush 3200
-    //   17: newarray byte
-    //   19: astore_1
-    //   20: aload_0
-    //   21: getfield 29	azhs:jdField_a_of_type_JavaUtilSet	Ljava/util/Set;
-    //   24: aload_1
-    //   25: invokeinterface 71 2 0
-    //   30: pop
-    //   31: aload_0
-    //   32: monitorexit
-    //   33: aload_1
-    //   34: areturn
-    //   35: aload_0
-    //   36: getfield 34	azhs:jdField_b_of_type_JavaUtilQueue	Ljava/util/Queue;
-    //   39: invokeinterface 75 1 0
-    //   44: checkcast 77	[B
-    //   47: astore_1
-    //   48: goto -28 -> 20
-    //   51: astore_1
-    //   52: aload_0
-    //   53: monitorexit
-    //   54: aload_1
-    //   55: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	56	0	this	azhs
-    //   19	29	1	arrayOfByte	byte[]
-    //   51	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	20	51	finally
-    //   20	31	51	finally
-    //   35	48	51	finally
-  }
-  
-  private void b()
-  {
-    try
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-      while (localIterator.hasNext())
+      paramString2 = paramString1.iterator();
+      while (paramString2.hasNext())
       {
-        byte[] arrayOfByte = (byte[])localIterator.next();
-        this.jdField_b_of_type_JavaUtilQueue.offer(arrayOfByte);
-      }
-      this.jdField_a_of_type_JavaUtilSet.clear();
-    }
-    finally {}
-  }
-  
-  private void b(byte[] paramArrayOfByte)
-  {
-    byte[] arrayOfByte = a();
-    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, paramArrayOfByte.length);
-    if (this.jdField_a_of_type_JavaUtilQueue.size() > 7) {
-      a((byte[])this.jdField_a_of_type_JavaUtilQueue.poll());
-    }
-    this.jdField_a_of_type_JavaUtilQueue.offer(arrayOfByte);
-  }
-  
-  public ArrayList<byte[]> a(byte[] paramArrayOfByte)
-  {
-    WXVadData localWXVadData = this.jdField_a_of_type_Bfzs.a(paramArrayOfByte);
-    ArrayList localArrayList = new ArrayList();
-    if (localWXVadData == null)
-    {
-      azeu.a("HelloQQWake", "vadOnlineProcess isError ");
-      localArrayList.add(paramArrayOfByte);
-      return localArrayList;
-    }
-    int i = this.c;
-    if (localWXVadData.RET_STATE == 2)
-    {
-      this.c = 2;
-      switch (i)
-      {
-      case 2: 
-      default: 
-        localArrayList.add(paramArrayOfByte);
+        paramString3 = (MessageRecord)paramString2.next();
+        paramQQAppInterface.getMessageFacade().tryUpdateUniseqByID(paramString3.frienduin, paramString3.istroop, paramString3);
       }
     }
-    for (;;)
+    return paramString1;
+  }
+  
+  public List<MessageRecord> a(String paramString, String[] paramArrayOfString, QQAppInterface paramQQAppInterface)
+  {
+    paramString = rawQuery(MessageRecord.class, paramString, paramArrayOfString);
+    if ((paramString != null) && (paramString.size() > 0))
     {
-      azeu.a("HelloQQWake", "status：" + this.c + ",preStatus:" + i + ",nextCount:" + this.d + ",onlinePreData.size:" + this.jdField_a_of_type_JavaUtilQueue.size() + ",outData.size:" + localArrayList.size());
-      return localArrayList;
-      this.d = 0;
-      break;
-      localArrayList.addAll(this.jdField_a_of_type_JavaUtilQueue);
-      this.jdField_a_of_type_JavaUtilQueue.clear();
-      b();
-      break;
-      switch (i)
+      paramArrayOfString = paramString.iterator();
+      while (paramArrayOfString.hasNext())
       {
-      default: 
-        break;
-      case 1: 
-        b(paramArrayOfByte);
-        break;
-      case 2: 
-        this.c = 3;
-        this.d = 1;
-        localArrayList.add(paramArrayOfByte);
-        break;
-      case 3: 
-        if (this.d > 20)
+        MessageRecord localMessageRecord = (MessageRecord)paramArrayOfString.next();
+        paramQQAppInterface.getMessageFacade().tryUpdateUniseqByID(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord);
+      }
+    }
+    return paramString;
+  }
+  
+  public Entity cursor2Entity(Class<? extends Entity> paramClass, String paramString, Cursor paramCursor, NoColumnErrorHandler paramNoColumnErrorHandler)
+  {
+    if (paramCursor.isBeforeFirst()) {
+      paramCursor.moveToFirst();
+    }
+    long l2 = -1L;
+    long l1 = l2;
+    try
+    {
+      if (paramCursor.getColumnIndex("_id") >= 0) {
+        l1 = paramCursor.getLong(paramCursor.getColumnIndex("_id"));
+      }
+    }
+    catch (Exception paramNoColumnErrorHandler)
+    {
+      try
+      {
+        if (paramClass.getName().equals(MessageRecord.class.getName()))
         {
-          this.d = 0;
-          this.c = 1;
-          this.jdField_a_of_type_JavaUtilQueue.clear();
-          b(paramArrayOfByte);
+          int i = paramCursor.getInt(paramCursor.getColumnIndex("msgtype"));
+          paramClass = paramCursor.getBlob(paramCursor.getColumnIndex("msgData"));
+          int j = paramCursor.getInt(paramCursor.getColumnIndex("extLong"));
+          paramNoColumnErrorHandler = paramCursor.getString(paramCursor.getColumnIndex("extStr"));
+          int k = paramCursor.getInt(paramCursor.getColumnIndex("istroop"));
+          MessageRecord localMessageRecord = bcsa.a(i, paramClass, j, paramNoColumnErrorHandler, k);
+          localMessageRecord.msgData = paramClass;
+          localMessageRecord._id = l1;
+          localMessageRecord.extLong = j;
+          localMessageRecord.extStr = paramNoColumnErrorHandler;
+          localMessageRecord.istroop = k;
+          localMessageRecord.selfuin = paramCursor.getString(paramCursor.getColumnIndex("selfuin"));
+          localMessageRecord.frienduin = paramCursor.getString(paramCursor.getColumnIndex("frienduin"));
+          localMessageRecord.senderuin = paramCursor.getString(paramCursor.getColumnIndex("senderuin"));
+          localMessageRecord.time = paramCursor.getLong(paramCursor.getColumnIndex("time"));
+          localMessageRecord.msgtype = paramCursor.getInt(paramCursor.getColumnIndex("msgtype"));
+          if (paramCursor.getInt(paramCursor.getColumnIndex("isread")) != 0)
+          {
+            bool = true;
+            localMessageRecord.isread = bool;
+            localMessageRecord.issend = paramCursor.getInt(paramCursor.getColumnIndex("issend"));
+            localMessageRecord.msgseq = paramCursor.getLong(paramCursor.getColumnIndex("msgseq"));
+            localMessageRecord.shmsgseq = paramCursor.getLong(paramCursor.getColumnIndex("shmsgseq"));
+            localMessageRecord.extraflag = paramCursor.getInt(paramCursor.getColumnIndex("extraflag"));
+            localMessageRecord.sendFailCode = paramCursor.getInt(paramCursor.getColumnIndex("sendFailCode"));
+            localMessageRecord.msgId = paramCursor.getLong(paramCursor.getColumnIndex("msgId"));
+            localMessageRecord.longMsgIndex = paramCursor.getInt(paramCursor.getColumnIndex("longMsgIndex"));
+            localMessageRecord.longMsgId = paramCursor.getInt(paramCursor.getColumnIndex("longMsgId"));
+            localMessageRecord.longMsgCount = paramCursor.getInt(paramCursor.getColumnIndex("longMsgCount"));
+            localMessageRecord.msgUid = paramCursor.getLong(paramCursor.getColumnIndex("msgUid"));
+            localMessageRecord.uniseq = paramCursor.getLong(paramCursor.getColumnIndex("uniseq"));
+            localMessageRecord.extInt = paramCursor.getInt(paramCursor.getColumnIndex("extInt"));
+            if (paramCursor.getInt(paramCursor.getColumnIndex("isValid")) == 0) {
+              break label708;
+            }
+            bool = true;
+            localMessageRecord.isValid = bool;
+            localMessageRecord.versionCode = paramCursor.getInt(paramCursor.getColumnIndex("versionCode"));
+            localMessageRecord.vipBubbleID = paramCursor.getLong(paramCursor.getColumnIndex("vipBubbleID"));
+            if (localMessageRecord.versionCode <= 0) {
+              localMessageRecord.msg = paramCursor.getString(paramCursor.getColumnIndex("msg"));
+            }
+            if ((l1 != -1L) && (paramString != null)) {}
+            for (localMessageRecord._status = 1001;; localMessageRecord._status = 1002)
+            {
+              localMessageRecord.postRead();
+              return localMessageRecord;
+            }
+          }
         }
         else
         {
-          this.d += 1;
-          localArrayList.add(paramArrayOfByte);
+          paramClass = super.cursor2Entity(paramClass, paramString, paramCursor, null);
+          return paramClass;
         }
-        break;
       }
+      catch (OutOfMemoryError paramClass)
+      {
+        return null;
+      }
+      catch (VerifyError paramClass)
+      {
+        for (;;)
+        {
+          return null;
+          paramNoColumnErrorHandler = paramNoColumnErrorHandler;
+          l1 = l2;
+          continue;
+          boolean bool = false;
+          continue;
+          label708:
+          bool = false;
+        }
+      }
+      catch (Exception paramClass) {}
     }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bfzs != null) {
-      this.jdField_a_of_type_Bfzs.a();
-    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     azhs
  * JD-Core Version:    0.7.0.1
  */

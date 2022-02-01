@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bjeo;
+import bkpw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -12,9 +12,8 @@ import com.tencent.mobileqq.mini.apkg.ApkgManager;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
-import com.tencent.mobileqq.mini.launch.AppBrandLaunchManager;
-import com.tencent.mobileqq.mini.launch.AppBrandLaunchManager.MiniAppSubProcessorInfo;
 import com.tencent.mobileqq.mini.launch.MiniSdkLauncher;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.MD5;
@@ -221,32 +220,22 @@ public class MiniCacheFreeManager
   private static void killSelf(MiniAppInfo paramMiniAppInfo)
   {
     if (paramMiniAppInfo == null) {}
-    AppBrandLaunchManager.MiniAppSubProcessorInfo localMiniAppSubProcessorInfo;
-    do
+    for (;;)
     {
       return;
       if (!paramMiniAppInfo.isEngineTypeMiniGame()) {}
-      for (boolean bool = true; bjeo.a(bool); bool = false)
+      for (boolean bool = true; bkpw.a(bool); bool = false)
       {
         MiniSDK.stopMiniApp(BaseApplicationImpl.getContext(), MiniSdkLauncher.convert(paramMiniAppInfo));
         return;
       }
-      localMiniAppSubProcessorInfo = AppBrandLaunchManager.g().getCacheApp(paramMiniAppInfo);
-    } while (localMiniAppSubProcessorInfo == null);
-    AppBrandLaunchManager.g().forceKillProcess(localMiniAppSubProcessorInfo);
-    QLog.i("MiniCacheFreeManager", 1, "kill process. " + paramMiniAppInfo.appId + "; " + localMiniAppSubProcessorInfo.processName);
+    }
   }
   
   private static void killSelf(String paramString)
   {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      AppBrandLaunchManager.MiniAppSubProcessorInfo localMiniAppSubProcessorInfo = AppBrandLaunchManager.g().getCacheApp(paramString);
-      if (localMiniAppSubProcessorInfo != null)
-      {
-        AppBrandLaunchManager.g().forceKillProcess(localMiniAppSubProcessorInfo);
-        QLog.i("MiniCacheFreeManager", 1, "kill process. " + paramString + "; " + localMiniAppSubProcessorInfo.processName);
-      }
+    if (!TextUtils.isEmpty(paramString)) {
+      MiniAppCmdUtil.getInstance().getAppInfoById(null, paramString, null, null, new MiniCacheFreeManager.5());
     }
   }
 }

@@ -6,7 +6,7 @@ class PageSwitchObserver$InstanceHolder
   
   static
   {
-    PageSwitchObserver.access$700(INSTANCE);
+    PageSwitchObserver.access$800(INSTANCE);
   }
 }
 

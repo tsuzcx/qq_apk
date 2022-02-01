@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.search.fragment.searchentry.nativemethod;
 
-import anaq;
 import android.content.Context;
 import android.text.TextUtils;
 import androidx.annotation.NonNull;
-import bbgh;
-import bbgk;
-import bjnd;
+import aodf;
+import bcmz;
+import bcnc;
+import bkyp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.search.fragment.searchentry.hippy.TKDSearchHistoryBean;
 import com.tencent.mtt.hippy.common.HippyMap;
@@ -98,13 +98,13 @@ class OpenUrlMethod
     if (!TextUtils.isEmpty(str1))
     {
       paramHippyMap = str1;
-      if (bjnd.a(str1)) {}
+      if (bkyp.a(str1)) {}
     }
     else
     {
-      paramHippyMap = bbgh.a(str2, 5, bbgh.b(10));
+      paramHippyMap = bcmz.a(str2, 5, bcmz.b(10));
     }
-    bbgk.a(this.app, this.context, paramHippyMap);
+    bcnc.a(this.app, this.context, paramHippyMap);
   }
   
   private void saveHistory(@NonNull HippyMap paramHippyMap)
@@ -124,7 +124,7 @@ class OpenUrlMethod
     paramHippyMap.setJsonStr(str2);
     paramHippyMap.setId(getId(str1, str5));
     paramHippyMap.setLabel(str4);
-    anaq.a().a(paramHippyMap);
+    aodf.a().a(paramHippyMap);
   }
   
   private boolean shouldSaveHistory(@NonNull HippyMap paramHippyMap)

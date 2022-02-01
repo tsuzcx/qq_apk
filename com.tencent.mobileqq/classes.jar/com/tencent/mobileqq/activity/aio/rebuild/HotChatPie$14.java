@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aezn;
-import ahgz;
-import bdzi;
+import afqz;
+import aibs;
+import bfgl;
 import com.tencent.mobileqq.bubble.ChatXListView;
 import com.tencent.mobileqq.troop.widget.RedDotRadioButton;
 import com.tencent.qphone.base.util.QLog;
@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 public class HotChatPie$14
   implements Runnable
 {
-  public HotChatPie$14(ahgz paramahgz) {}
+  public HotChatPie$14(aibs paramaibs) {}
   
   public void run()
   {

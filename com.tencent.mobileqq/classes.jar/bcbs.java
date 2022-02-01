@@ -1,12 +1,20 @@
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.AIOUtils.Proxy;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class bcbs
-  implements IMCoreProxyRoute.AIOUtils.Proxy
+public class bcbs
+  implements View.OnTouchListener
 {
-  public boolean getLogcatDBOperation()
+  public bcbs(ActiveEntitySearchFragment paramActiveEntitySearchFragment) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return AIOUtils.logcatDBOperation;
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

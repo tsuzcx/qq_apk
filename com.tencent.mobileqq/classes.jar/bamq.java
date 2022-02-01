@@ -1,9 +1,21 @@
-import PersonalState.UserProfile;
-import java.util.List;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public abstract interface bamq
+class bamq
+  implements MediaPlayer.OnCompletionListener
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, List<UserProfile> paramList, boolean paramBoolean3);
+  bamq(bamp parambamp, String paramString) {}
+  
+  public void onCompletion(MediaPlayer paramMediaPlayer)
+  {
+    paramMediaPlayer.release();
+    bamp.a(this.jdField_a_of_type_Bamp, null);
+    if (bamp.a(this.jdField_a_of_type_Bamp) != null) {
+      bamp.a(this.jdField_a_of_type_Bamp).b(this.jdField_a_of_type_JavaLangString);
+    }
+    bhcl.a(BaseApplicationImpl.getContext(), false);
+  }
 }
 
 

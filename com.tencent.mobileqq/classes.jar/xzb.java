@@ -1,178 +1,49 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.Message;
-import android.support.annotation.NonNull;
-import android.view.View;
-import com.tribe.async.dispatch.IEventReceiver;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
 
-public abstract class xzb
-  implements IEventReceiver
+class xzb
+  extends wwa
 {
-  @NonNull
-  public final xzd a;
-  public yan a;
-  protected long c;
-  
-  public xzb(@NonNull xzd paramxzd)
-  {
-    this.jdField_a_of_type_Xzd = paramxzd;
-  }
-  
-  private void g()
-  {
-    if (this.jdField_a_of_type_Yan == null) {
-      throw new IllegalStateException("have not attached ui");
-    }
-  }
-  
-  public void Q_()
-  {
-    g();
-  }
-  
-  public void R_()
-  {
-    g();
-  }
-  
-  @NonNull
-  public Context a()
-  {
-    g();
-    return this.jdField_a_of_type_Yan.a();
-  }
-  
-  @NonNull
-  public Resources a()
-  {
-    g();
-    return this.jdField_a_of_type_Yan.a().getResources();
-  }
-  
-  @NonNull
-  protected View a(int paramInt)
-  {
-    g();
-    View localView = this.jdField_a_of_type_Yan.a().findViewById(paramInt);
-    if (localView == null) {
-      throw new IllegalArgumentException("can not find view by id " + paramInt);
-    }
-    return localView;
-  }
-  
-  protected String a(int paramInt)
-  {
-    g();
-    return a().getString(paramInt);
-  }
-  
-  public xzc a(Class<? extends xzc> paramClass)
-  {
-    g();
-    return this.jdField_a_of_type_Xzd.a(paramClass);
-  }
-  
-  @NonNull
-  public yan a()
-  {
-    g();
-    return this.jdField_a_of_type_Yan;
-  }
+  xzb(xyz paramxyz) {}
   
   public void a()
   {
-    g();
+    super.a();
+    StoryMemoriesFragment.a(this.a.a, null);
   }
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public void a(int paramInt)
   {
-    g();
-  }
-  
-  public void a(int paramInt1, int paramInt2, Object paramObject)
-  {
-    a(paramInt2, paramObject);
-  }
-  
-  public void a(int paramInt, Object paramObject) {}
-  
-  public void a(int paramInt, @NonNull yjh paramyjh)
-  {
-    a(paramyjh);
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    g();
-  }
-  
-  public void a(Class<? extends xzc> paramClass, xzc paramxzc)
-  {
-    g();
-    this.jdField_a_of_type_Xzd.a(paramClass, paramxzc);
-  }
-  
-  public void a(@NonNull Error paramError) {}
-  
-  public void a(yan paramyan)
-  {
-    if (this.jdField_a_of_type_Yan != null) {
-      throw new IllegalStateException("attach context duplicate");
+    super.a(paramInt);
+    boolean bool = QQStoryContext.a().b(StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq);
+    int i;
+    int j;
+    String str1;
+    if (StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isVip)
+    {
+      i = 1;
+      j = StoryMemoriesFragment.a(StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_Int);
+      if (!bool) {
+        break label124;
+      }
+      str1 = "1";
+      label76:
+      if (i != 1) {
+        break label131;
+      }
     }
-    if (paramyan == null) {
-      throw new IllegalArgumentException("ui should not be null");
+    label131:
+    for (String str2 = "1";; str2 = "2")
+    {
+      ykv.a("memory", "share_suc", j, paramInt, new String[] { str1, str2, "", "" });
+      return;
+      i = 0;
+      break;
+      label124:
+      str1 = "2";
+      break label76;
     }
-    this.jdField_a_of_type_Yan = paramyan;
-  }
-  
-  @Deprecated
-  public void a(@NonNull yjh paramyjh) {}
-  
-  public boolean a()
-  {
-    g();
-    return false;
-  }
-  
-  protected boolean a(Message paramMessage)
-  {
-    return false;
-  }
-  
-  public void b(Bundle paramBundle)
-  {
-    g();
-  }
-  
-  public void b(@NonNull yjh paramyjh) {}
-  
-  public final boolean b(@NonNull Message paramMessage)
-  {
-    boolean bool = a(paramMessage);
-    paramMessage.recycle();
-    return bool;
-  }
-  
-  public void c()
-  {
-    g();
-  }
-  
-  public void d()
-  {
-    g();
-  }
-  
-  public void f()
-  {
-    g();
-  }
-  
-  public boolean isValidate()
-  {
-    return this.jdField_a_of_type_Xzd.isValidate();
   }
 }
 

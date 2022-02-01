@@ -1,10 +1,16 @@
-import android.os.IInterface;
-import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.TroopManager;
 
-public abstract interface aofg
-  extends IInterface
+public final class aofg
+  implements DialogInterface.OnClickListener
 {
-  public abstract ARScanStarFaceConfigInfo a();
+  public aofg(TroopManager paramTroopManager, String paramString) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
+  }
 }
 
 

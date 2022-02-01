@@ -1,16 +1,23 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemFriendInfoView;
+import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
+import com.tencent.qphone.base.util.QLog;
 
 class aftd
-  implements bdvu
+  implements FaceDecoder.DecodeTaskCompletionListener
 {
-  aftd(aftc paramaftc, String paramString) {}
+  aftd(afsv paramafsv) {}
   
-  public void a()
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if (aftc.a(this.jdField_a_of_type_Aftc).sessionInfo.curFriendUin.equals(this.jdField_a_of_type_JavaLangString)) {
-      aftc.a(this.jdField_a_of_type_Aftc).finish();
-    }
+    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {}
+    do
+    {
+      return;
+      afsv.a(this.a).a(paramBitmap, paramString);
+    } while (!QLog.isColorLevel());
+    QLog.d("intimate_relationship", 2, "onDecodeTaskCompleted, uin: " + paramString + ", type: " + paramInt2);
   }
 }
 

@@ -1,23 +1,17 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
+import java.util.Comparator;
 
 public class wma
-  extends xqa
+  implements Comparator<wly>
 {
-  public wma(QQStoryWatcherListActivity paramQQStoryWatcherListActivity) {}
-  
-  public void a(int paramInt, View paramView, Object paramObject, xsh paramxsh)
+  public int a(wly paramwly1, wly paramwly2)
   {
-    if ((paramObject instanceof QQUserUIItem))
-    {
-      paramView = (QQUserUIItem)paramObject;
-      vpl.a(this.a, 10, paramView.uid);
-      if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem != null)) {
-        xwa.a("home_page", "clk_head_list", xwa.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem), 0, new String[] { "1", xwa.a(this.a.jdField_a_of_type_Int), "", this.a.jdField_a_of_type_JavaLangString });
-      }
+    if (paramwly1.c < paramwly2.c) {
+      return 1;
     }
+    if (paramwly1.c > paramwly2.c) {
+      return -1;
+    }
+    return 0;
   }
 }
 

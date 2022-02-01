@@ -1,13 +1,23 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
 
-public class adme
+final class adme
   implements DialogInterface.OnClickListener
 {
-  public adme(GroupManagerActivity paramGroupManagerActivity) {}
+  adme(adnn paramadnn, adnm paramadnm) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.jdField_a_of_type_Adnn.a) {
+      bdla.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "2", "", "", "");
+    }
+    if (this.jdField_a_of_type_Adnm != null) {
+      this.jdField_a_of_type_Adnm.onCancel();
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+  }
 }
 
 

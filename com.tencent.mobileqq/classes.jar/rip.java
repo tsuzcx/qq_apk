@@ -1,23 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyTopicSelectionFragment;
-import java.util.List;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class rip
-  extends pkt
+  extends ClickableSpan
 {
-  public rip(ReadInJoyTopicSelectionFragment paramReadInJoyTopicSelectionFragment) {}
+  public rip(ComponentHeaderUgc paramComponentHeaderUgc, ArticleInfo paramArticleInfo) {}
   
-  public void a(List<String> paramList, List<TopicInfo> paramList1)
+  public void onClick(View paramView)
   {
-    if (paramList.size() == 0)
-    {
-      ReadInJoyTopicSelectionFragment.a(this.a).clear();
-      ReadInJoyTopicSelectionFragment.a(this.a).addAll(paramList1);
-      this.a.a.clear();
-      this.a.a.addAll(ReadInJoyTopicSelectionFragment.a(paramList1));
-      ReadInJoyTopicSelectionFragment.a(this.a).notifyDataSetChanged();
-      pay.a(ReadInJoyTopicSelectionFragment.a(this.a), ReadInJoyTopicSelectionFragment.a(this.a), "0");
-    }
+    pqx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.a.a(), 4, false, 7, false);
+    pqb.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.a.e());
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-14132075);
+    paramTextPaint.setTextSize(AIOUtils.sp2TextSize(2, 14, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.getResources()));
   }
 }
 

@@ -2,12 +2,12 @@ package com.tencent.qapmsdk.resource;
 
 public final class R$layout
 {
-  public static final int notification_action = 2131559521;
-  public static final int notification_action_tombstone = 2131559522;
-  public static final int notification_template_custom_big = 2131559525;
-  public static final int notification_template_icon_group = 2131559526;
-  public static final int notification_template_part_chronometer = 2131559527;
-  public static final int notification_template_part_time = 2131559528;
+  public static final int notification_action = 2131559554;
+  public static final int notification_action_tombstone = 2131559555;
+  public static final int notification_template_custom_big = 2131559558;
+  public static final int notification_template_icon_group = 2131559559;
+  public static final int notification_template_part_chronometer = 2131559560;
+  public static final int notification_template_part_time = 2131559561;
 }
 
 

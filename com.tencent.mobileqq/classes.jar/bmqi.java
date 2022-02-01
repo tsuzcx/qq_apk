@@ -1,13 +1,13 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
+import cooperation.wadl.ipc.WadlResult;
+import java.util.ArrayList;
 
-public class bmqi
+public abstract interface bmqi
 {
-  public static Bundle a(@NonNull Intent paramIntent)
-  {
-    return paramIntent.getBundleExtra("state");
-  }
+  public abstract void onQueryCallback(ArrayList<WadlResult> paramArrayList);
+  
+  public abstract void onQueryCallbackVia(ArrayList<WadlResult> paramArrayList);
+  
+  public abstract void onWadlTaskStatusChanged(WadlResult paramWadlResult);
 }
 
 

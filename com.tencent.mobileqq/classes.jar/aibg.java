@@ -1,31 +1,47 @@
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
-import com.tencent.mobileqq.activity.contacts.base.HeaderScrollView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
-public class aibg
-  implements aiof
+class aibg
+  implements bkzq
 {
-  public aibg(TroopView paramTroopView) {}
+  aibg(aiav paramaiav, boolean paramBoolean, bkzi parambkzi) {}
   
-  public void a(int paramInt, boolean paramBoolean, Object paramObject)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("addContacts.TroopView", 2, "onRefreshResult. position:" + paramInt + " success:" + paramBoolean);
-    }
-    paramObject = TroopView.a(this.a);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    switch (paramInt)
     {
-      paramObject = paramObject.obtainMessage(14, paramInt, i);
-      TroopView.a(this.a).sendMessage(paramObject);
-      return;
     }
-  }
-  
-  public void ae_()
-  {
-    if ((TroopView.a(this.a) != null) && (!TroopView.a(this.a).a())) {
-      TroopView.a(this.a).scrollTo(0, TroopView.a(this.a).a());
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_Bkzi.dismiss();
+        return;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Aiav.n();
+      }
+      else
+      {
+        this.jdField_a_of_type_Aiav.l();
+        continue;
+        if (this.jdField_a_of_type_Boolean)
+        {
+          this.jdField_a_of_type_Aiav.l();
+        }
+        else
+        {
+          this.jdField_a_of_type_Aiav.k();
+          continue;
+          if (this.jdField_a_of_type_Boolean) {
+            this.jdField_a_of_type_Aiav.k();
+          }
+        }
+      }
     }
   }
 }

@@ -1,51 +1,30 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.hardware.SensorManager;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-public class babm
+class babm
+  extends BroadcastReceiver
 {
-  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
-  private babo jdField_a_of_type_Babo;
-  private babp jdField_a_of_type_Babp;
-  private boolean jdField_a_of_type_Boolean;
+  babm(babk parambabk) {}
   
-  public static babm a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return babq.a();
-  }
-  
-  public int a(Context paramContext, babp parambabp)
-  {
-    QLog.d("MicroMsg.LightSensor", 1, "SensorShower start");
-    if (this.jdField_a_of_type_Boolean)
-    {
-      QLog.d("MicroMsg.LightSensor", 1, "[SensorShower.start] light sensor has started");
-      return 2;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)paramContext.getApplicationContext().getSystemService("sensor"));
-    paramContext = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(5);
+    paramContext = paramIntent.getBundleExtra("key_bundle_data");
     if (paramContext != null)
     {
-      this.jdField_a_of_type_Babo = new babo(this, null);
-      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Babo, paramContext, 3);
-      this.jdField_a_of_type_Babp = parambabp;
-      return 0;
+      boolean bool = paramContext.getBoolean("onTagChanged");
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfilePersonalityLabelComponent", 2, String.format("onReceive addTag=%s", new Object[] { Boolean.valueOf(bool) }));
+      }
+      if (bool) {
+        ((azqg)babk.b(this.a).getBusinessHandler(BusinessHandlerFactory.PROFILE_PERSONALITY_LABEL)).a(((azrb)babk.k(this.a)).a.a, 0);
+      }
     }
-    QLog.e("MicroMsg.LightSensor", 1, "[SensorShower.start] System do not have lightSensor");
-    return 1;
-  }
-  
-  public void a()
-  {
-    QLog.d("MicroMsg.LightSensor", 1, "sensorshower stop");
-    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_AndroidHardwareSensorManager == null))
-    {
-      QLog.d("MicroMsg.LightSensor", 1, "sensorshower stop mHasStarted is false or mSensorShower is null");
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Babo);
   }
 }
 

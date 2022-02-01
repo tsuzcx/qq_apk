@@ -1,7 +1,15 @@
-import kotlin.Metadata;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/playfeedback/ScreenCaptureHelper$Companion;", "", "()V", "BITMAP_CONFIG", "Landroid/graphics/Bitmap$Config;", "getBITMAP_CONFIG", "()Landroid/graphics/Bitmap$Config;", "DEFAULT_CAPTURE_SCALE", "", "ERROR_CAPTURE", "", "ERROR_SAVE_FILE", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class shw {}
+public abstract interface shw
+{
+  public abstract void a(long paramLong);
+  
+  public abstract void a(VideoInfo paramVideoInfo, boolean paramBoolean);
+  
+  public abstract void a(swu paramswu);
+  
+  public abstract void d();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

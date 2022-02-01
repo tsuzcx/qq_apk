@@ -1,16 +1,41 @@
-import com.tencent.mobileqq.activity.aio.doodle.LoadDataJob;
-import java.util.Comparator;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGridItem;
+import com.tencent.mobileqq.data.ActivateFriendItem;
+import java.util.ArrayList;
 
 public class aflz
-  implements Comparator
+  extends aohf
 {
-  public aflz(LoadDataJob paramLoadDataJob) {}
+  public aflz(ActivateFriendGrid paramActivateFriendGrid) {}
   
-  public int compare(Object paramObject1, Object paramObject2)
+  public void b()
   {
-    paramObject1 = (afml)paramObject1;
-    paramObject2 = (afml)paramObject2;
-    return paramObject1.a - paramObject2.a;
+    if ((ActivateFriendGrid.a(this.a) == null) || (ActivateFriendGrid.b(this.a) == null)) {
+      return;
+    }
+    int i = 0;
+    label23:
+    if (i < ActivateFriendGrid.a(this.a).size())
+    {
+      if (!this.a.a.c(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin, 2)) {
+        break label122;
+      }
+      ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setChecked(false);
+      ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689516));
+    }
+    for (;;)
+    {
+      i += 1;
+      break label23;
+      break;
+      label122:
+      if (this.a.a.b(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin, 2))
+      {
+        ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setChecked(false);
+        ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689519));
+      }
+    }
   }
 }
 

@@ -1,43 +1,103 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
+import com.tencent.mobileqq.multicard.RecommendPerson;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-final class axhr
-  implements QQPermissionCallback
+public class axhr
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  axhr(Context paramContext, String paramString, AppActivity paramAppActivity, Intent paramIntent) {}
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public List<RecommendPerson> a;
+  public List<axhs> b;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public axhr(axhq paramaxhq, View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyPublishMenuHelper", 2, "permissions deny");
+    super(paramView);
+    this.jdField_a_of_type_JavaUtilList = ((List)paramaxhq.a.get(Integer.valueOf(paramInt)));
+    if (this.jdField_a_of_type_JavaUtilList == null) {}
+    for (;;)
+    {
+      return;
+      this.b = new ArrayList(this.jdField_a_of_type_JavaUtilList.size());
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380235));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131376905));
+      paramView = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramView.hasNext())
+      {
+        Object localObject = (RecommendPerson)paramView.next();
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopMemberRecommend.Adapter", 2, "ActiveViewHolder, person.uin =" + ((RecommendPerson)localObject).uin + " size() = " + this.jdField_a_of_type_JavaUtilList.size());
+        }
+        localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext()).inflate(2131563006, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+        RelativeLayout localRelativeLayout = (RelativeLayout)((View)localObject).findViewById(2131376906);
+        ImageView localImageView = (ImageView)((View)localObject).findViewById(2131369579);
+        TextView localTextView1 = (TextView)((View)localObject).findViewById(2131380236);
+        TextView localTextView2 = (TextView)((View)localObject).findViewById(2131380237);
+        Button localButton = (Button)((View)localObject).findViewById(2131364074);
+        a(AIOUtils.dp2px(85.0F, axhq.a(paramaxhq).getResources()), this.jdField_a_of_type_JavaUtilList.size(), localRelativeLayout);
+        axhs localaxhs = new axhs(this);
+        localaxhs.jdField_a_of_type_AndroidWidgetRelativeLayout = localRelativeLayout;
+        localaxhs.jdField_a_of_type_AndroidWidgetImageView = localImageView;
+        localaxhs.jdField_a_of_type_AndroidWidgetTextView = localTextView1;
+        localaxhs.b = localTextView2;
+        localaxhs.jdField_a_of_type_AndroidWidgetButton = localButton;
+        this.b.add(localaxhs);
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
+      }
     }
-    bfur.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  private void a(int paramInt1, int paramInt2, RelativeLayout paramRelativeLayout)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyPublishMenuHelper", 2, "permissions grant");
-    }
-    try
+    if (paramInt2 > 1)
     {
-      axhq.a(this.jdField_a_of_type_AndroidContentContext).edit().putString("camera_photo_path", this.jdField_a_of_type_JavaLangString).commit();
-      this.jdField_a_of_type_MqqAppAppActivity.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 1001);
+      int i = ViewUtils.getScreenWidth();
+      paramInt2 = (i - paramInt2 * paramInt1) / (paramInt2 * paramInt2);
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramRelativeLayout.getLayoutParams();
+      localLayoutParams.leftMargin = paramInt2;
+      localLayoutParams.rightMargin = paramInt2;
+      paramRelativeLayout.setLayoutParams(localLayoutParams);
       if (QLog.isColorLevel()) {
-        QLog.d("NearbyPublishMenuHelper", 2, "takePhoto");
+        QLog.d("TroopMemberRecommend.Adapter", 2, "onCreateViewHolder, rlWidth =" + paramInt1 + " screenWidth =" + i + " margin = " + paramInt2);
       }
-      return;
     }
-    catch (Exception paramArrayOfString)
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
     {
-      QLog.e("NearbyPublishMenuHelper", 1, paramArrayOfString, new Object[0]);
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131690618, 0).a();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (axhq.a(this.jdField_a_of_type_Axhq) != null)
+      {
+        axhq.a(this.jdField_a_of_type_Axhq).a((RecyclerView.ViewHolder)paramView.getTag(2131376906), (RecommendPerson)paramView.getTag(2131364074));
+        continue;
+        if (axhq.a(this.jdField_a_of_type_Axhq) != null) {
+          axhq.a(this.jdField_a_of_type_Axhq).b((RecyclerView.ViewHolder)paramView.getTag(2131376906), (RecommendPerson)paramView.getTag(2131364074));
+        }
+      }
     }
   }
 }

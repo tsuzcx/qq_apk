@@ -1,20 +1,16 @@
+import android.app.Dialog;
+
 public abstract interface asrm
 {
-  public abstract long a();
+  public abstract int a();
   
-  public abstract String a();
+  public abstract Dialog a();
   
-  public abstract void a(long paramLong);
+  public abstract void a(Dialog paramDialog);
   
-  public abstract void a(ashw paramashw);
+  public abstract void c();
   
-  public abstract void a(String paramString);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract String b();
-  
-  public abstract String c();
+  public abstract void d();
 }
 
 

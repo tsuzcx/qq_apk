@@ -7,7 +7,7 @@ import com.tencent.biz.richframework.network.cache.CacheHelper;
 import com.tencent.biz.richframework.network.observer.VSDispatchObserver;
 import com.tencent.biz.richframework.network.request.VSBaseRequest;
 import com.tencent.mobileqq.pb.MessageMicro;
-import xvv;
+import ykq;
 
 class VSBaseServlet$1
   implements Runnable
@@ -23,17 +23,17 @@ class VSBaseServlet$1
       localObject = CacheHelper.fileCache().getStream((String)localObject);
       if ((localObject == null) || (((Cache.CacheInputStream)localObject).getInputStream() == null))
       {
-        xvv.b("VSNetworkHelper| Protocol Cache", "cache not found or bundle deserialized failed,CmdName:" + this.val$req.getCmdName() + " Seq:" + this.val$req.getCurrentSeq());
+        ykq.b("VSNetworkHelper| Protocol Cache", "cache not found or bundle deserialized failed,CmdName:" + this.val$req.getCmdName() + " Seq:" + this.val$req.getCurrentSeq());
         return;
       }
       localObject = this.val$req.decode(VSBaseServlet.access$000(this.this$0, ((Cache.CacheInputStream)localObject).getInputStream()));
       VSNetworkHelper.getDispatchObserver().sendCacheToTargetCallBack(this.val$req, (MessageMicro)localObject);
-      xvv.b("VSNetworkHelper| Protocol Cache", "send Cache Success costTime:" + (System.currentTimeMillis() - l) + ",CmdName:" + this.val$req.getCmdName() + " Seq:" + this.val$req.getCurrentSeq());
+      ykq.b("VSNetworkHelper| Protocol Cache", "send Cache Success costTime:" + (System.currentTimeMillis() - l) + ",CmdName:" + this.val$req.getCmdName() + " Seq:" + this.val$req.getCurrentSeq());
       return;
     }
     catch (Exception localException)
     {
-      xvv.d("VSNetworkHelper| Protocol Cache", localException.toString());
+      ykq.d("VSNetworkHelper| Protocol Cache", localException.toString());
     }
   }
 }

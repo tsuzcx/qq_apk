@@ -1,27 +1,27 @@
 package com.tencent.open.downloadnew;
 
-import bhzm;
-import bibs;
-import biby;
-import bicf;
+import bjko;
+import bjmu;
+import bjna;
+import bjnh;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class DownloadApi$6
   implements Runnable
 {
-  public DownloadApi$6(String paramString, bicf parambicf) {}
+  public DownloadApi$6(String paramString, bjnh parambjnh) {}
   
   public void run()
   {
-    bhzm.a(bibs.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia enter");
+    bjko.a(bjmu.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia enter");
     try
     {
       new ArrayList();
-      List localList = biby.a().b(this.jdField_a_of_type_JavaLangString);
-      bhzm.a(bibs.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia result = " + localList);
-      if (this.jdField_a_of_type_Bicf != null) {
-        this.jdField_a_of_type_Bicf.a(localList);
+      List localList = bjna.a().b(this.jdField_a_of_type_JavaLangString);
+      bjko.a(bjmu.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia result = " + localList);
+      if (this.jdField_a_of_type_Bjnh != null) {
+        this.jdField_a_of_type_Bjnh.a(localList);
       }
       return;
     }
@@ -29,9 +29,9 @@ public final class DownloadApi$6
     {
       do
       {
-        bhzm.c(bibs.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia Exception>>>", localException);
-      } while (this.jdField_a_of_type_Bicf == null);
-      this.jdField_a_of_type_Bicf.a(-1, localException.getMessage());
+        bjko.c(bjmu.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia Exception>>>", localException);
+      } while (this.jdField_a_of_type_Bjnh == null);
+      this.jdField_a_of_type_Bjnh.a(-1, localException.getMessage());
     }
   }
 }

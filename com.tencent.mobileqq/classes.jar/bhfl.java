@@ -1,21 +1,19 @@
-import android.view.View;
-import com.tencent.image.ApngDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.vas.avatar.VasFaceManager;
-import com.tencent.mobileqq.widget.NewStyleDropdownView;
-
 public class bhfl
-  extends URLDrawableDownListener.Adapter
 {
-  public bhfl(NewStyleDropdownView paramNewStyleDropdownView) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public static long a(String paramString)
   {
-    paramView = paramURLDrawable.getCurrDrawable();
-    if ((paramView instanceof ApngDrawable)) {
-      VasFaceManager.a(null, (ApngDrawable)paramView);
+    return a(paramString, -1L);
+  }
+  
+  public static long a(String paramString, long paramLong)
+  {
+    try
+    {
+      long l = Long.parseLong(paramString);
+      return l;
     }
+    catch (NumberFormatException paramString) {}
+    return paramLong;
   }
 }
 

@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.comment;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import odq;
-import otl;
-import oto;
+import olh;
+import pbn;
+import pbq;
 
 public class ReadInJoyCommentReportManager$1
   implements Runnable
 {
-  public ReadInJoyCommentReportManager$1(otl paramotl, String paramString1, String paramString2) {}
+  public ReadInJoyCommentReportManager$1(pbn parampbn, String paramString1, String paramString2) {}
   
   public void run()
   {
-    odq.a(otl.a(this.this$0), oto.a(otl.a(this.this$0)), this.a, this.a, 0, 0, String.valueOf(otl.a(this.this$0).innerUniqueID), String.valueOf(otl.a(this.this$0).mStrategyId), otl.a(this.this$0).innerUniqueID, this.b, false);
+    olh.a(pbn.a(this.this$0), pbq.a(pbn.a(this.this$0)), this.a, this.a, 0, 0, String.valueOf(pbn.a(this.this$0).innerUniqueID), String.valueOf(pbn.a(this.this$0).mStrategyId), pbn.a(this.this$0).innerUniqueID, this.b, false);
   }
 }
 

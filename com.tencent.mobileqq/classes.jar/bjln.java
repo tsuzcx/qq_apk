@@ -1,25 +1,29 @@
-import android.annotation.TargetApi;
-import android.media.AudioManager;
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.TraeAudioManager;
-import com.tencent.sharp.jni.TraeAudioManager.TraeAudioManagerLooper;
-
 public class bjln
-  implements AudioManager.OnAudioFocusChangeListener
 {
-  public bjln(TraeAudioManager.TraeAudioManagerLooper paramTraeAudioManagerLooper) {}
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
   
-  @TargetApi(8)
-  public void onAudioFocusChange(int paramInt)
+  public bjln()
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("TraeAudioManager", 2, "focusChange:" + paramInt + " _focusSteamType:" + this.a.c + " currMode:" + TraeAudioManager.a(this.a.this$0).getMode() + " _activeMode:" + this.a.this$0.a);
+    this.jdField_a_of_type_Long = 259200L;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    paramObject = (bjln)paramObject;
+    if (paramObject != null) {
+      return paramObject.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString);
     }
-    if (paramInt == -1) {}
-    while ((paramInt == -2) || (paramInt == -3) || (paramInt != 1)) {
-      return;
-    }
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return this.jdField_a_of_type_JavaLangString.hashCode();
   }
 }
 

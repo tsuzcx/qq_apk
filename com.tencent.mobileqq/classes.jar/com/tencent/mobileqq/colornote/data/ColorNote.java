@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.colornote.data;
 
 import android.os.Bundle;
-import aple;
-import aplm;
+import aqoi;
+import aqoq;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
@@ -69,17 +69,17 @@ public class ColorNote
     }
   }
   
-  public ColorNote(aple paramaple)
+  public ColorNote(aqoi paramaqoi)
   {
-    this.mServiceType = paramaple.jdField_a_of_type_Int;
-    this.mSubType = paramaple.jdField_a_of_type_JavaLangString;
-    this.mSubTitle = paramaple.c;
-    this.mMainTitle = paramaple.jdField_b_of_type_JavaLangString;
-    this.mPicUrl = paramaple.d;
-    this.mReserve = paramaple.jdField_a_of_type_ArrayOfByte;
-    this.mExtra = paramaple.jdField_b_of_type_Int;
-    this.mExtLong = paramaple.jdField_a_of_type_Long;
-    this.mUniKey = (paramaple.jdField_a_of_type_Int + paramaple.jdField_a_of_type_JavaLangString + paramaple.jdField_b_of_type_Int);
+    this.mServiceType = paramaqoi.jdField_a_of_type_Int;
+    this.mSubType = paramaqoi.jdField_a_of_type_JavaLangString;
+    this.mSubTitle = paramaqoi.c;
+    this.mMainTitle = paramaqoi.jdField_b_of_type_JavaLangString;
+    this.mPicUrl = paramaqoi.d;
+    this.mReserve = paramaqoi.jdField_a_of_type_ArrayOfByte;
+    this.mExtra = paramaqoi.jdField_b_of_type_Int;
+    this.mExtLong = paramaqoi.jdField_a_of_type_Long;
+    this.mUniKey = (paramaqoi.jdField_a_of_type_Int + paramaqoi.jdField_a_of_type_JavaLangString + paramaqoi.jdField_b_of_type_Int);
     this.mTime = NetConnInfoCenter.getServerTime();
     if (((this.mServiceType == -1) || (StringUtil.isEmpty(this.mSubType))) && (QLog.isColorLevel())) {
       QLog.d("ColorNote", 2, "Illegal param mServiceType = " + this.mServiceType + ", mSubType = " + this.mSubType);
@@ -120,7 +120,7 @@ public class ColorNote
     {
       return false;
       paramObject = (ColorNote)paramObject;
-    } while ((this.mServiceType != paramObject.getServiceType()) || (!aplm.a(this.mSubType, paramObject.getSubType())) || (!aplm.a(this.mMainTitle, paramObject.getMainTitle())) || (!aplm.a(this.mSubTitle, paramObject.getSubTitle())) || (this.mExtra != paramObject.mExtra));
+    } while ((this.mServiceType != paramObject.getServiceType()) || (!aqoq.a(this.mSubType, paramObject.getSubType())) || (!aqoq.a(this.mMainTitle, paramObject.getMainTitle())) || (!aqoq.a(this.mSubTitle, paramObject.getSubTitle())) || (this.mExtra != paramObject.mExtra));
     return true;
   }
   

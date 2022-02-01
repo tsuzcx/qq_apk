@@ -1,19 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.model.RIJUserLevelRequestModule.UserLevelInfo;
 
 class qqt
-  implements View.OnClickListener
+  implements qha
 {
-  qqt(qqm paramqqm) {}
+  qqt(qqs paramqqs) {}
   
-  public void onClick(View paramView)
+  public void a(RIJUserLevelRequestModule.UserLevelInfo paramUserLevelInfo)
   {
-    pet localpet = this.a.jdField_a_of_type_Slt.a().a();
-    if (localpet != null) {
-      localpet.a(null, ((pvc)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    qqs.a(this.a);
   }
 }
 

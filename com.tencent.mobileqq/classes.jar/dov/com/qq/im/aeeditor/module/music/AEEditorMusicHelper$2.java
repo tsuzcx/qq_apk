@@ -1,20 +1,20 @@
 package dov.com.qq.im.aeeditor.module.music;
 
+import aang;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
-import bmbx;
+import bnrh;
 import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
 import com.tencent.tavcut.session.TAVCutVideoSession;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import zxu;
 
 final class AEEditorMusicHelper$2
   implements Runnable
 {
-  AEEditorMusicHelper$2(TAVCutVideoSession paramTAVCutVideoSession, List paramList, long paramLong1, long paramLong2, long paramLong3, zxu paramzxu) {}
+  AEEditorMusicHelper$2(TAVCutVideoSession paramTAVCutVideoSession, List paramList, long paramLong1, long paramLong2, long paramLong3, aang paramaang) {}
   
   public void run()
   {
@@ -42,11 +42,11 @@ final class AEEditorMusicHelper$2
         ByteArrayOutputStream localByteArrayOutputStream;
         long l3;
         Object localObject2;
-        bmbx.a("AEEditorMusicHelper", "FrameVideoHelper.start(), error=", localThrowable);
-        if (this.jdField_a_of_type_Zxu == null) {
+        bnrh.a("AEEditorMusicHelper", "FrameVideoHelper.start(), error=", localThrowable);
+        if (this.jdField_a_of_type_Aang == null) {
           return;
         }
-        this.jdField_a_of_type_Zxu.a(false, localArrayList, l1);
+        this.jdField_a_of_type_Aang.a(false, localArrayList, l1);
         return;
         l1 = l2;
         l2 += localObject2.length;
@@ -74,17 +74,17 @@ final class AEEditorMusicHelper$2
         if (l3 >= this.c)
         {
           l1 = l2;
-          bmbx.b("AEEditorMusicHelper", "[extractMultiCutFrameForSmartMusic] out of limit readBytes:" + l3 + ", frameCount:" + localArrayList.size());
+          bnrh.b("AEEditorMusicHelper", "[extractMultiCutFrameForSmartMusic] out of limit readBytes:" + l3 + ", frameCount:" + localArrayList.size());
         }
       }
       else
       {
         l1 = l2;
-        if (this.jdField_a_of_type_Zxu == null) {
+        if (this.jdField_a_of_type_Aang == null) {
           return;
         }
         l1 = l2;
-        this.jdField_a_of_type_Zxu.a(true, localArrayList, l2);
+        this.jdField_a_of_type_Aang.a(true, localArrayList, l2);
         return;
       }
     }

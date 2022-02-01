@@ -1,597 +1,881 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.app.CameraEmoRoamingHandler.1;
-import com.tencent.mobileqq.app.CameraEmoRoamingHandler.2;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.ChatPieApolloViewController.2;
+import com.tencent.mobileqq.apollo.ChatPieApolloViewController.3;
+import com.tencent.mobileqq.apollo.ChatPieApolloViewController.4;
+import com.tencent.mobileqq.apollo.ChatPieApolloViewController.5;
+import com.tencent.mobileqq.apollo.ChatPieApolloViewController.6;
+import com.tencent.mobileqq.apollo.barrage.BarrageView;
+import com.tencent.mobileqq.apollo.data.ApolloDress;
+import com.tencent.mobileqq.apollo.script.SpriteUIHandler;
+import com.tencent.mobileqq.apollo.view.InputGlobalLayoutListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.CameraEmotionData;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ApolloBaseInfo;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.widget.XEditTextEx;
+import java.io.File;
+import java.lang.ref.WeakReference;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import tencent.im.selfgif.CameraEmotionRoaming_sso.DelReq;
-import tencent.im.selfgif.CameraEmotionRoaming_sso.DelRet;
-import tencent.im.selfgif.CameraEmotionRoaming_sso.DelRsp;
-import tencent.im.selfgif.CameraEmotionRoaming_sso.GetListReq;
-import tencent.im.selfgif.CameraEmotionRoaming_sso.GetListRsp;
-import tencent.im.selfgif.CameraEmotionRoaming_sso.ImgInfo;
-import tencent.im.selfgif.CameraEmotionRoaming_sso.ReqBody;
-import tencent.im.selfgif.CameraEmotionRoaming_sso.RspBody;
-import tencent.im.selfgif.CameraEmotionRoaming_sso.UpLoadReq;
-import tencent.im.selfgif.CameraEmotionRoaming_sso.UpLoadRsp;
-import tencent.im.selfgif.CameraEmotionRoaming_sso.UpLoadState;
-import tencent.im.selfgif.CameraEmotionRoaming_sso.UpLoadStateReq;
-import tencent.im.selfgif.CameraEmotionRoaming_sso.UpLoadStateRet;
-import tencent.im.selfgif.CameraEmotionRoaming_sso.UpLoadStateRsp;
-import tencent.im.selfgif.CameraEmotionRoaming_sso.UploadImgInfo;
+import mqq.os.MqqHandler;
 
 public class amos
-  extends amqc<CameraEmotionData>
+  implements agkf
 {
-  private ConcurrentHashMap<Integer, CameraEmotionData> a = new ConcurrentHashMap();
+  private static boolean jdField_c_of_type_Boolean = true;
+  private int jdField_a_of_type_Int;
+  public anmd a;
+  public ApolloRender a;
+  private ApolloSurfaceView jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView;
+  public ApolloTextureView a;
+  public BarrageView a;
+  public boolean a;
+  private int jdField_b_of_type_Int;
+  private ApolloTextureView jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView;
+  private volatile boolean jdField_b_of_type_Boolean;
+  private int jdField_c_of_type_Int;
   
-  protected amos(QQAppInterface paramQQAppInterface)
+  public amos()
   {
-    super(paramQQAppInterface);
+    this.jdField_a_of_type_Anmd = new amot(this);
   }
   
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private void d()
   {
-    int j = paramToServiceMsg.extraData.getInt("camera_emo_upload_id");
-    QLog.d("CameraEmoRoamingHandler", 1, new Object[] { "timtest handlePrepareUploadInfo start, ", Integer.valueOf(j) });
-    CameraEmotionData localCameraEmotionData = (CameraEmotionData)this.a.get(Integer.valueOf(j));
-    if ((paramObject == null) || (paramFromServiceMsg == null) || (!paramFromServiceMsg.isSuccess()))
+    ApolloRender localApolloRender = this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender;
+    if (localApolloRender != null)
     {
-      paramObject = new StringBuilder().append("fail to  handlePrepareUploadInfo error code is ");
-      if (paramFromServiceMsg == null) {}
-      for (paramToServiceMsg = "null";; paramToServiceMsg = Integer.valueOf(paramFromServiceMsg.getResultCode()))
-      {
-        QLog.e("CameraEmoRoamingHandler", 1, paramToServiceMsg);
-        a(1, false, Integer.valueOf(12), localCameraEmotionData);
-        this.a.remove(Integer.valueOf(j));
-        return;
+      String str = angg.a(new File(anka.I + "cm3d.js"));
+      if (!TextUtils.isEmpty(str)) {
+        localApolloRender.queueRenderTask(new ChatPieApolloViewController.3(this, localApolloRender, str));
+      }
+      if (!TextUtils.isEmpty(amme.e)) {
+        localApolloRender.queueRenderTask(new ChatPieApolloViewController.4(this, localApolloRender));
       }
     }
-    paramToServiceMsg = new CameraEmotionRoaming_sso.RspBody();
-    for (;;)
+  }
+  
+  private void g(BaseChatPie paramBaseChatPie)
+  {
+    amme localamme = (amme)paramBaseChatPie.app.getManager(QQManagerFactory.APOLLO_MANAGER);
+    Object localObject1 = paramBaseChatPie.app.getCurrentAccountUin();
+    Object localObject2 = localamme.b((String)localObject1);
+    int i;
+    if (localObject2 != null)
     {
-      int i;
-      boolean bool;
-      try
+      ApolloDress localApolloDress = ((ApolloBaseInfo)localObject2).getApolloPetDress();
+      if ((localApolloDress != null) && (((ApolloBaseInfo)localObject2).hasPet) && (localApolloDress.jdField_a_of_type_JavaUtilHashMap != null) && (!localApolloDress.jdField_a_of_type_JavaUtilHashMap.isEmpty()))
       {
-        paramToServiceMsg.mergeFrom((byte[])paramObject);
-        paramFromServiceMsg = paramToServiceMsg.bytes_fail_msg.get().toStringUtf8();
-        if (!paramToServiceMsg.upLoad_rsp.has()) {
-          break label588;
+        i = localamme.a(localamme.a(localApolloDress.jdField_a_of_type_Int));
+        blrb.a(paramBaseChatPie.app, "3006", "aiopetShow", String.valueOf(i), String.valueOf(localApolloDress.jdField_a_of_type_Int), "0", new String[] { "0" });
+        if (!TextUtils.isEmpty(((ApolloBaseInfo)localObject2).petNick)) {
+          blrb.a(paramBaseChatPie.app, "3006", "aiopetpaiShow", String.valueOf(i), String.valueOf(localApolloDress.jdField_a_of_type_Int), "0", new String[] { "0" });
         }
-        paramToServiceMsg = (CameraEmotionRoaming_sso.UpLoadRsp)paramToServiceMsg.upLoad_rsp.get();
-        i = paramToServiceMsg.int32_is_upload.get();
-        if (i == 0)
+      }
+    }
+    if (!TextUtils.equals(paramBaseChatPie.sessionInfo.curFriendUin, (CharSequence)localObject1))
+    {
+      localObject1 = localamme.b(paramBaseChatPie.sessionInfo.curFriendUin);
+      if (localObject1 != null)
+      {
+        localObject2 = ((ApolloBaseInfo)localObject1).getApolloPetDress();
+        if ((localObject2 != null) && (((ApolloBaseInfo)localObject1).hasPet) && (((ApolloDress)localObject2).jdField_a_of_type_JavaUtilHashMap != null) && (!((ApolloDress)localObject2).jdField_a_of_type_JavaUtilHashMap.isEmpty()))
         {
-          localCameraEmotionData.resid = paramToServiceMsg.bytes_resource_id.get().toStringUtf8();
-          QLog.d("CameraEmoRoamingHandler", 1, "timtest handlePrepareUploadInfo success md5 = " + localCameraEmotionData.md5 + "| resid=" + localCameraEmotionData.resid + " | msg = " + paramFromServiceMsg + ", templateId:" + localCameraEmotionData.templateId);
-          ((aqzw)this.app.getManager(334)).a(localCameraEmotionData);
-          paramObject = new HashMap();
-          if (i != 0) {
-            break label645;
+          i = localamme.a(localamme.a(((ApolloDress)localObject2).jdField_a_of_type_Int));
+          blrb.a(paramBaseChatPie.app, "3006", "aiopetShow", String.valueOf(i), String.valueOf(((ApolloDress)localObject2).jdField_a_of_type_Int), "0", new String[] { "1" });
+          if (!TextUtils.isEmpty(((ApolloBaseInfo)localObject1).petNick)) {
+            blrb.a(paramBaseChatPie.app, "3006", "aiopetpaiShow", String.valueOf(i), String.valueOf(((ApolloDress)localObject2).jdField_a_of_type_Int), "0", new String[] { "1" });
           }
-          paramToServiceMsg = "1";
-          paramObject.put("sucFlag", paramToServiceMsg);
-          paramObject.put("retCode", String.valueOf(i));
-          if (paramFromServiceMsg != null) {
-            break label651;
-          }
-          paramToServiceMsg = "";
-          paramObject.put("errMsg", paramToServiceMsg);
-          paramToServiceMsg = StatisticCollector.getInstance(BaseApplication.getContext());
-          if (i != 0) {
-            break label656;
-          }
-          bool = true;
-          paramToServiceMsg.collectPerformance(null, "CamEmoPrepareUpload", bool, 0L, 0L, paramObject, null);
-          return;
         }
-      }
-      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
-      {
-        QLog.e("CameraEmoRoamingHandler", 1, "func handlePrepareUploadInfo ends, errInfo:" + paramToServiceMsg.getMessage());
-        a(1, false, Integer.valueOf(100), localCameraEmotionData);
-        this.a.remove(Integer.valueOf(j));
-        return;
-      }
-      catch (OutOfMemoryError paramToServiceMsg)
-      {
-        QLog.e("CameraEmoRoamingHandler", 1, "handlePrepareUploadInfo oom");
-        a(1, false, Integer.valueOf(100), localCameraEmotionData);
-        this.a.remove(Integer.valueOf(j));
-        return;
-      }
-      if (i == 1)
-      {
-        a(1, false, Integer.valueOf(2), localCameraEmotionData);
-        this.a.remove(Integer.valueOf(j));
-        QLog.e("CameraEmoRoamingHandler", 1, "func handlePrepareUploadInfo fail, nCanupload:" + i);
-      }
-      else
-      {
-        a(1, false, Integer.valueOf(13), localCameraEmotionData);
-        this.a.remove(Integer.valueOf(j));
-        QLog.e("CameraEmoRoamingHandler", 1, "func handlePrepareUploadInfo fail, nCanupload:" + i);
-        continue;
-        label588:
-        QLog.d("CameraEmoRoamingHandler", 1, "timtest handlePrepareUploadInfo end rspBody.upLoad_rsp no value msg = " + paramFromServiceMsg);
-        a(1, false, Integer.valueOf(13), localCameraEmotionData);
-        this.a.remove(Integer.valueOf(j));
-        i = -1;
-        continue;
-        label645:
-        paramToServiceMsg = "0";
-        continue;
-        label651:
-        paramToServiceMsg = paramFromServiceMsg;
-        continue;
-        label656:
-        bool = false;
       }
     }
   }
   
-  private void a(List<CameraEmotionRoaming_sso.ImgInfo> paramList, List<amot> paramList1, List<String> paramList2)
+  public ApolloTextureView a()
   {
-    if ((paramList == null) || (paramList1 == null) || (paramList2 == null))
-    {
-      QLog.e("CameraEmoRoamingHandler", 1, "readSSoImgInfoList param error");
-      return;
-    }
-    Iterator localIterator = paramList.iterator();
-    label29:
-    String str4;
-    String str1;
-    String str2;
-    String str3;
-    String str5;
-    amot localamot;
-    while (localIterator.hasNext())
-    {
-      paramList = (CameraEmotionRoaming_sso.ImgInfo)localIterator.next();
-      str4 = paramList.bytes_resource_id.get().toStringUtf8();
-      str1 = ((ByteStringMicro)paramList.bytes_text.get(0)).toStringUtf8();
-      str2 = paramList.url.get().toStringUtf8();
-      str3 = paramList.bytes_md5.get().toStringUtf8();
-      str5 = paramList.bytes_widget_id.get().toStringUtf8();
-      if (!StringUtil.isEmpty(str4))
-      {
-        localamot = new amot();
-        localamot.a = str4;
-        if (str1 != null) {
-          break label256;
-        }
-        paramList = "";
-        label146:
-        localamot.b = paramList;
-        if (str2 != null) {
-          break label262;
-        }
-        paramList = "";
-        label160:
-        localamot.c = paramList;
-        if (str3 != null) {
-          break label268;
-        }
-      }
-    }
-    label256:
-    label262:
-    label268:
-    for (paramList = "";; paramList = str3)
-    {
-      localamot.d = paramList;
-      localamot.e = str5;
-      QLog.e("CameraEmoRoamingHandler", 1, "readSSoImgInfoList get CameraEmoImg content = " + str1 + "| url = " + str2 + ", templateId:" + str5);
-      paramList2.add(str4);
-      paramList1.add(localamot);
-      break label29;
-      break;
-      paramList = str1;
-      break label146;
-      paramList = str2;
-      break label160;
-    }
-  }
-  
-  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    boolean bool = true;
-    QLog.d("CameraEmoRoamingHandler", 1, "timtest handleNotifyServerUploadStatus start");
-    int i = paramToServiceMsg.extraData.getInt("camera_emo_upload_id");
-    CameraEmotionData localCameraEmotionData = (CameraEmotionData)this.a.get(Integer.valueOf(i));
-    if ((paramObject == null) || (paramFromServiceMsg == null) || (!paramFromServiceMsg.isSuccess()))
-    {
-      paramObject = new StringBuilder().append("fail to  handlePrepareUploadInfo error code is ");
-      if (paramFromServiceMsg == null) {}
-      for (paramToServiceMsg = "null";; paramToServiceMsg = Integer.valueOf(paramFromServiceMsg.getResultCode()))
-      {
-        QLog.e("CameraEmoRoamingHandler", 1, paramToServiceMsg);
-        a(1, false, Integer.valueOf(12), localCameraEmotionData);
-        this.a.remove(Integer.valueOf(i));
-        return;
-      }
-    }
-    paramToServiceMsg = new CameraEmotionRoaming_sso.RspBody();
-    for (;;)
-    {
-      int j;
-      try
-      {
-        paramToServiceMsg.mergeFrom((byte[])paramObject);
-        paramToServiceMsg = (CameraEmotionRoaming_sso.UpLoadStateRet)((CameraEmotionRoaming_sso.UpLoadStateRsp)paramToServiceMsg.upLoad_state_rsp.get()).upload_state_ret.get(0);
-        j = paramToServiceMsg.int32_upload_state_ret.get();
-        if (j == 0)
-        {
-          localCameraEmotionData.url = paramToServiceMsg.img_info.url.get().toStringUtf8();
-          a(1, true, Integer.valueOf(0), localCameraEmotionData);
-          this.a.remove(Integer.valueOf(i));
-          QLog.e("CameraEmoRoamingHandler", 1, "func handleNotifyServerUploadStatus suc");
-          paramFromServiceMsg = new HashMap();
-          if (j != 0) {
-            break label444;
-          }
-          paramToServiceMsg = "1";
-          paramFromServiceMsg.put("sucFlag", paramToServiceMsg);
-          paramFromServiceMsg.put("retCode", String.valueOf(j));
-          paramToServiceMsg = StatisticCollector.getInstance(BaseApplication.getContext());
-          if (j != 0) {
-            break label450;
-          }
-          paramToServiceMsg.collectPerformance(null, "CamEmoUpdateStat", bool, 0L, 0L, paramFromServiceMsg, null);
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
-      {
-        QLog.e("CameraEmoRoamingHandler", 1, "func handleNotifyServerUploadStatus ends, errInfo:" + paramToServiceMsg.getMessage());
-        a(1, false, Integer.valueOf(100), localCameraEmotionData);
-        this.a.remove(Integer.valueOf(i));
-        return;
-      }
-      catch (OutOfMemoryError paramToServiceMsg)
-      {
-        QLog.e("CameraEmoRoamingHandler", 1, "handleNotifyServerUploadStatus oom");
-        a(1, false, Integer.valueOf(100), localCameraEmotionData);
-        this.a.remove(Integer.valueOf(i));
-        return;
-      }
-      a(1, false, Integer.valueOf(13), localCameraEmotionData);
-      this.a.remove(Integer.valueOf(i));
-      QLog.e("CameraEmoRoamingHandler", 1, new Object[] { "func handleNotifyServerUploadStatus fail, result:", Integer.valueOf(j) });
-      continue;
-      label444:
-      paramToServiceMsg = "0";
-      continue;
-      label450:
-      bool = false;
-    }
+    return this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView;
   }
   
   public void a()
   {
-    QLog.d("CameraEmoRoamingHandler", 1, "timtest queryUserEmoRoamingReq  start");
-    String str = ((aqzw)this.app.getManager(334)).a();
-    Object localObject = new CameraEmotionRoaming_sso.GetListReq();
-    ((CameraEmotionRoaming_sso.GetListReq)localObject).client_timestamp_version.set(ByteStringMicro.copyFrom(str.getBytes()));
-    CameraEmotionRoaming_sso.ReqBody localReqBody = new CameraEmotionRoaming_sso.ReqBody();
-    localReqBody.uint64_src_uin.set(Long.parseLong(this.app.getCurrentAccountUin()));
-    localReqBody.uint32_cmd_type.set(3);
-    localReqBody.uint32_src_term.set(3);
-    localReqBody.bytes_version.set(ByteStringMicro.copyFrom("8.4.8".getBytes()));
-    localReqBody.get_list_req.set((MessageMicro)localObject);
-    localObject = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "SelfGif.Op");
-    ((ToServiceMsg)localObject).extraData.putInt("cmd_camera_emo_subcmd", 3);
-    ((ToServiceMsg)localObject).extraData.putString("cmd_param_data_version", str);
-    ((ToServiceMsg)localObject).putWupBuffer(localReqBody.toByteArray());
-    super.sendPbReq((ToServiceMsg)localObject);
-  }
-  
-  public final void a(int paramInt1, boolean paramBoolean, int paramInt2)
-  {
-    notifyUI(paramInt1, paramBoolean, Integer.valueOf(paramInt2), false);
-  }
-  
-  public final void a(int paramInt, boolean paramBoolean, Object paramObject, CameraEmotionData paramCameraEmotionData)
-  {
-    notifyUI(paramInt, paramBoolean, new Object[] { paramObject, paramCameraEmotionData }, false);
-  }
-  
-  public void a(CameraEmotionData paramCameraEmotionData, int paramInt1, int paramInt2, long paramLong)
-  {
-    if (paramCameraEmotionData == null)
-    {
-      QLog.d("CameraEmoRoamingHandler", 1, "timtest prepareUploadEmoReq start, data is null");
-      a(1, false, Integer.valueOf(10), paramCameraEmotionData);
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.setVisibility(this.jdField_a_of_type_Int);
     }
-    QLog.d("CameraEmoRoamingHandler", 1, new Object[] { "timtest prepareUploadEmoReq start, md5:", paramCameraEmotionData.md5, ", size:", Long.valueOf(paramLong), ", emoId:", Integer.valueOf(paramCameraEmotionData.emoId) });
-    this.a.put(Integer.valueOf(paramCameraEmotionData.emoId), paramCameraEmotionData);
-    Object localObject1 = new CameraEmotionRoaming_sso.UpLoadReq();
-    Object localObject2 = new CameraEmotionRoaming_sso.UploadImgInfo();
-    ((CameraEmotionRoaming_sso.UploadImgInfo)localObject2).bytes_img_md5.set(ByteStringMicro.copyFrom(paramCameraEmotionData.md5.getBytes()));
-    ((CameraEmotionRoaming_sso.UploadImgInfo)localObject2).uint32_img_height.set(paramInt2);
-    ((CameraEmotionRoaming_sso.UploadImgInfo)localObject2).uint32_img_width.set(paramInt1);
-    ((CameraEmotionRoaming_sso.UploadImgInfo)localObject2).uint64_img_size.set(paramLong);
-    ((CameraEmotionRoaming_sso.UpLoadReq)localObject1).img_info.set((MessageMicro)localObject2);
-    localObject2 = new CameraEmotionRoaming_sso.ReqBody();
-    ((CameraEmotionRoaming_sso.ReqBody)localObject2).uint64_src_uin.set(Long.parseLong(this.app.getCurrentAccountUin()));
-    ((CameraEmotionRoaming_sso.ReqBody)localObject2).uint32_cmd_type.set(1);
-    ((CameraEmotionRoaming_sso.ReqBody)localObject2).uint32_src_term.set(3);
-    ((CameraEmotionRoaming_sso.ReqBody)localObject2).bytes_version.set(ByteStringMicro.copyFrom("8.4.8".getBytes()));
-    ((CameraEmotionRoaming_sso.ReqBody)localObject2).upLoad_req.set((MessageMicro)localObject1);
-    localObject1 = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "SelfGif.Op");
-    ((ToServiceMsg)localObject1).extraData.putInt("cmd_camera_emo_subcmd", 1);
-    ((ToServiceMsg)localObject1).extraData.putInt("camera_emo_upload_id", paramCameraEmotionData.emoId);
-    ((ToServiceMsg)localObject1).putWupBuffer(((CameraEmotionRoaming_sso.ReqBody)localObject2).toByteArray());
-    super.sendPbReq((ToServiceMsg)localObject1);
+    if (this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView != null) {
+      this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView.setVisibility(this.jdField_a_of_type_Int);
+    }
   }
   
-  public void a(CameraEmotionData paramCameraEmotionData, boolean paramBoolean)
+  public void a(int paramInt)
   {
-    if (paramCameraEmotionData == null)
-    {
-      QLog.d("CameraEmoRoamingHandler", 1, "timtest notifyServerUploadStatusReq start, data is null");
-      a(1, false, Integer.valueOf(10), paramCameraEmotionData);
-      return;
-    }
-    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
-    {
-      QLog.d("CameraEmoRoamingHandler", 1, "timtest notifyServerUploadStatusReq start, net not support");
-      a(1, false, Integer.valueOf(12), paramCameraEmotionData);
-      return;
-    }
-    QLog.d("CameraEmoRoamingHandler", 1, "timtest notifyServerUploadStatusReq start");
-    Object localObject2 = new CameraEmotionRoaming_sso.UpLoadStateReq();
-    CameraEmotionRoaming_sso.UpLoadState localUpLoadState = new CameraEmotionRoaming_sso.UpLoadState();
-    localUpLoadState.bytes_resource_id.set(ByteStringMicro.copyFrom(paramCameraEmotionData.resid.getBytes()));
-    Object localObject3 = localUpLoadState.bytes_text;
+    int j;
     int i;
-    if (paramCameraEmotionData.strContext == null)
+    if (paramInt == 0)
     {
-      localObject1 = "";
-      ((PBRepeatField)localObject3).add(ByteStringMicro.copyFrom(((String)localObject1).getBytes()));
-      localObject1 = localUpLoadState.int32_upload_state;
-      if (!paramBoolean) {
-        break label339;
+      j = 1;
+      if (j != 0) {
+        break label94;
       }
-      i = 0;
-      label146:
-      ((PBInt32Field)localObject1).set(i);
-      localObject3 = localUpLoadState.bytes_widget_id;
-      if (paramCameraEmotionData.templateId != null) {
-        break label344;
+      if (Build.VERSION.SDK_INT < 11) {
+        break label80;
       }
+      i = this.jdField_b_of_type_Int;
     }
-    label339:
-    label344:
-    for (Object localObject1 = "";; localObject1 = paramCameraEmotionData.templateId)
+    for (;;)
     {
-      ((PBBytesField)localObject3).set(ByteStringMicro.copyFrom(((String)localObject1).getBytes()));
-      ((CameraEmotionRoaming_sso.UpLoadStateReq)localObject2).upload_state.add(localUpLoadState);
-      localObject1 = new CameraEmotionRoaming_sso.ReqBody();
-      ((CameraEmotionRoaming_sso.ReqBody)localObject1).uint64_src_uin.set(Long.parseLong(this.app.getCurrentAccountUin()));
-      ((CameraEmotionRoaming_sso.ReqBody)localObject1).uint32_cmd_type.set(2);
-      ((CameraEmotionRoaming_sso.ReqBody)localObject1).uint32_src_term.set(3);
-      ((CameraEmotionRoaming_sso.ReqBody)localObject1).bytes_version.set(ByteStringMicro.copyFrom("8.4.8".getBytes()));
-      ((CameraEmotionRoaming_sso.ReqBody)localObject1).upLoad_state_req.set((MessageMicro)localObject2);
-      localObject2 = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "SelfGif.Op");
-      ((ToServiceMsg)localObject2).extraData.putInt("cmd_camera_emo_subcmd", 2);
-      ((ToServiceMsg)localObject2).extraData.putInt("camera_emo_upload_id", paramCameraEmotionData.emoId);
-      ((ToServiceMsg)localObject2).putWupBuffer(((CameraEmotionRoaming_sso.ReqBody)localObject1).toByteArray());
-      super.sendPbReq((ToServiceMsg)localObject2);
-      return;
-      localObject1 = paramCameraEmotionData.strContext;
-      break;
-      i = 1;
-      break label146;
-    }
-  }
-  
-  protected void a(Object paramObject, String paramString)
-  {
-    QLog.d("CameraEmoRoamingHandler", 1, "timtest handleUserInfoGet start");
-    Object localObject = new CameraEmotionRoaming_sso.RspBody();
-    try
-    {
-      ((CameraEmotionRoaming_sso.RspBody)localObject).mergeFrom((byte[])paramObject);
-      ((CameraEmotionRoaming_sso.RspBody)localObject).bytes_fail_msg.get().toStringUtf8();
-      if (((CameraEmotionRoaming_sso.RspBody)localObject).get_list_rsp.has())
+      label23:
+      QLog.d("sava_ChatPieApolloViewController", 1, new Object[] { "onVisibilityChanged, visibility=", Integer.valueOf(paramInt), ", bottomMargin=", Integer.valueOf(i) });
+      if (j != 0) {}
+      for (paramInt = 2131377140;; paramInt = 2131368910)
       {
-        paramObject = (CameraEmotionRoaming_sso.GetListRsp)((CameraEmotionRoaming_sso.RspBody)localObject).get_list_rsp.get();
-        localObject = paramObject.server_timestamp_version.get().toStringUtf8();
-        if (paramString.equals(localObject))
-        {
-          QLog.d("CameraEmoRoamingHandler", 1, "timtest handleUserInfoGet same version = " + (String)localObject);
-          a(2, true, 0);
-        }
-      }
-      else
-      {
+        c(paramInt);
+        e(i);
         return;
+        j = 0;
+        break;
+        label80:
+        i = this.jdField_c_of_type_Int;
+        break label23;
       }
+      label94:
+      i = 0;
     }
-    catch (InvalidProtocolBufferMicroException paramObject)
-    {
-      QLog.e("CameraEmoRoamingHandler", 1, "func handleUserInfoGet ends, errInfo:" + paramObject.getMessage());
-      return;
-    }
-    catch (OutOfMemoryError paramObject)
-    {
-      QLog.e("CameraEmoRoamingHandler", 1, "handleUserInfoGet oom");
-      return;
-    }
-    paramString = new ArrayList();
-    ArrayList localArrayList = new ArrayList();
-    if (paramObject.rpt_img_info.has()) {
-      a(paramObject.rpt_img_info.get(), paramString, localArrayList);
-    }
-    QLog.d("CameraEmoRoamingHandler", 1, "timtest handleUserInfoGet cameraEmoImgs.size = " + paramString.size());
-    ThreadManagerV2.excute(new CameraEmoRoamingHandler.2(this, (String)localObject, paramString, localArrayList), 32, null, true);
   }
   
-  protected void a(Object paramObject, boolean paramBoolean)
+  public void a(BaseChatPie paramBaseChatPie)
   {
-    QLog.d("CameraEmoRoamingHandler", 1, "timtest handleDelMessage start ");
-    Object localObject1 = new CameraEmotionRoaming_sso.RspBody();
-    ArrayList localArrayList1;
-    ArrayList localArrayList2;
-    try
+    long l = System.currentTimeMillis();
+    if ((paramBaseChatPie == null) || (paramBaseChatPie.app == null) || (paramBaseChatPie.sessionInfo == null))
     {
-      ((CameraEmotionRoaming_sso.RspBody)localObject1).mergeFrom((byte[])paramObject);
-      ((CameraEmotionRoaming_sso.RspBody)localObject1).bytes_fail_msg.get().toStringUtf8();
-      if (((CameraEmotionRoaming_sso.RspBody)localObject1).del_rsp.has())
-      {
-        Object localObject2 = (CameraEmotionRoaming_sso.DelRsp)((CameraEmotionRoaming_sso.RspBody)localObject1).del_rsp.get();
-        paramObject = ((CameraEmotionRoaming_sso.DelRsp)localObject2).client_timestamp_version.get().toStringUtf8();
-        localObject1 = new ArrayList();
-        localArrayList1 = new ArrayList();
-        localArrayList2 = new ArrayList();
-        if (((CameraEmotionRoaming_sso.DelRsp)localObject2).rpt_img_info.has()) {
-          a(((CameraEmotionRoaming_sso.DelRsp)localObject2).rpt_img_info.get(), (List)localObject1, localArrayList2);
-        }
-        if (!((CameraEmotionRoaming_sso.DelRsp)localObject2).del_ret.has()) {
-          break label249;
-        }
-        localObject2 = ((CameraEmotionRoaming_sso.DelRsp)localObject2).del_ret.get().iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          CameraEmotionRoaming_sso.DelRet localDelRet = (CameraEmotionRoaming_sso.DelRet)((Iterator)localObject2).next();
-          if (localDelRet.int32_del_ret.get() == 0) {
-            localArrayList1.add(localDelRet.bytes_resource_id.get().toStringUtf8());
-          }
-        }
+      QLog.e("sava_ChatPieApolloViewController", 1, "checkNeedPreLoadEngine chatPie is null");
+      return;
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView != null) || (this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView != null))
+    {
+      QLog.i("sava_ChatPieApolloViewController", 1, "checkNeedPreLoadEngine surfaceview is already inited, return.");
+      return;
+    }
+    if (paramBaseChatPie.getCurrentAIOState() >= 7)
+    {
+      QLog.i("sava_ChatPieApolloViewController", 1, "checkNeedPreLoadEngine aio is finished, not init apollo.");
+      return;
+    }
+    if ((TextUtils.isEmpty(amme.d)) || (TextUtils.isEmpty(amme.e)))
+    {
+      QLog.i("sava_ChatPieApolloViewController", 1, "sava_native_log checkNeedPreLoadEngine script empty");
+      return;
+    }
+    if (!anjy.d) {}
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.i("sava_ChatPieApolloViewController", 1, "TraceReport CmShowStatUtil cm3dPreLoad:" + bool);
+      if (!bool) {
+        break;
       }
-      QLog.d("CameraEmoRoamingHandler", 1, "timtest handleDelMessage delResIDList.size = " + localArrayList1.size() + "| cameraEmoImgs.size = " + ((List)localObject1).size());
-    }
-    catch (InvalidProtocolBufferMicroException paramObject)
-    {
-      QLog.e("CameraEmoRoamingHandler", 1, "func handleDelMessage ends, errInfo:" + paramObject.getMessage());
+      if (anck.a(paramBaseChatPie.app, paramBaseChatPie.sessionInfo.curType, paramBaseChatPie.sessionInfo.curFriendUin)) {
+        break label181;
+      }
+      QLog.i("sava_ChatPieApolloViewController", 1, "checkNeedPreLoadEngine !SpriteUtil.isProperAIO");
       return;
     }
-    catch (OutOfMemoryError paramObject)
+    label181:
+    if (!amme.a(BaseApplicationImpl.getContext()))
     {
-      QLog.e("CameraEmoRoamingHandler", 1, "handleDelMessage oom");
+      QLog.d("sava_ChatPieApolloViewController", 1, "Not in white list.");
       return;
     }
-    label249:
-    ThreadManagerV2.excute(new CameraEmoRoamingHandler.1(this, paramObject, (List)localObject1, localArrayList2, localArrayList1), 32, null, true);
+    bgkl localbgkl = ((bgkf)paramBaseChatPie.app.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a(paramBaseChatPie.sessionInfo.curFriendUin, true);
+    if ((localbgkl != null) && (localbgkl.jdField_a_of_type_Boolean))
+    {
+      QLog.i("sava_ChatPieApolloViewController", 1, "checkNeedPreLoadEngine isGag");
+      return;
+    }
+    if (anck.a(paramBaseChatPie.app))
+    {
+      QLog.d("sava_ChatPieApolloViewController", 1, "Apollo func is double-hidden.");
+      return;
+    }
+    if (!anck.b(paramBaseChatPie.app, paramBaseChatPie.sessionInfo.curType, paramBaseChatPie.sessionInfo.curFriendUin))
+    {
+      QLog.i("sava_ChatPieApolloViewController", 1, "checkNeedPreLoadEngine !canUseCmShow");
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("sava_ChatPieApolloViewController", 1, "checkNeedPreLoadEngine use:" + (System.currentTimeMillis() - l));
+    }
+    this.jdField_b_of_type_Boolean = false;
+    ThreadManager.postImmediately(new ChatPieApolloViewController.2(this, paramBaseChatPie), null, false);
   }
   
-  public void a(List<String> paramList, boolean paramBoolean)
+  public void a(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("sava_ChatPieApolloViewController", 2, new Object[] { "onDrawRectHeightChanged h:", Integer.valueOf(paramInt) });
     }
-    QLog.d("CameraEmoRoamingHandler", 1, "timtest delUserEmoRoamingReq start size = " + paramList.size());
-    Object localObject = new CameraEmotionRoaming_sso.DelReq();
-    int i = 0;
-    if (i < paramList.size())
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.onDrawRectHeightChanged(paramQQAppInterface, paramInt);
+    }
+    if (this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView != null) {
+      this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView.onDrawRectHeightChanged(paramQQAppInterface, paramInt);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("sava_ChatPieApolloViewController", 2, new Object[] { "onDrawRectHeightChanged show:", Boolean.valueOf(paramBoolean) });
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView != null)
     {
-      String str = (String)paramList.get(i);
-      if (str == null) {}
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getVisibility();
+      if (!paramBoolean) {
+        break label104;
+      }
+      if (this.jdField_a_of_type_Int != 0) {
+        this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.setVisibility(0);
+      }
+    }
+    label104:
+    do
+    {
       for (;;)
       {
-        i += 1;
-        break;
-        ((CameraEmotionRoaming_sso.DelReq)localObject).bytes_resource_id.get().add(ByteStringMicro.copyFrom(str.getBytes()));
-      }
-    }
-    paramList = new CameraEmotionRoaming_sso.ReqBody();
-    paramList.uint64_src_uin.set(Long.parseLong(this.app.getCurrentAccountUin()));
-    paramList.uint32_cmd_type.set(4);
-    paramList.uint32_src_term.set(3);
-    paramList.bytes_version.set(ByteStringMicro.copyFrom("8.4.8".getBytes()));
-    paramList.del_req.set((MessageMicro)localObject);
-    localObject = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "SelfGif.Op");
-    ((ToServiceMsg)localObject).extraData.putInt("cmd_camera_emo_subcmd", 4);
-    ((ToServiceMsg)localObject).extraData.putBoolean("cmd_param_need_sync", paramBoolean);
-    ((ToServiceMsg)localObject).putWupBuffer(paramList.toByteArray());
-    super.sendPbReq((ToServiceMsg)localObject);
-  }
-  
-  public Class<? extends BusinessObserver> observerClass()
-  {
-    return amou.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (paramToServiceMsg == null)
-    {
-      QLog.e("CameraEmoRoamingHandler", 1, "timtest onReceive error : ToServiceMsg is null");
-      return;
-    }
-    QLog.d("CameraEmoRoamingHandler", 1, "timtest onReceive start");
-    switch (paramToServiceMsg.extraData.getInt("cmd_camera_emo_subcmd"))
-    {
-    default: 
-      return;
-    case 1: 
-      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-      return;
-    case 2: 
-      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
-      return;
-    case 3: 
-      if ((paramObject == null) || (paramFromServiceMsg == null) || (!paramFromServiceMsg.isSuccess()))
-      {
-        paramObject = new StringBuilder().append("fail to  handleUserInfoGet error code is ");
-        if (paramFromServiceMsg == null) {}
-        for (paramToServiceMsg = "null";; paramToServiceMsg = Integer.valueOf(paramFromServiceMsg.getResultCode()))
+        if (this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView != null)
         {
-          QLog.e("CameraEmoRoamingHandler", 1, paramToServiceMsg);
-          if ((paramFromServiceMsg == null) || (paramFromServiceMsg.isSuccess())) {
+          this.jdField_a_of_type_Int = this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView.getVisibility();
+          if (!paramBoolean) {
             break;
           }
-          avsq.e(String.valueOf(paramFromServiceMsg.getResultCode()), 2);
-          return;
+          if (this.jdField_a_of_type_Int != 0) {
+            this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView.setVisibility(0);
+          }
         }
-        avsq.d("3002", 2);
         return;
+        if (this.jdField_a_of_type_Int != 8) {
+          this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.setVisibility(8);
+        }
       }
-      a(paramObject, paramToServiceMsg.extraData.getString("cmd_param_data_version", ""));
+    } while (this.jdField_a_of_type_Int == 8);
+    this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView.setVisibility(8);
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView != null) || (this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView != null);
+  }
+  
+  public boolean a(BaseChatPie paramBaseChatPie)
+  {
+    QLog.d("sava_ChatPieApolloViewController", 1, new Object[] { "ifApolloFunAvailThenInit, mApolloSurfaceView:", this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView, ",mApolloTextureView:", this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView });
+    if ((paramBaseChatPie == null) || (paramBaseChatPie.app == null) || (paramBaseChatPie.sessionInfo == null))
+    {
+      QLog.e("sava_ChatPieApolloViewController", 1, "chatPie is null");
+      return false;
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView != null) || (this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView != null))
+    {
+      QLog.i("sava_ChatPieApolloViewController", 1, "surfaceview is already inited, return.");
+      return false;
+    }
+    if (!anck.a(paramBaseChatPie.app, paramBaseChatPie.sessionInfo.curType, paramBaseChatPie.sessionInfo.curFriendUin)) {
+      return false;
+    }
+    Object localObject = (anch)paramBaseChatPie.app.getManager(QQManagerFactory.SPRITE_SCRIPT_MANAGER);
+    ((anch)localObject).a(paramBaseChatPie);
+    boolean bool = ((anch)localObject).a().g();
+    if ((!amme.a(BaseApplicationImpl.getContext())) && (!bool))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("sava_ChatPieApolloViewController", 2, "Not in white list.");
+      }
+      return false;
+    }
+    bgkl localbgkl = ((bgkf)paramBaseChatPie.app.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a(paramBaseChatPie.sessionInfo.curFriendUin, true);
+    if ((localbgkl != null) && (localbgkl.jdField_a_of_type_Boolean)) {
+      return false;
+    }
+    QLog.i("sava_ChatPieApolloViewController", 1, "TraceReport CmShowStatUtil start TraceReport_total isNoneApolloActionPlay:" + bool);
+    if (QLog.isColorLevel())
+    {
+      anmj.a("exeBase");
+      anmj.a("exeCmshow0");
+      anmj.a("exeCommon");
+    }
+    anmj.b("aio_pre");
+    int i = anck.b(0);
+    anis.a(i, paramBaseChatPie.sessionInfo.curFriendUin);
+    anis.a(i, 1);
+    anis.a(i, 10);
+    anis.a(i, null, new int[] { anir.a(i, false, 0, paramBaseChatPie.sessionInfo.curType, false) });
+    if (anck.a(paramBaseChatPie.app))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("sava_ChatPieApolloViewController", 2, "Apollo func is double-hidden.");
+      }
+      anis.a(i, 10, 103, new Object[] { "double hidden" });
+      return false;
+    }
+    if (!anck.b(paramBaseChatPie.app, paramBaseChatPie.sessionInfo.curType, paramBaseChatPie.sessionInfo.curFriendUin)) {
+      return false;
+    }
+    localObject = ((anch)localObject).a();
+    if (localObject != null) {
+      ((SpriteUIHandler)localObject).a(paramBaseChatPie.listView, paramBaseChatPie.listAdapter);
+    }
+    if ((anhm.a(paramBaseChatPie.app.getCurrentAccountUin(), paramBaseChatPie.app) != 1) && (!bool))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("sava_ChatPieApolloViewController", 2, "Apollo switch NOT open.");
+      }
+      paramBaseChatPie.getUIHandler().obtainMessage(62).sendToTarget();
+    }
+    for (;;)
+    {
+      return true;
+      if (Looper.getMainLooper() == Looper.myLooper()) {
+        paramBaseChatPie.initApolloSurfaceView();
+      } else {
+        paramBaseChatPie.getUIHandler().obtainMessage(65).sendToTarget();
+      }
+    }
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRenderImpl() != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRenderImpl().a(0L);
+    }
+    if ((this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView != null) && (this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl() != null)) {
+      this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl().a(0L);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    int i;
+    int j;
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView != null)
+    {
+      i = this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getBottom();
+      j = this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getTop();
+      if ((i <= 0) || (i - j >= paramInt)) {
+        break label177;
+      }
+      QLog.i("sava_ChatPieApolloViewController", 1, "checkApolloViewLayout invisible apolloBottom:" + i + ",apolloTop:" + j + ",titleHeight:" + paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.setVisibility(4);
+    }
+    label177:
+    do
+    {
+      for (;;)
+      {
+        if (this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView != null)
+        {
+          i = this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView.getBottom();
+          j = this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView.getTop();
+          if ((i <= 0) || (i - j >= paramInt)) {
+            break;
+          }
+          QLog.i("sava_ChatPieApolloViewController", 1, "checkApolloViewLayout invisible apolloBottom:" + i + ",apolloTop:" + j + ",titleHeight:" + paramInt);
+          this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView.setVisibility(4);
+        }
+        return;
+        if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getVisibility() == 4) {
+          this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.setVisibility(0);
+        }
+      }
+    } while (this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView.getVisibility() != 4);
+    this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView.setVisibility(0);
+  }
+  
+  @TargetApi(14)
+  public void b(BaseChatPie paramBaseChatPie)
+  {
+    int i = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("sava_ChatPieApolloViewController", 2, "initApolloSurfaceView");
+    }
+    if (paramBaseChatPie == null) {}
+    int j;
+    do
+    {
+      return;
+      j = anck.b(0);
+      if (paramBaseChatPie.getCurrentAIOState() < 7) {
+        break;
+      }
+      anis.a(j, 10, 106, new Object[] { "aio is finished" });
+    } while (!QLog.isColorLevel());
+    QLog.d("sava_ChatPieApolloViewController", 2, "aio is finished, not init apollo.");
+    return;
+    Object localObject1;
+    if (paramBaseChatPie.app != null)
+    {
+      localObject1 = (amnd)paramBaseChatPie.app.getManager(QQManagerFactory.APOLLO_PUSH_MANAGER);
+      ((amnd)localObject1).a(paramBaseChatPie.sessionInfo);
+      ((amnd)localObject1).a(((amnd)localObject1).a);
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView != null) || (this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView != null))
+    {
+      QLog.e("sava_ChatPieApolloViewController", 1, "mApolloSurfaceView is already created");
       return;
     }
-    if ((paramObject == null) || (paramFromServiceMsg == null) || (!paramFromServiceMsg.isSuccess()))
+    boolean bool1;
+    if ((Build.VERSION.SDK_INT >= 26) || (amme.p))
     {
-      paramObject = new StringBuilder().append("fail to  handleDelMessage error code is ");
-      if (paramFromServiceMsg == null) {}
-      for (paramToServiceMsg = "null";; paramToServiceMsg = Integer.valueOf(paramFromServiceMsg.getResultCode()))
+      bool1 = true;
+      label152:
+      if (QLog.isColorLevel()) {
+        QLog.d("sava_ChatPieApolloViewController", 2, "initTextureViewConfig initApolloSurfaceView:" + bool1);
+      }
+      if (paramBaseChatPie.app == null) {
+        break label768;
+      }
+      localObject1 = (anch)paramBaseChatPie.app.getManager(QQManagerFactory.SPRITE_SCRIPT_MANAGER);
+      label207:
+      anis.a(j, 10, 0, new Object[] { "cmshow switch done" });
+      anis.a(j, 100);
+      anis.a(j, 101);
+      anmj.a("onSurfaceCreated");
+      if (!bool1) {
+        break label774;
+      }
+    }
+    for (;;)
+    {
+      Object localObject2;
+      try
       {
-        QLog.e("CameraEmoRoamingHandler", 1, paramToServiceMsg);
-        if ((paramFromServiceMsg == null) || (paramFromServiceMsg.isSuccess())) {
+        this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView = new ApolloTextureView(paramBaseChatPie.mContext, null);
+        this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView.setDestroyOnAsync(true);
+        this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView.init(paramBaseChatPie.mApolloViewObserver, 0, this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender);
+        this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView.setDispatchEvent2Native(true);
+        this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView.setDumplicateCreateRenderThread(amme.q);
+        this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView.getRender().setUseGlobalTimer(true);
+        if (paramBaseChatPie.app != null) {
+          ((anch)localObject1).a(this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender = null;
+        if (anjy.jdField_b_of_type_Boolean) {
+          break label868;
+        }
+        bool2 = true;
+        this.jdField_a_of_type_Boolean = bool2;
+        QLog.i("sava_ChatPieApolloViewController", 1, "TraceReport CmShowStatUtil mPreloadEngine:" + this.jdField_a_of_type_Boolean);
+        if (!this.jdField_a_of_type_Boolean) {
+          break label874;
+        }
+        anmj.a("preLoadEngine");
+        if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender() != null)) {
+          this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender().preLoadDirector();
+        }
+        if ((this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView != null) && (this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView.getRender() != null)) {
+          this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView.getRender().preLoadDirector();
+        }
+        ThreadManager.postImmediately(new ChatPieApolloViewController.5(this, j, paramBaseChatPie, (anch)localObject1), null, false);
+        localObject1 = new RelativeLayout.LayoutParams(-1, -1);
+        if (!paramBaseChatPie.mActivity.isInMultiWindow()) {
+          break label895;
+        }
+        ((RelativeLayout.LayoutParams)localObject1).topMargin = 0;
+        localObject2 = (agkb)paramBaseChatPie.getHelper(52);
+        if (localObject2 != null) {
+          ((agkb)localObject2).a(this);
+        }
+        if ((localObject2 == null) || (!((agkb)localObject2).b())) {
+          break label910;
+        }
+        if (paramBaseChatPie.input != null)
+        {
+          if (Build.VERSION.SDK_INT < 11) {
+            break label915;
+          }
+          if (paramBaseChatPie.mInputGloblLayoutListener == null) {
+            paramBaseChatPie.mInputGloblLayoutListener = new InputGlobalLayoutListener(paramBaseChatPie);
+          }
+          paramBaseChatPie.mInputGloblLayoutListener.jdField_a_of_type_Int = 0;
+          if ((paramBaseChatPie.input.getParent() instanceof ViewGroup)) {
+            ((ViewGroup)paramBaseChatPie.input.getParent()).addOnLayoutChangeListener(paramBaseChatPie.mInputGloblLayoutListener);
+          }
+        }
+        ((RelativeLayout.LayoutParams)localObject1).addRule(6, 2131370188);
+        if (i == 0) {
+          break label949;
+        }
+        ((RelativeLayout.LayoutParams)localObject1).addRule(2, 2131377140);
+        this.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView = new BarrageView(paramBaseChatPie.mContext);
+        localObject2 = new RelativeLayout.LayoutParams(-1, (int)((float)DeviceInfoUtil.getPortraitHeight() * 0.171F));
+        if (i == 0) {
+          break label960;
+        }
+        ((RelativeLayout.LayoutParams)localObject2).addRule(2, 2131377140);
+        paramBaseChatPie.getContent().addView(this.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView, (ViewGroup.LayoutParams)localObject2);
+        i = anck.a();
+        if (!bool1) {
+          break label971;
+        }
+        this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView.setBarrageView(this.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView);
+        this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView.setInitHeight(i);
+        paramBaseChatPie.getContent().addView(this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView, (ViewGroup.LayoutParams)localObject1);
+        if (paramBaseChatPie.app == null) {
           break;
         }
-        avsq.d(String.valueOf(paramFromServiceMsg.getResultCode()), 2);
+        localObject1 = (amme)paramBaseChatPie.app.getManager(QQManagerFactory.APOLLO_MANAGER);
+        if (localObject1 == null) {
+          break;
+        }
+        ((amme)localObject1).a(paramBaseChatPie.sessionInfo, paramBaseChatPie.mContext);
         return;
       }
-      avsq.d("3003", 2);
+      catch (OutOfMemoryError paramBaseChatPie)
+      {
+        this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView = null;
+        this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView = null;
+        QLog.e("sava_ChatPieApolloViewController", 1, paramBaseChatPie, new Object[0]);
+        return;
+      }
+      bool1 = false;
+      break label152;
+      label768:
+      localObject1 = null;
+      break label207;
+      label774:
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView = new ApolloSurfaceView(paramBaseChatPie.mContext, null, true);
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.mRenderMode = 0;
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.init(paramBaseChatPie.mApolloViewObserver, 0, this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender);
+      if (paramBaseChatPie.app != null) {
+        ((anch)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender().setUseGlobalTimer(true);
+      continue;
+      label868:
+      boolean bool2 = false;
+      continue;
+      label874:
+      ThreadManager.excute(new ChatPieApolloViewController.6(this, paramBaseChatPie, (anch)localObject1), 16, null, false);
+      continue;
+      label895:
+      ((RelativeLayout.LayoutParams)localObject1).topMargin = paramBaseChatPie.mCustomTitleView.getHeight();
+      continue;
+      label910:
+      i = 0;
+      continue;
+      label915:
+      this.jdField_c_of_type_Int = AIOUtils.dp2px(5.0F, paramBaseChatPie.input.getResources());
+      if (i == 0)
+      {
+        ((RelativeLayout.LayoutParams)localObject1).bottomMargin = (-this.jdField_c_of_type_Int);
+        continue;
+        label949:
+        ((RelativeLayout.LayoutParams)localObject1).addRule(2, 2131368910);
+        continue;
+        label960:
+        ((RelativeLayout.LayoutParams)localObject2).addRule(2, 2131368910);
+        continue;
+        label971:
+        this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.setBarrageView(this.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView);
+        this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.setInitHeight(i);
+        paramBaseChatPie.getContent().addView(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView, (ViewGroup.LayoutParams)localObject1);
+      }
+    }
+  }
+  
+  public void c()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRenderImpl() != null) && (this.jdField_a_of_type_Int == 0)) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRenderImpl().b();
+    }
+    if ((this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView != null) && (this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl() != null) && (this.jdField_a_of_type_Int == 0)) {
+      this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl().b();
+    }
+  }
+  
+  public void c(int paramInt)
+  {
+    RelativeLayout.LayoutParams localLayoutParams;
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView != null)
+    {
+      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getLayoutParams();
+      if (localLayoutParams != null)
+      {
+        localLayoutParams.addRule(2, paramInt);
+        this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.requestLayout();
+      }
+    }
+    if (this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView != null)
+    {
+      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView.getLayoutParams();
+      if (localLayoutParams != null)
+      {
+        localLayoutParams.addRule(2, paramInt);
+        this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView.requestLayout();
+      }
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView != null)
+    {
+      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView.getLayoutParams();
+      if (localLayoutParams != null)
+      {
+        localLayoutParams.addRule(2, paramInt);
+        this.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView.requestLayout();
+      }
+    }
+  }
+  
+  public void c(BaseChatPie paramBaseChatPie)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("sava_ChatPieApolloViewController", 2, "addApolloBackView");
+    }
+    if (paramBaseChatPie == null) {}
+    while ((!amme.e()) || (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView != null)) {
       return;
     }
-    a(paramObject, paramToServiceMsg.extraData.getBoolean("cmd_param_need_sync"));
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+    localLayoutParams.topMargin = paramBaseChatPie.mCustomTitleView.getHeight();
+    Object localObject1 = (agkb)paramBaseChatPie.getHelper(52);
+    int i;
+    if ((localObject1 != null) && (((agkb)localObject1).b()))
+    {
+      i = 1;
+      if (paramBaseChatPie.input != null)
+      {
+        if (Build.VERSION.SDK_INT < 11) {
+          break label291;
+        }
+        if (paramBaseChatPie.mInputGloblLayoutListener == null) {
+          paramBaseChatPie.mInputGloblLayoutListener = new InputGlobalLayoutListener(paramBaseChatPie);
+        }
+        paramBaseChatPie.mInputGloblLayoutListener.jdField_a_of_type_Int = 0;
+        if ((paramBaseChatPie.input.getParent() instanceof ViewGroup)) {
+          ((ViewGroup)paramBaseChatPie.input.getParent()).addOnLayoutChangeListener(paramBaseChatPie.mInputGloblLayoutListener);
+        }
+      }
+      label152:
+      localLayoutParams.addRule(6, 2131370188);
+      if (i == 0) {
+        break label324;
+      }
+      localLayoutParams.addRule(2, 2131377140);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView = new ApolloTextureView(paramBaseChatPie.mContext, null);
+      localObject1 = new anmy(paramBaseChatPie);
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.init((ampy)localObject1);
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRender() != null) {
+        this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRender().setRenderCallback((ampw)localObject1);
+      }
+      Object localObject2 = (anch)paramBaseChatPie.app.getManager(QQManagerFactory.SPRITE_SCRIPT_MANAGER);
+      ((anch)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView);
+      localObject2 = ((anch)localObject2).a();
+      if (localObject2 != null) {
+        ((anmy)localObject1).a((ampw)localObject2);
+      }
+      paramBaseChatPie.getContent().addView(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView, 0, localLayoutParams);
+      return;
+      i = 0;
+      break;
+      label291:
+      this.jdField_c_of_type_Int = AIOUtils.dp2px(5.0F, paramBaseChatPie.input.getResources());
+      if (i != 0) {
+        break label152;
+      }
+      localLayoutParams.bottomMargin = (-this.jdField_c_of_type_Int);
+      break label152;
+      label324:
+      localLayoutParams.addRule(2, 2131368910);
+    }
+  }
+  
+  public void d(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void d(BaseChatPie paramBaseChatPie)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("sava_ChatPieApolloViewController", 2, "onResume");
+    }
+    if (paramBaseChatPie == null) {}
+    while (paramBaseChatPie.app == null) {
+      return;
+    }
+    ((amme)paramBaseChatPie.app.getManager(QQManagerFactory.APOLLO_MANAGER)).a(new WeakReference(paramBaseChatPie));
+    if (a()) {
+      ((anch)paramBaseChatPie.app.getManager(QQManagerFactory.SPRITE_SCRIPT_MANAGER)).b(paramBaseChatPie.sessionInfo.curType, paramBaseChatPie.sessionInfo.curFriendUin);
+    }
+    g(paramBaseChatPie);
+  }
+  
+  public void e(int paramInt)
+  {
+    RelativeLayout.LayoutParams localLayoutParams;
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView != null)
+    {
+      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getLayoutParams();
+      if (localLayoutParams != null)
+      {
+        localLayoutParams.bottomMargin = (-paramInt);
+        this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.requestLayout();
+      }
+    }
+    if (this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView != null)
+    {
+      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView.getLayoutParams();
+      if (localLayoutParams != null)
+      {
+        localLayoutParams.bottomMargin = (-paramInt);
+        this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView.requestLayout();
+      }
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView != null)
+    {
+      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView.getLayoutParams();
+      if (localLayoutParams != null)
+      {
+        localLayoutParams.bottomMargin = (-paramInt);
+        this.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView.requestLayout();
+      }
+    }
+  }
+  
+  public void e(BaseChatPie paramBaseChatPie)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("sava_ChatPieApolloViewController", 2, "onPause");
+    }
+    if (paramBaseChatPie == null) {}
+    while ((paramBaseChatPie.app == null) || (!a())) {
+      return;
+    }
+    ((anch)paramBaseChatPie.app.getManager(QQManagerFactory.SPRITE_SCRIPT_MANAGER)).a(paramBaseChatPie.sessionInfo.curType, paramBaseChatPie.sessionInfo.curFriendUin);
+  }
+  
+  public void f(BaseChatPie paramBaseChatPie)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("sava_ChatPieApolloViewController", 2, "onDestroy ");
+    }
+    if ((paramBaseChatPie == null) || (paramBaseChatPie.app == null)) {
+      QLog.e("sava_ChatPieApolloViewController", 1, new Object[] { "[onDestory] chatPie:", paramBaseChatPie });
+    }
+    label103:
+    label124:
+    do
+    {
+      return;
+      anmb.b(this.jdField_a_of_type_Anmd);
+      this.jdField_b_of_type_Boolean = true;
+      Object localObject = new StringBuilder().append("onDestroy preLoad mApolloRender:");
+      boolean bool;
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender != null)
+      {
+        bool = true;
+        localObject = ((StringBuilder)localObject).append(bool).append(" mApolloSurfaceView:");
+        if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView == null) {
+          break label212;
+        }
+        bool = true;
+        localObject = ((StringBuilder)localObject).append(bool).append(" mApolloTextureView:");
+        if (this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView == null) {
+          break label217;
+        }
+        bool = true;
+        QLog.i("sava_ChatPieApolloViewController", 1, bool);
+        if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender == null) {
+          break label222;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.queueDestroy();
+        this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender = null;
+      }
+      for (;;)
+      {
+        ((anch)paramBaseChatPie.app.getManager(QQManagerFactory.SPRITE_SCRIPT_MANAGER)).onDestroy();
+        if (a()) {
+          break label271;
+        }
+        QLog.e("sava_ChatPieApolloViewController", 1, new Object[] { "[onDestory] isViewAvailable:", Boolean.valueOf(a()) });
+        return;
+        bool = false;
+        break;
+        bool = false;
+        break label103;
+        bool = false;
+        break label124;
+        if (this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView != null)
+        {
+          localObject = this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView.getRender();
+          if (localObject != null) {
+            ((ApolloRender)localObject).queueDestroy();
+          }
+        }
+        if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView != null)
+        {
+          localObject = this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender();
+          if (localObject != null) {
+            ((ApolloRender)localObject).queueDestroy();
+          }
+        }
+      }
+      localObject = (amnd)paramBaseChatPie.app.getManager(QQManagerFactory.APOLLO_PUSH_MANAGER);
+      ((amnd)localObject).a(null);
+      ((amnd)localObject).a(null);
+      localObject = (amma)paramBaseChatPie.app.getManager(QQManagerFactory.APOLLO_GAME_MANAGER);
+      if (localObject != null) {
+        ((amma)localObject).a();
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView != null)
+      {
+        paramBaseChatPie.getContent().removeView(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView);
+        this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView = null;
+      }
+      if (this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView != null)
+      {
+        this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView.setVisibility(8);
+        paramBaseChatPie.getContent().removeView(this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView);
+        this.jdField_b_of_type_ComTencentMobileqqApolloApolloTextureView = null;
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView != null)
+      {
+        paramBaseChatPie.getContent().removeView(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView);
+        this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView = null;
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView != null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView.a();
+        this.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView.setVisibility(8);
+        paramBaseChatPie.getContent().removeView(this.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView);
+        this.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView = null;
+      }
+      this.jdField_a_of_type_Int = 0;
+      anhn.a().a();
+      paramBaseChatPie = (agkb)paramBaseChatPie.getHelper(52);
+    } while (paramBaseChatPie == null);
+    label212:
+    label217:
+    label222:
+    paramBaseChatPie.b(this);
+    label271:
   }
 }
 

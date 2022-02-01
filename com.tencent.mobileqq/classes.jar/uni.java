@@ -1,44 +1,16 @@
-import UserGrowth.stFollowRsp;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class uni
-  implements uqy
+  implements View.OnClickListener
 {
-  uni(ung paramung, int paramInt, String paramString) {}
+  uni(ung paramung) {}
   
-  public void a(urj paramurj)
+  public void onClick(View paramView)
   {
-    if (!(paramurj.a instanceof stFollowRsp))
-    {
-      if (this.jdField_a_of_type_Int == 2) {
-        ung.a(this.jdField_a_of_type_Ung, this.jdField_a_of_type_JavaLangString, 1);
-      }
-      for (;;)
-      {
-        uya.b("WSUserBusiness", "[getServiceListenerWrapper] data error: " + paramurj.a);
-        return;
-        ung.a(this.jdField_a_of_type_Ung, this.jdField_a_of_type_JavaLangString, 2);
-      }
-    }
-    int i = ((stFollowRsp)paramurj.a).isFollow;
-    uya.b("WSUserBusiness", "[getServiceListenerWrapper] isFollow : " + i);
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      if (i == 1)
-      {
-        bhzt.a().a(2131719679);
-        return;
-      }
-      bhzt.a().a(2131719677);
-      ung.a(this.jdField_a_of_type_Ung, this.jdField_a_of_type_JavaLangString, 2);
-      return;
-    }
-    if (i == 0)
-    {
-      bhzt.a().a(2131719681);
-      return;
-    }
-    bhzt.a().a(2131719682);
-    ung.a(this.jdField_a_of_type_Ung, this.jdField_a_of_type_JavaLangString, 1);
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

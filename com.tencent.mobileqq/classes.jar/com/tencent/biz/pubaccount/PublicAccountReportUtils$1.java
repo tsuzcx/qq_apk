@@ -1,12 +1,13 @@
 package com.tencent.biz.pubaccount;
 
-import amxz;
 import android.text.TextUtils;
+import aoan;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
-import odq;
+import olh;
 import org.json.JSONObject;
 
 public final class PublicAccountReportUtils$1
@@ -27,16 +28,16 @@ public final class PublicAccountReportUtils$1
       {
         localObject = (QQAppInterface)localObject;
         if (localObject != null) {
-          if (!((amxz)((AppInterface)localObject).getManager(56)).a(Long.valueOf(this.jdField_b_of_type_JavaLangString))) {
-            break label135;
+          if (!((aoan)((AppInterface)localObject).getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER)).a(Long.valueOf(this.jdField_b_of_type_JavaLangString))) {
+            break label136;
           }
         }
-        label135:
+        label136:
         for (localObject = "1";; localObject = "0")
         {
           localJSONObject.put("fans", localObject);
           localObject = localJSONObject.toString();
-          odq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString, this.c, this.d, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.e, this.f, this.g, (String)localObject, this.jdField_a_of_type_Boolean);
+          olh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString, this.c, this.d, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.e, this.f, this.g, (String)localObject, this.jdField_a_of_type_Boolean);
           return;
         }
       }

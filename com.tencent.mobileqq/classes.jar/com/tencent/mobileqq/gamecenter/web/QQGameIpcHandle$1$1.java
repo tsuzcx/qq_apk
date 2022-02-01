@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.gamecenter.web;
 
-import auay;
-import auaz;
-import auba;
-import aubb;
+import avgs;
+import avgt;
+import avgu;
+import avgv;
 import eipc.EIPCResult;
 import java.util.Map;
 
 public class QQGameIpcHandle$1$1
   implements Runnable
 {
-  public QQGameIpcHandle$1$1(auaz paramauaz, EIPCResult paramEIPCResult) {}
+  public QQGameIpcHandle$1$1(avgt paramavgt, EIPCResult paramEIPCResult) {}
   
   public void run()
   {
-    if (auba.a(this.jdField_a_of_type_Auaz.jdField_a_of_type_Auba) != null) {
-      auba.a(this.jdField_a_of_type_Auaz.jdField_a_of_type_Auba).a(this.jdField_a_of_type_Auaz.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_EipcEIPCResult);
+    if (avgu.a(this.jdField_a_of_type_Avgt.jdField_a_of_type_Avgu) != null) {
+      avgu.a(this.jdField_a_of_type_Avgt.jdField_a_of_type_Avgu).a(this.jdField_a_of_type_Avgt.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_EipcEIPCResult);
     }
-    if (this.jdField_a_of_type_Auaz.jdField_a_of_type_Boolean)
+    if (this.jdField_a_of_type_Avgt.jdField_a_of_type_Boolean)
     {
-      auay.a(this.jdField_a_of_type_Auaz.jdField_a_of_type_Auay).remove(this.jdField_a_of_type_Auaz.jdField_a_of_type_JavaLangString);
-      auay.a(this.jdField_a_of_type_Auaz.jdField_a_of_type_Auay);
+      avgs.a(this.jdField_a_of_type_Avgt.jdField_a_of_type_Avgs).remove(this.jdField_a_of_type_Avgt.jdField_a_of_type_JavaLangString);
+      avgs.a(this.jdField_a_of_type_Avgt.jdField_a_of_type_Avgs);
     }
   }
 }

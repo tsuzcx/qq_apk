@@ -3,9 +3,10 @@ package com.tencent.mobileqq.servlet;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import bbox;
+import bcvr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.report.lp.LpReportInfo_dc00420;
@@ -45,7 +46,7 @@ public class ClearPushReceiver
     int j = paramIntent.getIntExtra("pushtype", 0);
     if ((j == 1) || (j == 300))
     {
-      paramIntent = (bbox)((QQAppInterface)localObject).getManager(10);
+      paramIntent = (bcvr)((QQAppInterface)localObject).getManager(QQManagerFactory.QZONE_MANAGER);
       if (paramIntent != null) {
         paramIntent.a(1, 0);
       }

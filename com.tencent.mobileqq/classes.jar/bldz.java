@@ -1,18 +1,28 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.wadl.ipc.WadlResult;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.widget.ExpandableListView;
+import com.tencent.widget.PinnedHeadAndFootExpandableListView;
 
-public final class bldz
-  implements Parcelable.Creator<WadlResult>
+public class bldz
+  implements View.OnTouchListener
 {
-  public WadlResult a(Parcel paramParcel)
-  {
-    return new WadlResult(paramParcel);
-  }
+  public bldz(PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView) {}
   
-  public WadlResult[] a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new WadlResult[paramInt];
+    if (paramMotionEvent.getAction() == 1)
+    {
+      long l = this.a.a(this.a.getFirstVisiblePosition());
+      if ((ExpandableListView.b(l) == 0) || (ExpandableListView.b(l) == 1))
+      {
+        int i = ExpandableListView.c(l);
+        if ((this.a.jdField_a_of_type_Blbu == null) || (!this.a.jdField_a_of_type_Blbu.a(this.a, paramView, i, this.a.jdField_a_of_type_Bleb.getGroupId(i)))) {
+          this.a.b(i);
+        }
+      }
+    }
+    return true;
   }
 }
 

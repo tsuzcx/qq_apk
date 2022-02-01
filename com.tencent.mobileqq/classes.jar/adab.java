@@ -1,55 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-
 public class adab
-  extends CardObserver
 {
-  public adab(ChatSettingActivity paramChatSettingActivity) {}
+  public final int a;
+  public final Class<? extends adae> a;
+  public final String a;
+  public final int b;
   
-  public void onCardDownload(boolean paramBoolean, Object paramObject)
+  public adab(String paramString, int paramInt1, int paramInt2, Class<? extends adae> paramClass)
   {
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
-    {
-      if ((paramBoolean) && (paramObject != null))
-      {
-        if ((ChatSettingActivity.a(this.a) == 0) && (ChatSettingActivity.a(this.a).equals(paramObject.uin)))
-        {
-          String str = ContactUtils.getFriendNick(this.a.app, ChatSettingActivity.a(this.a));
-          if ((!TextUtils.isEmpty(str)) && (!str.equals(ChatSettingActivity.f(this.a)))) {
-            ChatSettingActivity.c(this.a, str);
-          }
-        }
-        if ((this.a.g != null) && (!TextUtils.isEmpty(ChatSettingActivity.a(this.a))) && (ChatSettingActivity.a(this.a).equals(paramObject.uin))) {
-          ChatSettingActivity.a(this.a, ChatSettingActivity.a(this.a, ChatSettingActivity.a(this.a)), this.a.g);
-        }
-      }
-      return;
-    }
-  }
-  
-  public void onGetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (this.a.d != null) && (paramBoolean2 != this.a.d.a()))
-    {
-      this.a.d.setOnCheckedChangeListener(null);
-      this.a.d.setChecked(paramBoolean2);
-      this.a.d.setOnCheckedChangeListener(this.a);
-    }
-  }
-  
-  public void onSetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (this.a.d != null) && (paramBoolean2 != this.a.d.a()))
-    {
-      this.a.d.setOnCheckedChangeListener(null);
-      this.a.d.setChecked(paramBoolean2);
-      this.a.d.setOnCheckedChangeListener(this.a);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangClass = paramClass;
   }
 }
 

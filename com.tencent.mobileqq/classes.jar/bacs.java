@@ -1,6 +1,8 @@
-public abstract interface bacs
+import java.util.ArrayList;
+
+public class bacs
 {
-  public abstract void a();
+  public ArrayList<bact> a = new ArrayList();
 }
 
 

@@ -1,37 +1,31 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemNewFriendMsgData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.content.Intent;
+import android.net.Uri;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qzone.QZoneHelper;
 
 public class adza
-  implements aiep
 {
-  public adza(QQLSActivity paramQQLSActivity) {}
-  
-  public void ad_() {}
-  
-  public void b() {}
-  
-  public void j_(int paramInt)
+  public static void a()
   {
-    if ((paramInt == 0) && (this.a.a.a().size() > 0))
-    {
-      Iterator localIterator = this.a.a.a().iterator();
-      while (localIterator.hasNext())
-      {
-        RecentBaseData localRecentBaseData = (RecentBaseData)localIterator.next();
-        if ((localRecentBaseData instanceof RecentItemNewFriendMsgData))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QQLSActivity", 2, "Need to delete RecentItemNewFriendMsgData");
-          }
-          this.a.a.a().remove(localRecentBaseData);
-          this.a.b();
-        }
-      }
+    Intent localIntent = new Intent(BaseApplicationImpl.getContext(), JumpActivity.class);
+    localIntent.addFlags(268435456);
+    localIntent.addFlags(536870912);
+    localIntent.addFlags(67108864);
+    localIntent.addFlags(131072);
+    localIntent.setData(Uri.parse("mqqapi://qzone/to_friend_feeds"));
+    BaseApplicationImpl.getContext().startActivity(localIntent);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Intent paramIntent, String paramString, boolean paramBoolean)
+  {
+    if ((!"msg_tab_camera".equals(paramString)) || (paramIntent == null)) {
+      return;
     }
+    QZoneHelper.forwardToWriteMood(paramFragmentActivity, paramQQAppInterface, paramIntent, 20005, paramBoolean);
   }
 }
 

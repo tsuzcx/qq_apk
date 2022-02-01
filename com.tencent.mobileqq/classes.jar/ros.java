@@ -1,9 +1,8 @@
-class ros
-  implements bjoy
+import java.net.URL;
+
+public abstract interface ros
 {
-  ros(roq paramroq) {}
-  
-  public void a() {}
+  public abstract URL a(URL paramURL);
 }
 
 

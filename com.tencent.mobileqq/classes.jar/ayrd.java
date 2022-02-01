@@ -1,14 +1,11 @@
-import android.view.View;
-
-public abstract interface ayrd
+public class ayrd
 {
-  public abstract void a(View paramView);
+  public String a = "auto";
   
-  public abstract void a(View paramView, float paramFloat);
-  
-  public abstract void a(View paramView, float paramFloat1, float paramFloat2);
-  
-  public abstract void b(View paramView);
+  public String toString()
+  {
+    return "ARCloudReqOcrInfo{language = " + this.a + '}';
+  }
 }
 
 

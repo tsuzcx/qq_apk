@@ -1,27 +1,20 @@
 package com.tencent.qqmini.sdk.runtime;
 
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
-import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-
 class BaseUIProxy$2
-  implements Runnable
+  implements BaseRuntimeLoader.OnAppRuntimeLoadListener
 {
   BaseUIProxy$2(BaseUIProxy paramBaseUIProxy) {}
   
-  public void run()
+  public void onResult(int paramInt, String paramString, BaseRuntimeLoader paramBaseRuntimeLoader)
   {
-    if (this.this$0.mCurrRuntimeLoader != null)
+    if ((paramInt == 0) && (paramBaseRuntimeLoader != null))
     {
-      this.this$0.mCurrRuntimeLoader.startLoadMiniAppContent(false);
-      this.this$0.mCurrRuntimeLoader.onAttachActivity(this.this$0.mActivity, null, this.this$0.mRootLayout);
+      if (paramBaseRuntimeLoader == this.this$0.mCurrRuntimeLoader) {
+        this.this$0.onRuntimeReady();
+      }
+      return;
     }
-    this.this$0.hideLoading();
-    ChannelProxy localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
-    if ((localChannelProxy != null) && (this.this$0.mCurrRuntimeLoader.getMiniAppInfo() != null)) {
-      localChannelProxy.syncForceGroundAndRefreshBadge(this.this$0.mActivity, this.this$0.mCurrRuntimeLoader.getMiniAppInfo().appId, AppLoaderFactory.g().getProcessName());
-    }
+    this.this$0.onRuntimeFail(paramInt, paramString);
   }
 }
 

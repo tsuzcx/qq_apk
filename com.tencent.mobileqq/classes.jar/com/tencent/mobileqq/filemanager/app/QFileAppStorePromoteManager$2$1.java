@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import aseq;
+import atiw;
 
 class QFileAppStorePromoteManager$2$1
   implements Runnable
@@ -14,7 +14,7 @@ class QFileAppStorePromoteManager$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileAppStorePromoteManager.2.1
  * JD-Core Version:    0.7.0.1
  */

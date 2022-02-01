@@ -1,36 +1,42 @@
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.qqstory.view.EmptySupportViewPager;
+import java.util.Iterator;
+import java.util.List;
 
-class zfu
-  implements AbsListView.OnScrollListener
+public class zfu
+  implements ViewPager.OnPageChangeListener
 {
-  boolean jdField_a_of_type_Boolean = false;
+  public zfu(EmptySupportViewPager paramEmptySupportViewPager) {}
   
-  zfu(zfs paramzfs) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    if ((paramInt3 > 0) && (paramAbsListView.getFirstVisiblePosition() + paramInt2 >= paramInt3))
+    if (this.a.a != null)
     {
-      this.jdField_a_of_type_Boolean = true;
-      return;
+      Iterator localIterator = this.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
+      }
     }
-    this.jdField_a_of_type_Boolean = false;
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    EventCollector.getInstance().onListScrollStateChanged(paramAbsListView, paramInt);
-    if ((this.jdField_a_of_type_Boolean) && (paramInt == 0) && (!zfs.a(this.jdField_a_of_type_Zfs)) && (!zfs.b(this.jdField_a_of_type_Zfs)))
+    if (this.a.a != null)
     {
-      QLog.i(zfs.a(), 1, "onLastItemVisible");
-      zfs.a(this.jdField_a_of_type_Zfs, zfs.a(this.jdField_a_of_type_Zfs).a(zfs.a(this.jdField_a_of_type_Zfs)));
-      if (zfs.a(this.jdField_a_of_type_Zfs) != null)
-      {
-        zfs.a(this.jdField_a_of_type_Zfs).a(zfs.a(this.jdField_a_of_type_Zfs), true);
-        zfs.a(this.jdField_a_of_type_Zfs, true);
+      Iterator localIterator = this.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
+      }
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    if (this.a.a != null)
+    {
+      Iterator localIterator = this.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
       }
     }
   }

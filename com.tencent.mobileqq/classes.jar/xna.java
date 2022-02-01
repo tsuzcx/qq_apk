@@ -1,38 +1,15 @@
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public class xna
+class xna
+  implements DialogInterface.OnDismissListener
 {
-  private vkw<xng> a;
+  xna(xmx paramxmx, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    try
-    {
-      if (this.a != null)
-      {
-        this.a.a();
-        this.a = null;
-      }
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a(List<xng> paramList)
-  {
-    try
-    {
-      if (this.a == null) {
-        this.a = new vkw(new xnc());
-      }
-      this.a.a(paramList);
-      return;
-    }
-    finally {}
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
   }
 }
 

@@ -1,11 +1,11 @@
 package cooperation.vip.webview.controller;
 
-import blco;
+import bmpf;
 
 public class BaseTranslucentController$2
   implements Runnable
 {
-  public BaseTranslucentController$2(blco paramblco) {}
+  public BaseTranslucentController$2(bmpf parambmpf) {}
   
   public void run()
   {

@@ -1,21 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
-public class bbym
-  extends bdbp
+class bbym
+  implements Comparator<bceh>
 {
-  private boolean jdField_a_of_type_Boolean;
+  bbym(bbyl parambbyl) {}
   
-  public bbym(bbyj parambbyj) {}
-  
-  public boolean a(int paramInt)
+  public int a(bceh parambceh1, bceh parambceh2)
   {
-    QLog.i("SimpleUILog.SimpleUIHandler", 1, String.format("emptyCallback postSwitch %d", new Object[] { Integer.valueOf(paramInt) }));
-    if (this.jdField_a_of_type_Boolean) {
-      return true;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    bbyj.a(this.jdField_a_of_type_Bbyj, bbyj.a(this.jdField_a_of_type_Bbyj), -2147483648, bbyj.b(this.jdField_a_of_type_Bbyj), -2147483648, null, -2147483648);
-    return true;
+    int i = parambceh2.a[2] - parambceh1.a[2];
+    if (i != 0) {}
+    int j;
+    do
+    {
+      return i;
+      j = parambceh1.a[0] - parambceh2.a[0];
+      i = j;
+    } while (j != 0);
+    parambceh1 = parambceh1.c.substring(parambceh1.a[0] + parambceh1.a[1]);
+    parambceh2 = parambceh2.c.substring(parambceh2.a[0] + parambceh2.a[1]);
+    return ChnToSpell.a(parambceh1, 2).compareTo(ChnToSpell.a(parambceh2, 2));
   }
 }
 

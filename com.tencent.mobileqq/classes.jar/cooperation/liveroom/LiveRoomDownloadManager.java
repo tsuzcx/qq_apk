@@ -1,11 +1,12 @@
 package cooperation.liveroom;
 
 import android.os.Bundle;
-import bgoe;
-import bgog;
-import bgoj;
+import bhyo;
+import bhyq;
+import bhyt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
@@ -27,8 +28,8 @@ public class LiveRoomDownloadManager
   
   public void download(List<String> paramList, Map<String, File> paramMap, boolean paramBoolean, LiveRoomDownloadManager.DownloadCallback paramDownloadCallback)
   {
-    bgoj localbgoj = ((bgog)((BrowserAppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("modular_web")).getManager(47)).a(1);
-    if (localbgoj != null)
+    bhyt localbhyt = ((bhyq)((BrowserAppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("modular_web")).getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
+    if (localbhyt != null)
     {
       Bundle localBundle = new Bundle();
       paramDownloadCallback = new LiveRoomDownloadManager.1(this, paramDownloadCallback);
@@ -38,16 +39,16 @@ public class LiveRoomDownloadManager
         while (paramList.hasNext())
         {
           Object localObject = (String)paramList.next();
-          localObject = new bgoe((String)localObject, (File)paramMap.get(localObject));
-          ((bgoe)localObject).j = true;
-          ((bgoe)localObject).p = false;
-          localbgoj.a((bgoe)localObject, paramDownloadCallback, localBundle);
+          localObject = new bhyo((String)localObject, (File)paramMap.get(localObject));
+          ((bhyo)localObject).j = true;
+          ((bhyo)localObject).p = false;
+          localbhyt.a((bhyo)localObject, paramDownloadCallback, localBundle);
         }
       }
-      paramList = new bgoe(paramList, paramMap, "LiveRoomDownloadManager");
+      paramList = new bhyo(paramList, paramMap, "LiveRoomDownloadManager");
       paramList.j = true;
       paramList.p = false;
-      localbgoj.a(paramList, paramDownloadCallback, localBundle);
+      localbhyt.a(paramList, paramDownloadCallback, localBundle);
     }
   }
 }

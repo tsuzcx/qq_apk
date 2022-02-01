@@ -1,103 +1,91 @@
-import android.content.Context;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.utils.HexUtil;
+import java.util.UUID;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
 
-public class bfnh
-  implements INetEventHandler
+class bfnh
+  extends aahm
 {
-  private Context jdField_a_of_type_AndroidContentContext;
+  bfnh(bfng parambfng) {}
   
-  public bfnh(bfng parambfng)
+  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidContentContext = bfng.a(parambfng);
-  }
-  
-  /* Error */
-  public void a()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 23	bfnh:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   6: aload_0
-    //   7: invokestatic 32	com/tencent/mobileqq/msf/sdk/AppNetConnInfo:registerNetChangeReceiver	(Landroid/content/Context;Lcom/tencent/mobileqq/msf/sdk/handler/INetEventHandler;)V
-    //   10: invokestatic 36	com/tencent/mobileqq/msf/sdk/AppNetConnInfo:isWifiConn	()Z
-    //   13: ifeq +14 -> 27
-    //   16: aload_0
-    //   17: getfield 13	bfnh:jdField_a_of_type_Bfng	Lbfng;
-    //   20: iconst_1
-    //   21: invokevirtual 40	bfng:c	(Z)V
-    //   24: aload_0
-    //   25: monitorexit
-    //   26: return
-    //   27: invokestatic 45	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   30: ifeq -6 -> 24
-    //   33: ldc 47
-    //   35: iconst_2
-    //   36: ldc 49
-    //   38: invokestatic 53	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   41: goto -17 -> 24
-    //   44: astore_1
-    //   45: aload_0
-    //   46: monitorexit
-    //   47: aload_1
-    //   48: athrow
-    //   49: astore_1
-    //   50: goto -40 -> 10
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	53	0	this	bfnh
-    //   44	4	1	localObject	Object
-    //   49	1	1	localException	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   2	10	44	finally
-    //   10	24	44	finally
-    //   27	41	44	finally
-    //   2	10	49	java/lang/Exception
-  }
-  
-  public void b()
-  {
-    try
-    {
-      AppNetConnInfo.unregisterNetEventHandler(this);
-      label7:
-      this.jdField_a_of_type_Bfng.c();
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label7;
-    }
-    finally {}
-  }
-  
-  public void onNetChangeEvent(boolean paramBoolean)
-  {
-    int i = NetworkUtil.getNetworkType(this.jdField_a_of_type_AndroidContentContext);
-    if (i == 0) {
-      if (bfng.a(this.jdField_a_of_type_Bfng)) {
-        this.jdField_a_of_type_Bfng.e();
-      }
-    }
+    if (!paramBundle.getBoolean("isPreview", false)) {}
     do
     {
-      return;
-      if (i == 1)
+      do
       {
-        if (!bfng.a(this.jdField_a_of_type_Bfng))
-        {
-          this.jdField_a_of_type_Bfng.c(true);
-          return;
-        }
-        this.jdField_a_of_type_Bfng.d();
+        return;
+      } while (paramBundle.getLong("troopUin") != this.a.jdField_a_of_type_Long);
+      paramBundle = paramBundle.getString("itemKey");
+    } while ((paramBundle == null) || (!UUID.fromString(paramBundle).equals(this.a.a())));
+    bgka localbgka = new bgka();
+    localbgka.jdField_a_of_type_Int = -1;
+    try
+    {
+      localbgka.e = this.a.a().toString();
+      localQQAppInterface = bfmd.a();
+      if (localQQAppInterface == null)
+      {
+        bfmf.a("TroopFilePreviewWorker", bfmf.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] getPreviewInfoResult app=null");
         return;
       }
-    } while ((i != 0) || (!bfng.a(this.jdField_a_of_type_Bfng)));
-    this.jdField_a_of_type_Bfng.e();
+    }
+    catch (NullPointerException paramBundle)
+    {
+      QQAppInterface localQQAppInterface;
+      for (;;)
+      {
+        localbgka.e = null;
+      }
+      anrb localanrb = (anrb)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.BIZ_TROOP_HANDLER);
+      if ((paramDownloadFileRspBody == null) || (!paramBoolean))
+      {
+        bfmf.a("TroopFilePreviewWorker", bfmf.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] getPreviewInfoResult isSuccess:false  errCode:" + paramInt);
+        bgjc.a(localQQAppInterface, this.a.jdField_a_of_type_Long, 700);
+        localbgka.jdField_a_of_type_Boolean = false;
+        localanrb.c(localbgka);
+        return;
+      }
+      paramInt = paramDownloadFileRspBody.int32_ret_code.get();
+      localbgka.jdField_a_of_type_Int = paramInt;
+      localbgka.jdField_a_of_type_Boolean = false;
+      String str = paramDownloadFileRspBody.str_download_ip.get();
+      paramBundle = "";
+      if (paramDownloadFileRspBody.str_download_dns.get() != null) {
+        paramBundle = paramDownloadFileRspBody.str_download_dns.get().toString();
+      }
+      localbgka.jdField_a_of_type_JavaLangString = str;
+      if ((TextUtils.isEmpty(localbgka.jdField_a_of_type_JavaLangString)) || (localbgka.jdField_a_of_type_JavaLangString.equals("0.0.0.0"))) {
+        localbgka.jdField_a_of_type_JavaLangString = paramBundle;
+      }
+      localbgka.b = String.valueOf(paramDownloadFileRspBody.uint32_preview_port.get());
+      localbgka.c = paramDownloadFileRspBody.str_ret_msg.get();
+      localbgka.d = HexUtil.bytes2HexStr(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
+      localbgka.f = paramBundle;
+      if (paramInt < 0)
+      {
+        bfmf.a("TroopFilePreviewWorker", bfmf.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] getPreviewInfoResult fail. retCode:" + paramInt + " retMsg:" + localbgka.c);
+        bgjc.a(localQQAppInterface, this.a.jdField_a_of_type_Long, 700);
+        if (TextUtils.isEmpty(localbgka.c)) {
+          localbgka.c = anvx.a(2131714710);
+        }
+        localbgka.jdField_a_of_type_Boolean = false;
+        localanrb.c(localbgka);
+        return;
+      }
+      bfmf.c("TroopFilePreviewWorker", bfmf.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] getPreviewInfoResult isSuccess:true  downloadip:" + str + " downloadDns:" + paramBundle + " port:" + localbgka.b + " downloadKey:" + localbgka.d + " retMsg:" + localbgka.c + " httpsDomain:" + localbgka.f);
+      localbgka.jdField_a_of_type_Boolean = true;
+      localanrb.c(localbgka);
+    }
   }
 }
 

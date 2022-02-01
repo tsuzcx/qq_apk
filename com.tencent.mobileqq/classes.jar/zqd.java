@@ -1,27 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.SeekBar;
+import com.tencent.biz.richframework.widget.BaseVideoView;
+import com.tencent.superplayer.api.ISuperPlayer;
 
-class zqd
-  implements zpy
+public class zqd
+  implements aakz
 {
-  zqd(zqc paramzqc, long paramLong) {}
+  public zqd(BaseVideoView paramBaseVideoView, SeekBar paramSeekBar) {}
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  public void a()
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d(".troop.VideoCombineHelper", 2, "combineMp4_M4a end! isSuccess:" + paramBoolean + " path = " + paramString1);
-      QLog.d(".troop.trace_video_combine", 2, "combineMp4_M4aTime:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    Message localMessage = Message.obtain();
+    localMessage.what = -1001;
+    localMessage.arg1 = this.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
+    localMessage.arg2 = ((int)this.jdField_a_of_type_ComTencentBizRichframeworkWidgetBaseVideoView.a().getDurationMs());
+    localMessage.obj = Boolean.valueOf(false);
+    if (this.jdField_a_of_type_ComTencentBizRichframeworkWidgetBaseVideoView.c()) {
+      this.jdField_a_of_type_ComTencentBizRichframeworkWidgetBaseVideoView.a(this.jdField_a_of_type_AndroidWidgetSeekBar.getProgress());
     }
-    paramString1 = new File(paramString1);
-    if ((paramBoolean) && (paramString1.exists()))
-    {
-      long l = System.currentTimeMillis();
-      this.jdField_a_of_type_Zqc.a.a(paramString1, this.jdField_a_of_type_Zqc.a.b, new zqe(this, l));
-      return;
-    }
-    this.jdField_a_of_type_Zqc.a.d = paramString2;
-    this.jdField_a_of_type_Zqc.a.a.a(this.jdField_a_of_type_Zqc.a);
+    this.jdField_a_of_type_ComTencentBizRichframeworkWidgetBaseVideoView.a().sendMessage(localMessage);
   }
 }
 

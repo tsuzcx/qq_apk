@@ -1,10 +1,10 @@
 package com.tencent.biz.qqstory.utils.ffmpeg;
 
-import bmxe;
-import bmxf;
+import bomw;
+import bomx;
 import java.io.File;
-import xvv;
-import xwa;
+import ykq;
+import ykv;
 
 final class FFmpegUtils$9
   extends ExecuteBinResponseCallback
@@ -13,7 +13,7 @@ final class FFmpegUtils$9
   
   public void onFailure(String paramString)
   {
-    xwa.a("music_composite", "video_music_composite", 0, 1, new String[0]);
+    ykv.a("music_composite", "video_music_composite", 0, 1, new String[0]);
     this.val$endCallback.onFailure(paramString);
   }
   
@@ -34,12 +34,12 @@ final class FFmpegUtils$9
   
   public void onSuccess(String paramString)
   {
-    xwa.a("music_composite", "video_music_composite", 0, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.startime) });
-    if (bmxe.c) {
-      bmxe.g.a(1, System.currentTimeMillis() - this.val$mergeStartTime);
+    ykv.a("music_composite", "video_music_composite", 0, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.startime) });
+    if (bomw.c) {
+      bomw.g.a(1, System.currentTimeMillis() - this.val$mergeStartTime);
     }
     this.val$endCallback.onSuccess(paramString);
-    xvv.c("Q.qqstory.ffmpeg.FFmpegCmd", "[vs_publish_flow]   recordVideo combinBackgroundMusic success end");
+    ykq.c("Q.qqstory.ffmpeg.FFmpegCmd", "[vs_publish_flow]   recordVideo combinBackgroundMusic success end");
   }
 }
 

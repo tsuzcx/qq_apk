@@ -1,59 +1,19 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class alcv
-  implements SeekBar.OnSeekBarChangeListener
 {
-  public alcv(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  float a;
+  public String a;
+  public boolean a;
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public alcv()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onProgressChanged: progress = " + paramInt + ",fromUser=" + paramBoolean);
-    }
-    this.a.m = true;
-    if (paramBoolean)
-    {
-      paramSeekBar = this.a;
-      paramSeekBar.h += 1;
-      ShortVideoPlayActivity.b(this.a, true);
-      ShortVideoPlayActivity.c(this.a, true);
-    }
-    this.a.b(paramInt * this.a.d / 10000L);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  public String toString()
   {
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    ShortVideoPlayActivity.b(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onStartTrackingTouch: progress = " + i);
-    }
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    this.a.l();
-    ShortVideoPlayActivity localShortVideoPlayActivity = this.a;
-    localShortVideoPlayActivity.i += 1;
-    this.a.g = true;
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    int j = (int)(i * this.a.d / 10000L);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onStopTrackingTouch: seekProgress = " + i + ", mCacheProgress= " + ShortVideoPlayActivity.b(this.a) + ", timestamp = " + j);
-    }
-    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      if (this.a.jdField_a_of_type_Int == 2) {
-        this.a.a();
-      }
-      this.a.a(j);
-    }
-    ShortVideoPlayActivity.b(this.a, false);
-    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
+    return "RecogResult{isRecog=" + this.jdField_a_of_type_Boolean + ", cfd=" + this.jdField_a_of_type_Float + ", scoreId='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
   }
 }
 

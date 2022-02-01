@@ -1,50 +1,79 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.pts.core.PTSComposer;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.proteus.item.ColumnTwoVideoProteusItem.ColumnSubscriptionCallback.1;
+import com.tencent.biz.pubaccount.readinjoy.proteus.item.ColumnTwoVideoProteusItem.ColumnSubscriptionCallback.2;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.TypeCastException;
-import org.jetbrains.annotations.Nullable;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.RspBody;
+import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.SubscribeVideoColumnRsp;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/pts/network/PTSGeneralRequestModule$Companion;", "", "()V", "CMD_PTS_REQUEST_DATA", "", "KEY_PTS_APP_INSTANCE_ID", "SERVICE_TYPE_DEFAULT", "", "TAG", "requestPtsBusinessData", "", "ptsComposer", "Lcom/tencent/pts/core/PTSComposer;", "businessType", "requestParamsJson", "extendInfoJson", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qno
+public class qno
+  extends ntf
 {
-  public final void a(@Nullable PTSComposer paramPTSComposer, int paramInt, @Nullable String paramString1, @Nullable String paramString2)
+  private int jdField_a_of_type_Int;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  
+  qno(ArticleInfo paramArticleInfo, int paramInt)
   {
-    if (paramPTSComposer == null) {
-      QLog.i("PTSGeneralRequestModule", 1, "[requestPtsBusinessData] ptsComposer is null, businessType = " + paramInt);
-    }
-    Object localObject;
-    do
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  private void a()
+  {
+    boolean bool = true;
+    int i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.multiVideoColumnInfo.d;
+    rpr localrpr;
+    if (this.jdField_a_of_type_Int == 1)
     {
-      do
-      {
-        do
-        {
-          return;
-          localObject = pay.a();
-          if (localObject == null) {
-            throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
-          }
-          localObject = (pks)((QQAppInterface)localObject).getManager(163);
-        } while (localObject == null);
-        localObject = ((pks)localObject).a();
-      } while (localObject == null);
-      localObject = ((pkm)localObject).a();
-    } while (localObject == null);
-    if (paramString1 != null) {
-      if (paramString2 == null) {
-        break label121;
+      i += 1;
+      localrpr = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.multiVideoColumnInfo;
+      if (this.jdField_a_of_type_Int != 1) {
+        break label80;
       }
     }
     for (;;)
     {
-      ((qnn)localObject).a(paramPTSComposer, paramInt, paramString1, paramString2);
+      localrpr.jdField_a_of_type_Boolean = bool;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.multiVideoColumnInfo.d = i;
+      ThreadManager.getUIHandler().post(new ColumnTwoVideoProteusItem.ColumnSubscriptionCallback.1(this));
       return;
-      paramString1 = "";
+      i -= 1;
       break;
-      label121:
-      paramString2 = "";
+      label80:
+      bool = false;
     }
+  }
+  
+  private void a(byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    oidb_0xd4b.RspBody localRspBody = new oidb_0xd4b.RspBody();
+    try
+    {
+      localRspBody.mergeFrom(paramArrayOfByte);
+      int i = ((oidb_0xd4b.SubscribeVideoColumnRsp)((oidb_0xd4b.RspBody)localRspBody.get()).msg_subscribe_video_column_rsp.get()).uint32_guide_type.get();
+      QLog.i("ColumnTwoVideoProteusItem", 1, "ColumnSubscriptionCallback " + i);
+      ThreadManager.getUIHandler().post(new ColumnTwoVideoProteusItem.ColumnSubscriptionCallback.2(this, paramBundle, i));
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      QLog.e("ColumnTwoVideoProteusItem", 1, paramArrayOfByte.toString());
+    }
+  }
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (paramInt == 0)
+    {
+      a();
+      a(paramArrayOfByte, paramBundle);
+      return;
+    }
+    QLog.e("ColumnTwoVideoProteusItem", 1, "ColumnTwoVideoProteusItem subscribe column fail. columnId:" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.multiVideoColumnInfo.jdField_a_of_type_Int + " subscribeAction:" + this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,10 +1,35 @@
-public abstract interface mnz
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.ui.funchat.filter.EffectFilterTextPager;
+import java.lang.ref.WeakReference;
+
+public class mnz
+  implements Animation.AnimationListener
 {
-  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  
+  public mnz(EffectFilterTextPager paramEffectFilterTextPager, View paramView)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+  }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    lbd.f("EffectFilterTextPager", "onAnimationEnd :" + localView + "|" + paramAnimation);
+    if (localView != null) {
+      localView.setVisibility(4);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mnz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,24 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.biz.richframework.part.block.base.RefreshHeaderView;
+import com.tencent.qphone.base.util.QLog;
 
-public class zaa
-  extends RecyclerView.ViewHolder
+class zaa
+  extends boiw
 {
-  public zaa(RefreshHeaderView paramRefreshHeaderView)
+  zaa(yzz paramyzz) {}
+  
+  public void onCancel(String paramString) {}
+  
+  public void onFinish(String paramString, boolean paramBoolean, int paramInt)
   {
-    super(paramRefreshHeaderView);
+    if (QLog.isColorLevel()) {
+      QLog.d("SlideShowPhotoListManager", 2, "SlideShowPhotoListManager onFinish key=" + paramString + " result=" + paramBoolean);
+    }
   }
+  
+  public void onNetChange(int paramInt) {}
+  
+  public void onProgress(String paramString, int paramInt) {}
+  
+  public void onStart(String paramString, boolean paramBoolean) {}
 }
 
 

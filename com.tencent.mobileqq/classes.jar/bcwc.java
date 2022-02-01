@@ -1,339 +1,165 @@
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.webview.sonic.SonicClientImpl;
-import com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
-import com.tencent.smtt.sdk.CookieSyncManager;
-import com.tencent.smtt.sdk.WebSettings;
-import com.tencent.smtt.sdk.WebSettings.PluginState;
-import com.tencent.smtt.sdk.WebViewClient;
-import java.io.File;
-import java.util.HashMap;
-import mqq.app.MobileQQ;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class bcwc
+  extends MSFServlet
 {
-  Activity jdField_a_of_type_AndroidAppActivity;
-  Intent jdField_a_of_type_AndroidContentIntent;
-  private atdi jdField_a_of_type_Atdi;
-  bguk jdField_a_of_type_Bguk;
-  TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  SonicClientImpl jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl;
-  nyz jdField_a_of_type_Nyz;
-  public boolean a;
-  
-  public bcwc(AppInterface paramAppInterface, Activity paramActivity, bguk parambguk, Intent paramIntent, boolean paramBoolean)
+  private byte[] a()
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Bguk = parambguk;
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView = a(paramAppInterface, paramActivity, paramIntent, paramBoolean);
+    Object localObject = new oidb_sso.OIDBSSOPkg();
+    ((oidb_sso.OIDBSSOPkg)localObject).uint32_command.set(1231);
+    ((oidb_sso.OIDBSSOPkg)localObject).uint32_service_type.set(1);
+    localObject = ((oidb_sso.OIDBSSOPkg)localObject).toByteArray();
+    ByteBuffer localByteBuffer = ByteBuffer.allocate(localObject.length + 4);
+    localByteBuffer.putInt(localObject.length + 4);
+    localByteBuffer.put((byte[])localObject);
+    return localByteBuffer.array();
   }
   
-  private void b(TouchWebView paramTouchWebView)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    bcwd localbcwd = new bcwd(this);
-    paramTouchWebView.setWebChromeClient(localbcwd);
-    this.jdField_a_of_type_Nyz = localbcwd;
-  }
-  
-  public TouchWebView a()
-  {
-    return this.jdField_a_of_type_ComTencentBizUiTouchWebView;
-  }
-  
-  public TouchWebView a(AppInterface paramAppInterface, Activity paramActivity, Intent paramIntent, boolean paramBoolean)
-  {
-    npn.a("Web_qqbrowser_init_only_webview");
-    long l1 = System.currentTimeMillis();
-    Object localObject1 = null;
-    Object localObject2;
-    if (bcvy.a(paramActivity, paramIntent.getStringExtra("url")))
-    {
-      localObject2 = bcvy.a(paramActivity);
-      localObject1 = localObject2;
-      if (localObject2 != null)
-      {
-        this.jdField_a_of_type_Boolean = true;
-        localObject1 = localObject2;
-      }
+    boolean bool1 = paramFromServiceMsg.isSuccess();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive() is called, isSuccess is:" + bool1);
     }
-    if (localObject1 == null) {
-      if (paramBoolean) {
-        localObject1 = SwiftReuseTouchWebView.a(paramActivity);
-      }
+    Bundle localBundle = new Bundle();
+    Object localObject1;
+    if (bool1) {
+      localObject1 = new ArrayList();
     }
+    label539:
+    label689:
+    label694:
     for (;;)
     {
-      Object localObject3 = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics();
-      localObject2 = ((TouchWebView)localObject1).getLayoutParams();
-      label108:
-      long l2;
-      long l3;
-      WebSettings localWebSettings;
-      label224:
-      String str1;
-      label266:
-      label326:
-      int i;
-      if (localObject2 == null)
+      int j;
+      Object localObject2;
+      int k;
+      try
       {
-        localObject2 = new ViewGroup.LayoutParams(((DisplayMetrics)localObject3).widthPixels, ((DisplayMetrics)localObject3).heightPixels);
-        ((TouchWebView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        l1 = System.currentTimeMillis() - l1;
+        i = paramFromServiceMsg.getResultCode();
+        paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
+        j = paramFromServiceMsg.getInt();
+        localObject2 = new byte[j - 4];
+        paramFromServiceMsg.get((byte[])localObject2);
+        paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])localObject2);
+        k = paramFromServiceMsg.uint32_result.get();
+        paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
+        int m = paramFromServiceMsg.get();
         if (QLog.isColorLevel()) {
-          QLog.d("WebLog_WebViewWrapper", 2, "createWebView TouchWebView cost = " + l1);
+          QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive,result is:" + k + ",response.lenth is:" + j + ",sso.RespResult is:" + i + ",cCount is:" + m);
         }
-        ((TouchWebView)localObject1).setIntent(paramIntent);
-        npn.b("Web_qqbrowser_init_only_webview");
-        l2 = System.currentTimeMillis();
-        a((TouchWebView)localObject1);
-        b((TouchWebView)localObject1);
-        l3 = System.currentTimeMillis();
-        ((TouchWebView)localObject1).setScrollBarStyle(0);
-        npn.a("Web_AdjustSettings");
-        localWebSettings = ((TouchWebView)localObject1).getSettings();
-        npn.a("Web_SetUserAgent");
-        if (!aqku.a().a()) {
-          break label883;
+        if (k == 0) {
+          continue;
         }
-        localObject2 = " _tdocFlag/1";
-        localObject3 = new StringBuilder().append("tendocpreload get UA");
-        str1 = localWebSettings.getUserAgentString();
-        String str2 = a(this.jdField_a_of_type_Bguk);
-        if (((TouchWebView)localObject1).getX5WebViewExtension() == null) {
-          break label891;
-        }
-        paramBoolean = true;
-        QLog.i("WebLog_WebViewWrapper", 1, bgyb.a(str1, str2, paramBoolean));
-        localObject3 = new StringBuilder();
-        str1 = localWebSettings.getUserAgentString();
-        str2 = a(this.jdField_a_of_type_Bguk);
-        if (((TouchWebView)localObject1).getX5WebViewExtension() == null) {
-          break label897;
-        }
-        paramBoolean = true;
-        localWebSettings.setUserAgentString(bgyb.a(str1, str2, paramBoolean) + (String)localObject2);
-        npn.b("Web_SetUserAgent");
-        localWebSettings.setSavePassword(false);
-        localWebSettings.setSaveFormData(false);
-        localWebSettings.setBuiltInZoomControls(true);
-        localWebSettings.setUseWideViewPort(true);
-        localWebSettings.setLoadWithOverviewMode(true);
-        localWebSettings.setPluginState(WebSettings.PluginState.ON);
-        localObject2 = paramAppInterface.getApplication().getPackageManager();
-        i = 0;
+        bool1 = false;
       }
-      label787:
-      label928:
-      try
+      catch (Exception paramFromServiceMsg)
       {
-        if (!((PackageManager)localObject2).hasSystemFeature("android.hardware.touchscreen.multitouch"))
-        {
-          paramBoolean = ((PackageManager)localObject2).hasSystemFeature("android.hardware.faketouch.multitouch.distinct");
-          if (!paramBoolean) {
-            break label903;
-          }
+        boolean bool2 = false;
+        bool1 = bool2;
+        if (!QLog.isColorLevel()) {
+          continue;
         }
-        i = 1;
-      }
-      catch (RuntimeException localRuntimeException)
-      {
-        label436:
-        label444:
-        long l4;
-        label685:
-        label883:
-        label891:
-        break label436;
-      }
-      if (i == 0)
-      {
-        paramBoolean = true;
-        localWebSettings.setDisplayZoomControls(paramBoolean);
-        localWebSettings.setPluginsEnabled(true);
-        localWebSettings.setJavaScriptEnabled(true);
-        localWebSettings.setAllowContentAccess(true);
-        localWebSettings.setDatabaseEnabled(true);
-        localWebSettings.setDomStorageEnabled(true);
-        localWebSettings.setAppCacheEnabled(true);
-        str1 = MobileQQ.getMobileQQ().getQQProcessName();
-        localObject3 = "";
-        localObject2 = localObject3;
-        if (str1 != null)
-        {
-          i = str1.lastIndexOf(':');
-          localObject2 = localObject3;
-          if (i > -1) {
-            localObject2 = "_" + str1.substring(i + 1);
-          }
+        QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive occurs exception,error msg is:" + paramFromServiceMsg.getMessage(), paramFromServiceMsg);
+        bool1 = bool2;
+        continue;
+        localBundle.putStringArrayList("redu_list", (ArrayList)localObject1);
+        if (!QLog.isColorLevel()) {
+          continue;
         }
-        localWebSettings.setDatabasePath(paramAppInterface.getApplication().getApplicationContext().getDir("database" + (String)localObject2, 0).getPath());
-        localWebSettings.setAppCachePath(paramAppInterface.getApplication().getApplicationContext().getDir("appcache" + (String)localObject2, 0).getPath());
-        localWebSettings.setMediaPlaybackRequiresUserGesture(false);
-        if (Build.VERSION.SDK_INT >= 21) {
-          localWebSettings.setMixedContentMode(0);
-        }
-        l4 = System.currentTimeMillis();
-        if (Build.VERSION.SDK_INT >= 11) {
-          ((TouchWebView)localObject1).removeJavascriptInterface("searchBoxJavaBridge_");
+        QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive,reduList is:" + localObject1);
+        if (paramIntent == null) {
+          break label539;
         }
       }
-      try
-      {
-        ((TouchWebView)localObject1).requestFocus();
-        paramBoolean = paramIntent.getBooleanExtra("fromArkAppDownload", false);
-        ((TouchWebView)localObject1).setFocusableInTouchMode(true);
-        this.jdField_a_of_type_Atdi = new atdi(paramAppInterface, paramActivity, (TouchWebView)localObject1);
-        this.jdField_a_of_type_Atdi.a(paramBoolean);
-        ((TouchWebView)localObject1).setDownloadListener(this.jdField_a_of_type_Atdi);
-        CookieSyncManager.createInstance(paramAppInterface.getApplication().getApplicationContext());
-        if (((TouchWebView)localObject1).getX5WebViewExtension() != null)
-        {
-          ((TouchWebView)localObject1).getX5WebViewExtension().setWebViewClientExtension(new bcwg(this, (TouchWebView)localObject1, this.jdField_a_of_type_Bguk));
-          aewt.b(paramIntent, "use_x5", "1");
-          npn.b("Web_AdjustSettings");
-          if (bgxd.x) {
-            break label928;
-          }
-        }
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("WebLog_WebViewWrapper", 2, new Object[] { "sReportPerformance:", Boolean.valueOf(bgxd.x), " cost:", Long.valueOf(bgya.a) });
-          }
-          return localObject1;
-          localObject1 = new TouchWebView(paramActivity);
-          break;
-          ((ViewGroup.LayoutParams)localObject2).width = ((DisplayMetrics)localObject3).widthPixels;
-          ((ViewGroup.LayoutParams)localObject2).height = ((DisplayMetrics)localObject3).heightPixels;
-          break label108;
-          localObject2 = "";
-          break label224;
-          paramBoolean = false;
-          break label266;
-          label897:
-          paramBoolean = false;
-          break label326;
-          label903:
-          i = 0;
-          break label436;
-          paramBoolean = false;
-          break label444;
-          aewt.b(paramIntent, "use_x5", "2");
-          break label787;
-          paramAppInterface = new HashMap(5);
-          paramAppInterface.put("createWebview", String.valueOf(l1));
-          paramAppInterface.put("initWebClient", String.valueOf(l3 - l2));
-          paramAppInterface.put("setWebSetting", String.valueOf(l4 - l2));
-          paramAppInterface.put("coreInit", String.valueOf(bgya.a));
-          paramAppInterface.put("coldStart", String.valueOf(bgxd.s));
-          StatisticCollector.getInstance(BaseApplicationImpl.getApplication().getApplicationContext()).collectPerformance(null, "actWebviewInit", true, 0L, 0L, paramAppInterface, null);
-        }
+      int i = 0;
+      if (paramIntent != null) {
+        i = paramIntent.getIntExtra("action", 0);
       }
-      catch (Exception localException)
-      {
-        break label685;
-      }
-    }
-  }
-  
-  String a(bguk parambguk)
-  {
-    if (parambguk != null) {
-      return parambguk.getUAMark();
-    }
-    return null;
-  }
-  
-  public nyz a()
-  {
-    return this.jdField_a_of_type_Nyz;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bguk != null) {
-      this.jdField_a_of_type_Bguk = null;
-    }
-    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null)
-    {
-      WebViewPluginEngine localWebViewPluginEngine = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getPluginEngine();
-      if (localWebViewPluginEngine != null) {
-        localWebViewPluginEngine.b();
-      }
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setPluginEngine(null);
-      if (this.jdField_a_of_type_ComTencentBizUiTouchWebView.getParent() == null) {}
-    }
-    try
-    {
-      ((ViewGroup)this.jdField_a_of_type_ComTencentBizUiTouchWebView.getParent()).removeView(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
-    }
-    catch (Exception localException1)
-    {
-      try
-      {
-        this.jdField_a_of_type_ComTencentBizUiTouchWebView.stopLoading();
-        label77:
-        if (this.jdField_a_of_type_Boolean) {
-          bcvz.a().a(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_ComTencentBizUiTouchWebView = null;
-          if (this.jdField_a_of_type_Nyz != null)
-          {
-            this.jdField_a_of_type_Nyz.a();
-            this.jdField_a_of_type_Nyz = null;
-          }
-          return;
-          localException1 = localException1;
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("WebLog_WebViewWrapper", 2, "remove webview error");
-          break;
-          this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrlOriginal("about:blank");
-          this.jdField_a_of_type_ComTencentBizUiTouchWebView.clearView();
-          this.jdField_a_of_type_ComTencentBizUiTouchWebView.destroy();
-        }
-      }
-      catch (Exception localException2)
-      {
-        break label77;
-      }
-    }
-  }
-  
-  void a(TouchWebView paramTouchWebView)
-  {
-    if (Build.VERSION.SDK_INT >= 21) {}
-    for (Object localObject = new bcwe(this);; localObject = new bcwf(this))
-    {
-      paramTouchWebView.setWebViewClient((WebViewClient)localObject);
+      notifyObserver(paramIntent, i, bool1, localBundle, bcwb.class);
       return;
+      long l;
+      if (paramFromServiceMsg.position() < paramFromServiceMsg.capacity())
+      {
+        localObject2 = new byte[4];
+        paramFromServiceMsg.get((byte[])localObject2, 0, localObject2.length);
+        l = PkgTools.getLongData((byte[])localObject2, 0);
+        i = paramFromServiceMsg.getShort();
+        if (QLog.isColorLevel()) {
+          QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive,uin is:" + l + ",redu is:" + i);
+        }
+        ((ArrayList)localObject1).add(String.valueOf(l));
+      }
+      else
+      {
+        for (paramFromServiceMsg = paramIntent.getStringExtra("k_uin");; paramFromServiceMsg = null)
+        {
+          if (paramFromServiceMsg != null)
+          {
+            l = bcrg.a();
+            SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("free_call", 0).edit();
+            localEditor.putString(aiki.b(paramFromServiceMsg), String.valueOf(l));
+            j = ((ArrayList)localObject1).size();
+            localObject2 = new StringBuilder();
+            k = Math.min(j, 100);
+            i = 0;
+            while (i < k)
+            {
+              ((StringBuilder)localObject2).append((String)((ArrayList)localObject1).get(i));
+              ((StringBuilder)localObject2).append("|");
+              i += 1;
+              continue;
+              if (!QLog.isColorLevel()) {
+                break label689;
+              }
+              QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive,qq has exception,request is null");
+              break label689;
+            }
+            localObject2 = ((StringBuilder)localObject2).toString();
+            localObject1 = localObject2;
+            if (j > 0) {
+              localObject1 = ((String)localObject2).substring(0, ((String)localObject2).length() - 1);
+            }
+            localEditor.putString(aiki.c(paramFromServiceMsg), (String)localObject1);
+            localEditor.commit();
+            if (!QLog.isColorLevel()) {
+              break label694;
+            }
+            QLog.d("ReduFriendServlet", 2, "reduSize is:" + j + ",curTime is:" + l + ",allReduFriend is:" + (String)localObject1);
+            break label694;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive,please pass uin,uin is empty");
+          }
+          break;
+          break;
+        }
+      }
     }
   }
   
-  public void a(SonicClientImpl paramSonicClientImpl)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl = paramSonicClientImpl;
-    QLog.i("WebLog_WebViewWrapper", 1, "setSonicClient sonicClient = " + paramSonicClientImpl);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onSend() is called");
+    }
+    paramPacket.putSendData(a());
+    paramPacket.setSSOCommand("OidbSvc.0x4cf_1");
   }
 }
 

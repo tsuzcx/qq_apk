@@ -1,7 +1,7 @@
 package cooperation.qzone.video;
 
-import achr;
-import aeub;
+import acxz;
+import aflm;
 import android.app.Activity;
 import android.app.Application;
 import android.app.Notification;
@@ -29,12 +29,12 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 import android.widget.Toast;
-import autn;
-import bcdz;
-import bcea;
-import bgvh;
-import bgzd;
-import biaq;
+import avzm;
+import bdku;
+import bdkv;
+import bifz;
+import bijv;
+import bjls;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -102,11 +102,11 @@ import java.lang.reflect.Proxy;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import ljo;
+import lka;
 import mqq.app.Constants.PropertiesKey;
 import mqq.app.MobileQQ;
 import org.json.JSONObject;
-import yyi;
+import znl;
 
 public class QzoneLiveVideoInterface
 {
@@ -144,7 +144,7 @@ public class QzoneLiveVideoInterface
   
   public static boolean checkAVCameraUsed(Context paramContext)
   {
-    return ljo.a(paramContext, false);
+    return lka.a(paramContext, false);
   }
   
   public static void collectPerformance(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3)
@@ -172,22 +172,22 @@ public class QzoneLiveVideoInterface
   
   public static void ecReportToDc03266(Bundle paramBundle)
   {
-    bcea localbcea = new bcea();
-    localbcea.d = paramBundle.getString("sop_type");
-    localbcea.e = paramBundle.getString("sop_name");
-    localbcea.f = paramBundle.getString("type");
-    localbcea.g = paramBundle.getString("push_id");
-    localbcea.h = paramBundle.getString("feed_id");
-    localbcea.i = paramBundle.getString("content_id");
-    localbcea.j = paramBundle.getString("content_title");
-    localbcea.k = paramBundle.getString("content_url");
-    localbcea.l = paramBundle.getString("content_type");
-    localbcea.m = paramBundle.getString("content_author");
-    localbcea.n = paramBundle.getString("d1");
-    localbcea.o = paramBundle.getString("d2");
-    localbcea.p = paramBundle.getString("d3");
-    localbcea.q = paramBundle.getString("d4");
-    bcdz.a(null, localbcea);
+    bdkv localbdkv = new bdkv();
+    localbdkv.d = paramBundle.getString("sop_type");
+    localbdkv.e = paramBundle.getString("sop_name");
+    localbdkv.f = paramBundle.getString("type");
+    localbdkv.g = paramBundle.getString("push_id");
+    localbdkv.h = paramBundle.getString("feed_id");
+    localbdkv.i = paramBundle.getString("content_id");
+    localbdkv.j = paramBundle.getString("content_title");
+    localbdkv.k = paramBundle.getString("content_url");
+    localbdkv.l = paramBundle.getString("content_type");
+    localbdkv.m = paramBundle.getString("content_author");
+    localbdkv.n = paramBundle.getString("d1");
+    localbdkv.o = paramBundle.getString("d2");
+    localbdkv.p = paramBundle.getString("d3");
+    localbdkv.q = paramBundle.getString("d4");
+    bdku.a(null, localbdkv);
   }
   
   public static void forwardOpenQzoneVip(Activity paramActivity, String paramString1, long paramLong, String paramString2, int paramInt)
@@ -320,7 +320,7 @@ public class QzoneLiveVideoInterface
   public static Bitmap generateQrCode(String paramString, int paramInt1, int paramInt2, Bitmap paramBitmap, int paramInt3)
   {
     long l1 = System.currentTimeMillis();
-    Object localObject = yyi.a(paramString, -1);
+    Object localObject = znl.a(paramString, -1);
     int m = ((gr)localObject).a();
     paramString = new int[m * m];
     int i = 0;
@@ -391,9 +391,9 @@ public class QzoneLiveVideoInterface
   public static Notification generationNotification(PendingIntent paramPendingIntent, Context paramContext, Bitmap paramBitmap, String paramString1, String paramString2)
   {
     if ("oppo".equalsIgnoreCase(DeviceInfoUtil.getManufacturer())) {
-      return QZoneNotificationAdapter.getInstance().newNotificationForOppo(paramPendingIntent, paramContext, paramBitmap, paramString1, paramString2, 2130848282);
+      return QZoneNotificationAdapter.getInstance().newNotificationForOppo(paramPendingIntent, paramContext, paramBitmap, paramString1, paramString2, 2130848373);
     }
-    return QZoneNotificationAdapter.getInstance().buildNotification(paramPendingIntent, paramContext, paramBitmap, paramString1, paramString2, 2130848282);
+    return QZoneNotificationAdapter.getInstance().buildNotification(paramPendingIntent, paramContext, paramBitmap, paramString1, paramString2, 2130848373);
   }
   
   public static int getAppId()
@@ -413,7 +413,7 @@ public class QzoneLiveVideoInterface
   
   public static String getBuildNumber()
   {
-    return "4810";
+    return "4875";
   }
   
   public static String getBuilderNumber()
@@ -485,7 +485,7 @@ public class QzoneLiveVideoInterface
   
   public static String getHtmlData(String paramString)
   {
-    return bgzd.c(paramString);
+    return bijv.c(paramString);
   }
   
   public static Drawable getHuangzuanIcon(String paramString1, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, String paramString2, LiveVideoFeedVipIconListner paramLiveVideoFeedVipIconListner)
@@ -563,7 +563,7 @@ public class QzoneLiveVideoInterface
   
   public static String getMobileInfo()
   {
-    return biaq.i();
+    return bjls.h();
   }
   
   public static int getMultiProcInt(String paramString, int paramInt)
@@ -895,7 +895,7 @@ public class QzoneLiveVideoInterface
     for (;;)
     {
       return version;
-      version = "2013 8.4.8";
+      version = "2013 8.4.10";
     }
   }
   
@@ -977,7 +977,7 @@ public class QzoneLiveVideoInterface
   
   public static boolean hasProxyParam(Uri paramUri)
   {
-    return bgzd.a(paramUri);
+    return bijv.a(paramUri);
   }
   
   public static void impressionReport(String paramString) {}
@@ -1080,7 +1080,7 @@ public class QzoneLiveVideoInterface
       QZoneHelper.openWebSecurityVerify(paramString2);
       paramString2.putExtra("url", paramString1);
       paramString2.putExtra("fromQZone", true);
-      if (bgvh.a.containsKey("Qzone")) {
+      if (bifz.a.containsKey("Qzone")) {
         paramString2.putExtra("insertPluginsArray", new String[] { "Qzone" });
       }
       paramString2.setData(Uri.parse(paramString1));
@@ -1178,7 +1178,7 @@ public class QzoneLiveVideoInterface
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add("*.qq.com");
-    autn.a(paramString, paramJSONObject, localArrayList, null);
+    avzm.a(paramString, paramJSONObject, localArrayList, null);
   }
   
   public static void sharePictureToQzone(Activity paramActivity, Bundle paramBundle, int paramInt)
@@ -1290,14 +1290,14 @@ public class QzoneLiveVideoInterface
         if (bool) {}
         for (i = 3;; i = 1)
         {
-          aeub.a(paramContext, paramString3, paramString2, 2, i);
+          aflm.a(paramContext, paramString3, paramString2, 2, i);
           return;
         }
       }
       if (bool) {}
       for (int i = 3;; i = 1)
       {
-        aeub.a(paramContext, paramString1, paramString2, paramString3, "", i);
+        aflm.a(paramContext, paramString1, paramString2, paramString3, "", i);
         return;
       }
     }

@@ -1,24 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Process;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 
-public class auze
-  extends BroadcastReceiver
+class auze
+  implements INetEngine.INetEngineListener
 {
-  public auze(ListenTogetherManager paramListenTogetherManager) {}
+  auze(auzd paramauzd) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (paramIntent == null) {}
-    while (paramIntent.getIntExtra("pid", Process.myPid()) != Process.myPid()) {
-      return;
-    }
-    QLog.i("ListenTogether.Manager", 1, "onThemeChange.");
-    ListenTogetherManager.c(this.a);
-  }
+  public void onResp(NetResp paramNetResp) {}
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

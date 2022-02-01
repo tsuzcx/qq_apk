@@ -1,28 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.troop_homework.outer.TroopHWRecordBaseActivity;
+import android.os.Handler;
+import android.os.Looper;
 
 public class bkyq
-  implements View.OnClickListener
 {
-  public bkyq(TroopHWRecordBaseActivity paramTroopHWRecordBaseActivity) {}
+  private static Handler a;
   
-  public void onClick(View paramView)
+  public static void a(Runnable paramRunnable)
   {
-    switch (paramView.getId())
+    try
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (!this.a.a)
-      {
-        this.a.setResult(0);
-        this.a.finish();
+      if (a == null) {
+        a = new Handler(Looper.getMainLooper());
       }
+      a.post(paramRunnable);
+      return;
     }
+    finally {}
+  }
+  
+  public static void a(Runnable paramRunnable, long paramLong)
+  {
+    try
+    {
+      if (a == null) {
+        a = new Handler(Looper.getMainLooper());
+      }
+      a.postDelayed(paramRunnable, paramLong);
+      return;
+    }
+    finally {}
+  }
+  
+  public static boolean a()
+  {
+    return Looper.getMainLooper().getThread() == Thread.currentThread();
   }
 }
 

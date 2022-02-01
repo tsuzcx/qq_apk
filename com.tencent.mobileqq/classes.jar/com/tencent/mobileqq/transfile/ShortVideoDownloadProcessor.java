@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.transfile;
 
-import abwz;
-import amtj;
+import acnh;
 import android.text.TextUtils;
-import aqbp;
-import aqbq;
-import aycx;
-import aycy;
-import bbqf;
-import bfyz;
+import anvx;
+import ares;
+import aret;
+import azjj;
+import azjk;
+import bcwz;
+import bhhr;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForLightVideo;
@@ -109,18 +109,18 @@ public class ShortVideoDownloadProcessor
         if (QLog.isColorLevel()) {
           QLog.d("ShortVideoDownloadProcessor", 2, "onBusiProtoResp()---- 视频文件过期errCode=" + this.errCode);
         }
-        setError(this.errCode, amtj.a(2131713175));
+        setError(this.errCode, anvx.a(2131713522));
       }
       else if (-5100528 == this.errCode)
       {
         if (QLog.isColorLevel()) {
           QLog.d("ShortVideoDownloadProcessor", 2, "onBusiProtoResp()---- 后台不允许自动下载, errCode = " + this.errCode);
         }
-        setError(-5100528, amtj.a(2131713180));
+        setError(-5100528, anvx.a(2131713527));
       }
       else
       {
-        setError(9045, amtj.a(2131713182));
+        setError(9045, anvx.a(2131713529));
       }
     }
   }
@@ -235,7 +235,7 @@ public class ShortVideoDownloadProcessor
   {
     if ((this.mUiRequest == null) || (this.mUiRequest.mOutFilePath == null))
     {
-      setError(9302, amtj.a(2131713152));
+      setError(9302, anvx.a(2131713499));
       onError();
       return -1;
     }
@@ -505,17 +505,36 @@ public class ShortVideoDownloadProcessor
       this.mReportInfo.put("param_busiType", this.mReportBusiType + "");
       this.mReportInfo.put("param_videoDuration", String.valueOf(this.videoTime));
       this.mReportInfo.put("param_DownMode", String.valueOf(this.mUiRequest.mDownMode));
-      HashMap localHashMap = this.mReportInfo;
-      if (!this.mIsHttpsDownload) {
-        break label593;
+      if ((this.mQuicNetReport == null) || (this.mQuicNetReport.isHttpRetryed)) {
+        break label674;
       }
-      str = "1";
-      label509:
+      i = 1;
+      label510:
+      HashMap localHashMap = this.mReportInfo;
+      if (i == 0) {
+        break label679;
+      }
+      str = "2";
+      label525:
       localHashMap.put("param_isHttps", str);
       this.mReportInfo.put("param_trans_consume", String.valueOf(this.mStepTrans.getTimeConsume()));
+      localHashMap = this.mReportInfo;
+      if (i == 0) {
+        break label702;
+      }
+      str = "1";
+      label572:
+      localHashMap.put("parameter_quic", str);
+      localHashMap = this.mReportInfo;
+      if ((this.mQuicNetReport == null) || (!this.mQuicNetReport.success)) {
+        break label710;
+      }
+      str = "1";
+      label611:
+      localHashMap.put("parameter_quic_status", str);
       reportQuicNetState();
       if (!paramBoolean) {
-        break label601;
+        break label718;
       }
       reportForIpv6(true, l);
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, getReportTAG(), true, l, this.mTotolLen, this.mReportInfo, "");
@@ -526,10 +545,24 @@ public class ShortVideoDownloadProcessor
       return;
       i = 1;
       break;
-      label593:
+      label674:
+      i = 0;
+      break label510;
+      label679:
+      if (this.mIsHttpsDownload)
+      {
+        str = "1";
+        break label525;
+      }
       str = "0";
-      break label509;
-      label601:
+      break label525;
+      label702:
+      str = "0";
+      break label572;
+      label710:
+      str = "0";
+      break label611;
+      label718:
       if (this.errCode != -9527) {
         this.mReportInfo.remove("param_rspHeader");
       }
@@ -710,12 +743,12 @@ public class ShortVideoDownloadProcessor
       localObject = this.mDownCallBacks.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        aycx localaycx = (aycx)((Iterator)localObject).next();
-        aycy localaycy = new aycy();
-        localaycy.jdField_a_of_type_Int = -1;
-        localaycy.jdField_b_of_type_Int = this.errCode;
-        localaycy.jdField_a_of_type_JavaLangString = this.errDesc;
-        localaycx.a(localaycy);
+        azjj localazjj = (azjj)((Iterator)localObject).next();
+        azjk localazjk = new azjk();
+        localazjk.jdField_a_of_type_Int = -1;
+        localazjk.jdField_b_of_type_Int = this.errCode;
+        localazjk.jdField_a_of_type_JavaLangString = this.errDesc;
+        localazjj.a(localazjk);
         if (QLog.isColorLevel()) {
           QLog.d("ShortVideo.TAG", 2, "onError ");
         }
@@ -808,13 +841,13 @@ public class ShortVideoDownloadProcessor
     localObject = this.mDownCallBacks.iterator();
     while (((Iterator)localObject).hasNext())
     {
-      aycx localaycx = (aycx)((Iterator)localObject).next();
-      aycy localaycy = new aycy();
-      localaycy.jdField_a_of_type_Int = 0;
-      localaycy.jdField_b_of_type_JavaLangString = this.mUiRequest.mOutFilePath;
-      localaycy.c = this.mUiRequest.mMd5;
-      localaycy.d = this.mUiRequest.mDownMode;
-      localaycx.a(localaycy);
+      azjj localazjj = (azjj)((Iterator)localObject).next();
+      azjk localazjk = new azjk();
+      localazjk.jdField_a_of_type_Int = 0;
+      localazjk.jdField_b_of_type_JavaLangString = this.mUiRequest.mOutFilePath;
+      localazjk.c = this.mUiRequest.mMd5;
+      localazjk.d = this.mUiRequest.mDownMode;
+      localazjj.a(localazjk);
     }
   }
   
@@ -834,7 +867,7 @@ public class ShortVideoDownloadProcessor
       int i = (int)(10000L * paramLong1 / paramLong2);
       paramNetReq = this.mDownCallBacks.iterator();
       while (paramNetReq.hasNext()) {
-        ((aycx)paramNetReq.next()).a(i, false);
+        ((azjj)paramNetReq.next()).a(i, false);
       }
     }
   }
@@ -868,7 +901,7 @@ public class ShortVideoDownloadProcessor
   
   protected void quicDownloadSuc(QuicNetReport paramQuicNetReport, HttpNetReq paramHttpNetReq)
   {
-    if (paramHttpNetReq.mCallback != null)
+    if ((paramHttpNetReq != null) && (paramHttpNetReq.mCallback != null))
     {
       NetResp localNetResp = new NetResp(paramHttpNetReq);
       localNetResp.mHttpCode = paramQuicNetReport.httpStatus;
@@ -915,7 +948,7 @@ public class ShortVideoDownloadProcessor
     Object localObject2;
     if ((this.mUiRequest.mFileType == 6) || (this.mUiRequest.mFileType == 9) || (this.mUiRequest.mFileType == 17))
     {
-      localObject2 = bfyz.f(BaseApplication.getContext());
+      localObject2 = bhhr.f(BaseApplication.getContext());
       if ((localObject2 != null) && (((String)localObject2).length() > 0))
       {
         localObject2 = ((String)localObject2).split("\\|");
@@ -980,17 +1013,22 @@ public class ShortVideoDownloadProcessor
   
   protected void reportQuicNetState()
   {
+    boolean bool2 = false;
+    String str;
     if (this.mQuicNetReport != null)
     {
-      String str = getReportTAG();
+      str = getReportTAG();
       if ((!"actShortVideoDownloadVideo".equals(str)) && (!"actShortVideoDiscussgroupDownloadVideo".equals(str))) {
-        break label48;
+        break label73;
       }
     }
-    label48:
-    for (boolean bool = true;; bool = false)
+    label73:
+    for (boolean bool1 = true;; bool1 = false)
     {
-      this.mQuicNetReport.reportBeaconEvent(bool);
+      if (("actShortVideoDownloadVideo".equals(str)) || ("actShortVideoDownloadThumb".equals(str))) {
+        bool2 = true;
+      }
+      this.mQuicNetReport.reportBeaconEvent(bool1, bool2);
       this.mQuicNetReport = null;
       return;
     }
@@ -1022,7 +1060,7 @@ public class ShortVideoDownloadProcessor
     if ((this.mIsPause) && (2004 != paramInt)) {
       return;
     }
-    bbqf.a(this.app, this.file, this.mUiRequest);
+    bcwz.a(this.app, this.file, this.mUiRequest);
   }
   
   void sendRequest()
@@ -1076,7 +1114,7 @@ public class ShortVideoDownloadProcessor
     String str;
     if ((this.mNetReq != null) && ((this.mNetReq instanceof HttpNetReq)))
     {
-      if (!abwz.d(this.mUiRequest.mUinType)) {
+      if (!acnh.d(this.mUiRequest.mUinType)) {
         break label59;
       }
       str = "videoCd";
@@ -1124,8 +1162,8 @@ public class ShortVideoDownloadProcessor
   
   protected void tryUseQuicDownload(HttpNetReq paramHttpNetReq)
   {
-    aqbq localaqbq = aqbp.a();
-    if ((localaqbq != null) && (localaqbq.a()) && (this.mSupportQuic) && (!this.mIpListEmptyResp) && (!this.mIpList.isEmpty()))
+    aret localaret = ares.a();
+    if ((localaret != null) && (localaret.a()) && (this.mSupportQuic) && (!this.mIpListEmptyResp) && (!this.mIpList.isEmpty()))
     {
       QuicDownloader localQuicDownloader = getQuicDownloader();
       if (localQuicDownloader == null)
@@ -1135,8 +1173,9 @@ public class ShortVideoDownloadProcessor
         }
         this.mQuicNetReport = new QuicNetReport();
         this.mQuicNetReport.failReason = 7;
+        this.mQuicNetReport.isHttpRetryed = true;
         this.mNetEngine.sendReq(paramHttpNetReq);
-        QuicNetResMgr.getInstance().downloadQuicRes(localaqbq);
+        QuicNetResMgr.getInstance().downloadQuicRes(localaret);
         return;
       }
       if (QLog.isColorLevel()) {
@@ -1170,12 +1209,12 @@ public class ShortVideoDownloadProcessor
       }
       for (;;)
       {
-        paramHttpNetReq = paramQuicDownloader.build(str1, i, "/" + this.mRespUrl, paramHttpNetReq.mOutPath);
+        paramQuicDownloader = paramQuicDownloader.build(str1, i, "/" + this.mRespUrl, paramHttpNetReq.mOutPath);
         if (!StringUtil.isEmpty(this.mDownDomain)) {
-          paramHttpNetReq.addHeader("host", this.mDownDomain);
+          paramQuicDownloader.addHeader("host", this.mDownDomain);
         }
         this.mQuicDownloadListener = new ShortVideoDownloadProcessor.QuicDownloadListener(this);
-        paramHttpNetReq.addHeader("Accept-Encoding", "identity").isQuicEncryption(this.mIsQuicEncryption).fec(this.mQuicFec).timeOut(new RichMediaStrategy.OldEngineDPCProfile.TimeoutParam().getReadTimeout(NetworkCenter.getInstance().getNetType())).businessId(1).isIpv6(localServerAddr.isIpv6).listener(this.mQuicDownloadListener).start();
+        paramQuicDownloader.addHeader("Accept-Encoding", "identity").isQuicEncryption(this.mIsQuicEncryption).fec(this.mQuicFec).tempPath(paramHttpNetReq.mTempPath).timeOut(new RichMediaStrategy.OldEngineDPCProfile.TimeoutParam().getReadTimeout(NetworkCenter.getInstance().getNetType())).businessId(1).isIpv6(localServerAddr.isIpv6).rttHost("sns.cdn.qq.com").listener(this.mQuicDownloadListener).start();
         return;
       }
     }

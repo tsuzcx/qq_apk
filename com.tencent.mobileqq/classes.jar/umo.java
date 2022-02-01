@@ -1,25 +1,21 @@
-import android.widget.TextView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
 class umo
-  implements umi
+  implements Animator.AnimatorListener
 {
-  umo(umj paramumj, boolean paramBoolean) {}
+  umo(umk paramumk) {}
   
-  public void a()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    umj.a(this.jdField_a_of_type_Umj, null);
-    if ((umj.a(this.jdField_a_of_type_Umj) != null) && (umj.a(this.jdField_a_of_type_Umj)) && (umj.a(this.jdField_a_of_type_Umj) != null)) {
-      umj.a(this.jdField_a_of_type_Umj).setText(umj.a(this.jdField_a_of_type_Umj).a());
-    }
-    if ((umj.b(this.jdField_a_of_type_Umj)) && (umj.a(this.jdField_a_of_type_Umj) != 0L))
-    {
-      umj.b(this.jdField_a_of_type_Umj);
-      umj.b(this.jdField_a_of_type_Umj, false);
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      umj.c(this.jdField_a_of_type_Umj);
-    }
+    umk.b(this.a);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

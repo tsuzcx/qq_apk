@@ -1,26 +1,77 @@
-import android.os.Bundle;
-import mqq.observer.SSOAccountObserver;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.manager.Manager;
 
-class bhoz
-  extends SSOAccountObserver
+public class bhoz<V>
+  implements Manager
 {
-  bhoz(bhox parambhox, int paramInt) {}
+  private final ArrayList<bhpb<V>> a = new ArrayList();
   
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  static
   {
-    bhox.a(this.jdField_a_of_type_Bhox, paramString, this.jdField_a_of_type_Int, paramInt2, -102);
+    bhvq.a.a();
   }
   
-  public void onLoginSuccess(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
+  public static <E> bhpa<E> a(bhpa<E> parambhpa)
   {
-    bhow.a().a(paramString);
-    bhox.a(paramString);
-    bhox.a(this.jdField_a_of_type_Bhox, paramString, this.jdField_a_of_type_Int, 0, 0);
+    return new bhpc(parambhpa);
   }
   
-  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
+  public void a(String arg1, bhpa<V> parambhpa, Object paramObject)
   {
-    bhox.a(this.jdField_a_of_type_Bhox, paramString, this.jdField_a_of_type_Int, 2006, -100);
+    if (parambhpa != null)
+    {
+      parambhpa = new bhpb(parambhpa, paramObject, ???);
+      synchronized (this.a)
+      {
+        this.a.add(parambhpa);
+        return;
+      }
+    }
+  }
+  
+  public void a(String paramString, V paramV)
+  {
+    if (paramString == null) {
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    for (;;)
+    {
+      int i;
+      synchronized (this.a)
+      {
+        i = this.a.size() - 1;
+        if (i >= 0)
+        {
+          bhpb localbhpb = (bhpb)this.a.get(i);
+          if (paramString.equals(localbhpb.jdField_a_of_type_JavaLangString))
+          {
+            this.a.remove(i);
+            localArrayList.add(localbhpb);
+          }
+        }
+        else
+        {
+          paramString = localArrayList.iterator();
+          if (!paramString.hasNext()) {
+            break;
+          }
+          ??? = (bhpb)paramString.next();
+          ((bhpb)???).jdField_a_of_type_Bhpa.a(paramV, ((bhpb)???).jdField_a_of_type_JavaLangObject);
+        }
+      }
+      i -= 1;
+    }
+  }
+  
+  public void onDestroy()
+  {
+    synchronized (this.a)
+    {
+      this.a.clear();
+      return;
+    }
   }
 }
 

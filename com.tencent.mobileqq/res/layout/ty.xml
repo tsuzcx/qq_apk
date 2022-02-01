@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:gravity="center_horizontal" android:id="@id/bxv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fth" android:shadowColor="#34000000" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="9.0" android:layout_centerHorizontal="true" />
-    <dov.com.qq.im.ae.camera.ui.bottom.AECircleBottomWrapLayout android:layout_gravity="center_horizontal" android:id="@id/apg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/b6_" android:layout_alignParentBottom="true">
-        <dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView android:id="@id/ng4" android:layout_width="fill_parent" android:layout_height="@dimen/b69" android:layout_centerVertical="true" />
-        <View android:gravity="center" android:id="@id/cdl" android:layout_width="@dimen/b69" android:layout_height="@dimen/b69" android:layout_centerInParent="true" android:contentDescription="@string/qdb" />
-        <dov.com.qq.im.ae.view.AECircleCaptureProgressView android:id="@id/bbg" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-        <ImageView android:id="@id/cdo" android:visibility="gone" android:clickable="true" android:layout_width="@dimen/b69" android:layout_height="@dimen/b69" android:layout_centerInParent="true" android:contentDescription="@string/qdf" />
-        <View android:id="@id/bbh" android:visibility="gone" android:layout_width="@dimen/b69" android:layout_height="@dimen/b69" android:layout_centerInParent="true" />
-    </dov.com.qq.im.ae.camera.ui.bottom.AECircleBottomWrapLayout>
-    <dov.com.qq.im.ae.view.AECompoundButton android:id="@id/mwj" android:background="@drawable/eo3" android:focusable="true" android:visibility="gone" android:layout_width="43.0dip" android:layout_height="43.0dip" android:layout_marginBottom="-20.5dip" android:layout_above="@id/apg" android:layout_centerHorizontal="true" app:foregroundHeight="10.0dip" app:foregroundResource="@drawable/eo0" app:foregroundWidth="10.0dip" />
-    <com.tencent.biz.qqstory.view.widget.bubble.BubbleTextView android:id="@id/mit" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="-15.0dip" android:layout_above="@id/apg" android:layout_centerHorizontal="true" />
-    <dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCountTimeLayout android:id="@id/apv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_above="@id/apg" android:layout_centerHorizontal="true" />
-    <RelativeLayout android:gravity="center" android:id="@id/alx" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:layout_above="@id/apv" android:layout_centerHorizontal="true">
-        <TextView android:gravity="center" android:id="@id/amf" android:background="@drawable/bg0" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </RelativeLayout>
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.widget.FormItemRelativeLayout android:id="@id/n0d" android:background="@drawable/common_strip_setting_top" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginTop="@dimen/al0">
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/fyp" android:focusable="false" android:clickable="false" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="jsv" formItem:leftText="@string/x_8" formItem:showArrow="false" />
+        <ImageView android:id="@id/nr1" android:focusable="false" android:clickable="false" android:duplicateParentState="true" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/qq_account_select_icon" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </com.tencent.mobileqq.widget.FormItemRelativeLayout>
+    <com.tencent.mobileqq.widget.FormItemRelativeLayout android:id="@id/n0e" android:background="@drawable/common_strip_setting_bottom" android:paddingTop="19.5dip" android:paddingBottom="19.5dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/nr4" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:id="@id/gq9" android:paddingLeft="@dimen/is" android:focusable="false" android:clickable="false" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/x_9" style="@style/w2" />
+            <ImageView android:id="@id/nr2" android:focusable="false" android:visibility="gone" android:clickable="false" android:duplicateParentState="true" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/qq_account_select_icon" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/nr3" android:visibility="gone" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_below="@id/nr4">
+            <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2" android:id="@id/fyg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2" android:id="@id/fno" android:paddingLeft="@dimen/is" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_toLeftOf="@id/fyg" />
+        </RelativeLayout>
+    </com.tencent.mobileqq.widget.FormItemRelativeLayout>
+</LinearLayout>

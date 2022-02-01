@@ -4,15 +4,18 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import oeq;
+import omh;
 import org.json.JSONObject;
 
 public class VideoInfo$GameAdComData
   implements Parcelable
 {
-  public static final Parcelable.Creator<GameAdComData> CREATOR = new oeq();
+  public static final Parcelable.Creator<GameAdComData> CREATOR = new omh();
   public String A;
   public String B;
+  public String C;
+  public String D;
+  public String E;
   public int a;
   public VideoInfo.GameAdDownloadInfo a;
   public String a;
@@ -74,51 +77,74 @@ public class VideoInfo$GameAdComData
     this.z = paramParcel.readString();
     this.A = paramParcel.readString();
     this.B = paramParcel.readString();
+    this.C = paramParcel.readString();
+    this.D = paramParcel.readString();
+    this.E = paramParcel.readString();
   }
   
   public VideoInfo$GameAdComData(String paramString, JSONObject paramJSONObject)
   {
-    if (paramJSONObject == null) {}
-    do
-    {
+    if (paramJSONObject == null) {
       return;
-      this.jdField_a_of_type_JavaLangString = paramString;
-      this.b = paramJSONObject.optString("sAdID", "");
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("sDeliveryMode", 0);
-      this.c = paramJSONObject.optString("sGameName", "");
-      this.d = paramJSONObject.optString("sPackageName", "");
-      this.e = paramJSONObject.optString("sBusiness_type", "");
-      this.f = paramJSONObject.optString("sPlat_form", "");
-      this.g = paramJSONObject.optString("sAppid", "");
-      this.h = paramJSONObject.optString("sAppleid", "");
-      this.i = paramJSONObject.optString("sSlogan", "");
-      this.j = paramJSONObject.optString("sGameIcon", "");
-      this.k = paramJSONObject.optString("sOperType", "");
-      this.l = paramJSONObject.optString("sGameStage", "");
-      this.m = paramJSONObject.optString("sGameSize", "");
-      this.n = paramJSONObject.optString("sGameKind", "");
-      this.o = paramJSONObject.optString("sGameSubKind", "");
-      this.p = paramJSONObject.optString("sDetailUrl", "");
-      this.q = paramJSONObject.optString("sActivityUrl", "");
-      this.r = paramJSONObject.optString("sGameStatus", "");
-      this.s = paramJSONObject.optString("sComponentType", "");
-      this.t = paramJSONObject.optString("stDownloadInfo", "");
-      if (TextUtils.isEmpty(this.t)) {
-        this.t = new JSONObject().toString();
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramJSONObject.optString("sAdID", "");
+    this.jdField_a_of_type_Int = paramJSONObject.optInt("sDeliveryMode", 0);
+    this.c = paramJSONObject.optString("sGameName", "");
+    this.d = paramJSONObject.optString("sPackageName", "");
+    this.e = paramJSONObject.optString("sBusiness_type", "");
+    this.f = paramJSONObject.optString("sPlat_form", "");
+    this.g = paramJSONObject.optString("sAppid", "");
+    this.h = paramJSONObject.optString("sAppleid", "");
+    this.i = paramJSONObject.optString("sSlogan", "");
+    this.j = paramJSONObject.optString("sGameIcon", "");
+    this.k = paramJSONObject.optString("sOperType", "");
+    this.l = paramJSONObject.optString("sGameStage", "");
+    this.m = paramJSONObject.optString("sGameSize", "");
+    this.n = paramJSONObject.optString("sGameKind", "");
+    this.o = paramJSONObject.optString("sGameSubKind", "");
+    this.p = paramJSONObject.optString("sDetailUrl", "");
+    this.q = paramJSONObject.optString("sActivityUrl", "");
+    this.r = paramJSONObject.optString("sGameStatus", "");
+    this.s = paramJSONObject.optString("sComponentType", "");
+    this.t = paramJSONObject.optString("stDownloadInfo", "");
+    if (TextUtils.isEmpty(this.t)) {
+      this.t = new JSONObject().toString();
+    }
+    this.u = paramJSONObject.optString("sGiftInfo", "");
+    if (TextUtils.isEmpty(this.u)) {
+      this.u = new JSONObject().toString();
+    }
+    this.v = paramJSONObject.optString("sButtonDesc", "");
+    this.w = paramJSONObject.optString("sWordTitle", "");
+    this.x = paramJSONObject.optString("sWordContentWifi", "");
+    this.y = paramJSONObject.optString("sWordContentNoWifi", "");
+    this.z = paramJSONObject.optString("sWordHighlight", "");
+    this.A = paramJSONObject.optString("sWordHighlightColor", "");
+    this.B = paramJSONObject.optString("mExtendGameInfo", "");
+    if (TextUtils.isEmpty(this.B)) {
+      this.B = new JSONObject().toString();
+    }
+    a();
+  }
+  
+  private void a()
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(this.B);
+      this.C = localJSONObject.optString("liujinReportUrl");
+      this.D = localJSONObject.optString("ticket");
+      if (TextUtils.isEmpty(this.D)) {
+        this.D = localJSONObject.optString("ad_encrypted_ticket");
       }
-      this.u = paramJSONObject.optString("sGiftInfo", "");
-      if (TextUtils.isEmpty(this.u)) {
-        this.u = new JSONObject().toString();
-      }
-      this.v = paramJSONObject.optString("sButtonDesc", "");
-      this.w = paramJSONObject.optString("sWordTitle", "");
-      this.x = paramJSONObject.optString("sWordContentWifi", "");
-      this.y = paramJSONObject.optString("sWordContentNoWifi", "");
-      this.z = paramJSONObject.optString("sWordHighlight", "");
-      this.A = paramJSONObject.optString("sWordHighlightColor", "");
-      this.B = paramJSONObject.optString("mExtendGameInfo", "");
-    } while (!TextUtils.isEmpty(this.B));
-    this.B = new JSONObject().toString();
+      this.E = localJSONObject.optString("amsNfbUrl");
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
   }
   
   public int describeContents()
@@ -156,6 +182,9 @@ public class VideoInfo$GameAdComData
     paramParcel.writeString(this.z);
     paramParcel.writeString(this.A);
     paramParcel.writeString(this.B);
+    paramParcel.writeString(this.C);
+    paramParcel.writeString(this.D);
+    paramParcel.writeString(this.E);
   }
 }
 

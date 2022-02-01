@@ -1,99 +1,126 @@
-import android.graphics.drawable.ColorDrawable;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.model.DiandianTopConfig;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController.ViewPagerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.RollViewPager;
-import com.tencent.mobileqq.widget.MeasureGridView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyVideoInfoViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.VideoViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.RoundAngleFrameLayout;
 
 public class sxh
-  extends pkt
+  extends sxl
+  implements qdh
 {
-  public sxh(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController) {}
+  public Handler a;
+  public View a;
+  public ViewGroup a;
+  public ImageView a;
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
+  public KandianUrlImageView a;
+  public ReadInJoyHeadImageView a;
+  public ReadInJoyNickNameTextView a;
+  public ReadInJoyVideoInfoViewGroup a;
+  public VideoViewGroup a;
+  public RoundAngleFrameLayout a;
+  public spk a;
+  public View b;
+  public ViewGroup b;
+  public ImageView b;
+  public LinearLayout b;
+  public TextView b;
+  public KandianUrlImageView b;
+  public View c;
+  public ImageView c;
+  public TextView c;
+  public View d;
+  public ImageView d;
+  public TextView d;
+  public View e;
+  public ImageView e;
+  public TextView e;
+  public TextView f;
+  public TextView g;
+  public TextView h;
+  public TextView i;
   
-  public void d(boolean paramBoolean, List<DiandianTopConfig> paramList)
+  public sxh(Context paramContext)
   {
-    if ((!paramBoolean) || (paramList == null) || (paramList.size() == 0) || (ReadInJoyDiandianHeaderController.a(this.a).a())) {
-      ReadInJoyDiandianHeaderController.a(this.a).setVisibility(8);
+    this(paramContext, null);
+  }
+  
+  public sxh(Context paramContext, qdc paramqdc)
+  {
+    super(paramContext, paramqdc);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public View a(int paramInt, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560411, paramViewGroup, false);
+    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)paramViewGroup.findViewById(2131366712));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetRoundAngleFrameLayout = ((RoundAngleFrameLayout)paramViewGroup.findViewById(2131381023));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131379001));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131368501));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramViewGroup.findViewById(2131380937));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramViewGroup.findViewById(2131361878));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramViewGroup.findViewById(2131368381));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramViewGroup.findViewById(2131376165));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131365915));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131373326));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131368627));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131368626));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131369334));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131380948));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131372923));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoViewGroup = ((VideoViewGroup)paramViewGroup.findViewById(2131380944));
+    this.jdField_b_of_type_AndroidViewView = paramViewGroup.findViewById(2131376555);
+    this.jdField_c_of_type_AndroidViewView = paramViewGroup.findViewById(2131380937);
+    this.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131376127);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoInfoViewGroup = ((ReadInJoyVideoInfoViewGroup)paramViewGroup.findViewById(2131369770));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131372277));
+    this.f = ((TextView)paramViewGroup.findViewById(2131372278));
+    this.g = ((TextView)paramViewGroup.findViewById(2131369734));
+    this.jdField_d_of_type_AndroidViewView = paramViewGroup.findViewById(2131379056);
+    this.jdField_e_of_type_AndroidViewView = paramViewGroup.findViewById(2131379083);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131369948));
+    this.h = ((TextView)paramViewGroup.findViewById(2131362116));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131369800));
+    this.i = ((TextView)paramViewGroup.findViewById(2131362038));
+    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131362037));
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131366730));
+    paramViewGroup.setTag(this);
+    return paramViewGroup;
+  }
+  
+  public spk a()
+  {
+    return this.jdField_a_of_type_Spk;
+  }
+  
+  public void a(spk paramspk, int paramInt1, int paramInt2) {}
+  
+  public boolean a(View paramView)
+  {
+    if (!six.a(a(paramView))) {}
+    while (pjr.a(paramView) < 80.0F) {
+      return false;
     }
-    int i;
-    label227:
-    do
-    {
-      return;
-      ReadInJoyDiandianHeaderController.a(this.a).setVisibility(0);
-      ReadInJoyDiandianHeaderController.a(this.a, false);
-      ReadInJoyDiandianHeaderController.a(this.a).clear();
-      ReadInJoyDiandianHeaderController.b(this.a).clear();
-      ReadInJoyDiandianHeaderController.b(this.a).addAll(paramList);
-      int j;
-      if (ReadInJoyDiandianHeaderController.b(this.a).size() % 2 == 0)
-      {
-        i = ReadInJoyDiandianHeaderController.b(this.a).size() / 2;
-        j = 0;
-      }
-      for (;;)
-      {
-        if (j >= i) {
-          break label476;
-        }
-        Object localObject = new MeasureGridView(this.a.jdField_a_of_type_AndroidContentContext);
-        paramList = new sxl(this.a, ReadInJoyDiandianHeaderController.b(this.a), j);
-        ((MeasureGridView)localObject).setNumColumns(2);
-        ((MeasureGridView)localObject).setAdapter(paramList);
-        ((MeasureGridView)localObject).setSelector(new ColorDrawable(0));
-        ReadInJoyDiandianHeaderController.a(this.a).add(localObject);
-        if (j == 0)
-        {
-          int k = 0;
-          if (k < paramList.getCount())
-          {
-            localObject = (DiandianTopConfig)paramList.getItem(k);
-            if ((localObject != null) && (!((DiandianTopConfig)localObject).hasExposeReported)) {}
-            for (;;)
-            {
-              try
-              {
-                localJSONObject = new JSONObject();
-                localJSONObject.put("folder_status", pay.d);
-                if (((DiandianTopConfig)localObject).type != 5) {
-                  continue;
-                }
-                localJSONObject.put("list_URL", ((DiandianTopConfig)localObject).jumpUrl);
-                localJSONObject.put("type", ((DiandianTopConfig)localObject).type);
-                odq.a(null, "", "0X80092FC", "0X80092FC", 0, 0, ReadInJoyDiandianHeaderController.b(this.a).size() + "", "1", ((DiandianTopConfig)localObject).topicId + "", localJSONObject.toString(), false);
-                ((DiandianTopConfig)localObject).hasExposeReported = true;
-                paramList.a(k, (DiandianTopConfig)localObject);
-              }
-              catch (JSONException localJSONException)
-              {
-                JSONObject localJSONObject;
-                if (!QLog.isColorLevel()) {
-                  continue;
-                }
-                QLog.e("ReadInJoyDiandianHeaderController", 2, localJSONException.toString());
-                continue;
-              }
-              k += 1;
-              break label227;
-              i = ReadInJoyDiandianHeaderController.b(this.a).size() / 2 + 1;
-              break;
-              localJSONObject.put("list_URL", "0");
-            }
-          }
-        }
-        j += 1;
-      }
-      ReadInJoyDiandianHeaderController.a(this.a).a(ReadInJoyDiandianHeaderController.a(this.a));
-    } while (i <= 1);
-    label476:
-    this.a.jdField_a_of_type_Int = 1;
-    ReadInJoyDiandianHeaderController.a(this.a).setCurrentItem(this.a.jdField_a_of_type_Int, false);
-    this.a.f();
+    return true;
   }
 }
 

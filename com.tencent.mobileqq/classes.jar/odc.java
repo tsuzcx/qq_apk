@@ -1,71 +1,58 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.SendMenuEventResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.AccountDetail;
 
-class odc
-  implements BusinessObserver
+public class odc
+  implements bkzq
 {
-  odc(ocw paramocw, NewIntent paramNewIntent, Context paramContext, String paramString, BusinessObserver paramBusinessObserver, QQAppInterface paramQQAppInterface) {}
+  public odc(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void OnClick(View paramView, int paramInt)
   {
-    Object localObject1 = null;
-    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-    if (!paramBoolean) {
+    if (this.a.o) {
       return;
     }
+    this.a.o = true;
+    switch (paramInt)
+    {
+    }
+    label275:
+    label279:
     for (;;)
     {
-      try
-      {
-        localObject2 = paramBundle.getByteArray("data");
-        paramBundle = new mobileqq_mp.SendMenuEventResponse();
+      this.a.b.dismiss();
+      return;
+      this.a.j = false;
+      this.a.y();
+      if (((onq)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER)).a(this.a.e)) {
+        ((ook)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.EC_SHOP_REPORT_HANDLER)).a(134243868, this.a.e, null, null, null, 2L, false);
       }
-      catch (Exception paramBundle)
+      com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = false;
+      if ("2290230341".equals(this.a.e))
       {
-        try
-        {
-          paramBundle.mergeFrom((byte[])localObject2);
-          Object localObject2 = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("menuEventSharePre", 0);
-          localObject1 = paramBundle;
-          if (((SharedPreferences)localObject2).contains(this.jdField_a_of_type_JavaLangString))
-          {
-            localObject1 = paramBundle;
-            if (paramBundle.seqno.has())
-            {
-              localObject1 = paramBundle;
-              if (paramBundle.seqno.get() != ((SharedPreferences)localObject2).getInt(this.jdField_a_of_type_JavaLangString, 0))
-              {
-                if (this.jdField_a_of_type_MqqObserverBusinessObserver != null) {
-                  this.jdField_a_of_type_Ocw.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverBusinessObserver, true);
-                }
-                localObject1 = ((SharedPreferences)localObject2).edit();
-                ((SharedPreferences.Editor)localObject1).putInt(this.jdField_a_of_type_JavaLangString, paramBundle.seqno.get());
-                ((SharedPreferences.Editor)localObject1).commit();
-                localObject1 = paramBundle;
-              }
-            }
-          }
-          if (localObject1 != null) {
-            break;
-          }
-          return;
+        bdla.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80090E7", "0X80090E7", 0, 0, "", "", "", "");
+        label179:
+        if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) {
+          break label275;
         }
-        catch (Exception localException)
-        {
-          break label187;
-        }
-        paramBundle = paramBundle;
-        paramBundle = (Bundle)localObject1;
       }
-      label187:
-      localObject1 = paramBundle;
+      for (paramView = this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name;; paramView = "")
+      {
+        if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) {
+          break label279;
+        }
+        alhu.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.e, paramView);
+        break;
+        if (!TextUtils.equals(String.valueOf(2062433139L), this.a.e)) {
+          break label179;
+        }
+        olh.a(null, null, "0X800929F", "0X800929F", 0, 0, "", "", "", omx.a(null), false);
+        break label179;
+      }
     }
   }
 }

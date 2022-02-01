@@ -2,21 +2,21 @@ package com.tencent.biz.pubaccount.readinjoy.pts.loader;
 
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import nny;
-import qmt;
-import qmu;
+import nuz;
+import qyy;
+import qyz;
 
 public class PTSAppLoader$2
   implements Runnable
 {
-  public PTSAppLoader$2(qmt paramqmt, String paramString) {}
+  public PTSAppLoader$2(qyy paramqyy, String paramString) {}
   
   public void run()
   {
-    qmu localqmu = new qmu(this);
+    qyz localqyz = new qyz(this);
     try
     {
-      nny.a();
+      nuz.a();
     }
     catch (Throwable localThrowable2)
     {
@@ -24,7 +24,7 @@ public class PTSAppLoader$2
       {
         try
         {
-          nny.b(this.a, BaseApplicationImpl.getApplication().getRuntime(), localqmu, true, 0, true);
+          nuz.b(this.a, BaseApplicationImpl.getApplication().getRuntime(), localqyz, true, 0, true);
           return;
         }
         catch (Throwable localThrowable1)

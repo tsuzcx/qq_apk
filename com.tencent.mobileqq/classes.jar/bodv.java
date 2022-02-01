@@ -1,8 +1,14 @@
-class bodv
+public abstract interface bodv
 {
-  public int a;
-  public boolean a;
-  public int b;
+  public abstract int a();
+  
+  public abstract long a();
+  
+  public abstract void a();
+  
+  public abstract int b();
+  
+  public abstract long b();
 }
 
 

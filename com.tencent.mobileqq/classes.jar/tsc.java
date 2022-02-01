@@ -1,34 +1,10 @@
-import com.tencent.biz.pubaccount.readinjoyAd.ad.fragment.ReadinjoyAdHippyFragment;
-import com.tencent.hippy.qq.app.HippyQQEngine.HippyQQEngineListener;
-import com.tencent.qphone.base.util.QLog;
-
-public class tsc
-  implements HippyQQEngine.HippyQQEngineListener
+public abstract interface tsc
 {
-  public tsc(ReadinjoyAdHippyFragment paramReadinjoyAdHippyFragment) {}
-  
-  public void onError(int paramInt, String paramString)
-  {
-    ReadinjoyAdHippyFragment.a(this.a);
-    if (paramInt != -11) {
-      ReadinjoyAdHippyFragment.c(this.a);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadinjoyAdMiniGameFragment", 2, "Hippy: initHippy error statusCode=" + paramInt + ", msg=" + paramString);
-    }
-  }
-  
-  public void onSuccess()
-  {
-    ReadinjoyAdHippyFragment.a(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadinjoyAdMiniGameFragment", 2, "Hippy: initHippy success!");
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tsc
  * JD-Core Version:    0.7.0.1
  */

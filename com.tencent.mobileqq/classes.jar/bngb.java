@@ -1,15 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
 
-class bngb
-  implements ValueAnimator.AnimatorUpdateListener
+public class bngb
+  implements Animation.AnimationListener
 {
-  bngb(bnga parambnga) {}
+  public bngb(AEProviderContainerView paramAEProviderContainerView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    this.a.d = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.a.k();
+    this.a.setVisibility(0);
   }
 }
 

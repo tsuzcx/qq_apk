@@ -1,21 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.nearby.gameroom.PlayerInvitePanel;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Point;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import java.util.List;
 
-public class awmy
-  implements View.OnClickListener
+public abstract interface awmy
 {
-  public awmy(PlayerInvitePanel paramPlayerInvitePanel, int paramInt) {}
+  public abstract void a(LocationRoom.Venue paramVenue);
   
-  public void onClick(View paramView)
-  {
-    if (PlayerInvitePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel) != null) {
-      PlayerInvitePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel).onItemClick(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(LatLng paramLatLng);
+  
+  public abstract void a(LatLng paramLatLng, float paramFloat, List<String> paramList);
+  
+  public abstract void a(boolean paramBoolean, Point paramPoint);
+  
+  public abstract void a(boolean paramBoolean, awmz paramawmz);
 }
 
 

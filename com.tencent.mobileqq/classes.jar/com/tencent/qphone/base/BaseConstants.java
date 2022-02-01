@@ -289,13 +289,13 @@ public class BaseConstants
   public static final boolean isSwitchToTestEnv = false;
   public static boolean isUseDebugSso = false;
   public static long reSendIntrevTime = 0L;
-  public static final String revision = "94cf45ad";
+  public static final String revision = "b8c39faf";
   public static final String testServerAddress = "socket://183.3.233.202:14000";
   
   static
   {
-    REPORTLOGMAXPACKAGECOUNT = 1;
-    REPORTLOG_WIFI_MAXPACKAGECOUNT = 5;
+    REPORTLOGMAXPACKAGECOUNT = 3;
+    REPORTLOG_WIFI_MAXPACKAGECOUNT = 10;
     checkExpiresLogScreenOffCount = 2;
     reSendIntrevTime = 5000L;
     RDM_NoChangeFailCode = "rdm_NCF";

@@ -1,20 +1,27 @@
+import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.ArrayList;
-import java.util.List;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class xnk
-  extends way
+  extends QQUIEventReceiver<xmx, wrd>
 {
-  public List<String> a = new ArrayList();
-  
-  public xnk(ErrorMessage paramErrorMessage)
+  public xnk(@NonNull xmx paramxmx)
   {
-    super(paramErrorMessage);
+    super(paramxmx);
   }
   
-  public String toString()
+  public void a(@NonNull xmx paramxmx, @NonNull wrd paramwrd)
   {
-    return "FeedData{" + super.toString() + '}';
+    if (paramwrd.a.isSuccess())
+    {
+      ykq.a(paramxmx.b, "receive user info event. %s.", paramwrd.toString());
+      paramxmx.i();
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wrd.class;
   }
 }
 

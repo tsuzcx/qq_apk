@@ -1,19 +1,4 @@
-import java.io.Closeable;
-
-public final class ypl
-{
-  public static void a(Closeable paramCloseable)
-  {
-    if (paramCloseable != null) {}
-    try
-    {
-      paramCloseable.close();
-      return;
-    }
-    catch (Exception paramCloseable) {}
-  }
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ypl

@@ -1,21 +1,77 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import kotlin.Metadata;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"}, k=3, mv={1, 1, 16})
-final class armk
-  implements DialogInterface.OnClickListener
+public class armk
+  extends aqwt<arml>
 {
-  armk(arng paramarng) {}
-  
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  @NonNull
+  public arml a(int paramInt)
   {
-    this.a.c();
+    return new arml();
+  }
+  
+  @Nullable
+  public arml a(aqxa[] paramArrayOfaqxa)
+  {
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0))
+    {
+      arml localarml = arml.a(paramArrayOfaqxa[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.i("UinSearchConfProcessor", 2, "onParsed: " + paramArrayOfaqxa[0].a);
+      }
+      return localarml;
+    }
+    return new arml();
+  }
+  
+  public void a(arml paramarml)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("UinSearchConfProcessor", 2, "onUpdate");
+    }
+  }
+  
+  public Class<arml> clazz()
+  {
+    return arml.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("UinSearchConfProcessor", 2, "onReqFailed: " + paramInt);
+    }
+  }
+  
+  public int type()
+  {
+    return 589;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     armk
  * JD-Core Version:    0.7.0.1
  */

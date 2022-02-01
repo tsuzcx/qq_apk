@@ -1,30 +1,40 @@
-import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface anzd
+class anzd
+  extends bhyn
 {
-  public abstract int a();
+  anzd(anzc paramanzc) {}
   
-  public abstract int a(int paramInt);
-  
-  public abstract String a();
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public abstract void a(View paramView);
-  
-  public abstract void a(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3, boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract String b();
-  
-  public abstract void b();
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
+  public void onDone(bhyo parambhyo)
+  {
+    super.onDone(parambhyo);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.roammsg.MessageRoamManager", 2, "onDone status: " + parambhyo.f + ", url: " + parambhyo.a);
+    }
+    int i = parambhyo.a.indexOf("?");
+    String str;
+    if (i == -1)
+    {
+      str = parambhyo.a;
+      if (!anzb.a.contains(str)) {
+        break label105;
+      }
+      this.a.a(parambhyo);
+    }
+    label105:
+    do
+    {
+      return;
+      str = parambhyo.a.substring(0, i - 1);
+      break;
+      if ("https://imgcache.qq.com/club/mobile/messageroam/xiaoximanyou2.json".equals(str))
+      {
+        this.a.b(parambhyo);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("Q.roammsg.MessageRoamManager", 2, "onDone unkonw url: " + parambhyo.a);
+  }
 }
 
 

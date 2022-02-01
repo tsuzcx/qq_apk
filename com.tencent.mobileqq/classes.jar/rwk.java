@@ -1,16 +1,18 @@
-class rwk
-  extends pkt
+import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.CoverSelectTabFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
+import com.tencent.qphone.base.util.QLog;
+
+public class rwk
+  implements rwv
 {
-  private rwk(rwh paramrwh) {}
+  public rwk(CoverSelectTabFragment paramCoverSelectTabFragment) {}
   
-  public void f(int paramInt)
+  public void a(String paramString)
   {
-    this.a.a(2);
-  }
-  
-  public void i()
-  {
-    rwh.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("RIJUGC.CoverSelectTabFragment", 2, "OutputPicListener outPath:" + paramString);
+    }
+    CoverSelectTabFragment.a(this.a, paramString, CoverSelectTabFragment.a(this.a).getCurrentItem());
   }
 }
 

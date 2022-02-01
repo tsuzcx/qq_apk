@@ -1,10 +1,17 @@
-public abstract interface axyw
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+
+public class axyw
+  implements View.OnTouchListener
 {
-  public abstract void a(boolean paramBoolean);
+  public axyw(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public abstract void b();
-  
-  public abstract void b(int paramInt);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return paramMotionEvent.getAction() == 2;
+  }
 }
 
 

@@ -1,56 +1,41 @@
-import android.graphics.Bitmap;
-import android.graphics.Point;
-import android.graphics.Rect;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.nearby.NearbyJsInterface;
 import java.util.ArrayList;
-import java.util.List;
 
 public class axos
+  implements aaea
 {
-  public float a;
-  public int a;
-  public Bitmap a;
-  public Rect a;
-  public String a;
-  public List<Point> a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d = -2147483648;
-  public boolean d;
-  public int e = -2147483648;
-  public int f = 2147483647;
-  public int g = 2147483647;
-  public int h = -1;
-  public int i = -1;
-  public int j = -1;
-  public int k = -1;
-  public int l = -1;
-  public int m = -1;
-  public int n = -1;
+  public axos(NearbyJsInterface paramNearbyJsInterface) {}
   
-  public axos(atvv paramatvv)
+  public void callback(Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Float = -1.0F;
-    this.jdField_a_of_type_JavaLangString = paramatvv.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Int = paramatvv.a();
-    this.h = paramatvv.b;
-    this.l = paramatvv.jdField_a_of_type_Int;
-    if (((atvw)paramatvv.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Int > ((atvw)paramatvv.jdField_a_of_type_JavaUtilArrayList.get(1)).jdField_a_of_type_Int) {
-      this.c = true;
+    Object localObject;
+    Intent localIntent;
+    if ((paramBundle != null) && (paramBundle.getBoolean("isSuccess")))
+    {
+      localObject = paramBundle.getStringArrayList("uins");
+      paramBundle.getStringArrayList("tinyIds");
+      paramBundle = (String)((ArrayList)localObject).get(0);
+      localObject = this.a.mRuntime.a();
+      localIntent = new Intent((Context)localObject, ChatActivity.class);
+      localIntent.putExtra("PREVIOUS_UIN", paramBundle);
+      localIntent.putExtra("uin", paramBundle);
+      if (NearbyJsInterface.a(this.a) != 1) {
+        break label125;
+      }
     }
-  }
-  
-  public int a()
-  {
-    return ((Point)this.jdField_a_of_type_JavaUtilList.get(0)).x;
-  }
-  
-  public int b()
-  {
-    return ((Point)this.jdField_a_of_type_JavaUtilList.get(0)).y;
+    label125:
+    for (int i = 10002;; i = 1001)
+    {
+      localIntent.putExtra("uintype", i);
+      localIntent.putExtra("gender", 1);
+      localIntent.addFlags(67108864);
+      ((Context)localObject).startActivity(localIntent);
+      return;
+    }
   }
 }
 

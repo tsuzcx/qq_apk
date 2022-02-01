@@ -1,11 +1,11 @@
-class rqn
-  implements rqd<rgo>
+import tencent.im.oidb.articlesummary.articlesummary.PGCFeedsInfo;
+
+public final class rqn
+  implements qdt<articlesummary.PGCFeedsInfo, rrl>
 {
-  rqn(rqj paramrqj) {}
-  
-  public boolean a(rgo paramrgo)
+  public rrl a(articlesummary.PGCFeedsInfo paramPGCFeedsInfo)
   {
-    return paramrgo.b <= sjk.b();
+    return rrl.a(paramPGCFeedsInfo);
   }
 }
 

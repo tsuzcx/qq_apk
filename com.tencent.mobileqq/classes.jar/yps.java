@@ -1,164 +1,74 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBFixed32Field;
-import com.tencent.mobileqq.pb.PBFixed64Field;
-import com.tencent.mobileqq.pb.PBFloatField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBPrimitiveField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBSFixed32Field;
-import com.tencent.mobileqq.pb.PBSInt32Field;
-import com.tencent.mobileqq.pb.PBSInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.view.MotionEvent;
+import java.math.BigDecimal;
 
 public class yps
 {
-  public static <PB extends MessageMicro<PB>> String a(PB paramPB)
-  {
-    if (paramPB == null) {
-      return String.valueOf(paramPB);
-    }
-    return a(paramPB).toString();
-  }
+  public float a;
+  private float b;
+  private float c;
   
-  private static <PB extends PBPrimitiveField<PB>> String a(PB paramPB)
+  public boolean a(MotionEvent paramMotionEvent, boolean paramBoolean)
   {
-    if ((paramPB instanceof PBBytesField)) {
-      return ((PBBytesField)paramPB).get().toStringUtf8();
+    int i = paramMotionEvent.getPointerCount();
+    int j = paramMotionEvent.getAction() & 0xFF;
+    if ((i == 1) && (paramBoolean)) {
+      switch (j)
+      {
+      }
     }
-    if ((paramPB instanceof PBStringField)) {
-      return ((PBStringField)paramPB).get();
-    }
-    if ((paramPB instanceof PBBoolField)) {
-      return String.valueOf(((PBBoolField)paramPB).get());
-    }
-    if ((paramPB instanceof PBFixed32Field)) {
-      return String.valueOf(((PBFixed32Field)paramPB).get());
-    }
-    if ((paramPB instanceof PBFixed64Field)) {
-      return String.valueOf(((PBFixed64Field)paramPB).get());
-    }
-    if ((paramPB instanceof PBFloatField)) {
-      return String.valueOf(((PBFloatField)paramPB).get());
-    }
-    if ((paramPB instanceof PBInt32Field)) {
-      return String.valueOf(((PBInt32Field)paramPB).get());
-    }
-    if ((paramPB instanceof PBInt64Field)) {
-      return String.valueOf(((PBInt64Field)paramPB).get());
-    }
-    if ((paramPB instanceof PBSFixed32Field)) {
-      return String.valueOf(((PBSFixed32Field)paramPB).get());
-    }
-    if ((paramPB instanceof PBSInt32Field)) {
-      return String.valueOf(((PBSInt32Field)paramPB).get());
-    }
-    if ((paramPB instanceof PBSInt64Field)) {
-      return String.valueOf(((PBSInt64Field)paramPB).get());
-    }
-    if ((paramPB instanceof PBUInt32Field)) {
-      return String.valueOf(((PBUInt32Field)paramPB).get());
-    }
-    if ((paramPB instanceof PBUInt64Field)) {
-      return String.valueOf(((PBUInt64Field)paramPB).get());
-    }
-    if ((paramPB instanceof PBEnumField)) {
-      return String.valueOf(((PBEnumField)paramPB).get());
-    }
-    return "(null)";
-  }
-  
-  public static <PB extends MessageMicro<PB>> JSONObject a(PB paramPB)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    a(paramPB, localJSONObject);
-    return localJSONObject;
-  }
-  
-  private static <PB extends MessageMicro<PB>> void a(PB paramPB, JSONObject paramJSONObject)
-  {
-    Field[] arrayOfField = paramPB.getClass().getDeclaredFields();
-    for (;;)
+    while (((i != 2) || (paramBoolean)) && ((i != 3) || (!paramBoolean)))
     {
-      int i;
-      Object localObject1;
-      String str;
-      try
+      do
       {
-        int j = arrayOfField.length;
-        i = 0;
-        if (i < j)
+        return false;
+        this.c = this.a;
+        return false;
+        if (paramMotionEvent.getY() >= this.a)
         {
-          localObject1 = arrayOfField[i];
-          str = ((Field)localObject1).getName();
-          if (!Modifier.isPublic(((Field)localObject1).getModifiers())) {
-            break label343;
-          }
-          localObject1 = ((Field)localObject1).get(paramPB);
-          if ((!(localObject1 instanceof MessageMicro)) || (!((MessageMicro)localObject1).has())) {
-            break label98;
-          }
-          paramJSONObject.put(str, a((MessageMicro)localObject1));
+          this.c = this.a;
+          return false;
         }
-      }
-      catch (Exception paramPB)
-      {
-        paramPB.printStackTrace();
-      }
-      return;
-      label98:
-      if (((localObject1 instanceof PBPrimitiveField)) && (((PBPrimitiveField)localObject1).has()))
-      {
-        paramJSONObject.put(str, a((PBPrimitiveField)localObject1));
-      }
-      else
-      {
-        Object localObject2;
-        if ((localObject1 instanceof PBRepeatField))
-        {
-          localObject2 = ((PBRepeatField)localObject1).get();
-          localObject1 = new JSONArray();
-          localObject2 = ((List)localObject2).iterator();
-          while (((Iterator)localObject2).hasNext())
-          {
-            Object localObject3 = ((Iterator)localObject2).next();
-            if ((localObject3 instanceof PBPrimitiveField)) {
-              ((JSONArray)localObject1).put(a((PBPrimitiveField)localObject3));
-            } else if ((localObject3 instanceof ByteStringMicro)) {
-              ((JSONArray)localObject1).put(((ByteStringMicro)localObject3).toStringUtf8());
-            } else {
-              ((JSONArray)localObject1).put(String.valueOf(localObject3));
-            }
-          }
-          paramJSONObject.put(str, localObject1);
-        }
-        else if ((localObject1 instanceof PBRepeatMessageField))
-        {
-          localObject2 = ((PBRepeatMessageField)localObject1).get();
-          localObject1 = new JSONArray();
-          localObject2 = ((List)localObject2).iterator();
-          while (((Iterator)localObject2).hasNext()) {
-            ((JSONArray)localObject1).put(a((MessageMicro)((Iterator)localObject2).next()));
-          }
-          paramJSONObject.put(str, localObject1);
-        }
-      }
-      label343:
-      i += 1;
+        i = new BigDecimal((this.c - paramMotionEvent.getY()) / 20.0F).setScale(0, 4).intValue();
+      } while (i == 0);
+      bdax.a().b(i);
+      this.c = paramMotionEvent.getY();
+      return false;
     }
+    ykq.a("NewStoryCameraZoom", "onTouchEvent %s", new Object[] { paramMotionEvent });
+    float f4;
+    float f2;
+    float f3;
+    if (i == 2)
+    {
+      f4 = paramMotionEvent.getX(0);
+      f2 = paramMotionEvent.getY(0);
+      f3 = paramMotionEvent.getX(1);
+    }
+    for (float f1 = paramMotionEvent.getY(1);; f1 = paramMotionEvent.getY(2)) {
+      switch (j)
+      {
+      case 6: 
+      case 3: 
+      case 4: 
+      default: 
+        return false;
+      case 2: 
+        f1 = ypx.a(f4, f2, f3, f1);
+        i = new BigDecimal((f1 - this.b) / 20.0F).setScale(0, 4).intValue();
+        if (i != 0)
+        {
+          ykq.a("NewStoryCameraZoom", "set camera zoom increase value %d", new Object[] { Integer.valueOf(i) });
+          bdax.a().b(i);
+          this.b = f1;
+        }
+        return true;
+        f4 = paramMotionEvent.getX(1);
+        f2 = paramMotionEvent.getY(1);
+        f3 = paramMotionEvent.getX(2);
+      }
+    }
+    this.b = ypx.a(f4, f2, f3, f1);
+    return false;
   }
 }
 

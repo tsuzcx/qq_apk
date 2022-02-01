@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.together;
 
-import bddf;
+import bekh;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.io.Serializable;
 
 public class TogetherUIData
   implements Serializable
 {
-  private bddf mTogetherSession;
+  private bekh mTogetherSession;
   
   public String getCurUin()
   {
-    return this.mTogetherSession.jdField_e_of_type_JavaLangString;
+    return this.mTogetherSession.e;
   }
   
   public int getSessionType()
   {
-    return this.mTogetherSession.jdField_e_of_type_Int;
+    return this.mTogetherSession.f;
   }
   
   public String getSubTitleText(boolean paramBoolean, QQAppInterface paramQQAppInterface)
@@ -24,7 +24,7 @@ public class TogetherUIData
     return this.mTogetherSession.a(paramBoolean, paramQQAppInterface);
   }
   
-  public bddf getTogetherSession()
+  public bekh getTogetherSession()
   {
     return this.mTogetherSession;
   }
@@ -34,9 +34,9 @@ public class TogetherUIData
     this.mTogetherSession = null;
   }
   
-  public void setTogetherSession(bddf parambddf)
+  public void setTogetherSession(bekh parambekh)
   {
-    this.mTogetherSession = parambddf;
+    this.mTogetherSession = parambekh;
   }
 }
 

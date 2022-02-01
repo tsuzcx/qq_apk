@@ -1,28 +1,44 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.richmediabrowser.model.AIOPictureData;
-import com.tencent.richmediabrowser.listener.IGalleryImageListener;
-import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
+import java.util.List;
 
-class balb
-  implements IGalleryImageListener
+public class balb
 {
-  balb(bakw parambakw, RichMediaBrowserInfo paramRichMediaBrowserInfo, String paramString, URLDrawable paramURLDrawable, AIOPictureData paramAIOPictureData) {}
+  public int a;
+  public balf a;
+  public balg a;
+  public bali a;
+  public String a;
+  public List<bald> a;
+  public boolean a;
+  public String b;
+  public boolean b;
   
-  public void onLoadDrawable(int paramInt, URLDrawable paramURLDrawable) {}
+  public balb() {}
   
-  public void onLoadSuccessed(int paramInt, boolean paramBoolean)
+  public balb(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Bakw.b.setVisibility(8);
-    if (paramBoolean)
-    {
-      bakw.a(this.jdField_a_of_type_Bakw, this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, paramInt);
-      return;
-    }
-    if ((!bakw.a(this.jdField_a_of_type_Bakw, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData, this.jdField_a_of_type_Bakw.a)) && (!bakw.a(this.jdField_a_of_type_Bakw, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData, this.jdField_a_of_type_Bakw.a)) && (!bakw.b(this.jdField_a_of_type_Bakw, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData, this.jdField_a_of_type_Bakw.a))) {
-      bakw.a(this.jdField_a_of_type_Bakw, this.jdField_a_of_type_Bakw.a);
-    }
-    bakw.a(this.jdField_a_of_type_Bakw, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.jdField_a_of_type_Int, 2);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public balb(int paramInt, String paramString, balf parambalf)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Balf = parambalf;
+  }
+  
+  public balb(int paramInt, String paramString, bali parambali)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Bali = parambali;
+  }
+  
+  public balb(int paramInt, String paramString, List<bald> paramList)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
 }
 

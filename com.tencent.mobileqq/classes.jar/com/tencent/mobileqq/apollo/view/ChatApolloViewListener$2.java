@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo.view;
 
-import alps;
-import amal;
-import ambc;
-import amnm;
+import amos;
+import anbt;
+import anck;
+import annn;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -13,7 +13,7 @@ import java.util.Iterator;
 public class ChatApolloViewListener$2
   implements Runnable
 {
-  public ChatApolloViewListener$2(amnm paramamnm, boolean paramBoolean, Object paramObject) {}
+  public ChatApolloViewListener$2(annn paramannn, boolean paramBoolean, Object paramObject) {}
   
   public void run()
   {
@@ -28,12 +28,12 @@ public class ChatApolloViewListener$2
         Object localObject1 = (ArrayList)this.jdField_a_of_type_JavaLangObject;
         if ((localObject1 != null) && (((ArrayList)localObject1).size() != 0))
         {
-          localObject2 = ambc.a(((BaseChatPie)localObject2).app);
+          localObject2 = anck.a(((BaseChatPie)localObject2).app);
           if (localObject2 != null)
           {
             localObject1 = ((ArrayList)localObject1).iterator();
             while (((Iterator)localObject1).hasNext()) {
-              ((amal)localObject2).a((String)((Iterator)localObject1).next(), true);
+              ((anbt)localObject2).a((String)((Iterator)localObject1).next(), true);
             }
           }
         }

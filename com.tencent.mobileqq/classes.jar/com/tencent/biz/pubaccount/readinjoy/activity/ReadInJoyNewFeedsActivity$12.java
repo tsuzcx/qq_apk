@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import syp;
+import tlx;
 
 class ReadInJoyNewFeedsActivity$12
   implements Runnable
@@ -9,7 +9,7 @@ class ReadInJoyNewFeedsActivity$12
   
   public void run()
   {
-    syp.a().b(this.this$0.app);
+    tlx.a().b(this.this$0.app);
   }
 }
 

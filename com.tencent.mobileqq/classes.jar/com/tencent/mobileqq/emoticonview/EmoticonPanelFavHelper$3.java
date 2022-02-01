@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.emoticonview;
 
-import arce;
+import asgo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 
 class EmoticonPanelFavHelper$3
@@ -14,7 +15,7 @@ class EmoticonPanelFavHelper$3
     QQAppInterface localQQAppInterface = this.this$0.mPanelController.app;
     if (localQQAppInterface != null)
     {
-      ((arce)localQQAppInterface.getManager(141)).a();
+      ((asgo)localQQAppInterface.getManager(QQManagerFactory.MQQ_COMIC_MANAGER)).a();
       if (QLog.isColorLevel()) {
         QLog.d("EmoticonPanelFavHelper", 2, "vipComicMqqManager.uploadInitComicEmoStructMsgInfo");
       }
@@ -23,7 +24,7 @@ class EmoticonPanelFavHelper$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelFavHelper.3
  * JD-Core Version:    0.7.0.1
  */

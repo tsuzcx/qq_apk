@@ -1,21 +1,37 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.troopreward.OrientationAdapterImageView;
+import com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgItem;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class bflh
-  extends Handler
+class bflh
+  implements bfli
 {
-  public bflh(OrientationAdapterImageView paramOrientationAdapterImageView) {}
+  bflh(bflc parambflc, TroopEssenceMsgItem paramTroopEssenceMsgItem) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(long paramLong, HashMap<bfkz, bfla> paramHashMap)
   {
-    if (this.a.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      this.a.invalidate();
+    if (paramHashMap == null) {
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("OrientationAdapterImageView", 2, "handleMessage:" + this.a.jdField_a_of_type_Int + "," + this.a.jdField_a_of_type_AndroidGraphicsBitmap);
+    bfkz localbfkz = new bfkz(this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.troopUin, this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.msgSeq, this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.msgRandom);
+    bfla localbfla = (bfla)paramHashMap.get(localbfkz);
+    if (localbfla != null)
+    {
+      if (localbfla.jdField_a_of_type_Int == this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.opType)
+      {
+        QLog.i("TroopEssenceMsgManager", 1, "updateEssenceMsgInfosBySet 本地已经存在且状态一致 直接丢弃");
+        QLog.i("TroopEssenceMsgManager", 1, "updateEssenceMsgInfosBySet key:" + localbfkz.toString() + " oldValue:" + localbfla.toString());
+        return;
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.opTime == 0L) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.opTime = localbfla.jdField_a_of_type_Long;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.graytipuniseq = localbfla.b;
     }
+    localbfla = new bfla(this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.opType, this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.msgSenderUin, this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.opUin, this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.opTime, this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.graytipuniseq);
+    paramHashMap.put(localbfkz, localbfla);
+    QLog.i("TroopEssenceMsgManager", 1, "updateEssenceMsgInfosBySet key:" + localbfkz.toString() + " value:" + localbfla.toString());
+    bflc.a(this.jdField_a_of_type_Bflc, this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.troopUin);
+    this.jdField_a_of_type_Bflc.a(new TroopEssenceMsgItem(localbfkz, localbfla));
   }
 }
 

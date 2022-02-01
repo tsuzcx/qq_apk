@@ -1,14 +1,26 @@
-import android.view.View;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class xmq
-  implements bjoy
+final class xmq
+  implements URLDrawable.URLDrawableListener
 {
-  public xmq(StoryMessageListActivity paramStoryMessageListActivity, View paramView) {}
+  xmq(ImageView paramImageView, Drawable paramDrawable) {}
   
-  public void a()
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    ykq.d("BannerVideoInfoWidget", "failed to parse the url drawable, error " + paramThrowable);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
   }
 }
 

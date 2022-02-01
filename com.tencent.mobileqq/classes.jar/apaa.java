@@ -1,66 +1,16 @@
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class apaa
-  implements apab
 {
-  public final String a = aozz.a + "." + getClass().getSimpleName();
-  
-  public static final String b(String paramString1, String paramString2)
+  public static boolean a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    return apbb.a() + File.separator + "_res/" + paramString1;
-  }
-  
-  public String a(apae paramapae)
-  {
-    return apbb.a() + File.separator + "_res/" + paramapae.b + File.separator;
-  }
-  
-  public boolean a(apae paramapae)
-  {
-    String str = b(paramapae);
-    try
-    {
-      boolean bool = new File(str).exists();
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a, 2, "needDownload.file exist|" + bool + "|" + paramapae + "|" + str);
-      }
-      if (!bool) {
-        return true;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("LinkStarDebugProcessor.", 2, "handleLinkStarNotifyPush. linkStarMsgType=" + paramInt + " reservedData=" + paramArrayOfByte1 + " data=" + paramArrayOfByte2);
     }
-    catch (Throwable paramapae)
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i(this.a, 2, "isNeedDownload.exception happen.e=" + paramapae.getMessage());
-      }
-      paramapae.printStackTrace();
     }
-    return false;
-  }
-  
-  public boolean a(apae paramapae, boolean paramBoolean)
-  {
     return true;
-  }
-  
-  public String b(apae paramapae)
-  {
-    return b(paramapae.b, paramapae.c);
-  }
-  
-  public boolean b(apae paramapae)
-  {
-    boolean bool = true;
-    String str = ayja.a(b(paramapae));
-    if (!paramapae.b.equalsIgnoreCase(str))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(this.a, 1, "checkDownloadFile.verify failed|" + str + "|" + paramapae);
-      }
-      bool = false;
-    }
-    return bool;
   }
 }
 

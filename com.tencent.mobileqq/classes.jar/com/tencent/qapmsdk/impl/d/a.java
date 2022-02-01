@@ -21,8 +21,12 @@ public class a
         locala.C = parama.h();
       }
       com.tencent.qapmsdk.socket.c.b.b(parama.g());
-      c.a().b(locala);
+    }
+    for (parama = locala;; parama = c(parama))
+    {
+      c.a().b(parama);
       c.a().d();
+      return;
     }
   }
   
@@ -180,6 +184,7 @@ public class a
     try
     {
       parama = new URL((String)localObject);
+      locala.d = parama.getHost();
       if (a(parama))
       {
         locala.e = parama.getHost();

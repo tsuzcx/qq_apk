@@ -1,15 +1,11 @@
-import com.tencent.mobileqq.widget.QQToast;
+import tencent.im.oidb.articlesummary.feeds_info.IconWordingInfo;
 
-class rqp
-  implements rqe<String>
+public final class rqp
+  implements qdt<feeds_info.IconWordingInfo, rrb>
 {
-  rqp(rqj paramrqj) {}
-  
-  public void a() {}
-  
-  public void a(String paramString)
+  public rrb a(feeds_info.IconWordingInfo paramIconWordingInfo)
   {
-    QQToast.a(rqj.a(this.a), paramString, 1).a();
+    return rrb.a(paramIconWordingInfo);
   }
 }
 

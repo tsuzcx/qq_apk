@@ -18,13 +18,13 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.Timer;
-import lbu;
-import lez;
-import lmu;
-import lmv;
-import lmw;
+import lbz;
+import lfe;
+import lnh;
+import lni;
+import lnj;
 import mqq.app.BaseActivity;
-import mum;
+import mvk;
 
 public abstract class BaseGaInvite
   extends BaseActivity
@@ -38,8 +38,8 @@ public abstract class BaseGaInvite
   BaseGaInvite.GetGaFaceRunnable jdField_a_of_type_ComTencentAvGaudioBaseGaInvite$GetGaFaceRunnable = null;
   public String a;
   Timer jdField_a_of_type_JavaUtilTimer = null;
-  lmv jdField_a_of_type_Lmv = new lmu(this);
-  lmw jdField_a_of_type_Lmw = new lmw(this);
+  lni jdField_a_of_type_Lni = new lnh(this);
+  lnj jdField_a_of_type_Lnj = new lnj(this);
   public long[] a;
   public int b;
   public long b;
@@ -74,10 +74,10 @@ public abstract class BaseGaInvite
     String str = paramString1;
     if (paramTextView != null)
     {
-      float f = paramVideoAppInterface.getApp().getResources().getDimensionPixelSize(2131297383);
-      str = mum.a(paramVideoAppInterface.getApp(), paramString1, paramTextView, f);
+      float f = paramVideoAppInterface.getApp().getResources().getDimensionPixelSize(2131297384);
+      str = mvk.a(paramVideoAppInterface.getApp(), paramString1, paramTextView, f);
     }
-    paramTextView = paramVideoAppInterface.getApp().getString(2131695043);
+    paramTextView = paramVideoAppInterface.getApp().getString(2131695259);
     int i = paramVideoAppInterface.a(paramInt, paramString2);
     paramInt = i;
     if (i == 0) {
@@ -96,18 +96,18 @@ public abstract class BaseGaInvite
   public String a(int paramInt, long paramLong, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
     Context localContext = getApplicationContext();
-    Object localObject1 = lbu.a(paramInt, String.valueOf(paramLong), new int[0]);
-    localObject1 = lbu.a().c((String)localObject1);
+    Object localObject1 = lbz.a(paramInt, String.valueOf(paramLong), new int[0]);
+    localObject1 = lbz.a().c((String)localObject1);
     int i = 0;
     if (localObject1 != null) {
-      if (((lez)localObject1).ad != 4) {
+      if (((lfe)localObject1).ad != 4) {
         break label161;
       }
     }
     label161:
     for (i = 1; i != 0; i = 0)
     {
-      localObject2 = localContext.getString(2131695180);
+      localObject2 = localContext.getString(2131695397);
       localObject1 = paramString;
       paramString = (String)localObject2;
       if (QLog.isColorLevel()) {
@@ -117,7 +117,7 @@ public abstract class BaseGaInvite
     }
     if (paramBoolean2)
     {
-      f = localContext.getResources().getDimensionPixelSize(2131297811);
+      f = localContext.getResources().getDimensionPixelSize(2131297812);
       localObject2 = "";
       localObject1 = paramString;
       if (TextUtils.isEmpty(paramString)) {
@@ -125,11 +125,11 @@ public abstract class BaseGaInvite
       }
       paramString = (String)localObject2;
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        paramString = mum.a(localContext, (String)localObject1, this.jdField_a_of_type_AndroidWidgetTextView, f);
+        paramString = mvk.a(localContext, (String)localObject1, this.jdField_a_of_type_AndroidWidgetTextView, f);
       }
       localObject2 = localContext.getResources();
       if (paramBoolean1) {}
-      for (i = 2131695198;; i = 2131695200)
+      for (i = 2131695415;; i = 2131695417)
       {
         paramString = String.format(((Resources)localObject2).getString(i), new Object[] { paramString });
         break;
@@ -139,11 +139,11 @@ public abstract class BaseGaInvite
     if (TextUtils.isEmpty(paramString)) {
       localObject1 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(this.jdField_a_of_type_Int, String.valueOf(this.jdField_a_of_type_Long), null);
     }
-    float f = localContext.getResources().getDimensionPixelSize(2131297158);
-    paramString = mum.a(localContext, (String)localObject1, this.jdField_a_of_type_AndroidWidgetTextView, f);
+    float f = localContext.getResources().getDimensionPixelSize(2131297159);
+    paramString = mvk.a(localContext, (String)localObject1, this.jdField_a_of_type_AndroidWidgetTextView, f);
     Object localObject2 = localContext.getResources();
     if (paramBoolean1) {}
-    for (i = 2131695198;; i = 2131695200)
+    for (i = 2131695415;; i = 2131695417)
     {
       paramString = String.format(((Resources)localObject2).getString(i), new Object[] { paramString });
       break;
@@ -157,10 +157,10 @@ public abstract class BaseGaInvite
       this.jdField_a_of_type_JavaUtilTimer.cancel();
       this.jdField_a_of_type_JavaUtilTimer = null;
     }
-    if (this.jdField_a_of_type_Lmw != null)
+    if (this.jdField_a_of_type_Lnj != null)
     {
-      this.jdField_a_of_type_Lmw.removeMessages(0);
-      this.jdField_a_of_type_Lmw = null;
+      this.jdField_a_of_type_Lnj.removeMessages(0);
+      this.jdField_a_of_type_Lnj = null;
     }
   }
   
@@ -187,7 +187,7 @@ public abstract class BaseGaInvite
       this.jdField_b_of_type_Long = paramIntent.getLongExtra("friendUin", 0L);
       this.jdField_b_of_type_Int = paramIntent.getIntExtra("relationType", this.jdField_b_of_type_Int);
       this.jdField_a_of_type_ArrayOfLong = paramIntent.getLongArrayExtra("memberList");
-      i = mum.c(this.jdField_b_of_type_Int);
+      i = mvk.c(this.jdField_b_of_type_Int);
     } while (i == this.jdField_a_of_type_Int);
     QLog.w(this.jdField_b_of_type_JavaLangString, 1, "processIntent, mUinType与mRelationType不匹配，mRelationType[" + this.jdField_b_of_type_Int + "], uinTpye[" + i + "], mUinType[" + this.jdField_a_of_type_Int + "]");
   }
@@ -200,7 +200,7 @@ public abstract class BaseGaInvite
       if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
         break label123;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839381);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839402);
       if (this.jdField_b_of_type_AndroidWidgetTextView == null) {
         break label160;
       }
@@ -209,7 +209,7 @@ public abstract class BaseGaInvite
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentAvGaudioBaseGaInvite$GetGaFaceRunnable = new BaseGaInvite.GetGaFaceRunnable(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_Lmv);
+      this.jdField_a_of_type_ComTencentAvGaudioBaseGaInvite$GetGaFaceRunnable = new BaseGaInvite.GetGaFaceRunnable(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_Lni);
       this.jdField_a_of_type_ComTencentAvGaudioBaseGaInvite$GetGaFaceRunnable.a(paramString);
       return;
       label123:

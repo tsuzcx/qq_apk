@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.fragment;
 
-import awor;
+import axoc;
+import axut;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.nearby.NearbyAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -18,11 +19,11 @@ final class NearbyHybridFragment$2
     }
     if ((localObject instanceof NearbyAppInterface))
     {
-      localObject = (awor)((NearbyAppInterface)localObject).getManager(214);
+      localObject = (axut)((NearbyAppInterface)localObject).getManager(axoc.i);
       if (localObject != null)
       {
         NearbyHybridFragment.n = true;
-        ((awor)localObject).c();
+        ((axut)localObject).c();
         if (QLog.isColorLevel()) {
           QLog.d("nearby.NearbyHybridFragment", 2, "pre load now plugin!");
         }

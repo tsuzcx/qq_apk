@@ -1,19 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
 
 public class aeev
-  implements ValueAnimator.AnimatorUpdateListener
+  extends aeer
 {
-  public aeev(SelectedAndSearchBar paramSelectedAndSearchBar, RelativeLayout.LayoutParams paramLayoutParams) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public aeev(JumpActivity paramJumpActivity)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
-    SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    super(paramJumpActivity);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    this.b.d();
   }
 }
 

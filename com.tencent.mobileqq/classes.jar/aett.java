@@ -1,25 +1,15 @@
-import android.view.animation.Animation;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterBaseActivity.2;
 
 public class aett
-  extends bjmc
+  implements DialogInterface.OnClickListener
 {
-  public aett(VisitorsActivity paramVisitorsActivity) {}
+  public aett(RegisterBaseActivity.2 param2) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramAnimation == this.a.b) && (this.a.d)) {
-      this.a.centerView.setText("");
-    }
-    this.a.centerView.clearAnimation();
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (paramAnimation == this.a.a) {
-      this.a.centerView.setText(2131694040);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

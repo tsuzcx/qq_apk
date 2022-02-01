@@ -1,35 +1,77 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.util.DisplayUtil;
-import dov.com.qq.im.ae.gif.giftext.AEGIFOutlineTextView;
+import android.annotation.TargetApi;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.InflateException;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.widget.immersive.SystemBarCompact;
 
-class blxn
-  implements Observer<String>
+public class blxn
+  extends ReportDialog
 {
-  blxn(blxk paramblxk, AEGIFOutlineTextView paramAEGIFOutlineTextView) {}
-  
-  public void a(@Nullable String paramString)
+  public blxn(Context paramContext, String paramString)
   {
-    String str;
-    if (paramString != null)
+    super(paramContext, 2131755832);
+    a(paramContext, paramString);
+  }
+  
+  @TargetApi(14)
+  private void a(Context paramContext, String paramString)
+  {
+    super.requestWindowFeature(1);
+    Object localObject1 = LayoutInflater.from(paramContext);
+    View localView = ((LayoutInflater)localObject1).inflate(2131559013, null);
+    try
     {
-      str = paramString;
-      if (!paramString.equals("")) {}
-    }
-    else
-    {
-      str = amtj.a(2131699115);
-    }
-    paramString = this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.getLayoutParams();
-    if (str.indexOf('\n') > 0) {}
-    for (int i = blxk.a(this.jdField_a_of_type_Blxk) * 3 / 10;; i = blxk.a(this.jdField_a_of_type_Blxk) * 11 / 50)
-    {
-      paramString.height = i;
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setTextSize(DisplayUtil.sp2px(blxk.a(this.jdField_a_of_type_Blxk), 23.0F));
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setOutlineWidth(DisplayUtil.dip2px(blxk.a(this.jdField_a_of_type_Blxk), 2.0F));
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setText(str);
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setLayoutParams(paramString);
+      Object localObject2 = ((LayoutInflater)localObject1).inflate(2131561884, (ViewGroup)localView, false);
+      localObject1 = (RelativeLayout)localView.findViewById(2131379112);
+      Object localObject3 = new RelativeLayout.LayoutParams(-1, -1);
+      ((RelativeLayout.LayoutParams)localObject3).addRule(3, 2131376760);
+      ((RelativeLayout)localObject1).addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
+      localObject2 = (TextView)localView.findViewById(2131369231);
+      IphoneTitleBarActivity.setLayerType((View)localObject2);
+      if (localObject2 != null) {
+        ((TextView)localObject2).setText(anvx.a(2131707739));
+      }
+      localObject3 = (TextView)localView.findViewById(2131369278);
+      IphoneTitleBarActivity.setLayerType((View)localObject2);
+      if (localObject3 != null) {
+        ((TextView)localObject3).setText(paramString);
+      }
+      super.setContentView((View)localObject1);
+      paramString = getWindow();
+      localObject1 = paramString.getAttributes();
+      ((WindowManager.LayoutParams)localObject1).width = -1;
+      ((WindowManager.LayoutParams)localObject1).height = -1;
+      paramString.setAttributes((WindowManager.LayoutParams)localObject1);
+      if (ImmersiveUtils.isSupporImmersive() == 1)
+      {
+        paramString.addFlags(67108864);
+        new SystemBarCompact(this, true, paramContext.getResources().getColor(2131167084)).init();
+        localView.setFitsSystemWindows(true);
+        localView.setPadding(0, ImmersiveUtils.getStatusBarHeight(paramContext), 0, 0);
+      }
       return;
+    }
+    catch (InflateException paramContext)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("QQWIFIPluginLoadDialog", 2, "layout with merge ,use framelayout to immersive");
+      }
+      super.setContentView(2131561884);
+      getWindow().setFeatureInt(7, 2131559011);
     }
   }
 }

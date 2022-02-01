@@ -7,7 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bfol;
+import bgxc;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -27,12 +27,12 @@ class MiniAppDesktopAdapter$FriendsPkViewHolder$Item
   MiniAppDesktopAdapter$FriendsPkViewHolder$Item(MiniAppDesktopAdapter.FriendsPkViewHolder paramFriendsPkViewHolder, View paramView)
   {
     this.mContainer = paramView;
-    this.mIcon = ((ImageView)paramView.findViewById(2131371025));
-    this.mCrown = ((ImageView)paramView.findViewById(2131371026));
-    this.mName = ((TextView)paramView.findViewById(2131371028));
-    this.mRanking = ((TextView)paramView.findViewById(2131371029));
-    this.mScore = ((TextView)paramView.findViewById(2131371030));
-    this.mUnit = ((TextView)paramView.findViewById(2131371021));
+    this.mIcon = ((ImageView)paramView.findViewById(2131371218));
+    this.mCrown = ((ImageView)paramView.findViewById(2131371219));
+    this.mName = ((TextView)paramView.findViewById(2131371221));
+    this.mRanking = ((TextView)paramView.findViewById(2131371222));
+    this.mScore = ((TextView)paramView.findViewById(2131371223));
+    this.mUnit = ((TextView)paramView.findViewById(2131371214));
   }
   
   public void gone()
@@ -45,7 +45,7 @@ class MiniAppDesktopAdapter$FriendsPkViewHolder$Item
     this.mContainer.setVisibility(0);
     try
     {
-      Object localObject = this.this$0.itemView.getResources().getDrawable(2130840312);
+      Object localObject = this.this$0.itemView.getResources().getDrawable(2130840348);
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
       localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
@@ -53,8 +53,8 @@ class MiniAppDesktopAdapter$FriendsPkViewHolder$Item
       localURLDrawableOptions.mRequestHeight = i;
       localURLDrawableOptions.mRequestWidth = i;
       localObject = URLDrawable.getDrawable(paramStRankingList.avatar.get(), localURLDrawableOptions);
-      ((URLDrawable)localObject).setTag(bfol.a(ViewUtils.dip2px(30.0F), ViewUtils.dip2px(30.0F)));
-      ((URLDrawable)localObject).setDecodeHandler(bfol.p);
+      ((URLDrawable)localObject).setTag(bgxc.a(ViewUtils.dip2px(30.0F), ViewUtils.dip2px(30.0F)));
+      ((URLDrawable)localObject).setDecodeHandler(bgxc.p);
       this.mIcon.setImageDrawable((Drawable)localObject);
       label104:
       this.mName.setText(paramStRankingList.nick.get());

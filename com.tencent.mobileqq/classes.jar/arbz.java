@@ -1,56 +1,55 @@
-import android.util.SparseIntArray;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arbz
 {
-  private int jdField_a_of_type_Int;
-  private SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray;
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
+  public boolean a = true;
   
-  public arbz(DragSortListView paramDragSortListView, int paramInt)
+  public static arbz a(String paramString)
   {
-    this.jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray(paramInt);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramInt);
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt, -1);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    int i = this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt1, -1);
-    if (i != paramInt2)
-    {
-      if (i != -1) {
-        break label77;
-      }
-      if (this.jdField_a_of_type_AndroidUtilSparseIntArray.size() == this.jdField_a_of_type_Int) {
-        this.jdField_a_of_type_AndroidUtilSparseIntArray.delete(((Integer)this.jdField_a_of_type_JavaUtilArrayList.remove(0)).intValue());
-      }
-    }
+    if (paramString == null) {}
     for (;;)
     {
-      this.jdField_a_of_type_AndroidUtilSparseIntArray.put(paramInt1, paramInt2);
-      this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(paramInt1));
-      return;
-      label77:
-      this.jdField_a_of_type_JavaUtilArrayList.remove(Integer.valueOf(paramInt1));
+      return null;
+      try
+      {
+        arbz localarbz = new arbz();
+        if (new JSONObject(paramString).optInt("enableMultiChannelReport", 1) == 1) {}
+        for (boolean bool = true;; bool = false)
+        {
+          localarbz.a = bool;
+          return localarbz;
+        }
+        if (!QLog.isColorLevel()) {}
+      }
+      catch (Exception paramString) {}
+    }
+    QLog.e("MultiChannelReportProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
+  }
+  
+  public static String a(arbz paramarbz)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    if (paramarbz != null) {}
+    try
+    {
+      localJSONObject.put("isMultiChannelReportEnable", paramarbz.a);
+      return localJSONObject.toString();
+    }
+    catch (JSONException paramarbz)
+    {
+      for (;;)
+      {
+        paramarbz.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arbz
  * JD-Core Version:    0.7.0.1
  */

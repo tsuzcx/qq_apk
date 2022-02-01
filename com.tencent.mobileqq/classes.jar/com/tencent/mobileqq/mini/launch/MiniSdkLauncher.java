@@ -3,8 +3,9 @@ package com.tencent.mobileqq.mini.launch;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.ResultReceiver;
 import android.text.TextUtils;
-import apyt;
+import arbw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.apkg.BaseLibManager;
@@ -154,6 +155,54 @@ public class MiniSdkLauncher
     return localMiniAppInfo;
   }
   
+  public static com.tencent.qqmini.sdk.launcher.model.ExtConfigInfo convert(com.tencent.mobileqq.mini.apkg.ExtConfigInfo paramExtConfigInfo)
+  {
+    if (paramExtConfigInfo == null) {
+      return null;
+    }
+    com.tencent.qqmini.sdk.launcher.model.ExtConfigInfo localExtConfigInfo = new com.tencent.qqmini.sdk.launcher.model.ExtConfigInfo();
+    localExtConfigInfo.configKey = paramExtConfigInfo.configKey;
+    localExtConfigInfo.configVersion = paramExtConfigInfo.configVersion;
+    Object localObject1;
+    Object localObject2;
+    if (paramExtConfigInfo.userAuthScopes != null)
+    {
+      localExtConfigInfo.userAuthScopes = new ArrayList();
+      localObject1 = paramExtConfigInfo.userAuthScopes.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (com.tencent.mobileqq.mini.apkg.UserAuthScope)((Iterator)localObject1).next();
+        if (localObject2 != null)
+        {
+          com.tencent.qqmini.sdk.launcher.model.UserAuthScope localUserAuthScope = new com.tencent.qqmini.sdk.launcher.model.UserAuthScope();
+          localExtConfigInfo.userAuthScopes.add(localUserAuthScope);
+          localUserAuthScope.scope = ((com.tencent.mobileqq.mini.apkg.UserAuthScope)localObject2).scope;
+          localUserAuthScope.authType = ((com.tencent.mobileqq.mini.apkg.UserAuthScope)localObject2).authType;
+          localUserAuthScope.desc = ((com.tencent.mobileqq.mini.apkg.UserAuthScope)localObject2).desc;
+          localUserAuthScope.settingPageTitle = ((com.tencent.mobileqq.mini.apkg.UserAuthScope)localObject2).settingPageTitle;
+        }
+      }
+    }
+    if (paramExtConfigInfo.apiScopeEntries != null)
+    {
+      localExtConfigInfo.apiScopeEntries = new ArrayList();
+      paramExtConfigInfo = paramExtConfigInfo.apiScopeEntries.iterator();
+      while (paramExtConfigInfo.hasNext())
+      {
+        localObject1 = (com.tencent.mobileqq.mini.apkg.ApiScopeEntry)paramExtConfigInfo.next();
+        if (localObject1 != null)
+        {
+          localObject2 = new com.tencent.qqmini.sdk.launcher.model.ApiScopeEntry();
+          localExtConfigInfo.apiScopeEntries.add(localObject2);
+          ((com.tencent.qqmini.sdk.launcher.model.ApiScopeEntry)localObject2).scope = ((com.tencent.mobileqq.mini.apkg.ApiScopeEntry)localObject1).scope;
+          ((com.tencent.qqmini.sdk.launcher.model.ApiScopeEntry)localObject2).eventName = ((com.tencent.mobileqq.mini.apkg.ApiScopeEntry)localObject1).eventName;
+          ((com.tencent.qqmini.sdk.launcher.model.ApiScopeEntry)localObject2).apiName = ((com.tencent.mobileqq.mini.apkg.ApiScopeEntry)localObject1).apiName;
+        }
+      }
+    }
+    return localExtConfigInfo;
+  }
+  
   public static com.tencent.qqmini.sdk.launcher.model.MiniAppInfo convert(MiniAppConfig paramMiniAppConfig)
   {
     Object localObject;
@@ -212,8 +261,7 @@ public class MiniSdkLauncher
     localMiniAppInfo.name = paramMiniAppInfo.name;
     localMiniAppInfo.iconUrl = paramMiniAppInfo.iconUrl;
     localMiniAppInfo.downloadUrl = paramMiniAppInfo.downloadUrl;
-    localMiniAppInfo.appType = paramMiniAppInfo.getReportType();
-    localMiniAppInfo.setReportType(paramMiniAppInfo.getReportType());
+    localMiniAppInfo.topType = paramMiniAppInfo.topType;
     localMiniAppInfo.version = paramMiniAppInfo.version;
     localMiniAppInfo.versionId = paramMiniAppInfo.versionId;
     localMiniAppInfo.desc = paramMiniAppInfo.desc;
@@ -244,26 +292,9 @@ public class MiniSdkLauncher
       localMiniAppInfo.firstPage.pagePath = paramMiniAppInfo.firstPage.pagePath;
       localMiniAppInfo.firstPage.subPkgName = paramMiniAppInfo.firstPage.subPkgName;
     }
-    if (paramMiniAppInfo.preCacheList != null)
-    {
-      localMiniAppInfo.preCacheList = new ArrayList();
-      localIterator = paramMiniAppInfo.preCacheList.iterator();
-      while (localIterator.hasNext())
-      {
-        localObject1 = (com.tencent.mobileqq.mini.apkg.PreCacheInfo)localIterator.next();
-        localMiniAppInfo.preCacheList.add(new com.tencent.qqmini.sdk.launcher.model.PreCacheInfo(((com.tencent.mobileqq.mini.apkg.PreCacheInfo)localObject1).getDataUrl, ((com.tencent.mobileqq.mini.apkg.PreCacheInfo)localObject1).preCacheKey, ((com.tencent.mobileqq.mini.apkg.PreCacheInfo)localObject1).expireTime, ((com.tencent.mobileqq.mini.apkg.PreCacheInfo)localObject1).cacheType, ((com.tencent.mobileqq.mini.apkg.PreCacheInfo)localObject1).useProxy));
-      }
-    }
-    if (paramMiniAppInfo.resourcePreCacheInfo != null)
-    {
-      localMiniAppInfo.resourcePreCacheInfo = new ArrayList();
-      localIterator = paramMiniAppInfo.resourcePreCacheInfo.iterator();
-      while (localIterator.hasNext())
-      {
-        localObject1 = (ResourcePreCacheInfo)localIterator.next();
-        localMiniAppInfo.resourcePreCacheInfo.add(new ResourcePreCacheInfo(((ResourcePreCacheInfo)localObject1).getDataUrl));
-      }
-    }
+    localMiniAppInfo.appType = paramMiniAppInfo.getReportType();
+    localMiniAppInfo.engineType = paramMiniAppInfo.engineType;
+    localMiniAppInfo.setReportType(paramMiniAppInfo.getReportType());
     localMiniAppInfo.whiteList = paramMiniAppInfo.whiteList;
     localMiniAppInfo.blackList = paramMiniAppInfo.blackList;
     if (paramMiniAppInfo.secondApiRightInfoList != null)
@@ -294,19 +325,12 @@ public class MiniSdkLauncher
     localMiniAppInfo.udpIpList = paramMiniAppInfo.udpIpList;
     localMiniAppInfo.fileSize = paramMiniAppInfo.fileSize;
     localMiniAppInfo.developerDesc = paramMiniAppInfo.developerDesc;
-    localMiniAppInfo.skipDomainCheck = paramMiniAppInfo.skipDomainCheck;
-    localMiniAppInfo.usrFileSizeLimit = paramMiniAppInfo.usrFileSizeLimit;
-    localMiniAppInfo.noNeedRealRecommend = paramMiniAppInfo.noNeedRealRecommend;
-    localMiniAppInfo.versionUpdateTime = paramMiniAppInfo.versionUpdateTime;
-    localMiniAppInfo.engineType = paramMiniAppInfo.engineType;
-    if (paramMiniAppInfo.renderInfo != null)
-    {
-      localMiniAppInfo.renderInfo = new com.tencent.qqmini.sdk.launcher.model.RenderInfo();
-      localMiniAppInfo.renderInfo.renderMode = paramMiniAppInfo.renderInfo.renderMode;
-      if (paramMiniAppInfo.renderInfo.renderMaterialMap != null) {
-        localMiniAppInfo.renderInfo.renderMaterialMap.putAll(paramMiniAppInfo.renderInfo.renderMaterialMap);
-      }
-    }
+    localMiniAppInfo.extraData = paramMiniAppInfo.extraData;
+    localMiniAppInfo.recommend = paramMiniAppInfo.recommend;
+    localMiniAppInfo.isSupportOffline = paramMiniAppInfo.isSupportOffline;
+    localMiniAppInfo.openId = paramMiniAppInfo.openId;
+    localMiniAppInfo.tinyId = paramMiniAppInfo.tinyId;
+    localMiniAppInfo.reportData = paramMiniAppInfo.reportData;
     if (paramMiniAppInfo.appMode != null)
     {
       localMiniAppInfo.appMode = new com.tencent.qqmini.sdk.launcher.model.AppMode();
@@ -321,15 +345,74 @@ public class MiniSdkLauncher
       localMiniAppInfo.appMode.interLoading = paramMiniAppInfo.appMode.isInterLoading;
       localMiniAppInfo.appMode.isLimitedAccess = paramMiniAppInfo.appMode.isLimitedAccess;
     }
+    localMiniAppInfo.skipDomainCheck = paramMiniAppInfo.skipDomainCheck;
+    localMiniAppInfo.position = paramMiniAppInfo.position;
+    localMiniAppInfo.isSupportBlueBar = paramMiniAppInfo.isSupportBlueBar;
+    localMiniAppInfo.recommendAppIconUrl = paramMiniAppInfo.recommendAppIconUrl;
+    localMiniAppInfo.extendData = paramMiniAppInfo.extendData;
+    localMiniAppInfo.clearAuths = paramMiniAppInfo.clearAuths;
+    localMiniAppInfo.prepayId = paramMiniAppInfo.prepayId;
+    localMiniAppInfo.commonExt = paramMiniAppInfo.commonExt;
+    if (paramMiniAppInfo.extConfigInfoList != null)
+    {
+      localMiniAppInfo.extConfigInfoList = new ArrayList();
+      localMiniAppInfo.extConfigInfoList = new ArrayList();
+      localIterator = paramMiniAppInfo.extConfigInfoList.iterator();
+      while (localIterator.hasNext())
+      {
+        localObject1 = (com.tencent.mobileqq.mini.apkg.ExtConfigInfo)localIterator.next();
+        localMiniAppInfo.extConfigInfoList.add(convert((com.tencent.mobileqq.mini.apkg.ExtConfigInfo)localObject1));
+      }
+    }
+    localMiniAppInfo.appStoreAnimPicUrl = paramMiniAppInfo.appStoreAnimPicUrl;
+    localMiniAppInfo.motionPics = paramMiniAppInfo.motionPics;
+    localMiniAppInfo.usrFileSizeLimit = paramMiniAppInfo.usrFileSizeLimit;
+    if (paramMiniAppInfo.preCacheList != null)
+    {
+      localMiniAppInfo.preCacheList = new ArrayList();
+      localIterator = paramMiniAppInfo.preCacheList.iterator();
+      while (localIterator.hasNext())
+      {
+        localObject1 = (com.tencent.mobileqq.mini.apkg.PreCacheInfo)localIterator.next();
+        localMiniAppInfo.preCacheList.add(new com.tencent.qqmini.sdk.launcher.model.PreCacheInfo(((com.tencent.mobileqq.mini.apkg.PreCacheInfo)localObject1).getDataUrl, ((com.tencent.mobileqq.mini.apkg.PreCacheInfo)localObject1).preCacheKey, ((com.tencent.mobileqq.mini.apkg.PreCacheInfo)localObject1).expireTime, ((com.tencent.mobileqq.mini.apkg.PreCacheInfo)localObject1).cacheType, ((com.tencent.mobileqq.mini.apkg.PreCacheInfo)localObject1).useProxy));
+      }
+    }
+    if (paramMiniAppInfo.resourcePreCacheInfo != null)
+    {
+      localMiniAppInfo.resourcePreCacheInfo = new ArrayList();
+      localIterator = paramMiniAppInfo.resourcePreCacheInfo.iterator();
+      while (localIterator.hasNext())
+      {
+        localObject1 = (ResourcePreCacheInfo)localIterator.next();
+        localMiniAppInfo.resourcePreCacheInfo.add(new ResourcePreCacheInfo(((ResourcePreCacheInfo)localObject1).getDataUrl));
+      }
+    }
+    localMiniAppInfo.versionUpdateTime = paramMiniAppInfo.versionUpdateTime;
+    localMiniAppInfo.noNeedRealRecommend = paramMiniAppInfo.noNeedRealRecommend;
     if (paramMiniAppInfo.miniGamePluginInfo != null) {
       localMiniAppInfo.miniGamePluginInfo = new com.tencent.qqmini.sdk.launcher.model.MiniGamePluginInfo(paramMiniAppInfo.miniGamePluginInfo.name, paramMiniAppInfo.miniGamePluginInfo.id, paramMiniAppInfo.miniGamePluginInfo.version, paramMiniAppInfo.miniGamePluginInfo.url, paramMiniAppInfo.miniGamePluginInfo.packageSize);
     }
+    if (paramMiniAppInfo.renderInfo != null)
+    {
+      localMiniAppInfo.renderInfo = new com.tencent.qqmini.sdk.launcher.model.RenderInfo();
+      localMiniAppInfo.renderInfo.renderMode = paramMiniAppInfo.renderInfo.renderMode;
+      if (paramMiniAppInfo.renderInfo.renderMaterialMap != null) {
+        localMiniAppInfo.renderInfo.renderMaterialMap.putAll(paramMiniAppInfo.renderInfo.renderMaterialMap);
+      }
+    }
+    localMiniAppInfo.qualifications = paramMiniAppInfo.qualifications;
     localMiniAppInfo.shareId = paramMiniAppInfo.shareId;
     localMiniAppInfo.via = paramMiniAppInfo.via;
+    localMiniAppInfo.amsAdInfo = paramMiniAppInfo.amsAdInfo;
+    localMiniAppInfo.enableLoadingAd = paramMiniAppInfo.enableLoadingAd;
+    localMiniAppInfo.friendMessageQuery = paramMiniAppInfo.friendMessageQuery;
+    localMiniAppInfo.apngUrl = paramMiniAppInfo.apngUrl;
+    localMiniAppInfo.ide_scene = paramMiniAppInfo.ide_scene;
+    localMiniAppInfo.ide_extraAppid = paramMiniAppInfo.ide_extraAppid;
+    localMiniAppInfo.ide_extraData = paramMiniAppInfo.ide_extraData;
+    localMiniAppInfo.tianshuAdId = paramMiniAppInfo.tianshuAdId;
     localMiniAppInfo.deviceOrientation = paramMiniAppInfo.deviceOrientation;
     localMiniAppInfo.showStatusBar = paramMiniAppInfo.showStatusBar;
-    localMiniAppInfo.enableLoadingAd = paramMiniAppInfo.enableLoadingAd;
-    localMiniAppInfo.prepayId = paramMiniAppInfo.prepayId;
     return localMiniAppInfo;
   }
   
@@ -388,7 +471,7 @@ public class MiniSdkLauncher
         String str1 = paramString.optString("ver");
         String str2 = paramString.optString("minjs");
         if (!TextUtils.isEmpty(str1)) {
-          paramString.putOpt("app_version", "8.4.8.4810");
+          paramString.putOpt("app_version", "8.4.10.4875");
         }
         MiniDynamicManager.g().updateDexConfig(paramString.toString());
         if (!TextUtils.isEmpty(str2))
@@ -415,7 +498,7 @@ public class MiniSdkLauncher
       {
         try
         {
-          if (apyt.a("mini_sdk_prelaunch_enable", 1) == 1)
+          if (arbw.a("mini_sdk_prelaunch_enable", 1) == 1)
           {
             i = 1;
             if (i != 0) {
@@ -555,6 +638,11 @@ public class MiniSdkLauncher
   
   public static void startMiniApp(Activity paramActivity, MiniAppConfig paramMiniAppConfig, Bundle paramBundle)
   {
+    startMiniApp(paramActivity, paramMiniAppConfig, paramBundle, null);
+  }
+  
+  public static void startMiniApp(Activity paramActivity, MiniAppConfig paramMiniAppConfig, Bundle paramBundle, ResultReceiver paramResultReceiver)
+  {
     if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null)) {
       return;
     }
@@ -569,7 +657,7 @@ public class MiniSdkLauncher
           sSdkInited = true;
           initSDK((Context)localObject);
         }
-        MiniSDK.startMiniApp(paramActivity, convert(paramMiniAppConfig), paramBundle, null);
+        MiniSDK.startMiniApp(paramActivity, convert(paramMiniAppConfig), paramBundle, paramResultReceiver);
         return;
       }
       catch (Throwable paramActivity)

@@ -1,36 +1,26 @@
-import android.content.Context;
-import android.content.Intent;
+import android.app.Activity;
 import android.view.View;
-import com.tencent.mobileqq.webview.swift.SwiftFragmentTabBar;
-import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
-import cooperation.comic.ui.QQComicTabBarView;
-import cooperation.qqreader.view.ReaderTabBarView;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
-public class bgvr
+class bgvr
+  implements View.OnClickListener
 {
-  public static View a(Context paramContext, Intent paramIntent, List<WebViewTabBarData> paramList, bhjm parambhjm)
+  bgvr(bgvp parambgvp) {}
+  
+  public void onClick(View paramView)
   {
-    int i = 0;
-    if (paramIntent != null) {
-      i = paramIntent.getIntExtra("tabBarStyle", 0);
+    int i = 2;
+    bjko.b("NewUpgradeDialog", bjhp.a(10010, bgvp.a(), 2, 200));
+    bjhn.a().a(17, bjhp.a(10010, bgvp.a(), 4, 200));
+    this.a.dismiss();
+    ((Activity)this.a.a.get()).finish();
+    if (bgvp.a() == 2) {
+      i = 1;
     }
-    bkvd.d("WebviewFragmentTabBarBuilder", "tab bar style =" + i);
-    if (i == 1)
-    {
-      paramContext = new QQComicTabBarView(paramContext);
-      paramContext.a(paramIntent, paramList, parambhjm);
-      return paramContext;
-    }
-    if (i == 2)
-    {
-      paramContext = new ReaderTabBarView(paramContext);
-      paramContext.a(paramIntent, paramList, parambhjm);
-      return paramContext;
-    }
-    paramContext = new SwiftFragmentTabBar(paramContext);
-    paramContext.a(paramList, parambhjm);
-    return paramContext;
+    bdla.b(null, "dc00898", "", "", "0X8008FFC", "0X8008FFC", i, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

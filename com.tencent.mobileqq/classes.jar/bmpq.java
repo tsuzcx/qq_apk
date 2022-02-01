@@ -1,19 +1,15 @@
-import android.graphics.Bitmap;
-import com.tencent.tav.coremedia.CMTime;
-import com.tencent.weishi.module.edit.widget.playtrack.provider.VideoThumbListener;
-import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackContainerView;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class bmpq
-  implements VideoThumbListener
 {
-  public bmpq(VideoTrackContainerView paramVideoTrackContainerView) {}
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public bmpp a;
   
-  public void onThumbGenerated(Object paramObject, CMTime paramCMTime, Bitmap paramBitmap)
-  {
-    if ((paramObject instanceof String)) {
-      this.a.a((String)paramObject);
-    }
-  }
+  public bmpq(bmpj parambmpj) {}
 }
 
 

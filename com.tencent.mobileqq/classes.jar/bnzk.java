@@ -1,17 +1,32 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayoutNew;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.tav.coremedia.CMTime;
+import com.tencent.tav.player.IPlayer.PlayerListener;
+import com.tencent.tav.player.IPlayer.PlayerStatus;
+import com.tencent.tavcut.player.MoviePlayer;
+import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment;
 
 public class bnzk
-  implements ValueAnimator.AnimatorUpdateListener
+  implements IPlayer.PlayerListener
 {
-  public bnzk(QIMCameraSegmentCaptureButtonLayoutNew paramQIMCameraSegmentCaptureButtonLayoutNew) {}
+  public bnzk(AEEditorMultiCutEditFragment paramAEEditorMultiCutEditFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onPositionChanged(CMTime paramCMTime)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a.setCenterScaleValue(f);
+    Object localObject = AEEditorMultiCutEditFragment.a(this.a).getDuration();
+    localObject = bodl.a(paramCMTime.getTimeUs() / 1000L) + "/" + bodl.a(((CMTime)localObject).getTimeUs() / 1000L);
+    AEEditorMultiCutEditFragment.a(this.a).setText((CharSequence)localObject);
+    AEEditorMultiCutEditFragment.b(this.a, paramCMTime.getTimeUs());
+  }
+  
+  public void onStatusChanged(IPlayer.PlayerStatus paramPlayerStatus)
+  {
+    if ((paramPlayerStatus == IPlayer.PlayerStatus.PLAYING) || (paramPlayerStatus == IPlayer.PlayerStatus.REPLAY))
+    {
+      AEEditorMultiCutEditFragment.a(this.a).setSelected(true);
+      return;
+    }
+    AEEditorMultiCutEditFragment.a(this.a).setSelected(false);
   }
 }
 

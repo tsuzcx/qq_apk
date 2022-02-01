@@ -1,12 +1,6 @@
-class asge
-  implements bhnm
+public abstract interface asge
 {
-  asge(asgc paramasgc) {}
-  
-  public void a(int paramInt)
-  {
-    aszt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, asgc.a(this.a), this.a.jdField_a_of_type_AndroidContentContext);
-  }
+  public abstract float a(float paramFloat, long paramLong);
 }
 
 

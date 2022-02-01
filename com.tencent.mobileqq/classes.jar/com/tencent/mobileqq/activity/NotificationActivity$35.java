@@ -1,29 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import bgos;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.SimpleAccount;
 
 class NotificationActivity$35
   implements Runnable
 {
-  NotificationActivity$35(NotificationActivity paramNotificationActivity) {}
+  NotificationActivity$35(NotificationActivity paramNotificationActivity, SimpleAccount paramSimpleAccount) {}
   
   public void run()
   {
-    boolean bool = NotificationActivity.a(this.this$0).a();
-    QLog.e("LhHelper", 1, "receiveLhCard result = " + bool);
-    if (bool)
-    {
-      if (NotificationActivity.a(this.this$0).b())
-      {
-        NotificationActivity.a(this.this$0).sendEmptyMessage(5);
-        return;
-      }
-      NotificationActivity.a(this.this$0).sendEmptyMessage(6);
-      return;
-    }
-    NotificationActivity.a(this.this$0).sendEmptyMessage(6);
+    this.this$0.app.login(this.a);
   }
 }
 

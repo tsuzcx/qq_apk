@@ -1,25 +1,35 @@
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment;
+import com.tencent.mobileqq.app.soso.LbsManagerService;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
+import mqq.app.QQPermissionCallback;
 
-public class aivv
-  extends Handler
+class aivv
+  implements QQPermissionCallback
 {
-  public aivv(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
+  aivv(aivu paramaivu) {}
   
-  public void handleMessage(Message paramMessage)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (paramMessage.what == 1)
-    {
-      if ((this.a.a != null) && (this.a.a.isShowing())) {
-        this.a.a.dismiss();
-      }
-      this.a.a = new bhht(this.a.getActivity(), this.a.getActivity().getTitleBarHeight());
-      this.a.a.setCancelable(false);
-      this.a.a.c(2131691382);
-      this.a.a.show();
+    if (QLog.isColorLevel()) {
+      QLog.d("ac_ft.AddContactViewPagerTroopFragment", 2, "requestLBSPermissionOnClickListener deny");
     }
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ac_ft.AddContactViewPagerTroopFragment", 2, "onclick requestLBSPermissionOnClickListener grant");
+    }
+    this.a.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.a.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+    if (LbsManagerService.getCachedLbsInfo("recommend_troop") == null)
+    {
+      LbsManagerService.startLocation(new aivw(this, "recommend_troop"));
+      return;
+    }
+    this.a.a.jdField_a_of_type_Aivl.b(false);
   }
 }
 

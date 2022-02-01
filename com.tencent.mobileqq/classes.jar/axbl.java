@@ -1,20 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCAuthFragment;
 
-class axbl
-  implements DialogInterface.OnClickListener
+public class axbl
+  implements awzk
 {
-  axbl(axbj paramaxbj, QQCustomDialog paramQQCustomDialog) {}
+  public axbl(MsgBackupPCAuthFragment paramMsgBackupPCAuthFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    this.jdField_a_of_type_Axbj.a.a.d();
-    paramInt = ((Integer)awka.a(this.jdField_a_of_type_Axbj.a.a.app.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1))).intValue();
-    bcef.b(this.jdField_a_of_type_Axbj.a.a.app, "dc00899", "grp_lbs", "", "data_card", "return_no", 0, 0, awkj.a(this.jdField_a_of_type_Axbj.a.a.j), paramInt + "", "", "");
+    this.a.a(this.a.a, this.a.getString(2131690584));
   }
 }
 

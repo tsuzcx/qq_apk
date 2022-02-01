@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
-import amwm;
+import anza;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.mp.mobileqq_mp.LongMsgUrlRequest;
 import com.tencent.mobileqq.mp.mobileqq_mp.LongMsgUrlResponse;
@@ -52,7 +52,7 @@ public class PALongMessageHandler
     RichProto.RichProtoResp localRichProtoResp = localRichProtoReq.resp;
     paramProtoReq = paramProtoResp.resp;
     Object localObject = paramProtoResp.resp.getWupBuffer();
-    amwm localamwm = paramProtoResp.statisInfo;
+    anza localanza = paramProtoResp.statisInfo;
     if (paramProtoReq.getResultCode() == 1000) {}
     try
     {
@@ -78,7 +78,7 @@ public class PALongMessageHandler
           if (paramProtoReq == null) {
             paramProtoResp = "";
           }
-          setResult(-1, 9311, (String)localObject, paramProtoResp, localamwm, localRichProtoResp.resps);
+          setResult(-1, 9311, (String)localObject, paramProtoResp, localanza, localRichProtoResp.resps);
         }
         else
         {
@@ -88,7 +88,7 @@ public class PALongMessageHandler
           if (paramProtoReq == null) {
             paramProtoResp = "";
           }
-          setResult(-1, 9044, (String)localObject, paramProtoResp, localamwm, localRichProtoResp.resps);
+          setResult(-1, 9044, (String)localObject, paramProtoResp, localanza, localRichProtoResp.resps);
         }
       }
     }

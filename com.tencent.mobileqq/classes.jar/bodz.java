@@ -1,13 +1,33 @@
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
+import android.animation.TypeEvaluator;
+import android.graphics.Rect;
 
-public class bodz
-  implements FileFilter
+class bodz
+  implements TypeEvaluator<Rect>
 {
-  public boolean accept(File paramFile)
+  private Rect a;
+  
+  bodz() {}
+  
+  bodz(Rect paramRect)
   {
-    return Pattern.matches("cpu[0-9]", paramFile.getName());
+    this.a = paramRect;
+  }
+  
+  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
+  {
+    int i = paramRect1.left;
+    i = (int)((paramRect2.left - paramRect1.left) * paramFloat) + i;
+    int j = paramRect1.top;
+    j = (int)((paramRect2.top - paramRect1.top) * paramFloat) + j;
+    int k = paramRect1.right;
+    k = (int)((paramRect2.right - paramRect1.right) * paramFloat) + k;
+    int m = paramRect1.bottom;
+    m = (int)((paramRect2.bottom - paramRect1.bottom) * paramFloat) + m;
+    if (this.a == null) {
+      return new Rect(i, j, k, m);
+    }
+    this.a.set(i, j, k, m);
+    return this.a;
   }
 }
 

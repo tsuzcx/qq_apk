@@ -1,24 +1,28 @@
-class beez
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.teamwork.PadInfo;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+
+public class beez
+  implements DialogInterface.OnClickListener
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
-  int c = 0;
+  public beez(GroupTeamWorkListActivity paramGroupTeamWorkListActivity, PadInfo paramPadInfo) {}
   
-  public beez(beex parambeex)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    a();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
-    this.c = 0;
-  }
-  
-  public String toString()
-  {
-    return " retryInfo[AutoR-" + this.jdField_a_of_type_Int + " EofR-" + this.b + " SvrErrR-" + this.c + "]";
+    if (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext())) {
+      QQToast.a(BaseApplicationImpl.getApplication(), 1, BaseApplicationImpl.getApplication().getString(2131692125), 0).b(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131299080));
+    }
+    while (this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Beeu == null) {
+      return;
+    }
+    paramDialogInterface = becr.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkPadInfo.domainId, this.jdField_a_of_type_ComTencentMobileqqTeamworkPadInfo.padId);
+    this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Beeu.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Long, paramDialogInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkPadInfo.pad_url, true);
+    this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a(1);
   }
 }
 

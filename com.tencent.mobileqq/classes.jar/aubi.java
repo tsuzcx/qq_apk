@@ -1,18 +1,17 @@
-import android.content.Context;
-import android.widget.RadioButton;
-import com.tencent.mobileqq.gamecenter.web.view.QQGameIndicator2;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aubi
-  extends RadioButton
+class aubi
+  implements View.OnClickListener
 {
-  public aubi(QQGameIndicator2 paramQQGameIndicator2, Context paramContext)
-  {
-    super(paramContext);
-  }
+  aubi(aubg paramaubg) {}
   
-  public boolean performClick()
+  public void onClick(View paramView)
   {
-    return true;
+    this.a.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

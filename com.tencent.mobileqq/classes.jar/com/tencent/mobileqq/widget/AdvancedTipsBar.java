@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bjuk;
+import blfw;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 
@@ -26,7 +26,7 @@ public class AdvancedTipsBar
   
   public void a()
   {
-    if (!bjuk.a()) {}
+    if (!blfw.a()) {}
     for (int i = Color.parseColor("#03081A");; i = Color.parseColor("#FFFFFF"))
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(i);
@@ -47,7 +47,7 @@ public class AdvancedTipsBar
     super.c();
     if (this.b != null)
     {
-      this.b.setId(2131378701);
+      this.b.setId(2131378995);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
       localLayoutParams.rightMargin = UIUtils.dip2px(BaseApplicationImpl.context, 16.0F);
       this.b.setLayoutParams(localLayoutParams);
@@ -60,11 +60,11 @@ public class AdvancedTipsBar
     RelativeLayout.LayoutParams localLayoutParams;
     if (this.jdField_a_of_type_AndroidWidgetButton != null)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setId(2131378700);
+      this.jdField_a_of_type_AndroidWidgetButton.setId(2131378994);
       localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetButton.getLayoutParams();
       localLayoutParams.leftMargin = 0;
       localLayoutParams.rightMargin = UIUtils.dip2px(BaseApplicationImpl.context, 44.0F);
-      if (bjuk.a()) {
+      if (blfw.a()) {
         break label110;
       }
     }
@@ -76,7 +76,7 @@ public class AdvancedTipsBar
       if (this.jdField_a_of_type_AndroidWidgetTextView != null)
       {
         localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-        localLayoutParams.addRule(0, 2131378700);
+        localLayoutParams.addRule(0, 2131378994);
         this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
       }
       return;

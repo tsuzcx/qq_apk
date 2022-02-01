@@ -1,22 +1,36 @@
-import java.util.Comparator;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
-public class xni
-  implements Comparator<xnh>
+public final class xni
+  extends QQUIEventReceiver<xmx, wqh>
 {
-  public int a(xnh paramxnh1, xnh paramxnh2)
+  public xni(@NonNull xmx paramxmx)
   {
-    if (paramxnh1.a == paramxnh2.a) {
-      if (!paramxnh1.b) {}
-    }
-    while (paramxnh1.a > paramxnh2.a)
+    super(paramxmx);
+  }
+  
+  public void a(@NonNull xmx paramxmx, @NonNull wqh paramwqh)
+  {
+    if ((paramwqh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwqh.jdField_a_of_type_JavaUtilList != null) && (paramxmx.a != null))
     {
-      return -1;
-      if (paramxnh2.b) {
-        return 1;
+      paramwqh = paramwqh.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramwqh.hasNext())
+      {
+        wkv localwkv = (wkv)paramwqh.next();
+        if (TextUtils.equals(paramxmx.a.b, localwkv.a)) {
+          paramxmx.i();
+        }
       }
-      return 0;
     }
-    return 1;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wqh.class;
   }
 }
 

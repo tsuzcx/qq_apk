@@ -1,12 +1,24 @@
-import com.tencent.mobileqq.javahooksdk.MethodHookParam;
-import com.tencent.mobileqq.javahooksdk.ReplaceMethodCallback;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.qphone.base.util.QLog;
 
 class aust
-  implements ReplaceMethodCallback
+  extends RecyclerView.OnScrollListener
 {
-  public void replaceMethod(MethodHookParam paramMethodHookParam)
+  aust(ausq paramausq) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    ausr.a(true);
+    QLog.i("Forward.Preview.Dialog", 1, "onScrollStateChanged state: " + paramInt);
+    if (paramInt != 0) {
+      ausq.a(this.a).pause();
+    }
+    while (!ausq.a(this.a).isPausing()) {
+      return;
+    }
+    ausq.a(this.a).resume();
+    ausq.a(this.a).notifyDataSetChanged();
   }
 }
 

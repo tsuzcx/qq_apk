@@ -1,81 +1,28 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
-public class yoq
-  extends vtz
-  implements vqp<wfe, wgp>
+class yoq
+  implements AbsListView.OnScrollListener
 {
-  String jdField_a_of_type_JavaLangString;
-  vui jdField_a_of_type_Vui;
-  boolean jdField_a_of_type_Boolean;
-  String b;
+  int jdField_a_of_type_Int = 0;
   
-  public void a(List<StoryVideoItem> paramList, boolean paramBoolean)
+  yoq(yop paramyop) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_Vui == null)
-    {
-      vua localvua = new vua();
-      localvua.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      localvua.jdField_a_of_type_Boolean = paramBoolean;
-      localvua.b = true;
-      localvua.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      localvua.jdField_a_of_type_Int = paramList.size();
-      vli.a().dispatch(localvua);
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (paramInt == 1) {
+      bkxz.b(this.jdField_a_of_type_Yop.a().a());
+    }
+    while ((paramInt != 0) || (this.jdField_a_of_type_Yop.a == null) || (this.jdField_a_of_type_Int < this.jdField_a_of_type_Yop.a.size())) {
       return;
     }
-    this.jdField_a_of_type_Vui.a(paramList, this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Vui = null;
-  }
-  
-  public void a(@NonNull wfe paramwfe, @Nullable wgp paramwgp, @NonNull ErrorMessage paramErrorMessage)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.troopstory.singleSync", 2, "onResp code=" + paramErrorMessage.errorCode);
-    }
-    paramwfe = new StoryVideoItem();
-    paramwfe.mVid = this.b;
-    paramwfe.mStoryType = 2;
-    if ((paramwgp != null) && (paramErrorMessage.isSuccess()))
-    {
-      paramwfe = paramwgp.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramwfe.hasNext())
-      {
-        paramErrorMessage = (StoryVideoItem)paramwfe.next();
-        if (this.b.equals(paramErrorMessage.mVid)) {
-          if (paramErrorMessage.mErrorCode != 0) {
-            break;
-          }
-        }
-      }
-    }
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        ((vls)vux.a(28)).a(paramwgp.b);
-        a(paramwgp.jdField_a_of_type_JavaUtilList, false);
-        return;
-      }
-      this.jdField_a_of_type_Boolean = true;
-      if (paramwgp == null) {}
-      for (paramwfe = new ArrayList();; paramwfe = paramwgp.jdField_a_of_type_JavaUtilList)
-      {
-        a(paramwfe, false);
-        return;
-      }
-    }
-  }
-  
-  public boolean isValidate()
-  {
-    return false;
+    yop.a(this.jdField_a_of_type_Yop);
   }
 }
 

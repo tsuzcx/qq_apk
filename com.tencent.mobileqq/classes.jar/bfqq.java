@@ -1,106 +1,32 @@
-import android.os.Bundle;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityTransaction;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bfqq
-  implements Handler.Callback
+  implements View.OnClickListener
 {
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  public bfqq(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public bfqq(QQAppInterface paramQQAppInterface)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_MqqOsMqqHandler = new bjmp(ThreadManager.getFileThreadLooper(), this);
-  }
-  
-  public Setting a(String paramString)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFaceSetting(paramString);
-  }
-  
-  public String a()
-  {
-    return ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(1)).getChoosedIP();
-  }
-  
-  public void a(int paramInt1, String paramString, int paramInt2)
-  {
-    Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage();
-    localMessage.what = 1;
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("headType", paramInt1);
-    localBundle.putString("id", paramString);
-    localBundle.putInt("idType", paramInt2);
-    localMessage.setData(localBundle);
-    localMessage.sendToTarget();
-  }
-  
-  public void a(Setting paramSetting)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.updateSettingTableCache(paramSetting);
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    localEntityManager.persistOrReplace(paramSetting);
-    localEntityManager.close();
-  }
-  
-  public void a(ArrayList<String> paramArrayList, long paramLong)
-  {
-    if (paramLong <= 0L) {
-      return;
-    }
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    EntityTransaction localEntityTransaction = localEntityManager.getTransaction();
-    localEntityTransaction.begin();
-    int i = 0;
-    try
-    {
-      while (i < paramArrayList.size())
-      {
-        Setting localSetting = (Setting)localEntityManager.find(Setting.class, (String)paramArrayList.get(i));
-        if (localSetting != null)
-        {
-          localSetting.updateTimestamp = paramLong;
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.updateSettingTableCache(localSetting);
-          localEntityManager.update(localSetting);
-        }
-        i += 1;
-      }
-      return;
-    }
-    catch (Exception paramArrayList)
-    {
-      paramArrayList.printStackTrace();
-      localEntityTransaction.commit();
-      localEntityTransaction.end();
-    }
-  }
-  
-  public String b()
-  {
-    return ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(1)).getChoosedStrangerGroupIP();
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(4) >= 6) {
+      QQToast.a(this.a.getActivity(), String.format(anvx.a(2131708299), new Object[] { Integer.valueOf(6) }), 0).a();
     }
     for (;;)
     {
-      return false;
-      paramMessage.what = 4139;
-      ConnectNearbyProcService.a(paramMessage);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      ((InputMethodManager)this.a.getActivity().getSystemService("input_method")).hideSoftInputFromWindow(this.a.jdField_a_of_type_AndroidViewViewGroup.getWindowToken(), 0);
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.b();
+      SearchReciteArticleFragment.a(this.a.getActivity(), this.a.b);
+      bhbu.a("Grp_edu", "Grp_recite", "Assign_Clk", 0, 0, new String[] { this.a.b });
     }
   }
 }

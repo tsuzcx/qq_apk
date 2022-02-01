@@ -1,16 +1,18 @@
-public class bnbu
-  extends bmqj
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+
+class bnbu
+  implements Observer<Boolean>
 {
-  private bgog a;
+  bnbu(bnbp parambnbp) {}
   
-  public void onDestroy()
+  public void a(@Nullable Boolean paramBoolean)
   {
-    if (this.a != null) {
-      this.a.onDestroy();
+    bnbp.b(this.a);
+    if (paramBoolean != null) {
+      bnbp.b(this.a, paramBoolean.booleanValue());
     }
   }
-  
-  public void onInit() {}
 }
 
 

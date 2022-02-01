@@ -1,52 +1,31 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.home.MainFragment;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import androidx.annotation.NonNull;
 
 public class azeo
-  extends azem
+  extends azbu
 {
-  public boolean a(BaseActivity paramBaseActivity, boolean paramBoolean)
+  public azep a;
+  public azeq a;
+  public boolean b;
+  public String e;
+  
+  public azeo() {}
+  
+  public azeo(long paramLong, String paramString1, String paramString2, azep paramazep, String paramString3, azeq paramazeq, String paramString4, boolean paramBoolean)
   {
-    if (paramBaseActivity == null)
-    {
-      azep.a(this.g, this.f, 100);
-      return false;
-    }
-    Intent localIntent = new Intent(paramBaseActivity, SplashActivity.class);
-    if (this.f.equals("contact")) {
-      localIntent.putExtra("tab_index", MainFragment.d);
-    }
-    for (;;)
-    {
-      localIntent.putExtra("fragment_id", 1);
-      localIntent.setFlags(67108864);
-      azep.a(this, paramBoolean, localIntent);
-      QLog.d("QAssistantConfigItem", 1, "mqqaudioassistant QAssistantConfigItem.Jump item_server = " + this.c + "|" + paramBaseActivity.getClass().toString());
-      paramBaseActivity.startActivity(localIntent);
-      return true;
-      if (this.f.equals("leba")) {
-        localIntent.putExtra("tab_index", MainFragment.e);
-      } else {
-        localIntent.putExtra("tab_index", MainFragment.b);
-      }
-    }
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.e = paramString2;
+    this.jdField_a_of_type_Azep = paramazep;
+    this.c = paramString3;
+    this.jdField_a_of_type_Azeq = paramazeq;
+    this.d = paramString4;
+    this.jdField_b_of_type_Boolean = paramBoolean;
   }
   
-  public boolean a(QQAppInterface paramQQAppInterface, Context paramContext)
+  @NonNull
+  public String toString()
   {
-    azeu.a("HelloQQWake", "QAssistantConfigMainItem RealJump");
-    if (FrameHelperActivity.b())
-    {
-      azeu.a("HelloQQWake", "QAssistantConfigMainItem isDrawerFrameOpenOrMoving");
-      FrameHelperActivity.c(true);
-      FrameHelperActivity.t();
-    }
-    return true;
+    return "AutoStatus [id=" + this.jdField_a_of_type_Long + ", type=" + this.e + ", title=" + this.jdField_b_of_type_JavaLangString + ", category=" + this.jdField_a_of_type_Azep + ", sensor=" + this.jdField_a_of_type_Azeq + ", isHide=" + this.jdField_b_of_type_Boolean + "]";
   }
 }
 

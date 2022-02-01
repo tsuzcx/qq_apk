@@ -2,7 +2,6 @@ package com.tencent.mobileqq.mini.apkg;
 
 import android.graphics.Bitmap;
 import android.text.TextUtils;
-import com.tencent.mobileqq.mini.app.AuthorizeCenter;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandUtil;
 import com.tencent.mobileqq.mini.network.http.MiniOkHttpClientFactory;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
@@ -63,34 +62,6 @@ public class ApkgInfo
     return str;
   }
   
-  public void downloadSubPack(String paramString, ApkgManager.OnInitApkgListener paramOnInitApkgListener)
-  {
-    ApkgManager.getInstance().downloadSubPack(this, paramString, paramOnInitApkgListener);
-  }
-  
-  public AppConfigInfo getAppConfigInfo()
-  {
-    return this.mAppConfigInfo;
-  }
-  
-  public String getAppServiceJsContent(String paramString)
-  {
-    return FileUtils.readFileToStr(new File(getAppServiceJsPath(paramString)));
-  }
-  
-  public String getAppServiceJsPath()
-  {
-    return getApkgFolderPath() + "/" + "app-service.js";
-  }
-  
-  public String getAppServiceJsPath(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return getApkgFolderPath() + "/" + "app-service.js";
-    }
-    return new File(new File(getApkgFolderPath(), paramString), "app-service.js").getAbsolutePath();
-  }
-  
   public Bitmap getBitmap(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
@@ -114,53 +85,6 @@ public class ApkgInfo
       return this.mAppConfigInfo.debug;
     }
     return false;
-  }
-  
-  public String getPageFrameHtmlUrl()
-  {
-    return "https://servicewechat.com/page-frame.html";
-  }
-  
-  public String getPageFrameJSStr(String paramString)
-  {
-    paramString = this.mAppConfigInfo.getRootPath(paramString);
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    paramString = new File(new File(getApkgFolderPath(), paramString), "page-frame.js");
-    if (paramString.exists()) {
-      return FileUtils.readFileToStr(paramString);
-    }
-    return "";
-  }
-  
-  public ApkgInfo.PageHtmlContent getPageHtmlContent()
-  {
-    Object localObject = new File(getApkgFolderPath(), "page-frame.html");
-    ApkgInfo.PageHtmlContent localPageHtmlContent = new ApkgInfo.PageHtmlContent();
-    if (!((File)localObject).exists())
-    {
-      localPageHtmlContent.htmlStr = getPageHtmlStr();
-      return localPageHtmlContent;
-    }
-    try
-    {
-      localObject = FileUtils.readFileToStr((File)localObject);
-      String str = ((String)localObject).substring(((String)localObject).indexOf("<script>") + "<script>".length(), ((String)localObject).indexOf("</script>"));
-      localPageHtmlContent.htmlStr = ((String)localObject);
-      localPageHtmlContent.jsStr = str;
-      return localPageHtmlContent;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("ApkgInfo", 1, "getPageHtmlContent Exception!", localException);
-    }
-    return localPageHtmlContent;
-  }
-  
-  public String getPageHtmlStr()
-  {
-    return ApkgManager.getInstance().getBasePageFrameStr();
   }
   
   public String getPageJsStr(String paramString)
@@ -200,41 +124,12 @@ public class ApkgInfo
     return this.mAppConfigInfo.getRootPath(paramString);
   }
   
-  public String getRootWxssJsContent()
-  {
-    File localFile = new File(new File(getApkgFolderPath()), "app-wxss.js");
-    if (localFile.exists()) {
-      return FileUtils.readFileToStr(localFile);
-    }
-    return "";
-  }
-  
   public int getURLOpenType(String paramString)
   {
     if ("fbf1c3b512b1e5f14b1c8629c8677961".equals(this.appConfig.config.appId)) {
       return 1;
     }
     return 0;
-  }
-  
-  public String getWAServiceJSStr()
-  {
-    return ApkgManager.getInstance().getWaServiceJsStr();
-  }
-  
-  public String getWAWebviewJSStr()
-  {
-    return ApkgManager.getInstance().getWAWebviewJsStr();
-  }
-  
-  public String getWaConsoleJsStr()
-  {
-    return ApkgManager.getInstance().getWaConsoleJsStr();
-  }
-  
-  public String getWorkerJsContent(String paramString1, String paramString2)
-  {
-    return FileUtils.readFileToStr(new File(getWorkerPath(paramString1, paramString2)));
   }
   
   public String getWorkerPath(String paramString1, String paramString2)
@@ -350,7 +245,7 @@ public class ApkgInfo
         localJSONObject.put("env", paramString);
         String str2 = localJSONObject.optString("entryPagePath");
         if (this.appConfig == null) {
-          break label191;
+          break label181;
         }
         LaunchParam localLaunchParam2 = this.appConfig.launchParam;
         if (localLaunchParam2 != null)
@@ -370,7 +265,6 @@ public class ApkgInfo
             localJSONObject.put("appLaunchInfo", AppBrandUtil.getAppLaunchInfo(paramString, localLaunchParam1, localMiniAppInfo));
             this.mConfigStr = localJSONObject.toString();
             this.mAppConfigInfo = AppConfigInfo.parseAppConfig(this.mConfigStr, this);
-            AuthorizeCenter.updateScopeDescription(this.mAppConfigInfo.permissionInfo);
             return;
           }
           paramString = str1;
@@ -384,7 +278,7 @@ public class ApkgInfo
         return;
       }
       continue;
-      label191:
+      label181:
       String str1 = null;
       LaunchParam localLaunchParam1 = null;
     }

@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.utils;
 
-import amtj;
 import android.support.annotation.NonNull;
-import bcdb;
+import anvx;
+import bdjw;
 import com.tencent.image.URLDrawable;
 import java.util.concurrent.ConcurrentHashMap;
-import xvv;
-import yqj;
+import ykq;
+import zfc;
 
 class UIUtils$URLDrawableMonitor
 {
@@ -37,9 +37,9 @@ class UIUtils$URLDrawableMonitor
   public void remove(@NonNull UIUtils.DrawableListenerHolder paramDrawableListenerHolder)
   {
     boolean bool = sDrawableStateMap.containsKey(paramDrawableListenerHolder);
-    xvv.a("Q.qqstory.UIUtils", "remove(), contains %b", Boolean.valueOf(bool));
+    ykq.a("Q.qqstory.UIUtils", "remove(), contains %b", Boolean.valueOf(bool));
     if (!bool) {
-      bcdb.a(yqj.a(amtj.a(2131714879), null), "Story.UIUtils.monitor " + paramDrawableListenerHolder.toString());
+      bdjw.a(zfc.a(anvx.a(2131715227), null), "Story.UIUtils.monitor " + paramDrawableListenerHolder.toString());
     }
     paramDrawableListenerHolder.drawable.setDownloadListener(null);
     paramDrawableListenerHolder.drawable.setURLDrawableListener(null);

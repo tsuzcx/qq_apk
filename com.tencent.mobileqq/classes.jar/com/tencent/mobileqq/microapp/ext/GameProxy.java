@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.microapp.ext;
 
-import akfu;
-import alnr;
+import albn;
+import amme;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +13,7 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.home.MainFragment;
 import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -24,7 +25,7 @@ public class GameProxy
   {
     try
     {
-      paramQQAppInterface = (alnr)paramQQAppInterface.getManager(153);
+      paramQQAppInterface = (amme)paramQQAppInterface.getManager(QQManagerFactory.APOLLO_MANAGER);
       if (paramQQAppInterface != null)
       {
         if (!paramQQAppInterface.j()) {
@@ -146,7 +147,7 @@ public class GameProxy
         if (paramActivity.src == 318) {
           paramActivity.disableMinGame = true;
         }
-        akfu.a(paramActivity);
+        albn.a(paramActivity);
         return true;
       }
       return false;

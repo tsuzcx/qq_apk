@@ -1,16 +1,24 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-class ncv
-  implements View.OnClickListener
+public class ncv
+  extends RecyclerView.ViewHolder
 {
-  ncv(ncu paramncu) {}
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView b;
   
-  public void onClick(View paramView)
+  public ncv(View paramView)
   {
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363255));
+    this.b = ((TextView)paramView.findViewById(2131363257));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363241));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131363246));
   }
 }
 

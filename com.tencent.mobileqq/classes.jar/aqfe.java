@@ -1,100 +1,30 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity;
 
 public class aqfe
-  extends aptq<aqfd>
+  extends AnimatorListenerAdapter
 {
-  @NonNull
-  public aqfd a(int paramInt)
+  public aqfe(SelectCoverActivity paramSelectCoverActivity, View paramView1, View paramView2) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    return new aqfd();
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+    this.b.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarSelectCoverActivity.a = null;
   }
   
-  @Nullable
-  public aqfd a(aptx[] paramArrayOfaptx)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    QLog.i("QFileAppStorePromoteDialogConfigProcessor<QFile>", 1, "onParsed");
-    if (paramArrayOfaptx != null) {
-      try
-      {
-        if (paramArrayOfaptx.length > 0)
-        {
-          paramArrayOfaptx = (aqfd)apul.a(paramArrayOfaptx[0].a, aqfd.class);
-          return paramArrayOfaptx;
-        }
-      }
-      catch (QStorageInstantiateException paramArrayOfaptx) {}
-    }
-    return null;
-  }
-  
-  public void a(aqfd paramaqfd)
-  {
-    if (paramaqfd == null) {
-      QLog.i("QFileAppStorePromoteDialogConfigProcessor<QFile>", 1, "onUpdate: newConf is null.");
-    }
-    label123:
-    for (;;)
-    {
-      return;
-      QLog.i("QFileAppStorePromoteDialogConfigProcessor<QFile>", 1, "onUpdate");
-      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject instanceof QQAppInterface)) {}
-      for (localObject = (QQAppInterface)localObject;; localObject = null)
-      {
-        if (localObject == null) {
-          break label123;
-        }
-        SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("file_config_" + ((QQAppInterface)localObject).getCurrentUin(), 0).edit();
-        localEditor.putString("yyb_promote_dialog_key", paramaqfd.a);
-        localEditor.apply();
-        localObject = (aser)((QQAppInterface)localObject).getManager(317);
-        if (localObject == null) {
-          break;
-        }
-        ((aser)localObject).a(paramaqfd);
-        return;
-      }
-    }
-  }
-  
-  public Class<aqfd> clazz()
-  {
-    return aqfd.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 625;
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+    this.b.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarSelectCoverActivity.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqfe
  * JD-Core Version:    0.7.0.1
  */

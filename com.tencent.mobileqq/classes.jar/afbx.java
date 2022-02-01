@@ -1,6 +1,24 @@
-public abstract interface afbx
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+
+public class afbx
+  extends lng
 {
-  public abstract void m();
+  public afbx(TroopAssistantActivity paramTroopAssistantActivity) {}
+  
+  protected void onMeetingCancel(int paramInt, long paramLong)
+  {
+    this.a.c();
+  }
+  
+  protected void onMeetingReady(int paramInt, long paramLong)
+  {
+    this.a.c();
+  }
+  
+  protected void onMemberInfo(int paramInt, long paramLong1, long paramLong2)
+  {
+    this.a.c();
+  }
 }
 
 

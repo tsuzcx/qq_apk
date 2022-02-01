@@ -1,18 +1,52 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.VisibleSetParam;
+import android.support.annotation.NonNull;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class rgk
-  implements Parcelable.Creator<VisibleSetParam>
 {
-  public VisibleSetParam a(Parcel paramParcel)
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString = "";
+  private List<URL> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private String jdField_b_of_type_JavaLangString = "";
+  private List<teh> jdField_b_of_type_JavaUtilList = new ArrayList();
+  
+  public rgj a()
   {
-    return new VisibleSetParam(paramParcel);
+    return new rgj(this, null);
   }
   
-  public VisibleSetParam[] a(int paramInt)
+  public rgk a(int paramInt)
   {
-    return new VisibleSetParam[paramInt];
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public rgk a(@NonNull String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public rgk a(@NonNull List<teh> paramList)
+  {
+    if ((this.jdField_b_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList.size() == 1)) {
+      ((teh)this.jdField_b_of_type_JavaUtilList.get(0)).a(true);
+    }
+    this.jdField_b_of_type_JavaUtilList = paramList;
+    return this;
+  }
+  
+  public rgk b(@NonNull String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public rgk b(@NonNull List<URL> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    return this;
   }
 }
 

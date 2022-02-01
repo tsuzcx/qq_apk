@@ -1,10 +1,17 @@
-import java.util.List;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
 
-public abstract interface zui
+class zui
+  implements zpx<Object>
 {
-  public abstract void a(int paramInt);
+  zui(zug paramzug, VSDispatchObserver.onVSRspCallBack paramonVSRspCallBack) {}
   
-  public abstract void a(List<bfct> paramList, ztd paramztd);
+  public void a(Object... paramVarArgs)
+  {
+    if ((paramVarArgs != null) && (paramVarArgs.length == 4)) {
+      this.jdField_a_of_type_ComTencentBizRichframeworkNetworkObserverVSDispatchObserver$onVSRspCallBack.onReceive(null, ((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), (String)paramVarArgs[2], (CertifiedAccountRead.StGetFeedDetailRsp)paramVarArgs[3]);
+    }
+  }
 }
 
 

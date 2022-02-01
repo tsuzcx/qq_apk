@@ -1,8 +1,4 @@
-public abstract interface amka
-{
-  public abstract void a(int paramInt);
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amka

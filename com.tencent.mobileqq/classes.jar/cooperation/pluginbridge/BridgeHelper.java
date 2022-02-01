@@ -7,15 +7,16 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.text.TextUtils;
 import android.util.Xml;
-import bcef;
-import bfyz;
-import bkkq;
-import bkkz;
-import bkme;
-import bkmf;
+import bdla;
+import bhhr;
+import blvy;
+import blwh;
+import blxm;
+import blxn;
 import com.qq.jce.wup.BasicClassTypeUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -45,7 +46,7 @@ public class BridgeHelper
   implements Runnable
 {
   private static BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private static bkmf jdField_a_of_type_Bkmf;
+  private static blxn jdField_a_of_type_Blxn;
   private static BridgeHelper jdField_a_of_type_CooperationPluginbridgeBridgeHelper;
   private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
   private int jdField_a_of_type_Int;
@@ -149,7 +150,7 @@ public class BridgeHelper
   {
     if ((paramActivity != null) && (paramQQAppInterface != null))
     {
-      if (((bkkq)paramQQAppInterface.getManager(27)).isPlugininstalled("BridgePlugin.apk")) {
+      if (((blvy)paramQQAppInterface.getManager(QQManagerFactory.MGR_PLUGIN)).isPlugininstalled("BridgePlugin.apk")) {
         b(paramActivity, paramQQAppInterface, paramIntent, paramString1, paramString2, paramString3);
       }
     }
@@ -173,7 +174,7 @@ public class BridgeHelper
   static void a(Context paramContext)
   {
     if (jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
-      jdField_a_of_type_AndroidContentBroadcastReceiver = new bkme(null);
+      jdField_a_of_type_AndroidContentBroadcastReceiver = new blxm(null);
     }
     IntentFilter localIntentFilter = new IntentFilter("bridge.onresume.broadcast");
     localIntentFilter.addAction("bridge.plugin.onresume.broadcast");
@@ -199,13 +200,13 @@ public class BridgeHelper
     localIntent.putExtra("param_plugin_gesturelock", true);
     localIntent.putExtra("userQqResources", -1);
     localIntent.putExtra("useSkinEngine", true);
-    paramIntent = new bkkz(1);
+    paramIntent = new blwh(1);
     paramIntent.jdField_b_of_type_JavaLangString = "BridgePlugin.apk";
     paramIntent.d = "BridgePlugin";
-    if (jdField_a_of_type_Bkmf == null) {
-      jdField_a_of_type_Bkmf = new bkmf(paramActivity, paramString3);
+    if (jdField_a_of_type_Blxn == null) {
+      jdField_a_of_type_Blxn = new blxn(paramActivity, paramString3);
     }
-    paramIntent.jdField_a_of_type_AndroidAppDialog = jdField_a_of_type_Bkmf;
+    paramIntent.jdField_a_of_type_AndroidAppDialog = jdField_a_of_type_Blxn;
     paramIntent.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
     localIntent.putExtra("distParamsString", paramString1);
     localIntent.putExtra("distPluginId", paramString2);
@@ -218,8 +219,8 @@ public class BridgeHelper
     paramIntent.jdField_b_of_type_Boolean = false;
     paramIntent.f = null;
     a(paramActivity);
-    bkkq.a(paramActivity, paramIntent);
-    bcef.b(paramQQAppInterface, "P_CliOper", "BridgePlatform", "", "start_bridge_plugin", "BridgePlugin.apk", 0, 1, "", "", "", "");
+    blvy.a(paramActivity, paramIntent);
+    bdla.b(paramQQAppInterface, "P_CliOper", "BridgePlatform", "", "start_bridge_plugin", "BridgePlugin.apk", 0, 1, "", "", "", "");
   }
   
   public String a(String paramString)
@@ -245,7 +246,7 @@ public class BridgeHelper
       if (QLog.isColorLevel()) {
         QLog.d("SPLASH_ConfigServlet", 2, "receiveAllConfigs|type: 13,version: " + paramConfig.version.get());
       }
-      bfyz.a(this.jdField_a_of_type_AndroidContentContext, paramConfig.version.get(), this.jdField_a_of_type_JavaLangString);
+      bhhr.a(this.jdField_a_of_type_AndroidContentContext, paramConfig.version.get(), this.jdField_a_of_type_JavaLangString);
     }
     if (paramConfig.content_list != null) {
       break label219;

@@ -1,38 +1,24 @@
-import java.util.ArrayList;
 import java.util.List;
 
 public class bcdk
 {
-  int jdField_a_of_type_Int = 0;
-  bcdl jdField_a_of_type_Bcdl = new bcdl(this.jdField_a_of_type_Int, '&');
-  List<Object> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public int a;
+  public String a;
+  public List<bcfl> a;
+  public String b;
+  public String c;
+  public String d;
   
-  public bcdk()
-  {
-    this.jdField_a_of_type_Int += 1;
-  }
+  public bcdk() {}
   
-  public void a(String paramString)
+  public bcdk(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, List<bcfl> paramList)
   {
-    Object localObject = this.jdField_a_of_type_Bcdl;
-    int i = 0;
-    if (i < paramString.length())
-    {
-      char c = paramString.charAt(i);
-      bcdl localbcdl = ((bcdl)localObject).a(c);
-      if (localbcdl == null)
-      {
-        localbcdl = new bcdl(this.jdField_a_of_type_Int, c);
-        this.jdField_a_of_type_Int += 1;
-        ((bcdl)localObject).a(localbcdl);
-      }
-      for (localObject = localbcdl;; localObject = localbcdl)
-      {
-        i += 1;
-        break;
-        localbcdl.a();
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
 }
 

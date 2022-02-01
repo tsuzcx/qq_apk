@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import asgz;
-import ashf;
+import atlf;
+import atll;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -9,7 +9,7 @@ import java.io.FileOutputStream;
 public class FileManagerRSWorker$1
   implements Runnable
 {
-  public FileManagerRSWorker$1(ashf paramashf) {}
+  public FileManagerRSWorker$1(atll paramatll) {}
   
   public void run()
   {
@@ -24,7 +24,7 @@ public class FileManagerRSWorker$1
       this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
       this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
       this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 2;
-      ashf.a(this.this$0, this.this$0.jdField_a_of_type_Long, this.this$0.i);
+      atll.a(this.this$0, this.this$0.jdField_a_of_type_Long, this.this$0.i);
       return;
     }
     catch (FileNotFoundException localFileNotFoundException)
@@ -35,7 +35,7 @@ public class FileManagerRSWorker$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.FileManagerRSWorker.1
  * JD-Core Version:    0.7.0.1
  */

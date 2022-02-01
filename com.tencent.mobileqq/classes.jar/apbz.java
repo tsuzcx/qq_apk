@@ -1,21 +1,8 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity;
-
-public class apbz
-  extends AnimatorListenerAdapter
+public abstract interface apbz
 {
-  public apbz(SelectCoverActivity paramSelectCoverActivity) {}
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.a.a = null;
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.a = null;
-  }
+  public abstract void a(Runnable paramRunnable);
 }
 
 

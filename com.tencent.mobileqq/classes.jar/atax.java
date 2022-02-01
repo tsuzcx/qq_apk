@@ -1,23 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-final class atax
-  implements View.OnClickListener
+class atax
+  implements audq
 {
-  atax(atah paramatah) {}
+  atax(atav paramatav, FileManagerEntity paramFileManagerEntity) {}
   
-  public void onClick(View paramView)
+  public void onNo() {}
+  
+  public void onYes()
   {
-    if (this.a != null) {
-      this.a.onClick(paramView);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    QfileBaseCloudFileTabView.f(this.jdField_a_of_type_Atav.a).getFileManagerEngine().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atax
  * JD-Core Version:    0.7.0.1
  */

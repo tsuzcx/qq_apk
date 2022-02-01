@@ -1,58 +1,28 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import java.util.Vector;
+import android.view.View;
+import com.tencent.superplayer.view.ISPlayerVideoView;
 
-class vhm
-  implements Downloader.DownloadListener
+public class vhm
+  implements vhc
 {
-  vhm(vhl paramvhl, vhn paramvhn) {}
+  private ISPlayerVideoView a;
   
-  public void onDownloadCanceled(String paramString)
+  public vhm(ISPlayerVideoView paramISPlayerVideoView)
   {
-    vhl.a(this.jdField_a_of_type_Vhl, false);
-    if (vhl.a(this.jdField_a_of_type_Vhl).size() > 0)
-    {
-      vhn localvhn = (vhn)vhl.a(this.jdField_a_of_type_Vhl).get(0);
-      vhl.a(this.jdField_a_of_type_Vhl).remove(0);
-      vhl.a(this.jdField_a_of_type_Vhl, localvhn);
-    }
-    if (this.jdField_a_of_type_Vhn.a != null) {
-      this.jdField_a_of_type_Vhn.a.onDownloadCanceled(paramString);
-    }
+    this.a = paramISPlayerVideoView;
   }
   
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  public View a()
   {
-    vhl.a(this.jdField_a_of_type_Vhl, false);
-    if (vhl.a(this.jdField_a_of_type_Vhl).size() > 0)
-    {
-      vhn localvhn = (vhn)vhl.a(this.jdField_a_of_type_Vhl).get(0);
-      vhl.a(this.jdField_a_of_type_Vhl).remove(0);
-      vhl.a(this.jdField_a_of_type_Vhl, localvhn);
+    if ((this.a instanceof View)) {
+      return (View)this.a;
     }
-    if (this.jdField_a_of_type_Vhn.a != null) {
-      this.jdField_a_of_type_Vhn.a.onDownloadFailed(paramString, paramDownloadResult);
-    }
+    return null;
   }
   
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Vhn.a != null) {
-      this.jdField_a_of_type_Vhn.a.onDownloadProgress(paramString, paramLong, paramFloat);
-    }
-  }
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
-  {
-    vhl.a(this.jdField_a_of_type_Vhl, false);
-    if (vhl.a(this.jdField_a_of_type_Vhl).size() > 0)
-    {
-      vhn localvhn = (vhn)vhl.a(this.jdField_a_of_type_Vhl).get(0);
-      vhl.a(this.jdField_a_of_type_Vhl).remove(0);
-      vhl.a(this.jdField_a_of_type_Vhl, localvhn);
-    }
-    if (this.jdField_a_of_type_Vhn.a != null) {
-      this.jdField_a_of_type_Vhn.a.onDownloadSucceed(paramString, paramDownloadResult);
+    if (this.a != null) {
+      this.a.setFixedSize(paramInt1, paramInt2);
     }
   }
 }

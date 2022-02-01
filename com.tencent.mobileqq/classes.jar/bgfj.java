@@ -1,22 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.vas.QuickUpdateIPCModule.Params;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class bgfj
-  implements EIPCResultCallback
+class bgfj
+  implements View.OnClickListener
 {
-  public bgfj(bgfg parambgfg) {}
+  bgfj(bgfi parambgfi) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onClick(View paramView)
   {
-    if (paramEIPCResult.code != 0)
-    {
-      this.a.a(2, "", "");
-      return;
-    }
-    paramEIPCResult = (QuickUpdateIPCModule.Params)paramEIPCResult.data.getSerializable("params");
-    this.a.a(paramEIPCResult.intVal, paramEIPCResult.strVal1, paramEIPCResult.strVal2);
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

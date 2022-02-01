@@ -1,10 +1,33 @@
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.hiboom.FontBubble;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class avle
 {
+  private static AtomicInteger a;
   public int a;
-  public avkr a;
-  public String a;
-  public String[] a;
-  public int b;
+  public FontBubble a;
+  
+  static
+  {
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
+  }
+  
+  public avle(FontBubble paramFontBubble)
+  {
+    this.jdField_a_of_type_Int = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+    this.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble = paramFontBubble;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("FontBubbleManager", 1, "setFontBubble: " + this.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.fontId + "," + this.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.bubbleId);
+    }
+    ((aocy)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(this.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.fontId, this.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.bubbleId, this.jdField_a_of_type_Int);
+  }
 }
 
 

@@ -1,52 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ark.ArkViewModel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aoyx
+class aoyx
+  implements View.OnClickListener
 {
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private HashMap<String, aoyy> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  aoyx(aoyw paramaoyw, ArkViewModel paramArkViewModel) {}
   
-  public aoyx(QQAppInterface paramQQAppInterface)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-  }
-  
-  public aoyy a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ArkApp.ArkMessagePreprocessorMgr", 2, "AAShare.getPreprocessor in valid param");
-      }
-      return null;
+    if (this.jdField_a_of_type_ComTencentArkArkViewModel != null) {
+      this.jdField_a_of_type_ComTencentArkArkViewModel.reinitArkContainer();
     }
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-    {
-      paramString = (aoyy)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      return paramString;
-    }
-  }
-  
-  public void a(String paramString, aoyy paramaoyy)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramaoyy == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ArkApp.ArkMessagePreprocessorMgr", 2, "AAShare.setPreprocessor in valid param");
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("ArkApp.ArkMessagePreprocessorMgr", 2, new Object[] { "AAShare.setPreprocessor app=", paramString });
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-    {
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramaoyy);
-      return;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

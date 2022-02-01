@@ -1,17 +1,17 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.util.Pair;
+import java.net.URL;
 
-class oam
-  implements View.OnClickListener
+public class oam
 {
-  oam(oaj paramoaj) {}
+  public Pair<Integer, Integer> a;
+  public URL a;
   
-  public void onClick(View paramView)
+  public static oam a(URL paramURL, Pair<Integer, Integer> paramPair)
   {
-    this.a.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    oam localoam = new oam();
+    localoam.jdField_a_of_type_JavaNetURL = paramURL;
+    localoam.jdField_a_of_type_AndroidUtilPair = paramPair;
+    return localoam;
   }
 }
 

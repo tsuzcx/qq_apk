@@ -1,6 +1,6 @@
 package dov.com.qq.im.aeeditor.manage;
 
-import bmfc;
+import bnuu;
 import com.tencent.mobileqq.utils.FileUtils;
 import java.io.File;
 import java.io.IOException;
@@ -8,12 +8,12 @@ import java.io.IOException;
 public class AEEditorResourceDownloader$1
   implements Runnable
 {
-  public AEEditorResourceDownloader$1(bmfc parambmfc) {}
+  public AEEditorResourceDownloader$1(bnuu parambnuu) {}
   
   public void run()
   {
-    this.this$0.b();
     this.this$0.c();
+    this.this$0.a();
     String str = this.this$0.b + File.separator + ".nomedia";
     if (!new File(str).exists()) {}
     try

@@ -1,26 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Book;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class aqqi
-  implements Parcelable.Creator
+public class aqqi
+  implements View.OnClickListener
 {
-  public IPSiteModel.Book a(Parcel paramParcel)
-  {
-    IPSiteModel.Book localBook = new IPSiteModel.Book();
-    localBook.cover = paramParcel.readString();
-    localBook.desc = paramParcel.readString();
-    localBook.id = paramParcel.readString();
-    localBook.jumpUrl = paramParcel.readString();
-    localBook.name = paramParcel.readString();
-    localBook.recommDesc = paramParcel.readString();
-    localBook.authorName = paramParcel.readString();
-    return localBook;
-  }
+  public aqqi(ColorNoteSettingFragment paramColorNoteSettingFragment, aqqr paramaqqr, int paramInt) {}
   
-  public IPSiteModel.Book[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new IPSiteModel.Book[paramInt];
+    this.jdField_a_of_type_Aqqr.a(paramView, this.jdField_a_of_type_Int);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

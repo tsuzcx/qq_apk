@@ -2,11 +2,6 @@ package com.tencent.mobileqq.mini.network.http;
 
 import android.text.TextUtils;
 import android.util.Log;
-import com.tencent.mobileqq.mini.apkg.ApkgInfo;
-import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
-import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
-import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
 import com.tencent.mobileqq.mini.appbrand.utils.ThreadPools;
 import com.tencent.qphone.base.util.QLog;
 import java.io.FileNotFoundException;
@@ -154,51 +149,6 @@ public class MiniappHttpUtil
       return "image/png";
     }
     return "application/octet-stream";
-  }
-  
-  public static String getRequestReferer(BaseJsPluginEngine paramBaseJsPluginEngine)
-  {
-    String str3 = "";
-    String str2 = "debug";
-    String str1 = str2;
-    Object localObject = str3;
-    if (paramBaseJsPluginEngine != null)
-    {
-      str1 = str2;
-      localObject = str3;
-    }
-    try
-    {
-      if (paramBaseJsPluginEngine.appBrandRuntime != null)
-      {
-        str3 = paramBaseJsPluginEngine.appBrandRuntime.appId;
-        str1 = str2;
-        localObject = str3;
-        if (paramBaseJsPluginEngine.appBrandRuntime.getApkgInfo() != null)
-        {
-          str1 = str2;
-          localObject = str3;
-          if (paramBaseJsPluginEngine.appBrandRuntime.getApkgInfo().appConfig != null)
-          {
-            str1 = str2;
-            localObject = str3;
-            if (paramBaseJsPluginEngine.appBrandRuntime.getApkgInfo().appConfig.config != null)
-            {
-              str1 = paramBaseJsPluginEngine.appBrandRuntime.getApkgInfo().appConfig.config.version;
-              localObject = str3;
-            }
-          }
-        }
-      }
-      localObject = new StringBuilder().append("https://appservice.qq.com/").append((String)localObject).append("/");
-      paramBaseJsPluginEngine = str1;
-      if (TextUtils.isEmpty(str1)) {
-        paramBaseJsPluginEngine = "debug";
-      }
-      paramBaseJsPluginEngine = paramBaseJsPluginEngine + "/page-frame.html";
-      return paramBaseJsPluginEngine;
-    }
-    finally {}
   }
   
   public static int getRetCodeFrom(Throwable paramThrowable, int paramInt)

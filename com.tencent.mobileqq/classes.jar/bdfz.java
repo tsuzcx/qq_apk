@@ -1,36 +1,68 @@
-class bdfz
-  implements bdga
+import com.tencent.mobileqq.soload.LoadExtResult;
+import com.tencent.mobileqq.soload.LoadParam;
+import com.tencent.mobileqq.soload.LoadParam.LoadItem;
+import java.util.Iterator;
+import java.util.List;
+
+public class bdfz
+  implements bdfw
 {
-  bdfz(bdfy parambdfy, bdgb parambdgb) {}
+  private bdfw jdField_a_of_type_Bdfw;
+  private LoadExtResult jdField_a_of_type_ComTencentMobileqqSoloadLoadExtResult;
   
-  public void a()
+  private LoadParam a(LoadParam paramLoadParam, LoadParam.LoadItem paramLoadItem)
   {
-    if ((this.jdField_a_of_type_Bdgb.a != null) && (this.jdField_a_of_type_Bdgb.a.a != null)) {
-      this.jdField_a_of_type_Bdgb.a.a.d();
+    LoadParam localLoadParam = new LoadParam();
+    localLoadParam.mLoadItems.add(paramLoadItem);
+    localLoadParam.mReportSeq = paramLoadParam.mReportSeq;
+    localLoadParam.mCallType = paramLoadParam.mCallType;
+    localLoadParam.commonFlag = paramLoadParam.commonFlag;
+    return localLoadParam;
+  }
+  
+  private void a(LoadParam paramLoadParam, bdgc parambdgc, int paramInt)
+  {
+    LoadParam localLoadParam = a(paramLoadParam, (LoadParam.LoadItem)paramLoadParam.mLoadItems.get(paramInt));
+    this.jdField_a_of_type_Bdfw = new bdfo();
+    this.jdField_a_of_type_Bdfw.a(localLoadParam, new bdga(this, paramInt, paramLoadParam, parambdgc));
+  }
+  
+  public LoadExtResult a(LoadParam paramLoadParam)
+  {
+    Object localObject = null;
+    Iterator localIterator = paramLoadParam.mLoadItems.iterator();
+    while (localIterator.hasNext())
+    {
+      localObject = a(paramLoadParam, (LoadParam.LoadItem)localIterator.next());
+      this.jdField_a_of_type_Bdfw = new bdfo();
+      LoadExtResult localLoadExtResult = LoadExtResult.mergeExtResult(this.jdField_a_of_type_Bdfw.a((LoadParam)localObject), this.jdField_a_of_type_ComTencentMobileqqSoloadLoadExtResult);
+      this.jdField_a_of_type_ComTencentMobileqqSoloadLoadExtResult = localLoadExtResult;
+      localObject = localLoadExtResult;
+      if (localLoadExtResult.getResultCode() != 0) {
+        localObject = localLoadExtResult;
+      }
     }
-    if ((this.jdField_a_of_type_Bdgb.b != null) && (this.jdField_a_of_type_Bdgb.b.a != null)) {
-      this.jdField_a_of_type_Bdgb.b.a.d();
+    return localObject;
+  }
+  
+  public void a(LoadParam paramLoadParam, bdgc parambdgc)
+  {
+    a(paramLoadParam, parambdgc, 0);
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_Bdfw != null) {
+      this.jdField_a_of_type_Bdfw.a(paramString);
     }
   }
   
-  public void b()
+  public boolean a(String paramString)
   {
-    if ((this.jdField_a_of_type_Bdgb.a != null) && (this.jdField_a_of_type_Bdgb.a.a != null)) {
-      this.jdField_a_of_type_Bdgb.a.a.c();
+    if (this.jdField_a_of_type_Bdfw != null) {
+      return this.jdField_a_of_type_Bdfw.a(paramString);
     }
-    if ((this.jdField_a_of_type_Bdgb.b != null) && (this.jdField_a_of_type_Bdgb.b.a != null)) {
-      this.jdField_a_of_type_Bdgb.b.a.c();
-    }
-  }
-  
-  public void c()
-  {
-    if ((this.jdField_a_of_type_Bdgb.a != null) && (this.jdField_a_of_type_Bdgb.a.a != null)) {
-      this.jdField_a_of_type_Bdgb.a.a.f();
-    }
-    if ((this.jdField_a_of_type_Bdgb.b != null) && (this.jdField_a_of_type_Bdgb.b.a != null)) {
-      this.jdField_a_of_type_Bdgb.b.a.f();
-    }
+    return false;
   }
 }
 

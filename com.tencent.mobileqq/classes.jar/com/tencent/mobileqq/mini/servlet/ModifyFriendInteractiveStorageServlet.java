@@ -5,7 +5,7 @@ import NS_MINI_CLOUDSTORAGE.CloudStorage.StInteractiveTemplate;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bgau;
+import bhjl;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -45,7 +45,7 @@ public class ModifyFriendInteractiveStorageServlet
           continue;
         }
         localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(bgau.b(paramFromServiceMsg.getWupBuffer()));
+        localStQWebRsp.mergeFrom(bhjl.b(paramFromServiceMsg.getWupBuffer()));
         localBundle.putInt("key_index", (int)localStQWebRsp.Seq.get());
         if (!paramFromServiceMsg.isSuccess()) {
           continue;
@@ -114,7 +114,7 @@ public class ModifyFriendInteractiveStorageServlet
               localObject1 = new byte[4];
             }
             paramPacket.setSSOCommand("LightAppSvc.mini_app_cloudstorage.ModifyFriendInteractiveStorage");
-            paramPacket.putSendData(bgau.a((byte[])localObject1));
+            paramPacket.putSendData(bhjl.a((byte[])localObject1));
             paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
             super.onSend(paramIntent, paramPacket);
             return;

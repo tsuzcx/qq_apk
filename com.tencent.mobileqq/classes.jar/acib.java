@@ -1,41 +1,79 @@
-import android.app.PendingIntent;
-import android.location.Criteria;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.os.Looper;
-import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
-import com.tencent.qapmsdk.battery.BatteryMonitor;
-import com.tencent.qapmsdk.battery.monitor.HookMethodCallback;
-import com.tencent.qphone.base.util.QLog;
-
-class acib
-  extends acic
+public class acib
 {
-  public HookMethodCallback a()
+  private int a = 11;
+  private int b = 3;
+  private int c = -1;
+  
+  public acib()
   {
-    return BatteryMonitor.getInstance().getGpsHook();
+    a();
+  }
+  
+  public int a()
+  {
+    return this.a;
   }
   
   public void a()
   {
-    try
+    c();
+    b();
+    d();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a = paramInt;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 == 1101) || (paramInt1 == 1103) || ((int)(paramInt2 / 1000000.0D) == 14)) {}
+    for (paramInt1 = 2;; paramInt1 = 3)
     {
-      JavaHookBridge.findAndHookMethod(LocationManager.class, "requestLocationUpdates", new Object[] { String.class, Long.TYPE, Float.TYPE, LocationListener.class, this });
-      JavaHookBridge.findAndHookMethod(LocationManager.class, "requestLocationUpdates", new Object[] { String.class, Long.TYPE, Float.TYPE, LocationListener.class, Looper.class, this });
-      JavaHookBridge.findAndHookMethod(LocationManager.class, "requestLocationUpdates", new Object[] { String.class, Long.TYPE, Float.TYPE, PendingIntent.class, this });
-      JavaHookBridge.findAndHookMethod(LocationManager.class, "requestLocationUpdates", new Object[] { Long.TYPE, Float.TYPE, Criteria.class, LocationListener.class, Looper.class, this });
-      JavaHookBridge.findAndHookMethod(LocationManager.class, "requestLocationUpdates", new Object[] { Long.TYPE, Float.TYPE, Criteria.class, PendingIntent.class, this });
-      JavaHookBridge.findAndHookMethod(LocationManager.class, "requestSingleUpdate", new Object[] { String.class, PendingIntent.class, this });
-      JavaHookBridge.findAndHookMethod(LocationManager.class, "requestSingleUpdate", new Object[] { String.class, LocationListener.class, Looper.class, this });
-      JavaHookBridge.findAndHookMethod(LocationManager.class, "requestSingleUpdate", new Object[] { Criteria.class, LocationListener.class, Looper.class, this });
-      JavaHookBridge.findAndHookMethod(LocationManager.class, "requestSingleUpdate", new Object[] { Criteria.class, PendingIntent.class, this });
+      this.c = paramInt1;
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("MagnifierSDK.QAPM.QAPMBatteryWrapper", 2, "", localThrowable);
-    }
+  }
+  
+  public boolean a()
+  {
+    return this.c != -1;
+  }
+  
+  public int b()
+  {
+    return this.b;
+  }
+  
+  public void b()
+  {
+    this.b = 3;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.b = paramInt;
+  }
+  
+  public int c()
+  {
+    return this.c;
+  }
+  
+  public void c()
+  {
+    this.a = 11;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.c = paramInt;
+  }
+  
+  public void d()
+  {
+    this.c = -1;
   }
 }
 

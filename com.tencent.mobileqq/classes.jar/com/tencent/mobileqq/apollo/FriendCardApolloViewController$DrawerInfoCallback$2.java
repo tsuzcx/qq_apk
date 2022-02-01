@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.apollo;
 
-import alqf;
+import ampf;
 
 public class FriendCardApolloViewController$DrawerInfoCallback$2
   implements Runnable
 {
-  public FriendCardApolloViewController$DrawerInfoCallback$2(alqf paramalqf, int paramInt1, int paramInt2, String paramString) {}
+  public FriendCardApolloViewController$DrawerInfoCallback$2(ampf paramampf, int paramInt1, int paramInt2, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Alqf.a.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Ampf.a.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
   }
 }
 

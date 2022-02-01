@@ -1,24 +1,18 @@
-import android.os.Looper;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.vip.lianghao.RegisterLHAssistant.2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.widget.TroopMoreDetailView;
+import com.tencent.mobileqq.troop.widget.TroopMoreDetailView.UpdateTroopMembersFaceTask;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bgpx
-  implements bgqc
+  implements View.OnClickListener
 {
-  public bgpx(RegisterLHAssistant.2 param2) {}
+  public bgpx(TroopMoreDetailView.UpdateTroopMembersFaceTask paramUpdateTroopMembersFaceTask, TroopMoreDetailView paramTroopMoreDetailView) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i(bgpv.a, 4, String.format(Locale.getDefault(), "checkVipQQStatus, needShow: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    bgpv.a(this.a.this$0, paramBoolean);
-    if ((bgpv.a(this.a.this$0)) && (bgpv.a(this.a.this$0).isEnabled()) && (Thread.currentThread() == Looper.getMainLooper().getThread()) && (bgpv.a(this.a.this$0).getVisibility() == 8)) {
-      this.a.this$0.b(true);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopMoreDetailView.c();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,13 +1,25 @@
-import com.tencent.mobileqq.activity.contacts.troop.TroopFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity.15.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class aisr
-  extends amwl
+  implements DialogInterface.OnClickListener
 {
-  public aisr(TroopFragment paramTroopFragment) {}
+  public aisr(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  protected void onUpdateTroopList()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.h();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      ThreadManager.post(new ClassificationSearchActivity.15.1(this), 10, null, true);
+      return;
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

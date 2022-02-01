@@ -1,14 +1,12 @@
-class pfk
-  extends pse
+public class pfk
 {
-  pfk(pey parampey, String paramString, boolean paramBoolean, int paramInt)
-  {
-    super(paramString);
-  }
+  public boolean a;
+  public boolean b;
+  public boolean c;
   
-  public void a(prx paramprx)
+  public String toString()
   {
-    paramprx.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
+    return "Label{showDelete=" + this.a + ", showSink=" + this.b + ", showSticky=" + this.c + '}';
   }
 }
 

@@ -1,19 +1,14 @@
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import kotlin.Metadata;
 
-public class azfq
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class azfq
+  implements View.OnClickListener
 {
-  public float a;
-  public azfr a;
-  public String a;
-  public List<azfs> a;
-  public boolean a;
-  public float b;
-  public String b;
-  public List<azft> b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  public static final azfq a = new azfq();
+  
+  public final void onClick(View paramView) {}
 }
 
 

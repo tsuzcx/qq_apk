@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.app;
 
-import amrz;
-import amsb;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -15,8 +13,10 @@ import android.view.ViewGroup;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabContentFactory;
 import android.widget.TabHost.TabSpec;
-import atqo;
-import bfyg;
+import anun;
+import anup;
+import auvj;
+import bhgy;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
 import com.tencent.mobileqq.activity.Leba;
 import com.tencent.mobileqq.activity.Now;
@@ -38,61 +38,66 @@ import mqq.app.Constants.LogoutReason;
 
 public class FrameFragment
   extends ReportV4Fragment
-  implements TabHost.OnTabChangeListener, TabHost.TabContentFactory, atqo
+  implements TabHost.OnTabChangeListener, TabHost.TabContentFactory, auvj
 {
   long jdField_a_of_type_Long = -1L;
-  private amrz jdField_a_of_type_Amrz;
   protected View a;
+  private anun jdField_a_of_type_Anun;
   public QQTabHost a;
   private HashMap<String, TabHost.TabSpec> jdField_a_of_type_JavaUtilHashMap;
-  private final Map<String, amrz> jdField_a_of_type_JavaUtilMap = new HashMap(4);
-  String f = null;
+  private final Map<String, anun> jdField_a_of_type_JavaUtilMap = new HashMap(4);
+  String g;
   protected boolean g;
+  
+  public FrameFragment()
+  {
+    this.jdField_g_of_type_JavaLangString = null;
+  }
   
   public int a()
   {
     return this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.getCurrentTab();
   }
   
-  protected amrz a()
+  protected anun a()
   {
-    return this.jdField_a_of_type_Amrz;
+    return this.jdField_a_of_type_Anun;
   }
   
-  public amrz a(Class<? extends amrz> paramClass)
+  public anun a(Class<? extends anun> paramClass)
   {
-    amrz localamrz = null;
+    anun localanun = null;
     if (this.jdField_a_of_type_JavaUtilMap != null) {
-      localamrz = (amrz)this.jdField_a_of_type_JavaUtilMap.get(paramClass.getName());
+      localanun = (anun)this.jdField_a_of_type_JavaUtilMap.get(paramClass.getName());
     }
-    return localamrz;
+    return localanun;
   }
   
   public String a()
   {
-    amrz localamrz = b();
-    if (localamrz != null) {
-      return localamrz.a();
+    anun localanun = b();
+    if (localanun != null) {
+      return localanun.a();
     }
     return null;
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    amrz localamrz = b();
-    if (localamrz != null) {
-      localamrz.a(paramInt1, paramInt2, paramIntent);
+    anun localanun = b();
+    if (localanun != null) {
+      localanun.a(paramInt1, paramInt2, paramIntent);
     }
   }
   
-  protected void a(View paramView1, Class<? extends amrz> paramClass, View paramView2)
+  protected void a(View paramView1, Class<? extends anun> paramClass, View paramView2)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost = ((QQTabHost)paramView1.findViewById(16908306));
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.setup();
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.setOnTabChangedListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.setOnTabSelectionListener(new amsb(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.setOnTabSelectionListener(new anup(this));
       this.jdField_a_of_type_JavaUtilHashMap = new HashMap(4);
     }
     String str = paramClass.getName();
@@ -106,13 +111,13 @@ public class FrameFragment
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.addTab(paramView1);
   }
   
-  protected void a(Class<? extends amrz> paramClass)
+  protected void a(Class<? extends anun> paramClass)
   {
     if (this.jdField_a_of_type_JavaUtilMap != null)
     {
-      amrz localamrz = a(paramClass);
-      if (localamrz != null) {
-        localamrz.i();
+      anun localanun = a(paramClass);
+      if (localanun != null) {
+        localanun.i();
       }
       paramClass = paramClass.getName();
       this.jdField_a_of_type_JavaUtilMap.remove(paramClass);
@@ -126,11 +131,11 @@ public class FrameFragment
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
     while (localIterator.hasNext()) {
-      ((amrz)localIterator.next()).a(paramLogoutReason);
+      ((anun)localIterator.next()).a(paramLogoutReason);
     }
   }
   
-  public amrz b()
+  public anun b()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost == null)
     {
@@ -139,17 +144,17 @@ public class FrameFragment
       }
       return null;
     }
-    return (amrz)this.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.getCurrentTabTag());
+    return (anun)this.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.getCurrentTabTag());
   }
   
   public void b()
   {
     long l = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
-    Log.i("AutoMonitor", this.f + "TabSwitch, cost=" + l);
+    Log.i("AutoMonitor", this.jdField_g_of_type_JavaLangString + "TabSwitch, cost=" + l);
     if (QLog.isColorLevel()) {
-      QLog.d("Q.PerfTrace", 2, this.f + "TabSwitch, cost=" + l);
+      QLog.d("Q.PerfTrace", 2, this.jdField_g_of_type_JavaLangString + "TabSwitch, cost=" + l);
     }
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(bfyg.a(), "actSwitch" + this.f, true, l, 0L, null, null);
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(bhgy.a(), "actSwitch" + this.jdField_g_of_type_JavaLangString, true, l, 0L, null, null);
   }
   
   public void c()
@@ -159,7 +164,7 @@ public class FrameFragment
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
     while (localIterator.hasNext()) {
-      ((amrz)localIterator.next()).a();
+      ((anun)localIterator.next()).a();
     }
   }
   
@@ -179,10 +184,10 @@ public class FrameFragment
       }
       while (localObject != null)
       {
-        ((amrz)localObject).a(getActivity());
-        View localView = ((amrz)localObject).a(getActivity().getLayoutInflater());
-        ((amrz)localObject).c(localView);
-        ((amrz)localObject).e();
+        ((anun)localObject).a(getActivity());
+        View localView = ((anun)localObject).a(getActivity().getLayoutInflater());
+        ((anun)localObject).c(localView);
+        ((anun)localObject).e();
         this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
         return localView;
         if (paramString.equals(Contacts.class.getName())) {
@@ -206,13 +211,13 @@ public class FrameFragment
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
     while (localIterator.hasNext()) {
-      ((amrz)localIterator.next()).a(paramConfiguration);
+      ((anun)localIterator.next()).a(paramConfiguration);
     }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559332, null);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559382, null);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -222,84 +227,84 @@ public class FrameFragment
     super.onDestroy();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
     while (localIterator.hasNext()) {
-      ((amrz)localIterator.next()).i();
+      ((anun)localIterator.next()).i();
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    if ((SplashActivity.a != 1) && (!this.g)) {}
-    amrz localamrz;
+    if ((SplashActivity.a != 1) && (!this.jdField_g_of_type_Boolean)) {}
+    anun localanun;
     do
     {
       return;
-      localamrz = b();
-    } while (localamrz == null);
-    localamrz.g();
+      localanun = b();
+    } while (localanun == null);
+    localanun.g();
   }
   
   public void onResume()
   {
     super.onResume();
     if (SplashActivity.a != 1) {}
-    amrz localamrz;
+    anun localanun;
     do
     {
       return;
-      localamrz = b();
-    } while ((localamrz == null) || (!localamrz.b()));
-    localamrz.e(false);
+      localanun = b();
+    } while ((localanun == null) || (!localanun.b()));
+    localanun.e(false);
   }
   
   public void onStart()
   {
     super.onStart();
     if (SplashActivity.a != 1) {}
-    amrz localamrz;
+    anun localanun;
     do
     {
       return;
-      localamrz = b();
-    } while (localamrz == null);
-    localamrz.f();
+      localanun = b();
+    } while (localanun == null);
+    localanun.f();
   }
   
   public void onStop()
   {
     super.onStop();
-    if ((SplashActivity.a != 1) && (!this.g)) {}
-    amrz localamrz;
+    if ((SplashActivity.a != 1) && (!this.jdField_g_of_type_Boolean)) {}
+    anun localanun;
     do
     {
       return;
-      localamrz = b();
-    } while (localamrz == null);
-    localamrz.h();
+      localanun = b();
+    } while (localanun == null);
+    localanun.h();
   }
   
   public void onTabChanged(String paramString)
   {
     if (paramString != null)
     {
-      this.f = paramString;
+      this.jdField_g_of_type_JavaLangString = paramString;
       int i = paramString.lastIndexOf(".");
       if (i >= 0) {
-        this.f = paramString.substring(i + 1, paramString.length());
+        this.jdField_g_of_type_JavaLangString = paramString.substring(i + 1, paramString.length());
       }
       this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
       if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost instanceof QQTabHost)) {
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.setFirstDrawTrue();
       }
     }
-    if (this.jdField_a_of_type_Amrz != null)
+    if (this.jdField_a_of_type_Anun != null)
     {
-      this.jdField_a_of_type_Amrz.g();
-      this.jdField_a_of_type_Amrz.B();
+      this.jdField_a_of_type_Anun.g();
+      this.jdField_a_of_type_Anun.D();
     }
-    this.jdField_a_of_type_Amrz = b();
-    if ((this.jdField_a_of_type_Amrz != null) && (this.jdField_a_of_type_Amrz.b())) {
-      this.jdField_a_of_type_Amrz.e(true);
+    this.jdField_a_of_type_Anun = b();
+    if ((this.jdField_a_of_type_Anun != null) && (this.jdField_a_of_type_Anun.b())) {
+      this.jdField_a_of_type_Anun.e(true);
     }
   }
 }

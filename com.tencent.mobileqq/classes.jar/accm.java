@@ -1,92 +1,539 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import android.app.Activity;
+import android.app.Dialog;
+import android.arch.lifecycle.Lifecycle;
+import android.arch.lifecycle.Lifecycle.Event;
+import android.arch.lifecycle.LifecycleOwner;
+import android.arch.lifecycle.LifecycleRegistry;
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.ViewModelProvider;
+import android.arch.lifecycle.ViewModelStore;
+import android.arch.lifecycle.ViewModelStoreOwner;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.gdtad.api.motivebrowsing.GdtMotiveBrowsingDialog.initData.1;
+import com.tencent.gdtad.api.motivebrowsing.GdtMotiveBrowsingDialog.initTitle.1;
+import com.tencent.gdtad.api.motivebrowsing.GdtMotiveBrowsingTitle;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import com.tencent.smtt.sdk.ValueCallback;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
+import java.util.Collection;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.s2c.msgtype0x210.submsgtype0xbe.SubMsgType0xbe.Medal;
-import tencent.im.s2c.msgtype0x210.submsgtype0xbe.SubMsgType0xbe.MsgBody;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.functions.Function1;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.text.StringsKt;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DestInfo;
 
-public class accm
-  implements abzb
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gdtad/api/motivebrowsing/GdtMotiveBrowsingDialog;", "Landroid/app/Dialog;", "Landroid/arch/lifecycle/LifecycleOwner;", "Landroid/arch/lifecycle/ViewModelStoreOwner;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "countDownTime", "", "hasCountDownComplete", "", "mActivity", "Landroid/app/Activity;", "mIntent", "Landroid/content/Intent;", "mLifecycleRegistry", "Landroid/arch/lifecycle/LifecycleRegistry;", "mModel", "Lcom/tencent/gdtad/api/motivevideo/GdtMotiveVideoModel;", "mQQCustomDialog", "Lcom/tencent/mobileqq/utils/QQCustomDialog;", "mRootView", "Landroid/view/View;", "mSavedActivityIntent", "mViewModelStore", "Landroid/arch/lifecycle/ViewModelStore;", "mWebView", "Lcom/tencent/biz/ui/TouchWebView;", "mWebViewBuilder", "Lcom/tencent/gdtad/views/videoceiling/GdtWebViewBuilder;", "titleContainer", "Lcom/tencent/gdtad/api/motivebrowsing/GdtMotiveBrowsingTitle;", "viewModel", "Lcom/tencent/gdtad/api/motivebrowsing/GdtMotiveBrowsingViewModel;", "dispatchLifeCycleEvent", "", "event", "Landroid/arch/lifecycle/Lifecycle$Event;", "doOnBackEvent", "fitSpecialScreen", "activity", "titlePart", "getLifecycle", "Landroid/arch/lifecycle/Lifecycle;", "getViewModelStore", "handleMotiveBrowsingData", "browsingData", "Lcom/tencent/gdtad/api/motivebrowsing/MotiveBrowsingData;", "initData", "initTitle", "initView", "initWeb", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestory", "onDialogCancelClick", "onDialogConfirmClick", "onStart", "onStop", "sendRewardedCallback", "setDataModel", "mode", "setIntent", "intent", "watchTimeNotCompleteMention", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class accm
+  extends ReportDialog
+  implements LifecycleOwner, ViewModelStoreOwner
 {
-  private static void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte)
+  public static final accn a;
+  private int jdField_a_of_type_Int;
+  private acde jdField_a_of_type_Acde;
+  private aced jdField_a_of_type_Aced;
+  private acko jdField_a_of_type_Acko;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private LifecycleRegistry jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry = new LifecycleRegistry((LifecycleOwner)this);
+  private final ViewModelStore jdField_a_of_type_AndroidArchLifecycleViewModelStore = new ViewModelStore();
+  private Intent jdField_a_of_type_AndroidContentIntent;
+  private View jdField_a_of_type_AndroidViewView;
+  private TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
+  private GdtMotiveBrowsingTitle jdField_a_of_type_ComTencentGdtadApiMotivebrowsingGdtMotiveBrowsingTitle;
+  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+  private boolean jdField_a_of_type_Boolean;
+  private Intent b;
+  
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SubMsgType0xbe");
-    }
-    Object localObject = new SubMsgType0xbe.MsgBody();
-    try
-    {
-      ((SubMsgType0xbe.MsgBody)localObject).mergeFrom(paramArrayOfByte);
-      if (!((SubMsgType0xbe.MsgBody)localObject).uint64_group_code.has())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SubMsgType0xbe : msg has not uint64_group_code");
-        }
-        return;
-      }
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SubMsgType0xbe : fail to parse submsgtype0xbe.");
-      return;
-    }
-    try
-    {
-      paramArrayOfByte = new JSONObject();
-      if (((SubMsgType0xbe.MsgBody)localObject).uint64_uin.has()) {
-        paramArrayOfByte.put("uin", ((SubMsgType0xbe.MsgBody)localObject).uint64_uin.get());
-      }
-      if (((SubMsgType0xbe.MsgBody)localObject).uint64_group_code.has()) {
-        paramArrayOfByte.put("groupCode", ((SubMsgType0xbe.MsgBody)localObject).uint64_group_code.get());
-      }
-      if (((SubMsgType0xbe.MsgBody)localObject).uint32_notify_type.has()) {
-        paramArrayOfByte.put("notifyType", ((SubMsgType0xbe.MsgBody)localObject).uint32_notify_type.get());
-      }
-      if (((SubMsgType0xbe.MsgBody)localObject).uint32_online_level.has()) {
-        paramArrayOfByte.put("onlineLevel", ((SubMsgType0xbe.MsgBody)localObject).uint32_online_level.get());
-      }
-      if (((SubMsgType0xbe.MsgBody)localObject).rpt_msg_medal_list.has())
-      {
-        JSONArray localJSONArray = new JSONArray();
-        localObject = ((SubMsgType0xbe.MsgBody)localObject).rpt_msg_medal_list.get().iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          SubMsgType0xbe.Medal localMedal = (SubMsgType0xbe.Medal)((Iterator)localObject).next();
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("id", localMedal.uint32_id.get());
-          localJSONObject.put("level", localMedal.uint32_level.get());
-          localJSONObject.put("type", localMedal.uint32_type.get());
-          localJSONObject.put("iconUrl", localMedal.str_icon_url.get());
-          localJSONObject.put("flashUrl", localMedal.str_flash_url.get());
-          localJSONObject.put("name", localMedal.str_name.get());
-          localJSONArray.put(localJSONObject);
-        }
-        paramArrayOfByte.put("medalList", localJSONArray);
-      }
-    }
-    catch (JSONException paramQQAppInterface)
-    {
-      paramQQAppInterface.printStackTrace();
-      return;
-    }
-    paramQQAppInterface.getGAudioHandler().a(paramArrayOfByte.toString());
+    jdField_a_of_type_Accn = new accn(null);
   }
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public accm(@NotNull Context paramContext)
   {
-    a(paramabxc.a(), paramMsgType0x210.vProtobuf);
-    return null;
+    super(paramContext, 16973834);
+    this.jdField_a_of_type_AndroidAppActivity = ((Activity)paramContext);
+  }
+  
+  private final void a(acdi paramacdi)
+  {
+    boolean bool = true;
+    QLog.i("GdtMotiveBrowsingDialog", 1, "handleMotiveBrowsingData browsingData: " + paramacdi);
+    int i = paramacdi.a();
+    String str = paramacdi.a();
+    int j = paramacdi.b();
+    switch (i)
+    {
+    default: 
+    case 0: 
+      do
+      {
+        return;
+        paramacdi = this.jdField_a_of_type_ComTencentBizUiTouchWebView;
+      } while (paramacdi == null);
+      paramacdi.evaluateJavascript(str, (ValueCallback)acco.a);
+      return;
+    }
+    if (j <= 0) {}
+    for (;;)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      paramacdi = this.jdField_a_of_type_ComTencentGdtadApiMotivebrowsingGdtMotiveBrowsingTitle;
+      if (paramacdi == null) {
+        break;
+      }
+      paramacdi.a(j);
+      return;
+      bool = false;
+    }
+  }
+  
+  private final void a(Lifecycle.Event paramEvent)
+  {
+    try
+    {
+      this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(paramEvent);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.i("GdtMotiveBrowsingDialog", 1, "handleLifecycleEvent fail : event -> " + paramEvent, localThrowable);
+    }
+  }
+  
+  private final void b()
+  {
+    Object localObject = getWindow();
+    if (Build.VERSION.SDK_INT >= 28)
+    {
+      if (localObject == null) {
+        Intrinsics.throwNpe();
+      }
+      WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
+      localLayoutParams.layoutInDisplayCutoutMode = 1;
+      ((Window)localObject).setAttributes(localLayoutParams);
+    }
+    if (localObject == null) {
+      Intrinsics.throwNpe();
+    }
+    ((Window)localObject).setFlags(1024, 1024);
+    ((Window)localObject).setVolumeControlStream(3);
+    localObject = ((Window)localObject).getDecorView();
+    if (localObject == null) {
+      throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup");
+    }
+    localObject = (ViewGroup)localObject;
+    ((ViewGroup)localObject).setSystemUiVisibility(7942);
+    if (Build.VERSION.SDK_INT >= 19) {
+      ((ViewGroup)localObject).setOnSystemUiVisibilityChangeListener((View.OnSystemUiVisibilityChangeListener)new accp((ViewGroup)localObject));
+    }
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from((Context)this.jdField_a_of_type_AndroidAppActivity).inflate(2131559272, (ViewGroup)localObject, false);
+    if (this.jdField_a_of_type_AndroidViewView == null)
+    {
+      QLog.i("GdtMotiveBrowsingDialog", 1, "mRootView == null");
+      return;
+    }
+    setContentView(this.jdField_a_of_type_AndroidViewView);
+    setOnDismissListener((DialogInterface.OnDismissListener)new accq(this));
+    ((ViewGroup)localObject).getViewTreeObserver().addOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)new accr(this, (ViewGroup)localObject));
+  }
+  
+  private final void c()
+  {
+    if (this.jdField_a_of_type_Aced == null)
+    {
+      QLog.i("GdtMotiveBrowsingDialog", 1, "mModel == null");
+      return;
+    }
+    Object localObject = axne.a((ViewModelStoreOwner)this).get(acde.class);
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "ofViewModelProvider(this…ingViewModel::class.java)");
+    this.jdField_a_of_type_Acde = ((acde)localObject);
+    localObject = this.jdField_a_of_type_Aced;
+    if (localObject != null)
+    {
+      localObject = ((aced)localObject).a();
+      if (localObject == null) {}
+    }
+    for (int i = ((GdtMotiveVideoPageData)localObject).getVideoCountDown();; i = 0)
+    {
+      int j = i;
+      if (i <= 0) {
+        j = 15;
+      }
+      this.jdField_a_of_type_Int = j;
+      localObject = this.jdField_a_of_type_Acde;
+      if (localObject == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("viewModel");
+      }
+      ((acde)localObject).a(this.jdField_a_of_type_Int);
+      localObject = this.jdField_a_of_type_Acde;
+      if (localObject == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("viewModel");
+      }
+      axne.a(this, (LiveData)((acde)localObject).a(), (Function1)new GdtMotiveBrowsingDialog.initData.1((accm)this));
+      this.b = this.jdField_a_of_type_AndroidAppActivity.getIntent();
+      this.jdField_a_of_type_AndroidAppActivity.setIntent(this.jdField_a_of_type_AndroidContentIntent);
+      return;
+    }
+  }
+  
+  private final void d()
+  {
+    Object localObject1 = MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web");
+    if (localObject1 == null) {
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.common.app.AppInterface");
+    }
+    localObject1 = (AppInterface)localObject1;
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView = new TouchWebView((Context)this.jdField_a_of_type_AndroidAppActivity);
+    this.jdField_a_of_type_Acko = ((acko)new accs(this, (AppInterface)localObject1, (Context)this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity, null, (AppInterface)localObject1));
+    Object localObject2 = this.jdField_a_of_type_Acko;
+    if (localObject2 != null) {
+      ((acko)localObject2).a(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
+    }
+    localObject2 = this.jdField_a_of_type_Acko;
+    if (localObject2 != null) {
+      ((acko)localObject2).a(null);
+    }
+    new bieb((biec)this.jdField_a_of_type_Acko).a(null, (AppInterface)localObject1, null);
+    localObject1 = this.jdField_a_of_type_AndroidViewView;
+    if (localObject1 != null)
+    {
+      localObject1 = (FrameLayout)((View)localObject1).findViewById(2131381400);
+      if (localObject1 != null) {
+        ((FrameLayout)localObject1).addView((View)this.jdField_a_of_type_ComTencentBizUiTouchWebView);
+      }
+      localObject1 = this.jdField_a_of_type_Aced;
+      if (localObject1 == null) {
+        break label264;
+      }
+      localObject1 = ((aced)localObject1).a();
+      if (localObject1 == null) {
+        break label264;
+      }
+      localObject1 = ((qq_ad_get.QQAdGetRsp.AdInfo)localObject1).dest_info;
+      if (localObject1 == null) {
+        break label264;
+      }
+      localObject1 = ((qq_ad_get.QQAdGetRsp.AdInfo.DestInfo)localObject1).landing_page;
+      if (localObject1 == null) {
+        break label264;
+      }
+    }
+    label264:
+    for (localObject1 = ((PBStringField)localObject1).get();; localObject1 = null)
+    {
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        localObject2 = this.jdField_a_of_type_ComTencentBizUiTouchWebView;
+        if (localObject2 != null) {
+          ((TouchWebView)localObject2).loadUrl((String)localObject1);
+        }
+      }
+      QLog.i("GdtMotiveBrowsingDialog", 1, "initWebView url = " + (String)localObject1);
+      return;
+      localObject1 = null;
+      break;
+    }
+  }
+  
+  private final void e()
+  {
+    this.jdField_a_of_type_ComTencentGdtadApiMotivebrowsingGdtMotiveBrowsingTitle = new GdtMotiveBrowsingTitle((Context)this.jdField_a_of_type_AndroidAppActivity);
+    Object localObject = this.jdField_a_of_type_ComTencentGdtadApiMotivebrowsingGdtMotiveBrowsingTitle;
+    if (localObject != null) {
+      ((GdtMotiveBrowsingTitle)localObject).setOnCloseClickListener((Function0)new GdtMotiveBrowsingDialog.initTitle.1((accm)this));
+    }
+    int i = ViewUtils.dpToPx(15.0F);
+    localObject = this.jdField_a_of_type_ComTencentGdtadApiMotivebrowsingGdtMotiveBrowsingTitle;
+    if (localObject != null) {
+      ((GdtMotiveBrowsingTitle)localObject).setPadding(i, i, i, i);
+    }
+    localObject = new FrameLayout.LayoutParams(-1, -1);
+    GdtMotiveBrowsingTitle localGdtMotiveBrowsingTitle = this.jdField_a_of_type_ComTencentGdtadApiMotivebrowsingGdtMotiveBrowsingTitle;
+    if (localGdtMotiveBrowsingTitle != null) {
+      localGdtMotiveBrowsingTitle.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    }
+    localObject = this.jdField_a_of_type_AndroidViewView;
+    if (localObject != null) {}
+    for (localObject = (FrameLayout)((View)localObject).findViewById(2131379040);; localObject = null)
+    {
+      if (localObject != null) {
+        ((FrameLayout)localObject).addView((View)this.jdField_a_of_type_ComTencentGdtadApiMotivebrowsingGdtMotiveBrowsingTitle);
+      }
+      ImmersiveUtils.a(this.jdField_a_of_type_AndroidAppActivity.getWindow(), true);
+      ImmersiveUtils.a(true, this.jdField_a_of_type_AndroidAppActivity.getWindow());
+      a(this.jdField_a_of_type_AndroidAppActivity, (View)localObject);
+      return;
+    }
+  }
+  
+  private final void f()
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    if (localObject != null) {
+      ((QQCustomDialog)localObject).dismiss();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bhdj.a((Context)this.jdField_a_of_type_AndroidAppActivity, 0, null, (CharSequence)this.jdField_a_of_type_AndroidAppActivity.getString(2131692748), this.jdField_a_of_type_AndroidAppActivity.getString(2131692745), this.jdField_a_of_type_AndroidAppActivity.getString(2131692746), (DialogInterface.OnClickListener)new acct(this), (DialogInterface.OnClickListener)new accu(this));
+    localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    if (localObject != null)
+    {
+      ((QQCustomDialog)localObject).show();
+      localObject = ((QQCustomDialog)localObject).getWindow();
+      if (localObject != null)
+      {
+        localObject = ((Window)localObject).getDecorView();
+        if (localObject != null) {
+          ((View)localObject).setSystemUiVisibility(7942);
+        }
+      }
+      localObject = this.jdField_a_of_type_Acde;
+      if (localObject == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("viewModel");
+      }
+      ((acde)localObject).a();
+    }
+    localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    if (localObject != null) {
+      ((QQCustomDialog)localObject).setOnDismissListener((DialogInterface.OnDismissListener)new accv(this));
+    }
+  }
+  
+  private final void g()
+  {
+    QLog.i("GdtMotiveBrowsingDialog", 1, "DialogInterface onClick confirm");
+    QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    if (localQQCustomDialog != null) {
+      localQQCustomDialog.dismiss();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = ((QQCustomDialog)null);
+  }
+  
+  private final void h()
+  {
+    QLog.i("GdtMotiveBrowsingDialog", 1, "DialogInterface onClick onCancel");
+    QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    if (localQQCustomDialog != null) {
+      localQQCustomDialog.dismiss();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = ((QQCustomDialog)null);
+    i();
+    super.onBackPressed();
+  }
+  
+  private final void i()
+  {
+    QLog.i("GdtMotiveBrowsingDialog", 1, "sendRewardedCallback");
+    Object localObject1 = this.jdField_a_of_type_Aced;
+    Object localObject2;
+    if (localObject1 != null)
+    {
+      localObject1 = ((aced)localObject1).a();
+      if (localObject1 != null)
+      {
+        localObject1 = ((GdtMotiveVideoPageData)localObject1).motiveBrowsingKey;
+        if (localObject1 != null)
+        {
+          localObject2 = StringsKt.split$default((CharSequence)localObject1, new String[] { "#" }, false, 0, 6, null);
+          if (((Collection)localObject2).isEmpty()) {
+            break label159;
+          }
+        }
+      }
+    }
+    label159:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        localObject2 = new Intent((String)((List)localObject2).get(0));
+        ((Intent)localObject2).putExtra("duration_time", this.jdField_a_of_type_Int * 1000L);
+        ((Intent)localObject2).putExtra("elapsed_time", this.jdField_a_of_type_Int * 1000L);
+        ((Intent)localObject2).putExtra("profitable_flag", this.jdField_a_of_type_Boolean);
+        ((Intent)localObject2).putExtra("KEY_MOTIVE_BROWSING", (String)localObject1);
+        this.jdField_a_of_type_AndroidAppActivity.sendBroadcast((Intent)localObject2);
+      }
+      return;
+    }
+  }
+  
+  private final void j()
+  {
+    QLog.i("GdtMotiveBrowsingDialog", 1, "onDestory");
+    this.jdField_a_of_type_AndroidAppActivity.setIntent(this.b);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    if (localObject != null) {
+      ((QQCustomDialog)localObject).dismiss();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = ((QQCustomDialog)null);
+    if (this.jdField_a_of_type_Acko != null)
+    {
+      localObject = this.jdField_a_of_type_Acko;
+      if (localObject != null) {
+        ((acko)localObject).c();
+      }
+      this.jdField_a_of_type_Acko = ((acko)null);
+    }
+    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null)
+    {
+      localObject = this.jdField_a_of_type_ComTencentBizUiTouchWebView;
+      if (localObject != null)
+      {
+        localObject = ((TouchWebView)localObject).getParent();
+        if ((localObject != null) && ((localObject instanceof ViewGroup))) {
+          ((ViewGroup)localObject).removeAllViewsInLayout();
+        }
+        this.jdField_a_of_type_ComTencentBizUiTouchWebView = ((TouchWebView)null);
+      }
+    }
+    else
+    {
+      a(Lifecycle.Event.ON_DESTROY);
+      if ((this.jdField_a_of_type_AndroidAppActivity == null) || (!this.jdField_a_of_type_AndroidAppActivity.isChangingConfigurations())) {
+        break label168;
+      }
+    }
+    label168:
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0)
+      {
+        QLog.i("GdtMotiveBrowsingDialog", 1, "mViewModelStore.clear()");
+        this.jdField_a_of_type_AndroidArchLifecycleViewModelStore.clear();
+      }
+      return;
+      localObject = null;
+      break;
+    }
+  }
+  
+  public final void a()
+  {
+    QLog.i("GdtMotiveBrowsingDialog", 1, "doOnBackEvent");
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      f();
+      return;
+    }
+    i();
+    super.onBackPressed();
+  }
+  
+  public final void a(@NotNull aced paramaced)
+  {
+    Intrinsics.checkParameterIsNotNull(paramaced, "mode");
+    this.jdField_a_of_type_Aced = paramaced;
+  }
+  
+  public final void a(@NotNull Activity paramActivity, @Nullable View paramView)
+  {
+    Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
+    if (paramView != null)
+    {
+      LiuHaiUtils.a(paramActivity);
+      if (LiuHaiUtils.b())
+      {
+        Object localObject = paramView.getLayoutParams();
+        if (localObject == null) {
+          throw new TypeCastException("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
+        }
+        localObject = (LinearLayout.LayoutParams)localObject;
+        ((LinearLayout.LayoutParams)localObject).topMargin = LiuHaiUtils.b(paramActivity);
+        paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        QLog.i("GdtMotiveBrowsingDialog", 1, "fitSpecialScreen addHeight = " + ((LinearLayout.LayoutParams)localObject).topMargin);
+      }
+    }
+  }
+  
+  public final void a(@NotNull Intent paramIntent)
+  {
+    Intrinsics.checkParameterIsNotNull(paramIntent, "intent");
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+  }
+  
+  @NotNull
+  public Lifecycle getLifecycle()
+  {
+    return (Lifecycle)this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry;
+  }
+  
+  @NotNull
+  public ViewModelStore getViewModelStore()
+  {
+    return this.jdField_a_of_type_AndroidArchLifecycleViewModelStore;
+  }
+  
+  public void onBackPressed()
+  {
+    QLog.i("GdtMotiveBrowsingDialog", 1, "onBackPressed");
+    a();
+  }
+  
+  protected void onCreate(@Nullable Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    QLog.i("GdtMotiveBrowsingDialog", 1, "onCreate");
+    a(Lifecycle.Event.ON_CREATE);
+    b();
+    e();
+    d();
+    c();
+  }
+  
+  protected void onStart()
+  {
+    QLog.i("GdtMotiveBrowsingDialog", 1, "onStart");
+    super.onStart();
+    acko localacko = this.jdField_a_of_type_Acko;
+    if (localacko != null) {
+      localacko.a();
+    }
+    a(Lifecycle.Event.ON_START);
+    a(Lifecycle.Event.ON_RESUME);
+  }
+  
+  public void onStop()
+  {
+    QLog.i("GdtMotiveBrowsingDialog", 1, "onStop");
+    super.onStop();
+    acko localacko = this.jdField_a_of_type_Acko;
+    if (localacko != null) {
+      localacko.b();
+    }
+    a(Lifecycle.Event.ON_PAUSE);
+    a(Lifecycle.Event.ON_STOP);
   }
 }
 

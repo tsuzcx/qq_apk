@@ -1,24 +1,35 @@
-import android.animation.TypeEvaluator;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-class afgu
-  implements TypeEvaluator
+public class afgu
+  extends Handler
 {
-  public Object evaluate(float paramFloat, Object paramObject1, Object paramObject2)
+  public afgu(TroopRequestActivity paramTroopRequestActivity) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LottieAnimController", 2, "AlphaEvaluator value: " + paramFloat);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.h();
+      QQToast.a(this.a, this.a.getString(2131718513), 0).b(this.a.getTitleBarHeight());
+      this.a.finish();
+      return;
+    case 1: 
+      this.a.a(true);
+      this.a.h();
+      QQToast.a(this.a, this.a.getString(2131718500), 0).b(this.a.getTitleBarHeight());
+      return;
     }
-    if ((paramFloat >= 0.0F) && (paramFloat <= 0.02985074626865672D)) {
-      return Double.valueOf(paramFloat * 0.5D / 0.02985074626865672D);
-    }
-    if ((paramFloat > 0.02985074626865672D) && (paramFloat <= 0.9253731343283582D)) {
-      return Double.valueOf(0.5D);
-    }
-    if ((paramFloat > 0.9253731343283582D) && (paramFloat <= 1.0F)) {
-      return Double.valueOf((1.0F - paramFloat) * 0.5D / 0.07462686567164178D);
-    }
-    return Double.valueOf(0.0D);
+    paramMessage = (String)paramMessage.obj;
+    this.a.o.setText(paramMessage + "");
+    this.a.o.setContentDescription(paramMessage + "");
+    this.a.o.setVisibility(0);
   }
 }
 

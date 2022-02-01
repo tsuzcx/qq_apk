@@ -1,21 +1,34 @@
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
-import mqq.os.MqqHandler;
-
-public class wvx
-  implements TVK_IMediaPlayer.OnCompletionListener
+class wvx
+  implements wyo
 {
-  wvx(wvv paramwvv) {}
+  wvx(wvu paramwvu) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void a()
   {
-    wvv.a(this.a).d = paramTVK_IMediaPlayer.getDuration();
-    wvv.a(this.a).e = paramTVK_IMediaPlayer.getCurrentPostion();
-    paramTVK_IMediaPlayer = this.a.a;
-    if (paramTVK_IMediaPlayer != null) {
-      ThreadManager.getUIHandler().post(new VideoViewTVKImpl.2.1(this, paramTVK_IMediaPlayer));
+    if (wvu.a(this.a) != null) {
+      wvu.a(this.a).c();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    wvu.a(this.a).a(paramInt);
+    if (wvu.a(this.a) != null) {
+      wvu.a(this.a).b(paramInt);
+    }
+  }
+  
+  public void b()
+  {
+    if (wvu.a(this.a) != null) {
+      wvu.a(this.a).d();
+    }
+  }
+  
+  public void c()
+  {
+    if (wvu.a(this.a) != null) {
+      wvu.a(this.a).d(-1);
     }
   }
 }

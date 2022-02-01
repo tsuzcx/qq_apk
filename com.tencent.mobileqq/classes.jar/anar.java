@@ -1,11 +1,19 @@
-import com.google.gson.reflect.TypeToken;
-import com.tencent.mobileqq.search.fragment.searchentry.hippy.TKDSearchHistoryBean;
-import java.util.ArrayList;
+import android.view.SurfaceHolder;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
 
 class anar
-  extends TypeToken<ArrayList<TKDSearchHistoryBean>>
+  implements IVideoViewBase.IVideoViewCallBack
 {
   anar(anaq paramanaq) {}
+  
+  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
+  {
+    anaq.a(this.a, true);
+  }
 }
 
 

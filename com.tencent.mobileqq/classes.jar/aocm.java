@@ -1,87 +1,23 @@
-import android.os.RemoteCallbackList;
-import android.os.RemoteException;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.BusinessObserver;
 
 public class aocm
-  implements aodl
+  implements BusinessObserver
 {
-  public aocm(ArConfigService paramArConfigService) {}
+  public void a(boolean paramBoolean) {}
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (ArConfigService.b(this.a) != null) {
-      try
-      {
-        int j = ArConfigService.b(this.a).beginBroadcast();
-        int i = 0;
-        for (;;)
-        {
-          if (i >= j) {
-            break label106;
-          }
-          try
-          {
-            ((aofd)ArConfigService.b(this.a).getBroadcastItem(i)).a(paramInt1, paramInt2);
-            i += 1;
-          }
-          catch (RemoteException localRemoteException)
-          {
-            for (;;)
-            {
-              localRemoteException.printStackTrace();
-            }
-          }
-        }
-        return;
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_ArConfigService", 2, "FaceScanDownloadManager notify onProgress error:" + localException.getMessage());
-        }
-      }
-    }
-    label106:
-    ArConfigService.b(this.a).finishBroadcast();
-  }
+  public void b(boolean paramBoolean) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (ArConfigService.b(this.a) != null) {}
-    for (;;)
+    switch (paramInt)
     {
-      int i;
-      try
-      {
-        int j = ArConfigService.b(this.a).beginBroadcast();
-        i = 0;
-        if (i >= j) {
-          break label129;
-        }
-        if (paramBoolean) {}
-        try
-        {
-          ((aofd)ArConfigService.b(this.a).getBroadcastItem(i)).a(paramInt);
-        }
-        catch (RemoteException localRemoteException)
-        {
-          localRemoteException.printStackTrace();
-        }
-        ((aofd)ArConfigService.b(this.a).getBroadcastItem(i)).b(paramInt, 0);
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_ArConfigService", 2, "FaceScanDownloadManager notify onFinish error:" + localException.getMessage());
-        }
-      }
+    default: 
       return;
-      label129:
-      ArConfigService.b(this.a).finishBroadcast();
+    case 3: 
+      a(paramBoolean);
       return;
-      i += 1;
     }
+    b(paramBoolean);
   }
 }
 

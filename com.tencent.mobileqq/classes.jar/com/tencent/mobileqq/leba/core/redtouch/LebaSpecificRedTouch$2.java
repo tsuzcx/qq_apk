@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.leba.core.redtouch;
 
-import auxq;
-import avod;
+import awdp;
+import awui;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.redtouch.RedTouch;
@@ -11,11 +11,11 @@ import mqq.os.MqqHandler;
 public class LebaSpecificRedTouch$2
   implements Runnable
 {
-  public LebaSpecificRedTouch$2(auxq paramauxq, QQAppInterface paramQQAppInterface, RedTouch paramRedTouch, String paramString1, String paramString2, long paramLong) {}
+  public LebaSpecificRedTouch$2(awdp paramawdp, QQAppInterface paramQQAppInterface, RedTouch paramRedTouch, String paramString1, String paramString2, long paramLong) {}
   
   public void run()
   {
-    int i = avod.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    int i = awui.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     if (QLog.isColorLevel()) {
       QLog.d("Q.lebatab.LebaSpecificRedTouch", 2, "updateExtendFriendRedTouch() : " + i);
     }

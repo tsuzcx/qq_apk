@@ -1,25 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import tencent.im.oidb.cmd0x9ae.cmd0x9ae.RspBody;
 
-public class aoml
-  implements View.OnTouchListener
+class aoml
+  extends ayra
 {
-  public aoml(ARScanEntryView paramARScanEntryView) {}
+  aoml(aomk paramaomk, QQAppInterface paramQQAppInterface) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void getAccountIdentitySuccess(cmd0x9ae.RspBody paramRspBody)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    aomk.a(this.jdField_a_of_type_Aomk, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRspBody, this);
   }
 }
 

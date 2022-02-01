@@ -1,63 +1,75 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.ViewStub;
-import dov.com.qq.im.ae.camera.ui.watermark.WatermarkEditView;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
 
 public class blto
-  extends bmar
 {
-  private static boolean jdField_a_of_type_Boolean;
-  private WatermarkEditView jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView;
+  private static int jdField_a_of_type_Int = -1;
+  private static blto jdField_a_of_type_Blto;
+  String jdField_a_of_type_JavaLangString;
+  WeakReference<bltq> jdField_a_of_type_JavaLangRefWeakReference;
+  List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  String b;
+  String c;
+  String d;
+  String e = "https://sqimg.qq.com/qq_product_operations/gme_sdk/GME_SDK_V1.zip";
+  String f = "105d1e43c456bc800b4adacd57ac1199";
   
-  public blto(Activity paramActivity, View paramView, bmas parambmas)
+  public static blto a()
   {
-    super(paramActivity, paramView, parambmas);
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView == null)
+    if (jdField_a_of_type_Blto == null) {}
+    try
     {
-      ViewStub localViewStub = (ViewStub)this.mActivity.findViewById(2131364174);
-      if (localViewStub != null)
-      {
-        localViewStub.inflate();
-        this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView = ((WatermarkEditView)this.mActivity.findViewById(2131364173));
-        this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView.a(this.mActivity);
+      if (jdField_a_of_type_Blto == null) {
+        jdField_a_of_type_Blto = new blto();
       }
+      return jdField_a_of_type_Blto;
     }
-    if (this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView != null) {
-      this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView.a();
-    }
+    finally {}
   }
   
-  public Object get(int paramInt, Object... paramVarArgs)
+  public void a()
   {
-    switch (paramInt)
-    {
-    default: 
-      return Boolean.valueOf(false);
-    }
-    return Boolean.valueOf(jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    jdField_a_of_type_Blto = null;
   }
   
-  protected void initView() {}
-  
-  public void send(int paramInt, Object... paramVarArgs)
+  public void a(bltq parambltq)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 589825: 
-      a();
-      jdField_a_of_type_Boolean = true;
-      return;
-    }
-    if ((this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView != null) && (this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView.getVisibility() == 0)) {
-      this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView.setVisibility(8);
-    }
-    jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambltq);
+  }
+  
+  public void a(String paramString)
+  {
+    blsw.a().a(paramString);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    this.e = paramString1;
+    this.f = paramString2;
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    blsw.a().a(1, this.e, this.f);
+    blsw.a().a(BaseApplicationImpl.getContext(), this.b, this.jdField_a_of_type_JavaLangString, "0", this.c);
+    blsw.a().a(new bltp(this, paramBoolean1, paramBoolean2));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    blsw.a().a(paramBoolean);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    blsw.a().b(paramBoolean);
   }
 }
 

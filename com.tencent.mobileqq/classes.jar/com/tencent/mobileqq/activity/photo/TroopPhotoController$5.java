@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.photo;
 
-import ajpz;
+import akln;
 import android.app.Activity;
 import android.os.Build.VERSION;
 import android.view.View;
-import bjnw;
-import bjoe;
+import bkzi;
+import bkzq;
 import com.tencent.mobileqq.app.BaseActivity;
 
 class TroopPhotoController$5
-  implements bjoe
+  implements bkzq
 {
-  TroopPhotoController$5(TroopPhotoController paramTroopPhotoController, bjnw parambjnw) {}
+  TroopPhotoController$5(TroopPhotoController paramTroopPhotoController, bkzi parambkzi) {}
   
   public void OnClick(View paramView, int paramInt)
   {
@@ -45,7 +45,7 @@ class TroopPhotoController$5
       {
         TroopPhotoController.access$000(this.this$0);
         continue;
-        ajpz.b(this.this$0.mActivity, ajpz.d(this.this$0.mType));
+        akln.b(this.this$0.mActivity, akln.d(this.this$0.mType));
       }
     }
   }

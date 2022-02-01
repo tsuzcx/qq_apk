@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.unifiedebug;
 
 import android.app.Application;
-import bfmf;
+import bguw;
 
 public final class UnifiedDebugManager$6
   implements Runnable
@@ -10,7 +10,7 @@ public final class UnifiedDebugManager$6
   
   public void run()
   {
-    bfmf.a(this.a);
+    bguw.a(this.a);
   }
 }
 

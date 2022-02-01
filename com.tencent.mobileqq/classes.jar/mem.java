@@ -1,30 +1,30 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.MultiIncomingCallsActivity;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
 
 public class mem
-  extends BroadcastReceiver
+  implements View.OnTouchListener
 {
-  public mem(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
+  public mem(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramIntent.getAction().equals("tencent.av.EXIT_QZONE_LIVE_RSP_ACTION"))
+    switch (paramMotionEvent.getAction())
     {
-      long l = AudioHelper.b();
-      paramContext = lbu.a().a();
-      this.a.a(l, "BroadcastReceiver_qzone", this.a.getIntent(), paramContext);
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(67), Long.valueOf(this.a.jdField_a_of_type_Long), Integer.valueOf(3) });
-      this.a.b("BroadcastReceiver_qzone");
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mem
  * JD-Core Version:    0.7.0.1
  */

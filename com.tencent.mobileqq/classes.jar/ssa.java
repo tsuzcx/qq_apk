@@ -1,13 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class ssa
-  implements sso
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnGuideManager$initLottieView$1$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationStart", "", "animation", "Landroid/animation/Animator;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ssa
+  extends AnimatorListenerAdapter
 {
-  public ssa(FastWebActivity paramFastWebActivity) {}
+  ssa(srv paramsrv) {}
   
-  public void a()
+  public void onAnimationStart(@Nullable Animator paramAnimator)
   {
-    FastWebActivity.p(this.a);
+    srv.b(this.a, true);
+    paramAnimator = srv.a(this.a);
+    if (paramAnimator != null) {
+      paramAnimator.pauseAnimation();
+    }
+    srv.b(this.a);
   }
 }
 

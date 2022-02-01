@@ -1,10 +1,19 @@
-public final class uvu
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.Comparator;
+
+final class uvu
+  implements Comparator<ArticleInfo>
 {
-  public static int a;
-  public static String a = "";
-  public static volatile boolean a;
-  public static int b;
-  public static String b = "";
+  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
+  {
+    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
+      return 0;
+    }
+    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
+      return -1;
+    }
+    return 1;
+  }
 }
 
 

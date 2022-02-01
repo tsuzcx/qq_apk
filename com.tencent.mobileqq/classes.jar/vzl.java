@@ -1,24 +1,94 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.support.v4.util.LruCache;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class vzl
-  extends QQUIEventReceiver<vzf, wrl>
+public class vzl<KEY, VALUE extends vzk>
 {
-  public vzl(@NonNull vzf paramvzf)
+  public int a;
+  public LruCache<KEY, VALUE> a;
+  public ConcurrentHashMap<KEY, WeakReference<VALUE>> a;
+  
+  public vzl(int paramInt)
   {
-    super(paramvzf);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(50);
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new vzm(this, paramInt);
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache.evictAll();
   }
   
-  public void a(@NonNull vzf paramvzf, @NonNull wrl paramwrl)
+  private void b()
   {
-    if ((paramvzf.a.a().equals(paramwrl.jdField_a_of_type_JavaLangString)) && ((paramwrl.jdField_a_of_type_Wod instanceof wor))) {
-      paramvzf.a(((wor)paramwrl.jdField_a_of_type_Wod).a(), paramwrl.b);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = localIterator.next();
+      WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+      if ((localWeakReference != null) && (localWeakReference.get() == null))
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localObject);
+        ykq.b("OneObjectCacheList", String.format("key :%s had been remove by jvm", new Object[] { localObject }));
+      }
     }
   }
   
-  public Class acceptEventClass()
+  public VALUE a(KEY paramKEY)
   {
-    return wrl.class;
+    vzk localvzk2 = (vzk)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramKEY);
+    vzk localvzk1 = localvzk2;
+    if (localvzk2 == null)
+    {
+      WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramKEY);
+      localvzk1 = localvzk2;
+      if (localWeakReference != null)
+      {
+        localvzk2 = (vzk)localWeakReference.get();
+        localvzk1 = localvzk2;
+        if (localvzk2 != null)
+        {
+          ykq.b("OneObjectCacheList", String.format("revert key %s from second cache", new Object[] { paramKEY }));
+          a(paramKEY, localvzk2);
+          localvzk1 = localvzk2;
+        }
+      }
+    }
+    return localvzk1;
+  }
+  
+  public VALUE a(KEY paramKEY, VALUE paramVALUE)
+  {
+    vzk localvzk = a(paramKEY);
+    if (localvzk == null)
+    {
+      this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramKEY, paramVALUE);
+      return paramVALUE;
+    }
+    localvzk.copy(paramVALUE);
+    return localvzk;
+  }
+  
+  public void a()
+  {
+    int i = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size();
+    if (i - this.jdField_a_of_type_Int > 50)
+    {
+      b();
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size();
+      ykq.a("OneObjectCacheList", "evict second cache data count:%d", Integer.valueOf(i - this.jdField_a_of_type_Int));
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache.trimToSize(paramInt);
+  }
+  
+  public void a(KEY paramKEY)
+  {
+    vzk localvzk = (vzk)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.remove(paramKEY);
+    if (localvzk != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramKEY, new WeakReference(localvzk));
+    }
   }
 }
 

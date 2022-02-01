@@ -1,72 +1,24 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.videostory.config.VSConfigManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
-public class zwq
-  extends aptq<zwp>
+class zwq
+  implements TextView.OnEditorActionListener
 {
-  @NonNull
-  public zwp a(int paramInt)
-  {
-    return new zwp();
-  }
+  zwq(zwk paramzwk) {}
   
-  @Nullable
-  public zwp a(aptx[] paramArrayOfaptx)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
+    switch (paramInt)
     {
-      zwp localzwp = zwp.a(paramArrayOfaptx[0].a);
-      QLog.i("Q.videostory.config.VSEntranceProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
-      a(localzwp);
-      return localzwp;
+    case 5: 
+    default: 
+      return false;
     }
-    QLog.e("Q.videostory.config.VSEntranceProcessor", 2, "onParsed conf content is null!");
-    return null;
-  }
-  
-  public void a(zwp paramzwp)
-  {
-    if (paramzwp != null)
-    {
-      VSConfigManager.getInstance().setValue("mine_videostory_entrance", paramzwp.a());
-      VSConfigManager.getInstance().setValue("enable_click_take_picture", paramzwp.b());
-      VSConfigManager.getInstance().setValue("mine_videostory_drawer_entrance", paramzwp.c());
-      QLog.i("Q.videostory.config.VSEntranceProcessor", 2, "onUpdate:" + paramzwp.toString());
+    if (zwk.a(this.a) != null) {
+      zwk.a(this.a).a();
     }
-  }
-  
-  public Class<zwp> clazz()
-  {
-    return zwp.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
     return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 411;
   }
 }
 

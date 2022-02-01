@@ -1,45 +1,24 @@
-import com.tencent.ark.open.ArkAppInfo.AppTemplateView;
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class afvk
-  implements ArkAppMgr.IGetAppPathByNameCallback
+class afvk
+  implements View.OnClickListener
 {
-  protected WeakReference<afvi> a;
+  afvk(afvj paramafvj, afuw paramafuw, ChatMessage paramChatMessage) {}
   
-  public afvk(WeakReference<afvi> paramWeakReference)
+  public void onClick(View paramView)
   {
-    this.a = paramWeakReference;
-  }
-  
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
-  {
-    paramObject = (afvi)this.a.get();
-    if (paramObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ArkApp.ArkAppContainer", 1, "onGetAppPathByName.wrapper == null");
-      }
-      return;
-    }
-    String str1 = paramObject.a(paramString);
-    if (paramAppPathInfo != null) {}
-    for (paramString = paramAppPathInfo.path;; paramString = null)
-    {
-      paramObject.a.getAppFromLocal = false;
-      paramObject.a.endOfGetApp = System.currentTimeMillis();
-      if ((paramAppPathInfo != null) && (paramAppPathInfo.appTempInfo != null))
-      {
-        String str2 = paramAppPathInfo.appTempInfo.template;
-        str2 = paramAppPathInfo.appTempInfo.templateView;
-        afvi.a(paramObject).view = str2;
-      }
-      afvi.a(paramAppPathInfo);
-      paramObject.a(paramString, paramInt, str1);
-      return;
-    }
+    Context localContext = afvj.a(this.jdField_a_of_type_Afvj).getContext();
+    Intent localIntent = new Intent(localContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", this.jdField_a_of_type_Afuw.a);
+    localContext.startActivity(localIntent);
+    afvj.a(this.jdField_a_of_type_Afvj, this.jdField_a_of_type_Afuw, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

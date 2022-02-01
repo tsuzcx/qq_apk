@@ -1,65 +1,28 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.mobileqq.WebSsoBody.WebSsoControlData;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import mqq.observer.BusinessObserver;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import java.util.ArrayList;
 
-public class tio
-  implements BusinessObserver
+class tio
+  implements tir
 {
-  public tio(BridgeModule paramBridgeModule, String paramString) {}
+  tio(tia paramtia) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
   {
-    if (paramBoolean) {}
-    try
+    if (((thz.a(this.a.a) instanceof tgb)) && ((paramContext instanceof FastWebActivity)))
     {
-      Object localObject = paramBundle.getByteArray("data");
-      if (localObject == null) {
-        return;
+      if (tia.a(this.a) == null) {
+        tia.a(this.a, new ArrayList());
       }
-      paramBundle = new WebSsoBody.WebSsoResponseBody();
-      paramBundle.mergeFrom((byte[])localObject);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("data", paramBundle.data.get());
-      ((JSONObject)localObject).put("retcode", paramBundle.ret.get());
-      ((JSONObject)localObject).put("cret", 0);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, localObject);
-      if (((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).frequency.has()) {
-        BridgeModule.access$102(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, ((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).frequency.get());
-      }
-      if (!((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).packageSize.has()) {
-        return;
-      }
-      BridgeModule.access$202(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, ((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).packageSize.get());
-      return;
+      tjd.a(paramProteusItemData.b, paramProteusItemData.a, (FastWebActivity)paramContext, paramProteusItemData.c, ((tgb)thz.a(this.a.a)).a(), tia.a(this.a));
     }
-    catch (Exception paramBundle)
-    {
-      paramBundle = new JSONObject();
-      try
-      {
-        paramBundle.put("cret", 2);
-        return;
-      }
-      catch (JSONException paramBundle)
-      {
-        paramBundle.printStackTrace();
-      }
-    }
-    paramBundle = new JSONObject();
-    paramBundle.put("cret", 1);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramBundle);
-    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tio
  * JD-Core Version:    0.7.0.1
  */

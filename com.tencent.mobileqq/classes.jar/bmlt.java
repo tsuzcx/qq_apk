@@ -1,25 +1,29 @@
-import NS_QQ_STORY_CLIENT.CLIENT.StBatchGetMusicInfoRsp;
-import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import android.opengl.GLSurfaceView.EGLContextFactory;
+import com.tencent.qphone.base.util.QLog;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
-public final class bmlt
-  implements VSDispatchObserver.onVSRspCallBack<CLIENT.StBatchGetMusicInfoRsp>
+class bmlt
+  implements GLSurfaceView.EGLContextFactory
 {
-  public bmlt(VSDispatchObserver.onVSRspCallBack paramonVSRspCallBack, long paramLong) {}
+  private int jdField_a_of_type_Int = 12440;
   
-  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CLIENT.StBatchGetMusicInfoRsp paramStBatchGetMusicInfoRsp)
+  private bmlt(bmlo parambmlo) {}
+  
+  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    bmbx.b("AEEditorMusicHelper", "[requestDetailedMusicInfo], onReceive(), isSuccess=" + paramBoolean + ", retCode=" + paramLong + ", errMsg=" + paramString);
-    if (this.jdField_a_of_type_ComTencentBizRichframeworkNetworkObserverVSDispatchObserver$onVSRspCallBack != null) {
-      this.jdField_a_of_type_ComTencentBizRichframeworkNetworkObserverVSDispatchObserver$onVSRspCallBack.onReceive(paramVSBaseRequest, paramBoolean, paramLong, paramString, paramStBatchGetMusicInfoRsp);
+    int i = this.jdField_a_of_type_Int;
+    bmlo.a(this.jdField_a_of_type_Bmlo, paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 }));
+    return bmlo.a(this.jdField_a_of_type_Bmlo);
+  }
+  
+  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
+  {
+    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext)) {
+      QLog.e("VipARCameraController", 2, new Object[] { "DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext });
     }
-    long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    int i = (int)paramLong;
-    if (paramBoolean) {
-      i = 1000;
-    }
-    bmbc.a().a(i, l1 - l2 + "", "AEEditorMusicInfo", 0);
   }
 }
 

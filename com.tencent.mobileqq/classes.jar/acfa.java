@@ -1,26 +1,20 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.TransElem;
+import android.view.View;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.statistics.GdtReporter;
 
-public class acfa
-  extends acew
+class acfa
+  implements achz
 {
-  public int a()
-  {
-    return 1000;
-  }
+  acfa(acey paramacey) {}
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bdyi parambdyi, bblm parambblm, bbkm parambbkm)
+  public void reportImpression(View paramView)
   {
-    new bblb().a(paramList, paramList1, paramStringBuilder, paramMsg);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return paramElem.trans_elem_info.has();
+    paramView = paramView.getTag(2131381181);
+    if ((paramView instanceof GdtAd))
+    {
+      paramView = (GdtAd)paramView;
+      GdtReporter.doCgiReport(new acds().a(paramView.getUrlForImpression()));
+    }
   }
 }
 

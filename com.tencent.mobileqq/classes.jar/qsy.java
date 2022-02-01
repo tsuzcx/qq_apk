@@ -1,63 +1,156 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
-import com.tencent.mobileqq.app.face.FaceDecoder;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.graphics.Color;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeBiuCommentView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.qphone.base.util.QLog;
 
 public class qsy
-  extends qpk
+  extends qsu
 {
-  public qsy(Context paramContext, FaceDecoder paramFaceDecoder, slt paramslt)
+  private NativeBiuCommentView a;
+  
+  public qsy(VafContext paramVafContext)
   {
-    super(paramContext, paramFaceDecoder, paramslt);
+    super(paramVafContext);
+    this.mTextSize = Utils.dp2px(16.0D);
+    this.mLineSpaceExtra = Utils.rp2px(5.0D);
+    this.a = new NativeBiuCommentView(paramVafContext.getContext());
+    this.a.setTextColor(-16578534);
   }
   
-  public qpk a()
+  public void a(qfw paramqfw)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return f(this.jdField_a_of_type_Slt, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder).q().l().n();
+    this.a.setModel(paramqfw);
   }
   
-  public qpk d()
+  public int getComMeasuredHeight()
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("layoutComponent() must after buildComponent()!");
-    }
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout);
-    return this;
+    return this.a.getComMeasuredHeight();
   }
   
-  public qpk e()
+  public int getComMeasuredWidth()
   {
-    return null;
+    return this.a.getComMeasuredWidth();
   }
   
-  public qpk o()
+  public View getNativeView()
   {
-    super.o();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend.a(this.jdField_a_of_type_JavaLangObject);
+    return this.a;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.a.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.a.setTextSize(0, this.mTextSize);
+    this.a.setLineSpacing(Utils.rp2px(5.0D), 1.0F);
+    this.a.setIncludeFontPadding(false);
+  }
+  
+  public boolean setAttribute(int paramInt, String paramString)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return super.setAttribute(paramInt, paramString);
+    case 1172: 
+      try
+      {
+        this.a.setPreBlankNum(Integer.valueOf(paramString).intValue());
+        return true;
+      }
+      catch (NumberFormatException paramString)
+      {
+        QLog.e("BiuCommentView", 1, paramString, new Object[0]);
+        return false;
+      }
+    case 1173: 
+      try
+      {
+        this.a.setPreAccountUin(Long.parseLong(paramString));
+        return true;
+      }
+      catch (NumberFormatException paramString)
+      {
+        QLog.e("BiuCommentView", 1, paramString, new Object[0]);
+        return false;
+      }
+    case 1174: 
+      try
+      {
+        this.a.a("1".equals(paramString));
+        return true;
+      }
+      catch (NumberFormatException paramString)
+      {
+        QLog.e("BiuCommentView", 1, paramString, new Object[0]);
+        return false;
+      }
+    case 1188: 
+      try
+      {
+        paramInt = Color.parseColor(paramString);
+        this.a.setTextColor(paramInt);
+        QLog.d("BiuCommentView", 1, "setEmotionFontColor: " + paramInt);
+        return true;
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("BiuCommentView", 1, paramString, new Object[0]);
+        return false;
+      }
+    case 1187: 
+      try
+      {
+        this.mTextSize = Utils.dp2px(Integer.valueOf(paramString).intValue());
+        QLog.d("BiuCommentView", 1, "setEmotionFontSize: " + this.mTextSize);
+        return true;
+      }
+      catch (NumberFormatException paramString)
+      {
+        QLog.e("BiuCommentView", 1, paramString, new Object[0]);
+        return false;
+      }
+    case 1189: 
+      try
+      {
+        this.mLineSpaceExtra = Utils.rp2px(Float.valueOf(String.valueOf(paramString)).floatValue());
+        QLog.d("BiuCommentView", 1, "setEmotionlineSpace: " + this.mLineSpaceExtra);
+        return true;
+      }
+      catch (NumberFormatException paramString)
+      {
+        QLog.e("BiuCommentView", 1, paramString, new Object[0]);
+        return false;
+      }
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
+    try
+    {
+      paramInt = Color.parseColor(paramString);
+      this.a.setLinkedTextColor(paramInt);
+      QLog.d("BiuCommentView", 1, "BiuCommentView | setLinkTextColor: " + paramInt);
+      return true;
     }
-    return this;
+    catch (Exception paramString)
+    {
+      QLog.e("BiuCommentView", 1, paramString, new Object[0]);
+    }
+    return false;
+  }
+  
+  public void setTextColor(int paramInt)
+  {
+    this.a.setTextColor(paramInt);
   }
 }
 

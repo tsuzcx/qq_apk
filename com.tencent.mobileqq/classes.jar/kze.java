@@ -1,24 +1,26 @@
-import java.io.InputStream;
-import java.util.zip.GZIPInputStream;
-import org.apache.http.HttpEntity;
-import org.apache.http.entity.HttpEntityWrapper;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import org.apache.http.HttpRequest;
+import org.apache.http.HttpRequestInterceptor;
+import org.apache.http.protocol.HttpContext;
 
 class kze
-  extends HttpEntityWrapper
+  implements HttpRequestInterceptor
 {
-  public kze(HttpEntity paramHttpEntity)
-  {
-    super(paramHttpEntity);
-  }
+  kze(kzc paramkzc) {}
   
-  public InputStream getContent()
+  public void process(HttpRequest paramHttpRequest, HttpContext paramHttpContext)
   {
-    return new GZIPInputStream(this.wrappedEntity.getContent());
-  }
-  
-  public long getContentLength()
-  {
-    return -1L;
+    if (!paramHttpRequest.containsHeader("Accept-Encoding")) {
+      paramHttpRequest.addHeader("Accept-Encoding", "gzip");
+    }
+    paramHttpContext = kzc.a(this.a).keySet().iterator();
+    while (paramHttpContext.hasNext())
+    {
+      String str = (String)paramHttpContext.next();
+      paramHttpRequest.addHeader(str, (String)kzc.a(this.a).get(str));
+    }
   }
 }
 

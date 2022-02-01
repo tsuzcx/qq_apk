@@ -97,7 +97,7 @@ class EmoticonLinearLayout$1
           {
             localRelativeLayout = new RelativeLayout(this.this$0.context);
             localObject = new URLImageView(this.this$0.context);
-            ((URLImageView)localObject).setId(2131365977);
+            ((URLImageView)localObject).setId(2131366078);
             switch (this.this$0.panelViewType)
             {
             default: 
@@ -135,7 +135,7 @@ class EmoticonLinearLayout$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonLinearLayout.1
  * JD-Core Version:    0.7.0.1
  */

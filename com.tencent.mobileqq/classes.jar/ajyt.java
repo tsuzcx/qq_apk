@@ -1,24 +1,28 @@
-import android.view.View;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.qwallet.fragment.KuaKuaHbFragment;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class ajyt
-  implements akdo
+  implements alje
 {
-  public ajyt(KuaKuaHbFragment paramKuaKuaHbFragment) {}
+  private final int jdField_a_of_type_Int = -2147483648;
   
-  public void a(int paramInt)
+  private ajyt(Conversation paramConversation) {}
+  
+  public void a(int paramInt, List<RecentBaseData> paramList) {}
+  
+  public void a(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout)
   {
-    if (paramInt == 0)
+    if (paramDragFrameLayout.a() == -1)
     {
-      this.a.a.findViewById(2131368638).setVisibility(8);
-      this.a.a.findViewById(2131377041).setVisibility(8);
-      KuaKuaHbFragment.a(this.a).setVisibility(8);
+      this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.b.sendEmptyMessage(10);
+      FrameHelperActivity.c(true);
       return;
     }
-    this.a.a.findViewById(2131368638).setVisibility(0);
-    this.a.a.findViewById(2131377041).setVisibility(0);
-    KuaKuaHbFragment.a(this.a).setVisibility(0);
+    FrameHelperActivity.c(false);
   }
 }
 

@@ -1,20 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
-
-final class bibt
-  implements DialogInterface.OnClickListener
+public class bibt
 {
-  bibt(Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail) {}
+  public long a;
+  public String a = "";
+  public long b;
+  public String b = "";
+  public long c;
+  public String c = "";
+  public long d;
+  public String d;
+  public long e;
+  public long f;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bibt()
   {
-    bibs.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
-    bcef.b(null, "dc00898", "", "", "0X8008F7C", "0X8008F7C", 0, 0, "", "", "", "");
-    paramDialogInterface = this.jdField_a_of_type_AndroidOsBundle.getString(bibw.f) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bibw.c) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bibw.d);
-    paramDialogInterface = System.currentTimeMillis() / 1000L + "|" + 101 + "|" + paramDialogInterface;
-    bhwl.a().a(25, paramDialogInterface);
+    this.jdField_d_of_type_Long = 999L;
+    this.jdField_d_of_type_JavaLangString = "";
   }
 }
 

@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-
-public abstract interface aqxf
+final class aqxf
 {
-  public abstract void a(XmlData paramXmlData);
+  public final int a;
+  public final long a;
+  public final Object a;
   
-  public abstract void a(XmlData paramXmlData, long paramLong1, long paramLong2);
-  
-  public abstract void a(XmlData paramXmlData, boolean paramBoolean1, int paramInt, boolean paramBoolean2, String paramString);
-  
-  public abstract void b(XmlData paramXmlData);
+  aqxf(long paramLong, int paramInt, Object paramObject)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqxf
  * JD-Core Version:    0.7.0.1
  */

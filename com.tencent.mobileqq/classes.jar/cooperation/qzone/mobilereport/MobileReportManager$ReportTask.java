@@ -1,8 +1,8 @@
 package cooperation.qzone.mobilereport;
 
 import NS_USER_ACTION_REPORT.ItemInfo;
-import bbot;
-import blbz;
+import bcvn;
+import bmoq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -35,7 +35,7 @@ class MobileReportManager$ReportTask
       }
       localArrayList.add(localUserActionReportBuilder.build());
     }
-    bbot.a(localAppRuntime, new MobileReportManager.UserCommReportBuilder(null).setUin(localAppRuntime.getLongAccountUin()).setNetwork_type(blbz.c()).build(), localArrayList);
+    bcvn.a(localAppRuntime, new MobileReportManager.UserCommReportBuilder(null).setUin(localAppRuntime.getLongAccountUin()).setNetwork_type(bmoq.c()).build(), localArrayList);
   }
   
   protected void reportByKey(MobileReportManager.ReportKey paramReportKey, ItemInfo paramItemInfo)

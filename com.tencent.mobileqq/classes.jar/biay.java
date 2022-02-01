@@ -1,64 +1,25 @@
+import android.app.Dialog;
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
-import android.database.sqlite.SQLiteOpenHelper;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.vip.lianghao.view.LiangHaoDialogView;
 
 public class biay
-  extends SQLiteOpenHelper
+  implements bhdy
 {
-  public biay(biax parambiax, Context paramContext, String paramString, SQLiteDatabase.CursorFactory paramCursorFactory, int paramInt)
+  private Dialog a;
+  
+  public Dialog a(Context paramContext, biaq parambiaq, View.OnClickListener paramOnClickListener)
   {
-    super(paramContext, paramString, paramCursorFactory, paramInt);
+    this.a = bhdj.a(paramContext, 2131693497, this, parambiaq, 2131690697, 2131693495, new biaz(this), paramOnClickListener, false, false);
+    return this.a;
   }
   
-  public void onCreate(SQLiteDatabase paramSQLiteDatabase)
+  public View a(Context paramContext, Object paramObject)
   {
-    try
-    {
-      bhzm.b("cgi_report_debug", "ReportDataModal onCreate sql1 = create table if not exists newdata_report(id integer primary key,apn text,frequency text,commandid text,resultcode text,tmcost text,reqsize text,rspsize text,touin text,deviceinfo text,detail text,appid text)");
-      paramSQLiteDatabase.execSQL("create table if not exists newdata_report(id integer primary key,apn text,frequency text,commandid text,resultcode text,tmcost text,reqsize text,rspsize text,touin text,deviceinfo text,detail text,appid text)");
-      bhzm.b("cgi_report_debug", "ReportDataModal onCreate sql2 = create table if not exists olddata_report(id integer primary key,apn text,frequency text,commandid text,resultcode text,tmcost text,reqsize text,rspsize text,touin text,deviceinfo text,detail text,appid text)");
-      paramSQLiteDatabase.execSQL("create table if not exists olddata_report(id integer primary key,apn text,frequency text,commandid text,resultcode text,tmcost text,reqsize text,rspsize text,touin text,deviceinfo text,detail text,appid text)");
-      return;
-    }
-    catch (Exception paramSQLiteDatabase)
-    {
-      bhzm.e("cgi_report_debug", "ReportDataModal onCreate failed");
-    }
-  }
-  
-  public void onDowngrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
-  {
-    try
-    {
-      paramSQLiteDatabase.execSQL("drop table if exists newdata_report");
-      paramSQLiteDatabase.execSQL("drop table if exists olddata_report");
-      onCreate(paramSQLiteDatabase);
-      bhzm.b("cgi_report_debug", "ReportDataModal onUpgrade success");
-      return;
-    }
-    catch (Exception paramSQLiteDatabase)
-    {
-      bhzm.e("cgi_report_debug", "ReportDataModal onUpgrade failed");
-    }
-  }
-  
-  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
-  {
-    bhzm.b("cgi_report_debug", "ReportDataModal onUpgrade oldVersion=" + paramInt1 + "  newVersion=" + paramInt2 + "");
-    if (paramInt1 != paramInt2) {}
-    try
-    {
-      paramSQLiteDatabase.execSQL("drop table if exists newdata_report");
-      paramSQLiteDatabase.execSQL("drop table if exists olddata_report");
-      onCreate(paramSQLiteDatabase);
-      bhzm.b("cgi_report_debug", "ReportDataModal onUpgrade success");
-      return;
-    }
-    catch (Exception paramSQLiteDatabase)
-    {
-      bhzm.e("cgi_report_debug", "ReportDataModal onUpgrade failed");
-    }
+    paramContext = new LiangHaoDialogView(paramContext);
+    paramContext.a((biaq)paramObject);
+    return paramContext;
   }
 }
 

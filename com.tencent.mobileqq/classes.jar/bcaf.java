@@ -1,21 +1,17 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.startup.step.BroadcastReportRegister;
-import mqq.app.AppCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bcaf
-  implements AppCallback
+  implements View.OnClickListener
 {
-  public bcaf(BroadcastReportRegister paramBroadcastReportRegister) {}
+  public bcaf(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
   
-  public void onSendBroadcast(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    try
-    {
-      apcr.a(paramIntent);
-      return;
-    }
-    catch (Throwable paramContext) {}
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

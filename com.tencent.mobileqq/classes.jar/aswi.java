@@ -1,55 +1,71 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.filemanager.widget.QFileSendBottomView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import java.io.UnsupportedEncodingException;
 
 public class aswi
-  extends atbm
+  implements TextWatcher
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aswj(this);
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TextView b;
+  public aswi(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
   
-  public aswi(QQAppInterface paramQQAppInterface, Context paramContext, QFileSendBottomView paramQFileSendBottomView)
+  private int a(String paramString)
   {
-    super(paramQQAppInterface, paramContext, paramQFileSendBottomView);
-    c();
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131377065));
-    this.b = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131371853));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-  }
-  
-  public void a()
-  {
-    Object localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131692116) + this.jdField_a_of_type_AndroidContentContext.getString(2131692344) + aslg.b() + this.jdField_a_of_type_AndroidContentContext.getString(2131692345);
-    long l = aslg.d();
-    String str = "";
-    if (l > 0L) {
-      str = this.jdField_a_of_type_AndroidContentContext.getString(2131692183) + FileUtil.filesizeToString(l);
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-    if (aslg.b() > 0L) {}
-    for (boolean bool = true;; bool = false)
+    byte[] arrayOfByte = new byte[0];
+    try
     {
-      ((TextView)localObject).setEnabled(bool);
-      this.b.setText(str);
-      return;
+      paramString = paramString.getBytes("utf-8");
+      if (paramString.length % 3 == 0) {
+        return paramString.length / 3;
+      }
+    }
+    catch (UnsupportedEncodingException paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+        paramString = arrayOfByte;
+      }
+    }
+    return paramString.length / 3 + 1;
+  }
+  
+  private String a(String paramString)
+  {
+    while (a(paramString) > 32)
+    {
+      int i = paramString.length();
+      if ((i >= 2) && (Character.isHighSurrogate(paramString.charAt(i - 2)))) {
+        paramString = paramString.substring(0, i - 2);
+      } else {
+        paramString = paramString.substring(0, i - 1);
+      }
+    }
+    return paramString;
+  }
+  
+  public void afterTextChanged(Editable paramEditable)
+  {
+    paramEditable = this.a.a.getText().toString();
+    if (a(paramEditable) > 32)
+    {
+      int i = this.a.a.getSelectionStart();
+      paramEditable = a(paramEditable);
+      this.a.a.setText(paramEditable);
+      if (i >= paramEditable.length()) {
+        this.a.a.setSelection(paramEditable.length());
+      }
+    }
+    if (this.a.h)
+    {
+      bdla.b(null, "CliOper", "", "", "0X80050F0", "0X80050F0", 0, 0, "", "", "", "");
+      this.a.h = false;
     }
   }
   
-  public void a(Bundle paramBundle)
-  {
-    super.a(paramBundle);
-    if (this.jdField_a_of_type_Boolean) {}
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

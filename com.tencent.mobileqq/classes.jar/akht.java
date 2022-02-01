@@ -1,26 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.upgrade.UpgradeTIMManager;
-import com.tencent.mobileqq.upgrade.UpgradeTIMWrapper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.phone.ContactListView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qqpim.QQPimTipsInfo;
 
-class akht
-  implements View.OnClickListener
+public class akht
+  implements bmdo
 {
-  akht(akho paramakho, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
+  public akht(ContactListView paramContactListView) {}
   
-  public void onClick(View paramView)
+  public void a(QQPimTipsInfo paramQQPimTipsInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "UpgradeTIMWrapper click banner, jump");
+    if (paramQQPimTipsInfo == null) {
+      return;
     }
-    QQAppInterface localQQAppInterface = (QQAppInterface)akho.a(this.jdField_a_of_type_Akho).getAppRuntime();
-    ((UpgradeTIMManager)localQQAppInterface.getManager(256)).a(akho.a(this.jdField_a_of_type_Akho), this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeTIMWrapper.g);
-    bcef.b(localQQAppInterface, "CliOper", "", "", "0X8008659", "0X8008659", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    QLog.i("ContactListView", 2, "getQQPimTips() callback ");
+    bmdv.b(this.a.getContext(), paramQQPimTipsInfo);
+    Message localMessage = new Message();
+    localMessage.what = 6;
+    localMessage.obj = paramQQPimTipsInfo;
+    this.a.a.sendMessage(localMessage);
   }
 }
 

@@ -1,25 +1,19 @@
-public class bbzu
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+
+class bbzu
+  implements View.OnTouchListener
 {
-  public aptx[] a = new aptx[0];
+  bbzu(bbzt parambbzt) {}
   
-  public String toString()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    StringBuilder localStringBuilder = new StringBuilder("SoLoadConfBean:");
-    if (this.a != null)
-    {
-      aptx[] arrayOfaptx = this.a;
-      int j = arrayOfaptx.length;
-      int i = 0;
-      while (i < j)
-      {
-        aptx localaptx = arrayOfaptx[i];
-        if (localaptx != null) {
-          localStringBuilder.append("confItem ").append(localaptx.jdField_a_of_type_Int).append(":").append(localaptx.jdField_a_of_type_JavaLangString).append("\n");
-        }
-        i += 1;
-      }
-    }
-    return localStringBuilder.toString();
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

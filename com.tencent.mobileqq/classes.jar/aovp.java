@@ -1,18 +1,17 @@
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+
 public class aovp
+  extends aoui
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  
-  public aovp() {}
-  
-  public aovp(String paramString1, String paramString2, String paramString3)
+  public aouc a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoul paramaoul)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    paramQQAppInterface = new aovo(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "qm";
+    paramQQAppInterface.c = "qr";
+    paramQQAppInterface.a("url", paramString);
+    return paramQQAppInterface;
   }
 }
 

@@ -1,35 +1,45 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
-import mqq.app.MobileQQ;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
 
-class swj
-  implements WXShareHelper.WXShareListener
+public class swj
+  extends RecyclerView.ViewHolder
 {
-  swj(swi paramswi, ArticleInfo paramArticleInfo, int paramInt) {}
+  public final int a;
+  public VideoFeedsAlphaMaskView a;
+  public int b;
+  public int c;
   
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public swj(View paramView, int paramInt)
   {
-    boolean bool = true;
-    if ((swi.a(this.jdField_a_of_type_Swi) == null) || (!swi.a(this.jdField_a_of_type_Swi).equals(paramBaseResp.transaction))) {
+    super(paramView);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView = ((VideoFeedsAlphaMaskView)paramView.findViewById(2131365002));
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(shl paramshl, LinearLayoutManager paramLinearLayoutManager, boolean paramBoolean)
+  {
+    int i = 1;
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView.getVisibility() != 0)) {
       return;
     }
-    switch (paramBaseResp.errCode)
+    if (paramLinearLayoutManager.getOrientation() == 1)
     {
-    case -1: 
-    default: 
-      yyi.b(1, 2131718380);
-      bool = false;
+      if (i == 0) {
+        break label108;
+      }
+      i = paramLinearLayoutManager.getDecoratedMeasuredHeight(this.itemView);
     }
-    for (;;)
+    for (float f = Math.abs(paramLinearLayoutManager.getDecoratedTop(this.itemView) - (paramLinearLayoutManager.getHeight() / 2 - i / 2)) / i;; f = Math.abs(paramLinearLayoutManager.getDecoratedLeft(this.itemView) - (paramLinearLayoutManager.getWidth() / 2 - i / 2)) / i)
     {
-      paramBaseResp = (AppInterface)pay.a();
-      swy.b(paramBaseResp.getApplication().getApplicationContext(), paramBaseResp, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int, -1, false, bool);
+      f = Math.min(Math.round(f * 100.0F) / 100.0F, 1.0F);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView.setAlpha(f);
       return;
-      yyi.b(2, 2131718398);
-      continue;
-      bool = false;
+      i = 0;
+      break;
+      label108:
+      i = paramLinearLayoutManager.getDecoratedMeasuredWidth(this.itemView);
     }
   }
 }

@@ -1,7 +1,8 @@
 package com.etrump.mixlayout;
 
-import bgae;
+import bhiw;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager;
 import eipc.EIPCResult;
 import gk;
@@ -17,7 +18,7 @@ public class VasFontIPCModule$1
   public void run()
   {
     Object localObject;
-    if (new File(bgae.a() + "libvipfont808.so").exists())
+    if (new File(bhiw.a() + "libvipfont808.so").exists())
     {
       localObject = EIPCResult.createResult(0, null);
       this.this$0.callbackResult(this.jdField_a_of_type_Int, (EIPCResult)localObject);
@@ -29,7 +30,7 @@ public class VasFontIPCModule$1
         return;
         gk.a(this.this$0).add(Integer.valueOf(this.jdField_a_of_type_Int));
       } while (!gk.a(this.this$0).compareAndSet(false, true));
-      localObject = (VasQuickUpdateManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(184);
+      localObject = (VasQuickUpdateManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.VAS_QUICKUPDATE_MANAGER);
     } while (localObject == null);
     ((VasQuickUpdateManager)localObject).downloadItem(1004L, "libVipFont_808", "VasFontIPCModule");
   }

@@ -1,12 +1,66 @@
+import java.lang.ref.WeakReference;
+
 public class alsj
 {
-  public int a;
-  public int b;
+  private static WeakReference<alsl> a;
+  private static WeakReference<alsk> b;
   
-  public alsj(int paramInt1, int paramInt2)
+  public static void a()
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    if (b != null) {}
+    for (alsk localalsk = (alsk)b.get();; localalsk = null)
+    {
+      if (localalsk != null) {
+        localalsk.d();
+      }
+      return;
+    }
+  }
+  
+  public static void a(int paramInt)
+  {
+    if (b != null) {}
+    for (alsk localalsk = (alsk)b.get();; localalsk = null)
+    {
+      if (localalsk != null) {
+        localalsk.b(paramInt);
+      }
+      return;
+    }
+  }
+  
+  public static void a(alsk paramalsk)
+  {
+    b = new WeakReference(paramalsk);
+  }
+  
+  public static void a(alsl paramalsl)
+  {
+    a = new WeakReference(paramalsl);
+  }
+  
+  public static void a(String paramString)
+  {
+    if (b != null) {}
+    for (alsk localalsk = (alsk)b.get();; localalsk = null)
+    {
+      if (localalsk != null) {
+        localalsk.b(paramString);
+      }
+      return;
+    }
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    if (a != null) {}
+    for (alsl localalsl = (alsl)a.get();; localalsl = null)
+    {
+      if (localalsl != null) {
+        localalsl.a(paramString, paramInt);
+      }
+      return;
+    }
   }
 }
 

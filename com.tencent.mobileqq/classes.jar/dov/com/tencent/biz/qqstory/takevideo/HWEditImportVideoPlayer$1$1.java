@@ -1,15 +1,15 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bnee;
-import bnfa;
-import bnfb;
+import botw;
+import bous;
+import bout;
 
 public class HWEditImportVideoPlayer$1$1
   implements Runnable
 {
   public void run()
   {
-    this.jdField_a_of_type_Bnfb.a.a.a(this.jdField_a_of_type_JavaUtilMap);
+    this.jdField_a_of_type_Bout.a.a.a(this.jdField_a_of_type_JavaUtilMap);
   }
 }
 

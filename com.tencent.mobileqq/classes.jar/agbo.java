@@ -1,49 +1,46 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.EditActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
 
-class agbo
-  extends ClickableSpan
+public class agbo
+  implements afoj
 {
-  agbo(agap paramagap) {}
+  public agbo(TroopChatPie paramTroopChatPie) {}
   
-  public void onClick(View paramView)
+  public void a(ailp paramailp)
   {
-    Intent localIntent;
-    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
-    {
-      localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, EditActivity.class);
-      paramView = ((amrb)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin);
-      if ((paramView == null) || (!paramView.hasRenamed())) {
-        break label193;
-      }
+    Object localObject = (awio)this.a.getHelper(33);
+    boolean bool1 = ((awio)localObject).c();
+    agkk localagkk = (agkk)this.a.getHelper(43);
+    boolean bool2 = localagkk.c();
+    ailk localailk = (ailk)this.a.getHelper(75);
+    boolean bool3 = localailk.d();
+    blvc localblvc = (blvc)this.a.getHelper(81);
+    boolean bool4 = localblvc.d();
+    if (bool1) {
+      ((awio)localObject).b(1, paramailp);
     }
-    label193:
-    for (paramView = paramView.discussionName;; paramView = "")
+    for (;;)
     {
-      localIntent.putExtra("title", 2131691669);
-      localIntent.putExtra("action", 102);
-      localIntent.putExtra("limit", 48);
-      localIntent.putExtra("current", paramView);
-      localIntent.putExtra("canPostNull", false);
-      localIntent.putExtra("multiLine", false);
-      localIntent.putExtra("selfSet_leftViewText", this.a.jdField_a_of_type_AndroidContentContext.getString(2131690424));
-      ((Activity)this.a.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 6002);
-      bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800666A", "0X800666A", 0, 0, "", "", "", "");
+      localObject = (aggv)this.a.getHelper(71);
+      if (localObject != null) {
+        ((aggv)localObject).a(false);
+      }
+      ((agjm)this.a.getHelper(90)).a(paramailp);
       return;
+      if (bool2) {
+        localagkk.a(1, paramailp);
+      } else if (bool3) {
+        localailk.a(paramailp);
+      } else if (bool4) {
+        localblvc.a(paramailp);
+      }
     }
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void a(ailp paramailp1, ailp paramailp2)
   {
-    paramTextPaint.setColor(-12541697);
+    ((awio)this.a.getHelper(33)).a(1, paramailp2);
+    ((agkk)this.a.getHelper(43)).b(1, paramailp2);
+    ((agjm)this.a.getHelper(90)).a(paramailp1, paramailp2);
   }
 }
 

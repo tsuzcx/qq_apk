@@ -1,18 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vashealth.SportManager.3.1;
-import mqq.observer.BusinessObserver;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.troop.widget.AddedRobotView;
+import com.tencent.qphone.base.util.QLog;
 
 public class bgmr
-  implements BusinessObserver
+  extends RecyclerView.OnScrollListener
 {
-  bgmr(bgmp parambgmp) {}
+  public bgmr(AddedRobotView paramAddedRobotView) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (paramBoolean) {
-      ThreadManager.post(new SportManager.3.1(this, paramBundle.getString("StepInfoJSON")), 5, null, true);
+    QLog.i("AddedRobotView", 1, "onScrollStateChanged state: " + paramInt);
+    if (paramInt != 0) {
+      AddedRobotView.a(this.a).pause();
     }
+    while (!AddedRobotView.a(this.a).isPausing()) {
+      return;
+    }
+    AddedRobotView.a(this.a).resume();
+    AddedRobotView.a(this.a).notifyDataSetChanged();
   }
 }
 

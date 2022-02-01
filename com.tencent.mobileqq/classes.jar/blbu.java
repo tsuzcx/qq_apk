@@ -1,10 +1,9 @@
-import java.util.HashMap;
+import android.view.View;
+import com.tencent.widget.ExpandableListView;
 
-public class blbu
+public abstract interface blbu
 {
-  public int a;
-  public HashMap<String, String> a;
-  public int b;
+  public abstract boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt, long paramLong);
 }
 
 

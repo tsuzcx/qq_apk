@@ -1,28 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import android.view.MotionEvent;
 
-public class ajwz
-  implements DialogInterface.OnClickListener
+public abstract interface ajwz
 {
-  public ajwz(SendHbActivity paramSendHbActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("hb_id", SendHbActivity.a(this.a));
-    paramDialogInterface.putExtra("send_uin", SendHbActivity.b(this.a));
-    paramDialogInterface.putExtra("hb_type", "1");
-    paramDialogInterface.putExtra("forward_text", this.a.getString(2131696506));
-    if (SendHbActivity.a(this.a)) {
-      paramDialogInterface.putExtra("item", 1);
-    }
-    paramDialogInterface.putExtra("forward_type", 17);
-    paramDialogInterface.putExtra("invoke_from", "qwallet");
-    atky.a(this.a, paramDialogInterface);
-    this.a.a(SendHbActivity.b(this.a), this.a.a(), "hongbao.wrapped.send", "", "");
-  }
+  public abstract void a(MotionEvent paramMotionEvent);
 }
 
 

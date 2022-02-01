@@ -1,101 +1,30 @@
-import android.os.Build;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.util.VideoPrefsUtil;
-import com.tencent.view.RendererUtils;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
-public class lpr
+class lpr
+  extends Handler
 {
-  static int jdField_a_of_type_Int = -1;
-  private static Boolean jdField_a_of_type_JavaLangBoolean;
+  WeakReference<lpq> a;
   
-  public static int a(boolean paramBoolean)
+  lpr(Looper paramLooper, lpq paramlpq)
   {
-    int j = 1;
-    if (jdField_a_of_type_Int == -1)
-    {
-      lnz locallnz = lnz.a();
-      if (((locallnz == null) || (!locallnz.h())) && (!a())) {
-        break label107;
-      }
-    }
-    label107:
-    for (jdField_a_of_type_Int = 1;; jdField_a_of_type_Int = 0)
-    {
-      QLog.i("Render", 1, "getFrameAngle, mInversion[" + jdField_a_of_type_Int + "], manufacture[" + Build.MANUFACTURER + "], model[" + Build.MODEL + "]");
-      int i = j;
-      if (paramBoolean)
-      {
-        i = j;
-        if (jdField_a_of_type_Int != 1) {
-          i = 3;
-        }
-      }
-      return i;
-    }
+    super(paramLooper);
+    this.a = new WeakReference(paramlpq);
   }
   
-  public static void a()
+  public void handleMessage(Message paramMessage)
   {
-    if (!lou.b()) {
-      return;
-    }
-    VideoPrefsUtil.setMaterialMute(true);
-  }
-  
-  public static void a(int paramInt1, int paramInt2, int paramInt3, String paramString)
-  {
-    try
-    {
-      FileUtil.writeBitmapToFile(RendererUtils.saveTexture(paramInt1, paramInt2, paramInt3), paramString);
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  private static boolean a()
-  {
-    if (jdField_a_of_type_JavaLangBoolean == null) {}
-    for (;;)
-    {
-      try
-      {
-        str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.isInversionWhenFaceDetect.name(), "0");
-        try
-        {
-          if ("1".equals(str))
-          {
-            jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
-            QLog.i("Render", 1, "isSpecialDevices, [" + jdField_a_of_type_JavaLangBoolean + "], manufacture[" + Build.MANUFACTURER + "], model[" + Build.MODEL + "], dpcValue[" + str + "]");
-            return jdField_a_of_type_JavaLangBoolean.booleanValue();
-          }
-          if ((!"HUAWEI".equalsIgnoreCase(Build.MANUFACTURER)) || ((!"TAH-AN00".equalsIgnoreCase(Build.MODEL)) && (!"TAH-AN00m".equalsIgnoreCase(Build.MODEL)))) {
-            continue;
-          }
-          jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
-          continue;
-          QLog.i("Render", 1, "isSpecialDevices", localThrowable1);
-        }
-        catch (Throwable localThrowable1) {}
-      }
-      catch (Throwable localThrowable2)
-      {
-        String str = null;
-        continue;
-      }
-      continue;
-      jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
+    lpq locallpq = (lpq)this.a.get();
+    if (locallpq != null) {
+      locallpq.a(paramMessage);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lpr
  * JD-Core Version:    0.7.0.1
  */

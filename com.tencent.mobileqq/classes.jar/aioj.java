@@ -1,16 +1,13 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleCheckableSlidingIndicator;
+import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
 
-public class aioj
-  implements ValueAnimator.AnimatorUpdateListener
+class aioj
+  implements HorizontalListView.OnScrollStateChangedListener
 {
-  public aioj(SimpleCheckableSlidingIndicator paramSimpleCheckableSlidingIndicator) {}
+  aioj(aioi paramaioi) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onScrollStateChanged(int paramInt)
   {
-    this.a.h = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.invalidate();
+    if (paramInt == 4097) {}
   }
 }
 

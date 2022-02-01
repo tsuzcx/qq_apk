@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.transfile;
 
-import amrp;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -9,19 +8,20 @@ import android.graphics.Rect;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.util.DisplayMetrics;
-import ayck;
-import ayde;
-import aydl;
-import aydq;
-import aydr;
-import ayds;
-import aydz;
-import ayeb;
-import ayeu;
-import ayfc;
-import bftf;
-import bfti;
-import bkkh;
+import anud;
+import aziw;
+import azjq;
+import azjx;
+import azkc;
+import azkd;
+import azke;
+import azkl;
+import azkn;
+import azlg;
+import azlo;
+import bhbx;
+import bhca;
+import blvp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.RoundRectBitmap;
@@ -65,19 +65,19 @@ public class ChatImageDownloader
     }
     ChatImageDownloader.DownloadData localDownloadData = new ChatImageDownloader.DownloadData(this);
     localDownloadData.url = paramDownloadParams.url;
-    ayde.a("PIC_TAG", "getDownloadData", "url:" + localDownloadData.url);
+    azjq.a("PIC_TAG", "getDownloadData", "url:" + localDownloadData.url);
     localDownloadData.application = this.application;
     localDownloadData.startOffset = paramDownloadParams.downloaded;
-    if ((paramDownloadParams.tag != null) && ((paramDownloadParams.tag instanceof aydz)))
+    if ((paramDownloadParams.tag != null) && ((paramDownloadParams.tag instanceof azkl)))
     {
-      Object localObject = (aydz)paramDownloadParams.tag;
+      Object localObject = (azkl)paramDownloadParams.tag;
       if ((localObject instanceof MessageForPic))
       {
         localDownloadData.pic = ((MessageForPic)localObject);
-        localDownloadData.netWorkType = aydq.a();
-        localDownloadData.uinType = aydq.a(localDownloadData.app, localDownloadData.pic.istroop, localDownloadData.pic.frienduin);
+        localDownloadData.netWorkType = azkc.a();
+        localDownloadData.uinType = azkc.a(localDownloadData.app, localDownloadData.pic.istroop, localDownloadData.pic.frienduin);
       }
-      localDownloadData.downInfo = ((aydz)localObject).getPicDownloadInfo();
+      localDownloadData.downInfo = ((azkl)localObject).getPicDownloadInfo();
       log(localDownloadData, "getDownloadData", "uuid:" + localDownloadData.downInfo.g + ",md5：" + localDownloadData.downInfo.f);
       localDownloadData.host = getHost(localDownloadData.downInfo.jdField_b_of_type_Int);
       paramDownloadParams = paramDownloadParams.url.getProtocol();
@@ -85,10 +85,10 @@ public class ChatImageDownloader
         bool = true;
       }
       localDownloadData.fileSizeType = URLDrawableHelper.getFileSizeType(paramDownloadParams, bool);
-      if (((aydz)localObject).isSendFromLocal())
+      if (((azkl)localObject).isSendFromLocal())
       {
         localDownloadData.sendFromLoacal = true;
-        localDownloadData.upInfo = ((aydz)localObject).getPicUploadInfo();
+        localDownloadData.upInfo = ((azkl)localObject).getPicUploadInfo();
         localDownloadData.downInfo.jdField_a_of_type_Boolean = true;
         if (localDownloadData.fileSizeType != 65537) {
           break label461;
@@ -162,7 +162,7 @@ public class ChatImageDownloader
     }
     paramString = new CompressInfo(paramDownloadData.upInfo.g, 0);
     paramString.jdField_a_of_type_JavaLangString = paramDownloadData.upInfo.jdField_a_of_type_JavaLangString;
-    ayeu.b(paramString);
+    azlg.b(paramString);
     return paramString.jdField_e_of_type_JavaLangString;
   }
   
@@ -223,7 +223,7 @@ public class ChatImageDownloader
         {
           String str2 = ((TranDbRecord.PicDbRecord)localObject).uuid;
           localObject = ((TranDbRecord.PicDbRecord)localObject).md5;
-          if ((bfti.a(paramMessageRecord.msgtype)) || (paramMessageRecord.msgtype == -3001) || (paramMessageRecord.msgtype == -30002) || (paramMessageRecord.msgtype == -30003)) {
+          if ((bhca.a(paramMessageRecord.msgtype)) || (paramMessageRecord.msgtype == -3001) || (paramMessageRecord.msgtype == -30002) || (paramMessageRecord.msgtype == -30003)) {
             continue;
           }
           if (i == 0)
@@ -335,7 +335,7 @@ public class ChatImageDownloader
   protected boolean decodeByGif(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
     Object localObject = paramDownloadParams.tag;
-    if (((localObject instanceof MessageForPic)) && (amrp.a((MessageForPic)localObject))) {
+    if (((localObject instanceof MessageForPic)) && (anud.a((MessageForPic)localObject))) {
       return false;
     }
     return super.decodeByGif(paramFile, paramDownloadParams, paramURLDrawableHandler);
@@ -372,8 +372,8 @@ public class ChatImageDownloader
       log(paramDownloadParams, "result", "failed could not call object.wait in Main thread ,sendpath:" + paramDownloadParams.sendPath + ",uniseq:" + paramDownloadParams.downInfo.jdField_a_of_type_Long);
       throw new FileDownloadFailedException(9365, 0L, "param error,could not call object.wait in Main thread", false, false);
     }
-    if ((bftf.a()) && (bftf.b() < 20971520L)) {
-      throw new IOException("SD card free space is " + bftf.b());
+    if ((bhbx.a()) && (bhbx.b() < 20971520L)) {
+      throw new IOException("SD card free space is " + bhbx.b());
     }
     TransferResult localTransferResult = stepDownload(paramDownloadParams);
     int j;
@@ -417,7 +417,7 @@ public class ChatImageDownloader
     if (paramDownloadParams.app != null) {}
     for (paramOutputStream = paramDownloadParams.app.getCurrentAccountUin();; paramOutputStream = null)
     {
-      aydr.a(paramOutputStream, paramDownloadParams.uinType, paramDownloadParams.netWorkType, SystemClock.uptimeMillis() - l);
+      azkd.a(paramOutputStream, paramDownloadParams.uinType, paramDownloadParams.netWorkType, SystemClock.uptimeMillis() - l);
       break;
     }
   }
@@ -443,7 +443,7 @@ public class ChatImageDownloader
       f1 = this.application.getResources().getDisplayMetrics().density;
       i8 = this.application.getResources().getDisplayMetrics().densityDpi;
       f3 = 12.0F * f1;
-      boolean bool = bkkh.a(paramDownloadParams.mImgType);
+      boolean bool = blvp.a(paramDownloadParams.mImgType);
       j = CommonImgThumbHelper.getImgThumbMinPx(bool);
       i = CommonImgThumbHelper.getImgThumbMinPx(bool);
       m = CommonImgThumbHelper.getImgThumbMaxPx(bool);
@@ -483,7 +483,7 @@ public class ChatImageDownloader
     }
     if (limitSizeByServer(paramDownloadParams))
     {
-      return new RoundRectBitmap(ayfc.a(paramBitmap, ((MessageForPic)paramDownloadParams.tag).thumbWidthHeightDP), f3);
+      return new RoundRectBitmap(azlo.a(paramBitmap, ((MessageForPic)paramDownloadParams.tag).thumbWidthHeightDP), f3);
       if (i1 < n)
       {
         m = (int)(j / i1 * n + 0.5F);
@@ -570,19 +570,19 @@ public class ChatImageDownloader
         log(paramDownloadData, "stepDownload", "params.app == null ,selfuin:" + paramDownloadData.downInfo.jdField_b_of_type_JavaLangString);
         throw new FileDownloadFailedException(9302, 0L, "stepDownload,params.app == null ,selfuin:" + paramDownloadData.downInfo.jdField_b_of_type_JavaLangString, false, false);
       }
-      ayck localayck = new ayck(paramDownloadData.app);
-      localayck.jdField_a_of_type_Ayds = new ayds();
-      localayck.jdField_a_of_type_Ayds.a = paramDownloadData.pic;
-      localayck.jdField_b_of_type_JavaLangString = "PIC_TAG";
-      localayck.jdField_a_of_type_JavaLangString = paramDownloadData.logId;
+      aziw localaziw = new aziw(paramDownloadData.app);
+      localaziw.jdField_a_of_type_Azke = new azke();
+      localaziw.jdField_a_of_type_Azke.a = paramDownloadData.pic;
+      localaziw.jdField_b_of_type_JavaLangString = "PIC_TAG";
+      localaziw.jdField_a_of_type_JavaLangString = paramDownloadData.logId;
       paramDownloadData.downInfo.jdField_e_of_type_JavaLangString = paramDownloadData.url.getProtocol();
       if (paramDownloadData.pic != null)
       {
         paramDownloadData.downInfo.d = paramDownloadData.pic.bEnableEnc;
         paramDownloadData.downInfo.c = paramDownloadData.pic.time;
       }
-      ayde.a("PIC_TAG", paramDownloadData.logId, "stepDownload", "url:" + paramDownloadData.url + ",info:" + paramDownloadData.downInfo);
-      return localayck.a(paramDownloadData.downInfo, paramDownloadData.handler, paramDownloadData.url.getProtocol());
+      azjq.a("PIC_TAG", paramDownloadData.logId, "stepDownload", "url:" + paramDownloadData.url + ",info:" + paramDownloadData.downInfo);
+      return localaziw.a(paramDownloadData.downInfo, paramDownloadData.handler, paramDownloadData.url.getProtocol());
     }
     catch (AccountNotMatchException localAccountNotMatchException)
     {

@@ -24,10 +24,10 @@ public class HippyEngineManagerImpl$HippyEngineContextImpl
   private HippyModuleManager mModuleManager;
   RenderManager mRenderManager;
   
-  public HippyEngineManagerImpl$HippyEngineContextImpl(HippyEngineManagerImpl paramHippyEngineManagerImpl, boolean paramBoolean)
+  public HippyEngineManagerImpl$HippyEngineContextImpl(HippyEngineManagerImpl paramHippyEngineManagerImpl, boolean paramBoolean, String paramString)
   {
     this.mModuleManager = new HippyModuleManagerImpl(this, paramHippyEngineManagerImpl.mAPIProviders);
-    this.mBridgeManager = new b(this, paramHippyEngineManagerImpl.mCoreBundleLoader, paramHippyEngineManagerImpl.getBridgeType(), paramHippyEngineManagerImpl.mEnableHippyBuffer, paramBoolean, HippyEngineManagerImpl.access$200(paramHippyEngineManagerImpl), HippyEngineManagerImpl.access$300(paramHippyEngineManagerImpl));
+    this.mBridgeManager = new b(this, paramHippyEngineManagerImpl.mCoreBundleLoader, paramHippyEngineManagerImpl.getBridgeType(), paramHippyEngineManagerImpl.mEnableHippyBuffer, paramBoolean, paramString, HippyEngineManagerImpl.access$200(paramHippyEngineManagerImpl), HippyEngineManagerImpl.access$300(paramHippyEngineManagerImpl));
     this.mRenderManager = new RenderManager(this, paramHippyEngineManagerImpl.mAPIProviders);
     this.mDomManager = new DomManager(this);
   }

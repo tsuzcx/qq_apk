@@ -1,13 +1,16 @@
-public class atgl
+class atgl
+  implements athg
 {
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  String b;
-  String c;
+  atgl(atfq paramatfq) {}
+  
+  public void a(Object[] paramArrayOfObject)
+  {
+    atfq.q(this.a, paramArrayOfObject);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atgl
  * JD-Core Version:    0.7.0.1
  */

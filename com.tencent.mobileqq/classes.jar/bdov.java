@@ -1,41 +1,29 @@
-import android.os.AsyncTask;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-
 public class bdov
-  extends AsyncTask<Void, Void, String>
 {
-  public bdov(MediaPreviewActivity paramMediaPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  protected String a(Void... paramVarArgs)
+  public bdov(String paramString)
   {
-    try
-    {
-      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
-      if (paramVarArgs != null)
-      {
-        bfvo.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, paramVarArgs);
-        return this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131694485) + " " + paramVarArgs;
-      }
-    }
-    catch (Exception paramVarArgs)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PhotoPreviewActivity", 2, QLog.getStackTraceString(paramVarArgs));
-        }
-        paramVarArgs = null;
-      }
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131694483);
+    this(null, null, null, null, null, null, null, paramString);
   }
   
-  protected void a(String paramString)
+  public bdov(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
   {
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getTitleBarHeight());
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.f = paramString6;
+    this.g = paramString7;
+    this.h = paramString8;
   }
 }
 

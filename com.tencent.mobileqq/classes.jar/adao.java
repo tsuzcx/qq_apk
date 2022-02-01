@@ -1,72 +1,18 @@
-import MQQ.GetRoamToastRsp;
-import android.text.SpannableStringBuilder;
-import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class adao
-  extends anam
+class adao
+  implements DialogInterface.OnCancelListener
 {
-  public adao(ChatSettingActivity paramChatSettingActivity) {}
+  adao(adak paramadak, adaj paramadaj, adab paramadab, JSONObject paramJSONObject, adaa paramadaa) {}
   
-  public void a(String paramString, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    ChatSettingActivity.d(this.a);
-  }
-  
-  public void a(boolean paramBoolean, GetRoamToastRsp paramGetRoamToastRsp)
-  {
-    if (this.a.a == null) {
-      return;
-    }
-    Object localObject1;
-    Object localObject2;
-    if ((paramBoolean) && (paramGetRoamToastRsp != null) && (!TextUtils.isEmpty(paramGetRoamToastRsp.sToast)) && (((anaj)this.a.app.getBusinessHandler(13)).a(paramGetRoamToastRsp)))
-    {
-      localObject1 = paramGetRoamToastRsp.sToast;
-      int i = ((String)localObject1).indexOf('#');
-      if (i < 0) {
-        break label306;
-      }
-      int j = ((String)localObject1).indexOf('#', i + 1);
-      if (j < 0) {
-        break label306;
-      }
-      localObject2 = new SpannableStringBuilder();
-      ((SpannableStringBuilder)localObject2).append((CharSequence)localObject1, 0, i);
-      ((SpannableStringBuilder)localObject2).append((CharSequence)localObject1, i + 1, j);
-      ((SpannableStringBuilder)localObject2).append((CharSequence)localObject1, j + 1, ((String)localObject1).length());
-      ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(-12541697), i, j - 1, 33);
-      localObject1 = localObject2;
-    }
-    label298:
-    label306:
-    for (;;)
-    {
-      this.a.d.setText((CharSequence)localObject1);
-      this.a.a.setTag(paramGetRoamToastRsp);
-      this.a.a.setVisibility(0);
-      bcef.b(this.a.app, "dc00898", "", "", "0X8009E31", "0X8009E31", 0, 0, "", "", "", "");
-      return;
-      if (QLog.isColorLevel())
-      {
-        localObject1 = ChatSettingActivity.b(this.a);
-        localObject2 = new StringBuilder().append("onGetRoamToast: ").append(paramBoolean).append(",");
-        if (paramGetRoamToastRsp != null) {
-          break label298;
-        }
-      }
-      for (paramGetRoamToastRsp = "null";; paramGetRoamToastRsp = paramGetRoamToastRsp.sToast)
-      {
-        QLog.d((String)localObject1, 2, paramGetRoamToastRsp);
-        this.a.a.setVisibility(8);
-        return;
-      }
-    }
+    this.jdField_a_of_type_Adak.d();
+    QLog.i("DoraemonOpenAPI.apiMgr", 1, "cancel " + this.jdField_a_of_type_Adaj.a);
+    adak.c(this.jdField_a_of_type_Adak, 4, this.jdField_a_of_type_Adab, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Adaa);
   }
 }
 

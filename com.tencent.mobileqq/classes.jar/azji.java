@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.data.QCallRecord;
-import java.util.Comparator;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.pic.CompressInfo;
 
-class azji
-  implements Comparator<QCallRecord>
+public final class azji
+  implements Parcelable.Creator<CompressInfo>
 {
-  azji(azjg paramazjg) {}
-  
-  public int a(QCallRecord paramQCallRecord1, QCallRecord paramQCallRecord2)
+  public CompressInfo a(Parcel paramParcel)
   {
-    return (int)(paramQCallRecord2.time - paramQCallRecord1.time);
+    return new CompressInfo(paramParcel, null);
+  }
+  
+  public CompressInfo[] a(int paramInt)
+  {
+    return new CompressInfo[paramInt];
   }
 }
 

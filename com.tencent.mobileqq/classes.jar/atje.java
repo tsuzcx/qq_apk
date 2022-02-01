@@ -1,91 +1,58 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Random;
 
-public class atje
+class atje
+  extends atjw
 {
-  private static atje jdField_a_of_type_Atje;
-  private static final String jdField_a_of_type_JavaLangString = DeviceProfileManager.DpcNames.qflutterCfg.name();
-  private static Random jdField_a_of_type_JavaUtilRandom = new Random();
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  protected long a;
+  protected String a;
+  protected String b;
+  protected String c;
+  protected String d;
+  protected String e;
+  protected String f;
+  protected String g;
   
-  private atje()
+  atje(atiy paramatiy, MessageRecord paramMessageRecord)
   {
-    DeviceProfileManager.a(new atjf(this));
-    a();
+    super(paramatiy);
+    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
+    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
+    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileIdCrc");
+    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
+    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
+    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
+    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
   }
   
-  public static atje a()
-  {
-    if (jdField_a_of_type_Atje == null) {}
-    try
-    {
-      if (jdField_a_of_type_Atje == null) {
-        jdField_a_of_type_Atje = new atje();
-      }
-      return jdField_a_of_type_Atje;
-    }
-    finally {}
-  }
+  void a(String paramString, int paramInt) {}
   
-  public void a()
+  void a(String paramString, int paramInt, atju paramatju)
   {
-    String str = DeviceProfileManager.b().a(jdField_a_of_type_JavaLangString);
-    String[] arrayOfString;
-    if (!TextUtils.isEmpty(str))
+    if ("1".equals(this.g))
     {
-      arrayOfString = str.split("\\|");
-      if (arrayOfString.length < 2) {}
-    }
-    for (;;)
-    {
-      try
-      {
-        if (Integer.valueOf(arrayOfString[0]).intValue() != 1) {
-          continue;
-        }
-        this.jdField_a_of_type_Boolean = true;
-        if (jdField_a_of_type_JavaUtilRandom.nextFloat() >= Float.valueOf(arrayOfString[1]).floatValue()) {
-          continue;
-        }
-        this.b = true;
-      }
-      catch (Exception localException)
-      {
-        QLog.d("QFlutterDPC", 1, "loadConfig exception :" + localException.getMessage());
-        this.b = true;
-        this.jdField_a_of_type_Boolean = true;
-        continue;
-        this.b = false;
-        continue;
-      }
       if (QLog.isColorLevel()) {
-        QLog.d("QFlutterDPC", 2, String.format("loadConfig, dpcValue: %s, mIsSupport: %s, mNeedReport: %s", new Object[] { str, Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(this.b) }));
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2TroopTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
       }
+      paramatju.a(atiy.a(this.jdField_a_of_type_Long, false), false);
       return;
-      this.jdField_a_of_type_Boolean = false;
-      continue;
-      this.b = true;
-      this.jdField_a_of_type_Boolean = true;
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean b()
-  {
-    return this.b;
+    if ((this.b == null) || (this.b.length() == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Buddy2TroopTaskExcuter faild uuid is null");
+      }
+      paramatju.a(atiy.a(this.jdField_a_of_type_Long, true), false);
+      return;
+    }
+    atiy.a(this.jdField_a_of_type_Atiy).getFileManagerEngine().a().a(paramString, paramInt, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, 102, new atjf(this, paramString, paramatju));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atje
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,21 @@
 package com.tencent.mobileqq.theme;
 
-import anbt;
-import bdbr;
+import aoei;
+import beir;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ThemeUtil$2$1
   implements Runnable
 {
-  public ThemeUtil$2$1(bdbr parambdbr) {}
+  public ThemeUtil$2$1(beir parambeir) {}
   
   public void run()
   {
     ThemeUtil.isNowThemeIsAnimate();
-    anbt localanbt = (anbt)this.this$0.a.getBusinessHandler(14);
-    if (localanbt != null) {
-      localanbt.a();
+    aoei localaoei = (aoei)this.this$0.a.getBusinessHandler(BusinessHandlerFactory.THEME_HANDLER);
+    if (localaoei != null) {
+      localaoei.a();
     }
   }
 }

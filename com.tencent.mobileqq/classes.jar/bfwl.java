@@ -1,71 +1,54 @@
-import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
-import java.util.LinkedList;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
+import java.util.List;
+import org.json.JSONObject;
 
 public class bfwl
+  extends bfwq
 {
-  private static ThreadLocal<LinkedList<Long>> a = new ThreadLocal();
+  private TextView a;
+  private TextView b;
   
-  public static void a()
+  protected bfwl(View paramView)
   {
-    if (QLog.isColorLevel())
-    {
-      LinkedList localLinkedList2 = (LinkedList)a.get();
-      LinkedList localLinkedList1 = localLinkedList2;
-      if (localLinkedList2 == null)
-      {
-        localLinkedList1 = new LinkedList();
-        a.set(localLinkedList1);
-      }
-      localLinkedList1.addFirst(Long.valueOf(SystemClock.uptimeMillis()));
-    }
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380111));
+    this.b = ((TextView)paramView.findViewById(2131379965));
   }
   
-  public static void a(String paramString1, String paramString2)
+  public void a(View paramView, HWReciteItem paramHWReciteItem, bfwo parambfwo)
   {
-    Object localObject2;
-    if (QLog.isColorLevel())
+    paramHWReciteItem = (bfut)parambfwo.a;
+    switch (paramView.getId())
     {
-      localObject2 = (LinkedList)a.get();
-      Object localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        localObject1 = new LinkedList();
-        a.set(localObject1);
-        ((LinkedList)localObject1).addFirst(Long.valueOf(SystemClock.uptimeMillis()));
-      }
-      localObject2 = new StringBuilder();
-      int i = 1;
-      while (i < ((LinkedList)localObject1).size())
-      {
-        ((StringBuilder)localObject2).append("    ");
-        i += 1;
-      }
-      if (((LinkedList)a.get()).size() != 0) {}
     }
-    else
+    do
     {
       return;
-    }
-    ((StringBuilder)localObject2).append(paramString2);
-    ((StringBuilder)localObject2).append(":cost ");
-    ((StringBuilder)localObject2).append(SystemClock.uptimeMillis() - ((Long)((LinkedList)a.get()).removeFirst()).longValue());
-    ((StringBuilder)localObject2).append("ms");
-    QLog.i(paramString1, 2, ((StringBuilder)localObject2).toString());
+      ReciteFragment.a(paramView.getContext(), paramHWReciteItem.a().toString(), paramHWReciteItem.jdField_c_of_type_Int);
+      paramView = BaseApplicationImpl.getApplication().getRuntime();
+    } while (!(paramView instanceof QQAppInterface));
+    bhbu.a((QQAppInterface)paramView, paramHWReciteItem.f, "Grp_recite", "Recite_Clk", 0, 0, new String[] { paramHWReciteItem.f, "", paramHWReciteItem.b, "" });
   }
   
-  public static void a(String paramString1, String paramString2, String paramString3)
+  public void a(HWReciteItem paramHWReciteItem, bfwo parambfwo, bfut parambfut, int paramInt)
   {
-    if (QLog.isColorLevel())
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (TextUtils.isEmpty(parambfut.jdField_c_of_type_JavaLangString))
     {
-      StringBuilder localStringBuilder = new StringBuilder("PreUploadVideo");
-      localStringBuilder.append("[").append(paramString1).append("] ");
-      if (paramString2 != null) {
-        localStringBuilder.append("status:").append(paramString2).append(" ");
+      StringBuilder localStringBuilder = new StringBuilder(anvx.a(2131704778)).append(parambfut.b);
+      if ((parambfut.a != null) && (!parambfut.a.isEmpty())) {
+        localStringBuilder.append(bftx.a(parambfut.a));
       }
-      localStringBuilder.append("content:").append(paramString3);
-      QLog.i("PreUploadVideo", 2, localStringBuilder.toString());
+      parambfut.jdField_c_of_type_JavaLangString = localStringBuilder.toString();
     }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(parambfut.jdField_c_of_type_JavaLangString);
+    paramHWReciteItem.b(this.jdField_a_of_type_AndroidViewView, parambfwo);
   }
 }
 

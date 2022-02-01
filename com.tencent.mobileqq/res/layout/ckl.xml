@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.biz.pubaccount.readinjoy.view.FixWidthRatioRelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" app:ratioH="1" app:ratioW="1"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.image.URLImageView android:id="@id/duw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <FrameLayout android:id="@id/enp" android:background="@drawable/dk3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ggl" />
-    </FrameLayout>
-</com.tencent.biz.pubaccount.readinjoy.view.FixWidthRatioRelativeLayout>
+<FrameLayout android:paddingTop="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:layout_gravity="top" android:orientation="horizontal" android:id="@id/lac" android:background="@drawable/gdh" android:layout_width="fill_parent" android:layout_height="42.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip">
+        <ImageView android:layout_gravity="center" android:id="@id/jnm" android:visibility="gone" android:layout_width="13.5dip" android:layout_height="13.5dip" android:src="@drawable/hoz" />
+        <ImageView android:layout_gravity="center" android:id="@id/jnn" android:layout_width="17.0dip" android:layout_height="17.0dip" android:src="@drawable/ci8" />
+        <TextView android:textColor="@android:color/white" android:gravity="center" android:id="@id/f18" android:paddingLeft="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+</FrameLayout>

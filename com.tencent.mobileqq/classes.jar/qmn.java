@@ -1,52 +1,51 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.HashMap;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/pts/lite/PTSLiteSwiperEventDispatcher$Builder;", "", "()V", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoyBaseAdapter;", "getAdapter", "()Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoyBaseAdapter;", "setAdapter", "(Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoyBaseAdapter;)V", "articleInfoMap", "Ljava/util/HashMap;", "", "Lcom/tencent/biz/pubaccount/readinjoy/struct/ArticleInfo;", "Lkotlin/collections/HashMap;", "getArticleInfoMap", "()Ljava/util/HashMap;", "setArticleInfoMap", "(Ljava/util/HashMap;)V", "positionMap", "", "getPositionMap", "setPositionMap", "build", "Lcom/tencent/biz/pubaccount/readinjoy/pts/lite/PTSLiteSwiperEventDispatcher;", "withArticleInfoMap", "withPositionMap", "withRIJAdapter", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qmn
+public class qmn
+  implements qqa
 {
-  @NotNull
-  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  @Nullable
-  private slt jdField_a_of_type_Slt;
-  @NotNull
-  private HashMap<String, ArticleInfo> b = new HashMap();
-  
-  @NotNull
-  public final qmm a()
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    qmm localqmm = new qmm(null);
-    qmm.a(localqmm, this.jdField_a_of_type_Slt);
-    qmm.a(localqmm, this.jdField_a_of_type_JavaUtilHashMap);
-    qmm.b(localqmm, this.b);
-    return localqmm;
+    return null;
   }
   
-  @NotNull
-  public final qmn a(@NotNull HashMap<String, Integer> paramHashMap)
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    Intrinsics.checkParameterIsNotNull(paramHashMap, "positionMap");
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-    return this;
+    long l2 = 0L;
+    if (paramBaseArticleInfo == null) {
+      return null;
+    }
+    long l1 = l2;
+    if (paramBaseArticleInfo.mSocialFeedInfo != null)
+    {
+      l1 = l2;
+      if (paramBaseArticleInfo.mSocialFeedInfo.a != null) {
+        l1 = paramBaseArticleInfo.mSocialFeedInfo.a.a;
+      }
+    }
+    return new qlk().a(paramBaseArticleInfo).b(paramBaseArticleInfo).a(paramBaseArticleInfo, l1).f(paramBaseArticleInfo).g(paramBaseArticleInfo).i(paramBaseArticleInfo).j(paramBaseArticleInfo).k(paramBaseArticleInfo).C(paramBaseArticleInfo).q(paramBaseArticleInfo).r(paramBaseArticleInfo).v(paramBaseArticleInfo).w(paramBaseArticleInfo).A(paramBaseArticleInfo).B(paramBaseArticleInfo).a("ReadInjoy_original_cell").F(paramBaseArticleInfo).E(paramBaseArticleInfo).H(paramBaseArticleInfo).I(paramBaseArticleInfo).a();
   }
   
-  @NotNull
-  public final qmn a(@NotNull slt paramslt)
+  public void a(int paramInt1, Container paramContainer, qfw paramqfw, int paramInt2)
   {
-    Intrinsics.checkParameterIsNotNull(paramslt, "adapter");
-    this.jdField_a_of_type_Slt = paramslt;
-    return this;
+    paramContainer = paramContainer.getVirtualView();
+    qvn.f(paramContainer, paramqfw);
+    qsu localqsu = (qsu)paramContainer.findViewBaseByName("id_article_comment");
+    if (localqsu != null) {
+      localqsu.a(paramqfw);
+    }
+    qvn.a(paramContainer, paramqfw.a());
+    qmm.a(paramContainer, paramqfw);
+    qvn.c(paramContainer, paramqfw);
   }
   
-  @NotNull
-  public final qmn b(@NotNull HashMap<String, ArticleInfo> paramHashMap)
+  public boolean a(int paramInt, Container paramContainer, qfw paramqfw, ViewBase paramViewBase)
   {
-    Intrinsics.checkParameterIsNotNull(paramHashMap, "articleInfoMap");
-    this.b = paramHashMap;
-    return this;
+    return false;
   }
 }
 

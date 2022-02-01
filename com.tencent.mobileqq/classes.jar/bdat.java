@@ -1,84 +1,44 @@
-import android.os.IBinder;
-import android.os.Parcel;
-
-class bdat
-  implements bdar
+public class bdat
 {
-  private IBinder a;
+  private float jdField_a_of_type_Float;
+  private long jdField_a_of_type_Long;
+  private float jdField_b_of_type_Float;
+  private long jdField_b_of_type_Long;
+  private float jdField_c_of_type_Float;
+  private long jdField_c_of_type_Long;
   
-  bdat(IBinder paramIBinder)
+  public long a(float paramFloat)
   {
-    this.a = paramIBinder;
+    this.jdField_b_of_type_Long += (1000.0F * paramFloat);
+    return this.jdField_b_of_type_Long;
   }
   
-  public IBinder asBinder()
+  public long a(long paramLong)
   {
-    return this.a;
+    if (this.jdField_a_of_type_Long == 0L)
+    {
+      this.jdField_a_of_type_Long = (paramLong * 1000L);
+      this.jdField_b_of_type_Long = (paramLong * 1000L);
+      this.jdField_c_of_type_Long = paramLong;
+    }
+    return paramLong * 1000L;
   }
   
-  public void beginSwitch()
+  public void a()
   {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
-      this.a.transact(1, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_c_of_type_Long = 0L;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Float = 0.0F;
+    this.jdField_c_of_type_Float = 0.0F;
   }
   
-  public void doSwitch(String paramString1, String paramString2)
+  public void a(float paramFloat)
   {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
-      localParcel.writeString(paramString1);
-      localParcel.writeString(paramString2);
-      this.a.transact(3, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  public void onProgress(long paramLong1, long paramLong2)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
-      localParcel.writeLong(paramLong1);
-      localParcel.writeLong(paramLong2);
-      this.a.transact(2, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  public void postSwitch(int paramInt)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
-      localParcel.writeInt(paramInt);
-      this.a.transact(4, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
+    this.jdField_a_of_type_Float = ((float)(1000.0D / paramFloat));
+    this.jdField_b_of_type_Float = (this.jdField_a_of_type_Float + 0.3F);
+    this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float - 0.7F);
   }
 }
 

@@ -1,6 +1,14 @@
-public abstract interface bcxm
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
+
+class bcxm
+  implements SDKInitListener
 {
-  public abstract void a(int paramInt, bcyo parambcyo);
+  bcxm(bcxl parambcxl, bcxr parambcxr) {}
+  
+  public void onSDKInited(boolean paramBoolean)
+  {
+    bcxl.b(this.jdField_a_of_type_Bcxl, this.jdField_a_of_type_Bcxr);
+  }
 }
 
 

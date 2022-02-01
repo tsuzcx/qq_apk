@@ -1,88 +1,75 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import java.lang.ref.WeakReference;
+import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.ViewModel;
+import android.support.annotation.Nullable;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import java.util.HashMap;
+import java.util.Map;
 
 public class bnmb
-  implements URLDrawableDownListener
+  extends ViewModel
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final WeakReference<ImageView> jdField_a_of_type_JavaLangRefWeakReference;
-  private final WeakReference<ProgressBar> b;
+  private MutableLiveData<bnkn> jdField_a_of_type_AndroidArchLifecycleMutableLiveData = new MutableLiveData();
+  private Map<String, bnjz> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private MutableLiveData<bnkg> b = new MutableLiveData();
+  private MutableLiveData<String> c = new MutableLiveData();
+  private MutableLiveData<String> d = new MutableLiveData();
   
-  public bnmb(@NonNull String paramString, @NonNull ImageView paramImageView, @NonNull ProgressBar paramProgressBar)
+  public MutableLiveData<bnkn> a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramImageView);
-    this.b = new WeakReference(paramProgressBar);
+    return this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData;
   }
   
-  private boolean a(ImageView paramImageView)
+  public void a()
   {
-    paramImageView = (String)paramImageView.getTag(2131378207);
-    return (!TextUtils.isEmpty(paramImageView)) && (paramImageView.equals(this.jdField_a_of_type_JavaLangString));
+    bnkg localbnkg = (bnkg)this.b.getValue();
+    bnrh.b("AEVideoStoryGIFTplViewModel", "[applyGIFTplAgain], lastMaterial=" + localbnkg);
+    this.b.postValue(localbnkg);
   }
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void a(bnkg parambnkg)
   {
-    xvv.b("InformationFaceAdapter", "onLoadCanceled,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
+    bnmc localbnmc = new bnmc(this);
+    this.jdField_a_of_type_JavaUtilMap.put(parambnkg.jdField_a_of_type_JavaLangString, localbnmc);
+    bnjw.a().a(bofz.a(), parambnkg.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial, localbnmc);
+  }
+  
+  public MutableLiveData<bnkg> b()
+  {
+    return this.b;
+  }
+  
+  public void b(@Nullable bnkg parambnkg)
+  {
+    bnrh.b("AEVideoStoryGIFTplViewModel", "[applyGIFTpl], material=" + parambnkg);
+    bnrh.b("AEGIFStickerListPart", "[applyGIFTpl], material=" + parambnkg);
+    this.b.postValue(parambnkg);
+  }
+  
+  public MutableLiveData<String> c()
+  {
+    return this.c;
+  }
+  
+  public void c(@Nullable bnkg parambnkg)
+  {
+    if (parambnkg != null)
     {
-      paramURLDrawable.setVisibility(4);
-      paramView.setTag(2131378172, Boolean.valueOf(false));
+      parambnkg = (String)parambnkg.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.additionalFields.get("savename");
+      this.c.postValue(parambnkg);
       return;
     }
-    xvv.b("InformationFaceAdapter", "onLoadCanceled error.");
+    this.c.postValue(null);
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public MutableLiveData<String> d()
   {
-    xvv.b("InformationFaceAdapter", "onLoadFialed,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
-    {
-      paramURLDrawable.setVisibility(0);
-      paramView.setTag(2131378172, Boolean.valueOf(false));
-      return;
-    }
-    xvv.b("InformationFaceAdapter", "onLoadFialed error.");
+    return this.d;
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  public void onCleared()
   {
-    xvv.b("InformationFaceAdapter", "onLoadProgressed,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
-    {
-      paramURLDrawable.setVisibility(0);
-      paramView.setTag(2131378172, Boolean.valueOf(false));
-      return;
-    }
-    xvv.b("InformationFaceAdapter", "onLoadProgressed error.");
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    xvv.b("InformationFaceAdapter", "onLoadSuccessed,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
-    {
-      paramURLDrawable.setVisibility(4);
-      paramView.setTag(2131378172, Boolean.valueOf(true));
-      return;
-    }
-    xvv.b("InformationFaceAdapter", "onLoadSuccessed error.");
+    super.onCleared();
+    this.jdField_a_of_type_JavaUtilMap.clear();
   }
 }
 

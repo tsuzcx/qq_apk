@@ -1,102 +1,33 @@
+import android.widget.TextView;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePageArkView;
+import com.tencent.qphone.base.util.QLog;
+
 public class afmi
-  implements afme
+  implements ArkViewImplement.LoadCallback
 {
-  public static final afmf<afmi> a;
-  private float jdField_a_of_type_Float;
-  private long jdField_a_of_type_Long;
-  private float b;
-  private float c;
+  public afmi(BirthdayActivatePageArkView paramBirthdayActivatePageArkView) {}
   
-  static
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    jdField_a_of_type_Afmf = new afmj();
+    onLoadState(paramInt1);
   }
   
-  public afmi() {}
-  
-  public afmi(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
+  public void onLoadState(int paramInt)
   {
-    a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-  }
-  
-  public afmi(afmc paramafmc)
-  {
-    paramafmc.a();
-    this.jdField_a_of_type_Float = paramafmc.a();
-    this.b = paramafmc.a();
-    this.c = paramafmc.a();
-    this.jdField_a_of_type_Long = paramafmc.a();
-  }
-  
-  public afmi(afmi paramafmi)
-  {
-    if (paramafmi != null) {
-      a(paramafmi.a(), paramafmi.b(), paramafmi.c(), 0L);
+    if (paramInt == 1) {
+      if (QLog.isColorLevel()) {
+        QLog.i("BirthdayActivatePageArkView", 1, "@arkgif  onLoadFinish  SUCCESS");
+      }
     }
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
-  {
-    this.c = paramFloat3;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(afmc paramafmc, int paramInt)
-  {
-    paramafmc.a(1);
-    paramafmc.a(this.jdField_a_of_type_Float);
-    paramafmc.a(this.b);
-    paramafmc.a(this.c);
-    paramafmc.a(this.jdField_a_of_type_Long);
-  }
-  
-  public float b()
-  {
-    return this.b;
-  }
-  
-  public void b(float paramFloat)
-  {
-    this.b = paramFloat;
-  }
-  
-  public float c()
-  {
-    return this.c;
-  }
-  
-  public void c(float paramFloat)
-  {
-    this.c = paramFloat;
-  }
-  
-  public void d(float paramFloat)
-  {
-    this.jdField_a_of_type_Float *= paramFloat;
-    this.b *= paramFloat;
-    this.c *= paramFloat;
+    while (paramInt != -1) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("BirthdayActivatePageArkView", 1, "@arkgif  onLoadFinish  failed");
+    }
+    this.a.a(false);
+    BirthdayActivatePageArkView.a(this.a).setText(anvx.a(2131700650));
   }
 }
 

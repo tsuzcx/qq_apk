@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.data;
 
-import aabc;
-import abwz;
-import acvv;
-import afhv;
-import afhw;
-import afiw;
-import afst;
-import ahdt;
-import ahey;
-import amsw;
-import amtj;
-import ancw;
+import aaqo;
+import acnh;
+import admh;
+import afza;
+import afzb;
+import agab;
+import agkh;
+import ahyl;
+import ahzq;
+import aiah;
+import amme;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.text.Editable;
 import android.text.SpannableString;
@@ -24,54 +24,59 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.style.ClickableSpan;
 import android.view.View;
-import anoh;
-import aprw;
-import aprx;
-import apse;
-import apyy;
-import apyz;
-import aqrc;
-import aqrd;
-import aqre;
-import aqrf;
-import aqvo;
-import arib;
-import armh;
-import aubv;
-import aucf;
-import aucg;
-import auyo;
-import auzn;
-import avjp;
-import avsc;
-import awfm;
-import awfy;
-import aynd;
-import azwg;
-import bbkv;
-import bcef;
-import bcek;
-import bctz;
-import bcvc;
-import bcvs;
-import bdct;
-import bddg;
-import bedt;
-import beeg;
-import beue;
-import bevq;
-import beyy;
-import bfic;
+import anvk;
+import anvx;
+import aofm;
+import aora;
+import aquz;
+import aqva;
+import aqvh;
+import arcb;
+import arcc;
+import arun;
+import aruo;
+import arup;
+import aruq;
+import arzh;
+import asmh;
+import asqn;
+import avdu;
+import avhp;
+import avhz;
+import avia;
+import aweo;
+import awfq;
+import awpu;
+import awyd;
+import axlo;
+import axma;
+import azry;
+import bbcm;
+import bcrn;
+import bdla;
+import bdlf;
+import beay;
+import becb;
+import becr;
+import bejv;
+import beki;
+import bfkw;
 import bflj;
-import bftc;
-import bftk;
-import bfur;
-import bfvp;
-import bfwg;
-import bfyz;
-import bgge;
-import bhvw;
-import bing;
+import bfyd;
+import bgbk;
+import bgcz;
+import bghd;
+import bgqt;
+import bgua;
+import bhbu;
+import bhcc;
+import bhdj;
+import bheh;
+import bhey;
+import bhhr;
+import bhoy;
+import bjgx;
+import bjyi;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.AssistantSettingActivity;
@@ -93,9 +98,12 @@ import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.confess.ConfessInfo;
@@ -109,6 +117,7 @@ import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -121,6 +130,7 @@ import cooperation.qzone.report.lp.LpReportInfo_dc03950;
 import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Locale;
 import java.util.Map;
 import mqq.os.MqqHandler;
@@ -128,9 +138,9 @@ import mqq.util.WeakReference;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ugf;
-import wmu;
-import xwa;
+import uuc;
+import xbp;
+import ykv;
 
 public class MessageForGrayTips$HightlightClickableSpan
   extends ClickableSpan
@@ -162,11 +172,11 @@ public class MessageForGrayTips$HightlightClickableSpan
       do
       {
         return;
-      } while (!((amsw)paramQQAppInterface.getManager(51)).b(paramString));
+      } while (!((anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramString));
       if (QLog.isColorLevel()) {
         QLog.d("MessageForGrayTips", 2, "deleteFriend " + paramString);
       }
-      ((FriendListHandler)paramQQAppInterface.getBusinessHandler(1)).delFriend(paramString, (byte)2);
+      ((FriendListHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).delFriend(paramString, (byte)2);
       MqqHandler localMqqHandler = paramQQAppInterface.getHandler(ChatActivity.class);
       if (localMqqHandler != null) {
         localMqqHandler.sendMessage(localMqqHandler.obtainMessage(16711681, paramString));
@@ -181,39 +191,39 @@ public class MessageForGrayTips$HightlightClickableSpan
     if ((this.context instanceof BaseActivity))
     {
       Object localObject = (BaseActivity)this.context;
-      Bundle localBundle = aabc.a(this.message.frienduin, 0);
-      aabc.a((BaseActivity)localObject, this.message.frienduin, null, "1", null, this.message.selfuin, 25030, null, localBundle);
+      Bundle localBundle = aaqo.a(this.message.frienduin, 0);
+      aaqo.a((BaseActivity)localObject, this.message.frienduin, null, "1", null, this.message.selfuin, 25030, null, localBundle);
       localObject = this.message.getExtInfoFromExtStr("uint64_busi_type");
-      bcef.b(paramQQAppInterface, "CliOper", "", "", "0X800A561", "0X800A561", 1, 0, this.message.getExtInfoFromExtStr("uint64_busi_id"), (String)localObject, "web", "");
+      bdla.b(paramQQAppInterface, "CliOper", "", "", "0X800A561", "0X800A561", 1, 0, this.message.getExtInfoFromExtStr("uint64_busi_id"), (String)localObject, "web", "");
     }
   }
   
   private void onClickActionWeb(QQAppInterface paramQQAppInterface)
   {
     if ((this.message != null) && (this.message.msgtype == -2049)) {
-      bhvw.a().a(((QQAppInterface)this.mApp.get()).getCurrentAccountUin(), "", "", "2000", "2012", "0", false);
+      bjgx.a().a(((QQAppInterface)this.mApp.get()).getCurrentAccountUin(), "", "", "2000", "2012", "0", false);
     }
-    aucf localaucf;
+    avhz localavhz;
     Object localObject1;
     if ((this.message != null) && ((this.message instanceof MessageForUniteGrayTip)))
     {
-      localaucf = ((MessageForUniteGrayTip)this.message).tipParam;
-      if (localaucf != null)
+      localavhz = ((MessageForUniteGrayTip)this.message).tipParam;
+      if (localavhz != null)
       {
-        if (localaucf.b != 2359297) {
+        if (localavhz.b != 2359297) {
           break label203;
         }
-        bcef.b(null, "P_CliOper", "cmshow", "", "Apollo", "Invitetip_clk", 0, 0, "", "", "", "");
-        if (awfy.b(localaucf.b))
+        bdla.b(null, "P_CliOper", "cmshow", "", "Apollo", "Invitetip_clk", 0, 0, "", "", "", "");
+        if (axma.b(localavhz.b))
         {
           if (!TextUtils.isEmpty(this.item.mMsgActionData)) {
-            break label1330;
+            break label1469;
           }
           localObject1 = this.item.mMsg_A_ActionData;
           label151:
-          awfm.a(paramQQAppInterface, (MessageForUniteGrayTip)this.message, localaucf.b, (String)localObject1);
+          axlo.a(paramQQAppInterface, (MessageForUniteGrayTip)this.message, localavhz.b, (String)localObject1);
         }
-        arib.a(paramQQAppInterface, localaucf);
+        asmh.a(paramQQAppInterface, localavhz);
       }
     }
     if (TextUtils.isEmpty(this.item.mMsgActionData)) {}
@@ -222,37 +232,37 @@ public class MessageForGrayTips$HightlightClickableSpan
       clickWebMsg(paramQQAppInterface);
       return;
       label203:
-      if (localaucf.b == 2359298)
+      if (localavhz.b == 2359298)
       {
-        bcef.b(null, "P_CliOper", "cmshow", "", "Apollo", "clk_intro", 0, 0, "", "", "", "");
+        bdla.b(null, "P_CliOper", "cmshow", "", "Apollo", "clk_intro", 0, 0, "", "", "", "");
         break;
       }
-      if (localaucf.b == 2490369)
+      if (localavhz.b == 2490369)
       {
-        bcef.b(null, "dc00898", "", "", "0X8007F12", "0X8007F12", 0, 0, "", "", "", "");
+        bdla.b(null, "dc00898", "", "", "0X8007F12", "0X8007F12", 0, 0, "", "", "", "");
         break;
       }
-      if (localaucf.b == 2621441)
+      if (localavhz.b == 2621441)
       {
         localObject1 = ((MessageForUniteGrayTip)this.message).appGuideTipsOpKey;
         if (TextUtils.isEmpty((CharSequence)localObject1)) {
           break;
         }
-        bcef.b(null, "dc00898", "", "", (String)localObject1, (String)localObject1, 0, 0, "", "", "", "");
+        bdla.b(null, "dc00898", "", "", (String)localObject1, (String)localObject1, 0, 0, "", "", "", "");
         break;
       }
-      if (localaucf.b == 3145729)
+      if (localavhz.b == 3145729)
       {
-        bcef.b(null, "dc00898", "", "", "0X800812B", "0X800812B", 0, 0, "", "", "", "");
+        bdla.b(null, "dc00898", "", "", "0X800812B", "0X800812B", 0, 0, "", "", "", "");
         break;
       }
-      if (localaucf.b == 131078)
+      if (localavhz.b == 131078)
       {
         VasWebviewUtil.reportCommercialDrainage(((QQAppInterface)this.mApp.get()).getCurrentUin(), "style", "0X8009133", "", 1, 0, 0, "", "", "0");
         break;
       }
       int i;
-      if (localaucf.b == 2097154)
+      if (localavhz.b == 2097154)
       {
         if (TextUtils.isEmpty(this.item.mMsgActionData)) {}
         for (localObject1 = this.item.mMsg_A_ActionData;; localObject1 = this.item.mMsgActionData)
@@ -260,7 +270,7 @@ public class MessageForGrayTips$HightlightClickableSpan
           for (;;)
           {
             if (TextUtils.isEmpty((CharSequence)localObject1)) {
-              break label586;
+              break label593;
             }
             Object localObject2 = HttpUtil.decodeURL((String)localObject1);
             if (!((Map)localObject2).containsKey("type")) {
@@ -270,7 +280,7 @@ public class MessageForGrayTips$HightlightClickableSpan
             try
             {
               i = Integer.parseInt((String)localObject2);
-              bcef.b((QQAppInterface)this.mApp.get(), "dc00898", "", "", "qq_vip", "0X8009CA6", i, 0, "", "", "", "");
+              bdla.b((QQAppInterface)this.mApp.get(), "dc00898", "", "", "qq_vip", "0X8009CA6", i, 0, "", "", "", "");
             }
             catch (NumberFormatException localNumberFormatException) {}
           }
@@ -280,11 +290,11 @@ public class MessageForGrayTips$HightlightClickableSpan
           QLog.d("reactive", 2, "parse url type error:" + (String)localObject1);
           break;
         }
-        label586:
+        label593:
         break;
       }
       String str1;
-      if (localaucf.b == 655384)
+      if (localavhz.b == 655384)
       {
         str1 = this.message.getExtInfoFromExtStr("love_c2c_aio_businessSubtype");
         localObject1 = str1;
@@ -294,7 +304,7 @@ public class MessageForGrayTips$HightlightClickableSpan
         LpReportInfo_dc03950.report(new LpReportInfo_dc03950("16", (String)localObject1, "", "2"));
         break;
       }
-      if (localaucf.b == 2097153)
+      if (localavhz.b == 2097153)
       {
         localObject1 = this.message.getExtInfoFromExtStr("friendIconType");
         if (TextUtils.isEmpty((CharSequence)localObject1)) {
@@ -312,7 +322,7 @@ public class MessageForGrayTips$HightlightClickableSpan
         LpReportInfo_dc03950.report(new LpReportInfo_dc03950("16", "7", "2"));
         break;
       }
-      if (localaucf.b == 655397)
+      if (localavhz.b == 655397)
       {
         String str2 = this.message.getExtInfoFromExtStr("uint64_busi_type");
         localObject1 = this.message.getExtInfoFromExtStr("uint64_busi_id");
@@ -321,10 +331,10 @@ public class MessageForGrayTips$HightlightClickableSpan
         if (this.message.istroop == 0)
         {
           i = 1;
-          label842:
-          bcef.b(paramQQAppInterface, "CliOper", "", "", "0X800A561", "0X800A561", i, 0, "" + (String)localObject1, "" + str2, "web", "");
+          label849:
+          bdla.b(paramQQAppInterface, "CliOper", "", "", "0X800A561", "0X800A561", i, 0, "" + (String)localObject1, "" + str2, "web", "");
           if ("1008".equals(localObject1)) {
-            bcef.b(null, "dc00898", "", "", "0X800A639", "0X800A639", i - 1, 0, "", "", "", "");
+            bdla.b(null, "dc00898", "", "", "0X800A639", "0X800A639", i - 1, 0, "", "", "", "");
           }
           if (("1062".equals(localObject1)) && ("12".equals(str2)))
           {
@@ -332,15 +342,13 @@ public class MessageForGrayTips$HightlightClickableSpan
             if (!TextUtils.isEmpty(str2))
             {
               if (!str2.contains("动作")) {
-                break label1213;
+                break label1306;
               }
-              bcef.b(null, "dc00898", "", "", "0X800B43E", "0X800B43E", i, 0, "", "", "", "");
+              bdla.b(null, "dc00898", "", "", "0X800B43E", "0X800B43E", i, 0, "", "", "", "");
             }
           }
-        }
-        for (;;)
-        {
-          if (afhw.a(this.message))
+          label1027:
+          if (afzb.a(this.message))
           {
             int j = i;
             if (i != 1)
@@ -350,43 +358,59 @@ public class MessageForGrayTips$HightlightClickableSpan
                 j = 10;
               }
             }
-            bcef.b(null, "dc00898", "", "", "0X800B525", "0X800B525", j, 0, "", "", "", "");
+            bdla.b(null, "dc00898", "", "", "0X800B525", "0X800B525", j, 0, "", "", "", "");
           }
           if (Long.valueOf((String)localObject1).equals(Long.valueOf(1021L))) {
-            bcef.b(null, "dc00898", "", "", "0X800AD83", "0X800AD83", 0, 0, "", "", "", "");
+            bdla.b(null, "dc00898", "", "", "0X800AD83", "0X800AD83", 0, 0, "", "", "", "");
           }
-          bddg.a((String)localObject1, localaucf.a);
-          if ((!Long.valueOf((String)localObject1).equals(Long.valueOf(1038L))) || (TextUtils.isEmpty(str1))) {
-            break;
+          beki.a((String)localObject1, localavhz.a);
+          if ((Long.valueOf((String)localObject1).equals(Long.valueOf(1038L))) && (!TextUtils.isEmpty(str1)))
+          {
+            if (!Long.valueOf(str1).equals(Long.valueOf(1111L))) {
+              break label1346;
+            }
+            bdla.b(null, "dc00898", "", "", "0X800B1A3", "0X800B1A3", 0, 0, "", "", "", "");
           }
-          if (!Long.valueOf(str1).equals(Long.valueOf(1111L))) {
-            break label1253;
+        }
+        for (;;)
+        {
+          if (!bfyd.a.contains(Long.valueOf((String)localObject1))) {
+            break label1390;
           }
-          bcef.b(null, "dc00898", "", "", "0X800B1A3", "0X800B1A3", 0, 0, "", "", "", "");
+          i = (int)(Long.valueOf((String)localObject1).longValue() - 1069L);
+          bdla.b(paramQQAppInterface, "dc00899", "Grp_AIO", "", "Grp_AIO_display", "Luckyword_tips_clk", 0, 0, "", "", "", "");
+          bdla.b(paramQQAppInterface, "dc00899", "Grp_AIO", "", "Grp_AIO_display", "Luckyword_tips_clk", i + 1, 0, "", "", "", "");
           break;
           if (this.message.istroop != 1) {
-            break label842;
+            break label849;
           }
           i = 2;
-          break label842;
-          label1213:
-          if (str2.contains("效果")) {
-            bcef.b(null, "dc00898", "", "", "0X800B440", "0X800B440", i, 0, "", "", "", "");
+          break label849;
+          label1306:
+          if (!str2.contains("效果")) {
+            break label1027;
+          }
+          bdla.b(null, "dc00898", "", "", "0X800B440", "0X800B440", i, 0, "", "", "", "");
+          break label1027;
+          label1346:
+          if (Long.valueOf(str1).equals(Long.valueOf(1112L))) {
+            bdla.b(null, "dc00898", "", "", "0X800B1A5", "0X800B1A5", 0, 0, "", "", "", "");
           }
         }
-        label1253:
-        if (!Long.valueOf(str1).equals(Long.valueOf(1112L))) {
-          break;
-        }
-        bcef.b(null, "dc00898", "", "", "0X800B1A5", "0X800B1A5", 0, 0, "", "", "", "");
+        label1390:
         break;
       }
-      if (localaucf.b != 131090) {
+      if (localavhz.b == 131090)
+      {
+        bflj.a((QQAppInterface)this.mApp.get(), this.frienduin);
         break;
       }
-      beeg.a((QQAppInterface)this.mApp.get(), this.frienduin);
+      if (localavhz.b != 656397) {
+        break;
+      }
+      avdu.a(aiah.c, "1", "145", "920", "92005", "207654", localavhz.c, "", "20", "");
       break;
-      label1330:
+      label1469:
       localObject1 = this.item.mMsgActionData;
       break label151;
     }
@@ -397,11 +421,11 @@ public class MessageForGrayTips$HightlightClickableSpan
     if (paramQQAppInterface == null) {
       return;
     }
-    paramQQAppInterface = amtj.a(2131705720);
+    paramQQAppInterface = anvx.a(2131706071);
     if (this.item.mMsg_A_ActionData != null) {
       paramQQAppInterface = this.item.mMsg_A_ActionData;
     }
-    bfur.a(this.context, null, paramQQAppInterface, null, 2131690620, 2131691644, new aqre(this), new aqrf(this)).show();
+    bhdj.a(this.context, null, paramQQAppInterface, null, 2131690697, 2131691729, new arup(this), new aruq(this)).show();
   }
   
   /* Error */
@@ -410,173 +434,173 @@ public class MessageForGrayTips$HightlightClickableSpan
     // Byte code:
     //   0: iconst_0
     //   1: istore_3
-    //   2: invokestatic 73	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2: invokestatic 78	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   5: ifeq +40 -> 45
-    //   8: ldc_w 445
+    //   8: ldc_w 500
     //   11: iconst_2
-    //   12: new 77	java/lang/StringBuilder
+    //   12: new 82	java/lang/StringBuilder
     //   15: dup
-    //   16: invokespecial 78	java/lang/StringBuilder:<init>	()V
-    //   19: ldc_w 447
-    //   22: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16: invokespecial 83	java/lang/StringBuilder:<init>	()V
+    //   19: ldc_w 502
+    //   22: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   25: aload_1
-    //   26: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   29: ldc_w 449
-    //   32: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   26: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: ldc_w 504
+    //   32: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   35: aload_2
-    //   36: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   39: invokevirtual 88	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   42: invokestatic 92	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   36: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   39: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   42: invokestatic 97	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   45: aload_0
     //   46: aload_1
     //   47: aload_2
-    //   48: invokevirtual 453	com/tencent/mobileqq/data/MessageForGrayTips$HightlightClickableSpan:parsePackageNameAndData	(Ljava/lang/String;Ljava/lang/String;)[Ljava/lang/String;
+    //   48: invokevirtual 508	com/tencent/mobileqq/data/MessageForGrayTips$HightlightClickableSpan:parsePackageNameAndData	(Ljava/lang/String;Ljava/lang/String;)[Ljava/lang/String;
     //   51: astore_2
     //   52: aload_0
     //   53: getfield 33	com/tencent/mobileqq/data/MessageForGrayTips$HightlightClickableSpan:context	Landroid/content/Context;
-    //   56: invokevirtual 459	android/content/Context:getPackageManager	()Landroid/content/pm/PackageManager;
+    //   56: invokevirtual 514	android/content/Context:getPackageManager	()Landroid/content/pm/PackageManager;
     //   59: astore 4
     //   61: aload 4
     //   63: aload_2
     //   64: iconst_0
     //   65: aaload
     //   66: iconst_1
-    //   67: invokevirtual 465	android/content/pm/PackageManager:getPackageInfo	(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
-    //   70: ifnull +250 -> 320
+    //   67: invokevirtual 520	android/content/pm/PackageManager:getPackageInfo	(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
+    //   70: ifnull +251 -> 321
     //   73: aload 4
     //   75: aload_2
     //   76: iconst_0
     //   77: aaload
-    //   78: invokevirtual 469	android/content/pm/PackageManager:getLaunchIntentForPackage	(Ljava/lang/String;)Landroid/content/Intent;
+    //   78: invokevirtual 524	android/content/pm/PackageManager:getLaunchIntentForPackage	(Ljava/lang/String;)Landroid/content/Intent;
     //   81: astore 4
     //   83: aload_2
     //   84: iconst_1
     //   85: aaload
-    //   86: invokestatic 222	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   86: invokestatic 232	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   89: ifne +15 -> 104
     //   92: aload 4
     //   94: aload_2
     //   95: iconst_1
     //   96: aaload
-    //   97: invokestatic 475	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   100: invokevirtual 481	android/content/Intent:setData	(Landroid/net/Uri;)Landroid/content/Intent;
+    //   97: invokestatic 530	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   100: invokevirtual 536	android/content/Intent:setData	(Landroid/net/Uri;)Landroid/content/Intent;
     //   103: pop
     //   104: aload 4
-    //   106: ifnull +133 -> 239
+    //   106: ifnull +134 -> 240
     //   109: aload_0
     //   110: getfield 37	com/tencent/mobileqq/data/MessageForGrayTips$HightlightClickableSpan:message	Lcom/tencent/mobileqq/data/MessageRecord;
-    //   113: getfield 347	com/tencent/mobileqq/data/MessageRecord:istroop	I
+    //   113: getfield 357	com/tencent/mobileqq/data/MessageRecord:istroop	I
     //   116: sipush 1008
-    //   119: if_icmpeq +120 -> 239
+    //   119: if_icmpeq +121 -> 240
     //   122: aload 4
-    //   124: ldc_w 483
-    //   127: ldc_w 485
-    //   130: invokevirtual 489	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   124: ldc_w 538
+    //   127: ldc_w 540
+    //   130: invokevirtual 544	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   133: pop
     //   134: aload_0
     //   135: getfield 31	com/tencent/mobileqq/data/MessageForGrayTips$HightlightClickableSpan:mApp	Lmqq/util/WeakReference;
-    //   138: invokevirtual 175	mqq/util/WeakReference:get	()Ljava/lang/Object;
-    //   141: checkcast 57	com/tencent/mobileqq/app/QQAppInterface
-    //   144: bipush 23
-    //   146: invokevirtual 96	com/tencent/mobileqq/app/QQAppInterface:getBusinessHandler	(I)Lcom/tencent/mobileqq/app/BusinessHandler;
-    //   149: checkcast 491	anbg
-    //   152: astore 5
-    //   154: aload 4
-    //   156: ldc_w 493
-    //   159: ldc_w 495
-    //   162: invokevirtual 489	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   165: pop
-    //   166: aload 4
-    //   168: ldc_w 497
-    //   171: ldc 149
-    //   173: invokevirtual 489	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   176: pop
-    //   177: aload 4
-    //   179: ldc_w 499
-    //   182: ldc 133
-    //   184: invokevirtual 489	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   187: pop
-    //   188: aload 4
-    //   190: ldc_w 501
-    //   193: ldc_w 503
-    //   196: invokevirtual 489	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   199: pop
-    //   200: aload 4
-    //   202: ldc_w 505
-    //   205: aload_0
-    //   206: getfield 33	com/tencent/mobileqq/data/MessageForGrayTips$HightlightClickableSpan:context	Landroid/content/Context;
-    //   209: invokevirtual 511	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   212: invokevirtual 516	java/lang/Class:getName	()Ljava/lang/String;
-    //   215: invokevirtual 489	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   218: pop
-    //   219: aload 5
-    //   221: aload_2
-    //   222: iconst_0
-    //   223: aaload
-    //   224: invokevirtual 519	java/lang/String:trim	()Ljava/lang/String;
-    //   227: aload_0
-    //   228: getfield 33	com/tencent/mobileqq/data/MessageForGrayTips$HightlightClickableSpan:context	Landroid/content/Context;
-    //   231: aload 4
-    //   233: invokevirtual 522	anbg:b	(Ljava/lang/String;Landroid/content/Context;Landroid/content/Intent;)V
-    //   236: goto +82 -> 318
-    //   239: aload 4
-    //   241: ifnull -107 -> 134
-    //   244: aload 4
-    //   246: ldc_w 483
-    //   249: aload_0
-    //   250: getfield 37	com/tencent/mobileqq/data/MessageForGrayTips$HightlightClickableSpan:message	Lcom/tencent/mobileqq/data/MessageRecord;
-    //   253: getfield 41	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
-    //   256: invokestatic 526	ugf:b	(Ljava/lang/String;)Ljava/lang/String;
-    //   259: invokevirtual 489	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   262: pop
-    //   263: goto -129 -> 134
-    //   266: astore_2
-    //   267: invokestatic 73	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   270: ifeq +13 -> 283
-    //   273: ldc_w 528
-    //   276: iconst_2
-    //   277: ldc_w 530
-    //   280: invokestatic 92	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   283: aload_0
-    //   284: getfield 33	com/tencent/mobileqq/data/MessageForGrayTips$HightlightClickableSpan:context	Landroid/content/Context;
-    //   287: aload 4
-    //   289: invokevirtual 534	android/content/Context:startActivity	(Landroid/content/Intent;)V
-    //   292: goto +26 -> 318
-    //   295: astore_2
-    //   296: invokestatic 73	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   299: ifeq +13 -> 312
-    //   302: ldc 75
-    //   304: iconst_2
-    //   305: aload_2
-    //   306: invokevirtual 537	android/content/pm/PackageManager$NameNotFoundException:getMessage	()Ljava/lang/String;
-    //   309: invokestatic 92	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   312: aload_0
-    //   313: aload_1
-    //   314: invokevirtual 238	com/tencent/mobileqq/data/MessageForGrayTips$HightlightClickableSpan:clickWebMsg	(Ljava/lang/String;)Z
-    //   317: ireturn
-    //   318: iconst_1
-    //   319: istore_3
-    //   320: iload_3
-    //   321: ireturn
+    //   138: invokevirtual 185	mqq/util/WeakReference:get	()Ljava/lang/Object;
+    //   141: checkcast 62	com/tencent/mobileqq/app/QQAppInterface
+    //   144: getstatic 547	com/tencent/mobileqq/app/BusinessHandlerFactory:STARTAPPCHECK_HANDLER	I
+    //   147: invokevirtual 106	com/tencent/mobileqq/app/QQAppInterface:getBusinessHandler	(I)Lcom/tencent/mobileqq/app/BusinessHandler;
+    //   150: checkcast 549	aodv
+    //   153: astore 5
+    //   155: aload 4
+    //   157: ldc_w 551
+    //   160: ldc_w 553
+    //   163: invokevirtual 544	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   166: pop
+    //   167: aload 4
+    //   169: ldc_w 555
+    //   172: ldc 159
+    //   174: invokevirtual 544	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   177: pop
+    //   178: aload 4
+    //   180: ldc_w 557
+    //   183: ldc 143
+    //   185: invokevirtual 544	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   188: pop
+    //   189: aload 4
+    //   191: ldc_w 559
+    //   194: ldc_w 561
+    //   197: invokevirtual 544	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   200: pop
+    //   201: aload 4
+    //   203: ldc_w 563
+    //   206: aload_0
+    //   207: getfield 33	com/tencent/mobileqq/data/MessageForGrayTips$HightlightClickableSpan:context	Landroid/content/Context;
+    //   210: invokevirtual 569	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   213: invokevirtual 574	java/lang/Class:getName	()Ljava/lang/String;
+    //   216: invokevirtual 544	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   219: pop
+    //   220: aload 5
+    //   222: aload_2
+    //   223: iconst_0
+    //   224: aaload
+    //   225: invokevirtual 577	java/lang/String:trim	()Ljava/lang/String;
+    //   228: aload_0
+    //   229: getfield 33	com/tencent/mobileqq/data/MessageForGrayTips$HightlightClickableSpan:context	Landroid/content/Context;
+    //   232: aload 4
+    //   234: invokevirtual 580	aodv:b	(Ljava/lang/String;Landroid/content/Context;Landroid/content/Intent;)V
+    //   237: goto +82 -> 319
+    //   240: aload 4
+    //   242: ifnull -108 -> 134
+    //   245: aload 4
+    //   247: ldc_w 538
+    //   250: aload_0
+    //   251: getfield 37	com/tencent/mobileqq/data/MessageForGrayTips$HightlightClickableSpan:message	Lcom/tencent/mobileqq/data/MessageRecord;
+    //   254: getfield 41	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
+    //   257: invokestatic 584	uuc:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   260: invokevirtual 544	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   263: pop
+    //   264: goto -130 -> 134
+    //   267: astore_2
+    //   268: invokestatic 78	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   271: ifeq +13 -> 284
+    //   274: ldc_w 586
+    //   277: iconst_2
+    //   278: ldc_w 588
+    //   281: invokestatic 97	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   284: aload_0
+    //   285: getfield 33	com/tencent/mobileqq/data/MessageForGrayTips$HightlightClickableSpan:context	Landroid/content/Context;
+    //   288: aload 4
+    //   290: invokevirtual 592	android/content/Context:startActivity	(Landroid/content/Intent;)V
+    //   293: goto +26 -> 319
+    //   296: astore_2
+    //   297: invokestatic 78	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   300: ifeq +13 -> 313
+    //   303: ldc 80
+    //   305: iconst_2
+    //   306: aload_2
+    //   307: invokevirtual 595	android/content/pm/PackageManager$NameNotFoundException:getMessage	()Ljava/lang/String;
+    //   310: invokestatic 97	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   313: aload_0
+    //   314: aload_1
+    //   315: invokevirtual 248	com/tencent/mobileqq/data/MessageForGrayTips$HightlightClickableSpan:clickWebMsg	(Ljava/lang/String;)Z
+    //   318: ireturn
+    //   319: iconst_1
+    //   320: istore_3
+    //   321: iload_3
+    //   322: ireturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	322	0	this	HightlightClickableSpan
-    //   0	322	1	paramString1	String
-    //   0	322	2	paramString2	String
-    //   1	320	3	bool	boolean
-    //   59	229	4	localObject	Object
-    //   152	68	5	localanbg	anbg
+    //   0	323	0	this	HightlightClickableSpan
+    //   0	323	1	paramString1	String
+    //   0	323	2	paramString2	String
+    //   1	321	3	bool	boolean
+    //   59	230	4	localObject	Object
+    //   153	68	5	localaodv	aodv
     // Exception table:
     //   from	to	target	type
-    //   109	134	266	java/lang/Exception
-    //   134	236	266	java/lang/Exception
-    //   244	263	266	java/lang/Exception
-    //   61	104	295	android/content/pm/PackageManager$NameNotFoundException
-    //   109	134	295	android/content/pm/PackageManager$NameNotFoundException
-    //   134	236	295	android/content/pm/PackageManager$NameNotFoundException
-    //   244	263	295	android/content/pm/PackageManager$NameNotFoundException
-    //   267	283	295	android/content/pm/PackageManager$NameNotFoundException
-    //   283	292	295	android/content/pm/PackageManager$NameNotFoundException
+    //   109	134	267	java/lang/Exception
+    //   134	237	267	java/lang/Exception
+    //   245	264	267	java/lang/Exception
+    //   61	104	296	android/content/pm/PackageManager$NameNotFoundException
+    //   109	134	296	android/content/pm/PackageManager$NameNotFoundException
+    //   134	237	296	android/content/pm/PackageManager$NameNotFoundException
+    //   245	264	296	android/content/pm/PackageManager$NameNotFoundException
+    //   268	284	296	android/content/pm/PackageManager$NameNotFoundException
+    //   284	293	296	android/content/pm/PackageManager$NameNotFoundException
   }
   
   public boolean clickPluginMsg(String paramString1, String paramString2)
@@ -596,7 +620,7 @@ public class MessageForGrayTips$HightlightClickableSpan
     }
     try
     {
-      paramString1 = bfwg.a((QQAppInterface)this.mApp.get(), this.context, str);
+      paramString1 = bhey.a((QQAppInterface)this.mApp.get(), this.context, str);
       if (paramString1 != null)
       {
         paramString1.a();
@@ -637,19 +661,19 @@ public class MessageForGrayTips$HightlightClickableSpan
       paramString.a().showGiftPanel(true);
       return true;
     } while ((TextUtils.isEmpty(paramString)) || (!paramString.startsWith("mqzone://arouse/lovermainpage")) || (this.mApp == null));
-    avjp.a((QQAppInterface)this.mApp.get(), this.context, 2080, "");
+    awpu.a((QQAppInterface)this.mApp.get(), this.context, 2080, "");
     return false;
     label133:
     if (paramString.equals("http://imgcache.qq.com/lightalk/lightalk_pay/qq/index.html?_wv=1025&type=")) {
-      bcef.b(null, "CliOper", "", "", "0X80070EB", "0X80070EB", 0, 0, "", "", "", "");
+      bdla.b(null, "CliOper", "", "", "0X80070EB", "0X80070EB", 0, 0, "", "", "", "");
     }
-    aqvo.a(paramString);
+    arzh.a(paramString);
     if ((this.message != null) && ((this.message instanceof MessageForUniteGrayTip)) && (((MessageForUniteGrayTip)this.message).tipParam.b == 131078))
     {
-      bedt.a("Grp_AIO", "grey_clk", new String[] { this.message.frienduin });
-      bfyz.r(this.context, ((BaseActivity)this.context).app.getCurrentAccountUin(), this.message.frienduin);
+      bfkw.a("Grp_AIO", "grey_clk", new String[] { this.message.frienduin });
+      bhhr.r(this.context, ((BaseActivity)this.context).app.getCurrentAccountUin(), this.message.frienduin);
     }
-    if ((this.message != null) && (this.message.istroop == 1) && (avsc.a((BaseActivity)this.context, paramString, this.message)))
+    if ((this.message != null) && (this.message.istroop == 1) && (awyd.a((BaseActivity)this.context, paramString, this.message)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("MessageForGrayTips", 2, "mini app jump handled");
@@ -666,15 +690,15 @@ public class MessageForGrayTips$HightlightClickableSpan
     for (;;)
     {
       localIntent.putExtra("big_brother_source_key", str);
-      ugf.a(this.message, localIntent, paramString);
+      uuc.a(this.message, localIntent, paramString);
       this.context.startActivity(localIntent);
       paramString = (QQAppInterface)this.mApp.get();
       if ((paramString != null) && ((this.message instanceof MessageForGrayTips)) && (String.valueOf(11).equals(this.message.getExtInfoFromExtStr("gray_tips_serviceType")))) {
-        bcef.b(paramString, "dc00898", "", "", "0X8009328", "0X8009328", 0, 0, "", "", "", "");
+        bdla.b(paramString, "dc00898", "", "", "0X8009328", "0X8009328", 0, 0, "", "", "", "");
       }
       return true;
       if (this.message.istroop == 1008) {
-        str = ugf.b(this.message.frienduin);
+        str = uuc.b(this.message.frienduin);
       } else {
         str = "biz_src_jc_aio";
       }
@@ -697,13 +721,13 @@ public class MessageForGrayTips$HightlightClickableSpan
     Object localObject2;
     Object localObject1;
     int i;
-    label516:
-    label582:
-    label2284:
+    label520:
+    label587:
+    label2294:
     Object localObject4;
-    label896:
-    label2467:
-    label2520:
+    label902:
+    label2477:
+    label2530:
     boolean bool1;
     long l;
     int j;
@@ -786,13 +810,13 @@ public class MessageForGrayTips$HightlightClickableSpan
                                                         localObject1 = this.message.getExtInfoFromExtStr("uint64_busi_id");
                                                         i = 3;
                                                         if (this.message.istroop != 0) {
-                                                          break label516;
+                                                          break label520;
                                                         }
                                                         i = 1;
                                                       }
                                                       for (;;)
                                                       {
-                                                        bcef.b((QQAppInterface)localObject2, "CliOper", "", "", "0X800A561", "0X800A561", i, 0, "" + (String)localObject1, "" + paramView, "mqq", "");
+                                                        bdla.b((QQAppInterface)localObject2, "CliOper", "", "", "0X800A561", "0X800A561", i, 0, "" + (String)localObject1, "" + paramView, "mqq", "");
                                                         clickPluginMsg(this.item.mMsgActionData, this.item.mMsg_A_ActionData);
                                                         return;
                                                         if (this.message.istroop == 1) {
@@ -803,7 +827,7 @@ public class MessageForGrayTips$HightlightClickableSpan
                                                       clickAppMsg(this.item.mMsgActionData, this.item.mMsg_A_ActionData);
                                                       return;
                                                     case 4: 
-                                                      if (((TroopManager)((QQAppInterface)this.mApp.get()).getManager(52)).b(this.frienduin) != null) {
+                                                      if (((TroopManager)((QQAppInterface)this.mApp.get()).getManager(QQManagerFactory.TROOP_MANAGER)).b(this.frienduin) != null) {
                                                         break;
                                                       }
                                                       i = 2;
@@ -819,7 +843,7 @@ public class MessageForGrayTips$HightlightClickableSpan
                                                         if (!TextUtils.isEmpty(paramView))
                                                         {
                                                           ((Intent)localObject1).putExtra("scrollflag", paramView);
-                                                          bcef.b((QQAppInterface)this.mApp.get(), "P_CliOper", "invite_friend", "", "auto_pass", "clk_set_entry", 0, 0, this.frienduin, "", "", "");
+                                                          bdla.b((QQAppInterface)this.mApp.get(), "P_CliOper", "invite_friend", "", "auto_pass", "clk_set_entry", 0, 0, this.frienduin, "", "", "");
                                                         }
                                                         this.context.startActivity((Intent)localObject1);
                                                         return;
@@ -828,13 +852,13 @@ public class MessageForGrayTips$HightlightClickableSpan
                                                       paramView = (QQAppInterface)this.mApp.get();
                                                     }
                                                   } while ((this.context == null) || (paramView == null));
-                                                  aynd.a(paramView, this.context, this.frienduin, "" + this.item.uin, 4, -1);
+                                                  azry.a(paramView, this.context, this.frienduin, "" + this.item.uin, 4, -1);
                                                   return;
                                                   paramView = (QQAppInterface)this.mApp.get();
                                                 } while ((this.context == null) || (paramView == null));
-                                                aynd.a(paramView, this.context, this.frienduin, "" + this.item.uin, 4, -1);
+                                                azry.a(paramView, this.context, this.frienduin, "" + this.item.uin, 4, -1);
                                                 paramView = paramView.getCurrentAccountUin();
-                                                localObject1 = (TroopManager)((QQAppInterface)this.mApp.get()).getManager(52);
+                                                localObject1 = (TroopManager)((QQAppInterface)this.mApp.get()).getManager(QQManagerFactory.TROOP_MANAGER);
                                                 if (localObject1 == null) {
                                                   break;
                                                 }
@@ -845,7 +869,7 @@ public class MessageForGrayTips$HightlightClickableSpan
                                                 if (((TroopInfo)localObject1).isTroopOwner(paramView)) {}
                                                 for (paramView = "1";; paramView = "2")
                                                 {
-                                                  bftc.a("Grp_manage", "recall_msg", "clk_mberName", 0, 0, new String[] { this.frienduin, paramView });
+                                                  bhbu.a("Grp_manage", "recall_msg", "clk_mberName", 0, 0, new String[] { this.frienduin, paramView });
                                                   return;
                                                 }
                                               } while (this.context == null);
@@ -855,17 +879,17 @@ public class MessageForGrayTips$HightlightClickableSpan
                                               paramView.putExtra("edit_type", 0);
                                               paramView.putExtra("troopUin", this.frienduin);
                                               paramView.putExtra("uin", (String)localObject1);
-                                              paramView.putExtra("title", this.context.getResources().getString(2131697040));
+                                              paramView.putExtra("title", this.context.getResources().getString(2131697317));
                                               paramView.putExtra("isTroopNick", true);
                                               paramView.putExtra("default_text", (String)localObject2);
                                               paramView.putExtra("max_num", 60);
-                                              paramView.putExtra("default_hint", amtj.a(2131705728));
+                                              paramView.putExtra("default_hint", anvx.a(2131706079));
                                               paramView.putExtra("auto_remark", true);
                                               this.context.startActivity(paramView);
                                               return;
                                               paramView = new TroopInfoData();
                                               paramView.troopUin = this.frienduin;
-                                              localObject1 = (TroopManager)((QQAppInterface)this.mApp.get()).getManager(52);
+                                              localObject1 = (TroopManager)((QQAppInterface)this.mApp.get()).getManager(QQManagerFactory.TROOP_MANAGER);
                                             } while (localObject1 == null);
                                             localObject1 = ((TroopManager)localObject1).b(this.frienduin);
                                             if (localObject1 != null)
@@ -873,14 +897,14 @@ public class MessageForGrayTips$HightlightClickableSpan
                                               paramView.updateForTroopChatSetting((TroopInfo)localObject1, this.context.getResources(), ((QQAppInterface)this.mApp.get()).getCurrentAccountUin());
                                               paramView.isMember = true;
                                             }
-                                            new bflj((SplashActivity)this.context, paramView).a(paramView);
+                                            new bgua((SplashActivity)this.context, paramView).a(paramView);
                                             return;
                                             if (QLog.isColorLevel()) {
                                               QLog.d("reactive", 2, "onclick graytip");
                                             }
-                                            bcef.b(null, "dc00898", "", "", "0X8007603", "0X8007603", 0, 0, "", "", "", "");
+                                            bdla.b(null, "dc00898", "", "", "0X8007603", "0X8007603", 0, 0, "", "", "", "");
                                             paramView = new Intent(this.context, QQBrowserActivity.class);
-                                            localObject1 = apyz.a().a(this.frienduin);
+                                            localObject1 = arcc.a().a(this.frienduin);
                                             if (QLog.isColorLevel()) {
                                               QLog.d("MessageForGrayTips", 2, String.format("goToC2CWebPage, url: %s", new Object[] { localObject1 }));
                                             }
@@ -895,16 +919,16 @@ public class MessageForGrayTips$HightlightClickableSpan
                                             {
                                               paramView = ((MessageForUniteGrayTip)this.message).tipParam;
                                               if ((paramView != null) && (2097154 == paramView.b)) {
-                                                bcef.b((QQAppInterface)this.mApp.get(), "dc00898", "", "", "qq_vip", "0X8009CA7", 0, 0, "", "", "", "");
+                                                bdla.b((QQAppInterface)this.mApp.get(), "dc00898", "", "", "qq_vip", "0X8009CA7", 0, 0, "", "", "", "");
                                               }
                                               if (paramView != null) {
-                                                awfm.b((QQAppInterface)localObject2, (MessageForUniteGrayTip)this.message, paramView.b);
+                                                axlo.b((QQAppInterface)localObject2, (MessageForUniteGrayTip)this.message, paramView.b);
                                               }
                                             }
                                           } while ((this.message == null) || (!(this.message instanceof MessageForUniteGrayTip)));
                                           paramView = ((MessageForUniteGrayTip)this.message).tipParam;
                                         } while ((paramView == null) || (2097155 != paramView.b));
-                                        bcef.b((QQAppInterface)this.mApp.get(), "dc00898", "", "", "0X800A1BD", "0X800A1BD", 0, 0, "", "", "", "");
+                                        bdla.b((QQAppInterface)this.mApp.get(), "dc00898", "", "", "0X800A1BD", "0X800A1BD", 0, 0, "", "", "", "");
                                         return;
                                         if (QLog.isColorLevel()) {
                                           QLog.d("specialCare", 2, "onclick graytip");
@@ -921,18 +945,18 @@ public class MessageForGrayTips$HightlightClickableSpan
                                         paramView.putExtra("param_groupcode", this.frienduin);
                                         paramView.putExtra("param_type", 1);
                                         paramView.putExtra("param_subtype", 1);
-                                        paramView.putExtra("param_done_button_wording", this.context.getString(2131696766));
+                                        paramView.putExtra("param_done_button_wording", this.context.getString(2131697033));
                                         paramView.putExtra("param_only_friends", true);
                                         paramView.putExtra("param_is_troop_admin", true);
-                                        paramView.putExtra("param_title", this.context.getString(2131695546));
+                                        paramView.putExtra("param_title", this.context.getString(2131695798));
                                         paramView.putExtra("param_max", 100);
                                         this.context.startActivity(paramView);
                                         return;
-                                        paramView = ((TroopManager)((QQAppInterface)this.mApp.get()).getManager(52)).c(this.frienduin);
+                                        paramView = ((TroopManager)((QQAppInterface)this.mApp.get()).getManager(QQManagerFactory.TROOP_MANAGER)).c(this.frienduin);
                                       } while (paramView == null);
                                       localObject1 = new Intent(this.context, EditInfoActivity.class);
                                       ((Intent)localObject1).putExtra("edit_type", 2);
-                                      ((Intent)localObject1).putExtra("title", amtj.a(2131705740));
+                                      ((Intent)localObject1).putExtra("title", anvx.a(2131706091));
                                       if (paramView.hasSetNewTroopName) {
                                         ((Intent)localObject1).putExtra("default_text", paramView.troopname);
                                       }
@@ -940,59 +964,59 @@ public class MessageForGrayTips$HightlightClickableSpan
                                       ((Intent)localObject1).putExtra("canPostNull", false);
                                       ((Activity)this.context).startActivityForResult((Intent)localObject1, 13010);
                                       return;
-                                      beyy.a(this.context, this.frienduin);
-                                      bftc.a("Grp_edu", "Grp_AIO", "graybar_showmore", 0, 0, new String[] { this.frienduin });
+                                      bghd.a(this.context, this.frienduin);
+                                      bhbu.a("Grp_edu", "Grp_AIO", "graybar_showmore", 0, 0, new String[] { this.frienduin });
                                       return;
                                     } while ((this.message == null) || (!(this.message instanceof MessageForUniteGrayTip)));
                                     paramView = (MessageForUniteGrayTip)this.message;
                                   } while (this.mApp == null);
-                                  localObject1 = (bing)((QQAppInterface)this.mApp.get()).getBusinessHandler(85);
+                                  localObject1 = (bjyi)((QQAppInterface)this.mApp.get()).getBusinessHandler(BusinessHandlerFactory.QIDIAN_HANDLER);
                                 } while (localObject1 == null);
-                                ((bing)localObject1).a(paramView.extUin, paramView.masterUin, paramView.taskId, paramView.uniseq, paramView.istroop);
+                                ((bjyi)localObject1).a(paramView.extUin, paramView.masterUin, paramView.taskId, paramView.uniseq, paramView.istroop);
                                 return;
                                 paramView = new Intent(this.context, EditActivity.class);
-                                paramView.putExtra("title", 2131693102).putExtra("current", this.item.remark).putExtra("action", 103).putExtra("limit", 96).putExtra("canPostNull", true).putExtra("multiLine", false);
+                                paramView.putExtra("title", 2131693270).putExtra("current", this.item.remark).putExtra("action", 103).putExtra("limit", 96).putExtra("canPostNull", true).putExtra("multiLine", false);
                                 if ((this.context instanceof BaseActivity)) {
                                   ((BaseActivity)this.context).startActivityForResult(paramView, 13008);
                                 }
                                 for (;;)
                                 {
-                                  bcef.b((QQAppInterface)this.mApp.get(), "dc00898", "", "", "0X800797A", "0X800797A", 0, 0, "", "", "", "");
+                                  bdla.b((QQAppInterface)this.mApp.get(), "dc00898", "", "", "0X800797A", "0X800797A", 0, 0, "", "", "", "");
                                   if (!"from_batch_add_frd_for_troop".equals(this.item.mMsgActionData)) {
                                     break;
                                   }
-                                  bcef.b((QQAppInterface)this.mApp.get(), "dc00899", "Grp_addFrd", "", "Frd_AIO", "setRefTips_clk", 0, 0, "", "", "", "");
+                                  bdla.b((QQAppInterface)this.mApp.get(), "dc00899", "Grp_addFrd", "", "Frd_AIO", "setRefTips_clk", 0, 0, "", "", "", "");
                                   return;
                                   this.context.startActivity(paramView);
                                 }
                                 paramView = new Intent(this.context, MoveToGroupActivity.class);
                                 i = this.item.groupId;
                                 if ((i != -1) && ((i != 0) || (!"from_batch_add_frd_for_troop".equals(this.item.mMsgActionData)))) {
-                                  break label6959;
+                                  break label7066;
                                 }
-                                localObject1 = ((amsw)((QQAppInterface)this.mApp.get()).getManager(51)).e(this.frienduin);
+                                localObject1 = ((anvk)((QQAppInterface)this.mApp.get()).getManager(QQManagerFactory.FRIENDS_MANAGER)).e(this.frienduin);
                                 if (localObject1 != null)
                                 {
                                   i = ((Friends)localObject1).groupid;
                                   paramView.putExtra("friendUin", this.frienduin).putExtra("mgid", (byte)i);
                                   if (!(this.context instanceof BaseActivity)) {
-                                    break label2467;
+                                    break label2477;
                                   }
                                   ((BaseActivity)this.context).startActivityForResult(paramView, 13009);
                                 }
                                 for (;;)
                                 {
-                                  bcef.b((QQAppInterface)this.mApp.get(), "dc00898", "", "", "0X8007979", "0X8007979", 0, 0, "", "", "", "");
+                                  bdla.b((QQAppInterface)this.mApp.get(), "dc00898", "", "", "0X8007979", "0X8007979", 0, 0, "", "", "", "");
                                   if (!"from_batch_add_frd_for_troop".equals(this.item.mMsgActionData)) {
                                     break;
                                   }
                                   if (QLog.isDevelopLevel()) {
                                     QLog.i("MessageForGrayTips", 4, String.format(Locale.getDefault(), "ACTION_FRIEND_GROUP_SETTING gid: %s, groupId: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(this.item.groupId) }));
                                   }
-                                  bcef.b((QQAppInterface)this.mApp.get(), "dc00899", "Grp_addFrd", "", "Frd_AIO", "setGrpTips_clk", 0, 0, "", "", "", "");
+                                  bdla.b((QQAppInterface)this.mApp.get(), "dc00899", "Grp_addFrd", "", "Frd_AIO", "setGrpTips_clk", 0, 0, "", "", "", "");
                                   return;
                                   i = 0;
-                                  break label2284;
+                                  break label2294;
                                   this.context.startActivity(paramView);
                                 }
                                 if ((this.message == null) || (this.message.msg == null)) {
@@ -1006,7 +1030,7 @@ public class MessageForGrayTips$HightlightClickableSpan
                             } while ((localObject4 == null) || (((ChatFragment)localObject4).a() == null));
                             localObject4 = ((ChatFragment)localObject4).a();
                             ((BaseChatPie)localObject4).input.setText("");
-                            localObject1 = bevq.a((QQAppInterface)this.mApp.get(), this.context, this.frienduin, (String)localObject1, (String)localObject2, false, ((BaseChatPie)localObject4).input, true);
+                            localObject1 = bgcz.a((QQAppInterface)this.mApp.get(), this.context, this.frienduin, (String)localObject1, (String)localObject2, false, ((BaseChatPie)localObject4).input, true);
                             ((BaseChatPie)localObject4).input.setText((CharSequence)localObject1);
                             ((BaseChatPie)localObject4).input.append(paramView);
                             ((BaseChatPie)localObject4).input.setSelection(((BaseChatPie)localObject4).input.getText().length());
@@ -1030,7 +1054,7 @@ public class MessageForGrayTips$HightlightClickableSpan
                                 if (!TextUtils.isEmpty((CharSequence)localObject2))
                                 {
                                   bool1 = true;
-                                  paramView = bevq.a((QQAppInterface)this.mApp.get(), this.context, this.frienduin, paramView, (String)localObject1, false, ((BaseChatPie)localObject4).input, true, bool1);
+                                  paramView = bgcz.a((QQAppInterface)this.mApp.get(), this.context, this.frienduin, paramView, (String)localObject1, false, ((BaseChatPie)localObject4).input, true, bool1);
                                   ((BaseChatPie)localObject4).input.setText(paramView);
                                   ((BaseChatPie)localObject4).input.append((CharSequence)localObject2);
                                   ((BaseChatPie)localObject4).input.setSelection(((BaseChatPie)localObject4).input.getText().length());
@@ -1044,8 +1068,8 @@ public class MessageForGrayTips$HightlightClickableSpan
                               }
                               bool1 = false;
                             }
-                            wmu.a(this.context, this.item.mMsgActionData, "HightLight_Feed_Id", 1005);
-                            xwa.a("story_grp", "aio_grey", 0, 0, new String[] { "", "", "", "" });
+                            xbp.a(this.context, this.item.mMsgActionData, "HightLight_Feed_Id", 1005);
+                            ykv.a("story_grp", "aio_grey", 0, 0, new String[] { "", "", "", "" });
                             return;
                             paramView = this.item.mMsgActionData;
                           } while (TextUtils.isEmpty(paramView));
@@ -1090,28 +1114,28 @@ public class MessageForGrayTips$HightlightClickableSpan
                           }
                         } while ((this.message == null) || (!(this.message instanceof MessageForUniteGrayTip)));
                         paramView = ((MessageForUniteGrayTip)this.message).tipParam;
-                        i = bfic.a(bfic.a(paramView.d, 0));
-                        paramView = bfic.a(paramView.d, 1);
-                        azwg.a(this.context, (QQAppInterface)this.mApp.get(), this.item.mMsgActionData, this.item.mMsg_A_ActionData, i, paramView);
+                        i = bgqt.a(bgqt.a(paramView.d, 0));
+                        paramView = bgqt.a(paramView.d, 1);
+                        bbcm.a(this.context, (QQAppInterface)this.mApp.get(), this.item.mMsgActionData, this.item.mMsg_A_ActionData, i, paramView);
                         return;
                         localObject4 = this.frienduin;
                         i = this.message.istroop;
                         j = this.message.getConfessTopicId();
                         localObject5 = new ConfessInfo();
                         ((ConfessInfo)localObject5).parseFromJsonStr(this.message.getExtInfoFromExtStr("ext_key_confess_info"));
-                      } while ((!(this.context instanceof FragmentActivity)) || (((FragmentActivity)this.context).isFinishing()) || (abwz.a(i) != 1032));
+                      } while ((!(this.context instanceof FragmentActivity)) || (((FragmentActivity)this.context).isFinishing()) || (acnh.a(i) != 1032));
                       localObject6 = ((FragmentActivity)this.context).getChatFragment().a();
                       localObject1 = null;
                       paramView = (View)localObject1;
                       if (localObject6 != null)
                       {
                         paramView = (View)localObject1;
-                        if ((localObject6 instanceof ahey)) {
-                          paramView = (ahey)localObject6;
+                        if ((localObject6 instanceof ahzq)) {
+                          paramView = (ahzq)localObject6;
                         }
                       }
                     } while (paramView == null);
-                    paramView = bfur.a(this.context, 0, aprw.f, aprw.g, 2131690620, 2131694201, new aqrc(this, (QQAppInterface)localObject2, (String)localObject4, i, j, (ConfessInfo)localObject5, paramView), new aqrd(this));
+                    paramView = bhdj.a(this.context, 0, aquz.f, aquz.g, 2131690697, 2131694399, new arun(this, (QQAppInterface)localObject2, (String)localObject4, i, j, (ConfessInfo)localObject5, paramView), new aruo(this));
                   } while (((FragmentActivity)this.context).isFinishing());
                   paramView.show();
                   return;
@@ -1119,8 +1143,8 @@ public class MessageForGrayTips$HightlightClickableSpan
                 paramView = ((FragmentActivity)this.context).getChatFragment();
               } while ((paramView == null) || (paramView.a() == null));
               paramView = paramView.a();
-            } while (!(paramView instanceof ahdt));
-            ((ahdt)paramView).a(this.item.mMsgActionData);
+            } while (!(paramView instanceof ahyl));
+            ((ahyl)paramView).a(this.item.mMsgActionData);
             return;
             if (!BaseChatItemLayout.a) {
               break;
@@ -1141,7 +1165,7 @@ public class MessageForGrayTips$HightlightClickableSpan
         }
         localObject1 = ((FragmentActivity)this.context).getChatFragment();
       } while ((localObject1 == null) || (((ChatFragment)localObject1).a() == null));
-      aucg.a(this.message);
+      avia.a(this.message);
       localObject1 = ((ChatFragment)localObject1).a();
       if ((((BaseChatPie)localObject1).input != null) && (((BaseChatPie)localObject1).input.getEditableText() != null)) {
         break;
@@ -1190,8 +1214,8 @@ public class MessageForGrayTips$HightlightClickableSpan
       if (i < ((JSONArray)localObject2).length())
       {
         localObject4 = ((JSONArray)localObject2).getJSONObject(i);
-        localObject5 = ((JSONObject)localObject4).optString(bbkv.k);
-        int n = ((JSONObject)localObject4).optInt(bbkv.l);
+        localObject5 = ((JSONObject)localObject4).optString(bcrn.k);
+        int n = ((JSONObject)localObject4).optInt(bcrn.l);
         localObject4 = new JSONArray((String)localObject5);
         if ((localObject4 != null) && (((JSONArray)localObject4).length() == 0))
         {
@@ -1199,7 +1223,7 @@ public class MessageForGrayTips$HightlightClickableSpan
         }
         else
         {
-          label3835:
+          label3845:
           if (j < ((JSONArray)localObject4).length())
           {
             localObject5 = ((JSONArray)localObject4).getJSONObject(j);
@@ -1220,10 +1244,11 @@ public class MessageForGrayTips$HightlightClickableSpan
             String str = this.frienduin;
             XEditTextEx localXEditTextEx = ((BaseChatPie)localObject1).input;
             if (n != 1) {
-              break label6980;
+              break label7087;
             }
             bool1 = true;
-            localObject5 = bevq.a((QQAppInterface)localObject7, localContext, str, (String)localObject5, (String)localObject6, false, localXEditTextEx, bool1);
+            label4006:
+            localObject5 = bgcz.a((QQAppInterface)localObject7, localContext, str, (String)localObject5, (String)localObject6, false, localXEditTextEx, bool1);
             if ((localObject5 == null) || (((SpannableString)localObject5).length() == 0)) {
               break;
             }
@@ -1248,7 +1273,6 @@ public class MessageForGrayTips$HightlightClickableSpan
             ((BaseChatPie)localObject1).input.getEditableText().insert(k, (CharSequence)localObject5);
             break;
           }
-          label3996:
           i += 1;
           continue;
           if (QLog.isColorLevel()) {
@@ -1262,392 +1286,416 @@ public class MessageForGrayTips$HightlightClickableSpan
     {
       for (;;)
       {
-        try
+        for (;;)
         {
-          if (!(this.message instanceof MessageForUniteGrayTip)) {
-            break label6948;
+          try
+          {
+            if (!(this.message instanceof MessageForUniteGrayTip)) {
+              break label7055;
+            }
+            paramView = (MessageForUniteGrayTip)this.message;
+            if (paramView.istroop != 0) {
+              continue;
+            }
+            if (!paramView.senderuin.equals(localJSONException.getCurrentAccountUin())) {
+              continue;
+            }
+            i = 1;
+            bdla.b((QQAppInterface)this.mApp.get(), "dc00898", "", "", "0X800A613", "0X800A613", 0, 0, i + "", "", "", "");
           }
-          paramView = (MessageForUniteGrayTip)this.message;
-          if (paramView.istroop != 0) {
+          catch (RuntimeException paramView)
+          {
+            boolean bool2;
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.i("MessageForGrayTips", 1, "0X800A613", paramView);
             continue;
           }
-          if (!paramView.senderuin.equals(localJSONException.getCurrentAccountUin())) {
-            continue;
-          }
-          i = 1;
-          bcef.b((QQAppInterface)this.mApp.get(), "dc00898", "", "", "0X800A613", "0X800A613", 0, 0, i + "", "", "", "");
-        }
-        catch (RuntimeException paramView)
-        {
-          boolean bool2;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.i("MessageForGrayTips", 1, "0X800A613", paramView);
+          admh.a(this.context, localJSONException, (ChatMessage)this.message);
+          return;
+          i = 2;
           continue;
-        }
-        acvv.a(this.context, localJSONException, (ChatMessage)this.message);
-        return;
-        i = 2;
-        continue;
-        if (paramView.istroop == 1)
-        {
-          bool1 = TroopUtils.isTroopOwner(localJSONException, this.message.frienduin, localJSONException.getCurrentUin());
-          bool2 = TroopUtils.isTroopAdmin(localJSONException, this.message.frienduin, localJSONException.getCurrentUin());
-          localObject1 = paramView.tipParam.c;
-          localObject4 = amtj.a(2131705732) + localJSONException.getApp().getString(2131697173);
-          if (bool1)
+          if (paramView.istroop == 1)
           {
-            if (((String)localObject1).startsWith((String)localObject4))
+            bool1 = TroopUtils.isTroopOwner(localJSONException, this.message.frienduin, localJSONException.getCurrentUin());
+            bool2 = TroopUtils.isTroopAdmin(localJSONException, this.message.frienduin, localJSONException.getCurrentUin());
+            localObject1 = paramView.tipParam.c;
+            localObject4 = anvx.a(2131706083) + localJSONException.getApp().getString(2131697450);
+            if (bool1)
             {
-              i = 3;
-              break label6986;
+              if (((String)localObject1).startsWith((String)localObject4))
+              {
+                i = 3;
+                break label7093;
+              }
+              if (!paramView.senderuin.equals(localJSONException.getCurrentAccountUin())) {
+                break label7096;
+              }
+              i = 4;
+              break label7093;
+            }
+            if (bool2)
+            {
+              if (((String)localObject1).startsWith((String)localObject4))
+              {
+                i = 5;
+                break label7093;
+              }
+              if (!paramView.senderuin.equals(localJSONException.getCurrentAccountUin())) {
+                break label7102;
+              }
+              i = 6;
+              break label7093;
             }
             if (!paramView.senderuin.equals(localJSONException.getCurrentAccountUin())) {
-              break label6989;
+              break label7108;
             }
-            i = 4;
-            break label6986;
+            i = 7;
+            break label7093;
           }
-          if (bool2)
+          if (paramView.istroop == 3000)
           {
-            if (((String)localObject1).startsWith((String)localObject4))
-            {
-              i = 5;
-              break label6986;
-            }
             if (!paramView.senderuin.equals(localJSONException.getCurrentAccountUin())) {
-              break label6995;
+              break label7114;
             }
-            i = 6;
-            break label6986;
-          }
-          if (!paramView.senderuin.equals(localJSONException.getCurrentAccountUin())) {
-            break label7001;
-          }
-          i = 7;
-          break label6986;
-        }
-        if (paramView.istroop == 3000)
-        {
-          if (!paramView.senderuin.equals(localJSONException.getCurrentAccountUin())) {
-            break label7007;
-          }
-          i = 9;
-        }
-        else
-        {
-          bool1 = paramView.senderuin.equals(localJSONException.getCurrentAccountUin());
-          if (bool1)
-          {
-            i = 11;
+            i = 9;
           }
           else
           {
-            i = 12;
-            continue;
-            if ((!(this.context instanceof ChatActivity)) && (!(this.context instanceof SplashActivity))) {
-              break;
-            }
-            paramView = (FragmentActivity)this.context;
-            if ((paramView.getChatFragment() != null) && (paramView.getChatFragment().a() != null) && ((this.message instanceof ChatMessage)))
+            bool1 = paramView.senderuin.equals(localJSONException.getCurrentAccountUin());
+            if (bool1)
             {
-              paramView.getChatFragment().a().startDelAnimAndDelMsg((ChatMessage)this.message);
-              ((bedt)localJSONException.getManager(231)).a(this.item.mMsgActionData);
-              if (QLog.isColorLevel()) {
-                QLog.d("TroopEnterEffect", 2, "click nolongerPrompt id = " + this.item.mMsgActionData);
-              }
+              i = 11;
             }
-            if ((this.message == null) || (!(this.message instanceof MessageForUniteGrayTip))) {
-              break;
-            }
-            paramView = ((MessageForUniteGrayTip)this.message).tipParam;
-            if (paramView == null) {
-              break;
-            }
-            switch (paramView.b)
+            else
             {
-            default: 
-              return;
-            }
-            VasWebviewUtil.reportCommercialDrainage(localJSONException.getCurrentUin(), "style", "0X8009133", "", 1, 0, 0, "", "", "3");
-            return;
-            if (this.context != null) {
-              bgge.a(this.item.mMsgActionData, this.context);
-            }
-            if ((this.mApp.get() == null) || (this.message == null) || (!(this.message instanceof MessageForUniteGrayTip))) {
-              break;
-            }
-            paramView = ((MessageForUniteGrayTip)this.message).tipParam;
-            if (paramView == null) {
-              break;
-            }
-            switch (paramView.b)
-            {
-            default: 
-              return;
-            }
-            VasWebviewUtil.reportCommercialDrainage(((QQAppInterface)this.mApp.get()).getCurrentUin(), "style", "0X8009133", "", 1, 0, 0, "", "", "1");
-            return;
-            if ((this.mApp.get() == null) || (this.message == null) || (!(this.message instanceof MessageForUniteGrayTip))) {
-              break;
-            }
-            avjp.a((QQAppInterface)this.mApp.get(), this.context, 2080, "6");
-            return;
-            if (bcvs.a()) {
-              break;
-            }
-            try
-            {
-              paramView = String.valueOf(this.item.uin);
-              localObject1 = this.item.mMsg_A_ActionData;
-              localObject3 = this.item.mMsgActionData.split("@#@");
-              localObject4 = localObject3[0];
-              l = Long.parseLong(localObject3[1]);
-              i = this.message.istroop;
-              localObject1 = bcvs.a((String)localObject4, paramView, (String)localObject1);
-              QLog.i("MessageForGrayTips" + bctz.i, 1, "click to modify tencent docs auth. frienduin = " + paramView + ", uinType = " + i + ", msgSeq = " + l + ", docsGrayTipsInfo = " + localObject1);
-              if (localObject1 == null) {
+              i = 12;
+              continue;
+              if ((!(this.context instanceof ChatActivity)) && (!(this.context instanceof SplashActivity))) {
                 break;
               }
-              if (((DocsGrayTipsInfo)localObject1).s.equals(bctz.k))
+              paramView = (FragmentActivity)this.context;
+              if ((paramView.getChatFragment() != null) && (paramView.getChatFragment().a() != null) && ((this.message instanceof ChatMessage)))
               {
-                paramView = ((DocsGrayTipsInfo)localObject1).t;
-                if (TextUtils.isEmpty(paramView)) {
+                paramView.getChatFragment().a().startDelAnimAndDelMsg((ChatMessage)this.message);
+                ((bfkw)localJSONException.getManager(QQManagerFactory.TROOP_ENTER_EFFECT_MANAGER)).a(this.item.mMsgActionData);
+                if (QLog.isColorLevel()) {
+                  QLog.d("TroopEnterEffect", 2, "click nolongerPrompt id = " + this.item.mMsgActionData);
+                }
+              }
+              if ((this.message == null) || (!(this.message instanceof MessageForUniteGrayTip))) {
+                break;
+              }
+              paramView = ((MessageForUniteGrayTip)this.message).tipParam;
+              if (paramView == null) {
+                break;
+              }
+              switch (paramView.b)
+              {
+              default: 
+                return;
+              }
+              VasWebviewUtil.reportCommercialDrainage(localJSONException.getCurrentUin(), "style", "0X8009133", "", 1, 0, 0, "", "", "3");
+              return;
+              if (this.context != null) {
+                bhoy.a(this.item.mMsgActionData, this.context);
+              }
+              if ((this.mApp.get() == null) || (this.message == null) || (!(this.message instanceof MessageForUniteGrayTip))) {
+                break;
+              }
+              paramView = ((MessageForUniteGrayTip)this.message).tipParam;
+              if (paramView == null) {
+                break;
+              }
+              switch (paramView.b)
+              {
+              default: 
+                return;
+              }
+              VasWebviewUtil.reportCommercialDrainage(((QQAppInterface)this.mApp.get()).getCurrentUin(), "style", "0X8009133", "", 1, 0, 0, "", "", "1");
+              return;
+              if ((this.mApp.get() == null) || (this.message == null) || (!(this.message instanceof MessageForUniteGrayTip))) {
+                break;
+              }
+              awpu.a((QQAppInterface)this.mApp.get(), this.context, 2080, "6");
+              return;
+              if (becr.a()) {
+                break;
+              }
+              try
+              {
+                paramView = String.valueOf(this.item.uin);
+                localObject1 = this.item.mMsg_A_ActionData;
+                localObject3 = this.item.mMsgActionData.split("@#@");
+                localObject4 = localObject3[0];
+                l = Long.parseLong(localObject3[1]);
+                i = this.message.istroop;
+                localObject1 = becr.a((String)localObject4, paramView, (String)localObject1);
+                QLog.i("MessageForGrayTips" + beay.i, 1, "click to modify tencent docs auth. frienduin = " + paramView + ", uinType = " + i + ", msgSeq = " + l + ", docsGrayTipsInfo = " + localObject1);
+                if (localObject1 == null) {
                   break;
                 }
-                bcvs.a(this.context, paramView);
-                bcef.b(null, "dc00898", "", "", "0X8009C79", "0X8009C79", 0, 0, "", "", "", "");
+                if (((DocsGrayTipsInfo)localObject1).s.equals(beay.k))
+                {
+                  paramView = ((DocsGrayTipsInfo)localObject1).t;
+                  if (TextUtils.isEmpty(paramView)) {
+                    break;
+                  }
+                  becr.a(this.context, paramView);
+                  bdla.b(null, "dc00898", "", "", "0X8009C79", "0X8009C79", 0, 0, "", "", "", "");
+                  return;
+                }
+              }
+              catch (Exception paramView)
+              {
+                QLog.e("MessageForGrayTips" + beay.i, 1, " docs gray tips action exception =" + paramView.toString());
                 return;
               }
             }
-            catch (Exception paramView)
-            {
-              QLog.e("MessageForGrayTips" + bctz.i, 1, " docs gray tips action exception =" + paramView.toString());
-              return;
-            }
           }
         }
-      }
-      paramView = (bcvc)((QQAppInterface)this.mApp.get()).getBusinessHandler(122);
-      if (i == 1)
-      {
-        paramView.b((DocsGrayTipsInfo)localObject1, l);
-        return;
-      }
-      paramView.a((DocsGrayTipsInfo)localObject1, l);
-      return;
-      Object localObject3 = (QQAppInterface)this.mApp.get();
-      if ((localObject3 == null) || (!aprw.a((AppInterface)localObject3))) {
-        break;
-      }
-      if (this.message.isSelfConfessor()) {
-        paramView = ((QQAppInterface)localObject3).getAccount();
-      }
-      for (localObject1 = this.message.frienduin;; localObject1 = ((QQAppInterface)localObject3).getAccount())
-      {
-        aprw.b((QQAppInterface)localObject3, apse.a(this.message.frienduin, this.message.istroop, this.message.getConfessTopicId()), false);
-        localObject4 = (aprx)((QQAppInterface)localObject3).getBusinessHandler(125);
-        if (localObject4 != null) {
-          ((aprx)localObject4).notifyUI(9, true, new Object[] { this.message.frienduin, Integer.valueOf(this.message.getConfessTopicId()), Integer.valueOf(this.message.istroop) });
-        }
-        aprw.a((AppInterface)localObject3, this.context, paramView, (String)localObject1, this.message.getConfessTopicId(), this.message.isSelfConfessor());
-        bcef.b((QQAppInterface)localObject3, "dc00898", "", "", "0X8009574", "0X8009574", 0, 0, this.message.getConfessTopicId() + "", "", paramView, (String)localObject1);
-        return;
-        paramView = this.message.frienduin;
-      }
-      i = this.message.istroop;
-      if ((i != 1044) && (i != 1045)) {
-        break;
-      }
-      auyo.a(this.context, this.frienduin, this.item.mMsgActionData, this.item.mMsg_A_ActionData);
-      return;
-      if (this.context == null) {
-        break;
-      }
-      PublicFragmentActivity.a(this.context, TempMsgSettingFragment.class);
-      j = 0;
-      try
-      {
-        i = Integer.parseInt(this.item.mMsgActionData);
-        bcef.b(null, "dc00898", "", "", "0X800997A", "0X800997A", i, i, "", "", "", "");
-        return;
-      }
-      catch (NumberFormatException paramView)
-      {
-        for (;;)
+        paramView = (becb)((QQAppInterface)this.mApp.get()).getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_HANDLER);
+        if (i == 1)
         {
-          i = j;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("MessageForGrayTips", 2, "NumberFormatException: " + this.item.mMsgActionData);
-            i = j;
-          }
+          paramView.b((DocsGrayTipsInfo)localObject1, l);
+          return;
         }
-      }
-      paramView = TroopInfoActivity.a(this.item.mMsgActionData, 2);
-      paramView.putInt("t_s_f", 1000);
-      TroopUtils.openTroopInfoActivity(this.context, paramView, 2);
-      bcef.b(null, "dc00898", "", "", "0X800997B", "0X800997B", 0, 0, "", "", "", "");
-      return;
-      if (anoh.d) {
-        this.context.startActivity(anoh.a);
-      }
-      for (;;)
-      {
+        paramView.a((DocsGrayTipsInfo)localObject1, l);
+        return;
+        Object localObject3 = (QQAppInterface)this.mApp.get();
+        if ((localObject3 == null) || (!aquz.a((AppInterface)localObject3))) {
+          break;
+        }
+        if (this.message.isSelfConfessor()) {
+          paramView = ((QQAppInterface)localObject3).getAccount();
+        }
+        for (localObject1 = this.message.frienduin;; localObject1 = ((QQAppInterface)localObject3).getAccount())
+        {
+          aquz.b((QQAppInterface)localObject3, aqvh.a(this.message.frienduin, this.message.istroop, this.message.getConfessTopicId()), false);
+          localObject4 = (aqva)((QQAppInterface)localObject3).getBusinessHandler(BusinessHandlerFactory.CONFESS_HANDLER);
+          if (localObject4 != null) {
+            ((aqva)localObject4).notifyUI(9, true, new Object[] { this.message.frienduin, Integer.valueOf(this.message.getConfessTopicId()), Integer.valueOf(this.message.istroop) });
+          }
+          aquz.a((AppInterface)localObject3, this.context, paramView, (String)localObject1, this.message.getConfessTopicId(), this.message.isSelfConfessor());
+          bdla.b((QQAppInterface)localObject3, "dc00898", "", "", "0X8009574", "0X8009574", 0, 0, this.message.getConfessTopicId() + "", "", paramView, (String)localObject1);
+          return;
+          paramView = this.message.frienduin;
+        }
+        i = this.message.istroop;
+        if ((i != 1044) && (i != 1045)) {
+          break;
+        }
+        aweo.a(this.context, this.frienduin, this.item.mMsgActionData, this.item.mMsg_A_ActionData);
+        return;
+        if (this.context == null) {
+          break;
+        }
+        PublicFragmentActivity.a(this.context, TempMsgSettingFragment.class);
+        j = 0;
         try
         {
           i = Integer.parseInt(this.item.mMsgActionData);
-          bcef.b(null, "dc00898", "", "", "0X8009AD0", "0X8009AD0", i, i, "", "", "", "");
+          bdla.b(null, "dc00898", "", "", "0X800997A", "0X800997A", i, i, "", "", "", "");
           return;
         }
-        catch (NumberFormatException paramView) {}
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("MessageForGrayTips", 2, "NumberFormatException: " + this.item.mMsgActionData);
-        return;
-        if (this.mApp != null) {
-          ThreadManager.executeOnSubThread(new MessageForGrayTips.HightlightClickableSpan.3(this));
-        } else if (QLog.isColorLevel()) {
-          QLog.d("MessageForGrayTips", 2, "ACTION_FROM_MESSAGE_GOTO_PUSH_NOTIFICATION_SWITCH_SETTING= mApp==null");
-        }
-      }
-      bdct.a((QQAppInterface)this.mApp.get()).a((BaseActivity)this.context, 2, 1, this.message.frienduin, 0L, 10, new Bundle());
-      return;
-      paramView = new Intent(this.context, AssistantSettingActivity.class);
-      this.context.startActivity(paramView);
-      return;
-      paramView = this.item.mMsg_A_ActionData;
-      localObject1 = this.item.mMsgActionData;
-      if ((!TextUtils.isEmpty(paramView)) && (paramView.contains("docs.qq.com/form"))) {
-        bcvs.a(this.context, paramView, (String)localObject1);
-      }
-      for (;;)
-      {
-        bcef.b(null, "dc00898", "", this.frienduin, "0X8009FD1", "0X8009FD1", 0, 0, "", "", "", "");
-        return;
-        if (bcvs.a(paramView)) {
-          MiniAppLauncher.startMiniApp(this.context, paramView, 0, null);
-        }
-      }
-      if ((this.context instanceof FragmentActivity))
-      {
-        paramView = ((FragmentActivity)this.context).getChatFragment();
-        if ((paramView != null) && (paramView.a() != null))
+        catch (NumberFormatException paramView)
         {
-          paramView = paramView.a();
-          if ((paramView instanceof afiw)) {
-            ((afiw)paramView).a();
+          for (;;)
+          {
+            i = j;
+            if (QLog.isColorLevel())
+            {
+              QLog.d("MessageForGrayTips", 2, "NumberFormatException: " + this.item.mMsgActionData);
+              i = j;
+            }
           }
         }
-      }
-      bcef.b((QQAppInterface)this.mApp.get(), "dc00898", "", "", "0X800A013", "0X800A013", 0, 0, "", "", "", "");
-      return;
-      paramView = new ProfileActivity.AllInOne(this.item.mMsgActionData, 1);
-      ProfileActivity.b(this.context, paramView);
-      return;
-      showDeleteDialog((QQAppInterface)this.mApp.get());
-      return;
-      if (this.message == null) {
-        break;
-      }
-      if (this.message.istroop == 1)
-      {
-        auzn.a((QQAppInterface)localObject3, this.context, 1, this.frienduin, 0);
+        paramView = TroopInfoActivity.a(this.item.mMsgActionData, 2);
+        paramView.putInt("t_s_f", 1000);
+        TroopUtils.openTroopInfoActivity(this.context, paramView, 2);
+        bdla.b(null, "dc00898", "", "", "0X800997B", "0X800997B", 0, 0, "", "", "", "");
         return;
+        if (aora.d) {
+          this.context.startActivity(aora.a);
+        }
+        for (;;)
+        {
+          try
+          {
+            i = Integer.parseInt(this.item.mMsgActionData);
+            bdla.b(null, "dc00898", "", "", "0X8009AD0", "0X8009AD0", i, i, "", "", "", "");
+            return;
+          }
+          catch (NumberFormatException paramView) {}
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("MessageForGrayTips", 2, "NumberFormatException: " + this.item.mMsgActionData);
+          return;
+          if (this.mApp != null) {
+            ThreadManager.executeOnSubThread(new MessageForGrayTips.HightlightClickableSpan.3(this));
+          } else if (QLog.isColorLevel()) {
+            QLog.d("MessageForGrayTips", 2, "ACTION_FROM_MESSAGE_GOTO_PUSH_NOTIFICATION_SWITCH_SETTING= mApp==null");
+          }
+        }
+        bejv.a((QQAppInterface)this.mApp.get()).a((BaseActivity)this.context, 2, 1, this.message.frienduin, 0L, 10, new Bundle());
+        return;
+        paramView = new Intent(this.context, AssistantSettingActivity.class);
+        this.context.startActivity(paramView);
+        return;
+        paramView = this.item.mMsg_A_ActionData;
+        localObject1 = this.item.mMsgActionData;
+        if ((!TextUtils.isEmpty(paramView)) && (paramView.contains("docs.qq.com/form"))) {
+          becr.a(this.context, paramView, (String)localObject1);
+        }
+        for (;;)
+        {
+          bdla.b(null, "dc00898", "", this.frienduin, "0X8009FD1", "0X8009FD1", 0, 0, "", "", "", "");
+          return;
+          if (becr.a(paramView)) {
+            MiniAppLauncher.startMiniApp(this.context, paramView, 0, null);
+          }
+        }
+        if ((this.context instanceof FragmentActivity))
+        {
+          paramView = ((FragmentActivity)this.context).getChatFragment();
+          if ((paramView != null) && (paramView.a() != null))
+          {
+            paramView = paramView.a();
+            if ((paramView instanceof agab)) {
+              ((agab)paramView).a();
+            }
+          }
+        }
+        bdla.b((QQAppInterface)this.mApp.get(), "dc00898", "", "", "0X800A013", "0X800A013", 0, 0, "", "", "", "");
+        return;
+        paramView = new ProfileActivity.AllInOne(this.item.mMsgActionData, 1);
+        ProfileActivity.b(this.context, paramView);
+        return;
+        showDeleteDialog((QQAppInterface)this.mApp.get());
+        return;
+        if (this.message == null) {
+          break;
+        }
+        if (this.message.istroop == 1)
+        {
+          awfq.a((QQAppInterface)localObject3, this.context, 1, this.frienduin, 0);
+          return;
+        }
+        if (this.message.istroop != 0) {
+          break;
+        }
+        awfq.a((QQAppInterface)this.mApp.get(), this.context, 2, this.frienduin, 0);
+        return;
+        if (this.message == null) {
+          break;
+        }
+        awfq.a(this.context, this.message.istroop, this.frienduin);
+        return;
+        if (!(this.context instanceof FragmentActivity)) {
+          break;
+        }
+        paramView = ((FragmentActivity)this.context).getChatFragment();
+        if ((paramView == null) || (paramView.a() == null) || (!(paramView.a() instanceof TroopChatPie))) {
+          break;
+        }
+        paramView = (TroopChatPie)paramView.a();
+        localObject1 = paramView.getCurFriendUin();
+        if ((TextUtils.isEmpty(this.frienduin)) || (!this.frienduin.equals(localObject1)) || (!(this.message instanceof ChatMessage))) {
+          break;
+        }
+        ((agkh)paramView.getHelper(41)).b(1);
+        ((TroopManager)((QQAppInterface)localObject3).getManager(QQManagerFactory.TROOP_MANAGER)).a().a((QQAppInterface)localObject3, this.context, paramView.input, this.frienduin, 0, (ChatMessage)this.message);
+        ahll.c = 3;
+        ahll.a = this.message.senderuin;
+        new bdlf((QQAppInterface)localObject3).a("dc00899").b("Grp_AIO").c("newman_join").d("clk_bar").a(new String[] { localObject1, "", "" + TroopUtils.convSfToReportParam((QQAppInterface)localObject3, (String)localObject1) }).a();
+        return;
+        paramView = ((TroopManager)((QQAppInterface)this.mApp.get()).getManager(QQManagerFactory.TROOP_MANAGER)).c(this.frienduin);
+        localObject1 = new ArrayList(Arrays.asList(this.item.mMsgActionData.split(",")));
+        LpReportInfo_pf00064.allReport(40, 3, 2);
+        QZoneHelper.forwardToTroopUploadPhoto((Activity)this.context, ((QQAppInterface)localObject3).getCurrentUin(), 1, 0, Long.parseLong(this.frienduin), paramView.troopname, "$RecentAlbumId", bhcc.d, (ArrayList)localObject1, -1, 0, 3);
+        return;
+        i = QzoneConfig.getInstance().getConfig("aio_qzone_troop_gray_tips", "troop_gray_tips_cool_down", 24);
+        paramView = String.format(anvx.a(2131719605), new Object[] { Integer.valueOf(i) });
+        QQToast.a(BaseApplication.getContext(), 0, paramView, 0).a();
+        LocalMultiProcConfig.putLong4Uin("aio_qzone_troop_gray_tips", System.currentTimeMillis() / 1000L + i * 60 * 60, this.item.uin);
+        admh.a(this.context, (QQAppInterface)localObject3, (ChatMessage)this.message);
+        LpReportInfo_pf00064.allReport(40, 3, 3);
+        return;
+        TroopUtils.checkAndOpenMemberProfileForRecommendTipsClick((QQAppInterface)this.mApp.get(), this.context, this.frienduin, this.item.mMsg_A_ActionData, this.item.mMsgActionData);
+        return;
+        TroopUtils.openTroopRecommendMemberList((QQAppInterface)this.mApp.get(), this.context, this.message, this.frienduin, this.item.mMsgActionData);
+        return;
+        TroopUtils.expandFoldMsg((QQAppInterface)this.mApp.get(), this.context, this.message, this.frienduin, this.item.mMsgActionData, this.item.mMsg_A_ActionData);
+        return;
+        doAddFriendSafetyReport((QQAppInterface)localObject3);
+        return;
+        avhp.a(this.context, "1", this.message.istroop);
+        return;
+        asqn.a(this.context);
+        return;
+        bflj.a((QQAppInterface)this.mApp.get(), this.context, this.frienduin, this.item.mMsgActionData);
+        return;
+        ((afza)((QQAppInterface)localObject3).getManager(QQManagerFactory.PAI_YI_PAI_MANAGER)).a(this);
+        TroopUtils.foldSameMsg((QQAppInterface)this.mApp.get(), this.context, this.message, this.frienduin, this.item.mMsgActionData, this.item.mMsg_A_ActionData);
+        return;
+        paramView = ((QQAppInterface)localObject3).getHandler(ChatActivity.class);
+        if (paramView == null) {
+          break;
+        }
+        localObject1 = (amme)((QQAppInterface)localObject3).getManager(QQManagerFactory.APOLLO_MANAGER);
+        ((amme)localObject1).a = 1;
+        try
+        {
+          ((amme)localObject1).a = Integer.parseInt(this.item.mMsgActionData);
+          label6952:
+          paramView.obtainMessage(49).sendToTarget();
+          if (this.message == null) {
+            break;
+          }
+          VipUtils.a((AppInterface)localObject3, "cmshow", "Apollo", "opencm_guideword_click", ApolloUtil.b(this.message.istroop), 0, new String[0]);
+          return;
+          bgbk.a((QQAppInterface)this.mApp.get(), this.context, this.frienduin, this.item.mMsgActionData);
+          return;
+          bgbk.a((QQAppInterface)this.mApp.get(), this.frienduin, this.item.mMsgActionData);
+          return;
+        }
+        catch (Throwable localThrowable)
+        {
+          break label6952;
+        }
       }
-      if (this.message.istroop != 0) {
-        break;
-      }
-      auzn.a((QQAppInterface)this.mApp.get(), this.context, 2, this.frienduin, 0);
-      return;
-      if (this.message == null) {
-        break;
-      }
-      auzn.a(this.context, this.message.istroop, this.frienduin);
-      return;
-      if (!(this.context instanceof FragmentActivity)) {
-        break;
-      }
-      paramView = ((FragmentActivity)this.context).getChatFragment();
-      if ((paramView == null) || (paramView.a() == null) || (!(paramView.a() instanceof TroopChatPie))) {
-        break;
-      }
-      paramView = (TroopChatPie)paramView.a();
-      localObject1 = paramView.getCurFriendUin();
-      if ((TextUtils.isEmpty(this.frienduin)) || (!this.frienduin.equals(localObject1)) || (!(this.message instanceof ChatMessage))) {
-        break;
-      }
-      ((afst)paramView.getHelper(41)).b(1);
-      ((TroopManager)((QQAppInterface)localObject3).getManager(52)).a().a((QQAppInterface)localObject3, this.context, paramView.input, this.frienduin, 0, (ChatMessage)this.message);
-      agsn.c = 3;
-      agsn.a = this.message.senderuin;
-      new bcek((QQAppInterface)localObject3).a("dc00899").b("Grp_AIO").c("newman_join").d("clk_bar").a(new String[] { localObject1, "", "" + TroopUtils.convSfToReportParam((QQAppInterface)localObject3, (String)localObject1) }).a();
-      return;
-      paramView = ((TroopManager)((QQAppInterface)this.mApp.get()).getManager(52)).c(this.frienduin);
-      localObject1 = new ArrayList(Arrays.asList(this.item.mMsgActionData.split(",")));
-      LpReportInfo_pf00064.allReport(40, 3, 2);
-      QZoneHelper.forwardToTroopUploadPhoto((Activity)this.context, ((QQAppInterface)localObject3).getCurrentUin(), 1, 0, Long.parseLong(this.frienduin), paramView.troopname, "$RecentAlbumId", bftk.d, (ArrayList)localObject1, -1, 0, 3);
-      return;
-      i = QzoneConfig.getInstance().getConfig("aio_qzone_troop_gray_tips", "troop_gray_tips_cool_down", 24);
-      paramView = String.format(amtj.a(2131719185), new Object[] { Integer.valueOf(i) });
-      QQToast.a(BaseApplication.getContext(), 0, paramView, 0).a();
-      LocalMultiProcConfig.putLong4Uin("aio_qzone_troop_gray_tips", System.currentTimeMillis() / 1000L + i * 60 * 60, this.item.uin);
-      acvv.a(this.context, (QQAppInterface)localObject3, (ChatMessage)this.message);
-      LpReportInfo_pf00064.allReport(40, 3, 3);
-      return;
-      TroopUtils.checkAndOpenMemberProfileForRecommendTipsClick((QQAppInterface)this.mApp.get(), this.context, this.frienduin, this.item.mMsg_A_ActionData, this.item.mMsgActionData);
-      return;
-      TroopUtils.openTroopRecommendMemberList((QQAppInterface)this.mApp.get(), this.context, this.message, this.frienduin, this.item.mMsgActionData);
-      return;
-      TroopUtils.expandFoldMsg((QQAppInterface)this.mApp.get(), this.context, this.message, this.frienduin, this.item.mMsgActionData, this.item.mMsg_A_ActionData);
-      return;
-      doAddFriendSafetyReport((QQAppInterface)localObject3);
-      return;
-      aubv.a(this.context, "1", this.message.istroop);
-      return;
-      armh.a(this.context);
-      return;
-      beeg.a((QQAppInterface)this.mApp.get(), this.context, this.frienduin, this.item.mMsgActionData);
-      return;
-      ((afhv)((QQAppInterface)localObject3).getManager(388)).a(this);
-      TroopUtils.foldSameMsg((QQAppInterface)this.mApp.get(), this.context, this.message, this.frienduin, this.item.mMsgActionData, this.item.mMsg_A_ActionData);
-      return;
-      beue.a((QQAppInterface)this.mApp.get(), this.context, this.frienduin, this.item.mMsgActionData);
-      return;
-      beue.a((QQAppInterface)this.mApp.get(), this.frienduin, this.item.mMsgActionData);
-      return;
-      label6948:
+      label7055:
       i = -1;
       continue;
       paramView = "";
-      break label2520;
-      label6959:
-      break label2284;
+      break label2530;
+      label7066:
+      break label2294;
       paramView = "";
-      break label896;
+      break label902;
       i = 1;
-      break label582;
+      break label587;
       j += 1;
-      break label3835;
-      label6980:
+      break label3845;
+      label7087:
       bool1 = false;
-      break label3996;
+      break label4006;
       for (;;)
       {
-        label6986:
+        label7093:
         break;
-        label6989:
+        label7096:
         i = 8;
         continue;
-        label6995:
+        label7102:
         i = 8;
         continue;
-        label7001:
+        label7108:
         i = 8;
       }
-      label7007:
+      label7114:
       i = 10;
     }
   }
@@ -1694,7 +1742,7 @@ public class MessageForGrayTips$HightlightClickableSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan
  * JD-Core Version:    0.7.0.1
  */

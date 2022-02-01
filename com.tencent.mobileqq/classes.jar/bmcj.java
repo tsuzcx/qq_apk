@@ -1,25 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import dov.com.qq.im.ae.view.AEPituCameraCaptureButtonLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qqfav.widget.QfavJumpActivity;
 
 public class bmcj
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public bmcj(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public bmcj(QfavJumpActivity paramQfavJumpActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.handleMessage(paramMessage);
-    this.a.a(paramMessage);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bmcj
  * JD-Core Version:    0.7.0.1
  */

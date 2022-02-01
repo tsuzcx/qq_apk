@@ -1,14 +1,67 @@
-class zpz
-  extends zqo
+import android.content.Context;
+import android.graphics.Typeface;
+import android.widget.TextView;
+import com.tencent.biz.richframework.download.RFWDownloader;
+import com.tencent.biz.richframework.download.RFWDownloaderFactory;
+import cooperation.qqcircle.QCircleConfig;
+import java.util.Hashtable;
+
+public class zpz
 {
-  public zpz(zpq paramzpq, zqp paramzqp, String paramString)
+  private static final Hashtable<String, Typeface> a = new Hashtable();
+  
+  public static Typeface a(Context paramContext, String paramString)
   {
-    super(paramzpq, paramzqp, paramString);
+    int i;
+    for (;;)
+    {
+      synchronized (a)
+      {
+        boolean bool = a.containsKey(paramString);
+        if (!bool)
+        {
+          i = 0;
+          if (i >= 3) {}
+        }
+      }
+      try
+      {
+        Typeface localTypeface = Typeface.createFromAsset(paramContext.getAssets(), String.format("fonts/%s.ttf", new Object[] { paramString }));
+        a.put(paramString, localTypeface);
+        return localTypeface;
+      }
+      catch (Throwable localThrowable)
+      {
+        i += 1;
+      }
+      paramContext = (Typeface)a.get(paramString);
+      return paramContext;
+      paramContext = finally;
+      throw paramContext;
+    }
   }
   
-  public void a()
+  public static void a(TextView paramTextView, String paramString)
   {
-    this.jdField_a_of_type_Zqp.b(this);
+    synchronized (a)
+    {
+      if (!a.containsKey(paramString))
+      {
+        RFWDownloaderFactory.getDownloader(QCircleConfig.getDownloadStrategy()).getZipFile(paramString, new zqa(paramString, paramTextView));
+        return;
+      }
+      paramTextView.setTypeface((Typeface)a.get(paramString));
+    }
+  }
+  
+  public static void a(TextView paramTextView, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      a(paramTextView, "https://downv6.qq.com/video_story/qcircle/ttf/qcircle_number_bold_italic.ttf");
+      return;
+    }
+    a(paramTextView, "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf");
   }
 }
 

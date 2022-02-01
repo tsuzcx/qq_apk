@@ -1,40 +1,19 @@
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.3;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aaaw
-  implements bjsz
+public class aaaw
+  implements View.OnClickListener
 {
-  aaaw(aaaq paramaaaq, String paramString) {}
+  public aaaw(SubscribeQRCodeShareHelper.3 param3) {}
   
-  public void a(bjsy parambjsy)
+  public void onClick(View paramView)
   {
-    JSONObject localJSONObject = new JSONObject();
-    switch (parambjsy.a)
-    {
-    default: 
-      return;
-    case 0: 
-      try
-      {
-        localJSONObject.put("index", 0);
-        this.jdField_a_of_type_Aaaq.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-        return;
-      }
-      catch (Exception parambjsy)
-      {
-        parambjsy.printStackTrace();
-        return;
-      }
-    }
-    try
-    {
-      localJSONObject.put("index", 1);
-      this.jdField_a_of_type_Aaaq.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-      return;
-    }
-    catch (Exception parambjsy)
-    {
-      parambjsy.printStackTrace();
-    }
+    aaau.a(this.a.this$0).dismiss();
+    aaau.a(this.a.this$0, null);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

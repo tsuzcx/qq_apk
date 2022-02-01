@@ -1,208 +1,91 @@
-import android.content.BroadcastReceiver;
-import android.text.TextUtils;
-import com.tencent.ark.ark.Application;
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.1;
+import IMMsgBodyPack.SlaveMasterMsg;
+import OnlinePushPack.MsgInfo;
+import OnlinePushPack.SvcReqPushMsg;
+import com.qq.taf.jce.JceInputStream;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Locale;
+import java.util.ArrayList;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import tencent.im.msg.im_msg_body.NotOnlineFile;
+import tencent.im.msg.resv21.hummer_resv_21.FileImgInfo;
+import tencent.im.s2c.msgtype0x211.submsgtype0x4.SubMsgType0x4.MsgBody;
 
 public class aonx
-  extends aopk
+  extends acme
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private aony jdField_a_of_type_Aony = new aony(this, null);
-  private aooa jdField_a_of_type_Aooa = new aooa(this, null);
-  private aooi jdField_a_of_type_Aooi = new aooi(this, null);
-  private aook jdField_a_of_type_Aook = new aook(this, null);
-  public aopa a;
-  private HashMap<String, aonz> jdField_a_of_type_JavaUtilHashMap = new ArkAppDeviceModule.1(this);
-  
-  public aonx(ark.Application paramApplication, long paramLong)
+  public aonx(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
   {
-    super(paramApplication, paramLong);
-    this.jdField_a_of_type_Aopa = new aopa(this.jdField_a_of_type_JavaLangString);
+    super(paramQQAppInterface, paramMessageHandler);
   }
   
-  private void a(long paramLong, String paramString1, String paramString2)
+  private void a(MessageHandler paramMessageHandler, MsgInfo paramMsgInfo, SlaveMasterMsg paramSlaveMasterMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppDeviceModule", 2, "doScanCodeCallback cbId=" + paramLong + ", scanResult=" + paramString1 + ", scanType=" + paramString2);
-    }
-    ark.VariantWrapper localVariantWrapper1 = a(paramLong);
-    if (localVariantWrapper1 == null) {
-      return;
-    }
-    int i;
-    ark.VariantWrapper localVariantWrapper2;
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
-    {
-      i = 1;
-      localVariantWrapper2 = localVariantWrapper1.Create();
-      if (i == 0) {
-        break label186;
-      }
-      if (!"QR_CODE".equalsIgnoreCase(paramString2)) {
-        break label179;
-      }
-      paramString2 = "QRCode";
-      label104:
-      localVariantWrapper2.SetTableAsJsonString(String.format(Locale.CHINA, "{\"result\":\"%s\",\"type\":\"%s\",\"charset\":\"%s\"}", new Object[] { paramString1, paramString2, "utf-8" }));
-    }
-    for (;;)
-    {
-      paramString1 = localVariantWrapper1.Create();
-      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, paramString1);
-      paramString1.Reset();
-      localVariantWrapper2.Reset();
-      localVariantWrapper1.Reset();
-      return;
-      i = 0;
-      break;
-      label179:
-      paramString2 = "BarCode";
-      break label104;
-      label186:
-      localVariantWrapper2.SetNull();
-    }
-  }
-  
-  private void a(long paramLong, boolean paramBoolean, double paramDouble1, double paramDouble2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppDeviceModule", 2, "doPositionCallback cbId=" + paramLong + ", success=" + paramBoolean + ", lat=" + paramDouble1 + ", lng=" + paramDouble2);
-    }
-    ark.VariantWrapper localVariantWrapper1 = b(paramLong);
-    if (localVariantWrapper1 == null) {
-      return;
-    }
-    ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
-    if (paramBoolean) {
-      localVariantWrapper2.SetTableAsJsonString(String.format(Locale.CHINA, "{\"latitude\":%.6f,\"longitude\":%.6f}", new Object[] { Double.valueOf(paramDouble1), Double.valueOf(paramDouble2) }));
-    }
-    for (;;)
-    {
-      ark.VariantWrapper localVariantWrapper3 = localVariantWrapper1.Create();
-      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, localVariantWrapper3);
-      localVariantWrapper3.Reset();
-      localVariantWrapper2.Reset();
-      return;
-      localVariantWrapper2.SetNull();
-    }
-  }
-  
-  private void a(long paramLong, boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppDeviceModule", 2, "doConnectionCallback cbId=" + paramLong + ", success=" + paramBoolean + ", netType=" + paramString);
-    }
-    ark.VariantWrapper localVariantWrapper1 = b(paramLong);
-    if (localVariantWrapper1 == null) {
-      return;
-    }
-    ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
-    if (paramBoolean) {
-      localVariantWrapper2.SetString(paramString);
-    }
-    for (;;)
-    {
-      paramString = localVariantWrapper1.Create();
-      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, paramString);
-      paramString.Reset();
-      localVariantWrapper2.Reset();
-      return;
-      localVariantWrapper2.SetNull();
-    }
-  }
-  
-  private void a(long paramLong, boolean paramBoolean, String paramString, float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppDeviceModule", 2, "doSensorCallback cbId=" + paramLong + ", success=" + paramBoolean + ", sensorEventType=" + paramString + ", argA=" + paramFloat1 + ", argB=" + paramFloat2 + ", argC=" + paramFloat3);
-    }
-    ark.VariantWrapper localVariantWrapper1 = b(paramLong);
-    if (localVariantWrapper1 == null) {
-      return;
-    }
-    ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
-    String str = null;
-    if ("Motion".equals(paramString))
-    {
-      str = "{\"x\":%.6f,\"y\":%.6f,\"z\":%.6f}";
-      if ((!paramBoolean) || (TextUtils.isEmpty(str))) {
-        break label220;
-      }
-      localVariantWrapper2.SetTableAsJsonString(String.format(Locale.CHINA, str, new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Float.valueOf(paramFloat3) }));
-    }
-    for (;;)
-    {
-      paramString = localVariantWrapper1.Create();
-      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, paramString);
-      paramString.Reset();
-      localVariantWrapper2.Reset();
-      return;
-      if (!"Orientation".equals(paramString)) {
-        break;
-      }
-      str = "{\"alpha\":%.6f,\"beta\":%.6f,\"gamma\":%.6f}";
-      break;
-      label220:
-      localVariantWrapper2.SetNull();
-    }
-  }
-  
-  public void Destruct()
-  {
-    if (this.jdField_a_of_type_Aopa != null) {
-      this.jdField_a_of_type_Aopa.a();
-    }
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) {}
+    Object localObject1 = new SubMsgType0x4.MsgBody();
     try
     {
-      BaseApplicationImpl.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      label31:
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-      super.Destruct();
+      localObject2 = (SubMsgType0x4.MsgBody)((SubMsgType0x4.MsgBody)localObject1).mergeFrom(paramSlaveMasterMsg.vOrigMsg);
+      if (!((SubMsgType0x4.MsgBody)localObject2).msg_not_online_file.has())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.msg.BaseMessageProcessor", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : MsgBody has not NotOnlineFile");
+        }
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramMessageHandler)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("Q.msg.BaseMessageProcessor", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : subMsgType[0x4] failed", paramMessageHandler);
       return;
     }
-    catch (Exception localException)
+    im_msg_body.NotOnlineFile localNotOnlineFile = (im_msg_body.NotOnlineFile)((SubMsgType0x4.MsgBody)localObject2).msg_not_online_file.get();
+    localObject1 = null;
+    if (((SubMsgType0x4.MsgBody)localObject2).file_image_info.has()) {
+      localObject1 = (hummer_resv_21.FileImgInfo)((SubMsgType0x4.MsgBody)localObject2).file_image_info.get();
+    }
+    Object localObject2 = new ArrayList();
+    msg_comm.Msg localMsg = new msg_comm.Msg();
+    localMsg.msg_head.msg_uid.set(paramMsgInfo.lMsgUid);
+    localMsg.msg_head.msg_time.set(paramMsgInfo.uRealMsgTime);
+    localMsg.msg_head.from_uin.set(paramSlaveMasterMsg.lFromUin);
+    localMsg.msg_head.msg_seq.set((int)paramSlaveMasterMsg.uSeq);
+    paramMessageHandler.app.getFileTransferHandler().a(paramMessageHandler, (List)localObject2, localMsg, localNotOnlineFile, String.valueOf(paramSlaveMasterMsg.lToUin), true, false, -100L, -1, (hummer_resv_21.FileImgInfo)localObject1);
+  }
+  
+  private boolean a(MsgInfo paramMsgInfo)
+  {
+    JceInputStream localJceInputStream = new JceInputStream(paramMsgInfo.vMsg);
+    SlaveMasterMsg localSlaveMasterMsg = new SlaveMasterMsg();
+    localSlaveMasterMsg.readFrom(localJceInputStream);
+    if (((int)localSlaveMasterMsg.uMsgType == 529) && (4L == localSlaveMasterMsg.uCmd))
     {
-      break label31;
-    }
-  }
-  
-  public String GetTypeName()
-  {
-    return "Device";
-  }
-  
-  public boolean HasMenthod(String paramString)
-  {
-    return (this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)) && (this.jdField_a_of_type_JavaUtilHashMap.get(paramString) != null);
-  }
-  
-  public boolean Invoke(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppDeviceModule", 2, "invokeFunc=" + paramString);
-    }
-    if (!a(paramString)) {
-      return false;
-    }
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
-    {
-      aonz localaonz = (aonz)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      if (localaonz != null) {
-        return localaonz.a(paramString, paramArrayOfVariantWrapper, paramVariantWrapper);
-      }
+      a(this.a.getMsgHandler(), paramMsgInfo, localSlaveMasterMsg);
+      return true;
     }
     return false;
   }
   
-  protected aopq[] a()
+  public acnr a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
   {
-    return null;
+    boolean bool = false;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      return new acnr(null, bool);
+      if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null)) {
+        bool = a(paramMsgInfo);
+      } else {
+        a(getClass().getName(), paramInt);
+      }
+    }
   }
 }
 

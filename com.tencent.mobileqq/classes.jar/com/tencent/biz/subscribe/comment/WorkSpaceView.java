@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.FrameLayout;
 import android.widget.Scroller;
-import zhp;
+import zwu;
 
 public class WorkSpaceView
   extends FrameLayout
@@ -22,7 +22,7 @@ public class WorkSpaceView
   private Handler jdField_a_of_type_AndroidOsHandler;
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private Scroller jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext());
-  private zhp jdField_a_of_type_Zhp;
+  private zwu jdField_a_of_type_Zwu;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int = -1;
@@ -76,8 +76,8 @@ public class WorkSpaceView
       }
       paramInt = getWidth() * i - getScrollX();
       this.jdField_a_of_type_AndroidWidgetScroller.startScroll(getScrollX(), 0, paramInt, 0, Math.abs(paramInt) * 2);
-      if (this.jdField_a_of_type_Zhp != null) {
-        this.jdField_a_of_type_Zhp.a(i);
+      if (this.jdField_a_of_type_Zwu != null) {
+        this.jdField_a_of_type_Zwu.a(i);
       }
       invalidate();
       return;
@@ -299,9 +299,9 @@ public class WorkSpaceView
     this.jdField_a_of_type_AndroidOsHandler = paramHandler;
   }
   
-  public void setOnScreenChangeListener(zhp paramzhp)
+  public void setOnScreenChangeListener(zwu paramzwu)
   {
-    this.jdField_a_of_type_Zhp = paramzhp;
+    this.jdField_a_of_type_Zwu = paramzwu;
   }
 }
 

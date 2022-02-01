@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<animation-list android:oneshot="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#ffdaf1ff" />
-    <corners android:topLeftRadius="6.0dip" android:bottomLeftRadius="6.0dip" />
-</shape>
+    <item android:duration="100" android:drawable="@drawable/geg" />
+    <item android:duration="100" android:drawable="@drawable/geh" />
+    <item android:duration="100" android:drawable="@drawable/gei" />
+    <item android:duration="100" android:drawable="@drawable/gej" />
+    <item android:duration="100" android:drawable="@drawable/ger" />
+    <item android:duration="100" android:drawable="@drawable/ges" />
+    <item android:duration="100" android:drawable="@drawable/get" />
+    <item android:duration="100" android:drawable="@drawable/geu" />
+    <item android:duration="100" android:drawable="@drawable/gev" />
+    <item android:duration="100" android:drawable="@drawable/gew" />
+    <item android:duration="100" android:drawable="@drawable/gex" />
+    <item android:duration="100" android:drawable="@drawable/gey" />
+    <item android:duration="100" android:drawable="@drawable/gez" />
+    <item android:duration="100" android:drawable="@drawable/gf0" />
+    <item android:duration="100" android:drawable="@drawable/gf1" />
+</animation-list>

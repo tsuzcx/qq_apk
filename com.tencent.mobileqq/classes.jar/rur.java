@@ -1,41 +1,125 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.hotpic.HotPicData;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
+import java.util.ArrayList;
 
-class rur
-  implements TVK_IMediaPlayer.OnInfoListener
+public class rur
+  extends tqg
+  implements View.OnTouchListener
 {
-  rur(run paramrun) {}
+  private ruu jdField_a_of_type_Ruu;
+  private ruv jdField_a_of_type_Ruv;
   
-  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
+  public rur(Context paramContext, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(run.a(), 2, "播放器状态回调 onInfo what = " + paramInt + ", extra = " + paramObject);
-    }
-    switch (paramInt)
+    super(paramContext, paramInt);
+  }
+  
+  private Drawable a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
     {
-    }
-    do
-    {
-      do
+      File localFile = new File(paramString);
+      if (localFile.exists())
       {
-        return false;
-      } while (run.a(this.a) == null);
-      localrut = run.a(this.a);
-      if ((paramObject instanceof String)) {}
-      for (paramTVK_IMediaPlayer = (String)paramObject;; paramTVK_IMediaPlayer = null)
-      {
-        localrut.a(2, paramTVK_IMediaPlayer, null, 0L);
-        break;
+        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        localURLDrawableOptions.mPlayGifImage = azlo.a(paramString);
+        localURLDrawableOptions.mLoadingDrawable = ReadInJoyDeliverUGCActivity.a;
+        localURLDrawableOptions.mFailedDrawable = ReadInJoyDeliverUGCActivity.a;
+        localURLDrawableOptions.mUseAutoScaleParams = false;
+        localURLDrawableOptions.mRequestWidth = ViewUtils.dpToPx(114.0F);
+        localURLDrawableOptions.mRequestHeight = ViewUtils.dpToPx(114.0F);
+        return URLDrawable.getDrawable(localFile, localURLDrawableOptions);
       }
-    } while (run.a(this.a) == null);
-    rut localrut = run.a(this.a);
-    if ((paramObject instanceof String)) {}
-    for (paramTVK_IMediaPlayer = (String)paramObject;; paramTVK_IMediaPlayer = null)
-    {
-      localrut.a(5, paramTVK_IMediaPlayer, null, 0L);
-      break;
     }
+    return null;
+  }
+  
+  public void a(ruu paramruu)
+  {
+    this.jdField_a_of_type_Ruu = paramruu;
+  }
+  
+  public void a(ruv paramruv)
+  {
+    this.jdField_a_of_type_Ruv = paramruv;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    Object localObject;
+    if (paramView == null)
+    {
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560345, null);
+      paramView = new rut(this, null);
+      paramView.a = ((ImageView)localView.findViewById(2131380411));
+      paramView.b = ((ImageView)localView.findViewById(2131380408));
+      localView.setTag(paramView);
+      localObject = this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      if (!(localObject instanceof HotPicData)) {
+        break label204;
+      }
+      localObject = ReadInJoyDeliverUGCActivity.a((HotPicData)localObject);
+      if (localObject != null)
+      {
+        paramView.b.setImageDrawable((Drawable)localObject);
+        paramView.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        paramView.a.setVisibility(0);
+      }
+    }
+    for (;;)
+    {
+      paramView.b.setTag(Integer.valueOf(paramInt));
+      paramView.a.setTag(Integer.valueOf(paramInt));
+      paramView.b.setOnTouchListener(this);
+      paramView.a.setOnClickListener(new rus(this));
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject = (rut)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
+      break;
+      label204:
+      if ("".equals(localObject))
+      {
+        paramView.b.setImageResource(2130841760);
+        paramView.b.setScaleType(ImageView.ScaleType.CENTER);
+        paramView.a.setVisibility(8);
+      }
+      else
+      {
+        localObject = a((String)localObject);
+        if (localObject != null)
+        {
+          paramView.b.setImageDrawable((Drawable)localObject);
+          paramView.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
+          paramView.a.setVisibility(0);
+        }
+      }
+    }
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (this.jdField_a_of_type_Ruv != null) {
+      return this.jdField_a_of_type_Ruv.a(paramView, paramMotionEvent);
+    }
+    return false;
   }
 }
 

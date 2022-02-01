@@ -1,79 +1,46 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.selectmember.TroopAddFrdsInnerFrame;
+import android.os.Handler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.troop.TroopMemberInfo;
-import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class bbad
-  extends baxp
+  extends anyz
 {
-  TroopMemberInfo jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo;
-  String jdField_a_of_type_JavaLangString;
+  public bbad(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
   
-  public bbad(QQAppInterface paramQQAppInterface, int paramInt, TroopMemberInfo paramTroopMemberInfo, String paramString)
+  public void onReceiptMessageFetchReadStatusResult(long paramLong1, int paramInt, long paramLong2)
   {
-    super(paramQQAppInterface, paramInt, paramTroopMemberInfo);
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo = paramTroopMemberInfo;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(View paramView)
-  {
-    Context localContext = paramView.getContext();
-    if ((paramView.getId() == 2131376341) && (this.b == 23)) {
-      TroopAddFrdsInnerFrame.a(localContext, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo, this.jdField_a_of_type_JavaLangString, false);
+    if (ReceiptMessageDetailFragment.c(this.a) == paramLong1)
+    {
+      if (paramInt != 0) {
+        break label109;
+      }
+      QLog.d("ReceiptMessageDetailFragment", 4, "get read status in c2c succs with readtime: " + paramLong2);
+      if (paramLong2 > 0L) {
+        ReceiptMessageDetailFragment.a(this.a, 1, 1, true);
+      }
+      if (this.a.isAdded())
+      {
+        ReceiptMessageDetailFragment localReceiptMessageDetailFragment = this.a;
+        if (paramLong2 <= 0L) {
+          break label104;
+        }
+        paramInt = 1;
+        ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, paramInt, true);
+      }
+      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
     }
-    while (this.b != 23) {
+    label104:
+    label109:
+    do
+    {
       return;
-    }
-    Intent localIntent = new Intent(localContext, FriendProfileCardActivity.class);
-    localIntent.putExtra("troopUin", this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.troopuin);
-    localIntent.putExtra("memberUin", this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.memberuin);
-    localIntent.putExtra("fromFlag", 1);
-    localIntent.putExtra("selfSet_leftViewText", paramView.getContext().getString(2131719220));
-    localIntent.putExtra("custom_leftbackbutton_name", paramView.getContext().getString(2131690599));
-    aynd.a(localContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localIntent, 9);
-  }
-  
-  public CharSequence c()
-  {
-    amsw localamsw = (amsw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-    if (localamsw.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.memberuin)) {
-      return amtj.a(2131714269);
-    }
-    if (localamsw.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.memberuin, false)) {
-      return amtj.a(2131714270);
-    }
-    return null;
-  }
-  
-  public String c()
-  {
-    return ContactUtils.getTroopMemberName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.troopuin, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.memberuin);
-  }
-  
-  public CharSequence d()
-  {
-    return null;
-  }
-  
-  public String d()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.commonFrdCnt <= 0) {
-      return "";
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.commonFrdCnt + amtj.a(2131714271);
-  }
-  
-  public int f()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.commonFrdCnt < 0) {
-      return 0;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.commonFrdCnt;
+      paramInt = 0;
+      break;
+      QLog.d("ReceiptMessageDetailFragment", 4, "get read status in c2c fail with reply code: " + paramInt);
+      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
+    } while (!this.a.isAdded());
+    ReceiptMessageDetailFragment.a(this.a).sendEmptyMessage(20);
   }
 }
 

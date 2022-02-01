@@ -1,106 +1,86 @@
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.view.pannel.ApolloPanelListView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class anpt
+  extends anqh
 {
-  private Intent jdField_a_of_type_AndroidContentIntent;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private String jdField_a_of_type_JavaLangString = "";
-  private String b = "";
-  private String c = "";
-  private String d;
-  
-  public anpt() {}
-  
-  public anpt(Intent paramIntent, String paramString1, String paramString2, String paramString3, Bitmap paramBitmap)
+  public anpt(Context paramContext, SessionInfo paramSessionInfo)
   {
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    super(null, paramContext);
+    this.c = 2;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.f = 4;
   }
   
-  public Intent a()
+  public View a()
   {
-    return this.jdField_a_of_type_AndroidContentIntent;
-  }
-  
-  public Bitmap a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
-  }
-  
-  public String a()
-  {
-    return this.d;
-  }
-  
-  public void a(Intent paramIntent)
-  {
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-  }
-  
-  public void a(Bitmap paramBitmap)
-  {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-  }
-  
-  public void a(String paramString)
-  {
-    this.d = paramString;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public String c()
-  {
-    return this.b;
-  }
-  
-  public void c(String paramString)
-  {
-    this.b = paramString;
-  }
-  
-  public String d()
-  {
-    return this.c;
-  }
-  
-  public void d(String paramString)
-  {
-    this.c = paramString;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    Bundle localBundle = null;
-    if (a() != null) {
-      localBundle = a().getExtras();
-    }
-    if ((localBundle != null) && (localBundle.containsKey("KEY_NOTIFY_ID_FROM_PROCESSOR")))
+    switch (this.b)
     {
-      localBundle = new Bundle(localBundle);
-      localBundle.remove("KEY_NOTIFY_ID_FROM_PROCESSOR");
-    }
-    for (;;)
-    {
-      if (a() != null) {}
-      for (String str = String.valueOf(a().getHeight());; str = "using default bitmap") {
-        return "NotificationElement{contentIntentExtras=" + localBundle + ", ticker='" + this.jdField_a_of_type_JavaLangString + '\'' + ", contentTitle='" + this.b + '\'' + ", notificationContentText='" + this.c + '\'' + ", notificationIconBitmap=" + str + ", briefOfMessage='" + this.d + '\'' + '}' + '\n';
+    default: 
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloViewPannelApolloPanelListView == null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqApolloViewPannelApolloPanelListView = new ApolloPanelListView(this.jdField_a_of_type_AndroidContentContext);
+        this.jdField_a_of_type_ComTencentMobileqqApolloViewPannelApolloPanelListView.setDivider(null);
+        this.jdField_a_of_type_ComTencentMobileqqApolloViewPannelApolloPanelListView.setVerticalScrollBarEnabled(true);
+        this.jdField_a_of_type_ComTencentMobileqqApolloViewPannelApolloPanelListView.setEdgeEffectEnabled(false);
+        this.jdField_a_of_type_ComTencentMobileqqApolloViewPannelApolloPanelListView.setSelector(2130850739);
       }
+      return this.jdField_a_of_type_ComTencentMobileqqApolloViewPannelApolloPanelListView;
+    case 4: 
+      return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558688, null);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewPannelApolloPanelListView == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewPannelApolloPanelListView = new ApolloPanelListView(this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewPannelApolloPanelListView.setDivider(null);
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewPannelApolloPanelListView.setVerticalScrollBarEnabled(true);
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewPannelApolloPanelListView.setEdgeEffectEnabled(false);
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewPannelApolloPanelListView.setSelector(2130850739);
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqApolloViewPannelApolloPanelListView;
+  }
+  
+  public annl a(String paramString)
+  {
+    return new annm(paramString);
+  }
+  
+  public ArrayList<annl> a(int paramInt)
+  {
+    if ((this.b != 0) || (this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {}
+    do
+    {
+      return null;
+      i = a();
+    } while ((paramInt < 0) || (paramInt >= i) || (this.jdField_a_of_type_ComTencentMobileqqApolloViewPannelApolloPanelListView == null));
+    paramInt = this.jdField_a_of_type_ComTencentMobileqqApolloViewPannelApolloPanelListView.getFirstVisiblePosition() * this.f;
+    int i = this.jdField_a_of_type_ComTencentMobileqqApolloViewPannelApolloPanelListView.getLastVisiblePosition();
+    int j = this.f;
+    ArrayList localArrayList = new ArrayList();
+    while ((paramInt < this.jdField_a_of_type_JavaUtilList.size()) && (paramInt <= (i + 1) * j - 1))
+    {
+      localArrayList.add(this.jdField_a_of_type_JavaUtilList.get(paramInt));
+      paramInt += 1;
+    }
+    return localArrayList;
+  }
+  
+  public void a(View paramView, int paramInt)
+  {
+    c(paramView);
+  }
+  
+  public void a(BaseChatPie paramBaseChatPie)
+  {
+    super.a(paramBaseChatPie);
+    if (this.jdField_a_of_type_Anpk != null) {
+      this.jdField_a_of_type_Anpk.a(paramBaseChatPie);
     }
   }
 }

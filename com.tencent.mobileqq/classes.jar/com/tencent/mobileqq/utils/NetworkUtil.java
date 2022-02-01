@@ -6,7 +6,7 @@ import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build.VERSION;
-import bhov;
+import bizo;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.mobileqq.highway.utils.HwNetworkUtil;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
@@ -93,7 +93,7 @@ public class NetworkUtil
   
   public static boolean is3Gor4G(Context paramContext)
   {
-    int i = bhov.a(paramContext);
+    int i = bizo.a(paramContext);
     return (i == 4) || (i == 3);
   }
   

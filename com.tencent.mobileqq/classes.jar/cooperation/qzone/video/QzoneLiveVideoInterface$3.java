@@ -1,6 +1,6 @@
 package cooperation.qzone.video;
 
-import bgya;
+import biis;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.webviewwrapper.IWebviewOnClassLoaded;
 
@@ -21,10 +21,10 @@ final class QzoneLiveVideoInterface$3
         if (!QzoneLiveVideoInterface.isBestPerformanceDevice()) {
           break;
         }
-        if (!bgya.a())
+        if (!biis.a())
         {
           long l = System.currentTimeMillis();
-          bgya.b();
+          biis.b();
           QLog.i("QzoneLiveVideoInterface", 2, "saxon@ 预加载 TbsAccelerator init cost " + (System.currentTimeMillis() - l));
           if (this.val$listener == null) {
             break;

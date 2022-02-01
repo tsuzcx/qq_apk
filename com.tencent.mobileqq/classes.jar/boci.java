@@ -1,14 +1,28 @@
-import dov.com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.TextView;
+import dov.com.qq.im.aeeditor.module.text.AEEditorColorSelectorView;
+import dov.com.qq.im.aeeditor.module.text.AEEditorTextControlPanel;
 
 public class boci
+  implements Animator.AnimatorListener
 {
-  public int a;
-  public int b = 0;
+  public boci(AEEditorTextControlPanel paramAEEditorTextControlPanel, TextView paramTextView) {}
   
-  public boci(SVHwEncoder.HwEncode paramHwEncode)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Int = 0;
+    AEEditorTextControlPanel.a(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextControlPanel).c();
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    AEEditorTextControlPanel.a(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextControlPanel).c();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

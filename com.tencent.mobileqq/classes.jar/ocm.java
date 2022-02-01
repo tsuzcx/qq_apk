@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ocm
-  implements DialogInterface.OnClickListener
+class ocm
+  implements View.OnClickListener
 {
-  public ocm(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, long paramLong, String paramString2, String paramString3) {}
+  ocm(obm paramobm, oji paramoji) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    PublicAccountJavascriptInterface.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
-    PublicAccountJavascriptInterface.setLocationPermissionGrant(this.b, this.c, 1);
+    obm.a(this.jdField_a_of_type_Obm);
+    obm.a(this.jdField_a_of_type_Obm, this.jdField_a_of_type_Oji.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

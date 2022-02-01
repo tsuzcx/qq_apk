@@ -1,9 +1,9 @@
 package cooperation.vip.ar.controller;
 
 import android.view.ViewGroup;
-import bkzr;
-import bkzt;
-import bkzv;
+import bmlv;
+import bmlx;
+import bmlz;
 import com.tencent.qg.sdk.invoke.ModuleEngine;
 import cooperation.qzone.util.QZLog;
 import cooperation.vip.ar.widget.VipQGGLSurfaceView;
@@ -11,22 +11,22 @@ import cooperation.vip.ar.widget.VipQGGLSurfaceView;
 public class VipQGThreeController$2
   implements Runnable
 {
-  public VipQGThreeController$2(bkzr parambkzr) {}
+  public VipQGThreeController$2(bmlv parambmlv) {}
   
   public void run()
   {
     QZLog.e("VipARQGThreeController", 2, new Object[] { "onDrawFrame status CREATE_QGVIEW success next status JS_MODEL_LOAD" });
-    QZLog.i("VipARQGThreeController", 1, "createQGView width = " + bkzr.a(this.this$0).jdField_a_of_type_Int + " height = " + bkzr.a(this.this$0).jdField_b_of_type_Int + " shareContext = " + bkzr.a(this.this$0).jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
-    bkzr.a(this.this$0, new VipQGGLSurfaceView(this.this$0.a, bkzr.a(this.this$0).jdField_a_of_type_Int, bkzr.a(this.this$0).jdField_b_of_type_Int, bkzr.a(this.this$0).jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext, bkzr.a(this.this$0).jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig, bkzr.a(this.this$0).jdField_b_of_type_JavaLangString));
-    bkzr.a(this.this$0).setLimitFrame(-1);
-    bkzr.a(this.this$0).setOnTouchListener(null);
-    bkzr.a(this.this$0).setQGEventListener(this.this$0);
-    bkzr.a(this.this$0).addView(bkzr.a(this.this$0));
-    bkzr.a(this.this$0, new bkzt(this.this$0));
-    if (bkzr.a(this.this$0).getModuleEngine() != null) {
-      bkzr.a(this.this$0).getModuleEngine().registerJsModule(bkzr.a(this.this$0));
+    QZLog.i("VipARQGThreeController", 1, "createQGView width = " + bmlv.a(this.this$0).jdField_a_of_type_Int + " height = " + bmlv.a(this.this$0).jdField_b_of_type_Int + " shareContext = " + bmlv.a(this.this$0).jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
+    bmlv.a(this.this$0, new VipQGGLSurfaceView(this.this$0.a, bmlv.a(this.this$0).jdField_a_of_type_Int, bmlv.a(this.this$0).jdField_b_of_type_Int, bmlv.a(this.this$0).jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext, bmlv.a(this.this$0).jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig, bmlv.a(this.this$0).jdField_b_of_type_JavaLangString));
+    bmlv.a(this.this$0).setLimitFrame(-1);
+    bmlv.a(this.this$0).setOnTouchListener(null);
+    bmlv.a(this.this$0).setQGEventListener(this.this$0);
+    bmlv.a(this.this$0).addView(bmlv.a(this.this$0));
+    bmlv.a(this.this$0, new bmlx(this.this$0));
+    if (bmlv.a(this.this$0).getModuleEngine() != null) {
+      bmlv.a(this.this$0).getModuleEngine().registerJsModule(bmlv.a(this.this$0));
     }
-    bkzr.a(this.this$0, 3);
+    bmlv.a(this.this$0, 3);
   }
 }
 

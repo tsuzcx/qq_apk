@@ -1,15 +1,12 @@
-import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
 
-public class alje
+public abstract interface alje
 {
-  public int a;
-  public RecentUser a;
-  public String a;
-  public String b;
+  public abstract void a(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alje
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,6 @@
-import android.util.Property;
-
 class bnqs
-  extends Property<bnqm, Float>
 {
-  bnqs(bnqm parambnqm, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
-  
-  public Float a(bnqm parambnqm)
-  {
-    return Float.valueOf(bnqm.b(parambnqm));
-  }
-  
-  public void a(bnqm parambnqm, Float paramFloat)
-  {
-    bnqm.a(parambnqm, paramFloat);
-  }
+  private static bnqq a = new bnqq(null);
 }
 
 

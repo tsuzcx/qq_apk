@@ -1,19 +1,20 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
 
-public class ntm
+class ntm
+  extends anyz
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  public ImageView b;
-  TextView b;
-  public ImageView c;
-  TextView c;
-  public ImageView d;
+  ntm(ntj paramntj) {}
   
-  ntm(nst paramnst) {}
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (105 == paramInt)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("storyRedDotDebug", 2, "mGetRedPointPushObserver");
+      }
+      this.a.notifyUI(105, true, paramObject);
+    }
+  }
 }
 
 

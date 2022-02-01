@@ -1,20 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.share.AVSchema;
+import java.lang.ref.WeakReference;
 
 public class lxr
-  implements DialogInterface.OnClickListener
+  implements ansd
 {
-  public lxr(AVSchema paramAVSchema, String paramString) {}
+  private WeakReference<lxu> a;
+  private WeakReference<anrz> b;
+  private WeakReference<lxb> c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public lxr(lxu paramlxu, anrz paramanrz, lxb paramlxb)
   {
-    this.jdField_a_of_type_ComTencentAvShareAVSchema.a(this.jdField_a_of_type_JavaLangString);
+    this.a = new WeakReference(paramlxu);
+    this.b = new WeakReference(paramanrz);
+    this.c = new WeakReference(paramlxb);
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    Object localObject = (anrz)this.b.get();
+    if (localObject != null) {
+      ((anrz)localObject).d(this);
+    }
+    localObject = (lxu)this.a.get();
+    lxb locallxb = (lxb)this.c.get();
+    if ((localObject != null) && (locallxb != null)) {
+      ((lxu)localObject).a(paramBoolean, locallxb);
+    }
+  }
+  
+  public void a(lxb paramlxb)
+  {
+    this.c = new WeakReference(paramlxb);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lxr
  * JD-Core Version:    0.7.0.1
  */

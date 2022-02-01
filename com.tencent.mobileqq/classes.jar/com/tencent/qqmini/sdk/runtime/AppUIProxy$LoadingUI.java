@@ -271,6 +271,7 @@ public class AppUIProxy$LoadingUI
       this.mLogoView.setVisibility(8);
       this.mNameView.setVisibility(4);
       this.mProgressBar.setVisibility(0);
+      this.mRootView.setBackgroundColor(-1);
       if ((this.miniAppInfo != null) && (this.miniAppInfo.appMode != null) && (this.miniAppInfo.appMode.closeTopRightCapsule)) {
         if (this.rightContainer != null) {
           this.rightContainer.setVisibility(4);
@@ -290,7 +291,7 @@ public class AppUIProxy$LoadingUI
       localObject1 = getContext().getResources().getDrawable(R.drawable.mini_sdk_icon_loading_default);
       localObject2 = ((MiniAppProxy)localObject2).getDrawable(getContext(), this.miniAppInfo.iconUrl, this.iconSize, this.iconSize, (Drawable)localObject1);
       if (localObject2 != null) {
-        break label257;
+        break label273;
       }
     }
     for (;;)
@@ -303,9 +304,10 @@ public class AppUIProxy$LoadingUI
       this.mNameView.setVisibility(0);
       this.mProgressBar.setVisibility(0);
       this.mLogoView.setVisibility(0);
+      this.mRootView.setBackgroundColor(-1);
       this.uiHandler.postDelayed(new AppUIProxy.LoadingUI.1(this), 250L);
       return;
-      label257:
+      label273:
       localObject1 = localObject2;
     }
   }

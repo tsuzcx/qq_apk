@@ -1,18 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ahoy
-  implements View.OnClickListener
+public class ahoy
+  implements ahnr
 {
-  ahoy(ahow paramahow) {}
-  
-  public void onClick(View paramView)
+  public void a(agtf paramagtf, MessageRecord paramMessageRecord, agus paramagus, aftk paramaftk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    ahow.b(this.a);
-    bcef.b(null, "dc00898", "", "", "0X800B032", "0X800B032", 0, 0, "", "", ahow.a(this.a).curFriendUin, "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramagtf.g(paramMessageRecord, paramagus);
   }
 }
 

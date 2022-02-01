@@ -1,17 +1,11 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.item.GreatMoveCombolEffectView;
+import msg.aio_doodle.DoodleMsgProto.DoodleData;
+import msg.aio_doodle.DoodleMsgProto.DoodleHeader;
 
-public class agci
-  implements View.OnTouchListener
+public abstract interface agci
 {
-  public agci(GreatMoveCombolEffectView paramGreatMoveCombolEffectView) {}
+  public abstract boolean a(DoodleMsgProto.DoodleData paramDoodleData);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
+  public abstract boolean a(DoodleMsgProto.DoodleHeader paramDoodleHeader);
 }
 
 

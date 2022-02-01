@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import amwo;
+import anzc;
 
 public class MessageRoamManager$1
   implements Runnable
 {
-  public MessageRoamManager$1(amwo paramamwo) {}
+  public MessageRoamManager$1(anzc paramanzc) {}
   
   public void run()
   {

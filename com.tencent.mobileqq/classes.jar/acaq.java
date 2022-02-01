@@ -1,21 +1,16 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.gdtad.api.GdtAd;
 
-public class acaq
-  implements abzb
+public abstract interface acaq
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
-  {
-    ampt.a(paramQQAppInterface, paramMsgType0x210.vProtobuf);
-  }
+  public abstract void a(GdtAd paramGdtAd);
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
-  {
-    a(paramabxc.a(), paramMsgType0x210);
-    return null;
-  }
+  public abstract void a(GdtAd paramGdtAd, acap paramacap);
+  
+  public abstract void b(GdtAd paramGdtAd);
+  
+  public abstract void c(GdtAd paramGdtAd);
+  
+  public abstract void d(GdtAd paramGdtAd);
 }
 
 

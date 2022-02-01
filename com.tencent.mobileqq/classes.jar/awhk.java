@@ -1,8 +1,8 @@
-public abstract class awhk
+import com.tencent.mobileqq.listentogether.data.ISong;
+
+public abstract interface awhk
 {
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public void a(awhl paramawhl) {}
+  public abstract void a(ISong paramISong);
 }
 
 

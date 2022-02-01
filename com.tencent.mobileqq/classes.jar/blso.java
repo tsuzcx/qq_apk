@@ -1,33 +1,109 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public class blso
-  implements View.OnClickListener
+public class blso<K, V>
+  implements Map<K, V>
 {
-  public blso(AEProviderContainerView paramAEProviderContainerView) {}
+  private final HashMap<K, V> a = new HashMap();
+  private final HashMap<V, K> b = new HashMap();
   
-  public void onClick(View paramView)
+  public K a(Object paramObject)
   {
-    switch (paramView.getId())
-    {
+    return this.b.get(paramObject);
+  }
+  
+  public K b(Object paramObject)
+  {
+    paramObject = this.b.remove(paramObject);
+    if (paramObject != null) {
+      this.a.remove(paramObject);
     }
-    for (;;)
+    return paramObject;
+  }
+  
+  public void clear()
+  {
+    this.a.clear();
+    this.b.clear();
+  }
+  
+  public boolean containsKey(Object paramObject)
+  {
+    return this.a.containsKey(paramObject);
+  }
+  
+  public boolean containsValue(Object paramObject)
+  {
+    return this.b.containsKey(paramObject);
+  }
+  
+  public Set<Map.Entry<K, V>> entrySet()
+  {
+    return this.a.entrySet();
+  }
+  
+  public V get(Object paramObject)
+  {
+    return this.a.get(paramObject);
+  }
+  
+  public boolean isEmpty()
+  {
+    return this.a.isEmpty();
+  }
+  
+  public Set<K> keySet()
+  {
+    return this.a.keySet();
+  }
+  
+  public V put(K paramK, V paramV)
+  {
+    if ((paramK == null) || (paramV == null)) {
+      return null;
+    }
+    Object localObject = remove(paramK);
+    b(paramV);
+    this.a.put(paramK, paramV);
+    this.b.put(paramV, paramK);
+    return localObject;
+  }
+  
+  public void putAll(Map<? extends K, ? extends V> paramMap)
+  {
+    paramMap = paramMap.entrySet().iterator();
+    while (paramMap.hasNext())
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      xwa.a("clk_filter", xwa.b(babc.a), 0, false, new String[0]);
-      if (AEProviderContainerView.a(this.a) != 0)
-      {
-        AEProviderContainerView.a(this.a);
-        continue;
-        xwa.a("clk_beauty", xwa.b(babc.a), 0, false, new String[0]);
-        if (AEProviderContainerView.a(this.a) != 1) {
-          AEProviderContainerView.b(this.a);
-        }
+      Object localObject2 = (Map.Entry)paramMap.next();
+      Object localObject1 = ((Map.Entry)localObject2).getKey();
+      localObject2 = ((Map.Entry)localObject2).getValue();
+      if ((localObject1 != null) && (localObject2 != null)) {
+        put(localObject1, localObject2);
       }
     }
+  }
+  
+  public V remove(Object paramObject)
+  {
+    paramObject = this.a.remove(paramObject);
+    if (paramObject != null) {
+      this.b.remove(paramObject);
+    }
+    return paramObject;
+  }
+  
+  public int size()
+  {
+    return this.a.size();
+  }
+  
+  public Collection<V> values()
+  {
+    return this.a.values();
   }
 }
 

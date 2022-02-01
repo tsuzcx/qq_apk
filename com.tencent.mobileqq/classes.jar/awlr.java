@@ -1,33 +1,55 @@
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.LocationPoiDataHelper.1.1;
+import com.tencent.mobileqq.mini.out.CommonObserver;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.proto.lbsshare.LBSShare.LocationResp;
+import com.tencent.proto.lbsshare.LBSShare.POI;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class awlr
-  implements bhai<oidb_0x8e4.RspBody>
+  extends CommonObserver
 {
-  public awlr(GameRoomInviteActivity paramGameRoomInviteActivity, awmf paramawmf) {}
-  
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public void onGetPoiList(boolean paramBoolean, LBSShare.LocationResp paramLocationResp)
   {
-    if ((paramInt == 0) && (paramRspBody != null))
+    awlq.a(this.a, false);
+    Object localObject1;
+    if (paramBoolean)
     {
-      paramRspBody = this.jdField_a_of_type_Awmf;
-      if (!this.jdField_a_of_type_Awmf.a)
+      awlq.a(this.a);
+      localObject1 = paramLocationResp.poilist.get().iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        bool = true;
-        paramRspBody.a = bool;
-        this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a();
-        this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a.notifyDataSetChanged();
+        Object localObject2 = (LBSShare.POI)((Iterator)localObject1).next();
+        localObject2 = LocationRoom.Venue.a(awlq.a(this.a).app.getCurrentUin(), (LBSShare.POI)localObject2);
+        awlq.a(this.a).add(localObject2);
+      }
+      localObject1 = this.a;
+      if (paramLocationResp.next.get() <= 0) {
+        break label198;
       }
     }
-    while (paramRspBody == null) {
-      for (;;)
-      {
-        return;
-        boolean bool = false;
+    label198:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      awlq.b((awlq)localObject1, paramBoolean);
+      if (QLog.isDevelopLevel()) {
+        QLog.i("LocationPoiDataHelper", 4, "[venue][poi-data] onGetPoiList next: mVenueList size = " + awlq.a(this.a).size() + ", mHashMore = " + awlq.a(this.a));
       }
+      if (awlq.a(this.a) != null) {
+        ThreadManager.getUIHandler().post(new LocationPoiDataHelper.1.1(this));
+      }
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a(paramInt, paramRspBody, amtj.a(2131704260));
   }
+  
+  public void onGetStreetUrl(boolean paramBoolean, String paramString) {}
 }
 
 

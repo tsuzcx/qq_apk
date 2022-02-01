@@ -1,12 +1,46 @@
-public class bgxe
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.qphone.base.util.QLog;
+
+final class bgxe
+  implements DownloadParams.DecodeHandler
 {
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean;
-  String jdField_c_of_type_JavaLangString;
-  boolean jdField_c_of_type_Boolean;
-  String d;
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  {
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
+    }
+    do
+    {
+      do
+      {
+        Object localObject;
+        do
+        {
+          do
+          {
+            return paramDownloadParams;
+            localObject = paramDownloadParams.tag;
+            paramDownloadParams = paramBitmap;
+          } while (!(localObject instanceof int[]));
+          paramDownloadParams = paramBitmap;
+        } while (((int[])localObject).length != 3);
+        paramDownloadParams = (int[])localObject;
+        if (paramDownloadParams[0] == 0) {
+          paramDownloadParams[0] = paramBitmap.getWidth();
+        }
+        if (paramDownloadParams[1] == 0) {
+          paramDownloadParams[1] = paramBitmap.getHeight();
+        }
+        paramBitmap = bheg.c(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
+        paramDownloadParams = paramBitmap;
+      } while (paramBitmap != null);
+      paramDownloadParams = paramBitmap;
+    } while (!QLog.isDevelopLevel());
+    QLog.w(bgxc.a(), 2, "ROUND_CORNER_DECODER bitmap == null");
+    return paramBitmap;
+  }
 }
 
 

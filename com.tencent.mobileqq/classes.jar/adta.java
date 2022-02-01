@@ -1,23 +1,44 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.qphone.base.util.QLog;
 
 public class adta
-  extends BroadcastReceiver
+  extends nwk
 {
-  public adta(NotificationActivity paramNotificationActivity) {}
+  public adta(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    if ((paramIntent.getAction().equals("com.tencent.mobileqq.closeNotification")) && (NotificationActivity.a(this.a) == 5)) {
-      this.a.finish();
-    }
+    if ((this.a.isFinishing()) || (this.a.n)) {}
+    do
+    {
+      do
+      {
+        return;
+        this.a.q();
+        if (this.a.b != null) {
+          this.a.b.removeCallbacksAndMessages(null);
+        }
+        if ((!paramBoolean) || (paramOpenID == null) || (paramOpenID.openID == null)) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.chatopttroop", 2, "openIdObserver success");
+        }
+      } while (paramOpenID.openID.equals(this.a.f));
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.chatopttroop", 2, "-->onGetOpenId--openid doesn't equal current openid");
+      }
+      this.a.t();
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.chatopttroop", 2, "openIdObserver fail");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adta
  * JD-Core Version:    0.7.0.1
  */

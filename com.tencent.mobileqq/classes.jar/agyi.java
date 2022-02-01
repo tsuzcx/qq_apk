@@ -1,27 +1,42 @@
-import com.tencent.widget.Gallery;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForPubAccount;
+import com.tencent.mobileqq.data.PAMessage;
+import com.tencent.mobileqq.data.PAMessage.Item;
+import java.util.ArrayList;
 
-class agyi
-  implements aszj
+final class agyi
+  implements ahab
 {
-  agyi(agyh paramagyh) {}
-  
-  public void onNo()
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    this.a.a(false);
-    this.a.c(true);
-  }
-  
-  public void onYes()
-  {
-    try
+    int j = 0;
+    paramQQAppInterface = ((MessageForPubAccount)paramChatMessage).mPAMessage;
+    int i = j;
+    if (paramQQAppInterface != null)
     {
-      this.a.a(true);
-      this.a.jdField_a_of_type_Ahap.a(this.a.jdField_a_of_type_Agzg.jdField_a_of_type_Long, this.a.jdField_a_of_type_Agzg.jdField_a_of_type_Int, 20);
-      agyh.a(this.a).b(true);
-      agyh.b(this.a).a(true);
-      return;
+      i = j;
+      if (paramQQAppInterface.items != null)
+      {
+        i = j;
+        if (paramQQAppInterface.items.size() != 0)
+        {
+          if (((PAMessage.Item)paramQQAppInterface.items.get(0)).cover == null) {
+            break label85;
+          }
+          if (paramQQAppInterface.items.size() != 1) {
+            break label74;
+          }
+          i = 6;
+        }
+      }
     }
-    catch (Exception localException) {}
+    return i;
+    label74:
+    paramQQAppInterface.items.size();
+    return 7;
+    label85:
+    return 8;
   }
 }
 

@@ -1,27 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingLandView;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingView;
+import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
+import java.util.Map;
 
 public class abuo
-  implements ValueAnimator.AnimatorUpdateListener
+  implements avdm
 {
-  public abuo(GdtVideoCeilingView paramGdtVideoCeilingView, RelativeLayout.LayoutParams paramLayoutParams, int paramInt1, int paramInt2, GdtVideoCeilingLandView paramGdtVideoCeilingLandView, boolean paramBoolean) {}
+  public abuo(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    paramValueAnimator = this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-    int i = this.jdField_a_of_type_Int;
-    paramValueAnimator.topMargin = ((int)(f * this.b) + i);
-    if (((this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin < 1) || (this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin >= GdtVideoCeilingView.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView))) && (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.jdField_a_of_type_Boolean)) {
-      GdtVideoCeilingView.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView, this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams, this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView, this.jdField_a_of_type_Boolean);
+    abuq localabuq = (abuq)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt));
+    if (localabuq != null)
+    {
+      localabuq.d = paramBoolean;
+      this.a.callJs(localabuq.l + "(" + localabuq.a() + ");");
     }
-    while (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView == null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
   }
 }
 

@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bfvo;
+import bheg;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
@@ -29,13 +29,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
-import vkm;
-import vwg;
-import vwh;
-import wkp;
-import xvv;
-import yoy;
-import ypi;
+import vzh;
+import wlb;
+import wlc;
+import wzk;
+import ykq;
+import zdr;
+import zeb;
 
 public class FFmpegUtils
 {
@@ -48,12 +48,12 @@ public class FFmpegUtils
   {
     long l = System.currentTimeMillis();
     Object localObject1 = getAuidoType(paramString2);
-    Object localObject2 = new File(vkm.f);
+    Object localObject2 = new File(vzh.f);
     if (!((File)localObject2).exists()) {
       ((File)localObject2).mkdirs();
     }
     localObject2 = new StringBuffer();
-    ((StringBuffer)localObject2).append(vkm.f);
+    ((StringBuffer)localObject2).append(vzh.f);
     ((StringBuffer)localObject2).append(paramString2.hashCode());
     ((StringBuffer)localObject2).append("_");
     ((StringBuffer)localObject2).append(paramInt1);
@@ -100,8 +100,8 @@ public class FFmpegUtils
   
   private static void clipAudio(PublishVideoEntry paramPublishVideoEntry, ExecuteBinResponseCallback paramExecuteBinResponseCallback, String paramString1, int paramInt1, int paramInt2, String paramString2, ArrayList<FFmpegCommandUnit> paramArrayList)
   {
-    if (ypi.b(paramString2)) {
-      ypi.f(paramString2);
+    if (zeb.b(paramString2)) {
+      zeb.f(paramString2);
     }
     FFmpegCommandUnit localFFmpegCommandUnit = new FFmpegCommandUnit();
     localFFmpegCommandUnit.cmdType = 3;
@@ -214,7 +214,7 @@ public class FFmpegUtils
       localCanvas.save();
       try
       {
-        bfvo.a(localBitmap, new File(paramString));
+        bheg.a(localBitmap, new File(paramString));
         return true;
       }
       catch (IOException paramString)
@@ -248,8 +248,8 @@ public class FFmpegUtils
   
   private static void combineVideoAndAudio(String paramString1, PublishVideoEntry paramPublishVideoEntry, boolean paramBoolean, ExecuteBinResponseCallback paramExecuteBinResponseCallback, int paramInt, long paramLong, String paramString2, ArrayList<FFmpegCommandUnit> paramArrayList, String paramString3, String paramString4, String paramString5)
   {
-    if (ypi.b(paramString1)) {
-      ypi.f(paramString1);
+    if (zeb.b(paramString1)) {
+      zeb.f(paramString1);
     }
     FFmpegCommandUnit localFFmpegCommandUnit = new FFmpegCommandUnit();
     localFFmpegCommandUnit.cmdType = 4;
@@ -381,66 +381,66 @@ public class FFmpegUtils
     FFmpeg.getInstance(BaseApplicationImpl.getApplication()).execute((String[])localArrayList.toArray(new String[0]), paramFFmpegExecuteResponseCallback);
   }
   
-  public static Bitmap generateInteractBitmap(vwg paramvwg, int paramInt1, int paramInt2)
+  public static Bitmap generateInteractBitmap(wlb paramwlb, int paramInt1, int paramInt2)
   {
-    if (paramvwg == null)
+    if (paramwlb == null)
     {
-      xvv.b("FFmpegUtils", "generate interact image failed. it's not a interacted video.");
+      ykq.b("FFmpegUtils", "generate interact image failed. it's not a interacted video.");
       return null;
     }
-    xvv.a("FFmpegUtils", "generateInteractWidgetImage, layout=%s, containerWidth=%s, containerHeight=%s", paramvwg, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
+    ykq.a("FFmpegUtils", "generateInteractWidgetImage, layout=%s, containerWidth=%s, containerHeight=%s", paramwlb, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
     Object localObject = BaseApplicationImpl.getContext();
     InteractContainerLayout localInteractContainerLayout = new InteractContainerLayout((Context)localObject);
-    localInteractContainerLayout.a(paramvwg, 0);
+    localInteractContainerLayout.a(paramwlb, 0);
     localObject = new FrameLayout((Context)localObject);
     ((ViewGroup)localObject).setLayoutParams(new ViewGroup.LayoutParams(paramInt1, paramInt2));
     ((ViewGroup)localObject).addView(localInteractContainerLayout, new FrameLayout.LayoutParams(-1, -1));
     ((ViewGroup)localObject).measure(View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824));
     ((ViewGroup)localObject).layout(0, 0, paramInt1, paramInt2);
-    localInteractContainerLayout.a(paramvwg, 0);
-    paramvwg = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-    if (paramvwg != null)
+    localInteractContainerLayout.a(paramwlb, 0);
+    paramwlb = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+    if (paramwlb != null)
     {
-      ((ViewGroup)localObject).draw(new Canvas(paramvwg));
-      return paramvwg;
+      ((ViewGroup)localObject).draw(new Canvas(paramwlb));
+      return paramwlb;
     }
-    xvv.d("FFmpegUtils", "generateInteractWidgetImage create bitmap failed, w=%d, h=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ykq.d("FFmpegUtils", "generateInteractWidgetImage create bitmap failed, w=%d, h=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     return null;
   }
   
-  public static String generateInteractWidgetImage(vwg paramvwg, int paramInt1, int paramInt2)
+  public static String generateInteractWidgetImage(wlb paramwlb, int paramInt1, int paramInt2)
   {
-    if (paramvwg == null)
+    if (paramwlb == null)
     {
-      xvv.b("FFmpegUtils", "generate interact image failed. it's not a interacted video.");
+      ykq.b("FFmpegUtils", "generate interact image failed. it's not a interacted video.");
       return null;
     }
-    xvv.a("FFmpegUtils", "generateInteractWidgetImage, layout=%s, containerWidth=%s, containerHeight=%s", paramvwg, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
+    ykq.a("FFmpegUtils", "generateInteractWidgetImage, layout=%s, containerWidth=%s, containerHeight=%s", paramwlb, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
     BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
     Object localObject = new InteractContainerLayout(localBaseApplication);
-    ((InteractContainerLayout)localObject).a(paramvwg, 0);
+    ((InteractContainerLayout)localObject).a(paramwlb, 0);
     FrameLayout localFrameLayout = new FrameLayout(localBaseApplication);
     localFrameLayout.setLayoutParams(new ViewGroup.LayoutParams(paramInt1, paramInt2));
     localFrameLayout.addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
     localFrameLayout.measure(View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824));
     localFrameLayout.layout(0, 0, paramInt1, paramInt2);
-    ((InteractContainerLayout)localObject).a(paramvwg, 0);
+    ((InteractContainerLayout)localObject).a(paramwlb, 0);
     localObject = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
     if (localObject != null)
     {
       localFrameLayout.draw(new Canvas((Bitmap)localObject));
-      paramvwg = localBaseApplication.getCacheDir().getAbsolutePath() + "/grade-" + System.currentTimeMillis() + ".png";
-      boolean bool = yoy.a((Bitmap)localObject, Bitmap.CompressFormat.PNG, 80, paramvwg);
+      paramwlb = localBaseApplication.getCacheDir().getAbsolutePath() + "/grade-" + System.currentTimeMillis() + ".png";
+      boolean bool = zdr.a((Bitmap)localObject, Bitmap.CompressFormat.PNG, 80, paramwlb);
       ((Bitmap)localObject).recycle();
-      xvv.d("FFmpegUtils", "generateInteractWidgetImage compress success = %s, path = %s", new Object[] { Boolean.valueOf(bool), paramvwg });
+      ykq.d("FFmpegUtils", "generateInteractWidgetImage compress success = %s, path = %s", new Object[] { Boolean.valueOf(bool), paramwlb });
       if (bool) {}
       for (;;)
       {
-        return paramvwg;
-        paramvwg = null;
+        return paramwlb;
+        paramwlb = null;
       }
     }
-    xvv.d("FFmpegUtils", "generateInteractWidgetImage create bitmap failed, w=%d, h=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ykq.d("FFmpegUtils", "generateInteractWidgetImage create bitmap failed, w=%d, h=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     return null;
   }
   
@@ -460,71 +460,71 @@ public class FFmpegUtils
     FFmpeg.getInstance(BaseApplicationImpl.getApplication()).execute((String[])localArrayList.toArray(new String[0]), paramFFmpegExecuteResponseCallback);
   }
   
-  public static String generateVideoVoteWidgetImage(vwh paramvwh, int paramInt1, int paramInt2)
+  public static String generateVideoVoteWidgetImage(wlc paramwlc, int paramInt1, int paramInt2)
   {
-    if (paramvwh == null)
+    if (paramwlc == null)
     {
-      xvv.b("FFmpegUtils", "generateVideoVoteWidgetImage() layout is null!");
+      ykq.b("FFmpegUtils", "generateVideoVoteWidgetImage() layout is null!");
       return null;
     }
     BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
     Object localObject = new PollContainerLayout(localBaseApplication);
-    ((PollContainerLayout)localObject).a(paramvwh, -1, null);
+    ((PollContainerLayout)localObject).a(paramwlc, -1, null);
     FrameLayout localFrameLayout = new FrameLayout(localBaseApplication);
     localFrameLayout.setLayoutParams(new ViewGroup.LayoutParams(paramInt1, paramInt2));
     localFrameLayout.addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
     localFrameLayout.measure(View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824));
     localFrameLayout.layout(0, 0, paramInt1, paramInt2);
-    ((PollContainerLayout)localObject).a(paramvwh, -1, null);
+    ((PollContainerLayout)localObject).a(paramwlc, -1, null);
     localObject = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
     if (localObject != null)
     {
       localFrameLayout.draw(new Canvas((Bitmap)localObject));
-      paramvwh = localBaseApplication.getCacheDir().getAbsolutePath() + "/vote-" + System.currentTimeMillis() + ".png";
-      boolean bool = yoy.a((Bitmap)localObject, Bitmap.CompressFormat.PNG, 80, paramvwh);
+      paramwlc = localBaseApplication.getCacheDir().getAbsolutePath() + "/vote-" + System.currentTimeMillis() + ".png";
+      boolean bool = zdr.a((Bitmap)localObject, Bitmap.CompressFormat.PNG, 80, paramwlc);
       ((Bitmap)localObject).recycle();
-      xvv.d("FFmpegUtils", "generateVideoVoteWidgetImage compress success = %s, path = %s", new Object[] { Boolean.valueOf(bool), paramvwh });
+      ykq.d("FFmpegUtils", "generateVideoVoteWidgetImage compress success = %s, path = %s", new Object[] { Boolean.valueOf(bool), paramwlc });
       if (bool) {}
       for (;;)
       {
-        return paramvwh;
-        paramvwh = null;
+        return paramwlc;
+        paramwlc = null;
       }
     }
-    xvv.d("FFmpegUtils", "generateVideoVoteWidgetImage create bitmap failed, w=%d, h=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ykq.d("FFmpegUtils", "generateVideoVoteWidgetImage create bitmap failed, w=%d, h=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     return null;
   }
   
-  public static Bitmap generateVoteBitmap(vwh paramvwh, int paramInt1, int paramInt2)
+  public static Bitmap generateVoteBitmap(wlc paramwlc, int paramInt1, int paramInt2)
   {
-    if (paramvwh == null)
+    if (paramwlc == null)
     {
-      xvv.b("FFmpegUtils", "generateVideoVoteWidgetImage() layout is null!");
+      ykq.b("FFmpegUtils", "generateVideoVoteWidgetImage() layout is null!");
       return null;
     }
     Object localObject = BaseApplicationImpl.getContext();
     PollContainerLayout localPollContainerLayout = new PollContainerLayout((Context)localObject);
-    localPollContainerLayout.a(paramvwh, -1, null);
+    localPollContainerLayout.a(paramwlc, -1, null);
     localObject = new FrameLayout((Context)localObject);
     ((ViewGroup)localObject).setLayoutParams(new ViewGroup.LayoutParams(paramInt1, paramInt2));
     ((ViewGroup)localObject).addView(localPollContainerLayout, new FrameLayout.LayoutParams(-1, -1));
     ((ViewGroup)localObject).measure(View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824));
     ((ViewGroup)localObject).layout(0, 0, paramInt1, paramInt2);
-    localPollContainerLayout.a(paramvwh, -1, null);
-    paramvwh = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-    if (paramvwh != null)
+    localPollContainerLayout.a(paramwlc, -1, null);
+    paramwlc = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+    if (paramwlc != null)
     {
-      ((ViewGroup)localObject).draw(new Canvas(paramvwh));
-      return paramvwh;
+      ((ViewGroup)localObject).draw(new Canvas(paramwlc));
+      return paramwlc;
     }
-    xvv.d("FFmpegUtils", "generateVideoVoteWidgetImage create bitmap failed, w=%d, h=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ykq.d("FFmpegUtils", "generateVideoVoteWidgetImage create bitmap failed, w=%d, h=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     return null;
   }
   
   private static void getAudioFromMp4(PublishVideoEntry paramPublishVideoEntry, String paramString1, String paramString2, ExecuteBinResponseCallback paramExecuteBinResponseCallback, ArrayList<FFmpegCommandUnit> paramArrayList)
   {
-    if (ypi.b(paramString2)) {
-      ypi.f(paramString2);
+    if (zeb.b(paramString2)) {
+      zeb.f(paramString2);
     }
     FFmpegCommandUnit localFFmpegCommandUnit = new FFmpegCommandUnit();
     localFFmpegCommandUnit.cmdType = 18;
@@ -591,7 +591,7 @@ public class FFmpegUtils
     int i = j;
     if (!TextUtils.isEmpty(paramString2))
     {
-      paramString2 = wkp.a(paramString2, null);
+      paramString2 = wzk.a(paramString2, null);
       i = j;
       if (paramString2 != null)
       {
@@ -606,8 +606,8 @@ public class FFmpegUtils
   
   private static void getVideoFromMp4(PublishVideoEntry paramPublishVideoEntry, String paramString1, String paramString2, ExecuteBinResponseCallback paramExecuteBinResponseCallback, ArrayList<FFmpegCommandUnit> paramArrayList)
   {
-    if (ypi.b(paramString1)) {
-      ypi.f(paramString1);
+    if (zeb.b(paramString1)) {
+      zeb.f(paramString1);
     }
     FFmpegCommandUnit localFFmpegCommandUnit = new FFmpegCommandUnit();
     localFFmpegCommandUnit.cmdType = 19;
@@ -627,9 +627,9 @@ public class FFmpegUtils
       return null;
       return paramStoryVideoItem.mLocalMaskPath;
       return paramStoryVideoItem.mAtImagePath;
-      str = vkm.u;
+      str = vzh.u;
       str = str + paramStoryVideoItem.mVid + "_max.png";
-    } while ((!ypi.c(str)) && (!combineTwoImg(paramStoryVideoItem.mLocalMaskPath, paramStoryVideoItem.mAtImagePath, str)));
+    } while ((!zeb.c(str)) && (!combineTwoImg(paramStoryVideoItem.mLocalMaskPath, paramStoryVideoItem.mAtImagePath, str)));
     return str;
   }
   
@@ -637,7 +637,7 @@ public class FFmpegUtils
   {
     if ((paramStoryVideoItem == null) || (!paramStoryVideoItem.isPollVideo()))
     {
-      xvv.b("FFmpegUtils", "getVideoVoteWidgetPath find not-poll-video");
+      ykq.b("FFmpegUtils", "getVideoVoteWidgetPath find not-poll-video");
       return null;
     }
     return generateVideoVoteWidgetImage(paramStoryVideoItem.getPollLayout(), paramStoryVideoItem.mVideoWidth, paramStoryVideoItem.mVideoHeight);
@@ -655,8 +655,8 @@ public class FFmpegUtils
   
   private static void mixMusicAndOriginal(PublishVideoEntry paramPublishVideoEntry, String paramString1, String paramString2, String paramString3, float paramFloat1, float paramFloat2, ExecuteBinResponseCallback paramExecuteBinResponseCallback, ArrayList<FFmpegCommandUnit> paramArrayList)
   {
-    if (ypi.b(paramString3)) {
-      ypi.f(paramString3);
+    if (zeb.b(paramString3)) {
+      zeb.f(paramString3);
     }
     FFmpegCommandUnit localFFmpegCommandUnit = new FFmpegCommandUnit();
     localFFmpegCommandUnit.cmdType = 17;
@@ -684,12 +684,12 @@ public class FFmpegUtils
     if ((((String)localObject1).equals(".mp4")) || (((String)localObject1).equals(".m4a")))
     {
       i = 1;
-      localObject2 = new File(vkm.f);
+      localObject2 = new File(vzh.f);
       if (!((File)localObject2).exists()) {
         ((File)localObject2).mkdirs();
       }
       localObject2 = new StringBuffer();
-      ((StringBuffer)localObject2).append(vkm.f);
+      ((StringBuffer)localObject2).append(vzh.f);
       ((StringBuffer)localObject2).append(str2.hashCode());
       ((StringBuffer)localObject2).append("_");
       ((StringBuffer)localObject2).append(j);
@@ -716,12 +716,12 @@ public class FFmpegUtils
         transcodeAudio(paramPublishVideoEntry, str2, str1, paramExecuteBinResponseCallback, localArrayList);
       }
       localObject3 = new StringBuffer();
-      ((StringBuffer)localObject3).append(vkm.f);
+      ((StringBuffer)localObject3).append(vzh.f);
       ((StringBuffer)localObject3).append(((String)localObject1).hashCode());
       ((StringBuffer)localObject3).append("_mix_with_music");
       ((StringBuffer)localObject3).append(".mp4");
       localObject3 = new String((StringBuffer)localObject3);
-      str3 = vkm.f + paramString1.hashCode() + "_none_audio_video.mp4";
+      str3 = vzh.f + paramString1.hashCode() + "_none_audio_video.mp4";
       if (!paramPublishVideoEntry.isLocalPublish) {
         break label573;
       }
@@ -768,8 +768,8 @@ public class FFmpegUtils
   
   private static void transcodeAudio(PublishVideoEntry paramPublishVideoEntry, String paramString1, String paramString2, ExecuteBinResponseCallback paramExecuteBinResponseCallback, ArrayList<FFmpegCommandUnit> paramArrayList)
   {
-    if (ypi.b(paramString2)) {
-      ypi.f(paramString2);
+    if (zeb.b(paramString2)) {
+      zeb.f(paramString2);
     }
     FFmpegCommandUnit localFFmpegCommandUnit = new FFmpegCommandUnit();
     localFFmpegCommandUnit.cmdType = 21;

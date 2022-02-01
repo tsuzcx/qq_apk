@@ -1,86 +1,74 @@
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.transfile.quic.QuicNetResMgr;
+import com.tencent.qphone.base.util.QLog;
 
 public class ares
+  extends aqwt<aret>
 {
-  private static ares jdField_a_of_type_Ares;
-  ArrayList<WeakReference<arer>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  
-  public static ares a()
+  public static aret a()
   {
-    if (jdField_a_of_type_Ares == null) {}
-    try
-    {
-      if (jdField_a_of_type_Ares == null) {
-        jdField_a_of_type_Ares = new ares();
-      }
-      return jdField_a_of_type_Ares;
-    }
-    finally {}
+    return (aret)aqxe.a().a(685);
   }
   
-  public void a()
+  @NonNull
+  public aret a(int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      return;
-    }
+    return new aret();
   }
   
-  public void a(int paramInt)
+  @Nullable
+  public aret a(aqxa[] paramArrayOfaqxa)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        arer localarer = (arer)((WeakReference)localIterator.next()).get();
-        if (localarer != null) {
-          localarer.onPayBack(paramInt);
-        }
-      }
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0)) {
+      return aret.a(paramArrayOfaqxa);
     }
+    return null;
   }
   
-  public void a(arer paramarer)
+  public void a(aret paramaret)
   {
-    if (paramarer == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQShortVideoQuicNetProcessor", 2, "QQShortVideoQuicNetProcessor onUpdate");
     }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        if (((WeakReference)localIterator.next()).get() == paramarer) {
-          return;
-        }
-      }
-    }
-    paramarer = new WeakReference(paramarer);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramarer);
+    QuicNetResMgr.getInstance().downloadQuicRes(paramaret);
   }
   
-  public void b(arer paramarer)
+  public Class<aret> clazz()
   {
-    if (paramarer == null) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        if (((WeakReference)localIterator.next()).get() == paramarer) {
-          localIterator.remove();
-        }
-      }
-    }
+    return aret.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 685;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ares
  * JD-Core Version:    0.7.0.1
  */

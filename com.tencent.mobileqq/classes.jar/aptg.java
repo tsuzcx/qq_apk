@@ -1,29 +1,23 @@
-public class aptg
+class aptg
+  implements zzq
 {
-  private String a;
+  aptg(aptb paramaptb, long paramLong) {}
   
-  public aptg(String paramString, int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    this.a = paramString;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if ((paramObject == null) || (!(paramObject instanceof aptg))) {}
-    while (!toString().equals(paramObject.toString())) {
-      return false;
+    aptb localaptb = this.jdField_a_of_type_Aptb;
+    long l = this.jdField_a_of_type_Long;
+    if (paramBoolean1) {}
+    for (int i = 0;; i = 1)
+    {
+      localaptb.a(l, paramBoolean1, paramString, i);
+      return;
     }
-    return true;
-  }
-  
-  public String toString()
-  {
-    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aptg
  * JD-Core Version:    0.7.0.1
  */

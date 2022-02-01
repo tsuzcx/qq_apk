@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import amtj;
 import android.content.Context;
 import android.text.SpannableString;
 import android.text.TextUtils;
-import aqry;
+import anvx;
+import arvk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,7 +16,7 @@ public class ShareHotChatGrayTips
   private static final String JUMP_URL = "jump_url";
   private static final String MSG_CONTENT = "msg_content";
   private static final String MSG_CONTENT_HIGHLIGHT = "msg_content_highlight";
-  public static final String SHARE_GRAY_TIP_CONTENT = amtj.a(2131713049);
+  public static final String SHARE_GRAY_TIP_CONTENT = anvx.a(2131713396);
   private static final String TROOP_NAME = "troop_name";
   private static final String TROOP_UIN = "troop_uin";
   public String mHotnamecode;
@@ -120,7 +120,7 @@ public class ShareHotChatGrayTips
       }
       SpannableString localSpannableString = new SpannableString(this.mMsgContent);
       if ((i >= 0) && (j > i)) {
-        localSpannableString.setSpan(new aqry(paramQQAppInterface, paramContext, this, this.mHotnamecode), i, j, 33);
+        localSpannableString.setSpan(new arvk(paramQQAppInterface, paramContext, this, this.mHotnamecode), i, j, 33);
       }
       return localSpannableString;
     }
@@ -128,7 +128,7 @@ public class ShareHotChatGrayTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.ShareHotChatGrayTips
  * JD-Core Version:    0.7.0.1
  */

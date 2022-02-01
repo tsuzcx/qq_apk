@@ -1,27 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 
 public class twp
+  extends twr
 {
-  private static int a()
+  public twp(BridgeModule paramBridgeModule)
   {
-    return 2;
+    super(paramBridgeModule);
   }
   
-  public static void a(String paramString1, String paramString2)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (a()) {
-      QLog.d(paramString1, a(), paramString2);
-    }
-  }
-  
-  private static boolean a()
-  {
-    return QLog.isColorLevel();
+    BridgeModule.access$1000(this.a, paramInt2, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     twp
  * JD-Core Version:    0.7.0.1
  */

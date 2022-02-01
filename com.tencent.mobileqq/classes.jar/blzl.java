@@ -1,12 +1,17 @@
-import com.tencent.aekit.openrender.internal.Frame;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
-public abstract interface blzl
+public class blzl
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  public blzl(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
-  public abstract void a(Frame paramFrame);
-  
-  public abstract void b();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    this.a.finish();
+  }
 }
 
 

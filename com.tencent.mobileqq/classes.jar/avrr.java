@@ -1,15 +1,18 @@
-import java.lang.ref.WeakReference;
+import java.io.File;
+import java.util.concurrent.Callable;
 
-public abstract class avrr<T>
+class avrr
+  implements Callable<File>
 {
-  public WeakReference<T> a;
+  avrr(avrq paramavrq) {}
   
-  public avrr(T paramT)
+  public File a()
   {
-    this.a = new WeakReference(paramT);
+    if (avrq.a(this.a).exists()) {
+      return avrq.a(this.a);
+    }
+    return null;
   }
-  
-  public abstract void a(T paramT, boolean paramBoolean, avro paramavro);
 }
 
 

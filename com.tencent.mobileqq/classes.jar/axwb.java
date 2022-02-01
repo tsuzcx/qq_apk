@@ -1,68 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
 
-public class axwb
+public abstract interface axwb
 {
-  public int a;
-  private long a;
+  @Deprecated
+  public abstract void a();
   
-  public axwb(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  private boolean a()
-  {
-    return System.currentTimeMillis() - this.jdField_a_of_type_Long > axwj.O;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = 40001;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public boolean a(String paramString)
-  {
-    boolean bool = a();
-    if ((QLog.isColorLevel()) && (bool)) {
-      QLog.d("AutoStatus", 2, "[status] resetIfDead from: " + paramString + " hasDead: " + true + " status: " + toString());
-    }
-    if (bool) {
-      a();
-    }
-    return bool;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (axwb)paramObject;
-    } while (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int);
-    return false;
-  }
-  
-  @NotNull
-  public String toString()
-  {
-    return "AutoStatus{status=" + axwj.a(this.jdField_a_of_type_Int) + ", updateTime=" + new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date(this.jdField_a_of_type_Long)) + '}';
-  }
+  public abstract void a(VideoData paramVideoData);
 }
 
 

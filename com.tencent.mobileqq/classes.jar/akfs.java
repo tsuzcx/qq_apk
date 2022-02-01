@@ -1,104 +1,110 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.ark.ark;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.utils.ArkPubicEventWrap.QWalletArkNotify.1;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.res.Resources;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.utils.ContactUtils;
 
 public class akfs
-  extends aopv
-  implements aopx
+  extends akfg
 {
-  public akfs(akfp paramakfp) {}
+  private bjxa a;
   
-  public boolean notify(String paramString1, String paramString2, String paramString3)
+  public akfs(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ArkPubicEventWrap", 2, String.format(Locale.getDefault(), "appName:%1$s;eventName:%2$s;params:%3$s;", new Object[] { paramString1, paramString2, paramString3 }));
-    }
-    if ("ad_query_mute".equals(paramString2)) {
-      akfp.a(this.a, paramString1);
-    }
-    do
+    super(paramContext, paramSessionInfo, paramQQAppInterface);
+    this.c = true;
+  }
+  
+  protected void A()
+  {
+    if (!this.d) {}
+    for (;;)
     {
-      do
+      return;
+      if (this.jdField_a_of_type_AndroidWidgetImageView != null)
       {
-        return true;
-        if (!"event_query_package".equals(paramString2)) {
-          break;
-        }
-      } while (TextUtils.isEmpty(paramString3));
-      for (;;)
-      {
-        try
-        {
-          paramString2 = new JSONObject(paramString3).optString("packageName");
-          paramString2 = bfwv.a(BaseApplicationImpl.getContext(), paramString2);
-          paramString3 = new JSONObject();
-          if ("0".equals(paramString2))
+        this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(null);
+        if ((ChatActivityUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) || (nwu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType)) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 1)) {
+          if (mbl.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
           {
-            paramString3.put("errCode", 0);
-            paramString3.put("isInstall", false);
-            ark.arkNotify(paramString1, "event_query_package_callback", paramString3.toString(), "json");
-            return true;
+            this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+            this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698258));
           }
         }
-        catch (Throwable paramString2)
+        while ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType != 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType != 1025))
         {
-          paramString2.printStackTrace();
-          ark.arkNotify(paramString1, "event_query_package_callback", "", "json");
-          return true;
+          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+          return;
+          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+          continue;
+          if ((this.jdField_a_of_type_AndroidWidgetTextView.getText() != null) && (this.jdField_a_of_type_AndroidWidgetTextView.getText().length() < 6)) {
+            this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+          } else {
+            this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+          }
         }
-        paramString3.put("errCode", 0);
-        paramString3.put("isInstall", true);
-        paramString3.put("version", paramString2);
       }
-      if (!"event_fullscreen_play".equals(paramString2)) {
-        break;
-      }
-    } while (TextUtils.isEmpty(paramString3));
-    try
-    {
-      paramString1 = new JSONObject(paramString3);
-      paramString1.optString("videoUrl");
-      paramString1.optString("playRate");
-      paramString1.optString("totalRate");
-      return true;
     }
-    catch (Throwable paramString1)
-    {
-      paramString1.printStackTrace();
-      return true;
+  }
+  
+  public bjxa a()
+  {
+    if (this.jdField_a_of_type_Bjxa == null) {
+      this.jdField_a_of_type_Bjxa = ((bjxa)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER));
     }
-    if ("beacon_report".equals(paramString2)) {
-      try
+    return this.jdField_a_of_type_Bjxa;
+  }
+  
+  protected void f()
+  {
+    if (!this.d) {}
+    do
+    {
+      Object localObject;
+      do
       {
-        paramString1 = new JSONObject(paramString3);
-        akgk.a("000004B5DU3Q3LD1", paramString1.optString("event_name"), paramString1.optJSONObject("params"));
-        return true;
-      }
-      catch (Throwable paramString1)
-      {
-        QLog.e("ArkPubicEventWrap", 1, paramString1, new Object[0]);
-        return true;
-      }
-    }
-    if ("get_view_location".equals(paramString2))
+        do
+        {
+          return;
+        } while ((!this.c) || ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 1025) && (a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin))) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType != 1006));
+        localObject = ((awyz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER)).c(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin);
+        if ((localObject == null) || (ContactUtils.getFriendStatus(((PhoneContact)localObject).detalStatusFlag, ((PhoneContact)localObject).iTermType) == 0)) {
+          break;
+        }
+        localObject = ContactUtils.getStatusName((PhoneContact)localObject);
+        e(true);
+        this.b.setText((CharSequence)localObject);
+      } while (!AppSetting.c);
+      this.b.setContentDescription((CharSequence)localObject);
+      return;
+    } while (this.b.getVisibility() != 0);
+    e(false);
+  }
+  
+  protected void g()
+  {
+    super.g();
+    if (this.d)
     {
-      ThreadManagerV2.getUIHandlerV2().post(new ArkPubicEventWrap.QWalletArkNotify.1(this, paramString1, paramString3));
-      return true;
+      f();
+      A();
     }
-    akfp.a(this.a);
-    this.a.notifyObservers(new akfr(this.a, paramString1, paramString2, paramString3));
-    return super.notify(paramString1, paramString2, paramString3);
+  }
+  
+  protected void y()
+  {
+    this.jdField_a_of_type_JavaLangString = "MiniPieForStranger";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akfs
  * JD-Core Version:    0.7.0.1
  */

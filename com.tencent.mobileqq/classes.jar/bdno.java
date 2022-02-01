@@ -1,59 +1,100 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.persistence.unique;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.util.QLog;
 
 public class bdno
-  extends aptq<bdnn>
 {
-  @NonNull
-  public bdnn a(int paramInt)
-  {
-    QLog.d("TroopActiveRankingConfigProcessor", 2, "migrateOldOrDefaultContent, type = " + paramInt);
-    return new bdnn();
-  }
+  public bheh a;
+  @unique
+  public String a;
+  public short a;
+  public String b = "";
+  public String c;
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  public String j = "";
+  public String k = "";
+  public String l;
+  public String m;
+  public String n;
   
-  @Nullable
-  public bdnn a(aptx[] paramArrayOfaptx)
+  public bdno(long paramLong, String paramString, short paramShort)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopActiveRankingConfigProcessor", 2, "onParsed");
+    this.jdField_a_of_type_JavaLangString = String.valueOf(paramLong);
+    this.c = paramString;
+    if (paramShort == 0)
+    {
+      this.jdField_a_of_type_Short = 10;
+      return;
     }
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return bdnn.a(paramArrayOfaptx[0].a);
+    this.jdField_a_of_type_Short = paramShort;
+  }
+  
+  public boolean a(String paramString)
+  {
+    try
+    {
+      String[] arrayOfString = paramString.split("&");
+      if (arrayOfString.length == 7)
+      {
+        this.e = arrayOfString[0].substring("RESPCONDITION=".length());
+        this.f = arrayOfString[1].substring("SUBJECT=".length());
+        this.g = arrayOfString[2].substring("DESC=".length());
+        this.h = arrayOfString[3].substring("RESPDESC=".length());
+        this.i = arrayOfString[4].substring("RESPCONTENTTYPES=".length());
+        this.j = PkgTools.Decodecgi(arrayOfString[5].substring("RESPDEST=".length()));
+        int i1;
+        String str;
+        if ((this.j != null) && (this.j.length() > 0))
+        {
+          i1 = this.j.lastIndexOf("channel_id");
+          if (i1 != -1)
+          {
+            paramString = this.j.substring(i1);
+            i1 = paramString.charAt("channel_id".length());
+            if (i1 != 37) {
+              break label244;
+            }
+            str = paramString.substring(paramString.indexOf('%') + 3);
+            paramString = str;
+            if (str.indexOf('%') > 0) {
+              paramString = str.substring(0, str.indexOf('%'));
+            }
+            this.b = paramString;
+          }
+        }
+        for (;;)
+        {
+          this.k = arrayOfString[6].substring("RESPCONTENTS=".length());
+          if (!"PLUGIN".equalsIgnoreCase(this.i)) {
+            break;
+          }
+          return true;
+          label244:
+          if (i1 == 61)
+          {
+            str = paramString.substring(paramString.indexOf('=') + 1);
+            paramString = str;
+            if (str.indexOf('&') > 0) {
+              paramString = str.substring(0, str.indexOf('&'));
+            }
+            this.b = paramString;
+          }
+        }
+        return false;
+      }
     }
-    return null;
-  }
-  
-  public void a(bdnn parambdnn) {}
-  
-  public Class<bdnn> clazz()
-  {
-    return bdnn.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("TroopActiveRankingConfigProcessor", 1, "onReqFailed, failCode = " + paramInt);
-  }
-  
-  public int type()
-  {
-    return 664;
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("PushBanner", 2, "loadParams Exception:", paramString);
+      }
+    }
+    throw new IllegalArgumentException("PushBanner Params Count must be:7");
   }
 }
 

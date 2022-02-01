@@ -1,117 +1,59 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluspanel.appinfo.PlusPanelAppInfo;
-import com.tencent.mobileqq.pluspanel.loader.c2c.C2CPlusPanelAppConfigHelper;
-import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/pluspanel/PlusPanelRedPointAppIdInterface;", "Lcom/tencent/mobileqq/app/BusinessInfoCheckUpdateItem$DynamicRedPointPathInterface;", "()V", "getAioPanelRedDotIds", "", "", "appInterface", "Lcom/tencent/common/app/AppInterface;", "getRedPointPaths", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class ayfs
-  implements BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface
+class ayfs
+  implements View.OnClickListener
 {
-  private final List<String> a(AppInterface paramAppInterface)
+  ayfs(ayek paramayek, String paramString) {}
+  
+  public void onClick(View paramView)
   {
-    Set localSet = (Set)new HashSet();
-    Object localObject2;
-    int i;
-    try
+    bdlf localbdlf = new bdlf(this.jdField_a_of_type_Ayek.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).b("grp_lbs").c("data_card").d("live_clk").e(String.valueOf(ayek.a(this.jdField_a_of_type_Ayek).tinyId));
+    Object localObject;
+    if (ayek.a(this.jdField_a_of_type_Ayek).gender == 0)
     {
-      localObject1 = C2CPlusPanelAppConfigHelper.INSTANCE.getC2CAppInfo();
-      if (localObject1 != null)
-      {
-        localObject2 = (Iterable)localObject1;
-        localObject1 = (Collection)new ArrayList();
-        localObject2 = ((Iterable)localObject2).iterator();
-        for (;;)
-        {
-          if (((Iterator)localObject2).hasNext())
-          {
-            Object localObject3 = ((Iterator)localObject2).next();
-            PlusPanelAppInfo localPlusPanelAppInfo = (PlusPanelAppInfo)localObject3;
-            Intrinsics.checkExpressionValueIsNotNull(localPlusPanelAppInfo, "it");
-            if (localPlusPanelAppInfo.getRedDotID() > 0)
-            {
-              i = 1;
-              if (i == 0) {
-                continue;
-              }
-              ((Collection)localObject1).add(localObject3);
-              continue;
-              return (List)new ArrayList((Collection)localSet);
-            }
-          }
-        }
+      localObject = "1";
+      localbdlf.a(new String[] { localObject }).a();
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        break label132;
       }
+      QLog.i("NearbyProfileDisplayPanel", 1, "jumpUrl is empty");
     }
-    catch (Throwable paramAppInterface)
-    {
-      QLog.e("PlusPanelRedPointAppIdInterface", 1, paramAppInterface, new Object[0]);
-    }
-    do
-    {
-      i = 0;
-      break;
-      localObject1 = ((Iterable)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (PlusPanelAppInfo)((Iterator)localObject1).next();
-        Intrinsics.checkExpressionValueIsNotNull(localObject2, "it");
-        localSet.add(String.valueOf(((PlusPanelAppInfo)localObject2).getRedDotID()));
-      }
-    } while (!(paramAppInterface instanceof QQAppInterface));
-    paramAppInterface = bduw.a((QQAppInterface)paramAppInterface);
-    Intrinsics.checkExpressionValueIsNotNull(paramAppInterface, "aioGroupAppsManager");
-    paramAppInterface = paramAppInterface.a();
-    Intrinsics.checkExpressionValueIsNotNull(paramAppInterface, "appInfoList");
-    Object localObject1 = (Iterable)paramAppInterface;
-    paramAppInterface = (Collection)new ArrayList();
-    localObject1 = ((Iterable)localObject1).iterator();
-    label264:
-    label359:
-    label362:
     for (;;)
     {
-      if (((Iterator)localObject1).hasNext())
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (ayek.a(this.jdField_a_of_type_Ayek).gender == 1)
       {
-        localObject2 = ((Iterator)localObject1).next();
-        if (((TroopAIOAppInfo)localObject2).appid <= 0) {
-          break label359;
-        }
-      }
-      for (i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label362;
-        }
-        paramAppInterface.add(localObject2);
-        break label264;
-        paramAppInterface = ((Iterable)paramAppInterface).iterator();
-        while (paramAppInterface.hasNext()) {
-          localSet.add(String.valueOf(((TroopAIOAppInfo)paramAppInterface.next()).appid));
-        }
+        localObject = "2";
         break;
       }
+      localObject = "0";
+      break;
+      label132:
+      if (this.jdField_a_of_type_JavaLangString.startsWith("mqqapi:"))
+      {
+        localObject = bhey.a(this.jdField_a_of_type_Ayek.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, this.jdField_a_of_type_Ayek.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+        if (localObject != null) {
+          ((bheh)localObject).a();
+        } else {
+          QLog.i("NearbyProfileDisplayPanel", 1, "ja==null, jumpUrl=" + this.jdField_a_of_type_JavaLangString);
+        }
+      }
+      else
+      {
+        localObject = new Intent(this.jdField_a_of_type_Ayek.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, QQBrowserActivity.class);
+        ((Intent)localObject).putExtra("url", this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Ayek.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.startActivity((Intent)localObject);
+      }
     }
-  }
-  
-  @NotNull
-  public List<String> getRedPointPaths(@NotNull AppInterface paramAppInterface)
-  {
-    Intrinsics.checkParameterIsNotNull(paramAppInterface, "appInterface");
-    if (QLog.isColorLevel()) {
-      QLog.d("PlusPanelRedPointAppIdInterface", 2, "getRedPointPaths");
-    }
-    return a(paramAppInterface);
   }
 }
 

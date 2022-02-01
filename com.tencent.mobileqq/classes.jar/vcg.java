@@ -1,108 +1,119 @@
-import UserGrowth.stSimpleMetaFeed;
-import UserGrowth.stVideoTag;
+import android.app.Dialog;
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.TranslateAnimation;
+import com.tencent.biz.pubaccount.weishi_new.follow.joinGroup.BottomDialog.4;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class vcg
-  extends ukz<vaq>
+  extends ReportDialog
 {
-  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private vct jdField_a_of_type_Vct;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private View jdField_a_of_type_AndroidViewView;
+  private boolean jdField_a_of_type_Boolean;
+  private View b;
+  private View c;
   
-  public vcg(Context paramContext, vct paramvct)
+  public vcg(@NonNull Context paramContext)
   {
-    super(paramContext);
-    this.jdField_a_of_type_Vct = paramvct;
+    super(paramContext, 2131755076);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  private boolean a(stVideoTag paramstVideoTag)
+  private void a()
   {
-    if ((this.jdField_a_of_type_Vct == null) || (this.jdField_a_of_type_Vct.a == null)) {}
-    while ((paramstVideoTag.tagId != 6) || (!TextUtils.equals(this.jdField_a_of_type_Vct.a.a(), "recommend_tab")) || (a() != 0)) {
-      return false;
-    }
-    return true;
-  }
-  
-  protected void a()
-  {
-    vaq localvaq = (vaq)a();
-    if ((localvaq != null) && ((localvaq.a() instanceof stSimpleMetaFeed))) {
-      this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)localvaq.a());
-    }
-  }
-  
-  protected int b()
-  {
-    return 2131560037;
-  }
-  
-  protected void b()
-  {
-    stVideoTag localstVideoTag;
-    if (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed != null)
-    {
-      localstVideoTag = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.videoTag;
-      if ((localstVideoTag != null) && (!TextUtils.isEmpty(localstVideoTag.text)) && (!a(localstVideoTag))) {}
-    }
-    else
-    {
-      a(8);
+    if (this.jdField_a_of_type_AndroidViewView == null) {
       return;
     }
-    a(0);
-    String str;
-    Object localObject;
-    label103:
-    GradientDrawable localGradientDrawable;
-    if ((!TextUtils.isEmpty(localstVideoTag.textColor)) && (localstVideoTag.textColor.startsWith("#")))
-    {
-      str = localstVideoTag.textColor;
-      if ((TextUtils.isEmpty(localstVideoTag.bgColor)) || (!localstVideoTag.bgColor.startsWith("#"))) {
-        break label204;
-      }
-      localObject = localstVideoTag.bgColor;
-      localGradientDrawable = new GradientDrawable();
-      localGradientDrawable.setCornerRadius(uyn.c);
-      if (!uyn.a((String)localObject)) {
-        break label230;
-      }
-      label128:
-      localGradientDrawable.setColor(Color.parseColor((String)localObject));
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(localstVideoTag.text);
-      localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-      if (!uyn.a(str)) {
-        break label236;
-      }
-    }
-    for (;;)
-    {
-      ((TextView)localObject).setTextColor(Color.parseColor(str));
-      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(localGradientDrawable);
-      return;
-      str = "#" + localstVideoTag.textColor;
-      break;
-      label204:
-      localObject = "#" + localstVideoTag.bgColor;
-      break label103;
-      label230:
-      localObject = "#80000000";
-      break label128;
-      label236:
-      str = "#FFFFFF";
-    }
+    Object localObject = new TranslateAnimation(0.0F, 0.0F, this.b.getHeight(), 0.0F);
+    ((Animation)localObject).setFillAfter(true);
+    ((Animation)localObject).setDuration(200L);
+    ((Animation)localObject).setInterpolator(new DecelerateInterpolator());
+    this.b.startAnimation((Animation)localObject);
+    localObject = new AlphaAnimation(0.0F, 1.0F);
+    ((AlphaAnimation)localObject).setFillAfter(true);
+    ((AlphaAnimation)localObject).setDuration(200L);
+    this.c.startAnimation((Animation)localObject);
   }
   
-  protected void c() {}
-  
-  protected void e()
+  private void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380431));
+    this.b = paramView.findViewById(2131365119);
+    this.c = paramView.findViewById(2131363339);
+    this.c.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165361));
+    this.c.setOnClickListener(new vch(this));
+    paramView.findViewById(2131364699).setOnClickListener(new vci(this));
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      return;
+    }
+    Object localObject = new TranslateAnimation(0.0F, 0.0F, 0.0F, this.b.getHeight());
+    ((Animation)localObject).setFillAfter(true);
+    ((Animation)localObject).setInterpolator(new DecelerateInterpolator());
+    ((Animation)localObject).setDuration(200L);
+    ((Animation)localObject).setAnimationListener(new vcj(this));
+    this.b.startAnimation((Animation)localObject);
+    localObject = new AlphaAnimation(1.0F, 0.0F);
+    ((AlphaAnimation)localObject).setFillAfter(true);
+    ((AlphaAnimation)localObject).setDuration(200L);
+    this.c.startAnimation((Animation)localObject);
+  }
+  
+  public void dismiss()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    b();
+  }
+  
+  protected void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    setCanceledOnTouchOutside(true);
+  }
+  
+  public void setContentView(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(paramInt, null);
+    a(this.jdField_a_of_type_AndroidViewView);
+    super.setContentView(this.jdField_a_of_type_AndroidViewView);
+  }
+  
+  public void setContentView(@NonNull View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    a(this.jdField_a_of_type_AndroidViewView);
+    super.setContentView(paramView);
+  }
+  
+  public void setContentView(@NonNull View paramView, ViewGroup.LayoutParams paramLayoutParams)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    a(this.jdField_a_of_type_AndroidViewView);
+    super.setContentView(paramView, paramLayoutParams);
+  }
+  
+  public void show()
+  {
+    super.show();
+    this.b.setVisibility(4);
+    this.c.setVisibility(4);
+    this.jdField_a_of_type_AndroidOsHandler.post(new BottomDialog.4(this));
   }
 }
 

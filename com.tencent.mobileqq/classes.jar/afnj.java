@@ -1,13 +1,27 @@
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+import com.tencent.widget.XPanelContainer;
+import mqq.os.MqqHandler;
+
 public class afnj
+  extends aohf
 {
-  public int a;
-  TItemViewHolder jdField_a_of_type_JavaLangObject;
+  public afnj(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
   
-  public afnj(int paramInt, TItemViewHolder paramTItemViewHolder)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramTItemViewHolder;
-    Object localObject;
-    this.jdField_a_of_type_JavaLangObject = localObject;
+    this.a.b();
+    SendBirthdayWishesActivity.a(this.a, paramInt);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this.a);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    if (this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() != 0) {
+      this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
+    }
+    if (paramInt != 2)
+    {
+      SendBirthdayWishesActivity.a(this.a).removeCallbacks(SendBirthdayWishesActivity.a(this.a));
+      SendBirthdayWishesActivity.a(this.a).postDelayed(SendBirthdayWishesActivity.a(this.a), 600L);
+    }
   }
 }
 

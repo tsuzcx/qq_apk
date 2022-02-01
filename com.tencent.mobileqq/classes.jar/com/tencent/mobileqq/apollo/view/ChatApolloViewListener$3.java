@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.view;
 
-import amnm;
+import annn;
 
 public class ChatApolloViewListener$3
   implements Runnable
 {
-  public ChatApolloViewListener$3(amnm paramamnm) {}
+  public ChatApolloViewListener$3(annn paramannn) {}
   
   public void run()
   {

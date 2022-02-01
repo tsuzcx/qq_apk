@@ -1,17 +1,21 @@
-import android.view.View;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public abstract interface yoc
+class yoc
+  extends SimpleJob<Object>
 {
-  public abstract void a();
+  yoc(ynw paramynw, String paramString)
+  {
+    super(paramString);
+  }
   
-  public abstract void a(int paramInt, View paramView);
-  
-  public abstract void a(View paramView, int paramInt1, TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt2);
-  
-  public abstract void a(View paramView, TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt);
-  
-  public abstract boolean a(View paramView, int paramInt);
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    ykw.a("0X80076BC");
+    return null;
+  }
 }
 
 

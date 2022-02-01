@@ -1,113 +1,244 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.open.applist.QZoneAppListActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.utils.ChnToSpell;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class ansk
-  extends anrh
 {
-  public ansk(QQAppInterface paramQQAppInterface, Context paramContext)
+  public static Comparator<Entity> a = new ansl();
+  
+  private static int a(char paramChar)
   {
-    super(paramQQAppInterface, paramContext);
+    if (((paramChar >= 'A') && (paramChar <= 'Z')) || ((paramChar >= 'a') && (paramChar <= 'z'))) {
+      return 1;
+    }
+    if ((paramChar >= '0') && (paramChar <= '9')) {
+      return 10;
+    }
+    return 5;
   }
   
-  private boolean C()
+  public static int a(int paramInt1, String paramString1, int paramInt2, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Jumpaction", 2, " source:" + this.jdField_a_of_type_JavaLangString + "  serverName:" + this.b + "  hostName:" + this.c);
+    if (paramInt1 > paramInt2) {
+      return 1;
     }
-    Object localObject1;
-    if (this.c.equals("index"))
+    if (paramInt1 < paramInt2) {
+      return -1;
+    }
+    String str = paramString1;
+    if (paramString1 == null) {
+      str = "";
+    }
+    paramString1 = paramString2;
+    if (paramString2 == null) {
+      paramString1 = "";
+    }
+    return str.compareTo(paramString1);
+  }
+  
+  public static int a(String paramString1, String paramString2)
+  {
+    int k = 1;
+    int i;
+    int j;
+    if (paramString1 != null)
     {
-      localObject1 = new Intent(this.jdField_a_of_type_AndroidContentContext, QZoneAppListActivity.class);
-      ((Intent)localObject1).putExtra("goto_type", 1);
-      this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject1);
+      i = paramString1.length();
+      if (paramString2 == null) {
+        break label40;
+      }
+      j = paramString2.length();
+      label21:
+      if ((i != 0) && (j != 0)) {
+        break label45;
+      }
+      i -= j;
     }
+    label40:
+    label45:
+    char[] arrayOfChar1;
+    char[] arrayOfChar2;
+    label175:
+    label180:
+    label233:
     do
     {
       do
       {
         do
         {
-          do
-          {
-            do
-            {
-              return true;
-              if (!this.c.equals("detail")) {
-                break;
-              }
-            } while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
-            localObject1 = bhwr.g() + File.separator + "qapp_center_detail.htm";
-            if (new File((String)localObject1).exists()) {}
-            for (localObject1 = "file:///" + (String)localObject1;; localObject1 = bhwr.m() + File.separator + "qapp_center_detail.htm")
-            {
-              localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, QZoneAppListActivity.class);
-              localObject3 = new Bundle();
-              localObject4 = Uri.parse(this.jdField_a_of_type_JavaLangString).getQueryParameter("param");
-              ((Bundle)localObject3).putString("APP_URL", (String)localObject1);
-              ((Bundle)localObject3).putString("APP_PARAMS", "&" + (String)localObject4);
-              ((Bundle)localObject3).putInt("goto_type", 2);
-              ((Intent)localObject2).putExtras((Bundle)localObject3);
-              ((Intent)localObject2).putExtra("adapter_action", "action_app_detail");
-              this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject2);
-              return true;
-            }
-            if (!this.c.equals("webview")) {
-              break;
-            }
-          } while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
-          localObject1 = new Intent(this.jdField_a_of_type_AndroidContentContext, QZoneAppListActivity.class);
-          localObject2 = new Bundle();
-          ((Bundle)localObject2).putString("APP_URL", Uri.parse(this.jdField_a_of_type_JavaLangString).getQueryParameter("url"));
-          ((Bundle)localObject2).putInt("goto_type", 3);
-          ((Intent)localObject1).putExtras((Bundle)localObject2);
-          this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject1);
-          return true;
-        } while ((!this.c.equals("local")) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)));
-        localObject2 = Uri.parse(this.jdField_a_of_type_JavaLangString);
-        localObject1 = ((Uri)localObject2).getQueryParameter("title");
-        localObject3 = bhwr.a(((Uri)localObject2).getQueryParameter("url"));
-      } while (localObject3.length <= 1);
-      localObject2 = localObject3[0];
-    } while ((!((String)localObject2).startsWith("file://")) || ((!((String)localObject2).contains(bhwr.g())) && (!((String)localObject2).contains("android_asset/Page/system/"))));
-    Object localObject3 = localObject3[1];
-    Object localObject4 = new Intent(this.jdField_a_of_type_AndroidContentContext, QZoneAppListActivity.class);
-    Bundle localBundle = new Bundle();
-    localBundle.putString("APP_URL", (String)localObject2);
-    Object localObject2 = new ArrayList();
-    if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-      ((ArrayList)localObject2).add(localObject1);
+          return i;
+          i = 0;
+          break;
+          j = 0;
+          break label21;
+          arrayOfChar1 = ChnToSpell.a(paramString1, 1).toCharArray();
+          arrayOfChar2 = ChnToSpell.a(paramString2, 1).toCharArray();
+          j = a(arrayOfChar1[0]);
+          m = a(arrayOfChar2[0]);
+          i = k;
+        } while (j > m);
+        if (j < m) {
+          return -1;
+        }
+        i = k;
+      } while (arrayOfChar1[0] > arrayOfChar2[0]);
+      if (arrayOfChar1[0] < arrayOfChar2[0]) {
+        return -1;
+      }
+      if (paramString1.charAt(0) < 'ÿ')
+      {
+        i = 1;
+        if (paramString2.charAt(0) >= 'ÿ') {
+          break label175;
+        }
+      }
+      for (j = 1;; j = 0)
+      {
+        if ((i ^ j) == 0) {
+          break label180;
+        }
+        return paramString1.charAt(0) - paramString2.charAt(0);
+        i = 0;
+        break;
+      }
+      int m = Math.min(arrayOfChar1.length, arrayOfChar2.length);
+      j = 1;
+      for (;;)
+      {
+        if (j >= m) {
+          break label233;
+        }
+        i = k;
+        if (arrayOfChar1[j] > arrayOfChar2[j]) {
+          break;
+        }
+        if (arrayOfChar1[j] < arrayOfChar2[j]) {
+          return -1;
+        }
+        j += 1;
+      }
+      i = k;
+    } while (arrayOfChar1.length > arrayOfChar2.length);
+    if (arrayOfChar1.length < arrayOfChar2.length) {
+      return -1;
     }
-    localBundle.putStringArrayList("titleName", (ArrayList)localObject2);
-    if ((localObject3 != null) && (((String)localObject3).length() > 0)) {
-      localBundle.putString("APP_PARAMS", (String)localObject3);
-    }
-    localBundle.putInt("goto_type", 4);
-    ((Intent)localObject4).putExtras(localBundle);
-    this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject4);
-    return true;
+    return 0;
   }
   
-  public boolean a()
+  public static String a(DiscussionInfo paramDiscussionInfo)
   {
-    try
-    {
-      boolean bool = C();
-      return bool;
+    return paramDiscussionInfo.discussionName + "-" + paramDiscussionInfo.uin;
+  }
+  
+  public static String a(Friends paramFriends)
+  {
+    String str = paramFriends.getFriendNick();
+    return str + "-" + paramFriends.uin;
+  }
+  
+  public static String a(PublicAccountInfo paramPublicAccountInfo)
+  {
+    return paramPublicAccountInfo.name + "-" + paramPublicAccountInfo.uin;
+  }
+  
+  public static String a(TroopInfo paramTroopInfo)
+  {
+    if ((paramTroopInfo.hasSetTroopName()) || (TextUtils.isEmpty(paramTroopInfo.newTroopName))) {
+      return paramTroopInfo.troopname + "-" + paramTroopInfo.troopcode;
     }
-    catch (Exception localException)
-    {
-      QLog.e("QappCenterJumpAction", 1, "doAction error: " + localException.getMessage());
-      a("QappCenterJumpAction");
+    return paramTroopInfo.getTroopName() + "-" + paramTroopInfo.troopcode;
+  }
+  
+  public static ArrayList<Entity> a(ArrayList<Entity> paramArrayList, Entity paramEntity)
+  {
+    if (paramArrayList == null) {
+      return null;
     }
-    return false;
+    paramArrayList = (ArrayList)paramArrayList.clone();
+    if (paramArrayList.size() == 0)
+    {
+      paramArrayList.add(paramEntity);
+      return paramArrayList;
+    }
+    Groups localGroups1 = (Groups)paramEntity;
+    int j = 0;
+    int i = paramArrayList.size() - 1;
+    if (j <= i)
+    {
+      int k = (j + i) / 2;
+      Groups localGroups2 = (Groups)paramArrayList.get(k);
+      if (localGroups1.seqid > localGroups2.seqid) {
+        j = k + 1;
+      }
+      for (;;)
+      {
+        break;
+        i = k - 1;
+      }
+    }
+    paramArrayList.add(i + 1, paramEntity);
+    return paramArrayList;
+  }
+  
+  public static void a(DiscussionInfo paramDiscussionInfo)
+  {
+    String str = a(paramDiscussionInfo);
+    paramDiscussionInfo.mCompareSpell = ChnToSpell.a(str, 1);
+    paramDiscussionInfo.mComparePartInt = b(str, paramDiscussionInfo.mCompareSpell);
+  }
+  
+  public static void a(Friends paramFriends)
+  {
+    String str = a(paramFriends);
+    paramFriends.mCompareSpell = ChnToSpell.a(str, 1);
+    paramFriends.mComparePartInt = b(str, paramFriends.mCompareSpell);
+  }
+  
+  public static void a(PublicAccountInfo paramPublicAccountInfo)
+  {
+    String str = a(paramPublicAccountInfo);
+    paramPublicAccountInfo.mCompareSpell = ChnToSpell.a(str, 1);
+    paramPublicAccountInfo.mComparePartInt = b(str, paramPublicAccountInfo.mCompareSpell);
+  }
+  
+  public static void a(TroopInfo paramTroopInfo)
+  {
+    String str = a(paramTroopInfo);
+    paramTroopInfo.mCompareSpell = ChnToSpell.a(str, 1);
+    paramTroopInfo.mComparePartInt = b(str, paramTroopInfo.mCompareSpell);
+  }
+  
+  public static int b(String paramString1, String paramString2)
+  {
+    int k = paramString2.charAt(0);
+    int i;
+    if (((k >= 65) && (k <= 90)) || ((k >= 97) && (k <= 122)))
+    {
+      i = 65536;
+      if (paramString1.charAt(0) < 'ÿ') {
+        break label89;
+      }
+    }
+    label89:
+    for (int j = 1;; j = 0)
+    {
+      return j | k << 8 | i | 0x0;
+      if ((k >= 48) && (k <= 57))
+      {
+        i = 262144;
+        break;
+      }
+      i = 131072;
+      break;
+    }
   }
 }
 

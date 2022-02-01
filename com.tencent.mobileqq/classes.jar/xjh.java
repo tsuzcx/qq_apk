@@ -1,29 +1,18 @@
-import java.lang.ref.WeakReference;
+import android.os.Parcel;
+import android.support.v4.os.ParcelableCompatCreatorCallbacks;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager.SavedState;
 
-public class xjh
-  implements xhq
+public final class xjh
+  implements ParcelableCompatCreatorCallbacks<XViewPager.SavedState>
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference<xgr> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public xjh(int paramInt)
+  public XViewPager.SavedState a(Parcel paramParcel, ClassLoader paramClassLoader)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    return new XViewPager.SavedState(paramParcel, paramClassLoader);
   }
   
-  public void a(String paramString, int paramInt)
+  public XViewPager.SavedState[] a(int paramInt)
   {
-    xvv.a("Q.qqstory.detail.DetailCommentSegment", "on nick click. unionId = %s.", paramString);
-    if ((paramInt == 1002) || (paramInt == 1003)) {}
-    while (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
-      return;
-    }
-    ((xgr)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_Int, paramString);
-  }
-  
-  public void a(xgr paramxgr)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramxgr);
+    return new XViewPager.SavedState[paramInt];
   }
 }
 

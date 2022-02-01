@@ -1,9 +1,9 @@
 package com.tencent.av.ui;
 
-import bcef;
-import com.tencent.av.VideoController;
-import lez;
-import mak;
+import android.app.Activity;
+import com.tencent.av.widget.ChildLockCircle;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 class DoubleVideoCtrlUI$3
   implements Runnable
@@ -12,10 +12,21 @@ class DoubleVideoCtrlUI$3
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController != null) && (!this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().l()))
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.this$0.a != null)
     {
-      mak.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1049);
-      bcef.b(null, "CliOper", "", "", "0X8009D02", "0X8009D02", 0, 0, "", "", "", "");
+      localObject1 = localObject2;
+      if (this.this$0.a.get() != null) {
+        localObject1 = (ChildLockCircle)((Activity)this.this$0.a.get()).findViewById(2131373477);
+      }
+    }
+    if (localObject1 != null)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.w(this.this$0.d, 1, "timtest HideChildLockUIRunnable");
+      }
+      ((ChildLockCircle)localObject1).setVisibility(8);
     }
   }
 }

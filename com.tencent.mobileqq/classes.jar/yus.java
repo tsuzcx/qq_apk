@@ -1,24 +1,39 @@
-import android.animation.TypeEvaluator;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FacePanel;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class yus
-  implements TypeEvaluator<yur>
+public class yus
+  implements AdapterView.OnItemClickListener
 {
-  private yur a;
+  public yus(FacePanel paramFacePanel) {}
   
-  public yur a(float paramFloat, yur paramyur1, yur paramyur2)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    float f1 = paramyur1.a + (paramyur2.a - paramyur1.a) * paramFloat;
-    float f2 = paramyur1.b + (paramyur2.b - paramyur1.b) * paramFloat;
-    paramFloat = paramyur1.c + (paramyur2.c - paramyur1.c) * paramFloat;
-    if (this.a == null) {
-      this.a = new yur(f1, f2, paramFloat);
-    }
-    for (;;)
+    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager.setCurrentItem(paramInt);
+    if (DoodleLayout.a) {}
+    for (Object localObject = "2";; localObject = "1")
     {
-      return this.a;
-      this.a.a = f1;
-      this.a.b = f2;
-      this.a.c = paramFloat;
+      DoodleLayout.a("change_face", 0, 0, new String[] { localObject });
+      if (this.a.jdField_a_of_type_Yvc != null)
+      {
+        localObject = this.a.jdField_a_of_type_Yvc.a(paramInt);
+        if ((localObject != null) && ((localObject instanceof yur)))
+        {
+          ykw.a("0X80076C7", "", "", ((yur)localObject).a, "");
+          ykw.a("0X80075DC", ((yur)localObject).a);
+        }
+      }
+      if (paramInt == 1)
+      {
+        ykw.a("0X80076CC");
+        ykw.b("0X80075E1");
+      }
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
     }
   }
 }

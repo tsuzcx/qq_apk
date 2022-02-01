@@ -1,51 +1,11 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.apollo.ApolloTicker.NativeDrawTask;
+import java.util.Timer;
 
 public class amrn
-  implements BusinessObserver
 {
-  public static final String TAG = "FavEmoRoamingObserver";
-  
-  protected void onDelEmoResponse(boolean paramBoolean) {}
-  
-  protected void onModifyFavData(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-    case 0: 
-      do
-      {
-        return;
-      } while (paramObject == null);
-      onDelEmoResponse(((Boolean)paramObject).booleanValue());
-      return;
-    case 1: 
-      try
-      {
-        onUploadReq((ArrayList)paramObject);
-        return;
-      }
-      catch (Exception paramObject)
-      {
-        QLog.e("FavEmoRoamingObserver", 1, "onUploadReq error, ", paramObject);
-        return;
-      }
-    case 2: 
-      onUpdateFavData(paramBoolean, paramObject);
-      return;
-    }
-    onModifyFavData(paramBoolean, paramObject);
-  }
-  
-  protected void onUpdateFavData(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onUploadReq(List<CustomEmotionData> paramList) {}
+  public int a;
+  public ApolloTicker.NativeDrawTask a;
+  public Timer a;
 }
 
 

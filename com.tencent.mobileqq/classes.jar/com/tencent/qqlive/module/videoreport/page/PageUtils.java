@@ -3,15 +3,28 @@ package com.tencent.qqlive.module.videoreport.page;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.util.ArrayMap;
+import com.tencent.qqlive.module.videoreport.Configuration;
 import com.tencent.qqlive.module.videoreport.data.DataBinder;
 import com.tencent.qqlive.module.videoreport.data.DataEntity;
 import com.tencent.qqlive.module.videoreport.data.DataEntityOperator;
+import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
 import com.tencent.qqlive.module.videoreport.reportdata.FinalData;
 import com.tencent.qqlive.module.videoreport.utils.ReusablePool;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 
 public class PageUtils
 {
+  private static void addPagePath(Map<String, Object> paramMap, List<String> paramList)
+  {
+    if (!VideoReportInner.getInstance().getConfiguration().isEnablePageLink()) {
+      return;
+    }
+    paramMap.put("pg_path", paramList);
+  }
+  
   public static FinalData createTrackData(String paramString, Object paramObject)
   {
     FinalData localFinalData = (FinalData)ReusablePool.obtain(6);
@@ -20,23 +33,61 @@ public class PageUtils
     return localFinalData;
   }
   
+  private static ListIterator<DataEntity> getEntityLink(DataEntity paramDataEntity, boolean paramBoolean)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramDataEntity != null)
+    {
+      if (paramBoolean) {
+        localArrayList.add(0, paramDataEntity);
+      }
+      for (;;)
+      {
+        paramDataEntity = DataEntityOperator.getParentEntity(paramDataEntity);
+        break;
+        localArrayList.add(paramDataEntity);
+      }
+    }
+    return localArrayList.listIterator();
+  }
+  
   @NonNull
   public static Map<String, Object> getPageInfo(Object paramObject)
   {
     ArrayMap localArrayMap1 = new ArrayMap(2);
-    PageContext localPageContext = PageContextManager.getInstance().get(paramObject);
+    Object localObject = PageContextManager.getInstance().get(paramObject);
     ArrayMap localArrayMap2 = new ArrayMap();
-    if (localPageContext != null)
+    if (localObject != null)
     {
-      localArrayMap1.put("pg_stp", Integer.valueOf(localPageContext.pageStep));
-      putPageParams(localArrayMap2, localPageContext.refPageData);
-      if (localArrayMap2.size() == 0) {
+      localArrayMap1.put("pg_stp", Integer.valueOf(((PageContext)localObject).pageStep));
+      localObject = ((PageContext)localObject).refPageData;
+      ListIterator localListIterator = getEntityLink((DataEntity)localObject, true);
+      while (localListIterator.hasNext()) {
+        putPageParams(localArrayMap2, (DataEntity)localListIterator.next());
+      }
+      if (localArrayMap2.isEmpty()) {
         localArrayMap2.put("pgid", "vr_page_none");
       }
+      addPagePath(localArrayMap2, getPagePath((DataEntity)localObject));
     }
     localArrayMap1.put("ref_pg", localArrayMap2);
-    putPageParams(localArrayMap1, DataBinder.getDataEntity(paramObject));
+    paramObject = DataBinder.getDataEntity(paramObject);
+    addPagePath(localArrayMap1, getPagePath(paramObject));
+    paramObject = getEntityLink(paramObject, true);
+    while (paramObject.hasNext()) {
+      putPageParams(localArrayMap1, (DataEntity)paramObject.next());
+    }
     return localArrayMap1;
+  }
+  
+  private static List<String> getPagePath(DataEntity paramDataEntity)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramDataEntity = getEntityLink(paramDataEntity, false);
+    while (paramDataEntity.hasNext()) {
+      localArrayList.add(DataEntityOperator.getPageId((DataEntity)paramDataEntity.next()));
+    }
+    return localArrayList;
   }
   
   public static boolean isCurrentPage(@Nullable PageInfo paramPageInfo)

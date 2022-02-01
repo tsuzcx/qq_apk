@@ -1,105 +1,82 @@
-import android.content.res.Configuration;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import java.util.List;
+import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppContentView;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.smtt.sdk.WebView;
 
-class ojb
-  extends pkt
+public class ojb
+  extends acko
 {
-  private ojb(oiz paramoiz) {}
-  
-  public void a(int paramInt)
+  public ojb(ReadInJoyNativeAdAppContentView paramReadInJoyNativeAdAppContentView, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
   {
-    if ((oiz.a(this.a) != null) && ((oiz.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)oiz.a(this.a)).a(paramInt);
-    }
+    super(paramContext, paramActivity, paramIntent, paramAppInterface);
   }
   
-  public void a(int paramInt, ArticleInfo paramArticleInfo, String paramString1, String paramString2)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    if ((oiz.a(this.a) != null) && ((oiz.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)oiz.a(this.a)).a(paramInt, paramArticleInfo, paramString1, paramString2);
-    }
+    super.onPageFinished(paramWebView, paramString);
   }
   
-  public void a(int paramInt, List<Long> paramList)
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    if ((oiz.a(this.a) != null) && ((oiz.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)oiz.a(this.a)).a(paramInt, paramList);
-    }
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
   }
   
-  public void a(Configuration paramConfiguration)
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
-    if ((oiz.a(this.a) == 56) && (oiz.a(this.a) != null))
+    paramWebView = this.a.findViewById(2131362831);
+    if ((paramWebView != null) && (ReadInJoyNativeAdAppContentView.a(this.a) != null))
     {
-      oiz.a(this.a).f();
-      oiz.a(this.a).g();
-    }
-    if ((oiz.a(this.a) != null) && ((oiz.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)oiz.a(this.a)).a(paramConfiguration);
+      ReadInJoyNativeAdAppContentView.a(this.a).setVisibility(8);
+      paramWebView.setVisibility(0);
     }
   }
   
-  public void a(TopBannerInfo paramTopBannerInfo)
+  public void onReceivedTitle(WebView paramWebView, String paramString)
   {
-    if ((oiz.a(this.a) != null) && ((oiz.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)oiz.a(this.a)).a(paramTopBannerInfo);
-    }
+    super.onReceivedTitle(paramWebView, paramString);
   }
   
-  public void a(boolean paramBoolean, int paramInt, long paramLong, List<Long> paramList, List<ArticleInfo> paramList1)
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    if ((oiz.a(this.a) != null) && ((oiz.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)oiz.a(this.a)).a(paramBoolean, paramInt, paramLong, paramList, paramList1);
-    }
-  }
-  
-  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
-  {
-    if ((oiz.a(this.a) != null) && ((oiz.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)oiz.a(this.a)).a(paramBoolean1, paramInt, paramList, paramBoolean2);
-    }
-  }
-  
-  public void ah_()
-  {
-    if ((oiz.a(this.a) != null) && ((oiz.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)oiz.a(this.a)).m();
-    }
-  }
-  
-  public void b(int paramInt, List<Long> paramList)
-  {
-    if ((oiz.a(this.a) != null) && ((oiz.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)oiz.a(this.a)).c(paramInt, paramList);
-    }
-  }
-  
-  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
-  {
-    if ((oiz.a(this.a) != null) && ((oiz.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)oiz.a(this.a)).b(paramBoolean1, paramInt, paramList, paramBoolean2);
-    }
-  }
-  
-  public void c(int paramInt, List<Long> paramList)
-  {
-    if ((oiz.a(this.a) != null) && ((oiz.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)oiz.a(this.a)).b(paramInt, paramList);
-    }
-  }
-  
-  public void d(int paramInt, List<oqd> paramList)
-  {
-    if ((oiz.a(this.a) instanceof ReadInJoyListViewGroup))
+    acho.b("AbsWebView", "shouldOverrideUrlLoading:" + paramString);
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
+    Object localObject;
+    do
     {
-      prz localprz = (prz)((ReadInJoyListViewGroup)oiz.a(this.a)).a().a(2);
-      if (localprz != null) {
-        localprz.b(paramInt, paramList);
+      return true;
+      localObject = ((CustomWebView)paramWebView).getPluginEngine();
+      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
+      {
+        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
+        for (boolean bool = true;; bool = false) {
+          return bool;
+        }
       }
+      paramString = Uri.parse(paramString);
+      localObject = paramString.getScheme();
+    } while (!nro.a().a(paramWebView.getUrl(), (String)localObject).booleanValue());
+    paramWebView = new Intent("android.intent.action.VIEW", paramString);
+    paramWebView.addFlags(268435456);
+    try
+    {
+      this.mContext.startActivity(paramWebView);
+      return true;
     }
+    catch (ActivityNotFoundException paramWebView)
+    {
+      acho.d("AbsWebView", paramWebView.toString());
+    }
+    return true;
   }
 }
 

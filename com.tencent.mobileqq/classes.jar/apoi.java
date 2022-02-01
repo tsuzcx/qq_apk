@@ -1,6 +1,19 @@
-public abstract interface apoi
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArDefaultSetting;
+
+public final class apoi
+  implements Parcelable.Creator<ArDefaultSetting>
 {
-  public abstract void g();
+  public ArDefaultSetting a(Parcel paramParcel)
+  {
+    return new ArDefaultSetting(paramParcel);
+  }
+  
+  public ArDefaultSetting[] a(int paramInt)
+  {
+    return new ArDefaultSetting[paramInt];
+  }
 }
 
 

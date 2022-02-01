@@ -1,23 +1,12 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import mqq.observer.BusinessObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class akav
-  implements BusinessObserver
+class akav
+  implements DialogInterface.OnCancelListener
 {
-  public void a(int paramInt, String paramString, Bundle paramBundle) {}
+  akav(akat paramakat) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if ((paramInt == 1) && (paramBundle != null))
-    {
-      paramInt = paramBundle.getInt("btype");
-      String str = paramBundle.getString("bid");
-      if ((akat.a(paramInt)) && (!TextUtils.isEmpty(str))) {
-        a(paramInt, str, paramBundle);
-      }
-    }
-  }
+  public void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 

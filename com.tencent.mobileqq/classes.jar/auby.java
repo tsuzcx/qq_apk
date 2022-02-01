@@ -1,91 +1,25 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import java.util.List;
 
-public class auby
+class auby
+  implements DialogInterface.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  auby jdField_a_of_type_Auby;
-  ArrayList<auby> jdField_a_of_type_JavaUtilArrayList;
-  HashMap<Integer, Object> jdField_a_of_type_JavaUtilHashMap;
+  auby(aubw paramaubw, List paramList, aubv paramaubv) {}
   
-  public auby(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  private String a(int paramInt)
-  {
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    StringBuilder localStringBuilder2 = new StringBuilder();
-    int i = 0;
-    while (i < paramInt)
+    if (paramInt == 1)
     {
-      localStringBuilder2.append("\t");
-      i += 1;
+      aubw.a(this.jdField_a_of_type_Aubw, this.jdField_a_of_type_JavaUtilList);
+      if (this.jdField_a_of_type_Aubv != null) {
+        this.jdField_a_of_type_Aubv.a(1, 0);
+      }
     }
-    localStringBuilder1.append(localStringBuilder2).append(aubx.a(this.jdField_a_of_type_Int)).append(":[\n");
-    localStringBuilder1.append(localStringBuilder2).append("\tfields").append(":[\n");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (Integer)localIterator.next();
-      String str = aubx.b(((Integer)localObject).intValue());
-      localObject = this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
-      localStringBuilder1.append(localStringBuilder2).append("\t\t").append(str).append(":").append(localObject).append("\n");
+    while (this.jdField_a_of_type_Aubv == null) {
+      return;
     }
-    localStringBuilder1.append(localStringBuilder2).append("\t]").append("\n");
-    localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      localStringBuilder1.append(((auby)localIterator.next()).a(paramInt + 1));
-    }
-    localStringBuilder1.append(localStringBuilder2).append("]").append("\n");
-    return localStringBuilder1.toString();
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public auby a()
-  {
-    return this.jdField_a_of_type_Auby;
-  }
-  
-  public auby a(auby paramauby)
-  {
-    this.jdField_a_of_type_Auby = paramauby;
-    this.jdField_a_of_type_Auby.a(this);
-    return this;
-  }
-  
-  public ArrayList<auby> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public HashMap<Integer, Object> a()
-  {
-    return this.jdField_a_of_type_JavaUtilHashMap;
-  }
-  
-  public void a(int paramInt, Object paramObject)
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), paramObject);
-  }
-  
-  public void a(auby paramauby)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramauby);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int == 2;
+    this.jdField_a_of_type_Aubv.a(1, 1);
   }
 }
 

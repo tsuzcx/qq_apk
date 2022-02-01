@@ -1,22 +1,30 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
 public class aeuc
-  extends ClickableSpan
+  implements ActionMode.Callback
 {
-  public aeuc(ActivateFriendActivity paramActivateFriendActivity) {}
+  public aeuc(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    this.a.b();
+    return false;
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
   {
-    paramTextPaint.setColor(Color.rgb(0, 165, 224));
+    paramMenu.clear();
+    return false;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
   }
 }
 

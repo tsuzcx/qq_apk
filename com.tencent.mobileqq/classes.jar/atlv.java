@@ -1,21 +1,21 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardFileBaseOption;
-
-public class atlv
-  implements DialogInterface.OnClickListener
+public abstract class atlv
 {
-  public atlv(ForwardFileBaseOption paramForwardFileBaseOption) {}
+  public asyq a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public abstract int a();
+  
+  public abstract void a();
+  
+  public void a(asyq paramasyq)
   {
-    this.a.a.finish();
+    this.a = paramasyq;
   }
+  
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atlv
  * JD-Core Version:    0.7.0.1
  */

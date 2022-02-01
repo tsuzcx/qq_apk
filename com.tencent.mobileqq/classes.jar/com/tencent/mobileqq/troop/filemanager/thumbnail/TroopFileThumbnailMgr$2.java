@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.filemanager.thumbnail;
 
-import begt;
-import begv;
+import bfnw;
+import bfny;
 import com.tencent.mm.vfs.VFSFile;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
@@ -9,18 +9,18 @@ import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 public class TroopFileThumbnailMgr$2
   implements Runnable
 {
-  public TroopFileThumbnailMgr$2(begv parambegv, TroopFileTransferManager.Item paramItem, long paramLong, int paramInt) {}
+  public TroopFileThumbnailMgr$2(bfny parambfny, TroopFileTransferManager.Item paramItem, long paramLong, int paramInt) {}
   
   public void run()
   {
     String str = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getThumbnailFile(this.jdField_a_of_type_Long, 640);
     if (FileUtil.fileExistsAndNotEmpty(str)) {
-      begv.a(this.this$0).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int, str);
+      bfny.a(this.this$0).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int, str);
     }
     while ((this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile == null) || (!new VFSFile(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile).exists())) {
       return;
     }
-    begv.a(this.this$0).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int, null);
+    bfny.a(this.this$0).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int, null);
   }
 }
 

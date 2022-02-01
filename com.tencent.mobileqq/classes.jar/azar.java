@@ -1,29 +1,16 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity;
+import com.tencent.mobileqq.emoticonview.EmoticonListProvider;
+import com.tencent.mobileqq.emoticonview.EmotionPanelInfo;
+import java.util.ArrayList;
+import java.util.List;
 
-public class azar
-  implements aymm
+public final class azar
+  implements EmoticonListProvider
 {
-  public azar(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
-  
-  public void a(int paramInt, String paramString)
+  public List<EmotionPanelInfo> getEmotionPanelInfo(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramInt == 0) {
-      if (ProfileActivity.AllInOne.b(this.a.a))
-      {
-        paramInt = 1;
-        bcef.b(this.a.app, "CliOper", "", "", "0X80050E7", "0X80050E7", paramInt, 0, "", "", "", "");
-        bcef.b(null, "dc00898", "", "", "0X800A4FD", "0X800A4FD", 0, 0, "", "0", "0", "");
-      }
-    }
-    while (paramInt != 2) {
-      for (;;)
-      {
-        return;
-        paramInt = 2;
-      }
-    }
-    bcef.b(null, "dc00898", "", "", "0X800A4FE", "0X800A4FE", 0, 0, "", "0", "0", "");
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(new EmotionPanelInfo(7, 7, null));
+    return localArrayList;
   }
 }
 

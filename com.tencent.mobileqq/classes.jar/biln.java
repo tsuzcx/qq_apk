@@ -1,215 +1,223 @@
-import android.annotation.TargetApi;
-import android.media.AudioTrack;
-import android.media.MediaCodec;
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaFormat;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.util.Pair;
-import java.nio.ByteBuffer;
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffColorFilter;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@TargetApi(16)
 public class biln
-  extends bilp
+  extends WebViewPlugin
 {
-  private AudioTrack jdField_a_of_type_AndroidMediaAudioTrack;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private bilo jdField_a_of_type_Bilo;
-  public bnzt a;
+  private int jdField_a_of_type_Int = 2147483647;
+  ColorFilter jdField_a_of_type_AndroidGraphicsColorFilter = new PorterDuffColorFilter(-1, PorterDuff.Mode.SRC_IN);
+  private RedTouch jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch;
+  private WebView jdField_a_of_type_ComTencentSmttSdkWebView;
   
-  private AudioTrack a()
+  public biln()
   {
-    int j = 3;
-    AudioTrack localAudioTrack;
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_Bnzt.jdField_a_of_type_Bbwq.e == 1)
-        {
-          i = 4;
-          if (this.jdField_a_of_type_Bnzt.jdField_a_of_type_Bbwq.b == 16) {
-            j = 2;
-          }
-          int k = AudioTrack.getMinBufferSize(this.jdField_a_of_type_Bnzt.jdField_a_of_type_Bbwq.d, i, j);
-          localAudioTrack = new AudioTrack(3, this.jdField_a_of_type_Bnzt.jdField_a_of_type_Bbwq.d, i, j, k, 1);
-        }
-      }
-      catch (Throwable localThrowable1)
-      {
-        int i;
-        localAudioTrack = null;
-      }
-      try
-      {
-        localAudioTrack.play();
-        return localAudioTrack;
-      }
-      catch (Throwable localThrowable2)
-      {
-        break label94;
-      }
-      i = 12;
-    }
-    label94:
-    xvv.c("Q.qqstory.mediadecoderMediaCodecAudioRender", "AudioTrack init fail :%s", localThrowable1);
-    return localAudioTrack;
+    this.mPluginNameSpace = "allpeoplevote";
   }
   
-  private void a(AudioTrack paramAudioTrack, byte[] paramArrayOfByte, int paramInt)
+  private void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    int i;
-    switch (this.jdField_a_of_type_Bnzt.jdField_a_of_type_Int)
+    int i = 0;
+    Object localObject = this.mRuntime.a();
+    WebViewFragment localWebViewFragment = this.mRuntime.a();
+    if (localWebViewFragment != null)
     {
-    default: 
-      if (!this.jdField_a_of_type_Bilr.a) {
-        paramAudioTrack.write(paramArrayOfByte, 0, paramInt);
+      ImageView localImageView = localWebViewFragment.mSwiftTitleUI.rightViewImg;
+      if (this.jdField_a_of_type_Int == 2147483647) {
+        this.jdField_a_of_type_Int = localImageView.getPaddingRight();
       }
-      paramInt = 1;
-      paramArrayOfByte = null;
-      i = 0;
-    }
-    for (;;)
-    {
-      if ((!this.jdField_a_of_type_Bilr.a) && (paramInt == 0) && (paramArrayOfByte != null)) {
-        paramAudioTrack.write(paramArrayOfByte, 0, i);
-      }
-      return;
-      i = paramArrayOfByte.length / 2;
-      byte[] arrayOfByte = new byte[i];
-      boai.a(paramArrayOfByte, 0, arrayOfByte, i);
-      paramArrayOfByte = arrayOfByte;
-      paramInt = 0;
-      continue;
-      i = paramArrayOfByte.length * 2;
-      arrayOfByte = new byte[i];
-      boai.a(paramArrayOfByte, 0, arrayOfByte, i, 2);
-      paramArrayOfByte = arrayOfByte;
-      paramInt = 0;
-      continue;
-      i = paramArrayOfByte.length * 2 / 3;
-      arrayOfByte = new byte[i];
-      boai.b(paramArrayOfByte, 0, arrayOfByte, i);
-      paramArrayOfByte = arrayOfByte;
-      paramInt = 0;
-      continue;
-      i = paramArrayOfByte.length * 4;
-      arrayOfByte = new byte[i];
-      boai.a(paramArrayOfByte, 0, arrayOfByte, i, 4);
-      paramArrayOfByte = arrayOfByte;
-      paramInt = 0;
-    }
-  }
-  
-  public long a(long paramLong)
-  {
-    this.jdField_a_of_type_AndroidMediaAudioTrack.flush();
-    return super.a(paramLong);
-  }
-  
-  protected String a()
-  {
-    return "Q.qqstory.mediadecoderMediaCodecAudioRender";
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidMediaAudioTrack.play();
-  }
-  
-  protected void a(MediaCodec paramMediaCodec, MediaCodec.BufferInfo paramBufferInfo)
-  {
-    int i = paramMediaCodec.dequeueOutputBuffer(paramBufferInfo, 10000L);
-    switch (i)
-    {
-    default: 
-      if ((paramBufferInfo.flags & 0x4) != 0)
+      if ((!paramBoolean1) || (TextUtils.isEmpty(paramString)))
       {
-        xvv.b("Q.qqstory.mediadecoderMediaCodecAudioRender", "output EOS");
-        this.jdField_b_of_type_Boolean = true;
-      }
-      break;
-    }
-    for (;;)
-    {
-      paramMediaCodec.releaseOutputBuffer(i, false);
-      return;
-      xvv.b("Q.qqstory.mediadecoderMediaCodecAudioRender", "INFO_OUTPUT_BUFFERS_CHANGED");
-      this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = paramMediaCodec.getOutputBuffers();
-      return;
-      xvv.b("Q.qqstory.mediadecoderMediaCodecAudioRender", "New format " + paramMediaCodec.getOutputFormat());
-      return;
-      xvv.b("Q.qqstory.mediadecoderMediaCodecAudioRender", "dequeueOutputBuffer timed out!");
-      return;
-      try
-      {
-        localObject = this.jdField_b_of_type_ArrayOfJavaNioByteBuffer[i];
-        if (localObject == null)
-        {
-          xvv.e("Q.qqstory.mediadecoderMediaCodecAudioRender", "find no data");
-          return;
-        }
-      }
-      catch (Exception paramMediaCodec)
-      {
-        xvv.c("Q.qqstory.mediadecoderMediaCodecAudioRender", "handle data error :%s", paramMediaCodec);
+        localImageView.setVisibility(8);
+        localImageView.setPadding(localImageView.getPaddingLeft(), localImageView.getPaddingTop(), this.jdField_a_of_type_Int, localImageView.getPaddingBottom());
         return;
       }
-      if (paramBufferInfo.size != 0)
+      localImageView.setImageResource(2130844810);
+      int k;
+      if (localWebViewFragment.mSwiftTitleUI.centerView != null)
       {
-        ((ByteBuffer)localObject).position(paramBufferInfo.offset);
-        ((ByteBuffer)localObject).limit(paramBufferInfo.offset + paramBufferInfo.size);
+        int j = localWebViewFragment.mSwiftTitleUI.centerView.getCurrentTextColor();
+        localImageView.setColorFilter(new PorterDuffColorFilter(j, PorterDuff.Mode.SRC_IN));
+        if (QLog.isColorLevel()) {
+          QLog.i("WholePeoplePlugin", 2, "titleColor:" + j);
+        }
+        localImageView.setVisibility(0);
+        if (!paramBoolean2) {
+          break label388;
+        }
+        if (this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch == null) {
+          this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch = new RedTouch((Context)localObject, localImageView).b(53).a();
+        }
+        localObject = aqmz.a().b();
+        if (localObject == null) {
+          break label371;
+        }
+        j = ((Bundle)localObject).getInt("redPointCount", 0);
+        k = ((Bundle)localObject).getInt("redNumCount", 0);
+        if (k > 0) {
+          break label350;
+        }
+        label255:
+        localObject = bill.a(k, j);
+        this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.a((BusinessInfoCheckUpdate.AppInfo)localObject);
+        j = localImageView.getPaddingLeft();
+        k = localImageView.getPaddingTop();
+        int m = this.jdField_a_of_type_Int;
+        localImageView.setPadding(j, k, AIOUtils.dp2px(i, this.jdField_a_of_type_ComTencentSmttSdkWebView.getResources()) + m, localImageView.getPaddingBottom());
       }
-      int j = ((ByteBuffer)localObject).remaining();
-      paramBufferInfo = new byte[j];
-      ((ByteBuffer)localObject).get(paramBufferInfo, 0, j);
-      Object localObject = Message.obtain();
-      ((Message)localObject).what = 1;
-      ((Message)localObject).obj = new Pair(paramBufferInfo, Integer.valueOf(j));
-      this.jdField_a_of_type_Bilo.sendMessage((Message)localObject);
-    }
-  }
-  
-  protected void a(bilq parambilq, MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
-  {
-    try
-    {
-      this.jdField_a_of_type_Bnzt.jdField_a_of_type_Bbwq.e = paramMediaFormat.getInteger("channel-count");
-      this.jdField_a_of_type_Bnzt.jdField_a_of_type_Bbwq.d = yot.a(paramMediaFormat);
-      xvv.b("Q.qqstory.mediadecoderMediaCodecAudioRender", "config after b=" + this.jdField_a_of_type_Bnzt.jdField_a_of_type_Bbwq.c + " c=" + this.jdField_a_of_type_Bnzt.jdField_a_of_type_Bbwq.e + " sc=" + this.jdField_a_of_type_Bnzt.jdField_a_of_type_Bbwq.d);
-      paramMediaCodec.configure(paramMediaFormat, null, null, 0);
-      this.jdField_a_of_type_AndroidMediaAudioTrack = a();
-      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("mc_audio_thread");
-      this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_Bilo = new bilo(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-      return;
-    }
-    catch (Throwable parambilq)
-    {
+      label388:
       for (;;)
       {
-        parambilq.printStackTrace();
+        localImageView.setOnClickListener(new bilo(this, paramString));
+        return;
+        localImageView.setColorFilter(this.jdField_a_of_type_AndroidGraphicsColorFilter);
+        break;
+        label350:
+        if (k > 99)
+        {
+          i = 12;
+          break label255;
+        }
+        i = 10;
+        break label255;
+        label371:
+        if (this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch != null)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.d();
+          continue;
+          if (this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch != null) {
+            this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.d();
+          }
+        }
       }
     }
+    QLog.e("WholePeoplePlugin", 1, "setRightButton, not support " + localObject);
   }
   
-  public void b()
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    super.b();
-    if (this.jdField_a_of_type_AndroidMediaAudioTrack != null)
-    {
-      this.jdField_a_of_type_AndroidMediaAudioTrack.stop();
-      this.jdField_a_of_type_AndroidMediaAudioTrack.release();
-      this.jdField_a_of_type_AndroidMediaAudioTrack = null;
+    bool2 = false;
+    boolean bool3 = true;
+    if ((paramString2 == null) || (!paramString2.equalsIgnoreCase("allpeoplevote")) || (paramString3 == null)) {
+      bool1 = false;
     }
-    if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
+    label230:
+    do
     {
-      this.jdField_a_of_type_AndroidOsHandlerThread.getLooper().quit();
-      this.jdField_a_of_type_AndroidOsHandlerThread = null;
-      this.jdField_a_of_type_Bilo = null;
-    }
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return bool1;
+              if ((this.mRuntime == null) || (this.mRuntime.a() == null)) {
+                return false;
+              }
+              if ((paramString3.equalsIgnoreCase("setRightButton")) && (paramVarArgs.length == 1))
+              {
+                for (;;)
+                {
+                  try
+                  {
+                    paramJsBridgeListener = this.mRuntime.a();
+                    bool1 = bool3;
+                    if (paramJsBridgeListener == null) {
+                      break;
+                    }
+                    bool1 = bool3;
+                    if (paramJsBridgeListener.isFinishing()) {
+                      break;
+                    }
+                    paramString2 = new JSONObject(paramVarArgs[0]);
+                    paramJsBridgeListener = paramString2.optString("callback");
+                  }
+                  catch (JSONException paramJsBridgeListener)
+                  {
+                    bool1 = bool3;
+                  }
+                  try
+                  {
+                    paramString1 = paramString2.optString("show");
+                    paramString2 = paramString2.optString("showRedNum");
+                    i = Integer.parseInt(paramString1);
+                  }
+                  catch (Exception paramString1)
+                  {
+                    i = 0;
+                  }
+                  try
+                  {
+                    j = Integer.parseInt(paramString2);
+                    if (!QLog.isColorLevel()) {
+                      break label328;
+                    }
+                    QLog.i("WholePeoplePlugin", 2, "setRightButton show=" + i + " showRedNum=" + j + " callback=" + paramJsBridgeListener);
+                  }
+                  catch (Exception paramString1)
+                  {
+                    do
+                    {
+                      break label230;
+                    } while (i != 1);
+                    bool1 = true;
+                    if (j != 1) {
+                      continue;
+                    }
+                    bool2 = true;
+                    continue;
+                  }
+                  a(bool1, bool2, paramJsBridgeListener);
+                  return true;
+                  if (!QLog.isColorLevel()) {
+                    break;
+                  }
+                  QLog.d("WholePeoplePlugin", 2, "setRightButton error", paramJsBridgeListener);
+                  return true;
+                  j = 0;
+                }
+                bool1 = false;
+                break label337;
+              }
+              bool1 = bool3;
+            } while (!paramString3.equalsIgnoreCase("readRedPoint"));
+            paramJsBridgeListener = this.mRuntime.a();
+            bool1 = bool3;
+          } while (paramJsBridgeListener == null);
+          bool1 = bool3;
+        } while (paramJsBridgeListener.isFinishing());
+        aqmz.a().b();
+        bool1 = bool3;
+      } while (this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch == null);
+      bool1 = bool3;
+    } while (!this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.c());
+    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.d();
+    return true;
+  }
+  
+  public void onWebViewCreated(CustomWebView paramCustomWebView)
+  {
+    super.onWebViewCreated(paramCustomWebView);
+    this.jdField_a_of_type_ComTencentSmttSdkWebView = this.mRuntime.a();
   }
 }
 

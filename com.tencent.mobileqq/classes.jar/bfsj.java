@@ -1,12 +1,18 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
 class bfsj
-  implements View.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  bfsj(bfse parambfse) {}
+  bfsj(bfsh parambfsh, boolean paramBoolean) {}
   
-  public void onClick(View paramView) {}
+  public void onGlobalLayout()
+  {
+    bfsh.a(this.jdField_a_of_type_Bfsh).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    bfsh.b(this.jdField_a_of_type_Bfsh).setVisibility(4);
+    bfsh.a(this.jdField_a_of_type_Bfsh, this.jdField_a_of_type_Boolean, bfsh.a(this.jdField_a_of_type_Bfsh), bfsh.c(this.jdField_a_of_type_Bfsh));
+  }
 }
 
 

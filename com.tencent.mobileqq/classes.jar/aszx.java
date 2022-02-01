@@ -1,21 +1,24 @@
-final class aszx
-  implements bgoc
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+
+public class aszx
+  implements audq
 {
-  aszx(aszj paramaszj) {}
+  public aszx(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public void callback(int paramInt)
+  public void onNo()
   {
-    if ((paramInt == 1) || (paramInt == 2))
-    {
-      this.a.onYes();
-      return;
-    }
-    this.a.onNo();
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
+  }
+  
+  public void onYes()
+  {
+    UniformDownloadActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aszx
  * JD-Core Version:    0.7.0.1
  */

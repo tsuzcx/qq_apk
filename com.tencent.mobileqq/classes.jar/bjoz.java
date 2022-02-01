@@ -1,6 +1,17 @@
-public abstract interface bjoz
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.filedownload.ApkFileDownloadFragment;
+import com.tencent.open.filedownload.ApkFileDownloadFragment.3.1;
+import mqq.os.MqqHandler;
+
+public class bjoz
+  extends bjpi
 {
-  public abstract void a();
+  public bjoz(ApkFileDownloadFragment paramApkFileDownloadFragment) {}
+  
+  public void a()
+  {
+    ThreadManager.getUIHandler().post(new ApkFileDownloadFragment.3.1(this));
+  }
 }
 
 

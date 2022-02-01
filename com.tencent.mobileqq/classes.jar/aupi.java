@@ -1,14 +1,35 @@
-import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.QQKandianInterface;
+import android.os.Handler.Callback;
+import android.os.Message;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 class aupi
-  implements QQKandianInterface
+  implements Handler.Callback
 {
-  aupi(aupc paramaupc) {}
+  aupi(aupf paramaupf) {}
   
-  public void jumpToKandianBiu(Bundle paramBundle)
+  public boolean handleMessage(Message paramMessage)
   {
-    auqe.a().d(paramBundle);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramMessage = (List)paramMessage.obj;
+      aupf.a(this.a, paramMessage);
+      continue;
+      paramMessage = aupf.a(this.a).keySet().iterator();
+      while (paramMessage.hasNext())
+      {
+        Integer localInteger = (Integer)paramMessage.next();
+        ArrayList localArrayList = (ArrayList)aupf.a(this.a).get(localInteger);
+        aupf.a(this.a, new ArrayList(localArrayList), localInteger.intValue());
+      }
+    }
   }
 }
 

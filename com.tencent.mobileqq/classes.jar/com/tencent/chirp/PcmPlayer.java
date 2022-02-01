@@ -1,6 +1,6 @@
 package com.tencent.chirp;
 
-import aafb;
+import aaun;
 import android.content.Context;
 import android.media.AudioRecord;
 import android.media.AudioTrack;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 public class PcmPlayer
 {
   private int jdField_a_of_type_Int = 44100;
-  private aafb jdField_a_of_type_Aafb;
+  private aaun jdField_a_of_type_Aaun;
   private Context jdField_a_of_type_AndroidContentContext;
   private AudioTrack jdField_a_of_type_AndroidMediaAudioTrack;
   private PcmPlayer.PlayThread jdField_a_of_type_ComTencentChirpPcmPlayer$PlayThread;
@@ -18,10 +18,10 @@ public class PcmPlayer
   private int c = 2;
   private int d = 2;
   
-  public PcmPlayer(Context paramContext, aafb paramaafb, int paramInt, String paramString)
+  public PcmPlayer(Context paramContext, aaun paramaaun, int paramInt, String paramString)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Aafb = paramaafb;
+    this.jdField_a_of_type_Aaun = paramaaun;
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_JavaLangString = paramString;
   }
@@ -40,9 +40,9 @@ public class PcmPlayer
         this.jdField_a_of_type_AndroidMediaAudioTrack.play();
         this.jdField_a_of_type_ComTencentChirpPcmPlayer$PlayThread = new PcmPlayer.PlayThread(this, null);
         this.jdField_a_of_type_ComTencentChirpPcmPlayer$PlayThread.start();
-        if (this.jdField_a_of_type_Aafb != null)
+        if (this.jdField_a_of_type_Aaun != null)
         {
-          this.jdField_a_of_type_Aafb.l();
+          this.jdField_a_of_type_Aaun.l();
           return;
         }
       }

@@ -2,13 +2,14 @@ package com.tencent.biz.pubaccount.readinjoy.view;
 
 import android.os.Build.VERSION;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
-import pay;
+import prm;
 
 class ReadinjoyTabFrame$InitWebProcessRunnable
   implements Runnable
@@ -31,11 +32,11 @@ class ReadinjoyTabFrame$InitWebProcessRunnable
         return;
       } while ((System.currentTimeMillis() - this.jdField_a_of_type_Long <= 1000L) || (this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null));
       ReadinjoyTabFrame localReadinjoyTabFrame = (ReadinjoyTabFrame)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      localWebProcessManager = (WebProcessManager)localReadinjoyTabFrame.a.getManager(13);
+      localWebProcessManager = (WebProcessManager)localReadinjoyTabFrame.a.getManager(QQManagerFactory.WEBPROCESS_MANAGER);
       if (localWebProcessManager != null)
       {
-        i = pay.f();
-        if (!pay.h()) {}
+        i = prm.a();
+        if (!prm.a()) {}
       }
       try
       {
@@ -73,7 +74,7 @@ class ReadinjoyTabFrame$InitWebProcessRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame.InitWebProcessRunnable
  * JD-Core Version:    0.7.0.1
  */

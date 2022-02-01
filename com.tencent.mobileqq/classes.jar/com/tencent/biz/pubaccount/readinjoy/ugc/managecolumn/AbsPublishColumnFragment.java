@@ -20,9 +20,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bhht;
-import bjon;
-import bjvv;
+import bisl;
+import bkzz;
+import blhg;
 import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
 import com.tencent.biz.pubaccount.readinjoy.widgets.LimitWordCountEditText;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -46,43 +46,43 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import odq;
+import olh;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import pay;
-import pbg;
-import rha;
-import rmh;
-import rmi;
-import rmj;
-import rmk;
-import rml;
-import rmw;
-import rmx;
-import rmz;
-import rnb;
-import rqy;
-import rrb;
+import pnn;
+import pqg;
+import rth;
+import ryw;
+import ryx;
+import ryy;
+import ryz;
+import rza;
+import rzl;
+import rzm;
+import rzo;
+import rzq;
+import sdn;
+import sdq;
 
 public abstract class AbsPublishColumnFragment
   extends PublicBaseFragment
-  implements View.OnClickListener, rmx
+  implements View.OnClickListener, rzm
 {
   int jdField_a_of_type_Int = 0;
   private Dialog jdField_a_of_type_AndroidAppDialog;
   private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
   protected ImageView a;
   protected TextView a;
-  protected bhht a;
+  protected bisl a;
   public LimitWordCountEditText a;
   protected ImmersiveTitleBar2 a;
   protected String a;
   protected Map<String, String> a;
-  public final rmw a;
-  protected rqy a;
+  public final rzl a;
+  protected sdn a;
   protected ImageView b;
   protected TextView b;
-  protected bhht b;
+  protected bisl b;
   protected LimitWordCountEditText b;
   protected String b;
   protected TextView c;
@@ -91,24 +91,24 @@ public abstract class AbsPublishColumnFragment
   
   public AbsPublishColumnFragment()
   {
-    this.jdField_a_of_type_Rmw = new rnb(new rmz(pay.a()));
+    this.jdField_a_of_type_Rzl = new rzq(new rzo(pnn.a()));
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
   }
   
   @NotNull
-  private pbg a()
+  private pqg a()
   {
     int n = 0;
-    pbg localpbg1 = new pbg();
-    boolean bool1 = rha.q();
-    boolean bool2 = rha.h();
+    pqg localpqg1 = new pqg();
+    boolean bool1 = rth.q();
+    boolean bool2 = rth.h();
     int k;
     int j;
     label55:
     label76:
     int m;
     label84:
-    pbg localpbg2;
+    pqg localpqg2;
     if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
     {
       k = 1;
@@ -124,31 +124,31 @@ public abstract class AbsPublishColumnFragment
         break label217;
       }
       m = 1;
-      localpbg2 = localpbg1.a("ugc_video_flag", Integer.valueOf(m));
+      localpqg2 = localpqg1.a("ugc_video_flag", Integer.valueOf(m));
       if (!bool2) {
         break label223;
       }
       m = 1;
       label106:
-      localpbg2 = localpbg2.a("ugc_column_flag", Integer.valueOf(m));
+      localpqg2 = localpqg2.a("ugc_column_flag", Integer.valueOf(m));
       if (k == 0) {
         break label229;
       }
       k = 1;
       label126:
-      localpbg2 = localpbg2.a("cover_flag", Integer.valueOf(k));
+      localpqg2 = localpqg2.a("cover_flag", Integer.valueOf(k));
       if (j == 0) {
         break label234;
       }
       j = 1;
       label145:
-      localpbg2 = localpbg2.a("column_name_flag", Integer.valueOf(j));
+      localpqg2 = localpqg2.a("column_name_flag", Integer.valueOf(j));
       if (i == 0) {
         break label239;
       }
       i = 1;
       label164:
-      localpbg2 = localpbg2.a("introduction_flag", Integer.valueOf(i));
+      localpqg2 = localpqg2.a("introduction_flag", Integer.valueOf(i));
       if (this.jdField_a_of_type_Int != 0) {
         break label244;
       }
@@ -163,8 +163,8 @@ public abstract class AbsPublishColumnFragment
     label244:
     for (int i = n;; i = 1)
     {
-      localpbg2.a("collaborator_flag", Integer.valueOf(i));
-      return localpbg1;
+      localpqg2.a("collaborator_flag", Integer.valueOf(i));
+      return localpqg1;
       k = 0;
       break;
       j = 0;
@@ -188,7 +188,7 @@ public abstract class AbsPublishColumnFragment
   {
     if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(rha.a(paramInt, this.jdField_a_of_type_AndroidContentContext));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(rth.a(paramInt, this.jdField_a_of_type_AndroidContentContext));
       this.jdField_a_of_type_Int = paramInt;
       this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
@@ -246,16 +246,16 @@ public abstract class AbsPublishColumnFragment
   
   private void q()
   {
-    View localView = LayoutInflater.from(getActivity()).inflate(2131560223, null);
-    ((RelativeLayout)localView.findViewById(2131367067)).setOnClickListener(this);
-    ((RelativeLayout)localView.findViewById(2131362658)).setOnClickListener(this);
-    ((TextView)localView.findViewById(2131364191)).setOnClickListener(new rmk(this));
-    ((TextView)localView.findViewById(2131367069)).setText(rha.a(0, this.jdField_a_of_type_AndroidContentContext));
-    ((TextView)localView.findViewById(2131367066)).setText(rha.b(0, this.jdField_a_of_type_AndroidContentContext));
-    ((TextView)localView.findViewById(2131362660)).setText(rha.a(1, this.jdField_a_of_type_AndroidContentContext));
-    ((TextView)localView.findViewById(2131362657)).setText(rha.b(1, this.jdField_a_of_type_AndroidContentContext));
-    ImageView localImageView1 = (ImageView)localView.findViewById(2131367068);
-    ImageView localImageView2 = (ImageView)localView.findViewById(2131362659);
+    View localView = LayoutInflater.from(getActivity()).inflate(2131560269, null);
+    ((RelativeLayout)localView.findViewById(2131367186)).setOnClickListener(this);
+    ((RelativeLayout)localView.findViewById(2131362672)).setOnClickListener(this);
+    ((TextView)localView.findViewById(2131364268)).setOnClickListener(new ryz(this));
+    ((TextView)localView.findViewById(2131367188)).setText(rth.a(0, this.jdField_a_of_type_AndroidContentContext));
+    ((TextView)localView.findViewById(2131367185)).setText(rth.b(0, this.jdField_a_of_type_AndroidContentContext));
+    ((TextView)localView.findViewById(2131362674)).setText(rth.a(1, this.jdField_a_of_type_AndroidContentContext));
+    ((TextView)localView.findViewById(2131362671)).setText(rth.b(1, this.jdField_a_of_type_AndroidContentContext));
+    ImageView localImageView1 = (ImageView)localView.findViewById(2131367187);
+    ImageView localImageView2 = (ImageView)localView.findViewById(2131362673);
     if (this.jdField_a_of_type_Int == 0)
     {
       localImageView1.setVisibility(0);
@@ -263,7 +263,7 @@ public abstract class AbsPublishColumnFragment
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidAppDialog = bjon.a(getActivity(), localView);
+      this.jdField_a_of_type_AndroidAppDialog = bkzz.a(getActivity(), localView);
       this.jdField_a_of_type_AndroidAppDialog.show();
       return;
       localImageView1.setVisibility(8);
@@ -271,24 +271,24 @@ public abstract class AbsPublishColumnFragment
     }
   }
   
-  public rml a()
+  public rza a()
   {
-    return new rml(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText.a(), this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText.a(), this.jdField_a_of_type_Int);
+    return new rza(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText.a(), this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText.a(), this.jdField_a_of_type_Int);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Bhht == null)
+    if (this.jdField_a_of_type_Bisl == null)
     {
-      this.jdField_a_of_type_Bhht = new bhht(getActivity());
-      this.jdField_a_of_type_Bhht.c(2131717270);
+      this.jdField_a_of_type_Bisl = new bisl(getActivity());
+      this.jdField_a_of_type_Bisl.c(2131717634);
     }
-    if (this.jdField_a_of_type_Bhht.isShowing())
+    if (this.jdField_a_of_type_Bisl.isShowing())
     {
       QLog.i("RIJUGC.PublishTopicFragment", 1, "showUploadLoadingProgress, but dialog is showing");
       return;
     }
-    this.jdField_a_of_type_Bhht.show();
+    this.jdField_a_of_type_Bisl.show();
   }
   
   public void a(int paramInt)
@@ -318,12 +318,12 @@ public abstract class AbsPublishColumnFragment
   
   public void a(boolean paramBoolean)
   {
-    pbg localpbg = a();
+    pqg localpqg = a();
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
-      localpbg.a("click_area", Integer.valueOf(i));
-      odq.a("0X800AD2E", localpbg.a());
+      localpqg.a("click_area", Integer.valueOf(i));
+      olh.a("0X800AD2E", localpqg.a());
       return;
     }
   }
@@ -332,8 +332,8 @@ public abstract class AbsPublishColumnFragment
   
   public void b()
   {
-    if ((this.jdField_a_of_type_Bhht != null) && (this.jdField_a_of_type_Bhht.isShowing())) {
-      this.jdField_a_of_type_Bhht.dismiss();
+    if ((this.jdField_a_of_type_Bisl != null) && (this.jdField_a_of_type_Bisl.isShowing())) {
+      this.jdField_a_of_type_Bisl.dismiss();
     }
   }
   
@@ -349,7 +349,7 @@ public abstract class AbsPublishColumnFragment
     }
     k();
     g();
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(rha.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentContext));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(rth.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentContext));
   }
   
   public void b(@NotNull ColumnInfo paramColumnInfo, boolean paramBoolean) {}
@@ -358,32 +358,32 @@ public abstract class AbsPublishColumnFragment
   
   public void c()
   {
-    if (this.jdField_b_of_type_Bhht == null) {
-      this.jdField_b_of_type_Bhht = new bhht(getActivity());
+    if (this.jdField_b_of_type_Bisl == null) {
+      this.jdField_b_of_type_Bisl = new bisl(getActivity());
     }
-    if (this.jdField_b_of_type_Bhht.isShowing())
+    if (this.jdField_b_of_type_Bisl.isShowing())
     {
       QLog.i("RIJUGC.PublishTopicFragment", 1, "showPublishLoadingProgress, but dialog is showing");
       return;
     }
-    this.jdField_b_of_type_Bhht.show();
+    this.jdField_b_of_type_Bisl.show();
   }
   
   public void d()
   {
-    if ((this.jdField_b_of_type_Bhht != null) && (this.jdField_b_of_type_Bhht.isShowing())) {
-      this.jdField_b_of_type_Bhht.dismiss();
+    if ((this.jdField_b_of_type_Bisl != null) && (this.jdField_b_of_type_Bisl.isShowing())) {
+      this.jdField_b_of_type_Bisl.dismiss();
     }
   }
   
   public void e()
   {
-    odq.a("0X800AD2D", a().a());
+    olh.a("0X800AD2D", a().a());
   }
   
   public void f()
   {
-    odq.a("0X800AC5B", a().a());
+    olh.a("0X800AC5B", a().a());
   }
   
   public void g()
@@ -400,7 +400,7 @@ public abstract class AbsPublishColumnFragment
   
   public void h()
   {
-    odq.a("0X800AC5A", a().a());
+    olh.a("0X800AC5A", a().a());
     if (a())
     {
       e();
@@ -424,13 +424,13 @@ public abstract class AbsPublishColumnFragment
   
   public void j()
   {
-    odq.a("0X800AC5C", a().a());
+    olh.a("0X800AC5C", a().a());
     if (getActivity().checkSelfPermission("android.permission.CAMERA") == 0)
     {
       n();
       return;
     }
-    getActivity().requestPermissions(new rmi(this), 1, new String[] { "android.permission.CAMERA" });
+    getActivity().requestPermissions(new ryx(this), 1, new String[] { "android.permission.CAMERA" });
   }
   
   public void k()
@@ -468,7 +468,7 @@ public abstract class AbsPublishColumnFragment
         Object localObject2 = URLDrawable.getDrawable(this.jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject2);
         continue;
         label190:
-        ((URLDrawable)localObject2).setURLDrawableListener(new rmj(this));
+        ((URLDrawable)localObject2).setURLDrawableListener(new ryy(this));
       }
     }
     o();
@@ -520,39 +520,39 @@ public abstract class AbsPublishColumnFragment
     super.onCreate(paramBundle);
     this.jdField_a_of_type_JavaLangString = getActivity().getIntent().getStringExtra("arg_callback");
     getActivity().getWindow().setSoftInputMode(16);
-    bjvv.a(getActivity());
+    blhg.a(getActivity());
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Rmw.a(this);
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560149, null);
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)paramLayoutInflater.findViewById(2131378806));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131379877));
-    this.c = ((TextView)paramLayoutInflater.findViewById(2131379881));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131369207));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131369178));
-    this.d = ((TextView)paramLayoutInflater.findViewById(2131379455));
-    this.e = ((TextView)paramLayoutInflater.findViewById(2131379511));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText = ((LimitWordCountEditText)paramLayoutInflater.findViewById(2131366161));
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText = ((LimitWordCountEditText)paramLayoutInflater.findViewById(2131366160));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131379851));
+    this.jdField_a_of_type_Rzl.a(this);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560196, null);
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)paramLayoutInflater.findViewById(2131379099));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131380210));
+    this.c = ((TextView)paramLayoutInflater.findViewById(2131380215));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131369370));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131369340));
+    this.d = ((TextView)paramLayoutInflater.findViewById(2131379760));
+    this.e = ((TextView)paramLayoutInflater.findViewById(2131379820));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText = ((LimitWordCountEditText)paramLayoutInflater.findViewById(2131366262));
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText = ((LimitWordCountEditText)paramLayoutInflater.findViewById(2131366261));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131380178));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    if (rha.a() != 0)
+    if (rth.a() != 0)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(rha.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentContext));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(rth.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentContext));
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText.setCountLimit(this.jdField_a_of_type_Rmw.a());
-      this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText.setCountLimit(this.jdField_a_of_type_Rmw.b());
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText.setCountLimit(this.jdField_a_of_type_Rzl.a());
+      this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText.setCountLimit(this.jdField_a_of_type_Rzl.b());
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText.setTitleTypeFace(Typeface.defaultFromStyle(1));
       this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText.setTitleTypeFace(Typeface.defaultFromStyle(1));
-      paramLayoutInflater.findViewById(2131369405).setOnClickListener(this);
+      paramLayoutInflater.findViewById(2131369572).setOnClickListener(this);
       this.c.setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText.setCountChangeListener(new rmh(this));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText.setCountChangeListener(new ryw(this));
       l();
       g();
       m();
@@ -564,9 +564,9 @@ public abstract class AbsPublishColumnFragment
   
   public void onDestroyView()
   {
-    this.jdField_a_of_type_Rmw.a();
-    if (this.jdField_a_of_type_Rqy != null) {
-      this.jdField_a_of_type_Rqy.b();
+    this.jdField_a_of_type_Rzl.a();
+    if (this.jdField_a_of_type_Sdn != null) {
+      this.jdField_a_of_type_Sdn.b();
     }
     super.onDestroyView();
   }
@@ -581,11 +581,11 @@ public abstract class AbsPublishColumnFragment
       QLog.i("RIJUGC.PublishTopicFragment", 1, "onSelectPhoto, path=" + paramIntent);
       if (!TextUtils.isEmpty(paramIntent))
       {
-        if (this.jdField_a_of_type_Rqy != null) {
-          this.jdField_a_of_type_Rqy.b();
+        if (this.jdField_a_of_type_Sdn != null) {
+          this.jdField_a_of_type_Sdn.b();
         }
-        this.jdField_a_of_type_Rqy = new rrb(getActivity(), getActivity().app, paramIntent);
-        this.jdField_a_of_type_Rmw.a(this.jdField_a_of_type_Rqy, paramIntent);
+        this.jdField_a_of_type_Sdn = new sdq(getActivity(), getActivity().app, paramIntent);
+        this.jdField_a_of_type_Rzl.a(this.jdField_a_of_type_Sdn, paramIntent);
       }
     }
   }

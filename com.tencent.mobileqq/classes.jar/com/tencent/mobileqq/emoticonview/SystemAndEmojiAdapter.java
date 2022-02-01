@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.emoticonview;
 
-import amtj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Handler;
@@ -10,6 +9,7 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+import anvx;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -90,7 +90,7 @@ public class SystemAndEmojiAdapter
         paramView.leftMargin = ((int)(18.0F * this.density));
         paramViewGroup = new TextView(this.mContext);
         paramViewGroup.setTextSize(8.0F);
-        paramViewGroup.setTextColor(this.mContext.getResources().getColor(2131167096));
+        paramViewGroup.setTextColor(this.mContext.getResources().getColor(2131167110));
         paramViewHolder.addView(paramViewGroup, paramView);
         localSystemAndEmojiHolder.titleTxt = paramViewGroup;
         paramViewHolder.setTag(localSystemAndEmojiHolder);
@@ -227,9 +227,9 @@ public class SystemAndEmojiAdapter
             else
             {
               localEmoticonImageView.setVisibility(0);
-              if (paramViewGroup != localEmoticonImageView.getTag(2131380831))
+              if (paramViewGroup != localEmoticonImageView.getTag(2131381183))
               {
-                localEmoticonImageView.setTag(2131380831, paramViewGroup);
+                localEmoticonImageView.setTag(2131381183, paramViewGroup);
                 if (ApolloUtil.e(paramView.code))
                 {
                   localEmoticonImageView.setNewIconVisible(true);
@@ -277,7 +277,7 @@ public class SystemAndEmojiAdapter
                 if (paramView.emotionType == 2) {
                   localEmoticonImageView.setContentDescription(QQEmojiUtil.getEmojiDescription(paramView.code));
                 } else {
-                  localEmoticonImageView.setContentDescription(amtj.a(2131713735));
+                  localEmoticonImageView.setContentDescription(anvx.a(2131714082));
                 }
               }
             }
@@ -327,9 +327,9 @@ public class SystemAndEmojiAdapter
     super.setData(paramList);
     this.dataHasWhiteFace = paramList;
     refreshPanelData();
-    if (SystemEmoticonInfo.sNewApolloEmoticonMap.containsKey("8.4.8"))
+    if (SystemEmoticonInfo.sNewApolloEmoticonMap.containsKey("8.4.10"))
     {
-      List localList = (List)SystemEmoticonInfo.sNewApolloEmoticonMap.get("8.4.8");
+      List localList = (List)SystemEmoticonInfo.sNewApolloEmoticonMap.get("8.4.10");
       if ((localList != null) && (localList.size() > 0))
       {
         int i = findEmoticonIndex(paramList, ((Integer)localList.get(0)).intValue());
@@ -384,7 +384,7 @@ public class SystemAndEmojiAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SystemAndEmojiAdapter
  * JD-Core Version:    0.7.0.1
  */

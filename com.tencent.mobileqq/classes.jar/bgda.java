@@ -1,67 +1,23 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONObject;
+import android.text.Spannable;
+import java.util.Comparator;
 
-public class bgda
+final class bgda
+  implements Comparator<bgcz>
 {
-  public String a;
-  public JSONObject a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  bgda(Spannable paramSpannable) {}
   
-  public bgda(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public int a(bgcz parambgcz1, bgcz parambgcz2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.c = paramString2;
-    this.b = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
-  }
-  
-  public JSONObject a(Context paramContext)
-  {
-    Object localObject = null;
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_OrgJsonJSONObject != null)
-        {
-          paramContext = this.jdField_a_of_type_OrgJsonJSONObject;
-          return paramContext;
-        }
-        if ((paramContext == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-        {
-          QLog.e("TaskInfo", 1, "readLocalJsonFile, context or json_name null, context=" + paramContext + ", json_name=" + this.jdField_a_of_type_JavaLangString);
-          paramContext = localObject;
-          continue;
-        }
-        paramContext = new File(paramContext.getFilesDir(), this.jdField_a_of_type_JavaLangString);
-      }
-      finally {}
-      if (paramContext.exists()) {
-        paramContext = FileUtils.readFileContent(paramContext);
-      }
-      try
-      {
-        this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramContext);
-        paramContext = this.jdField_a_of_type_OrgJsonJSONObject;
-      }
-      catch (Exception paramContext)
-      {
-        for (;;)
-        {
-          this.jdField_a_of_type_OrgJsonJSONObject = null;
-          QLog.e("TaskInfo", 1, "readLocalJsonFile, exception=" + MsfSdkUtils.getStackTraceString(paramContext));
-        }
-      }
+    int i = 0;
+    int j = this.a.getSpanStart(parambgcz1);
+    int k = this.a.getSpanStart(parambgcz2);
+    if (j < k) {
+      i = -1;
     }
+    while (j <= k) {
+      return i;
+    }
+    return 1;
   }
 }
 

@@ -1,13 +1,19 @@
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bmfj
-  implements bmfl
+  implements View.OnClickListener
 {
-  bmfj(bmfi parambmfi) {}
+  bmfj(bmfh parambmfh) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    bmfh.a(this.a.jdField_a_of_type_Bmfh).put(Integer.valueOf(paramInt), this.a.jdField_a_of_type_Bmgg);
+    if (this.a.mRuntime.a() != null) {
+      this.a.mRuntime.a().loadUrl("javascript:" + bmfh.a(this.a) + "()");
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.together.writetogether.data;
 
-import bdhm;
-import bdhy;
+import beop;
+import bepb;
 
 public class CursorManager$1
   implements Runnable
 {
-  public CursorManager$1(bdhm parambdhm, bdhy parambdhy) {}
+  public CursorManager$1(beop parambeop, bepb parambepb) {}
   
   public void run()
   {
     boolean bool = true;
-    bdhy localbdhy1 = this.this$0.a();
+    bepb localbepb1 = this.this$0.a();
     this.a.jdField_c_of_type_Boolean = true;
-    bdhy localbdhy2 = this.a;
-    if ((localbdhy1 != null) && (localbdhy1.jdField_c_of_type_Int == this.a.jdField_c_of_type_Int) && (bdhm.a(this.this$0))) {}
+    bepb localbepb2 = this.a;
+    if ((localbepb1 != null) && (localbepb1.jdField_c_of_type_Int == this.a.jdField_c_of_type_Int) && (beop.a(this.this$0))) {}
     for (;;)
     {
-      localbdhy2.a = bool;
+      localbepb2.a = bool;
       return;
       bool = false;
     }

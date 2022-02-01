@@ -1,20 +1,45 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class ujt
-  implements MiniAppLauncher.MiniAppLaunchListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/SuperMaskStepUtil;", "", "()V", "dealStepResult", "", "result", "step", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/api/SuperMaskStep;", "doSuperMaskStep", "tag", "", "steps", "", "(Ljava/lang/String;[Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/api/SuperMaskStep;)Z", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ujt
 {
-  public ujt(WSHomeFragment paramWSHomeFragment) {}
+  public static final ujt a = new ujt();
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  public final boolean a(@NotNull String paramString, @NotNull ujc... paramVarArgs)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("launch mini program ");
-    if (paramBoolean) {}
-    for (String str = "success";; str = "fail")
+    Intrinsics.checkParameterIsNotNull(paramString, "tag");
+    Intrinsics.checkParameterIsNotNull(paramVarArgs, "steps");
+    int j = paramVarArgs.length;
+    int i = 0;
+    while (i < j)
     {
-      uya.d("WSHomeFragment", str + ", bundle: " + paramBundle.toString());
-      return;
+      ujc localujc = paramVarArgs[i];
+      localujc.a(paramString);
+      if (!localujc.a()) {
+        return false;
+      }
+      i += 1;
+    }
+    return true;
+  }
+  
+  public final boolean a(boolean paramBoolean, @NotNull ujc paramujc)
+  {
+    Intrinsics.checkParameterIsNotNull(paramujc, "step");
+    StringBuilder localStringBuilder = new StringBuilder().append(paramujc.a() + " : ").append(paramujc.getClass().getSimpleName() + " : ");
+    if (paramujc.b() != null) {
+      localStringBuilder.append(paramujc.b() + " : ");
+    }
+    if (!paramBoolean) {
+      localStringBuilder.append("check fail");
+    }
+    for (;;)
+    {
+      ukq.a("ReadInJoySuperMaskAd", localStringBuilder.toString());
+      return paramBoolean;
+      localStringBuilder.append("check success");
     }
   }
 }

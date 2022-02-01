@@ -1,19 +1,8 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.EntranceIconInfo;
-
-public final class sqk
-  implements Parcelable.Creator<RecommendFeedsDiandianEntranceManager.EntranceIconInfo>
+public abstract interface sqk
 {
-  public RecommendFeedsDiandianEntranceManager.EntranceIconInfo a(Parcel paramParcel)
-  {
-    return new RecommendFeedsDiandianEntranceManager.EntranceIconInfo(paramParcel);
-  }
+  public abstract void a(spk paramspk1, spk paramspk2);
   
-  public RecommendFeedsDiandianEntranceManager.EntranceIconInfo[] a(int paramInt)
-  {
-    return new RecommendFeedsDiandianEntranceManager.EntranceIconInfo[paramInt];
-  }
+  public abstract void p();
 }
 
 

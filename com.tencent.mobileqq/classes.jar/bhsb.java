@@ -1,14 +1,40 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class bhsb
-  implements bhvu
+public class bhsb
 {
-  bhsb(bhsa parambhsa, ImageView paramImageView) {}
-  
-  public void a(String paramString1, Bitmap paramBitmap, String paramString2)
+  public static String a(MessageRecord paramMessageRecord)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+    String str2 = "";
+    String str1 = str2;
+    try
+    {
+      Object localObject = paramMessageRecord.extStr;
+      paramMessageRecord = str2;
+      str1 = str2;
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        str1 = str2;
+        localObject = new JSONObject((String)localObject);
+        str1 = str2;
+        str2 = ((JSONObject)localObject).optString("public_account_msg_id", "");
+        paramMessageRecord = str2;
+        str1 = str2;
+        if (TextUtils.isEmpty(str2))
+        {
+          str1 = str2;
+          paramMessageRecord = ((JSONObject)localObject).optString("pa_msgId", "");
+        }
+      }
+      return paramMessageRecord;
+    }
+    catch (Throwable paramMessageRecord)
+    {
+      QLog.e("QQVipConstant", 1, "getPAMsgId error =" + paramMessageRecord.toString());
+    }
+    return str1;
   }
 }
 

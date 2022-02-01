@@ -1,29 +1,14 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.relationx.icebreaking.AIOIceBreakShow;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class azwt
-  implements Animator.AnimatorListener
+class azwt
+  implements DialogInterface.OnClickListener
 {
-  public azwt(AIOIceBreakShow paramAIOIceBreakShow) {}
+  azwt(azws paramazws) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AIOIceBreakShow.a(this.a, false);
-    AIOIceBreakShow.a(this.a);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    AIOIceBreakShow.a(this.a, false);
-    AIOIceBreakShow.a(this.a);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    AIOIceBreakShow.a(this.a, true);
+    paramDialogInterface.dismiss();
   }
 }
 

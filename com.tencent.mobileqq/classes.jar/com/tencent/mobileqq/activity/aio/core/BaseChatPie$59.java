@@ -1,5 +1,8 @@
 package com.tencent.mobileqq.activity.aio.core;
 
+import ahcw;
+import com.tencent.qphone.base.util.QLog;
+
 class BaseChatPie$59
   implements Runnable
 {
@@ -7,8 +10,10 @@ class BaseChatPie$59
   
   public void run()
   {
-    BaseChatpieHelper.a(this.this$0.app, this.this$0.input, this.this$0.isSimpleBar);
-    this.this$0.doOnRegReceivers();
+    if (QLog.isColorLevel()) {
+      QLog.d(this.this$0.tag, 2, "checkPESourceDowned onShow First");
+    }
+    ahcw.d(this.this$0.app);
   }
 }
 

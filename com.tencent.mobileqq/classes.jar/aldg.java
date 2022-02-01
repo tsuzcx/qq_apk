@@ -1,31 +1,74 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.manager.Manager;
 
 public class aldg
-  extends BroadcastReceiver
+  implements Manager
 {
-  public aldg(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private List<aldf> jdField_a_of_type_JavaUtilList;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public aldg(QQAppInterface paramQQAppInterface)
   {
-    paramContext = paramIntent.getAction();
-    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPreviewActivity", 2, "ACTION_SCREEN_OFF == >>");
-      }
-      this.a.d();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public static aldg a(QQAppInterface paramQQAppInterface)
+  {
+    return (aldg)paramQQAppInterface.getManager(QQManagerFactory.BANNER_LISTENER_MANAGER);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if (paramQQAppInterface != null) {
+      a(paramQQAppInterface).a(paramInt);
     }
-    while (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if (paramQQAppInterface != null) {
+      a(paramQQAppInterface).b(paramInt);
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((aldf)localIterator.next()).a(paramInt);
+    }
+  }
+  
+  public void a(aldf paramaldf)
+  {
+    if (paramaldf == null) {}
+    while (this.jdField_a_of_type_JavaUtilList.contains(paramaldf)) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "ACTION_START_VIDEO_CHAT == >>");
+    this.jdField_a_of_type_JavaUtilList.add(paramaldf);
+  }
+  
+  public void b(int paramInt)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((aldf)localIterator.next()).b(paramInt);
     }
-    this.a.d();
+  }
+  
+  public void b(aldf paramaldf)
+  {
+    this.jdField_a_of_type_JavaUtilList.remove(paramaldf);
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
   }
 }
 

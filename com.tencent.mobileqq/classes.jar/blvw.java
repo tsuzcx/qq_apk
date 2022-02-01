@@ -1,45 +1,12 @@
-import android.os.Bundle;
-import android.support.annotation.NonNull;
+import java.io.File;
 
-public final class blvw
+public abstract interface blvw
 {
-  private Bundle a = new Bundle();
+  public abstract void a(File paramFile1, File paramFile2);
   
-  public blvw() {}
+  public abstract void a(File paramFile1, File paramFile2, File paramFile3);
   
-  public blvw(@NonNull Bundle paramBundle)
-  {
-    this.a = paramBundle;
-  }
-  
-  public Bundle a()
-  {
-    return this.a;
-  }
-  
-  public blvw a(int paramInt)
-  {
-    this.a.putInt("BUNDLE_KEY_CIRCLE_HAS_PICKED_NUM", paramInt);
-    return this;
-  }
-  
-  public blvw a(blvr paramblvr)
-  {
-    this.a.putInt("VIDEO_STORY_FROM_TYPE", paramblvr.a());
-    return this;
-  }
-  
-  public blvw a(boolean paramBoolean)
-  {
-    this.a.putBoolean("BUNDLE_KEY_CIRCLE_CAN_MIX_PICK_PHOTO_AND_VIDEO", paramBoolean);
-    return this;
-  }
-  
-  public blvw b(boolean paramBoolean)
-  {
-    this.a.putBoolean("BUNDLE_KEY_CIRCLE_CAN_SWITCH_SECTION_MODE", paramBoolean);
-    return this;
-  }
+  public abstract void a(File paramFile1, File paramFile2, Throwable paramThrowable);
 }
 
 

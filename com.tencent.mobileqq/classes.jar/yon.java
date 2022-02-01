@@ -1,45 +1,30 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobSegment;
-import java.util.List;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
-public class yon
-  extends xnj<xoe>
+class yon
+  extends wlp
 {
-  public yon(@Nullable xnn paramxnn)
+  yon(yom paramyom, String paramString)
   {
-    super(paramxnn);
+    super(paramString);
   }
   
-  protected JobSegment<xnm, xoe> a()
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    return new xnz();
-  }
-  
-  protected JobSegment<Integer, xnm> a(xnl paramxnl)
-  {
-    return new yoo(paramxnl);
-  }
-  
-  protected xoe a()
-  {
-    xnp localxnp = (xnp)vux.a(11);
-    List localList = localxnp.b();
-    xoe localxoe = new xoe(new ErrorMessage());
-    localxoe.jdField_b_of_type_JavaUtilList = localxnp.b(localList);
-    localxoe.jdField_b_of_type_Boolean = true;
-    localxoe.a = localxoe.jdField_b_of_type_JavaUtilList.isEmpty();
-    return localxoe;
-  }
-  
-  protected xoe a(ErrorMessage paramErrorMessage)
-  {
-    return new xoe(paramErrorMessage);
-  }
-  
-  protected void a(List<String> paramList, boolean paramBoolean)
-  {
-    ((xnp)vux.a(11)).b(paramList, paramBoolean);
+    super.onLocationFinish(paramInt, paramSosoLbsInfo);
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
+    {
+      this.a.jdField_a_of_type_Yoj.a = paramSosoLbsInfo.mLocation.mLat02;
+      this.a.jdField_a_of_type_Yoj.b = paramSosoLbsInfo.mLocation.mLon02;
+      ykq.b("Q.qqstory.publish.edit.EditVideoPoi", "onLocationUpdate() latitude=" + this.a.jdField_a_of_type_Yoj.a + " longitude=" + this.a.jdField_a_of_type_Yoj.b);
+      if (this.a.jdField_a_of_type_Boolean) {
+        this.a.jdField_a_of_type_Yoj.g();
+      }
+      return;
+    }
+    this.a.jdField_a_of_type_Yoj.a = 0.0D;
+    this.a.jdField_a_of_type_Yoj.b = 0.0D;
+    ykq.b("Q.qqstory.publish.edit.EditVideoPoi", "onLocationUpdate() error");
   }
 }
 

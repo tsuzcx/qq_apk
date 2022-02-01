@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.Doraemon.monitor;
 
-import acmg;
-import acmk;
+import adcp;
+import adct;
 
 public class DoraemonAPIReporterProxy$1$1
   implements Runnable
 {
-  public DoraemonAPIReporterProxy$1$1(acmk paramacmk, acmg paramacmg, String paramString1, int paramInt, String paramString2, String paramString3, long paramLong1, long paramLong2) {}
+  public DoraemonAPIReporterProxy$1$1(adct paramadct, adcp paramadcp, String paramString1, int paramInt, String paramString2, String paramString3, long paramLong1, long paramLong2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Acmg.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long);
+    this.jdField_a_of_type_Adcp.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long);
   }
 }
 

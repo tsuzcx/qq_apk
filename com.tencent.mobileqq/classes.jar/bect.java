@@ -1,36 +1,24 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.teamwork.TeamWorkUtils.TDFileQIPCModule.1;
+import eipc.EIPCResult;
 
 public class bect
-  implements agwi
+  extends QIPCModule
 {
-  private void a(QQAppInterface paramQQAppInterface, MessageForUniteGrayTip paramMessageForUniteGrayTip)
+  public bect()
   {
-    if ((paramQQAppInterface == null) || (paramMessageForUniteGrayTip == null)) {}
-    while ((paramMessageForUniteGrayTip.tipParam == null) || (paramMessageForUniteGrayTip.tipParam.b != 131090)) {
-      return;
-    }
-    beeg.b(paramQQAppInterface, paramMessageForUniteGrayTip.frienduin);
+    super("Module_TDFileChangeNameQIPCModule");
   }
   
-  private void b(QQAppInterface paramQQAppInterface, MessageForUniteGrayTip paramMessageForUniteGrayTip)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if ((paramQQAppInterface == null) || (paramMessageForUniteGrayTip == null)) {}
-    while ((paramMessageForUniteGrayTip.tipParam == null) || (paramMessageForUniteGrayTip.tipParam.b != 131091)) {
-      return;
+    bjko.c(becr.a(), "onCall action|" + paramString + " params|" + paramBundle + " callbackId|" + paramInt);
+    if (paramString.equals("Action_url_2_fmdb")) {
+      ThreadManager.postImmediately(new TeamWorkUtils.TDFileQIPCModule.1(this, paramBundle.getString("url")), null, true);
     }
-    beue.a(paramQQAppInterface, paramMessageForUniteGrayTip.frienduin);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord == null) || (!(paramMessageRecord instanceof MessageForUniteGrayTip))) {
-      return;
-    }
-    paramMessageRecord = (MessageForUniteGrayTip)paramMessageRecord;
-    a(paramQQAppInterface, paramMessageRecord);
-    b(paramQQAppInterface, paramMessageRecord);
+    return null;
   }
 }
 

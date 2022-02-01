@@ -45,8 +45,8 @@ class HumanSegmentGLThread$3
     HumanSegmentGLThread.access$600(this.this$0).clear();
     HumanSegmentGLThread.access$700(this.this$0).clear();
     HumanSegmentGLThread.access$800(this.this$0).clear();
-    HumanSegmentGLThread.access$400(this.this$0).ClearGLSL();
-    HumanSegmentGLThread.access$200(this.this$0).ClearGLSL();
+    HumanSegmentGLThread.access$400(this.this$0).clearGLSL();
+    HumanSegmentGLThread.access$200(this.this$0).clearGLSL();
     HumanSegmentGLThread.access$300(this.this$0).clearGLSLSelf();
     GLES20.glDeleteTextures(HumanSegmentGLThread.access$1000(this.this$0).length, HumanSegmentGLThread.access$1000(this.this$0), 0);
     HumanSegmentGLThread.access$100(this.this$0).release();

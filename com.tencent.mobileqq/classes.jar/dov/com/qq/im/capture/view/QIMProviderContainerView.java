@@ -13,15 +13,15 @@ import android.view.animation.Animation;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import bmqg;
-import bmxr;
-import bmxw;
-import bmzf;
-import bmzg;
-import bmzh;
-import bmzi;
-import bmzj;
-import bmzk;
+import bofy;
+import bonj;
+import bono;
+import boox;
+import booy;
+import booz;
+import bopa;
+import bopb;
+import bopc;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -37,16 +37,16 @@ public class QIMProviderContainerView
   extends AbsBottomPanal
 {
   public int a;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bmzf(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new boox(this);
   View jdField_a_of_type_AndroidViewView;
   FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   public LinearLayout a;
-  private bmqg jdField_a_of_type_Bmqg;
-  private bmxw jdField_a_of_type_Bmxw;
+  private bofy jdField_a_of_type_Bofy;
+  private bono jdField_a_of_type_Bono;
   private ProviderView jdField_a_of_type_DovComQqImCaptureViewProviderView;
   private ArrayList<View> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private HashMap<Integer, ProviderView> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private List<bmzk> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<bopc> jdField_a_of_type_JavaUtilList = new ArrayList();
   View jdField_b_of_type_AndroidViewView;
   boolean jdField_b_of_type_Boolean = false;
   public View c;
@@ -77,15 +77,15 @@ public class QIMProviderContainerView
   
   private void a()
   {
-    View localView = LayoutInflater.from(getContext()).inflate(2131560860, null);
+    View localView = LayoutInflater.from(getContext()).inflate(2131560920, null);
     addView(localView);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131368250));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131368395));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setGravity(0);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131373066));
-    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131366315);
-    this.jdField_b_of_type_AndroidViewView = localView.findViewById(2131366314);
-    this.jdField_c_of_type_AndroidViewView = localView.findViewById(2131380331);
-    this.jdField_a_of_type_Bmxw = new bmxw(0);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131373276));
+    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131366420);
+    this.jdField_b_of_type_AndroidViewView = localView.findViewById(2131366419);
+    this.jdField_c_of_type_AndroidViewView = localView.findViewById(2131380667);
+    this.jdField_a_of_type_Bono = new bono(0);
     this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_AndroidWidgetLinearLayout);
     this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_AndroidViewView);
     this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_b_of_type_AndroidViewView);
@@ -102,16 +102,16 @@ public class QIMProviderContainerView
       this.jdField_a_of_type_DovComQqImCaptureViewProviderView = null;
     }
     Object localObject;
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(this.jdField_a_of_type_Bmxw.c(paramInt))))
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(this.jdField_a_of_type_Bono.c(paramInt))))
     {
-      localObject = (ProviderView)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Bmxw.c(paramInt)));
+      localObject = (ProviderView)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Bono.c(paramInt)));
       if (localObject == null) {
         break label304;
       }
       if (!((ProviderView)localObject).jdField_d_of_type_Boolean)
       {
-        ((ProviderView)localObject).setProviderViewListener(this.jdField_a_of_type_Bmqg);
-        ((ProviderView)localObject).setDoodleEventListener(this.jdField_a_of_type_Bmqg);
+        ((ProviderView)localObject).setProviderViewListener(this.jdField_a_of_type_Bofy);
+        ((ProviderView)localObject).setDoodleEventListener(this.jdField_a_of_type_Bofy);
         ((ProviderView)localObject).a(null);
       }
       this.jdField_a_of_type_DovComQqImCaptureViewProviderView = ((ProviderView)localObject);
@@ -123,22 +123,22 @@ public class QIMProviderContainerView
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_DovComQqImCaptureViewProviderView.getId() != 2131364208) {
-        this.jdField_a_of_type_Bmqg.b(false);
+      if (this.jdField_a_of_type_DovComQqImCaptureViewProviderView.getId() != 2131364285) {
+        this.jdField_a_of_type_Bofy.b(false);
       }
       localObject = this.jdField_a_of_type_JavaUtilList.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        bmzk localbmzk = (bmzk)((Iterator)localObject).next();
-        if (localbmzk != null) {
-          localbmzk.a(false);
+        bopc localbopc = (bopc)((Iterator)localObject).next();
+        if (localbopc != null) {
+          localbopc.a(false);
         }
       }
-      int i = this.jdField_a_of_type_Bmxw.c(paramInt);
-      localObject = this.jdField_a_of_type_Bmxw.a(getContext(), i);
+      int i = this.jdField_a_of_type_Bono.c(paramInt);
+      localObject = this.jdField_a_of_type_Bono.a(getContext(), i);
       if (localObject != null)
       {
-        this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(this.jdField_a_of_type_Bmxw.c(paramInt)), localObject);
+        this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(this.jdField_a_of_type_Bono.c(paramInt)), localObject);
         this.jdField_a_of_type_AndroidWidgetFrameLayout.addView((View)localObject);
         break;
       }
@@ -153,7 +153,7 @@ public class QIMProviderContainerView
       this.jdField_a_of_type_DovComQqImCaptureViewProviderView.setVisibility(8);
     }
     this.jdField_a_of_type_DovComQqImCaptureViewProviderView.c();
-    this.jdField_a_of_type_DovComQqImCaptureViewProviderView.h = this.jdField_a_of_type_Bmqg.jdField_a_of_type_Int;
+    this.jdField_a_of_type_DovComQqImCaptureViewProviderView.h = this.jdField_a_of_type_Bofy.jdField_a_of_type_Int;
   }
   
   private void b()
@@ -168,20 +168,20 @@ public class QIMProviderContainerView
     Object localObject1 = new ArrayList();
     ((List)localObject1).add(ObjectAnimator.ofFloat(this, "translationY", new float[] { 0.0F, i }));
     ((List)localObject1).add(ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetLinearLayout, "alpha", new float[] { 1.0F, 0.0F }));
-    ((List)localObject1).add(bmxr.a(this.jdField_a_of_type_AndroidViewView, getResources().getColor(2131165491), 153, 0));
-    ((List)localObject1).add(bmxr.a(this.jdField_b_of_type_AndroidViewView, getResources().getColor(2131165491), 153, 0));
-    Object localObject2 = this.jdField_a_of_type_Bmqg.jdField_a_of_type_AndroidViewView.findViewById(2131380535);
+    ((List)localObject1).add(bonj.a(this.jdField_a_of_type_AndroidViewView, getResources().getColor(2131165497), 153, 0));
+    ((List)localObject1).add(bonj.a(this.jdField_b_of_type_AndroidViewView, getResources().getColor(2131165497), 153, 0));
+    Object localObject2 = this.jdField_a_of_type_Bofy.jdField_a_of_type_AndroidViewView.findViewById(2131380875);
     if (localObject2 != null) {
       ((List)localObject1).add(ObjectAnimator.ofFloat(localObject2, "translationY", new float[] { 0.0F, i }));
     }
     localObject2 = new AnimatorSet();
     ((AnimatorSet)localObject2).playTogether((Collection)localObject1);
-    ((AnimatorSet)localObject2).addListener(new bmzi(this));
+    ((AnimatorSet)localObject2).addListener(new bopa(this));
     ((AnimatorSet)localObject2).setDuration(300L).start();
-    localObject1 = bmxr.a(this.jdField_a_of_type_DovComQqImCaptureViewProviderView, 1.0F, 0.0F);
+    localObject1 = bonj.a(this.jdField_a_of_type_DovComQqImCaptureViewProviderView, 1.0F, 0.0F);
     ((Animation)localObject1).setStartOffset(0L);
     ((Animation)localObject1).setDuration(100L);
-    ((Animation)localObject1).setAnimationListener(new bmzj(this, paramBoolean));
+    ((Animation)localObject1).setAnimationListener(new bopb(this, paramBoolean));
     startAnimation((Animation)localObject1);
   }
   
@@ -193,20 +193,20 @@ public class QIMProviderContainerView
     Object localObject1 = new ArrayList();
     ((List)localObject1).add(ObjectAnimator.ofFloat(this, "translationY", new float[] { paramInt, 0.0F }));
     ((List)localObject1).add(ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetLinearLayout, "alpha", new float[] { 0.0F, 1.0F }));
-    ((List)localObject1).add(bmxr.a(this.jdField_a_of_type_AndroidViewView, getResources().getColor(2131165491), 0, 153));
-    ((List)localObject1).add(bmxr.a(this.jdField_b_of_type_AndroidViewView, getResources().getColor(2131165491), 0, 153));
-    Object localObject2 = this.jdField_a_of_type_Bmqg.jdField_a_of_type_AndroidViewView.findViewById(2131380535);
+    ((List)localObject1).add(bonj.a(this.jdField_a_of_type_AndroidViewView, getResources().getColor(2131165497), 0, 153));
+    ((List)localObject1).add(bonj.a(this.jdField_b_of_type_AndroidViewView, getResources().getColor(2131165497), 0, 153));
+    Object localObject2 = this.jdField_a_of_type_Bofy.jdField_a_of_type_AndroidViewView.findViewById(2131380875);
     if (localObject2 != null) {
       ((List)localObject1).add(ObjectAnimator.ofFloat(localObject2, "translationY", new float[] { paramInt, 0.0F }));
     }
     localObject2 = new AnimatorSet();
     ((AnimatorSet)localObject2).playTogether((Collection)localObject1);
-    ((AnimatorSet)localObject2).addListener(new bmzg(this));
+    ((AnimatorSet)localObject2).addListener(new booy(this));
     ((AnimatorSet)localObject2).setDuration(300L).start();
-    localObject1 = bmxr.a(this.jdField_a_of_type_DovComQqImCaptureViewProviderView, 0.0F, 1.0F);
+    localObject1 = bonj.a(this.jdField_a_of_type_DovComQqImCaptureViewProviderView, 0.0F, 1.0F);
     ((Animation)localObject1).setStartOffset(200L);
     ((Animation)localObject1).setDuration(100L);
-    ((Animation)localObject1).setAnimationListener(new bmzh(this));
+    ((Animation)localObject1).setAnimationListener(new booz(this));
     startAnimation((Animation)localObject1);
   }
   
@@ -225,14 +225,14 @@ public class QIMProviderContainerView
   
   public void a(int paramInt)
   {
-    int i = this.jdField_a_of_type_Bmxw.d(paramInt);
-    ProviderView localProviderView = this.jdField_a_of_type_Bmxw.a(getContext(), paramInt);
+    int i = this.jdField_a_of_type_Bono.d(paramInt);
+    ProviderView localProviderView = this.jdField_a_of_type_Bono.a(getContext(), paramInt);
     if (localProviderView != null)
     {
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(this.jdField_a_of_type_Bmxw.c(i)), localProviderView);
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(this.jdField_a_of_type_Bono.c(i)), localProviderView);
       localProviderView.b(null);
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localProviderView);
-      localProviderView.setProviderViewListener(this.jdField_a_of_type_Bmqg);
+      localProviderView.setProviderViewListener(this.jdField_a_of_type_Bofy);
     }
   }
   
@@ -260,16 +260,16 @@ public class QIMProviderContainerView
     this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt1);
     this.jdField_d_of_type_AndroidViewView.setSelected(true);
     this.jdField_a_of_type_Int = paramInt1;
-    ((ImageView)this.jdField_d_of_type_AndroidViewView).setImageResource(this.jdField_a_of_type_Bmxw.a(paramInt1));
+    ((ImageView)this.jdField_d_of_type_AndroidViewView).setImageResource(this.jdField_a_of_type_Bono.a(paramInt1));
     if (!this.jdField_c_of_type_Boolean) {
       c(paramInt1);
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Bmqg != null) {
-        this.jdField_a_of_type_Bmqg.a(paramInt1, paramBoolean);
+      if (this.jdField_a_of_type_Bofy != null) {
+        this.jdField_a_of_type_Bofy.a(paramInt1, paramBoolean);
       }
-      this.jdField_a_of_type_Bmxw.a(paramInt1);
+      this.jdField_a_of_type_Bono.a(paramInt1);
       if (!paramBoolean) {
         break;
       }
@@ -351,14 +351,14 @@ public class QIMProviderContainerView
   
   public void setBeautyEnable(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bmxw != null) {
-      this.jdField_a_of_type_Bmxw.a(paramBoolean);
+    if (this.jdField_a_of_type_Bono != null) {
+      this.jdField_a_of_type_Bono.a(paramBoolean);
     }
   }
   
-  public void setCaptureControllerAndPreloadView(bmqg parambmqg)
+  public void setCaptureControllerAndPreloadView(bofy parambofy)
   {
-    this.jdField_a_of_type_Bmqg = parambmqg;
+    this.jdField_a_of_type_Bofy = parambofy;
     this.e = true;
     if (QLog.isColorLevel()) {
       QLog.d("ProviderContainerView", 2, "preloadProviderView");
@@ -367,29 +367,29 @@ public class QIMProviderContainerView
   
   public void setComboEnable(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bmxw != null) {
-      this.jdField_a_of_type_Bmxw.d(paramBoolean);
+    if (this.jdField_a_of_type_Bono != null) {
+      this.jdField_a_of_type_Bono.d(paramBoolean);
     }
   }
   
   public void setDpcEnable(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bmxw != null) {
-      this.jdField_a_of_type_Bmxw.f(paramBoolean);
+    if (this.jdField_a_of_type_Bono != null) {
+      this.jdField_a_of_type_Bono.f(paramBoolean);
     }
   }
   
   public void setFaceEffectEnable(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bmxw != null) {
-      this.jdField_a_of_type_Bmxw.c(paramBoolean);
+    if (this.jdField_a_of_type_Bono != null) {
+      this.jdField_a_of_type_Bono.c(paramBoolean);
     }
   }
   
   public void setFilterEnable(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bmxw != null) {
-      this.jdField_a_of_type_Bmxw.b(paramBoolean);
+    if (this.jdField_a_of_type_Bono != null) {
+      this.jdField_a_of_type_Bono.b(paramBoolean);
     }
   }
   
@@ -403,8 +403,8 @@ public class QIMProviderContainerView
   
   public void setMusicEnable(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bmxw != null) {
-      this.jdField_a_of_type_Bmxw.e(paramBoolean);
+    if (this.jdField_a_of_type_Bono != null) {
+      this.jdField_a_of_type_Bono.e(paramBoolean);
     }
   }
 }

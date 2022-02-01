@@ -1,87 +1,111 @@
 import android.text.TextUtils;
+import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.zimu.ZimuItem;
-import com.tencent.beacon.event.UserAction;
-import java.util.HashMap;
-import java.util.Map;
 
 public class lis
+  extends lio
 {
-  static long jdField_a_of_type_Long;
-  static String jdField_a_of_type_JavaLangString;
-  static boolean jdField_a_of_type_Boolean;
+  boolean a;
+  int c = -1;
+  int d = -1;
   
-  static long a(String paramString)
+  public lis(VideoAppInterface paramVideoAppInterface)
   {
-    long l1 = 0L;
-    long l2 = l1;
-    if (!lsd.a(paramString, jdField_a_of_type_JavaLangString))
+    super(paramVideoAppInterface);
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public int a(String paramString)
+  {
+    int j = 0;
+    int i;
+    if ("750".equalsIgnoreCase(paramString)) {
+      i = this.c;
+    }
+    for (;;)
     {
-      long l3 = System.currentTimeMillis();
-      lba.f("EffectZimuManager", "DataReport calTime zimu:" + paramString + "|" + jdField_a_of_type_JavaLangString + "|" + jdField_a_of_type_Long);
-      l2 = l1;
-      if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+      lbd.f("SupportZimu", "isSupportPeer:" + paramString + "|" + i);
+      return i;
+      if ("735".equalsIgnoreCase(paramString))
       {
-        if (jdField_a_of_type_Long != 0L)
+        i = this.d;
+      }
+      else
+      {
+        i = j;
+        if ("live".equalsIgnoreCase(paramString))
         {
-          l1 = l3 - jdField_a_of_type_Long;
-          lba.f("EffectZimuManager", "DataReport zimu:" + l1);
-          jdField_a_of_type_Boolean = true;
-          l1 /= 1000L;
-          a(jdField_a_of_type_JavaLangString, l1);
-          bcef.b(null, "CliOper", "", "", "0X800888D", "0X800888D", 0, 0, String.valueOf(l1), "", jdField_a_of_type_JavaLangString, "");
-          if (liq.a(jdField_a_of_type_JavaLangString)) {
-            bcef.b(null, "CliOper", "", "", "0X8009193", "0X8009193", 0, 0, String.valueOf(l1), "", jdField_a_of_type_JavaLangString, "");
+          i = j;
+          if (this.jdField_a_of_type_Boolean) {
+            i = 1;
           }
         }
-        lba.f("EffectZimuManager", "DataReport zimu 33:" + l1);
-        l2 = l1;
-      }
-      jdField_a_of_type_JavaLangString = paramString;
-      jdField_a_of_type_Long = l3;
-    }
-    return l2;
-  }
-  
-  public static void a(VideoAppInterface paramVideoAppInterface)
-  {
-    if (paramVideoAppInterface.a(0))
-    {
-      paramVideoAppInterface = (ZimuItem)((lir)paramVideoAppInterface.a(0)).a();
-      if ((paramVideoAppInterface != null) && (!TextUtils.isEmpty(paramVideoAppInterface.getId()))) {
-        a(null);
       }
     }
   }
   
-  public static void a(String paramString, long paramLong)
+  public boolean a(int paramInt, String paramString)
   {
-    lba.f("EffectZimuManager", "DataReport zimu:" + paramString + "|" + paramLong);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("zimuName", paramString);
-    localHashMap.put("duration", String.valueOf(paramLong));
-    UserAction.onUserAction("actAVFunChatZimu", true, -1L, -1L, localHashMap, true);
-    try
+    lbd.f("SupportZimu", "onReceiveSupportMessage type:" + paramInt + "|" + paramString);
+    if (!TextUtils.isEmpty(paramString))
     {
-      UserAction.flushObjectsToDB(true);
-      return;
+      String[] arrayOfString = paramString.split("\\|");
+      paramString = null;
+      if (arrayOfString.length > 0) {
+        paramString = arrayOfString[0];
+      }
+      switch (paramInt)
+      {
+      }
+      while (("SUPPORT_TRUE".equalsIgnoreCase(paramString)) || ("SUPPORT_FALSE".equalsIgnoreCase(paramString)))
+      {
+        return true;
+        if ("SUPPORT_TRUE".equalsIgnoreCase(paramString))
+        {
+          this.c = 1;
+        }
+        else if ("SUPPORT_FALSE".equalsIgnoreCase(paramString))
+        {
+          this.c = 0;
+          continue;
+          if ("SUPPORT_TRUE".equalsIgnoreCase(paramString))
+          {
+            this.d = 1;
+          }
+          else if ("SUPPORT_FALSE".equalsIgnoreCase(paramString))
+          {
+            this.d = 0;
+            continue;
+            if ("SUPPORT_TRUE".equalsIgnoreCase(paramString)) {
+              this.jdField_a_of_type_Boolean = true;
+            } else if ("SUPPORT_FALSE".equalsIgnoreCase(paramString)) {
+              this.jdField_a_of_type_Boolean = false;
+            }
+          }
+        }
+      }
     }
-    catch (Exception paramString)
-    {
-      lba.h("EffectZimuManager", paramString.getMessage());
-    }
+    return false;
   }
   
-  public static void a(String paramString1, String paramString2)
+  public boolean a(String paramString)
   {
-    lba.f("EffectZimuManager", "DataReport onUsedZimu reportClickEvent:" + paramString1 + "|" + paramString2);
-    bcef.b(null, "CliOper", "", "", paramString1, paramString1, 0, 0, "", "", paramString2, "");
+    return false;
   }
   
-  public static void a(String paramString1, String paramString2, String paramString3)
+  public void b()
   {
-    lba.f("EffectZimuManager", "DataReport onUsedZimu reportClickEvent:" + paramString1 + "|" + paramString2 + "|" + paramString3);
-    bcef.b(null, "CliOper", "", "", paramString1, paramString1, 0, 0, "", "", paramString2, paramString3);
+    VideoController localVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+    localVideoController.a(12, "SUPPORT_TRUE");
+    localVideoController.a(13, "SUPPORT_TRUE");
+    lbd.f("SupportZimu", "sendSupportMsg");
+  }
+  
+  public void c()
+  {
+    this.c = -1;
+    this.d = -1;
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

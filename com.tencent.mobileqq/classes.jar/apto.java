@@ -1,60 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.ark.ark.VariantWrapper;
 
-public class apto
+class apto
+  extends aptp
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString = "";
-  private String b = "";
-  private String c = "";
-  private String d = "";
-  
-  public static apto a(String paramString)
+  private apto()
   {
-    apto localapto = new apto();
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramString);
-      if (localJSONObject.has("deep_clean_switch")) {
-        localapto.jdField_a_of_type_Int = localJSONObject.optInt("deep_clean_switch");
-      }
-      if (localJSONObject.has("already_installed_tip")) {
-        localapto.jdField_a_of_type_JavaLangString = localJSONObject.optString("already_installed_tip");
-      }
-      if (localJSONObject.has("first_not_installed_tip")) {
-        localapto.b = localJSONObject.optString("first_not_installed_tip");
-      }
-      if (localJSONObject.has("second_not_installed_tip")) {
-        localapto.c = localJSONObject.optString("second_not_installed_tip");
-      }
-      if (localJSONObject.has("third_not_installed_tip")) {
-        localapto.d = localJSONObject.optString("third_not_installed_tip");
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("DeepCleanConfigProcessor", 2, "parse DeepCleanConfigBean: " + paramString);
-    }
-    return localapto;
+    super(null);
   }
   
-  public boolean a()
+  public String a()
   {
-    return this.jdField_a_of_type_Int == 1;
+    return "GetUIN";
+  }
+  
+  public void a(apsl paramapsl, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  {
+    paramVariantWrapper.SetString(apuj.a());
+  }
+  
+  public boolean b()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apto
  * JD-Core Version:    0.7.0.1
  */

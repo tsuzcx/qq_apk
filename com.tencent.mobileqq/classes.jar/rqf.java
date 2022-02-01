@@ -1,14 +1,13 @@
 import java.util.List;
 
-public abstract interface rqf
+public class rqf
+  implements Cloneable
 {
-  public abstract int a();
-  
-  public abstract rgo a(int paramInt);
-  
-  public abstract void a(List<rgo> paramList, boolean paramBoolean);
-  
-  public abstract void b(int paramInt);
+  public int a;
+  public long a;
+  public List<Long> a;
+  public int b;
+  public long b;
 }
 
 

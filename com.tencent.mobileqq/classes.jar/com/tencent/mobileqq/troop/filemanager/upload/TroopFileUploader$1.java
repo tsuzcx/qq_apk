@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
-import beho;
+import bfor;
 
 public class TroopFileUploader$1
   implements Runnable
 {
-  public TroopFileUploader$1(beho parambeho) {}
+  public TroopFileUploader$1(bfor parambfor) {}
   
   public void run()
   {
-    if ((beho.a(this.this$0) != null) && (this.this$0.a != null)) {
+    if ((bfor.a(this.this$0) != null) && (this.this$0.a != null)) {
       this.this$0.a();
     }
-    this.this$0.a(true, beho.a(this.this$0), 9303, "readfilefail", null);
+    this.this$0.a(true, bfor.a(this.this$0), 9303, "readfilefail", null);
   }
 }
 

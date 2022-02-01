@@ -1,56 +1,118 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.PtsData;
-import com.tencent.pts.core.PTSComposer;
-import com.tencent.pts.core.itemview.PTSItemData;
-import com.tencent.pts.core.itemview.PTSItemView;
-import com.tencent.pts.core.lite.IPTSLiteEventListener;
-import kotlin.Metadata;
-import kotlin.TypeCastException;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/view/fastweb/item/NewPtsViewCreator$PTSLiteItemViewHolder;", "Lcom/tencent/biz/pubaccount/readinjoy/view/fastweb/item/BaseItemViewHolder;", "itemView", "Landroid/view/View;", "data", "Lcom/tencent/biz/pubaccount/readinjoy/view/fastweb/data/BaseData;", "(Lcom/tencent/biz/pubaccount/readinjoy/view/fastweb/item/NewPtsViewCreator;Landroid/view/View;Lcom/tencent/biz/pubaccount/readinjoy/view/fastweb/data/BaseData;)V", "isReusable", "", "bindData", "", "oldData", "isVirtualCall", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-final class stk
-  extends stg
+public class stk
+  extends stj
 {
-  private boolean jdField_a_of_type_Boolean;
-  
-  public stk(View paramView, @NotNull BaseData paramBaseData)
+  public stk(ssz paramssz)
   {
-    super(paramBaseData, localObject);
+    super(paramssz);
   }
   
-  public void b(@NotNull BaseData paramBaseData1, @NotNull BaseData paramBaseData2, boolean paramBoolean)
+  /* Error */
+  public void a(int paramInt, java.lang.Object paramObject)
   {
-    Object localObject = null;
-    Intrinsics.checkParameterIsNotNull(paramBaseData1, "oldData");
-    Intrinsics.checkParameterIsNotNull(paramBaseData2, "data");
-    paramBaseData2 = (PtsData)paramBaseData2;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (paramBaseData2.a == null) {
-        PtsData.a(paramBaseData2, null, 1, null);
-      }
-      PTSComposer localPTSComposer = paramBaseData2.a;
-      if (localPTSComposer != null)
-      {
-        sti localsti = this.jdField_a_of_type_Sti;
-        PTSItemData localPTSItemData = paramBaseData2.a();
-        paramBaseData1 = localObject;
-        if (localPTSItemData != null) {
-          paramBaseData1 = localPTSItemData.getJSONData();
-        }
-        localPTSComposer.setData(sti.a(localsti, paramBaseData1));
-        paramBaseData1 = this.jdField_a_of_type_AndroidViewView;
-        if (paramBaseData1 == null) {
-          throw new TypeCastException("null cannot be cast to non-null type com.tencent.pts.core.itemview.PTSItemView");
-        }
-        localPTSComposer.layoutToView((PTSItemView)paramBaseData1, (IPTSLiteEventListener)sti.a(this.jdField_a_of_type_Sti), true);
-      }
-      this.jdField_a_of_type_Sti.a(false, paramBaseData2);
-    }
-    this.jdField_a_of_type_Boolean = true;
+    // Byte code:
+    //   0: iconst_0
+    //   1: istore_3
+    //   2: new 18	org/json/JSONObject
+    //   5: dup
+    //   6: aload_2
+    //   7: checkcast 20	java/lang/String
+    //   10: invokespecial 23	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   13: astore_2
+    //   14: aload_2
+    //   15: ldc 25
+    //   17: iconst_0
+    //   18: invokevirtual 29	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   21: istore_1
+    //   22: aload_2
+    //   23: ldc 31
+    //   25: iconst_1
+    //   26: invokevirtual 29	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   29: istore 4
+    //   31: iload 4
+    //   33: istore_3
+    //   34: iload_3
+    //   35: ifle +21 -> 56
+    //   38: aload_0
+    //   39: getfield 10	stk:a	Lssz;
+    //   42: getfield 36	ssz:a	Lrqa;
+    //   45: astore_2
+    //   46: aload_2
+    //   47: aload_2
+    //   48: getfield 42	rqa:p	I
+    //   51: iload_3
+    //   52: iadd
+    //   53: putfield 42	rqa:p	I
+    //   56: aload_0
+    //   57: getfield 10	stk:a	Lssz;
+    //   60: getfield 36	ssz:a	Lrqa;
+    //   63: astore_2
+    //   64: aload_2
+    //   65: aload_2
+    //   66: getfield 45	rqa:q	I
+    //   69: iload_3
+    //   70: iadd
+    //   71: putfield 45	rqa:q	I
+    //   74: invokestatic 51	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   77: ifeq +73 -> 150
+    //   80: ldc 53
+    //   82: iconst_2
+    //   83: new 55	java/lang/StringBuilder
+    //   86: dup
+    //   87: invokespecial 58	java/lang/StringBuilder:<init>	()V
+    //   90: ldc 60
+    //   92: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   95: iload_1
+    //   96: invokevirtual 67	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   99: ldc 69
+    //   101: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   104: iload_3
+    //   105: invokevirtual 67	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   108: ldc 71
+    //   110: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   113: aload_0
+    //   114: getfield 10	stk:a	Lssz;
+    //   117: getfield 36	ssz:a	Lrqa;
+    //   120: getfield 42	rqa:p	I
+    //   123: invokevirtual 67	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   126: ldc 73
+    //   128: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   131: aload_0
+    //   132: getfield 10	stk:a	Lssz;
+    //   135: getfield 36	ssz:a	Lrqa;
+    //   138: getfield 45	rqa:q	I
+    //   141: invokevirtual 67	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   144: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   147: invokestatic 81	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   150: return
+    //   151: astore_2
+    //   152: iconst_0
+    //   153: istore_1
+    //   154: ldc 53
+    //   156: iconst_2
+    //   157: new 55	java/lang/StringBuilder
+    //   160: dup
+    //   161: invokespecial 58	java/lang/StringBuilder:<init>	()V
+    //   164: ldc 83
+    //   166: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   169: aload_2
+    //   170: invokevirtual 86	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   173: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   176: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   179: invokestatic 89	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   182: goto -148 -> 34
+    //   185: astore_2
+    //   186: goto -32 -> 154
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	189	0	this	stk
+    //   0	189	1	paramInt	int
+    //   0	189	2	paramObject	java.lang.Object
+    //   1	104	3	i	int
+    //   29	3	4	j	int
+    // Exception table:
+    //   from	to	target	type
+    //   2	22	151	java/lang/Exception
+    //   22	31	185	java/lang/Exception
   }
 }
 

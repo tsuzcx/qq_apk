@@ -1,51 +1,34 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 class xzy
-  implements vwv
+  implements wfk<wtl, wtm>
 {
-  xzy(xzw paramxzw, String paramString) {}
+  xzy(xzx paramxzx, boolean paramBoolean) {}
   
-  public void a(int paramInt, vww paramvww, List<TroopBarPOI> paramList)
+  public void a(@NonNull wtl paramwtl, @Nullable wtm arg2, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_Xzw.jdField_a_of_type_Vww = paramvww;
-    if (!this.jdField_a_of_type_Xzw.isValidate()) {
+    if (xzx.a(this.jdField_a_of_type_Xzx).get())
+    {
+      ykq.e("Q.qqstory.memories.ProfileFeedPresenter", "year node data back when activity has been destroyed.");
       return;
     }
-    if (paramInt == 0) {
-      if (paramvww.a()) {
-        break label210;
-      }
-    }
-    label210:
-    for (boolean bool = true;; bool = false)
+    ykq.a("Q.qqstory.memories.ProfileFeedPresenter", "on year node data back. is successful : %s.", Boolean.valueOf(paramErrorMessage.isSuccess()));
+    paramwtl = new yaa(this.jdField_a_of_type_Xzx, paramErrorMessage);
+    paramwtl.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    if ((??? == null) || (paramErrorMessage.isFail()))
     {
-      this.jdField_a_of_type_Xzw.d.setVisibility(0);
-      this.jdField_a_of_type_Xzw.a(bool);
-      if (this.jdField_a_of_type_Xzw.jdField_a_of_type_JavaUtilArrayList == null) {
-        this.jdField_a_of_type_Xzw.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-      if (this.jdField_a_of_type_Xzw.jdField_a_of_type_Vww.b()) {
-        this.jdField_a_of_type_Xzw.jdField_a_of_type_JavaUtilArrayList.clear();
-      }
-      this.jdField_a_of_type_Xzw.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-      if (this.jdField_a_of_type_Xzw.jdField_a_of_type_Yje != null)
-      {
-        this.jdField_a_of_type_Xzw.jdField_a_of_type_Yje.a(this.jdField_a_of_type_Xzw.jdField_a_of_type_JavaUtilArrayList, null);
-        this.jdField_a_of_type_Xzw.jdField_a_of_type_Yje.notifyDataSetChanged();
-        if (this.jdField_a_of_type_Xzw.jdField_a_of_type_JavaUtilArrayList.isEmpty())
-        {
-          this.jdField_a_of_type_Xzw.a(this.jdField_a_of_type_JavaLangString);
-          this.jdField_a_of_type_Xzw.d.setVisibility(4);
-        }
-      }
-      int i = paramInt;
-      if (paramInt == 0) {
-        i = 0;
-      }
-      xwa.b("edit_video", "poi_list_success", 0, i, new String[0]);
+      wad.a().dispatch(paramwtl);
+      return;
+    }
+    paramwtl.jdField_a_of_type_JavaUtilList = ???.jdField_a_of_type_JavaUtilList;
+    ((wjf)wjs.a(19)).a(???.jdField_a_of_type_JavaUtilList, true);
+    synchronized (this.jdField_a_of_type_Xzx)
+    {
+      wad.a().dispatch(paramwtl);
       return;
     }
   }

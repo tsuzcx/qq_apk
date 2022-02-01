@@ -1,27 +1,77 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.home.Conversation;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqpim.QQPimGetTipsInfoIPC;
+import cooperation.qqpim.QQPimTipsInfo;
+import java.lang.ref.WeakReference;
+import java.util.List;
+import mqq.app.TicketManagerImpl;
 import mqq.os.MqqHandler;
 
-class akhx
-  implements DialogInterface.OnClickListener
+public class akhx
+  extends MqqHandler
 {
-  akhx(akhw paramakhw) {}
+  private WeakReference<ContactListView> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public akhx(ContactListView paramContactListView)
   {
-    if (alyf.a() != null) {
-      alvx.a();
-    }
-    paramDialogInterface = alvx.a();
-    if (paramDialogInterface != null)
-    {
-      paramDialogInterface = paramDialogInterface.getHandler(Conversation.class);
-      if (paramDialogInterface != null) {
-        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(1134052));
+    this.a = new WeakReference(paramContactListView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    ContactListView localContactListView = (ContactListView)this.a.get();
+    if (localContactListView == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i("ContactListView", 2, "UiHandler() handleMessage a == null");
       }
     }
+    do
+    {
+      do
+      {
+        return;
+        switch (paramMessage.what)
+        {
+        case 3: 
+        case 7: 
+        default: 
+          throw new RuntimeException("Unknown message: " + paramMessage.what);
+        case 1: 
+          if ((ContactListView.a(localContactListView)) && (!localContactListView.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp.f()))
+          {
+            localContactListView.g();
+            ContactListView.a(localContactListView, false);
+          }
+          localContactListView.j();
+          return;
+        case 2: 
+          localContactListView.j();
+        }
+      } while (NetworkUtil.isNetSupport(localContactListView.getContext()));
+      localContactListView.i();
+      localContactListView.b(anvx.a(2131701989));
+      return;
+      localContactListView.b = ((List)paramMessage.obj);
+      localContactListView.jdField_a_of_type_Amgl.a(localContactListView.b);
+      localContactListView.jdField_a_of_type_Amgl.notifyDataSetChanged();
+      return;
+      paramMessage = ContactListView.a(localContactListView).getAccount();
+      localObject = (TicketManagerImpl)ContactListView.a(localContactListView).getManager(2);
+    } while (localObject == null);
+    Object localObject = ((TicketManagerImpl)localObject).getA2(paramMessage);
+    if (QLog.isColorLevel()) {
+      QLog.i("ContactListView", 2, "a2 = " + (String)localObject);
+    }
+    QQPimGetTipsInfoIPC.a().a(ContactListView.a(localContactListView), ContactListView.a(localContactListView), paramMessage, (String)localObject);
+    return;
+    ContactListView.a(localContactListView, (QQPimTipsInfo)paramMessage.obj);
+    return;
+    localContactListView.i();
+    localContactListView.l();
   }
 }
 

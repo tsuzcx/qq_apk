@@ -1,10 +1,10 @@
 package cooperation.qzone.plugin;
 
-import amtj;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
+import anvx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.QZLog;
@@ -28,7 +28,7 @@ final class IQZonePluginManager$1
       IQZonePluginManager.doOpenActivityForResult((Activity)paramContext, paramPluginParams);
       return;
     }
-    Toast.makeText(BaseApplicationImpl.getContext(), amtj.a(2131704979), 0).show();
+    Toast.makeText(BaseApplicationImpl.getContext(), anvx.a(2131705330), 0).show();
   }
 }
 

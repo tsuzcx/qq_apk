@@ -1,20 +1,44 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.1;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QzonePluginProxyActivity;
 
 public class aowe
+  extends aouc
 {
-  protected static boolean a = false;
-  
-  public static void a()
+  public aowe(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if (!a) {
-      a = true;
-    }
+    super(paramQQAppInterface, paramContext);
   }
   
-  public static void a(aowg paramaowg)
+  private boolean C()
   {
-    ThreadManager.post(new ArkMessageServerLogic.1(paramaowg), 5, null, true);
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      return false;
+    }
+    Intent localIntent = new Intent();
+    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.common.activities.QzoneDialogActivity");
+    localIntent.addFlags(805306368);
+    QZoneHelper.launchQZone((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), localIntent, -1);
+    return true;
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      boolean bool = C();
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QzoneDialogAction", 1, "doAction error: " + localException.getMessage());
+      a("QzoneDialogAction");
+    }
+    return false;
   }
 }
 

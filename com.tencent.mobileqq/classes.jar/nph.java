@@ -1,7 +1,7 @@
-public abstract interface nph
-  extends nnv
+public class nph
 {
-  public abstract void a();
+  public String a;
+  public String b;
 }
 
 

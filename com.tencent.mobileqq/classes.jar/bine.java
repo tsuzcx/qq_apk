@@ -1,38 +1,32 @@
-import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.widget.ContainerView;
+import com.tencent.widget.ScrollView;
 
 public class bine
+  implements blfc
 {
-  int jdField_a_of_type_Int = 0;
-  MessageMicro<?> jdField_a_of_type_ComTencentMobileqqPbMessageMicro = null;
-  Object jdField_a_of_type_JavaLangObject = null;
-  int b = 0;
+  public bine(ContainerView paramContainerView) {}
   
-  public bine(int paramInt1, MessageMicro<?> paramMessageMicro, int paramInt2, Object paramObject)
+  public void a(ScrollView paramScrollView, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro = paramMessageMicro;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public MessageMicro<?> a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro;
-  }
-  
-  public Object a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public int b()
-  {
-    return this.b;
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while ((paramBoolean) && (!ContainerView.b(this.a)));
+      paramScrollView = alvr.a();
+      if ((paramScrollView.c()) && (!paramScrollView.a())) {
+        paramScrollView.a();
+      }
+      ContainerView.b(this.a, false);
+      return;
+      ContainerView.b(this.a, true);
+      paramScrollView = alvr.a();
+    } while ((!paramScrollView.c()) || (!paramScrollView.a()));
+    paramScrollView.b();
   }
 }
 

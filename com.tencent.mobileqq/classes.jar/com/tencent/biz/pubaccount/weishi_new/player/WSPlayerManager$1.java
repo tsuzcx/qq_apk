@@ -2,24 +2,24 @@ package com.tencent.biz.pubaccount.weishi_new.player;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import urk;
-import urt;
-import uru;
-import uya;
+import vfs;
+import vgb;
+import vgc;
+import vmp;
 
 public class WSPlayerManager$1
   implements Runnable
 {
-  WSPlayerManager$1(WSPlayerManager paramWSPlayerManager, urt paramurt) {}
+  WSPlayerManager$1(WSPlayerManager paramWSPlayerManager, vgb paramvgb) {}
   
   public void run()
   {
-    uya.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][switchPlayerVideoViewLayout] endTime:" + System.currentTimeMillis());
+    vmp.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][switchPlayerVideoViewLayout] endTime:" + System.currentTimeMillis());
     if (WSPlayerManager.a(this.this$0) != null)
     {
       Iterator localIterator = WSPlayerManager.a(this.this$0).iterator();
       while (localIterator.hasNext()) {
-        ((uru)localIterator.next()).f(this.a);
+        ((vgc)localIterator.next()).f(this.a);
       }
     }
     if (this.a.a != null)
@@ -45,7 +45,7 @@ public class WSPlayerManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager.1
  * JD-Core Version:    0.7.0.1
  */

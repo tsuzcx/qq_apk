@@ -1,7 +1,24 @@
+import android.widget.PopupWindow;
+import com.tencent.biz.subscribe.bizdapters.DetailBaseBlock.3.1;
+import com.tencent.qphone.base.util.QLog;
+
 public class zsp
+  implements zrx
 {
-  public String a;
-  public String b;
+  public zsp(DetailBaseBlock.3.1 param1) {}
+  
+  public void a()
+  {
+    QLog.d(zsl.jdField_a_of_type_JavaLangString, 2, "showFollowTipView");
+  }
+  
+  public void b()
+  {
+    QLog.d(zsl.jdField_a_of_type_JavaLangString, 2, "dismiss popupWindow followTipView");
+    if (this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
+      this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+    }
+  }
 }
 
 

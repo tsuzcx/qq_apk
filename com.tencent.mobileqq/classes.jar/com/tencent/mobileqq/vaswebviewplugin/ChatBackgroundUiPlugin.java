@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
-import aqyp;
-import ardu;
-import bgve;
+import ascz;
+import ashz;
+import bifw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import java.util.Map;
@@ -12,7 +12,7 @@ public class ChatBackgroundUiPlugin
   extends VasWebviewUiPlugin
 {
   private static final String TAG = "ChatBackgroundUiPlugin";
-  aqyp mOnRemoteResp = new ChatBackgroundUiPlugin.1(this);
+  ascz mOnRemoteResp = new ChatBackgroundUiPlugin.1(this);
   private Bundle mReqBundle;
   private String uin;
   
@@ -25,13 +25,13 @@ public class ChatBackgroundUiPlugin
     if (localWebViewFragment != null) {
       localWebViewFragment.mUrl = super.decodeUrl(localWebViewFragment.mUrl);
     }
-    ardu.a().a(this.mOnRemoteResp);
+    ashz.a().a(this.mOnRemoteResp);
   }
   
   void OnActivityDestroy()
   {
     super.OnActivityDestroy();
-    ardu.a().b(this.mOnRemoteResp);
+    ashz.a().b(this.mOnRemoteResp);
   }
   
   protected boolean excuteEvent(String paramString, long paramLong, Map<String, Object> paramMap)

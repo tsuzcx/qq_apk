@@ -1,7 +1,14 @@
+import com.tencent.qphone.base.util.QLog;
+
 class ashm
-  implements asho
+  implements afnu
 {
-  ashm(ashf paramashf) {}
+  ashm(ashe paramashe) {}
+  
+  public void a()
+  {
+    QLog.i("MessengerService$IncomingHandler", 2, "@qqnotify delete faield ");
+  }
 }
 
 

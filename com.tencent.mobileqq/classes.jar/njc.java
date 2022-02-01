@@ -1,6 +1,13 @@
-public abstract interface njc
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.avgame.gameroom.gamelist.GameListView.1;
+
+public class njc
+  implements DialogInterface.OnClickListener
 {
-  public abstract void b(String paramString);
+  public njc(GameListView.1 param1) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

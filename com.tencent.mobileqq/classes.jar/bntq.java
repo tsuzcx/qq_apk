@@ -1,18 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
+import android.os.Handler;
+import dov.com.qq.im.aeeditor.lyric.common.TimerTaskManager;
 
-class bntq
-  implements DialogInterface.OnClickListener
+public class bntq
 {
-  bntq(bntl parambntl) {}
+  private static final bntt<Handler, Void> a = new bntr();
+  private static bntt<TimerTaskManager, Void> b = new bnts();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static Handler a()
   {
-    paramDialogInterface.dismiss();
-    bntl.a(this.a).p = true;
-    bntl.b(this.a).setSelected(true);
-    bntl.a(this.a).c(3002);
+    return (Handler)a.b(null);
+  }
+  
+  public static TimerTaskManager a()
+  {
+    return (TimerTaskManager)b.b(null);
   }
 }
 

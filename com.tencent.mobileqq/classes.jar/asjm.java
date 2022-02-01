@@ -1,29 +1,37 @@
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
 import com.tencent.qphone.base.util.QLog;
 
 class asjm
-  extends asjn
+  implements awzc<EmoticonPackage>
 {
-  public asjm(asji paramasji)
-  {
-    super(paramasji);
-  }
+  asjm(asjj paramasjj, PicEmoticonInfo paramPicEmoticonInfo) {}
   
-  protected String a()
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    return "StateAcceptByPCWhenToOffFailed";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    boolean bool;
+    if (paramEmoticonPackage != null)
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.imageType = paramEmoticonPackage.type;
+      PicEmoticonInfo localPicEmoticonInfo = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo;
+      if (paramEmoticonPackage.isAPNG == 2)
+      {
+        bool = true;
+        localPicEmoticonInfo.isAPNG = bool;
+      }
     }
-    asji.b(this.jdField_a_of_type_Asji, 11, 5);
-    asji.c(this.jdField_a_of_type_Asji, 11, 5);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Asjn.a() + "->StateAcceptByPC)");
-    this.jdField_a_of_type_Asjn = new asjk(this.jdField_a_of_type_Asji);
+    for (;;)
+    {
+      asjj.a(this.jdField_a_of_type_Asjj).send(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo);
+      if (QLog.isColorLevel()) {
+        QLog.d("SogouEmoji", 2, "func sendEmoji ends, type:" + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.imageType);
+      }
+      return;
+      bool = false;
+      break;
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.imageType = 3;
+    }
   }
 }
 

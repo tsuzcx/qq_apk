@@ -1,17 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.home.Conversation;
+import java.util.ArrayList;
 
 public class ajbp
-  implements DialogInterface.OnDismissListener
+  extends ajbn
 {
-  public ajbp(Conversation paramConversation) {}
+  public ArrayList<aixy> a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public ajbp(ArrayList<aixy> paramArrayList)
   {
-    if (paramDialogInterface == Conversation.a(this.a)) {
-      Conversation.a(this.a, null);
-    }
+    this.a = paramArrayList;
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

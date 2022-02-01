@@ -1,164 +1,267 @@
 import android.content.Context;
-import android.content.res.Resources;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
+import android.util.SparseArray;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mobileqq.mini.util.ColorUtil;
-import com.tencent.mobileqq.troop.activity.TroopNickRuleFragment;
-import com.tencent.mobileqq.utils.ViewUtils;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import org.xmlpull.v1.XmlSerializer;
 
 public class bdox
-  extends BaseAdapter
+  extends bdnu
 {
-  public bdoy a;
-  protected List<String> a;
-  public boolean a;
-  private boolean b;
-  private boolean c;
+  private SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bdoy(this);
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  public List<bdnu> a;
   
   public bdox()
   {
+    this.jdField_a_of_type_JavaLangString = "group";
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  private void a(int paramInt, bdoz parambdoz, String paramString, ViewGroup paramViewGroup)
+  public View a(Context paramContext, View paramView, Bundle paramBundle)
   {
-    if (paramInt == 0)
-    {
-      if (paramString.equals(paramViewGroup.getContext().getString(2131719270)))
-      {
-        parambdoz.b.setVisibility(8);
-        parambdoz.jdField_a_of_type_AndroidWidgetTextView.setTextColor(ColorUtil.parseColor("#4D94FF"));
-        parambdoz.jdField_a_of_type_AndroidWidgetTextView.setTag(TroopNickRuleFragment.f);
-        paramString = (LinearLayout.LayoutParams)parambdoz.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-        if (paramString != null)
-        {
-          paramString.rightMargin = ViewUtils.dpToPx(12.0F);
-          parambdoz.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(paramString);
-        }
-        parambdoz.jdField_a_of_type_AndroidWidgetTextView.setClickable(true);
-        parambdoz.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(parambdoz);
-      }
-    }
-    else {
-      return;
-    }
-    parambdoz.b.setVisibility(0);
-    parambdoz.b.setOnClickListener(parambdoz);
-    parambdoz.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramViewGroup.getContext().getResources().getColorStateList(2131167017));
-    parambdoz.jdField_a_of_type_AndroidWidgetTextView.setTag(TroopNickRuleFragment.g);
-    paramString = (LinearLayout.LayoutParams)parambdoz.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-    if (paramString != null)
-    {
-      paramString.rightMargin = ViewUtils.dpToPx(7.0F);
-      parambdoz.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(paramString);
-    }
-    parambdoz.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(null);
-    parambdoz.jdField_a_of_type_AndroidWidgetTextView.setClickable(false);
-  }
-  
-  public String a(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return "";
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(paramString);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    this.b = true;
-  }
-  
-  public void c()
-  {
-    this.c = true;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    String str = a(paramInt);
-    View localView;
+    int j;
+    int i;
+    label62:
     Object localObject;
-    if (TextUtils.isEmpty(str))
+    View localView;
+    if ((paramView != null) && ((paramView instanceof LinearLayout)))
     {
-      localView = paramView;
-      localObject = paramView;
-      paramView = localView;
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localObject;
-    }
-    if (paramView == null)
-    {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560674, null, false);
-      if (this.b) {
-        localView.setBackgroundDrawable(paramViewGroup.getContext().getResources().getDrawable(2130846123));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView);
+      this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
+      this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+      ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup).setOrientation(1);
+      ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup).setGravity(16);
+      j = 0;
+      i = 1;
+      if (j >= this.jdField_a_of_type_JavaUtilList.size()) {
+        break label499;
       }
-      localObject = new bdoz(this);
-      ((bdoz)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131372903));
-      ((bdoz)localObject).b = ((TextView)localView.findViewById(2131372904));
-      ((bdoz)localObject).b.setTag(TroopNickRuleFragment.e);
-      localView.setTag(localObject);
-      if (this.c)
+      paramView = (bdnu)this.jdField_a_of_type_JavaUtilList.get(j);
+      localObject = paramView.jdField_a_of_type_JavaLangString;
+      if (!"groupitem".equals(localObject)) {
+        break label253;
+      }
+      localObject = paramView.a(paramContext, null, paramBundle);
+      localView = ((View)localObject).findViewById(2131378141);
+      if (localView != null)
       {
-        ((LinearLayout.LayoutParams)((bdoz)localObject).jdField_a_of_type_AndroidWidgetTextView.getLayoutParams()).setMargins(30, 15, 30, 15);
-        ((bdoz)localObject).jdField_a_of_type_AndroidWidgetTextView.setOnClickListener((View.OnClickListener)localObject);
-        ((bdoz)localObject).b.setVisibility(8);
+        if ((LinearLayout)((View)localObject).findViewById(2131378142) != null) {
+          break label231;
+        }
+        localView.setOnClickListener(paramView);
+        localView.setTag(paramView);
       }
+      label155:
+      paramView = new LinearLayout.LayoutParams(-1, -2);
+      paramView.leftMargin = 0;
+      paramView.rightMargin = 0;
+      paramView.topMargin = 0;
+      paramView.bottomMargin = 0;
+      this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject, paramView);
+      this.jdField_a_of_type_AndroidUtilSparseArray.append(j, localObject);
     }
     for (;;)
     {
-      ((bdoz)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(str);
-      ((bdoz)localObject).jdField_a_of_type_Int = paramInt;
-      paramView = localView;
-      localObject = localView;
+      j += 1;
+      break label62;
+      this.jdField_a_of_type_AndroidViewViewGroup = new LinearLayout(paramContext);
       break;
-      ((bdoz)localObject).b.setOnClickListener((View.OnClickListener)localObject);
-      a(paramInt, (bdoz)localObject, str, paramViewGroup);
-      continue;
-      bdoz localbdoz = (bdoz)paramView.getTag();
-      localObject = localbdoz;
-      localView = paramView;
-      if (!this.c)
+      label231:
+      localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      localView.setTag(Integer.valueOf(j));
+      break label155;
+      label253:
+      if ("hr".equals(localObject))
       {
-        a(paramInt, localbdoz, str, paramViewGroup);
-        localObject = localbdoz;
-        localView = paramView;
+        paramView = paramView.a(paramContext, null, paramBundle);
+        localObject = new LinearLayout.LayoutParams(-1, 1);
+        ((LinearLayout.LayoutParams)localObject).leftMargin = 0;
+        ((LinearLayout.LayoutParams)localObject).rightMargin = 0;
+        ((LinearLayout.LayoutParams)localObject).topMargin = 0;
+        ((LinearLayout.LayoutParams)localObject).bottomMargin = 0;
+        if (i != 0)
+        {
+          this.jdField_a_of_type_AndroidViewViewGroup.addView(paramView, 0, (ViewGroup.LayoutParams)localObject);
+          i = 0;
+        }
+        for (;;)
+        {
+          break;
+          this.jdField_a_of_type_AndroidViewViewGroup.addView(paramView, (ViewGroup.LayoutParams)localObject);
+        }
+      }
+      if ("title".equals(localObject))
+      {
+        paramView = paramView.a(paramContext, null, paramBundle);
+        localObject = new LinearLayout.LayoutParams(-1, AIOUtils.dp2px(50.0F, paramContext.getResources()));
+        ((TextView)paramView).setGravity(16);
+        ((LinearLayout.LayoutParams)localObject).leftMargin = AIOUtils.dp2px(12.0F, paramContext.getResources());
+        ((LinearLayout.LayoutParams)localObject).rightMargin = 0;
+        ((LinearLayout.LayoutParams)localObject).topMargin = 0;
+        ((LinearLayout.LayoutParams)localObject).bottomMargin = 0;
+        this.jdField_a_of_type_AndroidViewViewGroup.addView(paramView, (ViewGroup.LayoutParams)localObject);
+      }
+      else if ("item".equals(localObject))
+      {
+        paramView = paramView.a(paramContext, null, paramBundle);
+        localObject = new LinearLayout.LayoutParams(-1, -2);
+        ((LinearLayout.LayoutParams)localObject).leftMargin = 0;
+        ((LinearLayout.LayoutParams)localObject).rightMargin = 0;
+        ((LinearLayout.LayoutParams)localObject).topMargin = 0;
+        ((LinearLayout.LayoutParams)localObject).bottomMargin = 0;
+        this.jdField_a_of_type_AndroidViewViewGroup.addView(paramView, (ViewGroup.LayoutParams)localObject);
       }
     }
+    label499:
+    return this.jdField_a_of_type_AndroidViewViewGroup;
+  }
+  
+  public String a()
+  {
+    return "group";
+  }
+  
+  void a(bdnu parambdnu)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(parambdnu);
+  }
+  
+  public void a(ObjectInput paramObjectInput)
+  {
+    super.a(paramObjectInput);
+    int m = paramObjectInput.readInt();
+    int i = 1;
+    int k = 0;
+    if (k < m)
+    {
+      String str = paramObjectInput.readUTF();
+      Object localObject;
+      if ("item".equals(str)) {
+        localObject = bdoe.a(paramObjectInput.readInt());
+      }
+      for (;;)
+      {
+        if (localObject != null)
+        {
+          ((bdnu)localObject).jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
+          ((bdnu)localObject).a(paramObjectInput);
+          if (("groupitem".equals(str)) || ("hr".equals(str)) || ("title".equals(str)) || ("item".equals(str))) {
+            a((bdnu)localObject);
+          }
+        }
+        k += 1;
+        break;
+        bdnu localbdnu = bdoe.a(str);
+        int j = i;
+        if ("button".equals(str))
+        {
+          localbdnu.aa = String.valueOf(i);
+          localbdnu.ab = this.ab;
+          j = i + 1;
+        }
+        localObject = localbdnu;
+        i = j;
+        if (localbdnu != null)
+        {
+          localObject = localbdnu;
+          i = j;
+          if (bdnv.class.isInstance(localbdnu))
+          {
+            paramObjectInput.readInt();
+            localObject = localbdnu;
+            i = j;
+          }
+        }
+      }
+    }
+  }
+  
+  public void a(ObjectOutput paramObjectOutput)
+  {
+    super.a(paramObjectOutput);
+    paramObjectOutput.writeInt(this.jdField_a_of_type_JavaUtilList.size());
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((bdnu)localIterator.next()).a(paramObjectOutput);
+    }
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    paramXmlSerializer.startTag(null, "group");
+    paramXmlSerializer.endTag(null, "group");
+  }
+  
+  public boolean a(bdpl parambdpl)
+  {
+    boolean bool2 = false;
+    boolean bool1;
+    if (parambdpl == null)
+    {
+      bool1 = true;
+      return bool1;
+    }
+    int k = parambdpl.a();
+    int i = 0;
+    while (i < k)
+    {
+      bdpl localbdpl = parambdpl.a(i);
+      if (localbdpl == null)
+      {
+        label39:
+        i += 1;
+      }
+      else
+      {
+        if ("item".equals(localbdpl.b)) {}
+        for (Object localObject = localbdpl.a("layout");; localObject = bdoe.a(localbdpl.b))
+        {
+          try
+          {
+            if (!TextUtils.isEmpty((CharSequence)localObject)) {}
+            for (int j = Integer.parseInt((String)localObject);; j = 0)
+            {
+              localObject = bdoe.a(j);
+              bool1 = bool2;
+              if (localObject == null) {
+                break;
+              }
+              bool1 = bool2;
+              if (!((bdnu)localObject).a(localbdpl)) {
+                break;
+              }
+              a((bdnu)localObject);
+              break label39;
+            }
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+          }
+          catch (NumberFormatException parambdpl)
+          {
+            bool1 = bool2;
+          }
+          QLog.i("StructMsgGroupElement", 2, "Item layout value is " + 0);
+          return false;
+        }
+      }
+    }
+    return true;
   }
 }
 

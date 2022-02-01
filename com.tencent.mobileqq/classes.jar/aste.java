@@ -1,11 +1,12 @@
-class aste
-  implements arvc
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+final class aste
+  implements DialogInterface.OnClickListener
 {
-  aste(astb paramastb) {}
-  
-  public void a(long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    astb.a(this.a, paramLong);
+    paramDialogInterface.dismiss();
   }
 }
 

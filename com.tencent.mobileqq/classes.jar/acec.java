@@ -1,26 +1,31 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.CustomFace;
-import tencent.im.msg.im_msg_body.Elem;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoFragment;
 
 public class acec
-  extends acew
+  implements acfj
 {
-  public int a()
+  public acec(GdtMotiveVideoFragment paramGdtMotiveVideoFragment) {}
+  
+  public Activity a()
   {
-    return 1000;
+    return this.a.getActivity();
   }
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bdyi parambdyi, bblm parambblm, bbkm parambbkm)
+  public void a()
   {
-    new bblb().a(paramList, paramList1, paramStringBuilder, paramMsg, paramBoolean2);
-    return true;
+    Activity localActivity = a();
+    if (localActivity != null) {
+      localActivity.finish();
+    }
   }
   
-  public boolean a(im_msg_body.Elem paramElem)
+  public void a(int paramInt, Intent paramIntent)
   {
-    return paramElem.hc_flash_pic.has();
+    Activity localActivity = a();
+    if (localActivity != null) {
+      localActivity.setResult(paramInt, paramIntent);
+    }
   }
 }
 

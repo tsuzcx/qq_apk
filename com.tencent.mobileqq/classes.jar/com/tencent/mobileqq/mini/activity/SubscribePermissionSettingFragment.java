@@ -4,8 +4,7 @@ import NS_MINI_INTERFACE.INTERFACE.StExampleDetail;
 import NS_MINI_INTERFACE.INTERFACE.StGetAuthListRsp;
 import NS_MINI_INTERFACE.INTERFACE.StSubscribeMessage;
 import NS_MINI_INTERFACE.INTERFACE.StUserSettingInfo;
-import adxr;
-import amtj;
+import aeow;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -19,7 +18,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import bhht;
+import anvx;
+import bisl;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForMini;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.mini.MiniAppInterface;
@@ -55,7 +55,7 @@ public class SubscribePermissionSettingFragment
   private RecyclerView.LayoutManager layoutManager;
   private MiniAppInterface miniAppInterface;
   private final View.OnClickListener onClickListener = new SubscribePermissionSettingFragment.1(this);
-  private bhht qqProgressDialog;
+  private bisl qqProgressDialog;
   private List<SubscribeItemModel> subscribeItemList;
   private RecyclerView subscribeRecyclerView;
   
@@ -167,12 +167,12 @@ public class SubscribePermissionSettingFragment
     {
       if (((List)localObject).size() > 0)
       {
-        localArrayList1.add(getTitleSubscribeItemModel(amtj.a(2131693799)));
+        localArrayList1.add(getTitleSubscribeItemModel(anvx.a(2131693987)));
         localArrayList1.addAll((Collection)localObject);
       }
       if (localArrayList2.size() > 0)
       {
-        localArrayList1.add(getTitleSubscribeItemModel(amtj.a(2131693797)));
+        localArrayList1.add(getTitleSubscribeItemModel(anvx.a(2131693985)));
         localArrayList1.addAll(localArrayList2);
       }
       if (localArrayList3.size() > 0)
@@ -190,7 +190,7 @@ public class SubscribePermissionSettingFragment
     Intent localIntent = new Intent();
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.putExtra("EXTRA_APP_ID", paramString);
-    adxr.a(paramContext, localIntent, PublicFragmentActivityForMini.class, SubscribePermissionSettingFragment.class);
+    aeow.a(paramContext, localIntent, PublicFragmentActivityForMini.class, SubscribePermissionSettingFragment.class);
   }
   
   private void onLongTermSubscribeChecked(int paramInt, boolean paramBoolean, SubscribeItemModel paramSubscribeItemModel)
@@ -241,7 +241,7 @@ public class SubscribePermissionSettingFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131559417, null);
+    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131559454, null);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramLayoutInflater.setFitsSystemWindows(true);
@@ -273,12 +273,12 @@ public class SubscribePermissionSettingFragment
       getActivity().finish();
       return;
     }
-    paramBundle = (TextView)paramView.findViewById(2131369068);
-    TextView localTextView = (TextView)paramView.findViewById(2131369115);
-    paramBundle.setText(amtj.a(2131707034));
-    localTextView.setText(amtj.a(2131707048));
+    paramBundle = (TextView)paramView.findViewById(2131369231);
+    TextView localTextView = (TextView)paramView.findViewById(2131369278);
+    paramBundle.setText(anvx.a(2131707381));
+    localTextView.setText(anvx.a(2131707395));
     paramBundle.setOnClickListener(this.onClickListener);
-    this.subscribeRecyclerView = ((RecyclerView)paramView.findViewById(2131377970));
+    this.subscribeRecyclerView = ((RecyclerView)paramView.findViewById(2131378258));
     this.authorizeCenter = this.miniAppInterface.getAuthorizeCenter(this.appId);
     if (this.authorizeCenter == null)
     {

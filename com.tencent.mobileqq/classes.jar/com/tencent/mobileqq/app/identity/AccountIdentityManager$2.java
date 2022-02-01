@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app.identity;
 
-import anjr;
+import aomk;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class AccountIdentityManager$2
   implements Runnable
 {
-  public AccountIdentityManager$2(anjr paramanjr, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, QQAppInterface paramQQAppInterface) {}
+  public AccountIdentityManager$2(aomk paramaomk, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {

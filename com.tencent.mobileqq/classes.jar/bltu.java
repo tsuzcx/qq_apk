@@ -1,19 +1,20 @@
-import com.tencent.common.app.AppInterface;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
 
-class bltu
-  extends blur
+public class bltu
+  extends FlingGestureHandler
 {
-  bltu(blts paramblts, AppInterface paramAppInterface) {}
+  boolean a = true;
   
-  public void onUpdateOnlineUserNum(boolean paramBoolean, int paramInt)
+  public bltu(Activity paramActivity)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this);
-    if (paramBoolean) {
-      synchronized (blts.a(this.jdField_a_of_type_Blts))
-      {
-        blts.a(this.jdField_a_of_type_Blts, paramInt);
-        return;
-      }
+    super(paramActivity);
+  }
+  
+  public void flingLToR()
+  {
+    if (this.a) {
+      super.flingLToR();
     }
   }
 }

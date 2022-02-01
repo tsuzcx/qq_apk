@@ -1,29 +1,17 @@
-import com.tencent.mobileqq.activity.photo.album.PhotoPreviewBaseData;
-import com.tencent.mobileqq.activity.photo.album.PhotoPreviewLogicBase;
-import com.tencent.mobileqq.activity.photo.album.preview.BasePreviewAdapter;
-import com.tencent.mobileqq.activity.photo.album.preview.BasePreviewPresent;
-import com.tencent.mobileqq.activity.photo.album.preview.PreviewBean;
-import com.tencent.mobileqq.utils.AlbumUtil;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
 
 public class ajty
-  extends BasePreviewAdapter
+  implements DialogInterface.OnClickListener
 {
-  public ajty(PhotoPreviewLogicBase paramPhotoPreviewLogicBase)
-  {
-    super(paramPhotoPreviewLogicBase);
-  }
+  public ajty(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment) {}
   
-  public BasePreviewPresent generatePreviewPresent(PreviewBean paramPreviewBean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.mPhotoPreviewData.canUseURL) && (AlbumUtil.isNetUrl(paramPreviewBean.getPath()))) {
-      return new ajua(paramPreviewBean);
-    }
-    String str = paramPreviewBean.getPath();
-    if ((str != null) && (new File(str).exists()) && (paramPreviewBean.mMediaType == 1)) {
-      return new ajtz(paramPreviewBean);
-    }
-    return super.generatePreviewPresent(paramPreviewBean);
+    paramDialogInterface.dismiss();
+    this.a.getActivity().setResult(8001);
   }
 }
 

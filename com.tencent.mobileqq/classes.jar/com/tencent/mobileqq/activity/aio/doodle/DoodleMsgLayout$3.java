@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import afls;
+import agcw;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Looper;
@@ -15,14 +15,14 @@ class DoodleMsgLayout$3
   public void run()
   {
     QLog.d("DoodleMsgLayout", 2, "setDoodleContent start create drawable:" + this.a);
-    if (!afls.a().b(1, this.a)) {
-      afls.a().b(1, this.a, this.this$0, this.this$0);
+    if (!agcw.a().b(1, this.a)) {
+      agcw.a().b(1, this.a, this.this$0, this.this$0);
     }
     Drawable localDrawable;
     do
     {
       return;
-      localDrawable = afls.a().a(2, this.a, true);
+      localDrawable = agcw.a().a(2, this.a, true);
       if (localDrawable != null) {
         ((URLDrawable)localDrawable).startDownload();
       }

@@ -1,17 +1,56 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aypj
-  implements CompoundButton.OnCheckedChangeListener
+  implements aypg
 {
-  public aypj(StickyNotePublishFragment paramStickyNotePublishFragment) {}
+  private static volatile aypj jdField_a_of_type_Aypj;
+  private aypg jdField_a_of_type_Aypg;
+  private List<aypk> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public static aypj a()
   {
-    StickyNotePublishFragment.a(this.a, paramBoolean);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    if (jdField_a_of_type_Aypj == null) {}
+    try
+    {
+      if (jdField_a_of_type_Aypj == null) {
+        jdField_a_of_type_Aypj = new aypj();
+      }
+      return jdField_a_of_type_Aypj;
+    }
+    finally {}
+  }
+  
+  public List<aypk> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a()
+  {
+    new ayph().a(this);
+  }
+  
+  public void a(int paramInt, String paramString) {}
+  
+  public void a(aypg paramaypg)
+  {
+    this.jdField_a_of_type_Aypg = paramaypg;
+  }
+  
+  public void a(List<aypk> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    if (this.jdField_a_of_type_Aypg != null) {
+      this.jdField_a_of_type_Aypg.a(paramList);
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_Aypg = null;
+    jdField_a_of_type_Aypj = null;
   }
 }
 

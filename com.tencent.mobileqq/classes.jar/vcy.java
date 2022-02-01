@@ -1,18 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 class vcy
-  implements View.OnClickListener
+  implements vlq
 {
-  vcy(vcx paramvcx) {}
+  vcy(vcu paramvcu) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString)
   {
-    if ((this.a.a() instanceof vcj)) {
-      ((vcj)this.a.a()).f();
+    if (vnd.b()) {
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    vcu.a(this.a, true);
+    vmp.b("WSFollowFeedHolder", "[onUserClick] uid: " + paramString);
+    String str = "weishi://profile?person_id=" + paramString;
+    vmg.a(vcu.a(this.a).a(), str, 700, vcu.a(this.a), "content");
+    vcu.a(this.a, paramString);
+  }
+  
+  public void b(String paramString)
+  {
+    if (vnd.b()) {
+      return;
+    }
+    vcu.a(this.a, true);
+    vmp.b("WSFollowFeedHolder", "[onTopicClick] tid: " + paramString);
+    String str = "weishi://topic?topic_id=" + paramString;
+    vmg.a(vcu.a(this.a).a(), str, 700, vcu.a(this.a), "content");
+    vcu.b(this.a, paramString);
   }
 }
 

@@ -1,53 +1,16 @@
-import android.text.TextUtils;
+import android.content.Context;
+import android.widget.BaseAdapter;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class ahhv
-  implements Observer
+public class ahhv
+  extends StructingMsgItemBuilder
 {
-  ahhv(ahhp paramahhp) {}
-  
-  public void update(Observable paramObservable, Object paramObject)
+  public ahhv(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
-    if ((paramObject instanceof aigj))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.tag, 2, "new FriendSystemMessage,:");
-      }
-      paramObservable = ((aigj)paramObject).a.getSystemMsg();
-      if (paramObservable != null) {
-        break label42;
-      }
-    }
-    label42:
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (paramObservable.msg.sub_type.get() != 9);
-        paramObservable = String.valueOf(paramObservable.req_uin.get());
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a.tag, 2, "FRIEND_ADDSUCCESS, uin:" + paramObservable + " badd:" + ahhp.b(this.a));
-        }
-      } while ((TextUtils.isEmpty(paramObservable)) || (this.a.sessionInfo == null) || (!paramObservable.equals(this.a.sessionInfo.curFriendUin)));
-      if (!ahhp.b(this.a))
-      {
-        ahhp.a(this.a, true);
-        auyo.a(this.a.app, paramObservable);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d(this.a.tag, 2, "FRIEND_ADDSUCCESS, processed:");
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
   }
 }
 

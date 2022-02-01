@@ -12,6 +12,7 @@ import android.view.Window;
 import com.tencent.qqmini.sdk.action.AppStateEvent;
 import com.tencent.qqmini.sdk.core.manager.ActivityResultManager;
 import com.tencent.qqmini.sdk.core.manager.ObserverManager;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.launcher.IUIProxy;
@@ -45,6 +46,7 @@ public abstract class BaseUIProxy
   protected Handler mMainHandler = new Handler(Looper.getMainLooper());
   protected PageGestureProxy mPageGestureProxy;
   public ViewGroup mRootLayout;
+  protected long showTimeStamp = 0L;
   
   private void destroyLastRuntimeLoader(BaseRuntimeLoader paramBaseRuntimeLoader)
   {
@@ -59,7 +61,7 @@ public abstract class BaseUIProxy
   
   protected BaseRuntimeLoader.OnAppRuntimeLoadListener createRuntimeLoaderListener()
   {
-    return new BaseUIProxy.1(this);
+    return new BaseUIProxy.2(this);
   }
   
   public MiniAppInfo getMiniAppInfo()
@@ -191,6 +193,7 @@ public abstract class BaseUIProxy
       do
       {
         return;
+        this.showTimeStamp = System.currentTimeMillis();
         QMLog.i("minisdk-start_UIProxy", this + " [MiniLifecycle] " + "onMiniResume");
         this.mCurrRuntimeLoader.onMiniResume();
         AppRuntimeLoaderManager.g().onEnterForeground(this.mCurrRuntimeLoader);
@@ -299,20 +302,20 @@ public abstract class BaseUIProxy
   protected void onRuntimeFail(int paramInt, String paramString)
   {
     QMLog.e("minisdk-start_UIProxy", this + " [MiniLifecycle] " + "onRuntimeFail. Whoops, failed to load the runtime, retCode = " + paramInt + ", msg = " + paramString);
-    this.mMainHandler.postDelayed(new BaseUIProxy.3(this, paramInt, paramString), 1000L);
+    this.mMainHandler.postDelayed(new BaseUIProxy.4(this, paramInt, paramString), 1000L);
   }
   
   protected void onRuntimeReady()
   {
     QMLog.i("minisdk-start_UIProxy", this + " [MiniLifecycle] " + "onRuntimeReady. Here we go, start the runtime lifecycle");
-    AppBrandTask.runTaskOnUiThread(new BaseUIProxy.2(this));
+    AppBrandTask.runTaskOnUiThread(new BaseUIProxy.3(this));
   }
   
   protected void processSelectLoadingAdLogic(Activity paramActivity, MiniAppInfo paramMiniAppInfo)
   {
     String str = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAccount();
     long l = System.currentTimeMillis();
-    MiniLoadingAdManager.getInstance().selectAd(paramActivity, paramMiniAppInfo, str, new BaseUIProxy.4(this, l, str, paramMiniAppInfo, paramActivity));
+    MiniLoadingAdManager.getInstance().selectAd(paramActivity, paramMiniAppInfo, str, new BaseUIProxy.5(this, l, str, paramMiniAppInfo, paramActivity));
   }
   
   public void quit()
@@ -348,14 +351,15 @@ public abstract class BaseUIProxy
     if (paramMiniAppInfo == null) {
       QMLog.e("minisdk-start_UIProxy", "Failed to start. miniAppInfo is null");
     }
-    label274:
-    label301:
-    label468:
-    label473:
-    label482:
+    label286:
+    label313:
+    label480:
+    label485:
+    label494:
     for (;;)
     {
       return;
+      ThreadManager.executeOnDiskIOThreadPool(new BaseUIProxy.1(this, paramBundle));
       MiniAppPrelaunchRecorder.get().onMiniAppStart(paramMiniAppInfo.appId);
       BaseRuntimeLoader localBaseRuntimeLoader3 = this.mCurrRuntimeLoader;
       if ((localBaseRuntimeLoader3 != null) && (localBaseRuntimeLoader3.getRuntime() != null)) {
@@ -391,21 +395,21 @@ public abstract class BaseUIProxy
         }
         reloadMiniAppInfoIfNeed(localBaseRuntimeLoader1, paramMiniAppInfo);
         if ((paramMiniAppInfo == null) || (TextUtils.isEmpty(paramMiniAppInfo.appId))) {
-          break label419;
+          break label431;
         }
         if (paramBundle == null) {
-          break label468;
+          break label480;
         }
         i = paramBundle.getInt("start_mode", 3);
         if (i != 3) {
-          break label473;
+          break label485;
         }
         MiniAppStartState.setProcessLoad(paramMiniAppInfo.appId, false);
       }
       for (;;)
       {
         if (this.mPageGestureProxy == null) {
-          break label482;
+          break label494;
         }
         this.mPageGestureProxy.onCreateMiniAppInfo(paramMiniAppInfo);
         return;
@@ -424,7 +428,7 @@ public abstract class BaseUIProxy
         for (;;)
         {
           localBaseRuntimeLoader1.notifyRuntimeEvent(20, new Object[0]);
-          break label274;
+          break label286;
           break;
           this.mCurrRuntimeLoader = localBaseRuntimeLoader1;
           if (paramMiniAppInfo.isEngineTypeMiniApp())
@@ -434,13 +438,13 @@ public abstract class BaseUIProxy
           }
         }
         i = 3;
-        break label301;
+        break label313;
         MiniAppStartState.setProcessLoad(paramMiniAppInfo.appId, true);
       }
     }
   }
   
-  protected void updateLoadingAdUI(Activity paramActivity, MiniAppInfo paramMiniAppInfo, String paramString, long paramLong) {}
+  protected void updateLoadingAdUI(Activity paramActivity, MiniAppInfo paramMiniAppInfo, String paramString, long paramLong1, long paramLong2) {}
 }
 
 

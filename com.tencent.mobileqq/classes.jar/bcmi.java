@@ -1,47 +1,17 @@
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.search.searchengine.PublicAccountSearchEngine;
+import java.util.Comparator;
 
-class bcmi
-  extends URLDrawableDownListener.Adapter
+public final class bcmi
+  implements Comparator<bcgn>
 {
-  bcmi(bcme parambcme) {}
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public int a(bcgn parambcgn1, bcgn parambcgn2)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadCancelled");
+    int j = Long.signum(parambcgn2.b() - parambcgn1.b());
+    int i = j;
+    if (j == 0) {
+      i = PublicAccountSearchEngine.a(parambcgn1, parambcgn2);
     }
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-    if (QLog.isColorLevel()) {
-      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadFailed ,cause = " + paramThrowable);
-    }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-    if (QLog.isColorLevel()) {
-      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadInterrupted");
-    }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    int i = paramView.getLayoutParams().height * paramURLDrawable.getIntrinsicWidth() / paramURLDrawable.getIntrinsicHeight();
-    paramView.getLayoutParams().width = i;
-    paramView.setBackgroundDrawable(paramURLDrawable);
-    paramView.requestLayout();
-    if (QLog.isColorLevel()) {
-      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadSuccessed");
-    }
+    return i;
   }
 }
 

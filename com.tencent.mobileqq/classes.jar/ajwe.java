@@ -1,22 +1,10 @@
-import android.content.res.Resources;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
-import com.tencent.mobileqq.widget.ksong.KSongView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class ajwe
-  extends bhkz
+public abstract interface ajwe
 {
-  public ajwe(RedPacketKSongFragment paramRedPacketKSongFragment) {}
+  public abstract boolean a(FileManagerEntity paramFileManagerEntity);
   
-  public void a()
-  {
-    super.a();
-    this.a.b = false;
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongView.a();
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.getResources().getDrawable(2130847223));
-    this.a.c.setText(amtj.a(2131712417));
-  }
+  public abstract void b(FileManagerEntity paramFileManagerEntity);
 }
 
 

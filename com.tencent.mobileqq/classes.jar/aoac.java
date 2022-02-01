@@ -1,12 +1,11 @@
-public class aoac
+class aoac
+  extends anyz
 {
-  public long a;
-  public boolean a;
+  aoac(aoab paramaoab) {}
   
-  public aoac(long paramLong, boolean paramBoolean)
+  protected void onSelfPcOnlineStatusUpdateNotify(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a.a();
   }
 }
 

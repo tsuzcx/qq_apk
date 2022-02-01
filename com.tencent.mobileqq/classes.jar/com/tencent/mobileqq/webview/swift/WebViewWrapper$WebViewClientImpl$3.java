@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.webview.swift;
 
-import bgvo;
+import bigg;
 
 public class WebViewWrapper$WebViewClientImpl$3
   implements Runnable
 {
-  public WebViewWrapper$WebViewClientImpl$3(bgvo parambgvo, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
+  public WebViewWrapper$WebViewClientImpl$3(bigg parambigg, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
   
   public void run()
   {

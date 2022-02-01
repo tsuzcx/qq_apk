@@ -1,28 +1,78 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class ork
-  implements ViewBase.OnClickListener
+class ork
+  extends pvq
 {
-  ork(ouo paramouo, ouc paramouc) {}
+  ork(orj paramorj) {}
   
-  public final void onClick(ViewBase paramViewBase)
+  public void a(int paramInt, List<Long> paramList)
   {
-    if (this.jdField_a_of_type_Ouo.a != null)
+    if ((orj.a(this.a) != null) && ((orj.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)orj.a(this.a)).a(paramInt, paramList);
+    }
+  }
+  
+  public void a(TopBannerInfo paramTopBannerInfo)
+  {
+    if ((orj.a(this.a) != null) && ((orj.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)orj.a(this.a)).a(paramTopBannerInfo);
+    }
+  }
+  
+  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  {
+    if ((orj.a(this.a) != null) && ((orj.a(this.a) instanceof ReadInJoyListViewGroup)) && (paramInt == orj.a(this.a)))
     {
-      Object localObject = this.jdField_a_of_type_Ouc.a();
-      Intrinsics.checkExpressionValueIsNotNull(localObject, "adapter.vafContext");
-      localObject = ((VafContext)localObject).getContext();
-      Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "viewBase");
-      pay.a((Context)localObject, paramViewBase.getEventAttachedData());
-      if (this.jdField_a_of_type_Ouc.a() != null) {
-        this.jdField_a_of_type_Ouc.a().e(this.jdField_a_of_type_Ouo);
+      ((ReadInJoyListViewGroup)orj.a(this.a)).a(paramBoolean1, paramInt, paramList, paramBoolean2);
+      orj.a(this.a);
+    }
+  }
+  
+  public void aj_()
+  {
+    if ((orj.a(this.a) != null) && ((orj.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)orj.a(this.a)).m();
+    }
+  }
+  
+  public void b(int paramInt, List<Long> paramList)
+  {
+    if ((orj.a(this.a) != null) && ((orj.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)orj.a(this.a)).c(paramInt, paramList);
+    }
+  }
+  
+  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  {
+    if ((orj.a(this.a) != null) && ((orj.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)orj.a(this.a)).b(paramBoolean1, paramInt, paramList, paramBoolean2);
+    }
+  }
+  
+  public void c(int paramInt, List<Long> paramList)
+  {
+    if ((orj.a(this.a) != null) && ((orj.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)orj.a(this.a)).b(paramInt, paramList);
+    }
+  }
+  
+  public void d(int paramInt, List<oyb> paramList)
+  {
+    if ((orj.a(this.a) instanceof ReadInJoyListViewGroup))
+    {
+      qcw localqcw = (qcw)((ReadInJoyListViewGroup)orj.a(this.a)).a().a(2);
+      if (localqcw != null) {
+        localqcw.b(paramInt, paramList);
       }
+    }
+  }
+  
+  public void f_(int paramInt)
+  {
+    if ((orj.a(this.a) != null) && ((orj.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)orj.a(this.a)).a(paramInt);
     }
   }
 }

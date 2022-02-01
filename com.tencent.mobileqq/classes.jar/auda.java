@@ -1,30 +1,15 @@
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.io.InputStream;
 
 class auda
-  implements DialogInterface.OnClickListener
+  implements audq
 {
-  auda(aucz paramaucz, InputStream paramInputStream) {}
+  auda(aucx paramaucx, Activity paramActivity, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onNo() {}
+  
+  public void onYes()
   {
-    try
-    {
-      this.jdField_a_of_type_JavaIoInputStream.close();
-      aucz.a(this.jdField_a_of_type_Aucz).finish();
-      return;
-    }
-    catch (IOException paramDialogInterface)
-    {
-      for (;;)
-      {
-        QLog.e("UriParserPathHelper", 1, "system share.exception.e=", paramDialogInterface);
-      }
-    }
+    aucx.a(this.jdField_a_of_type_Aucx, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int);
   }
 }
 

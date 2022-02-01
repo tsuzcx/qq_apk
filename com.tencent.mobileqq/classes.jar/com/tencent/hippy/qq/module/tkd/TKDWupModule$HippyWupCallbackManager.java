@@ -2,7 +2,7 @@ package com.tencent.hippy.qq.module.tkd;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bfuc;
+import bhcu;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -84,7 +84,7 @@ public class TKDWupModule$HippyWupCallbackManager
         paramObject = new HippyMap();
         paramObject.pushInt("code", paramInt);
         paramObject.pushString("className", localHippyWupCallbackModule.rspClassName);
-        paramObject.pushString("body", bfuc.encodeToString(paramToServiceMsg, 2));
+        paramObject.pushString("body", bhcu.encodeToString(paramToServiceMsg, 2));
         localHippyWupCallbackModule.promise.resolve(paramObject);
         return;
       }

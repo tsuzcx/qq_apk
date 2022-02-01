@@ -1,85 +1,8 @@
-import android.graphics.Canvas;
-import android.graphics.SurfaceTexture;
-import android.view.TextureView;
-import android.view.TextureView.SurfaceTextureListener;
-import android.view.View.OnTouchListener;
+import android.view.View;
 
-public class aqpj
-  implements TextureView.SurfaceTextureListener, aqpg
+public abstract interface aqpj
 {
-  private TextureView jdField_a_of_type_AndroidViewTextureView;
-  private aqph jdField_a_of_type_Aqph;
-  
-  public aqpj(TextureView paramTextureView)
-  {
-    this.jdField_a_of_type_AndroidViewTextureView = paramTextureView;
-    this.jdField_a_of_type_AndroidViewTextureView.setOpaque(false);
-    this.jdField_a_of_type_AndroidViewTextureView.setSurfaceTextureListener(this);
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_AndroidViewTextureView.getY();
-  }
-  
-  public Canvas a()
-  {
-    return this.jdField_a_of_type_AndroidViewTextureView.lockCanvas();
-  }
-  
-  public void a() {}
-  
-  public void a(Canvas paramCanvas)
-  {
-    this.jdField_a_of_type_AndroidViewTextureView.unlockCanvasAndPost(paramCanvas);
-  }
-  
-  public void a(View.OnTouchListener paramOnTouchListener)
-  {
-    this.jdField_a_of_type_AndroidViewTextureView.setOnTouchListener(paramOnTouchListener);
-  }
-  
-  public void a(aqph paramaqph)
-  {
-    this.jdField_a_of_type_Aqph = paramaqph;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Aqph = null;
-    if (this.jdField_a_of_type_AndroidViewTextureView != null)
-    {
-      this.jdField_a_of_type_AndroidViewTextureView.setOnTouchListener(null);
-      this.jdField_a_of_type_AndroidViewTextureView = null;
-    }
-  }
-  
-  public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidViewTextureView.setOpaque(false);
-    if (this.jdField_a_of_type_Aqph != null)
-    {
-      this.jdField_a_of_type_Aqph.i();
-      this.jdField_a_of_type_Aqph.j();
-    }
-  }
-  
-  public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
-  {
-    if (this.jdField_a_of_type_Aqph != null) {
-      this.jdField_a_of_type_Aqph.k();
-    }
-    return false;
-  }
-  
-  public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_Aqph != null) {
-      this.jdField_a_of_type_Aqph.j();
-    }
-  }
-  
-  public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
+  public abstract void a(View paramView);
 }
 
 

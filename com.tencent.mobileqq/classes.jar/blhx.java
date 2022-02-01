@@ -1,30 +1,46 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import dov.com.qq.im.QIMCameraCaptureUnit.11;
-import mqq.app.AppRuntime;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
 
-public class blhx
-  implements MediaScanner.OnMediaInfoScannerListener
+class blhx
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public blhx(QIMCameraCaptureUnit.11 param11) {}
+  blhx(blhq paramblhq) {}
   
-  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    if (!paramBoolean)
+    return true;
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent)
+  {
+    Object localObject = this.a.findChildView(paramMotionEvent);
+    if (localObject != null)
     {
-      this.a.this$0.a(101);
-      return;
+      localObject = this.a.mRecyclerView.getChildViewHolder((View)localObject);
+      if ((localObject != null) && (this.a.mCallback.hasDragFlag(this.a.mRecyclerView, (RecyclerView.ViewHolder)localObject))) {
+        break label57;
+      }
     }
-    blhu.a(this.a.this$0, false);
-    if (!BaseApplicationImpl.getApplication().getRuntime().isBackgroundPause)
+    label57:
+    do
     {
-      this.a.this$0.a(this.a.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult, paramLocalMediaInfo);
-      return;
-    }
-    this.a.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramLocalMediaInfo;
-    this.a.this$0.b = this.a.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult;
-    this.a.this$0.d = true;
+      do
+      {
+        return;
+      } while (paramMotionEvent.getPointerId(0) != this.a.mActivePointerId);
+      int i = paramMotionEvent.findPointerIndex(this.a.mActivePointerId);
+      float f1 = paramMotionEvent.getX(i);
+      float f2 = paramMotionEvent.getY(i);
+      this.a.mInitialTouchX = f1;
+      this.a.mInitialTouchY = f2;
+      paramMotionEvent = this.a;
+      this.a.mDy = 0.0F;
+      paramMotionEvent.mDx = 0.0F;
+    } while (!this.a.mCallback.isLongPressDragEnabled());
+    this.a.select((RecyclerView.ViewHolder)localObject, 2);
   }
 }
 

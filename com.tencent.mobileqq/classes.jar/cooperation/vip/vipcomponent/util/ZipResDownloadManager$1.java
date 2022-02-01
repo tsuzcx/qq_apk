@@ -1,24 +1,24 @@
 package cooperation.vip.vipcomponent.util;
 
-import blck;
-import blcm;
+import bmpb;
+import bmpd;
 
 public class ZipResDownloadManager$1
   implements Runnable
 {
-  public ZipResDownloadManager$1(blck paramblck, String paramString) {}
+  public ZipResDownloadManager$1(bmpb parambmpb, String paramString) {}
   
   public void run()
   {
     String str = this.a;
     if (this.this$0.a(str)) {}
-    blcm localblcm;
+    bmpd localbmpd;
     do
     {
       return;
-      localblcm = blck.a(this.this$0, str, -1, null, null);
-    } while (!blck.a(this.this$0, str, localblcm));
-    blck.a(this.this$0, localblcm);
+      localbmpd = bmpb.a(this.this$0, str, -1, null, null);
+    } while (!bmpb.a(this.this$0, str, localbmpd));
+    bmpb.a(this.this$0, localbmpd);
   }
 }
 

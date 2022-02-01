@@ -1,63 +1,17 @@
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class vty
-  implements vuf
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public final vtw[] a = new vtw[2];
+  public vty(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
   
-  private void a(vtw paramvtw, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a[paramInt] = paramvtw;
-  }
-  
-  public <T extends vtw> T a(int paramInt)
-  {
-    vtw localvtw = this.a[paramInt];
-    if (localvtw == null) {}
-    for (;;)
-    {
-      synchronized (this.a)
-      {
-        localvtw = this.a[paramInt];
-        if (localvtw == null) {
-          break label80;
-        }
-        return localvtw;
-        a(localvtw, paramInt);
-        if (localvtw != null) {
-          localvtw.b();
-        }
-        return localvtw;
-      }
-      Object localObject2 = new vvl();
-      continue;
-      localObject2 = new vtp();
-      continue;
-      return localObject2;
-      label80:
-      switch (paramInt)
-      {
-      }
-    }
-  }
-  
-  public void a()
-  {
-    xvv.b("DataProviderManager", "onInit");
-  }
-  
-  public void b()
-  {
-    xvv.b("DataProviderManager", "onDestroy");
-    vtw[] arrayOfvtw = this.a;
-    int j = arrayOfvtw.length;
-    int i = 0;
-    while (i < j)
-    {
-      vtw localvtw = arrayOfvtw[i];
-      if (localvtw != null) {
-        localvtw.c();
-      }
-      i += 1;
-    }
+    PublicAccountImageCollectionCommentActivity.b(this.a, paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

@@ -1,33 +1,97 @@
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
-import com.tencent.mobileqq.flashchat.FlashChatPanel;
+import com.tencent.mobileqq.transfile.ProtoReqManager.IProtoRespBack;
+import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
+import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoResp;
 
-public class athv
-  implements afce
+class athv
+  implements ProtoReqManager.IProtoRespBack
 {
-  public athv(FlashChatPanel paramFlashChatPanel) {}
+  athv(atht paramatht) {}
   
-  public boolean onLongClick(View paramView)
+  public void onProtoResp(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
   {
-    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
-    paramView.dispatchTouchEvent(localMotionEvent);
-    localMotionEvent.recycle();
-    return true;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if ((paramView instanceof ArkAppView)) {
-      ((ArkAppView)paramView).onTouch(paramView, paramMotionEvent);
+    if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_RECV_LIST-100".equals(paramProtoReq.ssoCmd)) {
+      atht.a(this.a, paramProtoReq, paramProtoResp);
     }
-    return true;
+    do
+    {
+      return;
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_SEND_LIST-200".equals(paramProtoReq.ssoCmd))
+      {
+        atht.b(this.a, paramProtoReq, paramProtoResp);
+        return;
+      }
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD-500".equals(paramProtoReq.ssoCmd))
+      {
+        atht.c(this.a, paramProtoReq, paramProtoResp);
+        return;
+      }
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_UPLOAD_SUCC-800".equals(paramProtoReq.ssoCmd))
+      {
+        atht.d(this.a, paramProtoReq, paramProtoResp);
+        return;
+      }
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_DOWNLOAD-1200".equals(paramProtoReq.ssoCmd))
+      {
+        this.a.a(paramProtoReq, paramProtoResp);
+        return;
+      }
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_DOWNLOAD_SUCC-1000".equals(paramProtoReq.ssoCmd))
+      {
+        this.a.b(paramProtoReq, paramProtoResp);
+        return;
+      }
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_FORWARD_FILE-700".equals(paramProtoReq.ssoCmd))
+      {
+        this.a.d(paramProtoReq, paramProtoResp);
+        return;
+      }
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_COPY_TO-60100".equals(paramProtoReq.ssoCmd))
+      {
+        this.a.e(paramProtoReq, paramProtoResp);
+        return;
+      }
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_DOWNLOAD_ABS-1100".equals(paramProtoReq.ssoCmd))
+      {
+        this.a.c(paramProtoReq, paramProtoResp);
+        return;
+      }
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_DELETE_FILE-900".equals(paramProtoReq.ssoCmd))
+      {
+        atht.e(this.a, paramProtoReq, paramProtoResp);
+        return;
+      }
+      if ("GTalkFileAppSvr.CMD_DISCUSS_FILE".equals(paramProtoReq.ssoCmd))
+      {
+        atht.f(this.a, paramProtoReq, paramProtoResp);
+        return;
+      }
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD_V2-1600".equals(paramProtoReq.ssoCmd))
+      {
+        this.a.g(paramProtoReq, paramProtoResp);
+        return;
+      }
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD_V3-1700".equals(paramProtoReq.ssoCmd))
+      {
+        this.a.f(paramProtoReq, paramProtoResp);
+        return;
+      }
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD_HIT_V2-1800".equals(paramProtoReq.ssoCmd))
+      {
+        atht.g(this.a, paramProtoReq, paramProtoResp);
+        return;
+      }
+      if ("SafeCenterSvr.CMD_FACE2FACE_FLAG_REQ".equals(paramProtoReq.ssoCmd))
+      {
+        atht.h(this.a, paramProtoReq, paramProtoResp);
+        return;
+      }
+    } while (!"OfflineFilleHandleSvr.pb_ftn_CMD_REQ_RECALL-400".equals(paramProtoReq.ssoCmd));
+    atht.i(this.a, paramProtoReq, paramProtoResp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     athv
  * JD-Core Version:    0.7.0.1
  */

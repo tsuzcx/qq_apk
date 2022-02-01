@@ -1,8 +1,28 @@
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import com.tencent.qphone.base.util.QLog;
+
 public class bhwe
+  extends Handler
 {
-  public int a;
-  public boolean a;
-  public int b;
+  public bhwe(HealthBusinessPlugin paramHealthBusinessPlugin) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      QLog.d("HealthBusinessPlugin", 1, "plugin success");
+      return;
+    case 1: 
+      QLog.d("HealthBusinessPlugin", 1, "plugin fail");
+      return;
+    }
+    QLog.d("HealthBusinessPlugin", 1, String.format("plugin install %d", new Object[] { Integer.valueOf(this.a.c) }));
+  }
 }
 
 

@@ -147,6 +147,8 @@ public class SPlayerSurfaceView
     }
   }
   
+  public void setVideoViewTagId(String paramString) {}
+  
   public void setVideoWidthAndHeight(int paramInt1, int paramInt2)
   {
     this.mVideoWidth = paramInt1;
@@ -157,8 +159,6 @@ public class SPlayerSurfaceView
   {
     this.mViewCallBack = paramViewCreateCallBack;
   }
-  
-  public void setViewViewTagId(String paramString) {}
   
   public void setXYaxis(int paramInt)
   {

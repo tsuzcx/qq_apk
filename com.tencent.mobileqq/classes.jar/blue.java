@@ -1,10 +1,46 @@
-import android.widget.EditText;
+import com.tencent.mobileqq.app.ThreadManagerExecutor;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
+import java.io.File;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
-public abstract interface blue
+public class blue
+  implements PluginManagerUpdater
 {
-  public abstract void a();
+  private final File a;
   
-  public abstract void a(int paramInt, String paramString, EditText paramEditText);
+  public blue()
+  {
+    String str = blul.a().b();
+    if (QLog.isColorLevel()) {
+      QLog.i("IliveCdnPmUpdater", 2, "new IliveCdnPmUpdater file = " + str);
+    }
+    this.a = new File(str);
+  }
+  
+  public File getLatest()
+  {
+    if (this.a.exists()) {
+      return this.a;
+    }
+    return null;
+  }
+  
+  public Future<Boolean> isAvailable(File paramFile)
+  {
+    return ThreadManagerExecutor.getExecutorService(16).submit(new blug(this, paramFile));
+  }
+  
+  public Future<File> update()
+  {
+    return ThreadManagerExecutor.getExecutorService(16).submit(new bluf(this));
+  }
+  
+  public boolean wasUpdating()
+  {
+    return false;
+  }
 }
 
 

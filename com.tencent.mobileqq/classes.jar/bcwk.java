@@ -1,89 +1,80 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
-import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
+import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator.MultiForwardShortVideoTask;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import java.util.ArrayList;
+import tencent.im.msg.im_msg_body.RichText;
 
 public class bcwk
-  extends bcvj
+  implements azla
 {
-  public bcwk(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment) {}
+  final int jdField_a_of_type_Int;
+  bcyf jdField_a_of_type_Bcyf;
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public bcwk(BaseShortVideoOprerator.MultiForwardShortVideoTask paramMultiForwardShortVideoTask, int paramInt)
   {
-    this.a.stopTitleProgress();
-    if (!paramBoolean) {
-      aszk.a(amtj.a(2131713836));
-    }
-    while ((this.a.jdField_a_of_type_Int != paramInt) && (!paramString.equalsIgnoreCase(this.a.jdField_a_of_type_JavaLangString))) {
-      return;
-    }
-    if ((0 == 0) && (QLog.isDevelopLevel())) {
-      QLog.i("TeamWorkAuthorizeSettingFragment", 1, "padInfo is null, maybe is newpad");
-    }
-    this.a.jdField_a_of_type_JavaUtilList.clear();
-    if (0 != 0) {
-      throw new NullPointerException();
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Bcyf = ((bcyf)paramMultiForwardShortVideoTask.b.get(this.jdField_a_of_type_Int));
+  }
+  
+  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
+  {
+    return (MessageForShortVideo)((bcxd)this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).a;
+  }
+  
+  public void onSend(azlb paramazlb)
+  {
     for (;;)
     {
-      TeamWorkAuthorizeSettingFragment.a(this.a, this.a.b);
-      TeamWorkAuthorizeSettingFragment.a(this.a);
-      TeamWorkAuthorizeSettingFragment.a(this.a, true);
-      return;
-      this.a.b = 2;
+      int i;
+      synchronized (this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.b)
+      {
+        if (paramazlb.jdField_a_of_type_Int == 0)
+        {
+          updateMsg(paramazlb);
+          this.jdField_a_of_type_Bcyf.jdField_a_of_type_Int = 0;
+          if (QLog.isColorLevel()) {
+            QLog.d("BaseShortVideoOprerator", 2, "onsend success!");
+          }
+          i = BaseShortVideoOprerator.MultiForwardShortVideoTask.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask);
+          if (i == 0) {
+            this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.this$0.a(3, 0, this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.b);
+          }
+        }
+        else
+        {
+          this.jdField_a_of_type_Bcyf.jdField_a_of_type_Int = -1;
+          this.jdField_a_of_type_Bcyf.jdField_a_of_type_Azkb = new azkb();
+          this.jdField_a_of_type_Bcyf.jdField_a_of_type_Azkb.b = paramazlb.jdField_a_of_type_JavaLangString;
+          this.jdField_a_of_type_Bcyf.jdField_a_of_type_Azkb.jdField_a_of_type_Int = paramazlb.b;
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("BaseShortVideoOprerator", 2, "onsend fail! err:" + paramazlb.jdField_a_of_type_JavaLangString);
+        }
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.jdField_a_of_type_Int == this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.jdField_a_of_type_JavaUtilArrayList.size() - i) {
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.a();
+      }
     }
   }
   
-  public void a(boolean paramBoolean, String paramString, int paramInt, List<TimDocSSOMsg.UinRightInfo> paramList)
+  public void updateMsg(azlb paramazlb)
   {
-    this.a.stopTitleProgress();
-    if (!paramBoolean) {
-      aszk.a(amtj.a(2131713824));
+    MessageForShortVideo localMessageForShortVideo = (MessageForShortVideo)((bcxd)this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).a;
+    localMessageForShortVideo.videoFileStatus = 1003;
+    localMessageForShortVideo.md5 = paramazlb.jdField_d_of_type_JavaLangString;
+    localMessageForShortVideo.uuid = paramazlb.jdField_c_of_type_JavaLangString;
+    localMessageForShortVideo.thumbFileSize = ((int)paramazlb.jdField_c_of_type_Long);
+    localMessageForShortVideo.videoAttr = paramazlb.jdField_c_of_type_Int;
+    localMessageForShortVideo.videoKandianType = paramazlb.jdField_d_of_type_Int;
+    localMessageForShortVideo.serial();
+    paramazlb = this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.this$0.a.getMultiMessageProxy();
+    if (paramazlb != null) {
+      paramazlb.a(localMessageForShortVideo, null);
     }
-    while (!paramString.equalsIgnoreCase(this.a.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    this.a.jdField_a_of_type_JavaUtilList.clear();
-    paramString = paramList.iterator();
-    while (paramString.hasNext())
-    {
-      paramList = (TimDocSSOMsg.UinRightInfo)paramString.next();
-      bcty localbcty = new bcty();
-      localbcty.jdField_a_of_type_JavaLangString = String.valueOf(paramList.uint64_uin.get());
-      localbcty.jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo = paramList;
-      this.a.jdField_a_of_type_Bctw.a(localbcty);
-    }
-    this.a.b = paramInt;
-    TeamWorkAuthorizeSettingFragment.a(this.a, this.a.b);
-    TeamWorkAuthorizeSettingFragment.a(this.a);
-    TeamWorkAuthorizeSettingFragment.a(this.a, true);
-  }
-  
-  public void b(boolean paramBoolean, String paramString, int paramInt)
-  {
-    TeamWorkAuthorizeSettingFragment.a(this.a, true);
-    this.a.getRightTextView().setEnabled(true);
-    this.a.stopTitleProgress();
-    if (!paramBoolean) {
-      aszk.a(amtj.a(2131713779));
-    }
-    Intent localIntent;
-    do
-    {
-      return;
-      aszk.b(amtj.a(2131713781));
-      this.a.stopTitleProgress();
-      localIntent = new Intent();
-      localIntent.putExtra("url", paramString);
-      localIntent.putExtra("type", paramInt);
-    } while (!this.a.isAdded());
-    this.a.getActivity().setResult(1122, localIntent);
-    this.a.getActivity().finish();
   }
 }
 

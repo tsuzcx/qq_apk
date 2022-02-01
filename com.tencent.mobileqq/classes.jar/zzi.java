@@ -1,17 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 class zzi
-  implements View.OnClickListener
+  implements zzj
 {
-  zzi(zzf paramzzf) {}
+  zzi(zzh paramzzh) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, boolean paramBoolean, String paramString, Object... paramVarArgs)
   {
-    zzf.b(this.a).setVisibility(8);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.a.jdField_a_of_type_Zzq != null) {
+      this.a.jdField_a_of_type_Zzq.a(paramBoolean, this.a.jdField_a_of_type_JavaLangString, false);
+    }
   }
 }
 

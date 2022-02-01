@@ -1,34 +1,36 @@
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.qidian.data.BmqqAccountType;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.data.MessageForQQStoryComment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ahea
-  extends CardObserver
+  implements View.OnClickListener
 {
-  ahea(ahdt paramahdt) {}
+  long jdField_a_of_type_Long = 0L;
   
-  public void onGetAccountType(boolean paramBoolean, BmqqAccountType paramBmqqAccountType)
+  ahea(ahdz paramahdz) {}
+  
+  public void onClick(View paramView)
   {
-    super.onGetAccountType(paramBoolean, paramBmqqAccountType);
-    ahdt.a(this.a);
-    this.a.c();
-    if ((this.a.panelicons != null) && (this.a.b.f(this.a.sessionInfo.curFriendUin)) && (!ahdt.a(this.a)))
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long < 50L) {}
+    for (;;)
     {
-      ahdt.a(this.a, true);
-      this.a.panelicons.a(this.a.app, this.a.sessionInfo, this.a.mActivity.getChatFragment().a);
-    }
-    if ((paramBmqqAccountType != null) && (paramBmqqAccountType.getUin() != null) && (this.a.sessionInfo != null) && (this.a.sessionInfo.curFriendUin != null) && (paramBmqqAccountType.getUin().equals(this.a.sessionInfo.curFriendUin)) && (paramBmqqAccountType.getAccountType() == 6)) {
-      ahdt.b(this.a);
-    }
-    if ((this.a.sessionInfo != null) && (this.a.sessionInfo.curType == 1024) && ((TextUtils.isEmpty(this.a.sessionInfo.curFriendNick)) || (this.a.sessionInfo.curFriendNick.equals(this.a.sessionInfo.curFriendUin))))
-    {
-      this.a.sessionInfo.curFriendNick = npt.b(this.a.app, this.a.sessionInfo.curFriendUin);
-      this.a.mTitleText.setText(this.a.sessionInfo.curFriendNick);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_Long = l;
+      MessageForQQStoryComment localMessageForQQStoryComment = (MessageForQQStoryComment)((afqr)AIOUtils.getHolder(paramView)).a;
+      if (zcl.a(localMessageForQQStoryComment.vid))
+      {
+        xbp.a(this.jdField_a_of_type_Ahdz.a, localMessageForQQStoryComment.vid, "CommentItemBuilder_Feed_Id", 1004);
+        ykv.a("story_grp", "aio_obj", 0, 0, new String[] { "", "", "", "" });
+      }
+      else
+      {
+        xbp.b((Activity)this.jdField_a_of_type_Ahdz.a, localMessageForQQStoryComment.vid, "CommentItemBuilder_Feed_Id_NOT_GS", 7);
+      }
     }
   }
 }

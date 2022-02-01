@@ -1,53 +1,29 @@
-import android.text.TextUtils;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import java.util.Map;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-public class whv
-  extends wje
+public abstract class whv
 {
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private String jdField_a_of_type_JavaLangString;
+  public int a;
+  public String a;
   
-  public whv()
+  public whv() {}
+  
+  public whv(qqstory_struct.ErrorInfo paramErrorInfo)
   {
-    a(false, true);
+    this.jdField_a_of_type_Int = paramErrorInfo.error_code.get();
+    this.jdField_a_of_type_JavaLangString = paramErrorInfo.error_desc.get().toStringUtf8();
   }
   
-  public whv(String paramString)
-  {
-    this();
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public abstract void a();
   
-  public void a()
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, localURLDrawableOptions);
-    this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new whw(this));
-    if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() != null))
-    {
-      a("UrlDrawableDownloadJob_dra", this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable());
-      b(true);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
-  }
+  public abstract void a(int paramInt, Bundle paramBundle);
   
-  protected void a(Map<String, Object> paramMap)
-  {
-    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("UrlDrawableDownloadJob_iiu"))) {
-      this.jdField_a_of_type_JavaLangString = ((String)wjv.a(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap, "UrlDrawableDownloadJob_iiu", this.jdField_a_of_type_JavaLangString));
-    }
-  }
+  public abstract void a(int paramInt, String paramString);
   
-  public boolean a()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return false;
-    }
-    return super.a();
-  }
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

@@ -1,14 +1,17 @@
-import android.view.View;
-import android.view.ViewGroup;
+import java.util.Comparator;
 
-class bckx
+final class bckx
+  implements Comparator<bcff>
 {
-  public View a;
-  public ViewGroup a;
-  public View b;
-  public ViewGroup b;
-  public View c;
-  public View d;
+  public int a(bcff parambcff1, bcff parambcff2)
+  {
+    int j = Long.signum(parambcff2.b() - parambcff1.b());
+    int i = j;
+    if (j == 0) {
+      i = bckw.a(parambcff1, parambcff2);
+    }
+    return i;
+  }
 }
 
 

@@ -1,43 +1,42 @@
 package com.tencent.mobileqq.qassistant.audio;
 
 import android.media.AudioRecord;
-import azdl;
-import azeu;
-import azfz;
+import baja;
+import bakl;
+import balq;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class AudioNewRecorder$2
   implements Runnable
 {
-  public AudioNewRecorder$2(azdl paramazdl) {}
+  public AudioNewRecorder$2(baja parambaja) {}
   
   public void run()
   {
     int i = 0;
-    if ((azdl.a(this.this$0) == null) || (azdl.a(this.this$0).getState() != 1))
+    if ((baja.a(this.this$0) == null) || (baja.a(this.this$0).getState() != 1))
     {
-      azeu.a("AudioNewRecorder", "session, doRecord, stateError");
+      bakl.a("AudioNewRecorder", "session, doRecord, stateError");
       return;
     }
-    azeu.a("AudioNewRecorder", "start consumer, start record:" + azdl.a(this.this$0).getState());
     for (;;)
     {
       try
       {
-        if (azdl.a(this.this$0) != null) {
-          azdl.a(this.this$0).b(System.currentTimeMillis());
+        if (baja.a(this.this$0) != null) {
+          baja.a(this.this$0).b(System.currentTimeMillis());
         }
-        azdl.a(this.this$0).startRecording();
-        if (azdl.a(this.this$0) == null) {
-          break label249;
+        baja.a(this.this$0).startRecording();
+        if (baja.a(this.this$0) == null) {
+          break label216;
         }
-        j = azdl.a(this.this$0).a();
-        i = azdl.a(this.this$0).b();
-        azdl.a(this.this$0, j, i);
+        j = baja.a(this.this$0).a();
+        i = baja.a(this.this$0).b();
+        baja.a(this.this$0, j, i);
       }
       catch (InterruptedException localInterruptedException)
       {
-        azdl.a(this.this$0).a(localInterruptedException.getMessage());
+        baja.a(this.this$0).a(localInterruptedException.getMessage());
         localInterruptedException.printStackTrace();
         this.this$0.a();
         this.this$0.b();
@@ -48,12 +47,12 @@ public class AudioNewRecorder$2
         this.this$0.a();
         this.this$0.b();
       }
-      if (azdl.a(this.this$0) == null) {
+      if (baja.a(this.this$0) == null) {
         break;
       }
-      azdl.a(this.this$0).a(this.this$0.a.get());
+      baja.a(this.this$0).a(this.this$0.a.get());
       return;
-      label249:
+      label216:
       int j = 0;
     }
   }

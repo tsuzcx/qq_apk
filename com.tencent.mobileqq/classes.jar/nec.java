@@ -1,17 +1,59 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.avgame.gameroom.stage.CountDownClockView;
+import android.app.Activity;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 
-public class nec
-  implements ValueAnimator.AnimatorUpdateListener
+class nec
+  implements Application.ActivityLifecycleCallbacks
 {
-  public nec(CountDownClockView paramCountDownClockView) {}
+  nec(ndx paramndx) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityDestroyed(Activity paramActivity)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    CountDownClockView.a(this.a, i);
-    this.a.invalidate();
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatWindowController", 2, "onActivityDestroyed: " + paramActivity.getClass().getName());
+    }
+  }
+  
+  public void onActivityPaused(Activity paramActivity) {}
+  
+  public void onActivityResumed(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatWindowController", 2, "onActivityResumed: " + paramActivity.getClass().getName() + " mHoldByPermission: " + this.a.b + " mIsFloatWindowShowing: " + ndx.b(this.a) + " mIgnoreByOpenSdkForeGround: " + ndx.c(this.a));
+    }
+    if ((this.a.b) && (!ndx.b(this.a)))
+    {
+      ThreadManager.getUIHandlerV2().removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+      ThreadManager.getUIHandlerV2().postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1000L);
+      paramActivity.finish();
+    }
+    while (!ndx.c(this.a)) {
+      return;
+    }
+    ndx.a(this.a, false);
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.a(true);
+  }
+  
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityStarted(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatWindowController", 2, "onActivityStarted: " + paramActivity.getClass().getName());
+    }
+  }
+  
+  public void onActivityStopped(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatWindowController", 2, "onActivityStopped: " + paramActivity.getClass().getName());
+    }
   }
 }
 

@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.emoticon;
 
-import abwp;
-import abwx;
-import abwz;
-import aezn;
-import agzi;
-import akgc;
-import amtj;
+import acmw;
+import acnf;
+import acnh;
+import afqz;
+import ahsj;
+import albv;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -22,19 +21,20 @@ import android.view.GestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
-import anwz;
-import aqyy;
-import aray;
-import arba;
-import arbb;
-import arce;
-import arej;
-import arek;
-import aucf;
-import avsq;
-import bbko;
-import bcef;
-import bjqx;
+import anvx;
+import apab;
+import asdi;
+import asfi;
+import asfk;
+import asfl;
+import asgo;
+import asip;
+import asiq;
+import avhz;
+import awyr;
+import bcrg;
+import bdla;
+import blcj;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
@@ -49,6 +49,7 @@ import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.bubble.ChatXListView;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -409,7 +410,7 @@ public class EmojiStickerManager
   
   public static CustomEmotionData a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    paramQQAppInterface = (arba)paramQQAppInterface.getManager(149);
+    paramQQAppInterface = (asfk)paramQQAppInterface.getManager(QQManagerFactory.FAVROAMING_DB_MANAGER);
     List localList = paramQQAppInterface.a();
     if (localList != null)
     {
@@ -513,7 +514,7 @@ public class EmojiStickerManager
     if ((paramQQAppInterface == null) || (paramMessage == null)) {
       return null;
     }
-    amtj.a(2131703152);
+    anvx.a(2131703503);
     String str2 = "";
     Object localObject = paramMessage.getExtInfoFromExtStr("sticker_info");
     String str1 = str2;
@@ -530,7 +531,7 @@ public class EmojiStickerManager
           if (!paramMessage.senderuin.equals(paramQQAppInterface.getCurrentAccountUin())) {
             break label128;
           }
-          str1 = amtj.a(2131703153) + str2;
+          str1 = anvx.a(2131703504) + str2;
         }
       }
     }
@@ -538,7 +539,7 @@ public class EmojiStickerManager
     {
       return new QQText(str1, 3, 16);
       label128:
-      str1 = amtj.a(2131703156) + str2;
+      str1 = anvx.a(2131703507) + str2;
     }
   }
   
@@ -564,9 +565,9 @@ public class EmojiStickerManager
       if (paramInt == 0)
       {
         if (str.equals(paramString2)) {
-          return amtj.a(2131703159);
+          return anvx.a(2131703510);
         }
-        return amtj.a(2131703158);
+        return anvx.a(2131703509);
       }
       if (paramInt == 1)
       {
@@ -609,7 +610,7 @@ public class EmojiStickerManager
   
   public static void a(Context paramContext, QQAppInterface paramQQAppInterface, URLDrawable paramURLDrawable, String paramString, PicMessageExtraData paramPicMessageExtraData, MessengerService paramMessengerService, Bundle paramBundle)
   {
-    new arej(paramBundle, paramMessengerService, paramURLDrawable, paramQQAppInterface, paramPicMessageExtraData).execute(new Void[0]);
+    new asip(paramBundle, paramMessengerService, paramURLDrawable, paramQQAppInterface, paramPicMessageExtraData).execute(new Void[0]);
   }
   
   private void a(QQAppInterface paramQQAppInterface, int paramInt, List<ChatMessage> paramList, long paramLong)
@@ -682,7 +683,7 @@ public class EmojiStickerManager
           if (localMessageForMarketFace.mMarkFaceMessage != null) {
             localMessageForMarketFace.mMarkFaceMessage.stickerInfo = paramStickerInfo;
           }
-          localMessageForMarketFace.msgData = anwz.a(localMessageForMarketFace.mMarkFaceMessage);
+          localMessageForMarketFace.msgData = apab.a(localMessageForMarketFace.mMarkFaceMessage);
           paramQQAppInterface.getMessageFacade().updateMsgContentByUniseq(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq, paramMessageRecord.msgData);
           return;
         }
@@ -700,10 +701,10 @@ public class EmojiStickerManager
   
   private static void a(QQAppInterface paramQQAppInterface, StructMsgForImageShare paramStructMsgForImageShare, CustomEmotionData paramCustomEmotionData)
   {
-    paramStructMsgForImageShare = agzi.a(paramStructMsgForImageShare);
+    paramStructMsgForImageShare = ahsj.a(paramStructMsgForImageShare);
     if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramStructMsgForImageShare)) && (paramStructMsgForImageShare.startsWith("comic_plugin.apk")) && (paramCustomEmotionData != null) && (!TextUtils.isEmpty(paramCustomEmotionData.md5)))
     {
-      paramQQAppInterface = (arce)paramQQAppInterface.getManager(141);
+      paramQQAppInterface = (asgo)paramQQAppInterface.getManager(QQManagerFactory.MQQ_COMIC_MANAGER);
       VipComicFavorEmoStructMsgInfo localVipComicFavorEmoStructMsgInfo = new VipComicFavorEmoStructMsgInfo();
       localVipComicFavorEmoStructMsgInfo.picMd5 = paramCustomEmotionData.md5;
       localVipComicFavorEmoStructMsgInfo.actionData = paramStructMsgForImageShare;
@@ -734,32 +735,32 @@ public class EmojiStickerManager
       if ((this.jdField_a_of_type_Int != 1) || (paramLong == -9223372036854775808L)) {
         break label318;
       }
-      localObject2 = String.format(amtj.a(2131703151), new Object[] { Integer.valueOf(Math.min(this.jdField_a_of_type_JavaUtilList.size(), this.jdField_b_of_type_Int)) });
-      localObject1 = new aucf(((MessageRecord)localObject1).frienduin, paramQQAppInterface.getCurrentAccountUin(), (String)localObject2, ((MessageRecord)localObject1).istroop, -5023, 1179651, ((MessageRecord)localObject1).time);
+      localObject2 = String.format(anvx.a(2131703502), new Object[] { Integer.valueOf(Math.min(this.jdField_a_of_type_JavaUtilList.size(), this.jdField_b_of_type_Int)) });
+      localObject1 = new avhz(((MessageRecord)localObject1).frienduin, paramQQAppInterface.getCurrentAccountUin(), (String)localObject2, ((MessageRecord)localObject1).istroop, -5023, 1179651, ((MessageRecord)localObject1).time);
       Bundle localBundle = new Bundle();
       localBundle.putInt("key_action", 20);
       localBundle.putString("key_action_DATA", String.valueOf(paramLong));
-      ((aucf)localObject1).a(((String)localObject2).length() - 4, ((String)localObject2).length(), localBundle);
+      ((avhz)localObject1).a(((String)localObject2).length() - 4, ((String)localObject2).length(), localBundle);
       localObject2 = new Bundle();
       ((Bundle)localObject2).putString("key", "NewTip");
       ((Bundle)localObject2).putInt("sessionType", this.jdField_a_of_type_Int);
       ((Bundle)localObject2).putString("ext2", "1");
       this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
-      localMessageForUniteGrayTip.initGrayTipMsg(paramQQAppInterface, (aucf)localObject1);
+      localMessageForUniteGrayTip.initGrayTipMsg(paramQQAppInterface, (avhz)localObject1);
     }
     for (;;)
     {
       paramList.add(paramList.size(), localMessageForUniteGrayTip);
       return;
       label318:
-      localObject2 = String.format(amtj.a(2131703154), new Object[] { Integer.valueOf(Math.min(this.jdField_a_of_type_JavaUtilList.size(), this.jdField_b_of_type_Int)) });
-      localObject1 = new aucf(((MessageRecord)localObject1).frienduin, paramQQAppInterface.getCurrentAccountUin(), (String)localObject2, ((MessageRecord)localObject1).istroop, -5023, 1179651, ((MessageRecord)localObject1).time);
+      localObject2 = String.format(anvx.a(2131703505), new Object[] { Integer.valueOf(Math.min(this.jdField_a_of_type_JavaUtilList.size(), this.jdField_b_of_type_Int)) });
+      localObject1 = new avhz(((MessageRecord)localObject1).frienduin, paramQQAppInterface.getCurrentAccountUin(), (String)localObject2, ((MessageRecord)localObject1).istroop, -5023, 1179651, ((MessageRecord)localObject1).time);
       break;
       label394:
       if (this.jdField_b_of_type_Int > 10)
       {
-        localObject2 = amtj.a(2131703160);
-        localMessageForUniteGrayTip.initGrayTipMsg(paramQQAppInterface, new aucf(((MessageRecord)localObject1).frienduin, paramQQAppInterface.getCurrentAccountUin(), (String)localObject2, ((MessageRecord)localObject1).istroop, -5023, 1179651, ((MessageRecord)localObject1).time));
+        localObject2 = anvx.a(2131703511);
+        localMessageForUniteGrayTip.initGrayTipMsg(paramQQAppInterface, new avhz(((MessageRecord)localObject1).frienduin, paramQQAppInterface.getCurrentAccountUin(), (String)localObject2, ((MessageRecord)localObject1).istroop, -5023, 1179651, ((MessageRecord)localObject1).time));
         paramQQAppInterface = new Bundle();
         paramQQAppInterface.putString("key", "NewTip");
         paramQQAppInterface.putInt("sessionType", this.jdField_a_of_type_Int);
@@ -873,8 +874,8 @@ public class EmojiStickerManager
         break label630;
       }
       localObject2 = new MessageForUniteGrayTip();
-      localObject3 = BaseApplicationImpl.getApplication().getString(2131718591);
-      ((MessageForUniteGrayTip)localObject2).initGrayTipMsg(paramQQAppInterface, new aucf(((MessageRecord)localObject1).frienduin, ((MessageRecord)localObject1).senderuin, (String)localObject3, this.jdField_a_of_type_Int, -5040, 1, localStickerInfo.hostMsgTime));
+      localObject3 = BaseApplicationImpl.getApplication().getString(2131718980);
+      ((MessageForUniteGrayTip)localObject2).initGrayTipMsg(paramQQAppInterface, new avhz(((MessageRecord)localObject1).frienduin, ((MessageRecord)localObject1).senderuin, (String)localObject3, this.jdField_a_of_type_Int, -5040, 1, localStickerInfo.hostMsgTime));
       ((MessageForUniteGrayTip)localObject2).shmsgseq = ((Long)localPair.first).longValue();
       ((MessageForUniteGrayTip)localObject2).msgUid = ((Long)localPair.second).longValue();
       ((MessageForUniteGrayTip)localObject2).time = localStickerInfo.hostMsgTime;
@@ -1006,7 +1007,7 @@ public class EmojiStickerManager
               }
               try
               {
-                ((MessageForMarketFace)localObject).msgData = anwz.a(((MessageForMarketFace)localObject).mMarkFaceMessage);
+                ((MessageForMarketFace)localObject).msgData = apab.a(((MessageForMarketFace)localObject).mMarkFaceMessage);
               }
               catch (Exception paramQQAppInterface)
               {
@@ -1067,7 +1068,7 @@ public class EmojiStickerManager
       if (((MessageForMarketFace)localObject).mMarkFaceMessage != null) {
         ((MessageForMarketFace)localObject).mMarkFaceMessage.stickerInfo = paramStickerInfo;
       }
-      ((MessageForMarketFace)localObject).msgData = anwz.a(((MessageForMarketFace)localObject).mMarkFaceMessage);
+      ((MessageForMarketFace)localObject).msgData = apab.a(((MessageForMarketFace)localObject).mMarkFaceMessage);
       continue;
       paramStickerInfo = paramMessageRecord.getExtInfoFromExtStr("sticker_info");
       if (!TextUtils.isEmpty(paramStickerInfo))
@@ -1077,7 +1078,7 @@ public class EmojiStickerManager
         {
           ((EmojiStickerManager.StickerInfo)localObject).originMsgType = m;
           if (m == -1000) {}
-          for (paramStickerInfo = paramMessageRecord.msg;; paramStickerInfo = amtj.a(2131703157))
+          for (paramStickerInfo = paramMessageRecord.msg;; paramStickerInfo = anvx.a(2131703508))
           {
             ((EmojiStickerManager.StickerInfo)localObject).msg = paramStickerInfo;
             paramMessageRecord.stickerInfo = ((EmojiStickerManager.StickerInfo)localObject);
@@ -1193,8 +1194,8 @@ public class EmojiStickerManager
   private static int b(QQAppInterface paramQQAppInterface, String paramString, StructMsgForImageShare paramStructMsgForImageShare, PicMessageExtraData paramPicMessageExtraData)
   {
     String str = HexUtil.bytes2HexStr(MD5.getFileMd5(paramString));
-    arba localarba = (arba)paramQQAppInterface.getManager(149);
-    Object localObject = localarba.a();
+    asfk localasfk = (asfk)paramQQAppInterface.getManager(QQManagerFactory.FAVROAMING_DB_MANAGER);
+    Object localObject = localasfk.a();
     int m;
     if (localObject != null)
     {
@@ -1224,7 +1225,7 @@ public class EmojiStickerManager
           b(paramQQAppInterface, paramStructMsgForImageShare, (CustomEmotionData)((List)localObject).get(n));
           if ("needDel".equals(((CustomEmotionData)((List)localObject).get(n)).RomaingType))
           {
-            localarba.a((CustomEmotionData)((List)localObject).get(n), n);
+            localasfk.a((CustomEmotionData)((List)localObject).get(n), n);
             paramQQAppInterface = paramQQAppInterface.getHandler(ChatActivity.class);
             if (paramQQAppInterface != null) {
               paramQQAppInterface.obtainMessage(10).sendToTarget();
@@ -1241,7 +1242,7 @@ public class EmojiStickerManager
         i2 = i1;
         m = i3;
       }
-      if (i2 >= aray.jdField_a_of_type_Int) {
+      if (i2 >= asfi.jdField_a_of_type_Int) {
         return 3;
       }
     }
@@ -1257,12 +1258,12 @@ public class EmojiStickerManager
     if ((paramPicMessageExtraData != null) && (paramPicMessageExtraData.isDiyDouTu())) {
       ((CustomEmotionData)localObject).eId = paramPicMessageExtraData.emojiPkgId;
     }
-    localarba.c((CustomEmotionBase)localObject);
+    localasfk.c((CustomEmotionBase)localObject);
     if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith(AppConstants.SDCARD_EMOTIOCN_DIY))) {
-      bcef.b(null, "CliOper", "", "", "ep_mall", "0X800695C", 0, 0, "", "", "", "");
+      bdla.b(null, "CliOper", "", "", "ep_mall", "0X800695C", 0, 0, "", "", "", "");
     }
     a(paramQQAppInterface, paramStructMsgForImageShare, (CustomEmotionData)localObject);
-    paramQQAppInterface = (arbb)paramQQAppInterface.getManager(103);
+    paramQQAppInterface = (asfl)paramQQAppInterface.getManager(QQManagerFactory.FAV_ROAMING_MANAGER);
     if (paramQQAppInterface != null) {
       paramQQAppInterface.d((CustomEmotionData)localObject);
     }
@@ -1331,10 +1332,10 @@ public class EmojiStickerManager
   
   private static void b(QQAppInterface paramQQAppInterface, StructMsgForImageShare paramStructMsgForImageShare, CustomEmotionData paramCustomEmotionData)
   {
-    paramStructMsgForImageShare = agzi.a(paramStructMsgForImageShare);
+    paramStructMsgForImageShare = ahsj.a(paramStructMsgForImageShare);
     if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramStructMsgForImageShare)) && (paramStructMsgForImageShare.startsWith("comic_plugin.apk")) && (paramCustomEmotionData != null) && (!TextUtils.isEmpty(paramCustomEmotionData.md5)))
     {
-      paramQQAppInterface = (arce)paramQQAppInterface.getManager(141);
+      paramQQAppInterface = (asgo)paramQQAppInterface.getManager(QQManagerFactory.MQQ_COMIC_MANAGER);
       VipComicFavorEmoStructMsgInfo localVipComicFavorEmoStructMsgInfo = new VipComicFavorEmoStructMsgInfo();
       localVipComicFavorEmoStructMsgInfo.picMd5 = paramCustomEmotionData.md5;
       localVipComicFavorEmoStructMsgInfo.actionData = paramStructMsgForImageShare;
@@ -1459,8 +1460,8 @@ public class EmojiStickerManager
       if (m != 0)
       {
         localObject2 = new MessageForUniteGrayTip();
-        localObject3 = BaseApplicationImpl.getApplication().getString(2131718591);
-        ((MessageForUniteGrayTip)localObject2).initGrayTipMsg(paramQQAppInterface, new aucf(((MessageRecord)localObject1).frienduin, ((MessageRecord)localObject1).senderuin, (String)localObject3, this.jdField_a_of_type_Int, -5040, 1, ((MessageRecord)localObject1).time));
+        localObject3 = BaseApplicationImpl.getApplication().getString(2131718980);
+        ((MessageForUniteGrayTip)localObject2).initGrayTipMsg(paramQQAppInterface, new avhz(((MessageRecord)localObject1).frienduin, ((MessageRecord)localObject1).senderuin, (String)localObject3, this.jdField_a_of_type_Int, -5040, 1, ((MessageRecord)localObject1).time));
         ((MessageForUniteGrayTip)localObject2).shmsgseq = ((Long)localPair1.first).longValue();
         ((MessageForUniteGrayTip)localObject2).msgUid = ((Long)localPair1.second).longValue();
         ((MessageForUniteGrayTip)localObject2).mNeedTimeStamp = false;
@@ -1493,7 +1494,7 @@ public class EmojiStickerManager
             if (localMessageRecord.shmsgseq == ((EmojiStickerManager.StickerInfo)localObject2).hostMsgSeq)
             {
               m = n;
-              if (!abwz.a(localMessageRecord)) {
+              if (!acnh.a(localMessageRecord)) {
                 if (localMessageRecord.msgtype != -2006) {
                   break label622;
                 }
@@ -1584,7 +1585,7 @@ public class EmojiStickerManager
     if (((paramMessageRecord instanceof MessageForApollo)) && (ApolloGameUtil.a(((MessageForApollo)paramMessageRecord).msgType))) {}
     for (int m = 1;; m = 0)
     {
-      boolean bool1 = akgc.a(paramMessageRecord);
+      boolean bool1 = albv.a(paramMessageRecord);
       if ((n != -1000) && (n != -2011) && (n != -2039) && ((n != -2025) || (!bool1)) && (n != -2007) && (n != -2000) && (n != -2002) && (n != -2022) && (n != -1035))
       {
         bool1 = bool2;
@@ -1682,9 +1683,9 @@ public class EmojiStickerManager
       for (;;)
       {
         paramHashMap = String.format("%s在上面贴了%d个表情", new Object[] { paramHashMap, Integer.valueOf(n) });
-        localObject2 = new aucf(((MessageRecord)localObject2).frienduin, paramQQAppInterface.getCurrentAccountUin(), paramHashMap, ((MessageRecord)localObject2).istroop, -5023, 1179651, ((MessageRecord)localObject2).time);
+        localObject2 = new avhz(((MessageRecord)localObject2).frienduin, paramQQAppInterface.getCurrentAccountUin(), paramHashMap, ((MessageRecord)localObject2).istroop, -5023, 1179651, ((MessageRecord)localObject2).time);
         localObject1 = new MessageForUniteGrayTip();
-        ((MessageForUniteGrayTip)localObject1).initGrayTipMsg(paramQQAppInterface, (aucf)localObject2);
+        ((MessageForUniteGrayTip)localObject1).initGrayTipMsg(paramQQAppInterface, (avhz)localObject2);
         if (QLog.isColorLevel()) {
           QLog.i("EmojiStickerManager", 2, "insert gray tips for sticker msg! " + paramHashMap);
         }
@@ -1703,7 +1704,7 @@ public class EmojiStickerManager
           localObject1 = (String)localObject1 + "、" + paramHashMap;
           paramHashMap = (HashMap<Pair<Long, Long>, List<ChatMessage>>)localObject1;
           if (m != 0) {
-            paramHashMap = (String)localObject1 + amtj.a(2131703155);
+            paramHashMap = (String)localObject1 + anvx.a(2131703506);
           }
         }
         else
@@ -1738,7 +1739,7 @@ public class EmojiStickerManager
   public Drawable a(Context paramContext)
   {
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      return paramContext.getResources().getDrawable(2130839680);
+      return paramContext.getResources().getDrawable(2130839701);
     }
     return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   }
@@ -1803,7 +1804,7 @@ public class EmojiStickerManager
         bool1 = true;
         paramStringBuilder = new SmallEmoticonInfo(BaseApplicationImpl.getApplication().getRuntime().getAccount());
         localEmoticon = new Emoticon();
-        localObject = aqyy.a((char[])localObject);
+        localObject = asdi.a((char[])localObject);
         if ((localObject == null) || (localObject.length != 2)) {
           break label334;
         }
@@ -1823,7 +1824,7 @@ public class EmojiStickerManager
         bool2 = bool1;
         if (localObject != null)
         {
-          localObject = ((avsq)localObject).a(String.valueOf(paramInt1));
+          localObject = ((awyr)localObject).a(String.valueOf(paramInt1));
           bool2 = bool1;
           if (localObject != null)
           {
@@ -1947,9 +1948,9 @@ public class EmojiStickerManager
         Iterator localIterator = paramView.jdField_a_of_type_JavaUtilArrayList.iterator();
         while (localIterator.hasNext())
         {
-          arek localarek = (arek)localIterator.next();
-          if (localarek.f == 255) {
-            localarek.f = 127;
+          asiq localasiq = (asiq)localIterator.next();
+          if (localasiq.f == 255) {
+            localasiq.f = 127;
           }
         }
         paramView.invalidate();
@@ -2215,9 +2216,9 @@ public class EmojiStickerManager
         Iterator localIterator = localBaseChatItemLayout.jdField_a_of_type_JavaUtilArrayList.iterator();
         while (localIterator.hasNext())
         {
-          arek localarek = (arek)localIterator.next();
-          if (localarek.f != 0) {
-            localarek.f = 255;
+          asiq localasiq = (asiq)localIterator.next();
+          if (localasiq.f != 0) {
+            localasiq.f = 255;
           }
         }
         localBaseChatItemLayout.invalidate();
@@ -2250,7 +2251,7 @@ public class EmojiStickerManager
     {
       paramBaseChatPie = ((ChatXListView)localObject1).getAdapter();
       if (((ChatXListView)localObject1).getChildCount() > 0) {
-        if ((paramBaseChatPie instanceof bjqx))
+        if ((paramBaseChatPie instanceof blcj))
         {
           n = ((ChatXListView)localObject1).getFirstVisiblePosition();
           m = ((ChatXListView)localObject1).getLastVisiblePosition();
@@ -2293,7 +2294,7 @@ public class EmojiStickerManager
           }
           ((ChatMessage)localObject1).stickerHidden = false;
           continue;
-          if (!(paramBaseChatPie instanceof aezn)) {
+          if (!(paramBaseChatPie instanceof afqz)) {
             break label393;
           }
           n = ((ChatXListView)localObject1).getFirstVisiblePosition() - ((ChatXListView)localObject1).getHeaderViewsCount();
@@ -2392,7 +2393,7 @@ public class EmojiStickerManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.EmojiStickerManager
  * JD-Core Version:    0.7.0.1
  */

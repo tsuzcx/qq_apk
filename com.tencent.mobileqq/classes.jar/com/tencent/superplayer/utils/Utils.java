@@ -130,8 +130,10 @@ public class Utils
       return 205;
     case 1006: 
       return 207;
+    case 502: 
+      return 208;
     }
-    return 208;
+    return 125;
   }
   
   public static String createPlayerTag()

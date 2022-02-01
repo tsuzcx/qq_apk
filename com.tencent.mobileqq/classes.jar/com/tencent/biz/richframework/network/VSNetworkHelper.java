@@ -1,6 +1,7 @@
 package com.tencent.biz.richframework.network;
 
 import android.content.Context;
+import com.tencent.biz.qcircleshadow.lib.QCircleHostGlobalInfo;
 import com.tencent.biz.richframework.network.observer.VSDispatchObserver;
 import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
 import com.tencent.biz.richframework.network.request.VSBaseRequest;
@@ -8,9 +9,10 @@ import com.tencent.biz.richframework.network.servlet.VSBaseServlet;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qqcircle.proxy.QCircleInvokeProxy;
+import cooperation.qqcircle.report.outbox.QCircleReportOutboxTaskQueue;
+import cooperation.qqcircle.report.outbox.SimpleTaskQueue;
 import mqq.app.AppRuntime;
-import vhb;
-import zbc;
+import zqh;
 
 public class VSNetworkHelper
 {
@@ -110,9 +112,10 @@ public class VSNetworkHelper
     QLog.i("VSNetworkHelper", 2, "VSNetworkHelper: release");
     BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(getDispatchObserver());
     getDispatchObserver().release();
-    zbc.a();
+    zqh.a();
     QCircleInvokeProxy.invoke(2, 1, new Object[0]);
-    vhb.a();
+    QCircleHostGlobalInfo.releaseWhenAccountChange();
+    QCircleReportOutboxTaskQueue.getInstance().resetTaskList();
     mCurrentAccount = null;
     if (this.mNetStateChangeListener != null) {
       this.mNetStateChangeListener.onRelease();

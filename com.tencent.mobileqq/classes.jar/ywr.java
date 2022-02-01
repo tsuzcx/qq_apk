@@ -1,18 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginBaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Bitmap;
+import android.media.MediaCodec;
+import android.media.MediaExtractor;
+import java.util.ArrayList;
 
 public class ywr
-  implements View.OnClickListener
 {
-  public ywr(QRLoginBaseActivity paramQRLoginBaseActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public int a;
+  public long a;
+  public MediaCodec a;
+  public MediaExtractor a;
+  public ArrayList<String> a = new ArrayList();
+  public ywo a;
+  public yws a;
+  public long[] a;
+  public int b;
+  public long b;
+  public ArrayList<Bitmap> b = new ArrayList();
+  public long[] b;
+  public int c;
+  public int d;
 }
 
 

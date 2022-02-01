@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
 import android.text.TextUtils;
-import arba;
+import asfk;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.CustomEmotionData;
 import com.tencent.mobileqq.emoticonview.FavoriteEmoticonInfo;
 import com.tencent.mobileqq.mqsafeedit.MD5;
@@ -24,8 +25,8 @@ class VasExtensionDownloader$1
     do
     {
       return;
-      localObject = (arba)((AppInterface)localObject).getManager(149);
-      localCustomEmotionData = (CustomEmotionData)((arba)localObject).a(this.val$info.url);
+      localObject = (asfk)((AppInterface)localObject).getManager(QQManagerFactory.FAVROAMING_DB_MANAGER);
+      localCustomEmotionData = (CustomEmotionData)((asfk)localObject).a(this.val$info.url);
     } while ((localCustomEmotionData == null) || (!new File(this.val$info.path).exists()));
     if ("needDownload".equals(localCustomEmotionData.RomaingType)) {
       localCustomEmotionData.RomaingType = "isUpdate";
@@ -45,7 +46,7 @@ class VasExtensionDownloader$1
       if ("needDel".equals(localCustomEmotionData.RomaingType)) {
         break;
       }
-      ((arba)localObject).b(localCustomEmotionData);
+      ((asfk)localObject).b(localCustomEmotionData);
       return;
       if ("overflow".equals(localCustomEmotionData.RomaingType)) {
         localCustomEmotionData.RomaingType = "overflow_downloaded";

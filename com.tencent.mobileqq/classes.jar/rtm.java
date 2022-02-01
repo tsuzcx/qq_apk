@@ -1,24 +1,27 @@
-import com.tencent.image.RegionDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.RIJUgcUtils.5.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 
-class rtm
-  implements URLDrawable.URLDrawableListener
+public final class rtm
+  implements DialogInterface.OnClickListener
 {
-  rtm(rtl paramrtl) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((rtl.a(this.a) != null) && (rtl.a(this.a).getStatus() == 1) && ((rtl.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
+    if (paramDialogInterface != null) {}
+    try
     {
-      paramURLDrawable = (RegionDrawable)rtl.a(this.a).getCurrDrawable();
-      rtl.a(this.a, paramURLDrawable.getBitmap());
+      paramDialogInterface.dismiss();
+      ThreadManager.executeOnSubThread(new RIJUgcUtils.5.1(this));
+      return;
+    }
+    catch (Throwable paramDialogInterface)
+    {
+      for (;;)
+      {
+        QLog.e("RIJUGC.RIJUgcUtils", 1, "showCantUploadTips error", paramDialogInterface);
+      }
     }
   }
 }

@@ -1,70 +1,20 @@
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.open.base.MD5Utils;
+import android.os.Handler;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.ArrayList;
 
 class alqb
-  extends bgod
+  extends ho
 {
-  alqb(alpz paramalpz, File paramFile, alqc paramalqc) {}
+  private alqb(alpz paramalpz) {}
   
-  public void onDone(bgoe parambgoe)
+  public void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList)
   {
-    super.onDone(parambgoe);
     if (QLog.isColorLevel()) {
-      QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadAllZip task.getStatus:" + parambgoe.a());
+      QLog.d("LBSDetetor", 2, "onGetLBSTemplateIds:" + paramBoolean + " req:" + paramInt);
     }
-    if (3 == parambgoe.a())
-    {
-      if (this.jdField_a_of_type_JavaIoFile.exists()) {
-        try
-        {
-          parambgoe = MD5Utils.encodeFileHexStr(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-          if (QLog.isColorLevel()) {
-            QLog.d("rscContent_CmShowRscUpdateHandler", 2, " downloadAllZip onDone dstMd5:" + parambgoe + " result.mMd5:" + this.jdField_a_of_type_Alqc.d);
-          }
-          if (alpz.a(this.jdField_a_of_type_Alqc, parambgoe))
-          {
-            if (alpz.a(this.jdField_a_of_type_Alqc))
-            {
-              npo.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
-              if (QLog.isColorLevel()) {
-                QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadAllZip unZipFile ok file path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-              }
-            }
-            for (;;)
-            {
-              alpz.a(this.jdField_a_of_type_Alpz, this.jdField_a_of_type_Alqc.jdField_e_of_type_Int, this.jdField_a_of_type_Alqc);
-              return;
-              boolean bool = FileUtils.copyFile(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), this.jdField_a_of_type_Alqc.b() + this.jdField_a_of_type_Alqc.jdField_e_of_type_JavaLangString);
-              QLog.i("rscContent_CmShowRscUpdateHandler", 1, "downloadAllZip no need unzip copy:" + bool);
-            }
-          }
-          QLog.d("rscContent_CmShowRscUpdateHandler", 1, "downloadAllZip  file error path- no exist:" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-        }
-        catch (Exception parambgoe)
-        {
-          alpz.a(this.jdField_a_of_type_Alpz, this.jdField_a_of_type_Alqc.jdField_e_of_type_Int);
-          this.jdField_a_of_type_JavaIoFile.delete();
-          QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadAllZip unZipFile file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + parambgoe.getMessage());
-          return;
-          QLog.e("rscContent_CmShowRscUpdateHandler", 1, "dstMd5 != result.mMd5");
-          alpz.a(this.jdField_a_of_type_Alpz, this.jdField_a_of_type_Alqc.jdField_e_of_type_Int);
-          return;
-        }
-        catch (OutOfMemoryError parambgoe)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadAllZip unZipFile file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + parambgoe.getMessage());
-          }
-          this.jdField_a_of_type_JavaIoFile.delete();
-          return;
-        }
-      }
-      alpz.a(this.jdField_a_of_type_Alpz, this.jdField_a_of_type_Alqc.jdField_e_of_type_Int);
-      return;
+    if ((alpz.a(this.a) != null) && (alpz.a(this.a).hasMessages(paramInt))) {
+      alpz.a(this.a, paramBoolean, paramArrayList, paramInt);
     }
-    QLog.d("rscContent_CmShowRscUpdateHandler", 1, "downloadAllZip  file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + " task.getStatus()->" + parambgoe.a());
   }
 }
 

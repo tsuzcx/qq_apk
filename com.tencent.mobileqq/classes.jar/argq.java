@@ -1,51 +1,68 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticonview.CameraEmoticonInfo;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class argq
-  extends argj
 {
-  public aqyq a;
+  public int a;
+  public boolean a;
+  public int b = 15;
   
-  public argq(QQAppInterface paramQQAppInterface, argp paramargp)
+  public argq()
   {
-    if ((paramargp.a instanceof CameraEmoticonInfo)) {}
-    for (int i = 333;; i = 149)
+    this.jdField_a_of_type_Int = 5;
+  }
+  
+  public static argq a(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    for (;;)
     {
-      this.a = ((aqyq)paramQQAppInterface.getManager(i));
-      return;
+      try
+      {
+        argq localargq = new argq();
+        paramString = new JSONObject(paramString);
+        if (paramString.optInt("openSwitch", 0) == 1)
+        {
+          bool = true;
+          localargq.jdField_a_of_type_Boolean = bool;
+          localargq.jdField_a_of_type_Int = paramString.optInt("sameMsgCount", 5);
+          localargq.b = paramString.optInt("loadMoreCount", 15);
+          if (localargq.jdField_a_of_type_Int < 2) {
+            localargq.jdField_a_of_type_Boolean = false;
+          }
+          if (localargq.b < 15) {
+            localargq.b = 15;
+          }
+          if (localargq.b > 40) {
+            localargq.b = 40;
+          }
+          QLog.d("TogetherEntryConfProcessor", 2, "confBean = " + localargq.toString());
+          return localargq;
+        }
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("TogetherEntryConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+        }
+        return null;
+      }
+      boolean bool = false;
     }
   }
   
-  public int a()
+  public String toString()
   {
-    return 2;
-  }
-  
-  public List<argg> a(boolean paramBoolean)
-  {
-    Object localObject = this.a.b();
-    ArrayList localArrayList = new ArrayList();
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      localArrayList.add(new argp((EmoticonInfo)((Iterator)localObject).next()));
-    }
-    return localArrayList;
-  }
-  
-  public void a() {}
-  
-  public boolean a()
-  {
-    return false;
+    StringBuilder localStringBuilder = new StringBuilder(50);
+    localStringBuilder.append("openSwitch = ").append(this.jdField_a_of_type_Boolean).append(",sameMsgCount = ").append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     argq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import rx.functions.Action1;
 
-public class bbex
-  extends bbfd
+class bbex
+  implements Action1<Throwable>
 {
-  public bbex(GroupSearchEngine paramGroupSearchEngine, bbfe parambbfe, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, parambbfe, paramString, paramInt);
-  }
+  bbex(bbev parambbev) {}
   
-  public bays a(List<bayt> paramList, String paramString)
+  public void a(Throwable paramThrowable)
   {
-    return new bayl(paramList, paramString, GroupSearchEngine.a(this.a));
+    QLog.d("ResourceGrabModel", 1, paramThrowable, new Object[0]);
   }
 }
 

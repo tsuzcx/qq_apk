@@ -1,31 +1,48 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
 
-class ajfe
-  implements ajex
+public class ajfe
+  implements View.OnClickListener
 {
-  ajfe(ajey paramajey) {}
+  public ajfe(TroopActivity paramTroopActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
-  }
-  
-  public void a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
-  {
-    boolean bool = true;
-    Object localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
-    ((Message)localObject).obj = paramRedTypeInfo;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
-    localObject = ple.a();
-    if (paramRedTypeInfo != null) {}
+    boolean bool = false;
+    switch (paramView.getId())
+    {
+    default: 
+      this.a.b();
+    }
     for (;;)
     {
-      ((ple)localObject).b(bool);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      bool = false;
+      if (this.a.a != null)
+      {
+        Intent localIntent = new Intent();
+        if (!this.a.a.isEmpty()) {
+          bool = true;
+        }
+        localIntent.putExtra("isDataChanged", bool);
+        this.a.setResult(-1, localIntent);
+      }
+      this.a.onBackPressed();
+      continue;
+      bdla.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right", 0, 0, "", "", "", "");
+      if (this.a.a())
+      {
+        this.a.b();
+      }
+      else
+      {
+        bdla.b(this.a.app, "CliOper", "", "", "Grp", "Clk_grplist_plus", 0, 0, "", "", "", "");
+        this.a.a();
+      }
     }
   }
 }

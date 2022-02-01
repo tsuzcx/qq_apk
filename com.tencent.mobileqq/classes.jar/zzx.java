@@ -1,28 +1,65 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.view.TextureView;
+import com.tencent.biz.subscribe.videoplayer.VideoFrameCheckHelper.1;
+import mqq.util.WeakReference;
 
-class zzx
-  extends bgod
+public class zzx
 {
-  zzx(zzu paramzzu, String paramString, boolean paramBoolean1, boolean paramBoolean2) {}
+  private long jdField_a_of_type_Long;
+  private volatile Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final Handler b;
   
-  public void onDone(bgoe parambgoe)
+  private void a(TextureView paramTextureView, zzy paramzzy)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ViewPluginLoader", 2, "downloadUpdate loaded json = " + parambgoe.c + " code = " + parambgoe.jdField_a_of_type_Int);
-    }
-    boolean bool = this.jdField_a_of_type_Zzu.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b);
-    if (QLog.isColorLevel()) {
-      QLog.d("ViewPluginLoader", 2, "downloadUpdate unCompressOffline" + bool);
-    }
-    this.jdField_a_of_type_Zzu.a();
+    paramzzy = new WeakReference(paramzzy);
+    paramTextureView = new WeakReference(paramTextureView);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new VideoFrameCheckHelper.1(this, paramzzy, paramTextureView), 40L);
   }
   
-  public void onProgress(bgoe parambgoe)
+  private boolean a(TextureView paramTextureView)
   {
-    int i = (int)(parambgoe.jdField_a_of_type_Float * 100.0F);
-    if (((i % 10 == 0) || (i > 90)) && (QLog.isColorLevel())) {
-      QLog.d("ViewPluginLoader", 2, "downding progress = " + i);
+    try
+    {
+      if (!paramTextureView.isAvailable()) {
+        break label152;
+      }
+      if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+      {
+        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      }
+      int i = paramTextureView.getWidth() / 16;
+      int j = paramTextureView.getHeight() / 16;
+      if ((i <= 0) || (j <= 0)) {
+        break label159;
+      }
+      if (Build.VERSION.SDK_INT >= 17) {}
+      for (this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramTextureView.getResources().getDisplayMetrics(), i, j, Bitmap.Config.ARGB_8888);; this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888))
+      {
+        this.jdField_a_of_type_AndroidGraphicsBitmap = paramTextureView.getBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+        if (!xbt.a(this.jdField_a_of_type_AndroidGraphicsBitmap, 4, 16)) {
+          break;
+        }
+        ykq.b("VideoFrameCheckHelper", "isCurrentFrameBlack CheckVideoViewRealStartRunnable find dark bitmap ! current = %d");
+        return true;
+      }
+      ykq.d("VideoFrameCheckHelper", "isCurrentFrameBlack StoryPlayerTest.isBlack false. treat as not-black frame");
     }
+    catch (Exception paramTextureView)
+    {
+      paramTextureView.printStackTrace();
+      return false;
+    }
+    return false;
+    label152:
+    ykq.d("VideoFrameCheckHelper", "isCurrentFrameBlack targetView.isAvailable() false. treat as not-black frame");
+    label159:
+    return false;
   }
 }
 

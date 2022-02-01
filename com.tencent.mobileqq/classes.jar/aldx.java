@@ -1,26 +1,28 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aldx
-  implements bgnm
+class aldx
+  implements View.OnClickListener
 {
-  public aldx(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  aldx(aldh paramaldh) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 1)
+    this.a.a(-1, null);
+    if (bgvx.a().a() == 4)
     {
-      this.a.a.setVisibility(8);
-      this.a.b.setImageResource(2130846023);
+      bdla.b(aldh.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, bgvw.b(), bgvx.b(), bgvx.a(), "1");
+      bgvx.a().a(aldh.a(this.a));
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPreviewActivity", 2, "changePlayState, playState => " + this.a.a(paramInt));
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      this.a.b.setImageResource(2130846022);
+      bdla.b(aldh.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, bgvw.b(), bgvx.b(), bgvx.a(), "1");
+      UpgradeDetailActivity.a(aldh.a(this.a), bgvx.a().a(), true, true, true);
     }
   }
 }

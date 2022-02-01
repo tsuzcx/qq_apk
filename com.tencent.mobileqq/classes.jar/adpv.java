@@ -1,19 +1,34 @@
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.TencentDocData;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class adpv
+  implements View.OnClickListener
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  TextView d;
-  
   adpv(adpt paramadpt) {}
+  
+  public void onClick(View paramView)
+  {
+    if ((paramView.getTag() instanceof String)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Object localObject = (amgh)paramView.getTag();
+      if ((((amgh)localObject).a instanceof FileManagerEntity))
+      {
+        localObject = (FileManagerEntity)((amgh)localObject).a;
+        this.a.a((FileManagerEntity)localObject);
+      }
+      else if ((((amgh)localObject).a instanceof TencentDocData))
+      {
+        localObject = (TencentDocData)((amgh)localObject).a;
+        this.a.a((TencentDocData)localObject);
+      }
+    }
+  }
 }
 
 

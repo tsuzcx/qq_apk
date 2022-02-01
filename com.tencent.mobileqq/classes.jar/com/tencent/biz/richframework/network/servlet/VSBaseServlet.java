@@ -3,7 +3,7 @@ package com.tencent.biz.richframework.network.servlet;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
-import bgau;
+import bhjl;
 import com.tencent.biz.richframework.network.VSNetworkHelper;
 import com.tencent.biz.richframework.network.observer.VSDispatchObserver;
 import com.tencent.biz.richframework.network.request.VSBaseRequest;
@@ -16,7 +16,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import mqq.app.MSFServlet;
 import mqq.app.Packet;
-import xvv;
+import ykq;
 
 public class VSBaseServlet
   extends MSFServlet
@@ -64,7 +64,7 @@ public class VSBaseServlet
   {
     if (paramVSBaseRequest.isEnableCache())
     {
-      xvv.b("VSNetworkHelper| Protocol Cache", "start to response cache,CmdName:" + paramVSBaseRequest.getCmdName() + " Seq:" + paramVSBaseRequest.getCurrentSeq());
+      ykq.b("VSNetworkHelper| Protocol Cache", "start to response cache,CmdName:" + paramVSBaseRequest.getCmdName() + " Seq:" + paramVSBaseRequest.getCurrentSeq());
       ThreadManagerV2.executeOnSubThread(new VSBaseServlet.1(this, paramVSBaseRequest));
     }
   }
@@ -120,7 +120,7 @@ public class VSBaseServlet
     }
     paramIntent.putExtra("key_send_timestamp", System.currentTimeMillis());
     paramPacket.setSSOCommand(localVSBaseRequest.getCmdName());
-    paramPacket.putSendData(bgau.a(arrayOfByte1));
+    paramPacket.putSendData(bhjl.a(arrayOfByte1));
     paramPacket.setTimeout(TIMEOUT_TIME);
     responseCache(localVSBaseRequest);
   }

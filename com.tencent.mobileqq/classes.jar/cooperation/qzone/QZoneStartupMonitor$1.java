@@ -1,9 +1,9 @@
 package cooperation.qzone;
 
-import avki;
+import awqn;
 
 final class QZoneStartupMonitor$1
-  extends avki<QZoneStartupMonitor, Void>
+  extends awqn<QZoneStartupMonitor, Void>
 {
   protected QZoneStartupMonitor create(Void paramVoid)
   {

@@ -1,17 +1,8 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aljh
-  implements View.OnClickListener
+public abstract interface aljh
 {
-  aljh(aljg paramaljg) {}
-  
-  public void onClick(View paramView)
-  {
-    aljg.a(this.a).a(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(View paramView, int paramInt);
 }
 
 

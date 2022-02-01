@@ -1,52 +1,69 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.widget.DraggableGridView;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.Path;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-public abstract class bhbj
+public class bhbj
+  extends Drawable
 {
-  public DraggableGridView a;
+  private int jdField_a_of_type_Int;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private Path jdField_a_of_type_AndroidGraphicsPath;
+  private int b;
+  private int c;
   
-  public abstract int a();
-  
-  public abstract int a(int paramInt);
-  
-  public abstract View a(LayoutInflater paramLayoutInflater, int paramInt1, int paramInt2, ViewGroup paramViewGroup);
-  
-  public abstract View a(LayoutInflater paramLayoutInflater, int paramInt, ViewGroup paramViewGroup);
-  
-  public abstract Object a(int paramInt);
-  
-  public abstract Object a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public abstract void a(View paramView, int paramInt);
-  
-  public abstract void a(View paramView, int paramInt1, int paramInt2);
-  
-  public int b()
+  public bhbj(int paramInt1, int paramInt2, int paramInt3)
   {
-    return 1;
+    if ((paramInt2 > 0) && (paramInt3 > 0))
+    {
+      this.b = paramInt2;
+      this.c = paramInt3;
+      this.jdField_a_of_type_AndroidGraphicsPath = bhbg.a(this.b, this.c);
+    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
   }
   
-  public int b(int paramInt)
+  public void draw(@NonNull Canvas paramCanvas)
   {
-    return 0;
+    Rect localRect = getBounds();
+    int i = localRect.right - localRect.left;
+    int j = localRect.bottom - localRect.top;
+    if ((i != this.b) && (j != this.c))
+    {
+      this.b = i;
+      this.c = j;
+      this.jdField_a_of_type_AndroidGraphicsPath = bhbg.a(this.b, this.c);
+    }
+    paramCanvas.save();
+    paramCanvas.translate(localRect.left, localRect.top);
+    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.restore();
   }
   
-  public void b(int paramInt1, int paramInt2)
+  public int getOpacity()
   {
-    this.a.a(paramInt1, paramInt2);
+    switch (this.jdField_a_of_type_Int >>> 24)
+    {
+    default: 
+      return -3;
+    case 255: 
+      return -1;
+    }
+    return -2;
   }
   
-  public void c()
-  {
-    ((bhdi)this.a.a()).notifyDataSetChanged();
-  }
+  public void setAlpha(int paramInt) {}
+  
+  public void setColorFilter(@Nullable ColorFilter paramColorFilter) {}
 }
 
 

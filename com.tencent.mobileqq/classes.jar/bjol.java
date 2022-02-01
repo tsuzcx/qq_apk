@@ -1,28 +1,66 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
+import android.text.TextUtils;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportProgressDialog;
 
-class bjol
-  implements DialogInterface.OnDismissListener
+public class bjol
+  extends AsyncTask<Void, Long, Boolean>
 {
-  private WeakReference<DialogInterface.OnDismissListener> a;
+  Activity jdField_a_of_type_AndroidAppActivity;
+  ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
+  String jdField_a_of_type_JavaLangString;
   
-  public bjol(DialogInterface.OnDismissListener paramOnDismissListener)
+  public bjol(Activity paramActivity)
   {
-    this.a = new WeakReference(paramOnDismissListener);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public bjol(Activity paramActivity, String paramString)
   {
-    DialogInterface.OnDismissListener localOnDismissListener = (DialogInterface.OnDismissListener)this.a.get();
-    if (localOnDismissListener != null) {
-      localOnDismissListener.onDismiss(paramDialogInterface);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  protected Boolean a(Void... paramVarArgs)
+  {
+    return Boolean.valueOf(false);
+  }
+  
+  protected void a()
+  {
+    if ((this.jdField_a_of_type_AndroidAppProgressDialog != null) && (this.jdField_a_of_type_AndroidAppProgressDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
     }
-    while (!QLog.isColorLevel()) {
+  }
+  
+  protected void a(Boolean paramBoolean)
+  {
+    super.onPostExecute(paramBoolean);
+    a();
+    if (paramBoolean.booleanValue())
+    {
+      if ((bjok.a()) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+        bjlu.a("311", this.jdField_a_of_type_JavaLangString, "1101070898");
+      }
       return;
     }
-    QLog.i("Q.dating", 2, "CustomDismissListener, lis is null");
+    bjkv.a().a(anvx.a(2131716388), 1);
+  }
+  
+  protected void onCancelled()
+  {
+    super.onCancelled();
+    a();
+  }
+  
+  protected void onPreExecute()
+  {
+    super.onPreExecute();
+    this.jdField_a_of_type_AndroidAppProgressDialog = new ReportProgressDialog(this.jdField_a_of_type_AndroidAppActivity);
+    if ((this.jdField_a_of_type_AndroidAppActivity != null) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())) {
+      this.jdField_a_of_type_AndroidAppProgressDialog.show();
+    }
   }
 }
 

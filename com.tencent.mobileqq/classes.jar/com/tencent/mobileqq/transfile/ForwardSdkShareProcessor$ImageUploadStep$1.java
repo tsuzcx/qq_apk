@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.transfile;
 
 import android.text.TextUtils;
-import atqa;
-import bhzo;
+import auuv;
+import bjkq;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -82,9 +82,9 @@ class ForwardSdkShareProcessor$ImageUploadStep$1
               QLog.d("Q.share.ForwardSdkShareProcessor", 1, "srcPath to URL err:" + localMalformedURLException.getMessage());
             }
           }
-          atqa.a("reuse_image_for_aio");
-          bhzo.a(true, (String)localObject1, this.this$1.this$0.mLocalImgUrl, this.this$1.this$0.mRemoteImgUrl);
-          atqa.a("reuse_image_for_aio", str, true);
+          auuv.a("reuse_image_for_aio");
+          bjkq.a(true, (String)localObject1, this.this$1.this$0.mLocalImgUrl, this.this$1.this$0.mRemoteImgUrl);
+          auuv.a("reuse_image_for_aio", str, true);
           b = 1;
         }
       }

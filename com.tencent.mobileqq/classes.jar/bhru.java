@@ -1,30 +1,36 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.open.agent.FriendChooser;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.io.File;
 
 public class bhru
-  implements View.OnTouchListener
+  extends bhro
 {
-  float jdField_a_of_type_Float = 0.0F;
-  float b = 0.0F;
+  public static bhru a = new bhru();
   
-  public bhru(FriendChooser paramFriendChooser) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, bhog parambhog, boolean paramBoolean)
   {
-    int i = paramMotionEvent.getAction();
-    if (i == 0)
-    {
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-      this.b = paramMotionEvent.getRawY();
-    }
-    while ((i != 2) || ((paramMotionEvent.getRawX() - this.jdField_a_of_type_Float <= 10.0F) && (paramMotionEvent.getRawY() - this.b <= 10.0F))) {
-      return false;
-    }
-    this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    a.download(paramQQAppInterface, "qqVipLevel." + paramInt, parambhog, paramBoolean);
+  }
+  
+  public static boolean a(Context paramContext, int paramInt)
+  {
+    String str = "qqVipLevel." + paramInt;
+    return new File(a.getDir(paramContext, str)).exists();
+  }
+  
+  public long getBID()
+  {
+    return 41L;
+  }
+  
+  protected String getRootDir()
+  {
+    return "qqlevel_icon";
+  }
+  
+  protected String getScidPrefix()
+  {
+    return "qqVipLevel.";
   }
 }
 

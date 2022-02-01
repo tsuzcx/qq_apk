@@ -1,112 +1,48 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+import dov.com.qq.im.aeeditor.lyric.widget.LyricViewScroll;
 
 public class bnuh
-  implements ViewPager.OnPageChangeListener
+  extends Handler
 {
-  public int a;
-  public View a;
+  int jdField_a_of_type_Int;
   
-  public bnuh(VideoFilterViewPager paramVideoFilterViewPager) {}
+  public bnuh(LyricViewScroll paramLyricViewScroll) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "onPageScrollStateChanged state: " + paramInt);
-    }
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "onPageScrolled position: " + paramInt1 + ", positionOffset: " + paramFloat + ", positionOffsetPixels: " + paramInt2);
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    if (System.currentTimeMillis() - this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager.a < 400L) {}
-    for (boolean bool = true; this.jdField_a_of_type_Int == paramInt; bool = false)
+    switch (paramMessage.what)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFilterViewPager", 2, "onPageSelected l " + this.jdField_a_of_type_Int + ",n " + paramInt + " scroll " + bool);
-      }
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager.e = false;
-      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "onPageSelected 2 " + this.jdField_a_of_type_Int + ",n" + paramInt + " scroll " + bool);
-    }
-    if (VideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager) != null) {
-      VideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager).a(VideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager).a(paramInt), VideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager).a(paramInt));
-    }
-    bnsi.a("", "0X8007804", "", "", "", "");
-    View localView;
-    if (bool)
+    do
     {
-      try
+      do
       {
-        QIMFilterCategoryItem localQIMFilterCategoryItem = VideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager).a(paramInt);
-        if (localQIMFilterCategoryItem != null)
-        {
-          if ((paramInt <= this.jdField_a_of_type_Int) || (VideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager).a() == 0) || (paramInt % VideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager).a() == 0)) {
-            break label470;
-          }
-          if ((paramInt != 0) && (localQIMFilterCategoryItem.c()) && (paramInt + 1 < VideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager).getCount()))
-          {
-            this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager.setCurrentItem(paramInt + 1, false);
-            return;
-          }
+        return;
+        if (this.jdField_a_of_type_Int != this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll.getScrollY()) {
+          break;
         }
-      }
-      catch (Exception localException) {}
-    }
-    else
-    {
-      this.jdField_a_of_type_Int = paramInt;
-      localView = VideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager).a(paramInt);
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFilterViewPager", 2, "onPageSelected 3 " + paramInt + ",n" + paramInt + " pageItem " + localView);
-      }
-      if (localView == null) {
-        break label523;
-      }
-      if (this.jdField_a_of_type_AndroidViewView != null)
-      {
-        localRunnable = (Runnable)this.jdField_a_of_type_AndroidViewView.getTag();
-        if (localRunnable != null) {
-          this.jdField_a_of_type_AndroidViewView.removeCallbacks(localRunnable);
+        this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+        if (LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll) != null) {
+          LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll).b(this.jdField_a_of_type_Int);
         }
-        this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      }
-      Runnable localRunnable = (Runnable)localView.getTag();
-      if (localRunnable != null)
-      {
-        localView.removeCallbacks(localRunnable);
-        localView.setTag(null);
-      }
-      VideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager, localView, paramInt, bool);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidViewView = localView;
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager.e = false;
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager.f = false;
+        Log.d("LyricViewScroll", "fling stop");
+        LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll, false);
+        LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll).sendEmptyMessageDelayed(2, this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll.jdField_b_of_type_Int);
+        this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll.jdField_b_of_type_Boolean = false;
+      } while (LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll) == null);
+      LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll).a();
       return;
-      label470:
-      if ((!localView.c()) || (VideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager).a() == 0) || (paramInt % VideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager).a() == 0) || (paramInt - 1 <= 0)) {
-        break;
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll.getScrollY();
+      if (LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll) != null) {
+        LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll).a(this.jdField_a_of_type_Int);
       }
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager.setCurrentItem(paramInt - 1, false);
+      LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll).sendEmptyMessageDelayed(1, 100L);
       return;
-      label523:
-      if (!VideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager)) {
-        VideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager, true);
-      }
-    }
+      this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll.jdField_b_of_type_Boolean = true;
+    } while (LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll) == null);
+    LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll).b();
   }
 }
 

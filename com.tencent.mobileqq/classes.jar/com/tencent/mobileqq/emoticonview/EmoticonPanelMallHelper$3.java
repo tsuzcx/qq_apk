@@ -3,6 +3,7 @@ package com.tencent.mobileqq.emoticonview;
 import android.content.Context;
 import android.content.SharedPreferences;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
@@ -24,7 +25,7 @@ class EmoticonPanelMallHelper$3
       if (localObject == null) {
         return;
       }
-      WebProcessManager localWebProcessManager = (WebProcessManager)((QQAppInterface)localObject).getManager(13);
+      WebProcessManager localWebProcessManager = (WebProcessManager)((QQAppInterface)localObject).getManager(QQManagerFactory.WEBPROCESS_MANAGER);
       if (localWebProcessManager != null)
       {
         localObject = localContext.getSharedPreferences("emoticon_panel_" + ((QQAppInterface)localObject).getCurrentAccountUin(), 0);
@@ -60,7 +61,7 @@ class EmoticonPanelMallHelper$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelMallHelper.3
  * JD-Core Version:    0.7.0.1
  */

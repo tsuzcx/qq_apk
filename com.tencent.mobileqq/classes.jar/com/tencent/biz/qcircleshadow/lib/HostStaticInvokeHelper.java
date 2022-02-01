@@ -1,27 +1,32 @@
 package com.tencent.biz.qcircleshadow.lib;
 
-import amsw;
-import amzu;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.TextUtils;
-import atjn;
-import bbon;
-import bnxs;
+import anvk;
+import aocj;
+import auog;
+import bcvh;
+import bpnk;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.utils.thread.PriorityThreadPool;
 import com.tencent.component.network.utils.thread.PriorityThreadPool.Priority;
 import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.photo.MimeHelper;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.shortvideo.hwcodec.VideoSourceHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.TextHook;
 import com.tencent.tmassistantbase.network.NetworkMonitorReceiver;
 import cooperation.qqcircle.utils.QCircleCommonUtil;
 import mqq.app.AppRuntime;
+import vvq;
 
 public class HostStaticInvokeHelper
 {
@@ -46,23 +51,38 @@ public class HostStaticInvokeHelper
     return null;
   }
   
+  public static String[] getMimeType(String paramString)
+  {
+    return MimeHelper.getMimeType(paramString);
+  }
+  
   public static String getNickName(String paramString)
   {
-    Friends localFriends = ((amsw)getAppInterface().getManager(51)).e(paramString);
+    Object localObject = getAppInterface();
     String str = paramString;
-    if (localFriends != null)
+    if (localObject != null)
     {
+      localObject = ((anvk)((AppInterface)localObject).getManager(QQManagerFactory.FRIENDS_MANAGER)).e(paramString);
       str = paramString;
-      if (!TextUtils.isEmpty(localFriends.getFriendNick())) {
-        str = localFriends.getFriendNick();
+      if (localObject != null)
+      {
+        str = paramString;
+        if (!TextUtils.isEmpty(((Friends)localObject).getFriendNick())) {
+          str = ((Friends)localObject).getFriendNick();
+        }
       }
     }
     return str;
   }
   
+  public static String getPluginQua()
+  {
+    return vvq.a().a();
+  }
+  
   public static String getQCircleSchemeFromJumpUtil(String paramString1, String paramString2)
   {
-    return bnxs.a(paramString1, paramString2);
+    return bpnk.a(paramString1, paramString2);
   }
   
   public static long getServerTimeMillis()
@@ -93,7 +113,7 @@ public class HostStaticInvokeHelper
       if (localQQAppInterface == null) {
         return;
       }
-      atjn.a(localQQAppInterface, new HostStaticInvokeHelper.2(paramFlutterInstallCallBack));
+      auog.a(localQQAppInterface, new HostStaticInvokeHelper.2(paramFlutterInstallCallBack));
       return;
     }
     catch (Exception paramFlutterInstallCallBack)
@@ -102,16 +122,21 @@ public class HostStaticInvokeHelper
     }
   }
   
+  public static void nativeSetMaxPhotoFrameCount(int paramInt)
+  {
+    VideoSourceHelper.nativeSetMaxPhotoFrameCount(paramInt);
+  }
+  
   public static void redPointHandlerSendRedpointReq(boolean paramBoolean1, boolean paramBoolean2)
   {
     Object localObject = getAppInterface();
     if (localObject != null)
     {
-      localObject = (amzu)((AppInterface)localObject).getBusinessHandler(87);
+      localObject = (aocj)((AppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.REDPOINT_HANDER);
       if (localObject != null)
       {
         QLog.i("HostStaticInvokeHelper", 1, "redPointHandlerSendRedpointReq");
-        ((amzu)localObject).a(paramBoolean1, paramBoolean2, 0);
+        ((aocj)localObject).a(paramBoolean1, paramBoolean2, 0);
       }
     }
   }
@@ -125,7 +150,7 @@ public class HostStaticInvokeHelper
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime instanceof QQAppInterface)) {
-      bbon.b((QQAppInterface)localAppRuntime, new HostStaticInvokeHelper.1(paramAccountIdentityCallBack));
+      bcvh.b((QQAppInterface)localAppRuntime, new HostStaticInvokeHelper.1(paramAccountIdentityCallBack));
     }
   }
   
@@ -133,10 +158,15 @@ public class HostStaticInvokeHelper
   {
     PriorityThreadPool.getDefault().submit(new HostStaticInvokeHelper.3(paramInvokeNormalCallBack), PriorityThreadPool.Priority.HIGH);
   }
+  
+  public static boolean validateVideoType(String paramString)
+  {
+    return MimeHelper.validateVideoType(paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.HostStaticInvokeHelper
  * JD-Core Version:    0.7.0.1
  */

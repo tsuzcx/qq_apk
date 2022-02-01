@@ -1,119 +1,68 @@
-import android.app.Activity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.ListView;
-import android.widget.PopupWindow;
-import com.tencent.biz.pubaccount.weishi_new.view.WSDragLayout;
-import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusBannerVideoItemData;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class ull
-  extends PopupWindow
-  implements View.OnClickListener, vdy
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/FastWebVideoModule;", "", "()V", "adData", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/ProteusBannerVideoItemData;", "getAdData", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/ProteusBannerVideoItemData;", "setAdData", "(Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/ProteusBannerVideoItemData;)V", "adInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;", "getAdInfo", "()Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;", "setAdInfo", "(Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;)V", "videoData", "Lcom/tencent/biz/pubaccount/NativeAd/module/AdModuleVideo;", "getVideoData", "()Lcom/tencent/biz/pubaccount/NativeAd/module/AdModuleVideo;", "setVideoData", "(Lcom/tencent/biz/pubaccount/NativeAd/module/AdModuleVideo;)V", "videoReportData", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/VideoAdReportData;", "getVideoReportData", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/VideoAdReportData;", "setVideoReportData", "(Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/VideoAdReportData;)V", "initModule", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ull
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private View jdField_a_of_type_AndroidViewView;
-  ListView jdField_a_of_type_AndroidWidgetListView;
-  private WSDragLayout jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout;
+  @Nullable
+  private AdvertisementInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
+  @Nullable
+  private ProteusBannerVideoItemData jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataProteusBannerVideoItemData;
+  @Nullable
+  private ohr jdField_a_of_type_Ohr;
+  @NotNull
+  private ulo jdField_a_of_type_Ulo = new ulo();
   
-  private ull(View paramView, int paramInt1, int paramInt2)
+  @Nullable
+  public final AdvertisementInfo a()
   {
-    super(paramView, paramInt1, paramInt2);
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
   }
   
-  public static ull a(Activity paramActivity, int paramInt1, int paramInt2)
+  @Nullable
+  public final ProteusBannerVideoItemData a()
   {
-    ull localull = new ull(LayoutInflater.from(paramActivity).inflate(2131560000, null), paramInt1, paramInt2);
-    localull.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    localull.setAnimationStyle(2131755478);
-    localull.c();
-    localull.setFocusable(true);
-    localull.setInputMethodMode(1);
-    localull.setSoftInputMode(16);
-    localull.setClippingEnabled(false);
-    localull.getContentView().setOnKeyListener(new ulm(localull));
-    localull.setOutsideTouchable(true);
-    return localull;
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataProteusBannerVideoItemData;
   }
   
-  private void b(float paramFloat)
+  @NotNull
+  public final ulo a()
   {
-    Window localWindow = this.jdField_a_of_type_AndroidAppActivity.getWindow();
-    WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
-    localLayoutParams.alpha = paramFloat;
-    localWindow.addFlags(2);
-    localWindow.setAttributes(localLayoutParams);
+    return this.jdField_a_of_type_Ulo;
   }
   
-  private void c()
+  public final void a()
   {
-    View localView = getContentView();
-    localView.findViewById(2131376689).setOnClickListener(new uln(this));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout = ((WSDragLayout)localView.findViewById(2131365073));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout.setDisableMinScrollY(true);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout.setControlLitTongue(false);
-    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131364834);
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366415));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout.setListView(this.jdField_a_of_type_AndroidWidgetListView);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout.setTouchListener(this);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout.setMode(1);
+    this.jdField_a_of_type_Ohr = ((ohr)null);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = ((AdvertisementInfo)null);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataProteusBannerVideoItemData = ((ProteusBannerVideoItemData)null);
+    this.jdField_a_of_type_Ulo.c(1);
+    this.jdField_a_of_type_Ulo.d(0);
+    this.jdField_a_of_type_Ulo.a(0);
+    this.jdField_a_of_type_Ulo.b(0);
+    this.jdField_a_of_type_Ulo.g(0);
+    this.jdField_a_of_type_Ulo.e(1);
+    this.jdField_a_of_type_Ulo.f(1);
+    this.jdField_a_of_type_Ulo.h(0);
+    this.jdField_a_of_type_Ulo.a(false);
   }
   
-  public View a()
+  public final void a(@Nullable AdvertisementInfo paramAdvertisementInfo)
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = paramAdvertisementInfo;
   }
   
-  public void a() {}
-  
-  public void a(float paramFloat)
+  public final void a(@Nullable ProteusBannerVideoItemData paramProteusBannerVideoItemData)
   {
-    uya.a("DraggablePopup", "progress = " + paramFloat);
-    b((float)(0.7D + paramFloat * 0.3D));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataProteusBannerVideoItemData = paramProteusBannerVideoItemData;
   }
   
-  public void a(int paramInt)
+  public final void a(@Nullable ohr paramohr)
   {
-    dismiss();
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout.a(0);
-    }
-  }
-  
-  public void dismiss()
-  {
-    super.dismiss();
-    b(1.0F);
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (paramView.getId() == 2131379019) {
-      dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
-  
-  public void showAtLocation(View paramView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    int i = paramInt3;
-    if (bjvx.a(this.jdField_a_of_type_AndroidAppActivity))
-    {
-      i = paramInt3;
-      if (ScreenUtil.isNavigationBarExist(this.jdField_a_of_type_AndroidAppActivity)) {
-        i = paramInt3 + bjvx.a(this.jdField_a_of_type_AndroidAppActivity);
-      }
-    }
-    super.showAtLocation(paramView, paramInt1, paramInt2, i);
+    this.jdField_a_of_type_Ohr = paramohr;
   }
 }
 

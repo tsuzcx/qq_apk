@@ -1,30 +1,17 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class ygy
+class ygy
+  implements View.OnClickListener
 {
-  public final int a;
-  public final String a;
-  public final int b;
-  public String b;
+  ygy(ygp paramygp, yjw paramyjw) {}
   
-  public ygy(int paramInt1, String paramString, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt2;
-  }
-  
-  @NonNull
-  public abstract Class<? extends ygz> a();
-  
-  @NonNull
-  public abstract ygz a(@NonNull Context paramContext, ViewGroup paramViewGroup);
-  
-  public boolean a()
-  {
-    return false;
+    ykv.a("home_page", "guide_close", 0, 0, new String[0]);
+    this.jdField_a_of_type_Yjw.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

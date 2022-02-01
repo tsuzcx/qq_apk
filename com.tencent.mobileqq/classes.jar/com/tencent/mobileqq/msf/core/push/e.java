@@ -29,6 +29,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.msf.service.protocol.pb.StatSvcSimpleGet.RspBody;
 import com.tencent.msf.service.protocol.push.SvcReqRegister;
 import com.tencent.msf.service.protocol.push.SvcRespRegister;
+import com.tencent.msf.service.protocol.push.VendorPushInfo;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -207,14 +208,14 @@ public class e
           label373:
           ((SvcReqRegister)localObject1).bRegType = ((byte)i1);
           if (paramRegPushReason != RegPushReason.setOnlineStatus) {
-            break label1119;
+            break label1183;
           }
           i1 = 1;
           label392:
           ((SvcReqRegister)localObject1).bIsSetStatus = ((byte)i1);
           ((SvcReqRegister)localObject1).uExtOnlineStatus = parama.k.extStatus;
           if (!MsfSdkUtils.isBatteryOnlineStatus(parama.k)) {
-            break label1125;
+            break label1189;
           }
           ((SvcReqRegister)localObject1).iBatteryStatus = MsfSdkUtils.getSendBatteryStatus(parama.k.batteryCapacity, parama.k.powerConnect);
         }
@@ -247,35 +248,43 @@ public class e
             }
             ((SvcReqRegister)localObject1).bytes_0x769_reqbody = MsfPullConfigUtil.pullConfigRequest(false);
             if (!SettingCloneUtil.readValue(BaseApplication.getContext(), parama.k.uin, null, "qqsetting_qrlogin_set_mute", false)) {
-              break label1190;
+              break label1254;
             }
             ((SvcReqRegister)localObject1).bSetMute = 1;
+            i1 = BaseApplication.getContext().getThirdPushType();
+            if (i1 > 0)
+            {
+              localObject3 = new VendorPushInfo();
+              ((VendorPushInfo)localObject3).uVendorType = i1;
+              ((SvcReqRegister)localObject1).stVendorPushInfo = ((VendorPushInfo)localObject3);
+            }
+            QLog.d("MSF.C.PushManager:PushCoder", 1, "msf-pushCoder.vendor_push_type:" + i1);
             ((UniPacket)localObject2).put(p, localObject1);
             localObject2 = ((UniPacket)localObject2).encode();
-            ToServiceMsg localToServiceMsg = new ToServiceMsg("", parama.k.uin, "StatSvc.register");
-            localToServiceMsg.setAppId(parama.a);
+            Object localObject3 = new ToServiceMsg("", parama.k.uin, "StatSvc.register");
+            ((ToServiceMsg)localObject3).setAppId(parama.a);
             if (paramToServiceMsg != null)
             {
-              localToServiceMsg.setAppSeq(paramToServiceMsg.getAppSeq());
-              localToServiceMsg.addAttribute("to_srcCmd", paramToServiceMsg.getServiceCmd());
+              ((ToServiceMsg)localObject3).setAppSeq(paramToServiceMsg.getAppSeq());
+              ((ToServiceMsg)localObject3).addAttribute("to_srcCmd", paramToServiceMsg.getServiceCmd());
               i1 = paramToServiceMsg.extraData.getInt("oldStatus", 0);
-              localToServiceMsg.extraData.putInt("oldStatus", i1);
+              ((ToServiceMsg)localObject3).extraData.putInt("oldStatus", i1);
             }
-            localToServiceMsg.setRequestSsoSeq(MsfCore.getNextSeq());
-            localToServiceMsg.putWupBuffer((byte[])localObject2);
-            localToServiceMsg.setTimeout(30000L);
-            localToServiceMsg.addAttribute("regPushReason", paramRegPushReason.toString());
+            ((ToServiceMsg)localObject3).setRequestSsoSeq(MsfCore.getNextSeq());
+            ((ToServiceMsg)localObject3).putWupBuffer((byte[])localObject2);
+            ((ToServiceMsg)localObject3).setTimeout(30000L);
+            ((ToServiceMsg)localObject3).addAttribute("regPushReason", paramRegPushReason.toString());
             if (!paramBoolean) {
-              break label1199;
+              break label1263;
             }
-            localToServiceMsg.setMsfCommand(MsfCommand._msf_UnRegPush);
-            MsfSdkUtils.addToMsgProcessName(parama.b, localToServiceMsg);
+            ((ToServiceMsg)localObject3).setMsfCommand(MsfCommand._msf_UnRegPush);
+            MsfSdkUtils.addToMsgProcessName(parama.b, (ToServiceMsg)localObject3);
             g.u = true;
             this.h = System.currentTimeMillis();
-            this.f.c.sendSsoMsg(localToServiceMsg);
+            this.f.c.sendSsoMsg((ToServiceMsg)localObject3);
             parama.e = System.currentTimeMillis();
             if (!paramBoolean) {
-              break label1210;
+              break label1274;
             }
             QLog.d("MSF.C.PushManager:PushCoder", 1, "handlerPush send " + MD5.toMD5(parama.k.uin) + " unregister push id " + parama.c + " pushStatus:" + parama.k.iStatus + " bRegType:" + ((SvcReqRegister)localObject1).bRegType + " extStatus:" + parama.k.extStatus + " batter:" + ((SvcReqRegister)localObject1).iBatteryStatus);
             for (;;)
@@ -309,10 +318,10 @@ public class e
               break;
               i1 = 1;
               break label373;
-              label1119:
+              label1183:
               i1 = 0;
               break label392;
-              label1125:
+              label1189:
               localException1.iBatteryStatus = 0;
               break label444;
               parama = parama;
@@ -330,13 +339,13 @@ public class e
             {
               localException1.cNetType = 1;
               continue;
-              label1190:
+              label1254:
               localException1.bSetMute = 0;
               continue;
-              label1199:
+              label1263:
               localException2.setMsfCommand(MsfCommand._msf_RegPush);
               continue;
-              label1210:
+              label1274:
               this.g = true;
               QLog.d("MSF.C.PushManager:PushCoder", 1, "handlerPush send " + MD5.toMD5(parama.k.uin) + " register push id " + parama.c + " pushStatus:" + parama.k.iStatus + " bRegType:" + localException1.bRegType + " timeStamp:" + localException1.timeStamp + " newIP:" + d + " oldIP:" + c + ",regPushReason:" + paramRegPushReason.toString() + " extStatus:" + parama.k.extStatus + " battery:" + localException1.iBatteryStatus);
             }

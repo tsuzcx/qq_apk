@@ -1,123 +1,132 @@
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.base.http.AvatarUpdateService.1;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.net.ProtocolException;
-import java.nio.ByteBuffer;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.Properties;
-import java.util.Set;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
-class bjkx
+public class bjkx
+  implements bjlj
 {
-  Properties jdField_a_of_type_JavaUtilProperties = new Properties();
-  byte[] jdField_a_of_type_ArrayOfByte;
+  private static bjkx a;
+  public SharedPreferences a;
+  public HashMap<String, bjky> a;
   
-  void a(byte[] paramArrayOfByte)
+  protected bjkx()
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {}
-    ByteBuffer localByteBuffer;
-    int i;
-    byte[] arrayOfByte;
-    int j;
-    do
-    {
-      do
-      {
-        return;
-        localByteBuffer = ByteBuffer.wrap(paramArrayOfByte);
-        i = bjkv.a().a().length;
-        arrayOfByte = new byte[i];
-        localByteBuffer.get(arrayOfByte);
-        if (!bjkv.a().equals(new bjlb(arrayOfByte))) {
-          break;
-        }
-        if (paramArrayOfByte.length - i <= 2)
-        {
-          QLog.i("ApkExternalInfoTool", 1, "data.length - securityMarkLength <= 2");
-          return;
-        }
-        arrayOfByte = new byte[2];
-        localByteBuffer.get(arrayOfByte);
-        j = new bjlc(arrayOfByte).a();
-        if (paramArrayOfByte.length - i - 2 < j)
-        {
-          QLog.i("ApkExternalInfoTool", 1, "data.length - securityMarkLength - 2 < len");
-          QLog.i("ApkExternalInfoTool", 1, "exit");
-          return;
-        }
-        arrayOfByte = new byte[j];
-        localByteBuffer.get(arrayOfByte);
-        this.jdField_a_of_type_JavaUtilProperties.load(new ByteArrayInputStream(arrayOfByte));
-        i = paramArrayOfByte.length - i - j - 2;
-      } while (i <= 0);
-      j = bjkv.b().a().length;
-      paramArrayOfByte = new byte[j];
-      localByteBuffer.get(paramArrayOfByte);
-    } while (!bjkv.b().equals(new bjlb(paramArrayOfByte)));
-    if (i - j <= 2)
-    {
-      QLog.i("ApkExternalInfoTool", 1, "data.length - oriMarkLength <= 2");
-      return;
-    }
-    paramArrayOfByte = new byte[2];
-    localByteBuffer.get(paramArrayOfByte);
-    int k = new bjlc(paramArrayOfByte).a();
-    if (i - j - 2 < k)
-    {
-      QLog.i("ApkExternalInfoTool", 1, "data.length - oriMarkLength - 2 < len");
-      QLog.i("ApkExternalInfoTool", 1, "exit");
-      return;
-    }
-    this.jdField_a_of_type_ArrayOfByte = new byte[k];
-    localByteBuffer.get(this.jdField_a_of_type_ArrayOfByte);
-    return;
-    if (bjkv.b().equals(new bjlb(arrayOfByte)))
-    {
-      j = bjkv.b().a().length;
-      if (paramArrayOfByte.length - i <= 2)
-      {
-        QLog.i("ApkExternalInfoTool", 1, "data.length - oriMarkLength <= 2");
-        return;
-      }
-      arrayOfByte = new byte[2];
-      localByteBuffer.get(arrayOfByte);
-      i = new bjlc(arrayOfByte).a();
-      if (paramArrayOfByte.length - j - 2 < i)
-      {
-        QLog.i("ApkExternalInfoTool", 1, "data.length - oriMarkLength - 2 < len");
-        QLog.i("ApkExternalInfoTool", 1, "exit");
-        return;
-      }
-      this.jdField_a_of_type_ArrayOfByte = new byte[i];
-      localByteBuffer.get(this.jdField_a_of_type_ArrayOfByte);
-      return;
-    }
-    throw new ProtocolException("unknow protocl [" + Arrays.toString(paramArrayOfByte) + "]");
+    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("uin_avatarurl", 0);
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  byte[] a()
+  public static bjkx a()
   {
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    if (this.jdField_a_of_type_JavaUtilProperties.size() > 0)
+    try
     {
-      localByteArrayOutputStream.write(bjkv.a().a());
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilProperties.keySet().iterator();
-      Object localObject2;
-      for (Object localObject1 = ""; localIterator.hasNext(); localObject1 = (String)localObject1 + localObject2 + "=" + this.jdField_a_of_type_JavaUtilProperties.getProperty((String)localObject2) + "\r\n") {
-        localObject2 = localIterator.next();
+      if (jdField_a_of_type_Bjkx == null) {
+        jdField_a_of_type_Bjkx = new bjkx();
       }
-      localObject1 = ((String)localObject1).getBytes();
-      localByteArrayOutputStream.write(new bjlc(localObject1.length).a());
-      localByteArrayOutputStream.write((byte[])localObject1);
+      return jdField_a_of_type_Bjkx;
     }
-    if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length > 0))
+    finally {}
+  }
+  
+  public void a(Context paramContext, String paramString1, String paramString2, String paramString3, bjlj parambjlj)
+  {
+    QLog.d("AvatarUpdateService", 1, "-->updateAvatar--uin = " + bjhh.a(paramString1));
+    String str2 = "https://openmobile.qq.com/getface?appid=716027609&imgtype=3&encrytype=0&devtype=0&keytype=0&uin=" + paramString1;
+    for (String str1 = paramString1; str1.length() < 10; str1 = "0" + str1) {}
+    str1 = "o" + str1;
+    ThreadManager.post(new AvatarUpdateService.1(this, str2, "uin=" + str1 + "; skey=" + paramString2, paramString1, paramString3, paramContext, parambjlj), 5, null, true);
+  }
+  
+  protected void a(Bitmap paramBitmap, String paramString)
+  {
+    if (paramBitmap == null) {}
+    do
     {
-      localByteArrayOutputStream.write(bjkv.b().a());
-      localByteArrayOutputStream.write(new bjlc(this.jdField_a_of_type_ArrayOfByte.length).a());
-      localByteArrayOutputStream.write(this.jdField_a_of_type_ArrayOfByte);
+      return;
+      paramString = bheg.a(paramString);
+    } while (paramString == null);
+    paramString = new FileOutputStream(paramString);
+    paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, paramString);
+    paramString.flush();
+    paramString.close();
+  }
+  
+  public void a(String paramString, Bitmap arg2)
+  {
+    boolean bool2 = true;
+    Object localObject1;
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+      {
+        localObject1 = (bjky)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+        if (QLog.isColorLevel())
+        {
+          ??? = new StringBuilder().append("-->onTaskCompleted--identifier = ").append(paramString).append(", bitmap = null ? ");
+          if (??? == null)
+          {
+            bool1 = true;
+            ??? = ((StringBuilder)???).append(bool1).append(", task = null ? ");
+            if (localObject1 != null) {
+              break label116;
+            }
+            bool1 = bool2;
+            QLog.d("AvatarUpdateService", 2, bool1);
+          }
+        }
+        else
+        {
+          if (localObject1 != null) {
+            break;
+          }
+          return;
+        }
+      }
+      boolean bool1 = false;
+      continue;
+      label116:
+      bool1 = false;
     }
-    return localByteArrayOutputStream.toByteArray();
+    ??? = (Context)((bjky)localObject1).jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((??? != null) && (??? != null))
+    {
+      ??? = bjhh.a((Context)???, ???, 63, 63);
+      if (??? == null) {}
+    }
+    try
+    {
+      a(???, ((bjky)localObject1).jdField_b_of_type_JavaLangString);
+      ??? = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+      ((SharedPreferences.Editor)???).putString(((bjky)localObject1).jdField_a_of_type_JavaLangString, ((bjky)localObject1).c);
+      ((SharedPreferences.Editor)???).commit();
+      label205:
+      localObject1 = (bjlj)((bjky)localObject1).jdField_b_of_type_JavaLangRefWeakReference.get();
+      if (localObject1 != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AvatarUpdateService", 2, "-->onTaskCompleted--callback not null, invoke it");
+        }
+        ((bjlj)localObject1).a(paramString, ???);
+      }
+      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+      {
+        this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
+        return;
+      }
+    }
+    catch (IOException localIOException)
+    {
+      break label205;
+    }
   }
 }
 

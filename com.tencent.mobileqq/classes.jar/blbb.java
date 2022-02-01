@@ -1,19 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.vip.manager.FileBannerTianshuManger.4;
-
-public class blbb
-  implements View.OnClickListener
+public abstract interface blbb
 {
-  public blbb(FileBannerTianshuManger.4 param4) {}
+  public abstract int a();
   
-  public void onClick(View paramView)
-  {
-    this.a.this$0.a.setVisibility(8);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract boolean a(int paramInt);
 }
 
 

@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/moc" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="18.0dip"
+<com.tencent.mobileqq.qassistant.view.VoicePanelSlideContainer android:id="@id/nrg" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <EditText android:textSize="28.0dip" android:textColor="@color/fl" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/mob" android:background="@drawable/e96" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginRight="3.0dip" android:maxLength="1" android:textCursorDrawable="@drawable/e95" />
-    <TextView android:textSize="28.0dip" android:textColor="@color/fl" android:layout_gravity="center_vertical" android:id="@id/mod" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="*华" />
-</LinearLayout>
+    <LinearLayout android:orientation="vertical" android:background="@drawable/b4k" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/lq8" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/hzl" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="28.0dip">
+            <TextView android:textSize="@dimen/bet" android:textColor="@color/fl" android:id="@id/mx5" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:text="@string/wyz" android:layout_alignParentLeft="true" />
+            <TextView android:textSize="@dimen/beg" android:textColor="@color/fl" android:id="@id/mx6" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="8.0dip" android:text="@string/wz0" android:layout_below="@id/mx5" />
+            <ImageView android:id="@id/lvb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="50.0dip" android:src="@drawable/f98" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <TextView android:textSize="@dimen/beo" android:textColor="@color/fx" android:id="@id/nrk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:text="@string/wz5" android:lineSpacingMultiplier="1.5" />
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="17.0dip">
+            <Button android:textSize="@dimen/beh" android:textStyle="bold" android:textColor="@color/fl" android:id="@id/mjp" android:background="@drawable/bq6" android:layout_width="0.0dip" android:layout_height="50.0dip" android:layout_marginRight="6.0dip" android:text="@string/wz6" android:layout_weight="1.0" />
+            <Button android:textSize="@dimen/beh" android:textStyle="bold" android:textColor="@color/el" android:id="@id/mjq" android:background="@drawable/bq5" android:layout_width="0.0dip" android:layout_height="50.0dip" android:layout_marginLeft="6.0dip" android:text="@string/wzb" android:layout_weight="1.0" />
+        </LinearLayout>
+    </LinearLayout>
+</com.tencent.mobileqq.qassistant.view.VoicePanelSlideContainer>

@@ -1,15 +1,28 @@
-import UserGrowth.stFriendFeedReq;
-import UserGrowth.stFriendFeedRsp;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class uwh
-  extends urg<stFriendFeedRsp>
+class uwh
+  extends ansy
 {
-  public uwh(String paramString)
+  uwh(uwg paramuwg) {}
+  
+  protected void a(boolean paramBoolean, Long paramLong, String paramString)
   {
-    super("FriendFeed", 10006);
-    stFriendFeedReq localstFriendFeedReq = new stFriendFeedReq();
-    localstFriendFeedReq.attachInfo = paramString;
-    this.a = localstFriendFeedReq;
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(uwg.a(this.a))))
+    {
+      paramLong = BaseApplicationImpl.getApplication().getBaseContext();
+      if (paramBoolean) {
+        QQToast.a(BaseApplicationImpl.getApplication(), 2, 2131718513, 0).b(paramLong.getResources().getDimensionPixelSize(2131299080));
+      }
+    }
+    else
+    {
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131718500, 0).b(paramLong.getResources().getDimensionPixelSize(2131299080));
   }
 }
 

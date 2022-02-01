@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.search.fragment.searchentry.nativemethod;
 
-import anaq;
 import android.content.Context;
+import aodf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.search.fragment.searchentry.hippy.TKDSearchHistoryBean;
 import com.tencent.mtt.hippy.common.HippyMap;
@@ -23,13 +23,13 @@ class RemoveHistoryMethod
   
   public void onCallBack(HippyMap paramHippyMap, Promise paramPromise)
   {
-    paramPromise = anaq.a().a();
+    paramPromise = aodf.a().a();
     int i = 0;
     while (i < paramPromise.size())
     {
       TKDSearchHistoryBean localTKDSearchHistoryBean = (TKDSearchHistoryBean)paramPromise.get(i);
       if ((localTKDSearchHistoryBean != null) && (localTKDSearchHistoryBean.getId() == paramHippyMap.getInt("id")) && (localTKDSearchHistoryBean.getFromWhere() == paramHippyMap.getInt("fromWhere"))) {
-        anaq.a().a(i);
+        aodf.a().a(i);
       }
       i += 1;
     }

@@ -1,6 +1,15 @@
-public abstract interface aiaj
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class aiaj
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt);
+  aiaj(aiah paramaiah, aiar paramaiar) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    aiah.a(this.jdField_a_of_type_Aiah, this.jdField_a_of_type_Aiar);
+  }
 }
 
 

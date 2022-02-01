@@ -1,30 +1,43 @@
-import android.text.TextUtils;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
-public class nai
+class nai
+  implements AbsListView.OnScrollListener
 {
-  public int a;
-  public String a;
-  public String b = null;
+  int jdField_a_of_type_Int = 0;
+  int b = 0;
   
-  public nai()
+  nai(nah paramnah) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = null;
+    this.b = paramInt3;
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
   }
   
-  public boolean a()
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    return !TextUtils.isEmpty(this.b);
-  }
-  
-  public boolean b()
-  {
-    return (a()) && (this.jdField_a_of_type_Int == 1);
-  }
-  
-  public String toString()
-  {
-    return "{redPoint: " + this.jdField_a_of_type_Int + ", iconUrl: " + this.jdField_a_of_type_JavaLangString + ", jumpUrl: " + this.b + "}";
+    for (;;)
+    {
+      try
+      {
+        int i = this.jdField_a_of_type_Nah.jdField_a_of_type_Int;
+        if (i > 0) {
+          return;
+        }
+        if ((paramInt != 0) || (this.jdField_a_of_type_Nah.jdField_b_of_type_JavaUtilList == null) || (this.jdField_a_of_type_Int != this.b - 2)) {
+          continue;
+        }
+        if (this.jdField_a_of_type_Nah.f)
+        {
+          this.jdField_a_of_type_Nah.c(true);
+          continue;
+        }
+        this.jdField_a_of_type_Nah.c(false);
+      }
+      finally {}
+      this.jdField_a_of_type_Nah.a(this.jdField_a_of_type_Nah.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Nah.jdField_a_of_type_Long, this.jdField_a_of_type_Nah.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Nah.jdField_b_of_type_JavaLangString);
+    }
   }
 }
 

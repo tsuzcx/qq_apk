@@ -1,22 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity.7.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.qphone.base.util.QLog;
 
 public class adtd
-  implements DialogInterface.OnClickListener
+  extends bhow
 {
-  adtd(adtc paramadtc) {}
+  public adtd(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onGetMyTroopEffect(boolean paramBoolean, Object paramObject)
   {
-    ThreadManager.getSubThreadHandler().post(new NotificationActivity.7.1.1(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.chatopttroop", 2, "onGetMyTroopEffect  result = " + paramBoolean);
+    }
+    if (paramBoolean) {
+      this.a.a(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adtd
  * JD-Core Version:    0.7.0.1
  */

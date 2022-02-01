@@ -1,25 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.5;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.ClassInfo;
 
-public class omd
-  implements View.OnClickListener
+public final class omd
+  implements Parcelable.Creator<VideoInfo.ClassInfo>
 {
-  public omd(ReadInJoyNewFeedsActivity.5 param5, FrameLayout paramFrameLayout) {}
-  
-  public void onClick(View paramView)
+  public VideoInfo.ClassInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0.a.a();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0.a);
-    if (261 == this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.a) {
-      bfyz.s(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0.app.getCurrentAccountUin(), null);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new VideoInfo.ClassInfo(paramParcel);
+  }
+  
+  public VideoInfo.ClassInfo[] a(int paramInt)
+  {
+    return new VideoInfo.ClassInfo[paramInt];
   }
 }
 

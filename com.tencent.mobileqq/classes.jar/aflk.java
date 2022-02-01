@@ -1,20 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aflk
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  aflk(aflj paramaflj) {}
+  aflk(afli paramafli) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    DoodlePanel.a(this.a.a, false);
+    this.a.a.b(paramView.getTag());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

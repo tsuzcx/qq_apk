@@ -1,18 +1,6 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import java.util.ArrayList;
-
-class bnmz
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface bnmz
 {
-  bnmz(bnmy parambnmy) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    paramValueAnimator = (ArrayList)paramValueAnimator.getAnimatedValue();
-    this.a.a = paramValueAnimator;
-    this.a.invalidateSelf();
-  }
+  public abstract void a();
 }
 
 

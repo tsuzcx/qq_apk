@@ -1,28 +1,25 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.webviewplugin.GamePartyPlugin;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.superplayer.api.ISuperPlayer;
 
 public class aaam
-  extends aqyp
+  implements View.OnClickListener
 {
-  public aaam(GamePartyPlugin paramGamePartyPlugin) {}
+  public aaam(VideoPlayerView paramVideoPlayerView) {}
   
-  public void onBindedToClient() {}
-  
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if ((paramBundle != null) && (paramBundle.getInt("respkey") == GamePartyPlugin.a(this.a).key) && ("batchGetUserInfo".equals(paramBundle.getString("cmd"))))
+    if (aala.a("mLLSkipForwardWrapper", 500L))
     {
-      String str = paramBundle.getString("callbackid");
-      paramBundle = paramBundle.getBundle("response").getString("result");
-      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramBundle))) {
-        this.a.callJs(str, new String[] { paramBundle });
+      VideoPlayerView.e(this.a);
+      VideoPlayerView.a(this.a, VideoPlayerView.c(this.a), 0, 1, true);
+      if (this.a.a() != null) {
+        this.a.a(this.a.a().getCurrentPositionMs() + 10000L);
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

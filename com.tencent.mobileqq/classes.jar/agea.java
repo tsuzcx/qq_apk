@@ -1,18 +1,9 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import android.graphics.Path;
+import java.util.List;
 
-final class agea
-  implements aghk
+public abstract interface agea
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
-  {
-    paramQQAppInterface = ((MessageForUniteGrayTip)paramChatMessage).tipParam;
-    if ((paramQQAppInterface != null) && (paramQQAppInterface.b == 655384)) {
-      return 110;
-    }
-    return 64;
-  }
+  public abstract void a(int paramInt, boolean paramBoolean, Path paramPath, List<agdr> paramList);
 }
 
 

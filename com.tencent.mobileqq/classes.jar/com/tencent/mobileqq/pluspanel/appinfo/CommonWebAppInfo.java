@@ -1,19 +1,21 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import amtj;
+import ahvi;
 import android.content.Intent;
 import android.text.TextUtils;
-import ayfu;
-import bcef;
-import bcvs;
-import bfvp;
-import bfwg;
+import anvx;
+import bdla;
+import becr;
+import bheh;
+import bhey;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
@@ -28,26 +30,26 @@ public class CommonWebAppInfo
     this.uinType = paramInt;
   }
   
-  private void a(ayfu paramayfu, BaseChatPie paramBaseChatPie)
+  private void a(ahvi paramahvi, BaseChatPie paramBaseChatPie)
   {
     QQAppInterface localQQAppInterface = paramBaseChatPie.app;
-    paramayfu.a("chat_tool_tencentdoc", localQQAppInterface.getCurrentAccountUin());
-    paramayfu.b(paramBaseChatPie);
-    bcvs.a(localQQAppInterface, paramBaseChatPie.getActivity(), paramBaseChatPie.sessionInfo.curFriendUin, paramBaseChatPie.sessionInfo.curType, paramBaseChatPie.sessionInfo.curFriendNick);
+    paramahvi.a("chat_tool_tencentdoc", localQQAppInterface.getCurrentAccountUin());
+    paramahvi.b(paramBaseChatPie);
+    becr.a(localQQAppInterface, paramBaseChatPie.getActivity(), paramBaseChatPie.sessionInfo.curFriendUin, paramBaseChatPie.sessionInfo.curType, paramBaseChatPie.sessionInfo.curFriendNick);
     if (paramBaseChatPie.sessionInfo.curType == 1)
     {
-      paramayfu = (TroopManager)localQQAppInterface.getManager(52);
-      if (paramayfu == null) {
-        break label167;
+      paramahvi = (TroopManager)localQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+      if (paramahvi == null) {
+        break label168;
       }
     }
-    label167:
-    for (paramayfu = paramayfu.b(paramBaseChatPie.sessionInfo.curFriendUin);; paramayfu = null)
+    label168:
+    for (paramahvi = paramahvi.b(paramBaseChatPie.sessionInfo.curFriendUin);; paramahvi = null)
     {
-      if (paramayfu != null) {}
-      for (paramayfu = "" + paramayfu.dwGroupClassExt;; paramayfu = "")
+      if (paramahvi != null) {}
+      for (paramahvi = "" + paramahvi.dwGroupClassExt;; paramahvi = "")
       {
-        bcef.b(localQQAppInterface, "dc00898", "", paramBaseChatPie.sessionInfo.curFriendUin, "0X8009E25", "0X8009E25", 0, 0, "", "", "" + paramayfu, "");
+        bdla.b(localQQAppInterface, "dc00898", "", paramBaseChatPie.sessionInfo.curFriendUin, "0X8009E25", "0X8009E25", 0, 0, "", "", "" + paramahvi, "");
         return;
       }
     }
@@ -66,11 +68,11 @@ public class CommonWebAppInfo
       {
         if (TextUtils.equals(new URI(paramSessionInfo).getScheme(), "mqqapi"))
         {
-          localObject = bfwg.a(paramBaseChatPie.app, paramBaseChatPie.getActivity(), paramSessionInfo);
+          localObject = bhey.a(paramBaseChatPie.app, paramBaseChatPie.getActivity(), paramSessionInfo);
           i = j;
           if (localObject != null)
           {
-            ((bfvp)localObject).a();
+            ((bheh)localObject).a();
             i = 1;
           }
         }
@@ -86,7 +88,7 @@ public class CommonWebAppInfo
     } while (i != 0);
     localObject = new Intent(paramBaseChatPie.getActivity(), QQBrowserActivity.class);
     ((Intent)localObject).putExtra("url", paramSessionInfo);
-    ((Intent)localObject).putExtra("selfSet_leftViewText", amtj.a(2131714729));
+    ((Intent)localObject).putExtra("selfSet_leftViewText", anvx.a(2131715077));
     paramBaseChatPie.getActivity().startActivity((Intent)localObject);
   }
   
@@ -115,21 +117,29 @@ public class CommonWebAppInfo
     return this.appid;
   }
   
+  public int getRedDotID()
+  {
+    if (isC2C()) {
+      return super.getRedDotID();
+    }
+    return getAppID();
+  }
+  
   public String getTitle()
   {
     return this.name;
   }
   
-  public void onPlusPanelAppClick(ayfu paramayfu, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     if (getAppID() == 101458937) {
-      a(paramayfu, paramBaseChatPie);
+      a(paramahvi, paramBaseChatPie);
     }
     while (a(paramBaseChatPie, getAppID())) {
       return;
     }
     a(paramBaseChatPie, paramSessionInfo);
-    paramayfu.a(paramBaseChatPie.app, getAppID(), paramSessionInfo.curFriendUin);
+    paramahvi.a(paramBaseChatPie.app, getAppID(), paramSessionInfo.curFriendUin);
   }
 }
 

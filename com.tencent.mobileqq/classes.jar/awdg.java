@@ -1,14 +1,8 @@
+import android.view.View;
+
 public abstract interface awdg
 {
-  public abstract void a();
-  
-  public abstract void a(awde paramawde);
-  
-  public abstract void a(awde paramawde, int paramInt);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public abstract void a(View paramView, arpq paramarpq, awdq paramawdq);
 }
 
 

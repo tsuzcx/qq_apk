@@ -2,16 +2,16 @@ package cooperation.qzone;
 
 public class QUA
 {
-  public static final String NOW = "2020-09-10";
-  private static final String QUA = "V1_AND_SQ_8.4.8_1492_YYB_D";
+  public static final String NOW = "2020-10-20";
+  private static final String QUA = "V1_AND_SQ_8.4.10_1524_YYB_D";
   private static String VERSION_FOR_MM;
   private static String VERSION_FOR_P;
   public static final String quaBuildNum = "100084";
   
   private static String getCoreInQua()
   {
-    int i = "V1_AND_SQ_8.4.8_1492_YYB_D".indexOf("_");
-    int k = "V1_AND_SQ_8.4.8_1492_YYB_D".lastIndexOf("_");
+    int i = "V1_AND_SQ_8.4.10_1524_YYB_D".indexOf("_");
+    int k = "V1_AND_SQ_8.4.10_1524_YYB_D".lastIndexOf("_");
     if (i < 0) {
       i = 0;
     }
@@ -19,16 +19,16 @@ public class QUA
     {
       int j = k;
       if (k < 0) {
-        j = "V1_AND_SQ_8.4.8_1492_YYB_D".length();
+        j = "V1_AND_SQ_8.4.10_1524_YYB_D".length();
       }
-      return "V1_AND_SQ_8.4.8_1492_YYB_D".substring(i, j);
+      return "V1_AND_SQ_8.4.10_1524_YYB_D".substring(i, j);
       i += 1;
     }
   }
   
   public static String getQUA3()
   {
-    return "V1_AND_SQ_8.4.8_1492_YYB_D";
+    return "V1_AND_SQ_8.4.10_1524_YYB_D";
   }
   
   public static String getVersionForHabo()

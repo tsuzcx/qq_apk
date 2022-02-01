@@ -3,21 +3,28 @@ package com.tencent.biz.pubaccount;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import oev;
+import omn;
 import org.json.JSONObject;
 
 public class VideoInfo$RichTitleInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<RichTitleInfo> CREATOR = new oev();
+  public static final Parcelable.Creator<RichTitleInfo> CREATOR = new omn();
+  public int a;
   public String a;
   public String b;
   public String c;
   public String d;
   
+  public VideoInfo$RichTitleInfo()
+  {
+    this.jdField_a_of_type_Int = 0;
+  }
+  
   public VideoInfo$RichTitleInfo(Parcel paramParcel)
   {
-    this.a = paramParcel.readString();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.b = paramParcel.readString();
     this.c = paramParcel.readString();
     this.d = paramParcel.readString();
@@ -25,14 +32,16 @@ public class VideoInfo$RichTitleInfo
   
   public VideoInfo$RichTitleInfo(JSONObject paramJSONObject)
   {
-    this.a = paramJSONObject.optString("bytes_biu_comments");
-    paramJSONObject = paramJSONObject.optJSONObject("msg_jump_info");
-    if (paramJSONObject != null)
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("bytes_biu_comments");
+    JSONObject localJSONObject = paramJSONObject.optJSONObject("msg_jump_info");
+    if (localJSONObject != null)
     {
-      this.b = paramJSONObject.optString("uint64_id");
-      this.c = paramJSONObject.optString("bytes_wording");
-      this.d = paramJSONObject.optString("bytes_jump_url");
+      this.b = localJSONObject.optString("uint64_id");
+      this.c = localJSONObject.optString("bytes_wording");
+      this.d = localJSONObject.optString("bytes_jump_url");
     }
+    this.jdField_a_of_type_Int = paramJSONObject.optInt("op_type", 0);
   }
   
   public int describeContents()
@@ -42,12 +51,12 @@ public class VideoInfo$RichTitleInfo
   
   public String toString()
   {
-    return "RichTitleInfo{normalWords='" + this.a + '\'' + ", topicId='" + this.b + '\'' + ", topicName='" + this.c + '\'' + ", jumpUrl='" + this.d + '\'' + '}';
+    return "RichTitleInfo{normalWords='" + this.jdField_a_of_type_JavaLangString + '\'' + ", topicId='" + this.b + '\'' + ", topicName='" + this.c + '\'' + ", jumpUrl='" + this.d + '\'' + '}';
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.a);
+    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
     paramParcel.writeString(this.b);
     paramParcel.writeString(this.c);
     paramParcel.writeString(this.d);

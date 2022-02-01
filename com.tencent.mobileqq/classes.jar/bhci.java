@@ -1,61 +1,74 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.support.v4.widget.ExploreByTouchHelper;
-import android.view.View;
-import android.view.accessibility.AccessibilityEvent;
-import com.tencent.mobileqq.widget.ConfigClearableEditText;
+import android.text.TextUtils;
+import com.tencent.ark.open.ArkAppCacheMgr;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.utils.QQCustomArkDialog;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bhci
-  extends ExploreByTouchHelper
 {
-  public bhci(ConfigClearableEditText paramConfigClearableEditText, View paramView)
+  public static MessageForArkApp a(Bundle paramBundle, QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2)
   {
-    super(paramView);
-  }
-  
-  public int getVirtualViewAt(float paramFloat1, float paramFloat2)
-  {
-    if ((ConfigClearableEditText.a(this.a)) && (paramFloat1 > ConfigClearableEditText.a(this.a))) {
-      return 0;
-    }
-    return -1;
-  }
-  
-  public void getVisibleVirtualViews(List<Integer> paramList)
-  {
-    if (ConfigClearableEditText.a(this.a)) {
-      paramList.add(Integer.valueOf(0));
-    }
-  }
-  
-  public boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConfigClearableEditTextHelper", 2, "onPerformActionForVirtualView virtualViewId:" + paramInt1);
-    }
-    return false;
-  }
-  
-  public void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
-  {
-    if (paramInt == 0) {
-      paramAccessibilityEvent.setContentDescription(amtj.a(2131701570));
-    }
-  }
-  
-  public void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
-  {
-    if (paramInt == 0)
+    ArkAppMessage localArkAppMessage = new ArkAppMessage();
+    localArkAppMessage.appMinVersion = "0.0.0.1";
+    localArkAppMessage.appName = "com.tencent.structmsg";
+    localArkAppMessage.appView = a(paramBundle.getInt("req_type"));
+    Object localObject = ArkAppCacheMgr.getApplicationFromManifest(localArkAppMessage.appName, localArkAppMessage.appMinVersion);
+    if (localObject != null)
     {
-      paramAccessibilityNodeInfoCompat.setContentDescription(amtj.a(2131701571));
-      paramAccessibilityNodeInfoCompat.addAction(16);
-      paramInt = ConfigClearableEditText.a(this.a);
-      paramAccessibilityNodeInfoCompat.setBoundsInParent(new Rect(paramInt, this.a.getPaddingTop(), this.a.a.getIntrinsicWidth() + paramInt, this.a.getHeight() - this.a.getPaddingBottom()));
+      localArkAppMessage.appDesc = ((String)((Map)localObject).get("desc"));
+      localArkAppMessage.appMinVersion = ((String)((Map)localObject).get("version"));
     }
+    if (TextUtils.isEmpty(localArkAppMessage.appDesc)) {
+      localArkAppMessage.appDesc = localArkAppMessage.appName;
+    }
+    String str = paramBundle.getString("title");
+    localObject = str;
+    if (TextUtils.isEmpty(str)) {
+      localObject = localArkAppMessage.appDesc;
+    }
+    localArkAppMessage.promptText = String.format(anvx.a(2131700160), new Object[] { localObject });
+    localArkAppMessage.metaList = QQCustomArkDialog.getMetaData(paramBundle, localArkAppMessage.appName);
+    localArkAppMessage.config = a();
+    paramBundle = bcsa.a(paramQQAppInterface, paramString1, paramString2, paramInt, localArkAppMessage);
+    paramBundle.msgData = localArkAppMessage.toBytes();
+    paramBundle.parse();
+    return paramBundle;
+  }
+  
+  public static String a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("forward", 1);
+      localJSONObject.put("autosize", 1);
+      localJSONObject.put("type", "normal");
+      return localJSONObject.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("ArkMessageBuilder", 1, "getConfigValue", localJSONException);
+      }
+    }
+  }
+  
+  public static String a(int paramInt)
+  {
+    if (paramInt == 2) {
+      return "music";
+    }
+    if (paramInt == 4) {
+      return "video";
+    }
+    return "news";
   }
 }
 

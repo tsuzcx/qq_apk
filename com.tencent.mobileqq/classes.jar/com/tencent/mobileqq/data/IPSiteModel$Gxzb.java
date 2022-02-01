@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import amtj;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aqqo;
+import anvx;
+import artz;
 
 public class IPSiteModel$Gxzb
   implements Parcelable
@@ -12,8 +12,8 @@ public class IPSiteModel$Gxzb
   public static final String BACKGROUND;
   public static final String BUBBLE;
   public static final String CARD;
-  public static final Parcelable.Creator<Gxzb> CREATOR = new aqqo();
-  public static final String EMOJI = amtj.a(2131704978);
+  public static final Parcelable.Creator<Gxzb> CREATOR = new artz();
+  public static final String EMOJI = anvx.a(2131705329);
   public static final String FONT;
   public static final String FUNCALL;
   public static final String PENDANT;
@@ -28,14 +28,14 @@ public class IPSiteModel$Gxzb
   
   static
   {
-    BUBBLE = amtj.a(2131704975);
-    THEME = amtj.a(2131704971);
-    PENDANT = amtj.a(2131704974);
-    FONT = amtj.a(2131704976);
-    BACKGROUND = amtj.a(2131704977);
-    FUNCALL = amtj.a(2131704970);
-    CARD = amtj.a(2131704972);
-    REDPACKT = amtj.a(2131704973);
+    BUBBLE = anvx.a(2131705326);
+    THEME = anvx.a(2131705322);
+    PENDANT = anvx.a(2131705325);
+    FONT = anvx.a(2131705327);
+    BACKGROUND = anvx.a(2131705328);
+    FUNCALL = anvx.a(2131705321);
+    CARD = anvx.a(2131705323);
+    REDPACKT = anvx.a(2131705324);
   }
   
   public IPSiteModel$Gxzb() {}
@@ -72,7 +72,7 @@ public class IPSiteModel$Gxzb
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.IPSiteModel.Gxzb
  * JD-Core Version:    0.7.0.1
  */

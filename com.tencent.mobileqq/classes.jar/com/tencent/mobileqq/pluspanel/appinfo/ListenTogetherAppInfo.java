@@ -1,12 +1,14 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import auzn;
-import ayfu;
-import bcef;
+import ahvi;
+import awfq;
+import bdla;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -23,7 +25,7 @@ public class ListenTogetherAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839188;
+    return 2130839208;
   }
   
   public int getAppID()
@@ -52,10 +54,10 @@ public class ListenTogetherAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131693351);
+    return BaseApplicationImpl.getContext().getString(2131693532);
   }
   
-  public void onPlusPanelAppClick(ayfu paramayfu, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     if ((paramBaseChatPie == null) || (paramBaseChatPie.getActivity() == null)) {}
     for (;;)
@@ -76,7 +78,7 @@ public class ListenTogetherAppInfo
         int i;
         if (j != 0)
         {
-          localTroopInfo = ((TroopManager)localQQAppInterface.getManager(52)).c(paramSessionInfo.curFriendUin);
+          localTroopInfo = ((TroopManager)localQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramSessionInfo.curFriendUin);
           str = localQQAppInterface.getCurrentAccountUin();
           if (localTroopInfo.isTroopOwner(str)) {
             i = 0;
@@ -84,20 +86,20 @@ public class ListenTogetherAppInfo
         }
         for (;;)
         {
-          label80:
-          auzn.b(localQQAppInterface, paramBaseChatPie.getActivity(), k, paramSessionInfo.curFriendUin, 0);
-          if ((j == 0) && (auzn.a(localQQAppInterface, "listen_together_c2c_aio_red_dot_show", true, false)))
+          label81:
+          awfq.b(localQQAppInterface, paramBaseChatPie.getActivity(), k, paramSessionInfo.curFriendUin, 0);
+          if ((j == 0) && (awfq.a(localQQAppInterface, "listen_together_c2c_aio_red_dot_show", true, false)))
           {
-            auzn.a(localQQAppInterface, "listen_together_c2c_aio_red_dot_show", false, false);
-            paramayfu.b(paramBaseChatPie);
+            awfq.a(localQQAppInterface, "listen_together_c2c_aio_red_dot_show", false, false);
+            paramahvi.b(paramBaseChatPie);
           }
           if (j == 0) {}
-          for (paramayfu = "c2c_AIO";; paramayfu = "Grp_AIO")
+          for (paramahvi = "c2c_AIO";; paramahvi = "Grp_AIO")
           {
-            bcef.b(null, "dc00899", paramayfu, "", "music_tab", "clk_panelmusic", 0, 0, paramSessionInfo.curFriendUin, i + "", i + "", "");
+            bdla.b(null, "dc00899", paramahvi, "", "music_tab", "clk_panelmusic", 0, 0, paramSessionInfo.curFriendUin, i + "", i + "", "");
             return;
             if (paramSessionInfo.curType != 1) {
-              break label248;
+              break label249;
             }
             j = 1;
             k = 1;
@@ -105,14 +107,14 @@ public class ListenTogetherAppInfo
             if (localTroopInfo.isTroopAdmin(str))
             {
               i = 1;
-              break label80;
+              break label81;
             }
             i = 2;
-            break label80;
+            break label81;
           }
           i = -1;
         }
-        label248:
+        label249:
         j = 0;
         k = 0;
       }

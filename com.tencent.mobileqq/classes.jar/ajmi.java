@@ -1,23 +1,20 @@
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.data.PhoneContact;
 
 public class ajmi
+  extends amgz
 {
-  public int a;
+  public ajmf a;
   public View a;
-  public Button a;
   public ImageView a;
   public TextView a;
-  public PhoneContact a;
-  public String a;
-  public Button b;
   public ImageView b;
   public TextView b;
-  public Button c;
   public TextView c;
+  public TextView d;
+  public TextView e;
+  public TextView f;
 }
 
 

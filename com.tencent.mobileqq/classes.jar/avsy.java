@@ -1,55 +1,17 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import com.tencent.mobileqq.data.PhoneContact;
-import friendlist.GetOnlineInfoResp;
-import java.util.List;
-import mqq.manager.Manager;
+import android.view.View;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.3;
+import com.tencent.shadow.dynamic.host.EnterCallback;
 
-public abstract interface avsy
-  extends Manager
+public class avsy
+  implements EnterCallback
 {
-  public abstract RespondQueryQQBindingStat a();
+  public avsy(GroupVideoManager.3 param3) {}
   
-  public abstract PhoneContact a(String paramString);
+  public void onCloseLoadingView() {}
   
-  public abstract String a(String paramString);
+  public void onEnterComplete() {}
   
-  public abstract void a(int paramInt, List<String> paramList);
-  
-  public abstract void a(avsz paramavsz);
-  
-  public abstract void a(String paramString, GetOnlineInfoResp paramGetOnlineInfoResp);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract Object[] a();
-  
-  public abstract PhoneContact b(String paramString);
-  
-  public abstract String b(String paramString);
-  
-  public abstract void b(avsz paramavsz);
-  
-  public abstract PhoneContact c(String paramString);
-  
-  public abstract void c(String paramString1, String paramString2);
-  
-  public abstract boolean c();
-  
-  public abstract int d();
-  
-  public abstract List<PhoneContact> d();
-  
-  public abstract boolean d();
-  
-  public abstract List<List<PhoneContact>> e();
-  
-  public abstract List<PhoneContact> f();
-  
-  public abstract void f();
-  
-  public abstract List<PhoneContact> g();
-  
-  public abstract boolean i();
+  public void onShowLoadingView(View paramView) {}
 }
 
 

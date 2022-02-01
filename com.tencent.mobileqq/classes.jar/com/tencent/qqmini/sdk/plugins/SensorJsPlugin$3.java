@@ -11,57 +11,32 @@ class SensorJsPlugin$3
   
   public void run()
   {
-    int i = 1;
-    for (;;)
+    try
     {
-      int j;
-      try
+      SensorJsPlugin.access$000(this.this$0);
+      JSONObject localJSONObject1 = new JSONObject(this.val$req.jsonParams);
+      if (localJSONObject1.optBoolean("enable"))
       {
-        SensorJsPlugin.access$000(this.this$0);
-        JSONObject localJSONObject1 = new JSONObject(this.val$req.jsonParams);
-        if (localJSONObject1.optBoolean("enable"))
+        int i = this.this$0.getInterval(localJSONObject1);
+        if (this.this$0.startGyroscope(this.val$req.jsService, i))
         {
-          j = localJSONObject1.optInt("interval");
-          if (j != 20) {
-            break label201;
-          }
-          if (this.this$0.startGyroscope(this.val$req.jsService, i))
-          {
-            SensorJsPlugin.access$202(this.this$0, true);
-            this.val$req.ok();
-            return;
-          }
-          this.val$req.fail();
+          this.val$req.ok();
           return;
         }
-      }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
+        this.val$req.fail();
         return;
       }
-      this.this$0.stopGyroscope();
-      if (!SensorJsPlugin.access$200(this.this$0)) {
-        this.val$req.fail(":fail to disable, not enable?");
-      }
-      for (;;)
-      {
-        localJSONObject2 = new JSONObject();
-        localJSONObject2.put("errMsg", this.val$req.event + ":cancel");
-        this.val$req.evaluateCallbackJs(localJSONObject2.toString());
-        return;
-        SensorJsPlugin.access$202(this.this$0, false);
-        this.val$req.ok();
-      }
-      label201:
-      while (j != 60)
-      {
-        JSONObject localJSONObject2;
-        i = 3;
-        break;
-      }
-      i = 2;
     }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+      return;
+    }
+    this.this$0.stopGyroscope();
+    this.val$req.ok();
+    JSONObject localJSONObject2 = new JSONObject();
+    localJSONObject2.put("errMsg", this.val$req.event + ":cancel");
+    this.val$req.evaluateCallbackJs(localJSONObject2.toString());
   }
 }
 

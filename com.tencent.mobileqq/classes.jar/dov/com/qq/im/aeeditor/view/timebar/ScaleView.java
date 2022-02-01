@@ -12,23 +12,23 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.Scroller;
 import androidx.annotation.RequiresApi;
-import bmov;
-import bmow;
-import bmox;
-import bmoz;
+import boen;
+import boeo;
+import boep;
+import boer;
 
 public class ScaleView
   extends View
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private ScaleGestureDetector.OnScaleGestureListener jdField_a_of_type_AndroidViewScaleGestureDetector$OnScaleGestureListener = new bmov(this);
+  private ScaleGestureDetector.OnScaleGestureListener jdField_a_of_type_AndroidViewScaleGestureDetector$OnScaleGestureListener = new boen(this);
   private ScaleGestureDetector jdField_a_of_type_AndroidViewScaleGestureDetector;
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private bmow jdField_a_of_type_Bmow;
-  private bmox jdField_a_of_type_Bmox;
-  public bmoz a;
+  private boeo jdField_a_of_type_Boeo;
+  private boep jdField_a_of_type_Boep;
+  public boer a;
   private ScaleView.MotionModel jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleView$MotionModel = ScaleView.MotionModel.None;
   private int b;
   private int c;
@@ -69,15 +69,15 @@ public class ScaleView
   
   private int a(long paramLong)
   {
-    return (int)(this.jdField_a_of_type_Bmoz.a() * this.jdField_a_of_type_Bmoz.a(paramLong));
+    return (int)(this.jdField_a_of_type_Boer.a() * this.jdField_a_of_type_Boer.a(paramLong));
   }
   
   private long a()
   {
     if (a() == getScrollX()) {
-      return this.jdField_a_of_type_Bmoz.b();
+      return this.jdField_a_of_type_Boer.b();
     }
-    return this.jdField_a_of_type_Bmoz.c();
+    return this.jdField_a_of_type_Boer.c();
   }
   
   private void a()
@@ -103,11 +103,11 @@ public class ScaleView
     do
     {
       return;
-      if (this.jdField_a_of_type_Bmoz != null) {
-        this.jdField_a_of_type_Bmoz.a();
+      if (this.jdField_a_of_type_Boer != null) {
+        this.jdField_a_of_type_Boer.a();
       }
-    } while (this.jdField_a_of_type_Bmow == null);
-    this.jdField_a_of_type_Bmow.b(getScrollX());
+    } while (this.jdField_a_of_type_Boeo == null);
+    this.jdField_a_of_type_Boeo.b(getScrollX());
   }
   
   private void a(MotionEvent paramMotionEvent)
@@ -135,8 +135,8 @@ public class ScaleView
   
   private void c()
   {
-    if (this.jdField_a_of_type_Bmox != null) {
-      this.jdField_a_of_type_Bmox.a();
+    if (this.jdField_a_of_type_Boep != null) {
+      this.jdField_a_of_type_Boep.a();
     }
     this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleView$MotionModel = ScaleView.MotionModel.None;
     int i = getScrollX();
@@ -171,12 +171,12 @@ public class ScaleView
   
   public int a()
   {
-    return this.jdField_a_of_type_Bmoz.a(this.jdField_a_of_type_Bmoz.b());
+    return this.jdField_a_of_type_Boer.a(this.jdField_a_of_type_Boer.b());
   }
   
   public void a(long paramLong)
   {
-    int i = this.jdField_a_of_type_Bmoz.a(paramLong);
+    int i = this.jdField_a_of_type_Boer.a(paramLong);
     int j = getScrollX();
     int k = getScrollY();
     this.jdField_a_of_type_AndroidWidgetScroller.startScroll(j, k, i - j, -k, 0);
@@ -186,16 +186,16 @@ public class ScaleView
   @RequiresApi(api=16)
   public void a(long paramLong, int paramInt)
   {
-    int i = this.jdField_a_of_type_Bmoz.a(paramLong);
+    int i = this.jdField_a_of_type_Boer.a(paramLong);
     int j = getScrollX();
     int k = getScrollY();
     this.jdField_a_of_type_AndroidWidgetScroller.startScroll(j, k, i - j, -k, paramInt);
     postInvalidateOnAnimation();
   }
   
-  public void a(bmoz parambmoz)
+  public void a(boer paramboer)
   {
-    setScaleAdapter(parambmoz, a());
+    setScaleAdapter(paramboer, a());
   }
   
   public void computeScroll()
@@ -210,22 +210,22 @@ public class ScaleView
     {
       do
       {
-        while (this.jdField_a_of_type_Bmoz == null)
+        while (this.jdField_a_of_type_Boer == null)
         {
           return;
           if ((this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleView$MotionModel == ScaleView.MotionModel.ComputeScroll) || (this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleView$MotionModel == ScaleView.MotionModel.FlingScroll)) {
             this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleView$MotionModel = ScaleView.MotionModel.None;
           }
         }
-        this.jdField_a_of_type_Bmoz.a();
-      } while (this.jdField_a_of_type_Bmow == null);
+        this.jdField_a_of_type_Boer.a();
+      } while (this.jdField_a_of_type_Boeo == null);
       if (this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleView$MotionModel == ScaleView.MotionModel.None)
       {
-        this.jdField_a_of_type_Bmow.b(getScrollX());
+        this.jdField_a_of_type_Boeo.b(getScrollX());
         return;
       }
     } while ((this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleView$MotionModel != ScaleView.MotionModel.Move) && (this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleView$MotionModel != ScaleView.MotionModel.FlingScroll));
-    this.jdField_a_of_type_Bmow.a(getScrollX());
+    this.jdField_a_of_type_Boeo.a(getScrollX());
   }
   
   protected void onDetachedFromWindow()
@@ -274,38 +274,38 @@ public class ScaleView
   
   public void setCurrTime(long paramLong)
   {
-    if (paramLong < this.jdField_a_of_type_Bmoz.a()) {}
-    while (paramLong > this.jdField_a_of_type_Bmoz.b()) {
+    if (paramLong < this.jdField_a_of_type_Boer.a()) {}
+    while (paramLong > this.jdField_a_of_type_Boer.b()) {
       return;
     }
     this.jdField_a_of_type_Long = paramLong;
     d();
-    this.jdField_a_of_type_Bmoz.a();
+    this.jdField_a_of_type_Boer.a();
     postInvalidate();
   }
   
-  public void setMoveByUserListener(bmox parambmox)
+  public void setMoveByUserListener(boep paramboep)
   {
-    this.jdField_a_of_type_Bmox = parambmox;
+    this.jdField_a_of_type_Boep = paramboep;
   }
   
-  public void setOnBarMoveListener(bmow parambmow)
+  public void setOnBarMoveListener(boeo paramboeo)
   {
-    this.jdField_a_of_type_Bmow = parambmow;
+    this.jdField_a_of_type_Boeo = paramboeo;
   }
   
-  public void setScaleAdapter(bmoz parambmoz)
+  public void setScaleAdapter(boer paramboer)
   {
-    this.jdField_a_of_type_Bmoz = parambmoz;
-    this.jdField_a_of_type_Bmoz.a(this);
-    this.jdField_a_of_type_Long = this.jdField_a_of_type_Bmoz.a();
+    this.jdField_a_of_type_Boer = paramboer;
+    this.jdField_a_of_type_Boer.a(this);
+    this.jdField_a_of_type_Long = this.jdField_a_of_type_Boer.a();
   }
   
-  public void setScaleAdapter(bmoz parambmoz, long paramLong)
+  public void setScaleAdapter(boer paramboer, long paramLong)
   {
-    this.jdField_a_of_type_Bmoz = parambmoz;
-    this.jdField_a_of_type_Bmoz.a(this);
-    this.jdField_a_of_type_Long = this.jdField_a_of_type_Bmoz.a();
+    this.jdField_a_of_type_Boer = paramboer;
+    this.jdField_a_of_type_Boer.a(this);
+    this.jdField_a_of_type_Long = this.jdField_a_of_type_Boer.a();
     setCurrTime(paramLong);
   }
 }

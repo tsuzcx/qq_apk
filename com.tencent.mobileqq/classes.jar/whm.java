@@ -1,33 +1,17 @@
-import android.graphics.Bitmap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class whm
-  implements xct
+public final class whm
+  implements View.OnClickListener
 {
-  whm(whl paramwhl, String paramString) {}
+  public whm(EditText paramEditText) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    if (whl.a(this.jdField_a_of_type_Whl))
-    {
-      paramString = bfvo.c(paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight());
-      if (paramString == null)
-      {
-        whl.a(this.jdField_a_of_type_Whl, false);
-        return;
-      }
-      bool = yoy.a(paramString, whl.a(this.jdField_a_of_type_Whl));
-      paramString.recycle();
-      whl.b(this.jdField_a_of_type_Whl, bool);
-      return;
-    }
-    boolean bool = yoy.a(paramBitmap, whl.a(this.jdField_a_of_type_Whl));
-    whl.c(this.jdField_a_of_type_Whl, bool);
-  }
-  
-  public void a(String paramString, Throwable paramThrowable)
-  {
-    xvv.e("DownloadPic2FileJob", "Download url failed url=%s", new Object[] { this.jdField_a_of_type_JavaLangString });
-    whl.d(this.jdField_a_of_type_Whl, false);
+    this.a.append("@");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,71 +1,90 @@
-import android.text.TextUtils;
-import com.qq.wx.voice.embedqqegg.recognizer.VoiceRecognizer;
-import com.qq.wx.voice.embedqqegg.recognizer.VoiceRecognizerListener;
-import com.qq.wx.voice.embedqqegg.recognizer.VoiceRecognizerResult;
-import com.qq.wx.voice.embedqqegg.recognizer.VoiceRecordState;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.random.RandomWebProtocol;
 import com.tencent.qphone.base.util.QLog;
+import mqq.manager.TicketManager;
+import org.json.JSONObject;
 
-class ltb
-  implements VoiceRecognizerListener
+public class ltb
 {
-  ltb(lsz paramlsz) {}
+  public int a;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  boolean jdField_a_of_type_Boolean;
+  public int b;
+  String b;
+  public String c;
+  public String d;
+  String e = "client";
   
-  public void onGetError(int paramInt)
+  public ltb(RandomWebProtocol paramRandomWebProtocol)
   {
-    QLog.d("AVVoiceRecog", 2, "onGetError. err = " + paramInt);
-  }
-  
-  public void onGetResult(VoiceRecognizerResult paramVoiceRecognizerResult)
-  {
-    if ((!lsz.a(this.a)) || (lsz.b(this.a))) {
-      QLog.i("AVVoiceRecog", 1, "onGetResult. discard. !mIsInitAndStart || mIsPause.");
-    }
-    label162:
-    for (;;)
-    {
+    this.jdField_a_of_type_Int = 0;
+    String str = RandomWebProtocol.a(paramRandomWebProtocol).getAccount();
+    paramRandomWebProtocol = (TicketManager)RandomWebProtocol.a(paramRandomWebProtocol).getManager(2);
+    if (paramRandomWebProtocol == null) {
       return;
-      if (paramVoiceRecognizerResult.isHalf)
-      {
-        QLog.i("AVVoiceRecog", 1, "onGetResult. result.isHalf.");
-        return;
-      }
-      if (TextUtils.isEmpty(paramVoiceRecognizerResult.text)) {
-        QLog.i("AVVoiceRecog", 1, "onGetResult. result.text == null.");
-      }
+    }
+    this.jdField_a_of_type_JavaLangString = "8.4.10";
+    this.jdField_a_of_type_Boolean = false;
+    try
+    {
+      this.jdField_a_of_type_Long = Long.parseLong(str);
+      this.jdField_b_of_type_JavaLangString = paramRandomWebProtocol.getSkey(str);
+      this.jdField_b_of_type_Int = -1;
+      this.jdField_a_of_type_OrgJsonJSONObject = null;
+      this.c = null;
+      this.d = null;
+      return;
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
       for (;;)
       {
-        if (!paramVoiceRecognizerResult.isEnd) {
-          break label162;
-        }
-        int i = VoiceRecognizer.shareInstance().startReceiving();
-        if (i >= 0) {
-          break;
-        }
-        QLog.i("AVVoiceRecog", 1, "restart falied. ret = " + i);
-        return;
-        QLog.i("AVVoiceRecog", 1, "onGetResult. result.text = " + paramVoiceRecognizerResult.text);
-        if (lsz.a(this.a) != null) {
-          lsz.a(this.a).a(paramVoiceRecognizerResult.text);
+        this.jdField_a_of_type_Long = 0L;
+        if (QLog.isColorLevel()) {
+          QLog.d("RandomWebProtocol", 2, "[randomWeb] init Req error: failed parse self_uin: " + str);
         }
       }
     }
   }
   
-  public void onGetVoiceRecordState(VoiceRecordState paramVoiceRecordState)
+  ltb(RandomWebProtocol paramRandomWebProtocol, ltb paramltb)
   {
-    QLog.d("AVVoiceRecog", 2, "onGetVoiceRecordState. state = " + paramVoiceRecordState);
+    this.jdField_a_of_type_Int = paramltb.jdField_a_of_type_Int;
+    this.jdField_a_of_type_JavaLangString = paramltb.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Boolean = paramltb.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Long = paramltb.jdField_a_of_type_Long;
+    this.jdField_b_of_type_JavaLangString = paramltb.jdField_b_of_type_JavaLangString;
+    this.jdField_b_of_type_Int = paramltb.jdField_b_of_type_Int;
+    this.jdField_a_of_type_OrgJsonJSONObject = paramltb.jdField_a_of_type_OrgJsonJSONObject;
+    this.c = paramltb.c;
+    this.d = paramltb.d;
+    this.e = paramltb.e;
   }
   
-  public void onVolumeChanged(int paramInt)
+  public String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVVoiceRecog", 2, "onVolumeChanged. volume = " + paramInt);
+    if (this.jdField_a_of_type_Int == 0) {
+      return "";
     }
+    try
+    {
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("reqtype", this.jdField_a_of_type_Int).put("qqversion", this.jdField_a_of_type_JavaLangString).put("isdebug", this.jdField_a_of_type_Boolean).put("self_uin", this.jdField_a_of_type_Long).put("self_skey", this.jdField_b_of_type_JavaLangString).put("self_gender", this.jdField_b_of_type_Int).put("reqbody", this.jdField_a_of_type_OrgJsonJSONObject);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ltb
  * JD-Core Version:    0.7.0.1
  */

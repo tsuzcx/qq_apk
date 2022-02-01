@@ -1,57 +1,75 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.view.View;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqDateCollectionList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDateVideoCollectionList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class wsw
-  extends wrx
+  extends wfm
 {
-  public wsw(VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public int c;
+  public int d;
+  public int e;
   
-  public void d()
+  public wsw()
   {
-    boolean bool = false;
-    super.d();
-    String str1 = this.a.jdField_a_of_type_JavaLangString;
-    String str2 = VideoViewVideoHolder.jdField_a_of_type_ArrayOfJavaLangString[VideoViewVideoHolder.f(this.a)];
-    if (this.a.a().getVisibility() == 0) {
-      bool = true;
-    }
-    xvv.d(str1, "onResume, current state = %s, startBtn show = %s", new Object[] { str2, Boolean.valueOf(bool) });
-    if (this.a.c()) {
-      this.a.a(10, "onResume");
-    }
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public void e()
+  public String a()
   {
-    super.e();
-    VideoViewVideoHolder.a(this.a, false);
-    xvv.d(this.a.jdField_a_of_type_JavaLangString, "onPause, current state = %s", new Object[] { VideoViewVideoHolder.jdField_a_of_type_ArrayOfJavaLangString[VideoViewVideoHolder.f(this.a)] });
-    this.a.a(0, true, "onPause");
+    if (QQStoryContext.a().a(this.jdField_b_of_type_JavaLangString)) {
+      return weg.a("StorySvc.get_date_collection_list");
+    }
+    return weg.a("StorySvc.get_others_video_list");
   }
   
-  public void g()
+  public wfh a(byte[] paramArrayOfByte)
   {
-    super.g();
-    VideoViewVideoHolder.a(this.a).removeCallbacksAndMessages(null);
-    this.a.jdField_a_of_type_Wtn.a();
-    this.a.a(0, true, "onDestroy");
-    this.a.jdField_a_of_type_Wur.a();
-    this.a.jdField_a_of_type_Wur.e();
-    wkg localwkg = VideoViewVideoHolder.a(this.a);
-    VideoViewVideoHolder.a(this.a, null);
-    if (localwkg != null) {
-      localwkg.a();
-    }
-    if (VideoViewVideoHolder.a(this.a) != null)
+    qqstory_service.RspDateVideoCollectionList localRspDateVideoCollectionList = new qqstory_service.RspDateVideoCollectionList();
+    try
     {
-      VideoViewVideoHolder.a(this.a).recycle();
-      VideoViewVideoHolder.a(this.a, null);
+      localRspDateVideoCollectionList.mergeFrom(paramArrayOfByte);
+      return new wuu(this.jdField_b_of_type_JavaLangString, localRspDateVideoCollectionList);
     }
-    if ((this.a.jdField_a_of_type_Yro != null) && (this.a.jdField_a_of_type_Yro.isShowing())) {
-      this.a.jdField_a_of_type_Yro.dismiss();
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      ykq.b("Q.qqstory.memories:GetDateCollectionListRequest", a(), paramArrayOfByte);
     }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqDateCollectionList localReqDateCollectionList = new qqstory_service.ReqDateCollectionList();
+    localReqDateCollectionList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    localReqDateCollectionList.collection_count.set(this.c);
+    localReqDateCollectionList.collection_video_count.set(this.d);
+    localReqDateCollectionList.seqno.set(this.jdField_b_of_type_Long);
+    PBInt32Field localPBInt32Field = localReqDateCollectionList.is_friend;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 1;; i = 0)
+    {
+      localPBInt32Field.set(i);
+      if (this.e != -1) {
+        localReqDateCollectionList.time_zone.set(this.e);
+      }
+      localReqDateCollectionList.union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+      return localReqDateCollectionList.toByteArray();
+    }
+  }
+  
+  public String toString()
+  {
+    return "GetDateCollectionListRequest{startCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + ", collectionPageSize=" + this.c + ", collectionVideoCount=" + this.d + ", seq=" + this.jdField_b_of_type_Long + ", timeZoneOffset=" + this.e + ", uin=" + this.jdField_b_of_type_JavaLangString + ", isFriend=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

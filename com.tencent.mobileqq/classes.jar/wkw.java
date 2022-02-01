@@ -1,38 +1,22 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-
-final class wkw
-  implements bjoe
+public abstract interface wkw
 {
-  wkw(StoryVideoItem paramStoryVideoItem, bjnw parambjnw) {}
+  public abstract String getName();
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      paramView = "16384";
-      QQUserUIItem localQQUserUIItem = ((vvj)vux.a(2)).b(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid);
-      if ((localQQUserUIItem != null) && (!TextUtils.isEmpty(localQQUserUIItem.qq))) {
-        new wct().a(localQQUserUIItem.qq, localQQUserUIItem.isFriend(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramView, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getVideoUrl());
-      }
-      break;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-      paramView = "2";
-      break;
-      paramView = "1";
-      break;
-      paramView = "4";
-      break;
-      xvv.d("Q.qqstory.player.PlayModeUtils", "report video error because evil uin is empty.");
-    }
-  }
+  public abstract int getRelationType();
+  
+  public abstract String getUnionId();
+  
+  public abstract boolean isFriend();
+  
+  public abstract boolean isMe();
+  
+  public abstract boolean isSubscribe();
+  
+  public abstract boolean isSubscribeButNoFriend();
+  
+  public abstract boolean isVip();
+  
+  public abstract boolean isVipButNoFriend();
 }
 
 

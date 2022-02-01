@@ -1,55 +1,13 @@
-import java.util.List;
-import org.json.JSONObject;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahom
+  implements ahnr
 {
-  private ahon a;
-  
-  public ahom(ahon paramahon)
+  public void a(agtf paramagtf, MessageRecord paramMessageRecord, agus paramagus, aftk paramaftk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    this.a = paramahon;
-  }
-  
-  public String a()
-  {
-    if (this.a == null) {
-      return "";
-    }
-    return this.a.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<String> a()
-  {
-    if (this.a == null) {
-      return null;
-    }
-    return this.a.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(JSONObject paramJSONObject) {}
-  
-  public String b()
-  {
-    if (this.a == null) {
-      return "";
-    }
-    return this.a.b;
-  }
-  
-  public String c()
-  {
-    if (this.a == null) {
-      return "";
-    }
-    return this.a.c;
-  }
-  
-  public String d()
-  {
-    if (this.a == null) {
-      return "";
-    }
-    return this.a.d;
+    paramagtf.b(paramMessageRecord, paramLinearLayout, paramagus);
   }
 }
 

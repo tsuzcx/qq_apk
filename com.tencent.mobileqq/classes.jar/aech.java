@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 
 public class aech
-  implements DialogInterface.OnClickListener
+  extends bduf
 {
-  public aech(RegisterActivity paramRegisterActivity) {}
+  public aech(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    paramDialogInterface.dismiss();
+    GeneralSettingActivity.a(this.a, paramBoolean2);
+  }
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    GeneralSettingActivity.a(this.a, paramBoolean2);
   }
 }
 

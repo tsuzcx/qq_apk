@@ -2,9 +2,10 @@ package common.config.service;
 
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import avta;
-import bkea;
+import awzb;
+import blpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import cooperation.qzone.thread.QzoneBaseThread;
 import cooperation.qzone.thread.QzoneHandlerThreadFactory;
 import cooperation.qzone.util.QZLog;
@@ -84,14 +85,14 @@ public class QZoneConfigHelper
   
   public static long enableQZoneContentBoxMiniProgram()
   {
-    return bkea.a().a("contentboxlaunch", "gocontentboxminiprogram", 0);
+    return blpl.a().a("contentboxlaunch", "gocontentboxminiprogram", 0);
   }
   
   public static boolean enableQZoneContextBox(QQAppInterface paramQQAppInterface)
   {
     try
     {
-      boolean bool = ((avta)paramQQAppInterface.getManager(10)).b();
+      boolean bool = ((awzb)paramQQAppInterface.getManager(QQManagerFactory.QZONE_MANAGER)).b();
       return bool;
     }
     catch (Throwable paramQQAppInterface)

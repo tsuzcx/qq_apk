@@ -1,20 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager;
+import java.util.Iterator;
+import java.util.List;
 
-class yvl
-  implements View.OnClickListener
+public class yvl
+  implements ViewPager.OnPageChangeListener
 {
-  yvl(yvj paramyvj) {}
+  public yvl(FaceViewPager paramFaceViewPager) {}
   
-  public void onClick(View paramView)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    TextView localTextView = (TextView)this.a.a.findViewById(2131365073);
-    if ((localTextView.getText() instanceof String)) {
-      this.a.a((String)localTextView.getText());
+    Iterator localIterator = FaceViewPager.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((yvm)localIterator.next()).b(paramInt);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

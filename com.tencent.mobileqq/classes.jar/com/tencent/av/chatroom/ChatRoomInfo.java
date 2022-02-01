@@ -3,12 +3,12 @@ package com.tencent.av.chatroom;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import ljs;
+import lke;
 
 public class ChatRoomInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ChatRoomInfo> CREATOR = new ljs();
+  public static final Parcelable.Creator<ChatRoomInfo> CREATOR = new lke();
   public int a;
   public long a;
   public boolean a;

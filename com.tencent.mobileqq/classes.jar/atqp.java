@@ -1,29 +1,75 @@
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.fragment.AppletsSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.text.QQTextBuilder;
 
 public class atqp
-  implements View.OnClickListener
+  implements bcnt
 {
-  public atqp(AppletsSettingFragment paramAppletsSettingFragment) {}
+  protected int a;
+  protected View a;
+  protected ImageView a;
+  protected TextView a;
+  protected TextView b;
   
-  public void onClick(View paramView)
+  public atqp() {}
+  
+  public atqp(ViewGroup paramViewGroup)
   {
-    if (AppletsSettingFragment.a(this.a))
-    {
-      this.a.a();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    AppletsSettingFragment localAppletsSettingFragment = this.a;
-    if (!AppletsSettingFragment.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      AppletsSettingFragment.a(localAppletsSettingFragment, bool);
-      AppletsSettingFragment.a(this.a, AppletsSettingFragment.a(this.a));
-      break;
-    }
+    this.jdField_a_of_type_Int = 2131562833;
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(this.jdField_a_of_type_Int, paramViewGroup, false);
+    a();
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public View a(String paramString)
+  {
+    return null;
+  }
+  
+  public ImageView a()
+  {
+    return null;
+  }
+  
+  public TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  protected void a()
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368501));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379001));
+    this.jdField_a_of_type_AndroidWidgetTextView.setEditableFactory(QQTextBuilder.EMOCTATION_FACORY);
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365538));
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131379077).setVisibility(8);
+  }
+  
+  public ImageView b()
+  {
+    return this.jdField_a_of_type_AndroidWidgetImageView;
+  }
+  
+  public TextView b()
+  {
+    return null;
+  }
+  
+  public TextView c()
+  {
+    return this.b;
+  }
+  
+  public TextView d()
+  {
+    return null;
   }
 }
 

@@ -1,67 +1,44 @@
-import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.UUID;
 
 class atye
-  extends atyo
+  extends anrc
 {
-  atye(atyd paramatyd) {}
+  atye(atxr paramatxr) {}
   
-  protected void b(Object paramObject)
+  protected void a(bfjs parambfjs, int paramInt1, int paramInt2, String paramString1, String paramString2, Bundle paramBundle)
   {
-    super.b(paramObject);
-    if ((paramObject instanceof ArrayList))
-    {
-      paramObject = (ArrayList)paramObject;
-      int j = paramObject.size();
-      int i = 0;
-      if (i < j)
-      {
-        Object localObject;
-        GameCenterSessionInfo localGameCenterSessionInfo;
-        if ((paramObject.get(i) instanceof atyc))
-        {
-          localObject = (atyc)paramObject.get(i);
-          localGameCenterSessionInfo = this.a.b(((atyc)localObject).jdField_b_of_type_JavaLangString);
-          if (localGameCenterSessionInfo != null)
-          {
-            localGameCenterSessionInfo.f(((atyc)localObject).c);
-            localGameCenterSessionInfo.g(((atyc)localObject).i);
-            localGameCenterSessionInfo.i(((atyc)localObject).e);
-            localGameCenterSessionInfo.d(((atyc)localObject).jdField_b_of_type_Int);
-            localGameCenterSessionInfo.c(((atyc)localObject).k);
-            localGameCenterSessionInfo.h(((atyc)localObject).d);
-            localGameCenterSessionInfo.a(((atyc)localObject).j);
-            if (j <= 30) {
-              break label178;
-            }
-            if (i == j - 1) {
-              this.a.a("action_qgame_messgae_change", localGameCenterSessionInfo, 3, this.a.a());
-            }
-          }
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          label178:
-          if (localGameCenterSessionInfo.a() == 0)
-          {
-            localObject = this.a.c(localGameCenterSessionInfo.e());
-            if (QLog.isColorLevel()) {
-              QLog.d(atyd.e(), 2, "[onGameUserInfoChangedNotify] folder session:" + localObject);
-            }
-            if ((localObject != null) && (((GameCenterSessionInfo)localObject).d().equals(localGameCenterSessionInfo.d()))) {
-              this.a.a("action_qgame_messgae_change", (GameCenterSessionInfo)localObject, 2, this.a.a());
-            }
-          }
-          else
-          {
-            this.a.a("action_qgame_messgae_change", localGameCenterSessionInfo, 2, this.a.a());
-          }
-        }
+    if (this.a.jdField_a_of_type_Atuz.a().TroopUin != parambfjs.b) {}
+    while ((parambfjs.a == null) || (atxr.a(this.a) == null) || (!atxr.a(this.a).equals(parambfjs.a.toString())) || (this.a.jdField_a_of_type_Atxd == null) || (paramInt1 != 0)) {
+      return;
+    }
+    this.a.jdField_a_of_type_Atxd.a(paramInt2, paramString1, paramString2, paramBundle);
+  }
+  
+  protected void a(Object paramObject)
+  {
+    Object localObject = this.a.jdField_a_of_type_Atuz.a();
+    paramObject = (bfjs)paramObject;
+    if (((FileManagerEntity)localObject).TroopUin != paramObject.b) {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("TroopFileModel<FileAssistant>", 4, "difference troop uin file");
       }
     }
+    do
+    {
+      return;
+      if (TextUtils.isEmpty(atxr.a(this.a)))
+      {
+        localObject = this.a.a((FileManagerEntity)localObject);
+        if (((bfjs)localObject).a != null) {
+          atxr.a(this.a, ((bfjs)localObject).a.toString());
+        }
+      }
+    } while ((paramObject.a == null) || (atxr.a(this.a) == null) || (!atxr.a(this.a).equals(paramObject.a.toString())));
+    atxr.a(this.a, paramObject);
   }
 }
 

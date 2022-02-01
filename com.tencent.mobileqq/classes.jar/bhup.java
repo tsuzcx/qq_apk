@@ -1,15 +1,35 @@
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.vas.update.business.BaseUpdateBusiness;
+import com.tencent.vas.update.entity.BusinessItemInfo;
+import java.io.File;
 
 public class bhup
-  implements bhpn
+  extends BaseUpdateBusiness
 {
-  public bhup(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
-  
-  public void a()
+  private String a(String paramString)
   {
-    bcef.b(null, "dc00898", "", "", "0X800A7BD", "0X800A7BD", QuickLoginAuthorityActivity.b(this.a), 0, "", "", "", "");
-    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "report-dc00898-0X800A7BD-fromType=" + QuickLoginAuthorityActivity.b(this.a));
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    return localBaseApplication.getFilesDir() + File.separator + "test_dir" + File.separator + paramString + ".zip";
+  }
+  
+  public long getBid()
+  {
+    return 1000000L;
+  }
+  
+  public BusinessItemInfo getBusinessItemInfo(long paramLong, String paramString)
+  {
+    paramString = new BusinessItemInfo();
+    paramString.mSaveInDir = false;
+    paramString.mSavePath = a("test");
+    return paramString;
+  }
+  
+  public String getFrom()
+  {
+    return "TestUpdateBusinessV2";
   }
 }
 

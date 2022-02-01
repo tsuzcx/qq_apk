@@ -2,18 +2,18 @@ package com.tencent.mobileqq.relationx.friendclue;
 
 import android.content.Context;
 import android.content.res.Resources;
-import azwk;
+import bbcs;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class FriendClueCommonGroupHelper$1
   implements Runnable
 {
-  public FriendClueCommonGroupHelper$1(azwk paramazwk) {}
+  public FriendClueCommonGroupHelper$1(bbcs parambbcs) {}
   
   public void run()
   {
-    String str = azwk.a(this.this$0).getResources().getString(2131718582);
-    QQToast.a(azwk.a(this.this$0), 1, str, 1).a();
+    String str = bbcs.a(this.this$0).getResources().getString(2131718971);
+    QQToast.a(bbcs.a(this.this$0), 1, str, 1).a();
   }
 }
 

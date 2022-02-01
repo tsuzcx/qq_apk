@@ -1,18 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class aywu
-  implements View.OnClickListener
+public abstract interface aywu
 {
-  aywu(ayws paramayws, View paramView) {}
+  public abstract void a(String paramString1, String paramString2, Object paramObject, int paramInt, String paramString3);
   
-  public void onClick(View paramView)
-  {
-    aymz.a().b(ayws.i(this.jdField_a_of_type_Ayws));
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(String paramString1, String paramString2, Object paramObject, long paramLong1, long paramLong2);
 }
 
 

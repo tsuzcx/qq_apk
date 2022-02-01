@@ -1,105 +1,110 @@
-import IMMsgBodyPack.PersonInfoChange;
-import IMMsgBodyPack.PersonInfoField;
-import OnlinePushPack.MsgInfo;
-import OnlinePushPack.SvcReqPushMsg;
-import com.qq.taf.jce.JceInputStream;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.ProfileCardMessageProcessor.1;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.ApolloActionData;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import org.jetbrains.annotations.NotNull;
 
 public class anlw
-  extends abvx
 {
-  public anlw(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
+  public static int a(BaseChatPie paramBaseChatPie, annl paramannl, ApolloActionData paramApolloActionData)
   {
-    super(paramQQAppInterface, paramMessageHandler);
-  }
-  
-  private void a(MsgInfo paramMsgInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "Recieved user info update");
-    }
-    paramMsgInfo = new JceInputStream(paramMsgInfo.vMsg);
-    paramMsgInfo.setServerEncoding("utf-8");
-    PersonInfoChange localPersonInfoChange = new PersonInfoChange();
-    localPersonInfoChange.readFrom(paramMsgInfo);
     int j;
-    int i;
-    long l;
-    int k;
-    if (localPersonInfoChange.cType == 0)
+    if ((paramBaseChatPie == null) || (paramBaseChatPie.app == null))
     {
-      paramMsgInfo = localPersonInfoChange.vChgField.iterator();
       j = 0;
-      i = 0;
-      if (paramMsgInfo.hasNext())
-      {
-        l = ((PersonInfoField)paramMsgInfo.next()).uField;
-        if ((l == 20015L) || (l == 10009L))
-        {
-          k = 1;
-          j = i;
-          i = k;
-        }
-      }
+      return j;
+    }
+    paramBaseChatPie = (ankc)paramBaseChatPie.app.getManager(QQManagerFactory.APOOLO_DAO_MANAGER);
+    boolean bool = paramBaseChatPie.b(paramApolloActionData.actionId);
+    int i;
+    if ((paramApolloActionData.hasSound) || (paramannl.e > 0)) {
+      i = 1;
     }
     for (;;)
     {
-      k = j;
-      j = i;
-      i = k;
-      break;
-      if ((l == 20002L) || (l == 20009L) || (l == 20031L) || (l == 20019L))
+      if (paramBaseChatPie.c(paramApolloActionData.actionId))
       {
-        i = j;
-        j = 1;
-        continue;
-        if (this.a != null)
-        {
-          paramMsgInfo = (FriendListHandler)this.a.getBusinessHandler(1);
-          if (j != 0) {
-            paramMsgInfo.getCustomHead(this.a.getAccount());
-          }
-          if (i != 0) {
-            BaseApplicationImpl.sUiHandler.postDelayed(new ProfileCardMessageProcessor.1(this), 150L);
-          }
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloPanelUtil", 2, new Object[] { "data actionId:", Integer.valueOf(paramApolloActionData.actionId), "typeValue:", Integer.valueOf(i) });
         }
-        do
-        {
-          return;
-        } while ((localPersonInfoChange.cType != 1) || (!QLog.isColorLevel()));
-        QLog.d("MessageHandler", 2, "group data update push");
+        return i | 0x2;
+        if (paramApolloActionData.actionType == 8) {
+          i = 1024;
+        }
       }
       else
       {
-        k = i;
-        i = j;
-        j = k;
+        j = i;
+        if (paramApolloActionData.feeType == 6)
+        {
+          if (bool)
+          {
+            j = 16;
+            j = i | j;
+          }
+        }
+        else
+        {
+          int k = j;
+          if (paramApolloActionData.feeType == 2)
+          {
+            if (!bool) {
+              break label235;
+            }
+            i = 4;
+            label177:
+            k = j | i;
+          }
+          i = k;
+          if (paramApolloActionData.feeType == 9) {
+            i = k | 0x2000;
+          }
+          j = i;
+          if (paramApolloActionData.feeType != 7) {
+            break;
+          }
+          if (!bool) {
+            break label242;
+          }
+        }
+        label235:
+        label242:
+        for (j = 8;; j = 512)
+        {
+          return i | j;
+          j = 64;
+          break;
+          i = 128;
+          break label177;
+        }
       }
+      i = 0;
     }
   }
   
-  public abxj a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
+  public static String a(@NotNull String paramString)
   {
-    switch (paramInt)
-    {
+    Object localObject = ApolloUtil.a();
+    if (localObject == null) {
+      return null;
     }
-    for (;;)
+    paramString = anhm.a(paramString, (QQAppInterface)localObject, false);
+    if ((paramString != null) && (paramString.length == 2) && (paramString[1] != null) && (((int[])paramString[1]).length > 0))
     {
-      return new abxj(null, false);
-      if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null)) {
-        a(paramMsgInfo);
-      } else {
-        a(getClass().getName(), paramInt);
+      paramString = (int[])paramString[1];
+      localObject = new StringBuilder();
+      int j = paramString.length;
+      int i = 0;
+      while (i < j)
+      {
+        ((StringBuilder)localObject).append(paramString[i]).append("_");
+        i += 1;
       }
+      return ((StringBuilder)localObject).toString();
     }
+    return null;
   }
 }
 

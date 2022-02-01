@@ -22,20 +22,20 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bhjm;
-import bkey;
-import bkfq;
-import bkga;
-import bkgb;
-import bkgl;
-import bkgm;
-import bkgn;
-import bkgo;
-import bkgp;
-import bkgu;
-import bkgy;
-import bkha;
-import bkhc;
+import biuc;
+import blqj;
+import blrb;
+import blrm;
+import blrn;
+import blrx;
+import blry;
+import blrz;
+import blsa;
+import blsb;
+import blsg;
+import blsk;
+import blsm;
+import blso;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
 import com.tencent.image.ApngDrawable;
@@ -81,11 +81,11 @@ public class QQComicTabBarView
   Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new AccelerateDecelerateInterpolator();
   LinearLayout.LayoutParams jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams;
   RelativeLayout.LayoutParams jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-  public bhjm a;
-  bkga jdField_a_of_type_Bkga = new bkgn(this);
-  bkgy jdField_a_of_type_Bkgy = null;
-  bkha jdField_a_of_type_Bkha = new bkgm(this);
-  public final bkhc<String, RedTouchUI> a;
+  public biuc a;
+  blrm jdField_a_of_type_Blrm = new blrz(this);
+  blsk jdField_a_of_type_Blsk = null;
+  blsm jdField_a_of_type_Blsm = new blry(this);
+  public final blso<String, RedTouchUI> a;
   public AppInterface a;
   public List<WebViewTabBarData> a;
   boolean jdField_a_of_type_Boolean = true;
@@ -93,7 +93,7 @@ public class QQComicTabBarView
   final int jdField_b_of_type_Int;
   public final Paint b;
   RelativeLayout.LayoutParams jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-  final bkhc<String, String> jdField_b_of_type_Bkhc = new bkhc();
+  final blso<String, String> jdField_b_of_type_Blso = new blso();
   boolean jdField_b_of_type_Boolean = true;
   final int jdField_c_of_type_Int;
   public final Paint c;
@@ -130,10 +130,10 @@ public class QQComicTabBarView
   {
     super(paramContext);
     this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_Bkhc = new bkhc();
+    this.jdField_a_of_type_Blso = new blso();
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
     this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_AndroidOsHandler = new bkgl(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new blrx(this, Looper.getMainLooper());
     paramContext = super.getContext().getResources();
     this.jdField_b_of_type_Int = -8947849;
     this.jdField_a_of_type_Int = -14629889;
@@ -173,7 +173,7 @@ public class QQComicTabBarView
     label67:
     for (paramString = "1";; paramString = "")
     {
-      bkfq.a(paramAppInterface, "3071", "2", str, "", "", "", "", "", "", paramString, new String[0]);
+      blrb.a(paramAppInterface, "3071", "2", str, "", "", "", "", "", "", paramString, new String[0]);
       return;
     }
   }
@@ -219,16 +219,16 @@ public class QQComicTabBarView
     localSimpleTextView.setTextColor(this.jdField_b_of_type_Int);
     localSimpleTextView.setContentDescription(paramString2);
     localSimpleTextView.setGravity(17);
-    bkgp localbkgp = new bkgp(this);
-    localbkgp.jdField_a_of_type_ComTencentWidgetSimpleTextView = localSimpleTextView;
-    localRelativeLayout.setTag(-3, localbkgp);
+    blsb localblsb = new blsb(this);
+    localblsb.jdField_a_of_type_ComTencentWidgetSimpleTextView = localSimpleTextView;
+    localRelativeLayout.setTag(-3, localblsb);
     boolean bool1;
     if (!this.jdField_a_of_type_Boolean) {
       bool1 = true;
     }
     for (;;)
     {
-      localRelativeLayout.setOnClickListener(new bkgo(this, paramInt, bool1, this.jdField_a_of_type_JavaUtilList));
+      localRelativeLayout.setOnClickListener(new blsa(this, paramInt, bool1, this.jdField_a_of_type_JavaUtilList));
       localRelativeLayout.addView(localSimpleTextView, this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
       ImageView localImageView;
       File localFile;
@@ -259,27 +259,27 @@ public class QQComicTabBarView
               break label555;
             }
             ApngImage.canDecodeIDs.add(Integer.valueOf(12));
-            localbkgp.jdField_a_of_type_ComTencentImageURLDrawable = paramString3;
+            localblsb.jdField_a_of_type_ComTencentImageURLDrawable = paramString3;
             if (!bool1)
             {
               paramString3 = URLDrawable.URLDrawableOptions.obtain();
               paramString3.mLoadingDrawable = localColorDrawable;
               paramString3.mFailedDrawable = localColorDrawable;
-              localbkgp.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(localFile, paramString3);
+              localblsb.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(localFile, paramString3);
             }
-            localbkgp.jdField_a_of_type_AndroidWidgetImageView = localImageView;
+            localblsb.jdField_a_of_type_AndroidWidgetImageView = localImageView;
             localRelativeLayout.addView(localImageView, this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams);
             localImageView.setVisibility(8);
             super.addView(localRelativeLayout, paramInt, this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
             if (jdField_a_of_type_JavaUtilMap.containsKey(paramString1))
             {
               paramString1 = (String)jdField_a_of_type_JavaUtilMap.get(paramString1);
-              paramString3 = (RedTouchUI)new RedTouchUI(super.getContext(), localSimpleTextView).a(5).a();
-              paramString3.setRedpointImgResID(2130850321);
-              paramString3.setTextOrNumImgRedID(2130850325);
-              this.jdField_b_of_type_Bkhc.put(paramString1, a(paramString1, 0));
-              this.jdField_a_of_type_Bkhc.put(paramString1, paramString3);
-              localbkgp.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI = paramString3;
+              paramString3 = (RedTouchUI)new RedTouchUI(super.getContext(), localSimpleTextView).b(5).a();
+              paramString3.setRedpointImgResID(2130850427);
+              paramString3.setTextOrNumImgRedID(2130850431);
+              this.jdField_b_of_type_Blso.put(paramString1, a(paramString1, 0));
+              this.jdField_a_of_type_Blso.put(paramString1, paramString3);
+              localblsb.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI = paramString3;
             }
             if (AppSetting.c) {
               localRelativeLayout.setContentDescription(paramString2);
@@ -309,7 +309,7 @@ public class QQComicTabBarView
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    StringBuilder localStringBuilder = bkfq.a();
+    StringBuilder localStringBuilder = blrb.a();
     int k;
     if (paramInt == 0)
     {
@@ -411,9 +411,9 @@ public class QQComicTabBarView
           return;
         }
         Object localObject1 = super.getChildAt(paramInt).getTag(-3);
-        if ((localObject1 instanceof bkgp))
+        if ((localObject1 instanceof blsb))
         {
-          RedTouchUI localRedTouchUI = ((bkgp)localObject1).jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI;
+          RedTouchUI localRedTouchUI = ((blsb)localObject1).jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI;
           if ((localRedTouchUI != null) && (!localRedTouchUI.c()))
           {
             localObject1 = (RedAppInfo)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
@@ -450,16 +450,16 @@ public class QQComicTabBarView
     if (localObject != null)
     {
       localObject = ((View)localObject).getTag(-3);
-      if ((localObject instanceof bkgp)) {
-        ((bkgp)localObject).jdField_a_of_type_ComTencentWidgetSimpleTextView.setTextColor(this.jdField_b_of_type_Int);
+      if ((localObject instanceof blsb)) {
+        ((blsb)localObject).jdField_a_of_type_ComTencentWidgetSimpleTextView.setTextColor(this.jdField_b_of_type_Int);
       }
     }
     localObject = super.getChildAt(paramInt2);
     if (localObject != null)
     {
       localObject = ((View)localObject).getTag(-3);
-      if ((localObject instanceof bkgp)) {
-        ((bkgp)localObject).jdField_a_of_type_ComTencentWidgetSimpleTextView.setTextColor(this.jdField_a_of_type_Int);
+      if ((localObject instanceof blsb)) {
+        ((blsb)localObject).jdField_a_of_type_ComTencentWidgetSimpleTextView.setTextColor(this.jdField_a_of_type_Int);
       }
     }
   }
@@ -476,17 +476,17 @@ public class QQComicTabBarView
         {
           return;
           localObject = super.getChildAt(paramInt).getTag(-3);
-        } while (!(localObject instanceof bkgp));
-        localObject = ((bkgp)localObject).jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI;
+        } while (!(localObject instanceof blsb));
+        localObject = ((blsb)localObject).jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI;
       } while (localObject == null);
       ((RedTouchUI)localObject).d();
-    } while ((!paramBoolean) || (bkgu.a == null));
-    bkgu.a.a();
+    } while ((!paramBoolean) || (blsg.a == null));
+    blsg.a.a();
   }
   
-  public void a(Intent paramIntent, List<WebViewTabBarData> paramList, bhjm parambhjm)
+  public void a(Intent paramIntent, List<WebViewTabBarData> paramList, biuc parambiuc)
   {
-    this.jdField_a_of_type_Bhjm = parambhjm;
+    this.jdField_a_of_type_Biuc = parambiuc;
     int k;
     if (paramIntent != null)
     {
@@ -495,7 +495,7 @@ public class QQComicTabBarView
     }
     for (;;)
     {
-      if ((!DeviceInfoUtil.isLowEndPhoneForPreDownload()) && (bkey.a("navSwitchAnimation", 1) == 1)) {}
+      if ((!DeviceInfoUtil.isLowEndPhoneForPreDownload()) && (blqj.a("navSwitchAnimation", 1) == 1)) {}
       for (boolean bool = true;; bool = false)
       {
         this.jdField_b_of_type_Boolean = bool;
@@ -574,7 +574,7 @@ public class QQComicTabBarView
   
   void b()
   {
-    Iterator localIterator = this.jdField_a_of_type_Bkhc.entrySet().iterator();
+    Iterator localIterator = this.jdField_a_of_type_Blso.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (Map.Entry)localIterator.next();
@@ -584,15 +584,15 @@ public class QQComicTabBarView
         localObject = (RedTouchUI)((Map.Entry)localObject).getValue();
         if ((str != null) && (localObject != null) && (((RedTouchUI)localObject).c()) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)) {
           if ("1113.100800".equals(str)) {
-            bkfq.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "3014", "1", "30012", "", new String[] { "100" });
+            blrb.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "3014", "1", "30012", "", new String[] { "100" });
           } else if ("1113.100801".equals(str)) {
-            bkfq.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "3014", "1", "30012", "", new String[] { "102" });
+            blrb.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "3014", "1", "30012", "", new String[] { "102" });
           } else if ("1113.100802".equals(str)) {
-            bkfq.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "3014", "1", "30012", "", new String[] { "103" });
+            blrb.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "3014", "1", "30012", "", new String[] { "103" });
           } else if ("1113.100803".equals(str)) {
-            bkfq.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "3014", "1", "30012", "", new String[] { "104" });
+            blrb.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "3014", "1", "30012", "", new String[] { "104" });
           } else if ("1113.100804".equals(str)) {
-            bkfq.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "3014", "1", "30012", "", new String[] { "101" });
+            blrb.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "3014", "1", "30012", "", new String[] { "101" });
           }
         }
       }
@@ -611,20 +611,20 @@ public class QQComicTabBarView
         {
           return;
           localObject1 = super.getChildAt(paramInt).getTag(-3);
-        } while (!(localObject1 instanceof bkgp));
-        localObject1 = ((bkgp)localObject1).jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI;
+        } while (!(localObject1 instanceof blsb));
+        localObject1 = ((blsb)localObject1).jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI;
       } while ((localObject1 == null) || (!((RedTouchUI)localObject1).c()));
       ((RedTouchUI)localObject1).d();
-      localObject2 = (String)this.jdField_a_of_type_Bkhc.a(localObject1);
-      if (this.jdField_a_of_type_Bkgy != null)
+      localObject2 = (String)this.jdField_a_of_type_Blso.a(localObject1);
+      if (this.jdField_a_of_type_Blsk != null)
       {
-        this.jdField_a_of_type_Bkgy.a((String)localObject2);
-        this.jdField_a_of_type_Bkgy.a((String)this.jdField_b_of_type_Bkhc.get(localObject2));
+        this.jdField_a_of_type_Blsk.a((String)localObject2);
+        this.jdField_a_of_type_Blsk.a((String)this.jdField_b_of_type_Blso.get(localObject2));
       }
       localObject2 = (RedAppInfo)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
     } while (((localObject2 != null) && (((RedTouchUI)localObject1).a == localObject2)) || (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null));
     Object localObject1 = (WebViewTabBarData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    bkfq.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "3014", "2", "40049", "", new String[] { (String)jdField_c_of_type_JavaUtilMap.get(((WebViewTabBarData)localObject1).tag) });
+    blrb.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "3014", "2", "40049", "", new String[] { (String)jdField_c_of_type_JavaUtilMap.get(((WebViewTabBarData)localObject1).tag) });
   }
   
   void b(int paramInt1, int paramInt2)
@@ -636,11 +636,11 @@ public class QQComicTabBarView
     if (localObject != null)
     {
       localObject = ((View)localObject).getTag(-3);
-      if ((localObject instanceof bkgp))
+      if ((localObject instanceof blsb))
       {
-        localObject = (bkgp)localObject;
-        ((bkgp)localObject).jdField_a_of_type_ComTencentWidgetSimpleTextView.setVisibility(0);
-        ((bkgp)localObject).jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        localObject = (blsb)localObject;
+        ((blsb)localObject).jdField_a_of_type_ComTencentWidgetSimpleTextView.setVisibility(0);
+        ((blsb)localObject).jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
         if (QLog.isColorLevel()) {
           QLog.d("WebViewTabBarView", 2, "tab icon hide.");
         }
@@ -650,15 +650,15 @@ public class QQComicTabBarView
     if (localObject != null)
     {
       localObject = ((View)localObject).getTag(-3);
-      if ((localObject instanceof bkgp))
+      if ((localObject instanceof blsb))
       {
-        localObject = (bkgp)localObject;
-        if ((((bkgp)localObject).jdField_a_of_type_AndroidWidgetImageView != null) && (((bkgp)localObject).jdField_a_of_type_ComTencentWidgetSimpleTextView != null))
+        localObject = (blsb)localObject;
+        if ((((blsb)localObject).jdField_a_of_type_AndroidWidgetImageView != null) && (((blsb)localObject).jdField_a_of_type_ComTencentWidgetSimpleTextView != null))
         {
-          ((bkgp)localObject).jdField_a_of_type_ComTencentWidgetSimpleTextView.setVisibility(8);
-          URLDrawable localURLDrawable = ((bkgp)localObject).jdField_a_of_type_ComTencentImageURLDrawable;
-          ((bkgp)localObject).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          ((bkgp)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localURLDrawable);
+          ((blsb)localObject).jdField_a_of_type_ComTencentWidgetSimpleTextView.setVisibility(8);
+          URLDrawable localURLDrawable = ((blsb)localObject).jdField_a_of_type_ComTencentImageURLDrawable;
+          ((blsb)localObject).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+          ((blsb)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localURLDrawable);
           if ((localURLDrawable != null) && ((localURLDrawable.getCurrDrawable() instanceof ApngDrawable)))
           {
             ((ApngDrawable)localURLDrawable.getCurrDrawable()).repaly();
@@ -762,8 +762,8 @@ public class QQComicTabBarView
     }
     if (this.i != paramInt)
     {
-      if (this.jdField_a_of_type_Bhjm != null) {
-        this.jdField_a_of_type_Bhjm.onTabSelected(this.i, paramInt);
+      if (this.jdField_a_of_type_Biuc != null) {
+        this.jdField_a_of_type_Biuc.onTabSelected(this.i, paramInt);
       }
       if (this.jdField_a_of_type_Boolean) {
         b(this.j, paramInt);

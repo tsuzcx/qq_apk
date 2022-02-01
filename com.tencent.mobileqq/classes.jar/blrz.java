@@ -1,38 +1,34 @@
-import android.view.ViewGroup;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.ae.camera.ui.panel.AEBeautyProviderView;
+import android.util.SparseArray;
+import com.tencent.mobileqq.redtouch.RedAppInfo;
+import com.tencent.mobileqq.redtouch.RedTouchUI;
+import cooperation.comic.VipComicJumpActivity;
+import cooperation.comic.ui.QQComicTabBarView;
+import java.util.List;
 
 public class blrz
-  implements SeekBar.OnSeekBarChangeListener
+  implements blrm
 {
-  public blrz(AEBeautyProviderView paramAEBeautyProviderView) {}
+  public blrz(QQComicTabBarView paramQQComicTabBarView) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    if (AEBeautyProviderView.a(this.a) != null)
+    paramInt1 = this.a.a();
+    if ((this.a.jdField_a_of_type_JavaUtilList == null) || (paramInt1 < 0) || (paramInt1 >= this.a.jdField_a_of_type_JavaUtilList.size())) {}
+    RedTouchUI localRedTouchUI;
+    RedAppInfo localRedAppInfo;
+    do
     {
-      AEBeautyProviderView.a(this.a).a(paramInt);
-      this.a.a.setText("+" + String.format("%.1f", new Object[] { Float.valueOf(paramInt / 10.0F) }));
-    }
-  }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    AEBeautyProviderView.a(this.a, AEBeautyProviderView.a(this.a), AEBeautyProviderView.b(this.a));
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    if ((AEBeautyProviderView.c(this.a) != null) && ((AEBeautyProviderView.c(this.a) instanceof ViewGroup))) {
-      ((ViewGroup)AEBeautyProviderView.c(this.a)).setMotionEventSplittingEnabled(true);
-    }
-    AEBeautyProviderView.a(this.a, paramSeekBar.getProgress());
-    bmbg.a().e(paramSeekBar.getProgress());
-    AEBeautyProviderView.b(this.a, AEBeautyProviderView.a(this.a), AEBeautyProviderView.b(this.a));
-    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
+      return;
+      paramInt2 = VipComicJumpActivity.a("fav", this.a.jdField_a_of_type_JavaUtilList);
+      if ((paramBoolean) && (paramInt1 != paramInt2))
+      {
+        this.a.a(paramInt2);
+        return;
+      }
+      localRedTouchUI = (RedTouchUI)this.a.jdField_a_of_type_Blso.get("1113.100801");
+      localRedAppInfo = (RedAppInfo)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2);
+    } while ((localRedTouchUI == null) || (!localRedTouchUI.c()) || (localRedAppInfo == null) || (localRedTouchUI.a != localRedAppInfo));
+    this.a.a(paramInt2, true);
   }
 }
 

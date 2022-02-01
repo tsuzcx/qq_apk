@@ -1,19 +1,13 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class oai
-  implements View.OnClickListener
+class oai
 {
-  public oai(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
   
-  public void onClick(View paramView)
-  {
-    ReadInJoyNativeAdFragment.a(this.a).dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  oai(nzu paramnzu) {}
 }
 
 

@@ -1,20 +1,27 @@
-public class aohk
+import com.tencent.mobileqq.persistence.Entity;
+import java.util.Comparator;
+import java.util.Map.Entry;
+
+class aohk
+  implements Comparator<Map.Entry<String, Entity>>
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
+  aohk(aohj paramaohj) {}
   
-  public aohk()
+  public int a(Map.Entry<String, Entity> paramEntry1, Map.Entry<String, Entity> paramEntry2)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public String toString()
-  {
-    return "ARCloudReqFileInfo{fileName='" + this.jdField_a_of_type_JavaLangString + '\'' + ", fileFormat=" + this.jdField_a_of_type_Int + ", height=" + this.jdField_b_of_type_Int + ", width=" + this.c + ", previewPath='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
+    paramEntry1 = ((String)paramEntry1.getKey()).split("&")[1];
+    int i = Integer.parseInt(paramEntry1.split("-")[0]);
+    int j = Integer.parseInt(paramEntry1.split("-")[1]);
+    paramEntry1 = ((String)paramEntry2.getKey()).split("&")[1];
+    int k = Integer.parseInt(paramEntry1.split("-")[0]);
+    int m = Integer.parseInt(paramEntry1.split("-")[1]);
+    if (i > k) {
+      return 1;
+    }
+    if (i == k) {
+      return j - m;
+    }
+    return -1;
   }
 }
 

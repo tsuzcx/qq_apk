@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.troop.aioapp;
 
-import bduw;
-import bduy;
-import bdva;
-import bdvb;
+import bfbz;
+import bfcb;
+import bfcd;
+import bfce;
 
 public class AioGroupAppsManager$2
   implements Runnable
 {
-  public AioGroupAppsManager$2(bduw parambduw, long paramLong) {}
+  public AioGroupAppsManager$2(bfbz parambfbz, long paramLong) {}
   
   public void run()
   {
-    bduw.a(this.this$0).a();
-    if (!bdvb.a(this.this$0.a(this.a))) {
-      bdva.a(bduw.a(this.this$0), this.a);
+    bfbz.a(this.this$0).a();
+    if (!bfce.a(this.this$0.a(this.a))) {
+      bfcd.a(bfbz.a(this.this$0), this.a);
     }
   }
 }

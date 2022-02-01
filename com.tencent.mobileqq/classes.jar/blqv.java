@@ -1,96 +1,63 @@
-import android.graphics.Point;
-import android.view.View;
+import android.content.Intent;
+import java.util.HashMap;
 
 public class blqv
-  implements blqt
 {
-  public float a(Point paramPoint, int paramInt1, int paramInt2)
+  public int a;
+  public long a;
+  public Intent a;
+  public blqu a;
+  public String a;
+  HashMap<String, Boolean> a;
+  public boolean a;
+  public long b;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
+  public String d;
+  public boolean d;
+  public String e;
+  public boolean e;
+  public String f;
+  public boolean f;
+  public String g;
+  public boolean g;
+  public String h;
+  public boolean h;
+  public boolean i = false;
+  
+  public blqv()
   {
-    return paramInt1 - paramPoint.x;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_b_of_type_JavaLangString = "com.qqcomic.activity.VipComicMainTabActivity";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Blqu = null;
+    this.jdField_d_of_type_JavaLangString = null;
+    this.jdField_e_of_type_JavaLangString = null;
+    this.jdField_f_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_e_of_type_Boolean = true;
+    this.jdField_f_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidContentIntent = new Intent();
+    this.jdField_g_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_h_of_type_Boolean = false;
+    this.jdField_g_of_type_JavaLangString = "";
+    this.jdField_h_of_type_JavaLangString = "";
   }
   
-  public int a(int paramInt)
+  public void a(String paramString, boolean paramBoolean)
   {
-    return paramInt;
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Boolean.valueOf(paramBoolean));
   }
   
-  public int a(int paramInt1, int paramInt2)
+  public boolean a(String paramString)
   {
-    return paramInt1;
-  }
-  
-  public void a(int paramInt, zwj paramzwj)
-  {
-    paramzwj.a(paramInt);
-  }
-  
-  public void a(Point paramPoint1, int paramInt, Point paramPoint2)
-  {
-    paramPoint2.set(paramPoint1.x - paramInt, paramPoint1.y);
-  }
-  
-  public void a(blnz paramblnz, int paramInt, Point paramPoint)
-  {
-    paramPoint.set(paramPoint.x + paramblnz.a(paramInt), paramPoint.y);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(Point paramPoint, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    paramInt2 = paramPoint.x;
-    int i = paramPoint.x;
-    return (paramInt2 - paramInt1 < paramInt3 + paramInt4) && (i + paramInt1 > -paramInt4);
-  }
-  
-  public boolean a(blqd paramblqd)
-  {
-    boolean bool = false;
-    View localView1 = paramblqd.a();
-    View localView2 = paramblqd.b();
-    int i = -paramblqd.c();
-    int j = paramblqd.getWidth();
-    int k = paramblqd.c();
-    if ((paramblqd.getDecoratedLeft(localView1) > i) && (paramblqd.getPosition(localView1) > 0))
-    {
-      i = 1;
-      if ((paramblqd.getDecoratedRight(localView2) >= j + k) || (paramblqd.getPosition(localView2) >= paramblqd.getItemCount() - 1)) {
-        break label102;
-      }
-    }
-    label102:
-    for (j = 1;; j = 0)
-    {
-      if ((i != 0) || (j != 0)) {
-        bool = true;
-      }
-      return bool;
-      i = 0;
-      break;
-    }
-  }
-  
-  public int b(int paramInt)
-  {
-    return 0;
-  }
-  
-  public int b(int paramInt1, int paramInt2)
-  {
-    return paramInt1;
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public int c(int paramInt1, int paramInt2)
-  {
-    return paramInt1;
+    return (this.jdField_a_of_type_JavaUtilHashMap.get(paramString) != null) && (((Boolean)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).booleanValue());
   }
 }
 

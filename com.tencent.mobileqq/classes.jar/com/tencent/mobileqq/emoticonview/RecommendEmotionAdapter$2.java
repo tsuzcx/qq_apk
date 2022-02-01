@@ -1,16 +1,17 @@
 package com.tencent.mobileqq.emoticonview;
 
-import amrg;
-import amtj;
-import anaj;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import areb;
-import avtb;
-import bcef;
-import bgcz;
+import antu;
+import anvx;
+import aocy;
+import asih;
+import awzc;
+import bdla;
+import bhlq;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
@@ -20,14 +21,14 @@ import java.util.List;
 import mqq.app.MobileQQ;
 
 class RecommendEmotionAdapter$2
-  implements avtb<EmoticonPackage>
+  implements awzc<EmoticonPackage>
 {
-  RecommendEmotionAdapter$2(RecommendEmotionAdapter paramRecommendEmotionAdapter, bgcz parambgcz, boolean paramBoolean, areb paramareb, ProgressButton paramProgressButton, int paramInt) {}
+  RecommendEmotionAdapter$2(RecommendEmotionAdapter paramRecommendEmotionAdapter, bhlq parambhlq, boolean paramBoolean, asih paramasih, ProgressButton paramProgressButton, int paramInt) {}
   
   public void postQuery(EmoticonPackage paramEmoticonPackage)
   {
     boolean bool = false;
-    int i = ((anaj)this.this$0.app.getBusinessHandler(13)).g();
+    int i = ((aocy)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).g();
     Object localObject2 = "vip";
     Object localObject1 = "";
     Object localObject3;
@@ -35,7 +36,7 @@ class RecommendEmotionAdapter$2
     {
       localObject1 = "mvip.g.a.bq_" + this.val$pkg.a;
       if (this.val$pkg.o != 4) {
-        break label376;
+        break label377;
       }
       localObject3 = "!vip";
       if (i != 1)
@@ -48,12 +49,12 @@ class RecommendEmotionAdapter$2
         bool = true;
         localObject2 = localObject3;
       }
-      label104:
+      label105:
       localObject3 = new EmoticonPackage();
       ((EmoticonPackage)localObject3).jobType = this.val$pkg.n;
       ((EmoticonPackage)localObject3).epId = this.val$pkg.a;
       if (paramEmoticonPackage == null) {
-        break label1004;
+        break label1008;
       }
     }
     for (;;)
@@ -67,10 +68,10 @@ class RecommendEmotionAdapter$2
         this.val$clickBtn.setText(this.val$pkg.d);
         this.val$clickBtn.setProgress(0);
         if (this.val$isPayBack) {
-          bcef.b(this.this$0.app, "CliOper", "", "", "ep_mall", "0X800581D", 0, 0, this.val$pkg.a, "", "", "");
+          bdla.b(this.this$0.app, "CliOper", "", "", "ep_mall", "0X800581D", 0, 0, this.val$pkg.a, "", "", "");
         }
       }
-      label376:
+      label377:
       do
       {
         do
@@ -91,42 +92,42 @@ class RecommendEmotionAdapter$2
             localObject3 = "!svip";
             localObject2 = localObject3;
             if (i != 3) {
-              break label104;
+              break label105;
             }
             bool = true;
             localObject2 = localObject3;
-            break label104;
+            break label105;
           }
           bool = true;
-          break label104;
-          bcef.b(this.this$0.app, "CliOper", "", "", "ep_mall", "0X8005817", 0, 0, this.val$pkg.a, "", "", "");
+          break label105;
+          bdla.b(this.this$0.app, "CliOper", "", "", "ep_mall", "0X8005817", 0, 0, this.val$pkg.a, "", "", "");
           return;
           if (bool)
           {
-            localObject1 = (amrg)this.this$0.app.getBusinessHandler(12);
+            localObject1 = (antu)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.HANDLER_EMOSM);
             if (this.val$businessType == 1)
             {
-              ((amrg)localObject1).a(paramEmoticonPackage.epId, this.val$businessType);
+              ((antu)localObject1).a(paramEmoticonPackage.epId, this.val$businessType);
               this.val$pcm.a(paramEmoticonPackage, true, this.val$businessType);
-              this.val$clickBtn.setText(amtj.a(2131712376));
+              this.val$clickBtn.setText(anvx.a(2131712723));
               this.val$clickBtn.setProgressDrawable(this.val$clickBtn.a(-16745986));
               if (!this.val$isPayBack) {
-                bcef.b(this.this$0.app, "CliOper", "", "", "ep_mall", "0X8005814", 0, 0, this.val$pkg.a, "", "", "");
+                bdla.b(this.this$0.app, "CliOper", "", "", "ep_mall", "0X8005814", 0, 0, this.val$pkg.a, "", "", "");
               }
               localObject1 = this.this$0.app;
               localObject2 = this.val$pkg.a;
               if (!this.this$0.isRedWhenClickRecommend) {
-                break label805;
+                break label807;
               }
               paramEmoticonPackage = "1";
-              bcef.b((QQAppInterface)localObject1, "CliOper", "", "", "ep_mall", "0X8006139", 0, 0, (String)localObject2, paramEmoticonPackage, "", "");
+              bdla.b((QQAppInterface)localObject1, "CliOper", "", "", "ep_mall", "0X8006139", 0, 0, (String)localObject2, paramEmoticonPackage, "", "");
               i = this.this$0.app.getApplication().getSharedPreferences("recommendEmotion_sp_name", 0).getInt("recommendRuleId", -1);
               int j = this.this$0.data.indexOf(this.val$pkg);
               localObject1 = this.this$0.app.getCurrentUin();
               localObject2 = this.val$pkg.a;
               localObject3 = j + 1 + "";
               if (!this.this$0.isRedWhenClickRecommend) {
-                break label811;
+                break label813;
               }
             }
             for (paramEmoticonPackage = "1";; paramEmoticonPackage = "")
@@ -136,10 +137,10 @@ class RecommendEmotionAdapter$2
               if (paramEmoticonPackage.type == 4) {
                 break;
               }
-              ((amrg)localObject1).a(paramEmoticonPackage.epId, this.val$businessType);
+              ((antu)localObject1).a(paramEmoticonPackage.epId, this.val$businessType);
               break;
               paramEmoticonPackage = "";
-              break label609;
+              break label611;
             }
           }
         } while (this.val$isPayBack);
@@ -148,23 +149,23 @@ class RecommendEmotionAdapter$2
         localObject1 = new Intent(this.this$0.mContext, QQBrowserActivity.class);
         ((Intent)localObject1).putExtra("url", paramEmoticonPackage);
       } while (!(this.this$0.mContext instanceof Activity));
-      label609:
+      label611:
       ((Activity)this.this$0.mContext).startActivityForResult((Intent)localObject1, 4779);
-      label805:
-      label811:
+      label807:
+      label813:
       if (QLog.isColorLevel()) {
         QLog.d("RecommendEmotionAdapter", 2, "func downloadOrPay. mCurPageIndex: epid = " + this.val$pkg.a);
       }
-      bcef.b(this.this$0.app, "CliOper", "", "", "ep_mall", "0X8005815", 0, 0, this.val$pkg.a, "", "", "");
+      bdla.b(this.this$0.app, "CliOper", "", "", "ep_mall", "0X8005815", 0, 0, this.val$pkg.a, "", "", "");
       return;
-      label1004:
+      label1008:
       paramEmoticonPackage = (EmoticonPackage)localObject3;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.RecommendEmotionAdapter.2
  * JD-Core Version:    0.7.0.1
  */

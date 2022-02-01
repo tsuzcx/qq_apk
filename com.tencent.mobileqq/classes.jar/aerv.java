@@ -1,10 +1,16 @@
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
 public class aerv
-  extends aliz
+  implements bbtb
 {
-  public aert a;
-  public TextView a;
+  public aerv(QQSettingMe paramQQSettingMe) {}
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((this.a.c) && (paramInt1 == 102) && (paramInt2 == 300)) {
+      this.a.y();
+    }
+  }
 }
 
 

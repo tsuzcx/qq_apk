@@ -1,12 +1,12 @@
 package com.tencent.biz.subscribe.comment;
 
-import zfp;
-import zfq;
+import zuu;
+import zuv;
 
 public class CommentInputPopupWindow$1$1
   implements Runnable
 {
-  public CommentInputPopupWindow$1$1(zfq paramzfq) {}
+  public CommentInputPopupWindow$1$1(zuv paramzuv) {}
   
   public void run()
   {

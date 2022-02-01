@@ -1,72 +1,33 @@
-import com.tencent.mobileqq.mini.servlet.MiniAppSendSmsCodeObserver;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.open.agent.CreateVirtualAccountFragment;
+import com.tencent.open.agent.CreateVirtualAccountFragment.6.1;
+import com.tencent.open.agent.CreateVirtualAccountFragment.6.2;
+import com.tencent.open.model.CreateVirtualResult;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
-import org.json.JSONObject;
-import tencent.im.oidb.oidb_0x87a.RspBody;
-import tencent.im.oidb.oidb_0x87c.RspBody;
 
-class bjcm
-  extends MiniAppSendSmsCodeObserver
+public class bjcm
+  extends bjgg
 {
-  bjcm(bjce parambjce, AsyncResult paramAsyncResult) {}
+  public bjcm(CreateVirtualAccountFragment paramCreateVirtualAccountFragment) {}
   
-  public void onFailedResponse(String paramString1, int paramInt, String paramString2)
+  public void a(boolean paramBoolean, CreateVirtualResult paramCreateVirtualResult, int paramInt)
   {
-    super.onFailedResponse(paramString1, paramInt, paramString2);
-    QLog.e("ChannelProxyImpl", 1, "send onFailedResponse cmd : " + paramString1 + ", code : " + paramInt + "; message : " + paramString2);
-    try
+    if (this.a.getActivity() == null)
     {
-      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult != null)
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("message", paramString2);
-        localJSONObject.put("code", paramInt);
-        localJSONObject.put("cmd", paramString1);
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(false, localJSONObject);
-      }
+      QLog.e("CreateVirtualAccountFragment", 1, "onCreate activity is null");
       return;
     }
-    catch (Throwable paramString1)
-    {
-      QLog.e("ChannelProxyImpl", 1, "onFailedResponse error,", paramString1);
-    }
+    this.a.getActivity().runOnUiThread(new CreateVirtualAccountFragment.6.2(this, paramBoolean, paramCreateVirtualResult, paramInt));
   }
   
-  public void sendSmsCodeSuccess(oidb_0x87a.RspBody paramRspBody)
+  public void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt)
   {
-    super.sendSmsCodeSuccess(paramRspBody);
-    QLog.d("ChannelProxyImpl", 1, "send success");
-    if (paramRspBody != null) {}
-    try
+    if (this.a.getActivity() == null)
     {
-      int i = paramRspBody.uint32_resend_interval.get();
-      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult == null) {
-        return;
-      }
-      paramRspBody = new JSONObject();
-      if (i > 0) {
-        paramRspBody.put("intervalTime", i);
-      }
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(true, paramRspBody);
+      QLog.e("CreateVirtualAccountFragment", 1, "onUploadAvatar activity is null");
       return;
     }
-    catch (Throwable paramRspBody)
-    {
-      QLog.e("ChannelProxyImpl", 1, "sendSmsCodeSuccess error,", paramRspBody);
-    }
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult != null)
-    {
-      paramRspBody = new JSONObject();
-      paramRspBody.put("message", "请求回包异常");
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(false, paramRspBody);
-      return;
-    }
-  }
-  
-  public void verifySmsCodeSuccess(oidb_0x87c.RspBody paramRspBody)
-  {
-    super.verifySmsCodeSuccess(paramRspBody);
+    this.a.getActivity().runOnUiThread(new CreateVirtualAccountFragment.6.1(this, paramBoolean, paramString1, paramString2, paramInt));
   }
 }
 

@@ -1,8 +1,26 @@
-public abstract interface ved
+import UserGrowth.stSchema;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+
+public class ved
+  implements vec
 {
-  public abstract void a(Object paramObject);
-  
-  public abstract void b(Object paramObject);
+  public vdr a(vdt paramvdt)
+  {
+    if ((zfn.a(BaseApplicationImpl.getContext())) && (!TextUtils.isEmpty(paramvdt.a().schema))) {
+      return new vdv(paramvdt);
+    }
+    if (!TextUtils.isEmpty(paramvdt.a().miniAppSchema)) {
+      return new vdy(paramvdt);
+    }
+    if (!TextUtils.isEmpty(paramvdt.a().H5Url)) {
+      return new veb(paramvdt);
+    }
+    if (zfn.a(BaseApplicationImpl.getContext())) {
+      return new vdv(paramvdt);
+    }
+    return new vdx(paramvdt);
+  }
 }
 
 

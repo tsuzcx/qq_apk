@@ -1,39 +1,25 @@
+import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
 
-public class ajnu
+class ajnu
   implements View.OnClickListener
 {
-  public ajnu(CameraPreviewActivity paramCameraPreviewActivity) {}
+  ajnu(ajns paramajns) {}
   
   public void onClick(View paramView)
   {
-    if (!CameraPreviewActivity.a(this.a))
-    {
-      if (this.a.b) {
-        bcef.b(this.a.app, "CliOper", "", "", "0X8004D93", "0X8004D93", 0, 0, "", "", "", "");
-      }
-      if (!this.a.b) {
-        break label140;
-      }
-      ajpv.d();
-    }
-    for (;;)
-    {
-      if ((CameraPreviewActivity.a(this.a) != null) && (CameraPreviewActivity.a(this.a).size() > 0)) {
-        bjme.a((String)CameraPreviewActivity.a(this.a).get(0), true);
-      }
-      PhotoUtils.sendPhoto(this.a, this.a.getIntent(), CameraPreviewActivity.a(this.a), 0, true);
-      paramView.setClickable(false);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label140:
-      ajpv.b();
-    }
+    anyb localanyb = (anyb)this.a.a.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER);
+    Intent localIntent = new Intent(ajns.a(this.a), QQBrowserActivity.class);
+    localIntent.putExtra("url", localanyb.a);
+    ajns.b(this.a).startActivity(localIntent);
+    bdla.b(null, "dc00899", "Grp_recom", "", "link_top", "clk_skip_page", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

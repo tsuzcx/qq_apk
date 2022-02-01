@@ -1,18 +1,31 @@
-import android.view.View;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IVideoView;", "", "doCacheSurfaceTexture", "", "doRecoverSurfaceTexture", "getOriginView", "Landroid/view/View;", "setFixedSize", "videoWidth", "", "videoHeight", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface shf
+class shf
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  @Nullable
-  public abstract View a();
+  shf(shc paramshc) {}
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void b();
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(shc.a(), 2, "播放器状态回调 onVideoPrepared");
+    }
+    shc.a(this.a, System.currentTimeMillis());
+    paramTVK_IMediaPlayer = new HashSet();
+    Iterator localIterator = shc.a(this.a).entrySet().iterator();
+    while (localIterator.hasNext()) {
+      paramTVK_IMediaPlayer.add(((Map.Entry)localIterator.next()).getKey());
+    }
+    shc.a(this.a).setExtractFrameModeInfo(true, paramTVK_IMediaPlayer);
+    shc.a(this.a).start();
+  }
 }
 
 

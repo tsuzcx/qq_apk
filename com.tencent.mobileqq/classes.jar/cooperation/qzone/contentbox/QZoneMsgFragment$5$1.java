@@ -39,14 +39,14 @@ class QZoneMsgFragment$5$1
             localObject2 = localMQMsg;
             if (localObject1 != null) {
               if (localMQMsg.pushTime <= ((MQMsg)localObject1).pushTime) {
-                break label236;
+                break label237;
               }
             }
           }
         }
       }
     }
-    label236:
+    label237:
     for (Object localObject2 = localMQMsg;; localObject2 = localObject1)
     {
       localObject1 = localObject2;
@@ -56,7 +56,7 @@ class QZoneMsgFragment$5$1
       }
       for (;;)
       {
-        this.this$1.this$0.adapter.setMQMsgs(localArrayList);
+        this.this$1.this$0.adapter.setMQMsgs(localArrayList, 2);
         QZoneMsgFragment.access$300(this.this$1.this$0);
         return;
         localObject1 = this.val$qzoneMessageRsp.iterator();

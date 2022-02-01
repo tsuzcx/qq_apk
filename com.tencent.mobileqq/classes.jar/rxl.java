@@ -1,28 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCResult;
-import java.util.Iterator;
-import java.util.List;
+import android.view.ViewGroup;
+import com.tencent.superplayer.api.ISuperPlayer.OnSeekCompleteListener;
 
-class rxl
-  extends QIPCModule
+public abstract interface rxl
 {
-  rxl(rxk paramrxk, String paramString)
-  {
-    super(paramString);
-  }
+  public abstract long a();
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    synchronized (rxk.a(this.a))
-    {
-      Iterator localIterator = rxk.a(this.a).iterator();
-      if (localIterator.hasNext()) {
-        ((rxm)localIterator.next()).a(paramString, paramBundle);
-      }
-    }
-    return null;
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt, ISuperPlayer.OnSeekCompleteListener paramOnSeekCompleteListener);
+  
+  public abstract void a(String paramString, ViewGroup paramViewGroup);
+  
+  public abstract void a(rxg paramrxg);
+  
+  public abstract void a(rxh paramrxh, rxj paramrxj);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

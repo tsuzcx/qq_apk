@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import bfur;
+import bhdj;
 import mqq.app.QQPermissionCallback;
 
 class BaseChatPie$83
@@ -10,12 +10,12 @@ class BaseChatPie$83
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    bfur.a(this.this$0.getActivity(), paramArrayOfString, paramArrayOfInt);
+    bhdj.a(this.this$0.getActivity());
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.this$0.grantForCamera();
+    this.this$0.doShowPtv(true);
   }
 }
 

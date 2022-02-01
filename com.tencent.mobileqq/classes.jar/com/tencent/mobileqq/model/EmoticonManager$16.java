@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.model;
 
-import avsq;
-import bfyz;
+import awyr;
+import bhhr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.EmoticonTab;
 import com.tencent.mobileqq.persistence.EntityManager;
@@ -9,7 +9,7 @@ import com.tencent.mobileqq.persistence.EntityManager;
 public class EmoticonManager$16
   implements Runnable
 {
-  public EmoticonManager$16(avsq paramavsq, String paramString, boolean paramBoolean1, boolean paramBoolean2) {}
+  public EmoticonManager$16(awyr paramawyr, String paramString, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
@@ -30,10 +30,10 @@ public class EmoticonManager$16
     for (;;)
     {
       this.this$0.b(this.jdField_a_of_type_JavaLangString);
-      bfyz.m(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), System.currentTimeMillis());
+      bhhr.m(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), System.currentTimeMillis());
       return;
       label112:
-      avsq.a(this.this$0, localEmoticonTab);
+      awyr.a(this.this$0, localEmoticonTab);
     }
   }
 }

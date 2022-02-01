@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.activity.ContactBindedActivity;
 
 public class adtl
-  implements DialogInterface.OnClickListener
+  extends ScaleAnimation
 {
-  public adtl(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public adtl(ContactBindedActivity paramContactBindedActivity, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt1, float paramFloat5, int paramInt2, float paramFloat6)
   {
-    this.a.finish();
+    super(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramInt1, paramFloat5, paramInt2, paramFloat6);
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    if (paramTransformation == null) {
+      return;
+    }
+    super.applyTransformation(paramFloat, paramTransformation);
+    paramTransformation.setAlpha(0.0F + 1.0F * paramFloat);
   }
 }
 

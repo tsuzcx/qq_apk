@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.qwallet.utils;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.text.TextUtils;
-import bfqa;
+import bgyr;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.mqsafeedit.BaseApplication;
 import com.tencent.mobileqq.statistics.StatisticCollector;
@@ -30,7 +30,7 @@ public final class QWalletTools$4
     {
       localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getPackageManager().getPackageInfo(this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getPackageName(), 0).versionName);
       localStringBuilder.append("|");
-      localStringBuilder.append(bfqa.a());
+      localStringBuilder.append(bgyr.a());
       localStringBuilder.append("|");
       if ((!TextUtils.isEmpty(this.c)) || (!TextUtils.isEmpty(this.d)))
       {

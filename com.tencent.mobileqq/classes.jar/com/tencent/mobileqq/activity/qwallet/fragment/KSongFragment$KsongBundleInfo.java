@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.qwallet.fragment;
 
-import bkwf;
+import bmho;
 
 public class KSongFragment$KsongBundleInfo
-  extends bkwf
+  extends bmho
 {
   public String song_id;
   public String song_name;

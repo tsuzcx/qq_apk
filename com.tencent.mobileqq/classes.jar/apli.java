@@ -1,60 +1,47 @@
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import java.util.Comparator;
+import android.graphics.PointF;
 
-class apli
-  implements Comparator<ColorNote>
+public class apli
 {
-  apli(aplh paramaplh) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public PointF[] a;
+  public int b;
+  public int c;
+  public int d = -1;
   
-  public int a(ColorNote paramColorNote1, ColorNote paramColorNote2)
+  public apli()
   {
-    int j = 0;
-    int k = 1;
-    boolean bool1 = aplm.c(paramColorNote1);
-    boolean bool2 = aplm.c(paramColorNote2);
-    int i;
-    if ((bool1) && (bool2)) {
-      i = aplh.a(this.a, paramColorNote1, paramColorNote2);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = new PointF[1000];
+    a();
+  }
+  
+  public apli(int paramInt)
+  {
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = new PointF[paramInt];
+    a();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.b = 0;
+    this.c = 0;
+    this.d = -1;
+  }
+  
+  public String toString()
+  {
+    if (this.b > 0) {}
+    for (String str = "(" + (int)this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(this.b - 1)].x + "," + (int)this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(this.b - 1)].y + ")";; str = "(-1,-1)") {
+      return "ARGestureResult{, state = " + this.jdField_a_of_type_Int + ", type = " + this.jdField_a_of_type_JavaLangString + ", pointCnt = " + this.b + ", newPoint(x,y) = " + str + ", mode = " + this.d + '}';
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return i;
-          if (bool1) {
-            return -1;
-          }
-          i = k;
-        } while (bool2);
-        bool1 = aplm.b(paramColorNote1);
-        bool2 = aplm.b(paramColorNote2);
-        if ((bool1) && (bool2)) {
-          return aplh.a(this.a, paramColorNote1, paramColorNote2);
-        }
-        if (bool1) {
-          return -1;
-        }
-        i = k;
-      } while (bool2);
-      if (paramColorNote1.getServiceType() == 16973824) {}
-      for (i = 1;; i = 0)
-      {
-        if (paramColorNote2.getServiceType() == 16973824) {
-          j = 1;
-        }
-        if ((i == 0) || (j == 0)) {
-          break;
-        }
-        return aplh.a(this.a, paramColorNote1, paramColorNote2);
-      }
-      if (i != 0) {
-        return -1;
-      }
-      i = k;
-    } while (j != 0);
-    return aplh.a(this.a, paramColorNote1, paramColorNote2);
   }
 }
 

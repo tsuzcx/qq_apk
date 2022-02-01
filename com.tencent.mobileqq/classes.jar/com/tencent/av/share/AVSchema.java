@@ -1,7 +1,5 @@
 package com.tencent.av.share;
 
-import amtj;
-import anca;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -15,7 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
-import bfur;
+import anvx;
+import aoep;
+import bhdj;
+import com.tencent.av.ReqGroupVideo.ReqCheckGroupCanJoin;
 import com.tencent.av.ReqGroupVideo.ReqShareBackflowVerify;
 import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -23,6 +24,7 @@ import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.TroopInfoActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -35,18 +37,19 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
-import lfy;
-import lxr;
-import lxs;
-import lxt;
-import lxu;
-import lxv;
-import lxw;
-import lxx;
-import lxy;
-import lxz;
+import lgk;
+import lye;
+import lyh;
+import lyi;
+import lyj;
+import lyk;
+import lyl;
+import lym;
+import lyn;
+import lyo;
+import lyp;
 import mqq.os.MqqHandler;
-import mrf;
+import msc;
 
 public class AVSchema
   extends PublicBaseFragment
@@ -56,33 +59,33 @@ public class AVSchema
   public QQCustomDialog a;
   Runnable jdField_a_of_type_JavaLangRunnable = null;
   public final String a;
-  public lxx a;
-  lxz jdField_a_of_type_Lxz = new lxz(this, null);
+  public lyn a;
+  lyp jdField_a_of_type_Lyp = new lyp(this, null);
   boolean jdField_a_of_type_Boolean = false;
   boolean b = false;
   
   public AVSchema()
   {
-    this.jdField_a_of_type_Lxx = new lxx();
+    this.jdField_a_of_type_Lyn = new lyn();
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
     this.jdField_a_of_type_JavaLangString = ("AVSchema." + AudioHelper.b());
     QLog.w(this.jdField_a_of_type_JavaLangString, 1, "AVSchema");
   }
   
-  static lxx a(Bundle paramBundle)
+  static lyn a(Bundle paramBundle)
   {
-    lxx locallxx = new lxx();
-    locallxx.jdField_a_of_type_JavaLangString = paramBundle.getString("guid");
-    return locallxx;
+    lyn locallyn = new lyn();
+    locallyn.jdField_a_of_type_JavaLangString = paramBundle.getString("guid");
+    return locallyn;
   }
   
-  static boolean a(lxx paramlxx1, lxx paramlxx2)
+  static boolean a(lyn paramlyn1, lyn paramlyn2)
   {
-    if (paramlxx1 == null) {}
-    while (paramlxx2 == null) {
+    if (paramlyn1 == null) {}
+    while (paramlyn2 == null) {
       return false;
     }
-    return TextUtils.equals(paramlxx1.jdField_a_of_type_JavaLangString, paramlxx2.jdField_a_of_type_JavaLangString);
+    return TextUtils.equals(paramlyn1.jdField_a_of_type_JavaLangString, paramlyn2.jdField_a_of_type_JavaLangString);
   }
   
   QQAppInterface a()
@@ -100,9 +103,9 @@ public class AVSchema
     if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing())) {
       return null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bfur.a(localFragmentActivity, 230);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bhdj.a(localFragmentActivity, 230);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(true);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new lxt(this));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new lyj(this));
     return this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
   }
   
@@ -124,8 +127,8 @@ public class AVSchema
     Object localObject = getArguments();
     AudioHelper.a(this.jdField_a_of_type_JavaLangString + ".request_seq[" + paramLong + "]", (Bundle)localObject);
     localObject = a((Bundle)localObject);
-    boolean bool = a(this.jdField_a_of_type_Lxx, (lxx)localObject);
-    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "request, isSameInfo[" + bool + "], mInfo[" + this.jdField_a_of_type_Lxx + "], seq[" + paramLong + "]");
+    boolean bool = a(this.jdField_a_of_type_Lyn, (lyn)localObject);
+    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "request, isSameInfo[" + bool + "], mInfo[" + this.jdField_a_of_type_Lyn + "], seq[" + paramLong + "]");
     if (bool) {}
     do
     {
@@ -135,10 +138,14 @@ public class AVSchema
         this.jdField_a_of_type_JavaLangRunnable = new AVSchema.1(this);
         this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
       }
-      a(paramLong, this.jdField_a_of_type_Lxx);
-      this.jdField_a_of_type_Lxx = ((lxx)localObject);
-    } while (this.jdField_a_of_type_Lxx == null);
-    b(paramLong, this.jdField_a_of_type_Lxx);
+      a(paramLong, this.jdField_a_of_type_Lyn);
+      this.jdField_a_of_type_Lyn = ((lyn)localObject);
+    } while (this.jdField_a_of_type_Lyn == null);
+    lye locallye = new lye(this);
+    ReqGroupVideo.ReqCheckGroupCanJoin localReqCheckGroupCanJoin = new ReqGroupVideo.ReqCheckGroupCanJoin();
+    localReqCheckGroupCanJoin.uint64_uin.set(a().getLongAccountUin());
+    localReqCheckGroupCanJoin.bytes_crypt_room_info.set(ByteStringMicro.copyFromUtf8(((lyn)localObject).jdField_a_of_type_JavaLangString));
+    lgk.a(paramLong, a(), "QQRTCSvc.share_backflow_check_group_can_join", localReqCheckGroupCanJoin, locallye);
   }
   
   void a(long paramLong, String paramString)
@@ -151,7 +158,7 @@ public class AVSchema
     a(localQQCustomDialog);
     localQQCustomDialog.show();
     QLog.w(this.jdField_a_of_type_JavaLangString, 1, "handleResult_I_Known, msg[" + paramString + "], seq[" + paramLong + "]");
-    new MqqHandler(Looper.getMainLooper()).postDelayed(new AVSchema.4(this, paramLong), 100L);
+    new MqqHandler(Looper.getMainLooper()).postDelayed(new AVSchema.5(this, paramLong), 100L);
   }
   
   void a(long paramLong, String paramString1, String paramString2)
@@ -162,19 +169,19 @@ public class AVSchema
     }
     localQQCustomDialog.setMessage(paramString1);
     b(localQQCustomDialog);
-    localQQCustomDialog.setPositiveButton(amtj.a(2131700043), new lxr(this, paramString2));
+    localQQCustomDialog.setPositiveButton(anvx.a(2131700394), new lyh(this, paramString2));
     localQQCustomDialog.show();
     QLog.w(this.jdField_a_of_type_JavaLangString, 1, "handleResult_ROOM_CLOSE, msg[" + paramString1 + "], seq[" + paramLong + "]");
   }
   
-  void a(long paramLong, lxx paramlxx)
+  void a(long paramLong, lyn paramlyn)
   {
-    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "cancelLastRequest, info[" + paramlxx + "], seq[" + paramLong + "]");
+    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "cancelLastRequest, info[" + paramlyn + "], seq[" + paramLong + "]");
   }
   
   void a(QQCustomDialog paramQQCustomDialog)
   {
-    paramQQCustomDialog.setNegativeButton(amtj.a(2131700041), new lxu(this));
+    paramQQCustomDialog.setNegativeButton(anvx.a(2131700392), new lyk(this));
   }
   
   public void a(String paramString)
@@ -191,7 +198,7 @@ public class AVSchema
     this.jdField_a_of_type_Boolean = true;
   }
   
-  void a(boolean paramBoolean)
+  public void a(boolean paramBoolean)
   {
     if (getActivity() == null) {}
     do
@@ -200,14 +207,14 @@ public class AVSchema
       do
       {
         return;
-        localView1 = getActivity().findViewById(2131363572);
+        localView1 = getActivity().findViewById(2131363641);
       } while (localView1 == null);
       View localView2 = (View)localView1.getParent();
       if (paramBoolean)
       {
         localView1.setVisibility(0);
         localView2.setBackgroundColor(-271725107);
-        ((TextView)localView2.findViewById(2131371418)).setText(2131694279);
+        ((TextView)localView2.findViewById(2131371603)).setText(2131694477);
         return;
       }
       localView1.setVisibility(4);
@@ -245,19 +252,19 @@ public class AVSchema
     if (this.b) {
       return;
     }
-    mrf.e();
+    msc.e();
     boolean bool = AVNotifyCenter.d();
     QLog.w(this.jdField_a_of_type_JavaLangString, 1, "joinVideoChat, groupUin[" + paramString + "], isBeInvitingOnDoubleVideo[" + bool + "], seq[" + paramLong + "]");
     if (bool)
     {
-      QQToast.a(getActivity(), 2131695417, 1).b(getActivity().getResources().getDimensionPixelSize(2131299076));
+      QQToast.a(getActivity(), 2131695634, 1).b(getActivity().getResources().getDimensionPixelSize(2131299080));
       return;
     }
     this.b = true;
     Bundle localBundle = new Bundle();
     localBundle.putInt("MultiAVType", 10);
     AudioHelper.b(this.jdField_a_of_type_JavaLangString + ".joinVideoChat");
-    ChatActivityUtils.a(a(), a().getApp(), 1, paramString, true, true, new lxw(this, paramLong), localBundle);
+    ChatActivityUtils.a(a(), a().getApp(), 1, paramString, true, true, new lym(this, paramLong), localBundle);
   }
   
   void b(long paramLong, String paramString1, String paramString2)
@@ -268,24 +275,24 @@ public class AVSchema
     }
     localQQCustomDialog.setMessage(paramString1);
     b(localQQCustomDialog);
-    localQQCustomDialog.setPositiveButton(amtj.a(2131700044), new lxs(this, paramString2));
+    localQQCustomDialog.setPositiveButton(anvx.a(2131700395), new lyi(this, paramString2));
     localQQCustomDialog.show();
     QLog.w(this.jdField_a_of_type_JavaLangString, 1, "handleResult_NEED_ADMIN_CONFIRM, msg[" + paramString1 + "], seq[" + paramLong + "]");
   }
   
-  void b(long paramLong, lxx paramlxx)
+  public void b(long paramLong, lyn paramlyn)
   {
     ReqGroupVideo.ReqShareBackflowVerify localReqShareBackflowVerify = new ReqGroupVideo.ReqShareBackflowVerify();
     localReqShareBackflowVerify.uint64_uin.set(a().getLongAccountUin());
-    localReqShareBackflowVerify.bytes_crypt_room_info.set(ByteStringMicro.copyFromUtf8(paramlxx.jdField_a_of_type_JavaLangString));
-    lxy locallxy = new lxy(this, paramlxx);
-    lfy.a(paramLong, a(), "QQRTCSvc.group_video_share_backflow_verify", localReqShareBackflowVerify, locallxy);
-    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "realyRequest, info[" + paramlxx + "], seq[" + paramLong + "]");
+    localReqShareBackflowVerify.bytes_crypt_room_info.set(ByteStringMicro.copyFromUtf8(paramlyn.jdField_a_of_type_JavaLangString));
+    lyo locallyo = new lyo(this, paramlyn);
+    lgk.a(paramLong, a(), "QQRTCSvc.group_video_share_backflow_verify", localReqShareBackflowVerify, locallyo);
+    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "realyRequest, info[" + paramlyn + "], seq[" + paramLong + "]");
   }
   
   void b(QQCustomDialog paramQQCustomDialog)
   {
-    paramQQCustomDialog.setNegativeButton(amtj.a(2131700040), new lxv(this));
+    paramQQCustomDialog.setNegativeButton(anvx.a(2131700391), new lyl(this));
   }
   
   public void b(String paramString)
@@ -296,10 +303,10 @@ public class AVSchema
   
   void c(String paramString)
   {
-    this.jdField_a_of_type_Lxz.jdField_a_of_type_JavaLangString = paramString;
-    anca localanca = (anca)a().getBusinessHandler(20);
-    localanca.b(paramString, false);
-    localanca.b();
+    this.jdField_a_of_type_Lyp.jdField_a_of_type_JavaLangString = paramString;
+    aoep localaoep = (aoep)a().getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
+    localaoep.b(paramString, false);
+    localaoep.b();
   }
   
   public void onActivityCreated(Bundle paramBundle)
@@ -316,16 +323,16 @@ public class AVSchema
     super.onAttach(paramActivity);
     QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onAttach, activity[" + paramActivity + "]");
     LiuHaiUtils.a(paramActivity);
-    a().addObserver(this.jdField_a_of_type_Lxz);
+    a().addObserver(this.jdField_a_of_type_Lyp);
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131561384, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131561446, paramViewGroup, false);
     paramLayoutInflater.getLayoutParams().height = -1;
     int i = LiuHaiUtils.b(getActivity());
-    paramViewGroup = paramLayoutInflater.findViewById(2131363572);
+    paramViewGroup = paramLayoutInflater.findViewById(2131363641);
     ((FrameLayout.LayoutParams)paramViewGroup.getLayoutParams()).topMargin = i;
     paramViewGroup.setVisibility(4);
     ((View)paramViewGroup.getParent()).setBackgroundColor(16777216);
@@ -341,8 +348,8 @@ public class AVSchema
     for (Throwable localThrowable = new Throwable("打印调用栈");; localThrowable = null)
     {
       QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onDetach", localThrowable);
-      this.jdField_a_of_type_Lxz.jdField_a_of_type_JavaLangString = "";
-      a().removeObserver(this.jdField_a_of_type_Lxz);
+      this.jdField_a_of_type_Lyp.jdField_a_of_type_JavaLangString = "";
+      a().removeObserver(this.jdField_a_of_type_Lyp);
       if (this.jdField_a_of_type_AndroidOsHandler != null)
       {
         if (this.jdField_a_of_type_JavaLangRunnable != null)

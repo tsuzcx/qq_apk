@@ -1,33 +1,35 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import acvv;
-import ahik;
-import amov;
-import amsw;
+import admh;
+import aidd;
+import anri;
+import anvk;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.utils.StringUtil;
 
 public class NearbyChatPie$1
   implements Runnable
 {
-  public NearbyChatPie$1(ahik paramahik) {}
+  public NearbyChatPie$1(aidd paramaidd) {}
   
   public void run()
   {
     try
     {
-      Card localCard = ((amsw)this.this$0.app.getManager(51)).b(this.this$0.sessionInfo.curFriendUin);
+      Card localCard = ((anvk)this.this$0.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.this$0.sessionInfo.curFriendUin);
       if (localCard == null)
       {
         if (StringUtil.verifyUin(this.this$0.sessionInfo.curFriendUin)) {
-          ((amov)this.this$0.app.getBusinessHandler(2)).a(this.this$0.app.getCurrentAccountUin(), this.this$0.sessionInfo.curFriendUin, (byte)1, 0);
+          ((anri)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).a(this.this$0.app.getCurrentAccountUin(), this.this$0.sessionInfo.curFriendUin, (byte)1, 0);
         }
       }
       else if ((localCard != null) && (localCard.strCertificationInfo != null) && (!localCard.strCertificationInfo.equals("")))
       {
-        acvv.f(this.this$0.app, this.this$0.sessionInfo);
+        admh.f(this.this$0.app, this.this$0.sessionInfo);
         return;
       }
     }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import bcjc;
+import bdqa;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.transfile.AbsDownloader;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
@@ -10,7 +10,7 @@ import java.net.URL;
 class StructingMsgItemBuilder$6
   implements Runnable
 {
-  StructingMsgItemBuilder$6(StructingMsgItemBuilder paramStructingMsgItemBuilder, bcjc parambcjc) {}
+  StructingMsgItemBuilder$6(StructingMsgItemBuilder paramStructingMsgItemBuilder, bdqa parambdqa) {}
   
   public void run()
   {

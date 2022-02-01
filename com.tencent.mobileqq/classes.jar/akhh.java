@@ -1,27 +1,22 @@
-import android.os.Message;
-import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
-class akhh
-  extends anxo
+public class akhh
+  implements DialogInterface.OnClickListener
 {
-  akhh(akhg paramakhg) {}
+  public akhh(BindNumberActivity paramBindNumberActivity) {}
   
-  protected void onGetAppletsDetail(boolean paramBoolean, List<AppletsAccountInfo> paramList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBoolean) && (paramList != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("AppletsObserver", 2, "onGetAppletsDetail:  isSuccess: " + paramBoolean + ", data.size = " + paramList.size());
-      }
-      akhg.a(this.a).obtainMessage(2, 0, 0, paramList).sendToTarget();
-    }
+    this.a.a("dc00898", "0X8009F15", 0);
+    paramDialogInterface.dismiss();
+    BindNumberActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akhh
  * JD-Core Version:    0.7.0.1
  */

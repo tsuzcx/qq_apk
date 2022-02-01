@@ -1,7 +1,7 @@
 package com.tencent.gdtad.api.motivebrowsing;
 
-import abmw;
-import abop;
+import accm;
+import aced;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -19,10 +19,10 @@ public final class GdtMotiveBrowsingDialog$Companion$startMotiveBrowsingDialog$1
   {
     try
     {
-      abmw localabmw = new abmw((Context)this.jdField_a_of_type_AndroidAppActivity);
-      localabmw.a(new abop(this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData));
-      localabmw.a(this.jdField_a_of_type_AndroidContentIntent);
-      localabmw.show();
+      accm localaccm = new accm((Context)this.jdField_a_of_type_AndroidAppActivity);
+      localaccm.a(new aced(this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData));
+      localaccm.a(this.jdField_a_of_type_AndroidContentIntent);
+      localaccm.show();
       return;
     }
     catch (Exception localException)

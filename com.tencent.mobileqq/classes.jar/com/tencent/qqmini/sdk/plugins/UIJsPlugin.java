@@ -27,8 +27,21 @@ public class UIJsPlugin
   public static final String EVENT_SHOW_TOAST = "showToast";
   public static final String EVENT_UPDATE_TEXTAREA = "updateTextArea";
   private static final String TAG = "UIJsPlugin";
+  private ToastView loadingView;
   private String mLastPage;
   private ToastView toastView;
+  
+  private void hideLoadingView()
+  {
+    if (QMLog.isColorLevel()) {
+      QMLog.d("UIJsPlugin", "hideLoadingView LoadingView=" + this.loadingView);
+    }
+    if ((this.loadingView != null) && (this.loadingView.shown()))
+    {
+      this.loadingView.hide();
+      this.loadingView = null;
+    }
+  }
   
   private void hideToastView()
   {
@@ -63,11 +76,17 @@ public class UIJsPlugin
   @JsEvent({"hideHomeButton"})
   public void hideHomeButton(RequestEvent paramRequestEvent)
   {
-    AppBrandTask.runTaskOnUiThread(new UIJsPlugin.5(this, paramRequestEvent));
+    AppBrandTask.runTaskOnUiThread(new UIJsPlugin.6(this, paramRequestEvent));
   }
   
-  @JsEvent({"hideToast", "hideLoading"})
-  public void hideToastOrLoading(RequestEvent paramRequestEvent)
+  @JsEvent({"hideLoading"})
+  public void hideLoading(RequestEvent paramRequestEvent)
+  {
+    AppBrandTask.runTaskOnUiThread(new UIJsPlugin.3(this, paramRequestEvent));
+  }
+  
+  @JsEvent({"hideToast"})
+  public void hideToast(RequestEvent paramRequestEvent)
   {
     AppBrandTask.runTaskOnUiThread(new UIJsPlugin.2(this, paramRequestEvent));
   }
@@ -75,7 +94,7 @@ public class UIJsPlugin
   @JsEvent({"showLoading"})
   public void showLoading(RequestEvent paramRequestEvent)
   {
-    AppBrandTask.runTaskOnUiThread(new UIJsPlugin.3(this, paramRequestEvent));
+    AppBrandTask.runTaskOnUiThread(new UIJsPlugin.4(this, paramRequestEvent));
   }
   
   @JsEvent({"showModal"})
@@ -89,7 +108,7 @@ public class UIJsPlugin
       boolean bool = localJSONObject.optBoolean("showCancel", true);
       String str3 = localJSONObject.optString("cancelText", "取消");
       String str4 = localJSONObject.optString("cancelColor", "#000000");
-      AppBrandTask.runTaskOnUiThread(new UIJsPlugin.4(this, str1, str2, localJSONObject.optString("confirmText", "确定"), localJSONObject.optString("confirmColor", "#3CC51F"), paramRequestEvent, bool, str3, str4));
+      AppBrandTask.runTaskOnUiThread(new UIJsPlugin.5(this, str1, str2, localJSONObject.optString("confirmText", "确定"), localJSONObject.optString("confirmColor", "#3CC51F"), paramRequestEvent, bool, str3, str4));
       return;
     }
     catch (JSONException localJSONException)

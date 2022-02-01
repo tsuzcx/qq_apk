@@ -1,23 +1,19 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
 
-class acku
-  extends nmf
+public class acku
+  implements ackl
 {
-  acku(acks paramacks, acle paramacle, JSONObject paramJSONObject, acjr paramacjr) {}
+  public acku(GdtVideoImaxFragment paramGdtVideoImaxFragment) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(acks.a, 2, "onResult appid=" + acks.b(this.jdField_a_of_type_Acks).a + ", openid=" + this.jdField_a_of_type_Acle.a + ", openkey=" + this.jdField_a_of_type_Acle.b + ", code=" + paramInt + ", req param=" + this.jdField_a_of_type_OrgJsonJSONObject);
-    }
-    if ((paramInt != 0) || (paramArrayOfByte == null))
+    switch (paramView.getId())
     {
-      acmy.a(this.jdField_a_of_type_Acjr, paramInt, "reportScore result error, try again");
+    default: 
       return;
     }
-    acmy.a(this.jdField_a_of_type_Acjr, acjt.jdField_a_of_type_OrgJsonJSONObject);
+    this.a.a();
   }
 }
 

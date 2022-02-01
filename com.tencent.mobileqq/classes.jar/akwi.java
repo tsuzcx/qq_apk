@@ -1,67 +1,33 @@
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-import android.widget.Scroller;
+import android.widget.EditText;
 
-class akwi
-  implements GestureDetector.OnGestureListener
+public class akwi
+  extends akvp
 {
-  akwi(akwh paramakwh) {}
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public akwi(EditText paramEditText)
   {
-    akwh.a(this.a).forceFinished(true);
-    return true;
+    super(paramEditText);
   }
   
-  public boolean onFling(MotionEvent arg1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    synchronized (this.a)
+    paramInt1 = 1;
+    paramCharSequence = paramCharSequence.toString();
+    if (paramCharSequence.startsWith("0"))
     {
-      akwh.a(this.a).fling((int)akwh.a(this.a), 0, (int)-paramFloat1, 0, (int)akwh.b(this.a), (int)akwh.c(this.a), 0, 0);
-      akwh.b(this.a);
-      return true;
+      paramInt2 = bmhg.a(paramCharSequence, 1);
+      if (paramInt2 != 0) {
+        break label53;
+      }
     }
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onScroll(MotionEvent arg1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    do
+    for (;;)
     {
-      synchronized (this.a)
-      {
-        akwh.a(this.a, akwh.a(this.a) + paramFloat1);
-        if (akwh.a(this.a) < akwh.b(this.a)) {
-          akwh.a(this.a, akwh.b(this.a));
-        }
-        if (akwh.a(this.a) > akwh.c(this.a)) {
-          akwh.a(this.a, akwh.c(this.a));
-        }
-        paramFloat1 = akwh.a(this.a);
-        paramFloat2 = akwh.d(this.a);
-        akwh.b(this.a, akwh.a(this.a));
-        if (akwh.a(this.a, paramFloat1 - paramFloat2, 0.0F)) {
-          return true;
-        }
-      }
-      akwh.a(this.a);
-      if (akwh.a(this.a) != null) {
-        akwh.a(this.a).a(akwh.a(this.a), akwh.b(this.a));
-      }
-      if (akwh.a(this.a) != null) {
-        akwh.a(this.a).invalidate();
-      }
-    } while (akwh.a(this.a) == null);
-    akwh.a(this.a).a(akwh.a(this.a), -akwh.a(this.a), akwh.e(this.a) - akwh.a(this.a));
-    return true;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return false;
+      paramCharSequence = String.valueOf(paramInt1);
+      this.a.setText(paramCharSequence);
+      this.a.setSelection(paramCharSequence.length());
+      return;
+      label53:
+      paramInt1 = paramInt2;
+    }
   }
 }
 

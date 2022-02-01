@@ -1,364 +1,180 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.media.AudioManager;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenManager;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams.FloatingBuilder;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.TVKVideoController.2;
-import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.TVKVideoController.4;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
 import java.io.File;
-import java.lang.ref.WeakReference;
-import java.net.URL;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.os.MqqHandler;
+import mqq.app.AppRuntime;
+import mqq.manager.Manager;
+import org.json.JSONObject;
 
 public class bhml
-  implements agyg
+  implements Manager
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private ajoe jdField_a_of_type_Ajoe;
-  private ajqi jdField_a_of_type_Ajqi;
-  private View jdField_a_of_type_AndroidViewView;
-  avpj jdField_a_of_type_Avpj = new bhmn(this);
-  private bhmo jdField_a_of_type_Bhmo;
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private IVideoOuterStatusListener jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenListenerIVideoOuterStatusListener;
-  public final Runnable a;
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int c;
+  bhyn jdField_a_of_type_Bhyn = new bhmm(this, "param_WIFIColorRingDownloadFlow", "param_XGColorRingDownloadFlow");
+  private bhyq jdField_a_of_type_Bhyq;
+  public bhyu a;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public bhml(Context paramContext)
+  public bhml(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangRunnable = new TVKVideoController.4(this);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_Bhmo = new bhmo(this, null);
-    this.jdField_a_of_type_Ajoe = new ajoe();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Bhyq = ((bhyq)paramQQAppInterface.getManager(QQManagerFactory.DOWNLOADER_FACTORY));
   }
   
-  private void a(int paramInt)
+  public static Bitmap a(long paramLong)
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Ajoe != null))
+    if (paramLong == 0L) {}
+    for (;;)
     {
-      this.jdField_a_of_type_Ajoe.a(paramInt);
-      this.jdField_a_of_type_Bhmo.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 100L);
+      return null;
+      Object localObject = a(paramLong, 1);
+      if (new File((String)localObject).exists())
+      {
+        try
+        {
+          localObject = BitmapFactory.decodeFile((String)localObject);
+          return localObject;
+        }
+        catch (OutOfMemoryError localOutOfMemoryError) {}
+        if (QLog.isColorLevel()) {
+          QLog.d("ColorRingManager", 2, "getCoverBitmap OOM.");
+        }
+      }
     }
   }
   
-  private void b(int paramInt1, int paramInt2)
+  public static String a(long paramLong, int paramInt)
   {
-    int i = 401;
-    if (paramInt1 == 101) {
-      i = 403;
+    if (paramLong == 0L) {}
+    do
+    {
+      return "";
+      if (paramInt == 2) {
+        return bhmk.a + File.separator + paramLong + File.separator + "config.txt";
+      }
+      if (paramInt == 1) {
+        return bhmk.a + File.separator + paramLong + File.separator + "cover.jpg";
+      }
+    } while (paramInt != 3);
+    return bhmk.a + File.separator + paramLong + File.separator + "ring.mp3";
+  }
+  
+  public static String a(AppRuntime paramAppRuntime, int paramInt1, int paramInt2)
+  {
+    Object localObject = "";
+    if (paramInt2 == 3)
+    {
+      localObject = bibh.a(paramAppRuntime, 0, null).getString("_3_" + paramInt1, null);
+      paramAppRuntime = (AppRuntime)localObject;
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        paramAppRuntime = bhnp.a("colorringAudio");
+      }
     }
-    int j = i;
-    if (paramInt1 == 122) {
-      if (paramInt2 != 204)
+    for (;;)
+    {
+      localObject = paramAppRuntime;
+      if (paramAppRuntime != null) {
+        localObject = paramAppRuntime.replace("[id]", String.valueOf(paramInt1));
+      }
+      return localObject;
+      if (paramInt2 == 2)
       {
-        j = i;
-        if (paramInt2 != 202) {}
+        paramAppRuntime = bhnp.a("colorringConfig");
       }
       else
       {
-        j = 402;
-      }
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenListenerIVideoOuterStatusListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenListenerIVideoOuterStatusListener.onVideoError(j);
-    }
-  }
-  
-  private void c()
-  {
-    if ((this.jdField_a_of_type_Ajoe != null) && (this.jdField_a_of_type_Ajqi != null))
-    {
-      if (this.jdField_a_of_type_Ajqi.jdField_a_of_type_Boolean) {
-        break label50;
-      }
-      if (this.jdField_a_of_type_Ajqi.jdField_a_of_type_JavaLangString != null) {
-        this.jdField_a_of_type_Ajoe.a(this.jdField_a_of_type_Ajqi.jdField_a_of_type_JavaLangString, 0L);
-      }
-    }
-    return;
-    label50:
-    String str1;
-    if (this.jdField_a_of_type_Ajqi.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null)
-    {
-      str1 = "0";
-      if (this.jdField_a_of_type_Ajqi.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null) {
-        break label128;
-      }
-    }
-    label128:
-    for (String str2 = "";; str2 = this.jdField_a_of_type_Ajqi.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.md5)
-    {
-      this.jdField_a_of_type_Ajoe.a(this.jdField_a_of_type_Ajqi.a(), str1, this.jdField_a_of_type_Ajqi.jdField_a_of_type_ArrayOfJavaLangString, 0L, str2, (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-      return;
-      str1 = String.valueOf(this.jdField_a_of_type_Ajqi.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileTime);
-      break;
-    }
-  }
-  
-  private void d()
-  {
-    int i = avpf.a().a(1, this.jdField_a_of_type_Avpj);
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Ajoe != null) && (i == 0))
-    {
-      this.jdField_a_of_type_Ajoe.c();
-      this.jdField_a_of_type_Int = 1;
-      this.jdField_a_of_type_Bhmo.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 100L);
-    }
-  }
-  
-  private void e()
-  {
-    avpf.a().a(this.jdField_a_of_type_Avpj);
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Ajoe != null) && (!this.jdField_b_of_type_Boolean))
-    {
-      this.jdField_a_of_type_Ajoe.b();
-      this.jdField_a_of_type_Int = 4;
-      this.jdField_a_of_type_Bhmo.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    }
-  }
-  
-  private void f()
-  {
-    avpf.a().a(this.jdField_a_of_type_Avpj);
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-      ((AudioManager)((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getSystemService("audio")).abandonAudioFocus(null);
-    }
-  }
-  
-  private void g()
-  {
-    if (this.jdField_a_of_type_Ajqi == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("TVKVideoController", 2, "clickPlay mCurInfo is null");
-      }
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("TVKVideoController", 2, new Object[] { "clickPlay curState:", Integer.valueOf(this.jdField_a_of_type_Int), " ,isCompleted:", Boolean.valueOf(this.jdField_b_of_type_Boolean), " ,path:", this.jdField_a_of_type_Ajqi.jdField_a_of_type_JavaLangString });
-      }
-      if (this.jdField_a_of_type_Int == 0)
-      {
-        if (this.jdField_b_of_type_Boolean)
-        {
-          c();
-          this.jdField_b_of_type_Boolean = false;
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-        return;
-      }
-      if (this.jdField_a_of_type_Int == 2)
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-        return;
-      }
-      if (this.jdField_a_of_type_Int == 3)
-      {
-        this.jdField_b_of_type_Boolean = false;
-        d();
-        return;
-      }
-    } while (this.jdField_a_of_type_Int != 4);
-    d();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenListenerIVideoOuterStatusListener = FloatingScreenManager.getInstance().setFloatingVideoListener(new bhmm(this));
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if ((paramInt1 < 0) || (paramInt2 < 0)) {
-      break label8;
-    }
-    label8:
-    label112:
-    for (;;)
-    {
-      return;
-      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Ajoe != null))
-      {
-        if (paramInt1 > paramInt2) {}
-        for (float f = paramInt2 / paramInt1;; f = paramInt1 / paramInt2)
-        {
-          if ((f <= 0.5D) || (f >= 0.6D) || (!(this.jdField_a_of_type_AndroidViewView instanceof IVideoViewBase))) {
-            break label112;
-          }
-          ((IVideoViewBase)this.jdField_a_of_type_AndroidViewView).setXYaxis(2);
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("TVKVideoController", 2, new Object[] { "handleFullScreen ratio:", Float.valueOf(f) });
-          return;
+        paramAppRuntime = (AppRuntime)localObject;
+        if (paramInt2 == 1) {
+          paramAppRuntime = bhnp.a("colorringCover");
         }
       }
     }
   }
   
-  public void a(long paramLong)
+  public static JSONObject a(long paramLong)
   {
-    if (this.jdField_a_of_type_Long == paramLong)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TVKVideoController", 2, new Object[] { "onRecokeMsg:", Long.valueOf(paramLong) });
-      }
-      ThreadManager.getUIHandler().post(new TVKVideoController.2(this));
-    }
-  }
-  
-  public void a(ajqi paramajqi, long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TVKVideoController", 2, new Object[] { "initTVKVideoController with mediaInfo :", paramajqi.jdField_a_of_type_JavaLangString });
-    }
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Ajqi = paramajqi;
-    this.jdField_a_of_type_Ajqi.e = paramLong2;
-    if (this.jdField_a_of_type_Ajoe != null)
-    {
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Ajoe.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_Bhmo, this.jdField_a_of_type_Ajqi, null);
-      if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewView != null))
-      {
-        this.jdField_a_of_type_Ajoe.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), (IVideoViewBase)this.jdField_a_of_type_AndroidViewView);
-        this.jdField_a_of_type_Boolean = true;
-      }
-    }
-    agye.a().a(this);
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
-  {
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt2;
-    Object localObject;
-    if (FileUtils.fileExistsAndNotEmpty(paramString))
-    {
-      paramString = ShortVideoUtils.getThumbUrl(paramString);
-      if (paramString != null)
-      {
-        paramString = paramString.toString();
-        if (!TextUtils.isEmpty(paramString)) {
-          localObject = new aqww(Color.rgb(214, 214, 214), paramInt1, paramInt2);
-        }
-      }
-    }
+    Object localObject = new File(bhmk.a + File.separator + paramLong + File.separator + "config.txt");
     try
     {
-      localObject = URLDrawable.getDrawable(paramString, (Drawable)localObject, (Drawable)localObject);
-      if (((URLDrawable)localObject).getStatus() != 1) {
-        ((URLDrawable)localObject).downloadImediatly();
+      localObject = FileUtils.readFileContent((File)localObject);
+      if (localObject != null)
+      {
+        localObject = new JSONObject((String)localObject);
+        return localObject;
       }
-      if ((localObject instanceof URLDrawable)) {
-        this.jdField_a_of_type_ComTencentImageURLDrawable = ((URLDrawable)localObject);
-      }
-      return;
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("TVKVideoController", 2, "initCover():  getDrawable Exception, coverUrl=" + paramString, localException);
+      localException.printStackTrace();
     }
+    return null;
   }
   
-  public void a(String paramString, long paramLong1, long paramLong2)
+  public static void a(String paramString1, int paramInt, String paramString2) {}
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Bhyq.a(1).a(true, a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1, paramInt2));
+  }
+  
+  public void a(int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("TVKVideoController", 2, new Object[] { "initTVKVideoController with path:", paramString });
+      QLog.d("ColorRingManager", 2, ">>startDownload, id=" + paramInt1);
     }
-    long l = 0L;
-    File localFile = new File(paramString);
-    if (localFile.exists()) {
-      l = localFile.length();
-    }
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Ajqi = new ajqi();
-    this.jdField_a_of_type_Ajqi.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Ajqi.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Ajqi.b = l;
-    this.jdField_a_of_type_Ajqi.d = l;
-    this.jdField_a_of_type_Ajqi.e = paramLong2;
-    if (this.jdField_a_of_type_Ajoe != null)
+    if (paramInt1 == 0) {}
+    label284:
+    do
     {
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Ajoe.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_Bhmo, this.jdField_a_of_type_Ajqi, null);
-      if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewView != null))
+      return;
+      String str = a(paramInt1, paramInt2);
+      File localFile = new File(str);
+      if ((localFile.exists()) && (localFile.isFile())) {}
+      Bundle localBundle;
+      for (boolean bool = true;; bool = false)
       {
-        this.jdField_a_of_type_Ajoe.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), (IVideoViewBase)this.jdField_a_of_type_AndroidViewView);
-        this.jdField_a_of_type_Boolean = true;
+        if (QLog.isColorLevel()) {
+          QLog.d("ColorRingManager", 2, "startDownload exists(), id=" + paramInt1 + ", resType=ring3,, isIPC=" + paramBoolean + ", srcType=" + paramInt3 + ", fileExist=" + bool);
+        }
+        if ((bool) && (!paramBoolean)) {
+          break;
+        }
+        localBundle = new Bundle();
+        localBundle.putInt("callId", paramInt1);
+        localBundle.putString("path", str);
+        localBundle.putBoolean("isIPC", paramBoolean);
+        localBundle.putInt("resourceType", paramInt2);
+        localBundle.putInt("srcType", paramInt3);
+        localBundle.putString("path", str);
+        localBundle.putString("colorType", paramString);
+        paramString = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1, paramInt2);
+        if (!bool) {
+          break label284;
+        }
+        localBundle.putBoolean("isExists", true);
+        paramString = new bhyo(paramString, localFile);
+        paramString.a(3);
+        paramString.a = 0;
+        paramString.a(localBundle);
+        this.jdField_a_of_type_Bhyn.onDone(paramString);
+        return;
       }
-    }
-    agye.a().a(this);
+      paramString = new bhyo(paramString, new File(str + ".tmp"));
+      paramString.e = 3145728L;
+      paramString.b = true;
+      this.jdField_a_of_type_Bhyq.a(1).a(paramString, this.jdField_a_of_type_Bhyn, localBundle);
+    } while (!QLog.isColorLevel());
+    QLog.d("ColorRingManager", 2, "<<startDownload, id=" + paramInt1);
   }
   
-  public boolean a(boolean paramBoolean, int paramInt)
+  public void onDestroy()
   {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TVKVideoController", 2, "enterFloat failed! mediaplay not init");
-      }
-      return false;
-    }
-    FloatingScreenParams localFloatingScreenParams = new FloatingScreenParams.FloatingBuilder().setIsHorizontal(paramBoolean).setCanMove(true).build();
-    if (FloatingScreenManager.getInstance().enterFloatingScreen(BaseApplicationImpl.getContext(), this.jdField_a_of_type_AndroidViewView, localFloatingScreenParams, bhlw.a(paramInt)) == 1)
-    {
-      FloatingScreenPermission.enterPermissionRequestDialog((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-      return false;
-    }
-    a();
-    this.jdField_b_of_type_Boolean = false;
-    g();
-    return true;
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TVKVideoController", 2, "destory!");
-    }
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-      ((AudioManager)((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getSystemService("audio")).abandonAudioFocus(null);
-    }
-    this.jdField_a_of_type_Ajqi = null;
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    this.jdField_a_of_type_AndroidViewView = null;
-    this.jdField_a_of_type_ComTencentImageURLDrawable = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    if (this.jdField_a_of_type_Ajoe != null)
-    {
-      this.jdField_a_of_type_Ajoe.a();
-      this.jdField_a_of_type_Ajoe = null;
-    }
-    if (this.jdField_a_of_type_Bhmo != null)
-    {
-      this.jdField_a_of_type_Bhmo.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_Bhmo = null;
-    }
-    avpf.a().a(this.jdField_a_of_type_Avpj);
-    agye.a().b(this);
+    this.jdField_a_of_type_Bhyu = null;
   }
 }
 

@@ -1,37 +1,24 @@
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.liveroom.LiveRoomHelper;
-import cooperation.liveroom.LiveRoomPluginInstaller;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.mobileqq.widget.QQToast;
 
-class auty
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
+public class auty
+  extends Handler
 {
-  auty(autx paramautx, String paramString) {}
+  public auty(ForwardSdkShareOption paramForwardSdkShareOption) {}
   
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  public void handleMessage(Message paramMessage)
   {
-    PluginBaseInfo localPluginBaseInfo = paramPluginManagerClient.queryPlugin("LiveRoomPlugin.apk");
-    if (QLog.isColorLevel()) {
-      QLog.d("LiveRoomBusinessPlugin", 2, "get plugin info by ipc");
+    if (paramMessage.what == 0) {
+      QQToast.a(this.a.a, anvx.a(2131704294), 0).a();
     }
-    if ((localPluginBaseInfo != null) && (localPluginBaseInfo.mState == 4))
-    {
-      LiveRoomHelper.setPluginInstalledInTool();
-      LiveRoomHelper.setPluginVersionInTool("" + localPluginBaseInfo.mCurVersion);
-      this.jdField_a_of_type_Autx.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":0\"version\":\"" + localPluginBaseInfo.mCurVersion + "\"}" });
-      if (QLog.isColorLevel()) {
-        QLog.d("LiveRoomBusinessPlugin", 2, "plugin is installed: version=" + localPluginBaseInfo.mCurVersion);
-      }
-    }
-    do
-    {
+    while (1 != paramMessage.what) {
       return;
-      this.jdField_a_of_type_Autx.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":-1}" });
-      LiveRoomPluginInstaller.getInstance().installFromTool(paramPluginManagerClient, "checkSDKInstalled");
-    } while (!QLog.isColorLevel());
-    QLog.d("LiveRoomBusinessPlugin", 2, "plugin is not installed");
+    }
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.widget;
 
 import android.graphics.drawable.Animatable;
-import bhht;
+import bisl;
 
 public class QQProgressDialog$1
   implements Runnable
 {
-  public QQProgressDialog$1(bhht parambhht) {}
+  public QQProgressDialog$1(bisl parambisl) {}
   
   public void run()
   {
-    bhht.a(this.this$0).start();
+    bisl.a(this.this$0).start();
   }
 }
 

@@ -1,21 +1,17 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 class ahrk
-  extends apkq
+  implements DialogInterface.OnCancelListener
 {
-  ahrk(ahrg paramahrg) {}
+  ahrk(ahri paramahri) {}
   
-  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    super.onAddColorNote(paramBundle, paramBoolean);
-    if (paramBoolean)
-    {
-      QQToast.a(ahrg.a(this.a).getActivity(), 2, 2131719396, 0).a();
-      return;
+    if (this.a.h) {
+      VasWebviewUtil.reportCommercialDrainage("", "QLbq", "MoreOp", "0", 1, 0, 0, "", "", "6", "", "", "", "", 0, 0, 0, 0);
     }
-    QQToast.a(ahrg.a(this.a).getActivity(), 0, 2131719395, 0).a();
   }
 }
 

@@ -1,106 +1,41 @@
-import android.arch.lifecycle.MutableLiveData;
-import android.content.Context;
-import android.content.res.AssetManager;
-import android.text.TextUtils;
-import java.io.IOException;
-import java.io.InputStream;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.LinkedList;
 
-public class blun
+class blun
+  extends bhyn
 {
-  private static MutableLiveData<Boolean> a = new MutableLiveData();
-  private static MutableLiveData<Boolean> b = new MutableLiveData();
-  private static MutableLiveData<Boolean> c = new MutableLiveData();
+  private blun(blul paramblul) {}
   
-  public static MutableLiveData<Boolean> a()
+  public void onDone(bhyo parambhyo)
   {
-    return a;
-  }
-  
-  public static String a(Context paramContext)
-  {
-    paramContext = bmbk.a().a("CameraModuleSvc.GetCameraConfig", "", 4);
-    if (!TextUtils.isEmpty(paramContext)) {
-      return paramContext;
-    }
-    return "";
-  }
-  
-  public static MutableLiveData<Boolean> b()
-  {
-    return b;
-  }
-  
-  public static String b(Context paramContext)
-  {
-    Object localObject2 = null;
-    Object localObject1 = null;
-    String str1 = "";
-    for (;;)
+    super.onDone(parambhyo);
+    if ((parambhyo.a() == 3) && (parambhyo.jdField_a_of_type_Int == 0)) {}
+    for (boolean bool = true;; bool = false)
     {
-      try
-      {
-        paramContext = paramContext.getAssets().open("camera_story_default_template.json");
-        localObject1 = paramContext;
-        localObject2 = paramContext;
-        String str2 = npn.a(paramContext);
-        localObject1 = str2;
-        localObject2 = localObject1;
+      if (QLog.isColorLevel()) {
+        QLog.e("IlivePluginDownloadManager", 2, "onDone , url = " + parambhyo.c + " isSuccess = " + bool + " errorCode = " + parambhyo.jdField_a_of_type_Int + " httpCode = " + parambhyo.f + " errMsg = " + parambhyo.b);
       }
-      catch (Throwable paramContext)
-      {
-        localObject2 = localObject1;
-        paramContext.printStackTrace();
-        localObject2 = str1;
-        if (localObject1 == null) {
-          continue;
-        }
-        try
-        {
-          ((InputStream)localObject1).close();
-          return "";
-        }
-        catch (IOException paramContext)
-        {
-          paramContext.printStackTrace();
-          return "";
-        }
+      blul.a(this.a).remove(parambhyo);
+      blul.a(this.a);
+      if (!bool) {
+        break;
       }
-      finally
-      {
-        if (localObject2 == null) {
-          break label88;
-        }
-      }
-      try
-      {
-        paramContext.close();
-        localObject2 = localObject1;
-        return localObject2;
-      }
-      catch (IOException paramContext)
-      {
-        paramContext.printStackTrace();
-        return localObject1;
-      }
+      blul.b(this.a);
+      return;
     }
-    try
-    {
-      ((InputStream)localObject2).close();
-      label88:
-      throw paramContext;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        localIOException.printStackTrace();
-      }
-    }
+    blul.a(this.a, parambhyo);
   }
   
-  public static MutableLiveData<Boolean> c()
+  public void onProgress(bhyo parambhyo)
   {
-    return c;
+    super.onProgress(parambhyo);
+    if (QLog.isColorLevel()) {
+      QLog.e("IlivePluginDownloadManager", 2, "onProgress ,  percent = " + parambhyo.jdField_a_of_type_Float + " url = " + parambhyo.c + " runTime = " + BaseApplicationImpl.getApplication().getRuntime().getClass());
+    }
+    if (blul.a(this.a) != null) {
+      blul.a(this.a).onProgress(parambhyo.jdField_a_of_type_Float);
+    }
   }
 }
 

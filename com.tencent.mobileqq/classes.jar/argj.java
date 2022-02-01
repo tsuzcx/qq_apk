@@ -1,25 +1,69 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.emotionintegrate.EmotionDataSource.1;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class argj
+public class argj
+  extends aqwt<argh>
 {
-  public abstract int a();
-  
-  public abstract List<argg> a(boolean paramBoolean);
-  
-  public abstract void a();
-  
-  public void a(argk paramargk, argg paramargg, boolean paramBoolean)
+  @NonNull
+  public argh a(int paramInt)
   {
-    ThreadManager.excute(new EmotionDataSource.1(this, paramBoolean, paramargk, paramargg), 64, null, true);
+    return new argh();
   }
   
-  public abstract boolean a();
+  @Nullable
+  public argh a(aqxa[] paramArrayOfaqxa)
+  {
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0))
+    {
+      new argh();
+      return argh.a(paramArrayOfaqxa);
+    }
+    return null;
+  }
+  
+  public void a(argh paramargh)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TencentDocsPushProcessor", 2, "onUpdate " + paramargh.toString());
+    }
+  }
+  
+  public Class<argh> clazz()
+  {
+    return argh.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 418;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     argj
  * JD-Core Version:    0.7.0.1
  */

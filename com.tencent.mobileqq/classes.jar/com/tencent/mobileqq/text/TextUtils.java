@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.text;
 
-import amtj;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Paint;
@@ -17,13 +16,15 @@ import android.util.Pair;
 import android.util.SparseArray;
 import android.widget.EditText;
 import android.widget.TextView;
-import apub;
-import apwv;
-import aqyy;
-import avsq;
-import bfsm;
+import anvx;
+import aqxe;
+import aqzy;
+import asdi;
+import awyr;
+import bhbd;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.emoticon.QQEmojiUtil;
@@ -60,9 +61,9 @@ public class TextUtils
     StringBuilder localStringBuilder;
     int j;
     int k;
-    label235:
+    label236:
     Object localObject3;
-    label241:
+    label242:
     String str;
     for (;;)
     {
@@ -79,13 +80,13 @@ public class TextUtils
           try
           {
             if ((localObject1 instanceof NearbyAppInterface)) {
-              break label235;
+              break label236;
             }
-            localObject1 = (avsq)((AppInterface)localObject1).getManager(14);
+            localObject1 = (awyr)((AppInterface)localObject1).getManager(QQManagerFactory.EMOTICON_MANAGER);
             localStringBuilder = new StringBuilder(paramString);
             i = 0;
             if (i >= localStringBuilder.length()) {
-              break label465;
+              break label466;
             }
             j = i;
             if (localStringBuilder.codePointAt(i) == 20)
@@ -95,7 +96,7 @@ public class TextUtils
               {
                 k = localStringBuilder.charAt(i + 1);
                 if ((!QQSysFaceUtil.isValidFaceId(k)) && (250 != k)) {
-                  break label241;
+                  break label242;
                 }
                 j = k;
                 if (250 == k) {
@@ -125,14 +126,14 @@ public class TextUtils
           if (k == 255)
           {
             if (i + 4 < localStringBuilder.length()) {
-              break label290;
+              break label291;
             }
             paramString = QQText.SMALL_EMOJI_SYMBOL;
             localStringBuilder.replace(i, localStringBuilder.length(), paramString);
             i += paramString.length() - 1;
           }
         }
-        label290:
+        label291:
         paramString = new char[4];
         paramString[0] = localStringBuilder.charAt(i + 4);
         paramString[1] = localStringBuilder.charAt(i + 3);
@@ -153,10 +154,10 @@ public class TextUtils
             }
           }
         }
-        paramString = aqyy.a(paramString);
+        paramString = asdi.a(paramString);
         str = QQText.SMALL_EMOJI_SYMBOL;
         if (paramString == null) {
-          break label476;
+          break label477;
         }
       }
     }
@@ -176,10 +177,10 @@ public class TextUtils
         localStringBuilder.replace(i, i + 5, str);
         j = i + (str.length() - 1);
         break;
-        label465:
+        label466:
         return localStringBuilder.toString();
       }
-      label476:
+      label477:
       j = 0;
       k = 0;
     }
@@ -389,9 +390,9 @@ public class TextUtils
             try
             {
               if ((paramString instanceof NearbyAppInterface)) {
-                break label526;
+                break label527;
               }
-              paramString = (avsq)paramString.getManager(14);
+              paramString = (awyr)paramString.getManager(QQManagerFactory.EMOTICON_MANAGER);
               i = 0;
               str1 = paramString;
             }
@@ -431,13 +432,13 @@ public class TextUtils
               }
               paramString[j] = 13;
               continue;
-              paramString = aqyy.a(paramString);
+              paramString = asdi.a(paramString);
               if (paramString == null) {
-                break label519;
+                break label520;
               }
             }
             if (i >= localStringBuilder.length()) {
-              break label507;
+              break label508;
             }
             j = i;
             if (localStringBuilder.codePointAt(i) == 20)
@@ -483,14 +484,14 @@ public class TextUtils
               localStringBuilder.replace(i, i + 5, str2);
               j = i + (str2.length() - 1);
               break;
-              label507:
+              label508:
               return localStringBuilder.toString();
             }
-            label519:
+            label520:
             j = 0;
             k = 0;
           }
-          label526:
+          label527:
           paramString = null;
         }
       }
@@ -525,11 +526,11 @@ public class TextUtils
         continue;
       }
       if (paramString.codePointAt(k) <= 65535) {
-        break label651;
+        break label652;
       }
     }
-    label648:
-    label651:
+    label649:
+    label652:
     for (int j = 2;; j = 1)
     {
       localObject = paramString;
@@ -567,16 +568,16 @@ public class TextUtils
             try
             {
               if ((paramString instanceof NearbyAppInterface)) {
-                break label375;
+                break label376;
               }
-              paramString = (avsq)paramString.getManager(14);
+              paramString = (awyr)paramString.getManager(QQManagerFactory.EMOTICON_MANAGER);
               k = 0;
               i = 0;
               if (i >= localStringBuilder.length()) {
-                break label629;
+                break label630;
               }
               if ((localStringBuilder.codePointAt(i) != 20) || (i >= localStringBuilder.length() - 1)) {
-                break label624;
+                break label625;
               }
               j = localStringBuilder.charAt(i + 1);
               m = j;
@@ -584,13 +585,13 @@ public class TextUtils
                 m = 10;
               }
               if (!QQSysFaceUtil.isValidFaceId(m)) {
-                break label380;
+                break label381;
               }
               localObject = QQSysFaceUtil.getFaceDescription(m);
               if (k != 0) {
-                break label648;
+                break label649;
               }
-              localObject = amtj.a(2131713918) + (String)localObject;
+              localObject = anvx.a(2131714265) + (String)localObject;
               localStringBuilder.replace(i, i + 2, (String)localObject);
               j = i + (((String)localObject).length() - 1);
               k = 1;
@@ -615,14 +616,14 @@ public class TextUtils
           for (;;)
           {
             int m;
-            label336:
+            label337:
             paramString.printStackTrace();
             paramString = null;
             continue;
-            label375:
+            label376:
             paramString = null;
             continue;
-            label380:
+            label381:
             j = i;
             if (m == 255) {
               if (i + 4 >= localStringBuilder.length())
@@ -653,7 +654,7 @@ public class TextUtils
                     }
                   }
                 }
-                localObject = aqyy.a((char[])localObject);
+                localObject = asdi.a((char[])localObject);
                 String str = QQText.SMALL_EMOJI_SYMBOL;
                 if ((localObject != null) && (localObject.length == 2))
                 {
@@ -671,10 +672,10 @@ public class TextUtils
                     localStringBuilder.replace(i, i + 5, str);
                     j = i + (str.length() - 1);
                     break;
-                    label624:
+                    label625:
                     j = 0;
-                    break label336;
-                    label629:
+                    break label337;
+                    label630:
                     return localStringBuilder.toString();
                   }
                   j = 0;
@@ -744,7 +745,7 @@ public class TextUtils
         if ((paramString instanceof NearbyAppInterface)) {
           continue;
         }
-        paramString = (avsq)paramString.getManager(14);
+        paramString = (awyr)paramString.getManager(QQManagerFactory.EMOTICON_MANAGER);
         i = 0;
         str1 = paramString;
       }
@@ -784,7 +785,7 @@ public class TextUtils
         }
         paramString[j] = 13;
         continue;
-        paramString = aqyy.a(paramString);
+        paramString = asdi.a(paramString);
         if (paramString == null) {
           continue;
         }
@@ -818,7 +819,7 @@ public class TextUtils
     if ((Build.VERSION.SDK_INT >= 29) && (!"huawei".equalsIgnoreCase(Build.MANUFACTURER))) {}
     try
     {
-      if (!((apwv)apub.a().a(566)).c) {
+      if (!((aqzy)aqxe.a().a(566)).c) {
         paramTextView.setBreakStrategy(0);
       }
       return;
@@ -1216,7 +1217,7 @@ public class TextUtils
       try
       {
         localObject = paramResources.getDrawable(paramInt);
-        paramInt = bfsm.a((Drawable)localObject);
+        paramInt = bhbd.a((Drawable)localObject);
         paramResources = (Resources)localObject;
         if (paramInt > 0)
         {
@@ -1508,35 +1509,35 @@ public class TextUtils
   public static final Drawable loadEmojiFromDisk(Resources paramResources, int paramInt)
   {
     // Byte code:
-    //   0: new 96	java/lang/StringBuilder
+    //   0: new 101	java/lang/StringBuilder
     //   3: dup
-    //   4: invokespecial 191	java/lang/StringBuilder:<init>	()V
-    //   7: ldc_w 464
-    //   10: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4: invokespecial 196	java/lang/StringBuilder:<init>	()V
+    //   7: ldc_w 469
+    //   10: invokevirtual 204	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   13: iload_1
-    //   14: invokevirtual 435	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   17: invokevirtual 159	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   14: invokevirtual 440	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   17: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   20: astore 7
-    //   22: getstatic 453	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
+    //   22: getstatic 458	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
     //   25: ifnull +36 -> 61
-    //   28: getstatic 453	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
+    //   28: getstatic 458	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
     //   31: aload 7
-    //   33: invokevirtual 470	android/support/v4/util/MQLruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   36: checkcast 472	android/util/Pair
+    //   33: invokevirtual 475	android/support/v4/util/MQLruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   36: checkcast 477	android/util/Pair
     //   39: astore 5
     //   41: aload 5
     //   43: ifnull +18 -> 61
     //   46: aload 5
-    //   48: getfield 476	android/util/Pair:first	Ljava/lang/Object;
-    //   51: checkcast 478	android/graphics/drawable/Drawable$ConstantState
+    //   48: getfield 481	android/util/Pair:first	Ljava/lang/Object;
+    //   51: checkcast 483	android/graphics/drawable/Drawable$ConstantState
     //   54: aload_0
-    //   55: invokevirtual 482	android/graphics/drawable/Drawable$ConstantState:newDrawable	(Landroid/content/res/Resources;)Landroid/graphics/drawable/Drawable;
+    //   55: invokevirtual 487	android/graphics/drawable/Drawable$ConstantState:newDrawable	(Landroid/content/res/Resources;)Landroid/graphics/drawable/Drawable;
     //   58: astore_0
     //   59: aload_0
     //   60: areturn
-    //   61: invokestatic 654	com/tencent/mobileqq/utils/RandomAccessFileManager:a	()Lcom/tencent/mobileqq/utils/RandomAccessFileManager;
-    //   64: getstatic 659	bczq:b	Ljava/lang/String;
-    //   67: invokevirtual 662	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Ljava/lang/String;)Ljava/io/RandomAccessFile;
+    //   61: invokestatic 659	com/tencent/mobileqq/utils/RandomAccessFileManager:a	()Lcom/tencent/mobileqq/utils/RandomAccessFileManager;
+    //   64: getstatic 664	begp:b	Ljava/lang/String;
+    //   67: invokevirtual 667	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Ljava/lang/String;)Ljava/io/RandomAccessFile;
     //   70: astore 5
     //   72: iload_1
     //   73: sipush 1000
@@ -1547,12 +1548,12 @@ public class TextUtils
     //   81: astore_0
     //   82: aload 5
     //   84: lload_3
-    //   85: invokevirtual 668	java/io/RandomAccessFile:seek	(J)V
+    //   85: invokevirtual 673	java/io/RandomAccessFile:seek	(J)V
     //   88: aload 5
     //   90: astore_0
-    //   91: invokestatic 674	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   91: invokestatic 679	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
     //   94: iconst_4
-    //   95: invokevirtual 678	com/tencent/commonsdk/pool/ByteArrayPool:getBuf	(I)[B
+    //   95: invokevirtual 683	com/tencent/commonsdk/pool/ByteArrayPool:getBuf	(I)[B
     //   98: astore 6
     //   100: aload 5
     //   102: astore_0
@@ -1560,61 +1561,61 @@ public class TextUtils
     //   105: aload 6
     //   107: iconst_0
     //   108: iconst_4
-    //   109: invokevirtual 682	java/io/RandomAccessFile:read	([BII)I
+    //   109: invokevirtual 687	java/io/RandomAccessFile:read	([BII)I
     //   112: pop
     //   113: aload 5
     //   115: astore_0
     //   116: aload 6
-    //   118: invokestatic 685	bczq:a	([B)I
+    //   118: invokestatic 690	begp:a	([B)I
     //   121: istore_2
     //   122: aload 5
     //   124: astore_0
-    //   125: invokestatic 674	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   125: invokestatic 679	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
     //   128: aload 6
-    //   130: invokevirtual 689	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
+    //   130: invokevirtual 694	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
     //   133: aload 5
     //   135: astore_0
-    //   136: invokestatic 514	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   136: invokestatic 519	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   139: ifeq +456 -> 595
     //   142: aload 5
     //   144: astore_0
-    //   145: ldc_w 691
+    //   145: ldc_w 696
     //   148: iconst_2
-    //   149: new 96	java/lang/StringBuilder
+    //   149: new 101	java/lang/StringBuilder
     //   152: dup
-    //   153: invokespecial 191	java/lang/StringBuilder:<init>	()V
-    //   156: ldc_w 693
-    //   159: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   153: invokespecial 196	java/lang/StringBuilder:<init>	()V
+    //   156: ldc_w 698
+    //   159: invokevirtual 204	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   162: iload_2
-    //   163: invokevirtual 435	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   166: invokevirtual 159	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   169: invokestatic 696	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   163: invokevirtual 440	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   166: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   169: invokestatic 701	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   172: goto +423 -> 595
     //   175: aload 5
     //   177: astore_0
-    //   178: ldc_w 691
+    //   178: ldc_w 696
     //   181: iconst_4
-    //   182: new 96	java/lang/StringBuilder
+    //   182: new 101	java/lang/StringBuilder
     //   185: dup
-    //   186: invokespecial 191	java/lang/StringBuilder:<init>	()V
-    //   189: ldc_w 698
-    //   192: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   186: invokespecial 196	java/lang/StringBuilder:<init>	()V
+    //   189: ldc_w 703
+    //   192: invokevirtual 204	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   195: iload_1
-    //   196: invokevirtual 435	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   199: invokevirtual 159	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   202: invokestatic 696	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   196: invokevirtual 440	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   199: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   202: invokestatic 701	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   205: aload 5
     //   207: ifnull +12 -> 219
-    //   210: invokestatic 654	com/tencent/mobileqq/utils/RandomAccessFileManager:a	()Lcom/tencent/mobileqq/utils/RandomAccessFileManager;
-    //   213: getstatic 659	bczq:b	Ljava/lang/String;
-    //   216: invokevirtual 700	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Ljava/lang/String;)V
+    //   210: invokestatic 659	com/tencent/mobileqq/utils/RandomAccessFileManager:a	()Lcom/tencent/mobileqq/utils/RandomAccessFileManager;
+    //   213: getstatic 664	begp:b	Ljava/lang/String;
+    //   216: invokevirtual 705	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Ljava/lang/String;)V
     //   219: aconst_null
     //   220: areturn
     //   221: aload 5
     //   223: astore_0
-    //   224: invokestatic 674	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   224: invokestatic 679	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
     //   227: sipush 4096
-    //   230: invokevirtual 678	com/tencent/commonsdk/pool/ByteArrayPool:getBuf	(I)[B
+    //   230: invokevirtual 683	com/tencent/commonsdk/pool/ByteArrayPool:getBuf	(I)[B
     //   233: astore 6
     //   235: aload 5
     //   237: astore_0
@@ -1624,105 +1625,105 @@ public class TextUtils
     //   243: aload 6
     //   245: iconst_0
     //   246: iload_2
-    //   247: invokevirtual 682	java/io/RandomAccessFile:read	([BII)I
-    //   250: invokestatic 706	android/graphics/BitmapFactory:decodeByteArray	([BII)Landroid/graphics/Bitmap;
+    //   247: invokevirtual 687	java/io/RandomAccessFile:read	([BII)I
+    //   250: invokestatic 711	android/graphics/BitmapFactory:decodeByteArray	([BII)Landroid/graphics/Bitmap;
     //   253: astore 6
     //   255: aload 5
     //   257: astore_0
     //   258: aload 6
-    //   260: invokestatic 711	bftf:a	(Landroid/graphics/Bitmap;)I
+    //   260: invokestatic 716	bhbx:a	(Landroid/graphics/Bitmap;)I
     //   263: istore_2
     //   264: aload 5
     //   266: astore_0
-    //   267: invokestatic 514	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   267: invokestatic 519	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   270: ifeq +33 -> 303
     //   273: aload 5
     //   275: astore_0
-    //   276: ldc_w 691
+    //   276: ldc_w 696
     //   279: iconst_2
-    //   280: new 96	java/lang/StringBuilder
+    //   280: new 101	java/lang/StringBuilder
     //   283: dup
-    //   284: invokespecial 191	java/lang/StringBuilder:<init>	()V
-    //   287: ldc_w 713
-    //   290: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   284: invokespecial 196	java/lang/StringBuilder:<init>	()V
+    //   287: ldc_w 718
+    //   290: invokevirtual 204	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   293: iload_2
-    //   294: invokevirtual 435	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   297: invokevirtual 159	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   300: invokestatic 696	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   294: invokevirtual 440	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   297: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   300: invokestatic 701	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   303: iload_2
     //   304: ifle +154 -> 458
     //   307: aload 5
     //   309: astore_0
-    //   310: new 715	android/graphics/drawable/BitmapDrawable
+    //   310: new 720	android/graphics/drawable/BitmapDrawable
     //   313: dup
     //   314: aload 6
-    //   316: invokespecial 718	android/graphics/drawable/BitmapDrawable:<init>	(Landroid/graphics/Bitmap;)V
+    //   316: invokespecial 723	android/graphics/drawable/BitmapDrawable:<init>	(Landroid/graphics/Bitmap;)V
     //   319: astore 6
     //   321: aload 5
     //   323: astore_0
-    //   324: getstatic 453	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
+    //   324: getstatic 458	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
     //   327: ifnull +70 -> 397
     //   330: aload 5
     //   332: astore_0
-    //   333: getstatic 453	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
+    //   333: getstatic 458	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
     //   336: aload 7
-    //   338: new 472	android/util/Pair
+    //   338: new 477	android/util/Pair
     //   341: dup
     //   342: aload 6
-    //   344: invokevirtual 587	android/graphics/drawable/Drawable:getConstantState	()Landroid/graphics/drawable/Drawable$ConstantState;
+    //   344: invokevirtual 592	android/graphics/drawable/Drawable:getConstantState	()Landroid/graphics/drawable/Drawable$ConstantState;
     //   347: iload_2
-    //   348: invokestatic 519	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   351: invokespecial 590	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   354: invokevirtual 593	android/support/v4/util/MQLruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   348: invokestatic 524	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   351: invokespecial 595	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   354: invokevirtual 598	android/support/v4/util/MQLruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   357: pop
     //   358: aload 5
     //   360: astore_0
-    //   361: invokestatic 514	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   361: invokestatic 519	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   364: ifeq +33 -> 397
     //   367: aload 5
     //   369: astore_0
-    //   370: ldc_w 691
+    //   370: ldc_w 696
     //   373: iconst_2
-    //   374: new 96	java/lang/StringBuilder
+    //   374: new 101	java/lang/StringBuilder
     //   377: dup
-    //   378: invokespecial 191	java/lang/StringBuilder:<init>	()V
-    //   381: ldc_w 720
-    //   384: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   378: invokespecial 196	java/lang/StringBuilder:<init>	()V
+    //   381: ldc_w 725
+    //   384: invokevirtual 204	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   387: iload_1
-    //   388: invokevirtual 435	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   391: invokevirtual 159	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   394: invokestatic 696	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   388: invokevirtual 440	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   391: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   394: invokestatic 701	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   397: aload 5
     //   399: astore_0
-    //   400: invokestatic 514	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   400: invokestatic 519	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   403: ifeq +35 -> 438
     //   406: aload 5
     //   408: astore_0
-    //   409: ldc_w 691
+    //   409: ldc_w 696
     //   412: iconst_2
-    //   413: invokestatic 726	com/tencent/mobileqq/activity/aio/AIOUtils:obtainStringBuilder	()Ljava/lang/StringBuilder;
-    //   416: ldc_w 728
-    //   419: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   413: invokestatic 731	com/tencent/mobileqq/activity/aio/AIOUtils:obtainStringBuilder	()Ljava/lang/StringBuilder;
+    //   416: ldc_w 733
+    //   419: invokevirtual 204	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   422: iload_1
-    //   423: invokevirtual 435	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   426: ldc_w 730
-    //   429: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   432: invokevirtual 159	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   435: invokestatic 696	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   423: invokevirtual 440	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   426: ldc_w 735
+    //   429: invokevirtual 204	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   432: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   435: invokestatic 701	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   438: aload 6
     //   440: astore_0
     //   441: aload 5
     //   443: ifnull -384 -> 59
-    //   446: invokestatic 654	com/tencent/mobileqq/utils/RandomAccessFileManager:a	()Lcom/tencent/mobileqq/utils/RandomAccessFileManager;
-    //   449: getstatic 659	bczq:b	Ljava/lang/String;
-    //   452: invokevirtual 700	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Ljava/lang/String;)V
+    //   446: invokestatic 659	com/tencent/mobileqq/utils/RandomAccessFileManager:a	()Lcom/tencent/mobileqq/utils/RandomAccessFileManager;
+    //   449: getstatic 664	begp:b	Ljava/lang/String;
+    //   452: invokevirtual 705	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Ljava/lang/String;)V
     //   455: aload 6
     //   457: areturn
     //   458: aload 5
     //   460: ifnull +12 -> 472
-    //   463: invokestatic 654	com/tencent/mobileqq/utils/RandomAccessFileManager:a	()Lcom/tencent/mobileqq/utils/RandomAccessFileManager;
-    //   466: getstatic 659	bczq:b	Ljava/lang/String;
-    //   469: invokevirtual 700	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Ljava/lang/String;)V
+    //   463: invokestatic 659	com/tencent/mobileqq/utils/RandomAccessFileManager:a	()Lcom/tencent/mobileqq/utils/RandomAccessFileManager;
+    //   466: getstatic 664	begp:b	Ljava/lang/String;
+    //   469: invokevirtual 705	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Ljava/lang/String;)V
     //   472: aconst_null
     //   473: areturn
     //   474: astore 6
@@ -1730,38 +1731,38 @@ public class TextUtils
     //   477: astore 5
     //   479: aload 5
     //   481: astore_0
-    //   482: invokestatic 514	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   482: invokestatic 519	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   485: ifeq +18 -> 503
     //   488: aload 5
     //   490: astore_0
-    //   491: ldc_w 691
+    //   491: ldc_w 696
     //   494: iconst_2
-    //   495: ldc_w 731
+    //   495: ldc_w 736
     //   498: aload 6
-    //   500: invokestatic 734	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   500: invokestatic 739	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   503: aload 5
     //   505: ifnonnull +9 -> 514
     //   508: aload 5
     //   510: astore_0
-    //   511: invokestatic 737	com/tencent/mobileqq/text/EmotcationConstants:reDownloadAppleEmoji	()V
+    //   511: invokestatic 742	com/tencent/mobileqq/text/EmotcationConstants:reDownloadAppleEmoji	()V
     //   514: aload 5
     //   516: ifnull +12 -> 528
-    //   519: invokestatic 654	com/tencent/mobileqq/utils/RandomAccessFileManager:a	()Lcom/tencent/mobileqq/utils/RandomAccessFileManager;
-    //   522: getstatic 659	bczq:b	Ljava/lang/String;
-    //   525: invokevirtual 700	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Ljava/lang/String;)V
-    //   528: invokestatic 514	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   519: invokestatic 659	com/tencent/mobileqq/utils/RandomAccessFileManager:a	()Lcom/tencent/mobileqq/utils/RandomAccessFileManager;
+    //   522: getstatic 664	begp:b	Ljava/lang/String;
+    //   525: invokevirtual 705	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Ljava/lang/String;)V
+    //   528: invokestatic 519	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   531: ifeq +32 -> 563
-    //   534: ldc_w 691
+    //   534: ldc_w 696
     //   537: iconst_2
-    //   538: invokestatic 726	com/tencent/mobileqq/activity/aio/AIOUtils:obtainStringBuilder	()Ljava/lang/StringBuilder;
-    //   541: ldc_w 728
-    //   544: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   538: invokestatic 731	com/tencent/mobileqq/activity/aio/AIOUtils:obtainStringBuilder	()Ljava/lang/StringBuilder;
+    //   541: ldc_w 733
+    //   544: invokevirtual 204	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   547: iload_1
-    //   548: invokevirtual 435	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   551: ldc_w 739
-    //   554: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   557: invokevirtual 159	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   560: invokestatic 696	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   548: invokevirtual 440	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   551: ldc_w 744
+    //   554: invokevirtual 204	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   557: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   560: invokestatic 701	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   563: aconst_null
     //   564: areturn
     //   565: astore 5
@@ -1769,9 +1770,9 @@ public class TextUtils
     //   568: astore_0
     //   569: aload_0
     //   570: ifnull +12 -> 582
-    //   573: invokestatic 654	com/tencent/mobileqq/utils/RandomAccessFileManager:a	()Lcom/tencent/mobileqq/utils/RandomAccessFileManager;
-    //   576: getstatic 659	bczq:b	Ljava/lang/String;
-    //   579: invokevirtual 700	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Ljava/lang/String;)V
+    //   573: invokestatic 659	com/tencent/mobileqq/utils/RandomAccessFileManager:a	()Lcom/tencent/mobileqq/utils/RandomAccessFileManager;
+    //   576: getstatic 664	begp:b	Ljava/lang/String;
+    //   579: invokevirtual 705	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Ljava/lang/String;)V
     //   582: aload 5
     //   584: athrow
     //   585: astore 5

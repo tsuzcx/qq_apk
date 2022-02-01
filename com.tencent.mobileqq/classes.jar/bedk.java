@@ -1,29 +1,36 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.MotionEvent;
+import android.util.SparseArray;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
 
-class bedk
-  implements View.OnTouchListener
+public class bedk
+  implements bkzq
 {
-  bedk(bedi parambedi, String paramString, bedr parambedr) {}
+  public bedk(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment, SparseArray paramSparseArray, bkzi parambkzi) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramMotionEvent.getAction() == 1)
+    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null)
     {
-      paramView = new Intent(this.jdField_a_of_type_Bedi.a.getContext(), QQBrowserActivity.class);
-      paramMotionEvent = bgev.a("troopEnterEffect");
-      paramView.putExtra("url", paramMotionEvent + "&gc=" + this.jdField_a_of_type_Bedi.b);
-      this.jdField_a_of_type_Bedi.a.getContext().startActivity(paramView);
-      bedt.a("Grp_AIO", "action_clk", new String[] { this.jdField_a_of_type_Bedi.b });
-      VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_JavaLangString, "style", "0X8008E63", "", 1, 0, 0, "", Integer.toString(this.jdField_a_of_type_Bedr.a), "");
+      paramInt = -1;
+      switch (paramInt)
+      {
+      }
     }
-    return true;
+    for (;;)
+    {
+      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment);
+      if (this.jdField_a_of_type_Bkzi.isShowing()) {
+        this.jdField_a_of_type_Bkzi.dismiss();
+      }
+      return;
+      paramInt = ((Integer)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).intValue();
+      break;
+      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 2);
+      continue;
+      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 1);
+      continue;
+      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 0);
+    }
   }
 }
 

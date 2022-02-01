@@ -21,13 +21,13 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-import bcef;
-import bhhz;
-import bhia;
-import bhib;
-import bhid;
-import bhie;
-import bhif;
+import bdla;
+import bisr;
+import biss;
+import bist;
+import bisv;
+import bisw;
+import bisx;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
@@ -43,17 +43,17 @@ import org.jetbrains.annotations.NotNull;
 public class QQToast
 {
   private static int jdField_a_of_type_Int = -1;
-  private static bhif jdField_a_of_type_Bhif = new bhif(Looper.getMainLooper(), null);
+  private static bisx jdField_a_of_type_Bisx = new bisx(Looper.getMainLooper(), null);
   private static Class jdField_a_of_type_JavaLangClass;
   private static Field jdField_a_of_type_JavaLangReflectField;
   private static Method jdField_a_of_type_JavaLangReflectMethod;
-  private static BlockingQueue<bhie> jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
+  private static BlockingQueue<bisw> jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
   private long jdField_a_of_type_Long;
   private Context jdField_a_of_type_AndroidContentContext;
   private Resources jdField_a_of_type_AndroidContentResResources;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private bhid jdField_a_of_type_Bhid;
+  private bisv jdField_a_of_type_Bisv;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;
   boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int = 0;
@@ -126,12 +126,12 @@ public class QQToast
     case 3: 
     case 6: 
     default: 
-      return 2130839319;
+      return 2130839340;
     case 1: 
     case 4: 
-      return 2130847724;
+      return 2130847815;
     }
-    return 2130847725;
+    return 2130847816;
   }
   
   public static QQToast a(Context paramContext, int paramInt1, int paramInt2)
@@ -164,9 +164,9 @@ public class QQToast
     return a(paramContext, 0, paramCharSequence, paramInt);
   }
   
-  private void a(@NotNull Toast paramToast, @NotNull LinearLayout paramLinearLayout, @NotNull bhid parambhid)
+  private void a(@NotNull Toast paramToast, @NotNull LinearLayout paramLinearLayout, @NotNull bisv parambisv)
   {
-    if ((parambhid.jdField_a_of_type_JavaLangString == null) || (parambhid.jdField_a_of_type_JavaLangString.isEmpty()))
+    if ((parambisv.jdField_a_of_type_JavaLangString == null) || (parambisv.jdField_a_of_type_JavaLangString.isEmpty()))
     {
       QLog.e("QQToast", 1, "addRightActionView params isNullOrEmpty");
       return;
@@ -177,16 +177,16 @@ public class QQToast
     localLayoutParams.weight = 1.0F;
     paramLinearLayout.addView((View)localObject, localLayoutParams);
     localObject = new TextView(localContext);
-    ((TextView)localObject).setOnClickListener(new bhia(this, parambhid, paramToast));
-    ((TextView)localObject).setText(parambhid.jdField_a_of_type_JavaLangString);
-    if (parambhid.jdField_a_of_type_Int == 0) {
-      parambhid.jdField_a_of_type_Int = localContext.getResources().getColor(2131165519);
+    ((TextView)localObject).setOnClickListener(new biss(this, parambisv, paramToast));
+    ((TextView)localObject).setText(parambisv.jdField_a_of_type_JavaLangString);
+    if (parambisv.jdField_a_of_type_Int == 0) {
+      parambisv.jdField_a_of_type_Int = localContext.getResources().getColor(2131165525);
     }
-    ((TextView)localObject).setTextColor(parambhid.jdField_a_of_type_Int);
-    if (parambhid.jdField_b_of_type_Int == 0) {
-      parambhid.jdField_b_of_type_Int = 16;
+    ((TextView)localObject).setTextColor(parambisv.jdField_a_of_type_Int);
+    if (parambisv.jdField_b_of_type_Int == 0) {
+      parambisv.jdField_b_of_type_Int = 16;
     }
-    ((TextView)localObject).setTextSize(1, parambhid.jdField_b_of_type_Int);
+    ((TextView)localObject).setTextSize(1, parambisv.jdField_b_of_type_Int);
     paramToast = new LinearLayout.LayoutParams(-2, -2);
     paramToast.rightMargin = UIUtils.dip2px(localContext, 22.0F);
     paramLinearLayout.addView((View)localObject, paramToast);
@@ -215,7 +215,7 @@ public class QQToast
           if (QLog.isColorLevel()) {
             QLog.d("QQToast", 2, "Temp Report mark: now Notification from disable to Enabled ");
           }
-          bcef.b(null, "dc00898", "", "", "0X8009ACA", "0X8009ACA", 0, 0, "", "", "", "");
+          bdla.b(null, "dc00898", "", "", "0X8009ACA", "0X8009ACA", 0, 0, "", "", "", "");
         }
       }
     } while (jdField_a_of_type_Int == 1);
@@ -278,30 +278,30 @@ public class QQToast
   
   public Toast a(int paramInt)
   {
-    return a(paramInt, 2131561490, null);
+    return a(paramInt, 2131561552, null);
   }
   
   public Toast a(int paramInt1, int paramInt2, View.OnTouchListener paramOnTouchListener)
   {
     QQToast.ProtectedToast localProtectedToast = new QQToast.ProtectedToast(this.jdField_a_of_type_AndroidContentContext);
     View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt2, null);
-    Object localObject = localView.findViewById(2131378884);
+    Object localObject = localView.findViewById(2131379177);
     if (Build.VERSION.SDK_INT >= 21) {
       ((View)localObject).setElevation(6.0F);
     }
-    AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, 2130772238);
-    localObject = (LinearLayout)localView.findViewById(2131378889);
-    if (this.jdField_a_of_type_Bhid != null) {
-      a(localProtectedToast, (LinearLayout)localObject, this.jdField_a_of_type_Bhid);
+    AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, 2130772237);
+    localObject = (LinearLayout)localView.findViewById(2131379182);
+    if (this.jdField_a_of_type_Bisv != null) {
+      a(localProtectedToast, (LinearLayout)localObject, this.jdField_a_of_type_Bisv);
     }
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
     {
-      localObject = (ImageView)localView.findViewById(2131378887);
+      localObject = (ImageView)localView.findViewById(2131379180);
       ((ImageView)localObject).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       ((ImageView)localObject).setColorFilter(b(this.jdField_b_of_type_Int), PorterDuff.Mode.MULTIPLY);
       if (this.jdField_a_of_type_JavaLangCharSequence != null)
       {
-        localObject = (TextView)localView.findViewById(2131378890);
+        localObject = (TextView)localView.findViewById(2131379183);
         ((TextView)localObject).setTextColor(c(this.jdField_b_of_type_Int));
         ((TextView)localObject).setText(this.jdField_a_of_type_JavaLangCharSequence);
         String str = this.jdField_a_of_type_JavaLangCharSequence.toString();
@@ -331,10 +331,10 @@ public class QQToast
       localProtectedToast.setView(localView);
       localProtectedToast.setDuration(this.c);
       if (a()) {
-        localView.setOnTouchListener(new bhhz(this, localProtectedToast, paramOnTouchListener));
+        localView.setOnTouchListener(new bisr(this, localProtectedToast, paramOnTouchListener));
       }
       return localProtectedToast;
-      ((ImageView)localView.findViewById(2131378887)).setVisibility(8);
+      ((ImageView)localView.findViewById(2131379180)).setVisibility(8);
       break;
       label395:
       if (paramInt1 == 6316128) {
@@ -360,11 +360,11 @@ public class QQToast
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
   }
   
-  public void a(bhib parambhib)
+  public void a(bist parambist)
   {
-    parambhib = new bhie(this, parambhib);
-    jdField_a_of_type_JavaUtilConcurrentBlockingQueue.add(parambhib);
-    jdField_a_of_type_Bhif.sendEmptyMessage(1);
+    parambist = new bisw(this, parambist);
+    jdField_a_of_type_JavaUtilConcurrentBlockingQueue.add(parambist);
+    jdField_a_of_type_Bisx.sendEmptyMessage(1);
     if (QLog.isColorLevel()) {
       QLog.d("QQToast", 2, "current queue size is " + jdField_a_of_type_JavaUtilConcurrentBlockingQueue.size());
     }

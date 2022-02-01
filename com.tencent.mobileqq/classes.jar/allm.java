@@ -1,16 +1,74 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.face.FaceDecoder;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class allm
-  extends andd
+public class allm
+  extends alkr
 {
-  allm(alll paramalll) {}
-  
-  protected void onUpdateNewTroopFaceIcon(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public allm(Context paramContext)
   {
-    Bitmap localBitmap = this.a.a.getBitmapFromCache(113, paramString);
-    if (localBitmap != null) {
-      this.a.a(paramString, localBitmap);
+    this.jdField_a_of_type_JavaLangString = ("[" + anvx.a(2131699068) + "]");
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public Object a(int paramInt, bffl parambffl, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    if ((paramObject instanceof allm))
+    {
+      paramObject = (allm)paramObject;
+      paramObject.jdField_a_of_type_Bffm.a(parambffl.jdField_a_of_type_Bffm);
+      return paramObject;
+    }
+    paramObject = new allm(BaseApplication.getContext());
+    paramObject.jdField_a_of_type_Bffm = new bffm(parambffl.jdField_a_of_type_Bffm);
+    return paramObject;
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
+    {
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
+      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
+      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
+      if (this.jdField_a_of_type_Bffm == null) {
+        this.jdField_a_of_type_Bffm = new bffm();
+      }
+      this.jdField_a_of_type_Bffm.a(paramArrayOfByte.getString("messageNavInfo"));
+      return;
+    }
+    catch (JSONException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+  }
+  
+  public byte[] a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
+      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      if (this.jdField_a_of_type_Bffm != null) {
+        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bffm.a());
+      }
+      return localJSONObject.toString().getBytes();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
     }
   }
 }

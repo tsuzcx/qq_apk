@@ -1,83 +1,23 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import java.io.UnsupportedEncodingException;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
 public class acpo
-  implements TextWatcher
+  implements acpi
 {
-  public acpo(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  private static MessageRecord a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
   {
-    if (AddFriendVerifyActivity.a(this.a) != 4)
-    {
-      int i = paramEditable.length();
-      if (i > 30)
-      {
-        paramEditable = paramEditable.toString();
-        if (i > 30)
-        {
-          i = paramEditable.length();
-          if ((i >= 2) && (Character.isHighSurrogate(paramEditable.charAt(i - 2)))) {}
-          for (paramEditable = paramEditable.substring(0, i - 2);; paramEditable = paramEditable.substring(0, i - 1))
-          {
-            i = paramEditable.length();
-            break;
-          }
-        }
-        this.a.a.setText(paramEditable);
-        this.a.a.setSelection(paramEditable.length());
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x108");
     }
+    return aryw.a(paramQQAppInterface, paramMsgType0x210.vProtobuf, paramMsgInfo);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    if (AddFriendVerifyActivity.a(this.a) != 4) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        paramInt3 = paramCharSequence.toString().getBytes("utf-8").length;
-        paramInt1 = 90 - paramInt3;
-        paramCharSequence = paramCharSequence.toString();
-        paramInt2 = paramInt1;
-        if (paramInt3 > 90)
-        {
-          paramInt2 = paramInt3;
-          if (paramInt2 > 90)
-          {
-            paramInt1 = paramCharSequence.length();
-            if ((paramInt1 >= 2) && (Character.isHighSurrogate(paramCharSequence.charAt(paramInt1 - 2)))) {}
-            for (paramCharSequence = paramCharSequence.substring(0, paramInt1 - 2);; paramCharSequence = paramCharSequence.substring(0, paramInt1 - 1))
-            {
-              paramInt2 = paramCharSequence.getBytes("utf-8").length;
-              paramInt1 = 90 - paramInt2;
-              break;
-            }
-          }
-          AddFriendVerifyActivity.a(this.a).setText(paramCharSequence);
-          AddFriendVerifyActivity.a(this.a).setSelection(paramCharSequence.length());
-          paramInt2 = paramInt1;
-        }
-        if (AddFriendVerifyActivity.b(this.a).getVisibility() == 0)
-        {
-          paramCharSequence = paramInt2 + "";
-          AddFriendVerifyActivity.b(this.a).setText(paramCharSequence);
-          return;
-        }
-      }
-      catch (UnsupportedEncodingException paramCharSequence)
-      {
-        paramCharSequence.printStackTrace();
-      }
-    }
+    return a(paramacnk.a(), paramMsgInfo, paramMsgType0x210);
   }
 }
 

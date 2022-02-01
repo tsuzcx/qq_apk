@@ -1,41 +1,27 @@
-import android.widget.ToggleButton;
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
-import java.util.List;
+import QC.UniCheckRsp;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
+import com.tencent.mobileqq.widget.ColorClearableEditText;
+import java.util.ArrayList;
 
-public class adwo
-  implements ayqr
+class adwo
+  implements bhte
 {
-  public adwo(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
+  adwo(adwn paramadwn, int paramInt) {}
   
-  public void a(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton, Boolean paramBoolean)
+  public void a(boolean paramBoolean, UniCheckRsp paramUniCheckRsp)
   {
-    if (paramBoolean.booleanValue())
+    if ((!paramBoolean) && (paramUniCheckRsp != null) && (paramUniCheckRsp.uniBusinessItemList != null) && (paramUniCheckRsp.uniBusinessItemList.size() == 1))
     {
-      if ((this.a.a(paramProfileLabelInfo.labelId, this.a.jdField_a_of_type_JavaUtilList)) || (this.a.a(this.a.jdField_a_of_type_JavaUtilList)))
-      {
-        if (this.a.a(this.a.jdField_a_of_type_JavaUtilList)) {
-          this.a.b(2131693104);
-        }
-        return;
-      }
-      bcef.b(this.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "1", "", "", "");
-      this.a.jdField_a_of_type_JavaUtilList.add(paramProfileLabelInfo);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Ayqs.c(paramProfileLabelInfo, paramToggleButton);
-      this.a.a(this.a.jdField_a_of_type_JavaUtilList.size());
-      if (this.a.jdField_a_of_type_Adws == null) {
-        break;
-      }
-      this.a.jdField_a_of_type_Adws.notifyDataSetChanged();
+      this.jdField_a_of_type_Adwn.a.j = false;
+      this.jdField_a_of_type_Adwn.a.b(false);
+      bhtg.a(this.jdField_a_of_type_Adwn.a.getBaseContext());
       return;
-      if (!this.a.a(paramProfileLabelInfo.labelId, this.a.jdField_a_of_type_JavaUtilList)) {
-        break;
-      }
-      this.a.a(paramProfileLabelInfo, this.a.jdField_a_of_type_JavaUtilList);
     }
+    ((VasExtensionHandler)this.jdField_a_of_type_Adwn.a.app.getBusinessHandler(BusinessHandlerFactory.VAS_EXTENSION_HANDLER)).a(this.jdField_a_of_type_Adwn.a.e, ((ColorClearableEditText)this.jdField_a_of_type_Adwn.a.a).a(), this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Adwn.a.j = true;
   }
 }
 

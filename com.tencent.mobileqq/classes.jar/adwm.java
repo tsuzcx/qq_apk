@@ -1,25 +1,19 @@
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
-import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.EditInfoActivity.19.1;
 
 public class adwm
-  extends CardObserver
+  extends anvi
 {
-  public adwm(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
+  public adwm(EditInfoActivity paramEditInfoActivity) {}
   
-  public void onCardLabelUpdate(boolean paramBoolean, Object paramObject)
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
   {
-    if (paramBoolean)
-    {
-      this.a.setResult(-1);
-      this.a.b(2131718781);
-    }
-    for (;;)
-    {
-      this.a.a = false;
-      this.a.finish();
+    if (!this.a.f.equals(paramString1)) {}
+    while (!this.a.j) {
       return;
-      this.a.b(2131718779);
     }
+    this.a.j = false;
+    this.a.runOnUiThread(new EditInfoActivity.19.1(this, paramBoolean, paramString2));
   }
 }
 

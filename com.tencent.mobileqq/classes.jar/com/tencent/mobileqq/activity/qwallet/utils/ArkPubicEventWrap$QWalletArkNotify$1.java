@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.qwallet.utils;
 
-import akfp;
-import akfs;
+import albi;
+import albl;
 
 public class ArkPubicEventWrap$QWalletArkNotify$1
   implements Runnable
 {
-  public ArkPubicEventWrap$QWalletArkNotify$1(akfs paramakfs, String paramString1, String paramString2) {}
+  public ArkPubicEventWrap$QWalletArkNotify$1(albl paramalbl, String paramString1, String paramString2) {}
   
   public void run()
   {
-    akfp.a(this.jdField_a_of_type_Akfs.a, this.jdField_a_of_type_JavaLangString, this.b);
+    albi.a(this.jdField_a_of_type_Albl.a, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

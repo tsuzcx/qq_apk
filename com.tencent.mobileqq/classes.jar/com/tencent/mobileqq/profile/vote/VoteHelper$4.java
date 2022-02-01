@@ -2,25 +2,25 @@ package com.tencent.mobileqq.profile.vote;
 
 import android.os.Handler;
 import android.os.Message;
-import ayro;
-import bftg;
+import azwk;
+import bhby;
 import com.tencent.mobileqq.data.CardProfile;
 import com.tencent.qphone.base.util.QLog;
 
 public class VoteHelper$4
   implements Runnable
 {
-  public VoteHelper$4(ayro paramayro, long paramLong) {}
+  public VoteHelper$4(azwk paramazwk, long paramLong) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.i("VisitorsActivity.VoteHelper", 2, "updateCardProfileFromDb uin:" + this.a);
     }
-    CardProfile localCardProfile2 = bftg.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a, 2);
+    CardProfile localCardProfile2 = bhby.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a, 2);
     CardProfile localCardProfile1 = localCardProfile2;
     if (localCardProfile2 == null) {
-      localCardProfile1 = bftg.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a, 3);
+      localCardProfile1 = bhby.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a, 3);
     }
     if (localCardProfile1 != null)
     {

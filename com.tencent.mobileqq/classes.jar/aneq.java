@@ -1,28 +1,13 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.asyncdb.BaseCache;
-import com.tencent.mobileqq.app.asyncdb.BaseCacheManager;
+import java.util.Comparator;
 
-public class aneq
-  extends BaseCacheManager
+class aneq
+  implements Comparator<anfq>
 {
-  private QQAppInterface a;
+  aneq(anen paramanen) {}
   
-  public aneq(QQAppInterface paramQQAppInterface)
+  public int a(anfq paramanfq1, anfq paramanfq2)
   {
-    super(paramQQAppInterface);
-    this.a = paramQQAppInterface;
-  }
-  
-  public BaseCache createCacheByName(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 2: 
-      return new anet(this.a, this.dbDelayManager);
-    }
-    return new anev(this.a, this.dbDelayManager);
+    return paramanfq1.h - paramanfq2.h;
   }
 }
 

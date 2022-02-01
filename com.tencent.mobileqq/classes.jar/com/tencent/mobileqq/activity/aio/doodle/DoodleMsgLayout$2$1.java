@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.aio.doodle;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.widget.ImageView;
-import bhgf;
+import biqx;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 class DoodleMsgLayout$2$1
@@ -15,9 +15,9 @@ class DoodleMsgLayout$2$1
   {
     if (DoodleMsgLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$2.this$0) != null)
     {
-      bhgf localbhgf = new bhgf(this.jdField_a_of_type_AndroidGraphicsBitmap, 0, false);
-      localbhgf.setBounds(new Rect(0, 0, AIOUtils.dp2px(19.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$2.this$0.getResources()), AIOUtils.dp2px(19.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$2.this$0.getResources())));
-      DoodleMsgLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$2.this$0).setImageDrawable(localbhgf);
+      biqx localbiqx = new biqx(this.jdField_a_of_type_AndroidGraphicsBitmap, 0, false);
+      localbiqx.setBounds(new Rect(0, 0, AIOUtils.dp2px(19.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$2.this$0.getResources()), AIOUtils.dp2px(19.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$2.this$0.getResources())));
+      DoodleMsgLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$2.this$0).setImageDrawable(localbiqx);
     }
     DoodleMsgLayout.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$2.this$0, false);
   }

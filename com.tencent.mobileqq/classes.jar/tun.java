@@ -1,32 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import org.json.JSONObject;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import javax.annotation.Nullable;
 
-public class tun
-  implements qdy
+public abstract interface tun
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
+  public abstract InputStream a(@Nullable InputStream paramInputStream);
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
-  {
-    return pzz.a(paramBaseArticleInfo);
-  }
+  public abstract void a();
   
-  public void a(int paramInt1, Container paramContainer, pvc parampvc, int paramInt2) {}
-  
-  public boolean a(int paramInt, Container paramContainer, pvc parampvc, ViewBase paramViewBase)
-  {
-    return false;
-  }
+  public abstract void a(HttpURLConnection paramHttpURLConnection, @Nullable String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tun
  * JD-Core Version:    0.7.0.1
  */

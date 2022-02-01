@@ -1,41 +1,83 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.qphone.base.util.QLog;
 
-class ardc
-  implements amea
+public class ardc
+  extends aqwt<ardb>
 {
-  ardc(arcu paramarcu, int paramInt1, int paramInt2, int paramInt3, String paramString1, int paramInt4, boolean paramBoolean, String paramString2, String paramString3, String paramString4, Bundle paramBundle, MessengerService paramMessengerService) {}
-  
-  public void a(boolean paramBoolean, int paramInt)
+  @NonNull
+  public ardb a(int paramInt)
   {
-    Bundle localBundle = new Bundle();
-    if (paramBoolean)
-    {
-      localBundle.putInt("apollo_apolloVipFlag", this.jdField_a_of_type_Int);
-      localBundle.putInt("apollo_apolloVipLevel", this.jdField_b_of_type_Int);
-      localBundle.putInt("apollo_result", 0);
-      localBundle.putInt("apollo_partnerRoleId", this.jdField_c_of_type_Int);
-      localBundle.putString("apollo_json", this.jdField_a_of_type_JavaLangString);
-      localBundle.putInt("apollo_previewAction", this.jdField_d_of_type_Int);
-      localBundle.putBoolean("apollo_previewOnFrame", this.jdField_a_of_type_Boolean);
-      localBundle.putString("apollo_id", this.jdField_b_of_type_JavaLangString);
-      localBundle.putString("title", this.jdField_c_of_type_JavaLangString);
-      localBundle.putString("subTitle", this.jdField_d_of_type_JavaLangString);
-      localBundle.putBoolean("apollo_is_super_yellow", alnr.c());
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
+    return new ardb();
+  }
+  
+  @Nullable
+  public ardb a(aqxa[] paramArrayOfaqxa)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoListPanelConfProcessor", 2, "onParsed " + paramArrayOfaqxa.length);
     }
-    localBundle.putInt("apollo_result", 1);
-    localBundle.putInt("apollo_audioId", paramInt);
-    localBundle.putString("apollo_json", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramArrayOfaqxa != null)
+    {
+      localObject1 = localObject2;
+      if (paramArrayOfaqxa.length > 0) {
+        localObject1 = ardb.a(paramArrayOfaqxa);
+      }
+    }
+    return localObject1;
+  }
+  
+  public void a(ardb paramardb)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoListPanelConfProcessor", 2, "onUpdate " + paramardb.toString());
+    }
+    PhotoListPanel.setShowModeToSp(paramardb.a);
+  }
+  
+  public Class<ardb> clazz()
+  {
+    return ardb.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public boolean isNeedUpgradeReset()
+  {
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoListPanelConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public int type()
+  {
+    return 587;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ardc
  * JD-Core Version:    0.7.0.1
  */

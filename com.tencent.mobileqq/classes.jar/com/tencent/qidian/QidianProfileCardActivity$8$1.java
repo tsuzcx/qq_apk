@@ -1,19 +1,19 @@
 package com.tencent.qidian;
 
-import bimw;
-import bink;
+import bjxy;
+import bjym;
 import com.tencent.image.URLImageView;
 import java.util.concurrent.ConcurrentHashMap;
 
 class QidianProfileCardActivity$8$1
   implements Runnable
 {
-  QidianProfileCardActivity$8$1(QidianProfileCardActivity.8 param8, bink parambink, URLImageView paramURLImageView) {}
+  QidianProfileCardActivity$8$1(QidianProfileCardActivity.8 param8, bjym parambjym, URLImageView paramURLImageView) {}
   
   public void run()
   {
-    String str = String.valueOf(this.jdField_a_of_type_Bink.a);
-    this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$8.this$0.a.put(str, new bimw(this.jdField_a_of_type_ComTencentImageURLImageView, 3, str));
+    String str = String.valueOf(this.jdField_a_of_type_Bjym.a);
+    this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$8.this$0.a.put(str, new bjxy(this.jdField_a_of_type_ComTencentImageURLImageView, 3, str));
     this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$8.this$0.a(3, this.jdField_a_of_type_ComTencentImageURLImageView, str, false);
   }
 }

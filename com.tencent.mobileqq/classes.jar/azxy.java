@@ -1,21 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.remind.widget.IosTimepicker;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.profilecard.base.framework.impl.ComponentCenter;
 
 public class azxy
-  implements View.OnClickListener
+  implements azyg
 {
-  public azxy(IosTimepicker paramIosTimepicker) {}
+  public azxy(ComponentCenter paramComponentCenter) {}
   
-  public void onClick(View paramView)
+  public void a(azxs paramazxs)
   {
-    if ((IosTimepicker.a(this.a) != null) && (IosTimepicker.a(this.a).isShowing()))
-    {
-      IosTimepicker.a(this.a).dismiss();
-      IosTimepicker.a(this.a, null);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramazxs.b();
   }
 }
 

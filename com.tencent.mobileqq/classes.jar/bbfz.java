@@ -1,166 +1,237 @@
-import android.graphics.Color;
-import android.text.SpannableString;
+import android.content.Context;
+import android.content.res.Resources;
 import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.richmedia.capture.view.PtvTemplateItemView;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.GridView;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 public class bbfz
+  extends BaseAdapter
+  implements bczs
 {
+  float jdField_a_of_type_Float;
   public int a;
-  public List<String> a;
+  Context jdField_a_of_type_AndroidContentContext;
+  private bbgc jdField_a_of_type_Bbgc = new bbga(this);
+  bbgg jdField_a_of_type_Bbgg;
+  private bbgy jdField_a_of_type_Bbgy;
+  private bbje jdField_a_of_type_Bbje;
+  private bcws jdField_a_of_type_Bcws = new bbgb(this);
+  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  public PtvTemplateManager.PtvTemplateInfo a;
+  public GridView a;
+  public String a;
+  public ArrayList<PtvTemplateManager.PtvTemplateInfo> a;
+  boolean jdField_a_of_type_Boolean = true;
+  private int jdField_b_of_type_Int;
+  boolean jdField_b_of_type_Boolean = false;
   
-  public bbfz(List<String> paramList, String paramString)
+  public bbfz(AppInterface paramAppInterface, Context paramContext, GridView paramGridView, bbje parambbje, bbgy parambbgy, boolean paramBoolean)
   {
-    Object localObject = paramList;
-    if (paramList == null) {
-      localObject = new ArrayList();
-    }
-    if ((paramString != null) && (!((List)localObject).contains(paramString))) {
-      ((List)localObject).add(paramString);
-    }
-    Collections.sort((List)localObject, new bbga(this));
-    this.jdField_a_of_type_JavaUtilList = ((List)localObject);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
+    this.jdField_a_of_type_ComTencentWidgetGridView = paramGridView;
+    this.jdField_a_of_type_Bbgg = bbgg.a();
+    this.jdField_a_of_type_Bbje = parambbje;
+    this.jdField_a_of_type_Bbgy = parambbgy;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public int a(String paramString1, String paramString2, int paramInt)
+  private void b(int paramInt)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return -1;
-    }
-    return paramString1.toLowerCase().indexOf(paramString2.toLowerCase(), paramInt);
-  }
-  
-  public SpannableString a(CharSequence paramCharSequence)
-  {
-    return a(paramCharSequence, false, false);
-  }
-  
-  public SpannableString a(CharSequence paramCharSequence, String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    Object localObject2;
-    if (TextUtils.isEmpty(paramCharSequence))
+    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo1 = bbgg.a().a();
+    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo2 = (PtvTemplateManager.PtvTemplateInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    if ((localPtvTemplateInfo2 != null) && (localPtvTemplateInfo1 != null) && (localPtvTemplateInfo1.id.equals(localPtvTemplateInfo2.id)))
     {
-      localObject2 = null;
-      return localObject2;
+      if (QLog.isColorLevel()) {
+        QLog.d("CapturePtvTemplateManager", 2, "checkChooseFilter  name=" + localPtvTemplateInfo1.name);
+      }
+      if ((localPtvTemplateInfo1.usable) || (!localPtvTemplateInfo1.downloading)) {
+        a(paramInt);
+      }
+      this.jdField_b_of_type_Boolean = true;
     }
-    Object localObject1 = new SpannableString(paramCharSequence);
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= 0)) {
-      return localObject1;
+  }
+  
+  public PtvTemplateManager.PtvTemplateInfo a(int paramInt)
+  {
+    if (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+      return null;
     }
-    paramCharSequence = paramCharSequence.toString();
-    Object[] arrayOfObject = this.jdField_a_of_type_JavaUtilList.toArray();
-    this.jdField_a_of_type_Int = 0;
+    return (PtvTemplateManager.PtvTemplateInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo = null;
+  }
+  
+  public void a(int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {}
+    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
+    do
+    {
+      return;
+      localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    } while (localPtvTemplateInfo == null);
+    this.jdField_b_of_type_Int = paramInt;
+    bbgg.a().a(localPtvTemplateInfo);
+    if (!localPtvTemplateInfo.id.equals("0"))
+    {
+      bbgg localbbgg = bbgg.a();
+      localbbgg.a(localPtvTemplateInfo, 111);
+      localbbgg.a(3, localPtvTemplateInfo.categoryId, localPtvTemplateInfo.id);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo = localPtvTemplateInfo;
+    bbgg.a().a(114, this.jdField_a_of_type_Bbgy);
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)) || (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id.equals("0")))
+    {
+      a();
+      if (this.jdField_a_of_type_Bbje != null) {
+        this.jdField_a_of_type_Bbje.a(localPtvTemplateInfo, this.jdField_a_of_type_JavaLangString);
+      }
+      bbgg.a().a(null);
+      bbgg.a().a(113, null);
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable)
+    {
+      this.jdField_a_of_type_JavaLangString = bbgg.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5);
+      if (this.jdField_a_of_type_Bbje != null) {
+        this.jdField_a_of_type_Bbje.a(localPtvTemplateInfo, this.jdField_a_of_type_JavaLangString);
+      }
+      bbgg.a().a(113, null);
+    }
+    for (;;)
+    {
+      bhhr.a();
+      return;
+      if ((!this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.downloading) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)) && (this.jdField_a_of_type_Bbgg != null))
+      {
+        this.jdField_a_of_type_Bbgg.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, this.jdField_a_of_type_Bcws);
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.downloading = true;
+        alsm.a("shortvideo_download_effects", null);
+      }
+    }
+  }
+  
+  public void a(List<PtvTemplateManager.PtvTemplateInfo> paramList, int paramInt)
+  {
     int i = 0;
-    int j = 0;
-    int m = 0;
-    String str;
-    int k;
-    int n;
-    for (;;)
+    try
     {
-      localObject2 = localObject1;
-      if (m >= arrayOfObject.length) {
-        break;
-      }
-      str = (String)arrayOfObject[m];
-      if (str.length() <= 1)
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.jdField_b_of_type_Int = paramInt;
+      paramInt = i;
+      PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
+      while (paramInt < this.jdField_a_of_type_Int)
       {
-        localObject2 = localObject1;
-        if (j != 0) {
-          break;
+        localPtvTemplateInfo = new PtvTemplateManager.PtvTemplateInfo();
+        localPtvTemplateInfo.id = "0";
+        localPtvTemplateInfo.categoryId = 0;
+        this.jdField_a_of_type_JavaUtilArrayList.add(localPtvTemplateInfo);
+        paramInt += 1;
+      }
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)paramList.next();
+        if ((this.jdField_a_of_type_Boolean) || (!localPtvTemplateInfo.advertisement)) {
+          this.jdField_a_of_type_JavaUtilArrayList.add(localPtvTemplateInfo);
         }
       }
-      k = 0;
-      n = a(paramCharSequence, str, k);
-      if (n != -1) {
-        break label146;
-      }
-      m += 1;
+      notifyDataSetChanged();
     }
-    label146:
-    if ((paramBoolean3) && (n > 10) && (i == 0) && (!paramBoolean1))
+    finally {}
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    PtvTemplateItemView localPtvTemplateItemView;
+    if ((paramView == null) || (!(paramView instanceof PtvTemplateItemView)))
     {
-      localObject1 = "…" + paramCharSequence.substring(n - 6);
-      paramCharSequence = new SpannableString((CharSequence)localObject1);
-      i = 1;
-      n = 7;
+      localPtvTemplateItemView = new PtvTemplateItemView(this.jdField_a_of_type_AndroidContentContext);
+      localPtvTemplateItemView.a();
     }
     for (;;)
     {
-      int i1;
-      if (paramBoolean2)
-      {
-        k = ((String)localObject1).indexOf(" ");
-        i1 = ((String)localObject1).indexOf(" ", k);
-        if ((n < k) || (n > i1))
-        {
-          localObject2 = paramCharSequence;
-          k = n + 1;
-          paramCharSequence = (CharSequence)localObject1;
-          localObject1 = localObject2;
-          break;
-        }
+      localPtvTemplateItemView.a(paramInt, (PtvTemplateManager.PtvTemplateInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), this.jdField_a_of_type_Bbgc);
+      if (!this.jdField_b_of_type_Boolean) {
+        b(paramInt);
       }
-      if (str.length() > 1)
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localPtvTemplateItemView;
+      localPtvTemplateItemView = (PtvTemplateItemView)paramView;
+    }
+  }
+  
+  public void notify(Object paramObject, int paramInt, Object... paramVarArgs)
+  {
+    if (paramInt == 111)
+    {
+      if ((paramVarArgs != null) && (paramVarArgs.length == 1))
       {
-        j = 1;
-        i = 1;
+        a(((bbgy)paramVarArgs[0]).a, 1);
+        notifyDataSetChanged();
       }
+      return;
+      break label66;
+    }
+    label66:
+    do
+    {
       for (;;)
       {
-        try
-        {
-          if (!TextUtils.isEmpty(paramString)) {
-            continue;
-          }
-          localObject2 = "#00a5e0";
-          k = Color.parseColor((String)localObject2);
-        }
-        catch (Exception localException)
-        {
-          k = Color.parseColor("#00a5e0");
-          continue;
-        }
-        i1 = k;
-        if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
-        {
-          i1 = k;
-          if (TextUtils.isEmpty(paramString)) {
-            i1 = Color.parseColor("#004080");
+        if (paramInt == 112) {
+          if ((paramVarArgs != null) && (paramVarArgs.length == 1))
+          {
+            paramObject = (PtvTemplateManager.PtvTemplateInfo)paramVarArgs[0];
+            paramVarArgs = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+            if (paramVarArgs.hasNext())
+            {
+              PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)paramVarArgs.next();
+              if (!paramObject.id.equals(localPtvTemplateInfo.id)) {
+                break;
+              }
+              localPtvTemplateInfo.downloading = false;
+              localPtvTemplateInfo.usable = true;
+              notifyDataSetChanged();
+              return;
+            }
           }
         }
-        paramCharSequence.setSpan(new ForegroundColorSpan(i1), n, str.length() + n, 34);
-        this.jdField_a_of_type_Int += 1;
-        localObject2 = paramCharSequence;
-        k = n + 1;
-        paramCharSequence = (CharSequence)localObject1;
-        localObject1 = localObject2;
-        break;
-        localObject2 = paramString;
       }
-      Object localObject3 = localObject1;
-      localObject1 = paramCharSequence;
-      paramCharSequence = localObject3;
-    }
-  }
-  
-  public SpannableString a(CharSequence paramCharSequence, boolean paramBoolean)
-  {
-    return a(paramCharSequence, paramBoolean, false);
-  }
-  
-  public SpannableString a(CharSequence paramCharSequence, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    return a(paramCharSequence, null, paramBoolean1, paramBoolean2, true);
-  }
-  
-  public SpannableString a(CharSequence paramCharSequence, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    return a(paramCharSequence, null, paramBoolean1, paramBoolean2, paramBoolean3);
+    } while (paramInt != 113);
+    notifyDataSetChanged();
   }
 }
 

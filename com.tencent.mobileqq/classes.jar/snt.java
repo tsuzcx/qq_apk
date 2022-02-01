@@ -1,17 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.biz.pubaccount.VideoInfo;
+import java.lang.ref.WeakReference;
 
-public class snt
-  extends amsu
+class snt
+  implements uvb
 {
-  public snt(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
+  private int jdField_a_of_type_Int;
+  private VideoInfo jdField_a_of_type_ComTencentBizPubaccountVideoInfo;
+  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  private int b;
+  private int c;
+  private int d;
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public snt(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, VideoInfo paramVideoInfo)
   {
-    if (((this.a.a == 0) || (this.a.a == 70)) && (paramBoolean))
-    {
-      QLog.d("ReadinJoyProteusFamilyListViewGroup", 1, "onUpdateFriendInfo uin:" + paramString);
-      this.a.k();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
+    this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo = paramVideoInfo;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+      smg.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, this.c, this.d, false, paramBoolean);
     }
   }
 }

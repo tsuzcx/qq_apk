@@ -1,36 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.CustomMethodsRegister.CustomMethodInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
 
-class qsq
-  implements View.OnClickListener
+public class qsq
+  implements CustomMethodsRegister.CustomMethodInterface
 {
-  qsq(qso paramqso, ArticleInfo paramArticleInfo, rga paramrga) {}
+  private Map<String, CustomMethodsRegister.CustomMethodInterface> a = new HashMap();
   
-  public void onClick(View paramView)
+  public qsq()
   {
-    pay.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-    pay.a(this.jdField_a_of_type_Qso.a, this.jdField_a_of_type_Rga.b.b);
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("folder_status", pay.d);
-      localJSONObject.put("kandian_mode", "" + pay.e());
-      localJSONObject.put("tab_source", "" + pay.d());
-      odq.a(null, "", "0X8008277", "0X8008277", 0, 0, "", "", "", localJSONObject.toString(), false);
-      EventCollector.getInstance().onViewClicked(paramView);
+    a();
+  }
+  
+  private void a()
+  {
+    a("decodeEmotion", new qss(null));
+    a("HyperLinkClick", new qst(null));
+  }
+  
+  public void a(String paramString, CustomMethodsRegister.CustomMethodInterface paramCustomMethodInterface)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramCustomMethodInterface == null)) {
       return;
     }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+    this.a.put(paramString, paramCustomMethodInterface);
+  }
+  
+  public Object invoke(String paramString, Object... paramVarArgs)
+  {
+    QLog.d("RIJProteusMethod", 1, "invoke,s=" + paramString);
+    if (this.a.containsKey(paramString)) {
+      return ((CustomMethodsRegister.CustomMethodInterface)this.a.get(paramString)).invoke(paramString, paramVarArgs);
     }
+    return null;
   }
 }
 

@@ -95,9 +95,9 @@ public class HippyTKDRefreshHeader
   public int mPullDownToRefreshDistanceBetweenIconText = ImmersiveUtils.a(8.0F);
   public Drawable mPullDownToRefreshFailIcon;
   public Drawable mPullDownToRefreshSucIcon;
-  public String mPullDownToRefreshTextFail = ResourceUtil.getString(2131717643);
+  public String mPullDownToRefreshTextFail = ResourceUtil.getString(2131718010);
   public HippyTKDUISize mPullDownToRefreshTextFailTextSize = new HippyTKDUISize();
-  public String mPullDownToRefreshTextSuc = ResourceUtil.getString(2131717644);
+  public String mPullDownToRefreshTextSuc = ResourceUtil.getString(2131718011);
   public HippyTKDUISize mPullDownToRefreshTextSucTextSize = new HippyTKDUISize();
   public Drawable mRefreshDrawable;
   public int mRefreshOffset = CONTENT_HEIGHT + REFRESH_HEADER_TOP_PADDING;
@@ -161,7 +161,7 @@ public class HippyTKDRefreshHeader
     this.hideAnimator.setEvaluator(new FloatEvaluator());
     this.hideAnimator.setInterpolator(new CurvedInterpolator(3));
     this.mCustomRefreshViewLayoutChangeListener = new HippyTKDRefreshHeader.2(this);
-    this.mDescriptionTextColor = ResourceUtil.getColor(2131167244);
+    this.mDescriptionTextColor = ResourceUtil.getColor(2131167264);
   }
   
   private String getStateStr(int paramInt)
@@ -732,7 +732,7 @@ public class HippyTKDRefreshHeader
         }
         if (this.mPullDownToRefreshSucIcon == null)
         {
-          localObject2 = ResourceUtil.getBitmap(2130850546);
+          localObject2 = ResourceUtil.getBitmap(2130850677);
           if (this.mCustomTipTextColor == 0) {
             break label1745;
           }
@@ -749,7 +749,7 @@ public class HippyTKDRefreshHeader
           }
           i = -2147483648;
           label1169:
-          localDrawable = UIBitmapUtils.getColorImage(ResourceUtil.getBitmap(2130850544), i);
+          localDrawable = UIBitmapUtils.getColorImage(ResourceUtil.getBitmap(2130850675), i);
         }
         n = this.mCb.getWidth();
         int i3 = ((Drawable)localObject2).getIntrinsicWidth();
@@ -840,7 +840,7 @@ public class HippyTKDRefreshHeader
       label1754:
       if (this.mPullDownToRefreshFailIcon == null)
       {
-        localObject2 = ResourceUtil.getBitmap(2130850545);
+        localObject2 = ResourceUtil.getBitmap(2130850676);
         if (this.mCustomTipTextColor == 0) {
           break label1802;
         }
@@ -1001,13 +1001,13 @@ public class HippyTKDRefreshHeader
     this.mColorType = 3;
     if (paramInt2 == 0)
     {
-      this.refreshBgColor = ResourceUtil.getColor(2131167251);
+      this.refreshBgColor = ResourceUtil.getColor(2131167271);
       if (paramInt3 != 0) {
         break label73;
       }
     }
     label73:
-    for (this.mTipsBgColor = ResourceUtil.getColor(2131167245);; this.mTipsBgColor = paramInt3)
+    for (this.mTipsBgColor = ResourceUtil.getColor(2131167265);; this.mTipsBgColor = paramInt3)
     {
       this.mColor = paramInt1;
       paramInt1 = 0;
@@ -1036,8 +1036,8 @@ public class HippyTKDRefreshHeader
   public void setRefreshBallColor(int paramInt)
   {
     this.mColorType = paramInt;
-    this.refreshBgColor = ResourceUtil.getColor(2131167251);
-    this.mTipsBgColor = ResourceUtil.getColor(2131167245);
+    this.refreshBgColor = ResourceUtil.getColor(2131167271);
+    this.mTipsBgColor = ResourceUtil.getColor(2131167265);
     switch (this.mColorType)
     {
     }
@@ -1049,15 +1049,15 @@ public class HippyTKDRefreshHeader
         this.mBalls[paramInt].setInitialColor(this.mColor);
         paramInt += 1;
       }
-      this.mColor = ResourceUtil.getColor(2131167248);
-      this.refreshBgColor = ResourceUtil.getColor(2131167252);
-      this.mTipsBgColor = ResourceUtil.getColor(2131167245);
+      this.mColor = ResourceUtil.getColor(2131167268);
+      this.refreshBgColor = ResourceUtil.getColor(2131167272);
+      this.mTipsBgColor = ResourceUtil.getColor(2131167265);
       continue;
-      this.mColor = ResourceUtil.getColor(2131167249);
+      this.mColor = ResourceUtil.getColor(2131167269);
       continue;
-      this.mColor = ResourceUtil.getColor(2131167246);
+      this.mColor = ResourceUtil.getColor(2131167266);
       continue;
-      this.mColor = ResourceUtil.getColor(2131167250);
+      this.mColor = ResourceUtil.getColor(2131167270);
     }
     this.mPullDownToRefreshSucIcon = null;
     this.mPullDownToRefreshFailIcon = null;

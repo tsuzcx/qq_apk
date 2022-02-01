@@ -1,141 +1,54 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticonview.EmoticonUtils;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Map;
 
-public class asfp
+class asfp
+  extends asiv
 {
-  int jdField_a_of_type_Int;
-  public aslx a;
-  String jdField_a_of_type_JavaLangString;
-  public HashMap<String, ArrayList<MessageRecord>> a;
-  List<asfm> jdField_a_of_type_JavaUtilList;
-  List<asfm> b;
-  List<asfm> c;
-  public List<asfm> d;
-  List<asfm> e;
+  asfp(asfl paramasfl) {}
   
-  public asfp(String paramString, aslx paramaslx, HashMap<String, ArrayList<MessageRecord>> paramHashMap)
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangString = paramaslx;
-    this.jdField_a_of_type_Aslx = paramHashMap;
-    this.jdField_a_of_type_Int = 0;
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilHashMap = localObject;
-    this.b = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.c = new ArrayList();
-    this.d = new ArrayList();
-    this.e = new ArrayList();
-  }
-  
-  public int a()
-  {
-    return this.b.size();
-  }
-  
-  public void a()
-  {
-    c();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((asfm)localIterator.next()).a();
+    if (!this.a.a.containsKey(paramEmoticonPackage.epId)) {
+      return;
     }
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public void a(asfm paramasfm)
-  {
-    if (paramasfm != null) {
-      this.b.add(paramasfm);
-    }
-  }
-  
-  public void b()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((asfm)localIterator.next()).b();
-    }
-    this.jdField_a_of_type_Int = 5;
-  }
-  
-  void c()
-  {
-    if (10 <= this.b.size()) {}
-    ArrayList localArrayList;
-    for (int i = 10;; i = this.b.size())
+    asih localasih = (asih)asfl.l(this.a).getManager(QQManagerFactory.CHAT_EMOTION_MANAGER);
+    if (paramInt == 0)
     {
-      localArrayList = new ArrayList(i);
-      int j = 0;
-      while (j < i)
-      {
-        asfm localasfm = (asfm)this.b.get(j);
-        this.jdField_a_of_type_JavaUtilList.add(localasfm);
-        localArrayList.add(localasfm);
-        j += 1;
+      if (QLog.isColorLevel()) {
+        QLog.d("FavroamingManager", 2, "onJsonComplete, start download fav emoticon: " + paramEmoticonPackage.epId);
       }
-    }
-    this.b.removeAll(localArrayList);
-  }
-  
-  public void d()
-  {
-    int j = this.c.size();
-    int k = this.e.size();
-    int m = this.d.size();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    int i = 0;
-    asfm localasfm;
-    if (localIterator.hasNext())
-    {
-      localasfm = (asfm)localIterator.next();
-      if ((localasfm.b == 2) || (localasfm.b == 3) || (localasfm.b == 4)) {
-        localIterator.remove();
-      }
-      if (localasfm.b == 2)
+      paramInt = paramBundle.getInt("jsonType", asih.c);
+      paramBundle = new File(EmoticonUtils.emoticonJsonFilePath.replace("[epId]", paramEmoticonPackage.epId));
+      ArrayList localArrayList = new ArrayList();
+      asjh localasjh = new asjh();
+      if (paramBundle.exists()) {}
+      for (paramBundle = FileUtils.fileToBytes(paramBundle);; paramBundle = null)
       {
-        this.c.add(localasfm);
-        i += 1;
-      }
-    }
-    for (;;)
-    {
-      break;
-      if (localasfm.b == 3)
-      {
-        this.e.add(localasfm);
-        i += 1;
-      }
-      else if (localasfm.b == 4)
-      {
-        this.d.add(localasfm);
-        i += 1;
-        continue;
-        c();
-        if (QLog.isColorLevel())
-        {
-          int n = this.jdField_a_of_type_JavaUtilList.size();
-          int i1 = this.b.size();
-          QLog.i("FileMultiMsgManager<FileAssistant>", 1, "request update, forwardSeq[ " + this.jdField_a_of_type_JavaLangString + "] removeCount[" + i + "] leftCount[" + (n + i1) + "] finishCount[" + (m + (j + k)) + "]");
+        paramBundle = asiw.a(asfl.m(this.a), paramEmoticonPackage, paramInt, paramBundle, localArrayList, localasjh);
+        if (paramBundle == null) {
+          break;
         }
-        localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator.hasNext()) {
-          ((asfm)localIterator.next()).a();
+        if (QLog.isColorLevel()) {
+          QLog.d("FavroamingManager", 2, "parse Json Error:" + paramBundle);
         }
-        if ((this.jdField_a_of_type_JavaUtilList.size() <= 0) && (this.b.size() <= 0))
-        {
-          this.jdField_a_of_type_Int = 5;
-          if (QLog.isDevelopLevel()) {
-            QLog.i("FileMultiMsgManager<FileAssistant>", 1, "all task upload finish , remove multi request: forwardSeq[ " + this.jdField_a_of_type_JavaLangString + "]");
-          }
-          ases.a(this.jdField_a_of_type_Ases, this.jdField_a_of_type_JavaLangString);
-        }
+        bhpl.a("emotionType", "emotionActionFav", "2", paramEmoticonPackage.epId, "", "", paramBundle, "", "", "");
         return;
       }
+      this.a.a(paramEmoticonPackage, localasih, localArrayList, localasjh);
+      this.a.a(paramEmoticonPackage, localasih);
+      return;
     }
+    this.a.a(paramEmoticonPackage);
+    bhpl.a("emotionType", "emotionActionFav", "1", paramEmoticonPackage.epId, "", NetworkUtil.getNetworkType(asfl.n(this.a).getApplication()) + "", paramInt + "", "", "", "");
   }
 }
 

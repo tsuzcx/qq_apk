@@ -1,20 +1,71 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import dov.com.qq.im.aeeditor.AEEditorActivity;
 
-class bnsl
-  extends bnax
+public class bnsl
 {
-  private bnsl(bnsj parambnsj) {}
-  
-  public void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList)
+  public static void a(Activity paramActivity, int paramInt1, Bundle paramBundle, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LBSDetetor", 2, "onGetLBSTemplateIds:" + paramBoolean + " req:" + paramInt);
+    int i;
+    Intent localIntent;
+    if (paramInt1 == 0)
+    {
+      i = 10000;
+      localIntent = new Intent(paramActivity, AEEditorActivity.class);
+      if (paramBundle == null) {
+        break label134;
+      }
     }
-    if ((bnsj.a(this.a) != null) && (bnsj.a(this.a).hasMessages(paramInt))) {
-      bnsj.a(this.a, paramBoolean, paramArrayList, paramInt);
+    label134:
+    for (paramBundle = new Bundle(paramBundle);; paramBundle = new Bundle())
+    {
+      paramBundle.putInt("editorType", paramInt1);
+      paramBundle.putInt("editorFrom", paramInt2);
+      if (paramActivity.getIntent() != null)
+      {
+        paramBundle.putString("editor_filter_id", paramActivity.getIntent().getStringExtra("editor_filter_id"));
+        paramActivity.getIntent().putExtra("editor_filter_id", "");
+      }
+      localIntent.putExtras(paramBundle);
+      paramActivity.startActivityForResult(localIntent, i);
+      return;
+      if (paramInt1 == 1)
+      {
+        i = 10001;
+        break;
+      }
+      if (paramInt1 == 2)
+      {
+        i = 10002;
+        break;
+      }
+      throw new IllegalArgumentException("wrong editor type");
     }
+  }
+  
+  public static boolean a(Bundle paramBundle)
+  {
+    return a(paramBundle, 0);
+  }
+  
+  private static boolean a(Bundle paramBundle, int paramInt)
+  {
+    if (paramBundle == null) {}
+    while ((!paramBundle.containsKey("editorType")) || (paramBundle.getInt("editorType") != paramInt)) {
+      return false;
+    }
+    return true;
+  }
+  
+  public static boolean b(Bundle paramBundle)
+  {
+    return a(paramBundle, 1);
+  }
+  
+  public static boolean c(Bundle paramBundle)
+  {
+    return a(paramBundle, 2);
   }
 }
 

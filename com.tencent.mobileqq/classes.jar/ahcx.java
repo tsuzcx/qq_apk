@@ -1,99 +1,42 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKuaKuaFragment;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.QQWalletBaseMsgElem;
-import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.graphics.Rect;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONObject;
 
-class ahcx
-  implements View.OnClickListener
+final class ahcx
+  implements OnCompositionLoadedListener
 {
-  ahcx(ahcp paramahcp) {}
+  ahcx(DiniFlyAnimationView paramDiniFlyAnimationView, agsz paramagsz, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    if (paramView.getTag() == null) {}
-    for (;;)
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageAssetDelegate(new ahcy(this));
+    if (paramLottieComposition == null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      if (QLog.isColorLevel()) {
+        QLog.d(ahcw.jdField_a_of_type_JavaLangString, 2, "composition is null ,return");
+      }
       return;
-      if (this.a.jdField_a_of_type_Ajxv != null) {
-        this.a.jdField_a_of_type_Ajxv.a(14);
-      }
-      long l = System.currentTimeMillis();
-      if (akgc.a(ahcp.jdField_a_of_type_Long, l))
-      {
-        ahcp.jdField_a_of_type_Long = l;
-        MessageForQQWalletMsg localMessageForQQWalletMsg = (MessageForQQWalletMsg)paramView.getTag();
-        QQWalletRedPacketMsg localQQWalletRedPacketMsg = localMessageForQQWalletMsg.mQQWalletRedPacketMsg;
-        Object localObject1 = (ajul)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(125);
-        if (nmy.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin))
-        {
-          ((ajul)localObject1).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, 1);
-          if (QLog.isColorLevel()) {
-            QLog.d("PasswdRedBagManager", 2, "current is in Anonymous, dont show passwdredbag tips");
-          }
-        }
-        else
-        {
-          Object localObject2 = ((ajul)localObject1).a(localQQWalletRedPacketMsg.redPacketId);
-          l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-          if ((localObject2 != null) && ((((ajuk)localObject2).jdField_a_of_type_Boolean) || (((ajuk)localObject2).b) || (((ajuk)localObject2).c) || (((ajuk)localObject2).jdField_a_of_type_Long < l)))
-          {
-            ((ajul)localObject1).a(localQQWalletRedPacketMsg.redPacketId, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType);
-            l = VACDReportUtil.a(null, "qqwallet", "graphb", "pwd.click", "msgType=6", 0, null);
-            ((ajul)localObject1).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (ajuk)localObject2, l, 1000002, localMessageForQQWalletMsg.fromHBList, null);
-            ((ajul)localObject1).a(localQQWalletRedPacketMsg.redPacketId, true);
-            if (QLog.isColorLevel()) {
-              QLog.d("PasswdRedBagManager", 2, "click open passwdredbag, isPasswdRedBagOpen=" + ((ajuk)localObject2).jdField_a_of_type_Boolean + ",isPasswdRedBagFinish=" + ((ajuk)localObject2).b + ",isPasswdRedBagOverDue=" + ((ajuk)localObject2).c);
-            }
-          }
-          else
-          {
-            localObject1 = new Intent();
-            if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) {
-              ((Intent)localObject1).putExtra("session", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo);
-            }
-            ((Intent)localObject1).putExtra("uniseq", localMessageForQQWalletMsg.uniseq);
-            ((Intent)localObject1).putExtra("public_fragment_window_feature", 1);
-            localObject2 = localMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId;
-            Object localObject3 = localMessageForQQWalletMsg.mQQWalletRedPacketMsg.authkey;
-            Object localObject4 = akgc.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-            int j = ((Bundle)localObject4).getInt("groupType");
-            localObject4 = ((Bundle)localObject4).getString("name");
-            int i = 0;
-            if (localMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem != null) {
-              i = localMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.resourceType;
-            }
-            localObject2 = akgc.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, j, (String)localObject4, (String)localObject2, (String)localObject3, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "appid#1344242394|bargainor_id#1000030201|channel#detailtips", "redgiftDetail", null, localMessageForQQWalletMsg.mQQWalletRedPacketMsg.redChannel, i, localMessageForQQWalletMsg.fromHBList);
-            localObject3 = new Bundle();
-            ((Bundle)localObject3).putString("json", ((JSONObject)localObject2).toString());
-            ((Bundle)localObject3).putString("callbackSn", "0");
-            ((Intent)localObject1).putExtra("fromHBList", localMessageForQQWalletMsg.fromHBList);
-            ((Intent)localObject1).putExtra("redPacketId", localMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId);
-            if (!(paramView.getContext() instanceof Activity)) {
-              ((Intent)localObject1).addFlags(268435456);
-            }
-            adxr.a(paramView.getContext(), (Intent)localObject1, PublicTransFragmentActivity.class, RedPacketKuaKuaFragment.class);
-            if (QLog.isColorLevel()) {
-              QLog.d("PasswdRedBagManager", 2, "show passwdredbag kuakua tips = " + localQQWalletRedPacketMsg.elem.title);
-            }
-          }
-        }
-      }
     }
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setComposition(paramLottieComposition);
+    if ((this.jdField_a_of_type_Agsz != null) && ("bubble".equals(this.jdField_a_of_type_JavaLangString)))
+    {
+      paramLottieComposition = this.jdField_a_of_type_Agsz.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getCompRect();
+      ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_Agsz.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getLayoutParams();
+      int i = paramLottieComposition.width() * localLayoutParams.height / paramLottieComposition.height();
+      this.jdField_a_of_type_Agsz.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getLayoutParams().width = i;
+      this.jdField_a_of_type_Agsz.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setLayoutParams(localLayoutParams);
+      this.jdField_a_of_type_Agsz.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
+      this.jdField_a_of_type_Agsz.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
+      this.jdField_a_of_type_Agsz.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      this.jdField_a_of_type_Agsz.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
+      this.jdField_a_of_type_Agsz.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.servlet;
 
-import bbos;
+import bcvm;
 
 class LoginVerifyServlet$4$2
   implements Runnable

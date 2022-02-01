@@ -1,49 +1,151 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.highway.utils.BaseConstants.NetType;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
-class bahs
-  extends amwl
+public final class bahs
+  implements BaseConstants.NetType
 {
-  bahs(bahq parambahq) {}
+  private static boolean jdField_a_of_type_Boolean;
+  private static int[] jdField_a_of_type_ArrayOfInt = new int[6];
+  private static boolean b = true;
+  private static boolean c;
   
-  public void onNotifyResultAfterSendRich(boolean paramBoolean, long paramLong, amwm paramamwm)
+  public static int a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
   {
-    if (bahq.a(this.a) == null)
+    int i = 0;
+    if ((paramQQAppInterface == null) || (paramInt1 == 0)) {}
+    do
     {
-      QLog.d(bahq.a, 1, new Object[] { "return because queue is null, isSuccess:", Boolean.valueOf(paramBoolean), " ,uniseq:", Long.valueOf(paramLong) });
-      return;
-    }
-    bahl localbahl = (bahl)bahq.a(this.a).peek();
-    if (localbahl != null) {
-      if ((paramLong == localbahl.jdField_a_of_type_Long) && (localbahl.c == 4))
+      return 800;
+      b(paramQQAppInterface, false);
+      paramQQAppInterface = jdField_a_of_type_ArrayOfInt;
+      paramInt1 = i;
+      if (paramInt2 >= 0)
       {
-        localbahl.c = 5;
-        bahq.a(this.a).remove(localbahl);
-        if (localbahl.jdField_a_of_type_Amwl != null) {
-          localbahl.jdField_a_of_type_Amwl.onNotifyResultAfterSendRich(paramBoolean, paramLong, paramamwm);
-        }
-        if (localbahl.jdField_a_of_type_Baho != null) {
-          localbahl.jdField_a_of_type_Baho.onSendEnd(paramBoolean, paramLong);
-        }
-        if (localbahl.jdField_a_of_type_Boolean) {
-          bbry.a().a(paramLong);
-        }
-        bahq.a(this.a).b(localbahl.jdField_a_of_type_Long);
-        if (QLog.isColorLevel())
-        {
-          paramamwm = new StringBuilder();
-          paramamwm.append("OrderSendObserver remove uniseq:").append(paramLong).append(", queue size:").append(bahq.a(this.a).size()).append(", mNeedCompress:").append(localbahl.jdField_a_of_type_Boolean).append(", issuccess:").append(paramBoolean);
-          QLog.d(bahq.a, 2, paramamwm.toString());
+        paramInt1 = i;
+        if (paramInt2 < paramQQAppInterface.length) {
+          paramInt1 = paramQQAppInterface[paramInt2];
         }
       }
+    } while (paramInt1 == 0);
+    return paramInt1;
+  }
+  
+  private static String a(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = BaseApplicationImpl.sApplication.getSharedPreferences("RecordParams_" + paramQQAppInterface.getCurrentAccountUin(), 0).getString("StreamCfg", null);
+    if (QLog.isColorLevel()) {
+      QLog.d("StreamParams", 2, "getSavedStreamCfg: " + paramQQAppInterface);
     }
+    return paramQQAppInterface;
+  }
+  
+  public static void a()
+  {
+    jdField_a_of_type_Boolean = false;
+    b = true;
+    c = false;
+    jdField_a_of_type_ArrayOfInt = new int[6];
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    BaseApplicationImpl.sApplication.getSharedPreferences("RecordParams_" + paramQQAppInterface.getCurrentAccountUin(), 0).edit().putString("StreamCfg", paramString).commit();
+    if (QLog.isColorLevel()) {
+      QLog.d("StreamParams", 2, "saveStreamCfg: " + paramString);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    if ((jdField_a_of_type_Boolean) && (!paramBoolean)) {
+      return;
+    }
+    jdField_a_of_type_Boolean = true;
     for (;;)
     {
-      bahq.a(this.a);
+      try
+      {
+        paramQQAppInterface = a(paramQQAppInterface);
+        if (QLog.isColorLevel()) {
+          QLog.d("StreamParams", 2, "initSupportCfg :" + paramQQAppInterface);
+        }
+        if (paramQQAppInterface != null)
+        {
+          int i = paramQQAppInterface.length();
+          if (i != 0) {
+            continue;
+          }
+        }
+      }
+      catch (Exception paramQQAppInterface)
+      {
+        continue;
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("StreamParams", 2, "init params: " + b);
       return;
-      QLog.d(bahq.a, 1, new Object[] { "OrderSendObserver peekFirst but fail, status:", Integer.valueOf(localbahl.c), ", uniseq:", Long.valueOf(localbahl.jdField_a_of_type_Long) });
-      continue;
-      QLog.d(bahq.a, 1, new Object[] { "OrderSendObserver peekFirst is null. uniseq:", Long.valueOf(paramLong), ", issuccess:", Boolean.valueOf(paramBoolean) });
+      paramQQAppInterface = paramQQAppInterface.split("\\|");
+      if ((paramQQAppInterface != null) && (paramQQAppInterface.length >= 1)) {
+        b = "1".equals(paramQQAppInterface[0]);
+      }
+    }
+  }
+  
+  private static String b(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = BaseApplicationImpl.sApplication.getSharedPreferences("RecordParams_" + paramQQAppInterface.getCurrentAccountUin(), 0).getString("StreamSliceCfg", null);
+    if (QLog.isColorLevel()) {
+      QLog.d("StreamParams", 2, "getSavedStreamSliceCfg: " + paramQQAppInterface);
+    }
+    return paramQQAppInterface;
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    BaseApplicationImpl.sApplication.getSharedPreferences("RecordParams_" + paramQQAppInterface.getCurrentAccountUin(), 0).edit().putString("StreamSliceCfg", paramString).commit();
+    if (QLog.isColorLevel()) {
+      QLog.d("StreamParams", 2, "saveStreamSliceCfg: " + paramString);
+    }
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    if ((c) && (!paramBoolean)) {}
+    for (;;)
+    {
+      return;
+      c = true;
+      try
+      {
+        paramQQAppInterface = b(paramQQAppInterface);
+        if (QLog.isColorLevel()) {
+          QLog.d("StreamParams", 2, "initSliceCfg: " + paramQQAppInterface);
+        }
+        if (paramQQAppInterface == null) {
+          continue;
+        }
+        paramQQAppInterface = paramQQAppInterface.split("\\|");
+        int i = 0;
+        while (i < paramQQAppInterface.length)
+        {
+          if (paramQQAppInterface[i].startsWith("1-"))
+          {
+            String[] arrayOfString = paramQQAppInterface[i].split("-");
+            int j = Integer.parseInt(arrayOfString[1]);
+            int k = Integer.parseInt(arrayOfString[2]);
+            jdField_a_of_type_ArrayOfInt[j] = k;
+          }
+          i += 1;
+        }
+        return;
+      }
+      catch (Exception paramQQAppInterface) {}
     }
   }
 }

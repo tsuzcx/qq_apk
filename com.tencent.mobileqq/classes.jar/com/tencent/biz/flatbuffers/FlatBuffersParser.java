@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 import mqq.app.AppRuntime;
-import nko;
+import nro;
 
 public class FlatBuffersParser
 {
@@ -42,7 +42,7 @@ public class FlatBuffersParser
   public static void a()
   {
     if (!b()) {
-      nko.a(false).b();
+      nro.a(false).b();
     }
   }
   

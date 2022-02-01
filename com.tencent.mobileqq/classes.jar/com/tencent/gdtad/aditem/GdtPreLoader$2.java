@@ -1,18 +1,18 @@
 package com.tencent.gdtad.aditem;
 
-import abkw;
-import abrl;
+import acam;
+import acho;
 import com.tencent.ad.tangram.offline.AdOffline;
 
 public class GdtPreLoader$2
   implements Runnable
 {
-  public GdtPreLoader$2(abkw paramabkw, GdtAd paramGdtAd) {}
+  public GdtPreLoader$2(acam paramacam, GdtAd paramGdtAd) {}
   
   public void run()
   {
     String str = this.a.getBusinessIdForXiJingOffline();
-    abrl.b("GdtPreLoader", String.format("preLoadXiJingOfflineJsonAfterAdLoaded businessId:%s version:%s", new Object[] { str, AdOffline.INSTANCE.getVersionIfExists(str) }));
+    acho.b("GdtPreLoader", String.format("preLoadXiJingOfflineJsonAfterAdLoaded businessId:%s version:%s", new Object[] { str, AdOffline.INSTANCE.getVersionIfExists(str) }));
   }
 }
 

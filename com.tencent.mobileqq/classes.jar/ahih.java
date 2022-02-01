@@ -1,14 +1,13 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
-class ahih
-  implements bjoe
+public class ahih
+  implements DialogInterface.OnClickListener
 {
-  ahih(ahia paramahia, bjnw parambjnw) {}
+  public ahih(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    ahia.a(this.jdField_a_of_type_Ahia, paramView, paramInt, this.jdField_a_of_type_Bjnw);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

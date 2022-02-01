@@ -8,10 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import apcv;
-import apcw;
-import apcx;
-import bfur;
+import aqfz;
+import aqga;
+import aqgb;
+import bhdj;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.haoliyou.JefsClass;
 import com.tencent.mobileqq.utils.QQCustomDialog;
@@ -42,8 +42,8 @@ public class JumpConfirmFragment
     this.jdField_b_of_type_Int = ((Bundle)localObject).getInt("key_callback_id", 0);
     try
     {
-      localObject = bfur.a(getActivity(), 0, null, "即将离开QQ\n打开其他应用", getString(2131690620), getString(2131719641), new apcv(this), new apcw(this));
-      ((QQCustomDialog)localObject).setOnDismissListener(new apcx(this));
+      localObject = bhdj.a(getActivity(), 0, null, "即将离开QQ\n打开其他应用", getString(2131690697), getString(2131720094), new aqfz(this), new aqga(this));
+      ((QQCustomDialog)localObject).setOnDismissListener(new aqgb(this));
       getActivity().setJumpDialog((Dialog)localObject);
       ((QQCustomDialog)localObject).show();
       paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);

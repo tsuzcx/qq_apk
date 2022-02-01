@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ar;
 
 import android.widget.ProgressBar;
-import anyj;
+import apbl;
 
 public class ARLBSPOIDialog$1
   implements Runnable
 {
-  public ARLBSPOIDialog$1(anyj paramanyj) {}
+  public ARLBSPOIDialog$1(apbl paramapbl) {}
   
   public void run()
   {

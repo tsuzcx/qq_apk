@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahiu;
+import aido;
 import android.text.TextUtils;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
@@ -10,16 +10,16 @@ import com.tencent.mobileqq.data.MessageForPubAccount;
 import com.tencent.mobileqq.data.MessageForStructing;
 import java.util.Iterator;
 import java.util.List;
-import ocw;
+import okn;
 
 public class PublicAccountChatPie$49
   implements Runnable
 {
-  public PublicAccountChatPie$49(ahiu paramahiu) {}
+  public PublicAccountChatPie$49(aido paramaido) {}
   
   public void run()
   {
-    if (ocw.a().a(this.this$0.app, this.this$0.sessionInfo.curFriendUin) != 0L) {}
+    if (okn.a().a(this.this$0.app, this.this$0.sessionInfo.curFriendUin) != 0L) {}
     for (;;)
     {
       return;
@@ -39,7 +39,7 @@ public class PublicAccountChatPie$49
                 long l = Long.parseLong((String)localObject2);
                 if (l > 0L)
                 {
-                  ocw.a().a(this.this$0.app, this.this$0.sessionInfo.curFriendUin, l);
+                  okn.a().a(this.this$0.app, this.this$0.sessionInfo.curFriendUin, l);
                   return;
                 }
               }

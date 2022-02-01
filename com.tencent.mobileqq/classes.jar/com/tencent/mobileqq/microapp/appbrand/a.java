@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.microapp.appbrand;
 
 import Wallet.ApkgConfig;
-import akfu;
+import albn;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Base64;
-import bfyv;
+import bhhn;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
@@ -244,7 +244,7 @@ public final class a
       }
     }
     paramString2 = ((JSONObject)localObject2).toString();
-    bfyv.a(this.d, 1001, 1, "web_share", "", str4, str2, (String)localObject1, str3, paramString1, "web", paramString2, "micro_app", (String)localObject3, null, null, null, null, null, null, null, null, 7, null, -1L);
+    bhhn.a(this.d, 1001, 1, "web_share", "", str4, str2, (String)localObject1, str3, paramString1, "web", paramString2, "micro_app", (String)localObject3, null, null, null, null, null, null, null, null, 7, null, -1L);
   }
   
   public void a(String paramString, boolean paramBoolean)
@@ -347,7 +347,7 @@ public final class a
   
   public void f()
   {
-    akfu.a(this.c.f.launchParam, this.c.f.config.mini_version, new c(this));
+    albn.a(this.c.f.launchParam, this.c.f.config.mini_version, new c(this));
   }
   
   public void onServiceEvent(String paramString1, String paramString2, int[] paramArrayOfInt)

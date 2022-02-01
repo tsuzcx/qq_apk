@@ -1,145 +1,98 @@
-import android.os.Looper;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.DiscussChatPie.8.2;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopMemberCardInfo;
 import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.utils.SendMessageHandler;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.util.ArrayList;
 
 public class afit
-  extends amwl
+  extends aofu
 {
-  afit(afim paramafim) {}
+  public afit(TroopTransferActivity paramTroopTransferActivity) {}
   
-  private void a(String paramString)
+  protected void onGetTroopMemberCardInfoResult(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList)
   {
-    try
-    {
-      if (!this.a.mActivity.isFinishing()) {
-        bfur.a(this.a.mActivity, 230, amtj.a(2131702466), this.a.mActivity.getString(2131718113), new afiv(this, paramString), null).show();
-      }
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e(this.a.tag, 1, "ERR!! send_discussion_msg_failed_not_member:" + paramString.getMessage());
+    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
+      this.a.b(paramArrayList);
     }
   }
   
-  public void onMsgRevokeNotice(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
+  protected void onModifyTroopInfoPushResult(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.tag, 2, "onMsgRevokeNotice:" + paramBoolean1);
+    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
+      this.a.b(paramArrayList);
     }
-    if (!paramBoolean1) {
+  }
+  
+  protected void onModifyTroopInfoResult(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList, String paramString)
+  {
+    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
+      this.a.b(paramArrayList);
+    }
+  }
+  
+  protected void onOIDB0X89E_0_Ret(boolean paramBoolean, long paramLong, String paramString1, String paramString2, int paramInt, String paramString3)
+  {
+    if ((!bhbx.a(String.valueOf(paramLong), this.a.jdField_a_of_type_JavaLangString)) || (!bhbx.a(paramString1, this.a.app.getCurrentAccountUin()))) {
       return;
     }
-    if ((paramList != null) && (!paramList.isEmpty()))
+    this.a.jdField_a_of_type_Boolean = false;
+    if (paramBoolean)
     {
-      Object localObject = (MessageRecord)paramList.get(0);
-      if (this.a.mTroopTips != null)
+      if (this.a.jdField_a_of_type_Biso != null) {
+        this.a.jdField_a_of_type_Biso.b();
+      }
+      paramString1 = (TroopManager)this.a.app.getManager(QQManagerFactory.TROOP_MANAGER);
+      paramString3 = paramString1.b(paramLong + "");
+      if (paramString3 != null)
       {
-        int i = this.a.mTroopTips.b();
-        if (i != -1)
-        {
-          bese localbese = (bese)this.a.app.getManager(363);
-          long l = localbese.a(this.a.sessionInfo.curFriendUin + "&" + 3000);
-          if (((MessageRecord)localObject).uniseq == l)
-          {
-            localbese.a(this.a.sessionInfo.curFriendUin + "&" + 3000, i);
-            this.a.mTroopTips.a(i);
-            this.a.mTroopTips.e();
-          }
-          if (QLog.isColorLevel())
-          {
-            localObject = new StringBuilder("onMsgRevokeNotice==>");
-            ((StringBuilder)localObject).append("navigateType:").append(i).append("|navigaeSeq:").append(l);
-            QLog.d(this.a.tag + ".troop.special_msg", 2, ((StringBuilder)localObject).toString());
-          }
-        }
+        paramString3.dwAdditionalFlag = 0L;
+        paramString1.b(paramString3);
       }
-    }
-    super.onMsgRevokeNotice(paramBoolean1, paramList, paramBoolean2);
-  }
-  
-  public void onMsgStartSendingUI(String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("MsgSend", 4, "delay 100ms, starting upadte ui");
-    }
-    this.a.refresh(131072);
-  }
-  
-  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong)
-  {
-    onSendResult(paramBoolean, paramString, paramLong, null);
-  }
-  
-  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong, amwf paramamwf)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    while (!paramString.equals(this.a.sessionInfo.curFriendUin)) {
+      paramString1 = new Intent();
+      paramString1.putExtra("isNeedFinish", true);
+      paramString1.putExtra("fin_tip_msg", this.a.getString(2131719534));
+      paramString1.putExtra("uin", paramString2);
+      this.a.setResult(-1, paramString1);
+      this.a.finish();
       return;
     }
-    this.a.hasSentRecvMsg = true;
-    this.a.refresh(262144, paramamwf, paramLong);
-  }
-  
-  protected void onUpdateMsgContent(boolean paramBoolean, String paramString)
-  {
-    this.a.refresh(65536);
-  }
-  
-  protected void onUpdateSendMsgError(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
-  {
-    if ((paramString1 == null) || (!paramString1.equals(this.a.sessionInfo.curFriendUin)) || (paramInt1 != this.a.sessionInfo.curType))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.tag, 2, "onUpdateSendMsgError exception uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.tag, 2, "onUpdateSendMsgError uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
-    }
-    if ((paramInt1 == 1) || (paramInt1 == 3000) || (paramInt1 == 0))
-    {
-      paramSendMessageHandler = this.a.app.getMessageFacade().getMsgItemByUniseq(paramString1, paramInt1, paramLong2);
-      if ((paramSendMessageHandler != null) && ((paramSendMessageHandler instanceof MessageForStructing)) && ("viewMultiMsg".equals(((MessageForStructing)paramSendMessageHandler).structingMsg.mMsgAction))) {
-        awcm.a().a(this.a.app, paramString1, paramInt1, paramLong2, false);
-      }
-    }
-    if (paramInt1 == 3000) {
-      switch (paramInt2)
-      {
-      default: 
-        if (paramInt2 > 100) {
-          QQToast.a(this.a.mActivity, paramString2, 0).b(this.a.mActivity.getTitleBarHeight());
-        }
-        break;
-      }
+    if ((paramInt == 1) || (paramInt == 2) || (paramInt == 6) || (paramInt == 8) || (paramInt == 9) || (paramInt == 10) || (paramInt == 11)) {
+      paramString1 = this.a.getString(2131719520);
     }
     for (;;)
     {
-      this.a.refresh(196608);
+      if (this.a.jdField_a_of_type_Biso == null) {
+        this.a.jdField_a_of_type_Biso = new biso(this.a);
+      }
+      this.a.jdField_a_of_type_Biso.a(2, paramString1, 1500);
       return;
-      QQToast.a(this.a.mActivity, 2131718112, 1).b(this.a.mActivity.getTitleBarHeight());
-      continue;
-      QQToast.a(this.a.mActivity, 2131718114, 1).b(this.a.mActivity.getTitleBarHeight());
-      continue;
-      bfur.a(this.a.mActivity, 230, amtj.a(2131702465), this.a.mActivity.getString(2131691671), new afiu(this, paramString1), null).show();
-      continue;
-      if (Looper.myLooper() != Looper.getMainLooper()) {
-        this.a.mActivity.runOnUiThread(new DiscussChatPie.8.2(this, paramString1));
-      } else {
-        a(paramString1);
+      if ((paramInt == 3) || (paramInt == 4) || (paramInt == 7) || (paramInt == 16) || (paramInt == 19))
+      {
+        paramString1 = this.a.getString(2131719522);
+      }
+      else if ((paramInt == 5) || (paramInt == 17) || (paramInt == 18))
+      {
+        paramString1 = this.a.getString(2131719521);
+      }
+      else
+      {
+        if (paramInt == 12)
+        {
+          if (this.a.jdField_a_of_type_Biso != null) {
+            this.a.jdField_a_of_type_Biso.b();
+          }
+          paramString1 = bhdj.a(this.a, 230);
+          paramString1.setTitle(this.a.getString(2131695952));
+          paramString1.setMessage(this.a.getString(2131695953));
+          paramString1.setNegativeButton(this.a.getString(2131695897), new afiu(this, paramString1));
+          paramString1.setPositiveButton(this.a.getString(2131718822), new afiv(this, paramString1));
+          paramString1.show();
+          return;
+        }
+        paramString1 = this.a.getString(2131719521);
       }
     }
   }

@@ -1,6 +1,6 @@
 public abstract interface asis
 {
-  public abstract void a(boolean paramBoolean, asiq paramasiq);
+  public abstract void a(boolean paramBoolean);
 }
 
 

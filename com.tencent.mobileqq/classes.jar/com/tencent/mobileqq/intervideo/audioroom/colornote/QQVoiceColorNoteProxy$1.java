@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.intervideo.audioroom.colornote;
 
-import apom;
+import aqrq;
 
 class QQVoiceColorNoteProxy$1
-  implements apom
+  implements aqrq
 {
   QQVoiceColorNoteProxy$1(QQVoiceColorNoteProxy paramQQVoiceColorNoteProxy, OnColorNoteAnimFinish paramOnColorNoteAnimFinish) {}
   

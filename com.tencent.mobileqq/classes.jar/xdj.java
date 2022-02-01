@@ -1,29 +1,11 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
 public class xdj
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, voc>
+  extends xcy
 {
-  public xdj(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
-  {
-    super(paramQQStoryShareGroupProfileActivity);
-  }
+  public ycc a;
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull voc paramvoc)
+  public xdj(String paramString)
   {
-    paramvoc = paramvoc.a;
-    if (paramvoc == null) {}
-    while (xqc.a(paramvoc.mUploadStatus) != 3) {
-      return;
-    }
-    paramQQStoryShareGroupProfileActivity.b = true;
-  }
-  
-  public Class acceptEventClass()
-  {
-    return voc.class;
+    super(paramString);
   }
 }
 

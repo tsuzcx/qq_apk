@@ -11,9 +11,9 @@ import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
-import aszl;
-import aszt;
-import atal;
+import auds;
+import auea;
+import aues;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.RoundRectBitmap;
@@ -524,14 +524,14 @@ public class FileAssistantDownloader
       {
         f3 = this.application.getResources().getDisplayMetrics().density;
         int m = this.application.getResources().getDisplayMetrics().densityDpi;
-        j = atal.c;
-        i = atal.a;
+        j = aues.c;
+        i = aues.a;
         n = paramBitmap.getWidth();
         k = paramBitmap.getHeight();
         Paint localPaint = new Paint(1);
         localPaint.setColor(-16777216);
-        i1 = atal.e;
-        int i2 = atal.f;
+        i1 = aues.e;
+        int i2 = aues.f;
         if ((n >= i2) && (k >= i2)) {
           break label346;
         }
@@ -615,7 +615,7 @@ public class FileAssistantDownloader
       do
       {
         return paramFile;
-        if (aszt.a(paramURLDrawableHandler.path) == 2) {}
+        if (auea.a(paramURLDrawableHandler.path) == 2) {}
         for (i = 1;; i = 0)
         {
           if ((!paramURLDrawableHandler.isRaw) || (paramURLDrawableHandler.isApkIcon) || (i != 0)) {
@@ -629,10 +629,10 @@ public class FileAssistantDownloader
         paramDownloadParams = (Bitmap)internalDecodeFile(paramDownloadParams, paramURLDrawableHandler);
         paramFile = paramDownloadParams;
       } while (!paramURLDrawableHandler.isRound);
-      return aszt.a(this.application, paramDownloadParams, 16);
+      return auea.a(this.application, paramDownloadParams, 16);
       if (paramURLDrawableHandler.isApkIcon)
       {
-        paramFile = aszl.a(this.application, paramURLDrawableHandler.path);
+        paramFile = auds.a(this.application, paramURLDrawableHandler.path);
         if (paramFile != null) {
           paramFile = drawableToBitmap(paramFile);
         }
@@ -643,20 +643,20 @@ public class FileAssistantDownloader
         if (paramFile == null)
         {
           paramFile = BaseApplicationImpl.getContext();
-          i = aszt.a(paramURLDrawableHandler.path);
-          paramDownloadParams = drawableToBitmap(paramFile.getResources().getDrawable(aszt.a(i)));
+          i = auea.a(paramURLDrawableHandler.path);
+          paramDownloadParams = drawableToBitmap(paramFile.getResources().getDrawable(auea.a(i)));
         }
         if (paramDownloadParams != null) {
           break;
         }
         return null;
-        paramFile = drawableToBitmap(BaseApplicationImpl.getContext().getResources().getDrawable(2130844162));
+        paramFile = drawableToBitmap(BaseApplicationImpl.getContext().getResources().getDrawable(2130844229));
         continue;
         paramFile = paramFile.getThumb(paramDownloadParams.url, new FileAssistantDownloader.VideoBitmapCreator(this));
       }
       paramFile = paramDownloadParams;
     } while (!paramURLDrawableHandler.isRound);
-    return aszt.a(this.application, paramDownloadParams, 16);
+    return auea.a(this.application, paramDownloadParams, 16);
   }
   
   public File downloadImage(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)

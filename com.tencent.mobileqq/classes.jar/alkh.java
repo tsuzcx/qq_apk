@@ -1,8 +1,15 @@
-public abstract interface alkh
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/recent/guidebanner/NewerGuideBannerPreloadWebProcessConfigProcessor$Companion;", "", "()V", "CONFIG_ID", "", "TAG", "", "enablePreloadWebProcess", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class alkh
 {
-  public abstract void a();
-  
-  public abstract void b();
+  public final boolean a()
+  {
+    Object localObject = aqxe.a().a(699);
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "QConfigManager.getSingle…n().loadConObj(CONFIG_ID)");
+    return ((alki)localObject).a();
+  }
 }
 
 

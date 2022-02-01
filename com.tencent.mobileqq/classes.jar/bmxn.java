@@ -1,9 +1,27 @@
-public class bmxn
+import dov.com.qq.im.ae.camera.core.AECameraManager.CameraOpenCallback;
+
+class bmxn
+  implements AECameraManager.CameraOpenCallback
 {
-  public int a;
-  public boolean a;
-  public int b;
-  public int c;
+  bmxn(bmxa parambmxa) {}
+  
+  public void onOpenResult(int paramInt, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if (this.a.c()) {
+        bbhk.a(paramInt);
+      }
+      if (this.a.a) {
+        this.a.s();
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.a.d(false);
+  }
 }
 
 

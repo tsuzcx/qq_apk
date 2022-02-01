@@ -1,6 +1,34 @@
-public abstract interface aovj
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public class aovj
+  extends aoui
 {
-  public abstract void a(int paramInt, String paramString, Object paramObject);
+  public aouc a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoul paramaoul)
+  {
+    paramQQAppInterface = new aovg(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "qstory";
+    paramQQAppInterface.c = "opencontent";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
+    }
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
+    {
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
+    }
+    return paramQQAppInterface;
+  }
 }
 
 

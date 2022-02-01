@@ -1,20 +1,43 @@
-import android.app.Activity;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
-import mqq.app.QQPermissionCallback;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 public class bkyc
-  implements QQPermissionCallback
+  extends MqqHandler
 {
-  public bkyc(TroopHWJsPlugin paramTroopHWJsPlugin, Activity paramActivity, int paramInt) {}
+  private WeakReference<Handler.Callback> a;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public bkyc(Handler.Callback paramCallback)
   {
-    bfur.a(this.jdField_a_of_type_AndroidAppActivity, paramArrayOfString, paramArrayOfInt);
+    this.a = new WeakReference(paramCallback);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public bkyc(Looper paramLooper, Handler.Callback paramCallback)
   {
-    this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.c = TroopHWJsPlugin.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int);
+    super(paramLooper);
+    this.a = new WeakReference(paramCallback);
+  }
+  
+  public bkyc(Looper paramLooper, Handler.Callback paramCallback, boolean paramBoolean)
+  {
+    super(paramLooper, null, paramBoolean);
+    this.a = new WeakReference(paramCallback);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    Handler.Callback localCallback = (Handler.Callback)this.a.get();
+    if (localCallback != null) {
+      localCallback.handleMessage(paramMessage);
+    }
+  }
+  
+  public String toString()
+  {
+    Handler.Callback localCallback = (Handler.Callback)this.a.get();
+    return super.toString() + " " + localCallback;
   }
 }
 

@@ -1,53 +1,35 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.service.AVRedPacketConfig;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
 class mpb
-  extends lwa
+  extends Handler
 {
-  mpb(mpa parammpa) {}
+  final String jdField_a_of_type_JavaLangString;
+  WeakReference<mpa> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void a(boolean paramBoolean, AVRedPacketConfig paramAVRedPacketConfig)
+  mpb(String paramString, mpa parammpa)
   {
-    this.a.jdField_a_of_type_Mpd = new mpd();
-    this.a.jdField_a_of_type_Mpd.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig = paramAVRedPacketConfig;
-    if ((paramBoolean) && (paramAVRedPacketConfig != null) && (paramAVRedPacketConfig.mainSwitch)) {
-      this.a.jdField_a_of_type_Mpd.jdField_a_of_type_Boolean = true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.w(this.a.i, 1, "onGetAVRedPacketConfig红包配置获取结果, isSuccess[" + paramBoolean + "], config[" + paramAVRedPacketConfig + "], mMainSwitch[" + this.a.jdField_a_of_type_Mpd.jdField_a_of_type_Boolean + "], mNeedDownloadRes[" + this.a.jdField_a_of_type_Mpd.jdField_b_of_type_Boolean + "], Thread[" + Thread.currentThread().getId() + "]");
-    }
-    this.a.a(this.a.jdField_a_of_type_Mpd);
-    if ((this.a.jdField_a_of_type_Mpd.jdField_b_of_type_Boolean) && (paramAVRedPacketConfig != null))
-    {
-      if (!this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.a.jdField_a_of_type_Lvz))
-      {
-        QLog.w(this.a.i, 1, "startDownloadAVRedPacketRes, 调用失败");
-        return;
-      }
-      this.a.b(this.a.jdField_a_of_type_Mpd);
-      return;
-    }
-    this.a.b(this.a.jdField_a_of_type_Mpd);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parammpa);
   }
   
-  public void a(boolean paramBoolean, String paramString1, String paramString2)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w(this.a.i, 1, "红包资源下载结果, isSuccess[" + paramBoolean + "], resPath[" + paramString1 + "], bgMusicPath[" + paramString2 + "]");
+    mpa localmpa = (mpa)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localmpa != null) {}
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-    this.a.jdField_a_of_type_Mpd.jdField_a_of_type_JavaLangString = paramString1;
-    this.a.jdField_a_of_type_Mpd.jdField_b_of_type_JavaLangString = paramString2;
-    this.a.jdField_a_of_type_Mpd.c = paramBoolean;
-    if (paramBoolean) {
-      mqa.a(paramString1);
-    }
-    this.a.b(this.a.jdField_a_of_type_Mpd);
+    mpa.a(localmpa);
+    lbd.f(this.jdField_a_of_type_JavaLangString, "ITEM_DISPEAR");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mpb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,15 @@
-import android.graphics.Bitmap;
+import com.tencent.common.app.AppInterface;
 
-public class bnoe
+class bnoe
+  extends bnju
 {
-  public int a;
-  public long a = -1L;
-  public Bitmap a;
-  public String a;
+  bnoe(bnoc parambnoc, AppInterface paramAppInterface) {}
+  
+  public void onUpdateTextValid(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    bnoc.a(this.jdField_a_of_type_Bnoc).a(paramBoolean1, paramBoolean2);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this);
+  }
 }
 
 

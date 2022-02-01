@@ -1,28 +1,27 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 class bngu
-  extends AnimatorListenerAdapter
+  implements View.OnClickListener
 {
-  bngu(bngq parambngq) {}
+  bngu(bngt parambngt, int paramInt) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    xvv.b(bngn.a, "scaleAnimator cancel!");
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    xvv.b(bngn.a, "scaleAnimator end!");
-    this.a.w = 1.0F;
-    this.a.j = false;
-    this.a.a.k();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    xvv.b(bngn.a, "scaleAnimator start!");
-    this.a.j = true;
+    bngt.a(this.jdField_a_of_type_Bngt, (bngw)this.jdField_a_of_type_Bngt.a.get(this.jdField_a_of_type_Int));
+    String str = "";
+    if (bngt.a(this.jdField_a_of_type_Bngt) != null) {
+      str = bngt.a(this.jdField_a_of_type_Bngt).a;
+    }
+    if (bngt.a(this.jdField_a_of_type_Bngt) == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bngt.a(this.jdField_a_of_type_Bngt).a(str);
+    }
   }
 }
 

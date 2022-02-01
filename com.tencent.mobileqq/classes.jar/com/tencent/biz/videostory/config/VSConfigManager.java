@@ -1,13 +1,13 @@
 package com.tencent.biz.videostory.config;
 
 import NS_QQ_STORY_CONFIG.CONFIG.StIntConf;
-import amtj;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bmbx;
+import anvx;
+import bnrh;
 import com.tencent.biz.richframework.network.VSNetworkHelper;
 import com.tencent.biz.richframework.network.request.GetStoryConfigRequest;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -75,7 +75,7 @@ public class VSConfigManager
   public static final String SUBSCRIBE_ACCOUNT_PUBLISH_ENTRANCE_SWITCH_DEFVALUE = "1";
   public static final String SUBSCRIBE_ACCOUNT_PUBLISH_ENTRANCE_SWITCH_OPEN = "1";
   public static final String SUBSCRIBE_ACCOUNT_TITLE = "subscribe_account_title";
-  public static final String SUBSCRIBE_ACCOUNT_TITLE_DEFVALUE = amtj.a(2131715881);
+  public static final String SUBSCRIBE_ACCOUNT_TITLE_DEFVALUE = anvx.a(2131716229);
   private static final String TAG = "Q.videostory.config.VSConfigManager";
   public static final String VS_HEALTH_IS_REDIRECT_AIO_TO_MAIN_PAGE = "is_redirect_aio_to_main_page";
   public static final String VS_HEALTH_MAIN_PAGE_JUMP_URL = "main_page_jump_url";
@@ -301,7 +301,7 @@ public class VSConfigManager
     for (;;)
     {
       QLog.i("Q.videostory.config.VSConfigManager", 2, "set value into map success :  K:" + paramString + ", V : " + paramV);
-      bmbx.b("Q.videostory.config.VSConfigManager", "set value into map success :  K:" + paramString + ", V : " + paramV);
+      bnrh.b("Q.videostory.config.VSConfigManager", "set value into map success :  K:" + paramString + ", V : " + paramV);
       setValueIntoSP(paramString, paramV);
       return;
       if (paramV.getClass() == Long.class)

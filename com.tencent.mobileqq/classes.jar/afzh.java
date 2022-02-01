@@ -1,27 +1,18 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.style.ClickableSpan;
+import android.app.Activity;
 import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity.ConfessBrowserFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class afzh
-  extends ClickableSpan
+  implements View.OnClickListener
 {
-  afzh(afzd paramafzd) {}
+  afzh(afzg paramafzg) {}
   
   public void onClick(View paramView)
   {
-    if (!NetworkUtil.isNetSupport(this.a.a))
-    {
-      QQToast.a(this.a.a, amtj.a(2131702358), 2000).a();
-      return;
-    }
-    paramView = new Intent(this.a.a, QQBrowserActivity.class);
-    paramView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140617UV3MZn.html?ADTAG=veda.mobileqq.en");
-    paramView.putExtra("hide_more_button", true);
-    this.a.a.startActivity(paramView);
+    this.a.a.getHostActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

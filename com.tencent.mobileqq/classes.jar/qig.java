@@ -1,32 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.WeiShiVideoArticleInfo;
+import java.util.Comparator;
 
 class qig
-  implements pwy
+  implements Comparator<WeiShiVideoArticleInfo>
 {
-  qig(qid paramqid, RecommendFollowInfo paramRecommendFollowInfo) {}
+  qig(qif paramqif) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public int a(WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo1, WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo2)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "978 resp, result : " + paramBoolean + ", data : " + paramInt + ", distUin : " + paramString);
+    if (paramWeiShiVideoArticleInfo1.recommendSeq == paramWeiShiVideoArticleInfo2.recommendSeq) {
+      return 0;
     }
-    if (paramBoolean)
-    {
-      paramString = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
-      if (paramInt == 2) {}
-      for (paramBoolean = bool;; paramBoolean = false)
-      {
-        paramString.isFollowed = paramBoolean;
-        qid.a(this.jdField_a_of_type_Qid, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
-        qid.a(this.jdField_a_of_type_Qid).notifyDataSetChanged();
-        return;
-      }
+    if (paramWeiShiVideoArticleInfo1.recommendSeq > paramWeiShiVideoArticleInfo2.recommendSeq) {
+      return -1;
     }
-    QQToast.a(qid.a(this.jdField_a_of_type_Qid).getContext(), 1, 2131717436, 0).a();
+    return 1;
   }
 }
 

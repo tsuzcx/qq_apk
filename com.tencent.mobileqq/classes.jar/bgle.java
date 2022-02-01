@@ -1,22 +1,55 @@
-import android.graphics.Canvas;
-import android.view.SurfaceHolder;
-
 public class bgle
-  extends bgld
 {
-  public bgle(SurfaceHolder paramSurfaceHolder)
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  
+  public static bgle a()
   {
-    super(paramSurfaceHolder);
+    return new bgle();
   }
   
-  Canvas a(SurfaceHolder paramSurfaceHolder)
+  public bgle a(String paramString)
   {
-    return paramSurfaceHolder.lockCanvas();
+    this.a = paramString;
+    return this;
   }
   
-  public boolean a()
+  public bgle b(String paramString)
   {
-    return false;
+    this.b = paramString;
+    return this;
+  }
+  
+  public bgle c(String paramString)
+  {
+    this.c = paramString;
+    return this;
+  }
+  
+  public bgle d(String paramString)
+  {
+    this.d = paramString;
+    return this;
+  }
+  
+  public bgle e(String paramString)
+  {
+    this.e = paramString;
+    return this;
+  }
+  
+  public bgle f(String paramString)
+  {
+    this.j = paramString;
+    return this;
   }
 }
 

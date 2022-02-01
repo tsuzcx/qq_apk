@@ -1,16 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchResultItem;
 
-class aiul
-  implements DialogInterface.OnClickListener
+public final class aiul
+  implements Parcelable.Creator<SearchResultItem>
 {
-  aiul(aitt paramaitt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public SearchResultItem a(Parcel paramParcel)
   {
-    if (paramInt == 0) {
-      aitt.a(this.a);
-    }
+    return new SearchResultItem(paramParcel);
+  }
+  
+  public SearchResultItem[] a(int paramInt)
+  {
+    return new SearchResultItem[paramInt];
   }
 }
 

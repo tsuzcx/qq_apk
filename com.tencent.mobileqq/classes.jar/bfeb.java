@@ -1,24 +1,34 @@
-import com.tencent.mobileqq.activity.photo.TroopClipPic;
-import com.tencent.mobileqq.troop.utils.TroopUploadingThread;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
 
 public class bfeb
-  extends bfeh
+  implements View.OnFocusChangeListener
 {
-  public void a(Class<? extends Thread> paramClass, ArrayList<TroopClipPic> paramArrayList, HashMap<String, String> paramHashMap, List<String> paramList)
+  public bfeb(NewTroopContactView paramNewTroopContactView) {}
+  
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if ((this.a == null) || (this.a.getState() == Thread.State.TERMINATED)) {
-      this.a = ((TroopUploadingThread)bfeg.a(paramClass));
-    }
-    if (this.a == null) {}
-    do
+    if (paramBoolean)
     {
-      return;
-      this.a.a(paramArrayList, paramHashMap, paramList, this);
-    } while (this.a.isAlive());
-    this.a.start();
+      paramView = this.a.a();
+      if (paramView != null)
+      {
+        paramView.d(true);
+        paramView.a(NewTroopContactView.a(this.a), this.a.jdField_a_of_type_JavaUtilArrayList);
+        FragmentTransaction localFragmentTransaction = this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopCreateActivity.getSupportFragmentManager().beginTransaction();
+        if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
+          localFragmentTransaction.remove(this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment);
+        }
+        localFragmentTransaction.add(2131376602, paramView);
+        localFragmentTransaction.commitAllowingStateLoss();
+        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment = paramView;
+      }
+    }
   }
 }
 

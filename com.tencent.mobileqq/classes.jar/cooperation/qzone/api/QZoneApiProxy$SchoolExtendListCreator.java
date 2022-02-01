@@ -1,12 +1,12 @@
 package cooperation.qzone.api;
 
-import adxq;
+import aeov;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 
 class QZoneApiProxy$SchoolExtendListCreator
-  implements adxq
+  implements aeov
 {
   public View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
   {

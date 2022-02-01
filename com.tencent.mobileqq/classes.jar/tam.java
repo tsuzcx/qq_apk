@@ -1,14 +1,14 @@
-import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class tam
-  extends tal
+  implements pnc
 {
-  public tam(String paramString)
-  {
-    super(-16777216, 0, 0, paramString);
-  }
+  public tam(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public void onClick(View paramView) {}
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    this.a.a(true, 2);
+  }
 }
 
 

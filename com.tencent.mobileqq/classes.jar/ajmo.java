@@ -1,10 +1,6 @@
-import android.widget.TextView;
-
-public class ajmo
+public abstract interface ajmo
 {
-  public TextView a;
-  public bfxc a;
-  public TextView b;
+  public abstract long a();
 }
 
 

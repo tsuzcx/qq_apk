@@ -1,13 +1,21 @@
-import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
 
-class rzw
-  implements slo
+public class rzw
+  extends qjt<ColumnInfo, qjl<ColumnInfo>>
 {
-  rzw(rzv paramrzv) {}
-  
-  public void a(View paramView)
+  public rzw(rzu paramrzu)
   {
-    paramView.setTag(new rvq(paramView, 6));
+    super(paramrzu);
+  }
+  
+  public void a()
+  {
+    super.a();
+  }
+  
+  public void a(qjl<ColumnInfo> paramqjl)
+  {
+    super.a(paramqjl);
   }
 }
 

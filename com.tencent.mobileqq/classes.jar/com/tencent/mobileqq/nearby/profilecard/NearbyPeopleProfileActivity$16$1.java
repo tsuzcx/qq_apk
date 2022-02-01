@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import awxs;
-import awye;
+import aydx;
+import ayej;
 import com.tencent.qphone.base.util.QLog;
 
 public class NearbyPeopleProfileActivity$16$1
   implements Runnable
 {
-  public NearbyPeopleProfileActivity$16$1(awxs paramawxs, String paramString, boolean paramBoolean) {}
+  public NearbyPeopleProfileActivity$16$1(aydx paramaydx, String paramString, boolean paramBoolean) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Awxs.a.e == 1) {}
+    if (this.jdField_a_of_type_Aydx.a.e == 1) {}
     do
     {
       return;
-      if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Awxs.a) != null)
+      if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Aydx.a) != null)
       {
-        NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Awxs.a).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+        NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Aydx.a).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
         return;
       }
     } while (!QLog.isColorLevel());

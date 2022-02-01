@@ -1,21 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
 
-class ozt
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class ozt
   implements ViewBase.OnClickListener
 {
-  ozt(ozq paramozq, ViewBase paramViewBase) {}
+  ozt(pdp parampdp, Container paramContainer) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public final void onClick(ViewBase paramViewBase)
   {
-    if (this.jdField_a_of_type_Ozq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean != null)
+    if (this.jdField_a_of_type_Pdp.a == null) {}
+    do
     {
-      ozp.a(this.jdField_a_of_type_Ozq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.findViewById(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getName()));
-      ozp.a(this.jdField_a_of_type_Ozq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase);
-    }
-    pay.d(this.jdField_a_of_type_Ozq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getEventAttachedData());
+      return;
+      paramViewBase = this.jdField_a_of_type_Pdp.a.medalInfo;
+    } while ((paramViewBase == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer == null));
+    pnp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
   }
 }
 

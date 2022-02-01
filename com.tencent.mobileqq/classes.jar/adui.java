@@ -1,24 +1,20 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DialogActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.TransFileController;
 
 public class adui
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public adui(NotifyPushSettingActivity paramNotifyPushSettingActivity, amov paramamov) {}
+  public adui(DialogActivity paramDialogActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.a, this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.getString(2131716377), "qqsetting_special_care_bar", paramBoolean);
-    this.jdField_a_of_type_Amov.c(paramBoolean);
-    bjnm.a(paramBoolean);
-    if (QLog.isColorLevel()) {
-      QLog.i("IphoneTitleBarActivity", 2, "onCheckedChanged: invoked. care bar  isChecked: " + paramBoolean);
-    }
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    paramDialogInterface = this.a.app.getTransFileController();
+    paramDialogInterface.resumeLastRawSend();
+    paramDialogInterface.resumeLastShortVideoTransfer();
+    this.a.finish();
   }
 }
 

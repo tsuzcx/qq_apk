@@ -15,6 +15,7 @@ import com.tencent.qapmsdk.resource.meta.SingleItem;
 import com.tencent.qapmsdk.resource.meta.TagItem;
 import java.util.Iterator;
 import java.util.Vector;
+import java.util.concurrent.atomic.AtomicBoolean;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -68,7 +69,7 @@ public class b
       {
         localJSONObject1 = JsonDispose.copyJson(BaseInfo.pubJson, localJSONObject1);
         localJSONObject1.put("zone", "default");
-        localJSONObject1.put("plugin", PluginCombination.resourcePlugin.plugin);
+        localJSONObject1.put("plugin", PluginCombination.startUpPlugin.plugin);
         Object localObject2 = new JSONArray();
         localJSONArray = new JSONArray();
         localJSONObject1.put("immediates", localObject2);
@@ -128,15 +129,18 @@ public class b
         while (((Iterator)localObject1).hasNext())
         {
           Object localObject2 = (SingleItem)((Iterator)localObject1).next();
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("stage", ((SingleItem)localObject2).stage);
-          localJSONObject.put("event_time", ((SingleItem)localObject2).eventTime);
-          localJSONObject.put("cost_time", ((SingleItem)localObject2).costTime);
-          localJSONObject.put("stack", "");
-          localJSONObject.put("plugin", PluginCombination.loopStackPlugin.plugin);
-          localJSONObject.put("extra_data", ((SingleItem)localObject2).extraData);
-          localObject2 = new ResultObject(0, "Scenes single", true, 1L, 1L, localJSONObject, true, false, BaseInfo.userMeta.uin);
-          ReporterMachine.INSTANCE.addResultObj((ResultObject)localObject2, null, false);
+          if (((SingleItem)localObject2).costTime >= PluginCombination.startUpPlugin.threshold)
+          {
+            JSONObject localJSONObject = new JSONObject();
+            localJSONObject.put("stage", ((SingleItem)localObject2).stage);
+            localJSONObject.put("event_time", ((SingleItem)localObject2).eventTime);
+            localJSONObject.put("cost_time", ((SingleItem)localObject2).costTime);
+            localJSONObject.put("stack", "");
+            localJSONObject.put("plugin", PluginCombination.loopStackPlugin.plugin);
+            localJSONObject.put("extra_data", ((SingleItem)localObject2).extraData);
+            localObject2 = new ResultObject(0, "Scenes single", true, 1L, 1L, localJSONObject, true, false, BaseInfo.userMeta.uin);
+            ReporterMachine.INSTANCE.addResultObj((ResultObject)localObject2, null, false);
+          }
         }
         return;
       }
@@ -149,6 +153,7 @@ public class b
   
   public void run()
   {
+    com.tencent.qapmsdk.impl.g.b.e.set(true);
     b();
     c();
     a.a = false;

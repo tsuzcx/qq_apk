@@ -1,12 +1,22 @@
-class azgz
-  implements azfy
+public final class azgz
 {
-  azgz(azgy paramazgy) {}
+  public int a;
+  public String a;
+  public int b;
   
-  public void b()
+  public azgz(int paramInt1, int paramInt2, String paramString)
   {
-    this.a.a = 4;
-    this.a.dismiss();
+    this.jdField_a_of_type_Int = 100;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public azgz(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Int = 100;
+    this.b = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

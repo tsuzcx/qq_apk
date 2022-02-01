@@ -1,18 +1,24 @@
-import com.tencent.tavcut.TAVCut.Callback;
-import dov.com.qq.im.aeeditor.AEEditorActivity;
-import java.util.List;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqindividuality.QQIndividualityBridgeActivity;
 
 public class bmcr
-  implements TAVCut.Callback
+  extends bmdh
 {
-  public bmcr(AEEditorActivity paramAEEditorActivity) {}
-  
-  public void onDone(int paramInt)
+  public bmcr(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity, Context paramContext)
   {
-    bmbx.b("AEEditorActivity", "TAVCut init ret code = " + paramInt);
-    if (paramInt != 0) {
-      AEEditorActivity.a(this.a).add(new bmcs(this.a, -8));
+    super(paramContext);
+  }
+  
+  public void onBackPressed()
+  {
+    if (this.a.a) {
+      super.onBackPressed();
     }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("IphoneTitleBarActivity", 2, "tool process has started, cancel by the tool");
   }
 }
 

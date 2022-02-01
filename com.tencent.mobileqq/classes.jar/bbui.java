@@ -1,20 +1,16 @@
-import android.os.Handler;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraExceptionHandler.1;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
 
 public class bbui
+  implements View.OnTouchListener
 {
-  public Handler a;
-  public bbuj a;
+  public bbui(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public bbui(Handler paramHandler, bbuj parambbuj)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_Bbuj = parambbuj;
-  }
-  
-  public void a(RuntimeException paramRuntimeException)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraExceptionHandler.1(this, paramRuntimeException));
+    return SignatureHistoryFragment.a(this.a, paramView, false);
   }
 }
 

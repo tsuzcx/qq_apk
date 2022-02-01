@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo;
 
-import alot;
+import amnk;
 
 public class ApolloRender$13$1
   extends IApolloRunnableTask
 {
-  public ApolloRender$13$1(alot paramalot, int paramInt1, int paramInt2) {}
+  public ApolloRender$13$1(amnk paramamnk, int paramInt1, int paramInt2) {}
   
   public String a()
   {

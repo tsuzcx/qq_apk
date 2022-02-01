@@ -20,7 +20,7 @@ import android.view.ViewParent;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.Adapter;
-import bjun;
+import blfz;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.VersionUtils;
 import java.lang.reflect.Field;
@@ -149,7 +149,7 @@ public abstract class AdapterView<T extends Adapter>
   
   public static void traceBegin(String paramString)
   {
-    bjun.a(paramString);
+    blfz.a(paramString);
   }
   
   public static void traceEnd() {}

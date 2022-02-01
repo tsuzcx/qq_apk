@@ -1,0 +1,31 @@
+package com.tencent.av.wtogether.media;
+
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
+import myk;
+
+class WatchTogetherMediaPlayCtrl$7
+  implements Runnable
+{
+  WatchTogetherMediaPlayCtrl$7(WatchTogetherMediaPlayCtrl paramWatchTogetherMediaPlayCtrl) {}
+  
+  public void run()
+  {
+    WatchTogetherMediaPlayCtrl.a(this.this$0, true);
+    Iterator localIterator = WatchTogetherMediaPlayCtrl.a(this.this$0).iterator();
+    while (localIterator.hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)localIterator.next();
+      if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+        ((myk)localWeakReference.get()).e();
+      }
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+ * Qualified Name:     com.tencent.av.wtogether.media.WatchTogetherMediaPlayCtrl.7
+ * JD-Core Version:    0.7.0.1
+ */

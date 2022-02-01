@@ -1,47 +1,20 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URLDecoder;
+import com.tencent.mobileqq.app.FrameFragment;
+import com.tencent.mobileqq.widget.QQTabHost;
 
 public class anup
-  extends anri
+  implements bisp
 {
-  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
+  public anup(FrameFragment paramFrameFragment) {}
+  
+  public void a(int paramInt1, int paramInt2, QQTabHost paramQQTabHost)
   {
-    paramQQAppInterface = new anuo(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "wsgzh";
-    paramQQAppInterface.c = "miniapp_player";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
-    }
-    paramContext = paramContext[1].split("&");
-    int i = 0;
-    for (;;)
+    if (paramInt1 == paramInt2)
     {
-      if (i < paramContext.length)
-      {
-        paramString = paramContext[i].split("=");
-        if (paramString.length == 2) {}
-        try
-        {
-          paramString[1] = URLDecoder.decode(paramString[1], "UTF-8");
-          paramQQAppInterface.a(paramString[0], paramString[1]);
-          i += 1;
-        }
-        catch (Exception paramanrl)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("WeishiPublicAccountVideoParser", 2, "failed to decode param value,tmps[1] is:" + paramString[0] + ",tmps[1] is:" + paramString[1], paramanrl);
-            }
-          }
-        }
+      paramQQTabHost = this.a.b();
+      if (paramQQTabHost != null) {
+        paramQQTabHost.aa_();
       }
     }
-    return paramQQAppInterface;
   }
 }
 

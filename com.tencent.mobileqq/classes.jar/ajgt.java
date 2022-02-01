@@ -1,18 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class ajgt
-  implements View.OnClickListener
+final class ajgt
+  implements DialogInterface.OnClickListener
 {
-  ajgt(ajgq paramajgq) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a = null;
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

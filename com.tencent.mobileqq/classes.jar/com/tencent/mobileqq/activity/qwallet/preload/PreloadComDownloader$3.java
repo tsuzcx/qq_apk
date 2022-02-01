@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
-import akaw;
+import akwp;
 import android.os.Bundle;
-import bgod;
-import bgoe;
-import bgoj;
+import bhyn;
+import bhyo;
+import bhyt;
 import com.tencent.util.Pair;
 import java.io.File;
 import java.util.Iterator;
@@ -13,12 +13,12 @@ import java.util.List;
 public class PreloadComDownloader$3
   implements Runnable
 {
-  public PreloadComDownloader$3(akaw paramakaw, DownloadParam paramDownloadParam, bgod parambgod, Bundle paramBundle) {}
+  public PreloadComDownloader$3(akwp paramakwp, DownloadParam paramDownloadParam, bhyn parambhyn, Bundle paramBundle) {}
   
   public void run()
   {
-    bgoe localbgoe = new bgoe(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.url, new File(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.filePath));
-    localbgoe.f = "QwalletPreload";
+    bhyo localbhyo = new bhyo(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.url, new File(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.filePath));
+    localbhyo.f = "QwalletPreload";
     if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.headers != null)
     {
       Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.headers.iterator();
@@ -26,12 +26,12 @@ public class PreloadComDownloader$3
       {
         Pair localPair = (Pair)localIterator.next();
         if (localPair != null) {
-          localbgoe.a((String)localPair.first, (String)localPair.second);
+          localbhyo.a((String)localPair.first, (String)localPair.second);
         }
       }
     }
-    if (akaw.a(this.this$0) != null) {
-      akaw.a(this.this$0).a(localbgoe, this.jdField_a_of_type_Bgod, this.jdField_a_of_type_AndroidOsBundle);
+    if (akwp.a(this.this$0) != null) {
+      akwp.a(this.this$0).a(localbhyo, this.jdField_a_of_type_Bhyn, this.jdField_a_of_type_AndroidOsBundle);
     }
   }
 }

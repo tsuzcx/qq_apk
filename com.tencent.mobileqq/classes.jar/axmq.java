@@ -1,22 +1,33 @@
-import android.hardware.Camera.Size;
-import java.util.Comparator;
+import org.json.JSONObject;
 
-class axmq
-  implements Comparator<Camera.Size>
+public class axmq
 {
-  axmq(axmo paramaxmo) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public int a(Camera.Size paramSize1, Camera.Size paramSize2)
+  public static axmq a(JSONObject paramJSONObject)
   {
-    int i = paramSize1.height * paramSize1.width;
-    int j = paramSize2.height * paramSize2.width;
-    if (j < i) {
-      return 1;
+    if (paramJSONObject == null) {
+      return null;
     }
-    if (j > i) {
-      return -1;
-    }
-    return 0;
+    axmq localaxmq = new axmq();
+    localaxmq.a = paramJSONObject.optString("name");
+    localaxmq.b = new String(bhcu.decode(paramJSONObject.optString("iconUrl"), 0));
+    localaxmq.c = paramJSONObject.optString("accessibilityText");
+    localaxmq.d = paramJSONObject.optString("ruleWording");
+    return localaxmq;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("name=").append(this.a).append("|");
+    localStringBuilder.append("iconUrl=").append(this.b).append("|");
+    localStringBuilder.append("accessibilityText=").append(this.c).append("|");
+    localStringBuilder.append("ruleWording=").append(this.d).append("|");
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bfaa;
+import bgig;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.TableBuilder;
@@ -13,7 +13,7 @@ import java.util.List;
 public class TroopAppMgr$3
   implements Runnable
 {
-  public TroopAppMgr$3(bfaa parambfaa, ArrayList paramArrayList, EntityManager paramEntityManager, int paramInt) {}
+  public TroopAppMgr$3(bgig parambgig, ArrayList paramArrayList, EntityManager paramEntityManager, int paramInt) {}
   
   public void run()
   {

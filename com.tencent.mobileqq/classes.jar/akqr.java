@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.activity.qwallet.PreloadImgManager.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class akqr
-  implements DialogInterface.OnClickListener
+  extends bhyn
 {
-  public akqr(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  akqr(akqq paramakqq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDone(bhyo parambhyo)
   {
-    this.a.finish();
+    super.onDone(parambhyo);
+    ThreadManager.getFileThreadHandler().post(new PreloadImgManager.1.1(this, parambhyo));
   }
 }
 

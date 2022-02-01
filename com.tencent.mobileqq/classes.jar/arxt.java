@@ -1,25 +1,19 @@
-import android.widget.CheckBox;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.widget.CircleFileStateView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.dating.DatingFilters;
 
-public class arxt
-  implements Cloneable
+public final class arxt
+  implements Parcelable.Creator<DatingFilters>
 {
-  public int a;
-  public CheckBox a;
-  public RelativeLayout a;
-  public TextView a;
-  public AsyncImageView a;
-  public CircleFileStateView a;
-  public Object a;
-  public int b;
-  public TextView b;
-  public int c;
-  public TextView c;
+  public DatingFilters a(Parcel paramParcel)
+  {
+    return new DatingFilters(paramParcel, null);
+  }
   
-  public arxt(arxs paramarxs) {}
+  public DatingFilters[] a(int paramInt)
+  {
+    return new DatingFilters[paramInt];
+  }
 }
 
 

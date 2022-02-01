@@ -1,20 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.util.HeadRequest;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
 
-public final class bfqn
-  implements Parcelable.Creator<HeadRequest>
+public class bfqn
+  implements bkzu
 {
-  public HeadRequest a(Parcel paramParcel)
-  {
-    HeadRequest localHeadRequest = new HeadRequest();
-    localHeadRequest.a(paramParcel);
-    return localHeadRequest;
-  }
+  public bfqn(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public HeadRequest[] a(int paramInt)
+  public void ad_()
   {
-    return new HeadRequest[paramInt];
+    this.a.a.a();
+    this.a.n();
   }
 }
 

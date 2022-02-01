@@ -1,36 +1,153 @@
-import android.app.Application;
-import android.arch.lifecycle.LifecycleOwner;
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelProvider.AndroidViewModelFactory;
-import android.arch.lifecycle.ViewModelProvider.Factory;
-import android.arch.lifecycle.ViewModelStoreOwner;
-import com.tencent.common.app.BaseApplicationImpl;
-import kotlin.Metadata;
-import kotlin.Unit;
-import kotlin.jvm.functions.Function1;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.text.TextUtils;
+import com.tencent.mobileqq.listentogether.ListenTogetherSession;
+import com.tencent.mobileqq.listentogether.data.ISong;
+import com.tencent.mobileqq.listentogether.data.MusicInfo;
+import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"ofViewModelProvider", "Landroid/arch/lifecycle/ViewModelProvider;", "owner", "Landroid/arch/lifecycle/ViewModelStoreOwner;", "observe", "", "T", "Landroid/arch/lifecycle/LifecycleOwner;", "liveData", "Landroid/arch/lifecycle/LiveData;", "observer", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "t", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
-public final class awhc
+class awhc
+  extends awfk
 {
-  @NotNull
-  public static final ViewModelProvider a(@NotNull ViewModelStoreOwner paramViewModelStoreOwner)
+  awhc(awgx paramawgx) {}
+  
+  protected void a(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    Intrinsics.checkParameterIsNotNull(paramViewModelStoreOwner, "owner");
-    ViewModelProvider.AndroidViewModelFactory localAndroidViewModelFactory = ViewModelProvider.AndroidViewModelFactory.getInstance((Application)BaseApplicationImpl.getApplication());
-    Intrinsics.checkExpressionValueIsNotNull(localAndroidViewModelFactory, "ViewModelProvider.Androi…ionImpl.getApplication())");
-    return new ViewModelProvider(paramViewModelStoreOwner.getViewModelStore(), (ViewModelProvider.Factory)localAndroidViewModelFactory);
+    if (!paramBoolean1) {}
+    for (paramBoolean1 = true;; paramBoolean1 = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("LyricsController", 2, "onLyricModuleSwitchChange, newUserClosed:" + paramBoolean1 + " type:" + paramInt + " uin:" + paramString + " mFloatParams:" + this.a.jdField_a_of_type_Awgv);
+      }
+      if ((this.a.jdField_a_of_type_Awgv.a(paramInt, paramString)) && (this.a.jdField_a_of_type_Awgv.jdField_b_of_type_Boolean != paramBoolean1))
+      {
+        this.a.jdField_a_of_type_Awgv.jdField_b_of_type_Boolean = paramBoolean1;
+        awgx.a(this.a);
+        if ((!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) && (!paramBoolean1) && (paramBoolean2))
+        {
+          awgx.a(this.a, this.a.jdField_b_of_type_JavaLangString);
+          if (this.a.jdField_a_of_type_JavaLangBoolean != null) {
+            awgx.a(this.a, this.a.jdField_b_of_type_JavaLangString, this.a.c, this.a.jdField_a_of_type_JavaLangBoolean.booleanValue());
+          }
+          awgx.a(this.a, this.a.jdField_b_of_type_JavaLangString, this.a.i);
+        }
+      }
+      if (paramBoolean2) {
+        this.a.b(paramInt, paramString, paramBoolean1);
+      }
+      return;
+    }
   }
   
-  public static final <T> void a(@NotNull LifecycleOwner paramLifecycleOwner, @NotNull LiveData<T> paramLiveData, @NotNull Function1<? super T, Unit> paramFunction1)
+  protected void a(ListenTogetherSession paramListenTogetherSession)
   {
-    Intrinsics.checkParameterIsNotNull(paramLifecycleOwner, "$this$observe");
-    Intrinsics.checkParameterIsNotNull(paramLiveData, "liveData");
-    Intrinsics.checkParameterIsNotNull(paramFunction1, "observer");
-    paramLiveData.observe(paramLifecycleOwner, (Observer)new awhd(paramFunction1));
+    if (paramListenTogetherSession == null) {
+      return;
+    }
+    if (paramListenTogetherSession.i == 2) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("LyricsController", 2, "onUIModuleNeedRefresh sessionJoined:" + bool);
+      }
+      if (!bool) {
+        break;
+      }
+      Object localObject2 = null;
+      Object localObject1 = localObject2;
+      if (paramListenTogetherSession != null)
+      {
+        MusicInfo localMusicInfo = paramListenTogetherSession.a();
+        localObject1 = localObject2;
+        if (localMusicInfo != null) {
+          localObject1 = localMusicInfo.e;
+        }
+      }
+      this.a.jdField_a_of_type_Awgv.a = ((String)localObject1);
+      this.a.jdField_a_of_type_Awgv.g = paramListenTogetherSession.d;
+      this.a.l();
+      awgx.a(this.a);
+      return;
+    }
+  }
+  
+  protected void a(ISong paramISong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LyricsController", 2, "onPlayMusicChange song.id:" + paramISong.a());
+    }
+    awgx.a(this.a, paramISong.a());
+    this.a.jdField_a_of_type_Awgv.a = paramISong.d();
+    awgx.a(this.a);
+  }
+  
+  protected void a(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LyricsController", 2, "onPlayStateChange state:" + paramInt);
+    }
+    if (paramInt == 2) {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.setPlayState(true);
+      }
+    }
+    for (;;)
+    {
+      awgx.b(this.a, paramString, paramInt);
+      behx.a().a();
+      return;
+      if (paramInt == 3)
+      {
+        if (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout != null) {
+          this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.setPlayState(false);
+        }
+      }
+      else if ((paramInt == 4) && (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout != null)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.setPlayState(false);
+      }
+    }
+  }
+  
+  protected void a(String paramString, int paramInt1, int paramInt2)
+  {
+    awgx.a(this.a, paramString, paramInt1, paramInt2);
+  }
+  
+  protected void a(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    this.a.a(paramString1, paramString2, paramBoolean);
+  }
+  
+  protected void a(boolean paramBoolean, ListenTogetherSession paramListenTogetherSession)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LyricsController", 2, "onFloatNeedShowOrDismiss show:" + paramBoolean + " session:" + paramListenTogetherSession);
+    }
+    if (paramListenTogetherSession == null) {
+      return;
+    }
+    int i = paramListenTogetherSession.f;
+    String str2 = paramListenTogetherSession.e;
+    if (paramBoolean)
+    {
+      String str1 = null;
+      MusicInfo localMusicInfo = paramListenTogetherSession.a();
+      if (localMusicInfo != null) {
+        str1 = localMusicInfo.e;
+      }
+      this.a.jdField_a_of_type_Awgv.a = str1;
+      this.a.jdField_a_of_type_Awgv.g = paramListenTogetherSession.d;
+      this.a.l();
+      this.a.a(i, str2);
+      return;
+    }
+    this.a.b(i, str2);
+  }
+  
+  protected void d()
+  {
+    if ((this.a.jdField_b_of_type_Boolean) && (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.e();
+    }
   }
 }
 

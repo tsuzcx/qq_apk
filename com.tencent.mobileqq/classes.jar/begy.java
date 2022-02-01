@@ -1,8 +1,18 @@
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileScanTask;
+import android.graphics.Paint;
+import android.support.annotation.NonNull;
 
-public abstract interface begy
+class begy
+  extends behc
 {
-  public abstract void a(long paramLong, boolean paramBoolean, int paramInt, TroopFileScanTask paramTroopFileScanTask);
+  begy(@NonNull String paramString)
+  {
+    super(0, paramString);
+  }
+  
+  float a(@NonNull Paint paramPaint)
+  {
+    return paramPaint.measureText(a());
+  }
 }
 
 

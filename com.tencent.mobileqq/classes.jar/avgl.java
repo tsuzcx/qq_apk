@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class avgl
-  implements DialogInterface.OnDismissListener
+public class avgl
+  implements akxc
 {
-  avgl(avgk paramavgk) {}
+  public avgl(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    this.a.a.finish();
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath))) {
+      QLog.d("GameWebPage", 1, "loading apng download succ!");
+    }
   }
 }
 

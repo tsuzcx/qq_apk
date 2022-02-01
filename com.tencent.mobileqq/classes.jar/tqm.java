@@ -1,20 +1,39 @@
-import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.AdDownloadProxy.1;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.AdDownloadProxy.1.1;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
 
-public class tqm
-  implements tye
+class tqm
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public tqm(AdDownloadProxy.1.1 param1) {}
+  private final int jdField_a_of_type_Int;
+  private final int b;
   
-  public void a()
+  tqm(tql paramtql, int paramInt1, int paramInt2)
   {
-    this.a.a.this$0.a(true, true);
-    tqj.b(this.a.a.this$0.a, 1, tql.a(this.a.a.this$0));
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public boolean onPreDraw()
+  {
+    this.jdField_a_of_type_Tql.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tql.a, ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tql.a) + tql.a(this.jdField_a_of_type_Tql));
+    ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_Tql.a, ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_Tql.a) + tql.b(this.jdField_a_of_type_Tql));
+    if (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tql.a) != null) {
+      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tql.a).setVisibility(0);
+    }
+    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tql.a, this.jdField_a_of_type_Tql.a.a(ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tql.a)));
+    if (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tql.a) != null) {
+      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tql.a).setVisibility(4);
+    }
+    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tql.a, this.jdField_a_of_type_Int, this.b);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tqm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,72 +1,95 @@
+import android.graphics.Rect;
+import android.os.Build.VERSION;
 import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public class zwi
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private int a;
+  private int jdField_a_of_type_Int;
+  private final View jdField_a_of_type_AndroidViewView;
+  private final List<zwj> jdField_a_of_type_JavaUtilList = new LinkedList();
+  private boolean jdField_a_of_type_Boolean;
   private int b;
   
-  public zwi(int paramInt1, int paramInt2)
+  public zwi(View paramView)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    this(paramView, false);
   }
   
-  public static zwi a(int paramInt)
+  public zwi(View paramView, boolean paramBoolean)
   {
-    switch (paramInt)
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    paramView.getViewTreeObserver().addOnGlobalLayoutListener(this);
+  }
+  
+  private void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-    default: 
-      return new zwi(0, -1);
-    case 0: 
-      return new zwi(0, 0);
-    case 1: 
-      return new zwi(0, -1);
-    }
-    return new zwi(0, -2);
-  }
-  
-  public static zwi b(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 2: 
-    default: 
-      return new zwi(1, -1);
-    case 3: 
-      return new zwi(1, 0);
-    case 1: 
-      return new zwi(1, -1);
-    }
-    return new zwi(1, -2);
-  }
-  
-  public void a(View paramView)
-  {
-    if (this.a == 0) {
-      switch (this.b)
-      {
-      default: 
-        paramView.setPivotX(this.b);
+      zwj localzwj = (zwj)localIterator.next();
+      if (localzwj != null) {
+        localzwj.a(paramInt);
       }
     }
-    while (this.a != 1)
+  }
+  
+  private void b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      return;
-      paramView.setPivotX(paramView.getWidth() * 0.5F);
-      return;
-      paramView.setPivotX(paramView.getWidth());
+      zwj localzwj = (zwj)localIterator.next();
+      if (localzwj != null) {
+        localzwj.a();
+      }
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if (Build.VERSION.SDK_INT < 16)
+    {
+      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
       return;
     }
-    switch (this.b)
-    {
-    default: 
-      paramView.setPivotY(this.b);
-      return;
-    case -1: 
-      paramView.setPivotY(paramView.getHeight() * 0.5F);
-      return;
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+  }
+  
+  public void a(zwj paramzwj)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(paramzwj);
+  }
+  
+  public void onGlobalLayout()
+  {
+    Rect localRect = new Rect();
+    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
+    int i = localRect.height();
+    if (this.b == 0) {
+      this.b = i;
     }
-    paramView.setPivotY(paramView.getHeight());
+    do
+    {
+      return;
+      i = this.b - i;
+      if ((!this.jdField_a_of_type_Boolean) && (i >= 250))
+      {
+        this.jdField_a_of_type_Boolean = true;
+        a(i);
+        return;
+      }
+    } while ((!this.jdField_a_of_type_Boolean) || (i >= 100));
+    this.jdField_a_of_type_Boolean = false;
+    b();
   }
 }
 

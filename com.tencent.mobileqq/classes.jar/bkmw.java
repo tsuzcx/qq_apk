@@ -1,32 +1,38 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import cooperation.qlink.QlAndQQInterface.WorkState;
-import java.util.ArrayList;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import com.tencent.mobileqq.mini.manager.MiniLoadingAdManager.CachedAdInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.proxyimpl.AdProxyImpl;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.ILoadingAdListener;
 
-class bkmw
-  implements DialogInterface.OnClickListener
+public class bkmw
+  implements Downloader.DownloadListener
 {
-  bkmw(bkmt parambkmt, ArrayList paramArrayList, Activity paramActivity, int paramInt, boolean paramBoolean) {}
+  public bkmw(AdProxyImpl paramAdProxyImpl, AdProxy.ILoadingAdListener paramILoadingAdListener, String paramString, long paramLong, MiniLoadingAdManager.CachedAdInfo paramCachedAdInfo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDownloadCanceled(String paramString)
   {
-    this.jdField_a_of_type_Bkmt.a("0X8004855", 1);
-    this.jdField_a_of_type_Bkmt.a(bkmt.a(this.jdField_a_of_type_Bkmt).mPeerUin, this.jdField_a_of_type_JavaUtilArrayList);
-    Bundle localBundle = new Bundle();
-    localBundle.putStringArrayList("string_filepaths", this.jdField_a_of_type_JavaUtilArrayList);
-    localBundle.putBoolean("STRING_CONTINUE_SEND_TO_", true);
-    bkmt.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, localBundle);
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-    }
+    QLog.d("MiniLoadingAdManager", 1, "processSelectAdWithUncachedAd download url= " + paramString + " canceled");
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener.onDownloadAdEnd(null, -1L, null);
+  }
+  
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  {
+    QLog.d("MiniLoadingAdManager", 1, "processSelectAdWithUncachedAd download url= " + paramString + " failed");
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener.onDownloadAdEnd(null, -1L, null);
+  }
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  {
+    QLog.d("MiniLoadingAdManager", 1, "processSelectAdWithUncachedAd download url= " + paramString + " succeed");
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener.onDownloadAdEnd(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqMiniManagerMiniLoadingAdManager$CachedAdInfo.filePath);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkmw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,23 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.forward.ForwardPhotoOption.3;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class atnl
-  implements View.OnTouchListener
+class atnl
+  extends Handler
 {
-  public atnl(ForwardPhotoOption.3 param3) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  atnl(atni paramatni, Looper paramLooper)
   {
-    return true;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atnl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class ayie
-  extends bjmc
+  implements DialogInterface.OnClickListener
 {
-  ayie(ayhx paramayhx) {}
+  ayie(ayhd paramayhd, QQCustomDialog paramQQCustomDialog) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PortalManager", 2, "RESUME_GESTURE_ANI, " + this.a.d);
+    if (paramInt == 1) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
     }
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 200L);
+    while (paramInt != 0) {
+      return;
+    }
   }
 }
 

@@ -1,48 +1,37 @@
+import android.os.Handler;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
 import com.tencent.qphone.base.util.QLog;
 
-final class appo
-  implements aqoy
+public class appo
+  implements apow
 {
-  public void a(String paramString1, String paramString2)
+  public appo(ARScanEntryView paramARScanEntryView) {}
+  
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(appn.a(), 2, paramString2);
+    QLog.d("AREngine_ARScanEntryView", 1, "onARBaseResDownloadComplete ;" + this.a.m);
+    if (!this.a.m) {
+      return;
     }
+    ARScanEntryView.a(this.a, 100);
+    ARScanEntryView.a(this.a).removeMessages(324);
+    ARScanEntryView.a(this.a).sendEmptyMessage(324);
+    this.a.k();
   }
   
-  public void a(String paramString1, String paramString2, Throwable paramThrowable)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e(appn.a(), 2, paramString2, paramThrowable);
+    QLog.d("AREngine_ARScanEntryView", 1, "onARBaseResUpdateProgress " + paramInt + ";" + this.a.m);
+    if (!this.a.m) {
+      return;
     }
+    ARScanEntryView.a(this.a, paramInt);
+    ARScanEntryView.a(this.a);
   }
   
-  public void b(String paramString1, String paramString2)
+  public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(appn.a(), 2, paramString2);
-    }
-  }
-  
-  public void c(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(appn.a(), 2, paramString2);
-    }
-  }
-  
-  public void d(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(appn.a(), 2, paramString2);
-    }
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e(appn.a(), 2, paramString2);
-    }
+    this.a.k();
   }
 }
 

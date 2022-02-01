@@ -1,10 +1,15 @@
-import com.tencent.mobileqq.activity.registerGuideLogin.GuideBaseFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface akoy
+class akoy
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  akoy(akov paramakov, Runnable paramRunnable) {}
   
-  public abstract void a(GuideBaseFragment paramGuideBaseFragment);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangRunnable.run();
+  }
 }
 
 

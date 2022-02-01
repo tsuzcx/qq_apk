@@ -1,14 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tbs.reader.ITbsReaderCallback;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
 
-class aspw
-  implements ITbsReaderCallback
+public class aspw
+  implements asug
 {
-  aspw(aspt paramaspt) {}
+  public aspw(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
   
-  public void onCallBackAction(Integer paramInteger, Object paramObject1, Object paramObject2)
+  public void a(String paramString, int paramInt)
   {
-    QLog.i("LocalTbsViewManager<FileAssistant>", 1, "initTbsReaderEntry: eventType[" + paramInteger + "] code[" + paramObject1.toString() + "]");
+    this.a.a.setText(paramString);
+    this.a.a.setSelection(this.a.a.length());
+    this.a.a(paramString);
   }
 }
 

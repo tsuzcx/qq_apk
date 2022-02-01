@@ -1,28 +1,65 @@
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.troop.data.TroopAioTopADInfo;
+import java.util.Observable;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.Manager;
 
-class bgie
-  implements bgim
+public class bgie
+  extends Observable
+  implements Manager
 {
-  bgie(bgic parambgic) {}
+  protected QQAppInterface a;
+  protected EntityManager a;
+  protected ConcurrentHashMap<String, TroopAioTopADInfo> a;
   
-  public void a()
+  public bgie(QQAppInterface paramQQAppInterface)
   {
-    List localList = bgic.a(this.a);
-    int i = 0;
-    try
-    {
-      while (i < bgic.a(this.a).size())
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
+      try
       {
-        ((bgim)bgic.a(this.a).get(i)).a();
-        i += 1;
+        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+        }
+        return;
       }
-      bgic.a(this.a).clear();
-      return;
+      finally {}
     }
-    finally {}
   }
   
-  public void b() {}
+  public TroopAioTopADInfo a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    return (TroopAioTopADInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+      paramString = (TroopAioTopADInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(TroopAioTopADInfo.class, paramString);
+    } while (paramString == null);
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(paramString);
+  }
+  
+  public void onDestroy()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null) && (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())) {
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    }
+  }
 }
 
 

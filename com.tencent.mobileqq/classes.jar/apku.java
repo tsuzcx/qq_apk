@@ -1,97 +1,34 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.model.ArLBSActivity;
+import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
 
-public class apku
+public abstract interface apku
 {
-  private apko a;
+  public abstract void a();
   
-  private static SharedPreferences a()
-  {
-    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    str = "color_note_recent_view_switch" + str;
-    return BaseApplicationImpl.getApplication().getSharedPreferences(str, 4);
-  }
+  public abstract void a(int paramInt);
   
-  public static void a(boolean paramBoolean)
-  {
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences != null)
-    {
-      localSharedPreferences.edit().putBoolean("color_note_recently_viewed_switch", paramBoolean).apply();
-      if (!paramBoolean) {
-        apoh.a(BaseApplicationImpl.getContext(), 5, false);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorNoteRecentView", 0, "setRecentColorNoteSwitch: " + paramBoolean);
-      }
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public static boolean a()
-  {
-    boolean bool = true;
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences != null) {
-      bool = localSharedPreferences.getBoolean("color_note_recently_viewed_switch", true);
-    }
-    return bool;
-  }
+  public abstract void a(int paramInt1, apfk paramapfk, int paramInt2);
   
-  public static void b(boolean paramBoolean)
-  {
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putBoolean("color_recent_permission_shown", paramBoolean).apply();
-    }
-  }
+  public abstract void a(int paramInt, String paramString);
   
-  public static boolean b()
-  {
-    SharedPreferences localSharedPreferences = a();
-    if ((localSharedPreferences != null) && (!localSharedPreferences.getBoolean("color_note_recent_first_visit", false)))
-    {
-      localSharedPreferences.edit().putBoolean("color_note_recent_first_visit", true).apply();
-      return true;
-    }
-    return false;
-  }
+  public abstract void a(long paramLong, int paramInt, apei paramapei, aplo paramaplo);
   
-  public static boolean c()
-  {
-    boolean bool = false;
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences != null) {
-      bool = localSharedPreferences.getBoolean("color_recent_permission_shown", false);
-    }
-    return bool;
-  }
+  public abstract void a(long paramLong, apfk paramapfk);
   
-  public void a(apko paramapko)
-  {
-    this.a = paramapko;
-  }
+  public abstract void a(long paramLong, boolean paramBoolean, apfk paramapfk);
   
-  public void a(ColorNote paramColorNote)
-  {
-    Object localObject = apll.a();
-    if ((localObject != null) && (((aplk)localObject).a())) {}
-    for (int i = 1;; i = 0)
-    {
-      if ((i != 0) && (paramColorNote != null) && (this.a != null) && (aplo.a().a()))
-      {
-        localObject = aplm.a(paramColorNote);
-        this.a.c((ColorNote)localObject);
-        if (QLog.isColorLevel()) {
-          QLog.d("ColorNoteRecentView", 0, "updateRecentNote: " + paramColorNote.toString());
-        }
-      }
-      return;
-    }
-  }
+  public abstract void a(apjq paramapjq, ArLBSActivity paramArLBSActivity);
+  
+  public abstract void a(ArCloudConfigInfo paramArCloudConfigInfo1, ArCloudConfigInfo paramArCloudConfigInfo2, int paramInt1, int paramInt2, Object paramObject);
+  
+  public abstract void a(ArVideoResourceInfo paramArVideoResourceInfo, apef paramapef);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

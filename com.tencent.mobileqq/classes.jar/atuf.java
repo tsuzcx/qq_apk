@@ -1,31 +1,18 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import java.util.HashMap;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-class atuf
-  implements INetEngine.IBreakDownFix
+public abstract interface atuf
 {
-  atuf(atud paramatud) {}
+  public abstract View a();
   
-  public void fixReq(NetReq paramNetReq, NetResp paramNetResp)
-  {
-    if ((paramNetReq != null) && (paramNetResp != null) && ((paramNetReq instanceof HttpNetReq)))
-    {
-      paramNetReq = (HttpNetReq)paramNetReq;
-      paramNetReq.mStartDownOffset += paramNetResp.mWrittenBlockLen;
-      paramNetResp.mWrittenBlockLen = 0L;
-      paramNetResp = "bytes=" + paramNetReq.mStartDownOffset + "-";
-      paramNetReq.mReqProperties.put("Range", paramNetResp);
-      paramNetResp = paramNetReq.mReqUrl;
-      if (paramNetResp.contains("range="))
-      {
-        paramNetResp = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
-        paramNetReq.mReqUrl = (paramNetResp + "range=" + paramNetReq.mStartDownOffset);
-      }
-    }
-  }
+  public abstract void a(String paramString, Drawable paramDrawable1, Drawable paramDrawable2, View.OnClickListener paramOnClickListener);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

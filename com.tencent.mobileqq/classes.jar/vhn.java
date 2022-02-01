@@ -1,17 +1,51 @@
-import com.tencent.component.network.downloader.DownloadRequest;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import android.content.Context;
+import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_UserInfo;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
 
-class vhn
+public class vhn
+  implements vgw<TVK_UserInfo, TVK_PlayerVideoInfo>
 {
-  DownloadRequest jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloadRequest;
-  Downloader.DownloadListener jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  Downloader.DownloadListener jdField_b_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean;
+  public vgu<TVK_UserInfo, TVK_PlayerVideoInfo> a()
+  {
+    return new vhp();
+  }
   
-  vhn(vhl paramvhl) {}
+  public vgv a(Context paramContext, vhc paramvhc)
+  {
+    paramvhc = null;
+    TVK_IProxyFactory localTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
+    if (localTVK_IProxyFactory != null) {
+      paramvhc = localTVK_IProxyFactory.createMediaPlayer(paramContext, null);
+    }
+    return new vho(paramvhc);
+  }
+  
+  public vgy a(Context paramContext)
+  {
+    TVK_IProxyFactory localTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
+    if (localTVK_IProxyFactory != null) {
+      return new vhq(localTVK_IProxyFactory.getCacheMgr(paramContext));
+    }
+    return null;
+  }
+  
+  public vhc a(Context paramContext, boolean paramBoolean)
+  {
+    TVK_IProxyFactory localTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
+    IVideoViewBase localIVideoViewBase = null;
+    if (localTVK_IProxyFactory != null) {
+      if (!paramBoolean) {
+        break label34;
+      }
+    }
+    label34:
+    for (localIVideoViewBase = localTVK_IProxyFactory.createVideoView_Scroll(paramContext);; localIVideoViewBase = localTVK_IProxyFactory.createVideoView(paramContext)) {
+      return new vhu(localIVideoViewBase);
+    }
+  }
 }
 
 

@@ -1,24 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.ApolloActionPush;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
-class alon
-  implements aloo
+public class alon
+  implements DialogInterface.OnClickListener
 {
-  alon(alom paramalom) {}
+  public alon(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void a(int paramInt, ApolloActionPush paramApolloActionPush)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((alom.a(this.a) != null) && (paramApolloActionPush != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloPushManager", 2, "[onActionPush], aioType:" + paramInt + ";pushData:" + paramApolloActionPush.toString());
-      }
-      if ((alom.a(this.a).curType == paramInt) && (paramInt == alom.a(this.a).curType) && (!TextUtils.isEmpty(alom.a(this.a).curFriendUin)) && (alom.a(this.a).curFriendUin.equals(String.valueOf(paramApolloActionPush.mSessionId)))) {
-        this.a.a(paramApolloActionPush);
-      }
-    }
+    this.a.finish();
   }
 }
 

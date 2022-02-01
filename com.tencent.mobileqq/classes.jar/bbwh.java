@@ -1,24 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class bbwh
-  implements View.OnClickListener
+public abstract interface bbwh
 {
-  bbwh(bbwb parambbwb) {}
-  
-  public void onClick(View paramView)
-  {
-    bbwb.a(this.a, bbwb.a(this.a));
-    bbwb.b(this.a, System.currentTimeMillis());
-    if (bbwb.a(this.a) - bbwb.b(this.a) < 300L) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      bbwb.a(this.a);
-    }
-  }
+  public abstract void a(String paramString);
 }
 
 

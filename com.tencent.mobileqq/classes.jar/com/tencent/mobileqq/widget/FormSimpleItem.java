@@ -17,13 +17,13 @@ import android.view.View.MeasureSpec;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bhea;
+import bios;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.widget.MultiImageTextView;
 
 public class FormSimpleItem
   extends RelativeLayout
-  implements bhea
+  implements bios
 {
   protected static boolean b;
   private int jdField_a_of_type_Int;
@@ -350,34 +350,34 @@ public class FormSimpleItem
     if (paramBoolean)
     {
       if (jdField_b_of_type_Boolean) {
-        return paramResources.getDrawable(2130839475);
+        return paramResources.getDrawable(2130839496);
       }
-      return paramResources.getDrawable(2130850271);
+      return paramResources.getDrawable(2130850375);
     }
     switch (paramInt)
     {
     default: 
-      return paramResources.getDrawable(2130839475);
+      return paramResources.getDrawable(2130839496);
     case 0: 
       if (jdField_b_of_type_Boolean) {
-        return paramResources.getDrawable(2130839475);
+        return paramResources.getDrawable(2130839496);
       }
-      return paramResources.getDrawable(2130850271);
+      return paramResources.getDrawable(2130850375);
     case 1: 
       if (jdField_b_of_type_Boolean) {
-        return paramResources.getDrawable(2130839485);
+        return paramResources.getDrawable(2130839506);
       }
-      return paramResources.getDrawable(2130850285);
+      return paramResources.getDrawable(2130850389);
     case 2: 
       if (jdField_b_of_type_Boolean) {
-        return paramResources.getDrawable(2130839485);
+        return paramResources.getDrawable(2130839506);
       }
-      return paramResources.getDrawable(2130850285);
+      return paramResources.getDrawable(2130850389);
     }
     if (jdField_b_of_type_Boolean) {
-      return paramResources.getDrawable(2130839482);
+      return paramResources.getDrawable(2130839503);
     }
-    return paramResources.getDrawable(2130850276);
+    return paramResources.getDrawable(2130850380);
   }
   
   private boolean a()
@@ -390,17 +390,17 @@ public class FormSimpleItem
     switch (paramInt)
     {
     default: 
-      return paramResources.getColorStateList(2131167012);
+      return paramResources.getColorStateList(2131167026);
     case 0: 
-      return paramResources.getColorStateList(2131167012);
+      return paramResources.getColorStateList(2131167026);
     case 2: 
-      return paramResources.getColorStateList(2131167092);
-    case 1: 
-      return paramResources.getColorStateList(2131167020);
-    case 3: 
       return paramResources.getColorStateList(2131167106);
+    case 1: 
+      return paramResources.getColorStateList(2131167034);
+    case 3: 
+      return paramResources.getColorStateList(2131167120);
     }
-    return paramResources.getColorStateList(2131167144);
+    return paramResources.getColorStateList(2131167158);
   }
   
   public static void setNeedFocusBg(boolean paramBoolean)
@@ -716,7 +716,7 @@ public class FormSimpleItem
       this.jdField_d_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
       this.jdField_d_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_JavaLangCharSequence);
     }
-    this.jdField_d_of_type_AndroidWidgetTextView.setId(2131367087);
+    this.jdField_d_of_type_AndroidWidgetTextView.setId(2131367206);
     if (this.jdField_c_of_type_Boolean)
     {
       this.jdField_d_of_type_AndroidWidgetTextView.setSingleLine(true);
@@ -724,7 +724,7 @@ public class FormSimpleItem
       this.jdField_d_of_type_AndroidWidgetTextView.setDuplicateParentStateEnabled(true);
     }
     this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(a(getResources(), this.h));
-    int i1 = getContext().getResources().getDimensionPixelSize(2131296763);
+    int i1 = getContext().getResources().getDimensionPixelSize(2131296764);
     this.jdField_d_of_type_AndroidWidgetTextView.setTextSize(0, i1);
     this.jdField_d_of_type_AndroidWidgetTextView.setGravity(19);
     setLeftIcon(this.jdField_c_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Int, this.g);
@@ -741,10 +741,10 @@ public class FormSimpleItem
     this.jdField_d_of_type_AndroidWidgetTextView.setMaxWidth(this.o);
     addView(this.jdField_d_of_type_AndroidWidgetTextView, localLayoutParams);
     this.jdField_a_of_type_ComTencentWidgetMultiImageTextView = new MultiImageTextView(getContext());
-    this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setId(2131367089);
+    this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setId(2131367208);
     this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setSingleLine(true);
     this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setTextColor(a(getResources(), this.m));
-    i1 = getContext().getResources().getDimensionPixelSize(2131296772);
+    i1 = getContext().getResources().getDimensionPixelSize(2131296773);
     this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setTextSize(0, i1);
     this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setGravity(19);
     this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setEllipsize(TextUtils.TruncateAt.END);

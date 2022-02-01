@@ -1,6 +1,20 @@
-public abstract interface bnrz
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import dov.com.qq.im.ae.view.AEPituCameraCaptureButtonLayout;
+
+public class bnrz
+  implements View.OnTouchListener
 {
-  public abstract void a();
+  public bnrz(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (!AEPituCameraCaptureButtonLayout.a(this.a)) {
+      return this.a.a(paramView, paramMotionEvent);
+    }
+    return AEPituCameraCaptureButtonLayout.a(this.a, paramView, paramMotionEvent);
+  }
 }
 
 

@@ -1,65 +1,98 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.ui.NativeExposeReplyCommentView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.text.StringsKt;
 
-public class oyg
-  extends ViewBase
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/channelbanner/RIJChannelBannerUtil;", "", "()V", "KEY_REQUEST_FREQUENCY_LIMIT", "", "KEY_SHOW_BANNER_CHANNEL_IDS", "TAG", "bannerSwitchMap", "", "", "getRequestFrequencyLimit", "init", "", "isAbleToRequestBanner", "", "lastRequestTimeStamp", "", "isAbleToShowBanner", "channelId", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oyg
 {
-  private NativeExposeReplyCommentView a;
+  private static final List<Integer> a;
+  public static final oyg a;
   
-  public oyg(VafContext paramVafContext)
+  static
   {
-    super(paramVafContext);
-    this.a = new NativeExposeReplyCommentView(paramVafContext.getContext());
+    jdField_a_of_type_Oyg = new oyg();
+    jdField_a_of_type_JavaUtilList = (List)new ArrayList();
   }
   
-  public void a(osu paramosu)
+  private final int a()
   {
-    this.a.setAdapter(paramosu);
-  }
-  
-  public int getComMeasuredHeight()
-  {
-    return this.a.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.a.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.a;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.a.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-  }
-  
-  public boolean setAttribute(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
+    int i = 1;
+    AladdinConfig localAladdinConfig = Aladdin.getConfig(344);
+    if (localAladdinConfig != null) {
+      i = localAladdinConfig.getIntegerFromString("request_frequency_limit", 1);
     }
-    do
+    return i;
+  }
+  
+  public final void a()
+  {
+    Object localObject3 = null;
+    Object localObject2 = Aladdin.getConfig(344);
+    Object localObject1;
+    if (localObject2 != null) {
+      localObject1 = ((AladdinConfig)localObject2).getString("show_banner_channel_ids", "");
+    }
+    for (;;)
     {
-      return super.setAttribute(paramInt, paramObject);
-    } while ((!(paramObject instanceof ouo)) || (((ouo)paramObject).a == null));
-    this.a.a((ouo)paramObject);
-    return true;
+      if (localObject2 != null)
+      {
+        localObject2 = Integer.valueOf(((AladdinConfig)localObject2).getIntegerFromString("request_frequency_limit", 1));
+        QLog.i("RIJChannelBannerUtil", 1, "[init] showBannerChannelIds = " + (String)localObject1 + ", requestFrequencyLimit = " + localObject2);
+        localObject2 = localObject3;
+        if (localObject1 != null)
+        {
+          localObject1 = StringsKt.split$default((CharSequence)localObject1, new String[] { "," }, false, 0, 6, null);
+          localObject2 = localObject3;
+          if (localObject1 != null) {
+            localObject2 = ((List)localObject1).iterator();
+          }
+        }
+        label116:
+        if ((localObject2 != null) && (((Iterator)localObject2).hasNext()))
+        {
+          localObject1 = (String)((Iterator)localObject2).next();
+          QLog.i("RIJChannelBannerUtil", 1, "[init], channelId = " + (String)localObject1);
+        }
+      }
+      else
+      {
+        try
+        {
+          jdField_a_of_type_JavaUtilList.add(Integer.valueOf(Integer.parseInt((String)localObject1)));
+          break label116;
+          localObject1 = null;
+          continue;
+          localObject2 = null;
+        }
+        catch (NumberFormatException localNumberFormatException)
+        {
+          for (;;)
+          {
+            QLog.e("RIJChannelBannerUtil", 1, "[init] failed, e = " + localNumberFormatException + ", it = " + (String)localObject1);
+          }
+        }
+      }
+    }
+  }
+  
+  public final boolean a(int paramInt)
+  {
+    boolean bool = bdvn.a();
+    QLog.i("RIJChannelBannerUtil", 1, "[isAbleToShowBanner], isStudyMode = " + bool);
+    return (jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(paramInt))) && (!bool);
+  }
+  
+  public final boolean a(long paramLong)
+  {
+    int i = a() * 60 * 1000;
+    long l = System.currentTimeMillis() - paramLong;
+    QLog.i("RIJChannelBannerUtil", 1, "[isAbleToRequestBanner], timeInterval = " + l + ", frequencyLimit = " + i + ", lastRequestTimeStamp = " + paramLong);
+    return l >= i;
   }
 }
 

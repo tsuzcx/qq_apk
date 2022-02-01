@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import xwj;
+import ylc;
 
 class EditVideoGuide$GotoLocationPageDelayRunnable
   implements Runnable
@@ -9,9 +9,9 @@ class EditVideoGuide$GotoLocationPageDelayRunnable
   
   public void run()
   {
-    xwj localxwj = (xwj)this.this$0.a(xwj.class);
-    if (localxwj != null) {
-      localxwj.b();
+    ylc localylc = (ylc)this.this$0.a(ylc.class);
+    if (localylc != null) {
+      localylc.b();
     }
   }
 }

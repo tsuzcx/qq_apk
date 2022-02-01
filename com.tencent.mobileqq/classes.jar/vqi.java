@@ -1,11 +1,22 @@
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
 public class vqi
 {
-  public static boolean a(QQStoryAutoPlayView paramQQStoryAutoPlayView, MotionEvent paramMotionEvent)
+  public static blij<vpj> a(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
   {
-    return false;
+    switch (paramInt)
+    {
+    default: 
+      return new vqf(paramViewGroup, paramInt, paramWSVerticalPageFragment);
+    case 1: 
+      return new vrl(paramViewGroup, paramInt, paramWSVerticalPageFragment);
+    case 2: 
+      return new vrk(paramViewGroup, paramInt, paramWSVerticalPageFragment);
+    case 1001: 
+      return new vpl(paramViewGroup, paramInt, paramWSVerticalPageFragment);
+    }
+    return new vqc(paramViewGroup, paramInt, paramWSVerticalPageFragment);
   }
 }
 

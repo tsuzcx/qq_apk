@@ -1,66 +1,44 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
 public class apyf
-  extends aptq<apye>
+  implements INetInfoHandler
 {
-  @NonNull
-  public apye a(int paramInt)
+  public apyf(ArkAppCenter paramArkAppCenter) {}
+  
+  public void onNetMobile2None()
   {
-    return new apye();
+    ArkAppCenter.a(this.a, 1, 0);
   }
   
-  @Nullable
-  public apye a(aptx[] paramArrayOfaptx)
+  public void onNetMobile2Wifi(String paramString)
   {
-    QLog.i("LebaQzoneStyleProcessor", 1, "[onParsed] config");
-    return apye.a(paramArrayOfaptx);
+    ArkAppCenter.a(this.a, 1, 2);
   }
   
-  public void a(apye paramapye)
+  public void onNetNone2Mobile(String paramString)
   {
-    QLog.i("LebaQzoneStyleProcessor", 1, "[onUpdate]");
+    ArkAppCenter.a(this.a, 0, 1);
   }
   
-  public Class<apye> clazz()
+  public void onNetNone2Wifi(String paramString)
   {
-    return apye.class;
+    ArkAppCenter.a(this.a, 0, 2);
   }
   
-  public boolean isNeedCompressed()
+  public void onNetWifi2Mobile(String paramString)
   {
-    return true;
+    ArkAppCenter.a(this.a, 2, 1);
   }
   
-  public boolean isNeedStoreLargeFile()
+  public void onNetWifi2None()
   {
-    return false;
-  }
-  
-  public boolean isNeedUpgradeReset()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.i("LebaQzoneStyleProcessor", 1, "[onReqFailed] failCode=" + paramInt);
-  }
-  
-  public int type()
-  {
-    return 614;
+    ArkAppCenter.a(this.a, 2, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apyf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,40 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.opengl.GLSurfaceView;
 import com.tencent.qphone.base.util.QLog;
 
-class apej
-  extends AnimatorListenerAdapter
+public final class apej
 {
-  apej(apeg paramapeg, ObjectAnimator paramObjectAnimator, apen paramapen) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public static aped a(apef paramapef, apeh paramapeh, GLSurfaceView paramGLSurfaceView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("BubbleInterActiveAnim", 2, "animHolder.animView.startAnimation!");
+    if (paramapeh == null) {
+      return null;
     }
-    if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) {
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
-    }
-    if ((this.jdField_a_of_type_Apen != null) && (this.jdField_a_of_type_Apen.a != null))
+    switch (paramapeh.a)
     {
-      paramAnimator = "";
-      if (this.jdField_a_of_type_Apen.a.istroop != 0) {
-        break label98;
-      }
-      paramAnimator = "1";
+    default: 
+      return null;
+    case 0: 
+      paramapef = new apes(paramapef, (apet)paramapeh);
+      QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_3D here " + paramapeh.toString());
+      return paramapef;
+    case 2: 
+    case 3: 
+      paramapef = new apfa(paramapef, (apfc)paramapeh);
+      QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_NORAML_2D_VIDEO here" + paramapeh.toString());
+      return paramapef;
+    case 4: 
+      paramapef = new apfd(paramapef, (apff)paramapeh);
+      QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_ONLINE_VIDEO here" + paramapeh.toString());
+      return paramapef;
+    case 5: 
+      paramapef = new apez(paramapef, (apey)paramapeh);
+      QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_MULTI_ANIM here" + paramapeh.toString());
+      return paramapef;
+    case 100: 
+      paramapef = new apew(paramapef, (apex)paramapeh, paramGLSurfaceView);
+      QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_BINHAI_3D here" + paramapeh.toString());
+      return paramapef;
     }
-    for (;;)
-    {
-      VasWebviewUtil.reportCommercialDrainage("", "Bubble", "Active_dync", paramAnimator, 1, 0, 0, "", String.valueOf(anaj.a(this.jdField_a_of_type_Apen.a.vipBubbleID)), "");
-      return;
-      label98:
-      if (this.jdField_a_of_type_Apen.a.istroop == 1) {
-        paramAnimator = "2";
-      } else if (this.jdField_a_of_type_Apen.a.istroop == 3000) {
-        paramAnimator = "3";
-      }
-    }
+    return new apem(paramapef, (apeo)paramapeh);
   }
 }
 

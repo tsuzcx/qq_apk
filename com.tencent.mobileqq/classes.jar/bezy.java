@@ -1,69 +1,59 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.troop.data.TroopAioTopADInfo;
-import java.util.Observable;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.manager.Manager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.troop.activity.TroopCreateBaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bezy
-  extends Observable
-  implements Manager
+  implements View.OnClickListener
 {
-  protected QQAppInterface a;
-  protected EntityManager a;
-  protected ConcurrentHashMap<String, TroopAioTopADInfo> a;
+  int jdField_a_of_type_Int = 0;
+  TroopCreateBaseActivity jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity = null;
+  String jdField_a_of_type_JavaLangString;
   
-  public bezy(QQAppInterface paramQQAppInterface)
+  public bezy(TroopCreateBaseActivity paramTroopCreateBaseActivity, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
-      try
-      {
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-        }
-        return;
-      }
-      finally {}
-    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity = paramTroopCreateBaseActivity;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public TroopAioTopADInfo a(String paramString)
+  public void onClick(View paramView)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    return (TroopAioTopADInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-  }
-  
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity == null)
     {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-      paramString = (TroopAioTopADInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(TroopAioTopADInfo.class, paramString);
-    } while (paramString == null);
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(paramString);
-  }
-  
-  public void onDestroy()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null) && (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())) {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      if (this.jdField_a_of_type_Int == 0) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.b();
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.a(this.jdField_a_of_type_Int);
+      break;
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.c();
+      }
+      else if (this.jdField_a_of_type_Int == 2)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.d();
+        continue;
+        CustomWebView localCustomWebView = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.a;
+        if (localCustomWebView != null) {
+          localCustomWebView.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bezy
  * JD-Core Version:    0.7.0.1
  */

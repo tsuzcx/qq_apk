@@ -1,70 +1,27 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedFeature;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.view.View;
+import com.tencent.biz.qcircleshadow.local.widgets.QCircleFollowView;
 
 public class vwa
+  implements bkzq
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
+  public vwa(QCircleFollowView paramQCircleFollowView, bkzi parambkzi) {}
   
-  public void a(qqstory_struct.FeedFeature paramFeedFeature)
+  public void OnClick(View paramView, int paramInt)
   {
-    boolean bool2 = true;
-    this.jdField_a_of_type_JavaLangString = paramFeedFeature.feed_id.get().toStringUtf8();
-    this.jdField_a_of_type_Int = paramFeedFeature.total_like_num.get();
-    this.jdField_b_of_type_Int = paramFeedFeature.total_comment_num.get();
-    this.c = paramFeedFeature.total_viewing_num.get();
-    if (paramFeedFeature.deny_comment.get() == 1)
-    {
-      bool1 = true;
-      this.jdField_a_of_type_Boolean = bool1;
-      if (paramFeedFeature.has_like.get() != 1) {
-        break label91;
+    if (!aala.a("showUnFollowUserActionSheetClick")) {
+      switch (paramInt)
+      {
       }
     }
-    label91:
-    for (boolean bool1 = bool2;; bool1 = false)
+    for (;;)
     {
-      this.jdField_b_of_type_Boolean = bool1;
+      this.jdField_a_of_type_Bkzi.dismiss();
       return;
-      bool1 = false;
-      break;
-    }
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
+      if (QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQcircleshadowLocalWidgetsQCircleFollowView) != null) {
+        QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQcircleshadowLocalWidgetsQCircleFollowView).a();
       }
-      paramObject = (vwa)paramObject;
-      if (this.jdField_a_of_type_JavaLangString != null) {
-        return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
-      }
-    } while (paramObject.jdField_a_of_type_JavaLangString == null);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      return this.jdField_a_of_type_JavaLangString.hashCode();
+      this.jdField_a_of_type_ComTencentBizQcircleshadowLocalWidgetsQCircleFollowView.b(false);
     }
-    return 0;
-  }
-  
-  public String toString()
-  {
-    return "FeedFeatureItem{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", totalLikeCount=" + this.jdField_a_of_type_Int + ", totalCommentCount=" + this.jdField_b_of_type_Int + ", totalViewCount=" + this.c + ", isDenyComment=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

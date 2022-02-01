@@ -1,6 +1,6 @@
 package com.tencent.litetransfersdk;
 
-import aszk;
+import audr;
 
 class ProtocolHelper$5
   implements Runnable
@@ -9,7 +9,7 @@ class ProtocolHelper$5
   
   public void run()
   {
-    aszk.a(2131693466);
+    audr.a(2131693647);
   }
 }
 

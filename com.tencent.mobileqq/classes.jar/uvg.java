@@ -1,25 +1,39 @@
-import UserGrowth.stSimpleMetaPerson;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.common.util.NetworkUtil;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class uvg
-  implements bjoe
+final class uvg
+  implements DialogInterface.OnClickListener
 {
-  uvg(uvf paramuvf) {}
+  uvg(int paramInt1, int paramInt2, Runnable paramRunnable) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!NetworkUtil.isNetworkAvailable(uvf.a(this.a)))
+    paramInt = 1;
+    bmhv.a("readinjoy_user_data_switch", Integer.valueOf(1));
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new JSONObject();
+    try
     {
-      bhzt.a().a(2131719692);
-      return;
+      if (this.jdField_a_of_type_Int == 1) {
+        paramInt = 0;
+      }
+      paramDialogInterface.put("click_src", paramInt);
+      paramDialogInterface.put("user_data_alert_interval", this.b);
+      paramDialogInterface.put("click_opt", 2);
     }
-    uvf.a(this.a).b(uvf.a(this.a).id, 2);
-    uvf.a(this.a).followStatus = 2;
-    uvf.a(this.a).setVisibility(0);
-    uvf.b(this.a).setVisibility(8);
-    uvm.a("follow", uvf.a(this.a) + 1, uvf.a(this.a).id, uvt.r);
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+    olh.a(null, "", "0X800A809", "0X800A809", 0, 0, "", "", "", paramDialogInterface.toString(), false);
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
 }
 

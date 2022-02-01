@@ -1,16 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
-class qam
-  implements View.OnClickListener
+public class qam
+  implements qbc
 {
-  qam(qak paramqak, pvc parampvc) {}
+  public qam(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    pgw.a(this.jdField_a_of_type_Pvc.a(), 0, 1);
-    EventCollector.getInstance().onViewClicked(paramView);
+    ReadInJoySelfFragment.k(this.a);
   }
 }
 

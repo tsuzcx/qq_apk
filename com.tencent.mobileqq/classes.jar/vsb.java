@@ -1,26 +1,28 @@
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import UserGrowth.stSimpleMetaFeed;
+import java.util.List;
 
 class vsb
-  extends whf
+  implements vbf<stSimpleMetaFeed>
 {
-  vsb(vry paramvry) {}
+  vsb(vsa paramvsa, vos paramvos, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void a()
+  public void a(boolean paramBoolean1, List<stSimpleMetaFeed> paramList, boolean paramBoolean2)
   {
-    super.a();
-    vrx.a(this.a.a, null);
+    paramList = vsa.a(this.jdField_a_of_type_Vsa, paramList);
+    if (this.jdField_a_of_type_Vos != null) {
+      this.jdField_a_of_type_Vos.a(paramList, this.jdField_a_of_type_Boolean, this.b, null);
+    }
   }
   
-  public void a(int paramInt)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, Object paramObject)
   {
-    super.a(paramInt);
-    xwa.a("home_page", "suc_share", 1, paramInt, new String[] { xwa.b(this.a.a.a) + "", xwa.a(this.a.a.a) + "", this.a.a.a.feedId });
-  }
-  
-  public void b(int paramInt)
-  {
-    super.b(paramInt);
-    xwa.a("home_page", "share_chanel", 1, paramInt, new String[] { xwa.b(this.a.a.a) + "", xwa.a(this.a.a.a) + "", this.a.a.a.feedId });
+    if (!paramBoolean3)
+    {
+      if (this.jdField_a_of_type_Vos != null) {
+        this.jdField_a_of_type_Vos.a(-1, "task failed.");
+      }
+      this.jdField_a_of_type_Vsa.a(-1, "task failed.");
+    }
   }
 }
 

@@ -1,46 +1,39 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import com.tencent.mobileqq.activity.selectable.TextPreviewMenu;
 
-class alwl
-  implements AudioManager.OnAudioFocusChangeListener
+public class alwl
+  implements biqq
 {
-  alwl(alwf paramalwf) {}
+  public alwl(TextPreviewMenu paramTextPreviewMenu, TextPreviewActivity paramTextPreviewActivity) {}
   
-  public void onAudioFocusChange(int paramInt)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CmGameAudioPlayer", 2, new Object[] { "[onAudioFocusChange],focusChange:", Integer.valueOf(paramInt) });
-    }
-    for (;;)
-    {
-      JSONObject localJSONObject;
-      try
-      {
-        localJSONObject = new JSONObject();
-        if (paramInt != 1) {
-          break label105;
-        }
-        localJSONObject.put("event", 2);
-        alxy localalxy = alvx.a(alwf.a(this.a));
-        if ((localalxy == null) || (localalxy.a() == null)) {
-          break label104;
-        }
-        alvx.a().callbackFromRequest(localalxy.a().getLuaState(), 0, "sc.audio_event.local", localJSONObject.toString());
-        return;
-      }
-      catch (Throwable localThrowable) {}
-      localJSONObject.put("event", 1);
-      continue;
-      label104:
-      return;
-      label105:
-      if (paramInt != -1) {
-        if (paramInt != -2) {}
-      }
-    }
+    TextPreviewMenu.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextPreviewMenu);
+  }
+  
+  public void a(String paramString)
+  {
+    behe.a(paramString, "OCR_Participle_copy");
+  }
+  
+  public void b(String paramString)
+  {
+    behe.a(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, paramString);
+  }
+  
+  public void c(String paramString)
+  {
+    behe.a(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity.app, paramString);
+  }
+  
+  public void d(String paramString)
+  {
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, TextPreviewTranslateActivity.class);
+    localIntent.putExtra("TranslateText", paramString);
+    localIntent.putExtra("WhereAreYouFrom", "AIO_TEXTPREVIEW");
+    TextPreviewMenu.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextPreviewMenu, localIntent);
   }
 }
 

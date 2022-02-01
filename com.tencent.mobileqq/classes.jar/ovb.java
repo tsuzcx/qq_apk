@@ -1,23 +1,39 @@
-import org.jetbrains.annotations.Nullable;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarFragment;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarFragment.3;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class ovb
-  implements oxs
+public class ovb
+  implements bghi
 {
-  ovb(ouu paramouu) {}
+  public ovb(ReadInJoyUploadAvatarFragment.3 param3) {}
   
-  public void a(long paramLong, boolean paramBoolean1, int paramInt1, int paramInt2, @Nullable String paramString1, @Nullable String paramString2, int paramInt3, boolean paramBoolean2)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    if (paramBoolean2) {
-      this.a.a(paramLong, paramBoolean1, paramInt2, paramString1, paramString2, paramInt3);
+    if (QLog.isColorLevel()) {
+      QLog.d(ReadInJoyUploadAvatarFragment.a, 2, "uploadImage->onResult");
     }
-    for (;;)
+    if (paramJSONObject != null)
     {
-      if (!paramBoolean1) {
-        oxr.a(paramInt1);
+      paramInt = paramJSONObject.optInt("retcode");
+      if (paramJSONObject.optJSONObject("result") != null) {}
+      for (paramJSONObject = paramJSONObject.optJSONObject("result").optString("url");; paramJSONObject = null)
+      {
+        paramBundle = new Message();
+        if ((paramInt == 0) && (!TextUtils.isEmpty(paramJSONObject)))
+        {
+          paramBundle.what = 1003;
+          paramBundle.obj = paramJSONObject;
+        }
+        this.a.a.sendMessage(paramBundle);
+        return;
       }
-      return;
-      this.a.a(paramLong, paramBoolean1, paramInt2, paramString1, paramInt3);
     }
+    this.a.a.sendMessage(new Message());
   }
 }
 

@@ -1,51 +1,16 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.apollo.utils.ApolloGameShare.2;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.face.FaceDecoder;
 
-public class amjn
-  implements WXShareHelper.WXShareListener
+class amjn
+  extends aofu
 {
-  public amjn(ApolloGameShare.2 param2) {}
+  amjn(amjm paramamjm) {}
   
-  public void onWXShareResp(BaseResp paramBaseResp)
+  protected void onUpdateNewTroopFaceIcon(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    if (paramBaseResp == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((amjl.a(this.a.this$0) == null) || (!amjl.a(this.a.this$0).equals(paramBaseResp.transaction)));
-      QLog.i("ApolloGameShare", 1, "[shareResult2WXFriendOrCircle], resp.errCode:" + paramBaseResp.errCode);
-    } while (paramBaseResp.errCode != 0);
-    paramBaseResp = this.a.this$0.a();
-    int j;
-    int i;
-    if (paramBaseResp == null)
-    {
-      j = -1;
-      if (1 != this.a.a) {
-        break label159;
-      }
-      i = 3;
-    }
-    for (;;)
-    {
-      VipUtils.a(amjl.a(this.a.this$0), "cmshow", "Apollo", "share_url_succeed", j, i, new String[] { Integer.toString(amjl.a(this.a.this$0)) });
-      return;
-      j = ApolloUtil.b(paramBaseResp.sessionInfo.curType);
-      break;
-      label159:
-      if (2 == this.a.a) {
-        i = 4;
-      } else {
-        i = -1;
-      }
+    Bitmap localBitmap = this.a.a.getBitmapFromCache(113, paramString);
+    if (localBitmap != null) {
+      this.a.a(paramString, localBitmap);
     }
   }
 }

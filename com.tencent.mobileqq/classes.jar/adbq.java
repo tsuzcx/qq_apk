@@ -1,80 +1,17 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class adbq
-  extends amop
+class adbq
+  implements View.OnClickListener
 {
-  public adbq(ChatSettingForTroop paramChatSettingForTroop) {}
+  adbq(adbo paramadbo) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  public void onClick(View paramView)
   {
-    if ((paramInt2 != 0) && (TextUtils.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, paramString1)))
-    {
-      if ((!this.a.isFinishing()) && (this.a.isResume()))
-      {
-        paramString1 = paramString2;
-        if (TextUtils.isEmpty(paramString2)) {
-          paramString1 = this.a.getResources().getString(2131694277);
-        }
-        QQToast.a(this.a, 1, paramString1, 0).b(this.a.getTitleBarHeight());
-      }
-      ChatSettingForTroop.m(this.a);
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    boolean bool = true;
-    super.a(paramBoolean, paramString1, paramString2, paramString3, paramInt);
-    if (TextUtils.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, paramString1))
-    {
-      this.a.p();
-      if (!paramBoolean) {
-        break label171;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.hasSetNewTroopName = true;
-      this.a.a(paramString2);
-      if ((this.a.isResume()) && (this.a.e))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.isNewTroop = false;
-        TroopUtils.showGetTroopUinDialog(this.a.app, this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo, this.a, new adbr(this));
-        this.a.e = false;
-      }
-      paramString1 = this.a;
-      if ((this.a.d) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isNewTroop)) {
-        break label166;
-      }
-      paramBoolean = bool;
-      ChatSettingForTroop.b(paramString1, paramBoolean);
-    }
-    label166:
-    label171:
-    do
-    {
-      return;
-      paramBoolean = false;
-      break;
-      if (paramInt == 1328) {
-        ChatSettingForTroop.n(this.a);
-      }
-      paramString1 = paramString3;
-      if (TextUtils.isEmpty(paramString3)) {
-        paramString1 = amtj.a(2131700893);
-      }
-      QQToast.a(this.a, 1, paramString1, 0).b(this.a.getTitleBarHeight());
-      if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo != null)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopName = this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.getTroopName();
-        this.a.e();
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.chatopttroop", 2, paramString1);
+    this.a.a.d();
+    adbo.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

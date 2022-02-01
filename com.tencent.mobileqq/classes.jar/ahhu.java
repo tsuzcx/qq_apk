@@ -1,34 +1,21 @@
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
 
 class ahhu
-  implements agxa
+  extends afqr
 {
-  ahhu(ahhp paramahhp) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  RoundCornerImageView jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  View jdField_c_of_type_AndroidViewView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  View d;
   
-  public boolean a(int paramInt)
-  {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((paramInt != 2) && (paramInt != 4))
-    {
-      bool1 = bool2;
-      if (paramInt != 5) {}
-    }
-    else
-    {
-      bool1 = bool2;
-      if (!ahhp.a(this.a))
-      {
-        QQToast.a(this.a.app.getApp(), 2131698178, 0).b(this.a.mActivity.getResources().getDimensionPixelSize(2131299076));
-        bcef.b(this.a.app, "dc00898", "", "", "0X800B3D2", "0X800B3D2", 0, 0, "", "", "", "");
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
+  ahhu(ahhs paramahhs) {}
 }
 
 

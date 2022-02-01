@@ -1,23 +1,31 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.video.click.RIJVideoHandleClick.9.1;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Ref.ObjectRef;
 
-public class phx
-  implements pen
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "clickedView", "Landroid/view/View;", "kotlin.jvm.PlatformType", "which", "", "OnClick"}, k=3, mv={1, 1, 16})
+final class phx
+  implements bkzq
 {
-  phx(phl paramphl) {}
+  phx(phs paramphs, Ref.ObjectRef paramObjectRef, bkzi parambkzi) {}
   
-  public void onClick(View paramView)
+  public final void OnClick(View paramView, int paramInt)
   {
-    sjy localsjy = (sjy)paramView.getTag();
-    BaseArticleInfo localBaseArticleInfo = phl.a(this.a).a(localsjy.jdField_a_of_type_Int);
-    if (localBaseArticleInfo == null) {
+    switch (paramInt)
+    {
+    default: 
+      this.jdField_a_of_type_Bkzi.dismiss();
       return;
     }
-    phl.a(this.a).a().a().a(localsjy.jdField_a_of_type_Sdg, localBaseArticleInfo, true, true);
-    ThreadManager.executeOnSubThread(new RIJVideoHandleClick.9.1(this, localBaseArticleInfo));
-    psf.a(paramView);
+    pdv localpdv = (pdv)this.jdField_a_of_type_KotlinJvmInternalRef$ObjectRef.element;
+    paramView = phs.a(this.jdField_a_of_type_Phs).a;
+    if (paramView != null) {}
+    for (paramView = paramView.commentId;; paramView = null)
+    {
+      localpdv.e(paramView);
+      phs.a(this.jdField_a_of_type_Phs, 8);
+      break;
+    }
   }
 }
 

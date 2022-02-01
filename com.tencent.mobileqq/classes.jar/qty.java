@@ -1,20 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentComment;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.model.RIJUserLevelRequestModule.UserLevelInfo;
 
-public class qty
-  implements View.OnClickListener
+class qty
+  implements qha
 {
-  public qty(ComponentComment paramComponentComment, long paramLong, ArticleInfo paramArticleInfo) {}
+  qty(qtv paramqtv) {}
   
-  public void onClick(View paramView)
+  public void a(RIJUserLevelRequestModule.UserLevelInfo paramUserLevelInfo)
   {
-    String str = paa.g + bfuc.encodeToString(String.valueOf(this.jdField_a_of_type_Long).getBytes(), 2);
-    pay.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment.getContext(), str);
-    pyr.a(1, pay.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
-    EventCollector.getInstance().onViewClicked(paramView);
+    qtv.a(this.a);
   }
 }
 

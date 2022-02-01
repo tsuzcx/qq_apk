@@ -1,6 +1,6 @@
 package com.tencent.biz.qrcode.util;
 
-import yyi;
+import znl;
 
 public final class QRUtils$2
   implements Runnable
@@ -9,7 +9,7 @@ public final class QRUtils$2
   
   public void run()
   {
-    yyi.a(this.a, this.b);
+    znl.a(this.a, this.b);
   }
 }
 

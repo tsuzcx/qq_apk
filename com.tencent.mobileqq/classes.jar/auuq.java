@@ -1,45 +1,54 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
-import com.tencent.mobileqq.jsp.ShareMsgImpl.3;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.app.Activity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.forward.ForwardShareCardOption;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class auuq
-  implements zop
+  extends aofu
 {
-  public auuq(ShareMsgImpl.3 param3, Bitmap paramBitmap) {}
+  public auuq(ForwardShareCardOption paramForwardShareCardOption) {}
   
-  public void callback(Bundle paramBundle)
+  public void onTroopShareLink(boolean paramBoolean, bgtz parambgtz)
   {
-    int j = 0;
-    int i = 0;
-    if (paramBundle.getInt("readinjoy_to_wx_config") == 0)
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardShareCardOption", 2, "onTroopShareLink start");
+    }
+    this.a.z();
+    if (ForwardShareCardOption.a(this.a) != -1)
     {
-      paramBundle = WxShareHelperFromReadInjoy.a();
-      str1 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.this$0.b;
-      str2 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.d;
-      localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-      str3 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.e;
-      str4 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.b;
-      if ("2".equals(this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.a)) {}
-      for (;;)
+      if ((!paramBoolean) || (parambgtz.jdField_a_of_type_Int != 0)) {
+        break label189;
+      }
+      if (parambgtz.jdField_a_of_type_Boolean)
       {
-        paramBundle.a(str1, str2, localBitmap, str3, str4, i);
-        return;
-        i = 1;
+        ForwardShareCardOption.a(this.a, parambgtz.b);
+        if (ForwardShareCardOption.a(this.a) == 0) {}
+      }
+      else
+      {
+        do
+        {
+          return;
+          ForwardShareCardOption.b(this.a, parambgtz.b);
+        } while (ForwardShareCardOption.a(this.a) != 1);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardOption.ForwardShareCardOption", 2, "mTroopVerifyLink=" + ForwardShareCardOption.a(this.a) + " mTroopNotNeedVefifyLink=" + ForwardShareCardOption.b(this.a));
+      }
+      if ((parambgtz.jdField_a_of_type_JavaLangString != null) && (parambgtz.jdField_a_of_type_JavaLangString.equals(ForwardShareCardOption.c(this.a)))) {
+        ForwardShareCardOption.a(this.a);
       }
     }
-    paramBundle = WXShareHelper.getInstance();
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.this$0.b;
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.d;
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    String str3 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.e;
-    String str4 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.b;
-    if ("2".equals(this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.a)) {}
-    for (i = j;; i = 1)
+    for (;;)
     {
-      paramBundle.shareWebPage(str1, str2, localBitmap, str3, str4, i);
+      ForwardShareCardOption.a(this.a, -1);
       return;
+      label189:
+      if (((parambgtz.jdField_a_of_type_Boolean) && (ForwardShareCardOption.a(this.a) != 0)) || ((!parambgtz.jdField_a_of_type_Boolean) && (ForwardShareCardOption.a(this.a) != 1))) {
+        break;
+      }
+      QQToast.a(this.a.a, 1, this.a.a.getString(2131692824), 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
     }
   }
 }

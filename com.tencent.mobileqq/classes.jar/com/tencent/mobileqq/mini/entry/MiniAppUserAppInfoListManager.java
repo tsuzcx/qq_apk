@@ -6,12 +6,14 @@ import NS_MINI_INTERFACE.INTERFACE.StUserAppInfo;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import anxn;
-import apyt;
+import apap;
+import arbw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -312,7 +314,7 @@ public class MiniAppUserAppInfoListManager
       return;
       localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     } while (localAppRuntime == null);
-    MiniAppUserAppInfoListManager localMiniAppUserAppInfoListManager = (MiniAppUserAppInfoListManager)localAppRuntime.getManager(309);
+    MiniAppUserAppInfoListManager localMiniAppUserAppInfoListManager = (MiniAppUserAppInfoListManager)localAppRuntime.getManager(QQManagerFactory.MINI_APP_ITEM_MANAGER);
     if (localMiniAppUserAppInfoListManager != null) {
       localMiniAppUserAppInfoListManager.updateMiniAppStartRecord(paramMiniAppInfo);
     }
@@ -344,7 +346,7 @@ public class MiniAppUserAppInfoListManager
     //   17: new 334	java/lang/StringBuilder
     //   20: dup
     //   21: invokespecial 335	java/lang/StringBuilder:<init>	()V
-    //   24: ldc_w 456
+    //   24: ldc_w 461
     //   27: invokevirtual 341	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   30: aload_1
     //   31: invokevirtual 344	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
@@ -383,7 +385,7 @@ public class MiniAppUserAppInfoListManager
     //   99: aload_0
     //   100: getfield 39	com/tencent/mobileqq/mini/entry/MiniAppUserAppInfoListManager:mUsedAppList	Ljava/util/LinkedList;
     //   103: aload_1
-    //   104: invokevirtual 460	java/util/LinkedList:addFirst	(Ljava/lang/Object;)V
+    //   104: invokevirtual 465	java/util/LinkedList:addFirst	(Ljava/lang/Object;)V
     //   107: aload_2
     //   108: aload_0
     //   109: getfield 37	com/tencent/mobileqq/mini/entry/MiniAppUserAppInfoListManager:mTopAppList	Ljava/util/LinkedList;
@@ -399,7 +401,7 @@ public class MiniAppUserAppInfoListManager
     //   132: aload_0
     //   133: aload_2
     //   134: iconst_0
-    //   135: invokespecial 462	com/tencent/mobileqq/mini/entry/MiniAppUserAppInfoListManager:saveDataToDBWithBatch	(Ljava/util/List;Z)V
+    //   135: invokespecial 467	com/tencent/mobileqq/mini/entry/MiniAppUserAppInfoListManager:saveDataToDBWithBatch	(Ljava/util/List;Z)V
     //   138: return
     //   139: aload_1
     //   140: getfield 394	com/tencent/mobileqq/mini/apkg/MiniAppInfo:topType	I
@@ -408,7 +410,7 @@ public class MiniAppUserAppInfoListManager
     //   147: aload_0
     //   148: getfield 37	com/tencent/mobileqq/mini/entry/MiniAppUserAppInfoListManager:mTopAppList	Ljava/util/LinkedList;
     //   151: aload_1
-    //   152: invokevirtual 460	java/util/LinkedList:addFirst	(Ljava/lang/Object;)V
+    //   152: invokevirtual 465	java/util/LinkedList:addFirst	(Ljava/lang/Object;)V
     //   155: goto -48 -> 107
     //   158: astore_1
     //   159: ldc 2
@@ -716,7 +718,7 @@ public class MiniAppUserAppInfoListManager
       }
     }
     finally {}
-    boolean bool = apyt.e();
+    boolean bool = arbw.e();
     localObject = ((List)localObject).iterator();
     MiniAppInfo localMiniAppInfo;
     Integer localInteger1;
@@ -829,10 +831,10 @@ public class MiniAppUserAppInfoListManager
       paramLong2 = System.currentTimeMillis();
       if (paramLong2 - paramLong1 > QzoneConfig.getInstance().getConfig("qqminiapp", "getappletsnotificationsettinginterval", 1L) * 1000L)
       {
-        localObject = (anxn)((AppInterface)localObject).getBusinessHandler(148);
+        localObject = (apap)((AppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.APPLET_PUSH_HANDLER);
         if (localObject != null)
         {
-          ((anxn)localObject).a();
+          ((apap)localObject).a();
           localSharedPreferences.edit().putLong(str, paramLong2).commit();
         }
       }

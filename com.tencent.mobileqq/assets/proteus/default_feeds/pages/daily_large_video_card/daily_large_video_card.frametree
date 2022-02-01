@@ -1,0 +1,234 @@
+{
+    "tag": "page",
+    "content": "",
+    "attributes": {
+        "viewID": "0"
+    },
+    "styles": {
+        "flex-direction": "column",
+        "display": "flex",
+        "box-sizing": "border-box"
+    },
+    "children": [
+        {
+            "tag": "view",
+            "content": "\n  \n    \n    \n  \n",
+            "attributes": {
+                "viewID": "1",
+                "class": "card-wrp",
+                "bindtap": "onTapJump",
+                "pts:cell-type": "{{item.type}}",
+                "data-jump-url": "{{item.articleContentUrl}}"
+            },
+            "styles": {
+                "display": "flex",
+                "box-sizing": "border-box",
+                "flex-direction": "column",
+                "margin": "16rpx 0rpx 0rpx 16rpx",
+                "margin-top": "16rpx",
+                "margin-right": "0rpx",
+                "margin-bottom": "0rpx",
+                "margin-left": "16rpx",
+                "width": "718rpx"
+            },
+            "children": [
+                {
+                    "tag": "view",
+                    "content": "\n      \n        \n         \n        \n        \n  ",
+                    "attributes": {
+                        "viewID": "2",
+                        "class": "big-image-wrp"
+                    },
+                    "styles": {
+                        "display": "flex",
+                        "box-sizing": "border-box",
+                        "width": "100%"
+                    },
+                    "children": [
+                        {
+                            "tag": "view",
+                            "content": "\n      ",
+                            "attributes": {
+                                "viewID": "5",
+                                "class": "pts-custom-view rij-video",
+                                "pts:custom-view": "qq-rij-video-view",
+                                "mute": "true",
+                                "video-url": "{{video_url}}",
+                                "auto-play-percent": "0.5",
+                                "icon-url": "http://qqpublic.qpic.cn/qq_public/0/0-2652434506-F059E11DBA4D14791005FEBF4164D972/0",
+                                "icon-size": "40 40",
+                                "cover-url": "{{cover_image_url}}",
+                                "play-mode": "{{$needPlay}}"
+                            },
+                            "styles": {
+                                "display": "flex",
+                                "box-sizing": "border-box",
+                                "width": "718rpx",
+                                "height": "384rpx",
+                                "margin-bottom": "16rpx"
+                            },
+                            "children": []
+                        },
+                        {
+                            "tag": "view",
+                            "content": "",
+                            "attributes": {
+                                "viewID": "6",
+                                "class": "big-video-mask radius-all"
+                            },
+                            "styles": {
+                                "display": "flex",
+                                "box-sizing": "border-box",
+                                "position": "absolute",
+                                "background-color": "rgba(0, 0, 0, 0.25)",
+                                "width": "718rpx",
+                                "height": "384rpx",
+                                "margin-bottom": "16rpx",
+                                "border-radius": "16rpx"
+                            },
+                            "children": []
+                        },
+                        {
+                            "tag": "img",
+                            "content": "",
+                            "attributes": {
+                                "viewID": "7",
+                                "class": "big-video-play-icon",
+                                "wx:if": "{{item.videoPlayIcon && item.videoPlayIcon.length > 0}}",
+                                "src": "{{item.videoPlayIcon}}"
+                            },
+                            "styles": {},
+                            "children": []
+                        },
+                        {
+                            "tag": "text",
+                            "content": "{{item.vvNum}}",
+                            "attributes": {
+                                "viewID": "8",
+                                "class": "big-video-vv-num",
+                                "wx:if": "{{item.vvNum}}"
+                            },
+                            "styles": {
+                                "box-sizing": "border-box",
+                                "display": "-webkit-box",
+                                "overflow": "hidden",
+                                "position": "absolute",
+                                "font-size": "24rpx",
+                                "color": "rgb(255, 255, 255)",
+                                "-webkit-line-clamp": "1",
+                                "left": "42rpx",
+                                "bottom": "24rpx"
+                            },
+                            "children": []
+                        },
+                        {
+                            "tag": "text",
+                            "content": "{{item.videoDuration}}",
+                            "attributes": {
+                                "viewID": "9",
+                                "class": "big-video-duration",
+                                "wx:if": "{{item.videoDuration}}"
+                            },
+                            "styles": {
+                                "box-sizing": "border-box",
+                                "display": "-webkit-box",
+                                "overflow": "hidden",
+                                "position": "absolute",
+                                "font-size": "24rpx",
+                                "color": "rgb(255, 255, 255)",
+                                "-webkit-line-clamp": "1",
+                                "right": "16rpx",
+                                "bottom": "24rpx"
+                            },
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "tag": "text",
+                    "content": "{{article_title}}",
+                    "attributes": {
+                        "viewID": "3",
+                        "class": "big-title"
+                    },
+                    "styles": {
+                        "box-sizing": "border-box",
+                        "display": "-webkit-box",
+                        "overflow": "hidden",
+                        "font-size": "34rpx",
+                        "line-height": "44rpx",
+                        "color": "rgb(3, 8, 26)",
+                        "margin-bottom": "10rpx",
+                        "-webkit-line-clamp": "2"
+                    },
+                    "children": []
+                },
+                {
+                    "tag": "view",
+                    "content": "      \n    \n    \n    \n  ",
+                    "attributes": {
+                        "viewID": "4",
+                        "class": "corner-wrp"
+                    },
+                    "styles": {
+                        "display": "flex",
+                        "box-sizing": "border-box",
+                        "flex-direction": "row",
+                        "height": "32rpx"
+                    },
+                    "children": [
+                        {
+                            "tag": "text",
+                            "content": "{{item.tag}}",
+                            "attributes": {
+                                "viewID": "10",
+                                "class": "card-tag",
+                                "wx:if": "{{item.tag && item.tag.length > 0}}"
+                            },
+                            "styles": {
+                                "box-sizing": "border-box",
+                                "display": "-webkit-box",
+                                "overflow": "hidden"
+                            },
+                            "children": []
+                        },
+                        {
+                            "tag": "text",
+                            "content": "{{item.source}}",
+                            "attributes": {
+                                "viewID": "11",
+                                "class": "card-source",
+                                "wx:if": "{{item.source && item.source.length > 0}}"
+                            },
+                            "styles": {
+                                "box-sizing": "border-box",
+                                "display": "-webkit-box",
+                                "overflow": "hidden",
+                                "font-size": "24rpx",
+                                "color": "rgb(176, 179, 191)",
+                                "margin-right": "10rpx"
+                            },
+                            "children": []
+                        },
+                        {
+                            "tag": "text",
+                            "content": "{{info_title}}",
+                            "attributes": {
+                                "viewID": "12",
+                                "class": "card-comment"
+                            },
+                            "styles": {
+                                "box-sizing": "border-box",
+                                "display": "-webkit-box",
+                                "overflow": "hidden",
+                                "font-size": "24rpx",
+                                "color": "rgb(176, 179, 191)"
+                            },
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

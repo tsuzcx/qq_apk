@@ -1,6 +1,6 @@
 package com.tencent.device.msg.data;
 
-import aavi;
+import abku;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForDeviceFile;
@@ -9,17 +9,17 @@ import java.util.concurrent.ConcurrentHashMap;
 public class DeviceComnFileMsgProcessor$1
   implements Runnable
 {
-  public DeviceComnFileMsgProcessor$1(aavi paramaavi, MessageForDeviceFile paramMessageForDeviceFile) {}
+  public DeviceComnFileMsgProcessor$1(abku paramabku, MessageForDeviceFile paramMessageForDeviceFile) {}
   
   public void run()
   {
-    if (aavi.a(this.this$0).containsKey(Long.valueOf(this.a.uSessionID)))
+    if (abku.a(this.this$0).containsKey(Long.valueOf(this.a.uSessionID)))
     {
       this.a.nFileStatus = 23;
       this.a.serial();
-      aavi.a(this.this$0).getMessageFacade().updateMsgContentByUniseq(this.a.frienduin, 9501, this.a.uniseq, this.a.msgData);
-      aavi.a(this.this$0, this.a);
-      aavi.a(this.this$0).remove(Long.valueOf(this.a.uSessionID));
+      abku.a(this.this$0).getMessageFacade().updateMsgContentByUniseq(this.a.frienduin, 9501, this.a.uniseq, this.a.msgData);
+      abku.a(this.this$0, this.a);
+      abku.a(this.this$0).remove(Long.valueOf(this.a.uSessionID));
     }
   }
 }

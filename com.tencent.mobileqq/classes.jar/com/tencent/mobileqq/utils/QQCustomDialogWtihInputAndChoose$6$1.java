@@ -36,15 +36,15 @@ class QQCustomDialogWtihInputAndChoose$6$1
       this.this$1.this$0.getWindow().setAttributes((WindowManager.LayoutParams)localObject1);
       if ((this.this$1.this$0.isFirstClick) && (this.this$1.this$0.inputView.getText() != null) && (TextUtils.isEmpty(this.this$1.this$0.inputView.getText().toString())))
       {
-        localObject1 = (LinearLayout)this.this$1.this$0.mChooseLayout.findViewById(2131370012);
+        localObject1 = (LinearLayout)this.this$1.this$0.mChooseLayout.findViewById(2131370183);
         if ((localObject1 != null) && (((LinearLayout)localObject1).getChildCount() > 0))
         {
           localObject1 = ((LinearLayout)localObject1).getChildAt(0);
-          localObject2 = (TextView)((View)localObject1).findViewById(2131370011);
+          localObject2 = (TextView)((View)localObject1).findViewById(2131370182);
           if (((TextView)localObject2).getText() != null) {
             this.this$1.this$0.setInputValue(((TextView)localObject2).getText().toString());
           }
-          localObject1 = ((View)localObject1).findViewById(2131370010);
+          localObject1 = ((View)localObject1).findViewById(2131370181);
           ((View)localObject1).setVisibility(0);
           this.this$1.this$0.viewSelected = ((View)localObject1);
           this.this$1.this$0.isFirstClick = false;

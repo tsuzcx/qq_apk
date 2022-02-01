@@ -5,8 +5,8 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bgyb;
-import bgzd;
+import biit;
+import bijv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.transfile.dns.InnerDns;
@@ -27,8 +27,8 @@ import java.util.List;
 import java.util.Map;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import nko;
-import npn;
+import nro;
+import nwo;
 
 public class SonicRuntimeImpl
   extends SonicRuntime
@@ -149,7 +149,7 @@ public class SonicRuntimeImpl
   
   public String getUserAgent()
   {
-    return bgzd.a();
+    return bijv.a();
   }
   
   public boolean isNetworkValid()
@@ -201,7 +201,7 @@ public class SonicRuntimeImpl
         continue;
         label188:
         localObject1 = paramString.trim();
-        Object localObject2 = bgyb.b((String)localObject1);
+        Object localObject2 = biit.b((String)localObject1);
         if ((!"http".equals(localObject2)) && (!"https".equals(localObject2))) {
           break;
         }
@@ -210,24 +210,24 @@ public class SonicRuntimeImpl
           break;
         }
         localObject2 = ((Uri)localObject2).getHost();
-        nko localnko = nko.a();
+        nro localnro = nro.a();
         if ((((String)localObject2).endsWith(".qq.com")) || (((String)localObject2).endsWith(".tencent.com")))
         {
           if (!QLog.isColorLevel()) {
             break label456;
           }
-          QLog.d("SonicSdkImpl_SonicRuntimeImpl", 2, "isSonicUrl return true! " + npn.c((String)localObject1, new String[0]));
+          QLog.d("SonicSdkImpl_SonicRuntimeImpl", 2, "isSonicUrl return true! " + nwo.c((String)localObject1, new String[0]));
           break label456;
         }
-        if ((localnko.b(paramString)) || (localnko.g((String)localObject1)))
+        if ((localnro.b(paramString)) || (localnro.g((String)localObject1)))
         {
           if (!QLog.isColorLevel()) {
             break label458;
           }
-          QLog.d("SonicSdkImpl_SonicRuntimeImpl", 2, "isSonicUrl from white list, return true! " + npn.c((String)localObject1, new String[0]));
+          QLog.d("SonicSdkImpl_SonicRuntimeImpl", 2, "isSonicUrl from white list, return true! " + nwo.c((String)localObject1, new String[0]));
           break label458;
         }
-        QLog.e("SonicSdkImpl_SonicRuntimeImpl", 1, "isSonicUrl return false! " + npn.c((String)localObject1, new String[0]));
+        QLog.e("SonicSdkImpl_SonicRuntimeImpl", 1, "isSonicUrl return false! " + nwo.c((String)localObject1, new String[0]));
         return false;
       }
       int i = 1;

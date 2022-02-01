@@ -1,313 +1,126 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.reward.RIJRewardTask;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.currentTask.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.currentTask.2;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.dailyMissionCount.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.enable.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.getTaskProgress.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.hasRead.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.isNowInKanDianTab.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.lastTask.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.lastTask.2;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.maxTaskTimeForArticleInMs.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.maxTaskTimeWhenArticleStationaryInMs.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.missionCompletedTimeInMs.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.reportTaskCompleted.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.rijAidlInterfaceForRewardTask.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.setRead.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.taskCompletedToday.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.updateTaskProgress.1;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class rle<C, T, A>
-  implements Cloneable
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/reward/aidl/RIJAidlClientRedPacketModule;", "", "()V", "TAG", "", "value", "Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTask;", "currentTask", "currentTask$annotations", "getCurrentTask", "()Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTask;", "setCurrentTask", "(Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTask;)V", "dailyMissionCount", "", "dailyMissionCount$annotations", "getDailyMissionCount", "()I", "enable", "", "enable$annotations", "getEnable", "()Z", "isNowInKanDianTab", "isNowInKanDianTab$annotations", "lastTask", "lastTask$annotations", "getLastTask", "setLastTask", "maxTaskTimeForArticleInMs", "maxTaskTimeForArticleInMs$annotations", "getMaxTaskTimeForArticleInMs", "maxTaskTimeWhenArticleStationaryInMs", "maxTaskTimeWhenArticleStationaryInMs$annotations", "getMaxTaskTimeWhenArticleStationaryInMs", "missionCompletedTimeInMs", "missionCompletedTimeInMs$annotations", "getMissionCompletedTimeInMs", "rijAidlInterfaceForRewardTask", "Lcom/tencent/biz/pubaccount/readinjoy/reward/aidl/IRIJAidlInterfaceForRewardTask;", "getRijAidlInterfaceForRewardTask", "()Lcom/tencent/biz/pubaccount/readinjoy/reward/aidl/IRIJAidlInterfaceForRewardTask;", "getTaskProgress", "hasRead", "rowKey", "reportTaskCompleted", "", "type", "callback", "Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTaskRemoteRepo$IReportTaskProgressCallback;", "setRead", "taskCompletedToday", "updateTaskProgress", "timeInMx", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rle
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 0L;
-  private List<C> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private final rlf<C, T, A> jdField_a_of_type_Rlf;
-  private long[] jdField_a_of_type_ArrayOfLong;
+  public static final rle a = new rle();
   
-  public rle(rlf<C, T, A> paramrlf)
+  @JvmStatic
+  public static final int a()
   {
-    this.jdField_a_of_type_Rlf = paramrlf;
+    return ((Number)rlg.a((Function0)RIJAidlClientRedPacketModule.getTaskProgress.1.INSTANCE, Integer.valueOf(0))).intValue();
   }
   
-  private void a(int paramInt)
+  @Nullable
+  public static final RIJRewardTask a()
   {
-    if (paramInt < 64)
-    {
-      this.jdField_a_of_type_Long = (1L << paramInt | this.jdField_a_of_type_Long);
-      return;
-    }
-    int i = paramInt / 64 - 1;
-    if (this.jdField_a_of_type_ArrayOfLong == null) {
-      this.jdField_a_of_type_ArrayOfLong = new long[this.jdField_a_of_type_JavaUtilList.size() / 64];
-    }
-    for (;;)
-    {
-      long[] arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
-      arrayOfLong[i] = (1L << paramInt % 64 | arrayOfLong[i]);
-      return;
-      if (this.jdField_a_of_type_ArrayOfLong.length < i)
-      {
-        arrayOfLong = new long[this.jdField_a_of_type_JavaUtilList.size() / 64];
-        System.arraycopy(this.jdField_a_of_type_ArrayOfLong, 0, arrayOfLong, 0, this.jdField_a_of_type_ArrayOfLong.length);
-        this.jdField_a_of_type_ArrayOfLong = arrayOfLong;
-      }
-    }
+    return (RIJRewardTask)rlg.a((Function0)RIJAidlClientRedPacketModule.currentTask.2.INSTANCE, null);
   }
   
-  private void a(int paramInt, long paramLong)
+  private final rkw a()
   {
-    long l = -9223372036854775808L;
-    int i = paramInt + 64 - 1;
-    while (i >= paramInt)
-    {
-      if ((paramLong & l) != 0L) {
-        this.jdField_a_of_type_JavaUtilList.remove(i);
-      }
-      l >>>= 1;
-      i -= 1;
-    }
+    return (rkw)rlg.a((Function0)RIJAidlClientRedPacketModule.rijAidlInterfaceForRewardTask.1.INSTANCE, null);
   }
   
-  private void a(T paramT, int paramInt1, A paramA, int paramInt2)
+  @JvmStatic
+  public static final void a(int paramInt)
   {
-    if (paramInt2 < 0)
-    {
-      b(paramT, paramInt1, paramA);
-      return;
-    }
-    long l = this.jdField_a_of_type_ArrayOfLong[paramInt2];
-    int i = (paramInt2 + 1) * 64;
-    int j = Math.min(this.jdField_a_of_type_JavaUtilList.size(), i + 64);
-    a(paramT, paramInt1, paramA, paramInt2 - 1);
-    a(paramT, paramInt1, paramA, i, j, l);
+    rlg.a((Function0)new RIJAidlClientRedPacketModule.updateTaskProgress.1(paramInt));
   }
   
-  private void a(T paramT, int paramInt1, A paramA, int paramInt2, int paramInt3, long paramLong)
+  public static final void a(@Nullable RIJRewardTask paramRIJRewardTask)
   {
-    long l = 1L;
-    while (paramInt2 < paramInt3)
-    {
-      if ((paramLong & l) == 0L) {
-        this.jdField_a_of_type_Rlf.a(this.jdField_a_of_type_JavaUtilList.get(paramInt2), paramT, paramInt1, paramA);
-      }
-      l <<= 1;
-      paramInt2 += 1;
-    }
+    rlg.a((Function0)new RIJAidlClientRedPacketModule.currentTask.1(paramRIJRewardTask));
   }
   
-  private boolean a(int paramInt)
+  @JvmStatic
+  public static final void a(@NotNull String paramString)
   {
-    if (paramInt < 64) {
-      if ((1L << paramInt & this.jdField_a_of_type_Long) == 0L) {}
-    }
-    int i;
-    do
-    {
-      return true;
-      return false;
-      if (this.jdField_a_of_type_ArrayOfLong == null) {
-        return false;
-      }
-      i = paramInt / 64 - 1;
-      if (i >= this.jdField_a_of_type_ArrayOfLong.length) {
-        return false;
-      }
-    } while ((this.jdField_a_of_type_ArrayOfLong[i] & 1L << paramInt % 64) != 0L);
-    return false;
+    Intrinsics.checkParameterIsNotNull(paramString, "rowKey");
+    rlg.a((Function0)new RIJAidlClientRedPacketModule.setRead.1(paramString));
   }
   
-  private void b(T paramT, int paramInt, A paramA)
+  @JvmStatic
+  public static final void a(@Nullable String paramString, int paramInt, @Nullable rkd paramrkd)
   {
-    a(paramT, paramInt, paramA, 0, Math.min(64, this.jdField_a_of_type_JavaUtilList.size()), this.jdField_a_of_type_Long);
+    rlg.a((Function0)new RIJAidlClientRedPacketModule.reportTaskCompleted.1(paramString, paramInt, paramrkd));
   }
   
-  private void c(T paramT, int paramInt, A paramA)
+  public static final boolean a()
   {
-    int j = this.jdField_a_of_type_JavaUtilList.size();
-    if (this.jdField_a_of_type_ArrayOfLong == null) {}
-    for (int i = -1;; i = this.jdField_a_of_type_ArrayOfLong.length - 1)
-    {
-      a(paramT, paramInt, paramA, i);
-      a(paramT, paramInt, paramA, (i + 2) * 64, j, 0L);
-      return;
-    }
+    return ((Boolean)rlg.a((Function0)RIJAidlClientRedPacketModule.isNowInKanDianTab.1.INSTANCE, Boolean.valueOf(false))).booleanValue();
   }
   
-  /* Error */
-  public rle<C, T, A> a()
+  @JvmStatic
+  public static final boolean a(@NotNull String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: invokespecial 90	java/lang/Object:clone	()Ljava/lang/Object;
-    //   6: checkcast 2	rle
-    //   9: astore_3
-    //   10: aload_3
-    //   11: lconst_0
-    //   12: putfield 27	rle:jdField_a_of_type_Long	J
-    //   15: aload_3
-    //   16: aconst_null
-    //   17: putfield 35	rle:jdField_a_of_type_ArrayOfLong	[J
-    //   20: aload_3
-    //   21: iconst_0
-    //   22: putfield 92	rle:jdField_a_of_type_Int	I
-    //   25: aload_3
-    //   26: new 22	java/util/ArrayList
-    //   29: dup
-    //   30: invokespecial 23	java/util/ArrayList:<init>	()V
-    //   33: putfield 25	rle:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   36: aload_0
-    //   37: getfield 25	rle:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   40: invokeinterface 41 1 0
-    //   45: istore_2
-    //   46: iconst_0
-    //   47: istore_1
-    //   48: aload_3
-    //   49: astore 4
-    //   51: iload_1
-    //   52: iload_2
-    //   53: if_icmpge +50 -> 103
-    //   56: aload_0
-    //   57: iload_1
-    //   58: invokespecial 94	rle:a	(I)Z
-    //   61: ifne +23 -> 84
-    //   64: aload_3
-    //   65: getfield 25	rle:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   68: aload_0
-    //   69: getfield 25	rle:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   72: iload_1
-    //   73: invokeinterface 74 2 0
-    //   78: invokeinterface 98 2 0
-    //   83: pop
-    //   84: iload_1
-    //   85: iconst_1
-    //   86: iadd
-    //   87: istore_1
-    //   88: goto -40 -> 48
-    //   91: astore 4
-    //   93: aconst_null
-    //   94: astore_3
-    //   95: aload 4
-    //   97: invokevirtual 101	java/lang/CloneNotSupportedException:printStackTrace	()V
-    //   100: aload_3
-    //   101: astore 4
-    //   103: aload_0
-    //   104: monitorexit
-    //   105: aload 4
-    //   107: areturn
-    //   108: astore_3
-    //   109: aload_0
-    //   110: monitorexit
-    //   111: aload_3
-    //   112: athrow
-    //   113: astore 4
-    //   115: goto -20 -> 95
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	118	0	this	rle
-    //   47	41	1	i	int
-    //   45	9	2	j	int
-    //   9	92	3	localrle1	rle
-    //   108	4	3	localObject	Object
-    //   49	1	4	localrle2	rle
-    //   91	5	4	localCloneNotSupportedException1	java.lang.CloneNotSupportedException
-    //   101	5	4	localrle3	rle
-    //   113	1	4	localCloneNotSupportedException2	java.lang.CloneNotSupportedException
-    // Exception table:
-    //   from	to	target	type
-    //   2	10	91	java/lang/CloneNotSupportedException
-    //   2	10	108	finally
-    //   10	46	108	finally
-    //   56	84	108	finally
-    //   95	100	108	finally
-    //   10	46	113	java/lang/CloneNotSupportedException
-    //   56	84	113	java/lang/CloneNotSupportedException
+    Intrinsics.checkParameterIsNotNull(paramString, "rowKey");
+    return ((Boolean)rlg.a((Function0)new RIJAidlClientRedPacketModule.hasRead.1(paramString), Boolean.valueOf(false))).booleanValue();
   }
   
-  public void a(C paramC)
+  @JvmStatic
+  public static final int b()
   {
-    if (paramC == null) {
-      try
-      {
-        throw new IllegalArgumentException("callback cannot be null");
-      }
-      finally {}
-    }
-    int i = this.jdField_a_of_type_JavaUtilList.lastIndexOf(paramC);
-    if ((i < 0) || (a(i))) {
-      this.jdField_a_of_type_JavaUtilList.add(paramC);
-    }
+    return ((Number)rlg.a((Function0)RIJAidlClientRedPacketModule.taskCompletedToday.1.INSTANCE, Integer.valueOf(0))).intValue();
   }
   
-  public void a(T paramT, int paramInt, A paramA)
+  @Nullable
+  public static final RIJRewardTask b()
   {
-    for (;;)
-    {
-      try
-      {
-        this.jdField_a_of_type_Int += 1;
-        c(paramT, paramInt, paramA);
-        this.jdField_a_of_type_Int -= 1;
-        if (this.jdField_a_of_type_Int == 0)
-        {
-          if (this.jdField_a_of_type_ArrayOfLong != null)
-          {
-            paramInt = this.jdField_a_of_type_ArrayOfLong.length - 1;
-            if (paramInt >= 0)
-            {
-              long l = this.jdField_a_of_type_ArrayOfLong[paramInt];
-              if (l == 0L) {
-                break label123;
-              }
-              a((paramInt + 1) * 64, l);
-              this.jdField_a_of_type_ArrayOfLong[paramInt] = 0L;
-              break label123;
-            }
-          }
-          if (this.jdField_a_of_type_Long != 0L)
-          {
-            a(0, this.jdField_a_of_type_Long);
-            this.jdField_a_of_type_Long = 0L;
-          }
-        }
-        return;
-      }
-      finally {}
-      label123:
-      paramInt -= 1;
-    }
+    return (RIJRewardTask)rlg.a((Function0)RIJAidlClientRedPacketModule.lastTask.2.INSTANCE, null);
   }
   
-  /* Error */
-  public void b(C paramC)
+  public static final void b(@Nullable RIJRewardTask paramRIJRewardTask)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 92	rle:jdField_a_of_type_Int	I
-    //   6: ifne +17 -> 23
-    //   9: aload_0
-    //   10: getfield 25	rle:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   13: aload_1
-    //   14: invokeinterface 121 2 0
-    //   19: pop
-    //   20: aload_0
-    //   21: monitorexit
-    //   22: return
-    //   23: aload_0
-    //   24: getfield 25	rle:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   27: aload_1
-    //   28: invokeinterface 114 2 0
-    //   33: istore_2
-    //   34: iload_2
-    //   35: iflt -15 -> 20
-    //   38: aload_0
-    //   39: iload_2
-    //   40: invokespecial 123	rle:a	(I)V
-    //   43: goto -23 -> 20
-    //   46: astore_1
-    //   47: aload_0
-    //   48: monitorexit
-    //   49: aload_1
-    //   50: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	51	0	this	rle
-    //   0	51	1	paramC	C
-    //   33	7	2	i	int
-    // Exception table:
-    //   from	to	target	type
-    //   2	20	46	finally
-    //   23	34	46	finally
-    //   38	43	46	finally
+    rlg.a((Function0)new RIJAidlClientRedPacketModule.lastTask.1(paramRIJRewardTask));
+  }
+  
+  public static final boolean b()
+  {
+    return ((Boolean)rlg.a((Function0)RIJAidlClientRedPacketModule.enable.1.INSTANCE, Boolean.valueOf(false))).booleanValue();
+  }
+  
+  public static final int c()
+  {
+    return ((Number)rlg.a((Function0)RIJAidlClientRedPacketModule.missionCompletedTimeInMs.1.INSTANCE, Integer.valueOf(0))).intValue();
+  }
+  
+  public static final int d()
+  {
+    return ((Number)rlg.a((Function0)RIJAidlClientRedPacketModule.dailyMissionCount.1.INSTANCE, Integer.valueOf(0))).intValue();
+  }
+  
+  public static final int e()
+  {
+    return ((Number)rlg.a((Function0)RIJAidlClientRedPacketModule.maxTaskTimeForArticleInMs.1.INSTANCE, Integer.valueOf(0))).intValue();
+  }
+  
+  public static final int f()
+  {
+    return ((Number)rlg.a((Function0)RIJAidlClientRedPacketModule.maxTaskTimeWhenArticleStationaryInMs.1.INSTANCE, Integer.valueOf(0))).intValue();
   }
 }
 

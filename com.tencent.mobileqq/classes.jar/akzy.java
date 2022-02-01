@@ -1,22 +1,19 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
-import mqq.os.MqqHandler;
+import android.view.View;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
 
 public class akzy
-  extends MqqHandler
+  implements akzh
 {
-  public akzy(PhoneContactTabView paramPhoneContactTabView) {}
+  public akzy(DrawHbFragment paramDrawHbFragment, View paramView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt)
   {
-    switch (paramMessage.what)
+    if (paramInt == 0)
     {
-    case 1: 
-    case 2: 
-    default: 
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131368797).setVisibility(8);
       return;
     }
-    this.a.d();
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131368797).setVisibility(0);
   }
 }
 

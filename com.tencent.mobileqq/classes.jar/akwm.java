@@ -1,296 +1,493 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.utils.ViewUtils;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.qwallet.notifymsg.NotifyMsgManager.1;
+import com.tencent.mobileqq.activity.qwallet.notifymsg.NotifyMsgManager.2;
+import com.tencent.mobileqq.activity.qwallet.notifymsg.NotifyMsgManager.3;
+import com.tencent.mobileqq.activity.qwallet.notifymsg.NotifyMsgManager.4;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0x857.TroopTips0x857.GoldMsgTipsElem;
+import tencent.im.oidb.cmd0x858.oidb_0x858.GoldMsgTipsElem;
 
 public class akwm
 {
-  private final float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = -1;
-  private akwg jdField_a_of_type_Akwg;
-  private akwn jdField_a_of_type_Akwn;
-  private final Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-  private final float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int = 4;
-  private final Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  private final float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int = Color.parseColor("#298be7");
-  private final float d;
-  private float e;
-  private float f;
-  private float g;
-  private float h;
-  private float i;
-  private float j;
-  private float k;
+  public static int a;
+  public static akwk a;
+  public static Object a;
+  public static ArrayList<akwn> a;
+  public static ArrayList<akwl> b = new ArrayList();
+  public static ArrayList<akwl> c = new ArrayList(128);
   
-  public akwm(akwg paramakwg, float paramFloat1, float paramFloat2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  static
   {
-    this.jdField_a_of_type_Akwg = paramakwg;
-    Object localObject = this.jdField_a_of_type_Akwg.getContext();
-    this.jdField_a_of_type_Float = (ViewUtils.getScreenWidth() * 0.0375F);
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float * 0.5F);
-    this.d = paramInt3;
-    paramakwg = a(((Context)localObject).getResources(), 2130849070, (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
-    localObject = a(((Context)localObject).getResources(), 2130849072, (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
-    ColorDrawable localColorDrawable = new ColorDrawable(this.jdField_c_of_type_Int);
-    localColorDrawable.setBounds(0, 0, (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap((int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float, Bitmap.Config.RGB_565);
-    Canvas localCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    localColorDrawable.draw(localCanvas);
-    if (paramakwg != null) {
-      localCanvas.drawBitmap(paramakwg, (this.jdField_a_of_type_Float - paramakwg.getWidth()) / 2.0F, (this.jdField_b_of_type_Float - paramakwg.getHeight()) / 2.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-    }
-    this.jdField_b_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap((int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float, Bitmap.Config.RGB_565);
-    localCanvas.setBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap);
-    localColorDrawable.draw(localCanvas);
-    if (localObject != null) {
-      localCanvas.drawBitmap((Bitmap)localObject, (this.jdField_a_of_type_Float - ((Bitmap)localObject).getWidth()) / 2.0F, (this.jdField_b_of_type_Float - ((Bitmap)localObject).getHeight()) / 2.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-    }
-    this.h = (1.0F * paramInt4 / paramInt2 * paramFloat1 + this.jdField_a_of_type_Float);
-    this.g = (2000.0F / paramInt2 * paramFloat1);
-    this.j = (paramInt3 - this.jdField_a_of_type_Float);
-    this.k = this.jdField_a_of_type_Float;
-    this.e = this.jdField_a_of_type_Float;
-    this.f = this.h;
+    jdField_a_of_type_Int = 0;
+    jdField_a_of_type_JavaLangObject = new Object();
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  private void a(float paramFloat, Canvas paramCanvas)
+  public static akwl a(int paramInt, String paramString, MessageRecord paramMessageRecord)
   {
-    paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, paramFloat, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-  }
-  
-  private boolean a(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    return (Math.abs(paramFloat1 - paramFloat3) <= this.jdField_a_of_type_Float * 2.0F) && (paramFloat2 > 0.0F) && (paramFloat2 < this.jdField_b_of_type_Float);
-  }
-  
-  private void b(float paramFloat, Canvas paramCanvas)
-  {
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, paramFloat - this.jdField_a_of_type_Float, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-  }
-  
-  private boolean b(float paramFloat1, float paramFloat2)
-  {
-    return Math.abs(paramFloat1 - paramFloat2) == 0.0F;
-  }
-  
-  public float a()
-  {
-    return this.jdField_b_of_type_Float;
-  }
-  
-  public int a(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
-  {
-    int i1 = paramOptions.outHeight;
-    int i2 = paramOptions.outWidth;
-    int n = 1;
-    int m = 1;
-    if ((i1 > paramInt2) || (i2 > paramInt1))
+    akwl localakwl = null;
+    ??? = localakwl;
+    if (a(paramInt))
     {
-      i1 /= 2;
-      i2 /= 2;
-      for (;;)
+      ??? = localakwl;
+      if (!TextUtils.isEmpty(paramString))
       {
-        n = m;
-        if (i1 / m <= paramInt2) {
-          break;
+        if (paramMessageRecord != null) {
+          break label32;
         }
-        n = m;
-        if (i2 / m <= paramInt1) {
-          break;
-        }
-        m *= 2;
+        ??? = localakwl;
       }
-    }
-    return n;
-  }
-  
-  public Bitmap a(Resources paramResources, int paramInt1, int paramInt2, int paramInt3)
-  {
-    int m = 1;
-    if (paramResources == null) {}
-    while (paramInt1 <= 0) {
-      return null;
-    }
-    try
-    {
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inJustDecodeBounds = true;
-      BitmapFactory.decodeResource(paramResources, paramInt1, localOptions);
-      if ((paramInt2 <= 0) && (paramInt3 <= 0)) {}
-      for (paramInt2 = m;; paramInt2 = a(localOptions, paramInt2, paramInt3))
-      {
-        localOptions.inJustDecodeBounds = false;
-        localOptions.inSampleSize = paramInt2;
-        return BitmapFactory.decodeResource(paramResources, paramInt1, localOptions);
-      }
-      return null;
-    }
-    catch (Exception paramResources)
-    {
-      paramResources.printStackTrace();
-      return null;
-    }
-    catch (OutOfMemoryError paramResources)
-    {
-      paramResources.printStackTrace();
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Akwn = null;
-    this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-    this.jdField_b_of_type_AndroidGraphicsBitmap.recycle();
-  }
-  
-  public void a(float paramFloat1, float paramFloat2)
-  {
-    if (paramFloat1 >= 0.0F) {}
-    for (this.k = (this.jdField_a_of_type_Float + paramFloat1);; this.k = this.jdField_a_of_type_Float)
-    {
-      if (paramFloat2 >= 0.0F) {
-        this.j = Math.min(this.jdField_a_of_type_Float + paramFloat2, this.d - this.jdField_a_of_type_Float);
-      }
-      return;
-    }
-  }
-  
-  public void a(akwn paramakwn)
-  {
-    this.jdField_a_of_type_Akwn = paramakwn;
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    paramCanvas.save();
-    int m = this.jdField_a_of_type_AndroidGraphicsPaint.getColor();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_c_of_type_Int);
-    paramCanvas.drawRect(this.e, 0.0F, this.f, this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
-    paramCanvas.drawRect(this.e, this.jdField_b_of_type_Float - this.jdField_b_of_type_Int, this.f, this.jdField_b_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(m);
-    b(this.e, paramCanvas);
-    a(this.f, paramCanvas);
-    paramCanvas.restore();
-  }
-  
-  public void a(MotionEvent paramMotionEvent)
-  {
-    float f1 = paramMotionEvent.getX();
-    if (paramMotionEvent.getAction() == 1) {
-      this.jdField_a_of_type_Int = -1;
-    }
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.i = paramMotionEvent.getX();
-      return;
-    }
-    float f2;
-    float f3;
-    if (paramMotionEvent.getAction() == 2)
-    {
-      f2 = f1 - this.i;
-      if (this.jdField_a_of_type_Int != 0) {
-        break label186;
-      }
-      f3 = Math.max(this.f - this.h, this.k);
-      if (f1 < f3)
-      {
-        this.e = f3;
-        return;
-      }
-      if ((f2 >= 0.0F) || (f2 + this.e > this.jdField_a_of_type_Float)) {
-        break label148;
-      }
-      this.e = f3;
     }
     for (;;)
     {
-      this.jdField_a_of_type_Akwg.invalidate();
-      if (this.jdField_a_of_type_Akwn == null) {
-        break;
+      return ???;
+      label32:
+      if (QLog.isColorLevel()) {
+        QLog.i("NotifyMsgManager", 2, "queryGoldMsgRecord btype:" + paramInt + " bid:" + paramString + " dbstate:" + jdField_a_of_type_Int);
       }
-      this.jdField_a_of_type_Akwn.a(this.e, this.f);
-      return;
-      label148:
-      if (this.f - f1 < this.g)
+      if (jdField_a_of_type_Int == 2)
       {
-        this.e = (this.f - this.g);
+        localakwl = a(c, paramInt, paramString);
+        if (localakwl != null) {
+          a(paramMessageRecord, localakwl, paramInt, paramString, true);
+        }
+        ??? = localakwl;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("NotifyMsgManager", 2, "queryGoldMsgRecord check in cache:" + localakwl);
+        return localakwl;
       }
-      else
+      if (paramInt != 2) {}
+      synchronized (jdField_a_of_type_JavaUtilArrayList)
       {
-        this.e = f1;
-        continue;
-        label186:
-        if (this.jdField_a_of_type_Int == 1)
+        if (!a(paramInt, paramString, paramMessageRecord)) {
+          jdField_a_of_type_JavaUtilArrayList.add(new akwn(paramInt, paramString, paramMessageRecord));
+        }
+        ??? = localakwl;
+        if (jdField_a_of_type_Int != 0) {
+          continue;
+        }
+        b();
+        return null;
+      }
+    }
+  }
+  
+  public static akwl a(akwl paramakwl1, akwl paramakwl2)
+  {
+    if ((paramakwl1 == null) || (paramakwl2 == null)) {}
+    while ((paramakwl1.b != paramakwl2.b) || (paramakwl1.jdField_a_of_type_JavaLangString == null) || (!paramakwl1.jdField_a_of_type_JavaLangString.equals(paramakwl2.jdField_a_of_type_JavaLangString))) {
+      return paramakwl2;
+    }
+    int i;
+    if (paramakwl1.b == 1)
+    {
+      i = paramakwl2.a("state", 0);
+      int j = paramakwl1.a("state", 0);
+      if (i == 2) {
+        break label92;
+      }
+      i = j;
+    }
+    label92:
+    for (;;)
+    {
+      paramakwl2.a("state", i);
+      return paramakwl2;
+      paramakwl2.jdField_a_of_type_OrgJsonJSONObject = paramakwl1.jdField_a_of_type_OrgJsonJSONObject;
+      return paramakwl2;
+    }
+  }
+  
+  public static akwl a(ArrayList<akwl> paramArrayList, int paramInt, String paramString)
+  {
+    Object localObject;
+    if (paramArrayList == null)
+    {
+      localObject = null;
+      return localObject;
+    }
+    int i = 0;
+    for (;;)
+    {
+      if (i >= paramArrayList.size()) {
+        break label75;
+      }
+      akwl localakwl = (akwl)paramArrayList.get(i);
+      if ((localakwl != null) && (localakwl.b == paramInt) && (localakwl.jdField_a_of_type_JavaLangString != null))
+      {
+        localObject = localakwl;
+        if (localakwl.jdField_a_of_type_JavaLangString.equals(paramString)) {
+          break;
+        }
+      }
+      i += 1;
+    }
+    label75:
+    return null;
+  }
+  
+  public static ArrayList<akwl> a(int paramInt)
+  {
+    if (!a(paramInt)) {}
+    label68:
+    do
+    {
+      return null;
+      if (jdField_a_of_type_Int == 2)
+      {
+        ArrayList localArrayList = a(c, paramInt);
+        StringBuilder localStringBuilder;
+        if (QLog.isColorLevel())
         {
-          f3 = Math.min(this.e + this.h, this.j);
-          if (f1 > f3)
-          {
-            this.f = f3;
-            return;
+          localStringBuilder = new StringBuilder().append("queryRecordsInMemory size:");
+          if (localArrayList == null) {
+            break label68;
           }
-          if ((f2 > 0.0F) && (f2 + this.f >= this.h)) {
-            this.f = f3;
-          } else if (f1 - this.e < this.g) {
-            this.f = (this.e + this.g);
-          } else {
-            this.f = f1;
+        }
+        for (paramInt = localArrayList.size();; paramInt = 0)
+        {
+          QLog.i("NotifyMsgManager", 2, paramInt);
+          return localArrayList;
+        }
+      }
+    } while (jdField_a_of_type_Int != 0);
+    b();
+    return null;
+  }
+  
+  protected static ArrayList<akwl> a(ArrayList<akwl> paramArrayList, int paramInt)
+  {
+    if (paramArrayList == null) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < paramArrayList.size())
+    {
+      akwl localakwl = (akwl)paramArrayList.get(i);
+      if ((localakwl != null) && (localakwl.b == paramInt)) {
+        localArrayList.add(localakwl);
+      }
+      i += 1;
+    }
+    return localArrayList;
+  }
+  
+  public static void a()
+  {
+    if (jdField_a_of_type_Int == 0) {
+      b();
+    }
+  }
+  
+  public static void a(int paramInt, TroopTips0x857.GoldMsgTipsElem paramGoldMsgTipsElem, oidb_0x858.GoldMsgTipsElem paramGoldMsgTipsElem1)
+  {
+    if ((paramInt == 3000) && (paramGoldMsgTipsElem1 != null)) {
+      if (!paramGoldMsgTipsElem1.type.has()) {
+        break label310;
+      }
+    }
+    label300:
+    label310:
+    for (paramInt = paramGoldMsgTipsElem1.type.get();; paramInt = 0)
+    {
+      if (paramGoldMsgTipsElem1.billno.has()) {}
+      for (paramGoldMsgTipsElem = paramGoldMsgTipsElem1.billno.get();; paramGoldMsgTipsElem = null)
+      {
+        int i = paramInt;
+        Object localObject = paramGoldMsgTipsElem;
+        if (paramGoldMsgTipsElem1.action.has())
+        {
+          i = paramGoldMsgTipsElem1.action.get();
+          if (QLog.isColorLevel()) {
+            QLog.i("NotifyMsgManager", 2, "onReceiveAAPaySysNotify type:" + paramInt + " billno:" + paramGoldMsgTipsElem + " action:" + i);
+          }
+          if (paramInt != 3)
+          {
+            label123:
+            do
+            {
+              return;
+            } while (((paramInt != 1) && (paramInt != 0)) || (paramGoldMsgTipsElem == null));
+            if (!paramGoldMsgTipsElem.type.has()) {
+              break label300;
+            }
+          }
+        }
+        for (paramInt = paramGoldMsgTipsElem.type.get();; paramInt = 0)
+        {
+          if (paramGoldMsgTipsElem.billno.has()) {}
+          for (paramGoldMsgTipsElem1 = paramGoldMsgTipsElem.billno.get();; paramGoldMsgTipsElem1 = null)
+          {
+            i = paramInt;
+            localObject = paramGoldMsgTipsElem1;
+            if (paramGoldMsgTipsElem.action.has())
+            {
+              i = paramGoldMsgTipsElem.action.get();
+              paramGoldMsgTipsElem = paramGoldMsgTipsElem1;
+              break;
+              paramGoldMsgTipsElem1 = albw.a();
+              if (paramGoldMsgTipsElem1 == null) {
+                break label123;
+              }
+              localObject = new akwl(0, paramGoldMsgTipsElem1.getLongAccountUin(), 1, paramGoldMsgTipsElem, 0L, null);
+              ((akwl)localObject).a("state", i);
+              a(paramGoldMsgTipsElem1.getLongAccountUin(), (akwl)localObject);
+              localObject = new Bundle();
+              ((Bundle)localObject).putInt("btype", 1);
+              ((Bundle)localObject).putString("bid", paramGoldMsgTipsElem);
+              paramGoldMsgTipsElem1.notifyObservers(akwo.class, 1, true, (Bundle)localObject);
+              return;
+            }
+            int j = 0;
+            paramGoldMsgTipsElem = (TroopTips0x857.GoldMsgTipsElem)localObject;
+            paramInt = i;
+            i = j;
+            break;
           }
         }
       }
     }
   }
   
-  public boolean a()
+  protected static void a(long paramLong, akwl paramakwl)
   {
-    return (!b(this.e, this.jdField_a_of_type_Float)) || (!b(this.f, this.h));
-  }
-  
-  public boolean a(float paramFloat1, float paramFloat2)
-  {
-    boolean bool1 = a(paramFloat1, paramFloat2, this.e - this.jdField_c_of_type_Float);
-    boolean bool2 = a(paramFloat1, paramFloat2, this.f + this.jdField_c_of_type_Float);
-    if (bool1)
+    if ((paramakwl == null) || (!a(paramakwl.b)) || (TextUtils.isEmpty(paramakwl.jdField_a_of_type_JavaLangString))) {}
+    Object localObject;
+    do
     {
-      this.jdField_a_of_type_Int = 0;
-      return true;
+      for (;;)
+      {
+        return;
+        localObject = a(c, paramakwl.b, paramakwl.jdField_a_of_type_JavaLangString);
+        if (localObject != null) {
+          break;
+        }
+        if (jdField_a_of_type_Int == 2)
+        {
+          c.add(paramakwl);
+          localObject = new ArrayList();
+          ((ArrayList)localObject).add(paramakwl);
+          a((ArrayList)localObject, true);
+          return;
+        }
+        localObject = a(b, paramakwl.b, paramakwl.jdField_a_of_type_JavaLangString);
+        if (localObject == null) {
+          b.add(paramakwl);
+        }
+        while (jdField_a_of_type_Int == 0)
+        {
+          b();
+          return;
+          a(paramakwl, (akwl)localObject);
+        }
+      }
+    } while (paramakwl.b == 2);
+    a(paramakwl, (akwl)localObject);
+    paramakwl = new ArrayList();
+    paramakwl.add(localObject);
+    a(paramakwl, false);
+  }
+  
+  public static void a(akwn paramakwn)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("NotifyMsgManager", 2, "notifyUI start");
     }
-    if (bool2)
+    QQAppInterface localQQAppInterface;
+    if ((paramakwn != null) && (paramakwn.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null))
     {
-      this.jdField_a_of_type_Int = 1;
-      return true;
+      localQQAppInterface = albw.a();
+      if (localQQAppInterface != null) {
+        break label34;
+      }
     }
-    return false;
+    label34:
+    do
+    {
+      return;
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("btype", paramakwn.jdField_a_of_type_Int);
+      localBundle.putString("bid", paramakwn.jdField_a_of_type_JavaLangString);
+      localQQAppInterface.notifyObservers(akwo.class, 1, true, localBundle);
+    } while (!QLog.isColorLevel());
+    QLog.i("NotifyMsgManager", 2, "notifyUI btype:" + paramakwn.jdField_a_of_type_Int + " bid:" + paramakwn.jdField_a_of_type_JavaLangString);
   }
   
-  public float b()
+  public static void a(String paramString1, int paramInt, String paramString2)
   {
-    return this.jdField_a_of_type_Float;
+    if (((paramInt != 1) && (paramInt != 3000)) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      return;
+      localQQAppInterface = albw.a();
+    } while (localQQAppInterface == null);
+    paramString2 = new akwl(0, localQQAppInterface.getLongAccountUin(), 2, paramString2, 0L, null);
+    paramString2.a("groupUin", paramString1);
+    paramString2.a("groupType", paramInt);
+    a(localQQAppInterface.getLongAccountUin(), paramString2);
   }
   
-  public void b()
+  public static void a(ArrayList<akwl> paramArrayList, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Akwn = null;
-    this.e = 0.0F;
-    this.f = 0.0F;
+    ThreadManager.post(new NotifyMsgManager.4(paramBoolean, paramArrayList), 5, null, false);
   }
   
-  public float c()
+  public static void a(List<akwn> paramList)
   {
-    return this.f - this.e;
+    if ((paramList == null) || (paramList.size() <= 0)) {}
+    ArrayList localArrayList;
+    do
+    {
+      return;
+      localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        akwn localakwn = (akwn)paramList.next();
+        if ((localakwn != null) && (a(localakwn.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, localakwn.jdField_a_of_type_Int, localakwn.jdField_a_of_type_JavaLangString, false))) {
+          localArrayList.add(localakwn);
+        }
+      }
+    } while (localArrayList.size() <= 0);
+    ThreadManager.post(new NotifyMsgManager.2(localArrayList), 5, null, false);
+  }
+  
+  protected static boolean a(int paramInt)
+  {
+    return (paramInt == 1) || (paramInt == 2);
+  }
+  
+  protected static boolean a(int paramInt, String paramString, MessageRecord paramMessageRecord)
+  {
+    boolean bool2 = false;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < jdField_a_of_type_JavaUtilArrayList.size())
+      {
+        akwn localakwn = (akwn)jdField_a_of_type_JavaUtilArrayList.get(i);
+        if ((localakwn != null) && (localakwn.jdField_a_of_type_Int == paramInt) && (localakwn.jdField_a_of_type_JavaLangString != null) && (localakwn.jdField_a_of_type_JavaLangString.equals(paramString)) && (localakwn.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == paramMessageRecord)) {
+          bool1 = true;
+        }
+      }
+      else
+      {
+        return bool1;
+      }
+      i += 1;
+    }
+  }
+  
+  public static boolean a(MessageRecord paramMessageRecord, akwl paramakwl, int paramInt, String paramString, boolean paramBoolean)
+  {
+    akwl localakwl;
+    int i;
+    if ((paramMessageRecord != null) && (paramString != null)) {
+      if (paramInt == 1)
+      {
+        localakwl = paramakwl;
+        if (paramakwl == null) {
+          localakwl = a(c, paramInt, paramString);
+        }
+        if (localakwl == null) {
+          break label241;
+        }
+        i = localakwl.a("state", -1);
+        paramakwl = paramMessageRecord.getExtInfoFromExtStr("qqpay_state");
+        if (TextUtils.isEmpty(paramakwl)) {}
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        paramInt = Integer.valueOf(paramakwl).intValue();
+        if ((i == -1) || (i == paramInt)) {
+          break label241;
+        }
+        paramMessageRecord.saveExtInfoToExtStr("qqpay_state", String.valueOf(i));
+        bool = true;
+        if ((bool) && (paramBoolean)) {
+          ThreadManager.post(new NotifyMsgManager.3(paramMessageRecord), 5, null, false);
+        }
+        return bool;
+      }
+      catch (Exception paramakwl)
+      {
+        if (QLog.isColorLevel()) {
+          paramakwl.printStackTrace();
+        }
+      }
+      paramInt = -1;
+      continue;
+      if (paramInt == 2)
+      {
+        localakwl = paramakwl;
+        if (paramakwl == null) {
+          localakwl = a(c, paramInt, paramString);
+        }
+        if ((localakwl != null) && ((paramMessageRecord instanceof MessageForQQWalletMsg)))
+        {
+          paramakwl = (MessageForQQWalletMsg)paramMessageRecord;
+          if ((paramakwl.mQQWalletRedPacketMsg != null) && (paramakwl.mQQWalletRedPacketMsg.isOpened))
+          {
+            paramakwl.mQQWalletRedPacketMsg.isOpened = true;
+            paramakwl.msgData = paramakwl.getBytes();
+            paramString = albw.a();
+            if (paramString != null) {
+              paramString.getMessageFacade().updateMsgContentByUniseq(paramakwl.frienduin, paramakwl.istroop, paramakwl.uniseq, paramakwl.msgData);
+            }
+          }
+        }
+      }
+      label241:
+      boolean bool = false;
+    }
+  }
+  
+  protected static void b()
+  {
+    jdField_a_of_type_Int = 1;
+    ThreadManager.post(new NotifyMsgManager.1(), 10, null, false);
+  }
+  
+  public static void c()
+  {
+    jdField_a_of_type_Int = 0;
+    c.clear();
+    jdField_a_of_type_JavaUtilArrayList.clear();
+    b.clear();
+    if (jdField_a_of_type_Akwk != null) {}
+    try
+    {
+      jdField_a_of_type_Akwk.close();
+      jdField_a_of_type_Akwk = null;
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
   }
 }
 

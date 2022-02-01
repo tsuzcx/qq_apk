@@ -1,22 +1,12 @@
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.together.writetogether.websocket.WriteTogetherWebSocketSender;
-import com.tencent.mobileqq.together.writetogether.websocket.WriteTogetherWebSocketSender.MyNetInfoHandler.1;
+import com.tencent.mobileqq.startup.step.Step;
 
-public class bdjo
-  extends bdjj
+public abstract interface bdjo
 {
-  private bdjo(WriteTogetherWebSocketSender paramWriteTogetherWebSocketSender) {}
-  
-  protected void a()
-  {
-    ThreadManagerV2.excute(new WriteTogetherWebSocketSender.MyNetInfoHandler.1(this), 128, null, true);
-  }
-  
-  protected void b() {}
+  public abstract Step a(int paramInt, bdgy parambdgy, int[] paramArrayOfInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdjo
  * JD-Core Version:    0.7.0.1
  */

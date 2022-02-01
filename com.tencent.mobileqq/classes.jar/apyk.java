@@ -1,44 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.ark.ArkEnvironmentManager.IDataReport;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.app.AppRuntime;
 
-public class apyk
+public final class apyk
+  implements ArkEnvironmentManager.IDataReport
 {
-  private String a = "";
-  private String b = "";
-  
-  public static apyk a(String paramString)
+  public void report(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, String paramString3, String paramString4)
   {
-    if (paramString == null) {}
-    do
-    {
-      return null;
-      try
-      {
-        apyk localapyk = new apyk();
-        paramString = new JSONObject(paramString);
-        localapyk.a = paramString.optString("dest_icon", "");
-        localapyk.b = paramString.optString("avatar_pendant", "");
-        return localapyk;
-      }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("TogetherEntryConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
-  }
-  
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public String b()
-  {
-    return this.b;
+    QQAppInterface localQQAppInterface = null;
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      localQQAppInterface = (QQAppInterface)localAppRuntime;
+    }
+    apyp.a(localQQAppInterface, paramString1, paramString2, paramInt2, paramInt1, paramInt3, paramLong1, paramLong2, paramString3, paramString4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apyk
  * JD-Core Version:    0.7.0.1
  */

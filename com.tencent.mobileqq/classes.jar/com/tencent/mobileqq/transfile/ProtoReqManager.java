@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.transfile;
 
-import amqq;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
-import azby;
+import ante;
+import bahm;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
@@ -18,7 +18,7 @@ import mqq.app.BuiltInServlet;
 import mqq.app.NewIntent;
 
 public class ProtoReqManager
-  implements amqq
+  implements ante
 {
   public static final String KEY_RUNNABLE_INDEX = "key_runnable_index";
   public static final String TAG = "Q.richmedia.ProtoReqManager";
@@ -75,9 +75,9 @@ public class ProtoReqManager
   {
     if ((this.mApp instanceof QQAppInterface))
     {
-      paramProtoReq.tryTime = azby.a((QQAppInterface)this.mApp);
-      paramProtoReq.tryCount = azby.b((QQAppInterface)this.mApp);
-      paramProtoReq.fixScheduleCount = azby.c((QQAppInterface)this.mApp);
+      paramProtoReq.tryTime = bahm.a((QQAppInterface)this.mApp);
+      paramProtoReq.tryCount = bahm.b((QQAppInterface)this.mApp);
+      paramProtoReq.fixScheduleCount = bahm.c((QQAppInterface)this.mApp);
       if (QLog.isColorLevel()) {
         QLog.d("Q.richmedia.ProtoReqManager", 2, "ptt config from dpc:" + paramProtoReq.tryTime + paramProtoReq.tryCount + paramProtoReq.fixScheduleCount);
       }
@@ -307,7 +307,7 @@ public class ProtoReqManager
         ((NewIntent)localObject2).putExtra("key_runnable_index", i);
         ((NewIntent)localObject2).putExtra("key_fastresend", paramProtoReq.isFastResendEnable);
         ((NewIntent)localObject2).putExtra("remind_slown_network", paramProtoReq.isNeedRemindSlowNetwork);
-        if ((!isPttCmd(paramProtoReq)) || (!(this.mApp instanceof QQAppInterface)) || (!azby.d((QQAppInterface)this.mApp))) {
+        if ((!isPttCmd(paramProtoReq)) || (!(this.mApp instanceof QQAppInterface)) || (!bahm.d((QQAppInterface)this.mApp))) {
           break label509;
         }
         ((NewIntent)localObject2).putExtra("quickSendEnable", true);

@@ -1,11 +1,11 @@
 package com.tencent.hippy.qq.update;
 
-import bbzh;
+import bdgc;
 import com.tencent.hippy.qq.app.HippyQQEngine;
 import com.tencent.mobileqq.soload.LoadExtResult;
 
 class HippyQQLibraryManager$2
-  implements bbzh
+  implements bdgc
 {
   HippyQQLibraryManager$2(HippyQQLibraryManager paramHippyQQLibraryManager) {}
   

@@ -10,8 +10,9 @@ import com.squareup.okhttp.Response.Builder;
 import com.squareup.okhttp.ResponseBody;
 import com.squareup.okhttp.internal.Version;
 import com.tencent.qapmsdk.common.logger.Logger;
-import com.tencent.qapmsdk.impl.instrumentation.c;
+import com.tencent.qapmsdk.impl.instrumentation.QAPMReplaceCallSite;
 import com.tencent.qapmsdk.impl.instrumentation.d;
+import com.tencent.qapmsdk.impl.instrumentation.e;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
@@ -20,6 +21,7 @@ public class QAPMOkHttp2Instrumentation
 {
   private static final String TAG = "QAPM_Impl_QAPMOkHttp2Instrumentation";
   
+  @QAPMReplaceCallSite
   public static Response.Builder body(Response.Builder paramBuilder, ResponseBody paramResponseBody)
   {
     if (isSpecificOkhttp()) {
@@ -28,6 +30,7 @@ public class QAPMOkHttp2Instrumentation
     return new g(paramBuilder).body(paramResponseBody);
   }
   
+  @QAPMReplaceCallSite
   public static Request build(Request.Builder paramBuilder)
   {
     return new f(paramBuilder).build();
@@ -55,6 +58,7 @@ public class QAPMOkHttp2Instrumentation
     return true;
   }
   
+  @QAPMReplaceCallSite
   public static Response.Builder newBuilder(Response.Builder paramBuilder)
   {
     if (isSpecificOkhttp()) {
@@ -63,6 +67,7 @@ public class QAPMOkHttp2Instrumentation
     return new g(paramBuilder);
   }
   
+  @QAPMReplaceCallSite
   public static Call newCall(OkHttpClient paramOkHttpClient, Request paramRequest)
   {
     Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMOkHttp2Instrumentation", "OkHttpInstrumentation2 - wrapping newCall" });
@@ -72,18 +77,19 @@ public class QAPMOkHttp2Instrumentation
     return new a(paramOkHttpClient, paramRequest);
   }
   
+  @QAPMReplaceCallSite
   public static HttpURLConnection open(OkUrlFactory paramOkUrlFactory, URL paramURL)
   {
     paramURL = paramOkUrlFactory.open(paramURL);
     if ((paramURL instanceof HttpsURLConnection)) {
-      paramOkUrlFactory = new d((HttpsURLConnection)paramURL);
+      paramOkUrlFactory = new e((HttpsURLConnection)paramURL);
     }
     do
     {
       return paramOkUrlFactory;
       paramOkUrlFactory = paramURL;
     } while (!(paramURL instanceof HttpURLConnection));
-    return new c(paramURL);
+    return new d(paramURL);
   }
 }
 

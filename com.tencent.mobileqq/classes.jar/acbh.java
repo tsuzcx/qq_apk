@@ -1,38 +1,23 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.ad.tangram.statistics.AdAntiSpamForClick;
+import com.tencent.gdtad.api.banner.GdtBannerAd;
 
 public class acbh
-  implements abzb
+  implements View.OnTouchListener
 {
-  private static void a(abxc paramabxc, MsgInfo paramMsgInfo, long paramLong, MsgType0x210 paramMsgType0x210)
-  {
-    long l1 = paramMsgInfo.lFromUin;
-    int i = paramMsgInfo.shMsgSeq;
-    long l2 = paramMsgInfo.lMsgUid;
-    int j = paramMsgInfo.shMsgType;
-    int k = (int)paramMsgType0x210.uSubMsgType;
-    if (((aneo)paramabxc.a().getManager(85)).a(paramMsgInfo.shMsgSeq)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.BaseMessageProcessor", 2, "receive same message, seq = " + paramMsgInfo.shMsgSeq);
-      }
-    }
-    for (;;)
-    {
-      bblf.a(paramabxc.a().getMsgHandler(), l1, i, l2, j);
-      return;
-      if (bbmm.a(paramabxc.a(), paramMsgType0x210.vProtobuf, l1, paramLong, i, j, k)) {
-        paramabxc.a("handleActivateFriendsPush", true, 1, true, false);
-      }
-    }
-  }
+  public acbh(GdtBannerAd paramGdtBannerAd, acbl paramacbl) {}
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    a(paramabxc, paramMsgInfo, paramLong, paramMsgType0x210);
-    return null;
+    this.jdField_a_of_type_Acbl.a().onTouch(paramView, paramMotionEvent);
+    if (paramMotionEvent.getAction() == 1)
+    {
+      GdtBannerAd.access$002(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd, paramMotionEvent.getX());
+      GdtBannerAd.access$102(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd, paramMotionEvent.getY());
+    }
+    return false;
   }
 }
 

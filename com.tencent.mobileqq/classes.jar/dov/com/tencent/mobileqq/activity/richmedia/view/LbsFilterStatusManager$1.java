@@ -1,15 +1,15 @@
 package dov.com.tencent.mobileqq.activity.richmedia.view;
 
-import bnvx;
+import bplp;
 
 public class LbsFilterStatusManager$1
   implements Runnable
 {
-  public LbsFilterStatusManager$1(bnvx parambnvx, int paramInt, boolean paramBoolean) {}
+  public LbsFilterStatusManager$1(bplp parambplp, int paramInt, boolean paramBoolean) {}
   
   public void run()
   {
-    bnvx.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    bplp.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
   }
 }
 

@@ -1,8 +1,18 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qidian.QidianProfileCardActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface bjxv
+public class bjxv
+  implements View.OnClickListener
 {
-  public abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
+  public bjxv(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

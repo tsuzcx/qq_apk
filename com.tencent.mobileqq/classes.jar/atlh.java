@@ -1,66 +1,93 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.mobileqq.mini.utils.MiniAppReportShareUtil;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import android.os.Looper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter.2;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
+import java.util.HashMap;
+import java.util.Observable;
+import mqq.os.MqqHandler;
 
-class atlh
-  implements DialogInterface.OnClickListener
+public class atlh
+  extends Observable
 {
-  atlh(atky paramatky) {}
+  public QQAppInterface a;
+  MqqHandler a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public atlh(QQAppInterface paramQQAppInterface)
   {
-    boolean bool1 = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean("needShareCallBack");
-    paramInt = this.a.jdField_a_of_type_AndroidOsBundle.getInt("miniAppShareFrom");
-    boolean bool2 = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean("miniAppNeedOnlyPreview", false);
-    if (bool2) {
-      QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_direct_share_suc", null, null);
-    }
-    do
+    this.jdField_a_of_type_MqqOsMqqHandler = new atli(this, Looper.getMainLooper());
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    paramQQAppInterface.setHandler(getClass(), this.jdField_a_of_type_MqqOsMqqHandler);
+  }
+  
+  private void b(FileManagerEntity paramFileManagerEntity, int paramInt, String paramString)
+  {
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("averageSpeed", String.valueOf(0.0F));
+    ((HashMap)localObject).put("peerUin", String.valueOf(paramFileManagerEntity.peerUin));
+    ((HashMap)localObject).put("fileType", FileUtil.getExtension(paramFileManagerEntity.fileName));
+    switch (paramInt)
     {
-      for (;;)
-      {
-        atky.a(this.a, paramInt);
-        paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString("miniAppShareAppid");
-        paramInt = this.a.jdField_a_of_type_AndroidOsBundle.getInt("miniAppShareAppType");
-        int i = this.a.jdField_a_of_type_AndroidOsBundle.getInt("miniAppShareScene");
-        int j = this.a.jdField_a_of_type_AndroidOsBundle.getInt("miniAppShareType");
-        int k = this.a.jdField_a_of_type_AndroidOsBundle.getInt("uintype");
-        String str = this.a.jdField_a_of_type_AndroidOsBundle.getString("uin");
-        MiniAppReportShareUtil.getInstance().reportShare(paramDialogInterface, paramInt, i, j, k, str);
-        if (!bool2) {
-          break;
-        }
-        return;
-        if (bool1) {
-          QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_share_suc", null, null);
-        }
-      }
-      if (this.a.jdField_a_of_type_AndroidOsBundle.getBoolean("avgame_share_callback_key", false)) {
-        anha.a().a(this.a.jdField_a_of_type_AndroidAppActivity, true);
-      }
-      if (this.a.i()) {
-        if (!this.a.j()) {
-          atky.a(this.a);
-        }
-      }
-      while (atky.a(this.a, paramDialogInterface))
-      {
-        if ((this.a.jdField_a_of_type_AndroidOsBundle != null) && (this.a.jdField_a_of_type_AndroidOsBundle.getBoolean("k_forward_show_direct_share_tips", false))) {
-          bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A4A2", "0X800A4A2", 0, 0, "0", "", "", "");
-        }
-        atky.b(this.a);
-        if (!"caller_aecamera".equals(this.a.f)) {
-          break;
-        }
-        atky.c(this.a);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ForwardOption.ForwardBaseOption", 2, "sendToSingleTarget return false");
+    default: 
+      QLog.e("FileManagerNotifyCenter<FileAssistant>", 1, "what type is report?!nSessionId[" + String.valueOf(paramFileManagerEntity.nSessionId) + "],may be not report!");
+      return;
+    case 5: 
+      return;
+    case 6: 
+      localObject = "actFileOf2Of";
+    }
+    for (;;)
+    {
+      auea.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFileManagerEntity.nSessionId, (String)localObject, 1L, paramString, paramFileManagerEntity.peerUin, paramFileManagerEntity.Uuid, paramFileManagerEntity.strFileMd5, 0L, 0L, paramFileManagerEntity.fileSize, 0, null);
+      return;
+      localObject = "actFileOf2Wy";
+      continue;
+      localObject = "actFileWy2Of";
+      continue;
+      localObject = "actFileDisc2Of";
+      continue;
+      localObject = "actFileDisc2Disc";
+      continue;
+      localObject = "actFileTroop2Of";
+      continue;
+      localObject = "actFileTroop2Disc";
+      continue;
+      localObject = "actFileFav2Disc";
+    }
+  }
+  
+  public void a(long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, Object paramObject, int paramInt3, String paramString2)
+  {
+    setChanged();
+    if (paramObject == null)
+    {
+      notifyObservers(new Object[] { Integer.valueOf(paramInt2), Long.valueOf(paramLong1), Long.valueOf(paramLong2), paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt3), paramString2 });
+      return;
+    }
+    notifyObservers(new Object[] { Integer.valueOf(paramInt2), Long.valueOf(paramLong1), Long.valueOf(paramLong2), paramString1, Integer.valueOf(paramInt1), paramObject });
+  }
+  
+  public void a(FileManagerEntity paramFileManagerEntity, int paramInt, String paramString)
+  {
+    b(paramFileManagerEntity, paramInt, paramString);
+    ThreadManager.executeOnSubThread(new FileManagerNotifyCenter.2(this, paramFileManagerEntity, paramInt));
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, Object paramObject)
+  {
+    try
+    {
+      setChanged();
+      notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), paramObject });
+      return;
+    }
+    finally
+    {
+      paramObject = finally;
+      throw paramObject;
+    }
   }
 }
 

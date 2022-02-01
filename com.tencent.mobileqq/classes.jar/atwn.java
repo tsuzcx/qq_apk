@@ -1,16 +1,17 @@
-import android.widget.ImageSwitcher;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-public class atwn
+class atwn
+  implements audq
 {
-  public ImageSwitcher a;
-  public ImageView a;
-  public TextView a;
-  public atzy a;
-  public ImageSwitcher b;
-  public ImageView b;
-  public TextView b;
+  atwn(atwm paramatwm) {}
+  
+  public void onNo() {}
+  
+  public void onYes()
+  {
+    atwk.a(this.a.a);
+    if (this.a.a.a != null) {
+      this.a.a.a.d();
+    }
+  }
 }
 
 

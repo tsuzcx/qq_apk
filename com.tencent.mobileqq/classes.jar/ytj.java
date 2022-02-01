@@ -1,40 +1,19 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.view.widget.StoryNickNameView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.List;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
 public class ytj
-  extends QQUIEventReceiver<StoryNickNameView, wci>
+  implements zbm
 {
-  public ytj(@NonNull StoryNickNameView paramStoryNickNameView)
-  {
-    super(paramStoryNickNameView);
-  }
+  public ytj(DoodleLayout paramDoodleLayout) {}
   
-  public void a(@NonNull StoryNickNameView paramStoryNickNameView, @NonNull wci paramwci)
+  public void a(@NonNull zbt paramzbt)
   {
-    if ((paramwci.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage != null) && (paramwci.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())) {}
-    do
-    {
-      return;
-      if ((paramwci.jdField_a_of_type_JavaUtilList == null) || (paramwci.jdField_a_of_type_JavaUtilList.size() == 0))
-      {
-        xvv.e("Q.qqstoryStoryNickNameView", "we receiver the error info form GetUserInfoHandler!!");
-        return;
-      }
-      if (TextUtils.equals(paramwci.b, "Q.qqstoryStoryNickNameView")) {
-        StoryNickNameView.a(paramStoryNickNameView, (QQUserUIItem)paramwci.jdField_a_of_type_JavaUtilList.get(0));
-      }
-    } while (!TextUtils.equals(paramwci.jdField_a_of_type_JavaLangString, paramStoryNickNameView.a()));
-    paramStoryNickNameView.a((QQUserUIItem)paramwci.jdField_a_of_type_JavaUtilList.get(0));
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wci.class;
+    ykw.b("0X80075CD");
+    if ((this.a.a != null) && (this.a.a.mBusinessId == 3)) {
+      LpReportInfo_pf00064.allReport(615, 1, 2);
+    }
   }
 }
 

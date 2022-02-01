@@ -1,83 +1,37 @@
-import android.content.ContentResolver;
-import android.content.Context;
-import android.database.ContentObserver;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.Handler;
-import android.provider.MediaStore.Images.Media;
+import android.view.View;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class axrz
-  extends ContentObserver
+  implements axte
 {
-  private static final String jdField_a_of_type_JavaLangString = MediaStore.Images.Media.EXTERNAL_CONTENT_URI.toString();
-  static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "_data", "date_added" };
-  private ContentResolver jdField_a_of_type_AndroidContentContentResolver;
-  private axsa jdField_a_of_type_Axsa;
+  public axrz(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public axrz(Handler paramHandler, Context paramContext)
+  public void a(View paramView)
   {
-    super(paramHandler);
-    this.jdField_a_of_type_AndroidContentContentResolver = paramContext.getContentResolver();
+    this.a.f();
+    bdla.b(this.a.app, "dc00899", "Grp_wolf", "", "invite_page", "clk_more", 0, 0, "", "", "", "");
   }
   
-  public void a()
+  public void a(View paramView, axth paramaxth)
   {
-    this.jdField_a_of_type_AndroidContentContentResolver.registerContentObserver(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, true, this);
-  }
-  
-  public void a(axsa paramaxsa)
-  {
-    this.jdField_a_of_type_Axsa = paramaxsa;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidContentContentResolver.unregisterContentObserver(this);
-  }
-  
-  public void onChange(boolean paramBoolean)
-  {
-    super.onChange(paramBoolean);
-    onChange(paramBoolean, null);
-  }
-  
-  public void onChange(boolean paramBoolean, Uri paramUri)
-  {
-    Cursor localCursor;
-    String str;
-    long l;
-    if (paramUri == null)
-    {
-      localCursor = this.jdField_a_of_type_AndroidContentContentResolver.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, jdField_a_of_type_ArrayOfJavaLangString, null, null, "date_added DESC");
-      if ((localCursor != null) && (localCursor.moveToFirst()))
-      {
-        str = localCursor.getString(localCursor.getColumnIndex("_data"));
-        l = localCursor.getLong(localCursor.getColumnIndex("date_added"));
-        if ((Math.abs(System.currentTimeMillis() / 1000L - l) <= 3L) && (str.toLowerCase().contains("screenshot")) && (this.jdField_a_of_type_Axsa != null)) {
-          this.jdField_a_of_type_Axsa.a(paramUri);
-        }
-      }
-      if (localCursor != null) {
-        localCursor.close();
-      }
+    if (paramaxth.jdField_a_of_type_Boolean) {
+      QQToast.a(this.a, 1, anvx.a(2131704584), 1).a();
     }
     do
     {
-      do
+      return;
+      GameRoomInviteActivity.a(this.a, paramaxth.jdField_a_of_type_JavaLangString, paramaxth.jdField_a_of_type_Int);
+      paramaxth.jdField_a_of_type_Boolean = true;
+      this.a.a.a(paramView, paramaxth.jdField_a_of_type_Boolean);
+      if (paramaxth.jdField_a_of_type_Int == 1)
       {
+        bdla.b(this.a.app, "dc00899", "Grp_wolf", "", "invite_page", "clk_invite", 0, 0, "1", "", "", "");
         return;
-      } while (!paramUri.toString().matches(jdField_a_of_type_JavaLangString + "/\\d+"));
-      localCursor = this.jdField_a_of_type_AndroidContentContentResolver.query(paramUri, jdField_a_of_type_ArrayOfJavaLangString, null, null, null);
-      if ((localCursor != null) && (localCursor.moveToFirst()))
-      {
-        str = localCursor.getString(localCursor.getColumnIndex("_data"));
-        l = localCursor.getLong(localCursor.getColumnIndex("date_added"));
-        if ((Math.abs(System.currentTimeMillis() / 1000L - l) <= 3L) && (str.toLowerCase().contains("screenshot")) && (this.jdField_a_of_type_Axsa != null)) {
-          this.jdField_a_of_type_Axsa.a(paramUri);
-        }
       }
-    } while (localCursor == null);
-    localCursor.close();
+    } while (paramaxth.jdField_a_of_type_Int != 0);
+    bdla.b(this.a.app, "dc00899", "Grp_wolf", "", "invite_page", "clk_invite", 0, 0, "1", "", "", "");
   }
 }
 

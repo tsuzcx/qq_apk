@@ -1,17 +1,23 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.jsp.UiApiPlugin.8;
-import com.tencent.mobileqq.jsp.UiApiPlugin.8.1.1;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.TextView;
+import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
 
 public class auwj
-  implements bfsd
+  implements TextWatcher
 {
-  public auwj(UiApiPlugin.8 param8) {}
+  public auwj(MsgBackupSettingFragment paramMsgBackupSettingFragment, TextView paramTextView1, TextView paramTextView2) {}
   
-  public void a(Bitmap paramBitmap)
+  public void afterTextChanged(Editable paramEditable)
   {
-    ThreadManager.post(new UiApiPlugin.8.1.1(this, paramBitmap), 8, null, true);
+    paramEditable = paramEditable.toString();
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(MsgBackupSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentMsgBackupSettingFragment), new Object[] { paramEditable }));
+    this.b.setText(String.format(MsgBackupSettingFragment.b(this.jdField_a_of_type_ComTencentMobileqqFragmentMsgBackupSettingFragment), new Object[] { paramEditable }));
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

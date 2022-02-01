@@ -1,54 +1,101 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
-import java.lang.ref.WeakReference;
+import android.support.v4.util.ArrayMap;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.realtime.RealTimeTemplateFactoryCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class tmw
-  extends Handler
+  extends tmh
 {
-  private WeakReference<VideoPlayManager> a;
+  private static RealTimeTemplateFactoryCache jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusRealtimeRealTimeTemplateFactoryCache = new RealTimeTemplateFactoryCache();
+  private Map<String, tmx> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   
-  public tmw(VideoPlayManager paramVideoPlayManager)
+  public tmw()
   {
-    this.a = new WeakReference(paramVideoPlayManager);
+    this.nameTemplateMap = new ConcurrentHashMap();
   }
   
-  public void handleMessage(Message paramMessage)
+  public static tmw a(String paramString, boolean paramBoolean)
   {
-    VideoPlayManager localVideoPlayManager;
-    if (this.a != null)
-    {
-      localVideoPlayManager = (VideoPlayManager)this.a.get();
-      if (localVideoPlayManager != null) {
-        switch (paramMessage.what)
-        {
-        }
-      }
+    if (paramBoolean) {
+      return jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusRealtimeRealTimeTemplateFactoryCache.getAutoCreate(BaseApplicationImpl.getContext(), paramString);
     }
-    do
+    return jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusRealtimeRealTimeTemplateFactoryCache.get(paramString);
+  }
+  
+  public static void b()
+  {
+    QLog.d("RealTimeTemplateFactory", 2, "reset: ");
+    jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusRealtimeRealTimeTemplateFactoryCache.clear();
+  }
+  
+  public Map<String, String> a()
+  {
+    HashMap localHashMap = new HashMap();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    while (localIterator.hasNext())
     {
+      tmx localtmx = (tmx)localIterator.next();
+      localHashMap.put(localtmx.a, localtmx.b);
+    }
+    return localHashMap;
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    if ((paramString1 == null) || (paramString2 == null) || (paramString3 == null)) {
       return;
-      localVideoPlayManager = null;
-      break;
-    } while ((VideoPlayManager.a(localVideoPlayManager) == null) || (tmx.a(VideoPlayManager.a(localVideoPlayManager)) == null));
-    Object localObject = tmx.a(VideoPlayManager.a(localVideoPlayManager));
-    paramMessage = VideoPlayManager.a(localVideoPlayManager);
-    if ((localObject != null) && (((sdj)localObject).f()))
-    {
-      long l = ((sdj)localObject).a();
-      localObject = VideoPlayManager.a(localVideoPlayManager).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((tmy)((Iterator)localObject).next()).a(paramMessage, tmz.a(l) * 1000);
-      }
     }
-    VideoPlayManager.a(localVideoPlayManager).sendEmptyMessageDelayed(0, VideoPlayManager.a(localVideoPlayManager));
+    paramString2 = new tmx(paramString1, paramString2, paramString3);
+    this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
+  }
+  
+  public boolean a(TemplateBean paramTemplateBean)
+  {
+    if (paramTemplateBean == null) {}
+    while ((paramTemplateBean.getId() != getTemplateId()) || (!a().equals(paramTemplateBean.getStyleSource()))) {
+      return true;
+    }
+    return false;
+  }
+  
+  public void d(String paramString)
+  {
+    paramString = (tmx)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+    if (paramString != null)
+    {
+      paramString = (TemplateBean)this.nameTemplateMap.remove(paramString.c);
+      QLog.d("RealTimeTemplateFactory", 1, "deleteStyle: " + paramString);
+    }
+  }
+  
+  public Map<String, TemplateBean> getNameTemplateMap()
+  {
+    ArrayMap localArrayMap = new ArrayMap();
+    localArrayMap.putAll(this.nameTemplateMap);
+    return localArrayMap;
+  }
+  
+  public TemplateBean getTemplate(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    paramString = (TemplateBean)this.nameTemplateMap.get(paramString);
+    if (paramString == null) {}
+    for (paramString = null;; paramString = paramString.clone()) {
+      return paramString;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tmw
  * JD-Core Version:    0.7.0.1
  */

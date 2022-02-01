@@ -1,57 +1,18 @@
-import com.tencent.common.app.AppInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.utils.FriendsStatusUtil.UpdateFriendStatusItem;
 
-public class aozz
+public final class aozz
+  implements Parcelable.Creator<FriendsStatusUtil.UpdateFriendStatusItem>
 {
-  public static final String a;
-  public apab[] a;
-  
-  static
+  public FriendsStatusUtil.UpdateFriendStatusItem a(Parcel paramParcel)
   {
-    jdField_a_of_type_JavaLangString = apac.class.getSimpleName() + "." + aozz.class.getSimpleName();
+    return new FriendsStatusUtil.UpdateFriendStatusItem(paramParcel);
   }
   
-  public aozz()
+  public FriendsStatusUtil.UpdateFriendStatusItem[] a(int paramInt)
   {
-    this.jdField_a_of_type_ArrayOfApab = new apab[7];
-  }
-  
-  public apab a(AppInterface paramAppInterface, int paramInt)
-  {
-    int i;
-    if (paramInt >= 0)
-    {
-      i = paramInt;
-      if (paramInt <= 7) {}
-    }
-    else
-    {
-      i = 0;
-    }
-    Object localObject = this.jdField_a_of_type_ArrayOfApab[i];
-    paramAppInterface = (AppInterface)localObject;
-    if (localObject == null)
-    {
-      paramAppInterface = (AppInterface)localObject;
-      switch (i)
-      {
-      default: 
-        paramAppInterface = (AppInterface)localObject;
-      }
-    }
-    for (;;)
-    {
-      localObject = paramAppInterface;
-      if (paramAppInterface == null) {
-        localObject = new apaa();
-      }
-      this.jdField_a_of_type_ArrayOfApab[i] = localObject;
-      return localObject;
-      paramAppInterface = new ltw();
-      continue;
-      paramAppInterface = new anzh();
-      continue;
-      paramAppInterface = new naz();
-    }
+    return new FriendsStatusUtil.UpdateFriendStatusItem[paramInt];
   }
 }
 

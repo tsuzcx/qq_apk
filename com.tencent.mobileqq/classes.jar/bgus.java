@@ -1,92 +1,66 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgUser.IMiniMsgActionCallback;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.unifiedebug.SnapshotService;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.smtt.sdk.WebView;
+import java.util.ArrayList;
 
 public class bgus
-  implements MiniMsgUser.IMiniMsgActionCallback
+  extends bidf
 {
-  public bgus(WebViewFragment paramWebViewFragment) {}
-  
-  public void a(String paramString, JSONObject paramJSONObject)
+  public bgus(Context paramContext, Activity paramActivity, AppInterface paramAppInterface)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    super(paramContext, paramActivity, paramAppInterface);
+    super.preInitPluginEngine();
+    this.mWebview = new TouchWebView(this.mContext);
+    buildBaseWebView(paramAppInterface);
+  }
+  
+  public void a()
+  {
+    super.doOnResume();
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    super.doOnCreate(paramIntent);
+  }
+  
+  public void a(String paramString)
+  {
+    if (biiw.jdField_a_of_type_Boolean)
     {
-      localJSONObject.put("action", paramString);
-      localJSONObject.put("options", paramJSONObject);
-      paramString = "javascript:mqq.dispatchEvent(\"miniAIOEvent\"," + localJSONObject.toString() + ");";
-      this.a.webView.callJs(paramString);
-      return;
+      biit.a(this.mWebview, biiw.jdField_a_of_type_JavaLangString);
+      biiw.jdField_a_of_type_Boolean = false;
     }
-    catch (Exception paramString)
-    {
-      QLog.d("WebLog_WebViewFragment", 1, paramString, new Object[0]);
+    this.mUrl = paramString;
+    this.mWebview.loadUrl(this.mUrl);
+  }
+  
+  public void b()
+  {
+    super.doOnPause();
+  }
+  
+  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
+  {
+    if (paramArrayList != null) {
+      paramArrayList.add(new bikp());
     }
   }
   
-  public void onFromMiniAIOToAIO()
+  public void c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewFragment", 2, "onFromMiniAIOToAIO ");
-    }
-    a("fromMiniAIOToAIO", new JSONObject());
+    super.doOnDestroy();
   }
   
-  public void onGoToConversation()
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("WebLog_WebViewFragment", 2, "onGoToConversation ");
-      }
-      a("returnMsgList", new JSONObject());
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("WebLog_WebViewFragment", 1, localException, new Object[0]);
-    }
-  }
-  
-  public void onOpenMiniAIOCallback()
-  {
-    if (this.a.mMiniMsgUser == null) {
-      return;
-    }
-    WebViewFragment localWebViewFragment = this.a;
-    Object localObject1 = localWebViewFragment.mKeyWording;
-    if (TextUtils.isEmpty(localWebViewFragment.mKeyWording)) {
-      localObject1 = localWebViewFragment.webView.getTitle();
-    }
-    if (!TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      localObject2 = localObject1;
-      if (!"‎".equals(localObject1)) {}
-    }
-    else
-    {
-      localObject2 = amtj.a(2131715908);
-    }
-    localObject1 = new Bundle();
-    ((Bundle)localObject1).putString("banner_wording", (String)localObject2);
-    Object localObject2 = this.a.mMiniMsgUser.getParam();
-    ((MiniMsgUserParam)localObject2).backConversationIntent = localWebViewFragment.generateGoToConversation((Bundle)localObject1);
-    bgyb.a(((MiniMsgUserParam)localObject2).backConversationIntent);
-    try
-    {
-      a("entryClicked", new JSONObject());
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("WebLog_WebViewFragment", 1, localException, new Object[0]);
-    }
+    super.onPageFinished(paramWebView, paramString);
+    paramWebView.loadUrl("javascript:" + SnapshotService.jdField_a_of_type_JavaLangString);
   }
 }
 

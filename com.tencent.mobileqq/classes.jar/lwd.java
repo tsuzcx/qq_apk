@@ -1,42 +1,89 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import android.annotation.TargetApi;
+import android.graphics.Bitmap;
+import com.tencent.av.VideoController;
+import com.tencent.av.screenshare.ScreenShareCtrl;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
-public abstract class lwd
-  extends Binder
-  implements lwc
+public class lwd
+  implements lpa, mjx
 {
-  public static lwc a(IBinder paramIBinder)
+  private final lwe jdField_a_of_type_Lwe = new lwe();
+  private final WeakReference<ScreenShareCtrl> jdField_a_of_type_MqqUtilWeakReference;
+  
+  public lwd(ScreenShareCtrl paramScreenShareCtrl)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.av.service.IAVServiceCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof lwc))) {
-      return (lwc)localIInterface;
-    }
-    return new lwe(paramIBinder);
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramScreenShareCtrl);
   }
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  @TargetApi(21)
+  public void a(int paramInt)
   {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.av.service.IAVServiceCallback");
-      return true;
+    if (QLog.isColorLevel()) {
+      QLog.i("AVShare", 2, "onMediaProjectionEnd fromType:=" + paramInt);
     }
-    paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceCallback");
-    a(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt());
-    return true;
+    ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localScreenShareCtrl == null) {}
+    while (paramInt != 2) {
+      return;
+    }
+    if (localScreenShareCtrl.a(2) == 1) {}
+    for (paramInt = 2;; paramInt = 3)
+    {
+      ScreenShareCtrl.a(paramInt);
+      return;
+    }
+  }
+  
+  public void a(long paramLong) {}
+  
+  public void a(Bitmap paramBitmap, nbs paramnbs)
+  {
+    ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localScreenShareCtrl != null) {
+      localScreenShareCtrl.a(paramBitmap, paramnbs);
+    }
+  }
+  
+  @TargetApi(21)
+  public void a(nbs paramnbs, int paramInt1, int paramInt2)
+  {
+    ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localScreenShareCtrl == null) {}
+    do
+    {
+      return;
+      localScreenShareCtrl.a(paramnbs, paramInt1, paramInt2);
+      if (localScreenShareCtrl.a(1) == 1)
+      {
+        ScreenShareCtrl.a(4);
+        return;
+      }
+      ScreenShareCtrl.a(6);
+      paramnbs = VideoController.a().a();
+    } while (paramnbs == null);
+    paramnbs.a(1);
+  }
+  
+  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, nbs paramnbs)
+  {
+    this.jdField_a_of_type_Lwe.a(1, paramArrayOfByte, paramInt1, paramInt2, paramnbs);
+    ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localScreenShareCtrl != null) {
+      localScreenShareCtrl.a(paramArrayOfByte, paramInt1, paramInt2, paramnbs);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AVShare", 2, "onMediaProjectionReady errorReason:=" + paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lwd
  * JD-Core Version:    0.7.0.1
  */

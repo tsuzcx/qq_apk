@@ -1,101 +1,34 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.ocr.view.TDCircleProgressView;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class axpc
-  extends ReportDialog
+class axpc
+  implements DialogInterface.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TDCircleProgressView jdField_a_of_type_ComTencentMobileqqOcrViewTDCircleProgressView;
-  private View jdField_b_of_type_AndroidViewView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  axpc(axpb paramaxpb, boolean paramBoolean, String paramString1, axpj paramaxpj, QQAppInterface paramQQAppInterface, String paramString2, Activity paramActivity) {}
   
-  public axpc(Context paramContext)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramContext, 2131755826);
-    a(paramContext);
-  }
-  
-  private void a(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559541, null);
-    setCancelable(false);
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewTDCircleProgressView = ((TDCircleProgressView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364560));
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewTDCircleProgressView.setCurrent(0);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379544));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131380323);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379503));
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewTDCircleProgressView.setCurrent(paramInt);
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    if (paramOnClickListener != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
-    }
-  }
-  
-  public void a(CharSequence paramCharSequence)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
+    if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(i);
-      this.jdField_b_of_type_AndroidViewView.setVisibility(i);
-      return;
-    }
-  }
-  
-  protected void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    paramBundle = getWindow();
-    paramBundle.setContentView(this.jdField_a_of_type_AndroidViewView);
-    int i;
-    WindowManager.LayoutParams localLayoutParams;
-    float f;
-    if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0)
-    {
-      i = 1;
-      localLayoutParams = paramBundle.getAttributes();
-      f = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
-      localLayoutParams.width = ((int)(320.0F * f + 0.5F));
-      if (i != 0) {
-        break label97;
+      this.jdField_a_of_type_Axpb.b();
+      if (!this.jdField_a_of_type_Axpb.a()) {
+        break label104;
       }
+      this.jdField_a_of_type_Axpb.a(Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), 0, 1);
+      this.jdField_a_of_type_Axpj.a(this.jdField_a_of_type_JavaLangString, false);
+      axpb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "pay_like", this.jdField_a_of_type_JavaLangString, this.b, "", "", "");
     }
-    label97:
-    for (localLayoutParams.height = ((int)(145.0F * f + 0.5F));; localLayoutParams.height = ((int)(200.0F * f + 0.5F)))
+    for (;;)
     {
-      paramBundle.setAttributes(localLayoutParams);
-      setCanceledOnTouchOutside(false);
+      axpb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "clk_no_warm", this.b);
       return;
-      i = 0;
+      this.jdField_a_of_type_Axpb.c();
       break;
+      label104:
+      this.jdField_a_of_type_Axpb.a(this.jdField_a_of_type_AndroidAppActivity, this.b);
+      axpb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "exp_pay", this.b);
     }
   }
 }

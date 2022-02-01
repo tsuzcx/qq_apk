@@ -1,16 +1,22 @@
-class ojg
-  implements pln
+import android.database.ContentObserver;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView.VolumeChangedObserver.1;
+
+public class ojg
+  extends ContentObserver
 {
-  ojg(ojc paramojc) {}
-  
-  public void l()
+  public ojg(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView, Handler paramHandler)
   {
-    ojc.d(this.a);
+    super(paramHandler);
   }
   
-  public void m()
+  public void onChange(boolean paramBoolean)
   {
-    ojc.e(this.a);
+    super.onChange(paramBoolean);
+    if (ReadInJoyNativeAdAppVideoView.a(this.a) != null) {
+      ReadInJoyNativeAdAppVideoView.a(this.a).post(new ReadInJoyNativeAdAppVideoView.VolumeChangedObserver.1(this));
+    }
   }
 }
 

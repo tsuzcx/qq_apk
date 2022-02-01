@@ -1,85 +1,71 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.QavGAudioSoundData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.support.annotation.NonNull;
 import com.tencent.qphone.base.util.QLog;
 
 public class aqxy
-  extends aqxl
+  extends arjj<aqxx>
 {
-  public aqxy(QQAppInterface paramQQAppInterface)
+  @NonNull
+  public aqxx a()
   {
-    super("qq.android.qav.muteaudio", paramQQAppInterface);
+    return new aqxx();
   }
   
-  public int a()
+  @NonNull
+  public aqxx a(@NonNull aqxa[] paramArrayOfaqxa)
   {
-    return 10046;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return QavGAudioSoundData.class;
-  }
-  
-  public String a()
-  {
-    return "qavDownloadGAudioSoundDuration";
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QavGAudioSoundHandler", 2, "download success: " + paramString);
-    }
-    try
-    {
-      FileUtils.uncompressZip(paramString, mrl.a(), false);
-      super.a(paramString);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+    QLog.e("VasUpdateConfProcessor", 1, "onParsed ");
+    if (paramArrayOfaqxa != null) {
+      try
       {
-        localException.printStackTrace();
+        if (paramArrayOfaqxa.length > 0)
+        {
+          int j = paramArrayOfaqxa.length;
+          int i = 0;
+          while (i < j)
+          {
+            aqxa localaqxa = paramArrayOfaqxa[i];
+            if (localaqxa != null)
+            {
+              aqxx localaqxx = aqxx.a(localaqxa.a);
+              if (QLog.isColorLevel()) {
+                QLog.d("VasUpdateConfProcessor", 2, "onParsed " + localaqxa.a);
+              }
+              if (localaqxx != null) {
+                return localaqxx;
+              }
+            }
+            i += 1;
+          }
+        }
+        return new aqxx();
+      }
+      catch (Exception paramArrayOfaqxa)
+      {
+        paramArrayOfaqxa.printStackTrace();
+        QLog.e("VasUpdateConfProcessor", 1, "onParsed Exception = " + paramArrayOfaqxa.getMessage());
       }
     }
   }
   
-  public void a(boolean paramBoolean)
+  @NonNull
+  public aqxx b()
   {
-    QavGAudioSoundData localQavGAudioSoundData = (QavGAudioSoundData)a();
-    if ((localQavGAudioSoundData != null) && (!localQavGAudioSoundData.autoDownload))
-    {
-      localQavGAudioSoundData.autoDownload = true;
-      aqxb.a(localQavGAudioSoundData, new String[] { "autoDownload" });
-    }
-    super.a(paramBoolean);
+    return new aqxx();
   }
   
-  public boolean a()
+  public Class<aqxx> clazz()
   {
-    return true;
+    return aqxx.class;
   }
   
-  public String b()
+  public int type()
   {
-    return null;
-  }
-  
-  public boolean h()
-  {
-    QavGAudioSoundData localQavGAudioSoundData = (QavGAudioSoundData)a();
-    if (localQavGAudioSoundData == null) {
-      return super.h();
-    }
-    return localQavGAudioSoundData.autoDownload;
+    return 649;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqxy
  * JD-Core Version:    0.7.0.1
  */

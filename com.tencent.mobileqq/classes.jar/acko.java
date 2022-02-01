@@ -1,74 +1,128 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import tencent.im.oidb.oidb_0xb60.ClientInfo;
-import tencent.im.oidb.oidb_0xb60.GetPrivilegeReq;
-import tencent.im.oidb.oidb_0xb60.ReqBody;
+import com.tencent.smtt.sdk.WebView;
+import java.util.ArrayList;
 
-class acko
-  extends JobSegment<avro, avro>
+public class acko
+  extends bidf
+  implements biec
 {
-  protected void a(JobContext paramJobContext, avro paramavro)
+  protected Intent a;
+  
+  public acko(Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
   {
-    if (paramavro.a())
-    {
-      notifyResult(paramavro);
-      if (QLog.isColorLevel()) {
-        QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "cache is valid");
-      }
-    }
+    super(paramContext, paramActivity, paramAppInterface);
+    this.a = paramIntent;
+  }
+  
+  public void a()
+  {
+    super.doOnResume();
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    super.doOnCreate(this.a);
+  }
+  
+  public void a(TouchWebView paramTouchWebView)
+  {
+    this.mWebview = paramTouchWebView;
+  }
+  
+  public boolean a(WebView paramWebView, String paramString)
+  {
+    QLog.i("AbsWebView", 1, "qZoneShouldOverrideUrlLoading:" + paramString);
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
+    Object localObject;
     do
     {
-      do
+      return true;
+      localObject = ((CustomWebView)paramWebView).getPluginEngine();
+      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
       {
-        return;
-        paramJobContext = BaseApplicationImpl.getApplication().getRuntime();
-        if (paramJobContext != null) {
-          break;
+        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
+        for (boolean bool = true;; bool = false) {
+          return bool;
         }
-        notifyError(new AppInfoError(6, "jobApiPermission app is null"));
-      } while (!QLog.isColorLevel());
-      QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "app is null");
+      }
+      paramString = Uri.parse(paramString);
+      localObject = paramString.getScheme();
+    } while (!nro.a().a(paramWebView.getUrl(), (String)localObject).booleanValue());
+    paramWebView = new Intent("android.intent.action.VIEW", paramString);
+    paramWebView.addFlags(268435456);
+    try
+    {
+      this.mContext.startActivity(paramWebView);
+      return true;
+    }
+    catch (Exception paramWebView)
+    {
+      QLog.e("AbsWebView", 1, "startActivity", paramWebView);
+    }
+    return true;
+  }
+  
+  public void b()
+  {
+    super.doOnPause();
+  }
+  
+  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
+  {
+    super.bindJavaScript(paramArrayList);
+  }
+  
+  public void buildBottomBar() {}
+  
+  public void buildContentView(Bundle paramBundle) {}
+  
+  public void buildData() {}
+  
+  public void buildLayout() {}
+  
+  public void buildTitleBar() {}
+  
+  public final void buildWebView(AppInterface paramAppInterface)
+  {
+    super.buildBaseWebView(paramAppInterface);
+  }
+  
+  public void c()
+  {
+    try
+    {
+      super.doOnDestroy();
       return;
-      try
-      {
-        int i = Integer.parseInt(paramavro.jdField_a_of_type_JavaLangString);
-        oidb_0xb60.ReqBody localReqBody = new oidb_0xb60.ReqBody();
-        localReqBody.get_privilege_req.setHasFlag(true);
-        localReqBody.get_privilege_req.appid.set(i);
-        localReqBody.get_privilege_req.app_type.set(paramavro.jdField_a_of_type_Int);
-        if (paramavro.jdField_a_of_type_Int == 1)
-        {
-          oidb_0xb60.ClientInfo localClientInfo = new oidb_0xb60.ClientInfo();
-          localClientInfo.platform.set(1);
-          if (!TextUtils.isEmpty(paramavro.k)) {
-            localClientInfo.sdk_version.set(paramavro.k);
-          }
-          if (!TextUtils.isEmpty(paramavro.i)) {
-            localClientInfo.android_package_name.set(paramavro.i);
-          }
-          if (!TextUtils.isEmpty(paramavro.j)) {
-            localClientInfo.android_signature.set(paramavro.j);
-          }
-          localReqBody.client_info.set(localClientInfo);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "send type=" + paramavro.jdField_a_of_type_Int + ", appid=" + paramavro.jdField_a_of_type_JavaLangString);
-        }
-        nmb.a(paramJobContext, new ackp(this, paramavro), localReqBody.toByteArray(), "OidbSvc.0xb60_1", 2912, 1, null, 0L);
-        return;
-      }
-      catch (NumberFormatException paramJobContext)
-      {
-        notifyError(new AppInfoError(6, "jobApiPermission parse appid error"));
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "parse appid error");
+    }
+    catch (Exception localException)
+    {
+      acho.d("GdtWebViewBuilder", "getVideoComponent error", localException);
+    }
+  }
+  
+  public void preInitWebviewPlugin()
+  {
+    super.preInitPluginEngine();
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {
+      return true;
+    }
+    paramWebView.loadUrl(paramString);
+    return true;
   }
 }
 

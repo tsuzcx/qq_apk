@@ -1,48 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
-public class adau
-  implements View.OnClickListener
+class adau
+  extends JobSegment<awxt, awxt>
 {
-  public adau(ChatSettingForTroop paramChatSettingForTroop) {}
+  adau(adap paramadap, String paramString, int paramInt) {}
   
-  public void onClick(View paramView)
+  protected void a(JobContext paramJobContext, awxt paramawxt)
   {
-    switch (paramView.getId())
+    if (paramawxt.b())
     {
-    default: 
-    case 2131369068: 
-      for (;;)
-      {
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        ChatSettingForTroop.f(this.a);
-        this.a.finish();
+      notifyResult(paramawxt);
+      if (QLog.isColorLevel()) {
+        QLog.i("DoraemonOpenAPI.permissionHelper", 2, "appBaseInfo cache is valid");
       }
+      return;
     }
-    ChatSettingForTroop.g(this.a);
-    String str1;
-    label80:
-    String str3;
-    if (this.a.a.isMember)
-    {
-      str1 = "grpData_admin";
-      str3 = this.a.a.troopUin;
-      if (!this.a.a.isMember) {
-        break label148;
-      }
-    }
-    label148:
-    for (String str2 = bftc.a(this.a.a);; str2 = "0")
-    {
-      bftc.a("Grp_set_new", str1, "clk_upright", 0, 0, new String[] { str3, str2 });
-      break;
-      str1 = "grpData_visitor";
-      break label80;
-    }
+    awxy.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1, true, new adav(this, this));
   }
 }
 

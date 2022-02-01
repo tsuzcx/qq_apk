@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.servlet;
 import NS_MINI_INTERFACE.INTERFACE.StDelPhoneNumbersRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bgau;
+import bhjl;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.Packet;
 
@@ -40,7 +40,7 @@ public class MiniAppDelPhoneNumberServlet
       localObject1 = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_user_info.DelPhoneNumbers");
-    paramPacket.putSendData(bgau.a((byte[])localObject1));
+    paramPacket.putSendData(bhjl.a((byte[])localObject1));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }

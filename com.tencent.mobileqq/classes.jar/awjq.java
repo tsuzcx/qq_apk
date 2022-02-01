@@ -1,16 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
 class awjq
-  implements ampq
+  implements bkzq
 {
-  awjq(awjn paramawjn) {}
+  awjq(awjp paramawjp, bkzi parambkzi) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.dating", 2, "onGetConfig, resultCode:" + paramInt + ",isSuccess:" + paramBoolean);
+    switch (paramInt)
+    {
     }
-    awjn.a(this.a, 4131, new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.e();
+      return;
+      awjp.a(this.jdField_a_of_type_Awjp);
+      continue;
+      awjp.b(this.jdField_a_of_type_Awjp);
+    }
   }
 }
 

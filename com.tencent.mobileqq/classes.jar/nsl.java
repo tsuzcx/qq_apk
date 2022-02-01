@@ -1,17 +1,17 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.biz.PoiMapActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class nsl
   implements View.OnClickListener
 {
-  public nsl(EqqAccountDetailActivity paramEqqAccountDetailActivity, obr paramobr) {}
+  public nsl(PoiMapActivity paramPoiMapActivity, Dialog paramDialog) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a = this.jdField_a_of_type_Obr.d;
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(this.jdField_a_of_type_Obr, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a);
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

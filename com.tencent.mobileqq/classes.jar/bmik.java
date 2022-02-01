@@ -1,26 +1,16 @@
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class bmik
-  implements WtTicketPromise
+class bmik
+  implements DialogInterface.OnDismissListener
 {
-  public bmik(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
+  bmik(bmij parambmij, DialogInterface.OnDismissListener paramOnDismissListener) {}
   
-  public void Done(Ticket paramTicket)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    bmbx.b("AEEditorImageEditFragment", "psKey success.");
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    bmbx.d("AEEditorImageEditFragment", paramErrMsg.toString());
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    bmbx.d("AEEditorImageEditFragment", paramErrMsg.toString());
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener.onDismiss(paramDialogInterface);
+    }
   }
 }
 

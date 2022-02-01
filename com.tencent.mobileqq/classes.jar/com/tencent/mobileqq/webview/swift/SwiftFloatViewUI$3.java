@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.webview.swift;
 
-import bgtr;
+import biej;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 
 public class SwiftFloatViewUI$3
   implements Runnable
 {
-  public SwiftFloatViewUI$3(bgtr parambgtr) {}
+  public SwiftFloatViewUI$3(biej parambiej) {}
   
   public void run()
   {

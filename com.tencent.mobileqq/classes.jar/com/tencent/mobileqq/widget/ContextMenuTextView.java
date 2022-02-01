@@ -8,8 +8,8 @@ import android.util.AttributeSet;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import bhco;
-import bhcq;
+import bing;
+import bini;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.text.QQText.EmoticonSpan;
 import com.tencent.widget.BubblePopupWindow;
@@ -19,7 +19,7 @@ public class ContextMenuTextView
 {
   private Context jdField_a_of_type_AndroidContentContext;
   public View.OnClickListener a;
-  bhcq jdField_a_of_type_Bhcq = new bhcq(this, null);
+  bini jdField_a_of_type_Bini = new bini(this, null);
   public BubblePopupWindow a;
   private boolean jdField_a_of_type_Boolean;
   private Drawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
@@ -27,20 +27,20 @@ public class ContextMenuTextView
   public ContextMenuTextView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bhco(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bing(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    setOnLongClickListener(this.jdField_a_of_type_Bhcq);
+    setOnLongClickListener(this.jdField_a_of_type_Bini);
     setSelectAllOnFocus(true);
   }
   
   public ContextMenuTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bhco(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bing(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    setOnLongClickListener(this.jdField_a_of_type_Bhcq);
+    setOnLongClickListener(this.jdField_a_of_type_Bini);
     setSelectAllOnFocus(true);
-    setOnTouchListener(this.jdField_a_of_type_Bhcq);
+    setOnTouchListener(this.jdField_a_of_type_Bini);
   }
   
   private void a(Object paramObject)

@@ -1,16 +1,17 @@
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.widget.SingleLineTextView;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bcjr
+class bcjr
+  implements View.OnClickListener
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public SingleLineTextView a;
+  bcjr(bcjq parambcjq, bcfj parambcfj) {}
   
-  bcjr(bcjq parambcjq) {}
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Bcfj.a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

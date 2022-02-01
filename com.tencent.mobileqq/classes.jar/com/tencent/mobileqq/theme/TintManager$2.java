@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.theme;
 
-import bdbs;
+import beis;
 
 public class TintManager$2
   implements Runnable
 {
-  public TintManager$2(bdbs parambdbs, String paramString) {}
+  public TintManager$2(beis parambeis, String paramString) {}
   
   /* Error */
   public void run()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 14	com/tencent/mobileqq/theme/TintManager$2:this$0	Lbdbs;
-    //   4: invokevirtual 30	bdbs:clear	()V
+    //   1: getfield 14	com/tencent/mobileqq/theme/TintManager$2:this$0	Lbeis;
+    //   4: invokevirtual 30	beis:clear	()V
     //   7: aload_0
-    //   8: getfield 14	com/tencent/mobileqq/theme/TintManager$2:this$0	Lbdbs;
+    //   8: getfield 14	com/tencent/mobileqq/theme/TintManager$2:this$0	Lbeis;
     //   11: aload_0
     //   12: getfield 16	com/tencent/mobileqq/theme/TintManager$2:a	Ljava/lang/String;
-    //   15: invokestatic 33	bdbs:a	(Lbdbs;Ljava/lang/String;)Ljava/lang/String;
+    //   15: invokestatic 33	beis:a	(Lbeis;Ljava/lang/String;)Ljava/lang/String;
     //   18: pop
-    //   19: getstatic 38	bgjb:a	Lbgjb;
+    //   19: getstatic 38	bhrw:a	Lbhrw;
     //   22: invokestatic 44	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   25: ldc 46
-    //   27: invokevirtual 50	bgjb:getSavePath	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+    //   27: invokevirtual 50	bhrw:getSavePath	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
     //   30: astore_2
     //   31: aload_2
     //   32: invokestatic 56	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -40,11 +40,11 @@ public class TintManager$2
     //   60: iconst_2
     //   61: ldc 74
     //   63: invokestatic 78	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   66: getstatic 83	bgjc:a	Lbgjc;
+    //   66: getstatic 83	bhrx:a	Lbhrx;
     //   69: aload_0
-    //   70: getfield 14	com/tencent/mobileqq/theme/TintManager$2:this$0	Lbdbs;
-    //   73: invokestatic 86	bdbs:a	(Lbdbs;)Lbgfl;
-    //   76: invokevirtual 89	bgjc:a	(Lbgfl;)V
+    //   70: getfield 14	com/tencent/mobileqq/theme/TintManager$2:this$0	Lbeis;
+    //   73: invokestatic 86	beis:a	(Lbeis;)Lbhog;
+    //   76: invokevirtual 89	bhrx:a	(Lbhog;)V
     //   79: return
     //   80: invokestatic 70	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   83: ifeq +28 -> 111
@@ -194,10 +194,10 @@ public class TintManager$2
     //   354: aload_3
     //   355: astore_2
     //   356: aload_0
-    //   357: getfield 14	com/tencent/mobileqq/theme/TintManager$2:this$0	Lbdbs;
+    //   357: getfield 14	com/tencent/mobileqq/theme/TintManager$2:this$0	Lbeis;
     //   360: aload 5
     //   362: aload 4
-    //   364: invokevirtual 148	bdbs:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   364: invokevirtual 148	beis:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   367: aload_3
     //   368: ifnull +27 -> 395
     //   371: aload_3

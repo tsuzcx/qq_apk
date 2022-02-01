@@ -1,19 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.screendetect.ScreenShotDetector;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class adil
-  implements DialogInterface.OnClickListener
+public class adil
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adil(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, aymg paramaymg) {}
+  public adil(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    FriendProfileCardActivity.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Aymg);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    ScreenShotDetector.a(paramBoolean);
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
+    {
+      bdla.b(localQQAppInterface, "dc00898", "", "", "0X800B4E7", "0X800B4E7", i, 0, "", "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
     }
   }
 }

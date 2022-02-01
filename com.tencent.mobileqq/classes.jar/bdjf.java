@@ -1,22 +1,30 @@
-import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bdjf
-  extends bdji<UserState>
+public final class bdjf
+  implements View.OnClickListener
 {
-  bdjf(bdiu parambdiu, UserState paramUserState, List paramList)
-  {
-    super(paramUserState, paramList);
-  }
+  public bdjf(bdgy parambdgy) {}
   
-  public void a(UserState paramUserState)
+  public void onClick(View paramView)
   {
-    bdiu.a(this.a).h();
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.a(15, 1, 0L);
+      com.tencent.mobileqq.minigame.splash.SplashMiniGameStarter.needJump = false;
+      com.tencent.mobileqq.minigame.splash.SplashMiniGameStarter.hasClickJumpBtn = true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdjf
  * JD-Core Version:    0.7.0.1
  */

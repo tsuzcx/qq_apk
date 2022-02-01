@@ -1,21 +1,32 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class apbu
-  implements bjoe
+class apbu
+  implements MediaPlayer.OnPreparedListener
 {
-  public apbu(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
+  apbu(apbp paramapbp) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    switch (paramInt)
+    try
     {
-    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMusicController", 2, "load bg music success. : " + apbp.b(this.a));
+      }
+      this.a.a.seekTo(0);
+      apbp.b(this.a, true);
+      if (apbp.b(this.a))
+      {
+        this.a.a.start();
+        apbp.c(this.a, false);
+      }
       return;
     }
-    this.a.a.a("DynamicAvatarRecordActivity");
-    this.a.finish();
+    catch (Exception paramMediaPlayer)
+    {
+      paramMediaPlayer.printStackTrace();
+    }
   }
 }
 

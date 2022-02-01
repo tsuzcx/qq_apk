@@ -1,6 +1,6 @@
 package com.tencent.gdtad.views.form.framework;
 
-import abte;
+import acjd;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
@@ -16,7 +16,7 @@ public final class GdtFormCommitUtil$1
   
   public void run()
   {
-    AdFormError localAdFormError = abte.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentGdtadAditemGdtAd, this.jdField_a_of_type_ComTencentAdTangramCanvasViewsFormAdFormData);
+    AdFormError localAdFormError = acjd.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentGdtadAditemGdtAd, this.jdField_a_of_type_ComTencentAdTangramCanvasViewsFormAdFormData);
     if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
       return;
     }

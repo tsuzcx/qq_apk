@@ -1,447 +1,183 @@
-import android.content.Intent;
-import android.telephony.TelephonyManager;
-import android.view.MotionEvent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.AuthDevUgActivity;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.text.TextUtils;
+import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pluginsdk.PluginRuntime;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qphone.base.util.ROMUtil;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.util.SearchConfigManager;
 
 public class bcef
+  extends bcff
 {
-  public static final HashMap<String, bceh> a = new HashMap();
+  private int jdField_a_of_type_Int = 1;
+  private long jdField_a_of_type_Long;
+  private TroopMemberInfo jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
   
-  static
+  public bcef(QQAppInterface paramQQAppInterface, int paramInt, TroopMemberInfo paramTroopMemberInfo)
   {
-    a.put("dc01160", new pdw());
+    super(paramQQAppInterface, paramInt, 0L);
+    this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo = paramTroopMemberInfo;
   }
   
-  private static String a()
+  private void a()
   {
-    int i = DeviceInfoUtil.getCpuNumber();
-    long l = DeviceInfoUtil.getSystemTotalMemory() / 1024L / 1024L;
-    long[] arrayOfLong = DeviceInfoUtil.getRomMemroy();
-    String str2 = ((TelephonyManager)BaseApplicationImpl.getContext().getSystemService("phone")).getNetworkOperator();
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    str2 = String.format("%.2f", new Object[] { Double.valueOf(DeviceInfoUtil.getScreenSize()) });
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(i).append(";").append(l).append(";").append(arrayOfLong[0]).append(";").append(arrayOfLong[1]).append(";").append(str1.replaceAll(";", "")).append(";").append(str2).append(";").append(bodx.a).append(";").append(bodx.b).append(";");
-    str1 = localStringBuilder.toString();
-    if (QLog.isColorLevel()) {
-      QLog.d("ReportController", 2, "getExtraDeviceInfo=" + str1);
-    }
-    return str1;
-  }
-  
-  private static String a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt1, int paramInt2, int paramInt3, String paramString7, String paramString8, String paramString9, String paramString10)
-  {
-    StringBuilder localStringBuilder = new StringBuilder(64);
-    if ((paramString2 != null) && (paramString2.length() > 0)) {
-      localStringBuilder.append(paramString2).append('|');
-    }
-    if (paramString1.equals("dc01440")) {
-      localStringBuilder.append("0").append('|');
-    }
-    localStringBuilder.append(paramString3).append('|');
-    localStringBuilder.append(paramString4).append('|');
-    localStringBuilder.append(paramString5).append('|');
-    localStringBuilder.append(paramString6).append('|');
-    localStringBuilder.append(paramInt1).append('|');
-    localStringBuilder.append("${count_unknown}").append('|');
-    localStringBuilder.append(paramInt3).append('|');
-    localStringBuilder.append(paramString7).append('|');
-    localStringBuilder.append(paramString8).append('|');
-    localStringBuilder.append(paramString9).append('|');
-    localStringBuilder.append(paramString10).append('|');
-    return localStringBuilder.toString();
-  }
-  
-  private static String a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13, String paramString14)
-  {
-    String str = "";
-    if (paramBoolean) {
-      str = NetConnInfoCenter.getSystemNetStateString();
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(NetConnInfoCenter.getServerTime()).append("|").append(AppSetting.a()).append("|").append("android").append("|").append(paramString1).append("|").append(paramString2).append("|").append(paramString3).append("|").append(paramString4).append("|").append(paramString5).append("|").append(paramInt).append("|").append(paramString6).append("|").append(DeviceInfoUtil.getIMEI()).append("|").append("|").append(DeviceInfoUtil.getManufactureInfo()).append("|").append(DeviceInfoUtil.getModel()).append("|").append(str).append("|").append(DeviceInfoUtil.getDeviceOSVersion()).append("|").append(ROMUtil.getRomDetailInfo()).append("|").append(paramString7).append("|").append(paramString8).append("|").append(paramString9).append("|").append(paramString10).append("|").append(paramString11).append("|").append(paramString12).append("|").append(paramString13).append("|").append(paramString14).append("|");
-    paramString1 = localStringBuilder.toString();
-    if (QLog.isColorLevel()) {
-      QLog.d("ReportController", 2, "getDC04272ReportDetail=" + paramString1);
-    }
-    return paramString1;
-  }
-  
-  public static void a(MotionEvent paramMotionEvent)
-  {
-    bctc.a().a(paramMotionEvent);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReportController", 2, "stopReportLooper");
-    }
-    paramQQAppInterface = paramQQAppInterface.getReportController();
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.b();
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
-  {
-    Object localObject = paramString2;
-    if (paramString2.contains("${uin_unknown}"))
+    switch (this.jdField_a_of_type_Int)
     {
-      String str = paramQQAppInterface.getCurrentAccountUin();
-      localObject = str;
-      if (str == null) {
-        localObject = "";
-      }
-      localObject = paramString2.replace("${uin_unknown}", (CharSequence)localObject);
-    }
-    paramString2 = ((String)localObject).replace("${count_unknown}", Integer.toString(paramInt));
-    if (QLog.isColorLevel()) {
-      QLog.d("ReportController", 2, "ReportRuntime: " + paramString1 + ", " + paramString2);
-    }
-    for (;;)
-    {
-      localObject = new NewIntent(paramQQAppInterface.getApplication(), bbpj.class);
-      ((NewIntent)localObject).putExtra("sendType", 2);
-      ((NewIntent)localObject).putExtra("tag", paramString1);
-      ((NewIntent)localObject).putExtra("content", paramString2);
-      ((NewIntent)localObject).setWithouLogin(true);
-      paramQQAppInterface.startServlet((NewIntent)localObject);
+    default: 
       return;
-      if (!paramQQAppInterface.isLogin()) {
-        QLog.d("ReportController", 1, "ReportRuntime: " + paramString1 + ", " + paramString2);
-      }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5)
-  {
-    a(paramQQAppInterface, paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, "", "", "", "", "", "", "", "");
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12)
-  {
-    b(paramQQAppInterface, paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, a(), paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13)
-  {
-    QQAppInterface localQQAppInterface = paramQQAppInterface;
-    if (paramQQAppInterface == null)
-    {
-      localQQAppInterface = paramQQAppInterface;
-      if (BaseApplicationImpl.sProcessId == 1)
+    case 2: 
+      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.troopnick;
+      this.c = bcnc.a(new String[] { this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.friendnick, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.memberuin });
+      return;
+    case 3: 
+      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.autoremark;
+      this.c = bcnc.a(new String[] { this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.friendnick, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.memberuin });
+      return;
+    case 1: 
+      this.jdField_b_of_type_JavaLangString = bcnc.a(new String[] { this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.troopnick, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.autoremark });
+      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
       {
-        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
-        localQQAppInterface = paramQQAppInterface;
-        if (localAppRuntime != null)
-        {
-          localQQAppInterface = paramQQAppInterface;
-          if ((localAppRuntime instanceof QQAppInterface)) {
-            localQQAppInterface = (QQAppInterface)localAppRuntime;
-          }
+        this.c = this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.friendnick;
+        return;
+      }
+      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.friendnick;
+      this.c = this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.memberuin;
+      return;
+    }
+    this.jdField_b_of_type_JavaLangString = bcnc.a(new String[] { this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.troopnick, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.autoremark, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.friendnick });
+    this.c = this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.memberuin;
+  }
+  
+  protected long a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = -9223372036854775808L;
+    long l = bcnc.b(paramString, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.troopnick, bbzc.g);
+    if (l > this.jdField_a_of_type_Long)
+    {
+      this.jdField_a_of_type_Long = l;
+      this.jdField_a_of_type_Int = 2;
+    }
+    l = bcnc.b(paramString, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.autoremark, bbzc.k);
+    if (l > this.jdField_a_of_type_Long)
+    {
+      this.jdField_a_of_type_Long = l;
+      this.jdField_a_of_type_Int = 3;
+    }
+    l = bcnc.b(paramString, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.friendnick, bbzc.l);
+    if (l > this.jdField_a_of_type_Long)
+    {
+      this.jdField_a_of_type_Long = l;
+      this.jdField_a_of_type_Int = 1;
+    }
+    l = bcnc.a(paramString, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.memberuin, bbzc.o, false);
+    if (l > this.jdField_a_of_type_Long)
+    {
+      this.jdField_a_of_type_Long = l;
+      this.jdField_a_of_type_Int = 0;
+    }
+    if (this.jdField_a_of_type_Long != -9223372036854775808L)
+    {
+      this.jdField_a_of_type_Long += bbzc.z;
+      a();
+    }
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public Object a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.memberuin;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(View paramView)
+  {
+    super.a(paramView);
+    if (bcnc.a(this.jdField_b_of_type_Int))
+    {
+      alik.a = true;
+      alik.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.memberuin, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.troopuin, 1000, c(), false, null);
+      bcnc.a(this.jdField_a_of_type_JavaLangString, 20, 1, paramView);
+      bcnc.a(this.jdField_a_of_type_JavaLangString, 20, paramView, false);
+      bcnc.a(this, paramView);
+      if (SearchConfigManager.needSeparate) {
+        bcnc.a("search", "contact", "contacts", 0, 0, new String[] { bcnc.a(this.jdField_b_of_type_Int) });
+      }
+      if (((a() instanceof String)) && (!this.jdField_b_of_type_Boolean)) {
+        bcnc.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.i, (String)a(), e());
+      }
+      if ((paramView.getContext() instanceof UniteSearchActivity))
+      {
+        if ((this.i != null) && (!TextUtils.isEmpty(this.i))) {
+          bcjs.a(null, 0, this.jdField_b_of_type_Int, "0X8009D31", 1, 0, null, null);
         }
       }
-    }
-    if (localQQAppInterface == null)
-    {
-      paramQQAppInterface = a(true, "${uin_unknown}", paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13);
-      paramString1 = new Intent();
-      paramString1.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
-      paramString1.putExtra("reporting_tag", "dc04272");
-      paramString1.putExtra("reporting_detail", paramQQAppInterface);
-      paramString1.putExtra("reporting_count", paramInt);
-      paramString1.putExtra("is_runtime", 1);
-      BaseApplicationImpl.getApplication().sendBroadcast(paramString1);
+      else {
+        return;
+      }
+      bcjs.a(null, 0, this.jdField_b_of_type_Int, "0X8009D37", 0, 0, null, null);
       return;
     }
-    a(localQQAppInterface, "dc04272", a(true, localQQAppInterface.getCurrentAccountUin(), paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13), paramInt);
+    bcnc.a(paramView, this);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, int paramInt3, String paramString6, String paramString7, String paramString8, String paramString9)
+  public boolean a()
   {
-    QQAppInterface localQQAppInterface = paramQQAppInterface;
-    Object localObject;
-    if (paramQQAppInterface == null)
-    {
-      localQQAppInterface = paramQQAppInterface;
-      if (BaseApplicationImpl.sProcessId == 1)
-      {
-        localObject = BaseApplicationImpl.getApplication().peekAppRuntime();
-        localQQAppInterface = paramQQAppInterface;
-        if (localObject != null)
-        {
-          localQQAppInterface = paramQQAppInterface;
-          if ((localObject instanceof QQAppInterface)) {
-            localQQAppInterface = (QQAppInterface)localObject;
-          }
-        }
-      }
-    }
-    if (localQQAppInterface == null)
-    {
-      paramQQAppInterface = a(paramString1, paramString2, "${uin_unknown}", paramString3, paramString4, paramString5, paramInt1, paramInt3, paramInt2, paramString6, paramString7, paramString8, paramString9);
-      paramString2 = new Intent();
-      paramString2.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
-      paramString2.putExtra("reporting_tag", paramString1);
-      paramString2.putExtra("reporting_detail", paramQQAppInterface);
-      paramString2.putExtra("reporting_count", paramInt3);
-      paramString2.putExtra("is_runtime", 1);
-      BaseApplicationImpl.getApplication().sendBroadcast(paramString2);
-      if (!"CliOper".equals(paramString1)) {
-        bkwv.a().a(paramString4, paramQQAppInterface);
-      }
-      return;
-    }
-    if ((NotificationActivity.a.contains(paramString4)) || (AuthDevUgActivity.a.contains(paramString4))) {
-      paramQQAppInterface = "";
-    }
-    for (;;)
-    {
-      paramQQAppInterface = a(paramString1, paramString2, paramString3, paramQQAppInterface, paramString4, paramString5, paramInt1, paramInt3, paramInt2, paramString6, paramString7, paramString8, paramString9);
-      a(localQQAppInterface, paramString1, paramQQAppInterface, paramInt3);
-      if ("CliOper".equals(paramString1)) {
-        break;
-      }
-      bkwv.a().a(paramString4, paramQQAppInterface);
-      return;
-      localObject = localQQAppInterface.getCurrentAccountUin();
-      paramQQAppInterface = paramString3;
-      paramString3 = (String)localObject;
-    }
+    return false;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
+  public String b()
   {
-    a(paramQQAppInterface, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, 1, paramString6, paramString7, paramString8, paramString9);
+    return this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.memberuin;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13)
+  public int c()
   {
-    QQAppInterface localQQAppInterface = paramQQAppInterface;
-    if (paramQQAppInterface == null)
-    {
-      localQQAppInterface = paramQQAppInterface;
-      if (BaseApplicationImpl.sProcessId == 1)
-      {
-        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
-        localQQAppInterface = paramQQAppInterface;
-        if (localAppRuntime != null)
-        {
-          localQQAppInterface = paramQQAppInterface;
-          if ((localAppRuntime instanceof QQAppInterface)) {
-            localQQAppInterface = (QQAppInterface)localAppRuntime;
-          }
-        }
-      }
-    }
-    if (localQQAppInterface == null)
-    {
-      paramQQAppInterface = a(paramBoolean, "${uin_unknown}", paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13);
-      paramString1 = new Intent();
-      paramString1.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
-      paramString1.putExtra("reporting_tag", "dc04272");
-      paramString1.putExtra("reporting_detail", paramQQAppInterface);
-      paramString1.putExtra("reporting_count", paramInt);
-      paramString1.putExtra("is_runtime", 1);
-      BaseApplicationImpl.getApplication().sendBroadcast(paramString1);
-      return;
-    }
-    a(localQQAppInterface, "dc04272", a(paramBoolean, localQQAppInterface.getCurrentAccountUin(), paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13), paramInt);
+    return 1;
   }
   
-  public static void a(PluginRuntime paramPluginRuntime)
+  public CharSequence c()
   {
-    paramPluginRuntime.setClickEventReportor(new bceg());
+    if (bcnc.a(this.jdField_b_of_type_Int)) {
+      return anvx.a(2131702032);
+    }
+    return anvx.a(2131702023);
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  public String c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReportController", 2, "startReportLooper");
-    }
-    paramQQAppInterface = paramQQAppInterface.getReportController();
-    if (paramQQAppInterface != null) {
-      if (paramBoolean) {
-        break label37;
-      }
-    }
-    label37:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      paramQQAppInterface.a(paramBoolean);
-      return true;
-    }
+    return this.jdField_b_of_type_JavaLangString;
   }
   
-  public static boolean a(String paramString)
+  public int d()
   {
-    boolean bool = false;
-    if (("P_CliOper".equals(paramString)) || ("CliOper".equals(paramString)) || ("on_off".equals(paramString)) || ("CliStatus".equals(paramString))) {
-      bool = true;
-    }
-    return bool;
+    return 1000;
   }
   
-  public static void b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
+  public CharSequence d()
   {
-    if (paramString2 != null)
-    {
-      bcef localbcef = paramQQAppInterface.getReportController();
-      if (localbcef != null)
-      {
-        String str = paramString2;
-        if (paramString2.contains("${uin_unknown}")) {
-          str = paramString2.replace("${uin_unknown}", paramQQAppInterface.getCurrentAccountUin());
-        }
-        localbcef.a(paramString1, str, paramInt);
-      }
-    }
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5)
-  {
-    a(paramQQAppInterface, paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, a(), "", "", "", "", "", "", "");
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13)
-  {
-    QQAppInterface localQQAppInterface = paramQQAppInterface;
-    if (paramQQAppInterface == null)
-    {
-      localQQAppInterface = paramQQAppInterface;
-      if (BaseApplicationImpl.sProcessId == 1)
-      {
-        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
-        localQQAppInterface = paramQQAppInterface;
-        if (localAppRuntime != null)
-        {
-          localQQAppInterface = paramQQAppInterface;
-          if ((localAppRuntime instanceof QQAppInterface)) {
-            localQQAppInterface = (QQAppInterface)localAppRuntime;
-          }
-        }
-      }
-    }
-    if (localQQAppInterface == null)
-    {
-      paramQQAppInterface = a(true, "${uin_unknown}", paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13);
-      paramString1 = new Intent();
-      paramString1.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
-      paramString1.putExtra("reporting_tag", "dc04272");
-      paramString1.putExtra("reporting_detail", paramQQAppInterface);
-      paramString1.putExtra("reporting_count", paramInt);
-      paramString1.putExtra("is_runtime", 0);
-      BaseApplicationImpl.getApplication().sendBroadcast(paramString1);
-      return;
-    }
-    b(localQQAppInterface, "dc04272", a(true, localQQAppInterface.getCurrentAccountUin(), paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13), paramInt);
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, int paramInt3, String paramString6, String paramString7, String paramString8, String paramString9)
-  {
-    QQAppInterface localQQAppInterface = paramQQAppInterface;
-    if (paramQQAppInterface == null)
-    {
-      localQQAppInterface = paramQQAppInterface;
-      if (BaseApplicationImpl.sProcessId == 1)
-      {
-        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
-        localQQAppInterface = paramQQAppInterface;
-        if (localAppRuntime != null)
-        {
-          localQQAppInterface = paramQQAppInterface;
-          if ((localAppRuntime instanceof QQAppInterface)) {
-            localQQAppInterface = (QQAppInterface)localAppRuntime;
-          }
-        }
-      }
-    }
-    if (localQQAppInterface == null)
-    {
-      paramQQAppInterface = a(paramString1, paramString2, "${uin_unknown}", paramString3, paramString4, paramString5, paramInt1, paramInt2, paramInt3, paramString6, paramString7, paramString8, paramString9);
-      paramString2 = new Intent();
-      paramString2.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
-      paramString2.putExtra("reporting_tag", paramString1);
-      paramString2.putExtra("reporting_detail", paramQQAppInterface);
-      paramString2.putExtra("reporting_count", paramInt2);
-      paramString2.putExtra("is_runtime", 0);
-      BaseApplicationImpl.getApplication().sendBroadcast(paramString2);
-      if (!"CliOper".equals(paramString1)) {
-        bkwv.a().a(paramString4, paramQQAppInterface);
-      }
-    }
-    do
-    {
-      return;
-      paramQQAppInterface = a(paramString1, paramString2, localQQAppInterface.getCurrentAccountUin(), paramString3, paramString4, paramString5, paramInt1, paramInt2, paramInt3, paramString6, paramString7, paramString8, paramString9);
-      b(localQQAppInterface, paramString1, paramQQAppInterface, paramInt2);
-    } while ("CliOper".equals(paramString1));
-    bkwv.a().a(paramString4, paramQQAppInterface);
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
-  {
-    b(paramQQAppInterface, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, 1, paramInt2, paramString6, paramString7, paramString8, paramString9);
-  }
-  
-  protected bceh a(String paramString)
-  {
-    if (a.containsKey(paramString)) {
-      return (bceh)a.get(paramString);
-    }
     return null;
   }
   
-  protected void a()
+  public String d()
   {
-    Iterator localIterator = a.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (String)localIterator.next();
-      localObject = (bceh)a.get(localObject);
-      if (localObject != null) {
-        ((bceh)localObject).a();
-      }
-    }
+    return this.c;
   }
   
-  protected void a(String paramString1, String paramString2, int paramInt) {}
-  
-  protected void a(boolean paramBoolean) {}
-  
-  protected void b() {}
-  
-  protected boolean b(String paramString)
+  public int e()
   {
-    if ("dc01160".equals(paramString)) {
-      return pdd.a();
-    }
-    return false;
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcef
  * JD-Core Version:    0.7.0.1
  */

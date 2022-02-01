@@ -1,19 +1,19 @@
 package dov.com.qq.im.ae.gif.giftext.viewmodel;
 
 import android.arch.lifecycle.MutableLiveData;
-import blvg;
-import blzg;
-import blzh;
+import bnkn;
+import bnoq;
+import bnor;
 import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
 
 public class AEGIFMaterialViewModel$1$1
   implements Runnable
 {
-  public AEGIFMaterialViewModel$1$1(blzh paramblzh, MetaMaterial paramMetaMaterial) {}
+  public AEGIFMaterialViewModel$1$1(bnor parambnor, MetaMaterial paramMetaMaterial) {}
   
   public void run()
   {
-    blzg.a(this.jdField_a_of_type_Blzh.a).setValue(new blvg(this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial, 2, 0));
+    bnoq.a(this.jdField_a_of_type_Bnor.a).setValue(new bnkn(this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial, 2, 0));
   }
 }
 

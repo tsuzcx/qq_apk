@@ -1,6 +1,6 @@
 public abstract interface akud
 {
-  public abstract void a(int paramInt);
+  public abstract void a(String paramString1, String paramString2, aktx paramaktx);
 }
 
 

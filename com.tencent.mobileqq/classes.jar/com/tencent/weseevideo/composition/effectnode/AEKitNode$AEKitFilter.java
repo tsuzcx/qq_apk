@@ -162,7 +162,7 @@ class AEKitNode$AEKitFilter
           paramTAVVideoEffect = this.mFlipFrame;
         }
         if (TextUtils.equals(this.currentAppliedMaterialPath, paramCIImage)) {
-          break label1089;
+          break label1090;
         }
         this.currentAppliedMaterialPath = paramCIImage;
         localObject = this.aeFilterManager;
@@ -197,12 +197,12 @@ class AEKitNode$AEKitFilter
         i = this.aeFilterManager.drawFrame(i, false, 0L);
         DurationUtil.end("aeFilterManager.drawFrame");
         if (paramTAVVideoEffect == null) {
-          break label1107;
+          break label1108;
         }
         this.mFlipFilter.OnDrawFrameGLSL();
       }
-      label1089:
-      label1107:
+      label1090:
+      label1108:
       for (paramCIImage = this.mFlipFilter.RenderProcess(i, j, k);; paramCIImage = null)
       {
         if (paramCIImage != null) {
@@ -250,7 +250,7 @@ class AEKitNode$AEKitFilter
           {
             this.faceDetector = new PTFaceDetector();
             this.faceDetector.init(true);
-            paramCIImage = this.faceDetector.detectFrame(paramTAVVideoEffect, System.currentTimeMillis(), 0, false, 1.0D, 0.0F, true, false, null);
+            paramCIImage = this.faceDetector.detectFrame(paramTAVVideoEffect, System.currentTimeMillis(), 0, 1.0D, 90.0F, true, false, null);
             this.aeFilterManager.setPTFaceAttrData(paramCIImage);
           }
           break label710;
@@ -307,7 +307,7 @@ class AEKitNode$AEKitFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.weseevideo.composition.effectnode.AEKitNode.AEKitFilter
  * JD-Core Version:    0.7.0.1
  */

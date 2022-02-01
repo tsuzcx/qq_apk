@@ -20,7 +20,7 @@ public class VideoFeedsLikeAnimate
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionCenterView = new VideoFeedsLikeAnimate.LikeExplosionCenterView(this, this.jdField_a_of_type_AndroidViewViewGroup.getContext());
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionCenterView.setPivotX(this.jdField_a_of_type_Float);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionCenterView.setPivotY(this.b);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionCenterView.setDrawableId(2130843137);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionCenterView.setDrawableId(2130843173);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView = new VideoFeedsLikeAnimate.LikeExplosionView(this, this.jdField_a_of_type_AndroidViewViewGroup.getContext(), paramRandom);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView.setAlpha(0.0F);
     this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView);

@@ -1,15 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.publicaccount.PublicView;
+import com.tencent.widget.XListView;
+import java.lang.ref.WeakReference;
 
 public class aixg
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public aixg(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment, aczg paramaczg) {}
+  private WeakReference<PublicView> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aixg(PublicView paramPublicView)
   {
-    this.jdField_a_of_type_Aczg.a(true);
+    this.a = new WeakReference(paramPublicView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    PublicView localPublicView = (PublicView)this.a.get();
+    if (localPublicView == null) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      PublicView.a(localPublicView).springBackOverScrollHeaderView();
+      return;
+    case 2: 
+      PublicView.a(localPublicView).springBackOverScrollHeaderView();
+      PublicView.a(localPublicView, 1, 2131718993);
+      return;
+    case 3: 
+      PublicView.a(localPublicView, true);
+      return;
+    }
+    PublicView.b(localPublicView);
   }
 }
 

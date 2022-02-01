@@ -1,103 +1,60 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CameraEmotionData;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import org.json.JSONObject;
 
-class aqzy
-  extends TransProcessorHandler
+public class aqzy
 {
-  aqzy(aqzw paramaqzw, Looper paramLooper, CameraEmotionData paramCameraEmotionData)
+  public int a;
+  public long a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
+  public boolean d = true;
+  public boolean e;
+  public boolean f;
+  public boolean g;
+  
+  public aqzy()
   {
-    super(paramLooper);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = -1L;
   }
   
-  public void handleMessage(Message paramMessage)
+  public static aqzy a(String paramString)
   {
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    if (aqzw.a(this.jdField_a_of_type_Aqzw) == null) {
-      label19:
-      return;
-    }
-    if ((localFileMsg == null) || (localFileMsg.commandId != this.jdField_a_of_type_Aqzw.a()))
+    if (paramString == null) {}
+    do
     {
-      aqzw.b(this.jdField_a_of_type_Aqzw).getTransFileController().removeHandle(this);
-      return;
-    }
-    Bdh_extinfo.CommFileExtRsp localCommFileExtRsp = new Bdh_extinfo.CommFileExtRsp();
-    Object localObject3 = "";
-    Object localObject1 = localObject3;
-    if (localFileMsg.bdhExtendInfo != null) {}
-    for (;;)
-    {
+      return null;
       try
       {
-        localCommFileExtRsp.mergeFrom(localFileMsg.bdhExtendInfo);
-        if (!localCommFileExtRsp.bytes_download_url.has()) {
-          break label515;
-        }
-        localObject1 = localCommFileExtRsp.bytes_download_url.get().toStringUtf8();
-        localObject3 = new HashMap();
-        switch (paramMessage.what)
-        {
-        case 1002: 
-        default: 
-          return;
-        case 1001: 
-          if (!QLog.isColorLevel()) {
-            break label19;
-          }
-          QLog.d("CameraEmoRoamingManager", 2, "start upload camera emo");
-          return;
-        }
+        aqzy localaqzy = new aqzy();
+        paramString = new JSONObject(paramString);
+        localaqzy.jdField_a_of_type_Boolean = paramString.optBoolean("useParcelForBoot", true);
+        localaqzy.jdField_a_of_type_Long = paramString.optLong("delayPluginManageTimeInMills", -1L);
+        localaqzy.b = paramString.optBoolean("enableKernelServiceInVivo", false);
+        localaqzy.c = paramString.optBoolean("disableSimpleBreakStrategy", false);
+        localaqzy.d = paramString.optBoolean("isInitDTSDKAtStart", true);
+        localaqzy.jdField_a_of_type_Int = paramString.optInt("enableSyslogPrintInt", 0);
+        localaqzy.e = paramString.optBoolean("delayLoadUnimportantProxy", false);
+        localaqzy.f = paramString.optBoolean("enableMemoryLeak", false);
+        localaqzy.g = paramString.optBoolean("disableNavigationBar", false);
+        QLog.d("BootOptimizeConfProcessor", 2, "confBean = " + localaqzy.toString());
+        return localaqzy;
       }
-      catch (Exception localException)
-      {
-        QLog.d("CameraEmoRoamingManager", 2, "extRsp.mergeFrom(file.bdhExtendInfo) failed");
-        localObject2 = localObject3;
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("CameraEmoRoamingManager", 2, "finish upload camera emo serverPath=" + (String)localObject2);
-        }
-        aqzw.c(this.jdField_a_of_type_Aqzw).getTransFileController().removeHandle(this);
-        ((amos)aqzw.d(this.jdField_a_of_type_Aqzw).getBusinessHandler(160)).a(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData, true);
-        ((HashMap)localObject3).put("sucFlag", "1");
-        ((HashMap)localObject3).put("retCode", String.valueOf(paramMessage.what));
-        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "CamEmoRealUpload", true, 0L, 0L, (HashMap)localObject3, null);
-        return;
-      }
-      aqzw.e(this.jdField_a_of_type_Aqzw).getTransFileController().removeHandle(this);
-      QLog.i("CameraEmoRoamingManager", 1, "upload camera emo error:" + localCommFileExtRsp.int32_retcode.get());
-      ((amos)aqzw.f(this.jdField_a_of_type_Aqzw).getBusinessHandler(160)).a(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData, false);
-      ((HashMap)localObject3).put("sucFlag", "0");
-      ((HashMap)localObject3).put("retCode", String.valueOf(localCommFileExtRsp.int32_retcode.get()));
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "CamEmoRealUpload", false, 0L, 0L, (HashMap)localObject3, null);
-      return;
-      aqzw.g(this.jdField_a_of_type_Aqzw).getTransFileController().removeHandle(this);
-      QLog.i("CameraEmoRoamingManager", 1, "upload camera emo cancel:" + (String)localObject2);
-      ((amos)aqzw.h(this.jdField_a_of_type_Aqzw).getBusinessHandler(160)).a(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData, false);
-      ((HashMap)localObject3).put("sucFlag", "0");
-      ((HashMap)localObject3).put("retCode", String.valueOf(paramMessage.what));
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "CamEmoRealUpload", false, 0L, 0L, (HashMap)localObject3, null);
-      return;
-      label515:
-      Object localObject2 = "";
-    }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("BootOptimizeConfProcessor", 2, new Object[] { "parse e:", paramString.toString() });
+    return null;
+  }
+  
+  public String toString()
+  {
+    return "BootOptimizeConfigureBean{useParcelForBoot=" + this.jdField_a_of_type_Boolean + ", delayPluginManageTimeInMills=" + this.jdField_a_of_type_Long + ", enableKernelServiceInVivo=" + this.b + ", disableSimpleBreakStrategy=" + this.c + ", isInitDTSDKAtStart = " + this.d + ", enableSyslogPrint = " + this.jdField_a_of_type_Int + ", delayLoadUnimportantProxy = " + this.e + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqzy
  * JD-Core Version:    0.7.0.1
  */

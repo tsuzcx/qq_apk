@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendHorizontalTagsView;
+import android.accounts.AccountManagerCallback;
+import android.accounts.AccountManagerFuture;
+import com.tencent.mobileqq.contactsync.ContactSyncManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class arpz
+  implements AccountManagerCallback<Boolean>
 {
-  public int a;
-  public String a;
+  public arpz(ContactSyncManager paramContactSyncManager) {}
   
-  public arpz(ExtendFriendHorizontalTagsView paramExtendFriendHorizontalTagsView, int paramInt, String paramString)
+  public void run(AccountManagerFuture<Boolean> paramAccountManagerFuture)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Manager", 2, "removeSyncAccount | is done = " + paramAccountManagerFuture.isDone());
+    }
   }
 }
 

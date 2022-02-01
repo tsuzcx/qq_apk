@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video;
 
-import sgx;
-import sgz;
-import shg;
-import shh;
+import stn;
+import stp;
+import stw;
+import stx;
 
 class VideoView$4
   implements Runnable
@@ -14,7 +14,7 @@ class VideoView$4
   {
     synchronized (this.this$0)
     {
-      VideoView.access$602(this.this$0, shg.a.a());
+      VideoView.access$602(this.this$0, stw.a.a());
       if (VideoView.access$600(this.this$0) != null)
       {
         VideoView.access$702(this.this$0, VideoView.access$800(this.this$0));

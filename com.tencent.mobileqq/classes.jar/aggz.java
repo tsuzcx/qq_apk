@@ -1,18 +1,23 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.utils.VipUtils;
 
 class aggz
-  extends aghj
+  implements DialogInterface.OnClickListener
 {
-  aggz(agcw paramagcw)
-  {
-    super(paramagcw, null);
-  }
+  aggz(aggy paramaggy, String paramString, int paramInt) {}
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new QQStoryItemBuilder(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    paramDialogInterface = new Intent(aggy.a(this.jdField_a_of_type_Aggy), QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    aggy.a(this.jdField_a_of_type_Aggy).startActivity(paramDialogInterface);
+    VipUtils.a(aggy.a(this.jdField_a_of_type_Aggy), "cmshow", "Apollo", "activity_alert_view", ApolloUtil.b(aggy.a(this.jdField_a_of_type_Aggy).curType), 0, new String[] { "" + this.jdField_a_of_type_Int, "1" });
   }
 }
 

@@ -1,37 +1,14 @@
-import android.content.Context;
-import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import java.util.Comparator;
 
-public class qen
-  implements ViewBase.OnClickListener
+class qen
+  implements Comparator<AdvertisementInfo>
 {
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final BaseArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
+  qen(qel paramqel) {}
   
-  public qen(BaseArticleInfo paramBaseArticleInfo, Context paramContext)
+  public int a(AdvertisementInfo paramAdvertisementInfo1, AdvertisementInfo paramAdvertisementInfo2)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo instanceof AdvertisementInfo))
-    {
-      paramViewBase = (AdvertisementInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-      if (paramViewBase.mLocalInfo != null)
-      {
-        String str = paramViewBase.mLocalInfo.b;
-        if (!TextUtils.isEmpty(str))
-        {
-          pay.d(this.jdField_a_of_type_AndroidContentContext, str);
-          obb.a(new trn().a(this.jdField_a_of_type_AndroidContentContext).a(obb.a).b(obb.ab).a(paramViewBase).d(obb.aY).a());
-        }
-      }
-    }
+    return paramAdvertisementInfo1.mAdKdPos - paramAdvertisementInfo2.mAdKdPos;
   }
 }
 

@@ -1,19 +1,22 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.apollo.debug.page.CmGameDebugToolFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog.4.1;
 
 public class alta
-  implements CompoundButton.OnCheckedChangeListener
+  implements wis<win>
 {
-  public alta(CmGameDebugToolFragment paramCmGameDebugToolFragment) {}
+  public alta(P2VEditMusicDialog paramP2VEditMusicDialog) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(boolean paramBoolean, win paramwin)
   {
-    CmGameDebugToolFragment.a(this.a).edit().putBoolean("game_whitelist_verify_switch", paramBoolean).commit();
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    ykq.b(P2VEditMusicDialog.a(), "onAddressUpdate.");
+    if ((paramBoolean) && (paramwin != null))
+    {
+      ykq.a(P2VEditMusicDialog.a(), "onAddressUpdate success, address=%s", paramwin);
+      this.a.a.post(new P2VEditMusicDialog.4.1(this, paramwin));
+      return;
+    }
+    ykq.e(P2VEditMusicDialog.a(), "onAddressUpdate failed.");
   }
 }
 

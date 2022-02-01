@@ -1,12 +1,8 @@
-class beov
-  implements bhfe
+import com.tencent.mobileqq.together.writetogether.websocket.msg.NewChangesMsg.Data;
+
+public class beov
 {
-  beov(beou parambeou) {}
-  
-  public void a(String paramString)
-  {
-    this.a.a();
-  }
+  public NewChangesMsg.Data a;
 }
 
 

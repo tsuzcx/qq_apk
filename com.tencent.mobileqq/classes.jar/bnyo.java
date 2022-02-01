@@ -1,18 +1,18 @@
-public abstract interface bnyo
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.tavcut.session.TAVCutVideoSession;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
+
+public class bnyo
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public abstract void A();
+  public bnyo(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
   
-  public abstract void j();
-  
-  public abstract void k();
-  
-  public abstract void w();
-  
-  public abstract void x();
-  
-  public abstract void y();
-  
-  public abstract void z();
+  public void onShowPress(MotionEvent paramMotionEvent)
+  {
+    super.onShowPress(paramMotionEvent);
+    this.a.a.toggleAEKit(false);
+  }
 }
 
 

@@ -4,12 +4,10 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.ViewGroup;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.hippy.qq.update.HippyQQFileUtil;
 import com.tencent.hippy.qq.update.HippyQQLibraryManager;
 import com.tencent.hippy.qq.update.UpdateSetting;
 import com.tencent.hippy.qq.utils.HippyErrorManager;
-import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mtt.hippy.HippyEngine;
 import com.tencent.mtt.hippy.bridge.bundleloader.HippyFileBundleLoader;
 import com.tencent.qphone.base.util.QLog;
@@ -24,25 +22,12 @@ public class HippyQQPreloadEngine
   protected static final String TAG = "HippyQQPreloadEngine";
   private boolean mIsPrecreated;
   private boolean mIsPreloadCreating;
+  protected int mPreloadModuleVersion;
   
   public HippyQQPreloadEngine(Fragment paramFragment, String paramString1, String paramString2)
   {
     super(paramFragment, paramString1, paramString2);
     this.providers.add(new GameCenterApiProvider());
-  }
-  
-  private void preloadModule()
-  {
-    int i = UpdateSetting.getInstance().getModuleVersion(getModuleName());
-    if (i != -1)
-    {
-      File localFile = HippyQQFileUtil.getModuleIndex(getModuleName(), i);
-      if ((localFile != null) && (localFile.exists()))
-      {
-        this.mModuleVersion = i;
-        preloadModule(localFile.getAbsolutePath());
-      }
-    }
   }
   
   private void preloadModule(String paramString)
@@ -56,14 +41,39 @@ public class HippyQQPreloadEngine
     }
   }
   
+  private void preloadModule(boolean paramBoolean)
+  {
+    int i = UpdateSetting.getInstance().getModuleVersion(getModuleName());
+    if (i != -1)
+    {
+      localFile = HippyQQFileUtil.getModuleIndex(getModuleName(), i);
+      if ((localFile != null) && (localFile.exists()))
+      {
+        this.mPreloadModuleVersion = i;
+        preloadModule(localFile.getAbsolutePath());
+      }
+    }
+    while (!paramBoolean)
+    {
+      File localFile;
+      return;
+    }
+    checkPackageUpdate();
+  }
+  
   protected void doUpdatePackageComplete(int paramInt, String paramString1, String paramString2, long paramLong)
   {
     if (this.mIsPreloadCreating)
     {
-      preloadModule();
+      preloadModule(false);
       return;
     }
     super.doUpdatePackageComplete(paramInt, paramString1, paramString2, paramLong);
+  }
+  
+  public int getPreloadModuleVersion()
+  {
+    return this.mPreloadModuleVersion;
   }
   
   protected void initHippyEngine()
@@ -103,6 +113,27 @@ public class HippyQQPreloadEngine
     return this.mIsPrecreated;
   }
   
+  protected void loadModule()
+  {
+    if ((this.mIsPrecreated) && (!this.mIsPreloadCreating))
+    {
+      if (this.mPreloadModuleVersion > 0)
+      {
+        File localFile = HippyQQFileUtil.getModuleIndex(getModuleName(), this.mPreloadModuleVersion);
+        if ((localFile != null) && (localFile.exists()))
+        {
+          this.mModuleVersion = this.mPreloadModuleVersion;
+          loadModule(localFile.getAbsolutePath());
+        }
+      }
+      if (isCanCheckPackageUpdate()) {
+        checkPackageUpdate();
+      }
+      return;
+    }
+    super.loadModule();
+  }
+  
   protected void onInitEngineComplete(int paramInt, String paramString)
   {
     HippyErrorManager.getInstance().operationEnd("initHippyEngine");
@@ -118,12 +149,7 @@ public class HippyQQPreloadEngine
     }
     if (this.mIsPreloadCreating)
     {
-      if ((NetworkUtil.isNetSupport(BaseApplicationImpl.getContext())) && (isCanCheckPackageUpdate()))
-      {
-        checkPackageUpdate();
-        return;
-      }
-      preloadModule();
+      preloadModule(true);
       return;
     }
     loadModule();

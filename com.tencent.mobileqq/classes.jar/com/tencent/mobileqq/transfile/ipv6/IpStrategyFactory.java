@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile.ipv6;
 
-import apub;
-import aqcq;
+import aqxe;
+import arfv;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.highway.ipv6.Ipv6Config;
 import com.tencent.mobileqq.highway.ipv6.Ipv6Flags;
@@ -44,9 +44,9 @@ public class IpStrategyFactory
   
   private static boolean getRichmediaIpv6Switch()
   {
-    aqcq localaqcq = (aqcq)apub.a().a(538);
-    if (localaqcq != null) {
-      return localaqcq.c;
+    arfv localarfv = (arfv)aqxe.a().a(538);
+    if (localarfv != null) {
+      return localarfv.c;
     }
     return false;
   }

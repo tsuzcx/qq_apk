@@ -1,27 +1,31 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.av.share.AVSchema;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface lym
+public class lym
+  implements adnm
 {
-  public abstract Bitmap a(long paramLong);
+  public lym(AVSchema paramAVSchema, long paramLong) {}
   
-  public abstract TroopInfoData a();
+  public void onAfterStartActivity()
+  {
+    QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.a, 1, "joinVideoChat.onAfterStartActivity, isDetached[" + this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached() + "], seq[" + this.jdField_a_of_type_Long + "]");
+    this.jdField_a_of_type_ComTencentAvShareAVSchema.b();
+  }
   
-  public abstract String a();
+  public void onBeforeStartActivity()
+  {
+    QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.a, 1, "joinVideoChat.onBeforeStartActivity, isDetached[" + this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached() + "], seq[" + this.jdField_a_of_type_Long + "]");
+  }
   
-  public abstract String a(int paramInt);
-  
-  public abstract String a(long paramLong, int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract String b();
-  
-  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
+  public void onCancel()
+  {
+    QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.a, 1, "joinVideoChat.onCancel, isDetached[" + this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached() + "], seq[" + this.jdField_a_of_type_Long + "]");
+    this.jdField_a_of_type_ComTencentAvShareAVSchema.b();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lym
  * JD-Core Version:    0.7.0.1
  */

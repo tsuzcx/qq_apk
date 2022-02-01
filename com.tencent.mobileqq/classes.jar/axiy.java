@@ -1,33 +1,21 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnItemTouchListener;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class axiy
-  implements RecyclerView.OnItemTouchListener
+  extends axic
 {
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private View jdField_a_of_type_AndroidViewView;
-  
-  public axiy(Context paramContext, axja paramaxja)
+  public axiy(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new axiz(this, paramaxja));
+    super(paramQQAppInterface);
   }
   
-  public boolean onInterceptTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
+  public void a(axiu paramaxiu, HashMap<String, ArrayList<MessageRecord>> paramHashMap, axif paramaxif)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-    this.jdField_a_of_type_AndroidViewView = paramRecyclerView.findChildViewUnder(paramMotionEvent.getX(), paramMotionEvent.getY());
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
-    return false;
+    super.a(paramaxiu, paramHashMap, paramaxif);
+    paramaxif.a(0, 4, paramaxiu);
   }
-  
-  public void onRequestDisallowInterceptTouchEvent(boolean paramBoolean) {}
-  
-  public void onTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent) {}
 }
 
 

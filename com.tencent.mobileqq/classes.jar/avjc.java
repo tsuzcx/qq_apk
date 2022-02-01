@@ -1,28 +1,62 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
-import com.tencent.qphone.base.util.QLog;
+import android.util.Base64;
+import com.tencent.mobileqq.haoliyou.orion.XorCipherException;
 
 public class avjc
-  implements URLDrawable.URLDrawableListener
 {
-  public avjc(LoginWelcomeManager paramLoginWelcomeManager) {}
+  static final String a = 'W' + 't' + 'R' + 'x' + 'K' + 'b' + 'L' + 'k';
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public static String a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, "tryToShowCGLayer drawable onLoadSuccessed");
+    return a(paramString, a);
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    if (paramString1 == null) {
+      throw new XorCipherException("null input");
     }
-    if (this.a.a != null) {
-      this.a.a.a(paramURLDrawable);
+    try
+    {
+      paramString1 = new String(Base64.encode(a(paramString1.getBytes(), paramString2.getBytes()), 0));
+      return paramString1;
     }
-    this.a.g();
+    catch (Throwable paramString1)
+    {
+      throw new XorCipherException(paramString1);
+    }
+  }
+  
+  private static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    byte[] arrayOfByte = new byte[paramArrayOfByte1.length];
+    int i = 0;
+    while (i < paramArrayOfByte1.length)
+    {
+      arrayOfByte[i] = ((byte)(paramArrayOfByte1[i] ^ paramArrayOfByte2[(i % paramArrayOfByte2.length)]));
+      i += 1;
+    }
+    return arrayOfByte;
+  }
+  
+  public static String b(String paramString)
+  {
+    return b(paramString, a);
+  }
+  
+  public static String b(String paramString1, String paramString2)
+  {
+    if (paramString1 == null) {
+      throw new XorCipherException("null input");
+    }
+    try
+    {
+      paramString1 = new String(a(Base64.decode(paramString1, 0), paramString2.getBytes()));
+      return paramString1;
+    }
+    catch (Throwable paramString1)
+    {
+      throw new XorCipherException(paramString1);
+    }
   }
 }
 

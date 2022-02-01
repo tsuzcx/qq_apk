@@ -236,7 +236,7 @@ public class RecyclerView
   
   public RecyclerView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2131034909);
+    this(paramContext, paramAttributeSet, 2131034914);
   }
   
   public RecyclerView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
@@ -2772,7 +2772,7 @@ public class RecyclerView
       throw new IllegalArgumentException("Trying to set fast scroller without both required drawables." + exceptionLabel());
     }
     Resources localResources = getContext().getResources();
-    new FastScroller(this, paramStateListDrawable1, paramDrawable1, paramStateListDrawable2, paramDrawable2, localResources.getDimensionPixelSize(2131297003), localResources.getDimensionPixelSize(2131297005), localResources.getDimensionPixelOffset(2131297004));
+    new FastScroller(this, paramStateListDrawable1, paramDrawable1, paramStateListDrawable2, paramDrawable2, localResources.getDimensionPixelSize(2131297004), localResources.getDimensionPixelSize(2131297006), localResources.getDimensionPixelOffset(2131297005));
   }
   
   void invalidateGlows()

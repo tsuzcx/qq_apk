@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import amip;
-import amjh;
-import amji;
-import ammz;
-import amtj;
+import amri;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import bflj;
-import bfpx;
+import ankt;
+import anku;
+import anvx;
+import bgua;
+import bgyo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
@@ -19,18 +18,18 @@ import org.json.JSONObject;
 public class ApolloGameInvitation$1
   implements Runnable
 {
-  public ApolloGameInvitation$1(amjh paramamjh) {}
+  public ApolloGameInvitation$1(ankt paramankt) {}
   
   public void run()
   {
     Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(amip.s).append(amjh.a(this.this$0).jdField_a_of_type_Int).append("/inviteIcon.png");
+    ((StringBuilder)localObject1).append("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/game/").append(ankt.a(this.this$0).jdField_a_of_type_Int).append("/inviteIcon.png");
     try
     {
       if (new File(((StringBuilder)localObject1).toString()).exists()) {
         localObject1 = BitmapFactory.decodeFile(((StringBuilder)localObject1).toString());
       } else {
-        localObject1 = bfpx.b(BaseApplicationImpl.getApplication().getResources(), 2130838644);
+        localObject1 = bgyo.b(BaseApplicationImpl.getApplication().getResources(), 2130838660);
       }
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -45,22 +44,22 @@ public class ApolloGameInvitation$1
     }
     while (localException != null)
     {
-      Bitmap localBitmap = bflj.a(localThrowable);
-      amjh.a(this.this$0, String.valueOf(System.currentTimeMillis()));
-      String str1 = amtj.a(2131699522) + amjh.a(this.this$0).b;
+      Bitmap localBitmap = bgua.a(localThrowable);
+      ankt.a(this.this$0, String.valueOf(System.currentTimeMillis()));
+      String str1 = anvx.a(2131699873) + ankt.a(this.this$0).b;
       Object localObject2 = new JSONObject();
       try
       {
-        ((JSONObject)localObject2).put("gameId", amjh.a(this.this$0).jdField_a_of_type_Int);
-        ((JSONObject)localObject2).put("roomId", amjh.a(this.this$0).jdField_a_of_type_Long);
-        ((JSONObject)localObject2).put("gameMode", amjh.a(this.this$0).jdField_c_of_type_Int);
-        ((JSONObject)localObject2).put("extendInfo", amjh.a(this.this$0).jdField_c_of_type_JavaLangString);
+        ((JSONObject)localObject2).put("gameId", ankt.a(this.this$0).jdField_a_of_type_Int);
+        ((JSONObject)localObject2).put("roomId", ankt.a(this.this$0).jdField_a_of_type_Long);
+        ((JSONObject)localObject2).put("gameMode", ankt.a(this.this$0).jdField_c_of_type_Int);
+        ((JSONObject)localObject2).put("extendInfo", ankt.a(this.this$0).jdField_c_of_type_JavaLangString);
         localObject2 = URLEncoder.encode(((JSONObject)localObject2).toString(), "UTF-8");
         String str2 = URLEncoder.encode(str1, "UTF-8");
         StringBuilder localStringBuilder = new StringBuilder("https://cmshow.qq.com/apollo/html/redirect/mqqapi_cmshow.html");
         localStringBuilder.append("?").append("cmd=game_invite&title=").append(str2).append("&data=").append((String)localObject2);
-        WXShareHelper.getInstance().addObserver(new amji(this));
-        WXShareHelper.getInstance().shareApolloGameToWXFriendOrCircle(amjh.a(this.this$0), str1, localBitmap, amjh.b(this.this$0), localStringBuilder.toString(), 1);
+        WXShareHelper.a().a(new anku(this));
+        WXShareHelper.a().a(ankt.a(this.this$0), str1, localBitmap, ankt.b(this.this$0), localStringBuilder.toString(), 1);
         return;
       }
       catch (Exception localException)

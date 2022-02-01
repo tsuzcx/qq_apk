@@ -1,28 +1,61 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import java.io.File;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class wsd
-  implements wty
+public class wsd
+  extends wpw
+  implements wfk<wtr, wvh>
 {
-  private wsd(wsa paramwsa) {}
+  protected String a;
+  protected List<String> a;
   
-  public void a(VideoViewVideoHolder paramVideoViewVideoHolder, String paramString1, String paramString2, File paramFile, boolean paramBoolean) {}
-  
-  public void a(VideoViewVideoHolder paramVideoViewVideoHolder, wur paramwur) {}
-  
-  public boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, wur paramwur, int paramInt, Object paramObject)
+  public wsd(String paramString, List<String> paramList)
   {
-    return false;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    }
   }
   
-  public boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, wur paramwur, boolean paramBoolean)
+  public void a()
   {
-    return this.a.a.a(paramVideoViewVideoHolder, paramwur, paramBoolean);
+    wtr localwtr = new wtr();
+    localwtr.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+    wfi.a().a(localwtr, this);
   }
   
-  public void b(VideoViewVideoHolder paramVideoViewVideoHolder, wur paramwur) {}
+  public void a(@NonNull wtr paramwtr, @Nullable wvh paramwvh, @NonNull ErrorMessage paramErrorMessage)
+  {
+    paramwtr = new wse();
+    if ((paramwvh == null) || (paramErrorMessage.isFail()))
+    {
+      c();
+      wad.a().dispatch(paramwtr);
+      return;
+    }
+    b();
+    paramwvh.jdField_a_of_type_JavaUtilList = ((wjp)wjs.a(5)).a(paramwvh.jdField_a_of_type_JavaUtilList);
+    paramwtr.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    paramwvh = paramwvh.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramwvh.hasNext())
+    {
+      paramErrorMessage = (StoryVideoItem)paramwvh.next();
+      paramErrorMessage = new yap(paramErrorMessage.mVid, paramErrorMessage);
+      paramwtr.jdField_a_of_type_JavaUtilList.add(paramErrorMessage);
+    }
+    wad.a().dispatch(paramwtr);
+  }
   
-  public void c(VideoViewVideoHolder paramVideoViewVideoHolder, wur paramwur) {}
+  public String toString()
+  {
+    return "VidToSimpleInfoHandler{mVidList=" + this.jdField_a_of_type_JavaUtilList + ", mCollectionId=" + this.jdField_a_of_type_JavaLangString + '}';
+  }
 }
 
 

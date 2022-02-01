@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.text;
 
-import areb;
-import areq;
-import avsq;
-import bgoe;
-import bgog;
+import asih;
+import asiw;
+import awyr;
+import bhyo;
+import bhyq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.EmoticonPackage;
@@ -48,15 +48,15 @@ class QQText$SmallEmojiSpan$1
           if (localObject3 == null) {
             break label385;
           }
-          localObject1 = ((avsq)localObject3).a(Integer.toString(this.this$0.mEpId), Integer.toString(this.this$0.mEId));
+          localObject1 = ((awyr)localObject3).a(Integer.toString(this.this$0.mEpId), Integer.toString(this.this$0.mEId));
           if (localObject1 != null)
           {
-            localObject1 = ((avsq)localObject3).a(Integer.toString(this.this$0.mEpId));
+            localObject1 = ((awyr)localObject3).a(Integer.toString(this.this$0.mEpId));
             if ((localObject1 != null) && (((EmoticonPackage)localObject1).isAPNG == 0))
             {
               localObject3 = new ArrayList();
               localObject2 = FileUtils.fileToBytes(new File((String)localObject2));
-              areq.a(localQQAppInterface2, (EmoticonPackage)localObject1, areb.c, (byte[])localObject2, (ArrayList)localObject3);
+              asiw.a(localQQAppInterface2, (EmoticonPackage)localObject1, asih.c, (byte[])localObject2, (ArrayList)localObject3);
             }
             this.this$0.updateApngFlag((EmoticonPackage)localObject1);
             return;
@@ -67,9 +67,9 @@ class QQText$SmallEmojiSpan$1
         if (QLog.isColorLevel()) {
           QLog.d("QQText", 2, "small emoji json not exist. epId:" + this.this$0.mEpId + ",downloadUrl:" + (String)localObject3);
         }
-        localObject2 = new bgoe((String)localObject3, (File)localObject1);
-        ((bgoe)localObject2).j = true;
-        int i = bgog.a((bgoe)localObject2, localQQAppInterface2);
+        localObject2 = new bhyo((String)localObject3, (File)localObject1);
+        ((bhyo)localObject2).j = true;
+        int i = bhyq.a((bhyo)localObject2, localQQAppInterface2);
         localObject2 = new EmoticonPackage();
         ((EmoticonPackage)localObject2).epId = Integer.toString(this.this$0.mEpId);
         ((EmoticonPackage)localObject2).jobType = 4;
@@ -80,7 +80,7 @@ class QQText$SmallEmojiSpan$1
         {
           localObject1 = FileUtils.fileToBytes((File)localObject1);
           localObject3 = new ArrayList();
-          areq.a(localQQAppInterface2, (EmoticonPackage)localObject2, areb.c, (byte[])localObject1, (ArrayList)localObject3);
+          asiw.a(localQQAppInterface2, (EmoticonPackage)localObject2, asih.c, (byte[])localObject1, (ArrayList)localObject3);
           this.this$0.updateApngFlag((EmoticonPackage)localObject2);
           return;
         }

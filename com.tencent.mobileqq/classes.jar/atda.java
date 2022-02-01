@@ -1,22 +1,36 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity.7.1;
+import com.tencent.mobileqq.filemanager.widget.QfileTabBarView;
 
 public class atda
-  implements CompoundButton.OnCheckedChangeListener
+  extends atfq
 {
-  public atda(QFileDebugSettingFragment paramQFileDebugSettingFragment) {}
+  public atda(FileAssistantActivity paramFileAssistantActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected void a(boolean paramBoolean)
   {
-    asgv.a().b(paramBoolean);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    if (FileAssistantActivity.a(this.a)) {
+      return;
+    }
+    this.a.runOnUiThread(new FileAssistantActivity.7.1(this, paramBoolean));
+  }
+  
+  protected void b(int paramInt, String paramString)
+  {
+    if (!FileAssistantActivity.a(this.a)) {
+      audr.a(paramString);
+    }
+  }
+  
+  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    super.b(paramLong1, paramLong2, paramString, paramInt);
+    this.a.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atda
  * JD-Core Version:    0.7.0.1
  */

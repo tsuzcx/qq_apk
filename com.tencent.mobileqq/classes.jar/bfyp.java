@@ -1,25 +1,18 @@
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import java.util.ArrayList;
+import java.util.Comparator;
 
-public class bfyp
+class bfyp
+  implements Comparator<Long>
 {
-  public static ShareActionSheetBuilder.ActionSheetItem a(int paramInt, ArrayList<ShareActionSheetBuilder.ActionSheetItem> paramArrayList)
+  public int a(Long paramLong1, Long paramLong2)
   {
-    ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = ShareActionSheetBuilder.ActionSheetItem.build(paramInt);
-    paramArrayList.add(localActionSheetItem);
-    return localActionSheetItem;
-  }
-  
-  public static ShareActionSheetBuilder.ActionSheetItem a(int paramInt1, ArrayList<ShareActionSheetBuilder.ActionSheetItem> paramArrayList, String paramString, int paramInt2)
-  {
-    ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = a(paramInt1, paramArrayList);
-    paramArrayList = paramString;
-    if (paramString == null) {
-      paramArrayList = "";
+    int i = 0;
+    if (paramLong1.longValue() - paramLong2.longValue() > 0L) {
+      i = 1;
     }
-    localActionSheetItem.argus = paramArrayList;
-    localActionSheetItem.firstLineCount = paramInt2;
-    return localActionSheetItem;
+    while (paramLong1.longValue() - paramLong2.longValue() >= 0L) {
+      return i;
+    }
+    return -1;
   }
 }
 

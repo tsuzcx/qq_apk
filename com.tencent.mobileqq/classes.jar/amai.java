@@ -1,16 +1,16 @@
-public abstract interface amai
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+
+public class amai
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, String paramString);
+  public amai(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public abstract void a(long paramLong1, long paramLong2);
-  
-  public abstract void e();
-  
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.s();
+  }
 }
 
 

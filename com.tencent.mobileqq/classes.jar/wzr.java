@@ -1,16 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-class wzr
-  implements DialogInterface.OnDismissListener
+final class wzr
+  implements bkzq
 {
-  wzr(wzq paramwzq) {}
+  wzr(StoryVideoItem paramStoryVideoItem, bkzi parambkzi) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.c(false);
+    switch (paramInt)
+    {
+    default: 
+      paramView = "16384";
+      QQUserUIItem localQQUserUIItem = ((wke)wjs.a(2)).b(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid);
+      if ((localQQUserUIItem != null) && (!TextUtils.isEmpty(localQQUserUIItem.qq))) {
+        new wro().a(localQQUserUIItem.qq, localQQUserUIItem.isFriend(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramView, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getVideoUrl());
+      }
+      break;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      paramView = "2";
+      break;
+      paramView = "1";
+      break;
+      paramView = "4";
+      break;
+      ykq.d("Q.qqstory.player.PlayModeUtils", "report video error because evil uin is empty.");
     }
   }
 }

@@ -1,22 +1,104 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.content.res.Configuration;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initCommentContentClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class oqx
-  implements oqp
+class oqx
+  extends pvq
 {
-  public void a(int paramInt, @NotNull Container paramContainer, @NotNull ouc paramouc, @NotNull ouo paramouo, @NotNull ViewBase paramViewBase)
+  private oqx(oqv paramoqv) {}
+  
+  public void a(int paramInt, ArticleInfo paramArticleInfo, String paramString1, String paramString2)
   {
-    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
-    Intrinsics.checkParameterIsNotNull(paramouc, "adapter");
-    Intrinsics.checkParameterIsNotNull(paramouo, "commentViewItem");
-    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
-    if ((paramViewBase instanceof oyc)) {
-      ((oyc)paramViewBase).a(paramouc, (View)paramContainer);
+    if ((oqv.a(this.a) != null) && ((oqv.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)oqv.a(this.a)).a(paramInt, paramArticleInfo, paramString1, paramString2);
+    }
+  }
+  
+  public void a(int paramInt, List<Long> paramList)
+  {
+    if ((oqv.a(this.a) != null) && ((oqv.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)oqv.a(this.a)).a(paramInt, paramList);
+    }
+  }
+  
+  public void a(Configuration paramConfiguration)
+  {
+    if ((oqv.a(this.a) == 56) && (oqv.a(this.a) != null))
+    {
+      oqv.a(this.a).f();
+      oqv.a(this.a).g();
+    }
+    if ((oqv.a(this.a) != null) && ((oqv.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)oqv.a(this.a)).a(paramConfiguration);
+    }
+  }
+  
+  public void a(TopBannerInfo paramTopBannerInfo)
+  {
+    if ((oqv.a(this.a) != null) && ((oqv.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)oqv.a(this.a)).a(paramTopBannerInfo);
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, long paramLong, List<Long> paramList, List<ArticleInfo> paramList1)
+  {
+    if ((oqv.a(this.a) != null) && ((oqv.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)oqv.a(this.a)).a(paramBoolean, paramInt, paramLong, paramList, paramList1);
+    }
+  }
+  
+  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  {
+    if ((oqv.a(this.a) != null) && ((oqv.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)oqv.a(this.a)).a(paramBoolean1, paramInt, paramList, paramBoolean2);
+    }
+  }
+  
+  public void aj_()
+  {
+    if ((oqv.a(this.a) != null) && ((oqv.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)oqv.a(this.a)).m();
+    }
+  }
+  
+  public void b(int paramInt, List<Long> paramList)
+  {
+    if ((oqv.a(this.a) != null) && ((oqv.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)oqv.a(this.a)).c(paramInt, paramList);
+    }
+  }
+  
+  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  {
+    if ((oqv.a(this.a) != null) && ((oqv.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)oqv.a(this.a)).b(paramBoolean1, paramInt, paramList, paramBoolean2);
+    }
+  }
+  
+  public void c(int paramInt, List<Long> paramList)
+  {
+    if ((oqv.a(this.a) != null) && ((oqv.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)oqv.a(this.a)).b(paramInt, paramList);
+    }
+  }
+  
+  public void d(int paramInt, List<oyb> paramList)
+  {
+    if ((oqv.a(this.a) instanceof ReadInJoyListViewGroup))
+    {
+      qcw localqcw = (qcw)((ReadInJoyListViewGroup)oqv.a(this.a)).a().a(2);
+      if (localqcw != null) {
+        localqcw.b(paramInt, paramList);
+      }
+    }
+  }
+  
+  public void f_(int paramInt)
+  {
+    if ((oqv.a(this.a) != null) && ((oqv.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)oqv.a(this.a)).a(paramInt);
     }
   }
 }

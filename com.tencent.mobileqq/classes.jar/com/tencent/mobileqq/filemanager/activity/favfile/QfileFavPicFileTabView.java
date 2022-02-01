@@ -3,22 +3,22 @@ package com.tencent.mobileqq.filemanager.activity.favfile;
 import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
-import arvu;
-import arvv;
-import arxr;
-import arxv;
-import aryh;
-import aryk;
-import aryl;
-import arym;
-import aryn;
-import aryo;
-import asgz;
-import aslg;
-import atbg;
-import atca;
-import bcef;
-import bkox;
+import ataa;
+import atab;
+import atbx;
+import atcb;
+import atcn;
+import atcq;
+import atcr;
+import atcs;
+import atct;
+import atcu;
+import atlf;
+import atpm;
+import aufn;
+import augh;
+import bdla;
+import bmaf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.data.FavFileInfo;
@@ -29,24 +29,24 @@ public class QfileFavPicFileTabView
   extends QfileBaseFavFileTabView
 {
   static String c = "QfileFavPicFileTabView<FileAssistant>";
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new arym(this);
-  aryk jdField_a_of_type_Aryk = new aryl(this);
-  private atca jdField_a_of_type_Atca = new aryo(this);
-  private View.OnClickListener b = new aryn(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new atcs(this);
+  atcq jdField_a_of_type_Atcq = new atcr(this);
+  private augh jdField_a_of_type_Augh = new atcu(this);
+  private View.OnClickListener b = new atct(this);
   
-  public QfileFavPicFileTabView(Context paramContext, arxv paramarxv, arxr paramarxr)
+  public QfileFavPicFileTabView(Context paramContext, atcb paramatcb, atbx paramatbx)
   {
-    super(paramContext, paramarxv, paramarxr);
+    super(paramContext, paramatcb, paramatbx);
   }
   
   private void a(View paramView, boolean paramBoolean)
   {
-    paramView = (FavFileInfo)((arvu)paramView.getTag()).a;
+    paramView = (FavFileInfo)((ataa)paramView.getTag()).a;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().b();
     if (paramBoolean) {
-      if (aslg.a(paramView))
+      if (atpm.a(paramView))
       {
-        aslg.b(paramView);
+        atpm.b(paramView);
         w();
         q();
       }
@@ -57,7 +57,7 @@ public class QfileFavPicFileTabView
       do
       {
         return;
-        aslg.a(paramView);
+        atpm.a(paramView);
         this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.h(true);
         break;
         if (c()) {
@@ -69,7 +69,7 @@ public class QfileFavPicFileTabView
       label94:
       if (g()) {}
       u();
-      bkox.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramView.a);
+      bmaf.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramView.a);
     }
   }
   
@@ -80,35 +80,35 @@ public class QfileFavPicFileTabView
     {
       return false;
       a(paramBoolean);
-    } while ((g()) && (((aslg.a(paramFavFileInfo)) && (paramBoolean)) || ((!aslg.a(paramFavFileInfo)) && (!paramBoolean))));
+    } while ((g()) && (((atpm.a(paramFavFileInfo)) && (paramBoolean)) || ((!atpm.a(paramFavFileInfo)) && (!paramBoolean))));
     if (g())
     {
       if (!paramBoolean) {
         break label57;
       }
-      aslg.a(paramFavFileInfo);
+      atpm.a(paramFavFileInfo);
     }
     for (;;)
     {
       return true;
       label57:
-      aslg.b(paramFavFileInfo);
+      atpm.b(paramFavFileInfo);
     }
   }
   
-  protected arvv a()
+  protected atab a()
   {
-    return new aryh(this.jdField_a_of_type_Aryk, a(), this.jdField_a_of_type_JavaUtilLinkedHashMap, null, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.b, null, null);
+    return new atcn(this.jdField_a_of_type_Atcq, a(), this.jdField_a_of_type_JavaUtilLinkedHashMap, null, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.b, null, null);
   }
   
   protected String a(FavFileInfo paramFavFileInfo)
   {
-    return atbg.a(paramFavFileInfo.c);
+    return aufn.a(paramFavFileInfo.c);
   }
   
   protected void a(boolean paramBoolean)
   {
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AFAD", "0X800AFAD", 0, 0, "", "", "", "");
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AFAD", "0X800AFAD", 0, 0, "", "", "", "");
   }
   
   protected int b()
@@ -119,8 +119,8 @@ public class QfileFavPicFileTabView
   protected void b(int paramInt)
   {
     super.b(paramInt);
-    aryh localaryh = (aryh)this.jdField_a_of_type_Arvv;
-    if ((b()) && (localaryh.b())) {
+    atcn localatcn = (atcn)this.jdField_a_of_type_Atab;
+    if ((b()) && (localatcn.b())) {
       i();
     }
   }
@@ -137,14 +137,14 @@ public class QfileFavPicFileTabView
     }
     super.j();
     setEditbarButton(true, true, false, true, true);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setOnIndexChangedListener(this.jdField_a_of_type_Atca);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setOnIndexChangedListener(this.jdField_a_of_type_Augh);
   }
   
   protected void o()
   {
     super.o();
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setWhetherImageTab(true);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setGridSize(((aryh)this.jdField_a_of_type_Arvv).b());
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setGridSize(((atcn)this.jdField_a_of_type_Atab).b());
   }
   
   public void r()
@@ -154,7 +154,7 @@ public class QfileFavPicFileTabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.favfile.QfileFavPicFileTabView
  * JD-Core Version:    0.7.0.1
  */

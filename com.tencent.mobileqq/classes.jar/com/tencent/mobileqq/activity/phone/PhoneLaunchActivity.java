@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.activity.phone;
 
 import Override;
-import aihs;
-import ajnj;
-import amtj;
+import ajcr;
+import akix;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -11,8 +10,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import aycd;
-import bcef;
+import anvx;
+import azip;
+import bdla;
 import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -22,7 +22,7 @@ public class PhoneLaunchActivity
   implements View.OnClickListener
 {
   private Button jdField_a_of_type_AndroidWidgetButton;
-  public aycd a;
+  public azip a;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   private boolean c;
@@ -42,8 +42,8 @@ public class PhoneLaunchActivity
   public void a()
   {
     PhoneLaunchActivity.1 local1 = new PhoneLaunchActivity.1(this);
-    DenyRunnable localDenyRunnable = new DenyRunnable(this, new ajnj(this));
-    aihs.a(this, this.app, local1, localDenyRunnable);
+    DenyRunnable localDenyRunnable = new DenyRunnable(this, new akix(this));
+    ajcr.a(this, this.app, local1, localDenyRunnable);
   }
   
   @Override
@@ -87,20 +87,20 @@ public class PhoneLaunchActivity
     }
     if (!this.jdField_a_of_type_Boolean) {
       if (getIntent().getStringExtra("leftViewText") == null) {
-        getIntent().putExtra("leftViewText", amtj.a(2131707118));
+        getIntent().putExtra("leftViewText", anvx.a(2131707465));
       }
     }
     for (;;)
     {
-      setContentView(2131559561);
-      setTitle(amtj.a(2131707114));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131372415));
+      setContentView(2131559594);
+      setTitle(anvx.a(2131707461));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131372609));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       if (getIntent().getBooleanExtra("k_start_number", false)) {
         b();
       }
       return true;
-      getIntent().putExtra("leftViewText", amtj.a(2131707120));
+      getIntent().putExtra("leftViewText", anvx.a(2131707467));
     }
   }
   
@@ -108,7 +108,7 @@ public class PhoneLaunchActivity
   {
     super.finish();
     if (!this.jdField_a_of_type_Boolean) {
-      overridePendingTransition(2130771990, 2130772302);
+      overridePendingTransition(2130771990, 2130772301);
     }
   }
   
@@ -122,7 +122,7 @@ public class PhoneLaunchActivity
       {
         b();
         if (this.d) {
-          bcef.b(this.app, "CliOper", "", "", "0X8005D10", "0X8005D10", 0, 0, "", "", "", "");
+          bdla.b(this.app, "CliOper", "", "", "0X8005D10", "0X8005D10", 0, 0, "", "", "", "");
         }
       }
     }
@@ -143,7 +143,7 @@ public class PhoneLaunchActivity
         a();
         break;
       }
-      a(amtj.a(2131707116), amtj.a(2131707115));
+      a(anvx.a(2131707463), anvx.a(2131707462));
       break;
       finish();
     }

@@ -1,15 +1,20 @@
-public class avlb
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewParent;
+import com.tencent.mobileqq.hiboom.RichTextPanel;
+
+class avlb
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a;
-  public long a;
-  public agis a;
-  public avkz a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public int b;
+  avlb(avla paramavla) {}
   
-  public avlb(avkv paramavkv) {}
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    com.tencent.widget.XPanelContainer.a = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (this.a.a.getParent() != null) {
+      this.a.a.getParent().requestLayout();
+    }
+  }
 }
 
 

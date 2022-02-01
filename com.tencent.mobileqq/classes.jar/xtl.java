@@ -1,26 +1,15 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
 
 public class xtl
-  extends QQUIEventReceiver<xss, wdg>
+  implements zhs
 {
-  public xtl(@NonNull xss paramxss)
-  {
-    super(paramxss);
-  }
+  public xtl(StoryPickerFragment paramStoryPickerFragment) {}
   
-  public void a(@NonNull xss paramxss, @NonNull wdg paramwdg)
+  public void a()
   {
-    if ((paramwdg.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramwdg.jdField_a_of_type_JavaUtilList == null)) {
-      return;
+    if (this.a.a != null) {
+      this.a.a.d();
     }
-    paramxss.a(paramwdg);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wdg.class;
   }
 }
 

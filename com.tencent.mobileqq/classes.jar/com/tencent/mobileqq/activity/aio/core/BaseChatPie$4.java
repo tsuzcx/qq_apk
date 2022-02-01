@@ -1,22 +1,16 @@
 package com.tencent.mobileqq.activity.aio.core;
 
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.LocalCrashCollector;
-import com.tencent.widget.XEditTextEx;
+import bgyi;
 
 class BaseChatPie$4
-  implements View.OnLongClickListener
+  implements bgyi
 {
   BaseChatPie$4(BaseChatPie paramBaseChatPie) {}
   
-  public boolean onLongClick(View paramView)
+  public void onClick(View paramView)
   {
-    if ("//findcrash".equals(this.this$0.input.getText().toString())) {
-      ThreadManager.post(new LocalCrashCollector(this.this$0), 8, null, true);
-    }
-    return true;
+    this.this$0.onClick(this.this$0.mIconButtonInInputRight);
   }
 }
 

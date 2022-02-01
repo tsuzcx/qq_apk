@@ -1,90 +1,42 @@
+import android.os.IBinder;
+import android.os.IInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 
 public class avyh
+  implements InvocationHandler
 {
-  public String a;
-  public List<String> a;
-  public boolean a;
+  IBinder jdField_a_of_type_AndroidOsIBinder;
+  Class<?> jdField_a_of_type_JavaLangClass;
+  Class<?> b;
   
-  public avyh()
+  public avyh(IBinder paramIBinder)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public static avyh a(String paramString)
-  {
-    boolean bool = true;
-    if (paramString == null) {
-      return null;
-    }
+    this.jdField_a_of_type_AndroidOsIBinder = paramIBinder;
     try
     {
-      avyh localavyh = new avyh();
-      paramString = new JSONObject(paramString);
-      if (paramString.optInt("mainswitch", 0) == 1) {}
-      for (;;)
-      {
-        localavyh.jdField_a_of_type_Boolean = bool;
-        localavyh.jdField_a_of_type_JavaLangString = paramString.optString("qmcf", "");
-        paramString = a(paramString.optJSONArray("black"));
-        localavyh.jdField_a_of_type_JavaUtilList.addAll(paramString);
-        return localavyh;
-        bool = false;
-      }
-      return null;
+      this.jdField_a_of_type_JavaLangClass = Class.forName("com.android.internal.telephony.ITelephony$Stub");
+      this.b = Class.forName("com.android.internal.telephony.ITelephony");
+      return;
     }
-    catch (Exception paramString)
+    catch (Exception paramIBinder)
     {
-      QLog.e("MultiAIOEntranceConfigProcessor", 2, "MultiAIOEntranceConfigData parse error", paramString);
+      QLog.d("BGLocateMonitor", 1, "TelephonyBinderProxy init", paramIBinder);
     }
   }
   
-  private static List<String> a(JSONArray paramJSONArray)
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    ArrayList localArrayList = new ArrayList();
-    if (paramJSONArray != null)
+    if ("queryLocalInterface".equals(paramMethod.getName()))
     {
-      int j = paramJSONArray.length();
-      int i = 0;
-      for (;;)
-      {
-        if (i < j) {
-          try
-          {
-            localArrayList.add(paramJSONArray.getString(i).trim());
-            i += 1;
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              QLog.e("MultiAIOEntranceConfigProcessor", 2, "MultiAIOEntranceConfigData processJsonArray error", localException);
-            }
-          }
-        }
-      }
+      paramObject = paramObject.getClass().getClassLoader();
+      paramMethod = this.b;
+      paramArrayOfObject = new avyf(this.jdField_a_of_type_AndroidOsIBinder, this.jdField_a_of_type_JavaLangClass);
+      return Proxy.newProxyInstance(paramObject, new Class[] { IBinder.class, IInterface.class, paramMethod }, paramArrayOfObject);
     }
-    return localArrayList;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    return paramMethod.invoke(this.jdField_a_of_type_AndroidOsIBinder, paramArrayOfObject);
   }
 }
 

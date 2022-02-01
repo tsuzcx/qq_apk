@@ -1,10 +1,18 @@
-public class ykh
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class ykh
+  implements View.OnClickListener
 {
-  public final int a;
+  ykh(yke paramyke) {}
   
-  public ykh(int paramInt)
+  public void onClick(View paramView)
   {
-    this.a = paramInt;
+    if (yke.a(this.a) != null) {
+      yke.a(this.a).h();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

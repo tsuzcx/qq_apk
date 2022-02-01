@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.text.TextUtils;
-import bkkq;
-import bkkz;
+import blvy;
+import blwh;
 import com.tencent.mobileqq.pluginsdk.PluginProxyService;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.plugin.IQZonePluginManager;
@@ -63,19 +63,19 @@ public class QZoneLiveVideoPluginProxyService
     return;
     if (((String)localObject1).equals("qzone_live_video_plugin.apk"))
     {
-      localObject1 = new bkkz(0);
-      ((bkkz)localObject1).b = "qzone_live_video_plugin.apk";
-      ((bkkz)localObject1).d = "QZoneLiveVideo";
-      ((bkkz)localObject1).jdField_a_of_type_JavaLangString = paramString1;
-      ((bkkz)localObject1).e = paramString2;
-      ((bkkz)localObject1).jdField_a_of_type_AndroidContentIntent = paramIntent;
-      ((bkkz)localObject1).jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-      ((bkkz)localObject1).b = "qzone_live_video_plugin.apk";
-      ((bkkz)localObject1).d = "QZoneLiveVideo";
+      localObject1 = new blwh(0);
+      ((blwh)localObject1).b = "qzone_live_video_plugin.apk";
+      ((blwh)localObject1).d = "QZoneLiveVideo";
+      ((blwh)localObject1).jdField_a_of_type_JavaLangString = paramString1;
+      ((blwh)localObject1).e = paramString2;
+      ((blwh)localObject1).jdField_a_of_type_AndroidContentIntent = paramIntent;
+      ((blwh)localObject1).jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+      ((blwh)localObject1).b = "qzone_live_video_plugin.apk";
+      ((blwh)localObject1).d = "QZoneLiveVideo";
       if (QLog.isColorLevel()) {
         QLog.d("PluginDebug", 2, "加载原始插件");
       }
-      bkkq.c(paramContext, (bkkz)localObject1);
+      blvy.c(paramContext, (blwh)localObject1);
       return;
     }
     QLog.e("PluginDebug", 1, "启动失败 错误的pluginid=" + (String)localObject1);

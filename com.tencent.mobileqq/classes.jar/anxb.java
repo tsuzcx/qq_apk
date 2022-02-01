@@ -1,134 +1,183 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.utils.MessageRoamHandler.ChatHistoryMessageObserver.1;
+import android.text.TextUtils;
+import android.util.Base64;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.HashMap;
-import mqq.os.MqqHandler;
+import org.xmlpull.v1.XmlPullParser;
 
-public class anxb
-  extends amwl
+class anxb
 {
-  private int a;
+  private anwz jdField_a_of_type_Anwz;
+  private anxa jdField_a_of_type_Anxa;
+  private XmlPullParser jdField_a_of_type_OrgXmlpullV1XmlPullParser;
   
-  public anxb(anxa paramanxa, int paramInt)
+  public anxb(anwv paramanwv, anxa paramanxa, anwz paramanwz, XmlPullParser paramXmlPullParser)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Anxa = paramanxa;
+    this.jdField_a_of_type_Anwz = paramanwz;
+    this.jdField_a_of_type_OrgXmlpullV1XmlPullParser = paramXmlPullParser;
   }
   
-  protected void onUpdateDelRoamChat(boolean paramBoolean)
+  public anwz a()
   {
-    if (this.jdField_a_of_type_Anxa.jdField_a_of_type_Int != this.jdField_a_of_type_Int) {
-      return;
-    }
-    amwo localamwo = (amwo)this.jdField_a_of_type_Anxa.app.getManager(92);
-    if (!paramBoolean)
-    {
-      localamwo.a(8, null);
-      return;
-    }
-    localamwo.a(9, null);
+    return this.jdField_a_of_type_Anwz;
   }
   
-  protected void onUpdateGetRoamChat(boolean paramBoolean, Object paramObject)
+  public anxa a()
   {
-    paramObject = (Bundle)paramObject;
-    String str1 = paramObject.getString("PEER_UIN");
-    long l = paramObject.getLong("BEGTIME");
-    boolean bool1 = paramObject.getBoolean("NO_MSG");
-    int j = paramObject.getInt("SVR_CODE");
-    String str2 = paramObject.getString("SVR_MSG");
-    boolean bool2 = paramObject.getBoolean("FETCH_MORE");
-    int i = paramObject.getInt("MSG_COUNT");
-    boolean bool3 = paramObject.getBoolean("IS_PRELOAD_TYPE");
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.roammsg", 2, "beginTime: " + l + ",isNoMsg: " + bool1 + ",svrCode: " + j + ",msgCount:" + i + ",fetchMore: " + bool2 + ",svrMsg: " + str2 + ",isPreloadType:" + bool3);
-    }
-    if (bool3) {
-      return;
-    }
-    if ((paramBoolean) && (bool2) && (i > 0) && (i <= 8))
-    {
-      ThreadManager.getSubThreadHandler().post(new MessageRoamHandler.ChatHistoryMessageObserver.1(this, l, i, str1, bool2));
-      return;
-    }
-    paramObject = (amwo)this.jdField_a_of_type_Anxa.app.getManager(92);
-    i = 1;
-    if (!paramBoolean)
-    {
-      if (bool1) {
-        i = 2;
-      }
-      if (j == 51) {
-        i = 3;
-      }
-      paramObject.b(false);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.roammsg", 2, "onUpdateGetRoamChat isSuccess: " + paramBoolean + ", whatMsg: " + i + ", beginTime: " + l);
-      }
-      if (!bool2) {
-        break label354;
-      }
-    }
-    label354:
-    for (j = 1;; j = 0)
-    {
-      paramObject.a(i, j, Long.valueOf(l));
-      return;
-      j = 0;
-      i = j;
-      if (!bool2)
-      {
-        i = j;
-        if (!paramObject.a(l)) {
-          i = 4;
-        }
-      }
-      paramObject.b(true);
-      break;
-    }
+    return this.jdField_a_of_type_Anxa;
   }
   
-  protected void onUpdateRoamMsgSearchResult(boolean paramBoolean, Object paramObject)
+  public anxb a()
   {
-    if (paramObject == null) {}
-    Object localObject1;
+    Object localObject1 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName();
+    if ("activity".equals(localObject1)) {
+      if (this.jdField_a_of_type_Anxa == null) {
+        this.jdField_a_of_type_Anxa = new anxa();
+      }
+    }
+    String str;
+    label224:
+    Object localObject2;
     do
     {
-      return;
-      localObject2 = (HashMap)paramObject;
-      localObject1 = (String)((HashMap)localObject2).get("KEYWORD");
-      long l = ((Long)((HashMap)localObject2).get("SEARCHSEQUENCE")).longValue();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.roammsg", 2, "onUpdateRoamMsgSearchResult isSuccess:" + paramBoolean + ",keyword:" + (String)localObject1 + ",sequence:" + l);
-      }
-      localObject1 = this.jdField_a_of_type_Anxa.app.getHandler(ajgq.class);
-      if (!paramBoolean)
+      do
       {
-        localObject2 = ((MqqHandler)localObject1).obtainMessage(4);
-        ((Message)localObject2).obj = paramObject;
-        ((MqqHandler)localObject1).sendMessage((Message)localObject2);
-        return;
+        do
+        {
+          for (;;)
+          {
+            return this;
+            this.jdField_a_of_type_Anxa.a();
+            return this;
+            if ("note".equals(localObject1))
+            {
+              this.jdField_a_of_type_Anwz = new anwz();
+              return this;
+            }
+            if ("activityid".equals(localObject1))
+            {
+              if (this.jdField_a_of_type_Anxa != null)
+              {
+                this.jdField_a_of_type_Anxa.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.nextText();
+                return this;
+              }
+            }
+            else if ("stime".equals(localObject1))
+            {
+              localObject1 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.nextText();
+              if (this.jdField_a_of_type_Anwz != null)
+              {
+                this.jdField_a_of_type_Anwz.jdField_a_of_type_Long = anwz.a((String)localObject1);
+                return this;
+              }
+            }
+            else
+            {
+              if (!"content".equals(localObject1)) {
+                break label224;
+              }
+              try
+              {
+                str = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.nextText();
+                localObject1 = str;
+                if (str != null) {
+                  localObject1 = str.trim();
+                }
+                if (this.jdField_a_of_type_Anwz != null)
+                {
+                  this.jdField_a_of_type_Anwz.jdField_a_of_type_JavaLangString = ((String)localObject1);
+                  return this;
+                }
+              }
+              catch (Exception localException1)
+              {
+                localException1.printStackTrace();
+              }
+            }
+          }
+        } while (!QLog.isColorLevel());
+        axql.a("HotchatSCMng", new Object[] { "parseNotice exception", localException1.toString() });
+        return this;
+        if (!"endtime".equals(localException1)) {
+          break;
+        }
+        localObject2 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.nextText();
+      } while (this.jdField_a_of_type_Anwz == null);
+      this.jdField_a_of_type_Anwz.jdField_b_of_type_Long = anwz.a((String)localObject2);
+      return this;
+    } while (!"url".equals(localObject2));
+    label382:
+    for (;;)
+    {
+      try
+      {
+        str = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.nextText();
+        localObject2 = str;
+        if (str != null) {
+          localObject2 = str.trim();
+        }
+        if ((localObject2 == null) || (((String)localObject2).startsWith("http://")) || (((String)localObject2).contains("&"))) {
+          break label382;
+        }
+        localObject2 = new String(Base64.decode(((String)localObject2).getBytes(), 0));
+        if (this.jdField_a_of_type_Anwz == null) {
+          break;
+        }
+        this.jdField_a_of_type_Anwz.jdField_b_of_type_JavaLangString = ((String)localObject2);
+        return this;
       }
-    } while (((HashMap)localObject2).get("SEARCHRESULT") == null);
-    Object localObject2 = ((MqqHandler)localObject1).obtainMessage(5);
-    ((Message)localObject2).obj = paramObject;
-    ((MqqHandler)localObject1).sendMessage((Message)localObject2);
+      catch (Exception localException2)
+      {
+        localException2.printStackTrace();
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      axql.a("HotchatSCMng", new Object[] { "parseNotice exception", localException2.toString() });
+      return this;
+    }
   }
   
-  protected void onUpdateSetRoamChat(boolean paramBoolean)
+  public anxb b()
   {
-    if (this.jdField_a_of_type_Anxa.jdField_a_of_type_Int != this.jdField_a_of_type_Int) {
-      return;
+    if ("activity".equals(this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName())) {
+      if ((this.jdField_a_of_type_Anxa != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Anxa.jdField_a_of_type_JavaLangString)))
+      {
+        localanxa = (anxa)this.jdField_a_of_type_Anwv.jdField_a_of_type_JavaUtilHashMap.get(this.jdField_a_of_type_Anxa.jdField_a_of_type_JavaLangString);
+        if (anwv.jdField_a_of_type_Boolean)
+        {
+          if (localanxa != null) {
+            break label126;
+          }
+          str = "null";
+          axql.a("HotchatSCMng", "parse", new Object[] { str, this.jdField_a_of_type_Anxa });
+        }
+        if (localanxa != null) {
+          break label132;
+        }
+        this.jdField_a_of_type_Anwv.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_Anxa.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Anxa);
+        this.jdField_a_of_type_Anxa = null;
+      }
     }
-    amwo localamwo = (amwo)this.jdField_a_of_type_Anxa.app.getManager(92);
-    if (!paramBoolean)
+    label126:
+    while ((!"note".equals(this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName())) || (this.jdField_a_of_type_Anwz == null) || (this.jdField_a_of_type_Anxa == null))
     {
-      localamwo.a(7, null);
-      return;
+      anxa localanxa;
+      for (;;)
+      {
+        return this;
+        String str = "not null";
+      }
+      localanxa.jdField_a_of_type_Int = -1;
+      localanxa.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_Anxa.jdField_a_of_type_JavaUtilArrayList);
+      this.jdField_a_of_type_Anxa.a();
+      return this;
     }
-    localamwo.a(6, null);
+    label132:
+    this.jdField_a_of_type_Anxa.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_Anwz);
+    this.jdField_a_of_type_Anwz = null;
+    return this;
   }
 }
 

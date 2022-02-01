@@ -38,6 +38,7 @@ public final class SvcReqRegister
   public String sBuildVer = "";
   public String sChannelNo = "";
   public String sOther = "";
+  public VendorPushInfo stVendorPushInfo = null;
   public String strDevName = "";
   public String strDevType = "";
   public String strIOSIdfa = "";
@@ -69,7 +70,7 @@ public final class SvcReqRegister
   
   public SvcReqRegister() {}
   
-  public SvcReqRegister(long paramLong1, long paramLong2, byte paramByte1, String paramString1, int paramInt1, byte paramByte2, byte paramByte3, byte paramByte4, byte paramByte5, byte paramByte6, long paramLong3, long paramLong4, byte paramByte7, String paramString2, byte paramByte8, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt2, byte paramByte9, String paramString3, String paramString4, String paramString5, byte paramByte10, long paramLong5, long paramLong6, ArrayList paramArrayList, long paramLong7, long paramLong8, String paramString6, long paramLong9, String paramString7, String paramString8, String paramString9, byte[] paramArrayOfByte3, byte paramByte11, byte[] paramArrayOfByte4, byte paramByte12, long paramLong10, int paramInt3)
+  public SvcReqRegister(long paramLong1, long paramLong2, byte paramByte1, String paramString1, int paramInt1, byte paramByte2, byte paramByte3, byte paramByte4, byte paramByte5, byte paramByte6, long paramLong3, long paramLong4, byte paramByte7, String paramString2, byte paramByte8, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt2, byte paramByte9, String paramString3, String paramString4, String paramString5, byte paramByte10, long paramLong5, long paramLong6, ArrayList paramArrayList, long paramLong7, long paramLong8, String paramString6, long paramLong9, String paramString7, String paramString8, String paramString9, byte[] paramArrayOfByte3, byte paramByte11, byte[] paramArrayOfByte4, byte paramByte12, long paramLong10, int paramInt3, VendorPushInfo paramVendorPushInfo)
   {
     this.lUin = paramLong1;
     this.lBid = paramLong2;
@@ -110,6 +111,7 @@ public final class SvcReqRegister
     this.bSetMute = paramByte12;
     this.uExtOnlineStatus = paramLong10;
     this.iBatteryStatus = paramInt3;
+    this.stVendorPushInfo = paramVendorPushInfo;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -153,6 +155,7 @@ public final class SvcReqRegister
     this.bSetMute = paramJceInputStream.read(this.bSetMute, 36, false);
     this.uExtOnlineStatus = paramJceInputStream.read(this.uExtOnlineStatus, 38, false);
     this.iBatteryStatus = paramJceInputStream.read(this.iBatteryStatus, 39, false);
+    this.stVendorPushInfo = ((VendorPushInfo)paramJceInputStream.read(this.stVendorPushInfo, 42, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -222,6 +225,9 @@ public final class SvcReqRegister
     paramJceOutputStream.write(this.bSetMute, 36);
     paramJceOutputStream.write(this.uExtOnlineStatus, 38);
     paramJceOutputStream.write(this.iBatteryStatus, 39);
+    if (this.stVendorPushInfo != null) {
+      paramJceOutputStream.write(this.stVendorPushInfo, 42);
+    }
   }
 }
 

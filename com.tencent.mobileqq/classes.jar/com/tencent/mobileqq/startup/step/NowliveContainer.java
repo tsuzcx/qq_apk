@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import aulz;
+import avru;
 import com.tencent.shadow.core.common.LoggerFactory;
 
 public class NowliveContainer
@@ -8,13 +8,13 @@ public class NowliveContainer
 {
   protected boolean doStep()
   {
-    LoggerFactory.setILoggerFactory(aulz.a());
+    LoggerFactory.setILoggerFactory(avru.a());
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.NowliveContainer
  * JD-Core Version:    0.7.0.1
  */

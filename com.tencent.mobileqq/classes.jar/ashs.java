@@ -1,24 +1,43 @@
 import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public abstract interface ashs
+class ashs
+  extends WtloginObserver
 {
-  public abstract void a(long paramLong);
+  ashs(ashe paramashe, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public abstract void a(String paramString);
-  
-  public abstract void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2);
-  
-  public abstract void a(boolean paramBoolean, long paramLong, String paramString1, String paramString2);
-  
-  public abstract byte[] a(Bundle paramBundle);
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
+  public void onCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  {
+    boolean bool2 = true;
+    paramWUserSigInfo = new Bundle();
+    if ((paramInt == 0) && (paramDevlockInfo != null))
+    {
+      if (paramDevlockInfo.DevSetup != 1) {
+        break label90;
+      }
+      bool1 = true;
+      paramWUserSigInfo.putBoolean("auth_dev_open", bool1);
+      if (paramDevlockInfo.AllowSet != 1) {
+        break label96;
+      }
+    }
+    label90:
+    label96:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      paramWUserSigInfo.putBoolean("allow_set", bool1);
+      paramWUserSigInfo.putString("phone_num", paramDevlockInfo.Mobile);
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramWUserSigInfo);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      return;
+      bool1 = false;
+      break;
+    }
+  }
 }
 
 

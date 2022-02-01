@@ -1,30 +1,15 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class acpl
-  implements URLDrawable.URLDrawableListener
+  implements acpi
 {
-  public acpl(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    if (paramURLDrawable != null)
-    {
-      paramURLDrawable = bfvo.a(paramURLDrawable);
-      QQAppInterface localQQAppInterface = this.a.app;
-      paramURLDrawable = QQAppInterface.getCircleFaceBitmap(paramURLDrawable, 50, 50);
-      this.a.a.setImageDrawable(new BitmapDrawable(paramURLDrawable));
-    }
+    bcrx.a(paramacnk.a().getMsgHandler(), paramMsgInfo.lFromUin, paramMsgInfo.shMsgSeq, paramMsgInfo.lMsgUid, paramMsgInfo.shMsgType);
+    return null;
   }
 }
 

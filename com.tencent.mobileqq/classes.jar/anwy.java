@@ -1,18 +1,4 @@
-import com.tencent.qphone.base.util.QLog;
-
-public class anwy
-{
-  public static boolean a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LinkStarDebugProcessor.", 2, "handleLinkStarNotifyPush. linkStarMsgType=" + paramInt + " reservedData=" + paramArrayOfByte1 + " data=" + paramArrayOfByte2);
-    }
-    switch (paramInt)
-    {
-    }
-    return true;
-  }
-}
+public abstract interface anwy {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

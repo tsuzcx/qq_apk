@@ -1,14 +1,8 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import java.util.List;
 
-class aiti
+public abstract interface aiti
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  
-  private aiti(aitf paramaitf) {}
+  public abstract void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString, int paramInt3, List<bcfi> paramList);
 }
 
 

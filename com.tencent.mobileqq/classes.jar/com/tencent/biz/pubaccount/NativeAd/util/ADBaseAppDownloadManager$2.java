@@ -3,62 +3,62 @@ package com.tencent.biz.pubaccount.NativeAd.util;
 import com.tencent.open.downloadnew.DownloadInfo;
 import java.util.Iterator;
 import java.util.List;
-import oau;
-import twp;
-import txh;
+import oil;
+import ukq;
+import ule;
 
 public class ADBaseAppDownloadManager$2
   implements Runnable
 {
-  public ADBaseAppDownloadManager$2(oau paramoau, DownloadInfo paramDownloadInfo, int paramInt) {}
+  public ADBaseAppDownloadManager$2(oil paramoil, DownloadInfo paramDownloadInfo, int paramInt) {}
   
   public void run()
   {
-    txh localtxh;
+    ule localule;
     label139:
     do
     {
       try
       {
         if (this.this$0.a.size() == 0) {
-          twp.a("ADBaseAppDownloadManager", "notifyState error : empty downloads");
+          ukq.a("ADBaseAppDownloadManager", "notifyState error : empty downloads");
         }
         Iterator localIterator = this.this$0.a.iterator();
         while (localIterator.hasNext())
         {
-          localtxh = (txh)localIterator.next();
-          if ((localtxh.d != null) && (localtxh.jdField_a_of_type_JavaLangString != null)) {
+          localule = (ule)localIterator.next();
+          if ((localule.d != null) && (localule.jdField_a_of_type_JavaLangString != null)) {
             break label139;
           }
-          twp.a("ADBaseAppDownloadManager", "notifyState error : packageName = " + localtxh.d + " appId = " + localtxh.jdField_a_of_type_JavaLangString);
+          ukq.a("ADBaseAppDownloadManager", "notifyState error : packageName = " + localule.d + " appId = " + localule.jdField_a_of_type_JavaLangString);
         }
         return;
       }
       catch (Exception localException)
       {
-        twp.a("ADBaseAppDownloadManager", "notifyState error " + localException.getMessage());
+        ukq.a("ADBaseAppDownloadManager", "notifyState error " + localException.getMessage());
       }
-    } while (!localtxh.d.equals(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.e));
-    localtxh.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localtxh.b = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f;
-    twp.a("ADBaseAppDownloadManager", "notifyState success : progress = " + this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f + " packageName = " + localtxh.d + " appId = " + localtxh.jdField_a_of_type_JavaLangString);
-    if (localtxh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null)
+    } while (!localule.d.equals(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.e));
+    localule.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localule.b = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f;
+    ukq.a("ADBaseAppDownloadManager", "notifyState success : progress = " + this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f + " packageName = " + localule.d + " appId = " + localule.jdField_a_of_type_JavaLangString);
+    if (localule.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null)
     {
-      localtxh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.downloadState = this.jdField_a_of_type_Int;
-      localtxh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.progress = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f;
+      localule.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.downloadState = this.jdField_a_of_type_Int;
+      localule.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.progress = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f;
     }
-    if (localtxh.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData != null)
+    if (localule.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData != null)
     {
-      localtxh.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.b = this.jdField_a_of_type_Int;
-      localtxh.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.c = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f;
+      localule.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.b = this.jdField_a_of_type_Int;
+      localule.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.c = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f;
     }
-    if (localtxh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData != null)
+    if (localule.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData != null)
     {
-      localtxh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.i = this.jdField_a_of_type_Int;
-      localtxh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.h = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f;
+      localule.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.i = this.jdField_a_of_type_Int;
+      localule.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.h = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f;
     }
-    twp.a("ADBaseAppDownloadManager", "progress " + this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f);
-    this.this$0.a(localtxh, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f);
+    ukq.a("ADBaseAppDownloadManager", "progress " + this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f);
+    this.this$0.a(localule, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f);
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.biz.qqstory.msgTabNode.model;
 
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.unique;
-import vxd;
+import wly;
 
 public class MsgTabHaloEntity
   extends Entity
@@ -29,9 +29,9 @@ public class MsgTabHaloEntity
     return "uid=?";
   }
   
-  public static String[] getSelectionArgs(vxd paramvxd)
+  public static String[] getSelectionArgs(wly paramwly)
   {
-    return new String[] { String.valueOf(paramvxd.b) };
+    return new String[] { String.valueOf(paramwly.b) };
   }
   
   public String toString()
@@ -57,7 +57,7 @@ public class MsgTabHaloEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabHaloEntity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,23 @@
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.QbSdk;
-import com.tencent.smtt.sdk.TbsDownloader.TbsDownloaderCallback;
+import android.graphics.Bitmap;
+import com.tencent.gdtad.util.GdtSmartBlur;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-class bgxi
-  implements TbsDownloader.TbsDownloaderCallback
+final class bgxi
+  implements DownloadParams.DecodeHandler
 {
-  bgxi(bgxh parambgxh) {}
-  
-  public void onNeedDownloadFinish(boolean paramBoolean, int paramInt)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if (paramBoolean)
+    if (paramBitmap != null)
     {
-      QbSdk.setUploadCode(BaseApplication.getContext(), 156);
-      if (QLog.isColorLevel()) {
-        QLog.d("TBS_update", 2, "tbs need download");
+      paramDownloadParams = paramDownloadParams.tag;
+      if ((GdtSmartBlur.a().a) && ((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 1))
+      {
+        int i = ((int[])(int[])paramDownloadParams)[0];
+        GdtSmartBlur.a().a(paramBitmap, i);
       }
-      this.a.a.browserApp.a(false);
     }
+    return paramBitmap;
   }
 }
 

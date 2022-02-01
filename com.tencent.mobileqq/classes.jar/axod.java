@@ -1,21 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
-class axod
-  implements View.OnClickListener
+public class axod
+  implements BusinessObserver
 {
-  axod(axoc paramaxoc) {}
-  
-  public void onClick(View paramView)
-  {
-    if ((this.a.a != null) && ((paramView.getTag() instanceof axoe)))
-    {
-      axoe localaxoe = (axoe)paramView.getTag();
-      this.a.a.a(localaxoe);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

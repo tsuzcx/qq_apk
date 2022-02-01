@@ -1,27 +1,81 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class arpu
-  implements View.OnClickListener
+public class arpu
 {
-  arpu(arpo paramarpo) {}
+  protected byte a;
+  protected int a;
+  protected long a;
+  protected String a;
+  protected short a;
+  protected boolean a;
+  protected byte[] a;
+  public String b;
+  protected String c;
+  protected String d;
+  protected String e = "";
+  protected String f = "";
   
-  public final void onClick(View paramView)
+  public arpu(arpt paramarpt)
   {
-    if (this.a.isShowing())
-    {
-      this.a.dismiss();
-      bcef.b(null, "dc00898", "", "", "0X800B08A", "0X800B08A", 6, 0, "", "", "", "");
+    this.jdField_a_of_type_Byte = 3;
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void a(DataInputStream paramDataInputStream)
+  {
+    this.jdField_a_of_type_Long = paramDataInputStream.readLong();
+    this.jdField_a_of_type_JavaLangString = paramDataInputStream.readUTF();
+    this.b = paramDataInputStream.readUTF();
+    this.d = paramDataInputStream.readUTF();
+    this.jdField_a_of_type_Byte = paramDataInputStream.readByte();
+    this.c = paramDataInputStream.readUTF();
+    this.e = paramDataInputStream.readUTF();
+    this.jdField_a_of_type_Short = paramDataInputStream.readShort();
+  }
+  
+  public void a(DataOutputStream paramDataOutputStream)
+  {
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      this.jdField_a_of_type_JavaLangString = "";
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.b == null) {
+      this.b = "";
+    }
+    if (this.d == null) {
+      this.d = "";
+    }
+    if (this.c == null) {
+      this.c = "";
+    }
+    paramDataOutputStream.writeLong(this.jdField_a_of_type_Long);
+    paramDataOutputStream.writeUTF(this.jdField_a_of_type_JavaLangString);
+    paramDataOutputStream.writeUTF(this.b);
+    paramDataOutputStream.writeUTF(this.d);
+    paramDataOutputStream.writeByte(this.jdField_a_of_type_Byte);
+    paramDataOutputStream.writeUTF(this.c);
+    paramDataOutputStream.writeUTF(this.e);
+    paramDataOutputStream.writeShort(this.jdField_a_of_type_Short);
+  }
+  
+  public void b(DataInputStream paramDataInputStream)
+  {
+    a(paramDataInputStream);
+    this.f = paramDataInputStream.readUTF();
+  }
+  
+  public void b(DataOutputStream paramDataOutputStream)
+  {
+    a(paramDataOutputStream);
+    if (this.f == null) {
+      this.f = "";
+    }
+    paramDataOutputStream.writeUTF(this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arpu
  * JD-Core Version:    0.7.0.1
  */

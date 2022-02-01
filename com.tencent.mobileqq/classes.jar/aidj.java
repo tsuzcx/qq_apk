@@ -1,17 +1,28 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aidj
-  extends aliz
+  implements View.OnClickListener
 {
-  public TextView a;
-  public MayKnowRecommend a;
-  public TroopLabelLayout a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  aidj(aidd paramaidd) {}
+  
+  public void onClick(View paramView)
+  {
+    Object localObject = paramView.getTag();
+    if (!(localObject instanceof Integer)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      String str = this.a.sessionInfo.curFriendUin;
+      if (this.a.sessionInfo.curType == 1006) {
+        str = this.a.sessionInfo.contactUin;
+      }
+      aidd.a(this.a, (Integer)localObject, str);
+    }
+  }
 }
 
 

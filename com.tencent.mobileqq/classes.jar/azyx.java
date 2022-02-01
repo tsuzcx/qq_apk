@@ -1,160 +1,436 @@
-import android.app.Activity;
-import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelStoreOwner;
-import android.graphics.Rect;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Paint;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.SpannableStringBuilder;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ImageSpan;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.resourcesgrab.ResourceGrabFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class azyx
+  extends azwo
   implements View.OnClickListener
 {
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private List<azys> jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean;
-  
-  azyx(List<azys> paramList, View.OnClickListener paramOnClickListener, boolean paramBoolean)
+  public azyx(azxt paramazxt, azrb paramazrb)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    super(paramazxt, paramazrb);
   }
   
-  private List<azys> a(View paramView)
+  private SpannableStringBuilder a(List<String> paramList, TextView paramTextView)
   {
-    ArrayList localArrayList = new ArrayList();
-    try
+    Object localObject = new StringBuilder();
+    if ((paramList != null) && (!paramList.isEmpty()) && (paramTextView != null))
     {
-      Object localObject = View.class.getDeclaredMethod("getListenerInfo", new Class[0]);
-      if (!((Method)localObject).isAccessible()) {
-        ((Method)localObject).setAccessible(true);
-      }
-      paramView = ((Method)localObject).invoke(paramView, new Object[0]);
-      localObject = paramView.getClass().getDeclaredField("mOnClickListener");
-      ((Field)localObject).setAccessible(true);
-      paramView = (View.OnClickListener)((Field)localObject).get(paramView);
-      if ((paramView instanceof azyx))
+      int j = paramList.size();
+      int i = 0;
+      while (i < j)
       {
-        paramView = ((azyx)paramView).jdField_a_of_type_JavaUtilList;
-        if ((paramView != null) && (paramView.size() > 0)) {
-          localArrayList.addAll(paramView);
+        ((StringBuilder)localObject).append((String)paramList.get(i));
+        if (i != j - 1) {
+          ((StringBuilder)localObject).append(" | ");
+        }
+        i += 1;
+      }
+    }
+    paramTextView = a(((StringBuilder)localObject).toString(), paramTextView);
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileAccountInfoV2Component", 2, String.format("combineAccountInfo accountInfo=%s", new Object[] { paramTextView }));
+    }
+    paramList = new SpannableStringBuilder(paramTextView);
+    localObject = Pattern.compile("\\|").matcher(paramTextView);
+    while (((Matcher)localObject).find()) {
+      paramList.setSpan(a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getApplicationContext()), ((Matcher)localObject).start(), ((Matcher)localObject).end(), 33);
+    }
+    paramTextView = Pattern.compile(" ").matcher(paramTextView);
+    while (paramTextView.find()) {
+      paramList.setSpan(b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getApplicationContext()), paramTextView.start(), paramTextView.end(), 33);
+    }
+    return paramList;
+  }
+  
+  private ImageSpan a(Context paramContext)
+  {
+    return new azyy(paramContext, 2130845702, 2);
+  }
+  
+  private String a(String paramString, TextView paramTextView)
+  {
+    Object localObject;
+    TextPaint localTextPaint;
+    int i;
+    int j;
+    int n;
+    int i1;
+    if ((paramString != null) && (paramString.length() > 0) && (paramTextView != null))
+    {
+      localObject = paramTextView.getResources();
+      localTextPaint = paramTextView.getPaint();
+      i = paramTextView.getPaddingLeft();
+      j = paramTextView.getPaddingRight();
+      n = paramTextView.getWidth() - i - j;
+      if (n > 0)
+      {
+        i1 = paramString.length();
+        j = 0;
+      }
+    }
+    int m;
+    label222:
+    for (int k = 0;; k = m)
+    {
+      m = paramString.offsetByCodePoints(k, 1);
+      paramTextView = paramString.substring(k, m);
+      if ("|".equals(paramTextView)) {
+        i = AIOUtils.dp2px(1.0F, (Resources)localObject);
+      }
+      while (j + i <= n)
+      {
+        j += i;
+        if (m < i1 - 1) {
+          break label222;
+        }
+        return paramString;
+        if (" ".equals(paramTextView)) {
+          i = AIOUtils.dp2px(8.0F, (Resources)localObject);
+        } else {
+          i = (int)localTextPaint.measureText(paramTextView);
         }
       }
-      return localArrayList;
+      paramTextView = paramString.substring(0, k).trim();
+      paramString = paramString.substring(k).trim();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramTextView);
+      if (!TextUtils.isEmpty(paramString))
+      {
+        ((StringBuilder)localObject).append('\n');
+        ((StringBuilder)localObject).append(paramString);
+      }
+      return ((StringBuilder)localObject).toString();
     }
-    catch (Exception paramView)
+  }
+  
+  private List<String> a(Card paramCard)
+  {
+    Resources localResources = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources();
+    ArrayList localArrayList = new ArrayList();
+    if (paramCard != null)
     {
-      QLog.d("ResourceNameOnClickListener", 1, paramView, new Object[0]);
+      a(localArrayList, (azrb)this.b, localResources);
+      b(localArrayList, (azrb)this.b, localResources);
+      c(localArrayList, (azrb)this.b, localResources);
+      d(localArrayList, (azrb)this.b, localResources);
+      e(localArrayList, (azrb)this.b, localResources);
+      f(localArrayList, (azrb)this.b, localResources);
+      g(localArrayList, (azrb)this.b, localResources);
+      h(localArrayList, (azrb)this.b, localResources);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileAccountInfoV2Component", 2, String.format("makeAccountInfo list=%s", new Object[] { Arrays.toString(localArrayList.toArray()) }));
     }
     return localArrayList;
   }
   
-  private void a(View paramView, FragmentActivity paramFragmentActivity, List<azys> paramList)
+  private void a(List<String> paramList, azrb paramazrb, Resources paramResources)
   {
-    Rect localRect;
-    int i;
-    if ((paramView instanceof ViewGroup))
-    {
-      localRect = new Rect();
-      i = 0;
+    Object localObject = null;
+    int i = azza.a(paramazrb);
+    String str;
+    if (i == 0) {
+      str = paramResources.getString(2131693752);
     }
     for (;;)
     {
-      if (i < ((ViewGroup)paramView).getChildCount())
-      {
-        View localView = ((ViewGroup)paramView).getChildAt(i);
-        localView.getGlobalVisibleRect(localRect);
-        if (localRect.contains(paramFragmentActivity.clickX, paramFragmentActivity.clickY))
-        {
-          paramView = a(localView);
-          if (paramView.size() > 0) {
-            paramList.addAll(paramView);
-          }
-          a(localView, paramFragmentActivity, paramList);
-        }
+      i = azza.b(paramazrb);
+      paramazrb = localObject;
+      if (i > 0) {
+        paramazrb = i + paramResources.getString(2131719132);
       }
-      else
+      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramazrb))) {
+        paramList.add(str + " " + paramazrb);
+      }
+      do
       {
         return;
-      }
-      i += 1;
+        if (i != 1) {
+          break label159;
+        }
+        str = paramResources.getString(2131692198);
+        break;
+        if (!TextUtils.isEmpty(str))
+        {
+          paramList.add(str);
+          return;
+        }
+      } while (TextUtils.isEmpty(paramazrb));
+      paramList.add(paramazrb);
+      return;
+      label159:
+      str = null;
     }
   }
   
-  private void a(View paramView, List<azys> paramList, Rect paramRect)
+  private boolean a(Card paramCard, boolean paramBoolean)
   {
-    if (paramView.getParent() != null)
+    boolean bool2 = false;
+    boolean bool1 = false;
+    Object localObject = a(paramCard);
+    int i;
+    int j;
+    if (((azrb)this.b).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0)
     {
-      paramView = (View)paramView.getParent();
-      Object localObject = new Rect();
-      paramView.getGlobalVisibleRect((Rect)localObject);
-      if ((((Rect)localObject).left - paramRect.left <= 20) && (((Rect)localObject).top - paramRect.top <= 20) && (((Rect)localObject).right - paramRect.right <= 20) && (((Rect)localObject).bottom - paramRect.bottom <= 20))
-      {
-        localObject = a(paramView);
-        if (((List)localObject).size() > 0) {
-          paramList.addAll((Collection)localObject);
-        }
-        a(paramView, paramList, paramRect);
+      i = 1;
+      paramBoolean = ProfileActivity.AllInOne.a(((azrb)this.b).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
+      if (((List)localObject).isEmpty()) {
+        break label171;
+      }
+      j = 1;
+      label58:
+      if ((!azym.a((azrb)this.b)) || (paramCard == null) || ((i == 0) && ((!paramBoolean) || (j == 0)))) {
+        break label352;
       }
     }
+    label171:
+    label314:
+    label352:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      boolean bool3 = this.jdField_a_of_type_Birs.a(12);
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileAccountInfoV2Component", 2, String.format("makeOrRefreshAccountInfo showAccountInfo=%s baseInfoABTestEnable=%s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool3) }));
+      }
+      if ((!paramBoolean) || (!bool3))
+      {
+        paramBoolean = bool1;
+        if (this.jdField_a_of_type_JavaLangObject != null)
+        {
+          this.jdField_a_of_type_JavaLangObject = null;
+          paramBoolean = true;
+        }
+        return paramBoolean;
+        i = 0;
+        break;
+        j = 0;
+        break label58;
+      }
+      paramBoolean = bool2;
+      if (this.jdField_a_of_type_JavaLangObject == null)
+      {
+        this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getLayoutInflater().inflate(2131561390, null);
+        ((View)this.jdField_a_of_type_JavaLangObject).setOnClickListener(this);
+        paramBoolean = true;
+      }
+      paramCard = (TextView)((View)this.jdField_a_of_type_JavaLangObject).findViewById(2131378658);
+      ImageView localImageView = (ImageView)((View)this.jdField_a_of_type_JavaLangObject).findViewById(2131362985);
+      if (paramCard != null)
+      {
+        if ((i == 0) || (j != 0)) {
+          break label314;
+        }
+        paramCard.setText(2131698745);
+        localObject = new azpb(81, null);
+        ((View)this.jdField_a_of_type_JavaLangObject).setTag(localObject);
+      }
+      for (;;)
+      {
+        a((View)this.jdField_a_of_type_JavaLangObject, paramCard, null, localImageView);
+        return paramBoolean;
+        paramCard.setText(a((List)localObject, paramCard));
+        localObject = new azpb(103, null);
+        ((View)this.jdField_a_of_type_JavaLangObject).setTag(localObject);
+      }
+    }
+  }
+  
+  private ImageSpan b(Context paramContext)
+  {
+    paramContext = paramContext.getResources();
+    ColorDrawable localColorDrawable = new ColorDrawable();
+    localColorDrawable.setBounds(0, 0, AIOUtils.dp2px(8.0F, paramContext), 0);
+    return new ImageSpan(localColorDrawable);
+  }
+  
+  private void b(List<String> paramList, azrb paramazrb, Resources paramResources)
+  {
+    Object localObject = null;
+    String str = azza.a(paramazrb);
+    long l = azza.a(paramazrb);
+    paramazrb = localObject;
+    if (l > 0L)
+    {
+      int i = (int)(0xFF00 & l) >> 8;
+      int j = (int)(l & 0xFF);
+      paramazrb = localObject;
+      if (i > 0)
+      {
+        paramazrb = localObject;
+        if (j > 0)
+        {
+          paramazrb = new StringBuilder();
+          paramazrb.append(i);
+          paramazrb.append(paramResources.getString(2131694034));
+          paramazrb.append(j);
+          paramazrb.append(paramResources.getString(2131691418));
+          paramazrb = paramazrb.toString();
+        }
+      }
+    }
+    if ((!TextUtils.isEmpty(paramazrb)) && (!TextUtils.isEmpty(str))) {
+      paramList.add(paramazrb + " " + str);
+    }
+    do
+    {
+      return;
+      if (!TextUtils.isEmpty(paramazrb))
+      {
+        paramList.add(paramazrb);
+        return;
+      }
+    } while (TextUtils.isEmpty(str));
+    paramList.add(str);
+  }
+  
+  private void c(List<String> paramList, azrb paramazrb, Resources paramResources)
+  {
+    paramazrb = azza.b(paramazrb);
+    if (!TextUtils.isEmpty(paramazrb)) {
+      paramList.add(paramazrb);
+    }
+  }
+  
+  private void d(List<String> paramList, azrb paramazrb, Resources paramResources)
+  {
+    String str = azza.d(paramazrb);
+    paramazrb = azza.e(paramazrb);
+    if ((!TextUtils.isEmpty(str)) || (!TextUtils.isEmpty(paramazrb)))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramResources.getString(2131698744));
+      if (!TextUtils.isEmpty(str)) {
+        localStringBuilder.append(str);
+      }
+      if (!TextUtils.isEmpty(paramazrb)) {
+        localStringBuilder.append(paramazrb);
+      }
+      paramList.add(localStringBuilder.toString());
+    }
+  }
+  
+  private void e(List<String> paramList, azrb paramazrb, Resources paramResources)
+  {
+    String str = azza.g(paramazrb);
+    paramazrb = azza.h(paramazrb);
+    if ((!TextUtils.isEmpty(str)) || (!TextUtils.isEmpty(paramazrb)))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramResources.getString(2131698743));
+      if (!TextUtils.isEmpty(str)) {
+        localStringBuilder.append(str);
+      }
+      if (!TextUtils.isEmpty(paramazrb)) {
+        localStringBuilder.append(paramazrb);
+      }
+      paramList.add(localStringBuilder.toString());
+    }
+  }
+  
+  private void f(List<String> paramList, azrb paramazrb, Resources paramResources)
+  {
+    paramazrb = azza.i(paramazrb);
+    if (!TextUtils.isEmpty(paramazrb)) {
+      paramList.add(paramazrb);
+    }
+  }
+  
+  private void g(List<String> paramList, azrb paramazrb, Resources paramResources)
+  {
+    paramazrb = azza.j(paramazrb);
+    if (!TextUtils.isEmpty(paramazrb)) {
+      paramList.add(paramazrb);
+    }
+  }
+  
+  private void h(List<String> paramList, azrb paramazrb, Resources paramResources)
+  {
+    paramazrb = azza.k(paramazrb);
+    if (!TextUtils.isEmpty(paramazrb)) {
+      paramList.add(paramazrb);
+    }
+  }
+  
+  public int a()
+  {
+    return 1023;
+  }
+  
+  public String a()
+  {
+    return "ProfileAccountInfoV2Component";
+  }
+  
+  public boolean a(azrb paramazrb)
+  {
+    boolean bool = super.a(paramazrb);
+    return a(((azrb)this.b).jdField_a_of_type_ComTencentMobileqqDataCard, ((azrb)this.b).d) | bool;
+  }
+  
+  public String a_()
+  {
+    return "map_key_account_info_v2";
   }
   
   public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ResourceNameOnClickListener", 2, "ResourceNameOnClickListener onLongClick");
-    }
-    Object localObject1 = null;
-    if ((paramView.getContext() instanceof Activity)) {
-      localObject1 = (Activity)paramView.getContext();
-    }
-    Object localObject2 = localObject1;
-    if (localObject1 == null) {
-      localObject2 = BaseActivity.sTopActivity;
-    }
-    azyv localazyv;
-    ArrayList localArrayList;
-    if ((localObject2 instanceof FragmentActivity))
-    {
-      localObject1 = ((FragmentActivity)localObject2).getSupportFragmentManager().findFragmentByTag("ResourceGrabFragment");
-      if ((localObject1 instanceof ResourceGrabFragment))
+    int j = 1;
+    Object localObject = paramView.getTag();
+    if ((localObject instanceof azpb)) {
+      switch (((azpb)localObject).a)
       {
-        localObject1 = (ResourceGrabFragment)localObject1;
-        localazyv = (azyv)awhc.a((ViewModelStoreOwner)localObject1).get(azyv.class);
-        localazyv.a();
-        localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
       }
     }
-    try
-    {
-      a(paramView, (FragmentActivity)localObject2, localArrayList);
-      localObject2 = new Rect();
-      paramView.getGlobalVisibleRect((Rect)localObject2);
-      a(paramView, localArrayList, (Rect)localObject2);
-      ((ResourceGrabFragment)localObject1).a(localArrayList);
-      if (((ResourceGrabFragment)localObject1).a()) {
-        localazyv.a(localArrayList);
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    catch (Exception localException)
+    do
     {
       for (;;)
       {
-        QLog.d("ResourceNameOnClickListener", 1, localException, new Object[0]);
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        azym.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (azrb)this.b);
       }
+      bhaa.a((azrb)this.b, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    } while (!azym.a((azrb)this.b));
+    if (((azrb)this.b).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0)
+    {
+      i = 1;
+      label130:
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      if (i == 0) {
+        break label156;
+      }
+    }
+    label156:
+    for (int i = j;; i = 3)
+    {
+      azyz.a((QQAppInterface)localObject, i);
+      break;
+      i = 0;
+      break label130;
     }
   }
 }

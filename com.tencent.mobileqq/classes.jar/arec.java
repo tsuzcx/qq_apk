@@ -1,57 +1,88 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+import java.io.File;
 
-class arec
-  extends bgod
+public class arec
+  extends aqwt<bonb>
 {
-  arec(areb paramareb, String paramString1, String paramString2)
+  @NonNull
+  public bonb a(int paramInt)
   {
-    super(paramString1, paramString2);
+    return new bonb();
   }
   
-  public void onDone(bgoe parambgoe)
+  @Nullable
+  public bonb a(aqxa[] paramArrayOfaqxa)
   {
-    Bundle localBundle;
-    EmoticonPackage localEmoticonPackage;
-    try
-    {
-      localBundle = parambgoe.a();
-      localEmoticonPackage = (EmoticonPackage)localBundle.getSerializable("emoticonPackage");
-      if (localEmoticonPackage == null) {
-        return;
-      }
-      if ((QLog.isColorLevel()) && (localEmoticonPackage != null)) {
-        QLog.d(areb.a(), 2, "jsonDownloadListener : onDone epid = " + localEmoticonPackage.epId + ";task status = " + parambgoe.a());
-      }
-      if (parambgoe.a() != 3) {
-        break label177;
-      }
-      boolean bool = localBundle.getBoolean("isSmallEmotion");
-      String str = areq.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, parambgoe, bool);
-      if (str != null)
-      {
-        QLog.e(areb.a(), 1, "jsonDownloadListener : parse json error : = " + str);
-        this.a.a(localEmoticonPackage, 11008, 0L, parambgoe.d);
-        return;
-      }
+    if ((paramArrayOfaqxa == null) || (paramArrayOfaqxa.length == 0)) {
+      return null;
     }
-    catch (Exception parambgoe)
-    {
-      QLog.e(areb.a(), 1, "json download fail", parambgoe);
-      return;
+    paramArrayOfaqxa = paramArrayOfaqxa[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMMusicConfigProcessor", 2, "handleGetQIMMusicConfig onParsed, content:" + paramArrayOfaqxa);
     }
-    areb.jdField_a_of_type_Area.a(localEmoticonPackage, 0, localBundle);
-    return;
-    label177:
-    QLog.e(areb.a(), 1, "jsonDownloadListener : ondone error , reportCode = " + parambgoe.a);
-    areb.jdField_a_of_type_Area.a(localEmoticonPackage, -1, localBundle);
-    bggr.a("emotionType", "emotionActionDownload", "3", localEmoticonPackage.epId, "", "", parambgoe.a + "", "", "", "");
+    return new bomy().a(paramArrayOfaqxa, QIMMusicConfigManager.a.getAbsolutePath(), "temp_music_zip", new ared(this));
+  }
+  
+  public void a(bonb parambonb)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMMusicConfigProcessor", 2, "handleGetQIMMusicConfig onUpdate");
+    }
+  }
+  
+  public Class<bonb> clazz()
+  {
+    return bonb.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    if (!QIMMusicConfigManager.a()) {
+      return 0;
+    }
+    return bhhr.B(BaseApplicationImpl.getContext());
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMMusicConfigProcessor", 2, "handleGetQIMMusicConfig onReqFailed");
+    }
+  }
+  
+  public int onSend(int paramInt)
+  {
+    if (!QIMMusicConfigManager.a())
+    {
+      QLog.i("QIMMusicConfigProcessor", 1, "config file not exist");
+      aqxe.a().a(305, 0);
+      return 0;
+    }
+    return super.onSend(paramInt);
+  }
+  
+  public int type()
+  {
+    return 305;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arec
  * JD-Core Version:    0.7.0.1
  */

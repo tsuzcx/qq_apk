@@ -1,10 +1,10 @@
 package com.tencent.biz.qqstory.utils.ffmpeg;
 
-import amtj;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import xvv;
+import anvx;
+import ykq;
 
 class FFmpeg$7
   extends BroadcastReceiver
@@ -18,7 +18,7 @@ class FFmpeg$7
       if ((this.this$0.ffmpegExecuteAsyncTask != null) && (!this.this$0.ffmpegExecuteAsyncTask.isProcessCompleted()))
       {
         this.this$0.mIsFFmpegingCloseScreen = true;
-        xvv.d("Q.qqstory.ffmpeg.FFmpegCmd", "屏幕灭屏了，FFmpeg还在执行当中");
+        ykq.d("Q.qqstory.ffmpeg.FFmpegCmd", "屏幕灭屏了，FFmpeg还在执行当中");
       }
     }
     do
@@ -31,19 +31,19 @@ class FFmpeg$7
     } while ((this.this$0.mCurrentCommandUnit == null) || (this.this$0.mLastTaskResult == -9999) || (this.this$0.mCurrentCommandUnit.callback == null));
     if (this.this$0.mLastTaskResult == 1)
     {
-      paramContext = amtj.a(2131703610);
+      paramContext = anvx.a(2131703961);
       this.this$0.mCurrentCommandUnit.callback.onSuccess(paramContext);
       this.this$0.mCurrentCommandUnit.callback.onFinish(true);
-      xvv.d("Q.qqstory.ffmpeg.FFmpegCmd", paramContext);
+      ykq.d("Q.qqstory.ffmpeg.FFmpegCmd", paramContext);
     }
     for (;;)
     {
       this.this$0.mLastTaskResult = -9999;
       return;
-      paramContext = amtj.a(2131703609);
+      paramContext = anvx.a(2131703960);
       this.this$0.mCurrentCommandUnit.callback.onFailure(paramContext);
       this.this$0.mCurrentCommandUnit.callback.onFinish(false);
-      xvv.d("Q.qqstory.ffmpeg.FFmpegCmd", paramContext);
+      ykq.d("Q.qqstory.ffmpeg.FFmpegCmd", paramContext);
     }
   }
 }

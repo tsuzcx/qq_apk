@@ -1,34 +1,17 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.io.File;
+import java.util.concurrent.Callable;
 
 class vvn
-  implements vqp<wfg, wgr>
+  implements Callable<File>
 {
-  vvn(vvl paramvvl) {}
+  vvn(vvm paramvvm) {}
   
-  public void a(@NonNull wfg paramwfg, @Nullable wgr paramwgr, @NonNull ErrorMessage paramErrorMessage)
+  public File a()
   {
-    xvv.b("WeatherDataProvider", "requestWeather Cmd Respond.");
-    if ((paramErrorMessage.isSuccess()) && (paramwgr != null))
-    {
-      xvv.a("WeatherDataProvider", "requestWeather onCmdRespond success, temperature : %s .", Integer.valueOf(paramwgr.b));
-      this.a.jdField_a_of_type_JavaLangObject = new vvo(paramwgr.b, paramwgr.a);
-      xvv.c("WeatherDataProvider", "update local weather data.");
-      paramwfg = (vuq)vux.a(10);
-      paramwfg.b("edit_video_weather_filter_data", Integer.valueOf(paramwgr.b));
-      paramwfg.b("edit_video_weather_desc", paramwgr.a);
-      vvl.a(this.a, System.currentTimeMillis() + 14400000L);
-      paramwfg.b("edit_video_weather_expiry_time", Long.valueOf(vvl.a(this.a)));
-      this.a.a(true, this.a.jdField_a_of_type_JavaLangObject);
+    if ((vvm.a(this.a) != null) && (vvm.a(this.a).exists())) {
+      return vvm.a(this.a);
     }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Boolean = false;
-      return;
-      xvv.d("WeatherDataProvider", "requestWeather onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramwfg });
-      this.a.a(false, null);
-    }
+    return null;
   }
 }
 

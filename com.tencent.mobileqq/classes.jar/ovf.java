@@ -1,14 +1,19 @@
-class ovf
-  extends owd
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+
+public class ovf
+  implements bkzq
 {
-  ovf(ouu paramouu)
-  {
-    super(paramouu, null);
-  }
+  public ovf(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity, ChannelInfo paramChannelInfo) {}
   
-  void a(owg paramowg)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramowg.onCommentListLoad(1, true, this.a.b(), ouu.b(this.a), 2, 2);
+    if (paramInt == 0)
+    {
+      ReadInJoyVideoSubChannelActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelInfo, false);
+      ReadInJoyVideoSubChannelActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity).dismiss();
+    }
   }
 }
 

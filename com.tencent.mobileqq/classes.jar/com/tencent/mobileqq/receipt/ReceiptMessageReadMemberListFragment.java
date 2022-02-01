@@ -14,8 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import azup;
-import azuq;
+import bbax;
+import bbay;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.face.FaceDecoder;
@@ -57,7 +57,7 @@ public class ReceiptMessageReadMemberListFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131558664, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131558676, paramViewGroup, false);
     paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
@@ -77,18 +77,18 @@ public class ReceiptMessageReadMemberListFragment
     paramBundle = paramBundle.getString("ReceiptMessageReadMemberListFragment.EXTRA_KEY_EMPTY_TEXT");
     if (((paramView == null) || (paramView.isEmpty())) && (!TextUtils.isEmpty(paramBundle)))
     {
-      localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131366078);
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366082)).setText(paramBundle);
+      localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131366179);
+      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366183)).setText(paramBundle);
       ((View)localObject).setVisibility(0);
     }
-    paramBundle = (RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370661);
+    paramBundle = (RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370845);
     this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder = new FaceDecoder(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    Object localObject = new azuq(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder, paramBundle, null);
-    ((azuq)localObject).a(paramView);
+    Object localObject = new bbay(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder, paramBundle, null);
+    ((bbay)localObject).a(paramView);
     paramBundle.setAdapter((RecyclerView.Adapter)localObject);
     paramBundle.setLayoutManager(new LinearLayoutManager(BaseApplicationImpl.getContext()));
     int i = (int)(getResources().getDisplayMetrics().density * 64.0F);
-    paramBundle.addItemDecoration(new azup(getResources().getDrawable(2130838289), i, 0, null));
+    paramBundle.addItemDecoration(new bbax(getResources().getDrawable(2130838302), i, 0, null));
   }
 }
 

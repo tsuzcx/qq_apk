@@ -1,14 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
-class afxm
-  implements DialogInterface.OnClickListener
+public class afxm
+  implements bdye
 {
-  afxm(afxj paramafxj) {}
+  public afxm(FriendShipWaveView paramFriendShipWaveView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    axvz.a("0X800B0B0");
+    bdym localbdym = new bdym(new bdyd[] { new bdyl(300, 0.1F, 1.1F), new bdyl(100, 1.2F, 0.9F), new bdyl(100, 0.9F, 1.0F) });
+    this.a.c.a(new bdyd[] { localbdym });
+    this.a.b.a(new bdyd[] { new bdyl(300, 0.0F, 1.0F) });
   }
 }
 

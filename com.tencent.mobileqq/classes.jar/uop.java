@@ -1,97 +1,29 @@
-import UserGrowth.stFeed;
-import UserGrowth.stQQGroupInfo;
-import UserGrowth.stSimpleMetaFeed;
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.weishi_new.follow.joinGroup.GroupDlgView;
-import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
-import com.tencent.mobileqq.utils.ViewUtils;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
 
-public class uop
-  extends ukz
+class uop
+  implements bkzq
 {
-  private static final int d = ViewUtils.dpToPx(1.0F);
-  private static final int e = ViewUtils.dpToPx(14.0F);
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private RoundImageView jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView;
-  private uou jdField_a_of_type_Uou;
+  uop(uoo paramuoo, uon paramuon, int paramInt, bkzi parambkzi) {}
   
-  public uop(Context paramContext, uou paramuou)
+  public void OnClick(View paramView, int paramInt)
   {
-    super(paramContext);
-    if ((paramContext instanceof Activity)) {
-      this.jdField_a_of_type_AndroidAppActivity = ((Activity)paramContext);
-    }
-    this.jdField_a_of_type_Uou = paramuou;
-  }
-  
-  private void g()
-  {
-    if ((this.jdField_a_of_type_AndroidAppActivity == null) || (this.jdField_a_of_type_Uou == null)) {
+    switch (paramInt)
+    {
+    default: 
+      this.jdField_a_of_type_Bkzi.dismiss();
       return;
     }
-    this.jdField_a_of_type_Uou.b();
-    uog localuog = new uog(this.jdField_a_of_type_AndroidAppActivity);
-    GroupDlgView localGroupDlgView = new GroupDlgView(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Uou);
-    localuog.setContentView(localGroupDlgView);
-    localGroupDlgView.a(a(this.jdField_a_of_type_Uou.a()));
-    localuog.show();
-    this.jdField_a_of_type_Uou.a();
-  }
-  
-  public List<uon> a(stFeed paramstFeed)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramstFeed != null) && (paramstFeed.feed != null) && (paramstFeed.feed.qqGroups != null) && (paramstFeed.feed.qqGroups.size() > 0))
-    {
-      int i = 0;
-      while (i < paramstFeed.feed.qqGroups.size())
-      {
-        stQQGroupInfo localstQQGroupInfo = (stQQGroupInfo)paramstFeed.feed.qqGroups.get(i);
-        localArrayList.add(new uon(localstQQGroupInfo.groupAvatar, localstQQGroupInfo.groupName, localstQQGroupInfo.groupCode, localstQQGroupInfo.groupAuth));
-        i += 1;
-      }
+    uoo.a(this.jdField_a_of_type_Uoo, this.jdField_a_of_type_Uon);
+    paramInt = this.jdField_a_of_type_Uon.b;
+    int i = this.jdField_a_of_type_Uon.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_Uon.jdField_a_of_type_Int != 1) {
+      paramInt = 0;
     }
-    return localArrayList;
-  }
-  
-  protected void a() {}
-  
-  protected int b()
-  {
-    return 2131560401;
-  }
-  
-  protected void b() {}
-  
-  protected void c() {}
-  
-  protected void e()
-  {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131368919));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView = ((RoundImageView)a(2131368917));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131368918));
-    Drawable localDrawable = a().getDrawable(2130842696);
-    localDrawable.setBounds(new Rect(0, 0, e, e));
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(d);
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, localDrawable, null);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new uoq(this));
-  }
-  
-  public void f()
-  {
-    stFeed localstFeed = this.jdField_a_of_type_Uou.a();
-    if ((this.jdField_a_of_type_AndroidAppActivity != null) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) && (localstFeed != null) && (localstFeed.feed != null) && (localstFeed.feed.qqGroups != null) && (localstFeed.feed.qqGroups.size() > 0)) {
-      uyo.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView, ((stQQGroupInfo)localstFeed.feed.qqGroups.get(0)).groupAvatar);
+    for (;;)
+    {
+      long l = uot.a().a(this.jdField_a_of_type_Uon);
+      bdla.b(uoo.a(this.jdField_a_of_type_Uoo), "dc01160", "Pb_account_lifeservice", "" + this.jdField_a_of_type_Uon.jdField_a_of_type_JavaLangString, "0X80067F2", "0X80067F2", 0, 0, "" + (this.jdField_a_of_type_Int + 1), "" + l, "" + i, "" + paramInt);
+      break;
     }
   }
 }

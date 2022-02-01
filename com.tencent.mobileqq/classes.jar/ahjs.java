@@ -1,23 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.38.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ahjs
-  implements DialogInterface.OnClickListener
+class ahjs
+  implements AdapterView.OnItemClickListener
 {
-  ahjs(ahiu paramahiu, PublicAccountInfo paramPublicAccountInfo, amxz paramamxz) {}
+  ahjs(ahjq paramahjq, List paramList) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsAgreeSyncLbs = true;
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsSyncLbsSelected = true;
-    this.jdField_a_of_type_Amxz.a(this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
-    this.jdField_a_of_type_Ahiu.a(1, null);
-    paramDialogInterface = new PublicAccountChatPie.38.1(this);
-    this.jdField_a_of_type_Ahiu.app.execute(paramDialogInterface);
-    ahiu.i(this.jdField_a_of_type_Ahiu);
+    Intent localIntent = new Intent(this.jdField_a_of_type_Ahjq.a, TroopAvatarWallPreviewActivity.class);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("index", paramInt);
+    localBundle.putStringArrayList("seqNum", new ArrayList(this.jdField_a_of_type_JavaUtilList));
+    localBundle.putBoolean("from_photo_wall", false);
+    localBundle.putBoolean("SHOW_MENU", true);
+    localBundle.putBoolean("IS_EDIT", false);
+    localBundle.putBoolean("is_use_path", true);
+    localBundle.putBoolean("is_show_action", true);
+    localBundle.putBoolean("is_not_show_index", true);
+    localIntent.putExtras(localBundle);
+    this.jdField_a_of_type_Ahjq.a.startActivity(localIntent);
+    bdla.b(null, "dc00898", "", "", "0X800B1A9", "0X800B1A9", 0, 0, "", "", ahjq.a(this.jdField_a_of_type_Ahjq), "精选照片");
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 

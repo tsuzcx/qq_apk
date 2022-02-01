@@ -1,35 +1,25 @@
-import android.app.Activity;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebAnimationUtils.3;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
-public class svn
-  implements Animation.AnimationListener
+class svn
+  extends suv
 {
-  public svn(FastWebAnimationUtils.3 param3) {}
+  svn(suw paramsuw) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    QLog.d("FastWebAnimationUtils", 1, "setAnimation onAnimationEnd");
-    paramAnimation = (AlphaAnimation)AnimationUtils.loadAnimation(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 2130772194);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(paramAnimation);
+    suw.a(this.a, false);
+    suw.a(this.a, suw.a(this.a), null, 0, "");
   }
   
-  public void onAnimationRepeat(Animation paramAnimation)
+  public int b()
   {
-    QLog.d("FastWebAnimationUtils", 1, "setAnimation onAnimationRepeat");
+    return 0;
   }
   
-  public void onAnimationStart(Animation paramAnimation)
+  public int c()
   {
-    QLog.d("FastWebAnimationUtils", 1, "setAnimation onAnimationStart");
+    return 1;
   }
 }
 

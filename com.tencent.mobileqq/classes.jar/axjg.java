@@ -1,22 +1,13 @@
-import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.face.FaceDrawable;
-import mqq.app.Constants.PropertiesKey;
-
 public class axjg
 {
-  public static FaceDrawable a(FragmentActivity paramFragmentActivity)
-  {
-    String str = axjz.a();
-    Drawable localDrawable = FaceDrawable.getDefaultDrawable(1, 3);
-    return FaceDrawable.getFaceDrawable(paramFragmentActivity.app, 1, str, 3, localDrawable, localDrawable, null);
-  }
-  
-  public static String a()
-  {
-    return BaseApplicationImpl.getApplication().getProperty(Constants.PropertiesKey.nickName.toString() + axjz.a());
-  }
+  public int a;
+  public axjf a;
+  public axjx a;
+  public String a;
+  public boolean a;
+  public int b;
+  public int c;
+  public int d = 0;
 }
 
 

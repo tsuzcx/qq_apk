@@ -1,25 +1,11 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedSeqInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Activity;
+import android.os.Bundle;
 
-public class wep
-  extends vql
+public abstract interface wep<T extends Activity>
 {
-  public List<xnh> a = new ArrayList();
+  public abstract void a(T paramT);
   
-  public wep(qqstory_service.RspProfileStoryFeedIdList paramRspProfileStoryFeedIdList)
-  {
-    super(paramRspProfileStoryFeedIdList.result, paramRspProfileStoryFeedIdList.is_end, paramRspProfileStoryFeedIdList.next_cookie);
-    paramRspProfileStoryFeedIdList = paramRspProfileStoryFeedIdList.feed_seq_info_list.get().iterator();
-    while (paramRspProfileStoryFeedIdList.hasNext())
-    {
-      qqstory_struct.FeedSeqInfo localFeedSeqInfo = (qqstory_struct.FeedSeqInfo)paramRspProfileStoryFeedIdList.next();
-      this.a.add(new xnh(localFeedSeqInfo));
-    }
-  }
+  public abstract void a(T paramT, Bundle paramBundle);
 }
 
 

@@ -1,16 +1,24 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.CameraEmotionData;
+import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoSingleSend;
+import com.tencent.qphone.base.util.QLog;
 
-class asem
-  implements DialogInterface.OnClickListener
+public class asem
+  implements asej
 {
-  asem(asej paramasej, Context paramContext, String paramString) {}
+  public asem(CameraEmoSingleSend paramCameraEmoSingleSend) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, CameraEmotionData paramCameraEmotionData)
   {
-    bcef.b(null, "dc00898", "", "", "0X800AE3D", "0X800AE3D", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_Asej.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    boolean bool = true;
+    QLog.d("CameraEmoSingleSend", 1, new Object[] { "onAddEmoFinish, result:", Integer.valueOf(paramInt), " emoId:", Integer.valueOf(paramCameraEmotionData.emoId), " originalId:", Integer.valueOf(CameraEmoSingleSend.a(this.a).emoId) });
+    if (paramInt == 0) {}
+    for (;;)
+    {
+      CameraEmoSingleSend.a(this.a, bool, paramInt);
+      this.a.a(String.valueOf(paramInt), 2);
+      return;
+      bool = false;
+    }
   }
 }
 

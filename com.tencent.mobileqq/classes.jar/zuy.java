@@ -1,18 +1,15 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.ui.CustomMenuBar;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class zuy
+class zuy
   implements View.OnClickListener
 {
-  public zuy(CustomMenuBar paramCustomMenuBar, String paramString, int paramInt) {}
+  zuy(zux paramzux) {}
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.a != null) {
-      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1);
-    }
+    zux.a(this.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

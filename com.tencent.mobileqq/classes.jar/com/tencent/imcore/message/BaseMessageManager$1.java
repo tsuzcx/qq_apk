@@ -1,16 +1,16 @@
 package com.tencent.imcore.message;
 
-import avsf;
+import awyg;
 import com.tencent.mobileqq.data.MessageRecord;
 
 class BaseMessageManager$1
   implements Runnable
 {
-  BaseMessageManager$1(BaseMessageManager paramBaseMessageManager, avsf paramavsf, MessageRecord paramMessageRecord) {}
+  BaseMessageManager$1(BaseMessageManager paramBaseMessageManager, awyg paramawyg, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Avsf.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    this.jdField_a_of_type_Awyg.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
   }
 }
 

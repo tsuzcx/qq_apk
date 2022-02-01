@@ -1,47 +1,67 @@
-import android.app.Activity;
-import android.content.Intent;
-import org.jetbrains.annotations.NotNull;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class pmf
-  extends pmb
+  implements AladdinConfigHandler
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public pmf(@NotNull pmc parampmc, Activity paramActivity)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    super(parampmc, "RIJDailyPopupStep");
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  private boolean b()
-  {
-    int j = 5;
-    Intent localIntent = this.jdField_a_of_type_AndroidAppActivity.getIntent();
-    int i = j;
-    if (localIntent != null)
+    QLog.d("ResetAllConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    Map localMap = pku.a(paramString);
+    Object localObject2 = localMap.keySet();
+    Object localObject1 = "";
+    paramString = "";
+    Iterator localIterator = ((Set)localObject2).iterator();
+    String str;
+    if (localIterator.hasNext())
     {
-      i = j;
-      if (localIntent.hasExtra("launch_from")) {
-        i = localIntent.getIntExtra("launch_from", 5);
+      str = (String)localIterator.next();
+      localObject2 = (String)localMap.get(str);
+      QLog.d("ResetAllConfigHandler", 2, "[onReceiveConfig] key=" + str + ", value=" + (String)localObject2);
+      if (TextUtils.equals(str, "reset_kandian_configuration"))
+      {
+        localObject1 = paramString;
+        paramString = (String)localObject2;
       }
     }
-    if (i == 15) {}
-    for (boolean bool = true;; bool = false)
+    for (;;)
     {
-      twp.a("RIJDailyFloatingPopupStep", "isOpenFloatingWindow = " + bool);
-      return bool;
+      localObject2 = paramString;
+      paramString = (String)localObject1;
+      localObject1 = localObject2;
+      break;
+      if (TextUtils.equals(str, "reset_version"))
+      {
+        paramString = (String)localObject1;
+        localObject1 = localObject2;
+        continue;
+        if ((TextUtils.equals("1", (CharSequence)localObject1)) && (!TextUtils.isEmpty(paramString))) {}
+        try
+        {
+          paramInt1 = Integer.valueOf(paramString).intValue();
+          bhhr.r(BaseApplicationImpl.getApplication(), paramInt1, pkh.a());
+          return true;
+        }
+        catch (NumberFormatException paramString)
+        {
+          QLog.e("ResetAllConfigHandler", 1, "[onReceiveConfig] e = " + paramString);
+          return true;
+        }
+      }
+      localObject2 = paramString;
+      paramString = (String)localObject1;
+      localObject1 = localObject2;
     }
   }
   
-  protected void g() {}
-  
-  protected void h() {}
-  
-  public void i()
+  public void onWipeConfig(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = b();
-    a(this.jdField_a_of_type_Boolean);
+    QLog.d("ResetAllConfigHandler", 2, "[onWipeConfig] id=" + paramInt);
   }
 }
 

@@ -1,31 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.random.RandomController;
+import java.util.Comparator;
 
-public class lsh
-  implements DialogInterface.OnClickListener
+class lsh
+  implements Comparator<lsc>
 {
-  public lsh(RandomController paramRandomController) {}
+  lsh(lsf paramlsf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(lsc paramlsc1, lsc paramlsc2)
   {
-    if (RandomController.a(this.a) == 1) {
-      bcef.b(null, "CliOper", "", "", "0X80053B4", "0X80053B4", 0, 0, "", "", "", "");
+    if (paramlsc1.d() >= paramlsc2.d()) {
+      return 1;
     }
-    for (;;)
-    {
-      this.a.c();
-      RandomController.d(this.a, false);
-      return;
-      if (RandomController.a(this.a) == 2) {
-        bcef.b(null, "CliOper", "", "", "0X80053C0", "0X80053C0", 0, 0, "", "", "", "");
-      }
-    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lsh
  * JD-Core Version:    0.7.0.1
  */

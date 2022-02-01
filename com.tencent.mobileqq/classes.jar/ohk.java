@@ -1,77 +1,47 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ohk
+class ohk
+  implements View.OnClickListener
 {
-  public static ohh a()
-  {
-    ohh localohh2 = ohj.a();
-    ohh localohh1 = localohh2;
-    if (localohh2 == null) {
-      localohh1 = new ohh();
-    }
-    return localohh1;
-  }
+  ohk(ohj paramohj) {}
   
-  public static ohi a(int paramInt)
+  public void onClick(View paramView)
   {
-    Object localObject = a().jdField_a_of_type_JavaUtilArrayList;
-    if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
+    if (this.a.jdField_a_of_type_Ohb.b == 2)
     {
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        ohi localohi = (ohi)((Iterator)localObject).next();
-        if (localohi.jdField_a_of_type_Int == paramInt) {
-          return localohi;
+      Intent localIntent = new Intent((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", this.a.jdField_a_of_type_Ohb.jdField_c_of_type_JavaLangString);
+      this.a.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      ois.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_c_of_type_JavaLangString, 3, 3, 0);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.a.jdField_a_of_type_Ohb.b == 1) {
+        switch (this.a.jdField_c_of_type_Int)
+        {
+        case 3: 
+        default: 
+          break;
+        case 0: 
+          ohj.a(this.a);
+          break;
+        case 1: 
+          ois.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_Ohb.f);
+          ois.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_c_of_type_JavaLangString, 3, 1, 0);
+          break;
+        case 2: 
+          ois.a(this.a.jdField_a_of_type_Ohb);
+          ois.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_c_of_type_JavaLangString, 3, 4, 0);
         }
       }
-    }
-    return new ohi();
-  }
-  
-  public static boolean a()
-  {
-    return a(ohj.a());
-  }
-  
-  public static boolean a(ohh paramohh)
-  {
-    return a(paramohh, 1, 1);
-  }
-  
-  public static boolean a(ohh paramohh, int paramInt1, int paramInt2)
-  {
-    if ((paramohh == null) || (paramohh.jdField_a_of_type_JavaUtilArrayList == null) || (paramohh.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
-      return false;
-    }
-    paramohh = paramohh.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (paramohh.hasNext())
-    {
-      ohi localohi = (ohi)paramohh.next();
-      if ((localohi.b == paramInt1) && (localohi.jdField_a_of_type_Int == paramInt2)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public static boolean b()
-  {
-    ohh localohh = a();
-    if (localohh == null) {}
-    for (String str = "false";; str = localohh.jdField_a_of_type_Int + "")
-    {
-      QLog.i("EcshopEcshopConfUtil", 2, str);
-      if (localohh != null) {
-        break;
-      }
-      return false;
-    }
-    if (localohh.jdField_a_of_type_Int == 1) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
     }
   }
 }

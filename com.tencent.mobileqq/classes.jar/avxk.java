@@ -1,21 +1,27 @@
+import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class avxk
-  implements View.OnClickListener
+final class avxk
+  implements bkzq
 {
-  public avxk(MultiAIOFragment paramMultiAIOFragment) {}
+  avxk(Intent paramIntent, bkzi parambkzi) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    TextView localTextView = (TextView)MultiAIOFragment.a(this.a).findViewById(2131379914);
-    avym.a += 1;
-    localTextView.setText(amtj.a(2131706112) + avym.a);
-    MultiAIOFragment.d(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    bdla.b(null, "dc00899", "Grp_AIO", "", "video_tab", "clk_quit_opener", 0, 0, this.jdField_a_of_type_AndroidContentIntent.getStringExtra("cur_uin"), paramInt + "", "", "");
+    paramView = avxo.a();
+    if (paramInt == 0) {}
+    for (paramInt = 2;; paramInt = 1)
+    {
+      paramView.a(paramInt);
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+    }
   }
 }
 

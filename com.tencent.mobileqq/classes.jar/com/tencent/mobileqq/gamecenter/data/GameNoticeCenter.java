@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.gamecenter.data;
 
-import aber;
-import abet;
+import abud;
+import abuf;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -12,20 +12,20 @@ import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
 import android.view.View;
-import atwv;
-import atww;
-import atwx;
-import atwy;
-import atzb;
-import bfwv;
-import bhpc;
-import bhvs;
-import bifp;
-import bifq;
-import bleb;
-import blec;
-import bled;
-import blef;
+import avby;
+import avbz;
+import avca;
+import avcb;
+import aveq;
+import bhfn;
+import bizw;
+import bjgt;
+import bjqr;
+import bjqs;
+import bmqs;
+import bmqt;
+import bmqu;
+import bmqw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gamecenter.activities.GameCenterActivity;
@@ -55,7 +55,7 @@ import org.json.JSONObject;
 
 public class GameNoticeCenter
   extends CopyOnWriteArrayList<GameNoticeInfo>
-  implements aber, Handler.Callback, bleb
+  implements abud, Handler.Callback, bmqs
 {
   public static final long HOUR_3 = 10800000L;
   public static final long HOUR_8 = 28800000L;
@@ -67,7 +67,7 @@ public class GameNoticeCenter
   public static final long TWO_DAY = 172800000L;
   public static final int WHAT_CLICK_BANNER = 2;
   public static final int WHAT_CLOSE_BANNER = 1;
-  private static final Comparator<GameNoticeInfo> a = new atwv();
+  private static final Comparator<GameNoticeInfo> a = new avby();
   static HashSet<String> cmdMap = new HashSet();
   private final int arkTypeCare = 2;
   private final int arkTypeNormal = 0;
@@ -97,7 +97,7 @@ public class GameNoticeCenter
     }
     GameCenterReceiver.a();
     GameCenterReceiver.a(this);
-    blec.a().a(this);
+    bmqt.a().a(this);
   }
   
   private GameNoticeInfo a(String paramString)
@@ -273,7 +273,7 @@ public class GameNoticeCenter
   
   private void a(long paramLong1, long paramLong2, GameNoticeInfo paramGameNoticeInfo)
   {
-    long l = abet.a("KEY_RED_POINT_TIME_" + paramGameNoticeInfo.appId);
+    long l = abuf.a("KEY_RED_POINT_TIME_" + paramGameNoticeInfo.appId);
     if ((paramLong2 - l > 604800000L) || (l > paramLong2)) {}
     for (boolean bool = true;; bool = false)
     {
@@ -288,9 +288,9 @@ public class GameNoticeCenter
         }
         if ((paramLong1 > 86400000L) && (paramLong1 < 172800000L))
         {
-          abet.a("KEY_RED_POINT_TIME_" + paramGameNoticeInfo.appId, paramLong2);
-          if (!bfwv.a(BaseApplicationImpl.getApplication(), paramGameNoticeInfo.packageName)) {
-            blec.a().a(9);
+          abuf.a("KEY_RED_POINT_TIME_" + paramGameNoticeInfo.appId, paramLong2);
+          if (!bhfn.a(BaseApplicationImpl.getApplication(), paramGameNoticeInfo.packageName)) {
+            bmqt.a().a(9);
           }
         }
       }
@@ -322,9 +322,9 @@ public class GameNoticeCenter
       if (paramGameNoticeInfo.bannerType != 1) {
         break label469;
       }
-      localObject = (bifp)bifq.a().a("comminfo");
+      localObject = (bjqr)bjqs.a().a("comminfo");
       if (localObject != null) {
-        localObject = ((bifp)localObject).a(paramGameNoticeInfo.downloadType);
+        localObject = ((bjqr)localObject).a(paramGameNoticeInfo.downloadType);
       }
     }
     for (;;)
@@ -345,24 +345,24 @@ public class GameNoticeCenter
           if (paramGameNoticeInfo.bannerType != 1) {
             break label393;
           }
-          localObject = new bled();
-          ((bled)localObject).a("dc00087").b(paramGameNoticeInfo.appId).d("81706").c("205431").a(4, "8").a(35, paramGameNoticeInfo.apkChannel).a(10, paramGameNoticeInfo.getReportType());
+          localObject = new bmqu();
+          ((bmqu)localObject).a("dc00087").b(paramGameNoticeInfo.appId).d("81706").c("205431").a(4, "8").a(35, paramGameNoticeInfo.apkChannel).a(10, paramGameNoticeInfo.getReportType());
           if (paramGameNoticeInfo.isGray)
           {
-            ((bled)localObject).e(paramGameNoticeInfo.expeKey);
-            blef.a().a("59", paramGameNoticeInfo.expeKey, "", "205431", "1000", "1000", "0", "0");
+            ((bmqu)localObject).e(paramGameNoticeInfo.expeKey);
+            bmqw.a().a("59", paramGameNoticeInfo.expeKey, "", "205431", "1000", "1000", "0", "0");
           }
-          blec.a().a((bled)localObject);
+          bmqt.a().a((bmqu)localObject);
           return;
           if (paramGameNoticeInfo.downloadType == 1)
           {
-            localObject = bhpc.a().a().getString(2131694130);
+            localObject = bizw.a().a().getString(2131694327);
             break;
           }
           if (paramGameNoticeInfo.downloadType != 3) {
             break label474;
           }
-          localObject = bhpc.a().a().getString(2131694131);
+          localObject = bizw.a().a().getString(2131694328);
           break;
           if (QLog.isColorLevel()) {
             QLog.w("GameNoticeCenter", 2, "showBanner Conversation handler is null");
@@ -371,9 +371,9 @@ public class GameNoticeCenter
         if (paramGameNoticeInfo.bannerType != 2) {
           break;
         }
-        localObject = new bled();
-        ((bled)localObject).a("dc00087").b(paramGameNoticeInfo.appId).d("81707").c("205433").a(4, "8").a(35, paramGameNoticeInfo.apkChannel).a(10, paramGameNoticeInfo.getReportType());
-        blec.a().a((bled)localObject);
+        localObject = new bmqu();
+        ((bmqu)localObject).a("dc00087").b(paramGameNoticeInfo.appId).d("81707").c("205433").a(4, "8").a(35, paramGameNoticeInfo.apkChannel).a(10, paramGameNoticeInfo.getReportType());
+        bmqt.a().a((bmqu)localObject);
         return;
       }
       label474:
@@ -405,7 +405,7 @@ public class GameNoticeCenter
       if (QLog.isColorLevel()) {
         QLog.d("GameNoticeCenter", 2, "requestGameRegisterInfo appId=" + paramGameNoticeInfo.appId);
       }
-      blec.a().b(paramGameNoticeInfo.appId);
+      bmqt.a().b(paramGameNoticeInfo.appId);
       return true;
     }
     return false;
@@ -511,7 +511,7 @@ public class GameNoticeCenter
   
   private void b(long paramLong1, long paramLong2, GameNoticeInfo paramGameNoticeInfo)
   {
-    long l = abet.a("REQUEST_ARK_TIME_" + paramGameNoticeInfo.appId);
+    long l = abuf.a("REQUEST_ARK_TIME_" + paramGameNoticeInfo.appId);
     boolean bool;
     int i;
     if ((paramLong2 - l > 86400000L) || (l > paramLong2))
@@ -537,8 +537,8 @@ public class GameNoticeCenter
       }
       if (i > -1)
       {
-        blec.a().a(paramGameNoticeInfo.appId, i);
-        abet.a("REQUEST_ARK_TIME_" + paramGameNoticeInfo.appId, paramLong2);
+        bmqt.a().a(paramGameNoticeInfo.appId, i);
+        abuf.a("REQUEST_ARK_TIME_" + paramGameNoticeInfo.appId, paramLong2);
       }
       return;
       bool = false;
@@ -574,7 +574,7 @@ public class GameNoticeCenter
       QLog.d("GameNoticeCenter", 2, "createBanner baseActivity=" + paramActivity);
     }
     TipsBar localTipsBar = new TipsBar(paramActivity);
-    localTipsBar.setTipsIcon(paramActivity.getResources().getDrawable(2130838381));
+    localTipsBar.setTipsIcon(paramActivity.getResources().getDrawable(2130838394));
     localTipsBar.setVisibility(8);
     localTipsBar.a(true);
     return localTipsBar;
@@ -637,18 +637,18 @@ public class GameNoticeCenter
           Object localObject;
           if (paramMessage.bannerType == 1)
           {
-            localObject = new bled();
-            ((bled)localObject).a("dc00087").b(paramMessage.appId).d("81706").c("205435").a(4, "20").a(35, paramMessage.apkChannel).a(10, paramMessage.getReportType());
+            localObject = new bmqu();
+            ((bmqu)localObject).a("dc00087").b(paramMessage.appId).d("81706").c("205435").a(4, "20").a(35, paramMessage.apkChannel).a(10, paramMessage.getReportType());
             if (paramMessage.isGray) {
-              ((bled)localObject).e(paramMessage.expeKey);
+              ((bmqu)localObject).e(paramMessage.expeKey);
             }
-            blec.a().a((bled)localObject);
+            bmqt.a().a((bmqu)localObject);
           }
           else if (paramMessage.bannerType == 2)
           {
-            localObject = new bled();
-            ((bled)localObject).a("dc00087").b(paramMessage.appId).d("81707").c("205436").a(4, "20").a(35, paramMessage.apkChannel).a(10, paramMessage.getReportType());
-            blec.a().a((bled)localObject);
+            localObject = new bmqu();
+            ((bmqu)localObject).a("dc00087").b(paramMessage.appId).d("81707").c("205436").a(4, "20").a(35, paramMessage.apkChannel).a(10, paramMessage.getReportType());
+            bmqt.a().a((bmqu)localObject);
             continue;
             hideBanner();
             if ((paramMessage.obj instanceof String))
@@ -662,29 +662,29 @@ public class GameNoticeCenter
                 {
                   if (paramMessage.isGray)
                   {
-                    blef.a().a("59", paramMessage.expeKey, "", "205432", "1000", "1000", "0", "0");
+                    bmqw.a().a("59", paramMessage.expeKey, "", "205432", "1000", "1000", "0", "0");
                     localObject = new WadlParams((String)localObject, paramMessage.packageName);
                     ((WadlParams)localObject).p = "biz_src_zf_games";
                     ((WadlParams)localObject).c(1);
-                    atzb.a((WadlParams)localObject);
+                    aveq.a((WadlParams)localObject);
                   }
                   for (;;)
                   {
-                    localObject = new bled();
-                    ((bled)localObject).a("dc00087").b(paramMessage.appId).d("81706").c("205432").a(4, "20").a(35, paramMessage.apkChannel).a(10, paramMessage.getReportType());
+                    localObject = new bmqu();
+                    ((bmqu)localObject).a("dc00087").b(paramMessage.appId).d("81706").c("205432").a(4, "20").a(35, paramMessage.apkChannel).a(10, paramMessage.getReportType());
                     if (paramMessage.isGray) {
-                      ((bled)localObject).e(paramMessage.expeKey);
+                      ((bmqu)localObject).e(paramMessage.expeKey);
                     }
-                    blec.a().a((bled)localObject);
+                    bmqt.a().a((bmqu)localObject);
                     break;
                     a(paramMessage.jumpUrl, BaseApplication.getContext());
                   }
                 }
                 if (paramMessage.bannerType == 2)
                 {
-                  localObject = new bled();
-                  ((bled)localObject).a("dc00087").b(paramMessage.appId).d("81707").c("205434").a(4, "20").a(35, paramMessage.apkChannel).a(10, paramMessage.getReportType());
-                  blec.a().a((bled)localObject);
+                  localObject = new bmqu();
+                  ((bmqu)localObject).a("dc00087").b(paramMessage.appId).d("81707").c("205434").a(4, "20").a(35, paramMessage.apkChannel).a(10, paramMessage.getReportType());
+                  bmqt.a().a((bmqu)localObject);
                   a(paramMessage.jumpUrl, BaseApplication.getContext());
                 }
               }
@@ -757,8 +757,8 @@ public class GameNoticeCenter
       label140:
       paramLong = paramJSONObject.optLong("bar_delay");
       long l = paramJSONObject.optLong("bar_interval");
-      abet.a("MILLISECONDS_DELAY", paramLong);
-      abet.a("MILLISECONDS_INTERVAL", l);
+      abuf.a("MILLISECONDS_DELAY", paramLong);
+      abuf.a("MILLISECONDS_INTERVAL", l);
     }
     label177:
     QLog.e("GameNoticeCenter", 1, new Object[] { "parseGameRegisterInfo, GameNoticeInfo for ", paramIntent, " not found!" });
@@ -773,7 +773,7 @@ public class GameNoticeCenter
       remove(this.mCurrentBanner);
     }
     GameCenterReceiver.b(this);
-    blec.a().b(this);
+    bmqt.a().b(this);
     hideBanner();
     this.mInit.set(false);
   }
@@ -864,7 +864,7 @@ public class GameNoticeCenter
           paramView.setVisibility(8);
           return;
         }
-        paramView.setTipsIcon(BaseApplicationImpl.getApplication().getResources().getDrawable(2130838381));
+        paramView.setTipsIcon(BaseApplicationImpl.getApplication().getResources().getDrawable(2130838394));
         paramView.setTipsText("");
         paramView.setVisibility(0);
       } while (!(paramMessage.obj instanceof Bundle));
@@ -875,13 +875,13 @@ public class GameNoticeCenter
       if (QLog.isColorLevel()) {
         QLog.d("GameNoticeCenter", 2, "updateGameCenterBar  appid=" + paramMessage + ",tips= " + str + ",iconURL= " + (String)localObject);
       }
-      paramView.setOnClickListener(new atww(this, paramMessage));
-      paramView.setCloseListener(new atwx(this, paramMessage));
+      paramView.setOnClickListener(new avbz(this, paramMessage));
+      paramView.setCloseListener(new avca(this, paramMessage));
       if (!TextUtils.isEmpty(str)) {
         paramView.setTipsText(str);
       }
     } while (TextUtils.isEmpty((CharSequence)localObject));
-    bhvs.a().a((String)localObject, new atwy(this, paramView));
+    bjgt.a().a((String)localObject, new avcb(this, paramView));
   }
 }
 

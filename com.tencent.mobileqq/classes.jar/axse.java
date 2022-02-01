@@ -1,16 +1,29 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
 public class axse
-  implements ValueAnimator.AnimatorUpdateListener
+  implements bila<oidb_0x8e4.RspBody>
 {
-  public axse(ScanIconAnimateView paramScanIconAnimateView) {}
+  public axse(GameRoomInviteActivity paramGameRoomInviteActivity, bikt parambikt) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    this.a.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
+    {
+      GameRoomInviteActivity localGameRoomInviteActivity = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
+      if ((!paramRspBody.uint64_leader_uin.has()) || (paramRspBody.uint64_leader_uin.get() == this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.app.getLongAccountUin())) {}
+      for (boolean bool = true;; bool = false)
+      {
+        localGameRoomInviteActivity.a(bool, paramRspBody.string_invite_id.get().toStringUtf8(), null, anvx.a(2131704582));
+        return;
+      }
+    }
+    this.jdField_a_of_type_Bikt.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a, this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.b, new axsf(this));
   }
 }
 

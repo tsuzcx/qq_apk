@@ -1,39 +1,56 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tribe.async.dispatch.Dispatcher;
 
 class xos
-  extends vll<xoi, xhl>
+  implements DialogInterface.OnClickListener
 {
-  xos(xoi paramxoi)
-  {
-    super(paramxoi);
-  }
+  xos(xoj paramxoj, VideoViewVideoHolder paramVideoViewVideoHolder, StoryVideoItem paramStoryVideoItem, ycq paramycq) {}
   
-  public void a(@NonNull xoi paramxoi, @NonNull xhl paramxhl)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = paramxoi.a(paramxhl.jdField_a_of_type_JavaLangString);
-    if ((localObject == null) || (paramxhl.jdField_a_of_type_Boolean))
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    }
+    switch (paramInt)
     {
-      xvv.d(this.TAG, "is not my like, %s, isForDetail:%b", new Object[] { paramxhl.jdField_a_of_type_JavaLangString, Boolean.valueOf(paramxhl.jdField_a_of_type_Boolean) });
+    case 0: 
+    default: 
       return;
     }
-    if (!(localObject instanceof xmz))
+    this.jdField_a_of_type_Xoj.a("");
+    if (StoryVideoItem.isFakeVid(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid))
     {
-      xvv.e(this.TAG, "that is error type!");
-      return;
+      ((wcn)wjs.a(3)).c(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+      paramDialogInterface = new wix(new ErrorMessage(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, false);
+      paramDialogInterface.b = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid;
+      paramDialogInterface.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoIndex;
+      if (paramDialogInterface.a == 0L) {
+        paramDialogInterface.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime;
+      }
+      wad.a().dispatch(paramDialogInterface);
     }
-    localObject = (xmz)localObject;
-    ((CommentLikeFeedItem)((xmz)localObject).a).mLikeCount = paramxhl.b;
-    ((xmz)localObject).b(paramxhl.jdField_a_of_type_JavaUtilList, true);
-    xoi.a(paramxoi).b(paramxhl.jdField_a_of_type_JavaLangString);
+    for (;;)
+    {
+      ykv.a("play_video", "suc_del", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+      return;
+      if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mStoryType == 2)
+      {
+        ((zcj)wzk.a().getManager(QQManagerFactory.TROOP_STORY_MANAGER)).a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, 0, false, new xot(this));
+      }
+      else
+      {
+        this.jdField_a_of_type_Ycq.a(this.jdField_a_of_type_Xoj.a.b, 0, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+        this.jdField_a_of_type_Ycq.a(this.jdField_a_of_type_Xoj.a.b, 1, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+        new wqd().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+      }
+    }
   }
-  
-  public Class acceptEventClass()
-  {
-    return xhl.class;
-  }
-  
-  public void b(@NonNull xoi paramxoi, @NonNull xhl paramxhl) {}
 }
 
 

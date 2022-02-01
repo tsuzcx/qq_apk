@@ -1,16 +1,26 @@
-import android.content.Intent;
+import java.util.ArrayList;
 
 class pfa
-  extends pse
+  extends pfe
 {
-  pfa(pey parampey, String paramString, int paramInt1, int paramInt2, Intent paramIntent)
+  pfa(pdv parampdv, int paramInt)
   {
-    super(paramString);
+    super(parampdv, null);
   }
   
-  public void a(prx paramprx)
+  void a(pfh parampfh)
   {
-    paramprx.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidContentIntent);
+    if (parampfh == null) {}
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        parampfh.onCommentListLoad(1, false, new ArrayList(), false, 3, 3);
+        return;
+      }
+    } while (this.jdField_a_of_type_Int != 2);
+    parampfh.onCommentLoadMore(1, false, new ArrayList(), false, 3);
   }
 }
 

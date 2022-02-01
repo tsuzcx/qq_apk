@@ -1,46 +1,31 @@
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class bhbs
-  implements View.OnTouchListener
+final class bhbs
+  extends Handler
 {
-  public bhbs(ClearableEditText paramClearableEditText) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  bhbs(Looper paramLooper)
   {
-    int i = 1;
-    if (this.a.getCompoundDrawables()[2] == null) {}
-    label107:
-    for (;;)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      return false;
-      if (paramMotionEvent.getAction() == 1)
-      {
-        if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth()) {}
-        for (;;)
-        {
-          if (i == 0) {
-            break label107;
-          }
-          this.a.setText("");
-          this.a.setClearButtonVisible(false);
-          if (this.a.jdField_a_of_type_Bhbv == null) {
-            break;
-          }
-          this.a.jdField_a_of_type_Bhbv.j();
-          return false;
-          i = 0;
-        }
-      }
+    default: 
+      return;
+    case 1: 
+      bhbr.a();
+      return;
     }
+    bhbr.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhbs
  * JD-Core Version:    0.7.0.1
  */

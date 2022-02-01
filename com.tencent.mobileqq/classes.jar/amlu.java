@@ -1,43 +1,45 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.text.TextUtils;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.util.HashMap;
 
-public class amlu
+final class amlu
+  implements EIPCResultCallback
 {
-  public float a;
-  public int a;
-  public ApolloActionData a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
+  amlu(amod paramamod) {}
   
-  public Drawable a(Context paramContext, float paramFloat)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    return TextUtils.getResourceDrawableThroughImageCache(paramContext.getResources(), this.i);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo) {}
-  
-  public String toString()
-  {
-    if (this.a != null)
+    String str = paramEIPCResult.data.getString("apolloErrMsg");
+    long l = paramEIPCResult.data.getLong("startTime");
+    QLog.d("cm_res", 1, "static getApolloDressInfo errMsg : " + str);
+    if (paramEIPCResult.isSuccess())
     {
-      StringBuilder localStringBuilder = new StringBuilder("[");
-      localStringBuilder.append("id: ").append(this.a.actionId).append(", name: ").append(this.a.actionName).append(", peerUin: ").append(this.a.peerUin).append(", peopleNum: ").append(this.a.personNum).append(", feeType: ").append(this.a.feeType).append(", inputText: ").append(this.a.inputText).append(",actionText: ").append(this.b).append(",textType: ").append(this.d).append("]");
-      return localStringBuilder.toString();
+      HashMap localHashMap = (HashMap)paramEIPCResult.data.getSerializable("apolloDressInfo");
+      if (this.a != null) {
+        this.a.onGetApolloDressInfo(localHashMap, str, paramEIPCResult.code);
+      }
+      anlx.a("apollo_dress_info", String.valueOf(System.currentTimeMillis() - l), str);
+      if (!paramEIPCResult.isSuccess()) {
+        break label185;
+      }
     }
-    return "ApolloActionData is null";
+    label185:
+    for (int i = 0;; i = paramEIPCResult.code)
+    {
+      if (paramEIPCResult.isSuccess()) {
+        str = "";
+      }
+      anis.a(132, String.valueOf(l), 2, i, new Object[] { str });
+      anis.b(132, String.valueOf(l));
+      return;
+      if (this.a == null) {
+        break;
+      }
+      this.a.onGetApolloDressInfo(null, str, paramEIPCResult.code);
+      break;
+    }
   }
 }
 

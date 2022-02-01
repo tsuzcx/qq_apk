@@ -1,95 +1,137 @@
-import android.animation.TypeEvaluator;
-import android.annotation.TargetApi;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.opengl.GLES20;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
 
-@TargetApi(11)
 public class apep
-  implements TypeEvaluator<apem>
 {
-  public apem a(float paramFloat, apem paramapem1, apem paramapem2)
+  private static final String jdField_a_of_type_JavaLangString = apep.class.getSimpleName();
+  private int jdField_a_of_type_Int;
+  private FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
+  private boolean jdField_a_of_type_Boolean;
+  public final float[] a;
+  private int jdField_b_of_type_Int;
+  private final String jdField_b_of_type_JavaLangString = "attribute vec4 a_Position;\nattribute vec2 a_TexCoord;\n\nvarying vec2 v_TexCoord;\n\nvoid main() {\n   gl_Position = a_Position;\n   v_TexCoord = a_TexCoord;\n}";
+  private FloatBuffer jdField_b_of_type_JavaNioFloatBuffer;
+  public final float[] b;
+  private int jdField_c_of_type_Int;
+  private final String jdField_c_of_type_JavaLangString = "\n#extension GL_OES_EGL_image_external : require\n\nprecision mediump float;\nvarying vec2 v_TexCoord;\nuniform samplerExternalOES sTexture;\n\n\nvoid main() {\n    gl_FragColor = texture2D(sTexture, v_TexCoord);\n}";
+  private FloatBuffer jdField_c_of_type_JavaNioFloatBuffer;
+  private int d;
+  private int e = -1;
+  private int f = 36197;
+  
+  public apep()
   {
-    long l = System.currentTimeMillis();
-    float f1;
-    float f2;
-    apfq localapfq;
-    apem localapem;
-    if (paramapem2.jdField_a_of_type_Apfq.jdField_a_of_type_Int == 2)
-    {
-      f1 = 1.0F - paramFloat;
-      f2 = f1 * f1 * f1 * paramapem1.jdField_a_of_type_Apfq.jdField_a_of_type_Float + 3.0F * f1 * f1 * paramFloat * paramapem2.jdField_a_of_type_Apfq.e + 3.0F * f1 * paramFloat * paramFloat * paramapem2.jdField_a_of_type_Apfq.g + paramFloat * paramFloat * paramFloat * paramapem2.jdField_a_of_type_Apfq.jdField_a_of_type_Float;
-      float f3 = paramapem1.jdField_a_of_type_Apfq.b;
-      float f4 = paramapem2.jdField_a_of_type_Apfq.f;
-      f1 = f1 * 3.0F * paramFloat * paramFloat * paramapem2.jdField_a_of_type_Apfq.h + (f1 * f1 * f1 * f3 + 3.0F * f1 * f1 * paramFloat * f4) + paramFloat * paramFloat * paramFloat * paramapem2.jdField_a_of_type_Apfq.b;
-      localapfq = apfq.b(f2, f1);
-      localapem = new apem();
-      localapfq.d = (paramapem1.jdField_a_of_type_Apfq.d + (paramapem2.jdField_a_of_type_Apfq.d - paramapem1.jdField_a_of_type_Apfq.d) * paramFloat);
-      localapem.jdField_a_of_type_Apfq = localapfq;
-      localapem.jdField_a_of_type_Apen = paramapem2.jdField_a_of_type_Apen;
-      localapem.jdField_a_of_type_AndroidGraphicsBitmap = paramapem2.jdField_a_of_type_AndroidGraphicsBitmap;
-      localapem.jdField_a_of_type_JavaLangString = paramapem2.jdField_a_of_type_JavaLangString;
-      localapem.jdField_b_of_type_JavaLangString = paramapem2.jdField_b_of_type_JavaLangString;
-      localapem.jdField_a_of_type_JavaLangBoolean = paramapem2.jdField_a_of_type_JavaLangBoolean;
-      localapem.jdField_a_of_type_Boolean = paramapem2.jdField_a_of_type_Boolean;
-      localapem.jdField_a_of_type_AndroidGraphicsRect = paramapem2.jdField_a_of_type_AndroidGraphicsRect;
-      if (paramapem1.jdField_b_of_type_Boolean) {
-        if (paramFloat < 1.0D) {
-          break label758;
-        }
-      }
+    this.jdField_a_of_type_ArrayOfFloat = new float[] { -1.0F, -1.0F, -1.0F, 1.0F, 1.0F, -1.0F, 1.0F, 1.0F };
+    this.jdField_b_of_type_ArrayOfFloat = new float[] { 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F };
+  }
+  
+  public int a()
+  {
+    return this.e;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
     }
-    label758:
-    for (int i = 100;; i = (int)((paramFloat + 0.005D) * 100.0D))
+    this.jdField_a_of_type_Boolean = true;
+    float f1 = paramInt1 / paramInt2;
+    float f2 = paramInt3 / paramInt4;
+    Object localObject;
+    if (f1 < f2)
     {
-      localapem.jdField_a_of_type_Int = i;
-      if ((localapem.jdField_a_of_type_Int - paramapem2.jdField_a_of_type_Int >= 5) || (paramapem2.jdField_a_of_type_Int == 0))
-      {
-        if ((paramapem2.jdField_b_of_type_Int == 0) || (paramapem2.c == 0))
-        {
-          paramapem2.jdField_b_of_type_Int = ((int)paramapem1.jdField_a_of_type_Apfq.jdField_a_of_type_Float);
-          paramapem2.c = ((int)paramapem1.jdField_a_of_type_Apfq.b);
-        }
-        double d1 = Math.abs(f1 - paramapem2.c);
-        double d2 = Math.abs(f2 - paramapem2.jdField_b_of_type_Int);
-        double d3 = Math.pow(d1, 2.0D);
-        d2 = Math.sqrt(Math.pow(d2, 2.0D) + d3);
-        if ((d2 != 0.0D) && (d1 != 0.0D))
-        {
-          localapfq.c = ((float)Math.toDegrees(Math.asin(d1 / d2)));
-          if (!paramapem2.jdField_a_of_type_Boolean) {
-            localapfq.c = (-localapfq.c);
-          }
-        }
-        if (Math.abs(localapfq.c) > 90.0F)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("BubbleInterActiveAnim", 2, "too large rotate " + localapfq.c + ", reset to 0!");
-          }
-          localapfq.c = 0.0F;
-        }
-        if (QLog.isColorLevel())
-        {
-          QLog.i("BubbleInterActiveAnim", 2, "rotate: " + localapfq.c + " yDistance: " + d1 + ", distance: " + d2 + ", t: " + paramFloat);
-          QLog.i("BubbleInterActiveAnim", 2, "evaluate_path_and_rotate, cost=" + (System.currentTimeMillis() - l));
-        }
-        paramapem2.jdField_a_of_type_Int = localapem.jdField_a_of_type_Int;
-      }
-      if (paramFloat == 1.0F) {
-        localapfq.c = 360.0F;
-      }
-      paramapem2.jdField_b_of_type_Int = ((int)f2);
-      paramapem2.c = ((int)f1);
-      return localapem;
-      if (paramapem2.jdField_a_of_type_Apfq.jdField_a_of_type_Int == 1)
-      {
-        f1 = paramapem1.jdField_a_of_type_Apfq.jdField_a_of_type_Float;
-        f2 = (paramapem2.jdField_a_of_type_Apfq.jdField_a_of_type_Float - paramapem1.jdField_a_of_type_Apfq.jdField_a_of_type_Float) * paramFloat + f1;
-        f1 = paramapem1.jdField_a_of_type_Apfq.b + (paramapem2.jdField_a_of_type_Apfq.b - paramapem1.jdField_a_of_type_Apfq.b) * paramFloat;
-        break;
-      }
-      f2 = paramapem2.jdField_a_of_type_Apfq.jdField_a_of_type_Float;
-      f1 = paramapem2.jdField_a_of_type_Apfq.b;
-      break;
+      f1 = f2 / f1;
+      localObject = this.jdField_a_of_type_ArrayOfFloat;
+      localObject[1] *= f1;
+      localObject = this.jdField_a_of_type_ArrayOfFloat;
+      localObject[3] *= f1;
+      localObject = this.jdField_a_of_type_ArrayOfFloat;
+      localObject[5] *= f1;
+      localObject = this.jdField_a_of_type_ArrayOfFloat;
+      localObject[7] = (f1 * localObject[7]);
     }
+    for (;;)
+    {
+      localObject = ByteBuffer.allocateDirect(this.jdField_a_of_type_ArrayOfFloat.length * 4);
+      ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
+      this.jdField_a_of_type_JavaNioFloatBuffer = ((ByteBuffer)localObject).asFloatBuffer();
+      this.jdField_a_of_type_JavaNioFloatBuffer.put(this.jdField_a_of_type_ArrayOfFloat);
+      this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
+      localObject = ByteBuffer.allocateDirect(32);
+      ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
+      this.jdField_b_of_type_JavaNioFloatBuffer = ((ByteBuffer)localObject).asFloatBuffer();
+      this.jdField_b_of_type_JavaNioFloatBuffer.put(this.jdField_b_of_type_ArrayOfFloat);
+      this.jdField_b_of_type_JavaNioFloatBuffer.position(0);
+      return;
+      f1 /= f2;
+      localObject = this.jdField_a_of_type_ArrayOfFloat;
+      localObject[0] *= f1;
+      localObject = this.jdField_a_of_type_ArrayOfFloat;
+      localObject[2] *= f1;
+      localObject = this.jdField_a_of_type_ArrayOfFloat;
+      localObject[4] *= f1;
+      localObject = this.jdField_a_of_type_ArrayOfFloat;
+      localObject[6] = (f1 * localObject[6]);
+    }
+  }
+  
+  public void a(Context paramContext)
+  {
+    Object localObject = new int[1];
+    GLES20.glGenTextures(1, (int[])localObject, 0);
+    this.e = localObject[0];
+    GLES20.glBindTexture(this.f, this.e);
+    GLES20.glTexParameteri(this.f, 10242, 33071);
+    GLES20.glTexParameteri(this.f, 10243, 33071);
+    GLES20.glTexParameteri(this.f, 10241, 9728);
+    GLES20.glTexParameteri(this.f, 10240, 9728);
+    if (4 != this.jdField_a_of_type_ArrayOfFloat.length / 2) {
+      throw new RuntimeException("Unexpected number of vertices in BackgroundRenderer.");
+    }
+    localObject = ByteBuffer.allocateDirect(32);
+    ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
+    this.jdField_c_of_type_JavaNioFloatBuffer = ((ByteBuffer)localObject).asFloatBuffer();
+    int i = appj.a(jdField_a_of_type_JavaLangString, paramContext, 35633, "attribute vec4 a_Position;\nattribute vec2 a_TexCoord;\n\nvarying vec2 v_TexCoord;\n\nvoid main() {\n   gl_Position = a_Position;\n   v_TexCoord = a_TexCoord;\n}");
+    int j = appj.a(jdField_a_of_type_JavaLangString, paramContext, 35632, "\n#extension GL_OES_EGL_image_external : require\n\nprecision mediump float;\nvarying vec2 v_TexCoord;\nuniform samplerExternalOES sTexture;\n\n\nvoid main() {\n    gl_FragColor = texture2D(sTexture, v_TexCoord);\n}");
+    this.jdField_a_of_type_Int = GLES20.glCreateProgram();
+    GLES20.glAttachShader(this.jdField_a_of_type_Int, i);
+    GLES20.glAttachShader(this.jdField_a_of_type_Int, j);
+    GLES20.glLinkProgram(this.jdField_a_of_type_Int);
+    GLES20.glUseProgram(this.jdField_a_of_type_Int);
+    appj.a(jdField_a_of_type_JavaLangString, "program creation");
+    this.jdField_b_of_type_Int = GLES20.glGetAttribLocation(this.jdField_a_of_type_Int, "a_Position");
+    this.jdField_c_of_type_Int = GLES20.glGetAttribLocation(this.jdField_a_of_type_Int, "a_TexCoord");
+    this.d = GLES20.glGetAttribLocation(this.jdField_a_of_type_Int, "sTexture");
+    appj.a(jdField_a_of_type_JavaLangString, "program parameters");
+  }
+  
+  public void a(FloatBuffer paramFloatBuffer)
+  {
+    appj.a(jdField_a_of_type_JavaLangString, "before draw");
+    this.jdField_c_of_type_JavaNioFloatBuffer = paramFloatBuffer;
+    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
+    GLES20.glColorMask(true, true, true, true);
+    GLES20.glClear(16640);
+    GLES20.glDepthMask(false);
+    GLES20.glDisable(2929);
+    GLES20.glDisable(3042);
+    GLES20.glUseProgram(this.jdField_a_of_type_Int);
+    GLES20.glActiveTexture(33984);
+    GLES20.glBindTexture(36197, this.e);
+    GLES20.glUniform1i(this.d, 0);
+    GLES20.glVertexAttribPointer(this.jdField_b_of_type_Int, 2, 5126, false, 0, this.jdField_a_of_type_JavaNioFloatBuffer);
+    GLES20.glVertexAttribPointer(this.jdField_c_of_type_Int, 2, 5126, false, 0, this.jdField_c_of_type_JavaNioFloatBuffer);
+    GLES20.glEnableVertexAttribArray(this.jdField_b_of_type_Int);
+    GLES20.glEnableVertexAttribArray(this.jdField_c_of_type_Int);
+    GLES20.glDrawArrays(5, 0, 4);
+    GLES20.glDisableVertexAttribArray(this.jdField_b_of_type_Int);
+    GLES20.glDisableVertexAttribArray(this.jdField_c_of_type_Int);
+    GLES20.glEnable(2929);
+    appj.a(jdField_a_of_type_JavaLangString, "after draw");
   }
 }
 

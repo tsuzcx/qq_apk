@@ -1,38 +1,25 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.ad.tangram.thread.AdThreadManagerAdapter;
+import com.tencent.gdtad.adapter.GdtThreadManagerAdapter.1;
+import com.tencent.gdtad.adapter.GdtThreadManagerAdapter.2;
+import java.util.Map;
 
-public class abzz
-  implements abzb
+public final class abzz
+  implements AdThreadManagerAdapter
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
+  public boolean postDelayed(Runnable paramRunnable, int paramInt, long paramLong)
   {
-    bdde localbdde = ((bdct)paramQQAppInterface.getManager(339)).a(4);
-    byte[] arrayOfByte;
-    long l1;
-    long l2;
-    if (localbdde != null)
-    {
-      arrayOfByte = paramMsgType0x210.vProtobuf;
-      l1 = paramMsgInfo.shMsgSeq;
-      l2 = paramMsgInfo.uRealMsgTime;
-      if (paramMsgType0x210.uSubMsgType != 295L) {
-        break label70;
-      }
+    GdtThreadManagerAdapter.1 local1 = new GdtThreadManagerAdapter.1(this);
+    if (paramInt == 0) {
+      return new Handler(Looper.getMainLooper()).postDelayed(paramRunnable, paramLong);
     }
-    label70:
-    for (boolean bool = false;; bool = true)
+    if (local1.containsKey(Integer.valueOf(paramInt)))
     {
-      localbdde.a(paramQQAppInterface, arrayOfByte, l1, l2, bool);
-      return;
+      paramInt = ((Integer)local1.get(Integer.valueOf(paramInt))).intValue();
+      return new Handler(Looper.getMainLooper()).postDelayed(new GdtThreadManagerAdapter.2(this, paramRunnable, paramInt), paramLong);
     }
-  }
-  
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
-  {
-    a(paramabxc.a(), paramMsgInfo, paramMsgType0x210);
-    return null;
+    return false;
   }
 }
 

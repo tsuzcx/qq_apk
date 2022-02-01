@@ -1,23 +1,4 @@
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
-
-public abstract interface aodu
-{
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(long paramLong1, long paramLong2);
-  
-  public abstract void a(ARCommonConfigInfo paramARCommonConfigInfo);
-  
-  public abstract void a(ArConfigInfo paramArConfigInfo);
-  
-  public abstract void a(ArEffectConfig paramArEffectConfig);
-  
-  public abstract void b();
-}
+public class aodu {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

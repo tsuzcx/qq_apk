@@ -1,33 +1,21 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class pxx
-  implements zop
+  implements Animation.AnimationListener
 {
-  pxx(pxw parampxw, String paramString) {}
+  pxx(pxw parampxw) {}
   
-  public void callback(Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramBundle = paramBundle.getString("ALD_CONFIG_RESULT", "");
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("value", paramBundle);
-      this.jdField_a_of_type_Pxw.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("ReadInJoyWebviewPlugin", 2, "Error in value:" + paramBundle);
-        }
-      }
-    }
+    this.a.a.clearAnimation();
+    this.a.a.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

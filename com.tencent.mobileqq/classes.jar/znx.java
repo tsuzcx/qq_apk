@@ -1,26 +1,15 @@
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.superplayer.api.ISuperPlayer;
-import com.tencent.superplayer.api.ISuperPlayer.OnErrorListener;
+import android.support.v4.view.ViewPropertyAnimatorCompat;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 
-public class znx
-  implements ISuperPlayer.OnErrorListener
+public abstract interface znx
 {
-  public znx(TribeVideoPlugin paramTribeVideoPlugin, zod paramzod) {}
+  public abstract ViewPropertyAnimatorCompat a(RecyclerView.ViewHolder paramViewHolder);
   
-  public boolean onError(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString)
-  {
-    QLog.e("TribeVideoPlugin", 2, "ISuperPlayer.OnErrorListener module = " + paramInt1 + " errorType = " + paramInt2 + " errorCode = " + paramInt3 + " extraInfo = " + paramString);
-    if (TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin) != null)
-    {
-      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).removeMessages(7, zod.a(this.jdField_a_of_type_Zod));
-      paramISuperPlayer = TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).obtainMessage();
-      paramISuperPlayer.obj = zod.a(this.jdField_a_of_type_Zod);
-      paramISuperPlayer.what = 7;
-      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).sendMessage(paramISuperPlayer);
-    }
-    return false;
-  }
+  public abstract ViewPropertyAnimatorCompat a(zog paramzog, long paramLong, boolean paramBoolean);
+  
+  public abstract ViewPropertyAnimatorCompat a(zoh paramzoh, long paramLong);
+  
+  public abstract boolean a(zog paramzog);
 }
 
 

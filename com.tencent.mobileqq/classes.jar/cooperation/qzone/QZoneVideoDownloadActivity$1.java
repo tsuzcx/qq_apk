@@ -1,11 +1,11 @@
 package cooperation.qzone;
 
-import amtj;
 import android.os.Handler;
 import android.os.Message;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import anvx;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.video.QzoneVideoBeaconReport;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -36,21 +36,21 @@ class QZoneVideoDownloadActivity$1
             break;
           }
         } while (QZoneVideoDownloadActivity.access$000(this.this$0).get());
-        this.this$0.setContentView(2131563031);
+        this.this$0.setContentView(2131563107);
         this.this$0.initUI();
         QZoneVideoDownloadActivity.access$000(this.this$0).set(true);
         return;
       } while ((this.this$0.mDownloadingText == null) || (this.this$0.mDownloadingBar == null));
       i = paramMessage.arg1;
-      this.this$0.mDownloadingText.setText(amtj.a(2131711600) + i + amtj.a(2131711594));
+      this.this$0.mDownloadingText.setText(anvx.a(2131711947) + i + anvx.a(2131711941));
       this.this$0.mDownloadingBar.setProgress(i);
       return;
     } while ((this.this$0.mDownloadingText == null) || (this.this$0.mDownloadingBar == null));
     int i = paramMessage.arg1;
-    this.this$0.mDownloadingText.setText(amtj.a(2131711636) + i + amtj.a(2131711591));
+    this.this$0.mDownloadingText.setText(anvx.a(2131711983) + i + anvx.a(2131711938));
     this.this$0.mDownloadingBar.setProgress(i);
     return;
-    String str2 = amtj.a(2131711643);
+    String str2 = anvx.a(2131711990);
     String str1 = str2;
     if (paramMessage != null)
     {
@@ -67,7 +67,7 @@ class QZoneVideoDownloadActivity$1
     QzoneVideoBeaconReport.reportVideoEvent(this.this$0.uin, "qzone_video_recordtrim", "1005", null);
     this.this$0.finish();
     return;
-    Toast.makeText(this.this$0.getApplicationContext(), amtj.a(2131711711), 1).show();
+    Toast.makeText(this.this$0.getApplicationContext(), anvx.a(2131712058), 1).show();
     QzoneVideoBeaconReport.reportVideoEvent(this.this$0.uin, "qzone_video_recordtrim", "1006", null);
     this.this$0.finish();
   }

@@ -1,18 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
 
-public final class bndf
-  implements Parcelable.Creator<EditTakeVideoSource>
+class bndf
+  implements Animation.AnimationListener
 {
-  public EditTakeVideoSource a(Parcel paramParcel)
-  {
-    return new EditTakeVideoSource(paramParcel);
-  }
+  bndf(bnda parambnda) {}
   
-  public EditTakeVideoSource[] a(int paramInt)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    return new EditTakeVideoSource[paramInt];
+    if ((this.a.a != null) && (bnda.b(this.a)))
+    {
+      this.a.a.setAlpha(1.0F);
+      this.a.a.setVisibility(0);
+    }
   }
 }
 

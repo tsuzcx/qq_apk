@@ -1,28 +1,46 @@
-import NS_KING_INTERFACE.stPostCommentDingRsp;
-import UserGrowth.stSimpleComment;
-import com.tribe.async.dispatch.Dispatcher;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.GiftServiceBean;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 class uly
-  implements uqy
+  implements umf
 {
-  uly(uls paramuls, stSimpleComment paramstSimpleComment) {}
+  uly(ulx paramulx) {}
   
-  public void a(urj paramurj)
+  public void a(GiftServiceBean paramGiftServiceBean)
   {
-    if ((paramurj.jdField_a_of_type_JavaLangObject instanceof stPostCommentDingRsp))
+    Object localObject = ulx.a(this.a).getText().toString();
+    if ((!TextUtils.isEmpty(paramGiftServiceBean.t)) && (!((String)localObject).equals(paramGiftServiceBean.t)))
     {
-      stPostCommentDingRsp localstPostCommentDingRsp = (stPostCommentDingRsp)paramurj.jdField_a_of_type_JavaLangObject;
-      if (this.jdField_a_of_type_UserGrowthStSimpleComment.isDing == 1) {
-        uya.d(uls.a(), "点赞成功,nothing is " + localstPostCommentDingRsp.nothing);
+      ulx.a(this.a, paramGiftServiceBean);
+      ulx.a(this.a).setText(paramGiftServiceBean.t);
+      ulx.b(this.a, null);
+      if (ulx.a(this.a)) {
+        ulx.c(this.a, null);
       }
-      for (;;)
+      ulx.b(this.a).setText("");
+      ulx.c(this.a).setText("");
+      ulx.a(this.a, new ArrayList());
+      localObject = ulx.a(this.a).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        vli.a().dispatch(this.jdField_a_of_type_Uls.a(new Object[] { Integer.valueOf(7), Integer.valueOf(paramurj.b), paramurj.jdField_a_of_type_JavaLangString, localstPostCommentDingRsp }));
-        return;
-        uya.d(uls.a(), "取消点赞成功,nothing is " + localstPostCommentDingRsp.nothing);
+        GiftServiceBean localGiftServiceBean = (GiftServiceBean)((Iterator)localObject).next();
+        if ((!TextUtils.isEmpty(localGiftServiceBean.ck)) && (localGiftServiceBean.ck.equals(paramGiftServiceBean.ck)) && (localGiftServiceBean.c.equals(paramGiftServiceBean.v))) {
+          ulx.b(this.a).add(localGiftServiceBean);
+        }
       }
+      if (ulx.b(this.a).size() <= 0)
+      {
+        paramGiftServiceBean = new GiftServiceBean();
+        paramGiftServiceBean.t = anvx.a(2131704748);
+        paramGiftServiceBean.v = "0";
+        ulx.b(this.a).add(paramGiftServiceBean);
+      }
+      ulx.a(this.a);
     }
-    uya.d(uls.a(), "评论点赞失败new！");
   }
 }
 

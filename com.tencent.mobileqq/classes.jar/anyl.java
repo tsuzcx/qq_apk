@@ -1,21 +1,73 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
-class anyl
-  implements View.OnClickListener
+public class anyl
 {
-  anyl(anyj paramanyj) {}
+  private int jdField_a_of_type_Int;
+  private StringBuilder jdField_a_of_type_JavaLangStringBuilder;
+  private int b;
   
-  public void onClick(View paramView)
+  public anyl(MessageHandler paramMessageHandler, StringBuilder paramStringBuilder, int paramInt)
   {
-    this.a.dismiss();
-    Intent localIntent = new Intent(paramView.getContext(), PoiMapActivity.class).putExtra("lat", Double.toString(this.a.jdField_a_of_type_Aogp.a * 1.0D / 1000000.0D)).putExtra("lon", Double.toString(this.a.jdField_a_of_type_Aogp.b * 1.0D / 1000000.0D));
-    this.a.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_JavaLangStringBuilder = paramStringBuilder;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public anyl a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    this.b = MessageHandler.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler).size();
+    Iterator localIterator = MessageHandler.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler).keySet().iterator();
+    label232:
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      long l2 = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a.i(str);
+      Object[] arrayOfObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a.a(str);
+      if ((arrayOfObject != null) && (arrayOfObject.length > 0)) {}
+      for (long l1 = ((Long)arrayOfObject[1]).longValue();; l1 = 0L)
+      {
+        if (((!this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app.getMsgCache().a(false)) && (!((Boolean)MessageHandler.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler).get(str)).booleanValue())) || (l2 >= l1)) {
+          break label232;
+        }
+        if (QLog.isColorLevel())
+        {
+          this.jdField_a_of_type_JavaLangStringBuilder.setLength(0);
+          this.jdField_a_of_type_JavaLangStringBuilder.append("---------checkGroupMsgComplete needToPullDiscuss discussUin: ").append(str).append(",lastSeq:").append(l2).append(",svrSeq:").append(l1);
+          QLog.d("Q.msg.MessageHandler", 2, this.jdField_a_of_type_JavaLangStringBuilder.toString());
+        }
+        localArrayList.add(str);
+        break;
+      }
+    }
+    if ((localArrayList != null) && (localArrayList.size() > 0))
+    {
+      this.jdField_a_of_type_Int = localArrayList.size();
+      MessageHandler.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, new String[this.jdField_a_of_type_Int]);
+      int i = 0;
+      while (i < this.jdField_a_of_type_Int)
+      {
+        MessageHandler.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler)[i] = ((String)localArrayList.get(i));
+        i += 1;
+      }
+    }
+    MessageHandler.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler).clear();
+    return this;
+  }
+  
+  public int b()
+  {
+    return this.b;
   }
 }
 

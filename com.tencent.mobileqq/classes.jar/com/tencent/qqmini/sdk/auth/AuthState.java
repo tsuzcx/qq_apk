@@ -116,6 +116,11 @@ public class AuthState
     return localArrayList;
   }
   
+  public int getPermissionAuthFlag(String paramString)
+  {
+    return getSharedPreferences().getInt(paramString, 1);
+  }
+  
   public void grantPermission(String paramString)
   {
     getSharedPreferences().edit().putInt(paramString, 2).commit();
@@ -280,13 +285,17 @@ public class AuthState
   public void updateOnceSubMsgSetting(String paramString, boolean paramBoolean, List<INTERFACE.StSubscribeMessage> paramList, AsyncResult paramAsyncResult)
   {
     INTERFACE.StUserSettingInfo localStUserSettingInfo = new INTERFACE.StUserSettingInfo();
-    localStUserSettingInfo.settingItem.set(paramString);
+    if (paramString != null) {
+      localStUserSettingInfo.settingItem.set(paramString);
+    }
     paramString = localStUserSettingInfo.authState;
     if (paramBoolean) {}
     for (int i = 1;; i = 2)
     {
       paramString.set(i);
-      localStUserSettingInfo.subItems.set(paramList);
+      if (paramList != null) {
+        localStUserSettingInfo.subItems.set(paramList);
+      }
       ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).updateUserSetting(this.mAppId, localStUserSettingInfo, new AuthState.1(this, paramAsyncResult));
       return;
     }
@@ -294,7 +303,7 @@ public class AuthState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.auth.AuthState
  * JD-Core Version:    0.7.0.1
  */

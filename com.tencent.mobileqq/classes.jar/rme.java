@@ -1,37 +1,28 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-final class rme
-  extends nmf
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJReadWatchWordPresenter;", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJReadWatchWordShareContract$IPresenter;", "model", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJReadWatchWordShareContract$IModel;", "(Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJReadWatchWordShareContract$IModel;)V", "view", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJReadWatchWordShareContract$IView;", "attachView", "", "detachView", "requestWatchWordUrl", "watchWord", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rme
 {
-  rme(rmf paramrmf, int paramInt) {}
+  public static final rmf a;
+  private final rlx jdField_a_of_type_Rlx;
+  private rly jdField_a_of_type_Rly;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  static
   {
-    if (this.jdField_a_of_type_Rmf != null)
-    {
-      this.jdField_a_of_type_Rmf.a(paramInt, "");
-      if (QLog.isColorLevel()) {
-        QLog.d("RIJUGC.PublishVideoHelper", 2, "moveVideo: errorCode = " + paramInt + "callback =" + this.jdField_a_of_type_Rmf);
-      }
-    }
-    for (;;)
-    {
-      pkp.a().e(this.jdField_a_of_type_Int);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("RIJUGC.PublishVideoHelper", 2, "moveVideo: errorCode = " + paramInt + "callback is null.");
-      }
-    }
+    jdField_a_of_type_Rmf = new rmf(null);
   }
   
-  public boolean a(int paramInt, String paramString, Bundle paramBundle)
+  public rme(@NotNull rlx paramrlx)
   {
-    if (this.jdField_a_of_type_Rmf != null) {
-      this.jdField_a_of_type_Rmf.a(paramInt, paramString);
-    }
-    QLog.e("RIJUGC.PublishVideoHelper", 1, "moveVideo: columnId = " + this.jdField_a_of_type_Int + "errorCode = " + paramInt + ",errorMsg =" + paramString);
-    return true;
+    this.jdField_a_of_type_Rlx = paramrlx;
+  }
+  
+  public void a(@NotNull rly paramrly)
+  {
+    Intrinsics.checkParameterIsNotNull(paramrly, "view");
+    this.jdField_a_of_type_Rly = paramrly;
   }
 }
 

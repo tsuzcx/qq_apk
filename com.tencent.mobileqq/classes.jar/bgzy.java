@@ -1,18 +1,45 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.werewolves.HalfScreenBrowserActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.view.Display;
+import android.view.WindowManager;
+import com.tencent.util.VersionUtils;
 
 public class bgzy
-  implements View.OnClickListener
 {
-  public bgzy(HalfScreenBrowserActivity paramHalfScreenBrowserActivity) {}
-  
-  public void onClick(View paramView)
+  public static void a(Activity paramActivity)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramActivity == null) {
+      return;
+    }
+    int i = ((WindowManager)paramActivity.getSystemService("window")).getDefaultDisplay().getOrientation();
+    switch (paramActivity.getResources().getConfiguration().orientation)
+    {
+    default: 
+      i = 0;
+    }
+    for (;;)
+    {
+      paramActivity.setRequestedOrientation(i);
+      return;
+      if ((i == 0) || (i == 1) || (!VersionUtils.isGingerBread())) {
+        break;
+      }
+      i = 8;
+      continue;
+      if ((i != 0) && (i != 3) && (VersionUtils.isGingerBread())) {
+        i = 9;
+      } else {
+        i = 1;
+      }
+    }
+  }
+  
+  public static void b(Activity paramActivity)
+  {
+    if (paramActivity != null) {
+      paramActivity.setRequestedOrientation(-1);
+    }
   }
 }
 

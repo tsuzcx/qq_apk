@@ -2,10 +2,10 @@ package com.tencent.qqprotect.common;
 
 import android.os.Handler.Callback;
 import android.os.Message;
-import bjhk;
-import bjhm;
-import bjho;
-import bjmp;
+import bksv;
+import bksx;
+import bksz;
+import bkyc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.ims.SafeReport.ReqBody;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -15,52 +15,52 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Vector;
 import mqq.app.MobileQQ;
-import nmb;
+import ntb;
 
 public class QSecRptControllerImpl
-  extends bjhk
+  extends bksv
   implements Handler.Callback
 {
-  private static volatile bjhk jdField_a_of_type_Bjhk;
+  private static volatile bksv jdField_a_of_type_Bksv;
   private final long jdField_a_of_type_Long = 300000L;
-  private bjmp jdField_a_of_type_Bjmp = new bjmp(ThreadManager.getSubThreadLooper(), this);
+  private bkyc jdField_a_of_type_Bkyc = new bkyc(ThreadManager.getSubThreadLooper(), this);
   private QSecRptControllerImpl.ReportRunnable jdField_a_of_type_ComTencentQqprotectCommonQSecRptControllerImpl$ReportRunnable;
-  private final Vector<bjho> jdField_a_of_type_JavaUtilVector = new Vector();
+  private final Vector<bksz> jdField_a_of_type_JavaUtilVector = new Vector();
   
   private QSecRptControllerImpl()
   {
-    this.jdField_a_of_type_Bjmp.sendEmptyMessageDelayed(12315, 300000L);
+    this.jdField_a_of_type_Bkyc.sendEmptyMessageDelayed(12315, 300000L);
   }
   
-  public static bjhk a()
+  public static bksv a()
   {
-    if (jdField_a_of_type_Bjhk == null) {}
+    if (jdField_a_of_type_Bksv == null) {}
     try
     {
-      if (jdField_a_of_type_Bjhk == null) {
-        jdField_a_of_type_Bjhk = new QSecRptControllerImpl();
+      if (jdField_a_of_type_Bksv == null) {
+        jdField_a_of_type_Bksv = new QSecRptControllerImpl();
       }
-      return jdField_a_of_type_Bjhk;
+      return jdField_a_of_type_Bksv;
     }
     finally {}
   }
   
   private void a()
   {
-    this.jdField_a_of_type_Bjmp.removeMessages(12315);
+    this.jdField_a_of_type_Bkyc.removeMessages(12315);
     b();
-    this.jdField_a_of_type_Bjmp.sendEmptyMessageDelayed(12315, this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Bkyc.sendEmptyMessageDelayed(12315, this.jdField_a_of_type_Long);
   }
   
-  private void a(bjho parambjho)
+  private void a(bksz parambksz)
   {
     synchronized (this.jdField_a_of_type_JavaUtilVector)
     {
-      this.jdField_a_of_type_JavaUtilVector.add(parambjho);
+      this.jdField_a_of_type_JavaUtilVector.add(parambksz);
       if (QLog.isColorLevel()) {
         QLog.d("QSRPT", 2, String.format("add report: totally %d items in cache", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilVector.size()) }));
       }
-      if ((parambjho.c == 2) || (this.jdField_a_of_type_JavaUtilVector.size() >= 40)) {
+      if ((parambksz.c == 2) || (this.jdField_a_of_type_JavaUtilVector.size() >= 40)) {
         b();
       }
       return;
@@ -75,7 +75,7 @@ public class QSecRptControllerImpl
     if (QLog.isColorLevel()) {
       QLog.d("QSRPT", 2, String.format("totally sending report: %d items", new Object[] { Integer.valueOf(paramReqBody.LogItem_reportdata.size()) }));
     }
-    nmb.a((QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null), new bjhm(this), paramReqBody.toByteArray(), "MqqSafeDataRpt.MQDun");
+    ntb.a((QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null), new bksx(this), paramReqBody.toByteArray(), "MqqSafeDataRpt.MQDun");
   }
   
   private void b()
@@ -97,18 +97,18 @@ public class QSecRptControllerImpl
   
   public void b(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    bjho localbjho = new bjho();
-    localbjho.jdField_a_of_type_Int = paramInt1;
-    localbjho.b = paramInt2;
-    localbjho.jdField_a_of_type_JavaLangString = paramString;
-    localbjho.c = paramInt3;
-    this.jdField_a_of_type_Bjmp.obtainMessage(12316, localbjho).sendToTarget();
+    bksz localbksz = new bksz();
+    localbksz.jdField_a_of_type_Int = paramInt1;
+    localbksz.b = paramInt2;
+    localbksz.jdField_a_of_type_JavaLangString = paramString;
+    localbksz.c = paramInt3;
+    this.jdField_a_of_type_Bkyc.obtainMessage(12316, localbksz).sendToTarget();
   }
   
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage.what == 12316) {
-      a((bjho)paramMessage.obj);
+      a((bksz)paramMessage.obj);
     }
     for (;;)
     {

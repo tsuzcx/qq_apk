@@ -1,33 +1,20 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnHoverListener;
-import android.view.accessibility.AccessibilityManager;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
+import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo.SimpleMessage;
 
 public class avfg
-  implements View.OnHoverListener
 {
-  public avfg(LocationPickFragment paramLocationPickFragment) {}
+  public final GameCenterSessionInfo.SimpleMessage a;
+  public final GameCenterSessionInfo a;
   
-  public boolean onHover(View paramView, MotionEvent paramMotionEvent)
+  public avfg(GameCenterSessionInfo paramGameCenterSessionInfo, GameCenterSessionInfo.SimpleMessage paramSimpleMessage)
   {
-    paramMotionEvent = (AccessibilityManager)this.a.getActivity().getSystemService("accessibility");
-    if ((paramMotionEvent != null) && (paramMotionEvent.isTouchExplorationEnabled()))
-    {
-      if (paramView.requestFocus()) {
-        ((InputMethodManager)this.a.getActivity().getSystemService("input_method")).showSoftInput(paramView, 1);
-      }
-      if (!LocationPickFragment.a(this.a).b())
-      {
-        LocationPickFragment.a(this.a).setDisplayFromType(3);
-        LocationPickFragment.a(this.a).a();
-      }
-      bcef.b(null, "CliOper", "", "", "0X800A95E", "0X800A95E", 0, 0, "", "0", "0", "");
-    }
-    return false;
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameCenterSessionInfo = paramGameCenterSessionInfo;
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameCenterSessionInfo$SimpleMessage = paramSimpleMessage;
+  }
+  
+  public GameCenterSessionInfo a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameCenterSessionInfo;
   }
 }
 

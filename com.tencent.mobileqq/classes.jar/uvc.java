@@ -1,26 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.common.util.NetworkUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-class uvc
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/util/ReadInJoyShareHelperV2$openWithQQBrowser$1", "Lcom/tencent/biz/pubaccount/util/OpenWithQQBrowser$UiCallback;", "onHideProgress", "", "onShowProgress", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class uvc
+  implements urz
 {
-  uvc(uvb paramuvb) {}
+  public void a() {}
   
-  public void onClick(View paramView)
-  {
-    if (!NetworkUtil.isNetworkAvailable(uvb.a(this.a))) {
-      bhzt.a().a(2131719692);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      uvb.a(this.a);
-      uvm.b(uvb.a(this.a) + 1, 1004001, uvb.a(this.a), uvb.a(this.a).a(), uvb.a(this.a).a());
-    }
-  }
+  public void b() {}
 }
 
 

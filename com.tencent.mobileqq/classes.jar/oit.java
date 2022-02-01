@@ -1,13 +1,29 @@
-class oit
-  implements pep
+import android.os.Bundle;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+
+final class oit
+  implements BusinessObserver
 {
-  oit(ois paramois) {}
-  
-  public void a(int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.a.jdField_a_of_type_Sqh != null) {
-      this.a.jdField_a_of_type_Sqh.a(paramInt, this.a.jdField_a_of_type_Int);
+    if (paramBoolean) {}
+    try
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
+      {
+        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+        localWebSsoResponseBody.mergeFrom(paramBundle);
+        if ((localWebSsoResponseBody.ret.get() == 0) && (QLog.isColorLevel())) {
+          QLog.d("NativeAdUtils", 2, "doAdReport success!");
+        }
+      }
+      return;
     }
+    catch (Exception paramBundle) {}
   }
 }
 

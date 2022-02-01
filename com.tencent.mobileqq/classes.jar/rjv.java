@@ -1,15 +1,110 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.CoverSelectTabFragment;
-import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.GalleryFragment;
+import android.content.Context;
+import android.os.Handler;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.reward.RIJRewardTaskArticleTimer.resumeTiming.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.RIJRewardTaskArticleTimer.rewardTaskTimingPresenter.2;
+import com.tencent.biz.pubaccount.readinjoy.reward.RIJRewardTaskArticleTimer.timingHandler.2;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Lazy;
+import kotlin.LazyKt;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.internal.Intrinsics;
+import mqq.app.AppActivity;
+import org.jetbrains.annotations.NotNull;
 
-public class rjv
-  implements rkc
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTaskArticleTimer;", "Lcom/tencent/biz/pubaccount/readinjoy/reward/IRIJRewardTaskTimer;", "()V", "rewardTaskTimingPresenter", "Lcom/tencent/biz/pubaccount/readinjoy/reward/mvp/RIJRewardTaskTimingPresenter;", "kotlin.jvm.PlatformType", "getRewardTaskTimingPresenter", "()Lcom/tencent/biz/pubaccount/readinjoy/reward/mvp/RIJRewardTaskTimingPresenter;", "rewardTaskTimingPresenter$delegate", "Lkotlin/Lazy;", "stationaryTime", "", "timingHandler", "Landroid/os/Handler;", "getTimingHandler", "()Landroid/os/Handler;", "timingHandler$delegate", "timingRunnable", "Ljava/lang/Runnable;", "attachDebugView", "", "activity", "Lmqq/app/AppActivity;", "enabled", "", "pauseTiming", "resetStationaryTime", "resumeTiming", "rowKey", "", "maxTaskTimeInMs", "startTiming", "stopTiming", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rjv
 {
-  public rjv(CoverSelectTabFragment paramCoverSelectTabFragment) {}
+  public static final rjw a;
+  private int jdField_a_of_type_Int;
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private final Lazy jdField_a_of_type_KotlinLazy = LazyKt.lazy((Function0)RIJRewardTaskArticleTimer.timingHandler.2.INSTANCE);
+  private final Lazy b = LazyKt.lazy((Function0)RIJRewardTaskArticleTimer.rewardTaskTimingPresenter.2.INSTANCE);
   
-  public void a(Bitmap paramBitmap)
+  static
   {
-    CoverSelectTabFragment.a(this.a).a(paramBitmap);
+    jdField_a_of_type_Rjw = new rjw(null);
+  }
+  
+  private final Handler a()
+  {
+    return (Handler)this.jdField_a_of_type_KotlinLazy.getValue();
+  }
+  
+  private final rlq a()
+  {
+    return (rlq)this.b.getValue();
+  }
+  
+  private final void b(String paramString, int paramInt)
+  {
+    a().removeCallbacksAndMessages(null);
+    QLog.i("RIJRewardTaskArticleTimer", 1, "resume timing:  stationaryTime: " + this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_JavaLangRunnable = ((Runnable)new RIJRewardTaskArticleTimer.resumeTiming.1(this, paramString, paramInt));
+    a().post(this.jdField_a_of_type_JavaLangRunnable);
+  }
+  
+  @JvmStatic
+  public static final boolean b()
+  {
+    return jdField_a_of_type_Rjw.a();
+  }
+  
+  private final void c()
+  {
+    a().a();
+    QLog.i("RIJRewardTaskArticleTimer", 1, "pause timing");
+    a().removeCallbacksAndMessages(null);
+  }
+  
+  public void a()
+  {
+    if (!a()) {
+      return;
+    }
+    c();
+  }
+  
+  public void a(@NotNull String paramString, int paramInt)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "rowKey");
+    if (!a()) {
+      return;
+    }
+    b(paramString, paramInt);
+  }
+  
+  public final void a(@NotNull AppActivity paramAppActivity)
+  {
+    Intrinsics.checkParameterIsNotNull(paramAppActivity, "activity");
+    if (!bmhv.j(paramAppActivity.getAppRuntime())) {
+      return;
+    }
+    Object localObject = paramAppActivity.findViewById(16908290);
+    if (localObject == null) {
+      throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup");
+    }
+    localObject = (ViewGroup)localObject;
+    if (((ViewGroup)localObject).findViewById(2131376219) == null) {
+      ((ViewGroup)localObject).addView(LayoutInflater.from((Context)paramAppActivity).inflate(2131562749, (ViewGroup)localObject, false));
+    }
+    paramAppActivity = (rlm)new rjx((TextView)((ViewGroup)localObject).findViewById(2131379310), (TextView)((ViewGroup)localObject).findViewById(2131363022), (TextView)((ViewGroup)localObject).findViewById(2131363023), (TextView)((ViewGroup)localObject).findViewById(2131379304), (TextView)((ViewGroup)localObject).findViewById(2131365353));
+    a().a(paramAppActivity);
+  }
+  
+  public boolean a()
+  {
+    return (rjy.a()) || (prj.a());
+  }
+  
+  public final void b()
+  {
+    this.jdField_a_of_type_Int = 0;
   }
 }
 

@@ -1,42 +1,62 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.PinnedFooterExpandableListView;
+import java.io.File;
 
-public class akzs
-  implements bjsl
+class akzs
+  implements akxc
 {
-  public akzs(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
+  akzs(akzp paramakzp, akzt paramakzt) {}
   
-  public void a()
+  private void a()
   {
-    this.a.a = true;
-    FriendTeamListInnerFrame.a(this.a).setFooterEnable(false);
+    if (this.jdField_a_of_type_Akzt != null) {
+      this.jdField_a_of_type_Akzt.a(false);
+    }
   }
   
-  public void a(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    if (!this.a.a)
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
     {
-      if (paramInt - 1 >= 0) {
-        paramPinnedFooterExpandableListView.b(paramInt - 1);
-      }
-      for (;;)
+      try
       {
-        this.a.a = true;
-        FriendTeamListInnerFrame.a(this.a).setFooterEnable(false);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("FriendTeamListInnerFrameNew", 2, "header group unusal: " + paramInt);
+        String str = new File(paramPathResult.folderPath, "quickDraw.tflite").toString();
+        paramPathResult = new File(paramPathResult.folderPath, "classes.txt").toString();
+        if ((!new File(str).exists()) || (!new File(paramPathResult).exists()))
+        {
+          QLog.e("DrawClassifier", 1, "init fail file not exist");
+          a();
+          return;
         }
+        akzp.a(this.jdField_a_of_type_Akzp, new akzi(str, paramPathResult));
+        if (this.jdField_a_of_type_Akzt != null) {
+          this.jdField_a_of_type_Akzt.a(true);
+        }
+        akzp.a(this.jdField_a_of_type_Akzp, true);
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+        QLog.d("DrawClassifier", 2, "init success");
+        return;
+      }
+      catch (Throwable paramPathResult)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("DrawClassifier", 2, "init recog fail:" + paramPathResult);
+        }
+        paramPathResult.printStackTrace();
+        a();
+        return;
       }
     }
-    if (paramPinnedFooterExpandableListView.c(paramInt))
+    else
     {
-      paramPinnedFooterExpandableListView.b(paramInt);
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("DrawClassifier", 2, "init download fail");
+      }
+      a();
     }
-    paramPinnedFooterExpandableListView.a(paramInt);
   }
 }
 

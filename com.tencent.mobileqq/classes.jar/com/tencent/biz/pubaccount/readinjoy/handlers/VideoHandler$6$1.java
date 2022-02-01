@@ -5,9 +5,9 @@ import android.view.View;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
-import psf;
-import skc;
-import slt;
+import qdc;
+import sxm;
+import szd;
 
 class VideoHandler$6$1
   implements Runnable
@@ -19,11 +19,11 @@ class VideoHandler$6$1
     if (QLog.isColorLevel()) {
       QLog.d("VideoHandler", 2, "scroll " + this.jdField_a_of_type_Int + " to top");
     }
-    View localView = psf.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyHandlersVideoHandler$6.this$0).getChildAt(this.jdField_a_of_type_Int - psf.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyHandlersVideoHandler$6.this$0).getFirstVisiblePosition());
+    View localView = qdc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyHandlersVideoHandler$6.this$0).getChildAt(this.jdField_a_of_type_Int - qdc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyHandlersVideoHandler$6.this$0).getFirstVisiblePosition());
     if (localView != null)
     {
-      psf.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyHandlersVideoHandler$6.this$0).removeMessages(1001);
-      psf.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyHandlersVideoHandler$6.this$0).smoothScrollBy(localView.getBottom() - AIOUtils.dp2px(175.0F, psf.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyHandlersVideoHandler$6.this$0).getResources()), 800);
+      qdc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyHandlersVideoHandler$6.this$0).removeMessages(1001);
+      qdc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyHandlersVideoHandler$6.this$0).smoothScrollBy(localView.getBottom() - AIOUtils.dp2px(175.0F, qdc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyHandlersVideoHandler$6.this$0).getResources()), 800);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyHandlersVideoHandler$6.this$0.a().c(true);
     }
   }

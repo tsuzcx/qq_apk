@@ -1,79 +1,40 @@
 import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.activity.EditActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.widget.PastablePwdEditText;
 
 public class adey
-  implements TextWatcher
+  implements View.OnFocusChangeListener
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = true;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean = true;
-  String jdField_c_of_type_JavaLangString;
-  boolean jdField_c_of_type_Boolean = false;
+  public adey(AddAccountActivity paramAddAccountActivity) {}
   
-  public adey(EditActivity paramEditActivity) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    EditActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity, true);
-    if (!this.jdField_b_of_type_Boolean) {
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (paramEditable = this.jdField_c_of_type_JavaLangString;; paramEditable = "")
-    {
-      paramEditable = paramEditable + this.jdField_b_of_type_JavaLangString;
-      if (this.jdField_c_of_type_Boolean)
+    if (paramView == this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView) {
+      if (true == paramBoolean)
       {
-        this.jdField_b_of_type_Boolean = false;
-        this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText(paramEditable);
-        this.jdField_b_of_type_Boolean = true;
+        if (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.isPopupShowing()) {
+          this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.dismissDropDown();
+        }
+        if ((this.a.jdField_a_of_type_AndroidWidgetImageView != null) && (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length() > 0)) {
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        }
+        this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setSelection(this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length());
       }
-      int i = this.jdField_a_of_type_JavaLangString.length();
-      int j = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setSelection(i + j);
-      this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.c();
-      return;
     }
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (!this.jdField_b_of_type_Boolean) {
-      return;
-    }
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = paramCharSequence.toString().substring(0, paramInt1);
-    this.jdField_b_of_type_JavaLangString = paramCharSequence.toString().substring(paramInt1 + paramInt2);
-    if (paramInt3 > 0)
+    while ((paramView != this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText) || (true != paramBoolean))
     {
-      this.jdField_a_of_type_Boolean = true;
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (!this.jdField_b_of_type_Boolean) {
-      return;
-    }
-    this.jdField_c_of_type_JavaLangString = paramCharSequence.toString().substring(paramInt1, paramInt1 + paramInt3);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.jdField_a_of_type_Int == 100) && (this.jdField_c_of_type_JavaLangString.contains("\n")))
+      do
       {
-        this.jdField_c_of_type_Boolean = true;
-        this.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString.replace("\n", "");
-      }
-      this.jdField_a_of_type_Int = this.jdField_c_of_type_JavaLangString.length();
+        return;
+      } while ((this.a.jdField_a_of_type_AndroidWidgetImageView == null) || (!this.a.jdField_a_of_type_AndroidWidgetImageView.isShown()));
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       return;
     }
-    this.jdField_a_of_type_Int = 0;
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.getText().length());
   }
 }
 

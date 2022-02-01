@@ -7,7 +7,7 @@ class BusinessCardEditActivity$15
   
   public void run()
   {
-    this.this$0.a(2131698046, 1);
+    this.this$0.a(2131698332, 1);
   }
 }
 

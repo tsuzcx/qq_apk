@@ -1,18 +1,69 @@
-import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.qphone.base.util.QLog;
 
 public class bmjb
-  implements bmfk
 {
-  public bmjb(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
+  private static bmjb jdField_a_of_type_Bmjb;
+  private static final String jdField_a_of_type_JavaLangString = DeviceProfileManager.DpcNames.homeworkCfg.name();
+  private int jdField_a_of_type_Int = 22;
+  private ante jdField_a_of_type_Ante = new bmjc(this);
   
-  public void a(int paramInt, bmgl parambmgl)
+  private bmjb()
   {
-    if ((parambmgl instanceof bmgw)) {
-      this.a.a = ((bmgw)parambmgl);
+    DeviceProfileManager.a(this.jdField_a_of_type_Ante);
+    a();
+  }
+  
+  public static bmjb a()
+  {
+    if (jdField_a_of_type_Bmjb == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bmjb == null) {
+        jdField_a_of_type_Bmjb = new bmjb();
+      }
+      return jdField_a_of_type_Bmjb;
+    }
+    finally {}
+  }
+  
+  public void a()
+  {
+    String str = DeviceProfileManager.b().a(jdField_a_of_type_JavaLangString);
+    String[] arrayOfString;
+    if (!TextUtils.isEmpty(str))
+    {
+      arrayOfString = str.split("\\|");
+      if (arrayOfString.length < 1) {}
+    }
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[0]).intValue();
+        if (QLog.isColorLevel()) {
+          QLog.d("HomeworkDpcCfg", 2, String.format("loadConfig, mUseNewApiLevel: %s, dpc=%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), str }));
+        }
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.d("HomeworkDpcCfg", 1, "loadConfig exception :" + localException.getMessage());
+        this.jdField_a_of_type_Int = 22;
+        continue;
+      }
+      this.jdField_a_of_type_Int = 22;
     }
   }
   
-  public void aD_() {}
+  public boolean a()
+  {
+    QLog.d("HomeworkDpcCfg", 1, String.format("hwUseNewAPI thisVer=%d cfgVer=%d", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT), Integer.valueOf(this.jdField_a_of_type_Int) }));
+    return Build.VERSION.SDK_INT <= this.jdField_a_of_type_Int;
+  }
 }
 
 

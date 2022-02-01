@@ -1,17 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.data.MessageForTofuNicePics;
+import com.tencent.mobileqq.data.MessageRecord;
 
-final class bcud
-  implements DialogInterface.OnClickListener
+public class bcud
+  implements acoa
 {
-  bcud(QQCustomDialog paramQQCustomDialog) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public MessageRecord a(int paramInt)
   {
-    if (this.a.isShowing()) {
-      this.a.dismiss();
+    if (paramInt == -7011) {
+      return new MessageForTofuNicePics();
     }
+    return null;
   }
 }
 

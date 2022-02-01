@@ -1,22 +1,17 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.text.Editable;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 
-class aewf
-  implements BusinessObserver
+public abstract interface aewf
 {
-  aewf(aewe paramaewe) {}
+  public abstract void afterTextChanged(Editable paramEditable);
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if ((paramInt == 2004) && (paramBoolean) && (QLog.isColorLevel())) {
-      QLog.d("ReminderDataManagerNew", 2, "acs msg succ");
-    }
-  }
+  public abstract void onEditTextFocusChanged(boolean paramBoolean);
+  
+  public abstract void onItemDeleted(ResultRecord paramResultRecord);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aewf
  * JD-Core Version:    0.7.0.1
  */

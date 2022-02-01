@@ -3,26 +3,26 @@ package com.tencent.biz.pubaccount.readinjoy.video.column;
 import android.animation.Animator.AnimatorListener;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 import kotlin.Metadata;
-import sfq;
-import sfx;
+import srv;
+import ssc;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
 public final class VideoColumnGuideManager$startGuideAnimate$1
   implements Runnable
 {
-  public VideoColumnGuideManager$startGuideAnimate$1(sfq paramsfq) {}
+  public VideoColumnGuideManager$startGuideAnimate$1(srv paramsrv) {}
   
   public final void run()
   {
-    DiniFlyAnimationView localDiniFlyAnimationView = sfq.a(this.this$0);
+    DiniFlyAnimationView localDiniFlyAnimationView = srv.a(this.this$0);
     if (localDiniFlyAnimationView != null) {
-      localDiniFlyAnimationView.addAnimatorListener((Animator.AnimatorListener)new sfx(this));
+      localDiniFlyAnimationView.addAnimatorListener((Animator.AnimatorListener)new ssc(this));
     }
-    localDiniFlyAnimationView = sfq.a(this.this$0);
+    localDiniFlyAnimationView = srv.a(this.this$0);
     if (localDiniFlyAnimationView != null) {
       localDiniFlyAnimationView.resumeAnimation();
     }
-    sfq.d(this.this$0);
+    srv.d(this.this$0);
   }
 }
 

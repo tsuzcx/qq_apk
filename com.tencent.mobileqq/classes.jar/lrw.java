@@ -1,126 +1,173 @@
-import android.content.Context;
-import android.view.animation.AnimationUtils;
-import android.view.animation.Interpolator;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint.FontMetricsInt;
+import android.os.Build.VERSION;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class lrw
+  extends lrx
 {
-  private int jdField_a_of_type_Int;
-  private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
-  private final lrx jdField_a_of_type_Lrx;
-  private final boolean jdField_a_of_type_Boolean;
-  private final lrx b;
+  private float jdField_a_of_type_Float = 1.0F;
+  private final Bitmap.Config jdField_a_of_type_AndroidGraphicsBitmap$Config;
+  protected Canvas a;
+  private Paint.FontMetricsInt jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt;
+  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
+  private String jdField_a_of_type_JavaLangString = "";
+  private float b = 15.0F;
+  private int k = -1;
+  private int l = 2147483647;
+  private int m = 2147483647;
+  private int n = 2147483647;
   
-  public lrw(Context paramContext)
+  public lrw()
   {
-    this(paramContext, null);
+    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(this.k);
+    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.b);
+    this.jdField_a_of_type_AndroidTextTextPaint.setShadowLayer(2.0F, 0.0F, 0.0F, -16777216);
+    this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetricsInt();
+    this.jdField_a_of_type_AndroidGraphicsBitmap$Config = Bitmap.Config.ARGB_8888;
+    a(false);
   }
   
-  public lrw(Context paramContext, Interpolator paramInterpolator)
+  protected Bitmap a()
   {
-    this(paramContext, paramInterpolator, true);
+    Bitmap localBitmap = Bitmap.createBitmap(this.e, this.f, this.jdField_a_of_type_AndroidGraphicsBitmap$Config);
+    this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas(localBitmap);
+    this.jdField_a_of_type_AndroidGraphicsCanvas.translate(0.0F, -this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt.ascent);
+    this.jdField_a_of_type_AndroidGraphicsCanvas.drawText(this.jdField_a_of_type_JavaLangString, 0.0F, 0.0F, this.jdField_a_of_type_AndroidTextTextPaint);
+    return localBitmap;
   }
   
-  public lrw(Context paramContext, Interpolator paramInterpolator, boolean paramBoolean)
+  public void a(float paramFloat)
   {
-    this.jdField_a_of_type_AndroidViewAnimationInterpolator = paramInterpolator;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Lrx = new lrx();
-    this.b = new lrx();
-    lrx.a(paramContext);
-  }
-  
-  public final int a()
-  {
-    return lrx.a(this.jdField_a_of_type_Lrx);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Lrx.a();
-    this.b.a();
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Lrx.a(paramInt1, paramInt3, paramInt5);
-    this.b.a(paramInt2, paramInt4, paramInt5);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10)
-  {
-    if ((this.jdField_a_of_type_Boolean) && (!a()))
-    {
-      float f1 = lrx.a(this.jdField_a_of_type_Lrx);
-      float f2 = lrx.a(this.b);
-      if ((Math.signum(paramInt3) == Math.signum(f1)) && (Math.signum(paramInt4) == Math.signum(f2)))
-      {
-        paramInt3 = (int)(f1 + paramInt3);
-        paramInt4 = (int)(paramInt4 + f2);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("StringTexture", 2, "setTextSize textSize: " + paramFloat);
     }
-    for (;;)
+    this.b = paramFloat;
+    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.b);
+    this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetricsInt();
+  }
+  
+  protected void a(Bitmap paramBitmap)
+  {
+    if (!d()) {
+      paramBitmap.recycle();
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StringTexture", 2, "setText text: " + paramString);
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(lqo paramlqo, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    if ((this.jdField_a_of_type_Float < 0.99F) && (Build.VERSION.SDK_INT >= 16)) {}
+    for (int i = 1;; i = 0)
     {
-      this.jdField_a_of_type_Int = 1;
-      this.jdField_a_of_type_Lrx.a(paramInt1, paramInt3, paramInt5, paramInt6, paramInt9);
-      this.b.a(paramInt2, paramInt4, paramInt7, paramInt8, paramInt10);
+      if (i != 0)
+      {
+        paramlqo.a(3);
+        paramlqo.a(this.jdField_a_of_type_Float);
+      }
+      paramlqo.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
+      if (i != 0) {
+        paramlqo.c();
+      }
       return;
     }
   }
   
-  public final void a(boolean paramBoolean)
+  public void c(int paramInt)
   {
-    lrx.a(this.jdField_a_of_type_Lrx, lrx.a(this.b, paramBoolean));
-  }
-  
-  public final boolean a()
-  {
-    return (lrx.a(this.jdField_a_of_type_Lrx)) && (lrx.a(this.b));
-  }
-  
-  public final int b()
-  {
-    return lrx.b(this.jdField_a_of_type_Lrx);
-  }
-  
-  public boolean b()
-  {
-    if (a()) {
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("StringTexture", 2, "setTextColor textColor: " + paramInt);
     }
-    switch (this.jdField_a_of_type_Int)
-    {
+    this.k = paramInt;
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(this.k);
+  }
+  
+  public void d(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StringTexture", 2, "setMaxLength maxLength: " + paramInt);
     }
-    for (;;)
+    this.n = paramInt;
+  }
+  
+  public void e()
+  {
+    int i = 1;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      return true;
-      long l = AnimationUtils.currentAnimationTimeMillis() - lrx.a(this.jdField_a_of_type_Lrx);
-      int i = lrx.c(this.jdField_a_of_type_Lrx);
-      if (l < i)
+      j = mry.a(this.jdField_a_of_type_JavaLangString);
+      i = (int)Math.ceil(this.jdField_a_of_type_AndroidTextTextPaint.measureText(this.jdField_a_of_type_JavaLangString));
+      if ((j <= this.n) && (i <= this.l)) {
+        break label302;
+      }
+    }
+    label302:
+    for (int j = 1;; j = 0)
+    {
+      if (j != 0)
       {
-        float f = (float)l / i;
-        if (this.jdField_a_of_type_AndroidViewAnimationInterpolator == null) {}
-        for (f = lry.a(f);; f = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(f))
+        i = Math.min(Math.max((this.l - (int)Math.ceil(this.jdField_a_of_type_AndroidTextTextPaint.measureText("..."))) / (int)Math.ceil(this.jdField_a_of_type_AndroidTextTextPaint.measureText("M")), 1), this.n);
+        this.jdField_a_of_type_JavaLangString = (mry.a(this.jdField_a_of_type_JavaLangString, 0, i) + "...");
+        i = (int)Math.ceil(this.jdField_a_of_type_AndroidTextTextPaint.measureText(this.jdField_a_of_type_JavaLangString));
+      }
+      j = this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt.bottom - this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt.top;
+      if (i <= 0) {
+        i = 1;
+      }
+      for (;;)
+      {
+        if (j <= 0) {
+          j = 1;
+        }
+        for (;;)
         {
-          this.jdField_a_of_type_Lrx.a(f);
-          this.b.a(f);
-          break;
+          b(i, j);
+          a(i, j);
+          if (QLog.isColorLevel()) {
+            QLog.d("StringTexture", 2, "refreshText width: " + this.e + ", height: " + this.f + ", maxLength: " + this.n + ", textSize: " + this.b + ", text: " + this.jdField_a_of_type_JavaLangString + ";mMetrics:=" + this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt.toString());
+          }
+          return;
+          j = 1;
         }
       }
-      a();
-      continue;
-      if ((!lrx.a(this.jdField_a_of_type_Lrx)) && (!this.jdField_a_of_type_Lrx.b()) && (!this.jdField_a_of_type_Lrx.a())) {
-        this.jdField_a_of_type_Lrx.a();
-      }
-      if ((!lrx.a(this.b)) && (!this.b.b()) && (!this.b.a())) {
-        this.b.a();
-      }
     }
+  }
+  
+  public void e(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StringTexture", 2, "setWidth width: " + paramInt);
+    }
+    if (paramInt > 0) {
+      this.l = paramInt;
+    }
+  }
+  
+  public int j()
+  {
+    return (int)Math.ceil(this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt.descent - this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt.ascent);
+  }
+  
+  public int k()
+  {
+    return Math.abs(this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt.ascent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lrw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,261 +1,118 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.text.TextUtils.TruncateAt;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.search.rich.RichNodeRootLayout;
 
-public class bckq
-  extends bcgx
+public abstract class bckq
+  implements bckg
 {
-  private final int s = 16;
+  private View jdField_a_of_type_AndroidViewView;
+  public bcke a;
+  private RichNodeRootLayout jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout;
+  private View b;
   
-  private LinearLayout.LayoutParams a(Resources paramResources, boolean paramBoolean)
+  public bckq(bcke parambcke, Context paramContext)
   {
-    if (paramBoolean) {}
-    for (int i = 50;; i = 58) {
-      return new LinearLayout.LayoutParams(AIOUtils.dp2px(i, paramResources), AIOUtils.dp2px(i, paramResources));
-    }
-  }
-  
-  private LinearLayout a(Context paramContext)
-  {
-    Resources localResources = paramContext.getResources();
-    paramContext = new LinearLayout(paramContext);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    this.jdField_a_of_type_Bcke = parambcke;
     a(paramContext);
-    d(paramContext);
-    int k = localResources.getDimensionPixelSize(2131298978);
-    int m = localResources.getDimensionPixelSize(2131298979);
-    int i;
-    if (a(1))
-    {
-      i = AIOUtils.dp2px(15.0F, localResources);
-      if (!a(2)) {
-        break label121;
-      }
+  }
+  
+  public final View a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout;
+  }
+  
+  public abstract View a(Context paramContext);
+  
+  public View a(String paramString)
+  {
+    return null;
+  }
+  
+  public ImageView a()
+  {
+    return null;
+  }
+  
+  public TextView a()
+  {
+    return null;
+  }
+  
+  public bcke a()
+  {
+    return this.jdField_a_of_type_Bcke;
+  }
+  
+  public String a()
+  {
+    bcke localbcke = a();
+    if (localbcke != null) {
+      return localbcke.a();
     }
-    label121:
-    for (int j = AIOUtils.dp2px(15.0F, localResources);; j = AIOUtils.dp2px(6.0F, localResources))
-    {
-      paramContext.setPadding(k, i, m, j);
-      paramContext.setLayoutParams(localLayoutParams);
-      paramContext.setOrientation(0);
-      return paramContext;
-      i = AIOUtils.dp2px(6.0F, localResources);
-      break;
+    return null;
+  }
+  
+  public void a(Context paramContext)
+  {
+    View localView = LayoutInflater.from(paramContext).inflate(2131561475, null, false);
+    this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout = ((RichNodeRootLayout)localView.findViewById(2131376957));
+    this.b = localView.findViewById(2131365759);
+    this.jdField_a_of_type_AndroidViewView = a(paramContext);
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout.addView(this.jdField_a_of_type_AndroidViewView);
     }
   }
   
-  private void a()
+  public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 2) {}
-    int k;
-    int j;
-    do
+    if (this.b != null)
     {
+      if (paramBoolean) {
+        this.b.setVisibility(0);
+      }
+    }
+    else {
       return;
-      k = -1;
-      j = -1;
-      int i = 0;
-      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        localbcgw = (bcgw)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        int m;
-        if ("title".equals(localbcgw.jdField_a_of_type_JavaLangString)) {
-          m = i;
-        }
-        for (;;)
-        {
-          i += 1;
-          j = m;
-          break;
-          m = j;
-          if ("picture".equals(localbcgw.jdField_a_of_type_JavaLangString))
-          {
-            k = i;
-            m = j;
-          }
-        }
-      }
-    } while ((j < 0) || (k < 0) || (j >= k));
-    bcgw localbcgw = (bcgw)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-    this.jdField_a_of_type_JavaUtilArrayList.set(j, this.jdField_a_of_type_JavaUtilArrayList.get(k));
-    this.jdField_a_of_type_JavaUtilArrayList.set(k, localbcgw);
-  }
-  
-  protected int b()
-  {
-    return 4;
-  }
-  
-  public View b(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    boolean bool = paramBundle.getBoolean("NAIOSub", false);
-    int j;
-    Object localObject2;
-    Object localObject3;
-    label79:
-    Object localObject1;
-    Object localObject4;
-    if (paramBundle.getInt("accostType") == AbsStructMsg.SOURCE_ACCOUNT_TYPE_PA)
-    {
-      j = 1;
-      if ((paramView == null) || (!(paramView instanceof LinearLayout)) || (((LinearLayout)paramView).getChildCount() != this.jdField_a_of_type_JavaUtilArrayList.size())) {
-        break label281;
-      }
-      localObject2 = (LinearLayout)paramView;
-      if (j != 0) {
-        a();
-      }
-      localObject3 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      j = 0;
-      localObject1 = localObject2;
-      if (!((Iterator)localObject3).hasNext()) {
-        break label801;
-      }
-      localObject1 = (bcgw)((Iterator)localObject3).next();
-      ((bcgw)localObject1).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-      localObject4 = ((bcgw)localObject1).jdField_a_of_type_JavaLangString;
-      if (("title".equals(localObject4)) || ("picture".equals(localObject4)) || ("video".equals(localObject4)))
-      {
-        ((bcgw)localObject1).a(paramContext, ((LinearLayout)localObject2).getChildAt(j), paramBundle);
-        if ((localObject1 instanceof StructMsgItemTitle))
-        {
-          ((StructMsgItemTitle)localObject1).a(a(), this.p);
-          if ((((StructMsgItemTitle)localObject1).c() == null) || (((StructMsgItemTitle)localObject1).c().equals(""))) {
-            break label810;
-          }
-        }
-      }
     }
-    for (;;)
-    {
-      try
-      {
-        i = Integer.parseInt(((StructMsgItemTitle)localObject1).c()) / 2;
-        localObject1 = (TextView)paramView.findViewById(2131379877);
-        if (localObject1 != null) {
-          ((TextView)localObject1).setTextSize(2, i);
-        }
-        j += 1;
-        break label79;
-        j = 0;
-      }
-      catch (Exception localException1)
-      {
-        i = 16;
-        continue;
-      }
-      label281:
-      paramView = paramContext.getResources();
-      LinearLayout localLinearLayout = a(paramContext);
-      if (j != 0)
-      {
-        i = localLinearLayout.getPaddingTop();
-        int k = localLinearLayout.getPaddingBottom();
-        localLinearLayout.setPadding(paramView.getDimensionPixelSize(2131296446), i, paramView.getDimensionPixelOffset(2131296447), k);
-        a();
-      }
-      localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      if (((Iterator)localObject2).hasNext())
-      {
-        localObject4 = (bcgw)((Iterator)localObject2).next();
-        ((bcgw)localObject4).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-        localObject3 = ((bcgw)localObject4).jdField_a_of_type_JavaLangString;
-        if ("title".equals(localObject3))
-        {
-          localObject3 = ((bcgw)localObject4).a(paramContext, null, paramBundle);
-          if (((localObject3 instanceof TextView)) && (!TextUtils.isEmpty(((TextView)localObject3).getText()))) {
-            localLinearLayout.setContentDescription(((TextView)localObject3).getText());
-          }
-          if (!(localObject4 instanceof StructMsgItemTitle)) {
-            break label804;
-          }
-          ((StructMsgItemTitle)localObject4).a(a(), this.p);
-          if ((((StructMsgItemTitle)localObject4).c() == null) || (((StructMsgItemTitle)localObject4).c().equals(""))) {
-            break label804;
-          }
-        }
-      }
-      for (;;)
-      {
-        try
-        {
-          i = Integer.parseInt(((StructMsgItemTitle)localObject4).c()) / 2;
-          localObject4 = new LinearLayout.LayoutParams(-1, -2);
-          ((LinearLayout.LayoutParams)localObject4).gravity = 16;
-          ((LinearLayout.LayoutParams)localObject4).weight = 1.0F;
-          if (localLinearLayout.getChildCount() == 0)
-          {
-            ((LinearLayout.LayoutParams)localObject4).leftMargin = 0;
-            ((LinearLayout.LayoutParams)localObject4).rightMargin = AIOUtils.dp2px(15.0F, paramView);
-            localTextView = (TextView)((View)localObject3).findViewById(2131379877);
-            if (localTextView != null)
-            {
-              localTextView.setEllipsize(TextUtils.TruncateAt.END);
-              if (i == 0) {
-                continue;
-              }
-              localTextView.setTextSize(2, i);
-            }
-            localLinearLayout.addView((View)localObject3, (ViewGroup.LayoutParams)localObject4);
-          }
-        }
-        catch (Exception localException2)
-        {
-          TextView localTextView;
-          i = 0;
-          continue;
-          localException2.leftMargin = AIOUtils.dp2px(15.0F, paramView);
-          localException2.rightMargin = 0;
-          if (j == 0) {
-            continue;
-          }
-          localException2.leftMargin = AIOUtils.dp2px(10.0F, paramView);
-          ((TextView)localObject3).setLineSpacing(AIOUtils.dp2px(2.5F, paramView), 1.0F);
-          ((TextView)localObject3).setMaxLines(2);
-          continue;
-          localTextView.setTextSize(2, 16.0F);
-          continue;
-        }
-        if (("picture".equals(localObject3)) || ("video".equals(localObject3)))
-        {
-          localLinearLayout.addView(localException2.a(paramContext, null, paramBundle), a(paramView, bool));
-          break;
-        }
-        if (!"hr".equals(localObject3)) {
-          break;
-        }
-        localObject3 = localException2.a(paramContext, null, paramBundle);
-        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, 1);
-        if (this.jdField_a_of_type_JavaUtilArrayList.size() == 1) {
-          localLinearLayout.setPadding(localLinearLayout.getPaddingLeft(), 0, localLinearLayout.getPaddingRight(), 0);
-        }
-        localLinearLayout.addView((View)localObject3, localLayoutParams);
-        break;
-        label801:
-        return localLinearLayout;
-        label804:
-        i = 0;
-      }
-      label810:
-      int i = 16;
-    }
+    this.b.setVisibility(8);
   }
   
-  public String b()
+  public ImageView b()
   {
-    return "Layout4";
+    return null;
+  }
+  
+  public TextView b()
+  {
+    return null;
+  }
+  
+  public void b(boolean paramBoolean) {}
+  
+  public TextView c()
+  {
+    return null;
+  }
+  
+  public TextView d()
+  {
+    return null;
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Bcke = null;
+    this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout = null;
+    this.jdField_a_of_type_AndroidViewView = null;
+    this.b = null;
+  }
+  
+  public void f()
+  {
+    d();
   }
 }
 

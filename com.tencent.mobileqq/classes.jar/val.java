@@ -1,38 +1,42 @@
-import UserGrowth.stSimpleGetFeedListRsp;
-import UserGrowth.stSimpleMetaFeed;
-import android.text.TextUtils;
-import com.qq.taf.jce.JceStruct;
-import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
-import java.util.List;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class val
-  implements ulb
+class val
+  implements AbsListView.OnScrollListener
 {
-  public val(WSVerticalDataManager paramWSVerticalDataManager, vaa paramvaa) {}
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void a(JceStruct paramJceStruct)
+  val(vaj paramvaj) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    uya.a("WSVerticalDataManagerLog", "onReadCacheCompleted");
-    if (!(paramJceStruct instanceof stSimpleGetFeedListRsp)) {
-      uya.a("WSVerticalDataManagerLog", "struct not instanceof stSimpleGetFeedListRsp");
-    }
-    do
+    if ((paramInt3 > 0) && (paramAbsListView.getFirstVisiblePosition() + paramInt2 >= paramInt3)) {}
+    for (boolean bool = true;; bool = false)
     {
-      stSimpleMetaFeed localstSimpleMetaFeed;
-      do
+      this.jdField_a_of_type_Boolean = bool;
+      return;
+    }
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    EventCollector.getInstance().onListScrollStateChanged(paramAbsListView, paramInt);
+    if ((this.jdField_a_of_type_Boolean) && (paramInt == 0))
+    {
+      vmp.c("comment", "onScrollStateChanged scrollState:" + paramInt);
+      vaj.a(this.jdField_a_of_type_Vaj, this.jdField_a_of_type_Vaj.a().a(vaj.a(this.jdField_a_of_type_Vaj)));
+      if (vaj.b(this.jdField_a_of_type_Vaj) != null)
       {
-        do
-        {
-          return;
-          paramJceStruct = ((stSimpleGetFeedListRsp)paramJceStruct).feeds;
-        } while ((paramJceStruct == null) || (paramJceStruct.size() <= 0));
-        localstSimpleMetaFeed = (stSimpleMetaFeed)paramJceStruct.get(0);
-      } while (!TextUtils.equals(localstSimpleMetaFeed.id, WSVerticalDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalDataManager)));
-      WSPublicAccReport.getInstance().getRecommendFullScreenInfo().a(localstSimpleMetaFeed.video_url);
-      uya.a("WSVerticalDataManagerLog", "onReadCacheCompleted feeds.size() = " + paramJceStruct.size());
-    } while (this.jdField_a_of_type_Vaa == null);
-    this.jdField_a_of_type_Vaa.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalDataManager.a(paramJceStruct), false, true, null);
+        this.jdField_a_of_type_Vaj.a().a(vaj.a(this.jdField_a_of_type_Vaj), true);
+        vaj.a(this.jdField_a_of_type_Vaj, true);
+      }
+    }
+    else
+    {
+      return;
+    }
+    vmp.c("comment", "mCommentAttachInfo is null");
   }
 }
 

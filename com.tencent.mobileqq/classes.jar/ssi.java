@@ -1,19 +1,18 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.qqlive.module.videoreport.page.IScrollReader;
-import com.tencent.widget.AbsListView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryInfo.TopicVideoCard;
 
-public class ssi
-  implements IScrollReader
+public final class ssi
+  implements Parcelable.Creator<DiscoveryInfo.TopicVideoCard>
 {
-  public ssi(FastWebActivity paramFastWebActivity) {}
-  
-  public int readScroll(View paramView)
+  public DiscoveryInfo.TopicVideoCard a(Parcel paramParcel)
   {
-    if ((paramView instanceof AbsListView)) {
-      return ((AbsListView)paramView).getLastVisiblePosition();
-    }
-    return 0;
+    return new DiscoveryInfo.TopicVideoCard(paramParcel);
+  }
+  
+  public DiscoveryInfo.TopicVideoCard[] a(int paramInt)
+  {
+    return new DiscoveryInfo.TopicVideoCard[paramInt];
   }
 }
 

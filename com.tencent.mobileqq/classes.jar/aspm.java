@@ -1,40 +1,48 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.widget.ImageView;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.Switch;
 
-final class aspm
-  implements View.OnClickListener
+class aspm
+  extends nte
 {
-  aspm(FileManagerEntity paramFileManagerEntity, Activity paramActivity, asqp paramasqp) {}
+  aspm(aspl paramaspl, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    try
+    boolean bool = true;
+    if (paramInt != 0)
     {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-      aszs localaszs = new aszs();
-      localaszs.b = "file_forward";
-      localaszs.jdField_a_of_type_Int = 71;
-      localaszs.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
-      localaszs.c = FileUtil.getExtension(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName);
-      localaszs.d = aszt.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType);
-      aszr.a(localQQAppInterface.getCurrentAccountUin(), localaszs);
-      ataw.b(localQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      if (this.jdField_a_of_type_Asqp != null) {
-        this.jdField_a_of_type_Asqp.a(2);
+      QLog.e("ExtendFriendHandler", 1, "setShowVipIconSwitch error: " + paramInt);
+      ExtendFriendProfileEditFragment.a(this.a.a).setOnCheckedChangeListener(null);
+      paramArrayOfByte = ExtendFriendProfileEditFragment.a(this.a.a);
+      if (!this.b) {}
+      for (bool = true;; bool = false)
+      {
+        paramArrayOfByte.setChecked(bool);
+        ExtendFriendProfileEditFragment.a(this.a.a).setOnCheckedChangeListener(ExtendFriendProfileEditFragment.a(this.a.a));
+        return;
       }
-      label113:
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
     }
-    catch (Exception localException)
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendHandler", 2, "setShowVipIconSwitch(" + this.b + ") success");
+    }
+    paramArrayOfByte = (asnq)ExtendFriendProfileEditFragment.a(this.a.a).getTag();
+    if (!this.b) {}
+    for (;;)
     {
-      break label113;
+      paramArrayOfByte.mVipHide = bool;
+      VipUtils.a(paramArrayOfByte, ExtendFriendProfileEditFragment.a(this.a.a));
+      paramArrayOfByte = this.a.a.getActivity();
+      if (paramArrayOfByte == null) {
+        break;
+      }
+      paramArrayOfByte.setResult(8193);
+      return;
+      bool = false;
     }
   }
 }

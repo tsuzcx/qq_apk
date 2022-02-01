@@ -1,17 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class asvo
-  implements View.OnClickListener
+public abstract interface asvo
 {
-  asvo(asvn paramasvn) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    aszt.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Asst.d());
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void b();
 }
 
 

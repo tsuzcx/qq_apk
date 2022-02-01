@@ -1,14 +1,36 @@
-import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import msf.msgsvc.msg_svc.CommTmp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
-public abstract interface acvu
+public class acvu
+  implements acos
 {
-  public static final String a;
-  public static final boolean a;
-  
-  static
+  public int a()
   {
-    jdField_a_of_type_JavaLangString = amtj.a(2131700707);
-    jdField_a_of_type_Boolean = AppSetting.c;
+    return 1036;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = new msg_svc.CommTmp();
+    paramQQAppInterface.c2c_type.set(1);
+    paramQQAppInterface.svr_type.set(160);
+    paramQQAppInterface.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    paramRoutingHead.comm_tmp.set(paramQQAppInterface);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 3022;
   }
 }
 

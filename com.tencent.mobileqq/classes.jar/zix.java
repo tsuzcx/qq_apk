@@ -1,73 +1,76 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_COMM.COMM.StCommonExt;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.Packet;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewParent;
 
 public class zix
-  extends ziv
+  implements ziq
 {
-  public void a(Intent paramIntent, Bundle paramBundle, byte[] paramArrayOfByte)
+  public float a;
+  protected int a;
+  protected final ziu a;
+  protected final ziw a;
+  public float b;
+  
+  public zix(ziw paramziw, float paramFloat1, float paramFloat2)
   {
-    paramBundle.putByteArray("key_data", paramArrayOfByte);
-    notifyObserver(paramIntent, this.a, true, paramBundle, null);
+    this.jdField_a_of_type_Ziw = paramziw;
+    this.jdField_a_of_type_Ziu = new ziu();
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(ziq paramziq)
   {
-    Object localObject3 = null;
-    Object localObject1 = null;
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("key_ext");
-    if (arrayOfByte != null) {}
-    for (Object localObject2 = new COMM.StCommonExt();; localObject2 = null) {
-      for (;;)
-      {
-        try
-        {
-          ((COMM.StCommonExt)localObject2).mergeFrom(arrayOfByte);
-          i = paramIntent.getIntExtra("key_index", -1);
-          arrayOfByte = paramIntent.getByteArrayExtra("key_request_feed_bytes");
-          if (arrayOfByte == null) {}
-        }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
-        {
-          try
-          {
-            localObject1 = new CertifiedAccountMeta.StFeed();
-          }
-          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
-          {
-            int i;
-            localObject1 = localObject3;
-          }
-          try
-          {
-            ((CertifiedAccountMeta.StFeed)localObject1).mergeFrom(arrayOfByte);
-            localObject2 = new ziw((COMM.StCommonExt)localObject2, (CertifiedAccountMeta.StFeed)localObject1).a(paramIntent, i, a());
-            localObject1 = localObject2;
-            if (localObject2 == null) {
-              localObject1 = new byte[4];
-            }
-            paramPacket.setSSOCommand("CertifiedAccountSvc.certified_account_write.ModifyFeed");
-            paramPacket.putSendData(bgau.a((byte[])localObject1));
-            paramPacket.setTimeout(paramIntent.getLongExtra("key_timeout", 30000L));
-            super.onSend(paramIntent, paramPacket);
-            return;
-          }
-          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException3)
-          {
-            break label166;
-          }
-          localInvalidProtocolBufferMicroException1 = localInvalidProtocolBufferMicroException1;
-          QLog.e("CertifiedAccountModifyFeedServlet", 2, QLog.getStackTraceString(localInvalidProtocolBufferMicroException1));
-          continue;
-        }
-        label166:
-        QLog.e("CertifiedAccountModifyFeedServlet", 2, QLog.getStackTraceString(localInvalidProtocolBufferMicroException2));
-      }
+    if (this.jdField_a_of_type_Ziw.jdField_a_of_type_Ziv.jdField_a_of_type_Boolean) {}
+    for (int i = 1;; i = 2)
+    {
+      this.jdField_a_of_type_Int = i;
+      return;
     }
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    ziv localziv = this.jdField_a_of_type_Ziw.jdField_a_of_type_Ziv;
+    if (localziv.jdField_a_of_type_Int != paramMotionEvent.getPointerId(0)) {
+      this.jdField_a_of_type_Ziw.a(this.jdField_a_of_type_Ziw.jdField_a_of_type_Zip);
+    }
+    View localView;
+    zir localzir;
+    do
+    {
+      return true;
+      localView = this.jdField_a_of_type_Ziw.a();
+      localzir = this.jdField_a_of_type_Ziw.jdField_a_of_type_Zir;
+    } while (!localzir.a(localView, this.jdField_a_of_type_Ziu, paramMotionEvent));
+    float f2 = this.jdField_a_of_type_Ziu.b;
+    if (this.jdField_a_of_type_Ziu.jdField_a_of_type_Boolean == localziv.jdField_a_of_type_Boolean) {}
+    for (float f1 = this.jdField_a_of_type_Float;; f1 = this.b)
+    {
+      f1 = f2 / f1;
+      f2 = this.jdField_a_of_type_Ziu.jdField_a_of_type_Float + f1;
+      if (((!localziv.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Ziu.jdField_a_of_type_Boolean) || (f2 > localziv.jdField_a_of_type_Float)) && ((localziv.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_Ziu.jdField_a_of_type_Boolean) || (f2 < localziv.jdField_a_of_type_Float))) {
+        break;
+      }
+      localzir.a(localView, localziv.jdField_a_of_type_Float, paramMotionEvent);
+      this.jdField_a_of_type_Ziw.a(this.jdField_a_of_type_Ziw.jdField_a_of_type_Zis);
+      return true;
+    }
+    if (localView.getParent() != null) {
+      localView.getParent().requestDisallowInterceptTouchEvent(true);
+    }
+    long l = paramMotionEvent.getEventTime() - paramMotionEvent.getHistoricalEventTime(0);
+    if (l > 0L) {
+      this.jdField_a_of_type_Ziw.jdField_a_of_type_Float = (f1 / (float)l);
+    }
+    localzir.a(localView, f2);
+    return true;
+  }
+  
+  public boolean b(MotionEvent paramMotionEvent)
+  {
+    this.jdField_a_of_type_Ziw.a(this.jdField_a_of_type_Ziw.jdField_a_of_type_Zip);
+    return false;
   }
 }
 

@@ -1,9 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import java.util.List;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public abstract interface swf
+class swf
+  implements View.OnTouchListener
 {
-  public abstract void a(boolean paramBoolean, String paramString, List<BaseData> paramList1, List<BaseData> paramList2);
+  swf(swd paramswd, GestureDetector paramGestureDetector) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    return true;
+  }
 }
 
 

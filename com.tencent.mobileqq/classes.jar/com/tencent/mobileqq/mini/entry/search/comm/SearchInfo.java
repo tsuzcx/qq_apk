@@ -3,7 +3,8 @@ package com.tencent.mobileqq.mini.entry.search.comm;
 import NS_MINI_INTERFACE.INTERFACE.StUserAppInfo;
 import NS_STORE_APP_CLIENT.STORE_APP_CLIENT.StUserInfo;
 import NS_STORE_APP_CLIENT.STORE_APP_CLIENT.StoreAppInfo;
-import amtj;
+import NS_STORE_APP_SEARCH.MiniAppSearch.SearchExtInfo;
+import anvx;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -17,6 +18,7 @@ public class SearchInfo
   public MiniAppInfo miniAppInfo;
   public String playingFriendsDesc;
   private int position;
+  private MiniAppSearch.SearchExtInfo searchExtInfo;
   public List<STORE_APP_CLIENT.StUserInfo> userInfoList;
   public int userNum;
   
@@ -44,6 +46,11 @@ public class SearchInfo
     return this.position;
   }
   
+  public MiniAppSearch.SearchExtInfo getSearchExtInfo()
+  {
+    return this.searchExtInfo;
+  }
+  
   public int getType()
   {
     return 2;
@@ -52,17 +59,22 @@ public class SearchInfo
   public String getUseNumberDesc()
   {
     if (this.userNum < 10000) {
-      return this.userNum + amtj.a(2131693814);
+      return this.userNum + anvx.a(2131694005);
     }
     if (this.userNum >= 100000000) {
-      return this.userNum / 100000000 + amtj.a(2131693813);
+      return this.userNum / 100000000 + anvx.a(2131694004);
     }
-    return this.userNum / 10000 + amtj.a(2131693815);
+    return this.userNum / 10000 + anvx.a(2131694006);
   }
   
   public void setPosition(int paramInt)
   {
     this.position = paramInt;
+  }
+  
+  public void setSearchExtInfo(MiniAppSearch.SearchExtInfo paramSearchExtInfo)
+  {
+    this.searchExtInfo = paramSearchExtInfo;
   }
 }
 

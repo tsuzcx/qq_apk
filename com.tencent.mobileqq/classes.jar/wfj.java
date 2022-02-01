@@ -1,32 +1,32 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAuthKey;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class wfj
-  extends vqr<wgu>
+class wfj<Request extends wfm, Respond extends wfh>
+  implements wfn<Respond>
 {
-  public String a()
+  protected final long a;
+  protected wfk<Request, Respond> a;
+  public Request a;
+  
+  public wfj(Request paramRequest)
   {
-    return vpl.a("StorySvc.video_apply_authkey");
+    this.jdField_a_of_type_Wfm = paramRequest;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
-  public wgu a(byte[] paramArrayOfByte)
+  private void b(int paramInt, String paramString, Respond paramRespond)
   {
-    qqstory_service.RspAuthKey localRspAuthKey = new qqstory_service.RspAuthKey();
-    try
+    wfk localwfk = this.jdField_a_of_type_Wfk;
+    if (localwfk != null)
     {
-      localRspAuthKey.mergeFrom(paramArrayOfByte);
-      return new wgu(localRspAuthKey);
+      localwfk.a(this.jdField_a_of_type_Wfm, paramRespond, new ErrorMessage(paramInt, paramString));
+      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      xvv.d("Q.qqstory:RefreshVideoFileKeyRequest", "" + paramArrayOfByte);
-    }
-    return null;
+    ykq.d("Q.qqstory.net:CmdTaskManager", "cmd callback is null");
   }
   
-  protected byte[] a()
+  public void a(int paramInt, String paramString, Respond paramRespond)
   {
-    return new byte[0];
+    b(paramInt, paramString, paramRespond);
   }
 }
 

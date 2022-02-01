@@ -1,43 +1,81 @@
-import android.content.res.Configuration;
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.PublishVideoHelper.1.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.cmd0xe2a.oidb_0xe2a.AddVideoRsp;
+import tencent.im.oidb.cmd0xe2a.oidb_0xe2a.RspBody;
 
-public class rys
-  implements View.OnLayoutChangeListener
+public final class rys
+  extends ntf
 {
-  private int jdField_a_of_type_Int;
+  rys(ryv paramryv) {}
   
-  public rys(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment, Configuration paramConfiguration) {}
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).getHeight() != this.jdField_a_of_type_Int) && (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment) != null) && (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment) != null))
+    paramBundle = new ArrayList();
+    QLog.i("RIJUGC.PublishVideoHelper", 1, "publishVideo, errorCode=" + paramInt);
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a(VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment), VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment));
-      VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).c();
-      VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).c();
-      if ((VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a()) && (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment) != null)) {
-        VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a.e(true);
+      Object localObject = new oidb_0xe2a.RspBody();
+      try
+      {
+        ((oidb_0xe2a.RspBody)localObject).mergeFrom(paramArrayOfByte);
+        if ((!((oidb_0xe2a.RspBody)localObject).msg_add_video_rsp.has()) || (!((oidb_0xe2a.RspBody)localObject).msg_add_video_rsp.rpt_rowkey_list.has())) {
+          break label267;
+        }
+        paramArrayOfByte = ((oidb_0xe2a.RspBody)localObject).msg_add_video_rsp.rpt_rowkey_list.get().iterator();
+        while (paramArrayOfByte.hasNext())
+        {
+          localObject = (ByteStringMicro)paramArrayOfByte.next();
+          if (((ByteStringMicro)localObject).toStringUtf8().isEmpty()) {
+            break label256;
+          }
+          paramBundle.add(((ByteStringMicro)localObject).toStringUtf8());
+        }
+        ThreadManager.getUIHandler().post(new PublishVideoHelper.1.1(this, paramInt));
       }
-      if (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment) != null) {
-        VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a(this.jdField_a_of_type_AndroidContentResConfiguration);
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("RIJUGC.PublishVideoHelper", 2, "publishVideo" + paramArrayOfByte.toString());
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsRecommendFragment", 2, "onConfigurationChanged onLayoutChange: " + Arrays.toString(rwv.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment.getActivity())));
+    }
+    else
+    {
+      label180:
+      paramArrayOfByte = pnn.a();
+      if ((paramArrayOfByte != null) && (bmhv.m(paramArrayOfByte)))
+      {
+        if ((paramInt != 0) || (paramBundle.size() <= 0)) {
+          break label278;
+        }
+        QQToast.a(BaseApplicationImpl.getContext(), 0, "视频发表成功", 0).a();
       }
     }
     for (;;)
     {
-      this.jdField_a_of_type_Int = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).getHeight();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsRecommendFragment", 2, "onConfigurationChanged onLayoutChange: screen size unchanged " + Arrays.toString(rwv.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment.getActivity())));
+      if (this.a != null) {
+        this.a.a(paramBundle);
       }
+      return;
+      label256:
+      QLog.i("RIJUGC.PublishVideoHelper", 1, "publishVideo, rowKey isEmpty");
+      break;
+      label267:
+      QLog.i("RIJUGC.PublishVideoHelper", 1, "publishVideo, not has rpt_rowkey_list");
+      break label180;
+      label278:
+      QQToast.a(BaseApplicationImpl.getContext(), 0, "视频发表失败，errorCode=" + paramInt, 0).a();
     }
   }
 }

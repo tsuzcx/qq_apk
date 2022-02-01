@@ -1,43 +1,18 @@
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-import android.widget.TextView;
-import com.tencent.av.ui.VideoControlUI;
-
-public class mjd
-  implements GestureDetector.OnGestureListener
+public abstract interface mjd
 {
-  public mjd(VideoControlUI paramVideoControlUI) {}
+  public abstract long a();
   
-  public boolean onDown(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
+  public abstract void a();
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
   
-  public void onLongPress(MotionEvent paramMotionEvent) {}
+  public abstract boolean a();
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    if ((this.a.g != null) && (this.a.g.isShown())) {
-      this.a.r(false);
-    }
-    return false;
-  }
+  public abstract boolean b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mjd
  * JD-Core Version:    0.7.0.1
  */

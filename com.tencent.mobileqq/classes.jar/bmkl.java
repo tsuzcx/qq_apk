@@ -1,22 +1,24 @@
-import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterBean;
+import kotlin.Lazy;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
+import org.jetbrains.annotations.NotNull;
 
-public abstract interface bmkl
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcooperation/vip/VasAdvSupport$Companion;", "", "()V", "instance", "Lcooperation/vip/VasAdvSupport;", "getInstance", "()Lcooperation/vip/VasAdvSupport;", "instance$delegate", "Lkotlin/Lazy;", "get", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bmkl
 {
-  public abstract void a(int paramInt, float paramFloat);
+  private final bmkk b()
+  {
+    Lazy localLazy = bmkk.a();
+    bmkl localbmkl = bmkk.a;
+    return (bmkk)localLazy.getValue();
+  }
   
-  public abstract void a(int paramInt, AEEditorFilterBean paramAEEditorFilterBean);
-  
-  public abstract boolean a(int paramInt, AEEditorFilterBean paramAEEditorFilterBean);
-  
-  public abstract boolean f();
-  
-  public abstract void t();
-  
-  public abstract void u();
-  
-  public abstract void v();
-  
-  public abstract void w();
+  @JvmStatic
+  @NotNull
+  public final bmkk a()
+  {
+    return ((bmkl)this).b();
+  }
 }
 
 

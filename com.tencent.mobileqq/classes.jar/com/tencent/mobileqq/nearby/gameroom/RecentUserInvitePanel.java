@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
-import amtj;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
@@ -15,10 +14,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import awna;
-import awnb;
-import awnc;
-import awnf;
+import anvx;
+import axtc;
+import axtd;
+import axte;
+import axth;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.face.FaceDrawable;
@@ -30,8 +30,8 @@ public class RecentUserInvitePanel
   extends HorizontalScrollView
 {
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  public awnc a;
-  List<awnf> jdField_a_of_type_JavaUtilList;
+  public axte a;
+  List<axth> jdField_a_of_type_JavaUtilList;
   boolean jdField_a_of_type_Boolean = false;
   
   public RecentUserInvitePanel(Context paramContext, AttributeSet paramAttributeSet)
@@ -49,36 +49,36 @@ public class RecentUserInvitePanel
   private View a()
   {
     int i = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-    View localView = inflate(getContext(), 2131561179, null);
-    ((ImageView)localView.findViewById(2131367979)).setImageResource(2130841359);
-    ((ImageView)localView.findViewById(2131368011)).setVisibility(8);
-    TextView localTextView = (TextView)localView.findViewById(2131371615);
+    View localView = inflate(getContext(), 2131561240, null);
+    ((ImageView)localView.findViewById(2131368115)).setImageResource(2130841365);
+    ((ImageView)localView.findViewById(2131368146)).setVisibility(8);
+    TextView localTextView = (TextView)localView.findViewById(2131371803);
     if (i == 0) {
-      localTextView.setText(amtj.a(2131712326));
+      localTextView.setText(anvx.a(2131712673));
     }
     for (;;)
     {
       localTextView.setMaxLines(2);
       localTextView.setSingleLine(false);
       localTextView.setGravity(1);
-      ((Button)localView.findViewById(2131368826)).setVisibility(8);
-      localView.setOnClickListener(new awnb(this));
+      ((Button)localView.findViewById(2131368984)).setVisibility(8);
+      localView.setOnClickListener(new axtd(this));
       return localView;
-      localTextView.setText(amtj.a(2131712327));
+      localTextView.setText(anvx.a(2131712674));
     }
   }
   
-  private View a(awnf paramawnf)
+  private View a(axth paramaxth)
   {
     Object localObject1 = null;
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    View localView = inflate(getContext(), 2131561179, null);
-    Object localObject2 = (ImageView)localView.findViewById(2131367979);
-    ImageView localImageView = (ImageView)localView.findViewById(2131368011);
+    View localView = inflate(getContext(), 2131561240, null);
+    Object localObject2 = (ImageView)localView.findViewById(2131368115);
+    ImageView localImageView = (ImageView)localView.findViewById(2131368146);
     int i;
-    if (paramawnf.jdField_a_of_type_Int == 0)
+    if (paramaxth.jdField_a_of_type_Int == 0)
     {
-      localObject1 = FaceDrawable.getFaceDrawable(localQQAppInterface, 1, paramawnf.jdField_a_of_type_JavaLangString);
+      localObject1 = FaceDrawable.getFaceDrawable(localQQAppInterface, 1, paramaxth.jdField_a_of_type_JavaLangString);
       i = -1;
     }
     for (;;)
@@ -89,22 +89,22 @@ public class RecentUserInvitePanel
       }
       for (;;)
       {
-        localObject2 = (TextView)localView.findViewById(2131371615);
+        localObject2 = (TextView)localView.findViewById(2131371803);
         localObject1 = "";
-        if (paramawnf.b != null) {
-          localObject1 = (String)TextUtils.ellipsize(paramawnf.b, ((TextView)localObject2).getPaint(), DisplayUtil.dip2px(getContext(), 65.0F), TextUtils.TruncateAt.END);
+        if (paramaxth.b != null) {
+          localObject1 = (String)TextUtils.ellipsize(paramaxth.b, ((TextView)localObject2).getPaint(), DisplayUtil.dip2px(getContext(), 65.0F), TextUtils.TruncateAt.END);
         }
         ((TextView)localObject2).setText((CharSequence)localObject1);
-        localObject1 = (Button)localView.findViewById(2131368826);
-        ((Button)localObject1).setOnClickListener(new awna(this, paramawnf));
-        a((View)localObject1, paramawnf.jdField_a_of_type_Boolean);
-        localView.setTag(paramawnf);
+        localObject1 = (Button)localView.findViewById(2131368984);
+        ((Button)localObject1).setOnClickListener(new axtc(this, paramaxth));
+        a((View)localObject1, paramaxth.jdField_a_of_type_Boolean);
+        localView.setTag(paramaxth);
         return localView;
-        if (paramawnf.jdField_a_of_type_Int != 1) {
+        if (paramaxth.jdField_a_of_type_Int != 1) {
           break label220;
         }
-        localObject1 = FaceDrawable.getFaceDrawable(localQQAppInterface, 4, paramawnf.jdField_a_of_type_JavaLangString);
-        i = 2130841357;
+        localObject1 = FaceDrawable.getFaceDrawable(localQQAppInterface, 4, paramaxth.jdField_a_of_type_JavaLangString);
+        i = 2130841363;
         break;
         localImageView.setVisibility(8);
       }
@@ -129,7 +129,7 @@ public class RecentUserInvitePanel
       paramView = (Button)paramView;
       if (paramBoolean)
       {
-        paramView.setText(amtj.a(2131712329));
+        paramView.setText(anvx.a(2131712676));
         paramView.setAlpha(0.5F);
       }
     }
@@ -137,27 +137,27 @@ public class RecentUserInvitePanel
     {
       return;
     }
-    paramView.setText(amtj.a(2131712328));
+    paramView.setText(anvx.a(2131712675));
   }
   
-  public void a(awnf paramawnf)
+  public void a(axth paramaxth)
   {
     int i = 0;
     while (i < this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount())
     {
       View localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-      if ((localView.getTag() instanceof awnf))
+      if ((localView.getTag() instanceof axth))
       {
-        awnf localawnf = (awnf)localView.getTag();
-        if ((localawnf.jdField_a_of_type_Int == paramawnf.jdField_a_of_type_Int) && (localawnf.jdField_a_of_type_JavaLangString.equals(paramawnf.jdField_a_of_type_JavaLangString))) {
-          a((Button)localView.findViewById(2131368826), paramawnf.jdField_a_of_type_Boolean);
+        axth localaxth = (axth)localView.getTag();
+        if ((localaxth.jdField_a_of_type_Int == paramaxth.jdField_a_of_type_Int) && (localaxth.jdField_a_of_type_JavaLangString.equals(paramaxth.jdField_a_of_type_JavaLangString))) {
+          a((Button)localView.findViewById(2131368984), paramaxth.jdField_a_of_type_Boolean);
         }
       }
       i += 1;
     }
   }
   
-  public void a(List<awnf> paramList, boolean paramBoolean)
+  public void a(List<axth> paramList, boolean paramBoolean)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_a_of_type_Boolean = paramBoolean;
@@ -166,7 +166,7 @@ public class RecentUserInvitePanel
     Object localObject;
     while (paramList.hasNext())
     {
-      localObject = a((awnf)paramList.next());
+      localObject = a((axth)paramList.next());
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
       localLayoutParams.leftMargin = DisplayUtil.dip2px(getContext(), 16.0F);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject, localLayoutParams);
@@ -181,9 +181,9 @@ public class RecentUserInvitePanel
     }
   }
   
-  public void setOnClickListener(awnc paramawnc)
+  public void setOnClickListener(axte paramaxte)
   {
-    this.jdField_a_of_type_Awnc = paramawnc;
+    this.jdField_a_of_type_Axte = paramaxte;
   }
 }
 

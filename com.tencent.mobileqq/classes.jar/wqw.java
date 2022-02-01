@@ -1,25 +1,38 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Build.VERSION;
-import android.widget.ImageView;
+import com.tencent.biz.qqstory.network.handler.GetUserIconHandler.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
-class wqw
-  extends AnimatorListenerAdapter
+public class wqw
 {
-  wqw(wqu paramwqu) {}
+  private static final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private static Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  public static boolean a;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public static void a(String paramString)
   {
-    super.onAnimationEnd(paramAnimator);
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.a.a.setImageAlpha(255);
-    }
-    for (;;)
+    synchronized (jdField_a_of_type_JavaUtilArrayList)
     {
-      this.a.a.setVisibility(8);
+      if (!jdField_a_of_type_JavaUtilSet.contains(paramString))
+      {
+        jdField_a_of_type_JavaUtilArrayList.add(paramString);
+        jdField_a_of_type_JavaUtilSet.add(paramString);
+      }
+      if (!jdField_a_of_type_Boolean)
+      {
+        jdField_a_of_type_Boolean = true;
+        ThreadManager.post(new GetUserIconHandler.1(), 5, null, true);
+      }
       return;
-      this.a.a.setImageResource(2130850605);
     }
+  }
+  
+  public static void a(ArrayList<String> paramArrayList)
+  {
+    paramArrayList = new wqx(paramArrayList);
+    wqy localwqy = new wqy();
+    whs.a().a(paramArrayList, localwqy);
   }
 }
 

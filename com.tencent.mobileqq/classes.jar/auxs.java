@@ -1,12 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.fragment.QQSettingMsgClearFragment;
+
 public class auxs
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public int b;
+  public auxs(QQSettingMsgClearFragment paramQQSettingMsgClearFragment) {}
   
-  public auxs(int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    aqws.b(2);
+    QQSettingMsgClearFragment.a(this.a);
   }
 }
 

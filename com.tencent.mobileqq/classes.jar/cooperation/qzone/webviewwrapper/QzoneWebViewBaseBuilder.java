@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.os.Message;
 import android.text.TextUtils;
 import android.widget.ProgressBar;
-import bgsp;
-import bgtk;
+import bidf;
+import biec;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper.CommonJsPluginFactory;
@@ -19,8 +19,8 @@ import cooperation.qzone.webviewplugin.QZoneWebViewPlugin;
 import java.util.ArrayList;
 
 public class QzoneWebViewBaseBuilder
-  extends bgsp
-  implements bgtk
+  extends bidf
+  implements biec
 {
   public static final WebAccelerateHelper.CommonJsPluginFactory QZONE_SHOW_COMMON_JS = new QzoneWebViewBaseBuilder.1();
   protected Intent mIntent;

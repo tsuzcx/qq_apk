@@ -1,56 +1,44 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import com.tencent.ims.signature.SignatureKickData;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
 
 public class aejw
-  implements bjoe
+  implements DialogInterface.OnClickListener
 {
-  public aejw(TroopAssisSettingActivity paramTroopAssisSettingActivity, int paramInt, TroopInfo paramTroopInfo, bjnw parambjnw) {}
+  public aejw(NotificationActivity paramNotificationActivity, signature.SignatureKickData paramSignatureKickData) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
+    QLog.i("NotificationActivity", 1, "setPositiveButton.onClick: invoked.  isDialogShow: " + NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity));
+    paramDialogInterface = new Bundle();
+    paramDialogInterface.putString("password", null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.startActivity(new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, LoginActivity.class).putExtras(paramDialogInterface).addFlags(67108864));
+    try
     {
-    default: 
-      paramInt = -1;
-      if (this.jdField_a_of_type_Int != paramInt)
-      {
-        if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.getActivity())) {
-          break label218;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.jdField_a_of_type_Bfyq.b.clear();
-        avnu.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.app, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin, paramInt);
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.jdField_a_of_type_Bfyq.c.put(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin, Boolean.valueOf(true));
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.jdField_a_of_type_Almi.notifyDataSetChanged();
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.b();
-        avnu.a().c(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.app, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin);
-        bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.app, "P_CliOper", "Grp_msg", "", "set_page", "Clk_setmsg", 0, 0, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin, String.valueOf(paramInt - 1), "", "");
-      }
-      break;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bjnw.dismiss();
+      paramDialogInterface = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_ComTencentImsSignature$SignatureKickData.str_url.get()));
+      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.startActivity(paramDialogInterface);
+      label106:
+      paramDialogInterface = new Intent("qqplayer_exit_action");
+      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.sendBroadcast(paramDialogInterface);
+      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
       return;
-      paramInt = 1;
-      break;
-      paramInt = 4;
-      break;
-      paramInt = 2;
-      break;
-      paramInt = 3;
-      break;
-      label218:
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.getActivity(), 2131694064, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.getTitleBarHeight());
+    }
+    catch (Exception paramDialogInterface)
+    {
+      break label106;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aejw
  * JD-Core Version:    0.7.0.1
  */

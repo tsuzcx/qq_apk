@@ -64,6 +64,7 @@ public final class s_user
   public String talk_id = "";
   public int timestamp;
   public long uFansCount;
+  public long uFeedsCount;
   public long uVisitorCount;
   public String uid = "";
   public long uin;
@@ -94,7 +95,7 @@ public final class s_user
   
   public s_user() {}
   
-  public s_user(long paramLong1, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, int paramInt3, int paramInt4, int paramInt5, int paramInt6, String paramString4, int paramInt7, int paramInt8, String paramString5, String paramString6, int paramInt9, int paramInt10, int paramInt11, int paramInt12, byte paramByte1, byte paramByte2, s_medal params_medal1, String paramString7, int paramInt13, int paramInt14, int paramInt15, star_info paramstar_info, combine_diamond_info paramcombine_diamond_info, byte paramByte3, byte paramByte4, int paramInt16, int paramInt17, String paramString8, byte[] paramArrayOfByte, ArrayList<s_yytag> paramArrayList, String paramString9, String paramString10, s_medal params_medal2, long paramLong2, long paramLong3, int paramInt18, int paramInt19, int paramInt20, long paramLong4, s_medal params_medal3, long paramLong5, int paramInt21, s_openid_user params_openid_user, byte paramByte5, s_kuolie_info params_kuolie_info, int paramInt22, String paramString11, ArrayList<String> paramArrayList1, int paramInt23, int paramInt24)
+  public s_user(long paramLong1, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, int paramInt3, int paramInt4, int paramInt5, int paramInt6, String paramString4, int paramInt7, int paramInt8, String paramString5, String paramString6, int paramInt9, int paramInt10, int paramInt11, int paramInt12, byte paramByte1, byte paramByte2, s_medal params_medal1, String paramString7, int paramInt13, int paramInt14, int paramInt15, star_info paramstar_info, combine_diamond_info paramcombine_diamond_info, byte paramByte3, byte paramByte4, int paramInt16, int paramInt17, String paramString8, byte[] paramArrayOfByte, ArrayList<s_yytag> paramArrayList, String paramString9, String paramString10, s_medal params_medal2, long paramLong2, long paramLong3, int paramInt18, int paramInt19, int paramInt20, long paramLong4, s_medal params_medal3, long paramLong5, int paramInt21, s_openid_user params_openid_user, byte paramByte5, s_kuolie_info params_kuolie_info, int paramInt22, String paramString11, ArrayList<String> paramArrayList1, int paramInt23, int paramInt24, long paramLong6)
   {
     this.uin = paramLong1;
     this.nickname = paramString1;
@@ -151,6 +152,7 @@ public final class s_user
     this.user_tags = paramArrayList1;
     this.age = paramInt23;
     this.isVideoCircleVUser = paramInt24;
+    this.uFeedsCount = paramLong6;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -210,6 +212,7 @@ public final class s_user
     this.user_tags = ((ArrayList)paramJceInputStream.read(cache_user_tags, 52, false));
     this.age = paramJceInputStream.read(this.age, 53, false);
     this.isVideoCircleVUser = paramJceInputStream.read(this.isVideoCircleVUser, 54, false);
+    this.uFeedsCount = paramJceInputStream.read(this.uFeedsCount, 55, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -311,6 +314,7 @@ public final class s_user
     }
     paramJceOutputStream.write(this.age, 53);
     paramJceOutputStream.write(this.isVideoCircleVUser, 54);
+    paramJceOutputStream.write(this.uFeedsCount, 55);
   }
 }
 

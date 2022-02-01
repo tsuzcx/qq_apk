@@ -1,14 +1,39 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-
-public class acap
-  implements abzb
+public final class acap
 {
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  private int a = -2147483648;
+  
+  public acap(int paramInt)
   {
-    acai.a(paramabxc.a(), paramMsgType0x210);
-    return null;
+    this.a = paramInt;
+  }
+  
+  public int a()
+  {
+    return this.a;
+  }
+  
+  public String a()
+  {
+    switch (a())
+    {
+    default: 
+      return null;
+    case 0: 
+      return "Success";
+    case 1: 
+      return "Internal Error";
+    case 2: 
+      return "Ad was re-loaded too frequently";
+    case 3: 
+      return "Network Error";
+    case 4: 
+      return "Invalid Request";
+    case 5: 
+      return "No Fill";
+    case 6: 
+      return "Server Error";
+    }
+    return "Display Format Mismatch";
   }
 }
 

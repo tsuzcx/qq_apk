@@ -1,39 +1,39 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import bbee;
-import bbel;
-import bbff;
-import bbfs;
-import bbft;
+import bckw;
+import bcld;
+import bclx;
+import bcmk;
+import bcml;
 import java.util.List;
 
 public class ContactSearchEngine$4
   implements Runnable
 {
-  public ContactSearchEngine$4(bbee parambbee, bbfs parambbfs) {}
+  public ContactSearchEngine$4(bckw parambckw, bcmk parambcmk) {}
   
   public void run()
   {
-    List localList1 = bbee.a(this.this$0, this.a);
-    bbff localbbff = bbee.a(this.this$0);
-    bbft localbbft;
-    if ((localbbff != null) && (localList1 != null))
+    List localList1 = bckw.a(this.this$0, this.a);
+    bclx localbclx = bckw.a(this.this$0);
+    bcml localbcml;
+    if ((localbclx != null) && (localList1 != null))
     {
-      localbbft = new bbft(this.a.a, 1);
-      if (bbee.a(this.this$0) == null) {
-        localbbff.a(localList1, localbbft);
+      localbcml = new bcml(this.a.a, 1);
+      if (bckw.a(this.this$0) == null) {
+        localbclx.a(localList1, localbcml);
       }
     }
     else
     {
       return;
     }
-    localbbff.a(localList1);
-    List localList2 = bbee.a(this.this$0).a(this.a);
+    localbclx.a(localList1);
+    List localList2 = bckw.a(this.this$0).a(this.a);
     if ((localList2 != null) && (!localList2.isEmpty())) {
       localList1.addAll(localList2);
     }
-    localbbff.a(localList1, localbbft);
+    localbclx.a(localList1, localbcml);
   }
 }
 

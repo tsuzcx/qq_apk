@@ -1,39 +1,39 @@
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import java.util.List;
 
-final class rww
-  extends ClickableSpan
+public class rww
+  extends blig<rxh, rwx>
 {
-  rww(String paramString, Context paramContext, View.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
+  public rww(Context paramContext, List<rxh> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video", 2, "handleKingCardHintTextView span is clicked, guideUrl=" + this.jdField_a_of_type_JavaLangString);
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("big_brother_source_key", pay.f(0));
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    }
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
-    }
+    super(paramContext, paramList);
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public int a(int paramInt)
   {
-    paramTextPaint.setColor(Color.rgb(18, 183, 245));
+    return 0;
+  }
+  
+  public rwx a(ViewGroup paramViewGroup, int paramInt)
+  {
+    ImageView localImageView = new ImageView(this.a);
+    paramInt = paramViewGroup.getLayoutParams().height;
+    localImageView.setLayoutParams(new ViewGroup.LayoutParams(paramInt, paramInt));
+    localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    return new rwx(this, localImageView);
+  }
+  
+  public void a(rwx paramrwx, int paramInt)
+  {
+    Bitmap localBitmap = ((rxh)a(paramInt)).a();
+    if (localBitmap != null) {
+      ((ImageView)paramrwx.itemView).setImageBitmap(localBitmap);
+    }
   }
 }
 

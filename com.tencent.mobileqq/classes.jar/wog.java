@@ -1,33 +1,24 @@
-import android.support.annotation.Nullable;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wog
+  extends QQUIEventReceiver<woa, xgg>
 {
-  @Nullable
-  public String a;
-  public wod a;
-  @Nullable
-  public woe a;
-  @Nullable
-  public String b;
-  
-  public wog(@Nullable wod paramwod, @Nullable String paramString1, @Nullable String paramString2)
+  public wog(@NonNull woa paramwoa)
   {
-    this.jdField_a_of_type_Wod = paramwod;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    super(paramwoa);
   }
   
-  public wog(wog paramwog)
+  public void a(@NonNull woa paramwoa, @NonNull xgg paramxgg)
   {
-    this.jdField_a_of_type_Wod = paramwog.jdField_a_of_type_Wod;
-    this.jdField_a_of_type_JavaLangString = paramwog.jdField_a_of_type_JavaLangString;
-    this.b = paramwog.b;
-    this.jdField_a_of_type_Woe = paramwog.jdField_a_of_type_Woe;
+    if ((paramwoa.a.a().equals(paramxgg.jdField_a_of_type_JavaLangString)) && ((paramxgg.jdField_a_of_type_Xcy instanceof xdm))) {
+      paramwoa.a(((xdm)paramxgg.jdField_a_of_type_Xcy).a(), paramxgg.b);
+    }
   }
   
-  public String toString()
+  public Class acceptEventClass()
   {
-    return "StartInfo{mGroupId=" + this.jdField_a_of_type_Wod + ", vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", feedId='" + this.b + '\'' + '}';
+    return xgg.class;
   }
 }
 

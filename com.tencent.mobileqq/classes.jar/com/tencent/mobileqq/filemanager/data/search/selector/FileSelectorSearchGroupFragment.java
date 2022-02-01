@@ -8,10 +8,10 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import asms;
-import asmt;
-import asmv;
-import atbm;
+import atqy;
+import atqz;
+import atrb;
+import auft;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.filemanager.widget.QFileSendBottomView;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
@@ -20,48 +20,48 @@ import com.tencent.widget.ListView;
 public class FileSelectorSearchGroupFragment
   extends IphoneTitleBarFragment
 {
-  private static asmv jdField_a_of_type_Asmv;
+  private static atrb jdField_a_of_type_Atrb;
   private Bundle jdField_a_of_type_AndroidOsBundle;
   private View jdField_a_of_type_AndroidViewView;
-  private asmt jdField_a_of_type_Asmt;
-  private atbm jdField_a_of_type_Atbm;
+  private atqz jdField_a_of_type_Atqz;
+  private auft jdField_a_of_type_Auft;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
   
   private String a()
   {
-    if (jdField_a_of_type_Asmv != null) {
-      return String.format(getString(2131692288), new Object[] { Integer.valueOf(jdField_a_of_type_Asmv.d()), jdField_a_of_type_Asmv.a() });
+    if (jdField_a_of_type_Atrb != null) {
+      return String.format(getString(2131692378), new Object[] { Integer.valueOf(jdField_a_of_type_Atrb.d()), jdField_a_of_type_Atrb.a() });
     }
     return "";
   }
   
-  public static void a(asmv paramasmv)
+  public static void a(atrb paramatrb)
   {
-    jdField_a_of_type_Asmv = paramasmv;
+    jdField_a_of_type_Atrb = paramatrb;
   }
   
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     paramLayoutInflater = (RelativeLayout)this.mContentView;
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131370009));
-    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new asms(this));
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131368014);
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131370180));
+    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new atqy(this));
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131368149);
     paramViewGroup = new QFileSendBottomView(paramLayoutInflater.getContext());
     paramBundle = new RelativeLayout.LayoutParams(-1, -2);
     paramBundle.addRule(12);
     paramLayoutInflater.addView(paramViewGroup, paramBundle);
     this.jdField_a_of_type_AndroidOsBundle = getArguments().getBundle("qfile_search_param_ex_params");
-    this.jdField_a_of_type_Atbm = atbm.a(getActivity().app, getActivity(), paramViewGroup, this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_Atbm.a(this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_Atbm.b();
-    this.jdField_a_of_type_Atbm.a(this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_Auft = auft.a(getActivity().app, getActivity(), paramViewGroup, this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_Auft.a(this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_Auft.b();
+    this.jdField_a_of_type_Auft.a(this.jdField_a_of_type_AndroidOsBundle);
     paramViewGroup.a(this.jdField_a_of_type_ComTencentWidgetListView);
   }
   
   public int getContentLayoutId()
   {
-    return 2131560796;
+    return 2131560856;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -72,22 +72,22 @@ public class FileSelectorSearchGroupFragment
   public void onDestroyView()
   {
     super.onDestroyView();
-    jdField_a_of_type_Asmv = null;
+    jdField_a_of_type_Atrb = null;
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
-    setTitle(jdField_a_of_type_Asmv.d());
+    setTitle(jdField_a_of_type_Atrb.d());
     super.onViewCreated(paramView, paramBundle);
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367979)).setText(a());
-    this.jdField_a_of_type_Asmt = new asmt(this, jdField_a_of_type_Asmv);
-    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Asmt);
-    this.jdField_a_of_type_Atbm.a();
+    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368115)).setText(a());
+    this.jdField_a_of_type_Atqz = new atqz(this, jdField_a_of_type_Atrb);
+    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Atqz);
+    this.jdField_a_of_type_Auft.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchGroupFragment
  * JD-Core Version:    0.7.0.1
  */

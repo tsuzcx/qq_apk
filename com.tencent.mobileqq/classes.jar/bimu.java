@@ -1,21 +1,11 @@
-import android.text.TextUtils;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.view.View.OnClickListener;
 
 public class bimu
-  implements bilx
 {
-  public bimu(QidianProfileCardActivity paramQidianProfileCardActivity) {}
-  
-  public void a(binj parambinj)
-  {
-    if (parambinj != null)
-    {
-      parambinj = parambinj.b;
-      if (!TextUtils.isEmpty(parambinj)) {
-        QidianProfileCardActivity.a(this.a, parambinj);
-      }
-    }
-  }
+  public int a;
+  public View.OnClickListener a;
+  public String a = "";
+  public int b;
 }
 
 

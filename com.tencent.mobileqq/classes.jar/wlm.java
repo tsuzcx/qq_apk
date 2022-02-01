@@ -1,17 +1,39 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
-public class wlm
-  implements View.OnTouchListener
+class wlm
+  extends SosoInterface.OnLocationListener
 {
-  public wlm(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  wlm(wll paramwll, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    return this.a.a.onTouchEvent(paramMotionEvent);
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    ykq.b("LbsManager", "onLocationFinish.");
+    boolean bool;
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
+    {
+      bool = true;
+      if (!bool) {
+        break label114;
+      }
+      this.a.b = wlk.a(paramSosoLbsInfo.mLocation);
+      ykq.a("LbsManager", "onLocationFinish success, [longitude=%s, latitude=%s]", Integer.valueOf(this.a.b.b), Integer.valueOf(this.a.b.a));
+    }
+    for (;;)
+    {
+      if (!wll.a(this.a)) {
+        this.a.a(bool, this.a.b);
+      }
+      this.a.a = false;
+      return;
+      bool = false;
+      break;
+      label114:
+      ykq.d("LbsManager", "onLocationFinish errorCode = %d", new Object[] { Integer.valueOf(paramInt) });
+    }
   }
 }
 

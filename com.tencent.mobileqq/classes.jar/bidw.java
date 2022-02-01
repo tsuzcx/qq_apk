@@ -1,17 +1,11 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.filedownload.ApkFileDownloadFragment;
-import com.tencent.open.filedownload.ApkFileDownloadFragment.2.1;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
 
-public class bidw
-  extends bieg
+class bidw
+  implements aaea
 {
-  public bidw(ApkFileDownloadFragment paramApkFileDownloadFragment) {}
+  bidw(bidu parambidu) {}
   
-  public void a()
-  {
-    ThreadManager.getUIHandler().post(new ApkFileDownloadFragment.2.1(this));
-  }
+  public void callback(Bundle paramBundle) {}
 }
 
 

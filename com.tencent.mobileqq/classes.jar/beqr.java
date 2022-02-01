@@ -1,18 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.logic.HomeworkTroopController.3;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.together.writetogether.websocket.WriteTogetherWebSocketSender;
+import com.tencent.mobileqq.together.writetogether.websocket.WriteTogetherWebSocketSender.MyNetInfoHandler.1;
 
 public class beqr
-  implements View.OnClickListener
+  extends beqm
 {
-  public beqr(HomeworkTroopController.3 param3) {}
+  private beqr(WriteTogetherWebSocketSender paramWriteTogetherWebSocketSender) {}
   
-  public void onClick(View paramView)
+  protected void a()
   {
-    this.a.this$0.a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    ThreadManagerV2.excute(new WriteTogetherWebSocketSender.MyNetInfoHandler.1(this), 128, null, true);
   }
+  
+  protected void b() {}
 }
 
 

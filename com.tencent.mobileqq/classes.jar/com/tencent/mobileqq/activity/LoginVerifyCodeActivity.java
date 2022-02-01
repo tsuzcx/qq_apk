@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import adrb;
-import adrc;
-import adrd;
-import anbq;
+import aeie;
+import aeif;
+import aeig;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -18,11 +17,12 @@ import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
 import android.widget.EditText;
 import android.widget.TextView;
-import anxi;
-import anxk;
-import aych;
-import bcef;
-import bhht;
+import aoef;
+import apak;
+import apam;
+import azit;
+import bdla;
+import bisl;
 import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.NetworkUtil;
@@ -35,16 +35,16 @@ import mqq.observer.WtloginObserver;
 
 public class LoginVerifyCodeActivity
   extends RegisterNewBaseActivity
-  implements TextWatcher, View.OnClickListener, View.OnKeyListener, anxi
+  implements TextWatcher, View.OnClickListener, View.OnKeyListener, apak
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131380393, 2131380394, 2131380395, 2131380396, 2131380397, 2131380398 };
-  public anbq a;
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131380729, 2131380730, 2131380731, 2131380732, 2131380733, 2131380734 };
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private anxk jdField_a_of_type_Anxk;
-  private bhht jdField_a_of_type_Bhht;
+  public aoef a;
+  private apam jdField_a_of_type_Apam;
+  private bisl jdField_a_of_type_Bisl;
   private Runnable jdField_a_of_type_JavaLangRunnable = new LoginVerifyCodeActivity.1(this);
   public SubAccountObserver a;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new adrb(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new aeie(this);
   private EditText[] jdField_a_of_type_ArrayOfAndroidWidgetEditText = new EditText[6];
   private int jdField_b_of_type_Int = 60;
   private Runnable jdField_b_of_type_JavaLangRunnable = new LoginVerifyCodeActivity.7(this);
@@ -57,8 +57,8 @@ public class LoginVerifyCodeActivity
   
   public LoginVerifyCodeActivity()
   {
-    this.jdField_a_of_type_MqqObserverSubAccountObserver = new adrc(this);
-    this.jdField_a_of_type_Anbq = new adrd(this);
+    this.jdField_a_of_type_MqqObserverSubAccountObserver = new aeif(this);
+    this.jdField_a_of_type_Aoef = new aeig(this);
   }
   
   private int a()
@@ -83,16 +83,16 @@ public class LoginVerifyCodeActivity
   private void a()
   {
     int i = 0;
-    c(2131716153);
+    c(2131716509);
     b();
-    ((TextView)findViewById(2131380014)).setText(getString(2131716148, new Object[] { "+" + this.jdField_b_of_type_JavaLangString + " " + this.jdField_a_of_type_JavaLangString }));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363942));
+    ((TextView)findViewById(2131380349)).setText(getString(2131716504, new Object[] { "+" + this.jdField_b_of_type_JavaLangString + " " + this.jdField_a_of_type_JavaLangString }));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364016));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131716125) + "(" + this.jdField_b_of_type_Int + ")");
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131716478) + "(" + this.jdField_b_of_type_Int + ")");
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
     while (i < 6)
     {
-      this.jdField_a_of_type_ArrayOfAndroidWidgetEditText[i] = ((EditText)findViewById(jdField_a_of_type_ArrayOfInt[i]).findViewById(2131380017));
+      this.jdField_a_of_type_ArrayOfAndroidWidgetEditText[i] = ((EditText)findViewById(jdField_a_of_type_ArrayOfInt[i]).findViewById(2131380352));
       this.jdField_a_of_type_ArrayOfAndroidWidgetEditText[i].addTextChangedListener(this);
       this.jdField_a_of_type_ArrayOfAndroidWidgetEditText[i].setOnKeyListener(this);
       i += 1;
@@ -117,10 +117,10 @@ public class LoginVerifyCodeActivity
     }
     if (this.c)
     {
-      aych.a().b(this.app, this.app.getCurrentAccountUin(), this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverWtloginObserver);
+      azit.a().b(this.app, this.app.getCurrentAccountUin(), this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverWtloginObserver);
       return;
     }
-    aych.a().b(this.app, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverWtloginObserver);
+    azit.a().b(this.app, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverWtloginObserver);
   }
   
   private void d(int paramInt)
@@ -128,24 +128,24 @@ public class LoginVerifyCodeActivity
     this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
     this.jdField_a_of_type_AndroidWidgetTextView.setClickable(false);
     this.jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131716125) + "(" + this.jdField_b_of_type_Int + ")");
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131716478) + "(" + this.jdField_b_of_type_Int + ")");
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
   }
   
   private void e()
   {
-    b(2131716133);
-    if (aych.a().a(this.app, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverWtloginObserver) != 0)
+    b(2131716489);
+    if (azit.a().a(this.app, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverWtloginObserver) != 0)
     {
       c();
-      a(2131717688, 1);
+      a(2131718059, 1);
     }
   }
   
   private void f()
   {
     if (!NetworkUtil.isNetSupport(BaseApplication.getContext())) {
-      a(2131692035, 0);
+      a(2131692125, 0);
     }
     Object localObject1;
     do
@@ -169,15 +169,15 @@ public class LoginVerifyCodeActivity
       if ((localObject1 == null) || (((String)localObject1).length() <= 0)) {
         break;
       }
-      b(2131716065);
+      b(2131716413);
       if (QLog.isColorLevel()) {
         QLog.d("LoginVerifyCodeActivity", 2, "commitSmsCode start...");
       }
-    } while (aych.a().a(this.app, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, (String)localObject1, this.jdField_a_of_type_MqqObserverWtloginObserver) == 0);
+    } while (azit.a().a(this.app, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, (String)localObject1, this.jdField_a_of_type_MqqObserverWtloginObserver) == 0);
     c();
-    a(2131717688, 1);
+    a(2131718059, 1);
     return;
-    a(2131716076, 0);
+    a(2131716424, 0);
   }
   
   public void afterTextChanged(Editable paramEditable)
@@ -196,7 +196,7 @@ public class LoginVerifyCodeActivity
     label207:
     for (int k = localEditable.toString().length();; k = 0)
     {
-      View localView = findViewById(jdField_a_of_type_ArrayOfInt[j]).findViewById(2131369971);
+      View localView = findViewById(jdField_a_of_type_ArrayOfInt[j]).findViewById(2131370141);
       if ((localEditable != null) && (localEditable == paramEditable))
       {
         if (k <= 0) {
@@ -274,7 +274,7 @@ public class LoginVerifyCodeActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131561155);
+    setContentView(2131561216);
     paramBundle = getIntent();
     if (paramBundle != null)
     {
@@ -283,14 +283,14 @@ public class LoginVerifyCodeActivity
       this.h = paramBundle.getStringExtra("entrance");
     }
     if (this.c) {
-      addObserver(this.jdField_a_of_type_Anbq);
+      addObserver(this.jdField_a_of_type_Aoef);
     }
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("phonenum");
     this.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("key");
     a();
-    this.jdField_a_of_type_Anxk = new anxk(null);
-    this.jdField_a_of_type_Anxk.a(this, this);
-    bcef.a(this.app, "dc00898", "", b(), "0X800B109", "0X800B109", a(), 0, "", "", "", "");
+    this.jdField_a_of_type_Apam = new apam(null);
+    this.jdField_a_of_type_Apam.a(this, this);
+    bdla.a(this.app, "dc00898", "", b(), "0X800B109", "0X800B109", a(), 0, "", "", "", "");
     return true;
   }
   
@@ -323,7 +323,7 @@ public class LoginVerifyCodeActivity
   public void onClick(View paramView)
   {
     if (!NetworkUtil.isNetSupport(BaseApplication.getContext())) {
-      a(2131692035, 0);
+      a(2131692125, 0);
     }
     for (;;)
     {
@@ -333,12 +333,12 @@ public class LoginVerifyCodeActivity
       {
       default: 
         break;
-      case 2131363892: 
+      case 2131363964: 
         f();
         break;
-      case 2131363942: 
+      case 2131364016: 
         e();
-        bcef.a(this.app, "dc00898", "", b(), "0X800B10A", "0X800B10A", a(), 0, "", "", "", "");
+        bdla.a(this.app, "dc00898", "", b(), "0X800B10A", "0X800B10A", a(), 0, "", "", "", "");
       }
     }
   }
@@ -355,12 +355,12 @@ public class LoginVerifyCodeActivity
     super.onDestroy();
     c();
     if (this.c) {
-      removeObserver(this.jdField_a_of_type_Anbq);
+      removeObserver(this.jdField_a_of_type_Aoef);
     }
-    if (this.jdField_a_of_type_Anxk != null) {
-      this.jdField_a_of_type_Anxk.a();
+    if (this.jdField_a_of_type_Apam != null) {
+      this.jdField_a_of_type_Apam.a();
     }
-    this.jdField_a_of_type_Anxk = null;
+    this.jdField_a_of_type_Apam = null;
   }
   
   public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
@@ -404,7 +404,7 @@ public class LoginVerifyCodeActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginVerifyCodeActivity
  * JD-Core Version:    0.7.0.1
  */

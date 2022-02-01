@@ -1,59 +1,67 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.CustomWebView;
+import java.util.Map;
 
-class aclk
-  implements BusinessObserver
+public class aclk
+  implements aclj
 {
-  aclk(aclf paramaclf, String paramString) {}
+  private acll a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public aclk(acll paramacll)
   {
-    Object localObject = paramBundle.getString("ssoAccount");
-    if (QLog.isColorLevel()) {
-      QLog.d(aclf.jdField_a_of_type_JavaLangString, 2, "-->doAuthorize-onReceive, ssoAccount: " + (String)localObject + " | uin: " + this.jdField_a_of_type_JavaLangString + " isSuccess: " + paramBoolean);
-    }
-    if (!this.jdField_a_of_type_JavaLangString.equals(localObject)) {
-      return;
-    }
-    paramInt = paramBundle.getInt("code");
-    if (paramBoolean)
-    {
-      localObject = new SdkAuthorize.AuthorizeResponse();
-      try
-      {
-        paramBundle = (SdkAuthorize.AuthorizeResponse)((SdkAuthorize.AuthorizeResponse)localObject).mergeFrom(paramBundle.getByteArray("data"));
-        paramInt = paramBundle.ret.get();
-        localObject = paramBundle.msg.get();
-        if (paramInt != 0)
-        {
-          acmy.a(this.jdField_a_of_type_Aclf.jdField_a_of_type_Acjr, paramInt, (String)localObject);
-          return;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d(aclf.jdField_a_of_type_JavaLangString, 2, "parse do auth result error: \n" + paramBundle.getMessage());
-        }
-        acmy.a(this.jdField_a_of_type_Aclf.jdField_a_of_type_Acjr, -2, "parse do auth result error");
-        return;
-      }
-      localObject = new acle();
-      ((acle)localObject).jdField_a_of_type_JavaLangString = paramBundle.openid.get().toUpperCase();
-      ((acle)localObject).b = paramBundle.access_token.get().toUpperCase();
-      paramBundle = paramBundle.callbackURL.get();
-      if (QLog.isColorLevel()) {}
-      aclf.b(this.jdField_a_of_type_Aclf, paramBundle);
-      this.jdField_a_of_type_Aclf.jdField_a_of_type_Aclb.a((acle)localObject);
-      acmy.a(this.jdField_a_of_type_Aclf.jdField_a_of_type_Acjr, ((acle)localObject).a());
-      return;
-    }
-    acmy.a(this.jdField_a_of_type_Aclf.jdField_a_of_type_Acjr, paramInt, "do auth error");
+    this.a = paramacll;
   }
+  
+  private String a()
+  {
+    Object localObject2 = null;
+    if (this.a != null) {}
+    for (Activity localActivity = this.a.a();; localActivity = null)
+    {
+      Object localObject1 = localObject2;
+      if (localActivity != null)
+      {
+        localObject1 = localObject2;
+        if (localActivity.getIntent() != null)
+        {
+          long l = localActivity.getIntent().getLongExtra("GdtNocoId", -1L);
+          localObject1 = localObject2;
+          if (l != -1L) {
+            localObject1 = String.valueOf(l);
+          }
+        }
+      }
+      return localObject1;
+    }
+  }
+  
+  public void a() {}
+  
+  public void a(CustomWebView paramCustomWebView) {}
+  
+  public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
+  {
+    if (paramLong == 8589934594L) {}
+    try
+    {
+      paramString = a();
+      if (!TextUtils.isEmpty(paramString))
+      {
+        this.a.callJs("!function(g,d,t,e,v,n,s){if(g.gdt)return;v=g.gdt=function(){v.tk?v.tk.apply(v,arguments):v.queue.push(arguments)};v.sv=\"1.0\";v.bt=2;v.queue=[];n=d.createElement(t);n.async=!0;n.src=e;s=d.getElementsByTagName(t)[0];s.parentNode.insertBefore(n,s);}(window,document,\"script\",\"//qzonestyle.gtimg.cn/qzone/biz/gdt/dmp/user-action/gdtevent.min.js\");gdt(\"init\",\"userActionSetId\");gdt(\"track\",\"PAGE_VIEW\");".replace("userActionSetId", paramString));
+        acho.a("GdtWebReportNoco", "GdtWebReportPlugin Report nocoId :" + paramString);
+      }
+      return false;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return false;
+  }
+  
+  public void b() {}
 }
 
 

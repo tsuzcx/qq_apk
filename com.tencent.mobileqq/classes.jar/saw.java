@@ -1,13 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.FriendListFragment;
 
-class saw
-  implements bjoi
+public class saw
+  implements blbw
 {
-  saw(sav paramsav) {}
+  public saw(FriendListFragment paramFriendListFragment) {}
   
-  public void ab_()
+  public void a(int paramInt)
   {
-    sab.a(this.a.a).c();
+    if (FriendListFragment.a(this.a) != null) {
+      FriendListFragment.a(this.a).onClick(null);
+    }
   }
 }
 

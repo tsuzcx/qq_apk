@@ -1,28 +1,18 @@
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
 
 public class afav
+  implements ayvp
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b;
+  public afav(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  public boolean a()
+  public void a(int paramInt, ayvq paramayvq)
   {
-    return !TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("MutualMarkPushGrayTipInfo{");
-    localStringBuilder.append("notifyTime:").append(this.jdField_a_of_type_Long).append(", ");
-    localStringBuilder.append("grayTipTemplate:").append(this.jdField_a_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("grayTipType:").append(this.jdField_a_of_type_Int).append(", ");
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    if ((paramayvq != null) && (!TextUtils.isEmpty(TextPreviewTranslateActivity.b(this.a))) && (!TextPreviewTranslateActivity.b(this.a).equals(paramayvq.b)))
+    {
+      TextPreviewTranslateActivity.b(this.a, paramayvq.b);
+      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.c(this.a)), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
+    }
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.biz.qqstory.utils.ffmpeg;
 
 import android.os.SystemClock;
 import com.tencent.qphone.base.util.QLog;
-import xwa;
+import ykv;
 
 public class FFmpegUtils$ExecuteFhlipResponseCallback
   implements FFmpegExecuteResponseCallback
@@ -37,7 +37,7 @@ public class FFmpegUtils$ExecuteFhlipResponseCallback
   public void onSuccess(String paramString)
   {
     paramString = String.valueOf(SystemClock.uptimeMillis() - this.mStartTime);
-    xwa.a("play_video", "down_watermark_hfliptime", 0, 0, new String[] { paramString });
+    ykv.a("play_video", "down_watermark_hfliptime", 0, 0, new String[] { paramString });
     if (QLog.isColorLevel()) {
       QLog.d("Q.qqstory.ffmpeg.FFmpegCmd", 2, "play_video down_watermark_hfliptime:" + paramString);
     }

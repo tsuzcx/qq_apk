@@ -1,22 +1,65 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.webso.WebSoService;
-import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class bgyx
-  implements bgzb
 {
-  public bgyx(WebSoService paramWebSoService, WebSoService.WebSoState paramWebSoState, long paramLong) {}
+  private bgyz jdField_a_of_type_Bgyz;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  
+  public bgyx(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  private bgyz a()
+  {
+    bgyz localbgyz = new bgyz(new bgyy(this));
+    if (QLog.isColorLevel()) {
+      QLog.i("FetchInfoListManager", 2, "createFetchInfoListManager fm: " + localbgyz);
+    }
+    return localbgyz;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bgyz != null)
+    {
+      this.jdField_a_of_type_Bgyz.a();
+      this.jdField_a_of_type_Bgyz = null;
+    }
+  }
   
   public void a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Int = 10005;
+    if (this.jdField_a_of_type_Bgyz == null) {
+      this.jdField_a_of_type_Bgyz = a();
     }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.b = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.f = false;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Bgyn.d = ((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService.a(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState);
+    this.jdField_a_of_type_Bgyz.a(2, paramString, null, null, null);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_Bgyz == null) {
+      this.jdField_a_of_type_Bgyz = a();
+    }
+    this.jdField_a_of_type_Bgyz.a(3, paramString1, paramString2, paramString3, paramBundle);
+  }
+  
+  public void b(String paramString)
+  {
+    if (this.jdField_a_of_type_Bgyz == null) {
+      this.jdField_a_of_type_Bgyz = a();
+    }
+    this.jdField_a_of_type_Bgyz.a(1, paramString, null, null, null);
+  }
+  
+  public void c(String paramString)
+  {
+    if (this.jdField_a_of_type_Bgyz == null) {
+      this.jdField_a_of_type_Bgyz = a();
+    }
+    this.jdField_a_of_type_Bgyz.a(4, paramString, null, null, null);
   }
 }
 

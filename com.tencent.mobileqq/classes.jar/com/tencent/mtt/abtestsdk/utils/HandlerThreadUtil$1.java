@@ -27,9 +27,9 @@ final class HandlerThreadUtil$1
       return;
     case 0: 
       HandlerThreadUtil.access$000().removeMessages(0);
-      ABTestLog.stepUpload("update data for 10s", new Object[0]);
+      ABTestLog.stepUpload("update data for 60s", new Object[0]);
       ABTestManager.getInstance().doGetSourceExperiments(null, 0);
-      HandlerThreadUtil.access$000().sendEmptyMessageDelayed(0, 10000L);
+      HandlerThreadUtil.access$000().sendEmptyMessageDelayed(0, 60000L);
       return;
     }
     ABTestLog.stepUpload("stop update data", new Object[0]);

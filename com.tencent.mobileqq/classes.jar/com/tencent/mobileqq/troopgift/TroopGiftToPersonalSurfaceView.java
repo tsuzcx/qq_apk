@@ -11,20 +11,20 @@ import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.util.AttributeSet;
-import bcre;
-import bcrf;
-import bcrg;
-import bcrh;
-import bcri;
-import bcrk;
-import bcrm;
-import bcrn;
-import bcry;
-import bcrz;
-import bcsi;
-import bcsl;
-import bfji;
-import bfjk;
+import bdyd;
+import bdye;
+import bdyf;
+import bdyg;
+import bdyh;
+import bdyj;
+import bdyl;
+import bdym;
+import bdyx;
+import bdyy;
+import bdzh;
+import bdzk;
+import bgrz;
+import bgsb;
 import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
 import com.tencent.mobileqq.util.DisplayUtil;
@@ -33,11 +33,11 @@ public class TroopGiftToPersonalSurfaceView
   extends SpriteGLView
 {
   protected int a;
-  private bcsi jdField_a_of_type_Bcsi;
-  private bcsi[] jdField_a_of_type_ArrayOfBcsi;
+  private bdzh jdField_a_of_type_Bdzh;
+  private bdzh[] jdField_a_of_type_ArrayOfBdzh;
   protected int b;
-  private bcsi b;
-  private bcsi c;
+  private bdzh b;
+  private bdzh c;
   private int d;
   
   public TroopGiftToPersonalSurfaceView(Context paramContext, AttributeSet paramAttributeSet)
@@ -82,72 +82,72 @@ public class TroopGiftToPersonalSurfaceView
     return null;
   }
   
-  public void a(int paramInt, bcrf parambcrf)
+  public void a(int paramInt, bdye parambdye)
   {
-    int i = this.jdField_a_of_type_Bcsi.d();
+    int i = this.jdField_a_of_type_Bdzh.d();
     int j = (int)(i * 0.15F);
-    this.jdField_a_of_type_Bcsi.a(new bcre[] { new bcrn(new bcre[] { new bcrg(paramInt), new bcrm(200, 1.0F, 1.05F), new bcrm(200, 1.05F, 0.0F) }), new bcrn(new bcre[] { new bcrg(paramInt), new bcri(200, (int)this.jdField_a_of_type_Bcsi.c, (int)this.jdField_a_of_type_Bcsi.d, (int)this.jdField_a_of_type_Bcsi.c - j / 2, (int)this.jdField_a_of_type_Bcsi.d), new bcri(200, (int)this.jdField_a_of_type_Bcsi.c, (int)this.jdField_a_of_type_Bcsi.d, (int)this.jdField_a_of_type_Bcsi.c + j / 2 + i, (int)this.jdField_a_of_type_Bcsi.d) }) });
-    if (this.jdField_b_of_type_Bcsi.a() == null)
+    this.jdField_a_of_type_Bdzh.a(new bdyd[] { new bdym(new bdyd[] { new bdyf(paramInt), new bdyl(200, 1.0F, 1.05F), new bdyl(200, 1.05F, 0.0F) }), new bdym(new bdyd[] { new bdyf(paramInt), new bdyh(200, (int)this.jdField_a_of_type_Bdzh.c, (int)this.jdField_a_of_type_Bdzh.d, (int)this.jdField_a_of_type_Bdzh.c - j / 2, (int)this.jdField_a_of_type_Bdzh.d), new bdyh(200, (int)this.jdField_a_of_type_Bdzh.c, (int)this.jdField_a_of_type_Bdzh.d, (int)this.jdField_a_of_type_Bdzh.c + j / 2 + i, (int)this.jdField_a_of_type_Bdzh.d) }) });
+    if (this.jdField_b_of_type_Bdzh.a() == null)
     {
-      if (parambcrf != null) {
-        parambcrf.a();
+      if (parambdye != null) {
+        parambdye.a();
       }
       return;
     }
-    bcrm localbcrm = new bcrm(200, 1.05F, 0.0F);
-    this.jdField_b_of_type_Bcsi.a(new bcre[] { new bcrn(new bcre[] { new bcrg(paramInt), new bcrm(200, 1.0F, 1.05F), localbcrm }), new bcrn(new bcre[] { new bcri(200, (int)this.jdField_b_of_type_Bcsi.c, (int)this.jdField_b_of_type_Bcsi.d, (int)this.jdField_b_of_type_Bcsi.c + j / 2, (int)this.jdField_b_of_type_Bcsi.d), new bcri(200, (int)this.jdField_b_of_type_Bcsi.c, (int)this.jdField_b_of_type_Bcsi.d, (int)this.jdField_b_of_type_Bcsi.c - j / 2 - i, (int)this.jdField_b_of_type_Bcsi.d) }) });
-    localbcrm.a(parambcrf);
+    bdyl localbdyl = new bdyl(200, 1.05F, 0.0F);
+    this.jdField_b_of_type_Bdzh.a(new bdyd[] { new bdym(new bdyd[] { new bdyf(paramInt), new bdyl(200, 1.0F, 1.05F), localbdyl }), new bdym(new bdyd[] { new bdyh(200, (int)this.jdField_b_of_type_Bdzh.c, (int)this.jdField_b_of_type_Bdzh.d, (int)this.jdField_b_of_type_Bdzh.c + j / 2, (int)this.jdField_b_of_type_Bdzh.d), new bdyh(200, (int)this.jdField_b_of_type_Bdzh.c, (int)this.jdField_b_of_type_Bdzh.d, (int)this.jdField_b_of_type_Bdzh.c - j / 2 - i, (int)this.jdField_b_of_type_Bdzh.d) }) });
+    localbdyl.a(parambdye);
   }
   
-  public void a(bcrz parambcrz)
+  public void a(bdyy parambdyy)
   {
-    this.jdField_a_of_type_Bcsi.e = 0.0F;
-    this.jdField_b_of_type_Bcsi.e = 0.0F;
-    int i = this.jdField_a_of_type_Bcsi.d();
+    this.jdField_a_of_type_Bdzh.e = 0.0F;
+    this.jdField_b_of_type_Bdzh.e = 0.0F;
+    int i = this.jdField_a_of_type_Bdzh.d();
     int j = i / 10;
-    this.jdField_a_of_type_Bcsi.a(this.jdField_a_of_type_Int / 2 - i, this.d);
-    this.jdField_b_of_type_Bcsi.a(this.jdField_a_of_type_Int / 2 + i, this.d);
-    this.jdField_a_of_type_ArrayOfBcsi[0].a(this.jdField_a_of_type_Int / 2 - i, this.d - j * 2);
-    this.jdField_a_of_type_ArrayOfBcsi[1].a(this.jdField_a_of_type_Int / 2 - i, this.d - j);
-    this.jdField_a_of_type_ArrayOfBcsi[2].a(this.jdField_a_of_type_Int / 2 - i, this.d);
-    this.jdField_a_of_type_ArrayOfBcsi[3].a(this.jdField_a_of_type_Int / 2 - i * 6 / 5, this.d + j);
-    this.jdField_a_of_type_ArrayOfBcsi[4].a(this.jdField_a_of_type_Int / 2 - i * 6 / 5, this.d + j * 2);
-    this.jdField_a_of_type_ArrayOfBcsi[5].a(this.jdField_a_of_type_Int / 2 - i, j * 2 + this.d);
-    this.jdField_a_of_type_Bcsi.a(new bcre[] { new bcrn(new bcre[] { new bcrm(200, 0.0F, 1.05F), new bcrm(150, 1.05F, 1.0F) }) });
-    this.jdField_b_of_type_Bcsi.a(new bcre[] { new bcrn(new bcre[] { new bcrg(200), new bcrm(200, 0.0F, 1.05F), new bcrm(150, 1.05F, 1.0F) }) });
-    float f = 9.0F / (this.jdField_b_of_type_Bcsi.c - this.jdField_a_of_type_Bcsi.c);
-    bcrn localbcrn1 = new bcrn(new bcre[] { new bcrg(500), new bcrh(600, (int)this.jdField_a_of_type_ArrayOfBcsi[0].c, (int)this.jdField_a_of_type_ArrayOfBcsi[0].d, (int)this.jdField_b_of_type_Bcsi.c, i / 20, f) });
-    bcrn localbcrn2 = new bcrn(new bcre[] { new bcrg(700), new bcrh(600, (int)this.jdField_a_of_type_ArrayOfBcsi[1].c, (int)this.jdField_a_of_type_ArrayOfBcsi[1].d, (int)this.jdField_b_of_type_Bcsi.c, i / 20, f) });
-    bcrn localbcrn3 = new bcrn(new bcre[] { new bcrg(600), new bcrh(600, (int)this.jdField_a_of_type_ArrayOfBcsi[2].c, (int)this.jdField_a_of_type_ArrayOfBcsi[2].d, (int)this.jdField_b_of_type_Bcsi.c, i / 20, f) });
-    bcrn localbcrn4 = new bcrn(new bcre[] { new bcrg(900), new bcrh(600, (int)this.jdField_a_of_type_ArrayOfBcsi[3].c, (int)this.jdField_a_of_type_ArrayOfBcsi[3].d, (int)this.jdField_b_of_type_Bcsi.c, i / 20, f * 0.6F) });
-    bcrn localbcrn5 = new bcrn(new bcre[] { new bcrg(800), new bcrh(600, (int)this.jdField_a_of_type_ArrayOfBcsi[4].c, (int)this.jdField_a_of_type_ArrayOfBcsi[4].d, (int)this.jdField_b_of_type_Bcsi.c, i / 20, f * 0.6F) });
-    bcrn localbcrn6 = new bcrn(new bcre[] { new bcrg(1000), new bcrh(600, (int)this.jdField_a_of_type_ArrayOfBcsi[5].c, (int)this.jdField_a_of_type_ArrayOfBcsi[5].d, (int)this.jdField_b_of_type_Bcsi.c, i / 20, f) });
+    this.jdField_a_of_type_Bdzh.a(this.jdField_a_of_type_Int / 2 - i, this.d);
+    this.jdField_b_of_type_Bdzh.a(this.jdField_a_of_type_Int / 2 + i, this.d);
+    this.jdField_a_of_type_ArrayOfBdzh[0].a(this.jdField_a_of_type_Int / 2 - i, this.d - j * 2);
+    this.jdField_a_of_type_ArrayOfBdzh[1].a(this.jdField_a_of_type_Int / 2 - i, this.d - j);
+    this.jdField_a_of_type_ArrayOfBdzh[2].a(this.jdField_a_of_type_Int / 2 - i, this.d);
+    this.jdField_a_of_type_ArrayOfBdzh[3].a(this.jdField_a_of_type_Int / 2 - i * 6 / 5, this.d + j);
+    this.jdField_a_of_type_ArrayOfBdzh[4].a(this.jdField_a_of_type_Int / 2 - i * 6 / 5, this.d + j * 2);
+    this.jdField_a_of_type_ArrayOfBdzh[5].a(this.jdField_a_of_type_Int / 2 - i, j * 2 + this.d);
+    this.jdField_a_of_type_Bdzh.a(new bdyd[] { new bdym(new bdyd[] { new bdyl(200, 0.0F, 1.05F), new bdyl(150, 1.05F, 1.0F) }) });
+    this.jdField_b_of_type_Bdzh.a(new bdyd[] { new bdym(new bdyd[] { new bdyf(200), new bdyl(200, 0.0F, 1.05F), new bdyl(150, 1.05F, 1.0F) }) });
+    float f = 9.0F / (this.jdField_b_of_type_Bdzh.c - this.jdField_a_of_type_Bdzh.c);
+    bdym localbdym1 = new bdym(new bdyd[] { new bdyf(500), new bdyg(600, (int)this.jdField_a_of_type_ArrayOfBdzh[0].c, (int)this.jdField_a_of_type_ArrayOfBdzh[0].d, (int)this.jdField_b_of_type_Bdzh.c, i / 20, f) });
+    bdym localbdym2 = new bdym(new bdyd[] { new bdyf(700), new bdyg(600, (int)this.jdField_a_of_type_ArrayOfBdzh[1].c, (int)this.jdField_a_of_type_ArrayOfBdzh[1].d, (int)this.jdField_b_of_type_Bdzh.c, i / 20, f) });
+    bdym localbdym3 = new bdym(new bdyd[] { new bdyf(600), new bdyg(600, (int)this.jdField_a_of_type_ArrayOfBdzh[2].c, (int)this.jdField_a_of_type_ArrayOfBdzh[2].d, (int)this.jdField_b_of_type_Bdzh.c, i / 20, f) });
+    bdym localbdym4 = new bdym(new bdyd[] { new bdyf(900), new bdyg(600, (int)this.jdField_a_of_type_ArrayOfBdzh[3].c, (int)this.jdField_a_of_type_ArrayOfBdzh[3].d, (int)this.jdField_b_of_type_Bdzh.c, i / 20, f * 0.6F) });
+    bdym localbdym5 = new bdym(new bdyd[] { new bdyf(800), new bdyg(600, (int)this.jdField_a_of_type_ArrayOfBdzh[4].c, (int)this.jdField_a_of_type_ArrayOfBdzh[4].d, (int)this.jdField_b_of_type_Bdzh.c, i / 20, f * 0.6F) });
+    bdym localbdym6 = new bdym(new bdyd[] { new bdyf(1000), new bdyg(600, (int)this.jdField_a_of_type_ArrayOfBdzh[5].c, (int)this.jdField_a_of_type_ArrayOfBdzh[5].d, (int)this.jdField_b_of_type_Bdzh.c, i / 20, f) });
     i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfBcsi.length)
+    while (i < this.jdField_a_of_type_ArrayOfBdzh.length)
     {
-      this.jdField_a_of_type_ArrayOfBcsi[i].e = 0.0F;
-      this.jdField_a_of_type_ArrayOfBcsi[i].jdField_a_of_type_Int = 255;
-      this.jdField_a_of_type_ArrayOfBcsi[i].a(new bcre[] { new bcre[] { localbcrn1, localbcrn2, localbcrn3, localbcrn4, localbcrn5, localbcrn6 }[i], new bcrn(new bcre[] { new bcrg(1300), new bcrk(300, 255, 0) }) });
+      this.jdField_a_of_type_ArrayOfBdzh[i].e = 0.0F;
+      this.jdField_a_of_type_ArrayOfBdzh[i].jdField_a_of_type_Int = 255;
+      this.jdField_a_of_type_ArrayOfBdzh[i].a(new bdyd[] { new bdyd[] { localbdym1, localbdym2, localbdym3, localbdym4, localbdym5, localbdym6 }[i], new bdym(new bdyd[] { new bdyf(1300), new bdyj(300, 255, 0) }) });
       i += 1;
     }
-    if ((this.c != null) && ((this.c instanceof bcry)))
+    if ((this.c != null) && ((this.c instanceof bdyx)))
     {
-      ((bcry)this.c).a = new bfji(this, parambcrz);
-      ((bcry)this.c).a(getContext(), this);
+      ((bdyx)this.c).a = new bgrz(this, parambdyy);
+      ((bdyx)this.c).a(getContext(), this);
     }
     while (a())
     {
       a(this.c);
-      a(this.jdField_a_of_type_Bcsi);
-      a(this.jdField_b_of_type_Bcsi);
+      a(this.jdField_a_of_type_Bdzh);
+      a(this.jdField_b_of_type_Bdzh);
       i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfBcsi.length)
+      while (i < this.jdField_a_of_type_ArrayOfBdzh.length)
       {
-        a(this.jdField_a_of_type_ArrayOfBcsi[i]);
+        a(this.jdField_a_of_type_ArrayOfBdzh[i]);
         i += 1;
       }
       if ((this.c != null) && ((this.c instanceof VideoSprite))) {
-        ((VideoSprite)this.c).a(new bfjk(this, parambcrz));
+        ((VideoSprite)this.c).a(new bgsb(this, parambdyy));
       }
     }
   }
@@ -177,8 +177,8 @@ public class TroopGiftToPersonalSurfaceView
   
   public void setReceiveHeadBitmap(Bitmap paramBitmap)
   {
-    if ((paramBitmap != null) && (this.jdField_b_of_type_Bcsi != null)) {
-      this.jdField_b_of_type_Bcsi.a(this, a(paramBitmap.copy(Bitmap.Config.ARGB_8888, false), DisplayUtil.dip2px(getContext(), 70.0F), DisplayUtil.dip2px(getContext(), 70.0F)));
+    if ((paramBitmap != null) && (this.jdField_b_of_type_Bdzh != null)) {
+      this.jdField_b_of_type_Bdzh.a(this, a(paramBitmap.copy(Bitmap.Config.ARGB_8888, false), DisplayUtil.dip2px(getContext(), 70.0F), DisplayUtil.dip2px(getContext(), 70.0F)));
     }
   }
   
@@ -189,75 +189,75 @@ public class TroopGiftToPersonalSurfaceView
     this.c.c = (paramInt1 / 2);
     this.c.d = (paramInt2 / 2);
     a(this.c);
-    this.jdField_a_of_type_Bcsi = new bcsi();
-    a(this.jdField_a_of_type_Bcsi);
-    this.jdField_b_of_type_Bcsi = new bcsi();
-    a(this.jdField_b_of_type_Bcsi);
-    this.jdField_a_of_type_Bcsi.e = 0.0F;
-    this.jdField_b_of_type_Bcsi.e = 0.0F;
-    this.jdField_a_of_type_ArrayOfBcsi = new bcsi[6];
+    this.jdField_a_of_type_Bdzh = new bdzh();
+    a(this.jdField_a_of_type_Bdzh);
+    this.jdField_b_of_type_Bdzh = new bdzh();
+    a(this.jdField_b_of_type_Bdzh);
+    this.jdField_a_of_type_Bdzh.e = 0.0F;
+    this.jdField_b_of_type_Bdzh.e = 0.0F;
+    this.jdField_a_of_type_ArrayOfBdzh = new bdzh[6];
     paramInt1 = 0;
     while (paramInt1 < 6)
     {
-      this.jdField_a_of_type_ArrayOfBcsi[paramInt1] = new bcsi();
-      this.jdField_a_of_type_ArrayOfBcsi[paramInt1].e = 0.0F;
-      a(this.jdField_a_of_type_ArrayOfBcsi[paramInt1]);
+      this.jdField_a_of_type_ArrayOfBdzh[paramInt1] = new bdzh();
+      this.jdField_a_of_type_ArrayOfBdzh[paramInt1].e = 0.0F;
+      a(this.jdField_a_of_type_ArrayOfBdzh[paramInt1]);
       paramInt1 += 1;
     }
     if (paramBitmap1 != null) {
-      this.jdField_a_of_type_Bcsi.a(this, a(paramBitmap1.copy(Bitmap.Config.ARGB_8888, false), DisplayUtil.dip2px(getContext(), 70.0F), DisplayUtil.dip2px(getContext(), 70.0F)));
+      this.jdField_a_of_type_Bdzh.a(this, a(paramBitmap1.copy(Bitmap.Config.ARGB_8888, false), DisplayUtil.dip2px(getContext(), 70.0F), DisplayUtil.dip2px(getContext(), 70.0F)));
     }
     if (paramBitmap2 != null) {
-      this.jdField_b_of_type_Bcsi.a(this, a(paramBitmap2.copy(Bitmap.Config.ARGB_8888, false), DisplayUtil.dip2px(getContext(), 70.0F), DisplayUtil.dip2px(getContext(), 70.0F)));
+      this.jdField_b_of_type_Bdzh.a(this, a(paramBitmap2.copy(Bitmap.Config.ARGB_8888, false), DisplayUtil.dip2px(getContext(), 70.0F), DisplayUtil.dip2px(getContext(), 70.0F)));
     }
-    paramBitmap1 = new bcsl(this, paramBitmap3);
+    paramBitmap1 = new bdzk(this, paramBitmap3);
     paramInt1 = 0;
     while (paramInt1 < 6)
     {
-      this.jdField_a_of_type_ArrayOfBcsi[paramInt1].a(paramBitmap1);
+      this.jdField_a_of_type_ArrayOfBdzh[paramInt1].a(paramBitmap1);
       paramInt1 += 1;
     }
   }
   
   public void setResourceWithFps(Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, String[] paramArrayOfString, int paramInt)
   {
-    this.c = new bcry(this, paramArrayOfString);
-    ((bcry)this.c).e(paramInt);
+    this.c = new bdyx(this, paramArrayOfString);
+    ((bdyx)this.c).e(paramInt);
     a(this.c);
-    this.jdField_a_of_type_Bcsi = new bcsi();
-    a(this.jdField_a_of_type_Bcsi);
-    this.jdField_b_of_type_Bcsi = new bcsi();
-    a(this.jdField_b_of_type_Bcsi);
-    this.jdField_a_of_type_Bcsi.e = 0.0F;
-    this.jdField_b_of_type_Bcsi.e = 0.0F;
-    this.jdField_a_of_type_ArrayOfBcsi = new bcsi[6];
+    this.jdField_a_of_type_Bdzh = new bdzh();
+    a(this.jdField_a_of_type_Bdzh);
+    this.jdField_b_of_type_Bdzh = new bdzh();
+    a(this.jdField_b_of_type_Bdzh);
+    this.jdField_a_of_type_Bdzh.e = 0.0F;
+    this.jdField_b_of_type_Bdzh.e = 0.0F;
+    this.jdField_a_of_type_ArrayOfBdzh = new bdzh[6];
     paramInt = 0;
     while (paramInt < 6)
     {
-      this.jdField_a_of_type_ArrayOfBcsi[paramInt] = new bcsi();
-      this.jdField_a_of_type_ArrayOfBcsi[paramInt].e = 0.0F;
-      a(this.jdField_a_of_type_ArrayOfBcsi[paramInt]);
+      this.jdField_a_of_type_ArrayOfBdzh[paramInt] = new bdzh();
+      this.jdField_a_of_type_ArrayOfBdzh[paramInt].e = 0.0F;
+      a(this.jdField_a_of_type_ArrayOfBdzh[paramInt]);
       paramInt += 1;
     }
     if (paramBitmap1 != null) {
-      this.jdField_a_of_type_Bcsi.a(this, a(paramBitmap1.copy(Bitmap.Config.ARGB_8888, false), DisplayUtil.dip2px(getContext(), 70.0F), DisplayUtil.dip2px(getContext(), 70.0F)));
+      this.jdField_a_of_type_Bdzh.a(this, a(paramBitmap1.copy(Bitmap.Config.ARGB_8888, false), DisplayUtil.dip2px(getContext(), 70.0F), DisplayUtil.dip2px(getContext(), 70.0F)));
     }
     if (paramBitmap2 != null) {
-      this.jdField_b_of_type_Bcsi.a(this, a(paramBitmap2.copy(Bitmap.Config.ARGB_8888, false), DisplayUtil.dip2px(getContext(), 70.0F), DisplayUtil.dip2px(getContext(), 70.0F)));
+      this.jdField_b_of_type_Bdzh.a(this, a(paramBitmap2.copy(Bitmap.Config.ARGB_8888, false), DisplayUtil.dip2px(getContext(), 70.0F), DisplayUtil.dip2px(getContext(), 70.0F)));
     }
-    paramBitmap1 = new bcsl(this, paramBitmap3);
+    paramBitmap1 = new bdzk(this, paramBitmap3);
     paramInt = 0;
     while (paramInt < 6)
     {
-      this.jdField_a_of_type_ArrayOfBcsi[paramInt].a(paramBitmap1);
+      this.jdField_a_of_type_ArrayOfBdzh[paramInt].a(paramBitmap1);
       paramInt += 1;
     }
   }
   
   public void setSendHeadBitmap(Bitmap paramBitmap)
   {
-    if ((paramBitmap != null) && (this.jdField_a_of_type_Bcsi != null)) {
-      this.jdField_a_of_type_Bcsi.a(this, a(paramBitmap.copy(Bitmap.Config.ARGB_8888, false), DisplayUtil.dip2px(getContext(), 70.0F), DisplayUtil.dip2px(getContext(), 70.0F)));
+    if ((paramBitmap != null) && (this.jdField_a_of_type_Bdzh != null)) {
+      this.jdField_a_of_type_Bdzh.a(this, a(paramBitmap.copy(Bitmap.Config.ARGB_8888, false), DisplayUtil.dip2px(getContext(), 70.0F), DisplayUtil.dip2px(getContext(), 70.0F)));
     }
   }
 }

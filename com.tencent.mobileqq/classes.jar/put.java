@@ -1,15 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface put
+public class put
+  extends ayqy
 {
-  public abstract ArrayList<BaseArticleInfo> a(int paramInt);
+  public put(KandianMergeManager paramKandianMergeManager) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, puu parampuu);
-  
-  public abstract int[] a(int paramInt);
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    QLog.d("KandianMergeManager", 1, "onGameCenterMsgReceive | redTouchObserver received a notification ");
+    KandianMergeManager.a(this.a);
+  }
 }
 
 

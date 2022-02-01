@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import afcm;
-import ayfu;
-import bcef;
+import aftr;
+import ahvi;
+import bdla;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class RedPacketAppInfo
@@ -22,7 +23,7 @@ public class RedPacketAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839187;
+    return 2130839207;
   }
   
   public int getAppID()
@@ -51,7 +52,7 @@ public class RedPacketAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131718117);
+    return BaseApplicationImpl.getContext().getString(2131718502);
   }
   
   public void init()
@@ -60,28 +61,28 @@ public class RedPacketAppInfo
     this.mLastClickedTime = 0L;
   }
   
-  public void onPlusPanelAppClick(ayfu paramayfu, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     long l = System.currentTimeMillis();
     if (Math.abs(l - this.mLastClickedTime) < 1000L) {
       return;
     }
     this.mLastClickedTime = l;
-    paramayfu.b(paramBaseChatPie);
+    paramahvi.b(paramBaseChatPie);
     paramBaseChatPie.showPlusItemPanel(10);
-    afcm.a(0);
-    paramayfu = "";
+    aftr.a(0);
+    paramahvi = "";
     if ((paramSessionInfo.curType == 0) || (paramSessionInfo.curType == 1000) || (paramSessionInfo.curType == 1004) || (paramSessionInfo.curType == 1001) || (paramSessionInfo.curType == 10002) || (paramSessionInfo.curType == 10004) || (paramSessionInfo.curType == 10008)) {
-      paramayfu = "entrance.click.c2c.plus";
+      paramahvi = "entrance.click.c2c.plus";
     }
     for (;;)
     {
-      bcef.b(paramBaseChatPie.app, "P_CliOper", "Vip_pay_mywallet", "", "wallet", paramayfu, 0, 0, "", "", "", "");
+      bdla.b(paramBaseChatPie.app, "P_CliOper", "Vip_pay_mywallet", "", "wallet", paramahvi, 0, 0, "", "", "", "");
       return;
       if (paramSessionInfo.curType == 3000) {
-        paramayfu = "entrance.click.group.plus";
+        paramahvi = "entrance.click.group.plus";
       } else if (paramSessionInfo.curType == 1) {
-        paramayfu = "entrance.click.chatgroup.plus";
+        paramahvi = "entrance.click.chatgroup.plus";
       }
     }
   }

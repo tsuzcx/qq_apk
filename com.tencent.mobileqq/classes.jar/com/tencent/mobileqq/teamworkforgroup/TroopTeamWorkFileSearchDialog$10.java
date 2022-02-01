@@ -5,14 +5,14 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.PorterDuff.Mode;
 import android.view.View;
-import bczc;
+import begb;
 import com.tencent.mobileqq.utils.StackBlur;
 import com.tencent.qphone.base.util.QLog;
 
 public class TroopTeamWorkFileSearchDialog$10
   implements Runnable
 {
-  public TroopTeamWorkFileSearchDialog$10(bczc parambczc, Bitmap paramBitmap, View paramView, boolean paramBoolean) {}
+  public TroopTeamWorkFileSearchDialog$10(begb parambegb, Bitmap paramBitmap, View paramView, boolean paramBoolean) {}
   
   public void run()
   {
@@ -26,14 +26,14 @@ public class TroopTeamWorkFileSearchDialog$10
       if (QLog.isColorLevel()) {
         QLog.d("TroopTeamWorkFileSearchDialog", 2, "createScaledBitmap");
       }
-      bczc.a(this.this$0, Bitmap.createScaledBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / bczc.d, this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / bczc.d, true));
+      begb.a(this.this$0, Bitmap.createScaledBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / begb.d, this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / begb.d, true));
       Canvas localCanvas = new Canvas();
-      localCanvas.setBitmap(bczc.a(this.this$0));
+      localCanvas.setBitmap(begb.a(this.this$0));
       localCanvas.drawColor(Color.parseColor("#50ffffff"), PorterDuff.Mode.LIGHTEN);
       if (QLog.isColorLevel()) {
         QLog.d("TroopTeamWorkFileSearchDialog", 2, "start blur");
       }
-      StackBlur.fastblur(bczc.a(this.this$0), bczc.e);
+      StackBlur.fastblur(begb.a(this.this$0), begb.e);
       if (QLog.isColorLevel()) {
         QLog.d("TroopTeamWorkFileSearchDialog", 2, "blur end");
       }
@@ -41,7 +41,7 @@ public class TroopTeamWorkFileSearchDialog$10
     }
     catch (Exception localException)
     {
-      bczc.a(this.this$0, null);
+      begb.a(this.this$0, null);
       if (QLog.isColorLevel()) {
         QLog.d("TroopTeamWorkFileSearchDialog", 2, "blur error", localException);
       }
@@ -49,7 +49,7 @@ public class TroopTeamWorkFileSearchDialog$10
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      bczc.a(this.this$0, null);
+      begb.a(this.this$0, null);
       if (QLog.isColorLevel()) {
         QLog.d("TroopTeamWorkFileSearchDialog", 2, "blur error", localOutOfMemoryError);
       }
@@ -63,7 +63,7 @@ public class TroopTeamWorkFileSearchDialog$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.TroopTeamWorkFileSearchDialog.10
  * JD-Core Version:    0.7.0.1
  */

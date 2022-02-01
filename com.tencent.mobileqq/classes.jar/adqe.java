@@ -1,16 +1,19 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryImageView;
+import com.tencent.mobileqq.activity.ChatHistoryImageView.DownloadAndSaveTask;
 
 public class adqe
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public adqe(LoginInfoActivity paramLoginInfoActivity) {}
+  public adqe(ChatHistoryImageView paramChatHistoryImageView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramDialogInterface == LoginInfoActivity.a(this.a)) {
-      LoginInfoActivity.a(this.a, null);
+    if (this.a.a != null)
+    {
+      this.a.a.b = false;
+      this.a.a.a(false);
     }
   }
 }

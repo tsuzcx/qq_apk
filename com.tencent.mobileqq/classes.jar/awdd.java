@@ -1,150 +1,58 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout;
+import com.tencent.mobileqq.activity.contacts.pullrefresh.ContactRefreshHeader;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.os.MqqHandler;
 
-public class awdd
+class awdd
+  implements Handler.Callback
 {
-  public int a;
-  public asya a;
-  public ayds a;
-  public bbqx a;
-  public CopyOnWriteArrayList<awdh> a;
+  awdd(awdc paramawdc) {}
   
-  public awdd()
+  private void a()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  }
-  
-  public static awdd a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
-  {
-    awdd localawdd = new awdd();
-    localawdd.jdField_a_of_type_Asya = new asya(paramQQAppInterface, paramChatMessage);
-    return localawdd;
-  }
-  
-  public static awdd a(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo)
-  {
-    awdd localawdd = new awdd();
-    localawdd.jdField_a_of_type_Bbqx = bbqf.a(paramQQAppInterface, paramMessageForShortVideo, 1);
-    localawdd.jdField_a_of_type_Int = 2;
-    return localawdd;
-  }
-  
-  public static awdd a(MessageForPic paramMessageForPic)
-  {
-    int i = 6;
-    if (paramMessageForPic.fileSizeFlag == 1) {
-      i = 7;
+    if (awdc.a(this.a) != null) {
+      awdc.a(this.a).setRefreshing(false);
     }
-    awdd localawdd = new awdd();
-    ayds localayds = aydj.a(i, 1);
-    localayds.a(paramMessageForPic, paramMessageForPic.getPicDownloadInfo());
-    localawdd.jdField_a_of_type_Ayds = localayds;
-    localawdd.jdField_a_of_type_Int = 1;
-    return localawdd;
+    if (awdc.a(this.a) != null) {
+      awdc.a(this.a).setRefresh(false);
+    }
   }
   
-  public static List<awdd> a(QQAppInterface paramQQAppInterface, List<ChatMessage> paramList, agcw paramagcw, awdh paramawdh)
+  public boolean handleMessage(Message paramMessage)
   {
-    if ((paramList == null) || (paramList.isEmpty()) || (paramagcw == null)) {
-      return null;
-    }
-    paramagcw = new ArrayList();
-    Iterator localIterator = paramList.iterator();
-    if (localIterator.hasNext())
+    switch (paramMessage.what)
     {
-      paramList = (ChatMessage)localIterator.next();
-      switch (agcw.a(paramQQAppInterface, paramList))
+    default: 
+      return false;
+    case 3: 
+      QQToast.a(this.a.a(), 1, 2131718993, 0).b(awdc.a(this.a));
+      a();
+      return false;
+    case 4: 
+      int i = paramMessage.arg1;
+      if (paramMessage.arg2 == 1) {}
+      for (i = 1;; i = 0)
       {
-      default: 
-        paramList = null;
-      }
-    }
-    while (paramList != null)
-    {
-      paramList.a(paramawdh);
-      paramagcw.add(paramList);
-      break;
-      if (((paramList instanceof MessageForPic)) && (!ahtj.a((MessageForPic)paramList)))
-      {
-        paramList = a((MessageForPic)paramList);
-        continue;
-        if ((paramList instanceof MessageForShortVideo))
-        {
-          paramList = a(paramQQAppInterface, (MessageForShortVideo)paramList);
-          continue;
-          if ((paramList instanceof MessageForShortVideo))
-          {
-            paramList = b(paramQQAppInterface, (MessageForShortVideo)paramList);
-            continue;
-            if ((paramList instanceof MessageForFile))
-            {
-              paramList = a(paramQQAppInterface, paramList);
-              paramList.jdField_a_of_type_Int = 4;
-              continue;
-              if ((paramList instanceof MessageForFile))
-              {
-                paramList = a(paramQQAppInterface, paramList);
-                paramList.jdField_a_of_type_Int = 5;
-                continue;
-                if ((paramList instanceof MessageForTroopFile))
-                {
-                  paramList = a(paramQQAppInterface, paramList);
-                  paramList.jdField_a_of_type_Int = 6;
-                  continue;
-                  if ((paramList instanceof MessageForTroopFile))
-                  {
-                    paramList = a(paramQQAppInterface, paramList);
-                    paramList.jdField_a_of_type_Int = 7;
-                    continue;
-                    return paramagcw;
-                  }
-                }
-              }
-            }
-          }
+        if (i == 0) {
+          break label134;
         }
+        awdc.a(this.a);
+        if (awdc.a(this.a) == null) {
+          break;
+        }
+        awdc.a(this.a).a(0);
+        this.a.a.sendEmptyMessageDelayed(5, 800L);
+        return false;
       }
-      paramList = null;
+      label134:
+      a();
+      QQToast.a(this.a.a(), 1, 2131718993, 0).b(awdc.a(this.a));
+      return false;
     }
-  }
-  
-  public static awdd b(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo)
-  {
-    awdd localawdd = new awdd();
-    localawdd.jdField_a_of_type_Bbqx = bbqf.a(paramQQAppInterface, paramMessageForShortVideo, 1);
-    localawdd.jdField_a_of_type_Int = 3;
-    return localawdd;
-  }
-  
-  public void a(awdh paramawdh)
-  {
-    if ((paramawdh != null) && (!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramawdh))) {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramawdh);
-    }
-  }
-  
-  public void b(awdh paramawdh)
-  {
-    if ((paramawdh != null) && (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramawdh))) {}
-    try
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramawdh);
-      return;
-    }
-    catch (Exception paramawdh)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("FileSaveReq", 2, "removeSaveCallBack exception = " + paramawdh.getMessage());
-    }
+    a();
+    return false;
   }
 }
 

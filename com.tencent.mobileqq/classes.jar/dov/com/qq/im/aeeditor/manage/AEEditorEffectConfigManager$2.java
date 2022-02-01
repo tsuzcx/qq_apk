@@ -2,11 +2,11 @@ package dov.com.qq.im.aeeditor.manage;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
-import apub;
-import bmbx;
-import bmew;
-import bmex;
-import bmey;
+import aqxe;
+import bnrh;
+import bnuo;
+import bnup;
+import bnuq;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.io.File;
 import mqq.os.MqqHandler;
@@ -14,42 +14,42 @@ import mqq.os.MqqHandler;
 public class AEEditorEffectConfigManager$2
   implements Runnable
 {
-  public AEEditorEffectConfigManager$2(bmew parambmew) {}
+  public AEEditorEffectConfigManager$2(bnuo parambnuo) {}
   
   public void run()
   {
-    if (!TextUtils.isEmpty(bmew.a())) {
+    if (!TextUtils.isEmpty(bnuo.a())) {
       for (;;)
       {
         try
         {
-          synchronized (bmew.a())
+          synchronized (bnuo.a())
           {
-            if (new File(bmew.a()).exists())
+            if (new File(bnuo.a()).exists())
             {
-              if (bmew.a(this.this$0) != null)
+              if (bnuo.a(this.this$0) != null)
               {
-                bmew.a(this.this$0).a(bmew.a());
+                bnuo.a(this.this$0).a(bnuo.a());
                 return;
               }
-              bmbx.d("AEEditorEffectConfigManager", "group list back is null.");
+              bnrh.d("AEEditorEffectConfigManager", "group list back is null.");
             }
           }
-          if (bmew.a(this.this$0) == null) {
+          if (bnuo.a(this.this$0) == null) {
             break label155;
           }
         }
         catch (Exception localException)
         {
-          bmbx.d("AEEditorEffectConfigManager", localException.toString());
+          bnrh.d("AEEditorEffectConfigManager", localException.toString());
           return;
         }
-        ((bmey)apub.a().a(643)).a();
-        ThreadManager.getSubThreadHandler().removeCallbacksAndMessages(bmew.a(this.this$0));
-        ThreadManager.getSubThreadHandler().postAtTime(new AEEditorEffectConfigManager.2.1(this), bmew.a(this.this$0), SystemClock.uptimeMillis() + 5000L);
+        ((bnuq)aqxe.a().a(643)).a();
+        ThreadManager.getSubThreadHandler().removeCallbacksAndMessages(bnuo.a(this.this$0));
+        ThreadManager.getSubThreadHandler().postAtTime(new AEEditorEffectConfigManager.2.1(this), bnuo.a(this.this$0), SystemClock.uptimeMillis() + 5000L);
         continue;
         label155:
-        bmbx.d("AEEditorEffectConfigManager", "group list back is null && data empty.");
+        bnrh.d("AEEditorEffectConfigManager", "group list back is null && data empty.");
       }
     }
   }

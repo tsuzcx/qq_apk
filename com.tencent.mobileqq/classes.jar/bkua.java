@@ -1,21 +1,4 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class bkua
-  implements View.OnClickListener
-{
-  bkua(bkty parambkty) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.a.mRuntime.a() != null) {
-      this.a.mRuntime.a().loadUrl("javascript:" + bkty.a(this.a) + "()");
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
-}
+public abstract interface bkua {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

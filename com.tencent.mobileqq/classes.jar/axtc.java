@@ -1,35 +1,19 @@
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.onlinestatus.AccountPanel.15.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class axtc
-  implements Observer
+  implements View.OnClickListener
 {
-  axtc(axsv paramaxsv) {}
+  public axtc(RecentUserInvitePanel paramRecentUserInvitePanel, axth paramaxth) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void onClick(View paramView)
   {
-    if ((axsv.a(this.a) == null) || (axsv.a(this.a).isFinishing()) || (axsv.a(this.a) == null)) {
-      QLog.d("AccountPanel", 1, String.format("mObserver update return", new Object[0]));
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel.a.a(paramView, this.jdField_a_of_type_Axth);
     }
-    do
-    {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("AccountPanel", 2, "update");
-        }
-      } while (!(paramObject instanceof String[]));
-      paramObservable = (String[])paramObject;
-    } while ((paramObservable.length != 2) || (!AppConstants.SUBACCOUNT_ASSISTANT_UIN.equals(paramObservable[0])));
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountPanel", 2, "update() -> before update");
-    }
-    axsv.a(this.a).runOnUiThread(new AccountPanel.15.1(this));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -4,11 +4,11 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Environment;
 import android.support.v4.util.SparseArrayCompat;
-import anwv;
-import anww;
-import bccv;
-import bkhd;
-import bksn;
+import aozx;
+import aozy;
+import bdjq;
+import blsp;
+import bmdw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -24,10 +24,10 @@ public class UpdateSecureFileStrategy
   
   public UpdateSecureFileStrategy()
   {
-    a(0, new bksn());
-    a(1, new anww());
-    a(2, new anwv());
-    a(3, new bkhd());
+    a(0, new bmdw());
+    a(1, new aozy());
+    a(2, new aozx());
+    a(3, new blsp());
   }
   
   private int a()
@@ -56,7 +56,7 @@ public class UpdateSecureFileStrategy
     if (!((File)localObject1).exists()) {
       ((File)localObject1).mkdirs();
     }
-    localObject2 = localFile.listFiles(new bccv(this));
+    localObject2 = localFile.listFiles(new bdjq(this));
     if (localObject2 == null) {
       return 4;
     }

@@ -1,200 +1,330 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-import cooperation.qzone.report.lp.LpReportInfo_dc02880;
-import cooperation.qzone.report.lp.LpReportManager;
-import java.util.Calendar;
-import java.util.Locale;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.DiscussionMemberInfo;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.util.SearchConfigManager;
+import com.tencent.mobileqq.utils.ContactUtils;
+import java.util.Map;
 
 public class bcec
+  extends bcff
 {
-  public static int a;
-  private static long jdField_a_of_type_Long;
-  private static bcee jdField_a_of_type_Bcee = new bcee();
-  private static Calendar jdField_a_of_type_JavaUtilCalendar;
-  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-  private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-  private static AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong;
-  public static boolean a;
-  private static int b = 2;
-  private static int c;
-  private static int d;
-  private static int e;
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 1000, 1004, 1005, 1006, 1001, 10002, 10004, 10010 };
+  private int jdField_a_of_type_Int = 1;
+  private long jdField_a_of_type_Long;
+  private RecentUser jdField_a_of_type_ComTencentMobileqqDataRecentUser;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
+  private String d;
+  private String e;
+  private String f;
+  private String g;
+  private String l;
+  private String m;
   
-  static
+  public bcec(QQAppInterface paramQQAppInterface, int paramInt, RecentUser paramRecentUser, long paramLong)
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(2);
-    jdField_a_of_type_Int = 3;
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong();
-    jdField_a_of_type_JavaUtilCalendar = Calendar.getInstance();
+    super(paramQQAppInterface, paramInt, paramLong);
+    this.jdField_a_of_type_ComTencentMobileqqDataRecentUser = paramRecentUser;
+    b();
   }
   
-  public static int a()
+  private void a()
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    String str = ((AppRuntime)localObject).getAccount();
-    if (TextUtils.isEmpty(str))
+    switch (this.jdField_a_of_type_Int)
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("QZoneReport", 2, "qzone report with empty account");
+    default: 
+      return;
+    case 2: 
+      this.l = this.c;
+      this.m = bcnc.a(new String[] { this.e, this.f });
+      return;
+    case 3: 
+      this.l = this.d;
+      this.m = bcnc.a(new String[] { this.e, this.f });
+      return;
+    case 1: 
+      this.l = bcnc.a(new String[] { this.c, this.d });
+      if (!TextUtils.isEmpty(this.l))
+      {
+        this.m = this.e;
+        return;
       }
-      return -1;
-    }
-    if (!((amxz)((AppRuntime)localObject).getManager(56)).a(Long.valueOf(Long.parseLong("2290230341"))))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("QZoneReport", 2, "haven't yet follow qzone");
-      }
-      return -1;
-    }
-    long l = NetConnInfoCenter.getServerTime();
-    if (jdField_a_of_type_Long == 0L)
-    {
-      localObject = BaseApplicationImpl.getApplication().getRuntime().getPreferences();
-      b = ((SharedPreferences)localObject).getInt(str + "_" + "qzone_xp_max_req", 2);
-      jdField_a_of_type_Long = ((SharedPreferences)localObject).getLong(str + "_" + "qzone_xp_first_req", l);
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(((SharedPreferences)localObject).getInt(str + "_" + "qzone_xp_req_left", b));
-      jdField_a_of_type_Int = ((SharedPreferences)localObject).getInt(str + "_" + "qzone_xp_req_gap", 3);
-      jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(jdField_a_of_type_Long * 1000L);
-      d = jdField_a_of_type_JavaUtilCalendar.get(5);
-      e = 0;
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    }
-    if ((e >= 5) || (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("QZoneReport", 2, "retry: " + e + ", sending: " + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
-      }
-      return -1;
-    }
-    jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(l * 1000L);
-    if (jdField_a_of_type_JavaUtilCalendar.get(5) != d)
-    {
-      jdField_a_of_type_Long = l;
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(b);
-      BaseApplicationImpl.getApplication().getRuntime().getPreferences().edit().putInt(str + "_" + "qzone_xp_req_left", b).putLong(str + "_" + "qzone_xp_first_req", jdField_a_of_type_Long).apply();
-    }
-    if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() <= 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("QZoneReport", 2, "left: 0");
-      }
-      jdField_a_of_type_JavaUtilCalendar.set(5, jdField_a_of_type_JavaUtilCalendar.get(5) + 1);
-      jdField_a_of_type_JavaUtilCalendar.set(11, 0);
-      jdField_a_of_type_JavaUtilCalendar.set(12, 0);
-      jdField_a_of_type_JavaUtilCalendar.set(13, 0);
-      return (int)((jdField_a_of_type_JavaUtilCalendar.getTimeInMillis() - l * 1000L) / 1000L);
-    }
-    return Math.max(0, (int)(c - l));
-  }
-  
-  public static void a()
-  {
-    jdField_a_of_type_Long = 0L;
-  }
-  
-  public static void a(int paramInt)
-  {
-    if ((paramInt == 1) && (jdField_a_of_type_Boolean)) {
+      this.l = this.e;
+      this.m = this.f;
+      return;
+    case 4: 
+      this.l = this.g;
+      this.m = this.f;
       return;
     }
-    if (paramInt == 1) {
-      jdField_a_of_type_Boolean = true;
-    }
-    LpReportInfo_dc02880 localLpReportInfo_dc02880 = new LpReportInfo_dc02880(6, paramInt);
-    LpReportManager.getInstance().reportToDC02880(localLpReportInfo_dc02880, false, false);
+    this.l = bcnc.a(new String[] { this.c, this.d, this.e });
+    this.m = this.f;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface)
+  private void b()
   {
-    RemoteHandleManager.getInstance().addWebEventListener(new bced(paramQQAppInterface));
-    long l = LocalMultiProcConfig.getLong("SP_LAST_UPDATE_TIME", 0L);
-    QLog.d("[PhotoAlbum]QZoneReport", 1, new Object[] { "getTravelGroup SP_LAST_UPDATE_TIME lastUpdateTime:", Long.valueOf(l) });
-    RemoteHandleManager.getInstance().getSender().getTravelGroup(l);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, ConfigurationService.Config paramConfig, int paramInt, String paramString)
-  {
-    int i = paramConfig.version.get();
-    int j = bfyz.a(paramQQAppInterface.getApp(), "qzone_xp_config_version", paramString);
-    if (QLog.isColorLevel()) {
-      QLog.i("QZoneReport", 2, String.format(Locale.getDefault(), "received qzone xp Config remote version: %d, localVersion: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) }));
-    }
-    if (i != j)
+    this.f = this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin;
+    this.e = this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.displayName;
+    Object localObject1 = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+    switch (this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.getType())
     {
-      paramConfig = aqlw.b(paramConfig, j, paramInt);
-      if (!TextUtils.isEmpty(paramConfig)) {
-        if (QLog.isColorLevel()) {
-          QLog.i("QZoneReport", 2, "receiveAllConfigs|type: " + paramInt + ",content: " + paramConfig + ",version: " + i);
-        }
+    default: 
+      localObject1 = anvx.a(2131702038);
+      if (!bcnc.a(this.jdField_b_of_type_Int)) {
+        break;
       }
     }
-    while (!QLog.isColorLevel())
+    for (this.jdField_a_of_type_JavaLangString = (anvx.a(2131702060) + (String)localObject1);; this.jdField_a_of_type_JavaLangString = ((String)localObject1))
     {
-      do
+      if ((TextUtils.isEmpty(this.e)) || (this.e.equals(this.f))) {
+        this.e = ContactUtils.getBuddyName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.f, true);
+      }
+      return;
+      localObject1 = ((TroopManager)localObject1).b(((TroopManager)localObject1).b(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.troopUin), this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin);
+      if (localObject1 != null)
       {
-        try
-        {
-          paramInt = Math.max(0, b - jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
-          paramConfig = new JSONObject(paramConfig);
-          b = paramConfig.optInt("maxReq", 2);
-          jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(Math.max(0, b - paramInt));
-          jdField_a_of_type_Int = paramConfig.optInt("reqGap", 3);
-          BaseApplicationImpl.getApplication().getRuntime().getPreferences().edit().putInt(paramString + "_" + "qzone_xp_max_req", b).putInt(paramString + "_" + "qzone_xp_req_gap", jdField_a_of_type_Int).putInt(paramString + "_" + "qzone_xp_req_left", jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()).apply();
-          bfyz.a(paramQQAppInterface.getApp(), "qzone_xp_config_version", paramString, i);
-          return;
+        if (!TextUtils.isEmpty(((TroopMemberInfo)localObject1).troopnick)) {
+          this.c = ((TroopMemberInfo)localObject1).troopnick;
         }
-        catch (JSONException paramConfig)
+        if (!TextUtils.isEmpty(((TroopMemberInfo)localObject1).autoremark)) {
+          this.d = ((TroopMemberInfo)localObject1).autoremark;
+        }
+        if (!TextUtils.isEmpty(((TroopMemberInfo)localObject1).friendnick)) {
+          this.e = ((TroopMemberInfo)localObject1).friendnick;
+        }
+      }
+      localObject1 = anvx.a(2131702022);
+      break;
+      localObject1 = ((antp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.troopUin);
+      if (localObject1 != null)
+      {
+        localObject1 = (DiscussionMemberInfo)((Map)localObject1).get(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin);
+        if (localObject1 != null)
         {
-          for (;;)
-          {
-            if (QLog.isDevelopLevel()) {
-              paramConfig.printStackTrace();
-            }
+          localObject2 = ((DiscussionMemberInfo)localObject1).memberName;
+          if (!TextUtils.isEmpty(((DiscussionMemberInfo)localObject1).inteRemark)) {
+            this.d = ((DiscussionMemberInfo)localObject1).inteRemark;
+          }
+          if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+            this.e = ((String)localObject2);
           }
         }
-      } while (!QLog.isColorLevel());
-      QLog.i("QZoneReport", 2, "config is null");
-      return;
+      }
+      Object localObject2 = anvx.a(2131702045);
+      localObject1 = localObject2;
+      if (this.e == null) {
+        break;
+      }
+      localObject1 = localObject2;
+      if (!this.e.equals(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin)) {
+        break;
+      }
+      this.e = ContactUtils.getBuddyName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, true);
+      localObject1 = localObject2;
+      break;
+      localObject1 = "wap临时会话";
+      break;
+      this.g = this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.displayName;
+      this.e = null;
+      localObject1 = ContactUtils.getUinByPhoneNum(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin);
+      localObject2 = ((awyz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER)).c(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin);
+      if (localObject2 != null) {
+        this.g = ((PhoneContact)localObject2).name;
+      }
+      for (;;)
+      {
+        localObject1 = anvx.a(2131702063);
+        break;
+        if (localObject1 != null) {
+          this.g = ContactUtils.getBuddyName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject1, true);
+        }
+      }
+      localObject1 = anvx.a(2131702057);
+      break;
+      localObject1 = anvx.a(2131702028);
+      break;
+      localObject1 = "QQ电影票临时会话";
+      break;
+      localObject1 = anvx.a(2131694137);
+      break;
     }
-    QLog.i("QZoneReport", 2, "config version not updated, nothing to do");
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  protected long a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QZoneReport", 2, "sending");
-    }
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(NetConnInfoCenter.getServerTime());
-    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), bbpg.class);
-    localNewIntent.putExtra("key_uin", Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
-    if (paramBoolean) {}
-    for (String str = "1";; str = "0")
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = -9223372036854775808L;
+    long l1 = bcnc.b(paramString, this.c, bbzc.g);
+    if (l1 > this.jdField_a_of_type_Long)
     {
-      localNewIntent.putExtra("has_photo", str);
-      BaseApplicationImpl.getApplication().getRuntime().registObserver(jdField_a_of_type_Bcee);
-      BaseApplicationImpl.getApplication().getRuntime().startServlet(localNewIntent);
-      bcef.b(paramQQAppInterface, "CliOper", "", "", "0X800915C", "0X800915C", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Long = l1;
+      this.jdField_a_of_type_Int = 2;
+    }
+    l1 = bcnc.b(paramString, this.d, bbzc.k);
+    if (l1 > this.jdField_a_of_type_Long)
+    {
+      this.jdField_a_of_type_Long = l1;
+      this.jdField_a_of_type_Int = 3;
+    }
+    l1 = bcnc.b(paramString, this.e, bbzc.l);
+    if (l1 > this.jdField_a_of_type_Long)
+    {
+      this.jdField_a_of_type_Long = l1;
+      this.jdField_a_of_type_Int = 1;
+    }
+    l1 = bcnc.b(paramString, this.g, bbzc.m);
+    if (l1 > this.jdField_a_of_type_Long)
+    {
+      this.jdField_a_of_type_Long = l1;
+      this.jdField_a_of_type_Int = 4;
+    }
+    l1 = bcnc.a(paramString, this.f, bbzc.o, false);
+    if (l1 > this.jdField_a_of_type_Long)
+    {
+      this.jdField_a_of_type_Long = l1;
+      this.jdField_a_of_type_Int = 0;
+    }
+    if (this.jdField_a_of_type_Long != -9223372036854775808L)
+    {
+      this.jdField_a_of_type_Long += bbzc.z;
+      a();
+    }
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public Object a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin;
+  }
+  
+  public String a()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public void a(View paramView)
+  {
+    super.a(paramView);
+    if (bcnc.a(this.jdField_b_of_type_Int))
+    {
+      alik.a = true;
+      QQAppInterface localQQAppInterface;
+      String str2;
+      String str3;
+      if (!bbzq.a(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin)) {
+        switch (this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.getType())
+        {
+        default: 
+          bcnc.a(this.jdField_b_of_type_JavaLangString, 20, 1, paramView);
+          aode.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString);
+          localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+          str2 = a().toString();
+          str3 = this.f;
+          if (this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.troopUin != null) {
+            break;
+          }
+        }
+      }
+      for (String str1 = "";; str1 = this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.troopUin)
+      {
+        bcnc.a(localQQAppInterface, str2, str3, str1, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.getType());
+        bcnc.a(this.jdField_b_of_type_JavaLangString, 20, paramView, false);
+        bcnc.a(this, paramView);
+        if (SearchConfigManager.needSeparate) {
+          bcnc.a("search", "contact", "contacts", 0, 0, new String[] { bcnc.a(this.jdField_b_of_type_Int) });
+        }
+        if ((a() instanceof String)) {
+          bcnc.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString, this.i, (String)a(), e());
+        }
+        if ((paramView.getContext() instanceof UniteSearchActivity))
+        {
+          if ((this.i == null) || (TextUtils.isEmpty(this.i))) {
+            break label420;
+          }
+          bcjs.a(null, 0, this.jdField_b_of_type_Int, "0X8009D31", 1, 0, null, null);
+        }
+        return;
+        alik.a = true;
+        alik.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.troopUin, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.getType(), this.l, false, null);
+        break;
+        alik.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.getType(), this.l, false);
+        break;
+        bghs.a(paramView.getContext(), null, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin);
+        break;
+      }
+      label420:
+      bcjs.a(null, 0, this.jdField_b_of_type_Int, "0X8009D37", 0, 0, null, null);
       return;
     }
+    bcnc.a(paramView, this);
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin;
+  }
+  
+  public int c()
+  {
+    switch (this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.getType())
+    {
+    case 1000: 
+    case 1004: 
+    case 1005: 
+    default: 
+      return 1;
+    case 1006: 
+      return 11;
+    }
+    return 32;
+  }
+  
+  public CharSequence c()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String c()
+  {
+    return this.l;
+  }
+  
+  public int d()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.getType();
+  }
+  
+  public CharSequence d()
+  {
+    return null;
+  }
+  
+  public String d()
+  {
+    return this.m;
+  }
+  
+  public int e()
+  {
+    return 1;
+  }
+  
+  public String e()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.troopUin;
   }
 }
 

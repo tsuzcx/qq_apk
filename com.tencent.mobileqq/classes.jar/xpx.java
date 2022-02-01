@@ -1,26 +1,27 @@
 import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class xpx
-  extends QQUIEventReceiver<xpw, vua>
+  extends QQUIEventReceiver<xpv, wrd>
 {
-  public xpx(xpw paramxpw1, @NonNull xpw paramxpw2)
+  public xpx(@NonNull xpv paramxpv)
   {
-    super(paramxpw2);
+    super(paramxpv);
   }
   
-  public void a(@NonNull xpw paramxpw, @NonNull vua paramvua)
+  public void a(@NonNull xpv paramxpv, @NonNull wrd paramwrd)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.playernew.StoryPlayerActivity", 2, "GetStoryListReceiver");
+    if (paramwrd.a.isSuccess())
+    {
+      ykq.a(this.TAG, "receive user info event. %s.", paramwrd.toString());
+      paramxpv.i();
     }
-    paramxpw.b(paramvua.a);
   }
   
   public Class acceptEventClass()
   {
-    return vua.class;
+    return wrd.class;
   }
 }
 

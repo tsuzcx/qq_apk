@@ -1,31 +1,27 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQSettingMe;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class aeal
-  implements View.OnTouchListener
+class aeal
+  implements akig
 {
-  public aeal(QQSettingMe paramQQSettingMe, ImageView paramImageView, TextView paramTextView, View paramView) {}
+  aeal(aeag paramaeag) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(Context paramContext, boolean paramBoolean)
   {
-    switch (paramMotionEvent.getAction())
+    if (paramBoolean)
     {
+      QQToast.a(this.a.a.getApplicationContext(), 1, anvx.a(2131704369), 0).a();
+      return;
     }
-    for (;;)
-    {
-      return false;
-      mum.a(this.jdField_a_of_type_AndroidWidgetImageView, 0.5F);
-      mum.a(this.jdField_a_of_type_AndroidWidgetTextView, 0.5F);
-      mum.a(this.jdField_a_of_type_AndroidViewView, 0.5F);
-      continue;
-      mum.a(this.jdField_a_of_type_AndroidWidgetImageView, 1.0F);
-      mum.a(this.jdField_a_of_type_AndroidWidgetTextView, 1.0F);
-      mum.a(this.jdField_a_of_type_AndroidViewView, 1.0F);
-    }
+    paramContext = new Intent(this.a.a, GuideBindPhoneActivity.class);
+    paramContext.putExtra("fromKeyForContactBind", 5);
+    paramContext.putExtra("key_contact_name", this.a.a.a.a.k);
+    paramContext.putExtra("key_contact_phone", this.a.a.a.a.a);
+    this.a.a.startActivity(paramContext);
   }
 }
 

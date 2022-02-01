@@ -1,23 +1,14 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
 
-public class vmw
+final class vmw
+  implements DialogInterface.OnShowListener
 {
-  public int a;
-  public final long a;
-  public final String a;
-  public boolean a;
-  public String b = "";
+  vmw(vln paramvln) {}
   
-  public vmw(String paramString)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Int = 1000;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public ErrorMessage a()
-  {
-    return new ErrorMessage(this.jdField_a_of_type_Int, this.b);
+    vms.a(this.a);
   }
 }
 

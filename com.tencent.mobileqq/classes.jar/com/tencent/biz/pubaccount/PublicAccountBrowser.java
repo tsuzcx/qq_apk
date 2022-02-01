@@ -1,7 +1,6 @@
 package com.tencent.biz.pubaccount;
 
 import Override;
-import amtj;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -12,9 +11,10 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MotionEvent;
-import apkn;
-import bjnd;
-import bkwm;
+import anvx;
+import aqnr;
+import bkyp;
+import bmhv;
 import com.tencent.biz.pubaccount.util.PublicAccountCompactSwipeBackLayout;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -26,24 +26,24 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.FadeIconImageView;
 import java.util.Map;
 import java.util.regex.Pattern;
-import nsf;
-import nsg;
-import oby;
-import obz;
-import ocd;
+import nzg;
+import nzh;
+import ojp;
+import ojq;
+import oju;
 import org.json.JSONException;
 import org.json.JSONObject;
-import qxp;
-import qxs;
-import ugf;
+import rjv;
+import rjy;
+import uuc;
 
 public class PublicAccountBrowser
   extends QQBrowserActivity
 {
-  private static final String jdField_a_of_type_JavaLangString = amtj.a(2131707885);
+  private static final String jdField_a_of_type_JavaLangString = anvx.a(2131708232);
   private FadeIconImageView jdField_a_of_type_ComTencentWidgetFadeIconImageView;
   public final Pattern a;
-  private qxp jdField_a_of_type_Qxp = new qxp();
+  private rjv jdField_a_of_type_Rjv = new rjv();
   public int b;
   public String b;
   public String c = "";
@@ -52,13 +52,13 @@ public class PublicAccountBrowser
   {
     this.jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("<meta.*itemprop=\"name\"\\s.*content=\"(.*)\">");
     this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangClass = ocd.class;
+    this.jdField_a_of_type_JavaLangClass = oju.class;
   }
   
   private void a()
   {
     if (this.jdField_a_of_type_ComTencentWidgetFadeIconImageView == null) {
-      this.jdField_a_of_type_ComTencentWidgetFadeIconImageView = ((FadeIconImageView)findViewById(2131369087));
+      this.jdField_a_of_type_ComTencentWidgetFadeIconImageView = ((FadeIconImageView)findViewById(2131369250));
     }
   }
   
@@ -69,12 +69,12 @@ public class PublicAccountBrowser
     }
     if (!TextUtils.isEmpty(paramString))
     {
-      paramString = bjnd.a(paramString);
+      paramString = bkyp.a(paramString);
       if ((paramString != null) && ("1".equals(paramString.get("showProfileBtn"))) && (this.jdField_a_of_type_ComTencentWidgetFadeIconImageView != null))
       {
-        this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setImageResource(2130850057);
-        this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setOnClickListener(new oby(this));
-        this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setContentDescription(super.getText(2131695903));
+        this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setImageResource(2130850150);
+        this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setOnClickListener(new ojp(this));
+        this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setContentDescription(super.getText(2131696155));
         this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setVisibility(0);
       }
     }
@@ -89,7 +89,7 @@ public class PublicAccountBrowser
     paramString = BaseApplicationImpl.getApplication();
     if (paramString != null)
     {
-      paramString = bkwm.a(paramString.getRuntime(), false, true);
+      paramString = bmhv.a(paramString.getRuntime(), false, true);
       if (paramString != null)
       {
         paramString = paramString.edit();
@@ -107,9 +107,9 @@ public class PublicAccountBrowser
     {
       return;
       paramString = Uri.parse(paramString).getQueryParameter("rowkey");
-    } while ((TextUtils.isEmpty(paramString)) || (!qxp.b()));
-    this.jdField_a_of_type_Qxp.a(this);
-    this.jdField_a_of_type_Qxp.a(paramString, qxs.c());
+    } while ((TextUtils.isEmpty(paramString)) || (!rjv.b()));
+    this.jdField_a_of_type_Rjv.a(this);
+    this.jdField_a_of_type_Rjv.a(paramString, rjy.c());
   }
   
   public String a()
@@ -162,18 +162,18 @@ public class PublicAccountBrowser
   public void doOnPause()
   {
     super.doOnPause();
-    if (qxp.b())
+    if (rjv.b())
     {
-      this.jdField_a_of_type_Qxp.b();
-      this.jdField_a_of_type_Qxp.a();
+      this.jdField_a_of_type_Rjv.b();
+      this.jdField_a_of_type_Rjv.a();
     }
-    nsf.a.b(getIntent().getStringExtra("friend_uin"));
+    nzg.a.b(getIntent().getStringExtra("friend_uin"));
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    nsf.a.b();
+    nzg.a.b();
     String str = getIntent().getStringExtra("url");
     a();
     new Handler().postDelayed(new PublicAccountBrowser.1(this, str), 200L);
@@ -190,7 +190,7 @@ public class PublicAccountBrowser
   public ColorNote getColorNote()
   {
     ColorNote localColorNote = super.getColorNote();
-    if (ugf.c(getIntent().getStringExtra("url"))) {}
+    if (uuc.c(getIntent().getStringExtra("url"))) {}
     try
     {
       JSONObject localJSONObject = new JSONObject(new String(localColorNote.getReserve()));
@@ -208,9 +208,9 @@ public class PublicAccountBrowser
   public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    TouchWebView localTouchWebView = (TouchWebView)findViewById(2131381043);
+    TouchWebView localTouchWebView = (TouchWebView)findViewById(2131381402);
     if (localTouchWebView != null) {
-      localTouchWebView.addScrollChangedListener(new obz(this));
+      localTouchWebView.addScrollChangedListener(new ojq(this));
     }
   }
   

@@ -1,34 +1,24 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class sea
-  implements sda
+public abstract class sea
 {
-  sea(sdy paramsdy) {}
+  Context jdField_a_of_type_AndroidContentContext;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  seb jdField_a_of_type_Seb;
   
-  public List<rsd> a(List<VideoInfo> paramList)
+  public sea(Context paramContext, QQAppInterface paramQQAppInterface, seb paramseb)
   {
-    ArrayList localArrayList = new ArrayList();
-    if (paramList != null)
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        Object localObject = (VideoInfo)paramList.next();
-        if (localObject != null)
-        {
-          localObject = rsl.a((VideoInfo)localObject);
-          if (localObject != null) {
-            localArrayList.add(slt.a((BaseArticleInfo)localObject, true));
-          }
-        }
-      }
-    }
-    return localArrayList;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Seb = paramseb;
   }
+  
+  public void a() {}
+  
+  public abstract void a(String paramString, boolean paramBoolean);
+  
+  public abstract void b();
 }
 
 

@@ -1,30 +1,30 @@
-import com.tencent.av.VideoSocketReconnectReporter.1;
-import com.tencent.av.VideoSocketReconnectReporter.2;
-import com.tencent.biz.common.util.NetworkUtil;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-
 public class lcy
 {
-  public static void a()
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public long c;
+  public int d;
+  public long d;
+  public int e;
+  
+  public boolean a()
   {
-    int i = mnr.a().o;
-    int j = NetworkUtil.getNetworkType(BaseApplication.getContext());
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoSocketReconnectReporter", 2, String.format("reportSocketReconRequest policyType=%s netType=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) }));
-    }
-    ThreadManager.post(new VideoSocketReconnectReporter.1(i, j), 5, null, false);
+    return this.jdField_a_of_type_Int == 3;
   }
   
-  public static void a(long paramLong)
+  public String toString()
   {
-    int i = mnr.a().o;
-    int j = NetworkUtil.getNetworkType(BaseApplication.getContext());
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoSocketReconnectReporter", 2, String.format("reportSocketReconResult policyType=%s netType=%s timeCost=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Long.valueOf(paramLong) }));
+    StringBuilder localStringBuilder = new StringBuilder().append("VideoPacket{roomId=").append(this.jdField_a_of_type_Long).append(", bodyType=").append(this.jdField_a_of_type_Int).append(", uin=").append(this.jdField_b_of_type_Long).append(", fromuin=").append(this.jdField_c_of_type_Long).append(", subServiceType=").append(this.jdField_b_of_type_Int).append(", seq=").append(this.jdField_c_of_type_Int).append(", business_flag=").append(this.jdField_d_of_type_Int).append(", terminal_switch_flag =").append(this.jdField_a_of_type_Boolean).append(", u32AccountType =").append(this.e).append(", uint64_group_uin =").append(this.jdField_d_of_type_Long).append(", str_from_nation =").append(this.jdField_b_of_type_JavaLangString).append(", str_from_mobile =");
+    if (this.jdField_a_of_type_JavaLangString != null) {}
+    for (boolean bool = true;; bool = false) {
+      return bool + '}';
     }
-    ThreadManager.post(new VideoSocketReconnectReporter.2(i, j, paramLong), 5, null, false);
   }
 }
 

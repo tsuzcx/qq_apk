@@ -1,54 +1,58 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.mobileqq.transfile.TransferRequest;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.articlesummary.feeds_info.VisibleShowInfo;
 
-class rro
-  extends TransProcessorHandler
+public class rro
+  implements Cloneable
 {
-  rro(rrn paramrrn) {}
+  public int a;
+  public long a;
+  public long b;
   
-  public void handleMessage(Message paramMessage)
+  public rro()
   {
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    if ((localFileMsg == null) || (localFileMsg.fileType != 24) || (localFileMsg.commandId != 10)) {}
-    while ((localFileMsg.uniseq != this.a.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.mUniseq) || (TextUtils.equals(localFileMsg.fileMd5, rrn.a(this.a)))) {
-      return;
-    }
-    switch (paramMessage.what)
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  private static rro b(feeds_info.VisibleShowInfo paramVisibleShowInfo)
+  {
+    long l2 = 0L;
+    rro localrro = new rro();
+    long l1;
+    if (paramVisibleShowInfo.uint64_feed_id.has())
     {
-    case 1002: 
-    case 1004: 
-    default: 
-      return;
-    case 1001: 
-      if (this.a.jdField_a_of_type_Rrm != null) {
-        this.a.jdField_a_of_type_Rrm.a();
+      l1 = paramVisibleShowInfo.uint64_feed_id.get();
+      localrro.b = l1;
+      if (!paramVisibleShowInfo.uint32_visible_type.has()) {
+        break label150;
       }
-      rrn.a(this.a, System.currentTimeMillis());
-      return;
-    case 1003: 
-      rrn.b(this.a, System.currentTimeMillis());
-      odq.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "0X8008180", "0X8008180", 0, 0, String.valueOf(rrn.a(this.a)), String.valueOf(rrn.b(this.a)), String.valueOf(rrn.a(this.a) - rrn.b(this.a)), String.valueOf(rrn.c(this.a) - rrn.d(this.a)));
-      if (QLog.isColorLevel()) {
-        QLog.d("ImageUploadController", 2, "mPicTransProcessorHandler send finished!");
-      }
-      rrn.a(this.a, localFileMsg.fileMd5);
-      rrn.b(this.a, localFileMsg.fileUrl);
-      if (QLog.isColorLevel()) {
-        QLog.d("ImageUploadController", 2, "mPicTransProcessorHandler mImageMd5=" + rrn.a(this.a) + ", mImageUrl=" + rrn.b(this.a));
-      }
-      rrn.a(this.a, 0, rrn.b(this.a), rrn.a(this.a), null);
-      return;
     }
-    rrn.b(this.a, System.currentTimeMillis());
-    odq.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "0X8008180", "0X8008180", 0, 1, String.valueOf(rrn.a(this.a)), String.valueOf(rrn.b(this.a)), String.valueOf(rrn.a(this.a) - rrn.b(this.a)), String.valueOf(rrn.c(this.a) - rrn.d(this.a)));
-    if (QLog.isColorLevel()) {
-      QLog.d("ImageUploadController", 2, "mPicTransProcessorHandler send error:" + localFileMsg.errorCode);
+    label150:
+    for (int i = paramVisibleShowInfo.uint32_visible_type.get();; i = 0)
+    {
+      localrro.jdField_a_of_type_Int = i;
+      l1 = l2;
+      if (paramVisibleShowInfo.uint64_who.has()) {
+        l1 = paramVisibleShowInfo.uint64_who.get();
+      }
+      localrro.jdField_a_of_type_Long = l1;
+      QLog.d("SocializeFeedsInfo", 1, "feeds privacy | feedsid  " + localrro.b + " | privacyType " + localrro.jdField_a_of_type_Int + " | privacySetUin " + localrro.jdField_a_of_type_Long);
+      return localrro;
+      l1 = 0L;
+      break;
     }
-    rrn.a(this.a, 1004, null, null, null);
+  }
+  
+  public rro a()
+  {
+    try
+    {
+      rro localrro = (rro)super.clone();
+      return localrro;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    return null;
   }
 }
 

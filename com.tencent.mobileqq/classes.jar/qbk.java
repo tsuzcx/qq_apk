@@ -1,19 +1,22 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
 
-class qbk
-  implements ViewBase.OnClickListener
+public class qbk
+  implements Animation.AnimationListener
 {
-  qbk(qbf paramqbf, Context paramContext, rdl paramrdl, ArticleInfo paramArticleInfo) {}
+  public qbk(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment, TranslateAnimation paramTranslateAnimation) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    rwv.a(this.jdField_a_of_type_AndroidContentContext, ((rfo)this.jdField_a_of_type_Rdl.a.get(1)).a);
-    qbf.a(this.jdField_a_of_type_Qbf, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    ReadInjoyIMAXAdFragment.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

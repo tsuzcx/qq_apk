@@ -1,23 +1,37 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import mqq.os.MqqHandler;
 
-public abstract class beny
-  extends beno
+public class beny
+  implements Handler.Callback, beoe
 {
-  public List<Integer> b = new ArrayList();
-  public int g = 0;
+  private beof jdField_a_of_type_Beof;
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bkyc(Looper.getMainLooper(), this, true);
   
-  public beny()
+  public void a(int paramInt)
   {
-    this.b.add(Integer.valueOf(0));
-    this.b.add(Integer.valueOf(3));
-    this.b.add(Integer.valueOf(1));
-    this.b.add(Integer.valueOf(2));
+    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(paramInt);
   }
   
-  public int e()
+  public void a(int paramInt1, int paramInt2)
   {
-    return this.g;
+    if (!this.jdField_a_of_type_MqqOsMqqHandler.hasMessages(paramInt1)) {
+      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(paramInt1, paramInt2);
+    }
+  }
+  
+  public void a(beof parambeof)
+  {
+    this.jdField_a_of_type_Beof = parambeof;
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (this.jdField_a_of_type_Beof != null) {
+      return this.jdField_a_of_type_Beof.a(paramMessage.what);
+    }
+    return false;
   }
 }
 

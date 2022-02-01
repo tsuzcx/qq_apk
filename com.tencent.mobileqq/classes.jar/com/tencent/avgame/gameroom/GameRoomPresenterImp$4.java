@@ -1,16 +1,16 @@
 package com.tencent.avgame.gameroom;
 
-import mzl;
-import ncl;
+import nfc;
+import nii;
 
 public class GameRoomPresenterImp$4
   implements Runnable
 {
-  public GameRoomPresenterImp$4(ncl paramncl) {}
+  public GameRoomPresenterImp$4(nii paramnii) {}
   
   public void run()
   {
-    mzl.a().c();
+    nfc.a().c();
   }
 }
 

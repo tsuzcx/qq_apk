@@ -1,96 +1,146 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
-import org.json.JSONObject;
-import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
+import android.content.Context;
+import android.os.SystemClock;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.IntimateInfo;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public class axgb
+  implements View.OnClickListener, axgv, axgw, axgx
 {
-  public int a;
-  public long a;
-  public String a;
+  private long jdField_a_of_type_Long;
+  public Context a;
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  axgu jdField_a_of_type_Axgu;
+  MultiCardFragment jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment;
+  private Long jdField_a_of_type_JavaLangLong;
   public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public String d;
   
-  public axgb()
+  private void b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-  }
-  
-  public void a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
-  {
-    if (paramRedTypeInfo == null) {}
-    while (!paramRedTypeInfo.red_desc.has()) {
-      return;
-    }
-    Object localObject = paramRedTypeInfo.red_desc.get();
-    try
+    View localView;
+    if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      localObject = new JSONObject((String)localObject);
-      this.jdField_b_of_type_Boolean = ((JSONObject)localObject).optBoolean("isOfficialNotify");
-      this.jdField_b_of_type_Int = ((JSONObject)localObject).optInt("redContentType");
-      this.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("redContentMsg");
-      this.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("topicId");
-      this.jdField_c_of_type_Int = ((JSONObject)localObject).optInt("userType");
-      this.jdField_c_of_type_JavaLangString = ((JSONObject)localObject).optString("msgId");
-      this.jdField_a_of_type_Int = Integer.valueOf(paramRedTypeInfo.red_content.get()).intValue();
-      this.d = ((JSONObject)localObject).optString("faceUrl");
-      this.jdField_a_of_type_Long = ((JSONObject)localObject).optLong("uin");
-      return;
-    }
-    catch (Exception paramRedTypeInfo)
-    {
-      paramRedTypeInfo.printStackTrace();
-    }
-  }
-  
-  public void a(oidb_0x791.RedDotInfo paramRedDotInfo)
-  {
-    boolean bool2 = true;
-    if (paramRedDotInfo == null) {}
-    while ((!paramRedDotInfo.str_custom_buffer.has()) || (paramRedDotInfo.str_custom_buffer.get().isEmpty())) {
-      return;
-    }
-    paramRedDotInfo = paramRedDotInfo.str_custom_buffer.get().toStringUtf8();
-    for (;;)
-    {
-      try
-      {
-        paramRedDotInfo = new JSONObject(paramRedDotInfo);
-        if (paramRedDotInfo.optInt("official_topic") == 1)
-        {
-          bool1 = true;
-          this.jdField_b_of_type_Boolean = bool1;
-          this.jdField_b_of_type_Int = paramRedDotInfo.optInt("red_content_type");
-          this.jdField_a_of_type_JavaLangString = paramRedDotInfo.optString("red_content_msg");
-          this.jdField_b_of_type_JavaLangString = paramRedDotInfo.optString("red_topic_tag");
-          this.jdField_c_of_type_Int = paramRedDotInfo.optInt("red_user_type");
-          if (paramRedDotInfo.optInt("red_type") != 0) {
-            break label145;
-          }
-          bool1 = bool2;
-          this.jdField_a_of_type_Boolean = bool1;
-          this.jdField_c_of_type_JavaLangString = paramRedDotInfo.optString("red_msg_id");
-          return;
+      localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379899);
+      if (localView != null) {
+        if (!paramBoolean) {
+          break label33;
         }
       }
-      catch (Exception paramRedDotInfo)
+    }
+    label33:
+    for (int i = 0;; i = 8)
+    {
+      localView.setVisibility(i);
+      return;
+    }
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public void a()
+  {
+    a(false);
+  }
+  
+  public void a(long paramLong, ArrayList<Long> paramArrayList)
+  {
+    if (this.jdField_a_of_type_Long != paramLong) {}
+    do
+    {
+      return;
+      if ((paramArrayList == null) || (paramArrayList.size() == 0))
       {
-        paramRedDotInfo.printStackTrace();
+        b(true);
+        a(null);
         return;
       }
-      boolean bool1 = false;
-      continue;
-      label145:
-      bool1 = false;
+      b(false);
+    } while (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment == null);
+    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment.a(paramArrayList, null, null);
+  }
+  
+  public void a(long paramLong, HashMap<Long, String> paramHashMap)
+  {
+    if ((this.jdField_a_of_type_Long != paramLong) || (paramHashMap == null)) {}
+    while (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment == null) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment.a(null, null, paramHashMap);
+  }
+  
+  public void a(String paramString)
+  {
+    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidWidgetTextView != null)) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(null);
+    }
+  }
+  
+  public void a(ArrayList<Long> paramArrayList, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramArrayList == null) {}
+    do
+    {
+      do
+      {
+        return;
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onPreLoadData : ");
+          localStringBuilder.append(paramArrayList.size());
+          localStringBuilder.append("  ");
+          Iterator localIterator = paramArrayList.iterator();
+          while (localIterator.hasNext())
+          {
+            localStringBuilder.append((Long)localIterator.next());
+            localStringBuilder.append(" ");
+          }
+          QLog.d("MultiCardContainer", 2, "onPreLoadData : " + localStringBuilder.toString());
+        }
+      } while (this.jdField_a_of_type_Axgu == null);
+      if (paramBoolean1) {
+        this.jdField_a_of_type_Axgu.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Long, paramArrayList, this);
+      }
+    } while (!paramBoolean2);
+    this.jdField_a_of_type_Axgu.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Long, paramArrayList, this);
+  }
+  
+  public void a(HashMap<Long, IntimateInfo> paramHashMap)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment != null) {
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment.a(null, paramHashMap, null);
+    }
+  }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void onClick(View paramView)
+  {
+    long l = SystemClock.elapsedRealtime();
+    if ((this.jdField_a_of_type_JavaLangLong != null) && (l - this.jdField_a_of_type_JavaLangLong.longValue() < 500L)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_JavaLangLong = Long.valueOf(l);
+      switch (paramView.getId())
+      {
+      default: 
+        break;
+      case 2131363329: 
+        a(true);
+      }
     }
   }
 }

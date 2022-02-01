@@ -1,60 +1,46 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
-
 public class beml
-  extends BaseAdapter
 {
-  public bemm a;
-  protected List<String> a = new ArrayList();
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
   
-  public String a(int paramInt)
+  public beml(String paramString)
   {
-    return (String)this.a.get(paramInt);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a(String paramString)
+  private void b(int paramInt)
   {
-    this.a.add(paramString);
-  }
-  
-  public int getCount()
-  {
-    return this.a.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    if (paramView == null)
+    if (paramInt <= a()) {}
+    for (boolean bool = true;; bool = false)
     {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560655, null, false);
-      paramView = new bemn(this);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379863));
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramView);
-      localView.setTag(paramView);
+      belm.a(bool, new Object[] { "!(", Integer.valueOf(paramInt), " <= ", Integer.valueOf(a()), ")" });
+      return;
     }
-    for (;;)
-    {
-      Object localObject = a(paramInt);
-      paramView.jdField_a_of_type_Int = paramInt;
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (bemn)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-    }
+  }
+  
+  int a()
+  {
+    return this.jdField_a_of_type_JavaLangString.length() - this.jdField_a_of_type_Int;
+  }
+  
+  String a(int paramInt)
+  {
+    b(paramInt);
+    String str = this.jdField_a_of_type_JavaLangString.substring(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + paramInt);
+    this.jdField_a_of_type_Int += paramInt;
+    return str;
+  }
+  
+  void a(int paramInt)
+  {
+    b(paramInt);
+    this.jdField_a_of_type_Int += paramInt;
+  }
+  
+  String b(int paramInt)
+  {
+    b(paramInt);
+    return this.jdField_a_of_type_JavaLangString.substring(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + paramInt);
   }
 }
 

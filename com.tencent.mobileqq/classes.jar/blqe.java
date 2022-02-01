@@ -1,36 +1,91 @@
-import android.content.Context;
-import android.graphics.PointF;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearSmoothScroller;
-import android.view.View;
+import android.os.Handler;
+import android.os.HandlerThread;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.comic.PluginPreloader.1;
+import cooperation.plugin.PluginInfo;
+import mqq.app.AppRuntime;
 
-class blqe
-  extends LinearSmoothScroller
+public class blqe
 {
-  public blqe(blqd paramblqd, Context paramContext)
+  private static final Handler a;
+  
+  static
   {
-    super(paramContext);
+    HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("PluginPreloader", 0);
+    localHandlerThread.start();
+    a = new Handler(localHandlerThread.getLooper());
   }
   
-  public int calculateDxToMakeVisible(View paramView, int paramInt)
+  public static void a(blqa paramblqa)
   {
-    return blqd.a(this.a).a(-this.a.g);
+    a(paramblqa, 0L);
   }
   
-  public int calculateDyToMakeVisible(View paramView, int paramInt)
+  public static void a(blqa paramblqa, long paramLong)
   {
-    return blqd.a(this.a).b(-this.a.g);
+    if ((paramblqa == null) || (paramblqa.jdField_a_of_type_JavaLangString == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PluginPreloader", 2, "the preload strategy or target process is null.");
+      }
+      return;
+    }
+    a.postDelayed(new PluginPreloader.1(paramblqa), paramLong);
   }
   
-  public int calculateTimeForScrolling(int paramInt)
+  public static void a(AppRuntime paramAppRuntime, blqa paramblqa, int paramInt, blqg paramblqg)
   {
-    return (int)(Math.max(0.01F, Math.min(Math.abs(paramInt), this.a.d) / this.a.d) * blqd.a(this.a));
-  }
-  
-  @Nullable
-  public PointF computeScrollVectorForPosition(int paramInt)
-  {
-    return new PointF(blqd.a(this.a).a(this.a.g), blqd.a(this.a).b(this.a.g));
+    paramblqa.a(paramblqg);
+    if (paramblqa.jdField_b_of_type_JavaLangString != null)
+    {
+      blvy localblvy = (blvy)paramAppRuntime.getManager(QQManagerFactory.MGR_PLUGIN);
+      if (localblvy == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PluginPreloader", 2, "pluginType:" + paramblqa.jdField_b_of_type_Int + " preload:fail:nopluginmanager");
+        }
+        blpy.a(paramAppRuntime, 1, paramblqa.jdField_b_of_type_Int, paramblqa.c, 3, "preload:fail:nopluginmanager", paramInt, new String[] { String.valueOf(paramblqa.d) });
+        return;
+      }
+      PluginInfo localPluginInfo = localblvy.a(paramblqa.jdField_b_of_type_JavaLangString);
+      if (localPluginInfo == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PluginPreloader", 2, "pluginType:" + paramblqa.jdField_b_of_type_Int + " preload:fail:noplugininfo");
+        }
+        blpy.a(paramAppRuntime, 1, paramblqa.jdField_b_of_type_Int, paramblqa.c, 3, "preload:fail:noplugininfo", paramInt, new String[] { String.valueOf(paramblqa.d) });
+        return;
+      }
+      if (localPluginInfo.mState == 4)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PluginPreloader", 2, "plugin already installed, do preload.");
+        }
+        blpy.a(paramAppRuntime, 0, paramblqa.jdField_b_of_type_Int, paramblqa.c, paramblqg.jdField_a_of_type_Int, paramblqg.jdField_a_of_type_JavaLangString, paramInt, new String[] { String.valueOf(paramblqa.d) });
+        paramblqa.a();
+        return;
+      }
+      if ((paramblqa.jdField_a_of_type_Boolean) && (NetworkUtil.isWifiConnected(BaseApplicationImpl.getContext())))
+      {
+        localblvy.installPlugin(paramblqa.jdField_b_of_type_JavaLangString, new blqf(paramAppRuntime, paramblqa, paramblqg, paramInt));
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PluginPreloader", 2, "pluginType:" + paramblqa.jdField_b_of_type_Int + " preload:fail:uninstall");
+      }
+      blpy.a(paramAppRuntime, 1, paramblqa.jdField_b_of_type_Int, paramblqa.c, 3, "preload:fail:uninstall", paramInt, new String[] { String.valueOf(paramblqa.d) });
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("PluginPreloader", 2, "do preload");
+    }
+    blpy.a(paramAppRuntime, 0, paramblqa.jdField_b_of_type_Int, paramblqa.c, paramblqg.jdField_a_of_type_Int, paramblqg.jdField_a_of_type_JavaLangString, paramInt, new String[] { String.valueOf(paramblqa.d) });
+    paramblqa.a();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
-import amwm;
+import anza;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -148,7 +148,7 @@ public class C2CPttDownHandler
     Object localObject1 = paramProtoResp.resp.getWupBuffer();
     RichProto.RichProtoReq localRichProtoReq = (RichProto.RichProtoReq)paramProtoReq.busiData;
     RichProto.RichProtoResp localRichProtoResp = localRichProtoReq.resp;
-    amwm localamwm = paramProtoResp.statisInfo;
+    anza localanza = paramProtoResp.statisInfo;
     int i;
     if (((FromServiceMsg)localObject2).getResultCode() != 1000)
     {
@@ -161,7 +161,7 @@ public class C2CPttDownHandler
         if (paramProtoReq == null) {
           paramProtoResp = "";
         }
-        setResult(-1, 9311, (String)localObject1, paramProtoResp, localamwm, localRichProtoResp.resps);
+        setResult(-1, 9311, (String)localObject1, paramProtoResp, localanza, localRichProtoResp.resps);
       }
     }
     for (;;)
@@ -174,7 +174,7 @@ public class C2CPttDownHandler
       if (paramProtoReq == null) {
         paramProtoResp = "";
       }
-      setResult(-1, 9044, (String)localObject1, paramProtoResp, localamwm, localRichProtoResp.resps);
+      setResult(-1, 9044, (String)localObject1, paramProtoResp, localanza, localRichProtoResp.resps);
       continue;
       Object localObject3;
       ServerAddr localServerAddr;
@@ -216,7 +216,7 @@ public class C2CPttDownHandler
       }
       catch (Exception paramProtoResp)
       {
-        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr((byte[])localObject1), localamwm, localRichProtoResp.resps);
+        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr((byte[])localObject1), localanza, localRichProtoResp.resps);
       }
       throw new Exception("no url");
       label485:
@@ -243,7 +243,7 @@ public class C2CPttDownHandler
           paramProtoResp.domainV4V6 = paramProtoReq.rpt_str_domain.get();
         }
       }
-      setResult(0, 0, "", "", localamwm, paramProtoResp);
+      setResult(0, 0, "", "", localanza, paramProtoResp);
       continue;
       label647:
       if ((paramProtoReq != null) && (paramProtoReq.uint32_allow_retry.get() == 1))
@@ -253,7 +253,7 @@ public class C2CPttDownHandler
         }
         paramProtoResp.isAllowRetry = false;
       }
-      setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), "", localamwm, paramProtoResp);
+      setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), "", localanza, paramProtoResp);
     }
   }
   

@@ -1,21 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.fragment.KuaKuaHbFragment;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.home.Conversation;
 
 public class ajyp
-  implements View.OnClickListener
+  extends aslz
 {
-  public ajyp(KuaKuaHbFragment paramKuaKuaHbFragment) {}
+  public ajyp(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  protected void b(boolean paramBoolean)
   {
-    if (KuaKuaHbFragment.a(this.a) != null) {
-      KuaKuaHbFragment.a(this.a).a(KuaKuaHbFragment.a(this.a).getText().toString());
+    if (this.a.a != null) {
+      this.a.a.b();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

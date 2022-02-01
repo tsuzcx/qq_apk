@@ -2,9 +2,9 @@ package cooperation.qqreader;
 
 import android.os.Handler.Callback;
 import android.text.TextUtils;
-import bksp;
-import bksq;
-import bkvd;
+import bmdy;
+import bmdz;
+import bmgm;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -61,7 +61,7 @@ public final class QRBridgeUtil
         break;
       }
       return "";
-      bkvd.a("QRBridgeUtil", "mApp null return null skey");
+      bmgm.a("QRBridgeUtil", "mApp null return null skey");
     }
   }
   
@@ -93,7 +93,7 @@ public final class QRBridgeUtil
     if (localAppRuntime != null) {
       return ((TicketManager)localAppRuntime.getManager(2)).getSkey(paramString);
     }
-    bkvd.a("QRBridgeUtil", "mApp null return null skey");
+    bmgm.a("QRBridgeUtil", "mApp null return null skey");
     return "";
   }
   
@@ -106,7 +106,7 @@ public final class QRBridgeUtil
       if (paramString != null) {
         return new String(WtloginHelper.GetTicketSig(paramString, 524288));
       }
-      bkvd.a("QRBridgeUtil", "get sig info null");
+      bmgm.a("QRBridgeUtil", "get sig info null");
     }
     return "";
   }
@@ -115,13 +115,13 @@ public final class QRBridgeUtil
   {
     if (paramAppRuntime == null)
     {
-      bkvd.a("QRBridgeUtil", "Unable to get pskey due to null app runtime");
+      bmgm.a("QRBridgeUtil", "Unable to get pskey due to null app runtime");
       return "";
     }
-    bkvd.c("QRBridgeUtil", "Try to preload pSkey");
+    bmgm.c("QRBridgeUtil", "Try to preload pSkey");
     paramAppRuntime = (TicketManager)paramAppRuntime.getManager(2);
-    bksq localbksq = new bksq(paramString2);
-    paramAppRuntime.getPskey(paramString1, 16L, new String[] { paramString2 }, localbksq);
+    bmdz localbmdz = new bmdz(paramString2);
+    paramAppRuntime.getPskey(paramString1, 16L, new String[] { paramString2 }, localbmdz);
     return "";
   }
   
@@ -133,7 +133,7 @@ public final class QRBridgeUtil
     }
     localObject = (WtloginManager)((AppRuntime)localObject).getManager(1);
     if (!((WtloginManager)localObject).isNeedLoginWithPasswd(paramString, 16)) {
-      ((WtloginManager)localObject).getStWithoutPasswd(paramString, 16L, 16L, new bksp(paramCallback));
+      ((WtloginManager)localObject).getStWithoutPasswd(paramString, 16L, 16L, new bmdy(paramCallback));
     }
     for (boolean bool = true;; bool = false) {
       return bool;

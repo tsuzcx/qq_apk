@@ -1,43 +1,45 @@
-import android.view.ViewGroup;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.util.LruCache;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.DownloadingUrlEntry;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.List;
+import java.util.concurrent.locks.ReentrantLock;
 
-public class war
+class war
+  extends SimpleJob<Void>
 {
-  private static String a = war.class.getSimpleName();
-  
-  public static vtf a(ViewGroup paramViewGroup, int paramInt)
+  war(wan paramwan, String paramString1, String paramString2, int paramInt)
   {
-    xvv.a(a, "create type=%d", Integer.valueOf(paramInt));
-    switch (paramInt)
+    super(paramString1);
+  }
+  
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    try
     {
-    default: 
-      if (QLog.isDevelopLevel()) {
-        QLog.e(a, 2, "发现一个野生的类型: " + paramInt);
+      wan.a(this.jdField_a_of_type_Wan).lock();
+      paramJobContext = DownloadingUrlEntry.makeKey(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      wan.a(this.jdField_a_of_type_Wan).remove(paramJobContext);
+      paramJobContext = QQStoryContext.a().a().createEntityManager();
+      paramVarArgs = wjp.a(paramJobContext, DownloadingUrlEntry.class, DownloadingUrlEntry.class.getSimpleName(), "key=?", new String[] { DownloadingUrlEntry.makeKey(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int) });
+      if ((paramVarArgs != null) && (paramVarArgs.size() > 0))
+      {
+        paramVarArgs = (DownloadingUrlEntry)paramVarArgs.get(0);
+        paramVarArgs.setStatus(1000);
+        paramVarArgs.bIsDownloadCompleted = 1;
+        paramJobContext.persistOrReplace(paramVarArgs);
       }
-      return new vtf(paramViewGroup, 2131561664);
-    case 6: 
-      return new wai(paramViewGroup);
-    case 5: 
-      return new waq(paramViewGroup);
-    case 7: 
-      return new wah(paramViewGroup);
-    case 8: 
-      return new wax(paramViewGroup, 2131561664);
-    case 9: 
-      return new wap(paramViewGroup);
-    case 3: 
-      return new waj(paramViewGroup);
-    case 4: 
-      return new wan(paramViewGroup, 4);
-    case 2: 
-      return new wav(paramViewGroup, 2131561666);
-    case 10: 
-    case 11: 
-      return new wao(paramViewGroup);
-    case 12: 
-      return new was(paramViewGroup);
+      return null;
     }
-    return new wak(paramViewGroup);
+    finally
+    {
+      wan.a(this.jdField_a_of_type_Wan).unlock();
+    }
   }
 }
 

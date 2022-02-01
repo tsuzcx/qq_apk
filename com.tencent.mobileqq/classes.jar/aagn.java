@@ -1,124 +1,83 @@
-import android.content.res.Resources;
-import android.graphics.Point;
-import android.graphics.Rect;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import com.tencent.widget.Gallery;
+import android.os.Bundle;
+import android.widget.Button;
+import com.tencent.biz.troop.file.MoveFileActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 public class aagn
+  extends aahf
 {
-  public static float a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public aagn(MoveFileActivity paramMoveFileActivity) {}
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3, ByteStringMicro paramByteStringMicro, List<bfif> paramList, Bundle paramBundle)
   {
-    if ((paramInt1 <= 0) || (paramInt2 <= 0) || (paramInt3 <= 0) || (paramInt4 <= 0)) {}
-    do
+    this.a.a(true);
+    if ((!paramBoolean1) || (paramList == null)) {
+      return;
+    }
+    MoveFileActivity.a(this.a, paramInt3);
+    MoveFileActivity.a(this.a, paramBoolean2);
+    paramBoolean1 = paramBundle.getBoolean("isFirstPage");
+    paramByteStringMicro = paramList.iterator();
+    while (paramByteStringMicro.hasNext())
     {
-      do
+      paramBundle = (bfif)paramByteStringMicro.next();
+      if (MoveFileActivity.a(this.a).c.get(paramBundle.b) == null)
       {
-        return 1.0F;
-        if ((paramInt1 >= paramInt3) && (paramInt2 >= paramInt4 * paramInt1 / paramInt3)) {
-          return paramInt3 / paramInt1;
+        paramBundle.a = UUID.randomUUID();
+        MoveFileActivity.a(this.a).c.put(paramBundle.b, paramBundle);
+      }
+    }
+    if (paramBoolean1)
+    {
+      MoveFileActivity.a(this.a).clear();
+      if (!MoveFileActivity.c(this.a).equals("/"))
+      {
+        paramByteStringMicro = new bfif();
+        paramByteStringMicro.c = anvx.a(2131706373);
+        paramByteStringMicro.b = "/";
+        paramByteStringMicro.d = true;
+        paramByteStringMicro.f = -1;
+        MoveFileActivity.a(this.a).add(paramByteStringMicro);
+      }
+    }
+    MoveFileActivity.b(this.a, paramInt1);
+    if (!MoveFileActivity.c(this.a).equals("/"))
+    {
+      paramInt1 = paramList.size() - 1;
+      if (paramInt1 >= 0)
+      {
+        if (!((bfif)paramList.get(paramInt1)).b.equals(MoveFileActivity.c(this.a))) {
+          break label389;
         }
-      } while ((paramInt1 < paramInt3) && (paramInt2 >= paramInt4));
-      if ((paramInt1 >= paramInt3) && (paramInt2 < paramInt4 * paramInt1 / paramInt3)) {
-        return paramInt3 / paramInt1;
-      }
-      if ((paramInt1 > paramInt3) || (paramInt2 > paramInt4)) {
-        return Math.min(paramInt4 / paramInt2, paramInt3 / paramInt1);
-      }
-    } while ((paramInt1 >= paramInt3) || (paramInt1 <= paramInt3 / 2) || (paramInt4 <= paramInt3 / paramInt1 * paramInt2));
-    return paramInt3 / paramInt1;
-  }
-  
-  public static Rect a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, Object paramObject)
-  {
-    return a(paramInt1, paramInt2, paramInt3, paramInt4, true, paramObject);
-  }
-  
-  public static Rect a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, Object paramObject)
-  {
-    float f = Gallery.a(paramInt1, paramInt2, paramInt3, paramInt4, paramObject);
-    int i;
-    label67:
-    label79:
-    Rect localRect;
-    if (paramInt2 >= paramInt1 * 3)
-    {
-      i = 1;
-      if ((i == 0) || ((paramInt1 <= paramInt3) && (paramInt2 <= paramInt4)) || ((paramInt1 < URLDrawableHelper.AIO_IMAGE_MAX_SIZE) && (paramInt2 < URLDrawableHelper.AIO_IMAGE_MAX_SIZE))) {
-        break label119;
-      }
-      f = Math.min(paramInt3 / paramInt1, Gallery.c);
-      i = 49;
-      if ((paramBoolean) || (f <= 1.0F)) {
-        break label126;
-      }
-      localRect = new Rect(0, 0, paramInt1, paramInt2);
-      if (i != 49) {
-        break label143;
-      }
-      localRect.offset((paramInt3 - paramInt1) / 2, 0);
-    }
-    label119:
-    label126:
-    do
-    {
-      do
-      {
-        do
+        if (MoveFileActivity.a(this.a) == -1)
         {
-          return localRect;
-          i = 0;
-          break;
-          i = 17;
-          break label67;
-          paramInt1 = (int)(paramInt1 * f);
-          paramInt2 = (int)(paramInt2 * f);
-          break label79;
-        } while (i != 17);
-        localRect.offset((paramInt3 - paramInt1) / 2, (paramInt4 - paramInt2) / 2);
-      } while ((paramObject == null) || (!(paramObject instanceof AIOImageData)));
-      paramObject = (AIOImageData)paramObject;
-    } while ((paramObject.i == null) || (paramObject.i.length() == 0) || (paramObject.i.equals("null")));
-    label143:
-    localRect.offset(0, (int)(-15.0F * BaseApplicationImpl.sApplication.getResources().getDisplayMetrics().density * f));
-    return localRect;
-  }
-  
-  public static Rect a(View paramView)
-  {
-    Rect localRect = new Rect(paramView.getPaddingLeft(), paramView.getPaddingTop(), paramView.getWidth() - paramView.getPaddingRight(), paramView.getHeight() - paramView.getPaddingBottom());
-    a(paramView, localRect);
-    return localRect;
-  }
-  
-  public static boolean a(View paramView, Rect paramRect)
-  {
-    int i = paramView.getWidth();
-    int j = paramView.getHeight();
-    ViewGroup localViewGroup = (ViewGroup)paramView.getParent();
-    Point localPoint = new Point();
-    if ((i > 0) && (j > 0))
-    {
-      Rect localRect = paramRect;
-      if (paramRect == null)
-      {
-        localRect = new Rect();
-        localRect.set(0, 0, i, j);
+          MoveFileActivity.c(this.a, paramInt1 + MoveFileActivity.a(this.a).size() - 1);
+          MoveFileActivity.a(this.a).setEnabled(true);
+          MoveFileActivity.a(this.a).setBackgroundResource(2130839368);
+          MoveFileActivity.a(this.a).setTextAppearance(this.a.getActivity(), 2131755343);
+        }
       }
-      localPoint.set(-paramView.getScrollX(), -paramView.getScrollY());
-      localRect.offset((i - localRect.width()) / 2, (j - localRect.height()) / 2);
-      return (localViewGroup == null) || (localViewGroup.getChildVisibleRect(paramView, localRect, localPoint));
+      MoveFileActivity.a(this.a).addAll(MoveFileActivity.a(this.a).size() - 1, paramList);
     }
-    return false;
+    for (;;)
+    {
+      MoveFileActivity.a(this.a).notifyDataSetChanged();
+      return;
+      label389:
+      paramInt1 -= 1;
+      break;
+      MoveFileActivity.a(this.a).addAll(paramList);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aagn
  * JD-Core Version:    0.7.0.1
  */

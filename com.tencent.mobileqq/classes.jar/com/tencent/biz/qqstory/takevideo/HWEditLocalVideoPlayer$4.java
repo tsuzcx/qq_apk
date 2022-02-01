@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import xwx;
-import xxi;
+import ylq;
+import ymb;
 
 class HWEditLocalVideoPlayer$4
   implements Runnable
@@ -10,13 +10,13 @@ class HWEditLocalVideoPlayer$4
   
   public void run()
   {
-    Object localObject = (xwx)this.this$0.a(xwx.class);
+    Object localObject = (ylq)this.this$0.a(ylq.class);
     if (localObject != null) {
-      ((xwx)localObject).b();
+      ((ylq)localObject).b();
     }
-    localObject = (xxi)this.this$0.a(xxi.class);
+    localObject = (ymb)this.this$0.a(ymb.class);
     if (localObject != null) {
-      ((xxi)localObject).a();
+      ((ymb)localObject).a();
     }
   }
 }

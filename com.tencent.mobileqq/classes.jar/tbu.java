@@ -1,57 +1,15 @@
-import android.widget.BaseAdapter;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.ViewGroup;
 
-public abstract class tbu<T>
-  extends BaseAdapter
-  implements tbw
+public abstract interface tbu
 {
-  private int jdField_a_of_type_Int;
-  private HashMap<T, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public abstract int a();
   
-  protected void a(T paramT)
-  {
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    localHashMap.put(paramT, Integer.valueOf(i));
-  }
+  public abstract View a(ViewGroup paramViewGroup);
   
-  protected void a(List<T> paramList)
-  {
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      a(paramList.next());
-    }
-  }
+  public abstract void a();
   
-  protected void b()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-  }
-  
-  public T getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilHashMap.size())) {
-      return -1L;
-    }
-    Object localObject = getItem(paramInt);
-    if (this.jdField_a_of_type_JavaUtilHashMap.get(localObject) != null) {
-      return ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)).intValue();
-    }
-    return paramInt;
-  }
-  
-  public final boolean hasStableIds()
-  {
-    return true;
-  }
+  public abstract void a(boolean paramBoolean, String paramString);
 }
 
 

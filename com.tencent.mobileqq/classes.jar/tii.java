@@ -1,21 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import java.util.List;
-import org.jetbrains.annotations.NotNull;
+import android.view.View;
 
 class tii
-  implements rnw
+  implements blak
 {
-  tii(tig paramtig, UgcVideo paramUgcVideo, String paramString) {}
+  tii(tig paramtig) {}
   
-  public void a(@NotNull List<UgcVideo> paramList)
+  public void a()
   {
-    BridgeModule.access$1600(this.jdField_a_of_type_Tig.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.columnId, paramList, this.jdField_a_of_type_JavaLangString, 0, "", true);
+    this.a.a.setSelected(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tii
  * JD-Core Version:    0.7.0.1
  */

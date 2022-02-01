@@ -2,6 +2,7 @@ package com.tencent.qqlive.module.videoreport.inner;
 
 import android.app.Activity;
 import android.app.Application;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
 import com.tencent.qqlive.module.videoreport.Configuration;
@@ -15,8 +16,12 @@ import com.tencent.qqlive.module.videoreport.IVideoReportComponent;
 import com.tencent.qqlive.module.videoreport.PageParams;
 import com.tencent.qqlive.module.videoreport.SessionChangeReason;
 import com.tencent.qqlive.module.videoreport.constants.ReportPolicy;
+import com.tencent.qqlive.module.videoreport.data.IElementDynamicParams;
+import com.tencent.qqlive.module.videoreport.dtreport.api.DTConfig;
+import com.tencent.qqlive.module.videoreport.dtreport.api.PageSearchMode;
 import com.tencent.qqlive.module.videoreport.dtreport.stdevent.IEventParamsBuilder;
 import com.tencent.qqlive.module.videoreport.dtreport.stdevent.StdEventCode;
+import com.tencent.qqlive.module.videoreport.dtreport.video.data.VideoEntity;
 import com.tencent.qqlive.module.videoreport.page.IScrollReader;
 import com.tencent.qqlive.module.videoreport.page.PageInfo;
 import com.tencent.qqlive.module.videoreport.utils.IDetectionInterceptor;
@@ -33,6 +38,8 @@ public abstract interface IVideoReport
   
   public abstract void addToDetectionWhitelist(Activity paramActivity);
   
+  public abstract void bindVideoPlayerInfo(@NonNull Object paramObject, VideoEntity paramVideoEntity);
+  
   public abstract void clearElementExposure(View paramView, boolean paramBoolean);
   
   public abstract void clearPublicParams();
@@ -41,7 +48,12 @@ public abstract interface IVideoReport
   
   public abstract PageInfo findOwnerPage(View paramView);
   
+  public abstract Map<String, ?> getElementParams(Object paramObject);
+  
   public abstract ReportPolicy getElementReportPolicy(Object paramObject);
+  
+  @PageSearchMode
+  public abstract Integer getPageSearchMode(Object paramObject);
   
   public abstract void ignorePageInOutEvent(Object paramObject, boolean paramBoolean);
   
@@ -100,6 +112,8 @@ public abstract interface IVideoReport
   
   public abstract void setDetectionMode(@DetectionMode int paramInt);
   
+  public abstract void setElementDynamicParams(Object paramObject, IElementDynamicParams paramIElementDynamicParams);
+  
   public abstract void setElementExposureDetectionEnabled(Object paramObject, boolean paramBoolean);
   
   public abstract void setElementExposureMinRate(Object paramObject, double paramDouble);
@@ -116,6 +130,8 @@ public abstract interface IVideoReport
   
   public abstract void setElementReuseIdentifier(Object paramObject, String paramString);
   
+  public abstract void setElementVirtualParentParams(Object paramObject, int paramInt, String paramString, Map<String, Object> paramMap);
+  
   public abstract void setEventAdditionalReport(IAdditionalReportListener paramIAdditionalReportListener);
   
   public abstract void setLogicParent(View paramView1, View paramView2);
@@ -124,15 +140,21 @@ public abstract interface IVideoReport
   
   public abstract void setPageContentId(Object paramObject, String paramString);
   
+  public abstract void setPageContentId(Object paramObject, String paramString, boolean paramBoolean);
+  
   public abstract void setPageId(Object paramObject, String paramString);
   
   public abstract void setPageParams(Object paramObject, PageParams paramPageParams);
   
   public abstract void setPageParams(Object paramObject1, String paramString, Object paramObject2);
   
+  public abstract void setPageSearchMode(Object paramObject, @PageSearchMode int paramInt);
+  
   public abstract void setPublicParam(String paramString, Object paramObject);
   
   public abstract void setTestMode(boolean paramBoolean);
+  
+  public abstract void setVideoReportConfig(@NonNull DTConfig paramDTConfig);
   
   public abstract void startNewSession(SessionChangeReason paramSessionChangeReason);
   
@@ -149,6 +171,8 @@ public abstract interface IVideoReport
   public abstract void triggerEventInCurrentPage(String paramString, Map<String, Object> paramMap);
   
   public abstract void triggerExposureInCurrentPage(List<Map<String, Object>> paramList);
+  
+  public abstract void unbindVideoPlayerInfo(@NonNull Object paramObject);
   
   @Nullable
   public abstract Map<String, Object> viewTreeParamsForView(View paramView);

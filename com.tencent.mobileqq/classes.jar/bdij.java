@@ -1,18 +1,38 @@
-import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
-import java.util.List;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.TableBuilder.Proxy;
+import com.tencent.mobileqq.persistence.Entity;
 
-class bdij
-  extends bdiq
+public final class bdij
+  implements IMCoreProxyRoute.TableBuilder.Proxy
 {
-  bdij(bdid parambdid, EditorState paramEditorState, List paramList)
+  public String createIndexSQLStatement(Entity paramEntity)
   {
-    super(parambdid, paramEditorState, paramList);
+    if ((paramEntity instanceof MessageRecord))
+    {
+      MessageRecord localMessageRecord = (MessageRecord)paramEntity;
+      paramEntity = localMessageRecord.getTableName();
+      StringBuilder localStringBuilder = new StringBuilder("CREATE INDEX IF NOT EXISTS ");
+      localStringBuilder.append(paramEntity).append("_idx");
+      localStringBuilder.append(" ON ");
+      localStringBuilder.append(paramEntity);
+      paramEntity = "time";
+      switch (localMessageRecord.istroop)
+      {
+      }
+      for (;;)
+      {
+        localStringBuilder.append("(").append(paramEntity).append(", _id)");
+        return localStringBuilder.toString();
+        paramEntity = "shmsgseq";
+      }
+    }
+    return null;
   }
   
-  public void a(EditorState paramEditorState)
+  public Class[] getNeedPrivateFieldsClass()
   {
-    super.a(paramEditorState);
-    bdid.a(this.a).a(true, true);
+    return new Class[] { RecentUser.class };
   }
 }
 

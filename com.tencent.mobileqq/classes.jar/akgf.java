@@ -1,26 +1,20 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
 
-final class akgf
-  extends ClickableSpan
+public class akgf
+  implements DialogInterface.OnClickListener
 {
-  akgf(akgi paramakgi, String paramString) {}
+  public akgf(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Akgi.a(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setUnderlineText(false);
+    bdla.b(this.a.app, "CliOper", "", "", "0X8005FDA", "0X8005FDA", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akgf
  * JD-Core Version:    0.7.0.1
  */

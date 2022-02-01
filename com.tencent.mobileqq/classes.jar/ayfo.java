@@ -1,23 +1,36 @@
-import android.graphics.drawable.Drawable;
-import org.jetbrains.annotations.NotNull;
+import android.content.res.Resources;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-public class ayfo
+class ayfo
+  implements Animation.AnimationListener
 {
-  public int a;
-  public Drawable a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  ayfo(ayek paramayek) {}
   
-  @NotNull
-  public String toString()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return "PluginData{drawable=" + this.jdField_a_of_type_AndroidGraphicsDrawableDrawable + ", actionId=" + this.jdField_a_of_type_Int + ", text='" + this.jdField_a_of_type_JavaLangString + '\'' + ", contentDescription='" + this.jdField_b_of_type_JavaLangString + '\'' + ", isShowNew=" + this.jdField_a_of_type_Boolean + ", appid=" + this.jdField_b_of_type_Int + ", redDotId='" + this.c + '\'' + ", action='" + this.d + '\'' + ", actionType='" + this.e + '\'' + '}';
+    if (paramAnimation == ayek.b(this.a))
+    {
+      ayek.a(this.a).setVisibility(8);
+      ayek.a(this.a).clearAnimation();
+      ayek.a(this.a).setBackgroundResource(2130849158);
+      ayek.a(this.a).setTextColor(this.a.a.getResources().getColor(2131166723));
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (paramAnimation == ayek.a(this.a))
+    {
+      ayek.a(this.a).setVisibility(0);
+      ayek.a(this.a).setBackgroundResource(2130850724);
+      ayek.a(this.a).setTextColor(this.a.a.getResources().getColor(2131167020));
+    }
   }
 }
 

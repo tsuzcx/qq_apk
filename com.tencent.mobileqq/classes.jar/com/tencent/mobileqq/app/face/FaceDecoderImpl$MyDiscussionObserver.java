@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app.face;
 
-import amrc;
+import antq;
 import com.tencent.qphone.base.util.QLog;
 import java.util.LinkedList;
 
 class FaceDecoderImpl$MyDiscussionObserver
-  extends amrc
+  extends antq
 {
   private FaceDecoderImpl$MyDiscussionObserver(FaceDecoderImpl paramFaceDecoderImpl) {}
   

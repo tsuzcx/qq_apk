@@ -1,51 +1,96 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.graphics.drawable.Drawable;
+import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ThemeImageView;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.fragment.SDKSetEmotionPreviewFragment;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AbsListView.LayoutParams;
+import java.util.ArrayList;
+import java.util.List;
 
 public class auxz
-  extends RecyclerView.ViewHolder
+  extends BaseAdapter
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ThemeImageView jdField_a_of_type_ComTencentWidgetThemeImageView;
+  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  public List<String> a;
   
-  public auxz(View paramView, Context paramContext, GridLayoutManager paramGridLayoutManager, boolean paramBoolean)
+  public auxz(SDKSetEmotionPreviewFragment paramSDKSetEmotionPreviewFragment)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379724));
-    this.jdField_a_of_type_ComTencentWidgetThemeImageView = ((ThemeImageView)paramView.findViewById(2131369264));
-    this.jdField_a_of_type_ComTencentWidgetThemeImageView.setMaskShape(bjuk.c);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369136));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376531));
-    if (paramBoolean)
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidViewLayoutInflater = paramSDKSetEmotionPreviewFragment.getActivity().getLayoutInflater();
+  }
+  
+  public void a(List<String> paramList)
+  {
+    if (paramList == null)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(paramContext.getResources().getColor(2131165762));
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramContext.getResources().getColor(2131165764));
-      paramBoolean = true;
-    }
-    while ((paramGridLayoutManager != null) && (paramGridLayoutManager.getWidth() > 0))
-    {
-      paramView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-      paramView.height = (paramGridLayoutManager.getWidth() / 3);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
-      if (QLog.isColorLevel()) {
-        QLog.i("leba_sort_LebaTableMgrAdpter", 2, "plugin height =" + paramView.height + ",isNight" + paramBoolean);
+      if (this.jdField_a_of_type_JavaUtilList.size() != 0)
+      {
+        this.jdField_a_of_type_JavaUtilList.clear();
+        notifyDataSetChanged();
       }
       return;
-      paramBoolean = false;
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(paramContext.getResources().getColor(2131165761));
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramContext.getResources().getColor(2131165763));
     }
-    QLog.i("leba_sort_LebaTableMgrAdpter", 1, "plugin getWidth error ");
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if (paramView == null)
+    {
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559160, null);
+      localView.setLayoutParams(new AbsListView.LayoutParams(SDKSetEmotionPreviewFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentSDKSetEmotionPreviewFragment), SDKSetEmotionPreviewFragment.b(this.jdField_a_of_type_ComTencentMobileqqFragmentSDKSetEmotionPreviewFragment)));
+      paramView = new auyb(this);
+      paramView.a = ((URLImageView)localView.findViewById(2131366064));
+      localView.setTag(paramView);
+    }
+    for (;;)
+    {
+      Object localObject1 = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = URLDrawableHelper.TRANSPARENT;
+      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
+      ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = azlo.a((String)localObject1);
+      ((URLDrawable.URLDrawableOptions)localObject2).mUseAutoScaleParams = true;
+      localObject2 = URLDrawable.getFileDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
+      paramView.a.setScaleType(ImageView.ScaleType.FIT_CENTER);
+      paramView.a.setImageDrawable((Drawable)localObject2);
+      localObject2 = paramView.a;
+      paramView.a.setOnClickListener(new auya(this, (String)localObject1, (View)localObject2));
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject1 = (auyb)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject1;
+    }
   }
 }
 

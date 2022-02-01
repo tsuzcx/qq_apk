@@ -1,13 +1,13 @@
 package com.tencent.av.utils;
 
 import android.os.Handler;
-import mtb;
-import mtc;
+import mty;
+import mtz;
 
 public class QQFrameByFrameAnimation$1
   implements Runnable
 {
-  public QQFrameByFrameAnimation$1(mtc parammtc) {}
+  public QQFrameByFrameAnimation$1(mtz parammtz) {}
   
   public void run()
   {
@@ -26,10 +26,10 @@ public class QQFrameByFrameAnimation$1
         }
         this.this$0.a();
         this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this, this.this$0.jdField_a_of_type_Int);
-      } while (this.this$0.jdField_a_of_type_Mtb == null);
-      this.this$0.jdField_a_of_type_Mtb.c();
+      } while (this.this$0.jdField_a_of_type_Mty == null);
+      this.this$0.jdField_a_of_type_Mty.c();
     } while ((this.this$0.jdField_a_of_type_ArrayOfInt.length <= 0) || (this.this$0.c % this.this$0.jdField_a_of_type_ArrayOfInt.length != 0));
-    this.this$0.jdField_a_of_type_Mtb.b();
+    this.this$0.jdField_a_of_type_Mty.b();
   }
 }
 

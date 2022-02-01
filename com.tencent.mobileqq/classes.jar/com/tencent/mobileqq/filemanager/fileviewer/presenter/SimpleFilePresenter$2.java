@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import asst;
-import asvn;
-import bcvc;
+import atxa;
+import atzu;
+import becb;
 import java.util.List;
 
 public class SimpleFilePresenter$2
   implements Runnable
 {
-  public SimpleFilePresenter$2(asvn paramasvn, String paramString, boolean paramBoolean, int paramInt, List paramList) {}
+  public SimpleFilePresenter$2(atzu paramatzu, String paramString, boolean paramBoolean, int paramInt, List paramList) {}
   
   public void run()
   {
@@ -39,7 +39,7 @@ public class SimpleFilePresenter$2
       if (this.jdField_a_of_type_Int == 3000) {
         localList2 = this.jdField_a_of_type_JavaUtilList;
       }
-      bcvc.a(str1, str2, str3, false, bool, 1, (List)localObject, localList1, localList2);
+      becb.a(str1, str2, str3, false, bool, 1, (List)localObject, localList1, localList2);
       return;
       localObject = null;
       break;
@@ -48,7 +48,7 @@ public class SimpleFilePresenter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.SimpleFilePresenter.2
  * JD-Core Version:    0.7.0.1
  */

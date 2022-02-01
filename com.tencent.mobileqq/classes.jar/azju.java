@@ -1,41 +1,10 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.videoplatform.api.IThreadMgr;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class azju
-  implements IThreadMgr
+abstract interface azju
 {
-  public void postOnSubThread(Runnable paramRunnable)
-  {
-    ThreadManager.getSubThreadHandler().post(paramRunnable);
-  }
+  public abstract MessageRecord a(azjz paramazjz);
   
-  public void postOnSubThreadDelayed(Runnable paramRunnable, long paramLong)
-  {
-    ThreadManager.getSubThreadHandler().postDelayed(paramRunnable, paramLong);
-  }
-  
-  public void postOnUIThread(Runnable paramRunnable)
-  {
-    ThreadManager.getUIHandler().post(paramRunnable);
-  }
-  
-  public void postOnUIThreadDelayed(Runnable paramRunnable, long paramLong)
-  {
-    ThreadManager.getUIHandler().postDelayed(paramRunnable, paramLong);
-  }
-  
-  public void quitSubThread() {}
-  
-  public void removeCallbackOnSubHandler(Runnable paramRunnable)
-  {
-    ThreadManager.getSubThreadHandler().removeCallbacks(paramRunnable);
-  }
-  
-  public void removeCallbackOnUIHandler(Runnable paramRunnable)
-  {
-    ThreadManager.getUIHandler().removeCallbacks(paramRunnable);
-  }
+  public abstract MessageRecord a(azkn paramazkn);
 }
 
 

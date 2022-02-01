@@ -1,11 +1,29 @@
-import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-public abstract interface ahqq
-  extends ahqu
+class ahqq
+  implements URLDrawable.URLDrawableListener
 {
-  public abstract int a();
+  ahqq(ahqp paramahqp, String paramString) {}
   
-  public abstract View a(Object... paramVarArgs);
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    QLog.e("AioPanelMiniAppManager", 1, "onLoadFialed: failed. ", paramThrowable);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AioPanelMiniAppManager", 2, "onLoadSuccessed: invoked.  url: " + this.jdField_a_of_type_JavaLangString);
+    }
+    ahqp.a(this.jdField_a_of_type_Ahqp).put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
+  }
 }
 
 

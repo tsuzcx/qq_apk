@@ -1,15 +1,15 @@
 package com.tencent.sveffects;
 
+import bnkt;
+import bnky;
 import com.tencent.mobileqq.shortvideo.resource.PtuFilterResource;
-import dov.com.qq.im.ae.download.AEResInfo;
-import dov.com.qq.im.ae.download.AEResUtil;
 
 public class SvEffectSdkInitor$QQPtuFilterResource
   implements PtuFilterResource
 {
   public boolean checkPendantVersionOK()
   {
-    return AEResUtil.checkAEResVersionOK(AEResInfo.AE_RES_BASE_PACKAGE);
+    return bnky.a(bnkt.b);
   }
   
   public String getPortraitPathDir()
@@ -19,7 +19,7 @@ public class SvEffectSdkInitor$QQPtuFilterResource
   
   public String getSoPathDir()
   {
-    return AEResUtil.getFinalUnzipFilePath();
+    return bnky.b();
   }
 }
 

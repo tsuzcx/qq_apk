@@ -94,10 +94,10 @@ public class QCircleHybirdStyleFactory
       QLog.d("QCircleHybirdStyleFactory", 1, "context is null return default");
       return localQCircleWebViewTitleStyle;
     }
-    localQCircleWebViewTitleStyle.statusBarColor = paramContext.getResources().getColor(2131166253);
-    localQCircleWebViewTitleStyle.titleBgColor = paramContext.getResources().getColor(2131166253);
-    localQCircleWebViewTitleStyle.titleColor = paramContext.getResources().getColor(2131165351);
-    localQCircleWebViewTitleStyle.leftAndRightBtnColor = paramContext.getResources().getColor(2131165351);
+    localQCircleWebViewTitleStyle.statusBarColor = paramContext.getResources().getColor(2131166262);
+    localQCircleWebViewTitleStyle.titleBgColor = paramContext.getResources().getColor(2131166262);
+    localQCircleWebViewTitleStyle.titleColor = paramContext.getResources().getColor(2131165357);
+    localQCircleWebViewTitleStyle.leftAndRightBtnColor = paramContext.getResources().getColor(2131165357);
     return localQCircleWebViewTitleStyle;
   }
   

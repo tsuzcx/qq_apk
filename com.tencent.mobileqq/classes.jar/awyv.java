@@ -1,12 +1,17 @@
+import com.tencent.qphone.base.util.QLog;
+
 class awyv
-  implements awjh
+  extends aodb
 {
-  awyv(awyf paramawyf) {}
+  awyv(awyr paramawyr) {}
   
-  public void a(String paramString, boolean paramBoolean)
+  public void a()
   {
-    this.a.c(paramBoolean);
-    this.a.t = paramBoolean;
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonManager", 2, "mVipStatusObserver vip change");
+    }
+    super.a();
+    this.a.d();
   }
 }
 

@@ -1,38 +1,36 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class plp
-  extends BroadcastReceiver
+public class plp
+  implements AladdinConfigHandler
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    if (paramIntent == null) {}
-    do
+    paramString = pku.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      return;
-      if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
-      {
-        QLog.d("ReadinjoySPEventReport", 2, "receive screen off broadcast");
-        ple.e(false);
-        return;
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      if (TextUtils.equals("readinjoyClickChannelView", str1)) {
+        bmhv.a("sp_key_readinjoy_click_channel_view", Boolean.valueOf(TextUtils.equals(str2, "1")));
+      } else if (TextUtils.equals("readinjoySlideChannelView", str1)) {
+        bmhv.a("sp_key_readinjoy_slide_channel_view", Boolean.valueOf(TextUtils.equals(str2, "1")));
+      } else if (TextUtils.equals("readinjoyClickDiversionCard", str1)) {
+        bmhv.a("sp_key_readinjoy_click_diversion_card", Boolean.valueOf(TextUtils.equals(str2, "1")));
       }
-      if (paramIntent.getAction().equals("android.intent.action.SCREEN_ON"))
-      {
-        QLog.d("ReadinjoySPEventReport", 2, "receive screen on broadcast");
-        ple.e(true);
-        return;
-      }
-      if ("mqq.intent.action.QQ_FOREGROUND".equals(paramIntent.getAction()))
-      {
-        ple.c(false);
-        ple.o();
-        return;
-      }
-    } while (!"mqq.intent.action.QQ_BACKGROUND".equals(paramIntent.getAction()));
-    ple.d(false);
-    ple.o();
+    }
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    bmhv.a("sp_key_readinjoy_click_channel_view", Boolean.valueOf(false));
+    bmhv.a("sp_key_readinjoy_slide_channel_view", Boolean.valueOf(false));
+    bmhv.a("sp_key_readinjoy_click_diversion_card", Boolean.valueOf(false));
   }
 }
 

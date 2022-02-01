@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.storyHome.memory.controller;
 
-import vux;
-import vvj;
-import xkl;
-import xkn;
+import wjs;
+import wke;
+import xzg;
+import xzi;
 
 public class MemoriesProfilePresenter$GetCollectListEventReceiver$1
   implements Runnable
 {
-  public MemoriesProfilePresenter$GetCollectListEventReceiver$1(xkn paramxkn, xkl paramxkl) {}
+  public MemoriesProfilePresenter$GetCollectListEventReceiver$1(xzi paramxzi, xzg paramxzg) {}
   
   public void run()
   {
-    ((vvj)vux.a(2)).a(this.a.a);
+    ((wke)wjs.a(2)).a(this.a.a);
   }
 }
 

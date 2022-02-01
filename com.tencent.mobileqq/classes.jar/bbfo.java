@@ -1,22 +1,15 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Comparator;
-import java.util.Set;
+import android.os.Bundle;
+import android.os.IInterface;
+import com.tencent.mobileqq.pic.CompressInfo;
 
-public class bbfo
-  extends bbee
+public abstract interface bbfo
+  extends IInterface
 {
-  public final bbfp a;
+  public abstract Bundle a(int paramInt, Bundle paramBundle);
   
-  public bbfo(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
-  {
-    super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
-    this.a = new bbfp(paramQQAppInterface);
-  }
+  public abstract void a(int paramInt, Bundle paramBundle);
   
-  public Comparator<bayp> a()
-  {
-    return this.a;
-  }
+  public abstract void a(CompressInfo paramCompressInfo);
 }
 
 

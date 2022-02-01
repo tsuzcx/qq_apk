@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
 
-public final class xxh
-  implements Parcelable.Creator<EditRecordVideoSource>
+public class xxh
+  extends zhp
 {
-  public EditRecordVideoSource a(Parcel paramParcel)
-  {
-    return new EditRecordVideoSource(paramParcel);
-  }
+  public xxh(StoryDetailFragment paramStoryDetailFragment) {}
   
-  public EditRecordVideoSource[] a(int paramInt)
+  public boolean a(boolean paramBoolean)
   {
-    return new EditRecordVideoSource[paramInt];
+    this.a.d();
+    return true;
   }
 }
 

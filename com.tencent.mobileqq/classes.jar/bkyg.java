@@ -1,8 +1,8 @@
-public class bkyg
+public final class bkyg
 {
-  public String a;
-  public String b;
-  public String c;
+  public final String a;
+  public final String b;
+  public final String c;
   
   public bkyg(String paramString1, String paramString2, String paramString3)
   {
@@ -13,7 +13,7 @@ public class bkyg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bkyg
  * JD-Core Version:    0.7.0.1
  */

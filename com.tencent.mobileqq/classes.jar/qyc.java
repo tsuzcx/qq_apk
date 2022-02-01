@@ -1,7 +1,12 @@
-import kotlin.Metadata;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardVideoTipsManager$Companion;", "", "()V", "GUIDE_DIMISS_DELAY", "", "SHARP_WIDTH", "", "TAG", "", "TYPE_REWARD_MULTI_COIN", "", "TYPE_REWARD_ONE_COIN", "URL_REWARD_MULTI_COIN_SUCCESS_ANIM", "URL_REWARD_ONE_COIN_SUCCESS_ANIM", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qyc {}
+public class qyc
+  implements orp
+{
+  public qyc(PTSFragment paramPTSFragment) {}
+  
+  public void a(String paramString) {}
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

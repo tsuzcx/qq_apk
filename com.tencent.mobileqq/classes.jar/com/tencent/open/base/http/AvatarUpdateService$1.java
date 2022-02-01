@@ -3,10 +3,10 @@ package com.tencent.open.base.http;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import bhzv;
-import bhzw;
-import biag;
-import biah;
+import bjkx;
+import bjky;
+import bjli;
+import bjlj;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -22,7 +22,7 @@ import org.json.JSONObject;
 public class AvatarUpdateService$1
   implements Runnable
 {
-  public AvatarUpdateService$1(bhzv parambhzv, String paramString1, String paramString2, String paramString3, String paramString4, Context paramContext, biah parambiah) {}
+  public AvatarUpdateService$1(bjkx parambjkx, String paramString1, String paramString2, String paramString3, String paramString4, Context paramContext, bjlj parambjlj) {}
   
   public void run()
   {
@@ -66,8 +66,8 @@ public class AvatarUpdateService$1
       {
         if (!this.this$0.jdField_a_of_type_JavaUtilHashMap.containsKey(this.c))
         {
-          this.this$0.jdField_a_of_type_JavaUtilHashMap.put(this.c, new bhzw(this.this$0, this.jdField_a_of_type_AndroidContentContext, this.c, this.d, str, this.jdField_a_of_type_Biah));
-          new biag(this.c, str, null, "GET", this.this$0).execute(new Void[0]);
+          this.this$0.jdField_a_of_type_JavaUtilHashMap.put(this.c, new bjky(this.this$0, this.jdField_a_of_type_AndroidContentContext, this.c, this.d, str, this.jdField_a_of_type_Bjlj));
+          new bjli(this.c, str, null, "GET", this.this$0).execute(new Void[0]);
         }
         return;
       }

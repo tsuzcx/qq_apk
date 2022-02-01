@@ -1,37 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPcBaseFragment;
+import com.tencent.intervideo.nowproxy.NowLive;
+import com.tencent.intervideo.nowproxy.common.login.LoginData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicLong;
+import mqq.manager.TicketManager;
 
-public class avvm
-  implements DialogInterface.OnClickListener
+class avvm
+  implements avvr
 {
-  public avvm(MsgBackupPcBaseFragment paramMsgBackupPcBaseFragment) {}
+  avvm(avux paramavux, LoginData paramLoginData, TicketManager paramTicketManager, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    avwu.a("MsgBackup_MsgBackupPcBaseFragment", "showDisConnDialog mextra is not null! %b, isFromPcHandle = %b", new Object[] { Boolean.valueOf(TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)), Boolean.valueOf(this.a.e) });
-    avtq.a().a().c();
-    avtq.a().d();
-    if (this.a.jdField_a_of_type_Boolean) {
-      if ((!this.a.e) && (this.a.b == 1)) {
-        this.a.a(this.a.getActivity());
-      }
-    }
-    do
+    if ((!avux.a(this.jdField_a_of_type_Avux, paramInt)) || (TextUtils.isEmpty(paramString)))
     {
+      QLog.w("XProxy|NowProxy", 1, "asyn get skey error. retCode: " + paramInt);
       return;
-      this.a.m();
+    }
+    this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginData.setSkey(paramString.getBytes());
+    this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginData.setST(this.jdField_a_of_type_MqqManagerTicketManager.getSt(this.jdField_a_of_type_JavaLangString, 16));
+    this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginData.setSTKey(this.jdField_a_of_type_MqqManagerTicketManager.getStkey(this.jdField_a_of_type_JavaLangString, 16));
+    this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginData.setUserId(this.jdField_a_of_type_JavaLangString);
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_Avux.b)) || (TextUtils.isEmpty(this.jdField_a_of_type_Avux.jdField_a_of_type_JavaLangString)))
+    {
+      NowLive.login(this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginData);
       return;
-      if (!this.a.e) {
-        break;
-      }
-    } while (this.a.getActivity() == null);
-    this.a.getActivity().setResult(1001);
-    this.a.getActivity().finish();
-    return;
-    this.a.a(this.a.getActivity());
+    }
+    this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginData.setKey(this.jdField_a_of_type_Avux.b.getBytes());
+    this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginData.setAuthAppId("101490787");
+    this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginData.setOriginalId(this.jdField_a_of_type_Avux.jdField_a_of_type_JavaLangString);
+    NowLive.login(this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginData);
+    avux.a(this.jdField_a_of_type_Avux).set(System.currentTimeMillis());
   }
 }
 

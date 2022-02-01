@@ -1,48 +1,93 @@
-import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import com.tencent.common.app.BaseApplicationImpl;
 
-class lom
+public class lom
 {
-  public long a;
-  public long b;
-  public long c;
-  public long d;
-  public long e;
-  public long f;
-  public long g;
+  private static lom jdField_a_of_type_Lom;
+  int jdField_a_of_type_Int = 0;
   
-  public void a()
+  public static lom a()
   {
-    this.a = 0L;
-    this.b = 0L;
-    this.c = 0L;
-    this.d = 0L;
-    this.e = 0L;
-    this.f = 0L;
-    this.g = 0L;
+    try
+    {
+      lom locallom;
+      if (jdField_a_of_type_Lom != null)
+      {
+        locallom = jdField_a_of_type_Lom;
+        return locallom;
+      }
+      return null;
+    }
+    finally
+    {
+      try
+      {
+        jdField_a_of_type_Lom = new lom();
+        locallom = jdField_a_of_type_Lom;
+        return locallom;
+      }
+      catch (Exception localException) {}
+      localObject = finally;
+    }
   }
   
-  public void a(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5)
+  public boolean a()
   {
-    long l = SystemClock.elapsedRealtime();
-    this.a += 1L;
-    this.b = ((this.b + paramLong1) / 2L);
-    this.c = ((this.c + paramLong2) / 2L);
-    this.d = ((this.d + paramLong3) / 2L);
-    this.e = ((this.e + paramLong4) / 2L);
-    this.f = ((this.f + paramLong5) / 2L);
-    if (this.g != 0L) {
-      paramLong1 = this.g;
+    boolean bool = false;
+    if (lfu.a(BaseApplicationImpl.getContext()).a("sharp/EffectFilterDeviceConfig/isClose", 0) == 0) {
+      bool = true;
     }
-    this.g = l;
+    return bool;
   }
   
-  public void b()
+  public boolean b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PerfData", 2, String.format(Locale.getDefault(), "addPerfData, [count: %s, oes2NormalCost: %s, gpuDrawCost: %s, readPixelCost:%s, sendDataCost:%s, totalCost:%s", new Object[] { Long.valueOf(this.a), Long.valueOf(this.b), Long.valueOf(this.c), Long.valueOf(this.d), Long.valueOf(this.e), Long.valueOf(this.f) }));
+    boolean bool = false;
+    if (lfu.a(BaseApplicationImpl.getContext()).a("sharp/qavGestureConfig/isClose", 0) == 0) {
+      bool = true;
     }
+    return bool;
+  }
+  
+  public boolean c()
+  {
+    boolean bool = false;
+    if (lfu.a(BaseApplicationImpl.getContext()).a("sharp/qavRedbagConfig/isClose", 0) == 0) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public boolean d()
+  {
+    boolean bool = false;
+    if (lfu.a(BaseApplicationImpl.getContext()).a("sharp/qavScreenRecoder/isClose", 0) == 0) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public boolean e()
+  {
+    boolean bool = false;
+    if (lfu.a(BaseApplicationImpl.getContext()).a("sharp/EffectFaceDeviceConfig/isClose", 0) == 0) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public boolean f()
+  {
+    return lfu.a(BaseApplicationImpl.getContext()).a("sharp/EffectFaceDeviceConfig/enable", 0) == 1;
+  }
+  
+  public boolean g()
+  {
+    return lfu.a(BaseApplicationImpl.getContext()).a("sharp/CameraFocusMethod/isUseSelfDev", 0) == 1;
+  }
+  
+  public boolean h()
+  {
+    return 1 == lfu.a(BaseApplicationImpl.getContext()).a("sharp/EffectFaceDetectInversion/Inversion", 0);
   }
 }
 

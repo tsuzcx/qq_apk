@@ -1,17 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
-
-class baln
-  implements DialogInterface.OnClickListener
+public abstract interface baln
 {
-  baln(balk parambalk) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoView", 4, "showSaveFileTips cancel");
-  }
+  public abstract void b(boolean paramBoolean);
 }
 
 

@@ -16,7 +16,7 @@ public final class AvGameRoomManager$CmdRoomInfoReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     trpc.qq_vgame.room_manager.AvGameRoomManager.CmdRoomInfoReq
  * JD-Core Version:    0.7.0.1
  */

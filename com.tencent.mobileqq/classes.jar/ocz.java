@@ -1,38 +1,86 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.net.Uri;
-import android.preference.PreferenceManager;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.qphone.base.util.QLog;
 
-class ocz
-  implements bjoe
+public class ocz
+  extends aoav
 {
-  ocz(ocw paramocw, QQAppInterface paramQQAppInterface, Context paramContext, Uri paramUri, SessionInfo paramSessionInfo, bjnw parambjnw) {}
+  public ocz(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  void a()
   {
-    switch (paramInt)
-    {
-    default: 
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-    case 0: 
-      afcm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (BaseActivity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-      paramView = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).edit();
-      if (paramView != null) {
-        paramView.putString("LastScreenShotUri", null).apply();
-      }
-      this.jdField_a_of_type_Bjnw.dismiss();
+    if (this.a.jdField_j_of_type_Boolean) {
+      this.a.G();
+    }
+    this.a.jdField_j_of_type_Boolean = true;
+  }
+  
+  public void onDynamicListGet(boolean paramBoolean, int paramInt)
+  {
+    boolean bool2 = false;
+    boolean bool1 = false;
+    super.onDynamicListGet(paramBoolean, paramInt);
+    if (this.a.jdField_a_of_type_Nzu == null) {
       return;
     }
-    afcm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, null, null);
-    this.jdField_a_of_type_Bjnw.dismiss();
+    this.a.q = true;
+    if (paramInt == 0)
+    {
+      oao localoao = oay.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.a.e);
+      if (localoao != null)
+      {
+        this.a.jdField_a_of_type_Nzu.a(localoao.b(), localoao.a);
+        this.a.jdField_a_of_type_Nzu.a(localoao.b());
+      }
+    }
+    if (paramBoolean) {
+      if (this.a.jdField_a_of_type_Nzu.a() == 0)
+      {
+        paramBoolean = bool1;
+        if (paramBoolean) {
+          this.a.v();
+        }
+        this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.b(paramBoolean);
+        bool1 = paramBoolean;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "onDynamicListGet: --hasMoreData=" + paramBoolean);
+          bool1 = paramBoolean;
+        }
+        label172:
+        if (paramInt != 1) {
+          break label246;
+        }
+      }
+    }
+    for (this.a.l = AccountDetailActivity.jdField_j_of_type_Int;; this.a.l = AccountDetailActivity.k) {
+      label246:
+      do
+      {
+        this.a.jdField_a_of_type_Nzu.b(this.a.l);
+        this.a.jdField_a_of_type_Nzu.notifyDataSetChanged();
+        return;
+        paramBoolean = true;
+        break;
+        this.a.jdField_a_of_type_Nzu.notifyDataSetChanged();
+        this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.b();
+        bool1 = bool2;
+        break label172;
+      } while ((paramInt != 4) && ((paramInt != 0) || (bool1)));
+    }
+  }
+  
+  public void onFollowPublicAccount(boolean paramBoolean, String paramString)
+  {
+    super.onFollowPublicAccount(paramBoolean, paramString);
+    a();
+  }
+  
+  public void onUnfollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    super.onUnfollowPublicAccount(paramInt, paramPublicAccountInfo);
+    a();
   }
 }
 

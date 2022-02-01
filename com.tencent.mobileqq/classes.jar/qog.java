@@ -1,89 +1,73 @@
-import java.util.Arrays;
-import kotlin.Metadata;
-import kotlin.TypeCastException;
-import kotlin.jvm.JvmField;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import org.json.JSONObject;
+import tencent.im.oidb.articlesummary.articlesummary.UrlJumpInfo;
+import tencent.im.oidb.articlesummary.articlesummary.WeishiUGInfo;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushComponentExtData;", "", "articleIds", "", "foldStatus", "algorithmId", "strategyId", "subscripts", "pushExtData", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[B)V", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "equals", "", "other", "hashCode", "", "toString", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qog
+class qog
+  implements ViewBase.OnClickListener
 {
-  @JvmField
-  @NotNull
-  public String a;
-  @JvmField
-  @NotNull
-  public byte[] a;
-  @JvmField
-  @NotNull
-  public String b;
-  @JvmField
-  @NotNull
-  public String c;
-  @JvmField
-  @NotNull
-  public String d;
-  @JvmField
-  @NotNull
-  public String e;
+  qog(qof paramqof, qfw paramqfw, Container paramContainer) {}
   
-  public qog()
+  public void onClick(ViewBase paramViewBase)
   {
-    this(null, null, null, null, null, null, 63, null);
-  }
-  
-  public qog(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, @NotNull String paramString4, @NotNull String paramString5, @NotNull byte[] paramArrayOfByte)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-  }
-  
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if ((qog)this == paramObject) {
-      return true;
+    for (;;)
+    {
+      try
+      {
+        ArticleInfo localArticleInfo = this.jdField_a_of_type_Qfw.a();
+        piv.a(localArticleInfo, localArticleInfo.mProteusTemplateBean, paramViewBase);
+        ptj.a.a(localArticleInfo);
+        int j = 0;
+        if (bhfn.a(BaseApplicationImpl.getContext(), "com.tencent.reading"))
+        {
+          i = j;
+          if (this.jdField_a_of_type_Qfw.a().weishiUGInfo.msg_url_jump_info.uint32_jump_type.get() == 2)
+          {
+            paramViewBase = qof.a(this.jdField_a_of_type_Qof, this.jdField_a_of_type_Qfw.a().weishiUGInfo.msg_url_jump_info.bytes_jump_schema);
+            i = j;
+            if (!TextUtils.isEmpty(paramViewBase))
+            {
+              qof.a(this.jdField_a_of_type_Qof, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
+              break label323;
+            }
+          }
+          if (i == 0)
+          {
+            paramViewBase = new JSONObject(localArticleInfo.proteusItemsData).getString("kandian_jump_url");
+            if (!TextUtils.isEmpty(paramViewBase)) {
+              bcnc.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
+            }
+          }
+          oqt.a(qof.a(this.jdField_a_of_type_Qof, this.jdField_a_of_type_Qfw.a().weishiUGInfo.bytes_report_base_url) + qof.a(this.jdField_a_of_type_Qof, this.jdField_a_of_type_Qfw.a().weishiUGInfo.bytes_click_report_tail));
+        }
+        else
+        {
+          i = j;
+          if (this.jdField_a_of_type_Qfw.a().weishiUGInfo.msg_url_jump_info.uint32_jump_type.get() != 1) {
+            continue;
+          }
+          paramViewBase = qof.a(this.jdField_a_of_type_Qof, this.jdField_a_of_type_Qfw.a().weishiUGInfo.msg_url_jump_info.bytes_jump_url);
+          i = j;
+          if (TextUtils.isEmpty(paramViewBase)) {
+            continue;
+          }
+          bcnc.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
+        }
+      }
+      catch (Exception paramViewBase)
+      {
+        return;
+      }
+      label323:
+      int i = 1;
     }
-    Class localClass = getClass();
-    if (paramObject != null) {}
-    for (Object localObject = paramObject.getClass(); (Intrinsics.areEqual(localClass, localObject) ^ true); localObject = null) {
-      return false;
-    }
-    if (paramObject == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.push.RIJPushComponentExtData");
-    }
-    localObject = (qog)paramObject;
-    if ((Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, ((qog)paramObject).jdField_a_of_type_JavaLangString) ^ true)) {
-      return false;
-    }
-    if ((Intrinsics.areEqual(this.b, ((qog)paramObject).b) ^ true)) {
-      return false;
-    }
-    if ((Intrinsics.areEqual(this.c, ((qog)paramObject).c) ^ true)) {
-      return false;
-    }
-    if ((Intrinsics.areEqual(this.d, ((qog)paramObject).d) ^ true)) {
-      return false;
-    }
-    if ((Intrinsics.areEqual(this.e, ((qog)paramObject).e) ^ true)) {
-      return false;
-    }
-    return Arrays.equals(this.jdField_a_of_type_ArrayOfByte, ((qog)paramObject).jdField_a_of_type_ArrayOfByte);
-  }
-  
-  public int hashCode()
-  {
-    return ((((this.jdField_a_of_type_JavaLangString.hashCode() * 31 + this.b.hashCode()) * 31 + this.c.hashCode()) * 31 + this.d.hashCode()) * 31 + this.e.hashCode()) * 31 + Arrays.hashCode(this.jdField_a_of_type_ArrayOfByte);
-  }
-  
-  @NotNull
-  public String toString()
-  {
-    return "RIJPushComponentExtData(articleIds=" + this.jdField_a_of_type_JavaLangString + ", foldStatus=" + this.b + ", algorithmId=" + this.c + ", strategyId=" + this.d + ", subscripts=" + this.e + ", pushExtData=" + Arrays.toString(this.jdField_a_of_type_ArrayOfByte) + ")";
   }
 }
 

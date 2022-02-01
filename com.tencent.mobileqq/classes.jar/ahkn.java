@@ -1,43 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.SendMenuEventResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-class ahkn
-  implements BusinessObserver
+public class ahkn
+  implements wbt
 {
-  ahkn(ahkm paramahkm) {}
+  long jdField_a_of_type_Long;
+  ahko jdField_a_of_type_Ahko;
+  String jdField_a_of_type_JavaLangString;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(String paramString1, String paramString2, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a.tag, 2, "requestQidiKefu ... onReceive = " + paramBoolean);
-    }
-    if (paramBoolean) {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        mobileqq_mp.SendMenuEventResponse localSendMenuEventResponse = new mobileqq_mp.SendMenuEventResponse();
-        localSendMenuEventResponse.mergeFrom(paramBundle);
-        paramInt = localSendMenuEventResponse.ret_info.ret_code.get();
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a.a.tag, 2, "requestQidiKefu ... onReceive: retCode = " + paramInt);
-        }
-        if (paramInt == 0)
-        {
-          this.a.a.x = true;
-          this.a.a.q();
-          this.a.a.b();
-          return;
-        }
-      }
-      catch (Exception paramBundle) {}
-    }
-    this.a.a.b(2131694775);
-    this.a.a.b();
+    if (!paramString1.equals(this.a)) {}
   }
+  
+  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt) {}
+  
+  public void b(String paramString1, String paramString2, int paramInt) {}
 }
 
 

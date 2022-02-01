@@ -1,24 +1,29 @@
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.base.BitmapError;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+
 public class yqj
+  extends JobSegment<Bitmap, Bitmap>
 {
-  public static Throwable a(String paramString)
+  public final float a;
+  public final boolean a;
+  
+  public yqj(float paramFloat, boolean paramBoolean)
   {
-    return new NullPointerException(paramString);
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public static Throwable a(String paramString, Throwable paramThrowable)
+  protected void a(JobContext paramJobContext, Bitmap paramBitmap)
   {
-    if (paramThrowable == null) {
-      return new IllegalStateException(paramString);
+    paramJobContext = zdr.a(paramBitmap, this.jdField_a_of_type_Float, this.jdField_a_of_type_Boolean);
+    if (paramJobContext == null)
+    {
+      super.notifyError(new BitmapError("Q.qqstory.publish:ImageAdjustJobSegment", 5));
+      return;
     }
-    return new IllegalStateException(paramString, paramThrowable);
-  }
-  
-  public static Throwable b(String paramString, Throwable paramThrowable)
-  {
-    if (paramThrowable == null) {
-      return new Throwable(paramString);
-    }
-    return new Throwable(paramString, paramThrowable);
+    super.notifyResult(paramJobContext);
   }
 }
 

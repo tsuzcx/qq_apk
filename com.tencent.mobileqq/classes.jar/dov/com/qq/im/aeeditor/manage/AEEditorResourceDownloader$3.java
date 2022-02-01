@@ -1,8 +1,8 @@
 package dov.com.qq.im.aeeditor.manage;
 
-import bmbx;
-import bmfc;
-import bmfe;
+import bnrh;
+import bnuu;
+import bnuw;
 import dov.com.qq.im.aeeditor.data.AEEditorDownloadResBean;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -14,14 +14,14 @@ import java.util.concurrent.CountDownLatch;
 public class AEEditorResourceDownloader$3
   implements Runnable
 {
-  public AEEditorResourceDownloader$3(bmfc parambmfc) {}
+  public AEEditorResourceDownloader$3(bnuu parambnuu) {}
   
   public void run()
   {
     long l1 = System.currentTimeMillis();
-    bmbx.b(this.this$0.c, "preDownloadAllRes---BEGIN");
-    this.this$0.b();
-    bmbx.b(this.this$0.c, "preDownloadAllRes---ensureSetupDownloadConfig finish");
+    bnrh.b(this.this$0.c, "preDownloadAllRes---BEGIN");
+    this.this$0.c();
+    bnrh.b(this.this$0.c, "preDownloadAllRes---ensureSetupDownloadConfig finish");
     ArrayList localArrayList = new ArrayList();
     this.this$0.a(localArrayList);
     Object localObject = this.this$0.jdField_a_of_type_JavaUtilMap.values().iterator();
@@ -34,7 +34,7 @@ public class AEEditorResourceDownloader$3
       }
     }
     this.this$0.b(localArrayList);
-    bmbx.b(this.this$0.c, "preDownloadAllRes---needDownloads size=" + localArrayList.size());
+    bnrh.b(this.this$0.c, "preDownloadAllRes---needDownloads size=" + localArrayList.size());
     int i = 0;
     for (;;)
     {
@@ -46,15 +46,15 @@ public class AEEditorResourceDownloader$3
         while (j < k)
         {
           localAEEditorDownloadResBean = (AEEditorDownloadResBean)localArrayList.get(i);
-          bmbx.b(this.this$0.c, "preDownloadAllRes---[begin] " + i + ", id=" + localAEEditorDownloadResBean.getId());
-          this.this$0.a(localAEEditorDownloadResBean, new bmfe(this, i, localAEEditorDownloadResBean, (CountDownLatch)localObject));
+          bnrh.b(this.this$0.c, "preDownloadAllRes---[begin] " + i + ", id=" + localAEEditorDownloadResBean.getId());
+          this.this$0.a(localAEEditorDownloadResBean, new bnuw(this, i, localAEEditorDownloadResBean, (CountDownLatch)localObject));
           j += 1;
           i += 1;
         }
         try
         {
           ((CountDownLatch)localObject).await();
-          bmbx.b(this.this$0.c, "preDownloadAllRes--------------------finish a little group---------------------");
+          bnrh.b(this.this$0.c, "preDownloadAllRes--------------------finish a little group---------------------");
         }
         catch (InterruptedException localInterruptedException)
         {
@@ -66,7 +66,7 @@ public class AEEditorResourceDownloader$3
       }
     }
     long l2 = System.currentTimeMillis();
-    bmbx.b(this.this$0.c, "preDownloadAllRes---END cost=" + (l2 - l1));
+    bnrh.b(this.this$0.c, "preDownloadAllRes---END cost=" + (l2 - l1));
   }
 }
 

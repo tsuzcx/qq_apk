@@ -1,22 +1,28 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public abstract interface xia
+public class xia
+  extends xif<StoryVideoItem>
 {
-  public abstract void J_();
+  public xia(VideoViewVideoHolder paramVideoViewVideoHolder)
+  {
+    super(paramVideoViewVideoHolder, null);
+  }
   
-  public abstract void a();
+  public void a(StoryVideoItem paramStoryVideoItem)
+  {
+    super.onNext(paramStoryVideoItem);
+    VideoViewVideoHolder.a(this.a);
+  }
   
-  public abstract void a(CommentEntry paramCommentEntry);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(CommentEntry paramCommentEntry);
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void g_(int paramInt);
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    ykq.d(this.a.a, "VideoPrepareSegment error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
+    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
+  }
 }
 
 

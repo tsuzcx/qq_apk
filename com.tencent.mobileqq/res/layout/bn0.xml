@@ -7,10 +7,10 @@
             <LinearLayout android:orientation="vertical" android:id="@id/ewi" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
                 <android.support.v7.widget.RecyclerView android:id="@id/equ" android:paddingLeft="6.0dip" android:scrollbars="none" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="90.0dip" android:layout_marginTop="26.0dip" android:overScrollMode="never" />
             </LinearLayout>
-            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/ewd" android:background="@drawable/d0f" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/ewd" android:layout_width="fill_parent" android:layout_height="wrap_content">
                 <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="18.0dip">
-                    <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/d06" />
-                    <ImageView android:layout_gravity="center_horizontal" android:layout_width="52.0dip" android:layout_height="52.0dip" android:src="@drawable/d04" android:scaleType="fitXY" />
+                    <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                    <ImageView android:layout_gravity="center_horizontal" android:layout_width="52.0dip" android:layout_height="52.0dip" android:scaleType="fitXY" />
                 </FrameLayout>
                 <TextView android:textSize="13.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/ewm" android:background="@drawable/d0g" android:paddingTop="0.0dip" android:paddingBottom="0.0dip" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginTop="8.0dip" android:text="@string/rzm" />
             </LinearLayout>

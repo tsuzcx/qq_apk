@@ -1,11 +1,31 @@
-import java.util.ArrayList;
+import android.text.TextUtils;
+import android.view.View;
 
-public abstract class bbrs
-  implements bbrr
+class bbrs
+  implements bkzq
 {
-  public void a(int paramInt, ArrayList<bbrl> paramArrayList) {}
+  bbrs(bbrl parambbrl, bkzi parambkzi) {}
   
-  public void b(int paramInt, bbrl parambbrl) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    if (paramView == null)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+    }
+    paramView = this.jdField_a_of_type_Bkzi.a(paramInt);
+    if (paramView == null)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+    }
+    if (TextUtils.isEmpty(paramView))
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+    }
+    this.jdField_a_of_type_Bkzi.dismiss();
+  }
 }
 
 

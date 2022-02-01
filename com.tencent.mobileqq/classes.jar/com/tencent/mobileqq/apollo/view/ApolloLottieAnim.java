@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.apollo.view;
 
-import amip;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler.Callback;
@@ -8,13 +7,14 @@ import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
-import bgoe;
-import bgog;
-import bgoj;
-import bjng;
+import bhyo;
+import bhyq;
+import bhyt;
+import bkys;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.Utils;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
@@ -24,7 +24,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
 import mqq.os.MqqHandler;
-import npo;
+import nwp;
 
 public class ApolloLottieAnim
   implements Handler.Callback
@@ -45,7 +45,7 @@ public class ApolloLottieAnim
   private boolean mIsLottieJsonLoaded;
   private String mLocalZipPath;
   private WeakReference<DiniFlyAnimationView> mLottieAnimView;
-  private bjng mMainHandler = new bjng(paramContext.getMainLooper(), this);
+  private bkys mMainHandler = new bkys(paramContext.getMainLooper(), this);
   public int mState = 0;
   private String mZipUrl;
   
@@ -80,8 +80,7 @@ public class ApolloLottieAnim
   public static String makeApolloZipPath(String paramString)
   {
     paramString = Utils.Crc64String(paramString);
-    String str = amip.k;
-    return str + paramString + ".zip";
+    return "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/image_cache/" + paramString + ".zip";
   }
   
   private void sendPlayAnimMsg(String paramString)
@@ -141,7 +140,7 @@ public class ApolloLottieAnim
   private void unZipFile(File paramFile, String paramString)
   {
     if ((paramFile.exists()) && (!TextUtils.isEmpty(paramString))) {
-      npo.a(paramFile, paramString);
+      nwp.a(paramFile, paramString);
     }
   }
   
@@ -169,14 +168,14 @@ public class ApolloLottieAnim
   protected void download(String paramString1, String paramString2, String paramString3)
   {
     this.mState = 1;
-    bgoe localbgoe = new bgoe(paramString1, new File(paramString2));
-    localbgoe.p = true;
-    localbgoe.n = true;
-    localbgoe.f = "apollo_lottie";
-    localbgoe.b = 1;
-    localbgoe.q = true;
-    localbgoe.r = true;
-    localbgoe.a(new ApolloLottieAnim.2(this, paramString1, paramString2, paramString3));
+    bhyo localbhyo = new bhyo(paramString1, new File(paramString2));
+    localbhyo.p = true;
+    localbhyo.n = true;
+    localbhyo.f = "apollo_lottie";
+    localbhyo.b = 1;
+    localbhyo.q = true;
+    localbhyo.r = true;
+    localbhyo.a(new ApolloLottieAnim.2(this, paramString1, paramString2, paramString3));
     paramString1 = BaseApplicationImpl.getApplication();
     if (paramString1 != null)
     {
@@ -187,19 +186,19 @@ public class ApolloLottieAnim
     {
       if (paramString1 != null)
       {
-        paramString1 = (bgog)paramString1.getManager(47);
+        paramString1 = (bhyq)paramString1.getManager(QQManagerFactory.DOWNLOADER_FACTORY);
         if (paramString1 != null)
         {
           paramString1 = paramString1.a(3);
           if (paramString1 != null) {
-            paramString1.a(localbgoe, localbgoe.a(), null);
+            paramString1.a(localbhyo, localbhyo.a(), null);
           }
         }
       }
       for (int i = 0;; i = 1)
       {
         if (i != 0) {
-          ThreadManager.executeOnNetWorkThread(new ApolloLottieAnim.3(this, localbgoe));
+          ThreadManager.executeOnNetWorkThread(new ApolloLottieAnim.3(this, localbhyo));
         }
         return;
       }

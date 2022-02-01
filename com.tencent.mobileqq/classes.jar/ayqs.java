@@ -1,60 +1,78 @@
-import android.widget.ToggleButton;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Bundle;
 
 public class ayqs
 {
-  private Map<ProfileLabelInfo, ToggleButton> a = new HashMap();
+  private final Bundle a = ayqq.a.a();
   
-  public ToggleButton a(ProfileLabelInfo paramProfileLabelInfo)
+  public ayqs()
   {
-    return (ToggleButton)this.a.get(paramProfileLabelInfo);
+    this.a.putString("tid", "personal_live_base");
+    this.a.putString("bid", "b_sng_im_personal_live");
+    this.a.putString("KEY_START_SRC", "default");
   }
   
-  public Map<ProfileLabelInfo, ToggleButton> a()
+  public ayqs a(int paramInt)
   {
-    return this.a;
+    return a("obj1", paramInt);
+  }
+  
+  public ayqs a(String paramString)
+  {
+    this.a.putString("module", paramString);
+    return this;
+  }
+  
+  public ayqs a(String paramString, int paramInt)
+  {
+    this.a.putString(paramString, String.valueOf(paramInt));
+    return this;
+  }
+  
+  public ayqs a(String paramString1, String paramString2)
+  {
+    String str = paramString2;
+    if (paramString2 == null) {
+      str = "null";
+    }
+    this.a.putString(paramString1, str.replace("&", "_"));
+    return this;
   }
   
   public void a()
   {
-    this.a.clear();
+    ayqq.a.a(this.a);
   }
   
-  public void a(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton)
+  public ayqs b(int paramInt)
   {
-    if (!a(paramProfileLabelInfo)) {
-      this.a.put(paramProfileLabelInfo, paramToggleButton);
-    }
+    return a("obj3", paramInt);
   }
   
-  public boolean a(ProfileLabelInfo paramProfileLabelInfo)
+  public ayqs b(String paramString)
   {
-    return this.a.get(paramProfileLabelInfo) != null;
+    this.a.putString("action", paramString);
+    return this;
   }
   
-  public void b(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton)
+  public ayqs c(String paramString)
   {
-    if (a(paramProfileLabelInfo)) {
-      this.a.remove(paramProfileLabelInfo);
-    }
+    this.a.putString("source", paramString);
+    return this;
   }
   
-  public void c(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton)
+  public ayqs d(String paramString)
   {
-    if (paramProfileLabelInfo.labelStatus == ProfileLabelInfo.STATUS_NORMAL) {
-      a(paramProfileLabelInfo, paramToggleButton);
-    }
-    for (;;)
-    {
-      paramProfileLabelInfo.toggleStatus();
-      paramToggleButton.toggle();
-      return;
-      if (paramProfileLabelInfo.labelStatus == ProfileLabelInfo.STATUS_CHECKED) {
-        b(paramProfileLabelInfo, paramToggleButton);
-      }
-    }
+    return a("obj2", paramString);
+  }
+  
+  public ayqs e(String paramString)
+  {
+    return a("obj3", paramString);
+  }
+  
+  public String toString()
+  {
+    return "ReportTask{map=" + this.a + '}';
   }
 }
 

@@ -1,21 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import android.util.Pair;
+import android.view.View;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public class awma
-  implements DialogInterface.OnClickListener
+class awma
+  implements awjg
 {
-  public awma(GameRoomInviteActivity paramGameRoomInviteActivity, boolean paramBoolean, String paramString) {}
+  awma(awlt paramawlt, LocationRoom.Venue paramVenue) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Pair<awit, LocationRoom.Venue> a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
-    String str = this.jdField_a_of_type_JavaLangString;
-    paramDialogInterface.b = str;
-    GameRoomInviteActivity.jdField_a_of_type_JavaLangString = str;
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a(false);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.jdField_a_of_type_Awkz.d();
+    return new Pair(awlt.a(this.jdField_a_of_type_Awlt), this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue);
+  }
+  
+  public void a(awit paramawit, LocationRoom.Venue paramVenue, int paramInt1, boolean paramBoolean, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, new Object[] { "[venue] removeVenue: onResult. roomKey: " + paramawit + " optType: " + paramInt1, " isSuccess: " + paramBoolean + " errorCode: " + paramInt2 });
+    }
+    if ((!paramawit.equals(awlt.a(this.jdField_a_of_type_Awlt))) || (awlt.a(this.jdField_a_of_type_Awlt).a() == null) || (paramVenue == null) || (!awlt.a(this.jdField_a_of_type_Awlt).a().equals(paramVenue))) {
+      return;
+    }
+    awlt.a(this.jdField_a_of_type_Awlt).setVenueOprating(false);
+    awlt.a(this.jdField_a_of_type_Awlt).setVisibility(8);
+    if (paramBoolean)
+    {
+      awlt.a(this.jdField_a_of_type_Awlt).setVenue(null);
+      awlt.b(this.jdField_a_of_type_Awlt);
+      bdla.b(null, "CliOper", "", "", "0X800A969", "0X800A969", 0, 0, "0", "0", "0", "");
+      return;
+    }
+    QQToast.a(awlt.a(this.jdField_a_of_type_Awlt), 1, "移除失败，请稍后重试", 0).a();
+    if ((paramInt2 == 10001) || (paramInt2 == 10003) || (paramInt2 == 10004) || (paramInt2 == 10100))
+    {
+      bdla.b(null, "CliOper", "", "", "0X800A96A", "0X800A96A", 2, 0, "0", "0", "0", "");
+      return;
+    }
+    bdla.b(null, "CliOper", "", "", "0X800A96A", "0X800A96A", 1, 0, "0", "0", "0", "");
   }
 }
 

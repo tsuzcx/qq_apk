@@ -1,6 +1,6 @@
-public abstract interface bhfi
+class bhfi
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  private static final bhfg a = new bhfg(null);
 }
 
 

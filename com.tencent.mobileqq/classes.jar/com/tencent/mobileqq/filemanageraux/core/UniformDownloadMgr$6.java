@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanageraux.core;
 
-import atdm;
+import auht;
 
 public class UniformDownloadMgr$6
   implements Runnable
 {
-  public UniformDownloadMgr$6(atdm paramatdm) {}
+  public UniformDownloadMgr$6(auht paramauht) {}
   
   public void run()
   {
-    atdm.b(this.this$0, null);
-    atdm.b(this.this$0);
+    auht.b(this.this$0, null);
+    auht.b(this.this$0);
   }
 }
 

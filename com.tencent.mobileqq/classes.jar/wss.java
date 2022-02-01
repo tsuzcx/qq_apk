@@ -1,115 +1,77 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import java.util.Collection;
-import java.util.HashMap;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqConvertUinAndUnionId;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertUinAndUnionId;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Map;
+import java.util.List;
 
 public class wss
-  extends wsr
+  extends wfm<wuq>
 {
-  Map<String, wsr> a;
+  public String a;
+  public List<wkz> a;
+  public boolean a;
+  public boolean b;
+  public int c;
+  public boolean c;
   
-  public wss(@NonNull ViewGroup paramViewGroup)
+  public wss()
   {
-    super(paramViewGroup);
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    b(new VideoViewVideoHolder((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131380739)));
-    b(new wrb((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131368786)));
-    b(new wrw((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131380675)));
-    b(new wst(this.jdField_a_of_type_AndroidViewView.findViewById(2131380644)));
-    b(new wsq((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131380740)));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  protected View a(ViewGroup paramViewGroup)
+  public String a()
   {
-    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561694, paramViewGroup, false);
+    return weg.a("StorySvc.convert_uid_and_union_id");
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public wuq a(byte[] paramArrayOfByte)
   {
-    super.a(paramInt1, paramInt2);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((wsr)localIterator.next()).a(paramInt1, paramInt2);
+    qqstory_service.RspConvertUinAndUnionId localRspConvertUinAndUnionId = new qqstory_service.RspConvertUinAndUnionId();
+    try
+    {
+      localRspConvertUinAndUnionId.mergeFrom(paramArrayOfByte);
+      return new wuq(localRspConvertUinAndUnionId);
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2, @NonNull wsk paramwsk, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
-  {
-    super.a(paramInt1, paramInt2, paramwsk, paramStoryPlayerGroupHolder);
-    xvv.a(this.jdField_a_of_type_JavaLangString, "onBind, newVer=%d, newHor=%d, data=%s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), paramwsk);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((wsr)localIterator.next()).a(paramInt1, paramInt2, paramwsk, paramStoryPlayerGroupHolder);
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      ykq.d("Q.qqstory.user:ConvertUinAndUnionIdRequest", "" + paramArrayOfByte);
     }
+    return null;
   }
   
-  public void a(wry paramwry)
+  protected byte[] a()
   {
-    super.a(paramwry);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((wsr)localIterator.next()).a(paramwry);
+    int j = 1;
+    qqstory_service.ReqConvertUinAndUnionId localReqConvertUinAndUnionId = new qqstory_service.ReqConvertUinAndUnionId();
+    localReqConvertUinAndUnionId.convert_from.set(this.c);
+    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      wkz localwkz = (wkz)((Iterator)localObject).next();
+      localReqConvertUinAndUnionId.user_id_list.add(localwkz.a());
     }
-  }
-  
-  public void a(wss paramwss)
-  {
-    super.a(this);
-    paramwss = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (paramwss.hasNext()) {
-      ((wsr)paramwss.next()).a(this);
+    localObject = localReqConvertUinAndUnionId.need_medal;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      i = 1;
+      ((PBUInt32Field)localObject).set(i);
+      localObject = localReqConvertUinAndUnionId.need_grade_speed;
+      if (!this.b) {
+        break label121;
+      }
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    super.a(paramBoolean);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((wsr)localIterator.next()).a(paramBoolean);
+    label121:
+    for (int i = j;; i = 0)
+    {
+      ((PBUInt32Field)localObject).set(i);
+      return localReqConvertUinAndUnionId.toByteArray();
+      i = 0;
+      break;
     }
-  }
-  
-  @Nullable
-  public wsr b(Class<? extends wsr> paramClass)
-  {
-    return (wsr)this.jdField_a_of_type_JavaUtilMap.get(paramClass.getName());
-  }
-  
-  public void b()
-  {
-    super.b();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((wsr)localIterator.next()).b();
-    }
-  }
-  
-  public void b(@NonNull wsr paramwsr)
-  {
-    this.jdField_a_of_type_JavaUtilMap.put(paramwsr.getClass().getName(), paramwsr);
-  }
-  
-  public void c()
-  {
-    super.c();
-    xvv.a(this.jdField_a_of_type_JavaLangString, "onUnBind, verticalPosition=%d, horizontalPosition=%d, data=%s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_Wsk);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((wsr)localIterator.next()).c();
-    }
-  }
-  
-  public boolean c()
-  {
-    return super.c();
   }
 }
 

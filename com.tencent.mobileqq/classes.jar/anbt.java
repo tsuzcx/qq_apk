@@ -1,1564 +1,1406 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.os.Message;
+import android.text.TextUtils;
+import android.util.Pair;
 import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
+import com.tencent.mobileqq.apollo.script.SpriteUIHandler;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThemeHandler.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.theme.ThemeSwitcher;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.theme.ThemeUtil.ThemeInfo;
-import com.tencent.mobileqq.theme.diy.ThemeBackground;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.pb.theme.ThemeAuth.DiyThemeDetail;
-import com.tencent.pb.theme.ThemeAuth.ReqBody;
-import com.tencent.pb.theme.ThemeAuth.RspBody;
-import com.tencent.pb.theme.ThemeAuth.RspDiyThemeDetail;
-import com.tencent.pb.theme.ThemeAuth.RspDiyThemeInfo;
-import com.tencent.pb.theme.ThemeAuth.SubCmd0x1ReqAuth;
-import com.tencent.pb.theme.ThemeAuth.SubCmd0x1RspAuth;
-import com.tencent.pb.theme.ThemeAuth.SubCmd0x2ReqCheck;
-import com.tencent.pb.theme.ThemeAuth.SubCmd0x2RspCheck;
-import com.tencent.pb.theme.ThemeAuth.SubCmd0x3ReqSet;
-import com.tencent.pb.theme.ThemeAuth.SubCmd0x3RspSet;
-import com.tencent.pb.theme.ThemeAuth.ThemeFileInfo;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.data.ApolloMessage;
+import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.theme.SkinEngine;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Random;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.app.MobileQQ;
-import mqq.os.MqqHandler;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class anbt
-  extends BusinessHandler
+  extends anbu
 {
-  private static String jdField_a_of_type_JavaLangString;
-  public Bundle a;
-  public bdbx a;
-  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  public AtomicBoolean b = new AtomicBoolean(true);
-  AtomicBoolean c = new AtomicBoolean(false);
-  
-  anbt(QQAppInterface paramQQAppInterface)
+  public anbt(int paramInt, ancc paramancc)
   {
-    super(paramQQAppInterface);
+    super(paramInt, paramancc);
   }
   
-  private int a(ToServiceMsg paramToServiceMsg, int paramInt)
+  private amqr a(String paramString, ApolloRender paramApolloRender)
   {
-    int i = paramInt;
-    if (-1 == paramInt)
-    {
-      ThemeAuth.ReqBody localReqBody = new ThemeAuth.ReqBody();
-      localReqBody.mergeFrom(paramToServiceMsg.getWupBuffer(), 4, paramToServiceMsg.getWupBuffer().length - 4);
-      i = localReqBody.uint32_sub_cmd.get();
-    }
-    if (1 == i) {
-      ThemeUtil.getUinThemePreferences(this.mApp).edit().putLong("authTime", 0L).commit();
-    }
-    return i;
-  }
-  
-  private HashMap<String, String> a(String paramString)
-  {
-    paramString = FileUtils.getChildFiles(paramString);
-    HashMap localHashMap = new HashMap();
-    int i = 0;
-    while ((i < 3) && (i < paramString.size()))
-    {
-      int j = new Random().nextInt(paramString.size() - 1);
-      String str1 = (String)paramString.get(j);
-      String str2 = str1.substring(str1.substring(0, str1.lastIndexOf(47)).lastIndexOf('/') + 1);
-      if ((str2 != null) && (str2.length() > 0) && (!localHashMap.containsKey(str2)))
-      {
-        String str3 = FileUtils.encryptFile(str1, "MD5");
-        if (QLog.isColorLevel()) {
-          QLog.i("Theme.ThemeHandler", 2, "Theme getRandomFileMd5 file=" + str1 + ",key=" + str2 + ",md5=" + str3 + ", files=" + paramString.size() + ", index=" + j);
-        }
-        if ((str3 != null) && (str3.length() > 0)) {
-          localHashMap.put(str2, str3);
-        }
-      }
-      i += 1;
-    }
-    return localHashMap;
-  }
-  
-  public static void a(int paramInt1, int paramInt2, String paramString, int paramInt3, BaseActivity paramBaseActivity)
-  {
-    if (paramInt1 == 1)
-    {
-      paramBaseActivity.startActivity(new Intent(paramBaseActivity, GeneralSettingActivity.class));
-      return;
-    }
-    Intent localIntent = new Intent(paramBaseActivity, QQBrowserActivity.class);
-    localIntent.putExtra("individuation_url_type", 40100);
-    Object localObject1 = bgev.a(paramBaseActivity, "theme", "mvip.gongneng.android.theme.index_dynamic_tab");
-    Object localObject2 = new StringBuilder().append((String)localObject1);
-    if (((String)localObject1).contains("?"))
-    {
-      localObject1 = "&";
-      localObject1 = (String)localObject1;
-      localObject2 = (String)localObject1 + "dialog_source=other&authresult=" + paramInt2;
-      localObject1 = localObject2;
-      if (!android.text.TextUtils.isEmpty(paramString)) {
-        if (!((String)localObject2).contains("id=[id]")) {
-          break label207;
-        }
-      }
-    }
-    label207:
-    for (localObject1 = ((String)localObject2).replace("[id]", paramString);; localObject1 = (String)localObject2 + "&id=" + paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Theme.ThemeHandler", 2, "theme market url: " + (String)localObject1);
-      }
-      VasWebviewUtil.openQQBrowserWithoutAD(paramBaseActivity, (String)localObject1, 32L, localIntent, true, -1);
-      return;
-      localObject1 = "?";
-      break;
-    }
-  }
-  
-  private void a(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, ThemeAuth.DiyThemeDetail paramDiyThemeDetail)
-  {
-    MobileQQ localMobileQQ = this.mApp.getApplication();
-    Object localObject = ThemeBackground.getSharedPreferences(localMobileQQ, this.mApp.getAccount(), 0);
-    if ((paramInt1 == 2) && (!ChatBackgroundManager.a(localMobileQQ, this.mApp.getAccount(), null).equals("null"))) {
-      return;
-    }
-    if (android.text.TextUtils.isEmpty(paramString1)) {
-      paramString1 = paramDiyThemeDetail.str_bg_url.get();
-    }
-    for (;;)
-    {
-      int i = paramInt2;
-      if (1 > paramInt2) {
-        i = paramDiyThemeDetail.uin32_id.get();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Theme.ThemeHandler", 2, "update sv ThemeBackground, page=" + paramInt1 + ", id=" + i + ", url=" + paramString1);
-      }
-      String str1;
-      boolean bool;
-      if (!android.text.TextUtils.isEmpty(paramString1))
-      {
-        str1 = ((SharedPreferences)localObject).getString(paramString3 + "_id", "");
-        localObject = ((SharedPreferences)localObject).getString(paramString3 + "_url", "");
-        if ((!("" + i).equals(str1)) || (android.text.TextUtils.isEmpty((CharSequence)localObject))) {
-          break label631;
-        }
-        bool = true;
-        if (QLog.isColorLevel()) {
-          QLog.d("Theme.ThemeHandler", 2, "updateThemeBackgroundPic, bgType=" + paramString3 + ", notChange=" + bool + ", localId=" + str1 + ", id=" + i + ", url=" + paramString1 + ", page=" + paramInt1);
-        }
-        if (bool) {
-          break;
-        }
-        if (paramDiyThemeDetail == null) {
-          break label637;
-        }
-        localObject = paramDiyThemeDetail.str_name.get();
-        label358:
-        if (paramDiyThemeDetail == null) {
-          break label663;
-        }
-        paramInt2 = paramDiyThemeDetail.uin32_feetype.get();
-        label372:
-        if (paramDiyThemeDetail == null) {
-          break label668;
-        }
-        str1 = paramDiyThemeDetail.str_bg_thumbnail_url.get();
-        label387:
-        String str2 = ChatBackgroundManager.a(true, "" + i);
-        ThemeBackground.setThemeBackgroundPic(localMobileQQ, paramString3, this.mApp.getAccount(), str2, paramString1, "" + i, (String)localObject, paramInt2, str1, true);
-        if (!paramString3.equals(paramString2))
-        {
-          String str3 = ChatBackgroundManager.a(true, "" + i);
-          ThemeBackground.setThemeBackgroundPic(localMobileQQ, paramString2, this.mApp.getAccount(), str3, paramString1, "" + i, (String)localObject, paramInt2, str1, true);
-        }
-        if (paramInt1 == 2) {
-          aezp.a(localMobileQQ, this.app.getAccount(), null, str2);
-        }
-      }
-      if ((!"100".equals(String.valueOf(i))) && (!"0".equals(String.valueOf(i)))) {
-        break;
-      }
-      if (paramDiyThemeDetail != null) {}
-      for (paramInt1 = paramDiyThemeDetail.uin32_feetype.get();; paramInt1 = 1)
-      {
-        ThemeBackground.setThemeBackgroundPic(localMobileQQ, paramString3, this.mApp.getAccount(), "", "", "", "", paramInt1, null, true);
-        return;
-        label631:
-        bool = false;
-        break;
-        label637:
-        localObject = "" + i;
-        break label358;
-        label663:
-        paramInt2 = 1;
-        break label372;
-        label668:
-        str1 = null;
-        break label387;
-      }
-    }
-  }
-  
-  private void a(int paramInt, String paramString1, String paramString2, ThemeAuth.SubCmd0x1RspAuth paramSubCmd0x1RspAuth)
-  {
-    int i = paramSubCmd0x1RspAuth.uint32_concise_id.get();
-    int j = paramSubCmd0x1RspAuth.uint32_concise_switch.get();
-    int k = paramSubCmd0x1RspAuth.uint32_study_switch.get();
-    int m = paramSubCmd0x1RspAuth.uint32_young_switch.get();
-    boolean bool2;
-    if (j == 1)
-    {
-      bool1 = true;
-      paramSubCmd0x1RspAuth = this.app;
-      if (k != 1) {
-        break label294;
-      }
-      bool2 = true;
-      label64:
-      if (m != 1) {
-        break label300;
-      }
-    }
-    label294:
-    label300:
-    for (boolean bool3 = true;; bool3 = false)
-    {
-      bbyj.a(bool1, i, paramSubCmd0x1RspAuth, bool2, bool3);
-      if ((3 != paramInt) || ("1000".equals(paramString1))) {
-        break label337;
-      }
-      ThemeUtil.setErrorThemeId(this.mApp.getApplication(), paramString1, false);
-      ThemeUtil.getUserCurrentThemeVersion(this.mApp);
-      bool1 = SkinEngine.getInstances().setSkinRootPath(this.mApp.getApplication(), null);
-      QLog.e("Theme.ThemeHandler", 1, "handleThemeAuth Error, set default theme");
-      if (bool1 == true) {
-        ThreadManager.getUIHandler().post(new ThemeHandler.1(this));
-      }
-      paramString2 = ThemeUtil.getThemeInfo(this.mApp.getApplication(), paramString1);
-      if (paramString2 != null)
-      {
-        paramString2.status = "1";
-        ThemeUtil.setThemeInfo(this.mApp.getApplication(), paramString2);
-        if (QLog.isColorLevel()) {
-          QLog.i("Theme.ThemeHandler", 2, "handleThemeAuth error, set theme status=ThemeUtil.THEME_STATUS_DOWNLOAD_END, reqthemeId=" + paramString1);
-        }
-      }
-      try
-      {
-        paramString1 = new bdbk().a(paramString1).a(this.mApp.getApplication());
-        FileUtils.delete(paramString1, true);
-        QLog.e("Theme.ThemeHandler", 1, "handleThemeAuth no right, delete: " + paramString1);
-        return;
-      }
-      catch (Exception paramString1)
-      {
-        QLog.e("Theme.ThemeHandler", 1, "handleThemeAuth delete Error, msg=" + paramString1.getMessage());
-        return;
-      }
-      bool1 = false;
-      break;
-      bool2 = false;
-      break label64;
-    }
-    label337:
-    if (paramInt != 4) {
-      ThemeUtil.setWeekLoopTheme(this.mApp, null, null, 0L);
-    }
-    boolean bool1 = SkinEngine.getInstances().setSkinRootPath(this.mApp.getApplication(), null);
-    QLog.e("Theme.ThemeHandler", 1, "handleThemeAuth vip Error, set default theme");
-    if ((paramInt == 1) || (paramInt == 2)) {
-      i = 1;
-    }
-    for (;;)
-    {
-      if (bool1) {
-        bcef.b(null, "CliOper", "", "", "theme", "0X8007234", 0, 0, String.valueOf(i), "", "", "");
-      }
-      paramSubCmd0x1RspAuth = paramString2;
-      if (android.text.TextUtils.isEmpty(paramString2)) {
-        paramSubCmd0x1RspAuth = amtj.a(2131713946);
-      }
-      Message localMessage;
-      if (bool1)
-      {
-        paramString2 = this.mApp.getHandler(Conversation.class);
-        localMessage = new Message();
-        localMessage.what = 1049;
-        Bundle localBundle = new Bundle();
-        localBundle.putString("expireMsg", paramSubCmd0x1RspAuth);
-        localBundle.putString("themeId", paramString1);
-        localBundle.putInt("authResult", paramInt);
-        localBundle.putInt("expireType", i);
-        localBundle.putInt("sSimpleOpen", j);
-        localMessage.obj = localBundle;
-        if (j != 1) {
-          break label736;
-        }
-        paramString2.sendMessageDelayed(localMessage, 4000L);
-      }
-      for (;;)
-      {
-        if (ThemeBackground.getMarkOfAioBgFromDiy(this.mApp.getApplication(), "theme_bg_aio_path", this.mApp.getAccount()))
-        {
-          aezp.a(this.mApp.getApplication(), this.app.getAccount(), null, "null");
-          ThemeBackground.clear(this.mApp.getApplication(), "theme_bg_aio_path", this.app.getAccount());
-        }
-        ThemeBackground.clear(this.mApp.getApplication(), "theme_bg_setting_path_png", this.app.getAccount());
-        ThemeBackground.clear(this.mApp.getApplication(), "theme_bg_message_path_png", this.app.getAccount());
-        ThemeBackground.clear(this.mApp.getApplication(), "theme_bg_friend_path_png", this.app.getAccount());
-        ThemeBackground.clear(this.mApp.getApplication(), "theme_bg_dynamic_path_png", this.app.getAccount());
-        return;
-        if ((paramInt == 10) || (paramInt == 11))
-        {
-          i = 2;
-          break;
-        }
-        if (paramInt != 6) {
-          break label747;
-        }
-        i = 3;
-        break;
-        label736:
-        paramString2.sendMessageDelayed(localMessage, 0L);
-      }
-      label747:
-      i = 4;
-    }
-  }
-  
-  private void a(Bundle paramBundle)
-  {
-    if (this.mApp == null)
-    {
-      QLog.e("Theme.ThemeHandler", 1, "sendThemeAuth mApp == null");
-      return;
-    }
-    Object localObject1 = this.mApp.getApplication();
-    String str1 = paramBundle.getString("themeId");
-    String str2 = paramBundle.getString("themePath");
-    Object localObject2;
-    Object localObject3;
-    String str3;
     try
     {
-      localObject2 = new ThemeAuth.SubCmd0x1ReqAuth();
-      ((ThemeAuth.SubCmd0x1ReqAuth)localObject2).uint32_op_type.set(1);
-      ((ThemeAuth.SubCmd0x1ReqAuth)localObject2).uint32_theme_id.set(Integer.parseInt(str1));
-      ((ThemeAuth.SubCmd0x1ReqAuth)localObject2).str_theme_version.set("20000000");
-      ((ThemeAuth.SubCmd0x1ReqAuth)localObject2).str_theme_density_type.set(ThemeUtil.getThemeDensity(BaseApplication.getContext()));
-      localObject3 = ThemeUtil.getUinThemePreferences(this.mApp);
-      str3 = ((SharedPreferences)localObject3).getString("currentThemeId_6.3.5", null);
-      l1 = ((SharedPreferences)localObject3).getLong("themeSetTimeKey", 0L);
-      QLog.d("Theme.ThemeHandler", 1, "Theme Auth themeId=" + str1 + ",version=" + "20000000" + ", userThemeId=" + str3 + ",currentThemeResPath=" + str2 + ", usr=" + com.tencent.mobileqq.text.TextUtils.hideUinInShowString(this.mApp.getAccount(), 2) + ", oldTime=" + l1);
-      if ("1000".equals(str1)) {
-        break label967;
-      }
-      Object localObject4 = a(str2);
-      if (((HashMap)localObject4).size() < 3) {
-        QLog.e("Theme.ThemeHandler", 2, "sendThemeAuth fileMD5 size error:size=" + ((HashMap)localObject4).size());
-      }
-      localObject4 = ((HashMap)localObject4).entrySet().iterator();
+      paramString = new JSONObject(paramString);
+      float f1 = (float)paramString.optDouble("x");
+      float f2 = (float)paramString.optDouble("y");
+      float f3 = (float)paramString.optDouble("w");
+      float f4 = (float)paramString.optDouble("h");
+      float f5 = (float)paramString.optDouble("bX");
+      float f6 = (float)paramString.optDouble("bY");
+      float f7 = (float)paramString.optDouble("bW");
+      float f8 = (float)paramString.optDouble("bH");
+      float f9 = (float)paramString.optDouble("gX");
+      float f10 = (float)paramString.optDouble("gY");
+      float f11 = (float)paramString.optDouble("gW");
+      float f12 = (float)paramString.optDouble("gH");
+      ApolloRender.AABBCallback(f1, f2, f3, f4, paramString.optString("name"), paramString.optString("extendString"), f5, f6, f7, f8, f9, f10, f11, f12, paramString.optInt("dispose"));
+      return null;
+    }
+    catch (Exception paramString)
+    {
       for (;;)
       {
-        if (((Iterator)localObject4).hasNext())
+        QLog.e("cmshow_scripted_SpriteActionScript", 1, "handleBoundingListUpdate exception = " + paramString.toString());
+      }
+    }
+  }
+  
+  private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, int paramInt5, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteActionScript", 2, new Object[] { "[init], width:", Integer.valueOf(paramInt1), ",height:", Integer.valueOf(paramInt2), ",vHeight:", Integer.valueOf(paramInt3), ",aioType:", Integer.valueOf(paramInt4), "friendUin:", paramString, ",spriteFrom:", Integer.valueOf(paramInt5), ", isBubbleMeme:", Boolean.valueOf(paramBoolean) });
+    }
+    for (;;)
+    {
+      try
+      {
+        if (this.jdField_a_of_type_Ancc == null) {
+          return;
+        }
+        Object localObject1 = this.jdField_a_of_type_Ancc.a();
+        if (localObject1 == null) {
+          break label1009;
+        }
+        Object localObject2 = ApolloUtil.a();
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("platform", "android");
+        if (!this.jdField_a_of_type_Ancc.jdField_b_of_type_Boolean) {
+          break label1010;
+        }
+        i = 2;
+        localJSONObject.put("panelStatus", i);
+        if (localObject2 != null)
         {
-          Map.Entry localEntry = (Map.Entry)((Iterator)localObject4).next();
-          if (QLog.isColorLevel()) {
-            QLog.i("Theme.ThemeHandler", 2, "Theme file Info,Filepath=" + (String)localEntry.getKey() + ",FileMd5=" + (String)localEntry.getValue());
-          }
-          ThemeAuth.ThemeFileInfo localThemeFileInfo = new ThemeAuth.ThemeFileInfo();
-          localThemeFileInfo.str_file_path.set((String)localEntry.getKey());
-          localThemeFileInfo.str_file_md5.set((String)localEntry.getValue());
-          ((ThemeAuth.SubCmd0x1ReqAuth)localObject2).rpt_msg_topic_file_info.add(localThemeFileInfo);
+          localJSONObject.put("phoneModel", anmi.jdField_a_of_type_JavaLangString);
+          localJSONObject.put("osVersion", anmi.jdField_b_of_type_JavaLangString);
+          localJSONObject.put("cpuType", anmi.jdField_c_of_type_JavaLangString);
+          localJSONObject.put("cpuNumber", anmi.jdField_a_of_type_Int);
+          localJSONObject.put("cpuFrequency", anmi.jdField_a_of_type_Long);
+          localJSONObject.put("freeMemory", ((anmi)localObject2).d);
+          localJSONObject.put("totalMemory", ((anmi)localObject2).jdField_c_of_type_Long);
+          localJSONObject.put("maxMemory", ((anmi)localObject2).jdField_b_of_type_Long);
+        }
+        localJSONObject.put("aioType", ApolloGameUtil.a((AppInterface)localObject1, paramInt4, this.jdField_a_of_type_Ancc.jdField_a_of_type_JavaLangString));
+        localJSONObject.put("friendUin", paramString);
+        localJSONObject.put("width", paramInt1);
+        localJSONObject.put("height", paramInt2);
+        localJSONObject.put("vHeight", paramInt3);
+        localJSONObject.put("screenW", DeviceInfoUtil.getPortraitWidth());
+        localJSONObject.put("screenH", DeviceInfoUtil.getPortraitHeight());
+        localJSONObject.put("qqVer", "8.4.10");
+        localJSONObject.put("uin", this.jdField_a_of_type_Ancc.jdField_b_of_type_JavaLangString);
+        localJSONObject.put("density", DeviceInfoUtil.density);
+        localJSONObject.put("wait", "def/basic/action/1/action/action");
+        localJSONObject.put("standup", "def/basic/action/4/action/action");
+        localJSONObject.put("think", "def/basic/action/3/action/action");
+        localJSONObject.put("sitdown", "def/basic/action/2/action/action");
+        if (!anck.a((QQAppInterface)localObject1)) {
+          break label1016;
+        }
+        paramInt2 = 1;
+        localJSONObject.put("isHide", paramInt2);
+        localJSONObject.put("isBubbleMeme", paramBoolean);
+        a(localJSONObject, paramInt5);
+        paramString = new JSONArray();
+        localObject2 = new int[7];
+        Object tmp495_493 = localObject2;
+        tmp495_493[0] = 1;
+        Object tmp499_495 = tmp495_493;
+        tmp499_495[1] = 2;
+        Object tmp503_499 = tmp499_495;
+        tmp503_499[2] = 3;
+        Object tmp507_503 = tmp503_499;
+        tmp507_503[3] = 4;
+        Object tmp511_507 = tmp507_503;
+        tmp511_507[4] = 5;
+        Object tmp515_511 = tmp511_507;
+        tmp515_511[5] = 6;
+        Object tmp520_515 = tmp515_511;
+        tmp520_515[6] = 7;
+        tmp520_515;
+        paramInt4 = localObject2.length;
+        paramInt2 = 0;
+        if (paramInt2 < paramInt4)
+        {
+          paramString.put(anhm.a(1, Integer.valueOf(localObject2[paramInt2]).intValue()));
+          paramInt2 += 1;
           continue;
-          if (BaseApplicationImpl.IS_SUPPORT_THEME) {
+        }
+        localJSONObject.put("defDress", paramString);
+        localJSONObject.put("defRole", anhm.a(0, 0));
+        localJSONObject.put("from", paramInt5);
+        if ((anhm.a((QQAppInterface)localObject1)) && ((paramInt5 == 1) || (paramInt5 == 2)))
+        {
+          localJSONObject.put("drawer_up", "def/role/0/drawer/1/action/action");
+          localJSONObject.put("drawer_down", "def/role/0/drawer/2/action/action");
+          localJSONObject.put("friendcard_up", "def/role/0/friendcard/1/action/action");
+          localJSONObject.put("friendcard_down", "def/role/0/friendcard/2/action/action");
+          localJSONObject.put("drawer_pet_up", "def/role/0/drawer/3/action/action");
+          localJSONObject.put("drawer_pet_down", "def/role/0/drawer/4/action/action");
+          paramString = (amme)((QQAppInterface)localObject1).getManager(QQManagerFactory.APOLLO_MANAGER);
+          if (paramString != null) {
+            localJSONObject.put("drawerGameBoxUser", paramString.e);
+          }
+        }
+        paramString = new File("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/shader_code/");
+        if (!paramString.isDirectory()) {
+          break label985;
+        }
+        paramString = paramString.listFiles();
+        if ((paramString != null) && (paramString.length > 0))
+        {
+          localObject1 = new JSONArray();
+          paramInt2 = 0;
+          if (paramInt2 < paramString.length)
+          {
+            ((JSONArray)localObject1).put(paramString[paramInt2].getName());
+            if (!QLog.isColorLevel()) {
+              break label1021;
+            }
+            QLog.i("cmshow_scripted_SpriteActionScript", 2, "init shaderCode name:" + paramString[paramInt2].getName());
+            break label1021;
+          }
+          localJSONObject.put("shaderCodes", localObject1);
+          if (QLog.isColorLevel()) {
+            QLog.i("cmshow_scripted_SpriteActionScript", 1, "commonInit shaderCodes jsonArray:" + localObject1);
+          }
+          paramString = new StringBuilder();
+          paramString.append("if(commonInit){commonInit('").append(localJSONObject.toString()).append("');}");
+          QLog.d("cmshow_scripted_SpriteActionScript", 1, "sava TraceReport CmShowStatUtil commitJS:(commonInit)");
+          if ((paramInt1 != 0) && (paramInt3 != 0)) {
+            break label997;
+          }
+          a(paramString.toString(), 0, true);
+          if (!QLog.isColorLevel()) {
+            break label1009;
+          }
+          QLog.d("cmshow_scripted_SpriteActionScript", 2, localJSONObject.toString());
+          return;
+        }
+      }
+      catch (Throwable paramString)
+      {
+        QLog.e("cmshow_scripted_SpriteActionScript", 1, "[getCommonInit], errInfo->", paramString);
+        return;
+      }
+      QLog.i("cmshow_scripted_SpriteActionScript", 1, "commonInit shaderCodes file no exist");
+      continue;
+      label985:
+      QLog.i("cmshow_scripted_SpriteActionScript", 1, "commonInit shaderCodes dir no exist");
+      continue;
+      label997:
+      a(paramString.toString());
+      continue;
+      label1009:
+      return;
+      label1010:
+      int i = 1;
+      continue;
+      label1016:
+      paramInt2 = 0;
+      continue;
+      label1021:
+      paramInt2 += 1;
+    }
+  }
+  
+  private amqr b()
+  {
+    amqr localamqr = new amqr();
+    localamqr.jdField_b_of_type_Boolean = true;
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("is3DBetaTester", anck.a(this.jdField_a_of_type_Ancc.a()));
+      localamqr.jdField_a_of_type_JavaLangString = localJSONObject.toString();
+      return localamqr;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("cmshow_scripted_SpriteActionScript", 1, localException, new Object[0]);
+    }
+    return localamqr;
+  }
+  
+  private amqr d(String paramString)
+  {
+    try
+    {
+      QLog.d("cmshow_scripted_SpriteActionScript", 1, new Object[] { "handleJsError mSpriteFrom:", Integer.valueOf(this.jdField_a_of_type_Ancc.e) });
+      paramString = new JSONObject(paramString).optString("data");
+      anis.a(anck.b(this.jdField_a_of_type_Ancc.e), 1000, 50, new Object[] { paramString });
+      return null;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        QLog.e("cmshow_scripted_SpriteActionScript", 1, "handleJsError:", paramString);
+      }
+    }
+  }
+  
+  private amqr e(String paramString)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Ancc == null) {
+        return null;
+      }
+      paramString = new JSONObject(paramString);
+      anis.a(paramString.optInt("featureId"), paramString.optString("receiveUin"));
+      return null;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("cmshow_scripted_SpriteActionScript", 1, "handleTraceBegin:", paramString);
+    }
+    return null;
+  }
+  
+  private amqr f(String paramString)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Ancc == null) {
+        return null;
+      }
+      int i = new JSONObject(paramString).optInt("featureId");
+      if ((i == anck.b(1)) || (i == anck.b(2))) {
+        anis.a(i, null, new int[] { anir.a(i, false, this.jdField_a_of_type_Ancc.jdField_b_of_type_Int, -1, true) });
+      }
+      anis.b(i);
+      if ((i == anck.b(1)) || (i == anck.b(2)))
+      {
+        anis.a(anck.b(this.jdField_a_of_type_Ancc.e), false);
+        return null;
+      }
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("cmshow_scripted_SpriteActionScript", 1, "handleTraceEnd:", paramString);
+    }
+    return null;
+  }
+  
+  private amqr g(String paramString)
+  {
+    long l2 = 0L;
+    int i = 0;
+    try
+    {
+      if (this.jdField_a_of_type_Ancc == null) {
+        return null;
+      }
+      Object localObject = new JSONObject(paramString);
+      int k = ((JSONObject)localObject).optInt("featureId");
+      int m = ((JSONObject)localObject).optInt("spanId");
+      paramString = ((JSONObject)localObject).optString("msg");
+      long l3 = ((JSONObject)localObject).optLong("timestamp");
+      localObject = ((JSONObject)localObject).optString("spanDesc");
+      long l1 = l2;
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        int j = ApolloUtil.g(m);
+        i = j;
+        l1 = l2;
+        if (j > 0)
+        {
+          l1 = ApolloUtil.b((String)localObject);
+          i = j;
+        }
+      }
+      anis.a(k, null, m, -100, l3, i, l1, new Object[] { paramString });
+      return null;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("cmshow_scripted_SpriteActionScript", 1, "handleTraceSpanBegin:", paramString);
+    }
+    return null;
+  }
+  
+  private amqr h(String paramString)
+  {
+    long l2 = 0L;
+    int i = 0;
+    try
+    {
+      if (this.jdField_a_of_type_Ancc == null) {
+        return null;
+      }
+      Object localObject = new JSONObject(paramString);
+      int k = ((JSONObject)localObject).optInt("featureId");
+      int m = ((JSONObject)localObject).optInt("spanId");
+      int n = ((JSONObject)localObject).optInt("errCode");
+      paramString = ((JSONObject)localObject).optString("msg");
+      long l3 = ((JSONObject)localObject).optLong("timestamp");
+      localObject = ((JSONObject)localObject).optString("spanDesc");
+      long l1 = l2;
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        int j = ApolloUtil.g(m);
+        i = j;
+        l1 = l2;
+        if (j > 0)
+        {
+          l1 = ApolloUtil.b((String)localObject);
+          i = j;
+        }
+      }
+      anis.a(k, null, m, n, l3, i, l1, new Object[] { paramString });
+      if ((n == 57) && (!c()))
+      {
+        f();
+        return null;
+      }
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("cmshow_scripted_SpriteActionScript", 1, "handleTraceSpanEnd:", paramString);
+    }
+    return null;
+  }
+  
+  private amqr i(String paramString)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Ancc == null) {
+        return null;
+      }
+      paramString = new JSONObject(paramString);
+      int i = paramString.optInt("featureId");
+      int j = paramString.optInt("spanId");
+      String str = paramString.optString("msg");
+      anis.a(i, j, -100, paramString.optLong("timestamp"), new Object[] { str });
+      return null;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("cmshow_scripted_SpriteActionScript", 1, "handleTraceLog:", paramString);
+    }
+    return null;
+  }
+  
+  private amqr j(String paramString)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Ancc.e != 0) {
+        return null;
+      }
+      paramString = new JSONObject(paramString).optString("text");
+      this.jdField_a_of_type_Anch.a().a(paramString);
+      return null;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("cmshow_scripted_SpriteActionScript", 1, paramString, new Object[0]);
+    }
+    return null;
+  }
+  
+  private amqr k(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString).optString("uinList");
+      if (TextUtils.isEmpty(paramString)) {
+        return null;
+      }
+      paramString = new JSONArray(paramString);
+      int i = 0;
+      while (i < paramString.length())
+      {
+        a(paramString.optString(i), true);
+        i += 1;
+      }
+      return null;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("cmshow_scripted_SpriteActionScript", 1, paramString, new Object[0]);
+    }
+  }
+  
+  private amqr l(String paramString)
+  {
+    for (;;)
+    {
+      int i;
+      int j;
+      try
+      {
+        if (this.jdField_a_of_type_Ancc.e != 0) {
+          return null;
+        }
+        paramString = new JSONObject(paramString);
+        i = paramString.optInt("status");
+        j = paramString.optInt("whiteHeight");
+        if (QLog.isColorLevel()) {
+          QLog.d("cmshow_scripted_SpriteActionScript", 2, new Object[] { "[handleSpriteStatus], status:", Integer.valueOf(i), ",whiteHeight:", Integer.valueOf(j) });
+        }
+        if (this.jdField_a_of_type_Ancc.c)
+        {
+          QLog.i("cmshow_scripted_SpriteActionScript", 1, "[handleSpriteStatus], isBubbleMeme no need margin");
+          this.jdField_a_of_type_Anch.a().a(i);
+          return null;
+        }
+      }
+      catch (Throwable paramString)
+      {
+        QLog.e("cmshow_scripted_SpriteActionScript", 1, paramString, new Object[0]);
+        return null;
+      }
+      this.jdField_a_of_type_Anch.a().a(i, j);
+    }
+  }
+  
+  private amqr m(String paramString)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Ancc.e != 0) {
+        return null;
+      }
+      int i = new JSONObject(paramString).optInt("status");
+      if (this.jdField_a_of_type_Anch != null)
+      {
+        this.jdField_a_of_type_Anch.a().a(i);
+        return null;
+      }
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("cmshow_scripted_SpriteActionScript", 1, paramString, new Object[0]);
+    }
+    return null;
+  }
+  
+  private amqr n(String paramString)
+  {
+    int i;
+    int j;
+    try
+    {
+      paramString = new JSONObject(paramString);
+      i = paramString.optInt("taskId");
+      j = paramString.optInt("status");
+      paramString = paramString.optString("uin");
+      if (!QLog.isColorLevel()) {
+        break label136;
+      }
+      QLog.d("cmshow_scripted_SpriteActionScript.callback", 2, new Object[] { "taskId:", Integer.valueOf(i), ",status:", Integer.valueOf(j) });
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("cmshow_scripted_SpriteActionScript", 1, paramString, new Object[0]);
+      break label164;
+    }
+    if (this.jdField_a_of_type_Ancl != null)
+    {
+      this.jdField_a_of_type_Ancl.a(paramString, i);
+      break label164;
+      if (this.jdField_a_of_type_Ancl != null)
+      {
+        this.jdField_a_of_type_Ancl.a(paramString, i, j);
+        break label164;
+        label136:
+        switch (j)
+        {
+        }
+      }
+    }
+    label164:
+    return null;
+  }
+  
+  private amqr o(String paramString)
+  {
+    label122:
+    for (;;)
+    {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        JSONObject localJSONObject = new JSONObject();
+        if ("pet".equals(paramString.getString("config_name")))
+        {
+          paramString = new JSONArray();
+          amme localamme = (amme)this.jdField_a_of_type_Ancc.a().getManager(QQManagerFactory.APOLLO_MANAGER);
+          if (localamme.f == null) {
+            break label122;
+          }
+          paramString = new JSONArray(localamme.f);
+          localJSONObject.put("petConfig", paramString);
+          paramString = new amqr();
+          paramString.jdField_b_of_type_Boolean = true;
+          paramString.jdField_a_of_type_JavaLangString = localJSONObject.toString();
+          return paramString;
+        }
+      }
+      catch (Throwable paramString)
+      {
+        QLog.e("cmshow_scripted_SpriteActionScript", 1, "handleGetLocalData error:", paramString);
+      }
+      return null;
+    }
+  }
+  
+  private amqr p(String paramString)
+  {
+    int i = 0;
+    int j;
+    try
+    {
+      paramString = new JSONObject(paramString);
+      j = paramString.optInt("from");
+      if (!QLog.isColorLevel()) {
+        break label183;
+      }
+      QLog.d("cmshow_scripted_SpriteActionScript", 2, new Object[] { "handlePlayAction from:", Integer.valueOf(j) });
+    }
+    catch (JSONException paramString)
+    {
+      label71:
+      Object localObject;
+      paramString.printStackTrace();
+      return null;
+    }
+    paramString = this.jdField_a_of_type_Ancc.a();
+    if (paramString != null)
+    {
+      paramString.a();
+      return null;
+      if (j == 0)
+      {
+        paramString = paramString.optString("uinList");
+        if (!TextUtils.isEmpty(paramString))
+        {
+          localObject = new JSONArray(paramString);
+          paramString = new ArrayList();
+        }
+      }
+    }
+    for (;;)
+    {
+      if (i < ((JSONArray)localObject).length())
+      {
+        String str = ((JSONArray)localObject).optString(i);
+        if (!TextUtils.isEmpty(str)) {
+          paramString.add(str);
+        }
+      }
+      else
+      {
+        if (paramString.size() != 0)
+        {
+          localObject = anck.a(a());
+          if (localObject != null)
+          {
+            ((ancd)localObject).a(paramString);
+            return null;
+            label183:
+            if (j == 1) {
+              break;
+            }
+            if (j != 2) {
+              break label71;
+            }
             break;
           }
         }
+        return null;
       }
-    }
-    catch (Exception paramBundle)
-    {
-      QLog.e("Theme.ThemeHandler", 1, "Theme Auth send Exception:" + paramBundle.getMessage() + ", themeId=" + str1 + ", version=" + "20000000");
-    }
-    label518:
-    label566:
-    do
-    {
-      QLog.e("Theme.ThemeHandler", 1, "sendThemeAuth ERROR_CODE_ISNOT_SUPPORT_THEME.");
-      int j = NetworkUtil.getSystemNetwork(null);
-      if (!BaseApplicationImpl.IS_SUPPORT_THEME) {
-        break;
-      }
-      i = 1;
-      bdbl.a(null, "theme_detail", "205", 157, j, i, str1, "20000000", "1", "");
-      return;
-      ((SharedPreferences)localObject3).edit().putLong("authTime", 0L).commit();
-      localObject3 = new ThemeAuth.ReqBody();
-      ((ThemeAuth.ReqBody)localObject3).uint32_sub_cmd.set(1);
-      ((ThemeAuth.ReqBody)localObject3).int32_plat_id.set(109);
-      ((ThemeAuth.ReqBody)localObject3).str_qq_version.set("8.4.8.4810");
-      ((ThemeAuth.ReqBody)localObject3).uint32_qq_version.set(Integer.parseInt("4810"));
-      ((ThemeAuth.ReqBody)localObject3).msg_subcmd0x1_req_auth.set((MessageMicro)localObject2);
-      ((ThemeAuth.ReqBody)localObject3).setHasFlag(true);
-      localObject2 = new ToServiceMsg("mobileqq.service", this.mApp.getCurrentAccountUin(), "AuthSvr.ThemeAuth");
-      ((ToServiceMsg)localObject2).putWupBuffer(((ThemeAuth.ReqBody)localObject3).toByteArray());
-      ((ToServiceMsg)localObject2).extraData.putAll(paramBundle);
-      if (QLog.isColorLevel()) {
-        QLog.i("Theme.ThemeHandler", 2, "Theme Auth send request, themeID=" + str1 + ", userThemeId=" + str3);
-      }
-      super.sendPbReq((ToServiceMsg)localObject2);
-    } while (("1000".equals(str1)) || (android.text.TextUtils.isEmpty(str2)));
-    paramBundle = new File(str2);
-    long l1 = System.currentTimeMillis();
-    localObject1 = ThemeUtil.getThemeInfo((Context)localObject1, str1);
-    long l2 = System.currentTimeMillis();
-    if (localObject1 != null) {}
-    for (int i = 1;; i = -1)
-    {
-      bdbl.a(null, "theme_sp_speed", "204", 153, -1, i, String.valueOf(l2 - l1), "6653", "read", "");
-      if ((paramBundle.isDirectory()) && (localObject1 != null))
-      {
-        i = ThemeUtil.getFileNumInFile(paramBundle);
-        if ((i > 0) && ((((ThemeUtil.ThemeInfo)localObject1).fileNum <= 0) || (i >= ((ThemeUtil.ThemeInfo)localObject1).fileNum))) {
-          break;
-        }
-        QLog.e("Theme.ThemeHandler", 1, "sendThemeAuth fileNum Error:, themeInfo.fileNum:" + ((ThemeUtil.ThemeInfo)localObject1).fileNum + ", fileNum:" + i + ", themeId=" + str1 + ", version=" + "20000000" + ", currentThemeResPath:" + str2);
-        bdbl.a(this.app, "theme_detail", "204", 157, NetworkUtil.getSystemNetwork(null), 101, str1, "665", String.valueOf(i), String.valueOf(((ThemeUtil.ThemeInfo)localObject1).fileNum));
-        break;
-        label967:
-        if ((!android.text.TextUtils.isEmpty(str3)) && (!"1000".equals(str3))) {
-          break label566;
-        }
-        l1 = ((SharedPreferences)localObject3).getLong("authTime", 0L);
-        l2 = System.currentTimeMillis();
-        if ((l2 > l1 + 7200000L) || (bcoo.a()))
-        {
-          ((SharedPreferences)localObject3).edit().putLong("authTime", l2).commit();
-          break label566;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Theme.ThemeHandler", 2, "sendThemeAuth nowTime <= authTime + 2h");
-        }
-        bdai.b(true);
-        return;
-      }
-      QLog.e("Theme.ThemeHandler", 1, "sendThemeAuth fileNum Error:, themeInfo == null || currentThemeResPath:" + str2);
-      break;
-      i = -40;
-      break label518;
+      i += 1;
     }
   }
   
-  private void a(ThemeAuth.RspBody paramRspBody)
+  private amqr q(String paramString)
   {
-    int i = ((ThemeAuth.SubCmd0x2RspCheck)paramRspBody.msg_subcmd0x2_rsp_check.get()).int32_result.get();
+    int i = 0;
+    int j;
+    try
+    {
+      paramString = new JSONObject(paramString);
+      j = paramString.optInt("from");
+      if (j != 0) {
+        break label177;
+      }
+      localObject = paramString.optString("url");
+      if ((this.jdField_a_of_type_Ancc == null) || (this.jdField_a_of_type_Ancc.a() == null))
+      {
+        QLog.e("cmshow_scripted_SpriteActionScript", 1, "handleOnApolloClick mSpriteContent is nil");
+        return null;
+      }
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        break label122;
+      }
+      if (this.jdField_a_of_type_Ancc.a().getActivity() == null)
+      {
+        QLog.e("cmshow_scripted_SpriteActionScript", 1, "handleOnApolloClick activity is nil");
+        return null;
+      }
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("cmshow_scripted_SpriteActionScript", 1, "Exception:", paramString);
+      return null;
+    }
+    ApolloUtil.a(this.jdField_a_of_type_Ancc.a().getActivity(), (String)localObject);
+    return null;
+    label122:
+    paramString = paramString.optString("gameId");
+    if (!TextUtils.isEmpty(paramString)) {
+      i = Integer.parseInt(paramString);
+    }
+    if (i > 0)
+    {
+      ApolloGameUtil.a(this.jdField_a_of_type_Ancc.a(), i, 333002, "message", 1);
+      return null;
+    }
+    QLog.e("cmshow_scripted_SpriteActionScript", 1, "handleOnApolloClick gameStr is nil");
+    return null;
+    label177:
+    i = paramString.optInt("apolloStatus");
+    int k = paramString.optInt("clickPart");
+    paramString = paramString.optString("apolloId");
     if (QLog.isColorLevel()) {
-      QLog.i("Theme.ThemeHandler", 2, "handleThemeVersionCheck:" + i);
+      QLog.d("cmshow_scripted_SpriteActionScript", 2, new Object[] { "handleOnApolloClick", ",from:", Integer.valueOf(j), ",apolloStatus:", Integer.valueOf(i), ",clickPart:", Integer.valueOf(k), "apolloId:", paramString });
     }
-    paramRspBody = this.mApp.getAccount();
-    if (!android.text.TextUtils.isEmpty(paramRspBody))
-    {
-      paramRspBody = this.mApp.getApplication().getSharedPreferences(paramRspBody, 0);
-      if (i == 6) {
-        paramRspBody.edit().putBoolean("need_check_theme_ver", true).commit();
-      }
-      if (paramRspBody.getBoolean("need_check_theme_ver", false)) {
-        paramRspBody.edit().putBoolean("need_check_theme_ver", false).commit();
-      }
+    Object localObject = this.jdField_a_of_type_Ancc.a();
+    if (localObject != null) {
+      ((ancn)localObject).a(i, k, paramString);
     }
-    if (i == 0)
-    {
-      paramRspBody = this.mApp.getHandler(Conversation.class);
-      Message localMessage = new Message();
-      localMessage.what = 1038;
-      localMessage.obj = jdField_a_of_type_JavaLangString;
-      paramRspBody.sendMessage(localMessage);
-      bcef.b(this.app, "CliOper", "", "", "0X8005B9E", "0X8005B9E", 0, 0, "", "", "", "");
-      localMessage = new Message();
-      localMessage.what = 1039;
-      paramRspBody.sendMessageDelayed(localMessage, 90000L);
-    }
+    return null;
   }
   
-  private boolean a(ToServiceMsg paramToServiceMsg, ThemeAuth.RspBody paramRspBody, boolean paramBoolean)
+  public amqr a()
   {
-    String str = amtj.a(2131713949);
-    int i;
-    if (paramBoolean)
-    {
-      paramToServiceMsg = (ThemeAuth.SubCmd0x3RspSet)paramRspBody.msg_subcmd0x3_rsp_set.get();
-      i = paramToServiceMsg.int32_result.get();
-      paramRspBody = String.valueOf(paramToServiceMsg.uint32_theme_id.get());
-    }
-    for (paramToServiceMsg = paramToServiceMsg.str_diy_theme_err_msg.get();; paramToServiceMsg = str)
-    {
-      if ((QLog.isColorLevel()) || (i != 0)) {
-        QLog.d("Theme.ThemeHandler", 1, "handleThemeAuth Set result:" + i + ", themeId:" + paramRspBody);
-      }
-      if ((this.jdField_a_of_type_Bdbx != null) && (this.jdField_a_of_type_AndroidOsBundle != null)) {
-        break;
-      }
-      QLog.e("Theme.ThemeHandler", 1, "handleThemeAuth Set result:null == service || null == reqbundle, result:" + i);
-      this.jdField_a_of_type_AndroidOsBundle = null;
-      this.jdField_a_of_type_Bdbx = null;
-      return true;
-      paramRspBody = new ThemeAuth.ReqBody();
-      paramRspBody.mergeFrom(paramToServiceMsg.getWupBuffer(), 4, paramToServiceMsg.getWupBuffer().length - 4);
-      int j = ((ThemeAuth.SubCmd0x3ReqSet)paramRspBody.msg_subcmd0x3_req_set.get()).uint32_theme_id.get();
-      i = -404;
-      paramRspBody = String.valueOf(j);
-    }
-    this.jdField_a_of_type_AndroidOsBundle.putString("message", paramToServiceMsg);
-    this.jdField_a_of_type_AndroidOsBundle.putInt("result_int", i);
-    if ((!android.text.TextUtils.isEmpty(paramRspBody)) && (paramRspBody.equals(this.jdField_a_of_type_AndroidOsBundle.getString("themeId"))))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Theme.ThemeHandler", 2, "handleThemeAuth set back themeId=" + paramRspBody + ", result=" + i);
-      }
-      paramToServiceMsg = this.jdField_a_of_type_Bdbx;
-      if (i == 0)
-      {
-        i = 4;
-        paramToServiceMsg.callback(16, i, this.jdField_a_of_type_AndroidOsBundle, null);
-        this.jdField_a_of_type_AndroidOsBundle = null;
-        this.jdField_a_of_type_Bdbx = null;
-        this.c.set(true);
-      }
-    }
+    amqr localamqr;
+    label248:
     for (;;)
     {
-      return false;
-      i = 8;
-      break;
-      QLog.e("Theme.ThemeHandler", 1, "handleThemeAuth Set result:themeId has changed themeId=" + paramRspBody + ", rbThemeid=" + this.jdField_a_of_type_AndroidOsBundle.getString("themeId"));
-    }
-  }
-  
-  private boolean a(ToServiceMsg paramToServiceMsg, ThemeAuth.SubCmd0x1RspAuth paramSubCmd0x1RspAuth, String paramString1, String paramString2)
-  {
-    String str2 = String.valueOf(paramSubCmd0x1RspAuth.uint32_theme_id.get());
-    String str1 = paramSubCmd0x1RspAuth.str_version.get();
-    String str3 = paramSubCmd0x1RspAuth.str_download_url.get();
-    int i = paramSubCmd0x1RspAuth.uint32_concise_id.get();
-    int j = paramSubCmd0x1RspAuth.uint32_concise_switch.get();
-    int k = paramSubCmd0x1RspAuth.uint32_study_switch.get();
-    int m = paramSubCmd0x1RspAuth.uint32_young_switch.get();
-    int n = paramSubCmd0x1RspAuth.int32_suit_id.get();
-    if ((QLog.isColorLevel()) || ((paramString2 != null) && (!paramString1.equals(str2)))) {
-      QLog.d("Theme.ThemeHandler", 2, "authHandler get themeId=" + str2 + ",ver=" + str1 + ",Url=" + str3 + ", seriesId=" + n + ", reqthemeId:" + paramString1 + ", reqVersion:" + paramString2 + ", sSimpleThemeId:" + i + ", sSimpleOpen:" + j);
-    }
-    boolean bool1;
-    boolean bool2;
-    label221:
-    boolean bool3;
-    if (j == 1)
-    {
-      bool1 = true;
-      paramString1 = this.app;
-      if (k != 1) {
-        break label388;
-      }
-      bool2 = true;
-      if (m != 1) {
-        break label394;
-      }
-      bool3 = true;
-      label230:
-      bbyj.a(bool1, i, paramString1, bool2, bool3);
-      if ((!"999".equals(str2)) && (!"1000".equals(str2))) {
-        break label731;
-      }
-    }
-    label388:
-    label394:
-    label731:
-    for (paramString1 = "20000000";; paramString1 = str1)
-    {
-      if ((android.text.TextUtils.isEmpty(paramString1)) || ("0".equals(str2))) {
-        paramString1 = String.valueOf(200);
-      }
-      paramToServiceMsg = paramToServiceMsg.extraData.getString("oldEnginePath", null);
-      paramString2 = SkinEngine.getInstances().getSkinRootPath();
-      QLog.e("Theme.ThemeHandler", 1, "engine path old is : " + paramToServiceMsg + " new is " + paramString2);
-      if ((!android.text.TextUtils.isEmpty(paramString2)) && (!paramString2.equals(paramToServiceMsg)))
-      {
-        QLog.e("Theme.ThemeHandler", 1, "engine init during auth, resend auth");
-        a();
-        return true;
-        bool1 = false;
-        break;
-        bool2 = false;
-        break label221;
-        bool3 = false;
-        break label230;
-      }
-      if (n <= 0)
-      {
-        QLog.e("Theme.ThemeHandler", 1, "clear weekTheme because seriesId=" + n);
-        ThemeUtil.setWeekLoopTheme(this.mApp, null, null, 0L);
-      }
-      if (n > 0)
-      {
-        paramToServiceMsg = ThemeUtil.getWeekLoopTheme(this.app);
-        if (!android.text.TextUtils.isEmpty(paramToServiceMsg)) {
-          b(paramToServiceMsg, "203");
-        }
-      }
-      for (;;)
-      {
-        return false;
-        if ((!"0".equals(str2)) && (!android.text.TextUtils.isEmpty(paramString1)) && (!this.c.get()))
-        {
-          if (paramSubCmd0x1RspAuth.uint32_diy_theme_flag.get() == 1)
-          {
-            paramToServiceMsg = (ThemeAuth.RspDiyThemeInfo)paramSubCmd0x1RspAuth.rsp_diy_theme_info.get();
-            paramSubCmd0x1RspAuth = (ThemeAuth.RspDiyThemeDetail)paramSubCmd0x1RspAuth.rsp_diy_theme_detail.get();
-            a(0, paramToServiceMsg.uin32_drawer_tab_id.get(), paramToServiceMsg.str_drawer_tab_url.get(), "theme_bg_setting_path", "theme_bg_setting_path_png", (ThemeAuth.DiyThemeDetail)paramSubCmd0x1RspAuth.drawer_tab_detail.get());
-            a(1, paramToServiceMsg.uin32_message_tab_id.get(), paramToServiceMsg.str_message_tab_url.get(), "theme_bg_message_path", "theme_bg_message_path_png", (ThemeAuth.DiyThemeDetail)paramSubCmd0x1RspAuth.message_tab_detail.get());
-            a(2, paramToServiceMsg.uin32_aio_tab_id.get(), paramToServiceMsg.str_aio_tab_url.get(), "theme_bg_aio_path", "theme_bg_aio_path", (ThemeAuth.DiyThemeDetail)paramSubCmd0x1RspAuth.aio_tab_detail.get());
-            a(3, paramToServiceMsg.uin32_friend_tab_id.get(), paramToServiceMsg.str_friend_tab_url.get(), "theme_bg_friend_path", "theme_bg_friend_path_png", (ThemeAuth.DiyThemeDetail)paramSubCmd0x1RspAuth.friend_tab_detail.get());
-            a(4, paramToServiceMsg.uin32_dynamic_tab_id.get(), paramToServiceMsg.str_dynamic_tab_url.get(), "theme_bg_dynamic_path", "theme_bg_dynamic_path_png", (ThemeAuth.DiyThemeDetail)paramSubCmd0x1RspAuth.dynamic_tab_detail.get());
-          }
-          b(str2, "204");
-        }
-        else
-        {
-          a(null, null, true);
-        }
-      }
-    }
-  }
-  
-  private void b(String paramString1, String paramString2)
-  {
-    if ("204".equalsIgnoreCase(paramString2))
-    {
-      if (!bdai.a(paramString1, paramString2)) {
-        a(paramString1, paramString2);
-      }
-      while (ThemeUtil.isFixTheme(paramString1)) {
-        return;
-      }
-      bdbo.a(this.app, paramString1, "20000000");
-      return;
-    }
-    a(paramString1, paramString2);
-  }
-  
-  public void a()
-  {
-    if (this.mApp == null)
-    {
-      QLog.e("Theme.ThemeHandler", 1, "sendThemeAuth mApp == null");
-      return;
-    }
-    MobileQQ localMobileQQ = this.mApp.getApplication();
-    Object localObject1 = ThemeUtil.getThemePreferences(localMobileQQ);
-    Object localObject4;
-    Object localObject3;
-    if (1 > ((SharedPreferences)localObject1).getInt("themeSpVersion", 0))
-    {
-      localObject4 = ((SharedPreferences)localObject1).edit();
       try
       {
-        localObject1 = ((SharedPreferences)localObject1).getString("userDownloadTheme", "");
-        if (!android.text.TextUtils.isEmpty((CharSequence)localObject1))
+        QQAppInterface localQQAppInterface = a();
+        if (localQQAppInterface == null) {
+          return null;
+        }
+        localamqr = new amqr();
+        localamqr.jdField_b_of_type_Boolean = true;
+        JSONObject localJSONObject = new JSONObject();
+        if ((1 == localQQAppInterface.getALLGeneralSettingRing()) && (((this.jdField_a_of_type_Ancc.jdField_a_of_type_Int != 1) && (this.jdField_a_of_type_Ancc.jdField_a_of_type_Int != 3000)) || (((1 == localQQAppInterface.getTroopGeneralSettingRing()) || (this.jdField_a_of_type_Ancc.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Ancc.jdField_a_of_type_Int == -2)) && (!localQQAppInterface.isRingerVibrate()) && (!localQQAppInterface.isRingEqualsZero()) && (localQQAppInterface.isCallIdle()) && (!MediaPlayerManager.a(localQQAppInterface).a()) && ((localQQAppInterface.getCheckPttListener() == null) || (!localQQAppInterface.getCheckPttListener().isRecordingOrPlaying())) && (!localQQAppInterface.isVideoChatting()))))
         {
-          JSONObject localJSONObject1 = new JSONObject((String)localObject1);
-          Iterator localIterator = localJSONObject1.keys();
-          while (localIterator.hasNext())
+          if (localQQAppInterface.getCheckPtvListener() == null) {
+            break label248;
+          }
+          if (!localQQAppInterface.getCheckPtvListener().isPTVRecording())
           {
-            String str1 = String.valueOf(localIterator.next());
-            if ((!android.text.TextUtils.isEmpty(str1)) && (!"1000".equals(str1)) && (!"999".equals(str1)))
-            {
-              JSONObject localJSONObject2 = localJSONObject1.getJSONObject(str1);
-              if (localJSONObject2 != null)
-              {
-                String str2 = localJSONObject2.optString("version");
-                localObject3 = ThemeUtil.getThemeInfo(localMobileQQ, str1);
-                localObject1 = localObject3;
-                if (localObject3 == null)
-                {
-                  localObject1 = new ThemeUtil.ThemeInfo();
-                  ((ThemeUtil.ThemeInfo)localObject1).themeId = str1;
-                  ((ThemeUtil.ThemeInfo)localObject1).isVoiceTheme = localJSONObject2.optBoolean("sound");
-                  ((ThemeUtil.ThemeInfo)localObject1).fileNum = localJSONObject2.optInt("fileNum");
-                }
-                ((ThemeUtil.ThemeInfo)localObject1).version = str2;
-                ((ThemeUtil.ThemeInfo)localObject1).zipVer = Integer.parseInt(str2);
-                ((ThemeUtil.ThemeInfo)localObject1).status = "1";
-                ThemeUtil.setThemeInfo(localMobileQQ, (ThemeUtil.ThemeInfo)localObject1);
-              }
+            break label248;
+            localJSONObject.put("isAllowed", i);
+            localamqr.jdField_a_of_type_JavaLangString = localJSONObject.toString();
+            if (!QLog.isColorLevel()) {
+              break;
             }
+            QLog.d("cmshow_scripted_SpriteActionScript", 2, new Object[] { "isAllowPlayAudio:", Integer.valueOf(i) });
+            break;
           }
         }
-        ((SharedPreferences.Editor)localObject4).putInt("themeSpVersion", 1).commit();
+        anck.b(localQQAppInterface);
+        int i = 0;
+        continue;
+        i = 1;
       }
-      catch (Exception localException)
+      catch (Throwable localThrowable)
       {
-        QLog.e("Theme.ThemeHandler", 2, "sendThemeAuth themeUpdate error:" + localException.getMessage());
+        QLog.e("cmshow_scripted_SpriteActionScript", 1, localThrowable, new Object[0]);
+        return null;
       }
     }
-    else
+    return localamqr;
+  }
+  
+  public amqr a(long paramLong, String paramString1, String paramString2)
+  {
+    ampv localampv = a();
+    QQAppInterface localQQAppInterface = a();
+    if (localQQAppInterface == null) {}
+    while ((localampv == null) || (localampv.getLuaState() != paramLong)) {
+      return null;
+    }
+    if ((paramString1.startsWith("apollo_")) && (!paramString1.startsWith("cs.")) && (!paramString1.endsWith(".local")) && (!amqp.a(paramString1)))
     {
-      localObject4 = ThemeUtil.getCurrentThemeInfo();
-      ((Bundle)localObject4).putString("oldEnginePath", ((Bundle)localObject4).getString("themePath"));
-      QLog.d("Theme.ThemeHandler", 1, "sendThemeAuth init: , skThemeId:" + ((Bundle)localObject4).getString("themeId") + ", skVersion:" + ((Bundle)localObject4).getString("version") + ", qqVersion:" + "8.4.8");
-      localObject3 = ((Bundle)localObject4).getString("themeId");
-      localObject2 = localObject3;
-      if (android.text.TextUtils.isEmpty((CharSequence)localObject3))
-      {
-        localObject2 = "1000";
-        ((Bundle)localObject4).putString("themeId", "1000");
+      if (QLog.isColorLevel()) {
+        QLog.d("cmshow_scripted_SpriteActionScript", 2, "ssoCmdRule, [aio],cmd:" + paramString1);
       }
-      if (bbyp.a((String)localObject2))
-      {
-        localObject3 = bdbo.a(this.app).getString("themeID");
-        QLog.e("Theme.ThemeHandler", 1, "sendThemeAuth isThemeSimpleUI:" + (String)localObject2 + " pre:" + (String)localObject3);
-        if (!android.text.TextUtils.isEmpty((CharSequence)localObject3)) {
-          break label526;
-        }
-        localObject2 = "1000";
-        label478:
-        ((Bundle)localObject4).putString("themeId", (String)localObject2);
-        if (!"1000".equals(localObject3)) {
-          break label531;
-        }
-        ((Bundle)localObject4).remove("themePath");
-      }
+      ((VasExtensionHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.VAS_EXTENSION_HANDLER)).a(paramString1, paramString2.toString(), paramLong, 4);
+      paramString1 = null;
     }
     for (;;)
     {
-      a((Bundle)localObject4);
-      return;
-      ((SharedPreferences.Editor)localObject4).remove("userDownloadTheme");
-      break;
-      label526:
-      localObject2 = localObject3;
-      break label478;
-      label531:
-      if (!"999".equals(localObject3)) {
-        break label565;
+      return paramString1;
+      if ("cs.script_action_status_notify.local".equals(paramString1))
+      {
+        paramString1 = n(paramString2);
       }
-      ((Bundle)localObject4).putString("themePath", new bdbk().a().d());
+      else if ("cs.script_change_panel_status.local".equals(paramString1))
+      {
+        paramString1 = m(paramString2);
+      }
+      else if ("cs.script_get_dress_data.local".equals(paramString1))
+      {
+        paramString1 = k(paramString2);
+      }
+      else if ("cs.script_sprite_status_change.local".equals(paramString1))
+      {
+        paramString1 = l(paramString2);
+      }
+      else if ("cs.script_get_show_action.local".equals(paramString1))
+      {
+        paramString1 = a(paramString2);
+      }
+      else if ("cs.script_is_allow_play_audio.local".equals(paramString1))
+      {
+        paramString1 = a();
+      }
+      else if ("cs.script_show_barrage.local".equals(paramString1))
+      {
+        paramString1 = b(paramString2);
+      }
+      else if ("cs.script_send_action_msg.local".equals(paramString1))
+      {
+        paramString1 = c(paramString2);
+      }
+      else if ("cs.script_show_toast.local".equals(paramString1))
+      {
+        paramString1 = j(paramString2);
+      }
+      else if ("cs.script_get_config.local".equals(paramString1))
+      {
+        paramString1 = o(paramString2);
+      }
+      else if ("cs.script_play_action.local".equals(paramString1))
+      {
+        paramString1 = p(paramString2);
+      }
+      else if ("cs.script_action_apollo_click.local".equals(paramString1))
+      {
+        paramString1 = q(paramString2);
+      }
+      else if ("cs.script_update_boundinglist.local".equals(paramString1))
+      {
+        paramString1 = a(paramString2, localampv.getRenderImpl().a());
+      }
+      else if ("cs.get_cm3D_state.local".equals(paramString1))
+      {
+        paramString1 = b();
+      }
+      else if ("cs.trace_begin.local".equals(paramString1))
+      {
+        paramString1 = e(paramString2);
+      }
+      else if ("cs.trace_end.local".equals(paramString1))
+      {
+        paramString1 = f(paramString2);
+      }
+      else if ("cs.trace_span_begin.local".equals(paramString1))
+      {
+        paramString1 = g(paramString2);
+      }
+      else if ("cs.trace_span_end.local".equals(paramString1))
+      {
+        paramString1 = h(paramString2);
+      }
+      else if ("cs.trace_log.local".equals(paramString1))
+      {
+        paramString1 = i(paramString2);
+      }
+      else
+      {
+        if ("cs.script_sprite_model_change_notify.local".equals(paramString1))
+        {
+          if ((ApolloGameUtil.a(localQQAppInterface) == 2) && (this.jdField_a_of_type_Ancc != null) && (this.jdField_a_of_type_Ancc.e == 0))
+          {
+            paramString1 = ((ankc)localQQAppInterface.getManager(QQManagerFactory.APOOLO_DAO_MANAGER)).d(3000059);
+            if (paramString1 != null)
+            {
+              paramString2 = new SpriteTaskParam();
+              paramString2.f = paramString1.actionId;
+              paramString2.jdField_c_of_type_Int = 0;
+              paramString2.g = 3;
+              paramString2.e = paramString1.personNum;
+              paramString2.jdField_a_of_type_Long = -10000L;
+              paramString2.jdField_a_of_type_Boolean = true;
+              paramString2.jdField_b_of_type_Boolean = false;
+              paramString2.jdField_c_of_type_JavaLangString = paramString1.bubbleText;
+              if (this.jdField_a_of_type_Ancc.a() != null)
+              {
+                paramString2.jdField_a_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_Ancc.a().getCurrentAccountUin());
+                ((anch)this.jdField_a_of_type_Ancc.a().getManager(QQManagerFactory.SPRITE_SCRIPT_MANAGER)).a().a(paramString2);
+              }
+            }
+            paramString1 = null;
+          }
+        }
+        else if ("cs.xy_error_info.local".equals(paramString1))
+        {
+          paramString1 = d(paramString2);
+          continue;
+        }
+        paramString1 = null;
+      }
     }
-    label565:
-    Object localObject2 = new bdbk().a((String)localObject3);
-    ((VasQuickUpdateManager)this.app.getManager(184)).queryItemVersion(3, ((bdbk)localObject2).b(), true, false, 0L, new anbv(this, (bdbk)localObject2, localMobileQQ, (Bundle)localObject4));
+  }
+  
+  public amqr a(String paramString)
+  {
+    amqr localamqr;
+    JSONObject localJSONObject1;
+    try
+    {
+      if (this.jdField_a_of_type_Ancc.e != 0) {
+        return null;
+      }
+      paramString = new JSONObject(paramString);
+      JSONArray localJSONArray1 = new JSONArray(paramString.optString("uinList"));
+      JSONArray localJSONArray2 = new JSONArray();
+      localamqr = new amqr();
+      localamqr.jdField_b_of_type_Boolean = true;
+      localJSONObject1 = new JSONObject();
+      int j = paramString.optInt("type", 0);
+      if (QLog.isColorLevel()) {
+        QLog.d("cmshow_scripted_SpriteActionScript", 2, new Object[] { "[handleGetShowAction] type:", Integer.valueOf(j) });
+      }
+      ancd localancd = anck.a(a());
+      if (localancd != null)
+      {
+        int i = 0;
+        if (i < localJSONArray1.length())
+        {
+          JSONObject localJSONObject2 = new JSONObject();
+          Object localObject = localJSONArray1.optString(i);
+          localJSONObject2.put("uin", localObject);
+          if (j == 1) {
+            localJSONObject2.put("petPath", localancd.a(new JSONArray(paramString.optString("actionList"))));
+          }
+          for (;;)
+          {
+            localJSONArray2.put(localJSONObject2);
+            i += 1;
+            break;
+            localObject = localancd.a((String)localObject);
+            localJSONObject2.put("path", ((Pair)localObject).first);
+            localJSONObject2.put("actionType", ((Pair)localObject).second);
+          }
+        }
+      }
+      localJSONObject1.put("path", localJSONArray2);
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("cmshow_scripted_SpriteActionScript", 1, paramString, new Object[0]);
+      return null;
+    }
+    localamqr.jdField_a_of_type_JavaLangString = localJSONObject1.toString();
+    return localamqr;
+  }
+  
+  public void a(int paramInt)
+  {
+    for (;;)
+    {
+      try
+      {
+        if (this.jdField_a_of_type_Ancc.e != 0) {
+          return;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("cmshow_scripted_SpriteActionScript", 2, new Object[] { "[notifyPanelStatusChanged], status:", Integer.valueOf(paramInt) });
+        }
+        Object localObject = new JSONObject();
+        ((JSONObject)localObject).put("status", paramInt);
+        ApolloCmdChannel.getChannel(this.jdField_a_of_type_Ancc.a()).callbackFromRequest(this.jdField_a_of_type_Ancc.a().getLuaState(), 0, "sc.script_panel_status_change.local", ((JSONObject)localObject).toString());
+        localObject = "";
+        if (1 == paramInt)
+        {
+          localObject = "panel_close_clk";
+          VipUtils.a(this.jdField_a_of_type_Ancc.a(), "cmshow", "Apollo", (String)localObject, ApolloUtil.b(this.jdField_a_of_type_Ancc.jdField_a_of_type_Int), ApolloUtil.h(this.jdField_a_of_type_Ancc.jdField_b_of_type_Int), new String[] { "", "", "", String.valueOf(System.currentTimeMillis() / 1000L) });
+          return;
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("cmshow_scripted_SpriteActionScript", 1, "[notifyPanelStatusChanged],", localThrowable);
+        return;
+      }
+      if (2 == paramInt) {
+        String str = "panel_open_clk";
+      }
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("cmshow_scripted_SpriteActionScript", 2, new Object[] { "[notifyDrawRectChanged], width:", Integer.valueOf(paramInt1), ",height:", Integer.valueOf(paramInt2) });
+      }
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("width", paramInt1);
+      localJSONObject.put("height", paramInt2);
+      ApolloCmdChannel.getChannel(this.jdField_a_of_type_Ancc.a()).callbackFromRequest(this.jdField_a_of_type_Ancc.a().getLuaState(), 0, "sc.script_draw_area_change.local", localJSONObject.toString());
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("cmshow_scripted_SpriteActionScript", 1, "[notifySpriteVisibility],", localThrowable);
+    }
+  }
+  
+  public void a(int paramInt, String paramString1, String paramString2)
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("cmshow_scripted_SpriteActionScript", 2, new Object[] { "[notifySpriteClicked], clickPart:", Integer.valueOf(paramInt), ",url:", paramString1 });
+      }
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("clickPart", paramInt);
+      if (!TextUtils.isEmpty(paramString1)) {
+        localJSONObject.put("url", paramString1);
+      }
+      if (!TextUtils.isEmpty(paramString2)) {
+        localJSONObject.put("apolloId", paramString2);
+      }
+      ApolloCmdChannel.getChannel(this.jdField_a_of_type_Ancc.a()).callbackFromRequest(this.jdField_a_of_type_Ancc.a().getLuaState(), 0, "sc.script_on_sprite_single_clicked.local", localJSONObject.toString());
+      return;
+    }
+    catch (Throwable paramString1)
+    {
+      QLog.e("cmshow_scripted_SpriteActionScript", 1, "[notifySpriteClicked],", paramString1);
+    }
+  }
+  
+  public void a(int paramInt, ArrayList<String> paramArrayList)
+  {
+    JSONObject localJSONObject;
+    try
+    {
+      QLog.i("cmshow_scripted_SpriteActionScript", 1, "[notifyStatusOrDressChanged], type:" + paramInt);
+      localJSONObject = new JSONObject();
+      localJSONObject.put("type", paramInt);
+      JSONArray localJSONArray = new JSONArray();
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        String str = (String)paramArrayList.next();
+        if (!TextUtils.isEmpty(str)) {
+          localJSONArray.put(str);
+        }
+      }
+      localJSONObject.put("uinList", localJSONArray);
+    }
+    catch (Throwable paramArrayList)
+    {
+      QLog.e("cmshow_scripted_SpriteActionScript", 1, "[notifySpriteVisibility],", paramArrayList);
+      return;
+    }
+    ApolloCmdChannel.getChannel(this.jdField_a_of_type_Ancc.a()).callbackFromRequest(this.jdField_a_of_type_Ancc.a().getLuaState(), 0, "sc.script_user_dressOrStatus_changed.local", localJSONObject.toString());
+  }
+  
+  public void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteActionScript", 2, new Object[] { "[notifyScreenSizeChange] screenWidth:", Long.valueOf(paramLong1), ",screenHeight:", Long.valueOf(paramLong2), ",width:", Integer.valueOf(paramInt1), ",height:", Integer.valueOf(paramInt2) });
+    }
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      if ((paramLong1 > 0L) && (paramLong2 > 0L))
+      {
+        localJSONObject.put("screenWidth", paramLong1);
+        localJSONObject.put("screenHeight", paramLong2);
+      }
+      if ((paramInt1 > 0) && (paramInt2 > 0))
+      {
+        localJSONObject.put("width", paramInt1);
+        localJSONObject.put("height", paramInt2);
+      }
+      ApolloCmdChannel.getChannel(this.jdField_a_of_type_Ancc.a()).callbackFromRequest(this.jdField_a_of_type_Ancc.a().getLuaState(), 0, "sc.script_notify_screen_size_change.local", localJSONObject.toString());
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("cmshow_scripted_SpriteActionScript", 1, "[notifyScreenSizeChange] ", localThrowable);
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  {
+    int i = 0;
+    if ((this.jdField_a_of_type_Ancc == null) || (this.jdField_a_of_type_Ancc.a() == null) || (!this.jdField_a_of_type_Ancc.c()) || (!this.jdField_a_of_type_Boolean))
+    {
+      QLog.w("cmshow_scripted_SpriteActionScript", 1, "[notifyDressReady], surfaceView is destroyed. return");
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[");
+        int j = paramArrayOfInt.length;
+        paramInt2 = 0;
+        if (paramInt2 < j)
+        {
+          ((StringBuilder)localObject).append(Integer.valueOf(paramArrayOfInt[paramInt2])).append(",");
+          paramInt2 += 1;
+          continue;
+        }
+        ((StringBuilder)localObject).append("]");
+        if (QLog.isColorLevel()) {
+          QLog.d("cmshow_scripted_SpriteActionScript", 2, new Object[] { "[notifyDressReady], uin:", paramString, "dress:", localObject });
+        }
+        localObject = new JSONObject();
+        JSONArray localJSONArray1 = new JSONArray();
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("uin", paramString);
+        JSONArray localJSONArray2 = new JSONArray();
+        j = paramArrayOfInt.length;
+        paramInt2 = i;
+        if (paramInt2 < j)
+        {
+          localJSONArray2.put(anhm.a(1, Integer.valueOf(paramArrayOfInt[paramInt2]).intValue()));
+          paramInt2 += 1;
+          continue;
+        }
+        anhm.a(paramString, paramQQAppInterface, localJSONObject, null);
+        localJSONObject.put("dress", localJSONArray2);
+        localJSONObject.put("role", anhm.a(0, paramInt1));
+        paramQQAppInterface = this.jdField_a_of_type_Ancc.a();
+        if (paramQQAppInterface != null)
+        {
+          if (!this.jdField_a_of_type_Ancc.c)
+          {
+            paramArrayOfInt = paramQQAppInterface.a(paramString, this.jdField_a_of_type_Ancc, true);
+            paramQQAppInterface = paramArrayOfInt;
+            if (paramArrayOfInt == null) {
+              paramQQAppInterface = new JSONObject();
+            }
+            localJSONObject.put("pet", paramQQAppInterface);
+            localJSONObject.put("nameplate", ancd.a(this.jdField_a_of_type_Ancc.a(), paramString, paramInt1, true));
+          }
+          paramQQAppInterface = this.jdField_a_of_type_Ancc.jdField_b_of_type_JavaLangString;
+          if ((TextUtils.isEmpty(paramQQAppInterface)) || (!paramQQAppInterface.equals(paramString))) {
+            break label488;
+          }
+          paramQQAppInterface = anvx.a(2131713700);
+          if (!TextUtils.isEmpty(paramQQAppInterface)) {
+            localJSONObject.put("nickname", anck.a(bhcu.encodeToString(paramQQAppInterface.getBytes("utf-8"), 0)));
+          }
+        }
+        localJSONArray1.put(localJSONObject);
+        ((JSONObject)localObject).put("dressInfo", localJSONArray1);
+        ApolloCmdChannel.getChannel(this.jdField_a_of_type_Ancc.a()).callbackFromRequest(this.jdField_a_of_type_Ancc.a().getLuaState(), 0, "sc.script_notify_dress_ready.local", ((JSONObject)localObject).toString());
+        return;
+      }
+      catch (Throwable paramQQAppInterface)
+      {
+        QLog.e("cmshow_scripted_SpriteActionScript", 1, "[notifySpriteVisibility],", paramQQAppInterface);
+        return;
+      }
+      label488:
+      paramQQAppInterface = anck.a(this.jdField_a_of_type_Ancc.a(), this.jdField_a_of_type_Ancc.jdField_a_of_type_Int, paramString, this.jdField_a_of_type_Ancc.jdField_a_of_type_JavaLangString, true);
+    }
   }
   
   public void a(String paramString1, String paramString2)
   {
-    boolean bool1 = ThemeUtil.isNowThemeIsNight(this.app, false, null);
-    boolean bool2 = bbyp.b();
-    if (!bool2)
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteActionScript", 2, new Object[] { "[notifyAddBubble],text:", paramString2 });
+    }
+    if (TextUtils.isEmpty(paramString2)) {
+      return;
+    }
+    JSONObject localJSONObject;
+    try
     {
-      if (!bool1) {
-        break label110;
+      localJSONObject = new JSONObject();
+      localJSONObject.put("text", new String(anck.a(bhcu.encodeToString(paramString2.getBytes("utf-8"), 0))));
+      if (!TextUtils.isEmpty(paramString1))
+      {
+        localJSONObject.put("uin", paramString1);
+        paramString1 = ancd.a(paramString2, 0, amme.a(a(), paramString1));
+        if (TextUtils.isEmpty(paramString1))
+        {
+          QLog.e("cmshow_scripted_SpriteActionScript", 1, "base role 0 is not exit, now check and download");
+          anhm.a(a(), 11);
+        }
+        localJSONObject.put("bubble", paramString1);
+        ApolloCmdChannel.getChannel(this.jdField_a_of_type_Ancc.a()).callbackFromRequest(this.jdField_a_of_type_Ancc.a().getLuaState(), 0, "sc.script_add_bubble.local", localJSONObject.toString());
+        return;
       }
-      ThemeSwitcher.a("1103", paramString2, null);
+    }
+    catch (Throwable paramString1)
+    {
+      QLog.e("cmshow_scripted_SpriteActionScript", 1, "[notifyAddBubble] ", paramString1);
+      return;
+    }
+    String str = ancd.a(paramString2, 0, 1);
+    paramString2 = ancd.a(paramString2, 0, 2);
+    if (amme.a(a()) == 1) {}
+    for (paramString1 = str;; paramString1 = paramString2)
+    {
+      localJSONObject.put("bubble2D", str);
+      localJSONObject.put("bubble3D", paramString2);
+      localJSONObject.put("bubble", paramString1);
+      break;
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteActionScript", 2, new Object[] { "[notifyAddBubble],text:", paramString2 });
+    }
+    if (TextUtils.isEmpty(paramString2)) {
+      return;
+    }
+    String str = paramString1;
+    try
+    {
+      if (TextUtils.isEmpty(paramString1))
+      {
+        str = paramString1;
+        if (a() != null) {
+          str = a().getCurrentAccountUin();
+        }
+      }
+      paramString1 = new JSONObject();
+      paramString1.put("model", anhm.a(str, a()));
+      paramString1.put("text", paramString2);
+      if (!TextUtils.isEmpty(str)) {
+        paramString1.put("uin", str);
+      }
+      paramString1.put("bubble", ancd.a(paramString2, 0, paramInt, amme.a(a(), str)));
+      ApolloCmdChannel.getChannel(this.jdField_a_of_type_Ancc.a()).callbackFromRequest(this.jdField_a_of_type_Ancc.a().getLuaState(), 0, "sc.script_add_bubble.local", paramString1.toString());
+      return;
+    }
+    catch (Throwable paramString1)
+    {
+      QLog.e("cmshow_scripted_SpriteActionScript", 1, "[notifyAddBubble] ", paramString1);
+    }
+  }
+  
+  public void a(JSONObject paramJSONObject, int paramInt)
+  {
+    Object localObject2;
+    try
+    {
+      localObject2 = new File(anka.jdField_a_of_type_JavaLangString + "/def/role/0/3D");
+      localObject1 = new File(anka.jdField_a_of_type_JavaLangString + "/def/role/0/3D/3DConfig.json");
+      if (!((File)localObject2).exists())
+      {
+        QLog.w("cmshow_scripted_SpriteActionScript", 1, "3D dir NOT exist.");
+        return;
+      }
+      if (!((File)localObject1).exists())
+      {
+        QLog.w("cmshow_scripted_SpriteActionScript", 1, "3DConfig NOT exist.");
+        return;
+      }
+    }
+    catch (Exception paramJSONObject)
+    {
+      QLog.e("cmshow_scripted_SpriteActionScript", 1, paramJSONObject, new Object[0]);
+      return;
+    }
+    Object localObject1 = new JSONObject();
+    if (new File((File)localObject2, "1/action.bin").exists()) {
+      ((JSONObject)localObject1).put("wait", "def/role/0/3D/" + "1");
+    }
+    if (new File((File)localObject2, "4/action.bin").exists()) {
+      ((JSONObject)localObject1).put("standup", "def/role/0/3D/" + "4");
+    }
+    if (new File((File)localObject2, "3/action.bin").exists()) {
+      ((JSONObject)localObject1).put("think", "def/role/0/3D/" + "3");
+    }
+    if (new File((File)localObject2, "2/action.bin").exists()) {
+      ((JSONObject)localObject1).put("sitdown", "def/role/0/3D/" + "2");
+    }
+    if (new File((File)localObject2, "android/skeleton/skeleton.bin").exists()) {
+      ((JSONObject)localObject1).put("defRole", "def/role/0/3D/" + "android/skeleton");
+    }
+    if (new File((File)localObject2, "transformAction/3to2/action.bin").exists()) {
+      ((JSONObject)localObject1).put("3to2DAction", "def/role/0/3D/" + "transformAction/3to2");
+    }
+    if ((new File((File)localObject2, "transformAction/2to3/action.atlas").exists()) && (new File((File)localObject2, "transformAction/2to3/action.png").exists()) && (new File((File)localObject2, "transformAction/2to3/action.json").exists())) {
+      ((JSONObject)localObject1).put("2to3DAction", "def/role/0/3D/" + "transformAction/2to3");
+    }
+    if ((paramInt == 2) && (new File((File)localObject2, "friendcard/1/action.bin").exists()))
+    {
+      ((JSONObject)localObject1).put("friendcard_up", "def/role/0/3D/" + "friendcard/1");
+      ((JSONObject)localObject1).put("friendcard_down", "def/role/0/3D/" + "friendcard/2");
+    }
+    if (new File((File)localObject2, "sayhi/1/action.bin").exists()) {
+      ((JSONObject)localObject1).put("sayhi", "def/role/0/3D/" + "sayhi/1");
+    }
+    if (new File((File)localObject2, "bubble").exists()) {
+      ((JSONObject)localObject1).put("bubble", "def/role/0/3D/" + "bubble");
+    }
+    Object localObject3 = new File((File)localObject2, "android/dress");
+    int i;
+    if (((File)localObject3).exists())
+    {
+      localObject2 = new JSONArray();
+      localObject3 = ((File)localObject3).listFiles();
+      i = localObject3.length;
+      paramInt = 0;
     }
     for (;;)
     {
-      QLog.e("Theme.ThemeHandler", 1, "onGetServerTheme: " + paramString1 + "," + bool2 + "," + bool1 + "," + paramString2);
-      if (!ThemeUtil.isFixTheme(paramString1)) {
-        bdbo.a(this.app, paramString1, "20000000");
-      }
-      return;
-      label110:
-      ThemeSwitcher.a(paramString1, paramString2, new anbu(this));
-    }
-  }
-  
-  /* Error */
-  public void a(String paramString1, String paramString2, String paramString3, Bundle paramBundle, bdbx parambdbx)
-  {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore 7
-    //   3: invokestatic 136	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   6: ifeq +49 -> 55
-    //   9: ldc 138
-    //   11: iconst_2
-    //   12: new 140	java/lang/StringBuilder
-    //   15: dup
-    //   16: invokespecial 141	java/lang/StringBuilder:<init>	()V
-    //   19: ldc_w 1169
-    //   22: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   25: aload_1
-    //   26: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   29: ldc_w 663
-    //   32: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: aload_2
-    //   36: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   39: ldc_w 1171
-    //   42: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   45: aload_3
-    //   46: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   49: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   52: invokestatic 166	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   55: aload_1
-    //   56: invokestatic 219	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   59: ifne +8 -> 67
-    //   62: aload 4
-    //   64: ifnonnull +13 -> 77
-    //   67: ldc 138
-    //   69: iconst_2
-    //   70: ldc_w 1173
-    //   73: invokestatic 387	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   76: return
-    //   77: aload 4
-    //   79: ldc_w 485
-    //   82: aload_1
-    //   83: invokevirtual 483	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   86: aload_0
-    //   87: aload 5
-    //   89: putfield 858	anbt:jdField_a_of_type_Bdbx	Lbdbx;
-    //   92: aload_0
-    //   93: aload 4
-    //   95: putfield 860	anbt:jdField_a_of_type_AndroidOsBundle	Landroid/os/Bundle;
-    //   98: new 868	com/tencent/pb/theme/ThemeAuth$SubCmd0x3ReqSet
-    //   101: dup
-    //   102: invokespecial 1174	com/tencent/pb/theme/ThemeAuth$SubCmd0x3ReqSet:<init>	()V
-    //   105: astore_2
-    //   106: aload_2
-    //   107: getfield 870	com/tencent/pb/theme/ThemeAuth$SubCmd0x3ReqSet:uint32_theme_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   110: aload_1
-    //   111: invokestatic 553	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   114: invokevirtual 544	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   117: aload_3
-    //   118: invokestatic 219	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   121: istore 8
-    //   123: iload 7
-    //   125: istore 6
-    //   127: iload 8
-    //   129: ifne +9 -> 138
-    //   132: aload_3
-    //   133: invokestatic 553	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   136: istore 6
-    //   138: aload_2
-    //   139: getfield 1177	com/tencent/pb/theme/ThemeAuth$SubCmd0x3ReqSet:uint32_suit_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   142: iload 6
-    //   144: invokevirtual 544	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   147: aload 4
-    //   149: ldc_w 1179
-    //   152: invokevirtual 1183	android/os/Bundle:getBundle	(Ljava/lang/String;)Landroid/os/Bundle;
-    //   155: astore_1
-    //   156: aload_1
-    //   157: ifnull +9 -> 166
-    //   160: aload 4
-    //   162: aload_1
-    //   163: invokevirtual 735	android/os/Bundle:putAll	(Landroid/os/Bundle;)V
-    //   166: ldc_w 1185
-    //   169: aload 4
-    //   171: ldc_w 1187
-    //   174: invokevirtual 532	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   177: invokevirtual 266	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   180: ifeq +277 -> 457
-    //   183: new 1189	com/tencent/pb/theme/ThemeAuth$diyThemeInfo
-    //   186: dup
-    //   187: invokespecial 1190	com/tencent/pb/theme/ThemeAuth$diyThemeInfo:<init>	()V
-    //   190: astore_1
-    //   191: aload_1
-    //   192: getfield 1191	com/tencent/pb/theme/ThemeAuth$diyThemeInfo:uin32_drawer_tab_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   195: aload 4
-    //   197: ldc_w 1193
-    //   200: invokevirtual 532	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   203: invokestatic 553	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   206: invokevirtual 544	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   209: aload_1
-    //   210: getfield 1194	com/tencent/pb/theme/ThemeAuth$diyThemeInfo:uin32_message_tab_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   213: aload 4
-    //   215: ldc_w 1196
-    //   218: invokevirtual 532	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   221: invokestatic 553	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   224: invokevirtual 544	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   227: aload_1
-    //   228: getfield 1197	com/tencent/pb/theme/ThemeAuth$diyThemeInfo:uin32_aio_tab_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   231: aload 4
-    //   233: ldc_w 1199
-    //   236: invokevirtual 532	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   239: invokestatic 553	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   242: invokevirtual 544	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   245: aload_1
-    //   246: getfield 1202	com/tencent/pb/theme/ThemeAuth$diyThemeInfo:uin32_freind_tab_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   249: aload 4
-    //   251: ldc_w 1204
-    //   254: invokevirtual 532	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   257: invokestatic 553	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   260: invokevirtual 544	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   263: aload_1
-    //   264: getfield 1207	com/tencent/pb/theme/ThemeAuth$diyThemeInfo:uin32_dynamics_tab_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   267: aload 4
-    //   269: ldc_w 1209
-    //   272: invokevirtual 532	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   275: invokestatic 553	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   278: invokevirtual 544	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   281: aload_2
-    //   282: getfield 1213	com/tencent/pb/theme/ThemeAuth$SubCmd0x3ReqSet:diy_theme_info	Lcom/tencent/pb/theme/ThemeAuth$diyThemeInfo;
-    //   285: aload_1
-    //   286: invokevirtual 1214	com/tencent/pb/theme/ThemeAuth$diyThemeInfo:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
-    //   289: aload_2
-    //   290: getfield 1215	com/tencent/pb/theme/ThemeAuth$SubCmd0x3ReqSet:uint32_diy_theme_flag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   293: iconst_1
-    //   294: invokevirtual 544	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   297: new 30	com/tencent/pb/theme/ThemeAuth$ReqBody
-    //   300: dup
-    //   301: invokespecial 33	com/tencent/pb/theme/ThemeAuth$ReqBody:<init>	()V
-    //   304: astore_1
-    //   305: aload_1
-    //   306: getfield 47	com/tencent/pb/theme/ThemeAuth$ReqBody:uint32_sub_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   309: iconst_3
-    //   310: invokevirtual 544	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   313: aload_1
-    //   314: getfield 690	com/tencent/pb/theme/ThemeAuth$ReqBody:int32_plat_id	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   317: bipush 109
-    //   319: invokevirtual 693	com/tencent/mobileqq/pb/PBInt32Field:set	(I)V
-    //   322: aload_1
-    //   323: getfield 696	com/tencent/pb/theme/ThemeAuth$ReqBody:str_qq_version	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   326: ldc_w 698
-    //   329: invokevirtual 561	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
-    //   332: aload_1
-    //   333: getfield 701	com/tencent/pb/theme/ThemeAuth$ReqBody:uint32_qq_version	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   336: ldc_w 703
-    //   339: invokestatic 553	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   342: invokevirtual 544	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   345: aload_1
-    //   346: getfield 866	com/tencent/pb/theme/ThemeAuth$ReqBody:msg_subcmd0x3_req_set	Lcom/tencent/pb/theme/ThemeAuth$SubCmd0x3ReqSet;
-    //   349: aload_2
-    //   350: invokevirtual 1216	com/tencent/pb/theme/ThemeAuth$SubCmd0x3ReqSet:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
-    //   353: aload_1
-    //   354: iconst_1
-    //   355: invokevirtual 712	com/tencent/pb/theme/ThemeAuth$ReqBody:setHasFlag	(Z)V
-    //   358: new 35	com/tencent/qphone/base/remote/ToServiceMsg
-    //   361: dup
-    //   362: ldc_w 714
-    //   365: aload_0
-    //   366: getfield 57	anbt:mApp	Lcom/tencent/common/app/AppInterface;
-    //   369: invokevirtual 717	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   372: ldc_w 719
-    //   375: invokespecial 722	com/tencent/qphone/base/remote/ToServiceMsg:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   378: astore_2
-    //   379: aload_2
-    //   380: aload_1
-    //   381: invokevirtual 725	com/tencent/pb/theme/ThemeAuth$ReqBody:toByteArray	()[B
-    //   384: invokevirtual 729	com/tencent/qphone/base/remote/ToServiceMsg:putWupBuffer	([B)V
-    //   387: aload_0
-    //   388: aload_2
-    //   389: invokespecial 741	com/tencent/mobileqq/app/BusinessHandler:sendPbReq	(Lcom/tencent/qphone/base/remote/ToServiceMsg;)V
-    //   392: invokestatic 136	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   395: ifeq -319 -> 76
-    //   398: ldc 138
-    //   400: iconst_2
-    //   401: ldc_w 1218
-    //   404: invokestatic 166	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   407: return
-    //   408: astore_1
-    //   409: ldc 138
-    //   411: iconst_2
-    //   412: new 140	java/lang/StringBuilder
-    //   415: dup
-    //   416: invokespecial 141	java/lang/StringBuilder:<init>	()V
-    //   419: ldc_w 1220
-    //   422: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   425: aload_1
-    //   426: invokevirtual 1221	java/lang/Exception:toString	()Ljava/lang/String;
-    //   429: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   432: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   435: invokestatic 387	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   438: return
-    //   439: astore_1
-    //   440: ldc 138
-    //   442: iconst_1
-    //   443: ldc_w 1223
-    //   446: aload_1
-    //   447: invokestatic 1226	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   450: iload 7
-    //   452: istore 6
-    //   454: goto -316 -> 138
-    //   457: aload_2
-    //   458: getfield 1215	com/tencent/pb/theme/ThemeAuth$SubCmd0x3ReqSet:uint32_diy_theme_flag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   461: iconst_0
-    //   462: invokevirtual 544	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   465: goto -168 -> 297
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	468	0	this	anbt
-    //   0	468	1	paramString1	String
-    //   0	468	2	paramString2	String
-    //   0	468	3	paramString3	String
-    //   0	468	4	paramBundle	Bundle
-    //   0	468	5	parambdbx	bdbx
-    //   125	328	6	i	int
-    //   1	450	7	j	int
-    //   121	7	8	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   77	123	408	java/lang/Exception
-    //   138	156	408	java/lang/Exception
-    //   160	166	408	java/lang/Exception
-    //   166	297	408	java/lang/Exception
-    //   297	407	408	java/lang/Exception
-    //   440	450	408	java/lang/Exception
-    //   457	465	408	java/lang/Exception
-    //   132	138	439	java/lang/Exception
-  }
-  
-  public void a(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    if (!paramBoolean) {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    }
-    label12:
-    String str;
-    do
-    {
-      do
+      if (paramInt < i)
       {
-        return;
-      } while (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      if (!android.text.TextUtils.isEmpty(paramString1))
-      {
-        str = paramString2;
-        if (!android.text.TextUtils.isEmpty(paramString2)) {}
+        Object localObject4 = localObject3[paramInt];
+        if ((localObject4 != null) && (localObject4.exists()) && (localObject4.isDirectory())) {
+          ((JSONArray)localObject2).put("def/role/0/3D/" + "android/dress/" + localObject4.getName());
+        }
       }
       else
       {
-        paramString2 = ThemeUtil.getCurrentThemeInfo();
-        paramString1 = paramString2.getString("themeId");
-        str = paramString2.getString("version");
-      }
-    } while ((android.text.TextUtils.isEmpty(paramString1)) || ("1000".equals(paramString1)) || ("999".equals(paramString1)) || (android.text.TextUtils.isEmpty(str)));
-    jdField_a_of_type_JavaLangString = paramString1;
-    for (;;)
-    {
-      int i;
-      try
-      {
-        i = Integer.parseInt(str) % 10000;
-        paramString2 = ThemeUtil.getThemeDensity(this.mApp.getApp());
-        if (!"m".equals(paramString2)) {
-          break label378;
-        }
-        i -= 1000;
-        if (QLog.isColorLevel()) {
-          QLog.i("Theme.ThemeHandler", 2, "ver = " + i);
-        }
-        paramString2 = new ThemeAuth.SubCmd0x2ReqCheck();
-        paramString2.str_theme_version.set(String.valueOf(i));
-        paramString2.uint32_theme_id.set(Integer.parseInt(paramString1));
-        paramString1 = new ThemeAuth.ReqBody();
-        paramString1.uint32_sub_cmd.set(2);
-        paramString1.int32_plat_id.set(109);
-        paramString1.str_qq_version.set("8.4.8.4810");
-        paramString1.uint32_qq_version.set(Integer.parseInt("4810"));
-        paramString1.msg_subcmd0x2_req_check.set(paramString2);
-        paramString1.setHasFlag(true);
-        paramString2 = new ToServiceMsg("mobileqq.service", this.mApp.getCurrentAccountUin(), "AuthSvr.ThemeAuth");
-        paramString2.putWupBuffer(paramString1.toByteArray());
-        super.sendPbReq(paramString2);
-        if (!QLog.isColorLevel()) {
-          break label12;
-        }
-        QLog.i("Theme.ThemeHandler", 2, "ThemeVersion Check sent,cur_ver = " + i);
+        ((JSONObject)localObject1).put("defDress", localObject2);
+        paramJSONObject.put("3DObject", localObject1);
         return;
       }
-      catch (Exception paramString1) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("Theme.ThemeHandler", 2, "Exception:" + paramString1.toString());
-      return;
-      label378:
-      paramBoolean = "h".equals(paramString2);
-      if (paramBoolean) {
-        i -= 2000;
-      } else {
-        i -= 3000;
-      }
+      paramInt += 1;
     }
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  public amqr b(String paramString)
   {
+    ampv localampv;
+    try
+    {
+      localampv = a();
+      if (localampv == null) {
+        return null;
+      }
+      paramString = new JSONObject(paramString);
+      if (1 == paramString.optInt("isShow"))
+      {
+        localampv.bulkApolloBarrages("", new String(bhcu.decode(paramString.optString("text").getBytes("utf-8"), 0)), true);
+        return null;
+      }
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("cmshow_scripted_SpriteActionScript", 1, paramString, new Object[0]);
+      return null;
+    }
+    localampv.removeAllApolloBarrages(true);
     return null;
   }
   
-  /* Error */
-  public void onReceive(ToServiceMsg paramToServiceMsg, com.tencent.qphone.base.remote.FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void b()
   {
-    // Byte code:
-    //   0: ldc_w 719
-    //   3: aload_2
-    //   4: invokevirtual 1259	com/tencent/qphone/base/remote/FromServiceMsg:getServiceCmd	()Ljava/lang/String;
-    //   7: invokevirtual 266	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   10: ifne +4 -> 14
-    //   13: return
-    //   14: invokestatic 136	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   17: ifeq +51 -> 68
-    //   20: ldc 138
-    //   22: iconst_2
-    //   23: new 140	java/lang/StringBuilder
-    //   26: dup
-    //   27: invokespecial 141	java/lang/StringBuilder:<init>	()V
-    //   30: ldc_w 1261
-    //   33: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   36: aload_2
-    //   37: invokevirtual 1264	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
-    //   40: invokevirtual 301	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   43: ldc_w 1266
-    //   46: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   49: aload_3
-    //   50: checkcast 1268	[B
-    //   53: checkcast 1268	[B
-    //   56: invokestatic 1274	com/tencent/mobileqq/utils/httputils/PkgTools:toHexStr	([B)Ljava/lang/String;
-    //   59: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   62: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   65: invokestatic 166	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   68: new 797	com/tencent/pb/theme/ThemeAuth$RspBody
-    //   71: dup
-    //   72: invokespecial 1275	com/tencent/pb/theme/ThemeAuth$RspBody:<init>	()V
-    //   75: astore 7
-    //   77: aload_3
-    //   78: ifnull +16 -> 94
-    //   81: aload 7
-    //   83: aload_3
-    //   84: checkcast 1268	[B
-    //   87: checkcast 1268	[B
-    //   90: invokevirtual 1278	com/tencent/pb/theme/ThemeAuth$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   93: pop
-    //   94: aload 7
-    //   96: getfield 1279	com/tencent/pb/theme/ThemeAuth$RspBody:uint32_sub_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   99: invokevirtual 1282	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   102: ifeq +601 -> 703
-    //   105: aload 7
-    //   107: getfield 1279	com/tencent/pb/theme/ThemeAuth$RspBody:uint32_sub_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   110: invokevirtual 53	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   113: istore 4
-    //   115: aload_2
-    //   116: invokevirtual 1264	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
-    //   119: ifeq +590 -> 709
-    //   122: aload_3
-    //   123: ifnull +586 -> 709
-    //   126: iconst_1
-    //   127: istore 6
-    //   129: iload 4
-    //   131: istore 5
-    //   133: iload 6
-    //   135: ifne +64 -> 199
-    //   138: aload_0
-    //   139: aload_1
-    //   140: iload 4
-    //   142: invokespecial 1284	anbt:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;I)I
-    //   145: istore 5
-    //   147: ldc 138
-    //   149: iconst_1
-    //   150: new 140	java/lang/StringBuilder
-    //   153: dup
-    //   154: invokespecial 141	java/lang/StringBuilder:<init>	()V
-    //   157: ldc_w 1286
-    //   160: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   163: aload_3
-    //   164: checkcast 1268	[B
-    //   167: checkcast 1268	[B
-    //   170: invokestatic 1274	com/tencent/mobileqq/utils/httputils/PkgTools:toHexStr	([B)Ljava/lang/String;
-    //   173: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   176: ldc_w 1288
-    //   179: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   182: iload 5
-    //   184: invokevirtual 156	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   187: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   190: invokestatic 387	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   193: iconst_3
-    //   194: iload 5
-    //   196: if_icmpne -183 -> 13
-    //   199: iconst_1
-    //   200: iload 5
-    //   202: if_icmpne +637 -> 839
-    //   205: aload 7
-    //   207: getfield 1292	com/tencent/pb/theme/ThemeAuth$RspBody:msg_subcmd0x1_rsp_auth	Lcom/tencent/pb/theme/ThemeAuth$SubCmd0x1RspAuth;
-    //   210: invokevirtual 1293	com/tencent/pb/theme/ThemeAuth$SubCmd0x1RspAuth:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   213: checkcast 345	com/tencent/pb/theme/ThemeAuth$SubCmd0x1RspAuth
-    //   216: astore_2
-    //   217: aload_2
-    //   218: getfield 1294	com/tencent/pb/theme/ThemeAuth$SubCmd0x1RspAuth:int32_result	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   221: invokevirtual 810	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   224: istore 4
-    //   226: new 30	com/tencent/pb/theme/ThemeAuth$ReqBody
-    //   229: dup
-    //   230: invokespecial 33	com/tencent/pb/theme/ThemeAuth$ReqBody:<init>	()V
-    //   233: astore_3
-    //   234: aload_3
-    //   235: aload_1
-    //   236: invokevirtual 39	com/tencent/qphone/base/remote/ToServiceMsg:getWupBuffer	()[B
-    //   239: iconst_4
-    //   240: aload_1
-    //   241: invokevirtual 39	com/tencent/qphone/base/remote/ToServiceMsg:getWupBuffer	()[B
-    //   244: arraylength
-    //   245: iconst_4
-    //   246: isub
-    //   247: invokevirtual 43	com/tencent/pb/theme/ThemeAuth$ReqBody:mergeFrom	([BII)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   250: pop
-    //   251: aload_3
-    //   252: getfield 707	com/tencent/pb/theme/ThemeAuth$ReqBody:msg_subcmd0x1_req_auth	Lcom/tencent/pb/theme/ThemeAuth$SubCmd0x1ReqAuth;
-    //   255: invokevirtual 1295	com/tencent/pb/theme/ThemeAuth$SubCmd0x1ReqAuth:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   258: checkcast 536	com/tencent/pb/theme/ThemeAuth$SubCmd0x1ReqAuth
-    //   261: astore 8
-    //   263: aload 8
-    //   265: getfield 547	com/tencent/pb/theme/ThemeAuth$SubCmd0x1ReqAuth:uint32_theme_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   268: invokevirtual 53	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   271: invokestatic 338	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   274: astore_3
-    //   275: aload 8
-    //   277: getfield 556	com/tencent/pb/theme/ThemeAuth$SubCmd0x1ReqAuth:str_theme_version	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   280: invokevirtual 276	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   283: astore 8
-    //   285: iload 4
-    //   287: ifeq +428 -> 715
-    //   290: ldc 138
-    //   292: iconst_1
-    //   293: new 140	java/lang/StringBuilder
-    //   296: dup
-    //   297: invokespecial 141	java/lang/StringBuilder:<init>	()V
-    //   300: ldc_w 1297
-    //   303: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   306: iload 4
-    //   308: invokevirtual 156	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   311: ldc_w 911
-    //   314: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   317: aload_3
-    //   318: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   321: ldc_w 913
-    //   324: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   327: aload 8
-    //   329: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   332: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   335: invokestatic 387	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   338: aload_0
-    //   339: getfield 325	anbt:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   342: ldc_w 1299
-    //   345: iload 4
-    //   347: invokestatic 338	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   350: iload 4
-    //   352: invokestatic 338	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   355: aconst_null
-    //   356: fconst_0
-    //   357: invokestatic 1304	bggk:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;F)V
-    //   360: new 90	java/util/HashMap
-    //   363: dup
-    //   364: invokespecial 91	java/util/HashMap:<init>	()V
-    //   367: astore 9
-    //   369: aload 9
-    //   371: ldc_w 487
-    //   374: iload 4
-    //   376: invokestatic 338	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   379: invokevirtual 170	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   382: pop
-    //   383: invokestatic 570	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   386: invokestatic 1310	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
-    //   389: ldc_w 289
-    //   392: ldc_w 1299
-    //   395: iconst_0
-    //   396: lconst_0
-    //   397: ldc2_w 1311
-    //   400: aload 9
-    //   402: ldc_w 289
-    //   405: iconst_1
-    //   406: invokevirtual 1316	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
-    //   409: aload_0
-    //   410: getfield 325	anbt:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   413: ldc_w 679
-    //   416: ldc_w 755
-    //   419: sipush 157
-    //   422: aconst_null
-    //   423: invokestatic 677	com/tencent/mobileqq/utils/NetworkUtil:getSystemNetwork	(Landroid/content/Context;)I
-    //   426: iconst_0
-    //   427: iload 4
-    //   429: isub
-    //   430: aload_3
-    //   431: aload 8
-    //   433: ldc_w 410
-    //   436: ldc_w 289
-    //   439: invokestatic 686	bdbl:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;IIILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   442: new 90	java/util/HashMap
-    //   445: dup
-    //   446: invokespecial 91	java/util/HashMap:<init>	()V
-    //   449: astore 9
-    //   451: aload 9
-    //   453: ldc_w 1318
-    //   456: aload_3
-    //   457: invokevirtual 170	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   460: pop
-    //   461: aload 9
-    //   463: ldc_w 1320
-    //   466: aload 8
-    //   468: invokevirtual 170	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   471: pop
-    //   472: aload 9
-    //   474: ldc_w 1322
-    //   477: iload 4
-    //   479: invokestatic 338	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   482: invokevirtual 170	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   485: pop
-    //   486: aload_0
-    //   487: getfield 57	anbt:mApp	Lcom/tencent/common/app/AppInterface;
-    //   490: invokevirtual 249	com/tencent/common/app/AppInterface:getApplication	()Lmqq/app/MobileQQ;
-    //   493: invokestatic 1310	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
-    //   496: astore 10
-    //   498: aload_0
-    //   499: getfield 57	anbt:mApp	Lcom/tencent/common/app/AppInterface;
-    //   502: invokevirtual 252	com/tencent/common/app/AppInterface:getAccount	()Ljava/lang/String;
-    //   505: astore 11
-    //   507: iload 4
-    //   509: ifne +390 -> 899
-    //   512: iconst_1
-    //   513: istore 6
-    //   515: aload 10
-    //   517: aload 11
-    //   519: ldc_w 1324
-    //   522: iload 6
-    //   524: lconst_1
-    //   525: lconst_0
-    //   526: aload 9
-    //   528: ldc_w 289
-    //   531: iconst_0
-    //   532: invokevirtual 1316	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
-    //   535: iload 4
-    //   537: iconst_1
-    //   538: if_icmplt +248 -> 786
-    //   541: iload 4
-    //   543: iconst_5
-    //   544: if_icmpeq +242 -> 786
-    //   547: iload 4
-    //   549: bipush 14
-    //   551: if_icmpeq +235 -> 786
-    //   554: iload 4
-    //   556: bipush 20
-    //   558: if_icmpgt +228 -> 786
-    //   561: aload_0
-    //   562: getfield 57	anbt:mApp	Lcom/tencent/common/app/AppInterface;
-    //   565: invokestatic 63	com/tencent/mobileqq/theme/ThemeUtil:getUinThemePreferences	(Lmqq/app/AppRuntime;)Landroid/content/SharedPreferences;
-    //   568: invokeinterface 69 1 0
-    //   573: ldc_w 1326
-    //   576: iload 4
-    //   578: invokeinterface 1093 3 0
-    //   583: invokeinterface 81 1 0
-    //   588: pop
-    //   589: aload_0
-    //   590: getfield 57	anbt:mApp	Lcom/tencent/common/app/AppInterface;
-    //   593: ldc_w 364
-    //   596: ldc_w 340
-    //   599: invokestatic 1329	com/tencent/mobileqq/theme/ThemeUtil:setCurrentThemeIdVersion	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Boolean;
-    //   602: pop
-    //   603: aload 7
-    //   605: getfield 1292	com/tencent/pb/theme/ThemeAuth$RspBody:msg_subcmd0x1_rsp_auth	Lcom/tencent/pb/theme/ThemeAuth$SubCmd0x1RspAuth;
-    //   608: getfield 1332	com/tencent/pb/theme/ThemeAuth$SubCmd0x1RspAuth:str_err_msg	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   611: invokevirtual 276	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   614: astore_1
-    //   615: ldc 138
-    //   617: iconst_1
-    //   618: new 140	java/lang/StringBuilder
-    //   621: dup
-    //   622: invokespecial 141	java/lang/StringBuilder:<init>	()V
-    //   625: ldc_w 1334
-    //   628: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   631: iload 4
-    //   633: invokevirtual 156	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   636: ldc_w 911
-    //   639: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   642: aload_3
-    //   643: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   646: ldc_w 1336
-    //   649: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   652: aload_1
-    //   653: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   656: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   659: invokestatic 387	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   662: aload_0
-    //   663: iload 4
-    //   665: aload_3
-    //   666: aload_1
-    //   667: aload_2
-    //   668: invokespecial 1338	anbt:a	(ILjava/lang/String;Ljava/lang/String;Lcom/tencent/pb/theme/ThemeAuth$SubCmd0x1RspAuth;)V
-    //   671: return
-    //   672: astore_1
-    //   673: ldc 138
-    //   675: iconst_1
-    //   676: new 140	java/lang/StringBuilder
-    //   679: dup
-    //   680: invokespecial 141	java/lang/StringBuilder:<init>	()V
-    //   683: ldc_w 1340
-    //   686: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   689: aload_1
-    //   690: invokevirtual 441	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   693: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   696: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   699: invokestatic 387	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   702: return
-    //   703: iconst_m1
-    //   704: istore 4
-    //   706: goto -591 -> 115
-    //   709: iconst_0
-    //   710: istore 6
-    //   712: goto -583 -> 129
-    //   715: invokestatic 136	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   718: ifeq -309 -> 409
-    //   721: ldc 138
-    //   723: iconst_2
-    //   724: new 140	java/lang/StringBuilder
-    //   727: dup
-    //   728: invokespecial 141	java/lang/StringBuilder:<init>	()V
-    //   731: ldc_w 1342
-    //   734: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   737: iload 4
-    //   739: invokevirtual 156	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   742: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   745: invokestatic 166	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   748: goto -339 -> 409
-    //   751: astore 9
-    //   753: ldc 138
-    //   755: iconst_1
-    //   756: new 140	java/lang/StringBuilder
-    //   759: dup
-    //   760: invokespecial 141	java/lang/StringBuilder:<init>	()V
-    //   763: ldc_w 1344
-    //   766: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   769: aload 9
-    //   771: invokevirtual 1221	java/lang/Exception:toString	()Ljava/lang/String;
-    //   774: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   777: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   780: invokestatic 387	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   783: goto -248 -> 535
-    //   786: iload 4
-    //   788: ifne +16 -> 804
-    //   791: aload_0
-    //   792: aload_1
-    //   793: aload_2
-    //   794: aload_3
-    //   795: aload 8
-    //   797: invokespecial 1346	anbt:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/pb/theme/ThemeAuth$SubCmd0x1RspAuth;Ljava/lang/String;Ljava/lang/String;)Z
-    //   800: ifeq -787 -> 13
-    //   803: return
-    //   804: ldc 138
-    //   806: iconst_1
-    //   807: new 140	java/lang/StringBuilder
-    //   810: dup
-    //   811: invokespecial 141	java/lang/StringBuilder:<init>	()V
-    //   814: ldc_w 1348
-    //   817: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   820: iload 4
-    //   822: invokevirtual 156	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   825: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   828: invokestatic 387	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   831: aload_0
-    //   832: aconst_null
-    //   833: aconst_null
-    //   834: iconst_1
-    //   835: invokevirtual 1021	anbt:a	(Ljava/lang/String;Ljava/lang/String;Z)V
-    //   838: return
-    //   839: iconst_2
-    //   840: iload 5
-    //   842: if_icmpne +10 -> 852
-    //   845: aload_0
-    //   846: aload 7
-    //   848: invokespecial 1350	anbt:a	(Lcom/tencent/pb/theme/ThemeAuth$RspBody;)V
-    //   851: return
-    //   852: iconst_3
-    //   853: iload 5
-    //   855: if_icmpne +16 -> 871
-    //   858: aload_0
-    //   859: aload_1
-    //   860: aload 7
-    //   862: iload 6
-    //   864: invokespecial 1352	anbt:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/pb/theme/ThemeAuth$RspBody;Z)Z
-    //   867: ifeq -854 -> 13
-    //   870: return
-    //   871: ldc 138
-    //   873: iconst_1
-    //   874: new 140	java/lang/StringBuilder
-    //   877: dup
-    //   878: invokespecial 141	java/lang/StringBuilder:<init>	()V
-    //   881: ldc_w 1354
-    //   884: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   887: iload 5
-    //   889: invokevirtual 156	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   892: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   895: invokestatic 387	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   898: return
-    //   899: iconst_0
-    //   900: istore 6
-    //   902: goto -387 -> 515
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	905	0	this	anbt
-    //   0	905	1	paramToServiceMsg	ToServiceMsg
-    //   0	905	2	paramFromServiceMsg	com.tencent.qphone.base.remote.FromServiceMsg
-    //   0	905	3	paramObject	Object
-    //   113	708	4	i	int
-    //   131	757	5	j	int
-    //   127	774	6	bool	boolean
-    //   75	786	7	localRspBody	ThemeAuth.RspBody
-    //   261	535	8	localObject	Object
-    //   367	160	9	localHashMap	HashMap
-    //   751	19	9	localException	Exception
-    //   496	20	10	localStatisticCollector	com.tencent.mobileqq.statistics.StatisticCollector
-    //   505	13	11	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   68	77	672	java/lang/Exception
-    //   81	94	672	java/lang/Exception
-    //   94	115	672	java/lang/Exception
-    //   115	122	672	java/lang/Exception
-    //   138	193	672	java/lang/Exception
-    //   205	285	672	java/lang/Exception
-    //   290	409	672	java/lang/Exception
-    //   409	442	672	java/lang/Exception
-    //   561	671	672	java/lang/Exception
-    //   715	748	672	java/lang/Exception
-    //   753	783	672	java/lang/Exception
-    //   791	803	672	java/lang/Exception
-    //   804	838	672	java/lang/Exception
-    //   845	851	672	java/lang/Exception
-    //   858	870	672	java/lang/Exception
-    //   871	898	672	java/lang/Exception
-    //   442	507	751	java/lang/Exception
-    //   515	535	751	java/lang/Exception
+    if ((this.jdField_a_of_type_Ancc != null) && (this.jdField_a_of_type_Ancc.a() != null)) {
+      a(this.jdField_a_of_type_Ancc.a().getRenderWidth(), this.jdField_a_of_type_Ancc.a().getInitHeight(), this.jdField_a_of_type_Ancc.a().getRenderHeight(), this.jdField_a_of_type_Ancc.jdField_a_of_type_Int, this.jdField_a_of_type_Ancc.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ancc.e, this.jdField_a_of_type_Ancc.c);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("cmshow_scripted_SpriteActionScript", 2, new Object[] { "[notifySpriteVisibility], status:", Integer.valueOf(paramInt) });
+      }
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("isShow", paramInt);
+      ApolloCmdChannel.getChannel(this.jdField_a_of_type_Ancc.a()).callbackFromRequest(this.jdField_a_of_type_Ancc.a().getLuaState(), 0, "sc.script_set_sprite_visibility.local", localJSONObject.toString());
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("cmshow_scripted_SpriteActionScript", 1, "[notifySpriteVisibility],", localThrowable);
+    }
+  }
+  
+  public amqr c(String paramString)
+  {
+    QQAppInterface localQQAppInterface;
+    try
+    {
+      if (this.jdField_a_of_type_Ancc.e != 0) {
+        return null;
+      }
+      paramString = anck.a(paramString, this.jdField_a_of_type_Ancc);
+      localQQAppInterface = a();
+      if ((paramString == null) || (localQQAppInterface == null)) {
+        break label129;
+      }
+      anbs localanbs = this.jdField_a_of_type_Anch.a();
+      if ((localanbs != null) && (!localanbs.a(paramString)))
+      {
+        if (!QLog.isColorLevel()) {
+          break label129;
+        }
+        QLog.d("cmshow_scripted_SpriteActionScript", 2, "Message can't be sent out without any slave.");
+        return null;
+      }
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("cmshow_scripted_SpriteActionScript", 1, paramString, new Object[0]);
+      return null;
+    }
+    localQQAppInterface.getMessageFacade().addAndSendMessage(paramString, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteActionScript", 2, new Object[] { "send an action msg, actionId:", Integer.valueOf(paramString.mApolloMessage.id) });
+    }
+    label129:
+    return null;
+  }
+  
+  public void c(int paramInt)
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("cmshow_scripted_SpriteActionScript", 2, new Object[] { "[notifyUsrOperation], status:", Integer.valueOf(paramInt) });
+      }
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("status", paramInt);
+      ApolloCmdChannel.getChannel(this.jdField_a_of_type_Ancc.a()).callbackFromRequest(this.jdField_a_of_type_Ancc.a().getLuaState(), 0, "sc.script_notify_user_operation.local", localJSONObject.toString());
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("cmshow_scripted_SpriteActionScript", 1, "[notifySpriteVisibility],", localThrowable);
+    }
   }
 }
 

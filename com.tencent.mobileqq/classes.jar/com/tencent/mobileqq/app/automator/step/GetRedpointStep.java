@@ -1,7 +1,9 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import amzu;
+import aocj;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.medalwall.MedalWallMng;
@@ -15,8 +17,8 @@ public class GetRedpointStep
     if (QLog.isColorLevel()) {
       QLog.i("GetRedpointStep", 2, "GetRedpointStep");
     }
-    ((amzu)this.a.app.getBusinessHandler(87)).a(false, false, 1);
-    ((MedalWallMng)this.a.app.getManager(250)).a();
+    ((aocj)this.a.app.getBusinessHandler(BusinessHandlerFactory.REDPOINT_HANDER)).a(false, false, 1);
+    ((MedalWallMng)this.a.app.getManager(QQManagerFactory.MEDAL_WALL_MNG)).a();
     return 7;
   }
 }

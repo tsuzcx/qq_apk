@@ -1,41 +1,23 @@
-import android.content.Context;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.mobileqq.app.BusinessObserver;
 
 public class antx
-  extends anri
+  implements BusinessObserver
 {
-  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
+  protected void a(boolean paramBoolean, Object paramObject) {}
+  
+  protected void b(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramQQAppInterface = new antw(paramQQAppInterface, paramContext);
-    paramContext = paramString.split("\\?");
-    if (paramContext.length < 1) {
-      return paramQQAppInterface;
-    }
-    paramContext = paramContext[0].substring("mqqapi://".length()).split("/");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
-    }
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = paramContext[0];
-    paramQQAppInterface.c = paramContext[1];
-    paramContext = Uri.parse(paramString);
-    paramString = paramContext.getQueryParameterNames().iterator();
-    while (paramString.hasNext())
+    switch (paramInt)
     {
-      paramanrl = (String)paramString.next();
-      if (!TextUtils.isEmpty(paramanrl))
-      {
-        String str = paramContext.getQueryParameter(paramanrl);
-        if (!TextUtils.isEmpty(str)) {
-          paramQQAppInterface.a(paramanrl.toLowerCase(), str);
-        }
-      }
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, paramObject);
+      return;
     }
-    return paramQQAppInterface;
+    b(paramBoolean, paramObject);
   }
 }
 

@@ -1,13 +1,11 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import aeht;
-import aehu;
-import aehw;
-import aehy;
-import aehz;
-import amsu;
-import anbq;
+import aezb;
+import aezc;
+import aeze;
+import aezg;
+import aezh;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
@@ -21,8 +19,11 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bcqt;
+import anvi;
+import aoef;
+import bdxs;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.face.FaceDrawable;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.widget.FormItemRelativeLayout;
@@ -39,17 +40,17 @@ import mqq.os.MqqHandler;
 public class SubAccountBindActivity
   extends SubAccountBaseActivity
 {
-  amsu jdField_a_of_type_Amsu = new aehz(this);
-  anbq jdField_a_of_type_Anbq = new aehu(this);
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aehw(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aeze(this);
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  anvi jdField_a_of_type_Anvi = new aezh(this);
+  aoef jdField_a_of_type_Aoef = new aezc(this);
   private List<SimpleAccount> jdField_a_of_type_JavaUtilList;
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new aeht(this);
+  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new aezb(this);
   View.OnClickListener b;
   
   public SubAccountBindActivity()
   {
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = new aehy(this);
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = new aezg(this);
   }
   
   private SimpleAccount a(String paramString)
@@ -79,7 +80,7 @@ public class SubAccountBindActivity
       this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject);
       localObject = a(this.app.getAccount());
       this.jdField_a_of_type_JavaUtilList.remove(localObject);
-      localObject = ((bcqt)this.app.getManager(61)).a();
+      localObject = ((bdxs)this.app.getManager(QQManagerFactory.SUB_ACCOUNT_MANAGER)).a();
       if (localObject == null) {
         break;
       }
@@ -122,10 +123,10 @@ public class SubAccountBindActivity
         if (localSimpleAccount == null) {
           break;
         }
-        ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131368236);
-        TextView localTextView1 = (TextView)((View)localObject1).findViewById(2131371615);
-        TextView localTextView2 = (TextView)((View)localObject1).findViewById(2131361856);
-        localObject1 = (ImageView)((View)localObject1).findViewById(2131364509);
+        ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131368381);
+        TextView localTextView1 = (TextView)((View)localObject1).findViewById(2131371803);
+        TextView localTextView2 = (TextView)((View)localObject1).findViewById(2131361858);
+        localObject1 = (ImageView)((View)localObject1).findViewById(2131364591);
         localObject2 = ContactUtils.getAccountNickName(this.app, localSimpleAccount.getUin());
         localObject1 = localObject2;
         if (localSimpleAccount.isLogined()) {
@@ -173,8 +174,8 @@ public class SubAccountBindActivity
     {
       if (this.jdField_a_of_type_JavaUtilList.get(i) == null)
       {
-        localObject = getLayoutInflater().inflate(2131558413, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
-        ((TextView)((View)localObject).findViewById(2131371700)).setText(2131718654);
+        localObject = getLayoutInflater().inflate(2131558414, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+        ((TextView)((View)localObject).findViewById(2131371888)).setText(2131719043);
         ((View)localObject).setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
         ((View)localObject).setTag(null);
         this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
@@ -183,14 +184,14 @@ public class SubAccountBindActivity
       {
         i += 1;
         break;
-        localObject = getLayoutInflater().inflate(2131558414, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+        localObject = getLayoutInflater().inflate(2131558415, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
         if ((localObject instanceof FormItemRelativeLayout))
         {
           ((FormItemRelativeLayout)localObject).setNeedFocusBg(true);
           ((FormItemRelativeLayout)localObject).setBGType(2);
         }
         ((View)localObject).setTag(Integer.valueOf(i));
-        ((ImageView)((View)localObject).findViewById(2131368236)).setScaleType(ImageView.ScaleType.FIT_CENTER);
+        ((ImageView)((View)localObject).findViewById(2131368381)).setScaleType(ImageView.ScaleType.FIT_CENTER);
         ((View)localObject).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
         this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
       }
@@ -211,23 +212,23 @@ public class SubAccountBindActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131562847);
-    setTitle(2131718664);
-    setContentBackgroundResource(2130838891);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131361859));
+    super.setContentView(2131562918);
+    setTitle(2131719053);
+    setContentBackgroundResource(2130838911);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131361861));
     if (!a(true)) {
       return false;
     }
     this.app.setHandler(getClass(), this.jdField_a_of_type_MqqOsMqqHandler);
-    addObserver(this.jdField_a_of_type_Amsu);
-    addObserver(this.jdField_a_of_type_Anbq);
+    addObserver(this.jdField_a_of_type_Anvi);
+    addObserver(this.jdField_a_of_type_Aoef);
     return true;
   }
   
   public void doOnDestroy()
   {
-    removeObserver(this.jdField_a_of_type_Anbq);
-    removeObserver(this.jdField_a_of_type_Amsu);
+    removeObserver(this.jdField_a_of_type_Aoef);
+    removeObserver(this.jdField_a_of_type_Anvi);
     this.app.removeHandler(getClass());
     super.doOnDestroy();
   }
@@ -241,7 +242,7 @@ public class SubAccountBindActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SubAccountBindActivity
  * JD-Core Version:    0.7.0.1
  */

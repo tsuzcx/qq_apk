@@ -17,7 +17,7 @@ public class PersonalityLabelGalleryActivity$1
       if (NetworkUtil.isNetSupport(this.this$0)) {
         break label101;
       }
-      PersonalityLabelGalleryActivity.a(this.this$0, this.this$0.getResources().getString(2131694062));
+      PersonalityLabelGalleryActivity.a(this.this$0, this.this$0.getResources().getString(2131694253));
       if ((this.a == null) || (this.a.getSize() <= 0)) {
         break label91;
       }

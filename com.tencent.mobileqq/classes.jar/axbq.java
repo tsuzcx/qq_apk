@@ -1,34 +1,13 @@
-class axbq
-  implements apri
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPcBaseFragment;
+
+public class axbq
+  implements DialogInterface.OnClickListener
 {
-  axbq(axax paramaxax) {}
+  public axbq(MsgBackupPcBaseFragment paramMsgBackupPcBaseFragment) {}
   
-  public int a()
-  {
-    return 1;
-  }
-  
-  public int a(int paramInt)
-  {
-    return 2;
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 >= 0)
-    {
-      paramInt1 = paramInt2;
-      if (paramInt2 <= 1) {}
-    }
-    else
-    {
-      paramInt1 = 0;
-    }
-    if (paramInt1 == 0) {
-      return amtj.a(2131706408);
-    }
-    return amtj.a(2131706379);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

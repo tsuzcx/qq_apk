@@ -1,52 +1,27 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
+import android.support.v4.util.LruCache;
 
-public class artb
-  implements Animation.AnimationListener
+class artb
+  extends LruCache<String, T>
 {
-  public artb(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  artb(arta paramarta, int paramInt)
   {
-    Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
+    super(paramInt);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  protected int a(String paramString, T paramT)
   {
-    if (Face2FaceFriendBubbleView.a(this.a) == 1)
-    {
-      Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
-      Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+    int i;
+    if (paramT == null) {
+      i = 0;
     }
-    for (;;)
+    int j;
+    do
     {
-      Face2FaceFriendBubbleView.a(this.a).setVisibility(4);
-      return;
-      if (Face2FaceFriendBubbleView.a(this.a) == 2)
-      {
-        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130840127);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
-      }
-      else if (Face2FaceFriendBubbleView.a(this.a) == 3)
-      {
-        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130840128);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
-      }
-      else if (Face2FaceFriendBubbleView.a(this.a) == 4)
-      {
-        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130840129);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-      }
-    }
+      return i;
+      j = arta.a(this.a, paramT);
+      i = j;
+    } while (j != 0);
+    return this.a.a(paramT);
   }
 }
 

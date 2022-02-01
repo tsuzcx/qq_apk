@@ -6,15 +6,15 @@ import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
-import avmo;
-import avmp;
+import awst;
+import awsu;
 
 public class MagicfaceContainerView
   extends RelativeLayout
 {
-  GestureDetector.SimpleOnGestureListener jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new avmo(this);
+  GestureDetector.SimpleOnGestureListener jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new awst(this);
   GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  public avmp a;
+  public awsu a;
   boolean jdField_a_of_type_Boolean = false;
   
   public MagicfaceContainerView(Context paramContext)
@@ -46,9 +46,9 @@ public class MagicfaceContainerView
     return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void setMagicfaceGestureListener(avmp paramavmp)
+  public void setMagicfaceGestureListener(awsu paramawsu)
   {
-    this.jdField_a_of_type_Avmp = paramavmp;
+    this.jdField_a_of_type_Awsu = paramawsu;
   }
   
   public void setTouchEffect(boolean paramBoolean)

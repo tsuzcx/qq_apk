@@ -1,15 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.data.TroopFeedItem;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
 
-public abstract class bfgq
+public final class bfgq
+  implements Parcelable.Creator<TroopBarPOI>
 {
-  public bfgq(bfgk parambfgk) {}
-  
-  protected abstract View a(View paramView, TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean);
-  
-  public View a(TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean)
+  public TroopBarPOI a(Parcel paramParcel)
   {
-    return a(null, paramTroopFeedItem, paramInt, paramBoolean);
+    return new TroopBarPOI(paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString());
+  }
+  
+  public TroopBarPOI[] a(int paramInt)
+  {
+    return null;
   }
 }
 

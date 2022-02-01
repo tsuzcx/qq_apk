@@ -1,6 +1,7 @@
 package com.tencent.qapmsdk.base.monitorplugin;
 
 import com.tencent.qapmsdk.base.config.DefaultPluginConfig;
+import com.tencent.qapmsdk.common.logger.Logger;
 import kotlin.Metadata;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
@@ -12,9 +13,7 @@ final class PluginController$whetherPluginSampling$familySampleRatio$1
   extends Lambda
   implements Function1<DefaultPluginConfig, Float>
 {
-  public static final 1 INSTANCE = new 1();
-  
-  PluginController$whetherPluginSampling$familySampleRatio$1()
+  PluginController$whetherPluginSampling$familySampleRatio$1(int paramInt)
   {
     super(1);
   }
@@ -22,6 +21,7 @@ final class PluginController$whetherPluginSampling$familySampleRatio$1
   public final float invoke(@NotNull DefaultPluginConfig paramDefaultPluginConfig)
   {
     Intrinsics.checkParameterIsNotNull(paramDefaultPluginConfig, "it");
+    Logger.INSTANCE.d(new String[] { "QAPM_base", "whetherPluginSampling" + this.$plugin + " , canCollect " + paramDefaultPluginConfig.eventSampleRatio });
     return paramDefaultPluginConfig.eventSampleRatio;
   }
 }

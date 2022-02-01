@@ -1,29 +1,59 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.app.Activity;
+import android.graphics.Rect;
+import android.view.Display;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
 
-class akuv
-  implements INetEngine.INetEngineListener
+public class akuv
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  akuv(akus paramakus) {}
+  public akuv(QzoneHbFragment paramQzoneHbFragment, Activity paramActivity) {}
   
-  public void onResp(NetResp paramNetResp)
+  public void onGlobalLayout()
   {
-    FilterDesc localFilterDesc = (FilterDesc)paramNetResp.mReq.getUserData();
-    if (paramNetResp.mResult != 0)
+    Button localButton;
+    int j;
+    int i;
+    if (this.jdField_a_of_type_AndroidAppActivity.getWindowManager().getDefaultDisplay().getWidth() <= 480)
     {
-      lba.f("VideoFilterTools", "download IconFile failed. errorCode: " + paramNetResp.mErrCode + ", errorMsg: " + paramNetResp.mErrDesc + ", file: " + localFilterDesc.iconurl);
+      localButton = QzoneHbFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentQzoneHbFragment);
+      Object localObject = new Rect();
+      this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
+      int k = this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getRootView().getHeight();
+      j = k - ((Rect)localObject).bottom;
+      i = j;
+      if (j - this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentQzoneHbFragment.a(this.jdField_a_of_type_AndroidAppActivity) == 0) {
+        i = 0;
+      }
+      j = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentQzoneHbFragment.mActivity.getWindow().getDecorView().getScrollY();
+      if ((localButton == null) || (i == 0)) {
+        break label204;
+      }
+      localObject = new int[2];
+      localButton.getLocationOnScreen((int[])localObject);
+      m = localObject[1];
+      i = localButton.getMeasuredHeight() + m + i - k - j;
+      if (i > 0) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentQzoneHbFragment.mActivity.getWindow().getDecorView().scrollBy(0, i + 5);
+      }
+      QzoneHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentQzoneHbFragment, true);
+    }
+    label204:
+    while (i != 0)
+    {
+      int m;
       return;
+      localButton = QzoneHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentQzoneHbFragment);
+      break;
     }
-    if ((akus.a(this.a).decrementAndGet() == 0) && (akus.a(this.a) != null)) {
-      akus.a(this.a).a(true);
-    }
-    lba.f("VideoFilterTools", "download iconFile success. file: " + localFilterDesc.iconurl);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentQzoneHbFragment.mActivity.getWindow().getDecorView().scrollBy(0, -j);
+    QzoneHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentQzoneHbFragment, false);
   }
-  
-  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

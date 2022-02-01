@@ -1,199 +1,92 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.ServiceConnection;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.qav.monitor.CallingStateMonitor.1;
-import com.tencent.qphone.base.util.QLog;
-
 public class bijd
-  implements msj
 {
-  private static bijd jdField_a_of_type_Bijd;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection;
-  private bijg jdField_a_of_type_Bijg;
-  private lwl jdField_a_of_type_Lwl;
-  private msi jdField_a_of_type_Msi;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public static bijd a()
+  public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString1, String paramString2, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, String... paramVarArgs)
   {
-    if (jdField_a_of_type_Bijd == null) {}
-    try
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(paramInt1).append('|');
+    localStringBuffer.append(paramInt2).append('|');
+    localStringBuffer.append(paramInt3).append('|');
+    localStringBuffer.append(paramInt4).append('|');
+    localStringBuffer.append(paramInt5).append('|');
+    localStringBuffer.append(paramString1).append('|');
+    localStringBuffer.append(paramString2).append('|');
+    localStringBuffer.append(paramInt6).append('|');
+    localStringBuffer.append(paramInt7).append('|');
+    localStringBuffer.append(paramInt8).append('|');
+    localStringBuffer.append(paramInt9).append('|');
+    localStringBuffer.append(paramInt10);
+    if ((paramVarArgs != null) && (paramVarArgs.length > 0))
     {
-      if (jdField_a_of_type_Bijd == null) {
-        jdField_a_of_type_Bijd = new bijd();
-      }
-      return jdField_a_of_type_Bijd;
-    }
-    finally {}
-  }
-  
-  private void d()
-  {
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new bije(this);
-    }
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("tencent.av.v2q.StartVideoChat");
-    localIntentFilter.addAction("tencent.av.v2q.StopVideoChat");
-    try
-    {
-      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.i("CallingStateMonitor", 2, "registerVideoChatReceiver", localThrowable);
-    }
-  }
-  
-  private void e()
-  {
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) {}
-    try
-    {
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+      paramString1 = new String[5];
+      System.arraycopy(paramVarArgs, 0, paramString1, 0, Math.min(5, paramVarArgs.length));
+      paramInt1 = 0;
+      if (paramInt1 < 5)
       {
-        QLog.i("CallingStateMonitor", 2, "unregisterVideoChatReceiver", localThrowable);
+        if (paramString1[paramInt1] == null) {
+          localStringBuffer.append("|");
+        }
+        for (;;)
+        {
+          paramInt1 += 1;
+          break;
+          localStringBuffer.append("|" + paramString1[paramInt1]);
+        }
       }
     }
-  }
-  
-  private void f()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CallingStateMonitor", 2, "bindQQServiceForAV");
-    }
-    if (this.jdField_a_of_type_AndroidContentServiceConnection == null) {
-      this.jdField_a_of_type_AndroidContentServiceConnection = new bijf(this);
-    }
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQServiceForAV.class);
-    this.jdField_a_of_type_AndroidContentContext.bindService(localIntent, this.jdField_a_of_type_AndroidContentServiceConnection, 1);
-  }
-  
-  private void g()
-  {
-    if (this.jdField_a_of_type_AndroidContentServiceConnection != null)
+    else
     {
-      this.jdField_a_of_type_AndroidContentContext.unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
-      this.jdField_a_of_type_AndroidContentServiceConnection = null;
+      localStringBuffer.append('|').append('|').append('|').append('|').append('|');
     }
+    bdka.a(null, "sendtdbank|b_sng_qqvip_qq_webview|qq_webview", localStringBuffer.toString(), true);
   }
   
-  public void a()
+  public static void a(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7, long paramLong8, long paramLong9, long paramLong10, long paramLong11, long paramLong12, long paramLong13, long paramLong14, long paramLong15, long paramLong16, long paramLong17, String paramString1, String paramString2, String paramString3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CallingStateMonitor", 2, "destroy, init[" + this.jdField_a_of_type_Boolean + "]");
-    }
-    if (this.jdField_a_of_type_Msi != null)
-    {
-      this.jdField_a_of_type_Msi.a();
-      this.jdField_a_of_type_Msi = null;
-    }
-    e();
-    g();
-    this.jdField_a_of_type_Bijg = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_Bijd = null;
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(paramLong1).append('|');
+    localStringBuffer.append(paramLong2).append('|');
+    localStringBuffer.append(paramLong3).append('|');
+    localStringBuffer.append(paramLong4).append('|');
+    localStringBuffer.append(paramLong5).append('|');
+    localStringBuffer.append(paramLong6).append('|');
+    localStringBuffer.append(paramLong7).append('|');
+    localStringBuffer.append(paramLong8).append('|');
+    localStringBuffer.append(paramLong9).append('|');
+    localStringBuffer.append(paramLong10).append('|');
+    localStringBuffer.append(paramLong11).append('|');
+    localStringBuffer.append(paramLong12).append('|');
+    localStringBuffer.append(paramLong13).append('|');
+    localStringBuffer.append(paramLong14).append('|');
+    localStringBuffer.append(paramLong15).append('|');
+    localStringBuffer.append(paramLong16).append('|');
+    localStringBuffer.append(paramLong17).append('|');
+    localStringBuffer.append(paramString1).append('|');
+    localStringBuffer.append(paramString2).append('|');
+    localStringBuffer.append(paramString3).append('|');
+    bdka.a(null, "dc00763", localStringBuffer.toString(), true);
   }
   
-  public void a(Context paramContext, boolean paramBoolean)
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, long paramLong, String paramString5, String paramString6, String paramString7, int paramInt2, int paramInt3, int paramInt4, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CallingStateMonitor", 2, "setup, init[" + this.jdField_a_of_type_Boolean + "], bBindQQServiceForAV[" + paramBoolean + "]");
-    }
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_AndroidContentContext = paramContext;
-      new Handler(Looper.getMainLooper()).post(new CallingStateMonitor.1(this));
-      d();
-      if (paramBoolean) {
-        f();
-      }
-      this.jdField_a_of_type_Boolean = true;
-    }
-  }
-  
-  public void a(bijg parambijg)
-  {
-    this.jdField_a_of_type_Bijg = parambijg;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    bija.c("CallingStateMonitor", String.format("onPhoneCallingStateChanged isCalling=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    if (this.jdField_a_of_type_Bijg != null) {
-      this.jdField_a_of_type_Bijg.e(paramBoolean);
-    }
-  }
-  
-  public boolean a()
-  {
-    boolean bool = false;
-    try
-    {
-      if (this.jdField_a_of_type_Lwl != null) {
-        bool = this.jdField_a_of_type_Lwl.f();
-      }
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      bija.a("CallingStateMonitor", "isVideoChatting fail.", localException);
-    }
-    return false;
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CallingStateMonitor", 2, "clearTillEnd");
-    }
-    msi localmsi = this.jdField_a_of_type_Msi;
-    if (localmsi != null) {
-      localmsi.d();
-    }
-  }
-  
-  public boolean b()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_Msi != null) {
-        return this.jdField_a_of_type_Msi.a();
-      }
-      if (this.jdField_a_of_type_Lwl != null)
-      {
-        boolean bool = this.jdField_a_of_type_Lwl.g();
-        return bool;
-      }
-    }
-    catch (Exception localException)
-    {
-      bija.a("CallingStateMonitor", "isPhoneCalling fail.", localException);
-    }
-    return false;
-  }
-  
-  public void c()
-  {
-    msi localmsi = this.jdField_a_of_type_Msi;
-    if ((localmsi != null) && (localmsi.a())) {
-      localmsi.e();
-    }
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(paramString1).append('|');
+    localStringBuffer.append(paramString2).append('|');
+    localStringBuffer.append(paramString3).append('|');
+    localStringBuffer.append(paramString4).append('|');
+    localStringBuffer.append(paramInt1).append('|');
+    localStringBuffer.append(paramLong).append('|');
+    localStringBuffer.append(paramString5).append('|');
+    localStringBuffer.append(paramString6).append('|');
+    localStringBuffer.append(paramString7).append('|');
+    localStringBuffer.append(paramInt2).append('|');
+    localStringBuffer.append(paramInt3).append('|');
+    localStringBuffer.append(paramInt4).append('|');
+    localStringBuffer.append(paramString8).append('|');
+    localStringBuffer.append(paramString9).append('|');
+    localStringBuffer.append(paramString10).append('|');
+    localStringBuffer.append(paramString11).append('|');
+    localStringBuffer.append(paramString12);
+    bdka.a(null, "dc01183", localStringBuffer.toString(), true);
   }
 }
 

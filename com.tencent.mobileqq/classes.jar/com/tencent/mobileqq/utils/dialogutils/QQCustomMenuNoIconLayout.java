@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.utils.dialogutils;
 
-import amtj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -16,16 +15,17 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bcef;
-import bgaz;
-import bgbb;
-import bgbc;
-import bgbe;
-import bgbf;
-import bgbg;
-import bgbh;
-import bjpb;
-import bjuk;
+import anvx;
+import bdla;
+import bhjq;
+import bhjs;
+import bhjt;
+import bhjv;
+import bhjw;
+import bhjx;
+import bhjy;
+import blan;
+import blfw;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.ChatFragment;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
@@ -46,16 +46,16 @@ public class QQCustomMenuNoIconLayout
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private bgaz jdField_a_of_type_Bgaz;
-  private bgbh jdField_a_of_type_Bgbh;
-  private bjpb jdField_a_of_type_Bjpb = new bgbe(this);
+  private bhjq jdField_a_of_type_Bhjq;
+  private bhjy jdField_a_of_type_Bhjy;
+  private blan jdField_a_of_type_Blan = new bhjv(this);
   private BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
   private Integer jdField_a_of_type_JavaLangInteger;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
-  private bgbh jdField_b_of_type_Bgbh;
+  private bhjy jdField_b_of_type_Bhjy;
   private int c;
-  private int d = bgbc.jdField_a_of_type_Int;
+  private int d = bhjt.jdField_a_of_type_Int;
   private int e = ViewUtils.dpToPx(8.0F);
   private int f = -1;
   
@@ -77,7 +77,7 @@ public class QQCustomMenuNoIconLayout
     Resources localResources;
     if (paramBoolean)
     {
-      i = 2131165800;
+      i = 2131165809;
       localGradientDrawable.setColor(((Resources)localObject).getColor(i));
       localGradientDrawable.setCornerRadii(paramArrayOfFloat);
       localObject = new GradientDrawable();
@@ -88,7 +88,7 @@ public class QQCustomMenuNoIconLayout
       }
     }
     label142:
-    for (int i = 2131165801;; i = 2131165803)
+    for (int i = 2131165810;; i = 2131165812)
     {
       ((GradientDrawable)localObject).setColor(localResources.getColor(i));
       ((GradientDrawable)localObject).setCornerRadii(paramArrayOfFloat);
@@ -97,7 +97,7 @@ public class QQCustomMenuNoIconLayout
       paramArrayOfFloat.addState(new int[] { 16842919 }, (Drawable)localObject);
       paramArrayOfFloat.addState(new int[0], localGradientDrawable);
       return paramArrayOfFloat;
-      i = 2131165802;
+      i = 2131165811;
       break;
     }
   }
@@ -108,7 +108,7 @@ public class QQCustomMenuNoIconLayout
     localGradientDrawable.setShape(0);
     Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
     if (paramBoolean) {}
-    for (int i = 2131165800;; i = 2131165802)
+    for (int i = 2131165809;; i = 2131165811)
     {
       localGradientDrawable.setColor(localResources.getColor(i));
       localGradientDrawable.setCornerRadii(paramArrayOfFloat);
@@ -125,10 +125,10 @@ public class QQCustomMenuNoIconLayout
     }
   }
   
-  private TextView a(bgbb parambgbb, boolean paramBoolean, float[] paramArrayOfFloat)
+  private TextView a(bhjs parambhjs, boolean paramBoolean, float[] paramArrayOfFloat)
   {
     StateListDrawable localStateListDrawable = a(paramBoolean, paramArrayOfFloat);
-    Object localObject = parambgbb.a();
+    Object localObject = parambhjs.a();
     paramArrayOfFloat = (float[])localObject;
     if (this.jdField_a_of_type_Boolean)
     {
@@ -137,18 +137,18 @@ public class QQCustomMenuNoIconLayout
         paramArrayOfFloat = ((String)localObject).substring(0, 3) + "…";
       }
     }
-    a("0X800B3BE", parambgbb.a());
+    a("0X800B3BE", parambhjs.a());
     localObject = new TextView(getContext());
     ((TextView)localObject).setText(paramArrayOfFloat);
     ((TextView)localObject).setEllipsize(TextUtils.TruncateAt.END);
     ((TextView)localObject).setTextSize(12.0F);
     ((TextView)localObject).setMaxLines(1);
-    ((TextView)localObject).setContentDescription(parambgbb.a());
-    ((TextView)localObject).setId(parambgbb.a());
+    ((TextView)localObject).setContentDescription(parambhjs.a());
+    ((TextView)localObject).setId(parambhjs.a());
     ((TextView)localObject).setTextColor(-855638017);
     ((TextView)localObject).setBackgroundDrawable(localStateListDrawable);
     ((TextView)localObject).setIncludeFontPadding(true);
-    ((TextView)localObject).setOnClickListener(new bgbg(this, parambgbb));
+    ((TextView)localObject).setOnClickListener(new bhjx(this, parambhjs));
     ((TextView)localObject).setGravity(17);
     return localObject;
   }
@@ -157,8 +157,8 @@ public class QQCustomMenuNoIconLayout
   {
     int m = getWidth();
     removeAllViews();
-    boolean bool = bjuk.a();
-    int n = this.jdField_a_of_type_Bgaz.a() - paramInt;
+    boolean bool = blfw.a();
+    int n = this.jdField_a_of_type_Bhjq.a() - paramInt;
     int i;
     int j;
     label47:
@@ -180,7 +180,7 @@ public class QQCustomMenuNoIconLayout
       if (k >= n) {
         break label606;
       }
-      localObject2 = this.jdField_a_of_type_Bgaz.a(k + paramInt);
+      localObject2 = this.jdField_a_of_type_Bhjq.a(k + paramInt);
       if (k != 0) {
         break label279;
       }
@@ -189,20 +189,20 @@ public class QQCustomMenuNoIconLayout
       }
       localObject1 = h();
       label135:
-      localObject1 = a((bgbb)localObject2, bool, (float[])localObject1);
+      localObject1 = a((bhjs)localObject2, bool, (float[])localObject1);
       label147:
       if (k >= i) {
         break label481;
       }
-      if (this.jdField_a_of_type_Bgbh == null) {
-        this.jdField_a_of_type_Bgbh = new bgbh(this, this.jdField_a_of_type_AndroidContentContext);
+      if (this.jdField_a_of_type_Bhjy == null) {
+        this.jdField_a_of_type_Bhjy = new bhjy(this, this.jdField_a_of_type_AndroidContentContext);
       }
-      this.jdField_a_of_type_Bgbh.addView((View)localObject1, new LinearLayout.LayoutParams(this.jdField_b_of_type_Int, -1));
+      this.jdField_a_of_type_Bhjy.addView((View)localObject1, new LinearLayout.LayoutParams(this.jdField_b_of_type_Int, -1));
       if (k >= i - 1) {
         break label412;
       }
       if (k != n - 1) {
-        bgbh.a(this.jdField_a_of_type_Bgbh, bool);
+        bhjy.a(this.jdField_a_of_type_Bhjy, bool);
       }
     }
     for (;;)
@@ -228,54 +228,54 @@ public class QQCustomMenuNoIconLayout
         if (n <= i) {}
         for (localObject1 = g();; localObject1 = c())
         {
-          localObject1 = a((bgbb)localObject2, bool, (float[])localObject1);
+          localObject1 = a((bhjs)localObject2, bool, (float[])localObject1);
           break;
         }
       }
       if (k == i)
       {
-        localObject1 = a((bgbb)localObject2, bool, e());
+        localObject1 = a((bhjs)localObject2, bool, e());
         break label147;
       }
       if (k == j - 1)
       {
-        localObject1 = a((bgbb)localObject2, bool, d());
+        localObject1 = a((bhjs)localObject2, bool, d());
         break label147;
       }
-      localObject1 = a((bgbb)localObject2, bool, a());
+      localObject1 = a((bhjs)localObject2, bool, a());
       break label147;
       label412:
       if (paramInt > 0)
       {
-        bgbh.a(this.jdField_a_of_type_Bgbh, bool);
-        localObject2 = this.jdField_a_of_type_Bgbh;
+        bhjy.a(this.jdField_a_of_type_Bhjy, bool);
+        localObject2 = this.jdField_a_of_type_Bhjy;
         if (n <= i) {}
         for (localObject1 = g();; localObject1 = c())
         {
-          ((bgbh)localObject2).addView(a(false, bool, (float[])localObject1), new LinearLayout.LayoutParams(this.jdField_b_of_type_Int, -1));
+          ((bhjy)localObject2).addView(a(false, bool, (float[])localObject1), new LinearLayout.LayoutParams(this.jdField_b_of_type_Int, -1));
           break;
         }
         label481:
         if (k >= j) {
           break label553;
         }
-        if (this.jdField_b_of_type_Bgbh == null) {
-          this.jdField_b_of_type_Bgbh = new bgbh(this, this.jdField_a_of_type_AndroidContentContext);
+        if (this.jdField_b_of_type_Bhjy == null) {
+          this.jdField_b_of_type_Bhjy = new bhjy(this, this.jdField_a_of_type_AndroidContentContext);
         }
-        this.jdField_b_of_type_Bgbh.addView((View)localObject1, new LinearLayout.LayoutParams(this.jdField_b_of_type_Int, -1));
+        this.jdField_b_of_type_Bhjy.addView((View)localObject1, new LinearLayout.LayoutParams(this.jdField_b_of_type_Int, -1));
         if (k < j - 1) {
-          bgbh.a(this.jdField_b_of_type_Bgbh, bool);
+          bhjy.a(this.jdField_b_of_type_Bhjy, bool);
         }
       }
     }
     label553:
-    if (this.jdField_b_of_type_Bgbh != null)
+    if (this.jdField_b_of_type_Bhjy != null)
     {
-      this.jdField_b_of_type_Bgbh.removeViewAt(this.jdField_b_of_type_Bgbh.getChildCount() - 1);
-      this.jdField_b_of_type_Bgbh.addView(a(true, bool, d()), new LinearLayout.LayoutParams(this.jdField_b_of_type_Int, -1));
+      this.jdField_b_of_type_Bhjy.removeViewAt(this.jdField_b_of_type_Bhjy.getChildCount() - 1);
+      this.jdField_b_of_type_Bhjy.addView(a(true, bool, d()), new LinearLayout.LayoutParams(this.jdField_b_of_type_Int, -1));
     }
     label606:
-    if ((n > i) && (n < j) && (this.jdField_b_of_type_Bgbh != null))
+    if ((n > i) && (n < j) && (this.jdField_b_of_type_Bhjy != null))
     {
       k = j - n;
       j = 0;
@@ -286,9 +286,9 @@ public class QQCustomMenuNoIconLayout
         {
           localObject2 = new LinearLayout.LayoutParams(this.jdField_b_of_type_Int, -1);
           ((LinearLayout.LayoutParams)localObject2).gravity = 16;
-          this.jdField_b_of_type_Bgbh.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+          this.jdField_b_of_type_Bhjy.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
           if (j < k - 1) {
-            bgbh.a(this.jdField_b_of_type_Bgbh, bool);
+            bhjy.a(this.jdField_b_of_type_Bhjy, bool);
           }
           j += 1;
           break;
@@ -297,14 +297,14 @@ public class QQCustomMenuNoIconLayout
     }
     if ((paramInt > 0) && (n < i))
     {
-      bgbh.a(this.jdField_a_of_type_Bgbh, bool);
-      this.jdField_a_of_type_Bgbh.addView(a(false, bool, g()), new LinearLayout.LayoutParams(this.jdField_b_of_type_Int, -1));
+      bhjy.a(this.jdField_a_of_type_Bhjy, bool);
+      this.jdField_a_of_type_Bhjy.addView(a(false, bool, g()), new LinearLayout.LayoutParams(this.jdField_b_of_type_Int, -1));
     }
-    addView(this.jdField_a_of_type_Bgbh, new LinearLayout.LayoutParams(-2, this.c));
-    if (this.jdField_b_of_type_Bgbh != null)
+    addView(this.jdField_a_of_type_Bhjy, new LinearLayout.LayoutParams(-2, this.c));
+    if (this.jdField_b_of_type_Bhjy != null)
     {
       a(bool);
-      addView(this.jdField_b_of_type_Bgbh, new LinearLayout.LayoutParams(-2, this.c));
+      addView(this.jdField_b_of_type_Bhjy, new LinearLayout.LayoutParams(-2, this.c));
     }
     if (paramBoolean)
     {
@@ -328,7 +328,7 @@ public class QQCustomMenuNoIconLayout
     if (this.f < 0) {
       b();
     }
-    bcef.b(null, "dc00898", "", "", paramString, paramString, this.f, 0, "", "", "", "");
+    bdla.b(null, "dc00898", "", "", paramString, paramString, this.f, 0, "", "", "", "");
   }
   
   private void a(String paramString1, String paramString2)
@@ -342,7 +342,7 @@ public class QQCustomMenuNoIconLayout
     }
     for (;;)
     {
-      bcef.b(null, "dc00898", "", "", paramString1, paramString1, paramString2.intValue(), 0, String.valueOf(this.f), "", "", "");
+      bdla.b(null, "dc00898", "", "", paramString1, paramString1, paramString2.intValue(), 0, String.valueOf(this.f), "", "", "");
       return;
     }
   }
@@ -353,7 +353,7 @@ public class QQCustomMenuNoIconLayout
     Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
     if (paramBoolean)
     {
-      i = 2131165805;
+      i = 2131165814;
       localView.setBackgroundColor(localResources.getColor(i));
       addView(localView, new LinearLayout.LayoutParams(-1, 1));
       localView = new View(this.jdField_a_of_type_AndroidContentContext);
@@ -363,12 +363,12 @@ public class QQCustomMenuNoIconLayout
       }
     }
     label114:
-    for (int i = 2131165804;; i = 2131165806)
+    for (int i = 2131165813;; i = 2131165815)
     {
       localView.setBackgroundColor(localResources.getColor(i));
       addView(localView, new LinearLayout.LayoutParams(-1, 1));
       return;
-      i = 2131165807;
+      i = 2131165816;
       break;
     }
   }
@@ -457,17 +457,17 @@ public class QQCustomMenuNoIconLayout
     int i;
     if (paramBoolean1)
     {
-      i = 2130838974;
+      i = 2130838994;
       localImageView.setImageResource(i);
       if (!paramBoolean1) {
         break label107;
       }
-      i = 2131709301;
+      i = 2131709648;
       label45:
-      localImageView.setContentDescription(amtj.a(i));
+      localImageView.setContentDescription(anvx.a(i));
       localImageView.setBackgroundDrawable(paramArrayOfFloat);
       localImageView.setScaleType(ImageView.ScaleType.CENTER);
-      localImageView.setOnClickListener(new bgbf(this, paramBoolean1));
+      localImageView.setOnClickListener(new bhjw(this, paramBoolean1));
       if (!paramBoolean1) {
         break label115;
       }
@@ -478,9 +478,9 @@ public class QQCustomMenuNoIconLayout
     {
       a(paramArrayOfFloat);
       return localImageView;
-      i = 2130838976;
+      i = 2130838996;
       break;
-      i = 2131709302;
+      i = 2131709649;
       break label45;
     }
   }
@@ -497,7 +497,7 @@ public class QQCustomMenuNoIconLayout
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Bgaz.a() >= this.d;
+    return this.jdField_a_of_type_Bhjq.a() >= this.d;
   }
   
   public boolean b()
@@ -508,8 +508,8 @@ public class QQCustomMenuNoIconLayout
   public void removeAllViews()
   {
     super.removeAllViews();
-    this.jdField_a_of_type_Bgbh = null;
-    this.jdField_b_of_type_Bgbh = null;
+    this.jdField_a_of_type_Bhjy = null;
+    this.jdField_b_of_type_Bhjy = null;
   }
   
   public void setContainerBottom(Integer paramInteger)
@@ -522,11 +522,11 @@ public class QQCustomMenuNoIconLayout
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setMenu(bgaz parambgaz)
+  public void setMenu(bhjq parambhjq)
   {
-    this.jdField_a_of_type_Bgaz = parambgaz.a();
+    this.jdField_a_of_type_Bhjq = parambhjq.a();
     if (QLog.isColorLevel()) {
-      QLog.d("QQCustomMenuNoIconLayout", 4, "[menu] setMenu MENU:" + this.jdField_a_of_type_Bgaz.toString());
+      QLog.d("QQCustomMenuNoIconLayout", 4, "[menu] setMenu MENU:" + this.jdField_a_of_type_Bhjq.toString());
     }
   }
   
@@ -538,7 +538,7 @@ public class QQCustomMenuNoIconLayout
   public void setPopupWindow(BubblePopupWindow paramBubblePopupWindow)
   {
     this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = paramBubblePopupWindow;
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(this.jdField_a_of_type_Bjpb);
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(this.jdField_a_of_type_Blan);
   }
 }
 

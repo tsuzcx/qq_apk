@@ -1,26 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
 public class adgv
-  implements DialogInterface.OnClickListener
+  implements BusinessObserver
 {
-  public adgv(ForwardFriendListActivity paramForwardFriendListActivity) {}
+  private int jdField_a_of_type_Int;
+  private WeakReference<AddFriendVerifyActivity> jdField_a_of_type_MqqUtilWeakReference;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public adgv(AddFriendVerifyActivity paramAddFriendVerifyActivity, int paramInt)
   {
-    paramDialogInterface = ForwardFriendListActivity.a(this.a).getInputValue();
-    if (!TextUtils.isEmpty(paramDialogInterface))
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAddFriendVerifyActivity);
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    AddFriendVerifyActivity localAddFriendVerifyActivity = (AddFriendVerifyActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if ((localAddFriendVerifyActivity != null) && (!localAddFriendVerifyActivity.isFinishing()))
     {
-      ForwardFriendListActivity.a(this.a, ForwardFriendListActivity.a(this.a).getEditText());
-      Intent localIntent = new Intent();
-      localIntent.putExtras(this.a.getIntent().getExtras());
-      localIntent.putExtra("extra_choose_friend_name", paramDialogInterface);
-      this.a.setResult(-1, localIntent);
-      this.a.finish();
+      localAddFriendVerifyActivity.a(paramInt, paramBoolean, paramObject, this.jdField_a_of_type_Int);
+      return;
     }
+    QLog.e("AddFriendVerifyActivity", 1, "onUpdate: activity is null, type=" + paramInt);
   }
 }
 

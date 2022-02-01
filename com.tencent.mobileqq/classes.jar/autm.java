@@ -1,27 +1,18 @@
 import android.app.Activity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
 
-class autm
-  implements aqvq
+public class autm
+  implements DialogInterface.OnClickListener
 {
-  autm(autl paramautl) {}
+  public autm(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
   
-  public void a(aqvp paramaqvp)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      paramaqvp.dismiss();
-      this.a.mRuntime.a().finish();
-      bcef.b(null, "CliOper", "", "", "0X80094EB", "0X80094EB", 0, 0, "", "", "", "");
-      return;
-    }
-    catch (Throwable paramaqvp)
-    {
-      for (;;)
-      {
-        QLog.e("DocxApiPlugin", 1, "handleEvent", paramaqvp);
-      }
-    }
+    this.a.a(false);
+    com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp.f = false;
+    this.a.a.finish();
   }
 }
 

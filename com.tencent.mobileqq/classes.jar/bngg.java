@@ -1,10 +1,28 @@
-public abstract interface bngg
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.ae.camera.ui.panel.AEWaterMarkPanel;
+
+public class bngg
+  implements Animator.AnimatorListener
 {
-  public abstract void a(int paramInt);
+  public bngg(AEWaterMarkPanel paramAEWaterMarkPanel, Runnable paramRunnable) {}
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5);
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public abstract boolean a(bngd parambngd);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    AEWaterMarkPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEWaterMarkPanel, false);
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    AEWaterMarkPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEWaterMarkPanel, true);
+  }
 }
 
 

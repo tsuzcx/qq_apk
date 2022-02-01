@@ -1,12 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ahoz
-  implements DialogInterface.OnClickListener
+public class ahoz
+  implements ahnr
 {
-  ahoz(ahow paramahow) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(agtf paramagtf, MessageRecord paramMessageRecord, agus paramagus, aftk paramaftk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  {
+    paramagtf.g(paramagus.b);
+  }
 }
 
 

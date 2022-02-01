@@ -1,19 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.apollo.ApolloGameNormalStartHandler.3;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class alnq
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public alnq(ApolloGameNormalStartHandler.3 param3) {}
+  public alnq(LoginView paramLoginView) {}
   
-  public void onClick(View paramView)
-  {
-    alnp.a(this.a.this$0).dismiss();
-    alnp.a(this.a.this$0, true);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

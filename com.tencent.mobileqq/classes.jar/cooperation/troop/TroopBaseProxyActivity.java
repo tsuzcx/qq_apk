@@ -1,12 +1,12 @@
 package cooperation.troop;
 
 import Override;
-import amtj;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
 import android.widget.TextView;
+import anvx;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -21,7 +21,7 @@ public class TroopBaseProxyActivity
     {
       try
       {
-        paramActivity = new ReportDialog(paramActivity, 2131755826);
+        paramActivity = new ReportDialog(paramActivity, 2131755829);
         Activity localActivity = paramActivity;
       }
       catch (OutOfMemoryError localOutOfMemoryError1)
@@ -29,9 +29,9 @@ public class TroopBaseProxyActivity
         try
         {
           paramActivity.setCancelable(true);
-          paramActivity.setContentView(2131559574);
+          paramActivity.setContentView(2131559607);
           paramActivity.show();
-          ((TextView)paramActivity.findViewById(2131372546)).setText(amtj.a(2131714268));
+          ((TextView)paramActivity.findViewById(2131372740)).setText(anvx.a(2131714615));
           localActivity = paramActivity;
           return localActivity;
         }

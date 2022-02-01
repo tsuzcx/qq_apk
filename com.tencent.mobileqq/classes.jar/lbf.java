@@ -1,44 +1,27 @@
-import com.tencent.qphone.base.util.Cryptor;
-import org.json.JSONObject;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.transfile.OldHttpEngine;
+import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
+import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorFlowCount;
 
 public class lbf
 {
-  public final String a = "uid";
-  public final String b = "ukey";
-  public final String c = "^%QAI$I+j{2HuP0L";
-  public String d;
-  public String e;
+  private static INetEngine jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
+  private static IHttpCommunicatorFlowCount jdField_a_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorFlowCount = new lbg();
   
-  public static lbf a(String paramString)
+  public static INetEngine a()
   {
-    lbf locallbf = new lbf();
-    if (locallbf.a(paramString)) {
-      return locallbf;
-    }
-    return null;
-  }
-  
-  private boolean a(String paramString)
-  {
+    if (jdField_a_of_type_ComTencentMobileqqTransfileINetEngine == null) {}
     try
     {
-      paramString = bfuc.decode(paramString, 0);
-      paramString = new JSONObject(new String(new Cryptor().decrypt(paramString, "^%QAI$I+j{2HuP0L".getBytes())));
-      if (paramString.has("uid")) {
-        this.d = paramString.getString("uid");
-      }
-      for (int i = 1; (i != 0) && (paramString.has("ukey")); i = 0)
+      if (jdField_a_of_type_ComTencentMobileqqTransfileINetEngine == null)
       {
-        this.e = paramString.getString("ukey");
-        return true;
+        HttpCommunicator localHttpCommunicator = new HttpCommunicator(jdField_a_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorFlowCount, 128);
+        localHttpCommunicator.start();
+        jdField_a_of_type_ComTencentMobileqqTransfileINetEngine = new OldHttpEngine(localHttpCommunicator, true);
       }
-      return false;
+      return jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return false;
+    finally {}
   }
 }
 

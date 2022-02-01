@@ -1,219 +1,333 @@
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.SysSuspiciousMsg;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.trace.sdk.data.TraceData;
+import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.pb.ReportTrace.ExtParam;
+import com.tencent.pb.ReportTrace.ReportAnnoReq;
+import com.tencent.pb.ReportTrace.ReportHead;
+import com.tencent.pb.ReportTrace.ReportTraceReq;
+import com.tencent.pb.ReportTrace.ReportTraceRsp;
+import com.tencent.pb.ReportTrace.SpanAnnoEntry;
+import com.tencent.pb.ReportTrace.SpanEntry;
+import com.tencent.pb.ReportTrace.TraceAnnoEntry;
+import com.tencent.pb.ReportTrace.TraceEntry;
+import com.tencent.pb.ReportTrace.reportStat;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import tencent.im.oidb.cmd0xd69.oidb_cmd0xd69.DoubtInfo;
-import tencent.im.oidb.cmd0xd69.oidb_cmd0xd69.GetListRspBody;
-import tencent.im.oidb.cmd0xd69.oidb_cmd0xd69.GetUnreadNumRspBody;
-import tencent.im.oidb.cmd0xd69.oidb_cmd0xd69.RspBody;
-import tencent.im.oidb.cmd0xd72.oidb_cmd0xd72.RspBody;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.BlockingQueue;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
 public class anjd
-  extends anio
+  implements anjg, BusinessObserver
 {
-  public anjd(QQAppInterface paramQQAppInterface, FriendListHandler paramFriendListHandler)
+  private WeakReference<anjh> a;
+  
+  private ReportTrace.ReportHead a(anit paramanit, String paramString)
   {
-    super(paramQQAppInterface, paramFriendListHandler);
+    ReportTrace.ReportHead localReportHead = new ReportTrace.ReportHead();
+    localReportHead.appid.set(paramanit.a());
+    localReportHead.platform.set(109);
+    paramanit = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      paramanit = "8.4.10";
+    }
+    localReportHead.ver.set(paramanit);
+    paramanit = DeviceInfoUtil.getDeviceOSVersion();
+    if (!TextUtils.isEmpty(paramanit)) {
+      localReportHead.os_ver.set(paramanit);
+    }
+    paramanit = DeviceInfoUtil.getModel();
+    if (!TextUtils.isEmpty(paramanit)) {
+      localReportHead.model.set(paramanit);
+    }
+    paramanit = DeviceInfoUtil.getIMEI();
+    if (!TextUtils.isEmpty(paramanit)) {
+      localReportHead.udid.set(paramanit);
+    }
+    return localReportHead;
   }
   
-  private void a(ToServiceMsg paramToServiceMsg, oidb_cmd0xd69.RspBody paramRspBody, int paramInt, StringBuilder paramStringBuilder, aiej paramaiej)
+  private ReportTrace.SpanEntry a(anjn paramanjn)
   {
-    ArrayList localArrayList = null;
-    Object localObject = paramToServiceMsg.getAttribute("exactData");
-    boolean bool;
-    if (paramRspBody.msg_get_list_body.has()) {
-      if (paramRspBody.msg_get_list_body.bytes_cookies.has())
-      {
-        paramToServiceMsg = paramRspBody.msg_get_list_body.bytes_cookies.get().toByteArray();
-        oidb_cmd0xd69.GetListRspBody localGetListRspBody = (oidb_cmd0xd69.GetListRspBody)paramRspBody.msg_get_list_body.get();
-        paramRspBody = paramToServiceMsg;
-        if (localGetListRspBody.rpt_msg_list.has())
-        {
-          paramRspBody = localGetListRspBody.rpt_msg_list.get();
-          localArrayList = new ArrayList(paramRspBody.size());
-          paramRspBody = paramRspBody.iterator();
-          while (paramRspBody.hasNext()) {
-            localArrayList.add(SysSuspiciousMsg.covertFrom((oidb_cmd0xd69.DoubtInfo)paramRspBody.next()));
-          }
-          if (paramToServiceMsg != null) {
-            break label243;
-          }
-          bool = true;
-          paramaiej.a(localArrayList, bool);
-        }
-      }
+    ReportTrace.SpanEntry localSpanEntry = new ReportTrace.SpanEntry();
+    localSpanEntry.span_id.set(paramanjn.jdField_a_of_type_Int);
+    localSpanEntry.time_stamp.set(paramanjn.jdField_a_of_type_Long);
+    if (paramanjn.jdField_a_of_type_Anjm != null) {
+      localSpanEntry.result.set(a(paramanjn.jdField_a_of_type_Anjm));
     }
-    for (paramRspBody = paramToServiceMsg;; paramRspBody = null)
+    if ((paramanjn.jdField_a_of_type_JavaUtilMap != null) && (paramanjn.jdField_a_of_type_JavaUtilMap.size() > 0))
     {
-      paramaiej = paramStringBuilder.append("CMD_GET_LIST unread=").append("|");
-      if (localArrayList != null)
+      paramanjn = paramanjn.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      while (paramanjn.hasNext())
       {
-        paramToServiceMsg = Integer.valueOf(localArrayList.size());
-        label180:
-        paramaiej.append(paramToServiceMsg);
-        paramStringBuilder = paramStringBuilder.append("|");
-        if (paramRspBody == null) {
-          break label255;
-        }
+        Map.Entry localEntry = (Map.Entry)paramanjn.next();
+        ReportTrace.ExtParam localExtParam = new ReportTrace.ExtParam();
+        localExtParam.param_id.set(((Integer)localEntry.getKey()).intValue());
+        localExtParam.value.set(((Long)localEntry.getValue()).longValue());
+        localSpanEntry.param_list.add(localExtParam);
       }
-      label243:
-      label255:
-      for (paramToServiceMsg = " has cookie";; paramToServiceMsg = " no cookie")
-      {
-        paramStringBuilder.append(paramToServiceMsg);
-        a(125, true, new Object[] { Integer.valueOf(paramInt), localArrayList, paramRspBody, localObject });
-        return;
-        bool = false;
-        break;
-        paramToServiceMsg = " no list";
-        break label180;
-      }
-      paramToServiceMsg = null;
-      break;
     }
+    return localSpanEntry;
   }
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private ReportTrace.TraceEntry a(TraceData paramTraceData, anit paramanit)
   {
-    String str = paramFromServiceMsg.getServiceCmd();
-    if ("OidbSvc.0xd69".equals(str)) {
-      c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    ReportTrace.TraceEntry localTraceEntry = new ReportTrace.TraceEntry();
+    localTraceEntry.feature_id.set(paramTraceData.featureId);
+    localTraceEntry.trace_id.set(paramTraceData.traceId);
+    localTraceEntry.from_uid.set(paramanit.a());
+    if (!TextUtils.isEmpty(paramTraceData.tUid)) {
+      localTraceEntry.to_uid.set(paramTraceData.tUid);
     }
-    while (!"OidbSvc.0xd72".equals(str)) {
+    localTraceEntry.time_stamp.set(paramTraceData.timestamp);
+    localTraceEntry.server_timestamp.set(paramTraceData.serverTime);
+    if (paramTraceData.result != null) {
+      localTraceEntry.result.set(a(paramTraceData.result));
+    }
+    if (paramTraceData.mSpanQueue != null)
+    {
+      paramanit = paramTraceData.mSpanQueue.iterator();
+      while (paramanit.hasNext())
+      {
+        anjn localanjn = (anjn)paramanit.next();
+        localTraceEntry.span_list.add(a(localanjn));
+      }
+    }
+    localTraceEntry.extra1.set(paramTraceData.extra1);
+    localTraceEntry.extra2.set(paramTraceData.extra2);
+    localTraceEntry.extra3.set(paramTraceData.extra3);
+    return localTraceEntry;
+  }
+  
+  private ReportTrace.reportStat a(anjm paramanjm)
+  {
+    ReportTrace.reportStat localreportStat = new ReportTrace.reportStat();
+    localreportStat.ret.set(paramanjm.jdField_a_of_type_Int);
+    localreportStat.cost.set(paramanjm.b);
+    localreportStat.net_type.set(paramanjm.e);
+    localreportStat.cpu.set(paramanjm.d);
+    localreportStat.memory.set(paramanjm.c);
+    localreportStat.java_heap.set(paramanjm.f);
+    localreportStat.native_heap.set(paramanjm.g);
+    return localreportStat;
+  }
+  
+  private List<ReportTrace.SpanAnnoEntry> a(BlockingQueue<anjn> paramBlockingQueue)
+  {
+    if ((paramBlockingQueue == null) || (paramBlockingQueue.size() == 0)) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    paramBlockingQueue = paramBlockingQueue.iterator();
+    while (paramBlockingQueue.hasNext())
+    {
+      anjn localanjn = (anjn)paramBlockingQueue.next();
+      if ((localanjn.jdField_a_of_type_JavaUtilConcurrentBlockingQueue != null) && (localanjn.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.size() > 0))
+      {
+        Iterator localIterator = localanjn.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.iterator();
+        while (localIterator.hasNext())
+        {
+          anjk localanjk = (anjk)localIterator.next();
+          ReportTrace.SpanAnnoEntry localSpanAnnoEntry = new ReportTrace.SpanAnnoEntry();
+          localSpanAnnoEntry.span_id.set(localanjn.jdField_a_of_type_Int);
+          if (!TextUtils.isEmpty(localanjk.jdField_a_of_type_JavaLangString)) {
+            localSpanAnnoEntry.anno_msg.set(localanjk.jdField_a_of_type_JavaLangString);
+          }
+          if (localanjn.jdField_a_of_type_Anjm != null) {
+            localSpanAnnoEntry.errCode.set(localanjn.jdField_a_of_type_Anjm.jdField_a_of_type_Int);
+          }
+          localSpanAnnoEntry.time_stamp.set(localanjk.jdField_a_of_type_Long);
+          localArrayList.add(localSpanAnnoEntry);
+        }
+      }
+    }
+    return localArrayList;
+  }
+  
+  private void a(AppRuntime paramAppRuntime, anit paramanit, String paramString, List<ReportTrace.TraceEntry> paramList)
+  {
+    if ((paramAppRuntime == null) || (paramanit == null) || (paramList == null) || (paramList.size() == 0)) {
       return;
     }
-    d(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    ReportTrace.ReportTraceReq localReportTraceReq = new ReportTrace.ReportTraceReq();
+    localReportTraceReq.head.set(a(paramanit, paramString));
+    localReportTraceReq.trace_list.set(paramList);
+    paramanit = new NewIntent(paramAppRuntime.getApplication(), anjj.class);
+    paramanit.putExtra("cmd", "apollo_monitor.report_trace");
+    paramanit.putExtra("data", localReportTraceReq.toByteArray());
+    paramanit.putExtra("timeout", 30000);
+    paramanit.setObserver(this);
+    paramAppRuntime.startServlet(paramanit);
   }
   
-  public boolean a(String paramString)
+  private void b(AppRuntime paramAppRuntime, anit paramanit, String paramString, List<ReportTrace.TraceAnnoEntry> paramList)
   {
-    return ("OidbSvc.0xd69".equals(paramString)) || ("OidbSvc.0xd72".equals(paramString));
-  }
-  
-  public void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    int j = ((Integer)paramToServiceMsg.getAttribute("cmd", Integer.valueOf(0))).intValue();
-    oidb_cmd0xd69.RspBody localRspBody = new oidb_cmd0xd69.RspBody();
-    FriendListHandler localFriendListHandler = this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
-    int k = FriendListHandler.parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
-    int m = localRspBody.cmd_type.get();
-    paramFromServiceMsg = new StringBuilder(1024);
-    if (k == 0)
-    {
-      paramObject = (aiej)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34);
-      if (m == 2) {
-        if (!localRspBody.msg_get_unread_num_body.has()) {
-          break label647;
-        }
-      }
+    if ((paramAppRuntime == null) || (paramanit == null) || (paramList == null) || (paramList.size() == 0)) {
+      return;
     }
-    label647:
-    for (int i = ((oidb_cmd0xd69.GetUnreadNumRspBody)localRspBody.msg_get_unread_num_body.get()).doubt_unread_num.get();; i = 0)
+    ReportTrace.ReportAnnoReq localReportAnnoReq = new ReportTrace.ReportAnnoReq();
+    localReportAnnoReq.head.set(a(paramanit, paramString));
+    localReportAnnoReq.anno_list.set(paramList);
+    paramanit = new NewIntent(paramAppRuntime.getApplication(), anjj.class);
+    paramanit.putExtra("cmd", "apollo_monitor.report_anno");
+    paramanit.putExtra("data", localReportAnnoReq.toByteArray());
+    paramanit.putExtra("timeout", 30000);
+    paramanit.setObserver(this);
+    paramAppRuntime.startServlet(paramanit);
+  }
+  
+  public void a(anjh paramanjh)
+  {
+    this.a = new WeakReference(paramanjh);
+  }
+  
+  public void a(List<TraceData> paramList)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
+    anit localanit = aniw.a().a();
+    if ((localAppRuntime != null) && (paramList != null) && (localanit != null) && (!TextUtils.isEmpty(localanit.a())))
     {
-      paramFromServiceMsg.append("CMD_GET_UNREAD unread=").append(i);
-      paramObject.b(i);
-      a(124, true, new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
-      for (;;)
+      ArrayList localArrayList1 = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("FriendListHandler.BaseHandlerReceiver", 2, "handleGetSuspiciousMsg cmd:" + m + " localCmd:" + j + " result:" + k + " |" + paramFromServiceMsg.toString());
-        }
-        return;
-        if (m == 1)
+        TraceData localTraceData = (TraceData)paramList.next();
+        ReportTrace.TraceEntry localTraceEntry = a(localTraceData, localanit);
+        if ((!TextUtils.isEmpty(localTraceData.version)) && (!localTraceData.version.equals("8.4.10")))
         {
-          a(paramToServiceMsg, localRspBody, k, paramFromServiceMsg, paramObject);
+          ArrayList localArrayList2 = new ArrayList();
+          localArrayList2.add(localTraceEntry);
+          a(localAppRuntime, localanit, localTraceData.version, localArrayList2);
         }
         else
         {
-          long l;
-          if (m == 3)
+          localArrayList1.add(a(localTraceData, localanit));
+        }
+      }
+      a(localAppRuntime, localanit, null, localArrayList1);
+    }
+  }
+  
+  public void b(List<TraceData> paramList)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
+    anit localanit = aniw.a().a();
+    if ((localAppRuntime != null) && (paramList != null) && (localanit != null) && (!TextUtils.isEmpty(localanit.a())))
+    {
+      ArrayList localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      int i = 0;
+      while (paramList.hasNext())
+      {
+        TraceData localTraceData = (TraceData)paramList.next();
+        ReportTrace.TraceAnnoEntry localTraceAnnoEntry = new ReportTrace.TraceAnnoEntry();
+        localTraceAnnoEntry.uid.set(localanit.a());
+        localTraceAnnoEntry.trace_id.set(localTraceData.traceId);
+        localTraceAnnoEntry.feature_id.set(localTraceData.featureId);
+        localTraceAnnoEntry.server_timestamp.set(localTraceData.serverTime);
+        int j = i;
+        if (localTraceData.result != null)
+        {
+          j = i;
+          if (localTraceData.result.jdField_a_of_type_Int != 0)
           {
-            l = ((Long)paramToServiceMsg.getAttribute("uin", Long.valueOf(0L))).longValue();
-            paramFromServiceMsg.append("CMD_DELETE uin=").append(l);
-            paramObject.a(l);
-            a(126, true, new Object[] { Integer.valueOf(k), Long.valueOf(l) });
-          }
-          else if (m == 4)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("FriendListHandler.BaseHandlerReceiver", 2, "handleGetSuspiciousClear ");
+            localTraceAnnoEntry.ret.set(localTraceData.result.jdField_a_of_type_Int);
+            Object localObject = a(localTraceData.mSpanQueue);
+            if (localObject != null) {
+              localTraceAnnoEntry.span_anno_list.addAll((Collection)localObject);
             }
-            paramFromServiceMsg.append("CMD_CLEAR unread=");
-            paramObject.l();
-            a(127, true, new Object[] { Integer.valueOf(k) });
-          }
-          else if (m == 5)
-          {
-            paramFromServiceMsg.append("CMD_REPORT");
-            a(128, true, new Object[] { Integer.valueOf(k) });
-            continue;
-            if (m == 2)
+            if ((!TextUtils.isEmpty(localTraceData.version)) && (!localTraceData.version.equals("8.4.10")))
             {
-              paramFromServiceMsg.append("CMD_GET_UNREAD failed");
-              a(124, false, new Object[] { Integer.valueOf(k), Integer.valueOf(0) });
+              localObject = new ArrayList();
+              ((List)localObject).add(localTraceAnnoEntry);
+              b(localAppRuntime, localanit, localTraceData.version, (List)localObject);
+              continue;
             }
-            else if (m == 1)
-            {
-              paramFromServiceMsg.append("CMD_GET_LIST failed");
-              a(125, false, new Object[] { Integer.valueOf(k), null, null, paramToServiceMsg.getAttribute("exactData") });
-            }
-            else if (m == 3)
-            {
-              l = ((Long)paramToServiceMsg.getAttribute("uin", Long.valueOf(0L))).longValue();
-              paramFromServiceMsg.append("CMD_DELETE failed ").append(l);
-              a(126, false, new Object[] { Integer.valueOf(k), Long.valueOf(l) });
-            }
-            else if (m == 4)
-            {
-              paramFromServiceMsg.append("CMD_CLEAR failed");
-              a(127, false, new Object[] { Integer.valueOf(k) });
-            }
-            else if (m == 5)
-            {
-              paramFromServiceMsg.append("CMD_REPORT failed");
-              a(128, false, new Object[] { Integer.valueOf(k) });
-            }
+            j = 1;
+            localArrayList.add(localTraceAnnoEntry);
           }
         }
+        i = j;
+      }
+      if (i != 0) {
+        b(localAppRuntime, localanit, null, localArrayList);
       }
     }
   }
   
-  public void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {
-      return;
-    }
-    long l = ((Long)paramToServiceMsg.getAttribute("toUin", Long.valueOf(0L))).longValue();
-    if (QLog.isColorLevel()) {
-      QLog.i("FriendListHandler.BaseHandlerReceiver", 2, "handleAgreeSuspiciousMsg " + l);
-    }
-    paramToServiceMsg = new oidb_cmd0xd72.RspBody();
-    FriendListHandler localFriendListHandler = this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
-    int i = FriendListHandler.parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg);
-    if (i == 0)
+    String str = paramBundle.getString("cmd");
+    if (("apollo_monitor.report_trace".equals(str)) || ("apollo_monitor.report_anno".equals(str)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FriendListHandler.BaseHandlerReceiver", 2, "handleAgreeSuspiciousMsg suc " + l);
+      if (paramBoolean) {
+        break label318;
       }
-      ((aiej)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34)).a(l);
-      a(129, true, new Object[] { Integer.valueOf(i), Long.valueOf(l) });
-      return;
+      paramInt = paramBundle.getInt("retryTime");
+      QLog.w("TraceReport", 1, "cmd:" + str + ",retryTime:" + paramInt);
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("FriendListHandler.BaseHandlerReceiver", 2, "handleAgreeSuspiciousMsg failed result:" + i);
+    for (;;)
+    {
+      Object localObject1;
+      if (("apollo_monitor.report_trace".equals(str)) && (paramBoolean) && (this.a != null)) {
+        localObject1 = new ReportTrace.ReportTraceRsp();
+      }
+      for (;;)
+      {
+        try
+        {
+          localObject2 = (anjh)this.a.get();
+          if (localObject2 != null)
+          {
+            ((ReportTrace.ReportTraceRsp)localObject1).mergeFrom(paramBundle.getByteArray("data"));
+            int i = ((ReportTrace.ReportTraceRsp)localObject1).report_interval.get();
+            int j = ((ReportTrace.ReportTraceRsp)localObject1).report_num.get();
+            if (((ReportTrace.ReportTraceRsp)localObject1).report_fail.get() != 1) {
+              continue;
+            }
+            bool = true;
+            ((anjh)localObject2).a(i, j, bool);
+          }
+        }
+        catch (Exception localException)
+        {
+          Object localObject2;
+          boolean bool;
+          QLog.e("TraceReport", 1, localException, new Object[0]);
+          continue;
+        }
+        localObject1 = BaseApplicationImpl.getApplication().peekAppRuntime();
+        if ((!paramBoolean) && (paramInt < 1) && (localObject1 != null))
+        {
+          localObject2 = new NewIntent(((AppRuntime)localObject1).getApplication(), anjj.class);
+          ((NewIntent)localObject2).putExtra("retryTime", paramInt + 1);
+          ((NewIntent)localObject2).putExtra("cmd", str);
+          ((NewIntent)localObject2).putExtra("data", paramBundle.getByteArray("request_data"));
+          ((NewIntent)localObject2).putExtra("timeout", 30000);
+          ((NewIntent)localObject2).setObserver(this);
+          ((AppRuntime)localObject1).startServlet((NewIntent)localObject2);
+        }
+        return;
+        bool = false;
+      }
+      label318:
+      paramInt = 0;
     }
-    a(129, false, new Object[] { Integer.valueOf(i), Long.valueOf(l) });
   }
 }
 

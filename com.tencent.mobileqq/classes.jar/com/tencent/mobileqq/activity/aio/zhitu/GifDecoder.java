@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.zhitu;
 
-import ahtg;
+import aiof;
 import android.graphics.Bitmap;
 
 public class GifDecoder
@@ -10,7 +10,7 @@ public class GifDecoder
   
   private native boolean nativeBitmapIteratorHasNext(long paramLong);
   
-  private native ahtg nativeBitmapIteratornext(long paramLong1, long paramLong2);
+  private native aiof nativeBitmapIteratornext(long paramLong1, long paramLong2);
   
   private native void nativeClose(long paramLong);
   

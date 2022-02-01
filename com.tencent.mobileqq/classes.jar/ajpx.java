@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import mqq.observer.AccountObserver;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
 class ajpx
-  extends AccountObserver
+  implements QQPermissionCallback
 {
-  ajpx(ajpw paramajpw) {}
+  ajpx(ajpi paramajpi) {}
   
-  public void onUpdateSKey(String paramString1, String paramString2)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (paramString1 == null)
-    {
-      ajpw.b(this.a, null);
-      ajpw.a(this.a, null);
-      this.a.notifyDataSetChanged();
-      return;
-    }
-    this.a.startUpload(ajpw.a(this.a), this.a.mTroopInfo.troopcode, paramString1, this.a.mApp.getCurrentAccountUin());
-    ajpw.a(this.a, null);
+    QLog.i("SDKEmotionSettingManager", 1, "setEmotion denied sd grant");
+    bhdj.a(ajpi.a(this.a), new ajpy(this));
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.i("SDKEmotionSettingManager", 1, "setEmotion user grant");
+    ajpi.a(this.a, ajpi.b(this.a));
   }
 }
 

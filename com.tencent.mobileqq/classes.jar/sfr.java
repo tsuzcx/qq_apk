@@ -1,7 +1,53 @@
-import kotlin.Metadata;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager.5;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnGuideManager$Companion;", "", "()V", "DEFAULT_DAY_INTERVAL", "", "SUFFIX_VIDEO_COLUMN", "", "TAG", "VIDEO_COLUMN_GUIDE_BG_IMG", "VIDEO_COLUMN_GUIDE_DAY_INTERNAL", "VIDEO_COLUMN_GUIDE_OPEN", "VIDEO_COLUMN_GUIDE_URL", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class sfr {}
+public class sfr
+  implements bghi
+{
+  public sfr(ReadInJoyWebDataManager.5 param5) {}
+  
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  {
+    if (paramJSONObject != null)
+    {
+      this.a.this$0.a(this.a.b, Integer.toString(sfq.b));
+      try
+      {
+        if ((this.a.jdField_a_of_type_Sfv != null) && ((this.a.jdField_a_of_type_Sfv instanceof sfv))) {
+          this.a.jdField_a_of_type_Sfv.a(paramJSONObject);
+        }
+        paramBundle = paramJSONObject.toString();
+        sfq.a(this.a.this$0, this.a.b, paramBundle);
+        if (this.a.jdField_a_of_type_OrgJsonJSONObject != null)
+        {
+          this.a.jdField_a_of_type_OrgJsonJSONObject.put("data", paramBundle);
+          this.a.this$0.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_OrgJsonJSONObject.toString(), "", this.a.jdField_a_of_type_OrgJsonJSONObject);
+        }
+      }
+      catch (JSONException paramBundle)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:storeParams putData JSONException :" + paramBundle);
+          }
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:return result :" + paramJSONObject);
+      }
+    }
+    do
+    {
+      return;
+      this.a.this$0.a(this.a.b, Integer.toString(sfq.a));
+    } while (!QLog.isColorLevel());
+    QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:return result null");
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

@@ -1,22 +1,29 @@
+import android.app.Activity;
+import android.arch.lifecycle.Observer;
+import android.content.Intent;
 import android.support.annotation.Nullable;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
+import dov.com.qq.im.ae.camera.ui.topbar.AEVideoStoryTopBarViewModel.Ratio;
 
 class bnhk
-  extends bnhr
+  implements Observer<AEVideoStoryTopBarViewModel.Ratio>
 {
-  bnhk(bnhh parambnhh, DoodleEmojiItem paramDoodleEmojiItem)
-  {
-    super(paramDoodleEmojiItem);
-  }
+  bnhk(bnhf parambnhf) {}
   
-  protected void a(@Nullable DoodleEmojiItem arg1)
+  public void a(@Nullable AEVideoStoryTopBarViewModel.Ratio paramRatio)
   {
-    super.onResult(???);
-    xvv.b("DoodleEmojiManager", "startDownload again");
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
+    if (paramRatio == null) {
+      return;
+    }
+    bnri.a();
+    Object localObject = bnbp.a(paramRatio);
+    bnhf.a(this.a, (bnru)localObject);
+    localObject = new Intent();
+    ((Intent)localObject).setAction("ae_editor_bottom_tab_change_style");
+    if (paramRatio == AEVideoStoryTopBarViewModel.Ratio.FULL) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem = null;
-      this.a.d();
+      ((Intent)localObject).putExtra("is_full_screen_capture", bool);
+      bnhf.a(this.a).a().sendBroadcast((Intent)localObject);
       return;
     }
   }

@@ -1,17 +1,24 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgType0x210;
 
 public class bctx
+  implements bctu
 {
-  public ImageView a;
-  public TextView a;
-  public URLImageView a;
-  public TimDocSSOMsg.UinRightInfo a;
-  public TextView b;
-  
-  public bctx(bctw parambctw) {}
+  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre, MessageHandler paramMessageHandler)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.troopgetnews..troop.notification_center", 2, "decodeC2CMsgPkg_MsgType0x210, receive troop news push");
+    }
+    ((aoep)paramMessageHandler.app.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).a(paramMsgType0x210.msg_content.get().toByteArray());
+  }
 }
 
 

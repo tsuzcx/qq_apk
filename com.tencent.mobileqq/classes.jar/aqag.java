@@ -1,10 +1,7 @@
-public class aqag
-{
-  public aptx[] a = new aptx[0];
-}
+public class aqag {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqag
  * JD-Core Version:    0.7.0.1
  */

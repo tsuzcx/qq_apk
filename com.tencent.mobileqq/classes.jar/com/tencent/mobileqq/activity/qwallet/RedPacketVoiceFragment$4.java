@@ -16,7 +16,7 @@ class RedPacketVoiceFragment$4
     if (this.this$0.c()) {
       return;
     }
-    String str2 = this.this$0.getResources().getString(2131694839);
+    String str2 = this.this$0.getResources().getString(2131695053);
     String str1;
     if (this.jdField_a_of_type_Int == 2) {
       str1 = this.jdField_a_of_type_JavaLangString;

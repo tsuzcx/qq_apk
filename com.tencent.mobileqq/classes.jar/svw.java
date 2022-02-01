@@ -1,34 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
-final class svw
-  implements pwy
+class svw
+  extends suv
 {
-  svw(ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, boolean paramBoolean) {}
+  svw(suw paramsuw) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    int i = 1;
-    paramString = svv.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
-    if (paramBoolean)
-    {
-      paramInt = 1;
-      ozw.a(paramString, "is_done", Integer.valueOf(paramInt));
-      if (!this.jdField_a_of_type_Boolean) {
-        break label82;
-      }
-    }
-    label82:
-    for (paramInt = i;; paramInt = 0)
-    {
-      ozw.a(paramString, "is_intensify", Integer.valueOf(paramInt));
-      swy.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X800898B", paramString.toString());
-      return;
-      paramInt = 2;
-      break;
-    }
+    suw.a(this.a, paramInt, paramBaseArticleInfo, paramString);
+  }
+  
+  public int b()
+  {
+    return 2;
+  }
+  
+  public int c()
+  {
+    return 3;
   }
 }
 

@@ -1,49 +1,41 @@
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView.Recycler;
+import android.support.v7.widget.RecyclerView.State;
 
-class zpj
-  implements oxs
+public class zpj
+  extends LinearLayoutManager
 {
-  zpj(zpf paramzpf, JSONObject paramJSONObject, String paramString, JSONArray paramJSONArray, Bundle paramBundle) {}
-  
-  public void a(long paramLong, boolean paramBoolean1, int paramInt1, int paramInt2, @Nullable String paramString1, @Nullable String paramString2, int paramInt3, boolean paramBoolean2)
+  public zpj(Context paramContext, int paramInt, boolean paramBoolean)
   {
-    paramInt3 = 0;
-    if (paramBoolean1) {}
-    for (paramInt2 = 0;; paramInt2 = -2)
+    super(paramContext, paramInt, paramBoolean);
+  }
+  
+  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  {
+    try
     {
-      try
-      {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("retCode", paramInt2);
-        this.jdField_a_of_type_OrgJsonJSONObject.put("commentId", paramString1);
-        this.jdField_a_of_type_OrgJsonJSONObject.put("comment", this.jdField_a_of_type_JavaLangString);
-        if (this.jdField_a_of_type_OrgJsonJSONArray == null) {
-          break;
-        }
-        this.jdField_a_of_type_OrgJsonJSONObject.put("linkDataList", this.jdField_a_of_type_OrgJsonJSONArray);
-      }
-      catch (JSONException paramString1)
-      {
-        for (;;)
-        {
-          QLog.e("TroopMemberApiService", 1, "handleCommentEditorNativeResult put create comment result error.");
-          continue;
-          paramInt2 = paramInt3;
-          if (paramInt1 == -4096) {
-            paramInt2 = 1;
-          }
-        }
-      }
-      this.jdField_a_of_type_OrgJsonJSONObject.put("errorType", paramInt2);
-      this.jdField_a_of_type_AndroidOsBundle.putString("BUNDLE_KEY_JS_OBJ", this.jdField_a_of_type_OrgJsonJSONObject.toString());
-      this.jdField_a_of_type_Zpf.a.a(154, this.jdField_a_of_type_AndroidOsBundle);
+      super.onLayoutChildren(paramRecycler, paramState);
       return;
     }
+    catch (Exception paramRecycler)
+    {
+      paramRecycler.printStackTrace();
+    }
+  }
+  
+  public int scrollVerticallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  {
+    try
+    {
+      paramInt = super.scrollVerticallyBy(paramInt, paramRecycler, paramState);
+      return paramInt;
+    }
+    catch (IndexOutOfBoundsException paramRecycler)
+    {
+      paramRecycler.printStackTrace();
+    }
+    return 0;
   }
 }
 

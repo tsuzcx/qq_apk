@@ -1,6 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.SquareImageView android:id="@id/nj2" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <View android:layout_gravity="center" android:id="@id/dl0" android:background="@drawable/ghm" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="30.0dip" android:scaleType="centerInside" />
-</FrameLayout>
+<com.tencent.avgame.gameroom.stage.guessaction.GuessActionStageView android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

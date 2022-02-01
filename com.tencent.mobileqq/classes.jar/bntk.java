@@ -1,24 +1,6 @@
-import android.os.Bundle;
-
-class bntk
-  implements bmru
+public abstract interface bntk
 {
-  bntk(bntj parambntj) {}
-  
-  public void a(bmsh parambmsh) {}
-  
-  public void a(bmsh parambmsh, boolean paramBoolean, int paramInt, Bundle paramBundle) {}
-  
-  public void a(bmsk parambmsk, boolean paramBoolean, int paramInt, Bundle paramBundle)
-  {
-    if (paramBoolean) {
-      this.a.a(4001, null);
-    }
-  }
-  
-  public void a(bmsr parambmsr, boolean paramBoolean, int paramInt, Bundle paramBundle) {}
-  
-  public void a(bnuc parambnuc) {}
+  public abstract void a(float paramFloat);
 }
 
 

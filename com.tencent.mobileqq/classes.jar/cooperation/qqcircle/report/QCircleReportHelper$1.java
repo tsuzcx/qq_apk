@@ -1,6 +1,5 @@
 package cooperation.qqcircle.report;
 
-import android.text.TextUtils;
 import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
 import com.tencent.biz.richframework.network.request.VSBaseRequest;
 import com.tencent.qphone.base.util.QLog;
@@ -15,12 +14,11 @@ class QCircleReportHelper$1
   {
     if ((!paramBoolean) || (paramLong != 0L) || (paramStGetSessionInfoRsp == null))
     {
-      if (!TextUtils.isEmpty(paramString)) {
-        QLog.e("QCircleReportHelper", 1, "requestReportSession error:" + paramString);
-      }
+      QLog.e("QCircleReportHelper", 1, "requestReportSession scene:" + this.val$scene + ",retCode:" + paramLong + ",error:" + paramString);
       return;
     }
     QCircleReportHelper.access$000(this.this$0, paramStGetSessionInfoRsp, this.val$scene);
+    QLog.d("QCircleReportHelper", 1, "requestReportSession success!scene:" + this.val$scene);
   }
 }
 

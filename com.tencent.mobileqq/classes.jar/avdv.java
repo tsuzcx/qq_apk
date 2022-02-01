@@ -1,13 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.11;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.message.TinyInfo;
 
 public class avdv
-  implements DialogInterface.OnClickListener
 {
-  public avdv(LocationDialogUtil.11 param11) {}
+  public static String a(MessageRecord paramMessageRecord)
+  {
+    TinyInfo localTinyInfo = new TinyInfo();
+    localTinyInfo.parseFromMessageRecord(paramMessageRecord);
+    if (paramMessageRecord.isSend()) {
+      return localTinyInfo.fromRoleId;
+    }
+    return localTinyInfo.toRoleId;
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public static String b(MessageRecord paramMessageRecord)
+  {
+    TinyInfo localTinyInfo = new TinyInfo();
+    localTinyInfo.parseFromMessageRecord(paramMessageRecord);
+    if (paramMessageRecord.isSend()) {
+      return localTinyInfo.toRoleId;
+    }
+    return localTinyInfo.fromRoleId;
+  }
 }
 
 

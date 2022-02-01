@@ -1,41 +1,17 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
 
 public class bfsr
-  implements DownloadParams.DecodeHandler
+  implements DialogInterface.OnClickListener
 {
-  private DownloadParams.DecodeHandler a;
-  private DownloadParams.DecodeHandler b;
+  public bfsr(ReciteFragment paramReciteFragment) {}
   
-  public bfsr(DownloadParams.DecodeHandler paramDecodeHandler1, DownloadParams.DecodeHandler paramDecodeHandler2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramDecodeHandler1;
-    this.b = paramDecodeHandler2;
-  }
-  
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
-  {
-    Bitmap localBitmap = this.a.run(paramDownloadParams, paramBitmap);
-    DownloadParams localDownloadParams = null;
-    if (localBitmap != null)
-    {
-      paramDownloadParams = this.b.run(paramDownloadParams, localBitmap);
-      localDownloadParams = paramDownloadParams;
-      if (localBitmap != paramDownloadParams)
-      {
-        localDownloadParams = paramDownloadParams;
-        if (localBitmap != paramBitmap)
-        {
-          localBitmap.recycle();
-          localDownloadParams = paramDownloadParams;
-        }
-      }
-    }
-    if (localDownloadParams != null) {
-      paramBitmap = localDownloadParams;
-    }
-    return paramBitmap;
+    paramDialogInterface.dismiss();
+    this.a.a(false);
+    this.a.c();
   }
 }
 

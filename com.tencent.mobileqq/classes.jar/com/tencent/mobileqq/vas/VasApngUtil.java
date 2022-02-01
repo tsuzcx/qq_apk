@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.widget.ImageView;
-import bgft;
+import bhoo;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -71,9 +71,9 @@ public class VasApngUtil
   public static final int[] VIP_APNG_TAGS = { 1, 0, 2, 3, 9, 27 };
   public static int[] converstionTag = { 2, 3, 4, 5, 6, 8 };
   
-  public static bgft factory()
+  public static bhoo factory()
   {
-    return bgft.a;
+    return bhoo.a;
   }
   
   @Deprecated

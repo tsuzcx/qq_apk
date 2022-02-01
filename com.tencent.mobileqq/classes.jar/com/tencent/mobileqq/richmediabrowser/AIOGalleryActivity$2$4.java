@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.richmediabrowser;
 
-import baio;
+import bbpd;
 
 public class AIOGalleryActivity$2$4
   implements Runnable
 {
-  public AIOGalleryActivity$2$4(baio parambaio) {}
+  public AIOGalleryActivity$2$4(bbpd parambbpd) {}
   
   public void run() {}
 }

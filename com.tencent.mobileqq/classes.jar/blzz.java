@@ -1,61 +1,12 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.gif.video.PngsTextDrawer.1;
-import dov.com.qq.im.ae.gif.video.PngsTextDrawer.2;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import android.os.Bundle;
+import android.os.IInterface;
 
-public class blzz
+public abstract interface blzz
+  extends IInterface
 {
-  private static String jdField_a_of_type_JavaLangString = blzn.class.getSimpleName();
-  private int jdField_a_of_type_Int = 320;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private blxf jdField_a_of_type_Blxf;
-  private bmaa jdField_a_of_type_Bmaa;
-  private int jdField_b_of_type_Int = 320;
-  private String jdField_b_of_type_JavaLangString = bljp.jdField_b_of_type_JavaLangString;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private int d;
+  public abstract Bundle a(String paramString, Bundle paramBundle);
   
-  public blzz(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-    paramString = new HandlerThread("PngsTextDrawerHT" + System.currentTimeMillis());
-    paramString.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramString.getLooper());
-  }
-  
-  private List<String> a(String paramString)
-  {
-    String[] arrayOfString = new File(paramString).list();
-    Arrays.sort(arrayOfString);
-    ArrayList localArrayList = new ArrayList();
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      String str = arrayOfString[i];
-      localArrayList.add(paramString + File.separator + str);
-      i += 1;
-    }
-    return localArrayList;
-  }
-  
-  public void a(bmaa parambmaa)
-  {
-    this.jdField_a_of_type_Bmaa = parambmaa;
-    QLog.d(jdField_a_of_type_JavaLangString, 4, "start add text to png");
-    this.jdField_a_of_type_AndroidOsHandler.post(new PngsTextDrawer.2(this, parambmaa));
-  }
-  
-  public void a(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, String paramString4, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PngsTextDrawer.1(this, paramFloat3, paramFloat4, paramString1, paramInt1, paramString2, paramString3, paramInt2, paramString4, paramFloat1, paramFloat2));
-  }
+  public abstract void a(String paramString, Bundle paramBundle);
 }
 
 

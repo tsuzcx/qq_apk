@@ -1,5 +1,8 @@
 package com.tencent.ttpic.openapi.watermark;
 
+import android.text.TextUtils;
+import com.tencent.ttpic.openapi.model.WMElement;
+
 class LogicDataManager$72
   extends LogicDataManager.LogicValueProvider
 {
@@ -10,6 +13,18 @@ class LogicDataManager$72
   
   public String getValue()
   {
+    return getValue(null);
+  }
+  
+  public String getValue(WMElement paramWMElement)
+  {
+    if (paramWMElement != null)
+    {
+      paramWMElement = this.this$0.getLocationForSpecificMaterial(paramWMElement.sid);
+      if (!TextUtils.isEmpty(paramWMElement)) {
+        return paramWMElement;
+      }
+    }
     if (LogicDataManager.access$4600(this.this$0) == null) {
       return "我在这里";
     }

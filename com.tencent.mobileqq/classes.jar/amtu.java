@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingFragment;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
 
-final class amtu
-  implements DialogInterface.OnClickListener
+public class amtu
+  extends amua
 {
-  amtu(QQAppInterface paramQQAppInterface) {}
+  public amtu(CmGameLoadingFragment paramCmGameLoadingFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, long paramLong, Object paramObject)
   {
-    paramDialogInterface.dismiss();
-    bcef.b(this.a, "CliOper", "", "", "0X8004C6C", "0X8004C6C", 0, 0, "", "", "", "");
+    if (CmGameLoadingFragment.a(this.a) != null) {
+      CmGameLoadingFragment.a(this.a).a(paramBoolean, paramLong);
+    }
   }
 }
 

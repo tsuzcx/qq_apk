@@ -1,18 +1,46 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.os.Build.VERSION;
+import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
+import android.view.View;
 
-public final class uup
-  implements Parcelable.Creator<WSRedDotPushMsg>
+public class uup
 {
-  public WSRedDotPushMsg a(Parcel paramParcel)
+  public static GradientDrawable a(View paramView, float paramFloat, @ColorInt int paramInt)
   {
-    return new WSRedDotPushMsg(paramParcel);
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setShape(0);
+    localGradientDrawable.setCornerRadius(paramFloat);
+    localGradientDrawable.setColor(paramInt);
+    if (paramView != null) {
+      a(paramView, localGradientDrawable);
+    }
+    return localGradientDrawable;
   }
   
-  public WSRedDotPushMsg[] a(int paramInt)
+  public static GradientDrawable a(View paramView, float paramFloat, @ColorInt int paramInt1, int paramInt2)
   {
-    return new WSRedDotPushMsg[paramInt];
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setShape(0);
+    if (paramFloat > 0.0F) {
+      localGradientDrawable.setCornerRadius(paramFloat);
+    }
+    localGradientDrawable.setStroke(paramInt2, paramInt1);
+    if (paramView != null) {
+      a(paramView, localGradientDrawable);
+    }
+    return localGradientDrawable;
+  }
+  
+  public static void a(@NonNull View paramView, @NonNull Drawable paramDrawable)
+  {
+    if (Build.VERSION.SDK_INT < 16)
+    {
+      paramView.setBackgroundDrawable(paramDrawable);
+      return;
+    }
+    paramView.setBackground(paramDrawable);
   }
 }
 

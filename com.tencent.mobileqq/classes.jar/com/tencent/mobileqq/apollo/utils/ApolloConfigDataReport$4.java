@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import amil;
+import anjv;
 import com.tencent.qphone.base.util.QLog;
 
 public final class ApolloConfigDataReport$4
@@ -11,7 +11,7 @@ public final class ApolloConfigDataReport$4
     if (QLog.isColorLevel()) {
       QLog.d("ApolloConfigDataReport", 2, "interceptReport other app init opNameSet");
     }
-    amil.c(amil.a(amil.a()));
+    anjv.c(anjv.a(anjv.a()));
   }
 }
 

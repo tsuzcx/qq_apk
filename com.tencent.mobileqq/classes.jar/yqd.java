@@ -1,19 +1,62 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterManager;
+import java.io.File;
+import org.json.JSONObject;
 
-class yqd
-  implements View.OnClickListener
+public class yqd
+  implements Cloneable
 {
-  yqd(yqc paramyqc) {}
+  public static final String a;
+  public int a;
+  public int b;
+  public String b;
+  public String c;
   
-  public void onClick(View paramView)
+  static
   {
-    ypy localypy = this.a.jdField_a_of_type_Ypy;
-    if (localypy != null) {
-      localypy.a(this.a.jdField_a_of_type_Yqe, this.a);
+    jdField_a_of_type_JavaLangString = ArtFilterManager.jdField_b_of_type_JavaLangString + "loading" + File.separator;
+  }
+  
+  public static yqd a(JSONObject paramJSONObject)
+  {
+    yqd localyqd = new yqd();
+    localyqd.jdField_b_of_type_Int = paramJSONObject.getInt("version");
+    localyqd.jdField_a_of_type_Int = paramJSONObject.getInt("picNum");
+    localyqd.c = paramJSONObject.getString("url");
+    localyqd.jdField_b_of_type_JavaLangString = paramJSONObject.getString("md5");
+    return localyqd;
+  }
+  
+  public String a()
+  {
+    Object localObject = new File(c());
+    if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
+    {
+      localObject = ((File)localObject).listFiles();
+      if ((localObject != null) && (localObject.length == this.jdField_a_of_type_Int)) {
+        return c();
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return null;
+  }
+  
+  public String b()
+  {
+    return jdField_a_of_type_JavaLangString + this.jdField_b_of_type_Int + ".zip";
+  }
+  
+  public String c()
+  {
+    return jdField_a_of_type_JavaLangString + this.jdField_b_of_type_Int + File.separator;
+  }
+  
+  public Object clone()
+  {
+    return super.clone();
+  }
+  
+  public String d()
+  {
+    return "loading" + File.separator + this.jdField_b_of_type_Int + ".zip";
   }
 }
 

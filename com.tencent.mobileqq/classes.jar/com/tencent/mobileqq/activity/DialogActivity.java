@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import addg;
-import addh;
-import addi;
-import addj;
-import addk;
-import addl;
-import addm;
-import addn;
+import adui;
+import aduj;
+import aduk;
+import adul;
+import adum;
+import adun;
+import aduo;
+import adup;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -17,10 +17,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager.BadTokenException;
-import anoh;
-import bcef;
-import bcvk;
-import bfur;
+import aora;
+import bdla;
+import becj;
+import bhdj;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
@@ -39,8 +39,8 @@ public class DialogActivity
   
   private void a()
   {
-    QQCustomDialog localQQCustomDialog = bfur.a(this, 230).setMessage(getString(this.e)).setPositiveButton(getString(2131718439), new addh(this)).setNegativeButton(getString(2131718440), new addg(this));
-    localQQCustomDialog.setOnCancelListener(new addi(this));
+    QQCustomDialog localQQCustomDialog = bhdj.a(this, 230).setMessage(getString(this.e)).setPositiveButton(getString(2131718825), new aduj(this)).setNegativeButton(getString(2131718826), new adui(this));
+    localQQCustomDialog.setOnCancelListener(new aduk(this));
     a(localQQCustomDialog);
   }
   
@@ -54,7 +54,7 @@ public class DialogActivity
       }
       paramDialog.show();
       if (this.f == c) {
-        bcef.b(null, "dc00898", "", "", "0X8009AC7", "0X8009AC7", 0, 0, "", "", "", "");
+        bdla.b(null, "dc00898", "", "", "0X8009AC7", "0X8009AC7", 0, 0, "", "", "", "");
       }
       return;
     }
@@ -69,14 +69,14 @@ public class DialogActivity
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidAppDialog = bfur.a(this, 230, null, getString(2131698019), getString(2131690620), getString(2131698020), new addj(this), new addk(this));
+    this.jdField_a_of_type_AndroidAppDialog = bhdj.a(this, 230, null, getString(2131698305), getString(2131690697), getString(2131698306), new adul(this), new adum(this));
     a(this.jdField_a_of_type_AndroidAppDialog);
   }
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidAppDialog = new anoh(this);
-    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new addl(this));
+    this.jdField_a_of_type_AndroidAppDialog = new aora(this);
+    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new adun(this));
     a(this.jdField_a_of_type_AndroidAppDialog);
   }
   
@@ -85,7 +85,7 @@ public class DialogActivity
     if (getIntent() == null) {
       return;
     }
-    new bcvk(this, getIntent().getStringExtra("key_dialog_title"), getIntent().getStringExtra("key_dialog_content"), new addm(this), new addn(this)).show();
+    new becj(this, getIntent().getStringExtra("key_dialog_title"), getIntent().getStringExtra("key_dialog_content"), new aduo(this), new adup(this)).show();
   }
   
   @Override
@@ -103,7 +103,7 @@ public class DialogActivity
     if (localIntent != null)
     {
       this.f = localIntent.getIntExtra("key_dialog_type", jdField_a_of_type_Int);
-      this.e = localIntent.getIntExtra("key_dialog_msg_id", 2131691138);
+      this.e = localIntent.getIntExtra("key_dialog_msg_id", 2131691223);
     }
     return super.doOnCreate(paramBundle);
   }
@@ -170,7 +170,7 @@ public class DialogActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DialogActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -2,10 +2,11 @@ package dov.com.qq.im;
 
 import android.content.Intent;
 import android.text.TextUtils;
-import bmbc;
+import bnqm;
+import bnrh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.statistics.StatisticCollector;
-import xwa;
+import ykv;
 
 class QIMCameraCaptureActivity$1
   implements Runnable
@@ -16,13 +17,20 @@ class QIMCameraCaptureActivity$1
   {
     boolean bool = true;
     StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(null, "enter_story_capture_count", true, 0L, 0L, null, "");
-    xwa.a("video_shoot_new", "shoot_exp", xwa.b(this.a), 0, new String[] { "", "", "", String.valueOf(this.this$0.getIntent().getIntExtra("entrance_type", 0)) });
+    ykv.a("video_shoot_new", "shoot_exp", ykv.b(this.a), 0, new String[] { "", "", "", String.valueOf(this.this$0.getIntent().getIntExtra("entrance_type", 0)) });
     if (!TextUtils.isEmpty(this.this$0.getIntent().getStringExtra("KEY_ISENTER_SO_DOWNLOAD"))) {}
     for (;;)
     {
-      bmbc.a().b(bool);
-      bmbc.a().ad();
-      return;
+      bnqm.a().b(bool);
+      try
+      {
+        bnqm.a().ad();
+        return;
+      }
+      catch (Exception localException)
+      {
+        bnrh.d("QIMCameraCaptureActivity", localException.toString());
+      }
       bool = false;
     }
   }

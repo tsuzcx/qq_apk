@@ -1,12 +1,30 @@
-class ajrm
-  implements bhnm
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.util.VersionUtils;
+
+public class ajrm
+  implements View.OnClickListener
 {
-  ajrm(ajrg paramajrg, Runnable paramRunnable) {}
+  public ajrm(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
+    if (!this.a.d)
+    {
+      if (!VersionUtils.isHoneycomb()) {
+        break label40;
+      }
+      this.a.startActivity(new Intent("android.settings.SETTINGS"));
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label40:
+      this.a.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
     }
   }
 }

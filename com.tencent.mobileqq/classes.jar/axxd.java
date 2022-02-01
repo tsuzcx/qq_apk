@@ -1,6 +1,8 @@
-abstract interface axxd
+import android.os.Bundle;
+
+public abstract interface axxd
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
 }
 
 

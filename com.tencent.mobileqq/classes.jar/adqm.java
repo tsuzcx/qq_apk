@@ -1,33 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
 
 public class adqm
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  public adqm(LoginInfoActivity paramLoginInfoActivity, boolean paramBoolean, FrameLayout paramFrameLayout) {}
+  public adqm(ChatSettingActivity paramChatSettingActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, this.jdField_a_of_type_AndroidWidgetFrameLayout);
-      paramView = LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label57;
-      }
-    }
-    label57:
-    for (int i = 20200313;; i = 20200720)
-    {
-      paramView.removeMessages(i);
-      return false;
-      LoginInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, this.jdField_a_of_type_AndroidWidgetFrameLayout);
-      break;
-    }
+    ChatSettingActivity.c(this.a);
   }
 }
 

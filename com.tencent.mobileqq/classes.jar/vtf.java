@@ -1,46 +1,20 @@
-import android.content.Context;
-import android.support.annotation.IdRes;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.util.SparseArray;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.view.WSTabLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class vtf<M>
-  extends RecyclerView.ViewHolder
+class vtf
+  implements View.OnClickListener
 {
-  private SparseArray<View> a = new SparseArray();
+  vtf(vte paramvte, WSTabLayout paramWSTabLayout) {}
   
-  public vtf(View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-  }
-  
-  public vtf(ViewGroup paramViewGroup, int paramInt)
-  {
-    super(LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false));
-  }
-  
-  protected Context a()
-  {
-    return this.itemView.getContext();
-  }
-  
-  protected <T extends View> T a(@IdRes int paramInt)
-  {
-    View localView2 = (View)this.a.get(paramInt);
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = this.itemView.findViewById(paramInt);
-      this.a.put(paramInt, localView1);
+    if (WSTabLayout.a(this.jdField_a_of_type_Vte.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSTabLayout) != null) {
+      WSTabLayout.a(this.jdField_a_of_type_Vte.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSTabLayout).a(vte.a(this.jdField_a_of_type_Vte));
     }
-    return localView1;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void a() {}
-  
-  public void a(M paramM) {}
 }
 
 

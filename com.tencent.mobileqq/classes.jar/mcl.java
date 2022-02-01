@@ -1,28 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-
-class mcl
-  extends Handler
+public class mcl
 {
-  public mcl(mck parammck, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    mck.a(this.a);
-  }
+  public int a = 2131166028;
+  public String a;
+  public int b = 2131165991;
+  public int c;
+  public int d = -1;
+  public int e;
+  public int f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mcl
  * JD-Core Version:    0.7.0.1
  */

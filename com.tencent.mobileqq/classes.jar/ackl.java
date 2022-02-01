@@ -1,24 +1,8 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import android.view.View;
 
-class ackl
-  extends JobSegment<avro, avro>
+public abstract interface ackl
 {
-  ackl(ackg paramackg, String paramString, int paramInt) {}
-  
-  protected void a(JobContext paramJobContext, avro paramavro)
-  {
-    if (paramavro.b())
-    {
-      notifyResult(paramavro);
-      if (QLog.isColorLevel()) {
-        QLog.i("DoraemonOpenAPI.permissionHelper", 2, "appBaseInfo cache is valid");
-      }
-      return;
-    }
-    avrt.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1, true, new ackm(this, this));
-  }
+  public abstract void a(View paramView);
 }
 
 

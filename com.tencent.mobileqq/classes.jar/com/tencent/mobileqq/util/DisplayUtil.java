@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.util;
 
-import akur;
+import alsn;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
@@ -14,11 +14,11 @@ public class DisplayUtil
     return (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
   }
   
-  public static akur getScreenSize(Context paramContext)
+  public static alsn getScreenSize(Context paramContext)
   {
     DisplayMetrics localDisplayMetrics = new DisplayMetrics();
     ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(localDisplayMetrics);
-    return new akur(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
+    return new alsn(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
   }
   
   public static int px2dip(Context paramContext, float paramFloat)

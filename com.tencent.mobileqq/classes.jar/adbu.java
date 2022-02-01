@@ -1,36 +1,112 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class adbu
-  implements View.OnClickListener
+  extends adae
 {
-  public adbu(ChatSettingForTroop paramChatSettingForTroop) {}
+  private bkzi jdField_a_of_type_Bkzi;
+  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
   
-  public void onClick(View paramView)
+  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull adaa paramadaa)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo == null) {}
+    int j = 0;
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    case 29: 
+      if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      }
+      paramString = this.jdField_a_of_type_Adad.a();
+      if ((paramString == null) || (paramString.isFinishing()))
+      {
+        QLog.e("DoraemonOpenAPI.widget", 1, "execute show dialog activity is null or finish");
+        return false;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bhdj.a(paramString, 230);
+      paramString = paramJSONObject.optString("title");
+      if (!TextUtils.isEmpty(paramString)) {
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(paramString);
+      }
+      paramString = paramJSONObject.optString("content");
+      if (!TextUtils.isEmpty(paramString)) {
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(paramString);
+      }
+      paramString = new adbw(paramadaa);
+      paramadaa = paramJSONObject.optString("confirmText");
+      if (!TextUtils.isEmpty(paramadaa)) {
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(paramadaa, paramString);
+      }
+      paramJSONObject = paramJSONObject.optString("cancelText");
+      if (!TextUtils.isEmpty(paramJSONObject)) {
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(paramJSONObject, paramString);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnCancelListener(paramString);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+    }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      Object localObject = (bfaa)this.a.app.getManager(109);
-      if (localObject != null) {
-        ((bfaa)localObject).a(true, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+      return true;
+      if ((this.jdField_a_of_type_Bkzi != null) && (this.jdField_a_of_type_Bkzi.isShowing())) {
+        this.jdField_a_of_type_Bkzi.dismiss();
       }
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin;
-      bfaf.a(2, Long.parseLong((String)localObject), this.a.app, this.a.getApplicationContext(), (BaseActivity)this.a.getActivity());
-      long l = Long.parseLong((String)localObject);
-      localObject = ((beua)this.a.app.getManager(355)).a(Long.valueOf(l));
-      if (localObject != null) {
-        ((betz)localObject).c(0);
+      paramString = this.jdField_a_of_type_Adad.a();
+      if ((paramString == null) || (paramString.isFinishing()))
+      {
+        QLog.e("DoraemonOpenAPI.widget", 1, "execute show action sheet activity is null or finish");
+        return false;
       }
-      bcef.b(null, "dc00898", "", "", "0X800AFC5", "0X800AFC5", 0, 0, String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.dwGroupClassExt), "", "", "");
+      this.jdField_a_of_type_Bkzi = bkzi.a(paramString);
+      paramString = paramJSONObject.optJSONArray("itemList");
+      if (paramString == null)
+      {
+        addh.a(paramadaa, -1, "param error");
+      }
+      else
+      {
+        int k = paramString.length();
+        int i = 0;
+        for (paramInt = j; i < k; paramInt = 1)
+        {
+          String str = paramString.optString(i, "");
+          this.jdField_a_of_type_Bkzi.c(str);
+          i += 1;
+        }
+        paramString = new adbv(this.jdField_a_of_type_Bkzi, paramadaa);
+        paramJSONObject = paramJSONObject.optString("cancelText");
+        if (!TextUtils.isEmpty(paramJSONObject))
+        {
+          this.jdField_a_of_type_Bkzi.d(paramJSONObject);
+          paramInt = 1;
+        }
+        if (paramInt != 0)
+        {
+          this.jdField_a_of_type_Bkzi.a(paramString);
+          this.jdField_a_of_type_Bkzi.setOnCancelListener(paramString);
+          this.jdField_a_of_type_Bkzi.a(paramString);
+          this.jdField_a_of_type_Bkzi.show();
+        }
+        else
+        {
+          addh.a(paramadaa, -1, "param error");
+        }
+      }
+    }
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    }
+    if ((this.jdField_a_of_type_Bkzi != null) && (this.jdField_a_of_type_Bkzi.isShowing())) {
+      this.jdField_a_of_type_Bkzi.dismiss();
     }
   }
 }

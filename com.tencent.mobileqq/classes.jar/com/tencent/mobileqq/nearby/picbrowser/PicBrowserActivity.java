@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.nearby.picbrowser;
 
 import Override;
-import aagp;
+import aawb;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
-import awwt;
+import aycv;
 import com.tencent.image.AbstractVideoImage;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class PicBrowserActivity
   extends BaseActivity
 {
-  public aagp a;
+  public aawb a;
   protected ImmersiveTitleBar2 a;
   public int b;
   public ArrayList<PicInfo> b;
@@ -28,7 +28,7 @@ public class PicBrowserActivity
   
   public PicBrowserActivity()
   {
-    this.jdField_a_of_type_Aagp = new awwt(this);
+    this.jdField_a_of_type_Aawb = new aycv(this);
   }
   
   protected void a()
@@ -40,10 +40,10 @@ public class PicBrowserActivity
   
   protected void d()
   {
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)findViewById(2131378806));
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)findViewById(2131379099));
     this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setVisibility(0);
     ImmersiveUtils.a(getWindow(), ThemeUtil.isNowThemeIsDefault(this.app, false, null));
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setBackgroundColor(getResources().getColor(2131165351));
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setBackgroundColor(getResources().getColor(2131165357));
   }
   
   @Override
@@ -57,7 +57,7 @@ public class PicBrowserActivity
   
   public void doOnBackPressed()
   {
-    if (!this.jdField_a_of_type_Aagp.b()) {
+    if (!this.jdField_a_of_type_Aawb.b()) {
       super.doOnBackPressed();
     }
   }
@@ -67,22 +67,22 @@ public class PicBrowserActivity
     this.mActNeedImmersive = false;
     this.mNeedStatusTrans = true;
     super.doOnCreate(paramBundle);
-    setContentView(2131561213);
+    setContentView(2131561274);
     d();
     a();
-    this.jdField_a_of_type_Aagp.a(this);
+    this.jdField_a_of_type_Aawb.a(this);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.jdField_a_of_type_Aagp.c(this);
+    this.jdField_a_of_type_Aawb.c(this);
   }
   
   public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if (!this.jdField_a_of_type_Aagp.a(paramInt, paramKeyEvent)) {
+    if (!this.jdField_a_of_type_Aawb.a(paramInt, paramKeyEvent)) {
       return super.doOnKeyDown(paramInt, paramKeyEvent);
     }
     return true;
@@ -91,20 +91,20 @@ public class PicBrowserActivity
   public void doOnPause()
   {
     AbstractVideoImage.pauseAll();
-    this.jdField_a_of_type_Aagp.b();
+    this.jdField_a_of_type_Aawb.b();
   }
   
   public void doOnResume()
   {
     AbstractVideoImage.resumeAll();
-    this.jdField_a_of_type_Aagp.c();
+    this.jdField_a_of_type_Aawb.c();
   }
   
   public void doOnWindowFocusChanged(boolean paramBoolean)
   {
     super.doOnWindowFocusChanged(paramBoolean);
     if (paramBoolean) {
-      this.jdField_a_of_type_Aagp.b(this);
+      this.jdField_a_of_type_Aawb.b(this);
     }
   }
   

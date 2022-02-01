@@ -1,85 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Intent;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.RecommendFriendActivity;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import java.util.List;
 
 public class aetf
-  extends awkv
+  implements amij
 {
-  public aetf(VisitorsActivity paramVisitorsActivity) {}
+  public aetf(RecommendFriendActivity paramRecommendFriendActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void a()
   {
-    if ((paramBoolean) && (TextUtils.equals("0", paramString)))
-    {
-      if (this.a.jdField_a_of_type_Aetx != null) {
-        this.a.jdField_a_of_type_Aetx.notifyDataSetChanged();
-      }
-      if (this.a.b != null) {
-        this.a.b.notifyDataSetChanged();
-      }
-    }
+    RecommendFriendActivity.a(this.a).setVisibility(0);
   }
   
-  protected void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public void a(String paramString)
   {
-    if (!paramString1.equals(this.a.app.getCurrentAccountUin())) {}
-    do
-    {
-      return;
-      if (paramInt2 == 1)
-      {
-        if (!paramBoolean)
-        {
-          this.a.jdField_a_of_type_Ayro.b(paramString2, paramInt1, false);
-          return;
-        }
-        this.a.jdField_a_of_type_Ayro.a(paramString2, paramInt1, false);
-        return;
-      }
-    } while (paramInt2 != 0);
-    this.a.jdField_a_of_type_Ayro.a(Long.parseLong(paramString2));
+    RecommendFriendActivity.a(this.a, paramString);
   }
   
-  protected void a(boolean paramBoolean, ArrayList<awjf> paramArrayList, int paramInt)
+  public void a(List<MayKnowRecommend> paramList)
   {
-    if ((paramBoolean) && (paramArrayList != null)) {}
-    for (;;)
-    {
-      awjf localawjf;
-      try
-      {
-        if (paramArrayList.size() > 0)
-        {
-          paramArrayList = paramArrayList.iterator();
-          if (paramArrayList.hasNext())
-          {
-            localawjf = (awjf)paramArrayList.next();
-            if (paramInt != 511) {
-              break label121;
-            }
-            if (localawjf.jdField_a_of_type_Int != 0) {
-              continue;
-            }
-            ayro localayro = this.a.jdField_a_of_type_Ayro;
-            String str = localawjf.jdField_a_of_type_Long + "";
-            int i = localawjf.b;
-            localayro.a(str, localawjf.c + i, false);
-            continue;
-          }
-        }
-        return;
-      }
-      catch (Exception paramArrayList)
-      {
-        paramArrayList.printStackTrace();
-      }
-      label121:
-      if (localawjf.jdField_a_of_type_Int == 0) {
-        this.a.jdField_a_of_type_Ayro.a(localawjf.jdField_a_of_type_Long);
-      }
-    }
+    Intent localIntent = this.a.getIntent();
+    int i = localIntent.getIntExtra("EntranceId", 0);
+    RecommendFriendActivity.a(this.a, localIntent, i, paramList);
+  }
+  
+  public void b()
+  {
+    RecommendFriendActivity.a(this.a).setVisibility(8);
   }
 }
 

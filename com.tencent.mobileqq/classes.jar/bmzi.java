@@ -1,23 +1,18 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.view.View;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
 
-public class bmzi
-  implements Animator.AnimatorListener
+public abstract interface bmzi
 {
-  public bmzi(QIMProviderContainerView paramQIMProviderContainerView) {}
+  public abstract View a();
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public abstract void a(int paramInt, bmyx parambmyx, bmyw parambmyw);
   
-  public void onAnimationEnd(Animator paramAnimator) {}
+  public abstract View b();
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public abstract void b(int paramInt, bmyx parambmyx, bmyw parambmyw);
   
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.c.setVisibility(8);
-  }
+  public abstract View c();
+  
+  public abstract void c(int paramInt, bmyx parambmyx, bmyw parambmyw);
 }
 
 

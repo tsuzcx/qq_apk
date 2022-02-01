@@ -1,39 +1,13 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SettingUncommUsedContactsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.Leba;
 
 public class aefx
-  implements CompoundButton.OnCheckedChangeListener
+  extends ayqz
 {
-  public aefx(SettingUncommUsedContactsActivity paramSettingUncommUsedContactsActivity) {}
+  public aefx(Leba paramLeba) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected void a(Object paramObject)
   {
-    boolean bool = true;
-    if (((paramCompoundButton == this.a.a.a()) || (paramCompoundButton == this.a.b.a())) && (!NetworkUtil.isNetSupport(this.a.getActivity())))
-    {
-      this.a.a(2131694109, 0);
-      SettingUncommUsedContactsActivity localSettingUncommUsedContactsActivity = this.a;
-      if (!paramBoolean) {
-        SettingUncommUsedContactsActivity.a(localSettingUncommUsedContactsActivity, paramCompoundButton, bool);
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      bool = false;
-      break;
-      if (paramCompoundButton == this.a.a.a()) {
-        this.a.app.setNotAllowedSeeMyDongtai(paramBoolean, true);
-      } else if (paramCompoundButton == this.a.b.a()) {
-        this.a.app.setShieldHisDongtai(paramBoolean, true);
-      }
-    }
+    Leba.c(this.a);
   }
 }
 

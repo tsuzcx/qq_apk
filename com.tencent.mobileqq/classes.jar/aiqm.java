@@ -1,22 +1,17 @@
-import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment;
-import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment.5.1;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
 
-public class aiqm
-  implements ThreadExcutor.IThreadListener
+public final class aiqm
+  implements DialogInterface.OnClickListener
 {
-  public aiqm(PublicAccountFragment paramPublicAccountFragment) {}
+  public aiqm(Context paramContext) {}
   
-  public void onAdded() {}
-  
-  public void onPostRun()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ThreadManager.getUIHandler().post(new PublicAccountFragment.5.1(this));
+    ((BlessSelectMemberActivity)this.a).d();
   }
-  
-  public void onPreRun() {}
 }
 
 

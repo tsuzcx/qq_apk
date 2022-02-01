@@ -1,10 +1,26 @@
-public abstract interface bkvw
+public class bkvw
 {
-  public abstract int a();
+  public int a;
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
   
-  public abstract Object a();
-  
-  public abstract Object b();
+  bkvw()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 4;
+  }
 }
 
 

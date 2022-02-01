@@ -2,17 +2,17 @@ package com.tencent.mobileqq.gamecenter.data;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import atwy;
+import avcb;
 import com.tencent.mobileqq.widget.TipsBar;
 
 public class GameNoticeCenter$5$1
   implements Runnable
 {
-  public GameNoticeCenter$5$1(atwy paramatwy, Bitmap paramBitmap) {}
+  public GameNoticeCenter$5$1(avcb paramavcb, Bitmap paramBitmap) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Atwy.a.setTipsIcon(new BitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap));
+    this.jdField_a_of_type_Avcb.a.setTipsIcon(new BitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap));
   }
 }
 

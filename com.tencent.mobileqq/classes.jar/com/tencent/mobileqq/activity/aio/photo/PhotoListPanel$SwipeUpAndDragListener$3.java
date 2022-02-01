@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import ahbr;
-import ahbu;
-import ahbz;
+import ahur;
+import ahuu;
+import ahuz;
 import android.os.SystemClock;
 import android.support.v7.widget.RecyclerView;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -10,15 +10,15 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class PhotoListPanel$SwipeUpAndDragListener$3
   implements Runnable
 {
-  public PhotoListPanel$SwipeUpAndDragListener$3(ahbu paramahbu) {}
+  public PhotoListPanel$SwipeUpAndDragListener$3(ahuu paramahuu) {}
   
   public void run()
   {
-    ahbr localahbr;
-    if ((this.this$0.b.get()) && (SystemClock.elapsedRealtime() - this.this$0.jdField_a_of_type_Long >= ahbu.a()))
+    ahur localahur;
+    if ((this.this$0.b.get()) && (SystemClock.elapsedRealtime() - this.this$0.jdField_a_of_type_Long >= ahuu.a()))
     {
-      localahbr = (ahbr)this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.a.findViewHolderForAdapterPosition(this.this$0.jdField_c_of_type_Int);
-      if (localahbr != null) {
+      localahur = (ahur)this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.a.findViewHolderForAdapterPosition(this.this$0.jdField_c_of_type_Int);
+      if (localahur != null) {
         break label61;
       }
     }
@@ -30,9 +30,9 @@ public class PhotoListPanel$SwipeUpAndDragListener$3
         return;
       } while (this.this$0.jdField_a_of_type_Boolean);
       this.this$0.jdField_a_of_type_Boolean = true;
-      this.this$0.jdField_a_of_type_Ahbz = this.this$0.jdField_c_of_type_Ahbz;
-    } while (this.this$0.jdField_a_of_type_Ahbz == null);
-    this.this$0.jdField_a_of_type_Ahbz.a(localahbr, this.this$0.jdField_c_of_type_Int);
+      this.this$0.jdField_a_of_type_Ahuz = this.this$0.jdField_c_of_type_Ahuz;
+    } while (this.this$0.jdField_a_of_type_Ahuz == null);
+    this.this$0.jdField_a_of_type_Ahuz.a(localahur, this.this$0.jdField_c_of_type_Int);
   }
 }
 

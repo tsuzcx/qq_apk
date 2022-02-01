@@ -1,135 +1,43 @@
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
 
-public class xvu
-  implements xvt
+class xvu
+  implements wfk<xwh, xwi>
 {
-  public static final xvu a;
-  public int a;
-  private int b = -1;
+  xvu(xvt paramxvt, JobContext paramJobContext, String paramString) {}
   
-  static
+  public void a(@NonNull xwh paramxwh, @Nullable xwi paramxwi, @NonNull ErrorMessage paramErrorMessage)
   {
-    jdField_a_of_type_Xvu = new xvu();
-  }
-  
-  private xvu()
-  {
-    this.jdField_a_of_type_Int = 3;
-  }
-  
-  public static xvu a()
-  {
-    return jdField_a_of_type_Xvu;
-  }
-  
-  private void a(int paramInt, String paramString1, String paramString2)
-  {
-    switch (paramInt)
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
     {
-    default: 
-      return;
-    case 2: 
-      QLog.d(paramString1, 2, paramString2);
-      return;
-    case 3: 
-      QLog.d(paramString1, 2, paramString2);
-      return;
-    case 4: 
-      QLog.i(paramString1, 2, paramString2);
-      return;
-    case 5: 
-      QLog.e(paramString1, 1, paramString2);
+      ykq.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "feed like info pull segment cancel on net respond");
       return;
     }
-    QLog.e(paramString1, 1, paramString2);
-  }
-  
-  private void a(int paramInt, String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    switch (paramInt)
+    if ((paramxwi == null) || (paramErrorMessage.isFail()))
     {
-    default: 
-      return;
-    case 2: 
-      QLog.d(paramString1, 2, paramString2, paramThrowable);
-      return;
-    case 3: 
-      QLog.d(paramString1, 2, paramString2, paramThrowable);
-      return;
-    case 4: 
-      QLog.i(paramString1, 2, paramString2, paramThrowable);
-      return;
-    case 5: 
-      QLog.e(paramString1, 1, paramString2, paramThrowable);
+      ykq.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for like request");
+      xvt.a(this.jdField_a_of_type_Xvt, paramErrorMessage);
       return;
     }
-    QLog.e(paramString1, 1, paramString2, paramThrowable);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.b = paramInt;
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    a(2, paramString1, paramString2);
-  }
-  
-  public void a(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    a(3, paramString1, paramString2, paramThrowable);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    if ((this.b != -1) && (paramInt >= this.b)) {}
-    do
+    if (this.jdField_a_of_type_Xvt.a == 0) {}
+    for (boolean bool = false;; bool = true)
     {
-      do
+      ((wje)wjs.a(15)).a(paramxwi.a, this.jdField_a_of_type_JavaLangString, bool, true);
+      paramxwh = new xvp(bool, paramxwi.a, paramxwi.b, paramxwi.c);
+      try
       {
-        return true;
-      } while (5 <= paramInt);
-      if (!QLog.isColorLevel()) {
-        return false;
+        xvt.a(this.jdField_a_of_type_Xvt, paramxwh);
+        return;
       }
-    } while (this.jdField_a_of_type_Int <= paramInt);
-    return false;
-  }
-  
-  public void b(String paramString1, String paramString2)
-  {
-    a(3, paramString1, paramString2);
-  }
-  
-  public void b(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    a(4, paramString1, paramString2, paramThrowable);
-  }
-  
-  public void c(String paramString1, String paramString2)
-  {
-    a(4, paramString1, paramString2);
-  }
-  
-  public void c(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    a(5, paramString1, paramString2, paramThrowable);
-  }
-  
-  public void d(String paramString1, String paramString2)
-  {
-    a(5, paramString1, paramString2);
-  }
-  
-  public void d(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    a(6, paramString1, paramString2, paramThrowable);
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    a(6, paramString1, paramString2);
+      catch (NullPointerException paramxwh)
+      {
+        ykq.c("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "notifyResult error :%s", paramxwh);
+        xvt.b(this.jdField_a_of_type_Xvt, new ErrorMessage());
+        return;
+      }
+    }
   }
 }
 

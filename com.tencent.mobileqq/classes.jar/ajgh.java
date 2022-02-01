@@ -1,42 +1,44 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.mobileqq.app.face.FaceDecoder;
 
-class ajgh
-  implements TextWatcher
+public class ajgh
+  extends RecyclerView.OnScrollListener
 {
-  ajgh(ajgg paramajgg) {}
+  public ajgh(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-    if (paramEditable.length() == 0)
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    this.a.b = paramInt;
+    if (paramInt == 0)
     {
-      this.a.jdField_b_of_type_JavaLangString = "";
-      this.a.findViewById(2131368234).setVisibility(8);
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.a.jdField_a_of_type_Ajgf.a();
-      this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      paramRecyclerView = paramRecyclerView.getLayoutManager();
+      if (((paramRecyclerView instanceof LinearLayoutManager)) && (((LinearLayoutManager)paramRecyclerView).findLastVisibleItemPosition() + 1 == TroopNotifyAndRecommendView.a(this.a).getItemCount())) {
+        TroopNotifyAndRecommendView.n(this.a);
+      }
     }
-    while (this.a.jdField_b_of_type_JavaLangString.equals(paramEditable)) {
+    if (this.a.a != null)
+    {
+      if (paramInt == 0) {
+        break label94;
+      }
+      this.a.a.cancelPendingRequests();
+      this.a.a.pause();
+    }
+    label94:
+    while (!this.a.a.isPausing()) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "afterTextChanged, lastChangedKeyword = " + this.a.jdField_b_of_type_JavaLangString + ",lastKeyWord:" + paramEditable);
-    }
-    this.a.jdField_b_of_type_JavaLangString = paramEditable;
-    this.a.findViewById(2131368234).setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-    this.a.a();
+    this.a.a.resume();
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+  }
 }
 
 

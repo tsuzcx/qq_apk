@@ -1,25 +1,14 @@
-import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
-
-public class adco
-  implements acxa
+public abstract interface adco
 {
-  public adco(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
+  public abstract void a(adcp paramadcp);
   
-  public void onAfterStartActivity()
-  {
-    this.a.finish();
-  }
+  public abstract void a(String paramString1, int paramInt, String paramString2);
   
-  public void onBeforeStartActivity() {}
-  
-  public void onCancel()
-  {
-    this.a.finish();
-  }
+  public abstract void a(String paramString1, int paramInt, String paramString2, String paramString3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adco
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.emoticonview;
 
-import avtb;
+import awzc;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 class EmoticonPanelController$7
-  implements avtb<Integer>
+  implements awzc<Integer>
 {
   EmoticonPanelController$7(EmoticonPanelController paramEmoticonPanelController, long paramLong) {}
   
@@ -39,7 +39,7 @@ class EmoticonPanelController$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelController.7
  * JD-Core Version:    0.7.0.1
  */

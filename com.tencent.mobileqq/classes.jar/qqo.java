@@ -1,19 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class qqo
-  implements View.OnClickListener
+public class qqo
+  implements ViewBase.OnClickListener
 {
-  qqo(qqm paramqqm) {}
+  BaseArticleInfo a;
   
-  public void onClick(View paramView)
+  public qqo(BaseArticleInfo paramBaseArticleInfo)
   {
-    pet localpet = this.a.jdField_a_of_type_Slt.a().a();
-    if (localpet != null) {
-      localpet.a(null, ((pvc)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = paramBaseArticleInfo;
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    paramViewBase = this.a.mSocialFeedInfo.a.a.d;
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    pqb.b((ArticleInfo)this.a, (int)this.a.mChannelID);
+    pkh.a(localBaseActivity, paramViewBase);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.avgame.ui;
 
-import nje;
+import nqc;
 
 class AvGameLoadingActivity$8
   implements Runnable
@@ -14,8 +14,13 @@ class AvGameLoadingActivity$8
       AvGameLoadingActivity.b(this.this$0);
       return;
     }
-    nje.a().a("param_StepRoomProto");
     if (AvGameLoadingActivity.f(this.this$0))
+    {
+      AvGameLoadingActivity.c(this.this$0);
+      return;
+    }
+    nqc.a().a("param_StepRoomProto");
+    if (AvGameLoadingActivity.g(this.this$0))
     {
       AvGameLoadingActivity.a(this.this$0, AvGameLoadingActivity.a(this.this$0), AvGameLoadingActivity.c(this.this$0));
       return;

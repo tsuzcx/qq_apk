@@ -1,50 +1,64 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity.10;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleView;
 
-public class akyz
-  extends SosoInterface.OnLocationListener
+public abstract class akyz
 {
-  public akyz(CreateFaceToFaceDiscussionActivity.10 param10, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  protected Context a;
+  protected Rect a;
+  protected DoodleView a;
+  
+  public akyz(DoodleView paramDoodleView)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    if (paramDoodleView == null) {
+      throw new IllegalStateException("DoodleView can not be null.");
+    }
+    this.jdField_a_of_type_AndroidContentContext = paramDoodleView.getContext();
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView = paramDoodleView;
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a()
   {
-    if ((paramInt != 0) || (paramSosoLbsInfo == null))
-    {
-      paramSosoLbsInfo = this.a.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(2);
-      paramSosoLbsInfo.arg1 = 1;
-      paramSosoLbsInfo.arg2 = 2131698300;
-      paramSosoLbsInfo.sendToTarget();
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView.invalidate();
     }
-    paramSosoLbsInfo = CreateFaceToFaceDiscussionActivity.a(this.a.this$0, paramSosoLbsInfo);
-    amwv localamwv = (amwv)this.a.this$0.app.getBusinessHandler(33);
-    switch (this.a.jdField_a_of_type_Int)
-    {
-    default: 
-      return;
-    case 0: 
-      localamwv.a(this.a.this$0.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.this$0.jdField_a_of_type_Int, paramSosoLbsInfo, this.a.this$0.b, this.a.this$0.h);
-      return;
-    case 1: 
-      localamwv.a(this.a.this$0.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.this$0.jdField_a_of_type_Int, paramSosoLbsInfo, 2, this.a.this$0.h);
-      return;
-    case 2: 
-      localamwv.a(this.a.this$0.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.this$0.jdField_a_of_type_Int, paramSosoLbsInfo, true);
-      return;
-    case 3: 
-      localamwv.a(this.a.this$0.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.this$0.jdField_a_of_type_Int, paramSosoLbsInfo, false);
-      return;
-    }
-    localamwv.a(this.a.this$0.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.this$0.jdField_a_of_type_Int, paramSosoLbsInfo);
   }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2);
+  }
+  
+  public final void a(Canvas paramCanvas)
+  {
+    b(paramCanvas);
+  }
+  
+  public boolean a()
+  {
+    return b();
+  }
+  
+  public final boolean a(MotionEvent paramMotionEvent)
+  {
+    a();
+    return b(paramMotionEvent);
+  }
+  
+  protected abstract void b(Canvas paramCanvas);
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  protected abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 

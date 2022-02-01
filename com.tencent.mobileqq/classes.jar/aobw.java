@@ -1,30 +1,42 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.BusinessObserver;
 
 public class aobw
-  extends aobf
+  implements BusinessObserver
 {
-  public ArCloudConfigInfo a;
+  private Handler a;
   
-  public aobw(String paramString, int paramInt1, int paramInt2, ArCloudConfigInfo paramArCloudConfigInfo, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3)
+  public aobw(Handler paramHandler)
   {
-    super(paramString, paramInt1, paramInt2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
-    this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
+    this.a = paramHandler;
   }
   
-  public String toString()
+  public void a()
   {
-    StringBuilder localStringBuilder = new StringBuilder("MultiFragmentAnimARResourceInfo{");
-    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", trackMode=").append(this.b);
-    localStringBuilder.append(", arResourceInfo=").append(this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    this.a = null;
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    int i = 1;
+    if (this.a == null) {}
+    while ((paramInt != 1) && (paramInt != 4) && (paramInt != 5)) {
+      return;
+    }
+    Handler localHandler = this.a;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      localHandler.obtainMessage(paramInt, i, 0, paramObject).sendToTarget();
+      return;
+      i = 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aobw
  * JD-Core Version:    0.7.0.1
  */

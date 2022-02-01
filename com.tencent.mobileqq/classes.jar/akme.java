@@ -1,39 +1,84 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.AbstractPhotoListActivity.PhotoListAdapter;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.activity.photo.album.PhotoListLogicBase;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
 
-class akme
-  extends anxq
+public class akme
+  extends Handler
 {
-  akme(akmc paramakmc, RecentBaseData paramRecentBaseData, QQAppInterface paramQQAppInterface) {}
+  private final WeakReference<NewPhotoListActivity> a;
   
-  public int a()
+  public akme(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    return 5;
+    this.a = new WeakReference(paramNewPhotoListActivity);
   }
   
-  public void a(Object paramObject)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecentPubAccHelper", 2, "unfollow success");
+    if ((this.a == null) || (this.a.get() == null)) {}
+    Object localObject2;
+    Object localObject1;
+    do
+    {
+      do
+      {
+        return;
+        localObject2 = (NewPhotoListActivity)this.a.get();
+        localObject1 = ((NewPhotoListActivity)this.a.get()).mPhotoListLogic.mPhotoCommonData.selectedPhotoList;
+        switch (paramMessage.what)
+        {
+        default: 
+          return;
+        case 0: 
+          localObject1 = ((NewPhotoListActivity)localObject2).photoListAdapter;
+        }
+      } while (localObject1 == null);
+      localObject2 = new ArrayList();
+      ((List)localObject2).addAll(((AbstractPhotoListActivity.PhotoListAdapter)localObject1).mAllImages);
+      paramMessage = paramMessage.getData();
+      int i = paramMessage.getInt("ALBUMLIST_POSITION");
+      long l = paramMessage.getLong("ALBUMLIST_ITEM_DURATION");
+      paramMessage = (LocalMediaInfo)((List)localObject2).get(i);
+      paramMessage.mDuration = l;
+      ((List)localObject2).set(i, paramMessage);
+      ((AbstractPhotoListActivity.PhotoListAdapter)localObject1).setPhotoList((List)localObject2);
+      ((AbstractPhotoListActivity.PhotoListAdapter)localObject1).notifyDataSetChanged();
+      return;
+      ((NewPhotoListActivity)localObject2).mPhotoListLogic.handleVideoEncodeSucceed(paramMessage);
+      return;
+      ((NewPhotoListActivity)localObject2).cancleProgressDailog();
+      QLog.e("PhotoListActivity", 2, new Object[] { "onEncodeError = ", Integer.valueOf(((Integer)paramMessage.obj).intValue()) });
+      QQToast.a((Context)localObject2, ((NewPhotoListActivity)localObject2).getResources().getString(2131694636), 0).a();
+      return;
+    } while (!(paramMessage.obj instanceof String));
+    String str = (String)paramMessage.obj;
+    paramMessage = (Message)localObject1;
+    if (localObject1 == null) {
+      paramMessage = new ArrayList();
     }
-    akmc.a(this.jdField_a_of_type_Akmc, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    StructLongMessageDownloadProcessor.deleteTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin());
-    ((bfas)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin());
-    akmc.b(this.jdField_a_of_type_Akmc, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-  }
-  
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void b(Object paramObject)
-  {
-    akmc.a(this.jdField_a_of_type_Akmc, 2131694775);
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject)
-  {
-    akmc.a(this.jdField_a_of_type_Akmc);
+    QLog.d("PhotoListActivity", 2, new Object[] { "MSG_PHOTO_ENCODE_SUCCEED = ", str });
+    if (paramMessage.size() < ((NewPhotoListActivity)localObject2).mPhotoListLogic.mPhotoCommonData.maxSelectNum)
+    {
+      paramMessage.add(str);
+      ((NewPhotoListActivity)localObject2).b();
+    }
+    for (;;)
+    {
+      ((NewPhotoListActivity)localObject2).a(str);
+      return;
+      QQToast.a((Context)localObject2, String.format(((NewPhotoListActivity)localObject2).getResources().getString(2131694632), new Object[] { Integer.valueOf(((NewPhotoListActivity)localObject2).mPhotoListLogic.mPhotoCommonData.maxSelectNum) }), 0).a();
+    }
   }
 }
 

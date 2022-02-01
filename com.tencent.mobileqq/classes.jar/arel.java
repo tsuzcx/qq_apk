@@ -1,12 +1,23 @@
-import android.view.View;
+import android.os.Bundle;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
 
-public abstract interface arel
+class arel
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public abstract void a(View paramView);
+  arel(arek paramarek, QQAppInterface paramQQAppInterface, String paramString) {}
+  
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (paramBoolean) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().setReaded(this.jdField_a_of_type_JavaLangString, 1008, true, true);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arel
  * JD-Core Version:    0.7.0.1
  */

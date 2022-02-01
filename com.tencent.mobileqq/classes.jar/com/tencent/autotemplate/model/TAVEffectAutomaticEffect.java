@@ -19,6 +19,8 @@ public class TAVEffectAutomaticEffect
   public int isClosingcredits = 0;
   @SerializedName("isOpeningCredits")
   public int isOpeningCredits = 0;
+  @SerializedName("isRelative")
+  public int isRelative = 0;
   @SerializedName("rhythmEffectType")
   public int rhythmEffectType = 0;
   @SerializedName("startOffset")
@@ -61,6 +63,7 @@ public class TAVEffectAutomaticEffect
     localTAVLUTAutomaticEffect.isClosingcredits = this.isClosingcredits;
     localTAVLUTAutomaticEffect.isOpeningCredits = this.isOpeningCredits;
     localTAVLUTAutomaticEffect.rhythmEffectType = this.rhythmEffectType;
+    localTAVLUTAutomaticEffect.isRelative = this.isRelative;
     return localTAVLUTAutomaticEffect;
   }
   
@@ -77,6 +80,7 @@ public class TAVEffectAutomaticEffect
     localTAVPagAutomaticEffect.isClosingcredits = this.isClosingcredits;
     localTAVPagAutomaticEffect.isOpeningCredits = this.isOpeningCredits;
     localTAVPagAutomaticEffect.rhythmEffectType = this.rhythmEffectType;
+    localTAVPagAutomaticEffect.isRelative = this.isRelative;
     return localTAVPagAutomaticEffect;
   }
   
@@ -93,6 +97,7 @@ public class TAVEffectAutomaticEffect
     localTAVTimeAutomaticEffect.isClosingcredits = this.isClosingcredits;
     localTAVTimeAutomaticEffect.isOpeningCredits = this.isOpeningCredits;
     localTAVTimeAutomaticEffect.rhythmEffectType = this.rhythmEffectType;
+    localTAVTimeAutomaticEffect.isRelative = this.isRelative;
     return localTAVTimeAutomaticEffect;
   }
   
@@ -131,6 +136,11 @@ public class TAVEffectAutomaticEffect
     return this.isOpeningCredits == 1;
   }
   
+  public int isRelative()
+  {
+    return this.isRelative;
+  }
+  
   public void setClosingcredits(boolean paramBoolean)
   {
     if (paramBoolean) {}
@@ -144,6 +154,11 @@ public class TAVEffectAutomaticEffect
   public void setEndOffset(long paramLong)
   {
     this.endOffset = paramLong;
+  }
+  
+  public void setIsRelative(int paramInt)
+  {
+    this.isRelative = paramInt;
   }
   
   public void setOpeningCredits(boolean paramBoolean)

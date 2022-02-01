@@ -1,25 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.video.VipVideoPlayActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.troop.widget.PresetWordFlowLayout;
 
 public class bgnt
-  implements View.OnClickListener
+  extends DataSetObserver
 {
-  public bgnt(VipVideoPlayActivity paramVipVideoPlayActivity) {}
+  public bgnt(PresetWordFlowLayout paramPresetWordFlowLayout) {}
   
-  public void onClick(View paramView)
+  public void onChanged()
   {
-    if (this.a.getRequestedOrientation() == 0) {
-      this.a.setRequestedOrientation(1);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.setResult(0);
-      this.a.finish();
-    }
+    super.onChanged();
+    this.a.a();
   }
 }
 

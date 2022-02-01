@@ -1,41 +1,19 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.portal.PortalManager.ComboNumber;
-import com.tencent.mobileqq.portal.PortalManager.LogoConfig;
-import java.util.List;
+import android.text.Editable;
+import android.text.TextWatcher;
 
-public class ayiy
+class ayiy
+  implements TextWatcher
 {
-  public void a() {}
+  ayiy(ayih paramayih) {}
   
-  public void a(int paramInt, ayiz paramayiz) {}
-  
-  public void a(long paramLong1, int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, Bitmap paramBitmap4, Bitmap paramBitmap5, Bitmap paramBitmap6, Bitmap paramBitmap7, List<PortalManager.LogoConfig> paramList, String paramString, long paramLong2, boolean paramBoolean, long paramLong3) {}
-  
-  public void a(long paramLong1, int paramInt1, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, String paramString1, String paramString2, String paramString3, String paramString4, long paramLong2, boolean paramBoolean, int paramInt2, Bitmap paramBitmap4, Bitmap paramBitmap5, List<PortalManager.LogoConfig> paramList, List<PortalManager.ComboNumber> paramList1, Bitmap paramBitmap6, long paramLong3, Bitmap paramBitmap7, Bitmap paramBitmap8) {}
-  
-  public void a(boolean paramBoolean, String paramString, ayiz paramayiz) {}
-  
-  public boolean a()
+  public void afterTextChanged(Editable paramEditable)
   {
-    return false;
+    axql.a(this.a.a, 30);
   }
   
-  public boolean a(Bitmap paramBitmap)
-  {
-    return false;
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public boolean a(Bitmap paramBitmap, String paramString)
-  {
-    return false;
-  }
-  
-  public void b() {}
-  
-  public boolean b()
-  {
-    return false;
-  }
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

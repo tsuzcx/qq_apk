@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.intervideo.audioroom.colornote;
 
 import android.content.ContextWrapper;
-import apkn;
-import apoh;
+import aqnr;
+import aqrl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.intervideo.audioroom.utils.QQVoiceUtil;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -10,51 +10,51 @@ import com.tencent.qphone.base.util.QLog;
 
 public class QQVoiceColorNoteProxy
 {
-  private apkn jdField_a_of_type_Apkn;
+  private aqnr jdField_a_of_type_Aqnr;
   private IQQVoiceServiceInfo jdField_a_of_type_ComTencentMobileqqIntervideoAudioroomColornoteIQQVoiceServiceInfo;
   
   public QQVoiceColorNoteProxy(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Apkn = new apkn(BaseApplication.getContext(), paramBoolean1, paramBoolean2);
+    this.jdField_a_of_type_Aqnr = new aqnr(BaseApplication.getContext(), paramBoolean1, paramBoolean2);
   }
   
   public static void showColorNote(boolean paramBoolean)
   {
-    apoh.a(BaseApplicationImpl.getContext(), 2, paramBoolean);
+    aqrl.a(BaseApplicationImpl.getContext(), 2, paramBoolean);
   }
   
   public void addHistoryNote()
   {
-    this.jdField_a_of_type_Apkn.p();
+    this.jdField_a_of_type_Aqnr.p();
   }
   
   public void addToRecentNote()
   {
-    this.jdField_a_of_type_Apkn.n();
+    this.jdField_a_of_type_Aqnr.n();
   }
   
   public void attachToActivity(ContextWrapper paramContextWrapper)
   {
     paramContextWrapper = QQVoiceUtil.getActFromShadowContext(paramContextWrapper);
     if (paramContextWrapper != null) {
-      this.jdField_a_of_type_Apkn.a(paramContextWrapper);
+      this.jdField_a_of_type_Aqnr.a(paramContextWrapper);
     }
     QLog.d("QQVoiceColorNoteProxy", 1, "QQVoiceColorNoteProxy attachToActivity");
   }
   
   public boolean canAddColorNote()
   {
-    return this.jdField_a_of_type_Apkn.b();
+    return this.jdField_a_of_type_Aqnr.b();
   }
   
   public void deleteColorNote()
   {
-    this.jdField_a_of_type_Apkn.f();
+    this.jdField_a_of_type_Aqnr.f();
   }
   
   public void exitAnimation()
   {
-    this.jdField_a_of_type_Apkn.d();
+    this.jdField_a_of_type_Aqnr.d();
   }
   
   public IQQVoiceServiceInfo getServiceInfo()
@@ -64,57 +64,57 @@ public class QQVoiceColorNoteProxy
   
   public void insertColorNote()
   {
-    this.jdField_a_of_type_Apkn.e();
+    this.jdField_a_of_type_Aqnr.e();
   }
   
   public boolean isColorNoteExist()
   {
-    return this.jdField_a_of_type_Apkn.c();
+    return this.jdField_a_of_type_Aqnr.c();
   }
   
   public void onCannotAdd()
   {
-    this.jdField_a_of_type_Apkn.i();
+    this.jdField_a_of_type_Aqnr.i();
   }
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_Apkn.c();
+    this.jdField_a_of_type_Aqnr.c();
   }
   
   public void onPause()
   {
-    this.jdField_a_of_type_Apkn.b();
+    this.jdField_a_of_type_Aqnr.b();
     QLog.d("QQVoiceColorNoteProxy", 1, "QQVoiceColorNoteProxy onResume");
   }
   
   public void onResume()
   {
-    if (this.jdField_a_of_type_Apkn.a()) {
-      this.jdField_a_of_type_Apkn.a();
+    if (this.jdField_a_of_type_Aqnr.a()) {
+      this.jdField_a_of_type_Aqnr.a();
     }
     QLog.d("QQVoiceColorNoteProxy", 1, "QQVoiceColorNoteProxy onResume");
   }
   
   public void setColorNoteAnimFinishCallback(OnColorNoteAnimFinish paramOnColorNoteAnimFinish)
   {
-    this.jdField_a_of_type_Apkn.a(new QQVoiceColorNoteProxy.1(this, paramOnColorNoteAnimFinish));
+    this.jdField_a_of_type_Aqnr.a(new QQVoiceColorNoteProxy.1(this, paramOnColorNoteAnimFinish));
   }
   
   public void setServiceInfo(IQQVoiceServiceInfo paramIQQVoiceServiceInfo)
   {
     this.jdField_a_of_type_ComTencentMobileqqIntervideoAudioroomColornoteIQQVoiceServiceInfo = paramIQQVoiceServiceInfo;
-    this.jdField_a_of_type_Apkn.a(new QQVoiceColorNoteProxy.2(this, paramIQQVoiceServiceInfo));
+    this.jdField_a_of_type_Aqnr.a(new QQVoiceColorNoteProxy.2(this, paramIQQVoiceServiceInfo));
   }
   
   public boolean shouldDisplayColorNote()
   {
-    return this.jdField_a_of_type_Apkn.a();
+    return this.jdField_a_of_type_Aqnr.a();
   }
   
   public void updateColorNote(QQVoiceColorNote paramQQVoiceColorNote)
   {
-    this.jdField_a_of_type_Apkn.a(paramQQVoiceColorNote.mColorNote);
+    this.jdField_a_of_type_Aqnr.a(paramQQVoiceColorNote.mColorNote);
   }
 }
 

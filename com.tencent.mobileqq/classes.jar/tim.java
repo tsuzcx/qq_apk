@@ -1,22 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.biz.pubaccount.readinjoy.model.RIJUserLevelRequestModule.UserLevelInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
 
-public class tim
-  implements DialogInterface.OnCancelListener
+class tim
+  implements qha
 {
-  public tim(BridgeModule paramBridgeModule, int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5) {}
+  tim(til paramtil, ProteusItemData paramProteusItemData) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void a(RIJUserLevelRequestModule.UserLevelInfo paramUserLevelInfo)
   {
-    if ((this.jdField_a_of_type_Int == 4) || (this.jdField_a_of_type_Int == 11)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.reportVideoShareClick(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, -1, -1, true, this.jdField_a_of_type_Int, this.c, this.d, this.e);
-    }
+    tjc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.b, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tim
  * JD-Core Version:    0.7.0.1
  */

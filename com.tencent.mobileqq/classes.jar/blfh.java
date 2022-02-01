@@ -1,12 +1,10 @@
-import com.tencent.weiyun.utils.Singleton;
+import android.view.View;
 
-final class blfh
-  extends Singleton<blfg, Void>
+public abstract interface blfh
 {
-  protected blfg a(Void paramVoid)
-  {
-    return new blfg(null);
-  }
+  public abstract void a(View paramView);
+  
+  public abstract void b(View paramView);
 }
 
 

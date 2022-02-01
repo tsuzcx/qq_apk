@@ -1,46 +1,64 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.vas.qvip.util.QQVipHelper.1.1;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.Map;
+import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.TransFileRspBody;
 
-public final class bgjl
-  implements BusinessObserver
+class bgjl
+  extends aahp
 {
-  bgjl(QQAppInterface paramQQAppInterface) {}
+  bgjl(bgjh parambgjh) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(boolean paramBoolean, int paramInt, oidb_0x6d9.TransFileRspBody paramTransFileRspBody, Bundle paramBundle)
   {
-    if (!paramBoolean) {}
-    for (;;)
+    Object localObject = this.a;
+    ((bgjh)localObject).jdField_a_of_type_Int -= 1;
+    if ((!paramBoolean) || (paramTransFileRspBody == null)) {
+      bfmf.a("TroopFileManager", bfmf.jdField_a_of_type_Int, "onTransFileResult:  isSuccess:false");
+    }
+    do
     {
       return;
-      try
+      localObject = paramBundle.getString("fileId");
+      paramBundle = (bfif)this.a.c.get(localObject);
+    } while (paramBundle == null);
+    int i = paramTransFileRspBody.int32_ret_code.get();
+    bfmf.c("TroopFileManager", bfmf.jdField_a_of_type_Int, "onTransFileResult: fileId:" + (String)localObject + " isSuccess:" + paramBoolean + " errCode:" + paramInt + " retCode:" + i);
+    if (i < 0)
+    {
+      paramInt = 501;
+      switch (i)
       {
-        byte[] arrayOfByte = paramBundle.getByteArray("data");
-        paramInt = paramBundle.getInt("type", 0);
-        if (arrayOfByte == null) {
-          continue;
-        }
-        paramBundle = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
-        oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse();
-        if (paramInt == 0) {
-          paramBundle.mergeFrom(arrayOfByte);
-        }
-        for (paramBoolean = true; (paramBoolean) && (paramBundle.ret_info.has()) && (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.get() == 0); paramBoolean = ugf.a(arrayOfByte, localGetPublicAccountDetailInfoResponse, paramBundle))
-        {
-          ThreadManager.getSubThreadHandler().postDelayed(new QQVipHelper.1.1(this, paramBundle), 10L);
-          return;
-        }
-        return;
       }
-      catch (Exception paramBundle) {}
+      for (;;)
+      {
+        this.a.a(paramBundle, paramInt);
+        return;
+        paramInt = 504;
+        continue;
+        paramInt = 103;
+        continue;
+        paramInt = 101;
+        continue;
+        paramInt = 503;
+        continue;
+        paramInt = 502;
+      }
     }
+    paramTransFileRspBody = paramTransFileRspBody.str_save_file_path.get();
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(paramBundle.jdField_a_of_type_JavaUtilUUID, paramTransFileRspBody);
+    paramBundle.b = paramTransFileRspBody;
+    paramBundle.jdField_a_of_type_Int = 102;
+    paramBundle.c = 0;
+    this.a.c.remove(localObject);
+    this.a.c.put(paramTransFileRspBody, paramBundle);
+    this.a.d(paramBundle);
+    paramTransFileRspBody = (bgjn)this.a.d.get(paramBundle.g);
+    if (paramTransFileRspBody != null) {
+      paramTransFileRspBody.a = null;
+    }
+    this.a.a(paramBundle, 505);
   }
 }
 

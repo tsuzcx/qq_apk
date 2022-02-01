@@ -1,9 +1,17 @@
-import android.content.Context;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-
-public abstract interface aplr
+public class aplr
 {
-  public abstract void launch(Context paramContext, ColorNote paramColorNote);
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("skuId:").append(this.c).append(",skuName:").append(this.d).append(",skuPrice:").append(this.e).append(",imageUrl:").append(this.b).append(",detailUrl:").append(this.a);
+    return localStringBuilder.toString();
+  }
 }
 
 

@@ -1,20 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.hotpic.HotPicPageView.4.2;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
-public class augu
+class augu
   implements DialogInterface.OnClickListener
 {
-  public augu(HotPicPageView.4.2 param2) {}
+  augu(augt paramaugt) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.d = false;
-    if (this.a.a.jdField_a_of_type_Auhb.a == 1) {
-      this.a.a.jdField_a_of_type_Auhb.a(0);
-    }
-    QLog.d("HotPicManagerHotPicPageView", 2, "user click button");
+    SendBottomBar.a(this.a.a);
   }
 }
 

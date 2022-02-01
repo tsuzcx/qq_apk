@@ -1,17 +1,17 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.ar.view.QRScanEntryView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.security.Key;
 
 public class aonl
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public aonl(QRScanEntryView paramQRScanEntryView) {}
+  private Key a;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public aonl(Key paramKey)
   {
-    com.tencent.mobileqq.minicode.RecogUtil.SAVE_DETECT_IMAGE = paramBoolean;
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    this.a = paramKey;
+  }
+  
+  public Key a()
+  {
+    return this.a;
   }
 }
 

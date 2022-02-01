@@ -1,45 +1,44 @@
-import NS_QQ_STORY_CLIENT.CLIENT.StBatchGetMusicInfoRsp;
-import NS_QQ_STORY_META.META.StMusic;
-import android.text.TextUtils;
-import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
-import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import dov.com.qq.im.aeeditor.module.controlpanel.VideoControlPanel;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
-import dov.com.qq.im.aeeditor.module.music.AEEditorMusicHelper;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.Handler;
+import android.os.IBinder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
-public class bmir
-  implements VSDispatchObserver.onVSRspCallBack<CLIENT.StBatchGetMusicInfoRsp>
+class bmir
+  implements ServiceConnection
 {
-  public bmir(AEEditorVideoEditFragment paramAEEditorVideoEditFragment, VsMusicItemInfo paramVsMusicItemInfo) {}
+  bmir(bmip parambmip) {}
   
-  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CLIENT.StBatchGetMusicInfoRsp paramStBatchGetMusicInfoRsp)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    if ((!paramBoolean) || (paramStBatchGetMusicInfoRsp.vecMusic.size() == 0)) {
-      bmbx.d(AEEditorVideoEditFragment.f(), "[VSDispatchObserver.onVSRspCallBack.onReceive], music - request music detail failed");
+    bmip.a(this.a).removeMessages(1);
+    this.a.jdField_a_of_type_Boolean = false;
+    this.a.jdField_a_of_type_Bmim = bmin.a(paramIBinder);
+    this.a.b();
+    QLog.d("SmartDeviceIPCHost", 1, "plugin service connected");
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      absy.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Net_Start_Service_Host", 0, 1, 0);
     }
-    for (;;)
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    try
     {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().unbindService(this.a.jdField_a_of_type_AndroidContentServiceConnection);
+      }
+      label30:
+      this.a.jdField_a_of_type_Bmim = null;
+      this.a.jdField_a_of_type_Boolean = false;
+      QLog.d("SmartDeviceIPCHost", 1, "plugin service disconnected");
       return;
-      int i = 0;
-      if (i < paramStBatchGetMusicInfoRsp.vecMusic.size())
-      {
-        paramVSBaseRequest = (META.StMusic)paramStBatchGetMusicInfoRsp.vecMusic.get(i);
-        if ((paramVSBaseRequest == null) || (TextUtils.isEmpty(paramVSBaseRequest.strSongMid.get()))) {}
-        while (!this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mSongMid.equals(paramVSBaseRequest.strSongMid.get()))
-        {
-          i += 1;
-          break;
-        }
-        this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.a(paramVSBaseRequest);
-      }
-      for (i = 1; (i != 0) && (AEEditorMusicHelper.a(this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo)) && (AEEditorVideoEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorVideoEditFragment) != null); i = 0)
-      {
-        AEEditorVideoEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorVideoEditFragment).a(new bmlo(this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo, false, 2));
-        return;
-      }
+    }
+    catch (Exception paramComponentName)
+    {
+      break label30;
     }
   }
 }

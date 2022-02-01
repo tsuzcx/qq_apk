@@ -1,17 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class aylh
-  implements DialogInterface.OnClickListener
+public abstract interface aylh
 {
-  aylh(ayld paramayld) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-  }
+  public abstract void a(boolean paramBoolean, String paramString);
 }
 
 

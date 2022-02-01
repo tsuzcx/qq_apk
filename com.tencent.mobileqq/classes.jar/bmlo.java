@@ -1,159 +1,294 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
-import java.util.LinkedList;
-import java.util.List;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.opengl.GLES20;
+import android.opengl.GLSurfaceView;
+import android.opengl.Matrix;
+import android.os.Handler;
+import android.support.annotation.RequiresApi;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.OnScaleGestureListener;
+import android.view.SurfaceHolder;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.vip.ar.controller.VipARCameraController.3;
+import cooperation.vip.ar.controller.VipARCameraController.6;
+import cooperation.vip.ar.controller.VipARCameraController.7;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.opengles.GL10;
+import mqq.os.MqqHandler;
 
 public class bmlo
+  extends bmlu
 {
-  public static final List<bmlo> a;
-  public int a;
-  private VsMusicItemInfo a;
-  public boolean a;
-  public final int b;
-  public final boolean b;
-  public final int c;
+  private int jdField_a_of_type_Int;
+  private GLSurfaceView jdField_a_of_type_AndroidOpenglGLSurfaceView;
+  private ScaleGestureDetector.OnScaleGestureListener jdField_a_of_type_AndroidViewScaleGestureDetector$OnScaleGestureListener = new bmls(this);
+  private ScaleGestureDetector jdField_a_of_type_AndroidViewScaleGestureDetector;
+  private SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder;
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new bmlr(this);
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bmlv jdField_a_of_type_Bmlv;
+  private bmly jdField_a_of_type_Bmly;
+  private bmlz jdField_a_of_type_Bmlz;
+  private bmmg jdField_a_of_type_Bmmg = new bmlp(this);
+  private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
+  private boolean jdField_a_of_type_Boolean;
+  private float[] jdField_a_of_type_ArrayOfFloat;
+  private int jdField_b_of_type_Int;
+  private bmmg jdField_b_of_type_Bmmg = new bmlq(this);
+  private boolean jdField_b_of_type_Boolean;
+  private float[] jdField_b_of_type_ArrayOfFloat;
+  private int jdField_c_of_type_Int;
+  private boolean jdField_c_of_type_Boolean;
+  private float[] jdField_c_of_type_ArrayOfFloat;
+  private int jdField_d_of_type_Int;
+  private boolean jdField_d_of_type_Boolean;
+  private int jdField_e_of_type_Int;
+  private boolean jdField_e_of_type_Boolean;
+  private boolean f;
+  private boolean g = true;
+  private boolean h = true;
+  private boolean i;
+  private boolean j;
   
   static
   {
-    jdField_a_of_type_JavaUtilList = a();
+    System.loadLibrary("c++_shared");
   }
   
-  public bmlo(@NonNull VsMusicItemInfo paramVsMusicItemInfo, boolean paramBoolean, int paramInt)
+  @RequiresApi(8)
+  public bmlo(Context paramContext, ViewGroup paramViewGroup)
   {
-    this(paramVsMusicItemInfo, paramBoolean, paramInt, false, -1);
-  }
-  
-  public bmlo(@NonNull VsMusicItemInfo paramVsMusicItemInfo, boolean paramBoolean1, int paramInt1, boolean paramBoolean2, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo = paramVsMusicItemInfo;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.c = paramInt2;
-  }
-  
-  @NonNull
-  private static List<bmlo> a()
-  {
-    LinkedList localLinkedList = new LinkedList();
-    int i = 0;
-    if (i < 6)
+    super(paramContext, paramViewGroup);
+    if (paramContext.getResources().getConfiguration().orientation == 2) {}
+    for (this.jdField_a_of_type_Int = 0;; this.jdField_a_of_type_Int = 1)
     {
-      Object localObject = new VsMusicItemInfo();
-      ((VsMusicItemInfo)localObject).mSongMid = ("fakeMid" + (i + 1));
-      ((VsMusicItemInfo)localObject).mMusicName = "";
-      ((VsMusicItemInfo)localObject).mUrl = "";
-      ((VsMusicItemInfo)localObject).mAlbumUrl = "";
-      if (i == 0) {}
-      for (localObject = new bmlo((VsMusicItemInfo)localObject, false, 1);; localObject = new bmlo((VsMusicItemInfo)localObject, false, 0))
+      bmmb.a().b(this.jdField_b_of_type_Bmmg);
+      this.jdField_a_of_type_Bmlv = new bmlv(paramContext, paramViewGroup);
+      return;
+    }
+  }
+  
+  private float[] a(float paramFloat1, float paramFloat2)
+  {
+    float f1;
+    if (this.jdField_a_of_type_Int == 0)
+    {
+      paramFloat1 /= this.jdField_b_of_type_Int;
+      paramFloat1 = this.jdField_d_of_type_Int * paramFloat1;
+      f1 = paramFloat2 / this.jdField_c_of_type_Int * this.jdField_e_of_type_Int;
+      paramFloat2 = paramFloat1;
+    }
+    for (paramFloat1 = f1;; paramFloat1 = this.jdField_e_of_type_Int - paramFloat1 * f1)
+    {
+      return new float[] { paramFloat2, paramFloat1 };
+      paramFloat1 /= this.jdField_b_of_type_Int;
+      f1 = this.jdField_e_of_type_Int;
+      paramFloat2 = paramFloat2 / this.jdField_c_of_type_Int * this.jdField_d_of_type_Int;
+    }
+  }
+  
+  private void g()
+  {
+    this.jdField_a_of_type_Bmly = new bmly();
+    this.jdField_a_of_type_Bmly.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int);
+    this.jdField_d_of_type_Int = this.jdField_a_of_type_Bmly.a();
+    this.jdField_e_of_type_Int = this.jdField_a_of_type_Bmly.b();
+    this.jdField_c_of_type_Boolean = true;
+    ThreadManager.getUIHandler().post(new VipARCameraController.3(this));
+  }
+  
+  private void h()
+  {
+    if (!this.i)
+    {
+      this.i = true;
+      ThreadManagerV2.getUIHandlerV2().post(new VipARCameraController.6(this));
+    }
+  }
+  
+  private void i()
+  {
+    if (!this.j)
+    {
+      this.j = true;
+      ThreadManagerV2.getUIHandlerV2().post(new VipARCameraController.7(this));
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView = ((GLSurfaceView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364244));
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setEGLContextClientVersion(2);
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setEGLContextFactory(new bmlt(this, null));
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setRenderer(this);
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setRenderMode(1);
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setPreserveEGLContextOnPause(true);
+    this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewScaleGestureDetector$OnScaleGestureListener);
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378811));
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_Bmlz == null) {
+      this.jdField_a_of_type_Bmlz = new bmlz();
+    }
+    this.jdField_a_of_type_Bmlz.jdField_a_of_type_Int = ViewUtils.getScreenWidth();
+    this.jdField_a_of_type_Bmlz.jdField_b_of_type_Int = ViewUtils.getScreenHeight();
+    this.jdField_a_of_type_Bmlz.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Bmlz.c = paramString2;
+    if (this.jdField_a_of_type_Bmlv != null) {
+      this.jdField_a_of_type_Bmlv.a(this.jdField_a_of_type_Bmlz);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_c_of_type_Boolean) {
+      this.jdField_a_of_type_Bmly.a();
+    }
+  }
+  
+  public void c()
+  {
+    super.c();
+    if (this.jdField_a_of_type_Bmlv != null) {
+      this.jdField_a_of_type_Bmlv.c();
+    }
+  }
+  
+  public void d()
+  {
+    super.d();
+    QLog.d("VipARCameraController", 2, "onActivityResume " + this.jdField_c_of_type_Boolean);
+    this.f = true;
+    if (this.jdField_c_of_type_Boolean) {
+      this.jdField_a_of_type_Bmly.a();
+    }
+    if (this.jdField_a_of_type_Bmlv != null) {
+      this.jdField_a_of_type_Bmlv.d();
+    }
+  }
+  
+  public void e()
+  {
+    super.e();
+    QLog.d("VipARCameraController", 2, "onActivityStop " + this.jdField_c_of_type_Boolean);
+    this.f = false;
+    if (this.jdField_c_of_type_Boolean) {
+      this.jdField_a_of_type_Bmly.b();
+    }
+  }
+  
+  public void f()
+  {
+    super.f();
+    QLog.d("VipARCameraController", 2, "onActivityDestroy " + this.jdField_c_of_type_Boolean);
+    if (this.jdField_c_of_type_Boolean) {
+      this.jdField_a_of_type_Bmly.c();
+    }
+    if (this.jdField_a_of_type_Bmlv != null) {
+      this.jdField_a_of_type_Bmlv.f();
+    }
+  }
+  
+  public void onDrawFrame(GL10 paramGL10)
+  {
+    GLES20.glClear(16640);
+    if (!this.jdField_c_of_type_Boolean) {}
+    float[] arrayOfFloat4;
+    do
+    {
+      float[] arrayOfFloat1;
+      float[] arrayOfFloat2;
+      float[] arrayOfFloat3;
+      do
       {
-        localLinkedList.add(localObject);
-        i += 1;
-        break;
-      }
-    }
-    return localLinkedList;
+        do
+        {
+          do
+          {
+            return;
+            h();
+          } while (this.jdField_a_of_type_Bmly == null);
+          if (this.jdField_a_of_type_Bmly.a(this.jdField_a_of_type_AndroidViewSurfaceHolder, false) == 0) {
+            break;
+          }
+        } while (this.jdField_a_of_type_Bmlv == null);
+        this.jdField_a_of_type_Bmlv.onDrawFrame(null);
+        return;
+        if (this.h)
+        {
+          bmmb.a("ar_tar_show", "1");
+          this.h = false;
+        }
+        i();
+        if (this.jdField_a_of_type_ArrayOfFloat == null) {
+          this.jdField_a_of_type_ArrayOfFloat = new float[16];
+        }
+        if (this.jdField_b_of_type_ArrayOfFloat == null) {
+          this.jdField_b_of_type_ArrayOfFloat = new float[16];
+        }
+        if (this.jdField_c_of_type_ArrayOfFloat == null) {
+          this.jdField_c_of_type_ArrayOfFloat = new float[16];
+        }
+        Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
+        Matrix.setIdentityM(this.jdField_b_of_type_ArrayOfFloat, 0);
+        Matrix.setIdentityM(this.jdField_c_of_type_ArrayOfFloat, 0);
+        arrayOfFloat1 = this.jdField_a_of_type_Bmly.d();
+        arrayOfFloat2 = this.jdField_a_of_type_Bmly.a();
+        arrayOfFloat3 = this.jdField_a_of_type_Bmly.b();
+        arrayOfFloat4 = this.jdField_a_of_type_Bmly.c();
+      } while ((arrayOfFloat1 == null) || (arrayOfFloat2 == null) || (arrayOfFloat3 == null) || (arrayOfFloat4 == null));
+      this.jdField_b_of_type_ArrayOfFloat[0] = arrayOfFloat1[0];
+      this.jdField_b_of_type_ArrayOfFloat[5] = arrayOfFloat1[1];
+      this.jdField_b_of_type_ArrayOfFloat[10] = arrayOfFloat1[2];
+      Matrix.scaleM(this.jdField_c_of_type_ArrayOfFloat, 0, arrayOfFloat2, 0, 1.0F / arrayOfFloat1[0], 1.0F / arrayOfFloat1[1], 1.0F / arrayOfFloat1[2]);
+      Matrix.multiplyMM(this.jdField_a_of_type_ArrayOfFloat, 0, arrayOfFloat3, 0, this.jdField_c_of_type_ArrayOfFloat, 0);
+    } while (this.jdField_a_of_type_Bmlv == null);
+    this.jdField_a_of_type_Bmlv.a(this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfFloat, arrayOfFloat4);
+    this.jdField_a_of_type_Bmlv.onDrawFrame(paramGL10);
   }
   
-  @NonNull
-  private String f()
+  public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
-      return "";
+    QLog.d("VipARCameraController", 2, "onSurfaceChanged");
+    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
+    GLES20.glClearDepthf(1.0F);
+    GLES20.glEnable(2929);
+    GLES20.glDepthFunc(515);
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_c_of_type_Int = paramInt2;
+    GLES20.glViewport(0, 0, paramInt1, paramInt2);
+    if (this.jdField_c_of_type_Boolean) {
+      this.jdField_a_of_type_Bmly.a(0, 0, paramInt1, paramInt2);
     }
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mMusicName == null) {
-      return "";
+    if (this.jdField_a_of_type_Bmlv != null) {
+      this.jdField_a_of_type_Bmlv.onSurfaceChanged(paramGL10, paramInt1, paramInt2);
     }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mMusicName;
+    this.jdField_b_of_type_Boolean = true;
   }
   
-  public int a()
+  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
-      return 0;
+    QLog.d("VipARCameraController", 2, "onSurfaceCreated" + this.jdField_c_of_type_Boolean);
+    this.jdField_a_of_type_Bmlz.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
+    if (this.jdField_c_of_type_Boolean) {
+      this.jdField_a_of_type_Bmly.d();
     }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.musicStart;
-  }
-  
-  @NonNull
-  public String a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
-      return "";
+    if (this.jdField_a_of_type_Bmlv != null) {
+      this.jdField_a_of_type_Bmlv.onSurfaceCreated(paramGL10, paramEGLConfig);
     }
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mSongMid == null) {
-      return "";
-    }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mSongMid;
-  }
-  
-  public boolean a()
-  {
-    return TextUtils.isEmpty(a());
-  }
-  
-  public int b()
-  {
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.musicDuration;
-  }
-  
-  @NonNull
-  public String b()
-  {
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
-      return "";
-    }
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mUrl == null) {
-      return "";
-    }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mUrl;
-  }
-  
-  @NonNull
-  public String c()
-  {
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
-      return "";
-    }
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mAlbumUrl == null) {
-      return "";
-    }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mAlbumUrl;
-  }
-  
-  @NonNull
-  public String d()
-  {
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
-      return "";
-    }
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.b == null) {
-      return "";
-    }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.b;
-  }
-  
-  @NonNull
-  public String e()
-  {
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
-      return "LRC";
-    }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.a)) {
-      return "LRC";
-    }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.a;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "{songMid:" + a() + ", songName:" + f() + ", songUrl:" + b() + ", selected:" + this.jdField_a_of_type_Boolean + ", downloadStatus:" + this.jdField_a_of_type_Int + ", itemType:" + this.jdField_b_of_type_Int + "}";
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

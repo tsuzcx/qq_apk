@@ -1,20 +1,10 @@
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
-import java.util.Comparator;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
 
-class ampn
-  implements Comparator<BaseAddress>
+public abstract interface ampn
 {
-  ampn(ampm paramampm) {}
-  
-  public int a(BaseAddress paramBaseAddress1, BaseAddress paramBaseAddress2)
-  {
-    int j = paramBaseAddress1.pinyinFirst.compareTo(paramBaseAddress2.pinyinFirst);
-    int i = j;
-    if (j == 0) {
-      i = paramBaseAddress1.pinyinAll.compareTo(paramBaseAddress2.pinyinAll);
-    }
-    return i;
-  }
+  public abstract EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay);
 }
 
 

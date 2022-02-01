@@ -1,74 +1,96 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.face.QQHeadDownloadHandler;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import java.util.Locale;
 
 public class apvh
-  extends aptq<apvg>
+  implements apvl
 {
-  public static void a()
+  public EIPCResult a(Bundle paramBundle)
   {
-    apvg localapvg = (apvg)apub.a().a(430);
-    apvg.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), false, localapvg);
+    Object localObject = apuj.a();
+    if (localObject == null)
+    {
+      QLog.e("ArkApp.GetUserInformationHandler", 1, "Handler_GetNickName.onCall, qq app is null");
+      return EIPCResult.createResult(-102, new Bundle());
+    }
+    localObject = paramBundle.getString("uin", ((QQAppInterface)localObject).getCurrentAccountUin());
+    paramBundle = new Bundle();
+    localObject = a((String)localObject);
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      paramBundle.putString("userInfo", (String)localObject);
+    }
+    return EIPCResult.createResult(0, paramBundle);
   }
   
-  @NonNull
-  public apvg a(int paramInt)
+  public String a(String paramString)
   {
-    return new apvg();
-  }
-  
-  @Nullable
-  public apvg a(aptx[] paramArrayOfaptx)
-  {
-    return apvg.a(paramArrayOfaptx);
-  }
-  
-  public void a(apvg paramapvg)
-  {
-    QLog.w("ApolloConfig_GrayProcessor", 1, "onUpdate");
-    apvg.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, paramapvg);
-  }
-  
-  public Class<apvg> clazz()
-  {
-    return apvg.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.e("ApolloConfig_GrayProcessor", 1, "onReqFailed: " + paramInt);
-  }
-  
-  public int type()
-  {
-    return 430;
+    QQAppInterface localQQAppInterface = apuj.a();
+    if (localQQAppInterface == null) {
+      return null;
+    }
+    Object localObject1 = paramString;
+    if (paramString == null) {
+      localObject1 = localQQAppInterface.getCurrentUin();
+    }
+    Object localObject2 = ((anvk)localQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b((String)localObject1);
+    if (localObject2 == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ArkApp.GetUserInformationHandler", 2, "GetUserInformation FriendCard is null");
+      }
+      return null;
+    }
+    String str1 = ((Card)localObject2).strNick;
+    if (((Card)localObject2).shGender == 0) {
+      paramString = BaseActivity.sTopActivity.getString(2131693752);
+    }
+    for (;;)
+    {
+      String str2 = ((Card)localObject2).strCity;
+      String str3 = ((Card)localObject2).strProvince;
+      String str4 = ((Card)localObject2).strCountry;
+      localObject2 = "";
+      localObject1 = localQQAppInterface.getQQHeadSettingFromDB((String)localObject1);
+      if ((localObject1 != null) && (!TextUtils.isEmpty(((Setting)localObject1).url))) {
+        localObject1 = MsfSdkUtils.insertMtype("QQHeadIcon", ((FriendListHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getQQHeadDownload().getQQHeandDownLoadUrl(((Setting)localObject1).url, ((Setting)localObject1).bFaceFlags, ((Setting)localObject1).bUsrType, 0));
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ArkApp.GetUserInformationHandler", 2, "GetUserInformation nickname=" + str1 + ", avatarUrl=" + (String)localObject1 + ", gender=" + paramString + ", city=" + str2 + ", province=" + str3 + ", country=" + str4);
+        }
+        return String.format(Locale.CHINA, "{\"nickname\":\"%s\",\"avatar\":\"%s\",\"gender\":\"%s\",\"city\":\"%s\",\"province\":\"%s\",\"country\":\"%s\"}", new Object[] { str1, localObject1, paramString, str2, str3, str4 });
+        if (((Card)localObject2).shGender != 1) {
+          break label323;
+        }
+        paramString = BaseActivity.sTopActivity.getString(2131692198);
+        break;
+        localObject1 = localObject2;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("ArkApp.GetUserInformationHandler", 2, "GetUserInformation QQHeadSetting is empty");
+          localObject1 = localObject2;
+        }
+      }
+      label323:
+      paramString = "";
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apvh
  * JD-Core Version:    0.7.0.1
  */

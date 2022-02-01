@@ -1,14 +1,14 @@
-import android.os.Bundle;
-import org.json.JSONObject;
+import java.io.InputStream;
 
-class nvd
-  implements bezd
+public class nvd
 {
-  nvd(num paramnum) {}
+  public InputStream a;
+  public String a;
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public nvd(String paramString, InputStream paramInputStream)
   {
-    num.a(this.a, paramJSONObject);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaIoInputStream = paramInputStream;
   }
 }
 

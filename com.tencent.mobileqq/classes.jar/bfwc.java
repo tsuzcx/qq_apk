@@ -1,41 +1,52 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Hashtable;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
-public class bfwc
-  extends amsu
+class bfwc
+  implements TextView.OnEditorActionListener
 {
-  private final bfvp b;
+  bfwc(bfvz parambfvz, bfwf parambfwf) {}
   
-  public bfwc(bfvp parambfvp1, bfvp parambfvp2)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.b = parambfvp2;
-  }
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    if ((!paramBoolean) || (this.a.jdField_a_of_type_JavaUtilHashtable == null) || (!this.a.jdField_a_of_type_JavaUtilHashtable.containsKey(paramString))) {}
-    do
+    boolean bool2 = false;
+    boolean bool1;
+    if ((paramInt != 4) && (paramInt != 6))
     {
-      return;
-      this.a.jdField_a_of_type_JavaUtilHashtable.remove(paramString);
-      if (this.a.jdField_a_of_type_JavaUtilHashtable.size() == 0) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a.jdField_a_of_type_Bfwc);
+      bool1 = bool2;
+      if (paramKeyEvent != null)
+      {
+        bool1 = bool2;
+        if (66 == paramKeyEvent.getKeyCode())
+        {
+          bool1 = bool2;
+          if (paramKeyEvent.getAction() != 0) {}
+        }
       }
-      Object localObject = Uri.parse(bfvp.a(this.a) + "&uin=" + paramString);
-      localObject = new Intent((String)this.a.jdField_a_of_type_JavaUtilHashMap.get("callback_name"), (Uri)localObject);
-      this.a.jdField_a_of_type_AndroidContentContext.sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
-    } while (!QLog.isColorLevel());
-    QLog.i("JumpAction", 2, "download head " + paramString + " success. Send broadcast to " + (String)this.a.jdField_a_of_type_JavaUtilHashMap.get("callback_name"));
+    }
+    else
+    {
+      paramTextView = this.jdField_a_of_type_Bfwf.a.getEditableText().toString();
+      paramInt = this.jdField_a_of_type_Bfwf.a.getSelectionStart();
+      paramTextView = paramTextView.substring(0, paramInt);
+      paramTextView = this.jdField_a_of_type_Bfvz.a(paramTextView);
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(paramTextView))
+      {
+        this.jdField_a_of_type_Bfwf.a.getEditableText().replace(paramInt, paramInt, "\n" + paramTextView);
+        this.jdField_a_of_type_Bfwf.a.setSelection(paramTextView.length() + paramInt + 1);
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfwc
  * JD-Core Version:    0.7.0.1
  */

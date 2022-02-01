@@ -1,29 +1,26 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.annotation.SuppressLint;
 import android.view.View;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.biz.subscribe.network.DoTipOffRequest;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeProvider;
+import com.tencent.biz.qrcode.CustomAccessibilityDelegate.1;
 
-final class zjo
-  implements bjoe
+@SuppressLint({"NewApi"})
+public class zjo
+  extends View.AccessibilityDelegate
 {
-  zjo(CertifiedAccountMeta.StUser paramStUser, CertifiedAccountMeta.StFeed paramStFeed, zjr paramzjr, zjq paramzjq, bjnw parambjnw) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new CustomAccessibilityDelegate.1(this);
+  private zjp jdField_a_of_type_Zjp;
   
-  public void OnClick(View paramView, int paramInt)
+  public zjo(View paramView, zjp paramzjp)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-      paramView = new DoTipOffRequest(0, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, 2);
-      VSNetworkHelper.getInstance().sendRequest(paramView, new zjp(this));
-      if (this.jdField_a_of_type_Zjq != null) {
-        this.jdField_a_of_type_Zjq.a(false);
-      }
-    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Zjp = paramzjp;
+  }
+  
+  public AccessibilityNodeProvider getAccessibilityNodeProvider(View paramView)
+  {
+    return new zjq(this);
   }
 }
 

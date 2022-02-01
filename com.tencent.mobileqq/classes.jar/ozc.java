@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
 final class ozc
-  extends SosoInterface.OnLocationListener
+  implements ViewBase.OnClickListener
 {
-  ozc(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  ozc(pcf parampcf, ViewBase paramViewBase, pdp parampdp) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public final void onClick(ViewBase paramViewBase)
   {
-    ozb.a(false);
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (QLog.isColorLevel())) {
-      QLog.d("GalleryReportedUtils", 2, "get Location: info = " + paramSosoLbsInfo.toString());
+    paramViewBase = this.jdField_a_of_type_Pcf.a();
+    Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "adapter.vafContext");
+    pkh.a(paramViewBase.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getEventAttachedData());
+    if (this.jdField_a_of_type_Pcf.a() != null) {
+      this.jdField_a_of_type_Pcf.a().g(this.jdField_a_of_type_Pdp);
     }
   }
 }

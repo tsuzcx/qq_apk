@@ -1,29 +1,14 @@
-import android.os.Build.VERSION;
-import android.os.Process;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class bbzl
+final class bbzl
+  implements ThreadFactory
 {
-  private static Boolean a;
+  private final AtomicInteger a = new AtomicInteger(1);
   
-  public static boolean a()
+  public Thread newThread(Runnable paramRunnable)
   {
-    if (a == null)
-    {
-      if (Build.VERSION.SDK_INT >= 21) {
-        break label28;
-      }
-      a = Boolean.valueOf(false);
-    }
-    for (;;)
-    {
-      return a.booleanValue();
-      label28:
-      if (Build.VERSION.SDK_INT >= 23) {
-        a = Boolean.valueOf(Process.is64Bit());
-      } else {
-        a = Boolean.valueOf(false);
-      }
-    }
+    return new Thread(paramRunnable, "SearchTask #" + this.a.getAndIncrement());
   }
 }
 

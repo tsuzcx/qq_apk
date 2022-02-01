@@ -1,10 +1,12 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import bedc;
-import bede;
-import bedt;
-import bfyz;
+import bfkf;
+import bfkh;
+import bfkw;
+import bhhr;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.vas.VasExtensionHandler;
@@ -18,11 +20,11 @@ public class TroopEnterEffectsStep
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "TroopEnterEffectsStep: doStep");
     }
-    long l = bfyz.f(this.a.app.getApplication(), this.a.app.getCurrentAccountUin());
-    bedc localbedc = ((bedt)this.a.app.getManager(231)).a();
-    if ((l == 0L) || (localbedc.a == null) || ((System.currentTimeMillis() - l) / 1000L > localbedc.a.a))
+    long l = bhhr.f(this.a.app.getApplication(), this.a.app.getCurrentAccountUin());
+    bfkf localbfkf = ((bfkw)this.a.app.getManager(QQManagerFactory.TROOP_ENTER_EFFECT_MANAGER)).a();
+    if ((l == 0L) || (localbfkf.a == null) || ((System.currentTimeMillis() - l) / 1000L > localbfkf.a.a))
     {
-      ((VasExtensionHandler)this.a.app.getBusinessHandler(71)).a(2L, 0L);
+      ((VasExtensionHandler)this.a.app.getBusinessHandler(BusinessHandlerFactory.VAS_EXTENSION_HANDLER)).a(2L, 0L);
       return 2;
     }
     return 7;

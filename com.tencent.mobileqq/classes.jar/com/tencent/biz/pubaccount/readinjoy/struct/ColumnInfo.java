@@ -8,8 +8,8 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.persistence.Entity;
 import org.jetbrains.annotations.NotNull;
-import rcq;
-import rml;
+import row;
+import rza;
 import tencent.kandian.ugc.topic_info.TopicInfo;
 import tencent.kandian.ugc.topic_info.TopicInfoExt;
 
@@ -17,7 +17,7 @@ public class ColumnInfo
   extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator<ColumnInfo> CREATOR = new rcq();
+  public static final Parcelable.Creator<ColumnInfo> CREATOR = new row();
   public static final int SOURCE_UGC = 5;
   public static final int TYPE_ALLOW_SUBMIT = 1;
   public static final int TYPE_FORBID_SUBMIT = 0;
@@ -57,28 +57,28 @@ public class ColumnInfo
     this.videoCount = paramParcel.readInt();
   }
   
-  public ColumnInfo(rml paramrml)
+  public ColumnInfo(rza paramrza)
   {
-    if (paramrml.jdField_a_of_type_JavaLangString != null)
+    if (paramrza.jdField_a_of_type_JavaLangString != null)
     {
-      str = paramrml.jdField_a_of_type_JavaLangString;
+      str = paramrza.jdField_a_of_type_JavaLangString;
       this.coverUrl = str;
-      if (paramrml.b == null) {
+      if (paramrza.b == null) {
         break label88;
       }
-      str = paramrml.b;
+      str = paramrza.b;
       label51:
       this.title = str;
-      if (paramrml.c == null) {
+      if (paramrza.c == null) {
         break label94;
       }
     }
     label88:
     label94:
-    for (String str = paramrml.c;; str = "")
+    for (String str = paramrza.c;; str = "")
     {
       this.intro = str;
-      this.submitPermission = paramrml.jdField_a_of_type_Int;
+      this.submitPermission = paramrza.jdField_a_of_type_Int;
       return;
       str = "";
       break;

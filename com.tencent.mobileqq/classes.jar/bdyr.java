@@ -1,9 +1,8 @@
-import java.util.List;
+import org.json.JSONObject;
 
-public class bdyr
+public abstract interface bdyr
 {
-  public String a;
-  public List<Integer> a;
+  public abstract bdyc[] a(JSONObject paramJSONObject1, JSONObject paramJSONObject2, float paramFloat);
 }
 
 

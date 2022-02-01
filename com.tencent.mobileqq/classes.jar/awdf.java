@@ -1,22 +1,26 @@
-import android.content.Context;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.AbsListView;
 
-public class awdf
+public abstract interface awdf
 {
-  public static void a(Context paramContext)
-  {
-    QQToast.a(paramContext, paramContext.getString(2131717775), 0).a();
-  }
+  public abstract int a();
   
-  public static void b(Context paramContext)
-  {
-    QQToast.a(paramContext, paramContext.getString(2131717770), 0).a();
-  }
+  public abstract void a();
   
-  public static void c(Context paramContext)
-  {
-    QQToast.a(paramContext, paramContext.getString(2131717787), 0).a();
-  }
+  public abstract void a(int paramInt1, boolean paramBoolean, int paramInt2);
+  
+  public abstract void a(ajzu paramajzu);
+  
+  public abstract void a(AbsListView paramAbsListView, int paramInt);
+  
+  public abstract int b();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

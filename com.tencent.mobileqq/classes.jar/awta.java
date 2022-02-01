@@ -1,19 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.Emoticon;
 
-public class awta
-  implements View.OnClickListener
+class awta
+  implements awsv
 {
-  public awta(StuffContainerView paramStuffContainerView) {}
+  awta(awsw paramawsw, Emoticon paramEmoticon, int paramInt1, String paramString, int paramInt2) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.a.a != null) {
-      this.a.a.a(0);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Awsw.a.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

@@ -1,26 +1,22 @@
-import android.view.View;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
 
-class axdq
-  implements bjoe
+public class axdq
+  extends AnimatorListenerAdapter
 {
-  axdq(axdo paramaxdo, axdv paramaxdv, axfs paramaxfs, bjnw parambjnw) {}
+  public axdq(MultiAIOFragment paramMultiAIOFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    awrs localawrs = new awrs().h("data_card").i("feed_delete").d("2").a(this.jdField_a_of_type_Axdo.a(this.jdField_a_of_type_Axdv)).b(this.jdField_a_of_type_Axfs.c).c(String.valueOf(this.jdField_a_of_type_Axdo.a(this.jdField_a_of_type_Axdv)));
-    if (this.jdField_a_of_type_Axdo.jdField_a_of_type_Boolean) {}
-    for (paramView = "1";; paramView = "2")
-    {
-      localawrs.e(paramView).b(this.jdField_a_of_type_Axdo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      axdo.a(this.jdField_a_of_type_Axdo, this.jdField_a_of_type_Axdv);
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-    }
+    super.onAnimationCancel(paramAnimator);
+    MultiAIOFragment.e(this.a);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    MultiAIOFragment.e(this.a);
   }
 }
 

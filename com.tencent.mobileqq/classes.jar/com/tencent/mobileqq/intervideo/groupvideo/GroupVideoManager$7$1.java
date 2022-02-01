@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo.groupvideo;
 
-import aung;
+import avtb;
 import java.util.List;
 
 class GroupVideoManager$7$1
@@ -10,11 +10,11 @@ class GroupVideoManager$7$1
   
   public void run()
   {
-    aung localaung = this.this$0.a;
+    avtb localavtb = this.this$0.a;
     if ((this.a != null) && (this.a.size() > 0)) {}
     for (boolean bool = true;; bool = false)
     {
-      localaung.a(bool);
+      localavtb.a(bool);
       return;
     }
   }

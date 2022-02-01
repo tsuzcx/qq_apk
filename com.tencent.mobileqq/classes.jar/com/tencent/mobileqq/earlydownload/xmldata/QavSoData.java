@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import aqya;
+import asck;
 
 public class QavSoData
   extends XmlData
 {
   public String getSharedPreferencesName()
   {
-    return "preload_" + aqya.e();
+    return "preload_" + asck.e();
   }
   
   public String getStrResName()
   {
-    return aqya.e();
+    return asck.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.xmldata.QavSoData
  * JD-Core Version:    0.7.0.1
  */

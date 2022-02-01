@@ -1,14 +1,12 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnVideoSizeChangedListener;
-
 class wxo
-  implements MediaPlayer.OnVideoSizeChangedListener
+  extends wwg
 {
-  wxo(wxj paramwxj, wxh paramwxh) {}
+  wxo(wxa paramwxa, wyi paramwyi) {}
   
-  public void onVideoSizeChanged(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public boolean b()
   {
-    this.jdField_a_of_type_Wxh.a(this.jdField_a_of_type_Wxj, paramInt1, paramInt2);
+    a("UploadImageJob_in_image_file_path", this.jdField_a_of_type_Wyi.d);
+    return true;
   }
 }
 

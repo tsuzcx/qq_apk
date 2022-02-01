@@ -1,12 +1,26 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public abstract interface vng
+class vng
+  implements URLDrawable.URLDrawableListener
 {
-  public abstract void a(String paramString, int paramInt);
+  vng(vnf paramvnf) {}
   
-  public abstract void a(String paramString, int paramInt, ErrorMessage paramErrorMessage);
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public abstract void b(String paramString, int paramInt);
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    vmp.d("AvatarImageLog", "WeishiUtils loadAvatarImage onFail url:" + this.a.jdField_a_of_type_JavaLangString + ", imageView:" + this.a.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    vmp.b("AvatarImageLog", "WeishiUtils loadAvatarImage onSuccess url:" + this.a.jdField_a_of_type_JavaLangString + ", imageView:" + this.a.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView);
+    this.a.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView.setImageDrawable(paramURLDrawable);
+  }
 }
 
 

@@ -1,61 +1,82 @@
+import android.text.Layout;
+import android.text.Selection;
+import android.text.Spannable;
+import android.text.method.LinkMovementMethod;
+import android.text.method.MovementMethod;
+import android.text.style.ClickableSpan;
+import android.text.style.ForegroundColorSpan;
+import android.view.MotionEvent;
+import android.widget.TextView;
+
 public class lue
-  extends ltz
+  extends LinkMovementMethod
 {
-  public boolean a;
+  private static lue a;
+  public int a;
+  public int b = -7447805;
   
-  public void a(long paramLong)
+  public lue()
   {
-    paramLong -= this.jdField_a_of_type_Long;
-    int j = 0;
-    float f2 = 1.0F;
-    int i;
-    float f1;
-    if (paramLong <= 500L)
-    {
-      i = 0;
-      f1 = f2;
+    this.jdField_a_of_type_Int = -10864125;
+  }
+  
+  static int a(TextView paramTextView, int paramInt1, int paramInt2)
+  {
+    paramTextView = paramTextView.getTag(paramInt1);
+    if ((paramTextView instanceof Integer)) {
+      paramInt2 = ((Integer)paramTextView).intValue();
     }
-    for (;;)
+    return paramInt2;
+  }
+  
+  public static MovementMethod a()
+  {
+    if (jdField_a_of_type_Lue == null) {
+      jdField_a_of_type_Lue = new lue();
+    }
+    return jdField_a_of_type_Lue;
+  }
+  
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  {
+    int i = paramMotionEvent.getAction();
+    if ((i == 1) || (i == 0))
     {
-      a(i);
-      b(f1);
-      return;
-      if ((paramLong > 500L) && (paramLong < 1167L))
+      int j = (int)paramMotionEvent.getX();
+      int k = (int)paramMotionEvent.getY();
+      int m = paramTextView.getTotalPaddingLeft();
+      int n = paramTextView.getTotalPaddingTop();
+      int i1 = paramTextView.getScrollX();
+      int i2 = paramTextView.getScrollY();
+      Object localObject = paramTextView.getLayout();
+      j = ((Layout)localObject).getOffsetForHorizontal(((Layout)localObject).getLineForVertical(k - n + i2), j - m + i1);
+      localObject = (ClickableSpan[])paramSpannable.getSpans(j, j, ClickableSpan.class);
+      if (localObject.length != 0)
       {
-        i = (int)(255L * (paramLong - 500L) / 667L);
-        f1 = (0.5F * (float)(paramLong + 1167L) - 500.0F) / 667.0F;
-      }
-      else if (((paramLong >= 1167L) && (paramLong <= 2167L)) || (!this.jdField_a_of_type_Boolean))
-      {
-        i = 255;
-        f1 = f2;
-      }
-      else
-      {
-        f1 = f2;
-        i = j;
-        if (paramLong > 2167L)
+        if (i == 1)
         {
-          f1 = f2;
-          i = j;
-          if (paramLong < 2500L)
+          i = a(paramTextView, 2131378475, this.b);
+          localObject[0].onClick(paramTextView);
+          paramSpannable.setSpan(new ForegroundColorSpan(i), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
+        }
+        for (;;)
+        {
+          return true;
+          if (i == 0)
           {
-            i = (int)((paramLong - 2500L) * 255L / -333L);
-            f1 = f2;
+            paramSpannable.setSpan(new ForegroundColorSpan(a(paramTextView, 2131378474, this.jdField_a_of_type_Int)), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
+            Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]));
           }
         }
       }
+      Selection.removeSelection(paramSpannable);
     }
-  }
-  
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    a(paramInt1 * 5 / 1500, paramInt2 - paramInt1 * 752 / 750, paramInt1 * 1495 / 1500, paramInt2);
+    return super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lue
  * JD-Core Version:    0.7.0.1
  */

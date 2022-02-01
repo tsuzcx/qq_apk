@@ -39,7 +39,7 @@ class QQAppInterface$15
         QLog.d("QQAppInterface", 2, "getOnlineFriend");
       }
       this.this$0.sLastGetOnlineFriendTime = l3;
-      FriendListHandler localFriendListHandler = (FriendListHandler)paramMessage.getBusinessHandler(1);
+      FriendListHandler localFriendListHandler = (FriendListHandler)paramMessage.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
       if (localFriendListHandler != null) {
         localFriendListHandler.getOnlineFriend(paramMessage.getCurrentAccountUin(), (byte)0);
       }

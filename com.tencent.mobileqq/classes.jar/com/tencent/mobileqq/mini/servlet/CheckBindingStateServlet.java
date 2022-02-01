@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.servlet;
 import NS_MINI_INTERFACE.INTERFACE.StCheckBindingStateRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bgau;
+import bhjl;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
@@ -50,7 +50,7 @@ public class CheckBindingStateServlet
       arrayOfByte1 = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_app_info.CheckBindingState");
-    paramPacket.putSendData(bgau.a(arrayOfByte1));
+    paramPacket.putSendData(bhjl.a(arrayOfByte1));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }

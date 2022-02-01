@@ -1,19 +1,15 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
 
-final class bfsq
-  implements DownloadParams.DecodeHandler
+public class bfsq
+  implements DialogInterface.OnClickListener
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public bfsq(ReciteFragment paramReciteFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBitmap == null) {
-      return null;
-    }
-    if ((paramDownloadParams != null) && (paramDownloadParams.reqWidth >= 0) && (paramDownloadParams.reqHeight >= 0)) {
-      return bfsp.a(paramBitmap, paramDownloadParams.reqWidth, paramDownloadParams.reqHeight);
-    }
-    return bfsp.a(paramBitmap);
+    this.a.h();
   }
 }
 

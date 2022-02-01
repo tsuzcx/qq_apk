@@ -19,12 +19,13 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.ViewParent;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bjxo;
+import bliz;
 import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.qphone.base.util.QLog;
-import szv;
-import taa;
+import org.jetbrains.annotations.Nullable;
+import tnd;
+import tni;
 
 public abstract class AbsPullToRefreshViewFix
   extends LinearLayout
@@ -35,8 +36,8 @@ public abstract class AbsPullToRefreshViewFix
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private Handler jdField_a_of_type_AndroidOsHandler;
   protected View a;
-  private bjxo jdField_a_of_type_Bjxo;
-  protected szv a;
+  private bliz jdField_a_of_type_Bliz;
+  protected tnd a;
   protected boolean a;
   private float jdField_b_of_type_Float = -1.0F;
   private int jdField_b_of_type_Int = 0;
@@ -69,6 +70,54 @@ public abstract class AbsPullToRefreshViewFix
     b();
   }
   
+  private float a(int paramInt, float paramFloat)
+  {
+    float f1;
+    if (paramInt > -this.jdField_c_of_type_Int)
+    {
+      f1 = paramFloat;
+      if (paramInt - paramFloat < -this.jdField_c_of_type_Int) {
+        f1 = this.jdField_c_of_type_Int + paramInt;
+      }
+    }
+    do
+    {
+      do
+      {
+        return f1;
+        f1 = paramFloat;
+      } while (paramInt >= -this.jdField_c_of_type_Int);
+      f1 = paramFloat;
+    } while (paramInt - paramFloat <= -this.jdField_c_of_type_Int);
+    return this.jdField_c_of_type_Int + paramInt;
+  }
+  
+  @Nullable
+  private Boolean a(MotionEvent paramMotionEvent, float paramFloat1, float paramFloat2)
+  {
+    if (this.jdField_b_of_type_Boolean)
+    {
+      a(true);
+      getParent().requestDisallowInterceptTouchEvent(true);
+      return Boolean.valueOf(super.dispatchTouchEvent(paramMotionEvent));
+    }
+    if (Math.abs(paramFloat1) / Math.abs(paramFloat2) >= 2.0F)
+    {
+      boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+      if (!bool) {
+        getParent().requestDisallowInterceptTouchEvent(false);
+      }
+      for (;;)
+      {
+        return Boolean.valueOf(bool);
+        this.jdField_b_of_type_Boolean = true;
+        a(true);
+        getParent().requestDisallowInterceptTouchEvent(true);
+      }
+    }
+    return null;
+  }
+  
   private void a(int paramInt1, int paramInt2)
   {
     a("moveHeaderTo:" + paramInt1 + ",duration=" + paramInt2 + ",getHeaderCurPos()=" + b());
@@ -77,6 +126,26 @@ public abstract class AbsPullToRefreshViewFix
     }
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
     this.jdField_a_of_type_AndroidOsHandler.sendMessage(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, paramInt1, paramInt2));
+  }
+  
+  private void a(MotionEvent paramMotionEvent, float paramFloat, int paramInt)
+  {
+    if ((a()) && (paramFloat < 0.0F))
+    {
+      c((int)paramFloat / 2);
+      d(true);
+    }
+    do
+    {
+      return;
+      if (paramMotionEvent.getPointerCount() > 1)
+      {
+        d(true);
+        return;
+      }
+    } while (Math.abs(paramFloat) <= 0.0F);
+    c((int)a(paramInt, paramFloat));
+    d(true);
   }
   
   private void a(View paramView)
@@ -95,6 +164,11 @@ public abstract class AbsPullToRefreshViewFix
   private void a(String paramString)
   {
     Log.d("AbsPullToRefreshView2", paramString);
+  }
+  
+  private boolean a(float paramFloat1, float paramFloat2)
+  {
+    return Math.abs(paramFloat2) - Math.abs(paramFloat1) <= 0.0F;
   }
   
   private int b()
@@ -120,7 +194,7 @@ public abstract class AbsPullToRefreshViewFix
   private void b(int paramInt)
   {
     int i = 0;
-    if (this.jdField_a_of_type_Bjxo == null) {}
+    if (this.jdField_a_of_type_Bliz == null) {}
     do
     {
       return;
@@ -131,7 +205,7 @@ public abstract class AbsPullToRefreshViewFix
       }
     } while (this.jdField_a_of_type_Boolean);
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Bjxo.a(this.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_Bliz.a(this.jdField_a_of_type_AndroidViewView);
     return;
     paramInt = 100 - Math.abs((int)(b() * 1.0F / -this.jdField_c_of_type_Int * 100.0F));
     if (paramInt < 0) {
@@ -139,16 +213,16 @@ public abstract class AbsPullToRefreshViewFix
     }
     while (!this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Bjxo.a(this.jdField_a_of_type_AndroidViewView, paramInt);
+      this.jdField_a_of_type_Bliz.a(this.jdField_a_of_type_AndroidViewView, paramInt);
       return;
       if (this.jdField_a_of_type_Boolean) {
         break;
       }
-      this.jdField_a_of_type_Bjxo.a(this.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_Bliz.a(this.jdField_a_of_type_AndroidViewView);
       return;
       if (this.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_Bjxo.a(this.jdField_a_of_type_AndroidViewView, false);
+        this.jdField_a_of_type_Bliz.a(this.jdField_a_of_type_AndroidViewView, false);
         this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0), 1000L);
       }
       this.jdField_a_of_type_Boolean = false;
@@ -156,7 +230,7 @@ public abstract class AbsPullToRefreshViewFix
       return;
       if (this.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_Bjxo.a(this.jdField_a_of_type_AndroidViewView, true);
+        this.jdField_a_of_type_Bliz.a(this.jdField_a_of_type_AndroidViewView, true);
         this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0), 0L);
       }
       this.jdField_a_of_type_Boolean = false;
@@ -182,6 +256,11 @@ public abstract class AbsPullToRefreshViewFix
     }
   }
   
+  private boolean b(float paramFloat1, float paramFloat2)
+  {
+    return (Math.abs(paramFloat1) >= this.jdField_a_of_type_Int) || (Math.abs(paramFloat2) >= this.jdField_a_of_type_Int);
+  }
+  
   private void c()
   {
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
@@ -195,6 +274,34 @@ public abstract class AbsPullToRefreshViewFix
       return;
     }
     d(paramInt);
+  }
+  
+  private boolean c()
+  {
+    if (!this.jdField_b_of_type_Boolean)
+    {
+      getParent().requestDisallowInterceptTouchEvent(false);
+      return false;
+    }
+    return true;
+  }
+  
+  private void d()
+  {
+    int i = b();
+    if (i > this.jdField_d_of_type_Int - this.jdField_c_of_type_Int) {
+      a(4);
+    }
+    do
+    {
+      return;
+      if (i > -this.jdField_c_of_type_Int)
+      {
+        a(5);
+        return;
+      }
+    } while (i >= -this.jdField_c_of_type_Int);
+    a(6);
   }
   
   private void d(int paramInt)
@@ -215,6 +322,28 @@ public abstract class AbsPullToRefreshViewFix
     getParent().requestDisallowInterceptTouchEvent(true);
   }
   
+  private void e()
+  {
+    if (this.jdField_b_of_type_Int == 4) {
+      a(1);
+    }
+    do
+    {
+      return;
+      if (this.jdField_b_of_type_Int == 5)
+      {
+        a(0);
+        return;
+      }
+      if (this.jdField_b_of_type_Int == 6)
+      {
+        a(0);
+        return;
+      }
+    } while (b() == -this.jdField_c_of_type_Int);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3));
+  }
+  
   protected int a()
   {
     return UIUtils.dip2px(getContext(), 60.0F);
@@ -222,21 +351,21 @@ public abstract class AbsPullToRefreshViewFix
   
   protected abstract View a();
   
-  protected szv a()
+  protected tnd a()
   {
     return a(0);
   }
   
-  public szv a(int paramInt)
+  public tnd a(int paramInt)
   {
     if (QLog.isColorLevel()) {
       QLog.d("AbsPullToRefreshView2", 1, "setAnimType animType = " + paramInt);
     }
-    if ((this.jdField_a_of_type_Szv != null) && ((this.jdField_a_of_type_Szv instanceof ReadInJoySkinAnimManager))) {
-      this.jdField_a_of_type_Szv.d();
+    if ((this.jdField_a_of_type_Tnd != null) && ((this.jdField_a_of_type_Tnd instanceof ReadInJoySkinAnimManager))) {
+      this.jdField_a_of_type_Tnd.d();
     }
-    this.jdField_a_of_type_Szv = taa.a(getContext(), paramInt);
-    return this.jdField_a_of_type_Szv;
+    this.jdField_a_of_type_Tnd = tni.a(getContext(), paramInt);
+    return this.jdField_a_of_type_Tnd;
   }
   
   public void a()
@@ -276,9 +405,9 @@ public abstract class AbsPullToRefreshViewFix
     }
   }
   
-  protected void a(bjxo parambjxo)
+  protected void a(bliz parambliz)
   {
-    this.jdField_a_of_type_Bjxo = parambjxo;
+    this.jdField_a_of_type_Bliz = parambliz;
   }
   
   protected void a(boolean paramBoolean) {}
@@ -308,146 +437,72 @@ public abstract class AbsPullToRefreshViewFix
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    boolean bool = true;
     switch (paramMotionEvent.getAction() & 0xFF)
     {
     }
     for (;;)
     {
-      return super.dispatchTouchEvent(paramMotionEvent);
-      a("dispatchTouchEvent: ------down------ getY=" + paramMotionEvent.getY());
-      c();
-      this.jdField_b_of_type_Float = paramMotionEvent.getX();
-      this.jdField_a_of_type_Float = paramMotionEvent.getY();
-      this.jdField_b_of_type_Boolean = false;
-      a(false);
-      this.jdField_c_of_type_Boolean = false;
-      this.jdField_d_of_type_Boolean = a(paramMotionEvent);
-      continue;
-      float f2 = this.jdField_b_of_type_Float - paramMotionEvent.getX();
-      float f1 = this.jdField_a_of_type_Float - paramMotionEvent.getY();
-      if (!this.jdField_c_of_type_Boolean)
+      bool = super.dispatchTouchEvent(paramMotionEvent);
+      float f2;
+      int i;
+      do
       {
-        if ((Math.abs(f2) <= this.jdField_a_of_type_Int) && (Math.abs(f1) <= this.jdField_a_of_type_Int)) {
-          return super.dispatchTouchEvent(paramMotionEvent);
+        return bool;
+        a("dispatchTouchEvent: ------down------ getY=" + paramMotionEvent.getY());
+        c();
+        this.jdField_b_of_type_Float = paramMotionEvent.getX();
+        this.jdField_a_of_type_Float = paramMotionEvent.getY();
+        this.jdField_b_of_type_Boolean = false;
+        a(false);
+        this.jdField_c_of_type_Boolean = false;
+        this.jdField_d_of_type_Boolean = a(paramMotionEvent);
+        break;
+        float f1 = this.jdField_b_of_type_Float - paramMotionEvent.getX();
+        f2 = this.jdField_a_of_type_Float - paramMotionEvent.getY();
+        if (!this.jdField_c_of_type_Boolean)
+        {
+          if ((Math.abs(f1) <= this.jdField_a_of_type_Int) && (Math.abs(f2) <= this.jdField_a_of_type_Int)) {
+            return super.dispatchTouchEvent(paramMotionEvent);
+          }
+          this.jdField_c_of_type_Boolean = true;
         }
-        this.jdField_c_of_type_Boolean = true;
-      }
-      int i = b();
-      a("dispatchTouchEvent: move getY=" + paramMotionEvent.getY() + ",isScroll2Top()()=" + a() + ",mHeaderHeight=" + this.jdField_c_of_type_Int + ",currentHeaderPos=" + i + ",dy=" + f1 + ",dx=" + f2);
-      this.jdField_b_of_type_Float = paramMotionEvent.getX();
-      this.jdField_a_of_type_Float = paramMotionEvent.getY();
-      if ((Math.abs(f2) >= this.jdField_a_of_type_Int) || (Math.abs(f1) >= this.jdField_a_of_type_Int))
-      {
-        if (Math.abs(f1) - Math.abs(f2) <= 0.0F)
+        i = b();
+        a("dispatchTouchEvent: move getY=" + paramMotionEvent.getY() + ",isScroll2Top()()=" + a() + ",mHeaderHeight=" + this.jdField_c_of_type_Int + ",currentHeaderPos=" + i + ",dy=" + f2 + ",dx=" + f1);
+        this.jdField_b_of_type_Float = paramMotionEvent.getX();
+        this.jdField_a_of_type_Float = paramMotionEvent.getY();
+        if (!b(f1, f2)) {
+          break;
+        }
+        if (a(f1, f2))
         {
           if (this.jdField_d_of_type_Boolean)
           {
-            if (this.jdField_b_of_type_Boolean)
-            {
-              a(true);
-              getParent().requestDisallowInterceptTouchEvent(true);
-              return super.dispatchTouchEvent(paramMotionEvent);
+            Boolean localBoolean = a(paramMotionEvent, f1, f2);
+            if (localBoolean == null) {
+              break label355;
             }
-            if (Math.abs(f2) / Math.abs(f1) >= 2.0F)
-            {
-              boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-              if (!bool)
-              {
-                getParent().requestDisallowInterceptTouchEvent(false);
-                return bool;
-              }
-              this.jdField_b_of_type_Boolean = true;
-              a(true);
-              getParent().requestDisallowInterceptTouchEvent(true);
-              return bool;
-            }
+            return localBoolean.booleanValue();
           }
-          else
-          {
-            if (!this.jdField_b_of_type_Boolean)
-            {
-              getParent().requestDisallowInterceptTouchEvent(false);
-              continue;
-            }
-            return true;
+          if (!c()) {
+            break;
           }
-        }
-        else if (this.jdField_b_of_type_Boolean) {
           return true;
         }
-        if ((a()) && (f1 < 0.0F))
-        {
-          c((int)f1 / 2);
-          d(true);
-        }
-        for (;;)
-        {
-          i = b();
-          if (i <= this.jdField_d_of_type_Int - this.jdField_c_of_type_Int) {
-            break label662;
-          }
-          a(4);
-          break;
-          if (i > -this.jdField_c_of_type_Int)
-          {
-            if (paramMotionEvent.getPointerCount() > 1)
-            {
-              d(true);
-            }
-            else if (Math.abs(f1) > 0.0F)
-            {
-              f2 = f1;
-              if (i - f1 < -this.jdField_c_of_type_Int) {
-                f2 = this.jdField_c_of_type_Int + i;
-              }
-              c((int)f2);
-              d(true);
-            }
-          }
-          else if (i < -this.jdField_c_of_type_Int) {
-            if (paramMotionEvent.getPointerCount() > 1)
-            {
-              d(true);
-            }
-            else if (Math.abs(f1) > 0.0F)
-            {
-              f2 = f1;
-              if (i - f1 > -this.jdField_c_of_type_Int) {
-                f2 = this.jdField_c_of_type_Int + i;
-              }
-              c((int)f2);
-              d(true);
-            }
-          }
-        }
-        label662:
-        if (i > -this.jdField_c_of_type_Int)
-        {
-          a(5);
-        }
-        else if (i < -this.jdField_c_of_type_Int)
-        {
-          a(6);
-          continue;
-          this.jdField_b_of_type_Boolean = false;
-          a(false);
-          this.jdField_c_of_type_Boolean = false;
-          this.jdField_d_of_type_Boolean = false;
-          a("dispatchTouchEvent: *******up****** mState=" + this.jdField_b_of_type_Int);
-          getParent().requestDisallowInterceptTouchEvent(false);
-          this.jdField_a_of_type_Float = -1.0F;
-          this.jdField_b_of_type_Float = -1.0F;
-          if (this.jdField_b_of_type_Int == 4) {
-            a(1);
-          } else if (this.jdField_b_of_type_Int == 5) {
-            a(0);
-          } else if (this.jdField_b_of_type_Int == 6) {
-            a(0);
-          } else if (b() != -this.jdField_c_of_type_Int) {
-            this.jdField_a_of_type_AndroidOsHandler.sendMessage(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3));
-          }
-        }
-      }
+      } while (this.jdField_b_of_type_Boolean);
+      label355:
+      a(paramMotionEvent, f2, i);
+      d();
+      continue;
+      this.jdField_b_of_type_Boolean = false;
+      a(false);
+      this.jdField_c_of_type_Boolean = false;
+      this.jdField_d_of_type_Boolean = false;
+      a("dispatchTouchEvent: *******up****** mState=" + this.jdField_b_of_type_Int);
+      getParent().requestDisallowInterceptTouchEvent(false);
+      this.jdField_a_of_type_Float = -1.0F;
+      this.jdField_b_of_type_Float = -1.0F;
+      e();
     }
   }
   

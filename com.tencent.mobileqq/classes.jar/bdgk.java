@@ -1,17 +1,30 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.soload.config.SoConfig;
+import java.util.Comparator;
 
 public class bdgk
-  implements agwi
+  implements Comparator<aqxa>
 {
-  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  public bdgk(SoConfig paramSoConfig) {}
+  
+  public int a(aqxa paramaqxa1, aqxa paramaqxa2)
   {
-    if (!(paramMessageRecord instanceof MessageForUniteGrayTip)) {}
-    while (!"1033".equals(paramMessageRecord.getExtInfoFromExtStr("uint64_busi_id"))) {
-      return;
+    int j = 0;
+    int i;
+    if (paramaqxa1 == null)
+    {
+      i = 0;
+      if (paramaqxa2 != null) {
+        break label26;
+      }
     }
-    bcef.b(paramQQAppInterface, "dc00898", "", "", "0X800AF35", "0X800AF35", 0, 0, "", "", "", "");
+    for (;;)
+    {
+      return j - i;
+      i = paramaqxa1.a;
+      break;
+      label26:
+      j = paramaqxa2.a;
+    }
   }
 }
 

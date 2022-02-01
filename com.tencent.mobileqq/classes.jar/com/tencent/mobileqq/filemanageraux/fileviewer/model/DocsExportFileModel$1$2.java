@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanageraux.fileviewer.model;
 
-import assz;
-import atft;
-import atfu;
+import atxg;
+import auka;
+import aukb;
 
 public class DocsExportFileModel$1$2
   implements Runnable
 {
-  public DocsExportFileModel$1$2(atfu paramatfu, int paramInt) {}
+  public DocsExportFileModel$1$2(aukb paramaukb, int paramInt) {}
   
   public void run()
   {
-    atft.e(this.jdField_a_of_type_Atfu.a).a(this.jdField_a_of_type_Int / 2 + 50);
+    auka.e(this.jdField_a_of_type_Aukb.a).a(this.jdField_a_of_type_Int / 2 + 50);
   }
 }
 

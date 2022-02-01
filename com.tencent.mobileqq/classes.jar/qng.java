@@ -1,23 +1,24 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.pts.nativemodule.IPTSLoadFeeds;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class qng
-  implements IPTSLoadFeeds
+class qng
+  implements View.OnClickListener
 {
-  private qlu a = new qnh(this);
+  qng(qnf paramqnf, ArticleInfo paramArticleInfo, Context paramContext) {}
   
-  public qng()
+  public void onClick(View paramView)
   {
-    qlt.a().a(this.a);
-  }
-  
-  public void loadFeeds(long paramLong1, long paramLong2, int paramInt, long paramLong3)
-  {
-    pks localpks = (pks)((QQAppInterface)pay.a()).getManager(163);
-    QLog.i("PTSLoadFeedsModule", 1, "[loadFeeds], channelID = " + paramLong1 + ", limitCount = " + paramInt);
-    if (localpks != null) {
-      localpks.a().a((int)paramLong1, paramInt, 9223372036854775807L, true, paramLong3);
+    if (ppe.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {}
+    for (int i = 3;; i = 2)
+    {
+      pqx.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+      pqx.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, i, false, 2, false);
+      pqb.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
   }
 }

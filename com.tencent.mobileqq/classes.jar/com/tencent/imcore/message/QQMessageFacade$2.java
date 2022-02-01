@@ -1,13 +1,13 @@
 package com.tencent.imcore.message;
 
-import amwl;
+import anyz;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
 class QQMessageFacade$2
   implements Runnable
 {
-  QQMessageFacade$2(QQMessageFacade paramQQMessageFacade, MessageRecord paramMessageRecord, amwl paramamwl, boolean paramBoolean) {}
+  QQMessageFacade$2(QQMessageFacade paramQQMessageFacade, MessageRecord paramMessageRecord, anyz paramanyz, boolean paramBoolean) {}
   
   public void run()
   {

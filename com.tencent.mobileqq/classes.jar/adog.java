@@ -1,21 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.KPLProfileCardActivity;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.app.proxy.ProxyObserver;
 
 public class adog
-  implements View.OnTouchListener
+  extends ProxyObserver
 {
-  public adog(KPLProfileCardActivity paramKPLProfileCardActivity) {}
+  public adog(ChatHistory paramChatHistory) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onProxySaveToDbFinished()
   {
-    if (!this.a.a)
-    {
-      bcef.b(this.a.app, "dc00898", "", "", "0X8008438", "0X8008438", 0, 0, "", "", "", "");
-      this.a.a = true;
-    }
-    return false;
+    this.a.a(11, false);
   }
 }
 

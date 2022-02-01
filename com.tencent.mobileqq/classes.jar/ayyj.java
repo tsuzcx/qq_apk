@@ -1,35 +1,27 @@
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.profilecard.vas.view.VasProfilePhotoView;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.QQBroadcastReceiver;
 
 public class ayyj
-  extends ayyb
+  extends QQBroadcastReceiver
 {
-  public ayyj(aysx paramaysx, aymg paramaymg)
-  {
-    super(paramaysx, paramaymg);
-  }
+  public ayyj(ScanTorchActivity paramScanTorchActivity) {}
   
-  public String a()
+  public void onReceive(AppRuntime paramAppRuntime, Context paramContext, Intent paramIntent)
   {
-    return "VasProfileHeaderPhotoComponent";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView == null)
+    if (paramIntent == null) {}
+    do
     {
-      VasProfilePhotoView localVasProfilePhotoView = new VasProfilePhotoView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (aymg)this.b);
-      localVasProfilePhotoView.setClickListener(this);
-      localVasProfilePhotoView.a();
-      this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView = localVasProfilePhotoView;
-      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).removeAllViews();
-      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).addView(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView);
-    }
-  }
-  
-  public boolean b()
-  {
-    return true;
+      return;
+      paramAppRuntime = paramIntent.getAction();
+      if (QLog.isColorLevel()) {
+        QLog.d("ScanTorchActivity", 2, new Object[] { "onReceive, action=", paramAppRuntime });
+      }
+    } while (!"com.tencent.mobileqq__alive".equals(paramAppRuntime));
+    ScanTorchActivity.a(this.a);
   }
 }
 

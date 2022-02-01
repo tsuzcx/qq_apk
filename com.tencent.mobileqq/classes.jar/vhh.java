@@ -1,26 +1,38 @@
-import android.view.View;
-import com.tencent.biz.qcircleshadow.local.widgets.QCircleFollowView;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.superplayer.api.SuperPlayerFactory;
+import com.tencent.superplayer.api.SuperPlayerVideoInfo;
 
 public class vhh
-  implements bjoe
+  implements vgw<Object, SuperPlayerVideoInfo>
 {
-  public vhh(QCircleFollowView paramQCircleFollowView, bjnw parambjnw) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public vgu<Object, SuperPlayerVideoInfo> a()
   {
-    if (!zvo.a("showUnFollowUserActionSheetClick")) {
-      switch (paramInt)
-      {
-      }
+    return new vhj();
+  }
+  
+  public vgv a(Context paramContext, vhc paramvhc)
+  {
+    paramvhc = null;
+    if (bapt.a()) {
+      paramvhc = SuperPlayerFactory.createMediaPlayer(paramContext, 112, null);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-      if (QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQcircleshadowLocalWidgetsQCircleFollowView) != null) {
-        QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQcircleshadowLocalWidgetsQCircleFollowView).a();
-      }
-      this.jdField_a_of_type_ComTencentBizQcircleshadowLocalWidgetsQCircleFollowView.b(false);
+    return new vhi(paramvhc);
+  }
+  
+  public vgy a(Context paramContext)
+  {
+    if (bapt.a()) {}
+    for (paramContext = SuperPlayerFactory.createPreDownloader(BaseApplicationImpl.getContext(), 112);; paramContext = null) {
+      return new vhk(paramContext);
+    }
+  }
+  
+  public vhc a(Context paramContext, boolean paramBoolean)
+  {
+    if (bapt.a()) {}
+    for (paramContext = SuperPlayerFactory.createPlayerVideoView(paramContext);; paramContext = null) {
+      return new vhm(paramContext);
     }
   }
 }

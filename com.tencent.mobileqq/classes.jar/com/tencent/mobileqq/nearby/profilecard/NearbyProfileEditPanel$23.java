@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
 import android.os.Bundle;
-import awkr;
-import axax;
+import axqt;
+import ayhd;
 import java.util.ArrayList;
 
 public class NearbyProfileEditPanel$23
   implements Runnable
 {
-  public NearbyProfileEditPanel$23(axax paramaxax, awkr paramawkr, Bundle paramBundle, ArrayList paramArrayList) {}
+  public NearbyProfileEditPanel$23(ayhd paramayhd, axqt paramaxqt, Bundle paramBundle, ArrayList paramArrayList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Awkr.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaUtilArrayList, this.this$0.jdField_a_of_type_ArrayOfAwoe, this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.d, this.this$0.b(), false, false);
+    this.jdField_a_of_type_Axqt.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaUtilArrayList, this.this$0.jdField_a_of_type_ArrayOfAxug, this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.d, this.this$0.b(), false, false);
   }
 }
 

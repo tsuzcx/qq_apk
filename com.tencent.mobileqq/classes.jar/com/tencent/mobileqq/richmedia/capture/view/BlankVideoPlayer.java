@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import afbb;
+import afsn;
 import android.content.Context;
 import android.view.SurfaceHolder;
 import android.view.View;
 import android.widget.LinearLayout;
-import bacr;
-import bacs;
-import bact;
+import bbja;
+import bbjb;
+import bbjc;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.transfile.FileMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -25,11 +25,11 @@ import mqq.os.MqqHandler;
 
 public class BlankVideoPlayer
   extends LinearLayout
-  implements afbb, TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnNetVideoInfoListener, TVK_IMediaPlayer.OnVideoPreparedListener, TVK_IMediaPlayer.OnVideoPreparingListener, IVideoViewBase.IVideoViewCallBack
+  implements afsn, TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnNetVideoInfoListener, TVK_IMediaPlayer.OnVideoPreparedListener, TVK_IMediaPlayer.OnVideoPreparingListener, IVideoViewBase.IVideoViewCallBack
 {
-  private bacr jdField_a_of_type_Bacr;
-  private bacs jdField_a_of_type_Bacs;
-  private bact jdField_a_of_type_Bact;
+  private bbja jdField_a_of_type_Bbja;
+  private bbjb jdField_a_of_type_Bbjb;
+  private bbjc jdField_a_of_type_Bbjc;
   private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
   boolean jdField_a_of_type_Boolean = false;
   
@@ -57,15 +57,15 @@ public class BlankVideoPlayer
   
   public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if (this.jdField_a_of_type_Bacs != null) {
-      this.jdField_a_of_type_Bacs.a();
+    if (this.jdField_a_of_type_Bbjb != null) {
+      this.jdField_a_of_type_Bbjb.a();
     }
   }
   
   public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if (this.jdField_a_of_type_Bact != null) {
-      this.jdField_a_of_type_Bact.a("onError sdkError : " + paramInt1 + "  sdkDetailError : " + paramInt2);
+    if (this.jdField_a_of_type_Bbjc != null) {
+      this.jdField_a_of_type_Bbjc.a("onError sdkError : " + paramInt1 + "  sdkDetailError : " + paramInt2);
     }
     return false;
   }
@@ -119,19 +119,19 @@ public class BlankVideoPlayer
     }
   }
   
-  public void setOnCloseListener(bacr parambacr)
+  public void setOnCloseListener(bbja parambbja)
   {
-    this.jdField_a_of_type_Bacr = parambacr;
+    this.jdField_a_of_type_Bbja = parambbja;
   }
   
-  public void setOnCompleteListener(bacs parambacs)
+  public void setOnCompleteListener(bbjb parambbjb)
   {
-    this.jdField_a_of_type_Bacs = parambacs;
+    this.jdField_a_of_type_Bbjb = parambbjb;
   }
   
-  public void setOnErrorListener(bact parambact)
+  public void setOnErrorListener(bbjc parambbjc)
   {
-    this.jdField_a_of_type_Bact = parambact;
+    this.jdField_a_of_type_Bbjc = parambbjc;
   }
 }
 

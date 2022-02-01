@@ -1,8 +1,21 @@
-import java.util.UUID;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface behi
+final class behi
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(UUID paramUUID, boolean paramBoolean, int paramInt, behh parambehh);
+  behi(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    behh.a("0X800A5B5");
+    if (QLog.isColorLevel()) {
+      QLog.d("DarkModeManager", 2, "showDarkModeTips systemDarMode  = " + this.a);
+    }
+    behh.a(true);
+    behh.a(this.a, this.b, null);
+  }
 }
 
 

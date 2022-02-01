@@ -15,6 +15,7 @@ import com.tencent.ttpic.openapi.PTGenderAttr;
 import com.tencent.ttpic.openapi.facedetect.FaceInfo;
 import com.tencent.ttpic.openapi.initializer.TNNGenderDetectInitializer;
 import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
+import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.util.List;
 import java.util.Map;
@@ -39,7 +40,6 @@ public class AEGenderDetector
     int j;
     int k;
     boolean bool;
-    Object localObject2;
     do
     {
       float f;
@@ -66,7 +66,9 @@ public class AEGenderDetector
       localObject2 = paramAIInput.getBytes(f);
     } while (localObject2 == null);
     paramAIInput = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-    paramAIInput.copyPixelsFromBuffer(ByteBuffer.wrap((byte[])localObject2));
+    Object localObject2 = ByteBuffer.wrap((byte[])localObject2);
+    ((ByteBuffer)localObject2).rewind();
+    paramAIInput.copyPixelsFromBuffer((Buffer)localObject2);
     for (;;)
     {
       localObject2 = new PTGenderAttr();

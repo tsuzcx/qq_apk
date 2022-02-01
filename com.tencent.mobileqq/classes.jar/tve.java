@@ -1,84 +1,50 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.impl.SuperMaskDataMgr.receiveAd.1;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/impl/SuperMaskDataMgr;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/api/ISuperMaskData;", "()V", "adData", "", "getAdData", "()Ljava/lang/Object;", "setAdData", "(Ljava/lang/Object;)V", "adResData", "Lorg/json/JSONObject;", "getAdResData", "()Lorg/json/JSONObject;", "setAdResData", "(Lorg/json/JSONObject;)V", "resCheckInfo", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/ResCheckStep$AdResCheckInfo;", "getResCheckInfo", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/ResCheckStep$AdResCheckInfo;", "setResCheckInfo", "(Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/ResCheckStep$AdResCheckInfo;)V", "receiveAd", "", "adInfo", "resetDataMgr", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class tve
+class tve
+  implements ttn
 {
-  @Nullable
-  private static volatile Object jdField_a_of_type_JavaLangObject;
-  @Nullable
-  private static volatile JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  public static final tve a;
-  @Nullable
-  private static volatile tvp jdField_a_of_type_Tvp;
+  tve(tva paramtva, FrameLayout paramFrameLayout) {}
   
-  static
-  {
-    jdField_a_of_type_Tve = new tve();
-  }
+  public void a() {}
   
-  @Nullable
-  public Object a()
+  public void a(int paramInt)
   {
-    return jdField_a_of_type_JavaLangObject;
-  }
-  
-  @Nullable
-  public JSONObject a()
-  {
-    return jdField_a_of_type_OrgJsonJSONObject;
-  }
-  
-  @Nullable
-  public tvp a()
-  {
-    return jdField_a_of_type_Tvp;
-  }
-  
-  public final void a()
-  {
-    a(null);
-    a((JSONObject)null);
-    a((tvp)null);
-    QLog.d("ReadInJoySuperMaskAd", 1, "resetDataMgr");
-  }
-  
-  public void a(@Nullable Object paramObject)
-  {
-    jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  public void a(@Nullable JSONObject paramJSONObject)
-  {
-    jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-  }
-  
-  public void a(@Nullable tvp paramtvp)
-  {
-    jdField_a_of_type_Tvp = paramtvp;
-  }
-  
-  public void b(@Nullable Object paramObject)
-  {
-    if (((paramObject instanceof AdvertisementInfo)) && (twr.l((AdvertisementInfo)paramObject)))
-    {
-      QLog.d("ReadInJoySuperMaskAd", 1, "receiveAd");
-      tvi.a.a(tuz.a.b());
-      tvg.a.b();
-      a(paramObject);
-      tvg.a.a("recviceMask");
-      ThreadManagerV2.post((Runnable)new SuperMaskDataMgr.receiveAd.1(paramObject), 10, null, false);
+    if (tva.a(this.jdField_a_of_type_Tva) != null) {
+      tva.a(this.jdField_a_of_type_Tva).a(paramInt);
     }
   }
+  
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    if (paramInt2 == 5)
+    {
+      Intent localIntent = new Intent();
+      localIntent.setAction("float_layer_finsh_action");
+      tva.a(this.jdField_a_of_type_Tva).getActivity().sendBroadcast(localIntent);
+    }
+    tva.a(this.jdField_a_of_type_Tva).getActivity().doOnBackPressed();
+    tva.a(this.jdField_a_of_type_Tva).getActivity().overridePendingTransition(0, 0);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetFrameLayout.getVisibility() != 0) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
+    }
+  }
+  
+  public void b(int paramInt) {}
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tve
  * JD-Core Version:    0.7.0.1
  */

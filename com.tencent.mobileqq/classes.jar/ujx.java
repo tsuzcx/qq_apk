@@ -1,83 +1,36 @@
-import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.GifDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONObject;
 
-public class ujx
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/utils/AdExperimentInitUtil;", "", "()V", "initExperiment", "", "adInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;", "initVideoGuide", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ujx
 {
-  private URLDrawableDownListener jdField_a_of_type_ComTencentImageURLDrawableDownListener = new ujy(this);
-  private udu jdField_a_of_type_Udu;
-  private boolean jdField_a_of_type_Boolean;
+  public static final ujx a = new ujx();
   
-  private URLDrawable a(String paramString, boolean paramBoolean)
+  private final void b(AdvertisementInfo paramAdvertisementInfo)
   {
-    Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = paramBoolean;
-    paramString = URLDrawable.getDrawable(udt.a(paramString), (URLDrawable.URLDrawableOptions)localObject);
-    if ((paramString.getCurrDrawable() instanceof GifDrawable))
+    ugh localugh = paramAdvertisementInfo.adExperimentData;
+    paramAdvertisementInfo = paramAdvertisementInfo.mAdExtInfo;
+    if (!TextUtils.isEmpty((CharSequence)paramAdvertisementInfo))
     {
-      localObject = ((GifDrawable)paramString.getCurrDrawable()).getImage();
-      if (paramBoolean) {
-        break label54;
+      Object localObject = new JSONObject(paramAdvertisementInfo).opt("video_guide");
+      paramAdvertisementInfo = localObject;
+      if (!(localObject instanceof JSONObject)) {
+        paramAdvertisementInfo = null;
       }
-      paramString.setIndividualPause(true);
-    }
-    for (;;)
-    {
-      ((AbstractGifImage)localObject).reset();
-      return paramString;
-      label54:
-      paramString.setIndividualPause(false);
-    }
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      a();
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Udu != null) {
-      this.jdField_a_of_type_Udu.a();
-    }
-    AbstractGifImage.pauseAll();
-  }
-  
-  public void a(URLImageView paramURLImageView, Drawable paramDrawable, String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      paramURLImageView.setImageDrawable(paramDrawable);
-      return;
-    }
-    this.jdField_a_of_type_Boolean = paramBoolean2;
-    paramDrawable = a(paramString, paramBoolean1);
-    if (paramDrawable.getStatus() == 1)
-    {
-      if ((paramDrawable.getCurrDrawable() instanceof GifDrawable))
-      {
-        AbstractGifImage localAbstractGifImage = ((GifDrawable)paramDrawable.getCurrDrawable()).getImage();
-        if ((localAbstractGifImage instanceof udu))
-        {
-          this.jdField_a_of_type_Udu = ((udu)localAbstractGifImage);
-          this.jdField_a_of_type_Udu.a(new ujz(this, paramURLImageView, paramString));
-        }
+      paramAdvertisementInfo = (JSONObject)paramAdvertisementInfo;
+      if (paramAdvertisementInfo != null) {
+        localugh.a(new ugi(paramAdvertisementInfo.optInt("second_state_time", -1), paramAdvertisementInfo.optInt("third_state_time", -1)));
       }
-      this.jdField_a_of_type_ComTencentImageURLDrawableDownListener.onLoadSuccessed(paramURLImageView, paramDrawable);
     }
-    for (;;)
-    {
-      paramURLImageView.setURLDrawableDownListener(this.jdField_a_of_type_ComTencentImageURLDrawableDownListener);
-      paramURLImageView.setImageDrawable(paramDrawable);
-      return;
-      paramDrawable.startDownload();
+  }
+  
+  public final void a(@Nullable AdvertisementInfo paramAdvertisementInfo)
+  {
+    if (paramAdvertisementInfo != null) {
+      a.b(paramAdvertisementInfo);
     }
   }
 }

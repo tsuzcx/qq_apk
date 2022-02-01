@@ -1,23 +1,24 @@
 package com.tencent.mobileqq.activity.contact.phonecontact;
 
-import aiho;
-import aihp;
-import anat;
+import ajcn;
+import ajco;
+import aodi;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class PhoneUnityManager$2
   implements Runnable
 {
-  public PhoneUnityManager$2(aihp paramaihp) {}
+  public PhoneUnityManager$2(ajco paramajco) {}
   
   public void run()
   {
     if (QLog.isDevelopLevel()) {
       QLog.i("MobileUnityManager", 4, "load phone local data");
     }
-    aiho localaiho = this.this$0.a();
-    ((anat)this.this$0.a.getBusinessHandler(34)).notifyUI(9, true, localaiho);
+    ajcn localajcn = this.this$0.a();
+    ((aodi)this.this$0.a.getBusinessHandler(BusinessHandlerFactory.SEC_SVC_HANDLER)).notifyUI(9, true, localajcn);
   }
 }
 

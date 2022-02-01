@@ -1,38 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
 
-class axad
-  implements View.OnClickListener
+public class axad
 {
-  axad(awzr paramawzr, ImageView paramImageView1, ImageView paramImageView2, ImageView paramImageView3) {}
+  private int jdField_a_of_type_Int;
+  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public void onClick(View paramView)
+  public axac a()
   {
-    if (paramView == this.jdField_a_of_type_AndroidWidgetImageView)
-    {
-      awzr.a(this.jdField_a_of_type_Awzr, 1);
-      new bcek(this.jdField_a_of_type_Awzr.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_dislike").e(this.jdField_a_of_type_Awzr.a.a.a).a();
-    }
-    for (;;)
-    {
-      awzr.b(this.jdField_a_of_type_Awzr);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (paramView == this.b)
-      {
-        awzr.a(this.jdField_a_of_type_Awzr, 2);
-        new bcek(this.jdField_a_of_type_Awzr.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_superlike").e(this.jdField_a_of_type_Awzr.a.a.a).a();
-      }
-      else if (paramView == this.c)
-      {
-        awzr.a(this.jdField_a_of_type_Awzr, 3);
-        new bcek(this.jdField_a_of_type_Awzr.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_like").e(this.jdField_a_of_type_Awzr.a.a.a).a();
-      }
-    }
+    return new axac(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData, this.jdField_a_of_type_Int);
+  }
+  
+  public axad a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public axad a(MsgBackupUserData paramMsgBackupUserData)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
+    return this;
+  }
+  
+  public axad a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public axad b(String paramString)
+  {
+    this.b = paramString;
+    return this;
   }
 }
 

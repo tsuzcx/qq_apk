@@ -1,16 +1,18 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aitq
-  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  TextView a;
+  public aitq(SearchBaseActivity paramSearchBaseActivity) {}
   
-  aitq(View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.a = ((TextView)paramView.findViewById(2131379978));
+    this.a.setResult(1);
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

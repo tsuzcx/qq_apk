@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.utils.ffmpeg;
 
 import java.io.IOException;
-import xvv;
+import ykq;
 
 class ShellCommand
 {
@@ -14,7 +14,7 @@ class ShellCommand
     }
     catch (IOException localIOException)
     {
-      xvv.c("Q.qqstory.ffmpeg.FFmpeg", "Exception while trying to run: " + paramArrayOfString, localIOException);
+      ykq.c("Q.qqstory.ffmpeg.FFmpeg", "Exception while trying to run: " + paramArrayOfString, localIOException);
     }
     return null;
   }
@@ -35,7 +35,7 @@ class ShellCommand
       }
       catch (InterruptedException localInterruptedException1)
       {
-        xvv.c("Q.qqstory.ffmpeg.FFmpeg", "Interrupt exception", localInterruptedException1);
+        ykq.c("Q.qqstory.ffmpeg.FFmpeg", "Interrupt exception", localInterruptedException1);
         Util.destroyProcess(localProcess);
         localObject2 = localObject3;
         localObject3 = paramArrayOfString;

@@ -1,53 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.troop.activity.TroopStoryMainActivity;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import mqq.os.MqqHandler;
 
 public class aekn
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public aekn(TroopAssistantActivity paramTroopAssistantActivity) {}
+  private int jdField_a_of_type_Int;
   
-  public void onClick(View paramView)
+  public aekn(NotificationActivity paramNotificationActivity, int paramInt)
   {
-    if (System.currentTimeMillis() - this.a.jdField_a_of_type_Long >= 1500L) {}
-    for (;;)
-    {
-      try
-      {
-        this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-        int i = paramView.getId();
-        switch (i)
-        {
-        }
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramInt == 0) {
+      if (this.jdField_a_of_type_Int == 1) {
+        NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity);
       }
-      catch (Exception localException)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("TroopAssistantFeedsJsHandler", 2, "feedsTitle onClick:" + localException.toString());
-        continue;
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      TroopStoryMainActivity.a(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopAssistantFeedsJsHandler", 2, "feedsTitle onClick, url:https://qqweb.qq.com/m/qunfeeds/index.html?_wv=1031&_bid=200");
-      }
-      if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      }
-      xwa.a("grp_help", "clk_video", 0, 0, new String[] { "", "", "", "" });
     }
+    while (paramInt != 1)
+    {
+      NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity).sendEmptyMessage(4);
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_Int != 2);
+      NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, NotificationActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity));
+      return;
+    }
+    NotificationActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aekn
  * JD-Core Version:    0.7.0.1
  */

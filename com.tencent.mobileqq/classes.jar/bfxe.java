@@ -1,68 +1,67 @@
-import com.tencent.commonsdk.pool.ByteArrayPool;
-import java.io.ByteArrayOutputStream;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class bfxe
-  extends ByteArrayOutputStream
+  extends aqwt<bfxd>
 {
-  private final ByteArrayPool a;
-  
-  public bfxe(ByteArrayPool paramByteArrayPool, int paramInt)
+  @NonNull
+  public bfxd a(int paramInt)
   {
-    this.a = paramByteArrayPool;
-    this.buf = this.a.getBuf(Math.max(paramInt, 256));
+    QLog.d("TroopHonor.config", 2, "migrateOldOrDefaultContent, type: " + paramInt);
+    return new bfxd();
   }
   
-  private void a(int paramInt)
+  @Nullable
+  public bfxd a(aqxa[] paramArrayOfaqxa)
   {
-    if (this.count + paramInt <= this.buf.length) {
-      return;
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0)) {
+      return bfxd.a(paramArrayOfaqxa[0].a);
     }
-    byte[] arrayOfByte = this.a.getBuf((this.count + paramInt) * 2);
-    System.arraycopy(this.buf, 0, arrayOfByte, 0, this.count);
-    this.a.returnBuf(this.buf);
-    this.buf = arrayOfByte;
+    return null;
   }
   
-  public byte[] a()
+  public void a(bfxd parambfxd)
   {
-    return this.buf;
-  }
-  
-  public void close()
-  {
-    this.a.returnBuf(this.buf);
-    this.buf = null;
-    super.close();
-  }
-  
-  public void write(int paramInt)
-  {
-    try
-    {
-      a(1);
-      super.write(paramInt);
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+    QLog.d("TroopHonor.config", 1, "onUpdate, newConf = " + parambfxd);
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      ((bfwu)((QQAppInterface)localAppRuntime).getManager(QQManagerFactory.TROOP_HONOR_MANAGER)).a(parambfxd, false);
     }
   }
   
-  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public Class<bfxd> clazz()
   {
-    try
-    {
-      a(paramInt2);
-      super.write(paramArrayOfByte, paramInt1, paramInt2);
-      return;
-    }
-    finally
-    {
-      paramArrayOfByte = finally;
-      throw paramArrayOfByte;
-    }
+    return bfxd.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.d("TroopHonor.config", 1, "onReqFailed, failCode = " + paramInt);
+  }
+  
+  public int type()
+  {
+    return 544;
   }
 }
 

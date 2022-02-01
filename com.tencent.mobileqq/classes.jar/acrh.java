@@ -1,52 +1,25 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-import com.tencent.mobileqq.utils.QQCustomArkDialog.AppInfo;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
 public class acrh
-  implements afws
+  implements acpi
 {
-  public acrh(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
-  
-  public void a()
+  private static void a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
   {
-    int i = 0;
     if (QLog.isColorLevel()) {
-      QLog.i("ArkFullScreenAppActivity", 2, "arkview loadSucc: " + ArkFullScreenAppActivity.a(this.a));
+      QLog.d("Q.qwallet.push", 2, "receive msg0x210submsg0x66");
     }
-    Object localObject;
-    boolean bool;
-    if (ArkFullScreenAppActivity.a(this.a) != null)
-    {
-      localObject = ArkFullScreenAppActivity.a(this.a).container;
-      if (localObject != null)
-      {
-        if ((!((afvi)localObject).checkShare()) || (!ArkFullScreenAppActivity.a(this.a).showShareMenu)) {
-          break label135;
-        }
-        bool = true;
-        if (QLog.isColorLevel()) {
-          QLog.i("ArkFullScreenAppActivity", 2, "supportShare: " + bool);
-        }
-        localObject = this.a.rightViewImg;
-        if (!bool) {
-          break label140;
-        }
-      }
-    }
-    for (;;)
-    {
-      ((ImageView)localObject).setVisibility(i);
-      return;
-      label135:
-      bool = false;
-      break;
-      label140:
-      i = 4;
-    }
+    akrl.a(paramQQAppInterface, paramMsgType0x210.vProtobuf, paramMsgInfo.lFromUin, paramMsgInfo.shMsgSeq, paramMsgInfo.lMsgUid, paramMsgInfo.shMsgType);
   }
   
-  public void b() {}
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramMsgInfo, paramMsgType0x210);
+    return null;
+  }
 }
 
 

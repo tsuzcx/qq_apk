@@ -1,59 +1,26 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment.2.1;
+import com.qflutter.qqcircle.TencentQQCirclePlugin;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudWrite.StDoFollowRsp;
+import java.util.HashMap;
+import java.util.Map;
 
-public class aumx
-  implements aunl
+class aumx
+  implements VSDispatchObserver.onVSRspCallBack<FeedCloudWrite.StDoFollowRsp>
 {
-  public aumx(GroupVideoLoadingFragment paramGroupVideoLoadingFragment) {}
+  aumx(aumv paramaumv, String paramString, int paramInt) {}
   
-  public void a(int paramInt, Bundle paramBundle)
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoFollowRsp paramStDoFollowRsp)
   {
-    if ((this.a.getActivity() == null) || (this.a.getActivity().isFinishing())) {}
-    do
+    QLog.d("QQCircleMethodImpl", 1, "[onReceive] isSuccess=" + paramBoolean + ", retCode=" + paramLong + ", errMsg=" + paramString + ", uin=" + this.jdField_a_of_type_JavaLangString);
+    if ((paramBoolean) && (0L == paramLong))
     {
-      return;
-      GroupVideoLoadingFragment.a(this.a, paramInt);
-      switch (paramInt)
-      {
-      case 4: 
-      case 8: 
-      default: 
-        return;
-      }
-    } while (!GroupVideoLoadingFragment.a(this.a));
-    long l = paramBundle.getLong("key_totalSize", 0L);
-    GroupVideoLoadingFragment.a(this.a).a(amtj.a(2131704524), amtj.a(2131704539));
-    GroupVideoLoadingFragment.a(this.a).a(amtj.a(2131704535) + aumr.a(l) + ")", new aumz(this.a, null));
-    return;
-    GroupVideoLoadingFragment.a(this.a).a(amtj.a(2131704537), amtj.a(2131704538));
-    paramInt = paramBundle.getInt("key_progress", 0);
-    l = paramBundle.getLong("key_totalSize", 0L);
-    GroupVideoLoadingFragment.a(this.a).a(paramInt, l);
-    GroupVideoLoadingFragment.a(this.a).b();
-    return;
-    GroupVideoLoadingFragment.a(this.a).a();
-    GroupVideoLoadingFragment.a(this.a).a(amtj.a(2131704536), amtj.a(2131704530));
-    paramBundle = Message.obtain();
-    paramBundle.arg1 = 10;
-    GroupVideoLoadingFragment.a(this.a).sendMessage(paramBundle);
-    return;
-    GroupVideoLoadingFragment.a(this.a).a(amtj.a(2131704533), amtj.a(2131704529));
-    GroupVideoLoadingFragment.a(this.a).a(amtj.a(2131704534), new aumz(this.a, null));
-    return;
-    GroupVideoLoadingFragment.a(this.a).b();
-    GroupVideoLoadingFragment.a(this.a).a(amtj.a(2131704525), "");
-    GroupVideoLoadingFragment.a(this.a).a(amtj.a(2131704526), new aumz(this.a, null));
-    return;
-    GroupVideoLoadingFragment.b(this.a, 90);
-    GroupVideoLoadingFragment.a(this.a).a(90, 0L);
-    return;
-    GroupVideoLoadingFragment.b(this.a, 100);
-    GroupVideoLoadingFragment.a(this.a).a(100, 0L);
-    GroupVideoLoadingFragment.a(this.a).postDelayed(new GroupVideoLoadingFragment.2.1(this), 1500L);
+      paramVSBaseRequest = new HashMap();
+      paramVSBaseRequest.put("userId", this.jdField_a_of_type_JavaLangString);
+      paramVSBaseRequest.put("followState", Integer.valueOf(this.jdField_a_of_type_Int));
+      TencentQQCirclePlugin.sendEvent("tencent_qqcircle/follow", paramVSBaseRequest);
+    }
   }
 }
 

@@ -1,13 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment;
+import android.app.Activity;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import mqq.app.QQPermissionCallback;
 
 public class bmjo
-  implements DialogInterface.OnClickListener
+  implements QQPermissionCallback
 {
-  public bmjo(AEEditorMultiCutEditFragment paramAEEditorMultiCutEditFragment) {}
+  public bmjo(TroopHWJsPlugin paramTroopHWJsPlugin, int paramInt, Activity paramActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bhdj.a(this.jdField_a_of_type_AndroidAppActivity);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.d(this.jdField_a_of_type_Int);
+  }
 }
 
 

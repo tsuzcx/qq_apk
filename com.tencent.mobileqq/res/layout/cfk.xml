@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.emoticonview.relateemo.RelatedEmotionPanel android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:id="@id/ee7" android:background="@drawable/bj7" android:layout_width="65.0dip" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v7.widget.RecyclerView android:id="@id/i4m" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</com.tencent.mobileqq.emoticonview.relateemo.RelatedEmotionPanel>
+    <TextView android:textSize="@dimen/ayl" android:textStyle="normal" android:textColor="@color/bp" android:gravity="center" android:id="@id/o1e" android:layout_width="fill_parent" android:layout_height="35.0dip" android:text="0.5x" />
+    <View android:background="#ffebecee" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <TextView android:textSize="@dimen/ayl" android:textStyle="normal" android:textColor="@color/bp" android:gravity="center" android:id="@id/o0i" android:layout_width="fill_parent" android:layout_height="35.0dip" android:text="0.75x" />
+    <View android:background="#ffebecee" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <TextView android:textSize="@dimen/ayl" android:textStyle="normal" android:textColor="@color/bp" android:gravity="center" android:id="@id/o0l" android:layout_width="fill_parent" android:layout_height="35.0dip" android:text="1.0x" />
+    <View android:background="#ffebecee" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <TextView android:textSize="@dimen/ayl" android:textStyle="normal" android:textColor="@color/bp" android:gravity="center" android:id="@id/o01" android:layout_width="fill_parent" android:layout_height="35.0dip" android:text="1.5x" />
+    <View android:background="#ffebecee" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <TextView android:textSize="@dimen/ayl" android:textStyle="normal" android:textColor="@color/bp" android:gravity="center" android:id="@id/o1d" android:layout_width="fill_parent" android:layout_height="35.0dip" android:text="2.0x" />
+</LinearLayout>

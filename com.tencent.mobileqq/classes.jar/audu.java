@@ -1,23 +1,12 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQVasH5PayBrowserActivity;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
-class audu
-  implements DialogInterface.OnClickListener
+final class audu
+  implements Comparator<Map.Entry<String, Integer>>
 {
-  audu(audt paramaudt, BaseChatPie paramBaseChatPie, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(Map.Entry<String, Integer> paramEntry1, Map.Entry<String, Integer> paramEntry2)
   {
-    BaseActivity localBaseActivity = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getActivity();
-    Intent localIntent = new Intent(localBaseActivity, QQVasH5PayBrowserActivity.class);
-    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    localBaseActivity.startActivity(localIntent);
-    paramDialogInterface.dismiss();
+    return ((Integer)paramEntry2.getValue()).intValue() - ((Integer)paramEntry1.getValue()).intValue();
   }
 }
 

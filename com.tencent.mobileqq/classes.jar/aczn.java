@@ -1,22 +1,8 @@
-class aczn
-  extends asbj
+import com.tencent.mfsdk.collector.ResultObject;
+
+public abstract interface aczn
 {
-  aczn(aczh paramaczh) {}
-  
-  protected void onFileTransferEnd(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    this.a.a.notifyDataSetChanged();
-  }
-  
-  protected void onFileTransferProgress(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    this.a.a.notifyDataSetChanged();
-  }
-  
-  protected void onFileTransferStart(long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    this.a.a.notifyDataSetChanged();
-  }
+  public abstract boolean a(ResultObject paramResultObject, aczo paramaczo);
 }
 
 

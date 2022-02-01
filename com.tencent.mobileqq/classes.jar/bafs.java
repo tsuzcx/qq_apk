@@ -1,24 +1,35 @@
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.profilesetting.InterestSwitchEditActivity;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-class bafs
-  implements Comparator<baep>
+public class bafs
+  implements bafj
 {
-  bafs(bafq parambafq) {}
+  public bafs(InterestSwitchEditActivity paramInterestSwitchEditActivity, bagn parambagn, bkzi parambkzi) {}
   
-  public int a(baep parambaep1, baep parambaep2)
+  public void a(@NotNull View paramView, @Nullable bafh parambafh)
   {
-    if (parambaep2.b() > parambaep1.b()) {}
-    do
-    {
-      return -1;
-      if (parambaep2.b() < parambaep1.b()) {
-        return 1;
-      }
-    } while (parambaep2.a() > parambaep1.a());
-    if (parambaep2.a() == parambaep1.a()) {
-      return 0;
+    if (bnrf.a(paramView)) {
+      return;
     }
-    return 1;
+    if ((parambafh == null) || (this.jdField_a_of_type_Bagn.g() == parambafh.a())) {}
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      InterestSwitchEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilesettingInterestSwitchEditActivity, parambafh.a(), this.jdField_a_of_type_Bagn);
+      if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
+      {
+        QQToast.a(BaseApplicationImpl.sApplication, 2131694253, 0).b(this.jdField_a_of_type_ComTencentMobileqqProfilesettingInterestSwitchEditActivity.getTitleBarHeight());
+        return;
+      }
+      InterestSwitchEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilesettingInterestSwitchEditActivity, this.jdField_a_of_type_Bagn, parambafh.a());
+    }
   }
 }
 

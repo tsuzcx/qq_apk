@@ -1,58 +1,67 @@
-import android.content.Context;
 import android.content.res.Resources;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.apollo.view.pannel.ApolloPanel;
+import com.tencent.mobileqq.apollo.view.pannel.ApolloPanelGuideView;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
 import com.tencent.qphone.base.util.QLog;
 
 public class anow
+  implements anpj
 {
-  private Resources jdField_a_of_type_AndroidContentResResources;
-  private String jdField_a_of_type_JavaLangString;
-  private Resources b;
+  public anow(ApolloPanel paramApolloPanel) {}
   
-  public anow(Context paramContext)
+  public void a(ApolloPanelGuideView paramApolloPanelGuideView)
   {
-    this.jdField_a_of_type_AndroidContentResResources = paramContext.getResources();
-  }
-  
-  public int a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_AndroidContentResResources == null) || (this.b == null)) {}
-    String str1;
-    int i;
-    do
+    if (paramApolloPanelGuideView.a() == 0)
     {
-      return paramInt;
-      str1 = this.jdField_a_of_type_AndroidContentResResources.getResourceEntryName(paramInt);
-      String str2 = this.jdField_a_of_type_AndroidContentResResources.getResourceTypeName(paramInt);
-      i = this.b.getIdentifier(str1, str2, this.jdField_a_of_type_JavaLangString);
-    } while (i <= 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiLanguageEngine", 2, new Object[] { "resourceName:", str1, " ,lanResID:", Integer.valueOf(i), " ,oldId:", Integer.valueOf(paramInt) });
+      ApolloPanel.e(this.a);
+      if (!ApolloPanel.a(this.a, "sp_key_apollo_show_guide_tip"))
+      {
+        ApolloPanel.a(this.a, "sp_key_apollo_show_guide_tip");
+        ApolloPanel.a(this.a, ApolloPanel.b(this.a), 49, this.a.getResources().getString(2131690096), 5, null);
+      }
     }
-    return i;
-  }
-  
-  public Resources a()
-  {
-    if (this.b == null) {
-      return this.jdField_a_of_type_AndroidContentResResources;
+    for (;;)
+    {
+      QLog.i("ApolloPanel", 1, "mGuideClickCallback onClose");
+      return;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.hideAllPanels();
+      }
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
+        VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, "cmshow", "Apollo", "clk_panelnewuser_close", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, ApolloUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getCurType()), 0, new String[] { "", "", "", String.valueOf(System.currentTimeMillis() / 1000L) });
+      }
     }
-    return this.b;
   }
   
-  public void a(Resources paramResources, String paramString)
+  public void b(ApolloPanelGuideView paramApolloPanelGuideView)
   {
-    this.b = paramResources;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public Resources b()
-  {
-    return this.jdField_a_of_type_AndroidContentResResources;
+    if (paramApolloPanelGuideView.a() == 0)
+    {
+      ApolloPanel.e(this.a);
+      ((VasExtensionHandler)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getBusinessHandler(BusinessHandlerFactory.VAS_EXTENSION_HANDLER)).a("guide_page", 1, new anox(this));
+      return;
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null)) {
+      VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, "cmshow", "Apollo", "exp_panelnewuser_open", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, ApolloUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getCurType()), ApolloPanel.b, new String[] { "", "", "", String.valueOf(System.currentTimeMillis() / 1000L) });
+    }
+    paramApolloPanelGuideView = (VasExtensionHandler)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getBusinessHandler(BusinessHandlerFactory.VAS_EXTENSION_HANDLER);
+    if (ApolloPanel.b == 0) {}
+    for (int i = 0;; i = 1)
+    {
+      paramApolloPanelGuideView.a("guide_open_cmshow", i, new anoy(this));
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anow
  * JD-Core Version:    0.7.0.1
  */

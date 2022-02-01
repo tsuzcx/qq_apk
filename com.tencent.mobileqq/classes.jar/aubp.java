@@ -1,6 +1,8 @@
-public abstract interface aubp
+import java.util.List;
+
+public abstract interface aubp<M>
 {
-  public abstract void a(String paramString);
+  public abstract void a(List<M> paramList, int paramInt, aubv paramaubv);
 }
 
 

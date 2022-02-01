@@ -1,54 +1,46 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.data.BmqqUserSimpleInfo;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class bimk
-  extends nnq
+  implements View.OnTouchListener
 {
-  public bimk(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  public bimk(ClearableEditText paramClearableEditText) {}
   
-  protected void a(boolean paramBoolean, BmqqUserSimpleInfo paramBmqqUserSimpleInfo)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a();
-    if ((paramBoolean) && (paramBmqqUserSimpleInfo != null)) {
-      if (paramBmqqUserSimpleInfo.mBmqqUin.equals(this.a.jdField_a_of_type_Aymg.a.a)) {
-        if (!paramBmqqUserSimpleInfo.equals(this.a.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo))
+    int i = 1;
+    if (this.a.getCompoundDrawables()[2] == null) {}
+    label107:
+    for (;;)
+    {
+      return false;
+      if (paramMotionEvent.getAction() == 1)
+      {
+        if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth()) {}
+        for (;;)
         {
-          i = 1;
           if (i == 0) {
-            break label80;
+            break label107;
           }
-          this.a.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo = paramBmqqUserSimpleInfo;
-          this.a.c(0);
+          this.a.setText("");
+          this.a.setClearButtonVisible(false);
+          if (this.a.jdField_a_of_type_Bimn == null) {
+            break;
+          }
+          this.a.jdField_a_of_type_Bimn.k();
+          return false;
+          i = 0;
         }
       }
     }
-    label80:
-    while (!QLog.isColorLevel())
-    {
-      do
-      {
-        do
-        {
-          for (;;)
-          {
-            return;
-            int i = 0;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("QidianProfileCardActivity", 2, "BmqqBusinessObserver not change");
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("QidianProfileCardActivity", 2, "BmqqBusinessObserver not current uin");
-      return;
-    }
-    QLog.d("QidianProfileCardActivity", 2, "BmqqBusinessObserver fail");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bimk
  * JD-Core Version:    0.7.0.1
  */

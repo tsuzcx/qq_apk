@@ -1,16 +1,16 @@
 package com.tencent.biz.videostory.widget.easylyric;
 
-import zyh;
-import zyo;
+import aant;
+import aaoa;
 
 public class SingleLyricView$1$1
   implements Runnable
 {
-  public SingleLyricView$1$1(zyo paramzyo, long paramLong) {}
+  public SingleLyricView$1$1(aaoa paramaaoa, long paramLong) {}
   
   public void run()
   {
-    SingleLyricView.a(this.jdField_a_of_type_Zyo.a).a(this.jdField_a_of_type_Long);
+    SingleLyricView.a(this.jdField_a_of_type_Aaoa.a).a(this.jdField_a_of_type_Long);
   }
 }
 

@@ -1,106 +1,98 @@
-import android.annotation.TargetApi;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.qphone.base.util.QLog;
 
-@TargetApi(14)
 public class vmp
 {
-  public int a;
-  public long a;
-  public MessageForShortVideo a;
-  public HttpNetReq a;
-  public String a;
-  public Map<String, Object> a;
-  public vmi a;
-  public vmo a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public int g = 1;
+  private static final String a = "weishi" + "8.4.10".replaceAll("\\.", "");
   
-  public vmp()
+  public static void a(String paramString)
   {
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    b(a, 4, paramString);
   }
   
-  public static String a(String paramString, int paramInt)
+  public static void a(String paramString1, int paramInt, String paramString2)
   {
-    return paramInt + "_" + paramString;
-  }
-  
-  public static vmp a(String paramString, int paramInt)
-  {
-    return a(paramString, null, paramInt, false);
-  }
-  
-  public static vmp a(String paramString, int paramInt, boolean paramBoolean)
-  {
-    return a(paramString, null, paramInt, paramBoolean);
-  }
-  
-  private static vmp a(String paramString1, String paramString2, int paramInt, boolean paramBoolean)
-  {
-    vmp localvmp = new vmp();
-    StoryVideoItem localStoryVideoItem = ((vuu)vux.a(5)).a(paramString1);
-    if ((localStoryVideoItem != null) && (localStoryVideoItem.isMine()))
-    {
-      localvmp.e = vmq.a(paramString1, localStoryVideoItem.mCreateTime, paramInt, false, false);
-      localvmp.f = vmq.a(paramString1, localStoryVideoItem.mCreateTime, paramInt, true, false);
-      localvmp.jdField_b_of_type_Int = 0;
-      localvmp.jdField_b_of_type_JavaLangString = paramString1;
-      localvmp.jdField_a_of_type_Int = paramInt;
-      localvmp.jdField_a_of_type_JavaLangString = a(paramString1, paramInt);
-      if (!paramBoolean) {
-        break label159;
-      }
+    String str = a + "-" + paramString1;
+    paramString1 = paramString2;
+    if (paramString2 == null) {
+      paramString1 = "";
     }
-    label159:
-    for (paramString1 = "";; paramString1 = paramString2)
-    {
-      localvmp.jdField_c_of_type_JavaLangString = paramString1;
-      if (paramBoolean) {
-        paramString2 = "";
-      }
-      localvmp.jdField_d_of_type_JavaLangString = paramString2;
-      localvmp.jdField_c_of_type_Boolean = paramBoolean;
-      return localvmp;
-      localvmp.e = vmq.a(paramString1, paramInt, false, false);
-      localvmp.f = vmq.a(paramString1, paramInt, true, false);
-      break;
+    QLog.i(str, paramInt, paramString1);
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    a(paramString1, 4, paramString2);
+  }
+  
+  public static void b(String paramString)
+  {
+    d(a, 1, paramString);
+  }
+  
+  public static void b(String paramString1, int paramInt, String paramString2)
+  {
+    String str = a + "-" + paramString1;
+    paramString1 = paramString2;
+    if (paramString2 == null) {
+      paramString1 = "";
+    }
+    QLog.d(str, paramInt, paramString1);
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    b(paramString1, 4, paramString2);
+  }
+  
+  public static void c(String paramString1, int paramInt, String paramString2)
+  {
+    String str = a + "-" + paramString1;
+    paramString1 = paramString2;
+    if (paramString2 == null) {
+      paramString1 = "";
+    }
+    QLog.w(str, paramInt, paramString1);
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    c(paramString1, 4, paramString2);
+  }
+  
+  public static void d(String paramString1, int paramInt, String paramString2)
+  {
+    String str = a + "-" + paramString1;
+    paramString1 = paramString2;
+    if (paramString2 == null) {
+      paramString1 = "";
+    }
+    QLog.e(str, paramInt, paramString1);
+  }
+  
+  public static void d(String paramString1, String paramString2)
+  {
+    d(paramString1, 1, paramString2);
+  }
+  
+  public static void e(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      a(paramString1, 2, paramString2);
     }
   }
   
-  public boolean equals(Object paramObject)
+  public static void f(String paramString1, String paramString2)
   {
-    if ((paramObject instanceof vmp))
-    {
-      paramObject = (vmp)paramObject;
-      if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) {
-        return true;
-      }
+    if (QLog.isColorLevel()) {
+      b(paramString1, 2, paramString2);
     }
-    return false;
   }
   
-  public String toString()
+  public static void g(String paramString1, String paramString2)
   {
-    return "DownloadTask{vid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", fileType=" + vkm.a(this.jdField_a_of_type_Int) + ", status=" + this.jdField_b_of_type_Int + ", downloadUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + ", localPath='" + this.e + '\'' + ", localTmpPath='" + this.f + '\'' + '}';
+    if (QLog.isColorLevel()) {
+      c(paramString1, 2, paramString2);
+    }
   }
 }
 

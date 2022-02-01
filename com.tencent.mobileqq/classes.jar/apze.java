@@ -1,74 +1,28 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
 
-public class apze
-  extends aptq<apzd>
+class apze
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  public static apzd a()
-  {
-    return (apzd)apub.a().a(572);
-  }
+  apze(apzd paramapzd) {}
   
-  @NonNull
-  public apzd a(int paramInt)
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    return new apzd();
-  }
-  
-  @Nullable
-  public apzd a(aptx[] paramArrayOfaptx)
-  {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
+    if (paramBitmap != null)
     {
-      new apzd();
-      return apzd.a(paramArrayOfaptx);
+      this.a.a.b.setVisibility(0);
+      this.a.a.a.setVisibility(0);
+      this.a.a.a.setImageBitmap(paramBitmap);
+      return;
     }
-    return null;
-  }
-  
-  public void a(apzd paramapzd)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NotificationBannerConfProcessor", 2, "onUpdate " + paramapzd.toString());
-    }
-  }
-  
-  public Class<apzd> clazz()
-  {
-    return apzd.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 572;
+    this.a.a.a.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apze
  * JD-Core Version:    0.7.0.1
  */

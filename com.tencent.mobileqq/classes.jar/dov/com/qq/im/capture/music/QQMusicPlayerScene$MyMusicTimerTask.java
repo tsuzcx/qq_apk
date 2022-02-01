@@ -1,6 +1,6 @@
 package dov.com.qq.im.capture.music;
 
-import bjng;
+import bkys;
 import com.tencent.qphone.base.util.QLog;
 import java.util.TimerTask;
 

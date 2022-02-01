@@ -1,29 +1,73 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.widget.RatingBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 
 public class mvi
-  implements View.OnClickListener
 {
-  public mvi(RatingBar paramRatingBar) {}
-  
-  public void onClick(View paramView)
+  public static int a(AppInterface paramAppInterface, String paramString1, String paramString2)
   {
-    if (RatingBar.a(this.a))
-    {
-      RatingBar.a(this.a, this.a.indexOfChild(paramView) + 1);
-      this.a.setStar(RatingBar.a(this.a), true);
-      if (RatingBar.a(this.a) != null) {
-        RatingBar.a(this.a).a(RatingBar.a(this.a), RatingBar.a(this.a));
-      }
+    if ((paramAppInterface instanceof QQAppInterface)) {
+      return a((QQAppInterface)paramAppInterface, paramString1, paramString2);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return c(paramAppInterface, paramString1, paramString2);
+  }
+  
+  private static int a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  {
+    if (paramQQAppInterface != null)
+    {
+      paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+      if (paramQQAppInterface != null)
+      {
+        if (paramQQAppInterface.b(paramString2, paramString1) == null) {
+          return 3;
+        }
+        paramQQAppInterface = paramQQAppInterface.b(paramString2);
+        if ((paramQQAppInterface != null) && (paramQQAppInterface.isTroopOwner(paramString1))) {
+          return 0;
+        }
+        if ((paramQQAppInterface != null) && (paramQQAppInterface.isTroopAdmin(paramString1))) {
+          return 1;
+        }
+        if (paramQQAppInterface != null) {
+          return 2;
+        }
+        return -1;
+      }
+      return -1;
+    }
+    return -1;
+  }
+  
+  public static int b(AppInterface paramAppInterface, String paramString1, String paramString2)
+  {
+    switch (a(paramAppInterface, paramString1, paramString2))
+    {
+    default: 
+      return 4;
+    case 0: 
+      return 3;
+    case 1: 
+      return 2;
+    case 2: 
+      return 1;
+    }
+    return 0;
+  }
+  
+  private static int c(AppInterface paramAppInterface, String paramString1, String paramString2)
+  {
+    if ((paramAppInterface instanceof mvj)) {
+      return ((mvj)paramAppInterface).a(paramString1, paramString2);
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mvi
  * JD-Core Version:    0.7.0.1
  */

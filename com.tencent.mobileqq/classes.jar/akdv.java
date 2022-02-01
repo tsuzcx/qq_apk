@@ -1,10 +1,18 @@
-public abstract interface akdv
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class akdv
+  implements View.OnClickListener
 {
-  public abstract void a();
+  akdv(akdt paramakdt) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void b();
+  public void onClick(View paramView)
+  {
+    this.a.a.setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

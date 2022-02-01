@@ -1,155 +1,42 @@
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.utils.ViewUtils;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public abstract class ainj
+public class ainj
 {
-  @SuppressLint({"UseSparseArrays"})
-  public static Map<Integer, ColorStateList> a;
-  protected int a;
-  protected ainl a;
-  protected aipe a;
-  public Context a;
-  protected Drawable a;
-  protected bjty a;
-  public QQAppInterface a;
-  public Entity a;
-  protected boolean a;
+  AtomicInteger a = new AtomicInteger(0);
   
-  static
+  public void a(int paramInt)
   {
-    jdField_a_of_type_JavaUtilMap = new HashMap(5);
+    this.a.set(paramInt);
   }
   
-  protected ainj(QQAppInterface paramQQAppInterface, Context paramContext, Entity paramEntity)
+  public boolean a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity = paramEntity;
+    return this.a.get() == 1;
   }
   
-  protected static ColorStateList a(Context paramContext, int paramInt)
+  public boolean b()
   {
-    ColorStateList localColorStateList2 = (ColorStateList)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-    ColorStateList localColorStateList1 = localColorStateList2;
-    if (localColorStateList2 == null)
-    {
-      localColorStateList1 = paramContext.getResources().getColorStateList(paramInt);
-      jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localColorStateList1);
-    }
-    return localColorStateList1;
+    return this.a.get() == 2;
   }
   
-  protected int a()
+  public boolean c()
   {
-    return 1;
+    return this.a.get() == 4;
   }
   
-  protected Drawable a()
+  public boolean d()
   {
-    boolean bool = bbyp.b();
-    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (this.jdField_a_of_type_Boolean != bool)) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    }
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {}
-    for (;;)
-    {
-      try
-      {
-        Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-        if (!bool) {
-          continue;
-        }
-        i = 2130844843;
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localResources.getDrawable(i);
-        this.jdField_a_of_type_Boolean = bool;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        int i;
-        continue;
-      }
-      catch (Exception localException)
-      {
-        continue;
-      }
-      return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      i = 2130844842;
-    }
+    return this.a.get() > 4;
   }
   
-  public abstract View a(int paramInt1, int paramInt2, View paramView, ViewGroup paramViewGroup, View.OnClickListener paramOnClickListener);
-  
-  protected bjty a(Context paramContext)
+  public boolean e()
   {
-    int i = ViewUtils.dip2px(152.0F);
-    int j = a();
-    int k = b();
-    paramContext = a();
-    int[] arrayOfInt1 = b();
-    int[] arrayOfInt2 = c();
-    return new aink(this, j, k, new int[] { i }, -1, paramContext, arrayOfInt1, arrayOfInt2);
+    return this.a.get() > 1;
   }
   
-  protected void a(int paramInt, bjua[] paramArrayOfbjua) {}
-  
-  public void a(ainl paramainl)
+  public boolean f()
   {
-    this.jdField_a_of_type_Ainl = paramainl;
-  }
-  
-  public void a(View paramView, int paramInt, ainm paramainm, View.OnClickListener paramOnClickListener)
-  {
-    if (this.jdField_a_of_type_Bjty != null) {}
-    for (int i = this.jdField_a_of_type_Bjty.a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity, paramainm, paramOnClickListener);; i = 0)
-    {
-      if ((this.jdField_a_of_type_Aipe != null) && (this.jdField_a_of_type_Aipe.jdField_a_of_type_Int != -1))
-      {
-        if (paramInt != this.jdField_a_of_type_Aipe.jdField_a_of_type_Int) {
-          paramView.scrollTo(0, 0);
-        }
-      }
-      else {
-        return;
-      }
-      paramView.scrollTo(i, 0);
-      return;
-    }
-  }
-  
-  protected int[] a()
-  {
-    return null;
-  }
-  
-  protected int b()
-  {
-    return 1;
-  }
-  
-  protected int[] b()
-  {
-    return null;
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  protected int[] c()
-  {
-    return null;
+    return this.a.get() == 5;
   }
 }
 

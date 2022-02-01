@@ -1,5 +1,5 @@
 class dl
-  extends amqk
+  extends ansy
 {
   dl(dk paramdk) {}
   

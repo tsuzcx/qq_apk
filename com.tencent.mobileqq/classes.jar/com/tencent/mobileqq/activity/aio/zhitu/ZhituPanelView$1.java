@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.zhitu;
 
-import ahtj;
-import ahua;
+import aioi;
+import aioz;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import bcef;
+import bdla;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.photo.SendPhotoTask;
@@ -18,14 +18,14 @@ import java.util.ArrayList;
 class ZhituPanelView$1
   implements Runnable
 {
-  ZhituPanelView$1(ZhituPanelView paramZhituPanelView, ahua paramahua) {}
+  ZhituPanelView$1(ZhituPanelView paramZhituPanelView, aioz paramaioz) {}
   
   public void run()
   {
     Object localObject3;
     if (!this.a.jdField_b_of_type_Boolean)
     {
-      localObject3 = ahtj.a(this.this$0.a.app).a(this.a.jdField_a_of_type_JavaLangString, this.a.c);
+      localObject3 = aioi.a(this.this$0.a.app).a(this.a.jdField_a_of_type_JavaLangString, this.a.c);
       if (!(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof BitmapDrawable)) {
         break label496;
       }
@@ -54,12 +54,12 @@ class ZhituPanelView$1
               break;
             }
             localObject1 = localObject3;
-            if (ahtj.a(this.this$0.a.app).a() != 7220) {
+            if (aioi.a(this.this$0.a.app).a() != 7220) {
               break label340;
             }
             this.a.jdField_b_of_type_JavaLangString = ((File)localObject1).getAbsolutePath();
-            ahtj.a(this.this$0.a.app).f(this.a);
-            bcef.b(this.this$0.a.app, "dc00898", "", "", "0X8008C72", "0X8008C72", ahtj.a(ahtj.a(this.this$0.a.app).a()), 0, "", "", "", "");
+            aioi.a(this.this$0.a.app).f(this.a);
+            bdla.b(this.this$0.a.app, "dc00898", "", "", "0X8008C72", "0X8008C72", aioi.a(aioi.a(this.this$0.a.app).a()), 0, "", "", "", "");
             return;
           }
           catch (IOException localIOException)
@@ -69,13 +69,13 @@ class ZhituPanelView$1
           }
           catch (OutOfMemoryError localOutOfMemoryError1)
           {
-            ahtj.a(localOutOfMemoryError1);
+            aioi.a(localOutOfMemoryError1);
             return;
           }
           if (this.a.jdField_b_of_type_JavaLangString == null) {
             try
             {
-              Object localObject2 = ahtj.a(this.this$0.a.app).a(this.a);
+              Object localObject2 = aioi.a(this.this$0.a.app).a(this.a);
               if (localObject2 == null) {
                 break;
               }
@@ -86,13 +86,13 @@ class ZhituPanelView$1
               for (;;)
               {
                 QLog.e(ZhituPanelView.b(), 1, "oom when save bitmap");
-                ahtj.a(localOutOfMemoryError2);
+                aioi.a(localOutOfMemoryError2);
                 localFile = null;
               }
             }
           }
         }
-        localFile = ahtj.a(this.this$0.a.app).a(this.a.jdField_a_of_type_JavaLangString, this.a.c);
+        localFile = aioi.a(this.this$0.a.app).a(this.a.jdField_a_of_type_JavaLangString, this.a.c);
         FileUtils.copyFile(this.a.jdField_b_of_type_JavaLangString, localFile.getAbsolutePath());
         continue;
         localObject3 = new Intent();

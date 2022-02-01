@@ -1,44 +1,45 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import com.tencent.ark.open.ArkAppInfo.AppTemplateView;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class agnz
-  extends Handler
+public final class agnz
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  public agnz(Looper paramLooper)
+  protected WeakReference<agnx> a;
+  
+  public agnz(WeakReference<agnx> paramWeakReference)
   {
-    super(paramLooper);
+    this.a = paramWeakReference;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    switch (paramMessage.what)
+    paramObject = (agnx)this.a.get();
+    if (paramObject == null)
     {
-    }
-    int i;
-    do
-    {
-      do
-      {
-        return;
-        i = paramMessage.arg1;
-        paramMessage = paramMessage.getData();
-      } while (!QLog.isColorLevel());
-      QLog.i("ShortVideoPTVItemBuilder", 2, "ret is " + i);
-      QLog.i("ShortVideoPTVItemBuilder", 2, "data is " + paramMessage);
-      return;
-      i = paramMessage.arg1;
-      switch (paramMessage.arg1)
-      {
-      default: 
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkApp.ArkAppContainer", 1, "onGetAppPathByName.wrapper == null");
       }
-      paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
-    } while (!QLog.isColorLevel());
-    QLog.i("ShortVideoPTVItemBuilder", 2, "ret is " + i);
-    QLog.i("ShortVideoPTVItemBuilder", 2, "targetFile is " + paramMessage);
+      return;
+    }
+    String str1 = paramObject.a(paramString);
+    if (paramAppPathInfo != null) {}
+    for (paramString = paramAppPathInfo.path;; paramString = null)
+    {
+      paramObject.a.getAppFromLocal = false;
+      paramObject.a.endOfGetApp = System.currentTimeMillis();
+      if ((paramAppPathInfo != null) && (paramAppPathInfo.appTempInfo != null))
+      {
+        String str2 = paramAppPathInfo.appTempInfo.template;
+        str2 = paramAppPathInfo.appTempInfo.templateView;
+        agnx.a(paramObject).view = str2;
+      }
+      agnx.a(paramAppPathInfo);
+      paramObject.a(paramString, paramInt, str1);
+      return;
+    }
   }
 }
 

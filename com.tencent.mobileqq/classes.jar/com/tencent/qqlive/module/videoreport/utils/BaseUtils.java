@@ -62,6 +62,17 @@ public class BaseUtils
     return localStringWriter.toString();
   }
   
+  public static <K, V> V getOrDefault(Map<K, V> paramMap, K paramK, V paramV)
+  {
+    if (paramMap == null) {}
+    do
+    {
+      return paramV;
+      paramMap = paramMap.get(paramK);
+    } while (paramMap == null);
+    return paramMap;
+  }
+  
   public static boolean isEmpty(Collection paramCollection)
   {
     return (paramCollection == null) || (paramCollection.isEmpty());

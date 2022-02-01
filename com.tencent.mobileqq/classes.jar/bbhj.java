@@ -1,34 +1,25 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.opengl.GLSurfaceView;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.richmedia.capture.gesture.GL3DGesture.1;
+import com.tencent.mobileqq.shortvideo.ptvfilter.material.GameplayEngine;
+import com.tencent.ttpic.openapi.filter.GLGestureListener;
+import com.tencent.ttpic.openapi.filter.GLGestureProxy;
 
 public class bbhj
-  extends bbhi
+  implements GLGestureListener
 {
-  public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  public GameplayEngine a;
   
-  public bbhj(ViewGroup paramViewGroup, int paramInt)
+  public int onGetPriority()
   {
-    super(paramViewGroup, paramInt);
+    return 1040;
   }
   
-  protected void a()
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
   {
-    super.a();
-    View localView = a(this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131369619));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131363446));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131368236));
-    this.b = ((TextView)localView.findViewById(2131366720));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131376977));
-    this.d = ((TextView)localView.findViewById(2131362007));
+    paramMotionEvent = new bdcq(paramMotionEvent);
+    GLGestureProxy.getInstance().getGLSurfaceView().queueEvent(new GL3DGesture.1(this, paramMotionEvent));
+    return false;
   }
 }
 

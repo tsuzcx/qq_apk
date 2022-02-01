@@ -3,6 +3,7 @@ import android.text.TextUtils;
 import com.etrump.mixlayout.VasFontIPCModule.1;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.mobileqq.richstatus.RichStatus;
@@ -33,6 +34,7 @@ public class gk
   public static String i = "action_get_shield_font";
   public static String j = "action_get_history_signature_num";
   public static String k = "action_download_gldrawable";
+  public static String l = "action_update_qqvalue";
   private VasQuickUpdateManager.CallBacker jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new gl(this);
   private Vector<Integer> jdField_a_of_type_JavaUtilVector = new Vector();
   private ConcurrentHashMap<Integer, Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
@@ -168,19 +170,19 @@ public class gk
   {
     if ((this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0) && (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0) && (paramInt1 == 102) && (paramInt2 == 300) && (BaseApplicationImpl.getApplication() != null) && ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)))
     {
-      balv localbalv = ((baoy)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(15)).a(this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
-      if (localbalv != null)
+      bbsk localbbsk = ((bbvn)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.STATUS_MANAGER)).a(this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+      if (localbbsk != null)
       {
         Object localObject = new Bundle();
         ((Bundle)localObject).putInt("notify_type", 6);
-        ((Bundle)localObject).putString("url", localbalv.jdField_b_of_type_JavaLangString);
+        ((Bundle)localObject).putString("url", localbbsk.jdField_b_of_type_JavaLangString);
         ((Bundle)localObject).putInt("id", this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
         localObject = EIPCResult.createResult(0, (Bundle)localObject);
         callbackResult(this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get(), (EIPCResult)localObject);
         this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
         this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
         if (QLog.isColorLevel()) {
-          QLog.d("Signature", 2, "IPC get action callback id = " + this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + " url = " + localbalv.jdField_b_of_type_JavaLangString);
+          QLog.d("Signature", 2, "IPC get action callback id = " + this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + " url = " + localbbsk.jdField_b_of_type_JavaLangString);
         }
       }
     }
@@ -217,20 +219,20 @@ public class gk
               {
                 m = paramBundle.getInt("id");
                 int n = paramBundle.getInt("font_type");
-                ((gb)localQQAppInterface.getManager(42)).a(m, Integer.toString(paramInt), n);
+                ((gb)localQQAppInterface.getManager(QQManagerFactory.CHAT_FONT_MANAGER)).a(m, Integer.toString(paramInt), n);
                 return null;
               }
               if (!jdField_b_of_type_JavaLangString.equals(paramString)) {
                 break;
               }
-              if (new File(bgae.a() + "libFounderColorFont_818.so").exists())
+              if (new File(bhiw.a() + "libFounderColorFont_818.so").exists())
               {
                 callbackResult(paramInt, EIPCResult.createResult(0, null));
                 return null;
               }
               this.jdField_b_of_type_JavaUtilVector.add(Integer.valueOf(paramInt));
             } while (!this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true));
-            ((VasQuickUpdateManager)localQQAppInterface.getManager(184)).downloadItem(1004L, "libColorFont_818", "VasFontIPCModule");
+            ((VasQuickUpdateManager)localQQAppInterface.getManager(QQManagerFactory.VAS_QUICKUPDATE_MANAGER)).downloadItem(1004L, "libColorFont_818", "VasFontIPCModule");
             return null;
             if (!d.equals(paramString)) {
               break;
@@ -239,13 +241,13 @@ public class gk
           } while ((m <= 0) || (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(m))));
           this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(m), Integer.valueOf(paramInt));
           paramString = "signature.item." + m + ".json";
-          paramBundle = (VasQuickUpdateManager)localQQAppInterface.getManager(184);
+          paramBundle = (VasQuickUpdateManager)localQQAppInterface.getManager(QQManagerFactory.VAS_QUICKUPDATE_MANAGER);
           paramBundle.addCallBacker(this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
           paramBundle.downloadItem(1000L, paramString, "VasFontIPCModule");
           return null;
           if (e.equals(paramString))
           {
-            paramString = ((baoy)localQQAppInterface.getManager(15)).a(true);
+            paramString = ((bbvn)localQQAppInterface.getManager(QQManagerFactory.STATUS_MANAGER)).a(true);
             paramBundle = new Bundle();
             paramBundle.putInt("notify_type", 4);
             paramBundle.putSerializable("my_signature", paramString);
@@ -262,7 +264,7 @@ public class gk
             if ((paramString instanceof RichStatus))
             {
               paramString = (RichStatus)paramString;
-              ((baoy)localQQAppInterface.getManager(15)).a(paramString, 0);
+              ((bbvn)localQQAppInterface.getManager(QQManagerFactory.STATUS_MANAGER)).a(paramString, 0);
               return null;
             }
             QLog.e("VasFontIPCModule", 1, "change status error, status is null");
@@ -271,10 +273,10 @@ public class gk
             return null;
           }
           if (!g.equals(paramString)) {
-            break label710;
+            break label714;
           }
           m = paramBundle.getInt("id");
-          paramString = ((baoy)localQQAppInterface.getManager(15)).a(m);
+          paramString = ((bbvn)localQQAppInterface.getManager(QQManagerFactory.STATUS_MANAGER)).a(m);
           if (paramString != null) {
             break;
           }
@@ -291,10 +293,10 @@ public class gk
       } while (!QLog.isColorLevel());
       QLog.d("Signature", 2, "IPC get action success id = " + m + " url = " + paramString.jdField_b_of_type_JavaLangString);
       return null;
-      long l;
+      long l1;
       if (h.equals(paramString))
       {
-        l = paramBundle.getLong("bid");
+        l1 = paramBundle.getLong("bid");
         paramString = paramBundle.getString("scid");
         if (TextUtils.isEmpty(paramString))
         {
@@ -305,16 +307,16 @@ public class gk
         {
           paramBundle = new Bundle();
           paramBundle.putInt("notify_type", 8);
-          paramBundle.putLong("bid", l);
+          paramBundle.putLong("bid", l1);
           paramBundle.putString("scid", paramString);
           paramBundle.putInt("download_result", 1);
           callbackResult(paramInt, EIPCResult.createResult(0, paramBundle));
           return null;
         }
         this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Integer.valueOf(paramInt));
-        paramBundle = (VasQuickUpdateManager)localQQAppInterface.getManager(184);
+        paramBundle = (VasQuickUpdateManager)localQQAppInterface.getManager(QQManagerFactory.VAS_QUICKUPDATE_MANAGER);
         paramBundle.addCallBacker(this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
-        paramBundle.downloadItem(l, paramString, "VasFontIPCModule");
+        paramBundle.downloadItem(l1, paramString, "VasFontIPCModule");
         return null;
       }
       if (i.equals(paramString))
@@ -326,18 +328,23 @@ public class gk
       }
       if (j.equals(paramString))
       {
-        l = paramBundle.getLong("key_current_uin");
+        l1 = paramBundle.getLong("key_current_uin");
         this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt);
-        ((baoy)localQQAppInterface.getManager(15)).a(l);
+        ((bbvn)localQQAppInterface.getManager(QQManagerFactory.STATUS_MANAGER)).a(l1);
         return null;
       }
       if (k.equals(paramString))
       {
-        bgia.a(true);
+        bhqv.a(true);
+        return null;
+      }
+      if (l.equals(paramString))
+      {
+        bibb.a();
         return null;
       }
     } while (!QLog.isColorLevel());
-    label710:
+    label714:
     QLog.d("VasFontIPCModule", 2, "onCall action = " + paramString);
     return null;
   }

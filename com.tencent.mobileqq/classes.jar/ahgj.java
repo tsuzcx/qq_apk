@@ -1,42 +1,40 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder.CompressUpdateListenerImpl.1;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder.CompressUpdateListenerImpl.2;
+import com.tencent.mobileqq.customviews.VideoProgressView;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.qphone.base.util.QLog;
 
-class ahgj
-  extends bhap
+public class ahgj
+  implements bcyw
 {
-  ahgj(ahgc paramahgc) {}
+  private ahgj(ahfz paramahfz) {}
   
-  public void a(int paramInt)
+  public void a(MessageForShortVideo paramMessageForShortVideo, float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.tag, 2, "onDownLoadedPluginResult result = " + paramInt);
-    }
-    if (paramInt == 0) {
-      this.a.j();
-    }
-    do
-    {
+    ahgk localahgk = ahfz.a(this.a, paramMessageForShortVideo);
+    if (localahgk == null) {
       return;
-      QQToast.a(this.a.getActivity(), amtj.a(2131704227), 0).a();
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.setProgress(0);
+    }
+    paramMessageForShortVideo = paramMessageForShortVideo.frienduin + paramMessageForShortVideo.uniseq;
+    localahgk.a.setAnimProgress(anvx.a(2131713515), paramMessageForShortVideo);
+    localahgk.a.a(paramMessageForShortVideo, paramFloat);
   }
   
-  public void a(long paramLong1, long paramLong2, boolean paramBoolean)
+  public void a(MessageForShortVideo paramMessageForShortVideo, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.a.tag, 2, "onNotifyGameRoomSpeakerStatus uin = " + paramLong2 + " isSeaking = " + paramBoolean);
+      QLog.d("ShortVideoItemBuilder", 2, "CompressUpdateListener,onFinish. seq = " + paramMessageForShortVideo.uniseq);
     }
-    if ((!this.a.sessionInfo.curFriendUin.equals(String.valueOf(paramLong1))) || (this.a.jdField_a_of_type_Bhar == null)) {}
-    bhaq localbhaq;
-    do
-    {
+    bkyq.a(new ShortVideoItemBuilder.CompressUpdateListenerImpl.2(this, paramMessageForShortVideo, paramInt));
+  }
+  
+  public void a(MessageForShortVideo paramMessageForShortVideo, boolean paramBoolean)
+  {
+    ahgk localahgk = ahfz.a(this.a, paramMessageForShortVideo);
+    if (localahgk == null) {
       return;
-      localbhaq = this.a.jdField_a_of_type_Bhar.a();
-    } while (localbhaq == null);
-    localbhaq.a(String.valueOf(paramLong2), paramBoolean);
+    }
+    bkyq.a(new ShortVideoItemBuilder.CompressUpdateListenerImpl.1(this, paramMessageForShortVideo, paramBoolean, localahgk));
   }
 }
 

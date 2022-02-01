@@ -2,22 +2,22 @@ package com.tencent.mobileqq.search;
 
 import android.view.View;
 import android.widget.RelativeLayout;
-import bate;
-import batg;
+import bbzt;
+import bbzv;
 
 public class SearchWordHistoryEntryModel$2$3
   implements Runnable
 {
-  public SearchWordHistoryEntryModel$2$3(batg parambatg, int[] paramArrayOfInt1, View paramView, int[] paramArrayOfInt2) {}
+  public SearchWordHistoryEntryModel$2$3(bbzv parambbzv, int[] paramArrayOfInt1, View paramView, int[] paramArrayOfInt2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Batg.a.a.getLocationOnScreen(this.jdField_a_of_type_ArrayOfInt);
+    this.jdField_a_of_type_Bbzv.a.a.getLocationOnScreen(this.jdField_a_of_type_ArrayOfInt);
     this.jdField_a_of_type_AndroidViewView.getLocationOnScreen(this.b);
     if (this.jdField_a_of_type_ArrayOfInt[1] > this.b[1])
     {
-      View localView1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131362987);
-      View localView2 = this.jdField_a_of_type_AndroidViewView.findViewById(2131362974);
+      View localView1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131363004);
+      View localView2 = this.jdField_a_of_type_AndroidViewView.findViewById(2131362991);
       localView1.setVisibility(8);
       localView2.setVisibility(0);
     }

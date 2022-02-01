@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.receipt;
 
 import android.os.Bundle;
-import azbu;
-import azuu;
+import bahi;
+import bbbc;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.QQRecorder;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class ReceiptMsgManager$1
   implements Runnable
 {
-  public ReceiptMsgManager$1(azuu paramazuu, int paramInt1, int paramInt2, QQRecorder.RecorderParam paramRecorderParam, String paramString, int paramInt3, boolean paramBoolean, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
+  public ReceiptMsgManager$1(bbbc parambbbc, int paramInt1, int paramInt2, QQRecorder.RecorderParam paramRecorderParam, String paramString, int paramInt3, boolean paramBoolean, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
   
   public void run()
   {
@@ -22,12 +22,12 @@ public class ReceiptMsgManager$1
     this.this$0.a.fullLocalPath = this.jdField_a_of_type_JavaLangString;
     ArrayList localArrayList = new ArrayList(1);
     localArrayList.add(this.this$0.a);
-    azbu.b(this.jdField_a_of_type_JavaLangString);
+    bahi.b(this.jdField_a_of_type_JavaLangString);
     Bundle localBundle = new Bundle();
     localBundle.putString("ReceiptMsgManager.EXTRA_KEY_PTT_PATH", this.jdField_a_of_type_JavaLangString);
     localBundle.putInt("ReceiptMsgManager.EXTRA_KEY_PTT_SEND_SOURCE", this.c);
     localBundle.putBoolean("ReceiptMsgManager.EXTRA_KEY_PTT_COMPRESS_FINISHED", this.jdField_a_of_type_Boolean);
-    azuu.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.troopUin, azuu.a(this.this$0, 3), false, localArrayList, localBundle);
+    bbbc.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.troopUin, bbbc.a(this.this$0, 3), false, localArrayList, localBundle);
   }
 }
 

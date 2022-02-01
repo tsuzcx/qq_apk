@@ -1,26 +1,67 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.avgame.floatwindow.CommonGameFloatWindowLayout;
+import com.tencent.av.wtogether.data.ReqVideoAction;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import trpc.qq_av_together.common.WTogetherCommon.Result;
 
-class myo
-  implements ValueAnimator.AnimatorUpdateListener
+public class myo
 {
-  myo(myl parammyl, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public final int a;
+  public final long a;
+  public ReqVideoAction a;
+  public String a;
+  public boolean a;
+  public int b;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public myo(int paramInt, long paramLong)
   {
-    if (!myl.b(this.jdField_a_of_type_Myl))
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Boolean = false;
+    this.b = -1;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_ComTencentAvWtogetherDataReqVideoAction = null;
+  }
+  
+  public myo(int paramInt, long paramLong, ReqVideoAction paramReqVideoAction)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Boolean = false;
+    this.b = -1;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_ComTencentAvWtogetherDataReqVideoAction = paramReqVideoAction;
+  }
+  
+  public void a(WTogetherCommon.Result paramResult)
+  {
+    if (paramResult != null)
     {
-      paramValueAnimator.cancel();
-      myl.a(this.jdField_a_of_type_Myl, null);
-      return;
+      this.b = paramResult.errcode.get();
+      if (paramResult == null) {
+        break label53;
+      }
+      this.jdField_a_of_type_JavaLangString = paramResult.errmsg.get();
+      label30:
+      if (this.b != 0) {
+        break label61;
+      }
     }
-    float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    int i = (int)(this.jdField_a_of_type_Int + (this.b - this.jdField_a_of_type_Int) * f1 + 0.5F);
-    float f2 = this.c;
-    int j = (int)(f1 * (this.d - this.c) + f2 + 0.5F);
-    myl.a(this.jdField_a_of_type_Myl).a(i, j);
-    myl.a(this.jdField_a_of_type_Myl).d();
+    label53:
+    label61:
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      return;
+      this.b = -1;
+      break;
+      this.jdField_a_of_type_JavaLangString = null;
+      break label30;
+    }
+  }
+  
+  public String toString()
+  {
+    return "ComResult{from: " + this.jdField_a_of_type_Int + ", roomId: " + this.jdField_a_of_type_Long + ", isSuccess: " + this.jdField_a_of_type_Boolean + ", errCode: " + this.b + ", errMsg: " + this.jdField_a_of_type_JavaLangString + ", action: " + this.jdField_a_of_type_ComTencentAvWtogetherDataReqVideoAction + "}";
   }
 }
 

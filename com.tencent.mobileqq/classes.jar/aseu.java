@@ -1,59 +1,34 @@
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.emoticonview.FavoriteEmoticonInfo;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aseu
-  extends asfq
+  implements View.OnClickListener
 {
-  protected long a;
-  protected String a;
-  protected String b;
-  protected String c;
-  protected String d;
-  protected String e;
-  protected String f;
-  protected String g;
-  protected String h;
+  aseu(aset paramaset, Dialog paramDialog) {}
   
-  aseu(ases paramases, MessageRecord paramMessageRecord)
+  public void onClick(View paramView)
   {
-    super(paramases);
-    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
-    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileIdCrc");
-    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
-    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
-    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.h = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
-  }
-  
-  void a(String paramString, int paramInt) {}
-  
-  void a(String paramString, int paramInt, asfo paramasfo)
-  {
-    if ("1".equals(this.h))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
-      }
-      paramasfo.a(ases.a(this.jdField_a_of_type_Long, false), false);
-      return;
-    }
-    if ((this.b == null) || (this.b.length() == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file uuid is null");
-      }
-      paramasfo.a(ases.a(this.jdField_a_of_type_Long, true), false);
-      return;
-    }
-    asda localasda = ases.a(this.jdField_a_of_type_Ases).getFileManagerEngine().a();
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start forwardOfflineFileToX[" + this.jdField_a_of_type_JavaLangString + "]");
-    }
-    localasda.a(paramString, paramInt, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, 3, new asev(this, paramString, paramasfo));
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    asfk localasfk = (asfk)this.jdField_a_of_type_Aset.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FAVROAMING_DB_MANAGER);
+    CustomEmotionData localCustomEmotionData = this.jdField_a_of_type_Aset.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData;
+    FavoriteEmoticonInfo localFavoriteEmoticonInfo = new FavoriteEmoticonInfo();
+    localFavoriteEmoticonInfo.type = 4;
+    localFavoriteEmoticonInfo.path = localasfk.a(localCustomEmotionData);
+    localFavoriteEmoticonInfo.src_type = 2;
+    localFavoriteEmoticonInfo.eId = localCustomEmotionData.eId;
+    localFavoriteEmoticonInfo.url = localCustomEmotionData.url;
+    localFavoriteEmoticonInfo.roamingType = localCustomEmotionData.RomaingType;
+    localFavoriteEmoticonInfo.emoId = localCustomEmotionData.emoId;
+    localFavoriteEmoticonInfo.resID = localCustomEmotionData.resid;
+    AIOEmotionFragment.a(this.jdField_a_of_type_Aset.jdField_a_of_type_AndroidContentContext, localFavoriteEmoticonInfo, null);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

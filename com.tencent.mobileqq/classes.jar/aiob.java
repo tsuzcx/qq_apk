@@ -1,6 +1,16 @@
-public abstract interface aiob
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+
+class aiob
+  implements View.OnTouchListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  aiob(aioa paramaioa) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return true;
+  }
 }
 
 

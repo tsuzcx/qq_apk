@@ -1,18 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.EditText;
-import com.tencent.ttpic.openapi.model.WMElement;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.hce.HcePluginInstallActivity;
+import org.json.JSONObject;
 
-class blub
-  implements DialogInterface.OnClickListener
+public class blub
+  implements adaa
 {
-  blub(bltv parambltv, blud paramblud, WMElement paramWMElement) {}
+  public blub(HcePluginInstallActivity paramHcePluginInstallActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a() {}
+  
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Blud.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Blud.jdField_a_of_type_AndroidWidgetEditText.setText(this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMElement.getCheckInResetString());
+    if (QLog.isColorLevel()) {
+      QLog.i("HcePluginInstallActivity", 2, "mApiCallback onPermission " + paramInt);
+    }
+    QQToast.a(this.a.getApplicationContext(), anvx.a(2131704918), 0).a();
+    this.a.finish();
   }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("HcePluginInstallActivity", 2, "mApiCallback onFailure code:" + paramInt + "msg:" + paramString);
+    }
+    QQToast.a(this.a.getApplicationContext(), anvx.a(2131704916), 0).a();
+    this.a.finish();
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject != null) {
+      HcePluginInstallActivity.a(this.a, paramJSONObject.optString("openid"));
+    }
+    HcePluginInstallActivity.b(this.a);
+  }
+  
+  public void b(JSONObject paramJSONObject) {}
 }
 
 

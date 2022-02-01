@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agpx;
-import bcef;
+import ahin;
+import bdla;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.portal.PortalManager;
 import com.tencent.qphone.base.util.QLog;
@@ -11,7 +12,7 @@ import com.tencent.qphone.base.util.QLog;
 class StructingMsgItemBuilder$3
   implements Runnable
 {
-  StructingMsgItemBuilder$3(StructingMsgItemBuilder paramStructingMsgItemBuilder, agpx paramagpx) {}
+  StructingMsgItemBuilder$3(StructingMsgItemBuilder paramStructingMsgItemBuilder, ahin paramahin) {}
   
   public void run()
   {
@@ -30,11 +31,11 @@ class StructingMsgItemBuilder$3
     }
     for (;;)
     {
-      PortalManager localPortalManager = (PortalManager)this.this$0.a.getManager(79);
+      PortalManager localPortalManager = (PortalManager)this.this$0.a.getManager(QQManagerFactory.MGR_PORTAL);
       if (localPortalManager != null) {}
       for (int j = localPortalManager.a();; j = -1)
       {
-        bcef.b(this.this$0.a, "CliOper", "", "", "0X8004FF9", "0X8004FF9", 0, 0, "" + j, "" + i, "" + str1, str2);
+        bdla.b(this.this$0.a, "CliOper", "", "", "0X8004FF9", "0X8004FF9", 0, 0, "" + j, "" + i, "" + str1, str2);
         return;
         i = 2;
         break;

@@ -1,219 +1,65 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideShowAdapter.3;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.net.URL;
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.os.Message;
+import com.tencent.biz.qqstory.takevideo.CommonPicUploadFragment;
+import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class yky
-  extends RecyclerView.Adapter<ylb>
-  implements yks
+  extends TransProcessorHandler
 {
-  private int jdField_a_of_type_Int = -1;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private List<SlideItemInfo> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private ylc jdField_a_of_type_Ylc;
-  private ylm jdField_a_of_type_Ylm;
+  public yky(CommonPicUploadFragment paramCommonPicUploadFragment) {}
   
-  public yky(Context paramContext, View.OnClickListener paramOnClickListener, ylm paramylm)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_Ylm = paramylm;
-  }
-  
-  private void a(int paramInt, boolean paramBoolean)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      if ((!paramBoolean) || (this.jdField_a_of_type_Int == paramInt)) {
-        break label44;
-      }
-    }
-    label44:
-    for (this.jdField_a_of_type_Int = paramInt;; this.jdField_a_of_type_Int = -1)
+    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+    if ((localFileMsg == null) || (localFileMsg.fileType != 24) || (localFileMsg.commandId != CommonPicUploadFragment.a(this.a, CommonPicUploadFragment.a(this.a)))) {}
+    do
     {
-      notifyItemChanged(paramInt, Integer.valueOf(0));
-      return;
-    }
-  }
-  
-  public String a()
-  {
-    String str2 = "";
-    String str1 = str2;
-    if (this.jdField_a_of_type_Int >= 0)
-    {
-      str1 = str2;
-      if (this.jdField_a_of_type_Int < this.jdField_a_of_type_JavaUtilList.size()) {
-        str1 = ((SlideItemInfo)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)).jdField_b_of_type_JavaLangString;
-      }
-    }
-    return str1;
-  }
-  
-  public ylb a(ViewGroup paramViewGroup, int paramInt)
-  {
-    paramViewGroup = new ylb(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561682, paramViewGroup, false));
-    paramViewGroup.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(4);
-    paramViewGroup.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setBorder(true);
-    paramViewGroup.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new ykz(this, paramViewGroup));
-    return paramViewGroup;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt >= 0) {
-      if (this.jdField_a_of_type_Int < 0) {
-        a(paramInt, true);
-      }
-    }
-    while (this.jdField_a_of_type_Int < 0)
-    {
-      return;
-      a(this.jdField_a_of_type_Int, false);
-      a(paramInt, true);
-      return;
-    }
-    a(this.jdField_a_of_type_Int, false);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    int i = 1;
-    Collections.swap(this.jdField_a_of_type_JavaUtilList, paramInt1, paramInt2);
-    notifyItemMoved(paramInt1, paramInt2);
-    SlideItemInfo localSlideItemInfo;
-    if ((this.jdField_a_of_type_Int == paramInt1) || (this.jdField_a_of_type_Int == paramInt2))
-    {
-      if (this.jdField_a_of_type_Int == paramInt1)
+      do
       {
-        this.jdField_a_of_type_Int = paramInt2;
-        notifyItemChanged(paramInt1, Integer.valueOf(0));
-        notifyItemChanged(paramInt2, Integer.valueOf(0));
-      }
-    }
-    else
-    {
-      if (this.jdField_a_of_type_Ylm != null) {
-        this.jdField_a_of_type_Ylm.a(paramInt1, paramInt2);
-      }
-      if (paramInt1 < this.jdField_a_of_type_JavaUtilList.size())
+        return;
+      } while (localFileMsg.fileMd5.equals(CommonPicUploadFragment.b(this.a)));
+      switch (paramMessage.what)
       {
-        localSlideItemInfo = (SlideItemInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt1);
-        if (localSlideItemInfo != null) {
-          if (ylg.a().a() != 11) {
-            break label188;
-          }
+      case 1004: 
+      default: 
+        return;
+      case 1003: 
+        if (QLog.isColorLevel()) {
+          QLog.d("CommonPicUploadFragment", 2, "mPicTransProcessorHandler send finished!" + CommonPicUploadFragment.a(this.a));
         }
+        break;
       }
-    }
-    label188:
-    for (paramInt1 = 0;; paramInt1 = 1)
+    } while (CommonPicUploadFragment.a(this.a));
+    paramMessage = new Bdh_extinfo.UploadPicExtInfo();
+    try
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      paramInt2 = i;
-      if (localSlideItemInfo.jdField_b_of_type_Int == 0) {
-        paramInt2 = 0;
+      paramMessage.mergeFrom(localFileMsg.bdhExtendInfo, 0, localFileMsg.bdhExtendInfo.length);
+      CommonPicUploadFragment.a(this.a, true);
+      CommonPicUploadFragment.b(this.a, localFileMsg.fileMd5);
+      CommonPicUploadFragment.c(this.a, paramMessage.bytes_file_resid.get().toStringUtf8());
+      CommonPicUploadFragment.d(this.a, paramMessage.bytes_download_url.get().toStringUtf8());
+      if (QLog.isColorLevel()) {
+        QLog.d("CommonPicUploadFragment", 2, "mPicTransProcessorHandler mUuid=" + CommonPicUploadFragment.c(this.a) + ", mPicMd5=" + CommonPicUploadFragment.b(this.a) + ", mPicUrl=" + CommonPicUploadFragment.d(this.a));
       }
-      xwa.a("pic_choose_slides", "edit_seq", paramInt1, 0, new String[] { paramInt2 + "" });
+      CommonPicUploadFragment.a(this.a).sendEmptyMessage(1005);
       return;
-      this.jdField_a_of_type_Int = paramInt1;
-      break;
     }
-  }
-  
-  public void a(List<SlideItemInfo> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    notifyDataSetChanged();
-  }
-  
-  public void a(ylb paramylb, int paramInt)
-  {
-    SlideItemInfo localSlideItemInfo = (SlideItemInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    paramylb.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localSlideItemInfo);
-    paramylb.jdField_a_of_type_AndroidWidgetImageView.setTag(localSlideItemInfo);
-    if (localSlideItemInfo != null) {
-      if (localSlideItemInfo.jdField_a_of_type_JavaNetURL != null)
-      {
-        Object localObject = paramylb.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.getDrawable();
-        if ((!(localObject instanceof URLDrawable)) || (!localSlideItemInfo.jdField_a_of_type_JavaNetURL.equals(((URLDrawable)localObject).getURL())))
-        {
-          localObject = URLDrawableHelper.getDrawable(localSlideItemInfo.jdField_a_of_type_JavaNetURL, URLDrawableHelper.getLoadingDrawable(), URLDrawableHelper.getFailedDrawable());
-          ((URLDrawable)localObject).setTag(localSlideItemInfo.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
-          paramylb.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setImageDrawable((Drawable)localObject);
-          paramylb.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setTag(localSlideItemInfo);
-        }
-      }
-    }
-    switch (localSlideItemInfo.jdField_b_of_type_Int)
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
     {
-    default: 
-      if ((paramInt == this.jdField_a_of_type_Int) && (!paramylb.jdField_a_of_type_Boolean))
+      for (;;)
       {
-        paramylb.jdField_a_of_type_AndroidWidgetRelativeLayout.setScaleX(0.94F);
-        paramylb.jdField_a_of_type_AndroidWidgetRelativeLayout.setScaleY(0.94F);
-        paramylb.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
-        paramylb.jdField_a_of_type_AndroidWidgetTextView.post(new SlideShowAdapter.3(this, paramylb));
-      }
-      break;
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramylb, paramInt, getItemId(paramInt));
-      return;
-      paramylb.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      paramylb.jdField_b_of_type_AndroidWidgetTextView.setText(ylj.a(localSlideItemInfo.jdField_a_of_type_Long));
-      break;
-      paramylb.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      if (localSlideItemInfo.jdField_a_of_type_Long > 0L) {
-        paramylb.jdField_b_of_type_AndroidWidgetTextView.setText(ylj.a(localSlideItemInfo.c - localSlideItemInfo.jdField_b_of_type_Long));
-      }
-      paramylb.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new yla(this, paramInt));
-      break;
-      if (paramylb.jdField_a_of_type_Boolean)
-      {
-        paramylb.jdField_a_of_type_AndroidWidgetRelativeLayout.setScaleX(1.13F);
-        paramylb.jdField_a_of_type_AndroidWidgetRelativeLayout.setScaleY(1.13F);
-        paramylb.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(0.65F);
-        paramylb.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
-      }
-      else
-      {
-        paramylb.jdField_a_of_type_AndroidWidgetRelativeLayout.setScaleX(1.0F);
-        paramylb.jdField_a_of_type_AndroidWidgetRelativeLayout.setScaleY(1.0F);
-        paramylb.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
-        paramylb.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
+        localInvalidProtocolBufferMicroException.printStackTrace();
       }
     }
-  }
-  
-  public void a(ylc paramylc)
-  {
-    this.jdField_a_of_type_Ylc = paramylc;
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    if (QLog.isColorLevel()) {
+      QLog.d("CommonPicUploadFragment", 2, "mPicTransProcessorHandler send error:" + localFileMsg.errorCode);
+    }
+    CommonPicUploadFragment.a(this.a).sendEmptyMessage(1003);
   }
 }
 

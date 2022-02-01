@@ -1,13 +1,18 @@
+import com.tencent.util.Pair;
+import java.util.Comparator;
+
 public class bemo
+  implements Comparator<Pair<String, String>>
 {
-  @bfrb(a="type")
-  public int a;
-  @bfrb(a="title")
-  public String a;
-  @bfrb(a="content_text")
-  public String b;
-  @bfrb(a="kid")
-  public String c;
+  public int a(Pair<String, String> paramPair1, Pair<String, String> paramPair2)
+  {
+    int j = ((String)paramPair1.first).compareTo((String)paramPair2.first);
+    int i = j;
+    if (j == 0) {
+      i = ((String)paramPair1.second).compareTo((String)paramPair2.second);
+    }
+    return i;
+  }
 }
 
 

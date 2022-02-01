@@ -1,58 +1,51 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
-import aike;
-import ails;
-import android.content.Context;
-import android.content.res.Resources;
+import ajfb;
 import android.view.View;
-import anmf;
-import bcef;
-import bcsz;
-import com.tencent.mobileqq.app.MessageHandler;
+import bdla;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.SwipListView;
 import java.util.List;
 
-public class TroopNotifyAndRecommendView$9$1
+class TroopNotifyAndRecommendView$9$1
   implements Runnable
 {
-  public TroopNotifyAndRecommendView$9$1(ails paramails, boolean paramBoolean1, boolean paramBoolean2, List paramList) {}
+  TroopNotifyAndRecommendView$9$1(TroopNotifyAndRecommendView.9 param9) {}
   
   public void run()
   {
-    TroopNotifyAndRecommendView.g(this.jdField_a_of_type_Ails.a);
-    if ((!this.jdField_a_of_type_Boolean) && (this.b) && (this.jdField_a_of_type_Ails.a.i))
+    if ((this.a.this$0.b == null) || (this.a.this$0.b.isEmpty()))
     {
-      String str = this.jdField_a_of_type_Ails.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718763);
-      QQToast.a(this.jdField_a_of_type_Ails.a.jdField_a_of_type_AndroidContentContext, 1, str, 0).b(this.jdField_a_of_type_Ails.a.a());
+      TroopNotifyAndRecommendView.a(this.a.this$0).a();
+      TroopNotifyAndRecommendView.a(this.a.this$0).setVisibility(8);
+      this.a.this$0.jdField_a_of_type_ComTencentWidgetSwipListView.setVisibility(0);
+      this.a.this$0.setType(0);
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopNotifyAndRecommendView", 2, "onGetSuspiciousSystemMsgFin.success");
-    }
-    if ((this.jdField_a_of_type_Ails.a.b != null) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    if ((this.a.this$0.b != null) && (this.a.this$0.b.size() > 0))
     {
-      this.jdField_a_of_type_Ails.a.b.clear();
-      this.jdField_a_of_type_Ails.a.b = TroopNotifyAndRecommendView.a(this.jdField_a_of_type_Ails.a.b, this.jdField_a_of_type_JavaUtilList);
-    }
-    bcsz.a().b(this.jdField_a_of_type_Ails.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0);
-    if (TroopNotifyAndRecommendView.a(this.jdField_a_of_type_Ails.a) != null)
-    {
-      TroopNotifyAndRecommendView.a(this.jdField_a_of_type_Ails.a).a();
-      TroopNotifyAndRecommendView.a(this.jdField_a_of_type_Ails.a).a(this.jdField_a_of_type_Ails.a.b);
-      TroopNotifyAndRecommendView.a(this.jdField_a_of_type_Ails.a).notifyDataSetChanged();
-      this.jdField_a_of_type_Ails.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a().a(true);
-      if (TroopNotifyAndRecommendView.a(this.jdField_a_of_type_Ails.a).getVisibility() == 8) {
-        bcef.b(this.jdField_a_of_type_Ails.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_contacts_news", "", "notice", "unnormal_tab_exp", 0, 0, "", "", "", "");
+      if (TroopNotifyAndRecommendView.a(this.a.this$0).getVisibility() == 8) {
+        bdla.b(this.a.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_contacts_news", "", "notice", "unnormal_tab_exp", 0, 0, "", "", "", "");
       }
-      TroopNotifyAndRecommendView.a(this.jdField_a_of_type_Ails.a).setVisibility(0);
+      TroopNotifyAndRecommendView.a(this.a.this$0).setVisibility(0);
+      if (!(this.a.this$0.b.get(0) instanceof MessageForSystemMsg))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopNotifyAndRecommendView", 2, "initListData error");
+        }
+        this.a.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.clearGroupSystemMsgHistory();
+        TroopNotifyAndRecommendView.a(this.a.this$0).a(null);
+      }
     }
-    for (;;)
+    else
     {
-      TroopNotifyAndRecommendView.h(this.jdField_a_of_type_Ails.a);
-      return;
-      TroopNotifyAndRecommendView.a(this.jdField_a_of_type_Ails.a).setVisibility(8);
+      TroopNotifyAndRecommendView.a(this.a.this$0).setVisibility(8);
     }
+    TroopNotifyAndRecommendView.a(this.a.this$0).a();
+    TroopNotifyAndRecommendView.a(this.a.this$0).a(this.a.this$0.b);
+    TroopNotifyAndRecommendView.a(this.a.this$0).notifyDataSetChanged();
+    TroopNotifyAndRecommendView.h(this.a.this$0);
   }
 }
 

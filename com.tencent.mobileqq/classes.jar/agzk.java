@@ -1,29 +1,17 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class agzk
-  implements View.OnClickListener
+  extends ahaa
 {
-  agzk(agzi paramagzi, AIOShortVideoData paramAIOShortVideoData) {}
-  
-  public void onClick(View paramView)
+  agzk(agvm paramagvm)
   {
-    agzi.a(this.jdField_a_of_type_Agzi, agzi.a(this.jdField_a_of_type_Agzi), amtj.a(2131699203));
-    boolean bool = bbta.a().a();
-    Activity localActivity = agzi.b(this.jdField_a_of_type_Agzi);
-    int j = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.g;
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.e;
-    if (bool) {}
-    for (int i = 1;; i = 0)
-    {
-      DanceMachineQQBrowserActivity.a(localActivity, j, str, i, -999, 1, 0, null);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
+    super(paramagvm, null);
+  }
+  
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new agnu(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

@@ -1,18 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-
-class aerk
-  implements DialogInterface.OnClickListener
+public abstract interface aerk
 {
-  aerk(aeri paramaeri, QQCustomDialog paramQQCustomDialog) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    bcef.b(this.jdField_a_of_type_Aeri.a.app, "P_CliOper", "Grp_manage", "", "turn_grp", "Clk_know", 0, 0, this.jdField_a_of_type_Aeri.a.a, "", "", "");
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
-  }
+  public abstract void a(int paramInt);
 }
 
 

@@ -2,8 +2,8 @@ package com.tencent.mobileqq.forward;
 
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-import atnl;
-import atnm;
+import ausg;
+import aush;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class ForwardPhotoOption$3
@@ -24,7 +24,7 @@ public class ForwardPhotoOption$3
     {
       return;
     }
-    ForwardPhotoOption.a(this.this$0).a.setOnTouchListener(new atnl(this));
+    ForwardPhotoOption.a(this.this$0).a.setOnTouchListener(new ausg(this));
   }
 }
 

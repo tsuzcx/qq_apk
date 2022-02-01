@@ -8,24 +8,24 @@ import android.view.WindowManager.LayoutParams;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import lyo;
-import lyu;
-import lyv;
-import lza;
-import lzb;
+import lzc;
+import lzk;
+import lzl;
+import lzq;
+import lzr;
 import mqq.app.AppService;
 
 public class BaseSmallScreenService
   extends AppService
-  implements lyv
+  implements lzl
 {
   int jdField_a_of_type_Int = 0;
   Handler jdField_a_of_type_AndroidOsHandler;
-  PhoneStateListener jdField_a_of_type_AndroidTelephonyPhoneStateListener = new lyo(this);
+  PhoneStateListener jdField_a_of_type_AndroidTelephonyPhoneStateListener = new lzc(this);
   TelephonyManager jdField_a_of_type_AndroidTelephonyTelephonyManager = null;
   Runnable jdField_a_of_type_JavaLangRunnable = null;
   boolean jdField_a_of_type_Boolean = true;
-  final lyu[] jdField_a_of_type_ArrayOfLyu = new lyu[3];
+  final lzk[] jdField_a_of_type_ArrayOfLzk = new lzk[4];
   int jdField_b_of_type_Int = 7;
   Runnable jdField_b_of_type_JavaLangRunnable = null;
   boolean jdField_b_of_type_Boolean = false;
@@ -54,33 +54,33 @@ public class BaseSmallScreenService
   
   public SmallScreenRelativeLayout a(int paramInt)
   {
-    if (this.jdField_a_of_type_ArrayOfLyu[paramInt] != null) {
-      return this.jdField_a_of_type_ArrayOfLyu[paramInt].jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout;
+    if (this.jdField_a_of_type_ArrayOfLzk[paramInt] != null) {
+      return this.jdField_a_of_type_ArrayOfLzk[paramInt].jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout;
     }
     return null;
   }
   
-  lyu a(int paramInt)
+  lzk a(int paramInt)
   {
-    return this.jdField_a_of_type_ArrayOfLyu[paramInt];
+    return this.jdField_a_of_type_ArrayOfLzk[paramInt];
   }
   
-  public lza a(int paramInt)
+  public lzq a(int paramInt)
   {
-    if (this.jdField_a_of_type_ArrayOfLyu[paramInt] != null) {
-      return this.jdField_a_of_type_ArrayOfLyu[paramInt].jdField_a_of_type_Lza;
+    if (this.jdField_a_of_type_ArrayOfLzk[paramInt] != null) {
+      return this.jdField_a_of_type_ArrayOfLzk[paramInt].jdField_a_of_type_Lzq;
     }
     return null;
   }
   
-  protected lza a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout)
+  protected lzq a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout)
   {
     Object localObject2 = null;
     int i = 0;
     for (;;)
     {
       Object localObject1 = localObject2;
-      if (i < 3)
+      if (i < 4)
       {
         if (a(i) == paramSmallScreenRelativeLayout) {
           localObject1 = a(i);
@@ -124,7 +124,7 @@ public class BaseSmallScreenService
   
   protected boolean a()
   {
-    return lzb.f(((AppInterface)this.app).getApp());
+    return lzr.f(((AppInterface)this.app).getApp());
   }
   
   public boolean a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout)
@@ -254,152 +254,167 @@ public class BaseSmallScreenService
     //   190: getfield 58	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_a_of_type_AndroidTelephonyPhoneStateListener	Landroid/telephony/PhoneStateListener;
     //   193: bipush 32
     //   195: invokevirtual 219	android/telephony/TelephonyManager:listen	(Landroid/telephony/PhoneStateListener;I)V
-    //   198: new 221	lyr
+    //   198: new 221	lzi
     //   201: dup
     //   202: aload_0
-    //   203: invokespecial 224	lyr:<init>	(Landroid/content/Context;)V
+    //   203: invokespecial 224	lzi:<init>	(Landroid/content/Context;)V
     //   206: astore 4
     //   208: aload 4
     //   210: aload_0
     //   211: aload_3
     //   212: aload_0
-    //   213: invokevirtual 227	lyr:a	(Landroid/content/Context;Landroid/view/LayoutInflater;Llyv;)V
+    //   213: invokevirtual 227	lzi:a	(Landroid/content/Context;Landroid/view/LayoutInflater;Llzl;)V
     //   216: aload_0
-    //   217: getfield 45	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_a_of_type_ArrayOfLyu	[Llyu;
+    //   217: getfield 45	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_a_of_type_ArrayOfLzk	[Llzk;
     //   220: iconst_0
     //   221: aload 4
     //   223: aastore
-    //   224: new 229	lzd
+    //   224: new 229	lzt
     //   227: dup
     //   228: aload_0
-    //   229: invokespecial 230	lzd:<init>	(Landroid/content/Context;)V
+    //   229: invokespecial 230	lzt:<init>	(Landroid/content/Context;)V
     //   232: astore 4
     //   234: aload 4
     //   236: aload_0
     //   237: aload_3
     //   238: aload_0
-    //   239: invokevirtual 231	lzd:a	(Landroid/content/Context;Landroid/view/LayoutInflater;Llyv;)V
+    //   239: invokevirtual 231	lzt:a	(Landroid/content/Context;Landroid/view/LayoutInflater;Llzl;)V
     //   242: aload_0
-    //   243: getfield 45	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_a_of_type_ArrayOfLyu	[Llyu;
+    //   243: getfield 45	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_a_of_type_ArrayOfLzk	[Llzk;
     //   246: iconst_1
     //   247: aload 4
     //   249: aastore
-    //   250: new 233	lyz
+    //   250: new 233	lzp
     //   253: dup
     //   254: aload_0
-    //   255: invokespecial 234	lyz:<init>	(Landroid/content/Context;)V
+    //   255: invokespecial 234	lzp:<init>	(Landroid/content/Context;)V
     //   258: astore 4
     //   260: aload 4
     //   262: aload_0
     //   263: aload_3
     //   264: aload_0
-    //   265: invokevirtual 235	lyz:a	(Landroid/content/Context;Landroid/view/LayoutInflater;Llyv;)V
+    //   265: invokevirtual 235	lzp:a	(Landroid/content/Context;Landroid/view/LayoutInflater;Llzl;)V
     //   268: aload_0
-    //   269: getfield 45	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_a_of_type_ArrayOfLyu	[Llyu;
+    //   269: getfield 45	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_a_of_type_ArrayOfLzk	[Llzk;
     //   272: iconst_2
     //   273: aload 4
     //   275: aastore
-    //   276: new 237	android/content/IntentFilter
+    //   276: new 237	mac
     //   279: dup
-    //   280: invokespecial 238	android/content/IntentFilter:<init>	()V
-    //   283: astore_3
-    //   284: aload_3
-    //   285: ldc 240
-    //   287: invokevirtual 244	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
-    //   290: aload_3
-    //   291: ldc 246
-    //   293: invokevirtual 244	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
-    //   296: aload_0
-    //   297: invokestatic 249	lzb:i	()Z
-    //   300: putfield 27	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_b_of_type_Boolean	Z
-    //   303: getstatic 254	android/os/Build$VERSION:SDK_INT	I
-    //   306: bipush 21
-    //   308: if_icmplt +160 -> 468
-    //   311: invokestatic 259	com/tencent/av/VideoController:a	()Lcom/tencent/av/VideoController;
-    //   314: invokevirtual 262	com/tencent/av/VideoController:a	()Lmiz;
-    //   317: invokevirtual 266	miz:c	()Z
-    //   320: ifeq +148 -> 468
-    //   323: iconst_1
-    //   324: istore_1
-    //   325: aload_0
-    //   326: getfield 64	com/tencent/av/smallscreen/BaseSmallScreenService:app	Lmqq/app/AppRuntime;
-    //   329: checkcast 164	com/tencent/common/app/AppInterface
-    //   332: invokevirtual 168	com/tencent/common/app/AppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   335: invokestatic 268	lzb:c	(Landroid/content/Context;)Z
-    //   338: ifeq +135 -> 473
-    //   341: iload_1
-    //   342: ifne +131 -> 473
-    //   345: aload_0
-    //   346: iload_2
-    //   347: putfield 33	com/tencent/av/smallscreen/BaseSmallScreenService:e	Z
-    //   350: aload_0
+    //   280: aload_0
+    //   281: invokespecial 238	mac:<init>	(Landroid/content/Context;)V
+    //   284: astore 4
+    //   286: aload 4
+    //   288: aload_0
+    //   289: aload_3
+    //   290: aload_0
+    //   291: invokevirtual 239	mac:a	(Landroid/content/Context;Landroid/view/LayoutInflater;Llzl;)V
+    //   294: aload_0
+    //   295: getfield 45	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_a_of_type_ArrayOfLzk	[Llzk;
+    //   298: iconst_3
+    //   299: aload 4
+    //   301: aastore
+    //   302: new 241	android/content/IntentFilter
+    //   305: dup
+    //   306: invokespecial 242	android/content/IntentFilter:<init>	()V
+    //   309: astore_3
+    //   310: aload_3
+    //   311: ldc 244
+    //   313: invokevirtual 248	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   316: aload_3
+    //   317: ldc 250
+    //   319: invokevirtual 248	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   322: aload_0
+    //   323: invokestatic 253	lzr:i	()Z
+    //   326: putfield 27	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_b_of_type_Boolean	Z
+    //   329: getstatic 258	android/os/Build$VERSION:SDK_INT	I
+    //   332: bipush 21
+    //   334: if_icmplt +160 -> 494
+    //   337: invokestatic 263	com/tencent/av/VideoController:a	()Lcom/tencent/av/VideoController;
+    //   340: invokevirtual 266	com/tencent/av/VideoController:a	()Lmjw;
+    //   343: invokevirtual 270	mjw:c	()Z
+    //   346: ifeq +148 -> 494
+    //   349: iconst_1
+    //   350: istore_1
     //   351: aload_0
     //   352: getfield 64	com/tencent/av/smallscreen/BaseSmallScreenService:app	Lmqq/app/AppRuntime;
     //   355: checkcast 164	com/tencent/common/app/AppInterface
     //   358: invokevirtual 168	com/tencent/common/app/AppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   361: invokestatic 270	lzb:b	(Landroid/content/Context;)Z
-    //   364: putfield 29	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_c_of_type_Boolean	Z
-    //   367: aload_0
-    //   368: aload_0
-    //   369: getfield 64	com/tencent/av/smallscreen/BaseSmallScreenService:app	Lmqq/app/AppRuntime;
-    //   372: checkcast 164	com/tencent/common/app/AppInterface
-    //   375: invokevirtual 168	com/tencent/common/app/AppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   378: invokestatic 173	lzb:f	(Landroid/content/Context;)Z
-    //   381: putfield 35	com/tencent/av/smallscreen/BaseSmallScreenService:f	Z
-    //   384: aload_0
-    //   385: getfield 47	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_a_of_type_JavaLangRunnable	Ljava/lang/Runnable;
-    //   388: ifnonnull +15 -> 403
-    //   391: aload_0
-    //   392: new 272	com/tencent/av/smallscreen/BaseSmallScreenService$InitRunnable
-    //   395: dup
-    //   396: aload_0
-    //   397: invokespecial 273	com/tencent/av/smallscreen/BaseSmallScreenService$InitRunnable:<init>	(Lcom/tencent/av/smallscreen/BaseSmallScreenService;)V
-    //   400: putfield 47	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_a_of_type_JavaLangRunnable	Ljava/lang/Runnable;
-    //   403: aload_0
-    //   404: invokevirtual 275	com/tencent/av/smallscreen/BaseSmallScreenService:a	()Landroid/os/Handler;
-    //   407: aload_0
-    //   408: getfield 47	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_a_of_type_JavaLangRunnable	Ljava/lang/Runnable;
-    //   411: ldc2_w 276
-    //   414: invokevirtual 281	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
-    //   417: pop
-    //   418: aload_0
-    //   419: getfield 49	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_b_of_type_JavaLangRunnable	Ljava/lang/Runnable;
-    //   422: ifnonnull +15 -> 437
-    //   425: aload_0
-    //   426: new 283	com/tencent/av/smallscreen/BaseSmallScreenService$OnOpChangedRunnable
-    //   429: dup
-    //   430: aload_0
-    //   431: invokespecial 284	com/tencent/av/smallscreen/BaseSmallScreenService$OnOpChangedRunnable:<init>	(Lcom/tencent/av/smallscreen/BaseSmallScreenService;)V
-    //   434: putfield 49	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_b_of_type_JavaLangRunnable	Ljava/lang/Runnable;
-    //   437: aload_0
-    //   438: invokevirtual 275	com/tencent/av/smallscreen/BaseSmallScreenService:a	()Landroid/os/Handler;
-    //   441: aload_0
-    //   442: getfield 49	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_b_of_type_JavaLangRunnable	Ljava/lang/Runnable;
-    //   445: ldc2_w 285
-    //   448: invokevirtual 281	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
-    //   451: pop
-    //   452: invokestatic 116	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   455: ifeq -401 -> 54
-    //   458: ldc 118
-    //   460: iconst_2
-    //   461: ldc_w 288
-    //   464: invokestatic 178	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   467: return
-    //   468: iconst_0
-    //   469: istore_1
-    //   470: goto -145 -> 325
-    //   473: iconst_0
-    //   474: istore_2
-    //   475: goto -130 -> 345
+    //   361: invokestatic 272	lzr:c	(Landroid/content/Context;)Z
+    //   364: ifeq +135 -> 499
+    //   367: iload_1
+    //   368: ifne +131 -> 499
+    //   371: aload_0
+    //   372: iload_2
+    //   373: putfield 33	com/tencent/av/smallscreen/BaseSmallScreenService:e	Z
+    //   376: aload_0
+    //   377: aload_0
+    //   378: getfield 64	com/tencent/av/smallscreen/BaseSmallScreenService:app	Lmqq/app/AppRuntime;
+    //   381: checkcast 164	com/tencent/common/app/AppInterface
+    //   384: invokevirtual 168	com/tencent/common/app/AppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   387: invokestatic 274	lzr:b	(Landroid/content/Context;)Z
+    //   390: putfield 29	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_c_of_type_Boolean	Z
+    //   393: aload_0
+    //   394: aload_0
+    //   395: getfield 64	com/tencent/av/smallscreen/BaseSmallScreenService:app	Lmqq/app/AppRuntime;
+    //   398: checkcast 164	com/tencent/common/app/AppInterface
+    //   401: invokevirtual 168	com/tencent/common/app/AppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   404: invokestatic 173	lzr:f	(Landroid/content/Context;)Z
+    //   407: putfield 35	com/tencent/av/smallscreen/BaseSmallScreenService:f	Z
+    //   410: aload_0
+    //   411: getfield 47	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_a_of_type_JavaLangRunnable	Ljava/lang/Runnable;
+    //   414: ifnonnull +15 -> 429
+    //   417: aload_0
+    //   418: new 276	com/tencent/av/smallscreen/BaseSmallScreenService$InitRunnable
+    //   421: dup
+    //   422: aload_0
+    //   423: invokespecial 277	com/tencent/av/smallscreen/BaseSmallScreenService$InitRunnable:<init>	(Lcom/tencent/av/smallscreen/BaseSmallScreenService;)V
+    //   426: putfield 47	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_a_of_type_JavaLangRunnable	Ljava/lang/Runnable;
+    //   429: aload_0
+    //   430: invokevirtual 279	com/tencent/av/smallscreen/BaseSmallScreenService:a	()Landroid/os/Handler;
+    //   433: aload_0
+    //   434: getfield 47	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_a_of_type_JavaLangRunnable	Ljava/lang/Runnable;
+    //   437: ldc2_w 280
+    //   440: invokevirtual 285	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
+    //   443: pop
+    //   444: aload_0
+    //   445: getfield 49	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_b_of_type_JavaLangRunnable	Ljava/lang/Runnable;
+    //   448: ifnonnull +15 -> 463
+    //   451: aload_0
+    //   452: new 287	com/tencent/av/smallscreen/BaseSmallScreenService$OnOpChangedRunnable
+    //   455: dup
+    //   456: aload_0
+    //   457: invokespecial 288	com/tencent/av/smallscreen/BaseSmallScreenService$OnOpChangedRunnable:<init>	(Lcom/tencent/av/smallscreen/BaseSmallScreenService;)V
+    //   460: putfield 49	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_b_of_type_JavaLangRunnable	Ljava/lang/Runnable;
+    //   463: aload_0
+    //   464: invokevirtual 279	com/tencent/av/smallscreen/BaseSmallScreenService:a	()Landroid/os/Handler;
+    //   467: aload_0
+    //   468: getfield 49	com/tencent/av/smallscreen/BaseSmallScreenService:jdField_b_of_type_JavaLangRunnable	Ljava/lang/Runnable;
+    //   471: ldc2_w 289
+    //   474: invokevirtual 285	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
+    //   477: pop
+    //   478: invokestatic 116	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   481: ifeq -427 -> 54
+    //   484: ldc 118
+    //   486: iconst_2
+    //   487: ldc_w 292
+    //   490: invokestatic 178	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   493: return
+    //   494: iconst_0
+    //   495: istore_1
+    //   496: goto -145 -> 351
+    //   499: iconst_0
+    //   500: istore_2
+    //   501: goto -130 -> 371
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	478	0	this	BaseSmallScreenService
-    //   324	146	1	i	int
-    //   4	471	2	bool	boolean
+    //   0	504	0	this	BaseSmallScreenService
+    //   350	146	1	i	int
+    //   4	497	2	bool	boolean
     //   37	2	3	localLayoutInflater	android.view.LayoutInflater
     //   55	17	3	localException1	java.lang.Exception
-    //   90	201	3	localObject1	Object
-    //   1	273	4	localObject2	Object
+    //   90	227	3	localObject1	Object
+    //   1	299	4	localObject2	Object
     //   86	27	5	localException2	java.lang.Exception
     //   129	27	5	localOutOfMemoryError	java.lang.OutOfMemoryError
     // Exception table:
@@ -428,10 +443,10 @@ public class BaseSmallScreenService
     this.jdField_a_of_type_AndroidTelephonyPhoneStateListener = null;
     this.jdField_a_of_type_JavaLangRunnable = null;
     this.jdField_b_of_type_JavaLangRunnable = null;
-    while (i < 3)
+    while (i < 4)
     {
-      this.jdField_a_of_type_ArrayOfLyu[i].a();
-      this.jdField_a_of_type_ArrayOfLyu[i] = null;
+      this.jdField_a_of_type_ArrayOfLzk[i].a();
+      this.jdField_a_of_type_ArrayOfLzk[i] = null;
       i += 1;
     }
     if (QLog.isColorLevel()) {

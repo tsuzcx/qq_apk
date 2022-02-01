@@ -1,17 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn.CreateColumnFragment;
+import android.graphics.drawable.Drawable;
 
 public class rmo
-  implements DialogInterface.OnClickListener
 {
-  public rmo(CreateColumnFragment paramCreateColumnFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a()
   {
-    this.a.a(false);
-    this.a.a.c();
-    this.a.i();
+    return 0;
+  }
+  
+  public Drawable a()
+  {
+    return null;
   }
 }
 

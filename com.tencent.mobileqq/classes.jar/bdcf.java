@@ -1,49 +1,122 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Iterator;
+import java.util.List;
 
 public class bdcf
 {
-  public static final int[] a = { 1, 2, 3, 4 };
+  int jdField_a_of_type_Int;
+  bdcf jdField_a_of_type_Bdcf;
+  List<bdce> jdField_a_of_type_JavaUtilList;
+  bdcf[] jdField_a_of_type_ArrayOfBdcf;
+  int b;
+  int c = -1;
   
-  public static final int a(int paramInt)
+  bdcf(bdcf parambdcf, List<bdce> paramList)
   {
-    if ((paramInt >= 0) && (paramInt < a.length)) {
-      return a[paramInt];
-    }
-    return -1;
-  }
-  
-  public static final String a(int paramInt)
-  {
-    switch (paramInt)
+    this.jdField_a_of_type_Bdcf = parambdcf;
+    this.jdField_a_of_type_ArrayOfBdcf = new bdcf[bdce.jdField_a_of_type_Int];
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.b = ((bdce)paramList.get(0)).jdField_a_of_type_ArrayOfInt.length;
+    this.jdField_a_of_type_Int = -1;
+    parambdcf = new int[2];
+    bdcf tmp57_56 = parambdcf;
+    tmp57_56[0] = 0;
+    bdcf tmp61_57 = tmp57_56;
+    tmp61_57[1] = 0;
+    tmp61_57;
+    paramList = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramList.hasNext())
     {
-    default: 
-      return "unknown";
-    case 0: 
-      return "BUSID_INTIMATE_ANNIVERSARY";
-    case 1: 
-      return "BUSID_BASE_PROFILE";
-    case 2: 
-      return "BUSID_NICE_PICS";
+      i = ((bdce)paramList.next()).b;
+      parambdcf[i] += 1;
     }
-    return "BUSID_NEWFRD_MINI_CARD";
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
-  {
-    bcef.b(paramQQAppInterface, "dc00898", "", paramQQAppInterface.getCurrentAccountUin(), paramString, paramString, paramInt, 0, "0", "0", "", "");
-  }
-  
-  public static final int b(int paramInt)
-  {
-    int i = 0;
-    while (i < a.length)
+    if (parambdcf[0] > parambdcf[1]) {}
+    for (int i = 0;; i = 1)
     {
-      if (a[i] == paramInt) {
-        return i;
+      this.c = i;
+      return;
+    }
+  }
+  
+  private void a(PrintWriter paramPrintWriter)
+  {
+    int j = 0;
+    if (this.jdField_a_of_type_Int != -1)
+    {
+      paramPrintWriter.println("<branch>");
+      paramPrintWriter.print("<attribute name=\"name\" value=\"");
+      if (this.jdField_a_of_type_Bdcf != null) {
+        break label93;
       }
-      i += 1;
+      paramPrintWriter.print("root");
     }
-    return -1;
+    for (;;)
+    {
+      paramPrintWriter.println("\" />");
+      if (this.jdField_a_of_type_Int == -1) {
+        break label167;
+      }
+      int i = j;
+      while (i < bdce.jdField_a_of_type_Int)
+      {
+        if (this.jdField_a_of_type_ArrayOfBdcf[i] != null) {
+          this.jdField_a_of_type_ArrayOfBdcf[i].a(paramPrintWriter);
+        }
+        i += 1;
+      }
+      paramPrintWriter.println("<leaf>");
+      break;
+      label93:
+      i = 0;
+      while (i < bdce.jdField_a_of_type_Int)
+      {
+        if (this == this.jdField_a_of_type_Bdcf.jdField_a_of_type_ArrayOfBdcf[i]) {
+          paramPrintWriter.print("fts" + this.jdField_a_of_type_Bdcf.jdField_a_of_type_Int + " = " + i);
+        }
+        i += 1;
+      }
+    }
+    paramPrintWriter.println("</branch>");
+    return;
+    label167:
+    paramPrintWriter.println("<attribute name=\"weight\" value=\"" + this.jdField_a_of_type_JavaUtilList.size() + "\" />");
+    paramPrintWriter.println("</leaf>");
+  }
+  
+  public int a(bdce parambdce)
+  {
+    int i = -1;
+    if (this.jdField_a_of_type_Int == -1) {
+      i = this.c;
+    }
+    while (this.jdField_a_of_type_ArrayOfBdcf[parambdce.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_Int]] == null) {
+      return i;
+    }
+    return this.jdField_a_of_type_ArrayOfBdcf[parambdce.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_Int]].a(parambdce);
+  }
+  
+  public void a(String paramString)
+  {
+    try
+    {
+      paramString = new PrintWriter(new FileWriter(paramString));
+      paramString.println("<?xml version=\"1.0\" ?>");
+      paramString.println("<tree>");
+      paramString.println("<declarations>");
+      paramString.println("<attributeDecl name=\"name\" type=\"String\" />");
+      paramString.println("<attributeDecl name=\"weight\" type=\"Real\" />");
+      paramString.println("</declarations>");
+      a(paramString);
+      paramString.println("</tree>");
+      paramString.close();
+      return;
+    }
+    catch (IOException paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
 }
 

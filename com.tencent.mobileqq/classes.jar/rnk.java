@@ -1,6 +1,7 @@
-public abstract interface rnk
+class rnk
+  extends rmo
 {
-  public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, String paramString);
+  rnk(rna paramrna) {}
 }
 
 

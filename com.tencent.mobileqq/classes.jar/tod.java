@@ -1,21 +1,29 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.readinjoy.view.ucrop.GestureCropImageView;
 
-class tod
-  implements View.OnLayoutChangeListener
+public class tod
+  extends GestureDetector.SimpleOnGestureListener
 {
-  tod(toc paramtoc) {}
+  private tod(GestureCropImageView paramGestureCropImageView) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    paramView.removeOnLayoutChangeListener(this);
-    paramView.setTranslationX(toc.a(this.a)[0]);
-    paramView.setTranslationY(toc.a(this.a)[1]);
+    if (GestureCropImageView.a(this.a)) {
+      this.a.a(this.a.c(), paramMotionEvent.getX(), paramMotionEvent.getY(), 200L);
+    }
+    return super.onDoubleTap(paramMotionEvent);
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    this.a.a(-paramFloat1, -paramFloat2);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tod
  * JD-Core Version:    0.7.0.1
  */

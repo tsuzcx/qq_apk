@@ -1,17 +1,12 @@
-class aqwl
+public class aqwl
 {
-  long jdField_a_of_type_Long;
-  long b;
+  public void a() {}
   
-  public aqwl(aqwg paramaqwg, long paramLong1, long paramLong2)
-  {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-  }
+  public void a(boolean paramBoolean, short paramShort, int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqwl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,32 @@
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.forward.ForwardPhotoOption;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class atnj
-  implements atlm
+  extends BroadcastReceiver
 {
-  public atnj(ForwardPhotoOption paramForwardPhotoOption) {}
+  public atnj(OnlineFileSessionCenter.1 param1) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ForwardPhotoOption.a(this.a).a.setVisibility(0);
-  }
-  
-  public void b()
-  {
-    ForwardPhotoOption.a(this.a).a.setVisibility(8);
+    if (paramIntent != null)
+    {
+      paramContext = paramIntent.getAction();
+      if ((paramContext != null) && (paramContext.equals("com.tencent.mobileqq.intent.logout")))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("OnlineFileSessionCenter<FileAssistant>", 2, "OLfilesession[] logout.....!");
+        }
+        this.a.this$0.a();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atnj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,94 +1,190 @@
+import android.app.Dialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.AutoCompleteTextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
-import mqq.app.WtloginManagerImpl;
-import oicq.wlogin_sdk.tools.MD5;
-import oicq.wlogin_sdk.tools.util;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.photo.DragGallery;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.utils.FileUtils;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class akpj
-  implements bjoe
+  extends akmu
 {
-  public akpj(LoginView paramLoginView) {}
+  private Dialog jdField_a_of_type_AndroidAppDialog;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c;
+  private boolean d;
   
-  public void OnClick(View paramView, int paramInt)
+  akpj(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    LoginView.h(this.a, false);
-    if (LoginView.h(this.a)) {
+    super(paramNewPhotoPreviewActivity);
+  }
+  
+  protected void d()
+  {
+    if (this.d)
+    {
+      zac.a(this.mActivity, this.mPhotoCommonData.selectedPhotoList);
+      ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setClickable(true);
       return;
     }
-    if (paramInt == 0)
-    {
-      bcef.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007353", "0X8007353", 0, 0, "", "", "", "");
-      bcef.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007365", "0X8007365", 0, 0, "", "", "", "");
-      bcef.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007365", "0X8007365", 3, 0, "", "", "", "");
-      bcef.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "new_reg_805", "log_page", "re_clk", "", 1, "");
-      bcef.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AA2C", "0X800AA2C", 0, 0, "", "", "", "");
-      paramView = null;
-      if (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView == null) {}
+    super.d();
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
+    this.d = paramIntent.getBooleanExtra("from_readinjoy_slideshow", false);
+    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("from_readinjoy_ugc_deliver", false);
+    this.b = paramIntent.getBooleanExtra("from_readinjoy_ugc_deliver_preview", false);
+    this.c = paramIntent.getBooleanExtra("from_readinjoy_ugc", false);
+    ((akmq)this.mOtherCommonData).a(this.d, this.mPhotoCommonData);
+  }
+  
+  public void initUI()
+  {
+    super.initUI();
+    if (((akmq)this.mOtherCommonData).a()) {
+      ((NewPhotoPreviewActivity)this.mActivity).titleView.setVisibility(8);
     }
-    for (paramView = this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().toString();; paramView = "https://ti.qq.com/safe/forgetpw?source_id=2756") {
+    label239:
+    do
+    {
       for (;;)
       {
-        try
+        if (this.jdField_a_of_type_Boolean)
         {
-          Long.parseLong(paramView);
-          if (TextUtils.isEmpty(paramView)) {
-            break;
-          }
-          paramView = String.format(Locale.getDefault(), "%s&account=%s", new Object[] { "https://ti.qq.com/safe/forgetpw?source_id=2756", paramView });
-          paramView = new StringBuilder(paramView);
-          localObject = ((WtloginManagerImpl)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(1)).getGUID();
-          byte[] arrayOfByte = util.get_bssid_addr(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-          if ((arrayOfByte != null) && (arrayOfByte.length > 0)) {
-            paramView.append("&bssid=").append(MD5.toMD5(arrayOfByte));
-          }
-          paramView.append("&guid=").append(util.buf_to_string((byte[])localObject)).append("&appid=").append(AppSetting.a());
-          paramView = paramView.toString();
-          QLog.d("LoginActivity.LoginView", 1, new Object[] { "forgetpwd url is ", paramView });
-          localObject = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
-          ((Intent)localObject).putExtra("uin", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-          ((Intent)localObject).putExtra("reqType", 3);
-          ((Intent)localObject).putExtra("url", paramView);
-          this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity((Intent)localObject);
-          LoginView.g(this.a, true);
-          LoginView.a(this.a).dismiss();
-          return;
+          ((NewPhotoPreviewActivity)this.mActivity).findViewById(2131365496).setVisibility(0);
+          ((NewPhotoPreviewActivity)this.mActivity).findViewById(2131365496).setOnClickListener(new akpk(this));
         }
-        catch (Exception paramView)
-        {
-          paramView.printStackTrace();
-          Object localObject = null;
-          paramView = (View)localObject;
-          if (!QLog.isDevelopLevel()) {
-            continue;
-          }
-          QLog.i("LoginActivity.LoginView", 4, String.format(Locale.getDefault(), "forget pwd %s", new Object[] { this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().toString() }));
-          paramView = (View)localObject;
-          continue;
+        if (((this.jdField_a_of_type_Akmr.g) || (this.jdField_a_of_type_Akmr.isSingleMode)) && (!this.jdField_a_of_type_Boolean)) {
+          ((NewPhotoPreviewActivity)this.mActivity).magicStickBtn.setVisibility(8);
         }
-        if (paramInt == 1)
+        if (!this.b) {
+          break label239;
+        }
+        ((NewPhotoPreviewActivity)this.mActivity).magicStickBtn.setVisibility(0);
+        if ((this.jdField_a_of_type_Akmr.paths.size() > 1) && (this.mPhotoCommonData.selectedPhotoList.size() > 1)) {
+          break;
+        }
+        ((NewPhotoPreviewActivity)this.mActivity).magicStickBtn.setEnabled(true);
+        return;
+        if (this.jdField_a_of_type_Boolean)
         {
-          bcef.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007354", "0X8007354", 0, 0, "", "", "", "");
-          bcef.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007365", "0X8007365", 0, 0, "", "", "", "");
-          bcef.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007365", "0X8007365", 2, 0, "", "", "", "");
-          bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Mobile_signup", "Clk_ems_login", 0, 0, "", "", "", "");
-          bcef.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AA2D", "0X800AA2D", 0, 0, "", "", "", "");
-          boolean bool = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().getBooleanExtra("login_from_account_change", false);
-          paramView = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, LoginPhoneNumActivity.class);
-          paramView.putExtra("login_from_account_change", bool);
-          paramView.putExtra("entrance", LoginView.class.getName());
-          this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramView);
+          ((NewPhotoPreviewActivity)this.mActivity).selectLayout.setVisibility(8);
+          ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setVisibility(8);
         }
       }
+      ((NewPhotoPreviewActivity)this.mActivity).magicStickBtn.setEnabled(false);
+      return;
+    } while (!this.c);
+    ((NewPhotoPreviewActivity)this.mActivity).magicStickBtn.setVisibility(0);
+  }
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if (paramInt1 == 10013)
+    {
+      if ((paramInt2 == -1) && (this.d))
+      {
+        ((NewPhotoPreviewActivity)this.mActivity).setResult(paramInt2, paramIntent);
+        ((NewPhotoPreviewActivity)this.mActivity).finish();
+      }
+      do
+      {
+        do
+        {
+          return;
+        } while (!this.d);
+        paramIntent = paramIntent.getStringExtra("PhotoConst.FROM_QQSTORY_SLIDESHOW_DATA");
+      } while (TextUtils.isEmpty(paramIntent));
+      FileUtils.deleteDirectory(new File(paramIntent).getParent());
+      return;
+    }
+    super.onActivityResult(paramInt1, paramInt2, paramIntent);
+  }
+  
+  public void onMagicStickClick(View paramView, int paramInt1, Bundle paramBundle, int paramInt2, Intent paramIntent)
+  {
+    paramInt1 = ((NewPhotoPreviewActivity)this.mActivity).getCurrentSelectedPostion();
+    if (paramInt1 != -1) {
+      this.jdField_a_of_type_Akmr.a = ((String)this.jdField_a_of_type_Akmr.paths.get(paramInt1));
+    }
+    if (this.jdField_a_of_type_Akmr.a != null)
+    {
+      bdla.b(null, "CliOper", "", "", "0x8004B39", "0x8004B39", 0, 0, "", "", "", "");
+      if (!this.jdField_a_of_type_Akmr.c) {
+        break label441;
+      }
+      if ((!this.jdField_a_of_type_Boolean) && (!this.c) && (!this.b)) {
+        break label343;
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        paramInt1 = ((NewPhotoPreviewActivity)this.mActivity).gallery.getFirstVisiblePosition();
+        if (paramInt1 < this.jdField_a_of_type_Akmr.paths.size()) {
+          this.jdField_a_of_type_Akmr.a = ((String)this.jdField_a_of_type_Akmr.paths.get(paramInt1));
+        }
+      }
+      paramView = EditPicActivity.a(this.mActivity, this.jdField_a_of_type_Akmr.a, true, true, true, true, true, 8, a(), 0);
+      paramView.putExtra("PhotoConst.CURRENT_QUALITY_TYPE", this.mPhotoCommonData.currentQualityType);
+      if (!this.jdField_a_of_type_Akmr.i) {
+        break label479;
+      }
+      paramView.putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1040);
+    }
+    for (;;)
+    {
+      paramView.putExtra("PhotoConst.readinjoy_delete_pic_position", ((NewPhotoPreviewActivity)this.mActivity).getCurrentSelectedPostion());
+      ((NewPhotoPreviewActivity)this.mActivity).startActivity(paramView);
+      ((NewPhotoPreviewActivity)this.mActivity).overridePendingTransition(2130772039, 2130772041);
+      ((NewPhotoPreviewActivity)this.mActivity).magicStickBtn.setClickable(false);
+      paramView = ((NewPhotoPreviewActivity)this.mActivity).getIntent();
+      if ((paramView != null) && (paramView.hasExtra("custom_photopreview_editbtn_reportActionName")))
+      {
+        paramView = paramView.getStringExtra("custom_photopreview_editbtn_reportActionName");
+        if (paramView != null) {
+          bdla.b(null, "CliOper", "", "", paramView, paramView, 0, 0, "", "", "", "");
+        }
+      }
+      LpReportInfo_pf00064.allReport(603, 4, 1);
+      return;
+      label343:
+      paramView = new HashMap(1);
+      if ((this.mPhotoCommonData.selectedMediaInfoHashMap != null) && ((LocalMediaInfo)this.mPhotoCommonData.selectedMediaInfoHashMap.get(this.jdField_a_of_type_Akmr.a) != null)) {
+        paramView.put("param_localmediainfo", this.mPhotoCommonData.selectedMediaInfoHashMap.get(this.jdField_a_of_type_Akmr.a));
+      }
+      paramView = EditPicActivity.a(this.mActivity, this.jdField_a_of_type_Akmr.a, true, true, true, true, true, paramInt2, a(), 4, paramView);
+      break;
+      label441:
+      paramView = new Bundle();
+      paramView = EditPicActivity.a(this.mActivity, this.jdField_a_of_type_Akmr.a, true, true, true, true, true, 2, a(), 4, paramView);
+      break;
+      label479:
+      paramView.putExtra("PhotoConst.SEND_BUSINESS_TYPE", this.jdField_a_of_type_Akmr.b);
+    }
+  }
+  
+  public void updateButton()
+  {
+    super.updateButton();
+    if ((this.mPhotoCommonData.selectedPhotoList != null) && (this.mPhotoCommonData.selectedPhotoList.size() > 0)) {}
+    for (int i = 1;; i = 0)
+    {
+      if ((i != 0) && (!this.jdField_a_of_type_Akmr.g) && (!this.jdField_a_of_type_Akmr.isSingleMode) && (this.jdField_a_of_type_Boolean)) {
+        ((NewPhotoPreviewActivity)this.mActivity).magicStickBtn.setEnabled(true);
+      }
+      return;
     }
   }
 }

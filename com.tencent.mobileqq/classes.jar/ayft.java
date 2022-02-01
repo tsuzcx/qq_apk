@@ -1,191 +1,47 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.SparseArray;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class ayft
+  extends BaseAdapter
 {
-  private static final SparseArray<int[]> a = new SparseArray();
-  private static final SparseArray<ayfh> b = new SparseArray();
+  private List<PicInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  static
+  public ayft(List<PicInfo> paramList, int paramInt)
   {
-    a.put(101, agwt.jdField_a_of_type_ArrayOfInt);
-    a.put(105, agwt.e);
-    a.put(102, agwt.l);
-    a.put(103, agwt.s);
-    a.put(106, agwt.w);
-    a.put(104, agwt.B);
-  }
-  
-  private static int a(List<ayfh> paramList)
-  {
-    int i = 0;
-    while (i < paramList.size())
+    int j = i * 6;
+    int i = j;
+    while ((i < paramInt.size()) && (i < j + 6))
     {
-      if ((((ayfh)paramList.get(i)).jdField_d_of_type_Int == 5) || (((ayfh)paramList.get(i)).jdField_d_of_type_Int == 6)) {
-        return i;
-      }
+      this.jdField_a_of_type_JavaUtilList.add(paramInt.get(i));
       i += 1;
     }
-    return -1;
   }
   
-  public static ayfh a(int paramInt)
+  public int getCount()
   {
-    return a(paramInt, false);
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public static ayfh a(int paramInt, boolean paramBoolean)
+  public Object getItem(int paramInt)
   {
-    Object localObject;
-    if (paramBoolean) {
-      localObject = (ayfh)b.get(paramInt);
-    }
-    for (;;)
-    {
-      return localObject;
-      try
-      {
-        localObject = (ayfg)apub.a().a(496);
-        if (localObject != null)
-        {
-          List localList = ((ayfg)localObject).a;
-          if (localList.size() > 0)
-          {
-            int i = 0;
-            for (;;)
-            {
-              if (i >= localList.size()) {
-                break label133;
-              }
-              localObject = (ayfh)localList.get(i);
-              int[] arrayOfInt = (int[])a.get(((ayfh)localObject).jdField_a_of_type_Int);
-              if (arrayOfInt != null)
-              {
-                int j = arrayOfInt[0];
-                if (paramInt == j) {
-                  break;
-                }
-              }
-              i += 1;
-            }
-          }
-        }
-        return null;
-      }
-      catch (Exception localException)
-      {
-        QLog.e("PlusPanelUtil", 1, localException, new Object[0]);
-      }
-    }
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
   
-  public static List<ayfh> a(boolean paramBoolean, Context paramContext)
+  public long getItemId(int paramInt)
   {
-    for (;;)
-    {
-      int[] arrayOfInt;
-      try
-      {
-        Object localObject = (ayfg)apub.a().a(496);
-        if (localObject != null)
-        {
-          localObject = ((ayfg)localObject).a;
-          if (((List)localObject).size() > 0)
-          {
-            ArrayList localArrayList = new ArrayList();
-            int i = 0;
-            if (i < ((List)localObject).size())
-            {
-              ayfh localayfh = (ayfh)((List)localObject).get(i);
-              arrayOfInt = (int[])a.get(localayfh.jdField_a_of_type_Int);
-              if (arrayOfInt != null) {
-                break label215;
-              }
-              b.put(localayfh.jdField_a_of_type_Int, localayfh);
-              j = 1;
-              if (j == 0) {
-                break label220;
-              }
-              k = localayfh.jdField_a_of_type_Int;
-              localayfh.jdField_d_of_type_Int = k;
-              localayfh.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localayfh.a();
-              localayfh.b = localayfh.b();
-              if (j == 0) {
-                break label229;
-              }
-              j = 0;
-              localayfh.e = j;
-              localayfh.jdField_a_of_type_ArrayOfInt = arrayOfInt;
-              localArrayList.add(localayfh);
-              i += 1;
-              continue;
-            }
-            a(localArrayList);
-            a(localArrayList, paramContext);
-            return localArrayList;
-          }
-        }
-      }
-      catch (Exception paramContext)
-      {
-        QLog.e("PlusPanelUtil", 1, paramContext, new Object[0]);
-      }
-      return new ArrayList();
-      label215:
-      int j = 0;
-      continue;
-      label220:
-      int k = arrayOfInt[0];
-      continue;
-      label229:
-      j = arrayOfInt[3];
-    }
+    return paramInt;
   }
   
-  private static void a(List<ayfh> paramList)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Collections.sort(paramList);
-  }
-  
-  private static void a(List<ayfh> paramList, Context paramContext)
-  {
-    int i = a(paramList);
-    if (i == -1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PlusPanelUtil", 2, "did not have camera icon");
-      }
-      return;
-    }
-    int[] arrayOfInt = agwt.v;
-    ayfh localayfh = new ayfh();
-    localayfh.jdField_d_of_type_Int = 6;
-    localayfh.jdField_d_of_type_JavaLangString = paramContext.getResources().getString(arrayOfInt[1]);
-    localayfh.e = arrayOfInt[3];
-    localayfh.jdField_a_of_type_ArrayOfInt = arrayOfInt;
-    if (ShortVideoUtils.needTwoEntrance())
-    {
-      localayfh.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(arrayOfInt[2]);
-      paramList.add(i, localayfh);
-      return;
-    }
-    a.put(103, agwt.v);
-    localayfh.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(agwt.s[2]);
-    paramList.set(i, localayfh);
-  }
-  
-  public static int[] a(int paramInt)
-  {
-    if (a != null) {
-      return (int[])a.get(paramInt);
-    }
-    return null;
+    View localView = this.jdField_a_of_type_Ayek.a(paramInt, (PicInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 

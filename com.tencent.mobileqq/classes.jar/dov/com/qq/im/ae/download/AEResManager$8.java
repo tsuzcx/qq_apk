@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.download;
 
-import blvn;
+import bnku;
 
 public class AEResManager$8
   implements Runnable
 {
-  public AEResManager$8(blvn paramblvn, String paramString, long paramLong1, long paramLong2) {}
+  public AEResManager$8(bnku parambnku, String paramString, long paramLong1, long paramLong2) {}
   
   public void run()
   {
-    blvn.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.b);
+    bnku.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.b);
   }
 }
 

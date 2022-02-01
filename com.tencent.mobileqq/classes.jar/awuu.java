@@ -1,16 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageButton;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.medalwall.MedalGuideView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
-class awuu
-  implements View.OnClickListener
+public class awuu
+  implements PopupWindow.OnDismissListener
 {
-  awuu(awur paramawur) {}
+  public awuu(MedalGuideView paramMedalGuideView) {}
   
-  public void onClick(View paramView)
+  public void onDismiss()
   {
-    this.a.h(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "onDismiss  endOfAnim: %s", new Object[] { Boolean.valueOf(this.a.d) }));
+    }
+    this.a.d = true;
+    this.a.a.performClick();
   }
 }
 

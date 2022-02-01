@@ -1,9 +1,7 @@
 package com.tencent.mobileqq.activity.photo;
 
-import ajnr;
-import ajpz;
-import anca;
-import andd;
+import akjf;
+import akln;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -18,20 +16,24 @@ import android.os.Looper;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bcef;
-import beyx;
-import bfai;
-import bfeb;
-import bfed;
-import bfef;
-import bfur;
-import bfvf;
-import bfvo;
-import bjnw;
-import bjon;
+import aoep;
+import aofu;
+import bdla;
+import bghb;
+import bgio;
+import bgmh;
+import bgmj;
+import bgml;
+import bhdj;
+import bhdx;
+import bheg;
+import bkzi;
+import bkzz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopInfo;
@@ -71,15 +73,15 @@ public class TroopPhotoController
   public QQAppInterface mApp;
   Context mCtx;
   protected int[] mCurShowItemIndex;
-  List<ajnr> mInfos = new ArrayList();
-  protected bfai mManger;
+  List<akjf> mInfos = new ArrayList();
+  protected bgio mManger;
   protected String[] mMenuItems;
   protected List<TroopPhotoController.OnDataChangeListener> mOnDataChangeListeners = new ArrayList();
   WeakReference<TroopPhotoController.OnGotoBigPicListener> mOnGotoBigPicListener;
   WeakReference<TroopPhotoController.OnUploadListener> mOnUploadListener;
   int mSelectPos = -1;
   int mSubmitTime = 0;
-  andd mTroopAvatarObserver = new TroopPhotoController.9(this);
+  aofu mTroopAvatarObserver = new TroopPhotoController.9(this);
   public TroopInfo mTroopInfo;
   protected TroopInfoData mTroopInfoData;
   String mTroopUin;
@@ -93,8 +95,8 @@ public class TroopPhotoController
     this.mApp = paramQQAppInterface;
     this.mTroopUin = paramString;
     updateTroopInfo();
-    paramContext = (anca)this.mApp.getBusinessHandler(20);
-    this.mManger = new bfai(this.mTroopUin, bfeb.class, paramContext);
+    paramContext = (aoep)this.mApp.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
+    this.mManger = new bgio(this.mTroopUin, bgmh.class, paramContext);
     this.mManger.a(this);
     this.mApp.addObserver(this.mTroopAvatarObserver, true);
   }
@@ -104,14 +106,14 @@ public class TroopPhotoController
     uploadPhotoUri = ProfileActivity.a(this.mActivity, 257);
   }
   
-  private ajnr getItem(long paramLong)
+  private akjf getItem(long paramLong)
   {
     Iterator localIterator = this.mInfos.iterator();
     while (localIterator.hasNext())
     {
-      ajnr localajnr = (ajnr)localIterator.next();
-      if (localajnr.jdField_a_of_type_Long == paramLong) {
-        return localajnr;
+      akjf localakjf = (akjf)localIterator.next();
+      if (localakjf.jdField_a_of_type_Long == paramLong) {
+        return localakjf;
       }
     }
     return null;
@@ -133,7 +135,7 @@ public class TroopPhotoController
       }
     }
     label86:
-    for (((ajnr)this.mInfos.get(i)).jdField_d_of_type_Boolean = true;; ((ajnr)this.mInfos.get(i)).jdField_d_of_type_Boolean = false)
+    for (((akjf)this.mInfos.get(i)).jdField_d_of_type_Boolean = true;; ((akjf)this.mInfos.get(i)).jdField_d_of_type_Boolean = false)
     {
       i += 1;
       break label41;
@@ -148,7 +150,7 @@ public class TroopPhotoController
   
   public static void showToast(String paramString, int paramInt)
   {
-    int i = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299076);
+    int i = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299080);
     QQToast.a(BaseApplicationImpl.getContext(), paramInt, paramString, 1).b(i);
   }
   
@@ -162,18 +164,18 @@ public class TroopPhotoController
   public void buildAndShowAlertWindow(boolean paramBoolean)
   {
     Activity localActivity = this.mActivity;
-    QQCustomDialog localQQCustomDialog = bfur.a(localActivity, 230);
+    QQCustomDialog localQQCustomDialog = bhdj.a(localActivity, 230);
     localQQCustomDialog.setTitle(null);
     if (paramBoolean) {
-      localQQCustomDialog.setMessage(localActivity.getResources().getString(2131693050));
+      localQQCustomDialog.setMessage(localActivity.getResources().getString(2131693186));
     }
     for (;;)
     {
-      localQQCustomDialog.setPositiveButton(localActivity.getResources().getString(2131693067), new bfvf());
-      localQQCustomDialog.setPositiveButtonContentDescription(localActivity.getResources().getString(2131693067));
+      localQQCustomDialog.setPositiveButton(localActivity.getResources().getString(2131693234), new bhdx());
+      localQQCustomDialog.setPositiveButtonContentDescription(localActivity.getResources().getString(2131693234));
       localQQCustomDialog.show();
       return;
-      localQQCustomDialog.setMessage(localActivity.getResources().getString(2131693049));
+      localQQCustomDialog.setMessage(localActivity.getResources().getString(2131693185));
     }
   }
   
@@ -219,33 +221,33 @@ public class TroopPhotoController
       BitmapFactory.decodeFile(paramString, localOptions);
       if ((localOptions.outWidth < 100) || (localOptions.outHeight < 100))
       {
-        QQToast.a(this.mActivity, 2131696711, 1).a();
+        QQToast.a(this.mActivity, 2131696978, 1).a();
         return true;
       }
     }
     return false;
   }
   
-  public ajnr getAvatar()
+  public akjf getAvatar()
   {
     return null;
   }
   
   @NonNull
-  public List<ajnr> getCoverList()
+  public List<akjf> getCoverList()
   {
     return this.mInfos;
   }
   
-  protected void initVerifyFlag(ajnr paramajnr)
+  protected void initVerifyFlag(akjf paramakjf)
   {
-    TroopInfo localTroopInfo = ((TroopManager)this.mApp.getManager(52)).b(this.mTroopInfo.troopuin);
+    TroopInfo localTroopInfo = ((TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.mTroopInfo.troopuin);
     if ((localTroopInfo != null) && ((localTroopInfo.troopTypeExt == 2) || (localTroopInfo.troopTypeExt == 4)) && (localTroopInfo.isAdmin()))
     {
-      paramajnr.jdField_c_of_type_Boolean = true;
+      paramakjf.jdField_c_of_type_Boolean = true;
       if ((!this.mApp.getPreferences().getBoolean("has_shown_same_city_picture_uploaded_dialog", false)) && (this.mActivity != null) && (!this.mActivity.isFinishing()))
       {
-        bfur.a(this.mActivity, 230, null, this.mActivity.getString(2131695566), null, this.mActivity.getString(2131695556), new bfvf(), null).show();
+        bhdj.a(this.mActivity, 230, null, this.mActivity.getString(2131695818), null, this.mActivity.getString(2131695808), new bhdx(), null).show();
         this.mApp.getPreferences().edit().putBoolean("has_shown_same_city_picture_uploaded_dialog", true).commit();
       }
     }
@@ -256,11 +258,11 @@ public class TroopPhotoController
     return this.mUploadPaths.size() == 0;
   }
   
-  protected void notifyAdd(ajnr paramajnr)
+  protected void notifyAdd(akjf paramakjf)
   {
     Iterator localIterator = this.mOnDataChangeListeners.iterator();
     while (localIterator.hasNext()) {
-      ((TroopPhotoController.OnDataChangeListener)localIterator.next()).onAddItem(paramajnr);
+      ((TroopPhotoController.OnDataChangeListener)localIterator.next()).onAddItem(paramakjf);
     }
   }
   
@@ -277,11 +279,11 @@ public class TroopPhotoController
     }
   }
   
-  protected void notifyDel(ajnr paramajnr)
+  protected void notifyDel(akjf paramakjf)
   {
     Iterator localIterator = this.mOnDataChangeListeners.iterator();
     while (localIterator.hasNext()) {
-      ((TroopPhotoController.OnDataChangeListener)localIterator.next()).onDelItem(paramajnr);
+      ((TroopPhotoController.OnDataChangeListener)localIterator.next()).onDelItem(paramakjf);
     }
     if (this.mSelectPos >= this.mInfos.size())
     {
@@ -298,28 +300,28 @@ public class TroopPhotoController
     }
   }
   
-  protected void notifyUpdate(ajnr paramajnr, bfed parambfed)
+  protected void notifyUpdate(akjf paramakjf, bgmj parambgmj)
   {
     Iterator localIterator = this.mOnDataChangeListeners.iterator();
     while (localIterator.hasNext()) {
-      ((TroopPhotoController.OnDataChangeListener)localIterator.next()).onUpdateItem(paramajnr, parambfed);
+      ((TroopPhotoController.OnDataChangeListener)localIterator.next()).onUpdateItem(paramakjf, parambgmj);
     }
   }
   
   public void onDeleteItem(int paramInt)
   {
-    Object localObject = (ajnr)this.mInfos.get(paramInt);
+    Object localObject = (akjf)this.mInfos.get(paramInt);
     ArrayList localArrayList;
-    if (beyx.b(((ajnr)localObject).jdField_c_of_type_JavaLangString))
+    if (bghb.b(((akjf)localObject).jdField_c_of_type_JavaLangString))
     {
-      bcef.b(this.mApp, "P_CliOper", "Grp_set", "", "Grp_Admin_data", "del_head", 0, 0, this.mTroopInfo.troopuin, "", "", "");
+      bdla.b(this.mApp, "P_CliOper", "Grp_set", "", "Grp_Admin_data", "del_head", 0, 0, this.mTroopInfo.troopuin, "", "", "");
       localArrayList = new ArrayList();
-      localArrayList.add(Integer.valueOf(((ajnr)localObject).jdField_c_of_type_JavaLangString));
+      localArrayList.add(Integer.valueOf(((akjf)localObject).jdField_c_of_type_JavaLangString));
       this.mManger.a(this.mTroopInfo.troopuin, 2, localArrayList);
     }
     this.mInfos.remove(localObject);
-    notifyDel((ajnr)localObject);
-    if ((((ajnr)localObject).jdField_b_of_type_Int == 1) && (!TextUtils.isEmpty(((ajnr)localObject).jdField_c_of_type_JavaLangString)) && (beyx.b(((ajnr)localObject).jdField_c_of_type_JavaLangString)))
+    notifyDel((akjf)localObject);
+    if ((((akjf)localObject).jdField_b_of_type_Int == 1) && (!TextUtils.isEmpty(((akjf)localObject).jdField_c_of_type_JavaLangString)) && (bghb.b(((akjf)localObject).jdField_c_of_type_JavaLangString)))
     {
       localArrayList = new ArrayList();
       localArrayList.addAll(this.mTroopInfo.mTroopPicList);
@@ -329,7 +331,7 @@ public class TroopPhotoController
         if (localIterator.hasNext())
         {
           TroopClipPic localTroopClipPic = (TroopClipPic)localIterator.next();
-          if (((ajnr)localObject).jdField_c_of_type_JavaLangString.equals(localTroopClipPic.id))
+          if (((akjf)localObject).jdField_c_of_type_JavaLangString.equals(localTroopClipPic.id))
           {
             localArrayList.remove(localTroopClipPic);
             paramInt = 1;
@@ -338,7 +340,7 @@ public class TroopPhotoController
             {
               this.mTroopInfo.mTroopPicList.clear();
               this.mTroopInfo.mTroopPicList.addAll(localArrayList);
-              this.mTroopInfo.mTroopVerifyingPics.remove(((ajnr)localObject).jdField_c_of_type_JavaLangString);
+              this.mTroopInfo.mTroopVerifyingPics.remove(((akjf)localObject).jdField_c_of_type_JavaLangString);
             }
           }
         }
@@ -348,7 +350,7 @@ public class TroopPhotoController
     {
       if ((this.mApp != null) && (i != 0))
       {
-        localObject = (TroopManager)this.mApp.getManager(52);
+        localObject = (TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER);
         if (localObject != null) {
           ThreadManager.post(new TroopPhotoController.6(this, (TroopManager)localObject), 8, null, false);
         }
@@ -376,15 +378,15 @@ public class TroopPhotoController
     if (QLog.isColorLevel()) {
       QLog.i("TroopPhotoController", 2, "onInsertAvatarFailed " + paramInt);
     }
-    showToast(ajpz.a(BaseApplicationImpl.getContext(), -1));
+    showToast(akln.a(BaseApplicationImpl.getContext(), -1));
     Iterator localIterator = this.mInfos.iterator();
     while (localIterator.hasNext())
     {
-      ajnr localajnr = (ajnr)localIterator.next();
-      if ((localajnr.jdField_b_of_type_Int == 2) || (localajnr.jdField_a_of_type_Boolean))
+      akjf localakjf = (akjf)localIterator.next();
+      if ((localakjf.jdField_b_of_type_Int == 2) || (localakjf.jdField_a_of_type_Boolean))
       {
         localIterator.remove();
-        notifyDel(localajnr);
+        notifyDel(localakjf);
       }
     }
     this.mUploadPaths.clear();
@@ -418,7 +420,7 @@ public class TroopPhotoController
       localTroopClipPic.type = this.mType;
       localTroopClipPic.ts = SystemClock.uptimeMillis();
     } while (this.mInfos.size() >= 7);
-    paramString1 = new ajnr();
+    paramString1 = new akjf();
     paramString1.jdField_b_of_type_JavaLangString = localTroopClipPic.id;
     paramString1.jdField_d_of_type_JavaLangString = localTroopClipPic.clipInfo;
     paramString1.jdField_b_of_type_Int = 2;
@@ -445,7 +447,7 @@ public class TroopPhotoController
       if (i == 0) {
         startUpload();
       }
-      bcef.b(this.mApp, "P_CliOper", "Grp_set", "", "Grp_moredata", "upload_head", 0, 0, this.mTroopInfo.troopuin, "", "", "");
+      bdla.b(this.mApp, "P_CliOper", "Grp_set", "", "Grp_moredata", "upload_head", 0, 0, this.mTroopInfo.troopuin, "", "", "");
       return true;
       paramString1 = (TroopPhotoController.OnUploadListener)this.mOnUploadListener.get();
       break;
@@ -465,7 +467,7 @@ public class TroopPhotoController
       for (boolean bool = true;; bool = false)
       {
         buildAndShowAlertWindow(bool);
-        bcef.b(this.mApp, "dc00899", "Grp_certified", "", "data", "exp_edit_head", 3, 0, this.mTroopInfo.troopuin, "", "", "");
+        bdla.b(this.mApp, "dc00899", "Grp_certified", "", "data", "exp_edit_head", 3, 0, this.mTroopInfo.troopuin, "", "", "");
         return;
       }
     }
@@ -483,24 +485,24 @@ public class TroopPhotoController
     if (this.mMenuItems == null) {
       this.mMenuItems = this.mActivity.getResources().getStringArray(2130968636);
     }
-    bjnw localbjnw = (bjnw)bjon.a(this.mActivity, null);
+    bkzi localbkzi = (bkzi)bkzz.a(this.mActivity, null);
     i = j;
     if (i < this.mCurShowItemIndex.length)
     {
       if (this.mCurShowItemIndex[i] == 16) {
-        localbjnw.d(this.mMenuItems[this.mCurShowItemIndex[i]]);
+        localbkzi.d(this.mMenuItems[this.mCurShowItemIndex[i]]);
       }
       for (;;)
       {
         i += 1;
         break;
         if ((this.mCurShowItemIndex[i] >= 0) && (this.mCurShowItemIndex[i] < this.mMenuItems.length)) {
-          localbjnw.a(this.mMenuItems[this.mCurShowItemIndex[i]], 1);
+          localbkzi.a(this.mMenuItems[this.mCurShowItemIndex[i]], 1);
         }
       }
     }
-    localbjnw.a(new TroopPhotoController.5(this, localbjnw));
-    localbjnw.show();
+    localbkzi.a(new TroopPhotoController.5(this, localbkzi));
+    localbkzi.show();
   }
   
   public void onSnapShotBack()
@@ -508,9 +510,9 @@ public class TroopPhotoController
     if (uploadPhotoUri != null)
     {
       Object localObject = uploadPhotoUri;
-      localObject = bfvo.b(this.mActivity, (Uri)localObject);
+      localObject = bheg.b(this.mActivity, (Uri)localObject);
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        ajpz.a(this.mActivity, (String)localObject, ajpz.d(this.mType));
+        akln.a(this.mActivity, (String)localObject, akln.d(this.mType));
       }
     }
   }
@@ -529,30 +531,30 @@ public class TroopPhotoController
       if (this.mTroopInfo != null)
       {
         localObject1 = new ArrayList();
-        ajpz.a((List)localObject1, this.mTroopInfo);
+        akln.a((List)localObject1, this.mTroopInfo);
         Object localObject2 = this.mManger.a();
         if (localObject2 != null)
         {
           localObject2 = ((List)localObject2).iterator();
           while (((Iterator)localObject2).hasNext())
           {
-            bfef localbfef = (bfef)((Iterator)localObject2).next();
-            if ((localbfef != null) && (localbfef.jdField_b_of_type_Int != 1)) {
+            bgml localbgml = (bgml)((Iterator)localObject2).next();
+            if ((localbgml != null) && (localbgml.jdField_b_of_type_Int != 1)) {
               if (((List)localObject1).size() == 7)
               {
                 ((Iterator)localObject2).remove();
               }
               else
               {
-                ajnr localajnr = new ajnr();
-                localajnr.jdField_b_of_type_JavaLangString = localbfef.jdField_a_of_type_JavaLangString;
-                localajnr.jdField_c_of_type_Int = localbfef.jdField_a_of_type_Int;
-                localajnr.jdField_d_of_type_Int = localbfef.jdField_b_of_type_Int;
-                localajnr.jdField_b_of_type_Int = 2;
-                localajnr.jdField_a_of_type_Boolean = true;
-                localajnr.jdField_a_of_type_Long = localbfef.jdField_a_of_type_Long;
-                localajnr.jdField_d_of_type_JavaLangString = localbfef.jdField_b_of_type_JavaLangString;
-                ((List)localObject1).add(localajnr);
+                akjf localakjf = new akjf();
+                localakjf.jdField_b_of_type_JavaLangString = localbgml.jdField_a_of_type_JavaLangString;
+                localakjf.jdField_c_of_type_Int = localbgml.jdField_a_of_type_Int;
+                localakjf.jdField_d_of_type_Int = localbgml.jdField_b_of_type_Int;
+                localakjf.jdField_b_of_type_Int = 2;
+                localakjf.jdField_a_of_type_Boolean = true;
+                localakjf.jdField_a_of_type_Long = localbgml.jdField_a_of_type_Long;
+                localakjf.jdField_d_of_type_JavaLangString = localbgml.jdField_b_of_type_JavaLangString;
+                ((List)localObject1).add(localakjf);
               }
             }
           }
@@ -628,10 +630,10 @@ public class TroopPhotoController
       while (paramArrayList.hasNext())
       {
         TroopClipPic localTroopClipPic = (TroopClipPic)paramArrayList.next();
-        ajnr localajnr = getItem(localTroopClipPic.ts);
-        if ((localajnr != null) && (!localajnr.jdField_b_of_type_Boolean))
+        akjf localakjf = getItem(localTroopClipPic.ts);
+        if ((localakjf != null) && (!localakjf.jdField_b_of_type_Boolean))
         {
-          localajnr.jdField_b_of_type_Boolean = true;
+          localakjf.jdField_b_of_type_Boolean = true;
           localArrayList.add(localTroopClipPic);
         }
       }
@@ -649,8 +651,8 @@ public class TroopPhotoController
         do
         {
           return;
-        } while (!(paramObject instanceof bfed));
-        paramObservable = (bfed)paramObject;
+        } while (!(paramObject instanceof bgmj));
+        paramObservable = (bgmj)paramObject;
       } while (paramObservable.jdField_d_of_type_Int != this.mType);
       paramObject = getItem(paramObservable.jdField_a_of_type_Long);
     } while (paramObject == null);
@@ -669,12 +671,12 @@ public class TroopPhotoController
       int i = paramObservable.jdField_b_of_type_Int;
       paramObservable = new TroopPhotoController.2(this, paramObservable, paramObject, i);
       this.handler.post(paramObservable);
-      ajpz.a(i, paramObject.jdField_b_of_type_JavaLangString, this.mTroopInfo.troopuin);
+      akln.a(i, paramObject.jdField_b_of_type_JavaLangString, this.mTroopInfo.troopuin);
       return;
     }
-    bcef.b(this.mApp, "P_CliOper", "Grp_set", "", "Grp_Admin_data", "upload_head_cancel", 0, 0, this.mTroopInfo.troopuin, String.valueOf(paramObservable.jdField_b_of_type_Int), "", "");
+    bdla.b(this.mApp, "P_CliOper", "Grp_set", "", "Grp_Admin_data", "upload_head_cancel", 0, 0, this.mTroopInfo.troopuin, String.valueOf(paramObservable.jdField_b_of_type_Int), "", "");
     if (TextUtils.isEmpty(paramObservable.jdField_a_of_type_JavaLangString)) {}
-    for (paramObservable = ajpz.a(this.mActivity, paramObservable.jdField_b_of_type_Int);; paramObservable = paramObservable.jdField_a_of_type_JavaLangString)
+    for (paramObservable = akln.a(this.mActivity, paramObservable.jdField_b_of_type_Int);; paramObservable = paramObservable.jdField_a_of_type_JavaLangString)
     {
       if (QLog.isColorLevel()) {
         QLog.i("TroopPhotoController", 2, String.format("update() failed info=%s", new Object[] { paramObject }));
@@ -685,46 +687,46 @@ public class TroopPhotoController
     }
   }
   
-  protected boolean update2DB(int paramInt, ajnr paramajnr)
+  protected boolean update2DB(int paramInt, akjf paramakjf)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("TroopPhotoController", 2, String.format("update2DB picId=%d info=%s", new Object[] { Integer.valueOf(paramInt), paramajnr }));
+      QLog.i("TroopPhotoController", 2, String.format("update2DB picId=%d info=%s", new Object[] { Integer.valueOf(paramInt), paramakjf }));
     }
     ArrayList localArrayList = new ArrayList();
     HashSet localHashSet = new HashSet();
     Object localObject = this.mInfos.iterator();
     int i = 0;
-    ajnr localajnr;
+    akjf localakjf;
     String str;
     while (((Iterator)localObject).hasNext())
     {
-      localajnr = (ajnr)((Iterator)localObject).next();
-      if (localajnr != null) {
-        str = localajnr.jdField_c_of_type_JavaLangString;
+      localakjf = (akjf)((Iterator)localObject).next();
+      if (localakjf != null) {
+        str = localakjf.jdField_c_of_type_JavaLangString;
       }
     }
-    label439:
+    label440:
     for (;;)
     {
       try
       {
         j = Integer.parseInt(str);
         if ((str == null) || (j < 0)) {
-          break label439;
+          break label440;
         }
-        if (localajnr.jdField_b_of_type_Int == 1)
+        if (localakjf.jdField_b_of_type_Int == 1)
         {
           TroopClipPic localTroopClipPic = new TroopClipPic();
           localTroopClipPic.id = str;
-          localTroopClipPic.clipInfo = localajnr.jdField_d_of_type_JavaLangString;
-          localTroopClipPic.type = localajnr.jdField_d_of_type_Int;
+          localTroopClipPic.clipInfo = localakjf.jdField_d_of_type_JavaLangString;
+          localTroopClipPic.type = localakjf.jdField_d_of_type_Int;
           localArrayList.add(localTroopClipPic);
-          if (localajnr.jdField_c_of_type_Boolean) {
+          if (localakjf.jdField_c_of_type_Boolean) {
             localHashSet.add(str);
           }
         }
         if (!str.equals(String.valueOf(paramInt))) {
-          break label439;
+          break label440;
         }
         i = 1;
       }
@@ -735,34 +737,34 @@ public class TroopPhotoController
       }
       if (i != 0)
       {
-        this.mInfos.remove(paramajnr);
-        notifyDel(paramajnr);
+        this.mInfos.remove(paramakjf);
+        notifyDel(paramakjf);
         return false;
       }
-      paramajnr.jdField_c_of_type_JavaLangString = String.valueOf(paramInt);
-      paramajnr.jdField_b_of_type_Int = 1;
-      paramajnr.jdField_a_of_type_Boolean = false;
+      paramakjf.jdField_c_of_type_JavaLangString = String.valueOf(paramInt);
+      paramakjf.jdField_b_of_type_Int = 1;
+      paramakjf.jdField_a_of_type_Boolean = false;
       localObject = new TroopClipPic();
-      ((TroopClipPic)localObject).id = paramajnr.jdField_c_of_type_JavaLangString;
-      ((TroopClipPic)localObject).type = paramajnr.jdField_d_of_type_Int;
-      ((TroopClipPic)localObject).clipInfo = paramajnr.jdField_d_of_type_JavaLangString;
+      ((TroopClipPic)localObject).id = paramakjf.jdField_c_of_type_JavaLangString;
+      ((TroopClipPic)localObject).type = paramakjf.jdField_d_of_type_Int;
+      ((TroopClipPic)localObject).clipInfo = paramakjf.jdField_d_of_type_JavaLangString;
       localArrayList.add(localObject);
-      if (paramajnr.jdField_c_of_type_Boolean) {
-        localHashSet.add(paramajnr.jdField_c_of_type_JavaLangString);
+      if (paramakjf.jdField_c_of_type_Boolean) {
+        localHashSet.add(paramakjf.jdField_c_of_type_JavaLangString);
       }
       if (this.mApp != null)
       {
-        paramajnr = (TroopManager)this.mApp.getManager(52);
-        if (paramajnr != null)
+        paramakjf = (TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER);
+        if (paramakjf != null)
         {
-          localObject = paramajnr.b(String.valueOf(this.mTroopInfo.troopuin));
+          localObject = paramakjf.b(String.valueOf(this.mTroopInfo.troopuin));
           if ((localObject != null) && (localArrayList.size() > 0))
           {
             ((TroopInfo)localObject).mTroopPicList.clear();
             ((TroopInfo)localObject).mTroopPicList.addAll(localArrayList);
             ((TroopInfo)localObject).mTroopVerifyingPics.clear();
             ((TroopInfo)localObject).mTroopVerifyingPics.addAll(localHashSet);
-            ThreadManager.post(new TroopPhotoController.4(this, paramajnr, (TroopInfo)localObject), 8, null, false);
+            ThreadManager.post(new TroopPhotoController.4(this, paramakjf, (TroopInfo)localObject), 8, null, false);
           }
         }
       }
@@ -772,7 +774,7 @@ public class TroopPhotoController
   
   protected void updateTroopInfo()
   {
-    this.mTroopInfo = ((TroopManager)this.mApp.getManager(52)).b(String.valueOf(this.mTroopUin));
+    this.mTroopInfo = ((TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER)).b(String.valueOf(this.mTroopUin));
     this.mTroopInfoData = new TroopInfoData();
     this.mTroopInfoData.troopUin = this.mTroopUin;
     this.mTroopInfoData.updateForTroopChatSetting(this.mTroopInfo, this.mCtx.getResources(), this.mApp.getCurrentAccountUin());

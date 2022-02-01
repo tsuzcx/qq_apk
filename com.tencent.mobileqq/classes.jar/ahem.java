@@ -1,28 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-class ahem
-  implements View.OnClickListener
+public class ahem
+  implements wbt
 {
-  ahem(ahek paramahek) {}
+  long jdField_a_of_type_Long;
+  ahen jdField_a_of_type_Ahen;
+  String jdField_a_of_type_JavaLangString;
   
-  public void onClick(View paramView)
+  public void a(ahen paramahen, String paramString, long paramLong)
   {
-    if (!alvx.e()) {
-      ((alnr)this.a.app.getManager(153)).a().a(this.a.getCurFriendUin(), 319);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.tag, 2, "[onClick] click audio button too fast.");
-      }
-    }
+    this.jdField_a_of_type_Ahen = paramahen;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
+  
+  public void a(String paramString1, String paramString2, int paramInt) {}
+  
+  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt) {}
+  
+  public void b(String paramString1, String paramString2, int paramInt) {}
 }
 
 

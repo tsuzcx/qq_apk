@@ -1,50 +1,23 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.channel.pb.WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class atee
-  implements blfl<WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp>
+public class atee
+  implements View.OnClickListener
 {
-  atee(atdx paramatdx, TroopFileTransferManager paramTroopFileTransferManager, becp parambecp, FileManagerEntity paramFileManagerEntity) {}
+  public atee(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void a(int paramInt, String paramString, WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp paramCrossBidProxyCopyFileToOtherBidMsgRsp)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "sendWeiYun2Troop onFailed: errcode[" + paramInt + "], errmsg[" + paramString + "]");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.isReaded = false;
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_Becp.a, paramInt, null, paramString);
-  }
-  
-  public void a(WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp paramCrossBidProxyCopyFileToOtherBidMsgRsp)
-  {
-    paramCrossBidProxyCopyFileToOtherBidMsgRsp = new String(paramCrossBidProxyCopyFileToOtherBidMsgRsp.dst_path.get().toByteArray());
-    if (paramCrossBidProxyCopyFileToOtherBidMsgRsp.length() < 1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("WeiYunLogicCenter<FileAssistant>", 2, "sendWeiYun2Troop onSucceed,But uuid is null!!!");
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager != null) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_Becp.a, -1, null, amtj.a(2131715936));
-      }
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "sendWeiYun2Troop onSucceed, Uuid[" + paramCrossBidProxyCopyFileToOtherBidMsgRsp + "]");
-      }
-    } while (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager == null);
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_Becp.a, 0, paramCrossBidProxyCopyFileToOtherBidMsgRsp, null);
+    this.a.c.setVisibility(8);
+    arnw.a().a("");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atee
  * JD-Core Version:    0.7.0.1
  */

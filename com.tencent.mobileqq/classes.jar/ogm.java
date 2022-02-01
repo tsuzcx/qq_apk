@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.biz.pubaccount.CustomWebView;
 
 public class ogm
-  implements BusinessObserver
 {
-  public void a(Object paramObject) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public ogm(CustomWebView paramCustomWebView)
   {
-    switch (paramInt)
-    {
-    case 2: 
-    default: 
-      return;
-    }
-    a(paramObject);
+    this.jdField_a_of_type_Int = 1;
   }
 }
 

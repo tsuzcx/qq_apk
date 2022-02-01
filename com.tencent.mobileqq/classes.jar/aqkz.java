@@ -1,90 +1,33 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
 
 public class aqkz
+  implements View.OnTouchListener
 {
-  private int a;
-  private int b;
-  private int c;
-  private int d;
+  public aqkz(ClearEllipsisEditText paramClearEllipsisEditText) {}
   
-  public static aqkz a(aptx[] paramArrayOfaptx)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramArrayOfaptx == null) || (paramArrayOfaptx.length <= 0)) {
-      paramArrayOfaptx = null;
-    }
-    aqkz localaqkz;
+    if (this.a.getCompoundDrawables()[2] == null) {}
     for (;;)
     {
-      return paramArrayOfaptx;
-      localaqkz = new aqkz();
-      try
+      return false;
+      if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - ClearEllipsisEditText.a(this.a).getIntrinsicWidth()) {}
+      for (int i = 1; (paramMotionEvent.getAction() == 0) && (i != 0); i = 0)
       {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfaptx[0].a);
-        if (localJSONObject.has("flag"))
-        {
-          localaqkz.d = localJSONObject.getInt("flag");
-          if (QLog.isColorLevel()) {
-            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips flag = " + localaqkz.d);
-          }
-        }
-        if (localJSONObject.has("showCount"))
-        {
-          localaqkz.c = localJSONObject.getInt("showCount");
-          if (QLog.isColorLevel()) {
-            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips showCount = " + localaqkz.c);
-          }
-        }
-        if (localJSONObject.has("groupFlag"))
-        {
-          localaqkz.b = localJSONObject.getInt("groupFlag");
-          if (QLog.isColorLevel()) {
-            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips groupFlag = " + localaqkz.b);
-          }
-        }
-        paramArrayOfaptx = localaqkz;
-        if (localJSONObject.has("groupShowCount"))
-        {
-          localaqkz.a = localJSONObject.getInt("groupShowCount");
-          paramArrayOfaptx = localaqkz;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips groupShowCount = " + localaqkz.a);
-            return localaqkz;
-          }
-        }
-      }
-      catch (Exception paramArrayOfaptx)
-      {
-        QLog.e("TencentDocStructMsgGrayTipsConfigBean", 1, "handleDocsStructMsgGrayTips e " + paramArrayOfaptx.toString());
+        this.a.setText("");
+        this.a.setClearButtonVisible(false);
+        return true;
       }
     }
-    return localaqkz;
-  }
-  
-  public int a()
-  {
-    return this.a;
-  }
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
-  public int c()
-  {
-    return this.c;
-  }
-  
-  public int d()
-  {
-    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqkz
  * JD-Core Version:    0.7.0.1
  */

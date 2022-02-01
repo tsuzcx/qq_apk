@@ -1,40 +1,27 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.widget.StoryCoverView;
-import java.util.ArrayList;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-class xuk
-  extends xqa
+public final class xuk
+  implements URLDrawable.URLDrawableListener
 {
-  xuk(xuh paramxuh, boolean paramBoolean) {}
+  public xuk(ImageView paramImageView, Drawable paramDrawable) {}
   
-  public void a(int paramInt, View paramView, Object paramObject, xsh paramxsh)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (paramView == paramxsh.a()) {
-      xuh.a(this.jdField_a_of_type_Xuh, paramInt, (StoryVideoItem)xuh.a(this.jdField_a_of_type_Xuh).a().get(paramInt), paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "iconDrawable onLoadFialed, exception: " + QLog.getStackTraceString(paramThrowable));
     }
-    do
-    {
-      return;
-      if (paramView == paramxsh.a(2131374427))
-      {
-        paramView = (StoryCoverView)paramxsh.a(2131374426);
-        if (this.jdField_a_of_type_Boolean)
-        {
-          xuh.a(this.jdField_a_of_type_Xuh, paramInt, (StoryVideoItem)xuh.a(this.jdField_a_of_type_Xuh).a().get(paramInt), paramView);
-          return;
-        }
-        xuh.b(this.jdField_a_of_type_Xuh, paramInt, (StoryVideoItem)xuh.a(this.jdField_a_of_type_Xuh).a().get(paramInt), paramView);
-        return;
-      }
-      if ((paramView == paramxsh.a(2131374482)) || (paramView == paramxsh.a(2131374429)))
-      {
-        xuh.a(this.jdField_a_of_type_Xuh, paramInt, (StoryVideoItem)xuh.a(this.jdField_a_of_type_Xuh).a().get(paramInt));
-        return;
-      }
-    } while (paramView != paramxsh.a(2131374478));
-    this.jdField_a_of_type_Xuh.a(paramxsh, paramInt);
   }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
 }
 
 

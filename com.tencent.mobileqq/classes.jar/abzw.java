@@ -1,20 +1,20 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter.Params;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import java.lang.ref.WeakReference;
 
-public class abzw
-  implements abzb
+class abzw
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  abzw(abzv paramabzv, AdQQMINIProgramAdapter.Params paramParams, GdtAd paramGdtAd) {}
+  
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    paramabxc = paramabxc.a();
-    paramArrayOfByte = paramMsgType0x210.vProtobuf;
-    if (paramMsgType0x210.uSubMsgType == 290L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      aucg.a(paramabxc, paramArrayOfByte, paramMsgInfo, bool);
-      return null;
-    }
+    acho.b("GdtQQMINIProgramAdapter", String.format("onLaunchResult %b", new Object[] { Boolean.valueOf(paramBoolean) }));
+    AdReporterForAnalysis.reportForLaunchQQMINIProgramEND((Context)this.jdField_a_of_type_ComTencentAdTangramMiniAdQQMINIProgramAdapter$Params.context.get(), this.jdField_a_of_type_ComTencentGdtadAditemGdtAd, paramBoolean);
   }
 }
 

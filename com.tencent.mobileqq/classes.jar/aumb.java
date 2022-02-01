@@ -1,19 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.intervideo.IVPluginInfo;
+import com.tencent.mobileqq.flashchat.FlashChatItem;
 
-public final class aumb
-  implements Parcelable.Creator<IVPluginInfo>
+public class aumb
 {
-  public IVPluginInfo a(Parcel paramParcel)
-  {
-    return new IVPluginInfo(paramParcel);
-  }
-  
-  public IVPluginInfo[] a(int paramInt)
-  {
-    return new IVPluginInfo[paramInt];
-  }
+  public int a;
+  public FlashChatItem a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
 }
 
 

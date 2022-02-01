@@ -2,6 +2,7 @@ package com.tencent.mobileqq.loginwelcome;
 
 import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 class LoginUserGuideHelper$1$1
   implements Runnable
@@ -10,7 +11,7 @@ class LoginUserGuideHelper$1$1
   
   public void run()
   {
-    PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)this.this$0.a.getManager(11);
+    PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)this.this$0.a.getManager(QQManagerFactory.CONTACT_MANAGER);
     if (localPhoneContactManagerImp != null) {
       localPhoneContactManagerImp.j();
     }

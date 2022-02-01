@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import aeax;
+import aesb;
 
 public class QQSettingMe$35$1
   implements Runnable
 {
-  public QQSettingMe$35$1(aeax paramaeax) {}
+  public QQSettingMe$35$1(aesb paramaesb) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class QQSettingMe$35$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.35.1
  * JD-Core Version:    0.7.0.1
  */

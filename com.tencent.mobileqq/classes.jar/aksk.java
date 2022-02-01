@@ -1,18 +1,23 @@
-import android.hardware.Camera;
-import android.hardware.Camera.Face;
-import android.hardware.Camera.FaceDetectionListener;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKuaKuaFragment;
 
 public class aksk
-  implements Camera.FaceDetectionListener
+  implements Animator.AnimatorListener
 {
-  public aksk(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public aksk(RedPacketKuaKuaFragment paramRedPacketKuaKuaFragment) {}
   
-  public void onFaceDetection(Camera.Face[] paramArrayOfFace, Camera paramCamera)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {}
+    RedPacketKuaKuaFragment.a(this.a).setRotation(0.0F);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

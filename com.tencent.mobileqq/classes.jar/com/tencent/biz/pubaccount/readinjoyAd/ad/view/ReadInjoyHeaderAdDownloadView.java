@@ -52,34 +52,18 @@ public class ReadInjoyHeaderAdDownloadView
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
     addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress, localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_c_of_type_Int = 2130841810;
+    this.jdField_c_of_type_Int = 2130841823;
     this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(this.jdField_c_of_type_Int);
     localLayoutParams = new FrameLayout.LayoutParams(AIOUtils.dp2px(13.0F, getResources()), AIOUtils.dp2px(16.0F, getResources()));
     localLayoutParams.gravity = 17;
     addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
     this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_b_of_type_Int = 2130841812;
+    this.jdField_b_of_type_Int = 2130841825;
     this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(this.jdField_b_of_type_Int);
     paramContext = new FrameLayout.LayoutParams(-1, -1);
     addView(this.jdField_b_of_type_AndroidWidgetImageView, paramContext);
     this.d = 0;
     a(0, 0);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Int != 1)
-    {
-      this.jdField_a_of_type_Int = 1;
-      a(1, paramInt);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.setProgress(paramInt);
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -129,7 +113,7 @@ public class ReadInjoyHeaderAdDownloadView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInjoyHeaderAdDownloadView
  * JD-Core Version:    0.7.0.1
  */

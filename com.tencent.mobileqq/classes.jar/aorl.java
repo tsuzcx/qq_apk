@@ -1,23 +1,36 @@
-import android.os.Bundle;
-import java.util.ArrayList;
+import android.content.res.Resources;
+import android.content.res.Resources.NotFoundException;
+import com.tencent.qphone.base.util.QLog;
 
-final class aorl
-  extends aoso
+public class aorl
+  extends Resources
 {
-  aorl(ArrayList paramArrayList) {}
+  private aorp a;
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public aorl(aorp paramaorp)
   {
-    if (paramBoolean)
+    super(paramaorp.b().getAssets(), paramaorp.b().getDisplayMetrics(), paramaorp.b().getConfiguration());
+    this.a = paramaorp;
+  }
+  
+  public CharSequence getText(int paramInt)
+  {
+    int i = this.a.a(paramInt);
+    try
     {
-      int i = paramBundle.getInt("mode", -1);
-      this.a.add(Integer.valueOf(i));
+      CharSequence localCharSequence = this.a.a().getText(i);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("MultiLanguageEngine", 4, new Object[] { "getText delegate:", Integer.valueOf(paramInt), " ,langId:", Integer.valueOf(i), " ,content:" + localCharSequence });
+      }
+      return localCharSequence;
     }
+    catch (Resources.NotFoundException localNotFoundException) {}
+    return this.a.b().getText(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aorl
  * JD-Core Version:    0.7.0.1
  */

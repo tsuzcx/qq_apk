@@ -1,13 +1,25 @@
 package com.tencent.qqmini.sdk.runtime;
 
 class AppUIProxy$4
-  extends AppRuntimeEventCenter.RuntimeStateObserver
+  implements Runnable
 {
   AppUIProxy$4(AppUIProxy paramAppUIProxy) {}
   
-  public void onStateChange(AppRuntimeEventCenter.MiniAppStateMessage paramMiniAppStateMessage)
+  public void run()
   {
-    if (paramMiniAppStateMessage.what == 11) {
+    if (this.this$0.mCurrRuntimeLoader != null)
+    {
+      if (this.this$0.mCurrRuntimeLoader.dismissLoadingAfterLoaded()) {
+        break label87;
+      }
+      this.this$0.mCurrRuntimeLoader.addRuntimeStateObserver(new AppUIProxy.4.1(this));
+    }
+    for (;;)
+    {
+      this.this$0.mCurrRuntimeLoader.startLoadMiniAppContent(this.this$0.mCurrRuntimeLoader.needReloadPage());
+      this.this$0.mCurrRuntimeLoader.onAttachActivity(this.this$0.mActivity, null, this.this$0.mRootLayout);
+      return;
+      label87:
       this.this$0.hideLoading();
     }
   }

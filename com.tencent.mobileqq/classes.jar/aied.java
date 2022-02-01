@@ -1,49 +1,23 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import org.json.JSONObject;
 
-public class aied
-  extends aiea
-  implements View.OnClickListener
+class aied
+  implements bghi
 {
-  public aied(Context paramContext, QQAppInterface paramQQAppInterface, aifw paramaifw, aigo paramaigo)
-  {
-    super(paramContext, paramQQAppInterface, paramaifw, paramaigo);
-  }
+  aied(aido paramaido) {}
   
-  public View a(int paramInt, View paramView)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    View localView;
-    if (paramView != null)
-    {
-      localView = paramView;
-      if ((paramView.getTag() instanceof aiee)) {}
+    if (paramJSONObject == null) {}
+    while (paramJSONObject.optInt("retcode", -1) != 0) {
+      return;
     }
-    else
-    {
-      localView = LayoutInflater.from(this.a).inflate(2131561485, null);
-    }
-    localView.setOnClickListener(this);
-    localView.setTag(new aiee());
-    return localView;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendBindContactGuideBuilder", 2, "start PhoneLaunchActivity");
-    }
-    Intent localIntent = new Intent(paramView.getContext(), BindNumberActivity.class);
-    localIntent.putExtra("kSrouce", 15);
-    ((Activity)paramView.getContext()).startActivityForResult(localIntent, 230);
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramJSONObject = (bgiy)this.a.app.getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER);
+    paramInt = paramJSONObject.a(this.a.sessionInfo.curFriendUin);
+    paramJSONObject.a(this.a.sessionInfo.curFriendUin, 0, paramInt & 0xF);
   }
 }
 

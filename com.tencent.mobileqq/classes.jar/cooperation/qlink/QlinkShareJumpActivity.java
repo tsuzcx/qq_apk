@@ -1,7 +1,6 @@
 package cooperation.qlink;
 
 import Override;
-import amtj;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
@@ -11,17 +10,18 @@ import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import aslg;
-import bfur;
-import bjmp;
-import bkmt;
-import bkno;
-import bknp;
-import bknq;
-import bknr;
-import bkns;
-import bknt;
-import bknu;
+import anvx;
+import atpm;
+import bhdj;
+import bkyc;
+import blyb;
+import blyw;
+import blyx;
+import blyy;
+import blyz;
+import blza;
+import blzb;
+import blzc;
 import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 import com.tencent.mobileqq.activity.LoginActivity;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -46,9 +46,9 @@ public class QlinkShareJumpActivity
   private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
   private String jdField_a_of_type_JavaLangString;
   private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bjmp(Looper.getMainLooper(), this);
+  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bkyc(Looper.getMainLooper(), this);
   private boolean jdField_a_of_type_Boolean;
-  private String b = amtj.a(2131709128);
+  private String b = anvx.a(2131709475);
   
   /* Error */
   private String a(Uri paramUri)
@@ -161,7 +161,7 @@ public class QlinkShareJumpActivity
     //   232: ifne +26 -> 258
     //   235: aload_0
     //   236: ldc 149
-    //   238: invokestatic 25	amtj:a	(I)Ljava/lang/String;
+    //   238: invokestatic 25	anvx:a	(I)Ljava/lang/String;
     //   241: putfield 27	cooperation/qlink/QlinkShareJumpActivity:b	Ljava/lang/String;
     //   244: aload 6
     //   246: ifnull +10 -> 256
@@ -183,7 +183,7 @@ public class QlinkShareJumpActivity
     //   280: invokestatic 73	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   283: aload_0
     //   284: ldc 156
-    //   286: invokestatic 25	amtj:a	(I)Ljava/lang/String;
+    //   286: invokestatic 25	anvx:a	(I)Ljava/lang/String;
     //   289: putfield 27	cooperation/qlink/QlinkShareJumpActivity:b	Ljava/lang/String;
     //   292: aload 6
     //   294: ifnull +10 -> 304
@@ -197,7 +197,7 @@ public class QlinkShareJumpActivity
     //   312: ifle +30 -> 342
     //   315: aload_0
     //   316: ldc 159
-    //   318: invokestatic 25	amtj:a	(I)Ljava/lang/String;
+    //   318: invokestatic 25	anvx:a	(I)Ljava/lang/String;
     //   321: putfield 27	cooperation/qlink/QlinkShareJumpActivity:b	Ljava/lang/String;
     //   324: aload_1
     //   325: invokevirtual 162	java/io/InputStream:close	()V
@@ -409,8 +409,8 @@ public class QlinkShareJumpActivity
     ThreadManager.post(new QlinkShareJumpActivity.5(this, paramString, paramInputStream, paramLong), 5, null, true);
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bfur.a(this, getString(2131691184), amtj.a(2131709131), new bkns(this));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new bknt(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bhdj.a(this, getString(2131691269), anvx.a(2131709478), new blza(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new blzb(this));
     }
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
   }
@@ -418,9 +418,9 @@ public class QlinkShareJumpActivity
   private void a(boolean paramBoolean)
   {
     if (paramBoolean) {}
-    for (String str = getString(2131697819);; str = getString(2131697820))
+    for (String str = getString(2131698102);; str = getString(2131698103))
     {
-      bfur.a(this, 230, getString(2131697775), str, 2131697768, 2131697768, new bknp(this), null).show();
+      bhdj.a(this, 230, getString(2131698058), str, 2131698051, 2131698051, new blyx(this), null).show();
       return;
     }
   }
@@ -478,7 +478,7 @@ public class QlinkShareJumpActivity
   private void b()
   {
     if (this.jdField_a_of_type_JavaUtilArrayList.size() > 50) {
-      bfur.a(this, 230, getString(2131697775), getString(2131697779), 2131697768, 2131697768, new bknq(this), null).show();
+      bhdj.a(this, 230, getString(2131698058), getString(2131698062), 2131698051, 2131698051, new blyy(this), null).show();
     }
     while ((a()) || (a(false))) {
       return;
@@ -488,13 +488,13 @@ public class QlinkShareJumpActivity
   
   private void b(String paramString)
   {
-    QQCustomDialog localQQCustomDialog = new QQCustomDialog(this, 2131755826);
-    localQQCustomDialog.setContentView(2131559016);
-    localQQCustomDialog.setTitle(getString(2131718947));
+    QQCustomDialog localQQCustomDialog = new QQCustomDialog(this, 2131755829);
+    localQQCustomDialog.setContentView(2131559043);
+    localQQCustomDialog.setTitle(getString(2131719342));
     localQQCustomDialog.setMessage(paramString);
     localQQCustomDialog.setCanceledOnTouchOutside(false);
     localQQCustomDialog.setCancelable(false);
-    localQQCustomDialog.setNegativeButton(getString(2131690599), new bknr(this));
+    localQQCustomDialog.setNegativeButton(getString(2131690676), new blyz(this));
     localQQCustomDialog.show();
   }
   
@@ -515,7 +515,7 @@ public class QlinkShareJumpActivity
       localBundle = new Bundle();
       localBundle.putStringArrayList("string_filepaths", this.jdField_a_of_type_JavaUtilArrayList);
       localArrayList = new ArrayList();
-      localArrayList.addAll(aslg.a());
+      localArrayList.addAll(atpm.a());
       if (localArrayList == null) {
         break label141;
       }
@@ -524,10 +524,10 @@ public class QlinkShareJumpActivity
     for (int i = localArrayList.size();; i = 0)
     {
       localBundle.putInt("string_beforeshare_selectedfile_count", i);
-      bkmt.a(this, 10, localBundle);
+      blyb.a(this, 10, localBundle);
       finish();
       return;
-      bfur.a(this, 230, getString(2131697775), getString(2131697820), 2131697768, 2131697768, new bknu(this), null).show();
+      bhdj.a(this, 230, getString(2131698058), getString(2131698103), 2131698051, 2131698051, new blzc(this), null).show();
       return;
     }
   }
@@ -596,7 +596,7 @@ public class QlinkShareJumpActivity
       catch (Exception paramBundle)
       {
         paramBundle.printStackTrace();
-        bfur.a(this, 230, getString(2131697775), getString(2131697820), 2131697768, 2131697768, new bkno(this), null).show();
+        bhdj.a(this, 230, getString(2131698058), getString(2131698103), 2131698051, 2131698051, new blyw(this), null).show();
         return false;
       }
       d();

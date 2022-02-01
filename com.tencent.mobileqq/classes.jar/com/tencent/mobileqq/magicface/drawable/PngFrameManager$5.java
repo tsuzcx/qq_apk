@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.magicface.drawable;
 
-import avkv;
+import awra;
 import java.util.HashMap;
 
 public class PngFrameManager$5
   implements Runnable
 {
-  public PngFrameManager$5(avkv paramavkv, long paramLong) {}
+  public PngFrameManager$5(awra paramawra, long paramLong) {}
   
   public void run()
   {

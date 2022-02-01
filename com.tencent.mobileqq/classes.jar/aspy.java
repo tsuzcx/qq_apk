@@ -1,18 +1,22 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
 
-public abstract interface aspy
+public class aspy
+  extends RecyclerView.AdapterDataObserver
 {
-  public abstract View a();
+  public aspy(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
   
-  public abstract void a(String paramString, Drawable paramDrawable1, Drawable paramDrawable2, View.OnClickListener paramOnClickListener);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract void b(boolean paramBoolean);
+  public void onChanged()
+  {
+    if (this.a.jdField_a_of_type_Asqk.a() == 0)
+    {
+      this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeItemDecoration(this.a.jdField_a_of_type_Asql);
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeItemDecoration(this.a.jdField_a_of_type_Asql);
+    this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(this.a.jdField_a_of_type_Asql);
+  }
 }
 
 

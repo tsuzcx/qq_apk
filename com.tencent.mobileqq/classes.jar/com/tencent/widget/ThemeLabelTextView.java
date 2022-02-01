@@ -5,14 +5,14 @@ import android.graphics.Canvas;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import bjuk;
-import bjul;
+import blfw;
+import blfx;
 
 public class ThemeLabelTextView
   extends TextView
-  implements bjul
+  implements blfx
 {
-  bjuk a;
+  blfw a;
   
   public ThemeLabelTextView(Context paramContext)
   {
@@ -64,10 +64,10 @@ public class ThemeLabelTextView
     if (paramBoolean)
     {
       if (this.a == null) {
-        this.a = new bjuk();
+        this.a = new blfw();
       }
       this.a.a(true);
-      setMaskShape(bjuk.c);
+      setMaskShape(blfw.c);
     }
     while (this.a == null) {
       return;

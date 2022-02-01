@@ -1,46 +1,34 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.open.agent.TroopAbilityUtils.1;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.vas.wallpaper.VipWallpaperService;
+import com.tencent.mobileqq.vas.wallpaper.WallpaperHelper;
+import com.tencent.mobileqq.vas.wallpaper.WallpaperHelper.ConfigChangeListener.1;
+import java.lang.ref.WeakReference;
 
 public class bhve
-  implements DialogInterface.OnClickListener
+  implements SharedPreferences.OnSharedPreferenceChangeListener
 {
-  public bhve(TroopAbilityUtils.1 param1) {}
+  private bhvc jdField_a_of_type_Bhvc;
+  private final WeakReference<WallpaperHelper> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bhve(WallpaperHelper paramWallpaperHelper)
   {
-    if (!this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-      paramDialogInterface.dismiss();
-    }
-    switch (paramInt)
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramWallpaperHelper);
+  }
+  
+  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
+  {
+    paramString = (WallpaperHelper)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramString != null)
     {
-    default: 
-      return;
-    }
-    for (;;)
-    {
-      try
+      paramSharedPreferences = VipWallpaperService.a(paramSharedPreferences);
+      if ((this.jdField_a_of_type_Bhvc == null) || (!this.jdField_a_of_type_Bhvc.equals(paramSharedPreferences)))
       {
-        paramDialogInterface = new Intent();
-        paramDialogInterface.addFlags(335544320);
-        if (this.a.jdField_a_of_type_Boolean)
-        {
-          paramDialogInterface.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=complete&response={\"ret\":0}", new Object[] { Long.valueOf(this.a.jdField_a_of_type_JavaLangString), this.a.b })));
-          paramDialogInterface.setPackage(this.a.c);
-          this.a.jdField_a_of_type_AndroidAppActivity.startActivity(paramDialogInterface);
-          return;
-        }
+        this.jdField_a_of_type_Bhvc = paramSharedPreferences;
+        ThreadManagerV2.getUIHandlerV2().post(new WallpaperHelper.ConfigChangeListener.1(this, paramString, paramSharedPreferences));
       }
-      catch (Exception paramDialogInterface)
-      {
-        QLog.e("TroopAbility.Utils", 1, "[startSdkCallback] startActivity failed, exception=", paramDialogInterface);
-        return;
-      }
-      paramDialogInterface.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=error", new Object[] { Long.valueOf(this.a.jdField_a_of_type_JavaLangString), this.a.b })));
     }
   }
 }

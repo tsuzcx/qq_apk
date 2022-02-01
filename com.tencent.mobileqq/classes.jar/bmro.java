@@ -1,373 +1,118 @@
 import android.app.Activity;
-import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.text.TextUtils;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.mobileqq.shortvideo.filter.FilterBusinessOperation;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
-import com.tencent.mobileqq.shortvideo.filter.QQPtColorFilter;
-import com.tencent.mobileqq.shortvideo.filter.QQPtColorFilterInfo;
-import com.tencent.mobileqq.shortvideo.resource.AVFilterResource;
-import com.tencent.mobileqq.shortvideo.resource.Resources;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sveffects.SdkContext;
-import dov.com.qq.im.ae.camera.core.AEFilterManagerHolder;
-import java.io.File;
+import android.util.Log;
+import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.BaseApplication;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.List<Lcom.tencent.mobileqq.richmedia.capture.data.FilterDesc;>;
+import mqq.app.MobileQQ;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bmro
-  extends bmrm
+  extends WebViewPlugin
 {
-  public float a;
-  bmrq jdField_a_of_type_Bmrq = new bmrq(this);
-  FilterDesc jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc;
-  
-  public bmro(FilterDesc paramFilterDesc)
+  public bmro()
   {
-    super(paramFilterDesc);
-    this.jdField_a_of_type_Float = -1.0F;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc = paramFilterDesc;
+    this.mPluginNameSpace = "Weiyun";
   }
   
-  public static int a(Context paramContext, List<FilterDesc> paramList, bmrz parambmrz, int paramInt)
+  public static boolean a(String paramString)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    if (paramInt == 0) {
-      a(paramContext, paramList);
-    }
-    do
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    try
     {
-      return 0;
-      if ((paramInt == 2) || (paramInt == 4))
+      if (TextUtils.isEmpty(paramString)) {
+        return bool1;
+      }
+      paramString = Uri.parse(paramString);
+      String str = paramString.getScheme();
+      if (("http".equalsIgnoreCase(str)) || ("https".equalsIgnoreCase(str)))
       {
-        if (paramInt == 2) {}
-        for (;;)
-        {
-          c(paramList, bool1);
-          return 0;
-          bool1 = false;
+        paramString = paramString.getHost();
+        bool1 = bool2;
+        if (TextUtils.isEmpty(paramString)) {
+          return bool1;
         }
-      }
-    } while ((paramInt != 1) && (paramInt != 3));
-    if (paramInt == 1) {}
-    for (bool1 = bool2;; bool1 = false)
-    {
-      b(paramList, bool1);
-      return 0;
-    }
-  }
-  
-  public static void a(Context paramContext, List<FilterDesc> paramList)
-  {
-    bnub localbnub = bnub.a();
-    QQFilterRenderManager localQQFilterRenderManager = blik.a(blik.b);
-    if ((localQQFilterRenderManager == null) && (AEFilterManagerHolder.getAEFilterManager() == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QCombo", 2, "applyFiltersForCapture QQFilterRenderManager null");
-      }
-      return;
-    }
-    paramContext = new ArrayList();
-    paramList = paramList.iterator();
-    label53:
-    FilterDesc localFilterDesc;
-    if (paramList.hasNext())
-    {
-      localFilterDesc = (FilterDesc)paramList.next();
-      if (localFilterDesc.name.equals("EMPTY"))
-      {
-        if (AEFilterManagerHolder.getAEFilterManager() == null) {
-          break label351;
-        }
-        AEFilterManagerHolder.getAEFilterManager().c(false);
-        AEFilterManagerHolder.getAEFilterManager().a(null);
-        paramContext = null;
-      }
-    }
-    for (;;)
-    {
-      label108:
-      int i;
-      if (QLog.isColorLevel())
-      {
-        paramList = new StringBuilder().append("applyFiltersForCapture filters:");
-        if (paramContext == null)
+        if (!paramString.contains("share.weiyun.com"))
         {
-          i = 0;
-          label133:
-          QLog.d("QCombo", 2, i);
+          bool1 = bool2;
+          if (!paramString.contains("h5.weiyun.com")) {
+            return bool1;
+          }
         }
       }
       else
       {
-        localbnub.a(null);
-        if (localQQFilterRenderManager != null) {
-          localQQFilterRenderManager.getBusinessOperation().setFilterEffectList(paramContext);
-        }
-        if ((AEFilterManagerHolder.getAEFilterManager() == null) || (paramContext == null) || (paramContext.size() <= 0)) {
-          break;
-        }
-        paramList = SdkContext.getInstance().getResources().getAvFilterResource().getFilterResPath();
-        paramContext = (FilterDesc)paramContext.get(0);
-        if (TextUtils.isEmpty(paramContext.resRootPath)) {
-          break label342;
-        }
+        Log.e("WeiyunJsPlugin", "Weiyun urlString is not url!");
+        return false;
       }
-      label342:
-      for (paramContext = paramContext.getResFold(paramContext.resRootPath);; paramContext = paramContext.getResFold(paramList))
+    }
+    catch (Exception paramString)
+    {
+      Log.e("WeiyunJsPlugin", "Weiyun exception: " + paramString);
+      return false;
+    }
+    bool1 = true;
+    return bool1;
+  }
+  
+  public WeiYunFileInfo a(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
+  {
+    WeiYunFileInfo localWeiYunFileInfo = new WeiYunFileInfo();
+    localWeiYunFileInfo.jdField_a_of_type_JavaLangString = paramString4;
+    localWeiYunFileInfo.c = paramString3;
+    localWeiYunFileInfo.jdField_a_of_type_Long = paramLong;
+    localWeiYunFileInfo.f = "FTN5K";
+    localWeiYunFileInfo.g = paramString2;
+    localWeiYunFileInfo.jdField_a_of_type_Int = 2;
+    localWeiYunFileInfo.e = bkyp.b(paramString1);
+    localWeiYunFileInfo.h = (bmub.b() + "/" + paramString3);
+    localWeiYunFileInfo.jdField_b_of_type_JavaLangString = ("FTN5K=" + paramString2);
+    localWeiYunFileInfo.jdField_b_of_type_Long = System.currentTimeMillis();
+    return localWeiYunFileInfo;
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    int i = 0;
+    if ((paramString2 == null) || (!paramString2.equalsIgnoreCase("Weiyun")) || (paramString3 == null)) {}
+    while ((this.mRuntime == null) || (this.mRuntime.a() == null) || (!paramString3.equals("createDownload"))) {
+      return false;
+    }
+    paramString1 = paramVarArgs[0];
+    try
+    {
+      paramJsBridgeListener = new ArrayList();
+      paramString1 = new JSONObject(paramString1);
+      if (paramString1.has("file_list"))
       {
-        paramList = QQPtColorFilter.getColorFilterInfo(paramContext);
-        if (paramList == null) {
-          break;
-        }
-        paramContext = paramContext + paramList.getColorPng();
-        if (!new File(paramContext).exists()) {
-          break;
-        }
-        AEFilterManagerHolder.getAEFilterManager().c(false);
-        AEFilterManagerHolder.getAEFilterManager().a(paramContext);
-        return;
-        if (localFilterDesc.id == 9)
+        paramString1 = paramString1.getJSONArray("file_list");
+        while (i < paramString1.length())
         {
-          paramContext.clear();
-          paramContext.add(localFilterDesc);
-          break label108;
-        }
-        paramContext.add(localFilterDesc);
-        break label53;
-        i = paramContext.size();
-        break label133;
-      }
-      label351:
-      paramContext = null;
-    }
-  }
-  
-  public static void a(List<FilterDesc> paramList, boolean paramBoolean)
-  {
-    bnub localbnub = bnub.a();
-    QQFilterRenderManager localQQFilterRenderManager = blik.a(blik.b);
-    if (localQQFilterRenderManager == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QCombo", 2, "applyFiltersForCapture QQFilterRenderManager null");
-      }
-      return;
-    }
-    Object localObject = new ArrayList();
-    paramList = paramList.iterator();
-    FilterDesc localFilterDesc;
-    if (paramList.hasNext())
-    {
-      localFilterDesc = (FilterDesc)paramList.next();
-      if (localFilterDesc.name.equals("EMPTY")) {
-        paramList = null;
-      }
-    }
-    for (;;)
-    {
-      label83:
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder().append("applyFiltersForCapture filters:");
-        if (paramList != null) {
-          break label181;
+          paramString2 = paramString1.getJSONObject(i);
+          paramString3 = paramString2.getString("url");
+          paramVarArgs = paramString2.getString("pack_name");
+          String str = paramString2.getString("file_id");
+          paramJsBridgeListener.add(a(paramString3, paramString2.getString("FTN5K"), paramVarArgs, str, paramString2.getLong("file_size")));
+          i += 1;
         }
       }
-      label181:
-      for (int i = 0;; i = paramList.size())
-      {
-        QLog.d("QCombo", 2, i);
-        localbnub.a(null);
-        localQQFilterRenderManager.getBusinessOperation().setFilterEffectList(paramList, paramBoolean);
-        return;
-        if (localFilterDesc.id == 9)
-        {
-          ((List)localObject).clear();
-          ((List)localObject).add(localFilterDesc);
-          paramList = (List<FilterDesc>)localObject;
-          break label83;
-        }
-        ((List)localObject).add(localFilterDesc);
-        break;
-      }
-      paramList = (List<FilterDesc>)localObject;
+      paramString1 = new Intent("com.weiyun.BROADCAST");
+      paramString1.setPackage(MobileQQ.getContext().getPackageName());
+      paramString1.putExtra("fileinfos", paramJsBridgeListener);
+      this.mRuntime.a().sendBroadcast(paramString1);
     }
-  }
-  
-  public static boolean a(bmsh parambmsh, int paramInt)
-  {
-    if (parambmsh != null)
+    catch (Exception paramJsBridgeListener)
     {
-      bmsh localbmsh = bnub.a().a[paramInt];
-      if ((parambmsh != null) && (localbmsh != null) && (parambmsh.b().equals(localbmsh.b()))) {}
-      for (boolean bool = true;; bool = false)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QCombo", 2, new Object[] { "isApplying :" + parambmsh + " ", Boolean.valueOf(bool) });
-        }
-        return bool;
-      }
+      label204:
+      break label204;
     }
-    return false;
-  }
-  
-  public static void b(List<FilterDesc> paramList, boolean paramBoolean)
-  {
-    boolean bool2 = true;
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    FilterDesc localFilterDesc;
-    boolean bool1;
-    if (paramList.hasNext())
-    {
-      localFilterDesc = (FilterDesc)paramList.next();
-      if (localFilterDesc.name.equals("EMPTY"))
-      {
-        localArrayList.clear();
-        bool1 = false;
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QCombo", 2, "applyFiltersForEditPic filters:" + localArrayList.size());
-      }
-      new bmrp(bool2, bool1, localArrayList, paramBoolean).execute(new Void[0]);
-      return;
-      if (localFilterDesc.id == 9)
-      {
-        localArrayList.clear();
-        localArrayList.add(localFilterDesc);
-        bool1 = true;
-        bool2 = false;
-      }
-      else
-      {
-        localArrayList.add(localFilterDesc);
-        break;
-        bool1 = false;
-        bool2 = false;
-      }
-    }
-  }
-  
-  public static void c(List<FilterDesc> paramList, boolean paramBoolean)
-  {
-    bnub localbnub = bnub.a();
-    QQFilterRenderManager localQQFilterRenderManager = blik.a(blik.c);
-    if (localQQFilterRenderManager == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QCombo", 2, "applyFiltersForEditVideo null manager");
-      }
-      return;
-    }
-    Object localObject = new ArrayList();
-    paramList = paramList.iterator();
-    FilterDesc localFilterDesc;
-    if (paramList.hasNext())
-    {
-      localFilterDesc = (FilterDesc)paramList.next();
-      if (localFilterDesc.name.equals("EMPTY")) {
-        paramList = null;
-      }
-    }
-    for (;;)
-    {
-      label84:
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder().append("applyFiltersForEditVideo filters:");
-        if (paramList != null) {
-          break label182;
-        }
-      }
-      label182:
-      for (int i = 0;; i = paramList.size())
-      {
-        QLog.d("QCombo", 2, i);
-        localQQFilterRenderManager.getBusinessOperation().setFilterEffectList(paramList);
-        localbnub.a(null);
-        return;
-        if (localFilterDesc.id == 9)
-        {
-          ((List)localObject).clear();
-          ((List)localObject).add(localFilterDesc);
-          paramList = (List<FilterDesc>)localObject;
-          break label84;
-        }
-        ((List)localObject).add(localFilterDesc);
-        break;
-      }
-      paramList = (List<FilterDesc>)localObject;
-    }
-  }
-  
-  public float a()
-  {
-    return 0.5F;
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_Float == 1.0F)
-    {
-      b(3);
-      return 3;
-    }
-    if (this.jdField_a_of_type_Float >= 0.0F)
-    {
-      b(1);
-      return 1;
-    }
-    String str = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc.getResFold(bnxl.b);
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc.resurl)) && (!TextUtils.isEmpty(str)) && (bntx.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc)))
-    {
-      b(2);
-      return 2;
-    }
-    b(3);
-    return 3;
-  }
-  
-  public int a(Activity paramActivity, int paramInt)
-  {
-    return 0;
-  }
-  
-  public void a(Activity paramActivity, int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      paramActivity = new ArrayList();
-      paramActivity.add(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc);
-      a(paramActivity, false);
-    }
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QCombo", 2, "download: " + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc.predownload + ", iconurl: " + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc.iconurl + ", resurl:" + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc.resurl);
-    }
-    bntx.a().a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc, this.jdField_a_of_type_Bmrq);
-    a();
-    return super.b();
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String toString()
-  {
-    return "Filter@" + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc.name + "@" + hashCode();
+    return true;
   }
 }
 

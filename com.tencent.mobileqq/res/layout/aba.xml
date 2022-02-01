@@ -17,8 +17,8 @@
                 <RelativeLayout android:id="@id/ff" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
                     <LinearLayout android:orientation="vertical" android:id="@id/l86" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="117.0dip" android:layout_alignParentBottom="true" />
                     <TextView android:textSize="11.0sp" android:textColor="#ff1a1a1a" android:id="@id/fc" android:background="@drawable/a1v" android:paddingLeft="3.0dip" android:paddingTop="1.0dip" android:paddingRight="3.0dip" android:paddingBottom="1.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/d55" />
-                    <include layout="@layout/cms" />
-                    <include layout="@layout/cmt" />
+                    <include layout="@layout/coq" />
+                    <com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.view.RIJDownloadView android:id="@id/k5v" android:layout_width="fill_parent" android:layout_height="42.0dip" android:layout_alignParentBottom="true" />
                     <TextView android:textSize="13.0sp" android:textColor="#d9ffffff" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/fd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="86.0dip" android:minHeight="20.0dip" android:maxLines="2" android:layout_alignParentBottom="true" />
                     <LinearLayout android:orientation="horizontal" android:id="@id/f8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" android:layout_above="@id/fd">
                         <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView android:layout_gravity="center_vertical" android:id="@id/f9" android:background="@drawable/hf1" android:padding="1.5dip" android:visibility="gone" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="15.0dip" android:scaleType="centerCrop" />
@@ -89,15 +89,15 @@
             <View android:orientation="vertical" android:id="@id/l82" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
         </LinearLayout>
         <include layout="@layout/abb" />
-        <RelativeLayout android:id="@id/mu6" android:paddingLeft="15.0dip" android:paddingBottom="160.5dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
-            <com.tencent.image.URLImageView android:id="@id/jz0" android:layout_width="120.0dip" android:layout_height="90.0dip" android:scaleType="centerCrop" android:layout_alignParentBottom="true" />
+        <RelativeLayout android:id="@id/myw" android:paddingLeft="15.0dip" android:paddingBottom="160.5dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+            <com.tencent.image.URLImageView android:id="@id/k6r" android:layout_width="120.0dip" android:layout_height="90.0dip" android:scaleType="centerCrop" android:layout_alignParentBottom="true" />
         </RelativeLayout>
         <include android:visibility="gone" android:layout_width="68.0dip" android:layout_height="wrap_content" android:layout_marginBottom="53.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" layout="@layout/as8" />
         <FrameLayout android:id="@id/lii" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_alignParentBottom="true">
-            <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView android:layout_gravity="center_vertical" android:id="@id/nts" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginLeft="12.0dip" />
+            <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView android:layout_gravity="center_vertical" android:id="@id/o49" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginLeft="12.0dip" />
             <TextView android:textSize="14.0sp" android:textColor="#7f8f8f8f" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="46.0dip" android:text="作者设置暂不可评论" />
         </FrameLayout>
         <SeekBar android:id="@id/dm2" android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="41.5dip" android:progressDrawable="@drawable/a0y" android:thumb="@android:color/transparent" android:layout_alignParentBottom="true" />
-        <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/k68" android:background="@drawable/sx" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_centerInParent="true" />
+        <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/k9i" android:background="@drawable/sx" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_centerInParent="true" />
     </RelativeLayout>
 </merge>

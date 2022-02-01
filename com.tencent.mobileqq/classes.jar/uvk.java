@@ -1,60 +1,33 @@
-import UserGrowth.stH5OpInfo;
-import UserGrowth.stSimpleMetaFeed;
-import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
-import com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter;
-import com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter.Builder;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.biz.pubaccount.util.ReadInjoyWebShareHelper.4;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
 public class uvk
+  implements pkr
 {
-  private static WSStatisticsReporter.Builder a(String paramString)
-  {
-    return new WSStatisticsReporter.Builder().setSceneFrom("QQ_official_account").setSopName(paramString).setTestId("").setPushId("").setFlush(true).setImmediatelyUpload(true);
-  }
+  public uvk(ReadInjoyWebShareHelper.4 param4) {}
   
-  public static void a(int paramInt)
+  public void a(BaseResp paramBaseResp)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("event_type", "10");
-    localHashMap.put("operation_or_not", String.valueOf(paramInt));
-    a(a("").addParams(localHashMap), "gzh_action");
-  }
-  
-  public static void a(int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    Map localMap = WSPublicAccReport.getInstance().getFeedsBaseParams("opcard_new", paramInt, paramstSimpleMetaFeed);
-    Object localObject3 = null;
-    HashMap localHashMap = new HashMap();
-    Object localObject2 = localHashMap;
-    Object localObject1 = localObject3;
-    if (paramstSimpleMetaFeed != null)
-    {
-      localObject2 = localHashMap;
-      localObject1 = localObject3;
-      if (paramstSimpleMetaFeed.h5_op_info != null)
-      {
-        localObject1 = paramstSimpleMetaFeed.h5_op_info;
-        localObject2 = ((stH5OpInfo)localObject1).exp;
-      }
-    }
-    localObject2 = a("feeds").addParams(localMap).addExtParams((Map)localObject2);
-    if (localObject1 != null) {}
-    for (paramstSimpleMetaFeed = String.valueOf(((stH5OpInfo)localObject1).id);; paramstSimpleMetaFeed = "")
-    {
-      a(((WSStatisticsReporter.Builder)localObject2).setOperationId(paramstSimpleMetaFeed), "gzh_exposure");
+    boolean bool = true;
+    if ((this.a.this$0.a == null) || (!this.a.this$0.a.equals(paramBaseResp.transaction))) {
       return;
     }
-  }
-  
-  public static void a(stSimpleMetaFeed paramstSimpleMetaFeed, Map<String, String> paramMap)
-  {
-    a(a("feeds").addParams(WSPublicAccReport.getInstance().getFeedsBaseParams("feeds_data_new", 0, paramstSimpleMetaFeed)).addExtParams(paramMap), "gzh_exposure");
-  }
-  
-  private static void a(WSStatisticsReporter.Builder paramBuilder, String paramString)
-  {
-    paramBuilder.build(paramString).report();
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      znl.a(1, 2131718766);
+      bool = false;
+    }
+    while (this.a.a)
+    {
+      uvh.a(this.a.this$0, "we_chat", bool);
+      return;
+      znl.a(2, 2131718784);
+      continue;
+      bool = false;
+    }
+    uvh.a(this.a.this$0, "we_chat_circle", bool);
   }
 }
 

@@ -1,66 +1,40 @@
-import QQService.EVIPSPEC;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.utils.ContactUtils;
-import java.util.Comparator;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.shadow.dynamic.host.DynamicPluginManager;
+import com.tencent.shadow.dynamic.host.EnterCallback;
 
-class bdwp
-  implements Comparator<bdwn>
+public class bdwp
+  implements bdwo
 {
-  public int a(bdwn parambdwn)
+  private final DynamicPluginManager jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager;
+  private final String jdField_a_of_type_JavaLangString = "shadow::PluginManagerWrapper";
+  private final String b;
+  
+  public bdwp(String paramString, DynamicPluginManager paramDynamicPluginManager)
   {
-    if (parambdwn.jdField_a_of_type_Int != -1) {
-      return parambdwn.jdField_a_of_type_Int;
-    }
-    Friends localFriends = parambdwn.jdField_a_of_type_ComTencentMobileqqDataFriends;
-    int k = ContactUtils.getFriendStatus(localFriends.detalStatusFlag, localFriends.iTermType);
-    int j;
-    int i;
-    if ((k != 6) && (k != 0))
-    {
-      j = 65536;
-      if (!localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
-        break label132;
-      }
-      i = 4096;
-      switch (k)
-      {
-      case 5: 
-      case 6: 
-      default: 
-        label64:
-        i = j | i | (int)localFriends.getLastLoginType();
-      }
-    }
-    for (;;)
-    {
-      parambdwn.jdField_a_of_type_Int = i;
-      return i;
-      j = 131072;
-      break;
-      label132:
-      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP))
-      {
-        i = 8192;
-        break label64;
-      }
-      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ))
-      {
-        i = 12288;
-        break label64;
-      }
-      i = 16384;
-      break label64;
-      i = j | i | 0x1;
-      continue;
-      i = j | i | 0x2;
-      continue;
-      i = j | i | 0x3;
-    }
+    this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager = paramDynamicPluginManager;
+    this.b = paramString;
   }
   
-  public int a(bdwn parambdwn1, bdwn parambdwn2)
+  public void enter(Context paramContext, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback)
   {
-    return a(parambdwn1) - a(parambdwn2);
+    if (QLog.isColorLevel()) {
+      QLog.i("shadow::PluginManagerWrapper", 2, "enter formId:" + paramLong + " enterCallback:" + paramEnterCallback);
+    }
+    avse.a().a(this.b, this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager);
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      localObject = (bdvz)((QQAppInterface)localObject).getManager(QQManagerFactory.STUDY_ROOM_MANAGER);
+      if (localObject != null) {
+        ((bdvz)localObject).a(this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager);
+      }
+    }
+    this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager.enter(paramContext, paramLong, paramBundle, paramEnterCallback);
   }
 }
 

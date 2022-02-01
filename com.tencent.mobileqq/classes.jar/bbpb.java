@@ -1,91 +1,66 @@
-import QMF_PROTOCAL.QmfDownstream;
-import QzoneCombine.ClientOnlineNotfiyRsp;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.utils.HexUtil;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.ClientOnlineRequest;
-import cooperation.qzone.WNSStream;
-import java.io.IOException;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.app.Activity;
+import com.tencent.richmediabrowser.core.IMvpFactory;
+import com.tencent.richmediabrowser.model.BrowserBaseModel;
+import com.tencent.richmediabrowser.presenter.BasePresenter;
+import com.tencent.richmediabrowser.view.BrowserBaseView;
 
 public class bbpb
-  extends MSFServlet
+  implements IMvpFactory
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public BrowserBaseModel createModel(int paramInt, BasePresenter paramBasePresenter)
   {
-    if (paramFromServiceMsg == null) {
-      QLog.e("NotifyQZoneServer", 1, "fromServiceMsg==null");
-    }
-    for (;;)
+    switch (paramInt)
     {
-      return;
-      if (paramFromServiceMsg.getResultCode() != 1000) {
-        break label192;
-      }
-      Object localObject = new WNSStream();
-      paramFromServiceMsg = bgau.b(paramFromServiceMsg.getWupBuffer());
-      try
-      {
-        paramFromServiceMsg = ((WNSStream)localObject).unpack(paramFromServiceMsg);
-        if (paramFromServiceMsg != null)
-        {
-          paramFromServiceMsg = (ClientOnlineNotfiyRsp)bkec.a(ClientOnlineNotfiyRsp.class, paramFromServiceMsg.BusiBuff);
-          if (paramFromServiceMsg != null)
-          {
-            localObject = paramFromServiceMsg.AttachInfo;
-            paramFromServiceMsg = BaseApplication.getContext().getSharedPreferences("QZoneOnLineServlet", 0).edit();
-            localObject = HexUtil.bytes2HexStr((byte[])localObject);
-            paramIntent = paramIntent.getStringExtra("key_uin");
-            paramFromServiceMsg.putString("key_attach_info" + paramIntent, (String)localObject);
-            if (QLog.isDevelopLevel()) {
-              QLog.d("NotifyQZoneServer", 4, "onReceive attachinfo:" + (String)localObject);
-            }
-            if (Build.VERSION.SDK_INT >= 9)
-            {
-              paramFromServiceMsg.apply();
-              return;
-            }
-          }
-        }
-      }
-      catch (IOException paramIntent)
-      {
-        QLog.e("NotifyQZoneServer", 1, paramIntent, new Object[0]);
-        return;
-      }
+    default: 
+      return null;
+    case 100: 
+      return new bbpx();
+    case 101: 
+      return new bbpy();
+    case 102: 
+      return new bbpt();
     }
-    paramFromServiceMsg.commit();
-    return;
-    label192:
-    QLog.e("NotifyQZoneServer", 1, "onReceive fromServiceMsg.getResultCode():" + paramFromServiceMsg.getResultCode());
+    return new bbpu();
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public BasePresenter createPresenter(int paramInt)
   {
-    long l = paramIntent.getLongExtra("lastPushMsgTime", 0L);
-    paramIntent = paramIntent.getStringExtra("key_uin");
-    paramIntent = BaseApplication.getContext().getSharedPreferences("QZoneOnLineServlet", 0).getString("key_attach_info" + paramIntent, "");
-    byte[] arrayOfByte = HexUtil.hexStr2Bytes(paramIntent);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("NotifyQZoneServer", 4, "onSend lastPushMsgTime:" + l + ",attachinfo:" + paramIntent);
-    }
-    ClientOnlineRequest localClientOnlineRequest = new ClientOnlineRequest(l, arrayOfByte);
-    arrayOfByte = localClientOnlineRequest.encode();
-    paramIntent = arrayOfByte;
-    if (arrayOfByte == null)
+    switch (paramInt)
     {
-      QLog.e("NotifyQZoneServer", 1, "onSend request encode result is null.cmd=" + localClientOnlineRequest.uniKey());
-      paramIntent = new byte[4];
+    default: 
+      return null;
+    case 100: 
+      return new bbqf();
+    case 101: 
+      return new bbqi();
+    case 102: 
+      return new bbqb();
     }
-    paramPacket.setTimeout(30000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + localClientOnlineRequest.uniKey());
-    paramPacket.putSendData(paramIntent);
+    return new bbqd();
+  }
+  
+  public BrowserBaseView createView(Activity paramActivity, int paramInt, BasePresenter paramBasePresenter)
+  {
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return null;
+          } while (!(paramBasePresenter instanceof bbqf));
+          return new bbrl(paramActivity, (bbqf)paramBasePresenter);
+        } while (!(paramBasePresenter instanceof bbqi));
+        return new bbrz(paramActivity, (bbqi)paramBasePresenter);
+      } while (!(paramBasePresenter instanceof bbqb));
+      return new bbra(paramActivity, (bbqb)paramBasePresenter);
+    } while (!(paramBasePresenter instanceof bbqd));
+    return new bbrg(paramActivity, (bbqd)paramBasePresenter);
   }
 }
 

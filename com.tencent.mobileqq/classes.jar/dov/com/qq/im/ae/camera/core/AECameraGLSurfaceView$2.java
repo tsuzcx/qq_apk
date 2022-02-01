@@ -1,7 +1,7 @@
 package dov.com.qq.im.ae.camera.core;
 
 import android.opengl.GLSurfaceView.EGLContextFactory;
-import bmbx;
+import bnrh;
 import javax.microedition.khronos.egl.EGL10;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.egl.EGLContext;
@@ -17,19 +17,18 @@ class AECameraGLSurfaceView$2
   public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
     AECameraGLSurfaceView.access$202(this.this$0, paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 }));
-    bmbx.d("AECameraGLSurfaceView", "[EGLContext] createContext finish");
+    bnrh.d("AECameraGLSurfaceView", "[EGLContext] createContext finish");
     return AECameraGLSurfaceView.access$200(this.this$0);
   }
   
   public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
   {
-    bmbx.d("AECameraGLSurfaceView", "[EGLContext] destroyContext start");
+    bnrh.d("AECameraGLSurfaceView", "[EGLContext] destroyContext start");
     if (paramEGLDisplay == null) {
-      bmbx.d("AECameraGLSurfaceView", "EGLDisplay is null.");
+      bnrh.d("AECameraGLSurfaceView", "EGLDisplay is null.");
     }
-    this.this$0.onSurfaceDestroy();
     paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext);
-    bmbx.d("AECameraGLSurfaceView", "[EGLContext] destroyContext finish");
+    bnrh.d("AECameraGLSurfaceView", "[EGLContext] destroyContext finish");
   }
 }
 

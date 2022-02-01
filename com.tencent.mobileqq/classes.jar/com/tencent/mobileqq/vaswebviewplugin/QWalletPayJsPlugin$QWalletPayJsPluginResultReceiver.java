@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import akfz;
+import albs;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
@@ -41,7 +41,7 @@ public class QWalletPayJsPlugin$QWalletPayJsPluginResultReceiver
         break;
       }
       QLog.d("QWalletPayJsHandler", 4, "activity.isFinishing():" + localActivity.isFinishing());
-      paramBundle = akfz.a(paramInt, paramBundle, localActivity);
+      paramBundle = albs.a(paramInt, paramBundle, localActivity);
     } while (paramBundle == null);
     QWalletPayJsPlugin.access$100(localQWalletPayJsPlugin, paramBundle.toString());
     return;

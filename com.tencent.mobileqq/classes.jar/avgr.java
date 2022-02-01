@@ -1,167 +1,167 @@
-import android.graphics.Color;
-import com.google.gson.Gson;
-import com.tencent.lbssearch.httpresponse.HttpResponseListener;
-import com.tencent.lbssearch.object.result.DrivingResultObject;
-import com.tencent.lbssearch.object.result.DrivingResultObject.Result;
-import com.tencent.lbssearch.object.result.DrivingResultObject.Route;
-import com.tencent.lbssearch.object.result.TransitResultObject;
-import com.tencent.lbssearch.object.result.TransitResultObject.Line;
-import com.tencent.lbssearch.object.result.TransitResultObject.Result;
-import com.tencent.lbssearch.object.result.TransitResultObject.Route;
-import com.tencent.lbssearch.object.result.TransitResultObject.Segment;
-import com.tencent.lbssearch.object.result.TransitResultObject.Transit;
-import com.tencent.lbssearch.object.result.TransitResultObject.Walking;
-import com.tencent.lbssearch.object.result.WalkingResultObject;
-import com.tencent.lbssearch.object.result.WalkingResultObject.Result;
-import com.tencent.lbssearch.object.result.WalkingResultObject.Route;
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.mobileqq.util.DisplayUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.model.PolylineOptions;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageForPubAccount;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.web.QQGameIPCModule.1;
+import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+import mqq.app.AppRuntime;
 
 public class avgr
-  implements HttpResponseListener
+  extends QIPCModule
 {
-  public avgr(MapWidget paramMapWidget, int paramInt, avgw paramavgw) {}
+  private static volatile avgr a;
   
-  public void onFailure(int paramInt, String paramString, Throwable paramThrowable)
+  public avgr(String paramString)
   {
-    if (QLog.isColorLevel())
-    {
-      if (paramThrowable != null) {
-        paramThrowable.printStackTrace();
-      }
-      QLog.d("MapWidget", 2, "[map][venue][route]getRoutePlan onFailure invoked. error code: " + paramInt + " msg: " + paramString);
-    }
-    if (MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget) != null) {
-      MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget).a(false, this.jdField_a_of_type_Avgw);
-    }
+    super(paramString);
   }
   
-  public void onSuccess(int paramInt, Object paramObject)
+  public static avgr a()
   {
-    Object localObject1 = new Gson().toJson(paramObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("MapWidget", 2, "[map][venue][route]getRoutePlan onSuccess invoked. routeType: " + this.jdField_a_of_type_Int + " result: " + (String)localObject1);
-    }
-    switch (this.jdField_a_of_type_Int)
+    if (a == null) {}
+    try
     {
-    default: 
-      paramObject = null;
+      if (a == null) {
+        a = new avgr("QQGameIPCModule");
+      }
+      return a;
     }
-    label90:
-    label739:
-    label744:
-    for (;;)
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    Object localObject2 = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject2 == null) || (!(localObject2 instanceof QQAppInterface))) {}
+    do
     {
-      if (paramObject != null)
+      int i;
+      Object localObject1;
+      do
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline != null) {
-          this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.c(false);
-        }
-        if (bjuk.a())
+        return null;
+        if ("findMessage".equals(paramString))
         {
-          paramInt = Color.parseColor("#0071FF");
-          label124:
-          this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline = this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.addPolyline(new PolylineOptions().addAll(paramObject).color(paramInt).width(DisplayUtil.dip2px(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.getContext(), 5.0F)));
-          if (this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline != null)
+          for (;;)
           {
-            this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a();
-            if (this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.jdField_a_of_type_Int == 0) {
-              MapWidget.b(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget);
+            try
+            {
+              paramBundle = ((QQAppInterface)localObject2).getMessageFacade().getMessages("2747277822", 1008, 10);
+              if ((paramBundle == null) || (paramBundle.size() <= 0)) {
+                break;
+              }
+              paramString = new ArrayList();
+              i = paramBundle.size() - 1;
+              if (i >= 0)
+              {
+                localObject1 = (MessageRecord)paramBundle.get(i);
+                if (("2747277822".equals(((MessageRecord)localObject1).frienduin)) && (((localObject1 instanceof MessageForArkApp)) || ((localObject1 instanceof MessageForPubAccount)) || ((localObject1 instanceof MessageForStructing))))
+                {
+                  localObject1 = QQGameMsgInfo.parseMessageRecord((MessageRecord)localObject1);
+                  if (localObject1 != null) {
+                    paramString.add(localObject1);
+                  }
+                }
+                if (paramString.size() != 3) {}
+              }
+              else
+              {
+                paramBundle = new Bundle();
+                paramBundle.putSerializable("key_get_msg", paramString);
+                callbackResult(paramInt, EIPCResult.createSuccessResult(paramBundle));
+                return null;
+              }
             }
-          }
-          if (MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget) != null)
-          {
-            localObject1 = MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget);
-            if ((paramObject == null) || (this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline == null)) {
-              break label739;
+            catch (Throwable paramString)
+            {
+              paramString.printStackTrace();
+              return null;
             }
+            i -= 1;
           }
+          paramString = new Bundle();
+          paramString.putSerializable("key_get_msg", new ArrayList());
+          callbackResult(paramInt, EIPCResult.createSuccessResult(paramString));
+          return null;
         }
-      }
-      for (boolean bool = true;; bool = false)
+        if ("getGameMsg".equals(paramString))
+        {
+          paramString = (avds)((AppRuntime)localObject2).getManager(QQManagerFactory.GAME_CENTER_MSG_MANAGER);
+          localObject1 = paramString.a();
+          paramBundle = new ArrayList();
+          if (localObject1 != null) {
+            paramBundle.addAll(paramString.a());
+          }
+          localObject1 = new Bundle();
+          ((Bundle)localObject1).putSerializable("key_get_game_msg", paramBundle);
+          ((Bundle)localObject1).putInt("key_get_game_view_type", paramString.d());
+          ((Bundle)localObject1).putBoolean("key_get_game_show_on_list", paramString.c);
+          ((Bundle)localObject1).putBoolean("key_get_game_show_req_msg_unread", paramString.d);
+          ((Bundle)localObject1).putBoolean("key_get_game_gray_user", paramString.c());
+          callbackResult(paramInt, EIPCResult.createSuccessResult((Bundle)localObject1));
+          return null;
+        }
+        if ("doOnResume".equals(paramString))
+        {
+          ((avds)((AppRuntime)localObject2).getManager(QQManagerFactory.GAME_CENTER_MSG_MANAGER)).c(0);
+          ((QQAppInterface)localObject2).getMessageFacade().setReaded("2747277822", 1008, true, true);
+          return null;
+        }
+        if ("doOnDestory".equals(paramString))
+        {
+          ((avds)((AppRuntime)localObject2).getManager(QQManagerFactory.GAME_CENTER_MSG_MANAGER)).c(0);
+          return null;
+        }
+        if ("getGameMsgUrl".equals(paramString))
+        {
+          paramString = (avds)((AppRuntime)localObject2).getManager(QQManagerFactory.GAME_CENTER_MSG_MANAGER);
+          paramBundle = new Bundle();
+          paramBundle.putString("key_get_msg_list_url", paramString.b());
+          callbackResult(paramInt, EIPCResult.createSuccessResult(paramBundle));
+          return null;
+        }
+        if (!"saveGalleryDataToMsg".equals(paramString)) {
+          break;
+        }
+        paramString = paramBundle.getString("game_source_pic_txt");
+        localObject1 = paramBundle.getString("game_source_pic_url");
+        paramInt = paramBundle.getInt("game_source_type_pic", 0);
+        i = paramBundle.getInt("game_source_subtype_pic", 0);
+        long l = paramBundle.getLong("uniseq");
+        int j = paramBundle.getInt("is_troop");
+        paramBundle = paramBundle.getString("friend_uin");
+        localObject2 = (QQAppInterface)localObject2;
+        paramBundle = ((QQAppInterface)localObject2).getMessageFacade().queryMsgItemByUniseq(paramBundle, j, l);
+      } while (paramBundle == null);
+      avek.a("game_source_pic_txt", paramString, paramBundle);
+      avek.a("game_source_pic_url", (String)localObject1, paramBundle);
+      avek.a("game_source_type_pic", paramInt + "", paramBundle);
+      avek.a("game_source_subtype_pic", i + "", paramBundle);
+      ThreadManager.excute(new QQGameIPCModule.1(this, (QQAppInterface)localObject2, paramBundle), 32, null, false);
+      return null;
+      if ("clearUnreadMsg".equals(paramString))
       {
-        ((avgv)localObject1).a(bool, this.jdField_a_of_type_Avgw);
-        return;
-        paramObject = (DrivingResultObject)paramObject;
-        if ((paramObject.result == null) || (paramObject.result.routes == null) || (paramObject.result.routes.isEmpty()))
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("MapWidget", 2, "[map][venue][route]getRoutePlan onSuccess invoked. error ROUTE_TYPE_DRIVE");
-          paramObject = null;
-          break label90;
-        }
-        paramObject = (DrivingResultObject.Route)paramObject.result.routes.get(0);
-        this.jdField_a_of_type_Avgw.a = paramObject.duration;
-        this.jdField_a_of_type_Avgw.b = paramObject.distance;
-        paramObject = paramObject.polyline;
-        break label90;
-        localObject1 = (TransitResultObject)paramObject;
-        if ((((TransitResultObject)localObject1).result == null) || (((TransitResultObject)localObject1).result.routes == null) || (((TransitResultObject)localObject1).result.routes.isEmpty()))
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("MapWidget", 2, "[map][venue][route]getRoutePlan onSuccess invoked. error ROUTE_TYPE_BUS");
-          paramObject = null;
-          break label90;
-        }
-        paramObject = new ArrayList();
-        localObject1 = (TransitResultObject.Route)((TransitResultObject)localObject1).result.routes.get(0);
-        Iterator localIterator = ((TransitResultObject.Route)localObject1).steps.iterator();
-        while (localIterator.hasNext())
-        {
-          Object localObject2 = (TransitResultObject.Segment)localIterator.next();
-          if ((localObject2 instanceof TransitResultObject.Walking))
-          {
-            paramObject.addAll(((TransitResultObject.Walking)localObject2).polyline);
-          }
-          else if ((localObject2 instanceof TransitResultObject.Transit))
-          {
-            localObject2 = (TransitResultObject.Transit)localObject2;
-            if ((((TransitResultObject.Transit)localObject2).lines != null) && (!((TransitResultObject.Transit)localObject2).lines.isEmpty())) {
-              paramObject.addAll(((TransitResultObject.Line)((TransitResultObject.Transit)localObject2).lines.get(0)).polyline);
-            }
-          }
-        }
-        this.jdField_a_of_type_Avgw.a = ((float)((TransitResultObject.Route)localObject1).duration);
-        this.jdField_a_of_type_Avgw.b = ((TransitResultObject.Route)localObject1).distance;
-        if (!paramObject.isEmpty()) {
-          break label744;
-        }
-        paramObject = null;
-        break label90;
-        paramObject = (WalkingResultObject)paramObject;
-        if ((paramObject == null) || (paramObject.result == null) || (paramObject.result.routes == null) || (paramObject.result.routes.isEmpty()))
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("MapWidget", 2, "[map][venue][route]getRoutePlan onSuccess invoked. error ROUTE_TYPE_WALK");
-          paramObject = null;
-          break label90;
-        }
-        paramObject = (WalkingResultObject.Route)paramObject.result.routes.get(0);
-        this.jdField_a_of_type_Avgw.a = paramObject.duration;
-        this.jdField_a_of_type_Avgw.b = paramObject.distance;
-        paramObject = paramObject.polyline;
-        break label90;
-        paramInt = Color.parseColor("#4D94FF");
-        break label124;
-        if (!QLog.isColorLevel()) {
-          break label206;
-        }
-        QLog.d("MapWidget", 2, "[map][venue][route]getRoutePlan onSuccess invoked. error polyline: null");
-        break label206;
+        ((QQAppInterface)localObject2).getConversationFacade().a("2747277822", 1008, false);
+        return null;
       }
-    }
+      if ("openSessionPage".equals(paramString))
+      {
+        avdu.a(((avds)((AppRuntime)localObject2).getManager(QQManagerFactory.GAME_CENTER_MSG_MANAGER)).b(), ((AppRuntime)localObject2).getApplication(), null);
+        return null;
+      }
+    } while (!"action_set_clean_req_time".equals(paramString));
+    avdu.a(((AppRuntime)localObject2).getAccount(), System.currentTimeMillis());
+    return null;
   }
 }
 

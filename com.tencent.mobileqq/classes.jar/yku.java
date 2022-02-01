@@ -1,6 +1,17 @@
-public abstract interface yku
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMonitorValue;
+
+public class yku
+  extends wfh
 {
-  public abstract void a(int paramInt);
+  public yku(qqstory_service.RspMonitorValue paramRspMonitorValue)
+  {
+    super(paramRspMonitorValue.result);
+  }
+  
+  public String toString()
+  {
+    return "MonitorValueResponse{errorCode=" + this.a + ", errorMsg='" + this.b + '\'' + '}';
+  }
 }
 
 

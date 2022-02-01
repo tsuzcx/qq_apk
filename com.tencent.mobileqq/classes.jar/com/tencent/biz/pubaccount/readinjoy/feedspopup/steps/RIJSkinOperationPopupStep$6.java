@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.feedspopup.steps;
 
-import pmj;
+import pxg;
 
 public class RIJSkinOperationPopupStep$6
   implements Runnable
 {
-  public RIJSkinOperationPopupStep$6(pmj parampmj, boolean paramBoolean) {}
+  public RIJSkinOperationPopupStep$6(pxg parampxg, boolean paramBoolean) {}
   
   public void run()
   {

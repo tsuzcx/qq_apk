@@ -7,7 +7,7 @@ import android.os.Environment;
 import android.os.StatFs;
 import android.os.storage.StorageManager;
 import android.text.TextUtils;
-import bfvi;
+import bhea;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mm.vfs.VFSFile;
 import com.tencent.mobileqq.app.AppConstants;
@@ -27,7 +27,7 @@ import java.lang.reflect.Method;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-import npn;
+import nwo;
 
 public class FileUtils
 {
@@ -246,7 +246,7 @@ public class FileUtils
     //   147: getstatic 72	com/tencent/mobileqq/utils/FileUtils:sNeedReportFailure	Z
     //   150: ifeq -99 -> 51
     //   153: iload_2
-    //   154: invokestatic 275	aydr:a	(Z)V
+    //   154: invokestatic 275	azkd:a	(Z)V
     //   157: iload_2
     //   158: istore_3
     //   159: iload_2
@@ -274,7 +274,7 @@ public class FileUtils
     //   208: getstatic 72	com/tencent/mobileqq/utils/FileUtils:sNeedReportFailure	Z
     //   211: ifeq +88 -> 299
     //   214: iconst_0
-    //   215: invokestatic 275	aydr:a	(Z)V
+    //   215: invokestatic 275	azkd:a	(Z)V
     //   218: iconst_0
     //   219: putstatic 72	com/tencent/mobileqq/utils/FileUtils:sNeedReportFailure	Z
     //   222: iconst_0
@@ -304,7 +304,7 @@ public class FileUtils
     //   273: getstatic 72	com/tencent/mobileqq/utils/FileUtils:sNeedReportFailure	Z
     //   276: ifeq +15 -> 291
     //   279: iload_2
-    //   280: invokestatic 275	aydr:a	(Z)V
+    //   280: invokestatic 275	azkd:a	(Z)V
     //   283: iload_2
     //   284: ifne +7 -> 291
     //   287: iconst_0
@@ -685,7 +685,7 @@ public class FileUtils
     //   23: invokevirtual 390	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   26: aload_1
     //   27: invokevirtual 390	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   30: invokestatic 395	bajv:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   30: invokestatic 395	bbqk:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   33: aload_1
     //   34: invokevirtual 358	java/io/File:delete	()Z
     //   37: pop
@@ -2815,7 +2815,7 @@ public class FileUtils
   
   public static String getFileSize(long paramLong)
   {
-    return bfvi.a(paramLong);
+    return bhea.a(paramLong);
   }
   
   /* Error */
@@ -5202,7 +5202,7 @@ public class FileUtils
         paramString = BaseApplication.getContext().getAssets().open(paramString);
         localObject1 = paramString;
         localObject2 = paramString;
-        String str2 = npn.a(paramString);
+        String str2 = nwo.a(paramString);
         localObject1 = str2;
         localObject2 = localObject1;
       }
@@ -5542,7 +5542,7 @@ public class FileUtils
     //   11: ifnonnull +13 -> 24
     //   14: ldc 63
     //   16: ldc_w 1045
-    //   19: invokestatic 1049	xvv:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   19: invokestatic 1049	ykq:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   22: aconst_null
     //   23: areturn
     //   24: aload_1
@@ -5558,14 +5558,14 @@ public class FileUtils
     //   46: ifnonnull +31 -> 77
     //   49: ldc 63
     //   51: ldc_w 1069
-    //   54: invokestatic 1049	xvv:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   54: invokestatic 1049	ykq:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   57: aconst_null
     //   58: areturn
     //   59: astore 4
     //   61: ldc 63
     //   63: ldc_w 1071
     //   66: aload 4
-    //   68: invokestatic 1075	xvv:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   68: invokestatic 1075	ykq:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   71: aconst_null
     //   72: astore 6
     //   74: goto -30 -> 44
@@ -5688,7 +5688,7 @@ public class FileUtils
     //   298: ldc 63
     //   300: ldc_w 1095
     //   303: aload 5
-    //   305: invokestatic 1075	xvv:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   305: invokestatic 1075	ykq:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   308: aload 6
     //   310: ifnull +8 -> 318
     //   313: aload 6
@@ -5789,7 +5789,7 @@ public class FileUtils
     //   491: ldc 63
     //   493: ldc_w 1102
     //   496: aload 5
-    //   498: invokestatic 1075	xvv:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   498: invokestatic 1075	ykq:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   501: aload 6
     //   503: ifnull +8 -> 511
     //   506: aload 6

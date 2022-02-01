@@ -1,171 +1,42 @@
-import android.media.MediaMetadataRetriever;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import android.util.Log;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.tavcut.bean.Size;
-import com.tencent.tavcut.util.BitmapUtil;
-import java.io.File;
-import javax.annotation.Nonnull;
+import SWEET_NEW_BASE.sweet_req_comm;
+import SWEET_NEW_PAIR.sweet_pair_byebye_req;
+import android.content.Intent;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QUA;
+import cooperation.qzone.QzoneExternalRequest;
 
-public class bmns
+class bmns
+  extends QzoneExternalRequest
 {
-  public static LocalMediaInfo a(@NonNull LocalMediaInfo paramLocalMediaInfo, @Nullable String paramString1, @Nullable String paramString2, int paramInt, @Nullable String paramString3)
+  bmns(bmnr parambmnr, Intent paramIntent) {}
+  
+  public String getCmdString()
   {
-    int i = 0;
-    if (!TextUtils.isEmpty(paramString3)) {
-      paramLocalMediaInfo.filterID = paramString3;
-    }
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      paramLocalMediaInfo.materialID = paramString1;
-      paramLocalMediaInfo.materialName = paramString2;
-      i = 1;
-    }
-    if (i != 0)
-    {
-      paramLocalMediaInfo.scheme = bnxs.a(paramString1, paramString3);
-      bmbx.b("AELocalMediaInfoUtil", "[addTakeSamePhotoInfo] scheme :" + paramLocalMediaInfo.scheme);
-    }
-    paramLocalMediaInfo.showCircleTakeSame = paramInt;
-    return paramLocalMediaInfo;
+    return "SweetQzoneService.sweet_pair_byebye";
   }
   
-  public static LocalMediaInfo a(@NonNull String paramString)
+  public JceStruct getReq()
   {
-    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    Size localSize = BitmapUtil.getImageSize(paramString);
-    localLocalMediaInfo.mediaHeight = localSize.getHeight();
-    localLocalMediaInfo.mediaWidth = localSize.getWidth();
-    localLocalMediaInfo.mMimeType = "image/jpeg";
-    localLocalMediaInfo.path = paramString;
-    return localLocalMediaInfo;
+    sweet_pair_byebye_req localsweet_pair_byebye_req = new sweet_pair_byebye_req();
+    if (this.jdField_a_of_type_AndroidContentIntent != null)
+    {
+      long l1 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("currentUin", -1L);
+      long l2 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("friendUin", -1L);
+      sweet_req_comm localsweet_req_comm = new sweet_req_comm();
+      localsweet_req_comm.opuin = l1;
+      localsweet_req_comm.uin = l1;
+      localsweet_req_comm.loveuin = l2;
+      localsweet_req_comm.qua = QUA.getQUA3();
+      localsweet_req_comm.pf = 1;
+      localsweet_req_comm.src = 3;
+      localsweet_pair_byebye_req.req_comm = localsweet_req_comm;
+    }
+    return localsweet_pair_byebye_req;
   }
   
-  public static LocalMediaInfo a(@Nonnull String paramString1, int paramInt1, int paramInt2, @NonNull String paramString2, @Nullable String paramString3, @NonNull String paramString4)
+  public String uniKey()
   {
-    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    Object localObject;
-    if (paramString3 != null)
-    {
-      localObject = BitmapUtil.getImageSize(paramString3);
-      localLocalMediaInfo.thumbHeight = ((Size)localObject).getHeight();
-    }
-    for (localLocalMediaInfo.thumbWidth = ((Size)localObject).getWidth();; localLocalMediaInfo.thumbWidth = 0)
-    {
-      if (!StringUtil.isEmpty(paramString1))
-      {
-        localLocalMediaInfo.mediaOriginSize = FileUtil.getFileSize(paramString1);
-        localObject = new MediaMetadataRetriever();
-        ((MediaMetadataRetriever)localObject).setDataSource(paramString1);
-        localLocalMediaInfo.mediaOriginBitrate = Long.valueOf(((MediaMetadataRetriever)localObject).extractMetadata(20)).longValue();
-        localLocalMediaInfo.mediaOriginWidth = Integer.valueOf(((MediaMetadataRetriever)localObject).extractMetadata(18)).intValue();
-        localLocalMediaInfo.mediaOriginHeight = Integer.valueOf(((MediaMetadataRetriever)localObject).extractMetadata(19)).intValue();
-      }
-      localLocalMediaInfo.path = paramString2;
-      localLocalMediaInfo.mediaHeight = paramInt1;
-      localLocalMediaInfo.mediaWidth = paramInt2;
-      localLocalMediaInfo.mMimeType = "video/mp4";
-      localLocalMediaInfo.addedDate = System.currentTimeMillis();
-      localLocalMediaInfo.modifiedDate = System.currentTimeMillis();
-      localLocalMediaInfo.thumbnailPath = paramString3;
-      localLocalMediaInfo.mDuration = 0L;
-      localLocalMediaInfo.isSystemMeidaStore = false;
-      localLocalMediaInfo.isMakeVideo = false;
-      localLocalMediaInfo.isVideoReady = false;
-      localLocalMediaInfo.missionID = paramString4;
-      Log.d("AELocalMediaInfoUtil", "buildLocalMediaInfoForNotReady: info = " + localLocalMediaInfo.toString());
-      return localLocalMediaInfo;
-      localLocalMediaInfo.thumbHeight = 0;
-    }
-  }
-  
-  @Nullable
-  public static LocalMediaInfo a(@Nullable String paramString1, @Nullable String paramString2)
-  {
-    return a("", null, paramString1, paramString2);
-  }
-  
-  @Nullable
-  public static LocalMediaInfo a(String paramString1, String paramString2, @Nullable String paramString3, @Nullable String paramString4)
-  {
-    MediaMetadataRetriever localMediaMetadataRetriever1 = new MediaMetadataRetriever();
-    MediaMetadataRetriever localMediaMetadataRetriever2 = new MediaMetadataRetriever();
-    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    for (;;)
-    {
-      try
-      {
-        if ((!StringUtil.isEmpty(paramString2)) && ((paramString1 == null) || (!paramString1.startsWith("multi_video_"))))
-        {
-          localMediaMetadataRetriever1.setDataSource(paramString2);
-          i = Integer.parseInt(localMediaMetadataRetriever1.extractMetadata(19));
-          j = Integer.parseInt(localMediaMetadataRetriever1.extractMetadata(18));
-          l = Long.parseLong(localMediaMetadataRetriever1.extractMetadata(20));
-          localLocalMediaInfo.mediaOriginHeight = i;
-          localLocalMediaInfo.mediaOriginWidth = j;
-          localLocalMediaInfo.mediaOriginBitrate = l;
-          localLocalMediaInfo.mediaOriginSize = FileUtil.getFileSize(paramString2);
-        }
-        localMediaMetadataRetriever2.setDataSource(paramString3);
-        int i = Integer.parseInt(localMediaMetadataRetriever2.extractMetadata(19));
-        int j = Integer.parseInt(localMediaMetadataRetriever2.extractMetadata(18));
-        int k = Integer.parseInt(localMediaMetadataRetriever2.extractMetadata(9));
-        long l = Long.parseLong(localMediaMetadataRetriever2.extractMetadata(20));
-        localLocalMediaInfo.mDuration = k;
-        localLocalMediaInfo.mediaBitrate = l;
-        localLocalMediaInfo.mediaWidth = j;
-        localLocalMediaInfo.mediaHeight = i;
-        if (!TextUtils.isEmpty(paramString4))
-        {
-          paramString1 = BitmapUtil.getImageSize(paramString4);
-          localLocalMediaInfo.thumbHeight = paramString1.getHeight();
-          localLocalMediaInfo.thumbWidth = paramString1.getWidth();
-        }
-      }
-      catch (Exception paramString1)
-      {
-        paramString1.printStackTrace();
-        bmbx.d("AELocalMediaInfoUtil", "error msg: " + paramString1.getMessage());
-        continue;
-      }
-      try
-      {
-        localLocalMediaInfo.path = paramString3;
-        localLocalMediaInfo.mMimeType = "video/mp4";
-        localLocalMediaInfo.addedDate = System.currentTimeMillis();
-        localLocalMediaInfo.modifiedDate = System.currentTimeMillis();
-        localLocalMediaInfo.thumbnailPath = paramString4;
-        if (paramString3 == null) {
-          break label404;
-        }
-        paramString1 = new File(paramString3);
-        if (!paramString1.exists()) {
-          break label395;
-        }
-        localLocalMediaInfo.fileSize = paramString1.length();
-        localLocalMediaInfo.isSystemMeidaStore = false;
-        localLocalMediaInfo.isMakeVideo = true;
-        return localLocalMediaInfo;
-      }
-      catch (Exception paramString1)
-      {
-        paramString1.printStackTrace();
-        bmbx.d("AELocalMediaInfoUtil", "[buildLocalMediaInfoForReady] " + paramString1.getMessage());
-        return null;
-      }
-      localLocalMediaInfo.thumbHeight = 0;
-      localLocalMediaInfo.thumbWidth = 0;
-      continue;
-      label395:
-      localLocalMediaInfo.fileSize = 0L;
-      continue;
-      label404:
-      localLocalMediaInfo.fileSize = 0L;
-    }
+    return "sweet_pair_byebye";
   }
 }
 

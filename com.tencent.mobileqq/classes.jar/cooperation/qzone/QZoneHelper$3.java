@@ -1,7 +1,7 @@
 package cooperation.qzone;
 
 import android.graphics.Bitmap;
-import bhzt;
+import bjkv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -21,7 +21,7 @@ final class QZoneHelper$3
     {
       localException.printStackTrace();
       QLog.e("QZoneHelper", 2, "createAlbumShortCut error! exception e = " + localException.getMessage());
-      bhzt.a().a(2131690052);
+      bjkv.a().a(2131690086);
     }
   }
 }

@@ -1,50 +1,59 @@
-import android.annotation.TargetApi;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.ArConfigService;
+import com.tencent.mobileqq.ar.ArConfigService.4.1;
+import com.tencent.mobileqq.ar.ArConfigService.4.2;
+import com.tencent.mobileqq.ar.ArConfigService.4.3;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.QLog;
 
-@TargetApi(11)
 public class apfq
+  implements asbp
 {
-  public float a;
-  public int a;
-  public float b;
-  public float c;
-  public float d = 1.0F;
-  public float e;
-  public float f;
-  public float g;
-  public float h;
+  public apfq(ArConfigService paramArConfigService) {}
   
-  public apfq(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
+  public void a(XmlData paramXmlData)
   {
-    this.e = paramFloat1;
-    this.f = paramFloat2;
-    this.g = paramFloat3;
-    this.h = paramFloat4;
-    this.jdField_a_of_type_Float = paramFloat5;
-    this.b = paramFloat6;
-    this.jdField_a_of_type_Int = 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, "EarlyDownLoadListener");
+    }
   }
   
-  public apfq(int paramInt, float paramFloat1, float paramFloat2)
+  public void a(XmlData paramXmlData, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, String.format("onDownloadProgress data=%s curOffset=%s totalLen=%s", new Object[] { paramXmlData, Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
+    }
+    if ("qq.android.ar.native.so_v8.3.6".equals(paramXmlData.strResName)) {
+      ArConfigService.a(this.a, (int)(100L * paramLong1 / paramLong2));
+    }
+    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a) + ArConfigService.d(this.a) + ArConfigService.e(this.a)) / 5;
+    if (!ArConfigService.e(this.a)) {
+      ArConfigService.a(this.a).post(new ArConfigService.4.1(this, i));
+    }
   }
   
-  public static apfq a(float paramFloat1, float paramFloat2)
+  public void a(XmlData paramXmlData, boolean paramBoolean1, int paramInt, boolean paramBoolean2, String paramString)
   {
-    return new apfq(1, paramFloat1, paramFloat2);
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, String.format("onDownloadFinish data=%s result=%s", new Object[] { paramXmlData, Boolean.valueOf(paramBoolean1) }));
+    }
+    if (paramBoolean1)
+    {
+      if ("qq.android.ar.native.so_v8.3.6".equals(paramXmlData.strResName)) {
+        ArConfigService.b(this.a, true);
+      }
+      if ((ArConfigService.f(this.a)) && (ArConfigService.g(this.a)) && (ArConfigService.h(this.a)) && (ArConfigService.i(this.a)) && (ArConfigService.j(this.a))) {
+        ArConfigService.a(this.a).post(new ArConfigService.4.2(this));
+      }
+    }
+    while (ArConfigService.e(this.a)) {
+      return;
+    }
+    ArConfigService.a(this.a).post(new ArConfigService.4.3(this));
+    ArConfigService.a(this.a, true);
   }
   
-  public static apfq a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
-  {
-    return new apfq(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6);
-  }
-  
-  public static apfq b(float paramFloat1, float paramFloat2)
-  {
-    return new apfq(0, paramFloat1, paramFloat2);
-  }
+  public void b(XmlData paramXmlData) {}
 }
 
 

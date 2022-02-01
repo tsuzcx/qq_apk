@@ -1,12 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class amtw
-  implements DialogInterface.OnClickListener
+public class amtw
+  implements View.OnClickListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public amtw(CmGameLoadingView.1 param1) {}
+  
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    this.a.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131701582));
+    this.a.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.this$0.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
+    this.a.this$0.setProgressViewVisibility(true);
+    this.a.a.a(2);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
-import amwm;
+import anza;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -164,7 +164,7 @@ public class ShortVideoDownHandler
     }
   }
   
-  public void handleRespBody(byte[] paramArrayOfByte, RichProto.RichProtoResp paramRichProtoResp, amwm paramamwm)
+  public void handleRespBody(byte[] paramArrayOfByte, RichProto.RichProtoResp paramRichProtoResp, anza paramanza)
   {
     for (;;)
     {
@@ -183,12 +183,12 @@ public class ShortVideoDownHandler
           localShortVideoDownResp.md5 = localPttShortVideoDownloadResp.bytes_file_md5.get().toByteArray();
           handleAddr(localShortVideoDownResp, localPttShortVideoDownloadResp);
           handleSupportQuic(localShortVideoDownResp, localPttShortVideoDownloadResp);
-          setResult(0, 0, "", "", paramamwm, localShortVideoDownResp);
+          setResult(0, 0, "", "", paramanza, localShortVideoDownResp);
           return;
         }
         if (i == -5100026)
         {
-          setResult(-1, -5100026, BaseTransProcessor.getUrlReason(i), "", paramamwm, localShortVideoDownResp);
+          setResult(-1, -5100026, BaseTransProcessor.getUrlReason(i), "", paramanza, localShortVideoDownResp);
           if (localRspBody.uint32_allow_retry.get() != 1) {
             break;
           }
@@ -201,17 +201,17 @@ public class ShortVideoDownHandler
       }
       catch (Exception localException)
       {
-        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), localException.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramamwm, paramRichProtoResp.resps);
+        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), localException.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramanza, paramRichProtoResp.resps);
         return;
       }
       if (i == -5100528)
       {
         long l = i;
-        setResult(-1, -5100528, BaseTransProcessor.getUrlReason(l), "", paramamwm, localShortVideoDownResp);
+        setResult(-1, -5100528, BaseTransProcessor.getUrlReason(l), "", paramanza, localShortVideoDownResp);
       }
       else
       {
-        setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), "", paramamwm, localShortVideoDownResp);
+        setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), "", paramanza, localShortVideoDownResp);
       }
     }
   }

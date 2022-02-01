@@ -1,14 +1,24 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.qphone.base.util.QLog;
 
-class ajrn
-  implements DialogInterface.OnClickListener
+public class ajrn
+  implements DialogInterface.OnDismissListener
 {
-  ajrn(ajrg paramajrg, Runnable paramRunnable) {}
+  public ajrn(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    paramDialogInterface = (akce)paramDialogInterface;
+    paramDialogInterface.a();
+    int i = paramDialogInterface.a();
+    paramDialogInterface = (anzc)this.a.a.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.history.C2CAllFragment", 2, "onDismiss, recordCount : " + i + ",showRoamFlag" + paramDialogInterface.e());
+    }
   }
 }
 

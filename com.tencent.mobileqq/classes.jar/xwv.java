@@ -1,34 +1,22 @@
-import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-public class xwv
-  extends ybh
+public abstract interface xwv
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean = false;
+  public abstract void L_();
   
-  public xwv(int paramInt, Bitmap paramBitmap)
-  {
-    super(paramInt, paramBitmap);
-  }
+  public abstract void a();
   
-  public static xwv a(xwv paramxwv, Bitmap paramBitmap)
-  {
-    paramBitmap = new xwv(paramxwv.c, paramBitmap);
-    paramBitmap.jdField_a_of_type_Int = paramxwv.jdField_a_of_type_Int;
-    paramBitmap.jdField_b_of_type_Int = paramxwv.jdField_b_of_type_Int;
-    paramBitmap.jdField_a_of_type_JavaLangString = paramxwv.jdField_a_of_type_JavaLangString;
-    paramBitmap.jdField_a_of_type_Boolean = paramxwv.jdField_a_of_type_Boolean;
-    paramBitmap.jdField_b_of_type_Boolean = paramxwv.jdField_b_of_type_Boolean;
-    return paramBitmap;
-  }
+  public abstract void a(CommentEntry paramCommentEntry);
   
-  public String toString()
-  {
-    return "PlayerContext{startTime=" + this.jdField_a_of_type_Int + ", endTime=" + this.jdField_b_of_type_Int + ", isMute=" + this.jdField_a_of_type_Boolean + ", isDeleted=" + this.jdField_b_of_type_Boolean + "} " + super.toString();
-  }
+  public abstract void b(int paramInt);
+  
+  public abstract void b(CommentEntry paramCommentEntry);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void h_(int paramInt);
 }
 
 

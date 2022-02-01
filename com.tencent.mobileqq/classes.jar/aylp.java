@@ -1,19 +1,12 @@
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelShareActivity;
-import mqq.app.QQPermissionCallback;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aylp
-  implements QQPermissionCallback
+public abstract class aylp
+  extends ayjt
 {
-  public aylp(PersonalityLabelShareActivity paramPersonalityLabelShareActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public aylp(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    bfur.a(this.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    PersonalityLabelShareActivity.a(this.a);
+    super(paramContext, paramQQAppInterface);
   }
 }
 

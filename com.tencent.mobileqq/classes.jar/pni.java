@@ -1,13 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
+import com.tencent.widget.ListView;
 
 public class pni
-  implements View.OnClickListener
+  implements szi
 {
-  public pni(ReadInJoyDailyFragment paramReadInJoyDailyFragment) {}
+  pne a;
   
-  public void onClick(View paramView) {}
+  pni(pne parampne1, pne parampne2)
+  {
+    this.a = parampne2;
+  }
+  
+  public void a(ReadInJoyBaseListView paramReadInJoyBaseListView)
+  {
+    if (!this.b.a().c()) {
+      return;
+    }
+    this.b.a().e(false);
+    this.b.a().a().a(paramReadInJoyBaseListView);
+    this.b.a().a().a(this.b.a().a().a().getLastVisiblePosition() + 1, this.b.a().a().a(), this.a);
+  }
 }
 
 

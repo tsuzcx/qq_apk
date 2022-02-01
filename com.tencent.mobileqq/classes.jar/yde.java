@@ -1,23 +1,23 @@
-public class yde
+import android.support.annotation.Nullable;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+class yde
+  implements wlo
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
-  public int d;
+  yde(ydd paramydd, wll paramwll) {}
   
-  public void a(yde paramyde)
+  public void a(boolean paramBoolean, @Nullable wlk paramwlk)
   {
-    this.jdField_a_of_type_JavaLangString = paramyde.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Int = paramyde.jdField_a_of_type_Int;
-    this.b = paramyde.b;
-    this.c = paramyde.c;
-    this.d = paramyde.d;
-  }
-  
-  public String toString()
-  {
-    return "TextInfo{text='" + this.jdField_a_of_type_JavaLangString + '\'' + ", textColor=" + this.jdField_a_of_type_Int + ", size=" + this.b + ", state=" + this.c + '}';
+    ykq.e("Q.qqstory.home.data.HomeFeedPresenter", "lbs update %b %s", new Object[] { Boolean.valueOf(paramBoolean), paramwlk });
+    this.jdField_a_of_type_Wll.b(this);
+    if (this.jdField_a_of_type_Ydd.a.get())
+    {
+      ykq.d("Q.qqstory.home.data.HomeFeedPresenter", "is destroy");
+      return;
+    }
+    ydd.a(this.jdField_a_of_type_Ydd).a = paramwlk;
+    ydd.a(this.jdField_a_of_type_Ydd).a(null, 0);
+    ((yck)wjs.a(11)).a = paramwlk;
   }
 }
 

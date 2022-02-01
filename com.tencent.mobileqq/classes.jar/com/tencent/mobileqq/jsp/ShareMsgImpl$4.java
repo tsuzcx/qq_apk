@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import auun;
-import bhvw;
-import bhwc;
+import awam;
+import bjgx;
+import bjhd;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -17,7 +17,7 @@ import java.util.Map;
 public class ShareMsgImpl$4
   implements Runnable
 {
-  public ShareMsgImpl$4(auun paramauun, String paramString1, Map paramMap, Runnable paramRunnable, String paramString2, String paramString3) {}
+  public ShareMsgImpl$4(awam paramawam, String paramString1, Map paramMap, Runnable paramRunnable, String paramString2, String paramString3) {}
   
   public void run()
   {
@@ -74,9 +74,9 @@ public class ShareMsgImpl$4
     label216:
     for (i = 3;; i = 4)
     {
-      ((Bundle)localObject1).putString("intext_3", bhwc.b(i));
+      ((Bundle)localObject1).putString("intext_3", bjhd.b(i));
       ((Bundle)localObject1).putString("stringext_1", this.c);
-      bhvw.a().a((Bundle)localObject1, "", this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount(), false);
+      bjgx.a().a((Bundle)localObject1, "", this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount(), false);
       return;
       this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
       break;

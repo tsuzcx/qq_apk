@@ -5,6 +5,7 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.Nullable;
 import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -12,10 +13,12 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.unique;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import rge;
+import rpy;
+import rsl;
 import tencent.im.oidb.articlesummary.articlesummary.BiuMultiLevel;
 import tencent.im.oidb.articlesummary.articlesummary.BiuOneLevelItem;
 import tencent.im.oidb.articlesummary.articlesummary.JumpInfo;
@@ -23,9 +26,9 @@ import tencent.im.oidb.cmd0xe2a.oidb_0xe2a.UgcVideoInfo;
 
 public class UgcVideo
   extends Entity
-  implements Parcelable, Comparable<UgcVideo>
+  implements Parcelable, Serializable, Comparable<UgcVideo>
 {
-  public static final Parcelable.Creator<UgcVideo> CREATOR = new rge();
+  public static final Parcelable.Creator<UgcVideo> CREATOR = new rsl();
   public static int RETRY_TIME_LIMIT = 3;
   public static int STATUS_FAILED;
   public static int STATUS_FINISH;
@@ -38,6 +41,7 @@ public class UgcVideo
   public static int TYPE_NO_PUBLIC;
   public static int TYPE_PUBLIC;
   public static int TYPE_PUBLIC_AND_REMIND;
+  public String address = "";
   public long bitrate;
   public String brief = "";
   public int businessType = 4;
@@ -60,7 +64,7 @@ public class UgcVideo
   public long insertTime;
   public long lastUploadSize;
   public long lastUploadSizeUpdateTime;
-  public List<SocializeFeedsInfo.BiuCommentInfo> multiTitleStruct;
+  private List<byte[]> multiTitleStruct = new ArrayList();
   public int publicType = TYPE_PUBLIC;
   public boolean reprintDisable;
   public int retryTime;
@@ -140,6 +144,7 @@ public class UgcVideo
       this.startCompressTime = paramParcel.readLong();
       this.fromForReport = paramParcel.readInt();
       this.uploadType = paramParcel.readInt();
+      this.address = paramParcel.readString();
       return;
     }
   }
@@ -164,7 +169,8 @@ public class UgcVideo
       this.reprintDisable = bool;
       this.publicType = paramUgcVideoInfo.uint32_remind_friends.get();
       this.uploadType = paramUgcVideoInfo.uint32_upload_type.get();
-      this.multiTitleStruct = biuMultiLevelToBiuCommentInfo(paramUgcVideoInfo.biu_multi_level);
+      setMultiTitleStruct(biuMultiLevelToBiuCommentInfo(paramUgcVideoInfo.biu_multi_level));
+      this.address = paramUgcVideoInfo.bytes_position.get().toStringUtf8();
       return;
       bool = false;
     }
@@ -172,29 +178,34 @@ public class UgcVideo
   
   private articlesummary.BiuMultiLevel biuCommentInfoToBiuMultiLevel(List<SocializeFeedsInfo.BiuCommentInfo> paramList)
   {
+    articlesummary.BiuMultiLevel localBiuMultiLevel = new articlesummary.BiuMultiLevel();
+    if (paramList == null) {
+      return localBiuMultiLevel;
+    }
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = paramList.iterator();
-    if (localIterator.hasNext())
+    int i = paramList.size() - 1;
+    if (i >= 0)
     {
-      SocializeFeedsInfo.BiuCommentInfo localBiuCommentInfo = (SocializeFeedsInfo.BiuCommentInfo)localIterator.next();
+      SocializeFeedsInfo.BiuCommentInfo localBiuCommentInfo = (SocializeFeedsInfo.BiuCommentInfo)paramList.get(i);
       articlesummary.BiuOneLevelItem localBiuOneLevelItem = new articlesummary.BiuOneLevelItem();
       PBBytesField localPBBytesField = localBiuOneLevelItem.bytes_biu_comments;
-      if (localBiuCommentInfo.jdField_a_of_type_JavaLangString != null) {}
-      for (paramList = localBiuCommentInfo.jdField_a_of_type_JavaLangString;; paramList = "")
+      if (localBiuCommentInfo.mBiuComment != null) {}
+      for (Object localObject = localBiuCommentInfo.mBiuComment;; localObject = "")
       {
-        localPBBytesField.set(ByteStringMicro.copyFromUtf8(paramList));
-        paramList = convertJumpInfo(localBiuCommentInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$JumpInfo);
-        if (paramList != null) {
-          localBiuOneLevelItem.msg_jump_info.set(paramList);
+        localPBBytesField.set(ByteStringMicro.copyFromUtf8((String)localObject));
+        localObject = convertJumpInfo(localBiuCommentInfo.jumpInfo);
+        if (localObject != null) {
+          localBiuOneLevelItem.msg_jump_info.set((MessageMicro)localObject);
         }
-        localBiuOneLevelItem.op_type.set(localBiuCommentInfo.c);
+        localBiuOneLevelItem.op_type.set(localBiuCommentInfo.mOpType);
+        localBiuOneLevelItem.uint64_uin.set(localBiuCommentInfo.mUin.longValue());
         localArrayList.add(localBiuOneLevelItem);
+        i -= 1;
         break;
       }
     }
-    paramList = new articlesummary.BiuMultiLevel();
-    paramList.rpt_biu_mutli_level.set(localArrayList);
-    return paramList;
+    localBiuMultiLevel.rpt_biu_mutli_level.set(localArrayList);
+    return localBiuMultiLevel;
   }
   
   private List<SocializeFeedsInfo.BiuCommentInfo> biuMultiLevelToBiuCommentInfo(articlesummary.BiuMultiLevel paramBiuMultiLevel)
@@ -208,9 +219,9 @@ public class UgcVideo
       if (localBiuOneLevelItem.bytes_biu_comments.get() != null) {}
       for (paramBiuMultiLevel = localBiuOneLevelItem.bytes_biu_comments.get().toStringUtf8();; paramBiuMultiLevel = "")
       {
-        localBiuCommentInfo.jdField_a_of_type_JavaLangString = paramBiuMultiLevel;
-        localBiuCommentInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$JumpInfo = convertJumpInfo(localBiuOneLevelItem.msg_jump_info);
-        localBiuCommentInfo.c = localBiuOneLevelItem.op_type.get();
+        localBiuCommentInfo.mBiuComment = paramBiuMultiLevel;
+        localBiuCommentInfo.jumpInfo = convertJumpInfo(localBiuOneLevelItem.msg_jump_info);
+        localBiuCommentInfo.mOpType = localBiuOneLevelItem.op_type.get();
         localArrayList.add(localBiuCommentInfo);
         break;
       }
@@ -248,20 +259,20 @@ public class UgcVideo
     }
     articlesummary.JumpInfo localJumpInfo = new articlesummary.JumpInfo();
     PBBytesField localPBBytesField = localJumpInfo.bytes_jump_url;
-    if (paramJumpInfo.b() != null)
+    if (paramJumpInfo.getJumpUrl() != null)
     {
-      str = paramJumpInfo.b();
+      str = paramJumpInfo.getJumpUrl();
       localPBBytesField.set(ByteStringMicro.copyFromUtf8(str));
       localPBBytesField = localJumpInfo.bytes_wording;
-      if (paramJumpInfo.a() == null) {
+      if (paramJumpInfo.getWording() == null) {
         break label87;
       }
     }
     label87:
-    for (String str = paramJumpInfo.a();; str = "")
+    for (String str = paramJumpInfo.getWording();; str = "")
     {
       localPBBytesField.set(ByteStringMicro.copyFromUtf8(str));
-      localJumpInfo.uint64_id.set(paramJumpInfo.a());
+      localJumpInfo.uint64_id.set(paramJumpInfo.getId());
       return localJumpInfo;
       str = "";
       break;
@@ -283,6 +294,16 @@ public class UgcVideo
     return ((paramObject instanceof UgcVideo)) && (this.seqId.equals(((UgcVideo)paramObject).seqId));
   }
   
+  public List<SocializeFeedsInfo.BiuCommentInfo> getMultiTitleStruct()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.multiTitleStruct.iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(rpy.a((byte[])localIterator.next()));
+    }
+    return localArrayList;
+  }
+  
   public int getProgress()
   {
     return (this.compressProgress + this.coverProgress + this.videoProgress) / 3;
@@ -297,31 +318,31 @@ public class UgcVideo
   {
     oidb_0xe2a.UgcVideoInfo localUgcVideoInfo = new oidb_0xe2a.UgcVideoInfo();
     PBBytesField localPBBytesField = localUgcVideoInfo.bytes_title;
-    Object localObject;
+    label53:
+    label80:
+    label107:
+    int i;
     if (this.title != null)
     {
       localObject = this.title;
       localPBBytesField.set(ByteStringMicro.copyFromUtf8((String)localObject));
       localPBBytesField = localUgcVideoInfo.bytes_url;
       if (this.url == null) {
-        break label284;
+        break label311;
       }
       localObject = this.url;
-      label53:
       localPBBytesField.set(ByteStringMicro.copyFromUtf8((String)localObject));
       localPBBytesField = localUgcVideoInfo.bytes_cover_url;
       if (this.coverUrl == null) {
-        break label290;
+        break label317;
       }
       localObject = this.coverUrl;
-      label80:
       localPBBytesField.set(ByteStringMicro.copyFromUtf8((String)localObject));
       localPBBytesField = localUgcVideoInfo.bytes_brief;
       if (this.brief == null) {
-        break label296;
+        break label323;
       }
       localObject = this.brief;
-      label107:
       localPBBytesField.set(ByteStringMicro.copyFromUtf8((String)localObject));
       localUgcVideoInfo.uint32_cover_width.set(this.coverWidth);
       localUgcVideoInfo.uint32_cover_height.set(this.coverHeight);
@@ -332,27 +353,35 @@ public class UgcVideo
       localUgcVideoInfo.uint64_file_size.set(this.fileSize);
       localPBBytesField = localUgcVideoInfo.bytes_file_md5;
       if (this.fileMd5 == null) {
-        break label302;
+        break label329;
       }
       localObject = this.fileMd5;
       label211:
       localPBBytesField.set(ByteStringMicro.copyFromUtf8((String)localObject));
       localObject = localUgcVideoInfo.uint32_reprint_disable;
       if (!this.reprintDisable) {
-        break label308;
+        break label335;
       }
-    }
-    label284:
-    label290:
-    label296:
-    label302:
-    label308:
-    for (int i = 1;; i = 0)
-    {
+      i = 1;
+      label234:
       ((PBUInt32Field)localObject).set(i);
       localUgcVideoInfo.uint32_remind_friends.set(this.publicType);
       localUgcVideoInfo.uint32_upload_type.set(this.uploadType);
-      localUgcVideoInfo.biu_multi_level.set(biuCommentInfoToBiuMultiLevel(this.multiTitleStruct));
+      localUgcVideoInfo.biu_multi_level.set(biuCommentInfoToBiuMultiLevel(getMultiTitleStruct()));
+      localPBBytesField = localUgcVideoInfo.bytes_position;
+      if (this.address == null) {
+        break label340;
+      }
+    }
+    label311:
+    label317:
+    label323:
+    label329:
+    label335:
+    label340:
+    for (Object localObject = this.address;; localObject = "")
+    {
+      localPBBytesField.set(ByteStringMicro.copyFromUtf8((String)localObject));
       return localUgcVideoInfo;
       localObject = "";
       break;
@@ -364,6 +393,26 @@ public class UgcVideo
       break label107;
       localObject = "";
       break label211;
+      i = 0;
+      break label234;
+    }
+  }
+  
+  public void setMultiTitleStruct(List<SocializeFeedsInfo.BiuCommentInfo> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {}
+    for (;;)
+    {
+      return;
+      if (!this.multiTitleStruct.isEmpty()) {
+        this.multiTitleStruct.clear();
+      }
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        SocializeFeedsInfo.BiuCommentInfo localBiuCommentInfo = (SocializeFeedsInfo.BiuCommentInfo)paramList.next();
+        this.multiTitleStruct.add(rpy.a(localBiuCommentInfo));
+      }
     }
   }
   
@@ -411,6 +460,7 @@ public class UgcVideo
       paramParcel.writeLong(this.startCompressTime);
       paramParcel.writeInt(this.fromForReport);
       paramParcel.writeInt(this.uploadType);
+      paramParcel.writeString(this.address);
       return;
     }
   }

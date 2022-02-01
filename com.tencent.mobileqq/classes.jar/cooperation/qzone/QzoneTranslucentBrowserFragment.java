@@ -35,7 +35,7 @@ public class QzoneTranslucentBrowserFragment
       localLayoutParams.rightMargin = dpToPx(15.0F);
       localLayoutParams.addRule(11);
       paramRelativeLayout.addView(localImageView, localLayoutParams);
-      localImageView.setImageDrawable(getResources().getDrawable(2130848507));
+      localImageView.setImageDrawable(getResources().getDrawable(2130848599));
       localImageView.setOnClickListener(new QzoneTranslucentBrowserFragment.1(this));
     }
   }

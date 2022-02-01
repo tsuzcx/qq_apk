@@ -1,31 +1,69 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.drawable.Drawable;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
 
 public class osz
-  implements otv
+  implements EmoticonCallback
 {
-  public osz(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
+  public osz(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void a()
+  public void delete()
   {
-    if (ReadInJoyCommentListFragment.a(this.a) != null) {
-      ReadInJoyCommentListFragment.a(this.a).a();
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
+    if (this.a.a.getSelectionStart() == 0) {}
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      this.a.a(false, null, null);
+      try
+      {
+        Editable localEditable = this.a.a.getText();
+        int i = this.a.a.getSelectionStart();
+        int j = TextUtils.getOffsetBefore(this.a.a.getText(), i);
+        if (i != j)
+        {
+          localEditable.delete(Math.min(i, j), Math.max(i, j));
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
     }
   }
+  
+  public void emoticonMall() {}
+  
+  public void onHidePopup(EmoticonInfo paramEmoticonInfo) {}
+  
+  public boolean onLongClick(EmoticonInfo paramEmoticonInfo)
+  {
+    return true;
+  }
+  
+  public void onShowPopup(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
+  
+  public void send() {}
+  
+  public void send(EmoticonInfo paramEmoticonInfo)
+  {
+    if ((paramEmoticonInfo instanceof PicEmoticonInfo))
+    {
+      paramEmoticonInfo = (PicEmoticonInfo)paramEmoticonInfo;
+      if ((this.a instanceof ReadInJoyDeliverUGCActivity)) {
+        ((ReadInJoyDeliverUGCActivity)this.a).a(paramEmoticonInfo);
+      }
+      return;
+    }
+    ReadInJoyBaseDeliverActivity.a(this.a.app, paramEmoticonInfo, this.a.a);
+  }
+  
+  public void setting() {}
 }
 
 

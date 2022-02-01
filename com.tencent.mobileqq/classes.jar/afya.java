@@ -1,15 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class afya
-  implements DialogInterface.OnClickListener
+public abstract interface afya
 {
-  afya(afxz paramafxz) {}
+  public abstract boolean a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

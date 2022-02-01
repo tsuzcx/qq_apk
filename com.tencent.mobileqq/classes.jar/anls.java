@@ -1,44 +1,49 @@
-import android.annotation.SuppressLint;
-import android.util.Pair;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileInputStream;
 
-public class anls
+final class anls
+  implements anfg
 {
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static Map<Integer, Pair<String, Integer>> jdField_a_of_type_JavaUtilMap;
+  anls(String paramString, String[] paramArrayOfString, anlp paramanlp, int paramInt) {}
   
-  public static int a(int paramInt)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    return ((Integer)((Pair)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt))).second).intValue();
-  }
-  
-  public static String a(int paramInt)
-  {
-    return (String)((Pair)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt))).first;
-  }
-  
-  public static Map<Integer, Pair<String, Integer>> a()
-  {
-    if (jdField_a_of_type_JavaUtilMap == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_JavaUtilMap == null) {
-        a();
-      }
-      return jdField_a_of_type_JavaUtilMap;
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloHttpUtil", 2, "fakeResource3DUrlRequest onDownLoadFinish:" + paramInt1 + " sucess:" + paramBoolean);
     }
-  }
-  
-  @SuppressLint({"UseSparseArrays"})
-  private static void a()
-  {
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(193), Pair.create("video_processor", Integer.valueOf(9002)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(734), Pair.create("video_processor", Integer.valueOf(9003)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(524), Pair.create("discuss_update_processor", Integer.valueOf(9010)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(736), Pair.create("info_update_processor", Integer.valueOf(9011)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(526), Pair.create("slave_master_processor", Integer.valueOf(9012)));
+    if (paramBoolean)
+    {
+      paramArrayOfInt = new File(this.jdField_a_of_type_JavaLangString);
+      if (paramArrayOfInt.exists()) {
+        try
+        {
+          paramString = anlq.a(this.jdField_a_of_type_ArrayOfJavaLangString);
+          if (anlq.a(this.jdField_a_of_type_JavaLangString))
+          {
+            paramArrayOfInt = anlq.a(paramArrayOfInt, paramString);
+            this.jdField_a_of_type_Anlp.a(0, paramString, paramArrayOfInt);
+          }
+          while (QLog.isColorLevel())
+          {
+            QLog.d("ApolloHttpUtil", 2, new Object[] { "fakeResource3DUrlRequest onDownLoadFinish retHeader:", paramString + " id:" + this.jdField_a_of_type_Int });
+            return;
+            this.jdField_a_of_type_Anlp.a(0, paramString, ApolloRender.readStream(new FileInputStream(paramArrayOfInt)));
+          }
+          this.jdField_a_of_type_Anlp.a(-1, null, null);
+        }
+        catch (Exception paramString)
+        {
+          QLog.e("ApolloHttpUtil", 1, paramString, new Object[0]);
+          return;
+        }
+      }
+    }
+    else
+    {
+      this.jdField_a_of_type_Anlp.a(-1, null, null);
+    }
   }
 }
 

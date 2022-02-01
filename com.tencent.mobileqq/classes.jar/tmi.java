@@ -1,45 +1,51 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Iterator;
-import java.util.List;
-import org.jetbrains.annotations.NotNull;
+import android.content.Context;
+import android.content.res.AssetManager;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.loaders.ComplementFileStringLoader;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.io.InputStream;
 
-final class tmi
-  implements rnw
+public class tmi
+  implements ComplementFileStringLoader
 {
-  tmi(String paramString1, QQAppInterface paramQQAppInterface, int paramInt1, BridgeModule paramBridgeModule, int paramInt2, String paramString2) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private String jdField_a_of_type_JavaLangString;
+  private tmp jdField_a_of_type_Tmp;
   
-  public void a(@NotNull List<UgcVideo> paramList)
+  public tmi(Context paramContext, String paramString)
   {
-    Iterator localIterator = paramList.iterator();
-    UgcVideo localUgcVideo;
-    do
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Tmp = new tmp(paramContext, paramString);
+  }
+  
+  public String loadFileAsString(String paramString)
+  {
+    AssetManager localAssetManager = this.jdField_a_of_type_AndroidContentContext.getAssets();
+    try
     {
-      if (!localIterator.hasNext()) {
-        break;
+      InputStream localInputStream = this.jdField_a_of_type_Tmp.a(paramString);
+      Object localObject = localInputStream;
+      if (localInputStream == null) {
+        localObject = localAssetManager.open(this.jdField_a_of_type_JavaLangString + "/" + paramString);
       }
-      localUgcVideo = (UgcVideo)localIterator.next();
-    } while (!TextUtils.equals(localUgcVideo.seqId, this.jdField_a_of_type_JavaLangString));
-    for (;;)
-    {
-      if (localUgcVideo != null)
-      {
-        odq.a("0X800AC61", rha.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, localUgcVideo.publicType).a());
-        rno.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(localUgcVideo);
-        tmd.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_b_of_type_Int, paramList, this.jdField_b_of_type_JavaLangString, 0, "");
-        return;
-      }
-      tmd.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_b_of_type_Int, paramList, this.jdField_b_of_type_JavaLangString, -1, "ugcVideo not exist");
-      return;
-      localUgcVideo = null;
+      localObject = tmz.a((InputStream)localObject);
+      return localObject;
     }
+    catch (IOException localIOException)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("AssetsComplementFileStringLoader", 2, "loadFileAsString: fail to include - " + paramString);
+        localIOException.printStackTrace();
+      }
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tmi
  * JD-Core Version:    0.7.0.1
  */

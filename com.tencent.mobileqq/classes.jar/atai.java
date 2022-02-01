@@ -1,14 +1,7 @@
-public class atai
-{
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-}
+class atai {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atai
  * JD-Core Version:    0.7.0.1
  */

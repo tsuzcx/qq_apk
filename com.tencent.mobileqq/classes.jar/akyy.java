@@ -1,25 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import org.json.JSONArray;
 
 public class akyy
-  extends BroadcastReceiver
 {
-  public akyy(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ((NetworkUtil.isNetSupport(this.a.jdField_a_of_type_AndroidContentContext)) && (this.a.c) && (this.a.isResume()))
-    {
-      if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(0)) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
-    }
-  }
+  public int a;
+  public String a;
+  public JSONArray a;
+  public int b;
+  public String b;
+  public JSONArray b;
+  public int c;
+  public String c;
+  public JSONArray c;
+  public String d;
+  public JSONArray d;
+  public String e;
+  public JSONArray e;
+  public String f;
+  public String g;
+  public String h;
 }
 
 

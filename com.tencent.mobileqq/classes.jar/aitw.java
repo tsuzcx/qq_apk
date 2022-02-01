@@ -1,22 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
 
-class aitw
-  implements DialogInterface.OnClickListener
+public class aitw
+  extends anvi
 {
-  aitw(aitt paramaitt) {}
+  public aitw(SearchBaseFragment paramSearchBaseFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    QLog.d("SDKEmotionSettingManager", 1, new Object[] { "showAccountConfirm which=", Integer.valueOf(paramInt) });
-    if (paramInt == 1) {
-      aitt.c(this.a);
+    if ((paramBoolean) && (paramObject != null) && (SearchBaseFragment.a(this.a) != null) && (SearchBaseFragment.a(this.a).uin.get() == ((Long)paramObject).longValue())) {
+      SearchBaseFragment.a(this.a).relation.set(SearchBaseFragment.a(this.a).relation.get() & 0x10);
     }
-    while (paramInt != 0) {
-      return;
-    }
-    aitt.a(this.a);
   }
 }
 

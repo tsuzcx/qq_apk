@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class adfm
-  extends bgde
+  implements DialogInterface.OnClickListener
 {
-  public adfm(EditInfoActivity paramEditInfoActivity) {}
+  public adfm(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    EditInfoActivity.a(this.a, EditInfoActivity.b(this.a));
+    bdla.b(this.a.app, "P_CliOper", "Safe_AntiFraud", this.a.app.getCurrentAccountUin(), "AlertDialog", "UserClick", 0, AddFriendLogicActivity.d(this.a), "", "", "", "");
+    this.a.finish();
   }
 }
 

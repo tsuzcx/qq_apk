@@ -1,14 +1,18 @@
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 import java.util.List;
 
 class qnm
-  extends qlu
+  implements ViewBase.OnClickListener
 {
-  qnm(qnl paramqnl) {}
+  qnm(qnj paramqnj, Context paramContext, rpr paramrpr, ArticleInfo paramArticleInfo) {}
   
-  public void a(int paramInt, List<Long> paramList, boolean paramBoolean1, boolean paramBoolean2, ToServiceMsg paramToServiceMsg)
+  public void onClick(ViewBase paramViewBase)
   {
-    qnl.a(this.a, paramInt, paramList, paramBoolean1, paramBoolean2, paramToServiceMsg);
+    six.a(this.jdField_a_of_type_AndroidContentContext, ((rrv)this.jdField_a_of_type_Rpr.a.get(1)).a);
+    qnj.a(this.jdField_a_of_type_Qnj, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
   }
 }
 

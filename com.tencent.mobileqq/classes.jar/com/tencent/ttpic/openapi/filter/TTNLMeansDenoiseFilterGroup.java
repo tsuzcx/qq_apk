@@ -83,11 +83,11 @@ public class TTNLMeansDenoiseFilterGroup
   
   public void clear()
   {
-    this.mResizeFilter.ClearGLSL();
+    this.mResizeFilter.clearGLSL();
     this.mMeansMaskFilter.clearGLSLSelf();
-    this.mDirectionalBlurFilter.ClearGLSL();
-    this.mMeansDenoiseFilter.ClearGLSL();
-    this.mMeansMixFilter.ClearGLSL();
+    this.mDirectionalBlurFilter.clearGLSL();
+    this.mMeansDenoiseFilter.clearGLSL();
+    this.mMeansMixFilter.clearGLSL();
     this.mResizeFrame.clear();
     this.mMeansMaskFrame.clear();
     this.mBlurFrameTemp.clear();

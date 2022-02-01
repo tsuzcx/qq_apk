@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.together.writetogether.websocket.msg;
 
-import bdef;
+import beli;
 
 public class UserChangesReqMsg$UserChangesReqBody
 {
-  public bdef apool;
+  public beli apool;
   public int baseRev;
   public int changeSetCount;
   public String changeset;
@@ -19,11 +19,11 @@ public class UserChangesReqMsg$UserChangesReqBody
   
   public UserChangesReqMsg$UserChangesReqBody() {}
   
-  public UserChangesReqMsg$UserChangesReqBody(int paramInt, String paramString1, bdef parambdef, String paramString2)
+  public UserChangesReqMsg$UserChangesReqBody(int paramInt, String paramString1, beli parambeli, String paramString2)
   {
     this.baseRev = paramInt;
     this.changeset = paramString1;
-    this.apool = parambdef;
+    this.apool = parambeli;
     this.uuId = paramString2;
   }
 }

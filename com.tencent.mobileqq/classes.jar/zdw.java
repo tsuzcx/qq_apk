@@ -1,9 +1,14 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import android.view.View;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
-public abstract interface zdw
+final class zdw
+  extends ThreadLocal<DateFormat>
 {
-  public abstract void a(View paramView, CertifiedAccountMeta.StFeed paramStFeed);
+  protected DateFormat a()
+  {
+    return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+  }
 }
 
 

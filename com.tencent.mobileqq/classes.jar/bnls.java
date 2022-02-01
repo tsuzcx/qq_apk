@@ -1,48 +1,38 @@
-import android.support.annotation.NonNull;
+import android.app.Activity;
+import android.arch.lifecycle.Observer;
+import android.content.Intent;
 import android.support.annotation.Nullable;
-import java.lang.ref.Reference;
-import java.lang.ref.ReferenceQueue;
-import java.util.HashMap;
+import android.support.v7.widget.RecyclerView;
+import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator;
 
-public class bnls<K, V>
+class bnls
+  implements Observer<Boolean>
 {
-  private ReferenceQueue<V> jdField_a_of_type_JavaLangRefReferenceQueue = new ReferenceQueue();
-  private HashMap<K, bnls<K, V>.bnlt> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  bnls(bnln parambnln) {}
   
-  @Nullable
-  public V a(K paramK)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramK))
-    {
-      paramK = (bnlt)this.jdField_a_of_type_JavaUtilHashMap.get(paramK);
-      if (paramK.get() != null) {
-        return paramK.get();
-      }
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    for (;;)
-    {
-      Reference localReference = this.jdField_a_of_type_JavaLangRefReferenceQueue.poll();
-      if (localReference == null) {
-        break;
-      }
-      this.jdField_a_of_type_JavaUtilHashMap.remove(((bnlt)localReference).a());
-    }
-  }
-  
-  public void a(@NonNull K paramK, @NonNull V paramV)
-  {
-    if ((paramK == null) || (paramV == null)) {
-      throw new IllegalArgumentException("key-value cannot be null");
-    }
-    if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramK)) && (((bnlt)this.jdField_a_of_type_JavaUtilHashMap.get(paramK)).get() != null)) {
+    if (paramBoolean == null) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramK, new bnlt(this, paramK, paramV, this.jdField_a_of_type_JavaLangRefReferenceQueue));
+    Intent localIntent = bnln.a(this.a).a().getIntent();
+    if (localIntent != null) {
+      localIntent.getIntExtra("AECAMERA_MODE", 200);
+    }
+    if (paramBoolean.booleanValue())
+    {
+      if (bnln.a(this.a).a())
+      {
+        bnln.a(this.a).setVisibility(0);
+        bnln.a(this.a).setVisibility(0);
+        return;
+      }
+      bnln.a(this.a).setVisibility(8);
+      bnln.a(this.a).setVisibility(8);
+      return;
+    }
+    bnln.a(this.a).setVisibility(4);
+    bnln.a(this.a).setVisibility(4);
   }
 }
 

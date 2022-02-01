@@ -1,33 +1,33 @@
 package dov.com.qq.im.aeeditor.lyric.widget;
 
-import bmbx;
-import bmec;
-import bmej;
+import bnrh;
+import bntu;
+import bnub;
 
 public class LyricViewController$6
   implements Runnable
 {
-  public LyricViewController$6(bmej parambmej, int paramInt1, int paramInt2) {}
+  public LyricViewController$6(bnub parambnub, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Bmec != null) {
-      this.this$0.jdField_a_of_type_Bmec.a(this.a, this.b);
+    if (this.this$0.jdField_a_of_type_Bntu != null) {
+      this.this$0.jdField_a_of_type_Bntu.a(this.a, this.b);
     }
-    if ((this.this$0.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll != null) && (this.this$0.jdField_a_of_type_Bmec != null))
+    if ((this.this$0.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll != null) && (this.this$0.jdField_a_of_type_Bntu != null))
     {
-      if (!bmej.a(this.this$0)) {
+      if (!bnub.a(this.this$0)) {
         break label68;
       }
-      bmbx.a("ModuleController", "current is selecting lyric. not auto scroll.");
+      bnrh.a("ModuleController", "current is selecting lyric. not auto scroll.");
     }
     label68:
     int i;
     do
     {
       return;
-      i = this.this$0.jdField_a_of_type_Bmec.a();
-    } while (bmej.a(this.this$0) == i);
+      i = this.this$0.jdField_a_of_type_Bntu.a();
+    } while (bnub.a(this.this$0) == i);
     if (i == 0)
     {
       this.this$0.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll.b(i);

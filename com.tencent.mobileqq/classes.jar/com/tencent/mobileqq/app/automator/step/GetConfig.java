@@ -1,15 +1,17 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import ampt;
 import android.os.Build.VERSION;
-import anfu;
-import aptb;
-import aqxc;
-import augn;
-import auxa;
-import bkkq;
+import ansg;
+import aoik;
+import aqwe;
+import asbm;
+import avmh;
+import awcz;
+import blvy;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.PluginConfigProxy;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.config.ResourcePluginListener;
@@ -26,32 +28,32 @@ public class GetConfig
   
   public int a()
   {
-    ((auxa)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getBusinessHandler(128)).a();
+    ((awcz)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getBusinessHandler(BusinessHandlerFactory.COMMPLGUGIN_HANDLER)).a();
     Object localObject = new PluginConfigProxy();
     this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getAboutConfig().a((PluginConfigProxy)localObject);
     ((PluginConfigProxy)localObject).a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app);
-    ((bkkq)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(27)).a();
-    ((aqxc)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(77)).a(true);
-    localObject = (ampt)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getBusinessHandler(4);
-    ((ampt)localObject).a(null, new GetResourceReqInfo[] { ((ampt)localObject).d(), ((ampt)localObject).f(), ((ampt)localObject).b(), ((ampt)localObject).e(), ((ampt)localObject).c() });
+    ((blvy)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(QQManagerFactory.MGR_PLUGIN)).a();
+    ((asbm)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(QQManagerFactory.EARLY_DOWNLOAD_MANAGER)).a(true);
+    localObject = (ansg)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER);
+    ((ansg)localObject).a(null, new GetResourceReqInfo[] { ((ansg)localObject).d(), ((ansg)localObject).f(), ((ansg)localObject).b(), ((ansg)localObject).e(), ((ansg)localObject).c() });
     if (!"5.0.2".equals(Build.VERSION.RELEASE))
     {
       int i = NetworkUtil.getNetworkType(BaseApplication.getContext());
       if ((i == 1) || (i == 4))
       {
         localObject = new GetConfig.1(this);
-        PreDownloadController localPreDownloadController = (PreDownloadController)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(193);
+        PreDownloadController localPreDownloadController = (PreDownloadController)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2);
         if (!localPreDownloadController.isEnable()) {
-          break label264;
+          break label268;
         }
         localPreDownloadController.requestPreDownload(10057, null, "tvk_sdkmgr", 0, "http://tvk_sdkmgr/unkown", "unkown", 1, 0, false, new RunnableTask(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app, "tvk_sdkmgr", (Runnable)localObject, 4000L));
       }
     }
     for (;;)
     {
-      augn.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app).b();
+      avmh.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app).b();
       return 2;
-      label264:
+      label268:
       ((Runnable)localObject).run();
     }
   }
@@ -60,7 +62,7 @@ public class GetConfig
   {
     if (this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener = new anfu(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener = new aoik(this, null);
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addLebaListener(this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener);
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addAboutListener(this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener);
     }

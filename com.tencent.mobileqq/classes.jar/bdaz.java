@@ -1,14 +1,10 @@
-class bdaz
-  extends bbyo
+public class bdaz
 {
-  bdaz(bday parambday) {}
+  int jdField_a_of_type_Int = -1;
+  int b = -1;
+  int c = -1;
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
-  {
-    if (bday.a(this.a) != null) {
-      this.a.b(bday.a(this.a));
-    }
-  }
+  public bdaz(bdax parambdax) {}
 }
 
 

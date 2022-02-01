@@ -1,13 +1,13 @@
 package cooperation.qzone;
 
 import android.view.View;
-import avli;
+import awrn;
 import com.tencent.image.URLDrawable;
 
 class QzoneGiftFullScreenViewController$3$1
   implements Runnable
 {
-  QzoneGiftFullScreenViewController$3$1(QzoneGiftFullScreenViewController.3 param3, avli paramavli) {}
+  QzoneGiftFullScreenViewController$3$1(QzoneGiftFullScreenViewController.3 param3, awrn paramawrn) {}
   
   public void run()
   {

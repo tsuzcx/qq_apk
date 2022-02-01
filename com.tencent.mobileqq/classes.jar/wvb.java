@@ -1,18 +1,14 @@
-class wvb
-  implements wuw
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetMusicListConfig;
+
+public class wvb
+  extends wfh
 {
-  public wuw a;
+  public qqstory_service.RspGetMusicListConfig a;
   
-  private wvb(wux paramwux) {}
-  
-  public void a(wur paramwur)
+  public wvb(qqstory_service.RspGetMusicListConfig paramRspGetMusicListConfig)
   {
-    if (wux.a(this.jdField_a_of_type_Wux) != null) {
-      wux.a(this.jdField_a_of_type_Wux).a(0L, paramwur.b(), paramwur);
-    }
-    if (this.jdField_a_of_type_Wuw != null) {
-      this.jdField_a_of_type_Wuw.a(paramwur);
-    }
+    super(paramRspGetMusicListConfig.result);
+    this.a = paramRspGetMusicListConfig;
   }
 }
 

@@ -1,33 +1,37 @@
-import java.util.LinkedList;
-import java.util.List;
+import android.app.Activity;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import org.json.JSONObject;
 
-public class awbw<T>
+public class awbw
+  extends bhyn
 {
-  private List<T> a = new LinkedList();
+  public awbw(UiApiPlugin paramUiApiPlugin, String paramString, JSONObject paramJSONObject) {}
   
-  public int a()
+  public void onDone(bhyo parambhyo)
   {
-    return this.a.size();
-  }
-  
-  public T a()
-  {
-    if (this.a.size() == 0) {
-      return null;
+    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a();
+    if ((localActivity == null) || (localActivity.isFinishing())) {
+      return;
     }
-    return this.a.remove(0);
-  }
-  
-  public void a()
-  {
-    this.a.clear();
-  }
-  
-  public void a(T paramT)
-  {
-    if (!this.a.contains(paramT)) {
-      this.a.add(paramT);
+    if (parambhyo.a == 0)
+    {
+      parambhyo = AbsDownloader.getFilePath(this.jdField_a_of_type_JavaLangString);
+      if (new File(parambhyo).exists())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("UiApiPlugin", 2, "mergeTextToImage->downloadFile success: " + this.jdField_a_of_type_JavaLangString);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, parambhyo, 0);
+        return;
+      }
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("UiApiPlugin", 2, "mergeTextToImage->downloadFile failed: " + this.jdField_a_of_type_JavaLangString);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, null, -2);
   }
 }
 

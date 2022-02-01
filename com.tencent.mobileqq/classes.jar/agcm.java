@@ -1,11 +1,23 @@
-import com.tencent.mobileqq.activity.aio.item.HeartBreakCombolEffectView;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import com.tencent.mobileqq.util.SharePreferenceUtils;
 
 public class agcm
+  implements agei
 {
-  public int a;
-  public String a;
+  public agcm(DoodlePanel paramDoodlePanel) {}
   
-  public agcm(HeartBreakCombolEffectView paramHeartBreakCombolEffectView) {}
+  public void a(int paramInt)
+  {
+    if (DoodlePanel.a(this.a) != null)
+    {
+      if (DoodlePanel.a(this.a) != null) {
+        DoodlePanel.a(this.a).setTemplateID(paramInt);
+      }
+      DoodlePanel.a(this.a);
+      SharePreferenceUtils.set(this.a.getContext(), "aio_doodle_template_picker_select", String.valueOf(paramInt));
+    }
+  }
 }
 
 

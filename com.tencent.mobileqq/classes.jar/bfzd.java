@@ -1,104 +1,33 @@
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.Nullable;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
 
 public class bfzd
+  extends bfyf
 {
-  private static int c;
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener;
-  private bfzf jdField_a_of_type_Bfzf;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int b;
-  
-  public bfzd(View paramView, int paramInt, bfzf parambfzf)
+  public bfzd(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Bfzf = parambfzf;
-    b();
+    super(paramQQAppInterface, paramContext, paramSessionInfo);
+    this.jdField_a_of_type_Int = 13;
   }
   
-  public static int a(int paramInt)
+  @Nullable
+  public bfyg a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
   {
-    int i;
-    if (paramInt == 0) {
-      i = AIOUtils.dp2px(210.0F, BaseApplicationImpl.getContext().getResources());
+    paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().queryMsgItemByUniseq(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, paramLong1);
+    if ((paramList != null) && (a(paramList, paramLong2, paramLong3))) {
+      return new bfyg(true, this.jdField_a_of_type_AndroidContentContext.getString(2131698221), bffr.a(paramInt1, paramLong1, paramInt2), paramList.senderuin);
     }
-    do
-    {
-      return i;
-      if (c == 0) {
-        c = b();
-      }
-      i = paramInt;
-    } while (paramInt <= c);
-    return c;
+    return null;
   }
   
-  private static int b()
-  {
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    if (bjvx.a(localBaseApplication)) {
-      i = bjvx.a(localBaseApplication);
-    }
-    for (int i = (int)((localBaseApplication.getResources().getDisplayMetrics().heightPixels + i) * 0.4D);; i = (int)(localBaseApplication.getResources().getDisplayMetrics().heightPixels * 0.4D))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SoftKeyboardHeight", 2, new Object[] { "getMaxEmotionPanelHeight, max keyboard height:", Integer.valueOf(i) });
-      }
-      return i;
-    }
-  }
+  public void a(int paramInt, Object paramObject, String paramString) {}
   
-  private void b()
-  {
-    this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new bfze(this);
-  }
-  
-  public int a()
-  {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("sp_soft_keyboard", 0);
-    int i;
-    if (localSharedPreferences.contains("key_height"))
-    {
-      i = localSharedPreferences.getInt("key_height", 0);
-      this.jdField_a_of_type_Bfzf.onShowed(i, true);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SoftKeyboardHeight", 2, new Object[] { "getSoftKeyboardHeight, keyboard height:", Integer.valueOf(i) });
-      }
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
-      return i;
-      i = 0;
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener != null)
-    {
-      if (Build.VERSION.SDK_INT < 16) {
-        this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
-  }
+  public void b(int paramInt, Object paramObject, String paramString) {}
 }
 
 

@@ -1,64 +1,50 @@
 package com.tencent.mobileqq.activity.faceunlock;
 
-import aiuw;
-import android.hardware.Camera;
-import android.hardware.Camera.Parameters;
-import android.hardware.Camera.Size;
+import ajql;
 import android.media.MediaRecorder;
-import android.os.Handler;
-import bbuc;
 import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import java.util.List;
 
 public class QFaceUnlockCameraCaptureUnit$3
   implements Runnable
 {
-  public QFaceUnlockCameraCaptureUnit$3(aiuw paramaiuw) {}
+  public QFaceUnlockCameraCaptureUnit$3(ajql paramajql, boolean paramBoolean) {}
   
   public void run()
   {
+    if (ajql.a(this.this$0) != null) {}
     try
     {
       if (QLog.isColorLevel()) {
-        QLog.i("QFaceUnlockCameraCaptureUnit", 0, "startRecord begin");
+        QLog.i("QFaceUnlockCameraCaptureUnit", 0, "stopRecord begin");
       }
-      if (aiuw.a(this.this$0) == null) {
-        aiuw.a(this.this$0, new MediaRecorder());
+      ajql.a(this.this$0).stop();
+      ajql.a(this.this$0).reset();
+      if (QLog.isColorLevel()) {
+        QLog.i("QFaceUnlockCameraCaptureUnit", 0, "stopRecord end");
       }
-      if (bbuc.a().a != null)
+    }
+    catch (IllegalStateException localIllegalStateException)
+    {
+      for (;;)
       {
-        Object localObject2 = bbuc.a().a.getParameters();
-        Object localObject1 = ((Camera.Parameters)localObject2).getSupportedPreviewSizes();
-        localObject2 = ((Camera.Parameters)localObject2).getSupportedVideoSizes();
-        localObject1 = aiuw.a(this.this$0, (List)localObject1, (List)localObject2);
-        bbuc.a().a.unlock();
-        aiuw.a(this.this$0).setOrientationHint(270);
-        aiuw.a(this.this$0).reset();
-        aiuw.a(this.this$0).setCamera(bbuc.a().a);
-        aiuw.a(this.this$0).setAudioSource(0);
-        aiuw.a(this.this$0).setVideoSource(1);
-        aiuw.a(this.this$0).setOutputFormat(2);
-        aiuw.a(this.this$0).setVideoSize(((Camera.Size)localObject1).width, ((Camera.Size)localObject1).height);
-        aiuw.a(this.this$0).setVideoEncoder(2);
-        aiuw.a(this.this$0).setAudioEncoder(3);
-        aiuw.a(this.this$0).setVideoEncodingBitRate(5242880);
-        aiuw.a(this.this$0, ShortVideoUtils.getLocalShortVideoPath());
-        aiuw.a(this.this$0).setOutputFile(aiuw.a(this.this$0));
-        aiuw.a(this.this$0).prepare();
-        aiuw.a(this.this$0).start();
-        aiuw.a(this.this$0).postDelayed(aiuw.a(this.this$0), 1000L);
-        if (QLog.isColorLevel()) {
-          QLog.i("QFaceUnlockCameraCaptureUnit", 0, "startRecord end");
-        }
+        QLog.e("QFaceUnlockCameraCaptureUnit", 1, "stopRecord failed, IllegalStateException: " + localIllegalStateException.getMessage());
       }
-      return;
+    }
+    catch (RuntimeException localRuntimeException)
+    {
+      for (;;)
+      {
+        QLog.e("QFaceUnlockCameraCaptureUnit", 1, "stopRecord failed, RuntimeException: " + localRuntimeException.getMessage());
+      }
     }
     catch (Exception localException)
     {
-      QLog.e("QFaceUnlockCameraCaptureUnit", 1, "startRecord fail, Exception:" + localException.getMessage());
-      aiuw.a(this.this$0, false);
+      for (;;)
+      {
+        QLog.e("QFaceUnlockCameraCaptureUnit", 1, "stopRecord failed, Exception: " + localException.getMessage());
+      }
     }
+    ajql.a(this.this$0, this.a);
   }
 }
 

@@ -9,9 +9,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import bmqh;
-import bmyx;
-import bnjl;
+import bofz;
+import boop;
+import bozd;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -23,8 +23,8 @@ public abstract class ProviderView
   public Context a;
   protected View a;
   protected ViewGroup a;
-  public bmyx a;
-  protected bnjl a;
+  public boop a;
+  protected bozd a;
   protected AppInterface a;
   protected QIMSlidingTabView a;
   protected Handler b;
@@ -64,14 +64,14 @@ public abstract class ProviderView
   
   public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = bmqh.a();
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = bofz.a();
     if (this.jdField_b_of_type_AndroidViewView == null)
     {
-      paramBundle = LayoutInflater.from(getContext()).inflate(2131560842, this, false);
+      paramBundle = LayoutInflater.from(getContext()).inflate(2131560902, this, false);
       addView(paramBundle);
-      this.jdField_b_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)paramBundle.findViewById(2131373064));
-      this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)paramBundle.findViewById(2131373059));
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramBundle.findViewById(2131373061));
+      this.jdField_b_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)paramBundle.findViewById(2131373274));
+      this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)paramBundle.findViewById(2131373269));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramBundle.findViewById(2131373271));
     }
     paramBundle = this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
     paramBundle.height = UIUtils.dip2px(getContext(), this.f);
@@ -84,7 +84,7 @@ public abstract class ProviderView
       {
         this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.setVisibility(0);
         if (this.e == 1) {
-          findViewById(2131373065).setVisibility(0);
+          findViewById(2131373275).setVisibility(0);
         }
       }
       this.d = true;
@@ -120,14 +120,14 @@ public abstract class ProviderView
     if (this.jdField_a_of_type_AndroidViewView == null) {}
     try
     {
-      paramBundle = LayoutInflater.from(getContext()).inflate(2131560842, this, false);
+      paramBundle = LayoutInflater.from(getContext()).inflate(2131560902, this, false);
       addView(paramBundle);
       if (this.jdField_b_of_type_AndroidViewView == null)
       {
         this.jdField_b_of_type_AndroidViewView = paramBundle;
-        this.jdField_b_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)this.jdField_b_of_type_AndroidViewView.findViewById(2131373064));
-        this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)this.jdField_b_of_type_AndroidViewView.findViewById(2131373059));
-        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_b_of_type_AndroidViewView.findViewById(2131373061));
+        this.jdField_b_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)this.jdField_b_of_type_AndroidViewView.findViewById(2131373274));
+        this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)this.jdField_b_of_type_AndroidViewView.findViewById(2131373269));
+        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_b_of_type_AndroidViewView.findViewById(2131373271));
       }
       paramBundle = LayoutInflater.from(getContext()).inflate(a(), this, false);
       if (this.jdField_a_of_type_AndroidViewView == null) {
@@ -185,9 +185,9 @@ public abstract class ProviderView
     this.g = paramInt;
   }
   
-  public void setDoodleEventListener(bnjl parambnjl)
+  public void setDoodleEventListener(bozd parambozd)
   {
-    this.jdField_a_of_type_Bnjl = parambnjl;
+    this.jdField_a_of_type_Bozd = parambozd;
   }
   
   public void setNeedTabBar(boolean paramBoolean)
@@ -195,9 +195,9 @@ public abstract class ProviderView
     this.jdField_c_of_type_Boolean = paramBoolean;
   }
   
-  public void setProviderViewListener(bmyx parambmyx)
+  public void setProviderViewListener(boop paramboop)
   {
-    this.jdField_a_of_type_Bmyx = parambmyx;
+    this.jdField_a_of_type_Boop = paramboop;
   }
   
   public void setTabBarPosition(int paramInt)

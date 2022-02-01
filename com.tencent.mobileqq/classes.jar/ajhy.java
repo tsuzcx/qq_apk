@@ -1,8 +1,7 @@
-import android.widget.TextView;
-
-class ajhy
+public class ajhy
 {
-  public TextView a;
+  public int b;
+  public int c;
 }
 
 

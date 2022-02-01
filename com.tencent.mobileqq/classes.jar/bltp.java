@@ -1,115 +1,170 @@
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.biz.richframework.network.request.GetWatermarkDictRequest;
-import com.tencent.biz.videostory.config.VSConfigManager;
-import com.tencent.mobileqq.app.soso.LbsManagerService;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.ttpic.baseutils.log.LogUtils;
-import com.tencent.ttpic.openapi.watermark.LogicDataManager;
-import java.util.Map;
+import android.os.Bundle;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
-public class bltp
+class bltp
+  extends bkjp
 {
-  private static volatile bltp jdField_a_of_type_Bltp;
-  private static final String jdField_a_of_type_JavaLangString = bltp.class.getSimpleName();
-  private int jdField_a_of_type_Int;
-  private blvb jdField_a_of_type_Blvb;
-  private SosoInterface.SosoLocation jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation;
-  
-  public static bltp a()
-  {
-    if (jdField_a_of_type_Bltp == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bltp == null) {
-        jdField_a_of_type_Bltp = new bltp();
-      }
-      return jdField_a_of_type_Bltp;
-    }
-    finally {}
-  }
-  
-  private void a(double paramDouble1, double paramDouble2)
-  {
-    long l = dw.a();
-    GetWatermarkDictRequest localGetWatermarkDictRequest = new GetWatermarkDictRequest(new COMM.StCommonExt(), paramDouble1, paramDouble2, String.valueOf(l));
-    VSNetworkHelper.getInstance().sendRequest(localGetWatermarkDictRequest, new bltr(this));
-  }
-  
-  private void a(Map<String, String> paramMap)
-  {
-    LogicDataManager.getInstance().addWatermarkDict(paramMap);
-    String str = (String)paramMap.get("City");
-    if (str != null)
-    {
-      bmbx.b(jdField_a_of_type_JavaLangString, "[prepareWMData]displayName : " + str);
-      LogicDataManager.getInstance().setLocation(str);
-    }
-    str = (String)paramMap.get("Weather");
-    if (str != null) {}
-    try
-    {
-      i = Integer.parseInt(str);
-      bmbx.b(jdField_a_of_type_JavaLangString, "[prepareWMData]weatherType : " + i);
-      LogicDataManager.getInstance().setWeather(i);
-      LogicDataManager.getInstance().setWeatherType(i);
-      paramMap = (String)paramMap.get("TempCurr");
-      if (paramMap != null)
-      {
-        bmbx.b(jdField_a_of_type_JavaLangString, "[prepareWMData]tempCurr : " + paramMap);
-        LogicDataManager.getInstance().setTemperature(paramMap.replace(amtj.a(2131715894), ""));
-      }
-      return;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
-      {
-        LogUtils.e(localNumberFormatException);
-        int i = 0;
-      }
-    }
-  }
-  
-  public blvb a()
-  {
-    return this.jdField_a_of_type_Blvb;
-  }
-  
-  public SosoInterface.SosoLocation a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation;
-  }
+  bltp(blto paramblto, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void a()
   {
-    this.jdField_a_of_type_Int = ((this.jdField_a_of_type_Int + 1) % 50);
-    if (this.jdField_a_of_type_Int != 1) {
-      return;
-    }
-    bmbx.b(jdField_a_of_type_JavaLangString, "updateWMProps start");
-    LbsManagerService.startLocation(new bltq(this, "qq_story_water_mark", false));
-  }
-  
-  public void a(blvb paramblvb)
-  {
-    this.jdField_a_of_type_Blvb = paramblvb;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    VSConfigManager.getInstance().setValue("WM_LIST_CONFIG_CHANGED", Boolean.valueOf(paramBoolean));
-  }
-  
-  public void b()
-  {
-    try
+    if ((this.jdField_a_of_type_Blto.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Blto.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
     {
-      jdField_a_of_type_Bltp = null;
-      this.jdField_a_of_type_Blvb = null;
+      Bundle localBundle = new Bundle();
+      localBundle.putString("gmesdk_event_key", "gmesdk_event_key_exit_room");
+      ((bltq)this.jdField_a_of_type_Blto.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
+    }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if ((paramInt == 0) || (paramInt == 1003)) {
+      blsw.a().b(this.jdField_a_of_type_Blto.d, this.jdField_a_of_type_Boolean, this.b);
+    }
+    while ((this.jdField_a_of_type_Blto.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_Blto.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
       return;
     }
-    finally {}
+    Bundle localBundle = new Bundle();
+    localBundle.putString("gmesdk_event_key", "gmesdk_event_key_enterroom");
+    localBundle.putInt("gmesdk_event_ret", paramInt);
+    localBundle.putString("gmesdk_event_value_eterroom_ret_msg", paramString);
+    ((bltq)this.jdField_a_of_type_Blto.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
+  }
+  
+  public void a(int paramInt, String[] paramArrayOfString)
+  {
+    int i = 0;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      return;
+      paramInt = 0;
+      String str;
+      Bundle localBundle;
+      while (paramInt < paramArrayOfString.length)
+      {
+        str = paramArrayOfString[paramInt];
+        if ((this.jdField_a_of_type_Blto.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Blto.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+        {
+          localBundle = new Bundle();
+          localBundle.putString("gmesdk_event_key", "gmesdk_event_key_member_info");
+          localBundle.putBoolean("gmesdk_event_key_member_speaking", false);
+          localBundle.putString("gmesdk_event_key_member_uin", str);
+          ((bltq)this.jdField_a_of_type_Blto.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
+        }
+        paramInt += 1;
+      }
+      continue;
+      while (i < paramArrayOfString.length)
+      {
+        str = paramArrayOfString[i];
+        if (!this.jdField_a_of_type_Blto.jdField_a_of_type_JavaUtilList.contains(str))
+        {
+          this.jdField_a_of_type_Blto.jdField_a_of_type_JavaUtilList.add(str);
+          if ((this.jdField_a_of_type_Blto.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Blto.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+          {
+            localBundle = new Bundle();
+            localBundle.putString("gmesdk_event_key", "gmesdk_event_key_member_info");
+            localBundle.putBoolean("gmesdk_event_key_member_speaking", true);
+            localBundle.putString("gmesdk_event_key_member_uin", str);
+            ((bltq)this.jdField_a_of_type_Blto.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
+          }
+        }
+        i += 1;
+      }
+      continue;
+      paramInt = 0;
+      while (paramInt < paramArrayOfString.length)
+      {
+        str = paramArrayOfString[paramInt];
+        if (this.jdField_a_of_type_Blto.jdField_a_of_type_JavaUtilList.contains(str))
+        {
+          this.jdField_a_of_type_Blto.jdField_a_of_type_JavaUtilList.remove(str);
+          if ((this.jdField_a_of_type_Blto.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Blto.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+          {
+            localBundle = new Bundle();
+            localBundle.putString("gmesdk_event_key", "gmesdk_event_key_member_info");
+            localBundle.putBoolean("gmesdk_event_key_member_speaking", false);
+            localBundle.putString("gmesdk_event_key_member_uin", str);
+            ((bltq)this.jdField_a_of_type_Blto.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
+          }
+        }
+        paramInt += 1;
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    Bundle localBundle;
+    if ((this.jdField_a_of_type_Blto.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Blto.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+    {
+      localBundle = new Bundle();
+      if (!paramBoolean) {
+        break label70;
+      }
+      localBundle.putString("gmesdk_event_key", "gmesdk_event_key_open_mic");
+      localBundle.putInt("gmesdk_event_ret", paramInt);
+    }
+    for (;;)
+    {
+      ((bltq)this.jdField_a_of_type_Blto.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
+      return;
+      label70:
+      localBundle.putString("gmesdk_event_key", "gmesdk_event_key_close_mic");
+      localBundle.putInt("gmesdk_event_ret", paramInt);
+    }
+  }
+  
+  public void a(String[] paramArrayOfString) {}
+  
+  public void b(int paramInt, String paramString)
+  {
+    if ((this.jdField_a_of_type_Blto.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Blto.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("gmesdk_event_key", "gmesdk_event_key_enterroom");
+      localBundle.putInt("gmesdk_event_ret", paramInt);
+      localBundle.putString("gmesdk_event_value_eterroom_ret_msg", paramString);
+      ((bltq)this.jdField_a_of_type_Blto.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
+    }
+  }
+  
+  public void b(boolean paramBoolean, int paramInt)
+  {
+    Bundle localBundle;
+    if ((this.jdField_a_of_type_Blto.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Blto.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+    {
+      localBundle = new Bundle();
+      if (!paramBoolean) {
+        break label70;
+      }
+      localBundle.putString("gmesdk_event_key", "gmesdk_event_key_open_speaker");
+      localBundle.putInt("gmesdk_event_ret", paramInt);
+    }
+    for (;;)
+    {
+      ((bltq)this.jdField_a_of_type_Blto.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
+      return;
+      label70:
+      localBundle.putString("gmesdk_event_key", "gmesdk_event_key_close_speaker");
+      localBundle.putInt("gmesdk_event_ret", paramInt);
+    }
+  }
+  
+  public void c(int paramInt, String paramString)
+  {
+    if ((this.jdField_a_of_type_Blto.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Blto.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("gmesdk_event_key", "gmesdk_event_key_room_disconnect");
+      localBundle.putInt("gmesdk_event_ret", paramInt);
+      localBundle.putString("gmesdk_event_value_room_disconnect_ret_msg", paramString);
+      ((bltq)this.jdField_a_of_type_Blto.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
+    }
   }
 }
 

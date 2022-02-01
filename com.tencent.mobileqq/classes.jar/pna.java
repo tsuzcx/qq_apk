@@ -1,15 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class pna
-  extends pkt
+class pna
+  implements owy
 {
-  public pna(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment) {}
+  pna(pmz parampmz, ArticleInfo paramArticleInfo) {}
   
-  public void a(TopBannerInfo paramTopBannerInfo)
+  public void a(oxb paramoxb)
   {
-    if (paramTopBannerInfo.mChannelId == 2000000000) {
-      this.a.a(paramTopBannerInfo);
+    if (paramoxb.a() == 0)
+    {
+      pbq.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, new CommentInfo(), false);
+      QQToast.a(pmz.a(this.jdField_a_of_type_Pmz).a(), 2, pmz.a(this.jdField_a_of_type_Pmz).a().getString(2131717660), 0).a();
+    }
+    for (;;)
+    {
+      pmz.a(this.jdField_a_of_type_Pmz);
+      pmz.a(this.jdField_a_of_type_Pmz, null);
+      return;
+      QQToast.a(BaseApplication.getContext(), 1, anvx.a(2131712346), 0).a();
     }
   }
 }

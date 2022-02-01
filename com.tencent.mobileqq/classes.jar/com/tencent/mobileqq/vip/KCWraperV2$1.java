@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.vip;
 
 import android.content.Context;
-import bgom;
-import bgon;
-import bgoo;
-import bgop;
-import bgoq;
-import bgox;
+import bhyw;
+import bhyx;
+import bhyy;
+import bhyz;
+import bhza;
+import bhzh;
 import com.tencent.mobileqq.pluginsdk.IOUtil;
 import com.tencent.qphone.base.util.QLog;
 import dualsim.common.IKingCardInterface;
@@ -17,7 +17,7 @@ import tmsdk.common.KcSdkShellManager;
 public class KCWraperV2$1
   implements Runnable
 {
-  public KCWraperV2$1(bgon parambgon, File paramFile, Context paramContext) {}
+  public KCWraperV2$1(bhyx parambhyx, File paramFile, Context paramContext) {}
   
   public void run()
   {
@@ -33,25 +33,25 @@ public class KCWraperV2$1
           return;
         }
         if (QLog.isColorLevel()) {
-          KcSdkShellManager.getInstance().setLogPrint(new bgoo(this));
+          KcSdkShellManager.getInstance().setLogPrint(new bhyy(this));
         }
         KcSdkShellManager.getInstance().setTMSDKLogEnable(QLog.isColorLevel());
-        KcSdkShellManager.getInstance().setPhoneInfoBridge(new bgop(this));
-        if (bgox.a(this.jdField_a_of_type_AndroidContentContext))
+        KcSdkShellManager.getInstance().setPhoneInfoBridge(new bhyz(this));
+        if (bhzh.a(this.jdField_a_of_type_AndroidContentContext))
         {
           boolean bool = KcSdkShellManager.getInstance().initInBaseProcess(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), "00047", "ck_shoujiqq_dfhdsuif5f6d_f4d89e");
           QLog.e(this.this$0.a(), 1, "initInBaseProcess");
           i = bool;
           if (KcSdkShellManager.getInstance().getKingCardInterface() != null)
           {
-            KcSdkShellManager.getInstance().getKingCardInterface().registerOnChangeListener(new bgoq());
+            KcSdkShellManager.getInstance().getKingCardInterface().registerOnChangeListener(new bhza());
             i = bool;
           }
           if (i != 0) {
             break label268;
           }
           QLog.e(this.this$0.a(), 1, "tryLoad failed");
-          bgom.a(false);
+          bhyw.a(false);
           this.this$0.a.notify();
           return;
         }
@@ -60,7 +60,7 @@ public class KCWraperV2$1
       continue;
       label268:
       this.this$0.a.set(true);
-      bgom.a(true);
+      bhyw.a(true);
     }
   }
 }

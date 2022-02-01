@@ -1,15 +1,21 @@
-class lkl
+import java.util.Comparator;
+
+final class lkl
+  implements Comparator<lkk>
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
-  int c = 0;
-  int d = 0;
-  int e = 0;
-  int f = 0;
-  int g = 0;
-  int h = 0;
-  
-  lkl(lkh paramlkh) {}
+  public int a(lkk paramlkk1, lkk paramlkk2)
+  {
+    if (paramlkk1 == paramlkk2) {
+      return 0;
+    }
+    if (paramlkk1 == null) {
+      return -1;
+    }
+    if (paramlkk2 == null) {
+      return 1;
+    }
+    return paramlkk1.a - paramlkk2.a;
+  }
 }
 
 

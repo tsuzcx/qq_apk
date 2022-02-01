@@ -1,48 +1,33 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.avgame.ui.AvGameLoadingActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.wtogether.adapter.QGroupExpandableListAdapter;
+import com.tencent.widget.SimpleTextView;
 
-class mxr
-  implements DialogInterface.OnClickListener
+public class mxr
+  extends blfn
 {
-  mxr(mxn parammxn, Activity paramActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public mxr(QGroupExpandableListAdapter paramQGroupExpandableListAdapter, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    if (paramInt == 1)
-    {
-      paramDialogInterface.cancel();
-      if (this.jdField_a_of_type_AndroidAppActivity != null)
-      {
-        paramDialogInterface = this.jdField_a_of_type_Mxn.a();
-        if (TextUtils.isEmpty(paramDialogInterface))
-        {
-          QLog.e("AvGameManager", 1, "preCheckIsUserGamePlaying roomPlayingId empty");
-          QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131690382, 0).a();
-        }
-      }
-      for (;;)
-      {
-        bcef.b(mxn.a(this.jdField_a_of_type_Mxn), "dc00898", "", "", "0X800B016", "0X800B016", 0, 0, "", "", "", "");
-        return;
-        mxn.a(this.jdField_a_of_type_Mxn);
-        AvGameLoadingActivity.a(false, this.jdField_a_of_type_AndroidAppActivity, null, paramDialogInterface, null, "", false);
-        continue;
-        QLog.e("AvGameManager", 1, "alertDialogWithRetCode createAvGameRoom context  null ");
-      }
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+  }
+  
+  public View a(int paramInt, Object paramObject, blfm paramblfm, View.OnClickListener paramOnClickListener)
+  {
+    paramblfm = super.a(paramInt, paramObject, paramblfm, paramOnClickListener);
+    if ((paramblfm instanceof SimpleTextView)) {
+      paramblfm.setTag(paramObject);
     }
-    paramDialogInterface.cancel();
-    QLog.d("AvGameManager", 2, "showInPlayDialog dialog cancel");
-    bcef.b(mxn.a(this.jdField_a_of_type_Mxn), "dc00898", "", "", "0X800B017", "0X800B017", 0, 0, "", "", "", "");
+    return paramblfm;
+  }
+  
+  public void a(int paramInt, Object paramObject, blfm[] paramArrayOfblfm)
+  {
+    this.a.a(paramInt, paramArrayOfblfm, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mxr
  * JD-Core Version:    0.7.0.1
  */

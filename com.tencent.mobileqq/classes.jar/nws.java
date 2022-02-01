@@ -1,43 +1,41 @@
-import android.os.AsyncTask;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
+import com.tencent.biz.eqq.CrmIvrText.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.text.QQTextParseLinkUtil;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class nws
+  extends QQText
 {
-  adjt jdField_a_of_type_Adjt;
-  WeakReference<AccountDetailActivity> jdField_a_of_type_MqqUtilWeakReference;
-  nwu jdField_a_of_type_Nwu;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+  String jdField_a_of_type_JavaLangString = "";
+  String b = "";
   
-  public nws(QQAppInterface paramQQAppInterface, AccountDetailActivity paramAccountDetailActivity)
+  public nws(CharSequence paramCharSequence, int paramInt1, int paramInt2, MessageRecord paramMessageRecord, String paramString1, String paramString2, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Adjt = new adjt(paramQQAppInterface);
-    this.jdField_a_of_type_Adjt.b = paramAccountDetailActivity.e;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAccountDetailActivity);
-    this.jdField_a_of_type_Nwu = new nwu(paramAccountDetailActivity);
+    super(paramCharSequence, paramInt1, paramInt2, paramMessageRecord);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public void a()
+  static void a(View paramView, String paramString1, String paramString2, QQAppInterface paramQQAppInterface)
   {
-    adjx localadjx = new adjx();
-    localadjx.d = this.jdField_a_of_type_Adjt.b;
-    localadjx.a = null;
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() == null) {
-      return;
-    }
-    this.jdField_a_of_type_Adjt.a((BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get(), localadjx);
-    this.jdField_a_of_type_Adjt.a(this.jdField_a_of_type_Nwu);
-    this.jdField_a_of_type_Adjt.b((BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get());
-    new nwt(this, localadjx).execute(new Void[0]);
+    paramView.post(new CrmIvrText.1(paramQQAppInterface, paramView, paramString1));
   }
   
-  public void b()
+  public void parseLinkSpan()
   {
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() != null)
+    super.parseLinkSpan();
+    Matcher localMatcher = Pattern.compile(QQTextParseLinkUtil.LINK_REGEX + "|" + "QQ语音").matcher(this.mText);
+    while (localMatcher.find())
     {
-      this.jdField_a_of_type_Adjt.a(null);
-      this.jdField_a_of_type_Adjt.a((BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get());
+      int i = localMatcher.start();
+      int j = localMatcher.end();
+      addSpan(new nwt(this, this.mText.substring(i, j)), i, j, 33);
     }
   }
 }

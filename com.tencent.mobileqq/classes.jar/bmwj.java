@@ -1,22 +1,9 @@
-import android.graphics.RectF;
+import java.io.File;
 
 public class bmwj
-  extends bmuy
 {
-  private int a;
-  
-  public bmwj(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  void a(int paramInt, bmuz parambmuz)
-  {
-    RectF localRectF = parambmuz.a;
-    localRectF.top += this.a * paramInt;
-    parambmuz = parambmuz.a;
-    parambmuz.bottom += this.a * paramInt;
-  }
+  public static final String a = bmwx.b + File.separator + "camera";
+  public static final String b = a + File.separator + "photo_compress";
 }
 
 

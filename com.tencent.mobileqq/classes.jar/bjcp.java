@@ -1,28 +1,17 @@
-import android.content.Intent;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.launcher.shell.IActivityResultListener;
-import com.tencent.qqmini.sdk.launcher.shell.IActivityResultManager;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-class bjcp
-  implements IActivityResultListener
+public class bjcp
+  extends afgr
 {
-  bjcp(bjce parambjce, IActivityResultManager paramIActivityResultManager, AsyncResult paramAsyncResult) {}
-  
-  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    boolean bool = false;
-    if (paramInt1 == 9)
-    {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellIActivityResultManager.removeActivityResultListener(this);
-      paramIntent = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult;
-      if (paramInt2 == 0) {
-        bool = true;
-      }
-      paramIntent.onReceiveResult(bool, null);
-      return true;
-    }
-    return false;
-  }
+  public CheckBox a;
+  public ImageView a;
+  public RelativeLayout b;
+  public String b;
+  public TextView c;
+  public TextView d;
 }
 
 

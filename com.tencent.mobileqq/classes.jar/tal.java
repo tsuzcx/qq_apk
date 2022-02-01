@@ -1,31 +1,17 @@
-import android.view.View;
+import android.graphics.Canvas;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
 public class tal
-  extends qjj
+  implements Function1<Canvas, Unit>
 {
-  private final String a;
+  public tal(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public tal(int paramInt1, int paramInt2, int paramInt3, String paramString)
+  public Unit a(Canvas paramCanvas)
   {
-    super(paramInt1, paramInt2, paramInt3);
-    this.a = paramString;
-  }
-  
-  public tal(String paramString, int paramInt)
-  {
-    super(-15504151, paramInt, 860716207);
-    this.a = paramString;
-  }
-  
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public void onClick(View paramView)
-  {
-    super.onClick(paramView);
-    pay.a(paramView.getContext(), this.a);
+    ReadInJoyListViewGroup.b(this.a, paramCanvas);
+    return null;
   }
 }
 

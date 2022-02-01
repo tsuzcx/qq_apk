@@ -1,28 +1,25 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adgf
-  implements aren
+  implements View.OnClickListener
 {
-  public adgf(EmosmActivity paramEmosmActivity) {}
+  public adgf(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onPackageAdded(EmoticonPackage paramEmoticonPackage)
+  public void onClick(View paramView)
   {
-    int i = 0;
-    while (i < this.a.jdField_a_of_type_JavaUtilArrayList.size())
+    switch (paramView.getId())
     {
-      if (((EmoticonPackage)this.a.jdField_a_of_type_JavaUtilArrayList.get(i)).epId.equals(paramEmoticonPackage.epId)) {
-        return;
-      }
-      i += 1;
     }
-    this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      AddFriendVerifyActivity.c(this.a);
+    }
   }
-  
-  public void onPackageDeleted(EmoticonPackage paramEmoticonPackage) {}
-  
-  public void onPackageMoved(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
 }
 
 

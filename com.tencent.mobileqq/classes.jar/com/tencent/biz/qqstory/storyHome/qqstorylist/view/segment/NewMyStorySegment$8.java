@@ -6,23 +6,23 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.biz.qqstory.utils.UIUtils;
-import xpu;
-import xuh;
+import yep;
+import yjc;
 
 public class NewMyStorySegment$8
   implements Runnable
 {
-  public NewMyStorySegment$8(xuh paramxuh, TextView paramTextView, View paramView, ImageView paramImageView) {}
+  public NewMyStorySegment$8(yjc paramyjc, TextView paramTextView, View paramView, ImageView paramImageView) {}
   
   public void run()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(xuh.a(this.this$0, xuh.a(this.this$0), this.jdField_a_of_type_AndroidViewView.getWidth() - this.jdField_a_of_type_AndroidWidgetImageView.getWidth() - UIUtils.dip2px(xuh.a(this.this$0), 70.0F), this.jdField_a_of_type_AndroidWidgetTextView.getPaint()));
-    if (xuh.a(this.this$0).f > 0)
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(yjc.a(this.this$0, yjc.a(this.this$0), this.jdField_a_of_type_AndroidViewView.getWidth() - this.jdField_a_of_type_AndroidWidgetImageView.getWidth() - UIUtils.dip2px(yjc.a(this.this$0), 70.0F), this.jdField_a_of_type_AndroidWidgetTextView.getPaint()));
+    if (yjc.a(this.this$0).f > 0)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-65536);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(xuh.b(this.this$0).getResources().getColor(2131167106));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(yjc.b(this.this$0).getResources().getColor(2131167120));
   }
 }
 

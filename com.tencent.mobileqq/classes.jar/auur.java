@@ -1,86 +1,40 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import android.app.Activity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.forward.ForwardShareCardOption;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.util.HashMap;
 
-class auur
-  implements BusinessObserver
+public class auur
+  extends bjyh
 {
-  auur(auun paramauun, Intent paramIntent) {}
+  public auur(ForwardShareCardOption paramForwardShareCardOption) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  protected void a(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    this.jdField_a_of_type_Auun.jdField_a_of_type_Bhht.dismiss();
-    if (paramBoolean) {}
+    this.a.z();
+    if (ForwardShareCardOption.a(this.a) != -1)
+    {
+      if ((!paramBoolean) || (paramHashMap == null)) {
+        break label151;
+      }
+      String str = (String)paramHashMap.get("uin");
+      paramHashMap = (String)paramHashMap.get("url");
+      ForwardShareCardOption.a(this.a, paramHashMap);
+      ForwardShareCardOption.b(this.a, paramHashMap);
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardOption.ForwardShareCardOption", 2, "mTroopVerifyLink=" + ForwardShareCardOption.a(this.a) + " mTroopNotNeedVefifyLink=" + ForwardShareCardOption.b(this.a));
+      }
+      if ((str != null) && (str.equals(ForwardShareCardOption.c(this.a)))) {
+        ForwardShareCardOption.a(this.a);
+      }
+    }
     for (;;)
     {
-      try
-      {
-        Object localObject = paramBundle.getByteArray("data");
-        if (localObject != null)
-        {
-          paramBundle = new GetAppInfoProto.GetAppinfoResponse();
-          paramBundle.mergeFrom((byte[])localObject);
-          if ((paramBundle.has()) && (paramBundle.ret.get() == 0) && (paramBundle.androidInfo != null))
-          {
-            localAndroidInfo = paramBundle.androidInfo;
-            localObject = aadf.a(paramBundle.iconsURL, 16);
-            Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
-            if (localAndroidInfo.sourceUrl != null) {
-              continue;
-            }
-            paramBundle = "";
-            localIntent.putExtra("struct_share_key_source_url", paramBundle);
-            localIntent = this.jdField_a_of_type_AndroidContentIntent;
-            paramBundle = (Bundle)localObject;
-            if (localObject == null) {
-              paramBundle = "";
-            }
-            localIntent.putExtra("struct_share_key_source_icon", paramBundle);
-            localObject = this.jdField_a_of_type_AndroidContentIntent;
-            if (localAndroidInfo.messagetail != null) {
-              continue;
-            }
-            paramBundle = "";
-            ((Intent)localObject).putExtra("struct_share_key_source_name", paramBundle);
-            localObject = this.jdField_a_of_type_AndroidContentIntent;
-            if (localAndroidInfo.packName != null) {
-              continue;
-            }
-            paramBundle = "";
-            ((Intent)localObject).putExtra("struct_share_key_source_a_action_data", paramBundle);
-          }
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        GetAppInfoProto.AndroidInfo localAndroidInfo;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ShareMsgImpl", 2, paramBundle.getMessage());
-        continue;
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("stuctmsg_bytes", paramBundle.getBytes());
-        this.jdField_a_of_type_Auun.jdField_a_of_type_Auus.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, (byte)1);
-      }
-      paramBundle = bchh.a(this.jdField_a_of_type_AndroidContentIntent.getExtras());
-      if (paramBundle != null) {
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ShareMsgImpl", 2, "build struct msg fail");
-      }
+      ForwardShareCardOption.a(this.a, -1);
       return;
-      paramBundle = localAndroidInfo.sourceUrl.get();
-      continue;
-      paramBundle = localAndroidInfo.messagetail.get();
-      continue;
-      paramBundle = localAndroidInfo.packName.get();
+      label151:
+      QQToast.a(this.a.a, 1, this.a.a.getString(2131692824), 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
     }
   }
 }

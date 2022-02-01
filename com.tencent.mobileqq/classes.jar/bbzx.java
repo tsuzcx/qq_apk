@@ -1,78 +1,22 @@
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bbzx
+class bbzx
+  implements View.OnClickListener
 {
-  public long a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  bbzx(bbzv parambbzv, bird parambird) {}
   
-  public bbzx()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Long = -1L;
-  }
-  
-  public bbzx(String paramString1, String paramString2, String paramString3, long paramLong, String paramString4, String paramString5, String paramString6)
-  {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_Long = paramLong;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.f = paramString6;
-  }
-  
-  private static long a(String paramString)
-  {
-    try
-    {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        long l = Long.parseLong(paramString);
-        return l;
-      }
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("SoLoadWidget.SoLocalInfo", 1, paramString, new Object[0]);
-    }
-    return -1L;
-  }
-  
-  public static bbzx a(String paramString)
-  {
-    bbzx localbbzx = new bbzx();
-    try
-    {
-      paramString = Uri.parse(paramString);
-      localbbzx.jdField_a_of_type_JavaLangString = paramString.getQueryParameter("ver");
-      localbbzx.b = paramString.getQueryParameter("name");
-      localbbzx.c = paramString.getQueryParameter("path");
-      localbbzx.jdField_a_of_type_Long = a(paramString.getQueryParameter("crc"));
-      localbbzx.d = paramString.getQueryParameter("url");
-      localbbzx.e = paramString.getQueryParameter("rUrl");
-      localbbzx.f = paramString.getQueryParameter("rPath");
-      return localbbzx;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("SoLoadWidget.SoLocalInfo", 1, paramString, new Object[0]);
-    }
-    return localbbzx;
-  }
-  
-  public String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("?").append("ver=").append(this.jdField_a_of_type_JavaLangString).append("&name=").append(this.b).append("&path=").append(akgd.c(this.c)).append("&crc=").append(this.jdField_a_of_type_Long).append("&url=").append(akgd.c(this.d)).append("&rUrl=").append(akgd.c(this.e)).append("&rPath=").append(akgd.c(this.f));
-    return localStringBuilder.toString();
+    ((aodf)bbzt.a(this.jdField_a_of_type_Bbzv.jdField_a_of_type_Bbzt).getManager(QQManagerFactory.SEARCH_WORD_HISTORY_MANAGER)).a();
+    this.jdField_a_of_type_Bird.dismiss();
+    bbzt.a(this.jdField_a_of_type_Bbzv.jdField_a_of_type_Bbzt);
+    bcjs.a(this.jdField_a_of_type_Bbzv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new ReportModelDC02528().module("all_result").action("clk_his_del").ver2(bcjs.a(this.jdField_a_of_type_Bbzv.jdField_a_of_type_Bbzt.b)).ver7("{experiment_id:" + bcjs.b + "}"));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

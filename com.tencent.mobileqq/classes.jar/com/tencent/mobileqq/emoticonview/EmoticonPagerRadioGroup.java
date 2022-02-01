@@ -50,7 +50,7 @@ public class EmoticonPagerRadioGroup
     Resources localResources;
     if (paramInt == 2)
     {
-      local1.setButtonDrawable(2130847043);
+      local1.setButtonDrawable(2130847141);
       local1.setGravity(17);
       localResources = super.getContext().getResources();
       if (paramInt != 2) {
@@ -76,17 +76,17 @@ public class EmoticonPagerRadioGroup
       return local1;
       if (paramInt == 3)
       {
-        local1.setButtonDrawable(2130847044);
+        local1.setButtonDrawable(2130847142);
         break;
       }
       if (paramInt == 4)
       {
-        local1.setButtonDrawable(2130838641);
+        local1.setButtonDrawable(2130838657);
         break;
       }
       if (this.indicatorDrawable == 0)
       {
-        local1.setButtonDrawable(2130839679);
+        local1.setButtonDrawable(2130839700);
         break;
       }
       local1.setButtonDrawable(this.indicatorDrawable);
@@ -292,7 +292,7 @@ public class EmoticonPagerRadioGroup
         if (this.indicatorDrawable != 0) {
           break label198;
         }
-        localRadioButton.setButtonDrawable(2130839679);
+        localRadioButton.setButtonDrawable(2130839700);
       }
     }
     for (;;)
@@ -344,7 +344,7 @@ public class EmoticonPagerRadioGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPagerRadioGroup
  * JD-Core Version:    0.7.0.1
  */

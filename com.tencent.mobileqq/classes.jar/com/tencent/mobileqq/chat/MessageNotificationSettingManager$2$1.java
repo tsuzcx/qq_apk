@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.chat;
 
-import apka;
-import apkb;
-import apkd;
+import aqne;
+import aqnf;
+import aqnh;
 
 public class MessageNotificationSettingManager$2$1
   implements Runnable
 {
-  public MessageNotificationSettingManager$2$1(apkb paramapkb) {}
+  public MessageNotificationSettingManager$2$1(aqnf paramaqnf) {}
   
   public void run()
   {
-    if (apka.a(this.a.jdField_a_of_type_Apka) != null) {
-      apka.a(this.a.jdField_a_of_type_Apka).a(this.a.jdField_a_of_type_Int);
+    if (aqne.a(this.a.jdField_a_of_type_Aqne) != null) {
+      aqne.a(this.a.jdField_a_of_type_Aqne).a(this.a.jdField_a_of_type_Int);
     }
   }
 }

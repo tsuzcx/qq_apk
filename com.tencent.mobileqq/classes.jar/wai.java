@@ -1,47 +1,46 @@
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
-import com.tencent.biz.qqstory.msgTabNode.view.viewholder.FriendNodeViewHolder.1;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.utils.HexUtil;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import org.json.JSONObject;
 
-public class wai
-  extends wal
+class wai
+  extends SimpleJob<Object>
 {
-  public wai(ViewGroup paramViewGroup)
+  wai(wah paramwah, String paramString)
   {
-    super(paramViewGroup, 2131561663);
+    super(paramString);
   }
   
-  public void a(vxd paramvxd)
+  protected Object a(@NonNull JobContext arg1, @Nullable Void... paramVarArgs)
   {
-    xvv.a("FriendNodeViewHolder", "bindData %s", paramvxd);
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    QQAppInterface localQQAppInterface;
-    String str;
-    if ((localObject instanceof QQAppInterface))
+    Object localObject = (String)((wjl)wjs.a(10)).b("SP_KEY_AUTHKEY_SERVER_INFO", "");
+    synchronized (this.a.b)
     {
-      localQQAppInterface = (QQAppInterface)localObject;
-      str = String.valueOf(paramvxd.b);
-      b(yql.b(paramvxd.g));
-      if (!vzt.h) {
-        break label180;
-      }
-    }
-    label180:
-    for (localObject = ContactUtils.getFriendShowName(localQQAppInterface, str);; localObject = str)
-    {
-      this.a.setNodeName((String)localObject, false);
-      ThreadManager.post(new FriendNodeViewHolder.1(this, localQQAppInterface, str), 8, null, true);
-      if (QLog.isColorLevel())
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        QLog.e("FriendNodeViewHolder", 2, new Object[] { "userItem = " + paramvxd.b + ", name = " + (String)localObject, " list: ", String.valueOf(paramvxd.a) });
-        QLog.e("FriendNodeViewHolder", 2, new Object[] { "data: ", String.valueOf(paramvxd) });
+        long l = this.a.a.jdField_a_of_type_Long;
+        if (l != 0L) {}
       }
-      super.a(paramvxd);
-      return;
+      try
+      {
+        paramVarArgs = new wal();
+        localObject = new JSONObject((String)localObject);
+        paramVarArgs.jdField_a_of_type_Long = ((JSONObject)localObject).getLong("t");
+        paramVarArgs.jdField_a_of_type_ArrayOfByte = HexUtil.hexStr2Bytes(((JSONObject)localObject).getString("ak"));
+        this.a.a = paramVarArgs;
+        ykq.a("Q.qqstory.publish:VideoServerInfoManager", "ServerInfo init success -> %s", localObject);
+        return null;
+      }
+      catch (Exception paramVarArgs)
+      {
+        for (;;)
+        {
+          ykq.b("Q.qqstory.publish:VideoServerInfoManager", "ServerInfo init error , %s", paramVarArgs);
+        }
+      }
     }
   }
 }

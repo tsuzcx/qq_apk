@@ -1,35 +1,26 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
 public class oah
-  implements bjoe
 {
-  public oah(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
+  View jdField_a_of_type_AndroidViewView;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  public ImageView a;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  public ImageView b;
+  TextView b;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  ImageView d;
+  ImageView e;
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    if (ReadInJoyNativeAdFragment.a(this.a)) {
-      return;
-    }
-    ReadInJoyNativeAdFragment.a(this.a, true);
-    paramView = "";
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      ReadInJoyNativeAdFragment.a(this.a).dismiss();
-      QQToast.a(this.a.getActivity(), 2, paramView, 0).b(0);
-      return;
-      obb.a(this.a.getActivity().app, ReadInJoyNativeAdFragment.a(this.a), ReadInJoyNativeAdFragment.b(this.a), ReadInJoyNativeAdFragment.c(this.a), 2, 1, 0);
-      paramView = this.a.getString(2131717423);
-      continue;
-      obb.a(this.a.getActivity().app, ReadInJoyNativeAdFragment.a(this.a), ReadInJoyNativeAdFragment.b(this.a), ReadInJoyNativeAdFragment.c(this.a), 2, 2, 0);
-      paramView = this.a.getString(2131717425);
-    }
-  }
+  public oah(nzu paramnzu) {}
 }
 
 

@@ -7,8 +7,8 @@ import android.graphics.Rect;
 import android.opengl.GLES20;
 import android.opengl.GLES31;
 import android.opengl.Matrix;
-import aojx;
-import baff;
+import apmz;
+import bblu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.minicode.GlUtil;
 import com.tencent.mobileqq.minicode.RecogProxy;
@@ -24,6 +24,7 @@ import java.util.List;
 
 public class MiniCodeRecog
 {
+  protected static final int MAX_CODE_NUM = 2;
   private final String TAG = "MiniRecog.recog";
   private boolean inited;
   private float inputTextAspect;
@@ -116,7 +117,7 @@ public class MiniCodeRecog
     }
   }
   
-  public List<aojx> detect(int paramInt1, int paramInt2, int paramInt3, long paramLong, boolean paramBoolean)
+  public List<apmz> detect(int paramInt1, int paramInt2, int paramInt3, long paramLong, boolean paramBoolean)
   {
     if (!this.inited) {
       return null;
@@ -181,11 +182,11 @@ public class MiniCodeRecog
               QLog.i("MiniRecog.recog", 2, String.format("debug_minicode_point=[%f,%f,%f,%f,%f,%d]", new Object[] { Float.valueOf(localObject2[0]), Float.valueOf(localObject2[1]), Float.valueOf(localObject2[2]), Float.valueOf(localObject2[3]), Float.valueOf(localObject2[4]), Integer.valueOf(m) }));
             }
             Rect localRect = getRect2Src(paramInt2, paramInt3, (float[])localObject2);
-            aojx localaojx = new aojx();
-            localaojx.jdField_a_of_type_AndroidGraphicsRect.set(localRect);
-            localaojx.jdField_a_of_type_Int = m;
-            localaojx.jdField_a_of_type_Float = localObject2[4];
-            localArrayList.add(localaojx);
+            apmz localapmz = new apmz();
+            localapmz.jdField_a_of_type_AndroidGraphicsRect.set(localRect);
+            localapmz.jdField_a_of_type_Int = m;
+            localapmz.jdField_a_of_type_Float = localObject2[4];
+            localArrayList.add(localapmz);
           }
         }
       }
@@ -237,7 +238,7 @@ public class MiniCodeRecog
     }
     if (this.texture31In >= 0)
     {
-      baff.b(this.texture31In);
+      bblu.b(this.texture31In);
       this.texture31In = -1;
     }
     if (this.miniFbo != null) {

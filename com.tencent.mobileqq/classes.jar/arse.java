@@ -1,23 +1,6 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-
-public class arse
-  implements Animation.AnimationListener
+public abstract interface arse
 {
-  public arse(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.l = false;
-    this.a.a.setVisibility(8);
-    this.a.e();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract long a();
 }
 
 

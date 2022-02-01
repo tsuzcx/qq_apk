@@ -1,8 +1,8 @@
 package cooperation.qqreader;
 
-import bkto;
+import bmex;
 import com.tencent.common.app.BaseApplicationImpl;
-import nny;
+import nuz;
 
 public class VipProxyRreLoadReaderProcess$1
   implements Runnable
@@ -11,7 +11,7 @@ public class VipProxyRreLoadReaderProcess$1
   
   public void run()
   {
-    nny.b("354", BaseApplicationImpl.getApplication().getRuntime(), true, new bkto(this));
+    nuz.b("354", BaseApplicationImpl.getApplication().getRuntime(), true, new bmex(this));
   }
 }
 

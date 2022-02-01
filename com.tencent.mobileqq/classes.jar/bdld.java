@@ -1,36 +1,34 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ListView;
-import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.statistics.ReportControllerImpl;
 
-class bdld
-  implements Animator.AnimatorListener
+public class bdld
+  extends aoxs
 {
-  bdld(bdlb parambdlb) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public bdld(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
   {
-    bdlb.a(this.a).setPadding(DisplayUtil.dip2px(bdlb.a(this.a).getContext(), 8.0F), -bdlb.a(this.a), 0, 0);
-    bdlb.a(this.a, false);
+    super(paramQQAppInterface, paramProxyManager);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  protected void a()
   {
-    bdlb.a(this.a).setPadding(DisplayUtil.dip2px(bdlb.a(this.a).getContext(), 8.0F), 0, 0, 0);
-    bdlb.a(this.a, false);
+    bdla localbdla = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getReportController();
+    if ((localbdla != null) && ((localbdla instanceof ReportControllerImpl))) {
+      ((ReportControllerImpl)localbdla).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager);
+    }
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  protected void b()
   {
-    bdlb.a(this.a).setPadding(DisplayUtil.dip2px(bdlb.a(this.a).getContext(), 8.0F), -bdlb.a(this.a), 0, 0);
-    bdlb.a(this.a, true);
+    bdla localbdla = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getReportController();
+    if ((localbdla != null) && ((localbdla instanceof ReportControllerImpl))) {
+      ((ReportControllerImpl)localbdla).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdld
  * JD-Core Version:    0.7.0.1
  */

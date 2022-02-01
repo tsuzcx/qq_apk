@@ -1,39 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahou
-  implements ahos
+  implements ahnr
 {
-  public void a(MessageForStructing paramMessageForStructing, aezf paramaezf, View paramView, boolean paramBoolean)
+  public void a(agtf paramagtf, MessageRecord paramMessageRecord, agus paramagus, aftk paramaftk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    if (!paramMessageForStructing.structingMsg.hasFlag(4))
-    {
-      if (paramMessageForStructing.isSend()) {
-        if (paramBoolean) {
-          i = 2130849922;
-        }
-      }
-      for (;;)
-      {
-        AIOUtils.setViewDrawalbe(paramaezf.a, i);
-        return;
-        i = 2130849923;
-        continue;
-        if (paramBoolean) {
-          i = 2130849746;
-        } else {
-          i = 2130849747;
-        }
-      }
-    }
-    if (paramBoolean) {}
-    for (int i = 2130838351;; i = 2130838335)
-    {
-      paramView.setBackgroundResource(i);
-      return;
-    }
+    paramagtf.b(paramMessageRecord, paramLinearLayout, paramaftk, paramagus, paramString);
   }
 }
 

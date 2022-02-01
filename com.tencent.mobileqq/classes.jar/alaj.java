@@ -1,14 +1,22 @@
-import com.tencent.mobileqq.data.Friends;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.graphics.Color;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleLayout;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
 
-class alaj
+public class alaj
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public Friends a;
+  public alaj(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
   
-  public alaj(Friends paramFriends, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
-    this.jdField_a_of_type_Int = paramInt;
+    DrawRedpacketPannelPreviewFragment.a(this.a, false);
+    DrawRedpacketPannelPreviewFragment.a(this.a).a(false, false);
+    DrawRedpacketPannelPreviewFragment.a(this.a);
+    DrawRedpacketPannelPreviewFragment.d(this.a).setTextColor(Color.parseColor("#878B99"));
+    DrawRedpacketPannelPreviewFragment.d(this.a).setText("......");
   }
 }
 

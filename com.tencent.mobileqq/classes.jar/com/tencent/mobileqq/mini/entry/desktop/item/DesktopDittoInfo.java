@@ -11,13 +11,14 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class DesktopDittoInfo
   extends DesktopItemInfo
 {
   public List<MiniAppInfo> appInfoList = new ArrayList();
   public Map<String, MiniAppInfo> appInfoMap = new HashMap();
-  public int currentIndex;
+  public AtomicInteger currentIndex = new AtomicInteger(0);
   public String dittoDls;
   public MiniAppInfo jumpMoreInfo;
   public int subType;
@@ -38,7 +39,7 @@ public class DesktopDittoInfo
   
   public void incrementIndex()
   {
-    this.currentIndex += 1;
+    this.currentIndex.incrementAndGet();
   }
   
   public void mergePbData(INTERFACE.StModuleInfo paramStModuleInfo)
@@ -62,7 +63,6 @@ public class DesktopDittoInfo
         }
       }
     }
-    this.currentIndex = 0;
   }
   
   public String toString()

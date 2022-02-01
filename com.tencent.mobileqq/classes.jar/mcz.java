@@ -1,27 +1,20 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import android.widget.TextView;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
-class mcz
-  implements ViewTreeObserver.OnPreDrawListener
+public class mcz
+  extends mdb
 {
-  mcz(mcy parammcy, TextView paramTextView) {}
+  public int a = 0;
+  public int b = -1;
   
-  public boolean onPreDraw()
+  public mcz(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().removeOnPreDrawListener(this);
-    this.jdField_a_of_type_Mcy.a.a().a().av = true;
-    mum.a(this.jdField_a_of_type_Mcy.a);
-    QLog.d("qav_face_guide", 1, "onPreDraw");
-    return false;
+    super(paramView);
+    this.a = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mcz
  * JD-Core Version:    0.7.0.1
  */

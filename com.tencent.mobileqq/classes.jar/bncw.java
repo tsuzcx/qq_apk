@@ -1,17 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListAdapter.1.1;
+import mqq.os.MqqHandler;
 
-class bncw
-  implements bhhk
+public class bncw
+  implements INetEventHandler
 {
-  bncw(bnct parambnct) {}
+  bncw(bncv parambncv) {}
   
-  public void onProgressChanged(bhhi parambhhi, int paramInt1, int paramInt2) {}
-  
-  public void onProgressCompleted(bhhi parambhhi)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EditPicSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambhhi);
-    }
+    ThreadManager.getUIHandler().post(new AEBottomListAdapter.1.1(this));
   }
 }
 

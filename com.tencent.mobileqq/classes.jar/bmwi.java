@@ -1,19 +1,8 @@
-import android.text.Spanned;
+import java.io.File;
 
-class bmwi
-  extends bnij
+public class bmwi
 {
-  bmwi(bmwg parambmwg, int paramInt)
-  {
-    super(paramInt);
-  }
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
-  {
-    String str = paramSpanned.subSequence(0, paramInt3).toString() + paramCharSequence.subSequence(paramInt1, paramInt2).toString() + paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString();
-    this.jdField_a_of_type_Int = (str.length() - bfby.b(str).length() + 20);
-    return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
-  }
+  public static final String a = bmwk.f + File.separator + "camera_story_default_template.json";
 }
 
 

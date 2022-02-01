@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.comment.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import oul;
+import pdm;
 
 public class AnchorData
   implements Parcelable
 {
-  public static final Parcelable.Creator<AnchorData> CREATOR = new oul();
+  public static final Parcelable.Creator<AnchorData> CREATOR = new pdm();
   public String a;
   public boolean a;
   public String b;

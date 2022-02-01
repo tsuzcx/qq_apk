@@ -1,7 +1,7 @@
 package com.tencent.biz.webviewplugin;
 
-import aadt;
-import bgve;
+import aatf;
+import bifw;
 import com.tencent.qphone.base.util.QLog;
 
 class WebSoPlugin$2$1

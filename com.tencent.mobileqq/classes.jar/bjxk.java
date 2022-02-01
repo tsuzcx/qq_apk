@@ -1,30 +1,46 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qidian.QidianProfileCardActivity;
+import com.tencent.qidian.data.BmqqAccountType;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.pull2refresh.RecyclerViewCompat;
 
-class bjxk
-  implements View.OnLayoutChangeListener
+public class bjxk
+  extends CardObserver
 {
-  private boolean jdField_a_of_type_Boolean;
+  public bjxk(QidianProfileCardActivity paramQidianProfileCardActivity) {}
   
-  private bjxk(bjxh parambjxh) {}
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    bjxh.a(this.jdField_a_of_type_Bjxh).removeOnLayoutChangeListener(this);
-    if (bjxh.a(this.jdField_a_of_type_Bjxh).getItemCount() > bjxh.c(this.jdField_a_of_type_Bjxh) + bjxh.d(this.jdField_a_of_type_Bjxh))
+    this.a.a();
+    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Card)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PagerSnapHelper", 2, "onLayoutChange: ");
+      this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqDataCard = ((Card)paramObject);
+      if (QidianProfileCardActivity.b(this.a)) {
+        this.a.a(this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqDataCard.vQzoneCoverInfo);
       }
-      paramView = this.jdField_a_of_type_Bjxh.a(bjxh.a(this.jdField_a_of_type_Bjxh));
-      if ((!this.jdField_a_of_type_Bjxh.a(paramView)) || (this.jdField_a_of_type_Boolean)) {
-        bjxh.a(this.jdField_a_of_type_Bjxh, paramView, this.jdField_a_of_type_Boolean);
-      }
-      this.jdField_a_of_type_Boolean = false;
     }
+  }
+  
+  public void onGetAccountType(boolean paramBoolean, BmqqAccountType paramBmqqAccountType)
+  {
+    super.onGetAccountType(paramBoolean, paramBmqqAccountType);
+    if (QLog.isColorLevel()) {
+      QLog.d("QidianProfileCardActivity", 2, "onGetAccountType isSuccess: " + paramBoolean + " | type: " + paramBmqqAccountType + " | cardInfo.allinone.uin: " + this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
+    }
+    if ((paramBmqqAccountType != null) && (paramBmqqAccountType.getUin() != null) && (this.a.jdField_a_of_type_Azrb != null) && (this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne != null) && (paramBmqqAccountType.getUin().equals(this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)))
+    {
+      this.a.c = paramBmqqAccountType.getAccountType();
+      this.a.b();
+      if (this.a.c == 1) {
+        this.a.jdField_a_of_type_Bjxa.b(this.a, paramBmqqAccountType);
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.a.a();
   }
 }
 

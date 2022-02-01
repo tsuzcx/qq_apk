@@ -1,31 +1,26 @@
-import android.os.Handler;
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.campuscircle.CampusCircleReplyActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.XEditTextEx;
 
-class aqnc
-  implements View.OnClickListener
+public class aqnc
+  implements CompoundButton.OnCheckedChangeListener
 {
-  aqnc(aqmz paramaqmz, String paramString) {}
+  public aqnc(CampusCircleReplyActivity paramCampusCircleReplyActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    aqmz.a(this.jdField_a_of_type_Aqmz).removeCallbacks(aqmz.a(this.jdField_a_of_type_Aqmz));
-    aqmz.a(this.jdField_a_of_type_Aqmz).run();
-    int i = aqmz.a(this.jdField_a_of_type_Aqmz).input.getSelectionStart();
-    Editable localEditable = aqmz.a(this.jdField_a_of_type_Aqmz).input.getEditableText();
-    if ((i < 0) || (i >= localEditable.length())) {
-      localEditable.append(this.jdField_a_of_type_JavaLangString);
-    }
-    for (;;)
+    Object localObject = this.a.getResources();
+    TextView localTextView = CampusCircleReplyActivity.a(this.a);
+    if (paramBoolean) {}
+    for (localObject = ((Resources)localObject).getColorStateList(2131166359);; localObject = ((Resources)localObject).getColorStateList(2131166361))
     {
-      bcef.b(aqmz.a(this.jdField_a_of_type_Aqmz).getApp(), "dc00898", "", "", "0X800B22C", "0X800B22C", 0, 0, "", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
+      localTextView.setTextColor((ColorStateList)localObject);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
-      localEditable.insert(i, this.jdField_a_of_type_JavaLangString);
     }
   }
 }

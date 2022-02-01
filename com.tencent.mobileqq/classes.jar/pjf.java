@@ -1,243 +1,237 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import java.util.Map;
-import org.json.JSONException;
+import kotlin.Metadata;
+import kotlin.Pair;
+import kotlin.TuplesKt;
+import kotlin.TypeCastException;
+import kotlin.collections.MapsKt;
+import kotlin.jvm.JvmField;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class pjf
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/common/RIJUtilsHelper;", "", "articleInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;", "(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)V", "articleFeedsTypeToFeedsTypeMap", "", "", "itemTypeToFeedsTypeMap", "longContentCardTypeToFeedsTypeMap", "subscribeTypeToFeedsTypeMap", "getBigFeedsType", "article", "getBigVideoFeedsType", "getBiuAnswerAnswerCardFeedsType", "getFeedsTypeWithArticleFeedsType", "articleFeedsType", "defaultValue", "getFeedsTypeWithArticleInfo", "getFeedsTypeWithArticleInfoInternal", "getFeedsTypeWithItemType", "itemType", "getFeedsTypeWithLongContentCardType", "longContentCardType", "getFeedsTypeWithSubscribeType", "getGalleryFeedsType", "getGalleryTripleFeedsType", "getMultiFeedsType", "getReportType", "getSmallFeedsType", "getSmallVideoFeedsType", "getSocialAnswerCardFeedsType", "getTopicRecommendFeedsType", "getTopicRecommendUgcFeedsType", "getUgcSocialInnerAppCard", "getUgcSocialVideoFeedsType", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pjf
 {
-  private static final Map<Integer, qdy> a = new HashMap();
+  @JvmField
+  @NotNull
+  public BaseArticleInfo a;
+  private final Map<Integer, Integer> a;
+  private final Map<Integer, Integer> b;
+  private final Map<Integer, Integer> c;
+  private final Map<Integer, Integer> d;
   
-  static
+  public pjf(@NotNull BaseArticleInfo paramBaseArticleInfo)
   {
-    if (a.isEmpty())
-    {
-      a(0, new qcc());
-      a(1, new qcc());
-      a(2, new qcc());
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
+    this.jdField_a_of_type_JavaUtilMap = MapsKt.mapOf(new Pair[] { TuplesKt.to(Integer.valueOf(2), Integer.valueOf(b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))), TuplesKt.to(Integer.valueOf(39), Integer.valueOf(b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))), TuplesKt.to(Integer.valueOf(116), Integer.valueOf(b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))), TuplesKt.to(Integer.valueOf(3), Integer.valueOf(c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))), TuplesKt.to(Integer.valueOf(105), Integer.valueOf(c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))), TuplesKt.to(Integer.valueOf(106), Integer.valueOf(d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))), TuplesKt.to(Integer.valueOf(104), Integer.valueOf(d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))), TuplesKt.to(Integer.valueOf(1), Integer.valueOf(d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))), TuplesKt.to(Integer.valueOf(0), Integer.valueOf(4)), TuplesKt.to(Integer.valueOf(4), Integer.valueOf(e(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))), TuplesKt.to(Integer.valueOf(6), Integer.valueOf(e(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))), TuplesKt.to(Integer.valueOf(126), Integer.valueOf(e(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))), TuplesKt.to(Integer.valueOf(66), Integer.valueOf(e(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))), TuplesKt.to(Integer.valueOf(115), Integer.valueOf(e(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))), TuplesKt.to(Integer.valueOf(5), Integer.valueOf(f(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))), TuplesKt.to(Integer.valueOf(9), Integer.valueOf(7)), TuplesKt.to(Integer.valueOf(8), Integer.valueOf(8)), TuplesKt.to(Integer.valueOf(7), Integer.valueOf(9)), TuplesKt.to(Integer.valueOf(10), Integer.valueOf(10)), TuplesKt.to(Integer.valueOf(12), Integer.valueOf(10)), TuplesKt.to(Integer.valueOf(11), Integer.valueOf(11)), TuplesKt.to(Integer.valueOf(27), Integer.valueOf(19)), TuplesKt.to(Integer.valueOf(28), Integer.valueOf(20)), TuplesKt.to(Integer.valueOf(14), Integer.valueOf(18)), TuplesKt.to(Integer.valueOf(15), Integer.valueOf(101)), TuplesKt.to(Integer.valueOf(22), Integer.valueOf(22)), TuplesKt.to(Integer.valueOf(21), Integer.valueOf(21)), TuplesKt.to(Integer.valueOf(120), Integer.valueOf(2005)), TuplesKt.to(Integer.valueOf(23), Integer.valueOf(23)), TuplesKt.to(Integer.valueOf(71), Integer.valueOf(23)), TuplesKt.to(Integer.valueOf(25), Integer.valueOf(30)), TuplesKt.to(Integer.valueOf(24), Integer.valueOf(29)), TuplesKt.to(Integer.valueOf(26), Integer.valueOf(g(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))), TuplesKt.to(Integer.valueOf(18), Integer.valueOf(24)), TuplesKt.to(Integer.valueOf(19), Integer.valueOf(26)), TuplesKt.to(Integer.valueOf(20), Integer.valueOf(32)), TuplesKt.to(Integer.valueOf(29), Integer.valueOf(33)), TuplesKt.to(Integer.valueOf(30), Integer.valueOf(34)), TuplesKt.to(Integer.valueOf(16), Integer.valueOf(25)), TuplesKt.to(Integer.valueOf(17), Integer.valueOf(27)), TuplesKt.to(Integer.valueOf(31), Integer.valueOf(28)), TuplesKt.to(Integer.valueOf(32), Integer.valueOf(28)), TuplesKt.to(Integer.valueOf(83), Integer.valueOf(28)), TuplesKt.to(Integer.valueOf(84), Integer.valueOf(28)), TuplesKt.to(Integer.valueOf(85), Integer.valueOf(28)), TuplesKt.to(Integer.valueOf(86), Integer.valueOf(28)), TuplesKt.to(Integer.valueOf(33), Integer.valueOf(35)), TuplesKt.to(Integer.valueOf(34), Integer.valueOf(36)), TuplesKt.to(Integer.valueOf(35), Integer.valueOf(37)), TuplesKt.to(Integer.valueOf(36), Integer.valueOf(38)), TuplesKt.to(Integer.valueOf(37), Integer.valueOf(39)), TuplesKt.to(Integer.valueOf(38), Integer.valueOf(40)), TuplesKt.to(Integer.valueOf(40), Integer.valueOf(h(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))), TuplesKt.to(Integer.valueOf(42), Integer.valueOf(h(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))), TuplesKt.to(Integer.valueOf(41), Integer.valueOf(h(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))), TuplesKt.to(Integer.valueOf(44), Integer.valueOf(10)), TuplesKt.to(Integer.valueOf(43), Integer.valueOf(19)), TuplesKt.to(Integer.valueOf(45), Integer.valueOf(37)), TuplesKt.to(Integer.valueOf(46), Integer.valueOf(43)), TuplesKt.to(Integer.valueOf(54), Integer.valueOf(i(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))), TuplesKt.to(Integer.valueOf(55), Integer.valueOf(i(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))), TuplesKt.to(Integer.valueOf(56), Integer.valueOf(i(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))), TuplesKt.to(Integer.valueOf(57), Integer.valueOf(29)), TuplesKt.to(Integer.valueOf(58), Integer.valueOf(30)), TuplesKt.to(Integer.valueOf(59), Integer.valueOf(31)), TuplesKt.to(Integer.valueOf(53), Integer.valueOf(47)), TuplesKt.to(Integer.valueOf(50), Integer.valueOf(47)), TuplesKt.to(Integer.valueOf(51), Integer.valueOf(47)), TuplesKt.to(Integer.valueOf(52), Integer.valueOf(47)), TuplesKt.to(Integer.valueOf(47), Integer.valueOf(j(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))), TuplesKt.to(Integer.valueOf(48), Integer.valueOf(j(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))), TuplesKt.to(Integer.valueOf(101), Integer.valueOf(1005)), TuplesKt.to(Integer.valueOf(102), Integer.valueOf(1006)), TuplesKt.to(Integer.valueOf(103), Integer.valueOf(1007)), TuplesKt.to(Integer.valueOf(60), Integer.valueOf(k(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))), TuplesKt.to(Integer.valueOf(64), Integer.valueOf(k(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))), TuplesKt.to(Integer.valueOf(96), Integer.valueOf(80)), TuplesKt.to(Integer.valueOf(61), Integer.valueOf(50)), TuplesKt.to(Integer.valueOf(65), Integer.valueOf(50)), TuplesKt.to(Integer.valueOf(49), Integer.valueOf(51)), TuplesKt.to(Integer.valueOf(62), Integer.valueOf(52)), TuplesKt.to(Integer.valueOf(63), Integer.valueOf(53)), TuplesKt.to(Integer.valueOf(68), Integer.valueOf(54)), TuplesKt.to(Integer.valueOf(69), Integer.valueOf(54)), TuplesKt.to(Integer.valueOf(67), Integer.valueOf(54)), TuplesKt.to(Integer.valueOf(72), Integer.valueOf(l(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))), TuplesKt.to(Integer.valueOf(73), Integer.valueOf(m(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))), TuplesKt.to(Integer.valueOf(74), Integer.valueOf(65)), TuplesKt.to(Integer.valueOf(75), Integer.valueOf(66)), TuplesKt.to(Integer.valueOf(82), Integer.valueOf(70)), TuplesKt.to(Integer.valueOf(87), Integer.valueOf(73)), TuplesKt.to(Integer.valueOf(88), Integer.valueOf(74)), TuplesKt.to(Integer.valueOf(90), Integer.valueOf(72)), TuplesKt.to(Integer.valueOf(91), Integer.valueOf(71)), TuplesKt.to(Integer.valueOf(80), Integer.valueOf(n(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))), TuplesKt.to(Integer.valueOf(81), Integer.valueOf(n(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))), TuplesKt.to(Integer.valueOf(89), Integer.valueOf(75)), TuplesKt.to(Integer.valueOf(92), Integer.valueOf(75)), TuplesKt.to(Integer.valueOf(93), Integer.valueOf(77)), TuplesKt.to(Integer.valueOf(107), Integer.valueOf(999)), TuplesKt.to(Integer.valueOf(108), Integer.valueOf(998)), TuplesKt.to(Integer.valueOf(109), Integer.valueOf(1023)), TuplesKt.to(Integer.valueOf(112), Integer.valueOf(1023)), TuplesKt.to(Integer.valueOf(110), Integer.valueOf(1024)), TuplesKt.to(Integer.valueOf(113), Integer.valueOf(1024)), TuplesKt.to(Integer.valueOf(111), Integer.valueOf(1025)), TuplesKt.to(Integer.valueOf(114), Integer.valueOf(1025)), TuplesKt.to(Integer.valueOf(118), Integer.valueOf(1028)), TuplesKt.to(Integer.valueOf(124), Integer.valueOf(1032)), TuplesKt.to(Integer.valueOf(125), Integer.valueOf(1033)), TuplesKt.to(Integer.valueOf(123), Integer.valueOf(1034)), TuplesKt.to(Integer.valueOf(128), Integer.valueOf(1035)), TuplesKt.to(Integer.valueOf(129), Integer.valueOf(2004)), TuplesKt.to(Integer.valueOf(137), Integer.valueOf(1043)), TuplesKt.to(Integer.valueOf(139), Integer.valueOf(1043)), TuplesKt.to(Integer.valueOf(138), Integer.valueOf(1043)) });
+    this.b = MapsKt.mapOf(new Pair[] { TuplesKt.to(Integer.valueOf(2), Integer.valueOf(12)), TuplesKt.to(Integer.valueOf(3), Integer.valueOf(13)), TuplesKt.to(Integer.valueOf(1), Integer.valueOf(14)), TuplesKt.to(Integer.valueOf(0), Integer.valueOf(15)), TuplesKt.to(Integer.valueOf(4), Integer.valueOf(16)), TuplesKt.to(Integer.valueOf(8), Integer.valueOf(17)), TuplesKt.to(Integer.valueOf(7), Integer.valueOf(17)) });
+    this.c = MapsKt.mapOf(new Pair[] { TuplesKt.to(Integer.valueOf(1), Integer.valueOf(1038)), TuplesKt.to(Integer.valueOf(3), Integer.valueOf(1040)), TuplesKt.to(Integer.valueOf(4), Integer.valueOf(1041)), TuplesKt.to(Integer.valueOf(2), Integer.valueOf(1039)), TuplesKt.to(Integer.valueOf(19191924), Integer.valueOf(1042)) });
+    this.d = MapsKt.mapOf(new Pair[] { TuplesKt.to(Integer.valueOf(33), Integer.valueOf(1031)), TuplesKt.to(Integer.valueOf(29), Integer.valueOf(o(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))), TuplesKt.to(Integer.valueOf(58), Integer.valueOf(1056)) });
   }
   
-  public static ProteusItemView a(VafContext paramVafContext, int paramInt, String paramString)
+  private final int a(BaseArticleInfo paramBaseArticleInfo)
   {
-    bjun.a("ProteusSupportUtilDynamic.getView");
-    Object localObject = null;
-    paramString = a(paramVafContext, a(paramInt), paramString);
-    Container localContainer = paramVafContext.getViewFactory().inflate(paramVafContext, paramString);
-    paramString = localObject;
-    if (localContainer != null)
-    {
-      localContainer.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841733));
-      paramString = new ProteusItemView(paramVafContext.getContext());
-      paramString.a(localContainer);
+    if (pqw.m(paramBaseArticleInfo)) {
+      return 67;
     }
-    bjun.a();
-    return paramString;
+    if (pqw.p(paramBaseArticleInfo)) {
+      return 82;
+    }
+    if (pqw.o(paramBaseArticleInfo)) {
+      return 83;
+    }
+    return 68;
   }
   
-  /* Error */
-  private static TemplateBean a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString)
+  private final int b(BaseArticleInfo paramBaseArticleInfo)
   {
-    // Byte code:
-    //   0: invokestatic 98	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3: ifeq +37 -> 40
-    //   6: ldc 100
-    //   8: iconst_2
-    //   9: new 102	java/lang/StringBuilder
-    //   12: dup
-    //   13: invokespecial 103	java/lang/StringBuilder:<init>	()V
-    //   16: ldc 105
-    //   18: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   21: aload_1
-    //   22: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   25: ldc 114
-    //   27: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   30: iload_0
-    //   31: invokevirtual 117	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   34: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   37: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   40: getstatic 16	pjf:a	Ljava/util/Map;
-    //   43: iload_0
-    //   44: invokestatic 131	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   47: invokeinterface 135 2 0
-    //   52: checkcast 137	qdy
-    //   55: astore_3
-    //   56: aload_3
-    //   57: ifnonnull +13 -> 70
-    //   60: ldc 100
-    //   62: iconst_1
-    //   63: ldc 139
-    //   65: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   68: aconst_null
-    //   69: areturn
-    //   70: aload_3
-    //   71: iload_0
-    //   72: aload_1
-    //   73: invokeinterface 142 3 0
-    //   78: astore 4
-    //   80: aload_3
-    //   81: iload_0
-    //   82: aload 4
-    //   84: invokeinterface 145 3 0
-    //   89: astore_3
-    //   90: aload_3
-    //   91: astore_1
-    //   92: aload_3
-    //   93: ifnonnull +20 -> 113
-    //   96: aload_2
-    //   97: iconst_1
-    //   98: invokestatic 150	syz:a	(Ljava/lang/String;Z)Lsyz;
-    //   101: astore_1
-    //   102: aload_1
-    //   103: ifnull +12 -> 115
-    //   106: aload_1
-    //   107: aload 4
-    //   109: invokevirtual 154	syz:getTemplateBean	(Lorg/json/JSONObject;)Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/bean/TemplateBean;
-    //   112: astore_1
-    //   113: aload_1
-    //   114: areturn
-    //   115: aconst_null
-    //   116: astore_1
-    //   117: goto -4 -> 113
-    //   120: astore_2
-    //   121: aconst_null
-    //   122: astore_1
-    //   123: ldc 100
-    //   125: iconst_2
-    //   126: ldc 156
-    //   128: aload_2
-    //   129: invokestatic 160	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   132: goto -19 -> 113
-    //   135: astore_2
-    //   136: aconst_null
-    //   137: astore_1
-    //   138: ldc 100
-    //   140: iconst_2
-    //   141: ldc 162
-    //   143: aload_2
-    //   144: invokestatic 160	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   147: goto -34 -> 113
-    //   150: astore_2
-    //   151: aload_3
-    //   152: astore_1
-    //   153: goto -15 -> 138
-    //   156: astore_2
-    //   157: aload_3
-    //   158: astore_1
-    //   159: goto -36 -> 123
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	162	0	paramInt	int
-    //   0	162	1	paramBaseArticleInfo	BaseArticleInfo
-    //   0	162	2	paramString	String
-    //   55	103	3	localObject	Object
-    //   78	30	4	localJSONObject	org.json.JSONObject
-    // Exception table:
-    //   from	to	target	type
-    //   40	56	120	org/json/JSONException
-    //   60	68	120	org/json/JSONException
-    //   70	90	120	org/json/JSONException
-    //   40	56	135	java/lang/Exception
-    //   60	68	135	java/lang/Exception
-    //   70	90	135	java/lang/Exception
-    //   96	102	150	java/lang/Exception
-    //   106	113	150	java/lang/Exception
-    //   96	102	156	org/json/JSONException
-    //   106	113	156	org/json/JSONException
+    if ((paramBaseArticleInfo instanceof AdvertisementInfo)) {
+      return 55;
+    }
+    return 1;
   }
   
-  private static TemplateBean a(VafContext paramVafContext, String paramString1, String paramString2)
+  private final int c(BaseArticleInfo paramBaseArticleInfo)
   {
-    QLog.d("ProteusSupportUtilDynamic", 2, new Object[] { "getTemplateBean, styleID = ", paramString1 });
-    pzf localpzf = new pzf();
-    syz localsyz = (syz)paramVafContext.getTemplateFactory();
-    paramVafContext = localsyz;
-    if (localsyz == null) {
-      paramVafContext = syz.a(paramString2, true);
+    if ((paramBaseArticleInfo instanceof AdvertisementInfo)) {
+      return 57;
     }
-    if (paramVafContext != null) {}
-    for (;;)
+    return 2;
+  }
+  
+  private final int d(BaseArticleInfo paramBaseArticleInfo)
+  {
+    if ((paramBaseArticleInfo instanceof AdvertisementInfo)) {
+      return 58;
+    }
+    return 3;
+  }
+  
+  private final int e(BaseArticleInfo paramBaseArticleInfo)
+  {
+    if ((paramBaseArticleInfo instanceof AdvertisementInfo)) {
+      return 56;
+    }
+    return 5;
+  }
+  
+  private final int f(BaseArticleInfo paramBaseArticleInfo)
+  {
+    if ((paramBaseArticleInfo instanceof AdvertisementInfo)) {
+      return 59;
+    }
+    return 6;
+  }
+  
+  private final int g(BaseArticleInfo paramBaseArticleInfo)
+  {
+    if (pki.a(paramBaseArticleInfo) == 32) {
+      return 2006;
+    }
+    return 31;
+  }
+  
+  private final int h(BaseArticleInfo paramBaseArticleInfo)
+  {
+    if (paramBaseArticleInfo == null) {
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo");
+    }
+    if (pqw.c((ArticleInfo)paramBaseArticleInfo)) {
+      return 41;
+    }
+    return 42;
+  }
+  
+  private final int i(BaseArticleInfo paramBaseArticleInfo)
+  {
+    if (pqw.f((ArticleInfo)paramBaseArticleInfo)) {
+      return 45;
+    }
+    return 46;
+  }
+  
+  private final int j(BaseArticleInfo paramBaseArticleInfo)
+  {
+    if (((paramBaseArticleInfo instanceof ArticleInfo)) && (!TextUtils.isEmpty((CharSequence)paramBaseArticleInfo.mArticleSubscriptText))) {
+      return 79;
+    }
+    return 48;
+  }
+  
+  private final int k(BaseArticleInfo paramBaseArticleInfo)
+  {
+    if (((paramBaseArticleInfo instanceof ArticleInfo)) && (!TextUtils.isEmpty((CharSequence)paramBaseArticleInfo.mArticleSubscriptText))) {
+      return 78;
+    }
+    return 49;
+  }
+  
+  private final int l(BaseArticleInfo paramBaseArticleInfo)
+  {
+    if ((paramBaseArticleInfo.mSocialFeedInfo != null) && (paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rru != null) && (paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rru.a)) {
+      return 62;
+    }
+    return 61;
+  }
+  
+  private final int m(BaseArticleInfo paramBaseArticleInfo)
+  {
+    if ((paramBaseArticleInfo.mSocialFeedInfo != null) && (paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rru != null) && (paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rru.a)) {
+      return 64;
+    }
+    return 63;
+  }
+  
+  private final int n(BaseArticleInfo paramBaseArticleInfo)
+  {
+    if ((paramBaseArticleInfo.mSocialFeedInfo != null) && (paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrb != null)) {
+      return paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrb.a;
+    }
+    return 0;
+  }
+  
+  private final int o(BaseArticleInfo paramBaseArticleInfo)
+  {
+    if (paramBaseArticleInfo.mProteusTemplateBean != null) {
+      return qsf.a(paramBaseArticleInfo.mProteusTemplateBean);
+    }
+    return 0;
+  }
+  
+  public final int a(int paramInt1, int paramInt2)
+  {
+    Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt1));
+    if (localInteger == null) {}
+    while (localInteger.intValue() != 0)
     {
-      try
-      {
-        paramVafContext = paramVafContext.getTemplateBean(localpzf.a(paramString1).a());
-        return paramVafContext;
+      if (localInteger != null) {
+        paramInt2 = localInteger.intValue();
       }
-      catch (JSONException paramVafContext)
-      {
-        QLog.e("ProteusSupportUtilDynamic", 1, new Object[] { "getTemplateBean failed, styleID = ", paramString1, ", e = ", paramVafContext });
-      }
-      paramVafContext = null;
+      return paramInt2;
     }
-    return null;
+    return paramInt2;
   }
   
-  private static String a(int paramInt)
+  public final int a(@NotNull BaseArticleInfo paramBaseArticleInfo, int paramInt)
   {
-    switch (paramInt)
+    Intrinsics.checkParameterIsNotNull(paramBaseArticleInfo, "article");
+    if (pqw.g(paramBaseArticleInfo)) {
+      paramInt = a(paramBaseArticleInfo);
+    }
+    do
     {
-    default: 
-      return "ReadInjoy_small_cell";
-    case 0: 
-    case 1: 
-      return "ReadInjoy_small_cell";
-    }
-    return "ReadInjoy_large_cell";
-  }
-  
-  private static void a(int paramInt, qdy paramqdy)
-  {
-    if (paramqdy == null) {
-      throw new NullPointerException();
-    }
-    a.put(Integer.valueOf(paramInt), paramqdy);
-  }
-  
-  public static void a(ProteusItemView paramProteusItemView, int paramInt1, BaseArticleInfo paramBaseArticleInfo, VafContext paramVafContext, int paramInt2, String paramString)
-  {
-    bjun.a("ProteusSupportUtilDynamic.bindData");
-    if ((paramProteusItemView == null) || (paramProteusItemView.a() == null))
-    {
-      bjun.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("ProteusSupportUtilDynamic", 2, "bindData : " + paramBaseArticleInfo + " adapterViewType : " + paramInt1);
+      return paramInt;
+      if (pqw.l(paramBaseArticleInfo)) {
+        return 54;
       }
-      return;
-    }
-    TemplateBean localTemplateBean = paramProteusItemView.a();
-    paramString = a(paramInt1, paramBaseArticleInfo, paramString);
-    if ((localTemplateBean != null) && (paramString != null) && (!paramString.equals(localTemplateBean)))
-    {
-      Container localContainer = paramVafContext.getViewFactory().inflate(paramVafContext, paramString);
-      if (localContainer != null)
-      {
-        localContainer.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841733));
-        paramProteusItemView.d();
-        paramProteusItemView.a(localContainer);
-      }
-      paramBaseArticleInfo.mProteusTemplateBean = paramString;
-    }
-    paramProteusItemView = paramProteusItemView.a();
-    paramProteusItemView.setTag(2131375968, paramString);
-    bjun.a("ProteusSupportUtilDynamic.bindDataImpl");
-    if (paramString != null) {
-      ozp.a(paramProteusItemView, localTemplateBean, paramString);
-    }
-    bjun.a();
-    ozp.a(paramProteusItemView, paramVafContext, paramString);
-    bjun.a();
+    } while (!pqw.i(paramBaseArticleInfo));
+    return 47;
   }
   
-  public static boolean a(int paramInt)
+  public final int b(int paramInt1, int paramInt2)
   {
-    return a.containsKey(Integer.valueOf(paramInt));
+    Integer localInteger = (Integer)this.b.get(Integer.valueOf(paramInt1));
+    if (localInteger == null) {}
+    while (localInteger.intValue() != 0)
+    {
+      if (localInteger != null) {
+        paramInt2 = localInteger.intValue();
+      }
+      return paramInt2;
+    }
+    return paramInt2;
+  }
+  
+  public final int c(int paramInt1, int paramInt2)
+  {
+    Integer localInteger = (Integer)this.c.get(Integer.valueOf(paramInt1));
+    if (localInteger == null) {}
+    while (localInteger.intValue() != 0)
+    {
+      if (localInteger != null) {
+        paramInt2 = localInteger.intValue();
+      }
+      return paramInt2;
+    }
+    return paramInt2;
+  }
+  
+  public final int d(int paramInt1, int paramInt2)
+  {
+    Integer localInteger = (Integer)this.d.get(Integer.valueOf(paramInt1));
+    if (localInteger == null) {}
+    while (localInteger.intValue() != 0)
+    {
+      if (localInteger != null) {
+        paramInt2 = localInteger.intValue();
+      }
+      return paramInt2;
+    }
+    return paramInt2;
   }
 }
 

@@ -1,18 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import java.util.ArrayList;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
 class ahfk
-  implements DialogInterface.OnClickListener
+  extends ahjb
 {
-  ahfk(ahff paramahff, ArrayList paramArrayList, String paramString) {}
+  protected ViewGroup a;
+  protected ImageView a;
+  protected TextView a;
+  protected ETTextView a;
+  protected BubbleImageView a;
+  protected TextView b;
+  protected ETTextView b;
+  protected TextView c;
+  public int e;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    ahff.a(this.jdField_a_of_type_Ahff.app, this.jdField_a_of_type_Ahff.sessionInfo.curFriendUin, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString);
-  }
+  ahfk(ahfa paramahfa) {}
 }
 
 

@@ -1,29 +1,19 @@
-import java.util.List;
+import android.util.SparseIntArray;
+import java.util.Comparator;
 
-public class aihu
+final class aihu
+  implements Comparator<aihp>
 {
-  public int a;
-  public Runnable a;
-  public List<String> a;
-  public int b;
-  public Runnable b;
-  
-  public void a(boolean paramBoolean)
+  public int a(aihp paramaihp1, aihp paramaihp2)
   {
-    if (a()) {
-      if (this.jdField_a_of_type_JavaLangRunnable != null) {
-        this.jdField_a_of_type_JavaLangRunnable.run();
-      }
+    if ((paramaihp1 == null) || (paramaihp2 == null)) {
+      return 0;
     }
-    while (this.jdField_b_of_type_JavaLangRunnable == null) {
-      return;
-    }
-    this.jdField_b_of_type_JavaLangRunnable.run();
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_b_of_type_Int & this.jdField_a_of_type_Int) == this.jdField_a_of_type_Int;
+    float f1 = aihs.a().get(paramaihp1.c());
+    float f2 = aihs.a().get(paramaihp2.c());
+    float f3 = paramaihp1.b() * 100;
+    float f4 = 1.0F / (paramaihp1.a() + 1) / 10.0F;
+    return Float.compare(f2 + (paramaihp2.b() * 100 + 1.0F / (paramaihp2.a() + 1) / 10.0F), f1 + (f3 + f4));
   }
 }
 

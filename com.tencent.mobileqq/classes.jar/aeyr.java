@@ -1,14 +1,18 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 
 public class aeyr
 {
   public int a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public ImageView b;
+  String jdField_a_of_type_JavaLangString;
+  public boolean a;
+  
+  public aeyr(SoundAndVibrateActivity paramSoundAndVibrateActivity, int paramInt, String paramString, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
 }
 
 

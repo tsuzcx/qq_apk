@@ -1,26 +1,57 @@
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import UserGrowth.stCollection;
+import UserGrowth.stSimpleMetaFeed;
+import android.text.TextUtils;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import java.util.ArrayList;
+import java.util.List;
 
-class vrz
-  extends whf
+public class vrz
+  extends vrx
 {
-  vrz(vry paramvry) {}
+  private static final int b = ScreenUtil.dip2px(63.0F);
+  private stSimpleMetaFeed a;
   
-  public void a()
+  public vrz(voi paramvoi)
   {
-    super.a();
-    vrx.a(this.a.a, null);
+    super(paramvoi);
   }
   
-  public void a(int paramInt)
+  public List<vpj> a(ArrayList paramArrayList)
   {
-    super.a(paramInt);
-    xwa.a("home_page", "suc_share", 1, paramInt, new String[] { xwa.b(this.a.a.a) + "", xwa.a(this.a.a.a) + "", this.a.a.a.feedId });
+    if ((paramArrayList != null) && (paramArrayList.size() > 0) && ((paramArrayList.get(0) instanceof stSimpleMetaFeed))) {
+      this.a = ((stSimpleMetaFeed)paramArrayList.get(0));
+    }
+    return null;
   }
   
-  public void b(int paramInt)
+  public boolean a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    super.b(paramInt);
-    xwa.a("home_page", "share_chanel", 1, paramInt, new String[] { xwa.b(this.a.a.a) + "", xwa.a(this.a.a.a) + "", this.a.a.a.feedId });
+    if ((this.a != null) && (this.a.collection != null) && (!TextUtils.isEmpty(this.a.collection.cid)))
+    {
+      vox.a().a(this.a.collection.cid, 2, this);
+      return true;
+    }
+    return false;
+  }
+  
+  public int b()
+  {
+    return b;
+  }
+  
+  public void b()
+  {
+    super.b();
+    vox.a().a();
+  }
+  
+  public void c()
+  {
+    super.c();
+    voi localvoi = a();
+    if ((localvoi != null) && (this.a != null)) {
+      localvoi.b(this.a);
+    }
   }
 }
 

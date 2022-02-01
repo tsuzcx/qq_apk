@@ -1,27 +1,30 @@
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
-import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
 
-public class aibk
-  extends ViewPager.SimpleOnPageChangeListener
+class aibk
+  extends BroadcastReceiver
 {
-  public aibk(TroopView paramTroopView) {}
+  aibk(aiav paramaiav) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (bcoo.a()) {}
-    while (paramInt != 1) {
+    paramIntent.getStringExtra("peerUin");
+    paramIntent.getIntExtra("sessionType", -1);
+    paramContext = paramIntent.getStringExtra("sessionId");
+    if (TextUtils.isEmpty(paramContext)) {}
+    while (!paramContext.startsWith("10-")) {
       return;
     }
-    TroopView.a(this.a, TroopView.a(this.a).getCurrentItem());
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    if (bcoo.a()) {
-      return;
+    this.a.jdField_a_of_type_Axrb.c();
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.tag, 2, "onBind enter room setSoundDisable");
     }
-    TroopView.a(this.a, paramInt);
+    this.a.jdField_a_of_type_Axrb.a(false);
   }
 }
 

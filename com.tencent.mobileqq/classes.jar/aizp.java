@@ -1,40 +1,75 @@
-import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.NewFriendMoreInfo;
+import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
 
 public class aizp
+  extends aiyz
   implements View.OnClickListener
 {
-  public aizp(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, List paramList, CheckBox paramCheckBox, boolean paramBoolean, Dialog paramDialog) {}
+  public aizp(Context paramContext, QQAppInterface paramQQAppInterface, ajav paramajav, ajbn paramajbn)
+  {
+    super(paramContext, paramQQAppInterface, paramajav, paramajbn);
+  }
+  
+  public View a(int paramInt, View paramView)
+  {
+    aizq localaizq;
+    if ((paramView == null) || (!(paramView.getTag() instanceof aizq)))
+    {
+      localaizq = new aizq();
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561308, null);
+      localaizq.a = ((TextView)paramView.findViewById(2131371555));
+      if (ThemeUtil.isDefaultTheme())
+      {
+        paramView.setBackgroundResource(2130839511);
+        paramView.setTag(localaizq);
+      }
+    }
+    for (;;)
+    {
+      NewFriendMoreInfo localNewFriendMoreInfo = ((ajbo)this.jdField_a_of_type_Ajbn).a;
+      localaizq.a.setText(localNewFriendMoreInfo.moreInfo);
+      paramView.setOnClickListener(this);
+      return paramView;
+      paramView.setBackgroundResource(2130839455);
+      break;
+      localaizq = (aizq)paramView.getTag();
+    }
+  }
   
   public void onClick(View paramView)
   {
-    Object localObject = (anca)this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.b.getBusinessHandler(20);
-    String str;
-    if (localObject != null)
-    {
-      ((anca)localObject).a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_c_of_type_JavaLangString), this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked(), this.jdField_a_of_type_Boolean);
-      str = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.o;
-      if (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-        break label152;
+    Object localObject = paramView.getTag();
+    if ((localObject != null) && ((localObject instanceof aizq))) {
+      switch (((ajbo)this.jdField_a_of_type_Ajbn).a.type)
+      {
       }
     }
-    label152:
-    for (localObject = "0";; localObject = "1")
+    for (;;)
     {
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.b, "P_CliOper", "Grp_manage", "", "del_mber", "Clk_del", 1, 0, this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_c_of_type_JavaLangString, str, (String)localObject, "");
-      if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-        this.jdField_a_of_type_AndroidAppDialog.dismiss();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.x();
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_c_of_type_AndroidAppDialog.show();
       EventCollector.getInstance().onViewClicked(paramView);
       return;
+      int i = this.jdField_a_of_type_Ajav.a();
+      NewFriendMoreSysMsgActivity.a((NewFriendActivity)this.jdField_a_of_type_AndroidContentContext, 225, i);
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007704", "0X8007704", 0, 0, "", "", "", "");
+      continue;
+      localObject = (aizi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NEW_FRIEND_MANAGER);
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, AddContactsActivity.class);
+      localIntent.putExtra("entrence_data_report", 4);
+      localIntent.putExtra("EntranceId", 6);
+      ((NewFriendActivity)this.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 226);
+      ((aizi)localObject).f();
     }
   }
 }

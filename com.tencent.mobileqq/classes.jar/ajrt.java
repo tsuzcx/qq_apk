@@ -1,104 +1,78 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.photo.album.AlbumListAdapter;
-import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
-import com.tencent.mobileqq.data.QQAlbumInfo;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.datepicker.CalendarDay;
+import com.tencent.mobileqq.widget.datepicker.SimpleMonthView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Calendar;
 
 public class ajrt
-  extends ajqk
+  implements bivj
 {
-  private List<String> a;
+  CalendarDay jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
+  CalendarDay b;
   
-  ajrt(AlbumListFragment paramAlbumListFragment)
+  public ajrt(ChatHistoryC2CDateFragment paramChatHistoryC2CDateFragment, CalendarDay paramCalendarDay1, CalendarDay paramCalendarDay2)
   {
-    super(paramAlbumListFragment);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = paramCalendarDay1;
+    this.b = paramCalendarDay2;
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public CalendarDay a()
   {
-    paramView = super.getView(paramInt, paramView, paramViewGroup);
-    paramViewGroup = (AlbumListFragment)this.mFragment;
-    if ((paramViewGroup != null) && (paramViewGroup.isAdded()) && (!paramViewGroup.isDetached()) && (!paramViewGroup.isRemoving()))
-    {
-      paramViewGroup = paramViewGroup.listAdapter;
-      if (paramViewGroup != null)
-      {
-        paramViewGroup = paramViewGroup.getItem(paramInt);
-        if ((paramViewGroup != null) && ((paramView instanceof TextView))) {
-          ((TextView)paramView).setText(paramViewGroup.name);
-        }
-      }
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay == null) {
+      return new CalendarDay(System.currentTimeMillis());
     }
-    return paramView;
+    return this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
   }
   
-  public void initData(Intent paramIntent)
+  public void a(CalendarDay paramCalendarDay, MessageRecord paramMessageRecord)
   {
-    if (paramIntent.getIntExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 0) == 5) {
-      paramIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 6);
-    }
-    super.initData(paramIntent);
-    this.mPhotoCommonData.albumName = paramIntent.getStringExtra("ALBUM_NAME");
-    paramIntent = (AlbumListFragment)this.mFragment;
-    if ((paramIntent != null) && (paramIntent.isAdded()) && (!paramIntent.isDetached()) && (!paramIntent.isRemoving()))
+    if (ChatHistoryC2CDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment).a())
     {
-      paramIntent = blhe.a(paramIntent.getActivity().getApplicationContext(), this.mPhotoCommonData.myUin, "pref_select_album");
-      if (!TextUtils.isEmpty(paramIntent)) {
-        break label173;
-      }
-    }
-    label173:
-    for (paramIntent = new ArrayList();; paramIntent = blhe.a(paramIntent))
-    {
-      this.a = paramIntent;
-      if ((this.a != null) && (!this.a.isEmpty())) {
-        this.mPhotoCommonData.albumId = ((String)this.a.get(0));
-      }
-      if (TextUtils.isEmpty(this.mPhotoCommonData.albumId)) {
-        this.mPhotoCommonData.albumId = "$RecentAlbumId";
-      }
-      return;
-    }
-  }
-  
-  public boolean onItemClick(QQAlbumInfo paramQQAlbumInfo, int paramInt, Intent paramIntent)
-  {
-    boolean bool = super.onItemClick(paramQQAlbumInfo, paramInt, paramIntent);
-    if (!TextUtils.isEmpty(this.mPhotoCommonData.albumName)) {
-      paramIntent.putExtra("ALBUM_NAME", this.mPhotoCommonData.albumName);
-    }
-    paramIntent = (AlbumListFragment)this.mFragment;
-    if ((paramIntent != null) && (paramIntent.isAdded()) && (!paramIntent.isDetached()) && (!paramIntent.isRemoving()) && (this.a != null)) {
-      if (!TextUtils.isEmpty(paramQQAlbumInfo._id))
-      {
-        if ((this.a.contains(paramQQAlbumInfo._id)) && (!TextUtils.equals(paramQQAlbumInfo._id, (CharSequence)this.a.get(0)))) {
-          this.a.remove(paramQQAlbumInfo._id);
-        }
-        if (!this.a.isEmpty()) {
-          break label199;
-        }
-        this.a.add(paramQQAlbumInfo._id);
-      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment.getString(2131719001), new ajrs(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment));
+      ChatHistoryC2CDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment, paramCalendarDay);
+      Calendar localCalendar = Calendar.getInstance();
+      localCalendar.setTimeInMillis(paramCalendarDay.getTimeInMillis());
+      ChatHistoryC2CDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment).d(localCalendar);
     }
     for (;;)
     {
-      blhe.a(paramIntent.getActivity().getApplicationContext(), this.mPhotoCommonData.myUin, "pref_select_album", blhe.a(this.a.iterator()));
-      return bool;
-      label199:
-      this.a.set(0, paramQQAlbumInfo._id);
+      QLog.i(ChatHistoryC2CDateFragment.b(), 1, "clickDay: CalendarDay" + paramCalendarDay + " | MessageRecord:" + paramMessageRecord);
+      return;
+      ChatHistoryC2CDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment);
+      ChatHistoryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment.getActivity(), ChatHistoryC2CDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment), ChatHistoryC2CDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment), ChatHistoryC2CDateFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment), paramMessageRecord.time, paramMessageRecord.shmsgseq, 0);
     }
   }
   
-  public void queryAlbumList(int paramInt)
+  public void a(CalendarDay paramCalendarDay1, CalendarDay paramCalendarDay2)
   {
-    super.queryAlbumList(-1);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = paramCalendarDay1;
+    this.b = paramCalendarDay2;
+  }
+  
+  public void a(SimpleMonthView paramSimpleMonthView, int paramInt1, int paramInt2)
+  {
+    if (!ChatHistoryC2CDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment, paramInt1, paramInt2))
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment.d) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment.a(paramInt1, paramInt2);
+      }
+    }
+    else {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment.b(paramInt1, paramInt2);
+  }
+  
+  public CalendarDay b()
+  {
+    if (this.b == null)
+    {
+      CalendarDay localCalendarDay = new CalendarDay(System.currentTimeMillis());
+      return new CalendarDay(localCalendarDay.year + 1, localCalendarDay.month, localCalendarDay.month);
+    }
+    return this.b;
   }
 }
 

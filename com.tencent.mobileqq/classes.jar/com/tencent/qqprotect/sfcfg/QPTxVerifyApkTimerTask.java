@@ -7,9 +7,9 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bjkd;
-import bjke;
-import bjma;
+import bkvo;
+import bkvp;
+import bkxn;
 import com.tencent.common.config.AppSetting;
 import com.tencent.ims.SecVerifyApk.ReportDetectResultPacket;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -107,7 +107,7 @@ public class QPTxVerifyApkTimerTask
     //   81: astore_1
     //   82: aload 4
     //   84: invokevirtual 77	java/security/MessageDigest:digest	()[B
-    //   87: invokestatic 82	bjkd:a	([B)Ljava/lang/String;
+    //   87: invokestatic 82	bkvo:a	([B)Ljava/lang/String;
     //   90: astore 4
     //   92: aload 4
     //   94: astore_1
@@ -423,7 +423,7 @@ public class QPTxVerifyApkTimerTask
             if (str4 != null) {
               jdField_b_of_type_JavaLangString = str4;
             }
-            if ((str2 == null) || (!str2.equalsIgnoreCase(jdField_b_of_type_JavaLangString)) || (localObject3 == null) || (!((String)localObject3).equalsIgnoreCase("8.4.8.4810"))) {
+            if ((str2 == null) || (!str2.equalsIgnoreCase(jdField_b_of_type_JavaLangString)) || (localObject3 == null) || (!((String)localObject3).equalsIgnoreCase("8.4.10.4875"))) {
               break label455;
             }
             if (localObject2 != null) {
@@ -440,7 +440,7 @@ public class QPTxVerifyApkTimerTask
           localReportDetectResultPacket.str_apkmd5.set(jdField_a_of_type_JavaLangString);
           localReportDetectResultPacket.str_rsamd5.set(jdField_b_of_type_JavaLangString);
           localReportDetectResultPacket.str_txsfcfgkmd5.set(jdField_c_of_type_JavaLangString);
-          localReportDetectResultPacket.str_apkversion.set("8.4.8.4810");
+          localReportDetectResultPacket.str_apkversion.set("8.4.10.4875");
           localReportDetectResultPacket.str_channelid.set(AppSetting.c());
           localReportDetectResultPacket.str_uin.set(localQQAppInterface.getCurrentAccountUin());
           localReportDetectResultPacket.bytes_guid.set(ByteStringMicro.copyFrom(NetConnInfoCenter.GUID));
@@ -472,13 +472,13 @@ public class QPTxVerifyApkTimerTask
       localReportDetectResultPacket.uint32_cmd.set(1);
       continue;
       label455:
-      d = bjma.a(BaseApplication.getContext());
-      jdField_a_of_type_JavaLangString = bjma.a(localException);
+      d = bkxn.a(BaseApplication.getContext());
+      jdField_a_of_type_JavaLangString = bkxn.a(localException);
       Object localObject2 = new byte[16];
       if (localObject2 != null)
       {
-        bjkd.a(localException, "txsfcfg.dat", (byte[])localObject2);
-        jdField_c_of_type_JavaLangString = bjma.a((byte[])localObject2);
+        bkvo.a(localException, "txsfcfg.dat", (byte[])localObject2);
+        jdField_c_of_type_JavaLangString = bkxn.a((byte[])localObject2);
       }
       jdField_b_of_type_Boolean = true;
     }
@@ -494,7 +494,7 @@ public class QPTxVerifyApkTimerTask
       localEditor.putString("SecHisTxs", jdField_c_of_type_JavaLangString);
       localEditor.putString("SecHisRa", jdField_b_of_type_JavaLangString);
       localEditor.putString("SecHisAk", jdField_a_of_type_JavaLangString);
-      localEditor.putString("SecVer", "8.4.8.4810");
+      localEditor.putString("SecVer", "8.4.10.4875");
       localEditor.commit();
       return;
     }
@@ -523,9 +523,9 @@ public class QPTxVerifyApkTimerTask
           localObject = ((QQAppInterface)localObject).getApplication().getApplicationInfo().sourceDir;
           if (localObject != null)
           {
-            jdField_a_of_type_Int = bjke.a((String)localObject, "txsfcfg.dat");
+            jdField_a_of_type_Int = bkvp.a((String)localObject, "txsfcfg.dat");
             if ((jdField_a_of_type_Int != 0) && (jdField_a_of_type_Int != 143)) {
-              jdField_a_of_type_Int = bjke.a((String)localObject, "txsfcfg.dat");
+              jdField_a_of_type_Int = bkvp.a((String)localObject, "txsfcfg.dat");
             }
             jdField_a_of_type_Boolean = true;
           }

@@ -1,14 +1,26 @@
-import com.tencent.pb.profilecard.SummaryCardBusiEntry.comm;
+import java.util.HashMap;
 
 public class bbki
+  extends bbkj
 {
-  public SummaryCardBusiEntry.comm a;
-  public byte[] a;
+  public int a = -1;
   
-  public bbki(SummaryCardBusiEntry.comm paramcomm, byte[] paramArrayOfByte)
+  public HashMap<String, String> a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentPbProfilecardSummaryCardBusiEntry$comm = paramcomm;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    if ("ShortVideo.Preview".equals(paramString))
+    {
+      paramString = new HashMap();
+      paramString.put("param_uinType", this.b + "");
+      paramString.put("param_GroupMemberCount", this.c + "");
+      paramString.put("param_age", this.d + "");
+      paramString.put("param_gender", this.e + "");
+      paramString.put("param_shortVideoType", this.f + "");
+      paramString.put("param_reportHour", this.g + "");
+      paramString.put("param_netType", this.h + "");
+      paramString.put("param_playAction", this.a + "");
+      return paramString;
+    }
+    return null;
   }
 }
 

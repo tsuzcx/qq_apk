@@ -1,52 +1,51 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.io.Serializable;
-import kotlin.Metadata;
-import kotlin.TypeCastException;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class axzs
-  implements View.OnClickListener
+class axzs
+  implements ayab
 {
-  axzs(axzo paramaxzo) {}
+  axzs(axzl paramaxzl, VideoData paramVideoData, boolean paramBoolean) {}
   
-  public final void onClick(View paramView)
+  public void a(axzw paramaxzw)
   {
-    if (!AppNetConnInfo.isNetSupport())
+    if (this.jdField_a_of_type_Axzl.jdField_a_of_type_Axzu != null) {
+      this.jdField_a_of_type_Axzl.jdField_a_of_type_Axzu.c();
+    }
+    axxu localaxxu;
+    if (((this.jdField_a_of_type_Axzl.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) && (((BaseActivity)this.jdField_a_of_type_Axzl.jdField_a_of_type_AndroidContentContext).isResume()))
     {
-      QQToast.a((Context)this.a.a(), 1, 2131718582, 0).a();
-      this.a.a().a(1040);
-      this.a.dismiss();
-      axvz.a("0X800AF48", 0, null, null, 14, null);
-      axvz.a("0X8009DE0", 1030, null, null, 12, null);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    Object localObject = this.a.a().getManager(369);
-    if (localObject == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.onlinestatus.OnlineStatusManager");
-    }
-    localObject = (axvk)localObject;
-    Intent localIntent = new Intent();
-    if (axzo.a(this.a) != null) {
-      localIntent.putExtra("online_status_permission_item", (Serializable)axzo.a(this.a));
-    }
-    if (!axzo.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localIntent.putExtra("from_modify", bool);
       if (QLog.isColorLevel()) {
-        QLog.d("WeatherView", 2, new Object[] { "bindView: called. ", "needSwitchOnlineStatus: " + axzo.a(this.a) });
+        QLog.i("VideoPlayerView", 2, "player truly start! app=" + this.jdField_a_of_type_Axzl.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       }
-      ((axvk)localObject).b(8, localIntent);
-      break;
+      this.jdField_a_of_type_Axzl.jdField_a_of_type_Axww.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString, null);
+      if (this.jdField_a_of_type_Axzl.jdField_a_of_type_Axye != null) {
+        this.jdField_a_of_type_Axzl.jdField_a_of_type_Axye.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString, 100, 0, "");
+      }
+      ((ayks)this.jdField_a_of_type_Axzl.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NEARBY_MOMENT_MANAGER)).f(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString);
+      localaxxu = new axxu().i("video_view").h("video");
+      if (!this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_Boolean) {
+        break label367;
+      }
+    }
+    label367:
+    for (paramaxzw = "0";; paramaxzw = "1")
+    {
+      localaxxu.g(paramaxzw).b().f(axxu.a + "").a(this.jdField_a_of_type_Axzl.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.jdField_a_of_type_Axzl.jdField_a_of_type_Axzw.b();
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        long l = this.jdField_a_of_type_Axzl.b();
+        double d = this.jdField_a_of_type_Axzl.c() / l;
+        axxv.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString, 1, String.valueOf(d), String.valueOf(l), String.valueOf(this.jdField_a_of_type_Axzl.c()), String.valueOf(axxv.a()), true);
+      }
+      this.jdField_a_of_type_Axzl.jdField_a_of_type_AndroidOsHandler.removeMessages(2025);
+      this.jdField_a_of_type_Axzl.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2025, 100L);
+      this.jdField_a_of_type_Axzl.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2026, 300L);
+      return;
     }
   }
 }

@@ -7,40 +7,41 @@ import android.content.SharedPreferences;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.view.WindowManager;
-import bcef;
-import bfyz;
+import bdla;
+import bhhr;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.screenshare.ScreenShareCtrl;
+import com.tencent.av.wtogether.media.WatchTogetherMediaPlayCtrl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import ldz;
-import lez;
-import lfa;
-import lyu;
-import lyv;
-import lyx;
-import lyy;
-import lzb;
-import lzf;
-import miz;
+import lee;
+import lfe;
+import lff;
+import lzk;
+import lzl;
+import lzn;
+import lzo;
+import lzr;
+import lzv;
+import mjw;
 
 public class SmallScreenService
   extends BaseSmallScreenService
-  implements lyv
+  implements lzl
 {
   public static boolean g;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new lyx(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new lzn(this);
   WindowManager jdField_a_of_type_AndroidViewWindowManager = null;
   public VideoController a;
   VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
   public SmallScreenService.OnSelectMemberActivityIsResumeChangedRunnable a;
-  private ldz jdField_a_of_type_Ldz = new lyy(this);
-  public lzf a;
-  final boolean[] jdField_a_of_type_ArrayOfBoolean = new boolean[3];
+  private lee jdField_a_of_type_Lee = new lzo(this);
+  public lzv a;
+  final boolean[] jdField_a_of_type_ArrayOfBoolean = new boolean[4];
   final boolean[] b;
   Runnable c;
   boolean h = false;
@@ -49,9 +50,9 @@ public class SmallScreenService
   {
     this.jdField_c_of_type_JavaLangRunnable = null;
     this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService$OnSelectMemberActivityIsResumeChangedRunnable = null;
-    this.jdField_a_of_type_Lzf = null;
+    this.jdField_a_of_type_Lzv = null;
     this.jdField_a_of_type_ComTencentAvVideoController = null;
-    this.jdField_b_of_type_ArrayOfBoolean = new boolean[3];
+    this.jdField_b_of_type_ArrayOfBoolean = new boolean[4];
   }
   
   private void a(String paramString)
@@ -67,15 +68,15 @@ public class SmallScreenService
     for (boolean bool = true;; bool = false)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("SmallScreenService", 2, "initSmallScreenVideoUI, shareScreen[" + bool + "], uiCtrl[" + this.jdField_a_of_type_Lzf + "], from[" + paramString + "]");
+        QLog.i("SmallScreenService", 2, "initSmallScreenVideoUI, shareScreen[" + bool + "], uiCtrl[" + this.jdField_a_of_type_Lzv + "], from[" + paramString + "]");
       }
-      if ((bool) || (this.jdField_a_of_type_Lzf != null)) {
+      if ((bool) || (this.jdField_a_of_type_Lzv != null)) {
         break;
       }
-      this.jdField_a_of_type_Lzf = new lzf(this);
-      this.jdField_a_of_type_Lzf.a(this.app);
-      this.jdField_a_of_type_Lzf.e();
-      this.jdField_a_of_type_Lzf.f();
+      this.jdField_a_of_type_Lzv = new lzv(this);
+      this.jdField_a_of_type_Lzv.a(this.app);
+      this.jdField_a_of_type_Lzv.e();
+      this.jdField_a_of_type_Lzv.f();
       return;
     }
   }
@@ -114,175 +115,197 @@ public class SmallScreenService
   
   public void a(long paramLong)
   {
-    Object localObject;
+    Object localObject1;
     boolean bool4;
+    int i;
+    label63:
     boolean bool5;
-    label50:
+    label73:
     boolean bool1;
     boolean bool2;
     boolean bool6;
-    label128:
-    label154:
+    label155:
+    label185:
     boolean bool7;
-    int i;
-    label189:
-    boolean bool3;
-    label211:
     int j;
+    label221:
+    boolean bool3;
+    label248:
     int k;
+    int m;
     if (!this.d)
     {
-      localObject = this.jdField_a_of_type_ComTencentAvVideoController.a();
+      localObject1 = this.jdField_a_of_type_ComTencentAvVideoController.a();
       if ((Build.VERSION.SDK_INT >= 21) && (this.jdField_a_of_type_ComTencentAvVideoController.a().c()))
       {
         bool4 = true;
+        Object localObject2 = VideoController.a().b();
+        if ((localObject2 == null) || (!((WatchTogetherMediaPlayCtrl)localObject2).h())) {
+          break label404;
+        }
+        i = 1;
         if (this.jdField_a_of_type_Int <= 0) {
-          break label358;
+          break label409;
         }
         bool5 = true;
         bool1 = false;
         if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
         {
-          bool2 = lzb.c(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp());
+          bool2 = lzr.c(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp());
           bool1 = bool2;
-          if (((lez)localObject).J)
+          if (((lfe)localObject1).J)
           {
             bool1 = bool2;
-            if (((lez)localObject).g == 15) {
+            if (((lfe)localObject1).g == 15) {
               bool1 = false;
             }
           }
         }
         this.f = a();
-        if ((bool4) || (!bool5) || (!lzb.g())) {
-          break label364;
+        if ((i != 0) || (bool4) || (!bool5) || (!lzr.g())) {
+          break label415;
         }
         bool6 = true;
-        if ((bool4) || (bool5) || (!lzb.h()) || (!this.f)) {
-          break label370;
+        if ((i != 0) || (bool4) || (bool5) || (!lzr.h()) || (!this.f)) {
+          break label421;
         }
         bool2 = true;
         bool7 = this.jdField_a_of_type_ComTencentAvVideoController.p();
         if ((this.h) || (!bool1) || (bool7) || (this.jdField_c_of_type_Boolean)) {
-          break label376;
+          break label427;
         }
-        i = 1;
-        if ((i == 0) || ((!bool4) && (!bool6) && (!bool2))) {
-          break label381;
+        j = 1;
+        if ((j == 0) || ((i == 0) && (!bool4) && (!bool6) && (!bool2))) {
+          break label433;
         }
         bool3 = true;
-        j = ((lez)localObject).d;
-        k = ((lez)localObject).F;
-        String str = ((lez)localObject).c;
-        if ((str == null) || (!str.startsWith("10-")) || (((lez)localObject).J)) {
-          break label387;
+        k = ((lfe)localObject1).d;
+        m = ((lfe)localObject1).F;
+        localObject2 = ((lfe)localObject1).c;
+        if ((localObject2 == null) || (!((String)localObject2).startsWith("10-")) || (((lfe)localObject1).J)) {
+          break label439;
         }
-        i = 1;
-        label257:
-        if ((k != 10) && (i == 0)) {
-          break label1003;
+        j = 1;
+        label295:
+        if ((m != 10) && (j == 0)) {
+          break label1111;
         }
         bool3 = false;
         bool2 = false;
       }
     }
-    label316:
-    label358:
-    label1003:
+    label404:
+    label409:
+    label415:
+    label421:
+    label427:
+    label433:
+    label439:
+    label1111:
     for (;;)
     {
-      if ((!bool4) && (bool3) && (this.jdField_a_of_type_Lzf == null)) {
+      if ((!bool4) && (bool3) && (this.jdField_a_of_type_Lzv == null)) {
         a("showHideToast");
       }
       if ((bool5) && (this.jdField_a_of_type_Boolean)) {
         this.jdField_a_of_type_Boolean = false;
       }
-      i = 0;
-      if (i < 3)
+      j = 0;
+      label356:
+      if (j < 4)
       {
-        if (this.jdField_a_of_type_ArrayOfLyu[i] != null) {
-          this.jdField_a_of_type_ArrayOfBoolean[i] = this.jdField_a_of_type_ArrayOfLyu[i].a();
+        if (this.jdField_a_of_type_ArrayOfLzk[j] != null) {
+          this.jdField_a_of_type_ArrayOfBoolean[j] = this.jdField_a_of_type_ArrayOfLzk[j].a();
         }
         for (;;)
         {
-          i += 1;
-          break label316;
+          j += 1;
+          break label356;
           bool4 = false;
           break;
+          i = 0;
+          break label63;
           bool5 = false;
-          break label50;
-          label364:
+          break label73;
           bool6 = false;
-          break label128;
-          label370:
+          break label155;
           bool2 = false;
-          break label154;
-          label376:
-          i = 0;
-          break label189;
-          label381:
+          break label185;
+          j = 0;
+          break label221;
           bool3 = false;
-          break label211;
-          i = 0;
-          break label257;
-          this.jdField_a_of_type_ArrayOfBoolean[i] = false;
+          break label248;
+          j = 0;
+          break label295;
+          this.jdField_a_of_type_ArrayOfBoolean[j] = false;
         }
       }
-      localObject = this.jdField_b_of_type_ArrayOfBoolean;
-      int m;
+      localObject1 = this.jdField_b_of_type_ArrayOfBoolean;
+      int n;
       if ((bool2) && (bool3) && (!this.jdField_a_of_type_Boolean))
       {
-        m = 1;
-        localObject[0] = m;
-        localObject = this.jdField_b_of_type_ArrayOfBoolean;
+        n = 1;
+        localObject1[0] = n;
+        localObject1 = this.jdField_b_of_type_ArrayOfBoolean;
         if ((!bool6) || (!bool3)) {
-          break label720;
+          break label802;
         }
-        m = 1;
-        localObject[1] = m;
-        localObject = this.jdField_b_of_type_ArrayOfBoolean;
+        n = 1;
+        label507:
+        localObject1[1] = n;
+        localObject1 = this.jdField_b_of_type_ArrayOfBoolean;
         if ((!bool4) || (!bool3)) {
-          break label726;
+          break label808;
         }
-        m = 1;
-        localObject[2] = m;
+        n = 1;
+        localObject1[2] = n;
+        localObject1 = this.jdField_b_of_type_ArrayOfBoolean;
+        if ((i == 0) || (!bool3)) {
+          break label814;
+        }
+        n = 1;
+        localObject1[3] = n;
         if (QLog.isColorLevel()) {
-          QLog.w("SmallScreenService", 2, "showHideToast, hasVideo[" + bool5 + "], mIsInCall[" + this.h + "], isOpEnable[" + bool1 + "], isVideoToastCanShow[" + bool6 + "], isAudioToastCanShow[" + bool2 + "], isShareToastCanShow[" + bool4 + "], isToastShow[" + bool3 + "], mIsLock[" + this.jdField_c_of_type_Boolean + "], mIsInit[" + this.jdField_a_of_type_Boolean + "], mIsAppOnForeground[" + this.f + "], SessionType[" + j + "], relationType[" + k + "], isSelectMemberActivityIsResume[" + bool7 + "], mSmallScreenStateBroadcast[" + this.jdField_c_of_type_Int + "], seq[" + paramLong + "]");
+          QLog.w("SmallScreenService", 2, "showHideToast, hasVideo[" + bool5 + "], mIsInCall[" + this.h + "], isOpEnable[" + bool1 + "], isVideoToastCanShow[" + bool6 + "], isAudioToastCanShow[" + bool2 + "], isShareToastCanShow[" + bool4 + "], isToastShow[" + bool3 + "], mIsLock[" + this.jdField_c_of_type_Boolean + "], mIsInit[" + this.jdField_a_of_type_Boolean + "], mIsAppOnForeground[" + this.f + "], SessionType[" + k + "], relationType[" + m + "], isSelectMemberActivityIsResume[" + bool7 + "], mSmallScreenStateBroadcast[" + this.jdField_c_of_type_Int + "], seq[" + paramLong + "]");
         }
         i = 0;
-        if (i >= 3) {
-          break label770;
+        label755:
+        if (i >= 4) {
+          break label858;
         }
-        localObject = this.jdField_a_of_type_ArrayOfLyu[i];
-        if ((localObject != null) && (((lyu)localObject).jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout != null) && (((lyu)localObject).jdField_a_of_type_Lza != null)) {
-          break label732;
+        localObject1 = this.jdField_a_of_type_ArrayOfLzk[i];
+        if ((localObject1 != null) && (((lzk)localObject1).jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout != null) && (((lzk)localObject1).jdField_a_of_type_Lzq != null)) {
+          break label820;
         }
       }
       for (;;)
       {
         i += 1;
-        break label673;
-        m = 0;
+        break label755;
+        n = 0;
         break;
-        m = 0;
-        break label453;
-        m = 0;
-        break label478;
-        ((lyu)localObject).a(this);
-        if ((((lyu)localObject).a()) && (this.jdField_b_of_type_ArrayOfBoolean[i] == 0)) {
-          this.jdField_b_of_type_Int = ((lyu)localObject).jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.a();
+        n = 0;
+        break label507;
+        n = 0;
+        break label532;
+        n = 0;
+        break label556;
+        ((lzk)localObject1).a(this);
+        if ((((lzk)localObject1).a()) && (this.jdField_b_of_type_ArrayOfBoolean[i] == 0)) {
+          this.jdField_b_of_type_Int = ((lzk)localObject1).jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.a();
         }
       }
+      label858:
       i = 0;
-      if (i < 3)
+      if (i < 4)
       {
-        localObject = this.jdField_a_of_type_ArrayOfLyu[i];
-        if ((localObject == null) || (((lyu)localObject).jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout == null) || (((lyu)localObject).jdField_a_of_type_Lza == null)) {}
+        localObject1 = this.jdField_a_of_type_ArrayOfLzk[i];
+        if ((localObject1 == null) || (((lzk)localObject1).jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout == null) || (((lzk)localObject1).jdField_a_of_type_Lzq == null)) {}
         for (;;)
         {
           i += 1;
           break;
-          ((lyu)localObject).a(this.jdField_b_of_type_ArrayOfBoolean[i], this.jdField_b_of_type_Int);
+          ((lzk)localObject1).a(this.jdField_b_of_type_ArrayOfBoolean[i], this.jdField_b_of_type_Int);
         }
       }
       if ((bool3) && ((this.jdField_b_of_type_ArrayOfBoolean[0] != 0) || (this.jdField_b_of_type_ArrayOfBoolean[1] != 0))) {
@@ -294,20 +317,24 @@ public class SmallScreenService
       {
         a(this.jdField_b_of_type_ArrayOfBoolean, this.jdField_a_of_type_ArrayOfBoolean);
         return;
-        if ((!bool7) && (!this.jdField_c_of_type_Boolean) && (this.f) && (this.jdField_c_of_type_Int != 2)) {
-          if ((bool3) && (this.jdField_b_of_type_ArrayOfBoolean[2] != 0))
+        if ((!bool7) && (!this.jdField_c_of_type_Boolean) && (this.f) && (this.jdField_c_of_type_Int != 2))
+        {
+          if ((bool3) && (this.jdField_b_of_type_ArrayOfBoolean[2] != 0)) {
+            a(paramLong, 2);
+          }
+          if ((bool3) && (this.jdField_b_of_type_ArrayOfBoolean[3] != 0))
           {
             a(paramLong, 2);
           }
           else if (this.jdField_c_of_type_Int == 1)
           {
-            localObject = a();
+            localObject1 = a();
             if (this.jdField_c_of_type_JavaLangRunnable == null) {
               this.jdField_c_of_type_JavaLangRunnable = new SmallScreenService.4(this, paramLong);
             }
-            ((Handler)localObject).removeCallbacks(this.jdField_c_of_type_JavaLangRunnable);
+            ((Handler)localObject1).removeCallbacks(this.jdField_c_of_type_JavaLangRunnable);
             g = true;
-            ((Handler)localObject).postDelayed(this.jdField_c_of_type_JavaLangRunnable, 1000L);
+            ((Handler)localObject1).postDelayed(this.jdField_c_of_type_JavaLangRunnable, 1000L);
           }
           else
           {
@@ -327,23 +354,23 @@ public class SmallScreenService
     if (this.jdField_c_of_type_JavaLangRunnable != null) {
       a().removeCallbacks(this.jdField_c_of_type_JavaLangRunnable);
     }
-    if (lzb.a(paramLong, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt)) {
+    if (lzr.a(paramLong, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt)) {
       this.jdField_c_of_type_Int = paramInt;
     }
   }
   
   public void a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout)
   {
-    if (this.jdField_a_of_type_Lzf != null) {
-      this.jdField_a_of_type_Lzf.c();
+    if (this.jdField_a_of_type_Lzv != null) {
+      this.jdField_a_of_type_Lzv.c();
     }
   }
   
   protected void a(boolean[] paramArrayOfBoolean1, boolean[] paramArrayOfBoolean2)
   {
     Object localObject = this.jdField_a_of_type_ComTencentAvVideoController.a();
-    int i = ((lez)localObject).d;
-    int j = ((lez)localObject).F;
+    int i = ((lfe)localObject).d;
+    int j = ((lfe)localObject).F;
     String str;
     if ((i == 1) || (i == 2))
     {
@@ -374,10 +401,10 @@ public class SmallScreenService
       for (;;)
       {
         if (str != null) {
-          bcef.b(null, "CliOper", "", "", str, str, 0, 0, "", "", "", "");
+          bdla.b(null, "CliOper", "", "", str, str, 0, 0, "", "", "", "");
         }
         if (paramArrayOfBoolean1 != null) {
-          bcef.b(null, "CliOper", "", "", paramArrayOfBoolean1, paramArrayOfBoolean1, 0, 0, "", "", "", "");
+          bdla.b(null, "CliOper", "", "", paramArrayOfBoolean1, paramArrayOfBoolean1, 0, 0, "", "", "", "");
         }
         return;
         i = 0;
@@ -465,13 +492,13 @@ public class SmallScreenService
     if (paramSmallScreenRelativeLayout == a(2)) {
       f();
     }
-    if (this.jdField_a_of_type_Lzf != null) {
-      this.jdField_a_of_type_Lzf.b();
+    if (this.jdField_a_of_type_Lzv != null) {
+      this.jdField_a_of_type_Lzv.b();
     }
     for (;;)
     {
       return true;
-      lzf.a(getApplicationContext(), this.jdField_a_of_type_ComTencentAvVideoController);
+      lzv.a(getApplicationContext(), this.jdField_a_of_type_ComTencentAvVideoController);
     }
   }
   
@@ -485,7 +512,7 @@ public class SmallScreenService
     if (this.e)
     {
       str = "0X80057D9";
-      bcef.b(null, "CliOper", "", "", str, str, 0, 0, "", "", "", "");
+      bdla.b(null, "CliOper", "", "", str, str, 0, 0, "", "", "", "");
       if (this.jdField_a_of_type_Int > 0) {
         if (!this.e) {
           break label153;
@@ -495,7 +522,7 @@ public class SmallScreenService
     label153:
     for (String str = "0X80057DA";; str = "0X80057DC")
     {
-      bcef.b(null, "CliOper", "", "", str, str, 0, 0, "", "", "", "");
+      bdla.b(null, "CliOper", "", "", str, str, 0, 0, "", "", "", "");
       return;
       str = "0X80057DB";
       break;
@@ -517,16 +544,16 @@ public class SmallScreenService
     for (;;)
     {
       return;
-      lez locallez = this.jdField_a_of_type_ComTencentAvVideoController.a();
-      if (locallez != null)
+      lfe locallfe = this.jdField_a_of_type_ComTencentAvVideoController.a();
+      if (locallfe != null)
       {
         if (QLog.isColorLevel()) {
-          QLog.w("SmallScreenService", 1, "InitRunnable, SessionType[" + locallez.d + "], matchStatus[" + locallez.a.jdField_b_of_type_Int + "]");
+          QLog.w("SmallScreenService", 1, "InitRunnable, SessionType[" + locallfe.d + "], matchStatus[" + locallfe.a.jdField_b_of_type_Int + "]");
         }
         if (this.jdField_a_of_type_ComTencentAvVideoController.f) {
-          locallez.a(l, "doInitRunnable", 1);
+          locallfe.a(l, "doInitRunnable", 1);
         }
-        if ((locallez.d == 1) || (locallez.d == 3) || (locallez.a.jdField_b_of_type_Int > 0))
+        if ((locallfe.d == 1) || (locallfe.d == 3) || (locallfe.a.jdField_b_of_type_Int > 0))
         {
           this.jdField_a_of_type_Boolean = false;
           a(l);
@@ -536,17 +563,17 @@ public class SmallScreenService
       {
         QLog.w("SmallScreenService", 1, "doInitRunnable, end, seq[" + l + "]");
         return;
-        if (locallez.d == 4)
+        if (locallfe.d == 4)
         {
-          if ((!NetworkUtil.isWifiConnected(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp())) && (!locallez.aq))
+          if ((!NetworkUtil.isWifiConnected(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp())) && (!locallfe.aq))
           {
             this.jdField_a_of_type_Boolean = false;
             a(l);
           }
         }
-        else if ((locallez.d == 0) && (locallez.e) && ((locallez.g == 1) || (locallez.g == 2)))
+        else if ((locallfe.d == 0) && (locallfe.e) && ((locallfe.g == 1) || (locallfe.g == 2)))
         {
-          int i = locallez.f;
+          int i = locallfe.f;
           if ((i == 1) || (i == 2))
           {
             QLog.w("SmallScreenService", 1, "doInitRunnable, sessionInfo.BeginSessionType,[" + i + "]");
@@ -581,7 +608,7 @@ public class SmallScreenService
     }
     localObject = this.jdField_a_of_type_ComTencentAvVideoController.a();
     if (localObject != null) {
-      ((miz)localObject).a(2);
+      ((mjw)localObject).a(2);
     }
   }
   
@@ -591,18 +618,18 @@ public class SmallScreenService
     QLog.w("SmallScreenService", 1, "avideo onCreate start, seq[" + l + "]");
     super.onCreate();
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = ((VideoAppInterface)this.app);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Ldz);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Lee);
     this.jdField_a_of_type_ComTencentAvVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
     Object localObject = this.jdField_a_of_type_ComTencentAvVideoController.a();
     a(l, 1);
     this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)getSystemService("window"));
-    SharedPreferences localSharedPreferences = bfyz.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp());
+    SharedPreferences localSharedPreferences = bhhr.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp());
     if (this.jdField_a_of_type_ComTencentAvVideoController.b()) {}
-    for (this.jdField_b_of_type_Int = localSharedPreferences.getInt("small_window_position_land", 12);; this.jdField_b_of_type_Int = ((lez)localObject).L)
+    for (this.jdField_b_of_type_Int = localSharedPreferences.getInt("small_window_position_land", 12);; this.jdField_b_of_type_Int = ((lfe)localObject).L)
     {
-      ((lez)localObject).L = this.jdField_b_of_type_Int;
+      ((lfe)localObject).L = this.jdField_b_of_type_Int;
       int i = 0;
-      while (i < 3)
+      while (i < 4)
       {
         localObject = a(i);
         if (localObject != null) {
@@ -629,7 +656,7 @@ public class SmallScreenService
   public void onDestroy()
   {
     long l = AudioHelper.b();
-    QLog.w("SmallScreenService", 1, "avideo onDestroy start, seq[" + l + "], sLastActionOnFrom[" + lzb.d + "]");
+    QLog.w("SmallScreenService", 1, "avideo onDestroy start, seq[" + l + "], sLastActionOnFrom[" + lzr.d + "]");
     if (this.jdField_a_of_type_Int > 0) {}
     for (SmallScreenRelativeLayout localSmallScreenRelativeLayout = a(1);; localSmallScreenRelativeLayout = a(0))
     {
@@ -640,20 +667,20 @@ public class SmallScreenService
       super.onDestroy();
       a(l, 0);
       this.jdField_c_of_type_JavaLangRunnable = null;
-      if (this.jdField_a_of_type_Lzf != null)
+      if (this.jdField_a_of_type_Lzv != null)
       {
-        this.jdField_a_of_type_Lzf.g();
-        this.jdField_a_of_type_Lzf.h();
-        this.jdField_a_of_type_Lzf.a(l);
+        this.jdField_a_of_type_Lzv.g();
+        this.jdField_a_of_type_Lzv.h();
+        this.jdField_a_of_type_Lzv.a(l);
       }
       unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
       if (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService$OnSelectMemberActivityIsResumeChangedRunnable != null) {
         this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService$OnSelectMemberActivityIsResumeChangedRunnable);
       }
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.jdField_a_of_type_Ldz);
-      this.jdField_a_of_type_Ldz = null;
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.jdField_a_of_type_Lee);
+      this.jdField_a_of_type_Lee = null;
       this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService$OnSelectMemberActivityIsResumeChangedRunnable = null;
-      this.jdField_a_of_type_Lzf = null;
+      this.jdField_a_of_type_Lzv = null;
       this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
       if (QLog.isColorLevel()) {

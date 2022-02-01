@@ -1,15 +1,19 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
-
 class xju
-  implements bhfe
+  implements xjp
 {
-  xju(xjt paramxjt, String paramString, QQStoryAutoPlayView paramQQStoryAutoPlayView) {}
+  public xjp a;
   
-  public void a(String paramString)
+  private xju(xjs paramxjs) {}
+  
+  public boolean a(xjm paramxjm, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    xvv.a("Q.qqstory.detail.FeedItemThumbAdapter", "vid:%s, animation end", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a().a(4);
-    voe.a().a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a());
+    if (xjs.a(this.jdField_a_of_type_Xjs) != null) {
+      xjs.a(this.jdField_a_of_type_Xjs).c(xjs.a(this.jdField_a_of_type_Xjs));
+    }
+    if (this.jdField_a_of_type_Xjp != null) {
+      return this.jdField_a_of_type_Xjp.a(paramxjm, paramInt1, paramInt2, paramInt3, paramString, paramObject);
+    }
+    return false;
   }
 }
 

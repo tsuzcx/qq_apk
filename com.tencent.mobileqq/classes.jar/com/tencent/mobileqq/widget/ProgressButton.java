@@ -43,7 +43,7 @@ public class ProgressButton
   private void a()
   {
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    int i = getResources().getColorStateList(2131167047).getDefaultColor();
+    int i = getResources().getColorStateList(2131167061).getDefaultColor();
     if (this.jdField_b_of_type_Int == -1)
     {
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(i);

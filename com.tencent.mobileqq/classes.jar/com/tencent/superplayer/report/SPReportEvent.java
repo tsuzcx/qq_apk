@@ -5,8 +5,12 @@ import com.tencent.superplayer.api.SuperPlayerSDKMgr;
 import com.tencent.tmediacodec.TCodecManager;
 import com.tencent.tmediacodec.reuse.ReusePolicy;
 import com.tencent.tmediacodec.reuse.ReusePolicy.EraseType;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class SPReportEvent
 {
@@ -28,12 +32,16 @@ public class SPReportEvent
   public long duration;
   public String errCode;
   public String errDetailInfo;
+  public Map<String, String> extReportData = new HashMap();
   public long fileSize;
   public String flowId;
+  public boolean hadSeek;
+  public boolean hadStart;
   public int hardwareLevel;
   public int height;
   public int netType;
   public int platform = 1;
+  public long playDuration;
   public int prePlay = 0;
   public long prepareDuration;
   public long realPrepareDuration;
@@ -67,9 +75,9 @@ public class SPReportEvent
     localLinkedHashMap.put("param_appId", String.valueOf(this.appId));
     localLinkedHashMap.put("param_sceneId", String.valueOf(this.sceneId));
     if (SuperPlayerSDKMgr.getContext() == null) {}
-    for (String str = "";; str = SuperPlayerSDKMgr.getContext().getPackageName())
+    for (Object localObject = "";; localObject = SuperPlayerSDKMgr.getContext().getPackageName())
     {
-      localLinkedHashMap.put("param_packagename", str);
+      localLinkedHashMap.put("param_packagename", localObject);
       localLinkedHashMap.put("param_videoSource", String.valueOf(this.videoSource));
       localLinkedHashMap.put("param_vid", this.vid);
       localLinkedHashMap.put("param_url", this.url);
@@ -88,7 +96,7 @@ public class SPReportEvent
       localLinkedHashMap.put("param_sdkVersion", this.sdkVersion);
       localLinkedHashMap.put("param_flowId", this.flowId);
       localLinkedHashMap.put("param_configExt", this.configExt);
-      localLinkedHashMap.put("param_net_type", String.valueOf(this.netType));
+      localLinkedHashMap.put("param_netType", String.valueOf(this.netType));
       localLinkedHashMap.put("param_success", String.valueOf(this.success));
       localLinkedHashMap.put("param_errCode", this.errCode);
       localLinkedHashMap.put("param_errDetailInfo", this.errDetailInfo);
@@ -115,8 +123,17 @@ public class SPReportEvent
       localLinkedHashMap.put("param_secondBufferCount", String.valueOf(this.secondBufferCount));
       localLinkedHashMap.put("param_videoFrameCheckCode", String.valueOf(this.videoFrameCheckCode));
       localLinkedHashMap.put("param_codecErasePolicy", String.valueOf(TCodecManager.getInstance().getReusePolicy().eraseType.ordinal()));
-      return localLinkedHashMap;
+      localLinkedHashMap.put("param_playDuration", String.valueOf(this.playDuration));
+      localLinkedHashMap.put("param_hadStart", String.valueOf(this.hadStart));
+      localLinkedHashMap.put("param_hadSeek", String.valueOf(this.hadSeek));
+      localObject = this.extReportData.entrySet().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+        localLinkedHashMap.put(localEntry.getKey(), localEntry.getValue());
+      }
     }
+    return localLinkedHashMap;
   }
   
   public String getEventName()

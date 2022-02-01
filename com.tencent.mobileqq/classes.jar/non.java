@@ -1,10 +1,17 @@
-public abstract interface non
+import android.support.v4.app.FragmentActivity;
+import com.tencent.avgame.gamelogic.data.RoomInfo;
+import com.tencent.avgame.ui.AVGameJoinRoomFragment;
+
+public class non
+  extends ndm
 {
-  public abstract void a(Runnable paramRunnable);
+  public non(AVGameJoinRoomFragment paramAVGameJoinRoomFragment) {}
   
-  public abstract void b(Runnable paramRunnable);
-  
-  public abstract void c(Runnable paramRunnable);
+  public void b(int paramInt, String paramString, RoomInfo paramRoomInfo, byte[] paramArrayOfByte, long paramLong1, long paramLong2)
+  {
+    super.b(paramInt, paramString, paramRoomInfo, paramArrayOfByte, paramLong1, paramLong2);
+    this.a.getActivity().finish();
+  }
 }
 
 

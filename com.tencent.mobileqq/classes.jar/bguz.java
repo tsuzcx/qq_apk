@@ -1,35 +1,14 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FilenameFilter;
 
 class bguz
-  implements bgxq
+  implements FilenameFilter
 {
-  bguz(bguy parambguy) {}
+  bguz(bguw parambguw, String paramString) {}
   
-  public int a(Bundle paramBundle)
+  public boolean accept(File paramFile, String paramString)
   {
-    int j = this.a.a;
-    int i = -1;
-    long l = System.currentTimeMillis();
-    switch (this.a.a)
-    {
-    }
-    for (;;)
-    {
-      QLog.i("WebViewModule", 1, "CreateLoop:step[" + j + "] -> step[" + this.a.a + "] cost" + (System.currentTimeMillis() - l) + " ms.");
-      return i;
-      i = this.a.a(paramBundle);
-      continue;
-      i = this.a.b(paramBundle);
-      continue;
-      i = this.a.c(paramBundle);
-      continue;
-      i = this.a.d(paramBundle);
-      continue;
-      i = this.a.e(paramBundle);
-      continue;
-      i = this.a.f(paramBundle);
-    }
+    return (paramString.startsWith(this.jdField_a_of_type_JavaLangString)) && (paramString.endsWith(".localstorage"));
   }
 }
 

@@ -1,15 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler.Callback;
 
-class ncn
-  implements DialogInterface.OnClickListener
+public abstract interface ncn
+  extends Handler.Callback
 {
-  ncn(ncl paramncl) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.e();
-  }
+  public abstract boolean a(int paramInt);
 }
 
 

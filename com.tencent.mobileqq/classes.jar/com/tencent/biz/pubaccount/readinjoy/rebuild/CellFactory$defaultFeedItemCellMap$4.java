@@ -8,13 +8,13 @@ import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import qsd;
-import slt;
+import rei;
+import szd;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/biz/pubaccount/readinjoy/rebuild/FeedItemCellTypeSmallImage;", "context", "Landroid/content/Context;", "faceDecoder", "Lcom/tencent/mobileqq/app/face/FaceDecoder;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoyBaseAdapter;", "invoke"}, k=3, mv={1, 1, 16})
 public final class CellFactory$defaultFeedItemCellMap$4
   extends Lambda
-  implements Function3<Context, FaceDecoder, slt, qsd>
+  implements Function3<Context, FaceDecoder, szd, rei>
 {
   public static final 4 INSTANCE = new 4();
   
@@ -24,10 +24,10 @@ public final class CellFactory$defaultFeedItemCellMap$4
   }
   
   @NotNull
-  public final qsd invoke(@NotNull Context paramContext, @Nullable FaceDecoder paramFaceDecoder, @Nullable slt paramslt)
+  public final rei invoke(@NotNull Context paramContext, @Nullable FaceDecoder paramFaceDecoder, @Nullable szd paramszd)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    return new qsd(paramContext, paramFaceDecoder, paramslt);
+    return new rei(paramContext, paramFaceDecoder, paramszd);
   }
 }
 

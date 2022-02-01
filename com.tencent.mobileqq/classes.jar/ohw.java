@@ -1,64 +1,57 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.ecshopassit.view.CustomTabView;
-import com.tencent.biz.pubaccount.ecshopassit.view.EcshopNewPageFragment;
-import org.json.JSONException;
+import java.util.HashMap;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-public class ohw
-  extends BroadcastReceiver
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/NativeAd/report/ReportData;", "", "()V", "reportJson", "Lorg/json/JSONObject;", "reportJsonMap", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "appendData", "data", "Lcom/tencent/biz/pubaccount/NativeAd/report/IReportObj;", "isEmpty", "", "toReportJsonMap", "toReportJsonObject", "toReportString", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ohw
 {
-  public ohw(EcshopNewPageFragment paramEcshopNewPageFragment) {}
+  public static final ohx a;
+  private final HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private final JSONObject jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  static
   {
-    int i = 0;
-    if (paramIntent != null)
+    jdField_a_of_type_Ohx = new ohx(null);
+  }
+  
+  @Nullable
+  public final String a()
+  {
+    return this.jdField_a_of_type_OrgJsonJSONObject.toString();
+  }
+  
+  @NotNull
+  public final HashMap<String, String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilHashMap;
+  }
+  
+  @NotNull
+  public final ohw a(@Nullable ohv paramohv)
+  {
+    if (paramohv != null)
     {
-      paramContext = paramIntent.getAction();
-      if (!"com.tencent.biz.pubaccount.ecshop.tabpage.finish".equals(paramContext)) {
-        break label41;
-      }
-      if (this.a.getActivity() != null) {
-        this.a.getActivity().finish();
+      JSONObject localJSONObject = paramohv.a();
+      if (localJSONObject != null)
+      {
+        this.jdField_a_of_type_OrgJsonJSONObject.put(paramohv.a(), localJSONObject);
+        paramohv = (String)this.jdField_a_of_type_JavaUtilHashMap.put(paramohv.a(), localJSONObject.toString());
       }
     }
-    label41:
-    int j;
-    int k;
-    do
-    {
-      do
-      {
-        return;
-      } while (!"action_notify_view_update".equals(paramContext));
-      j = paramIntent.getIntExtra("businessId", 0);
-      k = paramIntent.getIntExtra("viewId", 0);
-    } while ((25 != j) || (k != 1));
-    for (;;)
-    {
-      try
-      {
-        paramContext = new JSONObject(paramIntent.getStringExtra("extstr"));
-        if (EcshopNewPageFragment.a(this.a) == null) {
-          break;
-        }
-        paramIntent = EcshopNewPageFragment.a(this.a);
-        if (paramContext.optInt("isShow") == 1)
-        {
-          paramIntent.setVisibility(i);
-          return;
-        }
-      }
-      catch (JSONException paramContext)
-      {
-        paramContext.printStackTrace();
-        return;
-      }
-      i = 8;
-    }
+    return this;
+  }
+  
+  @Nullable
+  public final JSONObject a()
+  {
+    return this.jdField_a_of_type_OrgJsonJSONObject;
+  }
+  
+  public final boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilHashMap.isEmpty();
   }
 }
 

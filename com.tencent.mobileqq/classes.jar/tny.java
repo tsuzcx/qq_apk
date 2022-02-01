@@ -1,16 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.barrage.BarrageInfo;
-import java.util.List;
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
+import android.support.annotation.NonNull;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageTrack$BarrageLineCallback;", "", "onBarragePlaceInLine", "", "barrageInfo", "Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageInfo;", "barrageLines", "", "Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageTrack$BarrageLine;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface tny
+final class tny
+  extends qvo
 {
-  public abstract void a(@NotNull BarrageInfo paramBarrageInfo, @NotNull List<tnx> paramList);
+  tny(int paramInt1, int paramInt2, int paramInt3, String paramString, ArticleInfo paramArticleInfo)
+  {
+    super(paramInt1, paramInt2, paramInt3);
+  }
+  
+  public void onClick(@NonNull View paramView)
+  {
+    pqx.a(paramView.getContext(), this.jdField_a_of_type_JavaLangString, null);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.isPGCShortContent()))
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.clickArea = 11;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.clickJumpTarget = qsj.a(this.jdField_a_of_type_JavaLangString, "-1");
+      pqb.a(paramView.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tny
  * JD-Core Version:    0.7.0.1
  */

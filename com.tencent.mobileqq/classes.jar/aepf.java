@@ -1,18 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.TroopAdmin;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public final class aepf
-  implements Parcelable.Creator<TroopMemberListActivity.TroopAdmin>
+public class aepf
+  implements aqrq
 {
-  public TroopMemberListActivity.TroopAdmin a(Parcel paramParcel)
-  {
-    return new TroopMemberListActivity.TroopAdmin(paramParcel, null);
-  }
+  public aepf(QQBrowserActivity paramQQBrowserActivity) {}
   
-  public TroopMemberListActivity.TroopAdmin[] a(int paramInt)
+  public void onColorNoteAnimFinish()
   {
-    return new TroopMemberListActivity.TroopAdmin[paramInt];
+    QQBrowserActivity.a(this.a);
   }
 }
 

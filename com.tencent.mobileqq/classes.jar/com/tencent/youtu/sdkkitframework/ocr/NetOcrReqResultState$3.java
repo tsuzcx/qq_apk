@@ -1,5 +1,6 @@
 package com.tencent.youtu.sdkkitframework.ocr;
 
+import com.tencent.youtu.sdkkitframework.common.CommonUtils;
 import java.util.HashMap;
 
 class NetOcrReqResultState$3
@@ -11,7 +12,7 @@ class NetOcrReqResultState$3
     put("ui_tips", "rst_failed");
     put("process_action", "failed");
     put("error_code", Integer.valueOf(4194304));
-    put("message", "Best Image is null");
+    put("message", CommonUtils.makeMessageJson(4194304, "rst_failed", "Best Image is null"));
   }
 }
 

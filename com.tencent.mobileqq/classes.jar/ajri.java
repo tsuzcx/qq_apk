@@ -1,18 +1,58 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class ajri
-  implements View.OnClickListener
+public class ajri
+  extends atfq
 {
-  ajri(ajrg paramajrg) {}
+  public ajri(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  public void onClick(View paramView)
+  protected void a(long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    ((NewPhotoPreviewActivity)this.a.mActivity).flashPicCb.toggle();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(atqb paramatqb)
+  {
+    if ((TextUtils.isEmpty(paramatqb.a)) || (TextUtils.isEmpty(paramatqb.b))) {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.history.C2CAllFragment", 2, "OnThumbDownLoad error : [fileId] = " + paramatqb.a + " [path] = " + paramatqb.b);
+      }
+    }
+    while (this.a.a == null) {
+      return;
+    }
+    this.a.a.notifyDataSetChanged();
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void b()
+  {
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void d()
+  {
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

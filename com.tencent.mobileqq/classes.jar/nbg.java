@@ -1,16 +1,22 @@
-public abstract interface nbg
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.wtogether.view.WatchTogetherAdminControlView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class nbg
+  implements View.OnClickListener
 {
-  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  public nbg(WatchTogetherAdminControlView paramWatchTogetherAdminControlView) {}
   
-  public abstract void a(String paramString, int paramInt, naf paramnaf);
-  
-  public abstract void a(String paramString1, String paramString2, String paramString3);
-  
-  public abstract void a(naf paramnaf, int paramInt);
-  
-  public abstract void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2);
-  
-  public abstract void i(naf paramnaf);
+  public void onClick(View paramView)
+  {
+    WatchTogetherAdminControlView.a(this.a, 1, 2);
+    WatchTogetherAdminControlView.c(this.a);
+    if (WatchTogetherAdminControlView.a(this.a) != null) {
+      WatchTogetherAdminControlView.a(this.a).b();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

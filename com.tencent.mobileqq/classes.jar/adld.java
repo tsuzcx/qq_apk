@@ -1,35 +1,54 @@
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.QQSettingMsgClearFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class adld
-  implements View.OnClickListener
+class adld
+  extends azip
 {
-  public adld(GeneralSettingActivity paramGeneralSettingActivity) {}
+  adld(adlb paramadlb) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    switch (paramView.getId())
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoLoginHelper", 2, "onUploadContact  isSuccess = " + paramBoolean);
     }
-    for (;;)
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoLoginHelper", 2, "RegisterQQNumberActivity onGetBindUinWithPhone isSuccess = " + paramBoolean1 + "; isBindOk = " + paramBoolean2 + ";hadbind = " + paramBoolean3 + ";uin =" + paramString);
+    }
+    if (paramBoolean1)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      if (paramBoolean2)
+      {
+        adlb.a(this.a, true);
+        adlb.b(this.a);
+      }
+      do
+      {
+        return;
+        if ((!paramBoolean3) || (TextUtils.isEmpty(paramString))) {
+          break;
+        }
+        adlb.a(this.a);
+      } while (adlb.a(this.a) == null);
+      Intent localIntent = new Intent(adlb.a(this.a), VerifyPhoneNumActivity.class);
+      localIntent.putExtra("phonenum", this.a.a);
+      localIntent.putExtra("key", this.a.b);
+      localIntent.putExtra("uin", adlb.a(this.a));
+      localIntent.putExtra("key_register_sign", adlb.a(this.a));
+      localIntent.putExtra("key_register_binduin", paramString);
+      adlb.a(this.a).startActivity(localIntent);
+      adlb.a(this.a).finish();
       return;
-      ((azvi)this.a.app.getManager(36)).b("100190.100194");
-      Intent localIntent = new Intent();
-      localIntent.putExtra("set_display_type", 1);
-      PublicFragmentActivity.a(this.a.getActivity(), localIntent, QQSettingMsgClearFragment.class);
-      bcef.b(this.a.app, "CliOper", "", "", "0X800A1F2", "0X800A1F2", 0, 0, "", "", "", "");
-      bcef.b(this.a.app, "CliOper", "", "", "Setting_tab", "My_settab_log", 0, 0, "", "", "", "");
-      continue;
-      GeneralSettingActivity.a(this.a);
+      adlb.b(this.a);
+      return;
     }
+    adlb.b(this.a);
   }
 }
 

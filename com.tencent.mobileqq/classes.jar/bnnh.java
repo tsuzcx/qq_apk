@@ -1,12 +1,24 @@
-import android.animation.TimeInterpolator;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 public class bnnh
-  implements TimeInterpolator
+  extends RecyclerView.ViewHolder
 {
-  public float getInterpolation(float paramFloat)
+  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  ImageView b;
+  
+  public bnnh(View paramView)
   {
-    double d = Math.pow(2.0D, -10.0F * paramFloat);
-    return (float)(Math.sin((paramFloat - 0.7F / 4.0F) * 6.283185307179586D / 0.7F) * d + 1.0D);
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362274));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131362270));
+    this.b = ((ImageView)paramView.findViewById(2131362276));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131362275));
   }
 }
 

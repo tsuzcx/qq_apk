@@ -2,7 +2,6 @@ package com.tencent.qqlive.module.videoreport.page;
 
 import android.graphics.Rect;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -147,7 +146,6 @@ class PageInteractiveFlagHandler
   
   public void onDispatchTouchEvent(Object paramObject, Window paramWindow, MotionEvent paramMotionEvent, boolean paramBoolean1, boolean paramBoolean2)
   {
-    Log.d("PageInteractive", "onDispatchTouchEvent: action = " + paramMotionEvent.getAction());
     if (paramBoolean2) {
       this.mIsBeforeNeedMark = needMarkInteractiveFlag(paramWindow, paramMotionEvent, this.mPageManager.isLastPageIsDisappear(), this.mPageManager.getCurrentPageInfo());
     }

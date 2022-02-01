@@ -1,25 +1,16 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.gamecenter.adapter.QQGamePubFeedsAdapter.FeedsItemVH.2.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-
-public class atwm
-  implements atya
+class atwm
+  implements atvs
 {
-  atwm(atwj paramatwj) {}
+  atwm(atwk paramatwk) {}
   
-  public void onAudioMute(boolean paramBoolean, int paramInt)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGamePubFeedsAdapter", 4, "onAudioMute id=" + paramInt + " mute=" + paramBoolean);
-    }
+    this.a.a(true, aucx.a(this.a.a.a()), this.a.c(), new atwn(this));
   }
   
-  public void onSrceenModeChanged(boolean paramBoolean, int paramInt) {}
-  
-  public void onVideoStatusChanged(int paramInt1, int paramInt2)
+  public void b()
   {
-    ThreadManager.getUIHandler().post(new QQGamePubFeedsAdapter.FeedsItemVH.2.1(this, paramInt1));
+    atwk.b(this.a);
   }
 }
 

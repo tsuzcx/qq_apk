@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.pic;
 
-import aydu;
+import azkg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.transfile.TransFileController;
 import eipc.EIPCResult;

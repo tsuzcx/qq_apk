@@ -1,106 +1,66 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageReportData;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.View;
+import com.tencent.mobileqq.search.activity.ContactSearchActivity;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.util.SearchConfigManager;
 import java.util.List;
 
-@Deprecated
 public class bcev
+  implements bcfi
 {
-  private static List<MessageReportData> a;
+  public static final String a;
+  private int a;
+  public List<bcfj> a;
+  private String b;
   
-  public static int a(Context paramContext, String paramString1, String paramString2)
+  static
   {
-    paramString2 = paramString1 + paramString2;
-    return paramContext.getSharedPreferences(paramString1 + "statistic", 0).getInt(paramString2, 0);
+    jdField_a_of_type_JavaLangString = anvx.a(2131704863);
   }
   
-  public static List<MessageReportData> a(QQAppInterface paramQQAppInterface)
+  public bcev(List<bcfj> paramList, String paramString, int paramInt)
   {
-    paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    List localList = paramQQAppInterface.query(MessageReportData.class, false, null, null, null, null, null, null);
-    paramQQAppInterface.close();
-    return localList;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.b = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public static void a(Context paramContext, String paramString1, String paramString2)
+  public int a()
   {
-    paramString2 = paramString1 + paramString2;
-    paramContext = paramContext.getSharedPreferences(paramString1 + "statistic", 0);
-    int i = paramContext.getInt(paramString2, 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("StatisticAssist", 2, paramString2 + ": " + i);
-    }
-    paramContext.edit().putInt(paramString2, i + 1).commit();
+    return bbzh.a("fts_native_contactor_maxnum", 3);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
+  public String a()
   {
-    paramContext.getSharedPreferences(paramString + "statistic", 0).edit().clear().commit();
-    paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    paramQQAppInterface.drop(MessageReportData.class);
-    paramQQAppInterface.close();
+    return jdField_a_of_type_JavaLangString;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10)
+  public List<bcfj> a()
   {
-    paramString4 = new MessageReportData(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10);
-    paramString1 = null;
-    if (a == null)
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(View paramView)
+  {
+    ContactSearchActivity.a(paramView.getContext(), this.b, this.jdField_a_of_type_Int, 197437, 2);
+    bcnc.a(this.b, 20, 0, paramView);
+    if ((paramView.getContext() instanceof UniteSearchActivity))
     {
-      paramString5 = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-      paramString1 = paramString5.query(MessageReportData.class, false, "senderUin=? and recieverUin=?", new String[] { paramString2, paramString3 }, null, null, null, null);
-      paramString5.close();
-    }
-    for (;;)
-    {
-      try
-      {
-        if (a != null) {
-          break label231;
-        }
-        if (paramString1 != null)
-        {
-          a = paramString1;
-          break label231;
-          if (i >= a.size()) {
-            break label225;
-          }
-          paramString1 = (MessageReportData)a.get(i);
-          if (paramString1.equals(paramString4))
-          {
-            paramString1.msgCount += 1;
-            paramString4.msgCount = paramString1.msgCount;
-            i = 0;
-            if (i != 0)
-            {
-              a.add(paramString4);
-              paramString4.msgCount = 1;
-            }
-            paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-            paramQQAppInterface.persistOrReplace(paramString4);
-            paramQQAppInterface.close();
-          }
-        }
-        else
-        {
-          a = new ArrayList();
-        }
+      bcnc.a("all_result", "more_contact", new String[] { "" + this.b });
+      if (SearchConfigManager.needSeparate) {
+        bcnc.a("search", "group", "more", 0, 0, new String[] { bcnc.a(this.jdField_a_of_type_Int) });
       }
-      finally {}
-      i += 1;
-      continue;
-      label225:
-      int i = 1;
-      continue;
-      label231:
-      i = 0;
+      bcjs.a(null, 0, this.jdField_a_of_type_Int, "0X8009D3D", 0, 0, null, null);
     }
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 

@@ -1,6 +1,17 @@
-public abstract interface vqs<T extends vqm>
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class vqs
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt, String paramString, T paramT);
+  vqs(vqq paramvqq) {}
+  
+  public void onClick(View paramView)
+  {
+    vqq.b(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

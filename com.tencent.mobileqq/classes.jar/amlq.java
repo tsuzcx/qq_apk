@@ -1,17 +1,27 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.os.Bundle;
+import eipc.EIPCResult;
+import java.util.HashMap;
 
-public final class amlq
+class amlq
+  implements amod
 {
-  View jdField_a_of_type_AndroidViewView;
-  ViewGroup[] jdField_a_of_type_ArrayOfAndroidViewViewGroup = new ViewGroup[3];
-  ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[3];
-  TextView[] jdField_a_of_type_ArrayOfAndroidWidgetTextView = new TextView[3];
-  URLImageView[] jdField_a_of_type_ArrayOfComTencentImageURLImageView = new URLImageView[3];
-  ImageView[] b = new ImageView[3];
+  amlq(amlo paramamlo, Bundle paramBundle, int paramInt) {}
+  
+  public void onGetApolloDressInfo(HashMap<Integer, String> paramHashMap, String paramString, int paramInt)
+  {
+    EIPCResult localEIPCResult = new EIPCResult();
+    if (paramHashMap == null) {}
+    for (;;)
+    {
+      localEIPCResult.code = paramInt;
+      localEIPCResult.data = this.jdField_a_of_type_AndroidOsBundle;
+      localEIPCResult.data.putSerializable("apolloDressInfo", paramHashMap);
+      localEIPCResult.data.putString("apolloErrMsg", paramString);
+      this.jdField_a_of_type_Amlo.callbackResult(this.jdField_a_of_type_Int, localEIPCResult);
+      return;
+      paramInt = 0;
+    }
+  }
 }
 
 

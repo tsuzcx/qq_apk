@@ -1,42 +1,18 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
 
 public class afby
-  implements MediaPlayer.OnCompletionListener
+  extends TransProcessorHandler
 {
-  public afby(MediaPlayerManager paramMediaPlayerManager) {}
+  public afby(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramMediaPlayer != null) {
-      paramMediaPlayer.release();
+    int i = paramMessage.what;
+    if ((i == 1003) || (i == 2003)) {
+      this.a.c();
     }
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("[SilkPlayer]mFinishListener, onCompletion , mp == null ? ");
-      if (paramMediaPlayer != null) {
-        break label109;
-      }
-    }
-    label109:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.i("MediaPlayerManager", 2, bool);
-      bftt.a = null;
-      if ((MediaPlayerManager.a(this.a) != null) && ((MediaPlayerManager.a(this.a) instanceof MessageForPtt))) {
-        ((MessageForPtt)MediaPlayerManager.a(this.a)).playProgress = 0.0F;
-      }
-      if ((MediaPlayerManager.a(this.a) == null) || (!MediaPlayerManager.a(this.a))) {
-        break;
-      }
-      return;
-    }
-    MediaPlayerManager.a(this.a, null);
-    this.a.e();
   }
 }
 

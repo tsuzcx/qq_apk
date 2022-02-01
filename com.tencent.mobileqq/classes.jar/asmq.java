@@ -1,51 +1,9 @@
-import android.os.Handler;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment;
-import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.2;
-import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.3;
-import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.4;
-import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.5;
-import java.util.List;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
 
-public class asmq
-  extends baum<bayt, bbhb>
+public abstract interface asmq
 {
-  public asmq(FileSelectorSearchFragment paramFileSelectorSearchFragment) {}
-  
-  protected bbbn<bayt, bbhb> a(int paramInt)
-  {
-    asmw localasmw = new asmw();
-    localasmw.a(new asmr(this));
-    return localasmw;
-  }
-  
-  protected bbhc a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new asmz(paramViewGroup);
-  }
-  
-  public void a(List<bayt> paramList)
-  {
-    super.a(paramList);
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.2(this));
-      return;
-    }
-    ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.3(this));
-  }
-  
-  public void a(List<bayt> paramList, boolean paramBoolean)
-  {
-    super.a(paramList, paramBoolean);
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.4(this));
-      return;
-    }
-    ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.5(this));
-  }
+  public abstract Drawable a(String paramString1, String paramString2, ImageView paramImageView);
 }
 
 

@@ -3,18 +3,18 @@ package com.tencent.biz.pubaccount.ecshopassit;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.persistence.EntityManager;
-import ofx;
+import onq;
 
 public class EcShopAssistantManager$3
   implements Runnable
 {
-  public EcShopAssistantManager$3(ofx paramofx, String paramString) {}
+  public EcShopAssistantManager$3(onq paramonq, String paramString) {}
   
   public void run()
   {
     EntityManager localEntityManager = this.this$0.a.getEntityManagerFactory().createEntityManager();
-    if (ofx.a(this.this$0, localEntityManager, this.a)) {
-      ofx.a(this.this$0, this.a);
+    if (onq.a(this.this$0, localEntityManager, this.a)) {
+      onq.a(this.this$0, this.a);
     }
     localEntityManager.close();
   }

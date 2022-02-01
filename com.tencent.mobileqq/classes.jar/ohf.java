@@ -1,20 +1,25 @@
-import android.content.Context;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
+import java.net.URL;
 
-public abstract interface ohf
+public class ohf
+  implements vuw
 {
-  public abstract void a(Context paramContext);
+  public ohf(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public abstract void a(MessageRecord paramMessageRecord);
+  public void a(URL paramURL, int paramInt) {}
   
-  public abstract void a(List<ChatMessage> paramList, ohg paramohg);
+  public void a(URL paramURL, Throwable paramThrowable)
+  {
+    ReadInJoyNativeAdFragment.b(this.a, 3);
+  }
   
-  public abstract boolean a(Context paramContext, RelativeLayout paramRelativeLayout);
-  
-  public abstract boolean a(RelativeLayout paramRelativeLayout);
+  public void a(URL paramURL, tls paramtls)
+  {
+    ReadInJoyNativeAdFragment.b(this.a, 2);
+    ReadInJoyNativeAdFragment.a(this.a).setPublicAccountImageDownListener(null);
+    ReadInJoyNativeAdFragment.a(this.a, null);
+  }
 }
 
 

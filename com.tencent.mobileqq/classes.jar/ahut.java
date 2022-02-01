@@ -1,6 +1,6 @@
 public abstract interface ahut
 {
-  public abstract void a();
+  public abstract void a(String paramString, boolean paramBoolean);
 }
 
 

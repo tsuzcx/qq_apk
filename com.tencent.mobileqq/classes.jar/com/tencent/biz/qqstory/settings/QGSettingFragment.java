@@ -10,9 +10,9 @@ import android.view.ViewGroup;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.widget.FormSwitchItem;
-import xbi;
-import xbj;
-import xbk;
+import xqd;
+import xqe;
+import xqf;
 
 public class QGSettingFragment
   extends IphoneTitleBarFragment
@@ -66,20 +66,20 @@ public class QGSettingFragment
   public void doOnCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131376879));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131369900));
-    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131369451));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131377151));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131370070));
+    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131369620));
     this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(b());
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new xbi(this));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new xqd(this));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(a());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new xbj(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new xqe(this));
     this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(c());
-    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new xbk(this));
+    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new xqf(this));
   }
   
   public int getContentLayoutId()
   {
-    return 2131561708;
+    return 2131561776;
   }
   
   public View onCreateCenterView()

@@ -25,15 +25,15 @@ import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector
 import com.tencent.widget.immersive.ImmersiveUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tho;
-import thu;
-import tpa;
-import tsa;
-import tsb;
-import tsc;
-import tsd;
-import tsr;
-import tss;
+import tva;
+import tvg;
+import ucp;
+import ugl;
+import ugm;
+import ugn;
+import ugo;
+import uhc;
+import uhd;
 
 public class ReadinjoyAdHippyFragment
   extends ReadInJoyBaseFragment
@@ -44,7 +44,7 @@ public class ReadinjoyAdHippyFragment
   public ViolaBaseView a;
   public HippyQQEngine a;
   protected String a;
-  private thu jdField_a_of_type_Thu;
+  private tvg jdField_a_of_type_Tvg;
   private boolean jdField_a_of_type_Boolean;
   private String b;
   private String c;
@@ -83,7 +83,7 @@ public class ReadinjoyAdHippyFragment
       try
       {
         paramBundle = new JSONObject(paramBundle.getString("param"));
-        this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.initHippy(this.jdField_a_of_type_AndroidViewViewGroup, paramBundle, false, new tsc(this));
+        this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.initHippy(this.jdField_a_of_type_AndroidViewViewGroup, paramBundle, false, new ugn(this));
         return;
       }
       catch (JSONException paramBundle)
@@ -144,11 +144,11 @@ public class ReadinjoyAdHippyFragment
         }
         if (this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine == null)
         {
-          this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine = new tsr(this, str2, str1);
+          this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine = new uhc(this, str2, str1);
           this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.setJsBundleType("react");
           this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.setPropsMap(a(str1));
           this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.setComponentName(str3);
-          this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.setViewCreator(new tss());
+          this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.setViewCreator(new uhd());
         }
         a(paramBundle, paramViewGroup);
         return;
@@ -161,21 +161,21 @@ public class ReadinjoyAdHippyFragment
   
   private void c()
   {
-    if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
+    if ((this.jdField_a_of_type_AndroidViewViewGroup == null) || (getActivity() == null)) {
       return;
     }
     QLog.d("ReadinjoyAdMiniGameFragment", 2, "Hippy: initHippy error initViola ui");
-    this.jdField_a_of_type_Thu = new thu(this);
+    this.jdField_a_of_type_Tvg = new tvg(this);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView = new ViolaBaseView(getActivity());
-    ((ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131380865)).addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView);
-    if (this.jdField_a_of_type_Thu.a()) {
-      this.jdField_a_of_type_Thu.d();
+    ((ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131381217)).addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView);
+    if (this.jdField_a_of_type_Tvg.a()) {
+      this.jdField_a_of_type_Tvg.d();
     }
     d();
-    this.jdField_a_of_type_Thu.a(this.jdField_a_of_type_AndroidViewViewGroup, new tsa(this));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.setListener(new tsb(this));
+    this.jdField_a_of_type_Tvg.a(this.jdField_a_of_type_AndroidViewViewGroup, new ugl(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.setListener(new ugm(this));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.setPageStartTime(System.currentTimeMillis());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(this.b, this, new tpa(this.b, new JSONObject(), tho.a(this.b), 1, null));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(this.b, this, new ucp(this.b, new JSONObject(), tva.a(this.b), 1, null));
   }
   
   private void d()
@@ -198,7 +198,7 @@ public class ReadinjoyAdHippyFragment
       QLog.d("ReadinjoyAdMiniGameFragment", 2, "reload viola Page mChannelName :" + this.jdField_a_of_type_JavaLangString + "; mChannelId :" + this.jdField_a_of_type_Int);
     }
     d();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(new tsd(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(new ugo(this));
   }
   
   public int a()
@@ -258,7 +258,7 @@ public class ReadinjoyAdHippyFragment
   
   public int b()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if ((this.jdField_a_of_type_Boolean) && (getActivity() != null)) {
       return ImmersiveUtils.getStatusBarHeight(getActivity());
     }
     return super.b();
@@ -272,8 +272,8 @@ public class ReadinjoyAdHippyFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(getActivity());
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558462, paramViewGroup, false));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131373643));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559219, paramViewGroup, false));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131373860));
     if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
     }
@@ -354,10 +354,15 @@ public class ReadinjoyAdHippyFragment
       }
     }
   }
+  
+  public void setUserVisibleHint(boolean paramBoolean)
+  {
+    super.setUserVisibleHint(paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.fragment.ReadinjoyAdHippyFragment
  * JD-Core Version:    0.7.0.1
  */

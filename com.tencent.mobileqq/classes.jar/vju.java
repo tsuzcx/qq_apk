@@ -1,181 +1,232 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.graphics.Bitmap.Config;
-import android.graphics.Color;
-import java.io.ByteArrayOutputStream;
-import java.lang.reflect.Array;
+import NS_KING_SOCIALIZE_META.stMetaNumericSys;
+import UserGrowth.stSimpleMetaPerson;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.common.util.NetworkUtil;
+import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class vju
+  extends blij<stSimpleMetaPerson>
+  implements View.OnClickListener
 {
-  public static double a(Bitmap paramBitmap1, Bitmap paramBitmap2)
+  private int jdField_a_of_type_Int;
+  private stSimpleMetaPerson jdField_a_of_type_UserGrowthStSimpleMetaPerson;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private RoundImageView jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView;
+  private vbg jdField_a_of_type_Vbg;
+  private vjw jdField_a_of_type_Vjw;
+  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private TextView c;
+  private TextView d;
+  private TextView e;
+  private TextView f;
+  private TextView g;
+  private TextView h;
+  private TextView i;
+  
+  public vju(ViewGroup paramViewGroup, vjw paramvjw)
   {
-    if ((paramBitmap1 == null) || (paramBitmap2 == null)) {}
-    while ((paramBitmap1.getWidth() != paramBitmap2.getWidth()) || (paramBitmap1.getHeight() != paramBitmap2.getHeight())) {
-      return 0.0D;
-    }
-    int i = a(a(paramBitmap1));
-    int j = a(a(paramBitmap2));
-    return a(a(paramBitmap1, i), a(paramBitmap2, j), paramBitmap1.getWidth(), paramBitmap1.getHeight());
+    super(paramViewGroup, 2131560450);
+    this.jdField_a_of_type_Vjw = paramvjw;
+    d();
+    c();
   }
   
-  private static double a(int[][] paramArrayOfInt1, int[][] paramArrayOfInt2, int paramInt1, int paramInt2)
+  public static vju a(ViewGroup paramViewGroup, vjw paramvjw)
   {
-    double d1 = 0.0D;
-    int i = 0;
-    while (i < paramInt1)
-    {
-      int j = 0;
-      while (j < paramInt2)
-      {
-        double d2 = d1;
-        if (paramArrayOfInt1[i][j] != paramArrayOfInt2[i][j]) {
-          d2 = d1 + 1.0D;
-        }
-        j += 1;
-        d1 = d2;
-      }
-      i += 1;
-    }
-    return 1.0D - d1 / (paramInt1 * paramInt2);
+    return new vju(paramViewGroup, paramvjw);
   }
   
-  private static int a(byte[] paramArrayOfByte)
+  private void a(int paramInt)
   {
-    float f1 = 0.0F;
-    int m = 0;
-    int[] arrayOfInt = new int[256];
-    int i = 0;
-    while (i < arrayOfInt.length)
-    {
-      arrayOfInt[i] = 0;
-      i += 1;
-    }
-    int j = 0;
-    i = 0;
-    while (i < paramArrayOfByte.length)
-    {
-      n = paramArrayOfByte[i] & 0xFF;
-      arrayOfInt[n] += 1;
-      k = j;
-      if (arrayOfInt[n] > j) {
-        k = arrayOfInt[n];
-      }
-      i += 1;
-      j = k;
-    }
-    int n = paramArrayOfByte.length;
-    i = 0;
-    for (float f2 = 0.0F; i < 256; f2 = f3 + f2)
-    {
-      f3 = arrayOfInt[i] * i;
-      i += 1;
-    }
-    j = 0;
-    float f3 = 0.0F;
-    int k = 0;
-    i = m;
-    if (i < 256)
-    {
-      k = arrayOfInt[i] + k;
-      if (k != 0) {}
+    if (paramInt == 1) {
+      vka.a("nickname", this.jdField_a_of_type_Int + 1, this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.id, vkh.a);
     }
     for (;;)
     {
-      i += 1;
-      break;
-      m = n - k;
-      if (m == 0) {
-        return j;
+      if (this.jdField_a_of_type_Vjw != null) {
+        this.jdField_a_of_type_Vjw.b(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson);
       }
-      f1 = arrayOfInt[i] * i + f1;
-      float f4 = f1 / k;
-      float f5 = (f2 - f1) / m;
-      float f6 = k;
-      f4 = (f4 - f5) * (m * f6 * (f4 - f5));
-      if (f4 > f3)
-      {
-        j = i;
-        f3 = f4;
+      return;
+      if (paramInt == 2) {
+        vka.a("profile", this.jdField_a_of_type_Int + 1, this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.id, vkh.a);
       }
     }
   }
   
-  public static Bitmap a(Bitmap paramBitmap)
+  private void a(stSimpleMetaPerson paramstSimpleMetaPerson)
   {
-    Bitmap localBitmap;
-    if (paramBitmap.getWidth() <= 50)
-    {
-      localBitmap = paramBitmap;
-      if (paramBitmap.getHeight() <= 50) {}
-    }
-    else
-    {
-      localBitmap = a(paramBitmap, 50, 50);
-    }
-    return b(localBitmap);
+    vka.a(this.jdField_a_of_type_Int + 1, paramstSimpleMetaPerson);
   }
   
-  private static Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2)
+  private void a(TextView paramTextView1, TextView paramTextView2, stMetaNumericSys paramstMetaNumericSys)
   {
-    return Bitmap.createScaledBitmap(paramBitmap, paramInt1, paramInt2, false);
-  }
-  
-  private static byte[] a(Bitmap paramBitmap)
-  {
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(paramBitmap.getByteCount());
-    paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, localByteArrayOutputStream);
-    return localByteArrayOutputStream.toByteArray();
-  }
-  
-  private static int[][] a(Bitmap paramBitmap, int paramInt)
-  {
-    int i = paramBitmap.getWidth();
-    int j = paramBitmap.getHeight();
-    int[][] arrayOfInt = (int[][])Array.newInstance(Integer.TYPE, new int[] { i, j });
-    i = 0;
-    while (i < paramBitmap.getWidth())
+    if (paramstMetaNumericSys == null)
     {
-      j = 0;
-      if (j < paramBitmap.getHeight())
-      {
-        if (Color.red(paramBitmap.getPixel(i, j)) > paramInt) {
-          arrayOfInt[i][j] = 1;
-        }
-        for (;;)
-        {
-          j += 1;
-          break;
-          arrayOfInt[i][j] = 0;
-        }
-      }
-      i += 1;
+      paramTextView1.setText("");
+      paramTextView2.setText("");
+      return;
     }
-    return arrayOfInt;
+    if (paramstMetaNumericSys.feed_num > 0)
+    {
+      paramTextView1.setText("作品");
+      paramTextView2.setText(String.valueOf(paramstMetaNumericSys.feed_num));
+      return;
+    }
+    if (paramstMetaNumericSys.fans_num > 0)
+    {
+      paramTextView1.setText("粉丝数");
+      paramTextView2.setText(String.valueOf(paramstMetaNumericSys.fans_num));
+      return;
+    }
+    paramTextView1.setText("");
+    paramTextView2.setText("");
   }
   
-  private static Bitmap b(Bitmap paramBitmap)
+  private void c()
   {
-    int k = paramBitmap.getWidth();
-    int m = paramBitmap.getHeight();
-    int[] arrayOfInt = new int[k * m];
-    paramBitmap.getPixels(arrayOfInt, 0, k, 0, 0, k, m);
-    int i = 0;
-    while (i < m)
+    this.c.setOnClickListener(this);
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
+    this.h.setOnClickListener(this);
+    this.i.setOnClickListener(this);
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
+    this.d.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
+    this.g.setOnClickListener(this);
+  }
+  
+  private void d()
+  {
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131369160));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131369151));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView = ((RoundImageView)a(2131369150));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131369153));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131369154));
+    this.c = ((TextView)a(2131369152));
+    this.d = ((TextView)a(2131369155));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131369156));
+    this.e = ((TextView)a(2131369159));
+    this.f = ((TextView)a(2131369157));
+    this.g = ((TextView)a(2131369158));
+    this.h = ((TextView)a(2131369075));
+    this.i = ((TextView)a(2131369074));
+  }
+  
+  private void e()
+  {
+    if (!NetworkUtil.isNetworkAvailable(a()))
     {
-      int j = 0;
-      while (j < k)
-      {
-        int n = arrayOfInt[(k * i + j)];
-        double d = (0xFF0000 & n) >> 16;
-        n = (int)(((0xFF00 & n) >> 8) * 0.59D + d * 0.3D + (n & 0xFF) * 0.11D);
-        arrayOfInt[(k * i + j)] = (n | n << 16 | 0xFF000000 | n << 8);
-        j += 1;
-      }
-      i += 1;
+      bjkv.a().a(2131720145);
+      return;
     }
-    paramBitmap = Bitmap.createBitmap(k, m, Bitmap.Config.RGB_565);
-    paramBitmap.setPixels(arrayOfInt, 0, k, 0, 0, k, m);
-    return paramBitmap;
+    if (this.jdField_a_of_type_Vbg == null) {
+      this.jdField_a_of_type_Vbg = vbg.a();
+    }
+    if (vmg.a(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.followStatus))
+    {
+      vmg.a(a(), new vjv(this), null);
+      return;
+    }
+    this.jdField_a_of_type_Vbg.b(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.id, 1);
+    this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.followStatus = 1;
+    this.h.setVisibility(8);
+    this.i.setVisibility(0);
+    vka.a("follow", this.jdField_a_of_type_Int + 1, this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.id, vkh.q);
+  }
+  
+  private void f()
+  {
+    if ((this.jdField_a_of_type_Vjw != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaPerson != null))
+    {
+      this.jdField_a_of_type_Vjw.a(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson);
+      vka.a("close", this.jdField_a_of_type_Int + 1, this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.id, vkh.a);
+    }
+  }
+  
+  public stSimpleMetaPerson a()
+  {
+    return this.jdField_a_of_type_UserGrowthStSimpleMetaPerson;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_UserGrowthStSimpleMetaPerson == null) {
+      return;
+    }
+    if (vmg.a(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.followStatus))
+    {
+      this.h.setVisibility(8);
+      this.i.setVisibility(0);
+      return;
+    }
+    this.h.setVisibility(0);
+    this.i.setVisibility(8);
+  }
+  
+  public void a(stSimpleMetaPerson paramstSimpleMetaPerson, int paramInt)
+  {
+    super.a(paramstSimpleMetaPerson);
+    this.jdField_a_of_type_UserGrowthStSimpleMetaPerson = paramstSimpleMetaPerson;
+    if (paramstSimpleMetaPerson == null) {
+      return;
+    }
+    this.jdField_a_of_type_Int = paramInt;
+    vnd.a(a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView, paramstSimpleMetaPerson.avatar);
+    boolean bool = vmg.b(paramstSimpleMetaPerson.relation_type);
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (bool) {}
+    for (paramInt = 0;; paramInt = 8)
+    {
+      localTextView.setVisibility(paramInt);
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      vmg.a(this.jdField_b_of_type_AndroidWidgetTextView, paramstSimpleMetaPerson.medal, bool);
+      this.d.setText(vmg.a(paramstSimpleMetaPerson.nick));
+      a(this.e, this.f, paramstSimpleMetaPerson.nueric);
+      this.g.setText(paramstSimpleMetaPerson.recommendReason);
+      a();
+      return;
+    }
+  }
+  
+  public void b()
+  {
+    vmp.b("WSRecommendFollowHolder", "[reportExposure]");
+    if (this.jdField_a_of_type_UserGrowthStSimpleMetaPerson == null)
+    {
+      vmp.d("WSRecommendFollowHolder", "[reportExposure] mCurrentPerson is null");
+      return;
+    }
+    a(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson);
+  }
+  
+  public void onClick(View paramView)
+  {
+    vmp.b("WSRecommendFollowHolder", "[onClick] view: " + paramView);
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      f();
+      continue;
+      e();
+      continue;
+      a(1);
+      continue;
+      a(0);
+      continue;
+      a(2);
+    }
   }
 }
 

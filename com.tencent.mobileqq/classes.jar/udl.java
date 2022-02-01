@@ -1,19 +1,36 @@
-class udl
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.widgets.LimitWordCountEditText;
+
+public class udl
+  implements TextWatcher
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
-  int b;
+  public udl(LimitWordCountEditText paramLimitWordCountEditText) {}
   
-  public udl(int paramInt1, int paramInt2, boolean paramBoolean)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (paramCharSequence == null)
+    {
+      if (LimitWordCountEditText.a(this.a) != null) {
+        LimitWordCountEditText.a(this.a).a(0);
+      }
+      LimitWordCountEditText.a(this.a).setText(LimitWordCountEditText.a(this.a));
+      return;
+    }
+    if (LimitWordCountEditText.a(this.a) != null) {
+      LimitWordCountEditText.a(this.a).a(paramCharSequence.length());
+    }
+    LimitWordCountEditText.a(this.a).setText(String.valueOf(LimitWordCountEditText.a(this.a) - paramCharSequence.length()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     udl
  * JD-Core Version:    0.7.0.1
  */

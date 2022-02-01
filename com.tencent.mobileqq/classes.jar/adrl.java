@@ -1,15 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adrl
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public adrl(MoveToGroupActivity paramMoveToGroupActivity) {}
+  public adrl(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    MoveToGroupActivity.a(this.a, null);
+    ChatSettingForTroop.e(this.a);
+    bhbu.a("Grp_set_new", "grpData_admin", "clk_quitgrp", 0, 0, new String[] { this.a.a.troopUin, bhbu.a(this.a.a) });
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,87 +1,27 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import dov.com.qq.im.ae.camera.ui.watermark.WatermarkEditView;
 
 public class bnij
-  implements InputFilter
+  implements bnii
 {
-  protected int a;
-  private QQToast a;
+  public bnij(WatermarkEditView paramWatermarkEditView) {}
   
-  public bnij(int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    WatermarkEditView.a(this.a).setVisibility(8);
   }
   
-  public int a(CharSequence paramCharSequence)
+  public void a(int paramInt, String paramString, EditText paramEditText)
   {
-    int j = 0;
-    int m = paramCharSequence.length();
-    int i = 0;
-    while (i < m)
-    {
-      int n = paramCharSequence.charAt(i);
-      int k;
-      if (n != 10)
-      {
-        k = j;
-        if (n != 13) {}
-      }
-      else
-      {
-        k = j + 1;
-      }
-      i += 1;
-      j = k;
-    }
-    return j;
+    paramString = paramString.split("-");
+    WatermarkEditView.a(this.a).init(Integer.parseInt(paramString[0]), Integer.parseInt(paramString[1]) - 1, Integer.parseInt(paramString[2]), WatermarkEditView.a(this.a));
+    WatermarkEditView.a(this.a).setVisibility(0);
   }
   
-  protected void a()
+  public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast == null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = QQToast.a(BaseApplicationImpl.getContext(), amtj.a(2131702831), 0);
-    }
-    if (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.c()) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.a();
-    }
-  }
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
-  {
-    paramInt3 = this.jdField_a_of_type_Int - (paramSpanned.length() - (paramInt4 - paramInt3));
-    paramInt4 = paramInt2 - paramInt1 - a(paramCharSequence.subSequence(paramInt1, paramInt2));
-    if (paramInt3 > 0)
-    {
-      paramInt2 = paramInt3;
-      if (paramInt3 >= paramInt4) {}
-    }
-    else
-    {
-      paramInt2 = paramInt3 + a(paramSpanned);
-    }
-    if (((paramInt2 <= 0) || (paramInt2 < paramInt4)) && (!TextUtils.equals("", paramCharSequence))) {
-      a();
-    }
-    if (paramInt2 <= 0) {
-      return "";
-    }
-    if (paramInt2 >= paramInt4) {
-      return null;
-    }
-    paramInt3 = paramInt2 + paramInt1;
-    paramInt2 = paramInt3;
-    if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3 - 1)))
-    {
-      paramInt3 -= 1;
-      paramInt2 = paramInt3;
-      if (paramInt3 == paramInt1) {
-        return "";
-      }
-    }
-    return paramCharSequence.subSequence(paramInt1, paramInt2);
+    WatermarkEditView.a(this.a).setVisibility(8);
   }
 }
 

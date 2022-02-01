@@ -1,15 +1,15 @@
 package com.tencent.device.devicemgr;
 
-import aara;
+import abgm;
 
 public class SmartDeviceProxyMgr$3
   implements Runnable
 {
-  public SmartDeviceProxyMgr$3(aara paramaara, String paramString1, String paramString2, Boolean paramBoolean, int paramInt1, int paramInt2) {}
+  public SmartDeviceProxyMgr$3(abgm paramabgm, String paramString1, String paramString2, Boolean paramBoolean, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    aara.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangBoolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    abgm.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangBoolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
   }
 }
 

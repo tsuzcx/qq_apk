@@ -1,28 +1,26 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
 
 class awmh
   implements View.OnClickListener
 {
-  awmh(awmg paramawmg, int paramInt, bhab parambhab) {}
+  awmh(awmd paramawmd, awlt paramawlt) {}
   
   public void onClick(View paramView)
   {
-    try
+    if (this.jdField_a_of_type_Awmd.jdField_a_of_type_Awlt.a()) {}
+    for (;;)
     {
-      long l = Long.parseLong(((awmf)this.jdField_a_of_type_Awmg.a.a.get(this.jdField_a_of_type_Int)).a);
-      this.jdField_a_of_type_Bhab.a(this.jdField_a_of_type_Awmg.a.b, l, null);
-      this.jdField_a_of_type_Awmg.a.a("invite_page", "kick_out");
-      label62:
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    catch (Exception localException)
-    {
-      break label62;
+      if (!paramView.isSelected())
+      {
+        this.jdField_a_of_type_Awmd.a(paramView);
+        this.jdField_a_of_type_Awmd.jdField_a_of_type_Int = 2;
+        awlt.a(this.jdField_a_of_type_Awmd.jdField_a_of_type_Awlt, Integer.valueOf(2));
+        bdla.b(null, "CliOper", "", "", "0X800A96E", "0X800A96E", 3, 0, "0", "0", "0", "");
+      }
     }
   }
 }

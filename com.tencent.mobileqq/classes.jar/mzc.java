@@ -1,24 +1,23 @@
-import android.view.MotionEvent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.animation.TranslateAnimation;
+import android.widget.TextView;
+import com.tencent.av.wtogether.fragment.AVGroupFileSelectFragment;
+import com.tencent.av.wtogether.view.QBaseContentView;
 
-class mzc
-  implements View.OnTouchListener
+public class mzc
+  implements DialogInterface.OnDismissListener
 {
-  mzc(mzb parammzb) {}
+  public mzc(AVGroupFileSelectFragment paramAVGroupFileSelectFragment, int paramInt, TranslateAnimation paramTranslateAnimation) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    switch (paramMotionEvent.getActionMasked())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    AVGroupFileSelectFragment.a(this.jdField_a_of_type_ComTencentAvWtogetherFragmentAVGroupFileSelectFragment).offsetTopAndBottom(-this.jdField_a_of_type_Int);
+    AVGroupFileSelectFragment.a(this.jdField_a_of_type_ComTencentAvWtogetherFragmentAVGroupFileSelectFragment).setVisibility(0);
+    AVGroupFileSelectFragment.a(this.jdField_a_of_type_ComTencentAvWtogetherFragmentAVGroupFileSelectFragment).startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    AVGroupFileSelectFragment.a(this.jdField_a_of_type_ComTencentAvWtogetherFragmentAVGroupFileSelectFragment, null);
+    AVGroupFileSelectFragment.a(this.jdField_a_of_type_ComTencentAvWtogetherFragmentAVGroupFileSelectFragment).c();
   }
 }
 

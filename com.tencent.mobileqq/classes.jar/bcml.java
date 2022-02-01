@@ -1,15 +1,31 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.PAVideoView;
+import android.text.TextUtils;
 
 public class bcml
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public PAVideoView a;
-  public TextView b;
+  public int a;
+  public String a;
+  
+  public bcml(String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return this.jdField_a_of_type_JavaLangString.equals(paramString);
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(20);
+    localStringBuilder.append("keyword:").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" status:").append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
+  }
 }
 
 

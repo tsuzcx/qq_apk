@@ -1,54 +1,43 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.UpdateFriend;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
-public class angp
-  extends amsu
+class angp
+  implements ampe
 {
-  private angp(UpdateFriend paramUpdateFriend) {}
+  angp(angh paramangh, int paramInt, String paramString, AppInterface paramAppInterface, File paramFile) {}
   
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  public void a(boolean paramBoolean, ampd paramampd)
   {
-    if ((this.a.b == 7) || (this.a.b == 3))
+    paramampd = amov.a().a(8, this.jdField_a_of_type_Int);
+    Object localObject = new StringBuilder().append("downloadApolloRes onCheckFinish success:").append(paramBoolean).append(" downloadItem:");
+    if (paramampd == null) {}
+    for (paramBoolean = true;; paramBoolean = false)
     {
-      if (paramBoolean1) {
-        break label37;
+      QLog.i("ApolloPluginRscLoader", 1, paramBoolean);
+      localObject = angh.a(this.jdField_a_of_type_JavaLangString);
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        break;
       }
-      this.a.a(6);
-    }
-    label37:
-    while ((!paramBoolean1) || (!paramBoolean2)) {
+      QLog.e("ApolloPluginRscLoader", 1, "getApolloRsc error callbackId is null resourceUrl:" + this.jdField_a_of_type_JavaLangString);
       return;
     }
-    this.a.a.a.edit().putBoolean("isFriendlistok", true).commit();
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "onUpdateFriendList put PREF_ISFRIENDLIST_OK true");
-    }
-    this.a.a.notifyUI(3, true, Integer.valueOf(1));
-    this.a.a(7);
-  }
-  
-  protected void onUpdateGatherFriendList(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    if (this.a.b == 8)
+    if (paramampd == null)
     {
-      if (paramBoolean1) {
-        break label26;
-      }
-      this.a.a(6);
-    }
-    label26:
-    while (!paramBoolean2) {
+      this.jdField_a_of_type_Angh.a((String)localObject, 2, this.jdField_a_of_type_Int + " json里无此id");
       return;
     }
-    this.a.a(7);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramampd);
+    amox.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "", new angq(this, (String)localObject), localArrayList, false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     angp
  * JD-Core Version:    0.7.0.1
  */

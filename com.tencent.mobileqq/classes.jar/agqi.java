@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.transfile.TransFileController.OnCancelListener;
+import java.util.ArrayList;
 
 class agqi
-  implements DialogInterface.OnClickListener
+  implements TransFileController.OnCancelListener
 {
-  agqi(agqd paramagqd, MessageForText paramMessageForText) {}
+  agqi(agqg paramagqg) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel(ArrayList<MessageRecord> paramArrayList)
   {
-    acvv.a(this.jdField_a_of_type_Agqd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Agqd.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agqd.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.uniseq);
+    this.a.b();
   }
 }
 

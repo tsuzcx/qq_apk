@@ -1,110 +1,264 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.pluginsdk.IStatisticsUploader;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.BaseConstants;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.util.SearchConfigManager;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Random;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
 
 public class bcdy
-  implements IStatisticsUploader
+  extends bcff
 {
-  public static final Random a = new Random();
+  protected int a;
+  protected long a;
+  protected TroopInfo a;
+  public String a;
+  protected long b;
+  protected String b;
+  protected String c;
+  protected String d;
+  protected String e;
+  protected String f;
+  protected String g;
   
-  public static void a(String paramString, int paramInt, long paramLong)
+  public bcdy(QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    if (a.nextInt(1000) != 0) {}
-    do
-    {
-      do
-      {
-        return;
-        localObject1 = new HashMap();
-        ((HashMap)localObject1).put(BaseConstants.RDM_NoChangeFailCode, String.valueOf(paramInt));
-        ((HashMap)localObject1).put("plugin_name", paramString);
-        ((HashMap)localObject1).put("cost", String.valueOf(paramLong));
-        ((HashMap)localObject1).put("result", String.valueOf(paramInt));
-        localObject2 = MobileQQ.sMobileQQ.waitAppRuntime(null);
-      } while (localObject2 == null);
-      Object localObject2 = ((AppRuntime)localObject2).getAccount();
-      StatisticCollector.getInstance(MobileQQ.sMobileQQ).collectPerformance((String)localObject2, "actPluginDexa2OatInfo", false, paramLong, 0L, (HashMap)localObject1, null);
-    } while (!QLog.isColorLevel());
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("uploadDexOatInfo pluginId ");
-    ((StringBuilder)localObject1).append(paramString);
-    ((StringBuilder)localObject1).append(" ");
-    ((StringBuilder)localObject1).append(String.valueOf(paramInt));
-    ((StringBuilder)localObject1).append(" ");
-    ((StringBuilder)localObject1).append(paramLong);
-    QLog.d("PluginStatisticsCollector", 2, ((StringBuilder)localObject1).toString());
+    super(paramQQAppInterface, paramInt, 0L);
+    this.jdField_b_of_type_Long = bbzc.V;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.isNewTroop()) {
+      this.jdField_b_of_type_Long = bbzc.G;
+    }
   }
   
-  public void uploadStartupFailure(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  private void a()
   {
-    boolean bool = false;
-    if ("success".equals(paramString5)) {
-      bool = true;
-    }
-    String str = paramString5;
-    if (paramString5 != null)
+    switch (this.jdField_a_of_type_Int)
     {
-      str = paramString5;
-      if (paramString5.contains(ClassNotFoundException.class.getName()))
+    default: 
+      this.e = "";
+      this.f = null;
+      return;
+    case 0: 
+      if (!TextUtils.isEmpty(this.c))
       {
-        float f = FileUtils.getAvailableInnernalMemorySize();
-        str = "GetAvailableInnernalMemorySize:" + f + "__" + paramString5;
+        this.e = this.c;
+        this.f = this.jdField_b_of_type_JavaLangString;
+        return;
+      }
+      if (!TextUtils.isEmpty(this.d))
+      {
+        this.e = this.d;
+        this.f = this.jdField_b_of_type_JavaLangString;
+        return;
+      }
+      this.e = this.jdField_b_of_type_JavaLangString;
+      this.f = null;
+      return;
+    case 2: 
+      this.e = this.c;
+      if (!TextUtils.isEmpty(this.d))
+      {
+        this.f = this.d;
+        return;
+      }
+      this.f = this.jdField_b_of_type_JavaLangString;
+      return;
+    }
+    if (!TextUtils.isEmpty(this.c))
+    {
+      this.e = this.c;
+      this.f = this.d;
+      return;
+    }
+    this.e = this.d;
+    this.f = this.jdField_b_of_type_JavaLangString;
+  }
+  
+  protected long a(String paramString)
+  {
+    this.g = paramString;
+    this.jdField_a_of_type_Long = -9223372036854775808L;
+    boolean bool;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.isNewTroop())
+    {
+      bool = false;
+      if (!this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.isNewTroop()) {
+        break label188;
+      }
+      l = bbzc.i;
+      label38:
+      l = bcnc.a(paramString, this.c, l, false, false, bool);
+      if (l > this.jdField_a_of_type_Long)
+      {
+        this.jdField_a_of_type_Long = l;
+        this.jdField_a_of_type_Int = 2;
+      }
+      if (!this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.isNewTroop()) {
+        break label195;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("PluginStatisticsCollector", 2, "uploadStartupFailure result = " + bool + ", pluginName = " + paramString2 + ", extraInfo = " + str);
-    }
-    if (!bool)
+    label188:
+    label195:
+    for (long l = bbzc.h;; l = bbzc.l)
     {
-      paramString5 = new HashMap();
-      paramString5.put(BaseConstants.RDM_NoChangeFailCode, "");
-      paramString5.put("plugin_name", paramString2);
-      paramString5.put("plugin_loc", paramString3);
-      paramString5.put("plugin_activity", paramString4);
-      paramString5.put("plugin_extra_info", str);
-      StatisticCollector.getInstance(paramContext).collectPerformance(paramString1, "actPluginStartupFailure", bool, 0L, 0L, paramString5, null);
+      l = bcnc.a(paramString, this.d, l, false, false, bool);
+      if (l > this.jdField_a_of_type_Long)
+      {
+        this.jdField_a_of_type_Long = l;
+        this.jdField_a_of_type_Int = 1;
+      }
+      l = bcnc.a(paramString, this.jdField_b_of_type_JavaLangString, bbzc.o, false, true, true);
+      if (l > this.jdField_a_of_type_Long)
+      {
+        this.jdField_a_of_type_Long = l;
+        this.jdField_a_of_type_Int = 0;
+      }
+      if (this.jdField_a_of_type_Long != -9223372036854775808L)
+      {
+        this.jdField_a_of_type_Long += this.jdField_b_of_type_Long;
+        a();
+      }
+      return this.jdField_a_of_type_Long;
+      bool = true;
+      break;
+      l = bbzc.q;
+      break label38;
     }
-    paramString3 = new HashMap();
-    paramString3.put(BaseConstants.RDM_NoChangeFailCode, "");
-    paramString3.put("plugin_name", paramString2);
-    StatisticCollector.getInstance(paramContext).collectPerformance(paramString1, "actPluginStartupResult", bool, 0L, 0L, paramString3, null);
   }
   
-  public void uploadStartupSpeedInfo(Context paramContext, Intent paramIntent)
+  public Object a()
   {
-    long l1 = paramIntent.getLongExtra("launchTotal", 0L);
-    long l2 = paramIntent.getLongExtra("pluginApkCost", 0L);
-    long l3 = paramIntent.getLongExtra("pluginOatCost", 0L);
-    long l4 = paramIntent.getLongExtra("pluginDownloadCost", 0L);
-    long l5 = paramIntent.getLongExtra("pluginLibCost", 0L);
-    long l6 = paramIntent.getLongExtra("pluginLoaderCost", 0L);
-    String str1 = paramIntent.getStringExtra("launchComponent");
-    String str2 = paramIntent.getStringExtra("launchProcName");
-    String str3 = paramIntent.getStringExtra("pluginsdk_selfuin");
-    String str4 = paramIntent.getStringExtra("pluginsdk_pluginName");
-    String str5 = paramIntent.getStringExtra("pluginsdk_pluginLocation");
-    String str6 = paramIntent.getStringExtra("pluginsdk_pluginpath");
-    paramIntent = paramIntent.getStringExtra("pluginsdk_launchActivity");
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-    localHashMap.put("plugin_name", str4);
-    localHashMap.put("plugin_loc", str5);
-    localHashMap.put("plugin_activity", paramIntent);
-    localHashMap.put("plugin_extra_info", str6);
-    localHashMap.put("pluginOatCost", String.valueOf(l3));
-    localHashMap.put("pluginApkCost", String.valueOf(l2));
-    localHashMap.put("pluginLoaderCost", String.valueOf(l6));
-    localHashMap.put("launchTotal", String.valueOf(l1));
-    StatisticCollector.getInstance(paramContext).collectPerformance(str3, "actPluginSpeedInfoV2", false, l1, 0L, localHashMap, null);
-    QLog.d("plugin_tag", 1, "uploadStartupSpeedInfo  " + str5 + ", launchTotal " + l1 + ", apkCost " + l2 + ", dex2OatCost " + l3 + ", libCost " + l5 + ", downloadCost " + l4 + ", loaderCost " + l6 + ", launchComponent " + str1 + ", procName " + str2);
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public String a()
+  {
+    return this.g;
+  }
+  
+  public void a(View paramView)
+  {
+    super.a(paramView);
+    String str2;
+    Object localObject;
+    if (bcnc.a(this.jdField_b_of_type_Int))
+    {
+      alik.a = true;
+      str2 = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).d(this.jdField_a_of_type_JavaLangString);
+      localObject = ((anvk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.jdField_b_of_type_JavaLangString);
+      if (bbzq.a(this.jdField_b_of_type_JavaLangString)) {
+        break label393;
+      }
+      if ((localObject == null) || (!((Friends)localObject).isFriend())) {
+        break label278;
+      }
+      alik.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString, 0, ContactUtils.getFriendName((Friends)localObject), false);
+      bcnc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ContactUtils.getFriendName((Friends)localObject), this.jdField_b_of_type_JavaLangString, "", 0);
+    }
+    for (;;)
+    {
+      aode.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.g);
+      bcnc.a(this.g, 20, 1, paramView);
+      bcnc.a(this.g, 20, paramView, false);
+      bcnc.a(this, paramView);
+      if (SearchConfigManager.needSeparate) {
+        bcnc.a("search", "contact", "contacts", 0, 0, new String[] { bcnc.a(this.jdField_b_of_type_Int) });
+      }
+      if (((a() instanceof String)) && (!this.jdField_b_of_type_Boolean)) {
+        bcnc.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.g, this.i, (String)a(), e());
+      }
+      if ((paramView.getContext() instanceof UniteSearchActivity))
+      {
+        if ((this.i == null) || (TextUtils.isEmpty(this.i))) {
+          break;
+        }
+        bcjs.a(null, 0, this.jdField_b_of_type_Int, "0X8009D31", 1, 0, null, null);
+      }
+      return;
+      label278:
+      alik.a(paramView.getContext(), this.jdField_b_of_type_JavaLangString, str2, 1000, a().toString(), false, null);
+      String str1 = a().toString();
+      localObject = str1;
+      if (TextUtils.isEmpty(str1))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(h, 2, "saveSearchHistory title is null");
+        }
+        str1 = c();
+        localObject = str1;
+        if (TextUtils.isEmpty(str1))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(h, 2, "saveSearchHistory titlestr is null");
+          }
+          localObject = d();
+        }
+      }
+      bcnc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject, this.jdField_b_of_type_JavaLangString, str2, 1000);
+      continue;
+      label393:
+      bghs.a(paramView.getContext(), null, this.jdField_b_of_type_JavaLangString);
+      bcnc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a().toString(), this.jdField_b_of_type_JavaLangString, str2, 1000);
+    }
+    bcjs.a(null, 0, this.jdField_b_of_type_Int, "0X8009D37", 0, 0, null, null);
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public int c()
+  {
+    return 1;
+  }
+  
+  public CharSequence c()
+  {
+    String str = ContactUtils.getTroopName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, true);
+    if (str != null) {
+      return anvx.a(2131702016) + str;
+    }
+    return anvx.a(2131702008);
+  }
+  
+  public String c()
+  {
+    return this.e;
+  }
+  
+  public int d()
+  {
+    return 1000;
+  }
+  
+  public CharSequence d()
+  {
+    return null;
+  }
+  
+  public String d()
+  {
+    return this.f;
+  }
+  
+  public int e()
+  {
+    return 1;
   }
 }
 

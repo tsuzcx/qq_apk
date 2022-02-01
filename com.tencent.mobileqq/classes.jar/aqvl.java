@@ -1,29 +1,32 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.confess.ConfessPlugin;
+import com.tencent.mobileqq.confess.ConfessPlugin.5;
+import com.tencent.mobileqq.confess.ConfessPlugin.5.1;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
 
-public final class aqvl
+public class aqvl
+  implements biyn
 {
-  public static aqvm a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = new aqvm();
-    aqkg localaqkg = aqkh.a();
-    paramQQAppInterface.jdField_a_of_type_Boolean = localaqkg.a();
-    paramQQAppInterface.jdField_a_of_type_JavaLangString = localaqkg.a();
-    paramQQAppInterface.b = localaqkg.b();
-    paramQQAppInterface.jdField_a_of_type_Int = localaqkg.a();
-    paramQQAppInterface.c = localaqkg.c();
-    if (QLog.isColorLevel()) {
-      QLog.d("TencentDocEntryUtils", 2, "getGrayTipsInfo " + paramQQAppInterface.toString());
-    }
-    return paramQQAppInterface;
-  }
+  public aqvl(ConfessPlugin.5.1 param1) {}
   
-  public static Pair<Boolean, Integer> a(AppInterface paramAppInterface)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    paramAppInterface = aqjr.a();
-    return new Pair(Boolean.valueOf(paramAppInterface.a()), Integer.valueOf(paramAppInterface.a()));
+    if (QLog.isColorLevel()) {
+      QLog.d("ConfessPlugin", 2, "onWXShareResp resp.errCode=" + paramBaseResp.errCode);
+    }
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      ConfessPlugin.a(this.a.a.this$0, false);
+      ConfessPlugin.a(this.a.a.this$0, 1, 2131718766);
+      return;
+    case 0: 
+      ConfessPlugin.a(this.a.a.this$0, true);
+      ConfessPlugin.a(this.a.a.this$0, 2, 2131718784);
+      return;
+    }
+    ConfessPlugin.a(this.a.a.this$0, false);
   }
 }
 

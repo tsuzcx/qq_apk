@@ -1,17 +1,16 @@
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+
 public class asgw
+  implements asis
 {
-  public int a;
-  public String a;
+  public asgw(MessengerService paramMessengerService) {}
   
-  public asgw(String paramString, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String toString()
-  {
-    return "" + this.jdField_a_of_type_JavaLangString + ":" + this.jdField_a_of_type_Int;
+    if (this.a.a != null) {
+      EmojiStickerManager.a().a(this.a.a, paramBoolean);
+    }
   }
 }
 

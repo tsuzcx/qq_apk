@@ -1,17 +1,20 @@
-import com.tencent.mobileqq.DrawerPushItem;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
-class alnv
-  implements Comparator<DrawerPushItem>
+public class alnv
+  implements DialogInterface.OnClickListener
 {
-  alnv(alnr paramalnr) {}
+  public alnv(LoginView paramLoginView) {}
   
-  public int a(DrawerPushItem paramDrawerPushItem1, DrawerPushItem paramDrawerPushItem2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramDrawerPushItem2.priority == paramDrawerPushItem1.priority) {
-      return paramDrawerPushItem1.sub_priority - paramDrawerPushItem2.sub_priority;
+    try
+    {
+      paramDialogInterface.dismiss();
+      return;
     }
-    return paramDrawerPushItem1.priority - paramDrawerPushItem2.priority;
+    catch (Exception paramDialogInterface) {}
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.richmedia.mediacodec;
 
 import android.annotation.TargetApi;
-import baef;
+import bbku;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import xvv;
+import ykq;
 
 @TargetApi(16)
 public class AudioDecoder
 {
-  private baef jdField_a_of_type_Baef;
+  private bbku jdField_a_of_type_Bbku;
   private AudioDecoder.AudioPlayRunnable jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecAudioDecoder$AudioPlayRunnable;
   private Thread jdField_a_of_type_JavaLangThread;
   
@@ -24,9 +24,9 @@ public class AudioDecoder
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Baef != null)
+    if (this.jdField_a_of_type_Bbku != null)
     {
-      this.jdField_a_of_type_Baef.jdField_a_of_type_Int = paramInt;
+      this.jdField_a_of_type_Bbku.jdField_a_of_type_Int = paramInt;
       QLog.d("AudioDecoder", 4, "setSpeedType:" + paramInt);
     }
   }
@@ -35,7 +35,7 @@ public class AudioDecoder
   {
     if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecAudioDecoder$AudioPlayRunnable != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecAudioDecoder$AudioPlayRunnable.a(paramLong, this.jdField_a_of_type_Baef.c);
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecAudioDecoder$AudioPlayRunnable.a(paramLong, this.jdField_a_of_type_Bbku.c);
       QLog.d("AudioDecoder", 1, "seekTo: " + paramLong);
       return;
     }
@@ -44,35 +44,35 @@ public class AudioDecoder
   
   public void a(long paramLong1, long paramLong2)
   {
-    if (this.jdField_a_of_type_Baef == null)
+    if (this.jdField_a_of_type_Bbku == null)
     {
       QLog.w("AudioDecoder", 4, "you must start play first");
       return;
     }
-    if ((paramLong1 == this.jdField_a_of_type_Baef.jdField_a_of_type_Long) && (paramLong2 == this.jdField_a_of_type_Baef.jdField_b_of_type_Long))
+    if ((paramLong1 == this.jdField_a_of_type_Bbku.jdField_a_of_type_Long) && (paramLong2 == this.jdField_a_of_type_Bbku.jdField_b_of_type_Long))
     {
-      xvv.d("AudioDecoder", "segment not changed, setPlayRange ignore, startTimeMs=%d, endTimeMs=%d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+      ykq.d("AudioDecoder", "segment not changed, setPlayRange ignore, startTimeMs=%d, endTimeMs=%d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
       return;
     }
     QLog.d("AudioDecoder", 4, "setPlayRange begin startTimeMs=" + paramLong1 + " endTimeMs=" + paramLong2);
-    this.jdField_a_of_type_Baef.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Baef.jdField_b_of_type_Long = paramLong2;
-    a(this.jdField_a_of_type_Baef);
+    this.jdField_a_of_type_Bbku.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Bbku.jdField_b_of_type_Long = paramLong2;
+    a(this.jdField_a_of_type_Bbku);
   }
   
-  public void a(baef parambaef)
+  public void a(bbku parambbku)
   {
-    QLog.d("AudioDecoder", 4, "startPlay " + parambaef.toString());
+    QLog.d("AudioDecoder", 4, "startPlay " + parambbku.toString());
     b();
-    if (this.jdField_a_of_type_Baef == null) {
-      this.jdField_a_of_type_Baef = new baef();
+    if (this.jdField_a_of_type_Bbku == null) {
+      this.jdField_a_of_type_Bbku = new bbku();
     }
-    this.jdField_a_of_type_Baef.a(parambaef);
-    if (this.jdField_a_of_type_Baef.jdField_b_of_type_Long == 0L) {
-      this.jdField_a_of_type_Baef.jdField_b_of_type_Long = this.jdField_a_of_type_Baef.c;
+    this.jdField_a_of_type_Bbku.a(parambbku);
+    if (this.jdField_a_of_type_Bbku.jdField_b_of_type_Long == 0L) {
+      this.jdField_a_of_type_Bbku.jdField_b_of_type_Long = this.jdField_a_of_type_Bbku.c;
     }
-    float f2 = (float)this.jdField_a_of_type_Baef.jdField_a_of_type_Long / (float)this.jdField_a_of_type_Baef.c;
-    float f3 = (float)this.jdField_a_of_type_Baef.jdField_b_of_type_Long / (float)this.jdField_a_of_type_Baef.c;
+    float f2 = (float)this.jdField_a_of_type_Bbku.jdField_a_of_type_Long / (float)this.jdField_a_of_type_Bbku.c;
+    float f3 = (float)this.jdField_a_of_type_Bbku.jdField_b_of_type_Long / (float)this.jdField_a_of_type_Bbku.c;
     float f1 = f2;
     if (f2 < 0.0F) {
       f1 = 0.0F;
@@ -95,11 +95,11 @@ public class AudioDecoder
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Baef == null) {
+    if (this.jdField_a_of_type_Bbku == null) {
       return;
     }
     QLog.d("AudioDecoder", 1, "setMuteAudio: " + paramBoolean);
-    this.jdField_a_of_type_Baef.jdField_b_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Bbku.jdField_b_of_type_Boolean = paramBoolean;
   }
   
   public void b()

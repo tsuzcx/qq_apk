@@ -1,19 +1,13 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.GetStaticProxy;
+import mqq.app.AppRuntime;
 
-class bdie
-  extends andd
+public final class bdie
+  implements IMCoreProxyRoute.GetStaticProxy<AppRuntime>
 {
-  bdie(bdid parambdid) {}
-  
-  protected void onTroopFlagExt3Update(String paramString, long paramLong)
+  public AppRuntime a()
   {
-    if ((0x40000000 & paramLong) != 0L)
-    {
-      bdid.a(this.a).a(EditorState.CLOSED_BY_ADMIN, bdid.a(this.a).getString(2131719699));
-      return;
-    }
-    bdid.a(this.a).a(EditorState.OPEN_BY_ADMIN);
+    return BaseApplicationImpl.getApplication().getRuntime();
   }
 }
 

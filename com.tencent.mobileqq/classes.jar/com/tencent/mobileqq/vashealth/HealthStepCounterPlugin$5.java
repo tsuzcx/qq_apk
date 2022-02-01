@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.vashealth;
 
-import amtj;
-import bgma;
-import bgve;
+import anvx;
+import bhwk;
+import bifw;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class HealthStepCounterPlugin$5
   implements Runnable
 {
-  public HealthStepCounterPlugin$5(bgma parambgma) {}
+  public HealthStepCounterPlugin$5(bhwk parambhwk) {}
   
   public void run()
   {
     QQToast localQQToast = new QQToast(this.this$0.mRuntime.a().getContext());
-    QQToast.a(this.this$0.mRuntime.a().getContext(), amtj.a(2131704583), 0).b((int)(localQQToast.b() * 2.5D));
+    QQToast.a(this.this$0.mRuntime.a().getContext(), anvx.a(2131704934), 0).b((int)(localQQToast.b() * 2.5D));
   }
 }
 

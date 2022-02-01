@@ -1,28 +1,9 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
-import com.tencent.mobileqq.together.writetogether.statemachine.UserStateMachineController.1.1;
-import java.util.List;
+import com.tencent.mobileqq.pluginsdk.PluginRecoverReceiver;
 
-public class bdiv
-  extends bdji<UserState>
+public final class bdiv
+  extends PluginRecoverReceiver
 {
-  bdiv(bdiu parambdiu, UserState paramUserState, List paramList)
-  {
-    super(paramUserState, paramList);
-  }
-  
-  public void a(UserState paramUserState)
-  {
-    paramUserState = this.a;
-    if (!bdgn.a(bdiu.a(this.a))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      bdiu.a(paramUserState, bool);
-      ThreadManagerV2.getUIHandlerV2().postDelayed(new UserStateMachineController.1.1(this), 3000L);
-      return;
-    }
-  }
+  public void onRecver(String paramString) {}
 }
 
 

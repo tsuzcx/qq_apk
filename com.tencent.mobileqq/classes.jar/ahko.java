@@ -1,27 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.highway.utils.HwNetworkUtil;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
+import com.tencent.mobileqq.videoplatform.view.CropBubbleVideoView;
 
-class ahko
-  extends BroadcastReceiver
+public class ahko
+  extends afqr
 {
-  ahko(ahiu paramahiu) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    boolean bool = HwNetworkUtil.isNetworkAvailable(this.a.mContext);
-    if ((bool) && (ahiu.d(this.a)))
-    {
-      nsf.a.a();
-      ahiu.c(this.a, false);
-    }
-    while (bool) {
-      return;
-    }
-    nsf.a.a(this.a.getCurTroopUin());
-    ahiu.c(this.a, true);
-  }
+  public FrameLayout a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public AutoStartProgressBar a;
+  public CropBubbleVideoView a;
+  public boolean a;
+  public TextView b;
 }
 
 

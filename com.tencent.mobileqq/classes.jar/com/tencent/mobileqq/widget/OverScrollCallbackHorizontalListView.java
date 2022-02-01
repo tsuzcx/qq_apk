@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewParent;
-import bhfr;
+import biqj;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.widget.HorizontalListView;
@@ -14,7 +14,7 @@ public class OverScrollCallbackHorizontalListView
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
-  private bhfr jdField_a_of_type_Bhfr;
+  private biqj jdField_a_of_type_Biqj;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private boolean jdField_b_of_type_Boolean;
@@ -75,16 +75,16 @@ public class OverScrollCallbackHorizontalListView
     if ((this.jdField_b_of_type_Boolean) && (paramInt3 > this.jdField_a_of_type_Int))
     {
       this.jdField_b_of_type_Boolean = false;
-      if ((this.jdField_a_of_type_Bhfr != null) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_Bhfr.a(this);
+      if ((this.jdField_a_of_type_Biqj != null) && (this.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_Biqj.a(this);
       }
     }
     return super.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean);
   }
   
-  public void setListener(bhfr parambhfr)
+  public void setListener(biqj parambiqj)
   {
-    this.jdField_a_of_type_Bhfr = parambhfr;
+    this.jdField_a_of_type_Biqj = parambiqj;
   }
 }
 

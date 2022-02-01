@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.webview.swift.component;
 
 import android.app.Activity;
-import bgwg;
-import bhht;
+import bigy;
+import bisl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class SwiftBrowserLongClickHandler$6
   implements Runnable
 {
-  public SwiftBrowserLongClickHandler$6(bgwg parambgwg) {}
+  public SwiftBrowserLongClickHandler$6(bigy parambigy) {}
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_Bhht != null) && (this.this$0.jdField_a_of_type_Bhht.isShowing())) {
-      this.this$0.jdField_a_of_type_Bhht.dismiss();
+    if ((this.this$0.jdField_a_of_type_Bisl != null) && (this.this$0.jdField_a_of_type_Bisl.isShowing())) {
+      this.this$0.jdField_a_of_type_Bisl.dismiss();
     }
-    QQToast.a(this.this$0.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 1, 2131716198, 1).b(this.this$0.jdField_a_of_type_Int);
+    QQToast.a(this.this$0.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 1, 2131716557, 1).b(this.this$0.jdField_a_of_type_Int);
   }
 }
 

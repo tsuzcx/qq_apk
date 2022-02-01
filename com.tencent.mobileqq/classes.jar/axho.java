@@ -1,11 +1,13 @@
-public class axho
+import android.view.MotionEvent;
+import com.tencent.mobileqq.multicard.MultiCardRootLayout;
+
+public abstract interface axho
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
+  public abstract void a(MultiCardRootLayout paramMultiCardRootLayout);
+  
+  public abstract boolean a(int paramInt);
+  
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 

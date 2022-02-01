@@ -24,8 +24,8 @@ class MiniLoadingAdManager$2
     QMLog.d("MiniLoadingAdManager", "processSelectAdWithUncachedAd downloadRealTimeAdPic onDownloadAdEnd adJson:" + paramString1 + " aid:" + paramLong);
     if (!TextUtils.isEmpty(paramString1))
     {
-      if (MiniLoadingAdManager.access$200() != null) {
-        MiniLoadingAdManager.access$200().put(Long.valueOf(paramLong), paramString2);
+      if (MiniLoadingAdManager.access$300() != null) {
+        MiniLoadingAdManager.access$300().put(Long.valueOf(paramLong), paramString2);
       }
       this.val$onChooseAdEndListener.onDownloadAdEnd(paramString1, paramLong);
       return;
@@ -39,7 +39,7 @@ class MiniLoadingAdManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.MiniLoadingAdManager.2
  * JD-Core Version:    0.7.0.1
  */

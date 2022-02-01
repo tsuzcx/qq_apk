@@ -1,30 +1,19 @@
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import java.lang.ref.WeakReference;
-
 public class yrt
-  implements URLDrawable.URLDrawableListener
 {
-  private final WeakReference<TextView> a;
+  public int a;
+  public yrr a;
+  public int b;
   
-  public yrt(TextView paramTextView)
+  private yrt(yrv paramyrv)
   {
-    this.a = new WeakReference(paramTextView);
+    this.jdField_a_of_type_Yrr = yrv.a(paramyrv);
+    this.jdField_a_of_type_Int = yrv.a(paramyrv);
+    this.b = yrv.b(paramyrv);
   }
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public String toString()
   {
-    paramURLDrawable = (TextView)this.a.get();
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setVisibility(8);
-    }
+    return "DoodleConfig{doodleStrategy=" + this.jdField_a_of_type_Yrr + ", maxBitmapWidth=" + this.jdField_a_of_type_Int + ", maxBitmapHeight=" + this.b + '}';
   }
 }
 

@@ -1,10 +1,17 @@
-import com.tencent.image.URLImageView;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 public class ayqy
+  implements BusinessObserver
 {
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
   
-  public ayqy(ayqx paramayqx) {}
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if (paramInt == 10000) {
+      a(paramBoolean, paramBundle.getBoolean("new"), paramBundle.getInt("gc_notify_type", 0));
+    }
+  }
 }
 
 

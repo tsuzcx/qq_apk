@@ -1,11 +1,19 @@
-import com.tencent.mobileqq.data.TroopFeedItem;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.data.TroopBarMyBar;
 
-public class bfgp
+public final class bfgp
+  implements Parcelable.Creator<TroopBarMyBar>
 {
-  int jdField_a_of_type_Int;
-  TroopFeedItem jdField_a_of_type_ComTencentMobileqqDataTroopFeedItem;
+  public TroopBarMyBar a(Parcel paramParcel)
+  {
+    return new TroopBarMyBar(paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString());
+  }
   
-  public bfgp(bfgk parambfgk) {}
+  public TroopBarMyBar[] a(int paramInt)
+  {
+    return null;
+  }
 }
 
 

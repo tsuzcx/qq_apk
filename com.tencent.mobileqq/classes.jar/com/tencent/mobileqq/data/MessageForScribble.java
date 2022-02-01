@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import amtj;
-import bhhi;
+import anvx;
+import bisa;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
@@ -23,7 +23,7 @@ public class MessageForScribble
   public int gifId;
   public String localFildPath = "";
   public MessageForScribble.FileExistInfo mExistInfo = new MessageForScribble.FileExistInfo(this);
-  public bhhi mProgressPie;
+  public bisa mProgressPie;
   public int mRealProgress;
   public int mUiProgress;
   public Runnable mUpdateProgressRunnable;
@@ -91,7 +91,7 @@ public class MessageForScribble
     //   57: aload_0
     //   58: getfield 58	com/tencent/mobileqq/data/MessageForScribble:mExistInfo	Lcom/tencent/mobileqq/data/MessageForScribble$FileExistInfo;
     //   61: aload_0
-    //   62: invokestatic 122	barh:b	(Lcom/tencent/mobileqq/data/MessageForScribble;)Ljava/lang/String;
+    //   62: invokestatic 122	bbxw:b	(Lcom/tencent/mobileqq/data/MessageForScribble;)Ljava/lang/String;
     //   65: invokestatic 112	com/tencent/mobileqq/utils/FileUtils:fileExists	(Ljava/lang/String;)Z
     //   68: putfield 125	com/tencent/mobileqq/data/MessageForScribble$FileExistInfo:mDataFileExist	Z
     //   71: aload_2
@@ -101,7 +101,7 @@ public class MessageForScribble
     //   75: aload_0
     //   76: getfield 58	com/tencent/mobileqq/data/MessageForScribble:mExistInfo	Lcom/tencent/mobileqq/data/MessageForScribble$FileExistInfo;
     //   79: aload_0
-    //   80: invokestatic 128	barh:a	(Lcom/tencent/mobileqq/data/MessageForScribble;)Ljava/lang/String;
+    //   80: invokestatic 128	bbxw:a	(Lcom/tencent/mobileqq/data/MessageForScribble;)Ljava/lang/String;
     //   83: invokestatic 112	com/tencent/mobileqq/utils/FileUtils:fileExists	(Ljava/lang/String;)Z
     //   86: putfield 131	com/tencent/mobileqq/data/MessageForScribble$FileExistInfo:mCombineFileExist	Z
     //   89: aload_2
@@ -238,7 +238,7 @@ public class MessageForScribble
   
   public String getSummaryMsg()
   {
-    return amtj.a(2131705691);
+    return anvx.a(2131706042);
   }
   
   public boolean isSupportReply()
@@ -416,7 +416,7 @@ public class MessageForScribble
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForScribble
  * JD-Core Version:    0.7.0.1
  */

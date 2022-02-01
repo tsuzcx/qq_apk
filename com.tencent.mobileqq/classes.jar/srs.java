@@ -1,115 +1,89 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.26.1;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.26.2;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.cmd0xe7e.oidb_cmd0xe7e.ModuleInfo;
-import tencent.im.oidb.cmd0xe7e.oidb_cmd0xe7e.TextCardInfo;
+import java.lang.ref.WeakReference;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import mqq.observer.BusinessObserver;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONObject;
 
-public class srs
-  extends pkt
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnBusinessObserver;", "Lmqq/observer/BusinessObserver;", "dataManager", "Lcom/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnDataManager;", "topicId", "", "rowKey", "(Lcom/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnDataManager;Ljava/lang/String;Ljava/lang/String;)V", "getRowKey", "()Ljava/lang/String;", "getTopicId", "weakRef", "Ljava/lang/ref/WeakReference;", "addToDataManager", "", "json", "Lorg/json/JSONObject;", "onReceive", "type", "", "isSuccess", "", "bundle", "Landroid/os/Bundle;", "parseToJson", "byteArray", "", "removeRequest", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class srs
+  implements BusinessObserver
 {
-  public srs(FastWebActivity paramFastWebActivity) {}
+  @NotNull
+  private final String jdField_a_of_type_JavaLangString;
+  private WeakReference<srt> jdField_a_of_type_JavaLangRefWeakReference;
+  @NotNull
+  private final String b;
   
-  public void a(String paramString)
+  public srs(@NotNull srt paramsrt, @NotNull String paramString1, @NotNull String paramString2)
   {
-    int j = 0;
-    QLog.d("Q.readinjoy.fast_web", 2, " onWebCallback : " + paramString);
-    if (!FastWebActivity.e(this.a)) {
-      return;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramsrt);
+  }
+  
+  private final JSONObject a(byte[] paramArrayOfByte)
+  {
+    WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+    localWebSsoResponseBody.mergeFrom(paramArrayOfByte);
+    paramArrayOfByte = new JSONObject().put("data", new JSONObject(localWebSsoResponseBody.data.get())).put("retcode", localWebSsoResponseBody.ret.get()).put("cret", 0);
+    Intrinsics.checkExpressionValueIsNotNull(paramArrayOfByte, "JSONObject()\n           …          .put(\"cret\", 0)");
+    return paramArrayOfByte;
+  }
+  
+  private final void a(String paramString)
+  {
+    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localObject != null)
+    {
+      localObject = (srt)((WeakReference)localObject).get();
+      if (localObject != null) {
+        ((srt)localObject).a(paramString);
+      }
     }
-    int i;
-    if ("onPageStarted".equals(paramString)) {
-      i = 300;
+  }
+  
+  private final void a(JSONObject paramJSONObject)
+  {
+    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localObject != null)
+    {
+      localObject = (srt)((WeakReference)localObject).get();
+      if (localObject != null) {
+        ((srt)localObject).a(this.jdField_a_of_type_JavaLangString, paramJSONObject);
+      }
+    }
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, @Nullable Bundle paramBundle)
+  {
+    if (paramBoolean) {
+      if (paramBundle == null) {}
     }
     for (;;)
     {
-      ThreadManager.getUIHandler().postDelayed(new FastWebActivity.26.1(this), i);
-      return;
-      i = j;
-      if ("onConversationJumpRestoreStack".equals(paramString)) {
-        i = j;
-      }
-    }
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
-  {
-    if (FastWebActivity.a(this.a) == null) {
-      return;
-    }
-    swl.a(FastWebActivity.a(this.a), paramString, paramInt1, paramInt2);
-    FastWebActivity.c(this.a);
-  }
-  
-  public void a(ArrayList<String> paramArrayList)
-  {
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) {}
-    for (String str = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID;; str = "")
-    {
-      if ((TextUtils.isEmpty(str)) || (FastWebActivity.a(this.a) == null)) {
-        return;
-      }
-      paramArrayList = swb.a(str, 23, paramArrayList);
-      int i = 0;
-      while (i < paramArrayList.size())
+      try
       {
-        BaseData localBaseData = (BaseData)paramArrayList.get(i);
-        if ((localBaseData instanceof ProteusItemData)) {
-          swb.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (ProteusItemData)localBaseData, 3, this.a.jdField_a_of_type_AndroidUtilSparseArray);
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null) {
+          a(a(paramBundle));
         }
-        swt.b(FastWebActivity.a(this.a), localBaseData, FastWebActivity.a(this.a));
-        i += 1;
       }
-      paramArrayList = pkm.a().a();
-      if (paramArrayList != null) {
-        paramArrayList.a(str, FastWebActivity.a(this.a));
+      catch (Exception paramBundle)
+      {
+        QLog.e("VideoColumnDataManager", 1, "parse video column json error: " + paramBundle.getMessage());
+        continue;
       }
-      FastWebActivity.c(this.a);
-      QLog.d("FastWebActivity", 1, "m0xc6dRespObserver,onHandle0xc6dResp");
+      a(this.jdField_a_of_type_JavaLangString);
       return;
+      QLog.e("VideoColumnDataManager", 1, "request error, topicId: " + this.jdField_a_of_type_JavaLangString + ", rowKey: " + this.b);
     }
-  }
-  
-  public void ah_()
-  {
-    super.ah_();
-    if ((FastWebActivity.c(this.a)) || (FastWebActivity.a(this.a) == null)) {
-      return;
-    }
-    FastWebActivity.c(this.a);
-  }
-  
-  public void b(List<oidb_cmd0xe7e.ModuleInfo> paramList, List<oidb_cmd0xe7e.TextCardInfo> paramList1)
-  {
-    ThreadManager.getUIHandler().post(new FastWebActivity.26.2(this, paramList, paramList1));
-  }
-  
-  public void e()
-  {
-    super.e();
-    if ((FastWebActivity.d(this.a)) || (FastWebActivity.a(this.a) == null) || (FastWebActivity.a(this.a) == null) || (FastWebActivity.a(this.a) == null)) {
-      return;
-    }
-    svu.a(FastWebActivity.a(this.a), FastWebActivity.a(this.a));
-    FastWebActivity.g(this.a);
-    FastWebActivity.c(this.a);
-  }
-  
-  public void f()
-  {
-    if (FastWebActivity.a(this.a) == null) {
-      return;
-    }
-    FastWebActivity.g(this.a);
-    FastWebActivity.c(this.a);
   }
 }
 

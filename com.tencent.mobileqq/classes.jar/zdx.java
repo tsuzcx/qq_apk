@@ -1,59 +1,21 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StLike;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativeAdFeedItemView;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-
 public class zdx
-  extends RecyclerView.ViewHolder
 {
-  public zdx(zds paramzds, View paramView)
+  public static String a(String paramString, int paramInt)
   {
-    super(paramView);
-  }
-  
-  private boolean a(CertifiedAccountMeta.StFeed paramStFeed)
-  {
-    if ((this.itemView instanceof BaseWidgetView))
-    {
-      CertifiedAccountMeta.StFeed localStFeed = (CertifiedAccountMeta.StFeed)((BaseWidgetView)this.itemView).a();
-      if ((localStFeed != null) && (paramStFeed != null) && (!TextUtils.isEmpty(localStFeed.id.get())) && (!TextUtils.isEmpty(localStFeed.id.get()))) {
-        return (localStFeed.id.get().equals(paramStFeed.id.get())) && (localStFeed.likeInfo.count.get() == paramStFeed.likeInfo.count.get());
-      }
+    if (paramString.getBytes().length <= paramInt) {
+      return paramString;
     }
-    return false;
-  }
-  
-  public void a(CertifiedAccountMeta.StFeed paramStFeed, ExtraTypeInfo paramExtraTypeInfo)
-  {
-    if (a(paramStFeed)) {
-      return;
-    }
-    if ((this.itemView instanceof RelativeFeedItemView))
-    {
-      ((RelativeFeedItemView)this.itemView).setIsInNightMode(zds.a(this.a));
-      ((RelativeFeedItemView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
-      ((RelativeFeedItemView)this.itemView).setData(paramStFeed);
-      ((RelativeFeedItemView)this.itemView).setDataPosInList(getAdapterPosition());
-    }
-    for (;;)
-    {
-      if (zds.a(this.a) != null) {
-        this.itemView.setOnClickListener(new zdy(this, paramStFeed));
-      }
-      this.itemView.setOnLongClickListener(new zdz(this, paramExtraTypeInfo, paramStFeed));
-      return;
-      if ((this.itemView instanceof RelativeAdFeedItemView))
+    int k = paramString.length();
+    int j = 0;
+    for (int i = 0;; i = j) {
+      if (j < k)
       {
-        ((RelativeAdFeedItemView)this.itemView).setIsInNightMode(zds.a(this.a));
-        ((RelativeAdFeedItemView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
-        ((RelativeAdFeedItemView)this.itemView).setData(paramStFeed);
+        j += Character.charCount(paramString.codePointAt(j));
+        if (paramString.substring(0, j).getBytes().length <= paramInt) {}
+      }
+      else
+      {
+        return paramString.substring(0, i);
       }
     }
   }

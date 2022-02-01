@@ -1,44 +1,50 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qqfav.QfavHelper.AsyncFavoritesProvider.1;
-import mqq.os.MqqHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import org.json.JSONObject;
 
-public abstract class bkpc
-  extends OnPluginInstallListener.Stub
+class bkpc
+  extends BroadcastReceiver
 {
-  public Bundle a;
+  bkpc(bkpb parambkpb, AsyncResult paramAsyncResult) {}
   
-  public bkpc(Bundle paramBundle)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a = paramBundle;
-  }
-  
-  public void a()
-  {
-    bkox.a(BaseApplication.getContext(), this);
-  }
-  
-  public abstract void a(boolean paramBoolean, Bundle paramBundle);
-  
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
-  {
-    a(false, this.a);
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    ThreadManager.getSubThreadHandler().post(new QfavHelper.AsyncFavoritesProvider.1(this));
+    String str = paramIntent.getStringExtra("com.tencent.mobileqq.mini.out.plugins.scanResultData");
+    paramIntent = paramIntent.getStringExtra("com.tencent.mobileqq.mini.out.plugins.scanResultType");
+    QLog.d("MiniAppProxyImpl", 2, "scanResult: " + str + "----scan_type: " + paramIntent);
+    try
+    {
+      JSONObject localJSONObject1 = new JSONObject();
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("result", str);
+      localJSONObject2.put("scanType", paramIntent);
+      localJSONObject2.put("rawData", bjkp.a(str));
+      localJSONObject2.put("charSet", "utf-8");
+      localJSONObject1.put("detail", localJSONObject2);
+      localJSONObject1.put("result", str);
+      localJSONObject1.put("scanType", paramIntent);
+      localJSONObject1.put("rawData", bjkp.a(str));
+      localJSONObject1.put("charSet", "utf-8");
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(true, localJSONObject1);
+      paramContext.unregisterReceiver(bkpb.a(this.jdField_a_of_type_Bkpb));
+      bkpb.a(this.jdField_a_of_type_Bkpb, null);
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      for (;;)
+      {
+        QLog.e("MiniAppProxyImpl", 1, "scan result error." + paramContext);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkpc
  * JD-Core Version:    0.7.0.1
  */

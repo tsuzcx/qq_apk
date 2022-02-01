@@ -1,50 +1,33 @@
 import android.view.View;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Iterator;
+import java.util.List;
 
-public class aztt
-  implements URLDrawableDownListener
+class aztt
+  implements View.OnClickListener
 {
-  public aztt(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
+  aztt(azts paramazts, int paramInt) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadCancelled: ");
+    if (azts.a(this.jdField_a_of_type_Azts) == this.jdField_a_of_type_Int) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Iterator localIterator = azts.a(this.jdField_a_of_type_Azts).iterator();
+      while (localIterator.hasNext()) {
+        ((aztw)localIterator.next()).a = false;
+      }
+      ((aztw)azts.a(this.jdField_a_of_type_Azts).get(this.jdField_a_of_type_Int)).a = true;
+      azts.a(this.jdField_a_of_type_Azts, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Azts.notifyDataSetChanged();
+      if (azts.a(this.jdField_a_of_type_Azts) != null) {
+        azts.a(this.jdField_a_of_type_Azts).a((aztw)azts.a(this.jdField_a_of_type_Azts).get(this.jdField_a_of_type_Int));
+      }
+      bdla.b(null, "dc00898", "", "", "0X800AB2B", "0X800AB2B", 0, 0, "0", "0", "", "");
     }
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadFailed: ");
-    }
-    ReceiptMessageDetailFragment.a(this.a).setVisibility(8);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadInterrupted: ");
-    }
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadProgressed: " + paramURLDrawable + " / " + paramInt);
-    }
-    ReceiptMessageDetailFragment.a(this.a).setLevel(paramInt);
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    ReceiptMessageDetailFragment.a(this.a).setVisibility(8);
-    ReceiptMessageDetailFragment.a(this.a, paramURLDrawable);
-    ReceiptMessageDetailFragment.b(this.a);
   }
 }
 

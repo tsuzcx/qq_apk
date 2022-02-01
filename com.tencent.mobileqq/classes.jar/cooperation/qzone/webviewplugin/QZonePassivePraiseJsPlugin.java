@@ -4,8 +4,8 @@ import NS_QMALL_COVER.AlbumThemeSkin;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import avlx;
-import bgve;
+import awsc;
+import bifw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -33,69 +33,69 @@ public class QZonePassivePraiseJsPlugin
   private String downloadCMD = "";
   private QzoneGiftFullScreenViewController giftController;
   
-  private void chageAlbumTheme(WebViewPlugin paramWebViewPlugin, bgve parambgve, String[] paramArrayOfString)
+  private void chageAlbumTheme(WebViewPlugin paramWebViewPlugin, bifw parambifw, String[] paramArrayOfString)
   {
     AlbumThemeSkin localAlbumThemeSkin;
     if ((paramArrayOfString != null) && (paramArrayOfString.length > 0) && (paramArrayOfString[0] != null))
     {
-      parambgve = "";
+      parambifw = "";
       localAlbumThemeSkin = new AlbumThemeSkin();
-      paramWebViewPlugin = parambgve;
+      paramWebViewPlugin = parambifw;
     }
     for (;;)
     {
       try
       {
         paramArrayOfString = new JSONObject(paramArrayOfString[0]);
-        paramWebViewPlugin = parambgve;
+        paramWebViewPlugin = parambifw;
         localAlbumThemeSkin.iItemId = paramArrayOfString.getInt("itemId");
-        paramWebViewPlugin = parambgve;
+        paramWebViewPlugin = parambifw;
         if (localAlbumThemeSkin.iItemId != -1) {
           continue;
         }
-        paramWebViewPlugin = parambgve;
+        paramWebViewPlugin = parambifw;
         RemoteHandleManager.getInstance().getSender().setAlbumTheme(0L, localAlbumThemeSkin);
       }
-      catch (JSONException parambgve)
+      catch (JSONException parambifw)
       {
-        parambgve.printStackTrace();
-        parambgve = paramWebViewPlugin;
+        parambifw.printStackTrace();
+        parambifw = paramWebViewPlugin;
         continue;
       }
-      if (TextUtils.isEmpty(parambgve)) {}
+      if (TextUtils.isEmpty(parambifw)) {}
       return;
-      paramWebViewPlugin = parambgve;
+      paramWebViewPlugin = parambifw;
       localAlbumThemeSkin.strPicZipUrl = paramArrayOfString.getString("zipurl");
-      paramWebViewPlugin = parambgve;
+      paramWebViewPlugin = parambifw;
       localAlbumThemeSkin.iColor = paramArrayOfString.getInt("icolor");
-      paramWebViewPlugin = parambgve;
+      paramWebViewPlugin = parambifw;
       localAlbumThemeSkin.lTabBarSelectedFontColor = paramArrayOfString.getLong("tabBarFontColorSelected");
-      paramWebViewPlugin = parambgve;
+      paramWebViewPlugin = parambifw;
       localAlbumThemeSkin.lTabBarUnselectedFontColor = paramArrayOfString.getLong("tabBarFontColor");
-      paramWebViewPlugin = parambgve;
+      paramWebViewPlugin = parambifw;
       localAlbumThemeSkin.lVideoButonColor = paramArrayOfString.getLong("videoButonColor");
-      paramWebViewPlugin = parambgve;
+      paramWebViewPlugin = parambifw;
       localAlbumThemeSkin.lVideoButtonBgColor = paramArrayOfString.getLong("videoButtonBgColor");
-      paramWebViewPlugin = parambgve;
+      paramWebViewPlugin = parambifw;
       localAlbumThemeSkin.lTabbarUnderLineColor = paramArrayOfString.getLong("tabbarUnderLineColor");
-      paramWebViewPlugin = parambgve;
+      paramWebViewPlugin = parambifw;
       RemoteHandleManager.getInstance().getSender().setAlbumTheme(0L, localAlbumThemeSkin);
-      paramWebViewPlugin = parambgve;
+      paramWebViewPlugin = parambifw;
       paramArrayOfString = paramArrayOfString.getString("callback");
-      parambgve = paramArrayOfString;
+      parambifw = paramArrayOfString;
       paramWebViewPlugin = paramArrayOfString;
       if (this.parentPlugin != null)
       {
         paramWebViewPlugin = paramArrayOfString;
-        parambgve = "window." + paramArrayOfString + "({})";
+        parambifw = "window." + paramArrayOfString + "({})";
         paramWebViewPlugin = paramArrayOfString;
-        this.parentPlugin.callJs(parambgve);
-        parambgve = paramArrayOfString;
+        this.parentPlugin.callJs(parambifw);
+        parambifw = paramArrayOfString;
       }
     }
   }
   
-  private void checkAnimationRs(WebViewPlugin paramWebViewPlugin, bgve parambgve, String[] paramArrayOfString)
+  private void checkAnimationRs(WebViewPlugin paramWebViewPlugin, bifw parambifw, String[] paramArrayOfString)
   {
     String str;
     if ((paramArrayOfString != null) && (paramArrayOfString.length > 0) && (paramArrayOfString[0] != null)) {
@@ -107,21 +107,21 @@ public class QZonePassivePraiseJsPlugin
       {
         try
         {
-          parambgve = new JSONObject(paramArrayOfString[0]);
-          paramWebViewPlugin = parambgve.getString("zipUrl");
-          parambgve.printStackTrace();
+          parambifw = new JSONObject(paramArrayOfString[0]);
+          paramWebViewPlugin = parambifw.getString("zipUrl");
+          parambifw.printStackTrace();
         }
-        catch (JSONException parambgve)
+        catch (JSONException parambifw)
         {
           try
           {
-            parambgve = parambgve.getString("callback");
-            if ((!TextUtils.isEmpty(paramWebViewPlugin)) && (!TextUtils.isEmpty(parambgve))) {
+            parambifw = parambifw.getString("callback");
+            if ((!TextUtils.isEmpty(paramWebViewPlugin)) && (!TextUtils.isEmpty(parambifw))) {
               break;
             }
             return;
           }
-          catch (JSONException parambgve)
+          catch (JSONException parambifw)
           {
             for (;;)
             {
@@ -129,28 +129,28 @@ public class QZonePassivePraiseJsPlugin
               int i = 0;
             }
           }
-          parambgve = parambgve;
+          parambifw = parambifw;
           paramWebViewPlugin = "";
         }
-        parambgve = str;
+        parambifw = str;
       }
-      paramWebViewPlugin = paramWebViewPlugin.replace("sbig", avlx.a());
-      paramWebViewPlugin = new File(QzoneGiftFullScreenActionManager.getPassiveFullScreenFolderPath(MD5Utils.toMD5(paramWebViewPlugin)) + avlx.a());
+      paramWebViewPlugin = paramWebViewPlugin.replace("sbig", awsc.a());
+      paramWebViewPlugin = new File(QzoneGiftFullScreenActionManager.getPassiveFullScreenFolderPath(MD5Utils.toMD5(paramWebViewPlugin)) + awsc.a());
       if ((!paramWebViewPlugin.exists()) || (!paramWebViewPlugin.isDirectory())) {
         break;
       }
       i = 1;
     } while (this.parentPlugin == null);
-    paramWebViewPlugin = "window." + parambgve + "({checked:" + i + "})";
+    paramWebViewPlugin = "window." + parambifw + "({checked:" + i + "})";
     this.parentPlugin.callJs(paramWebViewPlugin);
   }
   
-  private void downloadAnimationRs(WebViewPlugin paramWebViewPlugin, bgve parambgve, String[] paramArrayOfString)
+  private void downloadAnimationRs(WebViewPlugin paramWebViewPlugin, bifw parambifw, String[] paramArrayOfString)
   {
-    parambgve.a().getHandler(QzoneDeviceTagJsPlugin.class).post(new QZonePassivePraiseJsPlugin.1(this, paramArrayOfString));
+    parambifw.a().getHandler(QzoneDeviceTagJsPlugin.class).post(new QZonePassivePraiseJsPlugin.1(this, paramArrayOfString));
   }
   
-  private void playAnimation(WebViewPlugin paramWebViewPlugin, bgve parambgve, String[] paramArrayOfString)
+  private void playAnimation(WebViewPlugin paramWebViewPlugin, bifw parambifw, String[] paramArrayOfString)
   {
     Object localObject;
     if ((paramArrayOfString != null) && (paramArrayOfString.length > 0) && (paramArrayOfString[0] != null)) {
@@ -165,35 +165,35 @@ public class QZonePassivePraiseJsPlugin
         {
           try
           {
-            parambgve = new JSONObject(paramArrayOfString[0]);
-            paramWebViewPlugin = parambgve.getString("zipUrl");
-            parambgve.printStackTrace();
+            parambifw = new JSONObject(paramArrayOfString[0]);
+            paramWebViewPlugin = parambifw.getString("zipUrl");
+            parambifw.printStackTrace();
           }
-          catch (JSONException parambgve)
+          catch (JSONException parambifw)
           {
             try
             {
-              parambgve = parambgve.getString("callback");
-              if (!TextUtils.isEmpty(parambgve)) {
+              parambifw = parambifw.getString("callback");
+              if (!TextUtils.isEmpty(parambifw)) {
                 break;
               }
               return;
             }
-            catch (JSONException parambgve)
+            catch (JSONException parambifw)
             {
               break label56;
             }
-            parambgve = parambgve;
+            parambifw = parambifw;
             paramWebViewPlugin = "";
           }
-          parambgve = (bgve)localObject;
+          parambifw = (bifw)localObject;
         }
-        paramArrayOfString = QzoneGiftFullScreenActionManager.getPassiveFullScreenFolderPath(MD5Utils.toMD5(paramWebViewPlugin.replace("sbig", avlx.a())));
+        paramArrayOfString = QzoneGiftFullScreenActionManager.getPassiveFullScreenFolderPath(MD5Utils.toMD5(paramWebViewPlugin.replace("sbig", awsc.a())));
         localObject = new File(paramArrayOfString);
       } while ((!((File)localObject).exists()) || (!((File)localObject).isDirectory()));
       this.giftController = new QzoneGiftFullScreenViewController(this.parentPlugin.mRuntime.a());
     } while (!QzoneGiftFullScreenViewController.isSupportMagicface());
-    this.giftController.playMaigcface(paramWebViewPlugin, paramArrayOfString, true, new QZonePassivePraiseJsPlugin.2(this, parambgve));
+    this.giftController.playMaigcface(paramWebViewPlugin, paramArrayOfString, true, new QZonePassivePraiseJsPlugin.2(this, parambifw));
   }
   
   private void refreshPassiveFeeds()

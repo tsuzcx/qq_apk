@@ -3,8 +3,8 @@ package cooperation.qzone.webviewplugin;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import avlx;
-import bgve;
+import awsc;
+import bifw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -30,7 +30,7 @@ public class QZoneGiftFullScreenJsPlugin
   private String downloadCMD = "";
   private QzoneGiftFullScreenViewController giftController;
   
-  private void checkGift(WebViewPlugin paramWebViewPlugin, bgve parambgve, String[] paramArrayOfString)
+  private void checkGift(WebViewPlugin paramWebViewPlugin, bifw parambifw, String[] paramArrayOfString)
   {
     String str;
     if ((paramArrayOfString != null) && (paramArrayOfString.length > 0) && (paramArrayOfString[0] != null)) {
@@ -42,21 +42,21 @@ public class QZoneGiftFullScreenJsPlugin
       {
         try
         {
-          parambgve = new JSONObject(paramArrayOfString[0]);
-          paramWebViewPlugin = parambgve.getString("giftid");
-          parambgve.printStackTrace();
+          parambifw = new JSONObject(paramArrayOfString[0]);
+          paramWebViewPlugin = parambifw.getString("giftid");
+          parambifw.printStackTrace();
         }
-        catch (JSONException parambgve)
+        catch (JSONException parambifw)
         {
           try
           {
-            parambgve = parambgve.getString("callback");
-            if ((!TextUtils.isEmpty(paramWebViewPlugin)) && (!TextUtils.isEmpty(parambgve))) {
+            parambifw = parambifw.getString("callback");
+            if ((!TextUtils.isEmpty(paramWebViewPlugin)) && (!TextUtils.isEmpty(parambifw))) {
               break;
             }
             return;
           }
-          catch (JSONException parambgve)
+          catch (JSONException parambifw)
           {
             for (;;)
             {
@@ -64,27 +64,27 @@ public class QZoneGiftFullScreenJsPlugin
               int i = 0;
             }
           }
-          parambgve = parambgve;
+          parambifw = parambifw;
           paramWebViewPlugin = "";
         }
-        parambgve = str;
+        parambifw = str;
       }
-      paramWebViewPlugin = new File(QzoneGiftFullScreenActionManager.getGiftFullScreenFolderPath(paramWebViewPlugin) + avlx.a());
+      paramWebViewPlugin = new File(QzoneGiftFullScreenActionManager.getGiftFullScreenFolderPath(paramWebViewPlugin) + awsc.a());
       if ((!paramWebViewPlugin.exists()) || (!paramWebViewPlugin.isDirectory())) {
         break;
       }
       i = 1;
     } while (this.parentPlugin == null);
-    paramWebViewPlugin = "window." + parambgve + "({checkGift:" + i + "})";
+    paramWebViewPlugin = "window." + parambifw + "({checkGift:" + i + "})";
     this.parentPlugin.callJs(paramWebViewPlugin);
   }
   
-  private void downloadGift(WebViewPlugin paramWebViewPlugin, bgve parambgve, String[] paramArrayOfString)
+  private void downloadGift(WebViewPlugin paramWebViewPlugin, bifw parambifw, String[] paramArrayOfString)
   {
-    parambgve.a().getHandler(QzoneDeviceTagJsPlugin.class).post(new QZoneGiftFullScreenJsPlugin.1(this, paramArrayOfString));
+    parambifw.a().getHandler(QzoneDeviceTagJsPlugin.class).post(new QZoneGiftFullScreenJsPlugin.1(this, paramArrayOfString));
   }
   
-  private void playGift(WebViewPlugin paramWebViewPlugin, bgve parambgve, String[] paramArrayOfString)
+  private void playGift(WebViewPlugin paramWebViewPlugin, bifw parambifw, String[] paramArrayOfString)
   {
     Object localObject;
     if ((paramArrayOfString != null) && (paramArrayOfString.length > 0) && (paramArrayOfString[0] != null)) {
@@ -99,35 +99,35 @@ public class QZoneGiftFullScreenJsPlugin
         {
           try
           {
-            parambgve = new JSONObject(paramArrayOfString[0]);
-            paramWebViewPlugin = parambgve.getString("giftid");
-            parambgve.printStackTrace();
+            parambifw = new JSONObject(paramArrayOfString[0]);
+            paramWebViewPlugin = parambifw.getString("giftid");
+            parambifw.printStackTrace();
           }
-          catch (JSONException parambgve)
+          catch (JSONException parambifw)
           {
             try
             {
-              parambgve = parambgve.getString("callback");
-              if ((!TextUtils.isEmpty(paramWebViewPlugin)) && (!TextUtils.isEmpty(parambgve))) {
+              parambifw = parambifw.getString("callback");
+              if ((!TextUtils.isEmpty(paramWebViewPlugin)) && (!TextUtils.isEmpty(parambifw))) {
                 break;
               }
               return;
             }
-            catch (JSONException parambgve)
+            catch (JSONException parambifw)
             {
               break label63;
             }
-            parambgve = parambgve;
+            parambifw = parambifw;
             paramWebViewPlugin = "";
           }
-          parambgve = (bgve)localObject;
+          parambifw = (bifw)localObject;
         }
         paramArrayOfString = QzoneGiftFullScreenActionManager.getGiftFullScreenFolderPath(paramWebViewPlugin);
         localObject = new File(paramArrayOfString);
       } while ((!((File)localObject).exists()) || (!((File)localObject).isDirectory()));
       this.giftController = new QzoneGiftFullScreenViewController(this.parentPlugin.mRuntime.a());
     } while (!QzoneGiftFullScreenViewController.isSupportMagicface());
-    this.giftController.playMaigcface(paramWebViewPlugin, paramArrayOfString, new QZoneGiftFullScreenJsPlugin.2(this, parambgve));
+    this.giftController.playMaigcface(paramWebViewPlugin, paramArrayOfString, new QZoneGiftFullScreenJsPlugin.2(this, parambifw));
   }
   
   public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)

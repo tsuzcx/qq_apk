@@ -1,9 +1,9 @@
 package com.tencent.qapmsdk.impl.instrumentation.a;
 
 import com.tencent.qapmsdk.common.logger.Logger;
-import com.tencent.qapmsdk.impl.instrumentation.b.c;
+import com.tencent.qapmsdk.impl.instrumentation.b.b;
 import com.tencent.qapmsdk.impl.instrumentation.b.f;
-import com.tencent.qapmsdk.impl.instrumentation.g;
+import com.tencent.qapmsdk.impl.instrumentation.h;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -17,26 +17,26 @@ public class d
   implements com.tencent.qapmsdk.impl.instrumentation.b.d
 {
   private final HttpEntity a;
-  private final g b;
+  private final h b;
   private final long c;
   private com.tencent.qapmsdk.impl.instrumentation.b.a d;
   private HttpResponse e;
   
-  public d(HttpResponse paramHttpResponse, g paramg, long paramLong)
+  public d(HttpResponse paramHttpResponse, h paramh, long paramLong)
   {
     super(paramHttpResponse.getEntity());
     this.e = paramHttpResponse;
     this.a = paramHttpResponse.getEntity();
-    this.b = paramg;
+    this.b = paramh;
     this.c = paramLong;
   }
   
   /* Error */
-  private void a(g paramg)
+  private void a(h paramh)
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokevirtual 45	com/tencent/qapmsdk/impl/instrumentation/g:j	()Lcom/tencent/qapmsdk/impl/a/a/a;
+    //   1: invokevirtual 45	com/tencent/qapmsdk/impl/instrumentation/h:j	()Lcom/tencent/qapmsdk/impl/a/a/a;
     //   4: astore_3
     //   5: aload_3
     //   6: ifnonnull +24 -> 30
@@ -54,7 +54,7 @@ public class d
     //   26: invokevirtual 60	com/tencent/qapmsdk/common/logger/Logger:d	([Ljava/lang/String;)V
     //   29: return
     //   30: aload_1
-    //   31: invokevirtual 64	com/tencent/qapmsdk/impl/instrumentation/g:h	()Z
+    //   31: invokevirtual 64	com/tencent/qapmsdk/impl/instrumentation/h:h	()Z
     //   34: ifeq +144 -> 178
     //   37: new 66	java/lang/StringBuilder
     //   40: dup
@@ -74,20 +74,20 @@ public class d
     //   71: pop
     //   72: aload_0
     //   73: getfield 29	com/tencent/qapmsdk/impl/instrumentation/a/d:e	Lorg/apache/http/HttpResponse;
-    //   76: invokestatic 87	com/tencent/qapmsdk/impl/instrumentation/b:a	(Lorg/apache/http/HttpResponse;)Ljava/util/Map;
+    //   76: invokestatic 87	com/tencent/qapmsdk/impl/instrumentation/c:a	(Lorg/apache/http/HttpResponse;)Ljava/util/Map;
     //   79: ldc 89
     //   81: aload_1
-    //   82: invokevirtual 93	com/tencent/qapmsdk/impl/instrumentation/g:i	()J
+    //   82: invokevirtual 93	com/tencent/qapmsdk/impl/instrumentation/h:i	()J
     //   85: invokestatic 99	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   88: invokeinterface 105 3 0
     //   93: pop
     //   94: ldc 107
     //   96: astore_2
     //   97: aload_1
-    //   98: invokevirtual 110	com/tencent/qapmsdk/impl/instrumentation/g:k	()Ljava/lang/String;
+    //   98: invokevirtual 110	com/tencent/qapmsdk/impl/instrumentation/h:k	()Ljava/lang/String;
     //   101: ifnull +8 -> 109
     //   104: aload_1
-    //   105: invokevirtual 110	com/tencent/qapmsdk/impl/instrumentation/g:k	()Ljava/lang/String;
+    //   105: invokevirtual 110	com/tencent/qapmsdk/impl/instrumentation/h:k	()Ljava/lang/String;
     //   108: astore_2
     //   109: getstatic 51	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
     //   112: iconst_3
@@ -137,7 +137,7 @@ public class d
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	183	0	this	d
-    //   0	183	1	paramg	g
+    //   0	183	1	paramh	h
     //   44	91	2	localObject	java.lang.Object
     //   152	16	2	localException	java.lang.Exception
     //   4	175	3	locala	com.tencent.qapmsdk.impl.a.a.a
@@ -155,16 +155,16 @@ public class d
     //   45	72	152	java/lang/Exception
   }
   
-  public void a(c paramc)
+  public void a(com.tencent.qapmsdk.impl.instrumentation.b.c paramc)
   {
     ((f)paramc.getSource()).b(this);
-    com.tencent.qapmsdk.impl.instrumentation.b.a(this.b, paramc.b());
+    com.tencent.qapmsdk.impl.instrumentation.c.a(this.b, paramc.b());
     if (!this.b.f()) {
       this.b.d(paramc.a());
     }
   }
   
-  public void b(c paramc)
+  public void b(com.tencent.qapmsdk.impl.instrumentation.b.c paramc)
   {
     ((f)paramc.getSource()).b(this);
     Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMHttpResponseEntityWrapperImpl", "streamComplete" });
@@ -195,7 +195,7 @@ public class d
     }
     catch (IOException localIOException)
     {
-      com.tencent.qapmsdk.impl.instrumentation.b.a(this.b, localIOException);
+      com.tencent.qapmsdk.impl.instrumentation.c.a(this.b, localIOException);
       if (!this.b.f())
       {
         locala = this.b.j();
@@ -243,7 +243,7 @@ public class d
       }
       catch (IOException localIOException)
       {
-        com.tencent.qapmsdk.impl.instrumentation.b.a(this.b, localIOException);
+        com.tencent.qapmsdk.impl.instrumentation.c.a(this.b, localIOException);
         if (!this.b.f()) {
           com.tencent.qapmsdk.impl.d.a.a(this.b.j(), localIOException);
         }
@@ -286,7 +286,7 @@ public class d
   {
     if (!this.b.f())
     {
-      paramOutputStream = new com.tencent.qapmsdk.impl.instrumentation.b.b(paramOutputStream);
+      paramOutputStream = new b(paramOutputStream);
       for (;;)
       {
         try
@@ -306,7 +306,7 @@ public class d
         }
         catch (IOException localIOException)
         {
-          com.tencent.qapmsdk.impl.instrumentation.b.a(this.b, localIOException);
+          com.tencent.qapmsdk.impl.instrumentation.c.a(this.b, localIOException);
           if (!this.b.f())
           {
             this.b.d(paramOutputStream.a());

@@ -1,28 +1,17 @@
-import android.content.Intent;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class anwg
-  implements pwy
+final class anwg
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private int b;
+  anwg(Dialog paramDialog) {}
   
-  public anwg(int paramInt1, int paramInt2, String paramString)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt)
-  {
-    paramString = new Intent("notify_main_subscribe_follow_state");
-    paramString.putExtra("follow_uin", this.jdField_a_of_type_JavaLangString);
-    paramString.putExtra("follow_uin_position", this.jdField_a_of_type_Int);
-    paramString.putExtra("follow_uin_smooth_dx", this.b);
-    paramString.putExtra("follow_uin_status", paramBoolean);
-    BaseApplication.getContext().sendBroadcast(paramString);
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

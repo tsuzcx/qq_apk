@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.utils;
 
 import Wallet.GetMiniAppReq;
-import ajvh;
+import akra;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.os.Handler;
@@ -102,7 +102,7 @@ public class MiniLogManager
     if ((StringUtil.isEmpty(paramString1)) || (StringUtil.isEmpty(paramString2)) || (!new File(paramString2).exists())) {
       return;
     }
-    ajvh.a(new GetMiniAppReq(paramString1, paramInt2, paramInt1, ""), new MiniLogManager.6(paramString2, paramInt1));
+    akra.a(new GetMiniAppReq(paramString1, paramInt2, paramInt1, ""), new MiniLogManager.6(paramString2, paramInt1));
   }
   
   /* Error */

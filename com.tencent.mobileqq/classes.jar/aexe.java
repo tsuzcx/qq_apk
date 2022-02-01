@@ -1,6 +1,37 @@
-class aexe
+import com.tencent.mobileqq.activity.SettingUncommUsedContactsActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+
+public class aexe
+  extends anvi
 {
-  private static aexc a = new aexc("aio_client_module", null);
+  public aexe(SettingUncommUsedContactsActivity paramSettingUncommUsedContactsActivity) {}
+  
+  protected void onGetBothDongtaiPermissions(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if (paramBoolean1)
+    {
+      SettingUncommUsedContactsActivity.a(this.a, this.a.a.a(), paramBoolean2);
+      SettingUncommUsedContactsActivity.a(this.a, this.a.b.a(), paramBoolean3);
+    }
+  }
+  
+  protected void onSetNotAllowedSeeMyDongtai(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!paramBoolean1)
+    {
+      this.a.a(2131718593, 1);
+      SettingUncommUsedContactsActivity.a(this.a, this.a.a.a(), paramBoolean2);
+    }
+  }
+  
+  protected void onSetShieldHisDongtai(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!paramBoolean1)
+    {
+      this.a.a(2131718593, 1);
+      SettingUncommUsedContactsActivity.a(this.a, this.a.b.a(), paramBoolean2);
+    }
+  }
 }
 
 

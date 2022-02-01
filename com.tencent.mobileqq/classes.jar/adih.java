@@ -1,27 +1,24 @@
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
-import java.util.Map;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adih
-  extends amsu
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adih(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  public adih(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramBoolean1) {
-      this.a.a();
-    }
-  }
-  
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
-  {
-    this.a.a();
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
+    aumk.a(this.a.app).a(paramBoolean, this.a.app);
     if (paramBoolean) {
-      this.a.a();
+      bdla.b(this.a.app, "CliOper", "", "", "0X8008C75", "0X8008C75", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      bdla.b(this.a.app, "CliOper", "", "", "0X8008C74", "0X8008C74", 0, 0, "", "", "", "");
     }
   }
 }

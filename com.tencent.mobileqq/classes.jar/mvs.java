@@ -1,25 +1,23 @@
-import android.view.View;
-import com.tencent.av.widget.stageview.StageEffectView;
-import java.util.Comparator;
+import android.os.Handler;
+import android.os.Message;
 
-public class mvs
-  implements Comparator<Integer>
+class mvs
+  extends Handler
 {
-  public mvs(StageEffectView paramStageEffectView) {}
-  
-  public int a(Integer paramInteger1, Integer paramInteger2)
+  public void handleMessage(Message paramMessage)
   {
-    paramInteger1 = (mvz)this.a.getChildAt(paramInteger1.intValue()).getTag();
-    paramInteger2 = (mvz)this.a.getChildAt(paramInteger2.intValue()).getTag();
-    if (paramInteger1.c < paramInteger2.c) {
-      return 1;
+    mvr localmvr = (mvr)paramMessage.obj;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-    return -1;
+    localmvr.jdField_a_of_type_Mvq.a(((mvt[])localmvr.jdField_a_of_type_ArrayOfJavaLangObject)[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mvs
  * JD-Core Version:    0.7.0.1
  */

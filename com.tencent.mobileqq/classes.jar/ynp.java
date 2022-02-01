@@ -1,55 +1,26 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Color;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
-public class ynp
-  extends nnt
+class ynp
+  implements View.OnTouchListener
 {
-  public boolean a;
+  ynp(yno paramyno) {}
   
-  public ynp(Context paramContext, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super(paramContext, paramString);
-  }
-  
-  public String a()
-  {
-    return "key_for_troop_dynamic";
-  }
-  
-  public void a(String paramString)
-  {
-    boolean bool = true;
-    this.a = true;
-    if (TextUtils.isEmpty(paramString)) {
-      return;
+    switch (paramMotionEvent.getAction())
+    {
     }
     for (;;)
     {
-      try
-      {
-        if (new JSONObject(paramString).getInt("isShowTroopDynamic") != 1) {
-          break label56;
-        }
-        this.a = bool;
-        return;
-      }
-      catch (JSONException paramString) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("readQuickShotShareToStoryConfig", 2, paramString.getMessage());
-      return;
-      label56:
-      bool = false;
+      return false;
+      this.a.a.setTextColor(Color.parseColor("#80ffffff"));
+      continue;
+      this.a.a.setTextColor(Color.parseColor("#ffffff"));
     }
-  }
-  
-  public String b()
-  {
-    return "key_for_troop_dynamic_version";
   }
 }
 

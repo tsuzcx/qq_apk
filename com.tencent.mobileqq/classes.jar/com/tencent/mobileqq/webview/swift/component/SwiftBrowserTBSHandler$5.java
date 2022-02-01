@@ -1,17 +1,22 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import bgxh;
-import com.tencent.common.app.BaseApplicationImpl;
-import nny;
+import bihz;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 
 public class SwiftBrowserTBSHandler$5
   implements Runnable
 {
-  public SwiftBrowserTBSHandler$5(bgxh parambgxh, String paramString) {}
+  public SwiftBrowserTBSHandler$5(bihz parambihz) {}
   
   public void run()
   {
-    nny.a(this.a, BaseApplicationImpl.getApplication().getRuntime(), null);
+    this.this$0.a(MsfSdkUtils.insertMtype("Web", this.this$0.jdField_a_of_type_JavaLangString), 0);
+    synchronized (this.this$0.jdField_a_of_type_JavaLangObject)
+    {
+      this.this$0.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
+      this.this$0.jdField_a_of_type_JavaLangObject.notifyAll();
+      return;
+    }
   }
 }
 

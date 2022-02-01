@@ -1,25 +1,41 @@
-import android.content.Intent;
-import com.tencent.avgame.app.AVGameAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import trpc.qq_vgame.common.AvGameCommon.GameQuestionInfo;
+import trpc.qq_vgame.common.AvGameCommon.GuessActionQuestionInfo;
 
-class nge
-  implements EIPCResultCallback
+public class nge
+  extends ngd
 {
-  nge(ngd paramngd, String paramString, int paramInt) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
+  public nfh a()
   {
-    if ((paramEIPCResult == null) || (!paramEIPCResult.isSuccess()))
+    nge localnge = new nge();
+    try
     {
-      paramEIPCResult = new Intent("action_notify_av_game_room_changed");
-      paramEIPCResult.putExtra("action_key_room_id", this.jdField_a_of_type_JavaLangString);
-      paramEIPCResult.putExtra("action_key_status", this.jdField_a_of_type_Int);
-      ngd.a(this.jdField_a_of_type_Ngd).getApp().sendBroadcast(paramEIPCResult);
-      QLog.d("AVGameClientQIPCModule", 2, "status change with broadcast " + this.jdField_a_of_type_Int + " " + this.jdField_a_of_type_JavaLangString);
+      localnge.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      localnge.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      localnge.b = this.b;
+      localnge.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      localnge.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+      return localnge;
     }
+    catch (Exception localException) {}
+    return localnge;
+  }
+  
+  public void a(AvGameCommon.GameQuestionInfo paramGameQuestionInfo)
+  {
+    AvGameCommon.GuessActionQuestionInfo localGuessActionQuestionInfo = (AvGameCommon.GuessActionQuestionInfo)paramGameQuestionInfo.topic.get();
+    this.jdField_a_of_type_Int = paramGameQuestionInfo.id.get();
+    this.jdField_a_of_type_JavaLangString = localGuessActionQuestionInfo.question.get();
+    this.b = localGuessActionQuestionInfo.answer.get();
+    this.jdField_a_of_type_ArrayOfJavaLangString[0] = localGuessActionQuestionInfo.reward_type.get();
+    this.jdField_a_of_type_ArrayOfJavaLangString[1] = localGuessActionQuestionInfo.extra_reward.get();
+    this.jdField_a_of_type_ArrayOfJavaLangString[2] = localGuessActionQuestionInfo.reward_stroke_color.get();
+  }
+  
+  public int b()
+  {
+    return 1;
   }
 }
 

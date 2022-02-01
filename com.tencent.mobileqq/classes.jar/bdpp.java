@@ -1,51 +1,79 @@
-import android.os.AsyncTask;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mm.vfs.VFSFileInputStream;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import org.xml.sax.SAXException;
 
 public class bdpp
-  extends AsyncTask<Void, Void, String>
 {
-  public bdpp(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, URLDrawable paramURLDrawable, String paramString) {}
+  public static AbsStructMsg a(String paramString)
+  {
+    paramString = new ByteArrayInputStream(paramString.getBytes());
+    bdpm localbdpm = new bdpm();
+    SAXParserFactory localSAXParserFactory = SAXParserFactory.newInstance();
+    try
+    {
+      localSAXParserFactory.newSAXParser().parse(paramString, localbdpm);
+      paramString.close();
+      paramString = localbdpm.a();
+      return paramString;
+    }
+    catch (ParserConfigurationException paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("TestStructMsg", 2, "getStructMsgFromXmlBuffByStream", paramString);
+      }
+      return null;
+    }
+    catch (SAXException paramString)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("TestStructMsg", 2, "getStructMsgFromXmlBuffByStream", paramString);
+        }
+      }
+    }
+    catch (IOException paramString)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("TestStructMsg", 2, "getStructMsgFromXmlBuffByStream", paramString);
+        }
+      }
+    }
+  }
   
-  protected String a(Void... paramVarArgs)
+  public static String a(String paramString)
   {
     try
     {
-      String str2 = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
-      if (str2 != null)
+      paramString = new VFSFileInputStream(paramString);
+      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+      byte[] arrayOfByte = new byte[1024];
+      for (;;)
       {
-        bfvo.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity, str2);
-        String str1 = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131694485) + " " + str2;
-        paramVarArgs = str1;
-        if (QLog.isColorLevel())
-        {
-          QLog.i("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, "savePhoto:" + str2);
-          return str1;
+        int i = paramString.read(arrayOfByte, 0, 1024);
+        if (i == -1) {
+          break;
         }
+        localByteArrayOutputStream.write(arrayOfByte, 0, i);
       }
-      else
-      {
-        paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131694483);
-        return paramVarArgs;
-      }
+      paramString = new String(localByteArrayOutputStream.toByteArray(), "utf-8");
     }
-    catch (IOException paramVarArgs)
+    catch (IOException paramString)
     {
-      return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131694483);
+      paramString.printStackTrace();
+      return "";
     }
-    catch (OutOfMemoryError paramVarArgs)
-    {
-      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131694483);
-    }
-    return paramVarArgs;
-  }
-  
-  protected void a(String paramString)
-  {
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getTitleBarHeight());
+    return paramString;
   }
 }
 

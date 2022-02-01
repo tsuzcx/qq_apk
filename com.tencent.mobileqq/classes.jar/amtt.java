@@ -1,18 +1,20 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
-final class amtt
-  implements DialogInterface.OnClickListener
+public class amtt
 {
-  amtt(Activity paramActivity, QQAppInterface paramQQAppInterface) {}
+  public int a;
+  public long a;
+  public String a;
+  public List<String> a;
+  public String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public amtt(List<String> paramList, int paramInt, String paramString1, long paramLong, String paramString2)
   {
-    HotChatManager.a(this.jdField_a_of_type_AndroidAppActivity, false);
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004C6B", "0X8004C6B", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Long = paramLong;
+    this.b = paramString2;
   }
 }
 

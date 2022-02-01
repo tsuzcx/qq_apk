@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import amtj;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -11,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import anvx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -19,12 +19,12 @@ import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import mqq.manager.TicketManager;
-import ond;
-import onf;
-import pay;
-import pim;
-import rrm;
-import rrn;
+import ova;
+import ovc;
+import pkh;
+import ptj;
+import seb;
+import sec;
 
 public class ReadInJoyUploadAvatarFragment
   extends IphoneTitleBarFragment
@@ -32,7 +32,7 @@ public class ReadInJoyUploadAvatarFragment
   public static String a;
   protected ProgressDialog a;
   protected Handler a;
-  rrm a;
+  seb a;
   
   static
   {
@@ -42,13 +42,13 @@ public class ReadInJoyUploadAvatarFragment
   public ReadInJoyUploadAvatarFragment()
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    this.jdField_a_of_type_Rrm = new onf(this);
+    this.jdField_a_of_type_Seb = new ovc(this);
   }
   
   private void a(String paramString)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)pay.a();
-    new rrn(BaseApplicationImpl.getContext(), localQQAppInterface, this.jdField_a_of_type_Rrm).a(paramString, true, 2);
+    QQAppInterface localQQAppInterface = (QQAppInterface)pkh.a();
+    new sec(BaseApplicationImpl.getContext(), localQQAppInterface, this.jdField_a_of_type_Seb).a(paramString, true, 2);
   }
   
   private void a(String paramString, Handler paramHandler, int paramInt)
@@ -74,7 +74,7 @@ public class ReadInJoyUploadAvatarFragment
     switch (paramInt1)
     {
     default: 
-      a(paramString, new ond(this, Looper.getMainLooper()), paramInt2);
+      a(paramString, new ova(this, Looper.getMainLooper()), paramInt2);
     }
     for (;;)
     {
@@ -87,8 +87,8 @@ public class ReadInJoyUploadAvatarFragment
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    setTitle(amtj.a(2131711998), amtj.a(2131711998));
-    setLeftViewName(2131694413);
+    setTitle(anvx.a(2131712345), anvx.a(2131712345));
+    setLeftViewName(2131694614);
     paramLayoutInflater = getActivity();
     if (paramLayoutInflater == null) {
       QLog.e(jdField_a_of_type_JavaLangString, 1, "doOnCreateView activity = null");
@@ -98,7 +98,7 @@ public class ReadInJoyUploadAvatarFragment
     do
     {
       return;
-      pim.a.a(getActivity());
+      ptj.a.a(getActivity());
       this.jdField_a_of_type_AndroidOsHandler.post(new ReadInJoyUploadAvatarFragment.1(this, paramLayoutInflater));
       paramViewGroup = paramLayoutInflater.getIntent();
       paramBundle = paramViewGroup.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
@@ -108,7 +108,7 @@ public class ReadInJoyUploadAvatarFragment
         Intent localIntent = paramLayoutInflater.getIntent();
         Bundle localBundle = new Bundle();
         localBundle.putInt("retCode", 2);
-        localBundle.putString("msg", amtj.a(2131711979));
+        localBundle.putString("msg", anvx.a(2131712326));
         localIntent.putExtra("Bundle", localBundle);
         paramLayoutInflater.setResult(-1, localIntent);
         paramLayoutInflater.finish();
@@ -120,7 +120,7 @@ public class ReadInJoyUploadAvatarFragment
   
   public int getContentLayoutId()
   {
-    return 2131560307;
+    return 2131560353;
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)

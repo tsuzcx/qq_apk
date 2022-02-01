@@ -1,41 +1,17 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity;
-import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity.2.1;
-import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity.2.2;
-import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity.2.3;
-import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity.2.4;
-import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity.2.5;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pushdialog.AIOPushDialogHelper.1.1;
+import com.tencent.mobileqq.pushdialog.PushDialogTemplate;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class baio
-  extends ahat
+  implements baiu
 {
-  public baio(AIOGalleryActivity paramAIOGalleryActivity) {}
+  baio(bain parambain) {}
   
-  public void a()
+  public void a(List<PushDialogTemplate> paramList)
   {
-    this.a.runOnUiThread(new AIOGalleryActivity.2.4(this));
-  }
-  
-  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean)
-  {
-    this.a.runOnUiThread(new AIOGalleryActivity.2.2(this, paramLong1, paramInt1, paramInt2, paramInt3, paramLong2, paramBoolean));
-  }
-  
-  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
-  {
-    this.a.runOnUiThread(new AIOGalleryActivity.2.1(this, paramBoolean, paramLong, paramInt1, paramInt2, paramInt3, paramString));
-  }
-  
-  public void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3, Bundle paramBundle)
-  {
-    this.a.runOnUiThread(new AIOGalleryActivity.2.5(this, paramLong, paramInt1, paramInt2, paramString1, paramArrayOfString, paramString2, paramMessageForShortVideo, paramInt3, paramBundle));
-  }
-  
-  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
-  {
-    this.a.runOnUiThread(new AIOGalleryActivity.2.3(this, paramArrayOfAIORichMediaData, paramInt));
+    ThreadManager.getUIHandler().post(new AIOPushDialogHelper.1.1(this, paramList));
   }
 }
 

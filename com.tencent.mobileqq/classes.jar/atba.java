@@ -1,22 +1,21 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ForwardRecentTranslucentActivity;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
 
-final class atba
-  implements aszj
+public class atba
+  implements blbv
 {
-  atba(Activity paramActivity, Intent paramIntent) {}
+  public atba(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public void onNo() {}
-  
-  public void onYes()
+  public void a(int paramInt)
   {
-    atky.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentIntent, ForwardRecentTranslucentActivity.class, 103);
+    if ((paramInt == this.a.jdField_a_of_type_Atab.getGroupCount() - 1) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setGone();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atba
  * JD-Core Version:    0.7.0.1
  */

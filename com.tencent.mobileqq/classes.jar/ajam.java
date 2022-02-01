@@ -1,57 +1,129 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryBaseTenDocFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CEmotionFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CLinkFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CMediaFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopDateFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopEmotionFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopLinkFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
+import com.tencent.mobileqq.activity.contact.newfriend.PhoneContactAddBuilder.1;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.PhoneContactAdd;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajam
+  extends aiyz
+  implements View.OnClickListener
 {
-  public static ChatHistoryBaseFragment a(int paramInt)
+  public ajam(Context paramContext, QQAppInterface paramQQAppInterface, ajav paramajav, ajbn paramajbn)
   {
-    switch (paramInt)
+    super(paramContext, paramQQAppInterface, paramajav, paramajbn);
+    this.jdField_a_of_type_Blfk = a(paramContext);
+  }
+  
+  protected int a()
+  {
+    return 1;
+  }
+  
+  public View a(int paramInt, View paramView)
+  {
+    ajan localajan;
+    PhoneContactAdd localPhoneContactAdd;
+    if ((paramView == null) || (!(paramView.getTag() instanceof ajan)))
+    {
+      localajan = new ajan();
+      paramView = a(this.jdField_a_of_type_AndroidContentContext, 2131561541, localajan);
+      localajan.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131361796));
+      localajan.h = ((TextView)paramView.findViewById(2131371981));
+      localajan.i = ((TextView)paramView.findViewById(2131376609));
+      localajan.l = ((TextView)paramView.findViewById(2131362310));
+      localajan.j = ((TextView)paramView.findViewById(2131377905));
+      localajan.k = ((TextView)paramView.findViewById(2131376606));
+      localajan.a = ((Button)paramView.findViewById(2131376596));
+      b(localajan.jdField_f_of_type_AndroidWidgetImageView);
+      paramView.setTag(localajan);
+      localajan.g.setTag(localajan);
+      localajan.g.setOnClickListener(this);
+      a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_Ajbn, localajan, this);
+      a(localajan.g, false);
+      localPhoneContactAdd = ((ajbw)this.jdField_a_of_type_Ajbn).a;
+      if (TextUtils.isEmpty(localPhoneContactAdd.name)) {
+        break label346;
+      }
+      localajan.h.setVisibility(0);
+      localajan.h.setText(localPhoneContactAdd.name);
+      label221:
+      localajan.l.setVisibility(8);
+      localajan.j.setVisibility(8);
+      if (TextUtils.isEmpty(localPhoneContactAdd.remindInfo)) {
+        break label358;
+      }
+      localajan.i.setVisibility(0);
+      localajan.i.setText(localPhoneContactAdd.remindInfo);
+    }
+    for (;;)
+    {
+      localajan.k.setVisibility(0);
+      localajan.a.setVisibility(8);
+      localajan.k.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131718061));
+      localajan.jdField_f_of_type_JavaLangString = localPhoneContactAdd.unifiedCode;
+      localajan.jdField_f_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_Ajav.a(11, localPhoneContactAdd.unifiedCode));
+      return paramView;
+      localajan = (ajan)paramView.getTag();
+      break;
+      label346:
+      localajan.h.setVisibility(8);
+      break label221;
+      label358:
+      localajan.i.setVisibility(8);
+    }
+  }
+  
+  protected void a()
+  {
+    ThreadManager.postImmediately(new PhoneContactAddBuilder.1(this), null, true);
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
     {
     default: 
-      return new ChatHistoryC2CAllFragment();
-    case 2131364417: 
-      return new ChatHistoryC2CAllFragment();
-    case 2131364420: 
-      return new ChatHistoryC2CFileFragment();
-    case 2131364422: 
-      return new ChatHistoryC2CMediaFragment();
-    case 2131364419: 
-      return new ChatHistoryC2CEmotionFragment();
-    case 2131364421: 
-      return new ChatHistoryC2CLinkFragment();
-    case 2131364423: 
-      return new ChatHistoryBaseTenDocFragment();
-    case 2131364418: 
-      return new ChatHistoryC2CDateFragment();
-    case 2131364424: 
-      return new ChatHistoryTroopAllFragment();
-    case 2131364429: 
-      return new ChatHistoryTroopMediaFragment();
-    case 2131364426: 
-      return new ChatHistoryTroopEmotionFragment();
-    case 2131364427: 
-      return new ChatHistoryTroopFileFragment();
-    case 2131364428: 
-      return new ChatHistoryTroopLinkFragment();
-    case 2131364431: 
-      return new ChatHistoryBaseTenDocFragment();
-    case 2131364425: 
-      return new ChatHistoryTroopDateFragment();
+      a(paramView);
     }
-    return new ChatHistoryTroopMemberFragment();
+    PhoneContactAdd localPhoneContactAdd;
+    do
+    {
+      do
+      {
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        localObject = paramView.getTag();
+      } while ((localObject == null) || (!(localObject instanceof ajan)));
+      localPhoneContactAdd = ((ajbw)this.jdField_a_of_type_Ajbn).a;
+    } while (localPhoneContactAdd == null);
+    Object localObject = (PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
+    if (((PhoneContactManagerImp)localObject).c(localPhoneContactAdd.unifiedCode) == null) {
+      localObject = new ProfileActivity.AllInOne(localPhoneContactAdd.unifiedCode, 29);
+    }
+    for (;;)
+    {
+      ((ProfileActivity.AllInOne)localObject).h = localPhoneContactAdd.name;
+      ProfileActivity.a((NewFriendActivity)this.jdField_a_of_type_AndroidContentContext, (ProfileActivity.AllInOne)localObject, 227);
+      ((aizi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NEW_FRIEND_MANAGER)).g();
+      break;
+      if (((PhoneContactManagerImp)localObject).i()) {
+        localObject = new ProfileActivity.AllInOne(localPhoneContactAdd.unifiedCode, 34);
+      } else {
+        localObject = new ProfileActivity.AllInOne(localPhoneContactAdd.unifiedCode, 29);
+      }
+    }
   }
 }
 

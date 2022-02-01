@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import ahpx;
+import aikw;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -9,14 +9,14 @@ import com.tencent.qphone.base.util.QLog;
 public class LightalkBlueTipsBar$2
   implements Runnable
 {
-  public LightalkBlueTipsBar$2(ahpx paramahpx) {}
+  public LightalkBlueTipsBar$2(aikw paramaikw) {}
   
   public void run()
   {
-    Object localObject = ahpx.a(this.this$0).getPreferences();
-    int i = ((SharedPreferences)localObject).getInt("LT_tip_show_times" + ahpx.a(this.this$0).getCurrentAccountUin(), 0);
+    Object localObject = aikw.a(this.this$0).getPreferences();
+    int i = ((SharedPreferences)localObject).getInt("LT_tip_show_times" + aikw.a(this.this$0).getCurrentAccountUin(), 0);
     localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).putInt("LT_tip_show_times" + ahpx.a(this.this$0).getCurrentAccountUin(), i + 1);
+    ((SharedPreferences.Editor)localObject).putInt("LT_tip_show_times" + aikw.a(this.this$0).getCurrentAccountUin(), i + 1);
     ((SharedPreferences.Editor)localObject).commit();
     if (QLog.isColorLevel()) {
       QLog.d("LightalkBlueTipsBar", 2, "onAIOEvent() : commit =====> tipsum = " + (i + 1));

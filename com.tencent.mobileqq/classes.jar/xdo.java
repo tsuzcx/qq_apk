@@ -1,48 +1,52 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.database.HotSortVideoEntry;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
-public class xdo
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, wdm>
+class xdo
+  extends SimpleObserver<List<wzh>>
 {
-  public xdo(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
-  {
-    super(paramQQStoryShareGroupProfileActivity);
-  }
+  xdo(xdn paramxdn, xdg paramxdg) {}
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull wdm paramwdm)
+  public void a(List<wzh> paramList)
   {
-    if (!paramQQStoryShareGroupProfileActivity.g) {}
-    xeb localxeb;
-    Object localObject1;
-    do
+    ArrayList localArrayList = new ArrayList();
+    xcz localxcz = new xcz(xdn.a(this.jdField_a_of_type_Xdn));
+    localxcz.jdField_a_of_type_JavaUtilList = new ArrayList();
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
     {
+      wzh localwzh = (wzh)localIterator.next();
+      String str = localwzh.jdField_a_of_type_JavaLangString;
+      localxcz.jdField_a_of_type_JavaUtilMap.put(localwzh.b, str);
+      localxcz.jdField_a_of_type_JavaUtilList.add(localwzh.b);
+    }
+    paramList = xdl.a(paramList);
+    if ((paramList != null) && (!xdn.a(this.jdField_a_of_type_Xdn).a())) {
+      localxcz.jdField_a_of_type_JavaLangString = paramList.b;
+    }
+    localArrayList.add(localxcz);
+    paramList = this.jdField_a_of_type_Xdg;
+    if (!xdn.a(this.jdField_a_of_type_Xdn).a()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramList.a(localArrayList, bool);
       return;
-      Object localObject2 = null;
-      localxeb = paramQQStoryShareGroupProfileActivity.a.a;
-      Iterator localIterator = paramQQStoryShareGroupProfileActivity.a.a.a.iterator();
-      do
-      {
-        localObject1 = localObject2;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject1 = (HotSortVideoEntry)localIterator.next();
-      } while (!((HotSortVideoEntry)localObject1).storyId.equals(paramwdm.a));
-    } while (localObject1 == null);
-    ((HotSortVideoEntry)localObject1).viewCount += 1;
-    ((vue)vux.a(25)).a((HotSortVideoEntry)localObject1);
-    localxeb.a((HotSortVideoEntry)localObject1);
-    paramQQStoryShareGroupProfileActivity.d = true;
+    }
   }
   
-  public Class acceptEventClass()
+  public void onError(@NonNull Error paramError)
   {
-    return wdm.class;
+    int i = 0;
+    if ((paramError instanceof ErrorMessage)) {
+      i = ((ErrorMessage)paramError).errorCode;
+    }
+    paramError = new ArrayList();
+    paramError.add(xdn.a(this.jdField_a_of_type_Xdn));
+    this.jdField_a_of_type_Xdg.a(new ErrorMessage(i, "fail"), paramError);
   }
 }
 

@@ -4,6 +4,7 @@ import android.os.Message;
 import com.tencent.mobileqq.transfile.quic.report.QuicNetReport;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.net.ProtocolException;
@@ -19,6 +20,7 @@ public class Task<T>
   static final int ERROR_CODE_READ_DATA_FAILED = 10006;
   static final int ERROR_CODE_SAVE_PATH = 10004;
   static final int ERROR_CODE_SERVER = 20000;
+  static final int ERROR_COPY_FAILED = 10008;
   static final int ERROR_NATIVE_METHOD_ERROR = 30006;
   static final String USER_RETURNCODE = "User-ReturnCode";
   static final String UUID = "x-nws-log-uuid";
@@ -29,19 +31,45 @@ public class Task<T>
   public QuicNetReport report;
   public boolean running = true;
   
-  Task(ITaskHandler paramITaskHandler, String paramString1, String paramString2, String paramString3, Map<String, String> paramMap, T paramT)
+  Task(ITaskHandler paramITaskHandler, String paramString1, String paramString2, String paramString3, String paramString4, Map<String, String> paramMap, T paramT)
   {
     this.handler = paramITaskHandler;
     this.headers = paramMap;
     this.netListener = paramT;
     this.report = new QuicNetReport();
     this.report.channel = paramString1;
-    this.report.id = paramString3.hashCode();
+    this.report.tempPath = getTempPath(paramString4, paramString3, paramString2);
     this.report.savePath = paramString3;
+    this.report.id = QuicDownloadRunnable.getTaskID(this.report.tempPath);
     this.report.errCode = 0;
     this.report.httpStatus = 0;
     this.report.url = paramString2;
     this.report.startTime = System.currentTimeMillis();
+  }
+  
+  private void copyFile(String paramString)
+  {
+    paramString = new File(paramString);
+    boolean bool = FileUtils.copyFile(paramString, new File(this.report.savePath), true);
+    FileUtils.deleteFile(paramString);
+    if (bool)
+    {
+      paramString = Message.obtain();
+      paramString.what = 6;
+      paramString.obj = this;
+      this.handler.handleMessage(paramString);
+      return;
+    }
+    this.report.errMsg = "copy temp file fail.";
+    handleException(10008, 4);
+  }
+  
+  public static String getTempPath(String paramString1, String paramString2, String paramString3)
+  {
+    if ((paramString1 != null) && (paramString1.length() > 0)) {
+      return paramString1;
+    }
+    return paramString2 + "." + MD5.toMD5(paramString3) + ".tmp";
   }
   
   void handleException(int paramInt1, int paramInt2)
@@ -68,37 +96,24 @@ public class Task<T>
     if (!this.running) {
       return;
     }
-    paramString = Message.obtain();
-    paramString.what = 6;
-    paramString.obj = this;
-    this.handler.handleMessage(paramString);
+    copyFile(paramString);
   }
   
   public void initDownloadFile()
   {
-    try
+    this.downloadLength = 0L;
+    File localFile = new File(this.report.tempPath);
+    if (localFile.exists())
     {
-      this.downloadLength = 0L;
-      File localFile = new File(this.report.savePath);
-      if (localFile.exists())
-      {
-        localFile.delete();
-        FileUtils.createFile(this.report.savePath);
-        return;
-      }
-      localFile = localFile.getParentFile();
-      if ((localFile != null) && (!localFile.exists())) {
-        FileUtils.createDirectory(localFile.getAbsolutePath());
-      }
-      FileUtils.createFile(this.report.savePath);
+      localFile.delete();
+      FileUtils.createFile(this.report.tempPath);
       return;
     }
-    catch (Exception localException)
-    {
-      QLog.e("quic", 4, this.report.id + " getExternalStorageDirectory failed", localException);
-      this.report.errMsg = localException.toString();
-      handleException(10004, 2);
+    localFile = localFile.getParentFile();
+    if ((localFile != null) && (!localFile.exists())) {
+      FileUtils.createDirectory(localFile.getAbsolutePath());
     }
+    FileUtils.createFile(this.report.tempPath);
   }
   
   protected void parseStateLine(String paramString)

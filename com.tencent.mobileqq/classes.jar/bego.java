@@ -1,7 +1,10 @@
 public abstract interface bego
-  extends befv
 {
   public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void b(int paramInt);
 }
 
 

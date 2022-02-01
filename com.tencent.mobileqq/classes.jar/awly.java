@@ -1,33 +1,78 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.widget.ImageView;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import java.util.Iterator;
+import java.util.List;
 
-public class awly
-  implements bhai<oidb_0x8e4.RspBody>
+class awly
+  implements awmy
 {
-  public awly(GameRoomInviteActivity paramGameRoomInviteActivity, boolean paramBoolean) {}
+  awly(awlt paramawlt, Activity paramActivity) {}
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public void a(LocationRoom.Venue paramVenue)
   {
-    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
+    if (paramVenue != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.b = paramRspBody.string_invite_id.get().toStringUtf8();
-      GameRoomInviteActivity.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.b;
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a(false);
+      awlt.a(this.jdField_a_of_type_Awlt);
       return;
     }
-    paramRspBody = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
-    GameRoomInviteActivity.jdField_a_of_type_JavaLangString = null;
-    paramRspBody.b = null;
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Boolean)
+    awlt.b(this.jdField_a_of_type_Awlt);
+  }
+  
+  public void a(LatLng paramLatLng) {}
+  
+  public void a(LatLng paramLatLng, float paramFloat, List<String> paramList)
+  {
+    if (paramList != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.c();
-      return;
+      paramLatLng = paramList.iterator();
+      while (paramLatLng.hasNext())
+      {
+        paramList = (String)paramLatLng.next();
+        Bitmap localBitmap = this.jdField_a_of_type_Awlt.a(paramList);
+        if (localBitmap != null)
+        {
+          localBitmap = bheg.c(localBitmap, localBitmap.getWidth(), localBitmap.getHeight());
+          awlt.a(this.jdField_a_of_type_Awlt).a(paramList, localBitmap);
+        }
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a();
+  }
+  
+  public void a(boolean paramBoolean, Point paramPoint)
+  {
+    if (paramBoolean)
+    {
+      awlt.a(this.jdField_a_of_type_Awlt).setClickable(false);
+      if (blfw.a()) {
+        awlt.a(this.jdField_a_of_type_Awlt).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840625));
+      }
+    }
+    Rect localRect;
+    do
+    {
+      return;
+      awlt.a(this.jdField_a_of_type_Awlt).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840624));
+      return;
+      if (paramPoint == null) {
+        break;
+      }
+      localRect = new Rect();
+      awlt.a(this.jdField_a_of_type_Awlt).getGlobalVisibleRect(localRect);
+    } while (localRect.contains(paramPoint.x, paramPoint.y));
+    awlt.a(this.jdField_a_of_type_Awlt).setClickable(true);
+    awlt.a(this.jdField_a_of_type_Awlt).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840626));
+  }
+  
+  public void a(boolean paramBoolean, awmz paramawmz)
+  {
+    awlt.a(this.jdField_a_of_type_Awlt, paramBoolean, paramawmz);
   }
 }
 

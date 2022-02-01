@@ -2,12 +2,12 @@ package com.tencent.mobileqq.filemanager.util;
 
 import android.util.Pair;
 import android.util.SparseArray;
-import asrj;
+import atvq;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
-import yxi;
+import zmk;
 
 class QFileUtils$5$1
   implements Runnable
@@ -25,7 +25,7 @@ class QFileUtils$5$1
     Object localObject1;
     Object localObject2;
     String str;
-    if (yxi.a(this.jdField_a_of_type_Int))
+    if (zmk.a(this.jdField_a_of_type_Int))
     {
       localObject1 = this.jdField_a_of_type_AndroidUtilSparseArray.get(1);
       if (!(localObject1 instanceof Pair)) {
@@ -55,7 +55,7 @@ class QFileUtils$5$1
               localObject2 = ShareActionSheetBuilder.ActionSheetItem.build(55);
               ((ShareActionSheetBuilder.ActionSheetItem)localObject2).argus = ((String)localObject1);
               localArrayList.add(localObject2);
-              if (yxi.b(this.jdField_a_of_type_Int))
+              if (zmk.b(this.jdField_a_of_type_Int))
               {
                 localObject2 = this.jdField_a_of_type_AndroidUtilSparseArray.get(2);
                 localObject1 = localObject4;
@@ -91,10 +91,10 @@ class QFileUtils$5$1
             localObject2 = ShareActionSheetBuilder.ActionSheetItem.build(56);
             ((ShareActionSheetBuilder.ActionSheetItem)localObject2).argus = ((String)localObject1);
             localArrayList.add(localObject2);
-            if ((localArrayList == null) || (this.this$0.jdField_a_of_type_Asrj == null)) {
+            if ((localArrayList == null) || (this.this$0.jdField_a_of_type_Atvq == null)) {
               break;
             }
-            this.this$0.jdField_a_of_type_Asrj.a(this.this$0.jdField_a_of_type_JavaLangString, localArrayList);
+            this.this$0.jdField_a_of_type_Atvq.a(this.this$0.jdField_a_of_type_JavaLangString, localArrayList);
             return;
           }
           catch (JSONException localJSONException3) {}
@@ -113,7 +113,7 @@ class QFileUtils$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.QFileUtils.5.1
  * JD-Core Version:    0.7.0.1
  */

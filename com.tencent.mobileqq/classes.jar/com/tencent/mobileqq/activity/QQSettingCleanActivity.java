@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import aead;
-import aeae;
-import aeag;
-import amtj;
+import aeri;
+import aerj;
+import aerl;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -22,16 +21,17 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import ardx;
-import asyy;
-import atdm;
-import atgv;
-import bcef;
-import bcgg;
-import bfur;
-import bfvl;
-import bfwh;
-import bhht;
+import anvx;
+import asid;
+import audf;
+import auht;
+import aulc;
+import bdla;
+import bdne;
+import bhdj;
+import bhed;
+import bhez;
+import bisl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -44,19 +44,19 @@ import java.util.ArrayList;
 
 public class QQSettingCleanActivity
   extends IphoneTitleBarActivity
-  implements View.OnClickListener, atgv, bfvl
+  implements View.OnClickListener, aulc, bhed
 {
   public static final String a;
   public static final ArrayList<String> a;
   public static final String[] a;
   public long a;
-  public aeag a;
+  public aerl a;
   public View a;
   public Button a;
   public LinearLayout a;
   public ProgressBar a;
   public TextView a;
-  public bhht a;
+  public bisl a;
   public CircleProgressBar a;
   public boolean a;
   public long b;
@@ -77,13 +77,13 @@ public class QQSettingCleanActivity
   static
   {
     jdField_a_of_type_ArrayOfJavaLangString = new String[] { "sdcard/Tencent/MobileQQ", "sdcard/Tencent/QQ_Images", "sdcard/Tencent/QQfile_recv", "sdcard/Tencent/QQ_Collection", "sdcard/Tencent/QQ_Favorite", "sdcard/Tencent/QQ_Video", "sdcard/Tencent/QQfile_share", "sdcard/Tencent/QQHomework_recv", "sdcard/Tencent/QQHomework_attach", "sdcard/Tencent/AIO_FORWARD", "sdcard/Tencent/QQ_business" };
-    jdField_a_of_type_JavaLangString = amtj.a(2131709871);
+    jdField_a_of_type_JavaLangString = anvx.a(2131710218);
     jdField_a_of_type_JavaUtilArrayList = new ArrayList(2);
   }
   
   public QQSettingCleanActivity()
   {
-    this.jdField_a_of_type_Aeag = new aeag(this);
+    this.jdField_a_of_type_Aerl = new aerl(this);
   }
   
   private String a(long paramLong)
@@ -114,7 +114,7 @@ public class QQSettingCleanActivity
   {
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgressBar.a();
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgressBar.setPercent(0);
-    bcgg.a().post(new QQSettingCleanActivity.ScanSpaceTask(this));
+    bdne.a().post(new QQSettingCleanActivity.ScanSpaceTask(this));
   }
   
   public void a(int paramInt, Bundle paramBundle) {}
@@ -129,7 +129,7 @@ public class QQSettingCleanActivity
   {
     this.jdField_a_of_type_Boolean = false;
     runOnUiThread(new QQSettingCleanActivity.ShowTask(this, 4));
-    bcef.b(this.app, "dc00898", "", "", "0X8007911", "0X8007911", 0, 0, this.app.getCurrentAccountUin(), "", "", "");
+    bdla.b(this.app, "dc00898", "", "", "0X8007911", "0X8007911", 0, 0, this.app.getCurrentAccountUin(), "", "", "");
   }
   
   public void b(int paramInt, Bundle paramBundle) {}
@@ -153,32 +153,32 @@ public class QQSettingCleanActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131561426);
-    setTitle(getString(2131698521));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131364575));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131364574));
+    setContentView(2131561488);
+    setTitle(getString(2131698818));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131364657));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131364656));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131373941);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131373936);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131372123);
-    this.jdField_d_of_type_AndroidViewView = findViewById(2131363124);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131374170);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131374165);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131372316);
+    this.jdField_d_of_type_AndroidViewView = findViewById(2131363143);
     ((GradientDrawable)this.jdField_a_of_type_AndroidViewView.getBackground()).setColor(Color.parseColor("#00d1a4"));
     ((GradientDrawable)this.jdField_b_of_type_AndroidViewView.getBackground()).setColor(Color.parseColor("#fea356"));
     ((GradientDrawable)this.jdField_c_of_type_AndroidViewView.getBackground()).setColor(Color.parseColor("#529eff"));
     ((GradientDrawable)this.jdField_d_of_type_AndroidViewView.getBackground()).setColor(Color.parseColor("#e6e6e7"));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374107));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgressBar = ((CircleProgressBar)findViewById(2131376806));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373940));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373937));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372122));
-    this.e = ((TextView)findViewById(2131363123));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131377636));
-    this.f = ((TextView)findViewById(2131364576));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131365765));
-    bcgg.a().a(false);
-    paramBundle = asyy.a().b();
-    String str = asyy.a().a();
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374341));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgressBar = ((CircleProgressBar)findViewById(2131377076));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374169));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374166));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372315));
+    this.e = ((TextView)findViewById(2131363142));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131377910));
+    this.f = ((TextView)findViewById(2131364658));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131365863));
+    bdne.a().a(false);
+    paramBundle = audf.a().b();
+    String str = audf.a().a();
     jdField_a_of_type_JavaUtilArrayList.clear();
     if (!TextUtils.isEmpty(paramBundle))
     {
@@ -200,20 +200,20 @@ public class QQSettingCleanActivity
   
   public void doOnDestroy()
   {
-    if ((this.jdField_a_of_type_Bhht != null) && (this.jdField_a_of_type_Bhht.isShowing())) {
+    if ((this.jdField_a_of_type_Bisl != null) && (this.jdField_a_of_type_Bisl.isShowing())) {
       dismissDialog(1);
     }
-    atdm.a().a("https://qqwx.qq.com/s?aid=index&g_f=429&mType=QQSpaceClean");
-    bcgg.a();
+    auht.a().a("https://qqwx.qq.com/s?aid=index&g_f=429&mType=QQSpaceClean");
+    bdne.a();
     super.doOnDestroy();
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    if (bcgg.a().a())
+    if (bdne.a().a())
     {
-      bcgg.a().a(false);
+      bdne.a().a(false);
       a();
     }
   }
@@ -227,16 +227,16 @@ public class QQSettingCleanActivity
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      bcef.b(this.app, "dc00898", "", "", "0X8007543", "0X8007543", 0, 0, this.app.getCurrentAccountUin(), "", "", "");
+      bdla.b(this.app, "dc00898", "", "", "0X8007543", "0X8007543", 0, 0, this.app.getCurrentAccountUin(), "", "", "");
       Object localObject = new Intent(getActivity(), QQSettingMsgHistoryActivity.class);
       ((Intent)localObject).putExtra("set_display_type", 2);
       getActivity().startActivity((Intent)localObject);
       continue;
-      bcef.b(this.app, "dc00898", "", "", "0X8007544", "0X8007544", 0, 0, this.app.getCurrentAccountUin(), "", "", "");
-      if (!bfwh.a(this))
+      bdla.b(this.app, "dc00898", "", "", "0X8007544", "0X8007544", 0, 0, this.app.getCurrentAccountUin(), "", "", "");
+      if (!bhez.a(this))
       {
-        bcef.b(this.app, "dc00898", "", "", "0X8007912", "0X8007912", 0, 0, this.app.getCurrentAccountUin(), "", "", "");
-        localObject = bfur.a(this, 230).setTitle(getString(2131718552)).setMessage(getString(2131718562)).setPositiveButton(getString(2131718556), new aeae(this)).setNegativeButton(getString(2131690620), new aead(this));
+        bdla.b(this.app, "dc00898", "", "", "0X8007912", "0X8007912", 0, 0, this.app.getCurrentAccountUin(), "", "", "");
+        localObject = bhdj.a(this, 230).setTitle(getString(2131718941)).setMessage(getString(2131718951)).setPositiveButton(getString(2131718945), new aerj(this)).setNegativeButton(getString(2131690697), new aeri(this));
         if ((localObject != null) && (!((Dialog)localObject).isShowing()) && (!isFinishing()))
         {
           ((Dialog)localObject).setCancelable(false);
@@ -245,8 +245,8 @@ public class QQSettingCleanActivity
       }
       else
       {
-        bcef.b(this.app, "dc00898", "", "", "0X8007913", "0X8007913", 0, 0, this.app.getCurrentAccountUin(), "", "", "");
-        bfwh.a(this, "mobileqq", 9502721);
+        bdla.b(this.app, "dc00898", "", "", "0X8007913", "0X8007913", 0, 0, this.app.getCurrentAccountUin(), "", "", "");
+        bhez.a(this, "mobileqq", 9502721);
       }
     }
   }
@@ -265,30 +265,30 @@ public class QQSettingCleanActivity
     default: 
       return super.onCreateDialog(paramInt);
     }
-    this.jdField_a_of_type_Bhht = null;
-    this.jdField_a_of_type_Bhht = new bhht(this, getTitleBarHeight());
-    this.jdField_a_of_type_Bhht.a(getString(2131690751));
-    this.jdField_a_of_type_Bhht.c(true);
-    this.jdField_a_of_type_Bhht.a(false);
-    this.jdField_a_of_type_Bhht.b(true);
-    return this.jdField_a_of_type_Bhht;
+    this.jdField_a_of_type_Bisl = null;
+    this.jdField_a_of_type_Bisl = new bisl(this, getTitleBarHeight());
+    this.jdField_a_of_type_Bisl.a(getString(2131690828));
+    this.jdField_a_of_type_Bisl.c(true);
+    this.jdField_a_of_type_Bisl.a(false);
+    this.jdField_a_of_type_Bisl.b(true);
+    return this.jdField_a_of_type_Bisl;
   }
   
-  public boolean onRespDownloadInfo(ardx paramardx)
+  public boolean onRespDownloadInfo(asid paramasid)
   {
-    if (paramardx.b == 0)
+    if (paramasid.b == 0)
     {
-      long l = paramardx.e;
+      long l = paramasid.e;
       if ((NetworkUtil.isNetSupport(this)) && (l > 0L))
       {
-        paramardx = new Bundle();
-        paramardx.putString("_filename_from_dlg", jdField_a_of_type_JavaLangString);
-        paramardx.putLong("_filesize_from_dlg", l);
-        paramardx.putString("big_brother_source_key", "biz_src_tmm");
-        paramardx.putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_tmm");
+        paramasid = new Bundle();
+        paramasid.putString("_filename_from_dlg", jdField_a_of_type_JavaLangString);
+        paramasid.putLong("_filesize_from_dlg", l);
+        paramasid.putString("big_brother_source_key", "biz_src_tmm");
+        paramasid.putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_tmm");
         this.jdField_a_of_type_Boolean = true;
         runOnUiThread(new QQSettingCleanActivity.ShowTask(this, 2));
-        atdm.a().a("https://qqwx.qq.com/s?aid=index&g_f=429&mType=QQSpaceClean", paramardx, this);
+        auht.a().a("https://qqwx.qq.com/s?aid=index&g_f=429&mType=QQSpaceClean", paramasid, this);
       }
       return true;
     }
@@ -298,7 +298,7 @@ public class QQSettingCleanActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingCleanActivity
  * JD-Core Version:    0.7.0.1
  */

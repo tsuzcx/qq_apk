@@ -1,16 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import android.view.View;
+import java.util.Map;
 
-public abstract interface rbq
+class rbq
+  implements rbx
 {
-  public abstract String a(BaseArticleInfo paramBaseArticleInfo, TemplateBean paramTemplateBean, ViewBase paramViewBase);
+  rbq(rbp paramrbp) {}
   
-  public abstract void a(BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void a(Object paramObject);
-  
-  public abstract boolean a(BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean);
+  public void a(View paramView, Map<String, Object> paramMap)
+  {
+    if (paramView.getId() == 2131380472) {
+      this.a.a(paramView);
+    }
+    do
+    {
+      return;
+      if (paramView != this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead) {
+        break;
+      }
+      paramView = this.a.jdField_a_of_type_Szd.a().a();
+    } while (paramView == null);
+    paramView.c();
+    return;
+    this.a.a(paramView, paramMap);
+  }
 }
 
 

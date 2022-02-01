@@ -1,21 +1,43 @@
-public class bieu
+import android.content.Intent;
+import android.text.TextUtils;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bieu
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
+  bieu(bieo parambieo) {}
+  
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  {
+    if ((this.a.mTopTabHelper != null) && (!TextUtils.isEmpty(this.a.mTopTabHelper.a))) {
+      this.a.mTopTabHelper.a(paramInt);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
+      return;
+      TouchWebView localTouchWebView = this.a.mUIStyleHandler.getWebView();
+      if (localTouchWebView != null)
+      {
+        String str2 = localTouchWebView.getUrl();
+        String str1 = str2;
+        if (TextUtils.isEmpty(str2))
+        {
+          str1 = str2;
+          if (this.a.intent != null) {
+            str1 = this.a.intent.getStringExtra("url");
+          }
+        }
+        if (!TextUtils.isEmpty(str1)) {
+          localTouchWebView.loadUrl(str1.replaceAll("(?<=[?&])subIndex=[^&]*", "subIndex=" + paramInt));
+        }
+      }
+    }
+  }
 }
 
 

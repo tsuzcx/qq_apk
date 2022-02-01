@@ -1,29 +1,19 @@
-public class bchx
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bchx
+  implements View.OnClickListener
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  bchx(bchu parambchu, String paramString1, String paramString2) {}
   
-  public bchx(String paramString)
+  public void onClick(View paramView)
   {
-    this(null, null, null, null, null, null, null, paramString);
-  }
-  
-  public bchx(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
-  {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.f = paramString6;
-    this.g = paramString7;
-    this.h = paramString8;
+    bchu.a(this.jdField_a_of_type_Bchu).onAction(paramView);
+    if ((bchu.a(this.jdField_a_of_type_Bchu) instanceof bcal)) {
+      ((bcal)bchu.a(this.jdField_a_of_type_Bchu)).a(this.jdField_a_of_type_JavaLangString, this.b);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

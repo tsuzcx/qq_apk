@@ -1,34 +1,21 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
-class affw
-  implements ImageAssetDelegate
+public class affw
+  implements View.OnTouchListener
 {
-  affw(afft paramafft) {}
+  public affw(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inScaled = true;
-    localOptions.inDensity = 320;
-    try
+    if (paramMotionEvent.getAction() == 4)
     {
-      paramLottieImageAsset = bfvo.a(afft.a(this.a) + "images/" + paramLottieImageAsset.getFileName(), localOptions);
-      return paramLottieImageAsset;
+      this.a.a.dismiss();
+      return true;
     }
-    catch (Exception paramLottieImageAsset)
-    {
-      QLog.e("LottieAnimDirector", 1, "Delegate decode bitmap error");
-      return null;
-    }
-    catch (OutOfMemoryError paramLottieImageAsset)
-    {
-      QLog.e("LottieAnimDirector", 1, "Delegate decode bitmap OOM");
-    }
-    return null;
+    return false;
   }
 }
 

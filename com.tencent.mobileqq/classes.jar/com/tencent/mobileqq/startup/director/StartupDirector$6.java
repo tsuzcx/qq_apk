@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.startup.director;
 
-import bcad;
+import bdgy;
 import mqq.app.AppActivity;
 
 public class StartupDirector$6
   implements Runnable
 {
-  public StartupDirector$6(bcad parambcad, AppActivity paramAppActivity) {}
+  public StartupDirector$6(bdgy parambdgy, AppActivity paramAppActivity) {}
   
   public void run()
   {

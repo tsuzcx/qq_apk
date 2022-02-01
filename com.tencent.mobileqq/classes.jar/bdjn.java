@@ -1,38 +1,83 @@
-import com.tencent.mobileqq.together.writetogether.client.RoomController;
-import com.tencent.mobileqq.together.writetogether.websocket.HeartBeat;
-import com.tencent.mobileqq.together.writetogether.websocket.WriteTogetherWebSocketSender;
-import java.util.concurrent.LinkedBlockingDeque;
-import okhttp3.Response;
-import okhttp3.WebSocket;
-import okhttp3.WebSocketListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.startup.step.CheckPermission;
+import com.tencent.mobileqq.startup.step.InitMemoryCache;
+import com.tencent.mobileqq.startup.step.LoadDex;
+import com.tencent.mobileqq.startup.step.OldApplication;
+import com.tencent.mobileqq.startup.step.SetSplash;
+import com.tencent.mobileqq.startup.step.StartService;
+import com.tencent.mobileqq.startup.step.Step;
+import com.tencent.mobileqq.startup.step.Update;
 
 public class bdjn
-  extends WebSocketListener
+  implements bdjo
 {
-  public bdjn(WriteTogetherWebSocketSender paramWriteTogetherWebSocketSender) {}
+  private static bdjo a;
   
-  public void onClosed(WebSocket arg1, int paramInt, String paramString)
+  public static void a()
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    synchronized (WriteTogetherWebSocketSender.a(this.a))
+    a = (bdjo)BaseApplicationImpl.sApplication.getClassLoader().loadClass("com.tencent.mobileqq.startup.step.Step$AfterDexStepFactory").newInstance();
+  }
+  
+  public static Step b(int paramInt, bdgy parambdgy, int[] paramArrayOfInt)
+  {
+    Step localStep = null;
+    Object localObject;
+    switch (paramInt)
     {
-      WriteTogetherWebSocketSender.a(this.a).notify();
-      WriteTogetherWebSocketSender.a(this.a).a(true);
-      if (WriteTogetherWebSocketSender.a(this.a).size() == 0) {
-        this.a.a(WriteTogetherWebSocketSender.a(this.a).a());
+    case 5: 
+    case 6: 
+    case 7: 
+    case 11: 
+    case 12: 
+    case 14: 
+    case 15: 
+    case 16: 
+    case 17: 
+    case 18: 
+    case 19: 
+    case 20: 
+    default: 
+      if (a != null) {
+        localStep = a.a(paramInt, parambdgy, paramArrayOfInt);
       }
-      return;
+      localObject = localStep;
+      if (localStep == null) {
+        localObject = new Step();
+      }
+      break;
+    }
+    for (;;)
+    {
+      ((Step)localObject).mId = paramInt;
+      ((Step)localObject).mDirector = parambdgy;
+      if (paramInt == 0) {
+        Step.access$002((Step)localObject, paramArrayOfInt);
+      }
+      return localObject;
+      localObject = new LoadDex();
+      continue;
+      localObject = new InitMemoryCache();
+      continue;
+      localObject = new OldApplication();
+      continue;
+      localObject = new SetSplash();
+      continue;
+      localObject = new CheckPermission();
+      continue;
+      localObject = new Update();
+      continue;
+      localObject = new StartService();
     }
   }
   
-  public void onOpen(WebSocket paramWebSocket, Response paramResponse)
+  public Step a(int paramInt, bdgy parambdgy, int[] paramArrayOfInt)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherClientRoomController.a();
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdjn
  * JD-Core Version:    0.7.0.1
  */

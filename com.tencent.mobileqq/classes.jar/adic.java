@@ -1,24 +1,17 @@
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adic
-  extends amnw
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adic(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  public adic(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  protected void a(int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("contacts.fragment.TroopFragment", 2, "onCacheInited " + paramInt);
-      }
-    } while (this.a.a == null);
-    this.a.a.c();
+    axea.a(paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

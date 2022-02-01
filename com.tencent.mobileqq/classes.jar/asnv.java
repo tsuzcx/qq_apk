@@ -1,122 +1,56 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferHostInfo;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.List;
 
 public class asnv
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private List<ExcitingTransferHostInfo> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private String b;
-  private String c;
-  private String d;
+  public int a;
+  public long a;
+  public String a;
+  public List<asnq> a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public int c;
   
-  public long a()
+  public asnv()
   {
-    return this.jdField_a_of_type_Long;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public String a()
+  public boolean equals(Object paramObject)
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<ExcitingTransferHostInfo> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(List<ExcitingTransferHostInfo> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramObject != null)
     {
-      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "mFilePath is null");
-      return false;
+      bool1 = bool2;
+      if ((paramObject instanceof asnv))
+      {
+        paramObject = (asnv)paramObject;
+        bool1 = bool2;
+        if (paramObject.jdField_a_of_type_JavaLangString != null)
+        {
+          bool1 = bool2;
+          if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) {
+            bool1 = true;
+          }
+        }
+      }
     }
-    if (0L == this.jdField_a_of_type_Long)
-    {
-      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "mFileSize is 0");
-      return false;
-    }
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
-    {
-      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "hostList is null");
-      return false;
-    }
-    if (TextUtils.isEmpty(this.b))
-    {
-      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "serverPath is null");
-      return false;
-    }
-    if (TextUtils.isEmpty(this.c))
-    {
-      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "strCookie is null");
-      return false;
-    }
-    return true;
+    return bool1;
   }
   
-  public byte[] a()
+  public String toString()
   {
-    return this.jdField_a_of_type_ArrayOfByte;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public void b(String paramString)
-  {
-    this.b = paramString;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String c()
-  {
-    return this.c;
-  }
-  
-  public void c(String paramString)
-  {
-    this.c = paramString;
-  }
-  
-  public String d()
-  {
-    return this.d;
-  }
-  
-  public void d(String paramString)
-  {
-    this.d = paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mUpdateTime").append("=").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" ").append("mUpdateTime").append("=").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" ").append("mSearchKey").append("=").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" ").append("mLoadOver").append("=").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" ").append("mCurPos").append("=").append(this.b);
+    localStringBuilder.append(" ").append("mOffset").append("=").append(this.c);
+    localStringBuilder.append(" ").append("size").append("=").append(this.jdField_a_of_type_JavaUtilList.size());
+    return localStringBuilder.toString();
   }
 }
 

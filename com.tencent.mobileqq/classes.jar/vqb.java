@@ -1,65 +1,65 @@
-import android.content.Context;
-import android.util.SparseArray;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-
 public class vqb
 {
-  public static SparseArray<Class<? extends ysg>> a = new SparseArray();
-  public static SparseArray<Boolean> b = new SparseArray();
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public long b;
+  public boolean b;
+  public int c;
+  public int d;
   
-  static
+  public vqa a()
   {
-    a.put(1, xtx.class);
-    b.put(1, Boolean.valueOf(true));
-    a.put(5, xue.class);
-    b.put(5, Boolean.valueOf(true));
+    return new vqa(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.d);
   }
   
-  public static ysg a(Context paramContext, int paramInt)
+  public vqb a(int paramInt)
   {
-    Object localObject = (Class)a.get(paramInt, null);
-    Boolean localBoolean = (Boolean)b.get(paramInt, Boolean.valueOf(true));
-    if (localObject == null) {
-      throw new IllegalArgumentException(amtj.a(2131712811));
-    }
-    if (localBoolean.booleanValue()) {
-      try
-      {
-        paramContext = (ysg)((Class)localObject).getConstructor(new Class[] { Context.class }).newInstance(new Object[] { paramContext });
-        return paramContext;
-      }
-      catch (NoSuchMethodException paramContext)
-      {
-        throw new IllegalStateException(amtj.a(2131712807), paramContext);
-      }
-      catch (IllegalAccessException paramContext)
-      {
-        throw new IllegalStateException(amtj.a(2131712810), paramContext);
-      }
-      catch (InstantiationException paramContext)
-      {
-        throw new IllegalStateException(amtj.a(2131712813), paramContext);
-      }
-      catch (InvocationTargetException paramContext)
-      {
-        throw new IllegalArgumentException(amtj.a(2131712809), paramContext);
-      }
-    }
-    try
-    {
-      localObject = (String)((Class)localObject).getDeclaredField("KEY").get(null);
-      return new xuz(paramContext, (String)localObject);
-    }
-    catch (NoSuchFieldException paramContext)
-    {
-      throw new IllegalStateException(amtj.a(2131712814), paramContext);
-    }
-    catch (IllegalAccessException paramContext)
-    {
-      throw new IllegalStateException(amtj.a(2131712808), paramContext);
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public vqb a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public vqb a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    return this;
+  }
+  
+  public vqb b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public vqb b(long paramLong)
+  {
+    this.jdField_b_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public vqb b(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    return this;
+  }
+  
+  public vqb c(int paramInt)
+  {
+    this.c = paramInt;
+    return this;
+  }
+  
+  public vqb d(int paramInt)
+  {
+    this.d = paramInt;
+    return this;
   }
 }
 

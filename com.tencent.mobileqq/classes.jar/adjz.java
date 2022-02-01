@@ -1,27 +1,10 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.AuthDevActivity;
 
 public class adjz
-  implements apri
+  extends Handler
 {
-  public adjz(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public int a(int paramInt)
-  {
-    return 2;
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 == 0) {
-      return this.a.getString(2131693568);
-    }
-    return this.a.getString(2131692108);
-  }
+  public adjz(AuthDevActivity paramAuthDevActivity) {}
 }
 
 

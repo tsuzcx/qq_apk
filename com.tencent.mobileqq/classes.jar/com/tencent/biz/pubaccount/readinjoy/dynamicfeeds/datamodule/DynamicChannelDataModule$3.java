@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule;
 
-import pjn;
+import puk;
 
 public class DynamicChannelDataModule$3
   implements Runnable
 {
-  public DynamicChannelDataModule$3(pjn parampjn, int paramInt) {}
+  public DynamicChannelDataModule$3(puk parampuk, int paramInt) {}
   
   public void run()
   {
-    pjn.a(this.this$0, this.a, 1);
+    puk.a(this.this$0, this.a, 1);
   }
 }
 

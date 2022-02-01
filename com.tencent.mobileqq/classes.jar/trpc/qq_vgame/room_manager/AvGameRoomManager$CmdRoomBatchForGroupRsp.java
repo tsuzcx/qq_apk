@@ -20,7 +20,7 @@ public final class AvGameRoomManager$CmdRoomBatchForGroupRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     trpc.qq_vgame.room_manager.AvGameRoomManager.CmdRoomBatchForGroupRsp
  * JD-Core Version:    0.7.0.1
  */

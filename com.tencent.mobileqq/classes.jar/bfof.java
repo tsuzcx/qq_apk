@@ -1,21 +1,45 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadFeedsSender.1.1;
+import java.util.UUID;
 
 public class bfof
-  implements DialogInterface.OnClickListener
+  extends aahn
 {
-  public bfof(UpgradeActivity paramUpgradeActivity) {}
+  bfof(bfoe parambfoe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2, int paramInt3, Bundle paramBundle)
   {
-    bcef.b(this.a.app, "CliOper", "", "", "0X800417F", "0X800417F", 0, 0, "", "", "", "");
-    if (UpgradeActivity.a(this.a)) {
-      bcef.b(this.a.app, "CliOper", "", "", "0X800714D", "0X800714D", 0, 0, "", "", "", "");
-    }
-    bcef.b(this.a.app, "CliOper", "", "", "0X8004DA2", "0X8004DA2", 0, 0, bfnf.b(), String.valueOf(2), bfng.a(), "0");
-    bfng.a().a(this.a.app);
-    this.a.finish();
+    if (!paramBoolean) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          paramString = paramBundle.getString("itemKey");
+        } while (paramString == null);
+        paramString = UUID.fromString(paramString);
+      } while (!paramString.equals(this.a.a()));
+      bfmf.c("TroopFileUploadFeedsSender", bfmf.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFeedsResult retCode:" + paramInt1);
+      paramBundle = paramBundle.getString("fileId");
+      bgjh localbgjh = bfmd.a(this.a.d);
+      if (localbgjh == null)
+      {
+        bfmf.a("TroopFileUploadFeedsSender", bfmf.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFeedsResult getTroopFileMgr()=null");
+        return;
+      }
+      paramString = localbgjh.a(paramString);
+      if (paramString == null)
+      {
+        bfmf.a("TroopFileUploadFeedsSender", bfmf.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFeedsResult getFileInfo()=null");
+        return;
+      }
+    } while (paramInt1 != 0);
+    bfmf.c("TroopFileUploadFeedsSender", bfmf.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFeedsResult refreshOneFile");
+    aagu.a(bfmd.a(), this.a.d, paramString.a, paramString.b, this.a.jdField_a_of_type_Aahi);
+    ThreadManager.executeOnSubThread(new TroopFileUploadFeedsSender.1.1(this, paramBundle, paramString));
   }
 }
 

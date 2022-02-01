@@ -1,23 +1,23 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class apwf
+class apwf
+  implements bmiz
 {
-  public int a;
-  public String a;
-  public ArrayList<apwp> a;
-  public int b;
+  apwf(apwe paramapwe, QQAppInterface paramQQAppInterface) {}
   
-  public apwf(int paramInt1, int paramInt2, String paramString, ArrayList<apwp> paramArrayList)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    if (paramInt == 0)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Apwe.jdField_a_of_type_Aofu);
+      ((aoep)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).a(anrb.a(this.jdField_a_of_type_Apwe.jdField_a_of_type_JavaLangString), true, 0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apwf
  * JD-Core Version:    0.7.0.1
  */

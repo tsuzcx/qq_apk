@@ -1,35 +1,41 @@
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment;
-import com.tencent.mobileqq.app.soso.LbsManagerService;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
-import mqq.app.QQPermissionCallback;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
 class aiaw
-  implements QQPermissionCallback
+  implements View.OnTouchListener
 {
   aiaw(aiav paramaiav) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ac_ft.AddContactViewPagerTroopFragment", 2, "requestLBSPermissionOnClickListener deny");
+    int i = paramMotionEvent.getAction();
+    paramView = this.a.jdField_a_of_type_Bilj.a();
+    if (i == 0) {
+      if ((paramView != null) && (paramView.d()))
+      {
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131704567));
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setPressed(true);
+        this.a.jdField_a_of_type_Axrb.b();
+        paramView.a(true);
+      }
     }
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ac_ft.AddContactViewPagerTroopFragment", 2, "onclick requestLBSPermissionOnClickListener grant");
-    }
-    this.a.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.a.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-    if (LbsManagerService.getCachedLbsInfo("recommend_troop") == null)
+    do
     {
-      LbsManagerService.startLocation(new aiax(this, "recommend_troop"));
-      return;
-    }
-    this.a.a.jdField_a_of_type_Aiam.b(false);
+      return true;
+      this.a.a(false);
+      return true;
+      if ((i != 3) && (i != 1)) {
+        break;
+      }
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131704563));
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setPressed(false);
+      this.a.jdField_a_of_type_Axrb.c();
+    } while (paramView == null);
+    paramView.a(false);
+    return true;
+    return false;
   }
 }
 

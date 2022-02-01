@@ -328,9 +328,9 @@ public class fn
           localETFont.setSize(localRelativeSizeSpan.getSizeChange() * this.jdField_a_of_type_ComEtrumpMixlayoutETFont.getSize());
           a(((CharSequence)localObject).toString(), m, k, localETFont, false, true);
         }
-        else if ((arrayOffp[i].jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof bank))
+        else if ((arrayOffp[i].jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof bbtz))
         {
-          localObject = (bank)arrayOffp[i].jdField_a_of_type_AndroidTextStyleCharacterStyle;
+          localObject = (bbtz)arrayOffp[i].jdField_a_of_type_AndroidTextStyleCharacterStyle;
           this.jdField_b_of_type_JavaUtilArrayList.add(localObject);
           a((CharacterStyle)localObject, this.jdField_b_of_type_JavaUtilArrayList.indexOf(localObject), m, k, false);
         }
@@ -426,7 +426,7 @@ public class fn
     {
       if (i < this.jdField_b_of_type_JavaUtilArrayList.size())
       {
-        if (((CharacterStyle)this.jdField_b_of_type_JavaUtilArrayList.get(i) instanceof bank)) {
+        if (((CharacterStyle)this.jdField_b_of_type_JavaUtilArrayList.get(i) instanceof bbtz)) {
           this.d = i;
         }
       }
@@ -796,11 +796,11 @@ public class fn
         localETSegment.x = m;
         localETSegment.y = (i1 - i2 + j);
         localObject2 = localfm.a();
-        if ((localObject2 instanceof bank))
+        if ((localObject2 instanceof bbtz))
         {
-          localObject2 = (bank)localObject2;
-          ((bank)localObject2).jdField_a_of_type_Float = m;
-          ((bank)localObject2).b = localETSegment.y;
+          localObject2 = (bbtz)localObject2;
+          ((bbtz)localObject2).jdField_a_of_type_Float = m;
+          ((bbtz)localObject2).b = localETSegment.y;
         }
       }
       localETSegment.textSize = localfm.a();
@@ -866,13 +866,13 @@ public class fn
     int k;
     if ((this.d > -1) && (this.d < this.jdField_b_of_type_JavaUtilArrayList.size()))
     {
-      localObject1 = (bank)this.jdField_b_of_type_JavaUtilArrayList.get(this.d);
+      localObject1 = (bbtz)this.jdField_b_of_type_JavaUtilArrayList.get(this.d);
       this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontSize);
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontColor);
-      i = ((bank)localObject1).b();
-      k = (int)((bank)localObject1).b;
-      ((bank)localObject1).jdField_a_of_type_Boolean = false;
-      ((bank)localObject1).draw(paramCanvas, null, 0, 0, ((bank)localObject1).jdField_a_of_type_Float, (int)((bank)localObject1).b, 0, i + k, this.jdField_a_of_type_AndroidGraphicsPaint);
+      i = ((bbtz)localObject1).b();
+      k = (int)((bbtz)localObject1).b;
+      ((bbtz)localObject1).jdField_a_of_type_Boolean = false;
+      ((bbtz)localObject1).draw(paramCanvas, null, 0, 0, ((bbtz)localObject1).jdField_a_of_type_Float, (int)((bbtz)localObject1).b, 0, i + k, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
     if (this.jdField_a_of_type_ArrayOfFr == null) {}
     for (;;)

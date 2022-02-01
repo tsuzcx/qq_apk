@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aeym;
-import aeyn;
-import aeyo;
+import afpy;
+import afpz;
+import afqa;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -23,9 +23,9 @@ public class AudioSenorManager
 {
   public static int a;
   public float a;
-  private aeym jdField_a_of_type_Aeym;
-  private aeyn jdField_a_of_type_Aeyn;
-  private aeyo jdField_a_of_type_Aeyo;
+  private afpy jdField_a_of_type_Afpy;
+  private afpz jdField_a_of_type_Afpz;
+  private afqa jdField_a_of_type_Afqa;
   private Sensor jdField_a_of_type_AndroidHardwareSensor;
   private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
@@ -261,11 +261,11 @@ public class AudioSenorManager
     //   307: invokevirtual 276	android/hardware/SensorManager:getDefaultSensor	(I)Landroid/hardware/Sensor;
     //   310: putfield 190	com/tencent/mobileqq/activity/aio/AudioSenorManager:jdField_b_of_type_AndroidHardwareSensor	Landroid/hardware/Sensor;
     //   313: aload_0
-    //   314: new 278	aeym
+    //   314: new 278	afpy
     //   317: dup
     //   318: aload_0
-    //   319: invokespecial 279	aeym:<init>	(Lcom/tencent/mobileqq/activity/aio/AudioSenorManager;)V
-    //   322: putfield 149	com/tencent/mobileqq/activity/aio/AudioSenorManager:jdField_a_of_type_Aeym	Laeym;
+    //   319: invokespecial 279	afpy:<init>	(Lcom/tencent/mobileqq/activity/aio/AudioSenorManager;)V
+    //   322: putfield 149	com/tencent/mobileqq/activity/aio/AudioSenorManager:jdField_a_of_type_Afpy	Lafpy;
     //   325: aload_0
     //   326: aload_0
     //   327: getfield 78	com/tencent/mobileqq/activity/aio/AudioSenorManager:jdField_a_of_type_AndroidHardwareSensorManager	Landroid/hardware/SensorManager;
@@ -273,11 +273,11 @@ public class AudioSenorManager
     //   332: invokevirtual 276	android/hardware/SensorManager:getDefaultSensor	(I)Landroid/hardware/Sensor;
     //   335: putfield 158	com/tencent/mobileqq/activity/aio/AudioSenorManager:jdField_a_of_type_AndroidHardwareSensor	Landroid/hardware/Sensor;
     //   338: aload_0
-    //   339: new 281	aeyo
+    //   339: new 281	afqa
     //   342: dup
     //   343: aload_0
-    //   344: invokespecial 282	aeyo:<init>	(Lcom/tencent/mobileqq/activity/aio/AudioSenorManager;)V
-    //   347: putfield 155	com/tencent/mobileqq/activity/aio/AudioSenorManager:jdField_a_of_type_Aeyo	Laeyo;
+    //   344: invokespecial 282	afqa:<init>	(Lcom/tencent/mobileqq/activity/aio/AudioSenorManager;)V
+    //   347: putfield 155	com/tencent/mobileqq/activity/aio/AudioSenorManager:jdField_a_of_type_Afqa	Lafqa;
     //   350: fload_1
     //   351: ldc_w 283
     //   354: fcmpl
@@ -399,8 +399,8 @@ public class AudioSenorManager
         if (this.jdField_b_of_type_Int != 0)
         {
           this.jdField_b_of_type_Int = 0;
-          if (this.jdField_a_of_type_Aeyn != null) {
-            this.jdField_a_of_type_Aeyn.a(this.jdField_b_of_type_Int);
+          if (this.jdField_a_of_type_Afpz != null) {
+            this.jdField_a_of_type_Afpz.a(this.jdField_b_of_type_Int);
           }
         }
       }
@@ -422,17 +422,17 @@ public class AudioSenorManager
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().unregisterReceiver(this);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
     }
-    this.jdField_a_of_type_Aeyn = null;
+    this.jdField_a_of_type_Afpz = null;
     this.jdField_a_of_type_JavaUtilList.clear();
     ThreadManager.removeJobFromThreadPool(this.jdField_b_of_type_JavaLangRunnable, 16);
     ThreadManager.removeJobFromThreadPool(this.jdField_a_of_type_JavaLangRunnable, 16);
-    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Aeym);
-    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Aeyo);
+    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Afpy);
+    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Afqa);
   }
   
-  public void a(aeyn paramaeyn)
+  public void a(afpz paramafpz)
   {
-    this.jdField_a_of_type_Aeyn = paramaeyn;
+    this.jdField_a_of_type_Afpz = paramafpz;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -460,7 +460,7 @@ public class AudioSenorManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AudioSenorManager
  * JD-Core Version:    0.7.0.1
  */

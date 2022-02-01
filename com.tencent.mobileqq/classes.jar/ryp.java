@@ -1,6 +1,22 @@
-public abstract interface ryp
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+
+public class ryp
+  extends rzu
+  implements ryb
 {
-  public abstract void a(long paramLong);
+  private QQAppInterface a;
+  
+  public ryp(QQAppInterface paramQQAppInterface)
+  {
+    this.a = paramQQAppInterface;
+  }
+  
+  public void a(UgcVideo paramUgcVideo, rya paramrya)
+  {
+    ((sad)this.a.getManager(QQManagerFactory.RIJ_UGC_VIDEO_PUBLISH_MANAGER)).a(paramUgcVideo, false);
+  }
 }
 
 

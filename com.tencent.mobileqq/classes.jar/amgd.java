@@ -1,8 +1,31 @@
-import java.io.ByteArrayOutputStream;
+import android.os.Handler;
+import android.view.View;
+import android.widget.AbsListView.OnScrollListener;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.adapter.BaseWhatASmoothAdapter.1;
 
-public abstract interface amgd
+public abstract class amgd
+  extends BaseAdapter
+  implements AbsListView.OnScrollListener
 {
-  public abstract void a(boolean paramBoolean, ByteArrayOutputStream paramByteArrayOutputStream);
+  protected Handler a;
+  public String a;
+  
+  private final void a(View paramView, Object paramObject, int paramInt, amge paramamge)
+  {
+    Object localObject = a(paramInt);
+    if (localObject == null) {
+      return;
+    }
+    paramView = new BaseWhatASmoothAdapter.1(this, paramView, localObject, paramObject, paramInt, paramamge);
+    amge.a(paramamge, true);
+    amge.a(paramamge, paramView);
+    this.a.post(paramView);
+  }
+  
+  protected abstract Object a(int paramInt);
+  
+  public abstract void a(View paramView, Object paramObject);
 }
 
 

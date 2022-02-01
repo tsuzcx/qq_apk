@@ -1,26 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.avgame.ui.AVGameJoinRoomFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class noo
-  implements nol
+  implements View.OnClickListener
 {
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.i(paramString1, paramInt, paramString2);
-  }
+  public noo(AVGameJoinRoomFragment paramAVGameJoinRoomFragment) {}
   
-  public boolean a()
+  public void onClick(View paramView)
   {
-    return QLog.isColorLevel();
-  }
-  
-  public void b(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.d(paramString1, paramInt, paramString2);
-  }
-  
-  public boolean b()
-  {
-    return QLog.isDevelopLevel();
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

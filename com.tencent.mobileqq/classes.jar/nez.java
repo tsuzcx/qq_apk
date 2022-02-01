@@ -1,31 +1,18 @@
-import com.tencent.avgame.gameroom.stage.guesssong.GuessSongStageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.qphone.base.util.QLog;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import androidx.annotation.NonNull;
 
-public class nez
-  implements URLDrawable.URLDrawableListener
+public abstract class nez<VH extends new<? extends nel>>
 {
-  public nez(GuessSongStageView paramGuessSongStageView) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public VH a(nfa paramnfa, int paramInt, @NonNull ViewGroup paramViewGroup)
   {
-    QLog.d("GuessSongStageView", 2, "onLoadFialed " + paramThrowable);
+    return a(paramnfa, LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false));
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public VH a(nfa paramnfa, View paramView)
   {
-    QLog.d("GuessSongStageView", 2, "onLoadSuccessed ");
-    if ((paramURLDrawable != null) && (paramURLDrawable.getCurrDrawable() != null) && (this.a.a != null) && (this.a.a.getImageAsset("image_6") != null))
-    {
-      paramURLDrawable = GuessSongStageView.a(this.a, paramURLDrawable, 280, 280);
-      this.a.a.updateBitmap("image_6", paramURLDrawable);
-    }
+    return null;
   }
 }
 

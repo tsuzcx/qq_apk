@@ -1,34 +1,10 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.URLDrawable;
 
-public class acjw
+public abstract interface acjw
 {
-  public static acjv a(Class<? extends acjv> paramClass, acju paramacju)
-  {
-    if (paramClass == ackv.class) {
-      paramClass = new ackv();
-    }
-    for (;;)
-    {
-      if (paramClass != null) {
-        paramClass.a(paramacju);
-      }
-      return paramClass;
-      if (paramClass == aclb.class) {
-        paramClass = new aclb();
-      } else {
-        try
-        {
-          acjv localacjv = (acjv)paramClass.newInstance();
-          paramClass = localacjv;
-        }
-        catch (Exception localException)
-        {
-          QLog.e("DoraemonOpenAPI.moduleFactory", 1, "newInstance error module=" + paramClass, localException);
-          paramClass = null;
-        }
-      }
-    }
-  }
+  public abstract void a(URLDrawable paramURLDrawable);
+  
+  public abstract void b(URLDrawable paramURLDrawable);
 }
 
 

@@ -52,9 +52,9 @@ public class OcrCardManualDetectState
     super.unload();
   }
   
-  public void update(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  public void update(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
-    super.update(paramArrayOfByte, paramInt1, paramInt2, paramInt3);
+    super.update(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramLong);
     if (paramArrayOfByte.length > 0)
     {
       HashMap localHashMap = new HashMap();

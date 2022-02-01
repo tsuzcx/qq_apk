@@ -1,24 +1,47 @@
-public abstract interface ryq
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+
+public class ryq
+  implements ryc
 {
-  public abstract void a(ryo paramryo);
+  private ryd jdField_a_of_type_Ryd;
+  private ryp jdField_a_of_type_Ryp;
+  private rzw jdField_a_of_type_Rzw;
   
-  public abstract void a(ryo paramryo, int paramInt);
+  public ryq(ryp paramryp)
+  {
+    this.jdField_a_of_type_Ryp = paramryp;
+    this.jdField_a_of_type_Rzw = new rzw(this.jdField_a_of_type_Ryp);
+  }
   
-  public abstract void a(ryo paramryo, int paramInt1, int paramInt2, String paramString);
+  public void a()
+  {
+    this.jdField_a_of_type_Rzw.a();
+    this.jdField_a_of_type_Ryd = null;
+  }
   
-  public abstract void a(ryo paramryo, boolean paramBoolean);
+  public void a(UgcVideo paramUgcVideo)
+  {
+    if (this.jdField_a_of_type_Ryd != null) {
+      this.jdField_a_of_type_Ryd.a();
+    }
+    this.jdField_a_of_type_Ryp.a(paramUgcVideo, null);
+  }
   
-  public abstract void b(ryo paramryo);
+  public void a(ryd paramryd)
+  {
+    this.jdField_a_of_type_Rzw.a(paramryd);
+    this.jdField_a_of_type_Ryd = paramryd;
+  }
   
-  public abstract void b(ryo paramryo, boolean paramBoolean);
+  public void b()
+  {
+    this.jdField_a_of_type_Rzw.b();
+  }
   
-  public abstract void c(ryo paramryo);
-  
-  public abstract void d(ryo paramryo);
-  
-  public abstract void e(ryo paramryo);
-  
-  public abstract void f(ryo paramryo);
+  public void c()
+  {
+    this.jdField_a_of_type_Rzw.c();
+  }
 }
 
 

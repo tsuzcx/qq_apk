@@ -1,15 +1,68 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ChannelCoverInfoModule.4;
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
-import java.util.Comparator;
+import android.content.res.Resources;
+import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.compat.ReadInJoyDynamicChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
+import com.tencent.widget.pull2refresh.XRecyclerView;
+import java.util.List;
 
 public class pug
-  implements Comparator<TabChannelCoverInfo>
+  extends pvq
 {
-  public pug(ChannelCoverInfoModule.4 param4) {}
+  public pug(ReadInJoyDynamicChannelFragment paramReadInJoyDynamicChannelFragment) {}
   
-  public int a(TabChannelCoverInfo paramTabChannelCoverInfo1, TabChannelCoverInfo paramTabChannelCoverInfo2)
+  public void a(int paramInt, List<Long> paramList)
   {
-    return paramTabChannelCoverInfo1.seq - paramTabChannelCoverInfo2.seq;
+    if (paramInt != ReadInJoyDynamicChannelFragment.a(this.a)) {
+      return;
+    }
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      ReadInJoyDynamicChannelFragment.a(this.a).a(pvj.a().a(Integer.valueOf(ReadInJoyDynamicChannelFragment.b(this.a)), paramList));
+      ReadInJoyDynamicChannelFragment.a(this.a).a(true, true);
+    }
+    for (;;)
+    {
+      paramList = pvj.a().a();
+      if (paramList == null) {
+        break;
+      }
+      ReadInJoyDynamicChannelFragment.a(this.a, paramList.a(ReadInJoyDynamicChannelFragment.c(this.a)));
+      return;
+      ReadInJoyDynamicChannelFragment.b(this.a).b();
+    }
+  }
+  
+  public void a(TopBannerInfo paramTopBannerInfo)
+  {
+    ReadInJoyDynamicChannelFragment.a(this.a, paramTopBannerInfo);
+  }
+  
+  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  {
+    if (paramInt != ReadInJoyDynamicChannelFragment.d(this.a)) {
+      return;
+    }
+    paramInt = pvj.a().a(Integer.valueOf(paramInt));
+    if ((paramBoolean1) && (paramInt > 0)) {}
+    for (String str = String.format(this.a.getResources().getString(2131717599), new Object[] { Integer.valueOf(paramInt) });; str = this.a.getResources().getString(2131717598))
+    {
+      ReadInJoyDynamicChannelFragment.c(this.a).a(paramBoolean1, str);
+      if ((paramBoolean1) && (paramList != null) && (paramList.size() > 0)) {
+        ReadInJoyDynamicChannelFragment.a(this.a).a(pvj.a().a(Integer.valueOf(ReadInJoyDynamicChannelFragment.e(this.a)), paramList));
+      }
+      ReadInJoyDynamicChannelFragment.d(this.a).a(true, true);
+      return;
+    }
+  }
+  
+  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  {
+    if (paramInt != ReadInJoyDynamicChannelFragment.f(this.a)) {
+      return;
+    }
+    if ((paramBoolean1) && (paramList != null) && (paramList.size() > 0)) {
+      ReadInJoyDynamicChannelFragment.a(this.a).a(pvj.a().a(Integer.valueOf(ReadInJoyDynamicChannelFragment.g(this.a)), paramList));
+    }
+    ReadInJoyDynamicChannelFragment.e(this.a).a(paramBoolean1, true);
   }
 }
 

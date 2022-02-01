@@ -1,29 +1,18 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class rix
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public rix(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
+  public rix(ComponentJump paramComponentJump, String paramString1, String paramString2) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    paramView = ReadInJoyUgcSearchTopicFragment.a(this.a).getCompoundDrawables()[2];
-    if ((paramMotionEvent.getAction() == 0) && (paramView != null))
-    {
-      float f = ReadInJoyUgcSearchTopicFragment.a(this.a).getRight() - paramView.getBounds().width();
-      if (paramMotionEvent.getRawX() >= f)
-      {
-        ReadInJoyUgcSearchTopicFragment.b(this.a);
-        return true;
-      }
-    }
-    return false;
+    qkw.a(2, this.jdField_a_of_type_JavaLangString);
+    pkh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), this.b);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

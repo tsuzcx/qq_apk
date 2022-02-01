@@ -1,66 +1,69 @@
-import android.os.Bundle;
-import android.os.Message;
-import android.os.Messenger;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.web.MessengerService;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arco
-  extends bgqy
 {
-  public arco(MessengerService paramMessengerService) {}
+  private boolean a;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public static arco a(aqxa[] paramArrayOfaqxa)
   {
+    arco localarco = new arco();
+    StringBuilder localStringBuilder = new StringBuilder();
     for (;;)
     {
       try
       {
-        paramObject = (Bundle)paramObject;
-        if (paramObject == null)
+        int j = paramArrayOfaqxa.length;
+        int i = 0;
+        if (i < j)
         {
-          QLog.e("Q.emoji.web.MessengerService", 1, "fcObserver.onUpdate dataBundle=null");
-          return;
+          String str = paramArrayOfaqxa[i].a;
+          QLog.d("OpenSdkD55Processor", 1, new Object[] { "content=", str });
+          JSONObject localJSONObject = new JSONObject(str);
+          if (localJSONObject.has("enable_d55"))
+          {
+            if (localJSONObject.optInt("enable_d55", 0) == 1)
+            {
+              bool = true;
+              localarco.a = bool;
+            }
+          }
+          else
+          {
+            localStringBuilder.append("config: ").append(str).append(",");
+            i += 1;
+          }
         }
-        int i = paramObject.getInt("result", -1);
-        if (!QLog.isColorLevel()) {
-          break label206;
-        }
-        QLog.d("Q.emoji.web.MessengerService", 2, "fcObserver.onUpdate ret=" + i + ", type=" + paramInt + ", isSuccess=" + paramBoolean);
-      }
-      catch (Exception paramObject)
-      {
-        QLog.e("Q.emoji.web.MessengerService", 1, "fcObserver onUpdate Err:" + paramObject.getMessage());
-        return;
-      }
-      QLog.e("Q.emoji.web.MessengerService", 1, "fcObserver onUpdate Error type=" + paramInt);
-      paramObject = (QQAppInterface)MessengerService.a(this.a);
-      if (paramObject != null)
-      {
-        Object localObject = (bgrc)paramObject.getBusinessHandler(46);
-        paramObject.removeObserver(this);
-        return;
-        if (this.a.a != null)
+        else
         {
-          localObject = Message.obtain(null, 5);
-          ((Message)localObject).setData(paramObject);
-          this.a.a.send((Message)localObject);
+          QLog.d("OpenSdkD55Processor", 1, "parse, content:" + localStringBuilder.toString());
+          return localarco;
         }
       }
-      else
+      catch (JSONException paramArrayOfaqxa)
       {
-        return;
-        label206:
-        switch (paramInt)
-        {
-        }
+        QLog.e("OpenSdkD55Processor", 1, "JSONException", paramArrayOfaqxa);
+        return null;
       }
+      boolean bool = false;
     }
+  }
+  
+  public boolean a()
+  {
+    return this.a;
+  }
+  
+  public String toString()
+  {
+    new StringBuilder().append("isSwitchOpen:").append(this.a);
+    return super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arco
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 
 public class adzq
-  implements View.OnClickListener
+  extends VasQuickUpdateManager.CallBacker
 {
-  public adzq(QQMapActivity paramQQMapActivity) {}
+  public adzq(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(View paramView)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    if (!NetworkUtil.isNetSupport(this.a)) {
-      this.a.x();
-    }
-    for (;;)
+    if ((paramLong == 15L) && (paramString1.startsWith("card.")) && (this.a.a != null))
     {
-      aaec.a("see_streetview");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (NetworkUtil.isWifiEnabled(this.a)) {
-        this.a.p();
-      } else {
-        bfur.a(this.a, 230).setTitle(this.a.getString(2131689992)).setMessage(2131694258).setPositiveButton(2131690953, new adzs(this)).setNegativeButton(2131690620, new adzr(this)).show();
+      paramString1 = this.a.a.obtainMessage();
+      paramString1.what = 7;
+      if (paramInt1 != 0) {
+        break label82;
       }
+      paramString1.arg1 = 1;
+    }
+    for (paramString1.arg2 = 1;; paramString1.arg2 = 0)
+    {
+      if (this.a.a != null) {
+        this.a.a.sendMessage(paramString1);
+      }
+      return;
+      label82:
+      paramString1.arg1 = 0;
     }
   }
 }

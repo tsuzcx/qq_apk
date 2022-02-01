@@ -1,36 +1,72 @@
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.data.AutoReplyText;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagItemView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class axuh
-  implements View.OnClickListener
+  extends BaseAdapter
 {
-  public axuh(AutoReplyEditActivity paramAutoReplyEditActivity) {}
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private axuk jdField_a_of_type_Axuk;
+  private List<InterestTagInfo> jdField_a_of_type_JavaUtilList;
   
-  public void onClick(View paramView)
+  public axuh(Context paramContext, int paramInt, List<InterestTagInfo> paramList, axuk paramaxuk)
   {
-    axvf.a(AutoReplyEditActivity.a(this.a), false);
-    String str2 = String.valueOf(AutoReplyEditActivity.a(this.a).getText());
-    String str1;
-    if (AutoReplyEditActivity.a(this.a) != null)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Axuk = paramaxuk;
+  }
+  
+  public InterestTagInfo a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= paramInt)) {
+      return null;
+    }
+    return (InterestTagInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public void a(List<InterestTagInfo> paramList, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    if (paramBoolean) {
+      notifyDataSetChanged();
+    }
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    InterestTagItemView localInterestTagItemView;
+    if (paramView == null)
     {
-      str1 = AutoReplyEditActivity.a(this.a).getRawText();
-      if (str2.equals(str1)) {
-        break label75;
-      }
-      AutoReplyEditActivity.a(this.a);
+      localInterestTagItemView = new InterestTagItemView(this.jdField_a_of_type_AndroidContentContext);
+      localInterestTagItemView.a(this.jdField_a_of_type_Int);
+      localInterestTagItemView.setCallback(this.jdField_a_of_type_Axuk);
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      str1 = "";
-      break;
-      label75:
-      AutoReplyEditActivity.a(this.a);
+      localInterestTagItemView.a(a(paramInt));
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localInterestTagItemView;
+      localInterestTagItemView = (InterestTagItemView)paramView;
     }
   }
 }

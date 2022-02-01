@@ -131,7 +131,7 @@ public abstract class BaseJsPluginEngine
     String str3 = getAppId();
     AuthState localAuthState = MiniAppEnv.g().getAuthSate(str3);
     String str4 = getRequestScopePermission(str1, str2);
-    if ((localAuthState.getAuthFlag(str4) == 1) && ((AuthFilterList.apiAuthoritySilent(this.mMiniAppContext.getMiniAppInfo())) || (AuthFilterList.isAppInWhiteList(str3)))) {
+    if (((AuthFilterList.apiAuthoritySilent(this.mMiniAppContext.getMiniAppInfo())) || (AuthFilterList.isAppInWhiteList(str3))) && (localAuthState.getAuthFlag(str4) == 1)) {
       setScopePermissionAuthState(str4, true);
     }
     for (boolean bool2 = true;; bool2 = false)
@@ -148,12 +148,22 @@ public abstract class BaseJsPluginEngine
       if (!bool1)
       {
         bool2 = bool1;
-        if (isScopePermissionGranted(str4, str2)) {
+        if (str4 == null) {
           bool2 = true;
         }
       }
-      if ((bool2) && (shouldAskEveryTime(str4))) {}
-      for (bool1 = bool4;; bool1 = bool2)
+      bool1 = bool2;
+      if (!bool2)
+      {
+        bool1 = bool2;
+        if (getScopePermissionAuthFlag(str4, str2) == 2) {
+          bool1 = true;
+        }
+      }
+      if ((bool1) && (shouldAskEveryTime(str4))) {
+        bool1 = bool4;
+      }
+      for (;;)
       {
         if ((!bool1) && (isMakeReuqestFirstEvent(str1))) {
           bool1 = bool3;
@@ -264,6 +274,38 @@ public abstract class BaseJsPluginEngine
       return PermissionManager.g().getEventRequestSystemPermission(paramString1);
     }
     return PermissionManager.g().getEventRequestSystemPermission(paramString1);
+  }
+  
+  private int getScopePermissionAuthFlag(String paramString)
+  {
+    return getScopePermissionAuthFlag(paramString, null);
+  }
+  
+  private int getScopePermissionAuthFlag(String paramString1, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return 1;
+    }
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramString2 != null) {}
+    try
+    {
+      localObject1 = new JSONObject(paramString2).optJSONObject("data").optJSONObject("data").optString("miniprogram_appid");
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        return MiniAppEnv.g().getAuthSate((String)localObject1).getPermissionAuthFlag(paramString1);
+      }
+    }
+    catch (Exception paramString2)
+    {
+      for (;;)
+      {
+        paramString2.printStackTrace();
+        localObject1 = localObject2;
+        continue;
+        localObject1 = getAppId();
+      }
+    }
   }
   
   public static String getScopePluginSetauthName(String paramString1, String paramString2)
@@ -582,38 +624,6 @@ public abstract class BaseJsPluginEngine
     return false;
     label174:
     return true;
-  }
-  
-  private boolean isScopePermissionGranted(String paramString)
-  {
-    return isScopePermissionGranted(paramString, null);
-  }
-  
-  private boolean isScopePermissionGranted(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      return true;
-    }
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramString2 != null) {}
-    try
-    {
-      localObject1 = new JSONObject(paramString2).optJSONObject("data").optJSONObject("data").optString("miniprogram_appid");
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        return MiniAppEnv.g().getAuthSate((String)localObject1).isPermissionGranted(paramString1);
-      }
-    }
-    catch (Exception paramString2)
-    {
-      for (;;)
-      {
-        paramString2.printStackTrace();
-        localObject1 = localObject2;
-        continue;
-        localObject1 = getAppId();
-      }
-    }
   }
   
   private static boolean isScopePermissionValid(String paramString)
@@ -978,6 +988,7 @@ public abstract class BaseJsPluginEngine
       if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0)) {
         ((AuthDialog.AuthDialogResBuilder)localObject4).setPhoneNumberList((JSONArray)localObject2);
       }
+      this.authDialog.setCanceledOnTouchOutside(false);
       this.authDialog.show((AuthDialog.AuthDialogResBuilder)localObject4);
       return;
       paramBundle = "";
@@ -1011,17 +1022,19 @@ public abstract class BaseJsPluginEngine
     Object localObject = paramRequestEvent.event;
     String str = paramRequestEvent.jsonParams;
     boolean bool1;
-    label71:
+    label76:
     boolean bool2;
-    if (!isOpenDataEvent((String)localObject, str))
-    {
-      bool1 = isScopePermissionGranted(paramString);
-      QMLog.d("JsPluginEngine[AuthGuard]", "handleNativeRequest hasRefused=" + bool1);
-      if ((bool1) && (!shouldAskEveryTime(paramString))) {
-        break label174;
+    if (!isOpenDataEvent((String)localObject, str)) {
+      if (getScopePermissionAuthFlag(paramString) == 4)
+      {
+        bool1 = true;
+        QMLog.d("JsPluginEngine[AuthGuard]", "handleNativeRequest hasRefused=" + bool1);
+        if ((bool1) && (!shouldAskEveryTime(paramString))) {
+          break label185;
+        }
+        bool1 = true;
+        bool2 = bool1;
       }
-      bool1 = true;
-      bool2 = bool1;
     }
     for (;;)
     {
@@ -1039,7 +1052,7 @@ public abstract class BaseJsPluginEngine
       }
       catch (Throwable localThrowable)
       {
-        label174:
+        label185:
         boolean bool3;
         QMLog.e("JsPluginEngine[AuthGuard]", Log.getStackTraceString(localThrowable));
         bool2 = bool1;
@@ -1056,7 +1069,9 @@ public abstract class BaseJsPluginEngine
       bool1 = false;
       break;
       bool1 = false;
-      break label71;
+      break;
+      bool1 = false;
+      break label76;
       if ((!"webapi_plugin_login".equals(str)) && (!"webapi_plugin_getuserinfo".equals(str)))
       {
         bool3 = "webapi_plugin_setauth".equals(str);
@@ -1185,6 +1200,9 @@ public abstract class BaseJsPluginEngine
   public void onResume()
   {
     QMLog.i("JsPluginEngine[AuthGuard]", "onResume");
+    if ((this.authDialog != null) && (this.authDialog.isShowing())) {
+      return;
+    }
     this.mHandler.obtainMessage(1).sendToTarget();
   }
   

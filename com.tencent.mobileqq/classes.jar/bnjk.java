@@ -1,14 +1,10 @@
-import android.graphics.Bitmap;
-import android.view.animation.Animation;
+import com.google.gson.reflect.TypeToken;
+import dov.com.qq.im.aeeditor.data.AEEditorDownloadResBean;
+import java.util.HashMap;
 
-public abstract interface bnjk
-{
-  public abstract void a(Animation paramAnimation);
-  
-  public abstract Bitmap b();
-  
-  public abstract void b(Animation paramAnimation);
-}
+final class bnjk
+  extends TypeToken<HashMap<String, AEEditorDownloadResBean>>
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

@@ -1,17 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class acoc
-  implements View.OnClickListener
+  implements acob
 {
-  public acoc(AccountManageActivity paramAccountManageActivity) {}
+  private acny<Integer, acoa> a = new acnz();
   
-  public void onClick(View paramView)
+  public acoa a(Integer paramInteger)
   {
-    this.a.i();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return (acoa)this.a.a(paramInteger);
+  }
+  
+  public void a(Integer paramInteger, Class<? extends acoa> paramClass)
+  {
+    this.a.a(paramInteger, paramClass);
   }
 }
 

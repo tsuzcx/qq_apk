@@ -1,22 +1,19 @@
-import java.lang.ref.WeakReference;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import mqq.app.QQPermissionCallback;
 
-class zkj
-  extends amyh
+public class zkj
+  implements QQPermissionCallback
 {
-  WeakReference<zkl> a;
+  public zkj(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public zkj(zkl paramzkl)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a = new WeakReference(paramzkl);
+    bhdj.a(this.a, paramArrayOfString, paramArrayOfInt);
   }
   
-  public void onFollowPublicAccount(boolean paramBoolean, String paramString)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    super.onFollowPublicAccount(paramBoolean, paramString);
-    zkl localzkl = (zkl)this.a.get();
-    if (localzkl != null) {
-      localzkl.a(paramBoolean, paramString, false);
-    }
+    this.a.f();
   }
 }
 

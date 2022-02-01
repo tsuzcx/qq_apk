@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import anca;
+import aoep;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr;
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ class TroopAddFriendTipsHelper$2
   
   public void run()
   {
-    TroopBatchAddFriendMgr localTroopBatchAddFriendMgr = ((anca)TroopAddFriendTipsHelper.a(this.this$0).getBusinessHandler(20)).a();
+    TroopBatchAddFriendMgr localTroopBatchAddFriendMgr = ((aoep)TroopAddFriendTipsHelper.a(this.this$0).getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).a();
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(this.a);
     localTroopBatchAddFriendMgr.a(this.b, localArrayList, 4);

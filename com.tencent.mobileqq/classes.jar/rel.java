@@ -1,11 +1,19 @@
-import tencent.im.oidb.articlesummary.articlesummary.BuluoInfo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
 
-public final class rel
-  implements psw<articlesummary.BuluoInfo, req>
+class rel
+  implements View.OnTouchListener
 {
-  public req a(articlesummary.BuluoInfo paramBuluoInfo)
+  rel(rej paramrej, RelativeLayout paramRelativeLayout) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return req.a(paramBuluoInfo);
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(false);
+    }
+    return false;
   }
 }
 

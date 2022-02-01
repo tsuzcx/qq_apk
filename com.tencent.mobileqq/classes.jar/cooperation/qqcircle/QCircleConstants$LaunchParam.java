@@ -2,6 +2,7 @@ package cooperation.qqcircle;
 
 public class QCircleConstants$LaunchParam
 {
+  public static final String KEY_ACTIVITY_BOTTOM_MARGIN = "key_activity_bottom_margin";
   public static final String KEY_ASSIGN_SHOW_TAB_TYPE = "key_assign_show_tab_type";
   public static final String KEY_ATTRS = "key_attrs";
   public static final String KEY_ENABLE_SPLASH = "key_enable_splash";

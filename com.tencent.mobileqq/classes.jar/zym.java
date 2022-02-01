@@ -1,10 +1,34 @@
-public abstract interface zym
+import android.animation.TypeEvaluator;
+import android.graphics.Matrix;
+
+class zym
+  implements TypeEvaluator<Matrix>
 {
-  public abstract void a();
+  public static TypeEvaluator<Matrix> a;
+  Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+  float[] jdField_a_of_type_ArrayOfFloat = new float[9];
+  float[] b = new float[9];
   
-  public abstract void a(long paramLong);
+  static
+  {
+    jdField_a_of_type_AndroidAnimationTypeEvaluator = new zyn();
+  }
   
-  public abstract void b();
+  public Matrix a(float paramFloat, Matrix paramMatrix1, Matrix paramMatrix2)
+  {
+    paramMatrix1.getValues(this.jdField_a_of_type_ArrayOfFloat);
+    paramMatrix2.getValues(this.b);
+    int i = 0;
+    while (i < 9)
+    {
+      float f1 = this.b[i];
+      float f2 = this.jdField_a_of_type_ArrayOfFloat[i];
+      this.b[i] = ((f1 - f2) * paramFloat + this.jdField_a_of_type_ArrayOfFloat[i]);
+      i += 1;
+    }
+    this.jdField_a_of_type_AndroidGraphicsMatrix.setValues(this.b);
+    return this.jdField_a_of_type_AndroidGraphicsMatrix;
+  }
 }
 
 

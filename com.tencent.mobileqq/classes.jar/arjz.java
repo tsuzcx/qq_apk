@@ -1,24 +1,10 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment;
-import com.tencent.qphone.base.util.QLog;
-
 public class arjz
-  extends arht
 {
-  public arjz(ExtendFriendCampusFragment paramExtendFriendCampusFragment) {}
-  
-  protected void a(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendCampusFragment", 2, String.format("onUpdateCampusCertificateStatus isSuccess=%s scene=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
-    }
-    if ((paramBoolean) && (ExtendFriendCampusFragment.a(this.a) != null)) {
-      ExtendFriendCampusFragment.a(this.a);
-    }
-  }
+  public boolean a = true;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arjz
  * JD-Core Version:    0.7.0.1
  */

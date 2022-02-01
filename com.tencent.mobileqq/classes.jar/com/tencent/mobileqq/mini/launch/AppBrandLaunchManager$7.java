@@ -1,15 +1,19 @@
 package com.tencent.mobileqq.mini.launch;
 
-import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import anvx;
+import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 class AppBrandLaunchManager$7
   implements Runnable
 {
-  AppBrandLaunchManager$7(AppBrandLaunchManager paramAppBrandLaunchManager) {}
+  AppBrandLaunchManager$7(AppBrandLaunchManager paramAppBrandLaunchManager, MiniAppConfig paramMiniAppConfig) {}
   
   public void run()
   {
-    MiniAppUtils.updateMiniAppList(6);
+    QLog.e("miniapp-process_AppBrandLaunchManager", 1, "启动失败, scene未知" + this.val$appConfig.toString());
+    QQToast.a(AppBrandLaunchManager.access$000(this.this$0), anvx.a(2131700101), 2000).a();
   }
 }
 

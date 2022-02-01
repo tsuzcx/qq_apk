@@ -1,34 +1,97 @@
+import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.HashMap;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
 
-public class yvi
-  implements View.OnClickListener
+class yvi
+  extends LinearLayout
 {
-  public yvi(QRCardActivity paramQRCardActivity) {}
+  private int jdField_a_of_type_Int;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private int b;
+  private int c;
+  private int d;
   
-  public void onClick(View paramView)
+  public yvi(Context paramContext, int paramInt1, int paramInt2, float paramFloat, View.OnClickListener paramOnClickListener)
   {
-    Object localObject = paramView.getTag();
-    if ((localObject instanceof Integer)) {
-      if (((Integer)localObject).intValue() != 0) {
-        break label110;
-      }
-    }
-    label110:
-    for (String str = (String)((TextView)paramView.findViewById(2131365073)).getText();; str = null)
+    super(paramContext);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    paramInt1 /= this.b;
+    this.c = ((int)(paramInt1 * paramFloat));
+    this.d = (paramInt1 - this.c * 2);
+    a();
+  }
+  
+  private void a()
+  {
+    int i = 0;
+    setOrientation(0);
+    setGravity(17);
+    int j = this.jdField_a_of_type_Int / this.b;
+    while (i < this.b)
     {
-      if (((Integer)localObject).intValue() == 1) {
-        this.a.a((String)this.a.a.d.get(this.a.h));
+      ImageView localImageView = new ImageView(getContext());
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(j, j);
+      if (i == 0) {
+        localLayoutParams.leftMargin = DisplayUtil.dip2px(getContext(), 7.0F);
       }
-      for (;;)
+      if (i == this.b - 1) {
+        localLayoutParams.rightMargin = DisplayUtil.dip2px(getContext(), 7.0F);
+      }
+      localImageView.setLayoutParams(localLayoutParams);
+      localImageView.setPadding(this.c, this.c, this.c, this.c);
+      addView(localImageView);
+      i += 1;
+    }
+  }
+  
+  private void a(int paramInt)
+  {
+    int i = 0;
+    int j;
+    for (;;)
+    {
+      j = paramInt;
+      if (i >= paramInt) {
+        break;
+      }
+      j = paramInt;
+      if (i >= getChildCount()) {
+        break;
+      }
+      getChildAt(i).setVisibility(0);
+      i += 1;
+    }
+    while ((j < this.b) && (j < getChildCount()))
+    {
+      getChildAt(j).setVisibility(4);
+      j += 1;
+    }
+  }
+  
+  public void a(yux paramyux, int paramInt1, int paramInt2)
+  {
+    int i = paramInt1 * this.b;
+    if (paramInt1 == paramInt2 - 1) {}
+    for (paramInt1 = paramyux.b();; paramInt1 = this.b + i)
+    {
+      a(paramInt1 - i);
+      paramInt2 = i;
+      while (paramInt2 < paramInt1)
       {
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        QRCardActivity.a(this.a, paramView.getContext(), ((Integer)localObject).intValue(), null, str);
+        ImageView localImageView = (ImageView)getChildAt(paramInt2 - i);
+        localImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+        String str = paramyux.a(paramInt2);
+        localImageView.setTag(2131378495, str);
+        localImageView.setTag(2131378482, Integer.valueOf(paramInt2));
+        localImageView.setContentDescription(anvx.a(2131707058) + paramInt2);
+        yry.a().a(getContext(), localImageView, str, this.d, this.d, null);
+        paramInt2 += 1;
       }
     }
   }

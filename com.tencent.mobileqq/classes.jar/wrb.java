@@ -1,126 +1,185 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.1;
 import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.IEventReceiver;
-import java.util.Locale;
+import java.lang.ref.SoftReference;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class wrb
-  extends wsr
-  implements IEventReceiver, ypw, ypy, ytb, ytc
+  extends wpw
+  implements wfk<wss, wuq>
 {
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout = (FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131372834);
-  private wrd jdField_a_of_type_Wrd;
-  private wre jdField_a_of_type_Wre;
-  private ypu jdField_a_of_type_Ypu;
-  private ysq jdField_a_of_type_Ysq;
-  private boolean c;
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  public String a;
+  public SoftReference<wrc> a;
+  public List<wkz> a;
+  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  public int b;
+  private List<wkz> b;
   
-  public wrb(@NonNull ViewGroup paramViewGroup)
+  public wrb()
   {
-    super(paramViewGroup);
-    paramViewGroup.setVisibility(4);
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
   }
   
-  protected View a(ViewGroup paramViewGroup)
+  public wrb(int paramInt, List<wkz> paramList)
   {
-    return paramViewGroup;
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  public void a(int paramInt1, int paramInt2, @NonNull wsk paramwsk, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
+  public wrb(wrc paramwrc)
   {
-    super.a(paramInt1, paramInt2, paramwsk, paramStoryPlayerGroupHolder);
-    if (!this.jdField_a_of_type_Wsk.c()) {
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramwrc);
+  }
+  
+  public static void d()
+  {
+    wrb localwrb = new wrb();
+    if (TextUtils.isEmpty(QQStoryContext.a().b()))
+    {
+      long l = QQStoryContext.a().a();
+      localwrb.a(0, new wkz(String.valueOf(l), ""), String.valueOf(l));
       return;
     }
-    paramwsk = ((vuu)vux.a(5)).b(this.jdField_a_of_type_Wsk.a);
-    if ((paramwsk != null) && (paramwsk.isPollVideo()))
+    String str = QQStoryContext.a().b();
+    localwrb.a(1, new wkz("", str), str);
+  }
+  
+  public void a()
+  {
+    wss localwss = new wss();
+    localwss.jdField_c_of_type_Int = this.jdField_b_of_type_Int;
+    localwss.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
+    wfi.a().a(localwss, this);
+  }
+  
+  public void a(int paramInt, List<wkz> paramList)
+  {
+    if (paramInt == 1) {}
+    for (Object localObject = "unionId";; localObject = "uin")
     {
-      if (this.jdField_a_of_type_Ypu == null) {
-        this.jdField_a_of_type_Ypu = ypt.a(this.jdField_a_of_type_AndroidWidgetFrameLayout.getContext(), 1, 1, null);
+      ykq.d("Q.qqstory.user.GetUserInfoHandler", "start get user id: %s , convert from %s", new Object[] { paramList, localObject });
+      localObject = new wss();
+      ((wss)localObject).jdField_c_of_type_Int = paramInt;
+      ((wss)localObject).jdField_a_of_type_JavaUtilList.addAll(paramList);
+      wfi.a().a((wfm)localObject, this);
+      return;
+    }
+  }
+  
+  public void a(int paramInt, wkz paramwkz, String paramString)
+  {
+    a(paramInt, paramwkz, paramString, false, false);
+  }
+  
+  public void a(int paramInt, wkz paramwkz, String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramInt == 1) {}
+    for (Object localObject = "unionId";; localObject = "uin")
+    {
+      ykq.d("Q.qqstory.user.GetUserInfoHandler", "start get user id: %s , convert from %s, needMetal:%s, needGradeSpeed:%s", new Object[] { paramwkz, localObject, Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
+      localObject = new wss();
+      ((wss)localObject).jdField_a_of_type_JavaLangString = paramString;
+      ((wss)localObject).jdField_c_of_type_Int = paramInt;
+      ((wss)localObject).jdField_a_of_type_JavaUtilList.add(paramwkz);
+      ((wss)localObject).jdField_c_of_type_Boolean = paramwkz.a();
+      ((wss)localObject).jdField_a_of_type_Boolean = paramBoolean1;
+      ((wss)localObject).b = paramBoolean2;
+      wfi.a().a((wfm)localObject, this);
+      return;
+    }
+  }
+  
+  public void a(@NonNull String paramString)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (!this.jdField_a_of_type_JavaUtilSet.contains(paramString))
+      {
+        this.jdField_b_of_type_JavaUtilList.add(new wkz("", paramString));
+        this.jdField_a_of_type_JavaUtilSet.add(paramString);
       }
-      wko.a(this, this, this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_Ypu, 0, paramwsk);
-      wko.b(this, this, this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_Ypu, paramInt2, paramwsk);
-      return;
-    }
-    if ((paramwsk != null) && (paramwsk.isInteractVideo()))
-    {
-      if (this.jdField_a_of_type_Ysq == null) {
-        this.jdField_a_of_type_Ysq = new yta(this.jdField_a_of_type_AndroidWidgetFrameLayout.getContext());
+      if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
+        new Handler().postDelayed(new GetUserInfoHandler.1(this), 600L);
       }
-      wkn.a(this, this, this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_Ysq, paramInt2, paramwsk);
-      wkn.b(this, this, this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_Ysq, paramInt2, paramwsk);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(4);
   }
   
-  public void a(ypu paramypu)
+  public void a(@NonNull wss paramwss, @Nullable wuq arg2, @NonNull ErrorMessage paramErrorMessage)
   {
-    paramypu = ((vuu)vux.a(5)).b(this.jdField_a_of_type_Wsk.a);
-    if (paramypu != null)
+    wrd localwrd = new wrd();
+    localwrd.b = this.jdField_a_of_type_JavaLangString;
+    if (paramErrorMessage.isSuccess())
     {
-      xwa.a("play_video", "vote_detail", 1, 0, new String[0]);
-      Intent localIntent = new Intent(a(), QQBrowserActivity.class);
-      localIntent.putExtra("url", String.format(Locale.getDefault(), "https://story.now.qq.com/m/vote/index.html?_wv=3&_nav_alpha=0&vid=%s", new Object[] { paramypu.mVid }));
-      localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-      a().startActivity(localIntent);
+      Object localObject = ???.jdField_a_of_type_JavaUtilList;
+      ??? = new ArrayList();
+      wke localwke = (wke)wjs.a(2);
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        QQUserUIItem localQQUserUIItem = (QQUserUIItem)((Iterator)localObject).next();
+        if (TextUtils.isEmpty(localQQUserUIItem.nickName)) {
+          localQQUserUIItem.nickName = "QQ用户";
+        }
+        ???.add(localwke.a(localQQUserUIItem));
+      }
+      localwrd.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+      localwrd.jdField_a_of_type_JavaUtilList = ???;
+      localwrd.jdField_a_of_type_JavaLangString = paramwss.jdField_a_of_type_JavaLangString;
+      if (???.size() == 1)
+      {
+        ??? = (QQUserUIItem)???.get(0);
+        localwrd.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ???;
+        if (paramwss.jdField_c_of_type_Boolean)
+        {
+          ((wjl)wjs.a(10)).b("qqstory_my_uin", ???.qq);
+          QQStoryContext.a().a(???.uid);
+        }
+      }
+      wad.a().dispatch(localwrd);
+      b();
     }
-  }
-  
-  public void a(ypu paramypu, yqc paramyqc)
-  {
-    StoryVideoItem localStoryVideoItem = ((vuu)vux.a(5)).b(this.jdField_a_of_type_Wsk.a);
-    if (localStoryVideoItem == null) {
-      return;
-    }
-    wko.a(this, this, paramypu, this.b, this.jdField_a_of_type_Wsk.b, localStoryVideoItem, paramyqc);
-  }
-  
-  public void a(yta paramyta)
-  {
-    paramyta = ((vuu)vux.a(5)).b(this.jdField_a_of_type_Wsk.a);
-    if (paramyta != null)
+    for (;;)
     {
-      xwa.a("play_video", "vote_detail", 2, 0, new String[0]);
-      Intent localIntent = new Intent(a(), QQBrowserActivity.class);
-      localIntent.putExtra("url", String.format(Locale.getDefault(), "https://story.now.qq.com/m/score/index.html?vid=%s&_wv=3&_nav_alpha=0", new Object[] { paramyta.mVid }));
-      localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-      a().startActivity(localIntent);
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if ((paramwss.jdField_c_of_type_Int != 1) || (paramwss.jdField_a_of_type_JavaUtilList == null)) {
+          break;
+        }
+        paramwss = paramwss.jdField_a_of_type_JavaUtilList.iterator();
+        if (!paramwss.hasNext()) {
+          break;
+        }
+        paramErrorMessage = ((wkz)paramwss.next()).b;
+        if (TextUtils.isEmpty(paramErrorMessage)) {
+          continue;
+        }
+        this.jdField_a_of_type_JavaUtilSet.remove(paramErrorMessage);
+      }
+      ykq.c("Q.qqstory.user.GetUserInfoHandler", "get server info fail , %s, time :%d", paramErrorMessage);
+      localwrd.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+      localwrd.jdField_a_of_type_JavaLangString = paramwss.jdField_a_of_type_JavaLangString;
+      wad.a().dispatch(localwrd);
+      c();
     }
-  }
-  
-  public void a(yta paramyta, float paramFloat)
-  {
-    StoryVideoItem localStoryVideoItem = ((vuu)vux.a(5)).b(this.jdField_a_of_type_Wsk.a);
-    if (localStoryVideoItem == null)
-    {
-      xvv.e("InteractWidgetPageHolder", "video item is null while rate changed.");
-      return;
+    if ((this.jdField_a_of_type_JavaLangRefSoftReference != null) && (this.jdField_a_of_type_JavaLangRefSoftReference.get() != null)) {
+      ((wrc)this.jdField_a_of_type_JavaLangRefSoftReference.get()).a(localwrd);
     }
-    wkn.a(this.b, this.jdField_a_of_type_Wsk.b, localStoryVideoItem, paramyta, paramFloat);
-  }
-  
-  protected void b()
-  {
-    super.b();
-    this.c = true;
-    this.jdField_a_of_type_Wrd = new wrd(this);
-    this.jdField_a_of_type_Wre = new wre(this);
-    vli.a().registerSubscriber(this.jdField_a_of_type_Wrd);
-    vli.a().registerSubscriber(this.jdField_a_of_type_Wre);
-    a(new wrc(this));
-  }
-  
-  public boolean isValidate()
-  {
-    return this.c;
   }
 }
 

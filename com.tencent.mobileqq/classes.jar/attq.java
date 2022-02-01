@@ -1,40 +1,40 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.fragment.TroopRobotFragment;
-import com.tencent.mobileqq.fragment.TroopRobotFragment.1.1;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class attq
-  extends andd
+final class attq
+  implements View.OnClickListener
 {
-  public attq(TroopRobotFragment paramTroopRobotFragment) {}
+  attq(Activity paramActivity, String paramString) {}
   
-  protected void onAddRobot(boolean paramBoolean, int paramInt, long paramLong1, long paramLong2)
+  public void onClick(View paramView)
   {
-    String str = String.valueOf(paramLong1);
-    if ((str != null) && (str.equals(TroopRobotFragment.a(this.a))))
+    bdla.b(null, "dc00898", "", "", "0X800AEE0", "0X800AEE0", 0, 0, "", "", "", "");
+    if (this.jdField_a_of_type_AndroidAppActivity == null) {}
+    for (;;)
     {
-      TroopRobotFragment.a(this.a, paramLong1);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    QLog.i("TroopRobotFragment", 2, "onAddRobot  net troopuin" + paramLong1 + " cur " + TroopRobotFragment.a(this.a));
-  }
-  
-  protected void onGetAllRobots(boolean paramBoolean, int paramInt, long paramLong, bfdk parambfdk)
-  {
-    String str = String.valueOf(paramLong);
-    if ((str != null) && (str.equals(TroopRobotFragment.a(this.a))))
-    {
-      if ((paramBoolean) && (parambfdk != null) && (this.a.getActivity() != null))
+      long l = FileUtil.getFileSize(this.jdField_a_of_type_JavaLangString);
+      WXShareHelper localWXShareHelper = WXShareHelper.a();
+      if (l <= 10485760L)
       {
-        QLog.d("TroopRobotFragment", 2, "onGetAllRobots");
-        this.a.getActivity().runOnUiThread(new TroopRobotFragment.1.1(this, parambfdk));
-        return;
+        int i = auea.b(this.jdField_a_of_type_JavaLangString);
+        Bitmap localBitmap = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidAppActivity.getResources(), i);
+        localWXShareHelper.a(this.jdField_a_of_type_JavaLangString, localBitmap);
+        bdla.b(null, "dc00898", "", "", "0X800AEE1", "0X800AEE1", 0, 0, "", "", "", "");
       }
-      QLog.e("TroopRobotFragment", 2, "onGetAllRobots err " + paramInt + " :" + paramLong);
-      TroopRobotFragment.a(this.a, paramLong);
-      return;
+      else
+      {
+        bdla.b(null, "dc00898", "", "", "0X800AEE2", "0X800AEE2", 0, 0, "", "", "", "");
+        audn.a(this.jdField_a_of_type_AndroidAppActivity, "", 2131697912, new attr(this));
+      }
     }
-    QLog.i("TroopRobotFragment", 2, "onGetAllRobots  net troopuin" + paramLong + " cur " + TroopRobotFragment.a(this.a));
   }
 }
 

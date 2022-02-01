@@ -1,52 +1,19 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAllFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Iterator;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.PathMeasure;
+import com.tencent.mobileqq.doutu.combo.ComboMasterView;
 
 public class asaj
-  extends ataq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public asaj(QfileRecentAllFileTabView paramQfileRecentAllFileTabView) {}
+  public asaj(ComboMasterView paramComboMasterView, PathMeasure paramPathMeasure, float[] paramArrayOfFloat) {}
   
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.a.a().b();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().o();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().p();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().q();
-    Object localObject = aslg.b();
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        if (asle.a(((FileManagerEntity)((Iterator)localObject).next()).Uuid)) {
-          bcef.b(QfileRecentAllFileTabView.b(this.a), "dc00898", "", "", "0X800A087", "0X800A087", 0, 0, "", "", "", "");
-        }
-      }
-    }
-  }
-  
-  public void e()
-  {
-    this.a.a.a().r();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().E();
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_AndroidGraphicsPathMeasure.getPosTan(f, this.jdField_a_of_type_ArrayOfFloat, null);
+    this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView.setTranslationX(this.jdField_a_of_type_ArrayOfFloat[0]);
+    this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView.setTranslationY(this.jdField_a_of_type_ArrayOfFloat[1]);
   }
 }
 

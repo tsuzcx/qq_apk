@@ -1,38 +1,16 @@
-import android.app.Activity;
-import android.arch.lifecycle.Observer;
-import android.content.Intent;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
-import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator;
+import android.content.Context;
 
-class blwi
-  implements Observer<Boolean>
+final class blwi
 {
-  blwi(blwd paramblwd) {}
+  Context jdField_a_of_type_AndroidContentContext;
+  blwf jdField_a_of_type_Blwf;
+  blwh jdField_a_of_type_Blwh;
   
-  public void a(@Nullable Boolean paramBoolean)
+  blwi(Context paramContext, blwh paramblwh, blwf paramblwf)
   {
-    if (paramBoolean == null) {
-      return;
-    }
-    Intent localIntent = blwd.a(this.a).a().getIntent();
-    if (localIntent != null) {
-      localIntent.getIntExtra("AECAMERA_MODE", 200);
-    }
-    if (paramBoolean.booleanValue())
-    {
-      if (blwd.a(this.a).a())
-      {
-        blwd.a(this.a).setVisibility(0);
-        blwd.a(this.a).setVisibility(0);
-        return;
-      }
-      blwd.a(this.a).setVisibility(8);
-      blwd.a(this.a).setVisibility(8);
-      return;
-    }
-    blwd.a(this.a).setVisibility(4);
-    blwd.a(this.a).setVisibility(4);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Blwh = paramblwh;
+    this.jdField_a_of_type_Blwf = paramblwf;
   }
 }
 

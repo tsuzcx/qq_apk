@@ -1,50 +1,21 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqForbidVideo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspForbidVideo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import java.util.ArrayList;
 
-public class wcw
-  extends vqr<wcx>
+public final class wcw
 {
-  public final String a;
-  public String b = "";
+  public ShareGroupFeedItem a;
+  public VideoListFeedItem a;
+  public ArrayList<wcv> a;
   
-  public wcw(wcv paramwcv, String paramString)
+  public wcw()
   {
-    this.jdField_a_of_type_JavaLangString = vpl.a("StorySvc.forbid_video");
-    this.b = paramString;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public wcx a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspForbidVideo localRspForbidVideo = new qqstory_service.RspForbidVideo();
-    try
-    {
-      localRspForbidVideo.mergeFrom(paramArrayOfByte);
-      return new wcx(this.jdField_a_of_type_Wcv, localRspForbidVideo);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqForbidVideo localReqForbidVideo = new qqstory_service.ReqForbidVideo();
-    localReqForbidVideo.vid.set(this.b);
-    return localReqForbidVideo.toByteArray();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
   public String toString()
   {
-    return "ReportIgnoreVideoRequest{, vid='" + this.b + '\'' + '}';
+    return "ShareGroupFakeItem{mFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem + ", mSucFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem + ", mVideos=" + this.jdField_a_of_type_JavaUtilArrayList + '}';
   }
 }
 

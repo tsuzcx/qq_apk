@@ -20,7 +20,7 @@ public class cl
       {
         bool = true;
         localSwitch.setChecked(bool);
-        QQToast.a(this.a, 1, amtj.a(2131705326), 0).b(this.a.getTitleBarHeight());
+        QQToast.a(this.a, 1, anvx.a(2131705677), 0).b(this.a.getTitleBarHeight());
       }
     }
     for (;;)

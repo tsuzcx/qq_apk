@@ -1,10 +1,23 @@
+import android.support.v4.util.LruCache;
+import com.tencent.mobileqq.webview.webso.WebSoService;
+import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
+
 public class bijm
+  extends LruCache<String, WebSoService.WebSoState>
 {
-  public static String a;
+  public bijm(WebSoService paramWebSoService, int paramInt)
+  {
+    super(paramInt);
+  }
+  
+  protected WebSoService.WebSoState a(String paramString)
+  {
+    return new WebSoService.WebSoState();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bijm
  * JD-Core Version:    0.7.0.1
  */

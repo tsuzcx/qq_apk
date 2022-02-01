@@ -9,8 +9,8 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.HandlerThread;
 import android.os.Message;
-import aojx;
-import baff;
+import apmz;
+import bblu;
 import com.tencent.mobileqq.minicode.GlUtil;
 import com.tencent.mobileqq.minicode.RecogUtil;
 import com.tencent.mobileqq.minicode.Utils;
@@ -41,7 +41,7 @@ public class MiniCodeDetector
   String anchorPath;
   Context context;
   String kernalBinPath;
-  List<aojx> mBoxes = new ArrayList();
+  List<apmz> mBoxes = new ArrayList();
   boolean mClosed = false;
   Handler mEglHandler;
   EglHandlerThread mEglHandlerThread;
@@ -71,10 +71,8 @@ public class MiniCodeDetector
     this.mEglHandlerThread = new EglHandlerThread("MINICODE_EGLHANDLER_THREAD", null);
     this.mEglHandlerThread.start();
     paramContext = this.mEglHandlerThread.getLooper();
-    if (paramContext != null)
-    {
+    if (paramContext != null) {
       this.mEglHandler = new Handler(paramContext, this);
-      this.mEglHandler.sendEmptyMessage(200);
     }
     for (;;)
     {
@@ -150,7 +148,7 @@ public class MiniCodeDetector
     this.mHasEGLInited = false;
     if (this.mInTextureId >= 0)
     {
-      baff.b(this.mInTextureId);
+      bblu.b(this.mInTextureId);
       this.mInTextureId = -1;
     }
     if (this.mRecog != null) {}
@@ -185,15 +183,16 @@ public class MiniCodeDetector
     localMiniParam.anchorPath = this.anchorPath;
     localMiniParam.modelString = Utils.readModelFile(this.modelPath);
     localMiniParam.kernelBinaryIndex = this.kernalBinPath;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("runType").append("=").append(localMiniParam.runType).append("\n");
-    localStringBuilder.append("netHeight").append("=").append(localMiniParam.netHeight).append("\n");
-    localStringBuilder.append("netWidth").append("=").append(localMiniParam.netWidth).append("\n");
-    localStringBuilder.append("paramPath").append("=").append(localMiniParam.paramPath).append("\n");
-    localStringBuilder.append("anchorPath").append("=").append(localMiniParam.anchorPath).append("\n");
-    localStringBuilder.append("kernelBinaryIndex").append("=").append(localMiniParam.kernelBinaryIndex).append("\n");
-    localStringBuilder.append("modelString").append("=").append(localMiniParam.modelString).append("\n");
-    if (QLog.isColorLevel()) {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("runType").append("=").append(localMiniParam.runType).append("\n");
+      localStringBuilder.append("netHeight").append("=").append(localMiniParam.netHeight).append("\n");
+      localStringBuilder.append("netWidth").append("=").append(localMiniParam.netWidth).append("\n");
+      localStringBuilder.append("paramPath").append("=").append(localMiniParam.paramPath).append("\n");
+      localStringBuilder.append("anchorPath").append("=").append(localMiniParam.anchorPath).append("\n");
+      localStringBuilder.append("kernelBinaryIndex").append("=").append(localMiniParam.kernelBinaryIndex).append("\n");
+      localStringBuilder.append("modelString").append("=").append(localMiniParam.modelString).append("\n");
       QLog.i("MiniRecog.detector", 2, localStringBuilder.toString());
     }
     if ((this.mSrcW > 0) && (this.mSrcH > 0)) {
@@ -235,12 +234,12 @@ public class MiniCodeDetector
       this.mSrcH = ((Bitmap)localObject).getHeight();
       if (this.mInTextureId >= 0)
       {
-        baff.b(this.mInTextureId);
+        bblu.b(this.mInTextureId);
         this.mInTextureId = -1;
       }
       try
       {
-        int j = baff.a(3553, (Bitmap)localObject);
+        int j = bblu.a(3553, (Bitmap)localObject);
         i = j;
       }
       catch (Throwable localThrowable1)
@@ -453,10 +452,16 @@ public class MiniCodeDetector
   
   public void initEnv(String paramString1, String paramString2, String paramString3, String paramString4)
   {
+    if (QLog.isColorLevel()) {
+      QLog.i("MiniRecog.detector", 2, "initEnv");
+    }
     this.paramPath = paramString1;
     this.modelPath = paramString2;
     this.anchorPath = paramString3;
     this.kernalBinPath = paramString4;
+    if (this.mEglHandler != null) {
+      this.mEglHandler.sendEmptyMessage(200);
+    }
   }
   
   public void removeRecogCallback(RecogCallback paramRecogCallback)

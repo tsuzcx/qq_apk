@@ -1,13 +1,6 @@
-import java.util.List;
-
-public class bdys
+public abstract interface bdys
 {
-  public int a;
-  public List<Integer> a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  public abstract void a(bdxz parambdxz, bdya parambdya, String paramString);
 }
 
 

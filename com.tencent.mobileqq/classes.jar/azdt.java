@@ -1,13 +1,10 @@
-public class azdt
+public abstract interface azdt
 {
-  public int a;
-  public byte[] a;
+  public abstract int a();
   
-  public azdt(byte[] paramArrayOfByte, int paramInt)
-  {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract boolean a();
 }
 
 

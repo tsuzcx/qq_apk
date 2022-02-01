@@ -50,7 +50,7 @@ class GLTextureView$RenderThreadRunnable
     //   72: invokestatic 55	com/tencent/mobileqq/surfaceviewaction/gl/GLTextureView:a	(Lcom/tencent/mobileqq/surfaceviewaction/gl/GLTextureView;)Ljava/util/List;
     //   75: iload_1
     //   76: invokeinterface 65 2 0
-    //   81: checkcast 67	bcsb
+    //   81: checkcast 67	bdza
     //   84: invokeinterface 69 1 0
     //   89: iload_1
     //   90: iconst_1
@@ -270,7 +270,7 @@ class GLTextureView$RenderThreadRunnable
     //   567: invokestatic 55	com/tencent/mobileqq/surfaceviewaction/gl/GLTextureView:a	(Lcom/tencent/mobileqq/surfaceviewaction/gl/GLTextureView;)Ljava/util/List;
     //   570: iload_1
     //   571: invokeinterface 65 2 0
-    //   576: checkcast 67	bcsb
+    //   576: checkcast 67	bdza
     //   579: invokeinterface 155 1 0
     //   584: iload_1
     //   585: iconst_1
@@ -329,7 +329,7 @@ class GLTextureView$RenderThreadRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.GLTextureView.RenderThreadRunnable
  * JD-Core Version:    0.7.0.1
  */

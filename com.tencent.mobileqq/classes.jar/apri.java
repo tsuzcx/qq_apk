@@ -1,10 +1,23 @@
-public abstract interface apri
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.5.1;
+
+public class apri
+  implements apsg
 {
-  public abstract int a();
+  public apri(ArkAppDeviceModule.ObserverMethod.5.1 param1) {}
   
-  public abstract int a(int paramInt);
+  public void a(long paramLong)
+  {
+    ark.VariantWrapper localVariantWrapper = this.a.a.jdField_a_of_type_Aprb.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
+  }
   
-  public abstract String a(int paramInt1, int paramInt2);
+  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  {
+    apqy.a(this.a.a.jdField_a_of_type_Aprb.a, this.a.a.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
+  }
 }
 
 

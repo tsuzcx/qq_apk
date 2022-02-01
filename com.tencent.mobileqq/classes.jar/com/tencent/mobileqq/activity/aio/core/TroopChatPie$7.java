@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import ayee;
+import azkq;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pic.PicPreDownloader;

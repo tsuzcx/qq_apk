@@ -1,6 +1,15 @@
-public abstract interface aiao
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class aiao
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(boolean paramBoolean, int paramInt);
+  aiao(aiah paramaiah) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    aiah.b(this.a);
+  }
 }
 
 

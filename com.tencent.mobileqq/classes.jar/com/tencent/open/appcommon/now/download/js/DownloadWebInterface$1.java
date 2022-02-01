@@ -1,7 +1,7 @@
 package com.tencent.open.appcommon.now.download.js;
 
 import android.text.TextUtils;
-import bhzm;
+import bjko;
 import com.tencent.smtt.sdk.WebView;
 
 class DownloadWebInterface$1
@@ -20,7 +20,7 @@ class DownloadWebInterface$1
     }
     catch (Exception localException)
     {
-      bhzm.a(this.this$0.TAG, "webview loadUrl>>> ", localException);
+      bjko.a(this.this$0.TAG, "webview loadUrl>>> ", localException);
     }
   }
 }

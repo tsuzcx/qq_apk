@@ -1,48 +1,27 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-
 public class auow
 {
-  public static long a(Bundle paramBundle)
+  public int a;
+  public auox a;
+  public boolean a;
+  public boolean b;
+  
+  public auow(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramBundle == null) {}
-    do
-    {
-      return 0L;
-      paramBundle = paramBundle.getString("roomid", "");
-    } while (TextUtils.isEmpty(paramBundle));
-    return Long.parseLong(paramBundle);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
   }
   
-  public static String a(Bundle paramBundle)
+  public void a(auox paramauox)
   {
-    if (paramBundle == null) {
-      paramBundle = "";
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Auox = paramauox;
     }
-    String str;
-    do
-    {
-      return paramBundle;
-      str = paramBundle.getString("roomtype");
-      paramBundle = str;
-    } while (!TextUtils.isEmpty(str));
-    return "0";
   }
   
-  public static String b(Bundle paramBundle)
+  public boolean a()
   {
-    if (paramBundle == null) {
-      return "";
-    }
-    return paramBundle.getString("fromid", "");
-  }
-  
-  public static String c(Bundle paramBundle)
-  {
-    if (paramBundle == null) {
-      return "";
-    }
-    return paramBundle.getString("shakespearetime", "");
+    return this.jdField_a_of_type_Int == 0;
   }
 }
 

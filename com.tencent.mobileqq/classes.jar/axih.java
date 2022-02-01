@@ -1,39 +1,46 @@
-import java.util.Map;
-import kotlin.Metadata;
-import kotlin.Pair;
-import kotlin.TuplesKt;
-import kotlin.collections.MapsKt;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.msg.im_msg_body.RichText;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/notification/modularize/business/JumpSchemeFactory;", "", "()V", "jumpSchemeMap", "", "", "Lcom/tencent/mobileqq/notification/modularize/BaseJumpScheme;", "build", "pushComponent", "Lcom/tencent/mobileqq/notification/modularize/PushComponent;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class axih
+class axih
+  implements azla
 {
-  public static final axih a;
-  private static final Map<Integer, axhx> a;
+  axih(axig paramaxig, MessageForArkApp paramMessageForArkApp, QQAppInterface paramQQAppInterface) {}
   
-  static
+  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
   {
-    jdField_a_of_type_Axih = new axih();
-    jdField_a_of_type_JavaUtilMap = MapsKt.mapOf(new Pair[] { TuplesKt.to(Integer.valueOf(0), new axig()), TuplesKt.to(Integer.valueOf(-1), new axik()), TuplesKt.to(Integer.valueOf(4), new axid()), TuplesKt.to(Integer.valueOf(5), new axii()) });
+    return null;
   }
   
-  @NotNull
-  public final axhx a(@NotNull axib paramaxib)
+  public void onSend(azlb paramazlb)
   {
-    Intrinsics.checkParameterIsNotNull(paramaxib, "pushComponent");
-    if (paramaxib.jdField_a_of_type_Boolean) {
-      paramaxib = (axhx)new axig();
-    }
-    axhx localaxhx;
-    do
+    try
     {
-      return paramaxib;
-      localaxhx = (axhx)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramaxib.jdField_a_of_type_Int));
-      paramaxib = localaxhx;
-    } while (localaxhx != null);
-    return (axhx)new axif();
+      if (paramazlb.jdField_a_of_type_Int == 0)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.resIDForLongMsg = paramazlb.c;
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().sendMessage(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, null, false);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("StructLongTextMsg", 2, "upload multi msg pack failed, result.errStr=" + paramazlb.b + ",result.errStr=" + paramazlb.jdField_a_of_type_JavaLangString);
+      }
+      axii.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+      return;
+    }
+    catch (Exception paramazlb)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StructLongTextMsg", 2, "upload multi msg pack failed, catch exception", paramazlb);
+      }
+      axii.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+    }
   }
+  
+  public void updateMsg(azlb paramazlb) {}
 }
 
 

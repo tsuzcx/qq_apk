@@ -1,17 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class xbb
-  implements DialogInterface.OnDismissListener
+public class xbb
+  extends QQUIEventReceiver<StoryPlayerActivity, xba>
 {
-  xbb(xba paramxba, VideoViewVideoHolder paramVideoViewVideoHolder) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public xbb(@NonNull StoryPlayerActivity paramStoryPlayerActivity)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
-    }
+    super(paramStoryPlayerActivity);
+  }
+  
+  public void a(@NonNull StoryPlayerActivity paramStoryPlayerActivity, @NonNull xba paramxba)
+  {
+    paramStoryPlayerActivity.b = paramxba.a;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return xba.class;
   }
 }
 

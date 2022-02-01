@@ -1,41 +1,37 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.common.offline.BidDownloader;
+import com.tencent.biz.common.offline.HtmlOffline.6;
+import com.tencent.biz.common.util.NetworkUtil;
 
-class nvc
-  extends amsu
+public class nvc
+  implements nuw
 {
-  nvc(num paramnum) {}
+  public nvc(HtmlOffline.6 param6) {}
   
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  public void loaded(String paramString, int paramInt)
   {
-    if (this.a.jdField_a_of_type_AndroidViewViewGroup == null) {}
-    label134:
-    for (;;)
-    {
-      return;
-      int j = this.a.jdField_a_of_type_AndroidViewViewGroup.getChildCount();
-      int i = 0;
-      for (;;)
-      {
-        if (i >= j) {
-          break label134;
-        }
-        View localView = this.a.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i);
-        if (((localView.getTag() instanceof String)) && ((localView instanceof ImageView)) && (((String)localView.getTag()).equals(paramString)))
-        {
-          ((ImageView)localView).setImageDrawable(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTroopFaceDrawable(paramString));
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("PubAccountMoreInfoActivity.bindTroop", 2, "onUpdateTroopHead:" + paramString);
-          return;
-        }
-        i += 1;
+    long l = System.currentTimeMillis() - this.a.jdField_a_of_type_Long;
+    if (nuz.a.a()) {
+      nuz.a.a("HtmlCheckUpdate", 2, "js call downloadUpdate callback:" + paramInt + ", time:" + l);
+    }
+    if (paramInt == 0) {
+      if (nuz.b(this.a.b)) {
+        this.a.jdField_a_of_type_Nuw.loaded(null, 0);
       }
     }
+    for (;;)
+    {
+      BidDownloader.b(this.a.b);
+      nuz.a(this.a.b, paramInt, l, NetworkUtil.getNetworkType(this.a.jdField_a_of_type_AndroidContentContext));
+      return;
+      this.a.jdField_a_of_type_Nuw.loaded(null, 6);
+      continue;
+      this.a.jdField_a_of_type_Nuw.loaded(null, 2);
+    }
+  }
+  
+  public void progress(int paramInt)
+  {
+    this.a.jdField_a_of_type_Nuw.progress(paramInt);
   }
 }
 

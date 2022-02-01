@@ -3,8 +3,6 @@ package com.tencent.mobileqq.mini.appbrand.ui;
 import Override;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
-import com.tencent.mobileqq.mini.fake.FakeInternalBrandUI;
-import com.tencent.mobileqq.mini.fake.IFakeBrandUI;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class InternalAppBrandUI2
@@ -17,14 +15,6 @@ public class InternalAppBrandUI2
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
     EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
-  }
-  
-  public IFakeBrandUI getFakeBrandUI()
-  {
-    if (this.mFakeBrandUI == null) {
-      this.mFakeBrandUI = new FakeInternalBrandUI();
-    }
-    return this.mFakeBrandUI;
   }
   
   @Override

@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aara;
-import aavk;
-import acvv;
-import acwc;
-import afoa;
-import agif;
-import aham;
-import ahog;
-import amrb;
+import abgm;
+import abkw;
+import admh;
+import admo;
+import agfe;
+import ahaw;
+import ahtm;
+import aijb;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.PendingIntent;
@@ -22,41 +21,44 @@ import android.os.Bundle;
 import android.os.Message;
 import android.os.Parcelable;
 import android.text.TextUtils;
-import apvk;
-import apvp;
-import apvq;
-import apwj;
-import asdg;
-import aszg;
-import aszt;
-import atky;
-import atpn;
-import atqa;
-import avsf;
-import awcm;
-import aydj;
-import ayds;
-import ayep;
-import azyi;
-import bbqf;
-import bbqx;
-import bcef;
-import bcha;
-import bchh;
-import bfbz;
-import bfcf;
-import bfur;
-import bfyv;
-import bhvw;
-import bhwf;
-import biej;
+import antp;
+import aqyn;
+import aqys;
+import aqyt;
+import aqzm;
+import athn;
+import audn;
+import auea;
+import aupt;
+import auui;
+import auuv;
+import awyg;
+import axio;
+import azjv;
+import azke;
+import azlb;
+import bber;
+import bcwz;
+import bcxr;
+import bdla;
+import bdny;
+import bdof;
+import bgkf;
+import bgkl;
+import bhdj;
+import bhhn;
+import bjgx;
+import bjhh;
+import bjpl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.device.datadef.DeviceInfo;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.data.HiBoomMessage;
@@ -88,19 +90,19 @@ import java.util.Iterator;
 import java.util.List;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
-import nmy;
+import nty;
 import tencent.im.oidb.cmd0xb77.oidb_cmd0xb77.RspBody;
 import tencent.im.oidb.cmd0xdc2.oidb_cmd0xdc2.BatchSendRsp;
 import tencent.im.oidb.cmd0xdc2.oidb_cmd0xdc2.RspBody;
 import tencent.im.oidb.oidb_0xd55.RspBody;
-import ynt;
+import zcm;
 
 public class ForwardUtils
 {
   public static final String TAG_FOWARD = "ForwardUtils";
   private static int[] sAsyncShareForwardTypes = { 11, 2 };
   
-  public static void addStickerExtraData(Intent paramIntent, ayds paramayds)
+  public static void addStickerExtraData(Intent paramIntent, azke paramazke)
   {
     PicMessageExtraData localPicMessageExtraData;
     if ((paramIntent.getBooleanExtra("forward_is_sticker", false)) || (paramIntent.getBooleanExtra("forward_is_sticker_ad", false)))
@@ -123,7 +125,7 @@ public class ForwardUtils
       localPicMessageExtraData.iconUrl = paramIntent.getStringExtra("key_emotion_source_iconurl");
       localPicMessageExtraData.packageName = paramIntent.getStringExtra("key_emotion_source_packagename");
       localPicMessageExtraData.emojiPkgId = paramIntent.getStringExtra("key_emotion_source_epid");
-      paramayds.a = localPicMessageExtraData;
+      paramazke.a = localPicMessageExtraData;
       return;
       label130:
       localPicMessageExtraData.imageBizType = 9;
@@ -136,12 +138,12 @@ public class ForwardUtils
   {
     try
     {
-      Object localObject = apvq.b(380).a();
-      if ((localObject != null) && (((apvp)localObject).a() != null))
+      Object localObject = aqyt.b(380).a();
+      if ((localObject != null) && (((aqys)localObject).a() != null))
       {
-        localObject = ((apvp)localObject).a();
-        QLog.d("ForwardUtils", 1, new Object[] { "backToFileScheme mIsBackToFileSchemeEnable=", Boolean.valueOf(((apwj)localObject).d) });
-        boolean bool = ((apwj)localObject).d;
+        localObject = ((aqys)localObject).a();
+        QLog.d("ForwardUtils", 1, new Object[] { "backToFileScheme mIsBackToFileSchemeEnable=", Boolean.valueOf(((aqzm)localObject).d) });
+        boolean bool = ((aqzm)localObject).d;
         return bool;
       }
     }
@@ -176,7 +178,7 @@ public class ForwardUtils
   
   public static URLDrawable generateForwardImage(Context paramContext, MessageForPic paramMessageForPic)
   {
-    return aham.a(paramMessageForPic);
+    return ahtm.a(paramMessageForPic);
   }
   
   public static String getDataDataPath()
@@ -191,7 +193,7 @@ public class ForwardUtils
     }
     try
     {
-      AbsStructMsg localAbsStructMsg = bchh.a(paramIntent.getByteArrayExtra("stuctmsg_bytes"));
+      AbsStructMsg localAbsStructMsg = bdof.a(paramIntent.getByteArrayExtra("stuctmsg_bytes"));
       if (localAbsStructMsg == null) {
         return;
       }
@@ -209,12 +211,12 @@ public class ForwardUtils
       if ((localAbsStructMsg instanceof StructMsgForImageShare))
       {
         i = 1;
-        if (((localAbsStructMsg instanceof StructMsgForGeneralShare)) && (bcha.a((AbsShareMsg)localAbsStructMsg)))
+        if (((localAbsStructMsg instanceof StructMsgForGeneralShare)) && (bdny.a((AbsShareMsg)localAbsStructMsg)))
         {
           j = localAbsStructMsg.uinType;
-          localObject2 = bcha.a(localAbsStructMsg.mMsgUrl);
+          localObject2 = bdny.a(localAbsStructMsg.mMsgUrl);
           if ((localObject2 != null) && (!((String)localObject2).equals(""))) {
-            bcef.b(null, "CliOper", "", "", "0X8005F54", "0X8005F54", 0, 0, bcha.a(j) + "", "", (String)localObject2, "");
+            bdla.b(null, "CliOper", "", "", "0X8005F54", "0X8005F54", 0, 0, bdny.a(j) + "", "", (String)localObject2, "");
           }
         }
         if (i != 0)
@@ -229,8 +231,8 @@ public class ForwardUtils
       {
         if (!TextUtils.isEmpty((CharSequence)localObject1))
         {
-          nmy.a().a = true;
-          acvv.b(paramQQAppInterface, paramContext, paramSessionInfo, (String)localObject1);
+          nty.a().a = true;
+          admh.b(paramQQAppInterface, paramContext, paramSessionInfo, (String)localObject1);
         }
         return;
         if (((localAbsStructMsg instanceof AbsShareMsg)) && (isAsyncShareSupport(((AbsShareMsg)localAbsStructMsg).forwardType, localAbsStructMsg.mMsgServiceID)))
@@ -245,26 +247,26 @@ public class ForwardUtils
             localObject2 = localAbsStructMsg.mCommentText;
           }
           if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-            nmy.a().a = true;
+            nty.a().a = true;
           }
           localObject1 = new ArrayList();
-          if ((awcm.a().a != null) && (awcm.a().a.size() > 0)) {
-            ((ArrayList)localObject1).addAll(awcm.a().a);
+          if ((axio.a().a != null) && (axio.a().a.size() > 0)) {
+            ((ArrayList)localObject1).addAll(axio.a().a);
           }
           long l = paramIntent.getLongExtra("structmsg_uniseq", 0L);
           i = paramIntent.getIntExtra("forward_msg_from_together", 0);
-          j = afoa.a().a();
-          afoa.a().a(paramSessionInfo, (String)localObject2, (List)localObject1, i, j);
-          awcm.a().a(paramQQAppInterface, paramSessionInfo.curFriendUin, paramSessionInfo.curType, paramSessionInfo.troopUin, localAbsStructMsg, l, false, i, j, paramIntent.getExtras());
+          j = agfe.a().a();
+          agfe.a().a(paramSessionInfo, (String)localObject2, (List)localObject1, i, j);
+          axio.a().a(paramQQAppInterface, paramSessionInfo.curFriendUin, paramSessionInfo.curType, paramSessionInfo.troopUin, localAbsStructMsg, l, false, i, j, paramIntent.getExtras());
           localObject1 = localObject2;
           i = 0;
           break;
         }
-        i = afoa.a().a();
+        i = agfe.a().a();
         j = paramIntent.getIntExtra("forward_msg_from_together", 0);
-        afoa.a().a(paramSessionInfo, (String)localObject1, new ArrayList(), j, i);
+        agfe.a().a(paramSessionInfo, (String)localObject1, new ArrayList(), j, i);
         localAbsStructMsg.forwardID = i;
-        bfyv.b(paramQQAppInterface, paramSessionInfo.curFriendUin, paramSessionInfo.troopUin, paramSessionInfo.curType, localAbsStructMsg, null);
+        bhhn.b(paramQQAppInterface, paramSessionInfo.curFriendUin, paramSessionInfo.troopUin, paramSessionInfo.curType, localAbsStructMsg, null);
         i = 0;
         break;
       }
@@ -289,7 +291,7 @@ public class ForwardUtils
     if (paramString1 == null) {
       return "";
     }
-    int i = ((amrb)paramQQAppInterface.getManager(53)).a(paramString2);
+    int i = ((antp)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(paramString2);
     int j = paramString1.length();
     int k = paramQQAppInterface.getApplication().getResources().getInteger(2131427339);
     paramQQAppInterface = paramString1;
@@ -301,493 +303,167 @@ public class ForwardUtils
     return paramQQAppInterface + "(" + i + ")";
   }
   
+  private static void handleForwardComposite(QQAppInterface paramQQAppInterface, Activity paramActivity, Context paramContext, Intent paramIntent, MqqHandler paramMqqHandler, SessionInfo paramSessionInfo)
+  {
+    Iterator localIterator = paramIntent.getExtras().getParcelableArrayList("forward_composite").iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (Parcelable)localIterator.next();
+      switch (((ForwardUtils.SectionBase)localObject).mForwardType)
+      {
+      case 0: 
+      default: 
+        break;
+      case -1: 
+        if (!TextUtils.isEmpty(((ForwardUtils.SectionText)localObject).mTextString)) {
+          nty.a().a = true;
+        }
+        admh.b(paramQQAppInterface, paramContext, paramSessionInfo, ((ForwardUtils.SectionText)localObject).mTextString);
+        break;
+      case 1: 
+        String str1 = paramIntent.getStringExtra("forward_download_image_task_key");
+        String str2 = paramIntent.getStringExtra("forward_download_image_org_uin");
+        int i = paramIntent.getIntExtra("forward_download_image_org_uin_type", -1);
+        String str3 = paramIntent.getStringExtra("forward_download_image_server_path");
+        long l = paramIntent.getLongExtra("forward_download_image_item_id", -1L);
+        admh.a(paramQQAppInterface, paramActivity, paramSessionInfo, ((ForwardUtils.SectionPic)localObject).mBigURL, str3, str2, l, i, str1);
+        localObject = new Message();
+        ((Message)localObject).what = 57;
+        if (paramMqqHandler != null) {
+          paramMqqHandler.sendMessage((Message)localObject);
+        }
+        break;
+      }
+    }
+  }
+  
   public static boolean handleForwardData(QQAppInterface paramQQAppInterface, Activity paramActivity, Context paramContext, Intent paramIntent, MqqHandler paramMqqHandler)
   {
     if (QLog.isColorLevel()) {
       QLog.d("forward", 2, "handleForwardData");
     }
-    Object localObject1 = paramIntent.getParcelableArrayListExtra("forward_multi_target");
-    if ((localObject1 != null) && (!((List)localObject1).isEmpty())) {
-      handleForwardData2MultiTarget(paramQQAppInterface, paramActivity, paramContext, paramIntent, paramMqqHandler, (List)localObject1);
+    Object localObject = paramIntent.getParcelableArrayListExtra("forward_multi_target");
+    if ((localObject != null) && (!((List)localObject).isEmpty())) {
+      handleForwardData2MultiTarget(paramQQAppInterface, paramActivity, paramContext, paramIntent, paramMqqHandler, (List)localObject);
     }
-    int i;
-    Object localObject2;
-    int j;
-    boolean bool1;
-    boolean bool2;
-    label644:
-    label687:
-    Object localObject3;
-    String str;
-    Object localObject4;
-    long l1;
-    Object localObject5;
-    label1136:
-    do
-    {
-      for (;;)
-      {
-        paramIntent.removeExtra("extra_is_edited_pic");
-        paramIntent.removeExtra("key_help_forward_pic");
-        paramIntent.removeExtra("key_allow_multiple_forward_from_limit");
-        paramIntent.removeExtra("key_allow_forward_photo_preview_edit");
-        return true;
-        localObject1 = sessionFromIntent(paramIntent);
-        if ((((SessionInfo)localObject1).curType == 1) && (((bfbz)paramQQAppInterface.getManager(48)).a(((SessionInfo)localObject1).curFriendUin, true).a))
-        {
-          QQToast.a(paramQQAppInterface.getApp(), 2131696866, 0).b(paramContext.getResources().getDimensionPixelSize(2131299076));
-          return false;
-        }
-        i = paramIntent.getIntExtra("forward_type", 2147483647);
-        if (QLog.isColorLevel()) {
-          QLog.d("forward", 2, "handleForwardData() forwardType" + i);
-        }
-        if (i == 2147483647) {
-          return false;
-        }
-        paramIntent.removeExtra("forward_type");
-        localObject2 = paramIntent.getStringExtra("forward_filepath");
-        j = paramIntent.getIntExtra("KEY_MSG_FORWARD_ID", 0);
-        switch (i)
-        {
-        case -4: 
-        case 2: 
-        case 3: 
-        case 4: 
-        case 5: 
-        case 6: 
-        case 7: 
-        case 11: 
-        case 12: 
-        case 13: 
-        case 14: 
-        case 15: 
-        case 16: 
-        case 17: 
-        case 18: 
-        case 19: 
-        case 22: 
-        case 25: 
-        case 26: 
-        case 27: 
-        case 30: 
-        case 31: 
-        case 33: 
-        case 34: 
-        case 35: 
-        case 38: 
-        case 39: 
-        case 40: 
-        case 41: 
-        default: 
-          break;
-        case -6: 
-          azyi.a().a(paramQQAppInterface, (SessionInfo)localObject1, paramIntent);
-          break;
-        case -1: 
-          if (((SessionInfo)localObject1).curType == 9501)
-          {
-            paramContext = paramIntent.getStringExtra("forward_text");
-            paramMqqHandler = (aavk)paramQQAppInterface.getBusinessHandler(49);
-            localObject2 = (aara)paramQQAppInterface.getBusinessHandler(51);
-            if (!TextUtils.isEmpty(paramContext))
-            {
-              ((SessionInfo)localObject1).curFriendUin = paramIntent.getStringExtra("uin");
-              ((SessionInfo)localObject1).curType = paramIntent.getIntExtra("uintype", -1);
-              bool1 = ((aara)localObject2).a(Long.parseLong(((SessionInfo)localObject1).curFriendUin)).booleanValue();
-              localObject2 = ((aara)localObject2).a(Long.parseLong(((SessionInfo)localObject1).curFriendUin));
-              bool2 = SettingCloneUtil.readValue(paramActivity, ((SessionInfo)localObject1).curFriendUin, null, "devicemsg_openchat_firsttrue", false);
-              if ((!bool2) && ((((DeviceInfo)localObject2).SSOBid_Platform == 1027) || ((!StringUtil.isEmpty(((DeviceInfo)localObject2).SSOBid_Version)) && (Double.valueOf(((DeviceInfo)localObject2).SSOBid_Version).doubleValue() >= 1.1D))))
-              {
-                i = 1;
-                SettingCloneUtil.writeValue(paramActivity, ((SessionInfo)localObject1).curFriendUin, null, "devicemsg_openchat_firsttrue", true);
-                if ((!bool1) || (i == 0)) {
-                  break label687;
-                }
-              }
-              for (bool1 = true;; bool1 = false)
-              {
-                paramMqqHandler.a(paramQQAppInterface, (SessionInfo)localObject1, paramContext, bool1);
-                break;
-                if ((!bool2) && (!bool1)) {
-                  break label3098;
-                }
-                i = 1;
-                break label644;
-              }
-            }
-          }
-          else
-          {
-            paramActivity = paramIntent.getStringExtra("forward_text");
-            if (!TextUtils.isEmpty(paramActivity)) {
-              nmy.a().a = true;
-            }
-            localObject2 = new acwc();
-            ((acwc)localObject2).j = true;
-            localObject3 = paramIntent.getBooleanArrayExtra("forward_is_write_together");
-            str = paramIntent.getStringExtra("uin");
-            localObject4 = paramIntent.getBooleanArrayExtra("forward_write_together_is_expired");
-            if ((localObject3 == null) || (localObject3[0] == 0) || (((SessionInfo)localObject1).curType != 1) || (!str.equals(((SessionInfo)localObject1).curFriendUin)) || (localObject4 == null) || (localObject4[0] != 0))
-            {
-              paramContext = acvv.a(paramQQAppInterface, paramContext, (SessionInfo)localObject1, paramActivity, null, (acwc)localObject2);
-              if ((paramContext != null) && (paramContext.length > 0) && (j > 0))
-              {
-                l1 = paramContext[0];
-                afoa.a().a(l1, 0L, j);
-                afoa.a().a(paramQQAppInterface, l1, j);
-              }
-              paramQQAppInterface = new Message();
-              paramQQAppInterface.what = 55;
-              paramQQAppInterface.obj = paramActivity;
-              if (paramMqqHandler != null) {
-                paramMqqHandler.sendMessage(paramQQAppInterface);
-              }
-            }
-          }
-          break;
-        case 0: 
-          try
-          {
-            paramMqqHandler = (ForwardFileInfo)paramIntent.getParcelableExtra("fileinfo");
-            bool1 = paramIntent.getBooleanExtra("foward_editbar", false);
-            if (!bool1) {
-              try
-              {
-                if (paramIntent.getExtras().getBoolean("sendMultiple", false))
-                {
-                  localObject3 = paramIntent.getStringExtra("uin");
-                  str = paramIntent.getStringExtra("troop_uin");
-                  i = paramIntent.getIntExtra("uintype", -1);
-                  localObject4 = (ArrayList)paramIntent.getExtras().get("android.intent.extra.STREAM");
-                  if (localObject4 == null) {
-                    continue;
-                  }
-                  localObject5 = ((ArrayList)localObject4).iterator();
-                  for (l1 = 0L; ((Iterator)localObject5).hasNext(); l1 = FileUtil.getFileSize(ForwardFileBaseOption.a(paramContext, (Uri)((Iterator)localObject5).next())) + l1) {}
-                  if (!aszt.a()) {
-                    break label1136;
-                  }
-                  aszg.a(paramActivity, 2131692374, 2131692379, new ForwardUtils.1((ArrayList)localObject4, paramContext, i, paramQQAppInterface, (String)localObject3, j, str));
-                }
-              }
-              catch (Exception paramContext) {}
-            }
-            if (bool1) {
-              break label1237;
-            }
-            if (paramMqqHandler != null) {
-              paramMqqHandler.jdField_a_of_type_Int = j;
-            }
-            acvv.a(paramQQAppInterface, paramActivity, (SessionInfo)localObject1, paramIntent, (String)localObject2, paramMqqHandler, false, j);
-          }
-          catch (Exception paramQQAppInterface) {}
-          if (QLog.isColorLevel()) {
-            QLog.d("", 2, "FORWARD_TYPE.FILE failed. " + paramQQAppInterface, paramQQAppInterface);
-          }
-          break;
-        }
-      }
-      localObject4 = ((ArrayList)localObject4).iterator();
-      while (((Iterator)localObject4).hasNext())
-      {
-        localObject5 = ForwardFileBaseOption.a(paramContext, (Uri)((Iterator)localObject4).next());
-        if (TextUtils.isEmpty((CharSequence)localObject5)) {
-          QLog.e("ForwardUtils<FileAssistant>", 1, "mutilSend but localpath is null!");
-        } else if (i == 1) {
-          paramQQAppInterface.getFileManagerEngine().a((String)localObject5, (String)localObject3, 0L, j);
-        } else {
-          paramQQAppInterface.getFileManagerEngine().a((String)localObject5, str, (String)localObject3, i, true, 0L, j);
-        }
-      }
-      paramContext = paramIntent.getParcelableArrayListExtra("fileinfo_array");
-      l1 = 0L;
-    } while ((paramContext == null) || (paramContext.size() <= 0));
-    label1237:
-    paramMqqHandler = paramContext.iterator();
-    label3098:
-    label3104:
     for (;;)
     {
-      if (paramMqqHandler.hasNext())
+      paramIntent.removeExtra("extra_is_edited_pic");
+      paramIntent.removeExtra("key_help_forward_pic");
+      paramIntent.removeExtra("key_allow_multiple_forward_from_limit");
+      paramIntent.removeExtra("key_allow_forward_photo_preview_edit");
+      return true;
+      localObject = sessionFromIntent(paramIntent);
+      if ((((SessionInfo)localObject).curType == 1) && (((bgkf)paramQQAppInterface.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a(((SessionInfo)localObject).curFriendUin, true).a))
       {
-        localObject2 = (ForwardFileInfo)paramMqqHandler.next();
-        if (((ForwardFileInfo)localObject2).d() == 3)
-        {
-          l1 = ((ForwardFileInfo)localObject2).d() + l1;
-          break label3104;
-        }
+        QQToast.a(paramQQAppInterface.getApp(), 2131697134, 0).b(paramContext.getResources().getDimensionPixelSize(2131299080));
+        return false;
       }
-      else
+      int j = paramIntent.getIntExtra("forward_type", 2147483647);
+      if (QLog.isColorLevel()) {
+        QLog.d("forward", 2, "handleForwardData() forwardType" + j);
+      }
+      if (j == 2147483647) {
+        return false;
+      }
+      paramIntent.removeExtra("forward_type");
+      String str = paramIntent.getStringExtra("forward_filepath");
+      int i = paramIntent.getIntExtra("KEY_MSG_FORWARD_ID", 0);
+      switch (j)
       {
-        paramContext = paramContext.iterator();
-        while (paramContext.hasNext())
-        {
-          paramMqqHandler = (ForwardFileInfo)paramContext.next();
-          acvv.a(paramQQAppInterface, paramActivity, (SessionInfo)localObject1, paramIntent, paramMqqHandler.a(), paramMqqHandler, true, j);
-        }
-        bool1 = paramIntent.getBooleanExtra("isFromShare", false);
-        bool2 = paramIntent.getBooleanExtra("sendMultiple", false);
-        if (QLog.isColorLevel()) {
-          QLog.d("forward", 2, "handleForwardData() photograph isFromShare" + bool1);
-        }
-        if (bool1)
-        {
-          if (bool2) {
-            break;
-          }
-          bool1 = paramIntent.getBooleanExtra("FORWARD_IS_EDITED", false);
-          if (QLog.isColorLevel()) {
-            QLog.d("forward", 2, "handleForwardData() photograph isEdited" + bool1);
-          }
-          if (bool1) {
-            break;
-          }
-          paramContext = paramIntent.getStringExtra("forward_download_image_task_key");
-          localObject3 = paramIntent.getStringExtra("forward_download_image_org_uin");
-          i = paramIntent.getIntExtra("forward_download_image_org_uin_type", -1);
-          str = paramIntent.getStringExtra("forward_download_image_server_path");
-          l1 = paramIntent.getLongExtra("forward_download_image_item_id", 0L);
-          localObject4 = new Message();
-          ((Message)localObject4).what = 56;
-          if (paramMqqHandler != null) {
-            paramMqqHandler.sendMessage((Message)localObject4);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("ForwardUtils", 2, "[@]call sendPic start!");
-          }
-          ThreadManager.post(new ForwardUtils.2(paramQQAppInterface, paramActivity, (SessionInfo)localObject1, (String)localObject2, str, (String)localObject3, l1, i, paramContext, j, paramMqqHandler), 8, null, false);
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("ForwardUtils", 2, "[@]call sendPic end!");
-          break;
-        }
-        if (handleForwardEditedPhoto(paramIntent, (SessionInfo)localObject1, (String)localObject2, paramQQAppInterface))
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("ForwardUtils", 2, "handleForwardEditedPhoto = " + (String)localObject2);
-          break;
-        }
-        paramIntent.putExtra("FORWARD_UIN_TYPE", ((SessionInfo)localObject1).curType);
-        paramIntent.putExtra("SENDER_TROOP_UIN", ((SessionInfo)localObject1).troopUin);
-        paramIntent.putExtra("FORWARD_PEER_UIN", ((SessionInfo)localObject1).curFriendUin);
-        paramIntent.putExtra("FORWARD_SELF_UIN", paramQQAppInterface.getCurrentAccountUin());
-        i = paramIntent.getIntExtra("BUSI_TYPE", 1009);
-        int k = paramIntent.getIntExtra("forward_source_uin_type", -1);
-        if (QLog.isColorLevel()) {
-          QLog.d("ForwardUtils", 2, "report forward! forwardFilePath = " + (String)localObject2 + ",forwardSourceUinType = " + k);
-        }
-        if (localObject2 != null)
-        {
-          l1 = paramIntent.getLongExtra("forward_image_width", 0L);
-          long l2 = paramIntent.getLongExtra("forward_image_height", 0L);
-          int m = paramIntent.getIntExtra("forward_image_type", 0);
-          ThreadManager.executeOnFileThread(new ForwardUtils.3(AppConstants.SDCARD_AIO_FORWARD + "#" + l1 + "#" + l2 + "#" + m, (SessionInfo)localObject1, k, paramQQAppInterface));
-        }
-        paramContext = aydj.a(i, paramIntent);
-        paramActivity = aydj.a(3, i);
-        paramActivity.a(paramContext);
-        if (paramIntent.getBooleanExtra("forward_is_custom_face", false))
-        {
-          paramContext = new PicMessageExtraData();
-          paramContext.imageBizType = 1;
-          paramContext.customFaceType = paramIntent.getIntExtra("forward_cutsom_face_type", 0);
-          paramContext.emojiPkgId = paramIntent.getStringExtra("forward_diy_package_id");
-          if (paramContext.emojiPkgId == null) {
-            paramContext.emojiPkgId = "";
-          }
-          paramMqqHandler = paramIntent.getStringExtra("forward_summary_extra");
-          if (!TextUtils.isEmpty(paramMqqHandler)) {
-            paramContext.textSummary = paramMqqHandler;
-          }
-          paramActivity.a = paramContext;
-        }
-        if (paramIntent.getBooleanExtra("HOT_PIC_HAS_EXTRA", false))
-        {
-          paramContext = new PicMessageExtraData();
-          paramContext.imageBizType = 2;
-          paramMqqHandler = paramIntent.getStringExtra("forward_summary_extra");
-          if (!TextUtils.isEmpty(paramMqqHandler)) {
-            paramContext.textSummary = paramMqqHandler;
-          }
-          paramActivity.a = paramContext;
-        }
-        addStickerExtraData(paramIntent, paramActivity);
-        if (paramIntent.getBooleanExtra("forward_is_zhitu", false))
-        {
-          paramContext = new PicMessageExtraData();
-          paramContext.imageBizType = 4;
-          paramMqqHandler = paramIntent.getStringExtra("forward_summary_extra");
-          if (!TextUtils.isEmpty(paramMqqHandler)) {
-            paramContext.textSummary = paramMqqHandler;
-          }
-          paramActivity.a = paramContext;
-        }
-        if (paramIntent.getBooleanExtra("forward_is_selfie_face", false))
-        {
-          paramContext = new PicMessageExtraData();
-          paramContext.imageBizType = 8;
-          paramMqqHandler = paramIntent.getStringExtra("forward_summary_extra");
-          localObject2 = paramIntent.getStringExtra("widgetinfo");
-          if (!TextUtils.isEmpty(paramMqqHandler)) {
-            paramContext.textSummary = paramMqqHandler;
-          }
-          paramContext.mTemplateId = ((String)localObject2);
-          paramActivity.a = paramContext;
-        }
-        if (paramIntent.getBooleanExtra("forward_send_template_pic", false))
-        {
-          paramContext = paramIntent.getStringExtra("widgetinfo");
-          paramMqqHandler = paramIntent.getStringExtra("key_camera_material_name");
-          if ((!TextUtils.isEmpty(paramContext)) || (!TextUtils.isEmpty(paramMqqHandler)))
-          {
-            if (paramActivity.a == null) {
-              paramActivity.a = new PicMessageExtraData();
-            }
-            paramActivity.a.mTemplateId = paramContext;
-            paramActivity.a.mTemplateName = paramMqqHandler;
-          }
-        }
-        if (paramIntent.getBooleanExtra("forward_is_tab_search_emo", false))
-        {
-          if (paramActivity.a == null) {
-            paramActivity.a = new PicMessageExtraData();
-          }
-          paramActivity.a.imageBizType = 12;
-        }
-        new ahog().a(paramQQAppInterface, (SessionInfo)localObject1, paramActivity);
-        paramActivity.c = j;
-        ThreadManagerV2.executeOnSubThread(new ForwardUtils.4(paramActivity, paramQQAppInterface));
+      case -4: 
+      case 2: 
+      case 3: 
+      case 4: 
+      case 5: 
+      case 6: 
+      case 7: 
+      case 11: 
+      case 12: 
+      case 13: 
+      case 14: 
+      case 15: 
+      case 16: 
+      case 17: 
+      case 18: 
+      case 19: 
+      case 22: 
+      case 25: 
+      case 26: 
+      case 27: 
+      case 30: 
+      case 31: 
+      case 33: 
+      case 34: 
+      case 35: 
+      case 38: 
+      case 39: 
+      case 40: 
+      case 41: 
+      default: 
         break;
-        if (((SessionInfo)localObject1).curType == 9501) {
+      case -6: 
+        bber.a().a(paramQQAppInterface, (SessionInfo)localObject, paramIntent);
+        break;
+      case -1: 
+        handleForwardText(paramQQAppInterface, paramActivity, paramContext, paramIntent, paramMqqHandler, (SessionInfo)localObject, i);
+        break;
+      case 0: 
+        handleForwardFile(paramQQAppInterface, paramActivity, paramContext, paramIntent, (SessionInfo)localObject, str, i);
+        break;
+      case 1: 
+        handleForwardPhoto(paramQQAppInterface, paramActivity, paramIntent, paramMqqHandler, (SessionInfo)localObject, str, i);
+        break;
+      case 21: 
+        if (((SessionInfo)localObject).curType == 9501) {
           return true;
         }
         if (QLog.isColorLevel()) {
           QLog.d("ForwardUtils", 2, "handleForwardData(): ShortVideo => " + paramIntent.getExtras());
         }
-        i = paramIntent.getIntExtra("from_busi_type", 0);
-        if (i == 1) {
-          i = 2;
-        }
-        for (;;)
-        {
-          paramActivity = bbqf.a(3, i);
-          paramContext = bbqf.a(i, paramIntent, paramActivity);
-          if (paramContext != null) {
-            paramContext.p = j;
-          }
-          paramActivity.a(paramContext);
-          bbqf.a(paramActivity, paramQQAppInterface);
-          break;
-          if (i == 2) {
-            i = 3;
-          } else {
-            i = 0;
-          }
-        }
-        if (acvv.a(paramQQAppInterface, (SessionInfo)localObject1, (String)localObject2) == -1L) {
-          break;
-        }
-        paramQQAppInterface = new Message();
-        paramQQAppInterface.what = 57;
-        if (paramMqqHandler == null) {
-          break;
-        }
-        paramMqqHandler.sendMessage(paramQQAppInterface);
+        handleForwardShortVideo(paramQQAppInterface, paramIntent, i);
         break;
-        if (paramIntent.getBooleanExtra("isFromFavorites", false))
-        {
-          paramActivity = paramIntent.getExtras();
-          if (paramActivity == null) {
-            break;
-          }
-          paramMqqHandler = paramActivity.getString("forward_latitude");
-          localObject2 = paramActivity.getString("forward_longitude");
-          localObject3 = paramActivity.getString("forward_location");
-          str = paramActivity.getString("title");
-          localObject4 = paramActivity.getString("summary");
-          paramActivity.putInt("isArk", 1);
-          acvv.a(paramContext, paramQQAppInterface, (SessionInfo)localObject1, paramMqqHandler, (String)localObject2, (String)localObject3, str, (String)localObject4, "", "", "", "", paramActivity);
-          break;
-        }
-        acvv.a(paramQQAppInterface, (SessionInfo)localObject1, paramIntent.getStringExtra("forward_latitude"), paramIntent.getStringExtra("forward_longitude"), paramIntent.getStringExtra("forward_location"));
+      case 8: 
+        handleForwardPttCenter(paramQQAppInterface, paramMqqHandler, (SessionInfo)localObject, str);
         break;
-        l1 = paramIntent.getLongExtra("FORWARD_MSG_UNISEQ", 0L);
-        ((avsf)paramQQAppInterface.getManager(174)).a((SessionInfo)localObject1, l1, j);
+      case -2: 
+        handleForwardMap(paramQQAppInterface, paramContext, paramIntent, (SessionInfo)localObject);
         break;
-        handleAppShareAction(paramQQAppInterface, paramContext, (SessionInfo)localObject1, paramIntent);
+      case -5: 
+        long l = paramIntent.getLongExtra("FORWARD_MSG_UNISEQ", 0L);
+        ((awyg)paramQQAppInterface.getManager(QQManagerFactory.MIXED_MSG_MANAGER)).a((SessionInfo)localObject, l, i);
         break;
-        localObject2 = paramIntent.getExtras().getParcelableArrayList("forward_composite").iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          localObject3 = (Parcelable)((Iterator)localObject2).next();
-          switch (((ForwardUtils.SectionBase)localObject3).mForwardType)
-          {
-          case 0: 
-          default: 
-            break;
-          case -1: 
-            if (!TextUtils.isEmpty(((ForwardUtils.SectionText)localObject3).mTextString)) {
-              nmy.a().a = true;
-            }
-            acvv.b(paramQQAppInterface, paramContext, (SessionInfo)localObject1, ((ForwardUtils.SectionText)localObject3).mTextString);
-            break;
-          case 1: 
-            str = paramIntent.getStringExtra("forward_download_image_task_key");
-            localObject4 = paramIntent.getStringExtra("forward_download_image_org_uin");
-            i = paramIntent.getIntExtra("forward_download_image_org_uin_type", -1);
-            localObject5 = paramIntent.getStringExtra("forward_download_image_server_path");
-            l1 = paramIntent.getLongExtra("forward_download_image_item_id", -1L);
-            acvv.a(paramQQAppInterface, paramActivity, (SessionInfo)localObject1, ((ForwardUtils.SectionPic)localObject3).mBigURL, (String)localObject5, (String)localObject4, l1, i, str);
-            localObject3 = new Message();
-            ((Message)localObject3).what = 57;
-            if (paramMqqHandler != null) {
-              paramMqqHandler.sendMessage((Message)localObject3);
-            }
-            break;
-          }
-        }
-        paramQQAppInterface = ynt.a(paramQQAppInterface, paramIntent.getExtras(), (SessionInfo)localObject1);
-        if (paramQQAppInterface == null) {
-          break;
-        }
-        paramQQAppInterface.f();
+      case -3: 
+      case 20: 
+      case 23: 
+      case 24: 
+      case 28: 
+      case 29: 
+      case 36: 
+      case 42: 
+        handleAppShareAction(paramQQAppInterface, paramContext, (SessionInfo)localObject, paramIntent);
         break;
-        if (2 == agif.c)
-        {
-          bcef.b(paramQQAppInterface, "CliOper", "", paramActivity.getIntent().getStringExtra("uin"), "ep_mall", "Ep_detail_send", 0, 0, "", "", "", "");
-          label2941:
-          if (!paramIntent.getBooleanExtra("forward_emotion_from_preview", false)) {
-            break label3025;
-          }
+      case 10: 
+        handleForwardComposite(paramQQAppInterface, paramActivity, paramContext, paramIntent, paramMqqHandler, (SessionInfo)localObject);
+        break;
+      case 32: 
+        paramQQAppInterface = zcm.a(paramQQAppInterface, paramIntent.getExtras(), (SessionInfo)localObject);
+        if (paramQQAppInterface != null) {
+          paramQQAppInterface.f();
         }
-        label3025:
-        for (paramContext = AIOEmotionFragment.a;; paramContext = agif.a)
-        {
-          nmy.a().a = true;
-          if (paramContext == null) {
-            break;
-          }
-          paramContext.send(paramQQAppInterface, paramActivity, null, (SessionInfo)localObject1, true, j);
-          break;
-          bcef.b(paramQQAppInterface, "CliOper", "", paramActivity.getIntent().getStringExtra("uin"), "ep_mall", "Ep_detail_send_aio", 0, 0, "", "", "", "");
-          break label2941;
-        }
+        break;
+      case 9: 
+        handleForwardMarketFace(paramQQAppInterface, paramActivity, paramIntent, (SessionInfo)localObject, i);
+        break;
+      case 37: 
         paramActivity = paramIntent.getStringExtra("forward_text");
-        i = paramIntent.getIntExtra("key_hiboom_id", 0);
+        j = paramIntent.getIntExtra("key_hiboom_id", 0);
         paramContext = new HiBoomMessage();
-        paramContext.id = i;
+        paramContext.id = j;
         paramContext.text = paramActivity;
         paramContext.type = paramIntent.getIntExtra("key_hiboom_type", 0);
-        acvv.a(paramQQAppInterface, (SessionInfo)localObject1, paramContext, null, j);
-        break;
+        admh.a(paramQQAppInterface, (SessionInfo)localObject, paramContext, null, i);
       }
-      break label3104;
-      i = 0;
-      break label644;
     }
   }
   
@@ -839,7 +515,7 @@ public class ForwardUtils
         paramIntent.putExtra("troop_uin", paramSessionInfo.troopUin);
         paramIntent.putExtra("PhotoConst.SEND_SIZE_SPEC", 0);
         paramIntent.putExtra("PhotoConst.PHOTO_SEND_PATH", paramString);
-        j = atky.a(paramIntent.getExtras());
+        j = aupt.a(paramIntent.getExtras());
         if (j != 100200) {
           break label229;
         }
@@ -847,8 +523,8 @@ public class ForwardUtils
     }
     for (;;)
     {
-      paramSessionInfo = aydj.a(2, i);
-      paramSessionInfo.a(aydj.a(i, paramIntent));
+      paramSessionInfo = azjv.a(2, i);
+      paramSessionInfo.a(azjv.a(i, paramIntent));
       paramSessionInfo.c = paramIntent.getIntExtra("KEY_MSG_FORWARD_ID", 0);
       if (paramIntent.getBooleanExtra("forward_is_selfie_face", false))
       {
@@ -865,13 +541,411 @@ public class ForwardUtils
       bool1 = false;
       break;
       label229:
-      if ((j == 100100) || (j == 100101) || (j == 100300) || (atky.a(paramIntent.getExtras()))) {
+      if ((j == 100100) || (j == 100101) || (j == 100300) || (aupt.a(paramIntent.getExtras()))) {
         i = 1048;
       } else if (paramIntent.getIntExtra("PhotoConst.SEND_BUSINESS_TYPE", -1) == 1041) {
         i = 1048;
       } else if (!bool2) {
         i = 1007;
       }
+    }
+  }
+  
+  private static void handleForwardFile(QQAppInterface paramQQAppInterface, Activity paramActivity, Context paramContext, Intent paramIntent, SessionInfo paramSessionInfo, String paramString, int paramInt)
+  {
+    ForwardFileInfo localForwardFileInfo;
+    String str1;
+    String str2;
+    int i;
+    long l;
+    Object localObject2;
+    try
+    {
+      localForwardFileInfo = (ForwardFileInfo)paramIntent.getParcelableExtra("fileinfo");
+      boolean bool = paramIntent.getBooleanExtra("foward_editbar", false);
+      if (!bool) {
+        try
+        {
+          if (paramIntent.getExtras().getBoolean("sendMultiple", false))
+          {
+            str1 = paramIntent.getStringExtra("uin");
+            str2 = paramIntent.getStringExtra("troop_uin");
+            i = paramIntent.getIntExtra("uintype", -1);
+            localObject1 = (ArrayList)paramIntent.getExtras().get("android.intent.extra.STREAM");
+            if (localObject1 == null) {
+              return;
+            }
+            l = 0L;
+            localObject2 = ((ArrayList)localObject1).iterator();
+            while (((Iterator)localObject2).hasNext()) {
+              l += FileUtil.getFileSize(ForwardFileBaseOption.a(paramContext, (Uri)((Iterator)localObject2).next()));
+            }
+            if (!auea.a()) {
+              break label241;
+            }
+            audn.a(paramActivity, 2131692476, 2131692481, new ForwardUtils.4((ArrayList)localObject1, paramContext, i, paramQQAppInterface, str1, paramInt, str2));
+            return;
+          }
+        }
+        catch (Exception paramContext) {}
+      }
+      if (bool) {
+        break label342;
+      }
+      if (localForwardFileInfo != null) {
+        localForwardFileInfo.jdField_a_of_type_Int = paramInt;
+      }
+      admh.a(paramQQAppInterface, paramActivity, paramSessionInfo, paramIntent, paramString, localForwardFileInfo, false, paramInt);
+      return;
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      if (!QLog.isColorLevel()) {
+        break label463;
+      }
+    }
+    QLog.d("", 2, "FORWARD_TYPE.FILE failed. " + paramQQAppInterface, paramQQAppInterface);
+    return;
+    label241:
+    Object localObject1 = ((ArrayList)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = ForwardFileBaseOption.a(paramContext, (Uri)((Iterator)localObject1).next());
+      if (TextUtils.isEmpty((CharSequence)localObject2))
+      {
+        QLog.e("ForwardUtils<FileAssistant>", 1, "mutilSend but localpath is null!");
+      }
+      else if (i == 1)
+      {
+        paramQQAppInterface.getFileManagerEngine().a((String)localObject2, str1, 0L, paramInt);
+      }
+      else
+      {
+        paramQQAppInterface.getFileManagerEngine().a((String)localObject2, str2, str1, i, true, 0L, paramInt);
+        continue;
+        label342:
+        paramContext = paramIntent.getParcelableArrayListExtra("fileinfo_array");
+        l = 0L;
+        if ((paramContext != null) && (paramContext.size() > 0)) {
+          paramString = paramContext.iterator();
+        }
+      }
+    }
+    label463:
+    label464:
+    for (;;)
+    {
+      if (paramString.hasNext())
+      {
+        localForwardFileInfo = (ForwardFileInfo)paramString.next();
+        if (localForwardFileInfo.d() == 3)
+        {
+          l = localForwardFileInfo.d() + l;
+          break label464;
+        }
+      }
+      else
+      {
+        paramContext = paramContext.iterator();
+        while (paramContext.hasNext())
+        {
+          paramString = (ForwardFileInfo)paramContext.next();
+          admh.a(paramQQAppInterface, paramActivity, paramSessionInfo, paramIntent, paramString.a(), paramString, true, paramInt);
+        }
+      }
+      break label464;
+      return;
+    }
+  }
+  
+  private static void handleForwardMap(QQAppInterface paramQQAppInterface, Context paramContext, Intent paramIntent, SessionInfo paramSessionInfo)
+  {
+    if (paramIntent.getBooleanExtra("isFromFavorites", false))
+    {
+      paramIntent = paramIntent.getExtras();
+      if (paramIntent != null)
+      {
+        String str1 = paramIntent.getString("forward_latitude");
+        String str2 = paramIntent.getString("forward_longitude");
+        String str3 = paramIntent.getString("forward_location");
+        String str4 = paramIntent.getString("title");
+        String str5 = paramIntent.getString("summary");
+        paramIntent.putInt("isArk", 1);
+        admh.a(paramContext, paramQQAppInterface, paramSessionInfo, str1, str2, str3, str4, str5, "", "", "", "", paramIntent);
+      }
+      return;
+    }
+    admh.a(paramQQAppInterface, paramSessionInfo, paramIntent.getStringExtra("forward_latitude"), paramIntent.getStringExtra("forward_longitude"), paramIntent.getStringExtra("forward_location"));
+  }
+  
+  private static void handleForwardMarketFace(QQAppInterface paramQQAppInterface, Activity paramActivity, Intent paramIntent, SessionInfo paramSessionInfo, int paramInt)
+  {
+    if (2 == ahaw.c)
+    {
+      bdla.b(paramQQAppInterface, "CliOper", "", paramActivity.getIntent().getStringExtra("uin"), "ep_mall", "Ep_detail_send", 0, 0, "", "", "", "");
+      if (!paramIntent.getBooleanExtra("forward_emotion_from_preview", false)) {
+        break label128;
+      }
+    }
+    label128:
+    for (paramIntent = AIOEmotionFragment.a;; paramIntent = ahaw.a)
+    {
+      nty.a().a = true;
+      if (paramIntent != null) {
+        paramIntent.send(paramQQAppInterface, paramActivity, null, paramSessionInfo, true, paramInt);
+      }
+      return;
+      bdla.b(paramQQAppInterface, "CliOper", "", paramActivity.getIntent().getStringExtra("uin"), "ep_mall", "Ep_detail_send_aio", 0, 0, "", "", "", "");
+      break;
+    }
+  }
+  
+  private static void handleForwardPhoto(QQAppInterface paramQQAppInterface, Activity paramActivity, Intent paramIntent, MqqHandler paramMqqHandler, SessionInfo paramSessionInfo, String paramString, int paramInt)
+  {
+    boolean bool1 = paramIntent.getBooleanExtra("isFromShare", false);
+    boolean bool2 = paramIntent.getBooleanExtra("sendMultiple", false);
+    if (QLog.isColorLevel()) {
+      QLog.d("forward", 2, "handleForwardData() photograph isFromShare" + bool1);
+    }
+    String str1;
+    long l1;
+    if (bool1) {
+      if (!bool2)
+      {
+        bool1 = paramIntent.getBooleanExtra("FORWARD_IS_EDITED", false);
+        if (QLog.isColorLevel()) {
+          QLog.d("forward", 2, "handleForwardData() photograph isEdited" + bool1);
+        }
+        if (!bool1)
+        {
+          str1 = paramIntent.getStringExtra("forward_download_image_task_key");
+          String str2 = paramIntent.getStringExtra("forward_download_image_org_uin");
+          i = paramIntent.getIntExtra("forward_download_image_org_uin_type", -1);
+          String str3 = paramIntent.getStringExtra("forward_download_image_server_path");
+          l1 = paramIntent.getLongExtra("forward_download_image_item_id", 0L);
+          paramIntent = new Message();
+          paramIntent.what = 56;
+          if (paramMqqHandler != null) {
+            paramMqqHandler.sendMessage(paramIntent);
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("ForwardUtils", 2, "[@]call sendPic start!");
+          }
+          ThreadManager.post(new ForwardUtils.1(paramQQAppInterface, paramActivity, paramSessionInfo, paramString, str3, str2, l1, i, str1, paramInt, paramMqqHandler), 8, null, false);
+          if (QLog.isColorLevel()) {
+            QLog.d("ForwardUtils", 2, "[@]call sendPic end!");
+          }
+        }
+      }
+    }
+    do
+    {
+      return;
+      if (!handleForwardEditedPhoto(paramIntent, paramSessionInfo, paramString, paramQQAppInterface)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ForwardUtils", 2, "handleForwardEditedPhoto = " + paramString);
+    return;
+    paramIntent.putExtra("FORWARD_UIN_TYPE", paramSessionInfo.curType);
+    paramIntent.putExtra("SENDER_TROOP_UIN", paramSessionInfo.troopUin);
+    paramIntent.putExtra("FORWARD_PEER_UIN", paramSessionInfo.curFriendUin);
+    paramIntent.putExtra("FORWARD_SELF_UIN", paramQQAppInterface.getCurrentAccountUin());
+    int i = paramIntent.getIntExtra("BUSI_TYPE", 1009);
+    int j = paramIntent.getIntExtra("forward_source_uin_type", -1);
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardUtils", 2, "report forward! forwardFilePath = " + paramString + ",forwardSourceUinType = " + j);
+    }
+    if (paramString != null)
+    {
+      l1 = paramIntent.getLongExtra("forward_image_width", 0L);
+      long l2 = paramIntent.getLongExtra("forward_image_height", 0L);
+      int k = paramIntent.getIntExtra("forward_image_type", 0);
+      ThreadManager.executeOnFileThread(new ForwardUtils.2(AppConstants.SDCARD_AIO_FORWARD + "#" + l1 + "#" + l2 + "#" + k, paramSessionInfo, j, paramQQAppInterface));
+    }
+    paramMqqHandler = azjv.a(i, paramIntent);
+    paramActivity = azjv.a(3, i);
+    paramActivity.a(paramMqqHandler);
+    if (paramIntent.getBooleanExtra("forward_is_custom_face", false))
+    {
+      paramMqqHandler = new PicMessageExtraData();
+      paramMqqHandler.imageBizType = 1;
+      paramMqqHandler.customFaceType = paramIntent.getIntExtra("forward_cutsom_face_type", 0);
+      paramMqqHandler.emojiPkgId = paramIntent.getStringExtra("forward_diy_package_id");
+      if (paramMqqHandler.emojiPkgId == null) {
+        paramMqqHandler.emojiPkgId = "";
+      }
+      paramString = paramIntent.getStringExtra("forward_summary_extra");
+      if (!TextUtils.isEmpty(paramString)) {
+        paramMqqHandler.textSummary = paramString;
+      }
+      paramActivity.a = paramMqqHandler;
+    }
+    if (paramIntent.getBooleanExtra("HOT_PIC_HAS_EXTRA", false))
+    {
+      paramMqqHandler = new PicMessageExtraData();
+      paramMqqHandler.imageBizType = 2;
+      paramString = paramIntent.getStringExtra("forward_summary_extra");
+      if (!TextUtils.isEmpty(paramString)) {
+        paramMqqHandler.textSummary = paramString;
+      }
+      paramActivity.a = paramMqqHandler;
+    }
+    addStickerExtraData(paramIntent, paramActivity);
+    if (paramIntent.getBooleanExtra("forward_is_zhitu", false))
+    {
+      paramMqqHandler = new PicMessageExtraData();
+      paramMqqHandler.imageBizType = 4;
+      paramString = paramIntent.getStringExtra("forward_summary_extra");
+      if (!TextUtils.isEmpty(paramString)) {
+        paramMqqHandler.textSummary = paramString;
+      }
+      paramActivity.a = paramMqqHandler;
+    }
+    if (paramIntent.getBooleanExtra("forward_is_selfie_face", false))
+    {
+      paramMqqHandler = new PicMessageExtraData();
+      paramMqqHandler.imageBizType = 8;
+      paramString = paramIntent.getStringExtra("forward_summary_extra");
+      str1 = paramIntent.getStringExtra("widgetinfo");
+      if (!TextUtils.isEmpty(paramString)) {
+        paramMqqHandler.textSummary = paramString;
+      }
+      paramMqqHandler.mTemplateId = str1;
+      paramActivity.a = paramMqqHandler;
+    }
+    if (paramIntent.getBooleanExtra("forward_send_template_pic", false))
+    {
+      paramMqqHandler = paramIntent.getStringExtra("widgetinfo");
+      paramString = paramIntent.getStringExtra("key_camera_material_name");
+      if ((!TextUtils.isEmpty(paramMqqHandler)) || (!TextUtils.isEmpty(paramString)))
+      {
+        if (paramActivity.a == null) {
+          paramActivity.a = new PicMessageExtraData();
+        }
+        paramActivity.a.mTemplateId = paramMqqHandler;
+        paramActivity.a.mTemplateName = paramString;
+      }
+    }
+    if (paramIntent.getBooleanExtra("forward_is_tab_search_emo", false))
+    {
+      if (paramActivity.a == null) {
+        paramActivity.a = new PicMessageExtraData();
+      }
+      paramActivity.a.imageBizType = 12;
+    }
+    new aijb().a(paramQQAppInterface, paramSessionInfo, paramActivity);
+    paramActivity.c = paramInt;
+    ThreadManagerV2.executeOnSubThread(new ForwardUtils.3(paramActivity, paramQQAppInterface));
+  }
+  
+  private static void handleForwardPttCenter(QQAppInterface paramQQAppInterface, MqqHandler paramMqqHandler, SessionInfo paramSessionInfo, String paramString)
+  {
+    if (admh.a(paramQQAppInterface, paramSessionInfo, paramString) != -1L)
+    {
+      paramQQAppInterface = new Message();
+      paramQQAppInterface.what = 57;
+      if (paramMqqHandler != null) {
+        paramMqqHandler.sendMessage(paramQQAppInterface);
+      }
+    }
+  }
+  
+  private static void handleForwardShortVideo(QQAppInterface paramQQAppInterface, Intent paramIntent, int paramInt)
+  {
+    int i = 2;
+    int j = paramIntent.getIntExtra("from_busi_type", 0);
+    if (j == 1) {}
+    for (;;)
+    {
+      bcxr localbcxr = bcwz.a(3, i);
+      paramIntent = bcwz.a(i, paramIntent, localbcxr);
+      if (paramIntent != null) {
+        paramIntent.p = paramInt;
+      }
+      localbcxr.a(paramIntent);
+      bcwz.a(localbcxr, paramQQAppInterface);
+      return;
+      if (j == 2) {
+        i = 3;
+      } else {
+        i = 0;
+      }
+    }
+  }
+  
+  private static void handleForwardText(QQAppInterface paramQQAppInterface, Activity paramActivity, Context paramContext, Intent paramIntent, MqqHandler paramMqqHandler, SessionInfo paramSessionInfo, int paramInt)
+  {
+    Object localObject;
+    boolean bool1;
+    boolean bool2;
+    if (paramSessionInfo.curType == 9501)
+    {
+      paramContext = paramIntent.getStringExtra("forward_text");
+      paramMqqHandler = (abkw)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER);
+      localObject = (abgm)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
+      if (!TextUtils.isEmpty(paramContext))
+      {
+        paramSessionInfo.curFriendUin = paramIntent.getStringExtra("uin");
+        paramSessionInfo.curType = paramIntent.getIntExtra("uintype", -1);
+        bool1 = ((abgm)localObject).a(Long.parseLong(paramSessionInfo.curFriendUin)).booleanValue();
+        paramIntent = ((abgm)localObject).a(Long.parseLong(paramSessionInfo.curFriendUin));
+        bool2 = SettingCloneUtil.readValue(paramActivity, paramSessionInfo.curFriendUin, null, "devicemsg_openchat_firsttrue", false);
+        if ((bool2) || ((paramIntent.SSOBid_Platform != 1027) && ((StringUtil.isEmpty(paramIntent.SSOBid_Version)) || (Double.valueOf(paramIntent.SSOBid_Version).doubleValue() < 1.1D)))) {
+          break label207;
+        }
+        paramInt = 1;
+        SettingCloneUtil.writeValue(paramActivity, paramSessionInfo.curFriendUin, null, "devicemsg_openchat_firsttrue", true);
+      }
+    }
+    for (;;)
+    {
+      if ((bool1) && (paramInt != 0))
+      {
+        bool1 = true;
+        label195:
+        paramMqqHandler.a(paramQQAppInterface, paramSessionInfo, paramContext, bool1);
+      }
+      label207:
+      do
+      {
+        boolean[] arrayOfBoolean;
+        String str;
+        do
+        {
+          return;
+          if ((!bool2) && (!bool1)) {
+            break label421;
+          }
+          paramInt = 1;
+          break;
+          bool1 = false;
+          break label195;
+          paramActivity = paramIntent.getStringExtra("forward_text");
+          if (!TextUtils.isEmpty(paramActivity)) {
+            nty.a().a = true;
+          }
+          localObject = new admo();
+          ((admo)localObject).j = true;
+          arrayOfBoolean = paramIntent.getBooleanArrayExtra("forward_is_write_together");
+          str = paramIntent.getStringExtra("uin");
+          paramIntent = paramIntent.getBooleanArrayExtra("forward_write_together_is_expired");
+        } while ((arrayOfBoolean != null) && (arrayOfBoolean[0] != 0) && (paramSessionInfo.curType == 1) && (str.equals(paramSessionInfo.curFriendUin)) && (paramIntent != null) && (paramIntent[0] == 0));
+        paramContext = admh.a(paramQQAppInterface, paramContext, paramSessionInfo, paramActivity, null, (admo)localObject);
+        if ((paramContext != null) && (paramContext.length > 0) && (paramInt > 0))
+        {
+          long l = paramContext[0];
+          agfe.a().a(l, 0L, paramInt);
+          agfe.a().a(paramQQAppInterface, l, paramInt);
+        }
+        paramQQAppInterface = new Message();
+        paramQQAppInterface.what = 55;
+        paramQQAppInterface.obj = paramActivity;
+      } while (paramMqqHandler == null);
+      paramMqqHandler.sendMessage(paramQQAppInterface);
+      return;
+      label421:
+      paramInt = 0;
     }
   }
   
@@ -910,16 +984,16 @@ public class ForwardUtils
   
   public static boolean isImageLocalShare(AbsStructMsg paramAbsStructMsg)
   {
-    return ((paramAbsStructMsg instanceof StructMsgForImageShare)) && (!atpn.a());
+    return ((paramAbsStructMsg instanceof StructMsgForImageShare)) && (!auui.a());
   }
   
-  public static boolean isShareProcessorSuccess(ayep paramayep)
+  public static boolean isShareProcessorSuccess(azlb paramazlb)
   {
-    if (paramayep.jdField_a_of_type_Int != 0) {
+    if (paramazlb.jdField_a_of_type_Int != 0) {
       return false;
     }
-    paramayep = (String[])paramayep.jdField_a_of_type_JavaLangObject;
-    if ((paramayep != null) && (paramayep.length == 2)) {}
+    paramazlb = (String[])paramazlb.jdField_a_of_type_JavaLangObject;
+    if ((paramazlb != null) && (paramazlb.length == 2)) {}
     for (boolean bool = true;; bool = false) {
       return bool;
     }
@@ -963,7 +1037,7 @@ public class ForwardUtils
       oidb_cmd0xdc2.BatchSendRsp localBatchSendRsp = (oidb_cmd0xdc2.BatchSendRsp)paramList.next();
       if ((String.valueOf(localBatchSendRsp.recv_uin.get()).equals(paramString)) && (localBatchSendRsp.err_code.get() != 0))
       {
-        QLog.d("ForwardUtils", 1, new Object[] { "needSendComment uin=", bhwf.a(paramString), ", err_code=", Integer.valueOf(localBatchSendRsp.err_code.get()) });
+        QLog.d("ForwardUtils", 1, new Object[] { "needSendComment uin=", bjhh.a(paramString), ", err_code=", Integer.valueOf(localBatchSendRsp.err_code.get()) });
         return false;
       }
     }
@@ -972,7 +1046,7 @@ public class ForwardUtils
   
   public static void onForwardActivityResult(QQAppInterface paramQQAppInterface, Intent paramIntent, Activity paramActivity)
   {
-    paramIntent.putExtra("selfSet_leftViewText", paramQQAppInterface.getApplication().getString(2131718771));
+    paramIntent.putExtra("selfSet_leftViewText", paramQQAppInterface.getApplication().getString(2131719161));
     Intent localIntent = new Intent();
     localIntent.putExtras(new Bundle(paramIntent.getExtras()));
     handleForwardData(paramQQAppInterface, paramActivity, paramActivity, localIntent, null);
@@ -1041,7 +1115,7 @@ public class ForwardUtils
     Object[] arrayOfObject = new Object[4];
     arrayOfObject[0] = Integer.valueOf(0);
     arrayOfObject[1] = "";
-    arrayOfObject[2] = atpn.a;
+    arrayOfObject[2] = auui.a;
     arrayOfObject[3] = "";
     if (paramArrayOfByte == null)
     {
@@ -1081,7 +1155,7 @@ public class ForwardUtils
       paramArrayOfByte = "";
       continue;
       label207:
-      paramArrayOfByte = atpn.a;
+      paramArrayOfByte = auui.a;
       continue;
       label214:
       paramArrayOfByte = "";
@@ -1117,7 +1191,7 @@ public class ForwardUtils
     if (paramVarArgs == null) {}
     for (;;)
     {
-      bcef.b(paramQQAppInterface, "dc00898", "", "", paramString, paramString, paramInt, 0, str1, str2, str3, str4);
+      bdla.b(paramQQAppInterface, "dc00898", "", "", paramString, paramString, paramInt, 0, str1, str2, str3, str4);
       return;
       if (paramVarArgs.length == 1)
       {
@@ -1149,27 +1223,27 @@ public class ForwardUtils
     report(paramQQAppInterface, paramString, 0, paramVarArgs);
   }
   
-  public static void reportAuthorityTotal(int paramInt, biej parambiej)
+  public static void reportAuthorityTotal(int paramInt, bjpl parambjpl)
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("PARAM_ERROR_CODE", Integer.toString(paramInt));
-    atqa.a("KEY_LOGIN_STAGE_3_TOTAL", parambiej);
+    auuv.a("KEY_LOGIN_STAGE_3_TOTAL", parambjpl);
     if (paramInt == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      atqa.a("KEY_AUTHORITY_TOTAL", parambiej, localHashMap, bool);
+      auuv.a("KEY_AUTHORITY_TOTAL", parambjpl, localHashMap, bool);
       return;
     }
   }
   
   public static void reportLoginResult(int paramInt, String paramString1, String paramString2)
   {
-    QLog.d("ForwardUtils", 1, new Object[] { "reportLoginResult, errorCode=", Integer.valueOf(paramInt), ", appId=", paramString1, ", uin=*", bhwf.a(paramString2) });
+    QLog.d("ForwardUtils", 1, new Object[] { "reportLoginResult, errorCode=", Integer.valueOf(paramInt), ", appId=", paramString1, ", uin=*", bjhh.a(paramString2) });
     if (paramInt == 0) {}
     for (String str = "0";; str = "1") {
       try
       {
-        bhvw.a().a(paramString2, "", paramString1, "1", "3", str, true);
+        bjgx.a().a(paramString2, "", paramString1, "1", "3", str, true, true);
         return;
       }
       catch (Exception paramString1)
@@ -1216,7 +1290,7 @@ public class ForwardUtils
           localSessionInfo.curType = localResultRecord.getUinType();
           localSessionInfo.curFriendUin = localResultRecord.uin;
           localSessionInfo.troopUin = localResultRecord.groupUin;
-          acvv.b(localQQAppInterface, paramContext, localSessionInfo, paramString);
+          admh.b(localQQAppInterface, paramContext, localSessionInfo, paramString);
         }
       }
     }
@@ -1310,12 +1384,12 @@ public class ForwardUtils
         break label58;
       }
       if (!paramActivity.isDestroyed()) {
-        bfur.b(paramActivity, 230).setMessageWithUrl(paramString).setTitle(paramActivity.getString(2131717803)).setPositiveButton(17039370, paramOnClickListener).show();
+        bhdj.b(paramActivity, 230).setMessageWithUrl(paramString).setTitle(paramActivity.getString(2131718185)).setPositiveButton(17039370, paramOnClickListener).show();
       }
     }
     return;
     label58:
-    bfur.b(paramActivity, 230).setMessageWithUrl(paramString).setTitle(paramActivity.getString(2131717803)).setPositiveButton(17039370, paramOnClickListener).show();
+    bhdj.b(paramActivity, 230).setMessageWithUrl(paramString).setTitle(paramActivity.getString(2131718185)).setPositiveButton(17039370, paramOnClickListener).show();
   }
   
   public static String toType(int paramInt)
@@ -1345,7 +1419,7 @@ public class ForwardUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.ForwardUtils
  * JD-Core Version:    0.7.0.1
  */

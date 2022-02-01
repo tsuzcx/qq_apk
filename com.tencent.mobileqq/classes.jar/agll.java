@@ -1,34 +1,35 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
+import android.graphics.Bitmap;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class agll
-  implements View.OnTouchListener
+public abstract interface agll
 {
-  final afce jdField_a_of_type_Afce;
-  GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(new aglm(this));
-  View jdField_a_of_type_AndroidViewView = null;
+  public abstract Bitmap a(String paramString);
   
-  public agll(aglj paramaglj, afce paramafce)
-  {
-    this.jdField_a_of_type_Afce = paramafce;
-  }
+  public abstract FragmentActivity a();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (this.jdField_a_of_type_Afce != null) {
-      this.jdField_a_of_type_Afce.onTouch(paramView, paramMotionEvent);
-    }
-    if (this.jdField_a_of_type_AndroidViewGestureDetector != null)
-    {
-      this.jdField_a_of_type_AndroidViewView = paramView;
-      this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-      return true;
-    }
-    this.jdField_a_of_type_AndroidViewView = null;
-    return false;
-  }
+  public abstract View a();
+  
+  public abstract axge a();
+  
+  public abstract QQAppInterface a();
+  
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c();
+  
+  public abstract void i();
+  
+  public abstract void l();
 }
 
 

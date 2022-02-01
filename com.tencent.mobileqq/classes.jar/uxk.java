@@ -1,17 +1,61 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.weishi_new.util.OuterInterceptManager.1;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.View;
 
-public class uxk
-  implements DialogInterface.OnClickListener
+public class uxk<V extends uww, P extends uwz<V>>
+  implements uwy
 {
-  public uxk(OuterInterceptManager.1 param1) {}
+  private uwx<V, P> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public uxk(uwx<V, P> paramuwx)
   {
-    if (this.a.a != null) {
-      this.a.a.d();
+    if (paramuwx == null) {
+      throw new NullPointerException("IWSDelegateCallback is null!");
     }
+    this.a = paramuwx;
+  }
+  
+  private V a()
+  {
+    uww localuww = this.a.a();
+    if (localuww == null) {
+      throw new NullPointerException("View returned from getMvpView() is null");
+    }
+    return localuww;
+  }
+  
+  private P a()
+  {
+    uwz localuwz = this.a.b();
+    if (localuwz == null) {
+      throw new NullPointerException("Presenter returned from getPresenter() is null");
+    }
+    return localuwz;
+  }
+  
+  public void a()
+  {
+    a().a();
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    uwz localuwz = this.a.b();
+    paramBundle = localuwz;
+    if (localuwz == null) {
+      paramBundle = this.a.a();
+    }
+    this.a.a(paramBundle);
+  }
+  
+  public void a(View paramView, @Nullable Bundle paramBundle)
+  {
+    a().a(a());
+  }
+  
+  public void b()
+  {
+    a().b();
   }
 }
 

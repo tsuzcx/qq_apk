@@ -1,23 +1,36 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import java.util.ArrayList;
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
 
-final class aork
-  extends aosv
+class aork
+  implements View.OnTouchListener
 {
-  aork(String paramString, ArrayList paramArrayList)
-  {
-    super(paramString);
-  }
+  aork(aorg paramaorg, ImageView paramImageView) {}
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramBoolean)
+    int i;
+    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0))
     {
-      paramBundle = paramBundle.getString("userInfo", null);
-      if (!TextUtils.isEmpty(paramBundle)) {
-        this.a.add(paramBundle);
+      if (paramMotionEvent.getAction() != 1) {
+        break label45;
       }
+      i = 255;
+      if (Build.VERSION.SDK_INT < 16) {
+        break label51;
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(i);
+    }
+    for (;;)
+    {
+      return false;
+      label45:
+      i = 127;
+      break;
+      label51:
+      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(i);
     }
   }
 }

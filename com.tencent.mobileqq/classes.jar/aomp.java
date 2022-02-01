@@ -1,13 +1,18 @@
+import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class aomp
-  implements DialogInterface.OnClickListener
+class aomp
+  implements DialogInterface.OnCancelListener
 {
-  public aomp(ARScanEntryView paramARScanEntryView) {}
+  aomp(aomk paramaomk, Activity paramActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    QLog.d("AccountIdentityManager", 1, "dialog cancel");
+    aomk.a(this.jdField_a_of_type_Aomk, this.jdField_a_of_type_AndroidAppActivity);
+  }
 }
 
 

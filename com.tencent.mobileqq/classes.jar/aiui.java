@@ -1,22 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import com.tencent.pb.addcontacts.AccountSearchPb.ResultItem;
+import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
 
-class aiui
-  implements QQPermissionCallback
+public class aiui
 {
-  aiui(aitt paramaitt) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.i("SDKEmotionSettingManager", 1, "setEmotion denied sd grant");
-    bfur.a(aitt.a(this.a), new aiuj(this));
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.i("SDKEmotionSettingManager", 1, "setEmotion user grant");
-    aitt.a(this.a, aitt.b(this.a));
-  }
+  public int a;
+  public AccountSearchPb.ResultItem a;
+  public AccountSearchPb.hotwordrecord a;
+  public AccountSearchPb.record a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
 }
 
 

@@ -1,22 +1,25 @@
-import com.tencent.mobileqq.colornote.anim.MusicDanceDrawable;
+import java.util.ArrayList;
 
 public class aplc
+  extends aplo
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  private int c;
-  private int d;
+  public long a;
+  public ArrayList<apgl> a;
+  public boolean a;
   
-  private aplc(MusicDanceDrawable paramMusicDanceDrawable, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public aplc()
   {
-    this.b = paramInt1;
-    this.c = paramInt2;
-    this.d = paramInt3;
+    this.b = 4L;
+    this.jdField_a_of_type_JavaUtilArrayList = null;
   }
   
-  public void a(int paramInt)
+  public String toString()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    StringBuilder localStringBuilder = new StringBuilder().append("ARLocalFaceRecogResult{recogType = ").append(this.b).append(",isTimeOut = ").append(this.jdField_a_of_type_Boolean).append(",frameIdx = ").append(this.jdField_a_of_type_Long).append(", faceDatas.size = ");
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {}
+    for (int i = this.jdField_a_of_type_JavaUtilArrayList.size();; i = 0) {
+      return i + '}';
+    }
   }
 }
 

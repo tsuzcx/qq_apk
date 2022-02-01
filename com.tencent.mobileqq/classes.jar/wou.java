@@ -1,57 +1,38 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.entrance.ProfileFeedPlayInfo;
-import java.util.Iterator;
-import java.util.List;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.widget.ARMapHongBaoListView;
 
-public class wou
-  extends wnr<ProfileFeedPlayInfo>
+class wou
+  extends RecyclerView.OnScrollListener
 {
-  public wou(ProfileFeedPlayInfo paramProfileFeedPlayInfo)
-  {
-    super(paramProfileFeedPlayInfo);
-    paramProfileFeedPlayInfo = (xnp)vux.a(11);
-    if (paramProfileFeedPlayInfo.b != null) {
-      this.a = paramProfileFeedPlayInfo.b;
-    }
-  }
+  boolean jdField_a_of_type_Boolean = false;
   
-  public xnh a(String paramString)
+  wou(woo paramwoo) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (this.a == null) {
-      return null;
-    }
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
+    if (paramInt == 0)
     {
-      xnh localxnh = (xnh)localIterator.next();
-      if (localxnh.a.equals(paramString)) {
-        return localxnh;
+      if ((paramRecyclerView.findLastCompletelyVisibleItemPosition() == paramRecyclerView.getItemCount() - 1) && (this.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_Woo.jdField_a_of_type_Woa.d();
       }
+      return;
     }
-    return null;
+    woo.a(this.jdField_a_of_type_Woo);
   }
   
-  public void a(boolean paramBoolean, int paramInt, woj paramwoj)
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    if (this.a == null)
+    if (paramInt1 > 0) {}
+    for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
     {
-      paramwoj.a(new ErrorMessage(940001, "null point"), null, true);
+      if (this.jdField_a_of_type_Woo.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.isDirty()) {
+        this.jdField_a_of_type_Woo.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.invalidate();
+      }
       return;
     }
-    Object localObject = this.a.jdField_a_of_type_JavaUtilList;
-    if ((paramBoolean) && (((List)localObject).size() > 0))
-    {
-      List localList = b((List)localObject);
-      paramwoj.a(new ErrorMessage(), localList, this.a.jdField_a_of_type_Boolean);
-      xvv.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "return cache data size %d", Integer.valueOf(((List)localObject).size()));
-      return;
-    }
-    localObject = new weo();
-    ((weo)localObject).a = this.a.a();
-    ((weo)localObject).b = QQStoryContext.a().b();
-    xvv.c("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "start request with cookie " + ((weo)localObject).a);
-    vqn.a().a((vqr)localObject, new wov(this, paramwoj));
   }
 }
 

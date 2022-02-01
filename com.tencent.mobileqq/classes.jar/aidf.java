@@ -1,50 +1,84 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.connections.ConnectsExplorationBanner;
-import com.tencent.widget.SimpleTextView;
+import android.content.Context;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
 class aidf
-  extends bjub
+  extends aodm
 {
-  aidf(aidb paramaidb, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
-  {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
-  }
+  aidf(aidd paramaidd) {}
   
-  public View a(int paramInt, Object paramObject, bjua parambjua, View.OnClickListener paramOnClickListener)
+  protected void a(boolean paramBoolean, List<Long> paramList)
   {
-    parambjua = super.a(paramInt, paramObject, parambjua, paramOnClickListener);
-    if ((parambjua instanceof SimpleTextView)) {
-      parambjua.setTag(paramObject);
-    }
-    return parambjua;
-  }
-  
-  public void a(int paramInt, Object paramObject, bjua[] paramArrayOfbjua)
-  {
-    int i = 0;
-    if ((paramArrayOfbjua == null) || (paramArrayOfbjua.length <= 0)) {}
-    for (;;)
+    ChatActivityUtils.b();
+    Object localObject = this.a.mContext;
+    Context localContext = this.a.mContext;
+    int i;
+    if (paramBoolean)
     {
-      return;
-      paramInt = i;
-      if (paramArrayOfbjua.length < 0)
-      {
-        paramInt = i;
-        if (!(paramObject instanceof ConnectsExplorationBanner))
-        {
-          paramArrayOfbjua[0].b = 0;
-          paramArrayOfbjua[0].a = 0;
-          paramInt = 1;
-        }
-      }
-      while (paramInt < paramArrayOfbjua.length)
-      {
-        paramArrayOfbjua[paramInt].b = -1;
-        paramArrayOfbjua[paramInt].a = -1;
-        paramInt += 1;
+      i = 2131718816;
+      QQToast.a((Context)localObject, 2, localContext.getString(i), 0).b(this.a.getTitleBarHeight());
+      if (this.a.sessionInfo != null) {
+        break label69;
       }
     }
+    label69:
+    do
+    {
+      int k;
+      do
+      {
+        return;
+        i = 2131718805;
+        break;
+        localObject = this.a.sessionInfo.curFriendUin;
+        if (paramList == null) {}
+        for (i = 0;; i = paramList.size())
+        {
+          int j = 0;
+          k = 0;
+          while ((k == 0) && (j < i))
+          {
+            if (bhbx.a(String.valueOf(paramList.get(j)), localObject)) {
+              k = 1;
+            }
+            j += 1;
+          }
+        }
+      } while (k == 0);
+      ChatActivityUtils.a(this.a.mActivity, paramBoolean, false);
+    } while (!paramBoolean);
+    this.a.updateAddFriendAndShieldView();
+  }
+  
+  protected void b(boolean paramBoolean, List<Long> paramList)
+  {
+    int k = 0;
+    ChatActivityUtils.b();
+    if (this.a.sessionInfo == null) {}
+    do
+    {
+      do
+      {
+        return;
+        String str = this.a.sessionInfo.curFriendUin;
+        if (paramList == null) {}
+        for (int i = 0;; i = paramList.size())
+        {
+          int j = 0;
+          while ((k == 0) && (j < i))
+          {
+            if (bhbx.a(String.valueOf(paramList.get(j)), str)) {
+              k = 1;
+            }
+            j += 1;
+          }
+        }
+      } while (k == 0);
+      ChatActivityUtils.b();
+    } while (!paramBoolean);
+    this.a.updateAddFriendAndShieldView();
   }
 }
 

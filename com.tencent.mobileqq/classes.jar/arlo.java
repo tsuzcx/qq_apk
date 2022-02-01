@@ -1,29 +1,38 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment.2.1;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
-public class arlo
-  extends amsu
+class arlo
+  extends ClickableSpan
 {
-  public arlo(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
+  arlo(arln paramarln, String paramString1, String paramString2) {}
   
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendSearchFragment", 2, String.format("onUpdateAddFriend isSuccess=%s addSuccess=%s reqestUin=%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), paramString }));
+    if (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Arln.d.c)) {
+      bhha.a(this.jdField_a_of_type_JavaLangString, BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramView.getContext());
     }
-    paramString = this.a.a.a(this.a.c);
-    if ((paramString != null) && (!paramString.mAddFriendVerified))
+    for (;;)
     {
-      paramString.mAddFriendVerified = true;
-      ExtendFriendSearchFragment.a(this.a).post(new ExtendFriendSearchFragment.2.1(this));
+      arln.a("0X800AE67", this.b, "");
+      return;
+      bhoy.a(paramView.getContext(), this.jdField_a_of_type_JavaLangString);
     }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(Color.parseColor("#4D94FF"));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arlo
  * JD-Core Version:    0.7.0.1
  */

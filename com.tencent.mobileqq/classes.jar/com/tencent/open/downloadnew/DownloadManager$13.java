@@ -1,11 +1,11 @@
 package com.tencent.open.downloadnew;
 
 import android.text.TextUtils;
-import bfng;
-import bhzm;
-import bhzn;
-import bias;
-import biby;
+import bgvx;
+import bjko;
+import bjkp;
+import bjlu;
+import bjna;
 import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 import java.io.File;
@@ -14,7 +14,7 @@ import protocol.KQQConfig.UpgradeInfo;
 public class DownloadManager$13
   implements Runnable
 {
-  public DownloadManager$13(biby parambiby, DownloadInfo paramDownloadInfo) {}
+  public DownloadManager$13(bjna parambjna, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
@@ -27,10 +27,10 @@ public class DownloadManager$13
         if ("com.tencent.mobileqq".equals(this.a.jdField_e_of_type_JavaLangString))
         {
           File localFile = new File(this.a.l);
-          UpgradeDetailWrapper localUpgradeDetailWrapper = bfng.a().a();
+          UpgradeDetailWrapper localUpgradeDetailWrapper = bgvx.a().a();
           if ((localFile.exists()) && (localUpgradeDetailWrapper != null))
           {
-            String str = bhzn.a(localFile);
+            String str = bjkp.a(localFile);
             if (!TextUtils.equals(localUpgradeDetailWrapper.a.strNewSoftwareMD5.toUpperCase(), str.toUpperCase()))
             {
               this.this$0.a(this.a, -51, "download file md5 check failed(not patche)");
@@ -40,16 +40,16 @@ public class DownloadManager$13
           }
         }
         this.a.jdField_c_of_type_Long = localTMAssistantDownloadTaskInfo.mTotalDataLen;
-        bhzm.b("DownloadManager_", "onDownload complete, info.filePath = " + this.a.l);
+        bjko.b("DownloadManager_", "onDownload complete, info.filePath = " + this.a.l);
         if ((!"com.tencent.mobileqq".equals(this.a.jdField_e_of_type_JavaLangString)) || (!this.this$0.b())) {
           break label388;
         }
-        bhzm.c("DownloadManager_", "QQ Download complete begin write code ......");
+        bjko.c("DownloadManager_", "QQ Download complete begin write code ......");
         this.a.j = this.this$0.a(this.a);
         if (this.a.j == 0) {
           break label338;
         }
-        bhzm.c("DownloadManager_", "QQ apk write code fail......");
+        bjko.c("DownloadManager_", "QQ apk write code fail......");
         this.a.jdField_e_of_type_Int = -2;
         this.this$0.e(this.a);
         this.this$0.a(this.a, this.a.j, null);
@@ -57,25 +57,25 @@ public class DownloadManager$13
     }
     catch (Exception localException)
     {
-      bhzm.c("DownloadManager_", "downloadSDKClient>>>", localException);
+      bjko.c("DownloadManager_", "downloadSDKClient>>>", localException);
       for (;;)
       {
-        bias.a("300", this.a.h, this.a.jdField_c_of_type_JavaLangString, this.a.o);
+        bjlu.a("300", this.a.h, this.a.jdField_c_of_type_JavaLangString, this.a.o);
         if (!this.a.a) {
           break;
         }
         this.this$0.c(this.a);
         return;
         label338:
-        bhzm.c("DownloadManager_", "QQ apk code suc......");
+        bjko.c("DownloadManager_", "QQ apk code suc......");
         this.this$0.e(this.a);
         this.this$0.a(4, this.a);
         long l = localException.mTotalDataLen;
         this.this$0.a(this.a, l);
       }
       label388:
-      bhzm.c("DownloadManager_", this.a.jdField_e_of_type_JavaLangString + " Download complete begin write code ......");
-      biby.a(this.this$0, this.a);
+      bjko.c("DownloadManager_", this.a.jdField_e_of_type_JavaLangString + " Download complete begin write code ......");
+      bjna.a(this.this$0, this.a);
     }
   }
 }

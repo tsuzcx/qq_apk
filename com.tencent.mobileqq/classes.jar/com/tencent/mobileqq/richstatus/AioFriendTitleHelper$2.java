@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.richstatus;
 
 import android.widget.TextView;
-import bamd;
+import bbss;
 
 public class AioFriendTitleHelper$2
   implements Runnable
 {
-  public AioFriendTitleHelper$2(bamd parambamd, boolean paramBoolean, String paramString) {}
+  public AioFriendTitleHelper$2(bbss parambbss, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
-    bamd.a(this.this$0, this.jdField_a_of_type_Boolean);
+    bbss.a(this.this$0, this.jdField_a_of_type_Boolean);
     if ((!this.this$0.c()) || (!this.jdField_a_of_type_Boolean))
     {
-      bamd.a(this.this$0).setText(this.jdField_a_of_type_JavaLangString);
+      bbss.a(this.this$0).setText(this.jdField_a_of_type_JavaLangString);
       this.this$0.b(this.jdField_a_of_type_JavaLangString);
     }
   }

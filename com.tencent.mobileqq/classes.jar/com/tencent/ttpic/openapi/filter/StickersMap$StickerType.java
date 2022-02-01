@@ -12,6 +12,7 @@ public final class StickersMap$StickerType
   public static final String CUSTOMAFTER = "customAfter";
   public static final String CUSTOMBEFORE = "customBefore";
   public static final String CUSTOM_GROUP = "customGroup";
+  public static final String DEPTH_SMOKE = "depthSmoke";
   public static final String DYNAMIC = "dynamic";
   public static final String EXPRESSION = "expression";
   public static final String FABBYMV = "mv";
@@ -31,6 +32,7 @@ public final class StickersMap$StickerType
   public static final String MULTIVIEW = "multiview";
   public static final String PARTICLE = "particle";
   public static final String PHANTOM = "phantom";
+  public static final String PLUGIN_FILTER = "pluginFilter";
   public static final String RAPIDNET = "styleChange";
   public static final String SKY = "skySegment";
   public static final String STICKERAFTER = "stickerAfter";
@@ -41,6 +43,7 @@ public final class StickersMap$StickerType
   public static final String TDPARTICLE = "tdParticle";
   public static final String TRIGGERLUTAFTER = "triggerLutAfter";
   public static final String TRIGGERLUTBEFORE = "triggerLutBefore";
+  public static final String UV_EDIT_FILTER = "uvEditFilter";
   public static final String ZOOM = "zoom";
 }
 

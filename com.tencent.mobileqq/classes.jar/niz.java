@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.avgame.ui.AvGameLoadingActivity;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.avgame.gameroom.gamelist.GameGridItemView;
 
-public class niz
-  implements DialogInterface.OnClickListener
+class niz
+  extends RecyclerView.ViewHolder
 {
-  public niz(AvGameLoadingActivity paramAvGameLoadingActivity) {}
+  GameGridItemView a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public niz(View paramView, GameGridItemView paramGameGridItemView)
   {
-    this.a.a();
+    super(paramView);
+    this.a = paramGameGridItemView;
   }
 }
 

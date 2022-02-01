@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import afii;
+import afzn;
 import android.text.Editable;
 import android.text.SpannableString;
-import bcef;
-import bevq;
+import bdla;
+import bgcz;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.widget.XEditTextEx;
 import com.tencent.widget.XPanelContainer;
@@ -12,7 +12,7 @@ import com.tencent.widget.XPanelContainer;
 public class BaseTroopChatPie$5
   implements Runnable
 {
-  public BaseTroopChatPie$5(afii paramafii, boolean paramBoolean, String paramString1, String paramString2, int paramInt) {}
+  public BaseTroopChatPie$5(afzn paramafzn, boolean paramBoolean, String paramString1, String paramString2, int paramInt) {}
   
   public void run()
   {
@@ -22,7 +22,7 @@ public class BaseTroopChatPie$5
       i = this.this$0.input.getSelectionStart();
       this.this$0.input.getEditableText().delete(i - 1, i);
     }
-    SpannableString localSpannableString = bevq.a(this.this$0.app, this.this$0.mActivity, this.this$0.sessionInfo.curFriendUin, this.jdField_a_of_type_JavaLangString, this.b, this.this$0.b(), this.this$0.input, true);
+    SpannableString localSpannableString = bgcz.a(this.this$0.app, this.this$0.mActivity, this.this$0.sessionInfo.curFriendUin, this.jdField_a_of_type_JavaLangString, this.b, this.this$0.b(), this.this$0.input, true);
     if ((localSpannableString == null) || (localSpannableString.length() == 0)) {}
     do
     {
@@ -36,16 +36,16 @@ public class BaseTroopChatPie$5
       this.this$0.root.a(1);
       if (this.jdField_a_of_type_Int == 1)
       {
-        bcef.b(this.this$0.app, "P_CliOper", "Grp_AIO", "", "AIOchat", "Press_AIOhead_sendatmsg", 0, 0, this.this$0.sessionInfo.curFriendUin, "", "", "");
+        bdla.b(this.this$0.app, "P_CliOper", "Grp_AIO", "", "AIOchat", "Press_AIOhead_sendatmsg", 0, 0, this.this$0.sessionInfo.curFriendUin, "", "", "");
         return;
       }
     } while (this.jdField_a_of_type_Int != 4);
     if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("0")))
     {
-      bcef.b(this.this$0.app, "P_CliOper", "Grp_AIO", "", "AIOchat", "Clk_atallmber_sendatallmsg", 0, 0, this.this$0.sessionInfo.curFriendUin, "", "", "");
+      bdla.b(this.this$0.app, "P_CliOper", "Grp_AIO", "", "AIOchat", "Clk_atallmber_sendatallmsg", 0, 0, this.this$0.sessionInfo.curFriendUin, "", "", "");
       return;
     }
-    bcef.b(this.this$0.app, "P_CliOper", "Grp_AIO", "", "AIOchat", "Input_atmber_sendatmsg", 0, 0, this.this$0.sessionInfo.curFriendUin, "", "", "");
+    bdla.b(this.this$0.app, "P_CliOper", "Grp_AIO", "", "AIOchat", "Input_atmber_sendatmsg", 0, 0, this.this$0.sessionInfo.curFriendUin, "", "", "");
   }
 }
 

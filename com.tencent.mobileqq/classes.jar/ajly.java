@@ -1,52 +1,42 @@
-import android.os.Handler;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.contacts.phone.PhoneContactFragment;
 import com.tencent.qphone.base.util.QLog;
 
 public class ajly
-  extends aycd
+  extends azip
 {
-  public ajly(BindVerifyActivity paramBindVerifyActivity) {}
+  private ajly(PhoneContactFragment paramPhoneContactFragment) {}
   
-  protected void f(boolean paramBoolean, int paramInt)
+  private void g(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("BindVerifyActivity", 2, "onVerifyBindSms [" + paramBoolean + ", " + paramInt + "]");
+      QLog.d("PhoneContactFragment", 2, String.format("refreshResult [%s]", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
-    BindVerifyActivity.a(this.a, false);
-    BindVerifyActivity.a(this.a).removeMessages(4);
-    this.a.b();
-    if (!paramBoolean)
+    if (this.a.c)
     {
-      this.a.a("dc00898", "0X8009F19", 0);
-      this.a.a(1, this.a.getString(2131717686));
+      if (PhoneContactFragment.a(this.a) != null) {
+        PhoneContactFragment.b(this.a).a(this.a.b(), paramBoolean, null);
+      }
+      if (paramBoolean) {
+        this.a.c();
+      }
+      this.a.c = false;
     }
-    for (;;)
-    {
-      this.a.app.unRegistObserver(BindVerifyActivity.b(this.a));
-      BindVerifyActivity.b(this.a, null);
-      return;
-      if ((paramInt == 0) || (paramInt == 106))
-      {
-        this.a.a();
-      }
-      else if (paramInt == 213)
-      {
-        this.a.a("dc00898", "0X8009F19", 0);
-        this.a.a(1, amtj.a(2131700294));
-        BindVerifyActivity.a(this.a).setEnabled(true);
-      }
-      else
-      {
-        this.a.a("dc00898", "0X8009F19", 0);
-        String str = amtj.a(2131700289);
-        if (paramInt == 107) {
-          str = amtj.a(2131700291);
-        }
-        this.a.a(amtj.a(2131700295), str);
-      }
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContactFragment", 2, String.format("onQueryBindState [%s, %s]", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) }));
     }
+    g(paramBoolean1);
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContactFragment", 2, String.format("onHideContact [%s]", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    this.a.c();
   }
 }
 

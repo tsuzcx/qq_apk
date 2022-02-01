@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.2.1;
-
-public class aobl
-  extends apak
+class aobl
+  implements lxy
 {
-  aobl(aobk paramaobk) {}
+  aobl(aobd paramaobd, byte[] paramArrayOfByte) {}
   
-  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat)
+  public void a(lxx paramlxx)
   {
-    aobk.a(this.a).a(new ARTransferPromotionRenderable.2.1(this, paramArrayOfFloat));
+    paramlxx.a(this.jdField_a_of_type_ArrayOfByte);
+    paramlxx.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aobl
  * JD-Core Version:    0.7.0.1
  */

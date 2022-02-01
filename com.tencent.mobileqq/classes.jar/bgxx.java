@@ -1,23 +1,32 @@
-import android.os.SystemClock;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class bgxx
+final class bgxx
+  implements DownloadParams.DecodeHandler
 {
-  final long a;
-  public final String a;
-  public final String b;
-  public final String c;
-  
-  bgxx(String paramString1, String paramString2, String paramString3)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-  }
-  
-  boolean a()
-  {
-    return SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long > 300000L;
+    if (QLog.isColorLevel()) {
+      QLog.d("URLDrawableDecodeHandler", 2, "PART_ROUND_CORNER_DECODER");
+    }
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
+    }
+    Object localObject;
+    do
+    {
+      do
+      {
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 3);
+    paramDownloadParams = (int[])localObject;
+    return bheg.e(paramBitmap, paramDownloadParams[0], paramDownloadParams[1], paramDownloadParams[2]);
   }
 }
 

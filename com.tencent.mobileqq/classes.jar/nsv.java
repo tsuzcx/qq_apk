@@ -1,21 +1,24 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 class nsv
-  implements Animation.AnimationListener
+  implements AbsListView.OnScrollListener
 {
-  nsv(nst paramnst) {}
+  nsv(nst paramnst, PoiMapActivity paramPoiMapActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    this.a.a.a.setVisibility(0);
-    this.a.a.a.startAnimation(this.a.b);
+    if ((paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (this.jdField_a_of_type_Nst.jdField_a_of_type_Nsq.b))
+    {
+      this.jdField_a_of_type_Nst.b(false);
+      if (!PoiMapActivity.b(this.jdField_a_of_type_Nst.jdField_a_of_type_ComTencentBizPoiMapActivity)) {
+        this.jdField_a_of_type_Nst.jdField_a_of_type_ComTencentBizPoiMapActivity.a("share_locate", "turn_page", this.jdField_a_of_type_Nst.jdField_a_of_type_ComTencentBizPoiMapActivity.f, this.jdField_a_of_type_Nst.jdField_a_of_type_ComTencentBizPoiMapActivity.e, "", "");
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

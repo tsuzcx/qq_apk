@@ -1,22 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import mqq.app.AppActivity;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aecz
-  implements DialogInterface.OnClickListener
+  extends anvi
 {
-  public aecz(RegisterPhoneNumActivity paramRegisterPhoneNumActivity, AppActivity paramAppActivity) {}
+  public aecz(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if (paramInt == 1)
-    {
-      RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity, true);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity.a.a(this.jdField_a_of_type_MqqAppAppActivity, false)) {
-        RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity).b();
-      }
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (!paramString.equals(this.a.app.getCurrentAccountUin()))) {}
+    while (this.a.a == null) {
+      return;
     }
+    paramString = this.a.app.getFaceBitmap(this.a.app.getCurrentAccountUin(), (byte)3, false);
+    this.a.a.setImageBitmap(paramString);
   }
 }
 

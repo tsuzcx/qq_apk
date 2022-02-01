@@ -1,18 +1,21 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.widget.SingleLineTextView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
 
 class airz
-  extends aliz
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public MayKnowRecommend a;
-  public SingleLineTextView a;
-  public SingleLineTextView b;
+  airz(airw paramairw) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = (FrameLayout.LayoutParams)this.a.a.a.getLayoutParams();
+    paramValueAnimator.topMargin = i;
+    this.a.a.a.setLayoutParams(paramValueAnimator);
+  }
 }
 
 

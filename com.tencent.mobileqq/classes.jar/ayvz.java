@@ -1,23 +1,70 @@
-import android.animation.TypeEvaluator;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.OnScaleGestureListener;
 
-class ayvz
-  implements TypeEvaluator
+public class ayvz
+  extends ScaleGestureDetector
 {
-  ayvz(ayvw paramayvw) {}
+  private float a;
+  private float b;
   
-  public Object evaluate(float paramFloat, Object paramObject1, Object paramObject2)
+  public ayvz(Context paramContext, ScaleGestureDetector.OnScaleGestureListener paramOnScaleGestureListener)
   {
-    paramFloat = 3.0F * paramFloat;
-    if (paramFloat <= 0.45F) {
-      return Float.valueOf(1.0F - paramFloat / 0.45F * 0.6F);
+    super(paramContext, paramOnScaleGestureListener);
+    a();
+  }
+  
+  private void a()
+  {
+    long l = System.currentTimeMillis();
+    MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
+    onTouchEvent(localMotionEvent);
+    localMotionEvent.recycle();
+  }
+  
+  @TargetApi(19)
+  private boolean a()
+  {
+    return (Build.VERSION.SDK_INT >= 19) && (isQuickScaleEnabled()) && (getCurrentSpan() == getCurrentSpanY());
+  }
+  
+  public float getScaleFactor()
+  {
+    float f2 = 1.0F;
+    float f3 = super.getScaleFactor();
+    if (a())
+    {
+      float f1;
+      if ((this.a <= this.b) || (f3 <= 1.0F))
+      {
+        f1 = f2;
+        if (this.a < this.b)
+        {
+          f1 = f2;
+          if (f3 >= 1.0F) {}
+        }
+      }
+      else
+      {
+        f1 = Math.max(0.8F, Math.min(f3, 1.25F));
+      }
+      return f1;
     }
-    if (paramFloat <= 1.3F) {
-      return Double.valueOf((paramFloat - 0.45F) / 0.85F * 0.6F + 0.4D);
+    return f3;
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.onTouchEvent(paramMotionEvent);
+    this.b = this.a;
+    this.a = paramMotionEvent.getY();
+    if (paramMotionEvent.getActionMasked() == 0) {
+      this.b = paramMotionEvent.getY();
     }
-    if (paramFloat <= 2.45F) {
-      return Float.valueOf(1.0F - (paramFloat - 1.3F) / 1.15F * 0.6F);
-    }
-    return Double.valueOf((paramFloat - 2.45F) / 0.55F * 0.6F + 0.4D);
+    return bool;
   }
 }
 

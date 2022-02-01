@@ -1,14 +1,41 @@
-abstract class aoqo
-  implements aopq
+public class aoqo
+  implements aoqr
 {
-  public boolean a()
+  public void a(anyz paramanyz, int paramInt, boolean paramBoolean, Object paramObject, Object[] paramArrayOfObject, anza paramanza)
   {
-    return false;
-  }
-  
-  public String b()
-  {
-    return null;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 6005: 
+      paramanyz.getOfflineFinish(paramBoolean);
+      return;
+    case 6004: 
+      paramanyz.pushReadedNotify(paramBoolean, paramObject);
+      return;
+    case 6006: 
+      paramanyz.getOfflineStart(paramBoolean);
+      return;
+    case 6003: 
+      paramanyz.sendResult(paramBoolean, paramArrayOfObject);
+      return;
+    case 6001: 
+      paramanyz.reqInsertBlacklist(paramBoolean, paramObject);
+      return;
+    case 6002: 
+      paramanyz.reqDeleteBlacklist(paramBoolean, (Object[])paramObject);
+      return;
+    case 6007: 
+      paramanyz.pcOnlinesStatus(paramArrayOfObject);
+      return;
+    case 5006: 
+      paramanyz.richSendNotifyMsg(paramBoolean, paramArrayOfObject, paramanza);
+      return;
+    case 5012: 
+      paramanyz.c2cOnlineFile(paramBoolean, paramArrayOfObject);
+      return;
+    }
+    paramanyz.updateSecretfileStatus();
   }
 }
 

@@ -1,17 +1,28 @@
-import android.util.Pair;
-import java.net.URL;
+import android.os.Bundle;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function2;
+import org.jetbrains.annotations.Nullable;
 
-public class pgu
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/helper/RIJBiuNetworkHelper$requestBiuAfterComment$1", "Lcom/tencent/biz/ProtoUtils$TroopProtocolObserver;", "onError", "", "errorCode", "", "errorMsg", "", "bundle", "Landroid/os/Bundle;", "onResult", "", "data", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pgu
+  extends ntf
 {
-  public Pair<Integer, Integer> a;
-  public URL a;
+  pgu(Function2 paramFunction2) {}
   
-  public static pgu a(URL paramURL, Pair<Integer, Integer> paramPair)
+  public void a(int paramInt, @Nullable byte[] paramArrayOfByte, @Nullable Bundle paramBundle)
   {
-    pgu localpgu = new pgu();
-    localpgu.jdField_a_of_type_JavaNetURL = paramURL;
-    localpgu.jdField_a_of_type_AndroidUtilPair = paramPair;
-    return localpgu;
+    if ((paramInt == 0) && (paramArrayOfByte != null))
+    {
+      this.a.invoke(Boolean.valueOf(true), Integer.valueOf(paramInt));
+      return;
+    }
+    this.a.invoke(Boolean.valueOf(false), Integer.valueOf(paramInt));
+  }
+  
+  public boolean a(int paramInt, @Nullable String paramString, @Nullable Bundle paramBundle)
+  {
+    this.a.invoke(Boolean.valueOf(false), Integer.valueOf(paramInt));
+    return true;
   }
 }
 

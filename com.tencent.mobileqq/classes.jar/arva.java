@@ -1,31 +1,7 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
+import kotlin.Metadata;
 
-public class arva
-  implements ActionMode.Callback
-{
-  public arva(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
-  
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
-  {
-    return false;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/data/MessageForTofuAskAnonymously$Companion;", "", "()V", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class arva {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

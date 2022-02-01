@@ -1,24 +1,24 @@
 package dov.com.qq.im.aeeditor.module.music;
 
-import bmbx;
-import bmlf;
-import bmli;
+import bnrh;
+import boax;
+import boba;
 
 public class AEEditorLyricPanelDialog$3$1
   implements Runnable
 {
-  public AEEditorLyricPanelDialog$3$1(bmli parambmli) {}
+  public AEEditorLyricPanelDialog$3$1(boba paramboba) {}
   
   public void run()
   {
     try
     {
-      bmlf.a(this.a.a);
+      boax.a(this.a.a);
       return;
     }
     catch (Exception localException)
     {
-      bmbx.a("AEEditorLyricPanelDialog", "[animationDown], Dialog.dismiss() raised exception", localException);
+      bnrh.a("AEEditorLyricPanelDialog", "[animationDown], Dialog.dismiss() raised exception", localException);
     }
   }
 }

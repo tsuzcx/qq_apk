@@ -1,20 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
 
-final class bdgo
-  implements DialogInterface.OnClickListener
+public abstract interface bdgo
 {
-  bdgo(bdgq parambdgq) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.a != null) {
-      this.a.a(paramInt);
-    }
-    bdgn.a().edit().putBoolean("KEY_WRITE_TOGETHER_IS_FIRST_USE_", false).apply();
-  }
+  public abstract void a(int paramInt, SoConfig.SoInfo paramSoInfo);
 }
 
 

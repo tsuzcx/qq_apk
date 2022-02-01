@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.vashealth;
 
-import bgmm;
-import bgmr;
+import bhww;
+import bhxb;
 
 public class SportManager$3$1
   implements Runnable
 {
-  public SportManager$3$1(bgmr parambgmr, String paramString) {}
+  public SportManager$3$1(bhxb parambhxb, String paramString) {}
   
   public void run()
   {
-    bgmm.a(this.jdField_a_of_type_JavaLangString);
+    bhww.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.gdtad.views.canvas;
 
-import abrl;
-import absw;
+import acho;
+import aciv;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,8 +14,6 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import com.tencent.ad.tangram.canvas.views.canvas.AdCanvasData;
 import com.tencent.ad.tangram.canvas.views.canvas.framework.AdCanvasView;
-import com.tencent.ad.tangram.process.AdProcessManager;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
@@ -24,7 +22,6 @@ public abstract class GdtCanvasBaseFragment
   extends PublicBaseFragment
 {
   protected static final String KEY_DATA = "data";
-  private static final String KEY_FROM_PROCESS_NAME = "from_process_name";
   private static final String TAG = "GdtCanvasBaseFragment";
   private AdCanvasView contentView;
   
@@ -37,30 +34,24 @@ public abstract class GdtCanvasBaseFragment
   {
     if ((paramActivity == null) || (paramAdCanvasData == null) || (!paramAdCanvasData.isValid()))
     {
-      abrl.b("GdtCanvasBaseFragment", "start error");
+      acho.b("GdtCanvasBaseFragment", "start error");
       return;
     }
-    abrl.b("GdtCanvasBaseFragment", "start");
-    Object localObject = new Bundle();
+    acho.b("GdtCanvasBaseFragment", "start");
+    Bundle localBundle = new Bundle();
     if ((paramBundle != null) && (!paramBundle.isEmpty())) {
-      ((Bundle)localObject).putAll(paramBundle);
+      localBundle.putAll(paramBundle);
     }
-    ((Bundle)localObject).putSerializable("data", paramAdCanvasData);
-    paramBundle = new Intent();
-    paramBundle.putExtra("public_fragment_window_feature", 1);
-    paramBundle.putExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
-    paramBundle.putExtra("big_brother_source_key", "biz_src_ads");
-    paramBundle.putExtras((Bundle)localObject);
-    if (TextUtils.isEmpty(paramBundle.getStringExtra("big_brother_ref_source_key"))) {
-      abrl.d("GdtCanvasBaseFragment", "start gdt empty refId");
+    localBundle.putSerializable("data", paramAdCanvasData);
+    paramAdCanvasData = new Intent();
+    paramAdCanvasData.putExtra("public_fragment_window_feature", 1);
+    paramAdCanvasData.putExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
+    paramAdCanvasData.putExtra("big_brother_source_key", "biz_src_ads");
+    paramAdCanvasData.putExtras(localBundle);
+    if (TextUtils.isEmpty(paramAdCanvasData.getStringExtra("big_brother_ref_source_key"))) {
+      acho.d("GdtCanvasBaseFragment", "start gdt empty refId");
     }
-    localObject = AdProcessManager.INSTANCE.getCurrentProcessName(paramActivity);
-    String str = AdProcessManager.INSTANCE.getMainProcessName();
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      paramBundle.putExtra("from_process_name", (String)localObject);
-    }
-    PublicFragmentActivity.a(paramActivity, paramBundle, paramClass);
-    AdReporterForAnalysis.reportForStartActivity(paramActivity, paramAdCanvasData.ad, "GdtCanvasBaseFragment", str);
+    PublicFragmentActivity.a(paramActivity, paramAdCanvasData, paramClass);
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -103,33 +94,21 @@ public abstract class GdtCanvasBaseFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramViewGroup = null;
-    if ((getArguments() != null) && (getArguments().containsKey("from_process_name"))) {}
-    for (paramLayoutInflater = getArguments().getString("from_process_name");; paramLayoutInflater = null)
+    if ((getArguments() == null) || (!(getArguments().getSerializable("data") instanceof AdCanvasData))) {}
+    for (paramLayoutInflater = null;; paramLayoutInflater = this.contentView)
     {
-      AdReporterForAnalysis.reportForActivityStatusChanged(getActivity(), null, "GdtCanvasBaseFragment", 1, paramLayoutInflater);
-      paramLayoutInflater = paramViewGroup;
-      if (getArguments() != null) {
-        if ((getArguments().getSerializable("data") instanceof AdCanvasData)) {
-          break label76;
-        }
+      V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+      return paramLayoutInflater;
+      paramLayoutInflater = (AdCanvasData)AdCanvasData.class.cast(getArguments().getSerializable("data"));
+      if (!TextUtils.isEmpty(getArguments().getString("big_brother_ref_source_key"))) {
+        paramLayoutInflater.sourceId = getArguments().getString("big_brother_ref_source_key");
       }
-      for (paramLayoutInflater = paramViewGroup;; paramLayoutInflater = this.contentView)
-      {
-        V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
-        return paramLayoutInflater;
-        label76:
-        paramLayoutInflater = (AdCanvasData)AdCanvasData.class.cast(getArguments().getSerializable("data"));
-        if (!TextUtils.isEmpty(getArguments().getString("big_brother_ref_source_key"))) {
-          paramLayoutInflater.sourceId = getArguments().getString("big_brother_ref_source_key");
-        }
-        this.contentView = new AdCanvasView(getActivity());
-        absw.a(this.contentView);
-        this.contentView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-        this.contentView.setData(paramLayoutInflater);
-        if ((getActivity() != null) && (getActivity().getWindow() != null)) {
-          getActivity().getWindow().setSoftInputMode(16);
-        }
+      this.contentView = new AdCanvasView(getActivity());
+      aciv.a(this.contentView);
+      this.contentView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+      this.contentView.setData(paramLayoutInflater);
+      if ((getActivity() != null) && (getActivity().getWindow() != null)) {
+        getActivity().getWindow().setSoftInputMode(16);
       }
     }
   }

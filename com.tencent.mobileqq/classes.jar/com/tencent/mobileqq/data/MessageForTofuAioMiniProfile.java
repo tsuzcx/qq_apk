@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import azxd;
-import azxe;
-import azxf;
-import azxg;
-import azxh;
+import azzl;
+import bbdm;
+import bbdn;
+import bbdo;
+import bbdp;
+import bbdq;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,7 +17,7 @@ public class MessageForTofuAioMiniProfile
   extends ChatMessage
 {
   public static final String TAG = "MessageForTofuAioMiniProfile";
-  public azxd miniCard;
+  public bbdm miniCard;
   
   public MessageForTofuAioMiniProfile()
   {
@@ -24,22 +25,37 @@ public class MessageForTofuAioMiniProfile
     this.mNeedTimeStamp = false;
   }
   
-  private azxe getBaseProfile(JSONObject paramJSONObject)
+  private azzl getAskAnonymously(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {}
+    for (paramJSONObject = null; paramJSONObject == null; paramJSONObject = paramJSONObject.optJSONObject("key_ask_anonymously")) {
+      return null;
+    }
+    azzl localazzl = new azzl();
+    localazzl.jdField_a_of_type_JavaLangString = paramJSONObject.optString("key_question_id", "");
+    localazzl.jdField_b_of_type_JavaLangString = paramJSONObject.optString("key_question_str", "");
+    localazzl.jdField_b_of_type_Long = paramJSONObject.optLong("key_question_time", 0L);
+    localazzl.jdField_a_of_type_Long = paramJSONObject.optLong("key_question_uin", 0L);
+    localazzl.c = paramJSONObject.optString("key_answer_str", "");
+    return localazzl;
+  }
+  
+  private bbdn getBaseProfile(JSONObject paramJSONObject)
   {
     if (paramJSONObject == null) {}
     for (paramJSONObject = null; paramJSONObject == null; paramJSONObject = paramJSONObject.optJSONObject("field_baseprofile")) {
       return null;
     }
-    azxe localazxe = new azxe();
-    localazxe.jdField_a_of_type_Int = paramJSONObject.optInt("age", -1);
-    localazxe.jdField_b_of_type_Int = paramJSONObject.optInt("gender", -1);
-    localazxe.jdField_a_of_type_JavaLangString = paramJSONObject.optString("place", "");
-    localazxe.jdField_b_of_type_JavaLangString = paramJSONObject.optString("addfrd_src", "");
-    localazxe.c = paramJSONObject.optInt("commfrd_num", -1);
-    return localazxe;
+    bbdn localbbdn = new bbdn();
+    localbbdn.jdField_a_of_type_Int = paramJSONObject.optInt("age", -1);
+    localbbdn.jdField_b_of_type_Int = paramJSONObject.optInt("gender", -1);
+    localbbdn.jdField_a_of_type_JavaLangString = paramJSONObject.optString("place", "");
+    localbbdn.jdField_b_of_type_JavaLangString = paramJSONObject.optString("addfrd_src", "");
+    localbbdn.c = paramJSONObject.optInt("commfrd_num", -1);
+    return localbbdn;
   }
   
-  private List<azxf> getNicePics(JSONObject paramJSONObject)
+  private List<bbdo> getNicePics(JSONObject paramJSONObject)
   {
     if (paramJSONObject == null) {}
     for (paramJSONObject = null; (paramJSONObject == null) || (paramJSONObject.length() == 0); paramJSONObject = paramJSONObject.optJSONArray("field_nicepics")) {
@@ -49,11 +65,11 @@ public class MessageForTofuAioMiniProfile
     int i = 0;
     while (i < paramJSONObject.length())
     {
-      azxf localazxf = new azxf();
+      bbdo localbbdo = new bbdo();
       JSONObject localJSONObject = paramJSONObject.optJSONObject(i);
-      localazxf.jdField_a_of_type_JavaLangString = localJSONObject.optString("ori", "");
-      localazxf.jdField_b_of_type_JavaLangString = localJSONObject.optString("medium", "");
-      localArrayList.add(localazxf);
+      localbbdo.jdField_a_of_type_JavaLangString = localJSONObject.optString("ori", "");
+      localbbdo.jdField_b_of_type_JavaLangString = localJSONObject.optString("medium", "");
+      localArrayList.add(localbbdo);
       i += 1;
     }
     return localArrayList;
@@ -75,15 +91,15 @@ public class MessageForTofuAioMiniProfile
     return localArrayList;
   }
   
-  private azxg getQZoneInfo(JSONObject paramJSONObject)
+  private bbdp getQZoneInfo(JSONObject paramJSONObject)
   {
     if (paramJSONObject == null) {}
     for (paramJSONObject = null; paramJSONObject == null; paramJSONObject = paramJSONObject.optJSONObject("field_qzone")) {
       return null;
     }
-    azxg localazxg = new azxg();
-    localazxg.jdField_a_of_type_JavaLangString = paramJSONObject.optString("space_name", "");
-    localazxg.jdField_b_of_type_JavaLangString = paramJSONObject.optString("update_content", "");
+    bbdp localbbdp = new bbdp();
+    localbbdp.jdField_a_of_type_JavaLangString = paramJSONObject.optString("space_name", "");
+    localbbdp.jdField_b_of_type_JavaLangString = paramJSONObject.optString("update_content", "");
     paramJSONObject = paramJSONObject.optJSONArray("img_urls");
     if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
     {
@@ -94,22 +110,22 @@ public class MessageForTofuAioMiniProfile
         localArrayList.add(paramJSONObject.optString(i));
         i += 1;
       }
-      localazxg.jdField_a_of_type_JavaUtilList.addAll(localArrayList);
+      localbbdp.jdField_a_of_type_JavaUtilList.addAll(localArrayList);
     }
-    return localazxg;
+    return localbbdp;
   }
   
-  private azxh getSign(JSONObject paramJSONObject)
+  private bbdq getSign(JSONObject paramJSONObject)
   {
     if (paramJSONObject == null) {}
     for (paramJSONObject = null; paramJSONObject == null; paramJSONObject = paramJSONObject.optJSONObject("sign")) {
       return null;
     }
-    azxh localazxh = new azxh();
-    localazxh.jdField_a_of_type_Int = paramJSONObject.optInt("actionId", 0);
-    localazxh.jdField_a_of_type_JavaLangString = paramJSONObject.optString("actionAndData", "");
-    localazxh.jdField_b_of_type_JavaLangString = paramJSONObject.optString("plainText", "");
-    return localazxh;
+    bbdq localbbdq = new bbdq();
+    localbbdq.jdField_a_of_type_Int = paramJSONObject.optInt("actionId", 0);
+    localbbdq.jdField_a_of_type_JavaLangString = paramJSONObject.optString("actionAndData", "");
+    localbbdq.jdField_b_of_type_JavaLangString = paramJSONObject.optString("plainText", "");
+    return localbbdq;
   }
   
   protected void doParse()
@@ -117,12 +133,13 @@ public class MessageForTofuAioMiniProfile
     try
     {
       JSONObject localJSONObject = new JSONObject(this.msg);
-      this.miniCard = new azxd();
-      this.miniCard.jdField_a_of_type_Azxe = getBaseProfile(localJSONObject);
+      this.miniCard = new bbdm();
+      this.miniCard.jdField_a_of_type_Bbdn = getBaseProfile(localJSONObject);
       this.miniCard.jdField_a_of_type_JavaUtilList.addAll(getPersonalLabels(localJSONObject));
-      this.miniCard.jdField_a_of_type_Azxg = getQZoneInfo(localJSONObject);
+      this.miniCard.jdField_a_of_type_Bbdp = getQZoneInfo(localJSONObject);
       this.miniCard.b.addAll(getNicePics(localJSONObject));
-      this.miniCard.jdField_a_of_type_Azxh = getSign(localJSONObject);
+      this.miniCard.jdField_a_of_type_Bbdq = getSign(localJSONObject);
+      this.miniCard.jdField_a_of_type_Azzl = getAskAnonymously(localJSONObject);
       if (QLog.isDevelopLevel()) {
         QLog.i("MessageForTofuAioMiniProfile", 4, String.format("doParse %s", new Object[] { this.miniCard }));
       }
@@ -140,7 +157,7 @@ public class MessageForTofuAioMiniProfile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTofuAioMiniProfile
  * JD-Core Version:    0.7.0.1
  */

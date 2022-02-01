@@ -1,142 +1,77 @@
 import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.io.File;
+import mqq.app.MobileQQ;
+import org.json.JSONObject;
 
-public class anrw
-  extends anrh
+class anrw
+  extends bhyn
 {
-  public anrw(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  anrw(anrv paramanrv) {}
   
-  private boolean C()
+  public void onDone(bhyo parambhyo)
   {
-    int j = 0;
-    if (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getApplication()))
+    super.onDone(parambhyo);
+    parambhyo = parambhyo.a();
+    if ((parambhyo.containsKey("version")) && (parambhyo.containsKey("json_name")))
     {
-      QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131694065, 1).a();
-      return false;
-    }
-    Object localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get("invitorId");
-    int i = 10;
-    for (;;)
-    {
-      try
+      int i = parambhyo.getInt("version", -1);
+      parambhyo = parambhyo.getString("json_name");
+      if (bhln.e.d.equals(parambhyo))
       {
-        k = Integer.parseInt((String)this.jdField_a_of_type_JavaUtilHashMap.get("roomNum"));
-        i = k;
-      }
-      catch (Exception localException3)
-      {
-        int k;
-        long l1;
-        long l2;
-        label106:
-        continue;
-      }
-      try
-      {
-        k = Integer.parseInt((String)this.jdField_a_of_type_JavaUtilHashMap.get("zoneId"));
-        j = k;
-      }
-      catch (Exception localException2) {}
-    }
-    l1 = -1L;
-    try
-    {
-      l2 = Long.parseLong((String)this.jdField_a_of_type_JavaUtilHashMap.get("gc"));
-      l1 = l2;
-    }
-    catch (Exception localException1)
-    {
-      break label106;
-    }
-    if (TextUtils.isEmpty((CharSequence)localObject))
-    {
-      localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, GameRoomTransActivity.class);
-      ((Intent)localObject).putExtra("roomNum", i);
-      ((Intent)localObject).putExtra("action", 3);
-      ((Intent)localObject).putExtra("zoneId", j);
-      ((Intent)localObject).putExtra("gc", l1);
-      this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-    }
-    for (;;)
-    {
-      return true;
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, GameRoomTransActivity.class);
-      localIntent.putExtra("inviteId", (String)localObject);
-      localIntent.putExtra("roomNum", i);
-      localIntent.putExtra("zoneId", j);
-      localIntent.putExtra("action", 2);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    }
-  }
-  
-  private boolean D()
-  {
-    if (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getApplication()))
-    {
-      QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131694065, 1).a();
-      return false;
-    }
-    int i = 10;
-    for (;;)
-    {
-      try
-      {
-        j = Integer.parseInt((String)this.jdField_a_of_type_JavaUtilHashMap.get("roomNum"));
-        i = j;
-      }
-      catch (Exception localException2)
-      {
-        int j;
-        Intent localIntent;
-        continue;
-      }
-      try
-      {
-        j = Integer.parseInt((String)this.jdField_a_of_type_JavaUtilHashMap.get("zoneId"));
-        localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, GameRoomTransActivity.class);
-        localIntent.putExtra("roomNum", i);
-        localIntent.putExtra("zoneId", j);
-        localIntent.putExtra("action", 1);
-        this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-        return true;
-      }
-      catch (Exception localException1)
-      {
-        j = 0;
+        Object localObject = new File(this.a.a.getApplication().getApplicationContext().getFilesDir(), bhln.e.a);
+        if ((((File)localObject).exists()) && (((File)localObject).isFile()))
+        {
+          localObject = FileUtils.readFileContent((File)localObject);
+          try
+          {
+            localObject = new JSONObject((String)localObject);
+            long l = ((JSONObject)localObject).getLong("timestamp") / 1000L;
+            if (Math.abs(i - l) <= 5L)
+            {
+              bhln.a(this.a.a.getApplication().getApplicationContext(), parambhyo, i);
+              if (QLog.isColorLevel()) {
+                QLog.i("ClubContentUpdateHandler", 2, "json file update success!");
+              }
+              boolean bool1 = true;
+              if (((JSONObject)localObject).has("enableX5Report"))
+              {
+                boolean bool2 = ((JSONObject)localObject).getBoolean("enableX5Report");
+                bool1 = bool2;
+                if (QLog.isColorLevel())
+                {
+                  QLog.i("ClubContentUpdateHandler", 2, "json file got isEnableX5Report: " + bool2);
+                  bool1 = bool2;
+                }
+              }
+              parambhyo = this.a.a.getApplication().getApplicationContext().getSharedPreferences("WebView_X5_Report", 4);
+              parambhyo.edit().putBoolean("enableX5Report", bool1).commit();
+              parambhyo.edit().putLong("read_vas_asyncCookie", 0L).commit();
+            }
+            for (;;)
+            {
+              anrv.a(this.a, (JSONObject)localObject);
+              return;
+              if (QLog.isColorLevel()) {
+                QLog.i("ClubContentUpdateHandler", 2, "json file update get old file!");
+              }
+            }
+            return;
+          }
+          catch (Exception parambhyo)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("ClubContentUpdateHandler", 2, "Parse webview josn Exception:" + parambhyo.toString());
+            }
+          }
+        }
       }
     }
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      if (this.c.equals("openInvitationRoom")) {
-        return C();
-      }
-      if (this.c.equals("enterGameRoom"))
-      {
-        boolean bool = D();
-        return bool;
-      }
-    }
-    catch (Exception localException)
-    {
-      QLog.e("OpenWereWolfAction", 1, "doAction error: " + localException.getMessage());
-      a("OpenWereWolfAction");
-    }
-    return false;
   }
 }
 

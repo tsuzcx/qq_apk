@@ -28,24 +28,37 @@ public class DTAdditionalReportHandler
   
   private boolean handleAppVstEvent()
   {
+    boolean bool1 = true;
     Object localObject = DTEventDynamicParams.getInstance().getDTParamProvider();
-    if (localObject == null) {}
-    int i;
-    String str;
-    do
-    {
+    if (localObject == null) {
       return false;
-      i = ((IDTParamProvider)localObject).getStartType();
-      str = ((IDTParamProvider)localObject).getCallFrom();
-      localObject = ((IDTParamProvider)localObject).getCallScheme();
-      if (VideoReport.isDebugMode()) {
-        Log.i("DTAdditionalReportHandl", "handleAppVstEvent: startType=" + i + ", callFrom=" + str + ", callScheme=" + (String)localObject);
+    }
+    int j = ((IDTParamProvider)localObject).getStartType();
+    String str = ((IDTParamProvider)localObject).getCallFrom();
+    localObject = ((IDTParamProvider)localObject).getCallScheme();
+    if (VideoReport.isDebugMode()) {
+      Log.i("DTAdditionalReportHandl", "handleAppVstEvent: startType=" + j + ", callFrom=" + str + ", callScheme=" + (String)localObject);
+    }
+    boolean bool2 = isStartParamsChanged(j, str, (String)localObject);
+    int i;
+    if (j == 0)
+    {
+      i = 1;
+      if ((i != 0) || (!bool2)) {
+        break label144;
       }
-    } while (!isStartParamsChanged(i, str, (String)localObject));
-    this.mLastStartType = i;
-    this.mLastCallFrom = str;
-    this.mLastCallScheme = ((String)localObject);
-    return true;
+      this.mLastStartType = j;
+      this.mLastCallFrom = str;
+      this.mLastCallScheme = ((String)localObject);
+    }
+    for (;;)
+    {
+      return bool1;
+      i = 0;
+      break;
+      label144:
+      bool1 = false;
+    }
   }
   
   private boolean isStartParamsChanged(int paramInt, String paramString1, String paramString2)
@@ -73,6 +86,21 @@ public class DTAdditionalReportHandler
       Log.i("DTAdditionalReportHandl", "changeSession: reason=" + paramSessionChangeReason);
     }
     updateAppStartParams();
+  }
+  
+  String getCallFrom()
+  {
+    return this.mLastCallFrom;
+  }
+  
+  String getCallScheme()
+  {
+    return this.mLastCallScheme;
+  }
+  
+  int getStartType()
+  {
+    return this.mLastStartType;
   }
   
   public boolean shouldAdditionalReport(String paramString)

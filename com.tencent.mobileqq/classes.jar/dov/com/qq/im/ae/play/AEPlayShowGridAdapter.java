@@ -8,19 +8,19 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bljy;
-import blks;
-import blnv;
-import bluy;
-import blvb;
-import bmap;
-import bmas;
-import bmbc;
-import bmbg;
-import bmbv;
-import bmbx;
-import bmql;
-import boba;
+import bmxa;
+import bmxz;
+import bnbg;
+import bnkb;
+import bnke;
+import bnpz;
+import bnqc;
+import bnqm;
+import bnqq;
+import bnrf;
+import bnrh;
+import bogd;
+import bpqs;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -37,30 +37,30 @@ public class AEPlayShowGridAdapter
   implements AEPlayShowGridViewHolder.ItemClickCallback
 {
   private static final String TAG = "AEPlayShowGridAdapter";
-  public static blvb selectedMaterial;
-  public static blvb selectedMidMaterial;
+  public static bnke selectedMaterial;
+  public static bnke selectedMidMaterial;
   private String curTabId = "";
-  private blnv mAECaptureController;
+  private bnbg mAECaptureController;
   private Map<String, AEPlayShowGridViewHolder> mCachedViewHolder;
-  private bmap mCaptureModeViewModel;
+  private bnpz mCaptureModeViewModel;
   private Context mContext;
   private int mLayoutType;
-  private List<blvb> mMaterialList;
-  private bluy mMidMaterialManager;
-  private bmas mPartManager;
+  private List<bnke> mMaterialList;
+  private bnkb mMidMaterialManager;
+  private bnqc mPartManager;
   private AEPlayShowGridAdapter.SizeInfo mSizeInfo;
-  private bljy mUnit;
+  private bmxa mUnit;
   
-  public AEPlayShowGridAdapter(@NonNull Context paramContext, @NonNull bmas parambmas, @NonNull AEPlayShowGridAdapter.SizeInfo paramSizeInfo, int paramInt)
+  public AEPlayShowGridAdapter(@NonNull Context paramContext, @NonNull bnqc parambnqc, @NonNull AEPlayShowGridAdapter.SizeInfo paramSizeInfo, int paramInt)
   {
     this.mContext = paramContext;
-    this.mPartManager = parambmas;
-    this.mUnit = ((bljy)this.mPartManager.a(65537, new Object[0]));
+    this.mPartManager = parambnqc;
+    this.mUnit = ((bmxa)this.mPartManager.a(65537, new Object[0]));
     this.mAECaptureController = this.mUnit.a();
     this.mSizeInfo = paramSizeInfo;
     this.mLayoutType = paramInt;
-    this.mMidMaterialManager = ((bluy)bmql.a().c(18));
-    this.mCaptureModeViewModel = ((bmap)blks.a(this.mUnit).get(bmap.class));
+    this.mMidMaterialManager = ((bnkb)bogd.a().c(18));
+    this.mCaptureModeViewModel = ((bnpz)bmxz.a(this.mUnit).get(bnpz.class));
     this.mCachedViewHolder = new HashMap();
   }
   
@@ -81,45 +81,45 @@ public class AEPlayShowGridAdapter
     finally {}
   }
   
-  private void applyTemplate(@NonNull blvb paramblvb)
+  private void applyTemplate(@NonNull bnke parambnke)
   {
-    if (paramblvb.g == 0)
+    if (parambnke.g == 0)
     {
-      selectedMidMaterial = paramblvb;
-      new StringBuilder().append(boba.a).append(paramblvb.jdField_f_of_type_JavaLangString).toString();
-      this.mAECaptureController.a(paramblvb);
+      selectedMidMaterial = parambnke;
+      new StringBuilder().append(bpqs.a).append(parambnke.jdField_f_of_type_JavaLangString).toString();
+      this.mAECaptureController.a(parambnke);
       i = AEBeautyProviderView.a();
       this.mAECaptureController.a(i);
       i = AEBeautyProviderView.b();
       this.mAECaptureController.b(i);
-      this.mPartManager.a(393218, new Object[] { paramblvb });
+      this.mPartManager.a(393218, new Object[] { parambnke });
     }
-    while ((paramblvb.g != 4) && (paramblvb.g != 5) && (paramblvb.g != 6) && (paramblvb.g != 7))
+    while ((parambnke.g != 4) && (parambnke.g != 5) && (parambnke.g != 6) && (parambnke.g != 7))
     {
       int i;
       return;
     }
     selectedMidMaterial = null;
-    this.mPartManager.a(655361, new Object[] { paramblvb });
+    this.mPartManager.a(655361, new Object[] { parambnke });
   }
   
-  private void downloadTemplate(@NonNull blvb paramblvb)
+  private void downloadTemplate(@NonNull bnke parambnke)
   {
-    if ((paramblvb.jdField_f_of_type_Boolean) || (TextUtils.isEmpty(paramblvb.a))) {
+    if ((parambnke.jdField_f_of_type_Boolean) || (TextUtils.isEmpty(parambnke.a))) {
       return;
     }
-    downloadTemplateDirectly(paramblvb);
+    downloadTemplateDirectly(parambnke);
   }
   
-  private void downloadTemplateDirectly(@NonNull blvb paramblvb)
+  private void downloadTemplateDirectly(@NonNull bnke parambnke)
   {
-    AEPlayShowGridViewHolder localAEPlayShowGridViewHolder = (AEPlayShowGridViewHolder)this.mCachedViewHolder.get(paramblvb.a);
+    AEPlayShowGridViewHolder localAEPlayShowGridViewHolder = (AEPlayShowGridViewHolder)this.mCachedViewHolder.get(parambnke.a);
     if (localAEPlayShowGridViewHolder != null) {
       localAEPlayShowGridViewHolder.onDownloadStart();
     }
-    bmbx.b("AEPlayShowGridAdapter", "【Play Item】onDownloadStart :" + paramblvb.a);
-    PlayDownloadManagerWrap.getInstance().addProgressObserver(paramblvb.a, localAEPlayShowGridViewHolder);
-    PlayDownloadManagerWrap.getInstance().startDownload(this.mPartManager, this.mMidMaterialManager, paramblvb);
+    bnrh.b("AEPlayShowGridAdapter", "【Play Item】onDownloadStart :" + parambnke.a);
+    PlayDownloadManagerWrap.getInstance().addProgressObserver(parambnke.a, localAEPlayShowGridViewHolder);
+    PlayDownloadManagerWrap.getInstance().startDownload(this.mPartManager, this.mMidMaterialManager, parambnke);
   }
   
   public static void onSelectedMidMaterialConsumed()
@@ -163,14 +163,14 @@ public class AEPlayShowGridAdapter
     return selectedMidMaterial != null;
   }
   
-  private void toMiniApp(@NonNull blvb paramblvb)
+  private void toMiniApp(@NonNull bnke parambnke)
   {
-    this.mPartManager.a(655363, new Object[] { paramblvb });
+    this.mPartManager.a(655363, new Object[] { parambnke });
   }
   
-  private void toWebView(@NonNull blvb paramblvb)
+  private void toWebView(@NonNull bnke parambnke)
   {
-    this.mPartManager.a(655362, new Object[] { paramblvb });
+    this.mPartManager.a(655362, new Object[] { parambnke });
   }
   
   public int getItemCount()
@@ -201,13 +201,13 @@ public class AEPlayShowGridAdapter
   
   public void onBindViewHolder(AEPlayShowGridViewHolder paramAEPlayShowGridViewHolder, int paramInt)
   {
-    blvb localblvb = (blvb)this.mMaterialList.get(paramInt);
-    paramAEPlayShowGridViewHolder.bind(localblvb, paramInt);
-    if ((this.curTabId != null) && (this.curTabId.equals(localblvb.k)))
+    bnke localbnke = (bnke)this.mMaterialList.get(paramInt);
+    paramAEPlayShowGridViewHolder.bind(localbnke, paramInt);
+    if ((this.curTabId != null) && (this.curTabId.equals(localbnke.k)))
     {
-      bmbg.a().d(paramAEPlayShowGridViewHolder.mPlayMaterial.g);
-      bmbg.a().c(paramInt + 1);
-      bmbc.a().g(paramAEPlayShowGridViewHolder.mPlayMaterial.a);
+      bnqq.a().d(paramAEPlayShowGridViewHolder.mPlayMaterial.g);
+      bnqq.a().c(paramInt + 1);
+      bnqm.a().g(paramAEPlayShowGridViewHolder.mPlayMaterial.a);
     }
     EventCollector.getInstance().onRecyclerBindViewHolder(paramAEPlayShowGridViewHolder, paramInt, getItemId(paramInt));
   }
@@ -215,7 +215,7 @@ public class AEPlayShowGridAdapter
   public AEPlayShowGridViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
     if (this.mLayoutType == 1) {}
-    for (paramViewGroup = LayoutInflater.from(this.mContext).inflate(2131558509, paramViewGroup, false);; paramViewGroup = LayoutInflater.from(this.mContext).inflate(2131558510, paramViewGroup, false)) {
+    for (paramViewGroup = LayoutInflater.from(this.mContext).inflate(2131558520, paramViewGroup, false);; paramViewGroup = LayoutInflater.from(this.mContext).inflate(2131558521, paramViewGroup, false)) {
       return new AEPlayShowGridViewHolder(paramViewGroup, this.mSizeInfo, this, this.mLayoutType);
     }
   }
@@ -230,9 +230,9 @@ public class AEPlayShowGridAdapter
     }
   }
   
-  public void onItemClicked(View paramView, @NonNull blvb paramblvb, int paramInt)
+  public void onItemClicked(View paramView, @NonNull bnke parambnke, int paramInt)
   {
-    if (bmbv.a(paramView)) {}
+    if (bnrf.a(paramView)) {}
     label140:
     label187:
     do
@@ -241,23 +241,23 @@ public class AEPlayShowGridAdapter
       if (paramInt < 0)
       {
         Integer.toString(paramInt);
-        bmbg.a().c(paramInt);
-        bmbg.a().f("3");
-        bmbg.a().d(paramblvb.g);
-        selectedMaterial = paramblvb;
-        bmbx.b("AEPlayShowGridAdapter", "【Play Material OnClick】playShowType:" + paramblvb.g);
-        bmbx.b("AEPlayShowGridAdapter", "【Play Material OnClick】id:" + paramblvb.a);
-        if (!blvb.b(paramblvb)) {
+        bnqq.a().c(paramInt);
+        bnqq.a().f("3");
+        bnqq.a().d(parambnke.g);
+        selectedMaterial = parambnke;
+        bnrh.b("AEPlayShowGridAdapter", "【Play Material OnClick】playShowType:" + parambnke.g);
+        bnrh.b("AEPlayShowGridAdapter", "【Play Material OnClick】id:" + parambnke.a);
+        if (!bnke.b(parambnke)) {
           break label187;
         }
-        if (!paramblvb.e) {
+        if (!parambnke.e) {
           break label140;
         }
-        applyTemplate(paramblvb);
+        applyTemplate(parambnke);
       }
       for (;;)
       {
-        bmbc.a().d(paramblvb.a);
+        bnqm.a().d(parambnke.a);
         return;
         paramInt += 1;
         break;
@@ -265,28 +265,28 @@ public class AEPlayShowGridAdapter
         {
           selectedMaterial = null;
           selectedMidMaterial = null;
-          QQToast.a(this.mContext, this.mContext.getString(2131717325), 0).a();
+          QQToast.a(this.mContext, this.mContext.getString(2131717691), 0).a();
         }
         else
         {
-          downloadTemplate(paramblvb);
+          downloadTemplate(parambnke);
         }
       }
-      if (paramblvb.g == 2)
+      if (parambnke.g == 2)
       {
-        toWebView(paramblvb);
-        bmbc.a().d(paramblvb.a);
+        toWebView(parambnke);
+        bnqm.a().d(parambnke.a);
         return;
       }
-    } while (paramblvb.g != 3);
-    toMiniApp(paramblvb);
-    bmbc.a().d(paramblvb.a);
+    } while (parambnke.g != 3);
+    toMiniApp(parambnke);
+    bnqm.a().d(parambnke.a);
   }
   
   public void onViewAttachedToWindow(AEPlayShowGridViewHolder paramAEPlayShowGridViewHolder)
   {
     super.onViewAttachedToWindow(paramAEPlayShowGridViewHolder);
-    if ((paramAEPlayShowGridViewHolder.mPlayMaterial != null) && (!TextUtils.isEmpty(paramAEPlayShowGridViewHolder.mPlayMaterial.a)) && (blvb.b(paramAEPlayShowGridViewHolder.mPlayMaterial)))
+    if ((paramAEPlayShowGridViewHolder.mPlayMaterial != null) && (!TextUtils.isEmpty(paramAEPlayShowGridViewHolder.mPlayMaterial.a)) && (bnke.b(paramAEPlayShowGridViewHolder.mPlayMaterial)))
     {
       this.mCachedViewHolder.put(paramAEPlayShowGridViewHolder.mPlayMaterial.a, paramAEPlayShowGridViewHolder);
       paramAEPlayShowGridViewHolder.resetProgress();
@@ -297,7 +297,7 @@ public class AEPlayShowGridAdapter
   public void onViewDetachedFromWindow(AEPlayShowGridViewHolder paramAEPlayShowGridViewHolder)
   {
     super.onViewDetachedFromWindow(paramAEPlayShowGridViewHolder);
-    if ((paramAEPlayShowGridViewHolder.mPlayMaterial != null) && (!TextUtils.isEmpty(paramAEPlayShowGridViewHolder.mPlayMaterial.a)) && (blvb.b(paramAEPlayShowGridViewHolder.mPlayMaterial)))
+    if ((paramAEPlayShowGridViewHolder.mPlayMaterial != null) && (!TextUtils.isEmpty(paramAEPlayShowGridViewHolder.mPlayMaterial.a)) && (bnke.b(paramAEPlayShowGridViewHolder.mPlayMaterial)))
     {
       this.mCachedViewHolder.remove(paramAEPlayShowGridViewHolder.mPlayMaterial.a);
       paramAEPlayShowGridViewHolder.resetProgress();
@@ -306,7 +306,7 @@ public class AEPlayShowGridAdapter
     }
   }
   
-  public void putData(@NonNull List<blvb> paramList)
+  public void putData(@NonNull List<bnke> paramList)
   {
     this.mMaterialList = paramList;
     if (this.mMaterialList.size() == 0) {

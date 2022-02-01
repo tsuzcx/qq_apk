@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar.view;
 
-import aoai;
-import aoci;
+import apdk;
+import apfk;
 import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 import com.tencent.qphone.base.util.QLog;
 
 class ARScanEntryView$22
   implements Runnable
 {
-  ARScanEntryView$22(ARScanEntryView paramARScanEntryView, aoci paramaoci) {}
+  ARScanEntryView$22(ARScanEntryView paramARScanEntryView, apfk paramapfk) {}
   
   public void run()
   {
@@ -16,16 +16,16 @@ class ARScanEntryView$22
     ARScanEntryView.d(this.this$0);
     ARScanEntryView.g(this.this$0);
     ARScanEntryView.a(this.this$0, false);
-    if (((!aoai.a().a()) || (aoai.a().b())) && (!this.a.a.a()) && (!this.a.a.b()))
+    if (((!apdk.a().a()) || (apdk.a().b())) && (!this.a.a.a()) && (!this.a.a.b()))
     {
-      aoai.a().b();
-      aoai.a().d();
+      apdk.a().b();
+      apdk.a().d();
       QLog.d("AREngine_ARScanEntryView", 1, "onARAnimationStateChanged, ARVideoRecordUIControllerImpl isVideoRecordRunning false");
       return;
     }
     if (this.a.a.a())
     {
-      aoai.a().c();
+      apdk.a().c();
       QLog.d("AREngine_ARScanEntryView", 1, "onARAnimationStateChanged, ARVideoRecordUIControllerImpl bin hai not show");
       return;
     }

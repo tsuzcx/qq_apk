@@ -1,79 +1,64 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.BusinessObserver;
-import java.lang.ref.WeakReference;
-import java.net.URLDecoder;
-import org.json.JSONObject;
+import NS_MOBILE_QBOSS_PROTO.MobileQbossReportExceptionRsp;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.qboss.QbossErrorReportRequest;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bcvx
-  implements BusinessObserver
+  extends MSFServlet
 {
-  public WeakReference<Activity> a;
-  
-  public bcvx(Activity paramActivity)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.a = new WeakReference(paramActivity);
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(String paramString1, String paramString2) {}
-  
-  public void a(boolean paramBoolean, String paramString) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
+    int i;
+    if (paramFromServiceMsg != null)
     {
+      i = paramFromServiceMsg.getResultCode();
+      if (i != 1000) {
+        break label83;
+      }
+      paramIntent = QbossErrorReportRequest.onResponse(paramFromServiceMsg.getWupBuffer());
+      if (paramIntent == null) {
+        break label68;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QbossErrorReportServlet", 2, "report qboss success state = " + paramIntent.iRet);
+      }
     }
-    do
+    label68:
+    label83:
+    while (!QLog.isColorLevel())
     {
       do
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return;
-              } while (paramObject == null);
-              paramObject = (Object[])paramObject;
-            } while (paramObject.length != 2);
-            a((String)paramObject[0], (String)paramObject[1]);
-            return;
-            a();
-            return;
-          } while (paramObject == null);
-          paramObject = (Object[])paramObject;
-        } while (paramObject.length != 1);
-        try
-        {
-          paramObject = (JSONObject)paramObject[0];
-          String str = paramObject.optString("url");
-          paramInt = paramObject.optInt("ret");
-          paramObject = URLDecoder.decode(str, "UTF-8");
-          if ((paramInt == 0) && (paramObject.length() > 0))
-          {
-            a(paramBoolean, paramObject);
-            return;
-          }
-        }
-        catch (Exception paramObject)
-        {
-          paramObject.printStackTrace();
-          a(paramObject.toString(), "");
-          return;
-        }
-        a(paramInt + "", "");
         return;
-      } while (paramObject == null);
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length != 1);
-    a(((Integer)paramObject[0]).intValue());
+        i = -1;
+        break;
+      } while (!QLog.isColorLevel());
+      QLog.d("QbossErrorReportServlet", 2, "report qboss exception fail, decode result is null");
+      return;
+    }
+    QLog.d("QbossErrorReportServlet", 2, "QZONE_GET_QBOSS_DATA fail, resultCode=" + i);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    long l = paramIntent.getLongExtra("uin", 0L);
+    int i = paramIntent.getIntExtra("appId", 0);
+    int j = paramIntent.getIntExtra("taskId", 0);
+    Object localObject = paramIntent.getStringExtra("message");
+    QbossErrorReportRequest localQbossErrorReportRequest = new QbossErrorReportRequest(l, i, j, paramIntent.getIntExtra("code", 0), (String)localObject);
+    localObject = localQbossErrorReportRequest.encode();
+    paramIntent = (Intent)localObject;
+    if (localObject == null)
+    {
+      QLog.e("QbossErrorReportServlet", 1, "onSend request encode result is null.cmd=" + localQbossErrorReportRequest.uniKey());
+      paramIntent = new byte[4];
+    }
+    paramPacket.setTimeout(60000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + localQbossErrorReportRequest.uniKey());
+    paramPacket.putSendData(paramIntent);
   }
 }
 

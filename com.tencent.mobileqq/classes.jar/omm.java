@@ -1,23 +1,18 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.LocationInfo;
 
-public class omm
-  implements bjoe
+public final class omm
+  implements Parcelable.Creator<VideoInfo.LocationInfo>
 {
-  public omm(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public VideoInfo.LocationInfo a(Parcel paramParcel)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      ReadInJoySettingActivity.a(this.a).cancel();
-      return;
-      ReadInJoySettingActivity.a(this.a, false);
-      ReadInJoySettingActivity.b(this.a, ReadInJoySettingActivity.a(this.a));
-    }
+    return new VideoInfo.LocationInfo(paramParcel);
+  }
+  
+  public VideoInfo.LocationInfo[] a(int paramInt)
+  {
+    return new VideoInfo.LocationInfo[paramInt];
   }
 }
 

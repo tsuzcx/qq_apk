@@ -1,53 +1,64 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
+import android.content.Context;
+import android.media.AudioManager;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import org.json.JSONObject;
+import java.io.File;
+import mqq.app.MobileQQ;
 
-class alts
-  implements EIPCResultCallback
+public class alts
 {
-  alts(altr paramaltr) {}
+  public static long a;
+  public static Context a;
+  public static String a;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  static
   {
-    paramEIPCResult = paramEIPCResult.data;
-    int i = paramEIPCResult.getInt("type");
-    if (i == 1) {
-      paramEIPCResult = paramEIPCResult.getString("nickName");
-    }
-    JSONObject localJSONObject;
-    while (i != 2) {
-      try
-      {
-        localJSONObject = new JSONObject();
-        localJSONObject.put("nickname", 1);
-        localJSONObject.put("data", paramEIPCResult);
-        localJSONObject.put("openId", this.a.jdField_a_of_type_JavaLangString);
-        ApolloGameInterfaceProxy.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameInterfaceProxy, "cs.get_userInfo.local", "" + localJSONObject.toString() + "");
-        return;
-      }
-      catch (Throwable paramEIPCResult)
-      {
-        QLog.e("ApolloGameInterfaceProxy", 1, paramEIPCResult, new Object[0]);
-        return;
-      }
-    }
-    paramEIPCResult = altz.a((Bitmap)paramEIPCResult.getParcelable("head"), 100);
+    jdField_a_of_type_AndroidContentContext = MobileQQ.getContext();
+    jdField_a_of_type_Long = -1L;
+  }
+  
+  public static void a()
+  {
     try
     {
-      localJSONObject = new JSONObject();
-      localJSONObject.put("avatar", 1);
-      localJSONObject.put("data", paramEIPCResult);
-      localJSONObject.put("openId", this.a.jdField_a_of_type_JavaLangString);
-      ApolloGameInterfaceProxy.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameInterfaceProxy, "cs.get_userInfo.local", "" + localJSONObject.toString() + "");
+      ((AudioManager)MobileQQ.getContext().getSystemService("audio")).requestAudioFocus(null, 3, 1);
       return;
     }
-    catch (Throwable paramEIPCResult)
+    catch (Exception localException)
     {
-      QLog.e("ApolloGameInterfaceProxy", 1, paramEIPCResult, new Object[0]);
+      localException.printStackTrace();
+    }
+  }
+  
+  public static boolean a(long paramLong)
+  {
+    if ((jdField_a_of_type_Long > 0L) && (jdField_a_of_type_Long == paramLong)) {}
+    Object localObject;
+    do
+    {
+      return true;
+      localObject = altt.a().a();
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        return false;
+      }
+      jdField_a_of_type_JavaLangString = (String)localObject + File.separator + "cover" + File.separator + paramLong;
+      localObject = new File(jdField_a_of_type_JavaLangString);
+    } while ((((File)localObject).mkdirs()) || (((File)localObject).isDirectory()));
+    QLog.e("GloableValue", 2, "make cover dir: " + jdField_a_of_type_JavaLangString + " failed.");
+    return false;
+  }
+  
+  public static void b()
+  {
+    try
+    {
+      ((AudioManager)MobileQQ.getContext().getSystemService("audio")).abandonAudioFocus(null);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
 }

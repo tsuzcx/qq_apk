@@ -1,26 +1,89 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.open.agent.OpenAuthorityAccountView;
-import com.tencent.open.agent.OpenAuthorityAccountView.DelAccountRunnable;
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.biz.webviewplugin.PayJsPlugin;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.jsp.MediaApiPlugin;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.QWalletBluetoothJsPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.QWalletMixJsPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.QWalletPayJsPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.WadlWebViewJsPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.smtt.sdk.WebView;
+import java.util.ArrayList;
 
 public class bhsq
-  implements DialogInterface.OnClickListener
+  extends bidf
+  implements biec
 {
-  public bhsq(OpenAuthorityAccountView paramOpenAuthorityAccountView, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bhsq(Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView)
   {
-    if (paramInt == 1) {
-      ThreadManager.executeOnSubThread(new OpenAuthorityAccountView.DelAccountRunnable(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView, this.jdField_a_of_type_JavaLangString));
-    }
-    while ((paramInt != 0) || (this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.a == null)) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.a.dismiss();
-    this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.a = null;
+    super(paramContext, paramActivity, paramAppInterface);
+    this.mWebview = paramTouchWebView;
   }
+  
+  public void a()
+  {
+    super.doOnDestroy();
+  }
+  
+  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
+  {
+    super.bindJavaScript(paramArrayList);
+    paramArrayList.add(new WadlWebViewJsPlugin());
+    paramArrayList.add(new avgx());
+    paramArrayList.add(new QWalletPayJsPlugin());
+    paramArrayList.add(new PayJsPlugin());
+    paramArrayList.add(new QWalletCommonJsPlugin());
+    paramArrayList.add(new QWalletBluetoothJsPlugin());
+    paramArrayList.add(new awah());
+    paramArrayList.add(new UiApiPlugin());
+    paramArrayList.add(new SensorAPIJavaScript());
+    paramArrayList.add(new avzf());
+    paramArrayList.add(new MediaApiPlugin());
+    paramArrayList.add(new VasCommonJsPlugin());
+    paramArrayList.add(new bhxn());
+    paramArrayList.add(new QWalletMixJsPlugin());
+    paramArrayList.add(new aasm());
+  }
+  
+  public void buildBottomBar() {}
+  
+  public void buildContentView(Bundle paramBundle) {}
+  
+  public void buildData() {}
+  
+  public void buildLayout() {}
+  
+  public void buildTitleBar() {}
+  
+  public void buildWebView(AppInterface paramAppInterface)
+  {
+    super.buildBaseWebView(paramAppInterface);
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    super.onPageFinished(paramWebView, paramString);
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public void onWebViewReady()
+  {
+    super.onWebViewReady();
+  }
+  
+  public void preInitWebviewPlugin() {}
 }
 
 

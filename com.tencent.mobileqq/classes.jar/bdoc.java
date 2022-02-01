@@ -1,22 +1,28 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.ClipboardManager;
+import android.view.View;
 
-public class bdoc
-  implements InputFilter
+final class bdoc
+  implements bkzq
 {
-  public bdoc(AbsPublishActivity paramAbsPublishActivity) {}
+  bdoc(String paramString, Context paramContext) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramCharSequence != null)
+    switch (paramInt)
     {
-      paramCharSequence = paramCharSequence.toString();
-      if (paramCharSequence.contains("\n")) {
-        return paramCharSequence.replaceAll("\n", "");
-      }
     }
-    return null;
+    for (;;)
+    {
+      bdob.a().dismiss();
+      return;
+      paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      continue;
+      ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

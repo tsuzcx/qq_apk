@@ -15,8 +15,8 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import axha;
-import axhb;
+import aynf;
+import ayng;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.troop.utils.TroopUtils;
 
@@ -59,7 +59,7 @@ public class AvatarWallViewPager
     this.jdField_b_of_type_Boolean = true;
     this.jdField_b_of_type_Int = 500;
     this.jdField_c_of_type_Int = 4000;
-    this.jdField_a_of_type_AndroidOsHandler = new axha(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new aynf(this, Looper.getMainLooper());
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     c();
   }
@@ -77,7 +77,7 @@ public class AvatarWallViewPager
     if (paramBoolean)
     {
       if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null) {
-        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = TroopUtils.getTroopLevelBgDrawable(getResources(), Color.parseColor("#CC12B7F5"), getResources().getDrawable(2130843745));
+        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = TroopUtils.getTroopLevelBgDrawable(getResources(), Color.parseColor("#CC12B7F5"), getResources().getDrawable(2130843783));
       }
       localView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
       if (!paramBoolean) {
@@ -92,7 +92,7 @@ public class AvatarWallViewPager
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
         break;
       }
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = TroopUtils.getTroopLevelBgDrawable(getResources(), Color.parseColor("#66FFFFFF"), getResources().getDrawable(2130843745));
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = TroopUtils.getTroopLevelBgDrawable(getResources(), Color.parseColor("#66FFFFFF"), getResources().getDrawable(2130843783));
       break;
     }
   }
@@ -156,7 +156,7 @@ public class AvatarWallViewPager
     AvatarWallViewPager.RollerChangeListener localRollerChangeListener = new AvatarWallViewPager.RollerChangeListener(this);
     this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallViewPager$RollerChangeListener = localRollerChangeListener;
     localRollViewPager.setOnPageChangeListener(localRollerChangeListener);
-    new axhb(this, this.jdField_a_of_type_AndroidContentContext, new LinearInterpolator()).a();
+    new ayng(this, this.jdField_a_of_type_AndroidContentContext, new LinearInterpolator()).a();
   }
   
   protected void d()
@@ -228,7 +228,7 @@ public class AvatarWallViewPager
   public void setScrollInterpolator(Interpolator paramInterpolator)
   {
     if (paramInterpolator != null) {
-      new axhb(this, this.jdField_a_of_type_AndroidContentContext, paramInterpolator).a();
+      new ayng(this, this.jdField_a_of_type_AndroidContentContext, paramInterpolator).a();
     }
   }
 }

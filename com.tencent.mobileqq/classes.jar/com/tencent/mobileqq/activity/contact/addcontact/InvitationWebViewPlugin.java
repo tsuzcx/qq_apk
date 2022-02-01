@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import amtj;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.DialogInterface;
@@ -11,8 +10,9 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import bcef;
-import bgve;
+import anvx;
+import bdla;
+import bifw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.LoginActivity;
 import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
@@ -58,27 +58,27 @@ public class InvitationWebViewPlugin
   {
     ArrayList localArrayList = new ArrayList();
     ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = BaseApplicationImpl.getApplication().getString(2131695898);
-    localActionSheetItem.icon = 2130839130;
+    localActionSheetItem.label = BaseApplicationImpl.getApplication().getString(2131696150);
+    localActionSheetItem.icon = 2130839150;
     localActionSheetItem.action = 9;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = BaseApplicationImpl.getApplication().getString(2131695881);
-    localActionSheetItem.icon = 2130839124;
+    localActionSheetItem.label = BaseApplicationImpl.getApplication().getString(2131696133);
+    localActionSheetItem.icon = 2130839144;
     localActionSheetItem.action = 10;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = amtj.a(2131704959);
-    localActionSheetItem.icon = 2130839122;
+    localActionSheetItem.label = anvx.a(2131705310);
+    localActionSheetItem.icon = 2130839142;
     localActionSheetItem.iconNeedBg = true;
     localActionSheetItem.action = 1;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = BaseApplicationImpl.getApplication().getString(2131695870);
-    localActionSheetItem.icon = 2130839122;
+    localActionSheetItem.label = BaseApplicationImpl.getApplication().getString(2131696122);
+    localActionSheetItem.icon = 2130839142;
     localActionSheetItem.iconNeedBg = true;
     localActionSheetItem.action = 1;
     localActionSheetItem.argus = "";
@@ -89,7 +89,7 @@ public class InvitationWebViewPlugin
   private void handleLoginWithMask(String paramString1, String paramString2, boolean paramBoolean)
   {
     QLog.d("InvitationFriend", 1, "METHOD_LOGIN_WITH_UIN_MASK success, jump to LoginActivity, enableLoginWithMask: " + paramBoolean + "uinMask: " + paramString1);
-    bcef.a(null, "dc00898", "", "", "0X800B337", "0X800B337", 0, 0, "", "", "", "");
+    bdla.a(null, "dc00898", "", "", "0X800B337", "0X800B337", 0, 0, "", "", "", "");
     Intent localIntent = new Intent(this.mRuntime.a(), LoginActivity.class);
     if (paramBoolean)
     {
@@ -103,7 +103,7 @@ public class InvitationWebViewPlugin
   private void handleRegWithNickAndPwd()
   {
     QLog.d("InvitationFriend", 1, "handleRegWithNickAndPwd");
-    bcef.a(null, "dc00898", "", "", "0X800B338", "0X800B338", 0, 0, "", "", "", "");
+    bdla.a(null, "dc00898", "", "", "0X800B338", "0X800B338", 0, 0, "", "", "", "");
     Intent localIntent = new Intent(this.mRuntime.a(), RegisterByNicknameAndPwdActivity.class);
     localIntent.putExtra("key_reg_from_phone_protect_h5", true);
     this.mRuntime.a().startActivity(localIntent);
@@ -134,7 +134,7 @@ public class InvitationWebViewPlugin
   public void denied()
   {
     QLog.d("InvitationFriend", 1, "CheckPermission user denied = sms");
-    QQToast.a(this.mRuntime.a(), amtj.a(2131704957), 1).a();
+    QQToast.a(this.mRuntime.a(), anvx.a(2131705308), 1).a();
   }
   
   @QQPermissionGrant(1)
@@ -215,8 +215,8 @@ public class InvitationWebViewPlugin
     //   135: bipush 23
     //   137: if_icmplt +62 -> 199
     //   140: aload_0
-    //   141: getfield 159	com/tencent/mobileqq/activity/contact/addcontact/InvitationWebViewPlugin:mRuntime	Lbgve;
-    //   144: invokevirtual 164	bgve:a	()Landroid/app/Activity;
+    //   141: getfield 159	com/tencent/mobileqq/activity/contact/addcontact/InvitationWebViewPlugin:mRuntime	Lbifw;
+    //   144: invokevirtual 164	bifw:a	()Landroid/app/Activity;
     //   147: ldc_w 298
     //   150: invokevirtual 302	android/app/Activity:checkSelfPermission	(Ljava/lang/String;)I
     //   153: ifeq +38 -> 191
@@ -224,8 +224,8 @@ public class InvitationWebViewPlugin
     //   157: aload_2
     //   158: putfield 244	com/tencent/mobileqq/activity/contact/addcontact/InvitationWebViewPlugin:mSmsContent	Ljava/lang/String;
     //   161: aload_0
-    //   162: getfield 159	com/tencent/mobileqq/activity/contact/addcontact/InvitationWebViewPlugin:mRuntime	Lbgve;
-    //   165: invokevirtual 164	bgve:a	()Landroid/app/Activity;
+    //   162: getfield 159	com/tencent/mobileqq/activity/contact/addcontact/InvitationWebViewPlugin:mRuntime	Lbifw;
+    //   165: invokevirtual 164	bifw:a	()Landroid/app/Activity;
     //   168: checkcast 304	mqq/app/AppActivity
     //   171: aload_0
     //   172: iconst_1
@@ -274,8 +274,8 @@ public class InvitationWebViewPlugin
     //   248: invokevirtual 287	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   251: putfield 310	com/tencent/mobileqq/activity/contact/addcontact/InvitationWebViewPlugin:mShareCallback	Ljava/lang/String;
     //   254: aload_0
-    //   255: getfield 159	com/tencent/mobileqq/activity/contact/addcontact/InvitationWebViewPlugin:mRuntime	Lbgve;
-    //   258: invokevirtual 164	bgve:a	()Landroid/app/Activity;
+    //   255: getfield 159	com/tencent/mobileqq/activity/contact/addcontact/InvitationWebViewPlugin:mRuntime	Lbifw;
+    //   258: invokevirtual 164	bifw:a	()Landroid/app/Activity;
     //   261: astore_1
     //   262: aload_0
     //   263: getfield 312	com/tencent/mobileqq/activity/contact/addcontact/InvitationWebViewPlugin:mShareDialogBuilder	Lcom/tencent/mobileqq/utils/ShareActionSheetBuilder;
@@ -289,7 +289,7 @@ public class InvitationWebViewPlugin
     //   281: aload_0
     //   282: getfield 312	com/tencent/mobileqq/activity/contact/addcontact/InvitationWebViewPlugin:mShareDialogBuilder	Lcom/tencent/mobileqq/utils/ShareActionSheetBuilder;
     //   285: ldc_w 318
-    //   288: invokestatic 108	amtj:a	(I)Ljava/lang/String;
+    //   288: invokestatic 108	anvx:a	(I)Ljava/lang/String;
     //   291: invokevirtual 322	com/tencent/mobileqq/utils/ShareActionSheetBuilder:setActionSheetTitle	(Ljava/lang/CharSequence;)V
     //   294: aload_0
     //   295: getfield 312	com/tencent/mobileqq/activity/contact/addcontact/InvitationWebViewPlugin:mShareDialogBuilder	Lcom/tencent/mobileqq/utils/ShareActionSheetBuilder;
@@ -322,7 +322,7 @@ public class InvitationWebViewPlugin
     //   352: ldc 93
     //   354: ldc 93
     //   356: ldc 93
-    //   358: invokestatic 347	bcef:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   358: invokestatic 347	bdla:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   361: iconst_1
     //   362: ireturn
     //   363: astore_1
@@ -356,11 +356,11 @@ public class InvitationWebViewPlugin
     //   423: ldc_w 351
     //   426: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   429: aload_0
-    //   430: getfield 159	com/tencent/mobileqq/activity/contact/addcontact/InvitationWebViewPlugin:mRuntime	Lbgve;
+    //   430: getfield 159	com/tencent/mobileqq/activity/contact/addcontact/InvitationWebViewPlugin:mRuntime	Lbifw;
     //   433: ifnull +86 -> 519
     //   436: aload_0
-    //   437: getfield 159	com/tencent/mobileqq/activity/contact/addcontact/InvitationWebViewPlugin:mRuntime	Lbgve;
-    //   440: invokevirtual 164	bgve:a	()Landroid/app/Activity;
+    //   437: getfield 159	com/tencent/mobileqq/activity/contact/addcontact/InvitationWebViewPlugin:mRuntime	Lbifw;
+    //   440: invokevirtual 164	bifw:a	()Landroid/app/Activity;
     //   443: ifnull +76 -> 519
     //   446: new 155	android/content/Intent
     //   449: dup
@@ -376,8 +376,8 @@ public class InvitationWebViewPlugin
     //   468: invokevirtual 370	android/content/Intent:setPackage	(Ljava/lang/String;)Landroid/content/Intent;
     //   471: pop
     //   472: aload_0
-    //   473: getfield 159	com/tencent/mobileqq/activity/contact/addcontact/InvitationWebViewPlugin:mRuntime	Lbgve;
-    //   476: invokevirtual 164	bgve:a	()Landroid/app/Activity;
+    //   473: getfield 159	com/tencent/mobileqq/activity/contact/addcontact/InvitationWebViewPlugin:mRuntime	Lbifw;
+    //   476: invokevirtual 164	bifw:a	()Landroid/app/Activity;
     //   479: aload_1
     //   480: invokevirtual 373	android/app/Activity:sendBroadcast	(Landroid/content/Intent;)V
     //   483: goto -297 -> 186
@@ -503,11 +503,11 @@ public class InvitationWebViewPlugin
     //   734: ldc_w 416
     //   737: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   740: aload_0
-    //   741: getfield 159	com/tencent/mobileqq/activity/contact/addcontact/InvitationWebViewPlugin:mRuntime	Lbgve;
+    //   741: getfield 159	com/tencent/mobileqq/activity/contact/addcontact/InvitationWebViewPlugin:mRuntime	Lbifw;
     //   744: ifnull +53 -> 797
     //   747: aload_0
-    //   748: getfield 159	com/tencent/mobileqq/activity/contact/addcontact/InvitationWebViewPlugin:mRuntime	Lbgve;
-    //   751: invokevirtual 164	bgve:a	()Landroid/app/Activity;
+    //   748: getfield 159	com/tencent/mobileqq/activity/contact/addcontact/InvitationWebViewPlugin:mRuntime	Lbifw;
+    //   751: invokevirtual 164	bifw:a	()Landroid/app/Activity;
     //   754: ifnull +43 -> 797
     //   757: new 155	android/content/Intent
     //   760: dup
@@ -523,8 +523,8 @@ public class InvitationWebViewPlugin
     //   779: invokevirtual 370	android/content/Intent:setPackage	(Ljava/lang/String;)Landroid/content/Intent;
     //   782: pop
     //   783: aload_0
-    //   784: getfield 159	com/tencent/mobileqq/activity/contact/addcontact/InvitationWebViewPlugin:mRuntime	Lbgve;
-    //   787: invokevirtual 164	bgve:a	()Landroid/app/Activity;
+    //   784: getfield 159	com/tencent/mobileqq/activity/contact/addcontact/InvitationWebViewPlugin:mRuntime	Lbifw;
+    //   787: invokevirtual 164	bifw:a	()Landroid/app/Activity;
     //   790: aload_1
     //   791: invokevirtual 373	android/app/Activity:sendBroadcast	(Landroid/content/Intent;)V
     //   794: goto -608 -> 186
@@ -565,7 +565,7 @@ public class InvitationWebViewPlugin
     for (;;)
     {
       if (!"".equals(str)) {
-        bcef.b(null, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
+        bdla.b(null, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
       }
       EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
       return;

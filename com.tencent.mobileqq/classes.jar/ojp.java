@@ -1,33 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ojp
-  implements AladdinConfigHandler
+  implements View.OnClickListener
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    paramString = pbt.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("ReadInJoyDropFrameAladdinCfgHandler", 1, new Object[] { "key = ", str1, ", value = ", str2 });
-      if (TextUtils.equals("readinjoy_drop_frame_monitor", str1)) {
-        bkwm.a("sp_key_readinjoy_feeds_drop_frame_switch", Boolean.valueOf(TextUtils.equals("1", str2)));
-      }
-    }
-    return true;
-  }
+  public ojp(PublicAccountBrowser paramPublicAccountBrowser) {}
   
-  public void onWipeConfig(int paramInt)
+  public void onClick(View paramView)
   {
-    QLog.d("ReadInJoyDropFrameAladdinCfgHandler", 1, new Object[] { "onWipeConfig, id = ", Integer.valueOf(paramInt) });
-    bkwm.a("sp_key_readinjoy_feeds_drop_frame_switch", Boolean.valueOf(false));
+    Intent localIntent = new Intent(this.a.getActivity(), AccountDetailActivity.class);
+    localIntent.putExtra("uin", this.a.b);
+    localIntent.putExtra("uinname", this.a.b);
+    localIntent.putExtra("uintype", this.a.c);
+    localIntent.addFlags(67108864);
+    this.a.getActivity().startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,9 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
-public abstract interface axdg
+class axdg
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(View paramView, int paramInt, InterestTagInfo paramInterestTagInfo);
+  axdg(axcx paramaxcx) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (bmri.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, axcx.a(this.a), axcx.a(this.a).getTitleBarHeight(), this.a.jdField_a_of_type_MqqOsMqqHandler)) {
+      axcx.a(this.a).setLeftCheckBoxVisible(false, null, false);
+    }
+  }
 }
 
 

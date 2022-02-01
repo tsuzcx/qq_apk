@@ -1,6 +1,7 @@
 import android.os.AsyncTask;
 import android.os.Bundle;
 import com.dataline.activities.LiteActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ public class ci
   
   void a(List<String> paramList)
   {
-    amqd localamqd = (amqd)this.a.app.getBusinessHandler(8);
+    ansr localansr = (ansr)this.a.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
     for (;;)
     {
       int j = paramList.size();
@@ -48,14 +49,14 @@ public class ci
         i = 0;
         while (i < j)
         {
-          localamqd.a(a((String)paramList.get(i), 0, 0, 0), false);
+          localansr.a(a((String)paramList.get(i), 0, 0, 0), false);
           i += 1;
         }
       }
       if ((j > 3) && (j < 50))
       {
         localArrayList = new ArrayList();
-        int k = localamqd.a();
+        int k = localansr.a();
         i = 0;
         while (i < j)
         {
@@ -63,11 +64,11 @@ public class ci
           i += 1;
         }
         dq.n(this.a.app);
-        localamqd.a(localArrayList, false);
+        localansr.a(localArrayList, false);
         return;
       }
       ArrayList localArrayList = new ArrayList();
-      j = localamqd.a();
+      j = localansr.a();
       int i = 0;
       while (i < 50)
       {
@@ -75,7 +76,7 @@ public class ci
         i += 1;
       }
       dq.n(this.a.app);
-      localamqd.a(localArrayList, false);
+      localansr.a(localArrayList, false);
       i = 0;
       while (i < 50)
       {

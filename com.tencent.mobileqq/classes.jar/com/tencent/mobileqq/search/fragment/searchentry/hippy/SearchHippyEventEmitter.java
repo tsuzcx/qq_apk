@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.search.fragment.searchentry.hippy;
 
-import anaq;
-import anas;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import aodf;
+import aodh;
 import com.tencent.hippy.qq.app.HippyQQEngine;
 import com.tencent.mobileqq.search.fragment.searchentry.hotword.SearchHotwordHandler;
 import com.tencent.mtt.hippy.common.HippyMap;
@@ -12,7 +12,7 @@ import java.util.Map;
 import org.json.JSONObject;
 
 public class SearchHippyEventEmitter
-  implements anas
+  implements aodh
 {
   private static final String MODULE_KEYBOARD_CHANGE = "@search:keyboardEvent";
   private static final String MODULE_SEARCH_COMMON_EVENT = "@search:commonEvent";
@@ -25,7 +25,7 @@ public class SearchHippyEventEmitter
   {
     this.engine = paramHippyQQEngine;
     this.hotwordHandler = paramSearchHotwordHandler;
-    anaq.a(this);
+    aodf.a(this);
   }
   
   public static String mapToJsonStr(Map<String, Object> paramMap)
@@ -54,7 +54,7 @@ public class SearchHippyEventEmitter
   
   public void destroy()
   {
-    anaq.b(this);
+    aodf.b(this);
   }
   
   public void onHistoryChanged()

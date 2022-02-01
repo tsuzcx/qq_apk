@@ -9,8 +9,8 @@ import android.media.MediaFormat;
 import android.media.MediaMetadataRetriever;
 import android.media.MediaMuxer;
 import android.view.Surface;
-import bbyb;
-import bbyc;
+import bdew;
+import bdex;
 import com.tencent.av.mediacodec.AndroidCodec.BufferData;
 import com.tencent.mobileqq.shortvideo.mediacodec.ShortVideoCodec;
 import com.tencent.qphone.base.util.QLog;
@@ -26,8 +26,8 @@ class JBMR2VideoConverterImpl$Converter
   long jdField_a_of_type_Long = -1L;
   MediaExtractor jdField_a_of_type_AndroidMediaMediaExtractor = null;
   MediaMuxer jdField_a_of_type_AndroidMediaMediaMuxer = null;
-  bbyb jdField_a_of_type_Bbyb = null;
-  bbyc jdField_a_of_type_Bbyc = null;
+  bdew jdField_a_of_type_Bdew = null;
+  bdex jdField_a_of_type_Bdex = null;
   ShortVideoCodec jdField_a_of_type_ComTencentMobileqqShortvideoMediacodecShortVideoCodec = null;
   VideoConverter.Processor jdField_a_of_type_ComTencentMobileqqShortvideoUtilVideoconverterVideoConverter$Processor = null;
   File jdField_a_of_type_JavaIoFile = null;
@@ -122,11 +122,11 @@ class JBMR2VideoConverterImpl$Converter
     if (QLog.isColorLevel()) {
       QLog.d("JBMR2VideoConverterImpl", 2, "shutting down encoder, decoder");
     }
-    if (this.jdField_a_of_type_Bbyc != null) {
-      this.jdField_a_of_type_Bbyc.b();
+    if (this.jdField_a_of_type_Bdex != null) {
+      this.jdField_a_of_type_Bdex.b();
     }
-    if (this.jdField_a_of_type_Bbyb != null) {
-      this.jdField_a_of_type_Bbyb.b();
+    if (this.jdField_a_of_type_Bdew != null) {
+      this.jdField_a_of_type_Bdew.b();
     }
     if (this.jdField_b_of_type_ComTencentMobileqqShortvideoMediacodecShortVideoCodec != null)
     {
@@ -155,7 +155,7 @@ class JBMR2VideoConverterImpl$Converter
     }
   }
   
-  void a(MediaExtractor paramMediaExtractor1, MediaExtractor paramMediaExtractor2, ShortVideoCodec paramShortVideoCodec1, ShortVideoCodec paramShortVideoCodec2, MediaMuxer paramMediaMuxer, bbyb parambbyb, bbyc parambbyc)
+  void a(MediaExtractor paramMediaExtractor1, MediaExtractor paramMediaExtractor2, ShortVideoCodec paramShortVideoCodec1, ShortVideoCodec paramShortVideoCodec2, MediaMuxer paramMediaMuxer, bdew parambdew, bdex parambdex)
   {
     int m = 0;
     int i4 = 0;
@@ -447,10 +447,10 @@ class JBMR2VideoConverterImpl$Converter
             l4 = l2;
             if (bool)
             {
-              parambbyc.c();
-              parambbyc.d();
-              parambbyb.a(localBufferInfo.presentationTimeUs * 1000L);
-              parambbyb.a();
+              parambdex.c();
+              parambdex.d();
+              parambdew.a(localBufferInfo.presentationTimeUs * 1000L);
+              parambdew.a();
               l4 = l2;
               if (l2 < 0L) {
                 l4 = localBufferInfo.presentationTimeUs;
@@ -600,9 +600,9 @@ class JBMR2VideoConverterImpl$Converter
         }
         paramFile = new AtomicReference();
         localObject2 = a(paramProcessor, paramFile);
-        paramProcessor = new bbyb((Surface)paramFile.get());
+        paramProcessor = new bdew((Surface)paramFile.get());
         paramProcessor.c();
-        paramFile = new bbyc();
+        paramFile = new bdex();
         localObject1 = a((MediaFormat)localObject1, paramFile.a);
       }
     }
@@ -615,8 +615,8 @@ class JBMR2VideoConverterImpl$Converter
       this.jdField_a_of_type_ComTencentMobileqqShortvideoMediacodecShortVideoCodec = ((ShortVideoCodec)localObject1);
       this.jdField_b_of_type_ComTencentMobileqqShortvideoMediacodecShortVideoCodec = ((ShortVideoCodec)localObject2);
       this.jdField_a_of_type_AndroidMediaMediaMuxer = localMediaMuxer;
-      this.jdField_a_of_type_Bbyb = paramProcessor;
-      this.jdField_a_of_type_Bbyc = paramFile;
+      this.jdField_a_of_type_Bdew = paramProcessor;
+      this.jdField_a_of_type_Bdex = paramFile;
       return;
       j = i;
       m = k;
@@ -699,7 +699,7 @@ class JBMR2VideoConverterImpl$Converter
     {
       this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilVideoconverterVideoConverter$Processor.onProgress(0);
       a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilVideoconverterVideoConverter$Processor);
-      a(this.jdField_a_of_type_AndroidMediaMediaExtractor, this.jdField_b_of_type_AndroidMediaMediaExtractor, this.jdField_a_of_type_ComTencentMobileqqShortvideoMediacodecShortVideoCodec, this.jdField_b_of_type_ComTencentMobileqqShortvideoMediacodecShortVideoCodec, this.jdField_a_of_type_AndroidMediaMediaMuxer, this.jdField_a_of_type_Bbyb, this.jdField_a_of_type_Bbyc);
+      a(this.jdField_a_of_type_AndroidMediaMediaExtractor, this.jdField_b_of_type_AndroidMediaMediaExtractor, this.jdField_a_of_type_ComTencentMobileqqShortvideoMediacodecShortVideoCodec, this.jdField_b_of_type_ComTencentMobileqqShortvideoMediacodecShortVideoCodec, this.jdField_a_of_type_AndroidMediaMediaMuxer, this.jdField_a_of_type_Bdew, this.jdField_a_of_type_Bdex);
       if (this.d)
       {
         this.d = false;
@@ -770,7 +770,7 @@ class JBMR2VideoConverterImpl$Converter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.videoconverter.JBMR2VideoConverterImpl.Converter
  * JD-Core Version:    0.7.0.1
  */

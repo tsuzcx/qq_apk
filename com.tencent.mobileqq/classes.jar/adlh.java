@@ -1,25 +1,28 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adlh
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public adlh(GeneralSettingActivity paramGeneralSettingActivity) {}
+  public adlh(AutoRemarkActivity paramAutoRemarkActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    QQAppInterface localQQAppInterface = this.a.app;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    if ((this.a.a != null) && (this.a.a.isShowing()) && (this.a.a.getWindow() != null)) {}
+    try
     {
-      bcef.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Enter_sendmsg", 0, i, "", "", "", "");
-      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131694542), "qqsetting_enter_sendmsg_key", paramBoolean);
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      this.a.a.dismiss();
+      label46:
+      this.a.a = null;
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+    }
+    catch (Throwable localThrowable)
+    {
+      break label46;
     }
   }
 }

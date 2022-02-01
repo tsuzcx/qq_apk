@@ -1,46 +1,26 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 class akjd
-  implements View.OnClickListener
+  extends azip
 {
-  akjd(akho paramakho) {}
+  akjd(akjc paramakjc) {}
   
-  public void onClick(View paramView)
+  protected void d(boolean paramBoolean)
   {
-    Object localObject = (bcgq)paramView.getTag();
-    if (localObject != null) {
-      ((bcgq)localObject).jdField_a_of_type_Bfvp.k();
+    if (QLog.isColorLevel()) {
+      QLog.i("SettingActivity2", 2, "onDisableMobileMatch suc[" + paramBoolean + "]");
     }
-    try
+    this.a.a.a.b();
+    this.a.a.a.app.unRegistObserver(this);
+    if (paramBoolean)
     {
-      if (!TextUtils.isEmpty(((bcgq)localObject).jdField_a_of_type_JavaLangString))
-      {
-        i = Integer.parseInt(((bcgq)localObject).jdField_a_of_type_JavaLangString);
-        bcef.b(akho.a(this.a).app, "dc00898", "", "", "0X80087C1", "0X80087C1", i, 0, "", "", "", "");
-        localObject = new aptj(akho.a(this.a).getApplicationContext(), aqlw.jdField_a_of_type_JavaLangString);
-        if (localObject != null)
-        {
-          ((aptj)localObject).b();
-          ((aptj)localObject).c();
-        }
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-      }
+      this.a.a.a.a();
+      this.a.a.a.setResult(-1);
+      return;
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-        int i = 0;
-        continue;
-        i = 0;
-      }
-    }
+    this.a.a.a.a(1, anvx.a(2131713310));
   }
 }
 

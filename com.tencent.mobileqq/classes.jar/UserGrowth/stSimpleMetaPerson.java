@@ -9,12 +9,14 @@ public final class stSimpleMetaPerson
   extends JceStruct
 {
   static stSchema cache_avatarSchema = new stSchema();
+  static stLive cache_live = new stLive();
   static stMetaNumericSys cache_nueric = new stMetaNumericSys();
   public String avatar = "";
   public stSchema avatarSchema;
   public int createtime;
   public int followStatus;
   public String id = "";
+  public stLive live;
   public int medal;
   public String nick = "";
   public stMetaNumericSys nueric;
@@ -27,7 +29,7 @@ public final class stSimpleMetaPerson
   
   public stSimpleMetaPerson() {}
   
-  public stSimpleMetaPerson(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5, int paramInt3, int paramInt4, int paramInt5, stMetaNumericSys paramstMetaNumericSys, String paramString6, int paramInt6, stSchema paramstSchema)
+  public stSimpleMetaPerson(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5, int paramInt3, int paramInt4, int paramInt5, stMetaNumericSys paramstMetaNumericSys, String paramString6, int paramInt6, stSchema paramstSchema, stLive paramstLive)
   {
     this.id = paramString1;
     this.type = paramInt1;
@@ -43,6 +45,7 @@ public final class stSimpleMetaPerson
     this.recommendReason = paramString6;
     this.sex = paramInt6;
     this.avatarSchema = paramstSchema;
+    this.live = paramstLive;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -61,6 +64,7 @@ public final class stSimpleMetaPerson
     this.recommendReason = paramJceInputStream.readString(11, false);
     this.sex = paramJceInputStream.read(this.sex, 12, false);
     this.avatarSchema = ((stSchema)paramJceInputStream.read(cache_avatarSchema, 13, false));
+    this.live = ((stLive)paramJceInputStream.read(cache_live, 14, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -94,6 +98,9 @@ public final class stSimpleMetaPerson
     paramJceOutputStream.write(this.sex, 12);
     if (this.avatarSchema != null) {
       paramJceOutputStream.write(this.avatarSchema, 13);
+    }
+    if (this.live != null) {
+      paramJceOutputStream.write(this.live, 14);
     }
   }
 }

@@ -1,33 +1,12 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.mobileqq.nearby.NearbyJsInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import cooperation.troop.NearbyVideoChatProxyActivity;
-import tencent.im.oidb.cmd0x8dd.oidb_0x8dd.SelfInfo;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
 
-class awis
-  implements zop
+public abstract interface awis
 {
-  awis(awir paramawir, String paramString) {}
+  public abstract void a();
   
-  public void callback(Bundle paramBundle)
-  {
-    if (paramBundle.getBoolean("isOtherTypeChatting", false))
-    {
-      paramBundle = bfur.a(this.jdField_a_of_type_Awir.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.mRuntime.a(), 230);
-      paramBundle.setMessage(this.jdField_a_of_type_Awir.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.mRuntime.a().getString(2131695417));
-      paramBundle.setNegativeButton(amtj.a(2131706315), new awit(this));
-      paramBundle.show();
-      return;
-    }
-    zon.a();
-    paramBundle = new oidb_0x8dd.SelfInfo();
-    paramBundle.uint32_gender.set(this.jdField_a_of_type_Awir.jdField_a_of_type_Int);
-    paramBundle.uint32_charm_level.set(this.jdField_a_of_type_Awir.b);
-    paramBundle.uint32_age.set(this.jdField_a_of_type_Awir.c);
-    NearbyVideoChatProxyActivity.a(this.jdField_a_of_type_Awir.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.mRuntime.a(), this.jdField_a_of_type_Awir.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.mRuntime.a(), null, this.jdField_a_of_type_JavaLangString, paramBundle, 0);
-  }
+  public abstract void a(LocationRoom.Venue paramVenue);
+  
+  public abstract void a(String paramString);
 }
 
 

@@ -1,95 +1,83 @@
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.transfile.ServerAddr;
-import com.tencent.mobileqq.transfile.dns.InnerDns;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.engine.GameCenterDownloadEngine.pauseDownload.1;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.engine.GameCenterDownloadEngine.queryDownloadState.1;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.engine.GameCenterDownloadEngine.startDownload.1;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.view.RIJDownloadView;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import cooperation.wadl.ipc.WadlParams;
+import java.io.File;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class uew
-  implements URLDrawableHandler
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/engine/GameCenterDownloadEngine;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/engine/IDownloadEngine;", "()V", "buildDownloadParams", "Lcooperation/wadl/ipc/WadlParams;", "data", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/ADVideoAppDownloadData;", "cancelDownload", "", "viewRIJ", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJDownloadView;", "installApp", "", "isAppPkgExist", "isGameDownloadData", "pauseDownload", "queryDownloadState", "startDownload", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class uew
+  extends uex
 {
-  private URLDrawableHandler jdField_a_of_type_ComTencentImageURLDrawableHandler;
-  private uev b;
+  public static final uew a = new uew();
   
-  public uew(uev paramuev1, URLDrawableHandler paramURLDrawableHandler, uev paramuev2)
+  private final WadlParams a(ule paramule)
   {
-    this.jdField_a_of_type_ComTencentImageURLDrawableHandler = paramURLDrawableHandler;
-    this.b = paramuev2;
+    if (paramule.jdField_a_of_type_CooperationWadlIpcWadlParams == null) {
+      paramule.jdField_a_of_type_CooperationWadlIpcWadlParams = ufc.a(paramule);
+    }
+    return paramule.jdField_a_of_type_CooperationWadlIpcWadlParams;
   }
   
-  public uev a()
+  private final boolean c(ule paramule)
   {
-    return this.b;
+    return (paramule.jdField_a_of_type_Boolean) && (paramule.jdField_a_of_type_CooperationWadlIpcWadlParams != null);
   }
   
-  protected void a()
+  public void a(@Nullable RIJDownloadView paramRIJDownloadView, @Nullable ule paramule)
   {
-    QLog.d(uev.b(this.jdField_a_of_type_Uev), 1, "image download start: " + uev.c(this.jdField_a_of_type_Uev) + " supportInnerIp: " + uet.a(this.jdField_a_of_type_Uev.a));
-    if (uet.b(this.jdField_a_of_type_Uev.a))
+    ThreadManagerV2.executeOnSubThread((Runnable)new GameCenterDownloadEngine.queryDownloadState.1(paramRIJDownloadView, paramule));
+  }
+  
+  public boolean a(@Nullable ule paramule)
+  {
+    if (paramule != null) {}
+    for (String str = paramule.i; TextUtils.isEmpty((CharSequence)str); str = null) {
+      return false;
+    }
+    if (paramule != null)
     {
-      Object localObject1 = InnerDns.getHostFromUrl(uev.c(this.jdField_a_of_type_Uev));
-      Object localObject2 = InnerDns.getInstance().reqSerAddrList((String)localObject1, 1002);
-      if ((localObject2 != null) && (((ArrayList)localObject2).size() > 0))
-      {
-        localObject1 = new StringBuilder();
-        localObject2 = ((ArrayList)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext()) {
-          ((StringBuilder)localObject1).append(((ServerAddr)((Iterator)localObject2).next()).toString()).append(" ");
-        }
-        QLog.d(uev.b(this.jdField_a_of_type_Uev), 1, "InnerIp address " + localObject1);
-      }
+      paramule = paramule.i;
+      if (paramule == null) {}
     }
-    else
+    for (;;)
     {
-      return;
-    }
-    QLog.d(uev.b(this.jdField_a_of_type_Uev), 1, "InnerIp address empty");
-  }
-  
-  public void a(String paramString)
-  {
-    if ((this.jdField_a_of_type_ComTencentImageURLDrawableHandler instanceof syu)) {
-      ((syu)this.jdField_a_of_type_ComTencentImageURLDrawableHandler).a(paramString);
+      return new File(paramule).exists();
+      paramule = "";
     }
   }
   
-  public void doCancel()
+  public void b(@Nullable RIJDownloadView paramRIJDownloadView, @Nullable ule paramule)
   {
-    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.doCancel();
+    ThreadManagerV2.executeOnSubThread((Runnable)new GameCenterDownloadEngine.startDownload.1(paramRIJDownloadView, paramule));
   }
   
-  public boolean isCancelled()
+  public boolean b(@Nullable ule paramule)
   {
-    return this.jdField_a_of_type_ComTencentImageURLDrawableHandler.isCancelled();
+    if (paramule != null) {
+      a.a(paramule);
+    }
+    bmql localbmql = bmqk.a();
+    if (paramule != null) {}
+    for (paramule = paramule.jdField_a_of_type_CooperationWadlIpcWadlParams;; paramule = null)
+    {
+      localbmql.b(paramule);
+      return true;
+    }
   }
   
-  public void onFileDownloadFailed(int paramInt)
+  public void c(@Nullable RIJDownloadView paramRIJDownloadView, @Nullable ule paramule)
   {
-    this.b.a(false, paramInt);
-    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadFailed(paramInt);
-  }
-  
-  public void onFileDownloadStarted()
-  {
-    this.b.b();
-    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadStarted();
-    a();
-  }
-  
-  public void onFileDownloadSucceed(long paramLong)
-  {
-    this.b.a(true, 0);
-    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadSucceed(paramLong);
-  }
-  
-  public void publishProgress(int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.publishProgress(paramInt);
+    ThreadManagerV2.executeOnSubThread((Runnable)new GameCenterDownloadEngine.pauseDownload.1(paramule));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uew
  * JD-Core Version:    0.7.0.1
  */

@@ -1,74 +1,151 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
-import com.tencent.biz.troop.file.MoveFileActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StEntry;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.LayoutParams;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerEntryItemView;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerFeedItemView;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.util.ArrayUtils;
+import java.util.List;
 
 public class zrb
-  extends zrx
+  extends RecyclerView.Adapter<zrc>
 {
-  public zrb(MoveFileActivity paramMoveFileActivity, bebc parambebc) {}
+  protected CertifiedAccountMeta.StEntry a;
+  protected List<zse> a;
+  private zra jdField_a_of_type_Zra;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c;
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString)
+  protected int a()
   {
-    this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.b();
-    Intent localIntent = new Intent();
-    localIntent.putExtra("fileId", MoveFileActivity.b(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity));
-    localIntent.putExtra("folderId", this.jdField_a_of_type_Bebc.b);
-    int i = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity().getResources().getDimensionPixelSize(2131299076);
-    if (paramBoolean)
-    {
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app;
-      String str = Long.toString(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a);
-      if (MoveFileActivity.c(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).equals("/"))
-      {
-        paramString = "0";
-        bcef.b(localQQAppInterface, "P_CliOper", "Grp_files", "", "file", "move_suc", 0, 0, str, paramString, "", "");
-        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 2, amtj.a(2131706023), 0).b(i);
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(-1, localIntent);
-      }
+    if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry != null) {
+      return 1;
     }
+    return 0;
+  }
+  
+  public List<zse> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public zrc a(ViewGroup paramViewGroup, int paramInt)
+  {
+    Object localObject = paramViewGroup.getContext();
+    paramViewGroup = new RecyclerView.LayoutParams(DisplayUtil.dip2px((Context)localObject, 144.0F), DisplayUtil.dip2px((Context)localObject, 213.0F));
+    if (paramInt == 3)
+    {
+      localObject = new RecommendBannerEntryItemView((Context)localObject);
+      ((RecommendBannerEntryItemView)localObject).setLayoutParams(paramViewGroup);
+      ((RecommendBannerEntryItemView)localObject).setIsCloseShadow(this.jdField_a_of_type_Boolean);
+      ((RecommendBannerEntryItemView)localObject).setInNightMode(this.b);
+      return new zrc(this, (View)localObject);
+    }
+    if (paramInt == 1)
+    {
+      localObject = new RecommendBannerItemView((Context)localObject);
+      ((RecommendBannerItemView)localObject).setLayoutParams(paramViewGroup);
+      ((RecommendBannerItemView)localObject).setIsCloseShadow(this.jdField_a_of_type_Boolean);
+      ((RecommendBannerItemView)localObject).setInNightMode(this.b);
+      ((RecommendBannerItemView)localObject).setInNewFolderPage(this.c);
+      return new zrc(this, (View)localObject);
+    }
+    if (paramInt == 2)
+    {
+      localObject = new RecommendBannerFeedItemView((Context)localObject);
+      ((RecommendBannerFeedItemView)localObject).setLayoutParams(paramViewGroup);
+      ((RecommendBannerFeedItemView)localObject).setIsCloseShadow(this.jdField_a_of_type_Boolean);
+      ((RecommendBannerFeedItemView)localObject).setInNightMode(this.b);
+      return new zrc(this, (View)localObject);
+    }
+    return null;
+  }
+  
+  public void a(CertifiedAccountMeta.StEntry paramStEntry, List<zse> paramList)
+  {
+    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry = paramStEntry;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public void a(zra paramzra)
+  {
+    this.jdField_a_of_type_Zra = paramzra;
+  }
+  
+  public void a(zrc paramzrc)
+  {
+    super.onViewAttachedToWindow(paramzrc);
+    int i = paramzrc.getAdapterPosition() - a();
+    if ((!ArrayUtils.isOutOfArrayIndex(i, a())) && (a().get(i) != null)) {
+      aanb.a(((zse)a().get(i)).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get(), "auth_page", "recom_exp", 0, 0, new String[] { "", "", String.valueOf(i), ((zse)a().get(i)).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.nick.get() });
+    }
+  }
+  
+  public void a(zrc paramzrc, int paramInt)
+  {
+    if (paramzrc == null) {}
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.finish();
-      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.overridePendingTransition(0, 2130772001);
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramzrc, paramInt, getItemId(paramInt));
       return;
-      paramString = "1";
-      break;
-      switch (paramInt)
+      if ((paramzrc.itemView instanceof RecommendBannerEntryItemView))
       {
-      default: 
-        paramString = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getString(2131695563);
-        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, paramString, 0).b(i);
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
-        break;
-      case -302: 
-      case -301: 
-      case -103: 
-        bcef.b(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app, "P_CliOper", "Grp_files", "", "file", "fail_move_nofile", 0, 0, Long.toString(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a), "", "", "");
-        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, amtj.a(2131706016), 0).b(i);
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
-        break;
-      case -136: 
-        bcef.b(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app, "P_CliOper", "Grp_files", "", "file", "fail_move", 0, 0, Long.toString(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a), "", "", "");
-        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, amtj.a(2131706020), 0).b(i);
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
-        break;
-      case -107: 
-      case -102: 
-        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, amtj.a(2131706019), 0).b(i);
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
-        break;
-      case -406: 
-        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, amtj.a(2131706015), 0).b(i);
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
-        break;
-      case -407: 
-        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, amtj.a(2131706017), 0).b(i);
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
+        ((RecommendBannerEntryItemView)paramzrc.itemView).setEntry(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry);
+      }
+      else
+      {
+        int i = paramInt - a();
+        if ((paramzrc.itemView instanceof RecommendBannerItemView))
+        {
+          RecommendBannerItemView localRecommendBannerItemView = (RecommendBannerItemView)paramzrc.itemView;
+          localRecommendBannerItemView.setData(((zse)a().get(i)).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser, i);
+          localRecommendBannerItemView.setRecommendBannerFolwListener(this.jdField_a_of_type_Zra);
+        }
+        else if ((paramzrc.itemView instanceof RecommendBannerFeedItemView))
+        {
+          ((RecommendBannerFeedItemView)paramzrc.itemView).setData(((zse)a().get(i)).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, i);
+        }
       }
     }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
+  }
+  
+  public int getItemCount()
+  {
+    if (a() == null) {
+      return a();
+    }
+    return a().size() + a();
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if ((paramInt == 0) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry != null)) {
+      return 3;
+    }
+    return ((zse)a().get(paramInt - a())).jdField_a_of_type_Int;
   }
 }
 

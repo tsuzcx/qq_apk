@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.minigame.ui;
 
 import android.os.Bundle;
-import apkq;
-import bjcw;
+import aqnu;
+import bkod;
+import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.qphone.base.util.QLog;
 
 class GameActivity1$3
-  extends apkq
+  extends aqnu
 {
   GameActivity1$3(GameActivity1 paramGameActivity1) {}
   
@@ -20,6 +21,17 @@ class GameActivity1$3
       GameActivity1.access$102(this.this$0, null);
     }
     this.this$0.doOnBackPressed();
+  }
+  
+  public void onDeleteColorNote(int paramInt, String paramString, boolean paramBoolean)
+  {
+    super.onDeleteColorNote(paramInt, paramString, paramBoolean);
+    if ((0x80000000 & paramInt) != 0)
+    {
+      MiniProgramLpReportDC04239.reportAsync("addRecentColorSign", "recentColorSign_enter", "remove_ColorSign", null);
+      return;
+    }
+    MiniProgramLpReportDC04239.reportAsync("addColorSign", "colorSign_enter", "remove_ColorSign", null);
   }
 }
 

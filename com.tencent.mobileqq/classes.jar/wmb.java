@@ -1,191 +1,102 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserSimpleInfo;
-import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
-import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity.GetWatcherHelper.1;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-public final class wmb
-  extends vqq<wff, wgq>
-  implements wch
+public class wmb
+  extends JobSegment<List<wzh>, List<wzh>>
 {
-  int jdField_a_of_type_Int = 0;
-  public long a;
-  public final QQStoryWatcherListActivity a;
-  final String jdField_a_of_type_JavaLangString;
-  List<qqstory_struct.UserSimpleInfo> jdField_a_of_type_JavaUtilList;
-  final wcg jdField_a_of_type_Wcg;
-  boolean jdField_a_of_type_Boolean = true;
-  public long b;
-  List<qqstory_struct.UserSimpleInfo> b;
+  wly a;
   
-  public wmb(QQStoryWatcherListActivity paramQQStoryWatcherListActivity, String paramString)
+  public wmb(wly paramwly)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity = paramQQStoryWatcherListActivity;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Wcg = new wcg(this);
+    this.a = paramwly;
   }
   
-  private void b()
+  protected void a(JobContext paramJobContext, List<wzh> paramList)
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty()))
+    Object localObject1;
+    Object localObject2;
+    Object localObject3;
+    if (this.a.jdField_a_of_type_Int == 5)
     {
-      QQStoryWatcherListActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity, true, true, null);
-      return;
-    }
-    if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_JavaUtilList.size())
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.e("Q.qqstory.player.watcherlist.activity", 2, "GetWatcherHelper: requireWatcherByPage return, currentReqSeek = " + this.jdField_a_of_type_Int + ", uinCount = " + this.jdField_a_of_type_JavaUtilList.size());
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqstory.msgTab.jobLocalVideo", 2, "self node, check local video");
       }
-      QQStoryWatcherListActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity, true, true, null);
-      return;
-    }
-    this.jdField_b_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList.subList(this.jdField_a_of_type_Int, Math.min(this.jdField_a_of_type_Int + 20, this.jdField_a_of_type_JavaUtilList.size()));
-    int i = this.jdField_b_of_type_JavaUtilList.size();
-    if (this.jdField_b_of_type_JavaUtilList.isEmpty())
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.e("Q.qqstory.player.watcherlist.activity", 2, "GetWatcherHelper: requireWatcherByPage return, because toRequireList.isEmpty(), currentReqSeek = " + this.jdField_a_of_type_Int + ", uinCount = " + this.jdField_a_of_type_JavaUtilList.size());
+      paramJobContext = (wjp)wjs.a(5);
+      localObject1 = ((wmr)QQStoryContext.a().getManager(QQManagerFactory.MSG_TAB_STORY_MANAGER)).a().a(this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString);
+      if ((localObject1 == null) || (((wly)localObject1).b == null) || (((wly)localObject1).b.isEmpty())) {
+        break label410;
       }
-      QQStoryWatcherListActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity, true, true, null);
-      return;
-    }
-    Object localObject = (vvj)vux.a(2);
-    ArrayList localArrayList2 = new ArrayList(i);
-    ArrayList localArrayList1 = new ArrayList(i);
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = ((qqstory_struct.UserSimpleInfo)localIterator.next()).union_id.get().toStringUtf8();
-      QQUserUIItem localQQUserUIItem = ((vvj)localObject).b(str);
-      if ((localQQUserUIItem == null) || (!localQQUserUIItem.isAvailable())) {
-        localArrayList2.add(new vwe("", str));
-      } else {
-        localArrayList1.add(localQQUserUIItem);
-      }
-    }
-    if (localArrayList2.isEmpty())
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.e("Q.qqstory.player.watcherlist.activity", 2, "GetWatcherHelper: requireWatcherByPage load localData userIDS = " + localArrayList2);
-      }
-      this.jdField_a_of_type_Int += i;
-      localObject = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity;
-      if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_JavaUtilList.size()) {}
-      for (boolean bool = true;; bool = false)
+      localObject1 = ((wly)localObject1).b.iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        QQStoryWatcherListActivity.b((QQStoryWatcherListActivity)localObject, true, bool, localArrayList1);
-        return;
-      }
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.e("Q.qqstory.player.watcherlist.activity", 2, "GetWatcherHelper: requireWatcherByPage requestUserIds = " + localArrayList2);
-    }
-    this.jdField_a_of_type_Wcg.a(1, localArrayList2);
-  }
-  
-  public void a()
-  {
-    wff localwff = new wff();
-    localwff.b = this.jdField_a_of_type_JavaLangString;
-    vqn.a().a(localwff, this);
-    if (QLog.isDevelopLevel()) {
-      QLog.w("Q.qqstory.player.watcherlist.activity", 2, "GetWatcherHelper: requireWatcherIds feedId = " + this.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void a(wci paramwci)
-  {
-    boolean bool = true;
-    if (QLog.isDevelopLevel()) {
-      QLog.e("Q.qqstory.player.watcherlist.activity", 2, "GetWatcherHelper: onCallback errorInfo = " + paramwci.a);
-    }
-    if (paramwci.a.isSuccess())
-    {
-      int i = this.jdField_b_of_type_JavaUtilList.size();
-      Object localObject = (vvj)vux.a(2);
-      paramwci = new ArrayList(i);
-      Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        QQUserUIItem localQQUserUIItem = ((vvj)localObject).b(((qqstory_struct.UserSimpleInfo)localIterator.next()).union_id.get().toStringUtf8());
-        if (localQQUserUIItem != null) {
-          paramwci.add(localQQUserUIItem);
-        }
-      }
-      this.jdField_a_of_type_Int += i;
-      localObject = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity;
-      if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_JavaUtilList.size()) {}
-      for (bool = true;; bool = false)
-      {
-        QQStoryWatcherListActivity.b((QQStoryWatcherListActivity)localObject, true, bool, paramwci);
-        return;
-      }
-    }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.jdField_a_of_type_Boolean)
-    {
-      paramwci = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity;
-      if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_JavaUtilList.size()) {}
-      for (;;)
-      {
-        QQStoryWatcherListActivity.b(paramwci, false, bool, null);
-        return;
-        bool = false;
-      }
-    }
-    new Handler(Looper.getMainLooper()).post(new QQStoryWatcherListActivity.GetWatcherHelper.1(this));
-  }
-  
-  public void a(@NonNull wff paramwff, @Nullable wgq paramwgq, @NonNull ErrorMessage paramErrorMessage)
-  {
-    int i = 0;
-    if (QLog.isDevelopLevel()) {
-      QLog.w("Q.qqstory.player.watcherlist.activity", 2, "GetWatcherHelper: onResponseOnUIThread errorMsg = " + paramErrorMessage);
-    }
-    if ((paramErrorMessage.isSuccess()) && (paramwgq != null))
-    {
-      this.jdField_a_of_type_Long = paramwgq.jdField_a_of_type_Long;
-      this.jdField_b_of_type_Long = paramwgq.jdField_b_of_type_Long;
-      if (this.jdField_b_of_type_Long < this.jdField_a_of_type_Long) {
-        this.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
-      }
-      if (this.jdField_b_of_type_Long > 0L) {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.setTitle(QQStoryWatcherListActivity.a() + UIUtils.formatCount(this.jdField_b_of_type_Long));
-      }
-      this.jdField_a_of_type_JavaUtilList = paramwgq.jdField_a_of_type_JavaUtilList;
-      if (QLog.isDevelopLevel())
-      {
-        paramwff = new StringBuilder().append("GetWatcherHelper: onResponseOnUIThread isSuccess mTotalWatcherCount = ").append(this.jdField_a_of_type_Long).append(", mTotalReadTime = ").append(this.jdField_b_of_type_Long).append(", uinCount = ");
-        if (this.jdField_a_of_type_JavaUtilList != null) {
-          break label245;
-        }
-      }
-      for (;;)
-      {
-        QLog.w("Q.qqstory.player.watcherlist.activity", 2, i);
-        if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem != null)
+        localObject2 = (wzh)((Iterator)localObject1).next();
+        localObject3 = paramJobContext.a(((wzh)localObject2).jdField_b_of_type_JavaLangString);
+        if (localObject3 != null)
         {
-          this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.mViewTotalTime = this.jdField_b_of_type_Long;
-          ((xnp)vux.a(11)).a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem);
+          ((wzh)localObject2).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((StoryVideoItem)localObject3);
+          paramList.add(localObject2);
         }
-        b();
-        return;
-        label245:
-        i = this.jdField_a_of_type_JavaUtilList.size();
       }
     }
-    QQStoryWatcherListActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity, false, false, null);
+    label410:
+    for (int i = 1;; i = 0)
+    {
+      localObject1 = paramJobContext.a(false);
+      int j = i;
+      if (localObject1 != null)
+      {
+        j = i;
+        if (((List)localObject1).size() > 0)
+        {
+          localObject1 = ((List)localObject1).iterator();
+          while (((Iterator)localObject1).hasNext())
+          {
+            localObject2 = (StoryVideoItem)((Iterator)localObject1).next();
+            localObject3 = new wzh();
+            ((wzh)localObject3).jdField_a_of_type_Boolean = false;
+            ((wzh)localObject3).jdField_a_of_type_JavaLangString = ((StoryVideoItem)localObject2).mAttachedFeedId;
+            ((wzh)localObject3).jdField_b_of_type_JavaLangString = ((StoryVideoItem)localObject2).mVid;
+            ((wzh)localObject3).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((StoryVideoItem)localObject2);
+            ((wzh)localObject3).jdField_b_of_type_Boolean = true;
+            paramList.add(localObject3);
+          }
+          j = 1;
+        }
+      }
+      if (j != 0)
+      {
+        localObject1 = paramList.iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (wzh)((Iterator)localObject1).next();
+          if (((wzh)localObject2).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
+            ((wzh)localObject2).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramJobContext.a(((wzh)localObject2).jdField_b_of_type_JavaLangString);
+          }
+          if (((wzh)localObject2).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null)
+          {
+            notifyError(new ErrorMessage(940001, "should not be null"));
+            return;
+          }
+        }
+        Collections.sort(paramList, new wmc(this));
+      }
+      if (paramList.isEmpty())
+      {
+        notifyError(new ErrorMessage(103, "nodeInfo not valid"));
+        return;
+      }
+      notifyResult(paramList);
+      return;
+    }
   }
 }
 

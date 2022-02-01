@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.av.smallscreen.SmallScreenRelativeLayout android:id="@id/ngo" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="296.0dip" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/mkq" android:background="@drawable/gdj" android:visibility="visible" android:layout_width="68.0dip" android:layout_height="68.0dip" />
-</com.tencent.av.smallscreen.SmallScreenRelativeLayout>
+    <com.tencent.image.URLImageView android:id="@id/joh" android:layout_width="fill_parent" android:layout_height="93.0dip" android:scaleType="fitXY" android:layout_alignParentTop="true" />
+    <TextView android:textSize="17.0sp" android:textColor="@color/al3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/wul" android:layout_centerHorizontal="true" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/i2z" android:background="@drawable/cf_" android:layout_width="254.0dip" android:layout_height="93.0dip" android:layout_marginTop="55.0dip" android:layout_marginBottom="18.0dip" android:layout_centerHorizontal="true" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/np6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="166.0dip" android:layout_marginBottom="10.0dip" android:layout_centerHorizontal="true">
+        <TextView android:textSize="17.0sp" android:textColor="@color/bp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:text="@string/wuk" android:layout_centerHorizontal="true" />
+        <com.tencent.image.URLImageView android:id="@id/np5" android:layout_width="254.0dip" android:layout_height="101.0dip" android:scaleType="fitXY" />
+    </LinearLayout>
+</RelativeLayout>

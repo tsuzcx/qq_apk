@@ -1,43 +1,40 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.AddressItem;
-import java.util.List;
+import UserGrowth.stNotificationRsp;
 
-public class vik
+class vik
+  implements vfg
 {
-  public AddressItem a;
-  public String a;
-  public List<vim> a;
-  public vjq a;
+  vik(vij paramvij) {}
   
-  public vik(String paramString)
+  public void a(vfr paramvfr)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (paramObject == null) {}
-    do
+    vmp.b("WSRecommendFragmentPresenter", "NotificationRequest-onTaskResponse-resultCode:" + paramvfr.b + " | resultBean:" + paramvfr.jdField_a_of_type_JavaLangObject + " | thread:" + Thread.currentThread().getName());
+    if (this.a.a() == null)
     {
-      return false;
-      if (this == paramObject) {
-        return true;
-      }
-    } while (!(paramObject instanceof vik));
-    return TextUtils.equals(this.jdField_a_of_type_JavaLangString, ((vik)paramObject).jdField_a_of_type_JavaLangString);
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder1 = new StringBuilder("GeoHashPhotoGroup=[");
-    localStringBuilder1.append("geohashString:").append(this.jdField_a_of_type_JavaLangString);
-    StringBuilder localStringBuilder2 = localStringBuilder1.append("picList size:");
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (int i = 0;; i = this.jdField_a_of_type_JavaUtilList.size())
-    {
-      localStringBuilder2.append(i);
-      return localStringBuilder1.toString();
+      vmp.d("WSRecommendFragmentPresenter", "getNotification onTaskResponse getView(): null");
+      return;
     }
+    if (paramvfr.a())
+    {
+      if ((paramvfr.jdField_a_of_type_JavaLangObject instanceof stNotificationRsp))
+      {
+        stNotificationRsp localstNotificationRsp = (stNotificationRsp)paramvfr.jdField_a_of_type_JavaLangObject;
+        vfh localvfh = paramvfr.jdField_a_of_type_Vfh;
+        if (localvfh != null) {
+          vkc.a().a(localstNotificationRsp.trace_id, localvfh.a);
+        }
+        if (localstNotificationRsp.type > 0)
+        {
+          ((vjm)this.a.a()).a(localstNotificationRsp, localvfh);
+          return;
+        }
+        ((vjm)this.a.a()).b(paramvfr.b, paramvfr.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      ((vjm)this.a.a()).b(paramvfr.b, paramvfr.jdField_a_of_type_JavaLangString);
+      vmp.d("WSRecommendFragmentPresenter", "NotificationRequest-onTaskResponse error:" + paramvfr.b + " | " + paramvfr.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    ((vjm)this.a.a()).b(paramvfr.jdField_a_of_type_Int, paramvfr.jdField_a_of_type_JavaLangString);
   }
 }
 

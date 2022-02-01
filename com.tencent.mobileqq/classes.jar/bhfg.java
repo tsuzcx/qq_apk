@@ -1,24 +1,69 @@
-import com.tencent.mobileqq.widget.AnimationTextView;
-import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
-import java.util.Stack;
+import android.text.TextUtils;
+import com.tencent.mobileqq.widget.MessageProgressView.RefreshProgressRunnable;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class bhfg
 {
-  private Stack<AnimationTextView> jdField_a_of_type_JavaUtilStack = new Stack();
+  public ConcurrentHashMap<String, MessageProgressView.RefreshProgressRunnable> a = new ConcurrentHashMap();
   
-  public bhfg(MixedMsgLinearLayout paramMixedMsgLinearLayout) {}
-  
-  public AnimationTextView a()
+  public static final bhfg a()
   {
-    if (this.jdField_a_of_type_JavaUtilStack.isEmpty()) {
-      return null;
-    }
-    return (AnimationTextView)this.jdField_a_of_type_JavaUtilStack.pop();
+    return bhfi.a();
   }
   
-  public void a(AnimationTextView paramAnimationTextView)
+  public MessageProgressView.RefreshProgressRunnable a(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilStack.push(paramAnimationTextView);
+    if (TextUtils.isEmpty(paramString)) {}
+    while (this.a.isEmpty()) {
+      return null;
+    }
+    return (MessageProgressView.RefreshProgressRunnable)this.a.get(paramString);
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = this.a.keySet().iterator();
+    while (localIterator.hasNext()) {
+      a((String)localIterator.next());
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      MessageProgressView.RefreshProgressRunnable localRefreshProgressRunnable = (MessageProgressView.RefreshProgressRunnable)this.a.get(paramString);
+      if (localRefreshProgressRunnable != null) {
+        localRefreshProgressRunnable.a();
+      }
+    }
+    try
+    {
+      this.a.remove(paramString);
+      if (QLog.isColorLevel()) {
+        QLog.e("MessageProgressView", 2, " aflter removeAnimRunnable size=" + this.a.size());
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("MessageProgressView", 2, "removeAnimRunnable exception = " + paramString.getMessage());
+        }
+      }
+    }
+  }
+  
+  public void a(String paramString, MessageProgressView.RefreshProgressRunnable paramRefreshProgressRunnable)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      this.a.put(paramString, paramRefreshProgressRunnable);
+    }
   }
 }
 

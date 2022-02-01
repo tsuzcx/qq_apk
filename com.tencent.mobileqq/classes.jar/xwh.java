@@ -1,31 +1,55 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.biz.qqstory.takevideo.DanceMachineUploadVideoFragment;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFeedLikeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedLikeList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class xwh
-  implements DialogInterface.OnKeyListener
+  extends wfm<wuz>
 {
-  public xwh(DanceMachineUploadVideoFragment paramDanceMachineUploadVideoFragment) {}
+  public String a;
+  public boolean a;
+  public int c = -1;
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public String a()
   {
-    if (paramInt == 84) {
-      return true;
-    }
-    if (paramInt == 4)
+    return weg.a("StorySvc.feed_like_list_715");
+  }
+  
+  public wfh a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspFeedLikeList localRspFeedLikeList = new qqstory_service.RspFeedLikeList();
+    try
     {
-      this.a.a();
-      this.a.a();
-      paramDialogInterface = this.a.a;
-      paramKeyEvent = this.a.a;
-      paramDialogInterface.setResult(0);
-      this.a.a.finish();
-      DanceMachineUploadVideoFragment.a(this.a, false);
-      return true;
+      localRspFeedLikeList.mergeFrom(paramArrayOfByte);
+      return new xwi(localRspFeedLikeList);
     }
-    return false;
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      ykq.d("Q.qqstory:GetLikeListRequest", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqFeedLikeList localReqFeedLikeList = new qqstory_service.ReqFeedLikeList();
+    localReqFeedLikeList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 2;; i = 1)
+    {
+      localReqFeedLikeList.source.set(i);
+      if (this.c != -1) {
+        localReqFeedLikeList.type.set(this.c);
+      }
+      return localReqFeedLikeList.toByteArray();
+    }
+  }
+  
+  public String toString()
+  {
+    return "GetLikeListRequest{, feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isOpen=" + this.jdField_a_of_type_Boolean + ", type=" + this.c + '}';
   }
 }
 

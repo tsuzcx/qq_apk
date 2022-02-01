@@ -1,28 +1,47 @@
-import android.app.Activity;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
-class agjv
-  implements avtb<EmoticonPackage>
+public class agjv
+  implements agin
 {
-  agjv(agjt paramagjt, String paramString) {}
+  private agab a;
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public agjv(agab paramagab)
   {
-    if ((paramEmoticonPackage != null) && (this.jdField_a_of_type_Agjt.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType != 1008) && (this.jdField_a_of_type_Agjt.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType != 1000) && (this.jdField_a_of_type_Agjt.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType != 10004) && (this.jdField_a_of_type_Agjt.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType != 1001) && (this.jdField_a_of_type_Agjt.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType != 1002) && (this.jdField_a_of_type_Agjt.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType != 1003) && (this.jdField_a_of_type_Agjt.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType != 1004) && (this.jdField_a_of_type_Agjt.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType != 1005) && (this.jdField_a_of_type_Agjt.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType != 1006))
+    this.a = paramagab;
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
     {
-      paramEmoticonPackage = this.jdField_a_of_type_Agjt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
-      if (paramEmoticonPackage != null) {
-        paramEmoticonPackage.obtainMessage(22, this.jdField_a_of_type_JavaLangString).sendToTarget();
+    }
+    SessionInfo localSessionInfo;
+    do
+    {
+      return;
+      localObject = this.a.a;
+      localSessionInfo = this.a.sessionInfo;
+      if ((localObject != null) && ((localSessionInfo.curType == 1024) || (((bjxa)localObject).a(localSessionInfo.curFriendUin)))) {
+        ((bjxa)localObject).a(localSessionInfo.curFriendUin, localSessionInfo.curType);
       }
+      if ((localObject != null) && (((bjxa)localObject).a(localSessionInfo.curFriendUin))) {
+        ((bjyi)this.a.app.getBusinessHandler(BusinessHandlerFactory.QIDIAN_HANDLER)).a(null, localSessionInfo.curFriendUin, false);
+      }
+    } while ((!(this.a instanceof ahyl)) && (!nut.b(localSessionInfo.curFriendUin)));
+    if (localObject == null) {}
+    for (Object localObject = "";; localObject = ((bjxa)localObject).a(localSessionInfo.curFriendUin))
+    {
+      bdla.b(this.a.app, "dc00899", "Qidian", localSessionInfo.curFriendUin, "0X8009787", "CloseAIO", 1, 0, String.valueOf(NetConnInfoCenter.getServerTime()), (String)localObject, "8.4.10", "");
       return;
     }
-    EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_Agjt.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agjt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_JavaLangString, false, false);
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 14 };
   }
 }
 

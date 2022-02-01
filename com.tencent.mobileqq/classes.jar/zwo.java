@@ -1,8 +1,22 @@
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public abstract interface zwo
+class zwo
+  implements Animation.AnimationListener
 {
-  public abstract void a(View paramView, float paramFloat);
+  zwo(zwk paramzwk) {}
+  
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (this.a.a != null) {
+      this.a.a.setVisibility(0);
+    }
+  }
 }
 
 

@@ -1,436 +1,700 @@
+import android.animation.ObjectAnimator;
 import android.app.Activity;
-import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
+import android.content.res.Resources;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Point;
+import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
+import com.tencent.mobileqq.screendetect.ScreenShotFragment;
+import com.tencent.mobileqq.screendetect.ScreenShotHelper.2;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.download.AEResInfo;
-import dov.com.qq.im.ae.download.AEResUtil;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.lang.ref.WeakReference;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import mqq.app.AppActivity;
 
 public class bbxq
-  extends WebViewPlugin
 {
-  public BroadcastReceiver a = new bbxr(this);
+  private static bbxg jdField_a_of_type_Bbxg;
+  private static List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public static boolean a;
+  private static boolean b;
   
-  public bbxq()
+  static
   {
-    this.mPluginNameSpace = "ptv";
+    jdField_a_of_type_Boolean = true;
+    jdField_a_of_type_JavaUtilList.clear();
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1));
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(3000));
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1004));
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1000));
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1022));
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1001));
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(10002));
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1006));
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1005));
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(10008));
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(10010));
   }
   
-  public void a(Intent paramIntent, int paramInt1, int paramInt2)
+  public static Point a(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoJsApiPlugin", 2, "onActivityResult, requestCode:" + paramInt1 + "，resultCode：" + paramInt2);
-    }
-    if ((paramInt1 != 11000) || (paramIntent == null)) {}
-    String str;
-    do
-    {
-      do
-      {
-        return;
-        str = paramIntent.getStringExtra("arg_callback");
-      } while (TextUtils.isEmpty(str));
-      if (paramInt2 != -1) {
-        break;
-      }
-      paramIntent = paramIntent.getStringExtra("arg_result_json");
-    } while (paramIntent == null);
     try
     {
-      paramIntent = new JSONObject(paramIntent);
-      paramIntent.put("retCode", 0);
-      paramIntent = paramIntent.toString();
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoJsApiPlugin", 2, "startNewPTVActivity" + " result:" + ReadInJoyDeliverUGCActivity.a(paramIntent));
-      }
-      callJs(str, new String[] { paramIntent });
-      return;
-    }
-    catch (Exception paramIntent)
-    {
-      return;
-    }
-    try
-    {
-      paramIntent = new JSONObject();
-      paramIntent.put("retCode", -1);
-      paramIntent = paramIntent.toString();
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoJsApiPlugin", 2, "startNewPTVActivity" + " result:" + paramIntent);
-      }
-      callJs(str, new String[] { paramIntent });
-      return;
-    }
-    catch (Exception paramIntent) {}
-  }
-  
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    if ((paramLong == 8589934600L) && (paramMap != null))
-    {
-      int i = ((Integer)paramMap.get("requestCode")).intValue();
-      if (i == 11000)
+      localObject = new Point();
+      try
       {
-        int j = ((Integer)paramMap.get("resultCode")).intValue();
-        a((Intent)paramMap.get("data"), i, j);
-        return true;
-      }
-    }
-    return super.handleEvent(paramString, paramLong, paramMap);
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoJsApiPlugin", 2, "Call ShortVideoJsApiPlugin handleJsRequest, url" + paramString1 + " pkgName:" + paramString2);
-    }
-    if ("ptv".equals(paramString2))
-    {
-      if ("GSBase64Encode".equals(paramString3))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoJsApiPlugin", 2, "Call Ptv Api GSBaze64Encode, args:" + paramVarArgs);
+        paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
+        if (Build.VERSION.SDK_INT >= 17) {
+          paramContext.getRealSize((Point)localObject);
         }
-        if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {}
+        for (;;)
+        {
+          return localObject;
+          try
+          {
+            Method localMethod1 = Display.class.getMethod("getRawWidth", new Class[0]);
+            Method localMethod2 = Display.class.getMethod("getRawHeight", new Class[0]);
+            ((Point)localObject).set(((Integer)localMethod1.invoke(paramContext, new Object[0])).intValue(), ((Integer)localMethod2.invoke(paramContext, new Object[0])).intValue());
+          }
+          catch (Exception localException2)
+          {
+            ((Point)localObject).set(paramContext.getWidth(), paramContext.getHeight());
+            localException2.printStackTrace();
+          }
+        }
+        QLog.e("ScreenShotHelper", 1, "getRealScreenSize error.", (Throwable)localObject);
+      }
+      catch (Exception localException3)
+      {
+        paramContext = (Context)localObject;
+        localObject = localException3;
+      }
+    }
+    catch (Exception localException1)
+    {
+      for (;;)
+      {
+        Object localObject;
+        paramContext = null;
+      }
+    }
+    return paramContext;
+  }
+  
+  private List<RecentBaseData> a(List<RecentBaseData> paramList, Activity paramActivity, QQAppInterface paramQQAppInterface)
+  {
+    ArrayList localArrayList = new ArrayList();
+    for (;;)
+    {
+      int j;
+      try
+      {
+        int k = paramList.size();
+        j = 0;
+        int i = -1;
+        if (j < k)
+        {
+          RecentBaseData localRecentBaseData = (RecentBaseData)paramList.get(j);
+          if (a(localRecentBaseData))
+          {
+            localArrayList.add(localRecentBaseData);
+          }
+          else if ((localRecentBaseData.getRecentUserType() == 6000) && (TextUtils.equals(localRecentBaseData.getRecentUserUin(), AppConstants.DATALINE_PC_UIN)))
+          {
+            localArrayList.add(localRecentBaseData);
+            i = j;
+          }
+        }
+        else
+        {
+          if ((localArrayList.size() == 0) || (i == -1))
+          {
+            QLog.d("ScreenShotHelper", 2, "filterRecentUser resultList.size = " + localArrayList.size() + ", index = " + i);
+            paramList = alfm.a(new RecentUser(AppConstants.DATALINE_PC_UIN, 6000), paramQQAppInterface, paramActivity);
+            if (paramList != null)
+            {
+              paramList.mTitleName = paramActivity.getResources().getString(2131693667);
+              localArrayList.add(paramList);
+            }
+          }
+          Collections.sort(localArrayList, new alfo(paramQQAppInterface));
+          return localArrayList;
+        }
+      }
+      catch (Exception paramList)
+      {
+        QLog.e("ScreenShotHelper", 1, "filterRecentUser error.", paramList);
+        return localArrayList;
+      }
+      j += 1;
+    }
+  }
+  
+  private static void a()
+  {
+    bbxg localbbxg2 = (bbxg)aqxe.a().a(485);
+    bbxg localbbxg1 = localbbxg2;
+    if (localbbxg2 == null)
+    {
+      localbbxg2 = new bbxg();
+      localbbxg1 = localbbxg2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("ScreenShotHelper", 2, "ScreenShotConfigData = null, general new bean, so switch default is opened!");
+        localbbxg1 = localbbxg2;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ScreenShotHelper", 2, "ScreenShotConfigData switch isOpened = " + localbbxg1);
+    }
+    jdField_a_of_type_Bbxg = localbbxg1;
+  }
+  
+  public static void a(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScreenShotHelper", 2, "removeFloatView() called with: activity = [" + paramActivity + "]");
+    }
+    paramActivity = ((ViewGroup)paramActivity.getWindow().getDecorView().getRootView()).findViewById(2131377118);
+    if (paramActivity != null) {
+      ((ViewGroup)paramActivity.getParent()).removeView(paramActivity);
+    }
+  }
+  
+  public static void a(Activity paramActivity, Handler paramHandler)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScreenShotHelper", 2, "onActivityResumeHideFloatView");
+    }
+    View localView = ((ViewGroup)paramActivity.getWindow().getDecorView().getRootView()).findViewById(2131377118);
+    if (localView != null)
+    {
+      localView.setVisibility(0);
+      paramHandler.postDelayed(new ScreenShotHelper.2(new WeakReference(paramActivity), localView, paramHandler), 5000L);
+    }
+  }
+  
+  public static void a(Activity paramActivity, MotionEvent paramMotionEvent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScreenShotHelper", 2, "disaptchTouchEventCallback() called with: activity = [" + paramActivity + "], ev = [" + paramMotionEvent + "]");
+    }
+    paramActivity = ((ViewGroup)paramActivity.getWindow().getDecorView().getRootView()).findViewById(2131377118);
+    if (paramActivity != null)
+    {
+      int[] arrayOfInt = new int[2];
+      paramActivity.getLocationOnScreen(arrayOfInt);
+      if (!new RectF(arrayOfInt[0], arrayOfInt[1], arrayOfInt[0] + paramActivity.getWidth(), arrayOfInt[1] + paramActivity.getHeight()).contains(paramMotionEvent.getRawX(), paramMotionEvent.getRawY())) {
+        ((ViewGroup)paramActivity.getParent()).removeView(paramActivity);
+      }
+    }
+  }
+  
+  public static void a(Activity paramActivity, String paramString, Handler paramHandler)
+  {
+    ViewGroup localViewGroup = (ViewGroup)paramActivity.getWindow().getDecorView().getRootView();
+    Object localObject1 = localViewGroup.findViewById(2131377118);
+    int k = ViewUtils.dpToPx(79.0F);
+    Object localObject3 = a(paramActivity);
+    int j = (int)(((Point)localObject3).y / ((Point)localObject3).x * k);
+    if (j > 2.5D * k) {
+      j = (int)(2.5D * k);
+    }
+    for (;;)
+    {
+      ImageView localImageView;
+      if ((localObject1 == null) && ((localViewGroup instanceof FrameLayout)))
+      {
+        localObject3 = View.inflate(paramActivity, 2131562801, null);
+        localImageView = (ImageView)((View)localObject3).findViewById(2131377122);
+        localObject1 = (RelativeLayout.LayoutParams)localImageView.getLayoutParams();
+        ((RelativeLayout.LayoutParams)localObject1).height = j;
+        ((RelativeLayout.LayoutParams)localObject1).width = k;
+        localImageView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
       }
       for (;;)
       {
         try
         {
-          paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-          paramString1 = paramJsBridgeListener.optString("need_encode_string");
-          paramJsBridgeListener = paramJsBridgeListener.optString("callback");
-          if (!TextUtils.isEmpty(paramJsBridgeListener))
+          paramActivity.getResources().getDrawable(2130840422);
+          localObject1 = URLDrawable.URLDrawableOptions.obtain();
+          ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = k;
+          ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = j;
+          ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = URLDrawableHelper.getLoadingDrawable();
+          ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = URLDrawableHelper.getFailedDrawable();
+          ((URLDrawable.URLDrawableOptions)localObject1).mPlayGifImage = false;
+          ((URLDrawable.URLDrawableOptions)localObject1).mGifRoundCorner = 0.0F;
+          ((URLDrawable.URLDrawableOptions)localObject1).mNeedCheckNetType = false;
+          ((URLDrawable.URLDrawableOptions)localObject1).mRetryCount = 3;
+          localObject1 = URLDrawable.getFileDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject1);
+          localImageView.setImageDrawable((Drawable)localObject1);
+          localObject1 = new FrameLayout.LayoutParams(ViewUtils.dpToPx(96.0F), -2);
+          ((FrameLayout.LayoutParams)localObject1).gravity = 21;
+          ((FrameLayout.LayoutParams)localObject1).rightMargin = ViewUtils.dpToPx(16.0F);
+          ((View)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject1);
+          localViewGroup.addView((View)localObject3);
+          ((View)localObject3).setId(2131377118);
+          localObject1 = localObject3;
+          if (localObject1 != null)
           {
-            paramString1 = awkh.a(paramString1);
-            paramString2 = new JSONObject();
-            paramString2.put("encoded_string", paramString1);
-            callJs(paramJsBridgeListener, new String[] { paramString2.toString() });
-          }
-          return true;
-        }
-        catch (JSONException paramJsBridgeListener)
-        {
-          paramJsBridgeListener.printStackTrace();
-          continue;
-        }
-        boolean bool1;
-        if ("isSupportPTV".equals(paramString3))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ShortVideoJsApiPlugin", 2, "Call Ptv Api isSupportPTV, args:" + paramVarArgs);
-          }
-          if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-            try
-            {
-              paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
-              if (TextUtils.isEmpty(paramJsBridgeListener)) {
-                continue;
-              }
-              bool1 = bbxo.c(this.mRuntime.a());
-              paramString1 = new JSONObject();
-              paramString1.put("is_support_ptv", bool1);
-              callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-            }
-            catch (JSONException paramJsBridgeListener)
-            {
-              paramJsBridgeListener.printStackTrace();
-            }
+            a((View)localObject1);
+            ((View)localObject1).setTag(paramString);
+            ((View)localObject1).setOnClickListener(new bbxr());
+            a(paramActivity, paramHandler);
+            return;
           }
         }
-        else
+        catch (IllegalStateException localIllegalStateException)
         {
-          if ("startNewPTVActivity".equals(paramString3))
+          localObject1 = new BitmapFactory.Options();
+          ((BitmapFactory.Options)localObject1).inJustDecodeBounds = true;
+          BitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject1);
+          int i = 1;
+          if (j > 0) {
+            i = ((BitmapFactory.Options)localObject1).outHeight / j;
+          }
+          j = 1;
+          if (k > 0) {
+            j = ((BitmapFactory.Options)localObject1).outWidth / k;
+          }
+          ((BitmapFactory.Options)localObject1).inJustDecodeBounds = false;
+          k = j;
+          if (i > j) {
+            k = i;
+          }
+          ((BitmapFactory.Options)localObject1).inSampleSize = k;
+          ((BitmapFactory.Options)localObject1).inTargetDensity = 320;
+          Object localObject2;
+          if (BaseApplicationImpl.getContext().getResources().getDisplayMetrics().densityDpi > ((BitmapFactory.Options)localObject1).inDensity)
           {
-            if (QLog.isColorLevel()) {
-              QLog.d("ShortVideoJsApiPlugin", 2, "Call Ptv Api startPTVActivity, args:" + paramVarArgs);
-            }
-            if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-              continue;
-            }
+            ((BitmapFactory.Options)localObject1).inDensity = 320;
             try
             {
-              localObject = new JSONObject(paramVarArgs[0]);
-              str1 = ((JSONObject)localObject).optString("supportvideo");
-              str2 = ((JSONObject)localObject).optString("supportphoto");
-              str3 = ((JSONObject)localObject).optString("cameramode");
-              str4 = ((JSONObject)localObject).optString("beauty");
-              str5 = ((JSONObject)localObject).optString("dealtype");
-              str6 = ((JSONObject)localObject).optString("callback");
-              str7 = ((JSONObject)localObject).optString("supportDD");
-              str8 = ((JSONObject)localObject).optString("unfoldDD");
-              str9 = ((JSONObject)localObject).optString("DDCategoryName");
-              str10 = ((JSONObject)localObject).optString("DDItemID");
-              str11 = ((JSONObject)localObject).optString("supportFilter");
-              paramString1 = "";
-              paramString3 = "";
-              paramVarArgs = "";
-              paramJsBridgeListener = paramString3;
+              localObject1 = new BitmapDrawable(BitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject1));
             }
-            catch (JSONException paramJsBridgeListener)
+            catch (Throwable localThrowable)
             {
-              Object localObject;
-              String str1;
-              String str2;
-              String str3;
-              String str4;
-              String str5;
-              String str6;
-              String str7;
-              String str8;
-              String str9;
-              String str10;
-              String str11;
-              label543:
-              paramJsBridgeListener.printStackTrace();
-            }
-            try
-            {
-              paramString2 = ((JSONObject)localObject).getString("topicId");
-              paramJsBridgeListener = paramString3;
-              paramString1 = paramString2;
-              paramString3 = ((JSONObject)localObject).getString("topicName");
-              paramJsBridgeListener = paramString3;
-              paramString1 = paramString2;
-              localObject = ((JSONObject)localObject).getString("adtag");
-              paramJsBridgeListener = (JsBridgeListener)localObject;
-              paramString1 = paramString3;
-              paramString3 = paramJsBridgeListener;
-              paramJsBridgeListener = paramString1;
-              paramString1 = paramString2;
-            }
-            catch (JSONException paramString2)
-            {
-              paramString3 = paramVarArgs;
-              break label543;
-            }
-            if (TextUtils.isEmpty(str6)) {
-              continue;
-            }
-            bbxo.a(this.mRuntime.a(), str1, str2, str3, str4, str7, str8, str9, str10, str11, str5, str6, paramString1, paramJsBridgeListener, paramString3, 7);
-            continue;
-            continue;
-          }
-          if ("isMobileSupportPTV".equals(paramString3))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ShortVideoJsApiPlugin", 2, "Call Ptv Api isMobileSupportPTV, args:" + paramVarArgs);
-            }
-            if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-              try
-              {
-                paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
-                if (TextUtils.isEmpty(paramJsBridgeListener)) {
-                  continue;
-                }
-                bool1 = bbxo.e(this.mRuntime.a());
-                paramString1 = new JSONObject();
-                paramString1.put("is_mobile_support_ptv", bool1);
-                callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-              }
-              catch (JSONException paramJsBridgeListener)
-              {
-                paramJsBridgeListener.printStackTrace();
-              }
-            }
-          }
-          else if ("isSupportDynamicDecoration".equals(paramString3))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ShortVideoJsApiPlugin", 2, "Call Ptv Api isSupportDynamicDecoration, args:" + paramVarArgs);
-            }
-            if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-              try
-              {
-                paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
-                if (TextUtils.isEmpty(paramJsBridgeListener)) {
-                  continue;
-                }
-                bool1 = bbxo.f(this.mRuntime.a());
-                paramString1 = new JSONObject();
-                paramString1.put("is_support_DynamicDecoration", bool1);
-                callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-              }
-              catch (JSONException paramJsBridgeListener)
-              {
-                paramJsBridgeListener.printStackTrace();
-              }
-            }
-          }
-          else if ("isSupportGestureDecoration".equals(paramString3))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ShortVideoJsApiPlugin", 2, "Call Ptv Api isSupportGestureDecoration, args:" + paramVarArgs);
-            }
-            if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-              for (;;)
-              {
-                try
-                {
-                  paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
-                  if (TextUtils.isEmpty(paramJsBridgeListener)) {
-                    break;
-                  }
-                  bool1 = bbxo.c(this.mRuntime.a());
-                  boolean bool2 = bbvp.c();
-                  boolean bool3 = VideoEnvironment.checkAVCodecLoadIsOK(this.mRuntime.a());
-                  boolean bool4 = AEResUtil.isAEResExist(AEResInfo.AE_RES_BASE_PACKAGE);
-                  QLog.i("ShortVideoJsApiPlugin", 1, "call isSupportGestureDecoration isSupportPTV:" + bool1 + ",isSupportGesture:" + bool2);
-                  paramString1 = new JSONObject();
-                  if ((!bool2) || (!bool1) || (!bool3) || (!bool4)) {
-                    break label1095;
-                  }
-                  bool1 = true;
-                  paramString1.put("is_support_GestureDecoration", bool1);
-                  callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-                }
-                catch (JSONException paramJsBridgeListener)
-                {
-                  paramJsBridgeListener.printStackTrace();
-                }
-                break;
-                label1095:
-                bool1 = false;
-              }
-            }
-          }
-          else if ("getGestureRecognitionResult".equals(paramString3))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ShortVideoJsApiPlugin", 2, "Call Ptv Api getGestureRecognitionResult, args:" + paramVarArgs);
-            }
-            if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-              try
-              {
-                paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
-                if (TextUtils.isEmpty(paramJsBridgeListener)) {
-                  continue;
-                }
-                bool1 = babd.e();
-                QLog.i("ShortVideoJsApiPlugin", 1, "call getGestureRecognitionResult result:" + bool1);
-                paramString1 = new JSONObject();
-                paramString1.put("is_support_GestureDecoration", bool1);
-                callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-              }
-              catch (JSONException paramJsBridgeListener)
-              {
-                paramJsBridgeListener.printStackTrace();
-              }
-            }
-          }
-          else if ("isSupportDanceGame".equals(paramString3))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ShortVideoJsApiPlugin", 2, "Call Ptv Api isSupportDanceGame, args:" + paramVarArgs);
-            }
-            if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-              try
-              {
-                paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
-                if (TextUtils.isEmpty(paramJsBridgeListener)) {
-                  continue;
-                }
-                bool1 = bbxo.g(this.mRuntime.a());
-                paramString1 = new JSONObject();
-                paramString1.put("is_support_dance_game", bool1);
-                callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-              }
-              catch (JSONException paramJsBridgeListener)
-              {
-                paramJsBridgeListener.printStackTrace();
-              }
-            }
-          }
-          else if ("isSupportFaceDanceGame".equals(paramString3))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ShortVideoJsApiPlugin", 2, "Call Ptv Api isSupportFaceDanceGame, args:" + paramVarArgs);
-            }
-            if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-              try
-              {
-                paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
-                if (TextUtils.isEmpty(paramJsBridgeListener)) {
-                  continue;
-                }
-                bool1 = bbxo.h(this.mRuntime.a());
-                paramString1 = new JSONObject();
-                paramString1.put("is_support_facedance_game", bool1);
-                callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-              }
-              catch (JSONException paramJsBridgeListener)
-              {
-                paramJsBridgeListener.printStackTrace();
-              }
+              QLog.e("ScreenShotHelper", 1, "decode screenshot failed ", localIllegalStateException);
+              localObject2 = null;
             }
           }
           else
           {
-            int i;
-            if ("onClickShareBattle".equals(paramString3))
+            localObject2.inDensity = BaseApplicationImpl.getContext().getResources().getDisplayMetrics().densityDpi;
+            continue;
+            QLog.e("ScreenShotHelper", 1, "screenshot float view failed ");
+            return;
+          }
+        }
+      }
+    }
+  }
+  
+  /* Error */
+  public static void a(Context paramContext, android.net.Uri paramUri, View paramView1, View paramView2, boolean paramBoolean)
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 7
+    //   3: aconst_null
+    //   4: astore 8
+    //   6: aload_0
+    //   7: ifnonnull +4 -> 11
+    //   10: return
+    //   11: new 518	android/util/SparseArray
+    //   14: dup
+    //   15: iconst_2
+    //   16: invokespecial 520	android/util/SparseArray:<init>	(I)V
+    //   19: astore 9
+    //   21: aload_1
+    //   22: aload_0
+    //   23: iconst_3
+    //   24: aload 9
+    //   26: invokestatic 525	zmk:a	(Landroid/net/Uri;Landroid/content/Context;ILandroid/util/SparseArray;)I
+    //   29: istore 6
+    //   31: iload 6
+    //   33: invokestatic 528	zmk:b	(I)Z
+    //   36: ifeq +262 -> 298
+    //   39: invokestatic 221	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   42: ifeq +12 -> 54
+    //   45: ldc 105
+    //   47: iconst_2
+    //   48: ldc_w 530
+    //   51: invokestatic 166	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   54: aload 9
+    //   56: iconst_2
+    //   57: invokevirtual 531	android/util/SparseArray:get	(I)Ljava/lang/Object;
+    //   60: astore_0
+    //   61: aload_0
+    //   62: instanceof 533
+    //   65: ifeq +228 -> 293
+    //   68: aload_0
+    //   69: checkcast 533	java/lang/String
+    //   72: astore_1
+    //   73: new 535	org/json/JSONObject
+    //   76: dup
+    //   77: invokespecial 536	org/json/JSONObject:<init>	()V
+    //   80: astore_0
+    //   81: aload_0
+    //   82: ldc_w 538
+    //   85: aload_1
+    //   86: invokevirtual 542	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   89: pop
+    //   90: aload_0
+    //   91: ifnonnull +167 -> 258
+    //   94: ldc_w 544
+    //   97: astore_0
+    //   98: aload_3
+    //   99: iconst_0
+    //   100: invokevirtual 272	android/view/View:setVisibility	(I)V
+    //   103: aload_3
+    //   104: aload_0
+    //   105: invokevirtual 448	android/view/View:setTag	(Ljava/lang/Object;)V
+    //   108: iconst_1
+    //   109: istore 5
+    //   111: iload 6
+    //   113: invokestatic 546	zmk:a	(I)Z
+    //   116: ifeq -106 -> 10
+    //   119: invokestatic 221	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   122: ifeq +12 -> 134
+    //   125: ldc 105
+    //   127: iconst_2
+    //   128: ldc_w 548
+    //   131: invokestatic 166	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   134: aload 9
+    //   136: iconst_1
+    //   137: invokevirtual 531	android/util/SparseArray:get	(I)Ljava/lang/Object;
+    //   140: astore_1
+    //   141: aload 8
+    //   143: astore_0
+    //   144: aload_1
+    //   145: instanceof 550
+    //   148: ifeq +56 -> 204
+    //   151: aload_1
+    //   152: checkcast 550	android/util/Pair
+    //   155: astore_0
+    //   156: aload_0
+    //   157: getfield 554	android/util/Pair:second	Ljava/lang/Object;
+    //   160: invokestatic 557	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   163: invokevirtual 560	java/lang/String:trim	()Ljava/lang/String;
+    //   166: astore_1
+    //   167: aload_0
+    //   168: getfield 563	android/util/Pair:first	Ljava/lang/Object;
+    //   171: invokestatic 557	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   174: invokevirtual 560	java/lang/String:trim	()Ljava/lang/String;
+    //   177: astore_3
+    //   178: new 535	org/json/JSONObject
+    //   181: dup
+    //   182: invokespecial 536	org/json/JSONObject:<init>	()V
+    //   185: astore_0
+    //   186: aload_0
+    //   187: ldc_w 565
+    //   190: aload_1
+    //   191: invokevirtual 542	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   194: pop
+    //   195: aload_0
+    //   196: ldc_w 567
+    //   199: aload_3
+    //   200: invokevirtual 542	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   203: pop
+    //   204: aload_0
+    //   205: ifnonnull +72 -> 277
+    //   208: ldc_w 544
+    //   211: astore_0
+    //   212: iload 5
+    //   214: ifeq +8 -> 222
+    //   217: iload 4
+    //   219: ifeq -209 -> 10
+    //   222: invokestatic 221	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   225: ifeq +12 -> 237
+    //   228: ldc 105
+    //   230: iconst_2
+    //   231: ldc_w 569
+    //   234: invokestatic 166	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   237: aload_2
+    //   238: iconst_0
+    //   239: invokevirtual 272	android/view/View:setVisibility	(I)V
+    //   242: aload_2
+    //   243: aload_0
+    //   244: invokevirtual 448	android/view/View:setTag	(Ljava/lang/Object;)V
+    //   247: return
+    //   248: astore_1
+    //   249: aconst_null
+    //   250: astore_0
+    //   251: aload_1
+    //   252: invokevirtual 570	org/json/JSONException:printStackTrace	()V
+    //   255: goto -165 -> 90
+    //   258: aload_0
+    //   259: invokevirtual 571	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   262: astore_0
+    //   263: goto -165 -> 98
+    //   266: astore_1
+    //   267: aload 7
+    //   269: astore_0
+    //   270: aload_1
+    //   271: invokevirtual 570	org/json/JSONException:printStackTrace	()V
+    //   274: goto -70 -> 204
+    //   277: aload_0
+    //   278: invokevirtual 571	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   281: astore_0
+    //   282: goto -70 -> 212
+    //   285: astore_1
+    //   286: goto -16 -> 270
+    //   289: astore_1
+    //   290: goto -39 -> 251
+    //   293: aconst_null
+    //   294: astore_0
+    //   295: goto -205 -> 90
+    //   298: iconst_0
+    //   299: istore 5
+    //   301: goto -190 -> 111
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	304	0	paramContext	Context
+    //   0	304	1	paramUri	android.net.Uri
+    //   0	304	2	paramView1	View
+    //   0	304	3	paramView2	View
+    //   0	304	4	paramBoolean	boolean
+    //   109	191	5	i	int
+    //   29	83	6	j	int
+    //   1	267	7	localObject1	Object
+    //   4	138	8	localObject2	Object
+    //   19	116	9	localSparseArray	android.util.SparseArray
+    // Exception table:
+    //   from	to	target	type
+    //   73	81	248	org/json/JSONException
+    //   178	186	266	org/json/JSONException
+    //   186	204	285	org/json/JSONException
+    //   81	90	289	org/json/JSONException
+  }
+  
+  public static void a(Context paramContext, String paramString)
+  {
+    if ((paramContext instanceof Activity))
+    {
+      localObject = ((ViewGroup)((Activity)paramContext).getWindow().getDecorView().getRootView()).findViewById(2131377118);
+      if (localObject != null) {
+        ((ViewGroup)((View)localObject).getParent()).removeView((View)localObject);
+      }
+    }
+    Object localObject = new Intent();
+    ((Intent)localObject).putExtra("public_fragment_window_feature", 1);
+    ((Intent)localObject).putExtra("screen_path", paramString);
+    int j = 0;
+    int i = j;
+    if ((paramContext instanceof BaseActivity))
+    {
+      paramString = (BaseActivity)paramContext;
+      QQAppInterface localQQAppInterface = paramString.app;
+      i = j;
+      if (localQQAppInterface != null)
+      {
+        i = j;
+        if (localQQAppInterface.getMessageFacade() != null)
+        {
+          i = j;
+          if (localQQAppInterface.getMessageFacade().isChatting())
+          {
+            i = j;
+            if (localQQAppInterface.getMessageFacade().getCurChatMsgList() != null)
             {
-              try
+              i = j;
+              if (localQQAppInterface.getMessageFacade().getCurChatMsgList().size() > 0)
               {
-                paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-                paramString1 = paramJsBridgeListener.optString("shareWebUrl");
-                i = paramJsBridgeListener.optInt("rank", 0);
-                ybs.a().a(paramString1, Integer.valueOf(i).toString());
-              }
-              catch (JSONException paramJsBridgeListener) {}
-              if (QLog.isColorLevel())
-              {
-                QLog.d("ShortVideoJsApiPlugin", 2, "onClickShareBattle error");
-                paramJsBridgeListener.printStackTrace();
-              }
-            }
-            else if ("onClickShareVideo".equals(paramString3))
-            {
-              ybs.a().b();
-            }
-            else if (("startStoryActivity".equals(paramString3)) && (paramVarArgs != null))
-            {
-              try
-              {
-                if (paramVarArgs.length <= 0) {
-                  continue;
-                }
-                i = new JSONObject(paramVarArgs[0]).optInt("dealType", 0);
-                bbxo.a(this.mRuntime.a(), this.mRuntime.a(), i);
-              }
-              catch (Exception paramJsBridgeListener) {}
-              if (QLog.isColorLevel())
-              {
-                QLog.e("ShortVideoJsApiPlugin", 2, "startStoryActivity exception:", paramJsBridgeListener);
-                paramJsBridgeListener.printStackTrace();
+                ((Intent)localObject).putExtra("is_aio_page_with_msg", true);
+                aeow.a(paramString, (Intent)localObject, PublicTransFragmentActivity.class, ScreenShotFragment.class, 9011);
+                i = 1;
               }
             }
           }
         }
       }
     }
-    return false;
+    if (((paramContext instanceof QQBrowserActivity)) && (a((QQBrowserActivity)paramContext)))
+    {
+      ((Intent)localObject).putExtra("is_screen_shot_from_web", true);
+      aeow.a((QQBrowserActivity)paramContext, (Intent)localObject, PublicTransFragmentActivity.class, ScreenShotFragment.class, 11);
+    }
+    while (i != 0) {
+      return;
+    }
+    aeow.a(paramContext, (Intent)localObject, PublicTransFragmentActivity.class, ScreenShotFragment.class);
   }
   
-  public void onCreate()
+  public static void a(Context paramContext, String paramString, int paramInt, Intent paramIntent)
   {
-    super.onCreate();
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("com.tencent.mobileqq.shortVideoJsApiPulgin");
-    this.mRuntime.a().registerReceiver(this.a, localIntentFilter);
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
+    }
+    localIntent.setClass(paramContext, ScannerActivity.class);
+    localIntent.putExtra("PhotoConst.SINGLE_PHOTO_PATH", paramString);
+    localIntent.putExtra("detectType", paramInt);
+    localIntent.putExtra("QRDecode", true);
+    localIntent.putExtra("QRDecodeResult", paramString);
+    paramContext.startActivity(localIntent);
   }
   
-  public void onDestroy()
+  public static void a(Context paramContext, String paramString, Handler paramHandler)
   {
-    super.onDestroy();
-    this.mRuntime.a().unregisterReceiver(this.a);
+    try
+    {
+      if (!(paramContext instanceof Activity)) {
+        return;
+      }
+      if ((Build.VERSION.SDK_INT >= 24) && (((Activity)paramContext).isInMultiWindowMode()))
+      {
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+        QLog.d("ScreenShotHelper", 2, "start float view is error and errMsg : isInMultiWindowMode");
+        return;
+      }
+      a((Activity)paramContext, paramString, paramHandler);
+      paramString = aaur.a;
+      if (paramString == null) {
+        return;
+      }
+      if ((paramContext instanceof AppActivity))
+      {
+        AppActivity.setActivityDispatchCallback(paramString);
+        return;
+      }
+    }
+    catch (Exception paramContext)
+    {
+      QLog.e("ScreenShotHelper", 2, paramContext, new Object[0]);
+      return;
+    }
+    PluginProxyActivity.setActivityDispatchCallback(paramString);
+  }
+  
+  public static void a(View paramView)
+  {
+    paramView = ObjectAnimator.ofFloat(paramView, "alpha", new float[] { 0.0F, 1.0F });
+    paramView.setDuration(300L);
+    paramView.start();
+  }
+  
+  public static void a(bbxg parambbxg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScreenShotHelper", 2, "onConfUpdate : " + parambbxg);
+    }
+    if (parambbxg != null) {
+      jdField_a_of_type_Boolean = parambbxg.a();
+    }
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    bdla.b(null, "dc00898", "", "", paramString, paramString, paramInt, 0, "", "", "", "");
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3)
+  {
+    bdla.b(null, "dc00898", "", "", paramString1, paramString1, 0, 0, paramString2, paramString3, "", "");
+  }
+  
+  public static boolean a()
+  {
+    if (b) {
+      return jdField_a_of_type_Boolean;
+    }
+    b = true;
+    a();
+    jdField_a_of_type_Boolean = jdField_a_of_type_Bbxg.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("ScreenShotHelper", 2, "ScreenShotConfigData isSwitchOpened = " + jdField_a_of_type_Boolean);
+    }
+    return jdField_a_of_type_Boolean;
+  }
+  
+  private static boolean a(QQBrowserActivity paramQQBrowserActivity)
+  {
+    if (paramQQBrowserActivity == null)
+    {
+      QLog.e("ScreenShotHelper", 1, "isCurrentPageIsWebFragment activity is null");
+      return false;
+    }
+    return paramQQBrowserActivity.getSupportFragmentManager().findFragmentById(2131365171) instanceof WebViewFragment;
+  }
+  
+  private boolean a(RecentBaseData paramRecentBaseData)
+  {
+    return jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(paramRecentBaseData.getRecentUserType()));
+  }
+  
+  public static void b(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScreenShotHelper", 2, "hideFloatView() called with: activity = [" + paramActivity + "]");
+    }
+    paramActivity = ((ViewGroup)paramActivity.getWindow().getDecorView().getRootView()).findViewById(2131377118);
+    if (paramActivity != null) {
+      paramActivity.setVisibility(8);
+    }
+  }
+  
+  public List<RecentBaseData> a(Activity paramActivity, QQAppInterface paramQQAppInterface)
+  {
+    ArrayList localArrayList = new ArrayList();
+    try
+    {
+      if (paramQQAppInterface.getProxyManager().a().getRecentList(false).size() > 0) {
+        localArrayList.addAll(algs.a().jdField_a_of_type_JavaUtilList);
+      }
+      return a(localArrayList, paramActivity, paramQQAppInterface);
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("ScreenShotHelper", 1, "getRecentUser error.", localException);
+      }
+    }
   }
 }
 

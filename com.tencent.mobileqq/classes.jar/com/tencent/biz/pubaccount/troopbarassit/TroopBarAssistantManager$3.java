@@ -1,26 +1,26 @@
 package com.tencent.biz.pubaccount.troopbarassit;
 
-import abwp;
-import akms;
+import acmw;
+import alik;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import uda;
-import ugf;
+import uqx;
+import uuc;
 
 public class TroopBarAssistantManager$3
   implements Runnable
 {
-  public TroopBarAssistantManager$3(uda paramuda, QQAppInterface paramQQAppInterface) {}
+  public TroopBarAssistantManager$3(uqx paramuqx, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    abwp localabwp = this.a.getConversationFacade();
+    acmw localacmw = this.a.getConversationFacade();
     Object localObject1 = this.a.getMessageFacade();
-    if ((localabwp == null) || (localObject1 == null))
+    if ((localacmw == null) || (localObject1 == null))
     {
       if (QLog.isColorLevel()) {
         QLog.w("TroopBarAssistantManager", 2, "clearAllSubscriptionUnreadMsgLite getConversationFacade fail");
@@ -43,12 +43,12 @@ public class TroopBarAssistantManager$3
               break label192;
             }
             localObject1 = this.a.getMessageFacade().getLastMsgForMsgTab(localTroopBarData.mUin, 1008);
-            if ((localObject1 == null) || (localabwp.a(((MessageRecord)localObject1).frienduin, ((MessageRecord)localObject1).istroop) <= 0)) {
+            if ((localObject1 == null) || (localacmw.a(((MessageRecord)localObject1).frienduin, ((MessageRecord)localObject1).istroop) <= 0)) {
               continue;
             }
-            int i = ugf.b(this.a, ((MessageRecord)localObject1).frienduin);
-            akms.b(this.a, ((MessageRecord)localObject1).frienduin, i);
-            localabwp.a(((MessageRecord)localObject1).frienduin, i, true);
+            int i = uuc.b(this.a, ((MessageRecord)localObject1).frienduin);
+            alik.b(this.a, ((MessageRecord)localObject1).frienduin, i);
+            localacmw.a(((MessageRecord)localObject1).frienduin, i, true);
           }
         }
       }
@@ -58,7 +58,7 @@ public class TroopBarAssistantManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager.3
  * JD-Core Version:    0.7.0.1
  */

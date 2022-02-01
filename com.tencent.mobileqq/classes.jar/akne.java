@@ -1,40 +1,37 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.config.statusIcon.AbsRecentStatus;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.data.QQAlbumInfo;
 
 public class akne
-  extends AbsRecentStatus
+  extends akly
 {
-  public int[] declareStatus()
+  protected akne(AlbumListFragment paramAlbumListFragment)
   {
-    return new int[4];
+    super(paramAlbumListFragment);
   }
   
-  public boolean focusUINType(RecentBaseData paramRecentBaseData, IMCoreAppRuntime paramIMCoreAppRuntime)
+  public void initData(Intent paramIntent)
   {
-    return true;
+    super.initData(paramIntent);
   }
   
-  public boolean handleBusiness(IMCoreAppRuntime paramIMCoreAppRuntime, RecentBaseData paramRecentBaseData)
+  public boolean onItemClick(QQAlbumInfo paramQQAlbumInfo, int paramInt, Intent paramIntent)
   {
-    if (!(paramIMCoreAppRuntime instanceof QQAppInterface)) {
-      return false;
+    int i;
+    if (paramQQAlbumInfo._id.equals("$RecentAlbumId")) {
+      i = 1;
     }
-    paramIMCoreAppRuntime = ((QQAppInterface)paramIMCoreAppRuntime).getMessageFacade();
-    if ((paramIMCoreAppRuntime != null) && (paramIMCoreAppRuntime.hasDraftText(paramRecentBaseData.getRecentUserUin(), paramRecentBaseData.getRecentUserType())))
+    for (;;)
     {
-      paramRecentBaseData.mStatus = 4;
-      return false;
+      bdla.b(null, "CliOper", "", this.mPhotoCommonData.myUin, "0X800A917", "0X800A917", i, 0, "", "", "", "");
+      return super.onItemClick(paramQQAlbumInfo, paramInt, paramIntent);
+      if (paramQQAlbumInfo._id.equals("qzone_album")) {
+        i = 2;
+      } else {
+        i = 3;
+      }
     }
-    paramRecentBaseData.mStatus = 0;
-    return false;
-  }
-  
-  public int priority()
-  {
-    return AbsRecentStatus.PRIORITY_DRAFT;
   }
 }
 

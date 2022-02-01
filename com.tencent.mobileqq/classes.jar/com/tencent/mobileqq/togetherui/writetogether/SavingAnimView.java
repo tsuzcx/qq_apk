@@ -17,15 +17,15 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 import androidx.annotation.ColorInt;
 import androidx.annotation.Dimension;
-import bdjy;
-import bdjz;
-import bdka;
-import bdkb;
-import bdkc;
-import bdkd;
-import bdke;
-import bdkf;
-import bdkg;
+import berb;
+import berc;
+import berd;
+import bere;
+import berf;
+import berg;
+import berh;
+import beri;
+import berj;
 import com.tencent.mobileqq.R.styleable;
 
 public class SavingAnimView
@@ -37,7 +37,7 @@ public class SavingAnimView
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Path jdField_a_of_type_AndroidGraphicsPath;
   private PathMeasure jdField_a_of_type_AndroidGraphicsPathMeasure;
-  private bdkg jdField_a_of_type_Bdkg;
+  private berj jdField_a_of_type_Berj;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float = 1.0F;
   private int jdField_b_of_type_Int;
@@ -129,8 +129,8 @@ public class SavingAnimView
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    int m = paramContext.getResources().getColor(2131167180);
-    int k = paramContext.getResources().getDimensionPixelOffset(2131299209);
+    int m = paramContext.getResources().getColor(2131167194);
+    int k = paramContext.getResources().getDimensionPixelOffset(2131299220);
     int j = k;
     int i = m;
     if (paramAttributeSet != null)
@@ -166,8 +166,8 @@ public class SavingAnimView
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new AccelerateInterpolator());
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(300L);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bdjy(this));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new bdjz(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new berb(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new berc(this));
   }
   
   private void d()
@@ -177,8 +177,8 @@ public class SavingAnimView
     this.jdField_b_of_type_AndroidAnimationValueAnimator.setRepeatMode(1);
     this.jdField_b_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
     this.jdField_b_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bdka(this));
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new bdkb(this));
+    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new berd(this));
+    this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new bere(this));
   }
   
   private void e()
@@ -186,16 +186,16 @@ public class SavingAnimView
     this.jdField_c_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     this.jdField_c_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
     this.jdField_c_of_type_AndroidAnimationValueAnimator.setDuration(500L);
-    this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bdkc(this));
-    this.jdField_c_of_type_AndroidAnimationValueAnimator.addListener(new bdkd(this));
+    this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new berf(this));
+    this.jdField_c_of_type_AndroidAnimationValueAnimator.addListener(new berg(this));
   }
   
   private void f()
   {
     this.jdField_d_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     this.jdField_d_of_type_AndroidAnimationValueAnimator.setDuration(500L);
-    this.jdField_d_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bdke(this));
-    this.jdField_d_of_type_AndroidAnimationValueAnimator.addListener(new bdkf(this));
+    this.jdField_d_of_type_AndroidAnimationValueAnimator.addUpdateListener(new berh(this));
+    this.jdField_d_of_type_AndroidAnimationValueAnimator.addListener(new beri(this));
   }
   
   private void g()
@@ -283,9 +283,9 @@ public class SavingAnimView
     this.jdField_b_of_type_AndroidGraphicsPath = new Path();
   }
   
-  public void setOnAnimationStateListener(bdkg parambdkg)
+  public void setOnAnimationStateListener(berj paramberj)
   {
-    this.jdField_a_of_type_Bdkg = parambdkg;
+    this.jdField_a_of_type_Berj = paramberj;
   }
 }
 

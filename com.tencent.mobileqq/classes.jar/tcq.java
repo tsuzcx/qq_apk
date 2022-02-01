@@ -1,14 +1,15 @@
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
 
 public class tcq
   implements ValueAnimator.AnimatorUpdateListener
 {
-  public tcq(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView) {}
+  public tcq(ReadinjoySlidingIndicator paramReadinjoySlidingIndicator) {}
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
+    ReadinjoySlidingIndicator.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
     this.a.invalidate();
   }
 }

@@ -1,13 +1,13 @@
 package com.tencent.av.ui.redbag;
 
-import mpe;
-import mpz;
 import mqb;
+import mqw;
+import mqy;
 
 public class AVRedBagMgr$4
   implements Runnable
 {
-  public AVRedBagMgr$4(mpe parammpe, mqb parammqb) {}
+  public AVRedBagMgr$4(mqb parammqb, mqy parammqy) {}
   
   public void run()
   {
@@ -17,9 +17,9 @@ public class AVRedBagMgr$4
     do
     {
       return;
-      mpe.a(mpe.c(this.this$0), this.a);
+      mqb.a(mqb.c(this.this$0), this.a);
     } while (!this.a.a());
-    mpz.a(this.a);
+    mqw.a(this.a);
   }
 }
 

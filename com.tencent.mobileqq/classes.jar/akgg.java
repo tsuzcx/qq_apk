@@ -1,23 +1,22 @@
-import Wallet.ReportHBGameRsp;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.pendant.PendantTipsInfo;
 
-final class akgg
-  implements BusinessObserver
+public class akgg
+  implements DialogInterface.OnClickListener
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public akgg(AvatarPendantActivity paramAvatarPendantActivity, PendantTipsInfo paramPendantTipsInfo, int paramInt) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramBundle = (ReportHBGameRsp)paramBundle.getSerializable("rsp");
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletTools", 2, "ReportHBGameRsp reportObserver:" + paramBoolean + "|" + paramBundle);
-    }
-    if ((paramBoolean) && (paramBundle != null) && (paramBundle.result == 0)) {}
+    this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantPendantTipsInfo, false, this.jdField_a_of_type_Int);
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "CliOper", "", "", "0X8005FD9", "0X8005FD9", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akgg
  * JD-Core Version:    0.7.0.1
  */

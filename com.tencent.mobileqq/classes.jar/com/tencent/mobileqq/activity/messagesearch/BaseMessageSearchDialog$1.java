@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.messagesearch;
 
-import ajgd;
+import akbr;
 import android.app.Activity;
 import android.view.View;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
@@ -10,7 +10,7 @@ import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 public class BaseMessageSearchDialog$1
   implements Runnable
 {
-  public BaseMessageSearchDialog$1(ajgd paramajgd, View paramView, Activity paramActivity) {}
+  public BaseMessageSearchDialog$1(akbr paramakbr, View paramView, Activity paramActivity) {}
   
   public void run()
   {
@@ -23,7 +23,7 @@ public class BaseMessageSearchDialog$1
     if (arrayOfInt[1] < i) {
       this.jdField_a_of_type_AndroidViewView.setPadding(this.jdField_a_of_type_AndroidViewView.getPaddingLeft(), i, this.jdField_a_of_type_AndroidViewView.getPaddingRight(), this.jdField_a_of_type_AndroidViewView.getPaddingBottom());
     }
-    AIOUtils.showKeyboard(this.this$0.findViewById(2131366179));
+    AIOUtils.showKeyboard(this.this$0.findViewById(2131366280));
   }
 }
 

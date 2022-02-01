@@ -2,17 +2,18 @@ package com.tencent.mobileqq.data;
 
 import NS_MOBILE_NEWEST_FEEDS.feed_info;
 import NS_MOBILE_NEWEST_FEEDS.newest_feeds_rsp;
-import aebt;
-import aezm;
+import aesy;
+import afqy;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anuz;
-import aqqg;
-import aqru;
+import aoxz;
+import artr;
+import arvg;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.data.qzone.FeedInfo;
@@ -171,12 +172,12 @@ public class FeedsManager
   
   private void intCache()
   {
-    ThreadManagerV2.excute(new FeedsManager.1(this), 32, new aqqg(this), true);
+    ThreadManagerV2.excute(new FeedsManager.1(this), 32, new artr(this), true);
   }
   
   public static boolean isShowStatus(String paramString)
   {
-    if (!TextUtils.isEmpty(paramString)) {
+    if ((TextUtils.isEmpty(paramString)) || (showStatusUIns == null)) {
       return false;
     }
     return showStatusUIns.containsKey(paramString);
@@ -219,7 +220,7 @@ public class FeedsManager
       }
     }
     if (!this.feedInfoCache.isEmpty()) {
-      this.app.notifyObservers(aebt.class, 10000, true, null);
+      this.app.notifyObservers(aesy.class, 10000, true, null);
     }
   }
   
@@ -424,7 +425,7 @@ public class FeedsManager
       paramString.isExpose = true;
       paramString = new LpReportInfo_pf00064(722, 1, 1);
       LpReportManager.getInstance().reportToPF00064(paramString, false, false);
-      paramString = (aezm)this.app.getManager(282);
+      paramString = (afqy)this.app.getManager(QQManagerFactory.BEANCURD_MANAGER);
       if (paramString != null) {
         paramString.a(1, 2);
       }
@@ -495,7 +496,7 @@ public class FeedsManager
           localHashMap.put(localLong, Long.valueOf(l));
         }
       }
-      localObject = new QzoneCommonIntent(this.app.getApp(), aqru.class);
+      localObject = new QzoneCommonIntent(this.app.getApp(), arvg.class);
     }
     catch (Throwable localThrowable)
     {
@@ -514,7 +515,7 @@ public class FeedsManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.FeedsManager
  * JD-Core Version:    0.7.0.1
  */

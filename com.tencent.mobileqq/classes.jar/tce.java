@@ -1,10 +1,9 @@
-import android.view.View;
-
-public abstract interface tce
+public class tce
 {
-  public abstract void a(View paramView, int paramInt, long paramLong);
-  
-  public abstract void b(View paramView, int paramInt, long paramLong);
+  public int a;
+  public int b;
+  public int c;
+  public int d;
 }
 
 

@@ -42,6 +42,7 @@ public final class cell_video
   public boolean isPanorama;
   public boolean is_share;
   public String lloc = "";
+  public int needShowFollowGuideAnimation;
   public byte playtype;
   public int report_video_feeds_type;
   public String sloc = "";
@@ -96,7 +97,7 @@ public final class cell_video
   
   public cell_video() {}
   
-  public cell_video(String paramString1, String paramString2, Map<Integer, s_picurl> paramMap1, int paramInt1, String paramString3, String paramString4, int paramInt2, byte paramByte1, long paramLong1, Map<Integer, s_videourl> paramMap, byte paramByte2, int paramInt3, String paramString5, Map<String, String> paramMap2, s_videoremark params_videoremark, int paramInt4, boolean paramBoolean1, int paramInt5, String paramString6, String paramString7, int paramInt6, int paramInt7, boolean paramBoolean2, int paramInt8, String paramString8, boolean paramBoolean3, boolean paramBoolean4, int paramInt9, ArrayList<Map<Integer, s_picurl>> paramArrayList, int paramInt10, Map<Integer, s_picurl> paramMap3, s_weishi params_weishi, s_kingcard params_kingcard, s_button params_button, int paramInt11, String paramString9, ArrayList<s_videourl> paramArrayList1, int paramInt12, String paramString10, int paramInt13, String paramString11, long paramLong2)
+  public cell_video(String paramString1, String paramString2, Map<Integer, s_picurl> paramMap1, int paramInt1, String paramString3, String paramString4, int paramInt2, byte paramByte1, long paramLong1, Map<Integer, s_videourl> paramMap, byte paramByte2, int paramInt3, String paramString5, Map<String, String> paramMap2, s_videoremark params_videoremark, int paramInt4, boolean paramBoolean1, int paramInt5, String paramString6, String paramString7, int paramInt6, int paramInt7, boolean paramBoolean2, int paramInt8, String paramString8, boolean paramBoolean3, boolean paramBoolean4, int paramInt9, ArrayList<Map<Integer, s_picurl>> paramArrayList, int paramInt10, Map<Integer, s_picurl> paramMap3, s_weishi params_weishi, s_kingcard params_kingcard, s_button params_button, int paramInt11, String paramString9, ArrayList<s_videourl> paramArrayList1, int paramInt12, String paramString10, int paramInt13, String paramString11, long paramLong2, int paramInt14)
   {
     this.videoid = paramString1;
     this.videourl = paramString2;
@@ -140,6 +141,7 @@ public final class cell_video
     this.anonymity = paramInt13;
     this.video_desc = paramString11;
     this.video_max_playtime = paramLong2;
+    this.needShowFollowGuideAnimation = paramInt14;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -186,6 +188,7 @@ public final class cell_video
     this.anonymity = paramJceInputStream.read(this.anonymity, 39, false);
     this.video_desc = paramJceInputStream.readString(40, false);
     this.video_max_playtime = paramJceInputStream.read(this.video_max_playtime, 41, false);
+    this.needShowFollowGuideAnimation = paramJceInputStream.read(this.needShowFollowGuideAnimation, 42, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -274,6 +277,7 @@ public final class cell_video
       paramJceOutputStream.write(this.video_desc, 40);
     }
     paramJceOutputStream.write(this.video_max_playtime, 41);
+    paramJceOutputStream.write(this.needShowFollowGuideAnimation, 42);
   }
 }
 

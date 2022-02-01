@@ -1,6 +1,15 @@
-public abstract interface begs
+public class begs
 {
-  public abstract void a(String paramString, boolean paramBoolean, int paramInt, begq parambegq);
+  public int a;
+  public String a;
+  public int b;
+  
+  public begs(String paramString, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
 }
 
 

@@ -1,27 +1,23 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.subscribe.widget.SubscribeBannerView;
+import com.tencent.biz.subscribe.widget.SubscribeBannerView.BannerAdapter;
+import com.tencent.biz.subscribe.widget.SubscribeBannerView.DotsIndicator;
+import java.util.ArrayList;
 
-class aaas
-  implements View.OnClickListener
+public class aaas
+  implements ViewPager.OnPageChangeListener
 {
-  aaas(aaaq paramaaaq, String paramString, Activity paramActivity) {}
+  public aaas(SubscribeBannerView paramSubscribeBannerView) {}
   
-  public void onClick(View paramView)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    this.jdField_a_of_type_Aaaq.a(this.jdField_a_of_type_JavaLangString);
-    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity))
-    {
-      AppInterface localAppInterface = ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getAppInterface();
-      if ((localAppInterface instanceof NearbyAppInterface)) {
-        ((NearbyAppInterface)localAppInterface).reportClickEvent("dc00899", "grp_lbs", "", "hot_create", "clk_create", 0, 0, "", "", "", "");
-      }
+    if ((SubscribeBannerView.a(this.a) != null) && (SubscribeBannerView.a(this.a) != null)) {
+      SubscribeBannerView.a(this.a).setDotsSelected(paramInt % SubscribeBannerView.a(this.a).a().size());
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

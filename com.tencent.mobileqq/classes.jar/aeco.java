@@ -1,15 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterBaseActivity.2;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aeco
-  implements DialogInterface.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aeco(RegisterBaseActivity.2 param2) {}
+  public aeco(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      bdla.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "System_icon", 0, i, "", "", "", "");
+      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131718598), "qqsetting_notify_icon_key", paramBoolean);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+    }
   }
 }
 

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
 import android.content.Intent;
-import awyf;
+import ayek;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class NearbyProfileDisplayPanel$35
   implements Runnable
 {
-  public NearbyProfileDisplayPanel$35(awyf paramawyf) {}
+  public NearbyProfileDisplayPanel$35(ayek paramayek) {}
   
   public void run()
   {
     Intent localIntent = new Intent();
-    localIntent.setAction("COM_TENCENT_MOBILEQQ_NEARBY_PROFILE_ONPAUSE");
+    localIntent.setAction("COM_TENCENT_MOBILEQQ_NEARBY_PROFILE_ONRESUME");
     localIntent.setPackage("com.tencent.mobileqq");
     BaseApplicationImpl.getContext().sendBroadcast(localIntent);
   }

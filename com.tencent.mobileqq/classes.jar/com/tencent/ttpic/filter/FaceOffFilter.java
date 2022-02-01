@@ -31,7 +31,7 @@ import com.tencent.ttpic.openapi.shader.ShaderManager;
 import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.util.AlgoUtils;
 import com.tencent.ttpic.util.FaceOffUtil;
-import com.tencent.ttpic.util.FaceOffUtil.FEATURE_TYPE;
+import com.tencent.ttpic.util.FaceOffUtil.FeatureType;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -370,7 +370,7 @@ public class FaceOffFilter
       return true;
     }
     Object localObject2 = VideoMemoryManager.getInstance().loadImage(this.item.featureType);
-    Bitmap localBitmap = VideoMemoryManager.getInstance().loadImage(FaceOffUtil.FEATURE_TYPE.LIPS_MASK);
+    Bitmap localBitmap = VideoMemoryManager.getInstance().loadImage(FaceOffUtil.FeatureType.LIPS_MASK);
     Object localObject1 = localObject2;
     if (!BitmapUtils.isLegal((Bitmap)localObject2))
     {
@@ -384,7 +384,7 @@ public class FaceOffFilter
     {
       localObject2 = localBitmap;
       if (VideoMemoryManager.getInstance().isForceLoadFromSdCard()) {
-        localObject2 = FaceOffUtil.getGrayBitmap(FaceOffUtil.FEATURE_TYPE.LIPS_MASK);
+        localObject2 = FaceOffUtil.getGrayBitmap(FaceOffUtil.FeatureType.LIPS_MASK);
       }
     }
     VideoMemoryManager.getInstance().getSampleSize();
@@ -408,7 +408,7 @@ public class FaceOffFilter
   
   private void initGrayTexCoords()
   {
-    addAttribParam("inputGrayTextureCoordinate", FaceOffUtil.initMaterialFaceTexCoords_v2(FaceOffUtil.getFullCoords_v2(FaceOffUtil.getGrayCoords(this.item.featureType), 2.0F, 0.0F, this.item.faceExchangeImageDisableFaceCrop), this.grayImageWidth, this.grayImageHeight, this.grayVertices));
+    addAttribParam("inputGrayTextureCoordinate", FaceOffUtil.initMaterialFaceTexCoords_v2(FaceOffUtil.getFullCoords_v2(FaceOffUtil.getGrayCoords(this.item.featureType), 2.0F, 0.0F, this.item.faceExchangeImageDisableFaceCrop), this.grayImageWidth, this.grayImageHeight, this.grayVertices, this.item.faceExchangeImageDisableFaceCrop));
   }
   
   private boolean initIrisImage()
@@ -782,12 +782,12 @@ public class FaceOffFilter
   
   protected void initFaceTexCoords()
   {
-    setTexCords(FaceOffUtil.initMaterialFaceTexCoords_v2(FaceOffUtil.getFullCoords_v2(FaceOffUtil.genPoints(this.item.facePoints), 2.0F, 0.0F, this.item.faceExchangeImageDisableFaceCrop), this.faceImageWidth, this.faceImageHeight, this.texVertices));
+    setTexCords(FaceOffUtil.initMaterialFaceTexCoords_v2(FaceOffUtil.getFullCoords_v2(FaceOffUtil.genPoints(this.item.facePoints), 2.0F, 0.0F, this.item.faceExchangeImageDisableFaceCrop), this.faceImageWidth, this.faceImageHeight, this.texVertices, this.item.faceExchangeImageDisableFaceCrop));
   }
   
   protected void initModelTexCoords()
   {
-    addAttribParam("inputModelTextureCoordinate", FaceOffUtil.initMaterialFaceTexCoords_v2(FaceOffUtil.getFullCoords_v2(FaceOffUtil.genPoints(Arrays.asList(FaceOffUtil.COSMETIC_MODEL_IMAGE_FACEPOINTS)), 2.0F, 0.0F, this.item.faceExchangeImageDisableFaceCrop), 800, 1067, this.modelVertices));
+    addAttribParam("inputModelTextureCoordinate", FaceOffUtil.initMaterialFaceTexCoords_v2(FaceOffUtil.getFullCoords_v2(FaceOffUtil.genPoints(Arrays.asList(FaceOffUtil.COSMETIC_MODEL_IMAGE_FACEPOINTS)), 2.0F, 0.0F, this.item.faceExchangeImageDisableFaceCrop), 800, 1067, this.modelVertices, this.item.faceExchangeImageDisableFaceCrop));
   }
   
   public void initParams()
@@ -962,12 +962,11 @@ public class FaceOffFilter
     initFaceImage();
   }
   
-  public void updatePointParams(List<PointF> paramList, float[] paramArrayOfFloat, float paramFloat)
+  public void updatePointParams(List<PointF> paramList1, List<PointF> paramList2, float[] paramArrayOfFloat, float paramFloat)
   {
-    Object localObject1 = VideoMaterialUtil.copyList(paramList);
-    Object localObject2 = FaceOffUtil.getFullCoords_v2((List)localObject1, 2.0F, -paramFloat, this.item.faceExchangeImageDisableFaceCrop);
-    this.pointVis = FaceOffUtil.getFullPointsVisForFaceOffFilter_v2((List)localObject1, paramArrayOfFloat, -paramFloat);
-    label135:
+    Object localObject = VideoMaterialUtil.copyList(paramList1);
+    this.pointVis = FaceOffUtil.getFullPointsVisForFaceOffFilter_v2((List)localObject, paramArrayOfFloat, -paramFloat);
+    label126:
     PointF localPointF1;
     float f1;
     if (this.item.faceExchangeImageDisableFaceCrop)
@@ -976,90 +975,90 @@ public class FaceOffFilter
         this.opacity = new float[''];
       }
       Arrays.fill(this.opacity, 1.0F);
-      setPositions(FaceOffUtil.initFacePositions_v2((List)localObject2, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
+      setPositions(FaceOffUtil.initFacePositions_v2(paramList2, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices, this.item.faceExchangeImageDisableFaceCrop));
       setCoordNum(FaceOffUtil.NO_HOLE_TRIANGLE_COUNT_V2 * 3);
       if (getShelterSwitch() != 1) {
         break label886;
       }
-      paramArrayOfFloat = FaceOffUtil.getFullPointsVisForFaceOffFilter_v2((List)localObject1, getAllVisiblePointsVis(), -paramFloat);
-      paramArrayOfFloat = FaceOffUtil.initPointVis_v2(paramArrayOfFloat, this.pointVisVertices);
-      localObject1 = FaceOffUtil.initPointVis_v2(this.opacity, this.pointOpacity);
-      if (paramArrayOfFloat != null) {
-        addAttribParam("pointsVisValue", paramArrayOfFloat);
+      paramList2 = FaceOffUtil.getFullPointsVisForFaceOffFilter_v2((List)localObject, getAllVisiblePointsVis(), -paramFloat);
+      paramList2 = FaceOffUtil.initPointVis_v2(paramList2, this.pointVisVertices, this.item.faceExchangeImageDisableFaceCrop);
+      paramArrayOfFloat = FaceOffUtil.initPointVis_v2(this.opacity, this.pointOpacity, this.item.faceExchangeImageDisableFaceCrop);
+      if (paramList2 != null) {
+        addAttribParam("pointsVisValue", paramList2);
       }
-      if (localObject1 != null) {
-        addAttribParam("opacity", (float[])localObject1);
+      if (paramArrayOfFloat != null) {
+        addAttribParam("opacity", paramArrayOfFloat);
       }
       if (this.item.blendMode == 13)
       {
-        getAverageGreen(paramList, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale));
+        getAverageGreen(paramList1, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale));
         addParam(new UniformParam.FloatParam("level1", this.level1 / 255.0F));
         addParam(new UniformParam.FloatParam("level2", this.level2 / 255.0F));
       }
       if (this.item.blendMode == 14)
       {
-        paramArrayOfFloat = new PointF(((PointF)paramList.get(44)).x, ((PointF)paramList.get(44)).y);
-        localObject1 = new PointF(((PointF)paramList.get(54)).x, ((PointF)paramList.get(54)).y);
-        localObject2 = (PointF)paramList.get(39);
-        localPointF1 = (PointF)paramList.get(35);
-        PointF localPointF2 = (PointF)paramList.get(49);
-        PointF localPointF3 = (PointF)paramList.get(45);
-        f1 = 0.26F * AlgoUtils.getDistance((PointF)localObject2, localPointF1);
+        paramList2 = new PointF(((PointF)paramList1.get(44)).x, ((PointF)paramList1.get(44)).y);
+        paramArrayOfFloat = new PointF(((PointF)paramList1.get(54)).x, ((PointF)paramList1.get(54)).y);
+        localObject = (PointF)paramList1.get(39);
+        localPointF1 = (PointF)paramList1.get(35);
+        PointF localPointF2 = (PointF)paramList1.get(49);
+        PointF localPointF3 = (PointF)paramList1.get(45);
+        f1 = 0.26F * AlgoUtils.getDistance((PointF)localObject, localPointF1);
         paramFloat = AlgoUtils.getDistance(localPointF2, localPointF3) * 0.26F;
         if ((AlgoUtils.getDistance(this.irisCenterL, ZERO_POINT) >= 0.001D) && (AlgoUtils.getDistance(this.irisCenterR, ZERO_POINT) >= 0.001D)) {
           break label894;
         }
-        this.irisCenterL = new PointF(paramArrayOfFloat.x, paramArrayOfFloat.y);
-        this.irisCenterR = new PointF(((PointF)localObject1).x, ((PointF)localObject1).y);
+        this.irisCenterL = new PointF(paramList2.x, paramList2.y);
+        this.irisCenterR = new PointF(paramArrayOfFloat.x, paramArrayOfFloat.y);
         this.irisRadiusL = f1;
       }
     }
     for (this.irisRadiusR = paramFloat;; this.irisRadiusR = paramFloat)
     {
-      localObject2 = (PointF)paramList.get(41);
-      localPointF1 = (PointF)paramList.get(37);
+      localObject = (PointF)paramList1.get(41);
+      localPointF1 = (PointF)paramList1.get(37);
       float f2 = (float)(f1 * 2.0D);
-      f2 = (float)Math.min(1.0D, Math.max(0.0D, AlgoUtils.getDistance((PointF)localObject2, localPointF1) / f2 - 0.04F) / (0.4F - 0.04F));
-      localObject2 = (PointF)paramList.get(47);
-      paramList = (PointF)paramList.get(51);
+      f2 = (float)Math.min(1.0D, Math.max(0.0D, AlgoUtils.getDistance((PointF)localObject, localPointF1) / f2 - 0.04F) / (0.4F - 0.04F));
+      localObject = (PointF)paramList1.get(47);
+      paramList1 = (PointF)paramList1.get(51);
       float f3 = (float)(paramFloat * 2.0D);
-      f3 = (float)Math.min(1.0D, Math.max(0.0D, AlgoUtils.getDistance(paramList, (PointF)localObject2) / f3 - 0.04F) / (0.4F - 0.04F));
+      f3 = (float)Math.min(1.0D, Math.max(0.0D, AlgoUtils.getDistance(paramList1, (PointF)localObject) / f3 - 0.04F) / (0.4F - 0.04F));
+      paramList2.x = ((float)(paramList2.x / this.mFaceDetScale));
+      paramList2.y = ((float)(paramList2.y / this.mFaceDetScale));
       paramArrayOfFloat.x = ((float)(paramArrayOfFloat.x / this.mFaceDetScale));
       paramArrayOfFloat.y = ((float)(paramArrayOfFloat.y / this.mFaceDetScale));
-      ((PointF)localObject1).x = ((float)(((PointF)localObject1).x / this.mFaceDetScale));
-      ((PointF)localObject1).y = ((float)(((PointF)localObject1).y / this.mFaceDetScale));
       f1 = (float)(f1 / this.mFaceDetScale);
       paramFloat = (float)(paramFloat / this.mFaceDetScale);
-      addParam(new UniformParam.Float2fParam("center1", paramArrayOfFloat.x, paramArrayOfFloat.y));
-      addParam(new UniformParam.Float2fParam("center2", ((PointF)localObject1).x, ((PointF)localObject1).y));
+      addParam(new UniformParam.Float2fParam("center1", paramList2.x, paramList2.y));
+      addParam(new UniformParam.Float2fParam("center2", paramArrayOfFloat.x, paramArrayOfFloat.y));
       addParam(new UniformParam.Float2fParam("size", this.width, this.height));
       addParam(new UniformParam.FloatParam("radius1", f1));
       addParam(new UniformParam.FloatParam("radius2", paramFloat));
       addParam(new UniformParam.FloatParam("leftEyeCloseAlpha", f2));
       addParam(new UniformParam.FloatParam("rightEyeCloseAlpha", f3));
       return;
-      this.opacity = FaceOffUtil.getFullOpacityForFaceOffFilter_v2(paramList, -paramFloat);
+      this.opacity = FaceOffUtil.getFullOpacityForFaceOffFilter_v2(paramList1, -paramFloat);
       break;
       label886:
-      paramArrayOfFloat = this.pointVis;
-      break label135;
+      paramList2 = this.pointVis;
+      break label126;
       label894:
       f2 = (float)(Math.min(this.width, this.height) * this.mFaceDetScale);
-      f3 = (float)(1.0D + 65536.0D * Math.pow((float)Math.sqrt(Math.pow(paramArrayOfFloat.x - this.irisCenterL.x, 2.0D) + Math.pow(paramArrayOfFloat.y - this.irisCenterL.y, 2.0D)) / f2, 2.0D));
+      f3 = (float)(1.0D + 65536.0D * Math.pow((float)Math.sqrt(Math.pow(paramList2.x - this.irisCenterL.x, 2.0D) + Math.pow(paramList2.y - this.irisCenterL.y, 2.0D)) / f2, 2.0D));
       f3 = (float)(f3 / (f3 + 1.5D));
-      paramArrayOfFloat.x = ((float)(this.irisCenterL.x * (1.0D - f3) + paramArrayOfFloat.x * f3));
-      paramArrayOfFloat.y = ((float)(this.irisCenterL.y * (1.0D - f3) + paramArrayOfFloat.y * f3));
+      paramList2.x = ((float)(this.irisCenterL.x * (1.0D - f3) + paramList2.x * f3));
+      paramList2.y = ((float)(this.irisCenterL.y * (1.0D - f3) + paramList2.y * f3));
       f1 = (float)(this.irisRadiusL * (1.0D - f3) + f1 * f3);
-      this.irisCenterL = new PointF(paramArrayOfFloat.x, paramArrayOfFloat.y);
+      this.irisCenterL = new PointF(paramList2.x, paramList2.y);
       this.irisRadiusL = f1;
-      f2 = (float)(Math.pow((float)Math.sqrt(Math.pow(((PointF)localObject1).x - this.irisCenterR.x, 2.0D) + Math.pow(((PointF)localObject1).y - this.irisCenterR.y, 2.0D)) / f2, 2.0D) * 65536.0D + 1.0D);
+      f2 = (float)(Math.pow((float)Math.sqrt(Math.pow(paramArrayOfFloat.x - this.irisCenterR.x, 2.0D) + Math.pow(paramArrayOfFloat.y - this.irisCenterR.y, 2.0D)) / f2, 2.0D) * 65536.0D + 1.0D);
       f2 = (float)(f2 / (f2 + 1.5D));
-      ((PointF)localObject1).x = ((float)(this.irisCenterR.x * (1.0D - f2) + ((PointF)localObject1).x * f2));
-      ((PointF)localObject1).y = ((float)(this.irisCenterR.y * (1.0D - f2) + ((PointF)localObject1).y * f2));
+      paramArrayOfFloat.x = ((float)(this.irisCenterR.x * (1.0D - f2) + paramArrayOfFloat.x * f2));
+      paramArrayOfFloat.y = ((float)(this.irisCenterR.y * (1.0D - f2) + paramArrayOfFloat.y * f2));
       double d1 = this.irisRadiusR;
       double d2 = f2;
       paramFloat = (float)(paramFloat * f2 + d1 * (1.0D - d2));
-      this.irisCenterR = new PointF(((PointF)localObject1).x, ((PointF)localObject1).y);
+      this.irisCenterR = new PointF(paramArrayOfFloat.x, paramArrayOfFloat.y);
     }
   }
   
@@ -1067,27 +1066,28 @@ public class FaceOffFilter
   {
     int i = 1;
     int j = 1;
+    PTDetectInfo localPTDetectInfo;
     List localList;
     float[] arrayOfFloat;
     if ((paramObject instanceof PTDetectInfo))
     {
-      paramObject = (PTDetectInfo)paramObject;
-      if (!CollectionUtils.isEmpty(paramObject.facePoints))
+      localPTDetectInfo = (PTDetectInfo)paramObject;
+      if (!CollectionUtils.isEmpty(localPTDetectInfo.facePoints))
       {
-        localList = VideoMaterialUtil.copyList(paramObject.facePoints);
+        localList = VideoMaterialUtil.copyList(localPTDetectInfo.facePoints);
         this.faceIndex = paramInt2;
         if (paramInt1 == this.faceCount) {
-          break label224;
+          break label252;
         }
         this.isChangeFirstFace = true;
         this.faceCount = paramInt1;
         this.isFaceImageReady = false;
-        arrayOfFloat = paramObject.pointsVis;
+        arrayOfFloat = localPTDetectInfo.pointsVis;
         updateMouthOpenFactor(localList);
-        if ((paramObject.realPhoneAngle != 90.0F) && (paramObject.realPhoneAngle != 270.0F)) {
-          break label232;
+        if ((localPTDetectInfo.realPhoneAngle != 90.0F) && (localPTDetectInfo.realPhoneAngle != 270.0F)) {
+          break label260;
         }
-        paramInt2 = Float.valueOf(paramObject.realPhoneAngle - paramObject.phoneAngle).intValue();
+        paramInt2 = Float.valueOf(localPTDetectInfo.realPhoneAngle - localPTDetectInfo.phoneAngle).intValue();
         if (paramInt2 != 0)
         {
           paramInt1 = j;
@@ -1098,37 +1098,41 @@ public class FaceOffFilter
           paramInt1 = -1;
         }
         paramInt2 = 0;
+        label140:
+        if (!this.item.faceExchangeImageDisableFaceCrop) {
+          break label313;
+        }
       }
     }
-    for (;;)
+    label260:
+    label313:
+    for (paramObject = localPTDetectInfo.noCropFaceoffPoints;; paramObject = localPTDetectInfo.normalFaceoffPoints)
     {
-      updatePointParams(localList, arrayOfFloat, paramInt1 * paramObject.faceAngles[paramInt2]);
+      updatePointParams(localList, paramObject, arrayOfFloat, paramInt1 * localPTDetectInfo.faceAngles[paramInt2]);
       changeMakeup(this.pointVis);
       updateFrameIndex(paramInt3);
       initLipsStyleMaskImage();
-      if ((paramObject.noseOcclusionFrame == null) || (this.item.faceExchangeImageDisableFaceCrop)) {
-        break label283;
+      if ((localPTDetectInfo.noseOcclusionFrame == null) || (this.item.faceExchangeImageDisableFaceCrop)) {
+        break label322;
       }
-      addParam(new UniformParam.TextureParam("inputImageTexture7", paramObject.noseOcclusionFrame.getTextureId(), 33991));
+      addParam(new UniformParam.TextureParam("inputImageTexture7", localPTDetectInfo.noseOcclusionFrame.getTextureId(), 33991));
       addParam(new UniformParam.FloatParam("enableNoseOcclusion", 1.0F));
       return;
-      label224:
+      label252:
       this.isChangeFirstFace = false;
       break;
-      label232:
-      paramInt1 = Float.valueOf(paramObject.phoneAngle - paramObject.realPhoneAngle).intValue();
+      paramInt1 = Float.valueOf(localPTDetectInfo.phoneAngle - localPTDetectInfo.realPhoneAngle).intValue();
       if ((paramInt1 == 90) || (paramInt1 == 180) || (paramInt1 == -180))
       {
         paramInt2 = 1;
         paramInt1 = -1;
+        break label140;
       }
-      else
-      {
-        paramInt2 = 1;
-        paramInt1 = i;
-      }
+      paramInt2 = 1;
+      paramInt1 = i;
+      break label140;
     }
-    label283:
+    label322:
     addParam(new UniformParam.FloatParam("enableNoseOcclusion", 0.0F));
   }
   

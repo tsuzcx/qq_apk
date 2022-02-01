@@ -1,25 +1,43 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 
 class wbe
-  extends SimpleJob<Object>
+  implements wbj
 {
-  wbe(wbd paramwbd, String paramString)
+  private wbe(wbb paramwbb) {}
+  
+  public void a(wbk paramwbk)
   {
-    super(paramString);
+    QQStoryContext.a();
+    QQAppInterface localQQAppInterface = QQStoryContext.a();
+    bcxr localbcxr = bcwz.a(2, 2);
+    MessageForShortVideo localMessageForShortVideo = paramwbk.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
+    bcxb localbcxb = localMessageForShortVideo.getDownloadInfo(localbcxr.b);
+    if (paramwbk.jdField_a_of_type_Int == 2)
+    {
+      localbcxb.i = ShortVideoUtils.getShortVideoThumbPicPath(localMessageForShortVideo.thumbMD5, "jpg");
+      localbcxb.a(localMessageForShortVideo.istroop, 1);
+    }
+    for (;;)
+    {
+      localbcxr.a(localbcxb);
+      localbcxr.a(new wbf(this, paramwbk.jdField_a_of_type_JavaLangString));
+      bcwz.a(localbcxr, localQQAppInterface);
+      ykq.b("AsyncFileDownloader", String.format("start download with shortvideo downloader, task = %s", new Object[] { paramwbk }));
+      return;
+      localbcxb.h = ShortVideoUtils.getShortVideoSavePath(localMessageForShortVideo, "mp4");
+      localbcxb.a(localMessageForShortVideo.istroop, 0);
+    }
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public boolean a()
   {
-    if (this.a.jdField_a_of_type_Wbg == null) {
-      this.a.jdField_a_of_type_Wbg = new wbg(this.a, this.a.d);
-    }
-    this.a.jdField_a_of_type_JavaLangString = "";
-    wbd.a(this.a);
-    return null;
+    return true;
   }
+  
+  public void b(wbk paramwbk) {}
 }
 
 

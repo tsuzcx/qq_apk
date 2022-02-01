@@ -2,8 +2,8 @@ package com.tencent.mobileqq.utils;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import atnv;
-import bcef;
+import ausq;
+import bdla;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -14,12 +14,12 @@ class QQCustomDialogWtihForwardAvatar$1
   
   public void onClick(View paramView)
   {
-    bcef.b(this.val$app, "CliOper", "", "", "0X8009BE7", "0X8009BE7", 1, 0, "", "", "", "");
+    bdla.b(this.val$app, "CliOper", "", "", "0X8009BE7", "0X8009BE7", 1, 0, "", "", "", "");
     this.this$0.hideSoftInputFromWindow();
-    atnv localatnv = new atnv(this.this$0);
-    localatnv.a(this.val$app, this.val$titleStr, this.val$uin, this.val$uinType);
-    this.this$0.addPreviewView(localatnv.b());
-    bcef.b(this.val$app, "CliOper", "", "", "0X8009AAD", "0X8009AAD", 0, 0, "", "", "", "");
+    ausq localausq = new ausq(this.this$0);
+    localausq.a(this.val$app, this.val$titleStr, this.val$uin, this.val$uinType);
+    this.this$0.addPreviewView(localausq.b());
+    bdla.b(this.val$app, "CliOper", "", "", "0X8009AAD", "0X8009AAD", 0, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

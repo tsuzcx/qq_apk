@@ -1,6 +1,23 @@
-public abstract interface bbbn<M extends bayr, V extends bbhc>
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.redtouch.RedDisplayInfo;
+import com.tencent.mobileqq.redtouch.RedTypeInfo;
+
+public final class bbbn
+  implements Parcelable.Creator<RedDisplayInfo>
 {
-  public abstract void a(M paramM, V paramV);
+  public RedDisplayInfo a(Parcel paramParcel)
+  {
+    RedDisplayInfo localRedDisplayInfo = new RedDisplayInfo();
+    localRedDisplayInfo.a = paramParcel.readArrayList(RedTypeInfo.class.getClassLoader());
+    RedDisplayInfo.a(localRedDisplayInfo, (RedTypeInfo)paramParcel.readSerializable());
+    return localRedDisplayInfo;
+  }
+  
+  public RedDisplayInfo[] a(int paramInt)
+  {
+    return new RedDisplayInfo[paramInt];
+  }
 }
 
 

@@ -1,15 +1,11 @@
-import java.io.File;
-import java.io.FileFilter;
-
 class bnlo
-  implements FileFilter
+  implements bnng
 {
   bnlo(bnln parambnln) {}
   
-  public boolean accept(File paramFile)
+  public void a(bnkg parambnkg)
   {
-    paramFile = paramFile.getName();
-    return (paramFile.endsWith(".jpg")) || (paramFile.endsWith(".png")) || (paramFile.endsWith(".bmp")) || (paramFile.endsWith(".apng")) || (paramFile.endsWith(".gif"));
+    bnln.a(this.a, parambnkg);
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.pic;
 
-import ayco;
-import ayde;
-import aydn;
-import ayds;
-import ayeb;
-import ayeu;
-import bcdo;
+import azja;
+import azjq;
+import azjz;
+import azke;
+import azkn;
+import azlg;
+import bdkj;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPic;
@@ -18,30 +18,30 @@ import com.tencent.mobileqq.transfile.TransferRequest.PicUpExtraInfo;
 public class BasePicOprerator$3
   implements Runnable
 {
-  public BasePicOprerator$3(ayco paramayco, ayds paramayds) {}
+  public BasePicOprerator$3(azja paramazja, azke paramazke) {}
   
   public void run()
   {
-    aydn localaydn = this.a.jdField_a_of_type_Aydn;
-    ayde.a(this.this$0.b, this.this$0.jdField_a_of_type_JavaLangString, "doForward", "start");
+    azjz localazjz = this.a.jdField_a_of_type_Azjz;
+    azjq.a(this.this$0.b, this.this$0.jdField_a_of_type_JavaLangString, "doForward", "start");
     if (this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null)
     {
-      localaydn.a("doForward", "rec==null");
-      this.this$0.a(4, localaydn.jdField_a_of_type_Aydp);
+      localazjz.a("doForward", "rec==null");
+      this.this$0.a(4, localazjz.jdField_a_of_type_Azkb);
       return;
     }
     Object localObject1 = (MessageForPic)this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-    ((MessageForPic)localObject1).path = localaydn.jdField_a_of_type_Ayeb.jdField_g_of_type_JavaLangString;
-    ayco.a(this.this$0, this.a, ((MessageForPic)localObject1).uniseq);
+    ((MessageForPic)localObject1).path = localazjz.jdField_a_of_type_Azkn.jdField_g_of_type_JavaLangString;
+    azja.a(this.this$0, this.a, ((MessageForPic)localObject1).uniseq);
     if (this.a.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData != null) {
       ((MessageForPic)localObject1).picExtraData = this.a.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData;
     }
     Object localObject2 = new CompressInfo(((MessageForPic)localObject1).path, 0);
-    ayeu.b((CompressInfo)localObject2);
+    azlg.b((CompressInfo)localObject2);
     TransferRequest.PicUpExtraInfo localPicUpExtraInfo;
     if (((CompressInfo)localObject2).jdField_e_of_type_JavaLangString != null)
     {
-      if (bcdo.a())
+      if (bdkj.a())
       {
         ((MessageForPic)localObject1).bigThumbMsgUrl = ((CompressInfo)localObject2).jdField_e_of_type_JavaLangString;
         ((MessageForPic)localObject1).thumbWidth = ((CompressInfo)localObject2).d;
@@ -60,10 +60,10 @@ public class BasePicOprerator$3
       ((TransferRequest)localObject2).mFileType = 1;
       ((TransferRequest)localObject2).mUniseq = this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq;
       ((TransferRequest)localObject2).mIsUp = true;
-      ((TransferRequest)localObject2).mBusiType = localaydn.jdField_a_of_type_Ayeb.a;
-      ((TransferRequest)localObject2).mLocalPath = localaydn.jdField_a_of_type_Ayeb.jdField_g_of_type_JavaLangString;
+      ((TransferRequest)localObject2).mBusiType = localazjz.jdField_a_of_type_Azkn.a;
+      ((TransferRequest)localObject2).mLocalPath = localazjz.jdField_a_of_type_Azkn.jdField_g_of_type_JavaLangString;
       localPicUpExtraInfo = new TransferRequest.PicUpExtraInfo();
-      if (localaydn.jdField_a_of_type_Ayeb.l != 1) {
+      if (localazjz.jdField_a_of_type_Azkn.l != 1) {
         break label486;
       }
     }
@@ -77,8 +77,8 @@ public class BasePicOprerator$3
       localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController();
       ((TransFileController)localObject1).removeProcessor(((TransferRequest)localObject2).mPeerUin + ((TransferRequest)localObject2).mUniseq);
       ((TransFileController)localObject1).transferAsync((TransferRequest)localObject2);
-      this.this$0.a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, localaydn.jdField_a_of_type_Ayeb.jdField_g_of_type_Long);
-      ayde.a(this.this$0.b, this.this$0.jdField_a_of_type_JavaLangString, "doForward", "end");
+      this.this$0.a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, localazjz.jdField_a_of_type_Azkn.jdField_g_of_type_Long);
+      azjq.a(this.this$0.b, this.this$0.jdField_a_of_type_JavaLangString, "doForward", "end");
       return;
       ((MessageForPic)localObject1).thumbMsgUrl = ((CompressInfo)localObject2).jdField_e_of_type_JavaLangString;
       break;

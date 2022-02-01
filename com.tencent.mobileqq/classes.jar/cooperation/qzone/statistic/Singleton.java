@@ -18,6 +18,11 @@ public abstract class Singleton<T, P>
     }
     finally {}
   }
+  
+  public void release()
+  {
+    this.mInstance = null;
+  }
 }
 
 

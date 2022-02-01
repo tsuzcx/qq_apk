@@ -1,36 +1,44 @@
 package com.tencent.qqmini.sdk.plugins;
 
-import com.tencent.qqmini.sdk.action.GetShareState;
-import com.tencent.qqmini.sdk.action.PageAction;
+import android.app.Activity;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.R.layout;
+import com.tencent.qqmini.sdk.R.style;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import com.tencent.qqmini.sdk.launcher.model.ShareState;
+import com.tencent.qqmini.sdk.launcher.utils.ColorUtils;
+import com.tencent.qqmini.sdk.widget.MiniCustomDialog;
 
 class UIJsPlugin$5
   implements Runnable
 {
-  UIJsPlugin$5(UIJsPlugin paramUIJsPlugin, RequestEvent paramRequestEvent) {}
+  UIJsPlugin$5(UIJsPlugin paramUIJsPlugin, String paramString1, String paramString2, String paramString3, String paramString4, RequestEvent paramRequestEvent, boolean paramBoolean, String paramString5, String paramString6) {}
   
   public void run()
   {
-    if (UIJsPlugin.access$900(this.this$0))
+    Object localObject = UIJsPlugin.access$1000(this.this$0).getAttachedActivity();
+    MiniCustomDialog localMiniCustomDialog;
+    if ((localObject != null) && (!((Activity)localObject).isFinishing()))
     {
-      ShareState localShareState = GetShareState.obtain(UIJsPlugin.access$1000(this.this$0));
-      if (localShareState != null)
-      {
-        localShareState.showRestart = false;
-        this.val$req.ok();
-        return;
+      localMiniCustomDialog = new MiniCustomDialog((Context)localObject, R.style.mini_sdk_MiniAppInputDialog);
+      localMiniCustomDialog.setContentView(R.layout.mini_sdk_custom_dialog_temp);
+      if (!TextUtils.isEmpty(this.val$title)) {
+        break label133;
       }
-      this.val$req.fail();
-      return;
     }
-    if (PageAction.obtain(UIJsPlugin.access$1100(this.this$0)).getPageUrl() != null)
+    label133:
+    for (localObject = null;; localObject = this.val$title)
     {
-      GetShareState.obtain(UIJsPlugin.access$1200(this.this$0)).showRestart = false;
-      this.val$req.ok();
+      localMiniCustomDialog.setTitle((String)localObject).setMessage(this.val$content);
+      localMiniCustomDialog.setPositiveButton(this.val$confirmText, ColorUtils.parseColor(this.val$confirmColor), new UIJsPlugin.5.1(this));
+      if (this.val$showCancel) {
+        localMiniCustomDialog.setNegativeButton(this.val$cancelText, ColorUtils.parseColor(this.val$cancelColor), new UIJsPlugin.5.2(this));
+      }
+      localMiniCustomDialog.setCanceledOnTouchOutside(false);
+      localMiniCustomDialog.show();
       return;
     }
-    this.val$req.fail();
   }
 }
 

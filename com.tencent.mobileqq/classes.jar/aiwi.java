@@ -1,58 +1,23 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
 
 public class aiwi
-  extends atbh
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public aiwi(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
+  public aiwi(TroopView paramTroopView) {}
   
-  public void a(View paramView)
+  public void onGlobalLayout()
   {
-    paramView = (ajao)paramView.getTag();
-    FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.jdField_a_of_type_JavaLangObject;
-    if (5 != localFileManagerEntity.cloudType) {
-      aszt.b(localFileManagerEntity);
-    }
-    switch (paramView.jdField_a_of_type_Int)
-    {
+    if (Build.VERSION.SDK_INT < 16) {
+      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
     for (;;)
     {
-      ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
+      TroopView.a(this.a);
       return;
-      if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
-      {
-        aszk.a(2131692367);
-        return;
-      }
-      asyq.a(localFileManagerEntity).a(false, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, new aiwj(this, localFileManagerEntity));
-      continue;
-      this.a.a(localFileManagerEntity);
-      continue;
-      if (localFileManagerEntity.getCloudType() == 0)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineFileSessionCenter().a(localFileManagerEntity.nSessionId);
-      }
-      else if (localFileManagerEntity.getCloudType() == 6)
-      {
-        ((amqd)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(8)).a(0, localFileManagerEntity.uniseq, false);
-      }
-      else
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(localFileManagerEntity.nSessionId);
-        continue;
-        if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
-        {
-          aszk.a(2131692367);
-          return;
-        }
-        boolean bool = localFileManagerEntity.isSend();
-        asyq.a(localFileManagerEntity).a(bool, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, new aiwk(this, localFileManagerEntity));
-      }
+      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
     }
   }
 }

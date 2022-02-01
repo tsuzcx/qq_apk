@@ -1,12 +1,24 @@
-import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
+import java.util.List;
 
-public abstract class bepn
+class bepn
+  extends beql<EditorState>
 {
-  public final View a;
-  
-  protected bepn(View paramView)
+  bepn(bepg parambepg, EditorState paramEditorState, List paramList)
   {
-    this.a = paramView;
+    super(paramEditorState, paramList);
+  }
+  
+  public void a(EditorState paramEditorState)
+  {
+    super.a(paramEditorState);
+    if (benq.a(bepg.a(this.a), bepg.a(this.a)))
+    {
+      bepg.a(this.a).a(false, false);
+      return;
+    }
+    bepg.a(this.a).a(EditorState.CLOSED_BY_ADMIN, bepg.a(this.a).getString(2131720152));
   }
 }
 

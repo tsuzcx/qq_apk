@@ -1,59 +1,66 @@
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.res.Resources;
 import android.os.Message;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.image.NativeVideoImage;
+import com.tencent.mobileqq.widget.QQToast;
+import java.io.File;
+import mqq.os.MqqHandler;
 
 class ahsd
-  extends TransProcessorHandler
+  extends MqqHandler
 {
-  ahsd(ahsc paramahsc) {}
+  ahsd(ahri paramahri) {}
   
   public void handleMessage(Message paramMessage)
   {
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    if ((localFileMsg == null) || (localFileMsg.fileType != 327696) || (localFileMsg.commandId != 68)) {}
-    do
+    switch (paramMessage.what)
     {
+    default: 
+    case 1: 
+    case 2: 
+    case 3: 
       do
       {
         do
         {
           return;
-          switch (paramMessage.what)
-          {
-          default: 
-            return;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("VoiceTextEdtiController", 2, "pttTransProcessorHandler STATUS_SEND_CANCEL unFinishSegSize=" + ahsc.a(this.a).get() + " pos=" + localFileMsg.pttSlicePos);
+          QQToast.a(ahri.e(this.a), 2131718832, 0).a();
+          return;
+          ahri.f(this.a).getString(2131718833);
+          paramMessage = (String)paramMessage.obj;
+          bheg.a(ahri.g(this.a), paramMessage);
+          QQToast.a(ahri.h(this.a), 2, anvx.a(2131699555), 0).a();
+          return;
+        } while (paramMessage.obj == null);
+        paramMessage = new File((String)paramMessage.obj);
+      } while (!paramMessage.exists());
+      paramMessage = bhdj.a(ahri.i(this.a), 232, ahri.j(this.a).getResources().getString(2131718864), ahri.k(this.a).getResources().getString(2131718863), 2131718847, 2131718048, new ahse(this, paramMessage), new ahsf(this));
+      try
+      {
+        paramMessage.show();
         return;
-        if (localFileMsg.pttSliceText != null) {
-          this.a.a(new ahsh(localFileMsg.pttSliceText, true), localFileMsg.pttSlicePos);
-        }
-        ahsc.a(this.a).set(ahsc.a(this.a).get() - 1);
-      } while (ahsc.a(this.a).get() != 0);
-      ahsc.a(this.a).clear();
-      if (ahsc.a(this.a) != null) {
-        ahsc.a(this.a).d();
       }
-      ahsc.a(this.a).removeHandle(ahsc.a(this.a));
-      ahtf.a(1, 0);
+      catch (Throwable paramMessage)
+      {
+        return;
+      }
+    case 10001: 
+      this.a.B();
+      QQToast.a(ahri.l(this.a), 1, anvx.a(2131699573), 0).a();
+      NativeVideoImage.resumeAll();
+      ahri.a(this.a);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("VoiceTextEdtiController", 2, "pttTransProcessorHandler recieve error:" + localFileMsg.errorCode);
-      }
-      if (ahsc.a(this.a) != null) {
-        ahsc.a(this.a).a(localFileMsg.errorCode);
-      }
-      ahtf.a(0, localFileMsg.errorCode);
-      this.a.a();
+    case 10000: 
+      this.a.n = true;
+      this.a.d(100);
+      sendEmptyMessageDelayed(10003, 200L);
       return;
-    } while ((StringUtil.isEmpty(localFileMsg.pttSliceText)) || (ahsc.a(this.a).get() <= 0));
-    this.a.a(new ahsh(localFileMsg.pttSliceText, false), localFileMsg.pttSlicePos);
+    }
+    this.a.B();
+    QQToast.a(ahri.m(this.a), 2, anvx.a(2131699562), 0).a();
+    NativeVideoImage.resumeAll();
+    ahri.a(this.a);
   }
 }
 

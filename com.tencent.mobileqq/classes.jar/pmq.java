@@ -1,29 +1,69 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAdIMAXBrowserFragment;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.HashMap;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class pmq
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/config/handlers/ViolaVideoFeedsConfigHandler;", "Lcom/tencent/aladdin/config/handlers/AladdinConfigHandler;", "()V", "onReceiveConfig", "", "id", "", "version", "content", "", "onWipeConfig", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pmq
+  implements AladdinConfigHandler
 {
-  public pmq(ReadInJoyAdIMAXBrowserFragment paramReadInJoyAdIMAXBrowserFragment) {}
+  public static final pmr a = new pmr(null);
   
-  public void onClick(View paramView)
+  @JvmStatic
+  @NotNull
+  public static final String a()
   {
-    Object localObject = (bgww)this.a.mComponentsProvider.a(4);
-    if ((localObject != null) && (((bgww)localObject).a != null) && (((bgww)localObject).a.isShowing())) {}
+    return a.a();
+  }
+  
+  @JvmStatic
+  public static final boolean a(int paramInt)
+  {
+    return a.a(paramInt);
+  }
+  
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, @Nullable String paramString)
+  {
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      ReadInJoyAdIMAXBrowserFragment.a(this.a);
-      localObject = new HashMap();
-      ((HashMap)localObject).put("stat_src", "5");
-      obb.a(new trn().a((AppInterface)ReadInJoyAdIMAXBrowserFragment.a(this.a)).a(this.a.getActivity()).a(obb.v).b(obb.ag).a(ReadInJoyAdIMAXBrowserFragment.a(this.a)).d(obb.a((HashMap)localObject)).a());
+      Map.Entry localEntry;
+      try
+      {
+        paramString = pku.a(paramString);
+        Intrinsics.checkExpressionValueIsNotNull(paramString, "configs");
+        paramString = paramString.entrySet().iterator();
+        if (paramString.hasNext())
+        {
+          localEntry = (Map.Entry)paramString.next();
+          if ("from_source".equals(localEntry.getKey())) {
+            bmhv.a("viola_video_feeds_config", localEntry.getValue());
+          }
+        }
+        else
+        {
+          return true;
+        }
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("ViolaVideoFeedsConfigHandler", 1, "[ViolaVideoFeedsConfigHandler]: " + paramString.getMessage());
+      }
+      if ("videofeeds_version".equals(localEntry.getKey())) {
+        bmhv.a("viola_video_feeds_version", localEntry.getValue());
+      }
     }
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    bmhv.a("viola_video_feeds_config", "");
   }
 }
 

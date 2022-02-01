@@ -1,6 +1,15 @@
-public abstract interface ahrz
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class ahrz
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  ahrz(ahri paramahri) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.e();
+  }
 }
 
 

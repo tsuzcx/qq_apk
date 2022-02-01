@@ -1,18 +1,30 @@
-public class avjh
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import java.util.Date;
+
+class avjh
 {
-  public int a;
-  public String a;
-  public String b = "https://qzonestyle.gtimg.cn/aoi/sola/20190530121848_eHHesyqska.png";
+  static avjh jdField_a_of_type_Avjh = new avjh(false, new Date(0L), new Date(0L));
+  final Date jdField_a_of_type_JavaUtilDate;
+  final boolean jdField_a_of_type_Boolean;
+  final Date b;
   
-  public avjh()
+  avjh(boolean paramBoolean, @NonNull Date paramDate1, @NonNull Date paramDate2)
   {
-    this.jdField_a_of_type_JavaLangString = "https://qzonestyle.gtimg.cn/aoi/sola/20190530121837_iSfyMAuKAV.png";
-    this.jdField_a_of_type_Int = 360;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaUtilDate = paramDate1;
+    this.b = paramDate2;
   }
   
-  public String toString()
+  private boolean b()
   {
-    return "popup_url=" + this.jdField_a_of_type_JavaLangString + "\nfixed_entrance_url=" + this.b + "\nrequest_interval=" + this.jdField_a_of_type_Int;
+    long l = NetConnInfoCenter.getServerTime() * 1000L;
+    return (this.jdField_a_of_type_JavaUtilDate.getTime() <= l) && (this.b.getTime() >= l);
+  }
+  
+  boolean a()
+  {
+    return (b()) && (this.jdField_a_of_type_Boolean);
   }
 }
 

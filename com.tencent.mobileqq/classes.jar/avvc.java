@@ -1,55 +1,14 @@
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
-import java.util.Calendar;
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.qqshare.CustomizedShareForQQ;
 
-public class avvc
-  implements apri
+class avvc
+  implements CustomizedShareForQQ
 {
-  private avvc(MsgBackupDateFragment paramMsgBackupDateFragment) {}
+  avvc(avux paramavux) {}
   
-  public int a()
+  public void shareToQQ(Bundle paramBundle)
   {
-    return 3;
-  }
-  
-  public int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 0: 
-      return MsgBackupDateFragment.c(this.a) - MsgBackupDateFragment.d(this.a) + 1;
-    case 1: 
-      return 12;
-    }
-    Calendar localCalendar = Calendar.getInstance();
-    if (MsgBackupDateFragment.b(this.a) == 1)
-    {
-      localCalendar.set(1, MsgBackupDateFragment.e(this.a) + MsgBackupDateFragment.d(this.a));
-      localCalendar.set(2, MsgBackupDateFragment.f(this.a));
-      localCalendar.set(5, 1);
-    }
-    for (;;)
-    {
-      return localCalendar.getActualMaximum(5);
-      localCalendar.set(1, MsgBackupDateFragment.g(this.a) + MsgBackupDateFragment.d(this.a));
-      localCalendar.set(2, MsgBackupDateFragment.h(this.a));
-      localCalendar.set(5, 1);
-    }
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return "";
-    case 0: 
-      return MsgBackupDateFragment.d(this.a) + paramInt2 + amtj.a(2131706044);
-    case 1: 
-      return paramInt2 + 1 + amtj.a(2131706027);
-    }
-    return paramInt2 + 1 + amtj.a(2131706043);
+    avvz.a().c(paramBundle);
   }
 }
 

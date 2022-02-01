@@ -7,18 +7,18 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
-import anha;
+import aojq;
 import com.tencent.avgame.app.AVGameAppInterface;
 import com.tencent.avgame.gamelogic.data.RoomInfo;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.qphone.base.util.QLog;
-import mye;
-import mzl;
-import naf;
-import nft;
-import nfu;
-import ngu;
-import nht;
+import ndq;
+import nfc;
+import nfv;
+import nml;
+import nmm;
+import nnm;
+import nom;
 
 public class AVGameNetWorkQualityManager
 {
@@ -30,7 +30,7 @@ public class AVGameNetWorkQualityManager
   private final AVGameNetWorkQualityManager.NetWorkQulityCheckRunnable jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameNetWorkQualityManager$NetWorkQulityCheckRunnable = new AVGameNetWorkQualityManager.NetWorkQulityCheckRunnable(this, null);
   private final AVGameNetWorkQualityManager.UpdateNetWorkStatusRunnable jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameNetWorkQualityManager$UpdateNetWorkStatusRunnable;
   private String jdField_a_of_type_JavaLangString;
-  private nfu jdField_a_of_type_Nfu;
+  private nmm jdField_a_of_type_Nmm;
   private boolean jdField_a_of_type_Boolean;
   private final int[] jdField_a_of_type_ArrayOfInt = { 0, 150, 300 };
   private int jdField_b_of_type_Int;
@@ -41,10 +41,10 @@ public class AVGameNetWorkQualityManager
   
   public AVGameNetWorkQualityManager(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131363097);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373451));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131363114);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373664));
     this.jdField_b_of_type_AndroidOsHandler = new Handler();
-    this.jdField_a_of_type_AndroidOsHandler = nht.a().a();
+    this.jdField_a_of_type_AndroidOsHandler = nom.a().a();
     this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameNetWorkQualityManager$UpdateNetWorkStatusRunnable = new AVGameNetWorkQualityManager.UpdateNetWorkStatusRunnable(this, null);
     d();
   }
@@ -91,28 +91,28 @@ public class AVGameNetWorkQualityManager
   private void a(int paramInt1, int paramInt2)
   {
     if (paramInt1 == 1) {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(a(2130838715));
+      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(a(2130838731));
     }
     for (;;)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt2 + "ms");
       return;
       if (paramInt1 == 2) {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(a(2130838714));
+        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(a(2130838730));
       } else if (paramInt1 == 3) {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(a(2130838713));
+        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(a(2130838729));
       }
     }
   }
   
   private void a(Context paramContext)
   {
-    AVGameAppInterface localAVGameAppInterface = mzl.a().a();
+    AVGameAppInterface localAVGameAppInterface = nfc.a().a();
     String str1 = localAVGameAppInterface.getCurrentAccountUin();
-    naf localnaf = mzl.a().a();
-    long l = localnaf.a();
-    String str2 = localnaf.a().getNick(str1);
-    anha.a().a(localAVGameAppInterface, l, Long.valueOf(str1).longValue(), str2, 3, "", localnaf.d(), new nft(this, paramContext, str2));
+    nfv localnfv = nfc.a().a();
+    long l = localnfv.a();
+    String str2 = localnfv.a().getNick(str1);
+    aojq.a().a(localAVGameAppInterface, l, Long.valueOf(str1).longValue(), str2, 3, "", localnfv.d(), new nml(this, paramContext, str2));
   }
   
   private boolean a(String paramString)
@@ -146,32 +146,32 @@ public class AVGameNetWorkQualityManager
   private void b(int paramInt1, int paramInt2)
   {
     if (paramInt1 == 1) {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(a(2130838718));
+      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(a(2130838734));
     }
     for (;;)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt2 + "ms");
       return;
       if (paramInt1 == 2) {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(a(2130838717));
+        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(a(2130838733));
       } else if (paramInt1 == 3) {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(a(2130838716));
+        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(a(2130838732));
       }
     }
   }
   
   private void d()
   {
-    if (this.jdField_a_of_type_Nfu == null)
+    if (this.jdField_a_of_type_Nmm == null)
     {
-      this.jdField_a_of_type_Nfu = new nfu(this);
-      mye.a().a(this.jdField_a_of_type_Nfu, true);
+      this.jdField_a_of_type_Nmm = new nmm(this);
+      ndq.a().a(this.jdField_a_of_type_Nmm, true);
     }
   }
   
   private void e()
   {
-    this.jdField_a_of_type_JavaLangString = ngu.b().a();
+    this.jdField_a_of_type_JavaLangString = nnm.b().a();
     if (!a(this.jdField_a_of_type_JavaLangString)) {
       return;
     }
@@ -222,8 +222,8 @@ public class AVGameNetWorkQualityManager
   
   private void g()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidWidgetTextView.getResources().getString(2131690349));
-    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(a(2130838712));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidWidgetTextView.getResources().getString(2131690389));
+    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(a(2130838728));
   }
   
   public void a()
@@ -246,10 +246,10 @@ public class AVGameNetWorkQualityManager
     this.c = 0;
     this.jdField_b_of_type_Long = 0L;
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameNetWorkQualityManager$NetWorkQulityCheckRunnable);
-    if (this.jdField_a_of_type_Nfu != null)
+    if (this.jdField_a_of_type_Nmm != null)
     {
-      mye.a().b(this.jdField_a_of_type_Nfu);
-      this.jdField_a_of_type_Nfu = null;
+      ndq.a().b(this.jdField_a_of_type_Nmm);
+      this.jdField_a_of_type_Nmm = null;
     }
     this.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
   }

@@ -1,62 +1,78 @@
-import com.tencent.mobileqq.together.writetogether.data.GetChangesetsResp;
-import com.tencent.mobileqq.together.writetogether.websocket.msg.NewChangesMsg.Data;
+import android.net.Uri;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.TreeSet;
 
-class bdgs
-  extends bdgm
+public class bdgs
 {
-  bdgs(bdgr parambdgr) {}
+  public long a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public void a(boolean paramBoolean, GetChangesetsResp paramGetChangesetsResp)
+  public bdgs()
   {
-    int j = 0;
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.i("ChangesetClient", 2, "onPullPad");
-    }
-    NewChangesMsg.Data localData;
-    if (paramBoolean)
+    this.jdField_a_of_type_Long = -1L;
+  }
+  
+  public bdgs(String paramString1, String paramString2, String paramString3, long paramLong, String paramString4, String paramString5, String paramString6)
+  {
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.jdField_a_of_type_Long = paramLong;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.f = paramString6;
+  }
+  
+  private static long a(String paramString)
+  {
+    try
     {
-      if ((paramGetChangesetsResp.changes.length > 0) && (paramGetChangesetsResp.changes[0].a.newRev > this.a.jdField_a_of_type_Int + 1))
+      if (!TextUtils.isEmpty(paramString))
       {
-        QLog.w("ChangesetClient", 1, "get newer cs, store it");
-        paramGetChangesetsResp = paramGetChangesetsResp.changes;
-        j = paramGetChangesetsResp.length;
-      }
-      for (;;)
-      {
-        if (i < j)
-        {
-          localData = paramGetChangesetsResp[i];
-          this.a.jdField_a_of_type_JavaUtilTreeSet.add(localData.a);
-          i += 1;
-          continue;
-          paramGetChangesetsResp = paramGetChangesetsResp.changes;
-          int k = paramGetChangesetsResp.length;
-          i = j;
-          if (i < k)
-          {
-            localData = paramGetChangesetsResp[i].a;
-            if (localData.newRev <= this.a.jdField_a_of_type_Int) {
-              QLog.w("ChangesetClient", 1, "get duplicate cs");
-            }
-          }
-        }
+        long l = Long.parseLong(paramString);
+        return l;
       }
     }
-    for (;;)
+    catch (Throwable paramString)
     {
-      i += 1;
-      break;
-      if (localData.newRev > this.a.jdField_a_of_type_Int + 1)
-      {
-        QLog.e("ChangesetClient", 1, "get broken cs");
-        this.a.b();
-        return;
-      }
-      bdgr.a(this.a, localData);
+      QLog.e("SoLoadWidget.SoLocalInfo", 1, paramString, new Object[0]);
     }
+    return -1L;
+  }
+  
+  public static bdgs a(String paramString)
+  {
+    bdgs localbdgs = new bdgs();
+    try
+    {
+      paramString = Uri.parse(paramString);
+      localbdgs.jdField_a_of_type_JavaLangString = paramString.getQueryParameter("ver");
+      localbdgs.b = paramString.getQueryParameter("name");
+      localbdgs.c = paramString.getQueryParameter("path");
+      localbdgs.jdField_a_of_type_Long = a(paramString.getQueryParameter("crc"));
+      localbdgs.d = paramString.getQueryParameter("url");
+      localbdgs.e = paramString.getQueryParameter("rUrl");
+      localbdgs.f = paramString.getQueryParameter("rPath");
+      return localbdgs;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("SoLoadWidget.SoLocalInfo", 1, paramString, new Object[0]);
+    }
+    return localbdgs;
+  }
+  
+  public String a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("?").append("ver=").append(this.jdField_a_of_type_JavaLangString).append("&name=").append(this.b).append("&path=").append(albw.c(this.c)).append("&crc=").append(this.jdField_a_of_type_Long).append("&url=").append(albw.c(this.d)).append("&rUrl=").append(albw.c(this.e)).append("&rPath=").append(albw.c(this.f));
+    return localStringBuilder.toString();
   }
 }
 

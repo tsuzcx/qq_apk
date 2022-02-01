@@ -73,20 +73,20 @@ public class GdtMvAppBtnView
     if (this.b) {
       if (this.jdField_a_of_type_Boolean)
       {
-        localDrawable = getResources().getDrawable(2130840257);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840256);
+        localDrawable = getResources().getDrawable(2130840293);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840292);
       }
     }
     while (this.jdField_a_of_type_Boolean)
     {
       setBackgroundDrawable(localDrawable);
       return;
-      i = getResources().getColor(2131165445);
+      i = getResources().getColor(2131165451);
       continue;
       if (this.jdField_a_of_type_Boolean) {
-        localDrawable = getResources().getDrawable(2130840256);
+        localDrawable = getResources().getDrawable(2130840292);
       } else {
-        i = getResources().getColor(2131165453);
+        i = getResources().getColor(2131165459);
       }
     }
     setBackgroundColor(i);

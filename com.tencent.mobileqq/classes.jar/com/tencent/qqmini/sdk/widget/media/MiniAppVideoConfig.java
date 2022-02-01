@@ -43,7 +43,6 @@ public class MiniAppVideoConfig
   public int parentId;
   public String playBtnPosition;
   public String poster = null;
-  public JSONObject postionObj;
   public boolean showCenterPlayBtn = true;
   public boolean showControlProgress;
   public boolean showDanmuBtn = false;
@@ -96,23 +95,18 @@ public class MiniAppVideoConfig
   
   public void initSetting(JSONObject paramJSONObject)
   {
+    this.poster = paramJSONObject.optString("poster", this.poster);
+    this.enableDanmu = paramJSONObject.optBoolean("enableDanmu", this.enableDanmu);
     this.needEvent = paramJSONObject.optBoolean("needEvent", this.needEvent);
     this.hide = paramJSONObject.optBoolean("hide", this.hide);
-    this.enableDanmu = paramJSONObject.optBoolean("enableDanmu", this.enableDanmu);
-    this.showDanmuBtn = paramJSONObject.optBoolean("showDanmuBtn", this.showDanmuBtn);
     this.loop = paramJSONObject.optBoolean("loop", this.loop);
     this.enablePlayGesture = paramJSONObject.optBoolean("enablePlayGesture", this.enablePlayGesture);
     this.direction = paramJSONObject.optInt("direction", this.direction);
     this.isShowBasicControl = paramJSONObject.optBoolean("showBasicControls", this.isShowBasicControl);
     this.isShowControlBar = paramJSONObject.optBoolean("controls", this.isShowControlBar);
-    this.playBtnPosition = paramJSONObject.optString("playBtnPosition", this.playBtnPosition);
-    this.showProgress = paramJSONObject.optBoolean("showProgress", this.showProgress);
-    this.showMuteBtn = paramJSONObject.optBoolean("showMuteBtn", this.showMuteBtn);
-    this.title = paramJSONObject.optString("title", this.title);
     this.autoPauseIfNavigate = paramJSONObject.optBoolean("autoPauseIfNavigate", this.autoPauseIfNavigate);
     this.autoPauseIfOpenNative = paramJSONObject.optBoolean("autoPauseIfOpenNative", this.autoPauseIfOpenNative);
     this.muted = paramJSONObject.optBoolean("muted", this.muted);
-    this.showCenterPlayBtn = paramJSONObject.optBoolean("showCenterPlayBtn", this.showCenterPlayBtn);
     this.objectFit = paramJSONObject.optString("objectFit", this.objectFit);
     this.autoplay = paramJSONObject.optBoolean("autoplay", this.autoplay);
     this.barrages = parseDanmuList((JSONArray)paramJSONObject.opt("danmuList"));
@@ -122,32 +116,36 @@ public class MiniAppVideoConfig
     this.initialTime = paramJSONObject.optDouble("initialTime", this.initialTime);
     this.parentId = paramJSONObject.optInt("parentId", this.parentId);
     this.customCache = paramJSONObject.optBoolean("customCache", this.customCache);
-    this.showProgress = paramJSONObject.optBoolean("showProgress", this.showProgress);
-    this.showControlProgress = paramJSONObject.optBoolean("showControlProgress", this.showControlProgress);
+    this.title = paramJSONObject.optString("title", this.title);
+    this.playBtnPosition = paramJSONObject.optString("playBtnPosition", this.playBtnPosition);
+    this.showDanmuBtn = paramJSONObject.optBoolean("showDanmuBtn", this.showDanmuBtn);
     this.showLiveBtn = paramJSONObject.optBoolean("showLiveBtn", this.showLiveBtn);
     this.showPlayBtn = paramJSONObject.optBoolean("showPlayBtn", this.showPlayBtn);
     this.showFullScreenBtn = paramJSONObject.optBoolean("showFullScreenBtn", this.showFullScreenBtn);
+    this.showProgress = paramJSONObject.optBoolean("showProgress", this.showProgress);
+    this.showControlProgress = paramJSONObject.optBoolean("showControlProgress", this.showControlProgress);
+    this.showMuteBtn = paramJSONObject.optBoolean("showMuteBtn", this.showMuteBtn);
+    this.showCenterPlayBtn = paramJSONObject.optBoolean("showCenterPlayBtn", this.showCenterPlayBtn);
     this.enableProgressGesture = paramJSONObject.optBoolean("enableProgressGesture", this.enableProgressGesture);
-    JSONObject localJSONObject;
     if (!this.isFullScreen)
     {
-      localJSONObject = paramJSONObject.optJSONObject("position");
-      if (localJSONObject == null) {
-        break label545;
+      JSONObject localJSONObject = paramJSONObject.optJSONObject("position");
+      if (localJSONObject != null)
+      {
+        this.videoX = localJSONObject.optInt("left", this.videoX);
+        this.videoY = localJSONObject.optInt("top", this.videoY);
+        this.videoWidth = localJSONObject.optInt("width", this.videoWidth);
+        this.videoHeight = localJSONObject.optInt("height", this.videoHeight);
       }
-      this.videoX = localJSONObject.optInt("left", this.videoX);
-      this.videoY = localJSONObject.optInt("top", this.videoY);
-      this.videoWidth = localJSONObject.optInt("width", this.videoWidth);
     }
-    for (this.videoHeight = localJSONObject.optInt("height", this.videoHeight);; this.videoHeight = paramJSONObject.optInt("height", this.videoHeight))
+    else
     {
-      this.poster = paramJSONObject.optString("poster", this.poster);
       return;
-      label545:
-      this.videoX = paramJSONObject.optInt("x", this.videoX);
-      this.videoY = paramJSONObject.optInt("y", this.videoY);
-      this.videoWidth = paramJSONObject.optInt("width", this.videoWidth);
     }
+    this.videoX = paramJSONObject.optInt("x", this.videoX);
+    this.videoY = paramJSONObject.optInt("y", this.videoY);
+    this.videoWidth = paramJSONObject.optInt("width", this.videoWidth);
+    this.videoHeight = paramJSONObject.optInt("height", this.videoHeight);
   }
 }
 

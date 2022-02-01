@@ -1,14 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-class aqss
-  implements DialogInterface.OnClickListener
+final class aqss
+  implements arsj
 {
-  aqss(aqsk paramaqsk) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString1, String paramString2)
   {
-    paramDialogInterface.cancel();
+    if (QLog.isColorLevel()) {
+      QLog.d(aqsr.a(), 2, paramString2);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(aqsr.a(), 2, paramString2, paramThrowable);
+    }
+  }
+  
+  public void b(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(aqsr.a(), 2, paramString2);
+    }
+  }
+  
+  public void c(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(aqsr.a(), 2, paramString2);
+    }
+  }
+  
+  public void d(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(aqsr.a(), 2, paramString2);
+    }
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(aqsr.a(), 2, paramString2);
+    }
   }
 }
 

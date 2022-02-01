@@ -1,71 +1,54 @@
-import android.view.View;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.tribe.TribeVideoPublishParams;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
-import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-import java.lang.ref.WeakReference;
+import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.ViewModel;
+import java.io.File;
+import java.util.List;
 
 public class bnot
+  extends ViewModel
 {
-  public final int a;
-  public long a;
-  public bnoy a;
-  public bnpa a;
-  public final PublishVideoEntry a;
-  public TribeVideoPublishParams a;
-  public LpReportInfo_pf00064 a;
-  public final EditVideoParams.EditSource a;
-  public final EditVideoParams a;
-  public PublishParam a;
-  public String a;
-  public WeakReference<View> a;
-  public boolean a;
-  public int b = 1;
-  public String b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
+  private MutableLiveData<bnmo> a = new MutableLiveData();
+  private MutableLiveData<String> b = new MutableLiveData();
+  private MutableLiveData<bnpc> c = new MutableLiveData();
   
-  public bnot(EditVideoParams paramEditVideoParams)
+  public MutableLiveData<bnmo> a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = new PublishVideoEntry();
-    this.jdField_a_of_type_CooperationQzoneReportLpLpReportInfo_pf00064 = new LpReportInfo_pf00064();
-    this.jdField_a_of_type_ComTencentMobileqqTribeTribeVideoPublishParams = new TribeVideoPublishParams();
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams = paramEditVideoParams;
-    this.jdField_a_of_type_Int = paramEditVideoParams.jdField_a_of_type_Int;
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource = paramEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource;
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoLabel = paramEditVideoParams.a("story_default_label");
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    return this.a;
   }
   
-  public View a()
+  public void a()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    this.a.postValue(new bnmo("#ccffffff", "#000000"));
+    this.b.postValue("");
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    this.b.postValue(paramString);
+    this.a.postValue(bnmn.a.get(paramInt));
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    bnpc localbnpc = new bnpc();
+    String[] arrayOfString = new File(paramString2).list();
+    String str = paramString2 + File.separator + "snapshot.png";
+    if (arrayOfString.length != 0) {
+      bmve.a(paramString2 + File.separator + arrayOfString[0], 320, 320, str);
     }
-    return null;
+    localbnpc.a = paramString2;
+    localbnpc.b = paramString1;
+    localbnpc.c = str;
+    this.c.postValue(localbnpc);
   }
   
-  public void a(View paramView)
+  public MutableLiveData<String> b()
   {
-    if (paramView == null)
-    {
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
-      return;
-    }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    return this.b;
   }
   
-  public boolean a()
+  public MutableLiveData<bnpc> c()
   {
-    return (this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Bnoy.jdField_a_of_type_Int > 0);
-  }
-  
-  public String toString()
-  {
-    return "GenerateContext{, businessId='" + this.jdField_a_of_type_Int + '\'' + '}';
+    return this.c;
   }
 }
 

@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import bgwn;
-import bgwo;
+import bihf;
+import bihg;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.concurrent.atomic.AtomicInteger;
-import nny;
+import nuz;
 
 public class SwiftBrowserOfflineHandler$1
   implements Runnable
 {
-  public SwiftBrowserOfflineHandler$1(bgwn parambgwn, String paramString) {}
+  public SwiftBrowserOfflineHandler$1(bihf parambihf, String paramString) {}
   
   public void run()
   {
     this.this$0.b();
     long l = System.currentTimeMillis();
-    if (bgwn.c.get() == 3) {}
-    for (boolean bool = nny.a(BaseApplicationImpl.getApplication().getApplicationContext(), this.a, new bgwo(this, l));; bool = false)
+    if (bihf.c.get() == 3) {}
+    for (boolean bool = nuz.a(BaseApplicationImpl.getApplication().getApplicationContext(), this.a, new bihg(this, l));; bool = false)
     {
       if (!bool) {
         this.this$0.a();

@@ -1,25 +1,20 @@
-import org.json.JSONObject;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.mobileqq.pb.PBStringField;
 
-public class ztg
+class ztg
+  implements zyv
 {
-  public int a;
-  public String a;
-  public ztb a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  ztg(zte paramzte) {}
   
-  public ztg(JSONObject paramJSONObject)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("title");
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("tabID");
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("icon");
-    this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("jumpUrl");
-    this.jdField_b_of_type_Int = paramJSONObject.optInt("width");
-    this.jdField_c_of_type_Int = paramJSONObject.optInt("height");
-    if (paramJSONObject.optJSONObject("aioActivityBubble") != null) {
-      this.jdField_a_of_type_Ztb = new ztb(paramJSONObject.optJSONObject("aioActivityBubble"));
+    String str2 = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get();
+    if (paramBoolean) {}
+    for (String str1 = "cancel";; str1 = "dislike")
+    {
+      aanb.a(str2, "auth_feeds", str1, 0, 0, new String[] { "", this.a.jdField_a_of_type_Ztc.getAdapterPosition() + "", this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
+      return;
     }
   }
 }

@@ -1,24 +1,15 @@
-public abstract interface asic
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import kotlin.Metadata;
+
+@Retention(RetentionPolicy.RUNTIME)
+@java.lang.annotation.Target({java.lang.annotation.ElementType.METHOD})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/emosm/web/WebRequestRoute;", "", "value", "", "()Ljava/lang/String;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@kotlin.annotation.Target(allowedTargets={kotlin.annotation.AnnotationTarget.FUNCTION, kotlin.annotation.AnnotationTarget.PROPERTY_GETTER, kotlin.annotation.AnnotationTarget.PROPERTY_SETTER})
+public @interface asic
 {
-  public abstract int a();
-  
-  public abstract long a();
-  
-  public abstract String a();
-  
-  public abstract void a();
-  
-  public abstract void a(ashs paramashs);
-  
-  public abstract void a(byte[] paramArrayOfByte);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(long paramLong);
-  
-  public abstract int b();
-  
-  public abstract long b();
+  String a();
 }
 
 

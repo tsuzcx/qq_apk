@@ -1,9 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.hotpic.HotPicData;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface auhf
+public class auhf
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abstract boolean a(View paramView, String paramString, HotPicData paramHotPicData);
+  public auhf(QFileDebugSettingFragment paramQFileDebugSettingFragment) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    QFileDebugSettingFragment.a(this.a).a().a = paramBoolean;
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+  }
 }
 
 

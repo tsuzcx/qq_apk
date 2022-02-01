@@ -1,13 +1,22 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.ae.cmshow.AECMShowPhotoPreviewFragment;
 
-public class akos
+class akos
+  implements View.OnClickListener
 {
-  public static akoq a(Object paramObject)
+  akos(akor paramakor) {}
+  
+  public void onClick(View paramView)
   {
-    if ((paramObject instanceof RecentBaseData)) {
-      return new akot();
-    }
-    return new akor();
+    bnqm.a().aI();
+    Intent localIntent = new Intent();
+    localIntent.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", akor.a(this.a).selectedPhotoList);
+    AECMShowPhotoPreviewFragment.a(this.a.mActivity, localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

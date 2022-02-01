@@ -4,22 +4,22 @@ import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.FileUtils;
 import java.io.File;
 import mqq.util.WeakReference;
-import pid;
-import pii;
+import pta;
+import ptf;
 
 public class ReadInJoyLottieDrawable$5$1
   implements Runnable
 {
-  public ReadInJoyLottieDrawable$5$1(pii parampii) {}
+  public ReadInJoyLottieDrawable$5$1(ptf paramptf) {}
   
   public void run()
   {
     if (FileUtils.unzip(this.this$0.jdField_a_of_type_JavaIoFile, this.this$0.b)) {}
     try
     {
-      pid localpid = (pid)this.this$0.jdField_a_of_type_MqqUtilWeakReference.get();
-      if (localpid != null) {
-        pid.a(localpid, this.this$0.b);
+      pta localpta = (pta)this.this$0.jdField_a_of_type_MqqUtilWeakReference.get();
+      if (localpta != null) {
+        pta.a(localpta, this.this$0.b);
       }
       this.this$0.jdField_a_of_type_JavaIoFile.delete();
       return;

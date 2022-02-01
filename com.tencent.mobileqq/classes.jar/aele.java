@@ -1,45 +1,21 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
+import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.activity.TroopGagActivity;
-import com.tencent.mobileqq.activity.TroopGagActivity.3.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.troop.TroopMemberInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aele
-  extends andd
+  implements View.OnClickListener
 {
-  public aele(TroopGagActivity paramTroopGagActivity) {}
+  public aele(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  protected void onUpdateTroopGetMemberList(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  public void onClick(View paramView)
   {
-    if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (!this.a.jdField_a_of_type_JavaLangString.equals(paramString))) {
-      return;
-    }
-    if (paramBoolean)
-    {
-      this.a.jdField_a_of_type_Aelg.notifyDataSetChanged();
-      if (this.a.jdField_a_of_type_Aelg.getCount() != 0) {
-        break label209;
-      }
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-    for (;;)
-    {
-      this.a.getSharedPreferences("last_update_time" + this.a.app.getCurrentAccountUin(), 4).edit().putLong("key_last_update_time" + this.a.jdField_a_of_type_JavaLangString, System.currentTimeMillis()).commit();
-      ThreadManager.post(new TroopGagActivity.3.1(this, (bfbz)this.a.app.getManager(48)), 8, null, false);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("TroopGagActivity", 2, "onUpdateTroopGetMemberList: isSuccess=" + paramBoolean);
-      return;
-      label209:
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
+    Intent localIntent = new Intent(this.a, TroopAssisSettingActivity.class);
+    this.a.startActivity(localIntent);
+    bdla.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_msginfor_grp", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

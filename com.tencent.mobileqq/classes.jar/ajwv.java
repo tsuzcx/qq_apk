@@ -1,27 +1,13 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.activity.qwallet.RedPacketVoiceFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
 
-public class ajwv
-  implements View.OnClickListener
+class ajwv
+  implements bisg
 {
-  public ajwv(RedPacketVoiceFragment paramRedPacketVoiceFragment) {}
+  ajwv(ajwu paramajwu) {}
   
-  public void onClick(View paramView)
-  {
-    if ((!this.a.c()) && (RedPacketVoiceFragment.a(this.a) != null) && (paramView != null))
-    {
-      Intent localIntent = new Intent(paramView.getContext(), PayBridgeActivity.class);
-      localIntent.putExtras(RedPacketVoiceFragment.a(this.a));
-      localIntent.putExtra("pay_requestcode", 5);
-      paramView.getContext().startActivity(localIntent);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public void afterDraw(Bundle paramBundle) {}
+  
+  public void beforeDraw(Bundle paramBundle) {}
 }
 
 

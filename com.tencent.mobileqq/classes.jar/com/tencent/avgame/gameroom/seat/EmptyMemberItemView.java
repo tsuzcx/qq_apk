@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import ncp;
+import nin;
 
 public class EmptyMemberItemView
   extends RelativeLayout
@@ -32,13 +32,13 @@ public class EmptyMemberItemView
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131366085);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131366186);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localLayoutParams.width = ncp.s;
-    localLayoutParams.height = ncp.s;
+    localLayoutParams.width = nin.s;
+    localLayoutParams.height = nin.s;
     this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getContext().getResources().getColor(2131165342));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370615));
+    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getContext().getResources().getColor(2131165345));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370798));
   }
   
   public void a(boolean paramBoolean)

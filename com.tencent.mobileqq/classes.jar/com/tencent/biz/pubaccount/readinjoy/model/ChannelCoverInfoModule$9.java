@@ -7,14 +7,14 @@ import java.util.Iterator;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
-import puf;
-import rfq;
-import tgc;
+import qez;
+import rrx;
+import tto;
 
 public class ChannelCoverInfoModule$9
   implements Runnable
 {
-  public ChannelCoverInfoModule$9(puf parampuf, List paramList1, List paramList2) {}
+  public ChannelCoverInfoModule$9(qez paramqez, List paramList1, List paramList2) {}
   
   public void run()
   {
@@ -50,11 +50,11 @@ public class ChannelCoverInfoModule$9
         localTabChannelCoverInfo.redPointJson = localJSONObject.toString();
         label211:
         if ((localTabChannelCoverInfo.mChannelCoverId == 70) && (!TextUtils.isEmpty(localTabChannelCoverInfo.mChannelJumpUrl))) {
-          tgc.a(localTabChannelCoverInfo.mChannelJumpUrl);
+          tto.a(localTabChannelCoverInfo.mChannelJumpUrl);
         }
         this.this$0.a(localTabChannelCoverInfo);
         continue;
-        localObject = puf.a(this.this$0);
+        localObject = qez.a(this.this$0);
         if (localObject != null)
         {
           QLog.i("ChannelCoverInfoModule", 1, "now channels in db are:\n");

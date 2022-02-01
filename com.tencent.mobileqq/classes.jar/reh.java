@@ -1,11 +1,19 @@
-import tencent.im.oidb.articlesummary.articlesummary.WendaInfo;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentSmallGallery;
+import com.tencent.mobileqq.app.face.FaceDecoder;
 
-public final class reh
-  implements psw<articlesummary.WendaInfo, rfn>
+public class reh
+  extends rei
 {
-  public rfn a(articlesummary.WendaInfo paramWendaInfo)
+  public reh(Context paramContext, FaceDecoder paramFaceDecoder, szd paramszd)
   {
-    return rfn.a(paramWendaInfo);
+    super(paramContext, paramFaceDecoder, paramszd);
+  }
+  
+  public rbp g()
+  {
+    this.jdField_a_of_type_Rbo = new ComponentContentSmallGallery(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 

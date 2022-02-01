@@ -1,17 +1,18 @@
 package com.tencent.mobileqq.onlinestatus.music;
 
-import axyt;
+import azff;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class OnlineStatusHandler$2
   implements Runnable
 {
-  public OnlineStatusHandler$2(axyt paramaxyt, String paramString) {}
+  public OnlineStatusHandler$2(azff paramazff, String paramString) {}
   
   public void run()
   {
-    ((FriendListHandler)this.this$0.app.getBusinessHandler(1)).getOnlineInfo(this.a, false);
+    ((FriendListHandler)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getOnlineInfo(this.a, false);
   }
 }
 

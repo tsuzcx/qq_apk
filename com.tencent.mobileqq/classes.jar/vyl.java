@@ -1,48 +1,55 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgTabNodeWatched;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeWatched;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
+import com.tencent.mobileqq.pb.PBInt32Field;
 
 public class vyl
-  extends vqr<vym>
 {
-  static final String a = vpl.a("StorySvc.msgtab_node_watched");
-  public long b;
-  public String b;
-  public int c;
-  public int d;
+  private double a;
+  private double b;
   
-  public String a()
+  public vyl(double paramDouble1, double paramDouble2)
   {
-    return a;
+    this.a = paramDouble1;
+    this.b = paramDouble2;
   }
   
-  public vqm a(byte[] paramArrayOfByte)
+  public double a()
   {
-    qqstory_service.RspMsgTabNodeWatched localRspMsgTabNodeWatched = new qqstory_service.RspMsgTabNodeWatched();
-    try
-    {
-      localRspMsgTabNodeWatched.mergeFrom(paramArrayOfByte);
-      return new vym(localRspMsgTabNodeWatched);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      xvv.d("Q.qqstory.msgTab:ReqMsgTabNodeWatched", "" + paramArrayOfByte);
-    }
-    return null;
+    return this.a;
   }
   
-  protected byte[] a()
+  public qqstory_struct.GpsMsg a()
   {
-    qqstory_service.ReqMsgTabNodeWatched localReqMsgTabNodeWatched = new qqstory_service.ReqMsgTabNodeWatched();
-    localReqMsgTabNodeWatched.unionID.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-    localReqMsgTabNodeWatched.node_type.set(this.c);
-    localReqMsgTabNodeWatched.operation.set(this.d);
-    localReqMsgTabNodeWatched.recommend_id.set(this.jdField_b_of_type_Long);
-    return localReqMsgTabNodeWatched.toByteArray();
+    qqstory_struct.GpsMsg localGpsMsg = new qqstory_struct.GpsMsg();
+    localGpsMsg.setHasFlag(true);
+    localGpsMsg.lat.set((int)(a() * 1000000.0D));
+    localGpsMsg.lng.set((int)(b() * 1000000.0D));
+    return localGpsMsg;
+  }
+  
+  public double b()
+  {
+    return this.b;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {
+      return true;
+    }
+    if (!(paramObject instanceof vyl)) {
+      return false;
+    }
+    return (((vyl)paramObject).a == this.a) && (((vyl)paramObject).b == this.b);
+  }
+  
+  public int hashCode()
+  {
+    return "Gps".hashCode() + (int)(this.a * 1000000.0D) + (int)(this.b * 1000000.0D);
+  }
+  
+  public String toString()
+  {
+    return "Gps{lat=" + this.a + ", lng=" + this.b + '}';
   }
 }
 

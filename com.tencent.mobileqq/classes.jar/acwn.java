@@ -1,25 +1,48 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.HexUtil;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.qphone.base.util.QLog;
+import msf.msgsvc.msg_svc.QQQueryBusinessTmp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
-public final class acwn
-  implements DialogInterface.OnClickListener
+public class acwn
+  implements acos
 {
-  public acwn(Activity paramActivity, DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a()
   {
-    if (paramInt == 1)
+    return 1023;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = paramQQAppInterface.getMsgCache().c(paramMessageRecord.frienduin);
+    msg_svc.QQQueryBusinessTmp localQQQueryBusinessTmp = new msg_svc.QQQueryBusinessTmp();
+    localQQQueryBusinessTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    if (paramQQAppInterface != null)
     {
-      Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      localIntent.setData(Uri.fromParts("package", this.jdField_a_of_type_AndroidAppActivity.getPackageName(), null));
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+      paramMessageRecord = new byte[paramQQAppInterface.length - 2];
+      PkgTools.copyData(paramMessageRecord, 0, paramQQAppInterface, 2, paramQQAppInterface.length - 2);
+      if (QLog.isColorLevel()) {
+        QLog.d("PcQQSearchTmpRoutingType", 2, "wpa------>" + HexUtil.bytes2HexStr(paramMessageRecord) + ",length:" + paramMessageRecord.length);
+      }
+      localQQQueryBusinessTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
     }
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
-    }
+    paramRoutingHead.qq_querybusiness_tmp.set(localQQQueryBusinessTmp);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 8008;
   }
 }
 

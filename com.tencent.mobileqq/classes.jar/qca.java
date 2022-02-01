@@ -1,45 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.factory.BaseTemplateFactory;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import com.tencent.qphone.base.util.QLog;
 
 public class qca
-  implements qdy
+  implements qcj
 {
-  private BaseTemplateFactory a;
+  public qca(VideoView paramVideoView) {}
   
-  public qca(VafContext paramVafContext)
+  public void a(String[] paramArrayOfString1, String[] arg2)
   {
-    this.a = paramVafContext.getTemplateFactory();
-  }
-  
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    if (this.a != null) {
-      return this.a.getTemplateBean(paramJSONObject);
+    if ((??? != null) && (???.length > 0) && (paramArrayOfString1 != null) && (paramArrayOfString1.length > 0))
+    {
+      String str = ???[0];
+      synchronized (this.a)
+      {
+        if ((!TextUtils.isEmpty(VideoView.access$3200(this.a))) && (VideoView.access$3200(this.a).equals(paramArrayOfString1[0])))
+        {
+          this.a.openVideoByUrl(str);
+          return;
+        }
+        QLog.d("gifvideo.VideoView", 2, "not current video");
+      }
     }
-    return null;
-  }
-  
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
-  {
-    return new pzf().M(paramBaseArticleInfo).B(paramBaseArticleInfo).a();
-  }
-  
-  public void a(int paramInt1, Container paramContainer, pvc parampvc, int paramInt2)
-  {
-    paramContainer = paramContainer.getVirtualView().findViewBaseByName("id_proteus_collection_view");
-    if ((paramContainer instanceof qki)) {
-      ((qki)paramContainer).a(parampvc);
-    }
-  }
-  
-  public boolean a(int paramInt, Container paramContainer, pvc parampvc, ViewBase paramViewBase)
-  {
-    return false;
+    QLog.d("gifvideo.VideoView", 2, "urls null");
   }
 }
 

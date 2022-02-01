@@ -12,12 +12,15 @@ class BrandPageWebview$3$1
   public void run()
   {
     QMLog.d("miniapp-embedded", "onHideCustomView begin");
+    if (this.this$1.this$0.customContainer == null) {
+      return;
+    }
     this.this$1.this$0.customContainer.setVisibility(8);
     this.this$1.this$0.customViewCallback.onCustomViewHidden();
     try
     {
       this.this$1.this$0.customContainer.removeAllViews();
-      label50:
+      label64:
       this.this$1.this$0.customContainer = null;
       this.this$1.this$0.mFullscreenView = null;
       this.this$1.this$0.customViewCallback = null;
@@ -26,7 +29,7 @@ class BrandPageWebview$3$1
     }
     catch (Exception localException)
     {
-      break label50;
+      break label64;
     }
   }
 }

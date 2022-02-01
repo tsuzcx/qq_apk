@@ -1,88 +1,66 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class bdvh
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/studymode/ModeSwitchManager$SwitchingStatus;", "", "isSwitching", "", "targetMode", "", "oldMode", "(ZII)V", "()Z", "getOldMode", "()I", "getTargetMode", "component1", "component2", "component3", "copy", "equals", "other", "hashCode", "toString", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bdvh
 {
-  public int a;
-  public ArrayList<Integer> a;
-  public int b = 0;
+  private final int jdField_a_of_type_Int;
+  private final boolean jdField_a_of_type_Boolean;
+  private final int b;
   
   public bdvh()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this(false, 0, 0, 7, null);
   }
   
-  public static bdvh a(aptx[] paramArrayOfaptx)
+  public bdvh(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    bdvh localbdvh = new bdvh();
-    int i = 0;
-    if (i < paramArrayOfaptx.length)
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public final int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public final boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public final int b()
+  {
+    return this.b;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if (this != paramObject)
     {
-      Object localObject = paramArrayOfaptx[i].a;
-      if (TextUtils.isEmpty((CharSequence)localObject)) {}
-      for (;;)
+      if ((paramObject instanceof bdvh))
       {
-        i += 1;
-        break;
-        try
-        {
-          localObject = new JSONObject((String)localObject);
-          if (QLog.isColorLevel()) {
-            QLog.i("TroopAssociationsEntryConfig", 2, "jsonObj:" + ((JSONObject)localObject).toString());
-          }
-          localbdvh.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("switchOn", 0);
-          localbdvh.b = ((JSONObject)localObject).optInt("troopMemberCount_ahn", 0);
-          localObject = ((JSONObject)localObject).optJSONArray("troopType_ahn");
-          if ((localObject != null) && (((JSONArray)localObject).length() > 0))
-          {
-            int j = 0;
-            while (j < ((JSONArray)localObject).length())
-            {
-              if ((((JSONArray)localObject).get(j) instanceof Integer)) {
-                localbdvh.jdField_a_of_type_JavaUtilArrayList.add((Integer)((JSONArray)localObject).get(j));
-              }
-              j += 1;
-            }
-          }
-        }
-        catch (JSONException localJSONException)
-        {
-          localJSONException.printStackTrace();
-        }
+        paramObject = (bdvh)paramObject;
+        if ((this.jdField_a_of_type_Boolean != paramObject.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (this.b != paramObject.b)) {}
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopAssociationsEntryConfig", 2, "config:" + localbdvh.toString());
+    else {
+      return true;
     }
-    return localbdvh;
+    return false;
   }
   
-  public boolean a(TroopInfoData paramTroopInfoData)
+  public int hashCode()
   {
-    if (this.jdField_a_of_type_Int == 0) {}
-    do
-    {
-      return false;
-      if (this.jdField_a_of_type_Int == 2) {
-        return true;
-      }
-    } while ((this.jdField_a_of_type_Int != 1) || (paramTroopInfoData == null) || (TextUtils.isEmpty(paramTroopInfoData.troopUin)) || (paramTroopInfoData.troopMemberMaxNum > this.b) || (!this.jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf((int)paramTroopInfoData.dwGroupClassExt))));
-    return true;
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
+  @NotNull
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mSwitchOn:").append(this.jdField_a_of_type_Int).append("\r\n");
-    localStringBuilder.append("mTroopMemberCount:").append(this.b).append("\r\n");
-    localStringBuilder.append("mGrayTroopType:").append(this.jdField_a_of_type_JavaUtilArrayList.toString()).append("\r\n");
-    return localStringBuilder.toString();
+    return "SwitchingStatus(isSwitching=" + this.jdField_a_of_type_Boolean + ", targetMode=" + this.jdField_a_of_type_Int + ", oldMode=" + this.b + ")";
   }
 }
 

@@ -43,9 +43,11 @@ public class CosFunTransitionFilter
   private boolean isInited = false;
   private Frame materialFrame;
   int materialTex;
+  private int procType = 0;
   private FaceFeatureTex srcFeature;
   private CrazyFaceDataTemplate template;
-  private CFTransformFilterForTex transFilter;
+  private CFTransformFilterOpt transFilter;
+  private CFTransformFilterForTex transFilterForTex;
   private List<CosFunParam> userCosFunParams = new ArrayList();
   
   public CosFunTransitionFilter(String paramString, int paramInt1, int paramInt2)
@@ -265,7 +267,12 @@ public class CosFunTransitionFilter
     if (this.transFilter != null) {
       this.transFilter.clearGLSLSelf();
     }
-    RendererUtils.clearTexture(this.materialTex);
+    if (this.transFilterForTex != null) {
+      this.transFilterForTex.clearGLSLSelf();
+    }
+    if (this.materialFrame != null) {
+      RendererUtils.clearTexture(this.materialTex);
+    }
     FaceOffUtil.recycleCrazySkinMergeBitmap();
   }
   
@@ -279,10 +286,17 @@ public class CosFunTransitionFilter
   
   public Frame getMergedFrame(float paramFloat)
   {
-    if (this.transFilter == null) {
+    if (this.procType == 1)
+    {
+      if (this.transFilter == null) {
+        return this.materialFrame;
+      }
+      return this.transFilter.getMergedFrame(paramFloat);
+    }
+    if (this.transFilterForTex == null) {
       return this.materialFrame;
     }
-    return this.transFilter.getMergedFrame(paramFloat);
+    return this.transFilterForTex.getMergedFrame(paramFloat);
   }
   
   public int getWidth()
@@ -324,8 +338,10 @@ public class CosFunTransitionFilter
     BenchUtil.benchEnd("[CosFunTransitionFilter] processCosFun");
     if (this.dstFeature.faceFeature != null)
     {
-      this.transFilter = new CFTransformFilterForTex(this.srcFeature, this.dstFeature, this.backgroundMode1, this.backgroundMode2);
+      this.transFilter = new CFTransformFilterOpt(this.srcFeature, this.dstFeature, this.backgroundMode1, this.backgroundMode2);
       this.transFilter.ApplyGLSLFilter();
+      this.transFilterForTex = new CFTransformFilterForTex(this.srcFeature, this.dstFeature, this.backgroundMode1, this.backgroundMode2);
+      this.transFilterForTex.ApplyGLSLFilter();
     }
   }
   
@@ -334,9 +350,23 @@ public class CosFunTransitionFilter
     return this.isInited;
   }
   
+  public void setClampToEdge(boolean paramBoolean)
+  {
+    if (this.transFilter != null) {
+      this.transFilter.setClampToEdge(paramBoolean);
+    }
+  }
+  
   public void setMaterialFrame(Frame paramFrame)
   {
     this.materialFrame = paramFrame;
+  }
+  
+  public void setTransType(int paramInt)
+  {
+    if (this.transFilter != null) {
+      this.transFilter.setProcMethod(paramInt);
+    }
   }
 }
 

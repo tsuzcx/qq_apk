@@ -6,7 +6,7 @@ import android.view.ViewPropertyAnimator;
 import android.widget.ImageView;
 import com.tencent.mobileqq.pluginsdk.IPluginAdapterProxy;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
-import okp;
+import osm;
 
 public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment$2
   implements Runnable
@@ -22,7 +22,7 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment$2
     {
       if (Build.VERSION.SDK_INT >= 14)
       {
-        this.this$0.a.animate().alpha(0.0F).setDuration(200L).setListener(new okp(this));
+        this.this$0.a.animate().alpha(0.0F).setDuration(200L).setListener(new osm(this));
         this.this$0.a.animate().start();
       }
     }

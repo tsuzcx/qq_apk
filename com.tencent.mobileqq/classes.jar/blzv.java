@@ -1,6 +1,17 @@
-public abstract interface blzv
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class blzv
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt, String paramString);
+  blzv(blzs paramblzs) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.b = true;
+    blzs.a(this.a, 2);
+    blzs.c(this.a);
+  }
 }
 
 

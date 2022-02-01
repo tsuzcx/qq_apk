@@ -1,33 +1,39 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
 
-public class anrr
-  extends anri
+class anrr
 {
-  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
+  String jdField_a_of_type_JavaLangString = "0";
+  boolean jdField_a_of_type_Boolean = false;
+  String jdField_b_of_type_JavaLangString = "0";
+  boolean jdField_b_of_type_Boolean = false;
+  String c = "0";
+  String d = "0";
+  String e = "0";
+  String f = "0";
+  String g = "0";
+  String h = "0";
+  
+  public void a(Card paramCard)
   {
-    paramQQAppInterface = new anrq(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "odAddFriend";
-    paramQQAppInterface.c = "addFriend";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
-    }
-    paramContext = paramContext[1].split("&");
-    if (paramContext != null)
+    StringBuilder localStringBuilder;
+    if (this.jdField_a_of_type_Boolean)
     {
-      int i = 0;
-      while (i < paramContext.length)
-      {
-        paramString = paramContext[i].split("=");
-        if ((paramString != null) && (paramString.length == 2)) {
-          paramQQAppInterface.a(paramString[0], paramString[1]);
-        }
-        i += 1;
-      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append("-");
+      localStringBuilder.append(this.jdField_b_of_type_JavaLangString).append("-");
+      localStringBuilder.append(this.c).append("-");
+      localStringBuilder.append(this.d);
+      paramCard.strLocationCodes = localStringBuilder.toString();
     }
-    return paramQQAppInterface;
+    if (this.jdField_b_of_type_Boolean)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.e).append("-");
+      localStringBuilder.append(this.f).append("-");
+      localStringBuilder.append(this.g).append("-");
+      localStringBuilder.append(this.h);
+      paramCard.strHometownCodes = localStringBuilder.toString();
+    }
   }
 }
 

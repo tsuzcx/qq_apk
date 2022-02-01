@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="296.0dip" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:id="@id/joh" android:layout_width="fill_parent" android:layout_height="93.0dip" android:scaleType="fitXY" android:layout_alignParentTop="true" />
-    <TextView android:textSize="17.0sp" android:textColor="@color/al3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/wpj" android:layout_centerHorizontal="true" />
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/i2z" android:background="@drawable/bx5" android:layout_width="254.0dip" android:layout_height="93.0dip" android:layout_marginTop="55.0dip" android:layout_marginBottom="18.0dip" android:layout_centerHorizontal="true" />
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/ngw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="166.0dip" android:layout_marginBottom="10.0dip" android:layout_centerHorizontal="true">
-        <TextView android:textSize="17.0sp" android:textColor="@color/bp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:text="@string/wpi" android:layout_centerHorizontal="true" />
-        <com.tencent.image.URLImageView android:id="@id/ngv" android:layout_width="254.0dip" android:layout_height="101.0dip" android:scaleType="fitXY" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/brz" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:id="@id/ld2" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginLeft="33.0dip" android:src="@drawable/csy" />
+            <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:id="@id/ld1" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginLeft="12.0dip" android:src="@drawable/csy" />
+        </FrameLayout>
+        <TextView android:textSize="14.0sp" android:textColor="#ff333333" android:ellipsize="end" android:id="@id/nzb" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:maxLines="1" android:layout_weight="1.0" />
+        <TextView android:textSize="10.0sp" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/o1_" android:background="@drawable/bw4" android:padding="1.0dip" android:layout_width="wrap_content" android:layout_height="16.0dip" android:layout_marginLeft="5.0dip" android:text="99+" android:maxLines="1" />
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="7.0dip" android:layout_height="11.0dip" android:layout_marginLeft="9.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/fzx" android:scaleType="centerCrop" />
     </LinearLayout>
-</RelativeLayout>
+    <ViewSwitcher android:id="@id/fgm" android:background="@drawable/bsc" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="25.0dip" android:inAnimation="@anim/i2" android:outAnimation="@anim/i5" />
+</LinearLayout>

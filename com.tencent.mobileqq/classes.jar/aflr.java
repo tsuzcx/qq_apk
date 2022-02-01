@@ -1,9 +1,21 @@
-final class aflr
-  implements afmf<aflq>
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import java.util.Comparator;
+
+public class aflr
+  implements Comparator<afnm>
 {
-  public aflq a(afmc paramafmc)
+  public aflr(ActivateFriendActivity paramActivateFriendActivity) {}
+  
+  public int a(afnm paramafnm1, afnm paramafnm2)
   {
-    return new aflq(paramafmc);
+    long l = paramafnm2.a - paramafnm1.a;
+    if (l > 0L) {
+      return 1;
+    }
+    if (l < 0L) {
+      return -1;
+    }
+    return 0;
   }
 }
 

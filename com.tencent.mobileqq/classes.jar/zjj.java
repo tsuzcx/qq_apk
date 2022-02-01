@@ -1,57 +1,34 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
-public class zjj
+final class zjj
+  extends AnimatorListenerAdapter
 {
-  int a;
-  public String a;
-  int jdField_b_of_type_Int;
-  private final String jdField_b_of_type_JavaLangString = "image_url";
-  private final String c = "image_width";
-  private final String d = "image_height";
+  private int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
+  private int b;
   
-  public zjj() {}
-  
-  public zjj(String paramString, int paramInt1, int paramInt2)
+  zjj(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramView.getLayerType();
   }
   
-  public String a()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("image_url", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("image_width", this.jdField_a_of_type_Int);
-      localJSONObject.put("image_height", this.jdField_b_of_type_Int);
-      return localJSONObject.toString();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+    this.jdField_a_of_type_AndroidViewView.setLayerType(this.b, null);
   }
   
-  public void a(String paramString)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_JavaLangString = paramString.getString("image_url");
-      this.jdField_a_of_type_Int = paramString.getInt("image_width");
-      this.jdField_b_of_type_Int = paramString.getInt("image_height");
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
+    this.jdField_a_of_type_AndroidViewView.setLayerType(this.b, null);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_AndroidViewView.setLayerType(this.jdField_a_of_type_Int, null);
   }
 }
 

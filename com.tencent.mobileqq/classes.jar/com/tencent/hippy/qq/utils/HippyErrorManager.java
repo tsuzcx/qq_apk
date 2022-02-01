@@ -73,7 +73,7 @@ public class HippyErrorManager
   {
     QLog.i("HippyErrorManager", 1, "clearAllFlags");
     this.mSharedPreferences.edit().clear().commit();
-    this.mSharedPreferences.edit().putString("qqVersion", "8.4.8.4810").commit();
+    this.mSharedPreferences.edit().putString("qqVersion", "8.4.10.4875").commit();
     int i = HippyQQLibraryManager.getInstance().getHippyLibrayId();
     if (i != 0) {
       this.mSharedPreferences.edit().putInt("soVersion", i).commit();
@@ -112,9 +112,9 @@ public class HippyErrorManager
   {
     String str = this.mSharedPreferences.getString("qqVersion", null);
     if (TextUtils.isEmpty(str)) {
-      this.mSharedPreferences.edit().putString("qqVersion", "8.4.8.4810").commit();
+      this.mSharedPreferences.edit().putString("qqVersion", "8.4.10.4875").commit();
     }
-    while ("8.4.8.4810".equals(str)) {
+    while ("8.4.10.4875".equals(str)) {
       return false;
     }
     return true;

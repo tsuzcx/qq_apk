@@ -1,14 +1,22 @@
-import android.support.v4.view.ViewPropertyAnimatorListener;
-import android.view.View;
+import com.tencent.biz.qqstory.takevideo.shareto.ShareToActivity;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
 
-class yzd
-  implements ViewPropertyAnimatorListener
+public class yzd
+  implements Comparator<RecentUser>
 {
-  public void onAnimationCancel(View paramView) {}
+  public yzd(ShareToActivity paramShareToActivity) {}
   
-  public void onAnimationEnd(View paramView) {}
-  
-  public void onAnimationStart(View paramView) {}
+  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
+  {
+    if (paramRecentUser1.lastmsgtime > paramRecentUser2.lastmsgtime) {
+      return -1;
+    }
+    if (paramRecentUser1.lastmsgtime < paramRecentUser2.lastmsgtime) {
+      return 1;
+    }
+    return 0;
+  }
 }
 
 

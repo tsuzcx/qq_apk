@@ -1,58 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.LRULinkedHashMap;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.widget.GridView;
 
-class amfz
+public class amfz
 {
-  public String a;
-  public WeakReference<WebViewPlugin> a;
-  private WeakReference<amfy> b;
+  public int a;
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  GridView jdField_a_of_type_ComTencentWidgetGridView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  TextView d;
   
-  public amfz(amfy paramamfy, String paramString, WebViewPlugin paramWebViewPlugin)
-  {
-    this.b = new WeakReference(paramamfy);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramWebViewPlugin);
-  }
-  
-  public void a(amga paramamga, amgb paramamgb)
-  {
-    amfy localamfy = (amfy)this.b.get();
-    WebViewPlugin localWebViewPlugin;
-    if ((localamfy != null) && (paramamga != null))
-    {
-      localWebViewPlugin = (WebViewPlugin)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if ((localWebViewPlugin != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-      {
-        if (paramamgb != null) {
-          paramamgb.d = System.currentTimeMillis();
-        }
-        if (amga.a(paramamga) == null) {
-          break label175;
-        }
-        localWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { amga.a(paramamga).toString() });
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("apollo_client_ApolloWebDataHandler", 2, "WebDataCallBack, onSSOCallBack, plugin.callJs.mResultJson:" + amga.a(paramamga));
-      }
-      if (amfy.a(localamfy) != null)
-      {
-        amfy.a(localamfy).remove(amga.a(paramamga));
-        if (QLog.isColorLevel()) {
-          QLog.d("apollo_client_ApolloWebDataHandler", 2, "WebDataCallBack, onSSOCallBack, remove sso from mPreloadSSODatas:" + amga.a(paramamga));
-        }
-      }
-      return;
-      label175:
-      localWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
-    }
-  }
+  public amfz(amfs paramamfs) {}
 }
 
 

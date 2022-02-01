@@ -1,34 +1,60 @@
-import cooperation.qqreader.QRBridgeUtil;
-import java.util.Map;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.Window;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import cooperation.qzone.util.QZLog;
 
-public final class bksq
-  implements WtTicketPromise
+public class bksq
+  extends ReportDialog
 {
-  public bksq(String paramString) {}
-  
-  public void Done(Ticket paramTicket)
+  bksq(Context paramContext)
   {
-    if (paramTicket != null)
+    super(paramContext, 2131755682);
+    setContentView(2131562264);
+    getWindow().setFlags(1024, 2048);
+  }
+  
+  public void a(String paramString)
+  {
+    ((TextView)findViewById(2131379001)).setText(paramString);
+  }
+  
+  public void dismiss()
+  {
+    try
     {
-      bkvd.d("QRBridgeUtil", "preGetKeyInPreloadService : Done");
-      paramTicket = (byte[])paramTicket._pskey_map.get(this.a);
-      if (paramTicket != null) {
-        QRBridgeUtil.access$000().put(this.a, new String(paramTicket));
-      }
+      super.dismiss();
+      return;
+    }
+    catch (Exception localException)
+    {
+      QZLog.w(localException);
     }
   }
   
-  public void Failed(ErrMsg paramErrMsg)
+  public void setTitle(int paramInt)
   {
-    bkvd.d("QRBridgeUtil", "preGetKeyInPreloadService failed " + paramErrMsg);
+    if (paramInt == 0) {}
+    for (String str = null;; str = getContext().getResources().getString(paramInt))
+    {
+      a(str);
+      return;
+    }
   }
   
-  public void Timeout(ErrMsg paramErrMsg)
+  public void show()
   {
-    bkvd.d("QRBridgeUtil", "preGetKeyInPreloadService timeout!" + paramErrMsg);
+    try
+    {
+      super.show();
+      return;
+    }
+    catch (Exception localException)
+    {
+      QZLog.w(localException);
+    }
   }
 }
 

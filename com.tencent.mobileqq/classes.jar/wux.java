@@ -1,136 +1,91 @@
-import android.view.View;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.EmoticonPack;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class wux
-  implements wur
+  implements Cloneable
 {
-  private wur jdField_a_of_type_Wur;
-  private wuz jdField_a_of_type_Wuz = new wuz(this, null);
-  private wva jdField_a_of_type_Wva = new wva(this, null);
-  private wvb jdField_a_of_type_Wvb = new wvb(this, null);
-  private wvc jdField_a_of_type_Wvc;
+  public final int a;
+  public final String a;
+  public final int b;
+  public final String b;
+  public final String c;
+  public final String d;
+  public final String e;
+  public final String f;
+  public final String g;
   
-  public wux(wur paramwur)
+  public wux(qqstory_struct.EmoticonPack paramEmoticonPack)
   {
-    this.jdField_a_of_type_Wur = paramwur;
+    this.jdField_a_of_type_JavaLangString = String.valueOf(paramEmoticonPack.pack_id.get());
+    this.jdField_b_of_type_JavaLangString = paramEmoticonPack.icon.get().toStringUtf8();
+    this.d = paramEmoticonPack.name.get().toStringUtf8();
+    this.e = paramEmoticonPack.download_url.get().toStringUtf8();
+    this.f = paramEmoticonPack.md5.get().toStringUtf8();
+    this.jdField_a_of_type_Int = paramEmoticonPack.version.get();
+    this.jdField_b_of_type_Int = a(paramEmoticonPack.type.get());
+    this.c = paramEmoticonPack.download_icon.get().toStringUtf8();
+    this.g = paramEmoticonPack.config.get().toStringUtf8();
   }
   
-  public int a()
+  private int a(int paramInt)
   {
-    return this.jdField_a_of_type_Wur.a();
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Wur.a();
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_Wur.a();
-  }
-  
-  public wur a()
-  {
-    return this.jdField_a_of_type_Wur;
-  }
-  
-  public wve a()
-  {
-    return this.jdField_a_of_type_Wur.a();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Wur.a();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Wur.a(paramInt);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Wur.a(paramString1, paramString2, paramString3, paramLong, paramInt1, paramInt2);
-  }
-  
-  public void a(wus paramwus)
-  {
-    this.jdField_a_of_type_Wur.a(paramwus);
-  }
-  
-  public void a(wut paramwut)
-  {
-    this.jdField_a_of_type_Wur.a(paramwut);
-  }
-  
-  public void a(wuu paramwuu)
-  {
-    this.jdField_a_of_type_Wuz.a = paramwuu;
-    this.jdField_a_of_type_Wur.a(this.jdField_a_of_type_Wuz);
-  }
-  
-  public void a(wuv paramwuv)
-  {
-    this.jdField_a_of_type_Wva.a = paramwuv;
-    this.jdField_a_of_type_Wur.a(this.jdField_a_of_type_Wva);
-  }
-  
-  public void a(wuw paramwuw)
-  {
-    this.jdField_a_of_type_Wvb.a = paramwuw;
-    this.jdField_a_of_type_Wur.a(this.jdField_a_of_type_Wvb);
-  }
-  
-  public void a(wvc paramwvc)
-  {
-    this.jdField_a_of_type_Wvc = paramwvc;
+    int i = paramInt;
+    switch (paramInt)
+    {
+    default: 
+      i = 1;
+    }
+    return i;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Wur.a();
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Wur.b();
-  }
-  
-  public long b()
-  {
-    return this.jdField_a_of_type_Wur.b();
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Wvc != null) {
-      this.jdField_a_of_type_Wvc.b(this.jdField_a_of_type_Wur);
+    if (this.jdField_b_of_type_Int == 1) {
+      if ((TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (TextUtils.isEmpty(this.d)) || (TextUtils.isEmpty(this.e)) || (TextUtils.isEmpty(this.f))) {}
     }
-    this.jdField_a_of_type_Wur.b();
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Wvc != null) {
-      this.jdField_a_of_type_Wvc.c(this.jdField_a_of_type_Wur);
-    }
-    this.jdField_a_of_type_Wur.c();
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Wvc != null)
+    while ((!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.d)))
     {
-      this.jdField_a_of_type_Wvc.a(0L, this.jdField_a_of_type_Wur.b(), this.jdField_a_of_type_Wur);
-      this.jdField_a_of_type_Wvc.b(this.jdField_a_of_type_Wur);
+      return true;
+      return false;
     }
-    this.jdField_a_of_type_Wur.d();
+    return false;
   }
   
-  public void e()
+  public boolean equals(Object paramObject)
   {
-    this.jdField_a_of_type_Wur.e();
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (wux)paramObject;
+      if (this.jdField_a_of_type_JavaLangString == null) {
+        break;
+      }
+    } while (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString));
+    while (paramObject.jdField_a_of_type_JavaLangString != null) {
+      return false;
+    }
+    return true;
+  }
+  
+  public int hashCode()
+  {
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      return this.jdField_a_of_type_JavaLangString.hashCode();
+    }
+    return 0;
+  }
+  
+  public String toString()
+  {
+    return "EmojiPack{mPackId=" + this.jdField_a_of_type_JavaLangString + ", mLogoUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mPackName='" + this.d + '\'' + ", mPackDownloadUrl='" + this.e + '\'' + '}';
   }
 }
 

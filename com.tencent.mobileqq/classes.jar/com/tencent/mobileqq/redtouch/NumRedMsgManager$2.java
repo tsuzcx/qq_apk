@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.redtouch;
 
-import amxf;
-import azvc;
-import azvd;
+import anzt;
+import bbbk;
+import bbbl;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
@@ -14,16 +14,16 @@ import java.util.concurrent.ConcurrentHashMap;
 public class NumRedMsgManager$2
   implements Runnable
 {
-  public NumRedMsgManager$2(azvd paramazvd, long[] paramArrayOfLong, azvc paramazvc, boolean paramBoolean, String paramString) {}
+  public NumRedMsgManager$2(bbbl parambbbl, long[] paramArrayOfLong, bbbk parambbbk, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
     int k = 0;
-    if ((azvd.a(this.this$0)) || (this.jdField_a_of_type_ArrayOfLong.length < 1) || (this.jdField_a_of_type_Azvc == null)) {
+    if ((bbbl.a(this.this$0)) || (this.jdField_a_of_type_ArrayOfLong.length < 1) || (this.jdField_a_of_type_Bbbk == null)) {
       return;
     }
-    if (!this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(this.jdField_a_of_type_Azvc.a))) {
-      this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.jdField_a_of_type_Azvc.a), this.jdField_a_of_type_Azvc);
+    if (!this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(this.jdField_a_of_type_Bbbk.a))) {
+      this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.jdField_a_of_type_Bbbk.a), this.jdField_a_of_type_Bbbk);
     }
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
@@ -76,10 +76,10 @@ public class NumRedMsgManager$2
       }
       if ((localArrayList1.size() == this.jdField_a_of_type_ArrayOfLong.length) || (this.jdField_a_of_type_Boolean))
       {
-        this.jdField_a_of_type_Azvc.a(this.jdField_a_of_type_JavaLangString, localArrayList1);
+        this.jdField_a_of_type_Bbbk.a(this.jdField_a_of_type_JavaLangString, localArrayList1);
         return;
       }
-      this.this$0.jdField_a_of_type_Amxf.a(localArrayList2, this.jdField_a_of_type_Azvc.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfLong);
+      this.this$0.jdField_a_of_type_Anzt.a(localArrayList2, this.jdField_a_of_type_Bbbk.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfLong);
       return;
       label365:
       j = 0;

@@ -1,18 +1,8 @@
-import android.view.MotionEvent;
-import com.tencent.qphone.base.util.QLog;
-
-class afsq
-  implements bhdq
+public abstract interface afsq
 {
-  afsq(afsn paramafsn) {}
+  public abstract void a(int paramInt);
   
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("ShortcutBarAIOHelper", 2, "ShortcutBarAioHelper.DrawerFrame.TouchEventConsumer");
-    }
-    return this.a.a(paramMotionEvent);
-  }
+  public abstract int[] a();
 }
 
 

@@ -1,42 +1,43 @@
-import android.support.annotation.NonNull;
-import java.util.HashSet;
+import com.tencent.mobileqq.apollo.utils.ApolloQualityReportUtil.report.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.internal.Intrinsics;
+import mqq.os.MqqHandler;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class anlx
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/utils/ApolloQualityReportUtil;", "", "()V", "APOLLO_SUB_ACTION_AEKIT_ESSENTIAL_RES", "", "APOLLO_SUB_ACTION_DRESS_INFO", "APOLLO_SUB_ACTION_FACE_DATA", "APOLLO_SUB_ACTION_FIRST_FRAME", "APOLLO_SUB_ACTION_INIT_AEKIT", "APOLLO_SUB_ACTION_INIT_AEKIT_VIEW", "APOLLO_SUB_ACTION_JS_API", "APOLLO_SUB_ACTION_PAGE_EXPOSE", "APOLLO_SUB_ACTION_ROLE_INFO", "APOLLO_SUB_ACTION_USER_RES", "APOLLO_SUB_ACTION_WEB_PAGE_DETECTED_BLANK_SCREEN", "APOLLO_SUB_ACTION_WEB_PAGE_ERROR", "APOLLO_SUB_ACTION_WEB_PAGE_FINISH", "APOLLO_SUB_ACTION_WEB_PAGE_LOW_MEMORY", "APOLLO_SUB_ACTION_WEB_PAGE_SSL_ERROR", "APOLLO_SUB_ACTION_WEB_PAGE_START", "TAG", "report", "", "subActionType", "reserves", "reserves2", "reserves3", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class anlx
 {
-  public static final HashSet<anlx> a;
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public long b;
-  public long c;
+  public static final anlx a = new anlx();
   
-  static
+  @JvmStatic
+  public static final void a(@NotNull String paramString)
   {
-    jdField_a_of_type_JavaUtilHashSet = new HashSet();
+    Intrinsics.checkParameterIsNotNull(paramString, "subActionType");
+    a(paramString, null);
   }
   
-  public anlx(long paramLong1, long paramLong2, long paramLong3, int paramInt1, int paramInt2, boolean paramBoolean)
+  @JvmStatic
+  public static final void a(@NotNull String paramString1, @Nullable String paramString2)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.c = paramLong3;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    Intrinsics.checkParameterIsNotNull(paramString1, "subActionType");
+    a(paramString1, paramString2, null);
   }
   
-  @NonNull
-  public String toString()
+  @JvmStatic
+  public static final void a(@NotNull String paramString1, @Nullable String paramString2, @Nullable String paramString3)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("PushMsg0x210_c7Info{");
-    localStringBuilder.append("fromUin:").append(this.jdField_a_of_type_Long).append(", ");
-    localStringBuilder.append("msgSeq:").append(this.jdField_b_of_type_Long).append(", ");
-    localStringBuilder.append("msgTime:").append(this.jdField_b_of_type_Int).append(", ");
-    localStringBuilder.append("onlinePush:").append(this.jdField_a_of_type_Boolean).append(", ");
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    Intrinsics.checkParameterIsNotNull(paramString1, "subActionType");
+    a(paramString1, paramString2, null, null);
+  }
+  
+  @JvmStatic
+  public static final void a(@NotNull String paramString1, @Nullable String paramString2, @Nullable String paramString3, @Nullable String paramString4)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString1, "subActionType");
+    ThreadManager.getSubThreadHandler().post((Runnable)new ApolloQualityReportUtil.report.1(paramString1, paramString2, paramString3, paramString4));
   }
 }
 

@@ -1,128 +1,98 @@
-import android.media.AudioManager;
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import android.os.Handler;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.extendfriend.utils.ExtendFriendVoicePlayer.2;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.transfile.BuddyTransfileProcessor;
-import com.tencent.qphone.base.util.MD5;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class arpa
+  extends aqwt<aroz>
 {
-  private AudioManager.OnAudioFocusChangeListener jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new arpb(this);
-  private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
-  private arpc jdField_a_of_type_Arpc;
-  private bgas jdField_a_of_type_Bgas;
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  
-  public arpa(arpc paramarpc, BaseActivity paramBaseActivity)
+  public static aroz a()
   {
-    this.jdField_a_of_type_Arpc = paramarpc;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSystemService("audio"));
+    aroz localaroz2 = (aroz)aqxe.a().a(573);
+    aroz localaroz1 = localaroz2;
+    if (localaroz2 == null) {
+      localaroz1 = new aroz();
+    }
+    return localaroz1;
   }
   
-  public void a()
-  {
-    try
-    {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if (this.jdField_a_of_type_Bgas != null)
-        {
-          this.jdField_a_of_type_Bgas.e();
-          this.jdField_a_of_type_Bgas = null;
-        }
-        b();
-        return;
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("ExtendFriendVoicePlayer", 1, "stop e=" + localException);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (!a(paramString)) {
-      ThreadManager.executeOnFileThread(new ExtendFriendVoicePlayer.2(this, paramString));
-    }
-  }
-  
-  public boolean a(String arg1)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null) && (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing())) {
-      QLog.e("ExtendFriendVoicePlayer", 2, "playLocal file but activity isFinish");
-    }
-    String str;
-    for (;;)
-    {
-      return false;
-      str = ???;
-      try
-      {
-        if (!FileUtil.isFileExists(???))
-        {
-          str = ???;
-          if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null)
-          {
-            str = BuddyTransfileProcessor.getTransferFilePath(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getCurrentAccountUin(), MD5.toMD5(???), 23, null);
-            File localFile = new File(str);
-            if ((!localFile.exists()) || (localFile.length() <= 0L))
-            {
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              QLog.e("ExtendFriendVoicePlayer", 2, String.format("playLocal file not exist : %s", new Object[] { ??? }));
-              return false;
-            }
-          }
-        }
-      }
-      catch (Exception ???)
-      {
-        QLog.e("ExtendFriendVoicePlayer", 1, "playLocal", ???);
-        return false;
-      }
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_Bgas != null)
-      {
-        this.jdField_a_of_type_Bgas.e();
-        this.jdField_a_of_type_Bgas = null;
-      }
-      this.jdField_a_of_type_Bgas = new bgas(str, new Handler(), 1);
-      this.jdField_a_of_type_Bgas.b();
-      this.jdField_a_of_type_Bgas.a(this.jdField_a_of_type_Arpc);
-      this.jdField_a_of_type_Bgas.b();
-      if (this.jdField_a_of_type_AndroidMediaAudioManager != null) {
-        this.jdField_a_of_type_AndroidMediaAudioManager.requestAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener, 3, 2);
-      }
-      return true;
-    }
-  }
-  
-  public void b()
+  @NonNull
+  public aroz a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendVoicePlayer", 2, "abandonAudioFocus");
+      QLog.e("SuspiciousTroopConfProcessor", 2, "migrateOldOrDefaultContent ");
     }
-    if (this.jdField_a_of_type_AndroidMediaAudioManager != null) {
-      this.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener);
+    return new aroz();
+  }
+  
+  @Nullable
+  public aroz a(aqxa[] paramArrayOfaqxa)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SuspiciousTroopConfProcessor", 2, "onParsed start");
     }
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SuspiciousTroopConfProcessor", 2, "onParsed " + paramArrayOfaqxa.length);
+      }
+      return aroz.a(paramArrayOfaqxa[0]);
+    }
+    return null;
+  }
+  
+  public void a(aroz paramaroz)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onUpdate ");
+      if (paramaroz == null) {
+        break label43;
+      }
+    }
+    label43:
+    for (paramaroz = paramaroz.toString();; paramaroz = " empty")
+    {
+      QLog.d("SuspiciousTroopConfProcessor", 2, paramaroz);
+      return;
+    }
+  }
+  
+  public Class<aroz> clazz()
+  {
+    return aroz.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("SuspiciousTroopConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public int type()
+  {
+    return 573;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arpa
  * JD-Core Version:    0.7.0.1
  */

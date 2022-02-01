@@ -1,22 +1,18 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.account.RIJUGCAddAccountFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class rwb
-  implements Animation.AnimationListener
+public class rwb
+  implements View.OnClickListener
 {
-  rwb(rwa paramrwa) {}
+  public rwb(RIJUGCAddAccountFragment paramRIJUGCAddAccountFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (rwa.a(this.a) != null) {
-      rwa.a(this.a).setVisibility(8);
-    }
+    RIJUGCAddAccountFragment.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

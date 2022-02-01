@@ -1,18 +1,27 @@
-class bdxm
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+final class bdxm
+  implements DialogInterface.OnClickListener
 {
-  final float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  float b = 0.0F;
+  bdxm(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
   
-  public bdxm(bdxj parambdxj, float paramFloat)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Int * this.jdField_a_of_type_Float * 0.4F + this.b * 0.6F;
+    bdxi.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    bdxi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    bdxi.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    bdxi.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    paramDialogInterface = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, SplashActivity.class);
+    paramDialogInterface.putExtra("tab_index", MainFragment.b);
+    paramDialogInterface.setFlags(67108864);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramDialogInterface);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
   }
 }
 

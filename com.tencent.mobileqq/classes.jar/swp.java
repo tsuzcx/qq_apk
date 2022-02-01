@@ -1,24 +1,46 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.text.style.LineBackgroundSpan;
+import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import kotlin.Metadata;
+import kotlin.jvm.JvmField;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class swp
-  implements LineBackgroundSpan
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/videofeeds/FooterItemHolder;", "Lcom/tencent/biz/pubaccount/readinjoy/video/videofeeds/BaseItemHolder;", "view", "Landroid/view/View;", "itemType", "", "(Landroid/view/View;I)V", "loadingLayout", "Landroid/view/ViewGroup;", "loadingProgressBar", "Landroid/widget/ProgressBar;", "loadingTextView", "Landroid/widget/TextView;", "onScroll", "", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/video/VideoFeedsAdapter;", "layoutManager", "Landroid/support/v7/widget/LinearLayoutManager;", "isCenter", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class swp
+  extends swj
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
+  @JvmField
+  @NotNull
+  public ViewGroup a;
+  @JvmField
+  @NotNull
+  public ProgressBar a;
+  @JvmField
+  @NotNull
+  public TextView a;
   
-  public swp(int paramInt)
+  public swp(@NotNull View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramView, paramInt);
+    View localView = paramView.findViewById(2131370465);
+    Intrinsics.checkExpressionValueIsNotNull(localView, "view.findViewById(R.id.loading_layout)");
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localView);
+    localView = paramView.findViewById(2131370475);
+    Intrinsics.checkExpressionValueIsNotNull(localView, "view.findViewById(R.id.loading_textview)");
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView);
+    paramView = paramView.findViewById(2131370471);
+    Intrinsics.checkExpressionValueIsNotNull(paramView, "view.findViewById(R.id.loading_progress)");
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView);
   }
   
-  public void a(String paramString)
+  public void a(@NotNull shl paramshl, @NotNull LinearLayoutManager paramLinearLayoutManager, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    Intrinsics.checkParameterIsNotNull(paramshl, "adapter");
+    Intrinsics.checkParameterIsNotNull(paramLinearLayoutManager, "layoutManager");
   }
-  
-  public void drawBackground(Canvas paramCanvas, Paint paramPaint, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, CharSequence paramCharSequence, int paramInt6, int paramInt7, int paramInt8) {}
 }
 
 

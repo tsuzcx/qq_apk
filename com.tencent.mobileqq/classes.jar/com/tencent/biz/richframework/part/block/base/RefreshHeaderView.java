@@ -17,8 +17,8 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
-import zab;
-import zac;
+import zpg;
+import zph;
 
 public class RefreshHeaderView
   extends LinearLayout
@@ -33,15 +33,15 @@ public class RefreshHeaderView
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private final String jdField_a_of_type_JavaLangString = getResources().getString(2131718610);
-  private zac jdField_a_of_type_Zac;
+  private final String jdField_a_of_type_JavaLangString = getResources().getString(2131718999);
+  private zph jdField_a_of_type_Zph;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
   private RotateAnimation jdField_b_of_type_AndroidViewAnimationRotateAnimation;
-  private final String jdField_b_of_type_JavaLangString = getResources().getString(2131718606);
-  private final String c = getResources().getString(2131718609);
-  private final String d = getResources().getString(2131718607);
+  private final String jdField_b_of_type_JavaLangString = getResources().getString(2131718995);
+  private final String c = getResources().getString(2131718998);
+  private final String d = getResources().getString(2131718996);
   
   public RefreshHeaderView(Context paramContext)
   {
@@ -63,7 +63,7 @@ public class RefreshHeaderView
   {
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { a(), paramInt });
     localValueAnimator.setDuration(200L).start();
-    localValueAnimator.addUpdateListener(new zab(this, paramInt));
+    localValueAnimator.addUpdateListener(new zpg(this, paramInt));
     localValueAnimator.start();
   }
   
@@ -95,11 +95,11 @@ public class RefreshHeaderView
     localLayoutParams.setMargins(0, 0, 0, 0);
     setLayoutParams(localLayoutParams);
     setPadding(0, 0, 0, 0);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(getContext()).inflate(2131560704, null));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(getContext()).inflate(2131560760, null));
     addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, new LinearLayout.LayoutParams(-1, 0));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369252));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379795));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131372318));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369418));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380119));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131372510));
     this.jdField_a_of_type_AndroidViewAnimationRotateAnimation = new RotateAnimation(0.0F, 180.0F, 1, 0.5F, 1, 0.5F);
     this.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setDuration(100L);
     this.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setFillAfter(true);
@@ -108,7 +108,7 @@ public class RefreshHeaderView
     this.jdField_b_of_type_AndroidViewAnimationRotateAnimation.setFillAfter(true);
     measure(-2, -2);
     this.jdField_a_of_type_Int = getMeasuredHeight();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839449);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839470);
   }
   
   public int a()
@@ -243,9 +243,9 @@ public class RefreshHeaderView
     }
   }
   
-  public void setOnRefreshListener(zac paramzac)
+  public void setOnRefreshListener(zph paramzph)
   {
-    this.jdField_a_of_type_Zac = paramzac;
+    this.jdField_a_of_type_Zph = paramzph;
   }
   
   public void setRefreshing(boolean paramBoolean)
@@ -291,9 +291,9 @@ public class RefreshHeaderView
         a(true);
         a(this.jdField_a_of_type_Int);
         this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
-        if (this.jdField_a_of_type_Zac != null)
+        if (this.jdField_a_of_type_Zph != null)
         {
-          this.jdField_a_of_type_Zac.a();
+          this.jdField_a_of_type_Zph.a();
           continue;
           QLog.d("RefreshHeaderView", 4, "STATE_JUST_SHOW_REFRESH_ANIMATION");
           this.jdField_a_of_type_Long = System.currentTimeMillis();

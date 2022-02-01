@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import aadf;
-import bctv;
-import bcvc;
-import bgww;
-import bgwz;
+import aasr;
+import beau;
+import becb;
+import biho;
+import bihr;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
@@ -13,18 +13,18 @@ import mqq.os.MqqHandler;
 public class SwiftBrowserShareMenuHandler$4$1
   implements Runnable
 {
-  public SwiftBrowserShareMenuHandler$4$1(bgwz parambgwz) {}
+  public SwiftBrowserShareMenuHandler$4$1(bihr parambihr) {}
   
   public void run()
   {
-    int i = this.a.a.jdField_a_of_type_Aadf.a().a;
+    int i = this.a.a.jdField_a_of_type_Aasr.a().a;
     String str1 = this.a.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.mApp.getCurrentAccountUin();
-    String str2 = this.a.a.jdField_a_of_type_Aadf.a().i;
-    String str3 = this.a.a.jdField_a_of_type_Aadf.a().h;
-    if (this.a.a.jdField_a_of_type_Aadf.a().b == 3) {}
+    String str2 = this.a.a.jdField_a_of_type_Aasr.a().i;
+    String str3 = this.a.a.jdField_a_of_type_Aasr.a().h;
+    if (this.a.a.jdField_a_of_type_Aasr.a().b == 3) {}
     for (boolean bool = true;; bool = false)
     {
-      bool = bcvc.a(str1, str2, str3, bool, false, 2, null, null, null);
+      bool = becb.a(str1, str2, str3, bool, false, 2, null, null, null);
       ThreadManager.getUIHandler().postDelayed(new SwiftBrowserShareMenuHandler.4.1.1(this, i, bool), 3000L);
       return;
     }

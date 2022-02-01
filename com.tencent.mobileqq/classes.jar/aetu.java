@@ -1,25 +1,32 @@
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.widget.SimpleTextView;
+import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class aetu
+  implements View.OnFocusChangeListener
 {
-  public int a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  SimpleTextView jdField_a_of_type_ComTencentWidgetSimpleTextView;
-  public Object a;
-  int jdField_b_of_type_Int;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  TextView d;
-  TextView e;
-  TextView f;
-  TextView g;
+  public aetu(RegisterByNicknameAndPwdActivity paramRegisterByNicknameAndPwdActivity) {}
+  
+  public void onFocusChange(View paramView, boolean paramBoolean)
+  {
+    if (paramView == RegisterByNicknameAndPwdActivity.a(this.a))
+    {
+      if (paramBoolean)
+      {
+        RegisterByNicknameAndPwdActivity.a(this.a).setSelection(RegisterByNicknameAndPwdActivity.a(this.a).getText().length());
+        RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(0);
+        RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(0);
+        RegisterByNicknameAndPwdActivity.b(this.a).setVisibility(0);
+      }
+    }
+    else {
+      return;
+    }
+    RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(8);
+  }
 }
 
 

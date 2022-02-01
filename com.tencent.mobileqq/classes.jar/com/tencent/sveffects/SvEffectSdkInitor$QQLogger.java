@@ -1,6 +1,6 @@
 package com.tencent.sveffects;
 
-import bmbx;
+import bnrh;
 import com.tencent.qphone.base.util.QLog;
 
 public class SvEffectSdkInitor$QQLogger
@@ -8,27 +8,27 @@ public class SvEffectSdkInitor$QQLogger
 {
   public void d(String paramString1, String paramString2)
   {
-    bmbx.a(paramString1, paramString2);
+    bnrh.a(paramString1, paramString2);
   }
   
   public void e(String paramString1, String paramString2)
   {
-    bmbx.d(paramString1, paramString2);
+    bnrh.d(paramString1, paramString2);
   }
   
   public void e(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    bmbx.a(paramString1, paramString2, paramThrowable);
+    bnrh.a(paramString1, paramString2, paramThrowable);
   }
   
   public void e(String paramString, Throwable paramThrowable)
   {
-    bmbx.a(paramString, paramThrowable);
+    bnrh.a(paramString, paramThrowable);
   }
   
   public void i(String paramString1, String paramString2)
   {
-    bmbx.b(paramString1, paramString2);
+    bnrh.b(paramString1, paramString2);
   }
   
   public boolean isEnable()
@@ -38,7 +38,7 @@ public class SvEffectSdkInitor$QQLogger
   
   public void w(String paramString1, String paramString2)
   {
-    bmbx.c(paramString1, paramString2);
+    bnrh.c(paramString1, paramString2);
   }
 }
 

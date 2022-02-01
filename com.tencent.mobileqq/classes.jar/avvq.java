@@ -1,32 +1,17 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedLoading;
+import com.tencent.mobileqq.intervideo.now.dynamic.LoadingFragment;
 
-public class avvq
-  implements avtj
+class avvq
+  implements CustomizedLoading
 {
-  public avvq(MsgBackupSelectionFragment paramMsgBackupSelectionFragment) {}
+  avvq(avux paramavux) {}
   
-  public void a(List<RecentBaseData> paramList)
+  public void onShowLoading(Context paramContext, Bundle paramBundle, View paramView)
   {
-    MsgBackupSelectionFragment.a(this.a, true);
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      this.a.a.clear();
-      this.a.a.addAll(paramList);
-    }
-    for (;;)
-    {
-      paramList = MsgBackupSelectionFragment.a(this.a).obtainMessage(10000);
-      MsgBackupSelectionFragment.a(this.a).sendMessage(paramList);
-      return;
-      if (MsgBackupSelectionFragment.a(this.a) == 0) {
-        avwr.a("0X800A232");
-      } else if (avtq.c) {
-        avwr.a("0X800A257");
-      }
-    }
+    LoadingFragment.a(paramContext, paramBundle, paramView);
   }
 }
 

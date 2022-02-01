@@ -1,1108 +1,338 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.Color;
-import android.preference.PreferenceManager;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.HandlerThread;
+import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDoingSomething;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianSubscribeManager;
-import com.tencent.biz.pubaccount.readinjoy.engine.SPEventReportSwitch;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
+import java.lang.ref.WeakReference;
 import java.util.HashMap;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import mqq.app.AppRuntime;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 public class aqce
+  implements Handler.Callback
 {
-  private void a(QQAppInterface paramQQAppInterface, String paramString)
+  private long jdField_a_of_type_Long = 120000L;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  private aqcd jdField_a_of_type_Aqcd = new aqcf(this);
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private HashMap<Long, Bundle> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private boolean jdField_a_of_type_Boolean;
+  
+  public aqce(QQAppInterface paramQQAppInterface)
   {
-    QLog.d("KandianConfigServlet", 1, "[all]updateKandianTabConfigSwitch value : " + paramString);
-    long l1 = System.currentTimeMillis();
-    Boolean localBoolean = (Boolean)bkwm.a("local_kd_tab_has_set");
-    boolean bool3 = TextUtils.equals("1", paramString);
-    bkwm.a(paramQQAppInterface, "remote_kd_tab_switch", Boolean.valueOf(bool3));
-    boolean bool2;
-    if ((localBoolean != null) && (!localBoolean.booleanValue()))
-    {
-      bool2 = bkwm.a(bool3);
-      bool1 = bool2;
-      if (bool2)
-      {
-        bool1 = bool2;
-        if (!pay.e())
-        {
-          bool1 = bool2;
-          if (!pay.m())
-          {
-            bkwm.c();
-            pkp.a().a(0, null);
-          }
-        }
-      }
-    }
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      long l2 = System.currentTimeMillis();
-      QLog.d("KandianConfigServlet", 1, "[all]updateKandianTabConfigSwitch tabSwitch = " + bool3 + ", write sp cost:" + (l2 - l1) + ", succ : " + bool1);
-      return;
-      QLog.d("KandianConfigServlet", 1, "[all]updateKandianTabConfigSwitch user has set switch, give up !");
-    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
   }
   
-  public void a(aptx[] paramArrayOfaptx)
+  private void a(QQAppInterface paramQQAppInterface, MessageForArkApp paramMessageForArkApp)
   {
-    QQAppInterface localQQAppInterface;
-    Document localDocument;
-    Object localObject2;
-    label294:
-    label357:
+    if ((paramQQAppInterface == null) || (paramMessageForArkApp == null)) {}
     int i;
-    int k;
-    label533:
-    Object localObject3;
-    for (;;)
+    do
     {
-      String str2;
-      String str1;
-      try
+      do
       {
-        localQQAppInterface = (QQAppInterface)pay.a();
-        if ((paramArrayOfaptx == null) || (paramArrayOfaptx.length <= 0)) {
-          break label6364;
-        }
-        int j = 0;
-        if (j < paramArrayOfaptx.length)
-        {
-          if (TextUtils.isEmpty(paramArrayOfaptx[j].a))
-          {
-            QLog.e("ReadinjoyCommonConfProcessor", 1, "receive empty config content, skip ! index : " + j);
-            j += 1;
-            continue;
-          }
-          try
-          {
-            str2 = paramArrayOfaptx[j].a.trim();
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "receiveAllConfigs|type: 92,content: " + str2);
-            }
-            localDocument = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(str2.getBytes("utf-8")));
-            Node localNode = localDocument.getElementsByTagName("configs").item(0).getFirstChild();
-            if (localNode == null) {
-              continue;
-            }
-            if (localNode.getFirstChild() != null)
-            {
-              localObject2 = localNode.getNodeName();
-              str1 = localNode.getFirstChild().getNodeValue();
-              if (!TextUtils.isEmpty(str1)) {}
-            }
-            else
-            {
-              localNode = localNode.getNextSibling();
-              continue;
-            }
-            if (!TextUtils.equals((CharSequence)localObject2, "smartcrop_pic")) {
-              break label294;
-            }
-            bkwm.c(localQQAppInterface, str1);
-            continue;
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-          }
-          catch (Exception localException1) {}
-          QLog.d("ReadinjoyCommonConfProcessor", 2, "exception occurs", localException1);
-          continue;
-        }
+        return;
+      } while (paramMessageForArkApp == null);
+      if (QLog.isColorLevel()) {
+        QLog.d("ArkApp.ArkAsyncShareMsgManager", 2, new Object[] { "AAShare.notifyUpdateMsgUI uniseq=", Long.valueOf(paramMessageForArkApp.uniseq), ", frienduin=", paramMessageForArkApp.frienduin });
+      }
+      i = paramMessageForArkApp.getProcessState();
+      if (i == 1001)
+      {
+        paramQQAppInterface.getMsgHandler().notifyUI(6003, true, new String[] { paramMessageForArkApp.frienduin, String.valueOf(paramMessageForArkApp.uniseq) });
         return;
       }
-      catch (Exception paramArrayOfaptx)
+    } while (i != 1003);
+    Object[] arrayOfObject = new Object[8];
+    arrayOfObject[0] = paramMessageForArkApp.frienduin;
+    arrayOfObject[1] = Integer.valueOf(paramMessageForArkApp.istroop);
+    arrayOfObject[2] = Integer.valueOf(0);
+    arrayOfObject[3] = null;
+    arrayOfObject[4] = Long.valueOf(a());
+    arrayOfObject[5] = Long.valueOf(paramMessageForArkApp.uniseq);
+    paramQQAppInterface.getMsgHandler().a(3001, false, arrayOfObject);
+  }
+  
+  public static void b(MessageForArkApp paramMessageForArkApp)
+  {
+    if (paramMessageForArkApp == null) {
+      QLog.e("ArkApp.ArkAsyncShareMsgManager", 1, "AAShare.updateProcessStateUI return ");
+    }
+    label12:
+    Object localObject1;
+    Object localObject2;
+    do
+    {
+      do
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("ReadinjoyCommonConfProcessor", 2, "received readinjoy cropandgroup config error,cmd : 92" + paramArrayOfaptx.toString());
-        }
-      }
-      if (TextUtils.equals((CharSequence)localObject2, "feeds_group"))
-      {
-        bkwm.a(localQQAppInterface, str1);
-      }
-      else if (TextUtils.equals((CharSequence)localObject2, "remind_only_wifi"))
-      {
-        bkwm.b(localQQAppInterface, str1);
-      }
-      else if (TextUtils.equals((CharSequence)localObject2, "kandian_individual_time_push"))
-      {
-        if (!TextUtils.equals(str1, "1")) {
-          break label6385;
-        }
-        bool = true;
-        bkwm.a(localQQAppInterface, bool);
-      }
-      else if (TextUtils.equals((CharSequence)localObject2, "push_switch"))
-      {
-        bkwm.d(localQQAppInterface, TextUtils.equals(str1, "1"));
-      }
-      else
-      {
-        bool = TextUtils.equals((CharSequence)localObject2, "sticky_times");
-        if (bool)
+        do
         {
-          try
+          break label12;
+          do
           {
-            i = Integer.valueOf(str1).intValue();
-            k = Integer.valueOf(localDocument.getElementsByTagName("effective_time").item(0).getFirstChild().getNodeValue()).intValue();
-            if ((i >= 0) && (k < 86400)) {
-              break label533;
-            }
-            throw new IllegalArgumentException("stickyTime or effectiveTime has error ! " + i + "," + k);
-          }
-          catch (Exception localException2)
-          {
-            localException2.printStackTrace();
-            QLog.d("ReadinjoyCommonConfProcessor", 2, "covert stickyTime and effectiveTime has error : " + localException2);
-          }
-          continue;
-          ((KandianMergeManager)localQQAppInterface.getManager(162)).a(i, k);
-        }
-        else
+            return;
+          } while (paramMessageForArkApp.getProcessState() != 1001);
+          localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+        } while (!(localObject1 instanceof QQAppInterface));
+        localObject1 = (QQAppInterface)localObject1;
+        localObject2 = (ArkAppCenter)((QQAppInterface)localObject1).getManager(QQManagerFactory.ARK_APP_CENTER_MANAGER);
+      } while (localObject2 == null);
+      localObject2 = ((ArkAppCenter)localObject2).a();
+    } while ((localObject2 == null) || (((aqce)localObject2).a(paramMessageForArkApp)));
+    if (QLog.isColorLevel()) {
+      QLog.e("ArkApp.ArkAsyncShareMsgManager", 2, new Object[] { "AAShare.change last sending msg to fail state, uniseq=", Long.valueOf(paramMessageForArkApp.uniseq) });
+    }
+    paramMessageForArkApp.updateProcessStateAndExtraFlag(1003);
+    paramMessageForArkApp.saveMsgExtStrAndFlag((QQAppInterface)localObject1);
+    ((aqce)localObject2).a((QQAppInterface)localObject1, paramMessageForArkApp);
+  }
+  
+  public long a()
+  {
+    QLog.d("ArkApp.ArkAsyncShareMsgManager", 1, new Object[] { "AAShare.get timeout=", Long.valueOf(this.jdField_a_of_type_Long) });
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public Bundle a(MessageForArkApp paramMessageForArkApp)
+  {
+    if (paramMessageForArkApp == null) {
+      paramMessageForArkApp = null;
+    }
+    Bundle localBundle;
+    do
+    {
+      return paramMessageForArkApp;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        localBundle = (Bundle)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramMessageForArkApp.uniseq));
+        if (localBundle != null)
         {
-          Object localObject1;
-          if (TextUtils.equals((CharSequence)localObject2, "socializeWebUrl"))
-          {
-            localObject1 = localException1.getFirstChild();
-            if (localObject1 != null)
-            {
-              if (((Node)localObject1).getNodeType() == 1)
-              {
-                localObject2 = ((Node)localObject1).getNodeName();
-                localObject3 = ((Node)localObject1).getFirstChild().getNodeValue();
-                if (!bkwm.a((String)localObject2)) {
-                  break label641;
-                }
-                bkwm.a(localQQAppInterface, (String)localObject2, (String)localObject3);
-              }
-              for (;;)
-              {
-                localObject1 = ((Node)localObject1).getNextSibling();
-                break;
-                label641:
-                QLog.d("ReadinjoyCommonConfProcessor", 1, "find unrecognized key:" + (String)localObject2 + " with value:" + (String)localObject3);
-              }
-            }
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "free_time_refresh_push"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "updateFreeTimeRefreshPush " + TextUtils.equals((CharSequence)localObject1, "1"));
-            }
-            bkwm.j(localQQAppInterface, TextUtils.equals((CharSequence)localObject1, "1"));
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "kandian_my_tab_page"))
-          {
-            bkwm.c(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "kandian_gallery_channel_bar_hidden"))
-          {
-            bkwm.x(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "kandian_gallery_channel_waterfall_bar_hidden"))
-          {
-            bkwm.y(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "tab_click_gap_in_seconds"))
-          {
-            SPEventReportSwitch.a(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "tab_click_count_limit"))
-          {
-            SPEventReportSwitch.b(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "tab_click_push_algo_id"))
-          {
-            SPEventReportSwitch.c(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "tab_click_forbid_report_time_in_seconds"))
-          {
-            SPEventReportSwitch.d(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "fore_ground_gap_in_seconds"))
-          {
-            SPEventReportSwitch.e(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "screen_switch_in_seconds"))
-          {
-            SPEventReportSwitch.f(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "user_idle_repor"))
-          {
-            SPEventReportSwitch.g(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "kandian_report_tt"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "kandian_report_tt = " + TextUtils.equals((CharSequence)localObject1, "1"));
-            }
-            if (TextUtils.equals((CharSequence)localObject1, "1")) {
-              bkwm.k(localQQAppInterface, true);
-            } else {
-              bkwm.k(localQQAppInterface, false);
-            }
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "kandian_report_user_apps_switch"))
-          {
-            localObject1 = Boolean.valueOf(TextUtils.equals((CharSequence)localObject1, "1"));
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "kandian_report_user_apps_switch: " + localObject1);
-            }
-            bkwm.a("kandian_report_user_apps_switch", localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "actKandianReportManyApps"))
-          {
-            ReadInJoyDoingSomething.a(localException1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "kandian_optimize_strategy"))
-          {
-            paq.a((String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "maintab_reddot_times"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "maintab_reddot_times = " + (String)localObject1);
-            }
-            bkwm.h(localQQAppInterface, Integer.valueOf((String)localObject1).intValue());
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "maintab_reddot_feeds"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "maintab_reddot_feeds = " + (String)localObject1);
-            }
-            bkwm.i(localQQAppInterface, Integer.valueOf((String)localObject1).intValue());
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "feedsbackWebUrl"))
-          {
-            bkwm.b(localQQAppInterface, (String)localObject2, (String)localObject1);
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "feedsbackWebUrl " + TextUtils.equals((CharSequence)localObject1, "1"));
-            }
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "feedsbackSwitch"))
-          {
-            bkwm.b(localQQAppInterface, (String)localObject2, (String)localObject1);
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "feedsbackSwitch " + TextUtils.equals((CharSequence)localObject1, "1"));
-            }
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "feedsbackName"))
-          {
-            bkwm.b(localQQAppInterface, (String)localObject2, (String)localObject1);
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "feedsbackName " + TextUtils.equals((CharSequence)localObject1, "1"));
-            }
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "biufeedsSwitch"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "biufeedsSwitch = " + (String)localObject1);
-            }
-            bkwm.j(localQQAppInterface, Integer.valueOf((String)localObject1).intValue());
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "biufeedsName"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "biufeedsName = " + (String)localObject1);
-            }
-            bkwm.d(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "biufeedsWebUrl"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "biufeedsWebUrl = " + (String)localObject1);
-            }
-            bkwm.e(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "badgeNumber"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "badgeNumber = " + (String)localObject1);
-            }
-            bkwm.x(localQQAppInterface, Integer.valueOf((String)localObject1).intValue());
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "biu_word_count"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "biu_word_count = " + (String)localObject1);
-            }
-            bkwm.f(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "new_channel_style"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "new_channel_style = " + (String)localObject1);
-            }
-            bkwm.k(localQQAppInterface, Integer.valueOf((String)localObject1).intValue());
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "local_record_time"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "local_record_time = " + (String)localObject1);
-            }
-            bkwm.a(localQQAppInterface, Long.valueOf((String)localObject1).longValue());
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "local_record_feeds"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "local_record_feeds = " + (String)localObject1);
-            }
-            bkwm.y(localQQAppInterface, Integer.valueOf((String)localObject1).intValue());
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "local_record_time_weishi"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "local_record_time_weishi = " + (String)localObject1);
-            }
-            bkwm.b(localQQAppInterface, Long.valueOf((String)localObject1).longValue());
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "local_record_feeds_weishi"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "local_record_feeds_weishi = " + (String)localObject1);
-            }
-            bkwm.z(localQQAppInterface, Integer.valueOf((String)localObject1).intValue());
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "kandianWebPreLoadData"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "kandianWebPreLoadData = " + (String)localObject1);
-            }
-            if (TextUtils.equals((CharSequence)localObject1, "1")) {
-              bkwm.p(localQQAppInterface, true);
-            } else {
-              bkwm.p(localQQAppInterface, false);
-            }
-          }
-          else if ((TextUtils.equals((CharSequence)localObject2, "ExitAIO_Android_Uin")) && (localObject1 != null))
-          {
-            localObject1 = ((String)localObject1).split(":");
-            if (localObject1.length >= 2) {
-              bkwm.b(Integer.valueOf(localObject1[0]).intValue(), Integer.valueOf(localObject1[1]).intValue());
-            }
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "kandian_tab_switch"))
-          {
-            a(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "kandian_tab_type"))
-          {
-            bkwm.a(localQQAppInterface, "remote_kd_tab_type", localObject1);
-            localObject2 = bkwm.a("local_kd_tab_has_set");
-            if (!(localObject2 instanceof Boolean)) {
-              break label6379;
-            }
-            bool = ((Boolean)localObject2).booleanValue();
-            label2224:
-            if (!bool)
-            {
-              bkwm.a(localQQAppInterface, "local_kd_tab_type", localObject1);
-              QLog.d("ReadinjoyCommonConfProcessor", 1, new Object[] { "receiveKDTabTypeRemoteSP, userHasSetKDTab = ", Boolean.valueOf(bool), ", updateLocalTabSwitch tabType = ", localObject1 });
-            }
-            else
-            {
-              QLog.d("ReadinjoyCommonConfProcessor", 1, new Object[] { "receiveKDTabTypeRemoteSP, userHasSetKDTab = ", Boolean.valueOf(bool), ", no need to updateTabType." });
-            }
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "DiaobaodeKandian"))
-          {
-            bkwm.G(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "topic_card_jump"))
-          {
-            bkwm.a(localQQAppInterface, "kd_topic_recommend_card_jump_switch", Boolean.valueOf(((String)localObject1).equals("1")));
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "topic_card_jump_url"))
-          {
-            bkwm.a(localQQAppInterface, "kd_topic_recommend_card_jump_url", localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "comment_word_count"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "comment_word_count = " + (String)localObject1);
-            }
-            bkwm.g(localQQAppInterface, (String)localObject1);
-          }
-          else if ((TextUtils.equals((CharSequence)localObject2, "KW")) && (!TextUtils.isEmpty((CharSequence)localObject1)))
-          {
-            localObject2 = new HashMap();
-            localObject1 = ((String)localObject1).split(",");
-            k = localObject1.length;
-            i = 0;
-            label2488:
-            if (i < k)
-            {
-              localObject3 = localObject1[i].split(":");
-              if (localObject3.length != 2) {
-                break label6391;
-              }
-              ((HashMap)localObject2).put(localObject3[1], localObject3[0]);
-              break label6391;
-            }
-            pay.a("kandian_aio_sp_word", localObject2, true);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "comment_gif_switch"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "comment_gif_switch = " + (String)localObject1);
-            }
-            bkwm.h(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "ugc_gif_switch"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "ugc_gif_switch = " + (String)localObject1);
-            }
-            bkwm.i(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "biu_at_switch"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "biu_at_switch = " + (String)localObject1);
-            }
-            bkwm.n(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "UGC_at_switch"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "UGC_at_switch = " + (String)localObject1);
-            }
-            bkwm.m(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "comment_at_switch"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "comment_at_switch = " + (String)localObject1);
-            }
-            bkwm.v(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "biu_profile_switch"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "biu_profile_switch = " + (String)localObject1);
-            }
-            bkwm.o(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "IconMerge_BiuMsg"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "IconMerge_BiuMsg = " + (String)localObject1);
-            }
-            bkwm.b(TextUtils.equals((CharSequence)localObject1, "1"));
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "IconMerge_InteractiveMsg"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "IconMerge_InteractiveMsg = " + (String)localObject1);
-            }
-            bkwm.c(TextUtils.equals((CharSequence)localObject1, "1"));
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "IconMerge_SubscribeMsg"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "IconMerge_InteractiveMsg = " + (String)localObject1);
-            }
-            bkwm.d((String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "nw_support"))
-          {
-            bkwm.q(localQQAppInterface, TextUtils.equals((CharSequence)localObject1, "1"));
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "nw_preload"))
-          {
-            bkwm.r(localQQAppInterface, TextUtils.equals((CharSequence)localObject1, "1"));
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "arkapp_enable_switch"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, new Object[] { "arkapp_enable_switch, value: ", localObject1 });
-            }
-            bkwm.b(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "exposure_strengthen"))
-          {
-            bkwm.s(localQQAppInterface, "1".equals(localObject1));
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "native_timeout"))
-          {
-            bkwm.H(localQQAppInterface, (String)localObject1);
-            QLog.d("ReadinjoyCommonConfProcessor", 2, "update native engine timeout config : " + (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "diandian_publish_switch_new"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "dian dian right button new config: " + (String)localObject1);
-            }
-            bkwm.p(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "kandian_publish_switch_new"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "kan dian right button new config: " + (String)localObject1);
-            }
-            bkwm.q(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "readinjoy_QA_square_autoTimeval"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "readinjoy_QA_square_autoTimeval: " + (String)localObject1);
-            }
-            bkwm.r(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "WXShareFromKandian_Switch"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "get wx share from readinjoy :" + (String)localObject1);
-            }
-            bkwm.s(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "proteus_enable"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "get proteus switch from config: " + (String)localObject1);
-            }
-            bkwm.d("1".equals(localObject1));
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "proteus_bid"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "get proteus offline bid from config: " + (String)localObject1);
-            }
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "proteus_native_article_bid"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "get proteus_native_article_bid: " + (String)localObject1);
-            }
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "zhitu"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "comment_zhitu_switch:" + (String)localObject1);
-            }
-            bkwm.j(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "comment_biu_switch"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "comment biu switch :" + (String)localObject1);
-            }
-            bkwm.t(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "native_comment_biu"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "native comment biu switch:" + (String)localObject1);
-            }
-            bkwm.u(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "readinjoy_short_video_width_height_ratio"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "readinjoy_short_video_width_height_ratio :" + (String)localObject1);
-            }
-            bkwm.b(localQQAppInterface, Float.valueOf((String)localObject1).floatValue());
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "readinjoy_short_video_max_duration_limit"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "readinjoy_short_video_max_duration_limit :" + (String)localObject1);
-            }
-            bkwm.v(localQQAppInterface, Integer.valueOf((String)localObject1).intValue());
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "multi_video_ad_config"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "multi_video_ad_config :" + (String)localObject1);
-            }
-            bkwm.B(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "multi_video_interrupted_ad_config"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "multi_video_interrupted_ad_config: " + (String)localObject1);
-            }
-            bkwm.D(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "record_duration_count"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "record_duration_count :" + (String)localObject1);
-            }
-            bkwm.g(localQQAppInterface, Integer.valueOf((String)localObject1).intValue());
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "kandiansettings"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "kandiansettings :" + str2);
-            }
-            bkwm.C(localQQAppInterface, str2);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "ReadInJoy_Tab_Auto_Refresh_Time_Duration"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "ReadInJoy_Tab_Auto_Refresh_Time_Duration :" + (String)localObject1);
-            }
-            bkwm.I(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "ReadInJoy_Message_Auto_Refresh_Time_Duration"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "ReadInJoy_Message_Auto_Refresh_Time_Duration :" + (String)localObject1);
-            }
-            bkwm.J(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "is_show_weishi_entrance"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "should show weishi entrance : " + (String)localObject1);
-            }
-            bkwm.C(localQQAppInterface, Integer.valueOf((String)localObject1).intValue());
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "is_jump_to_video_content"))
-          {
-            QLog.d("ReadinjoyCommonConfProcessor", 2, "is_jump_to_video_content: " + (String)localObject1);
-            bkwm.K(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "multi_video_ecommerce_entrance_config"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "multi_video_shunt_bar_config: " + (String)localObject1);
-            }
-            bkwm.F(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "ReadInJoy_Fast_Web_Biu_Cnt_CLose_Switch"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "ReadInJoy_Fast_Web_Biu_Cnt_CLose_Switch: " + (String)localObject1);
-            }
-            bkwm.k(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "ReadInJoy_Red_Pnt_Push_Article_Preload_Switch"))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "ReadInJoy_Red_Pnt_Push_Article_Preload_Switch: " + (String)localObject1);
-            }
-            bkwm.l(localQQAppInterface, (String)localObject1);
-          }
-          else if (TextUtils.equals((CharSequence)localObject2, "video_switch"))
-          {
-            QLog.d("ReadinjoyCommonConfProcessor", 2, "video_switch: " + (String)localObject1);
-            try
-            {
-              if (Integer.valueOf((String)localObject1).intValue() != 0) {
-                break label6398;
-              }
-              bool = true;
-              label4507:
-              bkwm.a("sp_key_readinjoy_video_entrance_reddot_button_switch", Boolean.valueOf(bool));
-            }
-            catch (NumberFormatException localNumberFormatException1)
-            {
-              QLog.e("ReadinjoyCommonConfProcessor", 2, "handleReadInJoyCommonConfig: video_switch ", localNumberFormatException1);
-            }
-          }
-          else
-          {
-            bool = TextUtils.equals((CharSequence)localObject2, "video_type_color");
-            if (bool)
-            {
-              try
-              {
-                bkwm.a("sp_key_readinjoy_video_entrance_reddot_button_color", Integer.valueOf(Color.parseColor(localNumberFormatException1)));
-              }
-              catch (IllegalArgumentException localIllegalArgumentException)
-              {
-                QLog.e("ReadinjoyCommonConfProcessor", 2, "handleReadInJoyCommonConfig: video_type_color", localIllegalArgumentException);
-              }
-            }
-            else if (TextUtils.equals((CharSequence)localObject2, "play_time"))
-            {
-              bkwm.a("sp_key_readinjoy_video_entrance_reddot_expire_time_list", localIllegalArgumentException);
-            }
-            else if (TextUtils.equals((CharSequence)localObject2, "ReadInJoy_guanzhu_Auto_Refresh_Time_Duration"))
-            {
-              i = Integer.valueOf(localIllegalArgumentException).intValue();
-              bkwm.a("sp_key_kandian_subscribe_auto_refresh_config", Integer.valueOf(i));
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "update kandian subscribe auto refresh config : " + i);
-            }
-            else if (TextUtils.equals((CharSequence)localObject2, "sharp_pic_support_switch"))
-            {
-              bkwm.a("sp_native_web_sharpp_pic_switch", Boolean.valueOf("1".equals(localIllegalArgumentException)));
-            }
-            else if (TextUtils.equals((CharSequence)localObject2, "video_feeds_preload_switch"))
-            {
-              bkwm.m(localQQAppInterface, "1".equals(localIllegalArgumentException));
-            }
-            else if (TextUtils.equals((CharSequence)localObject2, "enable_preoutput_kandianvideo_first_frame"))
-            {
-              bkwm.f(localQQAppInterface, "1".equals(localIllegalArgumentException));
-            }
-            else if (TextUtils.equals((CharSequence)localObject2, "rij_discover_entrance_show"))
-            {
-              bkwm.A(localQQAppInterface, localIllegalArgumentException);
-            }
-            else if (TextUtils.equals((CharSequence)localObject2, "readinjoy_small_video_pack_ui_style"))
-            {
-              bkwm.z(localQQAppInterface, str2);
-            }
-            else if (TextUtils.equals((CharSequence)localObject2, "hot_comment_number"))
-            {
-              i = Integer.parseInt(localIllegalArgumentException);
-              bkwm.a(oqn.READINJOY_COMMENT_HOT_NUM, Integer.valueOf(i));
-            }
-            else if (TextUtils.equals((CharSequence)localObject2, "hot_comment_likes_number"))
-            {
-              i = Integer.parseInt(localIllegalArgumentException);
-              bkwm.a(oqn.READINJOY_COMMENT_HOT_COMMENT_LIKE_FILTER, Integer.valueOf(i));
-            }
-            else if (TextUtils.equals((CharSequence)localObject2, "weishi_with_channel_discovery_switch"))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("ReadinjoyCommonConfProcessor", 2, "weishi_with_channel_discovery_switch: " + localIllegalArgumentException);
-              }
-              bkwm.e(localIllegalArgumentException);
-            }
-            else if (TextUtils.equals((CharSequence)localObject2, "ugc_upload_lbs_switch"))
-            {
-              i = Integer.parseInt(localIllegalArgumentException);
-              bkwm.a(oqn.READINJOY_UGC_LBS, Integer.valueOf(i));
-            }
-            else if (TextUtils.equals((CharSequence)localObject2, "local_record_time_weishi_recommend"))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("ReadinjoyCommonConfProcessor", 2, "local_record_time_weishi_recommend: " + localIllegalArgumentException);
-              }
-              bkwm.b(localIllegalArgumentException);
-            }
-            else if (TextUtils.equals((CharSequence)localObject2, "local_record_feeds_counts_weishi_recommend"))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("ReadinjoyCommonConfProcessor", 2, "local_record_feeds_counts_weishi_recommend: " + localIllegalArgumentException);
-              }
-              bkwm.c(localIllegalArgumentException);
-            }
-            else
-            {
-              if (!TextUtils.equals((CharSequence)localObject2, "kandian_aladdin_configuration_switch")) {
-                break;
-              }
-              if (QLog.isColorLevel()) {
-                QLog.d("ReadinjoyCommonConfProcessor", 2, "kandian_aladdin_configuration_switch: " + localIllegalArgumentException);
-              }
-              bkwm.a("should_request_aladdin_config", Boolean.valueOf(TextUtils.equals("1", localIllegalArgumentException)));
-            }
-          }
+          if (QLog.isColorLevel()) {
+            QLog.e("ArkApp.ArkAsyncShareMsgManager", 2, new Object[] { "AAShare.allready add to timeout check bundle=", localBundle.toString() });
+          }
+          return localBundle;
+        }
+      }
+      localBundle = new Bundle();
+      localBundle.putLong("key_process_message_uniseq", paramMessageForArkApp.uniseq);
+      localBundle.putString("key_process_message_friend_uin", paramMessageForArkApp.frienduin);
+      localBundle.putInt("key_process_message_uin_type", paramMessageForArkApp.istroop);
+      this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramMessageForArkApp.uniseq), localBundle);
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("Ark-Msg-Monitor");
+        this.jdField_a_of_type_AndroidOsHandlerThread.start();
+        this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
+      }
+      paramMessageForArkApp = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, localBundle);
+      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessageForArkApp, this.jdField_a_of_type_Long);
+      paramMessageForArkApp = localBundle;
+    } while (!QLog.isColorLevel());
+    QLog.e("ArkApp.ArkAsyncShareMsgManager", 2, new Object[] { "AAShare.--add timeout check bundle=", Integer.valueOf(System.identityHashCode(localBundle)), ", content", localBundle.toString() });
+    return localBundle;
+  }
+  
+  public void a(MessageForArkApp paramMessageForArkApp)
+  {
+    if ((paramMessageForArkApp == null) || (paramMessageForArkApp.ark_app_message == null))
+    {
+      QLog.e("ArkApp.ArkAsyncShareMsgManager", 1, "AAShare.retryShare msg is null");
+      return;
+    }
+    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+    QQAppInterface localQQAppInterface;
+    if ((localObject1 != null) && ((localObject1 instanceof QQAppInterface)))
+    {
+      localQQAppInterface = (QQAppInterface)localObject1;
+      localObject1 = (ArkAppCenter)((AppRuntime)localObject1).getManager(QQManagerFactory.ARK_APP_CENTER_MANAGER);
+      if (localObject1 != null)
+      {
+        localObject1 = ((ArkAppCenter)localObject1).a();
+        if (localObject1 != null) {
+          localObject1 = ((aqcb)localObject1).a(paramMessageForArkApp.ark_app_message.appName);
         }
       }
     }
-    boolean bool = TextUtils.equals((CharSequence)localObject2, "publish_topic");
-    if (bool) {}
     for (;;)
     {
-      for (;;)
+      boolean bool = false;
+      if (localObject1 != null)
       {
-        for (;;)
-        {
-          for (;;)
-          {
-            for (;;)
-            {
-              for (;;)
-              {
-                for (;;)
-                {
-                  for (;;)
-                  {
-                    for (;;)
-                    {
-                      try
-                      {
-                        if (Integer.valueOf(localIllegalArgumentException).intValue() != 1) {
-                          break label6404;
-                        }
-                        bool = true;
-                        bkwm.a("sp_key_create_topic_switch", Boolean.valueOf(bool));
-                      }
-                      catch (Exception localException10)
-                      {
-                        int m;
-                        continue;
-                      }
-                      if (!QLog.isColorLevel()) {
-                        break;
-                      }
-                      QLog.d("ReadinjoyCommonConfProcessor", 2, "publish_topic: " + localIllegalArgumentException);
-                      break;
-                      if (TextUtils.equals((CharSequence)localObject2, "coin_item_jump_url"))
-                      {
-                        bkwm.a("readinjoy_coin_item_jump_url", localIllegalArgumentException);
-                        if (!QLog.isColorLevel()) {
-                          break;
-                        }
-                        QLog.d("ReadinjoyCommonConfProcessor", 2, "coin_item_jump_url: " + localIllegalArgumentException);
-                        break;
-                      }
-                      if (TextUtils.equals((CharSequence)localObject2, "coin_item_wording"))
-                      {
-                        bkwm.a("readinjoy_coin_item_title", localIllegalArgumentException);
-                        if (!QLog.isColorLevel()) {
-                          break;
-                        }
-                        QLog.d("ReadinjoyCommonConfProcessor", 2, "coin_item_wording: " + localIllegalArgumentException);
-                        break;
-                      }
-                      if (TextUtils.equals((CharSequence)localObject2, "user_behavior_norm_switch"))
-                      {
-                        PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getApplication()).edit().putString("qq_readinjoy_user_protocol_92_switch_" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), localIllegalArgumentException).apply();
-                        if (!QLog.isColorLevel()) {
-                          break;
-                        }
-                        QLog.d("ReadinjoyCommonConfProcessor", 2, "user_behavior_norm_switch: " + localIllegalArgumentException);
-                        break;
-                      }
-                      if (TextUtils.equals((CharSequence)localObject2, "user_behavior_norm_jump_url"))
-                      {
-                        PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getApplication()).edit().putString("qq_readinjoy_user_protocol_92_jump_url_" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), localIllegalArgumentException).apply();
-                        if (!QLog.isColorLevel()) {
-                          break;
-                        }
-                        QLog.d("ReadinjoyCommonConfProcessor", 2, "user_behavior_norm_jump_url: " + localIllegalArgumentException);
-                        break;
-                      }
-                      if (!TextUtils.equals((CharSequence)localObject2, "awake_time")) {
-                        continue;
-                      }
-                      localObject2 = localDocument.getElementsByTagName("awake_position");
-                      if ((localObject2 == null) || (((NodeList)localObject2).item(0) == null) || (((NodeList)localObject2).item(0).getFirstChild() == null)) {
-                        break;
-                      }
-                      localObject2 = localDocument.getElementsByTagName("awake_switch");
-                      if ((localObject2 == null) || (((NodeList)localObject2).item(0) == null) || (((NodeList)localObject2).item(0).getFirstChild() == null)) {
-                        break;
-                      }
-                      localObject2 = localDocument.getElementsByTagName("awake_position").item(0).getFirstChild().getNodeValue();
-                      localObject3 = localDocument.getElementsByTagName("awake_switch").item(0).getFirstChild().getNodeValue();
-                      try
-                      {
-                        i = Integer.parseInt((String)localObject2);
-                        k = Integer.parseInt(localIllegalArgumentException);
-                        m = Integer.parseInt((String)localObject3);
-                        if ((k >= 0) && (k <= 86400) && (i >= 0) && (m >= 0) && (m <= 1)) {
-                          continue;
-                        }
-                        QLog.d("ReadinjoyCommonConfProcessor", 2, "sticky kandian subscribe config value is invalid");
-                      }
-                      catch (NumberFormatException localNumberFormatException2)
-                      {
-                        localNumberFormatException2.printStackTrace();
-                      }
-                    }
-                    break;
-                    ((KandianSubscribeManager)localQQAppInterface.getManager(280)).a(k, i, m);
-                    break;
-                    if (TextUtils.equals((CharSequence)localObject2, "kandian_feature_compute"))
-                    {
-                      bkwm.a("kandianreport_ON", Integer.valueOf(Integer.parseInt(localNumberFormatException2)));
-                      break;
-                    }
-                    if (!TextUtils.equals((CharSequence)localObject2, "kdad_exposure_report_threshold")) {
-                      continue;
-                    }
-                    if (QLog.isColorLevel()) {
-                      QLog.d("ReadinjoyCommonConfProcessor", 2, "kdad_exposure_report_threshold = " + localNumberFormatException2);
-                    }
-                    try
-                    {
-                      m = Integer.parseInt(localNumberFormatException2);
-                      i = paa.c;
-                      k = i;
-                      if (m == 1)
-                      {
-                        k = i;
-                        if (((Element)localException1).hasAttribute("time"))
-                        {
-                          k = Integer.parseInt(((Element)localException1).getAttribute("time"));
-                          if (k <= 0) {
-                            break label6416;
-                          }
-                          i = k;
-                          break label6410;
-                        }
-                      }
-                      bkwm.D(localQQAppInterface, k);
-                    }
-                    catch (Exception localException3)
-                    {
-                      localException3.printStackTrace();
-                    }
-                  }
-                  break;
-                  if (TextUtils.equals((CharSequence)localObject2, "kandian_daily_fast_web_bottom_share"))
-                  {
-                    bkwm.a("kandian_daily_fast_web_bottom_share", localException3);
-                    break;
-                  }
-                  bool = TextUtils.equals((CharSequence)localObject2, "kandian_comment_limit_number");
-                  if (!bool) {
-                    continue;
-                  }
-                  try
-                  {
-                    bkwm.f(Integer.parseInt(localException3));
-                  }
-                  catch (Exception localException4)
-                  {
-                    localException4.printStackTrace();
-                  }
-                }
-                break;
-                bool = TextUtils.equals((CharSequence)localObject2, "title_label_number_of_lines");
-                if (!bool) {
-                  continue;
-                }
-                try
-                {
-                  bkwm.g(Integer.parseInt(localException4));
-                }
-                catch (Exception localException5)
-                {
-                  localException5.printStackTrace();
-                }
-              }
-              break;
-              bool = TextUtils.equals((CharSequence)localObject2, "is_play_comment_button_show");
-              if (!bool) {
-                continue;
-              }
-              try
-              {
-                bkwm.h(Integer.parseInt(localException5));
-              }
-              catch (Exception localException6)
-              {
-                localException6.printStackTrace();
-              }
-            }
-            break;
-            bool = TextUtils.equals((CharSequence)localObject2, "readinjoy_video_ff_probesize");
-            if (!bool) {
-              continue;
-            }
-            try
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("ReadinjoyCommonConfProcessor", 2, "readinjoy_video_ff_probesize: " + localException6);
-              }
-              bkwm.a("readinjoy_video_ff_probesize", Long.valueOf(Long.parseLong(localException6)));
-            }
-            catch (Exception localException7)
-            {
-              localException7.printStackTrace();
-            }
-          }
-          break;
-          bool = TextUtils.equals((CharSequence)localObject2, "readinjoy_video_is_ff_probelist_switch");
-          if (!bool) {
-            continue;
-          }
-          try
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyCommonConfProcessor", 2, "readinjoy_video_is_ff_probelist_switch: " + localException7);
-            }
-            bkwm.a("readinjoy_video_is_ff_probelist_switch", Integer.valueOf(Integer.parseInt(localException7)));
-          }
-          catch (Exception localException8)
-          {
-            localException8.printStackTrace();
-          }
+        bool = ((aqcc)localObject1).needProcess(paramMessageForArkApp.ark_app_message.toShareMsgJSONObject());
+        if (QLog.isColorLevel()) {
+          QLog.e("ArkApp.ArkAsyncShareMsgManager", 2, new Object[] { "AAShare.retryAsyncShareArkMsg needProcess=", Boolean.valueOf(bool), ", uniseq=", Long.valueOf(paramMessageForArkApp.uniseq), paramMessageForArkApp.getBaseInfoString() });
         }
-        break;
-        bool = TextUtils.equals((CharSequence)localObject2, "readinjoy_video_is_download_async_io");
-        if (!bool) {
-          continue;
-        }
-        try
+        Object localObject2 = new HashMap();
+        ((HashMap)localObject2).put("appid", paramMessageForArkApp.ark_app_message.appName);
+        StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actAsyncShareRetry", true, 0L, 0L, (HashMap)localObject2, null);
+        if (bool)
         {
+          paramMessageForArkApp.updateProcessStateAndExtraFlag(1001);
           if (QLog.isColorLevel()) {
-            QLog.d("ReadinjoyCommonConfProcessor", 2, "readinjoy_video_is_download_async_io: " + localException8);
+            QLog.d("ArkApp.ArkAsyncShareMsgManager", 2, new Object[] { "AAShareTEST.retryAsyncShareArkMsg mr.msguid=", Long.valueOf(paramMessageForArkApp.msgUid) });
           }
-          bkwm.a("readinjoy_video_is_download_async_io", Integer.valueOf(Integer.parseInt(localException8)));
+          a(localQQAppInterface, paramMessageForArkApp);
+          localQQAppInterface.getMessageFacade().addSendMessage(paramMessageForArkApp);
+          localObject2 = a(paramMessageForArkApp);
+          ((aqcc)localObject1).process(paramMessageForArkApp.ark_app_message.toShareMsgJSONObject(), this.jdField_a_of_type_Aqcd, localObject2);
         }
-        catch (Exception localException9)
-        {
-          localException9.printStackTrace();
-        }
       }
-      break;
-      if (TextUtils.equals((CharSequence)localObject2, "kandian_daily_wrapper_alpha"))
-      {
-        bkwm.a("kandian_daily_wrapper_alpha", localException9);
-        break;
-      }
-      if (TextUtils.equals((CharSequence)localObject2, "kandian_daily_wrapper_default_text"))
-      {
-        bkwm.a("kandian_daily_wrapper_default_text", localException9);
-        break;
-      }
-      if (TextUtils.equals((CharSequence)localObject2, "kandian_daily_wrapper_drag_text"))
-      {
-        bkwm.a("kandian_daily_wrapper_drag_text", localException9);
-        break;
-      }
-      if (!TextUtils.equals((CharSequence)localObject2, "video_extract_frame")) {
+      if ((bool) || (localQQAppInterface == null)) {
         break;
       }
       if (QLog.isColorLevel()) {
-        QLog.d("ReadinjoyCommonConfProcessor", 2, "video_extract_frame = " + localException9);
+        QLog.e("ArkApp.ArkAsyncShareMsgManager", 2, new Object[] { "AAShare.failed onclick direct send msg uniseq=", Long.valueOf(paramMessageForArkApp.uniseq) });
       }
-      bkwm.a("kandian_video_extract_frame", localException9);
-      break;
-      label6364:
-      QLog.d("ReadinjoyCommonConfProcessor", 1, "receiveAllConfigs|type: 92,content_list is empty ");
+      paramMessageForArkApp.updateProcessStateAndExtraFlag(1002);
+      paramMessageForArkApp.saveMsgExtStrAndFlag(localQQAppInterface);
+      localQQAppInterface.getMessageFacade().addAndSendMessage(paramMessageForArkApp, null);
       return;
-      label6379:
-      bool = false;
-      break label2224;
-      label6385:
-      bool = false;
-      break label357;
-      label6391:
-      i += 1;
-      break label2488;
-      label6398:
-      bool = false;
-      break label4507;
-      label6404:
-      bool = false;
+      localObject1 = null;
+      continue;
+      localQQAppInterface = null;
+      localObject1 = null;
     }
-    label6410:
-    label6416:
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageForArkApp paramMessageForArkApp)
+  {
+    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString)) || (paramSessionInfo == null) || (paramMessageForArkApp == null))
+    {
+      QLog.e("ArkApp.ArkAsyncShareMsgManager", 2, "AAShare.checkToAsyncShareArkMsg invalid");
+      return false;
+    }
+    Object localObject = (ArkAppCenter)paramQQAppInterface.getManager(QQManagerFactory.ARK_APP_CENTER_MANAGER);
+    if (localObject != null)
+    {
+      localObject = ((ArkAppCenter)localObject).a();
+      if (localObject == null) {}
+    }
+    for (localObject = ((aqcb)localObject).a(paramString);; localObject = null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkApp.ArkAsyncShareMsgManager", 2, new Object[] { "AAShare.shareData curType=", Integer.valueOf(paramSessionInfo.curType), ", curFriendUin= ", paramSessionInfo.curFriendUin, ", troopUin=", paramSessionInfo.troopUin, ", istroop=", Integer.valueOf(paramMessageForArkApp.istroop), ", \n --shareMessage=", paramMessageForArkApp.ark_app_message.toShareMsgJSONObject() });
+      }
+      if (localObject != null)
+      {
+        boolean bool = ((aqcc)localObject).needProcess(paramMessageForArkApp.ark_app_message.toShareMsgJSONObject());
+        if (QLog.isColorLevel()) {
+          QLog.e("ArkApp.ArkAsyncShareMsgManager", 2, new Object[] { "AAShare.sendArkMessage needProcess=", Boolean.valueOf(bool) });
+        }
+        paramSessionInfo = new HashMap();
+        paramSessionInfo.put("appid", paramString);
+        if (bool) {}
+        for (paramString = "1";; paramString = "2")
+        {
+          paramSessionInfo.put("isProcess", paramString);
+          StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actAsyncShare", true, 0L, 0L, paramSessionInfo, null);
+          if (!bool) {
+            break;
+          }
+          paramMessageForArkApp.updateProcessStateAndExtraFlag(1001);
+          paramQQAppInterface.getMessageFacade().addSendMessage(paramMessageForArkApp);
+          paramQQAppInterface = a(paramMessageForArkApp);
+          ((aqcc)localObject).process(paramMessageForArkApp.ark_app_message.toShareMsgJSONObject(), this.jdField_a_of_type_Aqcd, paramQQAppInterface);
+          return true;
+        }
+      }
+      return false;
+    }
+  }
+  
+  public boolean a(MessageForArkApp paramMessageForArkApp)
+  {
+    boolean bool2;
+    if (paramMessageForArkApp == null)
+    {
+      bool2 = false;
+      return bool2;
+    }
     for (;;)
     {
-      k = i;
-      break;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if ((Bundle)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramMessageForArkApp.uniseq)) != null)
+        {
+          bool1 = true;
+          bool2 = bool1;
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.e("ArkApp.ArkAsyncShareMsgManager", 2, new Object[] { "AAShare.isProcessMsg isProcess=", Boolean.valueOf(bool1), ", msgid=", Long.valueOf(paramMessageForArkApp.uniseq) });
+          return bool1;
+        }
+      }
+      boolean bool1 = false;
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      paramMessage = paramMessage.obj;
+      if ((localQQAppInterface == null) || (paramMessage == null) || (!(paramMessage instanceof Bundle)))
+      {
+        QLog.e("ArkApp.ArkAsyncShareMsgManager", 1, new Object[] { "AAShare.handleMessage param invalid app=", localQQAppInterface, ",userData=", paramMessage });
+        return true;
+      }
+      Object localObject2 = (Bundle)paramMessage;
+      long l = ((Bundle)localObject2).getLong("key_process_message_uniseq");
+      paramMessage = ((Bundle)localObject2).getString("key_process_message_friend_uin");
+      int i = ((Bundle)localObject2).getInt("key_process_message_uin_type");
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if (this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(l)) != null)
+        {
+          this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(l));
+          ??? = localQQAppInterface.getMessageFacade().queryMsgItemByUniseq(paramMessage, i, l);
+          if ((??? == null) || (!(??? instanceof MessageForArkApp)))
+          {
+            QLog.e("ArkApp.ArkAsyncShareMsgManager", 1, "AAShare.handleMessage find ArkMsg failed!");
+            return true;
+          }
+        }
+        else
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("ArkApp.ArkAsyncShareMsgManager", 2, new Object[] { "AAShare.--handleMessage return bundle=", Integer.valueOf(System.identityHashCode(localObject2)), ", uniseq=", Long.valueOf(l) });
+          }
+          return true;
+        }
+      }
+      localObject2 = (MessageForArkApp)???;
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkApp.ArkAsyncShareMsgManager", 2, new Object[] { "AAShare.handleMessage find ArkMsg uniseq=", Long.valueOf(l), ", frienduin=", paramMessage, ", type=", Integer.valueOf(i), "\n ------>msgR=", ((MessageRecord)???).getLogColorContent() });
+      }
+      ((MessageForArkApp)localObject2).updateProcessStateAndExtraFlag(1003);
+      ((MessageForArkApp)localObject2).saveMsgExtStrAndFlag(localQQAppInterface);
+      localQQAppInterface.getMsgCache().a(((MessageForArkApp)localObject2).frienduin, ((MessageForArkApp)localObject2).istroop, ((MessageForArkApp)localObject2).uniseq);
+      a(localQQAppInterface, (MessageForArkApp)localObject2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqce
  * JD-Core Version:    0.7.0.1
  */

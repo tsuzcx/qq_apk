@@ -1,148 +1,245 @@
-import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.support.v7.widget.GridLayoutManager;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.util.Pair;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.activity.photo.album.AbstractPhotoListActivity.PhotoListAdapter;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import com.tencent.mobileqq.utils.AlbumUtil;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class akol
-  extends akns
+  extends akmj
 {
-  public boolean a;
+  private String jdField_a_of_type_JavaLangString = "";
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c;
   
-  public akol(Context paramContext)
+  akol(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    this(paramContext, false);
+    super(paramNewPhotoListActivity);
   }
   
-  public akol(Context paramContext, boolean paramBoolean)
+  public void caseVideo(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = amtj.a(2131697150);
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public Object a(int paramInt, bdyi parambdyi, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    if (paramMessageRecord == null)
-    {
-      parambdyi = null;
-      return parambdyi;
+    if (!bhbx.a()) {
+      QQToast.a(this.mActivity, ((NewPhotoListActivity)this.mActivity).getResources().getString(2131718340), 0).a();
     }
-    boolean bool = awig.a(paramMessageRecord);
-    if ((paramMessageRecord.msgtype != -2035) && (paramMessageRecord.msgtype != -2038) && (!bool)) {
-      return null;
-    }
-    if (bool)
+    do
     {
-      if ((paramObject instanceof akol))
+      do
       {
-        paramObject = (akol)paramObject;
-        paramObject.jdField_a_of_type_Bdyj.a(parambdyi.jdField_a_of_type_Bdyj);
-        return paramObject;
-      }
-      paramObject = new akol(BaseApplication.getContext());
-      paramObject.jdField_a_of_type_Bdyj = new bdyj(parambdyi.jdField_a_of_type_Bdyj);
-      return paramObject;
-    }
-    if ((paramMessageRecord instanceof MessageForDeliverGiftTips))
-    {
-      paramQQAppInterface = (MessageForDeliverGiftTips)paramMessageRecord;
-      paramInt = 1;
-      i = 1;
-      if (!(paramObject instanceof akol)) {
-        break label287;
-      }
-      paramMessageRecord = (akol)paramObject;
-      paramInt = i;
-      if (paramMessageRecord.jdField_a_of_type_Boolean)
-      {
-        paramInt = i;
-        if (!paramQQAppInterface.isToAll()) {
-          paramInt = 0;
+        do
+        {
+          return;
+          localObject1 = ((NewPhotoListActivity)this.mActivity).photoListAdapter.getItem(paramInt);
+        } while (localObject1 == null);
+        paramView = ((NewPhotoListActivity)this.mActivity).getIntent();
+        if (((LocalMediaInfo)localObject1).fileSize <= this.mPhotoCommonData.videoSizeLimit) {
+          break;
         }
+        paramView = bhdj.a(this.mActivity, "你选择的视频文件过大，无法发送。");
+        paramView.setPositiveButton(2131694399, new bhdx());
+        paramView.show();
+      } while (!this.c);
+      paramView = ((NewPhotoListActivity)this.mActivity).getIntent().getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
+      localObject1 = new Intent("key_video_size_overflow");
+      ((Intent)localObject1).putExtra("className", paramView);
+      ((NewPhotoListActivity)this.mActivity).sendBroadcast((Intent)localObject1);
+      return;
+      if ((!this.c) || (((LocalMediaInfo)localObject1).mDuration - this.mPhotoCommonData.videoDurationLimit <= 999L)) {
+        break;
       }
-      i = paramInt;
-      paramObject = paramMessageRecord;
-      if (!paramMessageRecord.jdField_a_of_type_Boolean)
+      paramView = bhdj.a(this.mActivity, anvx.a(2131707568));
+      paramView.setPositiveButton(2131694399, new bhdx());
+      paramView.show();
+      paramView = ((NewPhotoListActivity)this.mActivity).getIntent().getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
+    } while (!this.c);
+    Object localObject1 = new Intent("key_video_time_overflow");
+    ((Intent)localObject1).putExtra("className", paramView);
+    ((NewPhotoListActivity)this.mActivity).sendBroadcast((Intent)localObject1);
+    return;
+    Object localObject2 = AlbumUtil.sSelectItemAlbum;
+    Object localObject3;
+    if (!((HashMap)localObject2).containsKey(((LocalMediaInfo)localObject1).path))
+    {
+      localObject3 = new Pair(this.mPhotoCommonData.albumId, this.mPhotoCommonData.albumName);
+      ((HashMap)localObject2).put(((LocalMediaInfo)localObject1).path, localObject3);
+    }
+    ((NewPhotoListActivity)this.mActivity).recordLastPos(((LocalMediaInfo)localObject1).path);
+    if (!this.jdField_a_of_type_Akmi.jdField_b_of_type_Boolean)
+    {
+      paramView.putExtra("file_send_path", ((LocalMediaInfo)localObject1).path);
+      paramView.putExtra("PhotoConst.IS_VIDEO_SELECTED", true);
+      paramView.putExtra("PhotoConst.VIDEO_SIZE", ((LocalMediaInfo)localObject1).fileSize);
+      paramView.putExtra("file_send_duration", ((LocalMediaInfo)localObject1).mDuration);
+      paramView.putExtra("file_width", ((LocalMediaInfo)localObject1).mediaWidth);
+      paramView.putExtra("file_height", ((LocalMediaInfo)localObject1).mediaHeight);
+      paramView.putExtra("media_info", (Parcelable)localObject1);
+      localObject2 = new ArrayList();
+      ((ArrayList)localObject2).add(((LocalMediaInfo)localObject1).path);
+      if (this.jdField_a_of_type_Boolean)
       {
-        paramMessageRecord.jdField_a_of_type_Bdyj.a(parambdyi.jdField_a_of_type_Bdyj);
-        paramObject = paramMessageRecord;
+        ((NewPhotoListActivity)this.mActivity).showProgressDialog();
+        MediaScanner.getInstance(BaseApplicationImpl.getContext()).queryMediaInfoAsync(new akom(this, paramView, (ArrayList)localObject2), (LocalMediaInfo)localObject1);
+        return;
       }
-    }
-    for (int i = paramInt;; i = paramInt)
-    {
-      parambdyi = paramObject;
-      if (i == 0) {
-        break;
-      }
-      parambdyi = paramObject;
-      if (TextUtils.isEmpty(paramQQAppInterface.remindBrief)) {
-        break;
-      }
-      parambdyi = paramQQAppInterface.remindBrief.split("#");
-      paramObject.jdField_a_of_type_JavaLangString = ("[" + parambdyi[0] + "]");
-      return paramObject;
-      bcef.b(paramQQAppInterface, "P_CliOper", "BizTechReport", "", "Troop_gift", "MsgBizType.TYPE_TROOP_RECEIVED_FLOWSER_MSG, MessageRecord cast to GiftTips", 0, -1, paramMessageRecord.getClass().getName(), "", "", "");
-      return null;
-      label287:
-      paramObject = new akol(BaseApplication.getContext(), paramQQAppInterface.isToAll());
-      paramObject.jdField_a_of_type_Bdyj = new bdyj(parambdyi.jdField_a_of_type_Bdyj);
-    }
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
-    {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_Long = paramArrayOfByte.optLong("uniseq");
-      this.jdField_b_of_type_Long = paramArrayOfByte.optLong("shmsgseq");
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.optString("content");
-      this.jdField_b_of_type_Int = paramArrayOfByte.optInt("color");
-      this.jdField_a_of_type_Boolean = paramArrayOfByte.optBoolean("isToAll");
-      if (this.jdField_a_of_type_Bdyj == null) {
-        this.jdField_a_of_type_Bdyj = new bdyj();
-      }
-      this.jdField_a_of_type_Bdyj.a(paramArrayOfByte.getString("messageNavInfo"));
+      PhotoUtils.sendPhoto(this.mActivity, paramView, (ArrayList)localObject2, 2, false);
       return;
     }
-    catch (JSONException paramArrayOfByte)
+    if (!this.jdField_a_of_type_Akmi.isSingleMode)
     {
-      paramArrayOfByte.printStackTrace();
-    }
-  }
-  
-  public byte[] a()
-  {
-    return b();
-  }
-  
-  public byte[] b()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
-      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      localJSONObject.put("isToAll", this.jdField_a_of_type_Boolean);
-      if (this.jdField_a_of_type_Bdyj != null) {
-        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bdyj.a());
+      localObject1 = ((NewPhotoListActivity)this.mActivity).getIntent();
+      ((Intent)localObject1).putExtra("ALBUM_NAME", this.mPhotoCommonData.albumName);
+      ((Intent)localObject1).putExtra("ALBUM_ID", this.mPhotoCommonData.albumId);
+      localObject2 = ((NewPhotoListActivity)this.mActivity).photoListAdapter.getItem(paramInt);
+      ((Intent)localObject1).putExtra("PhotoConst.CURRENT_SELECTED_INDEX", ((LocalMediaInfo)localObject2).position);
+      ((Intent)localObject1).putStringArrayListExtra("PhotoConst.SELECTED_PATHS", this.mPhotoCommonData.selectedPhotoList);
+      ((Intent)localObject1).putIntegerArrayListExtra("PhotoConst.SELECTED_INDEXS", this.mPhotoCommonData.selectedIndex);
+      ((Intent)localObject1).putExtra("FROM_WHERE", "FROM_PHOTO_LIST");
+      ((Intent)localObject1).putExtra("PhotoConst.CURRENT_QUALITY_TYPE", this.mPhotoCommonData.currentQualityType);
+      ((Intent)localObject1).putExtra("PhotoConst.SHOW_ALBUM", true);
+      ((Intent)localObject1).putExtra("PhotoConst.SHOW_MAGIC_USE_PASTER", this.jdField_a_of_type_Akmi.e);
+      ((Intent)localObject1).putExtra("PasterConstants.paster_id", this.jdField_a_of_type_Akmi.jdField_a_of_type_JavaLangString);
+      ((Intent)localObject1).putExtra("PasterConstants.paster_cate_id", this.jdField_a_of_type_Akmi.jdField_b_of_type_JavaLangString);
+      akmi.sPhotoListFirstPos = ((NewPhotoListActivity)this.mActivity).gridLayoutManager.findFirstVisibleItemPosition();
+      localObject3 = this.mPhotoCommonData.selectedMediaInfoHashMap;
+      if (!((HashMap)localObject3).containsKey(((LocalMediaInfo)localObject2).path)) {
+        ((HashMap)localObject3).put(((LocalMediaInfo)localObject2).path, localObject2);
       }
-      return localJSONObject.toString().getBytes();
-    }
-    catch (JSONException localJSONException)
-    {
+      ((Intent)localObject1).putExtra("PeakConstants.selectedMediaInfoHashMap", (Serializable)localObject3);
+      ((Intent)localObject1).putExtra("PasterConstants.pasters_data", this.jdField_a_of_type_Akmi.jdField_b_of_type_JavaUtilHashMap);
+      ((Intent)localObject1).setClass(this.mActivity, NewPhotoPreviewActivity.class);
+      ((Intent)localObject1).addFlags(603979776);
+      if ((this.mPhotoCommonData.selectedPhotoList != null) && (this.mPhotoCommonData.selectedPhotoList.size() > 0)) {
+        bdla.b(null, "CliOper", "", this.mPhotoCommonData.myUin, "0X8005674", "0X8005674", 0, this.mPhotoCommonData.selectedPhotoList.size(), 0, "", "", "", "");
+      }
+      if (((akmq)this.mOtherCommonData).a()) {
+        ((NewPhotoListActivity)this.mActivity).startActivityForResult(paramView, 100010);
+      }
       for (;;)
       {
-        localJSONException.printStackTrace();
+        AlbumUtil.anim(this.mActivity, true, true);
+        return;
+        ((NewPhotoListActivity)this.mActivity).startActivity((Intent)localObject1);
+        ((NewPhotoListActivity)this.mActivity).finish();
       }
     }
+    localObject2 = new Intent(this.mActivity, ShortVideoPreviewActivity.class);
+    ((Intent)localObject2).putExtras(paramView);
+    ((Intent)localObject2).putExtra("file_send_path", ((LocalMediaInfo)localObject1).path);
+    ((Intent)localObject2).putExtra("file_send_size", ((LocalMediaInfo)localObject1).fileSize);
+    ((Intent)localObject2).putExtra("file_send_duration", ((LocalMediaInfo)localObject1).mDuration);
+    ((Intent)localObject2).putExtra("file_width", ((LocalMediaInfo)localObject1).mediaWidth);
+    ((Intent)localObject2).putExtra("file_height", ((LocalMediaInfo)localObject1).mediaHeight);
+    ((Intent)localObject2).putExtra("uin", this.jdField_a_of_type_Akmi.d);
+    ((Intent)localObject2).putExtra("uintype", this.jdField_a_of_type_Akmi.jdField_a_of_type_Int);
+    ((Intent)localObject2).putExtra("file_source", "album");
+    ((Intent)localObject2).putExtra("is_from_system_media", ((LocalMediaInfo)localObject1).isSystemMeidaStore);
+    ((Intent)localObject2).putExtra("PhotoConst.IS_FROM_TROOP_BAR", this.c);
+    if (this.jdField_a_of_type_Akmi.isSupportVideoCheckbox)
+    {
+      ((Intent)localObject2).putExtra("PhotoConst.IS_SUPPORT_VIDEO_CHECKBOX", true);
+      ((Intent)localObject2).putExtra("PhotoConst.PHOTO_PATHS", this.mPhotoCommonData.selectedPhotoList);
+    }
+    ((NewPhotoListActivity)this.mActivity).startActivityForResult((Intent)localObject2, 17);
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
+    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("from_tribe_class_name");
+    this.jdField_a_of_type_Boolean = "tribe".equals(paramIntent.getStringExtra("video_refer"));
+    this.jdField_b_of_type_Boolean = paramIntent.getBooleanExtra("from_tribe_slideshow", false);
+    this.c = paramIntent.getBooleanExtra("PhotoConst.IS_FROM_TROOP_BAR", false);
+    ((akmq)this.mOtherCommonData).a(this.jdField_b_of_type_Boolean, this.mPhotoCommonData);
+    if (((akmq)this.mOtherCommonData).a())
+    {
+      yzz.a().c(21);
+      yzz.a().b(13);
+      yzz.a().e();
+    }
+  }
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if ((!this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean))
+    {
+      super.onActivityResult(paramInt1, paramInt2, paramIntent);
+      return;
+    }
+    Object localObject = this.mPhotoCommonData.selectedPhotoList;
+    if ((QLog.isDevelopLevel()) && (localObject != null) && (((ArrayList)localObject).size() != 0)) {
+      QLog.d("PhotoListActivity", 4, "[NewPhotoListActivity] [onActivityResult] selectedPhotoList = " + ((ArrayList)localObject).size());
+    }
+    if (paramInt2 == -1)
+    {
+      if ((paramInt1 == 10012) && (this.jdField_b_of_type_Boolean))
+      {
+        ((NewPhotoListActivity)this.mActivity).setResult(-1, paramIntent);
+        ((NewPhotoListActivity)this.mActivity).finish();
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        ((NewPhotoListActivity)this.mActivity).setResult(-1, paramIntent);
+        ((NewPhotoListActivity)this.mActivity).finish();
+      }
+    }
+    else if ((paramInt1 == 10012) && (this.jdField_b_of_type_Boolean) && (paramIntent != null))
+    {
+      localObject = paramIntent.getStringExtra("PhotoConst.FROM_QQSTORY_SLIDESHOW_DATA");
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        FileUtils.deleteDirectory(new File((String)localObject).getParent());
+      }
+    }
+    PhotoUtils.onSendResult(this.mActivity, paramInt1, paramInt2, paramIntent, this.jdField_a_of_type_Akmi.h, this.mPhotoCommonData.myUin);
+  }
+  
+  public void onMagicStickClick(View paramView, Bundle paramBundle, int paramInt, Intent paramIntent)
+  {
+    super.onMagicStickClick(paramView, paramBundle, paramInt, paramIntent);
+    if ((this.mPhotoCommonData.selectedPhotoList.size() > 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    {
+      if (!TroopBarPublishActivity.class.getSimpleName().equals(this.jdField_a_of_type_JavaLangString)) {
+        break label64;
+      }
+      bgic.a("pub_page_new", "clk_photo_edit", 0, 0, new String[0]);
+    }
+    label64:
+    while (!TroopBarReplyActivity.class.getSimpleName().equals(this.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    bgic.a("reply", "clk_photo_edit", 0, 0, new String[0]);
+  }
+  
+  public void startPhotoPreviewActivity(Intent paramIntent)
+  {
+    if (this.jdField_b_of_type_Boolean)
+    {
+      ((NewPhotoListActivity)this.mActivity).startActivityForResult(paramIntent, 10012);
+      return;
+    }
+    super.startPhotoPreviewActivity(paramIntent);
   }
 }
 

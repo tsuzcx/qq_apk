@@ -1,47 +1,22 @@
-import android.view.View;
+import com.tencent.image.VideoDrawable.OnAudioPlayOnceListener;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 class ahgn
-  implements bjoe
+  implements VideoDrawable.OnAudioPlayOnceListener
 {
-  ahgn(ahgc paramahgc, boolean paramBoolean, bjnw parambjnw) {}
+  ahgn(ahgl paramahgl) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onFinish()
   {
-    switch (paramInt)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.e("ShortVideoPTVItemBuilder", 2, "VideoDrawable.OnAudioPlayOnceListener.onFinish");
     }
-    for (;;)
+    if ((ahgl.a() != null) && (ahgl.a().get() != null))
     {
-      try
-      {
-        this.jdField_a_of_type_Bjnw.dismiss();
-        return;
-      }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Ahgc.n();
-      }
-      else
-      {
-        this.jdField_a_of_type_Ahgc.l();
-        continue;
-        if (this.jdField_a_of_type_Boolean)
-        {
-          this.jdField_a_of_type_Ahgc.l();
-        }
-        else
-        {
-          this.jdField_a_of_type_Ahgc.k();
-          continue;
-          if (this.jdField_a_of_type_Boolean) {
-            this.jdField_a_of_type_Ahgc.k();
-          }
-        }
-      }
+      ahgl.a(ahgl.a(this.a), (ChatMessage)ahgl.a().get());
+      ahgl.a(null);
     }
   }
 }

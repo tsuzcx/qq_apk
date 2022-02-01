@@ -1,89 +1,77 @@
-import android.content.Context;
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import com.tencent.mobileqq.msf.sdk.utils.MonitorHttpInfo;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
-final class bdmw
-  implements BusinessObserver
+public class bdmw
+  extends QIPCModule
 {
-  bdmw(bdmx parambdmx) {}
+  private static bdmw a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  private bdmw(String paramString)
   {
-    localContext = BaseApplicationImpl.getApplication().getApplicationContext();
-    String str = localContext.getString(2131695753);
-    Object localObject2 = null;
-    int i = -1;
-    if (paramBoolean) {
-      paramInt = i;
+    super(paramString);
+  }
+  
+  public static bdmw a()
+  {
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new bdmw("NetworkMonitorIPCModule");
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NetworkMonitorIPCModule", 2, new Object[] { "NetworkMonitorIPCModule : " + paramString + ", " + paramBundle.toString(), ", " + paramInt });
+    }
+    if ("ACTION_REPORT_DOWNLOAD_URL".equalsIgnoreCase(paramString))
+    {
+      paramString = paramBundle.getString("BUNDLE_KEY_REPORT_DOWNLOAD_URL_URL", "");
+      bdmt.a().a(paramString);
     }
     for (;;)
     {
-      try
+      return new EIPCResult();
+      if ("ACTION_REPORT_HTTPINFO".equalsIgnoreCase(paramString))
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          continue;
-        }
-        paramInt = i;
-        localObject1 = new WebSsoBody.WebSsoResponseBody();
-        paramInt = i;
-        ((WebSsoBody.WebSsoResponseBody)localObject1).mergeFrom(paramBundle);
-        paramInt = i;
-        i = ((WebSsoBody.WebSsoResponseBody)localObject1).ret.get();
-        paramInt = i;
-        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject1).data.get());
-        if (i == 0) {
-          continue;
-        }
-        paramInt = i;
-        str = paramBundle.optString("msg");
-        localObject1 = localObject2;
-        paramBundle = str;
-        paramInt = i;
-        if (TextUtils.isEmpty(str))
+        try
         {
-          paramInt = i;
-          paramBundle = localContext.getString(2131695754, new Object[] { Integer.valueOf(i) });
-          localObject1 = localObject2;
+          paramString = (MonitorHttpInfo)paramBundle.getSerializable("BUNDLE_KEY_REPORT_HTTP_INFO_INFO");
+          String str = paramBundle.getString("BUNDLE_KEY_REPORT_DOWNLOAD_URL_PROCESS_NAME", "");
+          paramBundle = paramBundle.getString("BUNDLE_KEY_REPORT_DOWNLOAD_URL_TOP_ACTIVITY", "");
+          if (paramString != null)
+          {
+            try
+            {
+              bdmt.a().a(paramString, str, paramBundle);
+            }
+            catch (Throwable paramString) {}
+            continue;
+          }
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("NetworkMonitorIPCModule", 2, "MonitorHttpInfo == null");
         }
-        localObject2 = localObject1;
-        paramInt = i;
-        localObject1 = paramBundle;
-        paramBundle = localObject2;
+        catch (Exception paramString) {}
+        if (QLog.isColorLevel()) {
+          QLog.d("NetworkMonitorIPCModule", 2, new Object[] { "ClassCastException", paramString.toString() });
+        }
       }
-      catch (Exception paramBundle)
-      {
-        Object localObject1 = localContext.getString(2131695754, new Object[] { Integer.valueOf(9992) });
-        paramBundle = null;
-        continue;
-      }
-      this.a.a(paramInt, (String)localObject1, paramBundle);
-      return;
-      paramInt = i;
-      localObject1 = bdmu.a(paramBundle.getJSONObject("result").optJSONArray("feeds"));
-      paramBundle = str;
-      continue;
-      paramInt = i;
-      localObject1 = localContext.getString(2131695754, new Object[] { Integer.valueOf(9991) });
-      paramBundle = null;
-      paramInt = -1;
-      continue;
-      paramInt = i;
-      localObject1 = localContext.getString(2131695754, new Object[] { Integer.valueOf(9992) });
-      paramBundle = null;
-      paramInt = -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdmw
  * JD-Core Version:    0.7.0.1
  */

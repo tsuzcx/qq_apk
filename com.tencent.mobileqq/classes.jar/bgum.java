@@ -1,124 +1,120 @@
-import android.os.Build.VERSION;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
 import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Field;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.tts.SilkStreamPlayer;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.manager.TicketManager;
 
 public class bgum
-  extends bgxu
+  implements Handler.Callback
 {
-  public bgum(WebViewFragment paramWebViewFragment, int paramInt)
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private bgul jdField_a_of_type_Bgul;
+  private bguo jdField_a_of_type_Bguo;
+  protected bisl a;
+  private SilkStreamPlayer jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer;
+  private TicketManager jdField_a_of_type_MqqManagerTicketManager;
+  
+  public bgum(AppInterface paramAppInterface, Context paramContext)
   {
-    super(paramInt);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_MqqManagerTicketManager = ((TicketManager)paramAppInterface.getManager(2));
+    this.jdField_a_of_type_AndroidOsHandler = new bkys(this);
+    this.jdField_a_of_type_Bgul = new bgun(this);
   }
   
-  public int a()
+  private void c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WebLog_WebViewFragment", 2, "TASK_ID_BROWSER_ACTIVITY_RUN_ONCE.");
+    if (this.jdField_a_of_type_Bisl == null) {
+      this.jdField_a_of_type_Bisl = new bisl(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299080));
     }
-    long l;
-    boolean bool7;
-    boolean bool8;
-    boolean bool9;
-    boolean bool10;
-    boolean bool6;
-    if (Build.VERSION.SDK_INT < 19)
+    if (!((Activity)this.jdField_a_of_type_AndroidContentContext).isFinishing()) {
+      this.jdField_a_of_type_Bisl.show();
+    }
+  }
+  
+  private void d()
+  {
+    if ((this.jdField_a_of_type_Bisl != null) && (this.jdField_a_of_type_Bisl.isShowing())) {
+      this.jdField_a_of_type_Bisl.dismiss();
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer.a();
+    }
+    if (this.jdField_a_of_type_Bgul != null) {
+      if (this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer == null) {
+        break label63;
+      }
+    }
+    label63:
+    for (String str = this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer.a();; str = "")
     {
-      l = System.currentTimeMillis();
-      bool7 = false;
-      bool8 = false;
-      bool9 = false;
-      bool10 = false;
-      bool6 = false;
-      bool2 = bool6;
-      bool3 = bool7;
-      bool4 = bool8;
-      bool5 = bool9;
+      this.jdField_a_of_type_Bgul.b(str);
+      if (this.jdField_a_of_type_Bguo != null) {
+        this.jdField_a_of_type_Bguo.b();
+      }
+      return;
+    }
+  }
+  
+  public void a(bguo parambguo)
+  {
+    this.jdField_a_of_type_Bguo = parambguo;
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext)) {
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, anvx.a(2131715196), 1).a();
+    }
+    do
+    {
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer = new SilkStreamPlayer(this.jdField_a_of_type_AndroidContentContext, paramString1, paramString2, this.jdField_a_of_type_MqqManagerTicketManager.getSkey(paramString2));
+      this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer.a(paramString3);
+      this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer.a(this.jdField_a_of_type_Bgul, 0, 0);
+    } while (this.jdField_a_of_type_Bguo == null);
+    this.jdField_a_of_type_Bguo.a();
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer.a();
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer.b();
+    }
+    this.jdField_a_of_type_Bguo = null;
+    this.jdField_a_of_type_Bgul = null;
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
     }
     for (;;)
     {
-      try
-      {
-        Object localObject = Class.forName("android.webkit.WebViewCore");
-        bool2 = bool6;
-        bool3 = bool7;
-        bool4 = bool8;
-        bool5 = bool9;
-        Field localField = ((Class)localObject).getDeclaredField("sWebCoreHandler");
-        bool2 = bool6;
-        bool3 = bool7;
-        bool4 = bool8;
-        bool5 = bool9;
-        localField.setAccessible(true);
-        bool2 = bool6;
-        bool3 = bool7;
-        bool4 = bool8;
-        bool5 = bool9;
-        localObject = (Handler)localField.get(localObject);
-        bool1 = bool10;
-        if (localObject == null) {
-          continue;
-        }
-        bool2 = bool6;
-        bool3 = bool7;
-        bool4 = bool8;
-        bool5 = bool9;
-        localObject = ((Handler)localObject).getLooper();
-        bool1 = bool10;
-        if (localObject == null) {
-          continue;
-        }
-        bool2 = bool6;
-        bool3 = bool7;
-        bool4 = bool8;
-        bool5 = bool9;
-        bool1 = bool10;
-        if (((Looper)localObject).getThread().getState() != Thread.State.WAITING) {
-          continue;
-        }
-        bool1 = true;
-      }
-      catch (ClassNotFoundException localClassNotFoundException)
-      {
-        bool1 = bool2;
-        localClassNotFoundException.printStackTrace();
-        continue;
-      }
-      catch (NoSuchFieldException localNoSuchFieldException)
-      {
-        bool1 = bool3;
-        localNoSuchFieldException.printStackTrace();
-        continue;
-      }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        bool1 = bool4;
-        localIllegalAccessException.printStackTrace();
-        continue;
-      }
-      catch (ClassCastException localClassCastException)
-      {
-        boolean bool1 = bool5;
-        localClassCastException.printStackTrace();
-        continue;
-        if (!bool1) {
-          continue;
-        }
-        int i = 0;
-        continue;
-      }
-      bool2 = bool1;
-      bool3 = bool1;
-      bool4 = bool1;
-      bool5 = bool1;
-      bcef.b(null, "P_CliOper", "BizTechReport", "", "web", "webcore_wait", 0, 1, i, "", "", "", "");
-      if (QLog.isColorLevel()) {
-        QLog.d("WebLog_WebViewFragment", 2, "check if WebViewCordThread is waiting: " + bool1 + ", cost: " + (System.currentTimeMillis() - l));
-      }
-      return 1;
-      i = 1;
+      return false;
+      c();
+      continue;
+      d();
     }
   }
 }

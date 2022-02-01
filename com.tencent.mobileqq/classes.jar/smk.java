@@ -1,15 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.Window;
 
-public class smk
-  implements oww
+class smk
+  implements DialogInterface.OnShowListener
 {
-  public smk(ReadInJoyFastWebBottomSocialView paramReadInJoyFastWebBottomSocialView) {}
+  smk(smg paramsmg, bkzi parambkzi) {}
   
-  public void a(int paramInt)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    if (paramInt != 2) {
-      ReadInJoyFastWebBottomSocialView.a(this.a, true);
-    }
+    smg.a(this.jdField_a_of_type_Smg, "mShareActionSheet onShow()");
+    this.jdField_a_of_type_Bkzi.getWindow().clearFlags(8);
   }
 }
 

@@ -1,76 +1,71 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.util.SystemUtil;
-import com.tencent.mobileqq.vfs.VFSAssistantUtils;
-import java.io.File;
+import com.tencent.qphone.base.util.QLog;
 
 public class lbe
+  implements ncq
 {
-  public static String a()
+  public void a(String paramString1, String paramString2)
   {
-    return VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + "qav" + File.separator);
-  }
-  
-  public static String b()
-  {
-    return VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + "ptv_template" + File.separator);
-  }
-  
-  public static String c()
-  {
-    return VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + "new_ptv_template" + File.separator);
-  }
-  
-  public static String d()
-  {
-    return c() + "new_ptv_template_usable" + File.separator;
-  }
-  
-  public static String e()
-  {
-    return a() + "effect";
-  }
-  
-  public static String f()
-  {
-    return VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + "funcall" + File.separator);
-  }
-  
-  public static String g()
-  {
-    if (SystemUtil.isExistSDCard()) {}
-    for (String str1 = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH);; str1 = BaseApplicationImpl.getApplication().getFilesDir().getAbsolutePath())
-    {
-      String str2 = str1;
-      if (str1 != null)
-      {
-        str2 = str1;
-        if (!str1.endsWith(File.separator)) {
-          str2 = str1 + File.separator;
-        }
-      }
-      return str2 + "pddata/prd/" + "av_redpacket" + File.separator;
+    if (QLog.isDevelopLevel()) {
+      QLog.d(paramString1, 4, paramString2);
     }
   }
   
-  public static String h()
+  public void a(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    return a() + "beauty" + File.separator;
+    QLog.i(paramString1, 1, paramString2, paramThrowable);
   }
   
-  public static String i()
+  public boolean a()
   {
-    return VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + "av_image_data" + File.separator);
+    return QLog.isDevelopLevel();
   }
   
-  public static String j()
+  public void b(String paramString1, String paramString2)
   {
-    return VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + "av_report_record_dir");
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
+    }
   }
   
-  public static String k()
+  public boolean b()
   {
-    return BaseApplicationImpl.getLogExternalPath(BaseApplicationImpl.getContext()) + "/tencent/msflogs/com/tencent/mobileqq/";
+    return QLog.isColorLevel();
+  }
+  
+  public void c(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 1, paramString2);
+  }
+  
+  public void d(String paramString1, String paramString2)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d(paramString1, 4, paramString2);
+    }
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d(paramString1, 4, paramString2);
+    }
+  }
+  
+  public void f(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
+    }
+  }
+  
+  public void g(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 1, paramString2);
+  }
+  
+  public void h(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 1, paramString2);
   }
 }
 

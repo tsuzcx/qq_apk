@@ -1,10 +1,10 @@
 package com.tencent.biz.widgets;
 
-import aaes;
-import aaet;
-import aaeu;
-import aaev;
-import aaew;
+import aaue;
+import aauf;
+import aaug;
+import aauh;
+import aaui;
 import android.animation.Animator.AnimatorListener;
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -18,17 +18,17 @@ import java.util.HashMap;
 import java.util.Map;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
-import ugu;
+import uur;
 
 public class TabLayout
   extends HorizontalListView
 {
-  private aaew jdField_a_of_type_Aaew;
+  private aaui jdField_a_of_type_Aaui;
   private Map<Integer, View> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private Function1<Canvas, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1 = new aaeu(this);
+  private Function1<Canvas, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1 = new aaug(this);
   private boolean jdField_a_of_type_Boolean;
   private Map<Integer, Integer> jdField_b_of_type_JavaUtilMap = new HashMap();
-  private Function1<Canvas, Unit> jdField_b_of_type_KotlinJvmFunctionsFunction1 = new aaev(this);
+  private Function1<Canvas, Unit> jdField_b_of_type_KotlinJvmFunctionsFunction1 = new aauh(this);
   
   public TabLayout(Context paramContext)
   {
@@ -73,8 +73,8 @@ public class TabLayout
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Aaew != null) && (!this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_Aaew.notifyDataSetChanged();
+    if ((this.jdField_a_of_type_Aaui != null) && (!this.jdField_a_of_type_Boolean)) {
+      this.jdField_a_of_type_Aaui.notifyDataSetChanged();
     }
   }
   
@@ -107,8 +107,8 @@ public class TabLayout
       }
       Object localObject = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
       ((ValueAnimator)localObject).setDuration(500L);
-      ((ValueAnimator)localObject).addUpdateListener(new aaes(this, paramInt1, paramInt2, m, n, localView, j));
-      ((ValueAnimator)localObject).addListener(new aaet(this, paramAnimatorListener));
+      ((ValueAnimator)localObject).addUpdateListener(new aaue(this, paramInt1, paramInt2, m, n, localView, j));
+      ((ValueAnimator)localObject).addListener(new aauf(this, paramAnimatorListener));
       ((ValueAnimator)localObject).start();
       return;
     }
@@ -119,7 +119,7 @@ public class TabLayout
   
   public void dispatchDraw(Canvas paramCanvas)
   {
-    ugu.a.a(paramCanvas, true, this.jdField_b_of_type_KotlinJvmFunctionsFunction1);
+    uur.a.a(paramCanvas, true, this.jdField_b_of_type_KotlinJvmFunctionsFunction1);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -138,14 +138,14 @@ public class TabLayout
   
   public void draw(Canvas paramCanvas)
   {
-    ugu.a.a(paramCanvas, true, this.jdField_a_of_type_KotlinJvmFunctionsFunction1);
+    uur.a.a(paramCanvas, true, this.jdField_a_of_type_KotlinJvmFunctionsFunction1);
   }
   
-  public void setAdapter(aaew paramaaew)
+  public void setAdapter(aaui paramaaui)
   {
-    super.setAdapter(paramaaew);
-    this.jdField_a_of_type_Aaew = paramaaew;
-    this.jdField_a_of_type_Aaew.a(this);
+    super.setAdapter(paramaaui);
+    this.jdField_a_of_type_Aaui = paramaaui;
+    this.jdField_a_of_type_Aaui.a(this);
   }
   
   public void setChildView(int paramInt, View paramView)

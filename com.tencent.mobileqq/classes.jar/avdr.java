@@ -1,172 +1,85 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.10;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.11;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.14;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.16;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.4;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.5;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.6;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.7;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.9;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import android.text.TextUtils;
+import com.tencent.mobileqq.gamecenter.message.GameBasicInfo;
+import com.tencent.mobileqq.gamecenter.message.GameUserInfo;
 
 public class avdr
 {
-  private static String a = "";
+  public static final String a;
+  public int a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
   
-  public static QQCustomDialog a(int paramInt, String paramString)
+  static
   {
-    QQCustomDialog localQQCustomDialog = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationDialogUtil", 2, "showFloatExitConfirmDialog: invoked. ");
+    jdField_a_of_type_JavaLangString = avec.jdField_a_of_type_JavaLangString + "GameDetailInfo";
+  }
+  
+  public static avdr a(GameBasicInfo paramGameBasicInfo, GameUserInfo paramGameUserInfo)
+  {
+    avdr localavdr = new avdr();
+    if ((paramGameBasicInfo == null) || (paramGameUserInfo == null)) {
+      return localavdr;
     }
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if (localBaseActivity != null)
+    if ((TextUtils.isEmpty(paramGameBasicInfo.mAppId)) || (TextUtils.isEmpty(paramGameUserInfo.mAppId)))
     {
-      localQQCustomDialog = bfur.a(localBaseActivity, 230, null, localBaseActivity.getString(2131718493), 2131690768, 2131691135, new avdw(), new avdx(localBaseActivity, paramInt, paramString));
-      paramString = new LocationDialogUtil.14(localBaseActivity, localQQCustomDialog);
-      ThreadManager.getUIHandlerV2().postDelayed(paramString, 500L);
+      com.tencent.qphone.base.util.QLog.w(jdField_a_of_type_JavaLangString, 1, "appId is empty.");
+      return localavdr;
     }
-    return localQQCustomDialog;
-  }
-  
-  public static void a(Activity paramActivity)
-  {
-    paramActivity = new LocationDialogUtil.9(paramActivity);
-    ThreadManager.getUIHandlerV2().postDelayed(paramActivity, 500L);
-  }
-  
-  public static void a(Activity paramActivity, int paramInt1, String paramString, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationDialogUtil", 2, new Object[] { "showStartShareLocationDialog: invoked. ", "context = [" + paramActivity + "], uinType = [" + paramInt1 + "], frienduin = [" + paramString + "]" });
+    if (!paramGameBasicInfo.mAppId.equals(paramGameUserInfo.mAppId))
+    {
+      com.tencent.qphone.base.util.QLog.w(jdField_a_of_type_JavaLangString, 1, "warning! appId should be the same!");
+      return localavdr;
     }
-    paramActivity = new LocationDialogUtil.6(paramActivity, paramInt1, paramString, paramInt2);
-    ThreadManager.getUIHandlerV2().post(paramActivity);
+    localavdr.jdField_b_of_type_JavaLangString = paramGameUserInfo.mRoleId;
+    localavdr.jdField_c_of_type_JavaLangString = paramGameUserInfo.mAppId;
+    localavdr.jdField_d_of_type_JavaLangString = paramGameUserInfo.mFaceUrl;
+    localavdr.jdField_a_of_type_Int = paramGameUserInfo.mSex;
+    localavdr.g = paramGameUserInfo.mLevelPic;
+    localavdr.h = paramGameUserInfo.mLevelText;
+    localavdr.e = paramGameUserInfo.mNickInGame;
+    localavdr.f = paramGameUserInfo.mPartitioName;
+    localavdr.jdField_b_of_type_Int = paramGameUserInfo.mOnlineType;
+    localavdr.jdField_c_of_type_Int = paramGameUserInfo.mSwitchInGame;
+    localavdr.k = paramGameUserInfo.mOnLineDesc;
+    localavdr.i = paramGameBasicInfo.mName;
+    localavdr.j = paramGameBasicInfo.mIconUrl;
+    localavdr.l = paramGameBasicInfo.mStartGameUrl;
+    localavdr.jdField_d_of_type_Int = paramGameBasicInfo.mMsgMaxLen;
+    return localavdr;
   }
   
-  static void a(Activity paramActivity, avfq paramavfq)
+  public void a()
   {
-    paramActivity = new LocationDialogUtil.4(paramActivity, paramavfq);
-    ThreadManager.getUIHandlerV2().post(paramActivity);
-  }
-  
-  public static void a(Activity paramActivity, QQCustomDialog paramQQCustomDialog)
-  {
-    if (paramActivity != null) {}
     try
     {
-      if (!paramActivity.isFinishing())
-      {
-        paramQQCustomDialog.show();
-        a = String.valueOf(paramActivity.hashCode());
-        if (QLog.isColorLevel()) {
-          QLog.d("LocationDialogUtil", 2, new Object[] { "showSafely: invoked. ", " currentDialogActivityHash: ", a });
-        }
+      StringBuilder localStringBuilder = new StringBuilder(600);
+      localStringBuilder.append(" roleId:").append(this.jdField_b_of_type_JavaLangString).append(",appid:").append(this.jdField_c_of_type_JavaLangString).append(",mSwitchInGame:").append(this.jdField_c_of_type_Int).append(",onlineType:").append(this.jdField_b_of_type_Int).append(",mOnLineDesc:").append(this.k).append(",partName:").append(this.f).append(",mMsgMaxLen:").append(this.jdField_d_of_type_Int).append(",levelText:").append(this.h).append(",gameName:").append(this.i).append(",sex:").append(this.jdField_a_of_type_Int).append(",nick:").append(this.e).append(",levelPic:").append(this.g).append(",iconUrl:").append(this.j).append(",faceUrl:").append(this.jdField_d_of_type_JavaLangString).append(",startGameUrl:").append(this.l);
+      if (com.tencent.TMG.utils.QLog.isColorLevel()) {
+        com.tencent.TMG.utils.QLog.d(jdField_a_of_type_JavaLangString, 0, localStringBuilder.toString());
       }
       return;
     }
-    catch (Exception paramActivity)
+    catch (Throwable localThrowable)
     {
-      QLog.e("LocationDialogUtil", 1, "showSafely: failed. ", paramActivity);
+      com.tencent.qphone.base.util.QLog.w(jdField_a_of_type_JavaLangString, 1, localThrowable.getMessage());
     }
   }
   
-  public static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, LatLng paramLatLng1, LatLng paramLatLng2)
+  public String toString()
   {
-    a(paramActivity, bfur.a(paramActivity, 230, null, paramActivity.getResources().getString(2131693503), 2131690620, 2131694201, new avds(paramActivity, paramString1, paramString2, paramString3, paramLatLng1, paramLatLng2), new avea()));
-  }
-  
-  public static void a(BaseActivity paramBaseActivity)
-  {
-    if (paramBaseActivity == null) {
-      return;
-    }
-    bhlw.b();
-    QQCustomDialog localQQCustomDialog = bfur.a(paramBaseActivity, 230, null, "位置共享将收起为小窗进行展示，请开启QQ悬浮窗权限以正常使用功能。", paramBaseActivity.getString(2131690620), paramBaseActivity.getString(2131694201), new avdy(paramBaseActivity), null);
-    localQQCustomDialog.setCancelable(false);
-    a(paramBaseActivity, localQQCustomDialog);
-  }
-  
-  public static void a(BaseActivity paramBaseActivity, int paramInt1, int paramInt2, String paramString)
-  {
-    LocationDialogUtil.5 local5 = new LocationDialogUtil.5(paramBaseActivity);
-    ThreadManager.getUIHandlerV2().post(local5);
-    avcw.a(paramBaseActivity.app).a(paramInt2, paramString, paramInt1, 2);
-  }
-  
-  public static void a(BaseActivity paramBaseActivity, int paramInt1, String paramString, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationDialogUtil", 2, new Object[] { "showEnterOtherRoomExitDialog: invoked. ", "activity = [" + paramBaseActivity + "], uinType = [" + paramInt1 + "], uin = [" + paramString + "], entryType = [" + paramInt2 + "]" });
-    }
-    if (paramInt2 == 1) {}
-    for (String str = paramBaseActivity.getResources().getString(2131718491);; str = paramBaseActivity.getResources().getString(2131718490))
-    {
-      paramBaseActivity = new LocationDialogUtil.11(paramBaseActivity, str, paramInt1, paramString, paramInt2);
-      ThreadManager.getUIHandlerV2().postDelayed(paramBaseActivity, 500L);
-      return;
-    }
-  }
-  
-  public static boolean a(Activity paramActivity)
-  {
-    if ((paramActivity instanceof PublicFragmentActivity))
-    {
-      paramActivity = paramActivity.getIntent().getStringExtra("FRAGMENT_KEY");
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationDialogUtil", 2, new Object[] { "activityIsShareOrPickFragment: invoked. ", " key: ", paramActivity });
-      }
-      if (("LocationShareFragment".equals(paramActivity)) || ("LocationPickFragment".equals(paramActivity))) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  private static void b(int paramInt, String paramString)
-  {
-    int i = 2;
-    if (paramInt == 3) {
-      i = 1;
-    }
-    for (;;)
-    {
-      bcef.b(null, "CliOper", "", "", paramString, paramString, i, 0, "", "0", "0", "");
-      return;
-      if (paramInt != 2) {
-        i = 0;
-      }
-    }
-  }
-  
-  public static void b(Activity paramActivity)
-  {
-    paramActivity = new LocationDialogUtil.10(paramActivity);
-    ThreadManager.getUIHandlerV2().postDelayed(paramActivity, 500L);
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationDialogUtil", 2, new Object[] { "showRoomJoinLimitedDialog: invoked. showRoomJoinLimitedDialog#post ", " runnable: ", paramActivity });
-    }
-  }
-  
-  public static void b(BaseActivity paramBaseActivity)
-  {
-    paramBaseActivity = new LocationDialogUtil.16(paramBaseActivity);
-    ThreadManager.getUIHandlerV2().postDelayed(paramBaseActivity, 1000L);
-  }
-  
-  static void b(BaseActivity paramBaseActivity, int paramInt1, int paramInt2, String paramString)
-  {
-    paramBaseActivity = new LocationDialogUtil.7(paramBaseActivity);
-    ThreadManager.getUIHandlerV2().postDelayed(paramBaseActivity, 7000L);
+    return "GameDetailInfo{mRoleId='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mAppId='" + this.jdField_c_of_type_JavaLangString + '\'' + ", mFaceUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + ", mNickInGame='" + this.e + '\'' + ", mPartitioName='" + this.f + '\'' + ", mLevelPic='" + this.g + '\'' + ", mLevelText='" + this.h + '\'' + ", mSex=" + this.jdField_a_of_type_Int + ", mOnlineType=" + this.jdField_b_of_type_Int + ", mName='" + this.i + '\'' + ", mIconUrl='" + this.j + '\'' + ", mSwitchInGame=" + this.jdField_c_of_type_Int + ", mOnLineDesc='" + this.k + '\'' + ", mStartGameUrl='" + this.l + '\'' + ", mMsgMaxLen=" + this.jdField_d_of_type_Int + '}';
   }
 }
 

@@ -1,36 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.HashMap;
 
 public class apxz
 {
-  public boolean a;
-  
-  public static apxz a(String paramString)
-  {
-    if (paramString == null) {}
-    for (;;)
-    {
-      return null;
-      try
-      {
-        apxz localapxz = new apxz();
-        if (new JSONObject(paramString).optInt("openSwitch", 0) == 1) {}
-        for (boolean bool = true;; bool = false)
-        {
-          localapxz.a = bool;
-          return localapxz;
-        }
-        if (!QLog.isColorLevel()) {}
-      }
-      catch (Exception paramString) {}
-    }
-    QLog.e("GlobalSearchConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
-  }
+  public int a;
+  public final HashMap<String, apya> a = new HashMap();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apxz
  * JD-Core Version:    0.7.0.1
  */

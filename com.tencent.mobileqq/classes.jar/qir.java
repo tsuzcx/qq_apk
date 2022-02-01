@@ -1,123 +1,78 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import android.text.format.DateUtils;
-import android.util.SparseArray;
-import android.view.View;
-import android.widget.ImageView.ScaleType;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInjoyApngImageView.1;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.image.ImageBase;
-import java.util.Date;
+import com.tencent.biz.pubaccount.readinjoy.model.handler.RIJCreateUGCTopicHandler.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ExecutorService;
+import tencent.im.oidb.cmd0xc16.oidb_cmd0xc16.ReqBody;
+import tencent.im.oidb.cmd0xc16.oidb_cmd0xc16.RspBody;
 
 public class qir
-  extends ImageBase
+  extends qii
 {
-  private static final Drawable a;
-  public NativeReadInjoyImageView a;
-  
-  static
+  public qir(qep paramqep, Handler paramHandler, AppInterface paramAppInterface, EntityManager paramEntityManager, qxn paramqxn, ExecutorService paramExecutorService)
   {
-    jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#00000000"));
+    super(paramqep, paramHandler, paramAppInterface, paramEntityManager, paramqxn, paramExecutorService);
   }
   
-  public qir(VafContext paramVafContext)
+  public void a(TopicInfo paramTopicInfo)
   {
-    super(paramVafContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView = new NativeReadInjoyImageView(paramVafContext.getContext());
-  }
-  
-  private static long a(Date paramDate1, Date paramDate2)
-  {
-    return Math.abs((paramDate1.getTime() - paramDate2.getTime()) / 86400000L);
-  }
-  
-  private void a(String paramString)
-  {
-    new Handler(Looper.getMainLooper()).postDelayed(new ReadInjoyApngImageView.1(this, paramString), 1500L);
-  }
-  
-  public int getComMeasuredHeight()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView;
-  }
-  
-  public void loadImage(String paramString)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("http")) && (!DateUtils.isToday(bfyz.b("search_word_prefix_ug_weishi_opt_day_show_time"))))
+    oidb_cmd0xc16.ReqBody localReqBody = new oidb_cmd0xc16.ReqBody();
+    Object localObject1 = "";
+    if (paramTopicInfo != null)
     {
-      bfyz.a("search_word_prefix_ug_weishi_opt_day_show_time", System.currentTimeMillis());
-      if (a(new Date(System.currentTimeMillis()), new Date(bfyz.b("search_word_prefix_ug_weishi_opt_week_first_show_time"))) <= 7L) {
-        break label87;
+      long l = paramTopicInfo.b();
+      localReqBody.uint64_uin.set(l);
+      Object localObject2 = paramTopicInfo.a();
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
       }
-      bfyz.a("search_word_prefix_ug_weishi_opt_week_first_show_time", System.currentTimeMillis());
-      bfyz.a("search_word_prefix_ug_weishi_opt_week_first_show_count", 1);
-      a(paramString);
+      Object localObject3 = paramTopicInfo.b();
+      localObject2 = localObject3;
+      if (localObject3 == null) {
+        localObject2 = "";
+      }
+      String str = paramTopicInfo.d();
+      localObject3 = str;
+      if (str == null) {
+        localObject3 = "";
+      }
+      str = paramTopicInfo.c();
+      paramTopicInfo = str;
+      if (str == null) {
+        paramTopicInfo = "";
+      }
+      localReqBody.bytes_topic_title.set(ByteStringMicro.copyFromUtf8((String)localObject1));
+      localReqBody.bytes_topic_desc.set(ByteStringMicro.copyFromUtf8((String)localObject2));
+      localReqBody.bytes_topic_pic_url.set(ByteStringMicro.copyFromUtf8((String)localObject3));
+      localReqBody.bytes_topic_cover_pic_url.set(ByteStringMicro.copyFromUtf8(paramTopicInfo));
+      localObject1 = "uin:" + l + "  title:" + (String)localObject1 + "  des:" + (String)localObject2 + " headUrl:" + (String)localObject3 + " coerUrl:" + paramTopicInfo;
     }
-    label87:
-    while (bfyz.a("search_word_prefix_ug_weishi_opt_week_first_show_count") >= 3) {
-      return;
+    QLog.d("RIJCreateUGCTopicHandler", 1, " request0xc16CreateTopic, " + (String)localObject1);
+    paramTopicInfo = qxp.a("OidbSvc.0xc16", 3094, 0, localReqBody.toByteArray());
+    this.jdField_a_of_type_Qep.a(paramTopicInfo);
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    oidb_cmd0xc16.RspBody localRspBody = new oidb_cmd0xc16.RspBody();
+    int i = qxp.a(paramFromServiceMsg, paramObject, localRspBody);
+    long l = 0L;
+    paramToServiceMsg = "";
+    if (localRspBody.uint64_topic_id.has()) {
+      l = localRspBody.uint64_topic_id.get();
     }
-    bfyz.a("search_word_prefix_ug_weishi_opt_week_first_show_count", bfyz.a("search_word_prefix_ug_weishi_opt_week_first_show_count") + 1);
-    a(paramString);
-  }
-  
-  public void onComDraw(Canvas paramCanvas)
-  {
-    super.onComDraw(paramCanvas);
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setPadding(this.mPaddingLeft, this.mPaddingTop, this.mPaddingRight, this.mPaddingBottom);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setScaleType((ImageView.ScaleType)ImageBase.IMAGE_SCALE_TYPE.get(this.mScaleType, ImageView.ScaleType.CENTER_CROP));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setCorner(this.mBorderTopLeftRadius, this.mBorderTopRightRadius, this.mBorderBottomLeftRadius, this.mBorderBottomRightRadius);
-    loadImage(this.mSrc);
-    refresh();
-  }
-  
-  public void reset()
-  {
-    super.reset();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setImageSrc(null);
-    this.mSrc = null;
-  }
-  
-  public void setBitmap(Bitmap paramBitmap, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setImageBitmap(paramBitmap);
-  }
-  
-  public void setImageDrawable(Drawable paramDrawable, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setImageDrawable(paramDrawable);
+    if (localRspBody.bytes_topic_url.has()) {
+      paramToServiceMsg = localRspBody.bytes_topic_url.get().toStringUtf8();
+    }
+    this.jdField_a_of_type_AndroidOsHandler.post(new RIJCreateUGCTopicHandler.1(this, i, l, paramToServiceMsg));
   }
 }
 

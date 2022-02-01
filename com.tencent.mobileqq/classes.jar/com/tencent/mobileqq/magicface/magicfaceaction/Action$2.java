@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.magicface.magicfaceaction;
 
-import avlg;
+import awrl;
 import java.util.TimerTask;
 
 public class Action$2
   extends TimerTask
 {
-  public Action$2(avlg paramavlg) {}
+  public Action$2(awrl paramawrl) {}
   
   public void run()
   {

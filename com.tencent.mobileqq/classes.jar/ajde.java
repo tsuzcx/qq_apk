@@ -1,39 +1,39 @@
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
+import com.tencent.mobileqq.activity.contact.recommendtroop.RecommendTroopListWrapper.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import java.util.ArrayList;
 import java.util.List;
+import mqq.os.MqqHandler;
 
 public class ajde
-  extends anxo
+  extends aofu
 {
-  private WeakReference<Conversation> a;
+  ajde(ajdc paramajdc) {}
   
-  public ajde(Conversation paramConversation)
+  protected void onGetAddContactFindTroopNearbyTroop(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList, boolean paramBoolean3)
   {
-    this.a = new WeakReference(paramConversation);
+    this.a.a(paramBoolean1, paramInt1, paramInt2, paramBoolean2, paramArrayList, paramBoolean3);
   }
   
-  protected void onGetAppletsDetail(boolean paramBoolean, List<AppletsAccountInfo> paramList)
+  protected void onGetAddContactFindTroopRecommendTroop(boolean paramBoolean1, int paramInt1, String paramString, int paramInt2, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList, boolean paramBoolean3)
   {
-    if ((paramBoolean) && (paramList != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("AppletsObserver", 2, "onGetAppletsDetail:  isSuccess: " + paramBoolean + ", data.size = " + paramList.size());
-      }
-      Conversation localConversation = (Conversation)this.a.get();
-      if (localConversation != null)
-      {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          AppletsAccountInfo localAppletsAccountInfo = (AppletsAccountInfo)paramList.next();
-          if (localAppletsAccountInfo != null) {
-            localConversation.a(9, localAppletsAccountInfo.uin, 1038);
-          }
-        }
-      }
+    this.a.a(paramBoolean1, paramInt1, paramString, paramInt2, paramBoolean2, paramArrayList, paramBoolean3);
+  }
+  
+  protected void onGetTroopDataCardRecommendTroop(boolean paramBoolean1, long paramLong, int paramInt, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList)
+  {
+    this.a.a(paramBoolean1, paramLong, paramInt, paramBoolean2, paramArrayList);
+  }
+  
+  protected void onRecommendTroopBack(boolean paramBoolean, List<RecommendTroopItem> paramList)
+  {
+    this.a.a(paramBoolean);
+  }
+  
+  protected void onTroopManagerSuccess(int paramInt1, int paramInt2, String paramString)
+  {
+    if (1 == paramInt1) {
+      ThreadManager.getUIHandler().post(new RecommendTroopListWrapper.2.1(this, paramString));
     }
   }
 }

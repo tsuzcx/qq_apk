@@ -1,22 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
+import android.os.Build.VERSION;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.commonsdk.soload.SoLoadUtilNew;
+import com.tencent.mobileqq.fts.FTSDatabase;
 
 public class auzv
-  implements DialogInterface.OnDismissListener
+  extends FTSDatabase
 {
-  public auzv(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, ListenTogetherManager paramListenTogetherManager, avau paramavau) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.c();
-    this.jdField_a_of_type_Avau.b(false);
-    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
-      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
+    if ((Build.VERSION.SDK_INT < 18) && (!SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "sqlite_qq"))) {
+      aoxx.a = false;
     }
-    ListenTogetherOverlayFragment.b(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment, false);
+    boolean bool = SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "FTSDatabaseV2");
+    if (!bool) {
+      aoxx.a = false;
+    }
+    return bool;
   }
 }
 

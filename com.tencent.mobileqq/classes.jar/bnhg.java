@@ -1,48 +1,42 @@
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import android.app.Activity;
+import android.support.v4.view.OnApplyWindowInsetsListener;
+import android.support.v4.view.WindowInsetsCompat;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.MarginLayoutParams;
+import com.tencent.mobileqq.utils.ViewUtils;
 
-public class bnhg
+class bnhg
+  implements OnApplyWindowInsetsListener
 {
-  private static bnhg a = new bnhg();
+  bnhg(bnhf parambnhf) {}
   
-  public static bnhg a()
+  public WindowInsetsCompat onApplyWindowInsets(View paramView, WindowInsetsCompat paramWindowInsetsCompat)
   {
-    return a;
-  }
-  
-  public URLDrawable a(String paramString, int paramInt1, int paramInt2)
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    if ((paramInt1 > 0) && (paramInt2 > 0))
+    if ((paramView instanceof ViewGroup))
     {
-      localURLDrawableOptions.mRequestWidth = paramInt1;
-      localURLDrawableOptions.mRequestHeight = paramInt2;
+      paramView = (ViewGroup)paramView.findViewById(2131367033);
+      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
+      int j = paramWindowInsetsCompat.getSystemWindowInsetTop();
+      int i = j;
+      if (bnhf.a(this.a) != null)
+      {
+        i = j;
+        if (bnhf.a(this.a).a() != null)
+        {
+          i = j;
+          if (!bnlb.j(bnhf.a(this.a).a().getIntent())) {
+            i = j / 2;
+          }
+        }
+      }
+      if (bnhf.a(this.a)) {
+        i = ViewUtils.dip2px(20.0F);
+      }
+      localMarginLayoutParams.topMargin = i;
+      paramView.setLayoutParams(localMarginLayoutParams);
     }
-    localURLDrawableOptions.mFailedDrawable = URLDrawableHelper.TRANSPARENT;
-    localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-    localURLDrawableOptions.mUseAutoScaleParams = false;
-    return URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-  }
-  
-  public void a(ImageView paramImageView, String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    if ((paramImageView == null) || (TextUtils.isEmpty(paramString)))
-    {
-      xvv.e("ImageLoader", "ImageView or uri is null.");
-      return;
-    }
-    xvv.b("ImageLoader", "uri:" + paramString + ",width:" + paramInt1 + ",height:" + paramInt2);
-    paramString = a(paramString, paramInt1, paramInt2);
-    if (paramBoolean) {}
-    for (;;)
-    {
-      paramImageView.setImageDrawable(paramString);
-      return;
-      paramString = null;
-    }
+    return paramWindowInsetsCompat;
   }
 }
 

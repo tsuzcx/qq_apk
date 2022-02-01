@@ -1,143 +1,66 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.SoftReference;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.jetbrains.annotations.NotNull;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class pmd
-  extends pmb
-  implements twy
+  implements AladdinConfigHandler
 {
-  private SoftReference<Activity> jdField_a_of_type_JavaLangRefSoftReference;
-  private boolean jdField_a_of_type_Boolean;
+  private static final Set<String> a = ;
   
-  public pmd(@NotNull pmc parampmc, QQAppInterface paramQQAppInterface, Activity paramActivity)
+  public static Set<String> a()
   {
-    super(parampmc, "RIJADSuperMaskPopupStep");
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramActivity);
-  }
-  
-  private boolean b()
-  {
-    boolean bool = false;
-    pmc localpmc = a();
-    if (localpmc != null) {
-      bool = localpmc.a();
+    String str = oww.e();
+    QLog.d("PtsNativeFeedsAladdinKeyConfigHandler", 2, "getNativeFeedsAlladinKey | operationBarAladdinKey : " + str);
+    if ((a != null) && (!TextUtils.isEmpty(str))) {
+      a.add(str);
     }
-    return bool;
+    return a;
   }
   
-  private void i()
+  private static Set<String> b()
   {
-    tvi.a.a(new pme(this));
-  }
-  
-  public void a()
-  {
-    super.a();
-    twx.a().a(this);
-  }
-  
-  public void a(int paramInt)
-  {
-    if ((paramInt != 0) && (!pcl.c(paramInt))) {
-      return;
+    HashSet localHashSet = new HashSet();
+    Object localObject = (String)bmhv.a("native_feeds_aladdin_keys", "");
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return localHashSet;
     }
-    int i = -1;
-    if (paramInt == 0) {
-      i = tvd.a.c().getAndAdd(1);
-    }
-    while (i != 0)
+    localObject = ((String)localObject).split("\\|");
+    int j = localObject.length;
+    int i = 0;
+    while (i < j)
     {
-      a(false);
-      return;
-      if (pcl.c(paramInt)) {
-        i = tvd.a.d().getAndAdd(1);
-      }
+      localHashSet.add(localObject[i]);
+      i += 1;
     }
-    if (!(tve.a.a() instanceof AdvertisementInfo))
+    return localHashSet;
+  }
+  
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  {
+    QLog.d("PtsNativeFeedsAladdinKeyConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = pku.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      a(false);
-      return;
-    }
-    if (tvi.a.b())
-    {
-      tvg.a.a("beginShowMask");
-      if (b())
+      String str1 = (String)localIterator.next();
+      if ("native_article_aladdin_keys".equalsIgnoreCase(str1))
       {
-        tvi.a.a(tuz.a.d());
-        tvg.a.a("alertManagerShowAfter");
-        tvg.a.a(tve.a.a(), false, "has high level float", null, "resource_use_key");
-        a(false);
-        return;
-      }
-      tvg.a.a("alertManagerShowNow");
-      i();
-      return;
-    }
-    tvi.a.a(tuz.a.d());
-    twp.a("ReadInJoySuperMaskAd", "superMask not show, refreshNum = " + i);
-    a(false);
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (tvi.a.c()) {
-      if (paramBoolean) {
-        break label33;
+        String str2 = (String)paramString.get(str1);
+        QLog.d("PtsNativeFeedsAladdinKeyConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+        bmhv.a("native_feeds_aladdin_keys", str2);
       }
     }
-    label33:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      if (this.jdField_a_of_type_Boolean) {
-        a(false);
-      }
-      return;
-    }
+    return true;
   }
   
-  public void a(boolean paramBoolean)
+  public void onWipeConfig(int paramInt)
   {
-    super.a(paramBoolean);
+    QLog.d("PtsNativeFeedsAladdinKeyConfigHandler", 1, "[onWipeConfig]");
   }
-  
-  public boolean a()
-  {
-    return super.a();
-  }
-  
-  public void b()
-  {
-    super.b();
-    twx.a().a();
-  }
-  
-  public void c()
-  {
-    super.c();
-  }
-  
-  public void d()
-  {
-    super.d();
-  }
-  
-  public void e()
-  {
-    super.e();
-  }
-  
-  public void f()
-  {
-    super.f();
-  }
-  
-  protected void g() {}
-  
-  protected void h() {}
 }
 
 

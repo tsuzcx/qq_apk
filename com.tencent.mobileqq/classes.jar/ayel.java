@@ -1,20 +1,22 @@
-import java.util.ArrayList;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public abstract interface ayel
+class ayel
+  implements Handler.Callback
 {
-  public abstract void a(int paramInt);
+  ayel(ayek paramayek) {}
   
-  public abstract void a(int paramInt, aydt paramaydt);
-  
-  public abstract void a(int paramInt, ArrayList<aydt> paramArrayList);
-  
-  public abstract void a_(int paramInt, boolean paramBoolean);
-  
-  public abstract void b(int paramInt, aydt paramaydt);
-  
-  public abstract void c(int paramInt, aydt paramaydt);
-  
-  public abstract void d(int paramInt, aydt paramaydt);
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      ayek.a(this.a);
+    }
+  }
 }
 
 

@@ -28,7 +28,7 @@ public class AELight
   public void clear()
   {
     if (this.mNightRGBStretchFilter != null) {
-      this.mNightRGBStretchFilter.ClearGLSL();
+      this.mNightRGBStretchFilter.clearGLSL();
     }
     this.mIsApplied = false;
   }
@@ -56,6 +56,11 @@ public class AELight
     }
     this.mNightRGBStretchFilter.reset();
     return paramFrame;
+  }
+  
+  public void setAlpha(float paramFloat)
+  {
+    this.mNightRGBStretchFilter.setAlpha(paramFloat);
   }
   
   public void setHistogram(int[] paramArrayOfInt)

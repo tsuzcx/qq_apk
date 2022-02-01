@@ -1,24 +1,12 @@
-import android.util.LruCache;
+import android.view.MotionEvent;
 
-class mnl
-  extends LruCache<String, mnm>
+public abstract interface mnl
 {
-  mnl(mnk parammnk, int paramInt)
-  {
-    super(paramInt);
-  }
-  
-  protected int a(String paramString, mnm parammnm)
-  {
-    if (parammnm == null) {
-      return 0;
-    }
-    return parammnm.a.length;
-  }
+  public abstract boolean a(MotionEvent paramMotionEvent, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mnl
  * JD-Core Version:    0.7.0.1
  */

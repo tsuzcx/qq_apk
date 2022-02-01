@@ -1,20 +1,11 @@
-import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
-import java.util.List;
+import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.MsgProxyUtils.Proxy;
 
-class bdih
-  extends bdit
+public final class bdih
+  implements IMCoreProxyRoute.MsgProxyUtils.Proxy
 {
-  bdih(bdid parambdid, EditorState paramEditorState, List paramList)
+  public boolean isSaveConversation(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    super(parambdid, paramEditorState, paramList);
-  }
-  
-  public void a(EditorState paramEditorState)
-  {
-    super.a(paramEditorState);
-    if (!aqeg.a(bdid.a(this.a))) {
-      bdid.a(this.a).a(false, false);
-    }
+    return acnh.a(paramString1, paramString2, paramInt1, paramInt2);
   }
 }
 

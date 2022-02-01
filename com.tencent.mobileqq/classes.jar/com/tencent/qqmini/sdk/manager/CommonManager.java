@@ -42,31 +42,36 @@ public class CommonManager
         QMLog.i("Tissue", "versionCheck:" + bool);
         return false;
       }
-      int j = paramArrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        paramString2 = new File(paramString1, paramArrayOfString[i]);
-        if (!paramString2.exists())
-        {
-          QMLog.w("Tissue", paramString2.getAbsolutePath() + " not exists");
-          return false;
-        }
-        if (!paramString2.isFile())
-        {
-          QMLog.w("Tissue", paramString2.getAbsolutePath() + " not a file");
-          return false;
-        }
-        if (!paramString2.canRead())
-        {
-          QMLog.w("Tissue", paramString2.getAbsolutePath() + " not readable");
-          return false;
-        }
-        i += 1;
-      }
-      QMLog.i("Tissue", paramString1 + " is fine");
-      return true;
+      return checkFileExists(paramString1, paramArrayOfString);
     }
+  }
+  
+  private static boolean checkFileExists(String paramString, String[] paramArrayOfString)
+  {
+    int j = paramArrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      File localFile = new File(paramString, paramArrayOfString[i]);
+      if (!localFile.exists())
+      {
+        QMLog.w("Tissue", localFile.getAbsolutePath() + " not exists");
+        return false;
+      }
+      if (!localFile.isFile())
+      {
+        QMLog.w("Tissue", localFile.getAbsolutePath() + " not a file");
+        return false;
+      }
+      if (!localFile.canRead())
+      {
+        QMLog.w("Tissue", localFile.getAbsolutePath() + " not readable");
+        return false;
+      }
+      i += 1;
+    }
+    QMLog.i("Tissue", paramString + " is fine");
+    return true;
   }
   
   public void addActivityResultListener(IActivityResultListener paramIActivityResultListener)
@@ -118,7 +123,7 @@ public class CommonManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.CommonManager
  * JD-Core Version:    0.7.0.1
  */

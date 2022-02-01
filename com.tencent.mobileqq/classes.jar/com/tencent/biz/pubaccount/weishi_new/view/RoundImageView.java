@@ -19,10 +19,10 @@ import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
-import vdu;
-import vdv;
-import vdw;
-import vdx;
+import vsn;
+import vso;
+import vsp;
+import vsq;
 
 public class RoundImageView
   extends ResizeURLImageView
@@ -115,7 +115,7 @@ public class RoundImageView
   
   private void a(Drawable paramDrawable)
   {
-    Observable.just(paramDrawable).map(new vdx(this)).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).map(new vdw(this, paramDrawable)).subscribe(new vdu(this), new vdv(this));
+    Observable.just(paramDrawable).map(new vsq(this)).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).map(new vsp(this, paramDrawable)).subscribe(new vsn(this), new vso(this));
   }
   
   private void b()
@@ -219,7 +219,7 @@ public class RoundImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.RoundImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import ajrd;
-import ajrg;
+import akmr;
+import akmu;
 import android.content.Intent;
-import bcef;
+import bdla;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import java.util.ArrayList;
 
 public class PhotoPreviewLogicDefault$5
   implements Runnable
 {
-  public PhotoPreviewLogicDefault$5(ajrg paramajrg, boolean paramBoolean, Intent paramIntent, ArrayList paramArrayList, int paramInt, String paramString1, String paramString2) {}
+  public PhotoPreviewLogicDefault$5(akmu paramakmu, boolean paramBoolean, Intent paramIntent, ArrayList paramArrayList, int paramInt, String paramString1, String paramString2) {}
   
   public void run()
   {
@@ -22,8 +22,8 @@ public class PhotoPreviewLogicDefault$5
     }
     for (;;)
     {
-      bcef.b(null, "CliOper", "", "", "0X8009AB1", "0X8009AB1", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "");
-      bbqf.b = System.currentTimeMillis();
+      bdla.b(null, "CliOper", "", "", "0X8009AB1", "0X8009AB1", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "");
+      bcwz.b = System.currentTimeMillis();
       return;
       PhotoUtils.sendPhoto(this.this$0.mActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, this.this$0.mPhotoCommonData.currentQualityType, this.this$0.a.jdField_a_of_type_Boolean);
     }

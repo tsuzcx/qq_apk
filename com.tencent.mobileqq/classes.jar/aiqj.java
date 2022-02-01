@@ -1,42 +1,26 @@
-import com.tencent.mobileqq.activity.contacts.phone.PhoneContactFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
 
 public class aiqj
-  extends aycd
+  implements DialogInterface.OnKeyListener
 {
-  private aiqj(PhoneContactFragment paramPhoneContactFragment) {}
+  public aiqj(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  private void g(boolean paramBoolean)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContactFragment", 2, String.format("refreshResult [%s]", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    if (this.a.c)
+    if (paramInt == 84) {}
+    do
     {
-      if (PhoneContactFragment.a(this.a) != null) {
-        PhoneContactFragment.b(this.a).a(this.a.b(), paramBoolean, null);
+      return true;
+      if (paramInt != 4) {
+        break;
       }
-      if (paramBoolean) {
-        this.a.c();
-      }
-      this.a.c = false;
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContactFragment", 2, String.format("onQueryBindState [%s, %s]", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) }));
-    }
-    g(paramBoolean1);
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContactFragment", 2, String.format("onHideContact [%s]", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    this.a.c();
+    } while (BlessSelectMemberActivity.a() == null);
+    BlessSelectMemberActivity.a().sendEmptyMessage(1);
+    return true;
+    return false;
   }
 }
 

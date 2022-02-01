@@ -1,72 +1,19 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
+import java.util.List;
 
-public class bbbk
-  extends bbck
+public abstract class bbbk
 {
-  public bbbk(FaceDecoder paramFaceDecoder)
+  private static int b;
+  public int a;
+  
+  public bbbk()
   {
-    super(paramFaceDecoder);
+    int i = b;
+    b = i + 1;
+    this.a = i;
   }
   
-  public void b(bayt parambayt, bbhb parambbhb)
-  {
-    super.b(parambayt, parambbhb);
-    TextView localTextView;
-    CharSequence localCharSequence;
-    if ((parambayt instanceof bawi))
-    {
-      bawi localbawi = (bawi)parambayt;
-      localTextView = ((bbgx)parambbhb).e();
-      parambayt = ((bbgx)parambbhb).f();
-      parambbhb = ((bbgx)parambbhb).g();
-      if (localTextView != null)
-      {
-        localCharSequence = localbawi.e();
-        if (localCharSequence != null) {
-          break label96;
-        }
-        localTextView.setText("");
-        if (parambbhb != null) {
-          parambbhb.setVisibility(8);
-        }
-      }
-      if (parambayt != null)
-      {
-        parambbhb = localbawi.f();
-        if (parambbhb != null) {
-          break label115;
-        }
-        parambayt.setText("");
-      }
-    }
-    label96:
-    label115:
-    do
-    {
-      do
-      {
-        return;
-        localTextView.setText(localCharSequence);
-        if (parambbhb == null) {
-          break;
-        }
-        parambbhb.setVisibility(0);
-        break;
-        parambayt.setText(parambbhb);
-        return;
-      } while (!(parambayt instanceof bawh));
-      parambayt = (bawh)parambayt;
-      parambbhb = ((bbgx)parambbhb).h();
-    } while (parambbhb == null);
-    parambayt = parambayt.e();
-    if (parambayt == null)
-    {
-      parambbhb.setText("");
-      return;
-    }
-    parambbhb.setText(parambayt);
-  }
+  public abstract void a(String paramString, List<NumRedMsg.NumMsgBusi> paramList);
 }
 
 

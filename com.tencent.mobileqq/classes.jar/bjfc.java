@@ -1,17 +1,22 @@
-import com.tencent.qqmini.sdk.launcher.core.widget.ReliableVideoPlayer.OnBufferingUpdateListener;
-import tv.danmaku.ijk.media.player.IMediaPlayer;
-import tv.danmaku.ijk.media.player.IMediaPlayer.OnBufferingUpdateListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.open.agent.OpenSelectPermissionFragment;
+import com.tencent.open.agent.OpenSelectPermissionFragment.4.1;
+import com.tencent.qphone.base.util.QLog;
 
-class bjfc
-  implements IMediaPlayer.OnBufferingUpdateListener
+public class bjfc
+  extends bjgg
 {
-  bjfc(bjey parambjey, ReliableVideoPlayer.OnBufferingUpdateListener paramOnBufferingUpdateListener) {}
+  public bjfc(OpenSelectPermissionFragment paramOpenSelectPermissionFragment) {}
   
-  public void onBufferingUpdate(IMediaPlayer paramIMediaPlayer, int paramInt)
+  public void a(boolean paramBoolean, int paramInt, bjgh parambjgh)
   {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnBufferingUpdateListener != null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnBufferingUpdateListener.onBufferingUpdate(this.jdField_a_of_type_Bjey, paramInt);
+    QLog.d("SDK_LOGIN.OpenSelectPermissionFragment", 1, new Object[] { "-->onDoAuthorize isSuccess=", Boolean.valueOf(paramBoolean), ", code=", Integer.valueOf(paramInt) });
+    if (this.a.getActivity() == null)
+    {
+      QLog.e("SDK_LOGIN.OpenSelectPermissionFragment", 1, "onDoAuthorize activity is null");
+      return;
     }
+    this.a.getActivity().runOnUiThread(new OpenSelectPermissionFragment.4.1(this, paramBoolean, parambjgh, paramInt));
   }
 }
 

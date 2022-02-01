@@ -1,21 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.avgame.ipc.MapParcelable;
-import java.util.HashMap;
-
-public final class ngo
-  implements Parcelable.Creator<MapParcelable>
+public class ngo
 {
-  public MapParcelable a(Parcel paramParcel)
-  {
-    MapParcelable localMapParcelable = new MapParcelable();
-    localMapParcelable.a = paramParcel.readHashMap(HashMap.class.getClassLoader());
-    return localMapParcelable;
-  }
+  String a;
+  String b;
   
-  public MapParcelable[] a(int paramInt)
+  public ngo(String paramString1, String paramString2)
   {
-    return new MapParcelable[paramInt];
+    this.a = paramString1;
+    this.b = paramString2;
   }
 }
 

@@ -1,22 +1,29 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.XListView;
+import java.util.List;
 
-class amqg
-  extends BroadcastReceiver
+public class amqg
+  extends algc
 {
-  amqg(amqd paramamqd, QQAppInterface paramQQAppInterface) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public amqg(HotChatCenterFragment paramHotChatCenterFragment, Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView, alfv paramalfv, int paramInt)
   {
-    if (paramIntent != null)
+    super(paramContext, paramQQAppInterface, paramXListView, paramalfv, paramInt);
+  }
+  
+  public void a(RecentBaseData paramRecentBaseData, String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.a(paramRecentBaseData, paramString);
+  }
+  
+  public void b(RecentBaseData paramRecentBaseData, String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null)
     {
-      paramContext = paramIntent.getAction();
-      if ((paramContext != null) && ((paramContext.equals("com.tencent.mobileqq.intent.logout")) || (paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getPackageName())) || (paramContext.equals("mqq.intent.action.LOGOUT")))) {
-        this.jdField_a_of_type_Amqd.a();
-      }
+      this.jdField_a_of_type_JavaUtilList.remove(paramRecentBaseData);
+      notifyDataSetChanged();
     }
   }
 }

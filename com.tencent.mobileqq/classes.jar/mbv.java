@@ -1,130 +1,40 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.VideoControlUI;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.av.ui.guide.GuideHelper;
+import com.tencent.mobileqq.utils.AudioHelper;
 
 public class mbv
+  extends lee
 {
-  Resources jdField_a_of_type_AndroidContentResResources = null;
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup = null;
-  Button jdField_a_of_type_AndroidWidgetButton = null;
-  VideoController jdField_a_of_type_ComTencentAvVideoController = null;
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
-  VideoControlUI jdField_a_of_type_ComTencentAvUiVideoControlUI;
-  WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference = null;
-  boolean jdField_a_of_type_Boolean = false;
+  public mbv(AVActivity paramAVActivity) {}
   
-  mbv(VideoAppInterface paramVideoAppInterface, AVActivity paramAVActivity, VideoControlUI paramVideoControlUI, ViewGroup paramViewGroup)
+  protected void a(long paramLong1, long paramLong2)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("ChildGuideUi", 2, "ChildGuideUi");
-    }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAVActivity);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_ComTencentAvUiVideoControlUI = paramVideoControlUI;
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_ComTencentAvVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-  }
-  
-  void a()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("ChildGuideUi", 2, "initUI");
-    }
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
-    {
-      AVActivity localAVActivity = (AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localAVActivity != null)
-      {
-        localAVActivity.getLayoutInflater().inflate(2131559694, this.jdField_a_of_type_AndroidViewViewGroup);
-        this.jdField_a_of_type_AndroidContentResResources = localAVActivity.getResources();
-      }
-    }
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131373266));
-  }
-  
-  public void a(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
+    if (this.a.isDestroyed()) {
       return;
     }
-    b();
+    this.a.a.a(paramLong1, this.a, 4, 0);
   }
   
-  public boolean a()
+  protected void b(long paramLong, int paramInt1, int paramInt2)
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
-    this.jdField_a_of_type_ComTencentAvVideoController = null;
-    this.jdField_a_of_type_AndroidViewViewGroup = null;
-    this.jdField_a_of_type_AndroidContentResResources = null;
-    this.jdField_a_of_type_AndroidWidgetButton = null;
-  }
-  
-  public boolean b()
-  {
-    f();
-    return true;
-  }
-  
-  public void c() {}
-  
-  boolean c()
-  {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("com.tencent.av.count", 0);
-    String str = "DoubleVideoChildLock_ShowGuide";
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-      str = "DoubleVideoChildLock_ShowGuide" + this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
+    if (this.a.isDestroyed()) {
+      return;
     }
-    if (localSharedPreferences.getInt(str, 0) == 0)
-    {
-      localSharedPreferences.edit().putInt(str, 1).commit();
-      return true;
-    }
-    return false;
+    paramLong = AudioHelper.b();
+    this.a.a.a(paramLong, this.a, 3, 2);
   }
   
-  public void d() {}
-  
-  void e()
+  protected void b(long paramLong1, long paramLong2)
   {
-    if ((this.jdField_a_of_type_AndroidContentResResources == null) || (this.jdField_a_of_type_AndroidWidgetButton == null)) {
-      a();
+    if (this.a.isDestroyed()) {
+      return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.J();
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-  }
-  
-  void f()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.K();
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
+    this.a.a.a(paramLong1, this.a, 4, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mbv
  * JD-Core Version:    0.7.0.1
  */

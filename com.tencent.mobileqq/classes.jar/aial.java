@@ -1,7 +1,15 @@
-public class aial
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class aial
+  implements DialogInterface.OnClickListener
 {
-  public String a;
-  public String b;
+  aial(aiah paramaiah, aiar paramaiar) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    aiah.a(this.jdField_a_of_type_Aiah, this.jdField_a_of_type_Aiar);
+  }
 }
 
 

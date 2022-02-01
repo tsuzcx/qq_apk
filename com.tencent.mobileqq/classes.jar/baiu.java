@@ -1,6 +1,9 @@
-class baiu
+import com.tencent.mobileqq.pushdialog.PushDialogTemplate;
+import java.util.List;
+
+public abstract interface baiu
 {
-  private static final bais a = new bais(null);
+  public abstract void a(List<PushDialogTemplate> paramList);
 }
 
 

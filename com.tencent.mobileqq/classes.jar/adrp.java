@@ -1,24 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 
-class adrp
-  implements DialogInterface.OnClickListener
+public class adrp
+  implements awzc<bhsu>
 {
-  adrp(adro paramadro) {}
+  public adrp(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(bhsu parambhsu)
   {
-    QLog.d("nearby.check.auth", 1, "onCheckNearbyUserAuth onClick exit");
-    this.a.a.finish();
-    if (NetworkUtil.isNetSupport(BaseApplication.getContext())) {
-      atrh.a(this.a.a.a);
+    if (this.a.g) {
+      return;
     }
-    new bcek(null).a("dc00899").b("grp_lbs").c("home").d("year_pop_clk").e(this.a.a.a.getCurrentAccountUin()).a();
+    FormSimpleItem localFormSimpleItem = (FormSimpleItem)this.a.jdField_a_of_type_ArrayOfAndroidViewView[40];
+    localFormSimpleItem.setRightText(parambhsu.a);
+    localFormSimpleItem.setTag(2131375046, parambhsu);
+    bdla.b(null, "dc00898", "", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, "qq_vip", "0X800A8F7", parambhsu.c, 1, 0, "", "", "", "");
   }
 }
 

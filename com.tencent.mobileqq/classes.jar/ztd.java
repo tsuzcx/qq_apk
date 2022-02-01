@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.EmptyPackagePage;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ztd
+class ztd
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
+  ztd(ztc paramztc, CertifiedAccountMeta.StFeed paramStFeed) {}
   
-  public ztd(Oidb_0xcd1.EmptyPackagePage paramEmptyPackagePage)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramEmptyPackagePage.enable.get();
-    this.jdField_a_of_type_JavaLangString = paramEmptyPackagePage.wording.get();
-    this.b = paramEmptyPackagePage.jump_wording.get();
-    this.c = paramEmptyPackagePage.jump_url.get();
+    if (((this.jdField_a_of_type_Ztc.itemView instanceof RelativeFeedItemView)) && (zsx.a(this.jdField_a_of_type_Ztc.a) != null)) {
+      zsx.a(this.jdField_a_of_type_Ztc.a).a(this.jdField_a_of_type_Ztc.itemView, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

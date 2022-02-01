@@ -1,69 +1,50 @@
+import android.app.Activity;
 import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import java.util.List;
 
 public class bcey
+  implements bcfi
 {
-  public static String a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, int paramInt3, String paramString5, String paramString6, String paramString7, String paramString8)
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public bcey(String paramString, int paramInt)
   {
-    bcez localbcez = new bcez();
-    localbcez.jdField_c_of_type_JavaLangString = paramString1;
-    localbcez.jdField_d_of_type_JavaLangString = paramString2;
-    localbcez.jdField_e_of_type_JavaLangString = paramString3;
-    localbcez.f = paramString4;
-    localbcez.jdField_c_of_type_Long = paramInt1;
-    localbcez.jdField_d_of_type_Long = paramInt2;
-    localbcez.jdField_e_of_type_Long = paramInt3;
-    localbcez.g = paramString5;
-    localbcez.h = paramString6;
-    localbcez.i = paramString7;
-    localbcez.j = paramString8;
-    paramString1 = localbcez.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("SubscribeReportController", 1, "getReportingDetail=" + paramString1);
-    }
-    return paramString1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5, String paramString6, String paramString7)
+  public int a()
   {
-    QQAppInterface localQQAppInterface = paramQQAppInterface;
-    if (paramQQAppInterface == null)
-    {
-      localQQAppInterface = paramQQAppInterface;
-      if (BaseApplicationImpl.sProcessId == 1)
-      {
-        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
-        localQQAppInterface = paramQQAppInterface;
-        if (localAppRuntime != null)
-        {
-          localQQAppInterface = paramQQAppInterface;
-          if ((localAppRuntime instanceof QQAppInterface)) {
-            localQQAppInterface = (QQAppInterface)localAppRuntime;
-          }
-        }
-      }
-    }
-    if (localQQAppInterface == null)
-    {
-      paramQQAppInterface = a("${uin_unknown}", paramString1, paramString2, paramString3, paramInt1, paramInt2, paramInt3, paramString4, paramString5, paramString6, paramString7);
-      paramString1 = new Intent();
-      paramString1.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
-      paramString1.putExtra("reporting_tag", "dc05263");
-      paramString1.putExtra("reporting_detail", paramQQAppInterface);
-      paramString1.putExtra("reporting_count", paramInt2);
-      paramString1.putExtra("is_runtime", 0);
-      BaseApplicationImpl.getApplication().sendBroadcast(paramString1);
-      return;
-    }
-    bcef.b(localQQAppInterface, "dc05263", a(localQQAppInterface.getCurrentAccountUin(), paramString1, paramString2, paramString3, paramInt1, paramInt2, paramInt3, paramString4, paramString5, paramString6, paramString7), paramInt2);
+    return 0;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7)
+  public String a()
   {
-    a(paramQQAppInterface, paramString1, paramString2, paramString3, paramInt1, 1, paramInt2, paramString4, paramString5, paramString6, paramString7);
+    return anvx.a(2131704853);
+  }
+  
+  public List<bcfj> a()
+  {
+    return null;
+  }
+  
+  public void a(View paramView)
+  {
+    Intent localIntent = new Intent((Activity)paramView.getContext(), SearchContactsActivity.class);
+    localIntent.putExtra("start_search_key", this.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("jump_src_key", 0);
+    localIntent.putExtra("fromType", this.jdField_a_of_type_Int);
+    ((Activity)paramView.getContext()).startActivity(localIntent);
+    bcnc.a(this.jdField_a_of_type_JavaLangString, 0, 0, paramView);
+    bdla.b(null, "CliOper", "", "", "0X80061B7", "0X80061B7", 0, 0, "", "", "", "");
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

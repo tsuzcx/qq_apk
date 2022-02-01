@@ -1,22 +1,14 @@
-import android.support.v7.widget.RecyclerView;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
 
 class blrq
-  implements CompoundButton.OnCheckedChangeListener
+  implements blro
 {
-  blrq(blrm paramblrm) {}
+  blrq(blrp paramblrp) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(String paramString1, String paramString2)
   {
-    RecyclerView localRecyclerView = blrm.c(this.a);
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      localRecyclerView.setVisibility(i);
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
+    if (!TextUtils.isEmpty(paramString1)) {
+      blrp.a(this.a, paramString1, new String[] { paramString2 });
     }
   }
 }

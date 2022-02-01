@@ -1,36 +1,21 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
-class aswj
-  implements View.OnClickListener
+public class aswj
+  implements Animation.AnimationListener
 {
-  aswj(aswi paramaswi) {}
+  public aswj(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (!aswi.a(this.a)) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((aszt.a()) && (aslg.c() > asld.a()))
-      {
-        aszg.a(SplashActivity.sTopActivity, 2131692374, 2131692379, new aswk(this));
-      }
-      else
-      {
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.addAll(aslg.a());
-        Intent localIntent = new Intent();
-        localIntent.putParcelableArrayListExtra("sFilesSelected", localArrayList);
-        aswi.b(this.a, localIntent);
-      }
-    }
+    this.a.a.setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,18 +1,16 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.BindGroupFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class bhqy
-  implements View.OnClickListener
+class bhqy
+  implements bhrh
 {
-  public bhqy(BindGroupFragment paramBindGroupFragment) {}
+  bhqy(bhqx parambhqx) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    BindGroupFragment.a(this.a).finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    bhqx.a(this.a, false);
+  }
+  
+  public void b()
+  {
+    bhqx.a(this.a, false);
   }
 }
 

@@ -1,93 +1,171 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.earlydownload.handler.PokeResHandler.1;
-import com.tencent.mobileqq.earlydownload.handler.PokeResHandler.2;
-import com.tencent.mobileqq.earlydownload.xmldata.PokeResData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.mobileqq.vfs.VFSAssistantUtils;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqxt
-  extends aqxl
 {
-  private boolean d;
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public long b;
+  public int c;
+  public int d;
+  public int e;
   
-  public aqxt(QQAppInterface paramQQAppInterface)
+  public aqxt()
   {
-    super("qq.android.poke.res_0625", paramQQAppInterface);
+    a();
   }
   
-  public int a()
+  public static aqxt a(String paramString)
   {
-    return 10044;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return PokeResData.class;
-  }
-  
-  public String a()
-  {
-    return "PokeResHandler_0625";
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PokeResHandler_0625", 2, "doOnDownloadSuccess:" + paramString);
+    QLog.d("TroopNotificationConfig.config", 1, "onUpdate, newConf = " + paramString);
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    if (!new File(paramString).exists())
+    int i = 0;
+    int j = 0;
+    long l2 = 0L;
+    int k = 0;
+    n = 0;
+    l4 = 0L;
+    int i4 = 0;
+    l1 = l4;
+    m = n;
+    i1 = k;
+    long l3 = l2;
+    int i2 = j;
+    int i3 = i;
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PokeResHandler_0625", 2, "doOnDownloadSuccess sorse not exists");
+      try
+      {
+        paramString = new JSONObject(paramString);
+        l1 = l4;
+        m = n;
+        i1 = k;
+        l3 = l2;
+        i2 = j;
+        i3 = i;
+        i = paramString.optInt("globalOpen", 0);
+        l1 = l4;
+        m = n;
+        i1 = k;
+        l3 = l2;
+        i2 = j;
+        i3 = i;
+        j = paramString.optInt("totalRemindCntOfOneWeak", 0);
+        l1 = l4;
+        m = n;
+        i1 = k;
+        l3 = l2;
+        i2 = j;
+        i3 = i;
+        l2 = paramString.optLong("intervelShowTime", 0L);
+        l1 = l4;
+        m = n;
+        i1 = k;
+        l3 = l2;
+        i2 = j;
+        i3 = i;
+        k = paramString.optInt("totalRemindCntOfOneDay");
+        l1 = l4;
+        m = n;
+        i1 = k;
+        l3 = l2;
+        i2 = j;
+        i3 = i;
+        n = paramString.optInt("todoGroupVerifyMsgLevel", 0);
+        l1 = l4;
+        m = n;
+        i1 = k;
+        l3 = l2;
+        i2 = j;
+        i3 = i;
+        l4 = paramString.optLong("cleanExpiredTime", 0L);
+        l1 = l4;
+        m = n;
+        i1 = k;
+        l3 = l2;
+        i2 = j;
+        i3 = i;
+        int i5 = paramString.optInt("maxFetchMsgCnt", 300);
+        m = i5;
+        paramString.printStackTrace();
       }
-      return;
+      catch (JSONException paramString)
+      {
+        try
+        {
+          i1 = paramString.optInt("showUnreadBk", 0);
+          i3 = n;
+          l1 = l4;
+          i2 = m;
+          n = i1;
+          paramString = new aqxt();
+          if (i != 1) {
+            break label423;
+          }
+          bool = true;
+          paramString.jdField_a_of_type_Boolean = bool;
+          paramString.jdField_a_of_type_Int = j;
+          paramString.jdField_a_of_type_Long = l2;
+          paramString.jdField_b_of_type_Int = k;
+          paramString.c = i3;
+          paramString.jdField_b_of_type_Long = l1;
+          paramString.d = i2;
+          paramString.e = n;
+          return paramString;
+        }
+        catch (JSONException paramString)
+        {
+          for (;;)
+          {
+            boolean bool;
+            i1 = m;
+            l1 = l4;
+            m = n;
+          }
+        }
+        paramString = paramString;
+        n = 0;
+        i = i3;
+        j = i2;
+        l2 = l3;
+        k = i1;
+        i1 = n;
+      }
+      n = i4;
+      i2 = i1;
+      i3 = m;
+      continue;
+      label423:
+      bool = false;
     }
-    String str = VFSAssistantUtils.getSDKPrivatePath(agkg.a());
-    if (QLog.isColorLevel()) {
-      QLog.d("PokeResHandler_0625", 2, "doOnDownloadSuccess imagePath=" + str);
-    }
-    ThreadManager.post(new PokeResHandler.1(this, str, paramString), 8, null, true);
-    super.a(paramString);
   }
   
-  public void a(boolean paramBoolean)
+  private void a()
   {
-    super.a(paramBoolean);
-    ThreadManager.executeOnSubThread(new PokeResHandler.2(this));
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 100;
+    this.jdField_a_of_type_Long = 60L;
+    this.jdField_b_of_type_Int = 100;
+    this.c = 10;
+    this.jdField_b_of_type_Long = 1209600L;
+    this.d = 300;
+    this.e = 0;
   }
   
-  public boolean a()
+  public String toString()
   {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public void f()
-  {
-    BaseApplication.getContext().getSharedPreferences("vasPokeConfig", 0).edit().putBoolean("ready", true);
-  }
-  
-  public boolean g()
-  {
-    if (!this.d) {
-      this.d = BaseApplication.getContext().getSharedPreferences("vasPokeConfig", 0).getBoolean("ready", false);
-    }
-    return super.g() & this.d;
+    return "TroopNotificationConfig{isGlobalOpen=" + this.jdField_a_of_type_Boolean + ", totalRemindCntOfOneWeak=" + this.jdField_a_of_type_Int + ", intervelShowTime=" + this.jdField_a_of_type_Long + ", totalRemindCntOfOneDay=" + this.jdField_b_of_type_Int + ", todoGroupVerifyMsgLevel=" + this.c + ", cleanExpiredTime=" + this.jdField_b_of_type_Long + ", maxFetchMsgCnt=" + this.d + ", showUnreadBk=" + this.e + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqxt
  * JD-Core Version:    0.7.0.1
  */

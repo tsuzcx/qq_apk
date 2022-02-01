@@ -1,19 +1,7 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.gdtad.aditem.GdtBaseAdItem;
-
-public final class abkt
-  implements Parcelable.Creator<GdtBaseAdItem>
+public class abkt
 {
-  public GdtBaseAdItem a(Parcel paramParcel)
-  {
-    return new GdtBaseAdItem(paramParcel);
-  }
-  
-  public GdtBaseAdItem[] a(int paramInt)
-  {
-    return new GdtBaseAdItem[paramInt];
-  }
+  public String a;
+  public String b;
 }
 
 

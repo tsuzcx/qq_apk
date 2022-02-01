@@ -1,44 +1,53 @@
 package com.tencent.qqmini.sdk.plugins;
 
 import android.app.Activity;
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.R.layout;
-import com.tencent.qqmini.sdk.R.style;
+import android.util.Log;
+import android.view.ViewGroup;
+import com.tencent.qqmini.sdk.action.PageAction;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import com.tencent.qqmini.sdk.launcher.utils.ColorUtils;
-import com.tencent.qqmini.sdk.widget.MiniCustomDialog;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.widget.ToastView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class UIJsPlugin$4
   implements Runnable
 {
-  UIJsPlugin$4(UIJsPlugin paramUIJsPlugin, String paramString1, String paramString2, String paramString3, String paramString4, RequestEvent paramRequestEvent, boolean paramBoolean, String paramString5, String paramString6) {}
+  UIJsPlugin$4(UIJsPlugin paramUIJsPlugin, RequestEvent paramRequestEvent) {}
   
   public void run()
   {
-    Object localObject = UIJsPlugin.access$800(this.this$0).getAttachedActivity();
-    MiniCustomDialog localMiniCustomDialog;
-    if ((localObject != null) && (!((Activity)localObject).isFinishing()))
+    try
     {
-      localMiniCustomDialog = new MiniCustomDialog((Context)localObject, R.style.mini_sdk_MiniAppInputDialog);
-      localMiniCustomDialog.setContentView(R.layout.mini_sdk_custom_dialog_temp);
-      if (!TextUtils.isEmpty(this.val$title)) {
-        break label133;
+      Activity localActivity = UIJsPlugin.access$700(this.this$0).getAttachedActivity();
+      if ((localActivity == null) || (localActivity.isFinishing()))
+      {
+        QMLog.w("UIJsPlugin", "showLoading(). Do nothing, activity is null or finishing");
+        return;
+      }
+      JSONObject localJSONObject = new JSONObject(this.val$req.jsonParams);
+      String str = localJSONObject.optString("title", "");
+      boolean bool = localJSONObject.optBoolean("mask", false);
+      if (UIJsPlugin.access$200(this.this$0, UIJsPlugin.access$100(this.this$0))) {
+        UIJsPlugin.access$800(this.this$0);
+      }
+      UIJsPlugin.access$102(this.this$0, PageAction.obtain(UIJsPlugin.access$900(this.this$0)).getPageUrl());
+      if (UIJsPlugin.access$200(this.this$0, UIJsPlugin.access$100(this.this$0)))
+      {
+        UIJsPlugin.access$602(this.this$0, new ToastView(localActivity, (ViewGroup)localActivity.findViewById(16908290)));
+        UIJsPlugin.access$600(this.this$0).show(1, "loading", null, str, -1, bool);
+        this.val$req.ok();
+        return;
       }
     }
-    label133:
-    for (localObject = null;; localObject = this.val$title)
+    catch (JSONException localJSONException)
     {
-      localMiniCustomDialog.setTitle((String)localObject).setMessage(this.val$content);
-      localMiniCustomDialog.setPositiveButton(this.val$confirmText, ColorUtils.parseColor(this.val$confirmColor), new UIJsPlugin.4.1(this));
-      if (this.val$showCancel) {
-        localMiniCustomDialog.setNegativeButton(this.val$cancelText, ColorUtils.parseColor(this.val$cancelColor), new UIJsPlugin.4.2(this));
-      }
-      localMiniCustomDialog.setCanceledOnTouchOutside(false);
-      localMiniCustomDialog.show();
+      Log.e("UIJsPlugin", localJSONException.getMessage(), localJSONException);
       return;
     }
+    QMLog.w("UIJsPlugin", "showLoading event=" + this.val$req.event + "， top page not found");
+    this.val$req.fail();
   }
 }
 

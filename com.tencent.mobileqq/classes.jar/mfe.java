@@ -1,17 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
+import com.tencent.av.ui.MultiIncomingCallsActivity.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class mfe
-  implements DialogInterface.OnClickListener
+  extends let
 {
-  public mfe(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion) {}
+  public mfe(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  protected void a(long paramLong1, long paramLong2, ArrayList<lny> paramArrayList)
+  {
+    if (MultiIncomingCallsActivity.a(this.a) != null)
+    {
+      ThreadManager.getUIHandler().removeCallbacks(MultiIncomingCallsActivity.a(this.a));
+      MultiIncomingCallsActivity.a(this.a, null);
+    }
+    MultiIncomingCallsActivity.a(this.a, new MultiIncomingCallsActivity.1.1(this, paramArrayList));
+    ThreadManager.getUIHandler().post(MultiIncomingCallsActivity.a(this.a));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mfe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,20 @@
-public class bmxq
+class bmxq
+  implements bndr
 {
-  public int a;
-  public int b;
+  bmxq(bmxa parambmxa) {}
   
-  public bmxq(int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    if (this.a.a != null)
+    {
+      if (paramBoolean) {
+        this.a.a.a(327696, new Object[0]);
+      }
+    }
+    else {
+      return;
+    }
+    this.a.a.a(327689, new Object[0]);
   }
 }
 

@@ -1,25 +1,16 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.5.1;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.widget.SingleLineTextView;
 
 public class bdqp
-  implements Animation.AnimationListener
 {
-  public bdqp(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public SingleLineTextView a;
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (this.a.b == null) {
-      return;
-    }
-    this.a.b.post(new TroopAvatarWallPreviewActivity.5.1(this));
-  }
+  bdqp(bdqo parambdqo) {}
 }
 
 

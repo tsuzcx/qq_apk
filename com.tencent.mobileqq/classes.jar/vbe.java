@@ -1,18 +1,6 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
-class vbe
-  implements View.OnTouchListener
+final class vbe
 {
-  vbe(vbc paramvbc) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    vbc.a(this.a).onTouchEvent(paramMotionEvent);
-    return true;
-  }
+  private static final vbc a = new vbc(null);
 }
 
 

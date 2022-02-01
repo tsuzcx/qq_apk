@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
 import com.tencent.qphone.base.util.QLog;
 
@@ -21,10 +22,10 @@ public class ReadInJoySkinGuideView
   {
     super(paramContext);
     this.jdField_a_of_type_Int = 2;
-    LayoutInflater.from(getContext()).inflate(2131562679, this);
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView = ((SpriteNativeView)findViewById(2131377544));
+    LayoutInflater.from(getContext()).inflate(2131562750, this);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView = ((SpriteNativeView)findViewById(2131377818));
     setClickable(true);
-    if (261 == paramInt2) {
+    if (QQManagerFactory.READ_INJOY_SKIN_MANAGER == paramInt2) {
       this.jdField_a_of_type_Int = 1;
     }
     this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.post(new ReadInJoySkinGuideView.1(this, paramQQAppInterface, paramString2, paramOnClickListener1, paramString1, paramOnClickListener2, paramContext, paramInt1));

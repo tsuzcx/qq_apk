@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import aqcq;
+import arfv;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
@@ -18,7 +18,7 @@ public abstract class BaseTransFileController
   public AppInterface app;
   public int count;
   public BaseTransFileController.ProcHandler mHandler;
-  public aqcq mRichmediaIpv6ConifgBean;
+  public arfv mRichmediaIpv6ConifgBean;
   AtomicBoolean mWorking = new AtomicBoolean(true);
   public ConcurrentHashMap<String, IHttpCommunicatorListener> processorMap = new ConcurrentHashMap(20);
   public long startTime;

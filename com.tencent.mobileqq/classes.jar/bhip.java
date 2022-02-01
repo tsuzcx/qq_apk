@@ -1,76 +1,13 @@
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
+import android.graphics.Point;
 
-public class bhip
+final class bhip
+  implements bhis<Point>
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  
-  public bhip(Bitmap paramBitmap)
+  public Point a(float paramFloat, Point paramPoint1, Point paramPoint2)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public bhip(Bitmap paramBitmap, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_Int = (paramInt % 360);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Bitmap a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
-  }
-  
-  public Matrix a()
-  {
-    Matrix localMatrix = new Matrix();
-    if (this.jdField_a_of_type_Int != 0)
-    {
-      int i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2;
-      int j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2;
-      localMatrix.preTranslate(-i, -j);
-      localMatrix.postRotate(this.jdField_a_of_type_Int);
-      localMatrix.postTranslate(c() / 2, b() / 2);
-    }
-    return localMatrix;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(Bitmap paramBitmap)
-  {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int / 90 % 2 != 0;
-  }
-  
-  public int b()
-  {
-    if (a()) {
-      return this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-    }
-    return this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-  }
-  
-  public int c()
-  {
-    if (a()) {
-      return this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-    }
-    return this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+    float f1 = paramPoint1.x;
+    float f2 = paramPoint1.y;
+    return new Point((int)(f1 + (paramPoint2.x - f1) * paramFloat), (int)(f2 + (paramPoint2.y - f2) * paramFloat));
   }
 }
 

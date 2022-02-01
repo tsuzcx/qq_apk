@@ -1,26 +1,33 @@
 package com.tencent.youtu.sdkkitframework.net;
 
+import com.tencent.youtu.sdkkitframework.common.YtLogger;
 import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYtSDKKitNetResponseParser;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import javax.net.ssl.HttpsURLConnection;
 
 public class YtSDKKitNetHelper
 {
   private static final String TAG = YtSDKKitNetHelper.class.getSimpleName();
   private static final int TIME_OUT = 10000;
   private static YtSDKKitNetHelper _instane;
+  private HttpsURLConnection conn;
+  private Thread networkThread;
+  private HashMap<Integer, Thread> runningMap = new HashMap();
   
   public static void clearInstance()
   {
     try
     {
+      if (_instane != null) {
+        _instane.stopNetworkRequest();
+      }
       _instane = null;
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    finally {}
   }
   
   public static YtSDKKitNetHelper getInstance()
@@ -38,7 +45,23 @@ public class YtSDKKitNetHelper
   
   public void sendNetworkRequest(String paramString1, String paramString2, HashMap<String, String> paramHashMap, YtSDKKitFramework.IYtSDKKitNetResponseParser paramIYtSDKKitNetResponseParser)
   {
-    new Thread(new YtSDKKitNetHelper.1(this, paramString1, paramHashMap, paramString2, paramIYtSDKKitNetResponseParser)).start();
+    this.networkThread = new Thread(new YtSDKKitNetHelper.1(this, paramString1, paramHashMap, paramString2, paramIYtSDKKitNetResponseParser));
+    this.networkThread.setName("YtNetworkRequestThread");
+    this.networkThread.start();
+  }
+  
+  public void stopNetworkRequest()
+  {
+    Iterator localIterator = this.runningMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      if (localEntry.getValue() == this.networkThread)
+      {
+        this.runningMap.remove(localEntry.getKey());
+        YtLogger.d(TAG, "network remove " + localEntry.getKey());
+      }
+    }
   }
 }
 

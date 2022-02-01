@@ -55,7 +55,7 @@ public class LpReport_AlbumInfo_dc02151
     }
     label202:
     label210:
-    for (String str = "8.4.8";; str = this.version)
+    for (String str = "8.4.10";; str = this.version)
     {
       LpReportUtils.safePut(localHashMap, "version", str);
       return localHashMap;

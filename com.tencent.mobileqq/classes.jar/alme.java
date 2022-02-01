@@ -1,44 +1,19 @@
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import java.util.Comparator;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.recent.msgbox.TempMsgBoxFragment;
 
 public class alme
-  implements Comparator<almg>
+  extends acmz
 {
-  private int a(almg paramalmg)
-  {
-    if ((a(paramalmg) == 0L) || (paramalmg.jdField_a_of_type_Int == 4)) {
-      return paramalmg.jdField_a_of_type_Int + 3;
-    }
-    return paramalmg.jdField_a_of_type_Int;
-  }
+  public alme(TempMsgBoxFragment paramTempMsgBoxFragment) {}
   
-  private long a(almg paramalmg)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((paramalmg.jdField_a_of_type_ComTencentMobileqqPersistenceEntity instanceof TroopInfo)) {
-      return ((TroopInfo)paramalmg.jdField_a_of_type_ComTencentMobileqqPersistenceEntity).lastMsgTime;
+    switch (paramInt)
+    {
+    default: 
+      return;
     }
-    if ((paramalmg.jdField_a_of_type_ComTencentMobileqqPersistenceEntity instanceof DiscussionInfo)) {
-      return ((DiscussionInfo)paramalmg.jdField_a_of_type_ComTencentMobileqqPersistenceEntity).lastMsgTime;
-    }
-    return 0L;
-  }
-  
-  public int a(almg paramalmg1, almg paramalmg2)
-  {
-    if ((paramalmg1 == null) && (paramalmg2 == null)) {
-      return 0;
-    }
-    if (paramalmg1 == null) {
-      return -1;
-    }
-    if (paramalmg2 == null) {
-      return 1;
-    }
-    if (a(paramalmg1) == a(paramalmg2)) {
-      return (int)(a(paramalmg2) - a(paramalmg1));
-    }
-    return a(paramalmg1) - a(paramalmg2);
+    TempMsgBoxFragment.b(this.a);
   }
 }
 

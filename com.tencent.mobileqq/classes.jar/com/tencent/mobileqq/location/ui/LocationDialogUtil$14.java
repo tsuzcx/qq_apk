@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.location.ui;
 
-import avdr;
+import awju;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 
@@ -11,7 +11,7 @@ public final class LocationDialogUtil$14
   
   public void run()
   {
-    avdr.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog);
+    awju.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog);
   }
 }
 

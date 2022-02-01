@@ -44,8 +44,8 @@ public class MayknowContactItemParentView
   {
     try
     {
-      this.d = getResources().getColor(2131167072);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839533);
+      this.d = getResources().getColor(2131167086);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839554);
       this.jdField_a_of_type_Int = AIOUtils.dp2px(6.0F, getResources());
       return;
     }

@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class yik
-  implements DialogInterface.OnClickListener
+  extends QQUIEventReceiver<yhn, yij>
 {
-  public yik(EditVideoMusicDialog paramEditVideoMusicDialog) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public yik(@NonNull yhn paramyhn)
   {
-    paramDialogInterface.dismiss();
+    super(paramyhn);
+  }
+  
+  public void a(@NonNull yhn paramyhn, @NonNull yij paramyij)
+  {
+    paramyhn.a(paramyij);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return yij.class;
   }
 }
 

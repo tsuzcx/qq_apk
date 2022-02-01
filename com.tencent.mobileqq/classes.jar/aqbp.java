@@ -1,74 +1,39 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.transfile.quic.QuicNetResMgr;
+import android.os.Bundle;
+import com.tencent.ark.open.delegate.IArkDelegateNetCallback;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class aqbp
-  extends aptq<aqbq>
+class aqbp
+  implements EIPCResultCallback
 {
-  public static aqbq a()
-  {
-    return (aqbq)apub.a().a(685);
-  }
+  aqbp(aqbo paramaqbo, String paramString1, String paramString2, IArkDelegateNetCallback paramIArkDelegateNetCallback, int paramInt) {}
   
-  @NonNull
-  public aqbq a(int paramInt)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    return new aqbq();
-  }
-  
-  @Nullable
-  public aqbq a(aptx[] paramArrayOfaptx)
-  {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return aqbq.a(paramArrayOfaptx);
+    QLog.d("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkMultiProc.sendAppMsg cmd=", this.jdField_a_of_type_JavaLangString, ", msg=", this.b, ", ipc call back code=", Integer.valueOf(paramEIPCResult.code) });
+    switch (paramEIPCResult.code)
+    {
     }
-    return null;
-  }
-  
-  public void a(aqbq paramaqbq)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQShortVideoQuicNetProcessor", 2, "QQShortVideoQuicNetProcessor onUpdate");
-    }
-    QuicNetResMgr.getInstance().downloadQuicRes(paramaqbq);
-  }
-  
-  public Class<aqbq> clazz()
-  {
-    return aqbq.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 685;
+    do
+    {
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback == null);
+      this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback.onUpdate(this.jdField_a_of_type_Int, false, null);
+      return;
+      paramEIPCResult = paramEIPCResult.data;
+    } while ((paramEIPCResult == null) || (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback == null));
+    int i = paramEIPCResult.getInt("type");
+    boolean bool = paramEIPCResult.getBoolean("sucess");
+    paramEIPCResult = paramEIPCResult.getString("data");
+    this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback.onUpdate(i, bool, paramEIPCResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqbp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,10 @@
-import com.tencent.mobileqq.app.automator.step.GetSig;
-
-public class angb
-  extends amwl
+public abstract interface angb
 {
-  private angb(GetSig paramGetSig) {}
-  
-  protected void onUpdateSendGetSig(boolean paramBoolean)
-  {
-    GetSig localGetSig = this.a;
-    if (paramBoolean) {}
-    for (int i = 7;; i = 6)
-    {
-      localGetSig.a(i);
-      return;
-    }
-  }
+  public abstract void a(String paramString1, boolean paramBoolean, long paramLong, Object paramObject, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     angb
  * JD-Core Version:    0.7.0.1
  */

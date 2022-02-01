@@ -1,14 +1,28 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import android.content.Context;
 
-class bfmg
-  implements FilenameFilter
+public class bfmg
 {
-  bfmg(bfmf parambfmf, String paramString) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public boolean accept(File paramFile, String paramString)
+  public bfmg(Context paramContext, String paramString1, String paramString2)
   {
-    return paramString.startsWith(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Int = paramString2.length();
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      localStringBuilder.append(", hanzi = " + this.jdField_a_of_type_JavaLangString);
+    }
+    if (this.b != null) {
+      localStringBuilder.append(", pinyin = " + this.b);
+    }
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,27 +1,48 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.SimpleTextView;
-
-class aink
-  extends bjub
+public class aink
 {
-  aink(ainj paramainj, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
+  boolean a = false;
+  boolean b = false;
+  boolean c = false;
+  boolean d = false;
+  
+  public void a(boolean paramBoolean)
   {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+    this.a = paramBoolean;
   }
   
-  public View a(int paramInt, Object paramObject, bjua parambjua, View.OnClickListener paramOnClickListener)
+  public boolean a()
   {
-    parambjua = super.a(paramInt, paramObject, parambjua, paramOnClickListener);
-    if ((parambjua instanceof SimpleTextView)) {
-      parambjua.setTag(-10, paramObject);
-    }
-    return parambjua;
+    return this.a;
   }
   
-  public void a(int paramInt, Object paramObject, bjua[] paramArrayOfbjua)
+  public void b(boolean paramBoolean)
   {
-    this.a.a(paramInt, paramArrayOfbjua);
+    this.b = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    return this.b;
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
+  }
+  
+  public boolean c()
+  {
+    return this.c;
+  }
+  
+  public void d(boolean paramBoolean)
+  {
+    this.d = paramBoolean;
+  }
+  
+  public boolean d()
+  {
+    return this.d;
   }
 }
 

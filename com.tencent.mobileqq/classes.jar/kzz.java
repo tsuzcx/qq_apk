@@ -1,112 +1,66 @@
-import android.content.Context;
 import com.rookery.translate.type.Language;
 import com.rookery.translate.type.TranslateError;
-import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import org.apache.http.Header;
-import org.apache.http.message.BasicHeader;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class kzz
-  extends kzs
+class kzz
+  extends kzl
 {
-  private static kzz jdField_a_of_type_Kzz;
-  DocumentBuilder jdField_a_of_type_JavaxXmlParsersDocumentBuilder;
-  DocumentBuilderFactory jdField_a_of_type_JavaxXmlParsersDocumentBuilderFactory = DocumentBuilderFactory.newInstance();
-  private lad jdField_a_of_type_Lad = new lad(this, null);
+  kzz(kzy paramkzy, lao paramlao, Long paramLong) {}
   
-  private kzz()
+  public void a(int paramInt, Header[] paramArrayOfHeader, JSONArray paramJSONArray)
   {
+    if (QLog.isColorLevel()) {
+      QLog.e("GoogleTranslator", 2, "[ERROR][SHOULD NOT GO HERE][onSuccess] statusCode:" + paramInt);
+    }
+  }
+  
+  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject)
+  {
+    paramArrayOfHeader = new ArrayList();
+    ArrayList localArrayList = new ArrayList();
     try
     {
-      this.jdField_a_of_type_JavaxXmlParsersDocumentBuilder = this.jdField_a_of_type_JavaxXmlParsersDocumentBuilderFactory.newDocumentBuilder();
+      paramJSONObject = paramJSONObject.getJSONObject("data");
+      if (paramJSONObject != null)
+      {
+        paramJSONObject = paramJSONObject.getJSONArray("translations");
+        if (paramJSONObject != null)
+        {
+          paramInt = 0;
+          while (paramInt < paramJSONObject.length())
+          {
+            String str1 = ((JSONObject)paramJSONObject.get(paramInt)).getString("translatedText");
+            String str2 = ((JSONObject)paramJSONObject.get(paramInt)).getString("detectedSourceLanguage");
+            if ((paramArrayOfHeader != null) && (localArrayList != null))
+            {
+              paramArrayOfHeader.add(Language.fromString(str2));
+              localArrayList.add(str1);
+            }
+            paramInt += 1;
+          }
+        }
+      }
       return;
     }
-    catch (ParserConfigurationException localParserConfigurationException)
+    catch (JSONException paramJSONObject)
     {
-      localParserConfigurationException.printStackTrace();
+      paramJSONObject.printStackTrace();
+      this.jdField_a_of_type_Lao.a(paramArrayOfHeader, localArrayList, this.jdField_a_of_type_JavaLangLong);
     }
   }
   
-  public static kzz a()
+  public void a(Throwable paramThrowable, String paramString)
   {
-    try
-    {
-      if (jdField_a_of_type_Kzz == null) {
-        jdField_a_of_type_Kzz = new kzz();
-      }
-      return jdField_a_of_type_Kzz;
+    this.jdField_a_of_type_Lao.a(new TranslateError(paramThrowable), this.jdField_a_of_type_JavaLangLong);
+    if (QLog.isColorLevel()) {
+      QLog.e("GoogleTranslator", 2, " [onFailure][GoogleTranslateClient] Throwable:" + paramThrowable);
     }
-    finally {}
-  }
-  
-  private void a(Context paramContext, String paramString1, String paramString2, Long paramLong, kzi paramkzi)
-  {
-    paramLong = new HashMap();
-    paramLong.put("client_id", paramString1);
-    paramLong.put("client_secret", paramString2);
-    paramLong.put("scope", "https://api.microsofttranslator.com");
-    paramLong.put("grant_type", "client_credentials");
-    try
-    {
-      kzy.a(paramContext, null, paramLong, new lac(this, paramkzi));
-      return;
-    }
-    catch (UnsupportedEncodingException paramContext)
-    {
-      paramkzi.a(new TranslateError(paramContext), "UnsupportedEncodingException");
-    }
-  }
-  
-  private void a(Context paramContext, List<String> paramList, Language paramLanguage, String paramString, Long paramLong, lal paramlal)
-  {
-    if (paramLanguage == null) {
-      paramLanguage = Language.MS_CHINESE_SIMPLIFIED.toString();
-    }
-    for (;;)
-    {
-      paramString = new BasicHeader("Authorization", "Bearer " + paramString);
-      try
-      {
-        localObject = new lab(this, paramList, paramlal, paramLong);
-        kzy.a(paramContext, new Header[] { paramString }, paramList, paramLanguage, (kzg)localObject);
-        return;
-      }
-      catch (UnsupportedEncodingException paramContext)
-      {
-        Object localObject;
-        paramlal.a(new TranslateError(paramContext), paramLong);
-        return;
-      }
-      catch (Exception paramContext)
-      {
-        paramlal.a(new TranslateError(paramContext), paramLong);
-      }
-      localObject = paramLanguage.toString();
-      if (localObject != null)
-      {
-        paramLanguage = (Language)localObject;
-        if (((String)localObject).length() != 0) {}
-      }
-      else
-      {
-        paramLanguage = Language.MS_CHINESE_SIMPLIFIED.toString();
-      }
-    }
-  }
-  
-  public void a(Context paramContext, List<String> paramList, Language paramLanguage, Long paramLong, String paramString1, String paramString2, lal paramlal)
-  {
-    if (System.currentTimeMillis() < this.jdField_a_of_type_Lad.jdField_a_of_type_Long)
-    {
-      a(paramContext, paramList, paramLanguage, this.jdField_a_of_type_Lad.jdField_a_of_type_JavaLangString, paramLong, paramlal);
-      return;
-    }
-    a(paramContext, paramString1, paramString2, paramLong, new laa(this, paramLong, paramContext, paramList, paramLanguage, paramlal));
   }
 }
 

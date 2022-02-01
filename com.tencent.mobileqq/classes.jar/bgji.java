@@ -1,28 +1,50 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.vas.qvip.fragment.QQVipFeedWedFragment;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.util.List;
 
-public class bgji
-  implements bhle
+class bgji
+  extends Handler
 {
-  public bgji(QQVipFeedWedFragment paramQQVipFeedWedFragment) {}
-  
-  public void onItemSelect(View paramView, int paramInt)
+  bgji(bgjh parambgjh, Looper paramLooper)
   {
-    if (paramInt == 5)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    Object[] arrayOfObject = (Object[])paramMessage.obj;
+    switch (paramMessage.what)
     {
-      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
-      paramView.putExtra("uin", AppConstants.QQ_VIP_UIN);
-      paramView.putExtra("fromQGamePub", true);
-      this.a.startActivity(paramView);
-    }
-    while (paramInt != 1) {
+    default: 
+      return;
+    case 1: 
+      paramMessage = (List)arrayOfObject[0];
+      boolean bool = ((Boolean)arrayOfObject[1]).booleanValue();
+      String str = (String)arrayOfObject[2];
+      long l = ((Long)arrayOfObject[3]).longValue();
+      this.a.a(paramMessage, bool, str, l);
+      return;
+    case 2: 
+      paramMessage = (bfif)arrayOfObject[0];
+      this.a.f(paramMessage);
+      return;
+    case 3: 
+      paramMessage = (bfif)arrayOfObject[0];
+      this.a.g(paramMessage);
+      return;
+    case 4: 
+      paramMessage = (bfif)arrayOfObject[0];
+      this.a.h(paramMessage);
+      return;
+    case 5: 
+      int i = paramMessage.arg1;
+      this.a.a(i);
       return;
     }
-    this.a.getActivity().finish();
+    paramMessage = (bfif)arrayOfObject[0];
+    this.a.j(paramMessage);
   }
 }
 

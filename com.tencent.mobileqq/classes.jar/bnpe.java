@@ -1,82 +1,34 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.concurrent.Semaphore;
 
-public class bnpe
-  extends bnph<bnot, bnot>
+class bnpe
+  implements bnph
 {
-  private final int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private final WeakReference<bnel> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
+  bnpe(bnpd parambnpd, bnpa parambnpa, String[] paramArrayOfString, Semaphore paramSemaphore) {}
   
-  public bnpe()
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public bnpe(String paramString, bnel parambnel, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambnel);
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  protected void a(JobContext paramJobContext, bnot parambnot)
-  {
-    xvv.a("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "start generate thumb ... mVideoIndex = %d", Integer.valueOf(this.jdField_a_of_type_Int));
-    bnpa localbnpa = parambnot.jdField_a_of_type_Bnpa;
-    int i = localbnpa.c;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      paramJobContext = (bnel)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    QLog.d(bnpd.a(), 4, "create pngs for material index = " + this.jdField_a_of_type_Bnpa.a + " end, pngDir = " + paramString);
+    this.jdField_a_of_type_ArrayOfJavaLangString[0] = paramString;
+    String[] arrayOfString = new File(paramString).list();
+    String str = paramString + File.separator + "snapshot.png";
+    if (arrayOfString.length != 0) {
+      bmve.a(paramString + File.separator + arrayOfString[0], 320, 320, str);
     }
-    while (paramJobContext != null)
+    bnpd.a(this.jdField_a_of_type_Bnpd).c.add(str);
+    bnpd.a(this.jdField_a_of_type_Bnpd).a.add(paramString);
+    if ((this.jdField_a_of_type_Bnpa.c != null) && (!this.jdField_a_of_type_Bnpa.c.equals(""))) {
+      bnpd.a(this.jdField_a_of_type_Bnpd).b.add(this.jdField_a_of_type_Bnpa.c);
+    }
+    for (;;)
     {
-      Bitmap localBitmap = paramJobContext.a(this.jdField_a_of_type_Int);
-      if (localBitmap != null)
-      {
-        try
-        {
-          String str2 = this.jdField_a_of_type_JavaLangString;
-          String str1 = str2;
-          if (str2 == null) {
-            str1 = bnpk.a(parambnot.jdField_a_of_type_Int, parambnot.b, ".jpg");
-          }
-          i = new bnpc(localBitmap, str1, localbnpa.jdField_a_of_type_Int, localbnpa.jdField_b_of_type_Int, i, localbnpa.jdField_a_of_type_Float, localbnpa.jdField_a_of_type_Double, localbnpa.jdField_b_of_type_Double, parambnot.jdField_a_of_type_Int).a(new Void[0]).intValue();
-          paramJobContext.a(localBitmap);
-          if (i != 0) {
-            break label217;
-          }
-          parambnot.jdField_a_of_type_JavaLangString = str1;
-          parambnot.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = str1;
-          xvv.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb success ...", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-          super.notifyResult(parambnot);
-          return;
-        }
-        finally
-        {
-          paramJobContext.a(localBitmap);
-        }
-        paramJobContext = null;
-        continue;
-        label217:
-        xvv.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ...", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-        super.notifyError(new ErrorMessage(-1, amtj.a(2131704815) + this.jdField_a_of_type_Int));
-      }
-      else
-      {
-        xvv.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ... EditVideoPlayerExport generateVideoFrameBitmap return null", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-        super.notifyError(new ErrorMessage(-1, amtj.a(2131704816) + this.jdField_a_of_type_Int));
-        return;
-      }
+      bnpd.a(this.jdField_a_of_type_Bnpd).d.add(Integer.valueOf(this.jdField_a_of_type_Bnpa.a));
+      this.jdField_a_of_type_JavaUtilConcurrentSemaphore.release();
+      return;
+      bnpd.a(this.jdField_a_of_type_Bnpd).b.add(this.jdField_a_of_type_Bnpa.b);
     }
-    xvv.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ... can not find EditVideoPlayerExport", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-    super.notifyError(new ErrorMessage(-1, amtj.a(2131704807) + this.jdField_a_of_type_Int));
   }
 }
 

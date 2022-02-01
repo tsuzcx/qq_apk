@@ -1,18 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ahjt
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  ahjt(ahiu paramahiu, PublicAccountInfo paramPublicAccountInfo, amxz paramamxz) {}
+  ahjt(ahjq paramahjq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsAgreeSyncLbs = false;
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsSyncLbsSelected = true;
-    this.jdField_a_of_type_Amxz.a(this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
-    this.jdField_a_of_type_Ahiu.a(2, null);
+    ahjq.b(this.a);
+    bdla.b(null, "dc00898", "", "", "0X800B1A9", "0X800B1A9", 0, 0, "", "", ahjq.a(this.a), "个性签名");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

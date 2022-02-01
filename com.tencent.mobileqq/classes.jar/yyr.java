@@ -1,8 +1,19 @@
-import com.tencent.mobileqq.bubble.QQAnimationDrawable;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
 
-public abstract interface yyr
+public final class yyr
+  implements Parcelable.Creator<PublishParam>
 {
-  public abstract void a(boolean paramBoolean, QQAnimationDrawable paramQQAnimationDrawable);
+  public PublishParam a(Parcel paramParcel)
+  {
+    return new PublishParam(paramParcel);
+  }
+  
+  public PublishParam[] a(int paramInt)
+  {
+    return new PublishParam[paramInt];
+  }
 }
 
 

@@ -1,6 +1,23 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+
 class bmfm
+  extends Handler
 {
-  public static bmfh a = new bmfh(null);
+  bmfm(bmfk parambmfk, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 100001)
+    {
+      bmfk.b(this.a);
+      bmfk.a(this.a).sendEmptyMessageDelayed(100001, 1000L);
+    }
+  }
 }
 
 

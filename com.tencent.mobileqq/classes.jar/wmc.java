@@ -1,19 +1,14 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Comparator;
 
-public class wmc
-  implements ViewTreeObserver.OnPreDrawListener
+class wmc
+  implements Comparator<wzh>
 {
-  public wmc(StoryPlayerActivity paramStoryPlayerActivity, View paramView) {}
+  wmc(wmb paramwmb) {}
   
-  public boolean onPreDraw()
+  public int a(wzh paramwzh1, wzh paramwzh2)
   {
-    wqq.b((ViewGroup)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerActivity.a(), this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerActivity.a, new wmd(this));
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnPreDrawListener(this);
-    return false;
+    return wnw.a(paramwzh1.a.mCreateTime, paramwzh2.a.mCreateTime);
   }
 }
 

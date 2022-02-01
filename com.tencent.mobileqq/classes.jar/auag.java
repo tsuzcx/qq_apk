@@ -1,33 +1,15 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.view.TextHeaderView;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.8;
 
 public class auag
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public auag(TextHeaderView paramTextHeaderView, Activity paramActivity, MessageRecord paramMessageRecord, MessageForStructing paramMessageForStructing) {}
+  public auag(VideoFilePresenter.8 param8) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!TextUtils.isEmpty(TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView)))
-    {
-      Object localObject = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("url", TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
-      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult((Intent)localObject, 0);
-      localObject = atzc.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 0);
-      abet.a(alvx.a(), "769", "205019", (String)localObject, "76901", "1", "160", new String[] { atzc.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), "", "20" });
-      ((VasExtensionHandler)alvx.a().getBusinessHandler(71)).a(3, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("pa_msgId"), TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.this$0.n();
   }
 }
 

@@ -1,12 +1,24 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
-import java.util.List;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.widget.QQToast;
 
-public abstract interface ajbb
+public class ajbb
+  extends CardObserver
 {
-  public abstract void a(boolean paramBoolean, @NonNull List<TroopLinkElement> paramList);
+  public ajbb(SystemMsgListView paramSystemMsgListView) {}
   
-  public abstract void r();
+  public void onSetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    if (paramBoolean)
+    {
+      if (SystemMsgListView.a(this.a) != null) {
+        SystemMsgListView.a(this.a).c();
+      }
+      QQToast.a(this.a.getContext(), 2131698669, 3000).a();
+      return;
+    }
+    QQToast.a(this.a.getContext(), 2131698668, 1).a();
+  }
 }
 
 

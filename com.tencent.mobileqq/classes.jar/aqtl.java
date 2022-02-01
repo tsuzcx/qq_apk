@@ -1,19 +1,31 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import SummaryCard.CondFitUser;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
 public class aqtl
-  implements AdapterView.OnItemClickListener
+  implements ansf
 {
-  public aqtl(DataReportViewer paramDataReportViewer, Context paramContext) {}
+  public aqtl(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(boolean paramBoolean1, List<CondFitUser> paramList, boolean paramBoolean2, int paramInt)
   {
-    DataReportViewer.a(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer, this.jdField_a_of_type_AndroidContentContext, paramInt);
-    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    this.a.a();
+    if (paramInt != 1) {
+      return;
+    }
+    if (!paramBoolean1)
+    {
+      QQToast.a(this.a, 2131691019, 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      QQToast.a(this.a, 2131691022, 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    SearchResultActivity.a(this.a, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.c, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_Anrz.b(), this.a.jdField_a_of_type_Anrz.c(), this.a.e, this.a.d, paramList, paramBoolean2);
   }
 }
 

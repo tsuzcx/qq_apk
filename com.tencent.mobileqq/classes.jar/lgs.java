@@ -1,23 +1,24 @@
-public class lgs
+import java.lang.ref.WeakReference;
+import java.util.Observable;
+import java.util.Observer;
+
+class lgs
+  implements Observer
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public String c = "";
+  private WeakReference<lgr> a;
   
-  public lgs()
+  lgs(lgr paramlgr)
   {
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 30;
-    this.jdField_b_of_type_Int = 3;
+    this.a = new WeakReference(paramlgr);
   }
   
-  public String toString()
+  public void update(Observable paramObservable, Object paramObject)
   {
-    return "id[" + this.jdField_a_of_type_JavaLangString + "], text[" + this.jdField_b_of_type_JavaLangString + "], date[" + this.jdField_a_of_type_Long + "->" + this.jdField_b_of_type_Long + "], imageUrl[" + this.c + "], callTimeLen[" + this.jdField_a_of_type_Int + "], showTimeLen[" + this.jdField_b_of_type_Int + "]";
+    lgr locallgr = (lgr)this.a.get();
+    if (locallgr == null) {
+      return;
+    }
+    lgr.a(locallgr, paramObservable, paramObject);
   }
 }
 

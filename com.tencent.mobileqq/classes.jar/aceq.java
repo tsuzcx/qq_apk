@@ -1,27 +1,17 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.GroupPubAccountInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class aceq
-  extends acew
+class aceq
+  implements acdu
 {
-  public int a()
-  {
-    return 1000;
-  }
+  aceq(acep paramacep) {}
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bdyi parambdyi, bblm parambblm, bbkm parambbkm)
+  public void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    new bblb().g(paramList, paramList1, paramStringBuilder, paramMsg, parambdyi);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return (paramElem.group_pub_acc_info.has()) && (paramElem.group_pub_acc_info.uint64_pub_account.has());
+    acep.a(this.a, paramInt3);
+    acep.b(this.a, paramInt4);
+    if (QLog.isColorLevel()) {
+      QLog.i("GdtMvElementsController", 2, "mClickUpX:" + acep.a(this.a) + ";mClickUpY:" + acep.b(this.a));
+    }
   }
 }
 

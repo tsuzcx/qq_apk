@@ -1,3 +1,4 @@
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ public class di
   {
     if ((paramList != null) && (paramList.size() > 0) && (paramString != null))
     {
-      ((amqd)paramQQAppInterface.getBusinessHandler(8)).a((ArrayList)paramList, "printer", paramString.getBytes(), Long.valueOf(paramQQAppInterface.getCurrentAccountUin()).longValue());
+      ((ansr)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a((ArrayList)paramList, "printer", paramString.getBytes(), Long.valueOf(paramQQAppInterface.getCurrentAccountUin()).longValue());
       return true;
     }
     return false;

@@ -1,42 +1,50 @@
-import androidx.annotation.NonNull;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arii
+  implements aqwv<String>
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
+  public String a;
+  public boolean a;
+  public String b = "";
+  public String c = "{}";
   
-  public static arii a(SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public arii()
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramSosoLbsInfo != null)
-    {
-      localObject1 = localObject2;
-      if (paramSosoLbsInfo.mLocation != null)
-      {
-        localObject1 = new arii();
-        ((arii)localObject1).a = ((int)(paramSosoLbsInfo.mLocation.mLat02 * 1000000.0D));
-        ((arii)localObject1).b = ((int)(paramSosoLbsInfo.mLocation.mLon02 * 1000000.0D));
-        ((arii)localObject1).d = 1;
-        ((arii)localObject1).c = ((int)paramSosoLbsInfo.mLocation.altitude);
-      }
-    }
-    return localObject1;
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  @NonNull
-  public String toString()
+  public void a(String paramString)
   {
-    return "lat:" + this.a + " lon:" + this.b + " alt:" + this.c + " type:" + this.d;
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("QFileAppStorePromoteConfigBean<QFile>", 1, "onParse: but configContent is null!");
+    }
+    this.c = paramString;
+    try
+    {
+      paramString = new JSONObject(paramString);
+      if (paramString.has("actionSwitch")) {
+        this.jdField_a_of_type_Boolean = paramString.getBoolean("actionSwitch");
+      }
+      if (paramString.has("actionHint")) {
+        this.jdField_a_of_type_JavaLangString = paramString.getString("actionHint");
+      }
+      if (paramString.has("actionYYBDownloadUrl")) {
+        this.b = paramString.getString("actionYYBDownloadUrl");
+      }
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("QFileAppStorePromoteConfigBean<QFile>", 1, QLog.getStackTraceString(paramString));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arii
  * JD-Core Version:    0.7.0.1
  */

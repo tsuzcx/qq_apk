@@ -1,12 +1,12 @@
 package dov.com.qq.im.ae.play;
 
 import android.app.Activity;
-import blur;
+import bnju;
 import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetFontDataRsp;
 import com.tencent.common.app.AppInterface;
 
 class EditTextViewer$4
-  extends blur
+  extends bnju
 {
   EditTextViewer$4(EditTextViewer paramEditTextViewer, AppInterface paramAppInterface, String paramString) {}
   
@@ -35,12 +35,12 @@ class EditTextViewer$4
       label74:
       if (paramGetFontDataRsp.Code == -10002)
       {
-        EditTextViewer.access$400(this.this$0, 2131689772);
+        EditTextViewer.access$400(this.this$0, 2131689781);
         bool1 = bool2;
       }
       else
       {
-        EditTextViewer.access$400(this.this$0, 2131689774);
+        EditTextViewer.access$400(this.this$0, 2131689783);
         bool1 = bool2;
       }
     }

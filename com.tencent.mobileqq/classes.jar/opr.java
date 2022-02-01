@@ -1,153 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.ecshopassit.view.EcshopNewPageFragment;
 
-class opr
-  extends pkt
+public class opr
+  implements bivu
 {
-  opr(opq paramopq) {}
+  public opr(EcshopNewPageFragment paramEcshopNewPageFragment) {}
   
-  public void a(int paramInt, boolean paramBoolean, List<ChannelCoverInfo> paramList)
+  public void onItemSelect(View paramView, int paramInt)
   {
-    if ((paramBoolean) && (paramList != null) && (opq.a(this.a) == paramInt))
+    if ((paramInt == 5) || (paramInt == 4))
     {
-      opq.a(this.a, (ArrayList)paramList);
-      if ((opq.a(this.a) == null) || (opq.a(this.a) == null) || (opq.a(this.a).size() <= 0)) {
-        break label200;
-      }
-      opq.a(this.a).a(opq.a(this.a));
-      opq.a(this.a).notifyDataSetChanged();
-      if (opq.a(this.a).findHeaderViewPosition(opq.a(this.a)) < 0) {
-        opq.a(this.a).addHeaderView(opq.a(this.a));
-      }
+      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
+      paramView.putExtra("uin", "3046055438");
+      paramView.putExtra("source", 5);
+      this.a.startActivity(paramView);
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ChannelCoverView", 2, "onSubChannelListUpdate infos size" + opq.a(this.a).size());
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ChannelCoverView", 2, "onSubChannelListUpdate" + paramBoolean);
-      }
+    while (paramInt != 1) {
       return;
-      label200:
-      opq.a(this.a).removeHeaderView(opq.a(this.a));
     }
-  }
-  
-  public void b(boolean paramBoolean, List<ChannelCoverInfo> paramList)
-  {
-    if ((paramBoolean) && (paramList != null) && (opq.a(this.a) == 0))
-    {
-      opq.a(this.a, (ArrayList)paramList);
-      if ((opq.a(this.a) != null) && (opq.a(this.a) != null) && (opq.a(this.a).size() > 0))
-      {
-        opq.a(this.a).a(opq.a(this.a));
-        opq.a(this.a).notifyDataSetChanged();
-        if (opq.a(this.a).findHeaderViewPosition(opq.a(this.a)) < 0) {
-          opq.a(this.a).addHeaderView(opq.a(this.a));
-        }
-        paramList = paramList.iterator();
-      }
-      label134:
-      while (paramList.hasNext())
-      {
-        Object localObject = (ChannelCoverInfo)paramList.next();
-        if ((!TextUtils.isEmpty(((ChannelCoverInfo)localObject).mChannelJumpUrl)) && (((ChannelCoverInfo)localObject).mChannelJumpUrl.indexOf("html/topic.html") != -1)) {
-          for (;;)
-          {
-            int i;
-            try
-            {
-              for (;;)
-              {
-                localObject = new URL(((ChannelCoverInfo)localObject).mChannelJumpUrl);
-                if (TextUtils.isEmpty(((URL)localObject).getQuery())) {
-                  break;
-                }
-                localObject = ((URL)localObject).getQuery().split("[&]");
-                int j = localObject.length;
-                i = 0;
-                if (i >= j) {
-                  break;
-                }
-                String[] arrayOfString = localObject[i].split("[=]");
-                if (arrayOfString.length <= 1) {
-                  break label388;
-                }
-                boolean bool = "topicid".equals(arrayOfString[0]);
-                if (!bool) {
-                  break label388;
-                }
-                try
-                {
-                  Integer.valueOf(arrayOfString[1]).intValue();
-                  if (!QLog.isColorLevel()) {
-                    break;
-                  }
-                  QLog.d("ChannelCoverView", 2, "onMainChannelListUpdate preload topic and topicId = " + arrayOfString[1]);
-                }
-                catch (Exception localException) {}
-              }
-              if (!QLog.isColorLevel()) {
-                break label134;
-              }
-              QLog.d("ChannelCoverView", 2, "onMainChannelListUpdate preload topic and topic is illegal");
-            }
-            catch (MalformedURLException localMalformedURLException) {}
-            if (!QLog.isColorLevel()) {
-              break label134;
-            }
-            QLog.d("ChannelCoverView", 2, "onMainChannelListUpdate preload topic MalformedURLException " + localMalformedURLException);
-            break label134;
-            opq.a(this.a).removeHeaderView(opq.a(this.a));
-            break;
-            i += 1;
-          }
-        }
-      }
-      label388:
-      if (QLog.isColorLevel()) {
-        QLog.d("ChannelCoverView", 2, "onMainChannelListUpdate infos size" + opq.a(this.a).size());
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ChannelCoverView", 2, "onMainChannelListUpdate" + paramBoolean);
-    }
-  }
-  
-  public void c(boolean paramBoolean, List<ChannelCoverInfo> paramList)
-  {
-    if ((paramBoolean) && (paramList != null) && (opq.a(this.a) == 56))
-    {
-      opq.a(this.a, (ArrayList)paramList);
-      if ((opq.a(this.a) == null) || (opq.a(this.a) == null) || (opq.a(this.a).size() <= 0)) {
-        break label201;
-      }
-      opq.a(this.a).a(opq.a(this.a));
-      opq.a(this.a).notifyDataSetChanged();
-      if (opq.a(this.a).findHeaderViewPosition(opq.a(this.a)) < 0) {
-        opq.a(this.a).addHeaderView(opq.a(this.a));
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ChannelCoverView", 2, "onVideoChannelListUpdate infos size" + opq.a(this.a).size());
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ChannelCoverView", 2, "onVideoChannelListUpdate" + paramBoolean);
-      }
-      return;
-      label201:
-      opq.a(this.a).removeHeaderView(opq.a(this.a));
-    }
+    this.a.getActivity().finish();
   }
 }
 

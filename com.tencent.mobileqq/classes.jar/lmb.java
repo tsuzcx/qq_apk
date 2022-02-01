@@ -1,54 +1,44 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.graphics.Path;
+import android.graphics.PathMeasure;
+import android.graphics.PointF;
 
-public class lmb
+public abstract class lmb
+  extends llr
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString;
-  public boolean a;
-  String b;
-  String c;
-  String d;
+  protected Path a;
+  protected PathMeasure a;
   
-  public static lmb a()
+  public lmb()
   {
-    Object localObject = lbp.b(298).jdField_a_of_type_JavaLangString;
-    lmb locallmb = null;
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      locallmb = a((String)localObject);
-    }
-    localObject = locallmb;
-    if (locallmb == null) {
-      localObject = new lmb();
-    }
-    return localObject;
+    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
+    this.jdField_a_of_type_AndroidGraphicsPathMeasure = new PathMeasure(this.jdField_a_of_type_AndroidGraphicsPath, false);
   }
   
-  static lmb a(String paramString)
+  public abstract void a();
+  
+  public void a(float paramFloat1, float paramFloat2)
   {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      lmb locallmb = new lmb();
-      locallmb.jdField_a_of_type_Boolean = paramString.getBoolean("enable");
-      locallmb.jdField_a_of_type_Int = paramString.getInt("task_id");
-      locallmb.jdField_a_of_type_JavaLangString = paramString.getString("url_zip_so");
-      locallmb.b = paramString.getString("MD5_zip_so");
-      locallmb.c = paramString.getString("MD5_so");
-      locallmb.d = paramString.getString("so_name");
-      return locallmb;
-    }
-    catch (Exception paramString)
-    {
-      QLog.d("QavGPDownloadManager", 1, String.format("parseJson, Exception\n%s", new Object[] { paramString }));
-    }
-    return null;
+    super.a(paramFloat1, paramFloat2);
+    this.jdField_a_of_type_AndroidGraphicsPath.reset();
+    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(paramFloat1, paramFloat2);
+    this.jdField_a_of_type_AndroidGraphicsPathMeasure.setPath(this.jdField_a_of_type_AndroidGraphicsPath, false);
+    a();
   }
   
-  public String toString()
+  public void b(float paramFloat1, float paramFloat2)
   {
-    return String.format("task_id[%s], enable[%s], url_zip_so[%s], MD5_zip_so[%s], MD5_so[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_JavaLangString, this.b, this.c });
+    this.jdField_a_of_type_AndroidGraphicsPath.quadTo(this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y, (this.jdField_a_of_type_AndroidGraphicsPointF.x + paramFloat1) / 2.0F, (this.jdField_a_of_type_AndroidGraphicsPointF.y + paramFloat2) / 2.0F);
+    this.jdField_a_of_type_AndroidGraphicsPathMeasure.setPath(this.jdField_a_of_type_AndroidGraphicsPath, false);
+    a();
+  }
+  
+  public void c(float paramFloat1, float paramFloat2)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPointF.x = paramFloat1;
+    this.jdField_a_of_type_AndroidGraphicsPointF.y = paramFloat2;
+    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y);
+    this.jdField_a_of_type_AndroidGraphicsPathMeasure.setPath(this.jdField_a_of_type_AndroidGraphicsPath, false);
+    a();
   }
 }
 

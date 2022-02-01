@@ -57,7 +57,7 @@ public class TroopFileTransferManager$TaskHttpDownloadThumbnail
     //   83: getfield 71	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownloadThumbnail:jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
     //   86: getfield 100	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:FileName	Ljava/lang/String;
     //   89: invokestatic 106	com/tencent/mobileqq/filemanager/util/FileUtil:getExtension	(Ljava/lang/String;)Ljava/lang/String;
-    //   92: invokestatic 111	aszt:a	(Ljava/lang/String;)I
+    //   92: invokestatic 111	auea:a	(Ljava/lang/String;)I
     //   95: istore 6
     //   97: iload 6
     //   99: iconst_2

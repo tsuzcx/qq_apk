@@ -1,13 +1,27 @@
-public abstract interface xor
-  extends xnn<xoe>
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+
+class xor
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(String paramString);
+  xor(xoj paramxoj, VideoViewVideoHolder paramVideoViewVideoHolder, StoryVideoItem paramStoryVideoItem) {}
   
-  public abstract void a(xpg paramxpg);
-  
-  public abstract void b(String paramString);
-  
-  public abstract void f();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    }
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
+    }
+    wcn.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+    ykv.a("play_video", "suc_del", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+  }
 }
 
 

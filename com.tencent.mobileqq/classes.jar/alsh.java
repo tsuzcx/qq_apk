@@ -1,33 +1,19 @@
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
 public class alsh
-  implements Cloneable
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public ArrayList<String> a;
-  public int b;
-  public int c;
+  public alsh(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
   
-  protected Object clone()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = null;
-    try
-    {
-      alsh localalsh = (alsh)super.clone();
-      localObject = localalsh;
-    }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      for (;;)
-      {
-        localCloneNotSupportedException.printStackTrace();
-      }
-    }
-    if (this.a != null) {
-      localObject.a = ((ArrayList)this.a.clone());
-    }
-    return localObject;
+    LpReportInfo_pf00064.allReport(680, 1, 2);
+    QzoneSlideShowPreparingFragment.a(this.a).dismiss();
+    this.a.a();
   }
 }
 

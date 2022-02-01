@@ -1,25 +1,89 @@
-import android.text.TextUtils;
-import com.tencent.ad.tangram.Ad;
-import com.tencent.ad.tangram.canvas.report.AdRefreshCallback;
-import com.tencent.ad.tangram.canvas.report.AdReportAdapter;
-import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppBtnData;
-import com.tencent.gdtad.aditem.GdtAd;
+import android.os.Bundle;
+import android.widget.CompoundButton;
+import com.tencent.device.msg.activities.DeviceMsgSettingActivity;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.observer.BusinessObserver;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class abkh
-  implements AdReportAdapter
+  implements BusinessObserver
 {
-  public void downloadReport(Ad paramAd, String paramString, int paramInt, boolean paramBoolean, AdAppBtnData paramAdAppBtnData)
+  public abkh(DeviceMsgSettingActivity paramDeviceMsgSettingActivity) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((!(paramAd instanceof GdtAd)) || (TextUtils.isEmpty(paramString))) {
+    boolean bool2 = true;
+    int i = 1;
+    boolean bool1 = false;
+    this.a.jdField_a_of_type_Bisl.dismiss();
+    if (!paramBoolean)
+    {
+      paramBundle = this.a.jdField_a_of_type_AndroidWidgetCompoundButton;
+      paramBoolean = bool1;
+      if (!this.a.jdField_a_of_type_AndroidWidgetCompoundButton.isChecked()) {
+        paramBoolean = true;
+      }
+      paramBundle.setChecked(paramBoolean);
+      bjkv.a().a(this.a.getString(2131718564));
       return;
     }
-    absy.a().a(paramString, (GdtAd)paramAd, paramAdAppBtnData);
-    absy.a().a((GdtAd)paramAd, paramInt, paramBoolean);
-  }
-  
-  public AdRefreshCallback getAdReportAdapter()
-  {
-    return absy.a();
+    if (paramBundle.getInt("cgiResultCode", -1) != 0)
+    {
+      bjkv.a().a(this.a.getString(2131692815));
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        paramBundle = new JSONObject(new String(paramBundle.getByteArray("data")));
+        if (paramBundle.optInt("ret", -1) != 0) {
+          break label280;
+        }
+        int j = ((Integer)this.a.jdField_a_of_type_AndroidWidgetCompoundButton.getTag()).intValue();
+        paramBundle = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+        if (!paramBundle.hasNext()) {
+          break;
+        }
+        localObject = (abki)paramBundle.next();
+        if (((abki)localObject).a == j) {
+          if (this.a.jdField_a_of_type_AndroidWidgetCompoundButton.isChecked())
+          {
+            paramInt = 1;
+            ((abki)localObject).b = paramInt;
+          }
+          else
+          {
+            paramInt = 0;
+          }
+        }
+      }
+      catch (JSONException paramBundle)
+      {
+        paramBundle.printStackTrace();
+        return;
+      }
+    }
+    paramBundle = this.a.app;
+    long l = Long.parseLong(this.a.c);
+    paramInt = i;
+    if (this.a.jdField_a_of_type_AndroidWidgetCompoundButton.isChecked()) {
+      paramInt = 2;
+    }
+    absy.a(paramBundle, l, "Usr_MsgMgr_Setting", paramInt, 0, Integer.parseInt(this.a.b));
+    return;
+    label280:
+    Object localObject = this.a.jdField_a_of_type_AndroidWidgetCompoundButton;
+    if (!this.a.jdField_a_of_type_AndroidWidgetCompoundButton.isChecked()) {}
+    for (paramBoolean = bool2;; paramBoolean = false)
+    {
+      ((CompoundButton)localObject).setChecked(paramBoolean);
+      bjko.a("DeviceMsgSettingActivity", "msg:" + paramBundle.optString("msg"));
+      bjkv.a().a(this.a.getString(2131718564));
+      return;
+    }
   }
 }
 

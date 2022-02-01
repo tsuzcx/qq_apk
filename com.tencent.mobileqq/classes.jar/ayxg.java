@@ -1,27 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 class ayxg
-  implements bgso
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private WeakReference<aufo> a;
+  ayxg(ayxa paramayxa) {}
   
-  ayxg(aufo paramaufo)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a = new WeakReference(paramaufo);
-  }
-  
-  public void onResult(boolean paramBoolean)
-  {
-    if (paramBoolean)
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (ayxa.a(this.a) != null)
     {
-      aufo localaufo = (aufo)this.a.get();
-      if (localaufo != null) {
-        localaufo.a();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileQZoneComponent", 2, "check friend's profile and preload web-process!");
-      }
+      ayxa.a(this.a).setAlpha(f);
+      ayxa.a(this.a).setTranslationY((1.0F - f) * AIOUtils.dp2px(25.0F, ayxa.a(this.a)));
     }
   }
 }

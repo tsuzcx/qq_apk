@@ -1,33 +1,17 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-public class anqc
-  extends anri
+public final class anqc
 {
-  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
-  {
-    paramQQAppInterface = new anqa(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "avgame";
-    paramQQAppInterface.c = "join_room";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
-    }
-    paramContext = paramContext[1].split("&");
-    int i = 0;
-    while (i < paramContext.length)
-    {
-      paramString = paramContext[i];
-      if (paramString.split("=").length == 2)
-      {
-        int j = paramString.indexOf("=");
-        paramQQAppInterface.a(paramString.substring(0, j), paramString.substring(j + 1));
-      }
-      i += 1;
-    }
-    return paramQQAppInterface;
-  }
+  View jdField_a_of_type_AndroidViewView;
+  ViewGroup[] jdField_a_of_type_ArrayOfAndroidViewViewGroup = new ViewGroup[3];
+  ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[3];
+  TextView[] jdField_a_of_type_ArrayOfAndroidWidgetTextView = new TextView[3];
+  URLImageView[] jdField_a_of_type_ArrayOfComTencentImageURLImageView = new URLImageView[3];
+  ImageView[] b = new ImageView[3];
 }
 
 

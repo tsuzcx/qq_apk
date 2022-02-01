@@ -1,6 +1,6 @@
 public abstract interface bgfy
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract void a(Object paramObject);
 }
 
 

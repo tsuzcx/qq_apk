@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.startup.step;
 
-import anez;
-import bccb;
+import aohp;
+import bdiw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -29,7 +29,7 @@ public class StartService
     Automator localAutomator2;
     if (BaseApplicationImpl.sProcessId == 7)
     {
-      bccb.a("com.tencent.mobileqq:tool");
+      bdiw.a("com.tencent.mobileqq:tool");
       if (BaseApplicationImpl.sProcessId != 1) {
         break label129;
       }
@@ -48,13 +48,13 @@ public class StartService
     label131:
     for (localObject = "{[11,12,14],17,20,21,22108,}";; localObject = "{85,{4,3,5,6},[11,12,14],17,20,21,59,60,22,113,108,44,45,114,[100,65,25,10,26,27,28,29,30,32,34,35,39,40,41,42,43,47,48,50,55,107,69,93,70,71,72,73,{91},53,54,61,104,63,77,81,67,80,74,36,37,38,87,88,78,82,84,98,86,102,103,109,110,111,112],57,95,105}")
     {
-      localAutomator1.a(anez.a(localAutomator2, (String)localObject));
+      localAutomator1.a(aohp.a(localAutomator2, (String)localObject));
       localQQAppInterface.start(false);
       return true;
       if (BaseApplicationImpl.sProcessId != 11) {
         break label48;
       }
-      bccb.a("com.tencent.mobileqq:miniapp");
+      bdiw.a("com.tencent.mobileqq:miniapp");
       break label48;
       break;
     }

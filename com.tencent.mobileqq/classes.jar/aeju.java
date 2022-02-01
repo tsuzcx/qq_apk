@@ -1,31 +1,22 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class aeju
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public aeju(TroopAssisSettingActivity paramTroopAssisSettingActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public aeju(NotificationActivity paramNotificationActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.jdField_a_of_type_Almi.a(this.a.jdField_a_of_type_JavaUtilMap);
-    this.a.jdField_a_of_type_Almi.notifyDataSetChanged();
-    this.a.b();
+    NotificationActivity.a(this.a, "0X800B657");
+    bdla.a(this.a.app, "dc00898", "", "", "0X800AA16", "0X800AA16", 0, 0, "", "", NotificationActivity.d(this.a), "");
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aeju
  * JD-Core Version:    0.7.0.1
  */

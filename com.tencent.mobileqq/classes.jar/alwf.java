@@ -1,649 +1,197 @@
-import android.media.AudioManager;
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import android.media.MediaPlayer;
-import android.text.TextUtils;
-import android.webkit.URLUtil;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.PopupWindow;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.mobileqq.widget.RoundImageView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.json.JSONObject;
 
 public class alwf
-  implements alxg
+  implements alwj
 {
-  public static List<alwf> a;
-  private int jdField_a_of_type_Int;
-  private alwm jdField_a_of_type_Alwm;
-  private AudioManager.OnAudioFocusChangeListener jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new alwl(this);
-  private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
-  private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private static final int jdField_a_of_type_Int = bptp.a(172.0F);
+  private static final int b = bptp.a(31.5F);
+  private static final int c = jdField_a_of_type_Int + bptp.a(16.0F);
+  private static final int d = b + bptp.a(14.0F);
+  private static final int e = c / 2;
+  private static final int f = bptp.a(65.0F);
+  private static final int g = bptp.a(10.0F);
+  private static final int h = ViewUtils.dpToPx(30.0F);
+  private static final int i = ViewUtils.dpToPx(8.0F);
+  private static final int j = ViewUtils.dpToPx(12.0F);
+  private static final int k = bptp.a(4.0F);
+  private long jdField_a_of_type_Long;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
+  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
+  private RoundImageView jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView;
   private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int c;
+  private int l = -1;
+  private int m = -1;
+  private int n = -1;
   
-  static
+  private int a(int paramInt)
   {
-    jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-  }
-  
-  public alwf(int paramInt1, int paramInt2, String arg3)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    alxy localalxy = alvx.a(paramInt2);
-    if (localalxy != null) {
-      localalxy.b(0);
-    }
-    if ("effect".equals(???)) {
-      if (localalxy != null) {
-        this.jdField_a_of_type_Alwm = new alwm(paramInt2);
-      }
-    }
-    for (;;)
+    int i2 = 0;
+    int i1 = i2;
+    if (this.l != -1)
     {
-      if (jdField_a_of_type_JavaUtilList != null) {}
-      synchronized (jdField_a_of_type_JavaUtilList)
+      i1 = i2;
+      if (this.m != -1)
       {
-        jdField_a_of_type_JavaUtilList.add(this);
-        this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)BaseApplicationImpl.getContext().getSystemService("audio"));
-        return;
-        QLog.e("CmGameAudioPlayer", 1, "can not create pool");
-        continue;
-        this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-        a(1);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(new alwg(this));
-      }
-    }
-  }
-  
-  private void a(alxf paramalxf, JSONObject paramJSONObject)
-  {
-    if (paramalxf != null) {
-      paramalxf.a(paramJSONObject);
-    }
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_AndroidMediaAudioManager == null) {}
-    for (;;)
-    {
-      return;
-      if (paramBoolean) {}
-      for (int i = this.jdField_a_of_type_AndroidMediaAudioManager.requestAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener, 3, 2); QLog.isColorLevel(); i = this.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener))
-      {
-        QLog.d("CmGameAudioPlayer", 2, new Object[] { "[execAudioFocus], requestFocus:", Boolean.valueOf(paramBoolean), ",ret:", Integer.valueOf(i) });
-        return;
-      }
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
-  }
-  
-  public int a(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(paramInt);
-  }
-  
-  public String a()
-  {
-    try
-    {
-      MediaPlayer localMediaPlayer = this.jdField_a_of_type_AndroidMediaMediaPlayer;
-      if (localMediaPlayer != null) {}
-      try
-      {
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
-        this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
-        if (this.jdField_a_of_type_Alwm != null)
-        {
-          this.jdField_a_of_type_Alwm.c();
-          this.jdField_a_of_type_Alwm = null;
-          return null;
+        if ((paramInt <= this.m + j) || (this.l <= this.m + j)) {
+          break label53;
         }
-      }
-      catch (Throwable localThrowable1)
-      {
-        for (;;)
-        {
-          QLog.e("CmGameAudioPlayer", 1, localThrowable1, new Object[0]);
-        }
-      }
-      return null;
-    }
-    catch (Throwable localThrowable2)
-    {
-      QLog.e("CmGameAudioPlayer", 1, "audio destroy falied", localThrowable2);
-    }
-  }
-  
-  public JSONObject a(float paramFloat1, float paramFloat2, JSONObject paramJSONObject)
-  {
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
-    {
-      if (a() != 9) {
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setVolume(paramFloat1, paramFloat2);
+        i1 = 2;
       }
     }
-    else {
-      return paramJSONObject;
-    }
-    QLog.e("CmGameAudioPlayer", 1, " volume in  state " + a());
-    return paramJSONObject;
-  }
-  
-  public JSONObject a(int paramInt, JSONObject paramJSONObject, alxf paramalxf)
-  {
-    int i;
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
-    {
-      i = a();
-      if ((i != 3) && (i != 5) && (i != 7) && (i != 10)) {
-        break label66;
-      }
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnSeekCompleteListener(new alwh(this, paramJSONObject, paramalxf));
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.seekTo(paramInt);
-    }
-    for (;;)
-    {
-      return null;
-      label66:
-      QLog.e("CmGameAudioPlayer", 1, " seek in  state " + i);
-    }
-  }
-  
-  public JSONObject a(alxf paramalxf, JSONObject paramJSONObject)
-  {
-    if (paramJSONObject != null) {
-      try
-      {
-        if (paramJSONObject.optInt("N_R_OBJ") == this.jdField_a_of_type_Int)
-        {
-          String str = paramJSONObject.optString("N_R_CMD");
-          if ("cs.audio_play.local".equals(str)) {
-            return b(paramJSONObject, paramalxf);
-          }
-          if ("cs.audio_autoplay.local".equals(str)) {
-            return b(paramJSONObject.optBoolean("autoplay"), paramJSONObject);
-          }
-          if ("cs.audio_load.local".equals(str)) {
-            return c(paramJSONObject, paramalxf);
-          }
-          if ("cs.audio_loop.local".equals(str)) {
-            return a(paramJSONObject.optBoolean("loop"), paramJSONObject);
-          }
-          if ("cs.audio_muted.local".equals(str)) {
-            return a(paramJSONObject.optBoolean("muted"), (float)paramJSONObject.optDouble("leftVolume"), (float)paramJSONObject.optDouble("rightVolume"), paramJSONObject);
-          }
-          if ("cs.audio_pause.local".equals(str)) {
-            return b(paramJSONObject);
-          }
-          if ("cs.audio_seek.local".equals(str)) {
-            return a(paramJSONObject.optInt("seek"), paramJSONObject, paramalxf);
-          }
-          if ("cs.audio_src.local".equals(str)) {
-            return a(paramJSONObject.optString("src"), paramJSONObject, paramalxf);
-          }
-          if ("cs.audio_preload.local".equals(str)) {
-            return c(paramJSONObject.optBoolean("preloaded"), paramJSONObject);
-          }
-          if ("cs.audio_volume.local".equals(str)) {
-            return a((float)paramJSONObject.optDouble("leftVolume"), (float)paramJSONObject.optDouble("rightVolume"), paramJSONObject);
-          }
-          if ("cs.audio_destroy.local".equals(str)) {
-            return b(paramalxf, paramJSONObject);
-          }
-          if ("cs.audio_onend.local".equals(str)) {
-            return e(paramJSONObject, paramalxf);
-          }
-          if ("cs.audio_ontimeupdate.local".equals(str)) {
-            return d(paramJSONObject);
-          }
-          if ("cs.audio_duration.local".equals(str)) {
-            return c(paramJSONObject);
-          }
-          if ("cs.audio_effect_resume.local".equals(str)) {
-            return f(paramJSONObject);
-          }
-          if ("cs.audio_stop.local".equals(str)) {
-            return e(paramJSONObject);
-          }
-          if ("cs.audio_attribute_get.local".equals(str)) {
-            return a(paramJSONObject);
-          }
-          if ("cs.audio_attribute_set.local".equals(str))
-          {
-            paramalxf = a(paramJSONObject, paramalxf);
-            return paramalxf;
-          }
-        }
-      }
-      catch (Throwable paramalxf)
-      {
-        QLog.e("CmGameAudioPlayer", 1, "audio failed", paramalxf);
-      }
-    }
-    return null;
-  }
-  
-  public JSONObject a(String paramString, JSONObject paramJSONObject, alxf paramalxf)
-  {
-    if ((this.jdField_a_of_type_AndroidMediaMediaPlayer != null) && (a() != 6) && (a() != 9))
-    {
-      try
-      {
-        this.c = 0;
-        alxy localalxy = alvx.a();
-        if (localalxy != null)
-        {
-          String str2 = "";
-          String str1 = str2;
-          if (paramString != null)
-          {
-            str1 = str2;
-            if (paramString.startsWith("GameSandBox://")) {
-              str1 = "sandbox";
-            }
-          }
-          if (URLUtil.isNetworkUrl(paramString)) {}
-          for (;;)
-          {
-            this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
-            a(1);
-            if (TextUtils.isEmpty(paramString)) {
-              break;
-            }
-            this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString);
-            a(2);
-            return paramJSONObject;
-            paramString = altz.a(paramString, localalxy.a(), str1, false);
-          }
-        }
-        paramJSONObject.put("code", 2);
-        paramJSONObject.put("message", "src not exist " + paramString);
-        return paramJSONObject;
-      }
-      catch (Throwable paramString)
-      {
-        QLog.e("CmGameAudioPlayer", 1, paramString, new Object[0]);
-        if (paramJSONObject == null) {
-          return paramJSONObject;
-        }
-      }
-      try
-      {
-        paramJSONObject.put("code", 1);
-        paramJSONObject.put("message", "src error " + paramString.getMessage());
-        a(paramalxf, paramJSONObject);
-        return paramJSONObject;
-      }
-      catch (Throwable paramString)
-      {
-        QLog.e("CmGameAudioPlayer", 1, paramString, new Object[0]);
-        return paramJSONObject;
-      }
-    }
-    QLog.e("CmGameAudioPlayer", 1, " src in  state " + a());
-    return paramJSONObject;
-  }
-  
-  public JSONObject a(JSONObject paramJSONObject)
-  {
-    try
-    {
-      if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
-      {
-        if (paramJSONObject.has("duration")) {
-          paramJSONObject.put("duration", this.jdField_a_of_type_AndroidMediaMediaPlayer.getDuration());
-        }
-        if (paramJSONObject.has("currentTime")) {
-          paramJSONObject.put("currentTime", this.jdField_a_of_type_AndroidMediaMediaPlayer.getCurrentPosition());
-        }
-        if (paramJSONObject.has("paused")) {
-          if (a() != 7) {
-            break label89;
-          }
-        }
-      }
-      label89:
-      for (boolean bool = true;; bool = false)
-      {
-        paramJSONObject.put("paused", bool);
-        return paramJSONObject;
-      }
-      return paramJSONObject;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("CmGameAudioPlayer", 1, localThrowable, new Object[0]);
-    }
-  }
-  
-  public JSONObject a(JSONObject paramJSONObject, alxf paramalxf)
-  {
-    try
-    {
-      if (paramJSONObject.has("src")) {
-        a(paramJSONObject.optString("src"), paramJSONObject, paramalxf);
-      }
-      if (paramJSONObject.has("loop")) {
-        a(paramJSONObject.optBoolean("loop"), paramJSONObject);
-      }
-      if (paramJSONObject.has("autoPlay")) {
-        b(paramJSONObject.optBoolean("autoPlay"), paramJSONObject);
-      }
-      if (paramJSONObject.has("volume")) {
-        a((float)paramJSONObject.optDouble("volume"), (float)paramJSONObject.optDouble("volume"), paramJSONObject);
-      }
-      if (paramJSONObject.has("muted")) {
-        a(paramJSONObject.optBoolean("muted"), (float)paramJSONObject.optDouble("volume"), (float)paramJSONObject.optDouble("volume"), paramJSONObject);
-      }
-      if (paramJSONObject.has("currentTime")) {
-        d(paramJSONObject, paramalxf);
-      }
-      return paramJSONObject;
-    }
-    catch (Throwable paramalxf)
-    {
-      QLog.e("CmGameAudioPlayer", 1, paramalxf, new Object[0]);
-    }
-    return paramJSONObject;
-  }
-  
-  public JSONObject a(boolean paramBoolean, float paramFloat1, float paramFloat2, JSONObject paramJSONObject)
-  {
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
-      if (paramBoolean) {
-        localObject = a(0.0F, 0.0F, paramJSONObject);
-      }
-    }
+    label53:
     do
     {
-      return localObject;
-      return a(paramFloat1, paramFloat2, paramJSONObject);
-      localObject = paramJSONObject;
-    } while (this.jdField_a_of_type_Alwm == null);
-    Object localObject = this.jdField_a_of_type_Alwm;
-    if ((paramBoolean) || ((Float.compare(paramFloat1, 0.0F) == 0) && (Float.compare(paramFloat2, 0.0F) == 0))) {}
-    for (int i = 0;; i = 1)
-    {
-      ((alwm)localObject).a(i, BaseActivity.sTopActivity.getAppInterface());
-      return paramJSONObject;
-    }
+      do
+      {
+        return i1;
+        i1 = i2;
+      } while (j + paramInt >= this.m);
+      i1 = i2;
+    } while (this.l + j >= this.m);
+    return 1;
   }
   
-  public JSONObject a(boolean paramBoolean, JSONObject paramJSONObject)
+  private int a(int paramInt1, int paramInt2)
   {
-    int i;
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
-    {
-      i = a();
-      if ((i == 1) || (i == 2) || (i == 6) || (i == 3) || (i == 5) || (i == 7) || (i == 10)) {
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setLooping(paramBoolean);
-      }
-    }
-    else
-    {
-      return paramJSONObject;
-    }
-    QLog.e("CmGameAudioPlayer", 1, " loop in  state " + i);
-    return paramJSONObject;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public JSONObject b(alxf arg1, JSONObject paramJSONObject)
-  {
-    try
-    {
-      if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
-      }
-      if (this.jdField_a_of_type_Alwm != null) {
-        this.jdField_a_of_type_Alwm.c();
-      }
-      a(8);
-      this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
-      this.jdField_a_of_type_Alwm = null;
-      if (??? != null) {
-        ???.b(this);
-      }
-      if (jdField_a_of_type_JavaUtilList != null) {
-        synchronized (jdField_a_of_type_JavaUtilList)
-        {
-          jdField_a_of_type_JavaUtilList.remove(this);
-          return paramJSONObject;
+    this.m = this.l;
+    this.l = paramInt1;
+    int i1;
+    if ((paramInt2 == 0) && (this.n != -1)) {
+      if (this.n > paramInt1) {
+        if (this.n - paramInt1 < i) {
+          i1 = this.n;
         }
       }
-      return paramJSONObject;
     }
-    catch (Throwable ???)
+    while (paramInt2 == 0)
     {
-      QLog.e("CmGameAudioPlayer", 1, "destroy failed", ???);
+      return i1 - h;
+      this.n = paramInt1;
+      i1 = paramInt1;
+      continue;
+      i1 = paramInt1;
+      if (this.n < paramInt1) {
+        if (paramInt1 - this.n < i)
+        {
+          i1 = this.n;
+        }
+        else
+        {
+          this.n = paramInt1;
+          i1 = paramInt1;
+          continue;
+          this.n = paramInt1;
+          i1 = paramInt1;
+        }
+      }
     }
+    if (paramInt2 == 1) {
+      return (int)(i1 - h * 1.5F);
+    }
+    return (int)(i1 - h * 0.5F);
   }
   
-  public JSONObject b(JSONObject paramJSONObject)
+  public static RectF a(View paramView)
   {
+    int[] arrayOfInt = new int[2];
+    paramView.getLocationOnScreen(arrayOfInt);
+    return new RectF(arrayOfInt[0], arrayOfInt[1], arrayOfInt[0] + paramView.getWidth(), arrayOfInt[1] + paramView.getHeight());
+  }
+  
+  private void a(View paramView, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    RectF localRectF = a(paramView);
+    a("start update ");
+    a(paramInt1 - localRectF.left, paramInt2 - localRectF.top, 1.5F);
+    this.jdField_a_of_type_AndroidGraphicsCanvas.drawColor(-1);
+    this.jdField_a_of_type_AndroidGraphicsCanvas.scale(1.5F, 1.5F);
+    this.jdField_a_of_type_AndroidGraphicsCanvas.translate(-this.jdField_a_of_type_AndroidGraphicsRect.left, -this.jdField_a_of_type_AndroidGraphicsRect.top);
+    paramView.draw(this.jdField_a_of_type_AndroidGraphicsCanvas);
+    a("get Drawing cache ");
+    this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap(null);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+  }
+  
+  private void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QMagnifier", 2, paramString + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    }
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+    this.jdField_a_of_type_Boolean = false;
+    this.l = -1;
+    this.m = -1;
+    this.n = -1;
+  }
+  
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    paramFloat2 -= g;
+    this.jdField_a_of_type_AndroidGraphicsRect.set((int)(paramFloat1 - jdField_a_of_type_Int / 2 / paramFloat3), (int)(paramFloat2 - b / 2 / paramFloat3), (int)(jdField_a_of_type_Int / 2 / paramFloat3 + paramFloat1), (int)(paramFloat2 + b / 2 / paramFloat3));
+  }
+  
+  public void a(@NonNull View paramView1, int paramInt1, int paramInt2, @NonNull View paramView2, boolean paramBoolean)
+  {
+    if (Build.VERSION.SDK_INT < 23) {
+      return;
+    }
+    if (this.jdField_a_of_type_AndroidWidgetPopupWindow == null)
+    {
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(BaseApplicationImpl.getContext());
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setClippingEnabled(false);
+      a("create popWindow ");
+      paramView2 = ((LayoutInflater)paramView1.getContext().getSystemService("layout_inflater")).inflate(2131559344, null, false);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)paramView2.findViewById(2131362438));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setmRadius(k, false);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(paramView2);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setWidth(c);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setHeight(d);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(null);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(jdField_a_of_type_Int, b, Bitmap.Config.ARGB_8888);
+      this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
+      a("create magnifier bitmap and canvas");
+    }
+    if ((paramBoolean) || (!this.jdField_a_of_type_Boolean)) {
+      a(paramView1, paramInt1, paramInt2);
+    }
+    paramInt2 = a(paramInt2, a(paramInt2));
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.update(paramInt1 - e, paramInt2 - f, c, d);
+    }
     for (;;)
     {
-      try
-      {
-        if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
-        {
-          i = a();
-          if ((i == 5) || (i == 7) || (i == 10))
-          {
-            this.jdField_a_of_type_AndroidMediaMediaPlayer.pause();
-            a(7);
-            a(false);
-            return paramJSONObject;
-          }
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.e("CmGameAudioPlayer", 1, " pause in  state " + a());
-          continue;
-        }
-        if (this.jdField_a_of_type_Alwm == null) {
-          continue;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("CmGameAudioPlayer", 1, "pause failed", localThrowable);
-        return paramJSONObject;
-      }
-      int i = paramJSONObject.optInt("id");
-      if (paramJSONObject.optBoolean("auto", true)) {
-        this.jdField_a_of_type_Alwm.a();
-      } else {
-        this.jdField_a_of_type_Alwm.a(i, null);
-      }
+      this.jdField_a_of_type_Boolean = true;
+      return;
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView1, 0, paramInt1 - e, paramInt2 - f);
     }
   }
   
-  public JSONObject b(JSONObject paramJSONObject, alxf paramalxf)
+  public boolean a()
   {
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
-    {
-      i = a();
-      if ((i == 3) || (i == 5) || (i == 7) || (i == 10))
-      {
-        a(true);
-        if (this.jdField_a_of_type_AndroidMediaMediaPlayer == null) {}
-      }
-    }
-    while (this.jdField_a_of_type_Alwm == null) {
-      for (;;)
-      {
-        int i;
-        try
-        {
-          this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-          a(5);
-          if (this.c != 0) {
-            this.jdField_a_of_type_AndroidMediaMediaPlayer.seekTo(this.c);
-          }
-          this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new alwi(this));
-        }
-        catch (Throwable paramJSONObject)
-        {
-          QLog.e("CmGameAudioPlayer", 1, "audio play failed", paramJSONObject);
-          continue;
-        }
-        return null;
-        QLog.e("CmGameAudioPlayer", 1, " play in  state " + i);
-      }
-    }
-    a(true);
-    return this.jdField_a_of_type_Alwm.a(paramalxf, paramJSONObject);
-  }
-  
-  public JSONObject b(boolean paramBoolean, JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return paramJSONObject;
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public JSONObject c(JSONObject paramJSONObject)
-  {
-    int i;
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
-    {
-      if ((a() == 1) && (a() == 2) && (a() == 9)) {
-        break label69;
-      }
-      i = this.jdField_a_of_type_AndroidMediaMediaPlayer.getDuration();
-      if (paramJSONObject == null) {}
-    }
-    try
-    {
-      paramJSONObject.put("duration", i);
-      return paramJSONObject;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("CmGameAudioPlayer", 1, localThrowable, new Object[0]);
-      return paramJSONObject;
-    }
-    label69:
-    QLog.e("CmGameAudioPlayer", 1, " duration in  state " + a());
-    return paramJSONObject;
-  }
-  
-  public JSONObject c(JSONObject paramJSONObject, alxf paramalxf)
-  {
-    if ((this.jdField_a_of_type_AndroidMediaMediaPlayer != null) && ((a() == 2) || (a() == 6)))
-    {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new alwj(this, paramJSONObject, paramalxf));
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
-    }
-    return null;
-  }
-  
-  public JSONObject c(boolean paramBoolean, JSONObject paramJSONObject)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    return paramJSONObject;
-  }
-  
-  public JSONObject d(JSONObject paramJSONObject)
-  {
-    int i;
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
-      i = this.jdField_a_of_type_AndroidMediaMediaPlayer.getCurrentPosition();
-    }
-    try
-    {
-      paramJSONObject.put("currentTime", i);
-      return paramJSONObject;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("CmGameAudioPlayer", 1, localThrowable, new Object[0]);
-    }
-    return paramJSONObject;
-  }
-  
-  public JSONObject d(JSONObject paramJSONObject, alxf paramalxf)
-  {
-    int i;
-    if ((this.jdField_a_of_type_AndroidMediaMediaPlayer != null) && (a() != 9))
-    {
-      i = this.jdField_a_of_type_AndroidMediaMediaPlayer.getCurrentPosition();
-      if (paramJSONObject != null) {
-        if (paramJSONObject.has("currentTime")) {
-          this.c = paramJSONObject.optInt("currentTime");
-        }
-      }
-    }
-    try
-    {
-      paramJSONObject.put("currentTime", i);
-      return paramJSONObject;
-    }
-    catch (Throwable paramalxf)
-    {
-      QLog.e("CmGameAudioPlayer", 1, paramalxf, new Object[0]);
-    }
-    return paramJSONObject;
-  }
-  
-  public JSONObject e(JSONObject paramJSONObject)
-  {
-    if (this.jdField_a_of_type_Alwm != null)
-    {
-      this.jdField_a_of_type_Alwm.c(paramJSONObject.optInt("id"), null);
-      this.jdField_a_of_type_Alwm.a(paramJSONObject);
-    }
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
-    {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
-    }
-    return paramJSONObject;
-  }
-  
-  public JSONObject e(JSONObject paramJSONObject, alxf paramalxf)
-  {
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new alwk(this, paramalxf, paramJSONObject));
-    }
-    return null;
-  }
-  
-  public JSONObject f(JSONObject paramJSONObject)
-  {
-    if (this.jdField_a_of_type_Alwm != null)
-    {
-      if (paramJSONObject.optBoolean("audo", true)) {
-        this.jdField_a_of_type_Alwm.b();
-      }
-    }
-    else {
-      return paramJSONObject;
-    }
-    this.jdField_a_of_type_Alwm.b(paramJSONObject.optInt("id"), null);
-    return paramJSONObject;
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

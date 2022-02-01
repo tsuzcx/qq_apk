@@ -1,20 +1,12 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
-class mqg
-  implements View.OnTouchListener
+public abstract interface mqg
 {
-  mqg(mqc parammqc) {}
+  public abstract void a(boolean paramBoolean);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mqg
  * JD-Core Version:    0.7.0.1
  */

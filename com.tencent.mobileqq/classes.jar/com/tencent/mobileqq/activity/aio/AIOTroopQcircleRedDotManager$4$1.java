@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aexa;
-import aezn;
+import afol;
+import afqz;
 import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mtt.supportui.utils.struct.ArrayMap;
@@ -11,7 +11,7 @@ import java.util.List;
 public class AIOTroopQcircleRedDotManager$4$1
   implements Runnable
 {
-  public AIOTroopQcircleRedDotManager$4$1(aexa paramaexa) {}
+  public AIOTroopQcircleRedDotManager$4$1(afol paramafol) {}
   
   public void run()
   {
@@ -19,8 +19,10 @@ public class AIOTroopQcircleRedDotManager$4$1
     while (localIterator.hasNext())
     {
       ChatMessage localChatMessage = (ChatMessage)localIterator.next();
-      if (this.a.jdField_a_of_type_ComTencentMttSupportuiUtilsStructArrayMap.containsKey(localChatMessage.senderuin)) {
-        localChatMessage.setQcircleRedDotFlag(((Boolean)this.a.jdField_a_of_type_ComTencentMttSupportuiUtilsStructArrayMap.get(localChatMessage.senderuin)).booleanValue());
+      if (this.a.jdField_a_of_type_ComTencentMttSupportuiUtilsStructArrayMap.containsKey(localChatMessage.senderuin))
+      {
+        localChatMessage.setQcircleRedDotFlag(((QcircleRedDotEntity)this.a.jdField_a_of_type_ComTencentMttSupportuiUtilsStructArrayMap.get(localChatMessage.senderuin)).isShowRedDot);
+        localChatMessage.setQcircleRedDotJumpSchema(((QcircleRedDotEntity)this.a.jdField_a_of_type_ComTencentMttSupportuiUtilsStructArrayMap.get(localChatMessage.senderuin)).jumpSchema);
       }
     }
     this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.listAdapter.notifyDataSetChanged();
@@ -28,7 +30,7 @@ public class AIOTroopQcircleRedDotManager$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AIOTroopQcircleRedDotManager.4.1
  * JD-Core Version:    0.7.0.1
  */

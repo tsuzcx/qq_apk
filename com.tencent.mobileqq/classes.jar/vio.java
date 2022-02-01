@@ -1,10 +1,14 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.AddressItem;
-import java.util.HashMap;
+import rx.functions.Action1;
 
-public abstract interface vio
+class vio
+  implements Action1<Throwable>
 {
-  public abstract void a(ErrorMessage paramErrorMessage, HashMap<String, AddressItem> paramHashMap);
+  vio(vij paramvij, vfr paramvfr, boolean paramBoolean1, boolean paramBoolean2, long paramLong) {}
+  
+  public void a(Throwable paramThrowable)
+  {
+    vij.a(this.jdField_a_of_type_Vij, paramThrowable, this.jdField_a_of_type_Vfr, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_Long);
+  }
 }
 
 

@@ -1,26 +1,35 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.ugc.publishvideotask.ViolaVideoUpdateController.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import org.jetbrains.annotations.NotNull;
 
-class sas
-  extends sif
+public class sas
 {
-  sas(sab paramsab) {}
+  private long jdField_a_of_type_Long = 500L;
+  @NotNull
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private boolean jdField_a_of_type_Boolean;
+  private Runnable b = new ViolaVideoUpdateController.1(this);
   
-  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public sas(@NotNull Runnable paramRunnable, long paramLong)
   {
-    sab.a(this.a).b(sab.b(this.a));
-    if ((paramVideoInfo.m != null) && (paramVideoInfo.m.contains("kandianshare.html5.qq.com")))
-    {
-      this.a.a.b(paramVideoInfo.m);
-      return;
-    }
-    this.a.a.b(paramString + "&sourcefrom=6");
+    this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public int c()
+  public void a()
   {
-    return 7;
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    ThreadManagerV2.getUIHandlerV2().post(this.b);
+  }
+  
+  public void b()
+  {
+    ThreadManagerV2.getUIHandlerV2().removeCallbacks(this.b);
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

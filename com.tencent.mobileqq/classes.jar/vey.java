@@ -1,17 +1,34 @@
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
 
-public class vey
+class vey
+  extends vez
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  public TextView a;
-  public VideoFeedsAlphaMaskView a;
-  public ZImageView a;
-  ImageProgressCircle jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
+  vey(vex paramvex) {}
+  
+  public void hide()
+  {
+    super.hide();
+    if (vex.a(this.a) != null)
+    {
+      vex.a(this.a).setVisibility(4);
+      vex.a(this.a, 0);
+    }
+  }
+  
+  public void updateUnreadCount(int paramInt, boolean paramBoolean)
+  {
+    super.updateUnreadCount(paramInt, paramBoolean);
+    if (paramInt == 0) {
+      vex.a(this.a, 0);
+    }
+    while ((paramInt <= vex.a(this.a)) || (vex.a(this.a) == null)) {
+      return;
+    }
+    if (vex.a(this.a)) {
+      vex.a(this.a).setVisibility(0);
+    }
+    vex.a(this.a, paramInt);
+  }
 }
 
 

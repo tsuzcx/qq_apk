@@ -1,106 +1,68 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.HotChatInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
 
-public class anws
+class anws
+  extends anvi
 {
-  private static final Map<String, Integer> a = new HashMap();
+  anws(anwr paramanwr) {}
   
-  public static int a(String arg0, String paramString2)
+  protected void onGetFriendDateNick(boolean paramBoolean, String paramString1, String paramString2)
   {
-    paramString2 = ??? + "_" + paramString2;
-    synchronized (a)
-    {
-      if (a.containsKey(paramString2))
-      {
-        i = ((Integer)a.get(paramString2)).intValue();
-        return i;
-      }
-      int i = BaseApplicationImpl.sApplication.getSharedPreferences("StepUpdate", 4).getInt(paramString2, 0);
-      a.put(paramString2, Integer.valueOf(i));
+    if (QLog.isColorLevel()) {
+      QLog.i("HotChatShare", 2, "onGetFriendDateNick.isSuccess=" + paramBoolean + ",uin=" + paramString1 + ",nick=" + paramString2);
     }
-  }
-  
-  public static String a(String paramString)
-  {
-    String str = paramString;
-    if (paramString.length() > 4)
-    {
-      str = paramString.substring(4);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("DiySecureFileHelper", 4, paramString + " -> " + str);
-      }
-    }
-    return str;
-  }
-  
-  public static void a(String arg0, String paramString2, int paramInt)
-  {
-    int i = -1;
-    paramString2 = ??? + "_" + paramString2;
-    synchronized (a)
-    {
-      if (a.containsKey(paramString2)) {
-        i = ((Integer)a.get(paramString2)).intValue();
-      }
-      if (i != paramInt)
-      {
-        BaseApplicationImpl.sApplication.getSharedPreferences("StepUpdate", 4).edit().putInt(paramString2, paramInt).commit();
-        a.put(paramString2, Integer.valueOf(paramInt));
-      }
-      return;
-    }
-  }
-  
-  private static void b(String paramString1, String paramString2)
-  {
-    Object localObject1 = new File(paramString1);
-    int i;
-    if (((File)localObject1).exists())
-    {
-      if (!((File)localObject1).isFile()) {
-        break label75;
-      }
-      i = FileUtils.quickMove(paramString1, paramString2);
-      if (i != 0) {
-        QLog.d("DiySecureFileHelper", 1, "Move [" + paramString1 + "] errorcode = " + i);
-      }
-    }
+    if ((TextUtils.isEmpty(paramString1)) || (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.ownerUin)) || (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))) {}
     for (;;)
     {
-      FileUtils.deleteDirectory(paramString1);
       return;
-      label75:
-      if (((File)localObject1).isDirectory())
+      if (paramBoolean) {
+        this.a.jdField_a_of_type_JavaLangString = paramString2;
+      }
+      if ((this.a.jdField_a_of_type_Bisl != null) && (this.a.jdField_a_of_type_Bisl.isShowing()))
       {
-        localObject1 = b((File)localObject1);
-        int j = localObject1.length;
-        i = 0;
-        while (i < j)
+        if (this.a.jdField_a_of_type_Int == 0) {
+          this.a.jdField_a_of_type_Int = 1;
+        }
+        while (this.a.jdField_a_of_type_Int == 3)
         {
-          Object localObject2 = localObject1[i];
-          b(localObject2.getAbsolutePath(), new File(paramString2, localObject2.getName()).getAbsolutePath());
-          i += 1;
+          this.a.c();
+          anwr.a(this.a);
+          return;
+          if (this.a.jdField_a_of_type_Int == 2) {
+            this.a.jdField_a_of_type_Int = 3;
+          }
         }
       }
     }
   }
   
-  private static File[] b(File paramFile)
+  protected void onStrangerHeadReady(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    File[] arrayOfFile = paramFile.listFiles();
-    paramFile = arrayOfFile;
-    if (arrayOfFile == null)
-    {
-      QLog.e("DiySecureFileHelper", 1, new Throwable(), new Object[0]);
-      paramFile = new File[0];
+    if (QLog.isColorLevel()) {
+      QLog.i("HotChatShare", 2, "onStrangerHeadReady.isSuccess=" + paramBoolean + ",id=" + paramString1 + ",idType=" + paramInt + ",downloadUrl=" + paramString2);
     }
-    return paramFile;
+    if ((paramInt != 200) || (TextUtils.isEmpty(paramString1)) || (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.ownerUin))) {}
+    for (;;)
+    {
+      return;
+      this.a.b = paramString2;
+      if ((this.a.jdField_a_of_type_Bisl != null) && (this.a.jdField_a_of_type_Bisl.isShowing()))
+      {
+        if (this.a.jdField_a_of_type_Int == 0) {
+          this.a.jdField_a_of_type_Int = 2;
+        }
+        while (this.a.jdField_a_of_type_Int == 3)
+        {
+          this.a.c();
+          anwr.a(this.a);
+          return;
+          if (this.a.jdField_a_of_type_Int == 1) {
+            this.a.jdField_a_of_type_Int = 3;
+          }
+        }
+      }
+    }
   }
 }
 

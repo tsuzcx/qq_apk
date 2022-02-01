@@ -1,21 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.utils;
 
-import rvi;
-import twb;
+import swi;
+import ukc;
 
 public final class AdVideoButtonUIUtils$1
   implements Runnable
 {
-  public AdVideoButtonUIUtils$1(rvi paramrvi) {}
+  public AdVideoButtonUIUtils$1(swi paramswi) {}
   
   public void run()
   {
-    twb.b(this.a.r);
+    ukc.b(this.a.n);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.utils.AdVideoButtonUIUtils.1
  * JD-Core Version:    0.7.0.1
  */

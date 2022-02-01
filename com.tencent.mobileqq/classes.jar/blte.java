@@ -1,43 +1,74 @@
-import android.app.Activity;
-import android.support.v4.view.OnApplyWindowInsetsListener;
-import android.support.v4.view.WindowInsetsCompat;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.MarginLayoutParams;
-import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.TMG.sdk.AVAudioCtrl;
+import com.tencent.TMG.sdk.AVContext;
+import com.tencent.TMG.sdk.AVRoomMulti.AVCustomData;
+import com.tencent.TMG.sdk.AVRoomMulti.EventListener;
+import com.tencent.qphone.base.util.QLog;
 
 class blte
-  implements OnApplyWindowInsetsListener
+  implements AVRoomMulti.EventListener
 {
   blte(bltd parambltd) {}
   
-  public WindowInsetsCompat onApplyWindowInsets(View paramView, WindowInsetsCompat paramWindowInsetsCompat)
+  public void onCameraSettingNotify(int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onDisableAudioIssue() {}
+  
+  public void onEndpointsUpdateInfo(int paramInt, String[] paramArrayOfString)
   {
-    if ((paramView instanceof ViewGroup))
-    {
-      paramView = (ViewGroup)paramView.findViewById(2131366915);
-      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
-      int j = paramWindowInsetsCompat.getSystemWindowInsetTop();
-      int i = j;
-      if (bltd.a(this.a) != null)
-      {
-        i = j;
-        if (bltd.a(this.a).a() != null)
-        {
-          i = j;
-          if (!blvr.j(bltd.a(this.a).a().getIntent())) {
-            i = j / 2;
-          }
-        }
-      }
-      if (bltd.a(this.a)) {
-        i = ViewUtils.dip2px(20.0F);
-      }
-      localMarginLayoutParams.topMargin = i;
-      paramView.setLayoutParams(localMarginLayoutParams);
+    QLog.i("AVManager", 1, String.format("onEndpointsUpdateInfo|eventid=%d", new Object[] { Integer.valueOf(paramInt) }));
+    if (this.a.jdField_a_of_type_Blth != null) {
+      this.a.jdField_a_of_type_Blth.a(paramInt, paramArrayOfString);
     }
-    return paramWindowInsetsCompat;
   }
+  
+  public void onEnterRoomComplete(int paramInt, String paramString)
+  {
+    QLog.i("AVManager", 1, "mRoomEventListener.onEnterRoomComplete| result = " + paramInt + paramString);
+    if (paramInt != 0) {
+      this.a.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl().stopTRAEService();
+    }
+    if (this.a.jdField_a_of_type_Bltg != null) {
+      this.a.jdField_a_of_type_Bltg.a(paramInt, paramString);
+    }
+  }
+  
+  public void onExitRoomComplete()
+  {
+    QLog.i("AVManager", 1, "mRoomEventListener.onExitRoomComplete");
+    this.a.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl().stopTRAEService();
+    if (this.a.jdField_a_of_type_Blth != null) {
+      this.a.jdField_a_of_type_Blth.a();
+    }
+  }
+  
+  public void onHwStateChangeNotify(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString) {}
+  
+  public void onPrivilegeDiffNotify(int paramInt) {}
+  
+  public void onRecvCustomData(AVRoomMulti.AVCustomData paramAVCustomData, String paramString) {}
+  
+  public void onRoomDisconnect(int paramInt, String paramString)
+  {
+    if (this.a.jdField_a_of_type_Blth != null) {
+      this.a.jdField_a_of_type_Blth.a(paramInt, paramString);
+    }
+  }
+  
+  public void onRoomEvent(int paramInt1, int paramInt2, Object paramObject) {}
+  
+  public void onSemiAutoRecvCameraVideo(String[] paramArrayOfString)
+  {
+    QLog.i("AVManager", 1, String.format("onSemiAutoRecvCameraVideo", new Object[0]));
+    if (this.a.jdField_a_of_type_Blth != null) {
+      this.a.jdField_a_of_type_Blth.a(paramArrayOfString);
+    }
+  }
+  
+  public void onSemiAutoRecvMediaFileVideo(String[] paramArrayOfString) {}
+  
+  public void onSemiAutoRecvScreenVideo(String[] paramArrayOfString) {}
+  
+  public void onSwitchRoomComplete(int paramInt, String paramString) {}
 }
 
 

@@ -1,28 +1,6 @@
-import org.json.JSONObject;
-
-public class zbg
-  extends JSONObject
+public abstract interface zbg
 {
-  public zbg(zbe paramzbe, String paramString)
-  {
-    super(paramString);
-  }
-  
-  public int getInt(String paramString)
-  {
-    if (!has(paramString)) {
-      return 0;
-    }
-    return super.getInt(paramString);
-  }
-  
-  public String getString(String paramString)
-  {
-    if (!has(paramString)) {
-      return "";
-    }
-    return super.getString(paramString);
-  }
+  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
 }
 
 

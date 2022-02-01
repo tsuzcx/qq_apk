@@ -1,23 +1,8 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import android.view.View;
 
-class agmu
-  extends agql
+public abstract interface agmu
 {
-  protected ViewGroup a;
-  protected ImageView a;
-  protected TextView a;
-  protected ETTextView a;
-  protected BubbleImageView a;
-  protected TextView b;
-  protected ETTextView b;
-  protected TextView c;
-  public int e;
-  
-  agmu(agmk paramagmk) {}
+  public abstract void a(View paramView, int paramInt, agmf paramagmf);
 }
 
 

@@ -1,21 +1,21 @@
-import android.graphics.Bitmap;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnCaptureImageListener;
-import com.tencent.superplayer.api.ISuperPlayer;
-import com.tencent.superplayer.api.ISuperPlayer.OnCaptureImageListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.open.agent.BindGroupActivity;
+import com.tencent.open.agent.BindGroupActivity.4.1;
 
-class bjbk
-  implements ISuperPlayer.OnCaptureImageListener
+public class bjbk
+  implements DialogInterface.OnClickListener
 {
-  bjbk(bjbd parambjbd, AbsVideoPlayer.OnCaptureImageListener paramOnCaptureImageListener) {}
+  public bjbk(BindGroupActivity.4.1 param1) {}
   
-  public void onCaptureImageFailed(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnCaptureImageListener.onCaptureImageFailed();
-  }
-  
-  public void onCaptureImageSucceed(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap)
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnCaptureImageListener.onCaptureImageSucceed(paramBitmap);
+    if (paramInt == 1)
+    {
+      this.a.a.a.a.cancel();
+      this.a.a.a.finish();
+    }
   }
 }
 

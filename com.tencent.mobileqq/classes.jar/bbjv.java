@@ -1,29 +1,28 @@
-import com.qq.jce.wup.UniPacket;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-
 public class bbjv
-  extends aafe
+  implements Cloneable
 {
-  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "QQServiceDiscussSvc" };
-  private bbjs jdField_a_of_type_Bbjs = new bbjs();
-  private bbju jdField_a_of_type_Bbju = new bbju();
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public int c;
+  public int d;
   
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public bbjv(String paramString, int paramInt)
   {
-    return this.jdField_a_of_type_Bbjs.a(paramToServiceMsg, paramFromServiceMsg);
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg) {}
-  
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  public bbjv a()
   {
-    return this.jdField_a_of_type_Bbju.a(paramToServiceMsg, paramUniPacket);
+    return (bbjv)super.clone();
   }
   
-  public String[] a()
+  public String toString()
   {
-    return jdField_a_of_type_ArrayOfJavaLangString;
+    return this.jdField_a_of_type_JavaLangString + ":" + this.jdField_a_of_type_Int + " failCount:" + this.b;
   }
 }
 

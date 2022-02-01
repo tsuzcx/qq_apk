@@ -2,7 +2,7 @@ package com.tencent.mobileqq.transfile.chatpic;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import audj;
+import avjd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
@@ -15,7 +15,7 @@ public class PicUploadExifInfoSwitch
   
   public static boolean getSwitch()
   {
-    if (audj.a().g()) {}
+    if (avjd.a().g()) {}
     do
     {
       return true;

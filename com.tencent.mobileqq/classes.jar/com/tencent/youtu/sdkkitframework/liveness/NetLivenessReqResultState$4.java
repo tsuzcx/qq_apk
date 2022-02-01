@@ -11,7 +11,7 @@ class NetLivenessReqResultState$4
   
   public void onNetworkResponseEvent(HashMap<String, String> paramHashMap, Exception paramException)
   {
-    YtLogger.d(NetLivenessReqResultState.access$000(), "Parse action response");
+    YtLogger.i(NetLivenessReqResultState.access$000(), "Handle lipread response");
     NetLivenessReqResultState.access$100(this.this$0, paramHashMap, paramException);
     NetLivenessReqResultState.access$200(this.this$0);
   }

@@ -1,17 +1,18 @@
-import android.hardware.Camera;
-import android.hardware.Camera.AutoFocusCallback;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bbuo
-  implements Camera.AutoFocusCallback
+public class bbuo
+  implements View.OnClickListener
 {
-  bbuo(bbun parambbun) {}
+  public bbuo(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraProxy", 2, "Request Focus onAutoFocus");
-    }
+    bdla.b(null, "dc00898", "", "", "0X800A98A", "0X800A98A", 1, 0, "0", "0", "", "");
+    SignatureHistoryFragment.d(this.a, true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

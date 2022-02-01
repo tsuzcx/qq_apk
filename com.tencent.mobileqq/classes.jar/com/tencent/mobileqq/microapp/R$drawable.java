@@ -2,14 +2,14 @@ package com.tencent.mobileqq.microapp;
 
 public final class R$drawable
 {
-  public static int a = 2130840940;
-  public static int b = 2130840941;
-  public static int c = 2130846663;
-  public static int d = 2130849657;
-  public static int e = 2130849993;
-  public static int f = 2130849994;
-  public static int g = 2130850321;
-  public static int h = 2130850325;
+  public static int a = 2130840979;
+  public static int b = 2130840980;
+  public static int c = 2130846759;
+  public static int d = 2130849750;
+  public static int e = 2130850086;
+  public static int f = 2130850087;
+  public static int g = 2130850427;
+  public static int h = 2130850431;
 }
 
 

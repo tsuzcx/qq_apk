@@ -5,14 +5,14 @@ import android.content.Intent;
 import android.net.Uri;
 import android.text.ClipboardManager;
 import android.view.View;
-import bjnw;
-import bjoe;
+import bkzi;
+import bkzq;
 import com.tencent.mobileqq.activity.AddFriendActivity;
 
 final class QQText$2
-  implements bjoe
+  implements bkzq
 {
-  QQText$2(int paramInt, String paramString1, Context paramContext, String paramString2, bjnw parambjnw) {}
+  QQText$2(int paramInt, String paramString1, Context paramContext, String paramString2, bkzi parambkzi) {}
   
   public void OnClick(View paramView, int paramInt)
   {
@@ -25,7 +25,7 @@ final class QQText$2
       return;
       if (this.val$isQQNumber == 2)
       {
-        paramView = Intent.createChooser(new Intent("android.intent.action.SENDTO", Uri.parse("mailto:" + this.val$numberLink)), this.val$context.getString(2131693561));
+        paramView = Intent.createChooser(new Intent("android.intent.action.SENDTO", Uri.parse("mailto:" + this.val$numberLink)), this.val$context.getString(2131693745));
         paramView.putExtra("big_brother_source_key", this.val$bizSrc);
         this.val$context.startActivity(paramView);
       }

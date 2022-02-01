@@ -17,7 +17,7 @@ class ListenTogetherManager$2
       return;
       localListenTogetherSession = (ListenTogetherSession)ListenTogetherManager.a(this.this$0).get(ListenTogetherManager.a(this.this$0));
     } while (localListenTogetherSession == null);
-    ListenTogetherManager.a(this.this$0, localListenTogetherSession.jdField_e_of_type_Int, localListenTogetherSession.jdField_e_of_type_JavaLangString, 1004);
+    ListenTogetherManager.a(this.this$0, localListenTogetherSession.f, localListenTogetherSession.e, 1004);
   }
 }
 

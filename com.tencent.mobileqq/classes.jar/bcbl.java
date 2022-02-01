@@ -1,19 +1,21 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.StatisticCollector.Proxy;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import java.util.HashMap;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class bcbl
-  implements IMCoreProxyRoute.StatisticCollector.Proxy
+class bcbl
+  implements View.OnClickListener
 {
-  public void collectPerformance(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3)
-  {
-    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(paramString1, paramString2, paramBoolean, paramLong1, paramLong2, paramHashMap, paramString3);
-  }
+  bcbl(bcbk parambcbk, String paramString) {}
   
-  public void collectPerformance(String paramString1, String paramString2, boolean paramBoolean1, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(paramString1, paramString2, paramBoolean1, paramLong1, paramLong2, paramHashMap, paramString3, paramBoolean2);
+    Intent localIntent = new Intent(this.jdField_a_of_type_Bcbk.a.getActivity(), QQBrowserActivity.class);
+    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Bcbk.a.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

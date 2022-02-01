@@ -1,16 +1,10 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.1.1;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.AddressItem;
+import java.util.HashMap;
 
-public class vxj
-  implements wch
+public abstract interface vxj
 {
-  vxj(vxi paramvxi) {}
-  
-  public void a(wci paramwci)
-  {
-    xvv.a("Q.qqstory.msgTab.MsgTabNodeListLoader.VASH", "Update UserItems %s", paramwci);
-    this.a.a.post(new MsgTabNodeListLoader.1.1(this, paramwci));
-  }
+  public abstract void a(ErrorMessage paramErrorMessage, HashMap<String, AddressItem> paramHashMap);
 }
 
 

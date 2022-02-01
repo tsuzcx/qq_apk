@@ -1,6 +1,6 @@
 package com.tencent.biz.webviewplugin;
 
-import aadf;
+import aasr;
 import android.app.Activity;
 import com.tencent.biz.common.util.HttpUtil;
 import java.util.HashMap;
@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class Share$6
   extends Thread
 {
-  public Share$6(aadf paramaadf, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6) {}
+  public Share$6(aasr paramaasr, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6) {}
   
   public void run()
   {

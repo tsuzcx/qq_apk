@@ -36,21 +36,21 @@ public class BannerView
   public BannerView(@NonNull Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 2130843130;
+    this.jdField_a_of_type_Int = 2130843166;
     a(paramContext);
   }
   
   public BannerView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 2130843130;
+    this.jdField_a_of_type_Int = 2130843166;
     a(paramContext);
   }
   
   public BannerView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Int = 2130843130;
+    this.jdField_a_of_type_Int = 2130843166;
     a(paramContext);
   }
   

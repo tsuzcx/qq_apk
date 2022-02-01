@@ -1,57 +1,68 @@
-import android.opengl.GLES20;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.qphone.base.util.QLog;
+import java.nio.ByteBuffer;
+import java.nio.ShortBuffer;
 
 public class bafe
+  extends baev
 {
-  private int a;
-  private int b;
-  private int c;
-  private int d;
-  
-  public bafe(int paramInt1, int paramInt2)
+  public bafe(QQAppInterface paramQQAppInterface)
   {
-    this.c = paramInt1;
-    this.d = paramInt2;
-    int[] arrayOfInt = new int[1];
-    GLES20.glGenFramebuffers(1, arrayOfInt, 0);
-    this.b = arrayOfInt[0];
-    GLES20.glBindFramebuffer(36160, this.b);
-    a();
+    super(paramQQAppInterface);
   }
   
-  public void a()
+  private void a(ByteStringMicro paramByteStringMicro, QQAppInterface paramQQAppInterface)
   {
-    GLES20.glBindFramebuffer(36160, 0);
-    baff.a(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("PaiYiPaiReceiver", 2, "handlePaiYiPaiEffect() called with: bytesValue = [" + paramByteStringMicro + "]");
+    }
+    short s = ByteBuffer.wrap(paramByteStringMicro.toByteArray()).asShortBuffer().get();
+    ((afza)paramQQAppInterface.getManager(QQManagerFactory.PAI_YI_PAI_MANAGER)).c(s);
   }
   
-  public void a(int paramInt)
+  private void b(ByteStringMicro paramByteStringMicro, QQAppInterface paramQQAppInterface)
   {
-    if (paramInt < 0)
+    if (QLog.isColorLevel()) {
+      QLog.d("PaiYiPaiReceiver", 2, "handlePaiYiPaiAction() called with: bytesValue = [" + paramByteStringMicro + "]");
+    }
+    short s = ByteBuffer.wrap(paramByteStringMicro.toByteArray()).asShortBuffer().get();
+    ((afza)paramQQAppInterface.getManager(QQManagerFactory.PAI_YI_PAI_MANAGER)).b(s);
+  }
+  
+  private void c(ByteStringMicro paramByteStringMicro, QQAppInterface paramQQAppInterface)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PaiYiPaiReceiver", 2, "handlePaiYiPaiSwitch() called with: bytesValue = [" + paramByteStringMicro + "]");
+    }
+    short s = ByteBuffer.wrap(paramByteStringMicro.toByteArray()).asShortBuffer().get();
+    ((afza)paramQQAppInterface.getManager(QQManagerFactory.PAI_YI_PAI_MANAGER)).a(s);
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt, ByteStringMicro paramByteStringMicro)
+  {
+    switch (paramInt)
     {
-      xvv.d("AvEditor.FrameBuffer", "invalid textureId " + paramInt);
+    default: 
+      return;
+    case 42433: 
+      c(paramByteStringMicro, this.a);
+      return;
+    case 42434: 
+      b(paramByteStringMicro, this.a);
       return;
     }
-    int i = paramInt;
-    if (paramInt == 0) {
-      i = baff.a(1)[0];
-    }
-    GLES20.glActiveTexture(33984);
-    baff.a(i);
-    GLES20.glTexParameterf(3553, 10241, 9729.0F);
-    GLES20.glTexParameterf(3553, 10240, 9729.0F);
-    GLES20.glTexParameteri(3553, 10242, 33071);
-    GLES20.glTexParameteri(3553, 10243, 33071);
-    GLES20.glTexImage2D(3553, 0, 6408, this.c, this.d, 0, 6408, 5121, null);
-    GLES20.glViewport(0, 0, this.c, this.d);
-    GLES20.glBindFramebuffer(36160, this.b);
-    GLES20.glFramebufferTexture2D(36160, 36064, 3553, i, 0);
-    GLES20.glClear(16384);
-    this.a = i;
+    a(paramByteStringMicro, this.a);
   }
   
-  public void b()
+  public void a(long paramLong) {}
+  
+  public boolean a(int paramInt)
   {
-    GLES20.glDeleteFramebuffers(1, new int[] { this.b }, 0);
+    return (paramInt == 42433) || (paramInt == 42434) || (paramInt == 27390);
   }
 }
 

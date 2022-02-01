@@ -1,6 +1,6 @@
 package com.tencent.hippy.qq.fragment;
 
-import akfw;
+import albp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -21,7 +21,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bhkb;
+import biur;
 import com.tencent.hippy.qq.app.HippyQQPreloadEngine;
 import com.tencent.hippy.qq.utils.HippyReporter;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
@@ -30,7 +30,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
-import zbi;
+import zqn;
 
 public class CommonHippyFragment
   extends BaseHippyFragment
@@ -40,14 +40,14 @@ public class CommonHippyFragment
   private static final int MSG_TIME_OUT = 1;
   private FrameLayout mErrorOrLoadingFrameLayout;
   private int mErrorViewColor = -1;
-  private Handler mHandler = new Handler();
+  private Handler mHandler;
   private ViewGroup mHippyContainer;
   private LayoutInflater mLayoutInflater;
   private ImageView mNetworkErrorIcon;
   private TextView mNetworkErrorText;
   private View mNetworkErrorView;
   private WebViewProgressBar mProgressBar;
-  private bhkb mProgressBarController;
+  private biur mProgressBarController;
   private ViewGroup mRootView;
   
   public boolean handleMessage(Message paramMessage)
@@ -86,33 +86,33 @@ public class CommonHippyFragment
   
   protected void initNetworkErrorView(ViewGroup paramViewGroup, View.OnClickListener paramOnClickListener)
   {
-    this.mErrorOrLoadingFrameLayout = ((FrameLayout)paramViewGroup.findViewById(2131380866));
+    this.mErrorOrLoadingFrameLayout = ((FrameLayout)paramViewGroup.findViewById(2131381218));
     if (this.mErrorOrLoadingFrameLayout.getVisibility() != 0) {
       this.mErrorOrLoadingFrameLayout.setVisibility(0);
     }
     if (this.mNetworkErrorView == null)
     {
-      this.mNetworkErrorView = ((ViewStub)paramViewGroup.findViewById(2131380867)).inflate();
+      this.mNetworkErrorView = ((ViewStub)paramViewGroup.findViewById(2131381219)).inflate();
       if (this.mErrorViewColor != -1) {
         this.mNetworkErrorView.setBackgroundColor(this.mErrorViewColor);
       }
-      this.mNetworkErrorText = ((TextView)this.mNetworkErrorView.findViewById(2131375916));
-      this.mNetworkErrorIcon = ((ImageView)this.mNetworkErrorView.findViewById(2131375915));
+      this.mNetworkErrorText = ((TextView)this.mNetworkErrorView.findViewById(2131376163));
+      this.mNetworkErrorIcon = ((ImageView)this.mNetworkErrorView.findViewById(2131376162));
     }
-    this.mNetworkErrorText.setText(paramViewGroup.getResources().getString(2131717478));
+    this.mNetworkErrorText.setText(paramViewGroup.getResources().getString(2131717844));
     this.mNetworkErrorView.setOnClickListener(paramOnClickListener);
     this.mNetworkErrorView.setVisibility(0);
     if (this.mErrorViewColor == -1) {
-      this.mNetworkErrorIcon.setImageDrawable(paramViewGroup.getResources().getDrawable(2130839320));
+      this.mNetworkErrorIcon.setImageDrawable(paramViewGroup.getResources().getDrawable(2130839341));
     }
     for (;;)
     {
-      this.mNetworkErrorText.setTextColor(paramViewGroup.getResources().getColor(2131166892));
+      this.mNetworkErrorText.setTextColor(paramViewGroup.getResources().getColor(2131166906));
       paramOnClickListener = (LinearLayout.LayoutParams)this.mNetworkErrorText.getLayoutParams();
       paramOnClickListener.topMargin = AIOUtils.dp2px(10.0F, paramViewGroup.getResources());
       this.mNetworkErrorText.setLayoutParams(paramOnClickListener);
       return;
-      this.mNetworkErrorIcon.setImageDrawable(paramViewGroup.getResources().getDrawable(2130839523));
+      this.mNetworkErrorIcon.setImageDrawable(paramViewGroup.getResources().getDrawable(2130839544));
     }
   }
   
@@ -122,12 +122,12 @@ public class CommonHippyFragment
       return;
     }
     this.mProgressBar = new WebViewProgressBar(paramViewGroup.getContext());
-    this.mProgressBar.setId(2131373019);
+    this.mProgressBar.setId(2131373229);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, AIOUtils.dp2px(3.0F, paramViewGroup.getContext().getResources()));
     localLayoutParams.addRule(10, -1);
     this.mProgressBar.setLayoutParams(localLayoutParams);
     paramViewGroup.addView(this.mProgressBar);
-    this.mProgressBarController = new bhkb();
+    this.mProgressBarController = new biur();
     this.mProgressBarController.a(this.mProgressBar);
     this.mProgressBar.setController(this.mProgressBarController);
     startProgressBar();
@@ -144,8 +144,8 @@ public class CommonHippyFragment
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
-    if (zbi.a()) {
-      zbi.a(getActivity());
+    if (zqn.a()) {
+      zqn.a(getActivity());
     }
   }
   
@@ -155,9 +155,10 @@ public class CommonHippyFragment
     if (Build.VERSION.SDK_INT >= 11) {
       setWindowFlag(getActivity(), 16777216);
     }
+    this.mHandler = new Handler(this);
     this.mLayoutInflater = paramLayoutInflater;
-    this.mRootView = ((ViewGroup)this.mLayoutInflater.inflate(2131558450, null, false));
-    this.mHippyContainer = ((ViewGroup)this.mRootView.findViewById(2131368079));
+    this.mRootView = ((ViewGroup)this.mLayoutInflater.inflate(2131558452, null, false));
+    this.mHippyContainer = ((ViewGroup)this.mRootView.findViewById(2131368215));
     loadHippy(this.mHippyContainer);
     setStatusBarImmersive();
     initProgressBar(this.mRootView);
@@ -192,7 +193,7 @@ public class CommonHippyFragment
     if (getUserVisibleHint())
     {
       boolean bool = getParameters().getBoolean("isStatusBarDarkFont");
-      akfw.a(getActivity(), bool);
+      albp.a(getActivity(), bool);
     }
   }
   

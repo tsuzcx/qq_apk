@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import amsu;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -10,13 +9,15 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import bkwm;
+import anvi;
+import bmhv;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.face.FaceDecoder;
 import com.tencent.qphone.base.util.QLog;
@@ -31,63 +32,63 @@ import java.util.Map;
 import java.util.Set;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import oiy;
-import pak;
-import pay;
-import pdy;
-import pea;
-import peo;
-import peq;
-import per;
-import pes;
-import pet;
-import pey;
-import pke;
-import pkm;
-import pol;
-import rcn;
-import sdg;
-import sef;
-import slz;
-import snn;
-import snq;
-import snr;
-import sns;
-import snt;
-import ugt;
-import uhv;
+import oqu;
+import pjt;
+import pkh;
+import pmz;
+import pnb;
+import pnr;
+import pnt;
+import pnu;
+import pnv;
+import pnw;
+import pob;
+import pvb;
+import pvj;
+import pzj;
+import rot;
+import spk;
+import sqk;
+import szj;
+import tay;
+import tbb;
+import tbc;
+import tbd;
+import tbe;
+import uuq;
+import uvs;
 
 public class ReadInJoyProteusFamilyListViewGroup
   extends ReadInJoyBaseListViewGroup
-  implements View.OnClickListener, AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener, peq, per, pes, pet, sef, slz
+  implements View.OnClickListener, AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener, pnt, pnu, pnv, pnw, sqk, szj
 {
   private long jdField_a_of_type_Long;
-  private amsu jdField_a_of_type_Amsu = new snt(this);
   private View jdField_a_of_type_AndroidViewView;
+  private anvi jdField_a_of_type_Anvi = new tbe(this);
   private SlideActiveAnimController jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController;
   protected FaceDecoder a;
-  private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = new snq(this);
-  private XListView.DrawFinishedListener jdField_a_of_type_ComTencentWidgetXListView$DrawFinishedListener = new snr(this);
-  pdy jdField_a_of_type_Pdy;
-  public pey a;
-  private pke jdField_a_of_type_Pke = new sns(this);
-  private snn jdField_a_of_type_Snn;
+  private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = new tbb(this);
+  private XListView.DrawFinishedListener jdField_a_of_type_ComTencentWidgetXListView$DrawFinishedListener = new tbc(this);
+  pmz jdField_a_of_type_Pmz;
+  public pob a;
+  private pvb jdField_a_of_type_Pvb = new tbd(this);
+  private tay jdField_a_of_type_Tay;
   private int jdField_b_of_type_Int = -1;
   private View jdField_b_of_type_AndroidViewView;
   
-  public ReadInJoyProteusFamilyListViewGroup(oiy paramoiy, int paramInt1, int paramInt2, int paramInt3, pak parampak, int paramInt4)
+  public ReadInJoyProteusFamilyListViewGroup(oqu paramoqu, int paramInt1, int paramInt2, int paramInt3, pjt parampjt, int paramInt4)
   {
-    super(paramoiy, paramInt1, parampak);
+    super(paramoqu, paramInt1, parampjt);
     this.jdField_a_of_type_AndroidViewView = a().getLayoutInflater().inflate(paramInt4, this);
     this.jdField_b_of_type_Int = paramInt2;
     this.jdField_a_of_type_Long = paramInt3;
-    setId(2131375955);
-    this.jdField_a_of_type_Pey = new pey();
-    this.jdField_a_of_type_Pey.a(this);
-    this.jdField_a_of_type_Pdy = new pdy(new pea().a(this.jdField_a_of_type_Pak).a(this.jdField_a_of_type_Int).a(a()).a(this.jdField_a_of_type_Long).d(paramInt2).a(this.jdField_a_of_type_Oiy));
+    setId(2131376202);
+    this.jdField_a_of_type_Pob = new pob();
+    this.jdField_a_of_type_Pob.a(this);
+    this.jdField_a_of_type_Pmz = new pmz(new pnb().a(this.jdField_a_of_type_Pjt).a(this.jdField_a_of_type_Int).a(a()).a(this.jdField_a_of_type_Long).d(paramInt2).a(this.jdField_a_of_type_Oqu));
     m();
     r();
-    this.jdField_a_of_type_Pak.c = bkwm.a((QQAppInterface)pay.a());
+    this.jdField_a_of_type_Pjt.c = bmhv.a((QQAppInterface)pkh.a());
   }
   
   private int b()
@@ -100,20 +101,20 @@ public class ReadInJoyProteusFamilyListViewGroup
   
   private void m()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView = ((ReadInJoyXListView)findViewById(2131378014));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView = ((ReadInJoyXListView)findViewById(2131378302));
     this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder = new FaceDecoder(a(), ((BaseActivity)a()).app);
-    this.jdField_a_of_type_Snn = new snn(BaseActivity.sTopActivity, BaseActivity.sTopActivity.getLayoutInflater(), this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView, this.jdField_a_of_type_Pey.a(), a());
-    this.jdField_a_of_type_Pey.a(this.jdField_a_of_type_Pey.a(), this.jdField_a_of_type_Snn);
-    this.jdField_a_of_type_Pey.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView, this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Tay = new tay(BaseActivity.sTopActivity, BaseActivity.sTopActivity.getLayoutInflater(), this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView, this.jdField_a_of_type_Pob.a(), a());
+    this.jdField_a_of_type_Pob.a(this.jdField_a_of_type_Pob.a(), this.jdField_a_of_type_Tay);
+    this.jdField_a_of_type_Pob.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView, this.jdField_a_of_type_Long);
     if (QLog.isColorLevel()) {
-      QLog.d("ReadinJoyProteusFamilyListViewGroup", 2, "initUI before mListView.setPadding :" + this.jdField_a_of_type_Oiy + a());
+      QLog.d("ReadinJoyProteusFamilyListViewGroup", 2, "initUI before mListView.setPadding :" + this.jdField_a_of_type_Oqu + a());
     }
     o();
     n();
     q();
     s();
-    ((BaseActivity)a()).app.addObserver(this.jdField_a_of_type_Amsu);
-    ((KandianMergeManager)pay.a().getManager(162)).a(this.jdField_a_of_type_Pke);
+    ((BaseActivity)a()).app.addObserver(this.jdField_a_of_type_Anvi);
+    ((KandianMergeManager)pkh.a().getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).a(this.jdField_a_of_type_Pvb);
   }
   
   private void n()
@@ -138,16 +139,16 @@ public class ReadInJoyProteusFamilyListViewGroup
   {
     Activity localActivity;
     View localView2;
-    if ((this.jdField_a_of_type_Oiy instanceof pol))
+    if ((this.jdField_a_of_type_Oqu instanceof pzj))
     {
       localActivity = a();
-      if (localActivity.findViewById(2131362000) == null) {
+      if (localActivity.findViewById(2131362002) == null) {
         break label189;
       }
-      localReadInjoySlideAnimLayout = (ReadInjoySlideAnimLayout)localActivity.findViewById(2131362000);
-      localView1 = localActivity.findViewById(2131377749);
-      localView2 = findViewById(2131367061);
-      i = getResources().getDimensionPixelOffset(2131298772);
+      localReadInjoySlideAnimLayout = (ReadInjoySlideAnimLayout)localActivity.findViewById(2131362002);
+      localView1 = localActivity.findViewById(2131378030);
+      localView2 = findViewById(2131367180);
+      i = getResources().getDimensionPixelOffset(2131298776);
       i = AIOUtils.dp2px(50.0F, getResources()) + ImmersiveUtils.getStatusBarHeight(getContext()) + i;
       localView2.setPadding(0, i, 0, 0);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.setPadding(0, i, 0, 0);
@@ -158,11 +159,11 @@ public class ReadInJoyProteusFamilyListViewGroup
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController = new SlideActiveAnimController(this.jdField_a_of_type_Int, localActivity, localReadInjoySlideAnimLayout, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView, localView1, localActivity.findViewById(16908307), new ReadInJoyProteusFamilyListViewGroup.2(this, localView1, i, localView2));
     }
     label189:
-    while (localActivity.findViewById(2131362001) == null) {
+    while (localActivity.findViewById(2131362003) == null) {
       return;
     }
-    ReadInjoySlideAnimLayout localReadInjoySlideAnimLayout = (ReadInjoySlideAnimLayout)localActivity.findViewById(2131362001);
-    View localView1 = localActivity.findViewById(2131378734);
+    ReadInjoySlideAnimLayout localReadInjoySlideAnimLayout = (ReadInjoySlideAnimLayout)localActivity.findViewById(2131362003);
+    View localView1 = localActivity.findViewById(2131379027);
     int i = AIOUtils.dp2px(50.0F, getResources());
     if (ImmersiveUtils.isSupporImmersive() == 1) {
       i += ImmersiveUtils.getStatusBarHeight(getContext());
@@ -174,7 +175,7 @@ public class ReadInJoyProteusFamilyListViewGroup
       if (QLog.isColorLevel()) {
         QLog.d("ReadinJoyProteusFamilyListViewGroup", 2, "initUI 消息看点 mListView.setPadding heightDef=" + i);
       }
-      localView2 = findViewById(2131367061);
+      localView2 = findViewById(2131367180);
       localView2.setPadding(0, i, 0, 0);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController = new SlideActiveAnimController(this.jdField_a_of_type_Int, localActivity, localReadInjoySlideAnimLayout, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView, localView1, null, new ReadInJoyProteusFamilyListViewGroup.3(this, localView1, i, localView2));
       return;
@@ -183,11 +184,11 @@ public class ReadInJoyProteusFamilyListViewGroup
   
   private void q()
   {
-    this.jdField_a_of_type_Snn.b(b());
-    this.jdField_a_of_type_Snn.a(this.jdField_a_of_type_Long);
-    peo localpeo = new peo().a(this).a(this).a(this).a(this);
-    this.jdField_a_of_type_Snn.a(localpeo);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.setAdapter(this.jdField_a_of_type_Snn);
+    this.jdField_a_of_type_Tay.b(b());
+    this.jdField_a_of_type_Tay.a(this.jdField_a_of_type_Long);
+    pnr localpnr = new pnr().a(this).a(this).a(this).a(this);
+    this.jdField_a_of_type_Tay.a(localpnr);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.setAdapter(this.jdField_a_of_type_Tay);
   }
   
   private void r()
@@ -200,19 +201,19 @@ public class ReadInJoyProteusFamilyListViewGroup
     if (this.jdField_b_of_type_AndroidViewView != null) {
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
     }
-    View localView = findViewById(2131373643);
+    View localView = findViewById(2131373860);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.setEmptyView(localView);
     localView.setOnClickListener(null);
   }
   
-  public pdy a()
+  public pmz a()
   {
-    return this.jdField_a_of_type_Pdy;
+    return this.jdField_a_of_type_Pmz;
   }
   
-  public snn a()
+  public tay a()
   {
-    return this.jdField_a_of_type_Snn;
+    return this.jdField_a_of_type_Tay;
   }
   
   public void a() {}
@@ -226,9 +227,9 @@ public class ReadInJoyProteusFamilyListViewGroup
       if (QLog.isColorLevel()) {
         QLog.e("ReadinJoyProteusFamilyListViewGroup", 2, "jumpToGallery failed: atlas has undercarriage");
       }
-      pkm.a().a(paramArticleInfo.mArticleID, System.currentTimeMillis());
-      this.jdField_a_of_type_Snn.notifyDataSetChanged();
-      uhv.a(paramArticleInfo);
+      pvj.a().a(paramArticleInfo.mArticleID, System.currentTimeMillis());
+      this.jdField_a_of_type_Tay.notifyDataSetChanged();
+      uvs.a(paramArticleInfo);
     }
     while (!QLog.isColorLevel()) {
       return;
@@ -244,16 +245,16 @@ public class ReadInJoyProteusFamilyListViewGroup
   
   public void a(Map<Integer, Boolean> paramMap) {}
   
-  public void a(Map<Long, rcn> paramMap, boolean paramBoolean)
+  public void a(Map<Long, rot> paramMap, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
       QLog.d("ReadinJoyProteusFamilyListViewGroup_" + this.jdField_a_of_type_Int, 2, "detachFromViewGroup()");
     }
   }
   
-  public void a(Set<Long> paramSet, Map<Long, rcn> paramMap) {}
+  public void a(Set<Long> paramSet, Map<Long, rot> paramMap) {}
   
-  public void a(sdg paramsdg1, sdg paramsdg2) {}
+  public void a(spk paramspk1, spk paramspk2) {}
   
   public void a(boolean paramBoolean)
   {
@@ -264,7 +265,7 @@ public class ReadInJoyProteusFamilyListViewGroup
   
   public void a(boolean paramBoolean, List<BaseArticleInfo> paramList)
   {
-    this.jdField_a_of_type_Snn.a(paramList);
+    this.jdField_a_of_type_Tay.a(paramList);
   }
   
   public void b() {}
@@ -284,7 +285,7 @@ public class ReadInJoyProteusFamilyListViewGroup
     a(true);
   }
   
-  public void c(Map<Integer, rcn> paramMap) {}
+  public void c(Map<Integer, rot> paramMap) {}
   
   public void d() {}
   
@@ -294,7 +295,7 @@ public class ReadInJoyProteusFamilyListViewGroup
   
   public void g()
   {
-    ((BaseActivity)a()).app.removeObserver(this.jdField_a_of_type_Amsu);
+    ((BaseActivity)a()).app.removeObserver(this.jdField_a_of_type_Anvi);
   }
   
   public void j()
@@ -302,8 +303,8 @@ public class ReadInJoyProteusFamilyListViewGroup
     if (!this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = true;
-      ugt.a(null, "KANDIAN_NEW_FEEDS_LOAD_ARTICLE");
-      pkm.a().a(this.jdField_a_of_type_Int, 20, 9223372036854775807L, true);
+      uuq.a(null, "KANDIAN_NEW_FEEDS_LOAD_ARTICLE");
+      pvj.a().a(this.jdField_a_of_type_Int, 20, 9223372036854775807L, true);
       return;
     }
     QLog.d("ReadinJoyProteusFamilyListViewGroup", 2, new Object[] { "has loaded article, mChannelID = ", Integer.valueOf(this.jdField_a_of_type_Int) });
@@ -311,8 +312,8 @@ public class ReadInJoyProteusFamilyListViewGroup
   
   public void k()
   {
-    if (this.jdField_a_of_type_Snn != null) {
-      this.jdField_a_of_type_Snn.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Tay != null) {
+      this.jdField_a_of_type_Tay.notifyDataSetChanged();
     }
   }
   
@@ -331,7 +332,7 @@ public class ReadInJoyProteusFamilyListViewGroup
   
   public void setAdapterData(List<BaseArticleInfo> paramList, int paramInt)
   {
-    this.jdField_a_of_type_Snn.a(paramList);
+    this.jdField_a_of_type_Tay.a(paramList);
   }
   
   public void setChannelType(int paramInt)

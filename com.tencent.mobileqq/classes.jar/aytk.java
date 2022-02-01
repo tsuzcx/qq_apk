@@ -1,6 +1,24 @@
-public abstract interface aytk
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.ocr.TranslateFragment;
+import java.util.List;
+
+public class aytk
+  implements PopupWindow.OnDismissListener
 {
-  public abstract void a(aysw paramaysw);
+  public aytk(TranslateFragment paramTranslateFragment, ayru paramayru) {}
+  
+  public void onDismiss()
+  {
+    TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, null);
+    if ((this.jdField_a_of_type_Ayru.b != null) && (this.jdField_a_of_type_Ayru.b.size() > 1))
+    {
+      Drawable localDrawable = this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment.getResources().getDrawable(2130846150);
+      TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment).setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
+    }
+  }
 }
 
 

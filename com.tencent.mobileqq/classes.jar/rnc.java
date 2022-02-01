@@ -1,28 +1,15 @@
-import org.jetbrains.annotations.NotNull;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.AppInterface;
+import mqq.app.MobileQQ;
 
 class rnc
-  implements rqx
+  extends rmp
 {
-  rnc(rnb paramrnb, String paramString) {}
+  rnc(rna paramrna, AppInterface paramAppInterface) {}
   
-  public void a(float paramFloat) {}
-  
-  public void a(int paramInt, @NotNull String paramString)
+  public Drawable a()
   {
-    if (rnb.a(this.jdField_a_of_type_Rnb) != null)
-    {
-      rnb.a(this.jdField_a_of_type_Rnb).b();
-      rnb.a(this.jdField_a_of_type_Rnb).a(2131717269);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (rnb.a(this.jdField_a_of_type_Rnb) != null)
-    {
-      rnb.a(this.jdField_a_of_type_Rnb).b();
-      rnb.a(this.jdField_a_of_type_Rnb).a(paramString, this.jdField_a_of_type_JavaLangString);
-    }
+    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_mine_selected");
   }
 }
 

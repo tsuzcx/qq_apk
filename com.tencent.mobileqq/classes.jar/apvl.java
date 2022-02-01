@@ -1,22 +1,13 @@
-public class apvl
-  extends apvk
+import android.os.Bundle;
+import eipc.EIPCResult;
+
+public abstract interface apvl
 {
-  private apwc a;
-  
-  apvl(String paramString, apwc paramapwc)
-  {
-    super(paramString);
-    this.a = paramapwc;
-  }
-  
-  public apwc a()
-  {
-    return this.a;
-  }
+  public abstract EIPCResult a(Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apvl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,55 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.doutu.DuiButtonImageView;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 class asac
-  implements aszj
+  extends bhyn
 {
-  asac(asab paramasab, FileManagerEntity paramFileManagerEntity) {}
+  asac(asaa paramasaa, String paramString1, String paramString2, String paramString3) {}
   
-  public void onNo() {}
-  
-  public void onYes()
+  public void onDone(bhyo parambhyo)
   {
-    this.jdField_a_of_type_Asab.a.a.a().aa();
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
-      QfileBaseRecentFileTabView.t(this.jdField_a_of_type_Asab.a).getOnlineFileSessionCenter().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    }
-    amqd localamqd;
-    ArrayList localArrayList;
-    do
+    boolean bool;
+    int i;
+    if (parambhyo.a() == 3)
     {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.d("DoutuManager", 2, "checkAndDownloadRes : [onDone] download finished " + this.jdField_a_of_type_JavaLangString);
       }
-      localamqd = (amqd)QfileBaseRecentFileTabView.u(this.jdField_a_of_type_Asab.a).getBusinessHandler(8);
-      localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
-    } while (localamqd.a(localArrayList));
-    aszk.a(2131692366);
-    return;
-    QfileBaseRecentFileTabView.v(this.jdField_a_of_type_Asab.a).getFileManagerEngine().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      parambhyo = asaa.a(this.jdField_a_of_type_Asaa, this.b);
+      if (this.c.equalsIgnoreCase(parambhyo))
+      {
+        asaa.a(this.jdField_a_of_type_Asaa, this.b);
+        asaa.a(this.jdField_a_of_type_Asaa, asaa.jdField_a_of_type_JavaLangString + "doutuResInfo", this.c);
+        bhhr.d(BaseApplication.getContext(), false);
+        DuiButtonImageView.a();
+        bool = true;
+        i = 0;
+      }
+    }
+    for (;;)
+    {
+      parambhyo = new HashMap();
+      parambhyo.put("param_FailCode", String.valueOf(i));
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "doutuResDownload", bool, 0L, 0L, parambhyo, "");
+      asaa.jdField_a_of_type_Boolean = false;
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("DoutuManager", 2, "[onDone] checkMd5 failed: " + this.b);
+      }
+      i = 80704;
+      FileUtils.deleteFile(this.b);
+      bool = false;
+      continue;
+      if (QLog.isColorLevel()) {
+        QLog.d("DoutuManager", 2, "checkAndDownloadRes : [onDone] downloadFile failed: " + parambhyo.b + " code=" + parambhyo.a);
+      }
+      i = parambhyo.a;
+      bool = false;
+    }
   }
 }
 

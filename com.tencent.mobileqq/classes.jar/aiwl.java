@@ -1,19 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
 
 public class aiwl
-  extends atbh
+  implements ajmo
 {
-  public aiwl(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
+  public aiwl(TroopView paramTroopView) {}
   
-  public void a(View paramView)
+  public long a()
   {
-    if ((paramView.getTag() instanceof String)) {
-      return;
-    }
-    paramView = (FileManagerEntity)((ajao)paramView.getTag()).a;
-    this.a.a(paramView);
+    return TroopView.a(this.a);
   }
 }
 

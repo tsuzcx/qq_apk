@@ -1,43 +1,55 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.VoiceResStrategy.1;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TextPreviewSettingActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class afaq
-  implements afae
+  extends bhyn
 {
-  public ajyg a;
-  public PreloadManager a;
-  private QQAppInterface a;
-  
-  public afaq(QQAppInterface paramQQAppInterface)
+  public afaq(TextPreviewSettingActivity paramTextPreviewSettingActivity, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = null;
-    this.jdField_a_of_type_Ajyg = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(151));
-      this.jdField_a_of_type_Ajyg = ((ajyg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(245));
-    }
+    super(paramString1, paramString2);
   }
   
-  public void a() {}
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  public void onCancel(bhyo parambhyo)
   {
-    ThreadManager.post(new CustomizeStrategyFactory.VoiceResStrategy.1(this, paramRedPacketInfo), 5, null, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewSettingActivity", 2, "fontNameDownloadListener.onCancel| task:" + parambhyo);
+    }
+    super.onCancel(parambhyo);
   }
   
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, ahdi paramahdi)
+  public void onDone(bhyo parambhyo)
   {
-    if ((paramRedPacketInfo != null) && ((paramahdi instanceof ahdp)))
-    {
-      paramahdi = (ahdp)paramahdi;
-      paramRedPacketInfo.icon = paramahdi.a;
-      paramRedPacketInfo.resPath = paramahdi.b;
+    super.onDone(parambhyo);
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewSettingActivity", 2, "fontNameDownloadListener.onDone| task:" + parambhyo);
     }
+    if (parambhyo.b()) {}
+    do
+    {
+      return;
+      if (parambhyo.a() == -1)
+      {
+        parambhyo = new Message();
+        parambhyo.what = 17;
+        TextPreviewSettingActivity.a(this.a).sendMessage(parambhyo);
+        return;
+      }
+      parambhyo = TextPreviewSettingActivity.a(this.a).a(TextPreviewSettingActivity.a(this.a));
+    } while (parambhyo == null);
+    Message localMessage = new Message();
+    localMessage.what = 18;
+    localMessage.obj = parambhyo;
+    TextPreviewSettingActivity.a(this.a).sendMessage(localMessage);
+  }
+  
+  public boolean onStart(bhyo parambhyo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewSettingActivity", 2, "fontNameDownloadListener.onStart| task:" + parambhyo);
+    }
+    return super.onStart(parambhyo);
   }
 }
 

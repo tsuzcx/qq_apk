@@ -8,10 +8,11 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Pair;
-import avki;
-import bkkq;
+import awqn;
+import blvy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pluginsdk.PluginUtils;
 import com.tencent.mobileqq.statistics.StatisticCollector;
@@ -33,7 +34,7 @@ public class QZoneStartupMonitor
   private static final String MONITOR_FILE_NAME = "qzone_startup_monitor";
   private static final int MSG_STARTUP_FAIL = 1;
   private static final String TAG = "QZoneStartupMonitor";
-  private static avki<QZoneStartupMonitor, Void> singleton = new QZoneStartupMonitor.1();
+  private static awqn<QZoneStartupMonitor, Void> singleton = new QZoneStartupMonitor.1();
   private final byte OAT_BIT = 2;
   private final byte STARTUP_BIT = 1;
   private Handler handler = new QZoneStartupMonitor.2(this, ThreadManager.getSubThreadLooper());
@@ -203,10 +204,10 @@ public class QZoneStartupMonitor
       {
         return;
         localObject1 = (QQAppInterface)localObject1;
-        localObject2 = (bkkq)((QQAppInterface)localObject1).getManager(27);
+        localObject2 = (blvy)((QQAppInterface)localObject1).getManager(QQManagerFactory.MGR_PLUGIN);
         QLog.i("QZoneStartupMonitor", 1, "reInstallQzone cancelInstall:qzone_plugin.apk");
-        ((bkkq)localObject2).cancelInstall("qzone_plugin.apk");
-      } while (((bkkq)localObject2).isPlugininstalled("qzone_plugin.apk"));
+        ((blvy)localObject2).cancelInstall("qzone_plugin.apk");
+      } while (((blvy)localObject2).isPlugininstalled("qzone_plugin.apk"));
       Object localObject2 = PluginUtils.getOptimizedDexPath(BaseApplicationImpl.getContext());
       localObject2 = optimizedFileFor(PluginUtils.getInstalledPluginPath(BaseApplicationImpl.getContext(), "qzone_plugin.apk"), (File)localObject2);
       QLog.i("QZoneStartupMonitor", 1, "reInstallQzone delete odex:" + ((File)localObject2).getPath());
@@ -323,18 +324,18 @@ public class QZoneStartupMonitor
     //   1: istore_1
     //   2: aload_0
     //   3: monitorenter
-    //   4: invokestatic 450	common/config/service/QzoneConfig:getInstance	()Lcommon/config/service/QzoneConfig;
-    //   7: ldc_w 452
-    //   10: ldc_w 454
+    //   4: invokestatic 455	common/config/service/QzoneConfig:getInstance	()Lcommon/config/service/QzoneConfig;
+    //   7: ldc_w 457
+    //   10: ldc_w 459
     //   13: iconst_1
-    //   14: invokevirtual 458	common/config/service/QzoneConfig:getConfig	(Ljava/lang/String;Ljava/lang/String;I)I
+    //   14: invokevirtual 463	common/config/service/QzoneConfig:getConfig	(Ljava/lang/String;Ljava/lang/String;I)I
     //   17: iconst_1
     //   18: if_icmpne +19 -> 37
     //   21: iload_1
     //   22: ifne +20 -> 42
     //   25: ldc 23
     //   27: iconst_1
-    //   28: ldc_w 460
+    //   28: ldc_w 465
     //   31: invokestatic 107	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   34: aload_0
     //   35: monitorexit
@@ -343,7 +344,7 @@ public class QZoneStartupMonitor
     //   38: istore_1
     //   39: goto -18 -> 21
     //   42: aload_0
-    //   43: getfield 462	cooperation/qzone/QZoneStartupMonitor:observer	Landroid/os/FileObserver;
+    //   43: getfield 467	cooperation/qzone/QZoneStartupMonitor:observer	Landroid/os/FileObserver;
     //   46: ifnonnull -12 -> 34
     //   49: invokestatic 113	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
     //   52: ldc 14
@@ -357,7 +358,7 @@ public class QZoneStartupMonitor
     //   68: new 140	java/lang/StringBuilder
     //   71: dup
     //   72: invokespecial 141	java/lang/StringBuilder:<init>	()V
-    //   75: ldc_w 464
+    //   75: ldc_w 469
     //   78: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   81: aload_2
     //   82: invokevirtual 224	java/io/File:getPath	()Ljava/lang/String;
@@ -365,17 +366,17 @@ public class QZoneStartupMonitor
     //   88: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   91: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   94: aload_0
-    //   95: new 466	cooperation/qzone/QZoneStartupMonitor$3
+    //   95: new 471	cooperation/qzone/QZoneStartupMonitor$3
     //   98: dup
     //   99: aload_0
     //   100: aload_2
     //   101: invokevirtual 224	java/io/File:getPath	()Ljava/lang/String;
     //   104: sipush 768
-    //   107: invokespecial 469	cooperation/qzone/QZoneStartupMonitor$3:<init>	(Lcooperation/qzone/QZoneStartupMonitor;Ljava/lang/String;I)V
-    //   110: putfield 462	cooperation/qzone/QZoneStartupMonitor:observer	Landroid/os/FileObserver;
+    //   107: invokespecial 474	cooperation/qzone/QZoneStartupMonitor$3:<init>	(Lcooperation/qzone/QZoneStartupMonitor;Ljava/lang/String;I)V
+    //   110: putfield 467	cooperation/qzone/QZoneStartupMonitor:observer	Landroid/os/FileObserver;
     //   113: aload_0
-    //   114: getfield 462	cooperation/qzone/QZoneStartupMonitor:observer	Landroid/os/FileObserver;
-    //   117: invokevirtual 474	android/os/FileObserver:startWatching	()V
+    //   114: getfield 467	cooperation/qzone/QZoneStartupMonitor:observer	Landroid/os/FileObserver;
+    //   117: invokevirtual 479	android/os/FileObserver:startWatching	()V
     //   120: goto -86 -> 34
     //   123: astore_2
     //   124: aload_0

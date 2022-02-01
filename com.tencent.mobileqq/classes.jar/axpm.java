@@ -1,32 +1,29 @@
-import android.graphics.Matrix;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public abstract interface axpm
+class axpm
+  extends bbbk
 {
-  public abstract void a(Matrix paramMatrix);
+  axpm(axpk paramaxpk, QQAppInterface paramQQAppInterface) {}
   
-  public abstract void a(MotionEvent paramMotionEvent);
-  
-  public abstract void a(ScaleGestureDetector paramScaleGestureDetector);
-  
-  public abstract boolean a(MotionEvent paramMotionEvent);
-  
-  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
-  
-  public abstract boolean a(ScaleGestureDetector paramScaleGestureDetector);
-  
-  public abstract void b(MotionEvent paramMotionEvent);
-  
-  public abstract boolean b(MotionEvent paramMotionEvent);
-  
-  public abstract boolean b(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
-  
-  public abstract boolean b(ScaleGestureDetector paramScaleGestureDetector);
-  
-  public abstract void c(MotionEvent paramMotionEvent);
-  
-  public abstract boolean c(MotionEvent paramMotionEvent);
+  public void a(String paramString, List<NumRedMsg.NumMsgBusi> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyNewRedDotManagerQ.qqstory.redPoint", 2, "updateNumMsg: appid msgList.size = " + paramList.size());
+    }
+    if (("nearby_num_red_dot".equals(paramString)) && (paramList != null))
+    {
+      this.jdField_a_of_type_Axpk.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramList);
+      axpk.a(this.jdField_a_of_type_Axpk, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler();
+      if ((paramString != null) && (paramString.a("businessbase_processor") != null)) {
+        paramString.a("businessbase_processor").a(105, true, null);
+      }
+    }
+  }
 }
 
 

@@ -1,22 +1,36 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.os.MqqHandler;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contact.connections.OverlappingImgLayout;
+import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ThemeImageView;
+import java.util.List;
 
 public class aiyk
-  extends bfba
+  implements FaceDecoder.DecodeTaskCompletionListener
 {
-  public aiyk(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment, Context paramContext, bfaz parambfaz, QQAppInterface paramQQAppInterface)
-  {
-    super(paramContext, parambfaz, paramQQAppInterface);
-  }
+  public aiyk(OverlappingImgLayout paramOverlappingImgLayout) {}
   
-  protected void b(Object paramObject)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    super.b(paramObject);
-    if (this.a.a != null) {
-      this.a.a.sendEmptyMessage(102);
-    }
+    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null) || (OverlappingImgLayout.a(this.a) == null) || (paramString.length() == 0)) {}
+    do
+    {
+      return;
+      paramInt1 = 0;
+      while (paramInt1 < OverlappingImgLayout.a(this.a).length)
+      {
+        if ((paramInt1 < 3) && (paramString.equals(OverlappingImgLayout.a(this.a)[paramInt1])))
+        {
+          ((ThemeImageView)OverlappingImgLayout.a(this.a).get(paramInt1)).setImageBitmap(paramBitmap);
+          if (QLog.isColorLevel()) {
+            QLog.d("OverlappingImgLayout", 2, "mDecodeTaskCompletionListener update");
+          }
+        }
+        paramInt1 += 1;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("OverlappingImgLayout", 2, "onDecodeTaskCompleted, uin: " + paramString + ", type: " + paramInt2);
   }
 }
 

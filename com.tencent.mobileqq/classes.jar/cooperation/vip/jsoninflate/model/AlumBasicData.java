@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import blal;
-import blam;
+import bmmw;
+import bmmx;
 import com.tencent.gdtad.statistics.GdtReporter;
 import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -37,11 +37,11 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
 public class AlumBasicData
   implements Parcelable
 {
-  public static final Parcelable.Creator<AlumBasicData> CREATOR = new blal();
+  public static final Parcelable.Creator<AlumBasicData> CREATOR = new bmmw();
   public int a;
   public long a;
   public String a;
-  public List<blam> a;
+  public List<bmmx> a;
   public qq_ad_get.QQAdGetRsp.AdInfo a;
   public boolean a;
   public int b;
@@ -98,7 +98,7 @@ public class AlumBasicData
       this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.mergeFrom(arrayOfByte);
       this.jdField_h_of_type_JavaLangString = paramParcel.readString();
       this.i = paramParcel.readString();
-      paramParcel.readList(this.jdField_a_of_type_JavaUtilList, blam.class.getClassLoader());
+      paramParcel.readList(this.jdField_a_of_type_JavaUtilList, bmmx.class.getClassLoader());
       this.jdField_d_of_type_Int = paramParcel.readInt();
       this.k = paramParcel.readString();
       this.jdField_e_of_type_Int = paramParcel.readInt();
@@ -245,7 +245,7 @@ public class AlumBasicData
         int m = 0;
         while (m < ((vac_adv_get.VacFeedsAdvMetaInfo)localObject).droplist.get().size())
         {
-          localAlumBasicData.jdField_a_of_type_JavaUtilList.add(blam.a((vac_adv_get.DropList)((vac_adv_get.VacFeedsAdvMetaInfo)localObject).droplist.get().get(m)));
+          localAlumBasicData.jdField_a_of_type_JavaUtilList.add(bmmx.a((vac_adv_get.DropList)((vac_adv_get.VacFeedsAdvMetaInfo)localObject).droplist.get().get(m)));
           m += 1;
         }
       }

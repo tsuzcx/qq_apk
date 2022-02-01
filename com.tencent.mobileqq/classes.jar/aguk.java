@@ -1,13 +1,29 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
-public class aguk
-  implements agut
+class aguk
+  implements DialogInterface.OnClickListener
 {
-  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  aguk(agui paramagui) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramagap.c(paramMessageRecord, paramagcc);
+    if (!NetworkUtil.isNetworkAvailable(this.a.a.jdField_a_of_type_AndroidContentContext)) {
+      bjkv.a().a(2131691491);
+    }
+    do
+    {
+      return;
+      paramDialogInterface = (abgm)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
+      paramDialogInterface.a(Long.parseLong(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin), 0, 1, 0);
+      paramDialogInterface = paramDialogInterface.a(Long.parseLong(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin));
+    } while (paramDialogInterface == null);
+    absy.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin), "Usr_AIO_Menu", 5, 0, paramDialogInterface.productId);
   }
 }
 

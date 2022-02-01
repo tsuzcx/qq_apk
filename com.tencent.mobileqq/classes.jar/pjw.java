@@ -1,15 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.util.Pair;
+import java.util.Comparator;
 
-public class pjw
-  extends axkt
+final class pjw
+  implements Comparator<Pair<Long, BaseArticleInfo>>
 {
-  public pjw(KandianMergeManager paramKandianMergeManager) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public int a(Pair<Long, BaseArticleInfo> paramPair1, Pair<Long, BaseArticleInfo> paramPair2)
   {
-    QLog.d("KandianMergeManager", 1, "onGameCenterMsgReceive | redTouchObserver received a notification ");
-    KandianMergeManager.a(this.a);
+    return ((Long)paramPair2.first).compareTo((Long)paramPair1.first);
   }
 }
 

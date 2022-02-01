@@ -1,76 +1,36 @@
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.panel.PokeAndEmoPanel;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class afrw
-  implements afrc
+class afrw
+  implements akxc
 {
-  private agxe jdField_a_of_type_Agxe;
-  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  afrw(afru paramafru, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
   
-  public afrw(afqw paramafqw, BaseChatPie paramBaseChatPie)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.app;
-  }
-  
-  private PokeAndEmoPanel a()
-  {
-    if (this.jdField_a_of_type_Agxe == null) {
-      this.jdField_a_of_type_Agxe = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getPanelManager();
-    }
-    return (PokeAndEmoPanel)this.jdField_a_of_type_Agxe.a(23);
-  }
-  
-  private void a()
-  {
-    PokeAndEmoPanel localPokeAndEmoPanel = a();
-    if (localPokeAndEmoPanel != null) {
-      localPokeAndEmoPanel.a();
-    }
-  }
-  
-  private void b()
-  {
-    PokeAndEmoPanel localPokeAndEmoPanel = a();
-    if (localPokeAndEmoPanel != null) {
-      localPokeAndEmoPanel.c();
-    }
-  }
-  
-  private void c()
-  {
-    PokeAndEmoPanel localPokeAndEmoPanel = a();
-    if (localPokeAndEmoPanel != null)
+    paramPathResult = paramPathResult.folderPath;
+    if (paramInt == 0) {}
+    try
     {
-      localPokeAndEmoPanel.b();
-      agkg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), agkg.a);
+      paramPathResult = paramPathResult + File.separator;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.specailBackgroundAnimInfo = AnimationView.AnimationInfo.loadFromFolder(paramPathResult + "anim_bg");
+      if (QLog.isColorLevel()) {
+        QLog.d("CustomizeStrategyFactory", 2, "TYPE_SPECAIL_ANIM specailBackgroundAnimInfo=" + this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.specailBackgroundAnimInfo);
+      }
+      CustomizeStrategyFactory.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo);
+      return;
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
+    catch (Throwable paramPathResult)
     {
-    case 9: 
-    case 11: 
-    case 12: 
-    default: 
-      return;
-    case 8: 
-      a();
-      return;
-    case 10: 
-      b();
-      return;
+      for (;;)
+      {
+        paramPathResult.printStackTrace();
+      }
     }
-    c();
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 8, 10, 13 };
   }
 }
 

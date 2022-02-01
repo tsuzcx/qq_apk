@@ -254,7 +254,7 @@ public class BeautyTransformList
     this.mVFaceEyeNose.clearGLSLSelf();
     this.mChinThinShorten.clearGLSLSelf();
     this.mBasic3.clearGLSLSelf();
-    this.mCopyFilter.ClearGLSL();
+    this.mCopyFilter.clearGLSL();
   }
   
   public BeautyParam getBeautyParam()

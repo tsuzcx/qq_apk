@@ -1,11 +1,6 @@
-import android.media.MediaPlayer;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
-
 public abstract interface akwd
 {
-  public abstract void a(MediaPlayer paramMediaPlayer);
-  
-  public abstract void a(FixedSizeVideoView paramFixedSizeVideoView, int paramInt1, int paramInt2);
+  public abstract void a(akvt paramakvt);
 }
 
 

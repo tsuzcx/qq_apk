@@ -2,17 +2,17 @@ package com.tencent.mobileqq.app.message;
 
 import OnlinePushPack.MsgInfo;
 import android.util.Pair;
-import anld;
+import aonw;
 import java.util.ArrayList;
 
 public class DiscMessageProcessor$3
   implements Runnable
 {
-  public DiscMessageProcessor$3(anld paramanld, Pair paramPair, MsgInfo paramMsgInfo, ArrayList paramArrayList, long paramLong, String paramString, byte paramByte, boolean paramBoolean) {}
+  public DiscMessageProcessor$3(aonw paramaonw, Pair paramPair, MsgInfo paramMsgInfo, ArrayList paramArrayList, long paramLong, String paramString, byte paramByte, boolean paramBoolean) {}
   
   public void run()
   {
-    anld.a(this.this$0, this.jdField_a_of_type_AndroidUtilPair, this.jdField_a_of_type_OnlinePushPackMsgInfo, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Byte, 0L, this.jdField_a_of_type_Boolean);
+    aonw.a(this.this$0, this.jdField_a_of_type_AndroidUtilPair, this.jdField_a_of_type_OnlinePushPackMsgInfo, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Byte, 0L, this.jdField_a_of_type_Boolean);
   }
 }
 

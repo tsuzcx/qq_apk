@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import aoad;
+import apdf;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class ARRecordReport$2
   implements Runnable
 {
-  public ARRecordReport$2(aoad paramaoad, boolean paramBoolean) {}
+  public ARRecordReport$2(apdf paramapdf, boolean paramBoolean) {}
   
   public void run()
   {

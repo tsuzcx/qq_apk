@@ -1,18 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.util.Size;
+import java.util.Comparator;
 
-class bczj
-  implements View.OnClickListener
+public class bczj
+  implements Comparator<Size>
 {
-  bczj(bczc parambczc) {}
-  
-  public void onClick(View paramView)
+  public int a(Size paramSize1, Size paramSize2)
   {
-    this.a.a.setText("");
-    this.a.c();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return Long.signum(paramSize1.getWidth() * paramSize1.getHeight() - paramSize2.getWidth() * paramSize2.getHeight());
   }
 }
 

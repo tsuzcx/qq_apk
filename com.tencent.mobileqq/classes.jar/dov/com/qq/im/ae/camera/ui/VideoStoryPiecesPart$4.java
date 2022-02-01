@@ -2,18 +2,18 @@ package dov.com.qq.im.ae.camera.ui;
 
 import android.graphics.drawable.AnimationDrawable;
 import android.widget.ImageView;
-import bloe;
+import bnbp;
 import dov.com.qq.im.ae.view.AECompoundButton;
 
 public class VideoStoryPiecesPart$4
   implements Runnable
 {
-  public VideoStoryPiecesPart$4(bloe parambloe) {}
+  public VideoStoryPiecesPart$4(bnbp parambnbp) {}
   
   public void run()
   {
-    bloe.a(this.this$0).a().setImageResource(2130837688);
-    AnimationDrawable localAnimationDrawable = (AnimationDrawable)bloe.a(this.this$0).a().getDrawable();
+    bnbp.a(this.this$0).a().setImageResource(2130837703);
+    AnimationDrawable localAnimationDrawable = (AnimationDrawable)bnbp.a(this.this$0).a().getDrawable();
     if (localAnimationDrawable != null) {
       localAnimationDrawable.start();
     }

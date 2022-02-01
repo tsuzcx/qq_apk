@@ -1,37 +1,8 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.view.View;
 
-public class pcm
-  implements AladdinConfigHandler
+public abstract interface pcm
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("DefaultFeedsProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
-    paramString = pbt.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("DefaultFeedsProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-      if (TextUtils.equals(str1, "default_feeds"))
-      {
-        bkwm.a("default_feeds_proteus_offline_bid", str2);
-        new szc().a("default_feeds");
-      }
-    }
-    return true;
-  }
-  
-  public void onWipeConfig(int paramInt)
-  {
-    QLog.d("DefaultFeedsProteusBidConfigHandler", 1, "[onWipeConfig]");
-    bkwm.a("default_feeds_proteus_offline_bid", "0");
-  }
+  public abstract void a(int paramInt, View paramView);
 }
 
 

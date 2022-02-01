@@ -1,37 +1,33 @@
-import android.graphics.RectF;
-import com.tencent.avgame.gamelogic.data.Player;
-import com.tencent.avgame.session.AVGameUserInfo;
+import com.tencent.qav.QavDef.MultiUserInfo;
 import java.util.List;
 
-public abstract interface ndt
+public abstract class ndt
 {
-  public abstract RectF a();
+  public void a() {}
   
-  public abstract RectF a(long paramLong);
+  public void a(int paramInt) {}
   
-  public abstract AVGameUserInfo a(String paramString);
+  public void a(int paramInt1, int paramInt2) {}
   
-  public abstract List<ndw> a();
+  public void a(QavDef.MultiUserInfo paramMultiUserInfo) {}
   
-  public abstract void a();
+  public void a(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean) {}
   
-  public abstract void a(long paramLong, boolean paramBoolean);
+  public void a(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean, int paramInt) {}
   
-  public abstract void a(Player paramPlayer);
+  public void a(List<QavDef.MultiUserInfo> paramList) {}
   
-  public abstract void a(naf paramnaf);
+  public void a(boolean paramBoolean) {}
   
-  public abstract void a(ncq paramncq);
+  public void a(boolean paramBoolean, long paramLong, int paramInt) {}
   
-  public abstract boolean a();
+  public void b(int paramInt) {}
   
-  public abstract List<ncs> b();
+  public void b(QavDef.MultiUserInfo paramMultiUserInfo) {}
   
-  public abstract void b();
+  public void b(boolean paramBoolean, long paramLong, int paramInt) {}
   
-  public abstract void b(Player paramPlayer);
-  
-  public abstract void c(Player paramPlayer);
+  public void c(int paramInt) {}
 }
 
 

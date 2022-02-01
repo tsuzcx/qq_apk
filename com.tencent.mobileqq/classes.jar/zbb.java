@@ -1,72 +1,80 @@
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.mobileqq.vfs.VFSAssistantUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.URLEncoder;
-import java.util.HashMap;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
 public class zbb
+  extends BaseAdapter
 {
-  public static final String a;
-  public static final HashMap<String, String> a;
-  public static final String[] a;
-  public static final String b;
-  public static final HashMap<String, String> b;
-  public static final String c;
-  public static final HashMap<String, String> c;
-  public static final String d;
-  private static final String e = VFSAssistantUtils.getSDKPrivatePath("cache/");
-  private static final String f = VFSAssistantUtils.getSDKPrivatePath("qsubscribe/");
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<zbd> jdField_a_of_type_JavaUtilList = new ArrayList();
+  @Nullable
+  private zbd jdField_a_of_type_Zbd;
   
-  static
+  public zbb(Context paramContext)
   {
-    jdField_a_of_type_JavaLangString = f + "file/";
-    jdField_b_of_type_JavaLangString = f + "cache/";
-    jdField_c_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "animation/";
-    d = e + "tencent_sdk_download/";
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    jdField_c_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_JavaUtilHashMap.put("follow_guide_pics", "https://down.qq.com/video_story/certified_account/animation_pics/follow_guide_pics.zip");
-    jdField_a_of_type_JavaUtilHashMap.put("praise_guide_pics", "https://down.qq.com/video_story/certified_account/animation_pics/praise_guide_pics.zip");
-    jdField_b_of_type_JavaUtilHashMap.put("follow_guide_pics", jdField_c_of_type_JavaLangString + "follow_guide_pics" + File.separator);
-    jdField_b_of_type_JavaUtilHashMap.put("praise_guide_pics", jdField_c_of_type_JavaLangString + "praise_guide_pics" + File.separator);
-    jdField_c_of_type_JavaUtilHashMap.put("follow_guide_pics", "KEY_SUBSCRIBE_FOLLOW_GUIDE_DOWNLOAD_URL");
-    jdField_c_of_type_JavaUtilHashMap.put("praise_guide_pics", "KEY_SUBSCRIBE_FOLLOW_PRAISE_DOWNLOAD_URL");
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "follow_guide_pics", "praise_guide_pics" };
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public static String a(String paramString)
+  @Nullable
+  public zbd a()
   {
-    return String.format("https://h5.qzone.qq.com/subscription/openshop/%s?_proxy=1&_wv=3", new Object[] { paramString });
+    return this.jdField_a_of_type_Zbd;
   }
   
-  public static String a(String paramString1, String paramString2)
+  public void a(List<zbd> paramList)
   {
-    String str = String.format("https://h5.qzone.qq.com/subscription/addgoods/%s?_proxy=1&_wv=3", new Object[] { paramString1 });
-    paramString1 = str;
-    if (paramString2 != null)
+    if (paramList == null)
     {
-      paramString1 = str;
-      if (!StringUtil.isEmpty(paramString2)) {
-        paramString1 = str + "&id=" + URLEncoder.encode(paramString2);
-      }
+      this.jdField_a_of_type_JavaUtilList.clear();
+      return;
     }
-    return paramString1;
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
   }
   
-  public static String b(String paramString)
+  public void a(@Nullable zbd paramzbd)
   {
-    return "https://h5.qzone.qq.com/subscription/morerecommend/{uin}?_proxy=1&_wv=3&_p=".replace("{uin}", paramString);
+    this.jdField_a_of_type_Zbd = paramzbd;
   }
   
-  public static String c(String paramString)
+  public int getCount()
   {
-    paramString = jdField_a_of_type_JavaLangString + paramString;
-    if (QLog.isColorLevel()) {
-      QLog.d("SubscribeConstants", 4, "QSUSCRIBE_DOWNLOAD_ROOT_PATH" + jdField_a_of_type_JavaLangString + "   getSDKPrivatePath realPath=" + paramString);
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    if (paramView == null)
+    {
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561808, null);
+      localObject = new zbc(paramView);
+      paramView.setTag(localObject);
     }
-    return paramString;
+    for (;;)
+    {
+      ((zbc)localObject).a((zbd)this.jdField_a_of_type_JavaUtilList.get(paramInt), this.jdField_a_of_type_Zbd);
+      localObject = ((zbc)localObject).a;
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localObject;
+      localObject = (zbc)paramView.getTag();
+    }
   }
 }
 

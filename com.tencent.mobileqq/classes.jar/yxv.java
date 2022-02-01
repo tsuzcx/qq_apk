@@ -1,20 +1,22 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.qrcode.ipc.VoiceScan.1;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.permission.PermissionSettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class yxv
-  implements bhbx
+  implements View.OnClickListener
 {
-  public yxv(VoiceScan.1 param1) {}
+  public yxv(PermissionSettingActivity paramPermissionSettingActivity) {}
   
-  public void onClick(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public void onClick(View paramView)
   {
-    paramClickableColorSpanTextView = new Intent(yxu.a(this.a.this$0), QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "https://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    yxu.a(this.a.this$0).startActivity(paramClickableColorSpanTextView);
+    yxt localyxt = PermissionSettingActivity.a(this.a).a();
+    if (localyxt != null)
+    {
+      PermissionSettingActivity.a(this.a, localyxt);
+      this.a.finish();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

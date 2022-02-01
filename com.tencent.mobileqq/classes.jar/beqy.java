@@ -1,26 +1,17 @@
-import android.content.Context;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import androidx.annotation.NonNull;
 
-public abstract class beqy
-  extends beqz
+public class beqy
+  extends RecyclerView.ViewHolder
 {
-  public beqy(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
-  {
-    super(paramQQAppInterface, paramContext, paramSessionInfo);
-  }
+  TextView a;
   
-  public void a(int paramInt1, bdyo parambdyo, String paramString, int paramInt2, TextView paramTextView1, TextView paramTextView2, long paramLong)
+  public beqy(@NonNull View paramView)
   {
-    if (parambdyo.a)
-    {
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Clk_topmsgcue_hongbao", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "");
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "clk_hongbao", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "");
-      return;
-    }
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Clk_topmsgcue_sf", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "");
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "clk_special_focus", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "");
+    super(paramView);
+    this.a = ((TextView)paramView.findViewById(2131379092));
   }
 }
 

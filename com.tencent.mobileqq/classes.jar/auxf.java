@@ -1,11 +1,16 @@
-class auxf
-  implements aiqz
+import com.tencent.biz.ui.RefreshView;
+import com.tencent.mobileqq.fragment.NowLiveFragment;
+import com.tencent.mobileqq.fragment.NowLiveFragment.NowLiveWebView;
+
+public class auxf
+  implements aakw
 {
-  auxf(auxd paramauxd) {}
+  public auxf(NowLiveFragment paramNowLiveFragment) {}
   
-  public long a()
+  public void a()
   {
-    return auxd.a(this.a);
+    this.a.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment$NowLiveWebView.refresh();
+    this.a.jdField_a_of_type_ComTencentBizUiRefreshView.b();
   }
 }
 

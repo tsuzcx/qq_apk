@@ -1,15 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-
-public class belu
-  implements DialogInterface.OnClickListener
+final class belu
+  implements bell
 {
-  public belu(ReciteRecordLayout paramReciteRecordLayout) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(String paramString)
   {
-    paramDialogInterface.dismiss();
+    return false;
   }
 }
 

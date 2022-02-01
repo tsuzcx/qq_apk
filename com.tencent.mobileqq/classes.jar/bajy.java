@@ -1,16 +1,18 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import java.io.File;
-
-final class bajy
-  implements DialogInterface.OnClickListener
+public class bajy
+  implements bajr
 {
-  bajy(Activity paramActivity, File paramFile1, File paramFile2, baka parambaka) {}
+  private bakr a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bajy(bakr parambakr)
   {
-    bajw.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaIoFile, this.b, this.jdField_a_of_type_Baka);
+    this.a = parambakr;
+  }
+  
+  public void a(balb parambalb)
+  {
+    if (this.a != null) {
+      this.a.e(parambalb);
+    }
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.open.wadl;
 
 import android.text.TextUtils;
-import bifp;
-import bifq;
-import blec;
+import bjqr;
+import bjqs;
+import bmqt;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -12,11 +12,11 @@ import java.util.HashMap;
 public class WadlConfigCenter$1
   implements Runnable
 {
-  public WadlConfigCenter$1(bifq parambifq) {}
+  public WadlConfigCenter$1(bjqs parambjqs) {}
   
   public void run()
   {
-    ??? = blec.a();
+    ??? = bmqt.a();
     String str = null;
     if (((File)???).exists()) {
       str = FileUtils.readFileContent((File)???);
@@ -24,17 +24,17 @@ public class WadlConfigCenter$1
     if (QLog.isColorLevel()) {
       QLog.d("WadlConfigCenter", 2, "loadConfig content=" + str);
     }
-    synchronized (bifq.a(this.this$0))
+    synchronized (bjqs.a(this.this$0))
     {
-      bifq.a(this.this$0).clear();
+      bjqs.a(this.this$0).clear();
       boolean bool = TextUtils.isEmpty(str);
       if (!bool) {}
       try
       {
-        bifp localbifp = new bifp();
-        localbifp.a = "comminfo";
-        localbifp.a(str);
-        bifq.a(this.this$0).put("comminfo", localbifp);
+        bjqr localbjqr = new bjqr();
+        localbjqr.a = "comminfo";
+        localbjqr.a(str);
+        bjqs.a(this.this$0).put("comminfo", localbjqr);
         return;
       }
       catch (Exception localException)

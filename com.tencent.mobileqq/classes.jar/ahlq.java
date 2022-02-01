@@ -1,33 +1,336 @@
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.MultiForwardActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTroopSign;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ahlq
-  extends WtloginObserver
+public abstract class ahlq
+  extends BaseBubbleBuilder
 {
-  ahlq(ahlo paramahlo, long paramLong, int[] paramArrayOfInt, DevlockInfo[] paramArrayOfDevlockInfo) {}
+  protected int c;
+  protected int d;
+  protected int e;
+  protected int f;
+  protected int g;
+  protected int h = 12303291;
+  protected int i;
   
-  public void onCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public ahlq(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
-    long l;
-    if (QLog.isColorLevel())
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+    this.c = DisplayUtil.dip2px(paramContext, 151.5F);
+    this.d = DisplayUtil.dip2px(paramContext, 125.5F);
+    this.e = DisplayUtil.dip2px(paramContext, 152.0F);
+    this.f = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 14.0F);
+    this.g = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 10.0F);
+    this.i = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 50.0F);
+  }
+  
+  public int a(ChatMessage paramChatMessage)
+  {
+    return 0;
+  }
+  
+  public String a(ChatMessage paramChatMessage)
+  {
+    return ((MessageForTroopSign)paramChatMessage).getSummaryMsg();
+  }
+  
+  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
+  {
+    switch (paramInt)
     {
-      l = System.currentTimeMillis();
-      paramWUserSigInfo = new StringBuilder().append("CheckDevLockStatus ret: ").append(paramInt).append(", has devinfo: ");
-      if (paramDevlockInfo != null) {
-        break label100;
+    default: 
+      super.a(paramInt, paramContext, paramChatMessage);
+      return;
+    case 2131376534: 
+      super.a(paramInt, paramContext, paramChatMessage);
+      return;
+    }
+    admh.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
+  }
+  
+  public void a(ahlr paramahlr, BaseChatItemLayout paramBaseChatItemLayout)
+  {
+    MessageForTroopSign localMessageForTroopSign = (MessageForTroopSign)paramahlr.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+    Resources localResources;
+    Object localObject1;
+    TextView localTextView;
+    Object localObject2;
+    Drawable localDrawable;
+    if (paramahlr.jdField_a_of_type_AndroidWidgetFrameLayout == null)
+    {
+      localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
+      paramahlr.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
+      localObject1 = new FrameLayout.LayoutParams(-2, -2);
+      localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
+      localTextView.setSingleLine(true);
+      localTextView.setGravity(16);
+      localTextView.setEllipsize(TextUtils.TruncateAt.END);
+      localTextView.setTextColor(-1);
+      localTextView.setTextSize(2, 12.0F);
+      localTextView.setBackgroundResource(2130842656);
+      paramahlr.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localTextView, (ViewGroup.LayoutParams)localObject1);
+      paramahlr.e = localTextView;
+      paramahlr.e.setText(localMessageForTroopSign.srcName);
+      if (!TextUtils.isEmpty(localMessageForTroopSign.srcIconUrl))
+      {
+        localObject2 = localMessageForTroopSign.srcIconUrl;
+        localDrawable = localResources.getDrawable(2130850493);
+        localDrawable.setBounds(0, 0, AIOUtils.dp2px(12.0F, localResources), AIOUtils.dp2px(12.0F, localResources));
+        localObject1 = new ColorDrawable(15790320);
+        ((Drawable)localObject1).setBounds(0, 0, AIOUtils.dp2px(12.0F, localResources), AIOUtils.dp2px(12.0F, localResources));
       }
     }
-    label100:
-    for (boolean bool = true;; bool = false)
+    else
     {
-      QLog.d("C2CMsgRoamProxy", 2, bool + ", cost: " + (l - this.jdField_a_of_type_Long) + "ms");
-      this.jdField_a_of_type_ArrayOfInt[0] = paramInt;
-      this.jdField_a_of_type_ArrayOfOicqWlogin_sdkDevicelockDevlockInfo[0] = paramDevlockInfo;
-      ahlo.b(this.jdField_a_of_type_Ahlo).b();
+      try
+      {
+        localObject2 = URLDrawable.getDrawable((String)localObject2, localDrawable, (Drawable)localObject1);
+        if (URLDrawableHelper.isMobileNetAndAutodownDisabled(this.jdField_a_of_type_AndroidContentContext)) {
+          break label399;
+        }
+        bool = true;
+        ((URLDrawable)localObject2).setAutoDownload(bool);
+        localObject1 = localObject2;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          boolean bool;
+          label296:
+          if (QLog.isColorLevel()) {
+            QLog.e("TroopSignItemBuilder", 2, "setSourceView exception" + localException.toString());
+          }
+        }
+      }
+      ((Drawable)localObject1).setBounds(0, 0, AIOUtils.dp2px(12.0F, localResources), AIOUtils.dp2px(12.0F, localResources));
+      localTextView.setCompoundDrawablePadding(AIOUtils.dp2px(3.0F, localResources));
+      localTextView.setCompoundDrawables((Drawable)localObject1, null, null, null);
+      localTextView.setPadding(AIOUtils.dp2px(5.0F, localResources), 0, AIOUtils.dp2px(5.0F, localResources), 0);
+      localObject1 = new RelativeLayout.LayoutParams(-2, -2);
+      ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131364522);
+      ((RelativeLayout.LayoutParams)localObject1).addRule(5, 2131364522);
+      paramBaseChatItemLayout.addView(paramahlr.jdField_a_of_type_AndroidWidgetFrameLayout, (ViewGroup.LayoutParams)localObject1);
+      paramahlr.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(this);
+      paramBaseChatItemLayout = (FrameLayout.LayoutParams)paramahlr.e.getLayoutParams();
+      if (!localMessageForTroopSign.isSend()) {
+        break label456;
+      }
+    }
+    label399:
+    label456:
+    for (paramBaseChatItemLayout.leftMargin = BaseChatItemLayout.k;; paramBaseChatItemLayout.leftMargin = this.g)
+    {
+      paramahlr.e.setLayoutParams(paramBaseChatItemLayout);
       return;
+      bool = false;
+      break;
+      localTextView.setCompoundDrawables(null, null, null, null);
+      break label296;
+    }
+  }
+  
+  public void a(ahlr paramahlr, MessageForTroopSign paramMessageForTroopSign)
+  {
+    boolean bool = paramMessageForTroopSign.isSend();
+    if ((paramMessageForTroopSign.markType == 1) || (paramMessageForTroopSign.markType == 2)) {
+      if (TextUtils.isEmpty(paramMessageForTroopSign.markIconUrl)) {}
+    }
+    for (;;)
+    {
+      try
+      {
+        Object localObject = new ColorDrawable(0);
+        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        localURLDrawableOptions.mRequestWidth = this.i;
+        localURLDrawableOptions.mRequestHeight = this.i;
+        localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
+        localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
+        localObject = URLDrawable.getDrawable(paramMessageForTroopSign.markIconUrl, localURLDrawableOptions);
+        if (((URLDrawable)localObject).getStatus() == 2) {
+          ((URLDrawable)localObject).restartDownload();
+        }
+        paramahlr.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      }
+      catch (Exception localException)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("TroopSignItemBuilder", 2, QLog.getStackTraceString(localException));
+        continue;
+      }
+      if (paramMessageForTroopSign.markType != 1) {
+        break;
+      }
+      paramahlr.jdField_d_of_type_AndroidViewView.setVisibility(4);
+      paramahlr.jdField_c_of_type_AndroidViewView.setVisibility(0);
+      paramahlr.b.setVisibility(4);
+      a(paramahlr.jdField_c_of_type_AndroidViewView, paramMessageForTroopSign.positonType, bool);
+      return;
+      paramahlr.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+      continue;
+      paramahlr.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+    }
+    if (paramMessageForTroopSign.markType == 2)
+    {
+      paramahlr.jdField_d_of_type_AndroidViewView.setVisibility(4);
+      paramahlr.jdField_c_of_type_AndroidViewView.setVisibility(0);
+      paramahlr.b.setVisibility(0);
+      paramahlr.b.setText(paramMessageForTroopSign.markDesc);
+      a(paramahlr.jdField_c_of_type_AndroidViewView, paramMessageForTroopSign.positonType, bool);
+      return;
+    }
+    if (paramMessageForTroopSign.markType == 3)
+    {
+      paramahlr.jdField_d_of_type_AndroidViewView.setVisibility(0);
+      paramahlr.jdField_c_of_type_AndroidViewView.setVisibility(4);
+      paramahlr.jdField_c_of_type_AndroidWidgetTextView.setText(paramMessageForTroopSign.markWord);
+      paramahlr.jdField_d_of_type_AndroidWidgetTextView.setText(paramMessageForTroopSign.markDesc);
+      a(paramahlr.jdField_d_of_type_AndroidViewView, paramMessageForTroopSign.positonType, bool);
+      return;
+    }
+    paramahlr.jdField_d_of_type_AndroidViewView.setVisibility(4);
+    paramahlr.jdField_c_of_type_AndroidViewView.setVisibility(4);
+  }
+  
+  public void a(View paramView, int paramInt, boolean paramBoolean)
+  {
+    int j = this.f / 2;
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
+    if (paramInt == 7)
+    {
+      localLayoutParams.topMargin = this.f;
+      localLayoutParams.addRule(11, 0);
+      localLayoutParams.addRule(9, 0);
+      localLayoutParams.addRule(14, -1);
+      localLayoutParams.addRule(10, -1);
+    }
+    for (;;)
+    {
+      paramView.setLayoutParams(localLayoutParams);
+      return;
+      localLayoutParams.topMargin = j;
+      localLayoutParams.addRule(11, -1);
+      localLayoutParams.addRule(9, 0);
+      localLayoutParams.addRule(14, 0);
+      localLayoutParams.addRule(10, -1);
+      if (paramBoolean) {
+        localLayoutParams.rightMargin = (j + this.g);
+      } else {
+        localLayoutParams.rightMargin = j;
+      }
+    }
+  }
+  
+  public void a(View paramView, ChatMessage paramChatMessage)
+  {
+    if (paramChatMessage.isSend())
+    {
+      paramView.setPadding(BaseChatItemLayout.k, BaseChatItemLayout.h, 0, BaseChatItemLayout.i);
+      return;
+    }
+    paramView.setPadding(0, BaseChatItemLayout.h, BaseChatItemLayout.k, BaseChatItemLayout.i);
+  }
+  
+  public bhjs[] a(View paramView)
+  {
+    bhjq localbhjq = new bhjq();
+    paramView = (MessageForTroopSign)((afrk)AIOUtils.getHolder(paramView)).jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+    super.a(paramView, localbhjq);
+    admh.a(localbhjq, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType);
+    b(paramView, localbhjq);
+    super.e(localbhjq, this.jdField_a_of_type_AndroidContentContext);
+    return localbhjq.a();
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (a()) {}
+    while (((this.jdField_a_of_type_AndroidContentContext instanceof MultiForwardActivity)) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.isUpComingPrevious))
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    Object localObject1 = (ahlr)AIOUtils.getHolder(paramView);
+    Object localObject3 = (MessageForTroopSign)((ahlr)localObject1).jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+    if (paramView == ((ahlr)localObject1).jdField_a_of_type_AndroidWidgetFrameLayout)
+    {
+      localObject3 = ((MessageForTroopSign)localObject3).srcAction;
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_checkin", "", "entry", "clk_obj_graybar", 0, 0, "", "", "", "");
+      localObject1 = localObject3;
+      if (!QLog.isColorLevel()) {
+        break label288;
+      }
+      QLog.d("TroopSignItemBuilder", 2, "onSrcClick actionURL:" + (String)localObject3);
+      localObject1 = localObject3;
+    }
+    for (;;)
+    {
+      for (;;)
+      {
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          break label291;
+        }
+        try
+        {
+          localObject3 = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+          ((Intent)localObject3).putExtra("url", (String)localObject1);
+          uuc.a((Intent)localObject3, (String)localObject1);
+          this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject3);
+        }
+        catch (Exception localException) {}
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.w("TroopSignItemBuilder", 2, "onClick exp:", localException);
+      break;
+      if (paramView == localException.jdField_a_of_type_AndroidViewView)
+      {
+        localObject3 = ((MessageForTroopSign)localObject3).msgAction;
+        bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_checkin", "", "entry", "clk_obj", 0, 0, "", "", "", "");
+        localObject2 = localObject3;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("TroopSignItemBuilder", 2, "onContentClick actionURL:" + (String)localObject3);
+          localObject2 = localObject3;
+        }
+        label288:
+        continue;
+        label291:
+        super.onClick(paramView);
+        break;
+      }
+      Object localObject2 = "";
     }
   }
 }

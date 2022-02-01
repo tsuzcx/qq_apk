@@ -1,19 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selecttopic.BaseSelectView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
+import android.content.SharedPreferences;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo.Biu0x210Msg.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "BEAN", "HOLDER", "Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/BaseSelectAdapter$BaseSelectViewHolder;", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-public final class rpm
-  implements View.OnClickListener
+public class rpm
 {
-  public rpm(BaseSelectView paramBaseSelectView) {}
+  public int a;
+  public long a;
+  public long b = -1L;
   
-  public final void onClick(View paramView)
+  public rpm()
   {
-    this.a.a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public static rpm a()
+  {
+    rpm localrpm = new rpm();
+    SharedPreferences localSharedPreferences = bmhv.a(pkh.a(), true, false);
+    localrpm.jdField_a_of_type_Long = localSharedPreferences.getLong("kandian_biu_0x210_seq", -1L);
+    localrpm.b = localSharedPreferences.getLong("kandian_biu_0x210_uin", -1L);
+    localrpm.jdField_a_of_type_Int = localSharedPreferences.getInt("kandian_biu_0x210_status", -1);
+    return localrpm;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    ThreadManager.post(new KandianOx210MsgInfo.Biu0x210Msg.1(this, paramQQAppInterface), 8, null, false);
   }
 }
 

@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import androidx.annotation.NonNull;
-import bbaa;
+import bcgq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.HashMap;
 import java.util.List;
@@ -36,7 +36,7 @@ public abstract interface ISearchEntryFragment
   
   public abstract void refresh();
   
-  public abstract void refreshDataModels(List<bbaa> paramList, boolean paramBoolean);
+  public abstract void refreshDataModels(List<bcgq> paramList, boolean paramBoolean);
   
   public abstract void setApp(@NonNull QQAppInterface paramQQAppInterface);
   

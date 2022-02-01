@@ -1,19 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
-
-class ackf
-  implements DialogInterface.OnCancelListener
+public abstract interface ackf
 {
-  ackf(ackb paramackb, acka paramacka, acjs paramacjs, JSONObject paramJSONObject, acjr paramacjr) {}
+  public abstract void a();
   
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    this.jdField_a_of_type_Ackb.d();
-    QLog.i("DoraemonOpenAPI.apiMgr", 1, "cancel " + this.jdField_a_of_type_Acka.a);
-    ackb.c(this.jdField_a_of_type_Ackb, 4, this.jdField_a_of_type_Acjs, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Acjr);
-  }
+  public abstract void b();
 }
 
 

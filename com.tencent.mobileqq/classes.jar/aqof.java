@@ -1,16 +1,4 @@
-public class aqof
-  extends aqoh
-{
-  public aqof(aqoj paramaqoj)
-  {
-    super(paramaqoj);
-  }
-  
-  public int a()
-  {
-    return -2147483648;
-  }
-}
+public class aqof {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

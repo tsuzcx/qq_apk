@@ -1,14 +1,16 @@
-public abstract interface rye
+import com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.EditVideoFragment;
+
+public class rye
+  extends rzn
 {
-  public abstract void a();
+  public rye(EditVideoFragment paramEditVideoFragment) {}
   
-  public abstract void a(Object paramObject);
-  
-  public abstract void a(Object paramObject, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b();
+  public void q()
+  {
+    if ((EditVideoFragment.a(this.a) != null) && (EditVideoFragment.a(this.a))) {
+      EditVideoFragment.a(this.a).b();
+    }
+  }
 }
 
 

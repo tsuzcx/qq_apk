@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.tipmessage;
 
-import pgz;
-import pha;
+import pqk;
+import pql;
 
 public class RIJTipMessageManager$1$2
   implements Runnable
 {
-  public RIJTipMessageManager$1$2(pha parampha) {}
+  public RIJTipMessageManager$1$2(pql parampql) {}
   
   public void run()
   {
-    this.a.a.a();
+    this.a.a.b();
   }
 }
 

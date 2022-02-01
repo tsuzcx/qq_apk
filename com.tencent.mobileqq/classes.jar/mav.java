@@ -1,20 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.av.ui.AVActivity;
-
-public class mav
-  implements DialogInterface.OnDismissListener
+class mav
 {
-  public mav(AVActivity paramAVActivity) {}
+  lqo jdField_a_of_type_Lqo;
+  mau[] jdField_a_of_type_ArrayOfMau = new mau[2];
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  mav(mat parammat)
   {
-    this.a.i();
+    int i = 0;
+    while (i < this.jdField_a_of_type_ArrayOfMau.length)
+    {
+      this.jdField_a_of_type_ArrayOfMau[i] = new mau(parammat);
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mav
  * JD-Core Version:    0.7.0.1
  */

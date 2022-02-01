@@ -1,61 +1,19 @@
-import android.view.LayoutInflater;
+import android.app.Activity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.GroupListOpenFrame;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
+import com.tencent.mobileqq.vas.qvip.view.ImgHeaderView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bhsi
-  extends bhvm
+  implements View.OnClickListener
 {
-  public bhsi(GroupListOpenFrame paramGroupListOpenFrame) {}
+  public bhsi(ImgHeaderView paramImgHeaderView, Activity paramActivity, QQVipMsgInfo paramQQVipMsgInfo, int paramInt) {}
   
-  public int getCount()
+  public void onClick(View paramView)
   {
-    return this.a.jdField_a_of_type_Bhvo.b();
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    Object localObject;
-    int i;
-    if (paramView == null)
-    {
-      paramView = new bhsk(this);
-      localView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559686, this.a.jdField_a_of_type_ComTencentWidgetXListView, false);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363721));
-      paramView.b = ((TextView)localView.findViewById(2131367736));
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131367735));
-      localView.setTag(paramView);
-      localObject = this.a.jdField_a_of_type_Bhvo.a(paramInt);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      paramView.b.setText(String.valueOf(this.a.jdField_a_of_type_Bhvo.a(paramInt)));
-      i = (int)(10.0F * this.a.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a);
-      if (paramInt != 0) {
-        break label222;
-      }
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130839491);
-    }
-    for (;;)
-    {
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(i, 0, i, 0);
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new bhsj(this, paramInt, (String)localObject));
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (bhsk)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-      break;
-      label222:
-      if (paramInt == getCount() - 1) {
-        paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130839482);
-      } else {
-        paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130839485);
-      }
-    }
+    ImgHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqVasQvipViewImgHeaderView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo.paMsgid, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo.gameAppId, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

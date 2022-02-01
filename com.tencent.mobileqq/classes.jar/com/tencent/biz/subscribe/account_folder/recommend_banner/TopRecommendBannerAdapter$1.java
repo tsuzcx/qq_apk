@@ -1,11 +1,11 @@
 package com.tencent.biz.subscribe.account_folder.recommend_banner;
 
-import zck;
+import zrp;
 
 public class TopRecommendBannerAdapter$1
   implements Runnable
 {
-  public TopRecommendBannerAdapter$1(zck paramzck) {}
+  public TopRecommendBannerAdapter$1(zrp paramzrp) {}
   
   public void run()
   {

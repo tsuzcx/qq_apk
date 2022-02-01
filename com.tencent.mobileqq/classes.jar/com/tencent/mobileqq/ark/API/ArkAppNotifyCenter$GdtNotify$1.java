@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ark.API;
 
-import aezn;
-import akgl;
+import afqz;
+import alce;
 import android.graphics.Rect;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import aopv;
+import apsw;
 import com.tencent.ark.ark;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.activity.ChatFragment;
@@ -22,7 +22,7 @@ import org.json.JSONObject;
 public class ArkAppNotifyCenter$GdtNotify$1
   implements Runnable
 {
-  public ArkAppNotifyCenter$GdtNotify$1(aopv paramaopv, JSONObject paramJSONObject, String paramString1, String paramString2) {}
+  public ArkAppNotifyCenter$GdtNotify$1(apsw paramapsw, JSONObject paramJSONObject, String paramString1, String paramString2) {}
   
   public void run()
   {
@@ -58,15 +58,15 @@ public class ArkAppNotifyCenter$GdtNotify$1
         localJSONObject1 = new JSONObject();
         localJSONObject2.put("traceid", localObject3);
         localJSONObject2.put("rect", localJSONObject1);
-        localObject3 = akgl.a((ChatMessage)localObject4, (ChatXListView)localObject1);
+        localObject3 = alce.a((ChatMessage)localObject4, (ChatXListView)localObject1);
         if (localObject3 == null) {
           break label435;
         }
-        localObject3 = (ArkAppView)((View)localObject3).findViewById(2131362940);
+        localObject3 = (ArkAppView)((View)localObject3).findViewById(2131362957);
         if (localObject3 == null) {
           break label396;
         }
-        localObject4 = akgl.a((View)localObject3);
+        localObject4 = alce.a((View)localObject3);
         if (localObject4 != null)
         {
           localJSONObject1.put("left", UIUtils.px2dip(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).left));

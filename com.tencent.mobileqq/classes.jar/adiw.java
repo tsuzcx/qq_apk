@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 
 public class adiw
-  extends aycd
+  implements DialogInterface.OnClickListener
 {
-  public adiw(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public adiw(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  protected void b(boolean paramBoolean, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.b(paramBoolean, paramInt);
-    if ((this.a.g) && (paramBoolean)) {
-      this.a.a(0L, null, null, false);
-    }
-    this.a.g = false;
+    this.a.b();
   }
 }
 

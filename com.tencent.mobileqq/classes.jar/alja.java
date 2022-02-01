@@ -1,42 +1,53 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.content.res.Resources;
-import android.widget.CheckBox;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.adapter.ForwardRecentItemView;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.config.statusIcon.AbsRecentStatus;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
 
 public class alja
-  implements ValueAnimator.AnimatorUpdateListener
+  extends AbsRecentStatus
 {
-  public alja(ForwardRecentItemView paramForwardRecentItemView, RelativeLayout.LayoutParams paramLayoutParams) {}
+  private static int a = 25;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public int[] declareStatus()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.leftMargin = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.b - this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_Int);
-    if (AppSetting.c)
+    return new int[] { 7 };
+  }
+  
+  public boolean focusUINType(RecentBaseData paramRecentBaseData, IMCoreAppRuntime paramIMCoreAppRuntime)
+  {
+    return true;
+  }
+  
+  public boolean handleBusiness(IMCoreAppRuntime paramIMCoreAppRuntime, RecentBaseData paramRecentBaseData)
+  {
+    if (!(paramIMCoreAppRuntime instanceof QQAppInterface)) {}
+    do
     {
-      paramValueAnimator = this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.getResources();
-      if (!this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-        break label124;
+      return false;
+      paramIMCoreAppRuntime = (QQAppInterface)paramIMCoreAppRuntime;
+    } while ((paramRecentBaseData.mStatus == 4) || ((paramRecentBaseData.getRecentUserType() != 1) && (paramRecentBaseData.getRecentUserType() != 0)));
+    String str = paramRecentBaseData.getRecentUserUin();
+    if (paramRecentBaseData.getRecentUserType() == 1) {}
+    for (int i = 1;; i = 2)
+    {
+      i = ((bejv)paramIMCoreAppRuntime.getManager(QQManagerFactory.TOGETHER_CONTROLLER_MANAGER)).a(i, str);
+      if (((paramRecentBaseData.mStatus != 0) && (paramRecentBaseData.mStatus < i)) || (i == 0)) {
+        break;
       }
+      paramRecentBaseData.mStatus = i;
+      return false;
     }
-    label124:
-    for (int i = 2131690748;; i = 2131719368)
-    {
-      paramValueAnimator = paramValueAnimator.getString(i);
-      this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_JavaLangString + paramValueAnimator);
-      return;
-    }
+  }
+  
+  public int priority()
+  {
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alja
  * JD-Core Version:    0.7.0.1
  */

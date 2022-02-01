@@ -1,13 +1,13 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.qphone.base.util.QLog;
-
-public class bgsc
+class bgsc
+  implements bdye
 {
-  public static void a(Runnable paramRunnable)
+  bgsc(bgsb parambgsb) {}
+  
+  public void a()
   {
-    QLog.d("OpenSdkQIPCClient", 1, "installWBSdk process=" + bhwr.r());
-    QIPCClientHelper.getInstance().callServer("weibo_qipc_module", "action_install_weibo_sdk", new Bundle(), new bgsd(paramRunnable));
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
   }
 }
 

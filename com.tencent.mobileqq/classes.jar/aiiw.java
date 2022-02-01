@@ -1,6 +1,17 @@
-public abstract interface aiiw
+import java.util.List;
+
+public class aiiw
 {
-  public abstract void a();
+  public int a;
+  public List<aijc> a;
+  public boolean a;
+  
+  public aiiw(boolean paramBoolean, int paramInt, List<aijc> paramList)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
 }
 
 

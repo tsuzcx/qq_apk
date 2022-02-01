@@ -1,27 +1,34 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.AbsThirdDataSourceAdapter.OnPreparedCallback;
 
-final class sww
-  implements bjro
+class sww
+  implements sxa
 {
-  sww(Context paramContext, AdData paramAdData) {}
+  sww(swv paramswv) {}
   
-  public void a()
+  public void a(sxc paramsxc)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpAdUtils", 2, "onPopupWindowForAdComplain");
-    }
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    swv.a(this.a, 2);
+    swv localswv = this.a;
+    String str;
+    if (paramsxc.jdField_a_of_type_JavaLangString == null)
     {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("key_from_type", 3);
-      localIntent.putExtra("key_ad_info", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData);
-      PublicFragmentActivity.a((Activity)this.jdField_a_of_type_AndroidContentContext, localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
+      str = "";
+      swv.a(localswv, str);
+      if (paramsxc.jdField_a_of_type_Int != 1) {
+        break label78;
+      }
+      swv.b(this.a, 1);
+    }
+    for (;;)
+    {
+      if (swv.a(this.a) != null) {
+        swv.a(this.a).onPrepared();
+      }
+      return;
+      str = paramsxc.jdField_a_of_type_JavaLangString;
+      break;
+      label78:
+      swv.b(this.a, 0);
     }
   }
 }

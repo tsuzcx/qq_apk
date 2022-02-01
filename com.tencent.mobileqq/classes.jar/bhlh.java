@@ -1,25 +1,26 @@
-import android.annotation.TargetApi;
-import android.graphics.Outline;
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewOutlineProvider;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.vas.VasApngUtil;
 
-@TargetApi(21)
 public class bhlh
-  extends ViewOutlineProvider
+  implements bhlg
 {
-  private float a;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
   
-  public bhlh(float paramFloat)
+  public bhlh(String paramString, int paramInt)
   {
-    this.a = paramFloat;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void getOutline(View paramView, Outline paramOutline)
+  public URLDrawable a(Drawable paramDrawable)
   {
-    Rect localRect = new Rect();
-    paramView.getGlobalVisibleRect(localRect);
-    paramOutline.setRoundRect(new Rect(0, 0, localRect.right - localRect.left - 0, localRect.bottom - localRect.top - 0), this.a);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("key_loop", this.jdField_a_of_type_Int);
+    localBundle.putBoolean("key_use_cache", false);
+    return VasApngUtil.getApngDrawable(this.jdField_a_of_type_JavaLangString, "dontCacheMe", paramDrawable, null, this.jdField_a_of_type_JavaLangString, localBundle);
   }
 }
 

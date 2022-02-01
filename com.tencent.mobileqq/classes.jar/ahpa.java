@@ -1,19 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ahpa
-  implements DialogInterface.OnClickListener
+public class ahpa
+  implements ahnr
 {
-  ahpa(ahow paramahow) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(agtf paramagtf, MessageRecord paramMessageRecord, agus paramagus, aftk paramaftk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    paramDialogInterface = (mxn)ahow.a(this.a).getManager(373);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.a(ahow.a(this.a).curFriendUin);
-    }
+    paramagtf.b(paramagus, paramContext.getString(2131719793));
   }
 }
 

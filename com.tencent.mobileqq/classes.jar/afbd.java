@@ -1,25 +1,24 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afbd
-  extends aezz
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public afbd(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, Context paramContext, View.OnClickListener paramOnClickListener)
-  {
-    super(paramQQAppInterface, paramSessionInfo, paramContext, paramOnClickListener);
-  }
+  public afbd(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  protected void a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, ViewGroup paramViewGroup, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, aezf paramaezf) {}
-  
-  public void b(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    super.b(paramView);
+    switch (paramCompoundButton.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      awtz.a().a(this.a.app, paramBoolean);
+    }
   }
 }
 

@@ -1,52 +1,17 @@
-import android.app.Activity;
-import android.view.WindowManager.BadTokenException;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qqfav.widget.LocationDetailActivity;
 
 public class bmcb
+  implements View.OnClickListener
 {
-  private static final String jdField_a_of_type_JavaLangString = bmcb.class.getSimpleName();
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+  public bmcb(LocationDetailActivity paramLocationDetailActivity) {}
   
-  public bmcb(Activity paramActivity)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  private void b(Runnable paramRunnable)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
-      return;
-    }
-    String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131698487);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bfur.a(this.jdField_a_of_type_AndroidAppActivity, 230).setMessage(str).setPositiveButton(this.jdField_a_of_type_AndroidAppActivity.getString(2131693580), new bmcc(this, paramRunnable));
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.hide();
-    }
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    try
-    {
-      b(paramRunnable);
-      if (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())
-      {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(false);
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-      }
-      return;
-    }
-    catch (WindowManager.BadTokenException paramRunnable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "", paramRunnable);
-    }
+    this.a.b(false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

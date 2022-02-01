@@ -1,60 +1,89 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonResp;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
 public class arfx
-  extends amrh
+  extends aqwt<arfw>
 {
-  public arfx(AIOEmotionFragment paramAIOEmotionFragment) {}
+  private static arfw a;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public static arfw a()
   {
-    switch (paramInt)
-    {
+    arfw localarfw2 = (arfw)aqxe.a().a(436);
+    arfw localarfw1 = localarfw2;
+    if (localarfw2 == null) {
+      localarfw1 = arfw.a();
     }
-    EmoticonResp localEmoticonResp;
-    int i;
-    label134:
-    QQAppInterface localQQAppInterface;
-    do
+    return localarfw1;
+  }
+  
+  @NonNull
+  public arfw a(int paramInt)
+  {
+    if (a != null) {
+      return a;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ScannerQQCodeConfProcessor", 2, "migrateOldOrDefaultContent ");
+    }
+    a = arfw.a();
+    return a;
+  }
+  
+  @Nullable
+  public arfw a(aqxa[] paramArrayOfaqxa)
+  {
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0))
     {
-      do
-      {
-        return;
-      } while (paramObject == null);
-      localEmoticonResp = (EmoticonResp)paramObject;
-      if (paramBoolean)
-      {
-        i = localEmoticonResp.delEpId;
-        if ((localEmoticonResp.keySeq == null) || (localEmoticonResp.keySeq.equals(""))) {
-          paramObject = amtj.a(2131699172);
-        }
-      }
-      for (;;)
-      {
-        if (!TextUtils.isEmpty(localEmoticonResp.emoticonId)) {
-          break label134;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("AIOEmotionFragment", 2, "auth type emoticon id is null");
-        return;
-        paramObject = localEmoticonResp.keySeq;
-        continue;
-        i = -404;
-        paramObject = amtj.a(2131699173);
-      }
-      localQQAppInterface = this.a.a();
-    } while (localQQAppInterface == null);
-    ((avsq)localQQAppInterface.getManager(14)).a(String.valueOf(localEmoticonResp.epId), localEmoticonResp.emoticonId, new arfy(this, paramInt, localQQAppInterface, i, paramObject));
+      paramArrayOfaqxa = arfw.a(paramArrayOfaqxa[0].a);
+      a = null;
+      return paramArrayOfaqxa;
+    }
+    return arfw.a();
+  }
+  
+  public void a(arfw paramarfw)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScannerQQCodeConfProcessor", 2, "onUpdate newConf:" + paramarfw);
+    }
+  }
+  
+  public Class<arfw> clazz()
+  {
+    return arfw.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScannerQQCodeConfProcessor", 2, "onReqFailed failCode:" + paramInt);
+    }
+  }
+  
+  public int type()
+  {
+    return 436;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arfx
  * JD-Core Version:    0.7.0.1
  */

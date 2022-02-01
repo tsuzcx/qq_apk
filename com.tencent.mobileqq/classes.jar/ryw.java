@@ -1,39 +1,13 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn.AbsPublishColumnFragment;
 
 public class ryw
-  extends uix
+  implements udn
 {
-  private ryw(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
+  public ryw(AbsPublishColumnFragment paramAbsPublishColumnFragment) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void a(int paramInt)
   {
-    VideoFeedsPlayActivity.a("onGetDianZanState isSuccess: " + paramBoolean);
-    if ((!paramBoolean) || (paramBundle == null)) {}
-    int i;
-    do
-    {
-      String str;
-      do
-      {
-        return;
-        str = paramBundle.getString("VALUE_VIDEO_ARTICLE_ID");
-        i = paramBundle.getInt("VALUE_VIDEO_FAVORITE_STATE");
-      } while (str == null);
-      paramBundle = VideoFeedsRecommendFragment.a(this.a).a(str);
-    } while (paramBundle == null);
-    if (i == 1) {
-      paramBundle.r = true;
-    }
-    for (;;)
-    {
-      VideoFeedsRecommendFragment.a(this.a).b(paramBundle);
-      return;
-      if (i == 0) {
-        paramBundle.r = false;
-      }
-    }
+    this.a.g();
   }
 }
 

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.mini.entry.desktop;
 
-import amtj;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -8,9 +7,11 @@ import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
-import bbyp;
+import anvx;
+import bdfk;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.entry.MiniAppExposureManager;
 import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.CardModuleExposureData;
@@ -33,8 +34,8 @@ class MiniAppDesktopAdapter$SearchViewHolder
   public MiniAppDesktopAdapter$SearchViewHolder(WeakReference<Activity> paramWeakReference, View paramView)
   {
     super(paramView);
-    this.keywordTv = ((TextView)paramView.findViewById(2131371116));
-    this.container = paramView.findViewById(2131371112);
+    this.keywordTv = ((TextView)paramView.findViewById(2131371311));
+    this.container = paramView.findViewById(2131371304);
     this.container.setPadding(0, 0, 0, 0);
     paramView.setOnClickListener(new MiniAppDesktopAdapter.SearchViewHolder.1(this, paramWeakReference));
   }
@@ -44,13 +45,13 @@ class MiniAppDesktopAdapter$SearchViewHolder
     Object localObject2 = MiniAppUtils.getAppInterface();
     if (localObject2 != null)
     {
-      if ((ThemeUtil.isDefaultTheme()) || (ThemeUtil.isGoldenTheme()) || (DisplayUtil.isWhiteModeTheme()) || (bbyp.b(ThemeUtil.getCurrentThemeId())))
+      if ((ThemeUtil.isDefaultTheme()) || (ThemeUtil.isGoldenTheme()) || (DisplayUtil.isWhiteModeTheme()) || (bdfk.b(ThemeUtil.getCurrentThemeId())))
       {
-        this.container.setBackgroundResource(2130841012);
-        localObject1 = BaseApplicationImpl.getContext().getResources().getDrawable(2130850259);
+        this.container.setBackgroundResource(2130841041);
+        localObject1 = BaseApplicationImpl.getContext().getResources().getDrawable(2130850363);
         ((Drawable)localObject1).setBounds(0, 0, ((Drawable)localObject1).getMinimumWidth(), ((Drawable)localObject1).getMinimumHeight());
         this.keywordTv.setCompoundDrawables((Drawable)localObject1, null, null, null);
-        this.keywordTv.setTextColor(BaseApplicationImpl.getContext().getResources().getColor(2131167109));
+        this.keywordTv.setTextColor(BaseApplicationImpl.getContext().getResources().getColor(2131167123));
       }
     }
     else
@@ -73,11 +74,11 @@ class MiniAppDesktopAdapter$SearchViewHolder
     label289:
     label304:
     label319:
-    for (Object localObject1 = this.keywordTv.getText().toString();; localObject1 = amtj.a(2131705919))
+    for (Object localObject1 = this.keywordTv.getText().toString();; localObject1 = anvx.a(2131706270))
     {
       if (localObject2 != null)
       {
-        localObject2 = (MiniAppExposureManager)((AppInterface)localObject2).getManager(322);
+        localObject2 = (MiniAppExposureManager)((AppInterface)localObject2).getManager(QQManagerFactory.MINI_APP_EXPOSURE_MANAGER);
         ((MiniAppExposureManager)localObject2).putReportDataToMap("search", new MiniAppExposureManager.CardModuleExposureData("desktop", "search", "expo_search", (String)localObject1));
         if ((paramDesktopSearchInfo != null) && (paramDesktopSearchInfo.mAppInfo != null) && (paramDesktopSearchInfo.mAppInfo.tianshuAdId > 0))
         {
@@ -86,11 +87,11 @@ class MiniAppDesktopAdapter$SearchViewHolder
         }
       }
       return;
-      this.container.setBackgroundResource(2130850263);
+      this.container.setBackgroundResource(2130850367);
       break;
-      this.keywordTv.setText(amtj.a(2131705911));
+      this.keywordTv.setText(anvx.a(2131706262));
       break label167;
-      this.keywordTv.setText(amtj.a(2131705914));
+      this.keywordTv.setText(anvx.a(2131706265));
       break label167;
     }
   }

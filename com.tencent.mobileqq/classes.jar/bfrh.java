@@ -1,45 +1,15 @@
-import android.app.Activity;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.view.Display;
-import android.view.WindowManager;
-import com.tencent.util.VersionUtils;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
 
 public class bfrh
+  implements bkzu
 {
-  public static void a(Activity paramActivity)
-  {
-    if (paramActivity == null) {
-      return;
-    }
-    int i = ((WindowManager)paramActivity.getSystemService("window")).getDefaultDisplay().getOrientation();
-    switch (paramActivity.getResources().getConfiguration().orientation)
-    {
-    default: 
-      i = 0;
-    }
-    for (;;)
-    {
-      paramActivity.setRequestedOrientation(i);
-      return;
-      if ((i == 0) || (i == 1) || (!VersionUtils.isGingerBread())) {
-        break;
-      }
-      i = 8;
-      continue;
-      if ((i != 0) && (i != 3) && (VersionUtils.isGingerBread())) {
-        i = 9;
-      } else {
-        i = 1;
-      }
-    }
-  }
+  public bfrh(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
   
-  public static void b(Activity paramActivity)
+  public void ad_()
   {
-    if (paramActivity != null) {
-      paramActivity.setRequestedOrientation(-1);
-    }
+    this.a.a.a();
+    this.a.i();
   }
 }
 

@@ -1,27 +1,22 @@
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaLazyFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ucr
-  extends amyh
+public class ucr
+  implements View.OnClickListener
 {
-  ucr(ucp paramucp) {}
+  public ucr(ViolaLazyFragment paramViolaLazyFragment) {}
   
-  public void onFollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0) {
-      this.a.h();
-    }
-  }
-  
-  public void onUnfollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (paramInt == 0) {
-      this.a.h();
-    }
+    this.a.doOnBackPressed();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ucr
  * JD-Core Version:    0.7.0.1
  */

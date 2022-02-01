@@ -1,11 +1,15 @@
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 public class aoxu
+  extends aoxv
 {
-  public DialogInterface.OnClickListener a;
-  public String a;
-  public String b;
-  public String c;
+  public aoxu(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
+  {
+    super(paramQQAppInterface, paramProxyManager);
+    this.a = DataLineMsgRecord.tableName(0);
+  }
 }
 
 

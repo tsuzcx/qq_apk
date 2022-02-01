@@ -1,24 +1,81 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
+import com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout;
+import com.tencent.mobileqq.activity.contacts.pullrefresh.ContactRefreshHeader;
+import java.lang.ref.WeakReference;
 
 public class aiwm
-  implements bjoe
+  extends Handler
 {
-  public aiwm(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment, bjnw parambjnw) {}
+  public WeakReference<TroopView> a;
   
-  public void OnClick(View paramView, int paramInt)
+  public aiwm(TroopView paramTroopView)
   {
-    paramView = new ArrayList();
-    paramView.addAll(ChatHistoryC2CFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CFileFragment));
-    ChatHistoryC2CFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CFileFragment).a(paramView, 3, new aiwn(this));
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CFileFragment.h();
-    ChatHistoryC2CFileFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CFileFragment, false);
-    ChatHistoryC2CFileFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CFileFragment);
-    if (this.jdField_a_of_type_Bjnw.isShowing()) {
-      this.jdField_a_of_type_Bjnw.dismiss();
+    this.a = new WeakReference(paramTroopView);
+  }
+  
+  public void a()
+  {
+    TroopView localTroopView = (TroopView)this.a.get();
+    if (localTroopView == null) {}
+    do
+    {
+      return;
+      if (TroopView.a(localTroopView) != null) {
+        TroopView.a(localTroopView).setRefreshing(false);
+      }
+    } while (TroopView.a(localTroopView) == null);
+    TroopView.a(localTroopView).setRefresh(false);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    TroopView localTroopView = (TroopView)this.a.get();
+    if (localTroopView == null) {
+      return;
     }
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      TroopView.c(localTroopView);
+      TroopView.a(localTroopView, 1, 2131694255);
+      return;
+    case 4: 
+      TroopView.a(localTroopView, true);
+      return;
+    case 5: 
+      TroopView.a(localTroopView, false);
+      return;
+    case 13: 
+      TroopView.a(localTroopView, 1, 2131694255);
+      a();
+      return;
+    case 14: 
+      int i = paramMessage.arg1;
+      if (paramMessage.arg2 == 1) {}
+      for (i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label178;
+        }
+        TroopView.d(localTroopView);
+        if (TroopView.a(localTroopView) == null) {
+          break;
+        }
+        TroopView.a(localTroopView).a(0);
+        TroopView.a(localTroopView).sendEmptyMessageDelayed(15, 800L);
+        return;
+      }
+      label178:
+      a();
+      TroopView.a(localTroopView, 1, 2131718993);
+      return;
+    }
+    a();
   }
 }
 

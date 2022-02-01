@@ -2,8 +2,8 @@ package com.tencent.mobileqq.vashealth;
 
 import android.content.SharedPreferences;
 import android.os.Build.VERSION;
-import auwo;
-import bgmk;
+import awcn;
+import bhwu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.pb.MessageMicro;
@@ -155,13 +155,13 @@ public class PathTraceManager$DataUploadTask
           localJSONObject.put("message", "gzip failed");
           return;
         }
-        localObject2 = new NewIntent(BaseApplicationImpl.sApplication.getApplicationContext(), auwo.class);
+        localObject2 = new NewIntent(BaseApplicationImpl.sApplication.getApplicationContext(), awcn.class);
         ((NewIntent)localObject2).putExtra("extra_cmd", this.b);
         localOrbitReq.num.set(0);
         ((NewIntent)localObject2).putExtra("extra_data", (byte[])localObject1);
         localOrbitReq.tracePath.clear();
         ((NewIntent)localObject2).putExtra("extra_timeout", 15000);
-        ((NewIntent)localObject2).setObserver(new bgmk(this, localJSONObject, localList, localThrowable, localSharedPreferences, localOrbitReq));
+        ((NewIntent)localObject2).setObserver(new bhwu(this, localJSONObject, localList, localThrowable, localSharedPreferences, localOrbitReq));
         BaseApplicationImpl.sApplication.getRuntime().startServlet((NewIntent)localObject2);
         return;
         label965:

@@ -1,16 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import java.util.List;
+import java.util.Map;
 
-public class akqs
-  implements DialogInterface.OnClickListener
+class akqs
+  implements akxc
 {
-  public akqs(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  akqs(akqq paramakqq, AppInterface paramAppInterface) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    EditLocalVideoActivity.a(this.a).dismiss();
+    List localList = (List)akqq.a(this.jdField_a_of_type_Akqq).get(paramPathResult.url);
+    if (paramPathResult.url.endsWith(".zip")) {
+      akqq.a(this.jdField_a_of_type_Akqq, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramPathResult.url, paramPathResult.folderPath, localList);
+    }
+    while (!paramPathResult.url.endsWith(".png")) {
+      return;
+    }
+    akqq.a(this.jdField_a_of_type_Akqq, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramPathResult.url, localList);
   }
 }
 

@@ -1,15 +1,6 @@
-import android.view.ViewGroup;
-
-public class bbhp
-  extends bbhn
+public abstract interface bbhp
 {
-  public static final String a = bbhp.class.getSimpleName();
-  
-  public bbhp(ViewGroup paramViewGroup, int paramInt)
-  {
-    super(paramViewGroup, 2131559828);
-    a(a());
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,16 +1,8 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.PublicAccountManager.1;
-import mqq.observer.BusinessObserver;
+import com.tencent.widget.ListView;
 
-public class ocx
-  implements BusinessObserver
+public abstract interface ocx
 {
-  public ocx(PublicAccountManager.1 param1) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    this.a.a.a();
-  }
+  public abstract void a(ListView paramListView);
 }
 
 

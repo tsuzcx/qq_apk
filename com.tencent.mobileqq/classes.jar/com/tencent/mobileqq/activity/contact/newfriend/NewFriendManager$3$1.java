@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import aiej;
-import aiem;
-import aiep;
+import aizi;
+import aizl;
+import aizo;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class NewFriendManager$3$1
   implements Runnable
 {
-  public NewFriendManager$3$1(aiem paramaiem, boolean paramBoolean) {}
+  public NewFriendManager$3$1(aizl paramaizl, boolean paramBoolean) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Boolean) {
-      synchronized (aiej.a(this.jdField_a_of_type_Aiem.a))
+      synchronized (aizi.a(this.jdField_a_of_type_Aizl.a))
       {
-        Iterator localIterator = aiej.a(this.jdField_a_of_type_Aiem.a).iterator();
+        Iterator localIterator = aizi.a(this.jdField_a_of_type_Aizl.a).iterator();
         if (localIterator.hasNext()) {
-          ((aiep)localIterator.next()).ad_();
+          ((aizo)localIterator.next()).af_();
         }
       }
     }

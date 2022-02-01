@@ -1,44 +1,16 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBannerVideoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBannerVideoList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
 
 public class wec
-  extends vqr<wga>
+  implements wds
 {
-  public static final String a = vpl.a("StorySvc.square_720_banner_vid_list");
-  public String b;
-  public String c;
+  public wec(StoryVideoUploadTask paramStoryVideoUploadTask) {}
   
-  public String a()
+  public void a(wdr paramwdr)
   {
-    return a;
-  }
-  
-  public vqm a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspBannerVideoList localRspBannerVideoList = new qqstory_service.RspBannerVideoList();
-    try
-    {
-      localRspBannerVideoList.mergeFrom(paramArrayOfByte);
-      return new wga(localRspBannerVideoList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqBannerVideoList localReqBannerVideoList = new qqstory_service.ReqBannerVideoList();
-    localReqBannerVideoList.banner_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    localReqBannerVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.c));
-    return localReqBannerVideoList.toByteArray();
+    ((wdy)this.a.a).j = ((wdm)paramwdr).b;
+    ykq.b("Q.qqstory.publish.upload:StoryVideoUploadTask", "make video thumbnail finish:%s", ((wdy)this.a.a).j);
+    this.a.a(1, new ErrorMessage());
   }
 }
 

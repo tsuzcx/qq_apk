@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import alyh;
+import amyx;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.common.app.AppInterface;
@@ -9,12 +9,12 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class CmGameManager$3
   implements Runnable
 {
-  public CmGameManager$3(alyh paramalyh) {}
+  public CmGameManager$3(amyx paramamyx) {}
   
   public void run()
   {
-    alyh.a(this.this$0).getApp().getSharedPreferences("apollo_sp" + alyh.a(this.this$0).getCurrentAccountUin(), 4).edit().putInt("sp_key_exit_game_guide_count", this.this$0.a).apply();
-    alyh.c(this.this$0);
+    amyx.a(this.this$0).getApp().getSharedPreferences("apollo_sp" + amyx.a(this.this$0).getCurrentAccountUin(), 4).edit().putInt("sp_key_exit_game_guide_count", this.this$0.a).apply();
+    amyx.c(this.this$0);
   }
 }
 

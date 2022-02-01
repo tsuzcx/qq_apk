@@ -1,20 +1,28 @@
-import com.tencent.pts.nativemodule.PTSNativeModuleRegistry.IPTSMarkArticleRead;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.liveroom.LiveRoomProxyActivity;
 
-public class qni
-  implements PTSNativeModuleRegistry.IPTSMarkArticleRead
+class qni
+  implements View.OnClickListener
 {
-  public void markArticleRead(long paramLong1, long paramLong2)
+  qni(qnf paramqnf, qfw paramqfw, szd paramszd) {}
+  
+  public void onClick(View paramView)
   {
-    QLog.i("PTSMarkArticleReadModule", 1, "[markArticleRead], articleID = " + paramLong1 + ", channelID = " + paramLong2);
-    try
-    {
-      pkm.a().a(paramLong1, System.currentTimeMillis());
-      return;
+    if ((this.jdField_a_of_type_Qfw.a() != null) && (this.jdField_a_of_type_Qfw.a().mSocialFeedInfo != null) && (this.jdField_a_of_type_Qfw.a().mSocialFeedInfo.a != null)) {
+      LiveRoomProxyActivity.open(this.jdField_a_of_type_Szd.a(), this.jdField_a_of_type_Qfw.a().mSocialFeedInfo.a.c, "kandian biu feed click");
     }
-    catch (Exception localException)
+    for (;;)
     {
-      QLog.e("PTSMarkArticleReadModule", 1, "[markArticleRead], e = " + localException);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      pnw localpnw = this.jdField_a_of_type_Szd.a().a();
+      if (localpnw != null) {
+        localpnw.a(paramView, this.jdField_a_of_type_Qfw.a(), 2);
+      }
     }
   }
 }

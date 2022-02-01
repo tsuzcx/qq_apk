@@ -1,137 +1,58 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import kotlin.Metadata;
-import kotlin.jvm.JvmName;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.download.ReadInJoyDownloader.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import com.tencent.tmdownloader.TMAssistantDownloadManager;
+import mqq.os.MqqHandler;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"toBoolean", "", "Lcom/tencent/mobileqq/pb/PBBoolField;", "toByteArrayOrNull", "", "Lcom/tencent/mobileqq/pb/PBBytesField;", "toEnum", "", "Lcom/tencent/mobileqq/pb/PBEnumField;", "toInt", "Lcom/tencent/mobileqq/pb/PBUInt32Field;", "defaultValue", "toLong", "", "Lcom/tencent/mobileqq/pb/PBUInt64Field;", "toPBListValue", "", "P", "Lcom/tencent/mobileqq/pb/MessageMicro;", "Lcom/tencent/mobileqq/pb/PBRepeatMessageField;", "toPBParseValue", "R", "pbParser", "Lcom/tencent/biz/pubaccount/readinjoy/ktextension/IPbParser;", "(Lcom/tencent/mobileqq/pb/MessageMicro;Ljava/lang/Object;Lcom/tencent/biz/pubaccount/readinjoy/ktextension/IPbParser;)Ljava/lang/Object;", "toPBValue", "(Lcom/tencent/mobileqq/pb/MessageMicro;Lcom/tencent/mobileqq/pb/MessageMicro;)Lcom/tencent/mobileqq/pb/MessageMicro;", "toString", "", "Lcom/tencent/mobileqq/pb/PBStringField;", "toStringOrNull", "toStringUtf8", "toStringUtf8OrNull", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
-@JvmName(name="PBFieldUtils")
-public final class psy
+public class psy
 {
-  public static final int a(@NotNull PBEnumField paramPBEnumField)
+  private static volatile psy jdField_a_of_type_Psy;
+  private TMAssistantDownloadClient jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient = TMAssistantDownloadManager.getInstance(BaseApplication.getContext()).getDownloadSDKClient("ReadInJoyDownloader");
+  private final psx jdField_a_of_type_Psx = new psx();
+  
+  private psy()
   {
-    Intrinsics.checkParameterIsNotNull(paramPBEnumField, "$this$toEnum");
-    if (paramPBEnumField.has()) {
-      return paramPBEnumField.get();
-    }
-    return 0;
+    this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.registerDownloadTaskListener(this.jdField_a_of_type_Psx);
   }
   
-  public static final int a(@NotNull PBUInt32Field paramPBUInt32Field)
+  public static psy a()
   {
-    Intrinsics.checkParameterIsNotNull(paramPBUInt32Field, "$this$toInt");
-    if (paramPBUInt32Field.has()) {
-      return paramPBUInt32Field.get();
+    if (jdField_a_of_type_Psy != null) {
+      return jdField_a_of_type_Psy;
     }
-    return 0;
-  }
-  
-  public static final int a(@NotNull PBUInt32Field paramPBUInt32Field, int paramInt)
-  {
-    Intrinsics.checkParameterIsNotNull(paramPBUInt32Field, "$this$toInt");
-    if (paramPBUInt32Field.has()) {
-      paramInt = paramPBUInt32Field.get();
-    }
-    return paramInt;
-  }
-  
-  public static final long a(@NotNull PBUInt64Field paramPBUInt64Field)
-  {
-    Intrinsics.checkParameterIsNotNull(paramPBUInt64Field, "$this$toLong");
-    if (paramPBUInt64Field.has()) {
-      return paramPBUInt64Field.get();
-    }
-    return 0L;
-  }
-  
-  public static final long a(@NotNull PBUInt64Field paramPBUInt64Field, long paramLong)
-  {
-    Intrinsics.checkParameterIsNotNull(paramPBUInt64Field, "$this$toLong");
-    if (paramPBUInt64Field.has()) {
-      paramLong = paramPBUInt64Field.get();
-    }
-    return paramLong;
-  }
-  
-  @Nullable
-  public static final <P extends MessageMicro<P>> P a(@NotNull MessageMicro<P> paramMessageMicro, @Nullable P paramP)
-  {
-    Intrinsics.checkParameterIsNotNull(paramMessageMicro, "$this$toPBValue");
-    if (paramMessageMicro.has()) {
-      paramP = paramMessageMicro.get();
-    }
-    return paramP;
-  }
-  
-  @Nullable
-  public static final <P extends MessageMicro<P>, R> R a(@NotNull MessageMicro<P> paramMessageMicro, @Nullable R paramR, @NotNull psw<P, R> parampsw)
-  {
-    Intrinsics.checkParameterIsNotNull(paramMessageMicro, "$this$toPBParseValue");
-    Intrinsics.checkParameterIsNotNull(parampsw, "pbParser");
-    if (paramMessageMicro.has())
+    try
     {
-      paramMessageMicro = paramMessageMicro.get();
-      Intrinsics.checkExpressionValueIsNotNull(paramMessageMicro, "get()");
-      paramR = parampsw.a(paramMessageMicro);
+      if (jdField_a_of_type_Psy == null) {
+        jdField_a_of_type_Psy = new psy();
+      }
+      return jdField_a_of_type_Psy;
     }
-    return paramR;
+    finally {}
   }
   
-  @Nullable
-  public static final String a(@NotNull PBBytesField paramPBBytesField)
+  private void a(psz parampsz)
   {
-    Intrinsics.checkParameterIsNotNull(paramPBBytesField, "$this$toStringUtf8OrNull");
-    if (paramPBBytesField.has()) {
-      return paramPBBytesField.get().toStringUtf8();
-    }
-    return null;
+    ThreadManager.getSubThreadHandler().postDelayed(new ReadInJoyDownloader.1(this, parampsz), 15000L);
   }
   
-  @Nullable
-  public static final String a(@NotNull PBBytesField paramPBBytesField, @Nullable String paramString)
+  public void a(DownloadInfo paramDownloadInfo)
   {
-    Intrinsics.checkParameterIsNotNull(paramPBBytesField, "$this$toStringUtf8");
-    if (paramPBBytesField.has()) {
-      paramString = paramPBBytesField.get().toStringUtf8();
-    }
-    return paramString;
+    QLog.d("ReadInJoyDownloader", 2, "[startDownload] ");
+    bjop.a().a(paramDownloadInfo);
+    a(new psz(paramDownloadInfo, null));
   }
   
-  @Nullable
-  public static final String a(@NotNull PBStringField paramPBStringField)
+  public void a(psw parampsw)
   {
-    Intrinsics.checkParameterIsNotNull(paramPBStringField, "$this$toStringOrNull");
-    if (paramPBStringField.has()) {
-      return paramPBStringField.get().toString();
-    }
-    return null;
+    this.jdField_a_of_type_Psx.a(parampsw);
   }
   
-  public static final boolean a(@NotNull PBBoolField paramPBBoolField)
+  public void b(psw parampsw)
   {
-    Intrinsics.checkParameterIsNotNull(paramPBBoolField, "$this$toBoolean");
-    if (paramPBBoolField.has()) {
-      return paramPBBoolField.get();
-    }
-    return false;
-  }
-  
-  @Nullable
-  public static final byte[] a(@NotNull PBBytesField paramPBBytesField)
-  {
-    Intrinsics.checkParameterIsNotNull(paramPBBytesField, "$this$toByteArrayOrNull");
-    if (paramPBBytesField.has()) {
-      return paramPBBytesField.get().toByteArray();
-    }
-    return null;
+    this.jdField_a_of_type_Psx.b(parampsw);
   }
 }
 

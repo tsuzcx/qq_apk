@@ -1,16 +1,17 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SigCommentListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class aexq
-  implements aeya
+public class aexq
+  implements View.OnClickListener
 {
-  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
+  public aexq(SigCommentListActivity paramSigCommentListActivity) {}
+  
+  public void onClick(View paramView)
   {
-    paramQQAppInterface = new ProfileActivity.AllInOne(paramSessionInfo.curFriendUin, 115);
-    paramQQAppInterface.h = paramSessionInfo.curFriendNick;
-    return paramQQAppInterface;
+    this.a.a(true, true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -4,11 +4,9 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.RejectedExecutionHandler;
 import java.util.concurrent.ThreadPoolExecutor;
 
-class QCircleFeedPicLoader$3
+final class QCircleFeedPicLoader$3
   implements RejectedExecutionHandler
 {
-  QCircleFeedPicLoader$3(QCircleFeedPicLoader paramQCircleFeedPicLoader) {}
-  
   public void rejectedExecution(Runnable paramRunnable, ThreadPoolExecutor paramThreadPoolExecutor)
   {
     QLog.d(QCircleFeedPicLoader.TAG, 4, "seq = " + ((QCircleFeedPicLoader.PicDownLoadTask)paramRunnable).getOption().getSeq() + " reject task");

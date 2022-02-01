@@ -1,44 +1,42 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.transfile.StoryUploadProcessor;
+import java.util.concurrent.atomic.AtomicInteger;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class wdq
+class wdq
+  implements azla
 {
-  public int a;
-  public String a;
-  public List<CommentEntry> a;
-  public int b;
-  public String b;
+  wdq(wdp paramwdp) {}
   
-  public wdq()
+  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    return null;
   }
   
-  public boolean equals(Object paramObject)
+  public void onSend(azlb paramazlb)
   {
-    if (this == paramObject) {}
-    do
+    if (paramazlb.jdField_b_of_type_Int == 0)
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (wdq)paramObject;
-      if (this.jdField_a_of_type_JavaLangString != null) {
-        return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
-      }
-    } while (paramObject.jdField_a_of_type_JavaLangString == null);
-    return false;
+      this.a.jdField_a_of_type_Wdd.c = paramazlb.jdField_b_of_type_JavaLangString;
+      this.a.jdField_a_of_type_Wdd.a = paramazlb.c;
+      this.a.b();
+      wdp.a(this.a, new ErrorMessage());
+      return;
+    }
+    if ((paramazlb.jdField_b_of_type_Int == StoryUploadProcessor.makeStoryErrorCoder(940010)) && (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement() < 2))
+    {
+      wdp.a(this.a);
+      ykq.d("Q.qqstory.publish.upload:StoryVideoFileObject  ", "retry load file");
+      return;
+    }
+    this.a.b();
+    paramazlb = new ErrorMessage(paramazlb.jdField_b_of_type_Int, paramazlb.a);
+    paramazlb.extraMsg = "upload";
+    wdp.a(this.a, paramazlb);
   }
   
-  public int hashCode()
-  {
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      return this.jdField_a_of_type_JavaLangString.hashCode();
-    }
-    return 0;
-  }
+  public void updateMsg(azlb paramazlb) {}
 }
 
 

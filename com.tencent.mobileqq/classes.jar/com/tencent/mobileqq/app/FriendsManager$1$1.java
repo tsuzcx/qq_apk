@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app;
 
-import amsw;
-import amsx;
+import anvk;
+import anvl;
 
 public class FriendsManager$1$1
   implements Runnable
 {
-  public FriendsManager$1$1(amsx paramamsx, String paramString1, String paramString2) {}
+  public FriendsManager$1$1(anvl paramanvl, String paramString1, String paramString2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Amsx.a.a(this.jdField_a_of_type_JavaLangString, this.b);
+    this.jdField_a_of_type_Anvl.a.a(this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

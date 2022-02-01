@@ -4,20 +4,20 @@ import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.util.FaceOffUtil;
-import com.tencent.ttpic.util.FaceOffUtil.FEATURE_TYPE;
+import com.tencent.ttpic.util.FaceOffUtil.FeatureType;
 import java.util.Map;
 
 public class LoadGrayImageTask
   extends AsyncTask<Void, Integer, Boolean>
 {
-  private final FaceOffUtil.FEATURE_TYPE featureType;
-  private final Map<FaceOffUtil.FEATURE_TYPE, Bitmap> mGrayCache;
+  private final FaceOffUtil.FeatureType featureType;
+  private final Map<FaceOffUtil.FeatureType, Bitmap> mGrayCache;
   private final int sampleSize;
   
-  public LoadGrayImageTask(Map<FaceOffUtil.FEATURE_TYPE, Bitmap> paramMap, FaceOffUtil.FEATURE_TYPE paramFEATURE_TYPE, int paramInt)
+  public LoadGrayImageTask(Map<FaceOffUtil.FeatureType, Bitmap> paramMap, FaceOffUtil.FeatureType paramFeatureType, int paramInt)
   {
     this.mGrayCache = paramMap;
-    this.featureType = paramFEATURE_TYPE;
+    this.featureType = paramFeatureType;
     this.sampleSize = paramInt;
   }
   

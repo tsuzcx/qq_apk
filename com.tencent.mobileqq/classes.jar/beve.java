@@ -1,26 +1,27 @@
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+
 public class beve
-  extends betu
+  implements InputFilter
 {
-  private long a;
+  public beve(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public long a()
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    return 0L;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.a = paramLong;
-  }
-  
-  public long b()
-  {
-    return this.a;
+    if (paramCharSequence != null)
+    {
+      paramCharSequence = paramCharSequence.toString();
+      if (bgip.a(paramCharSequence, '\n') + bgip.a(paramSpanned.toString(), '\n') > 100) {
+        return paramCharSequence.replaceAll("\n", "");
+      }
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beve
  * JD-Core Version:    0.7.0.1
  */

@@ -1,340 +1,262 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewParent;
-import android.view.ViewPropertyAnimator;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.togetherui.writetogether.SavingAnimView;
-import com.tencent.mobileqq.util.DisplayUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
 public class bdkh
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private SavingAnimView jdField_a_of_type_ComTencentMobileqqTogetheruiWritetogetherSavingAnimView;
-  private boolean jdField_a_of_type_Boolean;
-  private TextView b;
-  private TextView c;
-  private TextView d;
-  private TextView e;
+  private static volatile int jdField_a_of_type_Int;
+  private static long jdField_a_of_type_Long;
+  private static HashMap<String, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static volatile boolean jdField_a_of_type_Boolean;
+  private static volatile int jdField_b_of_type_Int;
+  private static boolean jdField_b_of_type_Boolean;
+  private static volatile int jdField_c_of_type_Int;
+  private static boolean jdField_c_of_type_Boolean = true;
+  private static volatile int d;
+  private static volatile int e;
+  private static volatile int f;
+  private static volatile int g;
+  private static volatile int h;
+  private static volatile int i;
+  private static volatile int j;
+  private static volatile int k;
+  private static volatile int l;
   
-  public bdkh(Context paramContext, View paramView, TextView paramTextView)
+  private static long a(int paramInt1, String paramString, int paramInt2, long paramLong)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.e = paramTextView;
-    a(paramView);
-    k();
+    paramString = a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramInt1, paramString, paramInt2);
+    if (jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)) {
+      paramLong = ((Long)jdField_a_of_type_JavaUtilHashMap.get(paramString)).longValue();
+    }
+    return paramLong;
   }
   
-  private void a(View paramView)
+  private static String a(String paramString1, int paramInt1, String paramString2, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131381230));
-    this.b = ((TextView)paramView.findViewById(2131381232));
-    this.c = ((TextView)paramView.findViewById(2131381234));
-    this.d = ((TextView)paramView.findViewById(2131381231));
-    this.jdField_a_of_type_ComTencentMobileqqTogetheruiWritetogetherSavingAnimView = ((SavingAnimView)paramView.findViewById(2131381235));
-    paramView = paramView.getParent();
-    if ((paramView instanceof RelativeLayout))
-    {
-      paramView = (RelativeLayout)paramView;
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
-      localLayoutParams.leftMargin = 0;
-      localLayoutParams.rightMargin = 0;
-      paramView.setLayoutParams(localLayoutParams);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTogetheruiWritetogetherSavingAnimView.setOnAnimationStateListener(new bdki(this));
+    return String.format("%d_%s_%d_%s", new Object[] { Integer.valueOf(paramInt1), paramString2, Integer.valueOf(paramInt2), paramString1 });
   }
   
-  private void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, boolean paramBoolean6)
+  public static void a()
   {
-    int j = 0;
-    Object localObject = this.d;
-    if (paramBoolean1)
-    {
-      i = 0;
-      ((TextView)localObject).setVisibility(i);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqTogetheruiWritetogetherSavingAnimView;
-      if (!paramBoolean2) {
-        break label135;
-      }
-      i = 0;
-      label36:
-      ((SavingAnimView)localObject).setVisibility(i);
-      localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-      if (!paramBoolean3) {
-        break label142;
-      }
-      i = 0;
-      label56:
-      ((TextView)localObject).setVisibility(i);
-      localObject = this.b;
-      if (!paramBoolean4) {
-        break label149;
-      }
-      i = 0;
-      label77:
-      ((TextView)localObject).setVisibility(i);
-      localObject = this.c;
-      if (!paramBoolean5) {
-        break label156;
-      }
-      i = 0;
-      label98:
-      ((TextView)localObject).setVisibility(i);
-      localObject = this.e;
-      if (!paramBoolean6) {
-        break label163;
-      }
+    if (!jdField_a_of_type_Boolean) {
+      c();
     }
-    label135:
-    label142:
-    label149:
-    label156:
-    label163:
-    for (int i = j;; i = 8)
-    {
-      ((TextView)localObject).setVisibility(i);
+    if (!jdField_b_of_type_Boolean) {}
+    while (System.currentTimeMillis() - jdField_a_of_type_Long <= 86400000L) {
       return;
-      i = 8;
+    }
+    if (jdField_c_of_type_Boolean) {
+      QLog.d("FightMsgReporter", 1, "report.value:" + String.format("%b_%d_%d_%d_%d_%d_%d_%d_%d", new Object[] { Boolean.valueOf(jdField_b_of_type_Boolean), Integer.valueOf(jdField_b_of_type_Int), Integer.valueOf(jdField_a_of_type_Int), Integer.valueOf(e), Integer.valueOf(d), Integer.valueOf(h), Integer.valueOf(g), Integer.valueOf(k), Integer.valueOf(j) }));
+    }
+    bdla.a(null, "dc00898", "", "", "0X800A95A", "0X800A95A", 0, jdField_b_of_type_Int, "", "", "", "");
+    bdla.a(null, "dc00898", "", "", "0X800A95A", "0X800A95A", 0, jdField_a_of_type_Int, "", "", "", "");
+    bdla.a(null, "dc00898", "", "", "0X800A95A", "0X800A95B", 0, h, "" + k, "", "", "");
+    bdla.a(null, "dc00898", "", "", "0X800A95A", "0X800A95B", 0, g, "" + j, "", "", "");
+    jdField_b_of_type_Int = 0;
+    jdField_a_of_type_Int = 0;
+    jdField_c_of_type_Int = 0;
+    e = 0;
+    d = 0;
+    f = 0;
+    h = 0;
+    g = 0;
+    i = 0;
+    k = 0;
+    j = 0;
+    l = 0;
+    b();
+  }
+  
+  private static void a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return;
+    case 0: 
+      jdField_b_of_type_Int += paramInt2;
+      return;
+    case 1: 
+      jdField_a_of_type_Int += paramInt2;
+      return;
+    }
+    jdField_c_of_type_Int += paramInt2;
+  }
+  
+  public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    if ((!jdField_b_of_type_Boolean) || (!jdField_a_of_type_Boolean)) {
+      return;
+    }
+    int m;
+    switch (paramInt3)
+    {
+    default: 
+      m = 2;
+      label39:
+      if (paramInt1 == 0)
+      {
+        if (paramInt2 == 0) {
+          b(m, paramInt4);
+        }
+      }
+      else {
+        label53:
+        if (paramInt1 == 1)
+        {
+          if (paramInt2 != 0) {
+            break label135;
+          }
+          d(m, paramInt4);
+        }
+      }
       break;
-      i = 8;
-      break label36;
-      i = 8;
-      break label56;
-      i = 8;
-      break label77;
-      i = 8;
-      break label98;
+    }
+    while (jdField_c_of_type_Boolean)
+    {
+      QLog.d("FightMsgReporter", 1, "add count = " + paramInt4 + ",uinType = " + paramInt3);
+      return;
+      m = 0;
+      break label39;
+      m = 1;
+      break label39;
+      if (paramInt2 != 1) {
+        break label53;
+      }
+      a(m, paramInt4);
+      break label53;
+      label135:
+      if (paramInt2 == 1) {
+        c(m, paramInt4);
+      }
     }
   }
   
-  private void b(boolean paramBoolean)
+  private static void a(int paramInt1, String paramString, int paramInt2, long paramLong)
   {
-    a(false, false, true, false, false, paramBoolean);
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    paramString = a(str, paramInt1, paramString, paramInt2);
+    jdField_a_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(paramLong));
+    bhhr.a(localBaseApplication, "f_msg_report_preference", str, false, paramString, Long.valueOf(paramLong));
   }
   
-  private void c(boolean paramBoolean)
+  public static void a(String paramString, long paramLong1, long paramLong2)
   {
-    if (!paramBoolean) {}
-    for (boolean bool = true;; bool = false)
+    if (!jdField_b_of_type_Boolean) {}
+    long l1;
+    int m;
+    do
     {
-      a(bool, paramBoolean, false, true, paramBoolean, true);
+      return;
+      if (!jdField_a_of_type_Boolean) {
+        c();
+      }
+      l1 = a(0, paramString, 1, paramLong2);
+      m = (int)(paramLong1 - Math.max(l1, paramLong2));
+      a(0, 1, 1, m);
+      a(0, paramString, 1, paramLong1);
+    } while (!jdField_c_of_type_Boolean);
+    QLog.d("FightMsgReporter", 1, "computeTroopMsgNew.value:" + String.format("%s_%d_%d_%d_%d", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(l1), Integer.valueOf(m) }));
+  }
+  
+  public static void b()
+  {
+    if ((!jdField_b_of_type_Boolean) || (!jdField_a_of_type_Boolean)) {}
+    do
+    {
+      return;
+      BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      bhhr.a(localBaseApplication, "f_msg_report_preference", str, false, "key_msg_funnel_report_new_friend", Integer.valueOf(jdField_b_of_type_Int));
+      bhhr.a(localBaseApplication, "f_msg_report_preference", str, false, "key_msg_funnel_report_new_troop", Integer.valueOf(jdField_a_of_type_Int));
+      bhhr.a(localBaseApplication, "f_msg_report_preference", str, false, "key_msg_funnel_report_new_other", Integer.valueOf(jdField_c_of_type_Int));
+      bhhr.a(localBaseApplication, "f_msg_report_preference", str, false, "key_msg_funnel_report_new_friend_aio", Integer.valueOf(e));
+      bhhr.a(localBaseApplication, "f_msg_report_preference", str, false, "key_msg_funnel_report_new_troop_aio", Integer.valueOf(d));
+      bhhr.a(localBaseApplication, "f_msg_report_preference", str, false, "key_msg_funnel_report_new_other_aio", Integer.valueOf(f));
+      bhhr.a(localBaseApplication, "f_msg_report_preference", str, false, "key_msg_funnel_report_readed_friend", Integer.valueOf(h));
+      bhhr.a(localBaseApplication, "f_msg_report_preference", str, false, "key_msg_funnel_report_readed_troop", Integer.valueOf(g));
+      bhhr.a(localBaseApplication, "f_msg_report_preference", str, false, "key_msg_funnel_report_readed_other", Integer.valueOf(i));
+      bhhr.a(localBaseApplication, "f_msg_report_preference", str, false, "key_msg_funnel_report_readed_friend_aio", Integer.valueOf(k));
+      bhhr.a(localBaseApplication, "f_msg_report_preference", str, false, "key_msg_funnel_report_readed_troop_aio", Integer.valueOf(j));
+      bhhr.a(localBaseApplication, "f_msg_report_preference", str, false, "key_msg_funnel_report_readed_other_aio", Integer.valueOf(l));
+    } while (!jdField_c_of_type_Boolean);
+    QLog.d("FightMsgReporter", 1, "saveToSp.value:" + String.format("%b_%d_%d_%d_%d_%d_%d_%d_%d", new Object[] { Boolean.valueOf(jdField_b_of_type_Boolean), Integer.valueOf(jdField_b_of_type_Int), Integer.valueOf(jdField_a_of_type_Int), Integer.valueOf(e), Integer.valueOf(d), Integer.valueOf(h), Integer.valueOf(g), Integer.valueOf(k), Integer.valueOf(j) }));
+  }
+  
+  private static void b(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return;
+    case 0: 
+      e += paramInt2;
+      return;
+    case 1: 
+      d += paramInt2;
       return;
     }
+    f += paramInt2;
   }
   
-  private void k()
+  private static void c()
   {
-    this.jdField_a_of_type_Int = DisplayUtil.getScreenSize(this.jdField_a_of_type_AndroidContentContext).jdField_a_of_type_Int;
-  }
-  
-  private void l()
-  {
-    float f = this.b.getTextSize();
-    this.b.setTranslationY(f);
-    this.c.animate().alpha(0.0F).translationY(-f).setDuration(500L).start();
-    this.b.animate().alpha(1.0F).translationYBy(-f).setDuration(500L).setStartDelay(100L).setListener(new bdkj(this)).start();
-  }
-  
-  private void m()
-  {
-    float f = this.b.getTextSize();
-    this.b.animate().setListener(null);
-    this.b.setAlpha(1.0F);
-    this.b.animate().alpha(0.0F).translationY(-f).setDuration(500L).start();
-    this.c.setTranslationY(f);
-    this.c.animate().alpha(1.0F).translationYBy(-f).setDuration(500L).setStartDelay(100L).start();
-  }
-  
-  private void n()
-  {
-    a(false, false, true, false, false, false);
-  }
-  
-  private void o()
-  {
-    a(false, true, false, true, true, true);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299205);
-  }
-  
-  public TextPaint a()
-  {
-    return this.b.getPaint();
-  }
-  
-  public TextView a()
-  {
-    return this.e;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UserStateBar", 1, "[onChangesetCommitting]");
+    bdkr localbdkr = (bdkr)aqxe.a().a(577);
+    if (localbdkr != null) {
+      jdField_b_of_type_Boolean = localbdkr.jdField_a_of_type_Boolean;
     }
-    o();
-  }
-  
-  public void a(String paramString)
-  {
-    this.e.setText(paramString);
-    if (this.e.getCompoundDrawables()[3] == null)
-    {
-      paramString = this.jdField_a_of_type_AndroidContentContext.getResources();
-      Drawable localDrawable = paramString.getDrawable(2130850349);
-      int i = paramString.getDimensionPixelSize(2131299213);
-      localDrawable.setBounds(0, 0, i, i);
-      this.e.setCompoundDrawables(null, null, localDrawable, null);
+    jdField_b_of_type_Int = ((Integer)bhhr.a("key_msg_funnel_report_new_friend", Integer.valueOf(0))).intValue();
+    jdField_a_of_type_Int = ((Integer)bhhr.a("key_msg_funnel_report_new_troop", Integer.valueOf(0))).intValue();
+    jdField_c_of_type_Int = ((Integer)bhhr.a("key_msg_funnel_report_new_other", Integer.valueOf(0))).intValue();
+    e = ((Integer)bhhr.a("key_msg_funnel_report_new_friend_aio", Integer.valueOf(0))).intValue();
+    d = ((Integer)bhhr.a("key_msg_funnel_report_new_troop_aio", Integer.valueOf(0))).intValue();
+    f = ((Integer)bhhr.a("key_msg_funnel_report_new_other_aio", Integer.valueOf(0))).intValue();
+    h = ((Integer)bhhr.a("key_msg_funnel_report_readed_friend", Integer.valueOf(0))).intValue();
+    g = ((Integer)bhhr.a("key_msg_funnel_report_readed_troop", Integer.valueOf(0))).intValue();
+    i = ((Integer)bhhr.a("key_msg_funnel_report_readed_other", Integer.valueOf(0))).intValue();
+    k = ((Integer)bhhr.a("key_msg_funnel_report_readed_friend_aio", Integer.valueOf(0))).intValue();
+    j = ((Integer)bhhr.a("key_msg_funnel_report_readed_troop_aio", Integer.valueOf(0))).intValue();
+    l = ((Integer)bhhr.a("key_msg_funnel_report_readed_other_aio", Integer.valueOf(0))).intValue();
+    jdField_a_of_type_Long = ((Long)bhhr.a("key_msg_report_time", Long.valueOf(System.currentTimeMillis()))).longValue();
+    if (jdField_c_of_type_Boolean) {
+      QLog.d("FightMsgReporter", 1, "init.value:" + String.format("%b_%d_%d_%d_%d_%d_%d_%d_%d", new Object[] { Boolean.valueOf(jdField_b_of_type_Boolean), Integer.valueOf(jdField_b_of_type_Int), Integer.valueOf(jdField_a_of_type_Int), Integer.valueOf(e), Integer.valueOf(d), Integer.valueOf(h), Integer.valueOf(g), Integer.valueOf(k), Integer.valueOf(j) }));
     }
+    jdField_a_of_type_Boolean = true;
   }
   
-  public void a(String paramString, int paramInt)
+  private static void c(int paramInt1, int paramInt2)
   {
-    if (paramInt != 1)
+    switch (paramInt1)
     {
-      this.b.setText(paramString);
-      this.b.getParent().requestLayout();
-      this.d.setVisibility(8);
+    default: 
+      return;
+    case 0: 
+      h += paramInt2;
+      return;
+    case 1: 
+      g += paramInt2;
       return;
     }
-    this.d.setText(paramString);
+    i += paramInt2;
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  private static void d(int paramInt1, int paramInt2)
   {
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
+    switch (paramInt1)
     {
-      a(false, false, true, false, false, paramBoolean);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167009));
+    default: 
+      return;
+    case 0: 
+      k += paramInt2;
+      return;
+    case 1: 
+      j += paramInt2;
       return;
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    b(paramBoolean);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719424);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167009));
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-    int i = this.jdField_a_of_type_Int - localResources.getDimensionPixelSize(2131299210) * 2 - localResources.getDimensionPixelSize(2131299212);
-    int j = localResources.getDimensionPixelSize(2131299211);
-    if (i < j) {
-      return j;
-    }
-    return i;
-  }
-  
-  public TextPaint b()
-  {
-    return this.e.getPaint();
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UserStateBar", 1, "[onChangesetCommitted]");
-    }
-    j();
-  }
-  
-  public void b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    b(true);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167009));
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_Int - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299206) * 2;
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("UserStateBar", 2, "[startAnimation]");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTogetheruiWritetogetherSavingAnimView.a();
-    m();
-  }
-  
-  public int d()
-  {
-    return this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299204);
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UserStateBar", 2, "[stopAnimation]");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTogetheruiWritetogetherSavingAnimView.b();
-  }
-  
-  public void e()
-  {
-    b(true);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719440);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167009));
-  }
-  
-  public void f()
-  {
-    b(true);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719441);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167009));
-  }
-  
-  public void g()
-  {
-    n();
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719425);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167009));
-  }
-  
-  public void h()
-  {
-    b(true);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719716);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167009));
-  }
-  
-  public void i()
-  {
-    c(false);
-  }
-  
-  public void j()
-  {
-    c(true);
+    l += paramInt2;
   }
 }
 

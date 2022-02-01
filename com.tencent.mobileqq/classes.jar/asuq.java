@@ -1,23 +1,6 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class asuq
-  implements View.OnClickListener
+public abstract interface asuq
 {
-  asuq(asun paramasun, String paramString) {}
-  
-  public void onClick(View paramView)
-  {
-    Intent localIntent = new Intent();
-    localIntent.setClass(this.jdField_a_of_type_Asun.a, QQBrowserActivity.class);
-    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Asun.a.startActivity(localIntent);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a();
 }
 
 

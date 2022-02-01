@@ -1,22 +1,23 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aiqk
-  implements Handler.Callback
+  implements View.OnClickListener
 {
-  public aiqk(PublicAccountFragment paramPublicAccountFragment) {}
+  public aiqk(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
+    if (BlessSelectMemberActivity.a() != null) {
+      BlessSelectMemberActivity.a().sendEmptyMessage(1);
     }
-    for (;;)
-    {
-      return true;
-      this.a.i();
+    if (this.a.a.isShowing()) {
+      this.a.a.dismiss();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

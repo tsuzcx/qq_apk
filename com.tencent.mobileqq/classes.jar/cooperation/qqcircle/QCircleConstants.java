@@ -32,6 +32,7 @@ public class QCircleConstants
   public static final String DOWNLOAD_URL_ANIMATION_DRAWABLE_RECOMMEND_ROCKEY_THIRD = "https://downv6.qq.com/video_story/qcircle/animation/rocket3.zip";
   public static final String DOWNLOAD_URL_ANIMATION_DRAWABLE_RECOMMEND_SINGLE_CLICK = "https://downv6.qq.com/video_story/qcircle/animation/single_rocket.zip";
   public static final String DOWNLOAD_URL_BASE_PICS = "https://downv6.qq.com/video_story/qcircle/base/qcircle_download_pics.zip";
+  public static final String DOWNLOAD_URL_IMG_AIO_TOFU_ARK_BG = "https://downv6.qq.com/video_story/qcircle/pic/background/img_aio_tofu_ark_bg.9.png";
   public static final String DOWNLOAD_URL_IMG_EMPTY_STATE_DETAIL_PAGE_FEED = "https://qzonestyle.gtimg.cn/qzone/qzact/act/external/qzone-platform/wezone/2020-wezone-img/2020-empty-state/1-img/img_emptystate_detailpage_feed.png";
   public static final String DOWNLOAD_URL_IMG_EMPTY_STATE_DISCONNECT = "https://qzonestyle.gtimg.cn/qzone/qzact/act/external/qzone-platform/wezone/2020-wezone-img/2020-empty-state/1-img/img_emptystate_disconnect.png";
   public static final String DOWNLOAD_URL_IMG_EMPTY_STATE_FEED = "https://qzonestyle.gtimg.cn/qzone/qzact/act/external/qzone-platform/wezone/2020-wezone-img/2020-empty-state/1-img/img_emptystate_feed.png";

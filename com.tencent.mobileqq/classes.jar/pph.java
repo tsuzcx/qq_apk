@@ -1,14 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.widget.ListView;
 
-public class pph
-  implements pqe
+class pph
+  extends urm
 {
-  public pph(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  pph(ppg paramppg, pne parampne) {}
   
-  public void a()
+  public void a(urn paramurn)
   {
-    tgc.a(this.a.getActivity(), null, "https://viola.qq.com/js/notes-center.js?_rij_violaUrl=1&v_nav_immer=1&v_tid=15&v_bid=3811&v_bundleName=notes-center&hideNav=1&statusBarStyle=1", null);
-    odq.a(null, "", "0X800A607", "0X800A607", 0, 0, "", "", "", "", false);
+    if (paramurn != null) {
+      pnj.a(paramurn, this.jdField_a_of_type_Pne.a().a().a().getHeaderViewsCount(), this.jdField_a_of_type_Pne);
+    }
   }
 }
 

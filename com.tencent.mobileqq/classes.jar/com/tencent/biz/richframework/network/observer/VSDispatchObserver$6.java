@@ -5,7 +5,7 @@ import com.tencent.biz.richframework.network.cache.CacheHelper;
 import com.tencent.biz.richframework.network.request.VSBaseRequest;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayInputStream;
-import xvv;
+import ykq;
 
 class VSDispatchObserver$6
   implements Runnable
@@ -17,9 +17,9 @@ class VSDispatchObserver$6
     try
     {
       String str = this.val$request.getRequestKey();
-      xvv.b("VSNetworkHelper| Protocol Cache", this.val$request.getCmdName() + " saveCache CacheKey:" + str);
+      ykq.b("VSNetworkHelper| Protocol Cache", this.val$request.getCmdName() + " saveCache CacheKey:" + str);
       CacheHelper.fileCache().setStream(str, new ByteArrayInputStream(this.val$dataByteArray));
-      xvv.c("VSNetworkHelper| Protocol Cache", this.val$request.getCmdName() + " saveCache success");
+      ykq.c("VSNetworkHelper| Protocol Cache", this.val$request.getCmdName() + " saveCache success");
       return;
     }
     catch (Exception localException)

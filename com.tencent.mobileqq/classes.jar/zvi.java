@@ -1,45 +1,26 @@
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.view.View;
-import com.tencent.biz.ui.RefreshView;
-import com.tencent.widget.ListView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class zvi
-  implements bjsd
+class zvi
+  implements View.OnClickListener
 {
-  public zvi(RefreshView paramRefreshView) {}
+  zvi(zvh paramzvh, CertifiedAccountMeta.StComment paramStComment) {}
   
-  public void onNotCompleteVisable(int paramInt, View paramView, ListView paramListView)
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_Int == 2)
+    ClipboardManager localClipboardManager = (ClipboardManager)zux.c(this.jdField_a_of_type_Zvh.a).getSystemService("clipboard");
+    if (localClipboardManager != null)
     {
-      this.a.jdField_a_of_type_Zvb.ag_();
-      return;
+      localClipboardManager.setPrimaryClip(ClipData.newPlainText("", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment.content.get()));
+      zux.a(this.jdField_a_of_type_Zvh.a).dismiss();
     }
-    this.a.jdField_a_of_type_Zvb.c(0L);
-  }
-  
-  public void onViewCompleteVisable(int paramInt, View paramView, ListView paramListView)
-  {
-    if (this.a.jdField_a_of_type_Int != 2) {
-      this.a.jdField_a_of_type_Zvb.b(0L);
-    }
-  }
-  
-  public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
-  {
-    if (this.a.jdField_a_of_type_Int != 2)
-    {
-      RefreshView.a(this.a, false);
-      this.a.a(RefreshView.a(this.a));
-      this.a.jdField_a_of_type_Zvb.a(0L);
-      this.a.jdField_a_of_type_Int = 2;
-      RefreshView.a(this.a);
-    }
-    return false;
-  }
-  
-  public void onViewNotCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
-  {
-    this.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

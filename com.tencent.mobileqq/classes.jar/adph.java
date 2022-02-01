@@ -1,22 +1,16 @@
-import android.view.View;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
 
-public class adph
+class adph
+  implements axjd
 {
-  public int a;
-  public View a;
-  public aqmf a;
-  public azvi a;
-  public BusinessInfoCheckUpdate.AppInfo a;
-  public String a;
-  public short a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public boolean d;
+  adph(adpg paramadpg) {}
+  
+  public void a()
+  {
+    this.a.jdField_a_of_type_Axjk.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
+    this.a.jdField_a_of_type_Axjk.a();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
+  }
 }
 
 

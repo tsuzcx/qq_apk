@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.teamwork.spread;
 
 import android.text.TextUtils;
-import bcws;
-import bcwt;
-import bcwu;
-import bcwy;
-import bcxa;
-import bcxf;
-import bcxg;
+import bedr;
+import beds;
+import bedt;
+import bedx;
+import bedz;
+import beee;
+import beef;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForFile;
 import com.tencent.mobileqq.data.MessageForText;
@@ -17,14 +17,14 @@ import com.tencent.qphone.base.util.QLog;
 public class AIOMessageSpreadManager$1
   implements Runnable
 {
-  public AIOMessageSpreadManager$1(bcws parambcws, ChatMessage paramChatMessage) {}
+  public AIOMessageSpreadManager$1(bedr parambedr, ChatMessage paramChatMessage) {}
   
   public void run()
   {
     if (QLog.isDebugVersion()) {
       QLog.i("AIOMessageSpreadManager", 1, "SubThread Process Start");
     }
-    if (!bcws.a(this.this$0, this.a)) {
+    if (!bedr.a(this.this$0, this.a)) {
       if (QLog.isColorLevel()) {
         QLog.i("AIOMessageSpreadManager", 1, "config return false!");
       }
@@ -35,27 +35,27 @@ public class AIOMessageSpreadManager$1
       return;
       if ((this.a instanceof MessageForText))
       {
-        bcws.a(this.this$0, new bcxf(bcws.a(this.this$0), this.a, bcws.a(this.this$0)));
+        bedr.a(this.this$0, new beee(bedr.a(this.this$0), this.a, bedr.a(this.this$0)));
         if (QLog.isDebugVersion()) {
           QLog.i("AIOMessageSpreadManager", 1, "message is MessageForText");
         }
       }
       for (;;)
       {
-        if (bcws.a(this.this$0).a()) {
+        if (bedr.a(this.this$0).a()) {
           break label294;
         }
         if (!QLog.isColorLevel()) {
           break;
         }
-        QLog.i("AIOMessageSpreadManager", 1, "file[" + bcws.a(this.this$0).a() + "] is not support!");
+        QLog.i("AIOMessageSpreadManager", 1, "file[" + bedr.a(this.this$0).a() + "] is not support!");
         return;
         if ((this.a instanceof MessageForFile))
         {
           if (QLog.isDebugVersion()) {
             QLog.i("AIOMessageSpreadManager", 1, "message is MessageForFile");
           }
-          bcws.a(this.this$0, new bcwy(bcws.a(this.this$0), this.a, bcws.a(this.this$0)));
+          bedr.a(this.this$0, new bedx(bedr.a(this.this$0), this.a, bedr.a(this.this$0)));
         }
         else
         {
@@ -65,18 +65,18 @@ public class AIOMessageSpreadManager$1
           if (QLog.isDebugVersion()) {
             QLog.i("AIOMessageSpreadManager", 1, "message is MessageForTroopFile");
           }
-          bcws.a(this.this$0, new bcxg(bcws.a(this.this$0), this.a, bcws.a(this.this$0)));
+          bedr.a(this.this$0, new beef(bedr.a(this.this$0), this.a, bedr.a(this.this$0)));
         }
       }
     } while (!QLog.isDebugVersion());
     QLog.i("AIOMessageSpreadManager", 1, "message is unknown");
     return;
     label294:
-    String str = bcws.a(this.this$0).a();
+    String str = bedr.a(this.this$0).a();
     if (QLog.isColorLevel()) {
       QLog.i("AIOMessageSpreadManager", 1, "recv new File name is :" + str);
     }
-    Object localObject2 = bcws.a(this.this$0).a(bcws.a(this.this$0));
+    Object localObject2 = bedr.a(this.this$0).a(bedr.a(this.this$0));
     Object localObject1;
     if (QLog.isDebugVersion())
     {
@@ -108,32 +108,32 @@ public class AIOMessageSpreadManager$1
         if (QLog.isColorLevel()) {
           QLog.i("AIOMessageSpreadManager", 1, "keyWord[" + (String)localObject1 + "] find!");
         }
-        localObject2 = bcws.a(this.this$0).a(bcws.a(this.this$0));
-        str = bcws.a(this.this$0).b(bcws.a(this.this$0));
+        localObject2 = bedr.a(this.this$0).a(bedr.a(this.this$0));
+        str = bedr.a(this.this$0).b(bedr.a(this.this$0));
         if ((TextUtils.isEmpty((CharSequence)localObject2)) && (QLog.isColorLevel())) {
           QLog.i("AIOMessageSpreadManager", 1, "tips is null! return, tips[" + (String)localObject2 + "], link[" + str + "]");
         }
         localObject2 = (String)localObject2 + "。" + str;
-        if (((bcws.a(this.this$0) instanceof bcwy)) || ((bcws.a(this.this$0) instanceof bcxg)))
+        if (((bedr.a(this.this$0) instanceof bedx)) || ((bedr.a(this.this$0) instanceof beef)))
         {
-          bcws.a(this.this$0, this.a, (String)localObject2, str, "keyword", null);
+          bedr.a(this.this$0, this.a, (String)localObject2, str, "keyword", null);
           return;
           i += 1;
           break label455;
         }
-        if (!(bcws.a(this.this$0) instanceof bcxf)) {
+        if (!(bedr.a(this.this$0) instanceof beee)) {
           break;
         }
-        bcws.a(this.this$0, this.a, (String)localObject2, str, "text_keyword", bcws.a(this.this$0).a((String)localObject1));
+        bedr.a(this.this$0, this.a, (String)localObject2, str, "text_keyword", bedr.a(this.this$0).a((String)localObject1));
         return;
       }
       if (QLog.isColorLevel()) {
         QLog.i("AIOMessageSpreadManager", 1, "keyWords not find!");
       }
-      if ((bcws.a(this.this$0) instanceof bcxf)) {
+      if ((bedr.a(this.this$0) instanceof beee)) {
         break;
       }
-      bcws.a(this.this$0).a(new bcwt(this, str));
+      bedr.a(this.this$0).a(new beds(this, str));
       return;
       localObject1 = "";
     }
@@ -141,7 +141,7 @@ public class AIOMessageSpreadManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager.1
  * JD-Core Version:    0.7.0.1
  */

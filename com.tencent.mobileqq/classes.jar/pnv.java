@@ -1,28 +1,6 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.image.URLImageView;
-
-public class pnv
-  extends RecyclerView.ViewHolder
+public abstract interface pnv
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  BaseArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-  URLImageView jdField_b_of_type_ComTencentImageURLImageView;
-  
-  pnv(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, View paramView)
-  {
-    super(paramView);
-  }
-  
-  protected int a()
-  {
-    return getAdapterPosition() - 1;
-  }
+  public abstract void c();
 }
 
 

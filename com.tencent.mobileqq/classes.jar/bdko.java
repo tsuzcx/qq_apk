@@ -1,22 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.together.writetogether.statemachine.CreatingState;
-import com.tencent.mobileqq.togetherui.writetogether.WriteTogetherEditorFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.statistics.LocalCrashCollector;
+import com.tencent.mobileqq.statistics.LocalCrashCollector.3;
+import com.tencent.widget.XEditTextEx;
 
 public class bdko
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public bdko(WriteTogetherEditorFragment paramWriteTogetherEditorFragment) {}
+  public bdko(LocalCrashCollector.3 param3) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (WriteTogetherEditorFragment.a(this.a).a() == CreatingState.TEMPLATE_SHOW_ENTRANCE)
+    try
     {
-      bcef.b(null, "dc00898", "", "", "0X800B357", "0X800B357", 0, 0, "", "", "", "");
-      WriteTogetherEditorFragment.a(this.a).a(CreatingState.TEMPLATE_SHOW_LAYER);
+      LocalCrashCollector.a(this.a.this$0).input.setText("");
+      LocalCrashCollector.a(this.a.this$0).delete(0, LocalCrashCollector.a(this.a.this$0).length());
+      paramDialogInterface.dismiss();
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    catch (Exception paramDialogInterface)
+    {
+      paramDialogInterface.printStackTrace();
+    }
   }
 }
 

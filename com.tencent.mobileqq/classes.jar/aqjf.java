@@ -1,91 +1,88 @@
-import android.text.TextUtils;
+import android.os.Bundle;
+import com.tencent.mobileqq.business.sougou.WordMatchManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class aqjf
-  implements apts<String>
+  implements bghi
 {
-  public String a;
-  public ArrayList<aqjg> a;
-  private String b = "place_holder";
-  private String c = "data";
-  private String d = "topic_id";
-  private String e = "topic_name";
+  public aqjf(WordMatchManager paramWordMatchManager) {}
   
-  public aqjf()
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    if (TextUtils.isEmpty(paramString))
+    int i = 1;
+    if (paramJSONObject != null) {}
+    try
     {
-      QLog.e("SigTopicConfig", 1, "SigTopic config content is empty");
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        paramString = localJSONObject.optJSONArray(this.c);
-        this.jdField_a_of_type_JavaLangString = localJSONObject.optString(this.b, amtj.a(2131713261));
-        if (paramString == null) {
-          break;
-        }
+      int j = paramJSONObject.getInt("retcode");
+      if (j != 0) {
         i = 0;
-        if (i >= paramString.length()) {
-          break;
-        }
-        localJSONObject = paramString.getJSONObject(i);
-        localaqjg = new aqjg();
-        localaqjg.jdField_a_of_type_Int = localJSONObject.optInt(this.d);
-        localaqjg.jdField_a_of_type_JavaLangString = localJSONObject.optString(this.e);
-        if (!TextUtils.isEmpty(localaqjg.jdField_a_of_type_JavaLangString)) {
-          break label193;
-        }
-        if (!QLog.isColorLevel()) {
-          break label198;
-        }
-        QLog.e("SigTopicConfig", 2, new Object[] { "SigTopic config parse has invalid item,index=", Integer.valueOf(i) });
       }
-      catch (JSONException paramString)
+      if (i == 0)
       {
-        int i;
-        aqjg localaqjg;
-        QLog.e("SigTopicConfig", 1, "SigTopic config parse exception", paramString);
+        if (QLog.isColorLevel()) {
+          QLog.d(".business.sougou.DicFileDownloader", 2, "requestGetDictOrNot cgi end(failed)| type:" + paramInt + ",time:" + System.currentTimeMillis());
+        }
+        this.a.a(false);
         return;
       }
-      if (j != 0) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(localaqjg);
+    }
+    catch (JSONException paramBundle)
+    {
+      paramBundle = paramBundle;
+      paramBundle.printStackTrace();
+      paramBundle = new aqjg();
+      try
+      {
+        if (paramJSONObject.has("result"))
+        {
+          paramJSONObject = paramJSONObject.getJSONObject("result");
+          if (paramJSONObject.has("id")) {
+            paramBundle.c = paramJSONObject.getString("id");
+          }
+          if (paramJSONObject.has("md5")) {
+            paramBundle.jdField_a_of_type_JavaLangString = paramJSONObject.getString("md5");
+          }
+          if (paramJSONObject.has("type")) {
+            paramBundle.jdField_a_of_type_Int = paramJSONObject.getInt("type");
+          }
+          if (paramJSONObject.has("need_flag")) {
+            paramBundle.jdField_b_of_type_Int = paramJSONObject.getInt("need_flag");
+          }
+          if (paramJSONObject.has("delay")) {
+            paramBundle.jdField_a_of_type_Long = paramJSONObject.getLong("delay");
+          }
+          if (paramJSONObject.has("base_md5")) {
+            paramBundle.jdField_b_of_type_JavaLangString = paramJSONObject.getString("base_md5");
+          }
+        }
       }
-      i += 1;
-      continue;
-      label193:
-      int j = 1;
-      continue;
-      label198:
-      j = 0;
+      catch (JSONException paramJSONObject)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(".business.sougou.DicFileDownloader", 2, "requestGetDictOrNot parse json error | type:" + paramInt + ",time:" + System.currentTimeMillis());
+          }
+        }
+        this.a.a(paramBundle);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(".business.sougou.DicFileDownloader", 2, "requestGetDictOrNot cgi end(success) | type:" + paramInt + ",time:" + System.currentTimeMillis());
+      }
+      if (paramBundle.jdField_a_of_type_Int != paramInt)
+      {
+        this.a.a(false);
+        return;
+      }
     }
-  }
-  
-  public String toString()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-      return "recommend title is " + this.jdField_a_of_type_JavaLangString + ", " + this.jdField_a_of_type_JavaUtilArrayList.toString();
-    }
-    return "";
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqjf
  * JD-Core Version:    0.7.0.1
  */

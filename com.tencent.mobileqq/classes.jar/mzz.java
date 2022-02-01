@@ -1,24 +1,6 @@
-import android.os.Handler;
-import android.os.Message;
-
-class mzz
-  extends Handler
+public abstract interface mzz
 {
-  mzz(mzy parammzy) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      mzy.a(this.a, mzy.a(this.a), mzy.a(this.a));
-      mzy.a(this.a);
-      return;
-    }
-    mzy.b(this.a);
-  }
+  public abstract void a();
 }
 
 

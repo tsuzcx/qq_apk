@@ -1,21 +1,22 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahiu;
-import amxz;
+import aido;
 import android.os.Handler;
+import aoan;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 public class PublicAccountChatPie$5
   implements Runnable
 {
-  public PublicAccountChatPie$5(ahiu paramahiu) {}
+  public PublicAccountChatPie$5(aido paramaido) {}
   
   public void run()
   {
-    Object localObject = (amxz)this.this$0.app.getManager(56);
+    Object localObject = (aoan)this.this$0.app.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER);
     if (localObject != null) {}
-    for (localObject = ((amxz)localObject).b(this.this$0.sessionInfo.curFriendUin);; localObject = null)
+    for (localObject = ((aoan)localObject).b(this.this$0.sessionInfo.curFriendUin);; localObject = null)
     {
       if (localObject != null) {
         this.this$0.a.sendEmptyMessage(1);

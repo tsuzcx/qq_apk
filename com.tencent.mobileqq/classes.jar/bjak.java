@@ -1,18 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-
-class bjak
-  implements DialogInterface.OnClickListener
+public abstract interface bjak
 {
-  bjak(bjae parambjae, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    RemoteHandleManager.getInstance().getSender().downloadTroopPhoto(this.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void a();
 }
 
 

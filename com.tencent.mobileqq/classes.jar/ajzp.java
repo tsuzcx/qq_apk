@@ -1,21 +1,47 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment;
-import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.SystemClock;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajzp
-  implements View.OnClickListener
+  implements GestureDetector.OnDoubleTapListener
 {
-  public ajzp(WordChainHbFragment.1 param1, TextView paramTextView, ajzv paramajzv) {}
+  public ajzp(MainFragment paramMainFragment) {}
   
-  public void onClick(View paramView)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    WordChainHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$1.this$0);
-    WordChainHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$1.this$0, this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_Ajzv);
-    WordChainHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$1.this$0, this.jdField_a_of_type_AndroidWidgetTextView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("MainFragment", 2, "onDoubleTap() called with: e = [" + paramMotionEvent + "]");
+    }
+    MainFragment.a(this.a, SystemClock.uptimeMillis());
+    paramMotionEvent = (Conversation)this.a.a(Conversation.class);
+    if (paramMotionEvent != null) {}
+    for (int i = paramMotionEvent.d;; i = 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("DynimiIcon", 2, "onDoubleTap() unReadCount = " + i);
+      }
+      paramMotionEvent = this.a.b();
+      if ((paramMotionEvent instanceof Conversation)) {
+        ((Conversation)paramMotionEvent).d();
+      }
+      if (i == 0) {
+        MainFragment.d(this.a);
+      }
+      return false;
+    }
+  }
+  
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

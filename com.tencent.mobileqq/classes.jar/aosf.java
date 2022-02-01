@@ -1,88 +1,119 @@
-import android.os.Bundle;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.face.QQHeadDownloadHandler;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import java.util.Locale;
+import com.tencent.mobileqq.data.PAMessage;
+import com.tencent.mobileqq.data.PAMessage.Item;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.theme.SkinnableBitmapDrawable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aosf
-  implements aosj
+  extends aosi
 {
-  public EIPCResult a(Bundle paramBundle)
+  protected aosf(QQAppInterface paramQQAppInterface, aosm paramaosm)
   {
-    Object localObject = aori.a();
-    if (localObject == null)
-    {
-      QLog.e("ArkApp.GetUserInformationHandler", 1, "Handler_GetNickName.onCall, qq app is null");
-      return EIPCResult.createResult(-102, new Bundle());
-    }
-    localObject = paramBundle.getString("uin", ((QQAppInterface)localObject).getCurrentAccountUin());
-    paramBundle = new Bundle();
-    localObject = a((String)localObject);
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      paramBundle.putString("userInfo", (String)localObject);
-    }
-    return EIPCResult.createResult(0, paramBundle);
+    super(paramQQAppInterface, paramaosm);
   }
   
-  public String a(String paramString)
+  public int a(QQMessageFacade.Message paramMessage)
   {
-    QQAppInterface localQQAppInterface = aori.a();
-    if (localQQAppInterface == null) {
-      return null;
-    }
-    Object localObject1 = paramString;
-    if (paramString == null) {
-      localObject1 = localQQAppInterface.getCurrentUin();
-    }
-    Object localObject2 = ((amsw)localQQAppInterface.getManager(51)).b((String)localObject1);
-    if (localObject2 == null)
+    return 267;
+  }
+  
+  public aosm a(QQMessageFacade.Message paramMessage)
+  {
+    Object localObject3 = bhbd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDrawable(2130840440));
+    this.jdField_a_of_type_Aosm.a((Bitmap)localObject3);
+    Object localObject2 = c();
+    this.jdField_a_of_type_Aosm.d((String)localObject2);
+    Object localObject4 = afuo.a(paramMessage);
+    Object localObject1 = localObject2;
+    if (localObject4 != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArkApp.GetUserInformationHandler", 2, "GetUserInformation FriendCard is null");
+      localObject1 = localObject2;
+      if (!((PAMessage)localObject4).items.isEmpty())
+      {
+        localObject1 = ((PAMessage.Item)((PAMessage)localObject4).items.get(0)).title;
+        if ((((PAMessage.Item)((PAMessage)localObject4).items.get(0)).cover != null) || (((PAMessage.Item)((PAMessage)localObject4).items.get(0)).digestList == null)) {
+          break label214;
+        }
+        this.jdField_a_of_type_Aosm.c((String)localObject1);
+        localObject1 = (String)((PAMessage.Item)((PAMessage)localObject4).items.get(0)).digestList.get(0);
+        this.jdField_a_of_type_Aosm.d((String)localObject1);
       }
-      return null;
-    }
-    String str1 = ((Card)localObject2).strNick;
-    if (((Card)localObject2).shGender == 0) {
-      paramString = BaseActivity.sTopActivity.getString(2131693568);
     }
     for (;;)
     {
-      String str2 = ((Card)localObject2).strCity;
-      String str3 = ((Card)localObject2).strProvince;
-      String str4 = ((Card)localObject2).strCountry;
-      localObject2 = "";
-      localObject1 = localQQAppInterface.getQQHeadSettingFromDB((String)localObject1);
-      if ((localObject1 != null) && (!TextUtils.isEmpty(((Setting)localObject1).url))) {
-        localObject1 = MsfSdkUtils.insertMtype("QQHeadIcon", ((FriendListHandler)localQQAppInterface.getBusinessHandler(1)).getQQHeadDownload().getQQHeandDownLoadUrl(((Setting)localObject1).url, ((Setting)localObject1).bFaceFlags, ((Setting)localObject1).bUsrType, 0));
+      localObject2 = this.jdField_a_of_type_Aosm.b();
+      localObject2 = (String)localObject2 + (String)localObject1;
+      this.jdField_a_of_type_Aosm.b((String)localObject2);
+      a(paramMessage, this.jdField_a_of_type_Aosm);
+      if (paramMessage.extStr != null) {
+        break;
+      }
+      return null;
+      label214:
+      this.jdField_a_of_type_Aosm.d((String)localObject1);
+    }
+    if (((paramMessage.extLong & 0x1) == 0) && (!paramMessage.extStr.contains("lockDisplay"))) {
+      return null;
+    }
+    if (((paramMessage.extLong & 0x1) == 1) && (!paramMessage.getExtInfoFromExtStr("lockDisplay").equals("true"))) {
+      return null;
+    }
+    Intent localIntent = this.jdField_a_of_type_Aosm.a();
+    localObject4 = this.jdField_a_of_type_Aosm.c();
+    String str1 = this.jdField_a_of_type_Aosm.a();
+    localIntent.putExtra("need_report", true);
+    localIntent.putExtra("incoming_msguid", paramMessage.msgUid);
+    localIntent.putExtra("incoming_shmsgseq", paramMessage.shmsgseq);
+    String str2 = localIntent.getStringExtra("uin");
+    if ((!TextUtils.isEmpty((CharSequence)localObject4)) && (!TextUtils.isEmpty(str2))) {}
+    for (localObject2 = ((String)localObject4).replace(str2, "");; localObject2 = localObject4)
+    {
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {}
+      while (AppConstants.REMINDER_UIN.equals(str2))
+      {
+        localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFaceBitmap(paramMessage.frienduin, true);
+        localObject2 = localObject1;
+        pkh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade(), paramMessage, localIntent);
+        this.jdField_a_of_type_Aosm.a(localIntent);
+        this.jdField_a_of_type_Aosm.c((String)localObject4);
+        this.jdField_a_of_type_Aosm.d((String)localObject2);
+        this.jdField_a_of_type_Aosm.b((String)localObject1);
+        this.jdField_a_of_type_Aosm.a((Bitmap)localObject3);
+        return this.jdField_a_of_type_Aosm;
+        localObject1 = (String)localObject2 + " : " + (String)localObject1;
+      }
+      if (AppConstants.KANDIAN_DAILY_UIN.equals(str2))
+      {
+        localObject2 = BaseApplicationImpl.getContext().getResources().getDrawable(2130842738);
+        if ((localObject2 instanceof BitmapDrawable)) {
+          localObject2 = ((BitmapDrawable)localObject2).getBitmap();
+        }
       }
       for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArkApp.GetUserInformationHandler", 2, "GetUserInformation nickname=" + str1 + ", avatarUrl=" + (String)localObject1 + ", gender=" + paramString + ", city=" + str2 + ", province=" + str3 + ", country=" + str4);
-        }
-        return String.format(Locale.CHINA, "{\"nickname\":\"%s\",\"avatar\":\"%s\",\"gender\":\"%s\",\"city\":\"%s\",\"province\":\"%s\",\"country\":\"%s\"}", new Object[] { str1, localObject1, paramString, str2, str3, str4 });
-        if (((Card)localObject2).shGender != 1) {
-          break label320;
-        }
-        paramString = BaseActivity.sTopActivity.getString(2131692108);
+        localObject3 = localObject2;
+        localObject2 = str1;
         break;
-        localObject1 = localObject2;
-        if (QLog.isColorLevel())
+        if ((localObject2 instanceof SkinnableBitmapDrawable))
         {
-          QLog.d("ArkApp.GetUserInformationHandler", 2, "GetUserInformation QQHeadSetting is empty");
-          localObject1 = localObject2;
+          localObject2 = ((SkinnableBitmapDrawable)localObject2).getBitmap();
+          continue;
+          localObject4 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131689656);
+          localObject2 = localObject1;
+          break;
         }
+        localObject2 = localObject3;
       }
-      label320:
-      paramString = "";
     }
   }
 }

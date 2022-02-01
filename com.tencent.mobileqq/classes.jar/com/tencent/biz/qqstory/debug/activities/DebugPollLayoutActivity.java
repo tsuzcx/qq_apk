@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import ypt;
-import ypu;
+import zem;
+import zen;
 
 public class DebugPollLayoutActivity
   extends Activity
@@ -32,14 +32,14 @@ public class DebugPollLayoutActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131558446);
-    paramBundle = ypt.a(this, 1, 1, null);
-    ((FrameLayout)findViewById(2131365035)).addView(paramBundle.a());
+    setContentView(2131558447);
+    paramBundle = zem.a(this, 1, 1, null);
+    ((FrameLayout)findViewById(2131365119)).addView(paramBundle.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.debug.activities.DebugPollLayoutActivity
  * JD-Core Version:    0.7.0.1
  */

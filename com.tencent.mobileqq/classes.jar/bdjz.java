@@ -1,26 +1,26 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.togetherui.writetogether.SavingAnimView;
+import android.os.Bundle;
+import com.tencent.mobileqq.statistics.DailyReport;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import java.io.File;
 
 public class bdjz
-  implements Animator.AnimatorListener
+  extends bhyn
 {
-  public bdjz(SavingAnimView paramSavingAnimView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public bdjz(DailyReport paramDailyReport, String paramString1, String paramString2)
   {
-    SavingAnimView.a(this.a, 2);
+    super(paramString1, paramString2);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public void onDone(bhyo parambhyo)
   {
-    if (SavingAnimView.a(this.a) != null) {
-      SavingAnimView.a(this.a).b();
-    }
+    super.onDone(parambhyo);
+    long l = parambhyo.a().getLong("id");
+    VasWebviewUtil.reportVasStatus("AvatarPendant", "AvatarPendantOn", String.valueOf(l), 0, 0, 0, 0, bhcs.a(new File(bhcs.b(l, 4))), "");
+  }
+  
+  public boolean onStart(bhyo parambhyo)
+  {
+    return true;
   }
 }
 

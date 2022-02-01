@@ -11,17 +11,17 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import oxz;
-import oyb;
+import phe;
+import phg;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/ui/CommentLinkView;", "Lcom/tencent/widget/HeightAdaptableListView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ui/CommentLinkView$LinkAdatper;", "linkDataList", "", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/BaseCommentData$CommentLinkData;", "onLinkEmptyListener", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ui/CommentLinkView$OnLinkDeleteListener;", "getOnLinkEmptyListener", "()Lcom/tencent/biz/pubaccount/readinjoy/comment/ui/CommentLinkView$OnLinkDeleteListener;", "setOnLinkEmptyListener", "(Lcom/tencent/biz/pubaccount/readinjoy/comment/ui/CommentLinkView$OnLinkDeleteListener;)V", "setData", "", "data", "LinkAdatper", "OnLinkDeleteListener", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class CommentLinkView
   extends HeightAdaptableListView
 {
   private List<BaseCommentData.CommentLinkData> jdField_a_of_type_JavaUtilList = (List)new ArrayList(0);
-  private oxz jdField_a_of_type_Oxz;
+  private phe jdField_a_of_type_Phe;
   @Nullable
-  private oyb jdField_a_of_type_Oyb;
+  private phg jdField_a_of_type_Phg;
   
   public CommentLinkView(@NotNull Context paramContext)
   {
@@ -40,9 +40,9 @@ public final class CommentLinkView
   }
   
   @Nullable
-  public final oyb a()
+  public final phg a()
   {
-    return this.jdField_a_of_type_Oyb;
+    return this.jdField_a_of_type_Phg;
   }
   
   public final void setData(@Nullable List<BaseCommentData.CommentLinkData> paramList)
@@ -51,24 +51,24 @@ public final class CommentLinkView
     for (;;)
     {
       this.jdField_a_of_type_JavaUtilList = paramList;
-      if (this.jdField_a_of_type_Oxz != null) {
+      if (this.jdField_a_of_type_Phe != null) {
         break;
       }
-      this.jdField_a_of_type_Oxz = new oxz(this);
-      setAdapter((ListAdapter)this.jdField_a_of_type_Oxz);
+      this.jdField_a_of_type_Phe = new phe(this);
+      setAdapter((ListAdapter)this.jdField_a_of_type_Phe);
       return;
       paramList = (List)new ArrayList(0);
     }
-    paramList = this.jdField_a_of_type_Oxz;
+    paramList = this.jdField_a_of_type_Phe;
     if (paramList == null) {
       Intrinsics.throwNpe();
     }
     paramList.notifyDataSetChanged();
   }
   
-  public final void setOnLinkEmptyListener(@Nullable oyb paramoyb)
+  public final void setOnLinkEmptyListener(@Nullable phg paramphg)
   {
-    this.jdField_a_of_type_Oyb = paramoyb;
+    this.jdField_a_of_type_Phg = paramphg;
   }
 }
 

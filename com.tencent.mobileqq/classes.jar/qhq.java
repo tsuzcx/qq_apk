@@ -1,145 +1,36 @@
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGifView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
 
 public class qhq
-  extends ViewBase
+  extends SosoInterface.OnLocationListener
 {
-  private NativeGifView a;
-  
-  public qhq(VafContext paramVafContext)
+  public qhq(SelectPositionModule paramSelectPositionModule, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    super(paramVafContext);
-    this.a = new NativeGifView(paramVafContext.getContext());
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  private boolean a()
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    return this.mParams.mLayoutHeight * this.mParams.mLayoutWidth > 2000000;
-  }
-  
-  public int getComMeasuredHeight()
-  {
-    return this.a.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.a.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.a;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.a.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-    this.a.setGifHeight(this.mParams.mLayoutHeight);
-    this.a.setGifWidth(this.mParams.mLayoutWidth);
-    this.a.setIsBigImg(a());
-    this.a.setBackgroundColor(this.mBackground);
-    this.a.displayGif(this.mParams.mLayoutWidth, this.mParams.mLayoutHeight);
-    this.a.invalidate();
-  }
-  
-  public boolean setAttribute(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
+    if (QLog.isColorLevel()) {
+      QLog.d("SelectPositionModule", 2, "onLocationFinish() errCode=" + paramInt);
+    }
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null) && (!TextUtils.isEmpty(paramSosoLbsInfo.mLocation.city)))
     {
-    default: 
-      return super.setAttribute(paramInt, paramObject);
-    case 59: 
-      try
-      {
-        this.mParams.mLayoutWidth = ((Integer)paramObject).intValue();
-        this.a.requestLayout();
-        return true;
+      if (QLog.isColorLevel()) {
+        QLog.d("SelectPositionModule", 2, "onLocationFinish() info.mLocation =" + paramSosoLbsInfo.mLocation);
       }
-      catch (Exception paramObject)
-      {
-        for (;;)
-        {
-          QLog.d("ReadInJoyGifView", 2, paramObject.getMessage());
-        }
+      SelectPositionModule.a(this.a, new SelectPositionModule.PositionData(paramSosoLbsInfo.mLocation));
+      SelectPositionModule.a(this.a, SelectPositionModule.a(this.a));
+      SelectPositionModule.b(this.a, SelectPositionModule.a(this.a));
+      if (SelectPositionModule.a(this.a) != null) {
+        SelectPositionModule.a(this.a).a(SelectPositionModule.a(this.a));
       }
     }
-    try
-    {
-      this.mParams.mLayoutHeight = ((Integer)paramObject).intValue();
-      this.a.requestLayout();
-      return true;
-    }
-    catch (Exception paramObject)
-    {
-      for (;;)
-      {
-        QLog.d("ReadInJoyGifView", 2, paramObject.getMessage());
-      }
-    }
-  }
-  
-  public boolean setAttribute(int paramInt, String paramString)
-  {
-    boolean bool2 = true;
-    boolean bool1;
-    switch (paramInt)
-    {
-    default: 
-      bool1 = super.setAttribute(paramInt, paramString);
-    case 1150: 
-    case 1159: 
-    case 51: 
-      for (;;)
-      {
-        return bool1;
-        this.a.setGifUrl(paramString);
-        return true;
-        this.a.setCoverUrl(paramString);
-        return true;
-        try
-        {
-          paramString = Utils.toInteger(paramString);
-          bool1 = bool2;
-          if (this.a != null)
-          {
-            bool1 = bool2;
-            if (paramString != null)
-            {
-              this.a.setScaleType(paramString.intValue());
-              return true;
-            }
-          }
-        }
-        catch (Exception paramString)
-        {
-          QLog.d("ReadInJoyGifView", 2, paramString.getMessage());
-          return true;
-        }
-      }
-    }
-    if (!TextUtils.isEmpty(paramString))
-    {
-      this.a.setNeedGifUrl("yes".equals(paramString.toLowerCase()));
-      return true;
-    }
-    return false;
   }
 }
 

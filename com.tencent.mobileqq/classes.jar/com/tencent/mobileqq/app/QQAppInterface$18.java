@@ -3,8 +3,8 @@ package com.tencent.mobileqq.app;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import azkd;
-import bbox;
+import baql;
+import bcvr;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -29,12 +29,12 @@ class QQAppInterface$18
           break;
         }
         i = paramIntent.getIntExtra("clean_unread_feed_type", -1);
-        paramContext = (bbox)this.this$0.getManager(10);
+        paramContext = (bcvr)this.this$0.getManager(QQManagerFactory.QZONE_MANAGER);
       } while ((paramContext == null) || (i == -1));
       paramContext.a(i, 0L, new ArrayList(), null, false, false, "");
       return;
     } while (!"com.tecent.qzone.clearAlbumRedTouch".equals(paramContext));
-    ((azkd)this.this$0.getManager(104)).b();
+    ((baql)this.this$0.getManager(QQManagerFactory.QZONE_ALBUM_RED_TOUCH)).b();
   }
 }
 

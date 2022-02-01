@@ -1,22 +1,31 @@
-import com.tencent.mobileqq.flutter.channel.qqcircle.QCircleFlutterRequest;
-import com.tencent.mobileqq.pb.CodedOutputStreamMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-
-public class atin
-  extends MessageMicro
+class atin
 {
-  public atin(QCircleFlutterRequest paramQCircleFlutterRequest) {}
+  private int jdField_a_of_type_Int;
+  private atii jdField_a_of_type_Atii;
   
-  public int computeSizeDirectly(int paramInt, Object paramObject)
+  public atin(atim paramatim, atii paramatii)
   {
-    return 0;
+    this.jdField_a_of_type_Atii = paramatii;
   }
   
-  public void writeToDirectly(CodedOutputStreamMicro paramCodedOutputStreamMicro, int paramInt, Object paramObject) {}
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public atii a()
+  {
+    return this.jdField_a_of_type_Atii;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atin
  * JD-Core Version:    0.7.0.1
  */

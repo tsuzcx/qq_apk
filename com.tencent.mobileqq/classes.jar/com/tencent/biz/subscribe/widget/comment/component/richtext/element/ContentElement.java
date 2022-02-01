@@ -1,13 +1,13 @@
 package com.tencent.biz.subscribe.widget.comment.component.richtext.element;
 
+import aabj;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import zme;
 
 public class ContentElement
   extends RichTextElement
 {
-  public static final Parcelable.Creator<ContentElement> CREATOR = new zme();
+  public static final Parcelable.Creator<ContentElement> CREATOR = new aabj();
   public String a;
   
   public ContentElement()

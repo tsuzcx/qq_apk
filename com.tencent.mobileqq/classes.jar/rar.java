@@ -1,50 +1,43 @@
 import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
-import com.tencent.biz.pubaccount.readinjoy.skin.SkinData;
-import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.ReqBody;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.pubaccount.readinjoy.push.RIJPushNotifyModule.Companion.instance.2;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.protofile.oidb_0xe9d.oidb_0xe9d.ReqBody;
+import kotlin.Lazy;
+import kotlin.LazyKt;
+import kotlin.LazyThreadSafetyMode;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.functions.Function1;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class rar
-  extends BusinessHandler
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyModule;", "", "()V", "requestUpdatePushStatus", "", "isOpenPushNotify", "", "isDefaultOpen", "uin", "", "type", "", "callback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "errorCode", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rar
 {
-  public rar(QQAppInterface paramQQAppInterface)
+  @NotNull
+  private static final Lazy a;
+  public static final ras a;
+  
+  static
   {
-    super(paramQQAppInterface);
+    jdField_a_of_type_Ras = new ras(null);
+    jdField_a_of_type_KotlinLazy = LazyKt.lazy(LazyThreadSafetyMode.SYNCHRONIZED, (Function0)RIJPushNotifyModule.Companion.instance.2.INSTANCE);
   }
   
-  public void a(SkinData paramSkinData, GuideData paramGuideData1, RefreshData paramRefreshData, GuideData paramGuideData2, int paramInt)
+  public final void a(boolean paramBoolean1, boolean paramBoolean2, @NotNull String paramString, int paramInt, @NotNull Function1<? super Integer, Unit> paramFunction1)
   {
-    paramGuideData1 = new oidb_0x5bd.ReqBody();
-    paramGuideData1.uint64_uin.set(this.app.getLongAccountUin(), true);
-    paramGuideData1.uint32_source.set(paramInt);
-    if (paramSkinData != null) {
-      paramGuideData1.msg_current_skin_info.set(paramSkinData.toBody(), true);
-    }
-    if (paramRefreshData != null) {
-      paramGuideData1.msg_current_refresh_info.set(paramRefreshData.toRefreshInfoBody(), true);
-    }
-    if (paramGuideData2 != null) {
-      paramGuideData1.msg_current_guide_info.set(paramGuideData2.toBody(), true);
-    }
-    nmb.a(this.app, new ras(this), paramGuideData1.toByteArray(), "OidbSvc.0x5bd_1", 1469, 1, new Bundle(), 6000L);
+    Intrinsics.checkParameterIsNotNull(paramString, "uin");
+    Intrinsics.checkParameterIsNotNull(paramFunction1, "callback");
+    QLog.i("RIJPushNotifyModule", 1, "requestUpdatePushStatus " + "isOpenPushNotify: " + paramBoolean1 + ", isDefaultOpen: " + paramBoolean2 + ", " + "uin: " + paramString + ", type: " + paramInt);
+    oidb_0xe9d.ReqBody localReqBody = new oidb_0xe9d.ReqBody();
+    localReqBody.bool_default_on.set(paramBoolean2);
+    localReqBody.string_request_param.set("{\"type\":" + paramInt + ",\"unique_id\":[\"" + paramString + "\"]}");
+    localReqBody.bool_special_follow.set(paramBoolean1);
+    ntb.a(pkh.a(), (ntf)new rat(paramFunction1), localReqBody.toByteArray(), "OidbSvc.0xe9d", 3741, 1, new Bundle(), 5000L);
   }
-  
-  public Class<? extends BusinessObserver> observerClass()
-  {
-    return rat.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

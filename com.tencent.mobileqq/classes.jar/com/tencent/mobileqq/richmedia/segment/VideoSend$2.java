@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.segment;
 
-import baid;
-import baie;
+import bbos;
+import bbot;
 import com.tencent.mobileqq.transfile.LightVideoUploadProcessor;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class VideoSend$2
   implements Runnable
 {
-  public VideoSend$2(baie parambaie, baid parambaid) {}
+  public VideoSend$2(bbot parambbot, bbos parambbos) {}
   
   public void run()
   {

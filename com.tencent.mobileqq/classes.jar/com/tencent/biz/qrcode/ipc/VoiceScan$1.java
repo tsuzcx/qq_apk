@@ -4,22 +4,22 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.SpannableString;
-import bfur;
+import bhdj;
 import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
-import yxu;
-import yxv;
+import zmx;
+import zmy;
 
 public class VoiceScan$1
   implements Runnable
 {
-  public VoiceScan$1(yxu paramyxu) {}
+  public VoiceScan$1(zmx paramzmx) {}
   
   public void run()
   {
-    SpannableString localSpannableString = new SpannableString(yxu.a(this.this$0).getString(2131697897));
-    localSpannableString.setSpan(new StatableSpanTextView.StatableForegroundColorSpan(yxu.a(this.this$0).getResources().getColor(2131165616), yxu.a(this.this$0).getResources().getColor(2131165621)), localSpannableString.length() - 7, localSpannableString.length() - 1, 33);
-    yxu.a(this.this$0, bfur.a(yxu.a(this.this$0), yxu.a(this.this$0).getString(2131697896), localSpannableString, 0, 2131690602, null, null, new yxv(this)));
-    yxu.a(this.this$0).show();
+    SpannableString localSpannableString = new SpannableString(zmx.a(this.this$0).getString(2131698180));
+    localSpannableString.setSpan(new StatableSpanTextView.StatableForegroundColorSpan(zmx.a(this.this$0).getResources().getColor(2131165622), zmx.a(this.this$0).getResources().getColor(2131165627)), localSpannableString.length() - 7, localSpannableString.length() - 1, 33);
+    zmx.a(this.this$0, bhdj.a(zmx.a(this.this$0), zmx.a(this.this$0).getString(2131698179), localSpannableString, 0, 2131690679, null, null, new zmy(this)));
+    zmx.a(this.this$0).show();
   }
 }
 

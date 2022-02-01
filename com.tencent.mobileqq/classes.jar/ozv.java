@@ -1,23 +1,21 @@
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-class ozv
-  implements ViewBase.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initSocialAvatarOnClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ozv
+  implements oyp
 {
-  ozv(ozu paramozu, int paramInt, ViewBase paramViewBase) {}
-  
-  public void onClick(ViewBase paramViewBase)
+  public void a(int paramInt, @NotNull Container paramContainer, @NotNull pcf parampcf, @NotNull pdp parampdp, @NotNull ViewBase paramViewBase)
   {
-    try
-    {
-      ozl.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Ozu.jdField_a_of_type_Int, this.jdField_a_of_type_Ozu.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView, this.jdField_a_of_type_Ozu.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, this.jdField_a_of_type_Ozu.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder, this.jdField_a_of_type_Ozu.jdField_a_of_type_Slt, this.jdField_a_of_type_Ozu.jdField_a_of_type_Pvc, this.jdField_a_of_type_Ozu.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase, this.jdField_a_of_type_Ozu.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
-      return;
-    }
-    catch (Exception paramViewBase)
-    {
-      QLog.d("ProteusSupportUtil", 1, "invokeListener error! cmd=" + this.jdField_a_of_type_Int + " msg=" + paramViewBase);
-    }
+    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
+    Intrinsics.checkParameterIsNotNull(parampcf, "adapter");
+    Intrinsics.checkParameterIsNotNull(parampdp, "commentViewItem");
+    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
+    paramViewBase.setOnClickListener((ViewBase.OnClickListener)new ozw(parampcf, parampdp));
   }
 }
 

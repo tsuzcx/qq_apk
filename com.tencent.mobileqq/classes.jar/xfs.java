@@ -1,14 +1,23 @@
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
 
 public class xfs
-  implements ybd
+  extends xfu
 {
-  public xfs(QQStoryMainController paramQQStoryMainController) {}
+  private ElasticImageView a;
   
-  public void a()
+  public xfs(@NonNull ViewGroup paramViewGroup)
   {
-    xwa.a("video_shoot", "clk_shoot", 0, 0, new String[0]);
-    this.a.a(false, true, 1, null);
+    super(paramViewGroup);
+  }
+  
+  protected View a(ViewGroup paramViewGroup)
+  {
+    this.a = ((ElasticImageView)paramViewGroup.findViewById(2131364714));
+    this.a.setOnClickListener(new xft(this));
+    return this.a;
   }
 }
 

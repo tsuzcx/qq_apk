@@ -1,51 +1,21 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Build.VERSION;
+import android.widget.ImageView;
 
-public final class xfq
-  implements View.OnClickListener
+class xfq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public xfq(xfo paramxfo, Activity paramActivity, String paramString) {}
+  xfq(xfp paramxfp) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    xvv.d("QQStoryMainController", "top right button on click:" + this.jdField_a_of_type_Xfo);
-    String str;
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_Xfo.c)) && (HttpUtil.isValidUrl(this.jdField_a_of_type_Xfo.c)))
+    if (Build.VERSION.SDK_INT >= 16)
     {
-      str = this.jdField_a_of_type_Xfo.c;
-      if (this.jdField_a_of_type_Xfo.a != 1) {
-        break label179;
-      }
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-      localIntent.putExtra("url", str);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
-      label102:
-      xwa.a("hall", "exp", 0, 0, new String[] { "" });
-      if (!"troopStoryHallConfig".equals(this.jdField_a_of_type_JavaLangString)) {
-        break label204;
-      }
-      xwa.a("story_grp", "clk_find_left", 0, 0, new String[] { "", "", "", "" });
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.a.a.setImageAlpha(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
       return;
-      str = "https://story.now.qq.com/mobile/find.html?_wv=3&_bid=2542";
-      break;
-      label179:
-      if ((this.jdField_a_of_type_Xfo.a == 2) || (this.jdField_a_of_type_Xfo.a != 3)) {
-        break label102;
-      }
-      break label102;
-      label204:
-      xwa.a("home_page", "clk_find_entry", 0, 0, new String[0]);
     }
+    this.a.a.setImageResource(2130850736);
   }
 }
 

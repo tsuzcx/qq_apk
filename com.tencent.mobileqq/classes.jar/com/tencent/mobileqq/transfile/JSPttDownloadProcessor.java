@@ -21,7 +21,7 @@ import java.util.List;
 import mqq.manager.ProxyIpManager;
 import tencent.im.cs.cmd0x346.cmd0x346.DownloadSuccReq;
 import tencent.im.cs.cmd0x346.cmd0x346.ReqBody;
-import ufa;
+import usx;
 
 public class JSPttDownloadProcessor
   extends BaseDownloadProcessor
@@ -299,7 +299,7 @@ public class JSPttDownloadProcessor
       if (paramNetResp.mResult != 0) {
         break label157;
       }
-      ufa.d(this.mUiRequest.mOutFilePath);
+      usx.c(this.mUiRequest.mOutFilePath);
       sendPttDownSuccess();
       onSuccess();
       return;

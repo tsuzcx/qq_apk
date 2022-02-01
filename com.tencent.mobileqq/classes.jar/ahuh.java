@@ -1,18 +1,15 @@
-import android.graphics.Paint;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
 
 public class ahuh
+  implements biyc
 {
-  public final Paint a;
-  public final float[] a;
-  public final String[] a;
-  public final Paint b;
+  public ahuh(PhotoListPanel paramPhotoListPanel, Runnable paramRunnable) {}
   
-  public ahuh(float[] paramArrayOfFloat, String[] paramArrayOfString, Paint paramPaint1, Paint paramPaint2)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_ArrayOfFloat = paramArrayOfFloat;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_AndroidGraphicsPaint = paramPaint1;
-    this.b = paramPaint2;
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
 }
 

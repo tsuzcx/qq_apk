@@ -1,22 +1,17 @@
-public final class asow
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
+import com.tencent.qphone.base.util.QLog;
+
+public class asow
+  extends aocm
 {
-  private final Class jdField_a_of_type_JavaLangClass;
-  private final Object jdField_a_of_type_JavaLangObject;
+  public asow(ExtendFriendFragment paramExtendFriendFragment) {}
   
-  public asow(Object paramObject, Class paramClass)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_JavaLangClass = paramClass;
-  }
-  
-  public Class a()
-  {
-    return this.jdField_a_of_type_JavaLangClass;
-  }
-  
-  public Object a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
+    if (QLog.isColorLevel()) {
+      QLog.i("ExtendFriendFragment", 2, String.format("onDataChange success=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    ExtendFriendFragment.a(this.a);
   }
 }
 

@@ -1,27 +1,32 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class adjf
-  implements ajms
+public class adjf
+  implements View.OnClickListener
 {
-  adjf(adja paramadja) {}
+  public adjf(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
-  public void a(Context paramContext, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
+    boolean bool = false;
+    bdla.b(this.a.app, "CliOper", "", "", "0X8007144", "0X8007144", 0, 0, "", "", "", "");
+    bdxs localbdxs = (bdxs)this.a.app.getManager(QQManagerFactory.SUB_ACCOUNT_MANAGER);
+    if ((localbdxs != null) && (localbdxs.a() >= 2)) {}
+    for (;;)
     {
-      QQToast.a(this.a.a.getApplicationContext(), 1, amtj.a(2131704018), 0).a();
+      if (QLog.isColorLevel()) {
+        QLog.d("AssociatedAccountActivity", 2, "click top right manage btn underTwo = " + bool);
+      }
+      AssociatedAccountActivity.a(this.a, bool);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      bool = true;
     }
-    paramContext = new Intent(this.a.a, GuideBindPhoneActivity.class);
-    paramContext.putExtra("fromKeyForContactBind", 5);
-    paramContext.putExtra("key_contact_name", this.a.a.a.a.k);
-    paramContext.putExtra("key_contact_phone", this.a.a.a.a.a);
-    this.a.a.startActivity(paramContext);
   }
 }
 

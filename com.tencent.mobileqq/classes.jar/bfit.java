@@ -1,14 +1,18 @@
-import android.os.Handler;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.4.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.UUID;
 
-public class bfit
-  implements bcrz
+class bfit
+  implements DialogInterface.OnClickListener
 {
-  bfit(bfip parambfip) {}
+  bfit(bfis parambfis, TroopFileTransferManager paramTroopFileTransferManager, UUID paramUUID) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.post(new TroopGiftAnimationController.4.1(this));
+    if (paramInt == 1) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.b(this.jdField_a_of_type_JavaUtilUUID);
+    }
   }
 }
 

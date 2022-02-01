@@ -1,9 +1,28 @@
-import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorFlowCount;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
 
-final class blgr
-  implements IHttpCommunicatorFlowCount
+public class blgr
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
+  public blgr(XPanelContainer paramXPanelContainer) {}
+  
+  public void onSystemUiVisibilityChange(int paramInt)
+  {
+    if (paramInt == 0) {}
+    for (boolean bool = false;; bool = true)
+    {
+      if (XPanelContainer.b != bool)
+      {
+        XPanelContainer.a(this.a, true);
+        XPanelContainer.b = bool;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("XPanelContainer", 2, "onSystemUiVisibilityChange..visibility =  " + paramInt + " context = " + this.a.getContext().getClass().getName());
+      }
+      return;
+    }
+  }
 }
 
 

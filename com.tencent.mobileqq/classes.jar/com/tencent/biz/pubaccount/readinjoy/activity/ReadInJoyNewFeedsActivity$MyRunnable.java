@@ -2,13 +2,14 @@ package com.tencent.biz.pubaccount.readinjoy.activity;
 
 import android.os.Build.VERSION;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
-import pay;
+import prm;
 
 class ReadInJoyNewFeedsActivity$MyRunnable
   implements Runnable
@@ -30,11 +31,11 @@ class ReadInJoyNewFeedsActivity$MyRunnable
       int i;
       if ((this.a != null) && (this.a.get() != null))
       {
-        localWebProcessManager = (WebProcessManager)((ReadInJoyNewFeedsActivity)this.a.get()).app.getManager(13);
+        localWebProcessManager = (WebProcessManager)((ReadInJoyNewFeedsActivity)this.a.get()).app.getManager(QQManagerFactory.WEBPROCESS_MANAGER);
         if (localWebProcessManager != null)
         {
-          i = pay.f();
-          if (!pay.h()) {}
+          i = prm.a();
+          if (!prm.a()) {}
         }
       }
       try
@@ -53,8 +54,8 @@ class ReadInJoyNewFeedsActivity$MyRunnable
       }
       catch (Exception localException)
       {
-        label206:
-        break label206;
+        label207:
+        break label207;
       }
       if (i == 1) {
         localWebProcessManager.a(200);

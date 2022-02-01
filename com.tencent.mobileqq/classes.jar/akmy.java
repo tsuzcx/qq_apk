@@ -1,27 +1,33 @@
-import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
-@Deprecated
-public class akmy
-  extends akll
+class akmy
+  implements View.OnClickListener
 {
-  public View a(int paramInt, Object paramObject, aklg paramaklg, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, aknm paramaknm)
+  akmy(akmu paramakmu) {}
+  
+  public void onClick(View paramView)
   {
-    paramObject = paramView;
-    if (paramView == null) {
-      paramObject = View.inflate(paramContext, 2131562902, null);
+    ((NewPhotoPreviewActivity)this.a.mActivity).sendBtn.setClickable(false);
+    if (((NewPhotoPreviewActivity)this.a.mActivity).getIntent().getBooleanExtra("PhotoConst.IS_SEND_FILESIZE_LIMIT", false)) {
+      if (auea.a()) {
+        audn.a(this.a.mActivity, 2131692476, 2131692481, new akmz(this));
+      }
     }
-    paramaklg = paramObject.findViewById(2131379126);
-    paramaklg.setTag(-1, Integer.valueOf(paramInt));
-    paramaklg.setOnClickListener(paramOnClickListener);
-    paramaklg = paramObject.findViewById(2131379125);
-    paramaklg.setTag(-1, Integer.valueOf(paramInt));
-    paramaklg.setOnClickListener(paramOnClickListener);
-    paramObject.setTag(-1, Integer.valueOf(paramInt));
-    return paramObject;
+    for (;;)
+    {
+      LpReportInfo_pf00064.allReport(603, 1);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.d();
+      continue;
+      this.a.d();
+    }
   }
 }
 

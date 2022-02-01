@@ -1,14 +1,33 @@
-import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class ancz
+public final class ancz
+  implements EIPCResultCallback
 {
-  public long a;
-  public String a;
+  public ancz(andb paramandb) {}
   
-  public ancz(TroopManager paramTroopManager, String paramString, long paramLong)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    boolean bool = true;
+    QLog.i("CmShow_CmShowRenderView", 1, "changeApolloStatus ipc code:" + paramEIPCResult.code);
+    ApolloUtil.b("changeApolloStatus code:" + paramEIPCResult.code);
+    andb localandb;
+    if (this.a != null)
+    {
+      localandb = this.a;
+      if (paramEIPCResult.code != 0) {
+        break label82;
+      }
+    }
+    for (;;)
+    {
+      localandb.a(bool);
+      return;
+      label82:
+      bool = false;
+    }
   }
 }
 

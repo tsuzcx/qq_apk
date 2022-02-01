@@ -2,6 +2,7 @@ package com.tencent.mobileqq.activity;
 
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -55,7 +56,7 @@ class Leba$34
       bool4 = false;
       localObject3 = null;
       bool5 = QzoneConfig.isQQCircleUseEeveeRedPoint();
-      localRedPointInfo = ((QCircleRedPointManager)BaseApplicationImpl.getApplication().getRuntime().getManager(376)).getOuterEntranceRedPointInfoByAppid("circle_entrance");
+      localRedPointInfo = ((QCircleRedPointManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.QCIRCLE_MGR_RED_TOUCH)).getOuterEntranceRedPointInfoByAppid("circle_entrance");
       if (localRedPointInfo == null) {
         break label807;
       }
@@ -190,7 +191,7 @@ class Leba$34
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Leba.34
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,23 @@
-import com.tencent.mobileqq.data.MessageForTofuBaseProfile;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.media.MediaCodec.BufferInfo;
 
-public class bbnh
-  implements abxs
+class bbnh
 {
-  public MessageRecord a(int paramInt)
+  private final int jdField_a_of_type_Int;
+  private final long jdField_a_of_type_Long;
+  private final int b;
+  private final int c;
+  
+  private bbnh(int paramInt1, int paramInt2, MediaCodec.BufferInfo paramBufferInfo)
   {
-    if (paramInt == -7010) {
-      return new MessageForTofuBaseProfile();
-    }
-    return null;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Long = paramBufferInfo.presentationTimeUs;
+    this.c = paramBufferInfo.flags;
+  }
+  
+  private void a(MediaCodec.BufferInfo paramBufferInfo, int paramInt)
+  {
+    paramBufferInfo.set(paramInt, this.b, this.jdField_a_of_type_Long, this.c);
   }
 }
 

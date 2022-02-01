@@ -1,9 +1,9 @@
 package com.tencent.biz.qcircleshadow.lib;
 
-import atjp;
+import auoi;
 
 final class HostStaticInvokeHelper$2
-  implements atjp
+  implements auoi
 {
   HostStaticInvokeHelper$2(HostStaticInvokeHelper.FlutterInstallCallBack paramFlutterInstallCallBack) {}
   
@@ -19,7 +19,7 @@ final class HostStaticInvokeHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.HostStaticInvokeHelper.2
  * JD-Core Version:    0.7.0.1
  */

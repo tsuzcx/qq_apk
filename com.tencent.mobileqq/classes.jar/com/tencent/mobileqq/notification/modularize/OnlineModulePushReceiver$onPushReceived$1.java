@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.notification.modularize;
 
-import axhz;
-import axib;
+import ayoe;
+import ayog;
 import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
@@ -12,14 +12,14 @@ public final class OnlineModulePushReceiver$onPushReceived$1
   extends Lambda
   implements Function0<Unit>
 {
-  public OnlineModulePushReceiver$onPushReceived$1(axhz paramaxhz, axib paramaxib)
+  public OnlineModulePushReceiver$onPushReceived$1(ayoe paramayoe, ayog paramayog)
   {
     super(0);
   }
   
   public final void invoke()
   {
-    axhz.a(this.this$0, this.$pushComponent);
+    ayoe.a(this.this$0, this.$pushComponent);
   }
 }
 

@@ -1,43 +1,79 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import android.content.Context;
+import android.content.Intent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.AppGuideTipsConfig;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ailo
-  extends MqqHandler
+  implements ailp, View.OnClickListener
 {
-  public ailo(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
+  private ailr jdField_a_of_type_Ailr;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void handleMessage(Message paramMessage)
+  public ailo(QQAppInterface paramQQAppInterface, Context paramContext, ailr paramailr)
   {
-    switch (paramMessage.what)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Ailr = paramailr;
+  }
+  
+  public int a()
+  {
+    return 5;
+  }
+  
+  public View a(Object... paramVarArgs)
+  {
+    paramVarArgs = ((afpn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.APP_GUIDE_TIPS_MANAGER)).a();
+    this.jdField_a_of_type_JavaLangString = paramVarArgs.tipsUrl;
+    paramVarArgs = paramVarArgs.tipsMsg;
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558669, null);
+    ((TextView)localView.findViewById(2131362551)).setText(paramVarArgs);
+    localView.setOnClickListener(this);
+    localView.findViewById(2131362549).setOnClickListener(this);
+    return localView;
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs) {}
+  
+  public int[] a()
+  {
+    return null;
+  }
+  
+  public int b()
+  {
+    return 18;
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
     {
     }
-    do
+    for (;;)
     {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      TroopNotifyAndRecommendView.d(this.a);
-      return;
-      this.a.j();
-      return;
-      paramMessage = paramMessage.obj;
-      try
-      {
-        this.a.a((List)paramMessage);
-        TroopNotifyAndRecommendView.e(this.a);
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d("TimTipsBar", 2, "click tips, jump");
       }
-      catch (Exception paramMessage)
-      {
-        for (;;)
-        {
-          QLog.e("TroopNotifyAndRecommendView", 1, "handleRecommendData wrong");
-        }
-      }
-    } while (this.a.a == null);
-    this.a.a.c(2131718142);
-    this.a.a.show();
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("hide_operation_bar", true);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      bdla.b(null, "dc00898", "", "", "0X8008948", "0X8008948", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Ailr.a();
+    }
   }
 }
 

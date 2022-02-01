@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ocr.ui;
 
-import axok;
+import ayut;
 import com.tencent.widget.XListView;
 
 public class SearchResultPageView$1
   implements Runnable
 {
-  public SearchResultPageView$1(axok paramaxok) {}
+  public SearchResultPageView$1(ayut paramayut) {}
   
   public void run()
   {

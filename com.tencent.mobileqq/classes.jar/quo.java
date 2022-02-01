@@ -1,18 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentNoteCard;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public class quo
-  implements View.OnClickListener
+class quo
+  implements Animator.AnimatorListener
 {
-  public quo(ComponentContentNoteCard paramComponentContentNoteCard) {}
+  quo(quh paramquh, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    ComponentContentNoteCard.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      quh.a(this.jdField_a_of_type_Quh).isShowRecommendList = false;
+      quh.a(this.jdField_a_of_type_Quh);
+    }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

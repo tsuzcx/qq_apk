@@ -1,29 +1,39 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Rect;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.SeekBar;
 
 class bbsa
-  implements bbsc
+  implements View.OnTouchListener
 {
   bbsa(bbrz parambbrz) {}
   
-  public void a(MessageForShortVideo paramMessageForShortVideo, float paramFloat)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (bbrz.a(this.a) != null) {
-      bbrz.a(this.a).a(this.a.a, paramFloat);
+    float f1 = 0.0F;
+    paramView = new Rect();
+    this.a.a.getHitRect(paramView);
+    if ((paramMotionEvent.getY() >= paramView.top - 600) && (paramMotionEvent.getY() <= paramView.bottom + 600)) {}
+    for (int i = 1; i == 0; i = 0) {
+      return false;
     }
-  }
-  
-  public void a(MessageForShortVideo paramMessageForShortVideo, int paramInt)
-  {
-    QLog.d("VideoCompressProcessor", 1, "hardware compress finish code: " + paramInt);
-    if (bbrz.a(this.a) != null)
+    float f3 = paramView.top + (paramView.height() >> 1);
+    float f2 = paramMotionEvent.getX() - paramView.left;
+    if (f2 < 0.0F) {}
+    for (;;)
     {
-      bbrz.a(this.a).a(this.a.a, 1.0F);
-      bbrz.a(this.a).a(this.a.a, 3);
+      paramView = MotionEvent.obtain(paramMotionEvent.getDownTime(), paramMotionEvent.getEventTime(), paramMotionEvent.getAction(), f1, f3, paramMotionEvent.getMetaState());
+      boolean bool = this.a.a.onTouchEvent(paramView);
+      paramView.recycle();
+      return bool;
+      if (f2 > paramView.width()) {
+        f1 = paramView.width();
+      } else {
+        f1 = f2;
+      }
     }
   }
-  
-  public void a(MessageForShortVideo paramMessageForShortVideo, boolean paramBoolean) {}
 }
 
 

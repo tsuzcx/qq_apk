@@ -1,9 +1,9 @@
 package cooperation.qqreader.host.colornote;
 
-import apom;
+import aqrq;
 
 class ReaderColorNoteController$1
-  implements apom
+  implements aqrq
 {
   ReaderColorNoteController$1(ReaderColorNoteController paramReaderColorNoteController, OnColorNoteAnimFinishCallback paramOnColorNoteAnimFinishCallback) {}
   

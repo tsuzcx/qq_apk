@@ -1,28 +1,19 @@
 import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import java.lang.ref.WeakReference;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.view.ComplexGuidViewPager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class bfrt
-  implements URLDrawable.URLDrawableListener
+public class bfrt
+  implements View.OnClickListener
 {
-  bfrt(WeakReference paramWeakReference) {}
+  public bfrt(ComplexGuidViewPager paramComplexGuidViewPager) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onClick(View paramView)
   {
-    if (this.a != null)
-    {
-      paramURLDrawable = (View)this.a.get();
-      if (paramURLDrawable != null) {
-        paramURLDrawable.postInvalidate();
-      }
+    if (this.a.a != null) {
+      this.a.a.b();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

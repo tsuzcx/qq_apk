@@ -1,6 +1,12 @@
-public abstract interface bmfl
+class bmfl
+  implements bmeg
 {
-  public abstract void a(int paramInt);
+  bmfl(bmfk parambmfk) {}
+  
+  public void a()
+  {
+    bmfk.a(this.a);
+  }
 }
 
 

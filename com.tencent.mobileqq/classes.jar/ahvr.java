@@ -1,13 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.bless.BlessTypeActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
 public class ahvr
-  implements DialogInterface.OnClickListener
+  extends ahvq
 {
-  public ahvr(BlessTypeActivity paramBlessTypeActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  protected void b(BaseChatPie paramBaseChatPie)
+  {
+    a(paramBaseChatPie.sessionInfo.curType, 202);
+    a(paramBaseChatPie.sessionInfo.curType, 206);
+    a(paramBaseChatPie.sessionInfo.curType, 208);
+  }
 }
 
 

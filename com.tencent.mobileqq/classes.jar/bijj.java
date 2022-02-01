@@ -1,25 +1,38 @@
+import android.os.Handler;
+import android.text.TextUtils;
+
 public class bijj
-  extends bijh
 {
-  private static bijj jdField_a_of_type_Bijj;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  public int a;
+  public long a;
+  public Handler a;
+  public bijf a;
+  public Object a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public volatile String d;
+  public String e;
+  public String f = "";
   
-  public static bijj a()
+  public bijj()
   {
-    if (jdField_a_of_type_Bijj == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_Bijj == null) {
-        jdField_a_of_type_Bijj = new bijj();
-      }
-      return jdField_a_of_type_Bijj;
-    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
-  public void a()
+  public String toString()
   {
-    super.a();
-    jdField_a_of_type_Bijj = null;
+    StringBuilder localStringBuilder = new StringBuilder().append("unikey=").append(this.jdField_a_of_type_JavaLangString).append(",url=").append(this.jdField_b_of_type_JavaLangString).append(" ,header=").append(this.jdField_c_of_type_JavaLangString).append(",htmlbody len=");
+    if (TextUtils.isEmpty(this.d)) {}
+    for (int i = 0;; i = this.d.length()) {
+      return i + ",reqState=" + this.jdField_a_of_type_Int + ",httpStatusCode=" + this.jdField_b_of_type_Int + ",needBase64Rsp=" + this.jdField_a_of_type_Boolean + ",jsCallback=" + this.e + ",resultCode=" + this.jdField_c_of_type_Int + ",errorMsg=" + this.f;
+    }
   }
 }
 

@@ -27,53 +27,47 @@ public class RequestJsPlugin$RequestTask
     this.mJsService = paramIJsService;
     this.mTaskId = RequestProxy.getRequestSocketId();
     this.mRequestCreatedMillis = SystemClock.elapsedRealtime();
-    if (paramJSONObject != null)
-    {
-      if (paramJSONObject.has("url")) {
-        this.mUrl = paramJSONObject.optString("url");
-      }
-      if (!paramJSONObject.has("origin_url")) {
-        break label259;
-      }
-      this.mOriginUrl = paramJSONObject.optString("origin_url");
-      paramIJsService = NativeBuffer.unpackNativeBuffer(this.mJsService, paramJSONObject, "data");
-      if (paramIJsService == null) {
-        break label270;
-      }
-      paramIJsService = paramIJsService.buf;
-      label122:
-      this.mBody = paramIJsService;
-      if ((this.mBody == null) && (paramJSONObject.has("data")))
-      {
-        paramIJsService = paramJSONObject.optString("data");
-        if (paramIJsService != null) {
-          break label275;
-        }
-      }
+    if (paramJSONObject == null) {
+      return;
     }
-    label259:
-    label270:
-    label275:
-    for (paramIJsService = localObject;; paramIJsService = paramIJsService.getBytes())
+    this.mUrl = paramJSONObject.optString("url", "");
+    if (paramJSONObject.has("origin_url")) {}
+    for (this.mOriginUrl = paramJSONObject.optString("origin_url");; this.mOriginUrl = this.mUrl)
     {
-      this.mBody = paramIJsService;
-      if (paramJSONObject.has("method")) {
-        this.mMethod = paramJSONObject.optString("method");
-      }
-      if (paramJSONObject.has("dataType")) {
-        this.mDataType = paramJSONObject.optString("dataType");
-      }
-      if (paramJSONObject.has("responseType")) {
-        this.mResponseType = paramJSONObject.optString("responseType");
-      }
+      this.mMethod = paramJSONObject.optString("method", this.mMethod);
+      this.mDataType = paramJSONObject.optString("dataType", this.mDataType);
+      this.mResponseType = paramJSONObject.optString("responseType", this.mResponseType);
       RequestJsPlugin.access$2200(this.mHeaders, paramJSONObject);
       this.mHeaders.put("Referer", RequestJsPlugin.access$1900(paramRequestJsPlugin));
       this.mHeaders.put("User-Agent", QUAUtil.getRequestUA());
+      processBody(paramJSONObject);
       return;
-      this.mOriginUrl = this.mUrl;
+    }
+  }
+  
+  private void processBody(JSONObject paramJSONObject)
+  {
+    Object localObject2 = null;
+    Object localObject1 = NativeBuffer.unpackNativeBuffer(this.mJsService, paramJSONObject, "data");
+    if (localObject1 != null)
+    {
+      localObject1 = ((NativeBuffer)localObject1).buf;
+      this.mBody = ((byte[])localObject1);
+      if ((this.mBody == null) && (paramJSONObject.has("data")))
+      {
+        paramJSONObject = paramJSONObject.optString("data");
+        if (paramJSONObject != null) {
+          break label67;
+        }
+      }
+    }
+    label67:
+    for (paramJSONObject = localObject2;; paramJSONObject = paramJSONObject.getBytes())
+    {
+      this.mBody = paramJSONObject;
+      return;
+      localObject1 = null;
       break;
-      paramIJsService = null;
-      break label122;
     }
   }
 }

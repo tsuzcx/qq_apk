@@ -1,28 +1,35 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 
 public class adin
-  implements aroz
+  extends Handler
 {
-  public adin(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public adin(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void enterAio(String paramString1, String paramString2)
+  public void handleMessage(Message paramMessage)
   {
-    aros.a(this.a, paramString1, paramString2);
-  }
-  
-  public void showCampusVerifyDialog(boolean paramBoolean, int paramInt, String paramString1, String paramString2)
-  {
-    aros.a(this.a, paramBoolean, paramInt, paramString1, paramString2);
-  }
-  
-  public void showMatchCountDialog()
-  {
-    aros.a(this.a);
-  }
-  
-  public void showToast(int paramInt)
-  {
-    aros.a(this.a, this.a.getString(paramInt));
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      if (!this.a.isFinishing())
+      {
+        this.a.jdField_a_of_type_Bisl.a(this.a.getString(2131690826));
+        this.a.jdField_a_of_type_Bisl.d(2130849687);
+        this.a.jdField_a_of_type_Bisl.b(false);
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
+      return;
+    } while ((this.a.jdField_a_of_type_Bisl == null) || (!this.a.jdField_a_of_type_Bisl.isShowing()));
+    this.a.jdField_a_of_type_Bisl.cancel();
+    this.a.jdField_a_of_type_Bisl.a(this.a.getString(2131690828));
+    this.a.jdField_a_of_type_Bisl.c(true);
+    this.a.jdField_a_of_type_Bisl.a(false);
+    this.a.jdField_a_of_type_Bisl.b(true);
   }
 }
 

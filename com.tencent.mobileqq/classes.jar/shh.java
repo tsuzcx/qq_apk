@@ -1,24 +1,35 @@
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
+import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnExtractFrameListener;
+import java.util.HashMap;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/PlayerHelper$Companion;", "", "()V", "TAG", "", "superPlayerFlag", "", "useSuperPlayer", "", "getUseSuperPlayer", "()Z", "selectPlayerFactory", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerFactory;", "selectPlayerSDKMgr", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerSDKMgr;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class shh
+class shh
+  implements TVK_IMediaPlayer.OnExtractFrameListener
 {
-  @NotNull
-  public final sgz a()
-  {
-    return (sgz)shl.a;
-  }
+  shh(shc paramshc) {}
   
-  @NotNull
-  public final she a()
+  public void onExtractFrame(int paramInt, Bitmap paramBitmap)
   {
-    return (she)shn.a;
-  }
-  
-  public final boolean a()
-  {
-    return true;
+    shj localshj = (shj)shc.a(this.a).get(Integer.valueOf(paramInt));
+    if (localshj != null) {}
+    try
+    {
+      localshj.jdField_b_of_type_Long = sgx.a(paramBitmap, true);
+      localshj.jdField_b_of_type_Int = sgx.a(localshj.a, localshj.jdField_b_of_type_Long);
+      if (QLog.isColorLevel()) {
+        QLog.d(shc.a(), 2, "onExtractFrame frameIndex = " + paramInt + ", localHash = " + localshj.jdField_b_of_type_Long + ", hashDiff = " + localshj.jdField_b_of_type_Int);
+      }
+      return;
+    }
+    catch (Throwable paramBitmap)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(shc.a(), 2, "VideoExtractFrameHash.dctImageHash ERROR e = " + paramBitmap.getMessage());
+        }
+      }
+    }
   }
 }
 

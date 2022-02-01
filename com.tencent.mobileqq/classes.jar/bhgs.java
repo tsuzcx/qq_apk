@@ -1,52 +1,29 @@
-import android.view.View;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.widget.ProfileCardExtendFriendView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class bhgs
-  implements bjoe
+class bhgs
+  extends Handler
 {
-  public bhgs(ProfileCardExtendFriendView paramProfileCardExtendFriendView) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  bhgs(bhgq parambhgq, Looper paramLooper)
   {
-    if ((ProfileCardExtendFriendView.c(this.a)) && (!ProfileCardExtendFriendView.d(this.a))) {
-      if (paramInt == 0)
-      {
-        this.a.a(false, true);
-        VasWebviewUtil.reportCommercialDrainage("strangers_makefriend", "card_actionsheet", "", 0, "", "1");
-      }
-    }
-    for (;;)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    synchronized (this.a)
     {
-      VasWebviewUtil.reportCommercialDrainage("strangers_makefriend", "card_actionsheet", "", 0, "", "4");
-      ProfileCardExtendFriendView.a(this.a).cancel();
-      return;
-      if ((!ProfileCardExtendFriendView.c(this.a)) && (ProfileCardExtendFriendView.d(this.a)))
-      {
-        if (paramInt == 0)
-        {
-          this.a.a(true, false);
-          VasWebviewUtil.reportCommercialDrainage("strangers_makefriend", "card_actionsheet", "", 0, "", "2");
-        }
+      if (bhgq.a(this.a) != null) {
+        bhgq.a(this.a).a(bhgq.a(this.a));
       }
-      else if ((ProfileCardExtendFriendView.d(this.a)) && (ProfileCardExtendFriendView.c(this.a)))
+      while (!QLog.isDevelopLevel())
       {
-        if (paramInt == 0)
-        {
-          this.a.a(false, true);
-          VasWebviewUtil.reportCommercialDrainage("strangers_makefriend", "card_actionsheet", "", 0, "", "1");
-        }
-        else if (paramInt == 1)
-        {
-          this.a.a(true, false);
-          VasWebviewUtil.reportCommercialDrainage("strangers_makefriend", "card_actionsheet", "", 0, "", "2");
-        }
+        super.handleMessage(paramMessage);
+        return;
       }
-      else if ((!ProfileCardExtendFriendView.c(this.a)) && (!ProfileCardExtendFriendView.d(this.a)) && (paramInt == 0))
-      {
-        this.a.a(false, false);
-        VasWebviewUtil.reportCommercialDrainage("strangers_makefriend", "card_actionsheet", "", 0, "", "3");
-      }
+      QLog.d("QQLSActivity", 4, "QQLSSensor handler callback=null");
     }
   }
 }

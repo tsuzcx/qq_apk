@@ -1,26 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.data.ShortVideoUpInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
+import mqq.manager.Manager;
 
-class aodp
-  implements DialogInterface.OnClickListener
+public class aodp
+  implements Manager
 {
-  aodp(aodo paramaodo) {}
+  private EntityManager a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aodp(QQAppInterface paramQQAppInterface)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      QQToast.a(this.a.a, 2, 2131690106, 0).a();
-      paramDialogInterface.dismiss();
-      bcef.b(null, "dc00898", "", "", "0X8008353", "0X8008353", 0, 0, "", "", "", "");
-      return;
-    }
-    paramDialogInterface.dismiss();
+    this.a = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
   }
+  
+  public ShortVideoUpInfo a(String paramString)
+  {
+    return (ShortVideoUpInfo)this.a.find(ShortVideoUpInfo.class, paramString);
+  }
+  
+  public boolean a(String paramString)
+  {
+    boolean bool = false;
+    paramString = a(paramString);
+    if (paramString != null) {
+      bool = this.a.remove(paramString);
+    }
+    return bool;
+  }
+  
+  public void onDestroy() {}
 }
 
 

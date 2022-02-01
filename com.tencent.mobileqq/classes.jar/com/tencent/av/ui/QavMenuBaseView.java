@@ -48,7 +48,7 @@ public class QavMenuBaseView
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
   }
   
-  public void c(long paramLong, boolean paramBoolean)
+  public void b(long paramLong, boolean paramBoolean)
   {
     if (QLog.isDevelopLevel()) {
       QLog.i(this.jdField_a_of_type_JavaLangString, 4, "onShow, seq[" + paramLong + "], onBegin[" + paramBoolean + "]");
@@ -62,7 +62,7 @@ public class QavMenuBaseView
     }
   }
   
-  public void f()
+  public void g()
   {
     if (QLog.isDevelopLevel()) {
       QLog.i(this.jdField_a_of_type_JavaLangString, 4, "refreshUI");

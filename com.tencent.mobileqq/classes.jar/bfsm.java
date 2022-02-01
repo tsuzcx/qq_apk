@@ -1,38 +1,19 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.theme.SkinnableBitmapDrawable;
-import com.tencent.theme.SkinnableNinePatchDrawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.BeginnerGuideFragment;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bfsm
+  implements View.OnClickListener
 {
-  public static int a(Drawable paramDrawable)
-  {
-    if (paramDrawable == null) {}
-    do
-    {
-      return -1;
-      if ((paramDrawable instanceof BitmapDrawable)) {
-        return bftf.a(((BitmapDrawable)paramDrawable).getBitmap());
-      }
-      if ((paramDrawable instanceof SkinnableBitmapDrawable)) {
-        return bftf.a(((SkinnableBitmapDrawable)paramDrawable).getBitmap());
-      }
-    } while (!(paramDrawable instanceof SkinnableNinePatchDrawable));
-    return bftf.a(((SkinnableNinePatchDrawable)paramDrawable).getBitmap());
-  }
+  public bfsm(ReciteFragment paramReciteFragment) {}
   
-  public static final Bitmap a(Drawable paramDrawable)
+  public void onClick(View paramView)
   {
-    if (paramDrawable == null) {}
-    do
-    {
-      return null;
-      if ((paramDrawable instanceof BitmapDrawable)) {
-        return ((BitmapDrawable)paramDrawable).getBitmap();
-      }
-    } while (!(paramDrawable instanceof SkinnableBitmapDrawable));
-    return ((SkinnableBitmapDrawable)paramDrawable).getBitmap();
+    this.a.m();
+    BeginnerGuideFragment.b(ReciteFragment.a(this.a), null, 4);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

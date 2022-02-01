@@ -1,6 +1,20 @@
-public abstract interface bjjj
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.appstore.component.CommonTitleBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class bjjj
+  implements View.OnClickListener
 {
-  public abstract int a(long paramLong1, long paramLong2, long paramLong3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2);
+  public bjjj(CommonTitleBar paramCommonTitleBar) {}
+  
+  public void onClick(View paramView)
+  {
+    if (CommonTitleBar.a(this.a) != null) {
+      CommonTitleBar.a(this.a).b();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

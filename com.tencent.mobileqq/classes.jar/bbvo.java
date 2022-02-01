@@ -1,131 +1,164 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.res.AssetManager;
+import android.os.AsyncTask;
+import android.util.SparseArray;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-public class bbvo
+class bbvo
+  extends AsyncTask<Void, Integer, Integer>
 {
-  public static bbvo a;
-  private final int jdField_a_of_type_Int = 20;
-  private long jdField_a_of_type_Long;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
-  private long jdField_c_of_type_Long;
-  private boolean jdField_c_of_type_Boolean;
-  private long jdField_d_of_type_Long;
-  private volatile boolean jdField_d_of_type_Boolean;
-  private long e;
-  private long f;
-  private long g;
+  bbvo(bbvn parambbvn) {}
   
-  public static bbvo a()
+  private void a(long paramLong)
   {
-    if (jdField_a_of_type_Bbvo == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bbvo == null) {
-        jdField_a_of_type_Bbvo = new bbvo();
-      }
-      return jdField_a_of_type_Bbvo;
+    long l = bbvn.a(this.a).getLong("k_icon", 0L);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.xml", 2, "mUpdateLocalTask clearIcons " + l + ", " + paramLong + ", " + 104L);
     }
-    finally {}
-  }
-  
-  private void f()
-  {
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_d_of_type_Long = 0L;
-    this.e = 0L;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_d_of_type_Boolean) {
-      this.f = System.currentTimeMillis();
-    }
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    int i = 1;
-    if ((this.jdField_d_of_type_Boolean) && (this.jdField_b_of_type_Int <= 20))
+    Object localObject;
+    if (l < paramLong)
     {
-      this.jdField_b_of_type_Int += 1;
-      if (QLog.isColorLevel()) {
-        QLog.i("GestureMonitorManager", 2, "start " + this.jdField_b_of_type_Int + "");
-      }
-    }
-    do
-    {
-      return;
-      if ((this.jdField_d_of_type_Boolean) && (this.jdField_b_of_type_Int > 20))
-      {
-        e();
-        f();
-        return;
-      }
-    } while (this.jdField_d_of_type_Boolean);
-    if ((paramBoolean1) && (paramBoolean2))
-    {
-      paramBoolean1 = true;
-      this.jdField_d_of_type_Boolean = paramBoolean1;
-      if (!this.jdField_d_of_type_Boolean) {
-        break label133;
+      localObject = null;
+      if (paramLong <= 104L) {
+        break label180;
       }
     }
     for (;;)
     {
-      this.jdField_b_of_type_Int = i;
+      try
+      {
+        InputStream localInputStream = bbvn.a(this.a).getApp().getAssets().open("rich_status.xml");
+        localObject = localInputStream;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        continue;
+      }
+      localObject = (SparseArray)bbvn.a(this.a, localObject)[0];
+      if (bbvn.a(this.a, (SparseArray)localObject, bbvn.a(this.a))) {
+        bbvn.a(this.a).edit().putLong("k_icon", paramLong).commit();
+      }
       return;
-      paramBoolean1 = false;
-      break;
-      label133:
-      i = 0;
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_d_of_type_Boolean)
-    {
-      this.f = (System.currentTimeMillis() - this.f);
-      this.jdField_a_of_type_Long += this.f;
-      if (QLog.isColorLevel()) {
-        QLog.i("GestureMonitorManager", 2, "GestureMonitorManager TotalDetetcorConsumer[startPreview] " + this.f + "ms");
+      try
+      {
+        label180:
+        FileInputStream localFileInputStream = new FileInputStream(new File(bbvn.a(this.a).getApp().getFilesDir(), "rich_status.xml"));
+        localObject = localFileInputStream;
+      }
+      catch (FileNotFoundException localFileNotFoundException)
+      {
+        localFileNotFoundException.printStackTrace();
       }
     }
   }
   
-  public void c()
+  protected Integer a(Void... paramVarArgs)
   {
-    if (this.jdField_d_of_type_Boolean) {
-      this.g = System.currentTimeMillis();
+    long l = bbvn.a(this.a).getLong("k_version", 0L);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.xml", 2, "updateActions_Local with file " + l + ", " + 104L);
     }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_d_of_type_Boolean)
+    if (l > 104L) {}
+    ArrayList localArrayList;
+    label221:
+    for (;;)
     {
-      this.g = (System.currentTimeMillis() - this.g);
-      this.jdField_d_of_type_Long += this.g;
-      if (QLog.isColorLevel()) {
-        QLog.i("GestureMonitorManager", 2, "GestureMonitorManager GestureDrawConsumer[GestureDraw] " + this.g + "ms");
+      try
+      {
+        paramVarArgs = new FileInputStream(new File(bbvn.a(this.a).getApp().getFilesDir(), "rich_status.xml"));
+        if (paramVarArgs != null) {
+          break label221;
+        }
+        Object localObject;
+        paramVarArgs = null;
+      }
+      catch (FileNotFoundException paramVarArgs)
+      {
+        try
+        {
+          localObject = bbvn.a(this.a).getApp().getAssets().open("rich_status.xml");
+          paramVarArgs = (Void[])localObject;
+          l = 104L;
+          localObject = bbvn.a(this.a, paramVarArgs);
+          paramVarArgs = (SparseArray)localObject[0];
+          localArrayList = (ArrayList)localObject[1];
+          if ((paramVarArgs != null) && (paramVarArgs.size() != 0) && (localArrayList != null) && (localArrayList.size() != 0)) {
+            break;
+          }
+          publishProgress(new Integer[] { Integer.valueOf(-1) });
+          a(l);
+          return Integer.valueOf(100);
+        }
+        catch (IOException localIOException)
+        {
+          localIOException.printStackTrace();
+        }
+        paramVarArgs = paramVarArgs;
+        paramVarArgs.printStackTrace();
       }
     }
+    for (;;)
+    {
+      synchronized (bbvn.a(this.a))
+      {
+        if ((!isCancelled()) && (bbvn.a(this.a).size() == 0))
+        {
+          bbvn.a(this.a, paramVarArgs);
+          bbvn.a(this.a).clear();
+          bbvn.a(this.a).addAll(localArrayList);
+          publishProgress(new Integer[] { Integer.valueOf(102) });
+        }
+      }
+      cancel(true);
+    }
   }
   
-  public void e()
+  protected void a(Integer paramInteger)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("GestureMonitorManagerdoReport", 2, "GestureMonitorManager check Frame numbers[+20],[StartPreview:" + this.jdField_a_of_type_Long + "ms],[FaceDetector Aysn childThread:" + this.jdField_c_of_type_Long + "ms],ms],[FaceDraw:" + this.jdField_b_of_type_Long + "ms],[GestureDetector Aysn childThread:" + this.e + "ms],ms],[GestureDraw:" + this.jdField_d_of_type_Long + "ms]");
+      QLog.d("Q.richstatus.xml", 2, "mUpdateLocalTask onPostExecute " + paramInteger);
     }
+    bbvn.a(this.a, null);
+    if (101 == bbvn.a(this.a, false)) {
+      bbvn.a(this.a);
+    }
+    this.a.a(false);
+  }
+  
+  protected void a(Integer... paramVarArgs)
+  {
+    int i = paramVarArgs[0].intValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.xml", 2, "mUpdateLocalTask onProgressUpdate " + i);
+    }
+    if (bbvn.a(this.a) != null)
+    {
+      paramVarArgs = bbvn.a(this.a).iterator();
+      while (paramVarArgs.hasNext()) {
+        ((bbtb)paramVarArgs.next()).a(i, 300);
+      }
+    }
+    gk.a().c(i, 300);
+  }
+  
+  protected void onCancelled()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.xml", 2, "mUpdateLocalTask onCancelled");
+    }
+    bbvn.a(this.a, null);
   }
 }
 

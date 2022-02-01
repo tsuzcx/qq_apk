@@ -1,8 +1,20 @@
-import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 
-public abstract interface zop
+class zop
+  extends GridLayoutManager.SpanSizeLookup
 {
-  public abstract void callback(Bundle paramBundle);
+  zop(zoo paramzoo) {}
+  
+  public int getSpanSize(int paramInt)
+  {
+    paramInt = zoo.a(this.a, paramInt);
+    zou localzou = this.a.a(paramInt);
+    if (localzou != null) {
+      return localzou.c(localzou.a(paramInt));
+    }
+    return ((GridLayoutManager)zoo.a(this.a)).getSpanCount();
+  }
 }
 
 

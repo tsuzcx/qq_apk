@@ -1,17 +1,17 @@
 package com.tencent.av.ui;
 
-import mbg;
+import com.tencent.av.wtogether.media.WatchTogetherMediaPlayCtrl;
+import mcb;
+import myi;
 
 public class AVActivity$MyVideoObserver$1
   implements Runnable
 {
-  public AVActivity$MyVideoObserver$1(mbg parammbg) {}
+  public AVActivity$MyVideoObserver$1(mcb parammcb, WatchTogetherMediaPlayCtrl paramWatchTogetherMediaPlayCtrl, myi parammyi) {}
   
   public void run()
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.k(-1052L);
-    }
+    this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherMediaPlayCtrl.a(this.jdField_a_of_type_Myi);
   }
 }
 

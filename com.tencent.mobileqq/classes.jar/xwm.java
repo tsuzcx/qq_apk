@@ -1,196 +1,67 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.takevideo.EditGifImage;
-import com.tencent.image.AbstractGifImage.DoAccumulativeRunnable;
-import com.tencent.image.NativeGifImage;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import cooperation.qzone.util.gifCoderWnsConfig;
-import cooperation.qzone.widget.FastAnimationDrawable;
+import android.content.Context;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import java.lang.ref.WeakReference;
 
 public class xwm
-  extends xzb
-  implements View.OnClickListener
+  implements xwl
 {
-  protected double a;
-  protected final int a;
-  protected LinearLayout a;
-  protected SeekBar a;
-  protected TextView a;
-  protected boolean a;
-  protected int b;
-  protected TextView b;
-  protected int c;
-  protected int d = 50;
-  protected int e = -1;
-  protected int f;
-  protected int g;
+  private int jdField_a_of_type_Int;
+  private CommentLikeFeedItem jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
   
-  public xwm(@NonNull xzd paramxzd)
+  public xwm(Context paramContext, CommentLikeFeedItem paramCommentLikeFeedItem, int paramInt, boolean paramBoolean)
   {
-    super(paramxzd);
-    this.jdField_a_of_type_Int = AbstractGifImage.DoAccumulativeRunnable.DELAY;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  private void g()
+  public void a(CommentLikeFeedItem paramCommentLikeFeedItem)
   {
-    this.f = gifCoderWnsConfig.DEFAULT_GIF_MAX_DELAY;
-    this.g = (this.c * gifCoderWnsConfig.DEFAULT_GIF_MIN_MULTIPLE_DELAY);
-    this.jdField_a_of_type_Double = ((this.f - this.g) / 100.0D);
-    if (QLog.isColorLevel()) {
-      QLog.d("EditGifSpeedControl", 2, "calculateSpeedChangeByLimit | defaultY:" + this.c + " maxSpeed:" + this.f + " minSpeed:" + this.g + " k1:" + this.jdField_a_of_type_Double);
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
   }
   
-  public void a()
+  public void a(String paramString, int paramInt)
   {
-    super.a();
-    AbstractGifImage.DoAccumulativeRunnable.DELAY = 0;
-    NativeGifImage.QZONE_DELAY = -1;
-    this.jdField_b_of_type_Int = 50;
-    if (QLog.isColorLevel()) {
-      QLog.d("EditGifSpeedControl", 2, "onCreate | defaultX:" + this.jdField_b_of_type_Int + " defaultY:" + this.c + " delayTime:" + this.e);
-    }
-    g();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131377008));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131377003));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131377004));
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)a(2131367584));
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setMax(100);
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new xwn(this));
-  }
-  
-  public void a(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      return;
-    }
-    if (this.e == -1)
-    {
-      if (!this.jdField_a_of_type_Xzd.a.jdField_a_of_type_Boolean) {
-        break label193;
-      }
-      paramInt = (int)this.jdField_a_of_type_Xzd.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.getDuration();
-      this.e = paramInt;
-      this.c = paramInt;
-    }
-    for (NativeGifImage.QZONE_DELAY = paramInt;; NativeGifImage.QZONE_DELAY = paramInt)
-    {
-      g();
-      paramInt = (int)((this.c - this.g) / this.jdField_a_of_type_Double);
-      this.d = paramInt;
-      this.jdField_b_of_type_Int = paramInt;
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      if (QLog.isColorLevel()) {
-        QLog.d("EditGifSpeedControl", 2, "editVideoStateChanged | delayTime:" + this.e + " barPosition:" + this.d);
-      }
-      this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(this.d);
-      this.c = this.e;
-      this.jdField_b_of_type_Int = this.d;
-      return;
-      label193:
-      paramInt = NativeGifImage.GIF_DEFAULT_DELAY;
-      this.e = paramInt;
-      this.c = paramInt;
-    }
-  }
-  
-  public void a(@NonNull yjh paramyjh)
-  {
-    if (this.e == -1) {
-      if (this.jdField_a_of_type_Xzd.a.jdField_a_of_type_Boolean)
-      {
-        paramyjh.a.jdField_b_of_type_Int = ((int)this.jdField_a_of_type_Xzd.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.getDuration());
-        paramyjh.a.c = this.jdField_a_of_type_Boolean;
-        if (QLog.isColorLevel()) {
-          QLog.d("EditGifSpeedControl", 2, "editVideoPrePublish | get defaultY:" + this.c + " isDelayTimeChange:" + this.jdField_a_of_type_Boolean);
-        }
-      }
-    }
+    ykq.a("Q.qqstory.detail.SpannableStringUtils", "on nick click. unionId = %s.", paramString);
+    if ((paramInt == 1002) || (paramInt == 1003)) {}
+    Object localObject;
     do
     {
       return;
-      yjl localyjl = paramyjh.a;
-      if (NativeGifImage.GIF_DEFAULT_DELAY != -1) {}
-      for (int i = NativeGifImage.GIF_DEFAULT_DELAY;; i = gifCoderWnsConfig.DEFAULT_DELAY)
-      {
-        localyjl.jdField_b_of_type_Int = i;
-        break;
+      localObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localObject != null) {
+        weg.a((Context)localObject, 12, paramString);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("EditGifSpeedControl", 2, "editVideoPrePublish | get delayTime:" + this.e + " isDelayTimeChange:" + this.jdField_a_of_type_Boolean);
-      }
-      paramyjh.a.jdField_b_of_type_Int = this.e;
-      paramyjh.a.c = this.jdField_a_of_type_Boolean;
-      if (this.e < this.c)
-      {
-        LpReportInfo_pf00064.allReport(628, 5, 3);
-        return;
-      }
-    } while (this.e <= this.c);
-    LpReportInfo_pf00064.allReport(628, 5, 2);
-  }
-  
-  public boolean a()
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_Xzd.jdField_b_of_type_Int == 21)
+    } while (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem == null);
+    if (this.jdField_a_of_type_Boolean)
     {
-      NativeGifImage.QZONE_DELAY = this.c;
-      if (this.jdField_a_of_type_Xzd.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable != null) {
-        this.jdField_a_of_type_Xzd.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.setDuration(NativeGifImage.QZONE_DELAY);
+      localObject = "clk_reply_nick";
+      paramString = "2";
+      if (!(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem instanceof VideoListFeedItem)) {
+        break label157;
       }
-      this.e = this.c;
-      this.d = this.jdField_b_of_type_Int;
-      if (QLog.isColorLevel()) {
-        QLog.d("EditGifSpeedControl", 2, "onBackPressed | delayTime:" + this.e + " barPosition:" + this.d);
+      paramString = (VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+      paramInt = ykv.a(paramString);
+      if (!paramString.getOwner().isMe()) {
+        break label151;
       }
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.jdField_a_of_type_Xzd.a(0);
-      bool = true;
-      LpReportInfo_pf00064.allReport(628, 5, 4);
-    }
-    return bool;
-  }
-  
-  public void d()
-  {
-    super.d();
-    if (QLog.isColorLevel()) {
-      QLog.d("EditGifSpeedControl", 2, "onDestroy | DEFAULT_DELAY:" + this.jdField_a_of_type_Int);
-    }
-    AbstractGifImage.DoAccumulativeRunnable.DELAY = this.jdField_a_of_type_Int;
-    NativeGifImage.QZONE_DELAY = -1;
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
+      paramString = "1";
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      ykv.a("home_page", (String)localObject, paramInt, 0, new String[] { paramString, ykv.a(this.jdField_a_of_type_Int), "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
       return;
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      if (this.jdField_a_of_type_Xzd.jdField_b_of_type_Int == 21)
-      {
-        this.jdField_a_of_type_Xzd.a(0);
-        continue;
-        a();
-      }
+      localObject = "clk_like_name";
+      break;
+      label151:
+      paramString = "2";
+      continue;
+      label157:
+      paramInt = 4;
     }
   }
 }

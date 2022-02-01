@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.mobileqq.profilecard.bussiness.colorscreen.ProfileColorScreenComponent.ColorScreenLoader;
 
 public class baap
+  implements ImageAssetDelegate
 {
-  public int a;
-  public String a;
-  public List<PtvTemplateManager.PtvTemplateInfo> a;
-  public boolean a;
-  public int b;
-  public String b;
+  public baap(ProfileColorScreenComponent.ColorScreenLoader paramColorScreenLoader) {}
   
-  public baap() {}
-  
-  public baap(String paramString)
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    this.a = paramString;
+    return (Bitmap)BaseApplicationImpl.sImageCache.get(paramLottieImageAsset.getKey());
   }
 }
 

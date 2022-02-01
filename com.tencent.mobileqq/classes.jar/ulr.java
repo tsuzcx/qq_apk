@@ -1,24 +1,26 @@
-import UserGrowth.stSimpleMetaFeed;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.video.strategy.VideoAdExposureManager.PosListener.1;
+import java.lang.ref.WeakReference;
 
-class ulr
-  implements View.OnClickListener
+public final class ulr
+  implements qfo
 {
-  ulr(ulq paramulq, int paramInt) {}
+  private WeakReference<ulq> a;
   
-  public void onClick(View paramView)
+  public ulr(ulq paramulq)
   {
-    if (ulq.a(this.jdField_a_of_type_Ulq) != null)
+    this.a = new WeakReference(paramulq);
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.a != null)
     {
-      String str = ulq.a(this.jdField_a_of_type_Ulq);
-      if (ulq.a(this.jdField_a_of_type_Ulq) != null) {
-        str = ulq.a(this.jdField_a_of_type_Ulq).id;
+      ulq localulq = (ulq)this.a.get();
+      if ((localulq != null) && (ulq.a(localulq) != null)) {
+        ulq.a(localulq).post(new VideoAdExposureManager.PosListener.1(this, localulq, paramInt));
       }
-      ulq.a(this.jdField_a_of_type_Ulq).a(paramView, 12, this.jdField_a_of_type_Int, str);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

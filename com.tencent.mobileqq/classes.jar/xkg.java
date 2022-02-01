@@ -1,49 +1,63 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import android.annotation.TargetApi;
+import android.graphics.SurfaceTexture;
+import android.os.Build.VERSION;
+import android.widget.MediaController;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
-class xkg
-  extends whf
+public class xkg
+  implements xlz
 {
-  xkg(xke paramxke) {}
+  public xkg(TextureVideoView paramTextureVideoView) {}
   
-  public void a()
+  @TargetApi(15)
+  public void a_(xlu paramxlu)
   {
-    super.a();
-    StoryMemoriesFragment.a(this.a.a, null);
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    boolean bool = QQStoryContext.a().b(StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq);
-    int i;
-    int j;
-    String str1;
-    if (StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isVip)
+    if (this.a.jdField_a_of_type_Xlu == null) {}
+    label282:
+    do
     {
-      i = 1;
-      j = StoryMemoriesFragment.a(StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_Int);
-      if (!bool) {
-        break label124;
-      }
-      str1 = "1";
-      label76:
-      if (i != 1) {
-        break label131;
-      }
-    }
-    label131:
-    for (String str2 = "1";; str2 = "2")
-    {
-      xwa.a("memory", "share_suc", j, paramInt, new String[] { str1, str2, "", "" });
+      int i;
+      do
+      {
+        do
+        {
+          return;
+          this.a.jdField_a_of_type_Int = 2;
+          TextureVideoView localTextureVideoView1 = this.a;
+          TextureVideoView localTextureVideoView2 = this.a;
+          this.a.jdField_d_of_type_Boolean = true;
+          localTextureVideoView2.c = true;
+          localTextureVideoView1.jdField_b_of_type_Boolean = true;
+          if (this.a.jdField_a_of_type_Xlz != null) {
+            this.a.jdField_a_of_type_Xlz.a_(this.a.jdField_a_of_type_Xlu);
+          }
+          if (this.a.jdField_a_of_type_AndroidWidgetMediaController != null) {
+            this.a.jdField_a_of_type_AndroidWidgetMediaController.setEnabled(true);
+          }
+          this.a.jdField_d_of_type_Int = paramxlu.c();
+          this.a.e = paramxlu.d();
+          i = this.a.g;
+          if (i != 0) {
+            this.a.seekTo(i);
+          }
+          if ((this.a.jdField_d_of_type_Int == 0) || (this.a.e == 0)) {
+            break label282;
+          }
+          if (Build.VERSION.SDK_INT >= 15) {
+            this.a.getSurfaceTexture().setDefaultBufferSize(this.a.jdField_d_of_type_Int, this.a.e);
+          }
+          if (this.a.jdField_b_of_type_Int != 3) {
+            break;
+          }
+          this.a.start();
+        } while (this.a.jdField_a_of_type_AndroidWidgetMediaController == null);
+        this.a.jdField_a_of_type_AndroidWidgetMediaController.show();
+        return;
+      } while ((this.a.isPlaying()) || ((i == 0) && (this.a.getCurrentPosition() <= 0)) || (this.a.jdField_a_of_type_AndroidWidgetMediaController == null));
+      this.a.jdField_a_of_type_AndroidWidgetMediaController.show(0);
       return;
-      i = 0;
-      break;
-      label124:
-      str1 = "2";
-      break label76;
-    }
+    } while (this.a.jdField_b_of_type_Int != 3);
+    this.a.start();
   }
 }
 

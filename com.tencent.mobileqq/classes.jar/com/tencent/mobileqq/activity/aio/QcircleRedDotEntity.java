@@ -7,17 +7,25 @@ public class QcircleRedDotEntity
   extends Entity
 {
   public boolean isShowRedDot;
+  public String jumpSchema;
   public long timeStamp;
   @unique
   public String uin;
   
-  public QcircleRedDotEntity() {}
-  
-  public QcircleRedDotEntity(String paramString, boolean paramBoolean, long paramLong)
+  public QcircleRedDotEntity()
   {
-    this.uin = paramString;
+    this.uin = "";
+    this.isShowRedDot = false;
+    this.timeStamp = 0L;
+    this.jumpSchema = "";
+  }
+  
+  public QcircleRedDotEntity(String paramString1, boolean paramBoolean, long paramLong, String paramString2)
+  {
+    this.uin = paramString1;
     this.isShowRedDot = paramBoolean;
     this.timeStamp = paramLong;
+    this.jumpSchema = paramString2;
   }
   
   public boolean equals(Object paramObject)
@@ -31,7 +39,7 @@ public class QcircleRedDotEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.QcircleRedDotEntity
  * JD-Core Version:    0.7.0.1
  */

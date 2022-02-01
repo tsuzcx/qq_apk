@@ -19,7 +19,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import bcef;
+import bdla;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.aio.AudioPlayer;
 import com.tencent.mobileqq.data.Emoticon;
@@ -55,7 +55,7 @@ public class EmoticonLinearLayout
   {
     super(paramContext, paramAttributeSet);
     this.context = paramContext;
-    this.emoticonTextColor = super.getResources().getColor(2131166523);
+    this.emoticonTextColor = super.getResources().getColor(2131166537);
     setOrientation(1);
     this.density = paramContext.getResources().getDisplayMetrics().density;
     super.setClickable(true);
@@ -253,7 +253,7 @@ public class EmoticonLinearLayout
     {
       j = (int)(64.0F * f);
       i = (int)(71.0F * f);
-      this.mPopupEmo.setBackgroundResource(2130838041);
+      this.mPopupEmo.setBackgroundResource(2130838055);
       this.mPopupEmo.setPadding(k, k, k, k);
       paramView.width = ((int)(28.0F * f));
       paramView.height = ((int)(28.0F * f));
@@ -291,7 +291,7 @@ public class EmoticonLinearLayout
           PicEmoticonInfo.startSoundDrawablePlay((URLDrawable)localDrawable);
         }
         if (2 == ((PicEmoticonInfo)localObject).emoticon.jobType) {
-          bcef.b(null, "CliOper", "", "", "MbYulan", "MbChangan", 0, 0, ((PicEmoticonInfo)localObject).emoticon.epId, "", "", "");
+          bdla.b(null, "CliOper", "", "", "MbYulan", "MbChangan", 0, 0, ((PicEmoticonInfo)localObject).emoticon.epId, "", "", "");
         }
       }
       if (this.callback == null) {
@@ -301,12 +301,12 @@ public class EmoticonLinearLayout
       return;
       j = (int)(110.0F * f);
       i = (int)(110.0F * f);
-      this.mPopupEmo.setBackgroundResource(2130838040);
+      this.mPopupEmo.setBackgroundResource(2130838054);
       this.mPopupEmo.setPadding(k, k, k, k);
       paramView.bottomMargin = 0;
       paramView.width = ((int)(100.0F * f));
       paramView.height = ((int)(100.0F * f));
-      bcef.b(null, "CliOper", "", "", "ep_mall", "ep_preview", 0, 0, "", "", "", "");
+      bdla.b(null, "CliOper", "", "", "ep_mall", "ep_preview", 0, 0, "", "", "", "");
       break label271;
       label685:
       paramView = (WindowManager)getContext().getSystemService("window");
@@ -322,7 +322,7 @@ public class EmoticonLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonLinearLayout
  * JD-Core Version:    0.7.0.1
  */

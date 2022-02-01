@@ -1,22 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelFileTabView.1;
+import java.util.Comparator;
 
-class atbr
-  implements DialogInterface.OnClickListener
+public class atbr
+  implements Comparator<Long>
 {
-  atbr(atbn paramatbn) {}
+  public atbr(QfileLocalFileDelFileTabView.1 param1) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(Long paramLong1, Long paramLong2)
   {
-    if (paramInt == 1) {
-      this.a.c();
+    if (paramLong1.equals(paramLong2)) {
+      return 1;
     }
-    paramDialogInterface.dismiss();
+    return (int)(paramLong1.longValue() - paramLong2.longValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atbr
  * JD-Core Version:    0.7.0.1
  */

@@ -2,18 +2,18 @@ package com.tencent.mobileqq.relationx.friendclue;
 
 import android.content.Context;
 import android.content.res.Resources;
-import azwp;
+import bbcx;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class FriendClueManager$1
   implements Runnable
 {
-  public FriendClueManager$1(azwp paramazwp) {}
+  public FriendClueManager$1(bbcx parambbcx) {}
   
   public void run()
   {
-    String str = azwp.a(this.this$0).getResources().getString(2131718582);
-    QQToast.a(azwp.a(this.this$0), 1, str, 1).a();
+    String str = bbcx.a(this.this$0).getResources().getString(2131718971);
+    QQToast.a(bbcx.a(this.this$0), 1, str, 1).a();
   }
 }
 

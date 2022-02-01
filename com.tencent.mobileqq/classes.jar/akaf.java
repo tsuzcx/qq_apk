@@ -1,46 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.QwAdapter;
-import java.util.List;
-
-class akaf
-  implements IRedPacket.OnGetSkinListener
+public class akaf
+  extends akac
 {
-  akaf(akad paramakad) {}
+  private String a;
   
-  public void onGetSkin(RedPacketInfoBase paramRedPacketInfoBase)
+  public akaf(String paramString)
   {
-    akaa localakaa = akac.a(akad.a(this.a), paramRedPacketInfoBase.skinId);
-    List localList;
-    if (localakaa != null)
-    {
-      localList = akad.a(this.a).getList();
-      if (QLog.isColorLevel()) {
-        QLog.d("HbSkinLogic", 2, "redl iscache = " + akaa.jdField_a_of_type_Boolean + " info.iscache = " + paramRedPacketInfoBase.isCache);
-      }
-      if ((akaa.jdField_a_of_type_Boolean == paramRedPacketInfoBase.isCache) && (!localList.contains(localakaa))) {
-        break label110;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("HbSkinLogic", 2, "no add in list...");
-      }
-    }
-    label110:
-    while ((paramRedPacketInfoBase.background == null) && (paramRedPacketInfoBase.animInfo == null)) {
-      return;
-    }
-    if (TextUtils.isEmpty(paramRedPacketInfoBase.title)) {
-      paramRedPacketInfoBase.title = akad.a();
-    }
-    localakaa.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase = paramRedPacketInfoBase;
-    if (QLog.isColorLevel()) {
-      QLog.d("HbSkinLogic", 2, "redl add to list show!");
-    }
-    localList.add(localakaa);
-    akaa.a(localList);
-    akad.a(this.a).notifyDataSetChanged();
+    this.a = paramString;
+  }
+  
+  public String a()
+  {
+    return String.format("&mqquin=%s", new Object[] { this.a });
+  }
+  
+  public boolean a(String paramString)
+  {
+    return (paramString != null) && (paramString.contains("plg_uin=1"));
   }
 }
 

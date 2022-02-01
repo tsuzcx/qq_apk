@@ -1,27 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.34.1;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class srx
-  implements puq
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnGuideManager$dismissGuideRootView$1$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "isReverse", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class srx
+  extends AnimatorListenerAdapter
 {
-  public srx(FastWebActivity paramFastWebActivity) {}
+  srx(View paramView) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, FastWebArticleInfo paramFastWebArticleInfo)
+  public void onAnimationEnd(@Nullable Animator paramAnimator, boolean paramBoolean)
   {
-    QLog.d("FastWebActivity", 2, " isSucc " + paramBoolean1 + "  useWebView :" + paramBoolean2 + "  data : " + paramFastWebArticleInfo);
-    if ((paramBoolean1) && (!paramBoolean2) && (paramFastWebArticleInfo != null))
-    {
-      paramBoolean1 = true;
-      sxd.b("fast_web_show_light_house_2");
-    }
-    for (;;)
-    {
-      this.a.runOnUiThread(new FastWebActivity.34.1(this, paramBoolean1, paramFastWebArticleInfo));
-      return;
-      paramBoolean1 = false;
-    }
+    this.a.setVisibility(8);
   }
 }
 

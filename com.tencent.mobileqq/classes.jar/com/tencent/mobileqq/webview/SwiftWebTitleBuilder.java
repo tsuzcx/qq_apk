@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.webview;
 
 import android.content.Intent;
-import bgtw;
-import bgug;
-import bkgq;
-import bkvd;
-import bkvo;
+import bieo;
+import biey;
+import blsc;
+import bmgm;
+import bmgx;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 import cooperation.qqcircle.hybird.QCircleTitleBarView;
@@ -20,7 +20,7 @@ public class SwiftWebTitleBuilder
   public static final int TITLE_BAR_STYLE_READER = 3;
   public static final int TITLE_BAR_STYLE_SWITCH_FRAGMENT = 2;
   
-  public static bgtw createTitleBar(SwiftBrowserUIStyleHandler paramSwiftBrowserUIStyleHandler)
+  public static bieo createTitleBar(SwiftBrowserUIStyleHandler paramSwiftBrowserUIStyleHandler)
   {
     int j = 0;
     int i = j;
@@ -31,20 +31,20 @@ public class SwiftWebTitleBuilder
         i = paramSwiftBrowserUIStyleHandler.mHostFragment.getIntent().getIntExtra("titleBarStyle", 0);
       }
     }
-    bkvd.d("SwiftWebTitleBuilder", "title bar style is" + i);
+    bmgm.d("SwiftWebTitleBuilder", "title bar style is" + i);
     if (i == 1) {
-      return new bkgq(paramSwiftBrowserUIStyleHandler);
+      return new blsc(paramSwiftBrowserUIStyleHandler);
     }
     if (i == 2) {
-      return new bgug(paramSwiftBrowserUIStyleHandler);
+      return new biey(paramSwiftBrowserUIStyleHandler);
     }
     if (i == 3) {
-      return new bkvo(paramSwiftBrowserUIStyleHandler);
+      return new bmgx(paramSwiftBrowserUIStyleHandler);
     }
     if (i == 4) {
       return new QCircleTitleBarView(paramSwiftBrowserUIStyleHandler);
     }
-    return new bgtw(paramSwiftBrowserUIStyleHandler);
+    return new bieo(paramSwiftBrowserUIStyleHandler);
   }
 }
 

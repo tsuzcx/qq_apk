@@ -1,99 +1,58 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.articlesummary.articlesummary.HotWordItem;
 
 public class rpi
-  implements bbfe<bayt>, bbff<bayt>
 {
-  private bbff<bayt> jdField_a_of_type_Bbff;
-  private List<bbfe> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private List<bayt> b = new ArrayList();
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
   
-  public rpi(List<bbfe> paramList)
+  public static rpi a(articlesummary.HotWordItem paramHotWordItem)
   {
-    if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    rpi localrpi = new rpi();
+    if (paramHotWordItem.hot_word.has()) {
+      localrpi.a = paramHotWordItem.hot_word.get().toStringUtf8();
     }
+    if (paramHotWordItem.jump_url.has()) {
+      localrpi.b = paramHotWordItem.jump_url.get().toStringUtf8();
+    }
+    if (paramHotWordItem.index_word_color.has()) {
+      localrpi.c = paramHotWordItem.index_word_color.get().toStringUtf8();
+    }
+    if (paramHotWordItem.index_bg_color.has()) {
+      localrpi.d = paramHotWordItem.index_bg_color.get().toStringUtf8();
+    }
+    return localrpi;
   }
   
-  public List<bayt> a(bbfs parambbfs)
+  public articlesummary.HotWordItem a()
   {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.addAll(((bbfe)localIterator.next()).a(parambbfs));
+    articlesummary.HotWordItem localHotWordItem = new articlesummary.HotWordItem();
+    if (!TextUtils.isEmpty(this.a)) {
+      localHotWordItem.hot_word.set(ByteStringMicro.copyFromUtf8(this.a));
     }
-    return localArrayList;
+    if (!TextUtils.isEmpty(this.d)) {
+      localHotWordItem.index_bg_color.set(ByteStringMicro.copyFromUtf8(this.d));
+    }
+    if (!TextUtils.isEmpty(this.c)) {
+      localHotWordItem.index_word_color.set(ByteStringMicro.copyFromUtf8(this.c));
+    }
+    if (!TextUtils.isEmpty(this.b)) {
+      localHotWordItem.jump_url.set(ByteStringMicro.copyFromUtf8(this.b));
+    }
+    return localHotWordItem;
   }
   
-  public void a()
+  public boolean equals(Object paramObject)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((bbfe)localIterator.next()).a();
+    if ((paramObject instanceof rpi)) {
+      return (!TextUtils.isEmpty(this.a)) && (this.a.equals(((rpi)paramObject).a)) && (!TextUtils.isEmpty(this.b)) && (this.b.equals(((rpi)paramObject).b));
     }
-  }
-  
-  public void a(bbfs parambbfs, bbff<bayt> parambbff)
-  {
-    this.b.clear();
-    this.jdField_a_of_type_Bbff = parambbff;
-    parambbff = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (parambbff.hasNext()) {
-      ((bbfe)parambbff.next()).a(parambbfs, this);
-    }
-  }
-  
-  public void a(List<bayt> paramList)
-  {
-    if (this.jdField_a_of_type_Bbff != null) {
-      this.jdField_a_of_type_Bbff.a(paramList);
-    }
-  }
-  
-  public void a(List<bayt> paramList, int paramInt)
-  {
-    this.b.addAll(paramList);
-    if (this.jdField_a_of_type_Bbff != null) {
-      this.jdField_a_of_type_Bbff.a(this.b, paramInt);
-    }
-  }
-  
-  public void a(List<bayt> paramList, bbft parambbft)
-  {
-    a(paramList, parambbft.a);
-  }
-  
-  public void b()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((bbfe)localIterator.next()).b();
-    }
-  }
-  
-  public void c()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((bbfe)localIterator.next()).c();
-    }
-  }
-  
-  public void d()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((bbfe)localIterator.next()).d();
-    }
-  }
-  
-  public void e()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((bbfe)localIterator.next()).e();
-    }
+    return false;
   }
 }
 

@@ -1,36 +1,31 @@
-import android.os.Bundle;
-import com.tencent.open.agent.OpenSelectPermissionFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import android.graphics.Rect;
+import kotlin.Metadata;
+import kotlin.Triple;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class bhud
-  implements bifg
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/ui/VasNinePathBitmap$Companion;", "", "()V", "calculateScale", "Lkotlin/Triple;", "", "", "width", "", "height", "canvasRect", "Landroid/graphics/Rect;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bhud
 {
-  public bhud(OpenSelectPermissionFragment paramOpenSelectPermissionFragment) {}
-  
-  public void a(biej parambiej)
+  @JvmStatic
+  @NotNull
+  public final Triple<Boolean, Boolean, Float> a(int paramInt1, int paramInt2, @NotNull Rect paramRect)
   {
-    OpenSelectPermissionFragment.a(this.a, null);
-    QLog.d("SDK_LOGIN.OpenSelectPermissionFragment", 1, "refreshTicket success info.uin=" + bhwf.a(parambiej.a));
-    if (OpenSelectPermissionFragment.b(this.a))
+    boolean bool2 = false;
+    Intrinsics.checkParameterIsNotNull(paramRect, "canvasRect");
+    if (paramRect.width() < paramInt1) {}
+    for (boolean bool1 = true;; bool1 = false)
     {
-      QLog.d("SDK_LOGIN.OpenSelectPermissionFragment", 1, "refreshTicket success Activity Finishing");
-      return;
+      if (paramRect.height() < paramInt2) {
+        bool2 = true;
+      }
+      if ((!bool1) && (!bool2)) {
+        break;
+      }
+      return new Triple(Boolean.valueOf(bool1), Boolean.valueOf(bool2), Float.valueOf(Math.max(paramInt2 / paramRect.height(), paramInt1 / paramRect.width())));
     }
-    OpenSelectPermissionFragment.a(this.a).a().a(OpenSelectPermissionFragment.a(this.a), parambiej);
-    OpenSelectPermissionFragment.b(this.a);
-  }
-  
-  public void a(String paramString, Bundle paramBundle)
-  {
-    OpenSelectPermissionFragment.a(this.a, null);
-    QLog.e("SDK_LOGIN.OpenSelectPermissionFragment", 1, "refreshTicket onFail");
-    if (OpenSelectPermissionFragment.b(this.a))
-    {
-      QLog.d("SDK_LOGIN.OpenSelectPermissionFragment", 1, "refreshTicket onFail Activity Finishing");
-      return;
-    }
-    OpenSelectPermissionFragment.a(this.a);
+    return new Triple(Boolean.valueOf(bool1), Boolean.valueOf(bool2), Float.valueOf(1.0F));
   }
 }
 

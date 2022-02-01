@@ -1,117 +1,69 @@
-public abstract class mam
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+class mam
+  extends BroadcastReceiver
 {
-  protected int a;
-  protected String a;
-  protected int b = 0;
-  protected int c = 3;
-  protected int d;
-  protected int e = 1;
+  mam(mal parammal) {}
   
-  protected mam(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
+  public void onReceive(Context arg1, Intent arg2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.d = paramInt2;
-    this.c = paramInt3;
-    this.e = paramInt4;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public static boolean a(mam parammam1, mam parammam2)
-  {
-    boolean bool2 = true;
-    boolean bool1;
-    if (parammam2 == null) {
-      bool1 = false;
-    }
+    if ((??? == null) || (???.getAction() == null)) {}
     do
     {
-      do
+      for (;;)
       {
-        int i;
-        int j;
-        do
+        return;
+        ??? = ???.getAction();
+        if ("ACTION_QAV_RES_DOWNLOAD_STATE_NOTIFY".equals(???))
         {
-          do
+          int i = ???.getIntExtra("ACTION_FIELD_DOWNLOAD_STATE", 0);
+          int j = ???.getIntExtra("ACTION_FIELD_DOWNLOAD_PROGRESS", 0);
+          ??? = ???.getStringExtra("ACTION_FIELD_RES_MD5");
+          if (i == 2)
           {
-            return bool1;
-            bool1 = bool2;
-          } while (parammam1 == null);
-          i = parammam2.e();
-          j = parammam1.e();
-          lih.a("CheckAvTipsItemLevelCanShow, lvNew[" + i + "], lvOld[" + j + "], idNew[" + parammam2.b() + "], idOld[" + parammam1.b() + "]");
-          bool1 = bool2;
-        } while (i < j);
-        if (i > j) {
-          return false;
+            localArrayList = new ArrayList();
+            synchronized (this.a.a)
+            {
+              localArrayList.addAll(this.a.a);
+              ??? = localArrayList.iterator();
+              if (!???.hasNext()) {
+                continue;
+              }
+              ((man)???.next()).b(j, ???);
+            }
+          }
+          ArrayList localArrayList = new ArrayList();
+          synchronized (this.a.a)
+          {
+            localArrayList.addAll(this.a.a);
+            ??? = localArrayList.iterator();
+            if (???.hasNext()) {
+              ((man)???.next()).a(i, ???);
+            }
+          }
         }
-        bool1 = bool2;
-      } while (parammam1.a());
-      if (parammam2.a()) {
-        return false;
       }
-      bool1 = bool2;
-    } while (parammam2.c() <= parammam1.c());
-    return false;
-  }
-  
-  public abstract int a();
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.c = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    if (paramString != null) {
-      this.jdField_a_of_type_JavaLangString = paramString;
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.c == 0;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public int c()
-  {
-    return this.c;
-  }
-  
-  public int d()
-  {
-    return this.e;
-  }
-  
-  public int e()
-  {
-    return this.d;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if ((paramObject == null) || (!(paramObject instanceof mam))) {}
-    do
+    } while (!"ACTION_QAV_RES_NEW_CONFIG_NOTIFY".equals(???));
+    QLog.i("ResMgr", 1, "new config has been downloaded.");
+    synchronized (mal.a(this.a))
     {
-      return false;
-      paramObject = (mam)paramObject;
-    } while (b() != paramObject.b());
-    return true;
+      mal.a(this.a).clear();
+      ??? = mal.a();
+      if (??? != null) {
+        mal.a(this.a, ???);
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mam
  * JD-Core Version:    0.7.0.1
  */

@@ -51,6 +51,7 @@ public class MiniLoadingAdManager
   private int maxPreloadCountForUinAndAppid = WnsConfig.getConfig("qqminiapp", "launch_adv_app_preload_limit", 5);
   private int maxSelectCountForUin = WnsConfig.getConfig("qqminiapp", "launch_adv_user_select_limit", 5);
   private int maxSelectCountForUinAndAppid = WnsConfig.getConfig("qqminiapp", "launch_adv_app_select_limit", 2);
+  private long requestAdTimeStamp;
   private String unsupportedViaList = WnsConfig.getConfig("qqminiapp", "launch_adv_unsupport_via_list", "2054_1,2054_2,2054_3,2054_4,2054_5,2054_6,2054_7,2054_8,2054_9,2054_10,2054_11,2054_12,2054_13,2054_14,2054_15,2054_17,2054_18,2054_19");
   
   private static ArrayList<MiniAppAd.SpecifiedAdsItem> assembleCachedAidMap(String paramString1, String paramString2)
@@ -405,7 +406,7 @@ public class MiniLoadingAdManager
     return true;
   }
   
-  public void updateLoadingAdLayoutAndShow(MiniAppInfo paramMiniAppInfo, Activity paramActivity, boolean paramBoolean, String paramString, long paramLong, MiniLoadingAdManager.OnDismissListener paramOnDismissListener)
+  public void updateLoadingAdLayoutAndShow(MiniAppInfo paramMiniAppInfo, Activity paramActivity, boolean paramBoolean, String paramString, long paramLong1, long paramLong2, MiniLoadingAdManager.OnDismissListener paramOnDismissListener)
   {
     if ((AdProxy)ProxyManager.get(AdProxy.class) == null) {
       QMLog.i("MiniLoadingAdManager", "start create, null");
@@ -414,15 +415,15 @@ public class MiniLoadingAdManager
     do
     {
       return;
-      str = (String)cachedAidFilePathMap.get(Long.valueOf(paramLong));
+      str = (String)cachedAidFilePathMap.get(Long.valueOf(paramLong1));
     } while (TextUtils.isEmpty(str));
     SDKMiniProgramLpReportDC04239.reportMiniAppEvent(paramMiniAppInfo, SDKMiniProgramLpReportDC04239.getAppType(paramMiniAppInfo), null, "ad", "ad_loading", "expo_call", null);
-    ((AdProxy)ProxyManager.get(AdProxy.class)).updateLoadingAdLayoutAndShow(paramActivity, paramBoolean, paramString, paramMiniAppInfo.name, paramMiniAppInfo.iconUrl, paramMiniAppInfo.developerDesc, str, new MiniLoadingAdManager.4(this, paramMiniAppInfo, paramOnDismissListener, paramActivity));
+    ((AdProxy)ProxyManager.get(AdProxy.class)).updateLoadingAdLayoutAndShow(paramActivity, paramMiniAppInfo, paramBoolean, paramString, paramMiniAppInfo.name, paramMiniAppInfo.iconUrl, paramMiniAppInfo.developerDesc, str, paramLong2, this.requestAdTimeStamp, new MiniLoadingAdManager.4(this, paramMiniAppInfo, paramOnDismissListener, paramActivity));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.MiniLoadingAdManager
  * JD-Core Version:    0.7.0.1
  */

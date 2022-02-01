@@ -1,63 +1,46 @@
 import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBig;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.app.face.FaceDecoder;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class qrt
-  extends qpk
+  implements ViewBase.OnClickListener
 {
-  public qrt(Context paramContext, FaceDecoder paramFaceDecoder, slt paramslt)
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  
+  public qrt(ArticleInfo paramArticleInfo, Context paramContext)
   {
-    super(paramContext, paramFaceDecoder, paramslt);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public qpk a()
+  private void a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    return g().h();
-  }
-  
-  public qpk d()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
-    }
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.setOrientation(1);
-    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof pwe)) && (pay.s(((pwe)this.jdField_a_of_type_JavaLangObject).a()))) {
-      localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(AIOUtils.dp2px(250.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
-    }
-    for (;;)
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {}
+    String str;
+    do
     {
-      if ((this.jdField_a_of_type_Qpj != null) && ((this.jdField_a_of_type_Qpj instanceof ComponentContentBig))) {
-        localLinearLayout.addView((ComponentContentBig)this.jdField_a_of_type_Qpj);
+      return;
+      str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.businessUrl;
+      if (QLog.isColorLevel()) {
+        QLog.d("OnTopicCapsuleClickListener", 2, "business url is " + str);
       }
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
-        localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
-      }
-      a(localLinearLayout);
-      return this;
-      localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(AIOUtils.dp2px(220.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
-    }
+    } while ((TextUtils.isEmpty(str)) || (this.jdField_a_of_type_AndroidContentContext == null));
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, PublicAccountBrowser.class);
+    localIntent.putExtra("url", str);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    olh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    pqb.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
   }
   
-  public qpk e()
+  public void onClick(ViewBase paramViewBase)
   {
-    return null;
-  }
-  
-  public qpk g()
-  {
-    this.jdField_a_of_type_Qpj = new ComponentContentBig(this.jdField_a_of_type_AndroidContentContext);
-    return this;
-  }
-  
-  public qpk o()
-  {
-    super.o();
-    return this;
+    a();
   }
 }
 

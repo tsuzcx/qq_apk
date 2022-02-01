@@ -1,34 +1,14 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextWatcher;
 
-public class akuy
-  implements Animation.AnimationListener
+public abstract class akuy
+  implements TextWatcher
 {
-  private int jdField_a_of_type_Int;
-  private akuz jdField_a_of_type_Akuz;
+  public void afterTextChanged(Editable paramEditable) {}
   
-  public akuy(VideoFilterViewPager paramVideoFilterViewPager, akuz paramakuz, int paramInt)
-  {
-    this.jdField_a_of_type_Akuz = paramakuz;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if ((this.jdField_a_of_type_Akuz != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaVideoFilterViewPager.getCurrentItem() == this.jdField_a_of_type_Int))
-    {
-      this.jdField_a_of_type_Akuz.a(1);
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFilterViewPager", 2, "OnViewPagerItemVisiableChangeListener animation dismiss state: 1");
-      }
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

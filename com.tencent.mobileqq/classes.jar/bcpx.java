@@ -1,32 +1,47 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.Callable;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-class bcpx
-  implements Callable<File>
+public class bcpx
+  extends bcpy
 {
-  bcpx(bcpw parambcpw) {}
+  PeakAppInterface a;
   
-  public File a()
+  public bcpx(PeakAppInterface paramPeakAppInterface)
+  {
+    this.a = paramPeakAppInterface;
+  }
+  
+  public AppInterface a()
+  {
+    return this.a;
+  }
+  
+  protected void a()
   {
     try
     {
-      boolean bool = bcpw.a(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.i("studyroom.CdnPmUpdater", 2, "isNeedDownload:" + bool);
-      }
-      if (!bool)
-      {
-        localFile = this.a.getLatest();
-        return localFile;
-      }
-      File localFile = this.a.a();
-      return localFile;
+      super.a();
+      a(new bnjr(this.a));
+      super.b();
+      return;
     }
     finally
     {
-      bcpw.a(this.a, false);
+      localObject = finally;
+      throw localObject;
     }
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg)
+  {
+    a(paramToServiceMsg, null, bcuz.class);
+  }
+  
+  public void a(boolean paramBoolean, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    super.a(paramBoolean, paramToServiceMsg, paramFromServiceMsg, null);
   }
 }
 

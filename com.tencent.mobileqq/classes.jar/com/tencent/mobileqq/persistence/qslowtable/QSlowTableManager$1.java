@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.persistence.qslowtable;
 
-import ayby;
-import aybz;
+import azik;
+import azil;
 import com.tencent.qphone.base.util.QLog;
 
 public class QSlowTableManager$1
   implements Runnable
 {
-  public QSlowTableManager$1(aybz paramaybz) {}
+  public QSlowTableManager$1(azil paramazil) {}
   
   public void run()
   {
     try
     {
-      if (!aybz.a(this.this$0).verifyAuthentication()) {
+      if (!azil.a(this.this$0).verifyAuthentication()) {
         QLog.e("QSlowTableManager", 1, "db verifyAuthentication failed!");
       }
       return;

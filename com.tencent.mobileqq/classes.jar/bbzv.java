@@ -1,217 +1,54 @@
-import android.os.SystemClock;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.soload.config.SoLoadConfProcessor.1;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.graphics.Color;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.SearchWordHistoryEntryModel.2.3;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bbzv
-  extends aptq<bbzu>
+  implements View.OnClickListener
 {
-  private final List<bbzw> a = new LinkedList();
+  bbzv(bbzt parambbzt, Context paramContext, QQAppInterface paramQQAppInterface) {}
   
-  private void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, "[notifyListeners]:" + this.a.size());
-    }
-    ThreadManager.getSubThreadHandler().removeCallbacksAndMessages(this);
-    try
+    bird localbird = new bird(this.jdField_a_of_type_AndroidContentContext);
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559849, null, false);
+    ImageView localImageView1 = (ImageView)localView.findViewById(2131363339);
+    ImageView localImageView2 = (ImageView)localView.findViewById(2131363004);
+    ImageView localImageView3 = (ImageView)localView.findViewById(2131362991);
+    TextView localTextView1 = (TextView)localView.findViewById(2131364250);
+    TextView localTextView2 = (TextView)localView.findViewById(2131365494);
+    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
     {
-      synchronized (this.a)
-      {
-        if (this.a.size() <= 0) {
-          break label162;
-        }
-        Iterator localIterator = this.a.iterator();
-        while (localIterator.hasNext())
-        {
-          bbzw localbbzw = (bbzw)localIterator.next();
-          try
-          {
-            localbbzw.a(paramInt);
-          }
-          catch (Throwable localThrowable2) {}
-          if (QLog.isColorLevel()) {
-            QLog.e("SoLoadWidget.SoLoadConfProcessor", 1, localThrowable2, new Object[0]);
-          }
-        }
-      }
-      this.a.clear();
+      localImageView1.setBackgroundColor(Color.parseColor("#0b1d35"));
+      localImageView2.setImageResource(2130842372);
+      localImageView3.setImageResource(2130842372);
+      localTextView1.setBackgroundResource(2130846017);
     }
-    catch (Throwable localThrowable1)
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("SoLoadWidget.SoLoadConfProcessor", 1, localThrowable1, new Object[0]);
-      }
+      localbird.setContentView(localView);
+      localbird.setHeight(UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 96.0F));
+      localbird.setWidth(UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 224.0F));
+      localTextView1.setOnClickListener(new bbzw(this, localbird));
+      localTextView2.setOnClickListener(new bbzx(this, localbird));
+      localView.post(new SearchWordHistoryEntryModel.2.3(this, new int[2], localView, new int[2]));
+      localbird.showAsDropDown(paramView, 0, 0);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      localImageView1.setImageResource(2130839330);
+      localImageView2.setImageResource(2130842373);
+      localImageView3.setImageResource(2130842373);
+      localTextView1.setBackgroundResource(2130842363);
     }
-    label162:
-  }
-  
-  public static void a(int[] paramArrayOfInt, FromServiceMsg paramFromServiceMsg)
-  {
-    int m = paramArrayOfInt.length;
-    int i = 0;
-    if (i < m)
-    {
-      Object localObject;
-      boolean bool;
-      if (paramArrayOfInt[i] == 526) {
-        if (QLog.isColorLevel())
-        {
-          localObject = new StringBuilder().append("[notifyNetFailed] isSucc=");
-          if ((paramFromServiceMsg == null) || (!paramFromServiceMsg.isSuccess())) {
-            break label148;
-          }
-          bool = true;
-          label55:
-          localObject = ((StringBuilder)localObject).append(bool).append(", resultCode=");
-          if (paramFromServiceMsg == null) {
-            break label154;
-          }
-        }
-      }
-      label148:
-      label154:
-      for (int j = paramFromServiceMsg.getResultCode();; j = -1)
-      {
-        QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, j);
-        localObject = apub.a().a(526);
-        if (localObject != null)
-        {
-          int k = -2;
-          j = k;
-          if (paramFromServiceMsg != null)
-          {
-            j = k;
-            if (paramFromServiceMsg.getResultCode() == 1002) {
-              j = -1;
-            }
-          }
-          ((aptq)localObject).onReqFailed(j);
-        }
-        i += 1;
-        break;
-        bool = false;
-        break label55;
-      }
-    }
-  }
-  
-  private void b(int paramInt)
-  {
-    bbzk.a();
-    a(paramInt);
-  }
-  
-  @NonNull
-  public bbzu a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, "[migrateOldOrDefaultContent]");
-    }
-    return new bbzu();
-  }
-  
-  @Nullable
-  public bbzu a(aptx[] paramArrayOfaptx)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, "[onParsed]");
-    }
-    bbzu localbbzu = new bbzu();
-    localbbzu.a = paramArrayOfaptx;
-    return localbbzu;
-  }
-  
-  public void a(bbzu parambbzu)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, "[onUpdate] newConf:" + parambbzu);
-    }
-    bbzq.a().a(parambbzu);
-    b(0);
-  }
-  
-  public void a(bbzw parambbzw)
-  {
-    a(parambbzw, true);
-  }
-  
-  public void a(bbzw parambbzw, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, "[getConfig]");
-    }
-    synchronized (this.a)
-    {
-      if (this.a.size() > 0)
-      {
-        this.a.add(parambbzw);
-        return;
-      }
-      this.a.add(parambbzw);
-      apub.a().a(526, 0);
-      apub.a().a(new int[] { 526 });
-      ThreadManager.getSubThreadHandler().removeCallbacksAndMessages(this);
-      ThreadManager.getSubThreadHandler().postAtTime(new SoLoadConfProcessor.1(this), this, SystemClock.uptimeMillis() + 35000L);
-      return;
-    }
-  }
-  
-  public Class<bbzu> clazz()
-  {
-    return bbzu.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, "[get migrateOldVersion]");
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, "[onReqFailed] failCode=" + paramInt);
-    }
-    b(paramInt);
-  }
-  
-  public void onReqNoReceive()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, "onReqNoReceive: type=" + type() + "curContent:" + apub.a().a(526));
-    }
-    b(0);
-  }
-  
-  public int onSend(int paramInt)
-  {
-    return super.onSend(paramInt);
-  }
-  
-  public int type()
-  {
-    return 526;
   }
 }
 

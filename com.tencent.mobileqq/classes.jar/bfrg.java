@@ -1,14 +1,25 @@
-import android.content.Context;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
 
 public class bfrg
+  implements DialogInterface.OnClickListener
 {
-  public static boolean a(Context paramContext, AppInterface paramAppInterface)
+  public bfrg(SubmitHomeWorkFragment paramSubmitHomeWorkFragment, bfoy parambfoy) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return (SettingCloneUtil.readValue(paramContext, paramAppInterface.getCurrentAccountUin(), paramContext.getString(2131717794), "qqsetting_notify_blncontrol_key", true)) && ((paramAppInterface.isBackgroundPause) || (!bfrw.a(BaseApplicationImpl.sApplication))) && (!FriendsStatusUtil.a(paramContext));
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiSubmitHomeWorkFragment.a > 0L)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiSubmitHomeWorkFragment.a(this.jdField_a_of_type_Bfoy);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiSubmitHomeWorkFragment.a(3, null, null, this.jdField_a_of_type_Bfoy);
   }
 }
 

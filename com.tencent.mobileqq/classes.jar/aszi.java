@@ -1,16 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-final class aszi
-  implements DialogInterface.OnClickListener
+public abstract interface aszi
 {
-  aszi(aszj paramaszj) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.onNo();
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(long paramLong);
 }
 
 

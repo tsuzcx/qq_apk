@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.WindowManager.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-import bhic;
+import bisu;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
@@ -169,7 +169,7 @@ public class QQToast$ProtectedToast
         {
           localObject1 = a(jdField_a_of_type_JavaLangReflectField, "mHandler");
           if ((localObject1 instanceof Handler)) {
-            this.jdField_a_of_type_Boolean = a(localObject1, "mCallback", new bhic(this, (Handler)localObject1));
+            this.jdField_a_of_type_Boolean = a(localObject1, "mCallback", new bisu(this, (Handler)localObject1));
           }
         }
         if ((!this.jdField_a_of_type_Boolean) && (QLog.isColorLevel())) {
@@ -185,7 +185,7 @@ public class QQToast$ProtectedToast
       ((Field)localObject2).setAccessible(true);
       jdField_a_of_type_AndroidViewWindowManager$LayoutParams = (WindowManager.LayoutParams)((Field)localObject2).get(localObject1);
       jdField_a_of_type_AndroidViewWindowManager$LayoutParams.flags = 40;
-      jdField_a_of_type_AndroidViewWindowManager$LayoutParams.windowAnimations = 2131755557;
+      jdField_a_of_type_AndroidViewWindowManager$LayoutParams.windowAnimations = 2131755560;
     }
     for (;;)
     {
@@ -194,7 +194,7 @@ public class QQToast$ProtectedToast
         if (("" + Build.MANUFACTURER).equalsIgnoreCase("SAMSUNG")) {
           jdField_a_of_type_AndroidViewWindowManager$LayoutParams.getClass().getField("layoutInDisplayCutoutMode").setInt(jdField_a_of_type_AndroidViewWindowManager$LayoutParams, 1);
         }
-        localObject2 = (TextView)getView().findViewById(2131378890);
+        localObject2 = (TextView)getView().findViewById(2131379183);
         if ((localObject2 != null) && (((TextView)localObject2).getText().length() < 6))
         {
           l = 900L;

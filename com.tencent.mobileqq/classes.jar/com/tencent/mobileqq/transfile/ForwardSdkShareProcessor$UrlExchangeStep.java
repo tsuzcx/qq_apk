@@ -2,7 +2,7 @@ package com.tencent.mobileqq.transfile;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bhvw;
+import bjgx;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -40,7 +40,7 @@ public class ForwardSdkShareProcessor$UrlExchangeStep
       doCancel();
       return;
     }
-    if (this.this$0.mForwardType == 11)
+    if (this.this$0.isSdkShare())
     {
       QLog.i("Q.share.ForwardSdkShareProcessor", 1, "UrlExchangeStep|ServerShareOpen, skip UrlExchangeStep");
       this.this$0.mIsAllUrlShort.set(true);
@@ -69,14 +69,14 @@ public class ForwardSdkShareProcessor$UrlExchangeStep
       localBundle.putString("report_type", "102");
       localBundle.putString("act_type", "18");
       if (!TextUtils.isEmpty(this.this$0.mRemoteImgUrl)) {
-        break label491;
+        break label496;
       }
     }
-    label491:
+    label496:
     for (String str = "1";; str = "0")
     {
       localBundle.putString("intext_1", str);
-      bhvw.a().a(localBundle, "" + ForwardSdkShareProcessor.access$400(this.this$0), this.this$0.app.getCurrentUin(), false);
+      bjgx.a().a(localBundle, "" + ForwardSdkShareProcessor.access$400(this.this$0), this.this$0.app.getCurrentUin(), false, this.this$0.isSdkShare());
       if ((!ForwardSdkShareProcessor.access$900(this.this$0).get()) && (HttpUtil.isValidUrl(this.this$0.mRemoteImgUrl))) {
         this.this$0.mUrlMap.put("imageUrl", this.this$0.mRemoteImgUrl);
       }

@@ -1,15 +1,10 @@
-import android.widget.ImageView;
-
 public class bgex
 {
-  public ImageView a;
-  public String a;
-  
-  public bgex(String paramString, ImageView paramImageView)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
-  }
+  public bgbf a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
+  public boolean d;
 }
 
 

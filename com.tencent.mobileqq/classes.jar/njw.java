@@ -1,50 +1,31 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.TextView;
+import com.tencent.avgame.gameroom.seat.MemberItemView;
+import com.tencent.avgame.gameroom.seat.TalkingEffectLayout;
 
 public class njw
+  implements Animator.AnimatorListener
 {
-  public int a;
-  public Bitmap a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b = "";
-  public int c;
-  public int d;
-  public int e;
+  public njw(MemberItemView paramMemberItemView) {}
   
-  public njw()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
   }
   
-  public static njw a(View paramView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    Bitmap localBitmap;
-    if (paramView.getVisibility() == 0)
-    {
-      paramView.setDrawingCacheEnabled(true);
-      localBitmap = paramView.getDrawingCache();
-      if (localBitmap != null) {
-        break label42;
-      }
-      QLog.e("GameImageData", 1, "mTipsWrapper, get drawingCache return null");
-      localObject1 = localObject2;
-    }
-    for (;;)
-    {
-      paramView.setDrawingCacheEnabled(false);
-      return localObject1;
-      label42:
-      localObject1 = new njw();
-      ((njw)localObject1).jdField_a_of_type_AndroidGraphicsBitmap = localBitmap.copy(Bitmap.Config.ARGB_8888, false);
-      ((njw)localObject1).c = paramView.getLeft();
-      ((njw)localObject1).d = paramView.getTop();
-    }
+    this.a.jdField_a_of_type_ComTencentAvgameGameroomSeatTalkingEffectLayout.setVisibility(4);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.jdField_a_of_type_ComTencentAvgameGameroomSeatTalkingEffectLayout.setVisibility(0);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-14558778);
   }
 }
 

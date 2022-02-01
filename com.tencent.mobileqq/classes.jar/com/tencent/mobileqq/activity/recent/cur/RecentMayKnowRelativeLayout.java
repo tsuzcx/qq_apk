@@ -48,7 +48,7 @@ public class RecentMayKnowRelativeLayout
     this.jdField_a_of_type_Boolean = false;
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850155);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850257);
       this.jdField_a_of_type_Int = AIOUtils.dp2px(0.5F, getResources());
       return;
     }

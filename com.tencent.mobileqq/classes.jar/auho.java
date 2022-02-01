@@ -1,13 +1,4 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.hotpic.HotPicTab;
-
-public class auho
-{
-  public TextView a;
-  
-  auho(HotPicTab paramHotPicTab) {}
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auho

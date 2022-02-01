@@ -1,14 +1,26 @@
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.TextView;
+import android.os.Bundle;
+import android.os.Handler;
+import mqq.observer.BusinessObserver;
 
 class aieg
-  extends aiec
+  implements BusinessObserver
 {
-  public ImageButton a;
-  public TextView a;
-  public Button b;
-  public TextView b;
+  aieg(aido paramaido) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if (paramBundle != null)
+    {
+      paramInt = paramBundle.getInt("update_type");
+      if (paramInt != 2) {}
+    }
+    else
+    {
+      return;
+    }
+    if (paramInt == 1) {}
+    this.a.a.sendEmptyMessage(2);
+  }
 }
 
 

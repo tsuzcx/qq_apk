@@ -1,37 +1,21 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiBean;
+import com.tencent.qphone.base.util.QLog;
 
-public class azdi
+class azdi
+  implements azel
 {
-  private static String a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    }
-    for (;;)
-    {
-      return null;
-      switch (paramInt2)
-      {
-      default: 
-        switch (paramInt2)
-        {
-        }
-        break;
-      }
-    }
-    return "0X8009E09";
-    return "0X8009E06";
-    return "0X8009E07";
-    return "0X8009E08";
-    return "0X8009E0A";
-    return "0X8009E0B";
-  }
+  azdi(azdh paramazdh) {}
   
-  public static void a(int paramInt1, int paramInt2)
+  public void a(PoiBean paramPoiBean)
   {
-    String str = a(paramInt1, paramInt2);
-    if (!TextUtils.isEmpty(str)) {
-      bcef.b(null, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
+    try
+    {
+      this.a.a(paramPoiBean);
+      return;
+    }
+    catch (Throwable paramPoiBean)
+    {
+      QLog.e("LocationCategoryDetector", 1, "getPoiResultError", paramPoiBean);
     }
   }
 }

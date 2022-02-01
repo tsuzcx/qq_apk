@@ -1,32 +1,30 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.GetJoinedHotChatListStep;
+
 public class aoio
-  extends aoim
+  extends anwo
 {
-  public static final aoio a;
-  public aoiq a;
-  public aois a;
-  public boolean a;
-  public boolean b;
-  public boolean c;
+  private aoio(GetJoinedHotChatListStep paramGetJoinedHotChatListStep) {}
   
-  static
+  protected void a(int paramInt)
   {
-    jdField_a_of_type_Aoio = new aoio(false);
-  }
-  
-  public aoio()
-  {
-    this.b = 128L;
-  }
-  
-  public aoio(boolean paramBoolean)
-  {
-    this.b = 128L;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (GetJoinedHotChatListStep.a(this.a) != null)
+    {
+      this.a.a.app.removeObserver(GetJoinedHotChatListStep.a(this.a));
+      GetJoinedHotChatListStep.a(this.a, null);
+    }
+    if (paramInt == 0)
+    {
+      this.a.a(7);
+      return;
+    }
+    this.a.a(6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoio
  * JD-Core Version:    0.7.0.1
  */

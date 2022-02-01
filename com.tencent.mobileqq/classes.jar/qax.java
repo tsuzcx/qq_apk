@@ -1,19 +1,49 @@
+import android.graphics.Color;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySelfActivity;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.mobileqq.widget.BounceScrollView;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
-class qax
-  implements View.OnClickListener
+public class qax
+  implements bimf
 {
-  qax(qat paramqat, slt paramslt, pvc parampvc) {}
+  public qax(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void onClick(View paramView)
+  public void a(float paramFloat1, float paramFloat2) {}
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    pet localpet = this.jdField_a_of_type_Slt.a().a();
-    if (localpet != null) {
-      localpet.a(paramView, this.jdField_a_of_type_Pvc.a(), 2);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramInt1 = ReadInJoySelfFragment.a(this.a).getScrollY();
+    if ((this.a.getActivity() != null) && ((this.a.getActivity() instanceof ReadInJoyNewFeedsActivity))) {}
+    do
+    {
+      return;
+      if (paramInt1 >= ReadInJoySelfFragment.a(this.a))
+      {
+        ReadInJoySelfFragment.a(this.a).setBackgroundColor(Color.parseColor("#FFFFFF"));
+        if (paramInt1 >= ReadInJoySelfFragment.a(this.a) * 3) {}
+        for (float f = 1.0F;; f = paramInt1 * 0.33F / ReadInJoySelfFragment.a(this.a))
+        {
+          ReadInJoySelfFragment.a(this.a).setAlpha(f);
+          ReadInJoySelfFragment.a(this.a).setBackgroundResource(2130843041);
+          ReadInJoySelfFragment.a(this.a).setVisibility(0);
+          if ((this.a.getActivity() == null) || (!(this.a.getActivity() instanceof ReadInJoySelfActivity))) {
+            break;
+          }
+          ImmersiveUtils.a(true, this.a.getActivity().getWindow());
+          return;
+        }
+      }
+      ReadInJoySelfFragment.a(this.a).setBackgroundColor(Color.parseColor("#00FFFFFF"));
+      ReadInJoySelfFragment.a(this.a).setBackgroundResource(2130843042);
+      ReadInJoySelfFragment.a(this.a).setVisibility(8);
+    } while ((this.a.getActivity() == null) || (!(this.a.getActivity() instanceof ReadInJoySelfActivity)));
+    ImmersiveUtils.a(false, this.a.getActivity().getWindow());
   }
 }
 

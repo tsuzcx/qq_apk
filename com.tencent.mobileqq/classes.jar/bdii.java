@@ -1,18 +1,12 @@
-import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
-import java.util.List;
+import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.ExceptionTracker.Proxy;
+import com.tencent.mobileqq.pluginsdk.exception.ExceptionTracker;
 
-class bdii
-  extends bdis
+public final class bdii
+  implements IMCoreProxyRoute.ExceptionTracker.Proxy
 {
-  bdii(bdid parambdid, EditorState paramEditorState, List paramList)
+  public void trackException(String paramString1, String paramString2)
   {
-    super(parambdid, paramEditorState, paramList);
-  }
-  
-  public void a(EditorState paramEditorState)
-  {
-    super.a(paramEditorState);
-    bdid.a(this.a).a(false, false);
+    ExceptionTracker.trackException(paramString1, paramString2);
   }
 }
 

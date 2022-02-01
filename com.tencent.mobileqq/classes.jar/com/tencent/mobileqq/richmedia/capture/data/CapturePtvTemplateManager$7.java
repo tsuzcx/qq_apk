@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import azzx;
+import bbgg;
 import com.tencent.qphone.base.util.QLog;
 
 public class CapturePtvTemplateManager$7
   implements Runnable
 {
-  public CapturePtvTemplateManager$7(azzx paramazzx) {}
+  public CapturePtvTemplateManager$7(bbgg parambbgg) {}
   
   public void run()
   {

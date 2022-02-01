@@ -1,17 +1,28 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
+import android.telephony.PhoneStateListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class sqq
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends PhoneStateListener
 {
-  public sqq(SlideActiveAnimController paramSlideActiveAnimController, Runnable paramRunnable) {}
+  sqq(sqp paramsqp) {}
   
-  public void onGlobalLayout()
+  public void onCallStateChanged(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.a();
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "onCallStateChanged:" + paramInt);
     }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.c(true);
+      return;
+    case 2: 
+      this.a.c(true);
+      return;
+    }
+    this.a.c();
   }
 }
 

@@ -1,12 +1,17 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
 
-public abstract interface bbsc
+class bbsc
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(MessageForShortVideo paramMessageForShortVideo, float paramFloat);
+  bbsc(bbrz parambbrz) {}
   
-  public abstract void a(MessageForShortVideo paramMessageForShortVideo, int paramInt);
-  
-  public abstract void a(MessageForShortVideo paramMessageForShortVideo, boolean paramBoolean);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoView", 4, "showSaveFileTips cancel");
+  }
 }
 
 

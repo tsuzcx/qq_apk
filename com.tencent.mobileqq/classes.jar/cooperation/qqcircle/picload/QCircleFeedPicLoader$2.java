@@ -2,11 +2,9 @@ package cooperation.qqcircle.picload;
 
 import java.util.Comparator;
 
-class QCircleFeedPicLoader$2
+final class QCircleFeedPicLoader$2
   implements Comparator<Runnable>
 {
-  QCircleFeedPicLoader$2(QCircleFeedPicLoader paramQCircleFeedPicLoader) {}
-  
   public int compare(Runnable paramRunnable1, Runnable paramRunnable2)
   {
     if (((paramRunnable1 instanceof QCircleFeedPicLoader.PicDownLoadTask)) && ((paramRunnable2 instanceof QCircleFeedPicLoader.PicDownLoadTask))) {

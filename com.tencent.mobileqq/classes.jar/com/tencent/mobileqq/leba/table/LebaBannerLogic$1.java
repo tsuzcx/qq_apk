@@ -5,11 +5,12 @@ import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
-import auyh;
-import azvi;
+import aweg;
+import bbbq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.redtouch.RedTouch;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -18,7 +19,7 @@ import mqq.app.AppRuntime;
 public class LebaBannerLogic$1
   implements Runnable
 {
-  public LebaBannerLogic$1(auyh paramauyh) {}
+  public LebaBannerLogic$1(aweg paramaweg) {}
   
   public void run()
   {
@@ -30,7 +31,7 @@ public class LebaBannerLogic$1
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime instanceof QQAppInterface)) {}
     Object localObject1;
-    for (BusinessInfoCheckUpdate.AppInfo localAppInfo = ((azvi)localAppRuntime.getManager(36)).a(0, "100000");; localObject1 = null)
+    for (BusinessInfoCheckUpdate.AppInfo localAppInfo = ((bbbq)localAppRuntime.getManager(QQManagerFactory.MGR_RED_TOUCH)).a(0, "100000");; localObject1 = null)
     {
       if (localAppInfo != null) {
         for (;;)
@@ -44,7 +45,7 @@ public class LebaBannerLogic$1
             {
               QLog.i("Q.lebatab.LebaBannerLogic", 1, "showBannerView reused");
               localObject2 = this.this$0.a.getChildAt(0);
-              auyh.a(this.this$0, localAppRuntime, localAppInfo, (View)localObject2);
+              aweg.a(this.this$0, localAppRuntime, localAppInfo, (View)localObject2);
               return;
             }
           }
@@ -54,9 +55,9 @@ public class LebaBannerLogic$1
             return;
           }
           QLog.i("Q.lebatab.LebaBannerLogic", 1, "showBannerView new");
-          Object localObject2 = (LayoutInflater)auyh.a(this.this$0).getSystemService("layout_inflater");
-          Resources localResources = auyh.a(this.this$0).getResources();
-          localObject2 = ((LayoutInflater)localObject2).inflate(2131561132, null);
+          Object localObject2 = (LayoutInflater)aweg.a(this.this$0).getSystemService("layout_inflater");
+          Resources localResources = aweg.a(this.this$0).getResources();
+          localObject2 = ((LayoutInflater)localObject2).inflate(2131561193, null);
           this.this$0.a.setOnClickListener(this.this$0);
           this.this$0.a.setPadding(AIOUtils.dp2px(16.0F, localResources), AIOUtils.dp2px(12.0F, localResources), AIOUtils.dp2px(16.0F, localResources), 0);
           this.this$0.a.addView((View)localObject2);

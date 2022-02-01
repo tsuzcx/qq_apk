@@ -1,9 +1,14 @@
-public final class ayff
-  extends ayfe
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
+class ayff
+  implements DialogInterface.OnDismissListener
 {
-  protected int a()
+  ayff(ayek paramayek) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return 496;
+    this.a.r = false;
   }
 }
 

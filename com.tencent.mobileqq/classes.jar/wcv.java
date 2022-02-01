@@ -1,19 +1,13 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public class wcv
-  implements vqp<wcw, wcx>
+public final class wcv
 {
-  public void a(String paramString)
-  {
-    paramString = new wcw(this, paramString);
-    vqn.a().a(paramString, this);
-  }
+  public StoryVideoItem a;
+  public StoryVideoItem b;
   
-  public void a(@NonNull wcw paramwcw, @Nullable wcx paramwcx, @NonNull ErrorMessage paramErrorMessage)
+  public String toString()
   {
-    new wcy(paramErrorMessage, paramwcw.b);
+    return "{mFakeStoryVideoItem=" + this.a + ", mSucStoryVideoItem=" + this.b + '}';
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.sharp.jni;
 
 import android.media.AudioManager;
-import lba;
+import lbd;
 
 class TraeAudioManager$headsetSwitchThread
   extends TraeAudioManager.SwitchThread
@@ -47,7 +47,7 @@ class TraeAudioManager$headsetSwitchThread
         {
           for (;;)
           {
-            lba.h(this.jdField_a_of_type_JavaLangString, localInterruptedException.getMessage());
+            lbd.h(this.jdField_a_of_type_JavaLangString, localInterruptedException.getMessage());
           }
         }
       }

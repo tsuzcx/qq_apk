@@ -1,18 +1,30 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.data.QIMBeautyItem;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import java.util.HashMap;
 
-public final class bmsn
-  implements Parcelable.Creator<QIMBeautyItem>
+final class bmsn
+  implements INetEngine.IBreakDownFix
 {
-  public QIMBeautyItem a(Parcel paramParcel)
+  public void fixReq(NetReq paramNetReq, NetResp paramNetResp)
   {
-    return new QIMBeautyItem(paramParcel);
-  }
-  
-  public QIMBeautyItem[] a(int paramInt)
-  {
-    return new QIMBeautyItem[paramInt];
+    if ((paramNetReq == null) || (paramNetResp == null)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!(paramNetReq instanceof HttpNetReq));
+      paramNetReq = (HttpNetReq)paramNetReq;
+      paramNetReq.mStartDownOffset += paramNetResp.mWrittenBlockLen;
+      paramNetResp.mWrittenBlockLen = 0L;
+      paramNetResp = "bytes=" + paramNetReq.mStartDownOffset + "-";
+      paramNetReq.mReqProperties.put("Range", paramNetResp);
+      paramNetResp = paramNetReq.mReqUrl;
+    } while (!paramNetResp.contains("range="));
+    paramNetResp = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
+    paramNetReq.mReqUrl = (paramNetResp + "range=" + paramNetReq.mStartDownOffset);
   }
 }
 

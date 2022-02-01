@@ -1,39 +1,29 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.automator.step.RegisterProxy;
 
-class aoiz
-  implements aojt
+public class aoiz
+  extends Handler
 {
-  aoiz(aoiw paramaoiw, aoja paramaoja, ArCloudConfigInfo paramArCloudConfigInfo) {}
-  
-  public void a()
+  public aoiz(RegisterProxy paramRegisterProxy, Looper paramLooper)
   {
-    if (this.jdField_a_of_type_Aoja != null) {
-      this.jdField_a_of_type_Aoja.f();
-    }
+    super(paramLooper);
   }
   
-  public void a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_Aoja != null) {
-      this.jdField_a_of_type_Aoja.c(paramInt);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Aoja != null) {}
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Aoja != null) {
-      this.jdField_a_of_type_Aoja.c(paramBoolean, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
-    }
+    RegisterProxy.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoiz
  * JD-Core Version:    0.7.0.1
  */

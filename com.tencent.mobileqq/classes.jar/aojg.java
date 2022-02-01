@@ -1,16 +1,7 @@
-public abstract interface aojg
-{
-  public abstract void a();
-  
-  public abstract void a(long paramLong1, long paramLong2);
-  
-  public abstract void a(boolean paramBoolean, aojh paramaojh);
-  
-  public abstract void b();
-}
+public class aojg {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aojg
  * JD-Core Version:    0.7.0.1
  */

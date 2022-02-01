@@ -1,17 +1,47 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.widget.DrawerFrame;
+import com.tencent.qphone.base.util.QLog;
 
 class aget
-  extends aghj
+  implements View.OnLayoutChangeListener
 {
-  aget(agcw paramagcw)
-  {
-    super(paramagcw, null);
-  }
+  aget(ager paramager, View paramView) {}
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    return new agmx(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if ((paramInt1 == paramInt5) && (paramInt2 == paramInt6) && (paramInt3 == paramInt7) && (paramInt4 == paramInt8)) {
+      return;
+    }
+    paramView = new int[2];
+    paramInt1 = 0;
+    if (this.jdField_a_of_type_AndroidViewView != null)
+    {
+      this.jdField_a_of_type_AndroidViewView.getLocationInWindow(paramView);
+      paramInt1 = paramView[1] + this.jdField_a_of_type_AndroidViewView.getHeight();
+    }
+    if (ager.a(this.jdField_a_of_type_Ager) != null)
+    {
+      paramInt2 = ager.a(this.jdField_a_of_type_Ager).getRight();
+      label81:
+      if (ager.a(this.jdField_a_of_type_Ager) == null) {
+        break label180;
+      }
+    }
+    label180:
+    for (paramInt3 = ager.a(this.jdField_a_of_type_Ager).getHeight();; paramInt3 = 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BaseChatDrawer", 2, String.format("setTouchableBound, drawerWidth: %s, drawerHeight: %s, titleBarBottom: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt1) }));
+      }
+      if ((paramInt2 <= 0) || (paramInt3 <= 0) || (paramInt1 <= 0)) {
+        break;
+      }
+      ager.a(this.jdField_a_of_type_Ager).setTouchableBound(0, paramInt1, paramInt2, paramInt3);
+      return;
+      paramInt2 = 0;
+      break label81;
+    }
   }
 }
 

@@ -1,125 +1,100 @@
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Bundle;
-import android.os.Environment;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mfsdk.config.APMModuleConfig;
-import com.tencent.mobileqq.vfs.VFSAssistantUtils;
-import com.tencent.qapmsdk.QAPM;
-import com.tencent.qapmsdk.base.listener.IInspectorListener;
-import com.tencent.qapmsdk.base.meta.DumpResult;
-import com.tencent.qapmsdk.memory.leakdetect.LeakInspector;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.LocalMultiProcConfig;
-import java.io.File;
-import mqq.app.MobileQQ;
-import org.json.JSONException;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.Ad;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.views.canvas.components.appbutton.GdtDownloadReportManager.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.os.MqqHandler;
 
 public class aciy
-  extends achx
-  implements achr, Application.ActivityLifecycleCallbacks
+  implements DownloadListener
 {
-  static boolean jdField_a_of_type_Boolean;
-  static boolean b;
-  IInspectorListener jdField_a_of_type_ComTencentQapmsdkBaseListenerIInspectorListener = new acix();
+  aciy(acix paramacix) {}
   
-  public aciy()
+  public void installSucceed(String paramString1, String paramString2)
   {
-    MobileQQ.sMobileQQ.registerActivityLifecycleCallbacks(this);
-  }
-  
-  public static void a()
-  {
-    if ((new File(VFSAssistantUtils.getSDKPrivatePath(Environment.getExternalStorageDirectory().getPath() + "/tencent/AutoTestFlag_02")).exists()) || (new File(VFSAssistantUtils.getSDKPrivatePath(Environment.getExternalStorageDirectory().getPath() + "/tencent/AutoTestFlag_03")).exists())) {}
-    for (jdField_a_of_type_Boolean = false; new File(VFSAssistantUtils.getSDKPrivatePath(Environment.getExternalStorageDirectory().getPath() + "/tencent/AutoTestFlag_03")).exists(); jdField_a_of_type_Boolean = true)
+    if ((acix.a(this.a) == null) || (acix.a(this.a).getAppId() == null) || (acix.a(this.a).getAppPackageName() == null) || (!acix.a(this.a).getAppId().equals(paramString1)) || (!acix.a(this.a).getAppPackageName().equals(paramString2)))
     {
-      b = false;
+      acho.d("GdtDownloadReportManager", "no ad or not the same ad");
       return;
     }
-    b = true;
+    paramString2 = acix.a(this.a, paramString2);
+    ThreadManager.getFileThreadHandler().post(new GdtDownloadReportManager.1.1(this, paramString2, paramString1));
   }
   
-  public DumpResult a(String paramString, acht paramacht)
-  {
-    try
-    {
-      QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "dumpMemory " + paramString);
-      paramString = LeakInspector.dumpMemory(paramString, true, new aciz(this, paramacht));
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "", paramString);
-    }
-    return new DumpResult();
-  }
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo) {}
   
-  public void a(long paramLong, String paramString)
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2) {}
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
   {
-    try
+    if ((paramDownloadInfo == null) || (TextUtils.isEmpty(paramDownloadInfo.c))) {}
+    do
     {
-      QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "dumpMemory " + paramString);
-      LeakInspector.report(paramLong, paramString);
       return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
+      acho.a("GdtDownloadReportManager", "onDownloadFinish: infos:" + paramDownloadInfo.f);
+      if ((acix.a(this.a).containsKey(paramDownloadInfo.c)) && (acix.a(this.a).get(paramDownloadInfo.c) != null))
+      {
+        acie.a((Ad)acix.a(this.a).get(paramDownloadInfo.c), 274);
+        return;
+      }
+    } while (!acix.a(this.a, paramDownloadInfo, acix.a(this.a)));
+    acie.a(acix.a(this.a), 274);
   }
   
-  protected void a(APMModuleConfig paramAPMModuleConfig)
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
   {
-    if (((2 == BaseApplicationImpl.sProcessId) || (8 == BaseApplicationImpl.sProcessId)) && (!LocalMultiProcConfig.getBool("Qzone_setApm_MemLeak", true))) {}
-  }
-  
-  public void a(Object paramObject, String paramString)
-  {
-    if (e())
+    if ((paramDownloadInfo == null) || (TextUtils.isEmpty(paramDownloadInfo.c))) {}
+    do
     {
-      LeakInspector.startInspect(paramObject, paramString);
       return;
-    }
-    QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "startInspect failedNoStart");
+      acho.a("GdtDownloadReportManager", "onDownloadPause: infos:" + paramDownloadInfo.f);
+      if ((acix.a(this.a).containsKey(paramDownloadInfo.c)) && (acix.a(this.a).get(paramDownloadInfo.c) != null))
+      {
+        acie.a((Ad)acix.a(this.a).get(paramDownloadInfo.c), 273);
+        acix.b(this.a).put(paramDownloadInfo.c, acix.a(this.a).get(paramDownloadInfo.c));
+        return;
+      }
+    } while (!acix.a(this.a, paramDownloadInfo, acix.a(this.a)));
+    acie.a(acix.a(this.a), 273);
   }
   
-  protected void b()
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
   {
-    a();
-    LeakInspector.setKeepUuidWhenLeak(true);
-    com.tencent.qapmsdk.memory.MemoryLeakMonitor.enableFragmentInspect = false;
-    QAPM.setProperty(107, this.jdField_a_of_type_ComTencentQapmsdkBaseListenerIInspectorListener);
-  }
-  
-  public String c()
-  {
-    return "leak";
-  }
-  
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityDestroyed(Activity paramActivity)
-  {
-    try
+    if ((paramList == null) || (paramList.size() == 0)) {}
+    for (;;)
     {
-      acij.a(paramActivity);
       return;
-    }
-    catch (Exception paramActivity)
-    {
-      QLog.e("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "onActivityDestroyed ", paramActivity);
+      acho.a("GdtDownloadReportManager", "onDownloadUpdate: infos:" + paramList.size());
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
+        if ((localDownloadInfo != null) && (!TextUtils.isEmpty(localDownloadInfo.c)))
+        {
+          acho.a("GdtDownloadReportManager", "onDownloadUpdate: progress:" + localDownloadInfo.f);
+          if ((acix.b(this.a).containsKey(localDownloadInfo.c)) && (acix.b(this.a).get(localDownloadInfo.c) != null))
+          {
+            acie.a((Ad)acix.b(this.a).get(localDownloadInfo.c), 271);
+            acix.b(this.a).remove(localDownloadInfo.c);
+          }
+        }
+      }
     }
   }
   
-  public void onActivityPaused(Activity paramActivity) {}
+  public void onDownloadWait(DownloadInfo paramDownloadInfo) {}
   
-  public void onActivityResumed(Activity paramActivity) {}
+  public void packageReplaced(String paramString1, String paramString2)
+  {
+    installSucceed(paramString1, paramString2);
+  }
   
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityStarted(Activity paramActivity) {}
-  
-  public void onActivityStopped(Activity paramActivity) {}
+  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 

@@ -1,17 +1,9 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.BusinessObserver;
 
 public class antv
-  extends anri
+  implements BusinessObserver
 {
-  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
-  {
-    paramQQAppInterface = new antu(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "now";
-    paramQQAppInterface.c = "playmedia";
-    return paramQQAppInterface;
-  }
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
 }
 
 

@@ -1,32 +1,29 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeSummaryView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class qkd
-  extends qjj
+class qkd
+  implements aaea
 {
-  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  qkd(qka paramqka, String paramString) {}
   
-  public qkd(NativeSummaryView paramNativeSummaryView, ArticleInfo paramArticleInfo, int paramInt)
+  public void callback(Bundle paramBundle)
   {
-    super(-15504151, 13421772, 860716207);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if ((pgb.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeSummaryView.getContext() instanceof Activity)))
+    if (QLog.isDebugVersion()) {
+      QLog.d("ReadInJoyWebviewPlugin", 4, "receive setSkinAndSound callback resp:" + paramBundle.toString());
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      pay.b((Activity)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeSummaryView.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-      pgw.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
+      paramBundle = localJSONObject.put("retCode", paramBundle.getInt("retCode")).put("skinId", "" + paramBundle.getString("skinId"));
+      this.jdField_a_of_type_Qka.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
       return;
     }
-    if (pgb.i(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {}
-    for (int i = 2;; i = 3)
+    catch (JSONException paramBundle)
     {
-      pay.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeSummaryView.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, i);
-      return;
+      QLog.w("ReadInJoyWebviewPlugin", 1, "readSkinAndSound error " + paramBundle.toString());
+      this.jdField_a_of_type_Qka.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"retCode\":-1}" });
     }
   }
 }

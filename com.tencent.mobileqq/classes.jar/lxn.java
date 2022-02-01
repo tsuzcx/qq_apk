@@ -1,23 +1,40 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.RecvGVideoLevelInfo;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public final class lxn
-  implements Parcelable.Creator<RecvGVideoLevelInfo>
+public class lxn
+  implements ServiceConnection
 {
-  public RecvGVideoLevelInfo a(Parcel paramParcel)
+  public lxn(QQServiceForAV paramQQServiceForAV) {}
+  
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    return new RecvGVideoLevelInfo(paramParcel);
+    QLog.i("QQServiceForAV", 1, "mBindVideoProcessConn onServiceConnected name=" + paramComponentName + ", service=" + paramIBinder);
+    QQServiceForAV.b(this.a, true);
   }
   
-  public RecvGVideoLevelInfo[] a(int paramInt)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    return new RecvGVideoLevelInfo[paramInt];
+    QLog.i("QQServiceForAV", 1, "mBindVideoProcessConn onServiceDisconnected name=" + paramComponentName);
+    QQServiceForAV.b(this.a, false);
+    try
+    {
+      BaseApplicationImpl.getContext().unbindService(this);
+      return;
+    }
+    catch (Throwable paramComponentName)
+    {
+      QLog.e("QQServiceForAV", 1, "onServiceDisconnected disconnect exception:" + paramComponentName, paramComponentName);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lxn
  * JD-Core Version:    0.7.0.1
  */

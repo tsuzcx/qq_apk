@@ -1,29 +1,30 @@
 import android.app.Activity;
-import mqq.app.QQPermissionCallback;
+import android.text.TextUtils;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.search.activity.ContactSearchComponentActivity;
 
-public final class bcam
-  implements QQPermissionCallback
+public class bcam
+  implements View.OnTouchListener
 {
-  public bcam(bcan parambcan, Activity paramActivity) {}
+  public bcam(ContactSearchComponentActivity paramContactSearchComponentActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Bcan != null) {
-      this.jdField_a_of_type_Bcan.b();
+    if ((paramMotionEvent.getAction() == 1) && (TextUtils.isEmpty(this.a.a)))
+    {
+      paramView = this.a.getActivity();
+      if (paramView != null) {
+        paramView.finish();
+      }
     }
-    bfur.a(this.jdField_a_of_type_AndroidAppActivity);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (this.jdField_a_of_type_Bcan != null) {
-      this.jdField_a_of_type_Bcan.a();
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcam
  * JD-Core Version:    0.7.0.1
  */

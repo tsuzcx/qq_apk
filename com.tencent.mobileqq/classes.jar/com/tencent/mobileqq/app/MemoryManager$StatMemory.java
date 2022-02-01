@@ -2,7 +2,7 @@ package com.tencent.mobileqq.app;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bfuc;
+import bhcu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
@@ -39,7 +39,7 @@ class MemoryManager$StatMemory
         reset();
         return;
       }
-      paramString = new DataInputStream(new ByteArrayInputStream(bfuc.decode(paramString, 0)));
+      paramString = new DataInputStream(new ByteArrayInputStream(bhcu.decode(paramString, 0)));
       this.statCount = paramString.readInt();
       this.sysAvailableMemory = paramString.readLong();
       this.qqOtherUsedMemory = paramString.readLong();
@@ -98,7 +98,7 @@ class MemoryManager$StatMemory
       localDataOutputStream.writeLong(this.dalvikHeapSize);
       localDataOutputStream.flush();
       localObject = ((ByteArrayOutputStream)localObject).toByteArray();
-      BaseApplicationImpl.getApplication().getSharedPreferences("MemoryManagerMemoryStat", 0).edit().putString(this.spKey, bfuc.encodeToString((byte[])localObject, 0)).commit();
+      BaseApplicationImpl.getApplication().getSharedPreferences("MemoryManagerMemoryStat", 0).edit().putString(this.spKey, bhcu.encodeToString((byte[])localObject, 0)).commit();
       return;
     }
     catch (Exception localException)

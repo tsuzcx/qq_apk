@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="gi" parent="@style/gh">
-        <item name="android:textAppearance">@style/zs</item>
-        <item name="android:buttonStyle">@style/a05</item>
+        <item name="android:textAppearance">@style/zv</item>
+        <item name="android:buttonStyle">@style/a0b</item>
         <item name="android:windowBackground">@null</item>
         <item name="android:windowIsTranslucent">false</item>
         <item name="android:autoCompleteTextViewStyle">@style/n0</item>
         <item name="android:editTextStyle">@style/n4</item>
-        <item name="android:textViewStyle">@style/a08</item>
+        <item name="android:textViewStyle">@style/a0e</item>
         <item name="android:windowDisablePreview">true</item>
     </style>
 </resources>

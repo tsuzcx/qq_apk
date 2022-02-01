@@ -7,16 +7,16 @@ import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function3;
 import kotlin.jvm.internal.Lambda;
-import qoj;
-import qom;
-import qon;
+import rao;
+import rar;
+import ras;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "isOpenPushNotify", "", "isDefaultOpen", "buttonId", "", "invoke"}, k=3, mv={1, 1, 16})
 public final class RIJPushNotifyManager$showPushNotifyDialog$param$1
   extends Lambda
   implements Function3<Boolean, Boolean, Integer, Unit>
 {
-  public RIJPushNotifyManager$showPushNotifyDialog$param$1(qoj paramqoj, BaseActivity paramBaseActivity, String paramString, int paramInt1, int paramInt2)
+  public RIJPushNotifyManager$showPushNotifyDialog$param$1(rao paramrao, BaseActivity paramBaseActivity, String paramString, int paramInt1, int paramInt2)
   {
     super(3);
   }
@@ -25,14 +25,14 @@ public final class RIJPushNotifyManager$showPushNotifyDialog$param$1
   {
     if ((paramInt != 0) && (paramInt != 3))
     {
-      qoj.a(this.this$0, paramBoolean1, paramBoolean2, (Activity)this.$topActivity);
-      qom.a.a().a(paramBoolean1, paramBoolean2, this.$uniqueId, this.$bizType, (Function1)RIJPushNotifyManager.showPushNotifyDialog.param.1.1.INSTANCE);
-      qoj.a(this.this$0, this.$bizType, this.$uniqueId, this.$guideType, paramInt, paramBoolean2);
+      rao.a(this.this$0, paramBoolean1, paramBoolean2, (Activity)this.$topActivity);
+      rar.a.a().a(paramBoolean1, paramBoolean2, this.$uniqueId, this.$bizType, (Function1)RIJPushNotifyManager.showPushNotifyDialog.param.1.1.INSTANCE);
+      rao.a(this.this$0, this.$bizType, this.$uniqueId, this.$guideType, paramInt, paramBoolean2);
     }
     while (paramInt != 3) {
       return;
     }
-    qoj.a(this.this$0, this.$bizType, this.$uniqueId, this.$guideType);
+    rao.a(this.this$0, this.$bizType, this.$uniqueId, this.$guideType);
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.applets;
 
-import anxp;
-import anxr;
+import apar;
+import apat;
 
 public class NewPublicAccountServlet$2
   implements Runnable
 {
-  public NewPublicAccountServlet$2(anxr paramanxr, anxp paramanxp) {}
+  public NewPublicAccountServlet$2(apat paramapat, apar paramapar) {}
   
   public void run()
   {

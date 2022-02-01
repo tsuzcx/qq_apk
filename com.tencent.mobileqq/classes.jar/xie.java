@@ -1,50 +1,80 @@
-import android.view.View;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
 public class xie
-  implements bjoe
+  extends JobSegment<xhf, String>
 {
-  private final int jdField_a_of_type_Int;
-  private final bjnw jdField_a_of_type_Bjnw;
-  private final CommentEntry jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry;
-  private WeakReference<xid> jdField_a_of_type_JavaLangRefWeakReference;
+  private xie(VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public xie(bjnw parambjnw, CommentEntry paramCommentEntry, int paramInt, xid paramxid)
+  protected void a(JobContext paramJobContext, xhf paramxhf)
   {
-    this.jdField_a_of_type_Bjnw = parambjnw;
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = paramCommentEntry;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramxid);
+    ykq.b(this.a.jdField_a_of_type_JavaLangString, "CheckDataSegment runSegment");
+    if (this.a.jdField_a_of_type_Xhf.a())
+    {
+      ykq.b(this.a.jdField_a_of_type_JavaLangString, "isLoadingData, show loading view");
+      VideoViewVideoHolder.a(this.a, 2);
+      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
+      this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
+      this.a.jdField_a_of_type_Xjm.a(8);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.a.b.setVisibility(8);
+      notifyError(new ErrorMessage(0, "isLoadingData"));
+      return;
+    }
+    if (this.a.jdField_a_of_type_Xhf.b())
+    {
+      ykq.b(this.a.jdField_a_of_type_JavaLangString, "showPage, show error view, because this is a error data = %s", this.a.jdField_a_of_type_Xhf.a());
+      VideoViewVideoHolder.b(this.a, this.a.jdField_a_of_type_Xhf.a().errorCode);
+      VideoViewVideoHolder.a(this.a, false);
+      ykq.d(this.a.jdField_a_of_type_JavaLangString, "isErrorData, hide loading view. subErrorCode=%d", new Object[] { Integer.valueOf(VideoViewVideoHolder.a(this.a)) });
+      if (VideoViewVideoHolder.a(this.a) == 97000000)
+      {
+        VideoViewVideoHolder.c(this.a, 4);
+        notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.a), "PLAY_DATA_NO_VID"));
+        return;
+      }
+      VideoViewVideoHolder.c(this.a, 9);
+      notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.a), "isErrorData"));
+      return;
+    }
+    if (StoryVideoItem.isFakeVid(this.a.jdField_a_of_type_Xhf.jdField_a_of_type_JavaLangString))
+    {
+      paramJobContext = ((wjp)wjs.a(5)).b(this.a.jdField_a_of_type_Xhf.jdField_a_of_type_JavaLangString);
+      if (paramJobContext != null)
+      {
+        VideoViewVideoHolder.a(this.a, paramJobContext);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        paramxhf = (String)this.a.jdField_a_of_type_AndroidWidgetImageView.getTag();
+        if (!TextUtils.equals(this.a.jdField_a_of_type_Xhf.jdField_a_of_type_JavaLangString, paramxhf))
+        {
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setTag(this.a.jdField_a_of_type_Xhf.jdField_a_of_type_JavaLangString);
+          wzk.a(this.a.jdField_a_of_type_AndroidWidgetImageView, paramJobContext.mVideoLocalThumbnailPath, paramJobContext.getThumbUrl(), VideoViewVideoHolder.a(this.a), this.a.jdField_a_of_type_Wzw);
+        }
+        ykq.d(this.a.jdField_a_of_type_JavaLangString, "showPage, show error view, because this is fake vid = %s", new Object[] { this.a.jdField_a_of_type_Xhf.jdField_a_of_type_JavaLangString });
+        VideoViewVideoHolder.c(this.a, 5);
+        VideoViewVideoHolder.a(this.a, false);
+        notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.a), "isFakeData"));
+        return;
+      }
+      VideoViewVideoHolder.c(this.a, 11);
+      VideoViewVideoHolder.a(this.a, false);
+      notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.a), "Fake Vid No Data"));
+      return;
+    }
+    notifyResult(this.a.jdField_a_of_type_Xhf.jdField_a_of_type_JavaLangString);
   }
   
-  public void OnClick(View paramView, int paramInt)
+  public void onCancel()
   {
-    paramView = this.jdField_a_of_type_Bjnw.a(paramInt);
-    xvv.a("Q.qqstory.detail.DetailGeneralCommentEventProxy", "on action sheet item click. item is %s.", paramView);
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)
-    {
-      xvv.e("Q.qqstory.detail.DetailGeneralCommentEventProxy", "callback is null when action sheet item click.");
-      return;
-    }
-    xid localxid = (xid)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (xic.a.equals(paramView)) {
-      localxid.a(this.jdField_a_of_type_Int);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-      if (xic.b.equals(paramView)) {
-        localxid.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Int);
-      } else if (xic.c.equals(paramView)) {
-        localxid.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-      } else if (xic.d.equals(paramView)) {
-        localxid.b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-      } else if (xic.e.equals(paramView)) {
-        localxid.c(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-      }
-    }
+    super.onCancel();
+    ykq.b(this.a.jdField_a_of_type_JavaLangString, "CheckDataSegment onCancel");
   }
 }
 

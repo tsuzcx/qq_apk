@@ -1,47 +1,132 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class avso
-  extends Handler
+  extends WebViewPlugin
 {
-  public avso() {}
+  protected aady a;
+  protected BroadcastReceiver a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private bisl jdField_a_of_type_Bisl;
   
-  public avso(Looper paramLooper)
+  public avso()
   {
-    super(paramLooper);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new avsq(this);
+    this.mPluginNameSpace = "groupVideo";
   }
   
-  public void handleMessage(Message paramMessage)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    int i = paramMessage.what;
-    Object localObject = (Object[])paramMessage.obj;
-    if (i == 1)
+    if (QLog.isColorLevel()) {
+      QLog.i("GroupVideoManager.GVideoWebPlugin", 2, "url:" + paramString1 + " pkgName:" + paramString2 + " method:" + paramString3 + " args:" + paramVarArgs);
+    }
+    if ((!TextUtils.equals(paramString2, "groupVideo")) || (paramVarArgs == null) || (paramVarArgs.length == 0)) {}
+    do
     {
-      if (ChatBackgroundManager.c < 3)
-      {
-        paramMessage = (String)localObject[0];
-        localObject = (QQAppInterface)localObject[1];
-        ChatBackgroundManager.a((QQAppInterface)localObject, paramMessage, StatisticCollector.getInstance(BaseApplication.getContext()));
-        ChatBackgroundManager.c += 1;
-        if (QLog.isColorLevel()) {
-          QLog.d("ThemeDownloadTrace", 2, "reportTimes is:" + ChatBackgroundManager.c);
+      return false;
+      int i;
+      if (TextUtils.equals(paramString3, "closeGroupVideoAPI")) {
+        try
+        {
+          paramJsBridgeListener = getJsonFromJSBridge(paramString1);
+          if (paramJsBridgeListener == null) {
+            break;
+          }
+          i = paramJsBridgeListener.optInt("type");
+          paramJsBridgeListener = new Intent("tencent.video.webjs.cmd");
+          paramJsBridgeListener.putExtra("type", i);
+          switch (i)
+          {
+          case 1: 
+          case 2: 
+            this.jdField_a_of_type_AndroidContentContext.sendBroadcast(paramJsBridgeListener);
+          }
         }
-        Message localMessage = ChatBackgroundManager.a.obtainMessage();
-        localMessage.what = 1;
-        localMessage.obj = new Object[] { paramMessage, localObject };
-        ChatBackgroundManager.a.sendMessageDelayed(localMessage, 120000L);
+        catch (Exception paramJsBridgeListener)
+        {
+          paramJsBridgeListener.printStackTrace();
+        }
+      }
+      if (TextUtils.equals(paramString3, "openRoom"))
+      {
+        try
+        {
+          Object localObject = getJsonFromJSBridge(paramString1);
+          if (localObject != null)
+          {
+            paramJsBridgeListener = ((JSONObject)localObject).optString("roomCode");
+            i = ((JSONObject)localObject).optInt("isGroupCode");
+            paramString1 = ((JSONObject)localObject).optString("fromId");
+            paramString2 = ((JSONObject)localObject).optString("backType");
+            paramString3 = ((JSONObject)localObject).optString("action");
+            paramVarArgs = ((JSONObject)localObject).optString("openType");
+            localObject = ((JSONObject)localObject).optString("extra");
+            this.jdField_a_of_type_Aady.a(paramJsBridgeListener, i, paramString3, paramString1, paramString2, paramVarArgs, (String)localObject);
+            avsv.a("group_video", new avsp(this, paramString3));
+          }
+        }
+        catch (Exception paramJsBridgeListener)
+        {
+          for (;;)
+          {
+            paramJsBridgeListener.printStackTrace();
+          }
+        }
+        return true;
+      }
+    } while (!TextUtils.equals(paramString3, "preload"));
+    try
+    {
+      QLog.e("GroupVideoManager.GVideoWebPlugin", 2, "preload url:" + paramString1);
+      this.jdField_a_of_type_Aady.e(null);
+      return true;
+    }
+    catch (Exception paramJsBridgeListener)
+    {
+      for (;;)
+      {
+        paramJsBridgeListener.printStackTrace();
       }
     }
-    else {
+    return true;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    this.jdField_a_of_type_AndroidContentContext = this.mRuntime.a().getApplicationContext();
+    this.jdField_a_of_type_Aady = aady.a();
+    this.jdField_a_of_type_Aady.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("GroupVideoManager.GVideoWebPlugin", 2, "GVideoWebPlugin onCreate");
+    }
+    IntentFilter localIntentFilter = new IntentFilter(avts.a("com.tencent.od"));
+    localIntentFilter.addAction(avts.b("com.tencent.od"));
+    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+    this.jdField_a_of_type_Bisl = new bisl(this.mRuntime.a());
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (this.jdField_a_of_type_Aady != null) {
+      this.jdField_a_of_type_Aady.b();
+    }
+    try
+    {
+      this.jdField_a_of_type_Bisl.dismiss();
+      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
       return;
     }
-    ChatBackgroundManager.c = 0;
+    catch (Throwable localThrowable) {}
   }
 }
 

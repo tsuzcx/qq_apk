@@ -1,17 +1,33 @@
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0x27.SubMsgType0x27.AppointmentNotify;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class awjt
-  extends awoz
+  implements bkzq
 {
-  awjt(awjn paramawjn, SubMsgType0x27.AppointmentNotify paramAppointmentNotify) {}
+  awjt(awjs paramawjs, bkzi parambkzi) {}
   
-  protected void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      awkj.a("hasOnLinePush", new Object[] { "onNearbyProcStart" });
+    switch (paramInt)
+    {
     }
-    awjn.a(this.jdField_a_of_type_Awjn, 4101, new Object[] { this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x27SubMsgType0x27$AppointmentNotify.toByteArray() });
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.e();
+      return;
+      awjs.a(this.jdField_a_of_type_Awjs).finish();
+      paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      Object localObject = awjs.a(this.jdField_a_of_type_Awjs).getIntent();
+      String str = ((Intent)localObject).getStringExtra("uin");
+      paramInt = ((Intent)localObject).getIntExtra("uintype", -1);
+      awiz.a(paramView).a.a(3, paramInt, str);
+      localObject = new awit(paramInt, str);
+      awiz.a(paramView).a((awit)localObject, false);
+      bdla.b(null, "CliOper", "", "", "0X800A76E", "0X800A76E", 0, 0, "", "0", "0", "");
+    }
   }
 }
 

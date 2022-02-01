@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.widget.TextView;
-import bjpg;
+import blas;
 import com.tencent.qphone.base.util.QLog;
 
 class Leba$33$5
@@ -18,8 +18,8 @@ class Leba$33$5
         if (Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$33.this$0) != null) {
           Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$33.this$0).setVisibility(0);
         }
-        bjpg.a(Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$33.this$0), this.jdField_a_of_type_Int, this.b, 0);
-        bjpg.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$33.this$0.a(), Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$33.this$0), this.jdField_a_of_type_Int, Leba.d(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$33.this$0));
+        blas.a(Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$33.this$0), this.jdField_a_of_type_Int, this.b, 0);
+        blas.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$33.this$0.a(), Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$33.this$0), this.jdField_a_of_type_Int, Leba.d(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$33.this$0));
         if (Leba.b(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$33.this$0) != null) {
           Leba.b(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$33.this$0).setVisibility(8);
         }
@@ -38,7 +38,7 @@ class Leba$33$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Leba.33.5
  * JD-Core Version:    0.7.0.1
  */

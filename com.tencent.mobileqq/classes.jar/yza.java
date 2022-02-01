@@ -1,8 +1,11 @@
 public class yza
 {
-  public int a;
-  public int b;
-  public int c;
+  public final int a;
+  
+  public yza(int paramInt)
+  {
+    this.a = paramInt;
+  }
 }
 
 

@@ -9,9 +9,13 @@ import android.os.Bundle;
 import android.support.annotation.Keep;
 import android.text.TextUtils;
 import com.tencent.ad.tangram.json.AdJSON;
+import com.tencent.ad.tangram.lbs.AdLocation;
+import com.tencent.ad.tangram.lbs.AdLocationManager;
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.net.AdNet;
 import com.tencent.ad.tangram.net.a.a;
+import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo;
+import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo.Location;
 import com.tencent.ad.tangram.protocol.qq_common.DeviceExt;
 import com.tencent.ad.tangram.protocol.qq_common.DeviceExt.AttriDeviceInfo;
 import com.tencent.ad.tangram.protocol.qq_common.DeviceExt.IdInfo;
@@ -121,152 +125,172 @@ public enum AdDeviceInfo
       AdLog.e("AdDeviceInfo", "create error");
       return null;
     }
-    Object localObject4 = new h.a();
-    Object localObject3 = h.INSTANCE.getCache();
-    Object localObject1 = new HashMap();
+    Object localObject1 = new h.a();
+    Object localObject2 = h.INSTANCE.getCache();
+    HashMap localHashMap = new HashMap();
     AdDeviceInfo.Result localResult = new AdDeviceInfo.Result();
-    Object localObject2 = new AdDeviceIdBuilder().build(paramContext, false, ((h.a)localObject3).d_i_h);
-    ((h.a)localObject4).d_i_h = ((AdDeviceIdentifier)localObject2).idHash;
-    ((Map)localObject1).put(Integer.valueOf(1), localObject2);
+    AdDeviceIdentifier localAdDeviceIdentifier1 = new AdDeviceIdBuilder().build(paramContext, false, ((h.a)localObject2).d_i_h);
+    ((h.a)localObject1).d_i_h = localAdDeviceIdentifier1.idHash;
+    localHashMap.put(Integer.valueOf(1), localAdDeviceIdentifier1);
+    localResult.eventsForAnalysis.add(localAdDeviceIdentifier1.event);
+    AdDeviceIdentifier localAdDeviceIdentifier2 = new d().build(paramContext, true, ((h.a)localObject2).d_i_0_h);
+    ((h.a)localObject1).d_i_0_h = localAdDeviceIdentifier2.idHash;
+    localHashMap.put(Integer.valueOf(2), localAdDeviceIdentifier2);
+    localResult.eventsForAnalysis.add(localAdDeviceIdentifier2.event);
+    localAdDeviceIdentifier2 = new e().build(paramContext, true, ((h.a)localObject2).d_i_1_h);
+    ((h.a)localObject1).d_i_1_h = localAdDeviceIdentifier2.idHash;
+    localHashMap.put(Integer.valueOf(4), localAdDeviceIdentifier2);
+    localResult.eventsForAnalysis.add(localAdDeviceIdentifier2.event);
+    localAdDeviceIdentifier2 = new k().build(paramContext, true, ((h.a)localObject2).i_h);
+    ((h.a)localObject1).i_h = localAdDeviceIdentifier2.idHash;
+    localHashMap.put(Integer.valueOf(8), localAdDeviceIdentifier2);
+    localResult.eventsForAnalysis.add(localAdDeviceIdentifier2.event);
+    localAdDeviceIdentifier2 = new i().build(paramContext, false, ((h.a)localObject2).i_0_h);
+    ((h.a)localObject1).i_0_h = localAdDeviceIdentifier2.idHash;
+    localHashMap.put(Integer.valueOf(16), localAdDeviceIdentifier2);
+    localResult.eventsForAnalysis.add(localAdDeviceIdentifier2.event);
+    localAdDeviceIdentifier2 = new j().build(paramContext, false, ((h.a)localObject2).i_1_h);
+    ((h.a)localObject1).i_1_h = localAdDeviceIdentifier2.idHash;
+    localHashMap.put(Integer.valueOf(32), localAdDeviceIdentifier2);
+    localResult.eventsForAnalysis.add(localAdDeviceIdentifier2.event);
+    localAdDeviceIdentifier2 = new n().build(paramContext, false, ((h.a)localObject2).m_h);
+    ((h.a)localObject1).m_h = localAdDeviceIdentifier2.idHash;
+    localHashMap.put(Integer.valueOf(64), localAdDeviceIdentifier2);
+    localResult.eventsForAnalysis.add(localAdDeviceIdentifier2.event);
+    localAdDeviceIdentifier2 = new l().build(paramContext, false, ((h.a)localObject2).m_0_h);
+    ((h.a)localObject1).m_0_h = localAdDeviceIdentifier2.idHash;
+    localHashMap.put(Integer.valueOf(128), localAdDeviceIdentifier2);
+    localResult.eventsForAnalysis.add(localAdDeviceIdentifier2.event);
+    localAdDeviceIdentifier2 = new m().build(paramContext, false, ((h.a)localObject2).m_1_h);
+    ((h.a)localObject1).m_1_h = localAdDeviceIdentifier2.idHash;
+    localHashMap.put(Integer.valueOf(256), localAdDeviceIdentifier2);
+    localResult.eventsForAnalysis.add(localAdDeviceIdentifier2.event);
+    AdDeviceIdentifier localAdDeviceIdentifier3 = new a().build(paramContext, false, ((h.a)localObject2).a_i_h);
+    ((h.a)localObject1).a_i_h = localAdDeviceIdentifier3.idHash;
+    localResult.eventsForAnalysis.add(localAdDeviceIdentifier3.event);
+    localObject2 = new p().build(paramContext, true, ((h.a)localObject2).s_i_h);
+    ((h.a)localObject1).s_i_h = ((AdDeviceIdentifier)localObject2).idHash;
+    localHashMap.put(Integer.valueOf(512), localObject2);
     localResult.eventsForAnalysis.add(((AdDeviceIdentifier)localObject2).event);
-    AdDeviceIdentifier localAdDeviceIdentifier = new d().build(paramContext, true, ((h.a)localObject3).d_i_0_h);
-    ((h.a)localObject4).d_i_0_h = localAdDeviceIdentifier.idHash;
-    ((Map)localObject1).put(Integer.valueOf(2), localAdDeviceIdentifier);
-    localResult.eventsForAnalysis.add(localAdDeviceIdentifier.event);
-    localAdDeviceIdentifier = new e().build(paramContext, true, ((h.a)localObject3).d_i_1_h);
-    ((h.a)localObject4).d_i_1_h = localAdDeviceIdentifier.idHash;
-    ((Map)localObject1).put(Integer.valueOf(4), localAdDeviceIdentifier);
-    localResult.eventsForAnalysis.add(localAdDeviceIdentifier.event);
-    localAdDeviceIdentifier = new k().build(paramContext, true, ((h.a)localObject3).i_h);
-    ((h.a)localObject4).i_h = localAdDeviceIdentifier.idHash;
-    ((Map)localObject1).put(Integer.valueOf(8), localAdDeviceIdentifier);
-    localResult.eventsForAnalysis.add(localAdDeviceIdentifier.event);
-    localAdDeviceIdentifier = new i().build(paramContext, false, ((h.a)localObject3).i_0_h);
-    ((h.a)localObject4).i_0_h = localAdDeviceIdentifier.idHash;
-    ((Map)localObject1).put(Integer.valueOf(16), localAdDeviceIdentifier);
-    localResult.eventsForAnalysis.add(localAdDeviceIdentifier.event);
-    localAdDeviceIdentifier = new j().build(paramContext, false, ((h.a)localObject3).i_1_h);
-    ((h.a)localObject4).i_1_h = localAdDeviceIdentifier.idHash;
-    ((Map)localObject1).put(Integer.valueOf(32), localAdDeviceIdentifier);
-    localResult.eventsForAnalysis.add(localAdDeviceIdentifier.event);
-    localAdDeviceIdentifier = new n().build(paramContext, false, ((h.a)localObject3).m_h);
-    ((h.a)localObject4).m_h = localAdDeviceIdentifier.idHash;
-    ((Map)localObject1).put(Integer.valueOf(64), localAdDeviceIdentifier);
-    localResult.eventsForAnalysis.add(localAdDeviceIdentifier.event);
-    localAdDeviceIdentifier = new l().build(paramContext, false, ((h.a)localObject3).m_0_h);
-    ((h.a)localObject4).m_0_h = localAdDeviceIdentifier.idHash;
-    ((Map)localObject1).put(Integer.valueOf(128), localAdDeviceIdentifier);
-    localResult.eventsForAnalysis.add(localAdDeviceIdentifier.event);
-    localAdDeviceIdentifier = new m().build(paramContext, false, ((h.a)localObject3).m_1_h);
-    ((h.a)localObject4).m_1_h = localAdDeviceIdentifier.idHash;
-    ((Map)localObject1).put(Integer.valueOf(256), localAdDeviceIdentifier);
-    localResult.eventsForAnalysis.add(localAdDeviceIdentifier.event);
-    localAdDeviceIdentifier = new a().build(paramContext, false, ((h.a)localObject3).a_i_h);
-    ((h.a)localObject4).a_i_h = localAdDeviceIdentifier.idHash;
-    localResult.eventsForAnalysis.add(localAdDeviceIdentifier.event);
-    localObject3 = new p().build(paramContext, true, ((h.a)localObject3).s_i_h);
-    ((h.a)localObject4).s_i_h = ((AdDeviceIdentifier)localObject3).idHash;
-    ((Map)localObject1).put(Integer.valueOf(512), localObject3);
-    localResult.eventsForAnalysis.add(((AdDeviceIdentifier)localObject3).event);
-    localObject3 = new b().build(paramContext, true);
-    localResult.eventsForAnalysis.add(((AdDeviceIdentifier)localObject3).event);
-    h.INSTANCE.update(paramContext, (h.a)localObject4);
-    localObject4 = r.getUUID(paramContext, true);
-    Object localObject5 = localResult.eventsForAnalysis;
-    int j = ((r.a)localObject4).error;
-    long l1 = ((r.a)localObject4).duration;
+    localAdDeviceIdentifier2 = new b().build(paramContext, true);
+    localResult.eventsForAnalysis.add(localAdDeviceIdentifier2.event);
+    h.INSTANCE.update(paramContext, (h.a)localObject1);
+    r.a locala = r.getUUID(paramContext, true);
+    localObject1 = localResult.eventsForAnalysis;
+    int j = locala.error;
+    long l1 = locala.duration;
     int i;
-    if (((r.a)localObject4).cached) {
+    label809:
+    label837:
+    label849:
+    Object localObject4;
+    if (locala.cached)
+    {
       i = 1;
+      ((List)localObject1).add(AdReporterForAnalysis.createEventForDeviceIdentifier(paramContext, 1124, j, l1, i));
+      l1 = System.currentTimeMillis();
+      localObject1 = AdTAID.getInstance();
+      if (paramParams == null) {
+        break label1660;
+      }
+      paramParams = paramParams.businessIdForAidTicketAndTaidTicket;
+      localObject2 = ((AdTAID)localObject1).getEntity(paramContext, paramParams);
+      l1 = System.currentTimeMillis() - l1;
+      if (localObject2 == null) {
+        break label1665;
+      }
+      paramParams = ((AdTAID.Entity)localObject2).aidTicket;
+      if (localObject2 == null) {
+        break label1670;
+      }
+      localObject1 = ((AdTAID.Entity)localObject2).taidTicket;
+      localObject4 = localResult.eventsForAnalysis;
+      if (localObject2 == null) {
+        break label1676;
+      }
+      i = ((AdTAID.Entity)localObject2).errorCodeForAidTicket;
+      label867:
+      if (localObject2 == null) {
+        break label1683;
+      }
+      j = ((AdTAID.Entity)localObject2).originErrorCode;
+      label879:
+      ((List)localObject4).add(AdReporterForAnalysis.createEventForAidTicket(paramContext, i, j, l1));
+      localObject4 = localResult.eventsForAnalysis;
+      if (localObject2 == null) {
+        break label1691;
+      }
+      i = ((AdTAID.Entity)localObject2).errorCodeForTaidTicket;
+      label914:
+      if (localObject2 == null) {
+        break label1698;
+      }
+      j = ((AdTAID.Entity)localObject2).originErrorCode;
+      label926:
+      ((List)localObject4).add(AdReporterForAnalysis.createEventForTaidTicket(paramContext, i, j, l1));
+      l1 = System.currentTimeMillis();
+      localObject2 = AdCarrier.getCode(paramContext);
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {
+        break label1718;
+      }
     }
     for (;;)
     {
-      ((List)localObject5).add(AdReporterForAnalysis.createEventForDeviceIdentifier(paramContext, 1124, j, l1, i));
-      l1 = System.currentTimeMillis();
-      localObject5 = AdTAID.getInstance();
-      label809:
-      String str;
-      Object localObject6;
-      if (paramParams != null)
-      {
-        paramParams = paramParams.businessIdForAidTicketAndTaidTicket;
-        paramParams = ((AdTAID)localObject5).getEntity(paramContext, paramParams);
-        l1 = System.currentTimeMillis() - l1;
-        localObject5 = paramParams.aidTicket;
-        str = paramParams.taidTicket;
-        localObject6 = localResult.eventsForAnalysis;
-        if (paramParams == null) {
-          break label1525;
-        }
-        i = paramParams.errorCodeForAidTicket;
-        label853:
-        if (paramParams == null) {
-          break label1532;
-        }
-        j = paramParams.originErrorCode;
-        label863:
-        ((List)localObject6).add(AdReporterForAnalysis.createEventForAidTicket(paramContext, i, j, l1));
-        localObject6 = localResult.eventsForAnalysis;
-        if (paramParams == null) {
-          break label1540;
-        }
-        i = paramParams.errorCodeForTaidTicket;
-        label896:
-        if (paramParams == null) {
-          break label1547;
-        }
-        j = paramParams.originErrorCode;
-        ((List)localObject6).add(AdReporterForAnalysis.createEventForTaidTicket(paramContext, i, j, l1));
-        j = -2147483648;
-        l1 = System.currentTimeMillis();
-        paramParams = AdCarrier.getCode(paramContext);
-        i = j;
-        if (TextUtils.isEmpty(paramParams)) {}
-      }
+      label1665:
+      label1670:
+      label1676:
+      label1683:
+      label1691:
+      label1698:
       try
       {
-        i = Integer.parseInt(paramParams);
-        paramParams = localResult.eventsForAnalysis;
+        i = Integer.parseInt((String)localObject2);
+        localObject2 = localResult.eventsForAnalysis;
         if (i != -2147483648)
         {
           j = 0;
-          paramParams.add(AdReporterForAnalysis.createEventCarrier(paramContext, j, System.currentTimeMillis() - l1));
-          l1 = System.currentTimeMillis();
-          localObject6 = com.qq.gdt.action.qadid.a.createQADID(paramContext);
-          paramParams = localResult.eventsForAnalysis;
-          if (TextUtils.isEmpty((CharSequence)localObject6)) {
-            break label1577;
+          ((List)localObject2).add(AdReporterForAnalysis.createEventCarrier(paramContext, j, System.currentTimeMillis() - l1));
+          localObject2 = com.tencent.ad.tangram.net.a.INSTANCE.getCache(paramContext);
+          if (localObject2 == null) {
+            break label1731;
+          }
+          localObject2 = ((a.a)localObject2).ip;
+          localObject4 = localResult.eventsForAnalysis;
+          if (TextUtils.isEmpty((CharSequence)localObject2)) {
+            break label1737;
           }
           j = 0;
-          paramParams.add(AdReporterForAnalysis.createEventForGetQADID(paramContext, j, System.currentTimeMillis() - l1));
-          paramParams = com.tencent.ad.tangram.net.a.INSTANCE.getCache(paramContext);
-          if (paramParams == null) {
-            break label1583;
-          }
-          paramParams = paramParams.ip;
-          Object localObject7 = localResult.eventsForAnalysis;
-          if (TextUtils.isEmpty(paramParams)) {
-            break label1588;
-          }
-          j = 0;
-          ((List)localObject7).add(AdReporterForAnalysis.createEventForIPV4(paramContext, j));
+          ((List)localObject4).add(AdReporterForAnalysis.createEventForIPV4(paramContext, j));
           l1 = System.currentTimeMillis();
-          localObject7 = AdNet.getUserAgent();
-          List localList = localResult.eventsForAnalysis;
-          if (TextUtils.isEmpty((CharSequence)localObject7)) {
-            break label1594;
+          localObject4 = AdNet.getUserAgent();
+          Object localObject5 = localResult.eventsForAnalysis;
+          if (TextUtils.isEmpty((CharSequence)localObject4)) {
+            break label1743;
           }
           j = 0;
           long l2 = System.currentTimeMillis();
           if (TextUtils.isEmpty(AdNet.getUserAgentCache())) {
-            break label1600;
+            break label1749;
           }
           k = 1;
-          localList.add(AdReporterForAnalysis.createEventForDeviceIdentifier(paramContext, 1125, j, l2 - l1, k));
-          if (TextUtils.isEmpty(((AdDeviceIdentifier)localObject2).idHash)) {
-            break label1606;
+          ((List)localObject5).add(AdReporterForAnalysis.createEventForDeviceIdentifier(paramContext, 1125, j, l2 - l1, k));
+          l2 = System.currentTimeMillis();
+          localObject5 = AdLocationManager.INSTANCE.getLocationCache(paramContext);
+          if ((localObject5 == null) || (!((AdLocation)localObject5).isValid())) {
+            break label1755;
           }
-          localResult.deviceInfo.muid = ((AdDeviceIdentifier)localObject2).idHash;
+          bool = true;
+          List localList = localResult.eventsForAnalysis;
+          long l3 = System.currentTimeMillis();
+          if ((!bool) || (((AdLocation)localObject5).timeMillis == -2147483648L)) {
+            break label1761;
+          }
+          l1 = System.currentTimeMillis() - ((AdLocation)localObject5).timeMillis;
+          localList.add(AdReporterForAnalysis.createEventForLocation(paramContext, bool, l3 - l2, l1));
+          if (TextUtils.isEmpty(localAdDeviceIdentifier1.idHash)) {
+            break label1769;
+          }
+          localResult.deviceInfo.muid = localAdDeviceIdentifier1.idHash;
           localResult.deviceInfo.muid_type = 1;
           localResult.deviceInfo.conn = AdNet.getType(paramContext);
           if (i != -2147483648) {
@@ -274,111 +298,117 @@ public enum AdDeviceInfo
           }
           localResult.deviceInfo.os_ver = Build.VERSION.RELEASE;
           localResult.deviceInfo.os_type = 2;
+          if ((localObject5 != null) && (((AdLocation)localObject5).isValid()))
+          {
+            localResult.deviceInfo.location = new qq_ad_get.QQAdGet.DeviceInfo.Location();
+            localResult.deviceInfo.location.coordinates_type = 0;
+            localResult.deviceInfo.location.latitude = Double.valueOf(((AdLocation)localObject5).latitude * 1000000.0D).intValue();
+            localResult.deviceInfo.location.longitude = Double.valueOf(((AdLocation)localObject5).longitude * 1000000.0D).intValue();
+          }
           if (!TextUtils.isEmpty(Build.MANUFACTURER)) {
             localResult.deviceInfo.manufacturer = Build.MANUFACTURER;
           }
           if (!TextUtils.isEmpty(Build.MODEL)) {
             localResult.deviceInfo.device_brand_and_model = Build.MODEL;
           }
-          if (!TextUtils.isEmpty((CharSequence)localObject6)) {
-            localResult.deviceInfo.qadid = ((String)localObject6);
-          }
-          localResult.deviceInfo.md5_android_id = localAdDeviceIdentifier.idHash;
-          localResult.deviceInfo.client_ipv4 = paramParams;
-          localResult.deviceInfo.aid_ticket = ((String)localObject5);
-          localResult.deviceInfo.taid_ticket = str;
+          localResult.deviceInfo.md5_android_id = localAdDeviceIdentifier3.idHash;
+          localResult.deviceInfo.client_ipv4 = ((String)localObject2);
+          localResult.deviceInfo.aid_ticket = paramParams;
+          localResult.deviceInfo.taid_ticket = ((String)localObject1);
           localResult.deviceInfo.origin_network_type = AdNet.getNetworkType(paramContext);
           if (!TextUtils.isEmpty(Build.BRAND)) {
             localResult.deviceInfo.brand = Build.BRAND;
           }
-          localObject2 = new qq_common.DeviceExt();
-          ((qq_common.DeviceExt)localObject2).attri_info.id_info = getIdInfoArray((Map)localObject1);
-          localObject1 = ((qq_common.DeviceExt)localObject2).attri_info;
-          if ((localObject4 == null) || (((r.a)localObject4).uuidInfo == null)) {
-            break label1618;
+          localObject1 = new qq_common.DeviceExt();
+          ((qq_common.DeviceExt)localObject1).attri_info.id_info = getIdInfoArray(localHashMap);
+          localObject2 = ((qq_common.DeviceExt)localObject1).attri_info;
+          if ((locala == null) || (locala.uuidInfo == null)) {
+            break label1781;
           }
-          paramParams = ((r.a)localObject4).uuidInfo.getInfo();
-          ((qq_common.DeviceExt.AttriDeviceInfo)localObject1).uuid = paramParams;
-          ((qq_common.DeviceExt)localObject2).attri_info.wm_h = ((AdDeviceIdentifier)localObject3).idHash;
-          ((qq_common.DeviceExt)localObject2).attri_info.ua = ((String)localObject7);
-          ((qq_common.DeviceExt)localObject2).wechat_installed_info.api_ver = getWeChatAPIVer(paramContext);
+          paramParams = locala.uuidInfo.getInfo();
+          ((qq_common.DeviceExt.AttriDeviceInfo)localObject2).uuid = paramParams;
+          ((qq_common.DeviceExt)localObject1).attri_info.wm_h = localAdDeviceIdentifier2.idHash;
+          ((qq_common.DeviceExt)localObject1).attri_info.ua = ((String)localObject4);
+          ((qq_common.DeviceExt)localObject1).wechat_installed_info.api_ver = getWeChatAPIVer(paramContext);
           if (AdSettingsUtil.INSTANCE.getSettingsCache(paramContext) == null) {
-            break label1623;
+            break label1786;
           }
           i = 1;
-          ((qq_common.DeviceExt)localObject2).mqq_config_status = i;
+          ((qq_common.DeviceExt)localObject1).mqq_config_status = i;
         }
-        try
-        {
-          paramContext = AdJSON.fromObject(localObject2);
-          paramParams = localResult.deviceInfo;
-          if ((paramContext == null) || (JSONObject.NULL.equals(paramContext))) {
-            break label1628;
-          }
-          paramContext = paramContext.toString();
-          paramParams.device_ext = paramContext;
-        }
-        catch (Throwable paramContext)
-        {
-          for (;;)
-          {
-            AdLog.e("AdDeviceInfo", "create", paramContext);
-          }
-        }
-        return localResult;
-        i = 0;
-        continue;
-        paramParams = null;
-        break label809;
-        label1525:
-        i = -2147483648;
-        break label853;
-        label1532:
-        j = -2147483648;
-        break label863;
-        label1540:
-        i = -2147483648;
-        break label896;
-        label1547:
-        j = -2147483648;
       }
-      catch (Throwable paramParams)
+      catch (Throwable localThrowable)
       {
-        for (;;)
-        {
-          AdLog.e("AdDeviceInfo", "create", paramParams);
-          i = j;
-          continue;
-          j = 1;
-          continue;
-          label1577:
-          j = 1;
-          continue;
-          label1583:
-          paramParams = null;
-          continue;
-          label1588:
-          j = 1;
-          continue;
-          label1594:
-          j = 1;
-          continue;
-          label1600:
-          int k = 0;
-          continue;
-          label1606:
-          localResult.deviceInfo.muid_type = 0;
-          continue;
-          label1618:
-          paramParams = null;
-          continue;
-          label1623:
-          i = 2;
-          continue;
-          label1628:
-          paramContext = null;
-        }
+        label1660:
+        AdLog.e("AdDeviceInfo", "create", localThrowable);
       }
+      try
+      {
+        paramContext = AdJSON.fromObject(localObject1);
+        paramParams = localResult.deviceInfo;
+        if ((paramContext == null) || (JSONObject.NULL.equals(paramContext))) {
+          break label1791;
+        }
+        paramContext = paramContext.toString();
+        paramParams.device_ext = paramContext;
+      }
+      catch (Throwable paramContext)
+      {
+        Object localObject3;
+        AdLog.e("AdDeviceInfo", "create", paramContext);
+        continue;
+      }
+      return localResult;
+      i = 0;
+      break;
+      paramParams = null;
+      break label809;
+      paramParams = null;
+      break label837;
+      localObject1 = null;
+      break label849;
+      i = -2147483648;
+      break label867;
+      j = -2147483648;
+      break label879;
+      i = -2147483648;
+      break label914;
+      j = -2147483648;
+      break label926;
+      label1718:
+      i = -2147483648;
+      continue;
+      j = 1;
+      continue;
+      label1731:
+      localObject3 = null;
+      continue;
+      label1737:
+      j = 1;
+      continue;
+      label1743:
+      j = 1;
+      continue;
+      label1749:
+      int k = 0;
+      continue;
+      label1755:
+      boolean bool = false;
+      continue;
+      label1761:
+      l1 = -2147483648L;
+      continue;
+      label1769:
+      localResult.deviceInfo.muid_type = 0;
+      continue;
+      label1781:
+      paramParams = null;
+      continue;
+      label1786:
+      i = 2;
+      continue;
+      label1791:
+      paramContext = null;
     }
   }
   
@@ -398,6 +428,7 @@ public enum AdDeviceInfo
     com.tencent.ad.tangram.net.a.INSTANCE.init(paramContext);
     h.INSTANCE.init(paramContext);
     AdTAID.getInstance().init(paramContext);
+    AdLocationManager.INSTANCE.init(paramContext);
   }
 }
 

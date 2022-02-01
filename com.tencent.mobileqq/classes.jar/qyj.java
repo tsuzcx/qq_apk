@@ -1,23 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class qyj
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/pts/data/PTSLiteDataFactory$IPTSLiteDataJson;", "", "addR5ReportJson", "", "articleInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/ArticleInfo;", "r5", "Lorg/json/JSONObject;", "updateDataJson", "jsonData", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface qyj
 {
-  qyj(qye paramqye) {}
+  public abstract void a(@NotNull ArticleInfo paramArticleInfo, @NotNull JSONObject paramJSONObject);
   
-  public final void onClick(View paramView)
-  {
-    PopupWindow localPopupWindow = qye.a(this.a);
-    if (localPopupWindow != null) {
-      localPopupWindow.dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void b(@NotNull ArticleInfo paramArticleInfo, @NotNull JSONObject paramJSONObject);
 }
 
 

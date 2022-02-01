@@ -7,7 +7,7 @@ class VideoControlUI$11
   
   public void run()
   {
-    this.this$0.k(-1052L);
+    this.this$0.l(-1052L);
   }
 }
 

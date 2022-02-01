@@ -1,10 +1,19 @@
-public abstract class vsz
+import android.annotation.TargetApi;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+
+class vsz
+  extends View.AccessibilityDelegate
 {
-  public abstract String a();
+  vsz(vsx paramvsx) {}
   
-  public abstract vta a(byte[] paramArrayOfByte);
-  
-  protected abstract byte[] a();
+  @TargetApi(14)
+  public void sendAccessibilityEvent(View paramView, int paramInt)
+  {
+    if (paramInt != 32) {
+      super.sendAccessibilityEvent(paramView, paramInt);
+    }
+  }
 }
 
 

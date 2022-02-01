@@ -1,14 +1,22 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
 
-public class acbk
-  implements abzb
+public final class acbk
+  extends acar
 {
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public int a;
+  public long a;
+  public int b = -2147483648;
+  public int c = -2147483648;
+  
+  public acbk()
   {
-    bbmy.a(paramMsgInfo.shMsgSeq, paramMsgInfo.shMsgType, paramabxc.a(), paramMsgType0x210.vProtobuf);
-    return null;
+    this.jdField_a_of_type_Int = -2147483648;
+    this.jdField_a_of_type_Long = -2147483648L;
+  }
+  
+  public boolean a()
+  {
+    return (super.a()) && (this.jdField_a_of_type_Int != -2147483648) && (this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.b()) && (this.b > 0) && (this.c > 0);
   }
 }
 

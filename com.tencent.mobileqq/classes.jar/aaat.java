@@ -1,42 +1,25 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.SubscribeFollowInfoView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aaat
-  implements zop
+public class aaat
+  implements View.OnClickListener
 {
-  aaat(aaaq paramaaaq, String paramString) {}
+  public aaat(SubscribeFollowInfoView paramSubscribeFollowInfoView, CertifiedAccountMeta.StFeed paramStFeed) {}
   
-  public void callback(Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    Object localObject = null;
-    String str;
-    if (paramBundle != null)
+    if ((this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeFollowInfoView.a() == null) && (this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeFollowInfoView.a())) {}
+    for (;;)
     {
-      str = paramBundle.getString("content");
-      paramBundle = paramBundle.getString("url");
-    }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("content", str);
-      localJSONObject.put("url", paramBundle);
-      paramBundle = localJSONObject.toString();
-      this.jdField_a_of_type_Aaaq.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        paramBundle = localObject;
-        if (QLog.isColorLevel())
-        {
-          QLog.i("HotchatPlugin", 2, localJSONException.getMessage());
-          paramBundle = localObject;
-        }
-      }
+      aanb.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_" + aaba.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeFollowInfoView.a()), "clk_name", 0, 0, new String[0]);
+      zqm.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeFollowInfoView.a(), ((CertifiedAccountMeta.StFeed)this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeFollowInfoView.a()).poster);
     }
   }
 }

@@ -1,13 +1,20 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.data.ContactBinded;
 
-class ajbg
-  implements bhho
+public class ajbg
+  extends ajbn
 {
-  ajbg(ajbf paramajbf) {}
+  public ContactBinded a;
   
-  public void afterDraw(Bundle paramBundle) {}
+  public ajbg(ContactBinded paramContactBinded)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataContactBinded = paramContactBinded;
+    this.jdField_a_of_type_Long = paramContactBinded.timestamp;
+  }
   
-  public void beforeDraw(Bundle paramBundle) {}
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataContactBinded.isReaded;
+  }
 }
 
 

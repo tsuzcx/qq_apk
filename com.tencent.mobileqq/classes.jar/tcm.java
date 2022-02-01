@@ -1,22 +1,12 @@
-import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
 
-class tcm
-  implements bjoe
+public abstract interface tcm
 {
-  tcm(tch paramtch, bjnw parambjnw) {}
+  public abstract void a(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, int paramInt);
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    this.jdField_a_of_type_Bjnw.dismiss();
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-    } while ((!tch.b(this.jdField_a_of_type_Tch)) || (!tch.a(this.jdField_a_of_type_Tch, "deleteFeeds")));
-    swb.a(tch.a(this.jdField_a_of_type_Tch), tch.a(this.jdField_a_of_type_Tch));
-  }
+  public abstract void a(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, boolean paramBoolean);
+  
+  public abstract void m();
 }
 
 

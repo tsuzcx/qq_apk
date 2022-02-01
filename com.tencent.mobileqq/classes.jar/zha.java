@@ -1,10 +1,19 @@
-import android.content.DialogInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.view.widget.AbsEmptyView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface zha
+public class zha
+  implements View.OnClickListener
 {
-  public abstract void a(DialogInterface paramDialogInterface);
+  public zha(AbsEmptyView paramAbsEmptyView, View.OnClickListener paramOnClickListener) {}
   
-  public abstract void l();
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAbsEmptyView.a(3);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

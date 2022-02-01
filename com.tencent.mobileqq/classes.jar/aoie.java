@@ -1,19 +1,23 @@
+import com.tencent.mobileqq.app.automator.step.CleanCache;
+import java.io.File;
+import java.util.Comparator;
+
 public class aoie
+  implements Comparator<File>
 {
-  public float a;
-  public boolean a;
-  public float b = 0.0F;
-  public float c = 0.0F;
+  public aoie(CleanCache paramCleanCache) {}
   
-  public aoie()
+  public int a(File paramFile1, File paramFile2)
   {
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Boolean = true;
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoie
  * JD-Core Version:    0.7.0.1
  */

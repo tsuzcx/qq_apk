@@ -1,15 +1,10 @@
-class askq
-  extends asjv
+import java.util.List;
+
+public abstract interface askq
 {
-  public askq(asji paramasji)
-  {
-    super(paramasji);
-  }
+  public abstract void a(List<askm> paramList, askm paramaskm);
   
-  protected String a()
-  {
-    return "StateUploadoneWhenChangeToOff";
-  }
+  public abstract void c();
 }
 
 

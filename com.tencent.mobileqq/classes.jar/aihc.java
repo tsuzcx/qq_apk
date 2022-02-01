@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationViewHolder.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class aihc
-  implements Comparator<PhoneContact>
+  implements aigz
 {
-  public aihc(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  aihc(aiha paramaiha) {}
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public void a()
   {
-    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
+    aiha.a(this.a, aiha.b(this.a));
+    ThreadManager.getUIHandler().post(new StickerBubbleAnimationViewHolder.2.1(this));
+  }
+  
+  public void b()
+  {
+    aiha.b(this.a, aiha.b(this.a));
   }
 }
 

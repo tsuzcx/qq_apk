@@ -1,16 +1,13 @@
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.List;
 
-public class wns
-  extends wod
+public abstract interface wns
 {
-  @Nullable
-  public xnh a;
+  public abstract void a(@Nullable wly paramwly, Error paramError);
   
-  public wns(String paramString, @Nullable xnh paramxnh)
-  {
-    super(paramString);
-    this.a = paramxnh;
-  }
+  public abstract void a(@Nullable wly paramwly, @NonNull List<StoryVideoItem> paramList);
 }
 
 

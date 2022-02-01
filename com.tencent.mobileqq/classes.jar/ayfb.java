@@ -1,31 +1,12 @@
-import com.tencent.mobileqq.pic.CompressInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ayfb
-  extends ayfa
+class ayfb
+  implements DialogInterface.OnClickListener
 {
-  ayfb(CompressInfo paramCompressInfo)
-  {
-    super(paramCompressInfo);
-  }
+  ayfb(ayek paramayek) {}
   
-  protected int a()
-  {
-    int i = 85;
-    if (this.a.g == 2)
-    {
-      i = 100;
-      return i;
-    }
-    switch (this.a.h)
-    {
-    case 4: 
-    case 2: 
-    case 3: 
-    default: 
-      return 85;
-    }
-    return 90;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

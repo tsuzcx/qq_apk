@@ -1,14 +1,26 @@
+import java.util.ArrayList;
+
 class pfd
-  extends pse
+  extends pfe
 {
-  pfd(pey parampey, String paramString)
+  pfd(pdv parampdv, int paramInt)
   {
-    super(paramString);
+    super(parampdv, null);
   }
   
-  public void a(prx paramprx)
+  void a(pfh parampfh)
   {
-    paramprx.a();
+    if (parampfh == null) {}
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        parampfh.onCommentListLoad(1, false, new ArrayList(), false, 2, 2);
+        return;
+      }
+    } while (this.jdField_a_of_type_Int != 2);
+    parampfh.onCommentLoadMore(1, false, new ArrayList(), false, 2);
   }
 }
 

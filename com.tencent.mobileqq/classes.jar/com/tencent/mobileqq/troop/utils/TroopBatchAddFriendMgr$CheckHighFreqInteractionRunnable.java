@@ -1,11 +1,13 @@
 package com.tencent.mobileqq.troop.utils;
 
-import anca;
-import azwi;
+import aoep;
+import bbco;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -51,7 +53,7 @@ public class TroopBatchAddFriendMgr$CheckHighFreqInteractionRunnable
       return;
       String str = ((TroopChatPie)localObject).sessionInfo.curFriendUin;
       int i = ((TroopChatPie)localObject).sessionInfo.curType;
-      l1 = ((TroopManager)localQQAppInterface.getManager(52)).a().i * 60;
+      l1 = ((TroopManager)localQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).a().i * 60;
       long l2 = NetConnInfoCenter.getServerTime();
       localObject = localQQAppInterface.getMessageFacade().queryMessageByTimeOrSeq(str, i, ((TroopChatPie)localObject).b, 250, String.format("time>=%d and (extLong & 2)=%d", new Object[] { Long.valueOf(l2 - l1), Integer.valueOf(0) }));
       ArrayList localArrayList = TroopBatchAddFriendMgr.a((List)localObject, localQQAppInterface);
@@ -59,7 +61,7 @@ public class TroopBatchAddFriendMgr$CheckHighFreqInteractionRunnable
         QLog.d("CheckHighFreqInteractionRunnable", 2, String.format("checkHighFreqInteractionUinTask msgSize=%d uins = ", new Object[] { Integer.valueOf(((List)localObject).size()), Arrays.toString(localArrayList.toArray()) }));
       }
       if ((localArrayList.size() > 0) && (!this.jdField_a_of_type_Boolean)) {
-        ((anca)localQQAppInterface.getBusinessHandler(20)).a().a(str, localArrayList, 3);
+        ((aoep)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).a().a(str, localArrayList, 3);
       }
     } while ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_MqqUtilWeakReference.get() == null) || (this.b.get() == null));
     ThreadManager.getSubThreadHandler().postDelayed(this, 1000L * l1);

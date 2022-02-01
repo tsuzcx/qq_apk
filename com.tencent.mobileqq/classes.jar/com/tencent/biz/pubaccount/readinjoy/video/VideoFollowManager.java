@@ -4,14 +4,14 @@ import android.os.Handler;
 import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
-import sgh;
+import ssm;
 
 public class VideoFollowManager
 {
   private Handler jdField_a_of_type_AndroidOsHandler;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private List<VideoInfo> jdField_a_of_type_JavaUtilList;
-  private sgh jdField_a_of_type_Sgh;
+  private ssm jdField_a_of_type_Ssm;
 }
 
 

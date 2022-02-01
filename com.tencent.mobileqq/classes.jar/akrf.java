@@ -1,18 +1,49 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import android.os.Bundle;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import tencent.im.qqwallet.QWalletPubAdReport.QueryRsp;
 
-public class akrf
-  implements ValueAnimator.AnimatorUpdateListener
+class akrf
+  implements BusinessObserver
 {
-  public akrf(FlowCameraActivity2 paramFlowCameraActivity2, int paramInt) {}
+  akrf(akre paramakre) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.g.setPadding(0, 0, 0, paramValueAnimator.intValue());
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.e.setPadding(0, this.jdField_a_of_type_Int - paramValueAnimator.intValue(), 0, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletGdtAdManager", 2, "onReceive:type:" + paramInt + ",isSuccess:" + paramBoolean + ",bundle:" + paramBundle + ",cost:" + (NetConnInfoCenter.getServerTimeMillis() - this.a.jdField_a_of_type_Long));
+    }
+    try
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      if ((paramBundle != null) && (paramBoolean))
+      {
+        QWalletPubAdReport.QueryRsp localQueryRsp = new QWalletPubAdReport.QueryRsp();
+        localQueryRsp.mergeFrom(paramBundle);
+        paramInt = localQueryRsp.ret.get();
+        if (paramInt == 0)
+        {
+          akrc.a(this.a.jdField_a_of_type_Akrc, localQueryRsp.pv_flag.get());
+          akrc.a(this.a.jdField_a_of_type_Akrc, localQueryRsp);
+          if (QLog.isColorLevel()) {
+            QLog.i("QWalletGdtAdManager", 2, "doReqAdsControl onReceive: retCode:" + localQueryRsp.ret.get() + ",msg:" + localQueryRsp.msg.get());
+          }
+        }
+        else if (QLog.isColorLevel())
+        {
+          QLog.e("QWalletGdtAdManager", 2, "onReceive fail,retCode:" + paramInt);
+          return;
+        }
+      }
+    }
+    catch (Throwable paramBundle)
+    {
+      paramBundle.printStackTrace();
+      QLog.e("QWalletGdtAdManager", 1, "onReceive fail exception:" + paramBundle.getMessage());
+    }
   }
 }
 

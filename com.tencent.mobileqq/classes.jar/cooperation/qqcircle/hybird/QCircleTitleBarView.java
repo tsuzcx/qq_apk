@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bgtw;
+import bieo;
 import com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -21,7 +21,7 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 import cooperation.qqcircle.utils.QCircleCommonUtil;
 
 public class QCircleTitleBarView
-  extends bgtw
+  extends bieo
 {
   public QCircleTitleBarView(SwiftBrowserUIStyleHandler paramSwiftBrowserUIStyleHandler)
   {
@@ -51,8 +51,8 @@ public class QCircleTitleBarView
         switch (((QCircleWebViewTitleStyle)this.mUIStyle.mTitleStyle).mLeftBackIcon)
         {
         case 0: 
-          this.leftCloseView.setImageDrawable(((Resources)localObject).getDrawable(2130843989));
-          this.leftCloseView.setBackgroundResource(2130843995);
+          this.leftCloseView.setImageDrawable(((Resources)localObject).getDrawable(2130844035));
+          this.leftCloseView.setBackgroundResource(2130844041);
           i = UIUtils.dip2px(BaseApplicationImpl.getContext(), 14.0F);
           this.leftCloseView.setPadding(i, i, i, i);
           localObject = (RelativeLayout.LayoutParams)this.leftCloseView.getLayoutParams();
@@ -75,16 +75,16 @@ public class QCircleTitleBarView
         localException.printStackTrace();
         return;
       }
-      this.leftCloseView.setImageDrawable(((Resources)localObject).getDrawable(2130843989));
-      this.leftCloseView.setBackgroundResource(2130843995);
+      this.leftCloseView.setImageDrawable(((Resources)localObject).getDrawable(2130844035));
+      this.leftCloseView.setBackgroundResource(2130844041);
       i = UIUtils.dip2px(BaseApplicationImpl.getContext(), 14.0F);
       this.leftCloseView.setPadding(i, i, i, i);
       continue;
-      this.leftCloseView.setImageDrawable(localException.getDrawable(2130843967));
+      this.leftCloseView.setImageDrawable(localException.getDrawable(2130844007));
       continue;
-      this.leftCloseView.setImageDrawable(localException.getDrawable(2130843968));
+      this.leftCloseView.setImageDrawable(localException.getDrawable(2130844008));
       continue;
-      this.leftCloseView.setImageDrawable(localException.getDrawable(2130843969));
+      this.leftCloseView.setImageDrawable(localException.getDrawable(2130844009));
     }
   }
   

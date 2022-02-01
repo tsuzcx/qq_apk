@@ -1,50 +1,68 @@
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.3.1;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.3.2;
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.TroopAppInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
+import java.util.Iterator;
+import java.util.List;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-public class nxv
-  implements TVK_IMediaPlayer.OnCompletionListener
+class nxv
+  implements BusinessObserver
 {
-  public nxv(VideoCoverFragment paramVideoCoverFragment) {}
+  nxv(nxu paramnxu, boolean paramBoolean) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    VideoCoverFragment.a(this.a);
-    int i = this.a.a();
-    if ((i > 1) && (VideoCoverFragment.a(this.a) != null))
-    {
-      if (VideoCoverFragment.a(this.a) != i - 1) {
-        break label209;
-      }
-      ThreadManager.getUIHandler().post(new VideoCoverFragment.3.1(this));
-    }
-    for (;;)
-    {
-      paramTVK_IMediaPlayer = ((nxr)VideoCoverFragment.a(this.a).jdField_a_of_type_JavaUtilArrayList.get(VideoCoverFragment.a(this.a))).b;
-      bcef.a(null, "dc00898", "", VideoCoverFragment.a(this.a).jdField_a_of_type_Nxs.a, "0X8008F65", "0X8008F65", 0, 0, VideoCoverFragment.a(this.a).jdField_a_of_type_Nxs.c, "", paramTVK_IMediaPlayer, VideoCoverFragment.a(this.a).jdField_a_of_type_Nxs.b);
-      Integer localInteger = (Integer)PublicAccountAdvertisementActivity.a.get(paramTVK_IMediaPlayer);
-      i = (int)(((nxr)VideoCoverFragment.a(this.a).jdField_a_of_type_JavaUtilArrayList.get(VideoCoverFragment.a(this.a))).a.a / 1000L);
-      if (localInteger == null) {
-        break;
-      }
-      PublicAccountAdvertisementActivity.a.put(paramTVK_IMediaPlayer, Integer.valueOf(localInteger.intValue() + i));
+    if (this.jdField_a_of_type_Nxu.jdField_a_of_type_Boolean) {
       return;
-      label209:
-      ThreadManager.getUIHandler().post(new VideoCoverFragment.3.2(this));
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverFragment", 2, "current time = null");
+    if ((!paramBoolean) || (paramBundle == null))
+    {
+      nxu.a(this.jdField_a_of_type_Nxu);
+      return;
     }
-    PublicAccountAdvertisementActivity.a.put(paramTVK_IMediaPlayer, Integer.valueOf(i));
+    paramBundle = paramBundle.getByteArray("data");
+    Object localObject = new oidb_sso.OIDBSSOPkg();
+    try
+    {
+      ((oidb_sso.OIDBSSOPkg)localObject).mergeFrom((byte[])paramBundle);
+      if ((localObject == null) || (!((oidb_sso.OIDBSSOPkg)localObject).uint32_result.has()) || (((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get() != 0) || (!((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.has()) || (((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.get() == null))
+      {
+        nxu.a(this.jdField_a_of_type_Nxu);
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramBundle)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopCardAppInfoHandler", 2, "handleGetTroopAppBriefList error " + QLog.getStackTraceString(paramBundle));
+      }
+      nxu.a(this.jdField_a_of_type_Nxu);
+      return;
+    }
+    localObject = nxu.a(this.jdField_a_of_type_Nxu, (oidb_sso.OIDBSSOPkg)localObject);
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
+    {
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        nxu.a(this.jdField_a_of_type_Nxu, (List)localObject);
+        return;
+      }
+      paramBundle = new ArrayList();
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        Long localLong = (Long)((Iterator)localObject).next();
+        new TroopAppInfo().appId = localLong.longValue();
+      }
+      nxu.a(this.jdField_a_of_type_Nxu, paramBundle);
+      return;
+    }
+    nxu.a(this.jdField_a_of_type_Nxu);
   }
 }
 

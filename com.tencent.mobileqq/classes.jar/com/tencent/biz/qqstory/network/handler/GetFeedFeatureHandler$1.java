@@ -6,51 +6,51 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import vqn;
-import vqr;
-import wbl;
-import wdu;
-import weg;
-import xnh;
-import xnp;
-import xvv;
+import wfi;
+import wfm;
+import wqg;
+import wsp;
+import wtb;
+import ycc;
+import yck;
+import ykq;
 
 public class GetFeedFeatureHandler$1
   implements Runnable
 {
-  public GetFeedFeatureHandler$1(wbl paramwbl) {}
+  public GetFeedFeatureHandler$1(wqg paramwqg) {}
   
   public void run()
   {
     Object localObject3;
-    if (wbl.a(this.this$0))
+    if (wqg.a(this.this$0))
     {
       localObject1 = this.this$0.jdField_a_of_type_JavaUtilList.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (String)((Iterator)localObject1).next();
-        localObject3 = (Long)wbl.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject2);
+        localObject3 = (Long)wqg.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject2);
         if ((localObject3 != null) && (System.currentTimeMillis() - ((Long)localObject3).longValue() < 30000L))
         {
           ((Iterator)localObject1).remove();
-          xvv.a("Q.qqstory.home.GetFeedFeatureHandler", "remove same request for feed info:%s", localObject2);
+          ykq.a("Q.qqstory.home.GetFeedFeatureHandler", "remove same request for feed info:%s", localObject2);
         }
         else
         {
-          wbl.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject2, Long.valueOf(System.currentTimeMillis()));
+          wqg.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject2, Long.valueOf(System.currentTimeMillis()));
         }
       }
     }
     if (this.this$0.jdField_a_of_type_JavaUtilList.size() == 0) {
       return;
     }
-    xvv.a("Q.qqstory.home.GetFeedFeatureHandler", "request for feed info:%s", this.this$0.jdField_a_of_type_JavaUtilList);
+    ykq.a("Q.qqstory.home.GetFeedFeatureHandler", "request for feed info:%s", this.this$0.jdField_a_of_type_JavaUtilList);
     Object localObject1 = new ArrayList();
     Object localObject2 = this.this$0.jdField_a_of_type_JavaUtilList.iterator();
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (String)((Iterator)localObject2).next();
-      if (this.this$0.jdField_a_of_type_Xnp.a((String)localObject3) == null)
+      if (this.this$0.jdField_a_of_type_Yck.a((String)localObject3) == null)
       {
         if (!TextUtils.isEmpty((CharSequence)localObject3)) {
           ((List)localObject1).add(localObject3);
@@ -65,28 +65,28 @@ public class GetFeedFeatureHandler$1
       if (QLog.isColorLevel()) {
         QLog.d("Q.qqstory.home.GetFeedFeatureHandler", 2, new Object[] { "request FeedItem: first=", ((List)localObject1).get(0) });
       }
-      localObject2 = new wdu();
-      ((wdu)localObject2).jdField_a_of_type_JavaUtilList = new ArrayList();
+      localObject2 = new wsp();
+      ((wsp)localObject2).jdField_a_of_type_JavaUtilList = new ArrayList();
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject3 = new xnh((String)((Iterator)localObject1).next(), 0, "", "");
-        ((wdu)localObject2).jdField_a_of_type_JavaUtilList.add(localObject3);
+        localObject3 = new ycc((String)((Iterator)localObject1).next(), 0, "", "");
+        ((wsp)localObject2).jdField_a_of_type_JavaUtilList.add(localObject3);
       }
-      vqn.a().a((vqr)localObject2, this.this$0);
+      wfi.a().a((wfm)localObject2, this.this$0);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("Q.qqstory.home.GetFeedFeatureHandler", 2, new Object[] { "request FeedFeature: first=", this.this$0.jdField_a_of_type_JavaUtilList.get(0) });
     }
-    localObject1 = new weg();
-    ((weg)localObject1).jdField_a_of_type_JavaUtilList = this.this$0.jdField_a_of_type_JavaUtilList;
-    vqn.a().a((vqr)localObject1, this.this$0);
+    localObject1 = new wtb();
+    ((wtb)localObject1).jdField_a_of_type_JavaUtilList = this.this$0.jdField_a_of_type_JavaUtilList;
+    wfi.a().a((wfm)localObject1, this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetFeedFeatureHandler.1
  * JD-Core Version:    0.7.0.1
  */

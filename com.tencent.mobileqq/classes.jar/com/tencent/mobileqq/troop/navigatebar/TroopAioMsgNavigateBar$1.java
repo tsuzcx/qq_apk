@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.troop.navigatebar;
 
-import beri;
+import bfyo;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class TroopAioMsgNavigateBar$1
   implements Runnable
 {
-  public TroopAioMsgNavigateBar$1(beri paramberi) {}
+  public TroopAioMsgNavigateBar$1(bfyo parambfyo) {}
   
   public void run()
   {

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.app.asyncdb.cache;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import anes;
+import aohi;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.SQLiteDatabase;
@@ -18,7 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class RecentUserCache$4
   implements Runnable
 {
-  public RecentUserCache$4(anes paramanes, SharedPreferences paramSharedPreferences) {}
+  public RecentUserCache$4(aohi paramaohi, SharedPreferences paramSharedPreferences) {}
   
   public void run()
   {
@@ -29,9 +29,9 @@ public class RecentUserCache$4
     label384:
     for (;;)
     {
-      synchronized (anes.g(this.this$0))
+      synchronized (aohi.g(this.this$0))
       {
-        Iterator localIterator = anes.h(this.this$0).values().iterator();
+        Iterator localIterator = aohi.h(this.this$0).values().iterator();
         if (localIterator.hasNext())
         {
           Entity localEntity = (Entity)localIterator.next();
@@ -48,8 +48,8 @@ public class RecentUserCache$4
         if (localObject1 != null)
         {
           localObject1 = this.this$0.getKey((Entity)localObject1);
-          if (anes.i(this.this$0).containsKey(localObject1)) {
-            anes.j(this.this$0).remove(localObject1);
+          if (aohi.i(this.this$0).containsKey(localObject1)) {
+            aohi.j(this.this$0).remove(localObject1);
           }
         }
         int i = ((SQLiteDatabase)???).delete("recent", "uin=?", new String[] { AppConstants.PUBLIC_ACCOUNT_WPA_ASSISTANT_UIN });

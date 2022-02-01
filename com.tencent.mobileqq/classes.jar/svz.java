@@ -1,81 +1,107 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.SystemClock;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.gdtad.aditem.GdtHandler.Params;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.shortvideo.util.videoconverter.VideoConverter.Processor;
+import com.tencent.mobileqq.shortvideo.util.videoconverter.VideoConverter.VideoConvertConfig;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class svz
+class svz
+  implements VideoConverter.Processor
 {
-  public static long a;
-  public static GdtHandler.Params a;
+  final int jdField_a_of_type_Int;
+  final long jdField_a_of_type_Long;
+  final String jdField_a_of_type_JavaLangString;
+  Throwable jdField_a_of_type_JavaLangThrowable;
+  final int jdField_b_of_type_Int;
+  final long jdField_b_of_type_Long;
   
-  static
+  svz(svy paramsvy, String paramString, int paramInt1, int paramInt2, long paramLong1, long paramLong2)
   {
-    jdField_a_of_type_Long = -2147483648L;
-  }
-  
-  public static void a(Context paramContext, AdvertisementInfo paramAdvertisementInfo, boolean paramBoolean, int paramInt)
-  {
-    if (!(paramContext instanceof Activity)) {
-      return;
-    }
-    a(paramContext, paramAdvertisementInfo, false, paramBoolean, paramInt);
-  }
-  
-  public static void a(Context paramContext, AdvertisementInfo paramAdvertisementInfo, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
-  {
-    if (((paramContext instanceof Activity)) && (paramAdvertisementInfo != null))
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    if (paramInt2 > 0) {}
+    for (this.jdField_b_of_type_Int = paramInt2;; this.jdField_b_of_type_Int = 30)
     {
-      paramAdvertisementInfo.setClickPos(paramInt);
-      tqh localtqh = new tqh();
-      localtqh.d = paramBoolean1;
-      localtqh.b = paramBoolean2;
-      tpx.a(paramAdvertisementInfo, (Activity)paramContext, obb.M, obb.a, 3, localtqh);
-      if (twh.a(paramAdvertisementInfo)) {}
-      do
-      {
-        do
-        {
-          return;
-        } while ((paramAdvertisementInfo.isSoftAd()) && (paramAdvertisementInfo.mAdvertisementSoftInfo.c != 0));
-        paramAdvertisementInfo.setClickPos(paramInt);
-        paramContext = tqe.a(paramAdvertisementInfo, (Activity)paramContext, localtqh);
-      } while (paramContext == null);
-      paramContext.f = twq.b(paramAdvertisementInfo);
-      jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = paramContext;
-      jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-      return;
+      this.jdField_a_of_type_JavaLangThrowable = null;
+      if (paramString != null) {
+        break;
+      }
+      throw new IllegalArgumentException("null == outputFilePath");
     }
-    twp.a("FastWebRecommendAdHelper", "onAdJump error: advertisementInfo is null or context is not activity");
   }
   
-  public static void a(Context paramContext, BaseData paramBaseData, boolean paramBoolean, int paramInt)
+  private void a()
   {
-    if ((!(paramContext instanceof Activity)) || (!(paramBaseData instanceof AdData))) {
-      return;
+    File localFile = new File(this.jdField_a_of_type_JavaLangString);
+    if (localFile.exists()) {
+      localFile.delete();
     }
-    AdvertisementInfo localAdvertisementInfo2 = ((AdData)paramBaseData).a;
-    AdvertisementInfo localAdvertisementInfo1 = localAdvertisementInfo2;
-    if (localAdvertisementInfo2 == null) {
-      localAdvertisementInfo1 = tws.a((AdData)paramBaseData);
-    }
-    a(paramContext, localAdvertisementInfo1, false, paramBoolean, paramInt);
   }
   
-  public void a()
+  public boolean a()
   {
-    uhs.a(2, jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params, jdField_a_of_type_Long);
-    jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = null;
-    jdField_a_of_type_Long = -2147483648L;
+    boolean bool = false;
+    if ((Build.VERSION.SDK_INT >= 18) && (Build.VERSION.SDK_INT <= 19)) {
+      bool = true;
+    }
+    while (Build.VERSION.SDK_INT <= 19) {
+      return bool;
+    }
+    return false;
   }
   
-  public void b()
+  public VideoConverter.VideoConvertConfig getEncodeConfig(int paramInt1, int paramInt2)
   {
-    jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = null;
-    jdField_a_of_type_Long = -2147483648L;
+    int i = 30;
+    VideoConverter.VideoConvertConfig localVideoConvertConfig = new VideoConverter.VideoConvertConfig();
+    File localFile = new File(this.jdField_a_of_type_JavaLangString);
+    if (localFile.exists()) {
+      localFile.delete();
+    }
+    localVideoConvertConfig.output = localFile;
+    long l = swb.a(paramInt1, paramInt2);
+    int j = swb.a(paramInt1, paramInt2);
+    localVideoConvertConfig.videoBitRate = ((int)l);
+    paramInt2 = Math.min(paramInt1, paramInt2);
+    localVideoConvertConfig.scaleRate = (j / paramInt2);
+    paramInt1 = i;
+    if (this.jdField_b_of_type_Int <= 30) {
+      paramInt1 = this.jdField_b_of_type_Int;
+    }
+    localVideoConvertConfig.videoFrameRate = paramInt1;
+    localVideoConvertConfig.setRotation = a();
+    localVideoConvertConfig.beginTime = this.jdField_a_of_type_Long;
+    localVideoConvertConfig.endTime = this.jdField_b_of_type_Long;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCompressTask", 2, "CompressTask, step: getEncodeConfig()\n  sourceShortEdge:" + paramInt2 + ", dstResolution:" + j + ", scaleRate:" + localVideoConvertConfig.scaleRate + "\n  targetVideoBitRate:" + localVideoConvertConfig.videoBitRate + ", videoFrameRate:" + localVideoConvertConfig.videoFrameRate + "\n setRotation:" + localVideoConvertConfig.setRotation + ", beginTime:" + localVideoConvertConfig.beginTime + ", endTime:" + localVideoConvertConfig.endTime);
+    }
+    return localVideoConvertConfig;
   }
+  
+  public void onCanceled()
+  {
+    QLog.e("VideoCompressTask", 1, "CompressTask, step: HWCompressProcessor onCanceled:");
+    a();
+    if (svy.a(this.jdField_a_of_type_Svy) != null) {
+      svy.a(this.jdField_a_of_type_Svy).a(6, null, null);
+    }
+  }
+  
+  public void onFailed(Throwable paramThrowable)
+  {
+    QLog.e("VideoCompressTask", 1, "CompressTask, step: HWCompressProcessor onFailed:" + paramThrowable.getMessage());
+    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
+  }
+  
+  public void onProgress(int paramInt)
+  {
+    if ((svy.a(this.jdField_a_of_type_Svy) != null) && (!this.jdField_a_of_type_Svy.isCancelled())) {
+      svy.a(this.jdField_a_of_type_Svy).a(paramInt / 100.0F);
+    }
+  }
+  
+  public void onSuccessed() {}
 }
 
 

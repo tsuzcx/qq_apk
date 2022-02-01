@@ -1,49 +1,17 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.37.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahjr
-  implements BusinessObserver
+class ahjr
+  implements View.OnClickListener
 {
-  ahjr(ahiu paramahiu) {}
+  ahjr(ahjq paramahjq) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.tag, 2, "success:" + String.valueOf(paramBoolean));
-    }
-    if (!paramBoolean) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        byte[] arrayOfByte = paramBundle.getByteArray("data");
-        paramInt = paramBundle.getInt("type", 0);
-        if (arrayOfByte == null) {
-          continue;
-        }
-        paramBundle = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
-        oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse();
-        if (paramInt == 0) {
-          paramBundle.mergeFrom(arrayOfByte);
-        }
-        for (paramBoolean = true; (paramBoolean) && (paramBundle.ret_info.has()) && (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.get() == 0); paramBoolean = ugf.a(arrayOfByte, localGetPublicAccountDetailInfoResponse, paramBundle))
-        {
-          ThreadManager.getSubThreadHandler().postDelayed(new PublicAccountChatPie.37.1(this, paramBundle), 10L);
-          return;
-        }
-        return;
-      }
-      catch (Exception paramBundle) {}
-    }
+    ahjq.a(this.a);
+    bdla.b(null, "dc00898", "", "", "0X800B1A9", "0X800B1A9", 0, 0, "", "", ahjq.a(this.a), "空间");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,43 +1,44 @@
 package com.tencent.mobileqq.activity.activateFriend.biz;
 
 import Wallet.AcsMsg;
-import aewa;
-import aewd;
-import akfu;
+import afnl;
+import afno;
+import albn;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 public class ReminderDataManager$2
   implements Runnable
 {
-  public ReminderDataManager$2(aewd paramaewd, AcsMsg paramAcsMsg) {}
+  public ReminderDataManager$2(afno paramafno, AcsMsg paramAcsMsg) {}
   
   public void run()
   {
     if (this.a == null) {
       return;
     }
-    if (aewd.a(this.this$0) == null) {
-      aewd.a(this.this$0, (aewa)aewd.a(this.this$0).getManager(321));
+    if (afno.a(this.this$0) == null) {
+      afno.a(this.this$0, (afnl)afno.a(this.this$0).getManager(QQManagerFactory.QQ_REMINDER_ALARM_MANAGER));
     }
     if (this.a.type == 0)
     {
-      if (aewd.a(this.this$0) == null) {
+      if (afno.a(this.this$0) == null) {
         break label88;
       }
-      aewd.a(this.this$0).a(this.a);
+      afno.a(this.this$0).a(this.a);
     }
     for (;;)
     {
-      aewd.a(this.this$0, this.a);
+      afno.a(this.this$0, this.a);
       return;
       label88:
-      akfu.a(this.a);
+      albn.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.biz.ReminderDataManager.2
  * JD-Core Version:    0.7.0.1
  */

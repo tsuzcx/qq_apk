@@ -1,23 +1,14 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.qqstory.settings.QGSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.media.AudioManager.OnAudioFocusChangeListener;
 
-public class xbj
-  implements CompoundButton.OnCheckedChangeListener
+class xbj
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  public xbj(QGSettingFragment paramQGSettingFragment) {}
+  xbj(xbg paramxbg) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onAudioFocusChange(int paramInt)
   {
-    if (paramBoolean) {
-      QGSettingFragment.a(true);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      QGSettingFragment.a(false);
+    if (((paramInt == -1) || (paramInt == -2) || (paramInt == -3)) && (xbg.a(this.a))) {
+      this.a.a();
     }
   }
 }

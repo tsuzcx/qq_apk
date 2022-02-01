@@ -9,12 +9,12 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import lba;
-import lgc;
-import lld;
-import mob;
-import moc;
-import moi;
+import lbd;
+import lgo;
+import llq;
+import moy;
+import moz;
+import mpf;
 
 public class ZimuViewRibon
   extends ZimuViewMotion
@@ -22,7 +22,7 @@ public class ZimuViewRibon
   WeakReference<ZimuView> jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this);
   Random jdField_a_of_type_JavaUtilRandom = new Random();
   int[] jdField_a_of_type_ArrayOfInt = { 86, 60, 56, 44, 32 };
-  mob[] jdField_a_of_type_ArrayOfMob = { new mob(Color.parseColor("#cc8de1"), Color.parseColor("#ffffff"), 7), new mob(Color.parseColor("#57d4d9"), Color.parseColor("#ffffff"), 7), new mob(Color.parseColor("#ffc903"), Color.parseColor("#ffffff"), 7) };
+  moy[] jdField_a_of_type_ArrayOfMoy = { new moy(Color.parseColor("#cc8de1"), Color.parseColor("#ffffff"), 7), new moy(Color.parseColor("#57d4d9"), Color.parseColor("#ffffff"), 7), new moy(Color.parseColor("#ffc903"), Color.parseColor("#ffffff"), 7) };
   private int e = this.jdField_a_of_type_JavaUtilRandom.nextInt() & 0x1;
   private int f;
   
@@ -32,24 +32,24 @@ public class ZimuViewRibon
   }
   
   @NonNull
-  private moi a(lgc paramlgc, int paramInt1, int paramInt2, boolean paramBoolean, moi parammoi)
+  private mpf a(lgo paramlgo, int paramInt1, int paramInt2, boolean paramBoolean, mpf parammpf)
   {
     int j = this.jdField_a_of_type_ArrayOfInt.length;
-    int i = this.jdField_a_of_type_ArrayOfMob.length;
+    int i = this.jdField_a_of_type_ArrayOfMoy.length;
     j = paramInt1 % j;
-    parammoi.a(paramBoolean);
-    parammoi.a(this.jdField_a_of_type_AndroidGraphicsTypeface, this.jdField_a_of_type_ArrayOfInt[j], this.jdField_a_of_type_ArrayOfMob[(paramInt1 % i)]);
-    parammoi.a(paramlgc);
-    i = a(this.jdField_c_of_type_Int * (paramInt1 % 4), parammoi.d());
-    parammoi.a(this.jdField_a_of_type_Int, i);
-    lba.f("ZimuViewRibon", "onCreateItemView:" + paramInt1 + "|" + paramInt2 + "|" + i + "|" + this.jdField_c_of_type_Int + "|" + this.jdField_a_of_type_ArrayOfInt[j]);
-    parammoi.a(paramInt2);
-    return parammoi;
+    parammpf.a(paramBoolean);
+    parammpf.a(this.jdField_a_of_type_AndroidGraphicsTypeface, this.jdField_a_of_type_ArrayOfInt[j], this.jdField_a_of_type_ArrayOfMoy[(paramInt1 % i)]);
+    parammpf.a(paramlgo);
+    i = a(this.jdField_c_of_type_Int * (paramInt1 % 4), parammpf.d());
+    parammpf.a(this.jdField_a_of_type_Int, i);
+    lbd.f("ZimuViewRibon", "onCreateItemView:" + paramInt1 + "|" + paramInt2 + "|" + i + "|" + this.jdField_c_of_type_Int + "|" + this.jdField_a_of_type_ArrayOfInt[j]);
+    parammpf.a(paramInt2);
+    return parammpf;
   }
   
   long a()
   {
-    long l = lld.d();
+    long l = llq.d();
     if (l > 1800000L) {
       this.jdField_c_of_type_Long = 50L;
     }
@@ -69,11 +69,11 @@ public class ZimuViewRibon
     return "ribbon";
   }
   
-  protected List<moc> a(lgc paramlgc, boolean paramBoolean)
+  protected List<moz> a(lgo paramlgo, boolean paramBoolean)
   {
     c();
     ArrayList localArrayList = new ArrayList();
-    moi localmoi;
+    mpf localmpf;
     int k;
     if (this.f % 3 == 0)
     {
@@ -81,16 +81,16 @@ public class ZimuViewRibon
       if ((i & 0x1) == 1)
       {
         j = 1;
-        localmoi = new moi(getContext(), this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Float);
+        localmpf = new mpf(getContext(), this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Float);
         int m = this.e;
         if (j == 0) {
           break label243;
         }
         k = i;
         label86:
-        localArrayList.add(a(paramlgc, m, k, paramBoolean, localmoi));
+        localArrayList.add(a(paramlgo, m, k, paramBoolean, localmpf));
         this.e += 1;
-        localmoi = new moi(getContext(), this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Float);
+        localmpf = new mpf(getContext(), this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Float);
         k = this.e;
         if (j != 0) {
           break label249;
@@ -98,8 +98,8 @@ public class ZimuViewRibon
       }
       for (;;)
       {
-        localArrayList.add(a(paramlgc, k, i, paramBoolean, localmoi));
-        lba.f("ZimuViewRibon", "onCreateItemView random 00 :" + this.e + "||" + paramlgc.a);
+        localArrayList.add(a(paramlgo, k, i, paramBoolean, localmpf));
+        lbd.f("ZimuViewRibon", "onCreateItemView random 00 :" + this.e + "||" + paramlgo.a);
         this.e += 1;
         this.f += 1;
         return localArrayList;
@@ -117,7 +117,7 @@ public class ZimuViewRibon
     {
       i = 1;
       label276:
-      localmoi = new moi(getContext(), this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Float);
+      localmpf = new mpf(getContext(), this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Float);
       k = this.e;
       if (i == 0) {
         break label384;
@@ -126,8 +126,8 @@ public class ZimuViewRibon
     label384:
     for (int i = j;; i = 0)
     {
-      localArrayList.add(a(paramlgc, k, i, paramBoolean, localmoi));
-      lba.f("ZimuViewRibon", "onCreateItemView random zz :" + this.e + "|" + paramlgc.a);
+      localArrayList.add(a(paramlgo, k, i, paramBoolean, localmpf));
+      lbd.f("ZimuViewRibon", "onCreateItemView random zz :" + this.e + "|" + paramlgo.a);
       break;
       i = 0;
       break label276;
@@ -145,24 +145,24 @@ public class ZimuViewRibon
       this.jdField_a_of_type_ArrayOfInt[i] = ((int)(this.jdField_a_of_type_ArrayOfInt[i] * f1));
       i += 1;
     }
-    k = this.jdField_a_of_type_ArrayOfMob.length;
+    k = this.jdField_a_of_type_ArrayOfMoy.length;
     i = j;
     while (i < k)
     {
-      this.jdField_a_of_type_ArrayOfMob[i].jdField_a_of_type_Float *= f1;
+      this.jdField_a_of_type_ArrayOfMoy[i].jdField_a_of_type_Float *= f1;
       i += 1;
     }
     a();
     super.b();
   }
   
-  protected void b(moc parammoc)
+  protected void b(moz parammoz)
   {
-    super.b(parammoc);
-    parammoc.d();
-    lgc locallgc = parammoc.a;
-    parammoc = (moi)parammoc;
-    a(locallgc, this.e, 0, true, parammoc);
+    super.b(parammoz);
+    parammoz.d();
+    lgo locallgo = parammoz.a;
+    parammoz = (mpf)parammoz;
+    a(locallgo, this.e, 0, true, parammoz);
     this.e += 1;
   }
 }

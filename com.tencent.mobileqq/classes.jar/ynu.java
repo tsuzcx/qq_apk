@@ -1,44 +1,178 @@
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupVideoForward;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.biz.qqstory.troop.forward.TroopStoryForwardTask.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Message;
+import android.support.annotation.NonNull;
+import android.view.View;
+import com.tribe.async.dispatch.IEventReceiver;
 
-public class ynu
-  extends nmd
+public abstract class ynu
+  implements IEventReceiver
 {
-  ynu(ynt paramynt) {}
+  @NonNull
+  public final ynw a;
+  public ypg a;
+  protected long c;
   
-  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public ynu(@NonNull ynw paramynw)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null))
-    {
-      paramBundle = new qqstory_group.RspGroupVideoForward();
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = (qqstory_struct.ErrorInfo)paramBundle.result.get();
-        if ((paramArrayOfByte.error_code.has()) && (paramArrayOfByte.error_code.get() == 0))
-        {
-          ThreadManager.executeOnSubThread(new TroopStoryForwardTask.2.1(this, paramBundle.story_id.get().toStringUtf8()));
-          return paramArrayOfByte;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.qqstory.troopstory.share", 2, "parse RspGroupVideoForward error", paramArrayOfByte);
-        }
-      }
+    this.jdField_a_of_type_Ynw = paramynw;
+  }
+  
+  private void g()
+  {
+    if (this.jdField_a_of_type_Ypg == null) {
+      throw new IllegalStateException("have not attached ui");
     }
-    this.a.a.sendEmptyMessage(5);
-    return null;
+  }
+  
+  public void S_()
+  {
+    g();
+  }
+  
+  public void T_()
+  {
+    g();
+  }
+  
+  @NonNull
+  public Context a()
+  {
+    g();
+    return this.jdField_a_of_type_Ypg.a();
+  }
+  
+  @NonNull
+  public Resources a()
+  {
+    g();
+    return this.jdField_a_of_type_Ypg.a().getResources();
+  }
+  
+  @NonNull
+  protected View a(int paramInt)
+  {
+    g();
+    View localView = this.jdField_a_of_type_Ypg.a().findViewById(paramInt);
+    if (localView == null) {
+      throw new IllegalArgumentException("can not find view by id " + paramInt);
+    }
+    return localView;
+  }
+  
+  protected String a(int paramInt)
+  {
+    g();
+    return a().getString(paramInt);
+  }
+  
+  public ynv a(Class<? extends ynv> paramClass)
+  {
+    g();
+    return this.jdField_a_of_type_Ynw.a(paramClass);
+  }
+  
+  @NonNull
+  public ypg a()
+  {
+    g();
+    return this.jdField_a_of_type_Ypg;
+  }
+  
+  public void a()
+  {
+    g();
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    g();
+  }
+  
+  public void a(int paramInt1, int paramInt2, Object paramObject)
+  {
+    a(paramInt2, paramObject);
+  }
+  
+  public void a(int paramInt, Object paramObject) {}
+  
+  public void a(int paramInt, @NonNull yya paramyya)
+  {
+    a(paramyya);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    g();
+  }
+  
+  public void a(Class<? extends ynv> paramClass, ynv paramynv)
+  {
+    g();
+    this.jdField_a_of_type_Ynw.a(paramClass, paramynv);
+  }
+  
+  public void a(@NonNull Error paramError) {}
+  
+  public void a(ypg paramypg)
+  {
+    if (this.jdField_a_of_type_Ypg != null) {
+      throw new IllegalStateException("attach context duplicate");
+    }
+    if (paramypg == null) {
+      throw new IllegalArgumentException("ui should not be null");
+    }
+    this.jdField_a_of_type_Ypg = paramypg;
+  }
+  
+  @Deprecated
+  public void a(@NonNull yya paramyya) {}
+  
+  public boolean a()
+  {
+    g();
+    return false;
+  }
+  
+  protected boolean a(Message paramMessage)
+  {
+    return false;
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    g();
+  }
+  
+  public void b(@NonNull yya paramyya) {}
+  
+  public final boolean b(@NonNull Message paramMessage)
+  {
+    boolean bool = a(paramMessage);
+    paramMessage.recycle();
+    return bool;
+  }
+  
+  public void c()
+  {
+    g();
+  }
+  
+  public void d()
+  {
+    g();
+  }
+  
+  public void f()
+  {
+    g();
+  }
+  
+  public boolean isValidate()
+  {
+    return this.jdField_a_of_type_Ynw.isValidate();
   }
 }
 

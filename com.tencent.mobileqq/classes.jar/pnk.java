@@ -1,157 +1,70 @@
-import android.support.v4.app.Fragment;
-import android.text.TextUtils;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.basic.ReadInJoyDynamicChannelBaseFragment;
-import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.cgi.ReadInJoyCGIDynamicChannelFragment;
-import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.compat.ReadInJoyDynamicChannelFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBBCircleFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyFollowFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyRecommendFeedsFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfCenterViolaFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySubChannelFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyTribeChannelFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyVideoChannelFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.fragment.ReadinjoyAdHippyFragment;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Point;
+import android.os.Build.VERSION;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
+import com.tencent.mobileqq.util.DisplayUtil;
 
 public class pnk
 {
-  static pnk jdField_a_of_type_Pnk;
-  WeakReference<ReadInJoyNewFeedsActivity> jdField_a_of_type_MqqUtilWeakReference = null;
+  public static int a = 7;
   
-  public static ReadInJoyBaseFragment a(int paramInt)
+  public static int a(Context paramContext)
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 0: 
-      return ReadInJoyRecommendFeedsFragment.a();
-    case 1: 
-      ReadInJoyVideoChannelFragment localReadInJoyVideoChannelFragment = new ReadInJoyVideoChannelFragment();
-      localReadInJoyVideoChannelFragment.b(1002);
-      return localReadInJoyVideoChannelFragment;
-    case 2: 
-      return ReadInJoyFollowFragment.a();
+    if (pqt.j()) {
+      return DisplayUtil.dip2px(paramContext, 8.0F);
     }
-    if (Aladdin.getConfig(322).getString("page_type", "1").equals("2")) {
-      return ReadInJoySelfCenterViolaFragment.a("https://viola.qq.com/js/usercenter.js?_rij_violaUrl=1&hideNav=1&v_nav_immer=1&v_tid=6&v_bundleName=usercenter&v_bid=3740&jump_source=2");
-    }
-    return new ReadInJoySelfFragment();
+    return DisplayUtil.dip2px(paramContext, 3.0F);
   }
   
-  public static pnk a()
+  public static void a(float paramFloat, Resources paramResources)
   {
-    try
-    {
-      if (jdField_a_of_type_Pnk == null) {
-        jdField_a_of_type_Pnk = new pnk();
-      }
-      return jdField_a_of_type_Pnk;
+    if ((paramFloat == 0.0F) || (paramResources == null)) {
+      return;
     }
-    finally {}
+    a = (int)(paramFloat / paramResources.getDimensionPixelSize(2131298799) + 0.5F);
   }
   
-  public Fragment a(TabChannelCoverInfo paramTabChannelCoverInfo)
+  public static int[] a(Activity paramActivity)
   {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    if (paramTabChannelCoverInfo == null)
+    Object localObject = ((WindowManager)paramActivity.getSystemService("window")).getDefaultDisplay();
+    Point localPoint = new Point();
+    int j;
+    int i;
+    if (Build.VERSION.SDK_INT >= 17)
     {
-      QLog.d("ReadInJoyFragmentFactory", 1, "tabChannelCoverInfo is null.");
-      paramTabChannelCoverInfo = (TabChannelCoverInfo)localObject2;
-      return paramTabChannelCoverInfo;
-    }
-    QLog.d("ReadInJoyFragmentFactory", 2, new Object[] { "new Fragment, channelName = ", paramTabChannelCoverInfo.mChannelCoverName, ", channelID = ", Integer.valueOf(paramTabChannelCoverInfo.mChannelCoverId) });
-    QLog.d("ReadInJoyFragmentFactory", 1, "ReadInJoyConstnats.RECOMMEND= 0");
-    if (paramTabChannelCoverInfo.mChannelCoverId == puf.a()) {
-      if (tgc.a(paramTabChannelCoverInfo.mChannelJumpUrl))
-      {
-        localObject1 = ReadInJoyViolaChannelFragment.a(paramTabChannelCoverInfo.mChannelCoverId, paramTabChannelCoverInfo.mChannelCoverName, paramTabChannelCoverInfo.mChannelVersion);
-        ((ReadInJoyViolaChannelFragment)localObject1).a(paramTabChannelCoverInfo.mChannelJumpUrl);
-      }
+      ((Display)localObject).getRealSize(localPoint);
+      j = localPoint.x;
+      i = localPoint.y;
     }
     for (;;)
     {
-      paramTabChannelCoverInfo = (TabChannelCoverInfo)localObject1;
-      if (!(localObject1 instanceof ReadInJoyBaseFragment)) {
-        break;
-      }
-      ((ReadInJoyBaseFragment)localObject1).b(true);
-      return localObject1;
-      localObject1 = ReadInJoyRecommendFeedsFragment.a();
-      continue;
-      switch (paramTabChannelCoverInfo.mChannelCoverId)
+      return new int[] { j, i };
+      if (Build.VERSION.SDK_INT >= 15)
       {
-      default: 
-        if (tgc.a(paramTabChannelCoverInfo.mChannelJumpUrl))
-        {
-          localObject1 = ReadInJoyViolaChannelFragment.a(paramTabChannelCoverInfo.mChannelCoverId, paramTabChannelCoverInfo.mChannelCoverName, paramTabChannelCoverInfo.mChannelVersion);
-          ((ReadInJoyViolaChannelFragment)localObject1).a(paramTabChannelCoverInfo.mChannelJumpUrl);
-        }
-        break;
-      case 0: 
-        localObject1 = ReadInJoyRecommendFeedsFragment.a();
-        break;
-      case 56: 
-        localObject1 = new ReadInJoyVideoChannelFragment();
-        ((ReadInJoyVideoChannelFragment)localObject1).b(1003);
-        break;
-      case 70: 
-        localObject1 = new ReadInJoyBBCircleFragment();
-        break;
-      case 41522: 
-        localObject1 = new ReadInJoyPicWaterFallFragment();
-        break;
-      case 41450: 
-        localObject1 = new ReadInJoyTribeChannelFragment();
-        break;
-      case 41708: 
-        localObject1 = ReadinjoyAdHippyFragment.a(paramTabChannelCoverInfo.mChannelCoverId, paramTabChannelCoverInfo.mChannelCoverName, paramTabChannelCoverInfo.mChannelVersion);
-        ((ReadinjoyAdHippyFragment)localObject1).a(paramTabChannelCoverInfo.mChannelJumpUrl);
-        continue;
-        if (paramTabChannelCoverInfo.bid > 0L)
-        {
-          localObject2 = ReadInJoyDynamicChannelBaseFragment.a(ReadInJoyDynamicChannelBaseFragment.a(paramTabChannelCoverInfo.mChannelCoverId));
-          if (localObject2 != null)
-          {
-            localObject2 = ((syz)localObject2).a();
-            if (localObject2 == null) {
-              continue;
-            }
-            if (!TextUtils.isEmpty(((pip)localObject2).b("cgi"))) {}
-            for (paramTabChannelCoverInfo = ReadInJoyCGIDynamicChannelFragment.a(paramTabChannelCoverInfo.mChannelCoverId, 0, paramTabChannelCoverInfo.mChannelCoverName);; paramTabChannelCoverInfo = ReadInJoyDynamicChannelFragment.a(paramTabChannelCoverInfo.mChannelCoverId, 0, paramTabChannelCoverInfo.mChannelCoverName))
-            {
-              localObject1 = paramTabChannelCoverInfo;
-              break;
-            }
-          }
-        }
-        localObject1 = ReadInJoySubChannelFragment.a(paramTabChannelCoverInfo.mChannelCoverId, paramTabChannelCoverInfo.mChannelType, paramTabChannelCoverInfo.mChannelCoverName);
+        ((Display)localObject).getSize(localPoint);
+        j = localPoint.x;
+        i = localPoint.y;
+      }
+      else
+      {
+        localObject = new DisplayMetrics();
+        paramActivity.getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject);
+        j = ((DisplayMetrics)localObject).widthPixels;
+        i = ((DisplayMetrics)localObject).heightPixels;
       }
     }
   }
   
-  public void a()
+  public static int b(Context paramContext)
   {
-    if (this.jdField_a_of_type_MqqUtilWeakReference != null)
-    {
-      this.jdField_a_of_type_MqqUtilWeakReference.clear();
-      this.jdField_a_of_type_MqqUtilWeakReference = null;
+    if (pqt.j()) {
+      return DisplayUtil.dip2px(paramContext, 14.0F);
     }
-  }
-  
-  public void a(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity)
-  {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramReadInJoyNewFeedsActivity);
+    return DisplayUtil.dip2px(paramContext, 6.0F);
   }
 }
 

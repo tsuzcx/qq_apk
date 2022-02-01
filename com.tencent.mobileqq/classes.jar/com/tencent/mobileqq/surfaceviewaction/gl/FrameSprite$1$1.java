@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import bcry;
-import bcsl;
+import bdyx;
+import bdzk;
 import java.util.LinkedList;
 
 class FrameSprite$1$1
@@ -16,26 +16,26 @@ class FrameSprite$1$1
       int j;
       synchronized (this.a.this$0)
       {
-        bcsl[] arrayOfbcsl = bcry.a(this.a.this$0);
-        if ((arrayOfbcsl == null) || (bcry.a(this.a.this$0))) {
+        bdzk[] arrayOfbdzk = bdyx.a(this.a.this$0);
+        if ((arrayOfbdzk == null) || (bdyx.a(this.a.this$0))) {
           return;
         }
-        bcry.a(this.a.this$0, new bcsl[bcry.a(this.a.this$0).length / 2]);
+        bdyx.a(this.a.this$0, new bdzk[bdyx.a(this.a.this$0).length / 2]);
         j = 0;
         int i = 0;
-        if (j < bcry.a(this.a.this$0).length)
+        if (j < bdyx.a(this.a.this$0).length)
         {
           if (j % 2 == 0)
           {
-            bcry localbcry2 = this.a.this$0;
+            bdyx localbdyx2 = this.a.this$0;
             int k = i + 1;
-            bcry.a(localbcry2, i, arrayOfbcsl[j]);
+            bdyx.a(localbdyx2, i, arrayOfbdzk[j]);
             i = k;
           }
           else
           {
-            bcry.a(this.a.this$0).remove(arrayOfbcsl[j]);
-            arrayOfbcsl[j].c();
+            bdyx.a(this.a.this$0).remove(arrayOfbdzk[j]);
+            arrayOfbdzk[j].c();
           }
         }
         else {
@@ -48,7 +48,7 @@ class FrameSprite$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.1.1
  * JD-Core Version:    0.7.0.1
  */

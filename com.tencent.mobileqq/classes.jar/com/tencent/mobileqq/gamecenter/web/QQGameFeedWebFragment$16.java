@@ -1,34 +1,43 @@
 package com.tencent.mobileqq.gamecenter.web;
 
-import android.os.SystemClock;
-import atzb;
-import aubc;
-import bjnd;
-import com.tencent.mobileqq.gamecenter.web.view.QQGamePubWebView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
+import avgi;
+import com.tencent.mobileqq.gamecenter.view.GameSessionView;
 
-class QQGameFeedWebFragment$16
+public class QQGameFeedWebFragment$16
   implements Runnable
 {
-  QQGameFeedWebFragment$16(QQGameFeedWebFragment paramQQGameFeedWebFragment, int paramInt) {}
+  QQGameFeedWebFragment$16(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
   public void run()
   {
-    if (QQGameFeedWebFragment.a(this.this$0) != null)
-    {
-      String str = atzb.a();
-      if (bjnd.a(str))
-      {
-        str = QQGameFeedWebFragment.a(this.this$0, str, QQGameFeedWebFragment.a(this.this$0), this.a);
-        if (QLog.isColorLevel()) {
-          QLog.d("GameWebPage", 1, "paramUrl = " + str);
-        }
-        this.this$0.f = SystemClock.elapsedRealtime();
-        this.this$0.d = System.currentTimeMillis();
-        QQGameFeedWebFragment.a(this.this$0).setmTimeBeforeLoadUrl(System.currentTimeMillis());
-        QQGameFeedWebFragment.a(this.this$0).loadUrl(str);
-      }
-    }
+    Object localObject2 = new int[2];
+    Object localObject1 = new int[2];
+    QQGameFeedWebFragment.a(this.this$0).getLocationInWindow((int[])localObject2);
+    localObject2[0] += QQGameFeedWebFragment.a(this.this$0).getWidth() / 2;
+    localObject2[1] += QQGameFeedWebFragment.a(this.this$0).getHeight() / 2;
+    QQGameFeedWebFragment.a(this.this$0).getLocationInWindow((int[])localObject1);
+    localObject1[0] += QQGameFeedWebFragment.a(this.this$0).getWidth() / 2;
+    localObject1[1] += QQGameFeedWebFragment.a(this.this$0).getHeight() / 2;
+    localObject2[0] -= localObject1[0];
+    localObject2[1] -= localObject1[1];
+    localObject1 = new ScaleAnimation(1.0F, 0.1F, 1.0F, 0.1F, 1, 0.5F, 1, 0.5F);
+    ((ScaleAnimation)localObject1).setDuration(300L);
+    int i = QQGameFeedWebFragment.a(this.this$0).getLeft();
+    int j = QQGameFeedWebFragment.a(this.this$0).getTop();
+    localObject2 = new TranslateAnimation(i, i + localObject2[0], j, j + localObject2[1]);
+    ((TranslateAnimation)localObject2).setStartOffset(300L);
+    ((TranslateAnimation)localObject2).setDuration(200L);
+    AnimationSet localAnimationSet = new AnimationSet(false);
+    localAnimationSet.addAnimation((Animation)localObject1);
+    localAnimationSet.addAnimation((Animation)localObject2);
+    localAnimationSet.setAnimationListener(new avgi(this));
+    QQGameFeedWebFragment.a(this.this$0, QQGameFeedWebFragment.a(this.this$0), false);
+    QQGameFeedWebFragment.a(this.this$0).startAnimation(localAnimationSet);
   }
 }
 

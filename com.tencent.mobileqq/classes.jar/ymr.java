@@ -1,19 +1,13 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
-
-public class ymr
-  implements AdapterView.OnItemSelectedListener
+class ymr
+  extends bcwr
 {
-  public ymr(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
+  ymr(yml paramyml) {}
   
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a()
   {
-    HorizontalSelectColorLayout.a(this.a, paramInt);
+    ykq.c("Q.qqstory.publish.edit.StoryDoodle", "DoodleInfoLoadObserver, onLoadSucc");
+    this.a.U_();
   }
-  
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

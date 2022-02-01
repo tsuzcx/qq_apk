@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleReadInfo;
 import java.util.Iterator;
 import java.util.List;
-import pua;
+import qeu;
 
 public class ArticleReadInfoModule$2
   implements Runnable
 {
-  public ArticleReadInfoModule$2(pua parampua, List paramList) {}
+  public ArticleReadInfoModule$2(qeu paramqeu, List paramList) {}
   
   public void run()
   {

@@ -1,82 +1,47 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.IntentFilter;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import java.util.ArrayList;
+import android.os.Message;
+import com.tencent.kwstudio.office.base.Log;
+import com.tencent.kwstudio.office.debug.Debugger.IDebugCallback;
+import com.tencent.mobileqq.filemanageraux.fileviewer.FileView.TdsDebugView;
+import java.lang.ref.WeakReference;
 
-public class aujj
+public final class aujj
+  implements Debugger.IDebugCallback
 {
-  private static volatile aujj jdField_a_of_type_Aujj;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aujl(this);
-  private Context jdField_a_of_type_AndroidContentContext;
-  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new aujk(this);
-  private ArrayList<aujm> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  private final WeakReference<TdsDebugView> a;
   
-  private aujj(Context paramContext)
+  private aujj(TdsDebugView paramTdsDebugView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-    a(true);
+    this.a = new WeakReference(paramTdsDebugView);
   }
   
-  public static aujj a(Context paramContext)
+  public void onCleanCache(String paramString, int paramInt)
   {
-    if (jdField_a_of_type_Aujj == null) {}
-    try
-    {
-      if (jdField_a_of_type_Aujj == null) {
-        jdField_a_of_type_Aujj = new aujj(paramContext);
-      }
-      return jdField_a_of_type_Aujj;
-    }
-    finally {}
-  }
-  
-  public void a(aujm paramaujm)
-  {
-    if ((!this.jdField_a_of_type_JavaUtilArrayList.contains(paramaujm)) && (paramaujm != null)) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramaujm);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Boolean == paramBoolean) {
+    Log.d("TdsDebugView", "onCleanCache: m=" + paramString + ", r=" + paramInt);
+    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
+    if (localTdsDebugView == null) {
       return;
     }
-    if (paramBoolean)
-    {
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
-      localIntentFilter.addAction("android.intent.action.SCREEN_ON");
-      localIntentFilter.addAction("tencent.av.v2q.StartVideoChat");
-      localIntentFilter.addAction("tencent.av.v2q.StopVideoChat");
-      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
-      localIntentFilter.addAction("VolumeBtnDown");
-      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-      AppNetConnInfo.registerConnectionChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
+    Message.obtain(TdsDebugView.a(localTdsDebugView), 3, paramInt, 0, paramString).sendToTarget();
+  }
+  
+  public void onCleanPlugin(String paramString, int paramInt)
+  {
+    Log.d("TdsDebugView", "onCleanPlugin: m=" + paramString + ", r=" + paramInt);
+    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
+    if (localTdsDebugView == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
+    Message.obtain(TdsDebugView.a(localTdsDebugView), 1, paramInt, 0, paramString).sendToTarget();
   }
   
-  public boolean a()
+  public void onUpgradePlugin(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
-    while (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
-      return false;
+    Log.d("TdsDebugView", "onUpgradePlugin: m=" + paramString + ", r=" + paramInt);
+    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
+    if (localTdsDebugView == null) {
+      return;
     }
-    return true;
-  }
-  
-  public void b(aujm paramaujm)
-  {
-    if ((paramaujm != null) && (this.jdField_a_of_type_JavaUtilArrayList.contains(paramaujm))) {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramaujm);
-    }
+    Message.obtain(TdsDebugView.a(localTdsDebugView), 2, paramInt, 0, paramString).sendToTarget();
   }
 }
 

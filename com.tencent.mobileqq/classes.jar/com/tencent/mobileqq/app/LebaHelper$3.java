@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app;
 
-import amux;
-import auxa;
+import anxl;
+import awcz;
 
 public class LebaHelper$3
   implements Runnable
 {
-  public LebaHelper$3(amux paramamux) {}
+  public LebaHelper$3(anxl paramanxl) {}
   
   public void run()
   {
-    ((auxa)this.this$0.a.getBusinessHandler(128)).b();
+    ((awcz)this.this$0.a.getBusinessHandler(BusinessHandlerFactory.COMMPLGUGIN_HANDLER)).b();
   }
 }
 

@@ -8,9 +8,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bgpz;
-import bgqe;
-import bgqg;
+import biaj;
+import biao;
+import biaq;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class RegisterLiangHaoChoiceLayoutView
 {
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bgpz jdField_a_of_type_Bgpz;
+  private biaj jdField_a_of_type_Biaj;
   private LiangHaoView[] jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView = new LiangHaoView[4];
   private View b;
   
@@ -45,8 +45,8 @@ public class RegisterLiangHaoChoiceLayoutView
   private void a(int paramInt)
   {
     LiangHaoView localLiangHaoView = this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[paramInt];
-    if ((localLiangHaoView != null) && (localLiangHaoView.a != null) && (this.jdField_a_of_type_Bgpz != null)) {
-      this.jdField_a_of_type_Bgpz.a(localLiangHaoView.a);
+    if ((localLiangHaoView != null) && (localLiangHaoView.a != null) && (this.jdField_a_of_type_Biaj != null)) {
+      this.jdField_a_of_type_Biaj.a(localLiangHaoView.a);
     }
   }
   
@@ -54,14 +54,14 @@ public class RegisterLiangHaoChoiceLayoutView
   {
     int i = 0;
     setOrientation(1);
-    LayoutInflater.from(getContext()).inflate(2131561886, this, true);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131369888);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369887));
-    this.b = findViewById(2131369886);
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[0] = ((LiangHaoView)findViewById(2131369891));
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[1] = ((LiangHaoView)findViewById(2131369892));
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[2] = ((LiangHaoView)findViewById(2131369893));
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[3] = ((LiangHaoView)findViewById(2131369894));
+    LayoutInflater.from(getContext()).inflate(2131561954, this, true);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131370058);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370057));
+    this.b = findViewById(2131370056);
+    this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[0] = ((LiangHaoView)findViewById(2131370061));
+    this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[1] = ((LiangHaoView)findViewById(2131370062));
+    this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[2] = ((LiangHaoView)findViewById(2131370063));
+    this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[3] = ((LiangHaoView)findViewById(2131370064));
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.b.setOnClickListener(this);
@@ -74,27 +74,27 @@ public class RegisterLiangHaoChoiceLayoutView
     }
   }
   
-  public void a(bgqe parambgqe)
+  public void a(biao parambiao)
   {
-    if ((parambgqe == null) || (parambgqe.a == null) || (parambgqe.a.size() == 0)) {
+    if ((parambiao == null) || (parambiao.a == null) || (parambiao.a.size() == 0)) {
       return;
     }
     int i = 0;
     if (i < this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView.length)
     {
-      if (parambgqe.a.size() <= i) {
+      if (parambiao.a.size() <= i) {
         ((ViewGroup)this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[i].getParent()).setVisibility(8);
       }
       for (;;)
       {
         i += 1;
         break;
-        bgqg localbgqg = (bgqg)parambgqe.a.get(i);
-        this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[i].setUin(localbgqg);
+        biaq localbiaq = (biaq)parambiao.a.get(i);
+        this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[i].setUin(localbiaq);
         ((ViewGroup)this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[i].getParent()).setVisibility(0);
       }
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(parambgqe.c);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(parambiao.c);
   }
   
   public void a(boolean paramBoolean)
@@ -122,47 +122,47 @@ public class RegisterLiangHaoChoiceLayoutView
   
   public void onClick(View paramView)
   {
-    bgpz localbgpz = this.jdField_a_of_type_Bgpz;
-    if (localbgpz == null) {}
+    biaj localbiaj = this.jdField_a_of_type_Biaj;
+    if (localbiaj == null) {}
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
       switch (paramView.getId())
       {
-      case 2131369887: 
-      case 2131369889: 
-      case 2131369890: 
-      case 2131369891: 
-      case 2131369892: 
-      case 2131369893: 
-      case 2131369894: 
+      case 2131370057: 
+      case 2131370059: 
+      case 2131370060: 
+      case 2131370061: 
+      case 2131370062: 
+      case 2131370063: 
+      case 2131370064: 
       default: 
         break;
-      case 2131369886: 
-        localbgpz.b();
+      case 2131370056: 
+        localbiaj.b();
         break;
-      case 2131369888: 
-        localbgpz.a();
+      case 2131370058: 
+        localbiaj.a();
         break;
-      case 2131369895: 
+      case 2131370065: 
         a(0);
         break;
-      case 2131369896: 
+      case 2131370066: 
         a(1);
         break;
-      case 2131369897: 
+      case 2131370067: 
         a(2);
         break;
-      case 2131369898: 
+      case 2131370068: 
         a(3);
       }
     }
   }
   
-  public void setLiangHaoHelper(bgpz parambgpz)
+  public void setLiangHaoHelper(biaj parambiaj)
   {
-    this.jdField_a_of_type_Bgpz = parambgpz;
+    this.jdField_a_of_type_Biaj = parambiaj;
   }
 }
 

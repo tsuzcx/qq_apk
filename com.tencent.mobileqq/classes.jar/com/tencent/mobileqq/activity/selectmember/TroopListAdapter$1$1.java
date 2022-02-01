@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import albg;
-import albh;
+import alzc;
+import alzd;
 import android.os.Bundle;
 import android.os.Handler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
@@ -14,7 +15,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
-import nmf;
+import ntf;
 import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupInfo;
 import tencent.im.oidb.cmd0x88d.oidb_0x88d.RspBody;
 import tencent.im.oidb.cmd0x88d.oidb_0x88d.RspGroupInfo;
@@ -22,13 +23,13 @@ import tencent.im.oidb.cmd0x88d.oidb_0x88d.RspGroupInfo;
 public class TroopListAdapter$1$1
   implements Runnable
 {
-  public TroopListAdapter$1$1(albh paramalbh, QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, Bundle paramBundle, Handler paramHandler) {}
+  public TroopListAdapter$1$1(alzd paramalzd, QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, Bundle paramBundle, Handler paramHandler) {}
   
   public void run()
   {
     try
     {
-      TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+      TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
       Object localObject = new oidb_0x88d.RspBody();
       ((oidb_0x88d.RspBody)localObject).mergeFrom(this.jdField_a_of_type_ArrayOfByte);
       if (((oidb_0x88d.RspBody)localObject).stzrspgroupinfo.has())
@@ -58,7 +59,7 @@ public class TroopListAdapter$1$1
       localArrayList = this.jdField_a_of_type_AndroidOsBundle.getStringArrayList("TroopList");
       if (localArrayList != null)
       {
-        albg.a((QQAppInterface)albg.a(this.jdField_a_of_type_Albh.a).b.get(), albg.a(this.jdField_a_of_type_Albh.a), localArrayList);
+        alzc.a((QQAppInterface)alzc.a(this.jdField_a_of_type_Alzd.a).b.get(), alzc.a(this.jdField_a_of_type_Alzd.a), localArrayList);
         return;
       }
       this.jdField_a_of_type_AndroidOsHandler.post(new TroopListAdapter.1.1.1(this));

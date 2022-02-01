@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/hcm" android:background="@drawable/aqo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="12.0dip" android:layout_centerVertical="true"
+<LinearLayout android:orientation="vertical" android:background="@drawable/hj1" android:paddingLeft="16.0dip" android:paddingTop="0.0dip" android:paddingRight="16.0dip" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.album.ui.widget.AdvRoundFrameLayout android:id="@id/ndm" android:layout_width="fill_parent" android:layout_height="198.0dip">
-        <com.qzone.widget.AsyncImageView android:id="@id/hco" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
-    </com.qzone.album.ui.widget.AdvRoundFrameLayout>
-    <ImageView android:id="@id/hcl" android:background="@drawable/fud" android:layout_width="25.0dip" android:layout_height="10.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="8.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="7.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="7.0dip" android:layout_below="@id/ndm">
-        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <com.qzone.widget.AvatarImageView android:id="@id/ndk" android:layout_width="20.0dip" android:layout_height="20.0dip" />
-                <TextView android:textSize="@dimen/ayo" android:textStyle="bold" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/hcp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:maxLines="1" />
-            </LinearLayout>
-            <TextView android:textSize="@dimen/ayk" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/hcn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/rn_" android:maxLines="1" android:alpha="0.64" />
-        </LinearLayout>
-        <TextView android:textSize="@dimen/aym" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center" android:id="@id/ndl" android:background="@drawable/e9w" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginLeft="4.0dip" android:text="@string/n1i" />
+    <ImageView android:layout_gravity="center_horizontal" android:id="@id/yw" android:paddingTop="13.0dip" android:paddingBottom="13.0dip" android:clickable="true" android:layout_width="35.0dip" android:layout_height="36.0dip" android:src="@drawable/gyh" />
+    <TextView android:textSize="30.0dip" android:textColor="#ff03081a" android:id="@id/nv8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.5dip" android:text="@string/xbg" />
+    <TextView android:textSize="16.0dip" android:textColor="#ff03081a" android:id="@id/title_sub" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="" />
+    <Button android:textSize="22.0dip" android:id="@id/ihm" android:clickable="false" android:layout_width="fill_parent" android:layout_height="64.0dip" android:layout_marginTop="22.0dip" android:text="" style="@style/bd" />
+    <LinearLayout android:id="@id/mo0" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginTop="30.0dip">
+        <Button android:textSize="17.0dip" android:textColor="@color/bp" android:id="@id/mm7" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="3.5dip" android:text="@string/xb_" android:singleLine="true" android:layout_weight="1.0" style="@style/bd" />
+        <Button android:textSize="17.0dip" android:id="@id/b7m" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="3.5dip" android:text="@string/xb4" android:singleLine="true" android:layout_weight="1.0" style="@style/b9" />
     </LinearLayout>
-</RelativeLayout>
+    <Button android:textSize="17.0dip" android:id="@id/mwd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="3.5dip" android:layout_marginTop="27.0dip" android:text="@string/xb8" android:singleLine="true" style="@style/b9" />
+</LinearLayout>

@@ -1,20 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
 
 public class bnyn
-  extends Handler
+  implements View.OnClickListener
 {
-  public bnyn(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public bnyn(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    super.handleMessage(paramMessage);
-    this.a.a(paramMessage);
+    this.a.f();
+    this.a.j();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

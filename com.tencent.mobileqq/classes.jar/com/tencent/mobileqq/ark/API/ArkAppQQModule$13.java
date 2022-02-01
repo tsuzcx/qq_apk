@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ark.API;
 
-import afvi;
-import aoqa;
-import aowk;
+import agnx;
+import aptb;
+import apzo;
 import com.tencent.ark.ark;
 import com.tencent.ark.ark.Container;
 import java.lang.ref.WeakReference;
@@ -10,7 +10,7 @@ import java.lang.ref.WeakReference;
 public class ArkAppQQModule$13
   implements Runnable
 {
-  public ArkAppQQModule$13(aoqa paramaoqa, long paramLong) {}
+  public ArkAppQQModule$13(aptb paramaptb, long paramLong) {}
   
   public void run()
   {
@@ -19,9 +19,9 @@ public class ArkAppQQModule$13
     do
     {
       return;
-      localObject = afvi.a((ark.Container)localObject);
-    } while ((localObject == null) || ((afvi)((WeakReference)localObject).get() == null));
-    aowk.a().b();
+      localObject = agnx.a((ark.Container)localObject);
+    } while ((localObject == null) || ((agnx)((WeakReference)localObject).get() == null));
+    apzo.a().b();
   }
 }
 

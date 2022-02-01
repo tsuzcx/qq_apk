@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.shortvideo;
 
-import akus;
-import bbqc;
-import bbrm;
-import bbrn;
+import also;
+import bcww;
+import bcyg;
+import bcyh;
 import com.tencent.mobileqq.utils.FileUtils;
 import java.io.File;
 
@@ -12,8 +12,8 @@ public final class ShortVideoArtResourceMgr$1
 {
   public void run()
   {
-    String str1 = bbqc.b();
-    String str2 = bbqc.a();
+    String str1 = bcww.b();
+    String str2 = bcww.a();
     File[] arrayOfFile = new File(str1).listFiles();
     int j;
     Object localObject1;
@@ -37,8 +37,8 @@ public final class ShortVideoArtResourceMgr$1
           localObject2 = arrayOfFile[k].getName();
           if (!str2.equalsIgnoreCase((String)localObject2))
           {
-            localObject3 = bbrm.a((String)localObject2);
-            m = ((bbrn)localObject3).a();
+            localObject3 = bcyg.a((String)localObject2);
+            m = ((bcyh)localObject3).a();
             if (m == 0) {
               break label197;
             }
@@ -50,7 +50,7 @@ public final class ShortVideoArtResourceMgr$1
           }
         }
         label197:
-        localObject3 = ((bbrn)localObject3).b();
+        localObject3 = ((bcyh)localObject3).b();
       }
     }
     label419:
@@ -81,8 +81,8 @@ public final class ShortVideoArtResourceMgr$1
           ((File)localObject1).delete();
         }
       }
-      if (new File(akus.c).exists()) {
-        FileUtils.deleteDirectory(akus.c);
+      if (new File(also.c).exists()) {
+        FileUtils.deleteDirectory(also.c);
       }
       return;
     }

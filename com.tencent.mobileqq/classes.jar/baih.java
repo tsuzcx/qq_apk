@@ -1,154 +1,139 @@
-import android.os.Bundle;
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.utils.httputils.PkgTools;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.utils.AmrInputStreamWrapper;
+import com.tencent.mobileqq.utils.QQRecorder;
+import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
+import com.tencent.mobileqq.utils.SilkCodecWrapper;
+import com.tencent.mobileqq.voicechange.VoiceChange;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.MSFServlet;
-import mqq.app.NewIntent;
+import java.io.File;
+import java.io.FileOutputStream;
 
 public class baih
+  implements baik
 {
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private Map<String, int[]> jdField_a_of_type_JavaUtilMap;
+  int jdField_a_of_type_Int;
+  baim jdField_a_of_type_Baim;
+  FileOutputStream jdField_a_of_type_JavaIoFileOutputStream;
+  String jdField_a_of_type_JavaLangString;
+  public int b;
   
-  public baih(AppInterface paramAppInterface)
+  public int a()
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    a("TransInfoCreate.CreateSession", new int[] { 0 });
-    a("TransInfo.JoinSession", new int[] { 0 });
-    a("TransInfo.ExitSession", new int[] { 0 });
-    a("TransInfo.ChangeSession", new int[] { 0 });
-    a("TransInfo.RawData", new int[] { 0 });
+    return this.b;
   }
   
-  public AppInterface a()
+  public void a()
   {
-    return this.jdField_a_of_type_ComTencentCommonAppAppInterface;
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, appy paramappy, Class<? extends MSFServlet> paramClass)
-  {
-    if (paramToServiceMsg.getWupBuffer() != null)
+    try
     {
-      long l = paramToServiceMsg.getWupBuffer().length;
-      byte[] arrayOfByte = new byte[(int)l + 4];
-      PkgTools.DWord2Byte(arrayOfByte, 0, 4L + l);
-      PkgTools.copyData(arrayOfByte, 4, paramToServiceMsg.getWupBuffer(), (int)l);
-      paramToServiceMsg.putWupBuffer(arrayOfByte);
-      if (QLog.isColorLevel()) {
-        QLog.d("PeakMsfServletProxy", 2, "PB cmd: req cmd: " + paramToServiceMsg.getServiceCmd());
-      }
-      paramToServiceMsg.actionListener = paramappy;
-      paramappy = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), paramClass);
-      paramappy.putExtra(ToServiceMsg.class.getSimpleName(), paramToServiceMsg);
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(paramappy);
-      l = System.currentTimeMillis();
-      paramToServiceMsg.extraData.putLong("sendtimekey", l);
-    }
-  }
-  
-  public void a(boolean paramBoolean, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Exception paramException)
-  {
-    AppInterface localAppInterface = a();
-    float f = (float)(System.currentTimeMillis() - paramToServiceMsg.extraData.getLong("sendtimekey")) / 1000.0F;
-    Object localObject;
-    int i;
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PeakMsfServletProxy", 2, "[RES]cmd=" + paramFromServiceMsg.getServiceCmd() + " app seq:" + paramFromServiceMsg.getAppSeq() + "sec." + f);
-      }
-      boolean bool = paramToServiceMsg.extraData.getBoolean("req_pb_protocol_flag", false);
-      if ((!paramBoolean) || (!bool)) {
-        break label501;
-      }
-      localObject = paramFromServiceMsg.getServiceCmd();
-      if (QLog.isColorLevel()) {
-        QLog.d("PeakMsfServletProxy", 2, "PB cmd: recv cmd: " + (String)localObject);
-      }
-      if (paramFromServiceMsg.getWupBuffer() == null) {
-        break label502;
-      }
-      i = paramFromServiceMsg.getWupBuffer().length - 4;
-      paramException = new byte[i];
-      PkgTools.copyData(paramException, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-      paramFromServiceMsg.putWupBuffer(paramException);
-    }
-    label226:
-    label501:
-    label502:
-    for (paramException = paramFromServiceMsg.getWupBuffer();; paramException = null)
-    {
-      for (;;)
+      if (this.jdField_a_of_type_JavaIoFileOutputStream != null)
       {
-        int[] arrayOfInt = (int[])this.jdField_a_of_type_JavaUtilMap.get(localObject);
-        if ((arrayOfInt != null) && (arrayOfInt.length > 0))
-        {
-          int j = arrayOfInt.length;
-          i = 0;
-          if (i >= j) {
-            break label501;
-          }
-          localObject = (BusinessHandler)localAppInterface.getBusinessHandler(arrayOfInt[i]);
-          if (localObject != null) {}
-          try
-          {
-            ((BusinessHandler)localObject).onReceive(paramToServiceMsg, paramFromServiceMsg, paramException);
-            i += 1;
-            break label226;
-            if (paramException != null)
-            {
-              localObject = new ByteArrayOutputStream();
-              paramException.printStackTrace(new PrintStream((OutputStream)localObject));
-              paramException = new String(((ByteArrayOutputStream)localObject).toByteArray());
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("PeakMsfServletProxy", 2, "[NOT SEND]cmd=" + paramFromServiceMsg.getServiceCmd() + ", " + paramException);
-              break;
-            }
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.w("PeakMsfServletProxy", 2, "[RES]cmd=" + paramFromServiceMsg.getServiceCmd() + ",CODE=" + paramFromServiceMsg.getResultCode() + "sec." + f);
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              localException.printStackTrace();
-              if (QLog.isColorLevel()) {
-                QLog.w("PeakMsfServletProxy", 2, localObject.getClass().getSimpleName() + " onReceive error,", localException);
-              }
-            }
-          }
-        }
+        this.jdField_a_of_type_JavaIoFileOutputStream.close();
+        this.jdField_a_of_type_JavaIoFileOutputStream = null;
       }
-      if (QLog.isColorLevel()) {
-        QLog.w("PeakMsfServletProxy", 2, " handlerIds no map " + (String)localObject);
+      if (this.jdField_a_of_type_Baim != null)
+      {
+        this.jdField_a_of_type_Baim.a();
+        this.jdField_a_of_type_Baim = null;
       }
+      this.jdField_a_of_type_Int = 0;
+      this.b = 0;
       return;
     }
+    catch (Exception localException)
+    {
+      do
+      {
+        localException.printStackTrace();
+      } while (!QLog.isColorLevel());
+      QLog.e("PttPreSendManager", 2, "PttPreVoiceChanger.close error");
+    }
   }
   
-  protected boolean a(String paramString, int[] paramArrayOfInt)
+  public void a(baii parambaii, baij parambaij)
   {
-    if (!TextUtils.isEmpty(paramString))
+    if (((parambaii instanceof SilkCodecWrapper)) || ((parambaii instanceof AmrInputStreamWrapper))) {
+      this.b += (int)QQRecorder.a(this.jdField_a_of_type_Int, 4, 2, parambaij.jdField_a_of_type_Int);
+    }
+  }
+  
+  public boolean a(Context paramContext, String paramString1, int paramInt, QQRecorder.RecorderParam paramRecorderParam, String paramString2)
+  {
+    try
     {
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, paramArrayOfInt);
+      this.jdField_a_of_type_Baim = new baim();
+      if (paramInt != 0) {
+        this.jdField_a_of_type_Baim.a(new VoiceChange(paramContext, paramInt, paramString2));
+      }
+      if (paramRecorderParam.c == 0) {
+        this.jdField_a_of_type_Baim.a(new AmrInputStreamWrapper(paramContext));
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_Baim.a(paramRecorderParam.jdField_a_of_type_Int, paramRecorderParam.b, paramRecorderParam.c);
+        this.jdField_a_of_type_Int = paramRecorderParam.jdField_a_of_type_Int;
+        this.jdField_a_of_type_Baim.a(this);
+        this.b = 0;
+        this.jdField_a_of_type_JavaLangString = paramString1;
+        paramContext = new File(this.jdField_a_of_type_JavaLangString);
+        if (paramContext.exists()) {
+          paramContext.delete();
+        }
+        paramContext.createNewFile();
+        this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(paramContext);
+        paramContext = bhhd.a(paramRecorderParam.c, paramRecorderParam.jdField_a_of_type_Int);
+        this.jdField_a_of_type_JavaIoFileOutputStream.write(paramContext, 0, paramContext.length);
+        this.jdField_a_of_type_JavaIoFileOutputStream.flush();
+        return true;
+        this.jdField_a_of_type_Baim.a(new SilkCodecWrapper(paramContext));
+      }
+      return false;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+  }
+  
+  public boolean a(byte[] paramArrayOfByte, int paramInt)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Baim != null)
+      {
+        paramArrayOfByte = this.jdField_a_of_type_Baim.a(paramArrayOfByte, 0, paramInt);
+        if (paramArrayOfByte != null) {
+          this.jdField_a_of_type_JavaIoFileOutputStream.write(paramArrayOfByte.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte.jdField_a_of_type_Int);
+        }
+      }
       return true;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+      if (QLog.isDevelopLevel()) {
+        QLog.e("PttPreSendManager", 4, "handleSliceDataIfNeed exception !!!");
+      }
     }
     return false;
   }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PttPreSendManager", 2, "delete tempfile, path : " + this.jdField_a_of_type_JavaLangString);
+    }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      File localFile = new File(this.jdField_a_of_type_JavaLangString);
+      if (localFile.exists()) {
+        localFile.delete();
+      }
+    }
+  }
+  
+  public void b(baii parambaii, baij parambaij) {}
 }
 
 

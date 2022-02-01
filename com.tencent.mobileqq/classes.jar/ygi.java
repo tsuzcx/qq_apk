@@ -1,8 +1,9 @@
-public abstract interface ygi
+public abstract class ygi
+  extends yge
+  implements ygm, ygn
 {
-  public abstract int a();
-  
-  public abstract yfy a(int paramInt);
+  public ygj a;
+  protected ygk a;
 }
 
 

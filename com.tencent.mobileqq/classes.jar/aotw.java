@@ -1,54 +1,71 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.1;
-import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.1.1.1;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 public class aotw
-  implements aouh
+  extends aouc
 {
-  public aotw(ArkAiDictUpdateMgr.1 param1, apwo paramapwo, aouj paramaouj, apwc paramapwc) {}
-  
-  public void a(boolean paramBoolean)
+  public aotw(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if (!paramBoolean)
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  private boolean C()
+  {
+    Object localObject1 = new StringBuilder((String)this.jdField_a_of_type_JavaUtilHashMap.get("url"));
+    ((StringBuilder)localObject1).append("?a=1");
+    Object localObject2 = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    while (((Iterator)localObject2).hasNext())
     {
-      ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateWordDict, one task failed, dict-id=%s", new Object[] { aotv.a(this.jdField_a_of_type_Apwo) }));
-      this.jdField_a_of_type_Aouj.jdField_a_of_type_Boolean = false;
-    }
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_Aouj)
+      String str1 = (String)((Iterator)localObject2).next();
+      if (!"url".equals(str1))
       {
-        aouj localaouj2 = this.jdField_a_of_type_Aouj;
-        int i = localaouj2.jdField_a_of_type_Int - 1;
-        localaouj2.jdField_a_of_type_Int = i;
-        if (i != 0) {
-          return;
-        }
-        if (this.jdField_a_of_type_Aouj.jdField_a_of_type_Boolean)
+        try
         {
-          ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, all success");
-          aotv.a(this.jdField_a_of_type_Apwc);
-          aotv.b(this.jdField_a_of_type_Apwc);
-          aots.b((AppInterface)aotv.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0).get());
-          try
-          {
-            aotv.b(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0, false);
-            if (aotv.b(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0))
-            {
-              aotv.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0, false);
-              ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, pending update task exists, wait 5 second and update");
-              ArkAppCenter.a().postToMainThreadDelayed(new ArkAiDictUpdateMgr.1.1.1(this), 5000L);
-            }
-            return;
-          }
-          finally {}
+          String str2 = URLEncoder.encode((String)this.jdField_a_of_type_JavaUtilHashMap.get(str1), "UTF-8");
+          ((StringBuilder)localObject1).append("&");
+          ((StringBuilder)localObject1).append(str1);
+          ((StringBuilder)localObject1).append("=");
+          ((StringBuilder)localObject1).append(str2);
+        }
+        catch (UnsupportedEncodingException localUnsupportedEncodingException) {}
+        if (QLog.isColorLevel()) {
+          QLog.e("HuaYangAction", 1, localUnsupportedEncodingException, new Object[0]);
         }
       }
-      ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, one or more tasks failed.");
     }
+    localObject1 = ((StringBuilder)localObject1).toString();
+    if (QLog.isDevelopLevel()) {
+      QLog.e("HuaYangAction", 4, "gotoHuayang url==" + (String)localObject1);
+    }
+    localObject2 = this.jdField_a_of_type_AndroidContentContext;
+    Intent localIntent = new Intent((Context)localObject2, QQBrowserActivity.class);
+    localIntent.setFlags(536870912);
+    localIntent.putExtra("url", (String)localObject1);
+    ((Context)localObject2).startActivity(localIntent);
+    return true;
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      boolean bool = C();
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("HuaYangAction", 1, "doAction error: " + localException.getMessage());
+      a("HuaYangAction");
+    }
+    return false;
   }
 }
 

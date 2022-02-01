@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app.face;
 
-import andd;
 import android.graphics.Bitmap;
+import aofu;
 import com.tencent.qphone.base.util.QLog;
 import java.util.LinkedList;
 
 class FaceDecoderImpl$MyTroopHeaderObserver
-  extends andd
+  extends aofu
 {
   private FaceDecoderImpl$MyTroopHeaderObserver(FaceDecoderImpl paramFaceDecoderImpl) {}
   

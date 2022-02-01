@@ -1,32 +1,41 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.s2c.msgtype0x210.submsgtype0xaa.SubMsgType0xaa.MsgBody;
 
 public class acsn
-  implements View.OnClickListener
+  implements acpi
 {
-  public acsn(AssistantSettingActivity paramAssistantSettingActivity) {}
-  
-  public void onClick(View paramView)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    if ((Build.VERSION.SDK_INT < 23) || (BaseApplicationImpl.getContext().checkSelfPermission("android.permission.RECORD_AUDIO") == 0)) {}
-    for (int i = 1;; i = 0)
+    if (QLog.isColorLevel()) {
+      QLog.d("GameParty", 2, "recv 0x210_0xaa push message");
+    }
+    SubMsgType0xaa.MsgBody localMsgBody = new SubMsgType0xaa.MsgBody();
+    try
     {
-      boolean bool = FloatingScreenPermission.checkPermission(BaseApplicationImpl.getContext());
-      if (i == 0) {
-        this.a.requestPermissions(new acso(this), 1, new String[] { "android.permission.RECORD_AUDIO" });
-      }
-      if (!bool) {
-        FloatingScreenPermission.requestPermission(this.a);
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
+      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+      ((avhf)paramQQAppInterface.getManager(QQManagerFactory.GAME_PARTY_MANAGER)).a(localMsgBody, false);
       return;
     }
+    catch (Exception paramMsgType0x210)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("GameParty", 2, "recv 0x210_0xaa, prase msgBody error");
+        }
+      }
+    }
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramMsgType0x210);
+    return null;
   }
 }
 

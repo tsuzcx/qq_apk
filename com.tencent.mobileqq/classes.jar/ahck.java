@@ -1,37 +1,25 @@
-public abstract interface ahck
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.qphone.base.util.QLog;
+
+class ahck
+  extends azky
 {
-  public static final String a = amtj.a(2131704432);
-  public static final String b = amtj.a(2131704431);
-  public static final String c = amtj.a(2131704429);
-  public static final String d = amtj.a(2131704433);
-  public static final String e = amtj.a(2131704437);
-  public static final String f = amtj.a(2131704434);
-  public static final String g = amtj.a(2131704436);
-  public static final String h = amtj.a(2131704435);
-  public static final String i = amtj.a(2131704430);
-  public static final String j = amtj.a(2131704856);
-  public static final String k = amtj.a(2131704853);
-  public static final String l = amtj.a(2131704854);
-  public static final String m = amtj.a(2131704855);
-  public static final String n = amtj.a(2131710390);
+  ahck(ahcj paramahcj, BaseChatItemLayout paramBaseChatItemLayout) {}
   
-  public abstract void a();
+  public void a(int paramInt, azkf paramazkf)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setProgressVisable(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("PicItemBuilder", 2, "2g diy gif onDownload");
+    }
+  }
   
-  public abstract void b();
-  
-  public abstract boolean b();
-  
-  public abstract void c();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
+  public void a_(int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PicItemBuilder", 2, "2g diy gif onUpdateProgress");
+    }
+  }
 }
 
 

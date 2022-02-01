@@ -1,32 +1,66 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment.SwapViews;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aker
-  implements Animation.AnimationListener
+public class aker
+  extends aqwt
 {
-  private final View jdField_a_of_type_AndroidViewView;
-  private final boolean jdField_a_of_type_Boolean;
-  private final View b;
-  
-  private aker(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment, boolean paramBoolean, View paramView1, View paramView2)
+  public static akeq a()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidViewView = paramView1;
-    this.b = paramView2;
+    return (akeq)aqxe.a().a(470);
   }
   
-  public void onAnimationEnd(Animation paramAnimation)
+  @NonNull
+  public akeq a(int paramInt)
   {
-    DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).post(new DrawRedpacketPannelPreviewFragment.SwapViews(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidViewView, this.b));
+    return new akeq();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  @Nullable
+  public akeq a(aqxa[] paramArrayOfaqxa)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("mini_msg_config", 2, "parse.configData : " + paramArrayOfaqxa[0].a);
+    }
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0)) {
+      return akeq.a(paramArrayOfaqxa);
+    }
+    return null;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public Class<akeq> clazz()
+  {
+    return akeq.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public void onUpdate(Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("mini_msg_config", 0, "onUpdate " + paramObject);
+    }
+  }
+  
+  public int type()
+  {
+    return 470;
+  }
 }
 
 

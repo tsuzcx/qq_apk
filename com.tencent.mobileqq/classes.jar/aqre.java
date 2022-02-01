@@ -1,29 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForGrayTips.HighlightItem;
-import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import mqq.util.WeakReference;
+import android.graphics.Point;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
 
-public class aqre
-  implements DialogInterface.OnClickListener
+public abstract interface aqre
 {
-  public aqre(MessageForGrayTips.HightlightClickableSpan paramHightlightClickableSpan) {}
+  public abstract int a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (NetworkUtil.isNetSupport(MessageForGrayTips.HightlightClickableSpan.access$100(this.a)))
-    {
-      paramDialogInterface.dismiss();
-      MessageForGrayTips.HightlightClickableSpan.access$300(this.a, (QQAppInterface)MessageForGrayTips.HightlightClickableSpan.access$000(this.a).get(), MessageForGrayTips.HightlightClickableSpan.access$200(this.a).mMsgActionData);
-      MessageForGrayTips.HightlightClickableSpan.access$300(this.a, (QQAppInterface)MessageForGrayTips.HightlightClickableSpan.access$000(this.a).get(), this.a.frienduin);
-      return;
-    }
-    QQToast.a(BaseApplication.getContext(), 1, 2131691348, 0).a();
-  }
+  public abstract void a(Point paramPoint, int paramInt);
+  
+  public abstract void a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout);
+  
+  public abstract void a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract void a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(Point paramPoint, boolean paramBoolean);
+  
+  public abstract int b(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout);
 }
 
 

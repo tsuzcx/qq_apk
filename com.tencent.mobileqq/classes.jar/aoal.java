@@ -1,20 +1,23 @@
-public abstract interface aoal
+import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
+
+public class aoal
+  extends RecyclablePool.Recyclable
 {
-  public abstract int a();
+  public int a;
+  public long a;
+  public String a;
+  public long b;
+  public long c;
+  public long d;
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(aoam paramaoam);
-  
-  public abstract void b();
+  public void recycle()
+  {
+    super.recycle();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoal
  * JD-Core Version:    0.7.0.1
  */

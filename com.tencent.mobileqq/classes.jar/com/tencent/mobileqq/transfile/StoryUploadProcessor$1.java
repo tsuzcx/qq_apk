@@ -13,9 +13,9 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.utils.HexUtil;
 import java.util.HashMap;
-import xvv;
-import xwa;
-import ypr;
+import ykq;
+import ykv;
+import zek;
 
 class StoryUploadProcessor$1
   implements ITransactionCallback
@@ -25,17 +25,17 @@ class StoryUploadProcessor$1
   public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
     long l1 = SystemClock.uptimeMillis();
-    long l2 = ypr.a((String)paramHashMap.get("upFlow_WiFi"), -1L);
-    long l3 = ypr.a((String)paramHashMap.get("dwFlow_WiFi"), -1L);
-    long l4 = ypr.a((String)paramHashMap.get("upFlow_Xg"), -1L);
-    long l5 = ypr.a((String)paramHashMap.get("dwFlow_Xg"), -1L);
+    long l2 = zek.a((String)paramHashMap.get("upFlow_WiFi"), -1L);
+    long l3 = zek.a((String)paramHashMap.get("dwFlow_WiFi"), -1L);
+    long l4 = zek.a((String)paramHashMap.get("upFlow_Xg"), -1L);
+    long l5 = zek.a((String)paramHashMap.get("dwFlow_Xg"), -1L);
     paramArrayOfByte = (String)paramHashMap.get("tc_p:");
     String str1 = (String)paramHashMap.get("rep_bdhTrans");
     String str2 = (String)paramHashMap.get("segspercnt");
     String str3 = (String)paramHashMap.get("param_conf_segSize");
     String str4 = (String)paramHashMap.get("param_conf_segNum");
     paramHashMap = (String)paramHashMap.get("param_conf_connNum");
-    xvv.c(StoryUploadProcessor.TAG, "Transaction End : Failed. take time:" + (l1 - this.val$startTime) + "ms");
+    ykq.c(StoryUploadProcessor.TAG, "Transaction End : Failed. take time:" + (l1 - this.val$startTime) + "ms");
     this.this$0.mReportInfo.put("X-piccachetime", paramArrayOfByte);
     this.this$0.mReportInfo.put("param_BdhTrans", str1);
     this.this$0.mReportInfo.put("param_segspercnt", str2);
@@ -60,7 +60,7 @@ class StoryUploadProcessor$1
     String str4 = (String)paramHashMap.get("param_conf_segSize");
     String str5 = (String)paramHashMap.get("param_conf_segNum");
     paramHashMap = (String)paramHashMap.get("param_conf_connNum");
-    xvv.c(StoryUploadProcessor.TAG, "Transaction End : Success. New : SendTotalCost:" + (l1 - this.val$startTime) + "ms ,fileSize:" + this.this$0.file.fileSize + " transInfo:" + str2);
+    ykq.c(StoryUploadProcessor.TAG, "Transaction End : Success. New : SendTotalCost:" + (l1 - this.val$startTime) + "ms ,fileSize:" + this.this$0.file.fileSize + " transInfo:" + str2);
     this.this$0.mReportInfo.put("X-piccachetime", str1);
     this.this$0.mReportInfo.put("param_BdhTrans", str2);
     this.this$0.mReportInfo.put("param_segspercnt", str3);
@@ -70,7 +70,7 @@ class StoryUploadProcessor$1
     this.this$0.mStepTrans.logFinishTime();
     this.this$0.mStepTrans.result = 1;
     this.this$0.mTransferedSize = this.this$0.mFileSize;
-    xvv.c(StoryUploadProcessor.TAG, "ITransactionCallback.onSuccess()");
+    ykq.c(StoryUploadProcessor.TAG, "ITransactionCallback.onSuccess()");
     if (paramArrayOfByte == null) {
       this.this$0.onError();
     }
@@ -91,7 +91,7 @@ class StoryUploadProcessor$1
             break label567;
           }
           this.this$0.mPhotoUrl = paramHashMap.url.get().toStringUtf8();
-          xvv.a(StoryUploadProcessor.TAG, "upload file %s return url %s", this.this$0.mFileName, this.this$0.mPhotoUrl);
+          ykq.a(StoryUploadProcessor.TAG, "upload file %s return url %s", this.this$0.mFileName, this.this$0.mPhotoUrl);
           if (!TextUtils.isEmpty(this.this$0.mPhotoUrl)) {
             break label557;
           }
@@ -104,11 +104,11 @@ class StoryUploadProcessor$1
           if (paramHashMap == null) {
             paramArrayOfByte = "";
           }
-          xvv.e(str1, "url not return %s", new Object[] { paramArrayOfByte });
+          ykq.e(str1, "url not return %s", new Object[] { paramArrayOfByte });
         }
         catch (InvalidProtocolBufferMicroException paramArrayOfByte)
         {
-          xvv.d(StoryUploadProcessor.TAG, "parser buffer exception");
+          ykq.d(StoryUploadProcessor.TAG, "parser buffer exception");
           this.this$0.onError();
         }
         continue;
@@ -147,11 +147,11 @@ class StoryUploadProcessor$1
           if (paramHashMap == null) {
             paramArrayOfByte = "";
           }
-          xvv.e(str1, "url not return %s", new Object[] { paramArrayOfByte });
+          ykq.e(str1, "url not return %s", new Object[] { paramArrayOfByte });
         }
         catch (InvalidProtocolBufferMicroException paramArrayOfByte)
         {
-          xvv.d(StoryUploadProcessor.TAG, "parser buffer exception");
+          ykq.d(StoryUploadProcessor.TAG, "parser buffer exception");
           this.this$0.onError();
         }
         continue;
@@ -175,14 +175,14 @@ class StoryUploadProcessor$1
   
   public void onTransStart()
   {
-    xvv.a(StoryUploadProcessor.TAG, "onTransStart %s", this.this$0.mUiRequest.mLocalPath);
+    ykq.a(StoryUploadProcessor.TAG, "onTransStart %s", this.this$0.mUiRequest.mLocalPath);
     long l1 = System.currentTimeMillis();
     long l2 = StoryUploadProcessor.access$000(this.this$0);
-    String str2 = xwa.a(BaseApplication.getContext());
+    String str2 = ykv.a(BaseApplication.getContext());
     if (this.this$0.file.fileType == 196610) {}
     for (String str1 = "pic";; str1 = "video")
     {
-      xwa.b("publish_story", "publish_bdh", 0, 0, new String[] { "", String.valueOf(l1 - l2), str2, str1 });
+      ykv.b("publish_story", "publish_bdh", 0, 0, new String[] { "", String.valueOf(l1 - l2), str2, str1 });
       this.this$0.mStepTrans.logStartTime();
       StoryUploadProcessor.access$102(this.this$0, System.currentTimeMillis());
       return;

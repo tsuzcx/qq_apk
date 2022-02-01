@@ -1,109 +1,69 @@
-import android.graphics.drawable.Drawable;
+import android.content.res.Resources;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.SparseArray;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.common.galleryactivity.AbstractImageAdapter.URLImageView2;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class atvz
-  extends BaseAdapter
+class atvz
+  implements auek
 {
-  int jdField_a_of_type_Int = -1;
-  SparseArray<URLDrawable> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private List<String> jdField_a_of_type_JavaUtilList;
+  atvz(atvy paramatvy, long paramLong, boolean paramBoolean1, String paramString1, Bundle paramBundle, short paramShort, boolean paramBoolean2, String paramString2, String paramString3) {}
   
-  public atvz(List<String> paramList)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public String a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size()) && (paramInt >= 0)) {
-      return (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public String a(String paramString)
-  {
-    String str;
-    if (TextUtils.isEmpty(paramString)) {
-      str = "";
-    }
-    do
+    if (paramBoolean)
     {
-      return str;
-      if (paramString.startsWith("//")) {
-        return "file:/" + paramString;
+      localObject1 = new HashMap();
+      ((Map)localObject1).put("shouq_bus_type", "bus_type_video_file");
+      localObject2 = new TVK_PlayerVideoInfo();
+      ((TVK_PlayerVideoInfo)localObject2).setReportInfoMap((Map)localObject1);
+      ((TVK_PlayerVideoInfo)localObject2).setPlayType(4);
+      ((TVK_PlayerVideoInfo)localObject2).setConfigMap("RawVideoPlay", "true");
+      ((TVK_PlayerVideoInfo)localObject2).setConfigMap("keep_last_frame", "true");
+      this.jdField_a_of_type_Atvy.jdField_a_of_type_Atmc.a();
+      return;
+    }
+    if (this.jdField_a_of_type_Long == -100001L) {}
+    while ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaLangString.length() == 0))
+    {
+      long l = 9360L;
+      if (this.jdField_a_of_type_Long == 0L) {
+        l = 9048L;
       }
-      str = paramString;
-    } while (!paramString.startsWith("/"));
-    return "file://" + paramString;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
+      this.jdField_a_of_type_Atvy.jdField_a_of_type_Atmc.a((int)l, BaseApplication.getContext().getResources().getString(2131690943));
+      return;
+      if ((this.jdField_a_of_type_Long == -25081L) || (this.jdField_a_of_type_Long == -6101L) || (this.jdField_a_of_type_Long == -7003L))
+      {
+        this.jdField_a_of_type_Atvy.jdField_a_of_type_Atvx.a(true);
+        this.jdField_a_of_type_Atvy.jdField_a_of_type_Atmc.a((int)this.jdField_a_of_type_Long, BaseApplication.getContext().getResources().getString(2131692655));
+        return;
+      }
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Atvy.jdField_a_of_type_Atmc.a((int)9045L, BaseApplication.getContext().getResources().getString(2131690943));
+        return;
+      }
     }
-    return 0;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView != null)
+    String str = this.jdField_a_of_type_JavaLangString;
+    Object localObject2 = "";
+    Object localObject1 = null;
+    if (this.jdField_a_of_type_AndroidOsBundle != null)
     {
-      localObject1 = paramView;
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localObject1;
+      localObject2 = this.jdField_a_of_type_AndroidOsBundle.getString("IPv6Dns", "");
+      localObject1 = this.jdField_a_of_type_AndroidOsBundle.getStringArrayList("ipv6list");
     }
-    Object localObject2 = a(a(paramInt));
-    Object localObject3 = (URLDrawable)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("BigImageAdapter", 2, "getView position=" + paramInt + ",cache=" + localObject3 + ",url=" + (String)localObject2);
-    }
-    Object localObject1 = new AbstractImageAdapter.URLImageView2(paramViewGroup.getContext());
-    if ((localObject3 != null) && (((URLDrawable)localObject3).getStatus() == 1)) {
-      ((ImageView)localObject1).setImageDrawable((Drawable)localObject3);
-    }
+    localObject1 = atvx.a(this.jdField_a_of_type_Atvy.jdField_a_of_type_Atvx, (String)localObject2, this.jdField_a_of_type_Short, (List)localObject1, this.jdField_b_of_type_Boolean);
+    if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
     for (;;)
     {
-      ((ImageView)localObject1).setContentDescription(amtj.a(2131707251) + paramInt);
-      break;
-      if (!TextUtils.isEmpty((CharSequence)localObject2))
-      {
-        int i = paramViewGroup.getWidth();
-        int j = paramViewGroup.getHeight();
-        localObject3 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth = i;
-        ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = j;
-        ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-        localObject2 = URLDrawable.getDrawable((String)localObject2, (URLDrawable.URLDrawableOptions)localObject3);
-        switch (((URLDrawable)localObject2).getStatus())
-        {
-        default: 
-          ((URLDrawable)localObject2).setTag(Integer.valueOf(1));
-          ((URLDrawable)localObject2).startDownload();
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("BigImageAdapter", 2, "getView position=" + paramInt + ",parentWidth=" + i + ",parentHeight=" + j);
-        }
-        ((ImageView)localObject1).setImageDrawable((Drawable)localObject2);
-      }
+      localObject2 = this.jdField_b_of_type_JavaLangString;
+      localObject1 = "http://" + (String)localObject1 + ":" + String.valueOf(this.jdField_a_of_type_Short) + this.c;
+      this.jdField_a_of_type_Atvy.jdField_a_of_type_Atmc.a((String)localObject1, (String)localObject2);
+      return;
+      localObject1 = str;
     }
   }
 }

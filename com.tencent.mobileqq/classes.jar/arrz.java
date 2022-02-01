@@ -1,19 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class arrz
-  implements View.OnClickListener
+public abstract interface arrz
 {
-  public arrz(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString) {}
-  
-  public void onClick(View paramView)
-  {
-    bfrj.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.a(), this.jdField_a_of_type_JavaLangString, 0);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract arrl a(arru paramarru, int paramInt);
 }
 
 

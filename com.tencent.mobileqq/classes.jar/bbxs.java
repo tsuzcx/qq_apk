@@ -1,89 +1,90 @@
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageForScribble;
+import com.tencent.mobileqq.scribble.ScribbleBaseOperator.1;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.TransferRequest;
+import com.tencent.qphone.base.util.QLog;
 
 public class bbxs
 {
-  private static float[] jdField_a_of_type_ArrayOfFloat = { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F };
-  public int a;
-  public bbxt a;
-  private bbxu jdField_a_of_type_Bbxu;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private AtomicInteger b = new AtomicInteger(0);
+  public QQAppInterface a;
   
-  public bbxs(int paramInt)
+  public bbxs(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Bbxt = new bbxt();
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramQQAppInterface;
   }
   
-  public int a()
+  public MessageForScribble a(MessageForScribble paramMessageForScribble)
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndAdd(0);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bbxu != null)
-    {
-      this.jdField_a_of_type_Bbxu.a();
-      return;
+    MessageForScribble localMessageForScribble = (MessageForScribble)bcsa.a(paramMessageForScribble);
+    if (localMessageForScribble == null) {
+      QLog.e("CreateResendScribbleMsg", 2, "null msg");
     }
-    c();
-  }
-  
-  public void a(int paramInt, Object paramObject, boolean paramBoolean)
-  {
-    boolean bool = true;
-    bbxt localbbxt = this.jdField_a_of_type_Bbxt;
-    if (paramInt == 1) {}
-    for (;;)
+    if (localMessageForScribble != null)
     {
-      localbbxt.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_Bbxt.jdField_a_of_type_JavaLangObject = paramObject;
-      this.jdField_a_of_type_Bbxt.b = paramBoolean;
-      return;
-      bool = false;
+      localMessageForScribble.offSet = paramMessageForScribble.offSet;
+      localMessageForScribble.gifId = paramMessageForScribble.gifId;
+      localMessageForScribble.localFildPath = paramMessageForScribble.localFildPath;
+      localMessageForScribble.combineFileMd5 = paramMessageForScribble.combineFileMd5;
+      localMessageForScribble.isread = true;
+      localMessageForScribble.fileUploadStatus = 0;
     }
+    return localMessageForScribble;
   }
   
-  public void a(bbxu parambbxu)
+  public MessageForScribble a(String paramString1, String paramString2, int paramInt1, String paramString3, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Bbxu = parambbxu;
+    MessageForScribble localMessageForScribble = (MessageForScribble)bcsa.a(-7001);
+    bcsa.a(this.a, localMessageForScribble, paramString3, paramString3, paramInt2);
+    localMessageForScribble.msgtype = -7001;
+    localMessageForScribble.offSet = paramInt1;
+    localMessageForScribble.gifId = paramInt3;
+    localMessageForScribble.localFildPath = paramString1;
+    localMessageForScribble.combineFileMd5 = paramString2;
+    localMessageForScribble.selfuin = this.a.getCurrentAccountUin();
+    localMessageForScribble.senderuin = localMessageForScribble.selfuin;
+    localMessageForScribble.issend = 1;
+    localMessageForScribble.fileUploadStatus = 0;
+    return localMessageForScribble;
   }
   
-  public int b()
+  public boolean a(MessageForScribble paramMessageForScribble)
   {
-    return this.b.getAndSet(1);
+    ThreadManager.post(new ScribbleBaseOperator.1(this, paramMessageForScribble), 8, null, false);
+    return true;
   }
   
-  public void b()
+  public boolean a(MessageForScribble paramMessageForScribble, azjj paramazjj)
   {
-    this.jdField_a_of_type_Int = 0;
+    TransferRequest localTransferRequest = new TransferRequest();
+    localTransferRequest.mIsUp = false;
+    localTransferRequest.mFileType = 262153;
+    localTransferRequest.mSelfUin = paramMessageForScribble.selfuin;
+    localTransferRequest.mPeerUin = paramMessageForScribble.frienduin;
+    localTransferRequest.mUinType = paramMessageForScribble.istroop;
+    localTransferRequest.mUniseq = paramMessageForScribble.uniseq;
+    localTransferRequest.mDownCallBack = paramazjj;
+    localTransferRequest.mRec = paramMessageForScribble;
+    this.a.getTransFileController().transferAsync(localTransferRequest);
+    return true;
   }
   
-  public int c()
+  public boolean a(MessageForScribble paramMessageForScribble, String paramString, azla paramazla)
   {
-    return this.b.getAndAdd(0);
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(0);
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(1);
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(2);
-  }
-  
-  public void f()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(3);
+    TransferRequest localTransferRequest = new TransferRequest();
+    localTransferRequest.mIsUp = true;
+    localTransferRequest.mFileType = 262153;
+    localTransferRequest.mSelfUin = paramMessageForScribble.selfuin;
+    localTransferRequest.mPeerUin = paramMessageForScribble.frienduin;
+    localTransferRequest.mUinType = paramMessageForScribble.istroop;
+    localTransferRequest.mUniseq = paramMessageForScribble.uniseq;
+    localTransferRequest.mUpCallBack = paramazla;
+    localTransferRequest.mLocalPath = paramString;
+    localTransferRequest.mRec = paramMessageForScribble;
+    paramMessageForScribble.fileUploadStatus = 3;
+    this.a.getTransFileController().transferAsync(localTransferRequest);
+    return true;
   }
 }
 

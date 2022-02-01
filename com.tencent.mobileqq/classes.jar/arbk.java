@@ -1,110 +1,65 @@
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.LayoutParams;
-import android.support.v7.widget.RecyclerView.Recycler;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class arbk
-  extends RecyclerView.LayoutManager
+  extends aqwt<arbj>
 {
-  private View.OnClickListener a;
-  
-  public arbk(View.OnClickListener paramOnClickListener)
+  @NonNull
+  public arbj a(int paramInt)
   {
-    this.a = paramOnClickListener;
+    return new arbj();
   }
   
-  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  @Nullable
+  public arbj a(aqxa[] paramArrayOfaqxa)
   {
-    RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-    layoutDecorated(paramView, paramInt1 + localLayoutParams.leftMargin, paramInt2 + localLayoutParams.topMargin, paramInt3 - localLayoutParams.rightMargin, paramInt4 - localLayoutParams.bottomMargin);
-  }
-  
-  public RecyclerView.LayoutParams generateDefaultLayoutParams()
-  {
-    return new RecyclerView.LayoutParams(-2, -2);
-  }
-  
-  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
-  {
-    detachAndScrapAttachedViews(paramRecycler);
-    int i = getItemCount();
-    int m;
-    int j;
-    int k;
-    if (i > 3)
-    {
-      i = 3;
-      if (i >= 0)
-      {
-        paramState = paramRecycler.getViewForPosition(i);
-        addView(paramState);
-        measureChildWithMargins(paramState, 0, 0);
-        m = getWidth() - getDecoratedMeasuredWidth(paramState);
-        j = getHeight() - getDecoratedMeasuredHeight(paramState);
-        k = m / 2;
-        m /= 2;
-        a(paramState, k, j, getDecoratedMeasuredWidth(paramState) + m, getDecoratedMeasuredHeight(paramState) + j);
-        if (i == 3)
-        {
-          paramState.setScaleX(1.0F - (i - 1) * 0.1F);
-          paramState.setScaleY(1.0F - (i - 1) * 0.1F);
-          paramState.setTranslationY((i - 1) * paramState.getMeasuredHeight() / -10);
-          paramState.setAlpha(0.8F);
-        }
-        for (;;)
-        {
-          i -= 1;
-          break;
-          if (i > 0)
-          {
-            paramState.setScaleX(1.0F - i * 0.1F);
-            paramState.setScaleY(1.0F - i * 0.1F);
-            paramState.setTranslationY(paramState.getMeasuredHeight() * i / -10);
-            paramState.setAlpha(0.6F);
-          }
-          else if (this.a != null)
-          {
-            paramState.setOnClickListener(this.a);
-          }
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("LebaRedTouchSwitchProcessor", 2, "[onParsed] config");
     }
-    else
-    {
-      i -= 1;
-      if (i >= 0)
-      {
-        paramState = paramRecycler.getViewForPosition(i);
-        addView(paramState);
-        measureChildWithMargins(paramState, 0, 0);
-        m = getWidth() - getDecoratedMeasuredWidth(paramState);
-        j = getHeight() - getDecoratedMeasuredHeight(paramState);
-        k = m / 2;
-        m /= 2;
-        a(paramState, k, j, getDecoratedMeasuredWidth(paramState) + m, getDecoratedMeasuredHeight(paramState) + j);
-        if (i > 0)
-        {
-          paramState.setScaleX(1.0F - i * 0.1F);
-          paramState.setScaleY(1.0F - i * 0.1F);
-          paramState.setTranslationY(paramState.getMeasuredHeight() * i / -10);
-        }
-        for (;;)
-        {
-          i -= 1;
-          break;
-          if (this.a != null) {
-            paramState.setOnClickListener(this.a);
-          }
-        }
-      }
+    return arbj.a(paramArrayOfaqxa);
+  }
+  
+  public void a(arbj paramarbj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LebaRedTouchSwitchProcessor", 2, "[onUpdate]");
     }
+  }
+  
+  public Class<arbj> clazz()
+  {
+    return arbj.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.d("LebaRedTouchSwitchProcessor", 1, "[onReqFailed] failCode=" + paramInt);
+  }
+  
+  public int type()
+  {
+    return 598;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arbk
  * JD-Core Version:    0.7.0.1
  */

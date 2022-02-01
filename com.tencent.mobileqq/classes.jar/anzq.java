@@ -1,8 +1,22 @@
-import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
+import com.tencent.mobileqq.app.NearbyGrayTipsManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public abstract interface anzq
+public class anzq
+  implements Comparator<MessageRecord>
 {
-  public abstract void a(PromotionConfigInfo paramPromotionConfigInfo);
+  public anzq(NearbyGrayTipsManager paramNearbyGrayTipsManager) {}
+  
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  {
+    if (paramMessageRecord1.time < paramMessageRecord2.time) {
+      return 1;
+    }
+    if (paramMessageRecord1.time > paramMessageRecord2.time) {
+      return -1;
+    }
+    return 0;
+  }
 }
 
 

@@ -20,6 +20,9 @@ public class AsyncImageView
   implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener, IBorder
 {
   public static final int FADE_DURATION = 150;
+  public static final int IMAGE_LOADED = 2;
+  public static final int IMAGE_LOADING = 1;
+  public static final int IMAGE_UNLOAD = 0;
   protected static int SOURCE_TYPE_DEFAULT_SRC = 2;
   public static int SOURCE_TYPE_SRC = 1;
   private ValueAnimator mAlphaAnimator;
@@ -37,11 +40,11 @@ public class AsyncImageView
   private int mImagePositionY;
   protected String mImageType = null;
   private boolean mIsAttached;
-  protected boolean mIsUrlFetchSucceed;
   protected AsyncImageView.ScaleType mScaleType;
   public IDrawableTarget mSourceDrawable;
   protected int mTintColor;
   public String mUrl = null;
+  public int mUrlFetchState = 0;
   
   public AsyncImageView(Context paramContext)
   {
@@ -64,6 +67,7 @@ public class AsyncImageView
       }
       paramString = paramString.trim().replaceAll(" ", "%20");
     } while (!shouldFetchImage());
+    this.mUrlFetchState = 1;
     onFetchImage(paramString);
     handleGetImageStart();
     doFetchImage(getFetchParam(), paramInt);
@@ -169,7 +173,6 @@ public class AsyncImageView
       if (paramInt == SOURCE_TYPE_SRC)
       {
         this.mSourceDrawable = null;
-        this.mIsUrlFetchSucceed = false;
         if ((paramObject instanceof Throwable))
         {
           paramIDrawableTarget = (Throwable)paramObject;
@@ -190,7 +193,6 @@ public class AsyncImageView
     if (paramInt == SOURCE_TYPE_SRC)
     {
       this.mSourceDrawable = paramIDrawableTarget;
-      this.mIsUrlFetchSucceed = true;
       handleGetImageSuccess();
     }
     for (;;)
@@ -252,15 +254,13 @@ public class AsyncImageView
   {
     this.mIsAttached = true;
     super.onAttachedToWindow();
-    if (this.mDefaultSourceDrawable != null)
+    if ((this.mDefaultSourceDrawable != null) && (shouldFetchImage()))
     {
       this.mDefaultSourceDrawable.onDrawableAttached();
       setContent(SOURCE_TYPE_DEFAULT_SRC);
       setUrl(this.mUrl);
     }
-    if ((getBitmap() == null) || (!this.mIsUrlFetchSucceed)) {
-      fetchImageByUrl(this.mUrl, SOURCE_TYPE_SRC);
-    }
+    fetchImageByUrl(this.mUrl, SOURCE_TYPE_SRC);
     onDrawableAttached();
   }
   
@@ -472,7 +472,7 @@ public class AsyncImageView
     if (!TextUtils.equals(paramString, this.mUrl))
     {
       this.mUrl = paramString;
-      this.mIsUrlFetchSucceed = false;
+      this.mUrlFetchState = 0;
       if (isAttached())
       {
         onDrawableDetached();

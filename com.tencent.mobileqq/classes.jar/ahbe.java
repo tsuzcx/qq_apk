@@ -1,16 +1,14 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForMarketFace;
 
-public class ahbe
-  extends RecyclerView.OnScrollListener
+class ahbe
+  implements awzc<Void>
 {
-  public ahbe(PhotoListPanel paramPhotoListPanel) {}
+  ahbe(ahaw paramahaw, ahbj paramahbj, MessageForMarketFace paramMessageForMarketFace, ChatMessage paramChatMessage, long paramLong) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void a(Void paramVoid)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    this.a.l = paramInt;
+    ahaw.a(this.jdField_a_of_type_Ahaw, this.jdField_a_of_type_Ahbj, -1, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_Long);
   }
 }
 

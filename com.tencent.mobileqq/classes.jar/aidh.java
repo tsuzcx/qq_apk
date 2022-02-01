@@ -1,29 +1,53 @@
 import android.os.Bundle;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie.14.1;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.nowsummarycard.NowSummaryCard.NearbyUserFollowRsp;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class aidh
-  implements AbsListView.OnScrollListener
+public class aidh
+  extends ntf
 {
-  aidh(aidb paramaidb) {}
+  aidh(aidd paramaidd) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    aidb.a(this.a, paramInt1 + paramInt2 - 1);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (paramInt != 0) {
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyChatPie", 2, "errorCode = [" + paramInt + "], bundle = [" + paramBundle + "]");
+    }
+    if (paramInt == 0) {
+      paramBundle = new NowSummaryCard.NearbyUserFollowRsp();
+    }
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramInt = paramBundle.ret_code.get();
+      paramArrayOfByte = paramBundle.err_msg.get().toStringUtf8();
+      int i = paramBundle.status.get();
+      QLog.i("NearbyChatPie", 1, "ret_code: " + paramInt + ", err_msg: " + paramArrayOfByte + ", status: " + i);
+      if (paramInt == 0)
+      {
+        paramArrayOfByte = this.a;
+        if (i == 0) {
+          bool = false;
+        }
+        paramArrayOfByte.h = bool;
+      }
+      this.a.a().post(new NearbyChatPie.14.1(this));
       return;
     }
-    if (aidb.b(this.a) >= this.a.getCount() - 2)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      paramAbsListView = new Bundle();
-      paramAbsListView.putString("from", "4");
-      aidb.a(this.a).b(4, aidb.a(this.a), paramAbsListView);
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+        QLog.e(this.a.tag, 1, "pb parse error: " + paramArrayOfByte);
+      }
     }
-    this.a.d();
   }
 }
 

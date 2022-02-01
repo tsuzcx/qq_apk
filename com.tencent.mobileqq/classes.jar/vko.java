@@ -1,23 +1,19 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Dispatcher.Event;
-
-public class vko
-  implements Dispatcher.Event
+final class vko
+  extends vkl
 {
-  public ErrorMessage a = new ErrorMessage();
-  
-  public String a()
+  vko(int paramInt)
   {
-    return this.a.getErrorMessage();
+    super(paramInt);
   }
   
-  public String toString()
+  String a()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("{\"_class\":\"SimpleBaseEvent\", \"errorInfo\":");
-    if (this.a == null) {}
-    for (String str = "null";; str = "\"" + this.a + "\"") {
-      return str + "}";
-    }
+    return "null";
+  }
+  
+  String b()
+  {
+    return "null";
   }
 }
 

@@ -1,32 +1,26 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasCommentFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
-class pxr
-  implements pxi<BEAN>
+public class pxr
+  implements Animation.AnimationListener
 {
-  pxr(pxp parampxp) {}
+  public pxr(ReadInJoyAtlasCommentFragment paramReadInJoyAtlasCommentFragment) {}
   
-  public void a(boolean paramBoolean, List<BEAN> paramList, int paramInt, String paramString)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (pxp.a(this.a) != null)
-    {
-      if (!paramBoolean) {
-        break label69;
-      }
-      pxp.a(this.a).setListData(paramList, true);
-      if (pxp.a(this.a).a()) {
-        pxp.a(this.a).setFooterHasMore();
-      }
-    }
-    else
-    {
-      return;
-    }
-    pxp.a(this.a).setFooterNoMore();
-    return;
-    label69:
-    QLog.i("ListPresenter", 2, "loadNextPage error, errorCode=" + paramInt + ", errorMsg= " + paramString);
-    pxp.a(this.a).setFooterError(paramInt, paramString);
+    QLog.d(ReadInJoyAtlasCommentFragment.a(), 1, "fragment show info");
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation)
+  {
+    QLog.d(ReadInJoyAtlasCommentFragment.a(), 1, "fragment Repeat animation");
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    QLog.d(ReadInJoyAtlasCommentFragment.a(), 1, "fragment start animation");
   }
 }
 

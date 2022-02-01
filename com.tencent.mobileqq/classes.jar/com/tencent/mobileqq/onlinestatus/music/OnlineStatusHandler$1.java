@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.onlinestatus.music;
 
-import axyt;
+import azff;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class OnlineStatusHandler$1
   implements Runnable
 {
-  public OnlineStatusHandler$1(axyt paramaxyt) {}
+  public OnlineStatusHandler$1(azff paramazff) {}
   
   public void run()
   {

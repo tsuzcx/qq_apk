@@ -1,25 +1,17 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.image.VideoDrawable.OnPlayRepeatListener;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.VideoListener.1;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class agyd
-  implements VideoDrawable.OnPlayRepeatListener
+class agyd
+  extends ahaa
 {
-  public AIOGalleryAdapter a;
-  
-  public agyd(AIOGalleryAdapter paramAIOGalleryAdapter)
+  agyd(agvm paramagvm)
   {
-    this.a = paramAIOGalleryAdapter;
+    super(paramagvm, null);
   }
   
-  public void onPlayRepeat(int paramInt)
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    if (paramInt != 1) {
-      return;
-    }
-    new Handler(Looper.getMainLooper()).post(new AIOGalleryAdapter.VideoListener.1(this));
+    return new agsm(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

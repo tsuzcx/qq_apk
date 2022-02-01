@@ -1,4 +1,5 @@
 import com.tencent.litetransfersdk.ReportItem;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.NetworkUtil;
@@ -39,13 +40,13 @@ public class ez
     long l3;
     long l4;
     long l1;
-    label129:
+    label130:
     HashMap localHashMap;
     if (paramReportItem.bSend)
     {
       str = "actFAFileUp";
       if ((paramReportItem.emResult != 2) && (paramReportItem.emResult != 26) && (paramReportItem.emResult != 30) && (paramReportItem.emResult != 31) && (paramReportItem.emResult != 34)) {
-        break label663;
+        break label664;
       }
       bool = true;
       l2 = paramReportItem.uDuration;
@@ -53,11 +54,11 @@ public class ez
       l4 = paramReportItem.uStartPos;
       l1 = paramInt;
       if ((paramQQAppInterface != null) && (paramInt == b)) {
-        ((amzy)paramQQAppInterface.getBusinessHandler(10)).a();
+        ((aocn)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.REGPRXYSVCPACK_HANDLER)).a();
       }
       l1 = 1L;
       if ((paramReportItem.uDevType != 0) && (paramReportItem.uDevType != 1)) {
-        break label668;
+        break label669;
       }
       l1 = 1L;
       if (!paramReportItem.bSend) {
@@ -71,10 +72,10 @@ public class ez
       localHashMap.put("networktype", String.valueOf(a()));
       localHashMap.put("filesize", String.valueOf(paramReportItem.uFileSize));
       if (!paramReportItem.bFileExist) {
-        break label684;
+        break label685;
       }
       paramInt = 1;
-      label252:
+      label253:
       localHashMap.put("fileexist", String.valueOf(paramInt));
       localHashMap.put("startpos", String.valueOf(paramReportItem.uStartPos));
       localHashMap.put("duration", String.valueOf(paramReportItem.uDuration));
@@ -84,44 +85,44 @@ public class ez
       localHashMap.put("usercode", String.valueOf(paramReportItem.nUserCode));
       localHashMap.put("filetye", String.valueOf(paramReportItem.uFileType));
       if (!paramQQAppInterface.isMSFConnect) {
-        break label689;
+        break label690;
       }
       paramInt = 2;
-      label375:
+      label376:
       localHashMap.put("qqstate", String.valueOf(paramInt));
       if (paramReportItem.dwClientIP < 0) {
-        break label694;
+        break label695;
       }
       l1 = paramReportItem.dwClientIP;
-      label401:
+      label402:
       localHashMap.put("clientip", String.valueOf(l1));
       if (paramReportItem.dwServerIP < 0) {
-        break label708;
+        break label709;
       }
       l1 = paramReportItem.dwServerIP;
-      label428:
+      label429:
       localHashMap.put("serverip", String.valueOf(l1));
       if (paramReportItem.wServerPort < 0) {
-        break label722;
+        break label723;
       }
       paramInt = paramReportItem.wServerPort;
-      label453:
+      label454:
       localHashMap.put("serverport", String.valueOf(paramInt));
       localHashMap.put("taskstart", String.valueOf(paramReportItem.uTaskStart / 1000L));
       localHashMap.put("taskend", String.valueOf(paramReportItem.uTaskEnd / 1000L));
       localHashMap.put("notifytime", String.valueOf(paramReportItem.uNotifyTime / 1000L));
       if (!paramReportItem.bUserRetry) {
-        break label733;
+        break label734;
       }
     }
-    label663:
-    label668:
-    label684:
-    label689:
-    label694:
-    label708:
-    label722:
-    label733:
+    label664:
+    label669:
+    label685:
+    label690:
+    label695:
+    label709:
+    label723:
+    label734:
     for (paramInt = 1;; paramInt = 0)
     {
       localHashMap.put("userretry", String.valueOf(paramInt));
@@ -135,20 +136,20 @@ public class ez
       bool = false;
       break label62;
       if (paramReportItem.uDevType != 3) {
-        break label129;
+        break label130;
       }
       l1 = 21L;
-      break label129;
+      break label130;
       paramInt = 0;
-      break label252;
+      break label253;
       paramInt = 1;
-      break label375;
+      break label376;
       l1 = paramReportItem.dwClientIP + 4294967295L;
-      break label401;
+      break label402;
       l1 = paramReportItem.dwServerIP + 4294967295L;
-      break label428;
+      break label429;
       paramInt = paramReportItem.wServerPort + 65535;
-      break label453;
+      break label454;
     }
   }
 }

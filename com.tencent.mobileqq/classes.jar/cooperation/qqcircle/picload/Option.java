@@ -15,25 +15,28 @@ public class Option
   public static final int LOAD_FROM_NET = 2;
   public static final int LOAD_FROM_SDCARD = 1;
   public static final int NINE_PATCH_PIC_TYPE = 2;
+  public static final int PIC_TYPE_AVATAR = 3;
   public static int PRIORITY_DEFAULT = 0;
   public static int PRIORITY_PRELOAD = 1;
   public static final int SHARE_P_PIC_TYPE = 1;
+  public static final Drawable sDefaultFailedDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130844042);
+  public static final Drawable sDefaultLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130846622);
   private String mCacheKey;
   public Long mDecodeStartTime;
   public Long mDownLoadStartTime;
-  private Drawable mFailedDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130843996);
+  private Drawable mFailedDrawable = sDefaultFailedDrawable;
   private String mIP;
   private boolean mIsFromPreLoad;
   private boolean mIsPreDecode = true;
   public int mLoadType = 2;
-  private Drawable mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130846526);
+  private Drawable mLoadingDrawable = sDefaultLoadingDrawable;
   private String mLocalPath;
-  public int mPicType;
+  private int mPicType;
   private int mPriority = PRIORITY_DEFAULT;
   private int mRequestHeight;
   private int mRequestWidth;
   private Bitmap mResultBitMap;
-  public int mSeq;
+  private int mSeq;
   public Long mStartTime;
   private ImageView mTargetView;
   private String mUrl;
@@ -64,6 +67,11 @@ public class Option
   public String getLocalPath()
   {
     return this.mLocalPath;
+  }
+  
+  public int getPicType()
+  {
+    return this.mPicType;
   }
   
   public int getPriority()
@@ -113,9 +121,9 @@ public class Option
   
   public boolean isValid()
   {
-    if ((this.mTargetView != null) && ((this.mTargetView.getTag(2131373828) instanceof String)))
+    if ((this.mTargetView != null) && ((this.mTargetView.getTag(2131374053) instanceof String)))
     {
-      String str = (String)this.mTargetView.getTag(2131373828);
+      String str = (String)this.mTargetView.getTag(2131374053);
       if (QCircleFeedPicLoader.getUniKeyFromUrl(str).equals(QCircleFeedPicLoader.getUniKeyFromUrl(this.mUrl)))
       {
         QLog.i(QCircleFeedPicLoader.TAG, 1, "seq = " + this.mSeq + " is valid, url:" + this.mUrl);
@@ -164,6 +172,12 @@ public class Option
     return this;
   }
   
+  public Option setPicType(int paramInt)
+  {
+    this.mPicType = paramInt;
+    return this;
+  }
+  
   public Option setPredecode(boolean paramBoolean)
   {
     this.mIsPreDecode = paramBoolean;
@@ -206,7 +220,7 @@ public class Option
     {
       this.mTargetView = paramImageView;
       if (!TextUtils.isEmpty(this.mUrl)) {
-        paramImageView.setTag(2131373828, this.mUrl);
+        paramImageView.setTag(2131374053, this.mUrl);
       }
     }
     return this;
@@ -216,7 +230,7 @@ public class Option
   {
     this.mUrl = paramString;
     if (this.mTargetView != null) {
-      this.mTargetView.setTag(2131373828, this.mUrl);
+      this.mTargetView.setTag(2131374053, this.mUrl);
     }
     return this;
   }

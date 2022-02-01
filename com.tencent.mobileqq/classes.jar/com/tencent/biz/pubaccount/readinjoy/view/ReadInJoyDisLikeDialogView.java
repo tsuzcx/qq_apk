@@ -15,8 +15,8 @@ import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
-import smi;
-import smj;
+import szs;
+import szt;
 
 public class ReadInJoyDisLikeDialogView
   extends FrameLayout
@@ -29,8 +29,8 @@ public class ReadInJoyDisLikeDialogView
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   protected Boolean a;
   protected ArrayList<DislikeInfo> a;
-  protected smi a;
-  protected smj a;
+  protected szs a;
+  protected szt a;
   protected int[] a;
   private View[] jdField_a_of_type_ArrayOfAndroidViewView;
   private Button[] jdField_a_of_type_ArrayOfAndroidWidgetButton;
@@ -42,8 +42,8 @@ public class ReadInJoyDisLikeDialogView
   {
     super(paramContext);
     this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
-    this.jdField_a_of_type_ArrayOfInt = new int[] { 2131380148, 2131380149, 2131380150, 2131380151, 2131380152, 2131380153, 2131380154, 2131380155 };
-    this.jdField_b_of_type_ArrayOfInt = new int[] { 2131380143, 2131380144, 2131380145, 2131380146 };
+    this.jdField_a_of_type_ArrayOfInt = new int[] { 2131380483, 2131380484, 2131380485, 2131380486, 2131380487, 2131380488, 2131380489, 2131380490 };
+    this.jdField_b_of_type_ArrayOfInt = new int[] { 2131380478, 2131380479, 2131380480, 2131380481 };
     a(paramContext);
   }
   
@@ -105,24 +105,24 @@ public class ReadInJoyDisLikeDialogView
   
   public void a()
   {
-    this.jdField_a_of_type_Smj = null;
-    this.jdField_a_of_type_Smi = null;
+    this.jdField_a_of_type_Szt = null;
+    this.jdField_a_of_type_Szs = null;
   }
   
   protected void a(Context paramContext)
   {
     int j = 0;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131560082, this);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131380141));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(getResources().getColor(2131167337));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380159));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131560129, this);
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131380476));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(getResources().getColor(2131167363));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380494));
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380156));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramContext.getString(2131698820));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131380138));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380491));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramContext.getString(2131699164));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131380473));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131380140));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131380475));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(Color.parseColor("#FFF6F7FA"));
     this.jdField_a_of_type_ArrayOfAndroidWidgetButton = new Button[this.jdField_a_of_type_ArrayOfInt.length];
@@ -147,7 +147,7 @@ public class ReadInJoyDisLikeDialogView
     int i;
     switch (paramView.getId())
     {
-    case 2131380139: 
+    case 2131380474: 
     default: 
       i = 0;
       if (i < this.jdField_a_of_type_ArrayOfInt.length) {
@@ -176,12 +176,12 @@ public class ReadInJoyDisLikeDialogView
       {
         EventCollector.getInstance().onViewClicked(paramView);
         return;
-        if ((this.jdField_a_of_type_Smj == null) || (this.jdField_a_of_type_Smj.a(paramView, this.jdField_b_of_type_JavaUtilArrayList, null)))
+        if ((this.jdField_a_of_type_Szt == null) || (this.jdField_a_of_type_Szt.a(paramView, this.jdField_b_of_type_JavaUtilArrayList, null)))
         {
           a();
           continue;
-          if (this.jdField_a_of_type_Smi != null) {
-            this.jdField_a_of_type_Smi.a();
+          if (this.jdField_a_of_type_Szs != null) {
+            this.jdField_a_of_type_Szs.a();
           }
           a();
           continue;
@@ -211,14 +211,14 @@ public class ReadInJoyDisLikeDialogView
     }
   }
   
-  public void setOnComplainListener(smi paramsmi)
+  public void setOnComplainListener(szs paramszs)
   {
-    this.jdField_a_of_type_Smi = paramsmi;
+    this.jdField_a_of_type_Szs = paramszs;
   }
   
-  public void setOnUninterestConfirmListener(smj paramsmj)
+  public void setOnUninterestConfirmListener(szt paramszt)
   {
-    this.jdField_a_of_type_Smj = paramsmj;
+    this.jdField_a_of_type_Szt = paramszt;
   }
   
   public void setUninterestData(ArrayList<DislikeInfo> paramArrayList)

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.text;
 
 import android.view.View;
-import bjnb;
-import bjoe;
+import bkyn;
+import bkzq;
 
 final class QQText$6
-  implements bjoe
+  implements bkzq
 {
-  QQText$6(bjnb parambjnb) {}
+  QQText$6(bkyn parambkyn) {}
   
   public void OnClick(View paramView, int paramInt)
   {

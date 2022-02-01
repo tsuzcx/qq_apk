@@ -1,37 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
 
-class ajfy
-  extends axkt
+public class ajfy
+  implements DialogInterface.OnClickListener
 {
-  ajfy(ajey paramajey) {}
+  public ajfy(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
-  {
-    if ((paramBoolean1) && (paramBoolean2) && (paramInt != 2)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("MainActivity", 2, "inform onGameCenterMsgReceive.type=" + paramInt);
-      }
-    }
-    switch (paramInt)
-    {
-    case 2: 
-    case 3: 
-    default: 
-      return;
-    case 0: 
-      this.a.g();
-      return;
-    case 1: 
-      this.a.g();
-      return;
-    case 4: 
-      this.a.g();
-      return;
-    }
-    this.a.g();
-    this.a.e();
-    this.a.f();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

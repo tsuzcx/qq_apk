@@ -1,27 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Set;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.forward.ForwardFileOption;
 
-class auqx
-  extends amsu
+public class auqx
+  implements View.OnLongClickListener
 {
-  auqx(auqv paramauqv) {}
+  public auqx(ForwardFileOption paramForwardFileOption) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public boolean onLongClick(View paramView)
   {
-    QLog.i("FetchOpenIdManager", 1, "onUpdateDelFriend isSuccess: " + paramBoolean + " object: " + paramObject);
-    if ((paramBoolean) && (paramObject != null))
-    {
-      long l = ((Long)paramObject).longValue();
-      paramObject = auqv.a(this.a).keySet().toArray();
-      int i = paramObject.length - 1;
-      while (i >= 0)
-      {
-        Long localLong = (Long)paramObject[i];
-        this.a.a(localLong.longValue(), l);
-        i -= 1;
-      }
-    }
+    return true;
   }
 }
 

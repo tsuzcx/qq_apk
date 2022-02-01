@@ -1,23 +1,16 @@
 package com.tencent.avgame.ui;
 
-import bfur;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
-import nhq;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class AVGameActivity$5
+class AVGameActivity$5
   implements Runnable
 {
-  AVGameActivity$5(AVGameActivity paramAVGameActivity, String paramString) {}
-  
   public void run()
   {
     if (this.this$0.isFinishing()) {
       return;
     }
-    String str = this.this$0.getString(2131690252);
-    QLog.d("AVGameActivity", 2, "showDialogTip content:" + this.a);
-    bfur.a(this.this$0, 230, null, this.a, str, str, new nhq(this), null).show();
+    QQToast.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 0).a();
   }
 }
 

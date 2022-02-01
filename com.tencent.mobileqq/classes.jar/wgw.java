@@ -1,31 +1,26 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCollectionViewCount;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.DateVideoCollection;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
-public class wgw
-  extends vqm
+class wgw
+  extends wwa
 {
-  public List<VideoCollectionItem> a = new ArrayList();
+  wgw(wgt paramwgt) {}
   
-  public wgw(String paramString, qqstory_service.RspCollectionViewCount paramRspCollectionViewCount)
+  public void a()
   {
-    super(paramRspCollectionViewCount.result);
-    paramRspCollectionViewCount = paramRspCollectionViewCount.collection_list.get();
-    if (paramRspCollectionViewCount != null)
-    {
-      paramRspCollectionViewCount = paramRspCollectionViewCount.iterator();
-      while (paramRspCollectionViewCount.hasNext())
-      {
-        qqstory_struct.DateVideoCollection localDateVideoCollection = (qqstory_struct.DateVideoCollection)paramRspCollectionViewCount.next();
-        VideoCollectionItem localVideoCollectionItem = new VideoCollectionItem();
-        localVideoCollectionItem.convertFrom("Q.qqstory.net:UpdateCollectionViewCountResponse", paramString, localDateVideoCollection);
-        this.a.add(localVideoCollectionItem);
-      }
-    }
+    super.a();
+    wgs.a(this.a.a, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    ykv.a("home_page", "suc_share", 1, paramInt, new String[] { ykv.b(this.a.a.a) + "", ykv.a(this.a.a.a) + "", this.a.a.a.feedId });
+  }
+  
+  public void b(int paramInt)
+  {
+    super.b(paramInt);
+    ykv.a("home_page", "share_chanel", 1, paramInt, new String[] { ykv.b(this.a.a.a) + "", ykv.a(this.a.a.a) + "", this.a.a.a.feedId });
   }
 }
 

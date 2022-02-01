@@ -1,7 +1,4 @@
-public abstract interface bdnf
-{
-  public abstract void a(int paramInt1, int paramInt2);
-}
+class bdnf {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

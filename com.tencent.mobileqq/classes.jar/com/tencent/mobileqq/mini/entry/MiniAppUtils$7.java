@@ -1,16 +1,33 @@
 package com.tencent.mobileqq.mini.entry;
 
-import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
-import com.tencent.mobileqq.mini.webview.JsRuntime;
+import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import common.config.service.QzoneConfig;
 
 final class MiniAppUtils$7
   implements Runnable
 {
-  MiniAppUtils$7(String paramString1, JsRuntime paramJsRuntime, String paramString2, int paramInt, BaseJsPluginEngine paramBaseJsPluginEngine) {}
+  MiniAppUtils$7(MiniAppConfig paramMiniAppConfig) {}
   
   public void run()
   {
-    MiniAppUtils.access$100(this.val$jsonParams, this.val$jsRuntime, this.val$eventName, this.val$callBackId, this.val$jsPluginEngine);
+    if (this.val$appConfig != null)
+    {
+      if (!MiniAppUtils.isFromPullDownEntry(this.val$appConfig)) {
+        break label45;
+      }
+      MiniAppUtils.access$100(this.val$appConfig);
+      if (QzoneConfig.getInstance().getConfig("qqminiapp", "backAutoHide", 0) == 2) {
+        MiniAppUtils.updateMiniAppList(100);
+      }
+    }
+    label45:
+    while ((this.val$appConfig.config == null) || (this.val$appConfig.config.isAppStoreMiniApp())) {
+      return;
+    }
+    MiniAppInfo localMiniAppInfo = MiniAppInfo.copy(this.val$appConfig.config);
+    localMiniAppInfo.debugInfo = null;
+    MiniAppUtils.access$200(localMiniAppInfo);
   }
 }
 

@@ -1,18 +1,9 @@
-import java.util.ArrayList;
-import org.json.JSONObject;
+import kotlin.Metadata;
 
-public class bhvr
-{
-  public int a;
-  public String a;
-  public ArrayList<bhvp> a;
-  public JSONObject a;
-  public int b = -1;
-  public int c = -1;
-  public int d = 1;
-  public int e = -1;
-  public int f = -1;
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/vas/watchword/VasWatchWord$addObserver$1", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/RIJWatchWordShareManager$OnWatchWordCheck;", "checkWatchWord", "", "text", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bhvr
+  implements rlv
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

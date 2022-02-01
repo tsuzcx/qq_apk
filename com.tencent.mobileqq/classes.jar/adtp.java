@@ -1,39 +1,25 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
-public class adtp
-  implements CompoundButton.OnCheckedChangeListener
+public final class adtp
+  implements Comparator<PhoneContact>
 {
-  public adtp(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    if (NotifyPushSettingActivity.a())
+    boolean bool1 = TextUtils.isEmpty(paramPhoneContact1.pinyinFirst);
+    boolean bool2 = TextUtils.isEmpty(paramPhoneContact2.pinyinFirst);
+    if ((bool1) || (bool2))
     {
-      NotifyPushSettingActivity.b(this.a).setChecked(false);
-      NotifyPushSettingActivity.b(this.a).setVisibility(8);
-      if (!paramBoolean) {
-        break label121;
+      if ((bool1) && (bool2)) {
+        return 0;
       }
-    }
-    label121:
-    for (int i = 1;; i = 0)
-    {
-      bcef.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_hide_text", 0, i, String.valueOf(i), "", "", "");
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      if (paramBoolean)
-      {
-        NotifyPushSettingActivity.b(this.a).setVisibility(0);
-        NotifyPushSettingActivity.b(this.a).setVisibility(8);
-        break;
+      if (bool2) {
+        return -1;
       }
-      NotifyPushSettingActivity.b(this.a).setVisibility(8);
-      break;
+      return 1;
     }
+    return paramPhoneContact1.pinyinFirst.toLowerCase().charAt(0) - paramPhoneContact2.pinyinFirst.toLowerCase().charAt(0);
   }
 }
 

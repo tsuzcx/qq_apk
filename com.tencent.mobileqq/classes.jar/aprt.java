@@ -1,53 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.confess.BaseMsgListFragment;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.5;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
 
 public class aprt
-  extends amsu
+  implements DialogInterface.OnClickListener
 {
-  public aprt(BaseMsgListFragment paramBaseMsgListFragment) {}
+  public aprt(ArkAppDownloadModule.5 param5) {}
   
-  protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBoolean) && ((paramObject instanceof HashMap))) {}
+    boolean bool = false;
+    aprm.a(this.a.this$0, true);
+    bmqk.a().b(this.a.jdField_a_of_type_Int, this.a.b);
+    bdla.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "7", "", this.a.b, "");
+    if ((paramDialogInterface instanceof QQCustomDialog))
+    {
+      if (!((QQCustomDialog)paramDialogInterface).getCheckBoxState()) {
+        bool = true;
+      }
+      if (this.a.jdField_a_of_type_AndroidContentSharedPreferences == null) {}
+    }
     try
     {
-      paramObject = ((HashMap)paramObject).entrySet().iterator();
-      do
-      {
-        Map.Entry localEntry;
-        do
-        {
-          if (!paramObject.hasNext()) {
-            break;
-          }
-          localEntry = (Map.Entry)paramObject.next();
-        } while (localEntry == null);
-        paramBoolean = this.a.a((String)localEntry.getKey(), 2);
-      } while (!paramBoolean);
-      i = 1;
+      this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.a.c, bool).apply();
+      return;
     }
-    catch (Throwable paramObject)
+    catch (Exception paramDialogInterface)
     {
-      for (;;)
-      {
-        int i = 0;
-        continue;
-        i = 0;
-      }
-    }
-    if (i != 0) {
-      this.a.b();
-    }
-  }
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a(paramString, 1))) {
-      this.a.b();
+      QLog.e("ark.download.module", 1, "ark.dctrl.continue download sp error : ", paramDialogInterface);
     }
   }
 }

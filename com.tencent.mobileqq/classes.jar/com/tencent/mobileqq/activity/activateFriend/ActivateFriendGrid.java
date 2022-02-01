@@ -1,11 +1,10 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
-import aeum;
-import aeun;
-import aeuo;
-import aeup;
-import aeuq;
-import amsu;
+import aflx;
+import afly;
+import aflz;
+import afma;
+import afmb;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -15,10 +14,12 @@ import android.util.AttributeSet;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import aneo;
-import anep;
-import bfvo;
+import anvi;
+import aohe;
+import aohf;
+import bheg;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.face.FaceDecoder;
 import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
 import com.tencent.mobileqq.data.ActivateFriendItem;
@@ -36,12 +37,12 @@ public class ActivateFriendGrid
   private static int jdField_a_of_type_Int = 15;
   private static Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private static int jdField_b_of_type_Int = 14;
-  private aeup jdField_a_of_type_Aeup;
-  private aeuq jdField_a_of_type_Aeuq;
-  amsu jdField_a_of_type_Amsu = new aeun(this);
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aeum(this);
-  public aneo a;
-  anep jdField_a_of_type_Anep = new aeuo(this);
+  private afma jdField_a_of_type_Afma;
+  private afmb jdField_a_of_type_Afmb;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aflx(this);
+  anvi jdField_a_of_type_Anvi = new afly(this);
+  public aohe a;
+  aohf jdField_a_of_type_Aohf = new aflz(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private FaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder;
   private ArrayList<ActivateFriendItem> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -107,8 +108,8 @@ public class ActivateFriendGrid
     }
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Amsu);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_Anep);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anvi);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_Aohf);
     }
   }
   
@@ -298,7 +299,7 @@ public class ActivateFriendGrid
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     if (jdField_a_of_type_AndroidGraphicsBitmap == null) {
-      jdField_a_of_type_AndroidGraphicsBitmap = bfvo.a();
+      jdField_a_of_type_AndroidGraphicsBitmap = bheg.a();
     }
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     paramQQAppInterface = this.jdField_b_of_type_JavaUtilArrayList.iterator();
@@ -312,9 +313,9 @@ public class ActivateFriendGrid
       this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder = new FaceDecoder(getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.setDecodeTaskCompletionListener(this);
     }
-    this.jdField_a_of_type_Aneo = ((aneo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(85));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Amsu);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_Anep);
+    this.jdField_a_of_type_Aohe = ((aohe)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_ACTVATE_FRIENDS));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anvi);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_Aohf);
     this.jdField_c_of_type_Int = 0;
     int j = this.jdField_a_of_type_JavaUtilArrayList.size();
     int i = 0;
@@ -328,15 +329,15 @@ public class ActivateFriendGrid
       if (!TextUtils.isEmpty(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).nickName))
       {
         paramQQAppInterface.setNickName(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).nickName);
-        label255:
+        label256:
         paramQQAppInterface.setHead(a(paramArrayList));
         if (this.jdField_a_of_type_Boolean) {
           paramQQAppInterface.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
         }
         if (this.jdField_a_of_type_Boolean)
         {
-          if ((!getResources().getString(2131689516).equals(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).birthdayDesc)) && (!this.jdField_a_of_type_Aneo.c(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).type))) {
-            break label405;
+          if ((!getResources().getString(2131689516).equals(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).birthdayDesc)) && (!this.jdField_a_of_type_Aohe.c(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).type))) {
+            break label406;
           }
           paramQQAppInterface.setChecked(false);
           paramQQAppInterface.setBirthday(getResources().getString(2131689516));
@@ -348,9 +349,9 @@ public class ActivateFriendGrid
         i += 1;
         break;
         paramQQAppInterface.setNickName(ContactUtils.getBuddyName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramArrayList, true));
-        break label255;
-        label405:
-        if ((this.jdField_a_of_type_Aneo.a(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).type)) || (this.jdField_a_of_type_Aneo.b(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).type)))
+        break label256;
+        label406:
+        if ((this.jdField_a_of_type_Aohe.a(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).type)) || (this.jdField_a_of_type_Aohe.b(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).type)))
         {
           paramQQAppInterface.setChecked(false);
           paramQQAppInterface.setBirthday(getResources().getString(2131689519));
@@ -362,19 +363,19 @@ public class ActivateFriendGrid
         }
       }
     }
-    if (this.jdField_a_of_type_Aeup != null) {
-      this.jdField_a_of_type_Aeup.a(this.jdField_c_of_type_Int);
+    if (this.jdField_a_of_type_Afma != null) {
+      this.jdField_a_of_type_Afma.a(this.jdField_c_of_type_Int);
     }
   }
   
-  public void setGridCallBack(aeup paramaeup)
+  public void setGridCallBack(afma paramafma)
   {
-    this.jdField_a_of_type_Aeup = paramaeup;
+    this.jdField_a_of_type_Afma = paramafma;
   }
   
-  public void setGridItemClickCallBack(aeuq paramaeuq)
+  public void setGridItemClickCallBack(afmb paramafmb)
   {
-    this.jdField_a_of_type_Aeuq = paramaeuq;
+    this.jdField_a_of_type_Afmb = paramafmb;
   }
   
   public void setSkinable(boolean paramBoolean)
@@ -389,7 +390,7 @@ public class ActivateFriendGrid
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid
  * JD-Core Version:    0.7.0.1
  */

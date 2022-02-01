@@ -1,58 +1,55 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout;
-import com.tencent.mobileqq.activity.contacts.pullrefresh.ContactRefreshHeader;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.os.MqqHandler;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.fragment.NowLiveFragment;
+import com.tencent.mobileqq.fragment.NowLiveFragment.3.1;
+import com.tencent.mobileqq.fragment.NowLiveFragment.3.2;
+import com.tencent.mobileqq.fragment.NowLiveFragment.3.3;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.CookieManager;
+import com.tencent.smtt.sdk.CookieSyncManager;
+import java.util.Map;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-class auxe
-  implements Handler.Callback
+public class auxe
+  implements WtTicketPromise
 {
-  auxe(auxd paramauxd) {}
+  public auxe(NowLiveFragment paramNowLiveFragment) {}
   
-  private void a()
+  public void Done(Ticket paramTicket)
   {
-    if (auxd.a(this.a) != null) {
-      auxd.a(this.a).setRefreshing(false);
+    if (paramTicket != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("NowLiveFragment", 2, "preGetKeyInPreloadService : Done");
+      }
+      String str = new String((byte[])paramTicket._pskey_map.get("now.qq.com"));
+      this.a.jdField_a_of_type_ComTencentSmttSdkCookieManager.setCookie("now.qq.com", "p_skey=" + str);
+      CookieSyncManager.getInstance().sync();
+      this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).edit().putString("pskey", "" + str).commit();
+      this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).edit().putLong("pskey_t", System.currentTimeMillis()).commit();
+      NowLiveFragment.b = new String((byte[])paramTicket._pskey_map.get("now.qq.com"));
     }
-    if (auxd.a(this.a) != null) {
-      auxd.a(this.a).setRefresh(false);
-    }
+    this.a.jdField_a_of_type_AndroidOsHandler.post(new NowLiveFragment.3.1(this));
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public void Failed(ErrMsg paramErrMsg)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    case 3: 
-      QQToast.a(this.a.a(), 1, 2131718604, 0).b(auxd.a(this.a));
-      a();
-      return false;
-    case 4: 
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 == 1) {}
-      for (i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label134;
-        }
-        auxd.a(this.a);
-        if (auxd.a(this.a) == null) {
-          break;
-        }
-        auxd.a(this.a).a(0);
-        this.a.a.sendEmptyMessageDelayed(5, 800L);
-        return false;
-      }
-      label134:
-      a();
-      QQToast.a(this.a.a(), 1, 2131718604, 0).b(auxd.a(this.a));
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.i("NowLiveFragment", 2, "preGetKeyInPreloadService failed " + paramErrMsg);
     }
-    a();
-    return false;
+    this.a.jdField_a_of_type_AndroidOsHandler.post(new NowLiveFragment.3.2(this));
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("NowLiveFragment", 2, "preGetKeyInPreloadService timeout!" + paramErrMsg);
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.post(new NowLiveFragment.3.3(this));
   }
 }
 

@@ -1,16 +1,26 @@
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadConfig;
+import mqq.util.WeakReference;
 
-public abstract interface aqet
+class aqet
+  implements ante
 {
-  public abstract long a();
+  WeakReference<aqeq> a;
   
-  public abstract ExcitingTransferDownloadConfig a();
+  public aqet(aqeq paramaqeq)
+  {
+    this.a = new WeakReference(paramaqeq);
+  }
   
-  public abstract boolean a();
+  public void onDpcPullFinished(boolean paramBoolean)
+  {
+    aqeq localaqeq = (aqeq)this.a.get();
+    if (localaqeq != null) {
+      localaqeq.a(paramBoolean);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqet
  * JD-Core Version:    0.7.0.1
  */

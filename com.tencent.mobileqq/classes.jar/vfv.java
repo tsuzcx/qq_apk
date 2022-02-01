@@ -1,12 +1,31 @@
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 class vfv
+  extends Handler
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  private vft a;
   
-  vfv(vfu paramvfu) {}
+  vfv(Looper paramLooper, vft paramvft)
+  {
+    super(paramLooper);
+    this.a = paramvft;
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      vft.a(this.a);
+      return;
+    }
+    vft.b(this.a);
+  }
 }
 
 

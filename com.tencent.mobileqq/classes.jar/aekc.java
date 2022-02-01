@@ -1,38 +1,22 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aekc
-  extends andd
+  implements View.OnClickListener
 {
-  public aekc(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public aekc(NotificationActivity paramNotificationActivity) {}
   
-  protected void onBeKickOutTroop(String paramString)
+  public void onClick(View paramView)
   {
     this.a.c();
-  }
-  
-  protected void onTroopBlockStatusChanged(String paramString)
-  {
-    this.a.c();
-  }
-  
-  protected void onTroopManagerSuccess(int paramInt1, int paramInt2, String paramString)
-  {
-    if (paramInt1 == 6) {
-      if (paramInt2 == 0) {
-        this.a.a.sendEmptyMessage(1);
-      }
-    }
-    while ((paramInt1 != 2) || (paramInt2 != 0)) {
-      return;
-    }
-    avnu.a().b(paramString, this.a.app);
-    this.a.c();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aekc
  * JD-Core Version:    0.7.0.1
  */

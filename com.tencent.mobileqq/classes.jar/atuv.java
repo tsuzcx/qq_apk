@@ -1,21 +1,28 @@
-import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.soload.SoLoadUtilNew;
-import com.tencent.mobileqq.fts.FTSDatabase;
+import android.content.Intent;
 
 public class atuv
-  extends FTSDatabase
 {
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private int c;
+  
+  public atuv a(Intent paramIntent)
+  {
+    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("targetUin");
+    this.jdField_b_of_type_JavaLangString = paramIntent.getStringExtra("srcDiscGroup");
+    this.jdField_a_of_type_Int = paramIntent.getIntExtra("peerType", 0);
+    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("rootEntrace", true);
+    this.jdField_b_of_type_Int = paramIntent.getIntExtra("busiType", 0);
+    this.c = paramIntent.getIntExtra("enterfrom", 0);
+    return this;
+  }
+  
   public boolean a()
   {
-    if ((Build.VERSION.SDK_INT < 18) && (!SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "sqlite_qq"))) {
-      anux.a = false;
-    }
-    boolean bool = SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "FTSDatabaseV2");
-    if (!bool) {
-      anux.a = false;
-    }
-    return bool;
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

@@ -1,79 +1,51 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qconn.protofile.preAuth.PreAuthRequest;
-import com.tencent.qconn.protofile.preAuth.PreAuthResponse;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 
-class biff
-  implements BusinessObserver
+public class biff
+  implements View.OnLayoutChangeListener
 {
-  biff(biey parambiey, biej parambiej, boolean paramBoolean, bifh parambifh, int paramInt, preAuth.PreAuthRequest paramPreAuthRequest, Activity paramActivity) {}
+  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private Rect b = new Rect();
   
-  private void a(int paramInt, String paramString)
-  {
-    QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "--> preAuth onFail mPreAuthRetryCount=", Integer.valueOf(biey.c(this.jdField_a_of_type_Biey)), ", errorCode=", Integer.valueOf(paramInt) });
-    if ((biey.c(this.jdField_a_of_type_Biey) < this.jdField_a_of_type_Int) && (paramInt != 110537) && (paramInt != 110509))
-    {
-      biey.d(this.jdField_a_of_type_Biey);
-      this.jdField_a_of_type_Biey.a(this.jdField_a_of_type_ComTencentQconnProtofilePreAuth$PreAuthRequest, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Biej, this.jdField_a_of_type_Bifh, this.jdField_a_of_type_Int);
-      return;
-    }
-    biey.b(this.jdField_a_of_type_Biey, 0);
-    this.jdField_a_of_type_Bifh.a(paramInt, paramString);
-  }
+  public biff(WebViewFragment paramWebViewFragment) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "preAuthWithRetry isSuccess=", Boolean.valueOf(paramBoolean), ", type=", Integer.valueOf(paramInt), ", mPreAuthRetryCount=", Integer.valueOf(biey.c(this.jdField_a_of_type_Biey)) });
-    if (!paramBoolean)
+    this.jdField_a_of_type_AndroidGraphicsRect.set(this.b);
+    paramView.getWindowVisibleDisplayFrame(this.b);
+    if (this.jdField_a_of_type_AndroidGraphicsRect.width() == this.b.width())
     {
-      atqa.a("KEY_PRE_AUTH", this.jdField_a_of_type_Biej, false);
-      a(paramBundle.getInt("code", -1), "");
-      return;
-    }
-    byte[] arrayOfByte = paramBundle.getByteArray("data");
-    if (arrayOfByte == null)
-    {
-      atqa.a("KEY_PRE_AUTH", this.jdField_a_of_type_Biej, false);
-      a(paramBundle.getInt("code", -1), "");
-      return;
-    }
-    preAuth.PreAuthResponse localPreAuthResponse = new preAuth.PreAuthResponse();
-    Object localObject = arrayOfByte;
-    if (this.jdField_a_of_type_Boolean) {
-      localObject = bifi.b(arrayOfByte, this.jdField_a_of_type_Biej);
-    }
-    try
-    {
-      localObject = (preAuth.PreAuthResponse)localPreAuthResponse.mergeFrom((byte[])localObject);
-      if ((((preAuth.PreAuthResponse)localObject).ret.has()) && (((preAuth.PreAuthResponse)localObject).ret.get() == 0))
+      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.webView == null) {
+        break label100;
+      }
+      paramView = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.webView.getPluginEngine();
+      if (paramView != null)
       {
-        QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, "--> preAuth mergeFrom success");
-        atqa.a("KEY_PRE_AUTH", this.jdField_a_of_type_Biej, true);
-        biey.a(this.jdField_a_of_type_Biey, (preAuth.PreAuthResponse)localObject);
-        biey.b(this.jdField_a_of_type_Biey, 0);
-        this.jdField_a_of_type_Bifh.a();
-        return;
+        paramInt1 = this.jdField_a_of_type_AndroidGraphicsRect.height() - this.b.height();
+        if (paramInt1 >= -100) {
+          break label105;
+        }
+        paramView.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.mUrl, 8589934614L, null);
       }
     }
-    catch (Exception localException)
+    label100:
+    label105:
+    while (paramInt1 <= 100)
     {
-      QLog.e("SDK_LOGIN.OpenSdkVirtualManager", 1, "Exception", localException);
-      atqa.a("KEY_PRE_AUTH", this.jdField_a_of_type_Biej, false);
-      a(paramBundle.getInt("code", -1), "");
       return;
+      paramView = null;
+      break;
     }
-    QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "--> preAuth mergeFrom fail ret=", Integer.valueOf(localException.ret.get()), ", msg=", localException.msg.get() });
-    atqa.a("KEY_PRE_AUTH", this.jdField_a_of_type_Biej, false);
-    a(localException.ret.get(), localException.msg.get());
+    paramView.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.mUrl, 8589934613L, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biff
  * JD-Core Version:    0.7.0.1
  */

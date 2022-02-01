@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.forward;
 
-import atnv;
-import atnz;
+import ausq;
+import ausu;
 import java.util.List;
 
 class ForwardPreviewTroopMemberController$1$1
@@ -11,10 +11,10 @@ class ForwardPreviewTroopMemberController$1$1
   
   public void run()
   {
-    if (atnv.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardPreviewTroopMemberController$1.this$0) != null)
+    if (ausq.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardPreviewTroopMemberController$1.this$0) != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqForwardForwardPreviewTroopMemberController$1.this$0.e();
-      atnv.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardPreviewTroopMemberController$1.this$0).a(this.jdField_a_of_type_JavaUtilList);
+      ausq.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardPreviewTroopMemberController$1.this$0).a(this.jdField_a_of_type_JavaUtilList);
     }
   }
 }

@@ -1,57 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.tkd.comment.publisher.qq.bridge.QQSharedPreferenceBridge;
 
 public class pda
-  implements AladdinConfigHandler
+  implements QQSharedPreferenceBridge
 {
-  private static final Set<String> a = ;
-  
-  public static Set<String> a()
+  public <T> T getValue(String paramString, T paramT)
   {
-    return a;
+    return bmhv.a(paramString, paramT);
   }
   
-  private static Set<String> b()
+  public <T> void setValue(String paramString, T paramT)
   {
-    HashSet localHashSet = new HashSet();
-    Object localObject = (String)bkwm.a("default_feeds_aladdin_keys", "");
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      return localHashSet;
-    }
-    localObject = ((String)localObject).split("\\|");
-    int j = localObject.length;
-    int i = 0;
-    while (i < j)
-    {
-      localHashSet.add(localObject[i]);
-      i += 1;
-    }
-    return localHashSet;
-  }
-  
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("WhiteListBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
-    paramString = pbt.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("WhiteListBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-      bkwm.a("default_feeds_aladdin_keys", str2);
-    }
-    return true;
-  }
-  
-  public void onWipeConfig(int paramInt)
-  {
-    QLog.d("WhiteListBidConfigHandler", 1, "[onWipeConfig]");
+    bmhv.a(paramString, paramT);
   }
 }
 

@@ -1,34 +1,18 @@
-import android.widget.TextView;
-import kotlin.Metadata;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "", "updateProgress"}, k=3, mv={1, 1, 16})
-final class qya
-  implements qzg
+public class qya
+  implements View.OnClickListener
 {
-  qya(TextView paramTextView1, TextView paramTextView2, TextView paramTextView3, TextView paramTextView4, TextView paramTextView5) {}
+  public qya(PTSFragment paramPTSFragment) {}
   
-  public final void a(int paramInt)
+  public void onClick(View paramView)
   {
-    TextView localTextView = this.a;
-    if (localTextView != null) {
-      localTextView.setText((CharSequence)("完成任务需要的时间：" + qxs.a() / 1000 + " 秒"));
-    }
-    localTextView = this.b;
-    if (localTextView != null) {
-      localTextView.setText((CharSequence)("该视频最大贡献时长：" + qxs.c() / 1000 + " 秒"));
-    }
-    localTextView = this.c;
-    if (localTextView != null) {
-      localTextView.setVisibility(8);
-    }
-    localTextView = this.d;
-    if (localTextView != null) {
-      localTextView.setText((CharSequence)("已完成任务数：" + qxt.a.a().a() + '/' + qxs.b()));
-    }
-    localTextView = this.e;
-    if (localTextView != null) {
-      localTextView.setText((CharSequence)("累积时间：" + paramInt / 1000 + " 秒"));
-    }
+    ((Activity)paramView.getContext()).finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

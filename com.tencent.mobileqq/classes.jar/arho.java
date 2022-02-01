@@ -1,29 +1,66 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.TMG.utils.QLog;
 
-class arho
-  implements aroo
+public class arho
+  extends aqwt<arhn>
 {
-  arho(arhi paramarhi) {}
-  
-  public void a(boolean paramBoolean, arii paramarii)
+  @NonNull
+  public arhn a(int paramInt)
   {
-    if (arhi.a(this.a) == null)
+    return new arhn();
+  }
+  
+  @Nullable
+  public arhn a(aqxa[] paramArrayOfaqxa)
+  {
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0))
     {
-      QLog.e("ExtendFriendManager", 2, "getLocationAndOpenSignal onGetLocationInfo null");
-      return;
+      arhn localarhn2 = arhn.a(paramArrayOfaqxa[0].a);
+      arhn localarhn1 = localarhn2;
+      if (localarhn2 == null) {
+        localarhn1 = new arhn();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("WriteTogetherConfProcessor", 0, "onParsed " + paramArrayOfaqxa[0].a);
+      }
+      return localarhn1;
     }
-    if (!paramBoolean) {
-      QLog.e("ExtendFriendManager", 2, "getLocationAndOpenSignal onGetLocationInfo NOT suc");
-    }
-    int i = armn.a(arhi.a(this.a));
-    ((arhg)arhi.a(this.a).getBusinessHandler(127)).a(i, paramarii);
-    QLog.i("ExtendFriendManager", 2, "getLocationAndOpenSignal onGetLocationInfo  suc:" + paramBoolean);
+    return new arhn();
+  }
+  
+  public void a(arhn paramarhn) {}
+  
+  public Class<arhn> clazz()
+  {
+    return arhn.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 653;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arho
  * JD-Core Version:    0.7.0.1
  */

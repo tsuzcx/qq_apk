@@ -1,14 +1,22 @@
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerSDKMgr;", "", "initSDK", "", "installPlugin", "listener", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerSDKEventListener;", "isInstalled", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface she
+class she
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  public abstract void a();
+  she(shc paramshc) {}
   
-  public abstract void a(@NotNull shd paramshd);
-  
-  public abstract boolean a();
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(shc.a(), 2, "播放器状态回调 onError model = " + paramInt1 + ", what = " + paramInt2 + ", detailInfo = " + paramString);
+    }
+    if (shc.a(this.a) != null) {
+      shc.a(this.a).a(3, paramInt1 + "-" + paramInt2, null, 0L);
+    }
+    return false;
+  }
 }
 
 

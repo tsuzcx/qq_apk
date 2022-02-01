@@ -1,37 +1,218 @@
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.StateListDrawable;
 import android.text.TextUtils;
-import android.text.style.AbsoluteSizeSpan;
-import android.text.style.ForegroundColorSpan;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import android.util.StateSet;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.FontSettingManager;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class tap
+  extends BaseAdapter
+  implements View.OnClickListener
 {
-  public static CharSequence a(String paramString1, String paramString2, String paramString3, String paramString4, ArticleInfo paramArticleInfo)
+  public final int a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<ChannelCoverInfo> jdField_a_of_type_JavaUtilList;
+  private tar jdField_a_of_type_Tar;
+  public int b = -13879999;
+  public int c = -723466;
+  
+  public tap(Context paramContext)
   {
-    Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = new ColorDrawable(0);
-    if (!TextUtils.isEmpty(paramString4)) {}
-    for (paramString4 = URLDrawable.getDrawable(paramString4, (URLDrawable.URLDrawableOptions)localObject);; paramString4 = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/files/20200102/f5a4461be0ec4116bc34e5b02e5c831f.png", (URLDrawable.URLDrawableOptions)localObject))
+    this.jdField_a_of_type_Int = -9387998;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  private List<ChannelCoverInfo> a(List<ChannelCoverInfo> paramList)
+  {
+    Object localObject = paramList;
+    if (paramList != null)
     {
-      paramString4.setBounds(0, 0, DisplayUtil.dip2px(BaseApplicationImpl.getContext(), 17.0F), DisplayUtil.dip2px(BaseApplicationImpl.getContext(), 17.0F));
-      localObject = new SpannableStringBuilder();
-      SpannableString localSpannableString = new SpannableString(paramString1);
-      localSpannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#FF262626")), 0, paramString1.length(), 33);
-      localSpannableString.setSpan(new AbsoluteSizeSpan(16, true), 0, paramString1.length(), 33);
-      ((SpannableStringBuilder)localObject).append(localSpannableString);
-      paramString1 = " " + paramString3;
-      paramString3 = new SpannableString(paramString1);
-      paramString3.setSpan(new ytn(paramString4), 0, 1, 17);
-      paramString3.setSpan(new taq(-15504151, 16777215, 860716207, paramString2, paramArticleInfo), 0, paramString1.length(), 33);
-      ((SpannableStringBuilder)localObject).append(paramString3);
-      return ((SpannableStringBuilder)localObject).subSequence(0, ((SpannableStringBuilder)localObject).length());
+      localObject = paramList;
+      if (paramList.size() > 28) {
+        localObject = paramList.subList(0, 28);
+      }
+    }
+    return localObject;
+  }
+  
+  private void a(View paramView, int paramInt)
+  {
+    GradientDrawable localGradientDrawable1 = new GradientDrawable();
+    localGradientDrawable1.setShape(0);
+    localGradientDrawable1.setCornerRadius(ViewUtils.dip2px(17.0F));
+    localGradientDrawable1.setColor(-723466);
+    localGradientDrawable1.setStroke(1, paramInt);
+    GradientDrawable localGradientDrawable2 = new GradientDrawable();
+    localGradientDrawable2.setShape(0);
+    localGradientDrawable2.setCornerRadius(ViewUtils.dip2px(17.0F));
+    localGradientDrawable2.setColor(-2697514);
+    localGradientDrawable2.setStroke(1, paramInt);
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    localStateListDrawable.addState(new int[] { 16842919 }, localGradientDrawable2);
+    localStateListDrawable.addState(StateSet.WILD_CARD, localGradientDrawable1);
+    paramView.setBackgroundDrawable(localStateListDrawable);
+  }
+  
+  public void a(List<ChannelCoverInfo> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(a(paramList));
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNavigationAdapter", 2, new Object[] { "mChannels size: ", Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
+    }
+    notifyDataSetChanged();
+  }
+  
+  public void a(tar paramtar)
+  {
+    this.jdField_a_of_type_Tar = paramtar;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    Object localObject;
+    int i;
+    if (paramView == null)
+    {
+      paramView = new tas(this, null);
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560282, paramViewGroup, false);
+      paramView.jdField_a_of_type_AndroidViewView = localView.findViewById(2131365119);
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378439));
+      localView.setTag(paramView);
+      localObject = (ChannelCoverInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if (localObject != null)
+      {
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((ChannelCoverInfo)localObject).mChannelCoverName);
+        int j = 5;
+        i = 12;
+        if (DeviceInfoUtil.getMinOfWidthHeight() < 1080L)
+        {
+          j = 4;
+          i = 11;
+        }
+        if (paramView.jdField_a_of_type_AndroidWidgetTextView.length() < j) {
+          break label306;
+        }
+      }
+    }
+    for (;;)
+    {
+      float f = FontSettingManager.getFontLevel() / 16.0F;
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setTextSize(i / f);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(((ChannelCoverInfo)localObject).mFontColor);
+      a(paramView.jdField_a_of_type_AndroidViewView, this.c);
+      if (!TextUtils.isEmpty(((ChannelCoverInfo)localObject).mIconUrl)) {}
+      for (;;)
+      {
+        if (!((ChannelCoverInfo)localObject).isReport)
+        {
+          ((ChannelCoverInfo)localObject).isReport = true;
+          oxo.a("0X8007F01", (ChannelCoverInfo)localObject, oxo.b);
+        }
+        paramView.jdField_a_of_type_AndroidViewView.setTag(localObject);
+        paramView.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+        EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+        return localView;
+        localObject = (tas)paramView.getTag();
+        localView = paramView;
+        paramView = (View)localObject;
+        break;
+        paramView.jdField_a_of_type_AndroidViewView.setPadding(ViewUtils.dip2px(8.0F), 0, ViewUtils.dip2px(8.0F), 0);
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
+      }
+      label306:
+      i = 14;
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNavigationAdapter", 2, "click container");
+    }
+    ChannelCoverInfo localChannelCoverInfo = (ChannelCoverInfo)paramView.getTag();
+    Object localObject;
+    if (localChannelCoverInfo != null)
+    {
+      if (!TextUtils.isEmpty(localChannelCoverInfo.mChannelJumpUrl)) {
+        break label261;
+      }
+      localObject = new HashMap();
+      ((HashMap)localObject).put("param_key_ariticle_id", Long.valueOf(localChannelCoverInfo.mArticleId));
+      ((HashMap)localObject).put("param_key_channel_cover_style", Integer.valueOf(localChannelCoverInfo.mChannelCoverStyle));
+      osg.a(this.jdField_a_of_type_AndroidContentContext, localChannelCoverInfo.mChannelCoverId, localChannelCoverInfo.mChannelCoverName, localChannelCoverInfo.mChannelType, 4, (Map)localObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyNavigationAdapter", 2, "launchChannelActivity info.mArticleId:" + localChannelCoverInfo.mArticleId + " info.mChannelCoverStyle: " + localChannelCoverInfo.mChannelCoverStyle + " info.mChannelCoverId:" + localChannelCoverInfo.mChannelCoverId + " info.mChannelCoverName:" + localChannelCoverInfo.mChannelCoverName + " info.mChannelType: " + localChannelCoverInfo.mChannelType);
+      }
+    }
+    label261:
+    label360:
+    for (;;)
+    {
+      oxo.a("0X8007F02", localChannelCoverInfo, oxo.b);
+      if ((this.jdField_a_of_type_Tar == null) || (!(paramView.getTag() instanceof ChannelCoverInfo))) {
+        break;
+      }
+      this.jdField_a_of_type_Tar.a((ChannelCoverInfo)paramView.getTag());
+      break;
+      if (tto.b(localChannelCoverInfo.mChannelJumpUrl)) {
+        tto.a(this.jdField_a_of_type_AndroidContentContext, "", localChannelCoverInfo.mChannelJumpUrl, null);
+      }
+      for (;;)
+      {
+        if (!QLog.isColorLevel()) {
+          break label360;
+        }
+        QLog.d("ReadInJoyNavigationAdapter", 2, "info.mChannelJumpUrl:" + localChannelCoverInfo.mChannelJumpUrl);
+        break;
+        localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        ((Intent)localObject).putExtra("url", localChannelCoverInfo.mChannelJumpUrl);
+        this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+      }
     }
   }
 }

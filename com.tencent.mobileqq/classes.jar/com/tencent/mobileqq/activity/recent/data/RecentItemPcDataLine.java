@@ -1,16 +1,17 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import abwp;
-import amqd;
+import acmw;
 import android.content.Context;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import anla;
-import aszt;
+import ansr;
+import aont;
+import auea;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DataLineMsgSet;
 import com.tencent.mobileqq.data.RecentUser;
@@ -130,7 +131,7 @@ public class RecentItemPcDataLine
   
   protected void a(QQMessageFacade.Message paramMessage, int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
   {
-    paramContext = (amqd)paramQQAppInterface.getBusinessHandler(8);
+    paramContext = (ansr)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
     if ((paramContext != null) && (paramContext.a(this.devType)))
     {
       this.mDisplayTime = paramContext.a(this.devType);
@@ -166,7 +167,7 @@ public class RecentItemPcDataLine
       case -1000: 
         a(paramMessage, paramMsgSummary, bool1, bool3);
         return;
-        paramMsgSummary.strContent = a(aszt.a(paramQQAppInterface, paramContext.getFirstItem()), bool1, bool3, null, paramMsgSummary);
+        paramMsgSummary.strContent = a(auea.a(paramQQAppInterface, paramContext.getFirstItem()), bool1, bool3, null, paramMsgSummary);
         return;
       }
       paramMsgSummary.strContent = "";
@@ -186,8 +187,8 @@ public class RecentItemPcDataLine
       if (this.mUser.getType() != 6000) {
         break;
       }
-      this.mTitle = paramContext.getString(2131693486);
-      this.msgDescreption = paramContext.getString(2131693470);
+      this.mTitle = paramContext.getString(2131693667);
+      this.msgDescreption = paramContext.getString(2131693651);
       this.devType = 0;
       QQMessageFacade.Message localMessage = null;
       Object localObject = paramQQAppInterface.getMessageFacade();
@@ -195,14 +196,14 @@ public class RecentItemPcDataLine
         localMessage = ((QQMessageFacade)localObject).getLastMessage(this.mUser.uin, this.mUser.getType());
       }
       if (localMessage == null) {
-        break label336;
+        break label339;
       }
       this.mDisplayTime = localMessage.time;
       localObject = paramQQAppInterface.getConversationFacade();
       if (localObject == null) {
-        break label328;
+        break label331;
       }
-      this.mUnreadNum = ((abwp)localObject).a(localMessage.frienduin, localMessage.istroop);
+      this.mUnreadNum = ((acmw)localObject).a(localMessage.frienduin, localMessage.istroop);
       if (TextUtils.isEmpty(this.mTitleName)) {
         this.mTitleName = this.mTitle;
       }
@@ -226,14 +227,14 @@ public class RecentItemPcDataLine
       if (this.mUser.getType() != 6003) {
         break;
       }
-      this.mTitle = paramContext.getString(2131693487);
-      this.msgDescreption = paramContext.getString(2131693469);
+      this.mTitle = paramContext.getString(2131693668);
+      this.msgDescreption = paramContext.getString(2131693650);
       this.devType = 1;
       break;
-      label328:
+      label331:
       this.mUnreadNum = 0;
       break label126;
-      label336:
+      label339:
       this.mUnreadNum = 0;
       this.mDisplayTime = 0L;
       break label126;

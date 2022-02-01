@@ -7,7 +7,7 @@ class ArkAppCGIMgr$2
   
   public void onTaskHttpResult(ArkAppCGIMgr.QueryTask paramQueryTask, boolean paramBoolean, byte[] paramArrayOfByte)
   {
-    this.this$0.onDownloadAppPackage((ArkAppCGIMgr.QueryTask_DownloadAppPackage)paramQueryTask, paramBoolean, paramArrayOfByte);
+    ArkAppCGIMgr.onDownloadAppPackage((ArkAppCGIMgr.QueryTask_DownloadAppPackage)paramQueryTask, paramBoolean, paramArrayOfByte);
   }
 }
 

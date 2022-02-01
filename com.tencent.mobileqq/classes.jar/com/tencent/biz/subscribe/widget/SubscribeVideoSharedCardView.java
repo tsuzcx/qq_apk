@@ -3,6 +3,7 @@ package com.tencent.biz.subscribe.widget;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import aaap;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.AttributeSet;
@@ -11,8 +12,7 @@ import android.widget.ImageView;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
-import zda;
-import zlk;
+import zsf;
 
 public class SubscribeVideoSharedCardView
   extends SubscribeMultiPicSharedCardView
@@ -37,20 +37,20 @@ public class SubscribeVideoSharedCardView
   public void a(View paramView)
   {
     super.a(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131364352));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131364433));
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
   }
   
-  public void a(zda paramzda, Bitmap paramBitmap, zlk paramzlk)
+  public void a(zsf paramzsf, Bitmap paramBitmap, aaap paramaaap)
   {
-    super.a(paramzda, paramBitmap, paramzlk);
-    paramzda = paramzda.a();
-    a(this.jdField_a_of_type_AndroidWidgetFrameLayout, paramzda.cover.width.get(), paramzda.cover.height.get());
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramzda.poster.icon.get());
+    super.a(paramzsf, paramBitmap, paramaaap);
+    paramzsf = paramzsf.a();
+    a(this.jdField_a_of_type_AndroidWidgetFrameLayout, paramzsf.cover.width.get(), paramzsf.cover.height.get());
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramzsf.poster.icon.get());
     this.jdField_b_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramzda.cover.url.get());
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramzsf.cover.url.get());
     this.jdField_b_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView);
-    a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_JavaUtilArrayList, paramzlk);
+    a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_JavaUtilArrayList, paramaaap);
   }
 }
 

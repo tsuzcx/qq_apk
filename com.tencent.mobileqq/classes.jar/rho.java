@@ -1,31 +1,46 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class rho
-  implements bjoe
+  implements View.OnClickListener
 {
-  public rho(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  RecommendFollowInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
   
-  public void OnClick(View paramView, int paramInt)
+  private rho(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList) {}
+  
+  public void onClick(View paramView)
   {
-    if (ReadInJoyDeliverUGCActivity.a(this.a)) {
-      return;
-    }
-    ReadInJoyDeliverUGCActivity.b(this.a, true);
-    ReadInJoyDeliverUGCActivity.c(this.a, ReadInJoyDeliverUGCActivity.c(this.a));
-    switch (paramInt)
+    switch (paramView.getId())
     {
     }
     for (;;)
     {
-      ReadInJoyDeliverUGCActivity.a(this.a).dismiss();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      ReadInJoyDeliverUGCActivity.b(this.a);
-      rgz.c();
-      odq.a(null, "", "0X8008239", "0X8008239", 0, 0, "", "", "", pay.h(), false);
-      continue;
-      ReadInJoyDeliverUGCActivity.c(this.a);
-      rgz.d();
+      ComponentContentRecommendFollowList localComponentContentRecommendFollowList = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList;
+      RecommendFollowInfo localRecommendFollowInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
+      if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed) {}
+      for (boolean bool = true;; bool = false)
+      {
+        localComponentContentRecommendFollowList.a(localRecommendFollowInfo, bool);
+        break;
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
     }
   }
 }

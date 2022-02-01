@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
+import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
-class ahft
-  implements DialogInterface.OnClickListener
+public class ahft
+  extends afqr
 {
-  ahft(ahfp paramahfp, ahfz paramahfz) {}
+  public RelativeLayout a;
+  public DoodleMsgLayout a;
+  public MessageProgressView a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    ahfp.a(this.jdField_a_of_type_Ahfp, this.jdField_a_of_type_Ahfz);
-  }
+  public ahft(ScribbleItemBuilder paramScribbleItemBuilder) {}
 }
 
 

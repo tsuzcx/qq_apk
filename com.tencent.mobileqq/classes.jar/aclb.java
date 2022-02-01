@@ -1,193 +1,150 @@
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import com.tencent.ad.tangram.analysis.AdABTest;
+import com.tencent.ad.tangram.protocol.gdt_settings.Settings;
+import com.tencent.ad.tangram.protocol.gdt_settings.Settings.SettingsForWebView;
+import com.tencent.ad.tangram.settings.AdSettingsUtil;
+import com.tencent.ad.tangram.settings.AdSettingsUtil.a;
+import com.tencent.ad.tangram.thread.AdThreadManager;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.face.QQHeadDownloadHandler;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
-import tencent.im.oidb.cmd0xb6e.Oidb_0xb6e.ReqBody;
+import com.tencent.gdtad.web.GdtLandingPageConfig.1;
+import com.tencent.open.base.http.HttpBaseUtil;
+import java.lang.ref.WeakReference;
+import mqq.app.AppRuntime;
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
 
-public class aclb
-  extends acjv
+public final class aclb
 {
-  public static final String a;
-  protected acle a;
-  protected aclf a;
+  private static aclb jdField_a_of_type_Aclb;
+  private AdSettingsUtil.a jdField_a_of_type_ComTencentAdTangramSettingsAdSettingsUtil$a = new aclc(this, null);
+  private volatile boolean jdField_a_of_type_Boolean;
+  private volatile boolean b;
   
-  static
+  public static aclb a()
   {
-    jdField_a_of_type_JavaLangString = "DoraemonOpenAPI." + aclb.class.getSimpleName();
+    if (jdField_a_of_type_Aclb == null) {}
+    try
+    {
+      if (jdField_a_of_type_Aclb == null) {
+        jdField_a_of_type_Aclb = new aclb();
+      }
+      return jdField_a_of_type_Aclb;
+    }
+    finally {}
   }
   
-  public static Bundle a()
+  private String a()
   {
-    Object localObject1 = wkp.a();
-    Object localObject2 = (amsw)((QQAppInterface)localObject1).getManager(51);
-    Object localObject3 = ((QQAppInterface)localObject1).getCurrentAccountUin();
-    localObject2 = ((amsw)localObject2).b((String)localObject3);
-    String str1;
-    int i;
-    if (localObject2 != null)
+    Object localObject = BaseApplicationImpl.getApplication();
+    if (localObject == null) {}
+    do
     {
-      str1 = ((Card)localObject2).strNick;
-      if (((Card)localObject2).shGender == 0) {
-        i = 1;
-      }
-    }
-    for (;;)
-    {
-      String str2 = ((Card)localObject2).strCity;
-      String str3 = ((Card)localObject2).strProvince;
-      String str4 = ((Card)localObject2).strCountry;
-      localObject2 = "";
-      localObject3 = ((QQAppInterface)localObject1).getQQHeadSettingFromDB((String)localObject3);
-      if ((localObject3 != null) && (!TextUtils.isEmpty(((Setting)localObject3).url))) {
-        localObject1 = MsfSdkUtils.insertMtype("QQHeadIcon", ((FriendListHandler)((QQAppInterface)localObject1).getBusinessHandler(1)).getQQHeadDownload().getQQHeandDownLoadUrl(((Setting)localObject3).url, ((Setting)localObject3).bFaceFlags, ((Setting)localObject3).bUsrType, 0));
-      }
-      for (;;)
-      {
-        localObject2 = new Bundle();
-        ((Bundle)localObject2).putString("nickName", str1);
-        ((Bundle)localObject2).putInt("gender", i);
-        ((Bundle)localObject2).putString("avatarUrl", (String)localObject1);
-        ((Bundle)localObject2).putString("city", str2);
-        ((Bundle)localObject2).putString("province", str3);
-        ((Bundle)localObject2).putString("country", str4);
-        if (QLog.isDevelopLevel()) {
-          QLog.i(jdField_a_of_type_JavaLangString + ".getUserInfoDirectly", 2, ((Bundle)localObject2).toString());
-        }
-        return localObject2;
-        if (((Card)localObject2).shGender != 1) {
-          break label271;
-        }
-        i = 2;
-        break;
-        localObject1 = localObject2;
-        if (QLog.isColorLevel())
-        {
-          QLog.i(jdField_a_of_type_JavaLangString + ".getUserInfoDirectly", 2, "getUserInfo QQHeadSetting is empty");
-          localObject1 = localObject2;
-        }
-      }
-      return null;
-      label271:
-      i = 0;
-    }
+      return "";
+      localObject = ((BaseApplicationImpl)localObject).getRuntime();
+    } while (localObject == null);
+    acho.d("GdtLandingPageConfiggetUin ==", ((AppRuntime)localObject).getAccount());
+    return ((AppRuntime)localObject).getAccount();
   }
   
-  private void a(JSONObject paramJSONObject, acjr paramacjr)
+  private void a(WeakReference<Context> paramWeakReference)
   {
-    if (acmy.a())
-    {
-      paramJSONObject = a();
-      if (paramJSONObject != null)
-      {
-        acmy.a(paramacjr, acjt.a(paramJSONObject));
-        return;
-      }
-      acmy.a(paramacjr, 1, "get user info error, try again");
+    acho.a("GdtLandingPageConfig", "loadLandingPageReportJsAsync isLoaded ==" + this.b);
+    if (this.b) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString + ".requestUserInfo", 2, "not main process, send to main process");
-    }
-    acjx.a(1, null, new aclc(this, paramacjr));
+    AdThreadManager.INSTANCE.post(new GdtLandingPageConfig.1(this, paramWeakReference), 4);
   }
   
-  private void b(JSONObject paramJSONObject, acjr paramacjr)
+  private void b(WeakReference<Context> paramWeakReference)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString + ".requestAppFriends", 2, "url params = " + paramJSONObject);
-    }
-    paramJSONObject = new Oidb_0xb6e.ReqBody();
-    paramJSONObject.appid.set(Integer.valueOf(this.jdField_a_of_type_Acju.jdField_a_of_type_JavaLangString).intValue());
-    paramJSONObject.openid.set(this.jdField_a_of_type_Acle.jdField_a_of_type_JavaLangString);
-    paramJSONObject.openkey.set(this.jdField_a_of_type_Acle.b);
-    paramJSONObject.platform.set("openmobile_android");
-    nmb.a(BaseApplicationImpl.getApplication().getRuntime(), new acld(this, paramacjr), paramJSONObject.toByteArray(), "OidbSvc.0xb6e", 2926, 1, null, 0L);
-  }
-  
-  public acle a()
-  {
-    return this.jdField_a_of_type_Acle;
-  }
-  
-  protected void a(acle paramacle)
-  {
-    this.jdField_a_of_type_Acle = paramacle;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Acle != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Acle.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_Acle.b));
-  }
-  
-  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull acjr paramacjr)
-  {
-    boolean bool = true;
-    switch (paramInt)
+    if ((paramWeakReference == null) || (paramWeakReference.get() == null)) {}
+    for (;;)
     {
-    default: 
-      bool = false;
-    case 17: 
-    case 18: 
+      return;
+      acho.d("GdtLandingPageConfig", "isSupportNewLandingPageReport ==" + a(paramWeakReference));
+      if (a(paramWeakReference))
+      {
+        Object localObject = AdSettingsUtil.INSTANCE.getSettingsCache((Context)paramWeakReference.get()).settingsForWebView.jsUrlForPagePerformance;
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          acho.d("GdtLandingPageConfig", "startLoad");
+          this.b = true;
+          Bundle localBundle = new Bundle();
+          localBundle.putString("Referer", "h5.gdt.qq.com");
+          try
+          {
+            localObject = HttpBaseUtil.a((String)localObject, "GET", localBundle, null).a;
+            if (((HttpResponse)localObject).getStatusLine().getStatusCode() == 200)
+            {
+              localObject = HttpBaseUtil.a((HttpResponse)localObject);
+              acho.a("GdtLandingPageConfig", "load resultStr =" + (String)localObject);
+              if (paramWeakReference.get() != null)
+              {
+                paramWeakReference = ((Context)paramWeakReference.get()).getSharedPreferences("gdtLandingPageConfig", 4).edit();
+                paramWeakReference.putString("landingpageScript", (String)localObject);
+                paramWeakReference.commit();
+                return;
+              }
+            }
+          }
+          catch (Exception paramWeakReference)
+          {
+            paramWeakReference.printStackTrace();
+            acho.a("GdtLandingPageConfig", "writeFileException" + paramWeakReference.getMessage());
+          }
+        }
+      }
+    }
+  }
+  
+  public String a(Context paramContext)
+  {
+    Object localObject;
+    if (!a(new WeakReference(paramContext))) {
+      localObject = "";
+    }
+    do
+    {
       do
       {
-        do
-        {
-          return bool;
-          if ((!a()) || (acmt.a)) {
-            break;
-          }
-          acmy.a(paramacjr, this.jdField_a_of_type_Acle.a());
-        } while (!QLog.isColorLevel());
-        QLog.i(jdField_a_of_type_JavaLangString + "." + paramString, 2, "has login, use cache: " + this.jdField_a_of_type_Acle.toString());
-        return true;
-        if (this.jdField_a_of_type_Aclf == null) {
-          this.jdField_a_of_type_Aclf = new aclf(this.jdField_a_of_type_Acju, this);
-        }
-        this.jdField_a_of_type_Aclf.a(paramJSONObject, paramacjr, false);
-        return true;
-        if (!a()) {
-          break;
-        }
-        acmy.a(paramacjr, this.jdField_a_of_type_Acle.a());
-      } while (!QLog.isColorLevel());
-      QLog.i(jdField_a_of_type_JavaLangString + "." + paramString, 2, "has login, use cache: " + this.jdField_a_of_type_Acle.toString());
-      return true;
-      if (this.jdField_a_of_type_Aclf == null) {
-        this.jdField_a_of_type_Aclf = new aclf(this.jdField_a_of_type_Acju, this);
-      }
-      this.jdField_a_of_type_Aclf.a(paramJSONObject, paramacjr, true);
-      return true;
-    case 10: 
-      if (!a())
-      {
-        acmy.a(paramacjr, 5);
-        return true;
-      }
-      a(paramJSONObject, paramacjr);
-      return true;
-    }
-    if (!a())
-    {
-      acmy.a(paramacjr, 5);
-      return true;
-    }
-    b(paramJSONObject, paramacjr);
-    return true;
+        return localObject;
+        localObject = "";
+      } while (paramContext == null);
+      paramContext = paramContext.getSharedPreferences("gdtLandingPageConfig", 4).getString("landingpageScript", "");
+      acho.a("GdtLandingPageConfig", "sharedPreferences result ==" + paramContext);
+      localObject = paramContext;
+    } while (TextUtils.isEmpty(paramContext));
+    return paramContext;
   }
   
-  public void b()
+  public void a(Context paramContext)
   {
-    this.jdField_a_of_type_Acle = null;
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    try
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        return;
+      }
+    }
+    finally {}
+    this.jdField_a_of_type_Boolean = true;
+    AdSettingsUtil.INSTANCE.addListener(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramSettingsAdSettingsUtil$a));
+    a(new WeakReference(paramContext.getApplicationContext()));
+  }
+  
+  public boolean a(WeakReference<Context> paramWeakReference)
+  {
+    if ((paramWeakReference == null) || (paramWeakReference.get() == null)) {
+      return false;
+    }
+    paramWeakReference = AdSettingsUtil.INSTANCE.getSettingsCache((Context)paramWeakReference.get());
+    return (paramWeakReference != null) && (paramWeakReference.settingsForWebView != null) && (paramWeakReference.settingsForWebView.abTest != null) && (AdABTest.isABTestByUIN(a(), paramWeakReference.settingsForWebView.abTest));
   }
 }
 

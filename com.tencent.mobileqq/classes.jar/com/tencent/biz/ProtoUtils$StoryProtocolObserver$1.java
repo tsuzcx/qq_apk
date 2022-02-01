@@ -1,16 +1,16 @@
 package com.tencent.biz;
 
 import android.os.Bundle;
-import nmd;
+import ntd;
 
 public class ProtoUtils$StoryProtocolObserver$1
   implements Runnable
 {
-  public ProtoUtils$StoryProtocolObserver$1(nmd paramnmd, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  public ProtoUtils$StoryProtocolObserver$1(ntd paramntd, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   public void run()
   {
-    nmd.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
+    ntd.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

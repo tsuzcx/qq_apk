@@ -1,6 +1,8 @@
-public abstract interface bcsd
+public class bcsd
 {
-  public abstract void a(bcsi parambcsi);
+  public int e;
+  public long e;
+  public int f;
 }
 
 

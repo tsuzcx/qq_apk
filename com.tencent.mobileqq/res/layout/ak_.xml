@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_gravity="center" android:id="@id/fie" android:background="@drawable/b45" android:layout_width="296.0dip" android:layout_height="219.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/dx0" android:layout_width="94.0dip" android:layout_height="94.0dip" android:layout_marginTop="22.0dip" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="18.0dip" android:textColor="#99ffffff" android:id="@id/np4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/cuy" android:layout_below="@id/dx0" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/afr" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="53.0dip" android:text="@string/imv" android:layout_alignParentBottom="true" />
-    <View android:background="#40f0f1f8" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignTop="@id/afr" />
+<RelativeLayout android:id="@id/o6j" android:layout_width="100.0dip" android:layout_height="105.0dip" android:layout_marginLeft="-10.0dip" android:layout_marginRight="-10.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout android:layout_width="@dimen/bax" android:layout_height="@dimen/bax" android:layout_marginTop="15.0dip" android:layout_centerHorizontal="true" app:qqArMapGuideRadius="3">
+        <View android:id="@id/mmn" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/npn" android:background="@drawable/f3b" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/f2s" android:scaleType="centerCrop" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/e16" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/f2x" android:scaleType="centerCrop" android:layout_centerHorizontal="true" />
+    </com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout>
 </RelativeLayout>

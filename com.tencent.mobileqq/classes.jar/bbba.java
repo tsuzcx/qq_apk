@@ -1,50 +1,19 @@
-import android.text.TextUtils;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.face.FaceDecoder;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
 
-public class bbba
-  extends bbbc
+public final class bbba
+  implements Parcelable.Creator<ReceiptMessageReadMemberListFragment.MemberInfo>
 {
-  public bbba(FaceDecoder paramFaceDecoder, bbbg parambbbg)
+  public ReceiptMessageReadMemberListFragment.MemberInfo a(Parcel paramParcel)
   {
-    super(paramFaceDecoder, parambbbg);
+    return new ReceiptMessageReadMemberListFragment.MemberInfo(paramParcel);
   }
   
-  public void b(bayt parambayt, bbhb parambbhb)
+  public ReceiptMessageReadMemberListFragment.MemberInfo[] a(int paramInt)
   {
-    super.b(parambayt, parambbhb);
-    if (TextUtils.isEmpty(parambayt.c()))
-    {
-      parambbhb.c().setVisibility(8);
-      ((bbgu)parambbhb).a().setVisibility(0);
-    }
-    for (;;)
-    {
-      if (parambbhb.d() != null)
-      {
-        parambayt = parambayt.d();
-        if (!TextUtils.isEmpty(parambayt)) {
-          break;
-        }
-        parambbhb.d().setVisibility(8);
-      }
-      return;
-      parambbhb.c().setVisibility(0);
-      parambbhb.c().setText(parambayt.c());
-      ((bbgu)parambbhb).a().setVisibility(8);
-    }
-    parambbhb.d().setVisibility(0);
-    parambbhb.d().setText(parambayt);
+    return new ReceiptMessageReadMemberListFragment.MemberInfo[paramInt];
   }
-  
-  protected void c(bayt parambayt, bbhb parambbhb)
-  {
-    super.c(parambayt, parambbhb);
-    ((bbgu)parambbhb).a().setOnClickListener(new bbbb(this, parambayt));
-  }
-  
-  public void d(bayt parambayt, bbhb parambbhb) {}
 }
 
 

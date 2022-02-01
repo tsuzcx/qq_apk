@@ -1,24 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$onBindViewHolder$3$1"}, k=3, mv={1, 1, 16})
-final class azao
-  implements View.OnClickListener
+public class azao
+  implements DialogInterface.OnClickListener
 {
-  azao(azag paramazag, azaf paramazaf, azak paramazak, int paramInt) {}
+  public azao(AutoReplyEditActivity paramAutoReplyEditActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    azag localazag = this.jdField_a_of_type_Azag;
-    Intrinsics.checkExpressionValueIsNotNull(paramView, "view");
-    Object localObject = azaf.a(this.jdField_a_of_type_Azaf).get(this.jdField_a_of_type_Int);
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "mData[position]");
-    localazag.b(paramView, (azaz)localObject);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (!this.a.getActivity().isFinishing()) {
+      this.a.getActivity().finish();
+    }
   }
 }
 

@@ -1,24 +1,42 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-
-public class altr
-  implements alyo
+public abstract interface altr
 {
-  public altr(ApolloGameInterfaceProxy paramApolloGameInterfaceProxy, int paramInt, String paramString) {}
+  public abstract void a(int paramInt);
   
-  public void a(int paramInt, String paramString1, String paramString2)
-  {
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      paramString1 = new Bundle();
-      paramString1.putInt("type", this.jdField_a_of_type_Int);
-      paramString1.putString("uin", paramString2);
-      paramString2 = new alts(this);
-      QIPCClientHelper.getInstance().callServer("cm_game_module", "action_get_accountInfo", paramString1, paramString2);
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt, String paramString, boolean paramBoolean);
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract int d();
+  
+  public abstract void g(boolean paramBoolean);
+  
+  public abstract void k();
+  
+  public abstract void l();
+  
+  public abstract void m();
+  
+  public abstract void n();
+  
+  public abstract void o();
+  
+  public abstract void p();
+  
+  public abstract void q();
+  
+  public abstract void r();
+  
+  public abstract void t();
+  
+  public abstract void u();
+  
+  public abstract void v();
+  
+  public abstract void w();
+  
+  public abstract void x();
 }
 
 

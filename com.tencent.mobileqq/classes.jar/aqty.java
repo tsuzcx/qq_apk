@@ -1,61 +1,38 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.XListView;
 
 public class aqty
-  extends aqsw
+  implements Handler.Callback
 {
-  public ArrayList<aqtx> a;
+  public aqty(SearchResultActivity paramSearchResultActivity) {}
   
-  public static aqty a(JSONObject paramJSONObject)
+  public boolean handleMessage(Message paramMessage)
   {
-    aqty localaqty = new aqty();
-    localaqty.jdField_a_of_type_JavaLangString = paramJSONObject.optString("group");
-    paramJSONObject = paramJSONObject.optJSONArray("configs");
-    localaqty.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramJSONObject.length());
-    int i = 0;
-    while (i < paramJSONObject.length())
+    switch (paramMessage.what)
     {
-      aqtx localaqtx = aqtx.a(paramJSONObject.optJSONObject(i));
-      localaqtx.a = localaqty;
-      localaqty.jdField_a_of_type_JavaUtilArrayList.add(localaqtx);
-      i += 1;
     }
-    return localaqty;
-  }
-  
-  public JSONObject a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    for (;;)
     {
-      localJSONObject.put("group", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("isChecked", this.jdField_a_of_type_Boolean);
-      JSONArray localJSONArray = new JSONArray();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        localJSONArray.put(((aqtx)localIterator.next()).a());
-      }
-      localJSONObject.put("configs", localJSONException);
+      return true;
+      SearchResultActivity.a(this.a);
+      continue;
+      SearchResultActivity.b(this.a);
+      continue;
+      this.a.a.springBackOverScrollHeaderView();
+      QQToast.a(this.a, 2131694255, 0).b(this.a.getTitleBarHeight());
+      continue;
+      this.a.a.springBackOverScrollHeaderView();
+      continue;
+      this.a.a.springBackOverScrollHeaderView();
     }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-      return localJSONObject;
-    }
-    return localJSONObject;
-  }
-  
-  public boolean a()
-  {
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqty
  * JD-Core Version:    0.7.0.1
  */

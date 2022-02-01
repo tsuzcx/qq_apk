@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
 import android.text.TextUtils;
-import bhzn;
+import bjkp;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
@@ -16,7 +16,7 @@ class ViolaBaseView$6
   
   public void run()
   {
-    String str = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH_READINJOY_VIOLA_JS_SOURCE_PATH + bhzn.a(new StringBuilder().append("https://sqimg.qq.com/qq_product_operations/kan/violaLibs/so_799.zip?v_bid=3559&time=").append(System.currentTimeMillis()).toString()) + ".zip");
+    String str = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH_READINJOY_VIOLA_JS_SOURCE_PATH + bjkp.a(new StringBuilder().append("https://sqimg.qq.com/qq_product_operations/kan/violaLibs/so_799.zip?v_bid=3559&time=").append(System.currentTimeMillis()).toString()) + ".zip");
     if (TextUtils.isEmpty(str))
     {
       if (QLog.isColorLevel()) {
@@ -39,7 +39,7 @@ class ViolaBaseView$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.6
  * JD-Core Version:    0.7.0.1
  */

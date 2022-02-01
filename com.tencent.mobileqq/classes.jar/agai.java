@@ -1,12 +1,31 @@
-final class agai
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+
+class agai
+  extends avhm
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
+  agai(agab paramagab) {}
   
-  agai(String paramString, int paramInt)
+  protected void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    if (((avhf)this.a.app.getManager(QQManagerFactory.GAME_PARTY_MANAGER)).a(this.a.sessionInfo.curType, this.a.sessionInfo.curFriendUin)) {
+      this.a.mTipsMgr.a(this.a.a, new Object[0]);
+    }
+  }
+  
+  protected void b()
+  {
+    if (((avhf)this.a.app.getManager(QQManagerFactory.GAME_PARTY_MANAGER)).a(this.a.sessionInfo.curType, this.a.sessionInfo.curFriendUin)) {
+      this.a.a.a();
+    }
+  }
+  
+  protected void c()
+  {
+    if ((((avhf)this.a.app.getManager(QQManagerFactory.GAME_PARTY_MANAGER)).a(this.a.sessionInfo.curType, this.a.sessionInfo.curFriendUin)) && (this.a.mTipsMgr.a() == 14)) {
+      this.a.mTipsMgr.a();
+    }
   }
 }
 

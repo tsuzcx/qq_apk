@@ -1,18 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.handlers;
 
 import com.tencent.qphone.base.util.QLog;
-import ooh;
-import prz;
+import qcr;
+import qcw;
 
 public class FrameworkHandler$5
   implements Runnable
 {
-  public FrameworkHandler$5(prz paramprz) {}
+  public FrameworkHandler$5(qcw paramqcw) {}
   
   public void run()
   {
-    ooh.a().a();
-    QLog.d("FrameworkHandler", 2, "transformCommentBiuCard | in recommend feeds and transform ");
+    if (qcr.a(this.this$0.b()))
+    {
+      this.this$0.a(true, 1);
+      QLog.i("FrameworkHandler", 1, "[handleDailyJumpToRecommendChannel], backToTop refresh, channelID = " + this.this$0.b());
+    }
   }
 }
 

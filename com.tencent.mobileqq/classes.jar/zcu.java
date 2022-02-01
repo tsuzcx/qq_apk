@@ -1,89 +1,62 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
 import android.view.View;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public abstract class zcu<T>
-  implements Handler.Callback
+public class zcu
 {
-  protected int a;
-  protected Context a;
-  protected Handler a;
-  protected View a;
-  protected int b = -1;
+  public View a;
+  public View b;
   
-  public zcu(Context paramContext, boolean paramBoolean)
+  public zcu(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    if (paramBoolean) {
-      a();
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.b = paramView.findViewById(2131370108);
+  }
+  
+  public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
+  {
+    Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_JavaUtilArrayList.iterator();
+    float f = 0.0F;
+    if (localIterator.hasNext())
+    {
+      switch (((TroopStoryItemInfo)localIterator.next()).itemType)
+      {
+      }
+      for (;;)
+      {
+        break;
+        if ((zdu.b(paramTroopStoryItemInfo.publishTime)) || (zdu.d(paramTroopStoryItemInfo.publishTime)))
+        {
+          f = UIUtils.dip2px(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 44.0F) + f;
+        }
+        else
+        {
+          f = UIUtils.dip2px(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 71.0F) + f;
+          continue;
+          f = UIUtils.dip2px(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 95.0F) + f;
+          continue;
+          f = UIUtils.dip2px(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 70.0F) + f;
+          continue;
+          f = UIUtils.dip2px(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 95.0F) + f;
+        }
+      }
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  protected Context a()
-  {
-    return this.jdField_a_of_type_AndroidContentContext;
-  }
-  
-  protected Resources a()
-  {
-    if (this.jdField_a_of_type_AndroidContentContext != null) {
-      return this.jdField_a_of_type_AndroidContentContext.getResources();
-    }
-    return null;
-  }
-  
-  protected abstract void a();
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  protected final void a(Runnable paramRunnable)
-  {
-    if (paramRunnable == null) {
+    int i = (int)(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_Float - f);
+    paramTroopStoryItemInfo = (LinearLayout.LayoutParams)this.b.getLayoutParams();
+    if (i <= 0)
+    {
+      paramTroopStoryItemInfo.height = 0;
+      this.b.setLayoutParams(paramTroopStoryItemInfo);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
-  }
-  
-  public abstract void b();
-  
-  public final void c()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-  }
-  
-  protected abstract void d();
-  
-  protected abstract void e();
-  
-  public void f()
-  {
-    e();
-    a(-1);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    }
-    d();
-    return true;
+    paramTroopStoryItemInfo.height = i;
+    this.b.setLayoutParams(paramTroopStoryItemInfo);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
 }
 

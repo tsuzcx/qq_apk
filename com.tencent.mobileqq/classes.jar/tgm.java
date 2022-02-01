@@ -1,42 +1,23 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment.1.1;
-import com.tencent.hippy.qq.app.HippyQQEngine.HippyQQEngineListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.tencent.qphone.base.util.QLog;
 
-public class tgm
-  implements HippyQQEngine.HippyQQEngineListener
+class tgm
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public tgm(ViolaFragment paramViolaFragment) {}
+  tgm(tgl paramtgl, int paramInt, View paramView) {}
   
-  public void onError(int paramInt, String paramString)
+  public void onGlobalLayout()
   {
-    if (this.a.getActivity() != null) {}
-    for (Looper localLooper = this.a.getActivity().getMainLooper();; localLooper = BaseActivity.sTopActivity.getMainLooper())
-    {
-      new Handler(localLooper).postDelayed(new ViolaFragment.1.1(this), 1000L);
-      if (QLog.isColorLevel()) {
-        QLog.e("ViolaFragment", 2, "initHippy error statusCode=" + paramInt + ", msg=" + paramString);
-      }
-      return;
-    }
-  }
-  
-  public void onSuccess()
-  {
-    this.a.mViolaUiDelegate.b();
-    this.a.mViolaUiDelegate.d();
-    if (QLog.isColorLevel()) {
-      QLog.d("ViolaFragment", 2, "reloadPage success!");
-    }
+    this.jdField_a_of_type_Tgl.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidViewView.getHeight());
+    QLog.d("Q.readinjoy.fast_web", 2, " position : " + this.jdField_a_of_type_Int + "   height:" + this.jdField_a_of_type_AndroidViewView.getHeight());
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tgm
  * JD-Core Version:    0.7.0.1
  */

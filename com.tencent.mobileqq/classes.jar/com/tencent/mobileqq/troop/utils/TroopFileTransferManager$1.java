@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bfbl;
+import bgjr;
 import com.tencent.mobileqq.app.AppConstants;
 import java.io.File;
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ public final class TroopFileTransferManager$1
         localInterruptedException.printStackTrace();
         return;
       }
-      arrayOfFile = localInterruptedException.listFiles(new bfbl(this));
+      arrayOfFile = localInterruptedException.listFiles(new bgjr(this));
     } while ((arrayOfFile == null) || (arrayOfFile.length < 100));
     Object localObject = new ArrayList(arrayOfFile.length);
     int j = arrayOfFile.length;

@@ -1,39 +1,11 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import android.widget.RelativeLayout.LayoutParams;
+import com.rookery.translate.type.Language;
+import com.rookery.translate.type.TranslateError;
 
-public class lan
-  extends Animation
+public abstract interface lan
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private RelativeLayout.LayoutParams jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-  private int b;
-  private int c;
-  private int d;
+  public abstract void a(long paramLong, String paramString1, Language paramLanguage, String paramString2, ahjf paramahjf);
   
-  public lan(View paramView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    setDuration(paramInt1);
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = ((RelativeLayout.LayoutParams)paramView.getLayoutParams());
-    this.b = paramView.getMeasuredHeight();
-    this.jdField_a_of_type_Int = paramView.getMeasuredWidth();
-    this.d = (this.b + paramInt3);
-    this.c = (this.jdField_a_of_type_Int + paramInt2);
-  }
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    super.applyTransformation(paramFloat, paramTransformation);
-    if (paramFloat < 1.0F)
-    {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.height = (this.b + (int)((this.d - this.b) * paramFloat));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.width = (this.jdField_a_of_type_Int + (int)((this.c - this.jdField_a_of_type_Int) * paramFloat));
-      this.jdField_a_of_type_AndroidViewView.requestLayout();
-    }
-  }
+  public abstract void a(long paramLong, String paramString, TranslateError paramTranslateError, ahjf paramahjf);
 }
 
 

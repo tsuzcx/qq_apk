@@ -1,19 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment;
-import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackContainerView;
-
-public class bmjf
-  implements View.OnClickListener
+public abstract interface bmjf
 {
-  public bmjf(AEEditorMultiCutEditFragment paramAEEditorMultiCutEditFragment) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(View paramView)
-  {
-    this.a.a.d();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void b(int paramInt);
 }
 
 

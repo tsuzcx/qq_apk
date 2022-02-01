@@ -1,44 +1,25 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.ui.VideoInviteActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.VideoControlUI;
 
 public class mkj
-  extends BroadcastReceiver
+  implements View.OnTouchListener
 {
-  public mkj(VideoInviteActivity paramVideoInviteActivity) {}
+  public mkj(VideoControlUI paramVideoControlUI) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    String str = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onReceive action = " + str);
+    if (this.a.a != null) {
+      return this.a.a.onTouchEvent(paramMotionEvent);
     }
-    if ("tencent.video.q2v.ACTION_ON_UPDATE_FRIEND_INFO".equals(str)) {
-      this.a.h();
-    }
-    do
-    {
-      return;
-      if ("tencent.video.q2v.sdk.onRequestVideo".equals(str))
-      {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 1, "onReceive action = " + str);
-        this.a.e();
-        return;
-      }
-      if ("android.intent.action.USER_PRESENT".equals(str))
-      {
-        this.a.a("ACTION_USER_PRESENT");
-        return;
-      }
-    } while (this.a.jdField_a_of_type_Mkp == null);
-    this.a.jdField_a_of_type_Mkp.a(paramContext, str, paramIntent);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mkj
  * JD-Core Version:    0.7.0.1
  */

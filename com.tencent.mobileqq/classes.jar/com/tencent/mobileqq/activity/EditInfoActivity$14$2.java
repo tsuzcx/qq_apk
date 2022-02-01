@@ -1,29 +1,30 @@
 package com.tencent.mobileqq.activity;
 
-import adff;
-import android.content.Intent;
-import com.tencent.mobileqq.data.TroopMemberCard;
+import adwh;
+import android.graphics.Color;
+import android.widget.TextView;
 
 public class EditInfoActivity$14$2
   implements Runnable
 {
-  public EditInfoActivity$14$2(adff paramadff, TroopMemberCard paramTroopMemberCard) {}
+  public EditInfoActivity$14$2(adwh paramadwh, int paramInt) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard != null)
+    this.jdField_a_of_type_Adwh.a.b.setText(this.jdField_a_of_type_Adwh.a.c);
+    if (this.jdField_a_of_type_Int > this.jdField_a_of_type_Adwh.a.d)
     {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("nick", this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard.colorCard);
-      localIntent.putExtra("edit_action", this.jdField_a_of_type_Adff.a.g);
-      this.jdField_a_of_type_Adff.a.setResult(-1, localIntent);
-      EditInfoActivity.e(this.jdField_a_of_type_Adff.a);
+      this.jdField_a_of_type_Adwh.a.b.setTextColor(-65536);
+      this.jdField_a_of_type_Adwh.a.rightViewText.setEnabled(false);
+      return;
     }
+    this.jdField_a_of_type_Adwh.a.b.setTextColor(Color.rgb(119, 119, 119));
+    this.jdField_a_of_type_Adwh.a.rightViewText.setEnabled(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.EditInfoActivity.14.2
  * JD-Core Version:    0.7.0.1
  */

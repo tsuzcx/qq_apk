@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import asli;
+import atpo;
 
 public class FavFileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<FavFileInfo> CREATOR = new asli();
+  public static final Parcelable.Creator<FavFileInfo> CREATOR = new atpo();
   public long a;
   public String a;
   public boolean a;
@@ -154,7 +154,7 @@ public class FavFileInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.FavFileInfo
  * JD-Core Version:    0.7.0.1
  */

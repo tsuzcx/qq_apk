@@ -1,11 +1,15 @@
-class axcr
-  implements bjog
+import android.support.annotation.NonNull;
+
+public class axcr
 {
-  axcr(axcb paramaxcb) {}
+  public int a;
+  public int b;
+  public int c;
   
-  public void onDismiss()
+  @NonNull
+  public String toString()
   {
-    axcb.a(this.a, this.a.c, false);
+    return "[errorCode = " + this.a + ", fileType = " + this.b + ", fileTrivial = " + this.c + "]";
   }
 }
 

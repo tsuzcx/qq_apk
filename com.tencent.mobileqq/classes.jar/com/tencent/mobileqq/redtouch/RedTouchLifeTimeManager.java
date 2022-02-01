@@ -6,13 +6,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.text.TextUtils;
-import azvh;
-import blbx;
+import bbbp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.statistics.UEC;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.vip.tianshu.TianShuReportData;
 import mqq.app.Foreground;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
@@ -22,7 +22,7 @@ public class RedTouchLifeTimeManager
 {
   private static RedTouchLifeTimeManager jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchLifeTimeManager;
   private long jdField_a_of_type_Long;
-  Application.ActivityLifecycleCallbacks jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks = new azvh(this);
+  Application.ActivityLifecycleCallbacks jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks = new bbbp(this);
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
   private String b;
@@ -63,16 +63,16 @@ public class RedTouchLifeTimeManager
     this.jdField_a_of_type_Boolean = false;
     long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
     QLog.i("RedTouchLifeTimeManager", 1, "triggleReport time = " + l + " class name " + this.jdField_a_of_type_JavaLangString);
-    blbx localblbx = new blbx();
-    localblbx.d = 133;
-    localblbx.jdField_e_of_type_Int = ((int)l);
-    localblbx.g = String.valueOf(this.c);
-    localblbx.b = String.valueOf(this.d);
-    localblbx.jdField_a_of_type_Int = 1;
-    localblbx.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTimeMillis() / 1000L);
-    localblbx.jdField_e_of_type_JavaLangString = "vab_red";
-    localblbx.f = "vab_red";
-    ThreadManager.getSubThreadHandler().post(new RedTouchLifeTimeManager.1(this, localblbx));
+    TianShuReportData localTianShuReportData = new TianShuReportData();
+    localTianShuReportData.mActionId = 133;
+    localTianShuReportData.mActionValue = ((int)l);
+    localTianShuReportData.mItemId = String.valueOf(this.c);
+    localTianShuReportData.mTraceId = String.valueOf(this.d);
+    localTianShuReportData.mTraceNum = 1;
+    localTianShuReportData.mOperTime = (NetConnInfoCenter.getServerTimeMillis() / 1000L);
+    localTianShuReportData.mAppId = "vab_red";
+    localTianShuReportData.mPageId = "vab_red";
+    ThreadManager.getSubThreadHandler().post(new RedTouchLifeTimeManager.1(this, localTianShuReportData));
   }
   
   public void a(String paramString)

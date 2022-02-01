@@ -1,80 +1,62 @@
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.RelativeLayout;
+import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
+import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ymi
-  extends BaseAdapter
+  extends Handler
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<ymk> jdField_a_of_type_JavaUtilList = new ArrayList();
-  @Nullable
-  private ymk jdField_a_of_type_Ymk;
+  public ymi(EditVideoArtFilter paramEditVideoArtFilter) {}
   
-  public ymi(Context paramContext)
+  public void dispatchMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  @Nullable
-  public ymk a()
-  {
-    return this.jdField_a_of_type_Ymk;
-  }
-  
-  public void a(List<ymk> paramList)
-  {
-    if (paramList == null)
+    super.dispatchMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
+    }
+    do
+    {
+      do
+      {
+        return;
+        EditVideoArtFilter.a(this.a, false);
+        localObject = (String)paramMessage.obj;
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "GET_FILTER SUCCESS,fileOutputPath:" + (String)localObject);
+        }
+        this.a.a((String)localObject, paramMessage.arg1);
+        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a(0, true);
+        return;
+        EditVideoArtFilter.a(this.a, false);
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "GET_FILTER ERROR");
+        }
+        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a();
+        QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131690197), 0).a();
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "GET_FILTER TIMEOUT,state:isProcessing:" + this.a.jdField_a_of_type_Boolean + ",taskId:" + paramMessage.obj + ",currentFilterTaskId:" + this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger);
+        }
+      } while ((!this.a.jdField_a_of_type_Boolean) || (((Integer)paramMessage.obj).intValue() != this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()));
+      EditVideoArtFilter.a(this.a, false);
+      this.a.g();
+      QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131690197), 0).a();
       return;
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-  }
-  
-  public void a(@Nullable ymk paramymk)
-  {
-    this.jdField_a_of_type_Ymk = paramymk;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject;
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561740, null);
-      localObject = new ymj(paramView);
-      paramView.setTag(localObject);
-    }
-    for (;;)
-    {
-      ((ymj)localObject).a((ymk)this.jdField_a_of_type_JavaUtilList.get(paramInt), this.jdField_a_of_type_Ymk);
-      localObject = ((ymj)localObject).a;
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localObject;
-      localObject = (ymj)paramView.getTag();
-    }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "UPDATE_FILTER_PROGRESS,state:isProcessing:" + this.a.jdField_a_of_type_Boolean + ",taskId:" + paramMessage.arg1 + ",updateCount:" + paramMessage.arg2 + ",currentFilterTaskId:" + this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger);
+      }
+    } while ((!this.a.jdField_a_of_type_Boolean) || (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a.getVisibility() != 0) || (paramMessage.arg1 != this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()));
+    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a(paramMessage.arg2, false);
+    Object localObject = EditVideoArtFilter.a(this.a).obtainMessage(38);
+    ((Message)localObject).arg1 = paramMessage.arg1;
+    ((Message)localObject).arg2 = (paramMessage.arg2 + 1);
+    EditVideoArtFilter.a(this.a).sendMessageDelayed((Message)localObject, 100L);
   }
 }
 

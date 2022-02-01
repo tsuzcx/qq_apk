@@ -1,16 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+import android.graphics.drawable.Drawable;
 
 public class ayni
-  implements DialogInterface.OnClickListener
 {
-  public ayni(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
+  public int a;
+  public Drawable a;
+  public aynq a;
+  public String a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ayni(String paramString, aynq paramaynq)
   {
-    this.a.f();
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Aynq = paramaynq;
+    a();
   }
+  
+  public void a() {}
 }
 
 

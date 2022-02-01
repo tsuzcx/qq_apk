@@ -132,6 +132,9 @@ public abstract class TAVBaseMixFilter
   
   public int getPAGLayerIndex(ImageCollection.TrackImagePair paramTrackImagePair)
   {
+    if ((paramTrackImagePair == null) || (paramTrackImagePair.getTrack() == null)) {
+      return -1;
+    }
     paramTrackImagePair = paramTrackImagePair.getTrack().getExtraTrackInfo("pag_layer_index");
     if ((paramTrackImagePair instanceof String)) {
       return Integer.parseInt((String)paramTrackImagePair);

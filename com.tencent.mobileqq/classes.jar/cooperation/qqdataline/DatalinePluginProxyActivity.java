@@ -10,9 +10,9 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import bhht;
-import bkkq;
-import bkkz;
+import bisl;
+import blvy;
+import blwh;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -34,21 +34,21 @@ public class DatalinePluginProxyActivity
     return DatalinePluginProxyActivity.class;
   }
   
-  public static void a(Activity paramActivity, String paramString1, Intent paramIntent, String paramString2, int paramInt, bhht parambhht)
+  public static void a(Activity paramActivity, String paramString1, Intent paramIntent, String paramString2, int paramInt, bisl parambisl)
   {
     paramIntent.putExtra("userQqResources", 2);
-    bkkz localbkkz = new bkkz(0);
-    localbkkz.jdField_b_of_type_JavaLangString = "qqdataline.apk";
-    localbkkz.d = PluginInfo.d;
-    localbkkz.jdField_a_of_type_JavaLangString = paramString1;
-    localbkkz.e = paramString2;
-    localbkkz.jdField_a_of_type_JavaLangClass = a(paramIntent, paramString2);
-    localbkkz.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localbkkz.jdField_b_of_type_Int = paramInt;
-    localbkkz.jdField_a_of_type_AndroidAppDialog = parambhht;
-    localbkkz.c = 10000;
-    localbkkz.f = null;
-    bkkq.a(paramActivity, localbkkz);
+    blwh localblwh = new blwh(0);
+    localblwh.jdField_b_of_type_JavaLangString = "qqdataline.apk";
+    localblwh.d = PluginInfo.d;
+    localblwh.jdField_a_of_type_JavaLangString = paramString1;
+    localblwh.e = paramString2;
+    localblwh.jdField_a_of_type_JavaLangClass = a(paramIntent, paramString2);
+    localblwh.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localblwh.jdField_b_of_type_Int = paramInt;
+    localblwh.jdField_a_of_type_AndroidAppDialog = parambisl;
+    localblwh.c = 10000;
+    localblwh.f = null;
+    blvy.a(paramActivity, localblwh);
   }
   
   public static boolean a(Context paramContext)

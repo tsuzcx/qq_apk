@@ -1,43 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupAdapter;
 
-class xgz
-  implements vqp<xhm, xhn>
+public class xgz
+  implements xge
 {
-  xgz(xgy paramxgy, JobContext paramJobContext, String paramString) {}
+  public xgz(StoryPlayerGroupAdapter paramStoryPlayerGroupAdapter) {}
   
-  public void a(@NonNull xhm paramxhm, @Nullable xhn paramxhn, @NonNull ErrorMessage paramErrorMessage)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
-    {
-      xvv.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "feed like info pull segment cancel on net respond");
-      return;
-    }
-    if ((paramxhn == null) || (paramErrorMessage.isFail()))
-    {
-      xvv.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for like request");
-      xgy.a(this.jdField_a_of_type_Xgy, paramErrorMessage);
-      return;
-    }
-    if (this.jdField_a_of_type_Xgy.a == 0) {}
-    for (boolean bool = false;; bool = true)
-    {
-      ((vuj)vux.a(15)).a(paramxhn.a, this.jdField_a_of_type_JavaLangString, bool, true);
-      paramxhm = new xgu(bool, paramxhn.a, paramxhn.b, paramxhn.c);
-      try
-      {
-        xgy.a(this.jdField_a_of_type_Xgy, paramxhm);
-        return;
-      }
-      catch (NullPointerException paramxhm)
-      {
-        xvv.c("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "notifyResult error :%s", paramxhm);
-        xgy.b(this.jdField_a_of_type_Xgy, new ErrorMessage());
-        return;
-      }
-    }
+    StoryPlayerGroupAdapter.a(this.a).a(paramInt1, paramInt2);
+  }
+  
+  public void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3)
+  {
+    StoryPlayerGroupAdapter.a(this.a).a(paramInt1, paramInt2, paramFloat, paramInt3);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    StoryPlayerGroupAdapter.a(this.a).a(paramInt1, paramInt2, paramInt3);
   }
 }
 

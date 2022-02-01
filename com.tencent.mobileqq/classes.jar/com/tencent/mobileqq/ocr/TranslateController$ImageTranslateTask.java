@@ -2,12 +2,12 @@ package com.tencent.mobileqq.ocr;
 
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
-import aofs;
-import aohk;
-import aohl;
-import aohn;
-import axmx;
-import axmy;
+import apiu;
+import apkm;
+import apkn;
+import apkp;
+import aytg;
+import ayth;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.ocr.data.TranslateResult;
@@ -51,9 +51,9 @@ public class TranslateController$ImageTranslateTask
     Object localObject1 = this.jdField_a_of_type_JavaLangString;
     if (this.jdField_a_of_type_Boolean)
     {
-      localObject2 = axmx.a(this.jdField_a_of_type_JavaLangString);
+      localObject2 = aytg.a(this.jdField_a_of_type_JavaLangString);
       localObject1 = localObject2;
-      if (!axmx.a(this.jdField_a_of_type_JavaLangString, (String)localObject2))
+      if (!aytg.a(this.jdField_a_of_type_JavaLangString, (String)localObject2))
       {
         localObject1 = this.jdField_a_of_type_JavaLangString;
         QLog.d("TranslateController", 1, "compress image failed!");
@@ -64,39 +64,39 @@ public class TranslateController$ImageTranslateTask
     BitmapFactory.decodeFile((String)localObject1, (BitmapFactory.Options)localObject2);
     int i = ((BitmapFactory.Options)localObject2).outHeight;
     int j = ((BitmapFactory.Options)localObject2).outWidth;
-    localObject2 = new aohk();
-    ((aohk)localObject2).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    ((aohk)localObject2).jdField_a_of_type_JavaLangString = ((String)localObject1);
-    ((aohk)localObject2).jdField_a_of_type_Int = 0;
-    ((aohk)localObject2).jdField_b_of_type_Int = i;
-    ((aohk)localObject2).jdField_c_of_type_Int = j;
-    aohn localaohn = new aohn();
-    localaohn.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    localaohn.c = this.c;
-    localaohn.jdField_a_of_type_JavaLangString = a();
-    aohl localaohl = new aohl();
-    localaohl.jdField_a_of_type_JavaLangString = a();
-    localaohl.jdField_a_of_type_Aohk = ((aohk)localObject2);
-    localaohl.jdField_a_of_type_Aohn = localaohn;
-    localaohl.jdField_b_of_type_Int = 900000000;
-    localaohl.jdField_a_of_type_Int = 900000000;
-    localaohl.jdField_a_of_type_Long = 8192L;
-    localaohl.jdField_c_of_type_Int = 0;
-    localaohl.jdField_b_of_type_JavaLangString = String.valueOf(TranslateController.a(this.this$0).getAppid());
-    localaohl.jdField_b_of_type_Long = Long.parseLong(TranslateController.a(this.this$0).getCurrentAccountUin());
-    localaohl.jdField_c_of_type_Long = System.currentTimeMillis();
+    localObject2 = new apkm();
+    ((apkm)localObject2).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    ((apkm)localObject2).jdField_a_of_type_JavaLangString = ((String)localObject1);
+    ((apkm)localObject2).jdField_a_of_type_Int = 0;
+    ((apkm)localObject2).jdField_b_of_type_Int = i;
+    ((apkm)localObject2).jdField_c_of_type_Int = j;
+    apkp localapkp = new apkp();
+    localapkp.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    localapkp.c = this.c;
+    localapkp.jdField_a_of_type_JavaLangString = a();
+    apkn localapkn = new apkn();
+    localapkn.jdField_a_of_type_JavaLangString = a();
+    localapkn.jdField_a_of_type_Apkm = ((apkm)localObject2);
+    localapkn.jdField_a_of_type_Apkp = localapkp;
+    localapkn.jdField_b_of_type_Int = 900000000;
+    localapkn.jdField_a_of_type_Int = 900000000;
+    localapkn.jdField_a_of_type_Long = 8192L;
+    localapkn.jdField_c_of_type_Int = 0;
+    localapkn.jdField_b_of_type_JavaLangString = String.valueOf(TranslateController.a(this.this$0).getAppid());
+    localapkn.jdField_b_of_type_Long = Long.parseLong(TranslateController.a(this.this$0).getCurrentAccountUin());
+    localapkn.jdField_c_of_type_Long = System.currentTimeMillis();
     if (QLog.isColorLevel())
     {
       localObject1 = new File((String)localObject1);
-      QLog.d("TranslateController", 2, String.format("picTranslate, fileInfo:%s, fileSize:%s", new Object[] { ((aohk)localObject2).toString(), ((File)localObject1).length() / 1024L + "KB" }));
+      QLog.d("TranslateController", 2, String.format("picTranslate, fileInfo:%s, fileSize:%s", new Object[] { ((apkm)localObject2).toString(), ((File)localObject1).length() / 1024L + "KB" }));
     }
     if (QLog.isColorLevel()) {
-      QLog.d("TranslateController", 2, "picTranslate reqInfo:" + localaohl);
+      QLog.d("TranslateController", 2, "picTranslate reqInfo:" + localapkn);
     }
     if (TranslateController.a(this.this$0) == null) {
-      TranslateController.a(this.this$0, new aofs(TranslateController.a(this.this$0)));
+      TranslateController.a(this.this$0, new apiu(TranslateController.a(this.this$0)));
     }
-    TranslateController.a(this.this$0).a(localaohl, new axmy(this, localaohl));
+    TranslateController.a(this.this$0).a(localapkn, new ayth(this, localapkn));
   }
 }
 

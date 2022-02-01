@@ -1,6 +1,41 @@
-class ahba
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+
+final class ahba
+  implements DialogInterface.OnClickListener
 {
-  private static final ahay a = new ahay(null);
+  ahba(Emoticon paramEmoticon, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    boolean bool;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType == 4)
+    {
+      bool = true;
+      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, false, bool);
+      if (ahaw.a != null)
+      {
+        if (7 != this.jdField_a_of_type_Int) {
+          break label80;
+        }
+        ahaw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ahaw.a.frienduin, "ep_mall", "Clk_pkg_forward", 0);
+      }
+    }
+    label80:
+    while (6 != this.jdField_a_of_type_Int)
+    {
+      return;
+      bool = false;
+      break;
+    }
+    ahaw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ahaw.a.frienduin, "ep_mall", "Clk_collect_more", 0);
+  }
 }
 
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import amoo;
 import android.text.TextUtils;
-import awkj;
-import bftf;
+import anrb;
+import axql;
+import bhbx;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -122,7 +122,7 @@ public class HotChatInfo
       localHotChatInfo.lLastMsgSeq = 0L;
       localHotChatInfo.extra1 = "";
       if (QLog.isDevelopLevel()) {
-        awkj.a("PttShow", "createHotChat_JSONObject", new Object[] { localHotChatInfo });
+        axql.a("PttShow", "createHotChat_JSONObject", new Object[] { localHotChatInfo });
       }
       return localHotChatInfo;
       bool = false;
@@ -141,8 +141,8 @@ public class HotChatInfo
     HotChatInfo localHotChatInfo = new HotChatInfo();
     localHotChatInfo.faceId = paramWifiPOIInfo.uint32_face_id.get();
     localHotChatInfo.memberCount = paramWifiPOIInfo.uint32_visitor_num.get();
-    localHotChatInfo.troopUin = String.valueOf(bftf.a(paramWifiPOIInfo.uint32_group_code.get()));
-    localHotChatInfo.troopCode = String.valueOf(bftf.a(paramWifiPOIInfo.uint32_group_uin.get()));
+    localHotChatInfo.troopUin = String.valueOf(bhbx.a(paramWifiPOIInfo.uint32_group_code.get()));
+    localHotChatInfo.troopCode = String.valueOf(bhbx.a(paramWifiPOIInfo.uint32_group_uin.get()));
     localHotChatInfo.isWifiHotChat = paramBoolean;
     localHotChatInfo.name = paramWifiPOIInfo.bytes_name.get().toStringUtf8();
     localHotChatInfo.signature = paramWifiPOIInfo.bytes_sig.get().toStringUtf8();
@@ -198,7 +198,7 @@ public class HotChatInfo
       localHotChatInfo.isRobotHotChat = paramBoolean;
       localHotChatInfo.robotUin = paramWifiPOIInfo.uint64_robot_uin.get();
       if (QLog.isDevelopLevel()) {
-        awkj.a("PttShow", "createHotChat_WifiPOIInfo", new Object[] { localHotChatInfo });
+        axql.a("PttShow", "createHotChat_WifiPOIInfo", new Object[] { localHotChatInfo });
       }
       return localHotChatInfo;
       paramBoolean = false;
@@ -218,8 +218,8 @@ public class HotChatInfo
     HotChatInfo localHotChatInfo = new HotChatInfo();
     localHotChatInfo.faceId = paramWifiPOIInfo.uint32_face_id.get();
     localHotChatInfo.memberCount = paramWifiPOIInfo.uint32_visitor_num.get();
-    localHotChatInfo.troopUin = String.valueOf(bftf.a(paramWifiPOIInfo.uint32_group_code.get()));
-    localHotChatInfo.troopCode = String.valueOf(bftf.a(paramWifiPOIInfo.uint32_group_uin.get()));
+    localHotChatInfo.troopUin = String.valueOf(bhbx.a(paramWifiPOIInfo.uint32_group_code.get()));
+    localHotChatInfo.troopCode = String.valueOf(bhbx.a(paramWifiPOIInfo.uint32_group_uin.get()));
     localHotChatInfo.isWifiHotChat = paramBoolean;
     localHotChatInfo.name = paramWifiPOIInfo.bytes_name.get().toStringUtf8();
     localHotChatInfo.signature = paramWifiPOIInfo.bytes_sig.get().toStringUtf8();
@@ -266,7 +266,7 @@ public class HotChatInfo
       }
       localHotChatInfo.praiseCount = l;
       if (QLog.isDevelopLevel()) {
-        awkj.a("PttShow", "createHotChat_WifiPOIInfo", new Object[] { localHotChatInfo });
+        axql.a("PttShow", "createHotChat_WifiPOIInfo", new Object[] { localHotChatInfo });
       }
       return localHotChatInfo;
       paramBoolean = false;
@@ -309,8 +309,8 @@ public class HotChatInfo
           localWifiPOIInfo.bytes_sig.set(ByteStringMicro.copyFromUtf8(paramHotChatInfo.signature));
         }
         localWifiPOIInfo.uint32_face_id.set(paramHotChatInfo.faceId);
-        localWifiPOIInfo.uint32_group_code.set(bftf.a(Long.parseLong(paramHotChatInfo.troopUin)));
-        localWifiPOIInfo.uint32_group_uin.set(bftf.a(Long.parseLong(paramHotChatInfo.troopCode)));
+        localWifiPOIInfo.uint32_group_code.set(bhbx.a(Long.parseLong(paramHotChatInfo.troopUin)));
+        localWifiPOIInfo.uint32_group_uin.set(bhbx.a(Long.parseLong(paramHotChatInfo.troopCode)));
         localWifiPOIInfo.uint32_visitor_num.set(paramHotChatInfo.memberCount);
         Object localObject = localWifiPOIInfo.uint32_is_member;
         if (!paramHotChatInfo.hasJoined) {
@@ -343,7 +343,7 @@ public class HotChatInfo
         }
         localWifiPOIInfo.uint32_group_type_flag.set(paramHotChatInfo.hotChatType);
         localWifiPOIInfo.uint32_is_user_create.set(paramHotChatInfo.userCreate);
-        localWifiPOIInfo.uint64_owner_uin.set(amoo.a(paramHotChatInfo.ownerUin));
+        localWifiPOIInfo.uint64_owner_uin.set(anrb.a(paramHotChatInfo.ownerUin));
         localWifiPOIInfo.uint32_tv_pk_flag.set(paramHotChatInfo.pkFlag);
         localObject = localWifiPOIInfo.uint64_favorites_time;
         if (!paramHotChatInfo.isFavorite) {
@@ -364,11 +364,11 @@ public class HotChatInfo
         if (!QLog.isColorLevel()) {
           continue;
         }
-        awkj.a("PttShow", "createWifiPOIInfo", new Object[] { localException.toString() });
+        axql.a("PttShow", "createWifiPOIInfo", new Object[] { localException.toString() });
         continue;
       }
       if (QLog.isDevelopLevel()) {
-        awkj.a("PttShow", "createWifiPOIInfo", new Object[] { paramHotChatInfo });
+        axql.a("PttShow", "createWifiPOIInfo", new Object[] { paramHotChatInfo });
       }
       return localWifiPOIInfo;
       i = 0;
@@ -499,7 +499,7 @@ public class HotChatInfo
   public void onExit(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      awkj.a("Q.hotchat", new Object[] { "onExit", Integer.valueOf(paramInt) });
+      axql.a("Q.hotchat", new Object[] { "onExit", Integer.valueOf(paramInt) });
     }
     this.state = paramInt;
     this.leftTime = System.currentTimeMillis();
@@ -572,12 +572,12 @@ public class HotChatInfo
         this.apolloGameId = paramHotChatInfo.apolloGameId;
       }
     } while (!QLog.isDevelopLevel());
-    awkj.a("PttShow", new Object[] { "updateHotChatInfo", paramHotChatInfo });
+    axql.a("PttShow", new Object[] { "updateHotChatInfo", paramHotChatInfo });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.HotChatInfo
  * JD-Core Version:    0.7.0.1
  */

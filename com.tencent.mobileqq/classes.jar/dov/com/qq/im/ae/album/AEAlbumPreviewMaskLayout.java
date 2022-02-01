@@ -6,13 +6,13 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
-import blkx;
-import bmbx;
+import bmyg;
+import bnrh;
 
 public class AEAlbumPreviewMaskLayout
   extends FrameLayout
 {
-  private blkx a;
+  private bmyg a;
   
   public AEAlbumPreviewMaskLayout(@NonNull Context paramContext)
   {
@@ -36,14 +36,14 @@ public class AEAlbumPreviewMaskLayout
       if (this.a != null) {
         this.a.a();
       }
-      bmbx.a("AEAlbumPreviewMaskLayout", "[onTouchEvent], action=ACTION_DOWN");
+      bnrh.a("AEAlbumPreviewMaskLayout", "[onTouchEvent], action=ACTION_DOWN");
     }
     return true;
   }
   
-  public void setOnTouchCallback(@Nullable blkx paramblkx)
+  public void setOnTouchCallback(@Nullable bmyg parambmyg)
   {
-    this.a = paramblkx;
+    this.a = parambmyg;
   }
 }
 

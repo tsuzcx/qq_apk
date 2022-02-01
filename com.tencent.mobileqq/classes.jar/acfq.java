@@ -1,34 +1,8 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import msf.msgsvc.msg_svc.Dis;
-import msf.msgsvc.msg_svc.RoutingHead;
-
-public class acfq
-  implements abyl
+public abstract interface acfq
 {
-  public int a()
-  {
-    return 3000;
-  }
+  public abstract void a();
   
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = new msg_svc.Dis();
-    paramQQAppInterface.dis_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramRoutingHead.dis.set(paramQQAppInterface);
-    return true;
-  }
-  
-  public int b()
-  {
-    return 3008;
-  }
+  public abstract void b();
 }
 
 

@@ -1,17 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.weishi_new.util.OuterInterceptManager.1;
+import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView.State;
 
 public class uxj
-  implements DialogInterface.OnClickListener
+  extends LinearLayoutManager
 {
-  public uxj(OuterInterceptManager.1 param1) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public uxj(Context paramContext, int paramInt, boolean paramBoolean)
   {
-    if (this.a.a != null) {
-      this.a.a.c();
-    }
+    super(paramContext, paramInt, paramBoolean);
+  }
+  
+  public int getExtraLayoutSpace(RecyclerView.State paramState)
+  {
+    return super.getExtraLayoutSpace(paramState) + vnc.d();
   }
 }
 

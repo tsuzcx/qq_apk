@@ -1,18 +1,10 @@
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class axst
-  extends axus
+final class axst
+  implements DialogInterface.OnClickListener
 {
-  public axst(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountOnlineStateActivity", 2, "onBatteryChanged updateOnlineStatusItem");
-    }
-    AccountOnlineStateActivity.a(this.a).b();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

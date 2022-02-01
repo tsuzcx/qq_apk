@@ -1,16 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import org.json.JSONObject;
 
 public class adbe
-  implements DialogInterface.OnClickListener
+  extends adae
 {
-  public adbe(ChatSettingForTroop paramChatSettingForTroop, boolean paramBoolean) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull adaa paramadaa)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      bcef.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    case 7: 
+      SosoInterface.startLocation(new adbh(paramadaa, paramJSONObject.optInt("allowCacheTime", 10) * 1000L));
+    }
+    for (;;)
+    {
+      return true;
+      SosoInterface.startLocation(new adbg(paramadaa, paramJSONObject.optInt("allowCacheTime", 10) * 1000L));
     }
   }
 }

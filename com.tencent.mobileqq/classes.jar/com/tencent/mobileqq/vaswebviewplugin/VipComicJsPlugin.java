@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
-import aqyp;
-import aqyt;
+import ascz;
+import asdd;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -36,7 +36,7 @@ public class VipComicJsPlugin
         {
           paramString2 = new Bundle();
           paramString2.putString("processId", paramString1.optString("processId"));
-          sendRemoteReq(aqyt.a("ipc_preload_plugin_process", paramJsBridgeListener, this.mOnRemoteResp.key, paramString2), false, false);
+          sendRemoteReq(asdd.a("ipc_preload_plugin_process", paramJsBridgeListener, this.mOnRemoteResp.key, paramString2), false, false);
           return true;
         }
         catch (Exception paramString1)

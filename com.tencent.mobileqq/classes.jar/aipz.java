@@ -1,16 +1,21 @@
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.widget.SingleLineTextView;
+import com.tencent.mobileqq.activity.bless.BlessResultActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
 
-class aipz
-  extends aliz
+public class aipz
+  extends aodo
 {
-  public Button a;
-  public TextView a;
-  public MayKnowRecommend a;
-  public SingleLineTextView a;
-  public SingleLineTextView b;
+  public aipz(BlessResultActivity paramBlessResultActivity) {}
+  
+  public void onCheckRealNameRsp(boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessResultActivity", 2, "VideoRedbag, onCheckRealNameRsp in bless");
+    }
+    if ((paramBoolean) && (paramInt == bdcw.a)) {
+      bhdj.a(this.a.getActivity(), 0, null, this.a.getString(2131718857), 2131718859, 2131718858, new aiqa(this), new aiqb(this)).show();
+    }
+  }
 }
 
 

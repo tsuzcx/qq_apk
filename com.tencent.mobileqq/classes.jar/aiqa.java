@@ -1,119 +1,26 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contacts.mayknow.ContactReportUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.bless.BlessResultActivity;
+import mqq.app.AppRuntime;
 
-public class aiqa
-  extends aptq<aipv>
+class aiqa
+  implements DialogInterface.OnClickListener
 {
-  @NonNull
-  public aipv a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReportExposeConfigProcessor", 2, "migrateOldOrDefaultContent");
-    }
-    return new aipv();
-  }
+  aiqa(aipz paramaipz) {}
   
-  @Nullable
-  public aipv a(aptx[] paramArrayOfaptx)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int j;
-    int i;
-    Object localObject1;
-    if (QLog.isColorLevel())
+    if (this.a.a.getActivity() != null)
     {
-      QLog.d("ReportExposeConfigProcessor", 2, "onParsed :" + paramArrayOfaptx);
-      if (paramArrayOfaptx != null)
-      {
-        j = paramArrayOfaptx.length;
-        i = 0;
-        while (i < j)
-        {
-          localObject1 = paramArrayOfaptx[i];
-          if (localObject1 != null) {
-            QLog.d("ReportExposeConfigProcessor", 2, "onParsed item: " + ((aptx)localObject1).a);
-          }
-          i += 1;
-        }
-      }
+      Intent localIntent = new Intent(BaseApplicationImpl.sApplication.getRuntime().getApplication(), QQBrowserActivity.class);
+      localIntent.putExtra("url", "https://h5.qianbao.qq.com/auth?_wv=1027&_wvx=10&_wwv=4");
+      this.a.a.getActivity().startActivity(localIntent);
     }
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
-    {
-      j = paramArrayOfaptx.length;
-      i = 0;
-      while (i < j)
-      {
-        Object localObject2 = paramArrayOfaptx[i];
-        if ((localObject2 != null) && (!TextUtils.isEmpty(((aptx)localObject2).a))) {
-          try
-          {
-            localObject1 = new aipv();
-            localObject2 = new JSONObject(((aptx)localObject2).a);
-            if (((JSONObject)localObject2).has("enable")) {
-              ((aipv)localObject1).jdField_a_of_type_Boolean = ((JSONObject)localObject2).getBoolean("enable");
-            }
-            if (((JSONObject)localObject2).has("interval")) {
-              ((aipv)localObject1).jdField_a_of_type_Long = ((JSONObject)localObject2).getLong("interval");
-            }
-            return localObject1;
-          }
-          catch (Throwable localThrowable)
-          {
-            QLog.e("ReportExposeConfigProcessor", 1, localThrowable, new Object[0]);
-          }
-        }
-        i += 1;
-      }
-    }
-    return null;
-  }
-  
-  public void a(aipv paramaipv)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReportExposeConfigProcessor", 2, "onUpdate");
-    }
-    if (paramaipv != null) {
-      ContactReportUtils.a(paramaipv);
-    }
-  }
-  
-  public Class<aipv> clazz()
-  {
-    return aipv.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReportExposeConfigProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReportExposeConfigProcessor", 2, "onReqFailed, code = " + paramInt);
-    }
-  }
-  
-  public int type()
-  {
-    return 438;
+    paramDialogInterface.dismiss();
   }
 }
 

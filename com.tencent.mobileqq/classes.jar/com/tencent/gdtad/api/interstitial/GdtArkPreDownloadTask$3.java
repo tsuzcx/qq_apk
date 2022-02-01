@@ -1,23 +1,23 @@
 package com.tencent.gdtad.api.interstitial;
 
-import abmf;
-import abmh;
-import abrl;
+import acbv;
+import acbx;
+import acho;
 import java.lang.ref.WeakReference;
 
 public class GdtArkPreDownloadTask$3
   implements Runnable
 {
-  public GdtArkPreDownloadTask$3(abmf paramabmf, int paramInt1, int paramInt2) {}
+  public GdtArkPreDownloadTask$3(acbv paramacbv, int paramInt1, int paramInt2) {}
   
   public void run()
   {
     boolean bool;
-    if ((abmf.a(this.this$0) != null) && (abmf.a(this.this$0).get() != null))
+    if ((acbv.a(this.this$0) != null) && (acbv.a(this.this$0).get() != null))
     {
       bool = true;
-      abrl.b("GdtArkPreDownloadTask", String.format("notifyFailed listener:%b status:%d notified:%b error:%d arkError:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(abmf.a(this.this$0)), Boolean.valueOf(abmf.b(this.this$0)), Integer.valueOf(this.a), Integer.valueOf(this.b) }));
-      if (!abmf.b(this.this$0)) {
+      acho.b("GdtArkPreDownloadTask", String.format("notifyFailed listener:%b status:%d notified:%b error:%d arkError:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(acbv.a(this.this$0)), Boolean.valueOf(acbv.b(this.this$0)), Integer.valueOf(this.a), Integer.valueOf(this.b) }));
+      if (!acbv.b(this.this$0)) {
         break label108;
       }
     }
@@ -27,9 +27,9 @@ public class GdtArkPreDownloadTask$3
       return;
       bool = false;
       break;
-      abmf.a(this.this$0, true);
-    } while ((abmf.a(this.this$0) == null) || (abmf.a(this.this$0).get() == null));
-    ((abmh)abmf.a(this.this$0).get()).a(abmf.a(this.this$0), this.a, this.b);
+      acbv.a(this.this$0, true);
+    } while ((acbv.a(this.this$0) == null) || (acbv.a(this.this$0).get() == null));
+    ((acbx)acbv.a(this.this$0).get()).a(acbv.a(this.this$0), this.a, this.b);
   }
 }
 

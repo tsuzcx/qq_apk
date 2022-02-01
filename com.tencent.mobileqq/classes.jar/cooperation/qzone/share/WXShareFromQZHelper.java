@@ -11,7 +11,7 @@ import android.net.Uri;
 import android.os.Build.VERSION;
 import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
-import bbnz;
+import bcut;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
@@ -147,7 +147,7 @@ public class WXShareFromQZHelper
         try
         {
           localObject2 = ((ShowMessageFromWX.Req)paramBaseReq).message.messageExt;
-          paramBaseReq = bbnz.b((String)localObject2);
+          paramBaseReq = bcut.b((String)localObject2);
           if ((paramBaseReq.get("actiontype") != null) && (((String)paramBaseReq.get("actiontype")).equals("schema")) && (paramBaseReq.get("schema") != null))
           {
             localObject1 = Uri.decode((String)paramBaseReq.get("schema"));
@@ -508,7 +508,7 @@ public class WXShareFromQZHelper
     paramString3 = new WXMediaMessage(new WXWebpageObject(paramString3));
     paramString3.description = paramString2;
     paramString3.title = paramString1;
-    paramString3.thumbData = WXShareHelper.compressToBytesForWX(paramBitmap, false, true);
+    paramString3.thumbData = WXShareHelper.a(paramBitmap, false, true);
     paramString1 = new SendMessageToWX.Req();
     paramString1.transaction = buildTransaction("webpage");
     paramString1.message = paramString3;

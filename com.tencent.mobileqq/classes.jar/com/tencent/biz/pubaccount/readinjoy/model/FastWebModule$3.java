@@ -5,14 +5,14 @@ import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import pay;
-import pum;
-import pur;
+import pqw;
+import qfg;
+import qfl;
 
 public class FastWebModule$3
   implements Runnable
 {
-  public FastWebModule$3(pum parampum, List paramList) {}
+  public FastWebModule$3(qfg paramqfg, List paramList) {}
   
   public void run()
   {
@@ -20,15 +20,15 @@ public class FastWebModule$3
     if (i < this.a.size())
     {
       ArticleInfo localArticleInfo = (ArticleInfo)this.a.get(i);
-      if ((pay.a(localArticleInfo)) || ((localArticleInfo instanceof AdvertisementInfo))) {}
+      if ((pqw.a(localArticleInfo)) || ((localArticleInfo instanceof AdvertisementInfo))) {}
       for (;;)
       {
         i += 1;
         break;
-        if ((localArticleInfo != null) && (!TextUtils.isEmpty(localArticleInfo.mArticleContentUrl)) && (localArticleInfo.mArticleContentUrl.startsWith("http")) && (pay.a(localArticleInfo.mArticleContentUrl, localArticleInfo.mChannelID, localArticleInfo)))
+        if ((localArticleInfo != null) && (!TextUtils.isEmpty(localArticleInfo.mArticleContentUrl)) && (localArticleInfo.mArticleContentUrl.startsWith("http")) && (pqw.a(localArticleInfo.mArticleContentUrl, localArticleInfo.mChannelID, localArticleInfo)))
         {
-          pur localpur = (pur)pum.a(this.this$0).get(localArticleInfo.mChannelID + "_" + localArticleInfo.mArticleID);
-          if ((localpur == null) || (localpur.a())) {
+          qfl localqfl = (qfl)qfg.a(this.this$0).get(localArticleInfo.mChannelID + "_" + localArticleInfo.mArticleID);
+          if ((localqfl == null) || (localqfl.a())) {
             this.this$0.a(localArticleInfo.mArticleContentUrl, localArticleInfo.innerUniqueID, localArticleInfo.mSubscribeID, 3, null);
           }
         }

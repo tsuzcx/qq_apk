@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:state_checked="false" android:drawable="@drawable/fom" />
-    <item android:state_enabled="true" android:state_checked="true" android:drawable="@drawable/fol" />
-    <item android:state_checked="false" android:drawable="@drawable/fo_" />
-</selector>
+    <solid android:color="#ffe9ebe6" />
+    <corners android:radius="2.0dip" />
+    <padding android:left="3.0dip" android:top="0.0dip" android:right="3.0dip" android:bottom="0.0dip" />
+</shape>

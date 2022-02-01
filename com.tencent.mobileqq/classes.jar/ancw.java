@@ -1,59 +1,38 @@
-import android.content.Context;
-import android.text.Editable;
-import android.widget.EditText;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.utils.ContactUtils;
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class ancw
+public final class ancw
+  implements EIPCResultCallback
 {
-  private int a;
-  private int b;
+  public ancw(anmd paramanmd) {}
   
-  public ancw(QQAppInterface paramQQAppInterface)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    TroopManager.a(paramQQAppInterface);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, String paramString, int paramInt, ChatMessage paramChatMessage)
-  {
-    String str;
-    if (paramEditText != null)
+    CmShowRenderView.a(true);
+    paramEIPCResult = paramEIPCResult.data;
+    if (paramEIPCResult == null)
     {
-      str = "";
-      if (paramInt != 0) {
-        break label166;
-      }
-      this.a = ((int)(Math.random() * TroopManager.c.size()));
-      if (TroopManager.c.size() != 1) {
-        break label124;
-      }
-      str = (String)TroopManager.c.get(0);
-      TroopManager.a(paramQQAppInterface);
+      this.a.a(1);
+      QLog.i("CmShow_CmShowRenderView", 1, "initSdk resp == null");
+      return;
     }
-    label166:
+    anka.H = paramEIPCResult.getString("sApolloBaseScriptId");
+    amme.q = paramEIPCResult.getBoolean("sDisableCreateRenderThread");
+    amme.r = paramEIPCResult.getBoolean("sApolloEngineLockEnable");
+    anka.I = "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/script/" + anka.H + "/";
+    if (anmb.a()) {
+      this.a.a(0);
+    }
     for (;;)
     {
-      Object localObject = (amsw)paramQQAppInterface.getManager(51);
-      localObject = ContactUtils.getTroopMemberName(paramQQAppInterface, paramChatMessage.frienduin, paramChatMessage.senderuin);
-      paramEditText.setText(bevq.a(paramQQAppInterface, paramContext, paramString, paramChatMessage.senderuin, (String)localObject, false, paramEditText, true, true));
-      paramEditText.append(str);
-      paramEditText.setSelection(paramEditText.getText().length());
+      QLog.i("CmShow_CmShowRenderView", 1, "initSdk");
       return;
-      label124:
-      if (this.a < TroopManager.c.size())
-      {
-        str = (String)TroopManager.c.get(this.a);
-        TroopManager.c.remove(this.a);
-        continue;
-        if (this.b < TroopManager.d.size())
-        {
-          str = (String)TroopManager.d.get(this.b);
-          this.b = ((this.b + 1) % TroopManager.d.size());
-        }
-      }
+      anmb.b(this.a);
+      anmb.a(this.a);
+      anmb.a("sdk");
     }
   }
 }

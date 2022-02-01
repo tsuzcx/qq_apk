@@ -1,49 +1,90 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emotionintegrate.SearchEmoticonFragment;
-import com.tencent.mobileqq.emotionintegrate.SearchEmoticonWebBean;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.qphone.base.util.QLog;
 
 public class argt
-  implements View.OnTouchListener
+  extends aqwt<args>
 {
-  public argt(SearchEmoticonFragment paramSearchEmoticonFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  @NonNull
+  public static args a()
   {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      this.a.b.setBackgroundColor(Color.parseColor("#F7F7F7"));
-      if (SearchEmoticonFragment.a(this.a).d == 1)
-      {
-        EmojiHomeUiPlugin.openEmojiDetailPage(this.a.getActivity(), this.a.a().getAccount(), 8, SearchEmoticonFragment.a(this.a).e, false, false);
-        bcef.b(null, "dc00898", "", "", "0X8009EAF", "0X8009EAF", 0, 0, "", "", "", "");
-      }
+    args localargs2 = (args)aqxe.a().a(550);
+    args localargs1 = localargs2;
+    if (localargs2 == null) {
+      localargs1 = new args();
     }
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberRecommend.ConfProcessor", 2, "loadConfig(): bean = " + localargs1.toString());
+    }
+    return localargs1;
+  }
+  
+  @NonNull
+  public args a(int paramInt)
+  {
+    return new args();
+  }
+  
+  @Nullable
+  public args a(aqxa[] paramArrayOfaqxa)
+  {
+    return args.a(paramArrayOfaqxa);
+  }
+  
+  public void a(args paramargs)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
     {
-      return false;
-      if (SearchEmoticonFragment.a(this.a).d == 2)
+      localObject = (QQAppInterface)localObject;
+      if (((QQAppInterface)localObject).isCreateManager(QQManagerFactory.TROOP_MEMBER_RECOMMEND_MANAGER))
       {
-        MiniAppLauncher.launchMiniAppById(SearchEmoticonFragment.a(this.a), SearchEmoticonFragment.a(this.a).g, null, null, null, null, 1005);
-        bcef.b(null, "dc00898", "", "", "0X8009EB1", "0X8009EB1", 0, 0, "", "", "", "");
-        continue;
-        if (paramMotionEvent.getAction() == 0)
-        {
-          this.a.b.setBackgroundColor(Color.parseColor("#DEDEDE"));
-          bcef.b(null, "dc00898", "", "", "0X8009EAE", "0X8009EAE", 0, 0, "", "", "", "");
+        ((axia)((QQAppInterface)localObject).getManager(QQManagerFactory.TROOP_MEMBER_RECOMMEND_MANAGER)).a = paramargs;
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopMemberRecommend.ConfProcessor", 2, "onUpdate bean = " + paramargs.toString());
         }
       }
     }
   }
+  
+  public Class clazz()
+  {
+    return args.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberRecommend.ConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public int type()
+  {
+    return 550;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     argt
  * JD-Core Version:    0.7.0.1
  */

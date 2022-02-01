@@ -1,27 +1,16 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class acfd
-  extends acew
+class acfd
+  implements DialogInterface.OnClickListener
 {
-  public int a()
-  {
-    return 1000;
-  }
+  acfd(acey paramacey) {}
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bdyi parambdyi, bblm parambblm, bbkm parambbkm)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    new bblb().e(paramList, paramList1, paramStringBuilder);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return (paramElem.common_elem.has()) && (16 == paramElem.common_elem.uint32_service_type.get());
+    QLog.i("GdtMvViewController", 1, " DialogInterface onClick onCancel");
+    acey.a(this.a).a();
   }
 }
 

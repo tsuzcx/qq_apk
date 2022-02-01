@@ -1,72 +1,72 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.SendMenuEventResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.widget.Button;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import java.io.UnsupportedEncodingException;
+import org.json.JSONObject;
 
-class ode
-  implements BusinessObserver
+public class ode
+  extends Handler
 {
-  ode(ocw paramocw, NewIntent paramNewIntent, Context paramContext, String paramString, BusinessObserver paramBusinessObserver, QQAppInterface paramQQAppInterface) {}
+  public ode(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void handleMessage(Message paramMessage)
   {
-    Object localObject1 = null;
-    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-    if (!paramBoolean) {
-      return;
-    }
-    for (;;)
+    switch (paramMessage.what)
     {
+    default: 
+      return;
+    case 3: 
+      this.a.S();
+      return;
+    case 1: 
+      if (this.a.c)
+      {
+        AccountDetailActivity.e(this.a);
+        this.a.M();
+      }
+      for (;;)
+      {
+        this.a.c(this.a.getIntent());
+        return;
+        AccountDetailActivity.e(this.a);
+      }
+    case 2: 
+      paramMessage = new Intent();
+      paramMessage.putExtra("isNeedFinish", true);
+      this.a.setResult(-1, paramMessage);
+      this.a.finish();
+      return;
+    case 4: 
+      paramMessage = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+      paramMessage.putExtra("BSafeReportPost", true);
       try
       {
-        localObject2 = paramBundle.getByteArray("data");
-        paramBundle = new mobileqq_mp.SendMenuEventResponse();
+        if (this.a.a != null) {
+          paramMessage.putExtra("SafeReportData", this.a.a.toString().getBytes("utf-8"));
+        }
+        paramMessage.putExtra("hide_more_buttonbutton", true);
+        paramMessage.putExtra("ishiderefresh", true);
+        paramMessage.putExtra("ishidebackforward", true);
+        this.a.startActivity(paramMessage.putExtra("url", "https://jubao.mp.qq.com/mobile/reportAccount"));
+        return;
       }
-      catch (Exception paramBundle)
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
       {
-        try
+        for (;;)
         {
-          paramBundle.mergeFrom((byte[])localObject2);
-          Object localObject2 = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("menuEventSharePre", 0);
-          localObject1 = paramBundle;
-          if (((SharedPreferences)localObject2).contains(this.jdField_a_of_type_JavaLangString))
-          {
-            localObject1 = paramBundle;
-            if (paramBundle.seqno.has())
-            {
-              localObject1 = paramBundle;
-              if (paramBundle.seqno.get() != ((SharedPreferences)localObject2).getInt(this.jdField_a_of_type_JavaLangString, 0))
-              {
-                if (this.jdField_a_of_type_MqqObserverBusinessObserver != null) {
-                  this.jdField_a_of_type_Ocw.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverBusinessObserver, true);
-                }
-                localObject1 = ((SharedPreferences)localObject2).edit();
-                ((SharedPreferences.Editor)localObject1).putInt(this.jdField_a_of_type_JavaLangString, paramBundle.seqno.get());
-                ((SharedPreferences.Editor)localObject1).commit();
-                localObject1 = paramBundle;
-              }
-            }
-          }
-          if (localObject1 != null) {
-            break;
-          }
-          return;
+          localUnsupportedEncodingException.printStackTrace();
         }
-        catch (Exception localException)
-        {
-          break label187;
-        }
-        paramBundle = paramBundle;
-        paramBundle = (Bundle)localObject1;
       }
-      label187:
-      localObject1 = paramBundle;
     }
+    paramMessage = new AlphaAnimation(1.0F, 0.0F);
+    paramMessage.setDuration(500L);
+    this.a.d.startAnimation(paramMessage);
+    this.a.d.setVisibility(8);
   }
 }
 

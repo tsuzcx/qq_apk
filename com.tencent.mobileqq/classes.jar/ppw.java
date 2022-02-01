@@ -1,16 +1,18 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.widget.HorizontalListView;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class ppw
-  extends AnimatorListenerAdapter
+class ppw
+  implements PopupWindow.OnDismissListener
 {
-  public ppw(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  ppw(ppr paramppr, pne parampne) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onDismiss()
   {
-    ReadInJoySelfFragment.a(this.a).setVisibility(8);
+    ppr.a(this.jdField_a_of_type_Ppr).a(1.0F);
+    if (this.jdField_a_of_type_Pne.a().b())
+    {
+      this.jdField_a_of_type_Pne.a().a().c();
+      this.jdField_a_of_type_Pne.a().f(false);
+    }
   }
 }
 

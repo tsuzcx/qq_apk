@@ -1,210 +1,40 @@
 import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationView;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForWantGiftMsg;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahmg
+class ahmg
+  implements View.OnClickListener
 {
-  private ahmf jdField_a_of_type_Ahmf = new ahmh(this);
-  private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
-  private StickerBubbleAnimationView jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
-  private List<WeakReference<ahmj>> jdField_a_of_type_JavaUtilList = new LinkedList();
-  private boolean jdField_a_of_type_Boolean;
-  private ahmf jdField_b_of_type_Ahmf = new ahmi(this);
-  private StickerBubbleAnimationView jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
-  private List<WeakReference<ahmj>> jdField_b_of_type_JavaUtilList = new LinkedList();
-  private boolean jdField_b_of_type_Boolean;
+  ahmg(ahmf paramahmf, ChatMessage paramChatMessage, MessageForWantGiftMsg paramMessageForWantGiftMsg) {}
   
-  public static ahmg a()
+  public void onClick(View paramView)
   {
-    return ahmk.a();
-  }
-  
-  private void a(View paramView)
-  {
-    if (paramView.getParent() == null) {
-      return;
-    }
-    ((ViewGroup)paramView.getParent()).removeView(paramView);
-  }
-  
-  private void a(ViewGroup paramViewGroup, View paramView)
-  {
-    new RelativeLayout.LayoutParams(-1, -1);
-    if (paramView.getParent() != null) {
-      if (paramView.getParent() != paramViewGroup)
-      {
-        ((ViewGroup)paramView.getParent()).removeView(paramView);
-        paramViewGroup.addView(paramView);
+    String str;
+    if (paramView.getId() == 2131374019)
+    {
+      new bdlf(this.jdField_a_of_type_Ahmf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_flower").c("grp_aio").d("clk_send_him").a(0).a(new String[] { this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + "", "29" }).a();
+      str = bhhr.i(this.jdField_a_of_type_Ahmf.jdField_a_of_type_AndroidContentContext, "url");
+      if (TextUtils.isEmpty(str)) {
+        break label223;
       }
     }
     for (;;)
     {
-      paramView.bringToFront();
+      str = str.replace("{troopUin}", "" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForWantGiftMsg.frienduin).replace("{uin}", "" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForWantGiftMsg.senderuin).replace("{from}", "29");
+      Intent localIntent = new Intent(this.jdField_a_of_type_Ahmf.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", str);
+      this.jdField_a_of_type_Ahmf.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      paramViewGroup.addView(paramView);
+      label223:
+      str = "https://qun.qq.com/qunpay/gifts/index.html?_bid=2204&troopUin={troopUin}&uin={uin}&from={from}&_wv=1031";
     }
-  }
-  
-  private void a(List<WeakReference<ahmj>> paramList)
-  {
-    try
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        ahmj localahmj = (ahmj)((WeakReference)paramList.next()).get();
-        if (localahmj != null) {
-          localahmj.a();
-        }
-      }
-    }
-    finally {}
-  }
-  
-  private void b(List<WeakReference<ahmj>> paramList)
-  {
-    Iterator localIterator = new ArrayList(paramList).iterator();
-    while (localIterator.hasNext())
-    {
-      WeakReference localWeakReference = (WeakReference)localIterator.next();
-      ahmj localahmj = (ahmj)localWeakReference.get();
-      if (localahmj != null) {
-        localahmj.b();
-      } else {
-        paramList.remove(localWeakReference);
-      }
-    }
-  }
-  
-  public StickerBubbleAnimationView a(Context paramContext)
-  {
-    paramContext = d(paramContext);
-    if (this.jdField_b_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerBubbleAnimationViewHolder", 2, "hideSendAnimationView: " + paramContext);
-      }
-      a(paramContext);
-      this.jdField_b_of_type_Boolean = false;
-    }
-    return paramContext;
-  }
-  
-  public StickerBubbleAnimationView a(ViewGroup paramViewGroup, Context paramContext)
-  {
-    paramContext = d(paramContext);
-    if (!this.jdField_b_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerBubbleAnimationViewHolder", 2, "showSendAnimationView: " + paramContext.getParent() + " / " + paramViewGroup);
-      }
-      a(paramViewGroup, paramContext);
-      this.jdField_b_of_type_Boolean = true;
-    }
-    return paramContext;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleAnimationViewHolder", 2, "cleanView");
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      b(this.jdField_a_of_type_AndroidContentContext);
-    }
-    if (this.jdField_b_of_type_Boolean) {
-      a(this.jdField_a_of_type_AndroidContentContext);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView = null;
-    this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView = null;
-  }
-  
-  public void a(ahmj paramahmj)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilList.add(new WeakReference(paramahmj));
-      return;
-    }
-    finally
-    {
-      paramahmj = finally;
-      throw paramahmj;
-    }
-  }
-  
-  public StickerBubbleAnimationView b(Context paramContext)
-  {
-    paramContext = c(paramContext);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerBubbleAnimationViewHolder", 2, "hideReceiveAnimationView: " + paramContext);
-      }
-      a(paramContext);
-      this.jdField_a_of_type_Boolean = false;
-    }
-    return paramContext;
-  }
-  
-  public StickerBubbleAnimationView b(ViewGroup paramViewGroup, Context paramContext)
-  {
-    paramContext = c(paramContext);
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerBubbleAnimationViewHolder", 2, "showReceiveAnimationView: " + paramContext.getParent() + " / " + paramViewGroup);
-      }
-      a(paramViewGroup, paramContext);
-      this.jdField_a_of_type_Boolean = true;
-    }
-    return paramContext;
-  }
-  
-  public void b(ahmj paramahmj)
-  {
-    try
-    {
-      this.jdField_b_of_type_JavaUtilList.add(new WeakReference(paramahmj));
-      return;
-    }
-    finally
-    {
-      paramahmj = finally;
-      throw paramahmj;
-    }
-  }
-  
-  public StickerBubbleAnimationView c(Context paramContext)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView = new StickerBubbleAnimationView(paramContext);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setShowText(false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setId(2131377792);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setAnimationCallback(this.jdField_a_of_type_Ahmf);
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
-  }
-  
-  public StickerBubbleAnimationView d(Context paramContext)
-  {
-    if (this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView == null)
-    {
-      this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView = new StickerBubbleAnimationView(paramContext);
-      this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setId(2131377792);
-      this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setAnimationCallback(this.jdField_b_of_type_Ahmf);
-    }
-    return this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
   }
 }
 

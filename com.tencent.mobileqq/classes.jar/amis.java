@@ -1,20 +1,80 @@
-import com.tencent.mobileqq.data.ApolloFavActionData;
-import java.util.Comparator;
+import android.text.TextUtils;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Locale;
+import java.util.concurrent.ConcurrentHashMap;
 
 class amis
-  implements Comparator<ApolloFavActionData>
+  extends antq
 {
-  amis(amir paramamir) {}
+  amis(amik paramamik) {}
   
-  public int a(ApolloFavActionData paramApolloFavActionData1, ApolloFavActionData paramApolloFavActionData2)
+  public void a(long paramLong)
   {
-    if (paramApolloFavActionData2.favId == paramApolloFavActionData1.favId) {
-      return 0;
+    if (paramLong == 0L) {}
+    String str1;
+    String str2;
+    do
+    {
+      do
+      {
+        return;
+      } while (!this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong)));
+      str1 = (String)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+      str2 = ContactUtils.getDiscussionNameCanNull(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(paramLong));
+      if ((!TextUtils.isEmpty(str2)) && (!str2.equals(str1))) {
+        amik.a(this.a, false);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("addFriendTag", 2, String.format(Locale.getDefault(), "checkIfNeedUpdate [uin: %d, pre: %s, cur: %s]", new Object[] { Long.valueOf(paramLong), str1, str2 }));
+  }
+  
+  protected void onAddDiscussionMember(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
+  {
+    if (paramBoolean) {
+      a(paramLong);
     }
-    if (paramApolloFavActionData2.favId > paramApolloFavActionData1.favId) {
-      return 1;
+  }
+  
+  protected void onChangeDiscussionName(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {}
+    try
+    {
+      a(Long.parseLong(paramString));
+      return;
     }
-    return -1;
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  protected void updateDiscussionInfo(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean) {
+      if (!(paramObject instanceof ArrayList)) {
+        break label70;
+      }
+    }
+    label70:
+    for (paramObject = (ArrayList)paramObject;; paramObject = null)
+    {
+      if ((paramObject != null) && (paramObject.size() > 0))
+      {
+        paramObject = paramObject.iterator();
+        while (paramObject.hasNext())
+        {
+          Object localObject = paramObject.next();
+          if ((localObject instanceof Long)) {
+            a(((Long)localObject).longValue());
+          }
+        }
+      }
+      return;
+    }
   }
 }
 

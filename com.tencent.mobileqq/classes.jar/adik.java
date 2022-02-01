@@ -1,32 +1,24 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.fragment.BottomTabSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adik
-  extends VasQuickUpdateManager.CallBacker
+  implements View.OnClickListener
 {
-  public adik(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public adik(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void onClick(View paramView)
   {
-    if ((paramLong == 15L) && (paramString1.startsWith("card.")) && (this.a.a != null))
-    {
-      paramString1 = this.a.a.obtainMessage();
-      paramString1.what = 7;
-      if (paramInt1 != 0) {
-        break label82;
-      }
-      paramString1.arg1 = 1;
-    }
-    for (paramString1.arg2 = 1;; paramString1.arg2 = 0)
-    {
-      if (this.a.a != null) {
-        this.a.a.sendMessage(paramString1);
-      }
-      return;
-      label82:
-      paramString1.arg1 = 0;
-    }
+    Intent localIntent = new Intent();
+    localIntent.addFlags(268435456);
+    localIntent.addFlags(536870912);
+    localIntent.addFlags(67108864);
+    aeow.a(paramView.getContext(), localIntent, PublicFragmentActivity.class, BottomTabSettingFragment.class);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.biz.subscribe.bizdapters;
 
-import zdp;
+import zsu;
 
 public class FakerFeedsAdapter$3
   implements Runnable
 {
-  public FakerFeedsAdapter$3(zdp paramzdp, int paramInt) {}
+  public FakerFeedsAdapter$3(zsu paramzsu, int paramInt) {}
   
   public void run()
   {

@@ -1,13 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import androidx.annotation.NonNull;
 
-class pko
-  implements rgr<TabChannelCoverInfo>
+public class pko<V>
 {
-  pko(pkm parampkm) {}
+  private V a;
   
-  public boolean a(TabChannelCoverInfo paramTabChannelCoverInfo)
+  public pko(V paramV)
   {
-    return (paramTabChannelCoverInfo != null) && (paramTabChannelCoverInfo.reason != 4);
+    this.a = paramV;
+  }
+  
+  public V a()
+  {
+    return this.a;
+  }
+  
+  public void a(V paramV)
+  {
+    this.a = paramV;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    if (this.a != null) {
+      return this.a.toString();
+    }
+    return "null";
   }
 }
 

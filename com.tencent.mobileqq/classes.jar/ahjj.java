@@ -1,22 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 class ahjj
-  implements bezd
+  extends Handler
 {
-  ahjj(ahiu paramahiu) {}
-  
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  ahjj(ahji paramahji, Looper paramLooper)
   {
-    if (paramJSONObject == null) {}
-    while (paramJSONObject.optInt("retcode", -1) != 0) {
-      return;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == ahji.a) {
+      this.a.b();
     }
-    paramJSONObject = (bfas)this.a.app.getManager(132);
-    paramInt = paramJSONObject.a(this.a.sessionInfo.curFriendUin);
-    paramJSONObject.a(this.a.sessionInfo.curFriendUin, 0, paramInt & 0xF);
   }
 }
 

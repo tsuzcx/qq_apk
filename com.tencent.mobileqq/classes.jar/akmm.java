@@ -1,11 +1,15 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class akmm
-  extends akle
+  implements DialogInterface.OnClickListener
 {
-  public RelativeLayout a;
-  public ImageView c;
+  akmm(akmj paramakmj, Runnable paramRunnable) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangRunnable.run();
+  }
 }
 
 

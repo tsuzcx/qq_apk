@@ -1,35 +1,40 @@
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.List;
-import java.util.Queue;
+import com.tencent.biz.qqstory.album.tools.PhotoSelecter;
 
-class vyo
-  extends SimpleJob<Void>
+public class vyo
+  implements Comparable<vyo>
 {
-  vyo(vyn paramvyn, String paramString, Context paramContext, List paramList)
+  public int a;
+  Bitmap a;
+  public vxh a;
+  
+  public int a(@NonNull vyo paramvyo)
   {
-    super(paramString);
+    return (int)(this.jdField_a_of_type_Vxh.b - paramvyo.jdField_a_of_type_Vxh.b);
   }
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public Bitmap a(Context paramContext)
   {
-    if (!vyn.a(this.jdField_a_of_type_Vyn, this.jdField_a_of_type_AndroidContentContext)) {
-      QLog.i("MsgTabStoryVideoPreloader", 2, "当前网络状态, 不启动预下载");
+    BitmapFactory.Options localOptions;
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+      localOptions = new BitmapFactory.Options();
     }
-    do
+    try
     {
-      return null;
-      QLog.i("MsgTabStoryVideoPreloader", 2, "启动消息TAB节点预加载器");
-      paramJobContext = vyn.a(this.jdField_a_of_type_Vyn, this.jdField_a_of_type_JavaUtilList);
-    } while ((paramJobContext.isEmpty()) || (!this.jdField_a_of_type_Vyn.a()));
-    vyn.a(this.jdField_a_of_type_Vyn);
-    vyn.a(this.jdField_a_of_type_Vyn, paramJobContext);
-    this.jdField_a_of_type_Vyn.b();
-    return null;
+      this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_Vxh.a(paramContext, 1, localOptions);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = vyp.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      return this.jdField_a_of_type_AndroidGraphicsBitmap;
+    }
+    catch (Exception paramContext)
+    {
+      for (;;)
+      {
+        ykq.c(PhotoSelecter.a, "get thumbnail failed!", paramContext);
+      }
+    }
   }
 }
 

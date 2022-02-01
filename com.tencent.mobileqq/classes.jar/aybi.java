@@ -1,23 +1,16 @@
-import com.tencent.mobileqq.persistence.EntityDaoRegister;
-import com.tencent.mobileqq.persistence.OGAbstractDao;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aybi
+class aybi
+  implements DialogInterface.OnClickListener
 {
-  public static aybi a = new aybi();
+  aybi(aybf paramaybf) {}
   
-  public static aybi a()
-  {
-    return a;
-  }
-  
-  public OGAbstractDao a(Class paramClass)
-  {
-    return EntityDaoRegister.a(paramClass);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aybi
  * JD-Core Version:    0.7.0.1
  */

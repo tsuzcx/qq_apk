@@ -1,39 +1,30 @@
-import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
 
-class arhp
-  extends LbsManagerService.OnLocationChangeListener
+public class arhp
 {
-  arhp(arhi paramarhi, String paramString, boolean paramBoolean, aroo paramaroo)
+  @SerializedName("templateArray")
+  public arhq[] a;
+  @SerializedName("templateConfig")
+  public arhr[] a;
+  
+  public arhp()
   {
-    super(paramString, paramBoolean);
+    this.jdField_a_of_type_ArrayOfArhr = new arhr[0];
+    this.jdField_a_of_type_ArrayOfArhq = new arhq[0];
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public static arhp a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendManager", 2, "getExtendFriendLocationInfoAsync onLocationFinish " + paramInt);
+    if (paramString == null) {
+      return null;
     }
-    arhi localarhi;
-    if (this.jdField_a_of_type_Aroo != null)
-    {
-      localarhi = this.jdField_a_of_type_Arhi;
-      if (paramInt != 0) {
-        break label62;
-      }
-    }
-    label62:
-    for (boolean bool = true;; bool = false)
-    {
-      arhi.a(localarhi, bool, paramSosoLbsInfo, this.jdField_a_of_type_Aroo);
-      return;
-    }
+    return (arhp)new Gson().fromJson(paramString, arhp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arhp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,7 @@
 package com.tencent.ttpic.filament;
 
+import android.util.Log;
+import com.tencent.ttpic.baseutils.io.FileUtils;
 import com.tencent.ttpic.openapi.model.GLBItemJava;
 import java.util.Iterator;
 import java.util.List;
@@ -19,10 +21,34 @@ class FilamentFilter$3
       while (localIterator.hasNext())
       {
         GLBItemJava localGLBItemJava = (GLBItemJava)localIterator.next();
-        byte[] arrayOfByte = FilamentUtil.decryptGlb(localGLBItemJava.path);
-        if ((arrayOfByte != null) && (arrayOfByte.length > 0)) {
-          FilamentFilter.access$900(this.this$0).put(localGLBItemJava, arrayOfByte);
+        String str = FileUtils.getPostfix(localGLBItemJava.path);
+        Object localObject = "";
+        if ((str.equals(".glb")) || (str.equals(".dat")))
+        {
+          str = ".glb";
+          localObject = ".dat";
         }
+        for (;;)
+        {
+          Log.v(FilamentFilter.access$800(), "start loading file" + localGLBItemJava.path + str);
+          localObject = FilamentUtil.loadAndTryDecryptGlb(localGLBItemJava.path, str, (String)localObject);
+          if ((localObject == null) || (localObject.length <= 0)) {
+            break label222;
+          }
+          FilamentFilter.access$900(this.this$0).put(localGLBItemJava, localObject);
+          break;
+          if ((str.equals(".gltf")) || (str.equals(".datf")))
+          {
+            str = ".gltf";
+            localObject = ".datf";
+          }
+          else
+          {
+            Log.e(FilamentFilter.access$800(), "run: Undefined RES_POSTFIX: " + str);
+          }
+        }
+        label222:
+        Log.e(FilamentFilter.access$800(), "Fail to load glb file. May crash later");
       }
     }
     FilamentFilter.access$1102(this.this$0, true);

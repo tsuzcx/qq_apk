@@ -1,24 +1,24 @@
 package com.tencent.open.downloadnew;
 
 import android.app.Activity;
-import bhzm;
-import bibr;
-import bicl;
-import bicw;
+import bjko;
+import bjmt;
+import bjnn;
+import bjny;
 
 public class MyAppApi$19
   implements Runnable
 {
-  public MyAppApi$19(bicl parambicl, boolean paramBoolean, Activity paramActivity, String paramString) {}
+  public MyAppApi$19(bjnn parambjnn, boolean paramBoolean, Activity paramActivity, String paramString) {}
   
   public void run()
   {
-    bhzm.c("MyAppApi", "---isAutoInstall:" + bibr.c() + " url:" + bibr.a() + " interval:" + bibr.a());
-    boolean bool = bibr.b();
+    bjko.c("MyAppApi", "---isAutoInstall:" + bjmt.c() + " url:" + bjmt.a() + " interval:" + bjmt.a());
+    boolean bool = bjmt.b();
     if ((!this.this$0.b()) && (bool))
     {
-      bhzm.c("MyAppApi", "---startDownloadYYB---");
-      this.this$0.a = new bicw(this.this$0);
+      bjko.c("MyAppApi", "---startDownloadYYB---");
+      this.this$0.a = new bjny(this.this$0);
       this.this$0.a.jdField_a_of_type_Boolean = true;
       this.this$0.a.b = false;
       this.this$0.a.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;

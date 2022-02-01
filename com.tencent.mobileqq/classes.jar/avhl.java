@@ -1,16 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Observable;
 
-class avhl
-  implements View.OnClickListener
+public class avhl
+  extends Observable
 {
-  avhl(avhj paramavhj) {}
-  
-  public void onClick(View paramView)
+  public void setChanged()
   {
-    this.a.b();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super.setChanged();
   }
 }
 

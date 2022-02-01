@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
-import afcb;
-import amtj;
+import afth;
 import android.text.TextUtils;
-import bbkv;
+import anvx;
+import bcrn;
 import com.tencent.image.QQLiveDrawable;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.mobileqq.utils.FileUtils;
 
 public class MessageForLightVideo
   extends MessageForShortVideo
-  implements afcb
+  implements afth
 {
   public static final int LIGHT_VIDEO_STATUS_MUTE_PLAY = 3;
   public static final int LIGHT_VIDEO_STATUS_PAUSE = 2;
@@ -29,7 +29,7 @@ public class MessageForLightVideo
   public void doParse()
   {
     super.doParse();
-    if ("1".equals(getExtInfoFromExtStr(bbkv.u)))
+    if ("1".equals(getExtInfoFromExtStr(bcrn.u)))
     {
       this.isLightVideoRead = true;
       return;
@@ -40,7 +40,7 @@ public class MessageForLightVideo
   public String getSummaryMsg()
   {
     if (TextUtils.isEmpty(this.msg)) {
-      return amtj.a(2131705696);
+      return anvx.a(2131706047);
     }
     return this.msg;
   }
@@ -62,7 +62,7 @@ public class MessageForLightVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForLightVideo
  * JD-Core Version:    0.7.0.1
  */

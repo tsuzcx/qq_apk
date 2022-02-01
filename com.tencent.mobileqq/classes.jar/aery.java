@@ -1,104 +1,91 @@
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.FriendListHandler;
+import MQQ.PrivExtV2Rsp;
+import MQQ.VipMedalList;
+import MQQ.VipUserInfo;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.activity.QQSettingMe.31.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class aery
-  implements bjoe
+  extends aogx
 {
-  public aery(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity, aesg paramaesg, bjnw parambjnw) {}
+  public aery(QQSettingMe paramQQSettingMe) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    if ((this.jdField_a_of_type_Aesg.a instanceof Friends)) {}
-    for (paramView = ((Friends)this.jdField_a_of_type_Aesg.a).uin;; paramView = ((PhoneContact)this.jdField_a_of_type_Aesg.a).mobileCode) {
-      switch (paramInt)
+    if ((paramBoolean) && (paramInt >= 0) && (this.a.a != null))
+    {
+      Object localObject = this.a.a.getPreferences();
+      if (localObject != null) {
+        ((SharedPreferences)localObject).edit().putInt("key_selfvip_growthvalue", paramInt).commit();
+      }
+      localObject = this.a.a.getCurrentAccountUin();
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSettingRedesign", 2, "updateLevelAndVip from mVipInfoObserver");
+      }
+      this.a.c((String)localObject);
+    }
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    Object localObject;
+    if (paramInt == 1) {
+      if (paramBoolean)
       {
-      default: 
-        this.jdField_a_of_type_Bjnw.dismiss();
-        do
+        paramObject = (PrivExtV2Rsp)paramObject;
+        localObject = paramObject.vipInfo;
+        if ((localObject != null) && (((VipUserInfo)localObject).bUpdate == 1))
         {
-          return;
-        } while (!(this.jdField_a_of_type_Aesg.a instanceof PhoneContact));
-      }
-    }
-    Object localObject = AIOUtils.setOpenAIOIntent(new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.getActivity(), SplashActivity.class), null);
-    if ((this.jdField_a_of_type_Aesg.a instanceof Friends))
-    {
-      ((Intent)localObject).putExtra("uintype", 0);
-      ((Intent)localObject).putExtra("uin", paramView);
-      ((Intent)localObject).putExtra("uinname", ContactUtils.getFriendShowName(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app, paramView));
-      ((Intent)localObject).putExtra("entrance", 2);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.startActivity((Intent)localObject);
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app, "CliOper", "", "", "0X8004C51", "0X8004C51", 0, 0, "", "", "", "");
-      break;
-      if ((this.jdField_a_of_type_Aesg.a instanceof PhoneContact))
-      {
-        ((Intent)localObject).putExtra("uintype", 1006);
-        ((Intent)localObject).putExtra("uin", paramView);
-        ((Intent)localObject).putExtra("uinname", ((PhoneContact)this.jdField_a_of_type_Aesg.a).name);
-        ((Intent)localObject).putExtra("entrance", 2);
-      }
-    }
-    if ((this.jdField_a_of_type_Aesg.a instanceof Friends))
-    {
-      paramView = new ProfileActivity.AllInOne(paramView, 1);
-      paramView.jdField_h_of_type_Int = 59;
-      paramView.j = 2;
-    }
-    for (;;)
-    {
-      ProfileActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.getActivity(), paramView);
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app, "CliOper", "", "", "0X8004C52", "0X8004C52", 0, 0, "", "", "", "");
-      break;
-      if ((this.jdField_a_of_type_Aesg.a instanceof PhoneContact))
-      {
-        localObject = (PhoneContact)this.jdField_a_of_type_Aesg.a;
-        paramView = new ProfileActivity.AllInOne(((PhoneContact)localObject).mobileCode, 34);
-        paramView.jdField_h_of_type_Int = 59;
-        paramView.jdField_h_of_type_JavaLangString = ((PhoneContact)localObject).name;
-        paramView.j = 2;
-        continue;
-        if (NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.getActivity())) {
-          if ((this.jdField_a_of_type_Aesg.a instanceof Friends))
+          localObject = ((VipUserInfo)localObject).sUri;
+          if (localObject != null)
           {
-            localObject = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app.getBusinessHandler(1);
-            ArrayList localArrayList = new ArrayList();
-            localArrayList.add(paramView);
-            ((FriendListHandler)localObject).gatherContacts((short)1, localArrayList, false);
+            QQSettingMe.b(this.a, (String)localObject);
+            if (QLog.isColorLevel()) {
+              QLog.d("QQSettingRedesign", 2, "vip url = " + (String)localObject);
+            }
+            localObject = this.a.a.getApplication().getSharedPreferences(this.a.a.getCurrentAccountUin(), 4).edit().putString("VIPCenter_url_key", (String)localObject);
+            if (Build.VERSION.SDK_INT >= 9) {
+              break label216;
+            }
+            ((SharedPreferences.Editor)localObject).commit();
           }
         }
-        for (;;)
-        {
-          bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app, "CliOper", "", "", "0X8004C53", "0X8004C53", 0, 0, "", "", "", "");
-          break;
-          if ((this.jdField_a_of_type_Aesg.a instanceof PhoneContact))
-          {
-            ((PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app.getManager(11)).a(((PhoneContact)this.jdField_a_of_type_Aesg.a).mobileCode, false);
-            continue;
-            this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.a(2131694109, 0);
-          }
+        localObject = this.a.a.getCurrentAccountUin();
+        this.a.c((String)localObject);
+        if (paramObject.medalInfoList != null) {
+          bhnz.a(paramObject.medalInfoList.lhNumFlag, paramObject.medalInfoList.lhLogoLv);
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.a(paramView);
-        bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app, "CliOper", "", "", "0X8004C54", "0X8004C54", 0, 0, "", "", "", "");
-        break;
+        this.a.b.post(new QQSettingMe.31.1(this));
       }
-      paramView = null;
+      else
+      {
+        QQSettingMe.f(this.a);
+      }
     }
+    label216:
+    do
+    {
+      return;
+      ((SharedPreferences.Editor)localObject).apply();
+      break;
+      if ((paramBoolean) && (paramInt == 6))
+      {
+        QQSettingMe.f(this.a);
+        return;
+      }
+      if (paramInt == 4)
+      {
+        this.a.b.sendEmptyMessage(2);
+        return;
+      }
+    } while (paramInt != 5);
+    this.a.b.sendMessage(this.a.b.obtainMessage(3, paramObject));
   }
 }
 

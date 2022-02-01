@@ -1,6 +1,8 @@
-class vuz
+public abstract interface vuz
 {
-  public static final vux a = new vux(null);
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import akrx;
+import alpt;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.opengl.GLES20;
@@ -8,25 +8,25 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import apju;
-import ayde;
-import azzv;
-import babd;
-import babj;
-import bacm;
-import bacn;
-import baco;
-import bacp;
-import bacq;
-import bbta;
-import bbub;
-import bljd;
-import bmbx;
-import bmql;
-import bmqu;
-import bnxr;
-import boba;
-import bobr;
+import aqmy;
+import azjq;
+import bbge;
+import bbhm;
+import bbhs;
+import bbiv;
+import bbiw;
+import bbix;
+import bbiy;
+import bbiz;
+import bczv;
+import bdaw;
+import bmwb;
+import bnrh;
+import bogd;
+import bogm;
+import bpnj;
+import bpqs;
+import bprj;
 import com.tencent.aekit.api.standard.AEModule;
 import com.tencent.av.opengl.filter.qqavimage.QQAVImageFilterConstants;
 import com.tencent.biz.videostory.config.VSConfigManager;
@@ -66,12 +66,12 @@ public class EffectsCameraCaptureView
   private int A;
   private int B;
   private int C;
-  private bacm jdField_a_of_type_Bacm;
-  private bacn jdField_a_of_type_Bacn;
-  private baco jdField_a_of_type_Baco;
-  private bacp jdField_a_of_type_Bacp;
-  private bacq jdField_a_of_type_Bacq = new bacq();
-  protected bobr a;
+  private bbiv jdField_a_of_type_Bbiv;
+  private bbiw jdField_a_of_type_Bbiw;
+  private bbix jdField_a_of_type_Bbix;
+  private bbiy jdField_a_of_type_Bbiy;
+  private bbiz jdField_a_of_type_Bbiz = new bbiz();
+  protected bprj a;
   private QQDanceEventHandler jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQDanceEventHandler;
   protected QQFilterRenderManager a;
   private String jdField_a_of_type_JavaLangString;
@@ -97,21 +97,21 @@ public class EffectsCameraCaptureView
   static
   {
     SvEffectSdkInitor.init();
-    bljd.a();
+    bmwb.a();
     VideoPrefsUtil.init(BaseApplicationImpl.getContext(), ShortVideoUtils.getPtvTemplateSDKPref());
-    BadcaseReportUtils.registerReport(new babj());
+    BadcaseReportUtils.registerReport(new bbhs());
   }
   
   public EffectsCameraCaptureView(@NonNull Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Bobr = new bobr();
+    this.jdField_a_of_type_Bprj = new bprj();
   }
   
   public EffectsCameraCaptureView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Bobr = new bobr();
+    this.jdField_a_of_type_Bprj = new bprj();
   }
   
   public static QQFilterRenderManager a()
@@ -124,18 +124,18 @@ public class EffectsCameraCaptureView
   
   private MovieMaterial a()
   {
-    boba localboba = (boba)bmql.a(3);
-    if (localboba != null) {
-      return localboba.a();
+    bpqs localbpqs = (bpqs)bogd.a(3);
+    if (localbpqs != null) {
+      return localbpqs.a();
     }
     return null;
   }
   
   private void a(MovieMaterial paramMovieMaterial)
   {
-    boba localboba = (boba)bmql.a(3);
-    if (localboba != null) {
-      localboba.a(paramMovieMaterial);
+    bpqs localbpqs = (bpqs)bogd.a(3);
+    if (localbpqs != null) {
+      localbpqs.a(paramMovieMaterial);
     }
   }
   
@@ -189,10 +189,10 @@ public class EffectsCameraCaptureView
         localQQFilterRenderManager.setParam("key_enable_ptv", String.valueOf(this.r));
         localQQFilterRenderManager.setParam("key_width", String.valueOf(this.jdField_n_of_type_Int));
         localQQFilterRenderManager.setParam("key_height", String.valueOf(this.jdField_o_of_type_Int));
-        localQQFilterRenderManager.setBackCameraDetectEnable(bnxr.a().c());
+        localQQFilterRenderManager.setBackCameraDetectEnable(bpnj.a().c());
         localQQFilterRenderManager.setCaptureMode(this.c);
         paramInt = localQQFilterRenderManager.drawFrame(paramInt);
-        if (this.A != this.jdField_a_of_type_Bacq.jdField_a_of_type_Int)
+        if (this.A != this.jdField_a_of_type_Bbiz.jdField_a_of_type_Int)
         {
           this.m = false;
           this.l = false;
@@ -200,7 +200,7 @@ public class EffectsCameraCaptureView
           this.p = false;
           this.z = 0;
         }
-        if (this.jdField_a_of_type_Bacq.jdField_a_of_type_Int != 0) {
+        if (this.jdField_a_of_type_Bbiz.jdField_a_of_type_Int != 0) {
           break label441;
         }
         if ((!localQQFilterRenderManager.mNeedDoFaceDetect) || (localQQFilterRenderManager.mDetectedFace) || (!this.m)) {
@@ -215,19 +215,19 @@ public class EffectsCameraCaptureView
     for (;;)
     {
       i = paramInt;
-      if (this.jdField_a_of_type_Bacn != null)
+      if (this.jdField_a_of_type_Bbiw != null)
       {
         long l1 = System.currentTimeMillis();
         i = paramInt;
         if (l1 - this.d >= this.e)
         {
-          ayde.a("Q.videostory", "Q.videostory.capture", "capturebitmap", "start");
-          this.jdField_a_of_type_Bacn.a(GlUtil.captureFrame(paramInt, this.jdField_n_of_type_Int, this.jdField_o_of_type_Int, 0));
+          azjq.a("Q.videostory", "Q.videostory.capture", "capturebitmap", "start");
+          this.jdField_a_of_type_Bbiw.a(GlUtil.captureFrame(paramInt, this.jdField_n_of_type_Int, this.jdField_o_of_type_Int, 0));
           this.d = l1;
           i = paramInt;
         }
       }
-      this.jdField_a_of_type_Baco.a(System.currentTimeMillis());
+      this.jdField_a_of_type_Bbix.a(System.currentTimeMillis());
       return i;
       label367:
       bool = false;
@@ -242,7 +242,7 @@ public class EffectsCameraCaptureView
         a(localQQFilterRenderManager.mNeedDoFaceDetect, localQQFilterRenderManager.mDetectedFace, false, false, 0);
         continue;
         label441:
-        if (this.jdField_a_of_type_Bacq.jdField_a_of_type_Int == 1)
+        if (this.jdField_a_of_type_Bbiz.jdField_a_of_type_Int == 1)
         {
           if ((localQQFilterRenderManager.mNeedDoGestureDetect) && (!localQQFilterRenderManager.mDetectedGesture) && (this.p))
           {
@@ -254,7 +254,7 @@ public class EffectsCameraCaptureView
             a(false, false, localQQFilterRenderManager.mNeedDoGestureDetect, localQQFilterRenderManager.mDetectedGesture, 1);
           }
         }
-        else if ((this.jdField_a_of_type_Bacq.jdField_a_of_type_Int == 2) && (localQQFilterRenderManager.mNeedDoFaceDetect) && (localQQFilterRenderManager.mNeedDoGestureDetect) && ((localQQFilterRenderManager.mDetectedFace != this.m) || (localQQFilterRenderManager.mDetectedGesture != this.p) || (this.jdField_n_of_type_Boolean)))
+        else if ((this.jdField_a_of_type_Bbiz.jdField_a_of_type_Int == 2) && (localQQFilterRenderManager.mNeedDoFaceDetect) && (localQQFilterRenderManager.mNeedDoGestureDetect) && ((localQQFilterRenderManager.mDetectedFace != this.m) || (localQQFilterRenderManager.mDetectedGesture != this.p) || (this.jdField_n_of_type_Boolean)))
         {
           this.jdField_n_of_type_Boolean = false;
           a(localQQFilterRenderManager.mNeedDoFaceDetect, localQQFilterRenderManager.mDetectedFace, localQQFilterRenderManager.mNeedDoGestureDetect, localQQFilterRenderManager.mDetectedGesture, 2);
@@ -275,18 +275,18 @@ public class EffectsCameraCaptureView
     this.p = paramBoolean4;
     this.z = 0;
     this.A = paramInt;
-    if (this.jdField_a_of_type_Baco != null)
+    if (this.jdField_a_of_type_Bbix != null)
     {
-      baco localbaco = this.jdField_a_of_type_Baco;
+      bbix localbbix = this.jdField_a_of_type_Bbix;
       boolean bool1 = bool2;
-      if (!bbta.a().b())
+      if (!bczv.a().a())
       {
         bool1 = bool2;
         if (paramBoolean1) {
           bool1 = true;
         }
       }
-      localbaco.a(bool1, paramBoolean2, paramBoolean3, paramBoolean4);
+      localbbix.a(bool1, paramBoolean2, paramBoolean3, paramBoolean4);
     }
   }
   
@@ -300,12 +300,12 @@ public class EffectsCameraCaptureView
     if (this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager != null)
     {
       bool1 = this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.hasActiveFilter();
-      if ((this.jdField_a_of_type_Int != 1) || (!bbub.g())) {
+      if ((this.jdField_a_of_type_Int != 1) || (!bdaw.g())) {
         break label65;
       }
       i = 1;
       label42:
-      if ((!apju.a()) || (bool1) || (i != 0)) {
+      if ((!aqmy.a()) || (bool1) || (i != 0)) {
         break label70;
       }
     }
@@ -341,7 +341,7 @@ public class EffectsCameraCaptureView
   
   protected boolean c()
   {
-    if (bnxr.a().a()) {}
+    if (bpnj.a().a()) {}
     do
     {
       do
@@ -354,7 +354,7 @@ public class EffectsCameraCaptureView
       if ((!this.j) || (this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager == null)) {
         break;
       }
-    } while (bnxr.a().a(this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.getAllActiveFilters()) >= bnxr.a().a());
+    } while (bpnj.a().a(this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.getAllActiveFilters()) >= bpnj.a().a());
     return false;
     return false;
   }
@@ -379,7 +379,7 @@ public class EffectsCameraCaptureView
   
   public void d(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Baco.c(paramBoolean);
+    this.jdField_a_of_type_Bbix.c(paramBoolean);
   }
   
   public boolean d()
@@ -389,7 +389,7 @@ public class EffectsCameraCaptureView
   
   public void e(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Baco.b(paramBoolean);
+    this.jdField_a_of_type_Bbix.b(paramBoolean);
   }
   
   public boolean e()
@@ -407,7 +407,7 @@ public class EffectsCameraCaptureView
     if (d())
     {
       r();
-      akrx.a("", "0X80083BA", bmqu.b);
+      alpt.a("", "0X80083BA", bogm.b);
     }
     v();
     if (this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager != null)
@@ -438,8 +438,8 @@ public class EffectsCameraCaptureView
       if (this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager != null) {
         this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.surfaceDestroyed();
       }
-      if (this.jdField_a_of_type_Bacp != null) {
-        this.jdField_a_of_type_Bacp.a();
+      if (this.jdField_a_of_type_Bbiy != null) {
+        this.jdField_a_of_type_Bbiy.a();
       }
       this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = null;
       this.j = false;
@@ -468,11 +468,11 @@ public class EffectsCameraCaptureView
       i += 1;
     }
     d1 = Math.log10(d1 / arrayOfShort.length);
-    if (this.jdField_a_of_type_Bacm != null) {
-      this.jdField_a_of_type_Bacm.a(d1 * 10.0D);
+    if (this.jdField_a_of_type_Bbiv != null) {
+      this.jdField_a_of_type_Bbiv.a(d1 * 10.0D);
     }
-    this.jdField_a_of_type_Azzv.a(paramArrayOfByte, paramInt1, paramInt2);
-    this.jdField_a_of_type_Bobr.a(paramArrayOfByte, paramInt1, paramInt2);
+    this.jdField_a_of_type_Bbge.a(paramArrayOfByte, paramInt1, paramInt2);
+    this.jdField_a_of_type_Bprj.a(paramArrayOfByte, paramInt1, paramInt2);
   }
   
   public void onAudioInit() {}
@@ -543,8 +543,8 @@ public class EffectsCameraCaptureView
       if (this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.getBusinessOperation().isRunningMovieFilter()) {
         this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.getBusinessOperation().playMovie(null, null, false, null, 0.0F, 0.0F, 0.0F, 0.0F);
       }
-      if (this.jdField_a_of_type_Baco != null) {
-        this.jdField_a_of_type_Baco.a(null, null);
+      if (this.jdField_a_of_type_Bbix != null) {
+        this.jdField_a_of_type_Bbix.a(null, null);
       }
     }
   }
@@ -578,7 +578,7 @@ public class EffectsCameraCaptureView
         String str;
         if (localObject != null)
         {
-          this.jdField_a_of_type_Baco.a(null, null);
+          this.jdField_a_of_type_Bbix.a(null, null);
           localFilterBusinessOperation = this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.getBusinessOperation();
           str = ((File)localObject).getAbsolutePath();
           if (localFile == null)
@@ -589,7 +589,7 @@ public class EffectsCameraCaptureView
         }
         for (;;)
         {
-          this.jdField_a_of_type_Baco.a(localMovieMaterial.hintsContent, localMovieMaterial.hintImagePath);
+          this.jdField_a_of_type_Bbix.a(localMovieMaterial.hintsContent, localMovieMaterial.hintImagePath);
           return;
           localObject = localFile.getAbsolutePath();
           break;
@@ -603,7 +603,7 @@ public class EffectsCameraCaptureView
           if (FileUtils.fileExists(localMovieMaterial.doodleAudioPath)) {}
           for (localFile = new File(localMovieMaterial.doodleAudioPath); localObject != null; localFile = null)
           {
-            this.jdField_a_of_type_Baco.a(null, null);
+            this.jdField_a_of_type_Bbix.a(null, null);
             localFilterBusinessOperation = this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.getBusinessOperation();
             str = ((File)localObject).getAbsolutePath();
             if (localFile == null) {}
@@ -621,8 +621,8 @@ public class EffectsCameraCaptureView
   
   public void s()
   {
-    if ((this.jdField_a_of_type_Baco != null) && (d())) {
-      this.jdField_a_of_type_Baco.a(null, null);
+    if ((this.jdField_a_of_type_Bbix != null) && (d())) {
+      this.jdField_a_of_type_Bbix.a(null, null);
     }
   }
   
@@ -647,9 +647,9 @@ public class EffectsCameraCaptureView
     this.q = paramBoolean;
   }
   
-  public void setCaptureRequest(bacn parambacn)
+  public void setCaptureRequest(bbiw parambbiw)
   {
-    this.jdField_a_of_type_Bacn = parambacn;
+    this.jdField_a_of_type_Bbiw = parambbiw;
   }
   
   public void setDanceFilterEventHandler(QQDanceEventHandler paramQQDanceEventHandler)
@@ -672,9 +672,9 @@ public class EffectsCameraCaptureView
     this.r = paramBoolean;
   }
   
-  public void setFaceEffectListener(baco parambaco)
+  public void setFaceEffectListener(bbix parambbix)
   {
-    this.jdField_a_of_type_Baco = parambaco;
+    this.jdField_a_of_type_Bbix = parambbix;
   }
   
   public void setFilter(FilterCategoryItem paramFilterCategoryItem)
@@ -701,9 +701,9 @@ public class EffectsCameraCaptureView
     this.s = paramBoolean;
   }
   
-  public void setFiltersChainListener(bacp parambacp)
+  public void setFiltersChainListener(bbiy parambbiy)
   {
-    this.jdField_a_of_type_Bacp = parambacp;
+    this.jdField_a_of_type_Bbiy = parambbiy;
   }
   
   public void setHasStoryWaterMark(boolean paramBoolean)
@@ -774,8 +774,8 @@ public class EffectsCameraCaptureView
       if (QLog.isColorLevel()) {
         QLog.d("EffectsCameraCaptureView", 2, "QQFilterRenderManager initQQFilterManger");
       }
-      this.t = babd.a(true);
-      bmbx.d("EffectsCameraCaptureView", "initQQFilterManger: soLoaded = " + this.t);
+      this.t = bbhm.a(true);
+      bnrh.d("EffectsCameraCaptureView", "initQQFilterManger: soLoaded = " + this.t);
       Object localObject = new QQFilterRenderManager();
       this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = ((QQFilterRenderManager)localObject);
       jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = (QQFilterRenderManager)localObject;
@@ -790,8 +790,8 @@ public class EffectsCameraCaptureView
       ((QQFilterRenderManager.ChainBuilder)localObject).addFilter(90, null);
       ((QQFilterRenderManager.ChainBuilder)localObject).addFilter(100, null);
       ((QQFilterRenderManager.ChainBuilder)localObject).addFilter(184, null);
-      if (this.jdField_a_of_type_Bacp != null) {
-        this.jdField_a_of_type_Bacp.a((QQFilterRenderManager.ChainBuilder)localObject);
+      if (this.jdField_a_of_type_Bbiy != null) {
+        this.jdField_a_of_type_Bbiy.a((QQFilterRenderManager.ChainBuilder)localObject);
       }
       if (this.t) {
         ((QQFilterRenderManager.ChainBuilder)localObject).commit();
@@ -808,7 +808,7 @@ public class EffectsCameraCaptureView
   
   public void u()
   {
-    this.jdField_a_of_type_Baco.a();
+    this.jdField_a_of_type_Bbix.a();
   }
   
   public void v()

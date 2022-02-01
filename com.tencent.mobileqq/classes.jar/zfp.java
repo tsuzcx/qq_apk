@@ -1,195 +1,349 @@
 import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Handler;
-import android.os.Looper;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewStub;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.ImageButton;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.subscribe.comment.CommentEditText;
-import com.tencent.biz.subscribe.comment.CommentInputPopupWindow.7;
-import com.tencent.biz.subscribe.comment.CommentInputPopupWindow.8;
-import com.tencent.biz.subscribe.comment.EmoView;
-import com.tencent.biz.subscribe.comment.WorkSpaceView;
+import android.media.MediaExtractor;
+import android.media.MediaFormat;
+import android.media.MediaMetadataRetriever;
+import android.media.MediaMuxer;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
+@TargetApi(18)
 public class zfp
-  extends zhc
-  implements DialogInterface.OnDismissListener, View.OnClickListener
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private View jdField_a_of_type_AndroidViewView;
-  private InputMethodManager jdField_a_of_type_AndroidViewInputmethodInputMethodManager;
-  private ImageButton jdField_a_of_type_AndroidWidgetImageButton;
-  private CommentEditText jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText;
-  private EmoView jdField_a_of_type_ComTencentBizSubscribeCommentEmoView;
-  private zfa jdField_a_of_type_Zfa;
-  private zfr jdField_a_of_type_Zfr;
-  private zhd jdField_a_of_type_Zhd;
-  private boolean jdField_a_of_type_Boolean;
-  private ImageButton jdField_b_of_type_AndroidWidgetImageButton;
-  private boolean jdField_b_of_type_Boolean;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private MediaExtractor jdField_a_of_type_AndroidMediaMediaExtractor;
+  private MediaMuxer jdField_a_of_type_AndroidMediaMediaMuxer;
+  private String jdField_a_of_type_JavaLangString;
+  private zfr jdField_a_of_type_Zfr = new zfr(null);
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private MediaExtractor jdField_b_of_type_AndroidMediaMediaExtractor;
+  private String jdField_b_of_type_JavaLangString;
   
-  private Handler a()
+  public zfp(String paramString1, String paramString2, long paramLong1, long paramLong2)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    }
-    return this.jdField_a_of_type_AndroidOsHandler;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
   }
   
-  private void a(boolean paramBoolean)
+  private int a(MediaExtractor paramMediaExtractor, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView.setVisibility(8);
+    if (paramMediaExtractor == null) {
+      return -1;
     }
-    d(this.jdField_a_of_type_AndroidViewView);
-    if (paramBoolean) {
-      a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText);
-    }
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      c(this.jdField_a_of_type_AndroidViewView);
-    }
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView.setVisibility(0);
-    WorkSpaceView localWorkSpaceView = (WorkSpaceView)this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView.getChildAt(0);
-    if (localWorkSpaceView != null) {
-      a().post(new CommentInputPopupWindow.8(this, localWorkSpaceView));
-    }
-    if ("workSpaceView is empty" + localWorkSpaceView != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("CommentInputPopupWindow", 1, new Object[] { Boolean.valueOf(bool) });
-      b(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText);
-      return;
-    }
-  }
-  
-  private void c(View paramView)
-  {
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
-    localLayoutParams.height = paramView.getHeight();
-    localLayoutParams.weight = 0.0F;
-    paramView.setLayoutParams(localLayoutParams);
-  }
-  
-  private void d(View paramView)
-  {
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
-    localLayoutParams.height = 0;
-    localLayoutParams.weight = 1.0F;
-    paramView.setLayoutParams(localLayoutParams);
-  }
-  
-  @TargetApi(19)
-  public void G_()
-  {
     int i = 0;
-    super.G_();
-    Object localObject = getWindow();
-    if (localObject == null) {}
-    label101:
-    for (;;)
+    while (i < paramMediaExtractor.getTrackCount())
     {
-      return;
-      localObject = ((Window)localObject).getDecorView();
-      if ((localObject instanceof ViewGroup))
+      String str = paramMediaExtractor.getTrackFormat(i).getString("mime");
+      if (QLog.isColorLevel()) {
+        QLog.d("HwVideoMerge", 2, "format for track " + i + " is " + str);
+      }
+      if (str.startsWith(paramString))
       {
-        localObject = ((ViewGroup)localObject).getChildAt(0);
-        if ((localObject instanceof ViewGroup))
+        paramMediaExtractor.selectTrack(i);
+        return i;
+      }
+      i += 1;
+    }
+    return -1;
+  }
+  
+  public static final int a(String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    paramString2 = new zfp(paramString1, paramString2, 0L, 0L);
+    int i = paramString2.a(paramString3, paramInt);
+    if ((i == -2) || (i == -4) || (i == -6)) {
+      if (new File(paramString1).renameTo(new File(paramString3))) {
+        paramInt = 0;
+      }
+    }
+    do
+    {
+      return paramInt;
+      return -10;
+      paramInt = i;
+    } while (i != 0);
+    return paramString2.a();
+  }
+  
+  public static final int a(String paramString1, String paramString2, String paramString3, int paramInt, long paramLong1, long paramLong2)
+  {
+    paramString2 = new zfp(paramString1, paramString2, paramLong1, paramLong2);
+    int i = paramString2.a(paramString3, paramInt);
+    if ((i == -2) || (i == -4) || (i == -6)) {
+      if (new File(paramString1).renameTo(new File(paramString3))) {
+        paramInt = 0;
+      }
+    }
+    do
+    {
+      return paramInt;
+      return -10;
+      paramInt = i;
+    } while (i != 0);
+    paramString2.a();
+    return i;
+  }
+  
+  private MediaExtractor a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      MediaExtractor localMediaExtractor = new MediaExtractor();
+      try
+      {
+        localMediaExtractor.setDataSource(paramString);
+        return localMediaExtractor;
+      }
+      catch (IOException localIOException)
+      {
+        a("createExtractor path:" + paramString, localIOException);
+        localMediaExtractor.release();
+        return null;
+      }
+    }
+    return null;
+  }
+  
+  private void a()
+  {
+    boolean bool2 = false;
+    int i = 0;
+    while ((!bool2) || (i == 0))
+    {
+      boolean bool1 = bool2;
+      if (!bool2)
+      {
+        bool2 = a();
+        bool1 = bool2;
+        if (!bool2)
         {
-          int j = ((ViewGroup)localObject).getChildCount();
-          for (;;)
-          {
-            if (i >= j) {
-              break label101;
-            }
-            View localView = ((ViewGroup)localObject).getChildAt(i);
-            if ((localView == null) || (localView.getId() == 16908290)) {
-              break;
-            }
-            if (!(localView instanceof ViewStub)) {
-              localView.setAlpha(0.0F);
-            }
-            i += 1;
-          }
+          this.jdField_a_of_type_AndroidMediaMediaMuxer.writeSampleData(this.jdField_a_of_type_Zfr.jdField_a_of_type_Int, this.jdField_a_of_type_Zfr.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_Zfr.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
+          bool1 = bool2;
+        }
+      }
+      bool2 = bool1;
+      if (i == 0)
+      {
+        boolean bool3 = b();
+        bool2 = bool1;
+        i = bool3;
+        if (!bool3)
+        {
+          this.jdField_a_of_type_AndroidMediaMediaMuxer.writeSampleData(this.jdField_a_of_type_Zfr.jdField_b_of_type_Int, this.jdField_a_of_type_Zfr.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_Zfr.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
+          bool2 = bool1;
+          i = bool3;
         }
       }
     }
   }
   
-  public void a(View paramView)
+  private static void a(String paramString, Throwable paramThrowable)
   {
-    paramView.requestFocus();
-    paramView.post(new CommentInputPopupWindow.7(this, paramView));
-  }
-  
-  public void b(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-  }
-  
-  public void dismiss()
-  {
-    b(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText);
-    a(false);
-    super.dismiss();
-  }
-  
-  public void onClick(View paramView)
-  {
-    QLog.d("CommentInputPopupWindow", 1, "onClick:" + paramView.getId());
-    switch (paramView.getId())
+    if (QLog.isColorLevel())
     {
+      if (paramThrowable != null) {
+        QLog.d("HwVideoMerge", 2, paramString, paramThrowable);
+      }
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+    else {
       return;
-      QLog.d("CommentInputPopupWindow", 1, "btn_emotion");
+    }
+    QLog.d("HwVideoMerge", 2, paramString);
+  }
+  
+  private boolean a()
+  {
+    this.jdField_a_of_type_Zfr.jdField_a_of_type_JavaNioByteBuffer.position(0);
+    if (this.jdField_a_of_type_AndroidMediaMediaExtractor == null) {}
+    int i;
+    do
+    {
+      return true;
+      i = this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_Zfr.jdField_a_of_type_JavaNioByteBuffer, 0);
+    } while (i <= 0);
+    this.jdField_a_of_type_Zfr.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime();
+    this.jdField_a_of_type_Zfr.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size = i;
+    this.jdField_a_of_type_Zfr.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset = 0;
+    this.jdField_a_of_type_Zfr.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleFlags();
+    this.jdField_a_of_type_AndroidMediaMediaExtractor.advance();
+    return false;
+  }
+  
+  private int b()
+  {
+    int i = 0;
+    this.jdField_a_of_type_Zfr.jdField_a_of_type_JavaNioByteBuffer.position(0);
+    if (this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_Zfr.jdField_a_of_type_JavaNioByteBuffer, 0) <= 0)
+    {
       b();
-      this.jdField_b_of_type_AndroidWidgetImageButton.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
-      continue;
-      QLog.d("CommentInputPopupWindow", 1, "text_input");
-      a(true);
-      this.jdField_b_of_type_AndroidWidgetImageButton.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-      continue;
-      if (this.jdField_a_of_type_Zfa != null)
+      i = -5;
+    }
+    do
+    {
+      return i;
+      this.jdField_a_of_type_Zfr.jdField_a_of_type_JavaNioByteBuffer.position(0);
+    } while (this.jdField_b_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_Zfr.jdField_a_of_type_JavaNioByteBuffer, 0) > 0);
+    b();
+    return -6;
+  }
+  
+  private static int b(String paramString, int paramInt)
+  {
+    MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
+    try
+    {
+      localMediaMetadataRetriever.setDataSource(paramString);
+      paramString = null;
+      try
       {
-        this.jdField_a_of_type_Zfa.a();
-        continue;
-        QLog.d("CommentInputPopupWindow", 1, "btn_keyboard");
-        a(true);
-        this.jdField_b_of_type_AndroidWidgetImageButton.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+        String str = localMediaMetadataRetriever.extractMetadata(24);
+        paramString = str;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          QLog.e("HwVideoMerge", 2, localException, new Object[0]);
+        }
+      }
+      localMediaMetadataRetriever.release();
+      if (paramString == null) {
+        return paramInt;
+      }
+      int i;
+      return paramInt;
+    }
+    catch (IllegalArgumentException paramString)
+    {
+      try
+      {
+        i = Integer.parseInt(paramString);
+        return i;
+      }
+      catch (NumberFormatException paramString) {}
+      paramString = paramString;
+      return paramInt;
+    }
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_AndroidMediaMediaExtractor != null)
+    {
+      this.jdField_a_of_type_AndroidMediaMediaExtractor.release();
+      this.jdField_a_of_type_AndroidMediaMediaExtractor = null;
+    }
+    if (this.jdField_b_of_type_AndroidMediaMediaExtractor != null)
+    {
+      this.jdField_b_of_type_AndroidMediaMediaExtractor.release();
+      this.jdField_b_of_type_AndroidMediaMediaExtractor = null;
+    }
+  }
+  
+  private boolean b()
+  {
+    this.jdField_a_of_type_Zfr.jdField_a_of_type_JavaNioByteBuffer.position(0);
+    if (this.jdField_b_of_type_AndroidMediaMediaExtractor == null) {
+      return true;
+    }
+    long l = this.jdField_b_of_type_AndroidMediaMediaExtractor.getSampleTime();
+    int i = this.jdField_b_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_Zfr.jdField_a_of_type_JavaNioByteBuffer, 0);
+    if ((i <= 0) || ((this.jdField_b_of_type_Long != 0L) && (l > this.jdField_b_of_type_Long * 1000L)))
+    {
+      QLog.d("HwVideoMerge", 2, "getAudioInputBuffer audio end. sampleTime:" + l);
+      return true;
+    }
+    this.jdField_a_of_type_Zfr.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs = l;
+    this.jdField_a_of_type_Zfr.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size = i;
+    this.jdField_a_of_type_Zfr.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset = 0;
+    this.jdField_a_of_type_Zfr.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags = this.jdField_b_of_type_AndroidMediaMediaExtractor.getSampleFlags();
+    this.jdField_b_of_type_AndroidMediaMediaExtractor.advance();
+    return false;
+  }
+  
+  public int a()
+  {
+    int i = 0;
+    this.jdField_a_of_type_AndroidMediaMediaMuxer.start();
+    try
+    {
+      a();
+      this.jdField_a_of_type_AndroidMediaMediaMuxer.stop();
+      this.jdField_a_of_type_AndroidMediaMediaMuxer.release();
+      this.jdField_a_of_type_AndroidMediaMediaMuxer = null;
+      b();
+      return i;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("HwVideoMerge", 1, "doWork error, ", localException);
+        i = -13;
       }
     }
   }
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public int a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Zhd.a();
-    this.jdField_a_of_type_Zhd = null;
-    this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetImageButton.setVisibility(0);
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Zfr != null) {
-      this.jdField_a_of_type_Zfr.a();
+    this.jdField_a_of_type_AndroidMediaMediaExtractor = a(this.jdField_a_of_type_JavaLangString);
+    int i = a(this.jdField_a_of_type_AndroidMediaMediaExtractor, "video/");
+    if ((this.jdField_a_of_type_AndroidMediaMediaExtractor == null) || (i < 0)) {
+      i = -1;
     }
+    int j;
+    MediaFormat localMediaFormat1;
+    MediaFormat localMediaFormat2;
+    do
+    {
+      return i;
+      this.jdField_b_of_type_AndroidMediaMediaExtractor = a(this.jdField_b_of_type_JavaLangString);
+      j = a(this.jdField_b_of_type_AndroidMediaMediaExtractor, "audio/");
+      if ((this.jdField_b_of_type_AndroidMediaMediaExtractor == null) || (j < 0)) {
+        return -2;
+      }
+      if (this.jdField_a_of_type_Long > 0L) {
+        this.jdField_b_of_type_AndroidMediaMediaExtractor.seekTo(this.jdField_b_of_type_Long * 1000L, 0);
+      }
+      localMediaFormat1 = this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackFormat(i);
+      localMediaFormat2 = this.jdField_b_of_type_AndroidMediaMediaExtractor.getTrackFormat(j);
+      this.jdField_a_of_type_Int = localMediaFormat1.getInteger("width");
+      this.jdField_b_of_type_Int = localMediaFormat1.getInteger("height");
+      this.jdField_a_of_type_Zfr.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      j = b();
+      i = j;
+    } while (j != 0);
+    if (TextUtils.isEmpty(paramString))
+    {
+      b();
+      return -9;
+    }
+    try
+    {
+      if (new File(paramString).exists())
+      {
+        b();
+        return -8;
+      }
+      this.jdField_a_of_type_AndroidMediaMediaMuxer = new MediaMuxer(paramString, 0);
+      paramInt = b(this.jdField_a_of_type_JavaLangString, paramInt);
+      this.jdField_a_of_type_AndroidMediaMediaMuxer.setOrientationHint(paramInt);
+      this.jdField_a_of_type_Zfr.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack(localMediaFormat1);
+      this.jdField_a_of_type_Zfr.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack(localMediaFormat2);
+      return j;
+    }
+    catch (IOException paramString)
+    {
+      this.jdField_a_of_type_AndroidMediaMediaMuxer = null;
+      b();
+    }
+    return -7;
   }
 }
 

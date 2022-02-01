@@ -1,26 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
-
-public class rdp
-  implements Cloneable
+class rdp
+  implements rgm
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
+  rdp(rdo paramrdo) {}
   
-  protected Object clone()
+  public void a()
   {
-    try
-    {
-      rdp localrdp = (rdp)super.clone();
-      return localrdp;
+    pnw localpnw = this.a.jdField_a_of_type_Szd.a().a();
+    if (localpnw != null) {
+      localpnw.a(null, ((qfw)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      QLog.e("NewPolymericInfo", 2, "PackTopicExtraInfo item clone failed. exception = " + localCloneNotSupportedException);
-    }
-    return null;
   }
 }
 

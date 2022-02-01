@@ -1,39 +1,128 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarFragment;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarFragment.3;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.io.ByteArrayInputStream;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class one
-  implements bezd
+  implements aqwv<String>
 {
-  public one(ReadInJoyUploadAvatarFragment.3 param3) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString = "";
+  private int b;
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public static one a(int paramInt, String paramString, boolean paramBoolean)
+  {
+    one localone = new one();
+    localone.jdField_a_of_type_Int = paramInt;
+    if (paramBoolean) {}
+    for (paramInt = 1;; paramInt = 0)
+    {
+      localone.b = paramInt;
+      localone.jdField_a_of_type_JavaLangString = paramString;
+      return localone;
+    }
+  }
+  
+  public static one a(String paramString)
+  {
+    try
+    {
+      one localone = (one)aqxo.a(paramString, one.class);
+      return localone;
+    }
+    catch (QStorageInstantiateException localQStorageInstantiateException)
+    {
+      QLog.i("PublicAccountCenterUrlConfProcessor", 1, "loadConfig l :" + paramString, localQStorageInstantiateException);
+    }
+    return null;
+  }
+  
+  public static one a(aqxa[] paramArrayOfaqxa)
+  {
+    one localone = null;
+    int i = 0;
+    while (i < paramArrayOfaqxa.length)
+    {
+      localone = a(paramArrayOfaqxa[i].jdField_a_of_type_JavaLangString);
+      i += 1;
+    }
+    return localone;
+  }
+  
+  public void a()
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      localObject = (QQAppInterface)localObject;
+      int i = uqm.a((QQAppInterface)localObject);
+      if (this.jdField_a_of_type_Int != i) {
+        break label47;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PaSubscribeRedDotProcessor", 2, "IGNORE THIS ACTION because of SAME VERSION");
+      }
+    }
+    label47:
+    do
+    {
+      return;
+      uqm.a((QQAppInterface)localObject, this.jdField_a_of_type_Int);
+      uqm.a((QQAppInterface)localObject, this.b, this.jdField_a_of_type_JavaLangString);
+      localObject = (WebProcessManager)((QQAppInterface)localObject).getManager(QQManagerFactory.WEBPROCESS_MANAGER);
+    } while (localObject == null);
+    ((WebProcessManager)localObject).e();
+  }
+  
+  public void a(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(ReadInJoyUploadAvatarFragment.a, 2, "uploadImage->onResult");
+      QLog.d("PaSubscribeRedDotProcessor", 2, "updateSubscribeConfig xml: " + paramString);
     }
-    if (paramJSONObject != null)
+    try
     {
-      paramInt = paramJSONObject.optInt("retcode");
-      if (paramJSONObject.optJSONObject("result") != null) {}
-      for (paramJSONObject = paramJSONObject.optJSONObject("result").optString("url");; paramJSONObject = null)
+      if (!TextUtils.isEmpty(paramString))
       {
-        paramBundle = new Message();
-        if ((paramInt == 0) && (!TextUtils.isEmpty(paramJSONObject)))
+        paramString = paramString.trim();
+        paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes("utf-8")));
+        NodeList localNodeList = paramString.getElementsByTagName("version");
+        Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+        if ((localObject instanceof QQAppInterface))
         {
-          paramBundle.what = 1003;
-          paramBundle.obj = paramJSONObject;
+          localObject = (QQAppInterface)localObject;
+          this.jdField_a_of_type_Int = Integer.parseInt(localNodeList.item(0).getFirstChild().getNodeValue());
+          paramString = paramString.getElementsByTagName("public-account-folder");
+          if (paramString.getLength() > 0)
+          {
+            paramString = (Element)paramString.item(0);
+            this.b = Integer.parseInt(paramString.getElementsByTagName("show").item(0).getFirstChild().getNodeValue());
+            this.jdField_a_of_type_JavaLangString = paramString.getElementsByTagName("msg").item(0).getFirstChild().getNodeValue();
+          }
         }
-        this.a.a.sendMessage(paramBundle);
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.d("PaSubscribeRedDotProcessor", 2, "updateSubscribeConfig xml is empty");
         return;
       }
     }
-    this.a.a.sendMessage(new Message());
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("PaSubscribeRedDotProcessor", 2, "updateSubscribeConfig error", paramString);
+      }
+      paramString.printStackTrace();
+    }
   }
 }
 

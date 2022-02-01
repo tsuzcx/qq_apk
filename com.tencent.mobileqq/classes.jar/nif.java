@@ -1,22 +1,32 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.graphics.Rect;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
+import com.tencent.avgame.gameroom.GameRoomFragment;
+import com.tencent.avgame.gameroom.seat.SeatView;
 
 public class nif
-  extends RecyclerView.ViewHolder
+  implements View.OnTouchListener
 {
-  public ImageView a;
-  public TextView a;
-  public nam a;
-  public ImageView b;
+  public nif(GameRoomFragment paramGameRoomFragment) {}
   
-  public nif(nic paramnic, View paramView, ImageView paramImageView1, ImageView paramImageView2, TextView paramTextView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView1;
-    this.b = paramImageView2;
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
+    boolean bool = true;
+    if (paramMotionEvent.getAction() == 1)
+    {
+      paramView = paramView.findViewById(2131363183);
+      Rect localRect = new Rect();
+      paramView.getHitRect(localRect);
+      if (localRect.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))
+      {
+        GameRoomFragment.a(this.a).setVisibility(8);
+        this.a.a.a();
+      }
+      bool = false;
+    }
+    return bool;
   }
 }
 

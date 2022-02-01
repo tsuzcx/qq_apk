@@ -1,18 +1,18 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgSuspiciousFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.QQPermissionCallback;
 
-public class aiet
-  implements View.OnClickListener
+class aiet
+  implements QQPermissionCallback
 {
-  public aiet(NewFriendMoreSysMsgSuspiciousFragment paramNewFriendMoreSysMsgSuspiciousFragment) {}
+  aiet(aido paramaido) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.getActivity().finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    bhdj.a(this.a.mActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    aido.j(this.a);
   }
 }
 

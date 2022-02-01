@@ -1,46 +1,92 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.accessibility.AccessibilityNodeInfo;
-import android.view.accessibility.AccessibilityNodeProvider;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import java.io.File;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class yux
-  extends AccessibilityNodeProvider
+  extends yur
 {
-  public yux(yuv paramyuv) {}
+  public int a;
+  public final List<String> a;
+  public boolean a;
+  public int b;
+  public String e;
+  public String f;
   
-  public AccessibilityNodeInfo createAccessibilityNodeInfo(int paramInt)
+  public yux(@NonNull String paramString)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramInt == -1)
-    {
-      localObject1 = localObject2;
-      if (yuv.a(this.a) != null)
-      {
-        localObject1 = AccessibilityNodeInfo.obtain(yuv.a(this.a));
-        yuv.a(this.a).onInitializeAccessibilityNodeInfo((AccessibilityNodeInfo)localObject1);
-        ((AccessibilityNodeInfo)localObject1).setText(yuv.a(this.a).getContentDescription());
-      }
-    }
-    return localObject1;
+    super(paramString);
+    this.jdField_a_of_type_Int = 100;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public boolean performAction(int paramInt1, int paramInt2, Bundle paramBundle)
+  public String a()
   {
-    boolean bool = yuv.a(this.a).performAccessibilityAction(paramInt2, paramBundle);
-    if (paramInt2 == 128) {
-      yuv.a(this.a).post(yuv.a(this.a));
+    return "NormalFacePackage";
+  }
+  
+  public String a(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
+    return null;
+  }
+  
+  public boolean a()
+  {
+    if (TextUtils.isEmpty(this.f)) {}
     do
     {
+      Object localObject1;
       do
       {
-        return bool;
-      } while (paramInt2 != 64);
-      yuv.a(this.a).removeCallbacks(yuv.a(this.a));
-    } while (yuv.a(this.a) == null);
-    yuv.a(this.a).a();
-    return bool;
+        return false;
+        localObject1 = new File(this.f);
+      } while (!((File)localObject1).exists());
+      this.jdField_a_of_type_JavaUtilList.clear();
+      if (((File)localObject1).isDirectory())
+      {
+        localObject1 = ((File)localObject1).listFiles(new yuy(this));
+        if (localObject1 != null)
+        {
+          int j = localObject1.length;
+          int i = 0;
+          while (i < j)
+          {
+            Object localObject2 = localObject1[i];
+            this.jdField_a_of_type_JavaUtilList.add(localObject2.toURI().toString());
+            i += 1;
+          }
+          Collections.sort(this.jdField_a_of_type_JavaUtilList);
+        }
+      }
+    } while (this.jdField_a_of_type_JavaUtilList.isEmpty());
+    return true;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("NormalFacePackage{");
+    localStringBuffer.append("id='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append("logoUrl='").append(this.c).append('\'');
+    localStringBuffer.append("logoDrawable='").append(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).append('\'');
+    localStringBuffer.append(", zipDownloadUrl='").append(this.e).append('\'');
+    localStringBuffer.append(", facePkgPath='").append(this.f).append('\'');
+    localStringBuffer.append(", faceUriList=").append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuffer.append(", isDownloading=").append(this.jdField_a_of_type_Boolean);
+    localStringBuffer.append(", maxProgress=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", currentProgress=").append(this.b);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

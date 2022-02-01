@@ -1,18 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
 
-class ajgj
-  implements View.OnClickListener
+public class ajgj
+  implements ajdv
 {
-  ajgj(ajgg paramajgg) {}
+  public ajgj(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public void onClick(View paramView)
-  {
-    this.a.a = null;
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public void a() {}
 }
 
 

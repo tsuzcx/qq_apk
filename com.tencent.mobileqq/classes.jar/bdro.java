@@ -1,156 +1,261 @@
-import android.content.Intent;
+import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.activity.ExtendGridView;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.data.TroopBarMyBar;
-import com.tencent.mobileqq.troop.widget.PublishItemContainer;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
 import java.util.ArrayList;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import java.util.Iterator;
 
 public class bdro
-  implements BusinessObserver
+  extends bdnv
 {
-  public bdro(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  private final int s = 16;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  private LinearLayout.LayoutParams a(Resources paramResources, boolean paramBoolean)
   {
-    this.a.c(false);
-    this.a.rightViewText.setEnabled(true);
-    TroopBarPublishActivity localTroopBarPublishActivity = this.a;
-    this.a.getString(2131695753);
-    if (paramBoolean)
+    if (paramBoolean) {}
+    for (int i = 50;; i = 58) {
+      return new LinearLayout.LayoutParams(AIOUtils.dp2px(i, paramResources), AIOUtils.dp2px(i, paramResources));
+    }
+  }
+  
+  private LinearLayout a(Context paramContext)
+  {
+    Resources localResources = paramContext.getResources();
+    paramContext = new LinearLayout(paramContext);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    a(paramContext);
+    d(paramContext);
+    int k = localResources.getDimensionPixelSize(2131298982);
+    int m = localResources.getDimensionPixelSize(2131298983);
+    int i;
+    if (a(1))
     {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          break label731;
-        }
-        localObject = new WebSsoBody.WebSsoResponseBody();
-        ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
-        paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
-        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
-        if (paramInt == 0) {
-          break label209;
-        }
-        localObject = paramBundle.optString("msg");
-        paramBundle = (Bundle)localObject;
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          paramBundle = this.a.getString(2131695754, new Object[] { Integer.valueOf(paramInt) });
-        }
+      i = AIOUtils.dp2px(15.0F, localResources);
+      if (!a(2)) {
+        break label121;
       }
-      catch (Exception paramBundle)
+    }
+    label121:
+    for (int j = AIOUtils.dp2px(15.0F, localResources);; j = AIOUtils.dp2px(6.0F, localResources))
+    {
+      paramContext.setPadding(k, i, m, j);
+      paramContext.setLayoutParams(localLayoutParams);
+      paramContext.setOrientation(0);
+      return paramContext;
+      i = AIOUtils.dp2px(6.0F, localResources);
+      break;
+    }
+  }
+  
+  private void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 2) {}
+    int k;
+    int j;
+    do
+    {
+      return;
+      k = -1;
+      j = -1;
+      int i = 0;
+      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
+        localbdnu = (bdnu)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        int m;
+        if ("title".equals(localbdnu.jdField_a_of_type_JavaLangString)) {
+          m = i;
+        }
         for (;;)
         {
-          Object localObject;
-          label167:
-          label209:
-          StringBuffer localStringBuffer;
-          paramBundle = this.a.getString(2131695754, new Object[] { Integer.valueOf(9992) });
-          continue;
-          localStringBuffer.append("7");
-          continue;
-          localStringBuffer.append("8");
-          continue;
-          paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar.c;
-          continue;
-          paramBundle = this.a.u;
+          i += 1;
+          j = m;
+          break;
+          m = j;
+          if ("picture".equals(localbdnu.jdField_a_of_type_JavaLangString))
+          {
+            k = i;
+            m = j;
+          }
         }
       }
-      QQToast.a(localTroopBarPublishActivity, 1, paramBundle, 0).b(this.a.getTitleBarHeight());
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar != null) {
-        break label783;
+    } while ((j < 0) || (k < 0) || (j >= k));
+    bdnu localbdnu = (bdnu)this.jdField_a_of_type_JavaUtilArrayList.get(j);
+    this.jdField_a_of_type_JavaUtilArrayList.set(j, this.jdField_a_of_type_JavaUtilArrayList.get(k));
+    this.jdField_a_of_type_JavaUtilArrayList.set(k, localbdnu);
+  }
+  
+  protected int b()
+  {
+    return 4;
+  }
+  
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    boolean bool = paramBundle.getBoolean("NAIOSub", false);
+    int j;
+    Object localObject2;
+    Object localObject3;
+    label79:
+    Object localObject1;
+    Object localObject4;
+    if (paramBundle.getInt("accostType") == AbsStructMsg.SOURCE_ACCOUNT_TYPE_PA)
+    {
+      j = 1;
+      if ((paramView == null) || (!(paramView instanceof LinearLayout)) || (((LinearLayout)paramView).getChildCount() != this.jdField_a_of_type_JavaUtilArrayList.size())) {
+        break label281;
       }
-      paramBundle = "0";
-      bfaj.a("pub_page", "fail", paramBundle, "4", TroopBarPublishActivity.b(this.a), "");
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.setItemEnable(true);
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.setEnabled(true);
-      return;
-      localObject = paramBundle.getJSONObject("result");
-      localStringBuffer = new StringBuffer();
-      if ((this.a.jdField_a_of_type_JavaUtilArrayList != null) && (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-        localStringBuffer.append("0");
+      localObject2 = (LinearLayout)paramView;
+      if (j != 0) {
+        a();
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPOI != null) {
-        localStringBuffer.append("1");
+      localObject3 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      j = 0;
+      localObject1 = localObject2;
+      if (!((Iterator)localObject3).hasNext()) {
+        break label801;
       }
-      if (!TextUtils.isEmpty(bfaj.a(this.a.jdField_b_of_type_ComTencentMobileqqTribeViewTEditText))) {
-        localStringBuffer.append("2");
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo != null) {
-        localStringBuffer.append("5");
-      }
-      if (this.a.h) {
-        if (!TextUtils.isEmpty(bfaj.a(this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText)))
+      localObject1 = (bdnu)((Iterator)localObject3).next();
+      ((bdnu)localObject1).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+      localObject4 = ((bdnu)localObject1).jdField_a_of_type_JavaLangString;
+      if (("title".equals(localObject4)) || ("picture".equals(localObject4)) || ("video".equals(localObject4)))
+      {
+        ((bdnu)localObject1).a(paramContext, ((LinearLayout)localObject2).getChildAt(j), paramBundle);
+        if ((localObject1 instanceof StructMsgItemTitle))
         {
-          localStringBuffer.append("6");
-          if (!TextUtils.isEmpty(this.a.u)) {
-            break label696;
-          }
-          if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar != null) {
-            break label682;
-          }
-          paramBundle = "0";
-          if ((this.a.jdField_b_of_type_AndroidWidgetTextView == null) || (this.a.jdField_b_of_type_AndroidWidgetTextView.getVisibility() != 0)) {
-            break label803;
+          ((StructMsgItemTitle)localObject1).a(a(), this.p);
+          if ((((StructMsgItemTitle)localObject1).c() == null) || (((StructMsgItemTitle)localObject1).c().equals(""))) {
+            break label810;
           }
         }
       }
     }
-    label783:
-    label803:
-    for (paramInt = 2;; paramInt = 1)
+    for (;;)
     {
-      bcef.b(null, "P_CliOper", "Grp_tribe", "", "pub_page", "suc", paramInt, 0, paramBundle, this.a.jdField_b_of_type_JavaLangString, localStringBuffer.toString(), "");
-      this.a.e = true;
-      ((JSONObject)localObject).optString("pid");
-      paramBundle = ((JSONObject)localObject).optString("bid");
-      if ((this.a.d) && (this.a.jdField_a_of_type_OrgJsonJSONObject != null))
+      try
       {
-        this.a.getIntent().getStringExtra("pkg_name");
-        this.a.jdField_a_of_type_OrgJsonJSONObject.optString("share_app_name");
-        this.a.jdField_a_of_type_OrgJsonJSONObject.optLong("share_app_id");
-        if (TextUtils.isEmpty(paramBundle)) {
-          break label707;
+        i = Integer.parseInt(((StructMsgItemTitle)localObject1).c()) / 2;
+        localObject1 = (TextView)paramView.findViewById(2131380210);
+        if (localObject1 != null) {
+          ((TextView)localObject1).setTextSize(2, i);
+        }
+        j += 1;
+        break label79;
+        j = 0;
+      }
+      catch (Exception localException1)
+      {
+        i = 16;
+        continue;
+      }
+      label281:
+      paramView = paramContext.getResources();
+      LinearLayout localLinearLayout = a(paramContext);
+      if (j != 0)
+      {
+        i = localLinearLayout.getPaddingTop();
+        int k = localLinearLayout.getPaddingBottom();
+        localLinearLayout.setPadding(paramView.getDimensionPixelSize(2131296446), i, paramView.getDimensionPixelOffset(2131296447), k);
+        a();
+      }
+      localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      if (((Iterator)localObject2).hasNext())
+      {
+        localObject4 = (bdnu)((Iterator)localObject2).next();
+        ((bdnu)localObject4).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+        localObject3 = ((bdnu)localObject4).jdField_a_of_type_JavaLangString;
+        if ("title".equals(localObject3))
+        {
+          localObject3 = ((bdnu)localObject4).a(paramContext, null, paramBundle);
+          if (((localObject3 instanceof TextView)) && (!TextUtils.isEmpty(((TextView)localObject3).getText()))) {
+            localLinearLayout.setContentDescription(((TextView)localObject3).getText());
+          }
+          if (!(localObject4 instanceof StructMsgItemTitle)) {
+            break label804;
+          }
+          ((StructMsgItemTitle)localObject4).a(a(), this.p);
+          if ((((StructMsgItemTitle)localObject4).c() == null) || (((StructMsgItemTitle)localObject4).c().equals(""))) {
+            break label804;
+          }
         }
       }
       for (;;)
       {
-        bfzr.a(this.a.app, "share_suc", paramBundle);
-        if ((this.a.jdField_a_of_type_Bdnl != null) && (!TroopBarPublishActivity.a(this.a).equals("###...^_^###"))) {
-          bcef.b(null, "dc00899", "Grp_tribe", "", "pub_page", "sus_prefixpub", 0, 0, this.a.q, "", "", "");
-        }
-        paramBundle = new Intent();
-        paramBundle.putExtra("result", ((JSONObject)localObject).toString());
-        this.a.setResult(-1, paramBundle);
-        this.a.finish();
-        return;
-        label682:
-        label696:
-        label707:
-        if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar != null)
+        try
         {
-          paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar.c;
-          continue;
-          label731:
-          paramBundle = this.a.getString(2131695754, new Object[] { Integer.valueOf(9991) });
-          break;
-          paramBundle = this.a.getString(2131695754, new Object[] { Integer.valueOf(9992) });
-          break;
-          paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar.c;
-          break label167;
+          i = Integer.parseInt(((StructMsgItemTitle)localObject4).c()) / 2;
+          localObject4 = new LinearLayout.LayoutParams(-1, -2);
+          ((LinearLayout.LayoutParams)localObject4).gravity = 16;
+          ((LinearLayout.LayoutParams)localObject4).weight = 1.0F;
+          if (localLinearLayout.getChildCount() == 0)
+          {
+            ((LinearLayout.LayoutParams)localObject4).leftMargin = 0;
+            ((LinearLayout.LayoutParams)localObject4).rightMargin = AIOUtils.dp2px(15.0F, paramView);
+            localTextView = (TextView)((View)localObject3).findViewById(2131380210);
+            if (localTextView != null)
+            {
+              localTextView.setEllipsize(TextUtils.TruncateAt.END);
+              if (i == 0) {
+                continue;
+              }
+              localTextView.setTextSize(2, i);
+            }
+            localLinearLayout.addView((View)localObject3, (ViewGroup.LayoutParams)localObject4);
+          }
         }
-        paramBundle = "";
+        catch (Exception localException2)
+        {
+          TextView localTextView;
+          i = 0;
+          continue;
+          localException2.leftMargin = AIOUtils.dp2px(15.0F, paramView);
+          localException2.rightMargin = 0;
+          if (j == 0) {
+            continue;
+          }
+          localException2.leftMargin = AIOUtils.dp2px(10.0F, paramView);
+          ((TextView)localObject3).setLineSpacing(AIOUtils.dp2px(2.5F, paramView), 1.0F);
+          ((TextView)localObject3).setMaxLines(2);
+          continue;
+          localTextView.setTextSize(2, 16.0F);
+          continue;
+        }
+        if (("picture".equals(localObject3)) || ("video".equals(localObject3)))
+        {
+          localLinearLayout.addView(localException2.a(paramContext, null, paramBundle), a(paramView, bool));
+          break;
+        }
+        if (!"hr".equals(localObject3)) {
+          break;
+        }
+        localObject3 = localException2.a(paramContext, null, paramBundle);
+        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, 1);
+        if (this.jdField_a_of_type_JavaUtilArrayList.size() == 1) {
+          localLinearLayout.setPadding(localLinearLayout.getPaddingLeft(), 0, localLinearLayout.getPaddingRight(), 0);
+        }
+        localLinearLayout.addView((View)localObject3, localLayoutParams);
+        break;
+        label801:
+        return localLinearLayout;
+        label804:
+        i = 0;
       }
+      label810:
+      int i = 16;
     }
+  }
+  
+  public String b()
+  {
+    return "Layout4";
   }
 }
 

@@ -1,24 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.home.MainFragment;
 
 public class ajzn
-  extends Handler
+  implements DialogInterface.OnDismissListener
 {
-  public ajzn(ThemeHbFragment paramThemeHbFragment) {}
+  public ajzn(MainFragment paramMainFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-    } while (TextUtils.isEmpty(ThemeHbFragment.a(this.a)));
-    ThemeHbFragment.a(this.a).setText(ThemeHbFragment.a(this.a));
+    this.a.f();
   }
 }
 

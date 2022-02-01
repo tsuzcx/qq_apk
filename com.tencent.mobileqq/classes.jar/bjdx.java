@@ -1,56 +1,35 @@
 import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.launcher.shell.IActivityResultListener;
-import com.tencent.qqmini.sdk.launcher.shell.IActivityResultManager;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.open.agent.OpenAuthorityFragment;
+import com.tencent.open.agent.OpenCardContainer;
+import com.tencent.qqconnect.wtlogin.Login;
 
-class bjdx
-  implements IActivityResultListener
+public class bjdx
+  implements bjek
 {
-  bjdx(bjdt parambjdt, AsyncResult paramAsyncResult, IActivityResultManager paramIActivityResultManager) {}
+  public bjdx(OpenAuthorityFragment paramOpenAuthorityFragment) {}
   
-  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void a()
   {
-    QLog.d("MiniAppProxyImpl", 2, "doOnActivityResult requestCode=" + paramInt1 + ",resultCode=" + paramInt2 + ",data=" + paramIntent);
-    if (paramInt1 == 3)
-    {
-      String str1;
-      String str2;
-      double d1;
-      double d2;
-      if ((paramInt2 == -1) && (paramIntent != null))
-      {
-        str1 = paramIntent.getStringExtra("name");
-        str2 = paramIntent.getStringExtra("address");
-        d1 = paramIntent.getIntExtra("latitude", 0) / 1000000.0D;
-        d2 = paramIntent.getIntExtra("longitude", 0) / 1000000.0D;
-        if (QLog.isColorLevel()) {
-          QLog.d("MiniAppProxyImpl", 2, "doOnActivityResult name=" + str1 + ",address=" + str2 + ",latitude=" + d1 + ",longitude=" + d2);
-        }
-        paramIntent = new JSONObject();
-      }
-      try
-      {
-        paramIntent.put("name", str1);
-        paramIntent.put("address", str2);
-        paramIntent.put("latitude", d1);
-        paramIntent.put("longitude", d2);
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(true, paramIntent);
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellIActivityResultManager.removeActivityResultListener(this);
-        return true;
-      }
-      catch (JSONException paramIntent)
-      {
-        for (;;)
-        {
-          QLog.e("MiniAppProxyImpl", 1, " error, ", paramIntent);
-          this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(false, new JSONObject());
-        }
-      }
+    Intent localIntent = new Intent(this.a.getActivity(), Login.class);
+    localIntent.putExtra("key_req_src", 1);
+    localIntent.putExtra("is_first_login", true);
+    localIntent.putExtra("appid", OpenAuthorityFragment.a(this.a));
+    OpenAuthorityFragment.a(this.a, null);
+    this.a.getActivity().startActivityForResult(localIntent, 1);
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    this.a.a(paramString, paramBoolean);
+  }
+  
+  public void b()
+  {
+    this.a.c(OpenAuthorityFragment.b(this.a));
+    if (OpenAuthorityFragment.a(this.a) != null) {
+      OpenAuthorityFragment.a(this.a).b();
     }
-    return false;
   }
 }
 

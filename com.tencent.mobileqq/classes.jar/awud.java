@@ -1,22 +1,15 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl.3.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.matchchat.MatchChatMsgListFragment;
 
 public class awud
-  implements TVK_IMediaPlayer.OnInfoListener
+  implements DialogInterface.OnDismissListener
 {
-  awud(awua paramawua) {}
+  public awud(MatchChatMsgListFragment paramMatchChatMsgListFragment) {}
   
-  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoViewTVKImpl", 2, "onInfo what=" + paramInt + "  ex:" + paramObject);
-    }
-    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.3.1(this, paramInt, paramObject));
-    return false;
+    MatchChatMsgListFragment.a(this.a, false);
   }
 }
 

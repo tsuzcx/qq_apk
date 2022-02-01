@@ -1,8 +1,20 @@
-import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.app.MobileQQ;
 
-public abstract interface auhx
+class auhx
+  implements auky
 {
-  public abstract void onClick(View paramView);
+  auhx(auht paramauht) {}
+  
+  public void a(String paramString, long paramLong)
+  {
+    if (auku.a(paramString))
+    {
+      bdlq.a(this.a.a.getApplication().getApplicationContext(), this.a.a.getCurrentAccountUin(), "Stop_download_2-2_3-0");
+      return;
+    }
+    bdlq.a(this.a.a.getApplication().getApplicationContext(), this.a.a.getCurrentAccountUin(), "Stop_download_2-2_3-1");
+  }
 }
 
 

@@ -1,21 +1,31 @@
-import com.tencent.av.ui.VideoLayerUI;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Build.VERSION;
+import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
 public class mky
-  implements lsb
+  implements DialogInterface.OnClickListener
 {
-  public mky(VideoLayerUI paramVideoLayerUI, int paramInt1, int paramInt2, int paramInt3) {}
+  public mky(VideoInviteActivity paramVideoInviteActivity, long paramLong, boolean paramBoolean) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a[this.jdField_a_of_type_Int].c(this.b);
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a[this.jdField_a_of_type_Int].a(Boolean.valueOf(true));
-    VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, 0L);
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(this.c, this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.isFinishing()) {}
+    while ((Build.VERSION.SDK_INT >= 17) && (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.isDestroyed())) {
+      return;
+    }
+    if (paramInt == 1)
+    {
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c(this.jdField_a_of_type_Long);
+      return;
+    }
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity, this.jdField_a_of_type_Boolean, new mkz(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mky
  * JD-Core Version:    0.7.0.1
  */

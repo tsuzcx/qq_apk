@@ -7,16 +7,16 @@ import com.squareup.okhttp.ResponseBody;
 import com.tencent.qapmsdk.common.logger.Logger;
 import com.tencent.qapmsdk.common.network.NetworkWatcher;
 import com.tencent.qapmsdk.impl.b.b;
-import com.tencent.qapmsdk.impl.instrumentation.g;
 import com.tencent.qapmsdk.impl.instrumentation.h;
+import com.tencent.qapmsdk.impl.instrumentation.i;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeMap;
 
 public class d
-  extends h
+  extends i
 {
-  public static void a(g paramg, Request paramRequest)
+  public static void a(h paramh, Request paramRequest)
   {
     Object localObject2 = paramRequest.urlString();
     Object localObject1 = null;
@@ -30,21 +30,21 @@ public class d
     }
     for (;;)
     {
-      paramg.f((String)localObject2);
-      paramg.b((String)localObject1);
-      paramg.a((String)localObject1);
-      paramg.e(paramRequest.method());
-      h.a(paramg, paramRequest.method());
-      paramg.c(NetworkWatcher.INSTANCE.activeNetworkCarrier());
-      paramg.a(b.d);
+      paramh.f((String)localObject2);
+      paramh.b((String)localObject1);
+      paramh.a((String)localObject1);
+      paramh.e(paramRequest.method());
+      i.a(paramh, paramRequest.method());
+      paramh.c(NetworkWatcher.INSTANCE.activeNetworkCarrier());
+      paramh.a(b.d);
       if (localObject2 != null) {
-        b(paramg, paramRequest);
+        b(paramh, paramRequest);
       }
       return;
     }
   }
   
-  public static void a(g paramg, Response paramResponse)
+  public static void a(h paramh, Response paramResponse)
   {
     if (paramResponse == null)
     {
@@ -55,43 +55,43 @@ public class d
     int i = paramResponse.code();
     try
     {
-      a(paramg, str, (int)paramResponse.body().contentLength(), i);
-      b(paramg, paramResponse);
+      a(paramh, str, (int)paramResponse.body().contentLength(), i);
+      b(paramh, paramResponse);
       return;
     }
-    catch (Exception paramg) {}
+    catch (Exception paramh) {}
   }
   
-  public static void a(g paramg, String paramString, int paramInt1, int paramInt2)
+  public static void a(h paramh, String paramString, int paramInt1, int paramInt2)
   {
     if ((paramString != null) && (!"".equals(paramString))) {
-      paramg.d(paramString);
+      paramh.d(paramString);
     }
-    paramg.c(paramInt2);
+    paramh.c(paramInt2);
     if (paramInt1 >= 0)
     {
-      paramg.d(paramInt1);
+      paramh.d(paramInt1);
       return;
     }
-    paramg.d(0L);
+    paramh.d(0L);
   }
   
-  private static void b(g paramg, Request paramRequest)
+  private static void b(h paramh, Request paramRequest)
   {
-    h.b(paramg, paramg.b());
+    i.b(paramh, paramh.b());
     paramRequest = new d.1(paramRequest);
-    h.a(paramg.d(), paramRequest, paramg);
+    i.a(paramh.d(), paramRequest, paramh);
   }
   
-  private static void b(g paramg, Response paramResponse)
+  private static void b(h paramh, Response paramResponse)
   {
     try
     {
-      paramg.g(com.tencent.qapmsdk.impl.g.a.a(paramResponse.header("Content-Type")));
-      com.tencent.qapmsdk.impl.a.a.a locala = paramg.j();
+      paramh.g(com.tencent.qapmsdk.impl.g.a.a(paramResponse.header("Content-Type")));
+      com.tencent.qapmsdk.impl.a.a.a locala = paramh.j();
       if (locala != null)
       {
-        if (paramg.g() < 400L) {
+        if (paramh.g() < 400L) {
           break label172;
         }
         localTreeMap = new TreeMap();
@@ -118,8 +118,8 @@ public class d
         Logger.INSTANCE.e(new String[] { "QAPM_Impl_QAPMOkHttp2TransactionStateUtil", "QAPMOkHttp2TransactionStateUtil content-type has an error " });
       }
       paramResponse = "";
-      if (paramg.k() != null) {
-        paramResponse = paramg.k();
+      if (paramh.k() != null) {
+        paramResponse = paramh.k();
       }
       com.tencent.qapmsdk.impl.d.a.a(localException, localTreeMap, paramResponse);
     }

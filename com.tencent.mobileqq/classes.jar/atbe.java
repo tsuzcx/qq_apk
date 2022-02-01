@@ -1,20 +1,36 @@
-import android.content.Context;
-import android.os.AsyncTask;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class atbe
-  extends df
+public class atbe
+  implements View.OnClickListener
 {
-  atbe(Context paramContext) {}
+  public atbe(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
+  public void onClick(View paramView)
   {
-    super.a(paramAsyncTask, paramInt);
-    dc.a(this.a, paramAsyncTask, paramInt, new atbf(this));
+    if (!QfileBaseCloudFileTabView.a(this.a)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      QfileBaseCloudFileTabView.a(this.a);
+      this.a.f();
+      if (this.a.jdField_a_of_type_Atab.getGroupCount() > 0) {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.a(this.a.jdField_a_of_type_Atab.getGroupCount() - 1);
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.getAdapter().getCount() - 1);
+      QfileBaseCloudFileTabView.a(this.a, false);
+      this.a.h();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atbe
  * JD-Core Version:    0.7.0.1
  */

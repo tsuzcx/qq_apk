@@ -1,17 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.process.download.CmGameSubRscHandler.2;
+import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
 
 public class alza
-  implements DialogInterface.OnClickListener
+  extends anyz
 {
-  public alza(CmGameSubRscHandler.2 param2) {}
+  public alza(TroopDiscussionTroop paramTroopDiscussionTroop) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onUpdateTroopList()
   {
-    if (this.a.a != null) {
-      this.a.a.b(null);
-    }
+    this.a.c();
   }
 }
 

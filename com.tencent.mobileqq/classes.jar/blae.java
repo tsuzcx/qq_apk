@@ -1,70 +1,142 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.open.base.MD5Utils;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
-import java.io.File;
-import java.util.HashMap;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.LinearLayout;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AuthorizationItem;
+import java.util.List;
 
-class blae
-  implements Downloader.DownloadListener
+public class blae
+  extends bkzi
+  implements View.OnClickListener
 {
-  blae(blad paramblad, bkzi parambkzi, String paramString1, String paramString2, aqdq paramaqdq) {}
+  private acit jdField_a_of_type_Acit;
+  private final aciu jdField_a_of_type_Aciu;
+  private final List<blaf> jdField_a_of_type_JavaUtilList;
   
-  public void onDownloadCanceled(String paramString)
+  public blae(Activity paramActivity, aciu paramaciu, acit paramacit, List<blaf> paramList)
   {
-    QZLog.i("VipARQGLoaderManager", 2, "onDownloadCanceled = " + paramString);
-    if (this.jdField_a_of_type_Bkzi != null) {
-      this.jdField_a_of_type_Bkzi.b("download canceld url = " + paramString);
-    }
+    super(paramActivity);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Aciu = paramaciu;
+    this.jdField_a_of_type_Acit = paramacit;
+    f();
   }
   
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  private AuthorizationItem a(blaf paramblaf, int paramInt, String paramString)
   {
-    QZLog.i("VipARQGLoaderManager", 2, "onDownloadFailed = " + paramString);
-    if (this.jdField_a_of_type_Bkzi != null) {
-      this.jdField_a_of_type_Bkzi.b("download fail url = " + paramString);
-    }
+    return new AuthorizationItem(getContext(), paramString, paramblaf, paramInt);
   }
   
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  private void f()
   {
-    QZLog.i("VipARQGLoaderManager", 2, "onDownloadSucceed = " + paramString);
-    paramString = QzoneZipCacheHelper.getBasePath("vip_qg", String.valueOf(this.jdField_a_of_type_JavaLangString.hashCode()));
-    paramDownloadResult = MD5Utils.encodeFileHexStr(this.b);
-    if (this.jdField_a_of_type_Aqdq != null) {
-      QZLog.i("VipARQGLoaderManager", 1, "download fileMD5 = " + paramDownloadResult + " config.md5 = " + this.jdField_a_of_type_Aqdq.c);
-    }
-    if ((this.jdField_a_of_type_Aqdq != null) && (!TextUtils.isEmpty(paramDownloadResult)) && (paramDownloadResult.equalsIgnoreCase(this.jdField_a_of_type_Aqdq.c)))
+    LinearLayout localLinearLayout1 = (LinearLayout)LayoutInflater.from(getContext()).inflate(2131559116, null);
+    LinearLayout localLinearLayout2 = (LinearLayout)localLinearLayout1.findViewById(2131369048);
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
     {
-      paramDownloadResult = new File(this.b);
-      QzoneZipCacheHelper.unzipFile(paramDownloadResult.getAbsolutePath(), paramString);
-      if (paramDownloadResult.exists()) {
-        FileUtil.deleteFile(paramDownloadResult);
-      }
-      if (new File(paramString).exists())
+      int k = this.jdField_a_of_type_JavaUtilList.size();
+      int j = 0;
+      if (j < k)
       {
-        QZLog.i("VipARQGLoaderManager", 1, "download success file exist start put to map = " + paramString);
-        blad.a(this.jdField_a_of_type_Blad).put(this.jdField_a_of_type_JavaLangString, paramString);
-        if (this.jdField_a_of_type_Bkzi != null) {
-          this.jdField_a_of_type_Bkzi.a(paramString);
+        int i;
+        if ((blaf)this.jdField_a_of_type_JavaUtilList.get(j) != AuthorizationItem.d)
+        {
+          if (k != 1) {
+            break label145;
+          }
+          i = 3;
+        }
+        for (;;)
+        {
+          localLinearLayout2.addView(a((blaf)this.jdField_a_of_type_JavaUtilList.get(j), i, this.jdField_a_of_type_Aciu.a(((blaf)this.jdField_a_of_type_JavaUtilList.get(j)).b)));
+          j += 1;
+          break;
+          label145:
+          if (k == 2)
+          {
+            if (j == 0) {
+              i = 0;
+            } else {
+              i = 2;
+            }
+          }
+          else if (j == 0) {
+            i = 0;
+          } else if (j < k - 1) {
+            i = 1;
+          } else {
+            i = 2;
+          }
         }
       }
     }
-    while (this.jdField_a_of_type_Bkzi == null)
+    a(localLinearLayout1);
+    localLinearLayout1.findViewById(2131363844).setOnClickListener(this);
+    localLinearLayout1.findViewById(2131363869).setOnClickListener(this);
+    localLinearLayout1.findViewById(2131369435).setOnClickListener(this);
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
     {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_Bkzi == null);
-      this.jdField_a_of_type_Bkzi.b("download success but the file is not exist");
-      return;
     }
-    this.jdField_a_of_type_Bkzi.b("download success but the file md5 is not match");
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ActionSheet", 2, "onClick to show authorize description");
+      }
+      Object localObject1 = new blab(getContext());
+      Object localObject2 = ((blab)localObject1).getWindow();
+      if (localObject2 != null) {
+        ((Window)localObject2).setWindowAnimations(2131755013);
+      }
+      ((blab)localObject1).show();
+      continue;
+      if (QLog.isColorLevel()) {
+        QLog.d("ActionSheet", 2, "onClick to cancel authorize dialog");
+      }
+      if (this.jdField_a_of_type_Acit != null)
+      {
+        this.jdField_a_of_type_Aciu.a = 2;
+        this.jdField_a_of_type_Acit.a(this.jdField_a_of_type_Aciu);
+      }
+      dismiss();
+      continue;
+      if (QLog.isColorLevel()) {
+        QLog.d("ActionSheet", 2, "onClick to confirm authorize user info");
+      }
+      localObject1 = PreferenceManager.getDefaultSharedPreferences(getContext().getApplicationContext());
+      int i = 0;
+      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      {
+        localObject2 = (blaf)this.jdField_a_of_type_JavaUtilList.get(i);
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_Aciu.a(((blaf)localObject2).b)))
+        {
+          ((SharedPreferences)localObject1).edit().putBoolean(((blaf)localObject2).b, true).apply();
+          if (QLog.isColorLevel()) {
+            QLog.d("ActionSheet", 2, "record " + ((blaf)localObject2).b + " authorize");
+          }
+        }
+        i += 1;
+      }
+      if (this.jdField_a_of_type_Acit != null)
+      {
+        this.jdField_a_of_type_Aciu.a = 0;
+        this.jdField_a_of_type_Acit.a(this.jdField_a_of_type_Aciu);
+      }
+      dismiss();
+    }
   }
 }
 

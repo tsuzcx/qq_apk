@@ -1,307 +1,107 @@
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.model.DiandianTopConfig;
-import java.util.ArrayList;
+import android.content.Context;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import java.net.URL;
 import java.util.List;
 
-public class sxl
-  extends BaseAdapter
+public abstract class sxl
+  implements Handler.Callback, sql
 {
-  private int jdField_a_of_type_Int;
-  private List<DiandianTopConfig> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public int a;
+  protected Context a;
+  protected View.OnClickListener a;
+  protected qdc a;
+  protected sxm a;
+  public View g;
   
-  public sxl(List<DiandianTopConfig> paramList, int paramInt)
+  public sxl(Context paramContext, qdc paramqdc)
   {
-    this.jdField_a_of_type_Int = i;
-    int j = i * 2;
-    int i = j;
-    while ((i < paramInt.size()) && (i < j + 2))
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Qdc = paramqdc;
+  }
+  
+  protected static void a(qdc paramqdc, BaseArticleInfo paramBaseArticleInfo, VideoColumnInfo paramVideoColumnInfo, int paramInt, String paramString)
+  {
+    int k = paramqdc.a().a();
+    String str = pqw.b(paramBaseArticleInfo);
+    int i;
+    if (((ArticleInfo)paramBaseArticleInfo).hasChannelInfo())
     {
-      this.jdField_a_of_type_JavaUtilList.add(paramInt.get(i));
-      i += 1;
+      i = paramBaseArticleInfo.mChannelInfoId;
+      if (!TextUtils.isEmpty(paramBaseArticleInfo.mArticleFriendLikeText)) {
+        break label217;
+      }
+    }
+    label217:
+    for (int j = 0;; j = 1)
+    {
+      paramqdc = new suu(pqf.a(paramBaseArticleInfo.mAlgorithmID, pqw.a(paramBaseArticleInfo), 0, i, j, NetworkUtil.isWifiConnected(paramqdc.a()), str, paramBaseArticleInfo.mStrCircleId, paramBaseArticleInfo.innerUniqueID, pqw.d(paramBaseArticleInfo), 409409, (ArticleInfo)paramBaseArticleInfo));
+      paramqdc.i(paramBaseArticleInfo.innerUniqueID).a(k).d(paramBaseArticleInfo.mStrategyId).g(omx.a).h(409409).j(paramBaseArticleInfo.mVideoAdsJumpType).k(paramBaseArticleInfo.mVideoAdsSource).a(Boolean.valueOf(pqw.f(paramBaseArticleInfo))).a(paramBaseArticleInfo.videoReportInfo).Q(paramInt).p(paramString).f(paramBaseArticleInfo);
+      if (paramVideoColumnInfo != null) {
+        paramqdc.X(paramVideoColumnInfo.a);
+      }
+      olh.a(null, "", "0X8007625", "0X8007625", 0, 0, "2", "", "", paramqdc.a().a(), false);
+      return;
+      i = 0;
+      break;
     }
   }
   
-  public Object a(int paramInt, DiandianTopConfig paramDiandianTopConfig)
+  public abstract View a(int paramInt, ViewGroup paramViewGroup);
+  
+  protected final BaseArticleInfo a(View paramView)
   {
-    return this.jdField_a_of_type_JavaUtilList.set(paramInt, paramDiandianTopConfig);
+    return qdc.a(this.jdField_a_of_type_Qdc, paramView);
   }
   
-  public int getCount()
+  protected final qdh a(View paramView)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    if ((paramView == null) || (!(paramView.getTag() instanceof qdh))) {
+      return null;
+    }
+    return (qdh)paramView.getTag();
   }
   
-  public Object getItem(int paramInt)
+  public void a(View.OnClickListener paramOnClickListener)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
   }
   
-  public long getItemId(int paramInt)
+  protected void a(KandianUrlImageView paramKandianUrlImageView, URL paramURL)
   {
-    return paramInt;
+    a(paramKandianUrlImageView, paramURL, false);
   }
   
-  /* Error */
-  public android.view.View getView(int paramInt, android.view.View paramView, android.view.ViewGroup paramViewGroup)
+  protected void a(KandianUrlImageView paramKandianUrlImageView, URL paramURL, boolean paramBoolean)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 21	sxl:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   4: iload_1
-    //   5: invokeinterface 33 2 0
-    //   10: checkcast 57	com/tencent/biz/pubaccount/readinjoy/model/DiandianTopConfig
-    //   13: astore 5
-    //   15: aload_2
-    //   16: ifnonnull +414 -> 430
-    //   19: new 59	sxo
-    //   22: dup
-    //   23: aconst_null
-    //   24: invokespecial 62	sxo:<init>	(Lsxg;)V
-    //   27: astore 4
-    //   29: aload_3
-    //   30: invokevirtual 68	android/view/ViewGroup:getContext	()Landroid/content/Context;
-    //   33: invokestatic 74	android/view/LayoutInflater:from	(Landroid/content/Context;)Landroid/view/LayoutInflater;
-    //   36: ldc 75
-    //   38: aconst_null
-    //   39: invokevirtual 79	android/view/LayoutInflater:inflate	(ILandroid/view/ViewGroup;)Landroid/view/View;
-    //   42: astore_2
-    //   43: aload 4
-    //   45: aload_2
-    //   46: ldc 80
-    //   48: invokevirtual 86	android/view/View:findViewById	(I)Landroid/view/View;
-    //   51: checkcast 88	com/tencent/image/URLImageView
-    //   54: putfield 91	sxo:jdField_a_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
-    //   57: aload 4
-    //   59: aload_2
-    //   60: ldc 92
-    //   62: invokevirtual 86	android/view/View:findViewById	(I)Landroid/view/View;
-    //   65: checkcast 94	android/widget/TextView
-    //   68: putfield 97	sxo:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
-    //   71: aload 4
-    //   73: aload_2
-    //   74: ldc 98
-    //   76: invokevirtual 86	android/view/View:findViewById	(I)Landroid/view/View;
-    //   79: checkcast 94	android/widget/TextView
-    //   82: putfield 101	sxo:b	Landroid/widget/TextView;
-    //   85: aload 4
-    //   87: aload_2
-    //   88: ldc 102
-    //   90: invokevirtual 86	android/view/View:findViewById	(I)Landroid/view/View;
-    //   93: checkcast 94	android/widget/TextView
-    //   96: putfield 105	sxo:c	Landroid/widget/TextView;
-    //   99: aload 4
-    //   101: new 107	sxn
-    //   104: dup
-    //   105: aload_0
-    //   106: getfield 13	sxl:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController	Lcom/tencent/biz/pubaccount/readinjoy/view/headers/ReadInJoyDiandianHeaderController;
-    //   109: aconst_null
-    //   110: invokespecial 110	sxn:<init>	(Lcom/tencent/biz/pubaccount/readinjoy/view/headers/ReadInJoyDiandianHeaderController;Lsxg;)V
-    //   113: putfield 113	sxo:jdField_a_of_type_Sxn	Lsxn;
-    //   116: aload_2
-    //   117: aload 4
-    //   119: invokevirtual 117	android/view/View:setTag	(Ljava/lang/Object;)V
-    //   122: aload_2
-    //   123: aload 4
-    //   125: getfield 113	sxo:jdField_a_of_type_Sxn	Lsxn;
-    //   128: invokevirtual 121	android/view/View:setOnClickListener	(Landroid/view/View$OnClickListener;)V
-    //   131: aload 4
-    //   133: getfield 113	sxo:jdField_a_of_type_Sxn	Lsxn;
-    //   136: aload_0
-    //   137: getfield 23	sxl:jdField_a_of_type_Int	I
-    //   140: iconst_2
-    //   141: imul
-    //   142: iload_1
-    //   143: iadd
-    //   144: putfield 122	sxn:jdField_a_of_type_Int	I
-    //   147: invokestatic 128	com/tencent/image/URLDrawable$URLDrawableOptions:obtain	()Lcom/tencent/image/URLDrawable$URLDrawableOptions;
-    //   150: astore 6
-    //   152: aload 6
-    //   154: aload_0
-    //   155: getfield 13	sxl:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController	Lcom/tencent/biz/pubaccount/readinjoy/view/headers/ReadInJoyDiandianHeaderController;
-    //   158: getfield 133	com/tencent/biz/pubaccount/readinjoy/view/headers/ReadInJoyDiandianHeaderController:a	Landroid/graphics/drawable/ColorDrawable;
-    //   161: putfield 137	com/tencent/image/URLDrawable$URLDrawableOptions:mFailedDrawable	Landroid/graphics/drawable/Drawable;
-    //   164: aload 6
-    //   166: aload_0
-    //   167: getfield 13	sxl:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController	Lcom/tencent/biz/pubaccount/readinjoy/view/headers/ReadInJoyDiandianHeaderController;
-    //   170: getfield 133	com/tencent/biz/pubaccount/readinjoy/view/headers/ReadInJoyDiandianHeaderController:a	Landroid/graphics/drawable/ColorDrawable;
-    //   173: putfield 140	com/tencent/image/URLDrawable$URLDrawableOptions:mLoadingDrawable	Landroid/graphics/drawable/Drawable;
-    //   176: aload 6
-    //   178: iconst_1
-    //   179: putfield 144	com/tencent/image/URLDrawable$URLDrawableOptions:mPlayGifImage	Z
-    //   182: aload 5
-    //   184: getfield 148	com/tencent/biz/pubaccount/readinjoy/model/DiandianTopConfig:picUrl	Ljava/lang/String;
-    //   187: aload 6
-    //   189: invokestatic 154	com/tencent/image/URLDrawable:getDrawable	(Ljava/lang/String;Lcom/tencent/image/URLDrawable$URLDrawableOptions;)Lcom/tencent/image/URLDrawable;
-    //   192: astore 6
-    //   194: aload 6
-    //   196: aload_2
-    //   197: invokevirtual 155	android/view/View:getContext	()Landroid/content/Context;
-    //   200: ldc 156
-    //   202: invokestatic 162	com/tencent/mobileqq/util/DisplayUtil:dip2px	(Landroid/content/Context;F)I
-    //   205: aload_2
-    //   206: invokevirtual 155	android/view/View:getContext	()Landroid/content/Context;
-    //   209: ldc 156
-    //   211: invokestatic 162	com/tencent/mobileqq/util/DisplayUtil:dip2px	(Landroid/content/Context;F)I
-    //   214: invokestatic 167	bfol:a	(II)[I
-    //   217: invokevirtual 168	com/tencent/image/URLDrawable:setTag	(Ljava/lang/Object;)V
-    //   220: aload 4
-    //   222: getfield 91	sxo:jdField_a_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
-    //   225: aload 6
-    //   227: invokevirtual 172	com/tencent/image/URLImageView:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
-    //   230: aload 6
-    //   232: invokevirtual 175	com/tencent/image/URLDrawable:getStatus	()I
-    //   235: iconst_1
-    //   236: if_icmpeq +16 -> 252
-    //   239: aload 6
-    //   241: invokevirtual 175	com/tencent/image/URLDrawable:getStatus	()I
-    //   244: ifeq +8 -> 252
-    //   247: aload 6
-    //   249: invokevirtual 178	com/tencent/image/URLDrawable:restartDownload	()V
-    //   252: aload 5
-    //   254: getfield 181	com/tencent/biz/pubaccount/readinjoy/model/DiandianTopConfig:type	I
-    //   257: iconst_3
-    //   258: if_icmpne +184 -> 442
-    //   261: aload 4
-    //   263: getfield 97	sxo:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
-    //   266: iconst_0
-    //   267: invokevirtual 185	android/widget/TextView:setVisibility	(I)V
-    //   270: aload 4
-    //   272: getfield 101	sxo:b	Landroid/widget/TextView;
-    //   275: aload 5
-    //   277: getfield 188	com/tencent/biz/pubaccount/readinjoy/model/DiandianTopConfig:title	Ljava/lang/String;
-    //   280: invokevirtual 192	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
-    //   283: aload 5
-    //   285: getfield 195	com/tencent/biz/pubaccount/readinjoy/model/DiandianTopConfig:subTitleColor	Ljava/lang/String;
-    //   288: invokestatic 201	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   291: ifne +234 -> 525
-    //   294: aload 4
-    //   296: getfield 105	sxo:c	Landroid/widget/TextView;
-    //   299: aload 5
-    //   301: getfield 195	com/tencent/biz/pubaccount/readinjoy/model/DiandianTopConfig:subTitleColor	Ljava/lang/String;
-    //   304: invokestatic 207	android/graphics/Color:parseColor	(Ljava/lang/String;)I
-    //   307: invokevirtual 210	android/widget/TextView:setTextColor	(I)V
-    //   310: aload 4
-    //   312: getfield 105	sxo:c	Landroid/widget/TextView;
-    //   315: aload 5
-    //   317: getfield 213	com/tencent/biz/pubaccount/readinjoy/model/DiandianTopConfig:subTitle	Ljava/lang/String;
-    //   320: invokevirtual 192	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
-    //   323: aload_0
-    //   324: getfield 13	sxl:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController	Lcom/tencent/biz/pubaccount/readinjoy/view/headers/ReadInJoyDiandianHeaderController;
-    //   327: invokestatic 216	com/tencent/biz/pubaccount/readinjoy/view/headers/ReadInJoyDiandianHeaderController:c	(Lcom/tencent/biz/pubaccount/readinjoy/view/headers/ReadInJoyDiandianHeaderController;)Z
-    //   330: ifne +84 -> 414
-    //   333: new 218	org/json/JSONObject
-    //   336: dup
-    //   337: invokespecial 219	org/json/JSONObject:<init>	()V
-    //   340: astore 4
-    //   342: aload 4
-    //   344: ldc 221
-    //   346: getstatic 226	pay:d	I
-    //   349: invokevirtual 230	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   352: pop
-    //   353: aconst_null
-    //   354: ldc 232
-    //   356: ldc 234
-    //   358: ldc 234
-    //   360: iconst_0
-    //   361: iconst_0
-    //   362: new 236	java/lang/StringBuilder
-    //   365: dup
-    //   366: invokespecial 237	java/lang/StringBuilder:<init>	()V
-    //   369: aload_0
-    //   370: getfield 13	sxl:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController	Lcom/tencent/biz/pubaccount/readinjoy/view/headers/ReadInJoyDiandianHeaderController;
-    //   373: invokestatic 240	com/tencent/biz/pubaccount/readinjoy/view/headers/ReadInJoyDiandianHeaderController:b	(Lcom/tencent/biz/pubaccount/readinjoy/view/headers/ReadInJoyDiandianHeaderController;)Ljava/util/List;
-    //   376: invokeinterface 29 1 0
-    //   381: invokevirtual 244	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   384: ldc 232
-    //   386: invokevirtual 247	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   389: invokevirtual 251	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   392: ldc 232
-    //   394: ldc 232
-    //   396: aload 4
-    //   398: invokevirtual 252	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   401: iconst_0
-    //   402: invokestatic 257	odq:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V
-    //   405: aload_0
-    //   406: getfield 13	sxl:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController	Lcom/tencent/biz/pubaccount/readinjoy/view/headers/ReadInJoyDiandianHeaderController;
-    //   409: iconst_1
-    //   410: invokestatic 260	com/tencent/biz/pubaccount/readinjoy/view/headers/ReadInJoyDiandianHeaderController:a	(Lcom/tencent/biz/pubaccount/readinjoy/view/headers/ReadInJoyDiandianHeaderController;Z)Z
-    //   413: pop
-    //   414: invokestatic 266	com/tencent/qqlive/module/videoreport/collect/EventCollector:getInstance	()Lcom/tencent/qqlive/module/videoreport/collect/EventCollector;
-    //   417: iload_1
-    //   418: aload_2
-    //   419: aload_3
-    //   420: aload_0
-    //   421: iload_1
-    //   422: invokevirtual 268	sxl:getItemId	(I)J
-    //   425: invokevirtual 272	com/tencent/qqlive/module/videoreport/collect/EventCollector:onListGetView	(ILandroid/view/View;Landroid/view/ViewGroup;J)V
-    //   428: aload_2
-    //   429: areturn
-    //   430: aload_2
-    //   431: invokevirtual 276	android/view/View:getTag	()Ljava/lang/Object;
-    //   434: checkcast 59	sxo
-    //   437: astore 4
-    //   439: goto -308 -> 131
-    //   442: aload 4
-    //   444: getfield 97	sxo:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
-    //   447: bipush 8
-    //   449: invokevirtual 185	android/widget/TextView:setVisibility	(I)V
-    //   452: goto -182 -> 270
-    //   455: astore 6
-    //   457: invokestatic 282	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   460: ifeq +48 -> 508
-    //   463: ldc_w 284
-    //   466: iconst_2
-    //   467: new 236	java/lang/StringBuilder
-    //   470: dup
-    //   471: invokespecial 237	java/lang/StringBuilder:<init>	()V
-    //   474: ldc_w 286
-    //   477: invokevirtual 247	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   480: aload 5
-    //   482: getfield 195	com/tencent/biz/pubaccount/readinjoy/model/DiandianTopConfig:subTitleColor	Ljava/lang/String;
-    //   485: invokevirtual 247	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   488: ldc_w 288
-    //   491: invokevirtual 247	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   494: aload 6
-    //   496: invokevirtual 289	java/lang/Exception:toString	()Ljava/lang/String;
-    //   499: invokevirtual 247	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   502: invokevirtual 251	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   505: invokestatic 293	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   508: aload 4
-    //   510: getfield 105	sxo:c	Landroid/widget/TextView;
-    //   513: ldc_w 295
-    //   516: invokestatic 207	android/graphics/Color:parseColor	(Ljava/lang/String;)I
-    //   519: invokevirtual 210	android/widget/TextView:setTextColor	(I)V
-    //   522: goto -212 -> 310
-    //   525: aload 4
-    //   527: getfield 105	sxo:c	Landroid/widget/TextView;
-    //   530: ldc_w 295
-    //   533: invokestatic 207	android/graphics/Color:parseColor	(Ljava/lang/String;)I
-    //   536: invokevirtual 210	android/widget/TextView:setTextColor	(I)V
-    //   539: goto -229 -> 310
-    //   542: astore 4
-    //   544: invokestatic 282	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   547: ifeq -133 -> 414
-    //   550: ldc_w 284
-    //   553: iconst_2
-    //   554: aload 4
-    //   556: invokevirtual 296	org/json/JSONException:toString	()Ljava/lang/String;
-    //   559: invokestatic 293	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   562: goto -148 -> 414
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	565	0	this	sxl
-    //   0	565	1	paramInt	int
-    //   0	565	2	paramView	android.view.View
-    //   0	565	3	paramViewGroup	android.view.ViewGroup
-    //   27	499	4	localObject1	Object
-    //   542	13	4	localJSONException	org.json.JSONException
-    //   13	468	5	localDiandianTopConfig	DiandianTopConfig
-    //   150	98	6	localObject2	Object
-    //   455	40	6	localException	java.lang.Exception
-    // Exception table:
-    //   from	to	target	type
-    //   294	310	455	java/lang/Exception
-    //   333	414	542	org/json/JSONException
+    pjr.a(paramKandianUrlImageView, paramURL, this.jdField_a_of_type_AndroidContentContext, paramBoolean);
+  }
+  
+  public void a(spk paramspk, int paramInt1, int paramInt2) {}
+  
+  public void a(sxm paramsxm)
+  {
+    this.jdField_a_of_type_Sxm = paramsxm;
+    this.jdField_a_of_type_Sxm.a.add(this);
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    return false;
   }
 }
 

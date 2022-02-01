@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.util.Pair;
+import com.tencent.mobileqq.data.Emoticon;
 
 class awyx
-  implements DialogInterface.OnClickListener
+  implements awzd<Pair<String, String>, Emoticon>
 {
-  awyx(awyf paramawyf) {}
+  awyx(awyr paramawyr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Emoticon a(Pair<String, String> paramPair)
   {
-    this.a.d(true);
-    bcef.b(null, "dc00899", "grp_lbs", "", "data_like", "clk_entry", 0, 0, "", "", "", "");
+    return this.a.a((String)paramPair.first, (String)paramPair.second);
   }
 }
 

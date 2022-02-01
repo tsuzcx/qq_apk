@@ -1,21 +1,31 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.Ad;
+import com.tencent.ad.tangram.canvas.report.AdRefreshCallback;
+import com.tencent.ad.tangram.canvas.report.AdReportAdapter;
+import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppBtnData;
+import com.tencent.gdtad.aditem.GdtAd;
 
 public class abzx
-  implements abzb
+  implements AdReportAdapter
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
+  public void downloadReport(Ad paramAd, String paramString, int paramInt, boolean paramBoolean, AdAppBtnData paramAdAppBtnData)
   {
-    avct.a(paramQQAppInterface, paramMsgType0x210.vProtobuf, paramMsgInfo.shMsgSeq, paramMsgInfo.uRealMsgTime, false);
+    if ((!(paramAd instanceof GdtAd)) || (TextUtils.isEmpty(paramString))) {
+      return;
+    }
+    acix.a().a(paramString, (GdtAd)paramAd, paramAdAppBtnData);
+    acix.a().a((GdtAd)paramAd, paramInt, paramBoolean);
   }
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public AdRefreshCallback getAdReportAdapter()
   {
-    a(paramabxc.a(), paramMsgInfo, paramMsgType0x210);
-    return null;
+    return acix.a();
   }
+  
+  public void reportForCanvasDataBuildEnd(Context paramContext, Ad paramAd, long paramLong) {}
+  
+  public void reportForCanvasDataBuildError(Context paramContext, int paramInt, Ad paramAd, String paramString) {}
 }
 
 

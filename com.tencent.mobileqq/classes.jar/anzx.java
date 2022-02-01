@@ -1,79 +1,41 @@
-import android.content.IntentFilter;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.mobileqq.utils.BusinessCommonConfig;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
 
 public class anzx
-  extends anzo
+  extends anvw
 {
-  static PromotionConfigInfo b;
-  final String c = "SubProcessPromotionMgr_" + AudioHelper.b();
-  
-  public anzx(AppInterface paramAppInterface)
+  protected void a()
   {
-    super(paramAppInterface);
-    a(paramAppInterface);
-    QLog.w(this.c, 1, "SubProcessPromotionMgr, sProcessId[" + BaseApplicationImpl.sProcessId + "], processName[" + BaseApplicationImpl.processName + "]");
-  }
-  
-  public void a(AppInterface paramAppInterface, anzq paramanzq)
-  {
-    if (a("snycGetConfig", paramAppInterface, paramanzq)) {
-      return;
-    }
-    paramanzq.a(a());
-  }
-  
-  public void a(AppInterface paramAppInterface, String paramString)
-  {
-    BusinessCommonConfig.notifyQQDownload(2, paramString, 0);
-  }
-  
-  void a(PromotionConfigInfo paramPromotionConfigInfo)
-  {
-    super.a(paramPromotionConfigInfo);
-    try
+    super.a();
+    if (this.d >= anvu.a().a / 12000L)
     {
-      jdField_b_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = paramPromotionConfigInfo;
-      return;
+      CoreService.stopTempService();
+      this.a.c();
+      this.d = 0L;
     }
-    finally {}
   }
   
-  boolean a(AppInterface paramAppInterface)
+  protected void a(String paramString)
   {
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("tencent.businessnotify.qq.to.subprocess");
-    return paramAppInterface.getApp().registerReceiver(new anzy(this), localIntentFilter) != null;
-  }
-  
-  void b(AppInterface paramAppInterface) {}
-  
-  void b(String paramString)
-  {
-    try
+    GuardManager localGuardManager = this.a;
+    if ("com.tencent.mobileqq".equals(paramString)) {}
+    for (int i = 2;; i = 3)
     {
-      paramString = bgax.a(this.jdField_b_of_type_JavaLangString, paramString);
-      a(paramString);
-      QLog.w(this.c, 1, "reloadConfigInfo, Uin[" + this.jdField_b_of_type_JavaLangString + "] configInfo[" + paramString + "]");
+      localGuardManager.a(i, paramString);
       return;
     }
-    finally {}
   }
   
-  public void onDestroy()
+  protected void b(String paramString)
   {
-    super.onDestroy();
-    jdField_b_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = null;
+    super.b(paramString);
+    this.a.b();
+    CoreService.startTempService();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anzx
  * JD-Core Version:    0.7.0.1
  */

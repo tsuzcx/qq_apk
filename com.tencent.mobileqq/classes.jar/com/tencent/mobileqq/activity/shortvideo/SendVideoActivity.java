@@ -1,22 +1,23 @@
 package com.tencent.mobileqq.activity.shortvideo;
 
 import Override;
-import ahux;
-import akrx;
-import alcf;
-import alch;
+import aipw;
+import alpt;
+import amab;
+import amad;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.view.MotionEvent;
-import bbwb;
-import bjmp;
+import bdcw;
+import bkyc;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.shortvideo.mediadevice.CodecParam;
@@ -32,7 +33,7 @@ public class SendVideoActivity
   extends BaseActivity
   implements Handler.Callback
 {
-  private static bjmp a;
+  private static bkyc a;
   
   public static void a(Intent paramIntent)
   {
@@ -99,12 +100,12 @@ public class SendVideoActivity
         QLog.d("SendVideoActivity", 2, "doOnCreate(), <<===");
       }
       return true;
-      new alch(this, null).execute(new Void[0]);
+      new amad(this, null).execute(new Void[0]);
       continue;
       paramBundle = getIntent().getStringExtra("activity_before_enter_send_video");
       if ((paramBundle != null) && (ShortVideoPreviewActivity.class.getName().equals(paramBundle)))
       {
-        new alcf(this).execute(new Void[0]);
+        new amab(this).execute(new Void[0]);
       }
       else
       {
@@ -118,8 +119,8 @@ public class SendVideoActivity
           }
           for (;;)
           {
-            akrx.a("", "0X80088E4", String.valueOf(i));
-            bbwb.a(this.app, false);
+            alpt.a("", "0X80088E4", String.valueOf(i));
+            bdcw.a(this.app, false);
             break;
             if (j == 3000) {
               i = 2;
@@ -141,7 +142,7 @@ public class SendVideoActivity
             }
             else
             {
-              a = new bjmp(this);
+              a = new bkyc(this);
               a.sendEmptyMessageDelayed(1, 45000L);
             }
           }
@@ -175,7 +176,7 @@ public class SendVideoActivity
       if (QLog.isColorLevel()) {
         QLog.i("SendVideoActivity", 2, "handleMessage: send video timeout!");
       }
-      paramMessage = ((ahux)getAppInterface().getManager(138)).a();
+      paramMessage = ((aipw)getAppInterface().getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).a();
       if (paramMessage != null)
       {
         IHttpCommunicatorListener localIHttpCommunicatorListener = this.app.getTransFileController().findProcessor(paramMessage.frienduin, paramMessage.uniseq);

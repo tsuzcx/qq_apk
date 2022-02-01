@@ -6,7 +6,7 @@ public final class qq_ad_get$QQAdGet
   public qq_ad_get.QQAdGet.ContextInfo context_info;
   public qq_ad_get.QQAdGet.DebugInfo debug_info;
   public qq_ad_get.QQAdGet.DeviceInfo device_info;
-  public qq_ad_get.QQAdGet.ExternalExpInfo external_exp_info = new qq_ad_get.QQAdGet.ExternalExpInfo();
+  public qq_ad_get.QQAdGet.ExternalExpInfo external_exp_info;
   public String gdt_cookie;
   public qq_ad_get.QQAdGet.PositionInfo[] position_info;
   public boolean support_https = false;

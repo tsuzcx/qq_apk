@@ -1,21 +1,27 @@
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class vtt
-  implements vuf
+  implements TextWatcher
 {
-  protected AtomicBoolean c = new AtomicBoolean(false);
+  public vtt(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
   
-  public void a() {}
-  
-  public void b()
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.c.set(true);
+    PublicAccountImageCollectionCommentActivity.a(this.a, paramEditable.toString());
   }
   
-  public boolean b()
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    return this.c.get();
+    if ((!TextUtils.isEmpty(paramCharSequence)) && (paramCharSequence.length() - paramInt2 + paramInt3 > 100)) {
+      QQToast.a(this.a, 0, this.a.getString(2131694971), 0).b(this.a.getTitleBarHeight());
+    }
   }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

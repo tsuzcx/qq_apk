@@ -1,28 +1,76 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-class axiu
-  implements View.OnClickListener
+public class axiu
 {
-  axiu(axit paramaxit) {}
+  public int a;
+  public SessionInfo a;
+  public MessageForStructing a;
+  public AbsStructMsg a;
+  private Object a = new Object();
+  public HashMap<String, ArrayList<MessageRecord>> a;
+  public List<ChatMessage> a;
+  public Map<String, String> a;
+  public boolean a;
+  public int b;
+  public List<MessageForStructing> b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  private int h;
+  private int i;
   
-  public void onClick(View paramView)
+  public int a()
   {
-    if (System.currentTimeMillis() < axit.a(this.a) + 1000L) {}
-    for (;;)
+    synchronized (this.a)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      int j = this.h;
+      return j;
+    }
+  }
+  
+  public String a()
+  {
+    return String.valueOf(hashCode());
+  }
+  
+  public void a(int paramInt)
+  {
+    synchronized (this.a)
+    {
+      this.h ^= paramInt;
       return;
-      axit.a(this.a, System.currentTimeMillis());
-      Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
-      localIntent.putExtra("url", axil.a());
-      localIntent.putExtra("hide_more_button", true);
-      localIntent.addFlags(536870912);
-      paramView.getContext().startActivity(localIntent);
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    synchronized (this.a)
+    {
+      int j = this.i;
+      if (paramInt1 == 0) {
+        paramInt2 = 0;
+      }
+      this.i = (j + paramInt2);
+      return;
+    }
+  }
+  
+  public int b()
+  {
+    synchronized (this.a)
+    {
+      int j = this.i;
+      return j;
     }
   }
 }

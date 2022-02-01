@@ -3,8 +3,8 @@ package com.tencent.mobileqq.shortvideo.panoramicvideo;
 import android.graphics.RectF;
 import android.opengl.GLES20;
 import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
-import com.tencent.mobileqq.shortvideo.panoramicvideo.Utils.BufferUtils;
-import com.tencent.mobileqq.shortvideo.panoramicvideo.Utils.PlaneTextureRotationUtil;
+import com.tencent.mobileqq.shortvideo.panoramicvideo.utils.BufferUtils;
+import com.tencent.mobileqq.shortvideo.panoramicvideo.utils.PlaneTextureRotationUtil;
 import java.nio.FloatBuffer;
 
 public class Plane
@@ -104,7 +104,7 @@ public class Plane
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.panoramicvideo.Plane
  * JD-Core Version:    0.7.0.1
  */

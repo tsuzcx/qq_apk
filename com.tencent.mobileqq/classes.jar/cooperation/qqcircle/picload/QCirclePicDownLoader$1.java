@@ -1,18 +1,13 @@
 package cooperation.qqcircle.picload;
 
-import com.tencent.qphone.base.util.QLog;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.SSLSession;
-
-final class QCirclePicDownLoader$1
-  implements HostnameVerifier
+class QCirclePicDownLoader$1
+  implements AbsPicDW.ICallBackListener
 {
-  QCirclePicDownLoader$1(Option paramOption) {}
+  QCirclePicDownLoader$1(QCirclePicDownLoader paramQCirclePicDownLoader) {}
   
-  public boolean verify(String paramString, SSLSession paramSSLSession)
+  public void callBack(Option paramOption, boolean paramBoolean, int paramInt)
   {
-    QLog.i(QCirclePicDownLoader.LOG_TAG, 1, "seq = " + this.val$option.getSeq() + "getHttpConnection verify :" + true);
-    return true;
+    QCirclePicDownLoader.access$000(this.this$0, paramOption, paramBoolean, paramInt);
   }
 }
 

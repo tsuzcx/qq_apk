@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ocr;
 
-import axln;
-import axpc;
+import ayrw;
+import ayvn;
 
 public class OCRResultActivity$10$4
   implements Runnable
 {
-  public OCRResultActivity$10$4(axln paramaxln, int paramInt) {}
+  public OCRResultActivity$10$4(ayrw paramayrw, int paramInt) {}
   
   public void run()
   {
-    OCRResultActivity.a(this.jdField_a_of_type_Axln.a).a(this.jdField_a_of_type_Int);
+    OCRResultActivity.a(this.jdField_a_of_type_Ayrw.a).a(this.jdField_a_of_type_Int);
   }
 }
 

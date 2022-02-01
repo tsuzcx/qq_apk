@@ -1,20 +1,21 @@
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+
 public class bewu
+  implements AdapterView.OnItemClickListener
 {
-  public int a;
-  public String a;
-  public String b = "";
+  public bewu(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
   
-  public bewu(int paramInt, String paramString1, String paramString2)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bewu
  * JD-Core Version:    0.7.0.1
  */

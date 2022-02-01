@@ -1,7 +1,7 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bbuk;
-import bmbx;
+import bdbf;
+import bnrh;
 import java.util.concurrent.atomic.AtomicInteger;
 
 class AECameraManager$6
@@ -11,10 +11,10 @@ class AECameraManager$6
   
   public void run()
   {
-    bmbx.b("AECameraManager", "cameraStopPreview---ENTER");
+    bnrh.b("AECameraManager", "cameraStopPreview---ENTER");
     if (!AECameraManager.access$600(this.this$0))
     {
-      bmbx.d("AECameraManager", "cameraStopPreview---EXIT, is not previewing");
+      bnrh.d("AECameraManager", "cameraStopPreview---EXIT, is not previewing");
       return;
     }
     AECameraManager.access$800(this.this$0).a(false);

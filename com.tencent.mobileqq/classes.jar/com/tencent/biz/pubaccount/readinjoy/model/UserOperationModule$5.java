@@ -1,23 +1,23 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pwu;
-import pww;
-import pwx;
-import pwy;
+import qia;
+import qic;
+import qid;
+import qie;
 
 public class UserOperationModule$5
   implements Runnable
 {
-  public UserOperationModule$5(pwu parampwu, boolean paramBoolean, pww parampww, int paramInt, String paramString) {}
+  public UserOperationModule$5(qia paramqia, boolean paramBoolean, qic paramqic, int paramInt, String paramString) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      ((pwx)this.jdField_a_of_type_Pww).a(false, null, this.jdField_a_of_type_Int + "");
+      ((qid)this.jdField_a_of_type_Qic).a(false, null, this.jdField_a_of_type_Int + "");
       return;
     }
-    ((pwy)this.jdField_a_of_type_Pww).a(false, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    ((qie)this.jdField_a_of_type_Qic).a(false, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
 }
 

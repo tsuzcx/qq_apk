@@ -1,23 +1,52 @@
-import android.graphics.PointF;
-import java.util.ArrayList;
+import android.content.Context;
+import android.view.Display;
+import com.tencent.av.camera.CameraUtils;
+import com.tencent.av.smallscreen.SmallScreenVideoControlUI;
+import com.tencent.qphone.base.util.QLog;
 
 class lzz
+  extends mch
 {
-  int jdField_a_of_type_Int;
-  ArrayList<PointF> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  mdy jdField_a_of_type_Mdy;
-  byte[] jdField_a_of_type_ArrayOfByte;
-  int b;
-  int c;
-  int d;
-  int e;
-  int f;
+  public lzz(lzv paramlzv, Context paramContext, int paramInt)
+  {
+    super(paramContext, paramInt);
+  }
   
-  lzz(lzy paramlzy) {}
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    int j = 0;
+    try
+    {
+      i = (this.a.jdField_a_of_type_AndroidViewDisplay.getRotation() * 90 + paramInt) % 360;
+      if (this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI != null) {
+        this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI.b(i);
+      }
+      if (this.a.jdField_a_of_type_Maa != null) {
+        this.a.jdField_a_of_type_Maa.a(paramInt, paramBoolean);
+      }
+      if (this.a.jdField_a_of_type_ComTencentAvCameraCameraUtils != null) {
+        this.a.jdField_a_of_type_ComTencentAvCameraCameraUtils.a(paramInt);
+      }
+      this.a.g = paramInt;
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        int i = j;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("SmallScreenVideoController", 2, "onVideoOrientationChanged e = " + localException);
+          i = j;
+        }
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lzz
  * JD-Core Version:    0.7.0.1
  */

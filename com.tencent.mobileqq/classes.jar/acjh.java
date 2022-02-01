@@ -1,13 +1,16 @@
-import com.tencent.mfsdk.MagnifierSDK;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.gdtad.views.form.framework.GdtFormTableView;
+import com.tencent.gdtad.views.form.framework.GdtFormTableView.1.1;
 
-public final class acjh
-  implements acjf
+public class acjh
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public void a(int paramInt)
+  public acjh(GdtFormTableView paramGdtFormTableView) {}
+  
+  public void onGlobalLayout()
   {
-    if (MagnifierSDK.a != null) {
-      MagnifierSDK.a.a("result_objects", paramInt, 2);
-    }
+    this.a.a(-1);
+    this.a.post(new GdtFormTableView.1.1(this));
   }
 }
 

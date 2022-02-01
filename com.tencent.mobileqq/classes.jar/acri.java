@@ -1,18 +1,50 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.s2c.msgtype0x210.submsgtype0x67.submsgtype0x67.MsgBody;
 
 public class acri
-  implements View.OnClickListener
+  implements acpi
 {
-  public acri(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
-  
-  public void onClick(View paramView)
+  private static void a(acnk paramacnk, MsgType0x210 paramMsgType0x210)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(2130771997, 2130772001);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("nearbyTroopPush", 2, "receive msgtype0x210.submsgtype0x67 group recmd push: " + paramacnk.a(paramMsgType0x210));
+    }
+    submsgtype0x67.MsgBody localMsgBody = new submsgtype0x67.MsgBody();
+    try
+    {
+      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+      if (localMsgBody.rpt_msg_grpinfo.has())
+      {
+        paramMsgType0x210 = localMsgBody.rpt_msg_grpinfo.get();
+        paramacnk = (anxi)paramacnk.a().getBusinessHandler(BusinessHandlerFactory.LBS_HANDLER);
+        if (paramacnk != null) {
+          paramacnk.a(paramMsgType0x210);
+        }
+      }
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramMsgType0x210)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("nearbyTroopPush", 2, "receive msgtype0x210.submsgtype0x67 mergeFrom exception: " + paramMsgType0x210.toString());
+        }
+      }
+    }
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk, paramMsgType0x210);
+    return null;
   }
 }
 

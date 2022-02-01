@@ -1,18 +1,28 @@
-import android.app.Activity;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.PopupWindow.OnDismissListener;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.CustomWebView;
 
-class ogl
-  implements PopupWindow.OnDismissListener
+public class ogl
+  implements bigw
 {
-  ogl(ogk paramogk) {}
+  public ogl(CustomWebView paramCustomWebView, ogm paramogm) {}
   
-  public void onDismiss()
+  public void onSetCookiesFinished(String paramString, Bundle paramBundle, long paramLong)
   {
-    WindowManager.LayoutParams localLayoutParams = ((Activity)this.a.a).getWindow().getAttributes();
-    localLayoutParams.alpha = 1.0F;
-    ((Activity)this.a.a).getWindow().setAttributes(localLayoutParams);
+    switch (this.jdField_a_of_type_Ogm.a)
+    {
+    default: 
+      return;
+    case 1: 
+      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(paramString);
+      return;
+    case 2: 
+      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrlOriginal(paramString);
+      return;
+    case 3: 
+      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadData(paramString, this.jdField_a_of_type_Ogm.c, this.jdField_a_of_type_Ogm.d);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadDataWithBaseURL(paramString, this.jdField_a_of_type_Ogm.b, this.jdField_a_of_type_Ogm.c, this.jdField_a_of_type_Ogm.d, this.jdField_a_of_type_Ogm.e);
   }
 }
 

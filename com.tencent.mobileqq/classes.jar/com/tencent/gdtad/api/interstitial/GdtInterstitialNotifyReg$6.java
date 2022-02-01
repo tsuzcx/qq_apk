@@ -1,16 +1,16 @@
 package com.tencent.gdtad.api.interstitial;
 
-import abmn;
+import accd;
 import java.lang.ref.WeakReference;
 
 public class GdtInterstitialNotifyReg$6
   implements Runnable
 {
-  public GdtInterstitialNotifyReg$6(abmn paramabmn, WeakReference paramWeakReference, int paramInt1, int paramInt2) {}
+  public GdtInterstitialNotifyReg$6(accd paramaccd, WeakReference paramWeakReference, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    ((GdtInterstitialFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(4, this.jdField_a_of_type_Int, -2147483648, this.b, -2147483648L);
+    ((GdtInterstitialFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(4, this.jdField_a_of_type_Int, -2147483648, this.b);
   }
 }
 

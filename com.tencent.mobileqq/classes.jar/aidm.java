@@ -1,44 +1,19 @@
-import android.support.annotation.NonNull;
+import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie.7.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.nowsummarycard.NowSummaryCard.MiniCard;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class aidm
+  implements aydl
 {
-  public int a;
-  public boolean a;
-  public int b = 0;
+  aidm(aidd paramaidd) {}
   
-  public aidm()
+  public void a(int paramInt, List<NowSummaryCard.MiniCard> paramList, String paramString)
   {
-    this.jdField_a_of_type_Int = 23;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Int = 23;
-    this.b = 0;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Int = 23;
-    this.b = 0;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "TabLayoutStatus{tabId=" + this.jdField_a_of_type_Int + ", tabPosition=" + this.b + ", display='" + this.jdField_a_of_type_Boolean + '\'' + '}';
+    if ((paramInt == 0) && (paramList != null) && (paramList.size() > 0)) {
+      ThreadManager.getUIHandler().post(new NearbyChatPie.7.1(this));
+    }
   }
 }
 

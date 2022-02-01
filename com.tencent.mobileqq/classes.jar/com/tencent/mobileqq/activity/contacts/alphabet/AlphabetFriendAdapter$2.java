@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.contacts.alphabet;
 
-import aimv;
+import ajik;
 import java.util.List;
 
 public class AlphabetFriendAdapter$2
   implements Runnable
 {
-  public AlphabetFriendAdapter$2(aimv paramaimv, List paramList) {}
+  public AlphabetFriendAdapter$2(ajik paramajik, List paramList) {}
   
   public void run()
   {

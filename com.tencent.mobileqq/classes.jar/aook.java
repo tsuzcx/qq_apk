@@ -1,73 +1,33 @@
-import android.os.Build;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.commonsdk.util.MD5Coding;
-import com.tencent.mobileqq.ark.ArkAppCenterUtil;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import msf.msgsvc.msg_svc.PbSendMsgReq;
 
-public class aook
-  implements aonz
+class aook
+  implements acmg
 {
-  private aook(aonx paramaonx) {}
+  aook(aooi paramaooi, String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte) {}
   
-  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  public ToServiceMsg a()
   {
-    if (!aonw.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.DEVICE_INFORMATION")) {}
-    do
-    {
-      return false;
-      if ("GetModelName".equals(paramString))
-      {
-        paramVariantWrapper.SetString(Build.MODEL);
-        return true;
-      }
-      if ("GetScreenWidth".equals(paramString))
-      {
-        paramString = ArkAppCenterUtil.sDisplayMetrics;
-        paramVariantWrapper.SetInt((int)(paramString.widthPixels / paramString.density));
-        return true;
-      }
-      if ("GetScreenHeight".equals(paramString))
-      {
-        paramString = ArkAppCenterUtil.sDisplayMetrics;
-        paramVariantWrapper.SetInt((int)(paramString.heightPixels / paramString.density));
-        return true;
-      }
-      if ("GetPixelRatio".equals(paramString))
-      {
-        paramVariantWrapper.SetDouble(ArkAppCenterUtil.getDensity());
-        return true;
-      }
-    } while (!"GetIdentifier".equals(paramString));
-    paramArrayOfVariantWrapper = DeviceInfoUtil.getIMEI();
-    paramString = paramArrayOfVariantWrapper;
-    if (TextUtils.isEmpty(paramArrayOfVariantWrapper)) {}
-    try
-    {
-      paramString = bjms.a("6973c4");
-      paramArrayOfVariantWrapper = paramString;
-      if (paramString == null)
-      {
-        paramArrayOfVariantWrapper = "";
-        QLog.e("ArkAppDeviceModule", 1, "get identifer: null, fix it with empty string");
-      }
-      paramString = paramArrayOfVariantWrapper;
-      if (this.a.jdField_a_of_type_Long != 0L) {
-        paramString = MD5Coding.encodeHexStr(paramArrayOfVariantWrapper);
-      }
-      paramVariantWrapper.SetString(paramString);
-      return true;
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        QLog.e("ArkAppDeviceModule", 1, "get identifer: exception, catch it");
-        paramString = paramArrayOfVariantWrapper;
-      }
-    }
+    ToServiceMsg localToServiceMsg = aooi.b(this.jdField_a_of_type_Aooi).createToServiceMsg("MessageSvc.PbSendMsg");
+    localToServiceMsg.extraData.putString("uin", this.jdField_a_of_type_JavaLangString);
+    localToServiceMsg.extraData.putByte("cmd", (byte)0);
+    localToServiceMsg.extraData.putByte("keyType", (byte)0);
+    localToServiceMsg.extraData.putByte("sendType", (byte)0);
+    localToServiceMsg.extraData.putInt("busiType", 1025);
+    localToServiceMsg.extraData.putString("toUin", this.jdField_a_of_type_JavaLangString);
+    localToServiceMsg.extraData.putLong("sessionid", this.jdField_a_of_type_Long);
+    localToServiceMsg.extraData.putInt("random", this.jdField_a_of_type_Int);
+    localToServiceMsg.extraData.putLong("msgsize", 0L);
+    localToServiceMsg.addAttribute("_tag_LOGSTR", String.valueOf(this.jdField_b_of_type_Long));
+    localToServiceMsg.extraData.putInt("ROUNTING_TYPE", 9);
+    localToServiceMsg.extraData.putInt("transC2CCmd", this.jdField_b_of_type_Int);
+    bcsf localbcsf = new bcsf();
+    localbcsf.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+    localbcsf.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    localToServiceMsg.putWupBuffer(bcrx.a(aooi.b(this.jdField_a_of_type_Aooi), 9, this.jdField_a_of_type_JavaLangString, localbcsf, this.jdField_b_of_type_Long, this.jdField_a_of_type_Int).toByteArray());
+    return localToServiceMsg;
   }
 }
 

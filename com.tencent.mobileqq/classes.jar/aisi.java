@@ -1,28 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter;
-import com.tencent.widget.SimpleTextView;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.widget.SwipListView;
 
-public class aisi
-  extends bjub
+class aisi
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public aisi(ContactsTroopAdapter paramContactsTroopAdapter, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
-  {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
-  }
+  aisi(aish paramaish) {}
   
-  public View a(int paramInt, Object paramObject, bjua parambjua, View.OnClickListener paramOnClickListener)
+  public void onGlobalLayout()
   {
-    parambjua = super.a(paramInt, paramObject, parambjua, paramOnClickListener);
-    if ((parambjua instanceof SimpleTextView)) {
-      parambjua.setTag(paramObject);
-    }
-    return parambjua;
-  }
-  
-  public void a(int paramInt, Object paramObject, bjua[] paramArrayOfbjua)
-  {
-    this.a.a(paramInt, paramArrayOfbjua, paramObject);
+    this.a.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.a.a.setListViewHeightBasedOnChildren(this.a.a.a);
   }
 }
 

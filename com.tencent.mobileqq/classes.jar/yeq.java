@@ -1,19 +1,30 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.AutoPlayImageView;
+import com.tencent.image.QQLiveDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
 public class yeq
-  implements ymt
+  implements URLDrawable.URLDrawableListener
 {
-  public yeq(DoodleLayout paramDoodleLayout) {}
+  public yeq(AutoPlayImageView paramAutoPlayImageView) {}
   
-  public void a(@NonNull yna paramyna)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    xwb.b("0X80075CD");
-    if ((this.a.a != null) && (this.a.a.mBusinessId == 3)) {
-      LpReportInfo_pf00064.allReport(615, 1, 2);
+    if (AutoPlayImageView.a(this.a) == 2) {
+      if ((paramURLDrawable != null) && ((paramURLDrawable.getCurrDrawable() instanceof QQLiveDrawable))) {
+        ((QQLiveDrawable)paramURLDrawable.getCurrDrawable()).pause();
+      }
     }
+    while ((AutoPlayImageView.a(this.a) != 3) || (paramURLDrawable == null) || (!(paramURLDrawable.getCurrDrawable() instanceof QQLiveDrawable))) {
+      return;
+    }
+    ((QQLiveDrawable)paramURLDrawable.getCurrDrawable()).recyleAndKeepPostion();
   }
 }
 

@@ -1,24 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
-import mqq.app.QQPermissionCallback;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.widget.LinearLayout;
 
 public class akzf
-  implements QQPermissionCallback
+  extends RecyclerView.ViewHolder
 {
-  public akzf(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity, int paramInt) {}
+  LinearLayout a;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public akzf(LinearLayout paramLinearLayout)
   {
-    paramArrayOfString = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.a.obtainMessage(2);
-    paramArrayOfString.arg1 = 1;
-    paramArrayOfString.arg2 = 2131698300;
-    paramArrayOfString.sendToTarget();
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    CreateFaceToFaceDiscussionActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity, this.jdField_a_of_type_Int);
+    super(paramLinearLayout);
+    this.a = paramLinearLayout;
   }
 }
 

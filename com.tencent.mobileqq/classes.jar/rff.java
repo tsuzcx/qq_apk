@@ -1,18 +1,19 @@
-public class rff
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class rff
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public rfg a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
+  rff(rfe paramrfe) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    return "PGCPicInfo{picWidth=" + this.jdField_a_of_type_Int + ", picHeight=" + this.jdField_b_of_type_Int + ", picMd5='" + this.jdField_a_of_type_JavaLangString + '\'' + ", picUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", thumbnailUrl='" + this.jdField_c_of_type_JavaLangString + '\'' + ", isAnimation=" + this.jdField_c_of_type_Int + ", picDesc='" + this.d + '\'' + ", galleryIndex=" + this.jdField_a_of_type_Long + ", pgcVideoInfo=" + this.jdField_a_of_type_Rfg + '}';
+    pnw localpnw = this.a.jdField_a_of_type_Szd.a().a();
+    if (localpnw != null) {
+      localpnw.a(null, ((qfw)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,17 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.haoliyou.JefsClass;
-import com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable;
+import android.os.Bundle;
 
 class aucn
-  implements DialogInterface.OnClickListener
+  implements aucf
 {
   aucn(aucm paramaucm) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt1, int paramInt2, String paramString, int paramInt3, Bundle paramBundle)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable.a(2);
-    JefsClass.a(this.a.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, this.a.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable);
+    if (this.a.a != null) {
+      this.a.a.a(paramInt3);
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, String paramString, Bundle paramBundle)
+  {
+    if (this.a.a != null) {
+      this.a.a.a(paramBoolean);
+    }
   }
 }
 

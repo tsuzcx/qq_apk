@@ -1,13 +1,26 @@
-class bbzs
-  implements bbzw
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.manager.Manager;
+
+public class bbzs
+  implements Manager
 {
-  bbzs(bbzq parambbzq, bbzt parambbzt, String paramString) {}
+  public static final String a;
+  public static final String b = anvx.a(2131713133);
+  public static final String c = anvx.a(2131713132);
+  public static final String d = anvx.a(2131713135);
+  int jdField_a_of_type_Int = -1;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public void a(int paramInt)
+  static
   {
-    if (this.jdField_a_of_type_Bbzt != null) {
-      this.jdField_a_of_type_Bbzt.a(paramInt, bbzq.a(this.jdField_a_of_type_Bbzq, this.jdField_a_of_type_JavaLangString));
-    }
+    jdField_a_of_type_JavaLangString = anvx.a(2131713134);
+  }
+  
+  public bbzs(QQAppInterface paramQQAppInterface) {}
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   }
 }
 

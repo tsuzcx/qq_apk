@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.decoupling.accesslayer.data;
 
-import pkm;
-import puc;
+import pvj;
+import qew;
 
 public final class RIJDataFetchManager$1
   implements Runnable
@@ -10,9 +10,9 @@ public final class RIJDataFetchManager$1
   
   public void run()
   {
-    puc localpuc = pkm.a().a();
-    if (localpuc != null) {
-      localpuc.b(this.a);
+    qew localqew = pvj.a().a();
+    if (localqew != null) {
+      localqew.b(this.a);
     }
   }
 }

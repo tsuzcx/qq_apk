@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import android.text.TextPaint;
+import android.widget.EditText;
+import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+import com.tencent.mobileqq.text.QQTextBuilder;
 
 public class azau
-  extends amwl
+  extends Editable.Factory
 {
-  public azau(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  public azau(AutoReplyEditActivity paramAutoReplyEditActivity) {}
   
-  protected void onInsertIntoBlackList(boolean paramBoolean, String paramString)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
-      this.a.a(paramBoolean, false);
+    if ((paramCharSequence instanceof QQTextBuilder)) {
+      return (Editable)paramCharSequence;
     }
-  }
-  
-  protected void onRemoveFromBlackList(boolean paramBoolean, String paramString)
-  {
-    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
-      this.a.a(paramBoolean, true);
-    }
+    return new QQTextBuilder(paramCharSequence, 3, (int)(AutoReplyEditActivity.a(this.a).getTextSize() / AutoReplyEditActivity.a(this.a).getPaint().density));
   }
 }
 

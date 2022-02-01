@@ -1,11 +1,17 @@
+import android.view.MotionEvent;
+import com.tencent.qphone.base.util.QLog;
+
 class agke
+  implements bioi
 {
-  public int a;
-  public long a;
+  agke(agkb paramagkb) {}
   
-  agke(agkc paramagkc)
+  public boolean a(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Long = -1L;
+    if (QLog.isColorLevel()) {
+      QLog.e("ShortcutBarAIOHelper", 2, "ShortcutBarAioHelper.DrawerFrame.TouchEventConsumer");
+    }
+    return this.a.a(paramMotionEvent);
   }
 }
 

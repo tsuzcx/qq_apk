@@ -75,6 +75,7 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_QZONE_FRIEND_PLAYING_NINE = 2092;
   public static final int LAUNCH_SCENE_QZONE_FRIEND_PLAYING_THIRD = 2090;
   public static final int LAUNCH_SCENE_QZONE_SHUOSHUO_LIST = 2060;
+  public static final int LAUNCH_SCENE_RECENT_COLOR_NOTE = 1132;
   public static final int LAUNCH_SCENE_SCHEME = 2016;
   public static final int LAUNCH_SCENE_SEARCH = 2005;
   public static final int LAUNCH_SCENE_SEARCH_HAS_USED = 1027;
@@ -324,7 +325,7 @@ public class LaunchParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.LaunchParam
  * JD-Core Version:    0.7.0.1
  */

@@ -1,137 +1,86 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
+import java.util.List;
 
 public class aqdr
-  extends aptq<aqdp>
+  extends aqdt
 {
-  public static String a;
-  private WeakReference<bkzj> a;
+  private float jdField_a_of_type_Float = -1.0F;
+  boolean jdField_a_of_type_Boolean = false;
+  private float b = -1.0F;
+  private float c = -1.0F;
+  private float[] d = new float[3];
+  private float[] e = new float[3];
+  private float[] f = new float[16];
   
-  static
+  public aqdr(Context paramContext, int paramInt, SensorManager paramSensorManager, aqdl paramaqdl)
   {
-    jdField_a_of_type_JavaLangString = "{\n    \"switch\":1,\n    \"match\":[\n        {\n            \"key\":\"花木兰\",\n            \"resUrl\":\"https://d3g.qq.com/sngapp/app/update/20191028162616_9505/libai_dae.zip\",\n            \"md5\":\"52b1ab75bbd04aef4eb889cc6b625dad\"\n        },\n        {\n            \"key\":\"miku\",\n            \"resUrl\":\"https://d3g.qq.com/sngapp/app/update/20191029174146_1019/miku_fbx.zip\",\n            \"md5\":\"f957c6847f06e485a021ed81d5b5024a\"\n        },\n        {\n            \"key\":\"莓莓蛋糕\",\n            \"resUrl\":\"https://d3g.qq.com/sngapp/app/update/20191107111004_5856/cake_dae.zip\",\n            \"md5\":\"4fe9009093acbea20a65f281958879eb\"\n        }\n    ],\n    \"blackList\":\"SLA-AL00\"\n}";
+    super(paramContext, paramInt, paramSensorManager, paramaqdl);
+    paramContext = paramSensorManager.getDefaultSensor(1);
+    if (paramContext != null)
+    {
+      this.jdField_a_of_type_JavaUtilList.add(paramContext);
+      return;
+    }
+    throw new OrientationProviderNotFound(String.valueOf(1));
   }
   
-  private void a(boolean paramBoolean, aqdp paramaqdp, String paramString1, String paramString2)
+  private void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    blad.a().b(paramaqdp);
-    if (this.jdField_a_of_type_MqqUtilWeakReference == null)
-    {
-      QLog.e("VipARConfProcessor", 1, "load config listener = null");
+    if (this.jdField_a_of_type_Aqdl == null) {
       return;
     }
-    bkzj localbkzj = (bkzj)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localbkzj == null)
+    if (Math.abs(paramFloat1 - this.jdField_a_of_type_Float) > 1.0F)
     {
-      QLog.e("VipARConfProcessor", 1, "load config vipARConfigListener = null");
-      return;
+      this.jdField_a_of_type_Float = paramFloat1;
+      this.jdField_a_of_type_Aqdl.updateAzimuth(paramFloat1);
     }
-    if (paramBoolean)
+    if (Math.abs(paramFloat2 - this.b) > 1.0F)
     {
-      paramString2 = paramaqdp;
-      if (paramaqdp == null) {
-        paramString2 = new aqdp();
+      this.b = paramFloat2;
+      this.jdField_a_of_type_Aqdl.updatePitch(paramFloat2);
+    }
+    if (Math.abs(paramFloat3 - this.c) > 1.0F)
+    {
+      this.c = paramFloat3;
+      this.jdField_a_of_type_Aqdl.updateRoll(paramFloat3);
+    }
+    this.jdField_a_of_type_Aqdl.updateSensor(paramFloat1, paramFloat2, paramFloat3);
+  }
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    if (paramSensorEvent.sensor.getType() == 1)
+    {
+      System.arraycopy(paramSensorEvent.values, 0, this.jdField_a_of_type_ArrayOfFloat, 0, 3);
+      float f1 = this.jdField_a_of_type_ArrayOfFloat[0];
+      float f2 = this.jdField_a_of_type_ArrayOfFloat[1];
+      float f3 = this.jdField_a_of_type_ArrayOfFloat[2];
+      this.d[1] = (-(float)Math.atan2(f2, f3));
+      this.d[2] = ((float)Math.atan2(-f1, Math.sqrt(f2 * f2 + f3 * f3)));
+      if (this.jdField_a_of_type_Boolean) {
+        this.d = aqdm.a(this.d, this.e);
       }
-      QLog.i("VipARConfProcessor", 1, "notifyListener isSuccess : " + paramBoolean + " refer  = " + paramString1 + " data  = " + paramString2.toString());
-      localbkzj.a(paramString2);
-      return;
-    }
-    QLog.i("VipARConfProcessor", 1, "notifyListener fail :  refer  = " + paramString1 + " error = " + paramString2);
-    localbkzj.a(paramString2);
-  }
-  
-  @NonNull
-  public aqdp a(int paramInt)
-  {
-    QLog.e("VipARConfProcessor", 1, "migrateOldOrDefaultContent: " + paramInt);
-    return new aqdp();
-  }
-  
-  @Nullable
-  public aqdp a(aptx[] paramArrayOfaptx)
-  {
-    if (paramArrayOfaptx != null) {
-      try
-      {
-        if (paramArrayOfaptx.length > 0)
-        {
-          int j = paramArrayOfaptx.length;
-          int i = 0;
-          while (i < j)
-          {
-            aptx localaptx = paramArrayOfaptx[i];
-            if (localaptx != null)
-            {
-              aqdp localaqdp = aqdp.a(localaptx.jdField_a_of_type_JavaLangString);
-              if (QLog.isColorLevel()) {
-                QLog.d("VipARConfProcessor", 2, "onParsed " + localaptx.jdField_a_of_type_JavaLangString);
-              }
-              if (localaqdp != null) {
-                return localaqdp;
-              }
-            }
-            i += 1;
-          }
-        }
-        return new aqdp();
-      }
-      catch (Exception paramArrayOfaptx)
-      {
-        paramArrayOfaptx.printStackTrace();
-        QLog.e("VipARConfProcessor", 1, "onParsed Exception = " + paramArrayOfaptx.getMessage());
+      System.arraycopy(this.d, 0, this.e, 0, 3);
+      this.jdField_a_of_type_Boolean = true;
+      aqdn.a(aqdn.a(this.d), this.f);
+      if (this.jdField_a_of_type_Int != 1) {
+        super.a(this.f);
       }
     }
-  }
-  
-  public void a(aqdp paramaqdp)
-  {
-    if ((QLog.isColorLevel()) && (paramaqdp != null)) {
-      QLog.i("VipARConfProcessor", 2, "onUpdate: " + paramaqdp.toString());
-    }
-    if (paramaqdp != null) {}
-    for (boolean bool = true;; bool = false)
+    else
     {
-      a(bool, paramaqdp, "onUpdate", " error bean = null");
       return;
     }
-  }
-  
-  public Class<aqdp> clazz()
-  {
-    return aqdp.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.e("VipARConfProcessor", 1, "onReqFailed: " + paramInt);
-    a(false, null, "onReqFailed", " failCode = " + paramInt);
-  }
-  
-  public int type()
-  {
-    return 499;
+    a(0.0F, (float)(this.d[1] * 180.0F / 3.141592653589793D), (float)(this.d[2] * 180.0F / 3.141592653589793D));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqdr
  * JD-Core Version:    0.7.0.1
  */

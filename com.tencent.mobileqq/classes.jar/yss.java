@@ -1,27 +1,27 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
-import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
+import android.support.annotation.NonNull;
+import android.widget.EditText;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
-public class yss
-  extends AccessibilityDelegateCompat
+class yss
+  implements zbm
 {
-  public yss(LeftTabBarView paramLeftTabBarView) {}
+  yss(yso paramyso) {}
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public void a(@NonNull zbt paramzbt)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if (LeftTabBarView.a(this.a, paramView) == LeftTabBarView.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
+    switch (paramzbt.a)
     {
-      paramAccessibilityNodeInfoCompat.setSelected(bool);
-      return;
     }
-  }
-  
-  public void sendAccessibilityEvent(View paramView, int paramInt)
-  {
-    super.sendAccessibilityEvent(paramView, paramInt);
+    do
+    {
+      return;
+      int i = paramzbt.b;
+      this.a.jdField_a_of_type_Yrx.a = i;
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setTextColor(i);
+      ykw.b("0X80075D8");
+    } while ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams == null) || (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mBusinessId != 3));
+    LpReportInfo_pf00064.allReport(615, 3, 2);
   }
 }
 

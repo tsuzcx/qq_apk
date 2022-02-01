@@ -8,7 +8,7 @@ public class bi
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    bfur.a(this.a.getActivity());
+    bhdj.a(this.a.getActivity());
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)

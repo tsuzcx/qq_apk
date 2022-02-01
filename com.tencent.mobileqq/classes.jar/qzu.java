@@ -1,23 +1,20 @@
+import java.util.List;
 import kotlin.Metadata;
-import kotlin.Unit;
-import kotlin.jvm.functions.Function3;
+import kotlin.collections.CollectionsKt;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJWriteWatchWordShareContract$IModel;", "", "failedToast", "", "getFailedToast", "()Ljava/lang/String;", "successToast", "getSuccessToast", "copyToClipboard", "", "watchWord", "url", "title", "isOpen", "", "type", "", "fetchTopicWatchWord", "topicId", "callback", "Lkotlin/Function3;", "Lkotlin/ParameterName;", "name", "fetchVideoWatchWord", "rowkey", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface qzu
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/pts/util/PTSConstantUtil;", "", "()V", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qzu
 {
   @NotNull
-  public abstract String a();
+  private static List<String> a;
+  public static final qzv a;
   
-  public abstract void a(@NotNull String paramString1, @NotNull String paramString2, @Nullable String paramString3, @NotNull String paramString4, @Nullable Function3<? super String, ? super String, ? super Boolean, Unit> paramFunction3);
-  
-  public abstract void a(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, @Nullable Function3<? super String, ? super String, ? super Boolean, Unit> paramFunction3);
-  
-  public abstract void a(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, boolean paramBoolean, int paramInt);
-  
-  @NotNull
-  public abstract String b();
+  static
+  {
+    jdField_a_of_type_Qzv = new qzv(null);
+    jdField_a_of_type_JavaUtilList = CollectionsKt.listOf(new String[] { "eventType", "jumpUrl", "clickReportName", "pts:pageName", "r5", "requestParams", "businessType", "extendInfo" });
+  }
 }
 
 

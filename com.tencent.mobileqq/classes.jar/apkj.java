@@ -1,19 +1,11 @@
-import com.tencent.mobileqq.chat.ui.MessageNotificationSettingFragment;
-import com.tencent.qphone.base.util.QLog;
-
 public class apkj
-  extends andd
 {
-  public apkj(MessageNotificationSettingFragment paramMessageNotificationSettingFragment) {}
+  public apjq a;
+  public boolean a;
   
-  protected void onOIDB0XA80_0_Ret(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MessageNotificationSettingFragment", 2, "onOIDB0XA80_0_Ret: invoked.  isSuccess : " + paramBoolean + " op: " + paramInt1 + " type: " + Integer.toHexString(paramInt2));
-    }
-    if (paramBoolean) {
-      MessageNotificationSettingFragment.a(this.a).a(paramString1, paramInt1, paramInt2);
-    }
+    return "ARCloudRecogResultBase{hasLBSLocation = " + this.jdField_a_of_type_Boolean + ", checkResult = " + this.jdField_a_of_type_Apjq + '}';
   }
 }
 

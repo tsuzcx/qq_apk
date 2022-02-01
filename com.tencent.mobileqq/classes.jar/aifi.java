@@ -1,8 +1,27 @@
-import android.widget.Button;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.highway.utils.HwNetworkUtil;
 
-public class aifi
+class aifi
+  extends BroadcastReceiver
 {
-  public Button a;
+  aifi(aido paramaido) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    boolean bool = HwNetworkUtil.isNetworkAvailable(this.a.mContext);
+    if ((bool) && (aido.e(this.a)))
+    {
+      nzg.a.a();
+      aido.c(this.a, false);
+    }
+    while (bool) {
+      return;
+    }
+    nzg.a.a(this.a.getCurTroopUin());
+    aido.c(this.a, true);
+  }
 }
 
 

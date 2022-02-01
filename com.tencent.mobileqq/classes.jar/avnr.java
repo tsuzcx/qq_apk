@@ -1,16 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
 
-class avnr
-  implements DialogInterface.OnClickListener
+public abstract interface avnr
 {
-  avnr(avnp paramavnp) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    bcef.b(avnp.a(this.a), "dc00898", "", "", "0X80085DB", "0X80085DB", 0, 0, "", "", "", "");
-  }
+  public abstract void onClick(View paramView);
 }
 
 

@@ -1,63 +1,101 @@
-import android.media.AudioManager;
-import android.os.Handler;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 import java.util.ArrayList;
 
-class asvv
-  implements View.OnClickListener
+public class asvv
 {
-  asvv(asvt paramasvt) {}
+  private ArrayList<asnt> a = new ArrayList();
   
-  public void onClick(View paramView)
+  public static String a(String paramString, Context paramContext)
   {
-    boolean bool1 = true;
-    switch (paramView.getId())
-    {
+    String str;
+    if (TextUtils.isEmpty(paramString)) {
+      str = "";
     }
+    do
+    {
+      return str;
+      paramString.replaceAll("\n|\r\n", " ");
+      str = paramString;
+    } while (paramString.length() <= 20);
+    paramString = paramString.substring(0, 19);
+    return paramString + paramContext.getResources().getString(2131698474);
+  }
+  
+  public int a()
+  {
+    return this.a.size();
+  }
+  
+  public View a(Context paramContext, asnt paramasnt, ViewGroup paramViewGroup)
+  {
+    if (paramasnt == null) {}
+    int i;
+    do
+    {
+      return null;
+      paramViewGroup = LayoutInflater.from(paramContext).inflate(2131561146, null);
+      if (paramViewGroup == null) {
+        break;
+      }
+      i = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297292);
+      if (paramasnt.a == null) {
+        paramasnt.a = "";
+      }
+      paramContext = a(paramasnt.a, paramContext);
+    } while (paramContext == null);
+    TextView localTextView = (TextView)paramViewGroup.findViewById(2131378658);
+    localTextView.setText(paramasnt.a);
+    localTextView.setTextSize(0, i);
+    localTextView.setText(paramContext);
+    localTextView.setSingleLine(true);
+    paramContext = (ImageView)paramViewGroup.findViewById(2131368381);
+    if (paramasnt.a()) {
+      paramContext.setBackgroundResource(2130845084);
+    }
+    paramViewGroup.setLayoutParams(new RelativeLayout.LayoutParams(-2, BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297289)));
+    return paramViewGroup;
+  }
+  
+  public asnt a(int paramInt)
+  {
+    return (asnt)this.a.get(paramInt);
+  }
+  
+  public void a(ArrayList<asnt> paramArrayList)
+  {
+    int i = 0;
+    int j = 0;
+    if ((paramArrayList == null) || (paramArrayList.size() < 1)) {}
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (asvt.a(this.a) != null)
+      this.a.clear();
+      if (paramArrayList.size() < 16)
       {
-        boolean bool2 = asvt.a(this.a).isPlaying();
-        if (bool2)
+        i = j;
+        while (i < 16)
         {
-          asvt.a(this.a).removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-          aszr.a("0X8004BE5");
-          this.a.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(asvt.a(this.a));
-          asvt.a(this.a);
-          label130:
-          localObject = this.a.jdField_a_of_type_Aswz;
-          if (bool2) {
-            break label171;
-          }
+          j = paramArrayList.size();
+          this.a.add(paramArrayList.get(i % j));
+          i += 1;
         }
-        for (;;)
+      }
+      else
+      {
+        while (i < paramArrayList.size())
         {
-          ((aswz)localObject).d(bool1);
-          break;
-          asvt.b(this.a);
-          asvt.c(this.a);
-          break label130;
-          label171:
-          bool1 = false;
-        }
-        Object localObject = this.a.jdField_a_of_type_Asst.b();
-        asvt.a(this.a, (ArrayList[])localObject);
-        String str = this.a.a() + "(" + FileUtil.filesizeToString(this.a.jdField_a_of_type_Asst.c()) + ")";
-        this.a.a((ArrayList[])localObject, str);
-        continue;
-        this.a.n();
-        continue;
-        int i = this.a.jdField_a_of_type_Asst.i();
-        int j = this.a.jdField_a_of_type_Asst.h();
-        if ((i == 6) && (j == 1) && (this.a.jdField_a_of_type_Asst.a() != null)) {
-          this.a.jdField_a_of_type_Asst.a().a();
+          this.a.add(paramArrayList.get(i));
+          i += 1;
         }
       }
     }

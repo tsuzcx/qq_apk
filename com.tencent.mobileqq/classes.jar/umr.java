@@ -1,28 +1,22 @@
-import UserGrowth.stSimpleMetaComment;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.weishi_new.comment.WsCommentView;
-import com.tencent.biz.pubaccount.weishi_new.comment.WsReplyContainer;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.Context;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
-public class umr
-  implements View.OnClickListener
+class umr
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public umr(WsCommentView paramWsCommentView) {}
+  umr(ump paramump, RelativeLayout.LayoutParams paramLayoutParams1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat, RelativeLayout.LayoutParams paramLayoutParams2) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((WsCommentView.a(this.a) != null) && (WsCommentView.a(this.a).replyList.size() > 0))
-    {
-      WsCommentView.a(this.a).a(paramView, 10, WsCommentView.a(this.a), WsCommentView.a(this.a));
-      this.a.jdField_a_of_type_Ums.b.setVisibility(8);
-      this.a.jdField_a_of_type_Ums.a.setVisibility(8);
-      this.a.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsReplyContainer.setVisibility(0);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    float f = paramValueAnimator.getAnimatedFraction();
+    ump.a(this.jdField_a_of_type_Ump, this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams, f, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.d, this.e, this.jdField_a_of_type_Float);
+    ump.a(this.jdField_a_of_type_Ump, this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams, f, ump.a(this.jdField_a_of_type_Ump));
+    ump.a(this.jdField_a_of_type_Ump, ump.a(this.jdField_a_of_type_Ump), f, 0.2F, 1.7F, AIOUtils.dp2px(34.0F, ump.a(this.jdField_a_of_type_Ump).getResources()));
+    ump.a(this.jdField_a_of_type_Ump, ump.b(this.jdField_a_of_type_Ump), f, 0.2F, 2.0F, AIOUtils.dp2px(34.0F, ump.a(this.jdField_a_of_type_Ump).getResources()));
+    ump.a(this.jdField_a_of_type_Ump, ump.c(this.jdField_a_of_type_Ump), f, 0.2F, 2.0F, AIOUtils.dp2px(34.0F, ump.a(this.jdField_a_of_type_Ump).getResources()));
   }
 }
 

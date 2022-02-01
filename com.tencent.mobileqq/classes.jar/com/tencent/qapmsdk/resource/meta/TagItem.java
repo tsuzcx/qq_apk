@@ -6,12 +6,11 @@ public class TagItem
 {
   public double duringTime = (0.0D / 0.0D);
   public double eventTime = (0.0D / 0.0D);
-  public long eventTimeMills = 9223372036854775807L;
   public String extraInfo = "";
   public long ioBytes = 9223372036854775807L;
   public long ioCount = 9223372036854775807L;
   public boolean isSlow = false;
-  public TagItem lastTagItem = null;
+  public TagItem matchTagItem = null;
   public long netFlowPackets = 9223372036854775807L;
   public long netFlowRecvBytes = 9223372036854775807L;
   public long netFlowSendBytes = 9223372036854775807L;

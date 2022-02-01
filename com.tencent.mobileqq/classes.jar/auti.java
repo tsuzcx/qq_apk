@@ -1,31 +1,24 @@
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.request.WtloginListener;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class auti
-  extends WtloginListener
+public class auti
+  implements Handler.Callback
 {
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
-  private String d;
+  public auti(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
   
-  public auti(autg paramautg, String paramString1, String paramString2, String paramString3, String paramString4)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-  }
-  
-  public void OnGetStWithoutPasswd(String paramString, long paramLong1, long paramLong2, int paramInt1, long paramLong3, WUserSigInfo paramWUserSigInfo, int paramInt2, ErrMsg paramErrMsg)
-  {
-    if (paramInt2 == 0)
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_Autg.a(this.jdField_a_of_type_JavaLangString, paramWUserSigInfo, this.b, paramInt1, this.c, this.d);
-      return;
+    default: 
+      return false;
     }
-    this.jdField_a_of_type_Autg.b(this.b, "getTicket fail code = " + paramInt2);
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) && (this.a.jdField_a_of_type_Autq != null)) {
+      this.a.jdField_a_of_type_Autq.a();
+    }
+    return true;
   }
 }
 

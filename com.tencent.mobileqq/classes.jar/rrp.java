@@ -1,154 +1,68 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.biz.common.util.NetworkUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.transfile.BDHCommonUploadProcessor;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.mobileqq.transfile.TransferRequest;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import tencent.im.oidb.articlesummary.feeds_info.ShareWebPageInfo;
 
 public class rrp
-  extends rgt
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  public Bundle a;
-  TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new rrq(this);
-  TransferRequest jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest;
-  private WeakReference<rgv> jdField_a_of_type_JavaLangRefWeakReference;
-  private QQAppInterface jdField_b_of_type_ComTencentMobileqqAppQQAppInterface;
-  private WeakReference<Context> jdField_b_of_type_JavaLangRefWeakReference;
-  private String d;
-  private String e;
-  private String f;
-  private String g;
-  private String h;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public rrp(Context paramContext, rgv paramrgv, Intent paramIntent)
+  public static rrp a(feeds_info.ShareWebPageInfo paramShareWebPageInfo)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramrgv);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)pay.a());
-    this.jdField_a_of_type_AndroidOsBundle = paramIntent.getExtras();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    c();
-    rgs.a(this.jdField_a_of_type_AndroidOsBundle);
-  }
-  
-  private void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-      ((rgv)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_JavaLangString, paramFloat);
-    }
-  }
-  
-  private void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
-  {
-    paramString1 = rri.a().a(paramString1).b(paramString2).d(paramString4).c(paramString3).e(paramString5).a();
-    if (paramInt == 0) {
-      a(true, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidOsBundle, paramString1, (rgv)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-    }
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-      ((rgv)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_JavaLangString, paramInt, paramString1);
-    }
-  }
-  
-  private void b(int paramInt)
-  {
-    a(paramInt, null, null, null, null, null);
-  }
-  
-  private void c()
-  {
-    this.g = this.jdField_a_of_type_AndroidOsBundle.getString("arg_video_path");
-    this.h = this.jdField_a_of_type_AndroidOsBundle.getString("arg_video_cover");
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("mTaskID");
-  }
-  
-  private void c(int paramInt)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    long l1 = NetConnInfoCenter.getServerTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    StatisticCollector localStatisticCollector = StatisticCollector.getInstance((Context)this.jdField_b_of_type_JavaLangRefWeakReference.get());
-    String str = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
+    if (paramShareWebPageInfo == null) {}
+    rrp localrrp;
+    do
     {
-      localStatisticCollector.collectPerformance(str, "actReadInJoyUGCVideo", bool, l1 - l2, 0L, localHashMap, "");
-      return;
-    }
+      return null;
+      localrrp = new rrp();
+      if (paramShareWebPageInfo.bytes_desc.has()) {
+        localrrp.e = paramShareWebPageInfo.bytes_desc.get().toStringUtf8();
+      }
+      if (paramShareWebPageInfo.bytes_pic_url.has()) {
+        localrrp.c = paramShareWebPageInfo.bytes_pic_url.get().toStringUtf8();
+      }
+      if (paramShareWebPageInfo.bytes_title.has()) {
+        localrrp.b = paramShareWebPageInfo.bytes_title.get().toStringUtf8();
+      }
+      if (paramShareWebPageInfo.bytes_source.has()) {
+        localrrp.d = paramShareWebPageInfo.bytes_source.get().toStringUtf8();
+      }
+      if (paramShareWebPageInfo.bytes_web_url.has()) {
+        localrrp.a = paramShareWebPageInfo.bytes_web_url.get().toStringUtf8();
+      }
+      if ((!TextUtils.isEmpty(localrrp.d)) && (!TextUtils.isEmpty(localrrp.a))) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("SocializeFeedsInfo", 2, "WebSharePageInfo core info is empty!");
+    return null;
+    return localrrp;
   }
   
-  public void a()
+  public feeds_info.ShareWebPageInfo a()
   {
-    a(this.h);
-    this.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
-  }
-  
-  public void a(String paramString)
-  {
-    QLog.d("KingsMomentVideoDeliveControllerr", 1, "startUploadPic path=" + paramString);
-    if (TextUtils.isEmpty(paramString))
-    {
-      QLog.d("KingsMomentVideoDeliveControllerr", 1, "startUploadPic empty path!");
-      b(10);
-      return;
+    feeds_info.ShareWebPageInfo localShareWebPageInfo = new feeds_info.ShareWebPageInfo();
+    if (!TextUtils.isEmpty(this.a)) {
+      localShareWebPageInfo.bytes_web_url.set(ByteStringMicro.copyFromUtf8(this.a));
     }
-    if (!new File(paramString).exists())
-    {
-      QLog.d("KingsMomentVideoDeliveControllerr", 1, "startUploadPic file not exist, path=" + paramString);
-      b(5);
-      return;
+    if (!TextUtils.isEmpty(this.c)) {
+      localShareWebPageInfo.bytes_pic_url.set(ByteStringMicro.copyFromUtf8(this.c));
     }
-    if (!NetworkUtil.isNetworkAvailable((Context)this.jdField_b_of_type_JavaLangRefWeakReference.get()))
-    {
-      b(1003);
-      return;
+    if (!TextUtils.isEmpty(this.b)) {
+      localShareWebPageInfo.bytes_title.set(ByteStringMicro.copyFromUtf8(this.b));
     }
-    this.d = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.f = "";
-    CompressInfo localCompressInfo = new CompressInfo(paramString, 0);
-    localCompressInfo.f = 0;
-    if (!ayeu.a(localCompressInfo)) {
-      c(1001);
+    if (!TextUtils.isEmpty(this.d)) {
+      localShareWebPageInfo.bytes_source.set(ByteStringMicro.copyFromUtf8(this.d));
     }
-    QLog.d("KingsMomentVideoDeliveControllerr", 1, "startUploadPic compressPath=" + localCompressInfo.jdField_e_of_type_JavaLangString + ", originPath=" + paramString + ", outWidth=" + localCompressInfo.d + ", outHeight=" + localCompressInfo.jdField_e_of_type_Int);
-    if (TextUtils.isEmpty(localCompressInfo.jdField_e_of_type_JavaLangString)) {}
-    for (;;)
-    {
-      this.d = paramString;
-      paramString = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController();
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.addFilter(new Class[] { BDHCommonUploadProcessor.class });
-      paramString.addHandle(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest = new TransferRequest();
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.mIsUp = true;
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.mCommandId = 10;
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.mLocalPath = this.d;
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.mUniseq = (System.currentTimeMillis() + (Math.random() * 10000.0D));
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.mPeerUin = "0";
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.mFileType = 24;
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.mRichTag = "KandianUGCPicUpload";
-      paramString.transferAsync(this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest);
-      return;
-      paramString = localCompressInfo.jdField_e_of_type_JavaLangString;
+    if (!TextUtils.isEmpty(this.e)) {
+      localShareWebPageInfo.bytes_desc.set(ByteStringMicro.copyFromUtf8(this.e));
     }
-  }
-  
-  public void b()
-  {
-    rgs.a(this.d);
+    return localShareWebPageInfo;
   }
 }
 

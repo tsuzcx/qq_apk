@@ -1,38 +1,14 @@
-import com.tencent.tmdatasourcesdk.ITMAssistantExchangeURLListenner;
-import com.tencent.tmdatasourcesdk.internal.protocol.jce.AppSimpleDetail;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.Bundle;
 
-class bhyt
-  implements ITMAssistantExchangeURLListenner
+public abstract interface bhyt
 {
-  bhyt(bhys parambhys) {}
+  public abstract int a(boolean paramBoolean, String paramString);
   
-  public void onExchangedURLSucceed(ArrayList arg1, boolean paramBoolean)
-  {
-    bhzm.b("DownloadResolver", "onExchangedURLSucceed --- ");
-    if ((paramBoolean) && (??? != null) && (???.size() > 0))
-    {
-      ??? = ???.iterator();
-      while (???.hasNext())
-      {
-        Object localObject1 = ???.next();
-        if ((localObject1 instanceof AppSimpleDetail))
-        {
-          int i = ((AppSimpleDetail)localObject1).versionCode;
-          if (i > 0) {
-            bhys.a(this.a).put(((AppSimpleDetail)localObject1).packageName, Integer.valueOf(i));
-          }
-        }
-      }
-    }
-    synchronized (bhys.a(this.a))
-    {
-      bhys.a(this.a).notify();
-      return;
-    }
-  }
+  public abstract bhyo a(String paramString);
+  
+  public abstract void a(bhyo parambhyo, bhyn parambhyn, Bundle paramBundle);
+  
+  public abstract void b();
 }
 
 

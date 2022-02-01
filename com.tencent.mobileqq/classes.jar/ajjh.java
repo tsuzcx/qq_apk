@@ -1,24 +1,13 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mini.launch.CmdCallback.Stub;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import mqq.os.MqqHandler;
 
 class ajjh
-  extends CmdCallback.Stub
+  implements ajmw
 {
-  ajjh(ajjg paramajjg, Bundle paramBundle, int paramInt) {}
+  ajjh(ajjf paramajjf) {}
   
-  public void onCmdResult(boolean paramBoolean, Bundle paramBundle)
+  public void a()
   {
-    EIPCResult localEIPCResult = new EIPCResult();
-    if (paramBoolean)
-    {
-      paramBundle = paramBundle.getString("imageUrl", "").replaceFirst("https*://", "");
-      QLog.d("mini_msg_IPCServer", 1, "doMiniShareUploadImage newImagePath: " + paramBundle);
-      this.jdField_a_of_type_AndroidOsBundle.putString("preview", paramBundle);
-    }
-    localEIPCResult.data = this.jdField_a_of_type_AndroidOsBundle;
-    this.jdField_a_of_type_Ajjg.callbackResult(this.jdField_a_of_type_Int, localEIPCResult);
+    this.a.a.sendEmptyMessageDelayed(7, 100L);
   }
 }
 

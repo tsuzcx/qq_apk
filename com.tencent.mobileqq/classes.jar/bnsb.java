@@ -1,14 +1,4 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-
-class bnsb
-{
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ImageView b;
-  
-  bnsb(bnsa parambnsa) {}
-}
+public abstract interface bnsb {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

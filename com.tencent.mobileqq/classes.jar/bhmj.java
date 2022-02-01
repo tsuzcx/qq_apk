@@ -1,25 +1,15 @@
-import android.view.View;
+import androidx.annotation.Nullable;
 
-class bhmj
-  implements bhma
+public class bhmj
 {
-  bhmj(bhmi parambhmi) {}
+  public final int a;
+  @Nullable
+  public final String a;
   
-  public void a() {}
-  
-  public void a(boolean paramBoolean)
+  public bhmj(@Nullable String paramString, int paramInt)
   {
-    this.a.a(true, new View[] { this.a.a });
-  }
-  
-  public void b()
-  {
-    this.a.a(false, new View[] { this.a.a });
-  }
-  
-  public void c()
-  {
-    aurt.a().a(2);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

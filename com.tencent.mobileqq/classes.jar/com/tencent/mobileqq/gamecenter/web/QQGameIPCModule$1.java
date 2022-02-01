@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.gamecenter.web;
 
-import auax;
+import avgr;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -8,7 +8,7 @@ import com.tencent.mobileqq.data.MessageRecord;
 public class QQGameIPCModule$1
   implements Runnable
 {
-  public QQGameIPCModule$1(auax paramauax, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
+  public QQGameIPCModule$1(avgr paramavgr, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
   
   public void run()
   {

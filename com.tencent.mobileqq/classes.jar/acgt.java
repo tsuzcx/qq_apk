@@ -1,127 +1,48 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
+import com.tencent.ad.tangram.thread.AdThreadManager;
+import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS;
+import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS.3.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class acgt
+  implements View.OnClickListener
 {
-  private static acgt jdField_a_of_type_Acgt;
-  private SharedPreferences.Editor jdField_a_of_type_AndroidContentSharedPreferences$Editor;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  public String a;
-  private ArrayList<acha> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public acgt(GdtInterstitialFragmentForJS paramGdtInterstitialFragmentForJS) {}
   
-  private acgt()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  private acgt(Context paramContext)
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_AndroidContentSharedPreferences = paramContext.getSharedPreferences("SHARED_PREFERENCE_KINGKONG_PATCH", 0);
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    paramContext = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("PATCH_LIST", "").split(";");
-    int j = paramContext.length;
-    while (i < j)
+    GdtInterstitialFragmentForJS.a(this.a).b = GdtInterstitialFragmentForJS.a(this.a.getActivity());
+    if (GdtInterstitialFragmentForJS.a(this.a) == null)
     {
-      Object localObject = paramContext[i];
-      if (!((String)localObject).equals(""))
-      {
-        localObject = new acha(this.jdField_a_of_type_AndroidContentSharedPreferences, (String)localObject);
-        acgp.a("KingKongMainConfig", "--> " + localObject);
-        this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-      }
-      i += 1;
-    }
-  }
-  
-  public static acgt a(Context paramContext)
-  {
-    if (jdField_a_of_type_Acgt != null) {
-      return jdField_a_of_type_Acgt;
-    }
-    try
-    {
-      if (jdField_a_of_type_Acgt != null)
-      {
-        paramContext = jdField_a_of_type_Acgt;
-        return paramContext;
-      }
-    }
-    finally {}
-    jdField_a_of_type_Acgt = new acgt(paramContext);
-    paramContext = jdField_a_of_type_Acgt;
-    return paramContext;
-  }
-  
-  private void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    acha localacha;
-    for (String str = ""; localIterator.hasNext(); str = str + localacha.jdField_a_of_type_JavaLangString + ";") {
-      localacha = (acha)localIterator.next();
-    }
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putString("PATCH_LIST", str);
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
-  }
-  
-  public acha a(String paramString)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      acha localacha = (acha)localIterator.next();
-      if (localacha.jdField_a_of_type_JavaLangString.equals(paramString)) {
-        return localacha;
-      }
-    }
-    return null;
-  }
-  
-  public ArrayList<acha> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a(acha paramacha)
-  {
-    int i = 0;
-    if (i < this.jdField_a_of_type_JavaUtilArrayList.size()) {
-      if (!((acha)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString.equals(paramacha.jdField_a_of_type_JavaLangString)) {}
+      str = "ad is not loaded";
+      Toast.makeText(this.a.getActivity().getApplicationContext(), "ad is not loaded", 0).show();
     }
     for (;;)
     {
-      if (i != -1) {
-        this.jdField_a_of_type_JavaUtilArrayList.set(i, paramacha);
-      }
-      for (;;)
+      Toast.makeText(this.a.getActivity().getApplicationContext(), str, 0).show();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (GdtInterstitialFragmentForJS.a(this.a) == null)
       {
-        paramacha.b(this.jdField_a_of_type_AndroidContentSharedPreferences$Editor);
-        return;
-        i += 1;
-        break;
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramacha);
-        a();
+        str = "ad is loading";
       }
-      i = -1;
+      else
+      {
+        if (GdtInterstitialFragmentForJS.a(this.a).a() == 0) {
+          break;
+        }
+        str = GdtInterstitialFragmentForJS.a(this.a).a();
+      }
     }
-  }
-  
-  public void a(String paramString)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    if (GdtInterstitialFragmentForJS.a(this.a).a(this.a.getActivity())) {}
+    for (String str = "正在打开插屏";; str = "打开插屏错误")
     {
-      acha localacha = (acha)localIterator.next();
-      if (localacha.jdField_a_of_type_JavaLangString.equals(paramString))
-      {
-        localacha.a(this.jdField_a_of_type_AndroidContentSharedPreferences$Editor);
-        this.jdField_a_of_type_JavaUtilArrayList.remove(localacha);
-      }
+      AdThreadManager.INSTANCE.postDelayed(new GdtInterstitialFragmentForJS.3.1(this), 0, 5000L);
+      break;
     }
-    a();
   }
 }
 

@@ -1,38 +1,117 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetUserSelfInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserSelfInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-public class xrd
-  extends vqr<xre>
+class xrd
+  extends Drawable
 {
-  public static final String a = vpl.a("StorySvc.get_user_base_info");
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private String jdField_a_of_type_JavaLangString = "story.icon.ShareGroupIconDrawable";
+  private xqy jdField_a_of_type_Xqy;
+  private xra jdField_a_of_type_Xra = new xre(this);
+  private Drawable b;
   
-  public String a()
+  xrd(@NonNull xqy paramxqy, @NonNull Drawable paramDrawable)
   {
-    return a;
+    this.jdField_a_of_type_Xqy = paramxqy;
+    this.jdField_a_of_type_Xqy.a(this.jdField_a_of_type_Xra);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.b = paramDrawable;
+    paramxqy = this.jdField_a_of_type_Xqy.a();
+    if (paramxqy != null) {
+      a(paramxqy);
+    }
   }
   
-  public xre a(byte[] paramArrayOfByte)
+  private void a(@NonNull Drawable paramDrawable)
   {
-    qqstory_service.RspGetUserSelfInfo localRspGetUserSelfInfo = new qqstory_service.RspGetUserSelfInfo();
-    try
+    xqw.a(this.jdField_a_of_type_JavaLangString, "updateCurrentDrawable view:%s drawable: %s", getCallback(), paramDrawable);
+    if (paramDrawable != this.b)
     {
-      localRspGetUserSelfInfo.mergeFrom(paramArrayOfByte);
-      return new xre(localRspGetUserSelfInfo);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-        xvv.c("Q.qqstory.home.GetUserSelfInfoStep", "decodeResponse error=%s", paramArrayOfByte);
+      paramDrawable.setBounds(getBounds());
+      paramDrawable.setVisible(isVisible(), true);
+      paramDrawable.setState(getState());
+      paramDrawable.setLevel(getLevel());
+      paramDrawable.setCallback(getCallback());
+      if (Build.VERSION.SDK_INT >= 19) {
+        paramDrawable.setAlpha(getAlpha());
       }
+      Drawable localDrawable = this.b;
+      this.b = paramDrawable;
+      if (localDrawable != null) {
+        localDrawable.setCallback(null);
+      }
+      invalidateSelf();
     }
   }
   
-  protected byte[] a()
+  public void draw(@NonNull Canvas paramCanvas)
   {
-    return new qqstory_service.ReqGetUserSelfInfo().toByteArray();
+    this.b.draw(paramCanvas);
+    this.jdField_a_of_type_Xqy.b();
+  }
+  
+  public int getOpacity()
+  {
+    return this.b.getOpacity();
+  }
+  
+  public boolean getPadding(@NonNull Rect paramRect)
+  {
+    return this.b.getPadding(paramRect);
+  }
+  
+  @NonNull
+  public Drawable mutate()
+  {
+    this.b.mutate();
+    return super.mutate();
+  }
+  
+  protected void onBoundsChange(Rect paramRect)
+  {
+    super.onBoundsChange(paramRect);
+    this.b.setBounds(paramRect);
+  }
+  
+  protected boolean onLevelChange(int paramInt)
+  {
+    this.b.setLevel(paramInt);
+    return true;
+  }
+  
+  protected boolean onStateChange(int[] paramArrayOfInt)
+  {
+    this.b.setState(paramArrayOfInt);
+    return true;
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    this.b.setAlpha(paramInt);
+  }
+  
+  public void setColorFilter(int paramInt, @NonNull PorterDuff.Mode paramMode)
+  {
+    super.setColorFilter(paramInt, paramMode);
+    this.b.setColorFilter(paramInt, paramMode);
+  }
+  
+  public void setColorFilter(@Nullable ColorFilter paramColorFilter)
+  {
+    this.b.setColorFilter(paramColorFilter);
+  }
+  
+  public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    boolean bool = super.setVisible(paramBoolean1, paramBoolean2);
+    this.b.setVisible(paramBoolean1, paramBoolean2);
+    return bool;
   }
 }
 

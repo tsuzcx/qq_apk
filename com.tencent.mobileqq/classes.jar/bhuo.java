@@ -1,23 +1,54 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.mini.util.DisplayUtil;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
-import com.tencent.open.widget.MaxHeightScrollView;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.vas.update.business.BaseUpdateBusiness;
+import com.tencent.vas.update.entity.BusinessItemInfo;
+import java.io.File;
 
-public class bhuo
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract class bhuo
+  extends BaseUpdateBusiness
 {
-  public bhuo(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
+  protected abstract String a();
   
-  public void onGlobalLayout()
+  public String a(int paramInt)
   {
-    if ((DisplayUtil.hasNavBar(this.a)) && (DisplayUtil.isNavigationBarExist(this.a)))
-    {
-      int i = QuickLoginAuthorityActivity.a(this.a).a();
-      int j = DisplayUtil.getNavigationBarHeight(this.a);
-      QuickLoginAuthorityActivity.a(this.a).setMaxHeight(i - j);
-    }
-    QuickLoginAuthorityActivity.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    return a() + paramInt;
+  }
+  
+  public String a(String paramString)
+  {
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    return new File(localBaseApplication.getFilesDir() + File.separator + b(), paramString).getAbsolutePath();
+  }
+  
+  public void a(int paramInt)
+  {
+    startDownload(a(paramInt));
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return new File(b(paramInt)).exists();
+  }
+  
+  protected abstract String b();
+  
+  public String b(int paramInt)
+  {
+    return b(a(paramInt));
+  }
+  
+  public String b(String paramString)
+  {
+    return a(paramString);
+  }
+  
+  public BusinessItemInfo getBusinessItemInfo(long paramLong, String paramString)
+  {
+    BusinessItemInfo localBusinessItemInfo = new BusinessItemInfo();
+    localBusinessItemInfo.mSaveInDir = true;
+    localBusinessItemInfo.mSavePath = b(paramString);
+    return localBusinessItemInfo;
   }
 }
 

@@ -1,16 +1,12 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.graphics.Path;
+import java.util.List;
 
-final class agdx
-  implements aghk
+public class agdx
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage.senderuin.equals(paramQQAppInterface.getCurrentAccountUin())) {
-      return 59;
-    }
-    return 60;
-  }
+  public int a;
+  public Path a;
+  public List<agdr> a;
+  public boolean a;
 }
 
 

@@ -1,76 +1,81 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Calendar;
+import mqq.app.AppRuntime;
+import mqq.app.AppRuntime.Status;
+import mqq.app.Foreground;
 
 public class azcy
-  implements azcu
 {
-  private azcw jdField_a_of_type_Azcw;
-  private ArrayList<azcu> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private AppRuntime a;
   
-  public azcv a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public azcy(AppRuntime paramAppRuntime)
   {
-    paramArrayOfByte = new azcv(paramArrayOfByte, paramInt1, paramInt2);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    for (;;)
+    this.a = paramAppRuntime;
+  }
+  
+  private boolean a(AppRuntime paramAppRuntime)
+  {
+    int j = b();
+    int i;
+    if (Foreground.sCountResume > 0)
     {
-      Object localObject = paramArrayOfByte;
-      azcu localazcu;
-      azcv localazcv;
-      if (localIterator.hasNext())
-      {
-        localazcu = (azcu)localIterator.next();
-        if (this.jdField_a_of_type_Azcw != null) {
-          this.jdField_a_of_type_Azcw.a(localazcu, paramArrayOfByte);
-        }
-        localazcv = localazcu.a(paramArrayOfByte.jdField_a_of_type_ArrayOfByte, paramArrayOfByte.b, paramArrayOfByte.jdField_a_of_type_Int);
-        localObject = localazcv;
-        if (localazcv != null)
-        {
-          localObject = localazcv;
-          if (localazcv.jdField_a_of_type_ArrayOfByte != null)
-          {
-            if (localazcv.jdField_a_of_type_Int != 0) {
-              break label121;
-            }
-            localObject = localazcv;
-          }
-        }
+      i = 1;
+      if (QLog.isColorLevel()) {
+        QLog.d("ActionDetector", 2, "[status][action] isStayingUpLate countResume:" + Foreground.sCountResume + " curHour: " + j + " begin: " + azcv.D + " end: " + azcv.E);
       }
-      return localObject;
-      label121:
-      paramArrayOfByte = localazcv;
-      if (this.jdField_a_of_type_Azcw != null)
-      {
-        this.jdField_a_of_type_Azcw.b(localazcu, localazcv);
-        paramArrayOfByte = localazcv;
+      if (azcv.E <= azcv.D) {
+        break label165;
+      }
+      if ((j < azcv.D) || (j >= azcv.E)) {
+        break label237;
+      }
+      paramAppRuntime = paramAppRuntime.getOnlineStatus();
+      if (QLog.isColorLevel()) {
+        QLog.d("ActionDetector", 2, "[status][action] isStayingUpLate closeZone curHour: " + j + " status: " + paramAppRuntime);
+      }
+      if ((paramAppRuntime != AppRuntime.Status.online) || (i == 0)) {
+        break label163;
       }
     }
+    label163:
+    label165:
+    do
+    {
+      return true;
+      i = 0;
+      break;
+      return false;
+      if ((j <= azcv.D) && (j >= azcv.E)) {
+        break label237;
+      }
+      paramAppRuntime = paramAppRuntime.getOnlineStatus();
+      if (QLog.isColorLevel()) {
+        QLog.d("ActionDetector", 2, "[status][action] isStayingUpLate openZone curHour: " + j + " status: " + paramAppRuntime);
+      }
+    } while ((paramAppRuntime == AppRuntime.Status.online) && (i != 0));
+    return false;
+    label237:
+    return false;
   }
   
-  public void a()
+  public int a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((azcu)localIterator.next()).a();
+    if (a(this.a)) {}
+    for (int i = 41032;; i = 40001)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ActionDetector", 2, "[status][action] getStatus return status: " + i);
+      }
+      return i;
     }
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  int b()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((azcu)localIterator.next()).a(paramInt1, paramInt2, paramInt3);
-    }
-  }
-  
-  public void a(azcu paramazcu)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramazcu);
-  }
-  
-  public void a(azcw paramazcw)
-  {
-    this.jdField_a_of_type_Azcw = paramazcw;
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.setTimeInMillis(NetConnInfoCenter.getServerTimeMillis());
+    return localCalendar.get(11);
   }
 }
 

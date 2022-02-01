@@ -1,40 +1,46 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.graphics.Bitmap;
+import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
+import com.tencent.mobileqq.troop.widget.AddedRobotView;
 import com.tencent.qphone.base.util.QLog;
 
-class bgmq
-  implements SensorEventListener
+public class bgmq
+  implements FaceDecoder.DecodeTaskCompletionListener
 {
-  bgmq(bgmp parambgmp, long paramLong, int paramInt1, int paramInt2) {}
+  public bgmq(AddedRobotView paramAddedRobotView) {}
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if ((paramSensorEvent.values[0] > 1.0E+008F) || (NetConnInfoCenter.getServerTimeMillis() > this.jdField_a_of_type_Long))
+    QLog.i("AddedRobotView", 1, "onDecodeTaskCompleted uin: " + paramString);
+    if (AddedRobotView.a(this.a) == null) {}
+    for (;;)
     {
-      QLog.e("SportManager", 1, "unregister listener:" + paramSensorEvent.values[0]);
-      if (bgmp.a != null) {
-        bgmp.a.unregisterListener(this);
+      return;
+      if (!AddedRobotView.a(this.a).isPausing())
+      {
+        paramInt2 = AddedRobotView.a(this.a).getChildCount();
+        paramInt1 = 0;
+        while (paramInt1 < paramInt2)
+        {
+          Object localObject = AddedRobotView.a(this.a).getChildViewHolder(AddedRobotView.a(this.a).getChildAt(paramInt1));
+          if ((localObject instanceof bgmt))
+          {
+            localObject = (bgmt)localObject;
+            if ((!TextUtils.isEmpty(((bgmt)localObject).jdField_a_of_type_JavaLangString)) && (((bgmt)localObject).jdField_a_of_type_JavaLangString.equals(paramString))) {
+              ((bgmt)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+            }
+          }
+          else
+          {
+            QLog.i("AddedRobotView", 2, "onDecodeTaskCompleted viewHolder correct uin not found ! ");
+          }
+          paramInt1 += 1;
+        }
       }
-      return;
     }
-    if ((bgmm.jdField_a_of_type_Long == 0L) || (bgmm.jdField_a_of_type_Int == 0))
-    {
-      QLog.e("SportManager", 1, "lastReportStepTime:" + bgmm.jdField_a_of_type_Long + ",cur_total:" + bgmm.jdField_a_of_type_Int);
-      return;
-    }
-    long l = NetConnInfoCenter.getServerTimeMillis() - bgmm.jdField_a_of_type_Long;
-    int i = (int)(paramSensorEvent.values[0] - bgmm.jdField_a_of_type_Int);
-    if ((l > this.jdField_a_of_type_Int) && (i > this.b))
-    {
-      this.jdField_a_of_type_Bgmp.a("timer1 report");
-      return;
-    }
-    QLog.e("SportManager", 1, "sensor event step:" + paramSensorEvent.values[0] + ",cur_total:" + bgmm.jdField_a_of_type_Int + ",interval time:" + l);
   }
 }
 

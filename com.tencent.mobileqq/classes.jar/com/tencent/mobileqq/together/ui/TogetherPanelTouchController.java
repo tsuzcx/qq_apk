@@ -8,7 +8,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Scroller;
-import besr;
+import bfzx;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 
@@ -19,7 +19,7 @@ public class TogetherPanelTouchController
   private int jdField_a_of_type_Int = 1;
   private View jdField_a_of_type_AndroidViewView;
   private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private besr jdField_a_of_type_Besr;
+  private bfzx jdField_a_of_type_Bfzx;
   boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
@@ -120,8 +120,8 @@ public class TogetherPanelTouchController
     }
     if (j >= i)
     {
-      if (this.jdField_a_of_type_Besr != null) {
-        this.jdField_a_of_type_Besr.a();
+      if (this.jdField_a_of_type_Bfzx != null) {
+        this.jdField_a_of_type_Bfzx.a();
       }
       return i - getScrollY();
     }
@@ -154,8 +154,8 @@ public class TogetherPanelTouchController
         return;
       } while (!this.e);
       this.e = false;
-    } while (this.jdField_a_of_type_Besr == null);
-    this.jdField_a_of_type_Besr.a(this.jdField_a_of_type_Int);
+    } while (this.jdField_a_of_type_Bfzx == null);
+    this.jdField_a_of_type_Bfzx.a(this.jdField_a_of_type_Int);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -195,9 +195,9 @@ public class TogetherPanelTouchController
         if (Math.abs(f2) > 5.0F) {
           this.d = true;
         }
-        if (this.jdField_a_of_type_Besr != null)
+        if (this.jdField_a_of_type_Bfzx != null)
         {
-          paramMotionEvent = this.jdField_a_of_type_Besr;
+          paramMotionEvent = this.jdField_a_of_type_Bfzx;
           if (getScrollY() <= 0) {
             break label268;
           }
@@ -232,7 +232,7 @@ public class TogetherPanelTouchController
         break;
       }
       label344:
-      if (this.jdField_a_of_type_Besr != null)
+      if (this.jdField_a_of_type_Bfzx != null)
       {
         this.e = true;
         a(-this.jdField_b_of_type_Int);
@@ -245,9 +245,9 @@ public class TogetherPanelTouchController
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
-  public void setAtPanelTouchListener(besr parambesr)
+  public void setAtPanelTouchListener(bfzx parambfzx)
   {
-    this.jdField_a_of_type_Besr = parambesr;
+    this.jdField_a_of_type_Bfzx = parambfzx;
   }
   
   public void setControlLitTongue(boolean paramBoolean)

@@ -1,6 +1,27 @@
-public abstract interface vek
+class vek
+  implements vds
 {
-  public abstract void a(int paramInt);
+  vek(vej paramvej) {}
+  
+  public void a()
+  {
+    vej.a(this.a, vej.a(this.a), 1000003);
+  }
+  
+  public void b()
+  {
+    vej.a(this.a, vej.a(this.a), 1000007);
+  }
+  
+  public void c()
+  {
+    vej.a(this.a, vej.a(this.a), 1000004);
+  }
+  
+  public void d()
+  {
+    vej.a(this.a, vej.a(this.a), 1000002);
+  }
 }
 
 

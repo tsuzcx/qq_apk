@@ -1,34 +1,49 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.app.KeyguardManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-class ahqy
-  implements View.OnClickListener
+public class ahqy
+  extends BroadcastReceiver
 {
-  ahqy(ahqx paramahqx) {}
+  Activity jdField_a_of_type_AndroidAppActivity;
+  boolean jdField_a_of_type_Boolean = true;
   
-  public void onClick(View paramView)
+  public ahqy(Activity paramActivity)
   {
-    QQAppInterface localQQAppInterface;
-    String str2;
-    if (this.a.a())
-    {
-      avnu.a().a(ahqx.a(this.a), ahqx.a(this.a).curFriendUin);
-      ahqx.a(this.a).a();
-      localQQAppInterface = ahqx.a(this.a);
-      str2 = ahqx.a(this.a).curFriendUin;
-      if (ahqx.a(this.a).getTroopMask(ahqx.a(this.a).curFriendUin) != 3) {
-        break label121;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+  }
+  
+  public boolean a(Context paramContext)
+  {
+    return ((KeyguardManager)paramContext.getSystemService("keyguard")).inKeyguardRestrictedInputMode();
+  }
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    boolean bool = true;
+    paramIntent = paramIntent.getAction();
+    if ("android.intent.action.SCREEN_ON".equals(paramIntent)) {
+      if (!a(paramContext)) {
+        this.jdField_a_of_type_Boolean = bool;
       }
     }
-    label121:
-    for (String str1 = "1";; str1 = "0")
+    for (;;)
     {
-      bcef.b(localQQAppInterface, "dc00899", "Grp_msg", "", "aio-topbar", "Clk_close", 0, 0, str2, str1, "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this);
+        this.jdField_a_of_type_AndroidAppActivity.finish();
+      }
       return;
+      bool = false;
+      break;
+      if ("android.intent.action.SCREEN_OFF".equals(paramIntent)) {
+        this.jdField_a_of_type_Boolean = false;
+      } else if ("android.intent.action.USER_PRESENT".equals(paramIntent)) {
+        this.jdField_a_of_type_Boolean = true;
+      }
     }
   }
 }

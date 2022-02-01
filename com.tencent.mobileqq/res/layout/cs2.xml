@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:paddingBottom="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/n4a" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="250.0dip" android:scaleType="centerCrop" />
+    <LinearLayout android:orientation="vertical" android:paddingTop="0.0dip" android:paddingBottom="0.0dip" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="25.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <TextView android:textSize="18.0dip" android:textColor="@color/skin_black" android:layout_gravity="center_horizontal" android:id="@id/k4h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/xdp" />
+        <TextView android:textSize="18.0dip" android:textColor="@color/skin_black" android:layout_gravity="center_horizontal" android:id="@id/k4i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="14.0dip" android:text="@string/xdq" />
+        <Button android:layout_gravity="center_horizontal" android:id="@id/n4b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="30.0dip" android:text="@string/xdo" style="@style/i0" />
+    </LinearLayout>
+</RelativeLayout>

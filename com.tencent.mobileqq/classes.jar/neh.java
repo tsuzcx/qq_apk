@@ -1,26 +1,37 @@
-import android.view.View;
+import androidx.annotation.NonNull;
+import java.util.List;
 
-public abstract interface neh
+public class neh
+  extends neg
 {
-  public abstract void a();
+  public static final String a;
+  private List<nph> a;
   
-  public abstract void a(View paramView);
+  static
+  {
+    jdField_a_of_type_JavaLangString = neh.class.getName();
+  }
   
-  public abstract void a(View paramView, int paramInt, boolean paramBoolean);
+  public int a()
+  {
+    return 0;
+  }
   
-  public abstract void b();
+  @NonNull
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
   
-  public abstract void b(View paramView);
+  public List<nph> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
   
-  public abstract void c();
-  
-  public abstract void c(View paramView);
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
+  public void a(List<nph> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
 }
 
 

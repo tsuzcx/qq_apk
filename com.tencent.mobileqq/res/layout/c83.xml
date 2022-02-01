@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/lzf" android:paddingLeft="@dimen/bc7" android:paddingRight="@dimen/bc7" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="vertical" android:id="@id/lzf" android:paddingLeft="@dimen/bc8" android:paddingRight="@dimen/bc8" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <com.tencent.richmediabrowser.view.recyclerview.BrowserScaleView android:id="@id/image" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="matrix" />
-    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/cgs" />
+    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/chg" />
 </RelativeLayout>

@@ -1,24 +1,19 @@
 package com.tencent.youtu.sdkkitframework.common;
 
 import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FileUtils
 {
+  private static final String TAG = FileUtils.class.getSimpleName();
+  private static Map<String, String> mLoadedLibrary = new HashMap();
+  
   private FileUtils()
   {
     throw new AssertionError();
@@ -102,103 +97,72 @@ public class FileUtils
     }
   }
   
-  public static void deleteFile(File paramFile)
+  public static void loadLibrary(String paramString)
   {
-    if (paramFile.isFile()) {
-      paramFile.delete();
+    if (mLoadedLibrary.get(paramString) == null) {
+      YtLogger.i(TAG, "[YTUtils.loadLibrary] " + System.getProperty("java.library.path"));
     }
-    while (!paramFile.isDirectory()) {
+    try
+    {
+      System.loadLibrary(paramString);
+      mLoadedLibrary.put(paramString, "loaded");
       return;
     }
-    File[] arrayOfFile = paramFile.listFiles();
-    if ((arrayOfFile == null) || (arrayOfFile.length == 0))
+    catch (Exception localException)
     {
-      paramFile.delete();
-      return;
-    }
-    int i = 0;
-    while (i < arrayOfFile.length)
-    {
-      deleteFile(arrayOfFile[i]);
-      i += 1;
-    }
-    paramFile.delete();
-  }
-  
-  public static Bitmap drawableToBitmap(Drawable paramDrawable)
-  {
-    if ((paramDrawable instanceof BitmapDrawable))
-    {
-      localObject = (BitmapDrawable)paramDrawable;
-      if (((BitmapDrawable)localObject).getBitmap() != null) {
-        return ((BitmapDrawable)localObject).getBitmap();
+      for (;;)
+      {
+        YtLogger.e(TAG, "Load " + paramString + " failed:" + localException.getLocalizedMessage());
       }
     }
-    if ((paramDrawable.getIntrinsicWidth() <= 0) || (paramDrawable.getIntrinsicHeight() <= 0)) {}
-    for (Object localObject = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);; localObject = Bitmap.createBitmap(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888))
-    {
-      Canvas localCanvas = new Canvas((Bitmap)localObject);
-      paramDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
-      paramDrawable.draw(localCanvas);
-      return localObject;
-    }
-  }
-  
-  public static String getLastPathComponent(String paramString)
-  {
-    paramString = paramString.split("/");
-    if (paramString.length == 0) {
-      return "";
-    }
-    return paramString[(paramString.length - 1)];
   }
   
   /* Error */
   public static java.lang.StringBuilder readAssetFile(android.content.Context paramContext, String paramString)
   {
     // Byte code:
-    //   0: new 70	java/lang/StringBuilder
+    //   0: new 89	java/lang/StringBuilder
     //   3: dup
-    //   4: ldc 186
-    //   6: invokespecial 189	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   4: ldc 170
+    //   6: invokespecial 171	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   9: astore_2
-    //   10: new 191	java/io/BufferedReader
+    //   10: new 173	java/io/BufferedReader
     //   13: dup
-    //   14: new 193	java/io/InputStreamReader
+    //   14: new 175	java/io/InputStreamReader
     //   17: dup
     //   18: aload_0
-    //   19: invokevirtual 199	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   22: invokevirtual 205	android/content/res/Resources:getAssets	()Landroid/content/res/AssetManager;
+    //   19: invokevirtual 181	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   22: invokevirtual 187	android/content/res/Resources:getAssets	()Landroid/content/res/AssetManager;
     //   25: aload_1
-    //   26: invokevirtual 22	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   29: invokespecial 208	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   32: invokespecial 211	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   26: invokevirtual 41	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   29: invokespecial 190	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   32: invokespecial 193	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   35: astore_1
     //   36: aload_1
     //   37: astore_0
     //   38: aload_1
-    //   39: invokevirtual 214	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   39: invokevirtual 196	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   42: astore_3
     //   43: aload_3
     //   44: ifnull +68 -> 112
     //   47: aload_1
     //   48: astore_0
     //   49: aload_2
-    //   50: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   53: ldc 186
-    //   55: invokevirtual 218	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   50: invokevirtual 99	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   53: ldc 170
+    //   55: invokevirtual 200	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   58: ifne +12 -> 70
     //   61: aload_1
     //   62: astore_0
     //   63: aload_2
-    //   64: ldc 220
-    //   66: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   64: ldc 202
+    //   66: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   69: pop
     //   70: aload_1
     //   71: astore_0
     //   72: aload_2
     //   73: aload_3
-    //   74: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   74: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   77: pop
     //   78: goto -42 -> 36
     //   81: astore_2
@@ -206,11 +170,11 @@ public class FileUtils
     //   83: astore_0
     //   84: aload_2
     //   85: astore_1
-    //   86: new 222	java/lang/RuntimeException
+    //   86: new 204	java/lang/RuntimeException
     //   89: dup
-    //   90: ldc 224
+    //   90: ldc 206
     //   92: aload_1
-    //   93: invokespecial 227	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   93: invokespecial 209	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   96: athrow
     //   97: astore_2
     //   98: aload_0
@@ -220,28 +184,28 @@ public class FileUtils
     //   102: aload_1
     //   103: ifnull +7 -> 110
     //   106: aload_1
-    //   107: invokevirtual 228	java/io/BufferedReader:close	()V
+    //   107: invokevirtual 210	java/io/BufferedReader:close	()V
     //   110: aload_0
     //   111: athrow
     //   112: aload_1
     //   113: ifnull +7 -> 120
     //   116: aload_1
-    //   117: invokevirtual 228	java/io/BufferedReader:close	()V
+    //   117: invokevirtual 210	java/io/BufferedReader:close	()V
     //   120: aload_2
     //   121: areturn
     //   122: astore_0
-    //   123: new 222	java/lang/RuntimeException
+    //   123: new 204	java/lang/RuntimeException
     //   126: dup
-    //   127: ldc 224
+    //   127: ldc 206
     //   129: aload_0
-    //   130: invokespecial 227	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   130: invokespecial 209	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   133: athrow
     //   134: astore_0
-    //   135: new 222	java/lang/RuntimeException
+    //   135: new 204	java/lang/RuntimeException
     //   138: dup
-    //   139: ldc 224
+    //   139: ldc 206
     //   141: aload_0
-    //   142: invokespecial 227	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   142: invokespecial 209	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   145: athrow
     //   146: astore_0
     //   147: aconst_null
@@ -284,20 +248,20 @@ public class FileUtils
     //   1: astore_1
     //   2: aconst_null
     //   3: astore_2
-    //   4: new 24	java/io/File
+    //   4: new 43	java/io/File
     //   7: dup
     //   8: aload_0
-    //   9: invokespecial 27	java/io/File:<init>	(Ljava/lang/String;)V
+    //   9: invokespecial 46	java/io/File:<init>	(Ljava/lang/String;)V
     //   12: astore 4
-    //   14: new 70	java/lang/StringBuilder
+    //   14: new 89	java/lang/StringBuilder
     //   17: dup
-    //   18: ldc 186
-    //   20: invokespecial 189	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   18: ldc 170
+    //   20: invokespecial 171	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   23: astore_3
     //   24: aload 4
     //   26: ifnull +11 -> 37
     //   29: aload 4
-    //   31: invokevirtual 119	java/io/File:isFile	()Z
+    //   31: invokevirtual 214	java/io/File:isFile	()Z
     //   34: ifne +7 -> 41
     //   37: aconst_null
     //   38: astore_0
@@ -305,34 +269,34 @@ public class FileUtils
     //   40: areturn
     //   41: aload_1
     //   42: astore_0
-    //   43: new 191	java/io/BufferedReader
+    //   43: new 173	java/io/BufferedReader
     //   46: dup
-    //   47: new 193	java/io/InputStreamReader
+    //   47: new 175	java/io/InputStreamReader
     //   50: dup
-    //   51: new 231	java/io/FileInputStream
+    //   51: new 216	java/io/FileInputStream
     //   54: dup
     //   55: aload 4
-    //   57: invokespecial 233	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   60: invokespecial 208	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   63: invokespecial 211	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   57: invokespecial 219	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   60: invokespecial 190	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   63: invokespecial 193	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   66: astore_1
     //   67: aload_1
-    //   68: invokevirtual 214	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   68: invokevirtual 196	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   71: astore_0
     //   72: aload_0
     //   73: ifnull +62 -> 135
     //   76: aload_3
-    //   77: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   80: ldc 186
-    //   82: invokevirtual 218	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   77: invokevirtual 99	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   80: ldc 170
+    //   82: invokevirtual 200	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   85: ifne +10 -> 95
     //   88: aload_3
-    //   89: ldc 220
-    //   91: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   89: ldc 202
+    //   91: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   94: pop
     //   95: aload_3
     //   96: aload_0
-    //   97: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   97: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   100: pop
     //   101: goto -34 -> 67
     //   104: astore_2
@@ -340,11 +304,11 @@ public class FileUtils
     //   106: astore_0
     //   107: aload_2
     //   108: astore_1
-    //   109: new 222	java/lang/RuntimeException
+    //   109: new 204	java/lang/RuntimeException
     //   112: dup
-    //   113: ldc 224
+    //   113: ldc 206
     //   115: aload_1
-    //   116: invokespecial 227	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   116: invokespecial 209	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   119: athrow
     //   120: astore_2
     //   121: aload_0
@@ -354,7 +318,7 @@ public class FileUtils
     //   125: aload_1
     //   126: ifnull +7 -> 133
     //   129: aload_1
-    //   130: invokevirtual 228	java/io/BufferedReader:close	()V
+    //   130: invokevirtual 210	java/io/BufferedReader:close	()V
     //   133: aload_0
     //   134: athrow
     //   135: aload_3
@@ -362,22 +326,22 @@ public class FileUtils
     //   137: aload_1
     //   138: ifnull -99 -> 39
     //   141: aload_1
-    //   142: invokevirtual 228	java/io/BufferedReader:close	()V
+    //   142: invokevirtual 210	java/io/BufferedReader:close	()V
     //   145: aload_3
     //   146: areturn
     //   147: astore_0
-    //   148: new 222	java/lang/RuntimeException
+    //   148: new 204	java/lang/RuntimeException
     //   151: dup
-    //   152: ldc 224
+    //   152: ldc 206
     //   154: aload_0
-    //   155: invokespecial 227	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   155: invokespecial 209	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   158: athrow
     //   159: astore_0
-    //   160: new 222	java/lang/RuntimeException
+    //   160: new 204	java/lang/RuntimeException
     //   163: dup
-    //   164: ldc 224
+    //   164: ldc 206
     //   166: aload_0
-    //   167: invokespecial 227	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   167: invokespecial 209	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   170: athrow
     //   171: astore_0
     //   172: goto -47 -> 125
@@ -408,70 +372,6 @@ public class FileUtils
     //   76	95	171	finally
     //   95	101	171	finally
     //   43	67	175	java/io/IOException
-  }
-  
-  public static boolean zipFileAtPath(String paramString1, String paramString2)
-  {
-    Object localObject = new File(paramString1);
-    try
-    {
-      paramString2 = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(paramString2)));
-      if (((File)localObject).isDirectory())
-      {
-        zipSubFolder(paramString2, (File)localObject, ((File)localObject).getParent().length());
-        paramString2.close();
-        return true;
-      }
-      localObject = new byte[2048];
-      BufferedInputStream localBufferedInputStream = new BufferedInputStream(new FileInputStream(paramString1), 2048);
-      paramString2.putNextEntry(new ZipEntry(getLastPathComponent(paramString1)));
-      for (;;)
-      {
-        int i = localBufferedInputStream.read((byte[])localObject, 0, 2048);
-        if (i == -1) {
-          break;
-        }
-        paramString2.write((byte[])localObject, 0, i);
-      }
-      return false;
-    }
-    catch (Exception paramString1)
-    {
-      paramString1.printStackTrace();
-    }
-  }
-  
-  private static void zipSubFolder(ZipOutputStream paramZipOutputStream, File paramFile, int paramInt)
-  {
-    paramFile = paramFile.listFiles();
-    int j = paramFile.length;
-    int i = 0;
-    if (i < j)
-    {
-      Object localObject1 = paramFile[i];
-      if (((File)localObject1).isDirectory()) {
-        zipSubFolder(paramZipOutputStream, (File)localObject1, paramInt);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        byte[] arrayOfByte = new byte[2048];
-        Object localObject2 = ((File)localObject1).getPath();
-        localObject1 = ((String)localObject2).substring(paramInt);
-        localObject2 = new BufferedInputStream(new FileInputStream((String)localObject2), 2048);
-        paramZipOutputStream.putNextEntry(new ZipEntry((String)localObject1));
-        for (;;)
-        {
-          int k = ((BufferedInputStream)localObject2).read(arrayOfByte, 0, 2048);
-          if (k == -1) {
-            break;
-          }
-          paramZipOutputStream.write(arrayOfByte, 0, k);
-        }
-        ((BufferedInputStream)localObject2).close();
-      }
-    }
   }
 }
 

@@ -1,18 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class arzt
-  implements View.OnClickListener
 {
-  public arzt(QfileLocalFilePicTabView paramQfileLocalFilePicTabView) {}
-  
-  public void onClick(View paramView)
+  public static void a()
   {
-    QfileLocalFilePicTabView.a(this.a, paramView, true);
-    paramView.sendAccessibilityEvent(8);
-    EventCollector.getInstance().onViewClicked(paramView);
+    bdla.b(null, "dc00898", "", "", "0X800B547", "0X800B547", 0, 0, "", "", "", "");
+  }
+  
+  public static void a(MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord != null) && (!bhbz.a().a(paramMessageRecord, "0X800B547")))
+    {
+      a();
+      bhbz.a().a(paramMessageRecord, "0X800B547");
+    }
+  }
+  
+  public static void b()
+  {
+    bdla.b(null, "dc00898", "", "", "0X800B548", "0X800B548", 0, 0, "", "", "", "");
+  }
+  
+  public static void c()
+  {
+    bdla.b(null, "dc00898", "", "", "0X800B549", "0X800B549", 0, 0, "", "", "", "");
+  }
+  
+  public static void d()
+  {
+    bdla.b(null, "dc00898", "", "", "0X800B54A", "0X800B54A", 0, 0, "", "", "", "");
   }
 }
 

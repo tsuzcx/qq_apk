@@ -1,34 +1,30 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_group.GroupFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspAddGroupVideo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.Map;
 
 public class wfs
-  extends vqm
+  extends SimpleJob<Void>
 {
-  private final qqstory_group.RspAddGroupVideo a;
-  
-  public wfs(qqstory_group.RspAddGroupVideo paramRspAddGroupVideo)
+  public wfs(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, Bundle paramBundle, byte[] paramArrayOfByte)
   {
-    super(paramRspAddGroupVideo.result);
-    this.a = paramRspAddGroupVideo;
+    super(paramString);
   }
   
-  public List<wft> a()
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.a.group_feed_list.get().iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(new wft((qqstory_group.GroupFeed)localIterator.next()));
+    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("storySeq");
+    paramJobContext = (wfm)QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler).remove(Integer.valueOf(i));
+    if (paramJobContext == null)
+    {
+      ykq.d("Q.qqstory.net:QQStoryCmdHandler", "can't find request");
+      return null;
     }
-    return localArrayList;
-  }
-  
-  public String toString()
-  {
-    return "AddGroupVideoResponse{mRspAddGroupVideo=" + a() + '}';
+    QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler, paramJobContext, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_AndroidOsBundle);
+    return null;
   }
 }
 

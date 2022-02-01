@@ -1,53 +1,66 @@
+import android.annotation.TargetApi;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedComment;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedCommentInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoCommentInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.TransferRequest;
 
+@TargetApi(14)
 public class wdp
-  extends vqm
+  extends wdr
 {
-  public List<wdq> a;
-  public List<xng> b = new ArrayList(0);
+  public String a;
+  public wdd a;
+  public String b;
   
-  public wdp(ErrorMessage paramErrorMessage)
+  public wdp(String paramString1, String paramString2)
   {
-    super(paramErrorMessage.errorCode, paramErrorMessage.errorMsg);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Wdd = new wdd();
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
   
-  public wdp(qqstory_service.RspBatchFeedComment paramRspBatchFeedComment)
+  private void c()
   {
-    super(paramRspBatchFeedComment.result);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    paramRspBatchFeedComment = paramRspBatchFeedComment.feed_comment_info_list.get().iterator();
-    while (paramRspBatchFeedComment.hasNext())
+    TransferRequest localTransferRequest = new TransferRequest();
+    localTransferRequest.mUpCallBack = new wdq(this);
+    localTransferRequest.mLocalPath = this.b;
+    localTransferRequest.mIsUp = true;
+    localTransferRequest.mFileType = 196609;
+    QQStoryContext.a();
+    localTransferRequest.mSelfUin = QQStoryContext.a().getCurrentUin();
+    localTransferRequest.mPeerUin = "";
+    localTransferRequest.mUniseq = (System.currentTimeMillis() + (Math.random() * 10000.0D));
+    QQStoryContext.a();
+    QQStoryContext.a().getTransFileController().transferAsync(localTransferRequest);
+  }
+  
+  protected void a()
+  {
+    if ((TextUtils.isEmpty(this.b)) || (!zeb.c(this.b)))
     {
-      Object localObject = (qqstory_struct.FeedCommentInfo)paramRspBatchFeedComment.next();
-      wdq localwdq = new wdq();
-      localwdq.jdField_a_of_type_JavaLangString = ((qqstory_struct.FeedCommentInfo)localObject).feed_id.get().toStringUtf8();
-      localwdq.jdField_a_of_type_Int = ((qqstory_struct.FeedCommentInfo)localObject).comment_total_num.get();
-      localwdq.jdField_b_of_type_JavaLangString = ((qqstory_struct.FeedCommentInfo)localObject).next_cookie.get().toStringUtf8();
-      localwdq.jdField_b_of_type_Int = ((qqstory_struct.FeedCommentInfo)localObject).is_end.get();
-      if (localwdq.jdField_b_of_type_Int != 1) {
-        this.b.add(new xng(localwdq.jdField_a_of_type_JavaLangString, 1, ((qqstory_struct.FeedCommentInfo)localObject).next_cookie.get().toStringUtf8()));
-      }
-      localObject = ((qqstory_struct.FeedCommentInfo)localObject).comment_list.get().iterator();
-      while (((Iterator)localObject).hasNext())
+      Object localObject = ((wde)wjs.a(14)).a(this.jdField_a_of_type_JavaLangString);
+      if (((wdh)localObject).a.isSuccess())
       {
-        CommentEntry localCommentEntry = CommentEntry.convertFrom((qqstory_struct.StoryVideoCommentInfo)((Iterator)localObject).next());
-        localCommentEntry.feedId = localwdq.jdField_a_of_type_JavaLangString;
-        localwdq.jdField_a_of_type_JavaUtilList.add(localCommentEntry);
+        this.b = ((wdh)localObject).b;
+        if ((TextUtils.isEmpty(this.b)) || (!zeb.c(this.b)))
+        {
+          ykq.d("Q.qqstory.publish.upload:StoryVideoFileObject  ", "end composite success but file not exist:%s", new Object[] { this.b });
+          localObject = new ErrorMessage(940006, String.format("end composite success but file not exist:%s", new Object[] { this.b }));
+          ((ErrorMessage)localObject).extraMsg = "composite";
+          super.notifyResult(localObject);
+        }
       }
-      this.jdField_a_of_type_JavaUtilList.add(localwdq);
+      else
+      {
+        ((wdh)localObject).a.extraMsg = "composite";
+        super.notifyResult(((wdh)localObject).a);
+        return;
+      }
     }
+    wcz.a().b(this.jdField_a_of_type_JavaLangString);
+    c();
   }
 }
 

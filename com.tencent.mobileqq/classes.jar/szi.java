@@ -1,11 +1,8 @@
-import java.io.InputStream;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
 
 public abstract interface szi
 {
-  public abstract InputStream a(String paramString);
-  
-  public abstract List<String> a();
+  public abstract void a(ReadInJoyBaseListView paramReadInJoyBaseListView);
 }
 
 

@@ -1,19 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
-class ahhz
-  implements View.OnClickListener
+public class ahhz
+  implements blem
 {
-  ahhz(ahhp paramahhp) {}
+  public ahhz(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public void onClick(View paramView)
-  {
-    if (!this.a.hasDestory) {
-      ahhp.c(this.a);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public void a() {}
 }
 
 

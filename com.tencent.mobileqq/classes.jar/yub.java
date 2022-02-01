@@ -1,8 +1,14 @@
-public class yub
+import android.graphics.Bitmap;
+
+public abstract interface yub
 {
-  public float a;
-  public boolean a;
-  public float b;
+  public abstract void a();
+  
+  public abstract void a(Bitmap paramBitmap);
+  
+  public abstract void a(Runnable paramRunnable);
+  
+  public abstract void a(yuc paramyuc);
 }
 
 

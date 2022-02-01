@@ -3,8 +3,9 @@ package com.tencent.mobileqq.redtouch;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import azvi;
+import bbbq;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -35,7 +36,7 @@ public class RedPointBroadcastReceiver
       }
       return null;
     }
-    paramString = ((azvi)this.a.getManager(36)).a(paramString);
+    paramString = ((bbbq)this.a.getManager(QQManagerFactory.MGR_RED_TOUCH)).a(paramString);
     if (paramString == null)
     {
       if (QLog.isColorLevel()) {
@@ -76,7 +77,7 @@ public class RedPointBroadcastReceiver
     if (QLog.isColorLevel()) {
       QLog.d("RedPointBroadcastReceiver clearRed", 2, "path = " + paramString);
     }
-    ((azvi)paramQQAppInterface.getManager(36)).b(paramString);
+    ((bbbq)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).b(paramString);
   }
   
   private void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
@@ -92,13 +93,13 @@ public class RedPointBroadcastReceiver
         JSONObject localJSONObject = new JSONObject();
         try
         {
-          paramString = ((azvi)paramQQAppInterface.getManager(36)).a(paramString);
+          paramString = ((bbbq)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).a(paramString);
           localJSONObject.put("service_type", 0);
           localJSONObject.put("act_id", paramInt);
           localJSONObject.put("obj_id", "");
           localJSONObject.put("pay_amt", 0);
           localJSONObject.put("service_id", i);
-          ((azvi)paramQQAppInterface.getManager(36)).c(paramString, localJSONObject.toString());
+          ((bbbq)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).c(paramString, localJSONObject.toString());
           return;
         }
         catch (JSONException paramQQAppInterface)

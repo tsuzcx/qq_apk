@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import baid;
+import bbos;
 import com.tencent.mobileqq.highway.api.ITransactionCallback;
 import com.tencent.mobileqq.highway.transaction.Transaction;
 import com.tencent.qphone.base.util.QLog;
@@ -10,7 +10,7 @@ class LightVideoUploadProcessor$TransactionListener
   implements ITransactionCallback
 {
   public int index;
-  public baid sendInfo;
+  public bbos sendInfo;
   public Transaction trans;
   
   LightVideoUploadProcessor$TransactionListener(LightVideoUploadProcessor paramLightVideoUploadProcessor) {}

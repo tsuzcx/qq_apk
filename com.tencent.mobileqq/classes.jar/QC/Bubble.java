@@ -7,18 +7,21 @@ import com.qq.taf.jce.JceStruct;
 public final class Bubble
   extends JceStruct
 {
+  public int deltype;
   public String strDiyJson = "";
   
   public Bubble() {}
   
-  public Bubble(String paramString)
+  public Bubble(String paramString, int paramInt)
   {
     this.strDiyJson = paramString;
+    this.deltype = paramInt;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
     this.strDiyJson = paramJceInputStream.readString(0, false);
+    this.deltype = paramJceInputStream.read(this.deltype, 1, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -26,6 +29,7 @@ public final class Bubble
     if (this.strDiyJson != null) {
       paramJceOutputStream.write(this.strDiyJson, 0);
     }
+    paramJceOutputStream.write(this.deltype, 1);
   }
 }
 

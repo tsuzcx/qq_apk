@@ -1,32 +1,18 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
-import java.lang.ref.WeakReference;
-import java.util.Set;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ocr.data.OcrRecogResult;
 
-public class aytz
-  implements BusinessObserver
+public final class aytz
+  implements Parcelable.Creator<OcrRecogResult>
 {
-  private WeakReference<AbsProfileHeaderView> a;
-  
-  public aytz(AbsProfileHeaderView paramAbsProfileHeaderView)
+  public OcrRecogResult a(Parcel paramParcel)
   {
-    this.a = new WeakReference(paramAbsProfileHeaderView);
+    return new OcrRecogResult(paramParcel);
   }
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public OcrRecogResult[] a(int paramInt)
   {
-    if ((paramBoolean) && (paramInt == 66) && ((paramObject instanceof Set)))
-    {
-      paramObject = (Set)paramObject;
-      AbsProfileHeaderView localAbsProfileHeaderView = (AbsProfileHeaderView)this.a.get();
-      if ((localAbsProfileHeaderView != null) && (paramObject.contains(localAbsProfileHeaderView.jdField_a_of_type_Aymg.a.a)))
-      {
-        localAbsProfileHeaderView.b(localAbsProfileHeaderView.jdField_a_of_type_Aymg, false);
-        localAbsProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
-      }
-    }
+    return new OcrRecogResult[paramInt];
   }
 }
 

@@ -1,15 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListFragment;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
 
 public class otz
-  extends pkt
+  implements rnq
 {
-  public otz(ReadInJoySecondCommentListFragment paramReadInJoySecondCommentListFragment) {}
+  public otz(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
   
-  public void b(String paramString)
+  public void a(int paramInt, String paramString, BaseResData paramBaseResData)
   {
-    super.b(paramString);
-    ReadInJoySecondCommentListFragment.a(this.a).a(paramString, 2);
-    ReadInJoySecondCommentListFragment.a(this.a).notifyDataSetChanged();
+    this.a.a(paramInt, paramString, paramBaseResData);
   }
 }
 

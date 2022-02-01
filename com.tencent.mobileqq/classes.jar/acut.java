@@ -1,31 +1,26 @@
-import android.os.Looper;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.Elem;
+import tencent.im.msg.im_msg_body.MarketTrans;
 
-class acut
-  implements bgql
+public class acut
+  extends acve
 {
-  private final WeakReference<acup> a;
-  
-  acut(acup paramacup)
+  public int a()
   {
-    this.a = new WeakReference(paramacup);
+    return 1000;
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bffl parambffl, bcse parambcse, bcre parambcre)
   {
-    if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
-      if (QLog.isColorLevel()) {
-        QLog.i("AutoLoginHelper", 2, "CheckRegisterLiangHao.RequestCallBack not called in main thread !!!");
-      }
-    }
-    acup localacup;
-    do
-    {
-      return;
-      localacup = (acup)this.a.get();
-    } while (localacup == null);
-    localacup.a(paramString, paramBoolean);
+    new bcrt().a(paramList, paramList1, paramStringBuilder);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return paramElem.market_trans.has();
   }
 }
 

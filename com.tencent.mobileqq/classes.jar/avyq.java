@@ -1,21 +1,58 @@
-import android.os.AsyncTask;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.os.Build.VERSION;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
-class avyq
-  extends AsyncTask<Void, Void, Void>
+public class avyq
 {
-  avyq(avyp paramavyp) {}
+  private static int jdField_a_of_type_Int;
+  private static avys jdField_a_of_type_Avys = new avys(null);
   
-  protected Void a(Void... paramVarArgs)
+  public static void a()
   {
-    paramVarArgs = avyp.a(this.a).iterator();
-    while (paramVarArgs.hasNext()) {
-      QLog.d("Q.PerfTrace", 2, (String)paramVarArgs.next());
+    if (Build.VERSION.SDK_INT < 17) {
+      return;
     }
-    avyp.a(this.a).clear();
-    return null;
+    try
+    {
+      JavaHookBridge.findAndReplaceMethod(Class.forName("java.lang.Daemons$FinalizerWatchdogDaemon"), "finalizerTimedOut", new Object[] { Object.class, jdField_a_of_type_Avys });
+      return;
+    }
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      localClassNotFoundException.printStackTrace();
+      return;
+    }
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      localNoSuchMethodException.printStackTrace();
+    }
+  }
+  
+  private static void b(boolean paramBoolean)
+  {
+    String str = null;
+    try
+    {
+      Object localObject = BaseApplicationImpl.sApplication.getRuntime();
+      if (localObject != null) {
+        str = ((AppRuntime)localObject).getAccount();
+      }
+      long l1 = Runtime.getRuntime().totalMemory();
+      long l2 = Runtime.getRuntime().freeMemory();
+      long l3 = Runtime.getRuntime().maxMemory();
+      localObject = new HashMap();
+      ((HashMap)localObject).put("heapSize", String.valueOf(l1 - l2));
+      ((HashMap)localObject).put("maxMemory", String.valueOf(l3));
+      int i = jdField_a_of_type_Int + 1;
+      jdField_a_of_type_Int = i;
+      ((HashMap)localObject).put("count", String.valueOf(i));
+      StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(str, "TimeoutExceptionHooker", paramBoolean, 0L, 0L, (HashMap)localObject, "", true);
+      return;
+    }
+    catch (Throwable localThrowable) {}
   }
 }
 

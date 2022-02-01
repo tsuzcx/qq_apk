@@ -1,111 +1,28 @@
-import android.os.Bundle;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.util.RIJAdGameGiftUtil.showGiftDialog.1;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.util.RIJAdGameGiftUtil.showGiftDialog.1.1;
+import kotlin.Metadata;
 
-final class ufj
-  implements zop
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "clickRegister"}, k=3, mv={1, 1, 16})
+public final class ufj
+  implements umc
 {
-  ufj(tiu paramtiu, String paramString) {}
+  public ufj(RIJAdGameGiftUtil.showGiftDialog.1.1 param1, ulx paramulx) {}
   
-  public void callback(Bundle paramBundle)
+  public final void a()
   {
-    Object localObject1 = paramBundle.getString("action");
-    if ("onCommentSend".equals(localObject1)) {}
-    for (;;)
+    this.jdField_a_of_type_Ulx.dismiss();
+    ueb.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadUtilRIJAdGameGiftUtil$showGiftDialog$1$1.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, 1, "2");
+    Context localContext = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadUtilRIJAdGameGiftUtil$showGiftDialog$1$1.this$0.jdField_a_of_type_AndroidContentContext;
+    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadUtilRIJAdGameGiftUtil$showGiftDialog$1$1.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.gameAdComData;
+    if (localObject != null) {}
+    for (localObject = ((VideoInfo.GameAdComData)localObject).d;; localObject = null)
     {
-      String str;
-      Object localObject2;
-      int i;
-      try
-      {
-        localObject1 = paramBundle.getString("commentId", "");
-        str = paramBundle.getString("rowKey", "");
-        localObject2 = paramBundle.getString("commentContent", "");
-        i = paramBundle.getInt("firstLevelComment");
-        paramBundle = paramBundle.getString("parentCommentId", "");
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("type", "onCommentSend");
-        localJSONObject.put("commentId", localObject1);
-        localJSONObject.put("rowKey", str);
-        localJSONObject.put("commentContent", localObject2);
-        localJSONObject.put("firstLevelComment", i + 1);
-        localJSONObject.put("parentCommentID", paramBundle);
-        localJSONObject.put("result", "success");
-        if (this.jdField_a_of_type_Tiu != null) {
-          this.jdField_a_of_type_Tiu.a(this.jdField_a_of_type_JavaLangString, localJSONObject);
-        }
-        return;
-      }
-      catch (JSONException paramBundle)
-      {
-        paramBundle.printStackTrace();
-        return;
-      }
-      if ("onCommentLike".equals(localObject1)) {
-        try
-        {
-          localObject1 = paramBundle.getString("commentId", "");
-          str = paramBundle.getString("rowKey", "");
-          paramBundle = paramBundle.getString("likeStatus", "");
-          localObject2 = new JSONObject();
-          ((JSONObject)localObject2).put("type", "onCommentLike");
-          ((JSONObject)localObject2).put("rowKey", str);
-          ((JSONObject)localObject2).put("commentId", localObject1);
-          ((JSONObject)localObject2).put("likeStatus", paramBundle);
-          ((JSONObject)localObject2).put("result", "success");
-          if (this.jdField_a_of_type_Tiu == null) {
-            continue;
-          }
-          this.jdField_a_of_type_Tiu.a(this.jdField_a_of_type_JavaLangString, (JSONObject)localObject2);
-          return;
-        }
-        catch (JSONException paramBundle)
-        {
-          paramBundle.printStackTrace();
-          return;
-        }
-      } else if ("onCommentDelete".equals(localObject1)) {
-        try
-        {
-          localObject1 = paramBundle.getString("commentId", "");
-          str = paramBundle.getString("rowKey", "");
-          i = paramBundle.getInt("totalDeleteCount", 0);
-          paramBundle = new JSONObject();
-          paramBundle.put("type", "onCommentDelete");
-          paramBundle.put("totalDelete", i);
-          paramBundle.put("commentID", localObject1);
-          paramBundle.put("rowKey", str);
-          paramBundle.put("result", "success");
-          if (this.jdField_a_of_type_Tiu == null) {
-            continue;
-          }
-          this.jdField_a_of_type_Tiu.a(this.jdField_a_of_type_JavaLangString, paramBundle);
-          return;
-        }
-        catch (JSONException paramBundle)
-        {
-          paramBundle.printStackTrace();
-          return;
-        }
-      } else if ("onPanelClose".equals(localObject1)) {
-        try
-        {
-          paramBundle = paramBundle.getString("rowKey", "");
-          localObject1 = new JSONObject();
-          ((JSONObject)localObject1).put("type", "onPanelClose");
-          ((JSONObject)localObject1).put("rowKey", paramBundle);
-          ((JSONObject)localObject1).put("result", "success");
-          if (this.jdField_a_of_type_Tiu != null)
-          {
-            this.jdField_a_of_type_Tiu.a(this.jdField_a_of_type_JavaLangString, (JSONObject)localObject1);
-            return;
-          }
-        }
-        catch (JSONException paramBundle)
-        {
-          paramBundle.printStackTrace();
-        }
-      }
+      ukl.a(localContext, (String)localObject, (DialogInterface.OnClickListener)new ufk(this));
+      return;
     }
   }
 }

@@ -11,10 +11,11 @@ public class WnsConfig
   public static final int DEFAULT_ENABLE_UPDATE_FOR_EMBEDDED_WIDGET = 1;
   public static final int DEFAULT_MINI_APP_ENABLE_SHOW_CLEAN_CHECK_X5 = 1;
   public static final int DEFAULT_MINI_APP_ENABLE_SHOW_CLEAN_DELAY_TIME = 5000;
-  public static final int DEFAULT_MINI_APP_ENABLE_SHOW_CLEAN_DETECT_WHITESCREEN = 1;
+  public static final int DEFAULT_MINI_APP_ENABLE_SHOW_CLEAN_DETECT_WHITESCREEN = 0;
   public static final int DEFAULT_MINI_APP_ENABLE_SHOW_CLEAN_MAX_COUNT = 3;
   public static final int DEFAULT_MINI_APP_ENABLE_SHOW_CLEAN_ROUTEDONE = 1;
-  public static final int DEFAULT_MINI_APP_ENABLE_V8_SERVICE = 0;
+  public static final int DEFAULT_MINI_APP_ENABLE_V8_SERVICE = 1;
+  public static final int DEFAULT_MINI_APP_ENABLE_V8_SERVICE_DEBUG = 0;
   public static final int DEFAULT_MINI_APP_REPORT_WHITE_SCREEN_ENABLE_CLEAR_APKG_CACHE = 0;
   public static final String DEFAULT_MINI_APP_V8RT_URL = "{ \"url\":\"https://down.qq.com/miniapp/libtv8rt_202008101130.so\",\"size\":535136 }";
   public static final int DEFAULT_MINI_APP_XPROF_API_REPORT = 0;
@@ -22,6 +23,7 @@ public class WnsConfig
   public static final String DEFAULT_OPENDATA_DOMAIN_WHITE_LIST = ".qlogo.com;.qlogo.cn;.qq.com;.tcb.qcloud.la";
   public static final String DEFAULT_OPENURL_DOMAIN_WHITELIST = "tucao.qq.com,mobile.qzone.qq.com";
   public static final String DEFAULT_OPENURL_FILTER = "https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb|http://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb";
+  public static final String DEFAULT_PRELAUNCH_WHITE_LIST = "1108291530,1109896843";
   public static final String DEFAULT_SET_COOKIIE_HOST = "https://open.mp.qq.com";
   public static final String MAIN_KEY_MINIAPP = "qqminiapp";
   public static final String MAIN_KEY_MINIAPP_QQ = "qqminiapp";
@@ -87,6 +89,7 @@ public class WnsConfig
   public static final String SECONDARY_KEY_MINI_APP_CHOOSE_ADDRESS_URL = "miniappChooseAddressUrl";
   public static final String SECONDARY_KEY_MINI_APP_ENABLE_SHOW_CLEAN_ROUTEDONE = "mini_app_enable_show_clean_routedone";
   public static final String SECONDARY_KEY_MINI_APP_ENABLE_V8_SERVICE = "mini_app_enable_v8_service";
+  public static final String SECONDARY_KEY_MINI_APP_ENABLE_V8_SERVICE_DEBUG = "mini_app_enable_v8_service_debug";
   public static final String SECONDARY_KEY_MINI_APP_SEARCH_APPID = "miniappsearchappid";
   public static final String SECONDARY_KEY_MINI_APP_SHOW_CLEAN_CHECK_X5 = "mini_app_enable_show_clean_check_x5";
   public static final String SECONDARY_KEY_MINI_APP_SHOW_CLEAN_DELAY_TIME = "mini_app_enable_show_clean_time_limit";
@@ -98,6 +101,7 @@ public class WnsConfig
   public static final String SECONDARY_KEY_MINI_APP_XPROF_API_REPORT = "xprof_api_report";
   public static final String SECONDARY_KEY_MINI_GAME_SDK_ENABLE_DOWNLOADER = "minigamesdkenabledownloader";
   public static final String SECONDARY_KEY_MINI_LOADING_AD_UNSUPPORT_VIA_LIST = "launch_adv_unsupport_via_list";
+  public static final String SECONDARY_KEY_PRELAUNCH_WHITE_LIST = "prelaunch_white_list";
   public static final String SECONDARY_LOVESPACE_AIOGRAYTIPSLINKJUMPURL = "LoverBonusAIOGrayTipsLinkURL";
   public static final String SECONDARY_LOVESPACE_AIOGRAYTIPSLINKTEXT = "LoverBonusAIOGrayTipsLinkText";
   public static final String SECONDARY_LOVESPACE_AIOGRAYTIPSMAINTEXT = "LoverBonusAIOGrayTipsMainText";
@@ -296,7 +300,7 @@ public class WnsConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.WnsConfig
  * JD-Core Version:    0.7.0.1
  */

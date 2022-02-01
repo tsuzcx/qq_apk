@@ -1,12 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
 class ahge
-  implements DialogInterface.OnClickListener
+  implements biyc
 {
-  ahge(ahgc paramahgc) {}
+  ahge(ahfz paramahfz, MessageForShortVideo paramMessageForShortVideo, long paramLong, boolean paramBoolean) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(int paramInt)
+  {
+    if (paramInt == 2)
+    {
+      this.jdField_a_of_type_Ahfz.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
+      bcwz.jdField_a_of_type_Boolean = true;
+    }
+    while ((paramInt != 3) && (paramInt != 1)) {
+      return;
+    }
+    bcwz.jdField_a_of_type_Long = 0L;
+  }
 }
 
 

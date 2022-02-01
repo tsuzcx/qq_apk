@@ -1,7 +1,4 @@
-public abstract interface bldd
-{
-  public abstract void a();
-}
+public class bldd {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

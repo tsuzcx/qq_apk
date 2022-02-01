@@ -1,52 +1,17 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajng
-  implements ajll
 {
-  public ajng(PhoneFrameActivity paramPhoneFrameActivity) {}
-  
-  public View a()
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    return this.a.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public ImageView a()
-  {
-    return this.a.jdField_a_of_type_AndroidWidgetImageView;
-  }
-  
-  public TextView a()
-  {
-    return this.a.leftView;
-  }
-  
-  public QQAppInterface a()
-  {
-    return this.a.app;
-  }
-  
-  public View b()
-  {
-    return this.a.b;
-  }
-  
-  public TextView b()
-  {
-    return this.a.rightViewText;
-  }
-  
-  public TextView c()
-  {
-    return this.a.centerView;
-  }
-  
-  public TextView d()
-  {
-    return this.a.jdField_a_of_type_AndroidWidgetTextView;
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      return;
+      axqc.a(paramQQAppInterface.getAccount(), "sp_key_card_redpoint_count", Integer.valueOf(paramInt));
+    } while (!QLog.isColorLevel());
+    QLog.i("CardUtil", 2, String.format("updateCardRedPoint count:%d", new Object[] { Integer.valueOf(paramInt) }));
   }
 }
 

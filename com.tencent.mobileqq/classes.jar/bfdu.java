@@ -1,8 +1,10 @@
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import android.view.View;
 
-public abstract interface bfdu
+class bfdu
+  extends bfdv
 {
-  public abstract void a(int paramInt, cmd0x934.RspBody paramRspBody);
+  public long a;
+  public View a;
 }
 
 

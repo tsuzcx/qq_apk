@@ -1,31 +1,16 @@
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.VideoInviteActivity;
-
-class mjx
-  implements mho
+public abstract interface mjx
 {
-  mjx(mjw parammjw) {}
+  public abstract void a(int paramInt);
   
-  public void a()
-  {
-    if (this.a.a.a != null)
-    {
-      this.a.a.a.setViewEnable(2131373411, false);
-      this.a.a.a.setViewEnable(2131363109, false);
-      this.a.a.a.setViewEnable(2131363121, false);
-      this.a.a.a.setViewEnable(2131363120, false);
-    }
-  }
+  public abstract void a(long paramLong);
   
-  public void b()
-  {
-    this.a.a.finish();
-    this.a.a.overridePendingTransition(0, 2130772177);
-  }
+  public abstract void a(nbs paramnbs, int paramInt1, int paramInt2);
+  
+  public abstract void b(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mjx
  * JD-Core Version:    0.7.0.1
  */

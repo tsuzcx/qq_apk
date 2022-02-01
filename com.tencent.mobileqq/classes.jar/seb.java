@@ -1,12 +1,10 @@
-class seb
-  implements sma
+public abstract interface seb
 {
-  seb(sdy paramsdy) {}
+  public abstract void a();
   
-  public void a()
-  {
-    this.a.g();
-  }
+  public abstract void a(float paramFloat);
+  
+  public abstract void a(int paramInt, String paramString1, String paramString2, String paramString3);
 }
 
 

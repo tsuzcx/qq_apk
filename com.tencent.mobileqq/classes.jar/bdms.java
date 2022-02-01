@@ -1,17 +1,12 @@
+import android.content.Context;
+
 public class bdms
 {
-  public long a;
-  public String a;
-  public String b;
+  public static void a() {}
   
-  public bdms() {}
+  public static void a(Context paramContext) {}
   
-  public bdms(long paramLong, String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-  }
+  public static void b() {}
 }
 
 

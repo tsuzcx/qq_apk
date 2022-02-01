@@ -1,11 +1,8 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import aemk;
-import aeml;
-import amtj;
-import anca;
-import andd;
+import afdt;
+import afdu;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -22,11 +19,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bfur;
-import bfvo;
-import bhht;
+import anvx;
+import aoep;
+import aofu;
+import bhdj;
+import bheg;
+import bisl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -47,13 +49,13 @@ public class TroopLowCreditLevelNotifyActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener
 {
-  protected andd a;
   public Context a;
   protected Button a;
   protected ImageView a;
   protected LinearLayout a;
   protected TextView a;
-  protected bhht a;
+  protected aofu a;
+  protected bisl a;
   public String a;
   public View[] a;
   public boolean[] a;
@@ -68,13 +70,13 @@ public class TroopLowCreditLevelNotifyActivity
     this.jdField_a_of_type_ArrayOfBoolean = new boolean[4];
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Andd = new aeml(this);
+    this.jdField_a_of_type_Aofu = new afdu(this);
   }
   
   private String a(String paramString, long paramLong)
   {
     String str = this.app.getCurrentAccountUin();
-    Object localObject = (TroopManager)this.app.getManager(52);
+    Object localObject = (TroopManager)this.app.getManager(QQManagerFactory.TROOP_MANAGER);
     if (localObject != null)
     {
       localObject = ((TroopManager)localObject).b(this.jdField_a_of_type_JavaLangString);
@@ -86,7 +88,7 @@ public class TroopLowCreditLevelNotifyActivity
     }
     for (;;)
     {
-      paramString = paramString.replace("$GCODE$", this.jdField_a_of_type_JavaLangString).replace("$CLIENTVER$", "android8.4.8").replace("$UIN$", str).replace("$LANG$", "zh_CN").replace("$GROUPAPPID$", Long.toString(paramLong)).replace("$ROLE$", (CharSequence)localObject).replace("$ENTERSOURCE$", "1");
+      paramString = paramString.replace("$GCODE$", this.jdField_a_of_type_JavaLangString).replace("$CLIENTVER$", "android8.4.10").replace("$UIN$", str).replace("$LANG$", "zh_CN").replace("$GROUPAPPID$", Long.toString(paramLong)).replace("$ROLE$", (CharSequence)localObject).replace("$ENTERSOURCE$", "1");
       return paramString + "&credit=1";
       if ((((TroopInfo)localObject).dwCmdUinUinFlag & 1L) == 1L) {
         localObject = "1";
@@ -99,23 +101,23 @@ public class TroopLowCreditLevelNotifyActivity
   private void e()
   {
     this.jdField_a_of_type_AndroidContentContext = this;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379155));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379260));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379318));
-    this.c = ((TextView)findViewById(2131370394));
-    this.d = ((TextView)findViewById(2131371307));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131368890));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131377955));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379450));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379564));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379622));
+    this.c = ((TextView)findViewById(2131370577));
+    this.d = ((TextView)findViewById(2131371493));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369048));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131378243));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    setTitle(2131697022);
-    this.c.setText(2131697030);
-    this.d.setText(2131697029);
+    setTitle(2131697296);
+    this.c.setText(2131697304);
+    this.d.setText(2131697303);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
     this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-    a(2131697071, 2131696978, this.jdField_a_of_type_ArrayOfBoolean[0], 0);
-    a(2131697067, 2131696978, this.jdField_a_of_type_ArrayOfBoolean[1], 1);
-    a(2131697068, 2131696976, this.jdField_a_of_type_ArrayOfBoolean[2], 2);
-    a(2131697070, 2131696977, this.jdField_a_of_type_ArrayOfBoolean[3], 3);
+    a(2131697348, 2131697252, this.jdField_a_of_type_ArrayOfBoolean[0], 0);
+    a(2131697344, 2131697252, this.jdField_a_of_type_ArrayOfBoolean[1], 1);
+    a(2131697345, 2131697250, this.jdField_a_of_type_ArrayOfBoolean[2], 2);
+    a(2131697347, 2131697251, this.jdField_a_of_type_ArrayOfBoolean[3], 3);
     Bitmap localBitmap = this.app.getTroopFaceBitmap(this.jdField_a_of_type_JavaLangString, (byte)3, false, false);
     if (localBitmap != null) {
       this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
@@ -124,7 +126,7 @@ public class TroopLowCreditLevelNotifyActivity
     {
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
       return;
-      localBitmap = bfvo.a();
+      localBitmap = bheg.a();
       this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
     }
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
@@ -132,7 +134,7 @@ public class TroopLowCreditLevelNotifyActivity
   
   public oidb_0xe83.AppInfo a(long paramLong)
   {
-    Object localObject1 = ((TroopManager)this.app.getManager(52)).a(this.jdField_a_of_type_JavaLangString);
+    Object localObject1 = ((TroopManager)this.app.getManager(QQManagerFactory.TROOP_MANAGER)).a(this.jdField_a_of_type_JavaLangString);
     if (localObject1 != null) {}
     for (;;)
     {
@@ -142,10 +144,10 @@ public class TroopLowCreditLevelNotifyActivity
         ((oidb_0xe83.RspBody)localObject2).mergeFrom((byte[])localObject1);
         localObject2 = ((oidb_0xe83.RspBody)localObject2).infos.get();
         if (localObject2 == null) {
-          break label168;
+          break label171;
         }
         if (((List)localObject2).size() != 0) {
-          break label174;
+          break label177;
         }
       }
       catch (Exception localException)
@@ -153,12 +155,12 @@ public class TroopLowCreditLevelNotifyActivity
         Object localObject2;
         long l;
         if (!QLog.isColorLevel()) {
-          break label166;
+          break label169;
         }
         QLog.e("troop.credit.TroopLowCreditLevelNotifyActivity", 2, "getAppInfo: " + paramLong + ", " + localException.toString());
       }
-      label166:
-      label168:
+      label169:
+      label171:
       oidb_0xe83.AppInfo localAppInfo;
       if (i < ((List)localObject2).size())
       {
@@ -174,14 +176,14 @@ public class TroopLowCreditLevelNotifyActivity
         localAppInfo = null;
       }
       return localAppInfo;
-      label174:
+      label177:
       int i = 0;
     }
   }
   
   public void a()
   {
-    Object localObject = (TroopManager)this.app.getManager(52);
+    Object localObject = (TroopManager)this.app.getManager(QQManagerFactory.TROOP_MANAGER);
     int i;
     int j;
     if (localObject != null)
@@ -192,7 +194,7 @@ public class TroopLowCreditLevelNotifyActivity
         {
           i = 1;
           if ((((TroopInfo)localObject).dwCmdUinUinFlag & 1L) != 1L) {
-            break label133;
+            break label134;
           }
           j = 1;
         }
@@ -200,29 +202,29 @@ public class TroopLowCreditLevelNotifyActivity
     }
     for (;;)
     {
-      label56:
+      label57:
       if ((i == 0) && (j == 0))
       {
-        localObject = bfur.a(this.jdField_a_of_type_AndroidContentContext, 230).setTitle(getString(2131718947)).setMessage(amtj.a(2131714496));
-        ((QQCustomDialog)localObject).setPositiveButton(2131697024, new aemk(this));
+        localObject = bhdj.a(this.jdField_a_of_type_AndroidContentContext, 230).setTitle(getString(2131719342)).setMessage(anvx.a(2131714843));
+        ((QQCustomDialog)localObject).setPositiveButton(2131697298, new afdt(this));
         ((QQCustomDialog)localObject).setNegativeButton("", null);
         ((QQCustomDialog)localObject).setCancelable(false);
         ((QQCustomDialog)localObject).show();
       }
-      label133:
+      label134:
       do
       {
         return;
         i = 0;
         break;
         j = 0;
-        break label56;
-        localObject = (anca)this.app.getBusinessHandler(20);
+        break label57;
+        localObject = (aoep)this.app.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
       } while (localObject == null);
       if (QLog.isColorLevel()) {
         QLog.i("troop.credit.act", 2, "getTroopCreditInfo:" + this.jdField_a_of_type_JavaLangString);
       }
-      ((anca)localObject).d(this.jdField_a_of_type_JavaLangString, true);
+      ((aoep)localObject).d(this.jdField_a_of_type_JavaLangString, true);
       c();
       return;
       j = 0;
@@ -232,10 +234,10 @@ public class TroopLowCreditLevelNotifyActivity
   
   public void a(int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3)
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562916, null);
-    TextView localTextView1 = (TextView)localView.findViewById(2131369019);
-    TextView localTextView2 = (TextView)localView.findViewById(2131368946);
-    TextView localTextView3 = (TextView)localView.findViewById(2131369014);
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562990, null);
+    TextView localTextView1 = (TextView)localView.findViewById(2131369182);
+    TextView localTextView2 = (TextView)localView.findViewById(2131369107);
+    TextView localTextView3 = (TextView)localView.findViewById(2131369177);
     localTextView1.setText(paramInt1);
     localTextView2.setText(paramInt2);
     if (paramBoolean) {
@@ -270,7 +272,7 @@ public class TroopLowCreditLevelNotifyActivity
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       return false;
     }
-    Object localObject = (TroopManager)this.app.getManager(52);
+    Object localObject = (TroopManager)this.app.getManager(QQManagerFactory.TROOP_MANAGER);
     if (localObject != null)
     {
       localObject = ((TroopManager)localObject).b(this.jdField_a_of_type_JavaLangString);
@@ -346,18 +348,18 @@ public class TroopLowCreditLevelNotifyActivity
   
   protected void c()
   {
-    if (this.jdField_a_of_type_Bhht == null) {
-      this.jdField_a_of_type_Bhht = new bhht(this);
+    if (this.jdField_a_of_type_Bisl == null) {
+      this.jdField_a_of_type_Bisl = new bisl(this);
     }
-    this.jdField_a_of_type_Bhht.c(2131697028);
-    this.jdField_a_of_type_Bhht.b(getTitleBarHeight());
-    this.jdField_a_of_type_Bhht.show();
+    this.jdField_a_of_type_Bisl.c(2131697302);
+    this.jdField_a_of_type_Bisl.b(getTitleBarHeight());
+    this.jdField_a_of_type_Bisl.show();
   }
   
   public void d()
   {
-    if ((this.jdField_a_of_type_Bhht != null) && (this.jdField_a_of_type_Bhht.isShowing())) {
-      this.jdField_a_of_type_Bhht.dismiss();
+    if ((this.jdField_a_of_type_Bisl != null) && (this.jdField_a_of_type_Bisl.isShowing())) {
+      this.jdField_a_of_type_Bisl.dismiss();
     }
   }
   
@@ -384,7 +386,7 @@ public class TroopLowCreditLevelNotifyActivity
     {
       if (paramInt1 >= 0)
       {
-        this.jdField_a_of_type_ArrayOfAndroidViewView[paramInt1].findViewById(2131369014).setVisibility(0);
+        this.jdField_a_of_type_ArrayOfAndroidViewView[paramInt1].findViewById(2131369177).setVisibility(0);
         this.jdField_a_of_type_ArrayOfBoolean[paramInt1] = true;
       }
       if (!b()) {
@@ -414,9 +416,9 @@ public class TroopLowCreditLevelNotifyActivity
       finish();
       return false;
     }
-    super.setContentView(2131562917);
+    super.setContentView(2131562991);
     e();
-    addObserver(this.jdField_a_of_type_Andd);
+    addObserver(this.jdField_a_of_type_Aofu);
     a();
     return true;
   }
@@ -424,7 +426,7 @@ public class TroopLowCreditLevelNotifyActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    removeObserver(this.jdField_a_of_type_Andd);
+    removeObserver(this.jdField_a_of_type_Aofu);
     b();
   }
   
@@ -432,7 +434,7 @@ public class TroopLowCreditLevelNotifyActivity
   {
     Object localObject1;
     Object localObject2;
-    if (paramView.getId() == 2131377955)
+    if (paramView.getId() == 2131378243)
     {
       localObject1 = "https://qqweb.qq.com/m/business/qunlevel/index.html?gc=" + this.jdField_a_of_type_JavaLangString + "&from=0&_wv=1027";
       localObject2 = new Intent(this, QQBrowserActivity.class);
@@ -440,23 +442,23 @@ public class TroopLowCreditLevelNotifyActivity
       ((Intent)localObject2).putExtra("url", (String)localObject1);
       startActivity((Intent)localObject2);
     }
-    label365:
     label368:
+    label371:
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
       if (paramView == this.jdField_a_of_type_ArrayOfAndroidViewView[0])
       {
-        localObject1 = (TroopManager)this.app.getManager(52);
+        localObject1 = (TroopManager)this.app.getManager(QQManagerFactory.TROOP_MANAGER);
         if (localObject1 == null) {
-          break label365;
+          break label368;
         }
       }
       for (localObject1 = ((TroopManager)localObject1).b(this.jdField_a_of_type_JavaLangString);; localObject1 = null)
       {
         if (localObject1 == null) {
-          break label368;
+          break label371;
         }
         localObject2 = TroopInfoActivity.a(this.jdField_a_of_type_JavaLangString, 28, ((TroopInfo)localObject1).troopLat, ((TroopInfo)localObject1).troopLon, 0, "");
         ((Bundle)localObject2).putInt("troop_type_ex", ((TroopInfo)localObject1).troopTypeExt);
@@ -474,11 +476,11 @@ public class TroopLowCreditLevelNotifyActivity
             QLog.i("troop.credit.TroopLowCreditLevelNotifyActivity", 2, "onClick, appInfo for announce is null, req from server");
           }
           c();
-          localObject1 = (anca)this.app.getBusinessHandler(20);
+          localObject1 = (aoep)this.app.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
           if (localObject1 == null) {
             break;
           }
-          ((anca)localObject1).a(this.jdField_a_of_type_JavaLangString, false, 0, 1);
+          ((aoep)localObject1).a(this.jdField_a_of_type_JavaLangString, false, 0, 1);
           break;
         }
         if (paramView == this.jdField_a_of_type_ArrayOfAndroidViewView[2])
@@ -510,7 +512,7 @@ public class TroopLowCreditLevelNotifyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity
  * JD-Core Version:    0.7.0.1
  */

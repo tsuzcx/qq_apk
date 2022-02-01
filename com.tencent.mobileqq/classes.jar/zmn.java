@@ -1,23 +1,26 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.widget.relativevideo.BlankRecommendItemView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qrcode.ipc.ScannerParams;
+import mqq.app.AppActivity;
 
 class zmn
-  implements View.OnClickListener
+  extends zmg
 {
-  zmn(zmm paramzmm, CertifiedAccountMeta.StFeed paramStFeed) {}
+  zmn(zmm paramzmm) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    zbh.a(this.jdField_a_of_type_Zmm.a.getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, 0, zjc.a(zmm.a(this.jdField_a_of_type_Zmm), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.cover.width.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.cover.height.get()));
-    zxp.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_follow", "blank_content_clk", 0, 0, new String[] { "", zmm.a(this.jdField_a_of_type_Zmm) + "", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (this.a.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.i)
+    {
+      this.a.jdField_a_of_type_Zms.a();
+      return;
+    }
+    if (this.a.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.e)
+    {
+      this.a.jdField_a_of_type_MqqAppAppActivity.finish();
+      return;
+    }
+    this.a.jdField_a_of_type_Zms.b();
   }
 }
 

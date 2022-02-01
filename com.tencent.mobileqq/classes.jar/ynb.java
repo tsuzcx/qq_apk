@@ -1,8 +1,82 @@
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewParent;
+
 public class ynb
-  extends ync
+  implements View.OnTouchListener
 {
-  public static final int[] a = { -3866832, -10233288, -9576193, -16745729, -15975749, -6989057, -31233, -37737, -845543, -27392, -274353, -1, -16777216 };
-  public static final int[] b = { 2130846677, 2130846678, 2130846679, 2130846680, 2130846681, 2130846682, 2130846683, 2130846684, 2130846685, 2130846686, 2130846687, 2130846688, 2130846690 };
+  private int jdField_a_of_type_Int;
+  private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
+  private yna jdField_a_of_type_Yna;
+  private boolean jdField_a_of_type_Boolean;
+  private final int jdField_b_of_type_Int = 5;
+  private MotionEvent jdField_b_of_type_AndroidViewMotionEvent;
+  private boolean jdField_b_of_type_Boolean;
+  
+  public ynb(yna paramyna)
+  {
+    this.jdField_a_of_type_Yna = paramyna;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (this.jdField_a_of_type_Yna == null) {}
+    do
+    {
+      do
+      {
+        float f;
+        do
+        {
+          do
+          {
+            return true;
+            f = paramMotionEvent.getY();
+            switch (paramMotionEvent.getAction() & 0xFF)
+            {
+            case 3: 
+            case 4: 
+            default: 
+              return true;
+            case 0: 
+              this.jdField_a_of_type_Int = ((int)f);
+              this.jdField_a_of_type_Boolean = false;
+              this.jdField_b_of_type_Boolean = false;
+              this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+              return true;
+            }
+          } while (paramMotionEvent.getPointerCount() > 2);
+          if (this.jdField_b_of_type_Boolean)
+          {
+            this.jdField_a_of_type_Yna.a(paramMotionEvent);
+            return true;
+          }
+          this.jdField_b_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+          this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Yna.a(this.jdField_a_of_type_AndroidViewMotionEvent, this.jdField_b_of_type_AndroidViewMotionEvent);
+        } while ((!this.jdField_b_of_type_Boolean) || (!(paramView instanceof ViewParent)));
+        ((ViewParent)paramView).requestDisallowInterceptTouchEvent(true);
+        return true;
+        if (Math.abs((int)(f - this.jdField_a_of_type_Int)) > 5) {
+          this.jdField_a_of_type_Boolean = true;
+        }
+      } while (!this.jdField_b_of_type_Boolean);
+      this.jdField_a_of_type_Yna.a(paramMotionEvent);
+      return true;
+    } while ((paramMotionEvent.getPointerCount() > 2) || (!this.jdField_b_of_type_Boolean));
+    this.jdField_a_of_type_Yna.a(paramMotionEvent);
+    return true;
+    if (!this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Yna.onClick(paramView);
+    }
+    if ((this.jdField_b_of_type_Boolean) && ((paramView instanceof ViewParent))) {
+      ((ViewParent)paramView).requestDisallowInterceptTouchEvent(false);
+    }
+    this.jdField_a_of_type_Yna.a(paramMotionEvent);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    return true;
+  }
 }
 
 

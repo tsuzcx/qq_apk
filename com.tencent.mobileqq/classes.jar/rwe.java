@@ -1,27 +1,40 @@
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.ugc.account.RIJUGCTipsUtils.2;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
-class rwe
-  implements View.OnSystemUiVisibilityChangeListener
+public class rwe
 {
-  rwe(rwa paramrwa) {}
-  
-  public void onSystemUiVisibilityChange(int paramInt)
+  public static void a(Activity paramActivity)
   {
-    ReadInJoyCommentListFragment localReadInJoyCommentListFragment;
-    if (rwa.a(this.a) != null)
+    if ((paramActivity == null) || (paramActivity.getWindow() == null)) {}
+    do
     {
-      localReadInJoyCommentListFragment = rwa.a(this.a);
-      if ((paramInt & 0x2) != 0) {
-        break label32;
-      }
-    }
-    label32:
-    for (boolean bool = true;; bool = false)
-    {
-      localReadInJoyCommentListFragment.a(bool);
       return;
+      localObject = paramActivity.getWindow().getDecorView();
+    } while (!(localObject instanceof FrameLayout));
+    Object localObject = (FrameLayout)localObject;
+    View localView = paramActivity.getLayoutInflater().inflate(2131560344, (ViewGroup)localObject, false);
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
+    localLayoutParams.rightMargin = AIOUtils.dp2px(6.0F, paramActivity.getResources());
+    localLayoutParams.topMargin = (ImmersiveUtils.getStatusBarHeight(paramActivity) + paramActivity.getResources().getDimensionPixelSize(2131299080) - AIOUtils.dp2px(12.0F, paramActivity.getResources()));
+    localView.setLayoutParams(localLayoutParams);
+    paramActivity = (TextView)localView.findViewById(2131380206);
+    if (paramActivity != null) {
+      paramActivity.setText(rwa.e());
     }
+    ((FrameLayout)localObject).addView(localView);
+    localView.setOnClickListener(new rwf(localView));
+    pno.b().postDelayed(new RIJUGCTipsUtils.2(localView), rwa.a() * 1000);
   }
 }
 

@@ -1,71 +1,198 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.takevideo.EditGifImage;
+import com.tencent.image.AbstractGifImage.DoAccumulativeRunnable;
+import com.tencent.image.NativeGifImage;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import cooperation.qzone.util.gifCoderWnsConfig;
+import cooperation.qzone.widget.FastAnimationDrawable;
 
 public class ylf
-  extends bjwj
+  extends ynu
+  implements View.OnClickListener
 {
-  private yks a;
+  protected double a;
+  protected final int a;
+  protected LinearLayout a;
+  protected SeekBar a;
+  protected TextView a;
+  protected boolean a;
+  protected int b;
+  protected TextView b;
+  protected int c;
+  protected int d = 50;
+  protected int e = -1;
+  protected int f;
+  protected int g;
   
-  public ylf(yks paramyks)
+  public ylf(@NonNull ynw paramynw)
   {
-    this.a = paramyks;
+    super(paramynw);
+    this.jdField_a_of_type_Int = AbstractGifImage.DoAccumulativeRunnable.DELAY;
   }
   
-  public void clearView(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
+  private void g()
   {
-    super.clearView(paramRecyclerView, paramViewHolder);
-    if ((paramViewHolder instanceof ylb))
+    this.f = gifCoderWnsConfig.DEFAULT_GIF_MAX_DELAY;
+    this.g = (this.c * gifCoderWnsConfig.DEFAULT_GIF_MIN_MULTIPLE_DELAY);
+    this.jdField_a_of_type_Double = ((this.f - this.g) / 100.0D);
+    if (QLog.isColorLevel()) {
+      QLog.d("EditGifSpeedControl", 2, "calculateSpeedChangeByLimit | defaultY:" + this.c + " maxSpeed:" + this.f + " minSpeed:" + this.g + " k1:" + this.jdField_a_of_type_Double);
+    }
+  }
+  
+  public void a()
+  {
+    super.a();
+    AbstractGifImage.DoAccumulativeRunnable.DELAY = 0;
+    NativeGifImage.QZONE_DELAY = -1;
+    this.jdField_b_of_type_Int = 50;
+    if (QLog.isColorLevel()) {
+      QLog.d("EditGifSpeedControl", 2, "onCreate | defaultX:" + this.jdField_b_of_type_Int + " defaultY:" + this.c + " delayTime:" + this.e);
+    }
+    g();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131377281));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131377276));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131377277));
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)a(2131367717));
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setMax(100);
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new ylg(this));
+  }
+  
+  public void a(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
     {
-      ((ylb)paramViewHolder).a = false;
-      if ((paramRecyclerView.getScrollState() == 0) && (!paramRecyclerView.isComputingLayout())) {
-        paramRecyclerView.getAdapter().notifyItemChanged(paramViewHolder.getAdapterPosition(), Integer.valueOf(0));
+    default: 
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      return;
+    }
+    if (this.e == -1)
+    {
+      if (!this.jdField_a_of_type_Ynw.a.jdField_a_of_type_Boolean) {
+        break label193;
+      }
+      paramInt = (int)this.jdField_a_of_type_Ynw.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.getDuration();
+      this.e = paramInt;
+      this.c = paramInt;
+    }
+    for (NativeGifImage.QZONE_DELAY = paramInt;; NativeGifImage.QZONE_DELAY = paramInt)
+    {
+      g();
+      paramInt = (int)((this.c - this.g) / this.jdField_a_of_type_Double);
+      this.d = paramInt;
+      this.jdField_b_of_type_Int = paramInt;
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      if (QLog.isColorLevel()) {
+        QLog.d("EditGifSpeedControl", 2, "editVideoStateChanged | delayTime:" + this.e + " barPosition:" + this.d);
+      }
+      this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(this.d);
+      this.c = this.e;
+      this.jdField_b_of_type_Int = this.d;
+      return;
+      label193:
+      paramInt = NativeGifImage.GIF_DEFAULT_DELAY;
+      this.e = paramInt;
+      this.c = paramInt;
+    }
+  }
+  
+  public void a(@NonNull yya paramyya)
+  {
+    if (this.e == -1) {
+      if (this.jdField_a_of_type_Ynw.a.jdField_a_of_type_Boolean)
+      {
+        paramyya.a.jdField_b_of_type_Int = ((int)this.jdField_a_of_type_Ynw.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.getDuration());
+        paramyya.a.c = this.jdField_a_of_type_Boolean;
+        if (QLog.isColorLevel()) {
+          QLog.d("EditGifSpeedControl", 2, "editVideoPrePublish | get defaultY:" + this.c + " isDelayTimeChange:" + this.jdField_a_of_type_Boolean);
+        }
+      }
+    }
+    do
+    {
+      return;
+      yye localyye = paramyya.a;
+      if (NativeGifImage.GIF_DEFAULT_DELAY != -1) {}
+      for (int i = NativeGifImage.GIF_DEFAULT_DELAY;; i = gifCoderWnsConfig.DEFAULT_DELAY)
+      {
+        localyye.jdField_b_of_type_Int = i;
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("EditGifSpeedControl", 2, "editVideoPrePublish | get delayTime:" + this.e + " isDelayTimeChange:" + this.jdField_a_of_type_Boolean);
+      }
+      paramyya.a.jdField_b_of_type_Int = this.e;
+      paramyya.a.c = this.jdField_a_of_type_Boolean;
+      if (this.e < this.c)
+      {
+        LpReportInfo_pf00064.allReport(628, 5, 3);
+        return;
+      }
+    } while (this.e <= this.c);
+    LpReportInfo_pf00064.allReport(628, 5, 2);
+  }
+  
+  public boolean a()
+  {
+    boolean bool = false;
+    if (this.jdField_a_of_type_Ynw.jdField_b_of_type_Int == 21)
+    {
+      NativeGifImage.QZONE_DELAY = this.c;
+      if (this.jdField_a_of_type_Ynw.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable != null) {
+        this.jdField_a_of_type_Ynw.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.setDuration(NativeGifImage.QZONE_DELAY);
+      }
+      this.e = this.c;
+      this.d = this.jdField_b_of_type_Int;
+      if (QLog.isColorLevel()) {
+        QLog.d("EditGifSpeedControl", 2, "onBackPressed | delayTime:" + this.e + " barPosition:" + this.d);
+      }
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.jdField_a_of_type_Ynw.a(0);
+      bool = true;
+      LpReportInfo_pf00064.allReport(628, 5, 4);
+    }
+    return bool;
+  }
+  
+  public void d()
+  {
+    super.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("EditGifSpeedControl", 2, "onDestroy | DEFAULT_DELAY:" + this.jdField_a_of_type_Int);
+    }
+    AbstractGifImage.DoAccumulativeRunnable.DELAY = this.jdField_a_of_type_Int;
+    NativeGifImage.QZONE_DELAY = -1;
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      if (this.jdField_a_of_type_Ynw.jdField_b_of_type_Int == 21)
+      {
+        this.jdField_a_of_type_Ynw.a(0);
+        continue;
+        a();
       }
     }
   }
-  
-  public float getMoveThreshold(RecyclerView.ViewHolder paramViewHolder)
-  {
-    return 0.25F;
-  }
-  
-  public int getMovementFlags(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
-  {
-    paramRecyclerView = paramRecyclerView.getLayoutManager();
-    if (((paramRecyclerView instanceof LinearLayoutManager)) && (((LinearLayoutManager)paramRecyclerView).getOrientation() == 0)) {}
-    for (int i = 15;; i = 0) {
-      return makeMovementFlags(i, 0);
-    }
-  }
-  
-  public boolean isItemViewSwipeEnabled()
-  {
-    return false;
-  }
-  
-  public boolean onMove(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder1, RecyclerView.ViewHolder paramViewHolder2)
-  {
-    if (this.a != null) {
-      this.a.a(paramViewHolder1.getAdapterPosition(), paramViewHolder2.getAdapterPosition());
-    }
-    return false;
-  }
-  
-  public void onSelectedChanged(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    super.onSelectedChanged(paramViewHolder, paramInt);
-    if ((paramInt == 2) && ((paramViewHolder instanceof ylb)))
-    {
-      paramViewHolder = (ylb)paramViewHolder;
-      paramViewHolder.a = true;
-      if ((this.a instanceof yky)) {
-        ((yky)this.a).notifyItemChanged(paramViewHolder.getAdapterPosition(), Integer.valueOf(0));
-      }
-    }
-  }
-  
-  public void onSwiped(RecyclerView.ViewHolder paramViewHolder, int paramInt) {}
 }
 
 

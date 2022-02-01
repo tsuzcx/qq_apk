@@ -1,72 +1,103 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import android.content.ServiceConnection;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.RemoteException;
+import cooperation.qqfav.QfavPluginProxyService;
+import cooperation.qqfav.ipc.QfavRemoteProxyForQQ.1;
+import java.lang.ref.WeakReference;
+import java.util.HashSet;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import mqq.app.AppRuntime;
 
-class bmbm
+public class bmbm
 {
-  private static final SharedPreferences a = ;
+  private ServiceConnection a;
+  protected bmbi a;
+  public final String a;
+  protected WeakReference<AppRuntime> a;
+  protected HashSet<String> a;
+  public ConcurrentLinkedQueue<bmbo> a;
+  protected boolean a;
   
-  static int a(@NonNull String paramString, int paramInt)
+  public bmbm(AppRuntime paramAppRuntime)
   {
-    return a.getInt(paramString, paramInt);
+    this.jdField_a_of_type_JavaLangString = "QfavRemoteProxyForQQ";
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
+    this.jdField_a_of_type_AndroidContentServiceConnection = new bmbn(this);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppRuntime);
+    a("com.tencent.qqfav");
   }
   
-  static long a(@NonNull String paramString, long paramLong)
+  private void a(bmbo parambmbo)
   {
-    return a.getLong(paramString, paramLong);
+    if ((this.jdField_a_of_type_Bmbi != null) && (parambmbo != null))
+    {
+      Looper localLooper = Looper.getMainLooper();
+      if (Thread.currentThread() != localLooper.getThread()) {
+        new Handler(localLooper).post(new QfavRemoteProxyForQQ.1(this, parambmbo));
+      }
+    }
+    else
+    {
+      return;
+    }
+    try
+    {
+      this.jdField_a_of_type_Bmbi.a(parambmbo.jdField_a_of_type_Int, parambmbo.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
+    catch (RemoteException parambmbo) {}
   }
   
-  @Nullable
-  static String a(@NonNull String paramString1, String paramString2)
+  private boolean a()
   {
-    return a.getString(paramString1, paramString2);
+    if ((this.jdField_a_of_type_Bmbi == null) && (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
+    {
+      AppRuntime localAppRuntime = (AppRuntime)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localAppRuntime != null)
+      {
+        QfavPluginProxyService.a(localAppRuntime, this.jdField_a_of_type_AndroidContentServiceConnection, "com.qqfav.ipc.QfavRemoteProxyService");
+        this.jdField_a_of_type_Boolean = true;
+        return true;
+      }
+    }
+    return false;
   }
   
-  static void a(@NonNull String paramString)
+  private boolean a(bmbo parambmbo)
   {
-    SharedPreferences.Editor localEditor = a.edit();
-    localEditor.remove(paramString);
-    localEditor.apply();
+    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(parambmbo);
   }
   
-  static void a(@NonNull String paramString, int paramInt)
+  public boolean a(String paramString)
   {
-    SharedPreferences.Editor localEditor = a.edit();
-    localEditor.putInt(paramString, paramInt);
-    localEditor.apply();
+    if (!this.jdField_a_of_type_JavaUtilHashSet.contains(paramString))
+    {
+      this.jdField_a_of_type_JavaUtilHashSet.add(paramString);
+      a();
+      return true;
+    }
+    return false;
   }
   
-  static void a(@NonNull String paramString, long paramLong)
+  public boolean a(String paramString, int paramInt, Bundle paramBundle)
   {
-    SharedPreferences.Editor localEditor = a.edit();
-    localEditor.putLong(paramString, paramLong);
-    localEditor.apply();
-  }
-  
-  static void a(@NonNull String paramString1, String paramString2)
-  {
-    SharedPreferences.Editor localEditor = a.edit();
-    localEditor.putString(paramString1, paramString2);
-    localEditor.apply();
-  }
-  
-  static void a(@NonNull String paramString, boolean paramBoolean)
-  {
-    SharedPreferences.Editor localEditor = a.edit();
-    localEditor.putBoolean(paramString, paramBoolean);
-    localEditor.apply();
-  }
-  
-  static boolean a(@NonNull String paramString)
-  {
-    return a.contains(paramString);
-  }
-  
-  static boolean a(@NonNull String paramString, boolean paramBoolean)
-  {
-    return a.getBoolean(paramString, paramBoolean);
+    if (this.jdField_a_of_type_JavaUtilHashSet.contains(paramString))
+    {
+      paramString = new bmbo(this, paramInt, paramBundle);
+      if (this.jdField_a_of_type_Bmbi != null) {
+        a(paramString);
+      }
+      for (;;)
+      {
+        return true;
+        a(paramString);
+        a();
+      }
+    }
+    return false;
   }
 }
 

@@ -1,24 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewParent;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.mobileqq.hiboom.RichTextPanel;
+import android.content.Context;
+import com.tencent.mobileqq.filemanageraux.link.LinkByWeiyunFragment;
 
-class aufi
-  implements ValueAnimator.AnimatorUpdateListener
+final class aufi
+  implements audq
 {
-  aufi(aufg paramaufg, int paramInt) {}
+  aufi(Context paramContext, String paramString) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onNo() {}
+  
+  public void onYes()
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (i == this.jdField_a_of_type_Int) {
-      AbstractGifImage.resumeAll();
-    }
-    com.tencent.widget.XPanelContainer.jdField_a_of_type_Int = i;
-    if (this.jdField_a_of_type_Aufg.a.getParent() != null) {
-      this.jdField_a_of_type_Aufg.a.getParent().requestLayout();
-    }
+    LinkByWeiyunFragment.a(this.jdField_a_of_type_AndroidContentContext, null, this.jdField_a_of_type_JavaLangString, false);
   }
 }
 

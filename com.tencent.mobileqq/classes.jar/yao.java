@@ -1,37 +1,23 @@
-import com.qq.taf.jce.HexUtil;
-import com.tencent.biz.qqstory.takevideo.EditWebVideoActivity;
-import com.tencent.biz.qqstory.takevideo.EditWebVideoActivity.1.1;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import java.util.Comparator;
 
 public class yao
-  implements EncodeVideoTask.ResultListener
+  implements Comparator<VideoCollectionItem>
 {
-  public yao(EditWebVideoActivity paramEditWebVideoActivity) {}
-  
-  public void onEncodeSuccess(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
+  public int a(VideoCollectionItem paramVideoCollectionItem1, VideoCollectionItem paramVideoCollectionItem2)
   {
-    int i = ((yap)this.a.a).a;
-    EditWebVideoActivity.a(this.a, paramString1);
-    EditWebVideoActivity.a(this.a, paramArrayOfByte1);
-    EditWebVideoActivity.b(this.a, HexUtil.bytes2HexStr(EditWebVideoActivity.a(this.a)));
-    paramString1 = this.a;
-    if (i <= 0) {}
-    for (;;)
-    {
-      EditWebVideoActivity.a(paramString1, paramInt3);
-      EditWebVideoActivity.c(this.a, paramString2);
-      EditWebVideoActivity.b(this.a, paramArrayOfByte2);
-      EditWebVideoActivity.b(this.a, paramInt1);
-      EditWebVideoActivity.c(this.a, paramInt2);
-      EditWebVideoActivity.a(this.a).sendEmptyMessage(1002);
-      return;
-      paramInt3 = i;
+    if ((paramVideoCollectionItem1.collectionType != paramVideoCollectionItem2.collectionType) && (zdu.a(paramVideoCollectionItem1.collectionTime, paramVideoCollectionItem2.collectionTime))) {
+      if (VideoCollectionItem.TYPE_ORDER[paramVideoCollectionItem1.collectionType] >= VideoCollectionItem.TYPE_ORDER[paramVideoCollectionItem2.collectionType]) {}
     }
-  }
-  
-  public void onError(int paramInt)
-  {
-    this.a.runOnUiThread(new EditWebVideoActivity.1.1(this));
+    do
+    {
+      return -1;
+      return 1;
+      if (paramVideoCollectionItem1.collectionTime < paramVideoCollectionItem2.collectionTime) {
+        return 1;
+      }
+    } while (paramVideoCollectionItem1.collectionTime > paramVideoCollectionItem2.collectionTime);
+    return 0;
   }
 }
 

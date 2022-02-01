@@ -1,166 +1,48 @@
 import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.FraudTipsBar.1;
-import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Timer;
-import mqq.os.MqqHandler;
 
-public class ahpk
-  implements ahqq
+public abstract class ahpk
 {
-  private int jdField_a_of_type_Int = 0;
-  private ahqs jdField_a_of_type_Ahqs;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  private boolean jdField_a_of_type_Boolean;
+  public int a;
+  public Context a;
+  protected SessionInfo a;
+  protected BaseChatPie a;
+  public QQAppInterface a;
+  public int b;
   
-  public ahpk(QQAppInterface paramQQAppInterface, ahqs paramahqs, Context paramContext, SessionInfo paramSessionInfo, MqqHandler paramMqqHandler)
+  public ahpk(BaseChatPie paramBaseChatPie, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, int paramInt1, int paramInt2)
   {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Ahqs = paramahqs;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
   
-  public int a()
+  public long a()
   {
-    return 50;
+    return 0L;
   }
   
-  public View a(Object... paramVarArgs)
-  {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561825, null);
-    TextView localTextView = (TextView)localView.findViewById(2131362511);
-    String str = (String)paramVarArgs[0];
-    int i = ((Integer)paramVarArgs[1]).intValue();
-    localTextView.setText(str);
-    localView.setOnClickListener(new ahpl(this, i));
-    return localView;
-  }
+  public abstract View a();
   
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FraudTipsBar", 2, "check() : ");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType != 0) {}
-    for (;;)
-    {
-      return;
-      if (this.jdField_a_of_type_Int != 0)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("FraudTipsBar", 2, "mAntiFraudTips is showing or has shown");
-        return;
-      }
-      try
-      {
-        l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin);
-        if (l == 0L) {
-          continue;
-        }
-        if (!this.jdField_a_of_type_Boolean)
-        {
-          this.jdField_a_of_type_Boolean = true;
-          if (alne.a().a(l))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("FraudTipsBar", 2, "uin cache is out of date, update it! ");
-            }
-            ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(1)).queryUinSafetyFlag("OidbSvc.0x476_146", (int)l, 146);
-          }
-        }
-        int i = alne.a().a(l);
-        if (i == 0) {
-          continue;
-        }
-        bftm.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "SecWarningCfg");
-        Object localObject = (Bundle)bftm.a().a("SecWarningCfg", "BannerWording", 146, i);
-        if (localObject != null)
-        {
-          localObject = ((Bundle)localObject).getString("BannerWording");
-          if (TextUtils.isEmpty((CharSequence)localObject)) {
-            continue;
-          }
-          if (!this.jdField_a_of_type_Ahqs.a(this, new Object[] { localObject, Integer.valueOf(i) })) {
-            continue;
-          }
-          this.jdField_a_of_type_Int = 1;
-          bcef.b(null, "P_CliOper", "Safe_AntiFraud", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "banner", "display", i, 0, "", "", "", "");
-          Timer localTimer = new Timer();
-          FraudTipsBar.1 local1 = new FraudTipsBar.1(this);
-          localObject = (Bundle)bftm.a().a("SecWarningCfg", "BannerTTL", 146, i);
-          if (localObject != null)
-          {
-            localObject = ((Bundle)localObject).getString("BannerTTL");
-            try
-            {
-              i = Integer.parseInt((String)localObject);
-              l = i;
-            }
-            catch (Throwable localThrowable2)
-            {
-              for (;;)
-              {
-                localThrowable2.printStackTrace();
-                l = 15L;
-              }
-            }
-            l *= 1000L;
-            if (l <= 0L) {
-              continue;
-            }
-            localTimer.schedule(local1, l);
-            return;
-          }
-        }
-      }
-      catch (Throwable localThrowable1)
-      {
-        for (;;)
-        {
-          localThrowable1.printStackTrace();
-          long l = 0L;
-          continue;
-          String str = "0";
-          continue;
-          str = null;
-        }
-      }
-    }
-  }
+  public abstract void a();
   
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    if (paramInt != 1000) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("FraudTipsBar", 2, "onAIOEvent() : TYPE_ON_SHOW =====>");
-    }
-    a();
-  }
+  public abstract boolean a();
   
-  public int[] a()
-  {
-    return null;
-  }
+  public abstract void b();
   
-  public int b()
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public String toString()
   {
-    return 0;
+    return "NavigateBar{id=" + this.jdField_a_of_type_Int + ", priority=" + this.b + '}';
   }
 }
 

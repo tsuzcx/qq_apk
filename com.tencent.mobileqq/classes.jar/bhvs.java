@@ -1,60 +1,26 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.LruCache;
-import com.tencent.open.base.MD5Utils;
-import com.tencent.open.base.img.ImageCache;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.vas.watchword.VasWatchWord.addObserver.1.checkWatchWord.1.1;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import kotlin.Metadata;
 
-public class bhvs
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Leipc/EIPCResult;", "kotlin.jvm.PlatformType", "onCallback"}, k=3, mv={1, 1, 16})
+public final class bhvs
+  implements EIPCResultCallback
 {
-  protected static bhvs a;
-  protected static byte[] a;
-  protected LruCache<String, Bitmap> a;
+  public static final bhvs a = new bhvs();
   
-  static
+  public final void onCallback(EIPCResult paramEIPCResult)
   {
-    jdField_a_of_type_ArrayOfByte = new byte[1];
-  }
-  
-  protected bhvs()
-  {
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(50);
-  }
-  
-  public static bhvs a()
-  {
-    if (jdField_a_of_type_Bhvs == null) {}
-    synchronized (jdField_a_of_type_ArrayOfByte)
-    {
-      if (jdField_a_of_type_Bhvs == null) {
-        jdField_a_of_type_Bhvs = new bhvs();
-      }
-      return jdField_a_of_type_Bhvs;
-    }
-  }
-  
-  public Bitmap a(String arg1)
-  {
-    Object localObject1 = MD5Utils.encodeHexStr(???);
-    synchronized (jdField_a_of_type_ArrayOfByte)
-    {
-      localObject1 = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(localObject1);
-      return localObject1;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    String str = MD5Utils.encodeHexStr(paramString);
-    synchronized (jdField_a_of_type_ArrayOfByte)
-    {
-      this.jdField_a_of_type_AndroidSupportV4UtilLruCache.remove(str);
-      ImageCache.a(paramString);
+    if (paramEIPCResult != null) {}
+    for (Bundle localBundle = paramEIPCResult.data; localBundle == null; localBundle = null) {
       return;
     }
-  }
-  
-  public void a(String paramString, bhvu parambhvu)
-  {
-    ImageCache.a("app", paramString, new bhvt(this, parambhvu, paramString));
+    int i = paramEIPCResult.data.getInt("ret");
+    bhvq.a.b();
+    new Handler(Looper.getMainLooper()).post((Runnable)new VasWatchWord.addObserver.1.checkWatchWord.1.1(paramEIPCResult, i));
   }
 }
 

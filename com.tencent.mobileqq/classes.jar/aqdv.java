@@ -1,72 +1,36 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
+import java.util.List;
 
 public class aqdv
-  extends aptq<aqdu>
+  extends aqdt
 {
-  @NonNull
-  public aqdu a(int paramInt)
-  {
-    return new aqdu();
-  }
+  private float[] d = new float[16];
   
-  @Nullable
-  public aqdu a(aptx[] paramArrayOfaptx)
+  public aqdv(Context paramContext, int paramInt, SensorManager paramSensorManager, aqdl paramaqdl)
   {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null))
+    super(paramContext, paramInt, paramSensorManager, paramaqdl);
+    paramContext = paramSensorManager.getDefaultSensor(11);
+    if ((Build.VERSION.SDK_INT >= 9) && (paramContext != null))
     {
-      aqdu localaqdu = aqdu.a(paramArrayOfaptx[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("WVSecurityConfProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
-      }
-      return localaqdu;
+      this.a.add(paramContext);
+      return;
     }
-    return null;
+    throw new OrientationProviderNotFound(String.valueOf(3));
   }
   
-  public void a(aqdu paramaqdu)
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVSecurityConfProcessor", 2, "onUpdate " + paramaqdu.toString());
-    }
-  }
-  
-  public Class<aqdu> clazz()
-  {
-    return aqdu.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 158;
+    aqdn.a(this.d, paramSensorEvent);
+    super.a(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqdv
  * JD-Core Version:    0.7.0.1
  */

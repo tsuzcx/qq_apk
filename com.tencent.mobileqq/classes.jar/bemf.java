@@ -1,14 +1,6 @@
 public abstract interface bemf
 {
-  public abstract void a(String paramString, double paramDouble);
-  
-  public abstract void a(String paramString1, String paramString2, double paramDouble1, double paramDouble2, boolean paramBoolean);
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
+  public abstract void a(bemg parambemg1, bemg parambemg2, bemg parambemg3);
 }
 
 

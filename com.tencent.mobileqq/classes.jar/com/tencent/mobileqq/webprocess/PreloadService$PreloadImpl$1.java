@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.webprocess;
 
-import bgsj;
+import bicz;
 import com.tencent.common.app.AppInterface;
 
 public class PreloadService$PreloadImpl$1
   implements Runnable
 {
-  public PreloadService$PreloadImpl$1(bgsj parambgsj, AppInterface paramAppInterface) {}
+  public PreloadService$PreloadImpl$1(bicz parambicz, AppInterface paramAppInterface) {}
   
   public void run()
   {

@@ -1,36 +1,32 @@
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
 
-final class bfpb
-  implements DownloadParams.DecodeHandler
+public class bfpb
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  
+  public bfpb()
   {
-    try
-    {
-      int i = paramBitmap.getHeight();
-      int j = paramBitmap.getWidth();
-      int k = paramDownloadParams.reqWidth;
-      int m = paramDownloadParams.reqHeight;
-      float f = k * 1.0F / j;
-      paramDownloadParams = new Matrix();
-      paramDownloadParams.setScale(f, f);
-      if (i * f > m) {}
-      for (paramDownloadParams = Bitmap.createBitmap(paramBitmap, 0, 0, j, (int)(m / f), paramDownloadParams, true); QLog.isColorLevel(); paramDownloadParams = Bitmap.createBitmap(paramBitmap, 0, 0, j, i, paramDownloadParams, true))
-      {
-        QLog.d(bfol.a(), 2, String.format("ALIGN_TOP_DECODER srcHeight = %s, srcWidth = %s, reqWidth = %s, reqHeight = %s, scale = %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Float.valueOf(f) }));
-        break;
-      }
-      return paramDownloadParams;
+    this.jdField_a_of_type_JavaLangString = "default";
+  }
+  
+  public boolean a()
+  {
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || ("default".equals(this.jdField_a_of_type_JavaLangString))) {}
+    while ((this.b < 0) || (this.c < 0) || (this.d <= 0) || (this.e <= 0)) {
+      return false;
     }
-    catch (Exception paramDownloadParams)
-    {
-      paramDownloadParams.printStackTrace();
-      return paramBitmap;
-    }
+    return true;
+  }
+  
+  public String toString()
+  {
+    return "Item{subject='" + this.jdField_a_of_type_JavaLangString + '\'' + ", correct=" + this.jdField_a_of_type_Boolean + ", confidence=" + this.jdField_a_of_type_Int + ", x=" + this.b + ", y=" + this.c + ", width=" + this.d + ", height=" + this.e + '}';
   }
 }
 

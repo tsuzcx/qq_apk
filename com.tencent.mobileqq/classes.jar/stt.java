@@ -1,49 +1,11 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.CommentHeaderData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RecommendTitleData;
+import kotlin.Metadata;
 
-class stt
-  extends stg
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerSDKEventListener;", "", "onInstalledFailed", "", "errorCode", "", "onInstalledSuccessed", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface stt
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private View b;
-  private View c;
+  public abstract void a();
   
-  public stt(stp paramstp, View paramView, BaseData paramBaseData)
-  {
-    super(paramView, paramBaseData);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379877));
-    this.b = paramView.findViewById(2131365675);
-    this.c = paramView.findViewById(2131377645);
-  }
-  
-  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
-  {
-    paramBaseData1 = "";
-    if (paramBaseData2.r == 7)
-    {
-      paramBaseData1 = ((RecommendTitleData)paramBaseData2).jdField_a_of_type_JavaLangString;
-      this.b.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseData1);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      if ((paramBaseData2.r != 7) || (!((RecommendTitleData)paramBaseData2).jdField_a_of_type_Boolean)) {
-        break;
-      }
-      this.c.setVisibility(8);
-      return;
-      if (paramBaseData2.r == 13)
-      {
-        paramBaseData1 = ((CommentHeaderData)paramBaseData2).jdField_a_of_type_JavaLangString;
-        this.b.setVisibility(8);
-      }
-    }
-    this.c.setVisibility(0);
-  }
+  public abstract void a(int paramInt);
 }
 
 

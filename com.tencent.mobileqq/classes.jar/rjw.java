@@ -1,19 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.CoverSelectTabFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
 
-public class rjw
-  implements tdu
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTaskArticleTimer$Companion;", "", "()V", "TAG", "", "isNowInKanDianTab", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rjw
 {
-  public rjw(CoverSelectTabFragment paramCoverSelectTabFragment) {}
-  
-  public void a(tdz paramtdz)
+  @JvmStatic
+  public final boolean a()
   {
-    CoverSelectTabFragment.a(this.a).setCurrentItem(paramtdz.a());
+    if (rls.a()) {
+      return ReadinjoyTabFrame.d_();
+    }
+    return rle.a();
   }
-  
-  public void b(tdz paramtdz) {}
-  
-  public void c(tdz paramtdz) {}
 }
 
 

@@ -1,430 +1,649 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.media.AudioManager;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import android.media.MediaPlayer;
+import android.text.TextUtils;
+import android.webkit.URLUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Set;
-import tencent.im.nearfield_discuss.nearfield_discuss.BusiRespHead;
-import tencent.im.nearfield_discuss.nearfield_discuss.LBSInfo;
-import tencent.im.nearfield_discuss.nearfield_discuss.NotifyList;
-import tencent.im.nearfield_discuss.nearfield_discuss.ReqExit;
-import tencent.im.nearfield_discuss.nearfield_discuss.ReqGetList;
-import tencent.im.nearfield_discuss.nearfield_discuss.ReqJoinDiscuss;
-import tencent.im.nearfield_discuss.nearfield_discuss.RespGetList;
-import tencent.im.nearfield_discuss.nearfield_discuss.RespJoinDiscuss;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import org.json.JSONObject;
 
 public class amwv
-  extends BusinessHandler
+  implements amxw
 {
-  byte[] a;
+  public static List<amwv> a;
+  private int jdField_a_of_type_Int;
+  private amxc jdField_a_of_type_Amxc;
+  private AudioManager.OnAudioFocusChangeListener jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new amxb(this);
+  private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
+  private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  private int c;
   
-  amwv(QQAppInterface paramQQAppInterface)
+  static
   {
-    super(paramQQAppInterface);
+    jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
   }
   
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public amwv(int paramInt1, int paramInt2, String arg3)
   {
-    String str = paramFromServiceMsg.getServiceCmd();
-    QLog.i("NearFieldDiscussHandler", 1, "<<---handleError serviceCmd:" + str);
-    if ("NearFieldDiscussSvr.ReqJoinDiscuss".equals(str)) {
-      d(paramToServiceMsg, paramFromServiceMsg);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    amyo localamyo = amwn.a(paramInt2);
+    if (localamyo != null) {
+      localamyo.b(0);
     }
-    while (!"NearFieldDiscussSvr.ReqGetList".equals(str)) {
-      return;
-    }
-  }
-  
-  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    String str = paramFromServiceMsg.getServiceCmd();
-    QLog.i("NearFieldDiscussHandler", 1, "<<---handleTimeOut serviceCmd:" + str);
-    if ("NearFieldDiscussSvr.ReqJoinDiscuss".equals(str)) {
-      e(paramToServiceMsg, paramFromServiceMsg);
-    }
-    while (!"NearFieldDiscussSvr.ReqGetList".equals(str)) {
-      return;
-    }
-    c(paramToServiceMsg, paramFromServiceMsg);
-  }
-  
-  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    boolean bool1;
-    int j;
-    int i;
-    int m;
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()) && (paramObject != null))
-    {
-      bool1 = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("NearFieldDiscussHandler", 2, "handleGetFaceToFaceDiscussInfo");
-      }
-      j = paramToServiceMsg.extraData.getInt("session_id", -1);
-      i = paramToServiceMsg.extraData.getInt("join_type", -1);
-      m = paramToServiceMsg.extraData.getInt("from", 0);
-      if (!bool1) {
-        break label497;
+    if ("effect".equals(???)) {
+      if (localamyo != null) {
+        this.jdField_a_of_type_Amxc = new amxc(paramInt2);
       }
     }
     for (;;)
     {
-      try
+      if (jdField_a_of_type_JavaUtilList != null) {}
+      synchronized (jdField_a_of_type_JavaUtilList)
       {
-        localRespJoinDiscuss = new nearfield_discuss.RespJoinDiscuss();
-        localRespJoinDiscuss.mergeFrom((byte[])paramObject);
-        k = ((nearfield_discuss.BusiRespHead)localRespJoinDiscuss.msg_head.get()).int32_reply_code.get();
-        if (k == 0)
-        {
-          bool1 = true;
-          QLog.i("NearFieldDiscussHandler", 1, "handleGetFaceToFaceDiscussInfo retCOde = " + k + " joinType = " + i + " sessionId = " + j);
-          if (!bool1) {
-            continue;
-          }
-          k = localRespJoinDiscuss.uint32_discuss_id.get();
-          ((amqx)this.app.getBusinessHandler(6)).a(k);
-          paramFromServiceMsg = String.valueOf(k);
-        }
-      }
-      catch (Exception paramFromServiceMsg)
-      {
-        nearfield_discuss.RespJoinDiscuss localRespJoinDiscuss;
-        paramToServiceMsg = "";
-        boolean bool2 = false;
-        k = i;
-        m = j;
-        paramObject = paramToServiceMsg;
-        bool1 = bool2;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("NearFieldDiscussHandler", 2, "handleGetFaceToFaceDiscussInfo exp", paramFromServiceMsg);
-        k = i;
-        m = j;
-        paramObject = paramToServiceMsg;
-        bool1 = bool2;
+        jdField_a_of_type_JavaUtilList.add(this);
+        this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)BaseApplicationImpl.getContext().getSystemService("audio"));
+        return;
+        QLog.e("CmGameAudioPlayer", 1, "can not create pool");
         continue;
-        paramObject = "";
-        k = i;
-        m = j;
-        continue;
+        this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
+        a(1);
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(new amww(this));
       }
-      try
+    }
+  }
+  
+  private void a(amxv paramamxv, JSONObject paramJSONObject)
+  {
+    if (paramamxv != null) {
+      paramamxv.a(paramJSONObject);
+    }
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_AndroidMediaAudioManager == null) {}
+    for (;;)
+    {
+      return;
+      if (paramBoolean) {}
+      for (int i = this.jdField_a_of_type_AndroidMediaAudioManager.requestAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener, 3, 2); QLog.isColorLevel(); i = this.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener))
       {
-        bool2 = localRespJoinDiscuss.bool_is_creater.get();
-        k = localRespJoinDiscuss.uint32_session_id.get();
-      }
-      catch (Exception paramObject)
-      {
-        paramToServiceMsg = paramFromServiceMsg;
-        paramFromServiceMsg = paramObject;
-        continue;
-      }
-      try
-      {
-        j = localRespJoinDiscuss.uint32_join_type.get();
-        if ((!bool2) || (j != 2)) {}
-      }
-      catch (Exception paramObject)
-      {
-        paramToServiceMsg = paramFromServiceMsg;
-        j = k;
-        paramFromServiceMsg = paramObject;
-        continue;
-      }
-      try
-      {
-        paramToServiceMsg = paramToServiceMsg.extraData.getString("FACE_TO_FACE_ID");
-        ((bdzw)this.app.getManager(32)).a(paramFromServiceMsg, false, paramToServiceMsg);
-        bcef.b(this.app, "dc00899", "Grp_create_new", "", "suc_create", "face_create", 0, 0, "" + paramFromServiceMsg, "" + m, "", "");
-        paramObject = paramFromServiceMsg;
-        m = k;
-        k = j;
-        notifyUI(1020, bool1, new Object[] { Integer.valueOf(m), paramObject, Integer.valueOf(k) });
+        QLog.d("CmGameAudioPlayer", 2, new Object[] { "[execAudioFocus], requestFocus:", Boolean.valueOf(paramBoolean), ",ret:", Integer.valueOf(i) });
         return;
       }
-      catch (Exception paramObject)
+    }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
+  }
+  
+  public int a(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(paramInt);
+  }
+  
+  public String a()
+  {
+    try
+    {
+      MediaPlayer localMediaPlayer = this.jdField_a_of_type_AndroidMediaMediaPlayer;
+      if (localMediaPlayer != null) {}
+      try
       {
-        paramToServiceMsg = paramFromServiceMsg;
-        i = j;
-        j = k;
-        paramFromServiceMsg = paramObject;
-        continue;
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
+        this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
+        if (this.jdField_a_of_type_Amxc != null)
+        {
+          this.jdField_a_of_type_Amxc.c();
+          this.jdField_a_of_type_Amxc = null;
+          return null;
+        }
       }
-      bool1 = false;
-      break;
-      bool1 = false;
-      continue;
-      label497:
-      paramObject = "";
-      int k = i;
-      m = j;
+      catch (Throwable localThrowable1)
+      {
+        for (;;)
+        {
+          QLog.e("CmGameAudioPlayer", 1, localThrowable1, new Object[0]);
+        }
+      }
+      return null;
+    }
+    catch (Throwable localThrowable2)
+    {
+      QLog.e("CmGameAudioPlayer", 1, "audio destroy falied", localThrowable2);
     }
   }
   
-  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public JSONObject a(float paramFloat1, float paramFloat2, JSONObject paramJSONObject)
   {
-    notifyUI(1021, false, null);
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+    {
+      if (a() != 9) {
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.setVolume(paramFloat1, paramFloat2);
+      }
+    }
+    else {
+      return paramJSONObject;
+    }
+    QLog.e("CmGameAudioPlayer", 1, " volume in  state " + a());
+    return paramJSONObject;
   }
   
-  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public JSONObject a(int paramInt, JSONObject paramJSONObject, amxv paramamxv)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearFieldDiscussHandler", 2, "handleNotifyPush");
-    }
-    boolean bool1;
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()) && (paramObject != null)) {
-      bool1 = true;
+    int i;
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+    {
+      i = a();
+      if ((i != 3) && (i != 5) && (i != 7) && (i != 10)) {
+        break label66;
+      }
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnSeekCompleteListener(new amwx(this, paramJSONObject, paramamxv));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.seekTo(paramInt);
     }
     for (;;)
     {
-      j = -1;
-      i = j;
-      bool2 = bool1;
-      if (bool1) {}
-      for (;;)
+      return null;
+      label66:
+      QLog.e("CmGameAudioPlayer", 1, " seek in  state " + i);
+    }
+  }
+  
+  public JSONObject a(amxv paramamxv, JSONObject paramJSONObject)
+  {
+    if (paramJSONObject != null) {
+      try
       {
-        try
+        if (paramJSONObject.optInt("N_R_OBJ") == this.jdField_a_of_type_Int)
         {
-          paramToServiceMsg = new nearfield_discuss.NotifyList();
-        }
-        catch (Exception paramToServiceMsg)
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
+          String str = paramJSONObject.optString("N_R_CMD");
+          if ("cs.audio_play.local".equals(str)) {
+            return b(paramJSONObject, paramamxv);
           }
-          QLog.d("NearFieldDiscussHandler", 2, "handleNotifyPush exp", paramToServiceMsg);
-          bool2 = false;
-          i = j;
-          continue;
-        }
-        try
-        {
-          paramToServiceMsg.mergeFrom((byte[])paramObject);
-          i = paramToServiceMsg.uint32_session_id.get();
-          bool2 = bool1;
-          notifyUI(1022, bool2, new Object[] { Integer.valueOf(i) });
-          return;
-          bool1 = false;
-        }
-        catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-        {
-          paramFromServiceMsg.printStackTrace();
-          bool1 = false;
-        }
-      }
-    }
-  }
-  
-  private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    notifyUI(1020, false, new Object[] { Integer.valueOf(paramToServiceMsg.extraData.getInt("session_id")) });
-  }
-  
-  private void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    int i = paramToServiceMsg.extraData.getInt("retryTime", 0);
-    if (i < 1)
-    {
-      paramToServiceMsg.extraData.putInt("retryTime", i + 1);
-      send(paramToServiceMsg);
-      return;
-    }
-    d(paramToServiceMsg, paramFromServiceMsg);
-  }
-  
-  protected void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    boolean bool1;
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null)) {
-      bool1 = true;
-    }
-    boolean bool2;
-    for (;;)
-    {
-      QLog.i("NearFieldDiscussHandler", 1, "handleGetFaceToFaceMemberListResp isSuccess:" + bool1 + "  ResultCode:" + paramFromServiceMsg.getResultCode());
-      bool2 = bool1;
-      if (bool1)
-      {
-        paramToServiceMsg = new nearfield_discuss.RespGetList();
-        try
-        {
-          paramToServiceMsg.mergeFrom((byte[])paramObject);
-          if ((paramToServiceMsg != null) && (bool1))
+          if ("cs.audio_autoplay.local".equals(str)) {
+            return b(paramJSONObject.optBoolean("autoplay"), paramJSONObject);
+          }
+          if ("cs.audio_load.local".equals(str)) {
+            return c(paramJSONObject, paramamxv);
+          }
+          if ("cs.audio_loop.local".equals(str)) {
+            return a(paramJSONObject.optBoolean("loop"), paramJSONObject);
+          }
+          if ("cs.audio_muted.local".equals(str)) {
+            return a(paramJSONObject.optBoolean("muted"), (float)paramJSONObject.optDouble("leftVolume"), (float)paramJSONObject.optDouble("rightVolume"), paramJSONObject);
+          }
+          if ("cs.audio_pause.local".equals(str)) {
+            return b(paramJSONObject);
+          }
+          if ("cs.audio_seek.local".equals(str)) {
+            return a(paramJSONObject.optInt("seek"), paramJSONObject, paramamxv);
+          }
+          if ("cs.audio_src.local".equals(str)) {
+            return a(paramJSONObject.optString("src"), paramJSONObject, paramamxv);
+          }
+          if ("cs.audio_preload.local".equals(str)) {
+            return c(paramJSONObject.optBoolean("preloaded"), paramJSONObject);
+          }
+          if ("cs.audio_volume.local".equals(str)) {
+            return a((float)paramJSONObject.optDouble("leftVolume"), (float)paramJSONObject.optDouble("rightVolume"), paramJSONObject);
+          }
+          if ("cs.audio_destroy.local".equals(str)) {
+            return b(paramamxv, paramJSONObject);
+          }
+          if ("cs.audio_onend.local".equals(str)) {
+            return e(paramJSONObject, paramamxv);
+          }
+          if ("cs.audio_ontimeupdate.local".equals(str)) {
+            return d(paramJSONObject);
+          }
+          if ("cs.audio_duration.local".equals(str)) {
+            return c(paramJSONObject);
+          }
+          if ("cs.audio_effect_resume.local".equals(str)) {
+            return f(paramJSONObject);
+          }
+          if ("cs.audio_stop.local".equals(str)) {
+            return e(paramJSONObject);
+          }
+          if ("cs.audio_attribute_get.local".equals(str)) {
+            return a(paramJSONObject);
+          }
+          if ("cs.audio_attribute_set.local".equals(str))
           {
-            paramFromServiceMsg = null;
-            if (paramToServiceMsg.rpt_msg_user_list.has()) {
-              paramFromServiceMsg = paramToServiceMsg.rpt_msg_user_list.get();
-            }
-            int i = 60000;
-            if (paramToServiceMsg.int32_update_interval.has()) {
-              i = paramToServiceMsg.int32_update_interval.get();
-            }
-            if (paramToServiceMsg.bytes_cookie.has()) {
-              this.a = paramToServiceMsg.bytes_cookie.get().toByteArray();
-            }
-            int j = 0;
-            if (paramToServiceMsg.uint32_session_id.has()) {
-              j = paramToServiceMsg.uint32_session_id.get();
-            }
-            paramObject = new nearfield_discuss.BusiRespHead();
-            if (paramToServiceMsg.msg_head.has())
-            {
-              paramObject.int32_reply_code.set(paramToServiceMsg.msg_head.int32_reply_code.get());
-              paramObject.str_result.set(paramToServiceMsg.msg_head.str_result.get());
-            }
-            int k = 0;
-            if (paramToServiceMsg.uint32_button_switch.has()) {
-              k = paramToServiceMsg.uint32_button_switch.get();
-            }
-            int m = 0;
-            if (paramToServiceMsg.uint32_has_created.has()) {
-              m = paramToServiceMsg.uint32_has_created.get();
-            }
-            long l = 0L;
-            if (paramToServiceMsg.uint64_creator.has()) {
-              l = paramToServiceMsg.uint64_creator.get();
-            }
-            notifyUI(1021, bool1, new Object[] { paramFromServiceMsg, Integer.valueOf(i), Integer.valueOf(j), paramObject, Integer.valueOf(k), Integer.valueOf(m), Long.valueOf(l) });
-            return;
-            bool1 = false;
+            paramamxv = a(paramJSONObject, paramamxv);
+            return paramamxv;
           }
         }
-        catch (Exception paramToServiceMsg)
+      }
+      catch (Throwable paramamxv)
+      {
+        QLog.e("CmGameAudioPlayer", 1, "audio failed", paramamxv);
+      }
+    }
+    return null;
+  }
+  
+  public JSONObject a(String paramString, JSONObject paramJSONObject, amxv paramamxv)
+  {
+    if ((this.jdField_a_of_type_AndroidMediaMediaPlayer != null) && (a() != 6) && (a() != 9))
+    {
+      try
+      {
+        this.c = 0;
+        amyo localamyo = amwn.a();
+        if (localamyo != null)
         {
+          String str2 = "";
+          String str1 = str2;
+          if (paramString != null)
+          {
+            str1 = str2;
+            if (paramString.startsWith("GameSandBox://")) {
+              str1 = "sandbox";
+            }
+          }
+          if (URLUtil.isNetworkUrl(paramString)) {}
           for (;;)
           {
-            bool1 = false;
-            paramToServiceMsg = null;
+            this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
+            a(1);
+            if (TextUtils.isEmpty(paramString)) {
+              break;
+            }
+            this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString);
+            a(2);
+            return paramJSONObject;
+            paramString = amta.a(paramString, localamyo.a(), str1, false);
           }
-          bool2 = bool1;
+        }
+        paramJSONObject.put("code", 2);
+        paramJSONObject.put("message", "src not exist " + paramString);
+        return paramJSONObject;
+      }
+      catch (Throwable paramString)
+      {
+        QLog.e("CmGameAudioPlayer", 1, paramString, new Object[0]);
+        if (paramJSONObject == null) {
+          return paramJSONObject;
         }
       }
+      try
+      {
+        paramJSONObject.put("code", 1);
+        paramJSONObject.put("message", "src error " + paramString.getMessage());
+        a(paramamxv, paramJSONObject);
+        return paramJSONObject;
+      }
+      catch (Throwable paramString)
+      {
+        QLog.e("CmGameAudioPlayer", 1, paramString, new Object[0]);
+        return paramJSONObject;
+      }
     }
-    notifyUI(1021, bool2, null);
+    QLog.e("CmGameAudioPlayer", 1, " src in  state " + a());
+    return paramJSONObject;
   }
   
-  public void a(String paramString, int paramInt, nearfield_discuss.LBSInfo paramLBSInfo)
+  public JSONObject a(JSONObject paramJSONObject)
   {
-    ToServiceMsg localToServiceMsg = createToServiceMsg("NearFieldDiscussSvr.ReqExit");
-    nearfield_discuss.ReqExit localReqExit = new nearfield_discuss.ReqExit();
-    if (paramLBSInfo != null) {
-      localReqExit.msg_lbs_info.set(paramLBSInfo);
-    }
-    localReqExit.str_number.set(paramString);
-    localReqExit.uint32_session_id.set(paramInt);
-    localToServiceMsg.putWupBuffer(localReqExit.toByteArray());
-    localToServiceMsg.setTimeout(30000L);
-    sendPbReq(localToServiceMsg);
-  }
-  
-  public void a(String paramString, int paramInt1, nearfield_discuss.LBSInfo paramLBSInfo, int paramInt2, int paramInt3)
-  {
-    QLog.i("NearFieldDiscussHandler", 1, "getNearFieldDiscussInfo hallId=" + paramString + " sessionId=" + paramInt1 + " joinType:" + paramInt2);
-    nearfield_discuss.ReqJoinDiscuss localReqJoinDiscuss = new nearfield_discuss.ReqJoinDiscuss();
-    localReqJoinDiscuss.str_number.set(paramString);
-    if (paramLBSInfo != null) {
-      localReqJoinDiscuss.msg_lbs_info.set(paramLBSInfo);
-    }
-    localReqJoinDiscuss.uint32_session_id.set(paramInt1);
-    localReqJoinDiscuss.uint32_join_type.set(paramInt2);
-    paramLBSInfo = createToServiceMsg("NearFieldDiscussSvr.ReqJoinDiscuss");
-    paramLBSInfo.extraData.putString("FACE_TO_FACE_ID", paramString);
-    paramLBSInfo.extraData.putInt("session_id", paramInt1);
-    paramLBSInfo.extraData.putInt("join_type", paramInt2);
-    paramLBSInfo.extraData.putInt("from", paramInt3);
-    paramLBSInfo.putWupBuffer(localReqJoinDiscuss.toByteArray());
-    paramLBSInfo.setTimeout(30000L);
-    sendPbReq(paramLBSInfo);
-  }
-  
-  public void a(String paramString, int paramInt, nearfield_discuss.LBSInfo paramLBSInfo, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("NearFieldDiscussHandler", 2, "get list | sessionId = " + paramInt + " | digits = " + paramString);
-    }
-    ToServiceMsg localToServiceMsg = createToServiceMsg("NearFieldDiscussSvr.ReqGetList");
-    nearfield_discuss.ReqGetList localReqGetList = new nearfield_discuss.ReqGetList();
-    if (paramLBSInfo != null) {
-      localReqGetList.msg_lbs_info.set(paramLBSInfo);
-    }
-    localReqGetList.str_number.set(paramString);
-    localReqGetList.uint32_session_id.set(paramInt);
-    if ((!paramBoolean) && (this.a != null)) {
-      localReqGetList.bytes_cookie.set(ByteStringMicro.copyFrom(this.a));
-    }
-    localToServiceMsg.putWupBuffer(localReqGetList.toByteArray());
-    localToServiceMsg.setTimeout(30000L);
-    sendPbReq(localToServiceMsg);
-  }
-  
-  public boolean msgCmdFilter(String paramString)
-  {
-    if (this.allowCmdSet == null)
+    try
     {
-      this.allowCmdSet = new HashSet();
-      this.allowCmdSet.add("NearFieldDiscussSvr.ReqJoinDiscuss");
-      this.allowCmdSet.add("NearFieldDiscussSvr.ReqGetList");
-      this.allowCmdSet.add("NearFieldDiscussSvr.ReqExit");
-      this.allowCmdSet.add("NearFieldDiscussSvr.NotifyList");
+      if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+      {
+        if (paramJSONObject.has("duration")) {
+          paramJSONObject.put("duration", this.jdField_a_of_type_AndroidMediaMediaPlayer.getDuration());
+        }
+        if (paramJSONObject.has("currentTime")) {
+          paramJSONObject.put("currentTime", this.jdField_a_of_type_AndroidMediaMediaPlayer.getCurrentPosition());
+        }
+        if (paramJSONObject.has("paused")) {
+          if (a() != 7) {
+            break label89;
+          }
+        }
+      }
+      label89:
+      for (boolean bool = true;; bool = false)
+      {
+        paramJSONObject.put("paused", bool);
+        return paramJSONObject;
+      }
+      return paramJSONObject;
     }
-    return !this.allowCmdSet.contains(paramString);
+    catch (Throwable localThrowable)
+    {
+      QLog.e("CmGameAudioPlayer", 1, localThrowable, new Object[0]);
+    }
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  public JSONObject a(JSONObject paramJSONObject, amxv paramamxv)
   {
-    return amww.class;
+    try
+    {
+      if (paramJSONObject.has("src")) {
+        a(paramJSONObject.optString("src"), paramJSONObject, paramamxv);
+      }
+      if (paramJSONObject.has("loop")) {
+        a(paramJSONObject.optBoolean("loop"), paramJSONObject);
+      }
+      if (paramJSONObject.has("autoPlay")) {
+        b(paramJSONObject.optBoolean("autoPlay"), paramJSONObject);
+      }
+      if (paramJSONObject.has("volume")) {
+        a((float)paramJSONObject.optDouble("volume"), (float)paramJSONObject.optDouble("volume"), paramJSONObject);
+      }
+      if (paramJSONObject.has("muted")) {
+        a(paramJSONObject.optBoolean("muted"), (float)paramJSONObject.optDouble("volume"), (float)paramJSONObject.optDouble("volume"), paramJSONObject);
+      }
+      if (paramJSONObject.has("currentTime")) {
+        d(paramJSONObject, paramamxv);
+      }
+      return paramJSONObject;
+    }
+    catch (Throwable paramamxv)
+    {
+      QLog.e("CmGameAudioPlayer", 1, paramamxv, new Object[0]);
+    }
+    return paramJSONObject;
   }
   
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public JSONObject a(boolean paramBoolean, float paramFloat1, float paramFloat2, JSONObject paramJSONObject)
   {
-    String str = paramFromServiceMsg.getServiceCmd();
-    if (msgCmdFilter(str)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("NearFieldDiscussHandler", 2, "cmdfilter error=" + str);
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
+      if (paramBoolean) {
+        localObject = a(0.0F, 0.0F, paramJSONObject);
       }
     }
     do
     {
-      return;
-      if (paramFromServiceMsg.getResultCode() == 1002)
-      {
-        b(paramToServiceMsg, paramFromServiceMsg);
-        return;
+      return localObject;
+      return a(paramFloat1, paramFloat2, paramJSONObject);
+      localObject = paramJSONObject;
+    } while (this.jdField_a_of_type_Amxc == null);
+    Object localObject = this.jdField_a_of_type_Amxc;
+    if ((paramBoolean) || ((Float.compare(paramFloat1, 0.0F) == 0) && (Float.compare(paramFloat2, 0.0F) == 0))) {}
+    for (int i = 0;; i = 1)
+    {
+      ((amxc)localObject).a(i, BaseActivity.sTopActivity.getAppInterface());
+      return paramJSONObject;
+    }
+  }
+  
+  public JSONObject a(boolean paramBoolean, JSONObject paramJSONObject)
+  {
+    int i;
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+    {
+      i = a();
+      if ((i == 1) || (i == 2) || (i == 6) || (i == 3) || (i == 5) || (i == 7) || (i == 10)) {
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.setLooping(paramBoolean);
       }
-      if (paramFromServiceMsg.getResultCode() != 1000)
-      {
-        a(paramToServiceMsg, paramFromServiceMsg);
-        return;
+    }
+    else
+    {
+      return paramJSONObject;
+    }
+    QLog.e("CmGameAudioPlayer", 1, " loop in  state " + i);
+    return paramJSONObject;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public JSONObject b(amxv arg1, JSONObject paramJSONObject)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
       }
-      if ("NearFieldDiscussSvr.ReqJoinDiscuss".equalsIgnoreCase(str))
-      {
-        b(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
+      if (this.jdField_a_of_type_Amxc != null) {
+        this.jdField_a_of_type_Amxc.c();
       }
-      if ("NearFieldDiscussSvr.NotifyList".equalsIgnoreCase(str))
-      {
-        c(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
+      a(8);
+      this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
+      this.jdField_a_of_type_Amxc = null;
+      if (??? != null) {
+        ???.b(this);
       }
-      if ("NearFieldDiscussSvr.ReqGetList".equalsIgnoreCase(str))
-      {
-        a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
+      if (jdField_a_of_type_JavaUtilList != null) {
+        synchronized (jdField_a_of_type_JavaUtilList)
+        {
+          jdField_a_of_type_JavaUtilList.remove(this);
+          return paramJSONObject;
+        }
       }
-    } while (!"NearFieldDiscussSvr.ReqExit".equalsIgnoreCase(str));
+      return paramJSONObject;
+    }
+    catch (Throwable ???)
+    {
+      QLog.e("CmGameAudioPlayer", 1, "destroy failed", ???);
+    }
+  }
+  
+  public JSONObject b(JSONObject paramJSONObject)
+  {
+    for (;;)
+    {
+      try
+      {
+        if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+        {
+          i = a();
+          if ((i == 5) || (i == 7) || (i == 10))
+          {
+            this.jdField_a_of_type_AndroidMediaMediaPlayer.pause();
+            a(7);
+            a(false);
+            return paramJSONObject;
+          }
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.e("CmGameAudioPlayer", 1, " pause in  state " + a());
+          continue;
+        }
+        if (this.jdField_a_of_type_Amxc == null) {
+          continue;
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("CmGameAudioPlayer", 1, "pause failed", localThrowable);
+        return paramJSONObject;
+      }
+      int i = paramJSONObject.optInt("id");
+      if (paramJSONObject.optBoolean("auto", true)) {
+        this.jdField_a_of_type_Amxc.a();
+      } else {
+        this.jdField_a_of_type_Amxc.a(i, null);
+      }
+    }
+  }
+  
+  public JSONObject b(JSONObject paramJSONObject, amxv paramamxv)
+  {
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+    {
+      i = a();
+      if ((i == 3) || (i == 5) || (i == 7) || (i == 10))
+      {
+        a(true);
+        if (this.jdField_a_of_type_AndroidMediaMediaPlayer == null) {}
+      }
+    }
+    while (this.jdField_a_of_type_Amxc == null) {
+      for (;;)
+      {
+        int i;
+        try
+        {
+          this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
+          a(5);
+          if (this.c != 0) {
+            this.jdField_a_of_type_AndroidMediaMediaPlayer.seekTo(this.c);
+          }
+          this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new amwy(this));
+        }
+        catch (Throwable paramJSONObject)
+        {
+          QLog.e("CmGameAudioPlayer", 1, "audio play failed", paramJSONObject);
+          continue;
+        }
+        return null;
+        QLog.e("CmGameAudioPlayer", 1, " play in  state " + i);
+      }
+    }
+    a(true);
+    return this.jdField_a_of_type_Amxc.a(paramamxv, paramJSONObject);
+  }
+  
+  public JSONObject b(boolean paramBoolean, JSONObject paramJSONObject)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    return paramJSONObject;
+  }
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public JSONObject c(JSONObject paramJSONObject)
+  {
+    int i;
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+    {
+      if ((a() == 1) && (a() == 2) && (a() == 9)) {
+        break label69;
+      }
+      i = this.jdField_a_of_type_AndroidMediaMediaPlayer.getDuration();
+      if (paramJSONObject == null) {}
+    }
+    try
+    {
+      paramJSONObject.put("duration", i);
+      return paramJSONObject;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("CmGameAudioPlayer", 1, localThrowable, new Object[0]);
+      return paramJSONObject;
+    }
+    label69:
+    QLog.e("CmGameAudioPlayer", 1, " duration in  state " + a());
+    return paramJSONObject;
+  }
+  
+  public JSONObject c(JSONObject paramJSONObject, amxv paramamxv)
+  {
+    if ((this.jdField_a_of_type_AndroidMediaMediaPlayer != null) && ((a() == 2) || (a() == 6)))
+    {
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new amwz(this, paramJSONObject, paramamxv));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
+    }
+    return null;
+  }
+  
+  public JSONObject c(boolean paramBoolean, JSONObject paramJSONObject)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    return paramJSONObject;
+  }
+  
+  public JSONObject d(JSONObject paramJSONObject)
+  {
+    int i;
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
+      i = this.jdField_a_of_type_AndroidMediaMediaPlayer.getCurrentPosition();
+    }
+    try
+    {
+      paramJSONObject.put("currentTime", i);
+      return paramJSONObject;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("CmGameAudioPlayer", 1, localThrowable, new Object[0]);
+    }
+    return paramJSONObject;
+  }
+  
+  public JSONObject d(JSONObject paramJSONObject, amxv paramamxv)
+  {
+    int i;
+    if ((this.jdField_a_of_type_AndroidMediaMediaPlayer != null) && (a() != 9))
+    {
+      i = this.jdField_a_of_type_AndroidMediaMediaPlayer.getCurrentPosition();
+      if (paramJSONObject != null) {
+        if (paramJSONObject.has("currentTime")) {
+          this.c = paramJSONObject.optInt("currentTime");
+        }
+      }
+    }
+    try
+    {
+      paramJSONObject.put("currentTime", i);
+      return paramJSONObject;
+    }
+    catch (Throwable paramamxv)
+    {
+      QLog.e("CmGameAudioPlayer", 1, paramamxv, new Object[0]);
+    }
+    return paramJSONObject;
+  }
+  
+  public JSONObject e(JSONObject paramJSONObject)
+  {
+    if (this.jdField_a_of_type_Amxc != null)
+    {
+      this.jdField_a_of_type_Amxc.c(paramJSONObject.optInt("id"), null);
+      this.jdField_a_of_type_Amxc.a(paramJSONObject);
+    }
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+    {
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
+    }
+    return paramJSONObject;
+  }
+  
+  public JSONObject e(JSONObject paramJSONObject, amxv paramamxv)
+  {
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new amxa(this, paramamxv, paramJSONObject));
+    }
+    return null;
+  }
+  
+  public JSONObject f(JSONObject paramJSONObject)
+  {
+    if (this.jdField_a_of_type_Amxc != null)
+    {
+      if (paramJSONObject.optBoolean("audo", true)) {
+        this.jdField_a_of_type_Amxc.b();
+      }
+    }
+    else {
+      return paramJSONObject;
+    }
+    this.jdField_a_of_type_Amxc.b(paramJSONObject.optInt("id"), null);
+    return paramJSONObject;
   }
 }
 

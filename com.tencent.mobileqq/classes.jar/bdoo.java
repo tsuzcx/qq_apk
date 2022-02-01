@@ -1,22 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+import android.app.Activity;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class bdoo
-  implements Animation.AnimationListener
+class bdoo
+  implements PopupWindow.OnDismissListener
 {
-  public bdoo(MediaPreviewActivity paramMediaPreviewActivity) {}
+  bdoo(bdon parambdon) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDismiss()
   {
-    this.a.b = false;
-    paramAnimation.setAnimationListener(null);
-    this.a.finish();
+    WindowManager.LayoutParams localLayoutParams = ((Activity)this.a.a).getWindow().getAttributes();
+    localLayoutParams.alpha = 1.0F;
+    ((Activity)this.a.a).getWindow().setAttributes(localLayoutParams);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

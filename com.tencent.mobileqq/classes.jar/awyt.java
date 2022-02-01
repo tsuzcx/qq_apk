@@ -1,14 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MarkFaceMessage;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
 
 class awyt
-  implements DialogInterface.OnClickListener
+  implements awzd<MarkFaceMessage, PicEmoticonInfo>
 {
-  awyt(awyf paramawyf) {}
+  awyt(awyr paramawyr, MarkFaceMessage paramMarkFaceMessage) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public PicEmoticonInfo a(MarkFaceMessage paramMarkFaceMessage)
   {
-    paramDialogInterface.dismiss();
+    return this.jdField_a_of_type_Awyr.a(this.jdField_a_of_type_ComTencentMobileqqDataMarkFaceMessage);
   }
 }
 

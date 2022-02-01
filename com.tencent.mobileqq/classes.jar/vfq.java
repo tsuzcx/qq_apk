@@ -1,84 +1,67 @@
-import android.graphics.Matrix;
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.OnScaleGestureListener;
-import android.view.ViewGroup;
-import android.widget.ImageView.ScaleType;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionListView;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.Intent;
+import android.util.Log;
+import com.tencent.biz.pubaccount.weishi_new.net.WeishiIntent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class vfq
-  implements ScaleGestureDetector.OnScaleGestureListener
+  extends MSFServlet
 {
-  private vfq(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
-  
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.a.jdField_a_of_type_Float = paramScaleGestureDetector.getScaleFactor();
-    if (QLog.isColorLevel()) {
-      QLog.d("qqBaseActivity", 2, "缩放比例是" + this.a.jdField_a_of_type_Float);
+    if (paramIntent == null) {
+      Log.e("weishi", "***onReceive request is null");
     }
-    QLog.d("qqBaseActivity", 2, "catch zoom");
-    if (PublicAccountImageCollectionMainActivity.a(this.a))
-    {
-      if (PublicAccountImageCollectionMainActivity.a(this.a).getScaleType() != ImageView.ScaleType.MATRIX) {
-        PublicAccountImageCollectionMainActivity.a(this.a).setScaleType(ImageView.ScaleType.MATRIX);
-      }
-      this.a.jdField_b_of_type_AndroidGraphicsMatrix.set(PublicAccountImageCollectionMainActivity.a(this.a).getImageMatrix());
-      this.a.jdField_b_of_type_AndroidGraphicsMatrix.getValues(this.a.jdField_b_of_type_ArrayOfFloat);
-      if (this.a.jdField_b_of_type_ArrayOfFloat[0] > this.a.jdField_a_of_type_ArrayOfFloat[0] * 3.0F)
-      {
-        this.a.jdField_a_of_type_Float = (this.a.jdField_a_of_type_ArrayOfFloat[0] * 3.0F / this.a.jdField_b_of_type_ArrayOfFloat[0]);
-        if (QLog.isColorLevel()) {
-          QLog.d("qqBaseActivity", 2, "the last scale is" + this.a.jdField_a_of_type_Float);
-        }
-      }
-      this.a.jdField_a_of_type_AndroidGraphicsMatrix.set(this.a.jdField_b_of_type_AndroidGraphicsMatrix);
-      this.a.jdField_a_of_type_AndroidGraphicsMatrix.postScale(this.a.jdField_a_of_type_Float, this.a.jdField_a_of_type_Float, PublicAccountImageCollectionMainActivity.a(this.a).getWidth() / 2, PublicAccountImageCollectionMainActivity.a(this.a).getHeight() / 2);
-      PublicAccountImageCollectionMainActivity.a(this.a).setImageMatrix(this.a.jdField_a_of_type_AndroidGraphicsMatrix);
-      return true;
+    while ((!(paramIntent instanceof WeishiIntent)) || (((WeishiIntent)paramIntent).a == null)) {
+      return;
     }
-    this.a.jdField_b_of_type_AndroidViewViewGroup = PublicAccountImageCollectionMainActivity.a(this.a).a();
-    if ((this.a.jdField_b_of_type_AndroidViewViewGroup != null) && ((this.a.jdField_b_of_type_AndroidViewViewGroup.getTag() instanceof vey)))
+    ((WeishiIntent)paramIntent).a.a.a(paramFromServiceMsg);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (paramIntent == null)
     {
-      paramScaleGestureDetector = (ZImageView)this.a.jdField_b_of_type_AndroidViewViewGroup.getChildAt(0);
-      if ((paramScaleGestureDetector != null) && ((paramScaleGestureDetector instanceof ZImageView)))
+      Log.e("weishi", "onSend request is null");
+      return;
+    }
+    for (;;)
+    {
+      try
       {
-        PublicAccountImageCollectionMainActivity.a(this.a, paramScaleGestureDetector.getDrawable());
-        int i = paramScaleGestureDetector.getWidth();
-        int j = paramScaleGestureDetector.getHeight();
-        RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-        localLayoutParams.addRule(15);
-        this.a.jdField_c_of_type_AndroidGraphicsMatrix = paramScaleGestureDetector.getImageMatrix();
-        this.a.jdField_c_of_type_AndroidGraphicsMatrix.getValues(this.a.jdField_a_of_type_ArrayOfFloat);
-        this.a.jdField_a_of_type_AndroidGraphicsMatrix.set(this.a.jdField_c_of_type_AndroidGraphicsMatrix);
-        PublicAccountImageCollectionMainActivity.a(this.a, new PublicAccountImageView(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidOsHandler, this.a.jdField_c_of_type_AndroidGraphicsMatrix, this.a.jdField_a_of_type_Int, i, j));
-        PublicAccountImageCollectionMainActivity.a(this.a).setImageDrawable(PublicAccountImageCollectionMainActivity.a(this.a));
-        PublicAccountImageCollectionMainActivity.a(this.a).setImageMatrix(this.a.jdField_a_of_type_AndroidGraphicsMatrix);
-        this.a.jdField_a_of_type_AndroidViewViewGroup.addView(PublicAccountImageCollectionMainActivity.a(this.a), localLayoutParams);
-        PublicAccountImageCollectionMainActivity.b(this.a, true);
-        i = ((vey)this.a.jdField_b_of_type_AndroidViewViewGroup.getTag()).jdField_a_of_type_Int;
-        if (PublicAccountImageCollectionMainActivity.a(this.a).a != null)
+        if ((paramIntent instanceof WeishiIntent))
         {
-          paramScaleGestureDetector = ((vgb)PublicAccountImageCollectionMainActivity.a(this.a).a.get(i - 1)).jdField_a_of_type_JavaLangString;
-          odq.a(null, this.a.jdField_a_of_type_JavaLangString, "0X8007B91", "0X8007B91", 0, 0, this.a.jdField_b_of_type_JavaLangString, this.a.jdField_c_of_type_JavaLangString, paramScaleGestureDetector, "1", false);
+          WeishiIntent localWeishiIntent = (WeishiIntent)paramIntent;
+          vfr localvfr = localWeishiIntent.a;
+          vfo localvfo = localvfr.a;
+          byte[] arrayOfByte2 = localvfo.encode();
+          byte[] arrayOfByte1 = arrayOfByte2;
+          if (arrayOfByte2 == null)
+          {
+            Log.e("weishi-Servlet", "onSend request encode result is null.cmd=" + localvfr.a.uniKey());
+            arrayOfByte1 = new byte[4];
+          }
+          long l = localWeishiIntent.getLongExtra("timeout", 30000L);
+          paramPacket.setTimeout(l);
+          vmp.d("weishi-Servlet", "request = " + localvfr.a.getCmdString() + "; timeout:" + l);
+          paramPacket.setSSOCommand("SQQzoneSvc." + localvfr.a.c());
+          Log.i("weishi-Servlet", "WNS命令字: " + "SQQzoneSvc." + localvfr.a.c());
+          localvfo.e = arrayOfByte1.length;
+          paramPacket.putSendData(arrayOfByte1);
+          Log.i("weishi-Servlet", "onSend request cmd=" + localvfr.a.uniKey() + " is correct");
+          ((WeishiIntent)paramIntent).a.a.a = System.currentTimeMillis();
+          return;
         }
       }
+      catch (Exception paramIntent)
+      {
+        Log.e("weishi-Servlet", "onSend occur exception.Exception detail=" + Log.getStackTraceString(paramIntent));
+        return;
+      }
+      Log.e("weishi-Servlet", "onSend request instanceod WeishiIntent is false");
     }
-    PublicAccountImageCollectionMainActivity.a(this.a).a();
-    return true;
   }
-  
-  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    return true;
-  }
-  
-  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
 }
 
 

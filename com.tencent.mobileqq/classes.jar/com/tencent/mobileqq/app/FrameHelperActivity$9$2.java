@@ -1,31 +1,31 @@
 package com.tencent.mobileqq.app;
 
-import amso;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
+import anvc;
 import com.tencent.mobileqq.activity.home.MainFragment;
 
 public class FrameHelperActivity$9$2
   implements Runnable
 {
-  public FrameHelperActivity$9$2(amso paramamso, Drawable paramDrawable, String paramString) {}
+  public FrameHelperActivity$9$2(anvc paramanvc, Drawable paramDrawable, String paramString) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
     {
-      this.jdField_a_of_type_Amso.a.b.setVisibility(8);
-      this.jdField_a_of_type_Amso.a.b.setContentDescription(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Anvc.a.b.setVisibility(8);
+      this.jdField_a_of_type_Anvc.a.b.setContentDescription(this.jdField_a_of_type_JavaLangString);
       return;
     }
-    if (this.jdField_a_of_type_Amso.a.a() == MainFragment.b) {
-      this.jdField_a_of_type_Amso.a.b.setVisibility(8);
+    if (this.jdField_a_of_type_Anvc.a.a() == MainFragment.b) {
+      this.jdField_a_of_type_Anvc.a.b.setVisibility(8);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Amso.a.b.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      this.jdField_a_of_type_Anvc.a.b.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       break;
-      this.jdField_a_of_type_Amso.a.b.setVisibility(0);
+      this.jdField_a_of_type_Anvc.a.b.setVisibility(0);
     }
   }
 }

@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import anlz;
-import anwz;
+import anmk;
+import aoos;
+import apab;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -35,6 +36,10 @@ public class MessageForApollo
   public static final String RESERVE_JSON_KEY_PLAYERLIST = "playerList";
   public static final String RESERVE_JSON_KEY_ROOMID = "roomid";
   public static final String RESERVE_JSON_KEY_ROOMVOL = "roomVol";
+  public static final String RESERVE_JSON_KEY_STICKER_HEIGHT = "stickerHeight";
+  public static final String RESERVE_JSON_KEY_STICKER_WIDTH = "stickerWidth";
+  public static final String RESERVE_JSON_KEY_WELCOME_ID = "welcomeId";
+  public static final String RESERVE_JSON_KEY_WELCOME_UIN_LIST = "welcomeUinList";
   public static final String RESERVE_JSON_KEY_WINNERLIST = "winnerList";
   public static final String RESERVE_JSON_KEY_WINRECORD = "winRecord";
   public static final String RESERVE_JSON_KEY_WINUIN = "winUin";
@@ -53,7 +58,7 @@ public class MessageForApollo
   public boolean hasPlayed;
   public String inputText;
   public int isPlayDefaultAudio;
-  @anlz
+  @aoos
   public Apollo3DMessage mApollo3DMessage;
   public MessageForArkApp mApolloGameArkMsg;
   public ApolloMessage mApolloMessage;
@@ -65,6 +70,10 @@ public class MessageForApollo
   public long roomId;
   public int roomVol;
   public long signTs;
+  public int stickerHeight;
+  public int stickerWidth;
+  public long welcomeId;
+  public List<Long> welcomeUinList = new ArrayList();
   public String winRecord;
   public List<Long> winnerList = new ArrayList();
   public long winnerUin;
@@ -73,7 +82,7 @@ public class MessageForApollo
   {
     try
     {
-      this.mApolloMessage = ((ApolloMessage)anwz.a(this.msgData));
+      this.mApolloMessage = ((ApolloMessage)apab.a(this.msgData));
       this.hasPlayed = this.mApolloMessage.isPlayed;
       this.msg = ApolloUtil.a(this);
       if (!TextUtils.isEmpty(this.mApolloMessage.extStr))
@@ -91,8 +100,25 @@ public class MessageForApollo
         this.gameStatus = localJSONObject.optInt("gameStatus");
         this.roomVol = localJSONObject.optInt("roomVol");
         this.gameStatusStamp = localJSONObject.optLong("gmUpdateStamp");
+        this.stickerHeight = localJSONObject.optInt("stickerHeight");
+        this.stickerWidth = localJSONObject.optInt("stickerWidth");
+        this.welcomeId = localJSONObject.optLong("welcomeId");
         JSONArray localJSONArray;
         int i;
+        if (localJSONObject.has("welcomeUinList"))
+        {
+          this.welcomeUinList.clear();
+          localJSONArray = localJSONObject.getJSONArray("welcomeUinList");
+          if ((localJSONArray != null) && (localJSONArray.length() > 0))
+          {
+            i = 0;
+            while (i < localJSONArray.length())
+            {
+              this.welcomeUinList.add(Long.valueOf(localJSONArray.getLong(i)));
+              i += 1;
+            }
+          }
+        }
         if (localJSONObject.has("playerList"))
         {
           this.playerList.clear();
@@ -208,6 +234,11 @@ public class MessageForApollo
     }
   }
   
+  public boolean isNewAnimation()
+  {
+    return (anmk.b()) && ((this.msgType == 10) || (this.msgType == 11));
+  }
+  
   public boolean needVipBubble()
   {
     return false;
@@ -224,7 +255,7 @@ public class MessageForApollo
     try
     {
       this.mApolloMessage.isPlayed = this.hasPlayed;
-      this.msgData = anwz.a(this.mApolloMessage);
+      this.msgData = apab.a(this.mApolloMessage);
       return;
     }
     catch (Exception localException)
@@ -275,7 +306,7 @@ public class MessageForApollo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForApollo
  * JD-Core Version:    0.7.0.1
  */

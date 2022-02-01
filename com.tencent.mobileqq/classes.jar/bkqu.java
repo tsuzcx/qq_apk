@@ -1,22 +1,33 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.widget.LocationDetailActivity;
+import com.tencent.mobileqq.mini.network.http.MiniOkHttpClientFactory;
+import com.tencent.qqmini.sdk.annotation.ProxyService;
+import com.tencent.qqmini.sdk.launcher.core.proxy.RequestProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.RequestProxy.RequestListener;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import okhttp3.Call;
+import okhttp3.OkHttpClient;
 
+@ProxyService(proxy=RequestProxy.class)
 public class bkqu
-  extends apkq
+  extends RequestProxy
 {
-  public bkqu(LocationDetailActivity paramLocationDetailActivity) {}
+  public ConcurrentHashMap<String, Call> a = new ConcurrentHashMap();
   
-  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
+  public void abort(String paramString)
   {
-    super.onAddColorNote(paramBundle, paramBoolean);
-    QLog.e("PoiMapActivity", 1, "[ColorNote exit]");
-    if (this.a.v)
-    {
-      bcef.b(null, "dc00898", "", "", "0X800A991", "0X800A991", 4, 0, "", "", "", "");
-      return;
+    Call localCall = (Call)this.a.get(paramString);
+    if (localCall != null) {
+      localCall.cancel();
     }
-    bcef.b(null, "dc00898", "", "", "0X800A990", "0X800A990", 4, 0, "", "", "", "");
+    this.a.remove(paramString);
+  }
+  
+  public boolean request(String paramString1, byte[] paramArrayOfByte, Map<String, String> paramMap, String paramString2, int paramInt, RequestProxy.RequestListener paramRequestListener)
+  {
+    paramArrayOfByte = MiniOkHttpClientFactory.getRequestClient().newCall(bkoh.a(paramString1, paramMap, paramString2.toUpperCase(), null, paramArrayOfByte));
+    paramArrayOfByte.enqueue(new bkqv(this, paramString1, paramRequestListener));
+    this.a.put(paramString1, paramArrayOfByte);
+    return true;
   }
 }
 

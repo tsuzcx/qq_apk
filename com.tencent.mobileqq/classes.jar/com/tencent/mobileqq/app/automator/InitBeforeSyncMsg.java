@@ -1,11 +1,13 @@
 package com.tencent.mobileqq.app.automator;
 
 import android.util.Log;
-import aneq;
+import aohg;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
-import ogr;
+import ook;
 
 public class InitBeforeSyncMsg
   extends AsyncStep
@@ -17,17 +19,17 @@ public class InitBeforeSyncMsg
     if (this.b == 14)
     {
       this.a.app.initConfig(this.a.app.getCurrentAccountUin());
-      this.a.app.getManager(60);
+      this.a.app.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
       this.a.app.getProxyManager().start();
       this.a.app.getCacheManager().init();
-      localObject = (ogr)this.a.app.getBusinessHandler(88);
-      this.a.app.addObserver(((ogr)localObject).a, true);
+      localObject = (ook)this.a.app.getBusinessHandler(BusinessHandlerFactory.EC_SHOP_REPORT_HANDLER);
+      this.a.app.addObserver(((ook)localObject).a, true);
       localObject = this.a.app.getMsgHandler();
       if (this.b != 15) {
-        break label232;
+        break label234;
       }
     }
-    label232:
+    label234:
     for (int i = 2;; i = 1)
     {
       ((MessageHandler)localObject).a(i);

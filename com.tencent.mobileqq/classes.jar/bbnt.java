@@ -1,52 +1,75 @@
-import VipRecommend.MQQ.CommPayInfo;
-import VipRecommend.MQQ.UserInfo;
-import android.os.Bundle;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.annotation.TargetApi;
+import android.graphics.Bitmap;
+import android.media.MediaMetadataRetriever;
 
 public class bbnt
-  extends aafe
 {
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  private static String a = "MediaUtil";
+  
+  @TargetApi(10)
+  public static long a(String paramString)
   {
-    if ("VipPayLogicServer.getCommPayInfo ".equals(paramToServiceMsg.getServiceCmd()))
+    long l1 = 0L;
+    localMediaMetadataRetriever = new MediaMetadataRetriever();
+    try
     {
-      if (paramFromServiceMsg == null) {
-        return null;
-      }
-      paramToServiceMsg = new UniPacket(true);
-      try
+      localMediaMetadataRetriever.setDataSource(paramString);
+      paramString = localMediaMetadataRetriever.extractMetadata(9);
+    }
+    catch (RuntimeException localRuntimeException)
+    {
+      long l2;
+      ykq.c(a, "getVideoDuration path=" + paramString + " exists=" + zeb.e(paramString), localRuntimeException);
+      localMediaMetadataRetriever.release();
+      return 0L;
+    }
+    catch (Error localError)
+    {
+      label32:
+      ykq.c(a, "getVideoDuration path=" + paramString + " exists=" + zeb.e(paramString), localError);
+      localMediaMetadataRetriever.release();
+      return 0L;
+    }
+    try
+    {
+      l2 = Long.parseLong(paramString);
+      l1 = l2;
+    }
+    catch (NumberFormatException paramString)
+    {
+      paramString.printStackTrace();
+      break label32;
+    }
+    localMediaMetadataRetriever.release();
+    return l1;
+  }
+  
+  @TargetApi(10)
+  public static Bitmap a(String paramString, int paramInt)
+  {
+    Object localObject = null;
+    if (!zeb.e(paramString))
+    {
+      ykq.e(a, "File note exist when getFrameAtTime(). videoPath = " + paramString + " millisecond = " + paramInt);
+      return null;
+    }
+    MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
+    localMediaMetadataRetriever.setDataSource(paramString);
+    long l = paramInt * 1000;
+    try
+    {
+      paramString = localMediaMetadataRetriever.getFrameAtTime(l, 0);
+      localMediaMetadataRetriever.release();
+      return paramString;
+    }
+    catch (OutOfMemoryError paramString)
+    {
+      for (;;)
       {
-        paramToServiceMsg.setEncodeName("utf-8");
-        paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
-        paramToServiceMsg = (CommPayInfo)paramToServiceMsg.getByClass("payInfo", new CommPayInfo());
-        return paramToServiceMsg;
-      }
-      catch (RuntimeException paramToServiceMsg)
-      {
-        paramToServiceMsg.printStackTrace();
-        return null;
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        return null;
+        ykq.c(a, "getFrameAtTime", paramString);
+        paramString = localObject;
       }
     }
-    return null;
-  }
-  
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    paramUniPacket.setServantName("MQQ.VipPayLogicServer.VipPayLogicObj");
-    paramUniPacket.setFuncName("getCommPayInfo");
-    paramUniPacket.put("userInfo", (UserInfo)paramToServiceMsg.extraData.getSerializable("VIPRecommendPayRequest"));
-    return true;
-  }
-  
-  public String[] a()
-  {
-    return new String[] { "VipPayLogicServer" };
   }
 }
 

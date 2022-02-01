@@ -1,27 +1,44 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.filter.BaseFilter;
+import java.util.ArrayList;
+import java.util.List;
 
-class bnmg
-  implements URLDrawable.URLDrawableListener
+public class bnmg
+  extends BaseFilter
 {
-  bnmg(bnmf parambnmf, String paramString1, bnln parambnln, ImageView paramImageView, String paramString2) {}
+  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
+  private List<Frame> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public bnmg()
   {
-    xvv.b("NormalFaceAdapter", "applyNormalPaster onLoadFialed path:" + this.jdField_a_of_type_JavaLangString);
+    super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public Frame a()
   {
-    xvv.b("NormalFaceAdapter", "applyNormalPaster onLoadSuccessed path:" + this.jdField_a_of_type_JavaLangString);
-    paramURLDrawable.setBounds(0, 0, paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight());
-    bnmf.a(this.jdField_a_of_type_Bnmf).a(this.jdField_a_of_type_JavaLangString, paramURLDrawable);
-    bnmf.a(this.jdField_a_of_type_Bnmf, this.jdField_a_of_type_Bnln, paramURLDrawable, this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_JavaLangString, this.b, 1);
+    float f1 = 2.0F / this.jdField_a_of_type_JavaUtilList.size();
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      float f2 = -1.0F + i * f1;
+      float f3 = f2 + f1;
+      setPositions(new float[] { f2, -1.0F, f2, 1.0F, f3, 1.0F, f3, -1.0F });
+      Frame localFrame = (Frame)this.jdField_a_of_type_JavaUtilList.get(i);
+      RenderProcess(localFrame.getTextureId(), localFrame.width, localFrame.height, this.jdField_a_of_type_JavaUtilList.size() * 64, 64, -1, 0.0D, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
+      i += 1;
+    }
+    return this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
+  }
+  
+  public void a(List<Frame> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public void clearGLSLSelf()
+  {
+    super.clearGLSLSelf();
+    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
   }
 }
 

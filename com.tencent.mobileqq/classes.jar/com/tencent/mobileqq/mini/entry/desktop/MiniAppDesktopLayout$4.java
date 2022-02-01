@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.entry.desktop;
 
-import bhhn;
+import bisf;
 
 class MiniAppDesktopLayout$4
-  implements bhhn
+  implements bisf
 {
   MiniAppDesktopLayout$4(MiniAppDesktopLayout paramMiniAppDesktopLayout) {}
   

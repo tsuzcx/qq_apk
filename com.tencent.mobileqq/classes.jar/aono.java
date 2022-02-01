@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface aono
+class aono
+  implements acmg
 {
-  public abstract aolu a();
+  aono(aonn paramaonn, byte[] paramArrayOfByte, int paramInt) {}
   
-  public abstract aoly a();
-  
-  public abstract axrr a();
-  
-  public abstract ARCommonConfigInfo a();
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(boolean paramBoolean);
+  public ToServiceMsg a()
+  {
+    ToServiceMsg localToServiceMsg = aonn.a(this.jdField_a_of_type_Aonn).createToServiceMsg("MessageSvc.GetMsgV4");
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.BaseMessageProcessor", 2, "--->getC2CMessage cChannel: 4vCookies: " + this.jdField_a_of_type_ArrayOfByte + ",cSyncFlag:" + this.jdField_a_of_type_Int);
+    }
+    localToServiceMsg.extraData.putByte("cChannel", (byte)4);
+    localToServiceMsg.extraData.putByteArray("vCookies", this.jdField_a_of_type_ArrayOfByte);
+    localToServiceMsg.extraData.putInt("cSyncFlag", this.jdField_a_of_type_Int);
+    localToServiceMsg.extraData.putByte("onlineSyncFlag", (byte)1);
+    return localToServiceMsg;
+  }
 }
 
 

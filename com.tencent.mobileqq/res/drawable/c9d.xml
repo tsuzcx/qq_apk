@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:drawable="@drawable/hd1" />
-    <item android:state_enabled="true" android:state_pressed="true" android:drawable="@drawable/hd2" />
-    <item android:state_focused="true" android:state_enabled="true" android:drawable="@drawable/hd2" />
-    <item android:state_enabled="true" android:drawable="@drawable/hd2" />
-</selector>
+    <solid android:color="#ffff6f29" />
+    <padding android:left="5.0dip" android:top="1.0dip" android:right="5.0dip" android:bottom="1.0dip" />
+    <corners android:radius="3.0dip" />
+</shape>

@@ -1,10 +1,13 @@
 package com.tencent.qqlive.module.videoreport.page;
 
+import android.support.annotation.NonNull;
+import java.util.Set;
+
 public abstract interface PageManager$IPageListener
 {
-  public abstract void onPageIn(PageInfo paramPageInfo);
+  public abstract void onPageIn(@NonNull PageInfo paramPageInfo, @NonNull Set<PageInfo> paramSet);
   
-  public abstract void onPageOut(PageInfo paramPageInfo, boolean paramBoolean);
+  public abstract void onPageOut(@NonNull PageInfo paramPageInfo, @NonNull Set<PageInfo> paramSet, boolean paramBoolean);
   
   public abstract void onPageUpdate(PageInfo paramPageInfo);
 }

@@ -1,15 +1,50 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.config.statusIcon.AbsRecentStatus;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 
-class alix
+public class alix
+  extends AbsRecentStatus
 {
-  public ImageView a;
-  public TextView a;
-  public DiscussionInfo a;
-  public String a;
-  public ImageView b;
-  public TextView b;
+  private static int a = 20;
+  
+  public int[] declareStatus()
+  {
+    return new int[] { 6 };
+  }
+  
+  public boolean focusUINType(RecentBaseData paramRecentBaseData, IMCoreAppRuntime paramIMCoreAppRuntime)
+  {
+    return true;
+  }
+  
+  public boolean handleBusiness(IMCoreAppRuntime paramIMCoreAppRuntime, RecentBaseData paramRecentBaseData)
+  {
+    if (!(paramIMCoreAppRuntime instanceof QQAppInterface)) {}
+    Object localObject;
+    do
+    {
+      return false;
+      localObject = (QQAppInterface)paramIMCoreAppRuntime;
+      paramIMCoreAppRuntime = paramRecentBaseData.getRecentUserUin();
+      paramRecentBaseData.mStatus = 0;
+      localObject = (ListenTogetherManager)((QQAppInterface)localObject).getManager(QQManagerFactory.LISTEN_TOGETHER_MANAGER);
+      if (((paramRecentBaseData.getRecentUserType() == 3000) || (paramRecentBaseData.getRecentUserType() == 1)) && (((ListenTogetherManager)localObject).a(1, paramIMCoreAppRuntime)))
+      {
+        paramRecentBaseData.mStatus = 6;
+        return false;
+      }
+    } while ((paramRecentBaseData.getRecentUserType() != 0) || (!((ListenTogetherManager)localObject).a(2, paramIMCoreAppRuntime)));
+    paramRecentBaseData.mStatus = 6;
+    return false;
+  }
+  
+  public int priority()
+  {
+    return a;
+  }
 }
 
 

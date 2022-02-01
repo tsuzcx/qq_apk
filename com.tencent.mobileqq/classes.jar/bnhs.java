@@ -1,8 +1,116 @@
-import java.util.List;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.biz.richframework.network.request.GetWatermarkDictRequest;
+import com.tencent.biz.videostory.config.VSConfigManager;
+import com.tencent.mobileqq.app.soso.LbsManagerService;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.ttpic.baseutils.log.LogUtils;
+import com.tencent.ttpic.openapi.watermark.LogicDataManager;
+import java.util.Map;
 
-public abstract interface bnhs
+public class bnhs
 {
-  public abstract void a(int paramInt, List<vwc> paramList);
+  private static volatile bnhs jdField_a_of_type_Bnhs;
+  private static final String jdField_a_of_type_JavaLangString = bnhs.class.getSimpleName();
+  private int jdField_a_of_type_Int;
+  private bnke jdField_a_of_type_Bnke;
+  private SosoInterface.SosoLocation jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation;
+  
+  public static bnhs a()
+  {
+    if (jdField_a_of_type_Bnhs == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bnhs == null) {
+        jdField_a_of_type_Bnhs = new bnhs();
+      }
+      return jdField_a_of_type_Bnhs;
+    }
+    finally {}
+  }
+  
+  private void a(double paramDouble1, double paramDouble2)
+  {
+    long l = dw.a();
+    GetWatermarkDictRequest localGetWatermarkDictRequest = new GetWatermarkDictRequest(new COMM.StCommonExt(), paramDouble1, paramDouble2, String.valueOf(l));
+    VSNetworkHelper.getInstance().sendRequest(localGetWatermarkDictRequest, new bnhu(this));
+  }
+  
+  private void a(Map<String, String> paramMap)
+  {
+    LogicDataManager.getInstance().addWatermarkDict(paramMap);
+    String str = (String)paramMap.get("City");
+    if (str != null)
+    {
+      bnrh.b(jdField_a_of_type_JavaLangString, "[prepareWMData]displayName : " + str);
+      LogicDataManager.getInstance().setLocation(str);
+    }
+    str = (String)paramMap.get("Weather");
+    if (str != null) {}
+    try
+    {
+      i = Integer.parseInt(str);
+      bnrh.b(jdField_a_of_type_JavaLangString, "[prepareWMData]weatherType : " + i);
+      LogicDataManager.getInstance().setWeather(i);
+      LogicDataManager.getInstance().setWeatherType(i);
+      paramMap = (String)paramMap.get("TempCurr");
+      if (paramMap != null)
+      {
+        bnrh.b(jdField_a_of_type_JavaLangString, "[prepareWMData]tempCurr : " + paramMap);
+        LogicDataManager.getInstance().setTemperature(paramMap.replace(anvx.a(2131716242), ""));
+      }
+      return;
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      for (;;)
+      {
+        LogUtils.e(localNumberFormatException);
+        int i = 0;
+      }
+    }
+  }
+  
+  public bnke a()
+  {
+    return this.jdField_a_of_type_Bnke;
+  }
+  
+  public SosoInterface.SosoLocation a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = ((this.jdField_a_of_type_Int + 1) % 50);
+    if (this.jdField_a_of_type_Int != 1) {
+      return;
+    }
+    bnrh.b(jdField_a_of_type_JavaLangString, "updateWMProps start");
+    LbsManagerService.startLocation(new bnht(this, "qq_story_water_mark", false));
+  }
+  
+  public void a(bnke parambnke)
+  {
+    this.jdField_a_of_type_Bnke = parambnke;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    VSConfigManager.getInstance().setValue("WM_LIST_CONFIG_CHANGED", Boolean.valueOf(paramBoolean));
+  }
+  
+  public void b()
+  {
+    try
+    {
+      jdField_a_of_type_Bnhs = null;
+      this.jdField_a_of_type_Bnke = null;
+      return;
+    }
+    finally {}
+  }
 }
 
 

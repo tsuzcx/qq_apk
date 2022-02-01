@@ -1,42 +1,86 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.model.KingShareReadInjoyModule.1;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ExecutorService;
+import tencent.im.oidb.cmd0xa70.oidb_cmd0xa70.ReqBody;
+import tencent.im.oidb.cmd0xa70.oidb_cmd0xa70.RspBody;
+import tencent.im.oidb.cmd0xa70.oidb_cmd0xa70.VideoReqInfo;
+import tencent.im.oidb.cmd0xa70.oidb_cmd0xa70.VideoRspInfo;
 
 public class qfy
-  implements ViewBase.OnClickListener
+  extends qhj
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  slt jdField_a_of_type_Slt;
-  
-  public qfy(ArticleInfo paramArticleInfo, Context paramContext, slt paramslt)
+  public qfy(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, qxn paramqxn, Handler paramHandler)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Slt = paramslt;
+    super(paramAppInterface, paramEntityManager, paramExecutorService, paramqxn, paramHandler);
+    if (QLog.isColorLevel()) {
+      QLog.d("KingShareReadInjoyModule", 2, "construct!");
+    }
   }
   
-  public void onClick(ViewBase paramViewBase)
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (pgb.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
-      pay.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 1, false, 0, 1);
+    if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xa70")) {
+      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
     }
-    for (;;)
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("KingShareReadInjoyModule", 2, "get king moment ,url =" + paramString1);
+    }
+    long l1 = 0L;
+    try
     {
-      ozb.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Slt);
-      qfo.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X8009442", "0X8009445");
-      return;
-      if (pay.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo))
-      {
-        pay.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-        ozb.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X8009A77", null);
-      }
-      else
-      {
-        pay.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 0, false, 0, 1);
-      }
+      long l2 = Long.parseLong(paramString2);
+      l1 = l2;
     }
+    catch (Exception paramString2)
+    {
+      label42:
+      oidb_cmd0xa70.VideoReqInfo localVideoReqInfo;
+      break label42;
+    }
+    paramString2 = new oidb_cmd0xa70.ReqBody();
+    paramString2.uint64_uin.set(l1);
+    localVideoReqInfo = new oidb_cmd0xa70.VideoReqInfo();
+    localVideoReqInfo.bytes_wangzhe_share_url.set(ByteStringMicro.copyFromUtf8(paramString1));
+    paramString2.msg_video_req_info.set(localVideoReqInfo);
+    a(qxp.a("OidbSvc.0xa70", 2672, 0, paramString2.toByteArray()));
+  }
+  
+  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("KingShareReadInjoyModule", 2, "handle 0xa70 get king moment info");
+    }
+    paramToServiceMsg = new oidb_cmd0xa70.RspBody();
+    int i = qxp.a(paramFromServiceMsg, paramObject, paramToServiceMsg);
+    paramFromServiceMsg = new rpo();
+    paramFromServiceMsg.jdField_a_of_type_Int = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).uint32_business_id.get();
+    paramFromServiceMsg.jdField_a_of_type_JavaLangString = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).bytes_business_name.get().toStringUtf8();
+    paramFromServiceMsg.jdField_b_of_type_JavaLangString = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).bytes_business_url.get().toStringUtf8();
+    paramFromServiceMsg.jdField_c_of_type_JavaLangString = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).bytes_business_name_prefix.get().toStringUtf8();
+    paramFromServiceMsg.jdField_d_of_type_JavaLangString = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).bytes_title.get().toStringUtf8();
+    paramFromServiceMsg.jdField_e_of_type_JavaLangString = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).bytes_desc.get().toStringUtf8();
+    paramFromServiceMsg.f = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).bytes_uuid.get().toStringUtf8();
+    paramFromServiceMsg.g = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).bytes_video_url.get().toStringUtf8();
+    paramFromServiceMsg.h = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).bytes_pic_url.get().toStringUtf8();
+    paramFromServiceMsg.jdField_c_of_type_Int = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).uint32_pic_width.get();
+    paramFromServiceMsg.jdField_b_of_type_Int = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).uint32_pic_height.get();
+    paramFromServiceMsg.jdField_e_of_type_Int = paramFromServiceMsg.jdField_c_of_type_Int;
+    paramFromServiceMsg.jdField_d_of_type_Int = paramFromServiceMsg.jdField_b_of_type_Int;
+    paramFromServiceMsg.jdField_a_of_type_Long = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).uint64_duration.get();
+    this.a.post(new KingShareReadInjoyModule.1(this, i, paramFromServiceMsg));
   }
 }
 

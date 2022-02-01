@@ -1,43 +1,29 @@
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.hardware.camera2.CameraCaptureSession;
+import android.hardware.camera2.CameraCaptureSession.CaptureCallback;
+import android.hardware.camera2.CaptureFailure;
+import android.hardware.camera2.CaptureRequest;
+import android.hardware.camera2.TotalCaptureResult;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
 
-class bcze
-  implements AbsListView.OnScrollListener
+public class bcze
+  extends CameraCaptureSession.CaptureCallback
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
+  public bcze(Camera2Control paramCamera2Control) {}
   
-  bcze(bczc parambczc) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onCaptureCompleted(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull TotalCaptureResult paramTotalCaptureResult)
   {
-    this.b = paramInt3;
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+    bczm.a(1, "[Camera2]captureStillPicture completed!");
+    Camera2Control.a(this.a, 0L);
+    Camera2Control.e(this.a, false);
+    Camera2Control.a(this.a).a(0);
+    Camera2Control.b(this.a);
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onCaptureFailed(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull CaptureFailure paramCaptureFailure)
   {
-    for (;;)
-    {
-      try
-      {
-        int i = this.jdField_a_of_type_Bczc.jdField_a_of_type_Int;
-        if (i > 0) {
-          return;
-        }
-        if ((paramInt != 0) || (this.jdField_a_of_type_Bczc.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_Int != this.b - 2)) {
-          continue;
-        }
-        if (this.jdField_a_of_type_Bczc.e)
-        {
-          this.jdField_a_of_type_Bczc.c(true);
-          continue;
-        }
-        this.jdField_a_of_type_Bczc.c(false);
-      }
-      finally {}
-      this.jdField_a_of_type_Bczc.a(this.jdField_a_of_type_Bczc.jdField_a_of_type_Long, this.jdField_a_of_type_Bczc.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bczc.c, 50, 0);
-    }
+    bczm.a(1, "[Camera2]captureStillPicture failed!");
+    Camera2Control.a(this.a, 0L);
   }
 }
 

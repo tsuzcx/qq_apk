@@ -1,58 +1,22 @@
-import com.tencent.qqprotect.qsec.IQSecRuntime;
-import com.tencent.qqprotect.qsec.IRuntimeInterface;
-import java.util.HashMap;
-import mqq.app.MobileQQ;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
 
-public class bjjw
-  implements IQSecRuntime
+class bjjw
+  implements DialogInterface.OnClickListener
 {
-  public static IQSecRuntime a;
-  private HashMap<String, IRuntimeInterface> a;
+  bjjw(bjju parambjju, Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail) {}
   
-  public bjjw()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_ComTencentQqprotectQsecIQSecRuntime = this;
-  }
-  
-  public void a(IRuntimeInterface paramIRuntimeInterface)
-  {
-    String str = paramIRuntimeInterface.getInterfaceName();
-    if ((str != null) && (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(str))) {
-      this.jdField_a_of_type_JavaUtilHashMap.put(str, paramIRuntimeInterface);
-    }
-  }
-  
-  public Object getApplicationContext()
-  {
-    return MobileQQ.sMobileQQ;
-  }
-  
-  public Object getQQAppInterface()
-  {
-    return MobileQQ.sMobileQQ.waitAppRuntime(null);
-  }
-  
-  public int getRuntimeVersion()
-  {
-    return 1;
-  }
-  
-  public IRuntimeInterface queryRuntimeInterface(String paramString)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    IRuntimeInterface localIRuntimeInterface2 = (IRuntimeInterface)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    IRuntimeInterface localIRuntimeInterface1 = localIRuntimeInterface2;
-    if (localIRuntimeInterface2 != null)
-    {
-      localIRuntimeInterface1 = localIRuntimeInterface2;
-      if (!paramString.equals(localIRuntimeInterface2.getInterfaceName())) {
-        localIRuntimeInterface1 = null;
-      }
-    }
-    return localIRuntimeInterface1;
+    bjju.a(this.jdField_a_of_type_Bjju, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
+    bdla.b(null, "dc00898", "", "", "0X8008F7C", "0X8008F7C", 0, 0, "", "", "", "");
+    paramDialogInterface = this.jdField_a_of_type_AndroidOsBundle.getString(bjmy.f) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bjmy.c) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bjmy.d);
+    paramDialogInterface = System.currentTimeMillis() / 1000L + "|" + 101 + "|" + paramDialogInterface;
+    bjhn.a().a(25, paramDialogInterface);
+    paramDialogInterface = this.jdField_a_of_type_AndroidOsBundle.getString("pageId") + "_" + this.jdField_a_of_type_AndroidOsBundle.getString("moduleId") + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bjmy.f) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bjmy.c) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bjmy.d);
+    bjkf.b("6006", "2", "0", this.jdField_a_of_type_AndroidOsBundle.getString(bjmy.i), paramDialogInterface);
   }
 }
 

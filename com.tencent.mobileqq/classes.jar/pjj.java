@@ -1,68 +1,65 @@
-import android.content.res.Resources;
-import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.compat.ReadInJoyDynamicChannelFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
-import com.tencent.widget.pull2refresh.XRecyclerView;
-import java.util.List;
+import android.util.Pair;
 
 public class pjj
-  extends pkt
 {
-  public pjj(ReadInJoyDynamicChannelFragment paramReadInJoyDynamicChannelFragment) {}
+  public static int a;
+  public static final String a;
+  public static boolean a;
+  public static final char[] a;
+  public static final Pair<Integer, Integer>[] a;
+  public static int b;
+  public static final String b;
+  public static final Pair<Integer, Integer>[] b;
+  public static int c;
+  public static String c;
+  public static String d;
+  public static String e;
+  public static String f;
+  public static String g;
+  public static String h;
+  public static String i;
+  public static String j;
+  public static String k;
+  public static String l;
+  public static String m;
+  public static String n;
+  public static String o;
+  public static String p;
+  public static String q;
+  public static String r;
+  public static String s;
+  public static String t;
+  public static String u = "https://post.mp.qq.com/mkandian/follow?_wv=7";
+  public static String v = "https://post.mp.qq.com/mkandian/fan?_wv=7";
   
-  public void a(int paramInt, List<Long> paramList)
+  static
   {
-    if (paramInt != ReadInJoyDynamicChannelFragment.a(this.a)) {
-      return;
-    }
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      ReadInJoyDynamicChannelFragment.a(this.a).a(pkm.a().a(Integer.valueOf(ReadInJoyDynamicChannelFragment.b(this.a)), paramList));
-      ReadInJoyDynamicChannelFragment.a(this.a).a(true, true);
-    }
-    for (;;)
-    {
-      paramList = pkm.a().a();
-      if (paramList == null) {
-        break;
-      }
-      ReadInJoyDynamicChannelFragment.a(this.a, paramList.a(ReadInJoyDynamicChannelFragment.c(this.a)));
-      return;
-      ReadInJoyDynamicChannelFragment.b(this.a).b();
-    }
-  }
-  
-  public void a(TopBannerInfo paramTopBannerInfo)
-  {
-    ReadInJoyDynamicChannelFragment.a(this.a, paramTopBannerInfo);
-  }
-  
-  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
-  {
-    if (paramInt != ReadInJoyDynamicChannelFragment.d(this.a)) {
-      return;
-    }
-    paramInt = pkm.a().a(Integer.valueOf(paramInt));
-    if ((paramBoolean1) && (paramInt > 0)) {}
-    for (String str = String.format(this.a.getResources().getString(2131717235), new Object[] { Integer.valueOf(paramInt) });; str = this.a.getResources().getString(2131717234))
-    {
-      ReadInJoyDynamicChannelFragment.c(this.a).a(paramBoolean1, str);
-      if ((paramBoolean1) && (paramList != null) && (paramList.size() > 0)) {
-        ReadInJoyDynamicChannelFragment.a(this.a).a(pkm.a().a(Integer.valueOf(ReadInJoyDynamicChannelFragment.e(this.a)), paramList));
-      }
-      ReadInJoyDynamicChannelFragment.d(this.a).a(true, true);
-      return;
-    }
-  }
-  
-  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
-  {
-    if (paramInt != ReadInJoyDynamicChannelFragment.f(this.a)) {
-      return;
-    }
-    if ((paramBoolean1) && (paramList != null) && (paramList.size() > 0)) {
-      ReadInJoyDynamicChannelFragment.a(this.a).a(pkm.a().a(Integer.valueOf(ReadInJoyDynamicChannelFragment.g(this.a)), paramList));
-    }
-    ReadInJoyDynamicChannelFragment.e(this.a).a(paramBoolean1, true);
+    jdField_a_of_type_ArrayOfChar = new char[] { '…' };
+    jdField_a_of_type_JavaLangString = new String(jdField_a_of_type_ArrayOfChar);
+    jdField_b_of_type_JavaLangString = anvx.a(2131712599);
+    jdField_c_of_type_JavaLangString = "https://kandian.qq.com/mqq/html/homepage.html?_wv=16778243&_bid=2378&uin=";
+    d = "https://kandian.qq.com/mqq/html/messagebox3.html?_wv=3&_bid=2378&x5PreFetch=1&adtag=1&privateLetters=";
+    e = "https://kandian.qq.com/mqq/vue/comment?_wv=3&_bid=2378&x5PreFetch=1&feedstype=&uin=&feeds_id=";
+    f = "https://kandian.qq.com/mqq/html/recommend_friends.html?_wv=3&_bid=2378&x5PreFetch=1&feeds_id=";
+    g = "https://kandian.qq.com/mqq/vue/main?_wv=10145&_bid=3302&adfrom=qqshare&x5PreFetch=1&accountId=";
+    h = "https://kandian.qq.com/mqq/html/messagebox3.html?_wv=3&_bid=2378&x5PreFetch=1&adtag=2&privateLetters=";
+    i = "https://kandian.qq.com/mqq/html/allfrdbiu.html?_wv=3&_bid=2378&x5PreFetch=1";
+    j = "https://kandian.qq.com/mqq/vue/wendafeeds?_wv=67&_bid=2378&source=1";
+    k = "https://kandian.qq.com/mqq/vue/main?_wv=10145&_bid=3302&adfrom=qqshare&x5PreFetch=1&accountId=";
+    l = anvx.a(2131712221);
+    m = "https://kandian.qq.com/mqq/html/feedback.html?_wv=3&_bid=2378&x5PreFetch=1";
+    n = "https://post.mp.qq.com/mkandian/history";
+    o = "https://post.mp.qq.com/mkandian/topic?_wv=3";
+    p = "https://kandian.qq.com/mqq/html/collectBox.html?_wv=3&_bid=2378&x5PreFetch=1";
+    q = "https://post.mp.qq.com/mkandian/notify?_wv=3";
+    r = "https://kandian.qq.com/mqq/vue/collectBox?_wv=3&amp;_bid=2378&amp;x5PreFetch=1";
+    s = "https://kandian.qq.com/mqq/vue/myPraised?_wv=3&_bid=2378&x5PreFetch=1";
+    t = "https://kandian.qq.com/mqq/vue/myComment?_wv=3&_bid=2378&x5PreFetch=1";
+    jdField_a_of_type_Int = 819200;
+    jdField_b_of_type_Int = 3000;
+    jdField_c_of_type_Int = 500;
+    jdField_a_of_type_ArrayOfAndroidUtilPair = new Pair[] { new Pair(Integer.valueOf(159), Integer.valueOf(95)), new Pair(Integer.valueOf(179), Integer.valueOf(95)), new Pair(Integer.valueOf(158), Integer.valueOf(143)), new Pair(Integer.valueOf(178), Integer.valueOf(143)), new Pair(Integer.valueOf(238), Integer.valueOf(143)), new Pair(Integer.valueOf(358), Integer.valueOf(143)), new Pair(Integer.valueOf(119), Integer.valueOf(95)), new Pair(Integer.valueOf(239), Integer.valueOf(95)), new Pair(Integer.valueOf(79), Integer.valueOf(95)), new Pair(Integer.valueOf(59), Integer.valueOf(95)), new Pair(Integer.valueOf(89), Integer.valueOf(95)), new Pair(Integer.valueOf(280), Integer.valueOf(280)) };
+    jdField_b_of_type_ArrayOfAndroidUtilPair = new Pair[] { new Pair(Integer.valueOf(160), Integer.valueOf(90)), new Pair(Integer.valueOf(280), Integer.valueOf(280)), new Pair(Integer.valueOf(30), Integer.valueOf(40)), new Pair(Integer.valueOf(90), Integer.valueOf(160)), new Pair(Integer.valueOf(440), Integer.valueOf(246)) };
   }
 }
 

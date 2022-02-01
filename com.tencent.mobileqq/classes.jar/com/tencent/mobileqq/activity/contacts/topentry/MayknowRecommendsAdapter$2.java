@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contacts.topentry;
 
-import airx;
+import ajnm;
 
 public class MayknowRecommendsAdapter$2
   implements Runnable
 {
-  public MayknowRecommendsAdapter$2(airx paramairx) {}
+  public MayknowRecommendsAdapter$2(ajnm paramajnm) {}
   
   public void run()
   {

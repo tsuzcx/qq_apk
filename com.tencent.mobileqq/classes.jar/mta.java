@@ -1,192 +1,67 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.text.TextUtils;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.gaudio.GaInviteLockActivity;
-import com.tencent.av.ui.MultiIncomingCallsActivity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class mta
+class mta
+  extends BroadcastReceiver
 {
-  public static int a(VideoAppInterface paramVideoAppInterface, int paramInt1, String paramString, int paramInt2)
-  {
-    if ((paramInt1 == 19) && (!TextUtils.isEmpty(paramString))) {
-      return paramVideoAppInterface.a(paramString);
-    }
-    return VideoController.a(paramInt1, false, paramInt2);
-  }
+  mta(msz parammsz) {}
   
-  public static Intent a(Context paramContext, String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (TextUtils.isEmpty(paramString)) {}
+    mtc localmtc;
+    if (paramIntent.getAction().equals("tencent.video.q2v.getNearByProfile"))
+    {
+      paramContext = paramIntent.getStringExtra("uin");
+      localmtc = new mtc(this.a);
+      localmtc.jdField_a_of_type_JavaLangString = paramContext;
+      localmtc.jdField_b_of_type_JavaLangString = paramIntent.getStringExtra("nickname");
+      localmtc.jdField_a_of_type_Int = paramIntent.getIntExtra("gender", -1);
+      localmtc.jdField_b_of_type_Int = paramIntent.getIntExtra("age", 0);
+      localmtc.jdField_a_of_type_Byte = paramIntent.getByteExtra("constellation", (byte)-1);
+      paramIntent = lbz.a().c(this.a.jdField_a_of_type_JavaLangString);
+      if (paramIntent != null) {
+        break label98;
+      }
+    }
+    label98:
     do
     {
-      return null;
-      paramString = lbu.a().c(paramString);
-    } while (paramString == null);
-    try
-    {
-      paramContext = new Intent(paramContext, GaInviteLockActivity.class);
-      paramContext.addFlags(268435456);
-      a(paramContext, paramString);
-      return paramContext;
-    }
-    catch (Throwable paramContext)
-    {
-      for (;;)
+      return;
+      if (this.a.jdField_a_of_type_ComTencentAvVideoController != null)
       {
-        QLog.i("QAVNotificationUtil", 1, "getGroupInviteIntent error", paramContext);
-        paramContext = null;
+        lcu locallcu = this.a.jdField_a_of_type_ComTencentAvVideoController.a(paramContext);
+        if (locallcu != null)
+        {
+          this.a.jdField_a_of_type_ComTencentAvVideoController.a(paramContext, localmtc.jdField_b_of_type_JavaLangString, false);
+          locallcu.c = localmtc.jdField_a_of_type_Int;
+        }
+        if (paramContext.equals(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getAccount()))
+        {
+          paramIntent.a.d = localmtc.jdField_a_of_type_Int;
+          paramIntent.a.f = localmtc.jdField_b_of_type_JavaLangString;
+        }
+        if (paramContext.equals(paramIntent.d))
+        {
+          paramIntent.a.c = localmtc.jdField_a_of_type_Int;
+          paramIntent.a.jdField_b_of_type_JavaLangString = localmtc.jdField_b_of_type_JavaLangString;
+        }
       }
-    }
-  }
-  
-  public static String a(lct paramlct)
-  {
-    long l = paramlct.jdField_d_of_type_Long;
-    switch (paramlct.e)
-    {
-    default: 
-      return String.valueOf(l);
-    }
-    return paramlct.jdField_b_of_type_JavaLangString + paramlct.a;
-  }
-  
-  public static void a(Intent paramIntent, lez paramlez)
-  {
-    long l1 = 0L;
-    try
-    {
-      long l2 = Long.parseLong(paramlez.s);
-      l1 = l2;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
-    paramIntent.putExtra("uinType", paramlez.j);
-    paramIntent.putExtra("peerUin", paramlez.s);
-    paramIntent.putExtra("friendUin", l1);
-    paramIntent.putExtra("relationType", paramlez.F);
-    paramIntent.putExtra("MultiAVType", paramlez.D);
-    paramIntent.putExtra("discussId", paramlez.g);
-    paramIntent.putExtra("memberList", paramlez.a);
-  }
-  
-  public static void a(String paramString1, String paramString2, VideoAppInterface paramVideoAppInterface, lct paramlct)
-  {
+    } while ((this.a.jdField_a_of_type_Mtb == null) || (!this.a.jdField_a_of_type_JavaUtilList.contains(paramContext)));
     if (QLog.isColorLevel()) {
-      QLog.i("CompatModeTag", 2, "showInviteNotification videoPacket[" + paramlct + "], session[" + paramString2 + "], from[" + paramString1 + "]");
+      QLog.d("NearbyPeopleProfileHelper", 2, "onGetNearbyPeopleProfile uin :" + paramContext + ", nickname:" + localmtc.jdField_b_of_type_JavaLangString + ", gender:" + localmtc.jdField_a_of_type_Int);
     }
-    paramString1 = String.valueOf(paramlct.c);
-    int i = a(paramVideoAppInterface, paramlct.e, paramString1, 0);
-    String str = a(paramlct);
-    boolean bool;
-    int j;
-    if (paramlct.jdField_d_of_type_Int == 1)
-    {
-      bool = true;
-      j = paramlct.jdField_b_of_type_Int;
-    }
-    for (;;)
-    {
-      try
-      {
-        if (paramVideoAppInterface.a().a(i, paramString1, str, null, bool, null, 0, j)) {
-          break label145;
-        }
-        QLog.w("CompatModeTag", 1, "showNotification() return ! isRequestVideo = false");
-        return;
-      }
-      catch (Exception paramString1)
-      {
-        QLog.w("CompatModeTag", 1, "showNotification() return ! Exception = ", paramString1);
-        return;
-      }
-      bool = false;
-      break;
-      label145:
-      Object localObject = msw.a(paramVideoAppInterface);
-      Bitmap localBitmap = paramVideoAppInterface.a(i, paramString1, str, true, true);
-      paramVideoAppInterface = paramVideoAppInterface.getDisplayName(i, paramString1, str);
-      if (mqu.b()) {
-        if (bool) {
-          ((msw)localObject).a(true, paramString2, paramVideoAppInterface, localBitmap, null, 45, i, 1, null);
-        }
-      }
-      while (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder(200);
-        ((StringBuilder)localObject).append("showNotification, isAudioMode=").append(bool).append(", sessionId=").append(paramString2).append(", uinType=").append(i).append(", peerUin=").append(paramString1).append(", extraUin=").append(str).append(", face=").append(localBitmap).append(", peerName=").append(paramVideoAppInterface).append(", videoPacket=").append(paramlct);
-        QLog.i("CompatModeTag", 2, ((StringBuilder)localObject).toString());
-        return;
-        ((msw)localObject).a(true, paramString2, paramVideoAppInterface, localBitmap, null, 40, i, 2, null);
-        continue;
-        if (bool) {
-          ((msw)localObject).a(false, paramString2, paramVideoAppInterface, localBitmap, null, 45, i, 1);
-        } else {
-          ((msw)localObject).a(false, paramString2, paramVideoAppInterface, localBitmap, null, 40, i, 2);
-        }
-      }
-    }
-  }
-  
-  public static boolean a(Intent paramIntent)
-  {
-    boolean bool2 = false;
-    String str = null;
-    if (paramIntent != null) {
-      str = paramIntent.getStringExtra("Fromwhere");
-    }
-    boolean bool1 = bool2;
-    if (str != null)
-    {
-      bool1 = bool2;
-      if (str.compareTo("AVNotification") == 0) {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
-  public static Intent b(Context paramContext, String paramString)
-  {
-    paramContext = new Intent(paramContext, MultiIncomingCallsActivity.class);
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return paramContext;
-      paramString = lbu.a().c(paramString);
-    } while (paramString == null);
-    paramContext.putExtra("sessionType", paramString.jdField_d_of_type_Int);
-    if (mqu.b(paramString.j))
-    {
-      a(paramContext, paramString);
-      return paramContext;
-    }
-    b(paramContext, paramString);
-    return paramContext;
-  }
-  
-  public static void b(Intent paramIntent, lez paramlez)
-  {
-    paramIntent.putExtra("uinType", paramlez.j);
-    paramIntent.putExtra("relationType", mum.b(paramlez.j));
-    paramIntent.putExtra("peerUin", paramlez.jdField_d_of_type_JavaLangString);
-    paramIntent.putExtra("extraUin", paramlez.f);
-    paramIntent.putExtra("isAudioMode", paramlez.S);
-    paramIntent.putExtra("isDoubleVideoMeeting", paramlez.J);
-    paramIntent.putExtra("bindType", paramlez.A);
+    this.a.jdField_a_of_type_Mtb.a(paramContext, localmtc);
+    this.a.jdField_a_of_type_JavaUtilList.remove(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mta
  * JD-Core Version:    0.7.0.1
  */

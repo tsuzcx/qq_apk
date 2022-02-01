@@ -1,16 +1,21 @@
-import com.tencent.mobileqq.hiboom.FontBubble;
-import com.tencent.mobileqq.hiboom.FontBubblePanelView;
-import java.util.List;
-
 public class audz
-  implements avtb<List<FontBubble>>
 {
-  public audz(FontBubblePanelView paramFontBubblePanelView) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b = 1;
+  public long b;
+  public String b;
+  public String c;
+  public String d;
+  private String e;
   
-  public void a(List<FontBubble> paramList)
+  public audz()
   {
-    FontBubblePanelView.a(this.a, paramList);
-    FontBubblePanelView.a(this.a).notifyDataSetChanged();
+    this.jdField_a_of_type_JavaLangString = "share_file";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

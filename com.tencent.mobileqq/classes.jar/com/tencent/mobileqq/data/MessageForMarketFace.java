@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
-import amtj;
 import android.text.TextUtils;
-import anwz;
+import anvx;
+import apab;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -43,7 +43,7 @@ public class MessageForMarketFace
   {
     try
     {
-      this.mMarkFaceMessage = ((MarkFaceMessage)anwz.a(this.msgData));
+      this.mMarkFaceMessage = ((MarkFaceMessage)apab.a(this.msgData));
       if ((EmojiStickerManager.e) && (this.mMarkFaceMessage != null) && (this.mMarkFaceMessage.stickerInfo != null))
       {
         if (this.msgtype == -2007) {
@@ -86,7 +86,7 @@ public class MessageForMarketFace
       localStringBuilder.append("[").append(this.mMarkFaceMessage.faceName).append("]");
       return localStringBuilder.toString();
     }
-    return amtj.a(2131705712);
+    return anvx.a(2131706063);
   }
   
   public boolean isNewSoundType()
@@ -114,7 +114,7 @@ public class MessageForMarketFace
     if (this.mMarkFaceMessage != null) {}
     try
     {
-      this.msgData = anwz.a(this.mMarkFaceMessage);
+      this.msgData = apab.a(this.mMarkFaceMessage);
       return;
     }
     catch (Exception localException)
@@ -125,7 +125,7 @@ public class MessageForMarketFace
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForMarketFace
  * JD-Core Version:    0.7.0.1
  */

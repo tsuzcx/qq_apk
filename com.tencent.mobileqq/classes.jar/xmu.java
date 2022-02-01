@@ -1,25 +1,12 @@
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Intent;
 
-public class xmu
-  extends ytl
+public abstract interface xmu
 {
-  private static final int[] a = { 2131691363 };
-  private static final int[] f = { 2131165611 };
-  private static final int[] g = { 2131370711 };
-  private static int[] h = { BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298962) };
+  public abstract void a();
   
-  public xmu()
-  {
-    super(1, 1, h, -1, g, a, f);
-  }
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
   
-  public void a(int paramInt, Object paramObject, bjua[] paramArrayOfbjua)
-  {
-    paramArrayOfbjua[0].a = 0;
-    paramArrayOfbjua[0].b = 0;
-  }
+  public abstract void b();
 }
 
 

@@ -1,14 +1,10 @@
-class ovu
-  extends owd
+public class ovu
 {
-  ovu(ouu paramouu)
+  public static void a(int paramInt)
   {
-    super(paramouu, null);
-  }
-  
-  void a(owg paramowg)
-  {
-    paramowg.onCommentReply(false, null);
+    if ((paramInt == 41516) || (paramInt == 41522)) {
+      olh.a(null, "", "0X8009EF4", "0X8009EF4", 0, 0, "", "", "", new ovs().a().a(paramInt).a(), false);
+    }
   }
 }
 

@@ -1,55 +1,48 @@
-import android.content.Context;
-import android.support.v4.view.ViewPager.LayoutParams;
-import android.widget.AdapterView;
-import android.widget.GridView;
-import com.tencent.mobileqq.profile.view.QzonePhotoView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterViewPagerAdapter.AdapterViewFactory;
-
-public class ayqv
-  implements AdapterViewPagerAdapter.AdapterViewFactory
+public final class ayqv
 {
-  public ayqv(QzonePhotoView paramQzonePhotoView) {}
-  
-  public AdapterView create(Context paramContext, int paramInt)
+  public static final String a(String paramString1, String paramString2)
   {
-    do
+    Object localObject2 = null;
+    int i = paramString1.indexOf("?");
+    Object localObject1 = localObject2;
+    if (i != -1)
     {
-      try
+      i = paramString1.indexOf(paramString2 + "=", i + 1);
+      localObject1 = localObject2;
+      if (i != -1)
       {
-        paramContext = new GridView(paramContext);
-        ViewPager.LayoutParams localLayoutParams;
-        Context localContext = paramContext;
+        int j = paramString1.indexOf("&", paramString2.length() + i + 1);
+        if (j == -1) {
+          break label93;
+        }
+        localObject1 = paramString1.substring(i + paramString2.length() + 1, j);
       }
-      catch (OutOfMemoryError localOutOfMemoryError1)
+    }
+    return localObject1;
+    label93:
+    return paramString1.substring(paramString2.length() + i + 1);
+  }
+  
+  public static final String a(String paramString1, String paramString2, String paramString3)
+  {
+    int i = paramString1.indexOf("?");
+    if (i != -1)
+    {
+      i = paramString1.indexOf(paramString2 + "=", i + 1);
+      if (i != -1)
       {
-        try
-        {
-          paramContext.setNumColumns(4);
-          paramContext.setFadingEdgeLength(0);
-          paramContext.setHorizontalSpacing(QzonePhotoView.a(this.a));
-          paramContext.setVerticalSpacing(QzonePhotoView.a(this.a));
-          paramContext.setStretchMode(2);
-          paramContext.setScrollingCacheEnabled(false);
-          paramContext.setSelector(2131167276);
-          localLayoutParams = new ViewPager.LayoutParams();
-          localLayoutParams.gravity = 17;
-          localLayoutParams.height = -2;
-          localLayoutParams.width = -1;
-          paramContext.setLayoutParams(localLayoutParams);
-          localContext = paramContext;
-          return localContext;
+        int j = paramString1.indexOf("&", paramString2.length() + i + 1);
+        if (j != -1) {
+          return paramString1.substring(0, i) + paramString2 + "=" + paramString3 + paramString1.substring(j);
         }
-        catch (OutOfMemoryError localOutOfMemoryError2)
-        {
-          continue;
-        }
-        localOutOfMemoryError1 = localOutOfMemoryError1;
-        paramContext = null;
+        return paramString1.substring(0, i) + paramString2 + "=" + paramString3;
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("ProfileCard.QzonePhotoView", 2, "new gridview error", localOutOfMemoryError1);
-    return paramContext;
+      if (paramString1.lastIndexOf("&") == paramString1.length() - 1) {
+        return paramString1 + paramString2 + "=" + paramString3;
+      }
+      return paramString1 + "&" + paramString2 + "=" + paramString3;
+    }
+    return paramString1 + "?" + paramString2 + "=" + paramString3;
   }
 }
 

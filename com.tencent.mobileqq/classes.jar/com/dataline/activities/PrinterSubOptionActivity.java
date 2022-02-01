@@ -1,9 +1,6 @@
 package com.dataline.activities;
 
 import Override;
-import amqd;
-import amtj;
-import amxn;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -13,6 +10,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.TextView;
+import ansr;
+import anvx;
+import aoab;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -30,8 +31,8 @@ public class PrinterSubOptionActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener
 {
-  public amqd a;
   public LayoutInflater a;
+  public ansr a;
   public XListView a;
   da jdField_a_of_type_Da;
   private dn jdField_a_of_type_Dn = new cy(this);
@@ -42,18 +43,18 @@ public class PrinterSubOptionActivity
   
   public PrinterSubOptionActivity()
   {
-    this.jdField_a_of_type_Amqd = null;
+    this.jdField_a_of_type_Ansr = null;
     this.jdField_a_of_type_AndroidViewLayoutInflater = null;
   }
   
   private void a()
   {
-    if (this.jdField_a_of_type_Amqd.jdField_a_of_type_Dk != null)
+    if (this.jdField_a_of_type_Ansr.jdField_a_of_type_Dk != null)
     {
       int j = 0;
       int k = 0;
       this.b.clear();
-      List localList = this.jdField_a_of_type_Amqd.jdField_a_of_type_Dk.a();
+      List localList = this.jdField_a_of_type_Ansr.jdField_a_of_type_Dk.a();
       int i1 = localList.size();
       int i = 0;
       if (i < i1)
@@ -106,49 +107,49 @@ public class PrinterSubOptionActivity
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this);
-    this.jdField_a_of_type_Amqd = ((amqd)this.app.getBusinessHandler(8));
-    this.jdField_a_of_type_Amqd.jdField_a_of_type_Amxk.jdField_a_of_type_JavaUtilList = null;
-    getWindow().setBackgroundDrawableResource(2131165437);
-    setContentView(2131559059);
-    setTitle(2131691251);
+    this.jdField_a_of_type_Ansr = ((ansr)this.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER));
+    this.jdField_a_of_type_Ansr.jdField_a_of_type_Anzy.jdField_a_of_type_JavaUtilList = null;
+    getWindow().setBackgroundDrawableResource(2131165443);
+    setContentView(2131559087);
+    setTitle(2131691336);
     getWindow().setBackgroundDrawable(null);
     this.jdField_a_of_type_Da = new da(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131372947));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setTag(2131361807, "n/a");
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131373157));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setTag(2131361808, "n/a");
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Da);
-    if (!this.jdField_a_of_type_Amqd.jdField_a_of_type_Dk.a())
+    if (!this.jdField_a_of_type_Ansr.jdField_a_of_type_Dk.a())
     {
-      paramBundle = findViewById(2131366062);
+      paramBundle = findViewById(2131366163);
       paramBundle.setVisibility(0);
-      paramBundle.setContentDescription(amtj.a(2131707535));
-      ((TextView)findViewById(2131378961)).setText(getString(2131691243));
-      ((TextView)findViewById(2131363685)).setText(getString(2131691242));
+      paramBundle.setContentDescription(anvx.a(2131707882));
+      ((TextView)findViewById(2131379255)).setText(getString(2131691328));
+      ((TextView)findViewById(2131363756)).setText(getString(2131691327));
       this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
     }
     for (;;)
     {
-      setLeftViewName(2131690599);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setTag(2131361807, "n/a");
+      setLeftViewName(2131690676);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setTag(2131361808, "n/a");
       return true;
       a();
-      this.jdField_a_of_type_Amqd.jdField_a_of_type_Dk.a(this.jdField_a_of_type_Dn);
+      this.jdField_a_of_type_Ansr.jdField_a_of_type_Dk.a(this.jdField_a_of_type_Dn);
     }
   }
   
   public void doOnDestroy()
   {
-    this.jdField_a_of_type_Amqd.jdField_a_of_type_Dk.a();
+    this.jdField_a_of_type_Ansr.jdField_a_of_type_Dk.a();
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    this.jdField_a_of_type_JavaLangString = getString(2131691244);
+    this.jdField_a_of_type_JavaLangString = getString(2131691329);
     this.b.clear();
     a();
-    amxn localamxn = (amxn)this.app.getBusinessHandler(74);
-    this.jdField_a_of_type_Boolean = localamxn.a();
-    localamxn.a();
+    aoab localaoab = (aoab)this.app.getBusinessHandler(BusinessHandlerFactory.PRINTER_STATUS_HANDLER);
+    this.jdField_a_of_type_Boolean = localaoab.a();
+    localaoab.a();
   }
   
   public boolean onBackEvent()

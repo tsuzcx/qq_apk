@@ -1,59 +1,129 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
-import com.tencent.mobileqq.widget.TabBarView;
+import android.content.Context;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-class awzh
-  implements axel
+public class awzh
 {
-  awzh(awyf paramawyf, int paramInt) {}
+  private static awzh jdField_a_of_type_Awzh;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  
+  public static awzh a()
+  {
+    if (jdField_a_of_type_Awzh == null) {}
+    try
+    {
+      if (jdField_a_of_type_Awzh == null) {
+        jdField_a_of_type_Awzh = new awzh();
+      }
+      return jdField_a_of_type_Awzh;
+    }
+    finally {}
+  }
+  
+  private String[] a(Context paramContext)
+  {
+    String[] arrayOfString = new String[2];
+    paramContext = (WifiManager)paramContext.getApplicationContext().getSystemService("wifi");
+    if (paramContext != null)
+    {
+      paramContext = paramContext.getConnectionInfo();
+      arrayOfString[0] = paramContext.getSSID();
+      arrayOfString[1] = paramContext.getBSSID();
+    }
+    return arrayOfString;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    Object localObject2 = a(BaseApplicationImpl.getContext());
+    Object localObject1 = new axar();
+    ((axar)localObject1).c(localObject2[1]);
+    ((axar)localObject1).b(localObject2[0]);
+    localObject2 = new ArrayList(2);
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      ((axar)localObject1).a(axcm.a().b());
+      ((List)localObject2).add(Integer.valueOf(axcm.a().d()));
+      ((List)localObject2).add(Integer.valueOf(axcm.a().c()));
+    }
+    for (;;)
+    {
+      ((axar)localObject1).a(4);
+      ((axar)localObject1).a((List)localObject2);
+      localObject1 = ((axar)localObject1).a();
+      ((awzg)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.MSG_BACK_UP_HANDLER)).a((MsgBackupUserData)localObject1, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      if (QLog.isColorLevel()) {
+        QLog.d("MsgBackup.MsgBackupAuthProcessor", 2, "confirmQrReq, userData: " + localObject1 + ", biztype = " + this.jdField_a_of_type_Int + ", qr_sig = " + this.jdField_a_of_type_JavaLangString);
+      }
+      return;
+      if (this.jdField_a_of_type_Int == 2)
+      {
+        ((axar)localObject1).a(axcm.a().a());
+        ((List)localObject2).add(Integer.valueOf(axcm.a().b()));
+        ((List)localObject2).add(Integer.valueOf(axcm.a().a()));
+      }
+      else
+      {
+        ((axar)localObject1).a(axcm.a().a());
+        ((List)localObject2).add(Integer.valueOf(axcm.a().b()));
+        ((List)localObject2).add(Integer.valueOf(axcm.a().a()));
+      }
+    }
+  }
   
   public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Int == -1) && (this.jdField_a_of_type_Awyf.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView != null))
-    {
-      if (paramInt > 0) {
-        this.jdField_a_of_type_Awyf.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(1, false);
-      }
+    axct.a();
+    axct.a.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    Object localObject2 = a(BaseApplicationImpl.getContext());
+    Object localObject1 = new axar();
+    ((axar)localObject1).c(localObject2[1]);
+    ((axar)localObject1).b(localObject2[0]);
+    localObject2 = new ArrayList(2);
+    ((axar)localObject1).a(axcm.a().b());
+    ((List)localObject2).add(Integer.valueOf(axcm.a().d()));
+    ((List)localObject2).add(Integer.valueOf(axcm.a().c()));
+    ((axar)localObject1).a(4);
+    ((axar)localObject1).a((List)localObject2);
+    localObject1 = ((axar)localObject1).a();
+    ((awzg)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.MSG_BACK_UP_HANDLER)).a((MsgBackupUserData)localObject1, this.jdField_a_of_type_Int, paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup.MsgBackupAuthProcessor", 2, "requestQR, userData: " + localObject1 + ", biztype = " + this.jdField_a_of_type_Int + ", ispush = " + paramBoolean);
     }
-    else
-    {
-      this.jdField_a_of_type_Awyf.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment.a(null);
-      if (this.jdField_a_of_type_Awyf.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView != null)
-      {
-        if (this.jdField_a_of_type_Awyf.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a() != 0) {
-          break label160;
-        }
-        localObject = new bcek(this.jdField_a_of_type_Awyf.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).a("dc00899").b("grp_lbs").c("data_card").d("datatab_exp");
-        if (this.jdField_a_of_type_Awyf.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e != 2) {
-          break label154;
-        }
-      }
-    }
-    label154:
-    for (String str = "1";; str = "2")
-    {
-      ((bcek)localObject).a(new String[] { str }).a();
-      return;
-      this.jdField_a_of_type_Awyf.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(0, false);
-      break;
-    }
-    label160:
-    bcek localbcek = new bcek(this.jdField_a_of_type_Awyf.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).a("dc00899").b("grp_lbs").c("data_card").d("feedtab_exp");
-    if (this.jdField_a_of_type_Awyf.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e == 2)
-    {
-      str = "1";
-      if (paramInt != 0) {
-        break label250;
-      }
-    }
-    label250:
-    for (Object localObject = "1";; localObject = "2")
-    {
-      localbcek.a(new String[] { str, localObject }).a();
-      return;
-      str = "2";
-      break;
-    }
+  }
+  
+  public void b(String paramString)
+  {
+    this.b = paramString;
   }
 }
 

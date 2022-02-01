@@ -1,19 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.service.qzone.QZoneTitleTabManager.TabInfo;
+import android.graphics.Bitmap.CompressFormat;
 
-public final class bbnw
-  implements Parcelable.Creator<QZoneTitleTabManager.TabInfo>
+public class bbnw
 {
-  public QZoneTitleTabManager.TabInfo a(Parcel paramParcel)
-  {
-    return new QZoneTitleTabManager.TabInfo(paramParcel);
-  }
-  
-  public QZoneTitleTabManager.TabInfo[] a(int paramInt)
-  {
-    return new QZoneTitleTabManager.TabInfo[paramInt];
-  }
+  public int a;
+  public Bitmap.CompressFormat a;
+  public String a;
 }
 
 

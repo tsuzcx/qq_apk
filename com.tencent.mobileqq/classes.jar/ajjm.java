@@ -1,97 +1,55 @@
-import com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment;
-import com.tencent.mobileqq.mini.mainpage.MainPageFragment;
-import com.tencent.mobileqq.mini.out.activity.PermissionSettingFragment;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
 
-public class ajjm
-  implements ShareActionSheet.OnItemClickListener
+class ajjm
+  extends anvi
 {
-  public ajjm(MiniMsgTabFragment paramMiniMsgTabFragment) {}
+  ajjm(ajjf paramajjf) {}
   
-  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
+  public void onConversationRecommendTypeChange(int paramInt)
   {
-    int i = paramActionSheetItem.action;
-    int j = paramActionSheetItem.uinType;
-    paramActionSheetItem = paramActionSheetItem.uin;
-    switch (i)
-    {
-    default: 
-      QLog.e("MiniMsgTabFragment", 1, "handleShareChatItemClick with invalid case:" + i);
-    case 2: 
-    case 73: 
-    case 3: 
-    case 9: 
-    case 10: 
-    case 70: 
-    case 82: 
-    case 76: 
-    case 77: 
-    case 14: 
-    case 78: 
-      do
-      {
-        return;
-        MiniMsgTabFragment.a(this.a, 1, null);
-        return;
-        MiniMsgTabFragment.a(this.a, 5, null);
-        return;
-        MiniMsgTabFragment.a(this.a, 6, null);
-        return;
-        MiniMsgTabFragment.a(this.a, 7, null);
-        return;
-        MiniMsgTabFragment.a(this.a, 13, null);
-        return;
-        MiniMsgTabFragment.a(this.a, 8, null);
-        return;
-        MiniMsgTabFragment.a(this.a, 10, null);
-        return;
-      } while (MiniMsgTabFragment.a(this.a) == -1);
-      if (MiniMsgTabFragment.a(this.a))
-      {
-        MainPageFragment.launchForMiniGame(this.a.getActivity(), MiniMsgTabFragment.a(this.a), 1, true);
-        return;
-      }
-      MainPageFragment.launch(this.a.getActivity(), MiniMsgTabFragment.a(this.a), MiniMsgTabFragment.a(this.a));
-      return;
-    case 11: 
-      MiniMsgTabFragment.a(this.a, 11, null);
-      return;
-    case 74: 
-    case 75: 
-      MiniMsgTabFragment.a(this.a, 2, null);
-      return;
-    case 79: 
-    case 80: 
-      MiniMsgTabFragment.a(this.a, 3, null);
-      return;
-    case 72: 
-      MiniMsgTabFragment.a(this.a, paramActionSheetItem, j);
-      return;
-    case 81: 
-      MiniMsgTabFragment.a(this.a, 9, null);
-      return;
-    case 83: 
-      if (this.a.getActivity() != null)
-      {
-        PermissionSettingFragment.launchForResult(this.a.getActivity(), MiniMsgTabFragment.a(this.a), MiniMsgTabFragment.b(this.a), 5);
-        return;
-      }
-      QLog.e("MiniMsgTabFragment", 1, "handleShareChatItemClick getActivity is null when ACTION_SETTING");
-      return;
-    case 128: 
-      MiniMsgTabFragment.a(this.a, 14, null);
-      return;
-    case 158: 
-      MiniMsgTabFragment.a(this.a, 15, null);
-      return;
-    case 159: 
-      MiniMsgTabFragment.a(this.a, 16, null);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("MayknowRecommendManager.ContactsViewController", 2, "onConversationRecommendTypeChange newType is: " + paramInt);
     }
-    MiniMsgTabFragment.a(this.a, 17, null);
+    ajjf.c(this.a, paramInt);
+  }
+  
+  protected void onMayKnowEntryStateChanged(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactsViewController", 2, "onMayKnowEntryStateChanged isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean) {
+      ajjf.a(this.a, false, false);
+    }
+  }
+  
+  public void onRecommendTroopJoinedOrDeleted(String paramString)
+  {
+    if ((ajjf.a(this.a) instanceof ajns)) {
+      ((ajns)ajjf.a(this.a)).a(paramString);
+    }
+  }
+  
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ContactsViewController", 2, "onUpdateFriendList. mOccurSwitchAccountChangeTab:" + ajjf.b(this.a));
+    }
+    if (ajjf.b(this.a))
+    {
+      int i = ajjf.a(this.a, false);
+      if (QLog.isColorLevel()) {
+        QLog.i("ContactsViewController", 2, "onUpdateFriendList. mCurrentTabPos:" + ajjf.b(this.a) + "  defaultPos:" + i);
+      }
+      if (ajjf.b(this.a) != i)
+      {
+        ajjf.c(this.a, true);
+        ajjf.b(this.a, i);
+        ajjf.c(this.a, false);
+      }
+      ajjf.b(this.a, false);
+    }
   }
 }
 

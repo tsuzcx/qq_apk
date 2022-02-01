@@ -1,15 +1,8 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import java.util.Comparator;
+import android.widget.Button;
 
 public class ajah
-  implements Comparator<ajac>
 {
-  public ajah(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
-  
-  public int a(ajac paramajac1, ajac paramajac2)
-  {
-    return paramajac1.f.compareToIgnoreCase(paramajac2.f);
-  }
+  public Button a;
 }
 
 

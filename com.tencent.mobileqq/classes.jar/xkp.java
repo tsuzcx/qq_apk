@@ -1,42 +1,59 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetYearNodeListReceiver.1;
-import com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
 public class xkp
-  extends QQUIEventReceiver<xkl, xlf>
+  implements TVK_SDKMgr.OnLogListener
 {
-  public xkp(xkl paramxkl)
-  {
-    super(paramxkl);
-  }
+  public int a;
   
-  public void a(@NonNull xkl paramxkl, @NonNull xlf paramxlf)
+  public int d(String paramString1, String paramString2)
   {
-    if (paramxlf.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      paramxlf = paramxlf.jdField_a_of_type_JavaUtilList.iterator();
-      for (int i = 0; paramxlf.hasNext(); i = ((MomeriesYearNode)paramxlf.next()).videoCount + i) {}
-      if (i >= 0)
-      {
-        xvv.b("Q.qqstory.memories.MemoriesProfilePresenter", "update video total count. %d.", Integer.valueOf(i));
-        xkl.a(paramxkl, i);
-        if (paramxkl.a != null)
-        {
-          paramxkl.a.videoCount = xkl.a(paramxkl);
-          ThreadManager.post(new MemoriesProfilePresenter.GetYearNodeListReceiver.1(this, paramxkl), 5, null, false);
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
     }
+    return 0;
   }
   
-  public Class acceptEventClass()
+  public int e(String paramString1, String paramString2)
   {
-    return xlf.class;
+    if (QLog.isColorLevel()) {
+      QLog.e(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    if ((paramString2 != null) && (paramString2.contains("INFO_TRY_AGAIN_LATER"))) {}
+    try
+    {
+      this.a = Integer.parseInt(paramString2.substring(paramString2.lastIndexOf("=") + 1));
+      label32:
+      if (QLog.isColorLevel()) {
+        QLog.w(paramString1, 2, paramString2);
+      }
+      return 0;
+    }
+    catch (Exception localException)
+    {
+      break label32;
+    }
   }
 }
 

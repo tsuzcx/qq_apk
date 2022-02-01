@@ -2,9 +2,9 @@ package com.tencent.mobileqq.bubble;
 
 import android.graphics.Bitmap;
 import android.support.v4.util.MQLruCache;
-import apdy;
-import apet;
-import apfa;
+import aqhc;
+import aqhx;
+import aqie;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -15,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class BubbleNewAIOAnim$7
   implements Runnable
 {
-  public BubbleNewAIOAnim$7(apet paramapet) {}
+  public BubbleNewAIOAnim$7(aqhx paramaqhx) {}
   
   public void run()
   {
@@ -24,16 +24,16 @@ public class BubbleNewAIOAnim$7
       Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilArrayList.iterator();
       if (localIterator.hasNext())
       {
-        apfa localapfa = (apfa)localIterator.next();
-        File localFile = new File(this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(this.this$0.jdField_b_of_type_Int, false), this.this$0.jdField_a_of_type_Apdy.a);
+        aqie localaqie = (aqie)localIterator.next();
+        File localFile = new File(this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(this.this$0.jdField_b_of_type_Int, false), this.this$0.jdField_a_of_type_Aqhc.a);
         int i = 0;
         label93:
         Object localObject1;
         String str;
-        if (i < localapfa.jdField_b_of_type_Int)
+        if (i < localaqie.jdField_b_of_type_Int)
         {
-          localObject1 = localFile.getAbsolutePath() + File.separatorChar + localapfa.jdField_b_of_type_JavaLangString + String.format("%04d.png", new Object[] { Integer.valueOf(i + 1) });
-          str = localapfa.a + (String)localObject1;
+          localObject1 = localFile.getAbsolutePath() + File.separatorChar + localaqie.jdField_b_of_type_JavaLangString + String.format("%04d.png", new Object[] { Integer.valueOf(i + 1) });
+          str = localaqie.a + (String)localObject1;
           if (this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str)) {
             break label310;
           }

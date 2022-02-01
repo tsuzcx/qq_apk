@@ -202,7 +202,7 @@ public class CosFunFilter
       this.pagFilter.release();
       this.pagFilter = null;
     }
-    this.mCopyFilter.ClearGLSL();
+    this.mCopyFilter.clearGLSL();
     recyleTextureMaterials();
   }
   
@@ -259,6 +259,11 @@ public class CosFunFilter
             this.ganFilter.setTextureBitmapList(paramPTSegAttr);
           }
           this.cosFunTransitionFilter.init(paramAIAttr.getTextureId(), paramAIAttr.width, paramAIAttr.height, (List)paramPTFaceAttr.getAllFacePoints().get(0), paramPTFaceAttr.getFaceDetectScale(), this.enableGAN);
+          if (this.cosFunItem != null)
+          {
+            this.cosFunTransitionFilter.setTransType(this.cosFunItem.getTransType());
+            this.cosFunTransitionFilter.setClampToEdge(this.cosFunItem.isClampToEdge());
+          }
           this.isCosTransInit = true;
           paramPTSegAttr = paramAIAttr;
           continue;

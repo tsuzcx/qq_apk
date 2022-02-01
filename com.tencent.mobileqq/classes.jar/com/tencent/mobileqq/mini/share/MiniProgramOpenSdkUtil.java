@@ -9,10 +9,10 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.webkit.URLUtil;
-import atky;
-import atqa;
-import bfuc;
-import bfvp;
+import aupt;
+import auuv;
+import bhcu;
+import bheh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.activity.LoginActivity;
@@ -41,9 +41,9 @@ public class MiniProgramOpenSdkUtil
   public static final String KEY_MINI_PROGRAM_SHARE_OBJ = "KEY_MINI_PROGRAM_SHARE_OBJ";
   private static final String TAG = "MiniProgramOpenSdkUtil";
   
-  public static boolean asyncShareMiniProgram(bfvp parambfvp)
+  public static boolean asyncShareMiniProgram(bheh parambheh)
   {
-    return (isSharingMiniProgram(parambfvp.a)) && (!"to_qzone".equals(parambfvp.c));
+    return (isSharingMiniProgram(parambheh.a)) && (!"to_qzone".equals(parambheh.c));
   }
   
   private static JSONObject buildArkConfig(JSONObject paramJSONObject, String paramString)
@@ -141,7 +141,7 @@ public class MiniProgramOpenSdkUtil
     paramHashMap = buildShareInfoRequest((MiniArkShareModel)localObject);
     paramContext = new MiniProgramOpenSdkUtil.3(local2, local1, localTimeOutInfo, str2, str3, str4, str7, ((MiniArkShareModel)localObject).getAppidRich(), str5, str6, paramBundle, paramContext, paramIntent, str1);
     QLog.d("MiniProgramOpenSdkUtil", 1, "forwardShare");
-    atqa.a("KEY_STAGE_1_GET_SHARE_INFO");
+    auuv.a("KEY_STAGE_1_GET_SHARE_INFO");
     MiniAppCmdUtil.getInstance().getShareInfo(paramHashMap, paramContext);
   }
   
@@ -229,7 +229,7 @@ public class MiniProgramOpenSdkUtil
       paramIntent.putExtra("KEY_MINI_PROGRAM_SHARE_OBJ", paramOpenSdkShareModel);
       paramIntent.putExtra("forward_ark_app_meta", str3);
       paramIntent.putExtras(QQCustomArkDialog.AppInfo.zipArgs(str1, str2, "0.0.0.1", str3, BaseApplicationImpl.context.getResources().getDisplayMetrics().scaledDensity, null, null));
-      atky.a(paramContext, paramIntent);
+      aupt.a(paramContext, paramIntent);
       finishPreviousActivity(paramContext);
       return;
     }
@@ -244,7 +244,7 @@ public class MiniProgramOpenSdkUtil
     }
     try
     {
-      paramString = new String(bfuc.decode(paramString, 0));
+      paramString = new String(bhcu.decode(paramString, 0));
       return paramString;
     }
     catch (Exception paramString) {}

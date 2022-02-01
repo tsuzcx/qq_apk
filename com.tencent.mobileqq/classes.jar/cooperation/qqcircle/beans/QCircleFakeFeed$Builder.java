@@ -103,6 +103,12 @@ public class QCircleFakeFeed$Builder
     return this;
   }
   
+  public Builder setShowCircleTakeSame(ArrayList<Integer> paramArrayList)
+  {
+    QCircleFakeFeed.access$2002(this.feed, paramArrayList);
+    return this;
+  }
+  
   public Builder setSimulateName(ArrayList<String> paramArrayList)
   {
     QCircleFakeFeed.access$1802(this.feed, paramArrayList);

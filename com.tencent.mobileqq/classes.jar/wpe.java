@@ -1,28 +1,20 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
-import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
 
+@Deprecated
 public class wpe
-  extends Subscriber.SingleEventSubscriberNoRefect<voc>
+  extends wpg
 {
-  woz a;
-  
-  public wpe(@NonNull woz paramwoz)
+  public wpe(ViewGroup paramViewGroup)
   {
-    this.a = paramwoz;
+    super(paramViewGroup, 2131561731);
   }
   
-  protected void a(@NonNull voc paramvoc)
+  public void a(wly paramwly)
   {
-    if ((paramvoc.b != null) && (paramvoc.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null)) {
-      woz.a(this.a, paramvoc.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramvoc.b.mVid, paramvoc.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem.feedId);
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return voc.class;
+    super.a(paramwly);
+    this.a.setDisplayState(5);
+    this.a.setNodeName(anvx.a(2131706416), false);
   }
 }
 

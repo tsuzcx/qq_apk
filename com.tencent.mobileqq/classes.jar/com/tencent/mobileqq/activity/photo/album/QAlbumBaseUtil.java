@@ -8,7 +8,7 @@ import android.net.Uri;
 import android.net.Uri.Builder;
 import android.os.Build.VERSION;
 import android.provider.MediaStore.Images.Media;
-import bcel;
+import bdlg;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.activity.photo.MediaFileFilter;
@@ -955,10 +955,10 @@ public class QAlbumBaseUtil
                   paramCursor.append(j);
                   paramCursor = paramCursor.toString();
                   if (i > 0) {
-                    bcel.a("Album_Query_File_Path_Null", paramCursor);
+                    bdlg.a("Album_Query_File_Path_Null", paramCursor);
                   }
                   if (j > 0) {
-                    bcel.a("Album_Query_File_Not_Exist", paramCursor);
+                    bdlg.a("Album_Query_File_Not_Exist", paramCursor);
                   }
                 }
                 sAlbumQueryFailReport = true;

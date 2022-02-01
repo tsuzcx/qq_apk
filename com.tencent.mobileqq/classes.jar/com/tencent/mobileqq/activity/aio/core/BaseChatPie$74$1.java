@@ -1,17 +1,27 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import agif;
-import avtb;
-import com.tencent.mobileqq.data.Emoticon;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.app.AppRuntime;
 
 class BaseChatPie$74$1
-  implements avtb<Emoticon>
+  implements DialogInterface.OnClickListener
 {
-  BaseChatPie$74$1(BaseChatPie.74 param74, int paramInt1, int paramInt2, String paramString) {}
+  BaseChatPie$74$1(BaseChatPie.74 param74) {}
   
-  public void postQuery(Emoticon paramEmoticon)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    agif.a(this.val$type, this.this$1.this$0.mContext, this.this$1.this$0.app, paramEmoticon, this.val$authTypeFinal, this.val$messageFinal, this.this$1.this$0.sessionInfo, false);
+    if (this.this$1.this$0.getActivity() != null)
+    {
+      Intent localIntent = new Intent(BaseApplicationImpl.sApplication.getRuntime().getApplication(), QQBrowserActivity.class);
+      localIntent.putExtra("url", "https://h5.qianbao.qq.com/auth?_wv=1027&_wvx=10&_wwv=4");
+      this.this$1.this$0.getActivity().startActivity(localIntent);
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

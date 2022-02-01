@@ -12,11 +12,11 @@ import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.text.TextPaint;
 import android.util.DisplayMetrics;
-import aqnj;
-import aqnm;
-import aqoj;
-import aqoz;
-import aqqa;
+import arqu;
+import arqx;
+import arru;
+import arsk;
+import artl;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,7 +53,7 @@ public class DrawUtils
     {
       PAINT_FPS = new Paint();
       PAINT_FPS.setColor(-256);
-      Object localObject = aqnj.a().a().a().getDisplayMetrics();
+      Object localObject = arqu.a().a().a().getDisplayMetrics();
       PAINT_FPS.setTextSize(((DisplayMetrics)localObject).density * 12.5F);
       localObject = PAINT_FPS.getFontMetrics();
       TEXT_HEIGHT = (int)Math.ceil(((Paint.FontMetrics)localObject).descent - ((Paint.FontMetrics)localObject).ascent);
@@ -63,7 +63,7 @@ public class DrawUtils
   
   public static boolean drawImage(Canvas paramCanvas, Drawable paramDrawable, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    if ((paramDrawable != null) && (aqqa.a()))
+    if ((paramDrawable != null) && (artl.a()))
     {
       RECT.set((int)paramFloat1, (int)paramFloat2, (int)(paramFloat1 + paramFloat3), (int)(paramFloat2 + paramFloat4));
       try
@@ -91,9 +91,9 @@ public class DrawUtils
     return localFloat1.floatValue();
   }
   
-  public static float getDefaultLineHeight(aqoz paramaqoz)
+  public static float getDefaultLineHeight(arsk paramarsk)
   {
-    return getTextHeight(paramaqoz.c()) + aqoj.a().c() * 2 + paramaqoz.d() * 2.0F + paramaqoz.e() * 2.0F;
+    return getTextHeight(paramarsk.c()) + arru.a().c() * 2 + paramarsk.d() * 2.0F + paramarsk.e() * 2.0F;
   }
   
   public static float getDescent(float paramFloat)
@@ -181,7 +181,7 @@ public class DrawUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.util.DrawUtils
  * JD-Core Version:    0.7.0.1
  */

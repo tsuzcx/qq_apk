@@ -1,25 +1,30 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import android.os.AsyncTask;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class aeao
-  implements bamr
+  implements Animation.AnimationListener
 {
-  public aeao(QQSettingMe paramQQSettingMe) {}
+  public aeao(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.c)
-    {
-      if (paramInt != 100) {
-        this.a.a(2131690672);
-      }
-      this.a.y();
+    this.a.a.execute(new Void[0]);
+    this.a.f = false;
+    if (this.a.d) {
+      this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
     }
+    while (this.a.jdField_c_of_type_Boolean) {
+      return;
+    }
+    this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
   }
   
-  public void a(int paramInt, boolean paramBoolean) {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void b(int paramInt, boolean paramBoolean) {}
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

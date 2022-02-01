@@ -1,69 +1,92 @@
-import com.tencent.av.VideoController;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
 public class arcl
-  extends binf
+  extends aqwt<arck>
 {
-  public arcl(MessengerService paramMessengerService) {}
-  
-  protected void h(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  @NonNull
+  public arck a(int paramInt)
   {
-    try
+    return new arck();
+  }
+  
+  @Nullable
+  public arck a(aqxa[] paramArrayOfaqxa)
+  {
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0) && (paramArrayOfaqxa[0] != null))
     {
-      QQAppInterface localQQAppInterface = (QQAppInterface)MessengerService.j(this.a);
-      if (localQQAppInterface != null)
-      {
-        localQQAppInterface.removeObserver(this);
-        if ((paramBoolean) && (paramHashMap != null) && (!paramHashMap.isEmpty()) && (paramHashMap.containsKey("sigmsg")) && (paramHashMap.containsKey("request_type")) && (paramHashMap.containsKey("uin")))
-        {
-          Object localObject = (byte[])paramHashMap.get("sigmsg");
-          String str1 = String.valueOf(paramHashMap.get("request_type"));
-          String str2 = String.valueOf(paramHashMap.get("uin"));
-          if (localObject != null) {
-            localQQAppInterface.getMsgCache().c(str2, (byte[])localObject);
-          }
-          int j = npt.b(localQQAppInterface, str2);
-          localObject = "";
-          if (j == 0) {
-            localObject = ContactUtils.getFriendNickName(localQQAppInterface, str2);
-          }
-          for (;;)
-          {
-            int i = j;
-            if (j != 1024)
-            {
-              i = j;
-              if (j != 1025) {
-                i = VideoController.a(j, false, 1);
-              }
-            }
-            paramBoolean = str1.equals("audio");
-            ChatActivityUtils.a(localQQAppInterface, localQQAppInterface.getApp(), i, str2, (String)localObject, "", paramBoolean, null, true, true, null, "from_internal", null);
-            return;
-            if (paramHashMap.containsKey("nickname")) {
-              localObject = String.valueOf(paramHashMap.get("nickname"));
-            }
-          }
-        }
+      arck localarck = arck.a(paramArrayOfaqxa[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("OnlineStatusConfProcessor", 2, "onParsed " + paramArrayOfaqxa[0].a);
       }
+      return localarck;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("OnlineStatusConfProcessor", 2, "onParsed is null");
+    }
+    return null;
+  }
+  
+  public void a(arck paramarck)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("OnlineStatusConfProcessor", 2, "onUpdate " + paramarck.toString());
+    }
+    paramarck = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if (paramarck == null) {
       return;
     }
-    catch (Exception paramHashMap)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MessengerService", 2, "onGetSigmsg ", paramHashMap);
-      }
+    ((azbv)paramarck.getManager(QQManagerFactory.ONLINE_STATUS_MANAGER)).d(paramarck.getExtOnlineStatus());
+  }
+  
+  public Class<arck> clazz()
+  {
+    return arck.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public boolean isNeedUpgradeReset()
+  {
+    QLog.d("OnlineStatusConfProcessor", 1, "isNeedUpgradeReset ");
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("OnlineStatusConfProcessor", 2, "migrateOldVersion");
     }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("OnlineStatusConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public int type()
+  {
+    return 578;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arcl
  * JD-Core Version:    0.7.0.1
  */

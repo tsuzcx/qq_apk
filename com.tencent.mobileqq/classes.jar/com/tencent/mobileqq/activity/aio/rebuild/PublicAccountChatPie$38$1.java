@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahiu;
-import ahjs;
-import amrk;
-import amtj;
-import bily;
+import aido;
+import aiem;
+import anty;
+import anvx;
+import bjxa;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.EqqDetail;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigGroupInfo;
@@ -22,7 +23,7 @@ import java.util.List;
 public class PublicAccountChatPie$38$1
   implements Runnable
 {
-  public PublicAccountChatPie$38$1(ahjs paramahjs) {}
+  public PublicAccountChatPie$38$1(aiem paramaiem) {}
   
   public void run()
   {
@@ -46,13 +47,13 @@ public class PublicAccountChatPie$38$1
         while (localIterator2.hasNext())
         {
           mobileqq_mp.ConfigInfo localConfigInfo = (mobileqq_mp.ConfigInfo)localIterator2.next();
-          if (localConfigInfo.title.get().equals(amtj.a(2131707867))) {
+          if (localConfigInfo.title.get().equals(anvx.a(2131708214))) {
             localConfigInfo.state.set(1);
           }
         }
       }
       localEqqDetail.accountData = ((mobileqq_mp.GetEqqAccountDetailInfoResponse)localObject).toByteArray();
-      ((amrk)this.a.a.app.getManager(69)).a(localEqqDetail);
+      ((anty)this.a.a.app.getManager(QQManagerFactory.EQQ_DETAIL_DATA_MANAGER)).a(localEqqDetail);
       this.a.a.a.a(true);
       return;
     }

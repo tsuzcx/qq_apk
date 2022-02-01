@@ -10,7 +10,7 @@ import java.nio.ByteBuffer;
 public class NightRGBStretchImpFilter
   extends BaseFilter
 {
-  public static final String RGB_STRETCH_FRAGMENT = "precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nuniform sampler2D inputImageTexture2;\nuniform sampler2D inputImageTexture3;\nuniform float param;\nuniform float scale;\nvoid main()\n{\nvec4 color_origin = texture2D(inputImageTexture,textureCoordinate);\nvec4 color_raw = vec4(color_origin.r, color_origin.g, color_origin.b, color_origin.a);\ncolor_raw.r = texture2D(inputImageTexture3, vec2(color_raw.r,0.0)).r;\ncolor_raw.g = texture2D(inputImageTexture3, vec2(color_raw.g,0.0)).g;\ncolor_raw.b = texture2D(inputImageTexture3, vec2(color_raw.b,0.0)).b;\ncolor_raw = color_raw + color_raw - color_raw * color_raw;\ncolor_raw = color_origin + (param - 0.5) *scale* (color_raw - color_origin);\ncolor_raw.a = 1.0;\ngl_FragColor = color_raw;\n}";
+  public static final String RGB_STRETCH_FRAGMENT = "precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nuniform sampler2D inputImageTexture2;\nuniform sampler2D inputImageTexture3;\nuniform float param;\nuniform float scale;\nuniform float alpha;\nvoid main()\n{\nvec4 color_origin = texture2D(inputImageTexture,textureCoordinate);\nvec4 color_raw = vec4(color_origin.r, color_origin.g, color_origin.b, color_origin.a);\ncolor_raw.r = texture2D(inputImageTexture3, vec2(color_raw.r,0.0)).r;\ncolor_raw.g = texture2D(inputImageTexture3, vec2(color_raw.g,0.0)).g;\ncolor_raw.b = texture2D(inputImageTexture3, vec2(color_raw.b,0.0)).b;\ncolor_raw = color_raw + color_raw - color_raw * color_raw;\ncolor_raw = color_origin + (param - 0.5) *scale* (color_raw - color_origin);\ncolor_raw.a = 1.0;\ngl_FragColor = mix(color_origin, color_raw, alpha);\n}";
   private static final String TAG = NightRGBStretchImpFilter.class.getSimpleName();
   private int[] mHistogram;
   private float param;
@@ -19,7 +19,7 @@ public class NightRGBStretchImpFilter
   
   public NightRGBStretchImpFilter()
   {
-    super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nuniform sampler2D inputImageTexture2;\nuniform sampler2D inputImageTexture3;\nuniform float param;\nuniform float scale;\nvoid main()\n{\nvec4 color_origin = texture2D(inputImageTexture,textureCoordinate);\nvec4 color_raw = vec4(color_origin.r, color_origin.g, color_origin.b, color_origin.a);\ncolor_raw.r = texture2D(inputImageTexture3, vec2(color_raw.r,0.0)).r;\ncolor_raw.g = texture2D(inputImageTexture3, vec2(color_raw.g,0.0)).g;\ncolor_raw.b = texture2D(inputImageTexture3, vec2(color_raw.b,0.0)).b;\ncolor_raw = color_raw + color_raw - color_raw * color_raw;\ncolor_raw = color_origin + (param - 0.5) *scale* (color_raw - color_origin);\ncolor_raw.a = 1.0;\ngl_FragColor = color_raw;\n}");
+    super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nuniform sampler2D inputImageTexture2;\nuniform sampler2D inputImageTexture3;\nuniform float param;\nuniform float scale;\nuniform float alpha;\nvoid main()\n{\nvec4 color_origin = texture2D(inputImageTexture,textureCoordinate);\nvec4 color_raw = vec4(color_origin.r, color_origin.g, color_origin.b, color_origin.a);\ncolor_raw.r = texture2D(inputImageTexture3, vec2(color_raw.r,0.0)).r;\ncolor_raw.g = texture2D(inputImageTexture3, vec2(color_raw.g,0.0)).g;\ncolor_raw.b = texture2D(inputImageTexture3, vec2(color_raw.b,0.0)).b;\ncolor_raw = color_raw + color_raw - color_raw * color_raw;\ncolor_raw = color_origin + (param - 0.5) *scale* (color_raw - color_origin);\ncolor_raw.a = 1.0;\ngl_FragColor = mix(color_origin, color_raw, alpha);\n}");
     initParams();
   }
   
@@ -28,12 +28,7 @@ public class NightRGBStretchImpFilter
     this.param = 0.0F;
     addParam(new UniformParam.FloatParam("param", 0.5F));
     addParam(new UniformParam.FloatParam("scale", 2.0F));
-  }
-  
-  public void ClearGLSL()
-  {
-    RendererUtils.clearTexture(this.paramTEXTRUEID);
-    super.ClearGLSL();
+    addParam(new UniformParam.FloatParam("alpha", 1.0F));
   }
   
   public void apply()
@@ -173,6 +168,12 @@ public class NightRGBStretchImpFilter
     }
   }
   
+  public void clearGLSL()
+  {
+    RendererUtils.clearTexture(this.paramTEXTRUEID);
+    super.clearGLSL();
+  }
+  
   public boolean needRender()
   {
     return this.param > 0.5D;
@@ -187,6 +188,11 @@ public class NightRGBStretchImpFilter
   public void reset()
   {
     this.recordParam = 0.5F;
+  }
+  
+  public void setAlpha(float paramFloat)
+  {
+    addParam(new UniformParam.FloatParam("alpha", paramFloat));
   }
   
   public void setHistogram(int[] paramArrayOfInt)

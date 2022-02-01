@@ -1,108 +1,115 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Map;
-import mqq.app.AppRuntime;
+import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class bktu
 {
-  public static Map<String, String> a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private bkuh jdField_a_of_type_Bkuh = new bktv(this);
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long = 3600L;
+  private String jdField_a_of_type_JavaLangString = "";
+  private List<bkuj> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<String> b = new ArrayList();
   
-  static
+  public bktu(JSONObject paramJSONObject)
   {
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
-  
-  public bktu(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  private boolean a(JSONObject paramJSONObject)
-  {
+    if (paramJSONObject != null) {}
     for (;;)
     {
+      int i;
       try
       {
-        paramJSONObject = paramJSONObject.getJSONArray("readerUrls");
-        int i;
-        if (paramJSONObject == null)
+        this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("type");
+        long l = paramJSONObject.getLong("interval");
+        if ((l > 0L) && (l < 604800L)) {
+          this.jdField_a_of_type_Long = l;
+        }
+        Object localObject = paramJSONObject.getJSONArray("filter");
+        if (localObject != null)
         {
           i = 0;
-          if (i == 0)
+          if (i < ((JSONArray)localObject).length())
           {
-            bkvd.a("ReaderUrlConfigDataHelper", "jsonDataToTabItemData ,size=0");
-            return false;
+            JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
+            if (localJSONObject == null) {
+              break label248;
+            }
+            this.jdField_a_of_type_JavaUtilList.add(new bkuj(localJSONObject));
+            break label248;
           }
         }
-        else
+        if (paramJSONObject.has("rpt"))
         {
-          i = paramJSONObject.length();
-          continue;
-        }
-        jdField_a_of_type_JavaUtilMap.clear();
-        int j = 0;
-        if (j >= i) {
-          break;
-        }
-        JSONObject localJSONObject = paramJSONObject.getJSONObject(j);
-        Iterator localIterator = localJSONObject.keys();
-        if (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          if (!TextUtils.isEmpty(str)) {
-            jdField_a_of_type_JavaUtilMap.put(str, localJSONObject.getString(str));
+          paramJSONObject = paramJSONObject.getJSONObject("rpt");
+          if (paramJSONObject != null)
+          {
+            i = paramJSONObject.getInt("id");
+            if (i > 100000)
+            {
+              this.jdField_a_of_type_Int = i;
+              paramJSONObject = paramJSONObject.getJSONArray("fields");
+              if (paramJSONObject != null)
+              {
+                i = j;
+                if (i < paramJSONObject.length())
+                {
+                  localObject = paramJSONObject.getString(i);
+                  if ((localObject != null) && (!((String)localObject).isEmpty())) {
+                    this.b.add(localObject);
+                  }
+                  i += 1;
+                  continue;
+                }
+              }
+            }
           }
         }
-        else
-        {
-          j += 1;
-        }
+        return;
       }
-      catch (Exception paramJSONObject)
+      catch (JSONException paramJSONObject)
       {
-        bkvd.a("ReaderUrlConfigDataHelper", paramJSONObject.getMessage());
-        return false;
+        paramJSONObject.printStackTrace();
       }
+      label248:
+      i += 1;
     }
-    return true;
   }
   
-  private void b()
+  public int a()
   {
-    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    str = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("CGI_RESPONSE", 0).getString("SP_URL_CONFIG_DATA" + str, "");
-    if (TextUtils.isEmpty(str)) {
-      return;
-    }
-    try
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public List<String> a()
+  {
+    return this.b;
+  }
+  
+  public boolean a(Object paramObject)
+  {
+    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
     {
-      a(new JSONObject(str));
-      return;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        bkuj localbkuj = (bkuj)localIterator.next();
+        if (!localbkuj.a()) {
+          return false;
+        }
+        if (!localbkuj.a(paramObject)) {
+          return false;
+        }
+      }
+      return true;
     }
-    catch (JSONException localJSONException)
-    {
-      bkvd.a("ReaderUrlConfigDataHelper", "getQQReaderUrlConfigDataFromDB," + localJSONException.getMessage());
-    }
-  }
-  
-  private void c()
-  {
-    bkvv.a(bkvv.c, this.jdField_a_of_type_Bkuh);
-  }
-  
-  public void a()
-  {
-    b();
-    c();
+    return false;
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.main;
 
-import achu;
-import agwt;
-import ajey;
+import acyc;
+import ahpt;
+import akam;
 import android.content.res.Resources;
 import android.support.v4.util.MQLruCache;
 import android.util.DisplayMetrics;
-import awcm;
-import bcfl;
+import axio;
+import bdmg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mobileqq.activity.SplashActivity;
@@ -18,7 +18,7 @@ import com.tencent.qphone.base.util.QLog;
 public class MainAssistObserver$2
   implements Runnable
 {
-  public MainAssistObserver$2(ajey paramajey) {}
+  public MainAssistObserver$2(akam paramakam) {}
   
   public void run()
   {
@@ -29,8 +29,8 @@ public class MainAssistObserver$2
     }
     try
     {
-      agwt.a(localQQAppInterface);
-      awcm.a().a(localQQAppInterface);
+      ahpt.a(localQQAppInterface);
+      axio.a().a(localQQAppInterface);
       localObject = BaseApplicationImpl.sApplication.getResources().getDisplayMetrics();
       int i = ((DisplayMetrics)localObject).widthPixels;
       int j = ((DisplayMetrics)localObject).heightPixels;

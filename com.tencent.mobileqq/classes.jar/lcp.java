@@ -1,36 +1,15 @@
-import android.graphics.Bitmap;
-import com.tencent.av.gaudio.AVPhoneUserInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
 
 public class lcp
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public Bitmap a;
-  public AVPhoneUserInfo a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  public long c;
-  public String c;
-  public boolean c;
-  public int d;
-  public long d;
-  public boolean d;
-  public int e = -1;
-  public boolean e;
-  public int f = 0;
-  public boolean f;
-  public boolean g;
-  public boolean h = true;
+  public lcp(VideoController paramVideoController) {}
   
-  public lcp()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_c_of_type_Long = 2000L;
+    bdla.b(null, "CliOper", "", "", "0x8006994", "0x8006994", 0, 0, "", "", "", "");
   }
 }
 

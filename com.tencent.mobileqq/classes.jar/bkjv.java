@@ -1,8 +1,16 @@
-import NS_KING_PUBLIC.stAuth;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qqconnect.wtlogin.Login;
 
-public abstract interface bkjv
+public class bkjv
+  implements DialogInterface.OnClickListener
 {
-  public abstract void onGetAuthInfo(boolean paramBoolean, stAuth paramstAuth);
+  public bkjv(Login paramLogin) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

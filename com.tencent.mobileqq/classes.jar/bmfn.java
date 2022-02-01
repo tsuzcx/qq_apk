@@ -1,23 +1,31 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.TextView;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+import cooperation.qqreader.js.JsCallParams;
 
-public class bmfn
-  implements ValueAnimator.AnimatorUpdateListener
+class bmfn
 {
-  public bmfn(AEEditorAILoadingView paramAEEditorAILoadingView) {}
+  long jdField_a_of_type_Long;
+  JsCallParams jdField_a_of_type_CooperationQqreaderJsJsCallParams;
+  long b;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  bmfn(String paramString1, String paramString2, String paramString3, long paramLong, String... paramVarArgs)
   {
-    int i = (int)(AEEditorAILoadingView.a(1000.0F, paramValueAnimator.getAnimatedFraction(), 0.0F, 1.0F) * 75.0F - 75.0F);
-    AEEditorAILoadingView.b(this.a).setPadding(0, i, 0, 0);
-    AEEditorAILoadingView.c(this.a).setPadding(0, i, 0, 0);
-    paramValueAnimator = (ViewGroup.MarginLayoutParams)AEEditorAILoadingView.b(this.a).getLayoutParams();
-    paramValueAnimator.topMargin = (i + AEEditorAILoadingView.b(this.a));
-    AEEditorAILoadingView.b(this.a).setLayoutParams(paramValueAnimator);
+    this.jdField_a_of_type_CooperationQqreaderJsJsCallParams = new JsCallParams(paramString1, paramString2, paramString3, paramVarArgs);
+    this.jdField_a_of_type_Long = paramLong;
+    this.b = System.currentTimeMillis();
+  }
+  
+  void a()
+  {
+    this.b = System.currentTimeMillis();
+  }
+  
+  boolean a()
+  {
+    return System.currentTimeMillis() - this.b > this.jdField_a_of_type_Long;
+  }
+  
+  boolean a(bmfn parambmfn)
+  {
+    return this.jdField_a_of_type_CooperationQqreaderJsJsCallParams.a(parambmfn.jdField_a_of_type_CooperationQqreaderJsJsCallParams);
   }
 }
 

@@ -28,9 +28,9 @@ import android.widget.Checkable;
 import android.widget.ListAdapter;
 import android.widget.PopupWindow;
 import android.widget.RemoteViews.RemoteView;
-import bjqx;
-import bjsd;
-import bjup;
+import blcj;
+import bldp;
+import blgb;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinEngine;
 import com.tencent.theme.SkinnableView;
@@ -39,7 +39,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Iterator;
-import snm;
+import tax;
 
 @RemoteViews.RemoteView
 public class ListView
@@ -94,7 +94,7 @@ public class ListView
   protected Drawable mOverScrollHeaderShadow;
   int mOverScrollHeaderTopOffset = 0;
   protected int mOverScrollHeight;
-  protected bjsd mOverScrollViewListener;
+  protected bldp mOverScrollViewListener;
   protected ListView.OverscrollViewContainer mOverscrollFooterView;
   protected int mOverscrollHeadState = 0;
   public ListView.OverscrollViewContainer mOverscrollHeaderViewContainer;
@@ -121,7 +121,7 @@ public class ListView
   public ListView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramAttributeSet = new bjup(paramContext.obtainStyledAttributes(paramAttributeSet, getStyleableValues("ListView"), paramInt, 0));
+    paramAttributeSet = new blgb(paramContext.obtainStyledAttributes(paramAttributeSet, getStyleableValues("ListView"), paramInt, 0));
     CharSequence[] arrayOfCharSequence = paramAttributeSet.a(LISTVIEW_ENTRIES);
     if (arrayOfCharSequence != null) {
       setAdapter(new ArrayAdapter(paramContext, 17367043, arrayOfCharSequence));
@@ -520,7 +520,7 @@ public class ListView
   private void checkOverScrollHeaderIsVisable()
   {
     int j;
-    snm localsnm;
+    tax localtax;
     View localView;
     int i;
     if ((this.mTouchMode == 5) && (getScrollY() != 0))
@@ -536,16 +536,16 @@ public class ListView
         }
         this.mOverscrollHeadState = 1;
       }
-      if ((this.mOverScrollViewListener != null) && ((this.mOverScrollViewListener instanceof snm)))
+      if ((this.mOverScrollViewListener != null) && ((this.mOverScrollViewListener instanceof tax)))
       {
-        localsnm = (snm)this.mOverScrollViewListener;
+        localtax = (tax)this.mOverScrollViewListener;
         localView = this.mOverscrollHeaderViewContainer.getChildAt(0);
         if (getOverScrollHeight() <= 0) {
           break label174;
         }
         i = -j * 100 / getOverScrollHeight();
-        localsnm.a(0, localView, this, i);
-        ((snm)this.mOverScrollViewListener).a(this.mOverscrollHeaderViewContainer.getChildAt(0), this, -j);
+        localtax.a(0, localView, this, i);
+        ((tax)this.mOverScrollViewListener).a(this.mOverscrollHeaderViewContainer.getChildAt(0), this, -j);
       }
     }
     label174:
@@ -570,25 +570,25 @@ public class ListView
             }
             this.mOverscrollHeadState = 1;
           }
-        } while ((this.mOverScrollViewListener == null) || (!(this.mOverScrollViewListener instanceof snm)));
-        localsnm = (snm)this.mOverScrollViewListener;
+        } while ((this.mOverScrollViewListener == null) || (!(this.mOverScrollViewListener instanceof tax)));
+        localtax = (tax)this.mOverScrollViewListener;
         localView = this.mOverscrollFooterView.getChildAt(0);
         if (getOverScrollFooterHeight() == 0) {}
         for (i = 0;; i = j * 100 / getOverScrollFooterHeight())
         {
-          localsnm.a(1, localView, this, i);
-          ((snm)this.mOverScrollViewListener).a(this.mOverscrollFooterView.getChildAt(0), this, j);
+          localtax.a(1, localView, this, i);
+          ((tax)this.mOverScrollViewListener).a(this.mOverscrollFooterView.getChildAt(0), this, j);
           return;
         }
         if ((j >= 0) || (this.mOverscrollHeaderViewContainer == null)) {
           break label387;
         }
-      } while ((this.mOverScrollViewListener == null) || (!(this.mOverScrollViewListener instanceof snm)));
-      ((snm)this.mOverScrollViewListener).a(this.mOverscrollHeaderViewContainer.getChildAt(0), this, -j);
+      } while ((this.mOverScrollViewListener == null) || (!(this.mOverScrollViewListener instanceof tax)));
+      ((tax)this.mOverScrollViewListener).a(this.mOverscrollHeaderViewContainer.getChildAt(0), this, -j);
       return;
-    } while ((j <= 0) || (this.mOverscrollFooterView == null) || (!(this.mOverScrollViewListener instanceof snm)));
+    } while ((j <= 0) || (this.mOverscrollFooterView == null) || (!(this.mOverScrollViewListener instanceof tax)));
     label387:
-    ((snm)this.mOverScrollViewListener).a(this.mOverscrollFooterView.getChildAt(0), this, j);
+    ((tax)this.mOverScrollViewListener).a(this.mOverscrollFooterView.getChildAt(0), this, j);
   }
   
   private void checkOverscrollViewIsCompleteVisable(View paramView)
@@ -2052,7 +2052,7 @@ public class ListView
   
   public void addHeaderView(View paramView, int paramInt, Object paramObject, boolean paramBoolean)
   {
-    if ((this.mAdapter != null) && (!(this.mAdapter instanceof bjqx))) {
+    if ((this.mAdapter != null) && (!(this.mAdapter instanceof blcj))) {
       throw new IllegalStateException("Cannot add header view to list -- setAdapter has already been called.");
     }
     if (paramView == null) {}
@@ -2974,8 +2974,8 @@ public class ListView
         if (this.mItemCount != this.mAdapter.getCount())
         {
           localObject1 = this.mAdapter.getClass();
-          if ((this.mAdapter instanceof bjqx)) {
-            localObject1 = ((bjqx)this.mAdapter).getWrappedAdapter().getClass();
+          if ((this.mAdapter instanceof blcj)) {
+            localObject1 = ((blcj)this.mAdapter).getWrappedAdapter().getClass();
           }
           throw new IllegalStateException("The content of the adapter has changed but ListView did not receive a notification. Make sure the content of your adapter is not modified from a background thread, but only from the UI thread. [in ListView(" + getId() + ", " + getClass() + ") with Adapter(" + localObject1 + ")]mItemCount=" + this.mItemCount + "mAdapter.getCount()=" + this.mAdapter.getCount() + ",adapter.addr = " + this.mAdapter.toString());
         }
@@ -3750,7 +3750,7 @@ public class ListView
   {
     if (this.mFooterViewInfos.size() > 0)
     {
-      if ((this.mAdapter == null) || (!((bjqx)this.mAdapter).b(paramView))) {
+      if ((this.mAdapter == null) || (!((blcj)this.mAdapter).b(paramView))) {
         break label60;
       }
       if (this.mDataSetObserver != null) {
@@ -3781,7 +3781,7 @@ public class ListView
     }
     for (;;)
     {
-      if ((this.mAdapter != null) && (((bjqx)this.mAdapter).a(paramView))) {
+      if ((this.mAdapter != null) && (((blcj)this.mAdapter).a(paramView))) {
         if (this.mDataSetObserver != null) {
           this.mDataSetObserver.onChanged();
         }
@@ -3905,7 +3905,7 @@ public class ListView
     int i;
     if ((this.mHeaderViewInfos.size() > 0) || (this.mFooterViewInfos.size() > 0))
     {
-      this.mAdapter = new bjqx(this.mHeaderViewInfos, this.mFooterViewInfos, paramListAdapter);
+      this.mAdapter = new blcj(this.mHeaderViewInfos, this.mFooterViewInfos, paramListAdapter);
       this.mOldSelectedPosition = -1;
       this.mOldSelectedRowId = -9223372036854775808L;
       super.setAdapter(paramListAdapter);
@@ -3992,7 +3992,7 @@ public class ListView
       return;
       this.mContentBackgroundDrawable = paramDrawable;
       if (paramBoolean1) {
-        this.mOverScrollHeaderShadow = getResources().getDrawable(2130840564);
+        this.mOverScrollHeaderShadow = getResources().getDrawable(2130840603);
       }
     }
   }
@@ -4133,9 +4133,9 @@ public class ListView
     this.mOverScrollHeight = paramInt;
   }
   
-  public void setOverScrollListener(bjsd parambjsd)
+  public void setOverScrollListener(bldp parambldp)
   {
-    this.mOverScrollViewListener = parambjsd;
+    this.mOverScrollViewListener = parambldp;
   }
   
   public void setOverscrollFooter(Drawable paramDrawable)
@@ -4268,9 +4268,9 @@ public class ListView
   public void setStatisticCollector()
   {
     ListAdapter localListAdapter = getAdapter();
-    if ((localListAdapter instanceof bjqx))
+    if ((localListAdapter instanceof blcj))
     {
-      localListAdapter = ((bjqx)localListAdapter).getWrappedAdapter();
+      localListAdapter = ((blcj)localListAdapter).getWrappedAdapter();
       if ((localListAdapter instanceof ExpandableListConnector))
       {
         ((ExpandableListConnector)localListAdapter).a().getClass().getName();

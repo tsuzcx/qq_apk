@@ -1,14 +1,14 @@
 package cooperation.vip.qqbanner;
 
-import akke;
+import alfw;
 import android.widget.TextView;
-import blbn;
-import blbo;
+import bmob;
+import bmoc;
 
 public class QbossADBannerCountDownManager$1
   implements Runnable
 {
-  public QbossADBannerCountDownManager$1(blbo paramblbo, akke paramakke) {}
+  public QbossADBannerCountDownManager$1(bmoc parambmoc, alfw paramalfw) {}
   
   public void run()
   {
@@ -18,17 +18,17 @@ public class QbossADBannerCountDownManager$1
       do
       {
         return;
-      } while (!(this.a instanceof blbn));
-      blbo.a(this.this$0, (blbn)this.a);
-      blbo.a(this.this$0).setText(blbo.a(this.this$0, blbo.a(this.this$0).e));
-      blbo.b(this.this$0).setText(blbo.b(this.this$0, blbo.a(this.this$0).f));
-      blbo.a(this.this$0).setTextColor(blbo.a(this.this$0, blbo.a(this.this$0).g));
-      blbo.b(this.this$0).setTextColor(blbo.b(this.this$0, blbo.a(this.this$0).g));
-      blbo.a(this.this$0, blbo.a(this.this$0));
-      blbo.c(this.this$0).setBackgroundDrawable(blbo.a(this.this$0, blbo.a(this.this$0).h));
-      blbo.c(this.this$0).setTextColor(blbo.c(this.this$0, blbo.a(this.this$0).i));
-    } while (blbo.a(this.this$0).d != 1);
-    blbo.a(this.this$0);
+      } while (!(this.a instanceof bmob));
+      bmoc.a(this.this$0, (bmob)this.a);
+      bmoc.a(this.this$0).setText(bmoc.a(this.this$0, bmoc.a(this.this$0).e));
+      bmoc.b(this.this$0).setText(bmoc.b(this.this$0, bmoc.a(this.this$0).f));
+      bmoc.a(this.this$0).setTextColor(bmoc.a(this.this$0, bmoc.a(this.this$0).g));
+      bmoc.b(this.this$0).setTextColor(bmoc.b(this.this$0, bmoc.a(this.this$0).g));
+      bmoc.a(this.this$0, bmoc.a(this.this$0));
+      bmoc.c(this.this$0).setBackgroundDrawable(bmoc.a(this.this$0, bmoc.a(this.this$0).h));
+      bmoc.c(this.this$0).setTextColor(bmoc.c(this.this$0, bmoc.a(this.this$0).i));
+    } while (bmoc.a(this.this$0).d != 1);
+    bmoc.a(this.this$0);
   }
 }
 

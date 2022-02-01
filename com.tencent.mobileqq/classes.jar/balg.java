@@ -1,17 +1,14 @@
-import android.app.Activity;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-
-class balg
-  implements EIPCResultCallback
+public class balg
 {
-  balg(bakw parambakw) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public balg(String paramString1, String paramString2, String paramString3)
   {
-    if (-102 == paramEIPCResult.code) {
-      this.a.mContext.finish();
-    }
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 

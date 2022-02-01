@@ -1,24 +1,34 @@
-import com.tencent.mobileqq.activity.contact.connections.ConnectsExplorationBanner;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class aigk
-  extends aigo
+class aigk
+  extends WtloginObserver
 {
-  public ConnectsExplorationBanner a;
+  aigk(aigi paramaigi, long paramLong, int[] paramArrayOfInt, DevlockInfo[] paramArrayOfDevlockInfo) {}
   
-  public aigk(ConnectsExplorationBanner paramConnectsExplorationBanner)
+  public void onCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectsExplorationBanner = paramConnectsExplorationBanner;
-    this.jdField_a_of_type_Long = paramConnectsExplorationBanner.timestamp;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectsExplorationBanner.uin;
-  }
-  
-  public boolean a()
-  {
-    return true;
+    long l;
+    if (QLog.isColorLevel())
+    {
+      l = System.currentTimeMillis();
+      paramWUserSigInfo = new StringBuilder().append("CheckDevLockStatus ret: ").append(paramInt).append(", has devinfo: ");
+      if (paramDevlockInfo != null) {
+        break label100;
+      }
+    }
+    label100:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("C2CMsgRoamProxy", 2, bool + ", cost: " + (l - this.jdField_a_of_type_Long) + "ms");
+      this.jdField_a_of_type_ArrayOfInt[0] = paramInt;
+      this.jdField_a_of_type_ArrayOfOicqWlogin_sdkDevicelockDevlockInfo[0] = paramDevlockInfo;
+      aigi.b(this.jdField_a_of_type_Aigi).b();
+      return;
+    }
   }
 }
 

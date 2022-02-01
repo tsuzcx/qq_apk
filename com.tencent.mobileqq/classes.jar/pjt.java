@@ -1,12 +1,25 @@
 public class pjt
 {
-  public int a;
-  public String a;
-  public String b;
+  public static int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public long b;
+  public boolean b;
+  public long c;
+  public long d;
   
-  public String toString()
+  static
   {
-    return "styleID = " + this.jdField_a_of_type_JavaLangString + ", proteusData = " + this.b + ", rankWeight = " + this.jdField_a_of_type_Int;
+    jdField_a_of_type_Int = 300000;
+  }
+  
+  public pjt()
+  {
+    this.jdField_b_of_type_Long = -1L;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_b_of_type_Int = 0;
   }
 }
 

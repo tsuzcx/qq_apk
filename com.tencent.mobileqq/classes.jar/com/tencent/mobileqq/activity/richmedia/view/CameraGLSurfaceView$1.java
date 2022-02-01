@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.richmedia.view;
 
-import akwz;
+import aluv;
 
 class CameraGLSurfaceView$1
   implements Runnable
 {
-  CameraGLSurfaceView$1(CameraGLSurfaceView paramCameraGLSurfaceView, akwz paramakwz) {}
+  CameraGLSurfaceView$1(CameraGLSurfaceView paramCameraGLSurfaceView, aluv paramaluv) {}
   
   public void run()
   {

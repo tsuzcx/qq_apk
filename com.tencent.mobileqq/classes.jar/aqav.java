@@ -1,88 +1,172 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.download.ArkDownloadController.1;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager;
-import java.io.File;
+import java.util.ArrayList;
 
 public class aqav
-  extends aptq<bmxj>
 {
-  @NonNull
-  public bmxj a(int paramInt)
-  {
-    return new bmxj();
-  }
+  private static aqav jdField_a_of_type_Aqav;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private ArrayList<aqay> jdField_a_of_type_JavaUtilArrayList = new ArrayList(4);
+  private boolean jdField_a_of_type_Boolean;
+  private ArrayList<aqay> b = new ArrayList(4);
   
-  @Nullable
-  public bmxj a(aptx[] paramArrayOfaptx)
+  public static aqav a()
   {
-    if ((paramArrayOfaptx == null) || (paramArrayOfaptx.length == 0)) {
-      return null;
-    }
-    paramArrayOfaptx = paramArrayOfaptx[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMDynamicTextConfigProcessor", 2, "handleQIMDynamicTextConfig onParsed, content:" + paramArrayOfaptx);
-    }
-    return new bmxg().a(paramArrayOfaptx, DynamicTextConfigManager.a.getAbsolutePath(), "temp_dynamic_text_zip", new aqaw(this));
-  }
-  
-  public void a(bmxj parambmxj)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMDynamicTextConfigProcessor", 2, "handleQIMDynamicTextConfig onUpdate");
-    }
-  }
-  
-  public Class<bmxj> clazz()
-  {
-    return bmxj.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (!DynamicTextConfigManager.b()) {
-      return 0;
-    }
-    return bfyz.a(BaseApplicationImpl.getContext());
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMDynamicTextConfigProcessor", 2, "handleQIMDynamicTextConfig onReqFailed");
-    }
-  }
-  
-  public int onSend(int paramInt)
-  {
-    if (!DynamicTextConfigManager.b())
+    if (jdField_a_of_type_Aqav == null) {}
+    try
     {
-      QLog.i("QIMDynamicTextConfigProcessor", 1, "config file not exist");
-      apub.a().a(309, 0);
-      return 0;
+      if (jdField_a_of_type_Aqav == null) {
+        jdField_a_of_type_Aqav = new aqav();
+      }
+      return jdField_a_of_type_Aqav;
     }
-    return super.onSend(paramInt);
+    finally {}
   }
   
-  public int type()
+  private void a(Context paramContext, ArrayList<aqay> paramArrayList, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2)
   {
-    return 309;
+    if (paramArrayList.size() <= 4) {
+      paramLinearLayout2.setVisibility(8);
+    }
+    Drawable localDrawable = paramContext.getResources().getDrawable(2130838701);
+    int i = 0;
+    if (i < paramArrayList.size())
+    {
+      Object localObject = (aqay)paramArrayList.get(i);
+      View localView = LayoutInflater.from(paramContext).inflate(2131558711, null, false);
+      URLImageView localURLImageView = (URLImageView)localView.findViewById(2131368383);
+      TextView localTextView = (TextView)localView.findViewById(2131372154);
+      QLog.d("ark.download.ctrl", 1, new Object[] { "ark.dctrl [initAppView] item[", Integer.valueOf(i), "],app name:", ((aqay)localObject).b, ",appid:", ((aqay)localObject).jdField_a_of_type_JavaLangString, ",icon:", ((aqay)localObject).c });
+      if (i < 7)
+      {
+        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        localURLDrawableOptions.mRequestWidth = AIOUtils.dp2px(47.0F, paramContext.getResources());
+        localURLDrawableOptions.mRequestHeight = localURLDrawableOptions.mRequestWidth;
+        localURLDrawableOptions.mLoadingDrawable = localDrawable;
+        localURLDrawableOptions.mFailedDrawable = localDrawable;
+        localObject = URLDrawable.getDrawable(((aqay)localObject).c, localURLDrawableOptions);
+        ((URLDrawable)localObject).setTargetDensity(paramContext.getResources().getDisplayMetrics().densityDpi);
+        if (((URLDrawable)localObject).getStatus() == 2) {
+          ((URLDrawable)localObject).restartDownload();
+        }
+        localURLImageView.setImageDrawable((Drawable)localObject);
+        localTextView.setVisibility(8);
+        label256:
+        if (i >= 4) {
+          break label336;
+        }
+        paramLinearLayout1.addView(localView, i);
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        if (i != 7) {
+          return;
+        }
+        localURLImageView.setImageDrawable(paramContext.getResources().getDrawable(2130838703));
+        localTextView.setText(String.format("+%d", new Object[] { Integer.valueOf(paramArrayList.size() - 7) }));
+        localTextView.setVisibility(0);
+        break label256;
+        label336:
+        paramLinearLayout2.addView(localView, i - 4);
+      }
+    }
+  }
+  
+  private void a(String paramString)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      QLog.e("ark.download.ctrl", 1, new Object[] { "ark.dctrl [checkWaitQueueToShowDialog] waite size:", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) });
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      {
+        this.b.clear();
+        this.b.addAll((ArrayList)this.jdField_a_of_type_JavaUtilArrayList.clone());
+        this.jdField_a_of_type_JavaUtilArrayList.clear();
+        b(paramString);
+      }
+      return;
+    }
+  }
+  
+  private void b(String paramString)
+  {
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    if ((localBaseActivity == null) || (localBaseActivity.isFinishing()) || (this.b == null) || (this.b.size() <= 0))
+    {
+      if (this.b != null) {}
+      for (int i = this.b.size();; i = 0)
+      {
+        QLog.e("ark.download.ctrl", 1, new Object[] { "ark.dctrl [showDownloadDialog] error,showlist size:", Integer.valueOf(i) });
+        return;
+      }
+    }
+    Object localObject = new aqaw(this, paramString);
+    try
+    {
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.jdField_a_of_type_Int = this.b.size();
+      QLog.e("ark.download.ctrl", 1, new Object[] { "ark.dctrl [showDownloadDialog] arkappname:", paramString, ",showlist size:", Integer.valueOf(this.jdField_a_of_type_Int) });
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bhdj.a(localBaseActivity, 230, 2131558710, null, String.format(localBaseActivity.getString(2131690174), new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }), localBaseActivity.getString(2131690697), localBaseActivity.getString(2131690171), (DialogInterface.OnClickListener)localObject, (DialogInterface.OnClickListener)localObject);
+      localObject = (LinearLayout)this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131370148);
+      LinearLayout localLinearLayout = (LinearLayout)this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131370147);
+      a(localBaseActivity, this.b, (LinearLayout)localObject, localLinearLayout);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new aqax(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+      bdla.a(null, "dc00898", "", "", "0X800AD1C", "0X800AD1C", 3, 0, String.valueOf(this.jdField_a_of_type_Int), "", paramString, "");
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("ark.download.ctrl", 1, "ark.dctrl [showDownloadDialog] exception:", paramString);
+    }
+  }
+  
+  public void a(String paramString1, String arg2, String paramString3, String paramString4, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    QLog.d("ark.download.ctrl", 1, new Object[] { "ark.dctrl [showDownloadPermissionDialog] arkAppName:", paramString1, ", queue size[", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()), "], app:" + paramString3 + ",iconUrl:" + paramString4 });
+    aqay localaqay = new aqay();
+    localaqay.jdField_a_of_type_JavaLangString = ???;
+    localaqay.c = paramString4;
+    localaqay.b = paramString3;
+    localaqay.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener;
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.add(localaqay);
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_JavaLangRunnable = new ArkDownloadController.1(this, paramString1);
+        ArkDispatchTask.getInstance().postToMainThreadDelayed(this.jdField_a_of_type_JavaLangRunnable, 150L);
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqav
  * JD-Core Version:    0.7.0.1
  */

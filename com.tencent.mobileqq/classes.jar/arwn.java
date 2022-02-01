@@ -1,13 +1,18 @@
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class arwn
-  implements bjoy
+public class arwn
+  implements View.OnClickListener
 {
-  arwn(arwl paramarwl, View paramView) {}
+  public arwn(DataReportSettingFragment paramDataReportSettingFragment) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    bhdj.a(this.a.getActivity(), 0, 2131559645, anvx.a(2131702264), "", anvx.a(2131702259), anvx.a(2131702265), new arwo(this), new arwp(this)).show();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -113,7 +113,7 @@ public class ArkFlashChatMessage
     if (!android.text.TextUtils.isEmpty(this.promptText)) {
       return this.promptText;
     }
-    return MobileQQ.sMobileQQ.getString(2131690151);
+    return MobileQQ.sMobileQQ.getString(2131690189);
   }
   
   public void reset()
@@ -202,7 +202,7 @@ public class ArkFlashChatMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.ArkFlashChatMessage
  * JD-Core Version:    0.7.0.1
  */

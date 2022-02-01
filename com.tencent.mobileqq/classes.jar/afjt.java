@@ -1,20 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.VerifyCodeActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afjt
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public afjt(TroopChatPie paramTroopChatPie) {}
+  public afjt(VerifyCodeActivity paramVerifyCodeActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.finish();
+    this.a.b();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     afjt
  * JD-Core Version:    0.7.0.1
  */

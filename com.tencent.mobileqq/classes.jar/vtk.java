@@ -1,14 +1,34 @@
-import org.json.JSONObject;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
-public class vtk
+class vtk
+  implements vtz
 {
-  public int a;
-  public String a = "";
-  public JSONObject a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  vtk(vtj paramvtj) {}
+  
+  public void a(Object paramObject)
+  {
+    if ((paramObject instanceof vtq))
+    {
+      if (!this.a.b) {
+        ((PublicAccountImageCollectionMainActivity)vtj.a(this.a)).h();
+      }
+      this.a.b = true;
+    }
+    while ((paramObject instanceof vtr)) {
+      if (vtj.a(this.a))
+      {
+        this.a.d(true);
+        return;
+        ((PublicAccountImageCollectionMainActivity)vtj.a(this.a)).g();
+      }
+      else
+      {
+        this.a.d(false);
+        return;
+      }
+    }
+    this.a.d(true);
+  }
 }
 
 

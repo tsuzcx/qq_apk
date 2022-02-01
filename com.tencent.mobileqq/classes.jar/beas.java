@@ -1,63 +1,33 @@
-import com.tencent.mobileqq.data.TroopFeedItem;
-import com.tencent.mobileqq.utils.StringUtil;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import com.tencent.mobileqq.text.QQText;
+import com.tencent.qphone.base.util.QLog;
 
 public class beas
-  extends beaq
+  extends QQText
 {
-  public TroopFeedItem a(JSONObject paramJSONObject)
+  public beas(CharSequence paramCharSequence, int paramInt)
   {
-    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
-    if (localTroopFeedItem == null) {
-      return null;
-    }
-    for (;;)
+    super(paramCharSequence, paramInt);
+  }
+  
+  public void onURLLinkClicked(View paramView, String paramString)
+  {
+    paramString = Uri.parse(paramString);
+    paramView = paramView.getContext();
+    paramString = new Intent("android.intent.action.VIEW", paramString);
+    paramString.putExtra("com.android.browser.application_id", paramView.getPackageName());
+    try
     {
-      int i;
-      int j;
-      try
-      {
-        localTroopFeedItem.type = paramJSONObject.getInt("feed_type");
-        JSONArray localJSONArray = paramJSONObject.getJSONArray("content");
-        localTroopFeedItem.linkUrl = paramJSONObject.getString("open_url");
-        i = 0;
-        if (i >= localJSONArray.length()) {
-          break label200;
-        }
-        paramJSONObject = localJSONArray.getJSONObject(i);
-        j = paramJSONObject.getInt("type");
-        if (j == 0)
-        {
-          localTroopFeedItem.content = paramJSONObject.getString("value");
-        }
-        else if (j == 3)
-        {
-          if (!paramJSONObject.has("pic_url")) {
-            break label203;
-          }
-          localTroopFeedItem.picPath = (paramJSONObject.getString("pic_url") + "/109");
-        }
-      }
-      catch (JSONException paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        return null;
-      }
-      if (j == 10)
-      {
-        localTroopFeedItem.title = paramJSONObject.getString("value");
-      }
-      else if ((j == 6) && (StringUtil.isEmpty(localTroopFeedItem.picPath)) && (paramJSONObject.has("pic_url")))
-      {
-        localTroopFeedItem.picPath = paramJSONObject.getString("pic_url");
-        break label203;
-        label200:
-        return localTroopFeedItem;
-      }
-      label203:
-      i += 1;
+      paramView.startActivity(paramString);
+      return;
+    }
+    catch (ActivityNotFoundException paramView)
+    {
+      QLog.w("OpenDefaultBrowserQQText", 1, "Activity was not found for intent, " + paramString.toString());
     }
   }
 }

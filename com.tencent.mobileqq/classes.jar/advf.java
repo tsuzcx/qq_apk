@@ -1,50 +1,77 @@
+import android.content.Intent;
+import android.os.Message;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.Switch;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.troop.widget.FollowImageTextView;
+import com.tencent.mobileqq.widget.MyGridView;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class advf
-  extends andd
+  extends MqqHandler
 {
-  public advf(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public advf(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  protected void onGetAutoAgreeInvite2GroupIn50Flag(boolean paramBoolean1, boolean paramBoolean2)
+  public void handleMessage(Message paramMessage)
   {
-    TextView localTextView;
-    if (paramBoolean1)
+    switch (paramMessage.what)
     {
-      this.a.f.a().setChecked(paramBoolean2);
-      localTextView = this.a.a;
-      if (!paramBoolean2) {
-        break label59;
-      }
     }
-    label59:
-    for (int i = 2131692854;; i = 2131692855)
+    label424:
+    do
     {
-      localTextView.setText(i);
-      bfyz.c(this.a, this.a.app.getCurrentAccountUin(), paramBoolean2);
-      return;
-    }
-  }
-  
-  protected void onSend0x4ff_86Rsp(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    boolean bool = true;
-    if (!paramBoolean1)
-    {
-      QQToast.a(this.a, 1, amtj.a(2131707029), 0).a();
-      Switch localSwitch = this.a.f.a();
-      if (!paramBoolean2) {}
-      for (paramBoolean1 = bool;; paramBoolean1 = false)
+      do
       {
-        localSwitch.setChecked(paramBoolean1);
+        do
+        {
+          return;
+          if ((DiscussionInfoCardActivity.a(this.a) != null) && (DiscussionInfoCardActivity.a(this.a).isShowing())) {
+            DiscussionInfoCardActivity.a(this.a).dismiss();
+          }
+          paramMessage = new Intent();
+          paramMessage.putExtra("isNeedFinish", true);
+          this.a.setResult(-1, paramMessage);
+          this.a.finish();
+          return;
+        } while ((DiscussionInfoCardActivity.a(this.a) == null) || (!DiscussionInfoCardActivity.a(this.a).isShowing()) || (this.a.isFinishing()));
+        DiscussionInfoCardActivity.a(this.a).dismiss();
         return;
-      }
-    }
-    bfyz.c(this.a, this.a.app.getCurrentAccountUin(), paramBoolean2);
+        if (DiscussionInfoCardActivity.a(this.a) == 3000)
+        {
+          if (this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null) {
+            DiscussionInfoCardActivity.a(this.a, DiscussionInfoCardActivity.b(this.a));
+          }
+        }
+        else
+        {
+          paramMessage = (ArrayList)paramMessage.obj;
+          int i = paramMessage.size();
+          DiscussionInfoCardActivity.a(this.a).setText(anvx.a(2131702826) + i + anvx.a(2131702827));
+          DiscussionInfoCardActivity.a(this.a).setPadding(DiscussionInfoCardActivity.b(this.a), DiscussionInfoCardActivity.c(this.a), DiscussionInfoCardActivity.d(this.a), DiscussionInfoCardActivity.e(this.a));
+          DiscussionInfoCardActivity.a(this.a, paramMessage);
+          if (DiscussionInfoCardActivity.a(this.a) != null) {
+            break label424;
+          }
+          DiscussionInfoCardActivity.a(this.a, new advg(this.a));
+          DiscussionInfoCardActivity.a(this.a).setAdapter(DiscussionInfoCardActivity.a(this.a));
+        }
+        for (;;)
+        {
+          removeMessages(0);
+          return;
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView.setText(this.a.getString(2131694175));
+          if (!AppSetting.c) {
+            break;
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView.setContentDescription(anvx.a(2131702832) + this.a.getString(2131694175) + anvx.a(2131702824));
+          break;
+          DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
+        }
+      } while (DiscussionInfoCardActivity.a(this.a) != 0);
+      paramMessage = (String)paramMessage.obj;
+    } while ((DiscussionInfoCardActivity.a(this.a) == null) || (paramMessage == null) || (!DiscussionInfoCardActivity.a(this.a).equals(paramMessage)));
+    this.a.finish();
   }
 }
 

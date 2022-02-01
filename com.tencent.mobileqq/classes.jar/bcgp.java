@@ -1,20 +1,106 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
 
 public class bcgp
+  extends bcfs
 {
-  private static HashMap<String, bcgo> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private static List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  private int d;
+  private String j;
   
-  public static HashMap<String, bcgo> a()
+  public bcgp(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    return jdField_a_of_type_JavaUtilHashMap;
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
   }
   
-  public static List<String> a()
+  public void a(int paramInt)
   {
-    return jdField_a_of_type_JavaUtilList;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    try
+    {
+      this.d = new JSONObject(this.jdField_a_of_type_JavaLangString).getInt("appid");
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e(c, 2, "parseLayoutExtensions exception:" + paramString);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(String paramString)
+  {
+    this.j = paramString;
+  }
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  public String c()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void c(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public String d()
+  {
+    return this.j;
+  }
+  
+  public String e()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public int f()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public int g()
+  {
+    return this.d;
+  }
+  
+  public int h()
+  {
+    return this.jdField_b_of_type_Int;
   }
 }
 

@@ -1,108 +1,121 @@
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 public class aqkg
+  extends BaseAdapter
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
-  private String b = "";
-  private String c = "";
+  public aqkg(CardPicGalleryActivity paramCardPicGalleryActivity) {}
   
-  public static aqkg a(aptx[] paramArrayOfaptx)
+  public String a(int paramInt)
   {
-    if ((paramArrayOfaptx == null) || (paramArrayOfaptx.length <= 0)) {
-      return null;
+    if ((this.a.jdField_a_of_type_JavaUtilArrayList != null) && (paramInt < this.a.jdField_a_of_type_JavaUtilArrayList.size()) && (paramInt >= 0)) {
+      return (String)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     }
-    aqkg localaqkg = new aqkg();
-    try
-    {
-      paramArrayOfaptx = new JSONObject(paramArrayOfaptx[0].jdField_a_of_type_JavaLangString);
-      if (QLog.isColorLevel()) {
-        QLog.d("TencentDocGrayTipsBean", 2, "handleTencentDocGrayTipsConfig call after " + paramArrayOfaptx.toString());
-      }
-      a(localaqkg, paramArrayOfaptx);
-      return localaqkg;
-    }
-    catch (JSONException paramArrayOfaptx)
-    {
-      paramArrayOfaptx.printStackTrace();
-    }
-    return localaqkg;
+    return null;
   }
   
-  public static void a(aqkg paramaqkg, JSONObject paramJSONObject)
+  public int getCount()
   {
-    if ((paramaqkg == null) || (paramJSONObject == null)) {}
-    for (;;)
+    if (this.a.jdField_a_of_type_JavaUtilArrayList != null) {
+      return this.a.jdField_a_of_type_JavaUtilArrayList.size();
+    }
+    return 0;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    aqkq localaqkq;
+    Object localObject;
+    if (paramView == null)
     {
-      return;
-      if ((AudioHelper.e()) && (AudioHelper.a(10) == 1)) {
-        AudioHelper.a(amtj.a(2131713865));
+      paramView = this.a.getLayoutInflater().inflate(2131561043, null);
+      localaqkq = new aqkq();
+      localaqkq.a = ((URLImageView)paramView.findViewById(2131364343));
+      paramView.setTag(localaqkq);
+      localObject = a(paramInt);
+      if ((this.a.jdField_a_of_type_Int != 0) && (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {
+        this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.a.getResources().getDrawable(this.a.jdField_a_of_type_Int);
       }
+      if (localObject == null) {}
+    }
+    else
+    {
       try
       {
-        paramJSONObject.put("tencentDocAIOGrayTipsEnable", true);
-        paramJSONObject.put("plainContent", amtj.a(2131713858));
-        paramJSONObject.put("hightLightContent", amtj.a(2131713861));
-        paramJSONObject.put("showTimes", 3);
-        paramJSONObject.put("linkUrl", "https://docs.qq.com/desktop");
-        label81:
-        if (paramJSONObject.has("tencentDocAIOGrayTipsEnable")) {
-          paramaqkg.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("tencentDocAIOGrayTipsEnable");
+        localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
+          break label210;
         }
-        if (paramJSONObject.has("plainContent")) {
-          paramaqkg.jdField_a_of_type_JavaLangString = paramJSONObject.optString("plainContent");
-        }
-        if (paramJSONObject.has("hightLightContent")) {
-          paramaqkg.b = paramJSONObject.optString("hightLightContent");
-        }
-        if (paramJSONObject.has("showTimes")) {
-          paramaqkg.jdField_a_of_type_Int = paramJSONObject.optInt("showTimes");
-        }
-        if (!paramJSONObject.has("linkUrl")) {
-          continue;
-        }
-        paramaqkg.c = paramJSONObject.optString("linkUrl");
-        return;
+        localObject = URLDrawable.getDrawable((String)localObject, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        label139:
+        localaqkq.a.setImageDrawable((Drawable)localObject);
       }
-      catch (Exception localException)
+      catch (Exception localException1)
       {
-        break label81;
+        for (;;)
+        {
+          URLDrawable.URLDrawableOptions localURLDrawableOptions;
+          localException1.printStackTrace();
+          continue;
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        }
+      }
+      if ((this.a.d == 1) && (!this.a.jdField_a_of_type_Boolean)) {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       }
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public String c()
-  {
-    return this.c;
+    for (;;)
+    {
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+      localaqkq = (aqkq)paramView.getTag();
+      break;
+      label210:
+      localObject = URLDrawable.getDrawable((String)localObject, localURLDrawableOptions);
+      break label139;
+      try
+      {
+        if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+        {
+          localObject = URLDrawable.getDrawable("https://aaa", this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+          localException1.a.setImageDrawable((Drawable)localObject);
+        }
+        for (;;)
+        {
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+          break;
+          localException1.a.setImageDrawable(null);
+        }
+      }
+      catch (Exception localException2)
+      {
+        for (;;)
+        {
+          localException2.printStackTrace();
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqkg
  * JD-Core Version:    0.7.0.1
  */

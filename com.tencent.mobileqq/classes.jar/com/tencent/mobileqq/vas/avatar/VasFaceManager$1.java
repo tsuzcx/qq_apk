@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.vas.avatar;
 
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -21,7 +22,7 @@ class VasFaceManager$1
         return;
       }
       QLog.d("Q.qqhead.VasFaceManager", 1, "getFace need download: " + this.b);
-      VasQuickUpdateManager localVasQuickUpdateManager = (VasQuickUpdateManager)this.this$0.a.getManager(184);
+      VasQuickUpdateManager localVasQuickUpdateManager = (VasQuickUpdateManager)this.this$0.a.getManager(QQManagerFactory.VAS_QUICKUPDATE_MANAGER);
       if (localVasQuickUpdateManager != null)
       {
         localVasQuickUpdateManager.downloadItem(23L, this.b, "Q.qqhead.VasFaceManager");

@@ -1,26 +1,16 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 class anyg
-  implements ServiceConnection
+  implements BusinessObserver
 {
-  anyg(anyf paramanyf) {}
+  anyg(anyb paramanyb, String paramString) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    anyf.a(this.a, aofh.a(paramIBinder));
     if (QLog.isColorLevel()) {
-      QLog.d("ARGlobalRemoteManager", 2, "onServiceConnected ARGlobalRemoteManager=" + anyf.a(this.a));
-    }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    anyf.a(this.a, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("ARGlobalRemoteManager", 2, "onServiceDisconnected ARGlobalRemoteManager=" + anyf.a(this.a));
+      QLog.i("MayknowRecommendManager", 2, "setRecommendTroopDeleted uin: " + this.jdField_a_of_type_JavaLangString + " isSuccess: " + paramBoolean);
     }
   }
 }

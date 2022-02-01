@@ -1,36 +1,23 @@
-import com.tencent.mobileqq.app.face.FaceInfo;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 class anhy
-  extends anhs
+  implements anih
 {
-  anhy(anhx paramanhx) {}
+  anhy(anhw paramanhw) {}
   
-  public void a(boolean paramBoolean, FaceInfo paramFaceInfo)
+  public void a(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqhead.NearByFaceDrawable", 2, "onUpdateStrangerHead.faceInfo=" + paramFaceInfo + ", isSuccess=" + paramBoolean);
+    if (paramInt == 0) {
+      QLog.e("AVEngineWalper", 1, "EnterRoom successfully!!!");
     }
-    if ((this.a.mCancelled) || (this.a.mFaceInfo == null) || (paramFaceInfo == null)) {}
-    while ((paramFaceInfo.b != this.a.mFaceInfo.b) || (!this.a.mFaceInfo.a.equals(paramFaceInfo.a))) {
-      return;
-    }
-    if ((this.a.jdField_a_of_type_Anhs != null) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.removeObserver(this.a.jdField_a_of_type_Anhs);
-    }
-    if (paramBoolean)
+    for (;;)
     {
-      paramFaceInfo = this.a.getBitmapFromCache();
-      if (paramFaceInfo != null)
-      {
-        this.a.onDecodeTaskCompleted(this.a.mFaceInfo, paramFaceInfo);
-        return;
+      if (this.a.a != null) {
+        this.a.a.b(paramInt, paramString);
       }
-      this.a.requestDecode();
       return;
+      QLog.e("AVEngineWalper", 1, "enter room failed. result=" + paramInt + ", errorInfo=" + paramString);
     }
-    this.a.onDecodeTaskCompleted(this.a.mFaceInfo, null);
   }
 }
 

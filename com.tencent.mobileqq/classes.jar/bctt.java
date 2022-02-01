@@ -1,34 +1,19 @@
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import com.tencent.mobileqq.text.QQText;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgType0x210;
 
 public class bctt
-  extends QQText
+  implements bctu
 {
-  public bctt(CharSequence paramCharSequence, int paramInt)
+  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre, MessageHandler paramMessageHandler)
   {
-    super(paramCharSequence, paramInt);
-  }
-  
-  public void onURLLinkClicked(View paramView, String paramString)
-  {
-    paramString = Uri.parse(paramString);
-    paramView = paramView.getContext();
-    paramString = new Intent("android.intent.action.VIEW", paramString);
-    paramString.putExtra("com.android.browser.application_id", paramView.getPackageName());
-    try
-    {
-      paramView.startActivity(paramString);
-      return;
-    }
-    catch (ActivityNotFoundException paramView)
-    {
-      QLog.w("OpenDefaultBrowserQQText", 1, "Activity was not found for intent, " + paramString.toString());
-    }
+    ((bdtt)paramMessageHandler.app.getManager(QQManagerFactory.STT_MANAGER)).a(paramMsgType0x210.msg_content.get().toByteArray());
   }
 }
 

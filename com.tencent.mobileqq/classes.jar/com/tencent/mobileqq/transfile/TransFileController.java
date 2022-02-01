@@ -7,14 +7,15 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import awdi;
-import aycx;
-import aycy;
-import aydq;
-import bcgn;
-import bftf;
+import axjk;
+import azjj;
+import azjk;
+import azkc;
+import bdnl;
+import bhbx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForPic;
@@ -267,7 +268,7 @@ public class TransFileController
                 if (paramBaseTransProcessor.checkParam() != 0) {
                   continue;
                 }
-                aydq.a(this.mApp, paramTransferRequest);
+                azkc.a(this.mApp, paramTransferRequest);
                 paramBaseTransProcessor.start();
                 if (!paramBoolean) {
                   continue;
@@ -288,7 +289,7 @@ public class TransFileController
         paramTransferRequest.mResult = localTransferRequest.mResult;
         if (paramTransferRequest.mDownCallBack != null)
         {
-          paramBaseTransProcessor = new aycy();
+          paramBaseTransProcessor = new azjk();
           paramBaseTransProcessor.a = 0;
           paramBaseTransProcessor.b = paramTransferRequest.mOutFilePath;
           paramBaseTransProcessor.jdField_c_of_type_JavaLangString = paramTransferRequest.mMd5;
@@ -301,7 +302,7 @@ public class TransFileController
         this.processorMap.put(paramString, paramBaseTransProcessor);
         paramBaseTransProcessor.setKey(paramString);
       } while (paramBaseTransProcessor.checkParam() != 0);
-      aydq.a(this.mApp, paramTransferRequest);
+      azkc.a(this.mApp, paramTransferRequest);
       paramBaseTransProcessor.start();
     } while (!paramBoolean);
     try
@@ -849,18 +850,18 @@ public class TransFileController
   
   public void onReceiveStreamAction(StreamInfo paramStreamInfo, StreamData paramStreamData, long paramLong1, long paramLong2, long paramLong3, long paramLong4, ptt_reserve.ReserveStruct paramReserveStruct)
   {
-    Object localObject2 = bcgn.a(paramStreamInfo.iMsgId, 1);
+    Object localObject2 = bdnl.a(paramStreamInfo.iMsgId, 1);
     long l1 = paramStreamInfo.lFromUIN;
     long l2 = paramStreamInfo.lToUIN;
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
       localObject1 = BuddyTransfileProcessor.getTransferFilePath(String.valueOf(l2), null, 2, null);
-      int i = bftf.a(paramStreamInfo.pttFormat);
+      int i = bhbx.a(paramStreamInfo.pttFormat);
       localObject2 = MessageForPtt.getLocalFilePath(i, (String)localObject1);
-      bcgn.a(this.mApp, i, (String)localObject2, 1, paramStreamInfo.iMsgId);
-      bcgn.a((String)localObject2, (short)paramStreamInfo.msgSeq);
-      bcgn.b((String)localObject2, paramStreamInfo.random);
+      bdnl.a(this.mApp, i, (String)localObject2, 1, paramStreamInfo.iMsgId);
+      bdnl.a((String)localObject2, (short)paramStreamInfo.msgSeq);
+      bdnl.b((String)localObject2, paramStreamInfo.random);
       localObject1 = localObject2;
       if (QLog.isColorLevel())
       {
@@ -1399,18 +1400,18 @@ public class TransFileController
             paramChatMessage = (MessageForShortVideo)paramChatMessage;
             ((QQAppInterface)localObject).getTransFileController().stopDownloadShortVideo(paramChatMessage.frienduin, paramChatMessage.uniseq);
           } while (paramChatMessage.busiType != 0);
-          localObject = (awdi)((QQAppInterface)localObject).getManager(324);
-        } while (!((awdi)localObject).a(paramChatMessage));
-        ((awdi)localObject).b(paramChatMessage, 0L, 0, 256);
+          localObject = (axjk)((QQAppInterface)localObject).getManager(QQManagerFactory.MULTI_CHOOSE_SAVE_MANAGER);
+        } while (!((axjk)localObject).a(paramChatMessage));
+        ((axjk)localObject).b(paramChatMessage, 0L, 0, 256);
         return;
       } while (!(paramChatMessage instanceof MessageForPic));
       paramChatMessage = (MessageForPic)paramChatMessage;
       cancelPicDownload(paramChatMessage, 131075);
       cancelPicDownload(paramChatMessage, 1);
       cancelPicDownload(paramChatMessage, 131075);
-      localObject = (awdi)((QQAppInterface)localObject).getManager(324);
-    } while (!((awdi)localObject).a(paramChatMessage));
-    ((awdi)localObject).b(paramChatMessage, 0L, 0, 24);
+      localObject = (axjk)((QQAppInterface)localObject).getManager(QQManagerFactory.MULTI_CHOOSE_SAVE_MANAGER);
+    } while (!((axjk)localObject).a(paramChatMessage));
+    ((axjk)localObject).b(paramChatMessage, 0L, 0, 24);
   }
   
   public boolean stopSendStreamPtt(String paramString1, String paramString2, long paramLong)

@@ -1,9 +1,23 @@
-import kotlin.Metadata;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/VideoColumnBannerManager$IVideoColumnBannerAction;", "", "onJumpToColumnPlay", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface rtx
+public class rtx
+  implements AdapterView.OnItemLongClickListener
 {
-  public abstract void a();
+  public rtx(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  
+  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    if (!ReadInJoyDeliverUGCActivity.a(this.a).a().get(paramInt).equals(ReadInJoyDeliverUGCActivity.a(this.a))) {
+      ReadInJoyDeliverUGCActivity.a(this.a).a(paramInt);
+    }
+    ReadInJoyDeliverUGCActivity.a(this.a, false);
+    return true;
+  }
 }
 
 

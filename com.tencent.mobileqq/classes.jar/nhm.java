@@ -1,6 +1,17 @@
-public abstract interface nhm
+import com.tencent.qphone.base.util.QLog;
+
+class nhm
+  extends nrn
 {
-  public abstract void a(boolean paramBoolean);
+  nhm(nhk paramnhk) {}
+  
+  public void a(boolean paramBoolean, int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("GameResultPKPresenterImp", 2, String.format("onSurvivalPoolEnter isSuc:%b errCode:%d msg:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), paramString }));
+    }
+    this.a.a.b(nfc.a().a());
+  }
 }
 
 

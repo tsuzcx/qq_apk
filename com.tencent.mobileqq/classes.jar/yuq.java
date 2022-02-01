@@ -1,35 +1,10 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-
-final class yuq
-  extends AnimatorListenerAdapter
+public abstract interface yuq
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private int b;
+  public abstract void a();
   
-  yuq(View paramView, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramView.getLayerType();
-  }
+  public abstract void a(String paramString);
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_AndroidViewView.setLayerType(this.b, null);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_AndroidViewView.setLayerType(this.b, null);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_AndroidViewView.setLayerType(this.jdField_a_of_type_Int, null);
-  }
+  public abstract void b(String paramString);
 }
 
 

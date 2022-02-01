@@ -1,57 +1,20 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.magicface.view.MagicfaceContainerView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.hotpic.HotPicPageView.4.2;
+import com.tencent.qphone.base.util.QLog;
 
 public class avmo
-  extends GestureDetector.SimpleOnGestureListener
+  implements DialogInterface.OnClickListener
 {
-  public avmo(MagicfaceContainerView paramMagicfaceContainerView) {}
+  public avmo(HotPicPageView.4.2 param2) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.a(5);
+    this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.d = false;
+    if (this.a.a.jdField_a_of_type_Avmv.a == 1) {
+      this.a.a.jdField_a_of_type_Avmv.a(0);
     }
-    return false;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if (paramMotionEvent1.getX() - paramMotionEvent2.getX() > 150.0F) {
-      if (this.a.a != null) {
-        this.a.a.a(0);
-      }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-          if (paramMotionEvent1.getX() - paramMotionEvent2.getX() >= -150.0F) {
-            break;
-          }
-        } while (this.a.a == null);
-        this.a.a.a(1);
-        return false;
-        if (paramMotionEvent1.getY() - paramMotionEvent2.getY() <= 150.0F) {
-          break;
-        }
-      } while (this.a.a == null);
-      this.a.a.a(2);
-      return false;
-    } while ((paramMotionEvent1.getY() - paramMotionEvent2.getY() >= -150.0F) || (this.a.a == null));
-    this.a.a.a(3);
-    return false;
-  }
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(4);
-    }
-    return false;
+    QLog.d("HotPicManagerHotPicPageView", 2, "user click button");
   }
 }
 

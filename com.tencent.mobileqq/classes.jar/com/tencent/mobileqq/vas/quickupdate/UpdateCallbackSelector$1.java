@@ -1,33 +1,33 @@
 package com.tencent.mobileqq.vas.quickupdate;
 
-import bgit;
-import bgiw;
-import bgix;
-import bgiy;
-import bgiz;
-import bgja;
-import bgjb;
-import bgje;
+import bhro;
+import bhrr;
+import bhrs;
+import bhrt;
+import bhru;
+import bhrv;
+import bhrw;
+import bhrz;
 import java.util.HashMap;
 
 public final class UpdateCallbackSelector$1
-  extends HashMap<Long, bgit>
+  extends HashMap<Long, bhro>
 {
   public UpdateCallbackSelector$1()
   {
-    bgit[] arrayOfbgit = new bgit[7];
-    arrayOfbgit[0] = bgjb.a;
-    arrayOfbgit[1] = bgja.a;
-    arrayOfbgit[2] = bgiy.a;
-    arrayOfbgit[3] = bgiw.a;
-    arrayOfbgit[4] = bgix.a;
-    arrayOfbgit[5] = bgiz.a;
-    arrayOfbgit[6] = bgje.a;
-    int j = arrayOfbgit.length;
+    bhro[] arrayOfbhro = new bhro[7];
+    arrayOfbhro[0] = bhrw.a;
+    arrayOfbhro[1] = bhrv.a;
+    arrayOfbhro[2] = bhrt.a;
+    arrayOfbhro[3] = bhrr.a;
+    arrayOfbhro[4] = bhrs.a;
+    arrayOfbhro[5] = bhru.a;
+    arrayOfbhro[6] = bhrz.a;
+    int j = arrayOfbhro.length;
     while (i < j)
     {
-      bgit localbgit = arrayOfbgit[i];
-      put(Long.valueOf(localbgit.getBID()), localbgit);
+      bhro localbhro = arrayOfbhro[i];
+      put(Long.valueOf(localbhro.getBID()), localbhro);
       i += 1;
     }
   }

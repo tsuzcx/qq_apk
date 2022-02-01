@@ -1,37 +1,34 @@
-import android.widget.FrameLayout;
-import com.tencent.superplayer.api.ISuperPlayer;
-import java.util.Timer;
+import android.support.v4.view.ViewCompat;
+import android.support.v4.view.ViewPropertyAnimatorCompat;
+import android.support.v4.view.ViewPropertyAnimatorListener;
+import android.view.View;
+import java.util.ArrayList;
 
-public class zod
+class zod
+  extends zoi
 {
-  private double jdField_a_of_type_Double;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private ISuperPlayer jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
-  private String jdField_a_of_type_JavaLangString;
-  private Timer jdField_a_of_type_JavaUtilTimer;
-  private zob jdField_a_of_type_Zob;
-  private boolean jdField_a_of_type_Boolean;
-  private double jdField_b_of_type_Double;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private double jdField_c_of_type_Double;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  private double jdField_d_of_type_Double;
-  private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean;
-  private double jdField_e_of_type_Double;
-  private int jdField_e_of_type_Int;
-  private boolean jdField_e_of_type_Boolean;
-  private double jdField_f_of_type_Double;
-  private int jdField_f_of_type_Int;
-  private int g;
-  private int h;
+  zod(znz paramznz, zog paramzog, ViewPropertyAnimatorCompat paramViewPropertyAnimatorCompat)
+  {
+    super(null);
+  }
+  
+  public void onAnimationEnd(View paramView)
+  {
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPropertyAnimatorCompat.setListener((ViewPropertyAnimatorListener)null);
+    ViewCompat.setAlpha(paramView, 1.0F);
+    ViewCompat.setTranslationX(paramView, 0.0F);
+    ViewCompat.setTranslationY(paramView, 0.0F);
+    ViewCompat.setScaleX(paramView, 1.0F);
+    ViewCompat.setScaleY(paramView, 1.0F);
+    this.jdField_a_of_type_Znz.dispatchChangeFinished(this.jdField_a_of_type_Zog.a, true);
+    znz.g(this.jdField_a_of_type_Znz).remove(this.jdField_a_of_type_Zog.a);
+    znz.a(this.jdField_a_of_type_Znz);
+  }
+  
+  public void onAnimationStart(View paramView)
+  {
+    this.jdField_a_of_type_Znz.dispatchChangeStarting(this.jdField_a_of_type_Zog.a, true);
+  }
 }
 
 

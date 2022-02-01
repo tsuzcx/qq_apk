@@ -1,28 +1,22 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
 
-public class bdta
-  implements URLDrawable.URLDrawableListener
+class bdta
+  implements bdtr
 {
-  public bdta(TroopCreateLogicActivity paramTroopCreateLogicActivity, URLDrawable paramURLDrawable, bdtc parambdtc) {}
+  bdta(bdsz parambdsz, CountdownTextView paramCountdownTextView) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void a()
   {
-    this.jdField_a_of_type_Bdtc.a(null);
+    this.jdField_a_of_type_Bdsz.jdField_d_of_type_Long = 0L;
+    this.jdField_a_of_type_Bdsz.jdField_d_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(bdsz.a(this.jdField_a_of_type_Bdsz, 0L));
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(long paramLong)
   {
-    this.jdField_a_of_type_Bdtc.a(null);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = bhzk.a(this.jdField_a_of_type_ComTencentImageURLDrawable, 100, 100);
-    this.jdField_a_of_type_Bdtc.a(paramURLDrawable);
+    paramLong /= 1000L;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(bdsz.a(this.jdField_a_of_type_Bdsz, paramLong));
+    this.jdField_a_of_type_Bdsz.jdField_d_of_type_Long = paramLong;
   }
 }
 

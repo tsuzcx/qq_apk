@@ -1,162 +1,42 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import java.util.ArrayList;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.biz.pubaccount.readinjoy.model.RIJCoinInfoModule.ContentCoinCheckRequestHandler.1;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.HashMap;
+import tencent.im.oidb.cmd0xed4.oidb_cmd0xed4.ContentCoinCheckReq;
+import tencent.im.oidb.cmd0xed4.oidb_cmd0xed4.MetaData;
+import tencent.im.oidb.cmd0xed4.oidb_cmd0xed4.ReqBody;
+import tencent.im.oidb.cmd0xed4.oidb_cmd0xed4.RspBody;
 
 public class qgi
+  implements qgk
 {
-  private static Boolean a(@NotNull ArticleInfo paramArticleInfo)
+  public int a()
   {
-    rfk localrfk = (rfk)paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfj.a.get(0);
-    if ((localrfk == null) || (localrfk.b <= 0)) {
-      return Boolean.valueOf(false);
-    }
-    float f = localrfk.jdField_a_of_type_Int / localrfk.b;
-    if ((paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Reu != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Reu.c == 1))
+    return 4;
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, oidb_cmd0xed4.RspBody paramRspBody, int paramInt1, int paramInt2, String paramString)
+  {
+    if ((paramInt1 == 0) && (paramInt2 == 0)) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (f <= 1.3439D) {}
-      for (boolean bool = true;; bool = false) {
-        return Boolean.valueOf(bool);
-      }
+      bjum.c(new RIJCoinInfoModule.ContentCoinCheckRequestHandler.1(this, bool, paramInt2, paramString, (String)paramToServiceMsg.getAttributes().get("RequestRowkey"), paramRspBody.content_has_coin.get()));
+      return;
     }
-    return Boolean.valueOf(true);
   }
   
-  private static rff a(ArticleInfo paramArticleInfo)
+  public void a(qxw paramqxw, oidb_cmd0xed4.ReqBody paramReqBody)
   {
-    if ((paramArticleInfo != null) && (paramArticleInfo.mSocialFeedInfo != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfe != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfe.a != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfe.a.size() > 0)) {
-      return (rff)paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfe.a.get(0);
+    if ((paramqxw == null) || (paramReqBody == null)) {
+      return;
     }
-    return null;
-  }
-  
-  public static boolean a(ArticleInfo paramArticleInfo)
-  {
-    if (paramArticleInfo == null) {}
-    do
-    {
-      do
-      {
-        return false;
-      } while ((paramArticleInfo.mFeedType != 1) || (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rep == null));
-      if (b(paramArticleInfo)) {
-        return true;
-      }
-    } while (!c(paramArticleInfo));
-    return true;
-  }
-  
-  private static boolean b(ArticleInfo paramArticleInfo)
-  {
-    if (pgb.i(paramArticleInfo))
-    {
-      if (g(paramArticleInfo)) {}
-      while ((h(paramArticleInfo)) || (i(paramArticleInfo))) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  private static boolean c(ArticleInfo paramArticleInfo)
-  {
-    if (pgb.d(paramArticleInfo))
-    {
-      if (d(paramArticleInfo)) {}
-      while ((e(paramArticleInfo)) || (f(paramArticleInfo))) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  private static boolean d(ArticleInfo paramArticleInfo)
-  {
-    return (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Int == 2) && (k(paramArticleInfo));
-  }
-  
-  private static boolean e(ArticleInfo paramArticleInfo)
-  {
-    if ((paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Int == 5) || (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Int == 6))
-    {
-      int j = paramArticleInfo.mVideoJsonWidth;
-      if (paramArticleInfo.mVideoJsonHeight == 0) {}
-      for (int i = 1; j / i < 0.75D; i = paramArticleInfo.mVideoJsonHeight) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  private static boolean f(ArticleInfo paramArticleInfo)
-  {
-    if ((paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Int != 9) || (pay.e(paramArticleInfo))) {}
-    do
-    {
-      do
-      {
-        return false;
-      } while (!j(paramArticleInfo));
-      if (paramArticleInfo.mChannelID == 0L) {
-        return true;
-      }
-      paramArticleInfo = a(paramArticleInfo);
-    } while ((paramArticleInfo == null) || (paramArticleInfo.b <= 0) || (paramArticleInfo.jdField_a_of_type_Int / paramArticleInfo.b >= 1.671428571428572D));
-    return true;
-  }
-  
-  private static boolean g(ArticleInfo paramArticleInfo)
-  {
-    if ((paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Int == 9) && (l(paramArticleInfo)) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfj.a.size() == 1))
-    {
-      if (paramArticleInfo.mChannelID == 0L) {
-        return true;
-      }
-      paramArticleInfo = (rfk)paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfj.a.get(0);
-      if ((paramArticleInfo != null) && (paramArticleInfo.b != 0) && (paramArticleInfo.jdField_a_of_type_Int != 0) && (paramArticleInfo.jdField_a_of_type_Int / paramArticleInfo.b < 1.671428571428572D)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  private static boolean h(ArticleInfo paramArticleInfo)
-  {
-    if (pgb.b(paramArticleInfo) != 22) {}
-    while ((!l(paramArticleInfo)) || (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfj.a.size() != 1)) {
-      return false;
-    }
-    return a(paramArticleInfo).booleanValue();
-  }
-  
-  private static boolean i(ArticleInfo paramArticleInfo)
-  {
-    if ((pgb.b(paramArticleInfo) == 23) && (paramArticleInfo != null) && (paramArticleInfo.mSocialFeedInfo != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfj != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfj.b != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfj.b.size() > 0))
-    {
-      paramArticleInfo = (rfl)paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfj.b.get(0);
-      if (paramArticleInfo.d == 0) {
-        paramArticleInfo.d = 1;
-      }
-      if (paramArticleInfo.c / paramArticleInfo.d < 0.75D) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  private static boolean j(ArticleInfo paramArticleInfo)
-  {
-    return (paramArticleInfo != null) && (paramArticleInfo.mSocialFeedInfo != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfe != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfe.a != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfe.a.size() == 1);
-  }
-  
-  private static boolean k(ArticleInfo paramArticleInfo)
-  {
-    return (paramArticleInfo != null) && (paramArticleInfo.isPGCShortContent()) && (paramArticleInfo.mSocialFeedInfo != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfe != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfe.a != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfe.a.size() > 0);
-  }
-  
-  private static boolean l(ArticleInfo paramArticleInfo)
-  {
-    return (paramArticleInfo.mSocialFeedInfo != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfj != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfj.a != null);
+    paramReqBody.meta.type.set(4);
+    paramReqBody.content_coin_check_req.setHasFlag(true);
+    paramReqBody.content_coin_check_req.uin.set(pkh.a());
+    paramReqBody.content_coin_check_req.rowkey.set(paramqxw.a);
   }
 }
 

@@ -1,10 +1,6 @@
-public class axfv
-  extends axfu
+public abstract interface axfv
 {
-  public int a;
-  public String a;
-  public int b;
-  public long b;
+  public abstract void a(int paramInt);
 }
 
 

@@ -1,22 +1,6 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
-
-public class bnve
+class bnve
 {
-  public int a;
-  public Bitmap a;
-  
-  protected void finalize()
-  {
-    super.finalize();
-    if ((this.a != null) && (!this.a.isRecycled()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Frames", 2, "recycle bitmap");
-      }
-      this.a.recycle();
-    }
-  }
+  public static bnuz a = new bnuz(null);
 }
 
 

@@ -1,8 +1,8 @@
 package com.tencent.av.ui;
 
 import com.tencent.av.app.VideoAppInterface;
-import lbu;
-import lez;
+import lbz;
+import lfe;
 
 class AVActivity$8
   implements Runnable
@@ -13,9 +13,9 @@ class AVActivity$8
   {
     if ((this.this$0.a != null) && (this.this$0.a.b("BEAUTY_SKIN") > 0))
     {
-      lez locallez = lbu.a().a();
-      if (locallez != null) {
-        locallez.u = true;
+      lfe locallfe = lbz.a().a();
+      if (locallfe != null) {
+        locallfe.u = true;
       }
     }
   }

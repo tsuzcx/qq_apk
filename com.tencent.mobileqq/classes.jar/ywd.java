@@ -1,46 +1,39 @@
-import android.view.View;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
 
 public class ywd
-  implements URLDrawable.URLDrawableListener
+  extends yvr
 {
-  public ywd(QRDisplayActivity paramQRDisplayActivity, aqbx paramaqbx, int paramInt, boolean paramBoolean) {}
+  public int c;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public ywd(int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
-    QRDisplayActivity.e(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity);
-    if (QLog.isColorLevel()) {
-      QLog.d("QRDisplayActivity", 2, "onLoadCanceled:" + this.jdField_a_of_type_Aqbx.a);
-    }
+    super(paramInt1, paramString, paramInt2);
+    this.c = paramInt3;
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  @NonNull
+  public Class<? extends yvs> a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QRDisplayActivity", 2, "onLoadFialed: urlDrawable = " + paramURLDrawable + " bkgURL = " + this.jdField_a_of_type_Aqbx.a);
-    }
-    if (paramURLDrawable != null) {
-      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.i.setBackgroundDrawable(paramURLDrawable.getCurrDrawable());
-    }
-    QRDisplayActivity.e(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity);
-    QQToast.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.getString(2131695942), 0).a();
+    return ywe.class;
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  @NonNull
+  public yvs a(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    QRDisplayActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity, this.jdField_a_of_type_Aqbx, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
-    if (QLog.isColorLevel()) {
-      QLog.d("QRDisplayActivity", 2, "onLoadSuccessed: urlDrawable = " + paramURLDrawable + " bkgURL = " + this.jdField_a_of_type_Aqbx.a);
-    }
-    if (paramURLDrawable != null) {
-      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.i.setBackgroundDrawable(paramURLDrawable.getCurrDrawable());
-    }
+    return new ywe(this, paramContext, paramViewGroup);
+  }
+  
+  public void a(int paramInt)
+  {
+    ykq.a("WeatherFilterData", "updateWeather:%s", Integer.valueOf(paramInt));
+    this.c = paramInt;
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

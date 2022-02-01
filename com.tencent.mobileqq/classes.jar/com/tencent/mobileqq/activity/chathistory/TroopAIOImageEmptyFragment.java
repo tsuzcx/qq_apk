@@ -49,14 +49,14 @@ public class TroopAIOImageEmptyFragment
       paramViewGroup.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
       paramViewGroup.mFailedDrawable = URLDrawableHelper.TRANSPARENT;
       paramLayoutInflater = URLDrawable.getDrawable(this.b, paramViewGroup);
-      ((ImageView)this.mContentView.findViewById(2131378590)).setImageDrawable(paramLayoutInflater);
+      ((ImageView)this.mContentView.findViewById(2131378884)).setImageDrawable(paramLayoutInflater);
     }
-    ((TextView)this.mContentView.findViewById(2131378381)).setText(this.c);
+    ((TextView)this.mContentView.findViewById(2131378672)).setText(this.c);
   }
   
   public int getContentLayoutId()
   {
-    return 2131560598;
+    return 2131560650;
   }
   
   public void init(Bundle paramBundle)

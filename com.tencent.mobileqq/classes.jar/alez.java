@@ -1,29 +1,28 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.content.Intent;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
-public class alez
-  implements Animation.AnimationListener
+class alez
+  implements View.OnClickListener
 {
-  public alez(SpecailCareListActivity paramSpecailCareListActivity) {}
+  alez(aldh paramaldh, String paramString) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.leftView.clearAnimation();
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.clearAnimation();
-    this.a.leftView.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.a.rightViewText.setClickable(true);
-    this.a.rightViewText.setText(SpecailCareListActivity.jdField_a_of_type_JavaLangString);
-    this.a.rightViewText.setContentDescription(amtj.a(2131713336));
-    this.a.c = false;
+    Intent localIntent = new Intent(aldh.a(this.jdField_a_of_type_Aldh), QQBrowserActivity.class);
+    localIntent.putExtra("individuation_url_type", 40100);
+    VasWebviewUtil.openQQBrowserWithoutAD(aldh.a(this.jdField_a_of_type_Aldh), bhnp.a(aldh.a(this.jdField_a_of_type_Aldh), "themeDetail", this.jdField_a_of_type_JavaLangString, ""), 32L, localIntent, true, -1);
+    aldh.a(this.jdField_a_of_type_Aldh).obtainMessage(12).sendToTarget();
+    bdla.b(aldh.a(this.jdField_a_of_type_Aldh).app, "CliOper", "", "", "0X8005B9F", "0X8005B9F", 0, 0, "", "", "", "");
+    bdla.a(aldh.a(this.jdField_a_of_type_Aldh).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 16, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

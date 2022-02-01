@@ -1,25 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.util.Pair;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bilo
-  extends Handler
+class bilo
+  implements View.OnClickListener
 {
-  public bilo(biln parambiln, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bilo(biln parambiln, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("WholePeoplePlugin", 2, "onClick " + this.jdField_a_of_type_JavaLangString);
     }
-    paramMessage = (Pair)paramMessage.obj;
-    biln.a(this.a, biln.a(this.a), (byte[])paramMessage.first, ((Integer)paramMessage.second).intValue());
+    this.jdField_a_of_type_Biln.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

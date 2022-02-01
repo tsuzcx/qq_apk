@@ -1,65 +1,25 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import mqq.app.QQPermissionCallback;
 
 public class aqjp
-  extends aptq<aqjo>
+  implements QQPermissionCallback
 {
-  public static aqjo a()
+  public aqjp(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return (aqjo)apub.a().a(334);
+    this.a.denied();
+    bhdj.a(this.a, paramArrayOfString, paramArrayOfInt);
   }
   
-  @NonNull
-  public aqjo a(int paramInt)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return new aqjo();
-  }
-  
-  @Nullable
-  public aqjo a(aptx[] paramArrayOfaptx)
-  {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return aqjo.a(paramArrayOfaptx);
-    }
-    return null;
-  }
-  
-  public void a(aqjo paramaqjo) {}
-  
-  public Class<aqjo> clazz()
-  {
-    return aqjo.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("TencentDocAIOPlusPanelEntryConfigProcessor", 1, "AIO_PLUSPENAL_TENCENTDOC_ENRTY_CONFIG failed, resultCode:" + paramInt);
-  }
-  
-  public int type()
-  {
-    return 334;
+    this.a.grant();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqjp
  * JD-Core Version:    0.7.0.1
  */

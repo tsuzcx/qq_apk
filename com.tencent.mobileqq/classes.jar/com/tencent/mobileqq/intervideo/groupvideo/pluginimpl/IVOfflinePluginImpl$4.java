@@ -3,10 +3,10 @@ package com.tencent.mobileqq.intervideo.groupvideo.pluginimpl;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import nnw;
+import nux;
 
 class IVOfflinePluginImpl$4
-  implements nnw
+  implements nux
 {
   IVOfflinePluginImpl$4(IVOfflinePluginImpl paramIVOfflinePluginImpl, long paramLong) {}
   

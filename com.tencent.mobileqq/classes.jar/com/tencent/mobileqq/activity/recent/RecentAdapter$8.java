@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.recent;
 
-import akkk;
-import bcef;
-import uaw;
+import algc;
+import bdla;
+import uot;
 
 public class RecentAdapter$8
   implements Runnable
 {
-  public RecentAdapter$8(akkk paramakkk, int paramInt, String paramString1, String paramString2, String paramString3) {}
+  public RecentAdapter$8(algc paramalgc, int paramInt, String paramString1, String paramString2, String paramString3) {}
   
   public void run()
   {
-    bcef.b(this.this$0.a, "dc01160", "Pb_account_lifeservice", "", "0X800687A", "0X800687A", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, this.c, String.valueOf(uaw.a().a()));
+    bdla.b(this.this$0.a, "dc01160", "Pb_account_lifeservice", "", "0X800687A", "0X800687A", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, this.c, String.valueOf(uot.a().a()));
   }
 }
 

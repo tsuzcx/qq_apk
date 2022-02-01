@@ -9,7 +9,7 @@ import android.text.style.StyleSpan;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bblk;
+import bcsc;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyYAFolderTextView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
@@ -18,8 +18,8 @@ import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import qjj;
-import qke;
+import qvo;
+import qwj;
 
 public class NativeUsersCommentsView
   extends LinearLayout
@@ -64,8 +64,8 @@ public class NativeUsersCommentsView
     TextView localTextView = a(paramInt);
     localTextView.setMaxLines(3);
     localTextView.setEllipsize(TextUtils.TruncateAt.END);
-    paramString1 = bblk.b(paramString1);
-    paramString2 = bblk.b(paramString2);
+    paramString1 = bcsc.b(paramString1);
+    paramString2 = bcsc.b(paramString2);
     paramInt = paramString1.length();
     paramString1 = new QQText(paramString1 + ": " + paramString2, 7, 16);
     paramString2 = new ForegroundColorSpan(Color.parseColor("#D9000000"));
@@ -137,9 +137,9 @@ public class NativeUsersCommentsView
             ((ReadInJoyYAFolderTextView)localObject1).setPadding(0, ViewUtils.dip2px(5.0F), 0, 0);
           }
           localObject2 = new SpannableStringBuilder(this.jdField_a_of_type_JavaLangString);
-          qjj localqjj = new qjj(-15504151, 16777215, 860716207);
-          localqjj.a(new qke(this));
-          ((SpannableStringBuilder)localObject2).setSpan(localqjj, 0, ((SpannableStringBuilder)localObject2).length(), 33);
+          qvo localqvo = new qvo(-15504151, 16777215, 860716207);
+          localqvo.a(new qwj(this));
+          ((SpannableStringBuilder)localObject2).setSpan(localqvo, 0, ((SpannableStringBuilder)localObject2).length(), 33);
           ((ReadInJoyYAFolderTextView)localObject1).setText((CharSequence)localObject2);
           ((ReadInJoyYAFolderTextView)localObject1).setFocusable(false);
         }

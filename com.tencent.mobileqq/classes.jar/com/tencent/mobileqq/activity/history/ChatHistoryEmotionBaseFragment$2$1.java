@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.history;
 
-import aixd;
+import ajss;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -10,19 +10,19 @@ import mqq.os.MqqHandler;
 public class ChatHistoryEmotionBaseFragment$2$1
   implements Runnable
 {
-  public ChatHistoryEmotionBaseFragment$2$1(aixd paramaixd, List paramList) {}
+  public ChatHistoryEmotionBaseFragment$2$1(ajss paramajss, List paramList) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
-      this.jdField_a_of_type_Aixd.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().removeMsgByMessageRecord((MessageRecord)this.jdField_a_of_type_JavaUtilList.get(0), false);
+      this.jdField_a_of_type_Ajss.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().removeMsgByMessageRecord((MessageRecord)this.jdField_a_of_type_JavaUtilList.get(0), false);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Aixd.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(2);
+      this.jdField_a_of_type_Ajss.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(2);
       return;
       if (this.jdField_a_of_type_JavaUtilList.size() > 1) {
-        this.jdField_a_of_type_Aixd.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().removeMultiMsgByMessageRecord(this.jdField_a_of_type_JavaUtilList, false);
+        this.jdField_a_of_type_Ajss.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().removeMultiMsgByMessageRecord(this.jdField_a_of_type_JavaUtilList, false);
       }
     }
   }

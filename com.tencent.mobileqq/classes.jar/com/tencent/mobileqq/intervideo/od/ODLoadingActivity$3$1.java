@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.intervideo.od;
 
-import amtj;
 import android.widget.Toast;
+import anvx;
 
 class ODLoadingActivity$3$1
   implements Runnable
@@ -10,7 +10,7 @@ class ODLoadingActivity$3$1
   
   public void run()
   {
-    Toast.makeText(this.a.this$0, amtj.a(2131706935), 0).show();
+    Toast.makeText(this.a.this$0, anvx.a(2131707281), 0).show();
   }
 }
 

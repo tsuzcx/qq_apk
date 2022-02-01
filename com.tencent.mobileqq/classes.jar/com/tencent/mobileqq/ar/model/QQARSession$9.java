@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ar.model;
 
-import aohg;
-import aolr;
+import apki;
+import apos;
 
 public class QQARSession$9
   implements Runnable
 {
-  public QQARSession$9(aolr paramaolr, boolean paramBoolean) {}
+  public QQARSession$9(apos paramapos, boolean paramBoolean) {}
   
   public void run()
   {
     int j = 0;
-    if (aolr.c(this.this$0)) {
-      if (aolr.a(this.this$0) != null) {
-        aolr.b(this.this$0, false);
+    if (apos.c(this.this$0)) {
+      if (apos.a(this.this$0) != null) {
+        apos.b(this.this$0, false);
       }
     }
     int i;
@@ -21,13 +21,13 @@ public class QQARSession$9
     {
       return;
       i = j;
-      if (aolr.a(this.this$0) != null)
+      if (apos.a(this.this$0) != null)
       {
         i = j;
-        if (aolr.a(this.this$0).a != null)
+        if (apos.a(this.this$0).a != null)
         {
           i = j;
-          if (aolr.b(this.this$0))
+          if (apos.b(this.this$0))
           {
             i = j;
             if (this.this$0.a == 2) {
@@ -38,12 +38,12 @@ public class QQARSession$9
       }
       if ((this.a) && (i != 0))
       {
-        aolr.a(this.this$0, aolr.a(this.this$0).a);
+        apos.a(this.this$0, apos.a(this.this$0).a);
         return;
       }
     } while (i == 0);
-    if (aolr.a(this.this$0) != null) {
-      aolr.b(this.this$0, true);
+    if (apos.a(this.this$0) != null) {
+      apos.b(this.this$0, true);
     }
     this.this$0.p();
   }

@@ -1,11 +1,6 @@
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
-
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/ktextension/IPbParser;", "P", "R", "", "parse", "input", "(Ljava/lang/Object;)Ljava/lang/Object;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface psw<P, R>
+public abstract interface psw
 {
-  @Nullable
-  public abstract R a(P paramP);
+  public abstract void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3);
 }
 
 

@@ -1,16 +1,35 @@
-public class bgeu
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
+import org.json.JSONObject;
+
+class bgeu
+  implements bghi
 {
-  public int a;
-  public boolean a;
-  public int b;
-  public int c;
+  bgeu(bget parambget) {}
   
-  public bgeu(int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.c = paramInt2;
-    this.jdField_a_of_type_Int = paramInt3;
+    if (bget.a(this.a).get() == null) {
+      return;
+    }
+    if ((paramJSONObject != null) && (paramJSONObject.has("ec")))
+    {
+      paramInt = paramJSONObject.optInt("ec");
+      paramJSONObject = paramJSONObject.optString("em");
+      if (QLog.isColorLevel()) {
+        QLog.d("AddTroopAppCgi", 2, new Object[] { "retCode:", Integer.valueOf(paramInt) });
+      }
+      if (paramInt == 0)
+      {
+        ((bgev)bget.a(this.a).get()).a(bget.a(this.a));
+        return;
+      }
+      ((bgev)bget.a(this.a).get()).a(paramInt, paramJSONObject, bget.a(this.a));
+      return;
+    }
+    QLog.e("AddTroopAppCgi", 1, "add appid get result err");
+    ((bgev)bget.a(this.a).get()).a(-1, "", bget.a(this.a));
   }
 }
 

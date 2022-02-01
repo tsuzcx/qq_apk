@@ -1,6 +1,6 @@
 package com.tencent.mfsdk.config;
 
-import achh;
+import acxp;
 import com.tencent.mfsdk.MagnifierSDK;
 
 public class Config
@@ -29,7 +29,7 @@ public class Config
   
   public APMConfig loadLocalConfigs()
   {
-    achh.a();
+    acxp.a();
     return MagnifierSDK.a().a();
   }
 }

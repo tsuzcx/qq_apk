@@ -1,32 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.res.Resources;
+import com.tencent.mobileqq.nearby.gift.TroopGiftPanelForNearby;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
-class axtm
-  implements DialogInterface.OnClickListener
+public class axtm
+  extends bgkn
 {
-  axtm(axsv paramaxsv) {}
+  public axtm(TroopGiftPanelForNearby paramTroopGiftPanelForNearby) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    try
-    {
-      if ((axsv.a(this.a) != null) && (axsv.a(this.a).isShowing()))
-      {
-        this.a.c();
-        axsv.a(this.a).dismiss();
-        axsv.a(this.a, null);
-      }
-      label49:
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountPanel", 2, "switch status cancel");
-      }
-      return;
+    anzp.a("gift_store", "suc_one", this.a.a(), TroopGiftPanelForNearby.a(this.a) + "", "", "");
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("zivonchen", 2, "onGetThrowGiftResult() onError errorCode = " + paramInt + ", errorMsg = " + paramString);
     }
-    catch (Exception paramDialogInterface)
+    if (paramInt == 20007) {
+      QQToast.a(TroopGiftPanelForNearby.a(this.a), anvx.a(2131714786), 0).b(this.a.getResources().getDimensionPixelSize(2131299080));
+    }
+    for (;;)
     {
-      break label49;
+      anzp.a("gift_store", "fail_one", this.a.a(), TroopGiftPanelForNearby.b(this.a) + "", "", "");
+      return;
+      QQToast.a(TroopGiftPanelForNearby.b(this.a), anvx.a(2131714783), 0).b(this.a.getResources().getDimensionPixelSize(2131299080));
     }
   }
 }

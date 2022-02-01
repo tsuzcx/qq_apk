@@ -3,7 +3,6 @@ package com.tencent.autotemplate.model;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import com.google.gson.annotations.SerializedName;
-import com.tencent.tavmovie.sticker.TAVMovieSticker;
 import java.util.List;
 
 public class TAVTransitionAutomaticEffect
@@ -15,11 +14,6 @@ public class TAVTransitionAutomaticEffect
   public TAVTransitionAutomaticEffect(@NonNull String paramString)
   {
     super(paramString);
-  }
-  
-  public TAVMovieSticker convertToMovieSticker()
-  {
-    return new TAVMovieSticker(getFullPath());
   }
   
   public List<TAVTransitionAutomaticEffect> getSubTransitions()

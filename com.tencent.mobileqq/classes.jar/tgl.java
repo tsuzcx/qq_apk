@@ -1,151 +1,118 @@
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.MeasureSpec;
+import android.view.ViewTreeObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.widget.XListView;
+import java.util.List;
 
 public class tgl
+  implements tga
 {
-  private apkn jdField_a_of_type_Apkn;
-  private ColorNote jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote;
-  private String jdField_a_of_type_JavaLangString;
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
+  private final XListView jdField_a_of_type_ComTencentWidgetXListView;
+  private final List<BaseData> jdField_a_of_type_JavaUtilList;
   
-  public tgl(String paramString)
+  public tgl(XListView paramXListView, List<BaseData> paramList, tfx paramtfx)
   {
-    this.b = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote = new aple().a(16908290).a("viola:" + paramString).b("defaultTitle").c("defaultSubTitle").d("https://default").a();
+    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    paramtfx.a(this);
   }
   
-  public static JSONObject a(ColorNote paramColorNote)
+  private tfx a()
   {
-    if (paramColorNote == null) {
-      return new JSONObject();
+    if ((this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter() instanceof blcj))
+    {
+      blcj localblcj = (blcj)this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter();
+      if ((localblcj.getWrappedAdapter() instanceof tfx)) {
+        return (tfx)localblcj.getWrappedAdapter();
+      }
     }
+    return null;
+  }
+  
+  private boolean a(int paramInt)
+  {
+    if ((paramInt >= this.jdField_a_of_type_JavaUtilList.size()) || (paramInt < 0)) {
+      return true;
+    }
+    if ((BaseData)this.jdField_a_of_type_JavaUtilList.get(paramInt) == null)
+    {
+      AIOUtils.catchedExceptionInReleaseV2("ItemHeightHelper", "", new IllegalArgumentException(" data == null index: " + paramInt + "   itemArrayList.size() :" + this.jdField_a_of_type_JavaUtilList.size()));
+      return true;
+    }
+    return false;
+  }
+  
+  private int b(int paramInt)
+  {
+    int j = this.jdField_a_of_type_ComTencentWidgetXListView.getWidth();
+    int i = Utils.dp2px(300.0D);
+    j = View.MeasureSpec.makeMeasureSpec(j, -2147483648);
+    if ((Build.VERSION.SDK_INT <= 19) && (paramInt == 0)) {}
+    Object localObject;
+    do
+    {
+      return i;
+      localObject = a();
+    } while (localObject == null);
     try
     {
-      paramColorNote = new JSONObject(new String(paramColorNote.getReserve()));
-      return paramColorNote;
-    }
-    catch (Exception paramColorNote)
-    {
-      QLog.d("ViolaColorNote", 1, "[getViolaColorNoteData]: " + paramColorNote.getMessage());
-    }
-    return new JSONObject();
-  }
-  
-  public static JSONObject b(ColorNote paramColorNote)
-  {
-    return a(paramColorNote).optJSONObject("report");
-  }
-  
-  private void b()
-  {
-    if ((this.jdField_a_of_type_OrgJsonJSONObject == null) || (this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote == null)) {
-      return;
-    }
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote.mMainTitle = this.jdField_a_of_type_OrgJsonJSONObject.optString("title");
-      this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote.mSubTitle = this.jdField_a_of_type_OrgJsonJSONObject.optString("subTitle");
-      this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote.mPicUrl = this.jdField_a_of_type_OrgJsonJSONObject.optString("imageUrl");
-      this.jdField_a_of_type_OrgJsonJSONObject.put("param", this.jdField_a_of_type_JavaLangString).put("url", this.b).put("useTransParentFragment", this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote.mReserve = this.jdField_a_of_type_OrgJsonJSONObject.toString().getBytes();
-      this.jdField_a_of_type_Apkn.a(this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote);
-      return;
+      localObject = ((tfx)localObject).a(paramInt, null, this.jdField_a_of_type_ComTencentWidgetXListView, true);
+      ((View)localObject).measure(j, 0);
+      j = ((View)localObject).getMeasuredHeight();
+      QLog.d("ItemHeightHelper", 2, "getItemMeasureHeight index : " + paramInt + " height : " + j);
+      return j;
     }
     catch (Exception localException)
     {
-      QLog.e("ViolaColorNote", 1, "[setColorBallData]: " + localException.getMessage());
+      QLog.d("ItemHeightHelper", 2, localException, new Object[] { " index : " + paramInt });
     }
+    return i;
   }
   
-  private void c(JSONObject paramJSONObject)
+  public int a()
   {
-    if (paramJSONObject == null) {}
-    for (;;)
-    {
-      return;
-      if (this.jdField_a_of_type_OrgJsonJSONObject == null) {
-        this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
-      }
-      Iterator localIterator = paramJSONObject.keys();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        try
-        {
-          this.jdField_a_of_type_OrgJsonJSONObject.put(str, paramJSONObject.opt(str));
-        }
-        catch (JSONException localJSONException)
-        {
-          QLog.e("ViolaColorNote", 1, localJSONException.getMessage());
-        }
-      }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public int a(int paramInt)
+  {
+    if (a(paramInt)) {
+      return -1;
     }
+    BaseData localBaseData = (BaseData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (localBaseData.t > 0) {
+      return localBaseData.t;
+    }
+    localBaseData.t = b(paramInt);
+    return localBaseData.t;
   }
   
-  public ColorNote a()
+  public void a(int paramInt1, int paramInt2)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote;
-  }
-  
-  public tgl a(apkn paramapkn)
-  {
-    this.jdField_a_of_type_Apkn = paramapkn;
-    return this;
-  }
-  
-  public tgl a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public tgl a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Apkn == null) {}
-    while (!this.jdField_a_of_type_Apkn.c()) {
+    if (a(paramInt1)) {
       return;
     }
-    b();
+    ((BaseData)this.jdField_a_of_type_JavaUtilList.get(paramInt1)).t = paramInt2;
+    QLog.d("ItemHeightHelper", 2, " index : " + paramInt1 + "   height: " + paramInt2);
   }
   
-  public void a(int paramInt)
+  public void a(int paramInt, View paramView)
   {
-    if ((this.jdField_a_of_type_Apkn == null) || (1 != paramInt)) {
+    if (a(paramInt)) {}
+    while (((BaseData)this.jdField_a_of_type_JavaUtilList.get(paramInt)).t > 0) {
       return;
     }
-    b();
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {}
-    do
-    {
-      return;
-      c(paramJSONObject);
-    } while (this.jdField_a_of_type_Apkn == null);
-    this.jdField_a_of_type_Apkn.k();
-  }
-  
-  public void b(JSONObject paramJSONObject)
-  {
-    c(paramJSONObject);
+    paramView.getViewTreeObserver().addOnGlobalLayoutListener(new tgm(this, paramInt, paramView));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tgl
  * JD-Core Version:    0.7.0.1
  */

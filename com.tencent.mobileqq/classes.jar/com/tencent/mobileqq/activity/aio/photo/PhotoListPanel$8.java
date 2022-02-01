@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import ahbo;
+import ahuo;
 import java.util.ArrayList;
 
 class PhotoListPanel$8
@@ -14,7 +14,7 @@ class PhotoListPanel$8
       this.this$0.a.a();
     }
     this.this$0.b(this.jdField_a_of_type_JavaUtilArrayList, this.b, this.jdField_a_of_type_Boolean);
-    bbqf.b = System.currentTimeMillis();
+    bcwz.b = System.currentTimeMillis();
   }
 }
 

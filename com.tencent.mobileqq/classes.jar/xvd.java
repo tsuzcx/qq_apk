@@ -1,16 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.biz.qqstory.storyHome.VideoEncodeActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class xvd
-  implements View.OnClickListener
+public class xvd
+  implements RadioGroup.OnCheckedChangeListener
 {
-  xvd(xvb paramxvb) {}
+  public xvd(VideoEncodeActivity paramVideoEncodeActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    RadioButton localRadioButton = (RadioButton)paramRadioGroup.findViewById(paramInt);
+    VideoEncodeActivity.a(this.a, (String)localRadioButton.getTag());
+    ykq.d("Q.qqstory:VideoEncodeActivity", "select fake vid %s", new Object[] { VideoEncodeActivity.a(this.a) });
+    VideoEncodeActivity.a(this.a);
+    EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
   }
 }
 

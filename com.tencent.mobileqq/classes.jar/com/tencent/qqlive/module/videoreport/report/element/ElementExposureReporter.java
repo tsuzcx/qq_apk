@@ -1,6 +1,7 @@
 package com.tencent.qqlive.module.videoreport.report.element;
 
 import android.graphics.Rect;
+import android.support.annotation.NonNull;
 import android.support.v4.util.ArrayMap;
 import android.view.View;
 import com.tencent.qqlive.module.videoreport.Configuration;
@@ -192,7 +193,7 @@ public class ElementExposureReporter
     this.mExposureRecorder.clearExposure();
   }
   
-  public void onPageIn(PageInfo paramPageInfo)
+  public void onPageIn(@NonNull PageInfo paramPageInfo, @NonNull Set<PageInfo> paramSet)
   {
     if (VideoReportInner.getInstance().isDebugMode()) {
       Log.d("ElementExposureReporter", "onPageIn: pageInfo = " + paramPageInfo);
@@ -200,12 +201,15 @@ public class ElementExposureReporter
     elementReport(paramPageInfo);
   }
   
-  public void onPageOut(PageInfo paramPageInfo, boolean paramBoolean)
+  public void onPageOut(@NonNull PageInfo paramPageInfo, @NonNull Set<PageInfo> paramSet, boolean paramBoolean)
   {
     if (VideoReportInner.getInstance().isDebugMode()) {
       Log.d("ElementExposureReporter", "onPageOut: pageInfo = " + paramPageInfo);
     }
-    markUnexposed(paramPageInfo);
+    paramPageInfo = paramSet.iterator();
+    while (paramPageInfo.hasNext()) {
+      markUnexposed((PageInfo)paramPageInfo.next());
+    }
   }
   
   public void onPageUpdate(PageInfo paramPageInfo)

@@ -2,12 +2,12 @@ package com.tencent.biz.qqstory.view.widget;
 
 import android.util.LruCache;
 import friendlist.GetOnlineInfoResp;
-import ytk;
+import zid;
 
 public class StoryQIMBadgeView$1$1
   implements Runnable
 {
-  public StoryQIMBadgeView$1$1(ytk paramytk, GetOnlineInfoResp paramGetOnlineInfoResp, String paramString) {}
+  public StoryQIMBadgeView$1$1(zid paramzid, GetOnlineInfoResp paramGetOnlineInfoResp, String paramString) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class StoryQIMBadgeView$1$1
     for (boolean bool = true;; bool = false)
     {
       StoryQIMBadgeView.a().put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(bool));
-      this.jdField_a_of_type_Ytk.a.a(bool);
+      this.jdField_a_of_type_Zid.a.a(bool);
       return;
     }
   }

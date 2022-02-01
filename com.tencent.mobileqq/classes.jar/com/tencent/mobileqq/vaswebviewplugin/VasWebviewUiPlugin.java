@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import amtj;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.widget.Toast;
-import ardu;
-import autj;
-import bfzg;
-import bgve;
+import anvx;
+import ashz;
+import avzi;
+import bhhy;
+import bifw;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -36,25 +36,25 @@ public abstract class VasWebviewUiPlugin
   
   void OnActivityDestroy()
   {
-    if (autj.jdField_a_of_type_Boolean) {
-      autj.a(false, null, false);
+    if (avzi.jdField_a_of_type_Boolean) {
+      avzi.a(false, null, false);
     }
-    if (autj.jdField_a_of_type_AndroidOsPowerManager$WakeLock != null) {
-      autj.jdField_a_of_type_AndroidOsPowerManager$WakeLock = null;
+    if (avzi.jdField_a_of_type_AndroidOsPowerManager$WakeLock != null) {
+      avzi.jdField_a_of_type_AndroidOsPowerManager$WakeLock = null;
     }
   }
   
   protected void OnActivityPause()
   {
-    if (autj.jdField_a_of_type_Boolean) {
-      autj.a(false, null, true);
+    if (avzi.jdField_a_of_type_Boolean) {
+      avzi.a(false, null, true);
     }
   }
   
   void OnActivityResume()
   {
-    if (autj.jdField_a_of_type_Boolean) {
-      autj.a(true, this.mRuntime.a(), true);
+    if (avzi.jdField_a_of_type_Boolean) {
+      avzi.a(true, this.mRuntime.a(), true);
     }
   }
   
@@ -63,7 +63,7 @@ public abstract class VasWebviewUiPlugin
     if (QLog.isColorLevel()) {
       QLog.i("VasWebviewUiPlugin", 2, "decodeUrl:" + paramString);
     }
-    String str1 = paramString.replace("[uin]", this.activity.getAppRuntime().getAccount()).replace("[client]", "androidQQ").replace("[version]", "8.4.8.4810").replace("[sid]", "").replace("[platformId]", "2").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE);
+    String str1 = paramString.replace("[uin]", this.activity.getAppRuntime().getAccount()).replace("[client]", "androidQQ").replace("[version]", "8.4.10.4875").replace("[sid]", "").replace("[platformId]", "2").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE);
     Intent localIntent = this.activity.getIntent();
     String str2 = localIntent.getStringExtra("updateTime");
     paramString = str1;
@@ -101,7 +101,7 @@ public abstract class VasWebviewUiPlugin
       return false;
     }
     String str = "Web_uiplugin_step_" + paramLong;
-    bfzg.a(null, str);
+    bhhy.a(null, str);
     if (paramLong == 1L) {}
     for (;;)
     {
@@ -129,7 +129,7 @@ public abstract class VasWebviewUiPlugin
       }
       finally
       {
-        bfzg.a(str, null);
+        bhhy.a(str, null);
       }
       if (paramLong == 8589934597L)
       {
@@ -140,7 +140,7 @@ public abstract class VasWebviewUiPlugin
         if (paramLong == 8589934600L)
         {
           bool = onActivityResult(((Integer)paramMap.get("requestCode")).intValue(), ((Integer)paramMap.get("resultCode")).intValue(), (Intent)paramMap.get("data"));
-          bfzg.a(str, null);
+          bhhy.a(str, null);
           return bool;
         }
         if (paramLong == 8589934598L) {
@@ -171,18 +171,18 @@ public abstract class VasWebviewUiPlugin
     do
     {
       return;
-      if (ardu.a().a()) {
+      if (ashz.a().a()) {
         break;
       }
     } while (!paramBoolean2);
-    Toast.makeText(BaseApplication.getContext(), amtj.a(2131715066), 0).show();
+    Toast.makeText(BaseApplication.getContext(), anvx.a(2131715414), 0).show();
     return;
     if (paramBoolean1)
     {
-      ardu.a().b(paramBundle);
+      ashz.a().b(paramBundle);
       return;
     }
-    ardu.a().a(paramBundle);
+    ashz.a().a(paramBundle);
   }
   
   protected void webviewLoadUrl(String paramString)

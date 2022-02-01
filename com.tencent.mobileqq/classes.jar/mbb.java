@@ -1,39 +1,53 @@
-import com.tencent.av.ui.AVActivity;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-public class mbb
-  implements URLDrawable.URLDrawableListener
+class mbb
+  extends maz
 {
-  public mbb(AVActivity paramAVActivity) {}
+  Button jdField_a_of_type_AndroidWidgetButton;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  mbb(LinearLayout paramLinearLayout)
   {
-    AVActivity.a(this.a, false);
-    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadCanceled().");
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = paramLinearLayout;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout.findViewById(2131373752));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramLinearLayout.findViewById(2131373470));
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  Resources a()
   {
-    AVActivity.a(this.a, false);
-    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadFialed().");
+    return this.jdField_a_of_type_AndroidWidgetTextView.getResources();
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  void a()
   {
-    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadProgressed(). i = " + paramInt);
+    if (!a()) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  boolean a()
   {
-    AVActivity.a(this.a, true);
-    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadSuccessed().");
+    return this.jdField_a_of_type_AndroidWidgetTextView != null;
+  }
+  
+  boolean a(mbc parammbc)
+  {
+    a();
+    if ((parammbc.a != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null))
+    {
+      max.a(this.jdField_a_of_type_AndroidWidgetTextView, parammbc);
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mbb
  * JD-Core Version:    0.7.0.1
  */

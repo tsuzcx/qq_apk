@@ -1,36 +1,17 @@
-public class bjnb<T>
+import com.tencent.open.base.img.ImageCache;
+import com.tencent.open.downloadnew.DownloadInfo;
+
+class bjnb
+  implements bjll
 {
-  private long jdField_a_of_type_Long;
-  private bjnc<T> jdField_a_of_type_Bjnc;
-  private long b;
+  bjnb(bjna parambjna, DownloadInfo paramDownloadInfo) {}
   
-  private bjnb(bjnc<T> parambjnc)
-  {
-    this.jdField_a_of_type_Bjnc = parambjnc;
-  }
+  public void a(String paramString1, String paramString2, String paramString3) {}
   
-  public static <T> bjnb<T> a(bjnc<T> parambjnc)
+  public void b(String paramString1, String paramString2, String paramString3)
   {
-    return new bjnb(parambjnc);
-  }
-  
-  public bjnb<T> a(long paramLong)
-  {
-    this.b = paramLong;
-    return this;
-  }
-  
-  public bjnb<T> a(T paramT)
-  {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long > this.b)
-    {
-      this.jdField_a_of_type_Long = l;
-      if (this.jdField_a_of_type_Bjnc != null) {
-        this.jdField_a_of_type_Bjnc.execute(paramT);
-      }
-    }
-    return this;
+    bjko.d("DownloadManager_", ">>download apk icon err,should load another size icon");
+    ImageCache.a("app", bjkm.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c, 75), null);
   }
 }
 

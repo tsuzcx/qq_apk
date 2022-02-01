@@ -1,74 +1,54 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.annotation.TargetApi;
 
+@TargetApi(11)
 public class aqiu
 {
-  private int a;
-  private int b;
-  private int c = 1;
+  public float a;
+  public int a;
+  public float b;
+  public float c;
+  public float d = 1.0F;
+  public float e;
+  public float f;
+  public float g;
+  public float h;
   
-  public static aqiu a(aptx paramaptx)
+  public aqiu(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
   {
-    aqiu localaqiu = new aqiu();
-    if (paramaptx != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchHotWordConfBean", 2, "parse taskid->" + paramaptx.jdField_a_of_type_Int + " content->" + paramaptx.jdField_a_of_type_JavaLangString);
-      }
-    }
-    try
-    {
-      paramaptx = new JSONObject(paramaptx.jdField_a_of_type_JavaLangString);
-      localaqiu.a(paramaptx.optInt("hotword_switch_message", 0));
-      localaqiu.b(paramaptx.optInt("hotword_switch_contact", 0));
-      localaqiu.c(paramaptx.optInt("hotword_switch_dongtai", 1));
-      return localaqiu;
-    }
-    catch (Exception paramaptx)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("SearchHotWordConfBean", 2, "parse error->" + paramaptx.toString());
-    }
-    return localaqiu;
+    this.e = paramFloat1;
+    this.f = paramFloat2;
+    this.g = paramFloat3;
+    this.h = paramFloat4;
+    this.jdField_a_of_type_Float = paramFloat5;
+    this.b = paramFloat6;
+    this.jdField_a_of_type_Int = 2;
   }
   
-  void a(int paramInt)
+  public aqiu(int paramInt, float paramFloat1, float paramFloat2)
   {
     this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
   }
   
-  public boolean a()
+  public static aqiu a(float paramFloat1, float paramFloat2)
   {
-    return this.jdField_a_of_type_Int == 1;
+    return new aqiu(1, paramFloat1, paramFloat2);
   }
   
-  void b(int paramInt)
+  public static aqiu a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
   {
-    this.b = paramInt;
+    return new aqiu(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6);
   }
   
-  public boolean b()
+  public static aqiu b(float paramFloat1, float paramFloat2)
   {
-    return this.b == 1;
-  }
-  
-  void c(int paramInt)
-  {
-    this.c = paramInt;
-  }
-  
-  public boolean c()
-  {
-    return this.c == 1;
-  }
-  
-  public String toString()
-  {
-    return String.format("mHotWordSwitchTabMessage:%d, mHotWordSwitchTabContact:%d, mHotWordSwitchTabDongtai:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), Integer.valueOf(this.c) });
+    return new aqiu(0, paramFloat1, paramFloat2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqiu
  * JD-Core Version:    0.7.0.1
  */

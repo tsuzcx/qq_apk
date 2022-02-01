@@ -1,22 +1,31 @@
-import com.tencent.mobileqq.troop.associations.AllianceItem;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-class bdvk
-  extends andd
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/studymode/ModeSwitchManager$simpleUIObserver$1", "Lcom/tencent/mobileqq/simpleui/SimpleUIObserver;", "onReqGetSimpleUISwitch", "", "isSuccess", "", "bSwitch", "sStudySwitch", "bPref", "", "uin", "", "onSwitchSimpleUICallback", "isSuc", "bChangeTheme", "bSwitchElsePref", "statusCode", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bdvk
+  extends bdfj
 {
-  bdvk(bdvj parambdvj) {}
-  
-  protected void onGetRelatedTroopList(boolean paramBoolean, String paramString, int paramInt, long paramLong, AllianceItem paramAllianceItem)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
   {
-    if (paramAllianceItem == null)
+    this.a.a(false);
+    if (bdvn.b())
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopAssociationsListWrapper", 1, "TroopAssociationsListWrapper onGetRelatedTroopList: allianceItem is null");
-      }
-      this.a.a(paramBoolean, paramString, paramInt, null, 0, null, paramLong);
+      this.a.a(paramBoolean1, paramBoolean2, paramBoolean3, paramInt);
       return;
     }
-    this.a.a(paramBoolean, paramString, paramInt, paramAllianceItem.nextTroopUin, paramAllianceItem.associatedTroopCount, paramAllianceItem.associatedTroopList, paramLong);
+    Iterator localIterator = ((Iterable)bdve.a(this.a)).iterator();
+    while (localIterator.hasNext()) {
+      ((bdvf)localIterator.next()).a(paramBoolean1, paramBoolean2, paramBoolean3, paramInt);
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt, @Nullable String paramString)
+  {
+    Iterator localIterator = ((Iterable)bdve.a(this.a)).iterator();
+    while (localIterator.hasNext()) {
+      ((bdvf)localIterator.next()).a(paramBoolean1, paramBoolean2, paramBoolean3, paramInt, paramString);
+    }
   }
 }
 

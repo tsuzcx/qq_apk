@@ -1,24 +1,50 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AutoReplyText;
+import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
+import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity.4.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.app.AppRuntime.Status;
 
 public class ayza
-  extends AnimatorListenerAdapter
+  extends CardObserver
 {
-  public ayza(VasProfileTagView paramVasProfileTagView, View paramView) {}
+  public ayza(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onGetAutoReplyList(boolean paramBoolean, List<AutoReplyText> paramList, int paramInt)
   {
-    VasProfileTagView.b(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    this.jdField_a_of_type_AndroidViewView.setTranslationX(0.0F);
-    this.jdField_a_of_type_AndroidViewView.setTranslationY(0.0F);
-    VasProfileTagView.b(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView, false);
-    if (VasProfileTagView.c(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView) == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView.b();
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountOnlineStateActivity", 2, String.format("onGetAutoReplyList, isSuccess: %s, selectId: %s, replyList: %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), paramList }));
     }
-    VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView, VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView));
+    if (AccountOnlineStateActivity.a(this.a) != null) {
+      AccountOnlineStateActivity.a(this.a).runOnUiThread(new AccountOnlineStateActivity.4.1(this, paramBoolean, paramList));
+    }
+  }
+  
+  public void onSetAutoReplyList(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      azbu localazbu = AccountOnlineStateActivity.a(this.a).a();
+      AppRuntime.Status localStatus = azbj.a().a(localazbu);
+      if ((localStatus != null) && (!AccountOnlineStateActivity.a(this.a, localazbu, localStatus)))
+      {
+        AccountOnlineStateActivity.a(this.a, true);
+        AccountOnlineStateActivity.a(this.a).updateOnlineStatus(localStatus, localazbu.a);
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AccountOnlineStateActivity", 2, "onSetAutoReplyList, isSuccess: " + paramBoolean);
+      }
+      return;
+      AccountOnlineStateActivity.a(this.a, true, 0);
+      continue;
+      AccountOnlineStateActivity.a(this.a, false, -2);
+    }
   }
 }
 

@@ -1,93 +1,106 @@
-import android.util.DisplayMetrics;
-import com.tencent.ark.ArkEnvironmentManager;
-import com.tencent.ark.ark;
-import com.tencent.ark.ark.ApplicationCallback;
-import com.tencent.ark.open.delegate.ArkDelegateManager;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppCenterUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SQLiteDatabase;
+import com.tencent.mobileqq.data.fts.FTSNewTroopSync;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.fts.FTSOptSync;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class aoye
+  extends aoyg
 {
-  protected static final ark.ApplicationCallback a = new aoyp();
-  
-  public static void a()
+  public aoye(QQAppInterface paramQQAppInterface, aoyf paramaoyf)
   {
-    String str3 = aovn.a().a();
-    String str1 = "";
-    Object localObject = str1;
-    String str2 = str3;
-    if (1 != BaseApplicationImpl.sProcessId)
-    {
-      str2 = MobileQQ.getMobileQQ().getQQProcessName();
-      localObject = str1;
-      if (str2 != null)
-      {
-        int i = str2.lastIndexOf(':');
-        localObject = str1;
-        if (i > -1) {
-          localObject = "_" + str2.substring(i + 1);
-        }
-      }
-      str2 = str3 + (String)localObject;
-    }
-    ArkDelegateManager.getInstance().init(str2, (String)localObject, "8.4.8", BaseApplicationImpl.getContext());
-    localObject = BaseApplicationImpl.getApplication().getRuntime();
-    ArkEnvironmentManager.getInstance().setCurrentUin(((AppRuntime)localObject).getAccount());
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (aovn.a() != null)
-    {
-      bool1 = bool2;
-      if (aovn.a().a() == 1) {
-        bool1 = true;
-      }
-    }
-    ArkEnvironmentManager.getInstance().setEnv(bool1);
-    ArkDelegateManager.getInstance().setSetupDelegate(new aoyj());
-    ArkDelegateManager.getInstance().setNetDelegate(new aoyk());
-    ArkDelegateManager.getInstance().setInputCallback(new aoyq(null));
-    ArkDelegateManager.getInstance().setApplicationCallback(a);
+    super(paramQQAppInterface, paramaoyf);
+    this.d = true;
   }
   
-  public static void a(boolean paramBoolean)
+  protected FTSOptSync a(int paramInt, long paramLong1, long paramLong2)
   {
-    Object localObject1 = ArkEnvironmentManager.getInstance();
-    if (!ArkAppCenter.a) {}
+    return new FTSNewTroopSync(paramInt, paramLong1, paramLong2);
+  }
+  
+  protected List<FTSOptSync> a(SQLiteDatabase paramSQLiteDatabase, EntityManager paramEntityManager)
+  {
+    localObject = null;
     try
     {
-      if (!ArkAppCenter.a)
+      if (this.a > 0)
       {
-        ((ArkEnvironmentManager)localObject1).setThreadCreator(new aoyf());
-        ((ArkEnvironmentManager)localObject1).setLogCallback(new aoyg());
-        ((ArkEnvironmentManager)localObject1).setLibraryLoader(new aoyh());
-        ((ArkEnvironmentManager)localObject1).setDebugFlag(false);
-        ((ArkEnvironmentManager)localObject1).setProfilingLogFlag(true);
-        ((ArkEnvironmentManager)localObject1).setDataReport(new aoyi());
-        ArkAppCenter.a = true;
-      }
-      if ((paramBoolean) && (!ArkAppCenter.b))
-      {
-        ((ArkEnvironmentManager)localObject1).setEnableAndroid9EmojiSupport(aoth.b());
-        ((ArkEnvironmentManager)localObject1).loadLibrary();
-        if (ArkAppCenter.b)
-        {
-          if (BaseApplicationImpl.getContext() != null)
-          {
-            localObject1 = ArkAppCenterUtil.sDisplayMetrics;
-            ark.arkSetScreenSize(((DisplayMetrics)localObject1).widthPixels / ((DisplayMetrics)localObject1).density, ((DisplayMetrics)localObject1).heightPixels / ((DisplayMetrics)localObject1).density);
-          }
-          ArkEnvironmentManager.getInstance().setSingleThreadMode(true);
-          ArkEnvironmentManager.getInstance().setThreadMode();
-          QLog.i("ArkApp.ArkMultiProcUtil", 1, "setupArkEnvironment, https=true, multithreads=true");
+        i = paramSQLiteDatabase.delete(FTSNewTroopSync.class.getSimpleName(), "_id<=?", new String[] { String.valueOf(this.a) });
+        if ((QLog.isColorLevel()) && (i > 0)) {
+          QLog.d("Q.fts.troop.operator.new", 2, "delete " + FTSNewTroopSync.class.getSimpleName() + " row=" + i);
         }
       }
-      return;
+      paramEntityManager = paramEntityManager.query(FTSNewTroopSync.class, FTSNewTroopSync.class.getSimpleName(), false, "_id>?", new String[] { String.valueOf(this.a) }, null, null, null, "300");
+      if (paramEntityManager == null) {
+        break label291;
+      }
+      paramSQLiteDatabase = new ArrayList(paramEntityManager.size());
+      try
+      {
+        paramEntityManager = paramEntityManager.iterator();
+        while (paramEntityManager.hasNext()) {
+          paramSQLiteDatabase.add(((FTSNewTroopSync)paramEntityManager.next()).transTroopSync());
+        }
+        QLog.e("Q.fts.troop.operator.new", 1, paramEntityManager, new Object[0]);
+      }
+      catch (Throwable paramEntityManager) {}
     }
-    finally {}
+    catch (Throwable paramEntityManager)
+    {
+      for (;;)
+      {
+        int i;
+        paramSQLiteDatabase = localObject;
+        continue;
+        paramSQLiteDatabase = null;
+      }
+    }
+    paramEntityManager = new HashMap();
+    paramEntityManager.put("type", "2");
+    StatisticCollector.getInstance(BaseApplicationImpl.getApplication().getApplicationContext()).collectPerformance(null, "actGetOptFailed", true, 0L, 0L, paramEntityManager, null);
+    paramEntityManager = paramSQLiteDatabase;
+    label225:
+    return paramEntityManager;
+    paramEntityManager = paramSQLiteDatabase;
+    for (;;)
+    {
+      try
+      {
+        if (!QLog.isColorLevel()) {
+          break label225;
+        }
+        paramEntityManager = new StringBuilder().append("getOptSyncList size:");
+        if (paramSQLiteDatabase == null) {
+          break label279;
+        }
+        i = paramSQLiteDatabase.size();
+        QLog.d("Q.fts.troop.operator.new", 2, i);
+        return paramSQLiteDatabase;
+      }
+      catch (Throwable paramEntityManager) {}
+      break;
+      label279:
+      i = 0;
+    }
+  }
+  
+  protected String c()
+  {
+    return "NewTroopCursor";
+  }
+  
+  public void f() {}
+  
+  public boolean g()
+  {
+    return false;
   }
 }
 

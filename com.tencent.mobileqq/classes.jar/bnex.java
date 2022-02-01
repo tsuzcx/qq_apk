@@ -1,37 +1,23 @@
-import com.qq.taf.jce.HexUtil;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoActivity;
-import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoActivity.1.1;
+import android.support.v7.widget.RecyclerView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bnex
-  implements EncodeVideoTask.ResultListener
+class bnex
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public bnex(EditWebVideoActivity paramEditWebVideoActivity) {}
+  bnex(bnev parambnev) {}
   
-  public void onEncodeSuccess(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    int i = ((bney)this.a.a).c;
-    EditWebVideoActivity.a(this.a, paramString1);
-    EditWebVideoActivity.a(this.a, paramArrayOfByte1);
-    EditWebVideoActivity.b(this.a, HexUtil.bytes2HexStr(EditWebVideoActivity.a(this.a)));
-    paramString1 = this.a;
-    if (i <= 0) {}
-    for (;;)
+    RecyclerView localRecyclerView = bnev.a(this.a);
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
     {
-      EditWebVideoActivity.a(paramString1, paramInt3);
-      EditWebVideoActivity.c(this.a, paramString2);
-      EditWebVideoActivity.b(this.a, paramArrayOfByte2);
-      EditWebVideoActivity.b(this.a, paramInt1);
-      EditWebVideoActivity.c(this.a, paramInt2);
-      EditWebVideoActivity.a(this.a).sendEmptyMessage(1002);
+      localRecyclerView.setVisibility(i);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
-      paramInt3 = i;
     }
-  }
-  
-  public void onError(int paramInt)
-  {
-    this.a.runOnUiThread(new EditWebVideoActivity.1.1(this));
   }
 }
 

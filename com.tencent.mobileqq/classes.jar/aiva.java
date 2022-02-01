@@ -1,35 +1,19 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.history.ChatHistoryAuthDevForRoamMsgFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import mqq.app.QQPermissionCallback;
 
-public class aiva
-  implements Handler.Callback
+class aiva
+  implements QQPermissionCallback
 {
-  public aiva(ChatHistoryAuthDevForRoamMsgFragment paramChatHistoryAuthDevForRoamMsgFragment) {}
+  aiva(aiuz paramaiuz, boolean paramBoolean, String paramString1, String paramString2) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    }
-    ChatHistoryAuthDevForRoamMsgFragment.a(this.a).findViewById(2131380242).setEnabled(true);
-    if ((this.a.a != null) && (this.a.a.isShowing())) {
-      this.a.a.dismiss();
-    }
-    if (paramMessage.arg1 == 0) {
-      QQToast.a(this.a.getActivity(), 2, amtj.a(2131700763), 0).b(this.a.getActivity().getTitleBarHeight());
-    }
-    for (;;)
-    {
-      this.a.getActivity().setResult(1);
-      this.a.getActivity().finish();
-      return false;
-      QQToast.a(this.a.getActivity(), 2, amtj.a(2131700773), 0).b(this.a.getActivity().getTitleBarHeight());
+    aiuz.a(this.jdField_a_of_type_Aiuz).i();
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      aiuz.a(this.jdField_a_of_type_Aiuz, this.jdField_a_of_type_JavaLangString, this.b);
     }
   }
 }

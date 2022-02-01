@@ -1,4 +1,17 @@
-class bckh {}
+public class bckh
+{
+  public int a;
+  
+  public bckh(int paramInt)
+  {
+    this.a = paramInt;
+  }
+  
+  public int a()
+  {
+    return this.a;
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

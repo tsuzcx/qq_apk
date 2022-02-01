@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.activity.bless;
 
-import ahux;
+import aipw;
 
 public class BlessManager$5
   implements Runnable
 {
-  public BlessManager$5(ahux paramahux) {}
+  public BlessManager$5(aipw paramaipw) {}
   
   public void run()
   {
-    if (ahux.a(this.this$0) != null)
+    if (aipw.a(this.this$0) != null)
     {
-      if (!ahux.a(this.this$0))
+      if (!aipw.a(this.this$0))
       {
-        ahux.c(this.this$0, ahux.a(this.this$0, ahux.a(this.this$0), false));
-        ahux.a(this.this$0, ahux.a(this.this$0));
-        ahux.a(this.this$0, ahux.a(this.this$0), true);
+        aipw.c(this.this$0, aipw.a(this.this$0, aipw.a(this.this$0), false));
+        aipw.a(this.this$0, aipw.a(this.this$0));
+        aipw.a(this.this$0, aipw.a(this.this$0), true);
       }
       return;
     }
-    ahux.a(this.this$0, false);
+    aipw.a(this.this$0, false);
   }
 }
 

@@ -1,50 +1,233 @@
-import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.logic.ReadinjoyFixPosArticleManager.1;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class qeh
-  implements qdy
 {
-  public static String a;
-  public static String[] a;
-  public static String[] b = { "search_word_show_1", "search_word_show_2", "search_word_show_3", "search_word_show_4" };
+  private static volatile qeh jdField_a_of_type_Qeh;
+  private HashMap<Integer, WeakReference<szd>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private qei jdField_a_of_type_Qei = new qei(this, 1);
   
-  static
+  private int a(int paramInt1, List<BaseArticleInfo> paramList, int paramInt2)
   {
-    jdField_a_of_type_JavaLangString = "search_word_title";
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "search_word_click_1", "search_word_click_2", "search_word_click_3", "search_word_click_4" };
-  }
-  
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
-  
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
-  {
-    return qah.a(paramBaseArticleInfo);
-  }
-  
-  public void a(int paramInt1, Container paramContainer, pvc parampvc, int paramInt2)
-  {
-    ArticleInfo localArticleInfo = parampvc.a();
-    if ((localArticleInfo != null) && (localArticleInfo.isAccountShown)) {
-      qga.a(paramContainer, parampvc);
-    }
-  }
-  
-  public boolean a(int paramInt, Container paramContainer, pvc parampvc, ViewBase paramViewBase)
-  {
-    if ((paramViewBase != null) && (!TextUtils.isEmpty(paramViewBase.getClickEvnet())) && (paramViewBase.getClickEvnet().startsWith("search_word_click_")))
+    paramInt1 = 0;
+    while (paramInt1 < paramList.size())
     {
-      paramViewBase.setOnClickListener(new qei(this, parampvc, paramContainer));
-      return true;
+      if (paramInt2 == 0)
+      {
+        paramList = (BaseArticleInfo)paramList.get(paramInt1);
+        paramInt2 = paramInt1;
+        if (paramList != null)
+        {
+          paramInt2 = paramInt1;
+          if (paramList.mGroupId != -1L)
+          {
+            paramInt2 = paramInt1;
+            if (paramList.mGroupCount != 1L)
+            {
+              QLog.d("ReadinjoyFixPosArticleManager", 2, "position " + paramInt1 + " is group article , groupCount : " + paramList.mGroupCount + ", nowGroupIndex : " + paramList.mFeedIndexInGroup + ", groupID : " + paramList.mGroupId);
+              paramInt2 = paramInt1 + (int)(paramList.mGroupCount - paramList.mFeedIndexInGroup);
+            }
+          }
+        }
+        return paramInt2;
+      }
+      paramInt2 -= 1;
+      paramInt1 += 1;
     }
-    return false;
+    return -1;
+  }
+  
+  private static int a(long paramLong)
+  {
+    return (int)(-paramLong & 0xFFFFFFFF);
+  }
+  
+  public static qeh a()
+  {
+    if (jdField_a_of_type_Qeh == null) {}
+    try
+    {
+      if (jdField_a_of_type_Qeh == null) {
+        jdField_a_of_type_Qeh = new qeh();
+      }
+      return jdField_a_of_type_Qeh;
+    }
+    finally {}
+  }
+  
+  public static boolean a(long paramLong)
+  {
+    return paramLong <= 0L;
+  }
+  
+  private boolean a(List<BaseArticleInfo> paramList1, List<BaseArticleInfo> paramList2)
+  {
+    if (paramList1 == null) {}
+    for (;;)
+    {
+      return false;
+      if (paramList2 == null) {
+        return true;
+      }
+      if (paramList1.size() != paramList2.size()) {
+        return true;
+      }
+      int i = 0;
+      while (i < paramList1.size())
+      {
+        BaseArticleInfo localBaseArticleInfo1 = (BaseArticleInfo)paramList1.get(i);
+        BaseArticleInfo localBaseArticleInfo2 = (BaseArticleInfo)paramList2.get(i);
+        if (localBaseArticleInfo1.mArticleID != localBaseArticleInfo2.mArticleID) {
+          return true;
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  private static long b(int paramInt1, int paramInt2)
+  {
+    return -(paramInt1 << 32 | paramInt2);
+  }
+  
+  private void c(int paramInt)
+  {
+    ukq.a("AdDataLink", "on async data refresh , channelID  : " + paramInt);
+    Object localObject = (WeakReference)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    if (localObject == null) {}
+    do
+    {
+      return;
+      localObject = (szd)((WeakReference)localObject).get();
+    } while ((localObject == null) || (((szd)localObject).isEmpty()));
+    ThreadManager.getUIHandler().post(new ReadinjoyFixPosArticleManager.1(this, (szd)localObject, paramInt));
+  }
+  
+  public ArticleInfo a(int paramInt, long paramLong)
+  {
+    return (ArticleInfo)this.jdField_a_of_type_Qei.a(paramInt, a(paramLong));
+  }
+  
+  public List<BaseArticleInfo> a(int paramInt1, List<BaseArticleInfo> paramList1, List<BaseArticleInfo> paramList2, int paramInt2)
+  {
+    if (paramList1 == null) {
+      return null;
+    }
+    this.jdField_a_of_type_Qei.a(paramInt1);
+    if (!this.jdField_a_of_type_Qei.a(paramInt1))
+    {
+      QLog.d("ReadinjoyFixPosArticleManager", 1, "has no fix article , give up insert !");
+      return paramList1;
+    }
+    QLog.d("ReadinjoyFixPosArticleManager", 1, "insertFixPosArticles type : " + paramInt2 + ", channelID : " + paramInt1);
+    long l;
+    int j;
+    if (paramInt2 == 2)
+    {
+      paramInt2 = 0;
+      if (paramInt2 < paramList2.size())
+      {
+        l = ((BaseArticleInfo)paramList2.get(paramInt2)).mRecommendSeq;
+        if (!a(l)) {}
+        for (;;)
+        {
+          paramInt2 += 1;
+          break;
+          i = a(l);
+          j = paramInt2 - i;
+          localArrayList1 = (ArrayList)this.jdField_a_of_type_Qei.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
+          localArrayList2 = (ArrayList)this.jdField_a_of_type_Qei.b.get(Integer.valueOf(paramInt1));
+          if ((localArrayList1 != null) && (localArrayList2 != null))
+          {
+            int k = localArrayList1.indexOf(Integer.valueOf(i));
+            if (k >= 0)
+            {
+              localArrayList2.set(k, Integer.valueOf(j));
+              QLog.d("ReadinjoyFixPosArticleManager", 1, "fix offset when loadMore, expect : " + i + ", now : " + paramInt2 + ", offset : " + j);
+            }
+          }
+        }
+      }
+    }
+    paramList2 = (ArrayList)this.jdField_a_of_type_Qei.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
+    ArrayList localArrayList1 = (ArrayList)this.jdField_a_of_type_Qei.b.get(Integer.valueOf(paramInt1));
+    Object localObject = (ArrayList)this.jdField_a_of_type_Qei.c.get(Integer.valueOf(paramInt1));
+    if ((paramList2 == null) || (localArrayList1 == null) || (localObject == null))
+    {
+      QLog.d("ReadinjoyFixPosArticleManager", 1, "ad article or positions is empty ! return ori data ");
+      return paramList1;
+    }
+    ArrayList localArrayList2 = new ArrayList(paramList1);
+    int i = Math.min(paramList2.size(), ((ArrayList)localObject).size());
+    paramInt2 = 0;
+    if (paramInt2 < i)
+    {
+      j = ((Integer)paramList2.get(paramInt2)).intValue();
+      j = ((Integer)localArrayList1.get(paramInt2)).intValue() + j;
+      if (paramList1.size() + paramList2.size() < j + 1) {
+        ukq.a("ReadinjoyFixPosArticleManager", "expect insert into " + j + ", but article size is not enougharticle size:" + paramList1.size() + " sp size: " + paramList2.size());
+      }
+      for (;;)
+      {
+        paramInt2 += 1;
+        break;
+        j = a(paramInt1, localArrayList2, j);
+        if (j == -1)
+        {
+          QLog.d("ReadinjoyFixPosArticleManager", 1, "find real position is error ! ");
+        }
+        else
+        {
+          l = b(1, ((Integer)paramList2.get(paramInt2)).intValue());
+          QLog.d("ReadinjoyFixPosArticleManager", 1, "insert article , position : " + j + ", expectIndex : " + paramList2.get(paramInt2) + ", fakeSeq : " + l);
+          localObject = pvj.a().a(paramInt1, l);
+          if (localObject != null) {
+            localArrayList2.add(j, localObject);
+          }
+        }
+      }
+    }
+    return localArrayList2;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyFixPosArticleManager", 2, " registerReommendADListener " + paramInt);
+    }
+    this.jdField_a_of_type_Qei.c(paramInt);
+  }
+  
+  public void a(int paramInt, long paramLong)
+  {
+    if (!a(paramLong)) {
+      return;
+    }
+    int i = a(paramLong);
+    this.jdField_a_of_type_Qei.a(paramInt, i);
+  }
+  
+  public void a(int paramInt, szd paramszd)
+  {
+    if (paramszd == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), new WeakReference(paramszd));
+    this.jdField_a_of_type_Qei.c(paramInt);
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(paramInt));
+    this.jdField_a_of_type_Qei.d(paramInt);
   }
 }
 

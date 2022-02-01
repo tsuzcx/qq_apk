@@ -1,19 +1,8 @@
-public class azel
-  implements azeb
+import com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiBean;
+
+public abstract interface azel
 {
-  private azfa a;
-  
-  public azel(azfa paramazfa)
-  {
-    this.a = paramazfa;
-  }
-  
-  public void a(azfk paramazfk)
-  {
-    if (this.a != null) {
-      this.a.b(paramazfk);
-    }
-  }
+  public abstract void a(PoiBean paramPoiBean);
 }
 
 

@@ -1,11 +1,10 @@
-public abstract interface aysw<VIEW, DATA>
-  extends aysy
+import java.util.List;
+
+public class aysw
 {
-  public abstract int a();
-  
-  public abstract String a();
-  
-  public abstract boolean a(DATA paramDATA);
+  public List<aysu> a;
+  public boolean a;
+  public List<ayuu> b;
 }
 
 

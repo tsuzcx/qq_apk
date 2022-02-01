@@ -1,21 +1,18 @@
-import android.view.ViewTreeObserver;
-import com.tencent.widget.DynamicGridView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.model.GetVirtualListResult;
 
-public class bjpq
-  implements bjpz
+public final class bjpq
+  implements Parcelable.Creator<GetVirtualListResult>
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  
-  public bjpq(DynamicGridView paramDynamicGridView, int paramInt1, int paramInt2)
+  public GetVirtualListResult a(Parcel paramParcel)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
+    return new GetVirtualListResult(paramParcel);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public GetVirtualListResult[] a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new bjpr(this, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView), paramInt1, paramInt2));
+    return new GetVirtualListResult[paramInt];
   }
 }
 

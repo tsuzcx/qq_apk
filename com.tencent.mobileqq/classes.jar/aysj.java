@@ -1,107 +1,30 @@
-import android.os.Bundle;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.profilecard.bussiness.colorscreen.ProfileColorScreenComponent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import com.tencent.mobileqq.ocr.OCRResultActivity.9.1;
+import com.tencent.mobileqq.ocr.data.TranslateResult;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import java.util.HashMap;
 
 public class aysj
-  extends ayrr<FrameLayout>
+  extends ayri
 {
-  private ayvs jdField_a_of_type_Ayvs;
-  private aywk jdField_a_of_type_Aywk;
-  private ProfileColorScreenComponent jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent;
+  public aysj(OCRResultActivity paramOCRResultActivity) {}
   
-  public aysj(aysx paramaysx, aymg paramaymg)
+  public void a(boolean paramBoolean, int paramInt, TranslateResult paramTranslateResult)
   {
-    super(paramaysx, paramaymg);
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent = ((ProfileColorScreenComponent)aysv.a(1004, this.jdField_a_of_type_Aysx, (aymg)this.b));
-      this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent.a(this.jdField_a_of_type_JavaLangObject);
-      this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent.g();
-      a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent);
+    if (OCRResultActivity.a(this.a)) {
+      return;
     }
-  }
-  
-  private void i()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent != null)
+    this.a.runOnUiThread(new OCRResultActivity.9.1(this, paramBoolean, paramInt, paramTranslateResult));
+    HashMap localHashMap = new HashMap();
+    if (paramTranslateResult != null) {}
+    for (int i = paramTranslateResult.b;; i = 2000)
     {
-      b(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent);
-      this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent.h();
-      this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent = null;
+      localHashMap.put("errCode", String.valueOf(i));
+      localHashMap.put("type", String.valueOf(paramInt));
+      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "SCAN_TRANSLATE_RESULT", paramBoolean, 0L, 0L, localHashMap, "", false);
+      return;
     }
-  }
-  
-  private void j()
-  {
-    if (this.jdField_a_of_type_Ayvs == null)
-    {
-      this.jdField_a_of_type_Ayvs = ((ayvs)aysv.a(1020, this.jdField_a_of_type_Aysx, (aymg)this.b));
-      this.jdField_a_of_type_Ayvs.a(this.jdField_a_of_type_JavaLangObject);
-      this.jdField_a_of_type_Ayvs.g();
-      a(this.jdField_a_of_type_Ayvs);
-    }
-  }
-  
-  private void k()
-  {
-    if (this.jdField_a_of_type_Ayvs != null)
-    {
-      b(this.jdField_a_of_type_Ayvs);
-      this.jdField_a_of_type_Ayvs.h();
-      this.jdField_a_of_type_Ayvs = null;
-    }
-  }
-  
-  private void l()
-  {
-    if (this.jdField_a_of_type_Aywk == null)
-    {
-      this.jdField_a_of_type_Aywk = ((aywk)aysv.a(1025, this.jdField_a_of_type_Aysx, (aymg)this.b));
-      this.jdField_a_of_type_Aywk.a(this.jdField_a_of_type_JavaLangObject);
-      this.jdField_a_of_type_Aywk.g();
-      a(this.jdField_a_of_type_Aywk);
-    }
-  }
-  
-  private void m()
-  {
-    if (this.jdField_a_of_type_Aywk != null)
-    {
-      b(this.jdField_a_of_type_Aywk);
-      this.jdField_a_of_type_Aywk.h();
-      this.jdField_a_of_type_Aywk = null;
-    }
-  }
-  
-  public int a()
-  {
-    return 105;
-  }
-  
-  public String a()
-  {
-    return "ProfileFgContainer";
-  }
-  
-  public void a(BaseActivity paramBaseActivity, Bundle paramBundle)
-  {
-    super.a(paramBaseActivity, paramBundle);
-    a();
-    j();
-    l();
-  }
-  
-  public void f()
-  {
-    i();
-    k();
-    m();
-    super.f();
   }
 }
 

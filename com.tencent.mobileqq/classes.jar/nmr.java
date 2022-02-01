@@ -1,29 +1,42 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.avgame.app.AVGameAppInterface;
 
-class nmr
-  extends BroadcastReceiver
+public class nmr
+  extends meu
 {
-  nmr(nmq paramnmq) {}
+  private final boolean q;
+  private boolean r;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public nmr(Context paramContext, AVGameAppInterface paramAVGameAppInterface, String paramString, long paramLong)
   {
-    int i = paramIntent.getIntExtra("request_type", 0);
-    QLog.i(this.a.c, 2, "receive request" + paramIntent.getExtras());
-    switch (i)
-    {
-    default: 
-      return;
+    this(paramContext, paramAVGameAppInterface, paramString, paramLong, true);
+  }
+  
+  public nmr(Context paramContext, AVGameAppInterface paramAVGameAppInterface, String paramString, long paramLong, boolean paramBoolean)
+  {
+    super(paramContext, null, paramString, paramLong, paramBoolean);
+    this.q = paramBoolean;
+  }
+  
+  protected boolean a(int paramInt)
+  {
+    if (h() == 2) {
+      return false;
     }
-    paramContext = new Intent();
-    paramContext.setAction("com.tencent.mobileqq.NearbyJsInterface");
-    paramContext.putExtra("command_type", 1);
-    paramContext.putExtra("data", nmq.a(this.a));
-    this.a.a.getApp().sendBroadcast(paramContext);
+    return super.a(paramInt);
+  }
+  
+  protected void b(lqo paramlqo)
+  {
+    if (this.q) {
+      super.b(paramlqo);
+    }
+  }
+  
+  protected void d(lqo paramlqo)
+  {
+    this.r = true;
+    super.d(paramlqo);
   }
 }
 

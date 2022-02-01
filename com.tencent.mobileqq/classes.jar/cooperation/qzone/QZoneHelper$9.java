@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import aufm;
+import avlg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -9,7 +9,7 @@ import common.config.service.QzoneConfig;
 final class QZoneHelper$9
   implements Runnable
 {
-  QZoneHelper$9(QQAppInterface paramQQAppInterface, aufm paramaufm) {}
+  QZoneHelper$9(QQAppInterface paramQQAppInterface, avlg paramavlg) {}
   
   public void run()
   {

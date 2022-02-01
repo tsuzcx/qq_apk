@@ -1,15 +1,24 @@
+import com.tencent.mobileqq.app.automator.step.GetGeneralSettings;
+
 public class aoim
+  extends anvi
 {
-  public long b = 0L;
+  private aoim(GetGeneralSettings paramGetGeneralSettings) {}
   
-  public String toString()
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
   {
-    return "ARLocalRecogResultBase{recogType = " + this.b + '}';
+    if ((paramBoolean1) && (paramBoolean2))
+    {
+      this.a.a.a = 3;
+      this.a.a(7);
+      return;
+    }
+    this.a.a(6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoim
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,124 @@
-import android.app.Dialog;
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.HashMap<Ljava.lang.String;Ljava.lang.Object;>;
+import java.util.concurrent.Executor;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bghh
-  extends ReportDialog
+  extends bjkz<HashMap<String, Object>, Void, JSONObject>
 {
-  private static int jdField_a_of_type_Int = 150;
-  private static int b = 56;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bghi(this);
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  bghj jdField_a_of_type_Bghj;
+  protected int a;
+  protected Bundle a;
+  protected bghi a;
+  protected boolean a;
   
-  public bghh(Context paramContext)
+  public bghh(String paramString1, String paramString2, bghi parambghi, int paramInt, Bundle paramBundle)
   {
-    super(paramContext, 2131755174);
+    super(paramString1, paramString2);
+    this.jdField_a_of_type_Bghi = parambghi;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
   
-  public void a(bghj parambghj)
+  public bghh(String paramString1, String paramString2, bghi parambghi, int paramInt, Bundle paramBundle, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Bghj = parambghj;
+    super(paramString1, paramString2);
+    this.jdField_a_of_type_Bghi = parambghi;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  protected void onCreate(Bundle paramBundle)
+  protected JSONObject a(HashMap<String, Object>... paramVarArgs)
   {
-    super.onCreate(paramBundle);
-    setContentView(2131561999);
-    findViewById(2131374808).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    findViewById(2131374809).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    findViewById(2131374810).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374811));
-    paramBundle = new ColorDrawable(15856629);
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    Resources localResources = BaseApplicationImpl.sApplication.getResources();
-    float f = localResources.getDisplayMetrics().density;
-    localURLDrawableOptions.mRequestWidth = ((int)(localResources.getDisplayMetrics().widthPixels - b * f));
-    localURLDrawableOptions.mRequestHeight = ((int)(jdField_a_of_type_Int * f));
-    localURLDrawableOptions.mFailedDrawable = paramBundle;
-    localURLDrawableOptions.mLoadingDrawable = paramBundle;
-    paramBundle = URLDrawable.getDrawable("https://gxh.vip.qq.com/xydata/like/app/zanDoubleConfig/single.png", localURLDrawableOptions);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle);
+    if (isCancelled()) {
+      return null;
+    }
+    Object localObject = paramVarArgs[0];
+    if (((((HashMap)localObject).get("CONTEXT") instanceof Context)) && ((((HashMap)localObject).get("BUNDLE") instanceof Bundle)))
+    {
+      paramVarArgs = (Context)((HashMap)localObject).get("CONTEXT");
+      localObject = (Bundle)((HashMap)localObject).get("BUNDLE");
+    }
+    for (;;)
+    {
+      try
+      {
+        Bundle localBundle = new Bundle();
+        String str1 = ((Bundle)localObject).getString("Cookie");
+        String str2 = ((Bundle)localObject).getString("Referer");
+        String str3 = ((Bundle)localObject).getString("Host");
+        if (str1 != null)
+        {
+          localBundle.putString("Cookie", str1);
+          ((Bundle)localObject).remove("Cookie");
+        }
+        if (str2 != null)
+        {
+          localBundle.putString("Referer", str2);
+          ((Bundle)localObject).remove("Referer");
+        }
+        if (str3 != null)
+        {
+          localBundle.putString("Host", str3);
+          ((Bundle)localObject).remove(str3);
+        }
+        localObject = new JSONObject(HttpUtil.openUrl(paramVarArgs, this.jdField_a_of_type_JavaLangString, this.b, (Bundle)localObject, localBundle));
+        paramVarArgs = (HashMap<String, Object>[])localObject;
+        if (!this.jdField_a_of_type_Boolean)
+        {
+          paramVarArgs = (HashMap<String, Object>[])localObject;
+          if (((JSONObject)localObject).getInt("retcode") == 0) {
+            paramVarArgs = ((JSONObject)localObject).getJSONObject("result");
+          }
+        }
+      }
+      catch (IOException paramVarArgs)
+      {
+        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
+        paramVarArgs = null;
+        continue;
+      }
+      catch (JSONException paramVarArgs)
+      {
+        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
+        paramVarArgs = null;
+        continue;
+      }
+      catch (OutOfMemoryError paramVarArgs)
+      {
+        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
+      }
+      return paramVarArgs;
+      paramVarArgs = null;
+    }
+  }
+  
+  @SuppressLint({"InlinedApi", "NewApi"})
+  public void a(HashMap<String, Object> paramHashMap)
+  {
+    Executor localExecutor = a();
+    if (localExecutor != null)
+    {
+      executeOnExecutor(localExecutor, new HashMap[] { paramHashMap });
+      return;
+    }
+    execute(new HashMap[] { paramHashMap });
+  }
+  
+  protected void a(JSONObject paramJSONObject)
+  {
+    if (isCancelled()) {}
+    while (this.jdField_a_of_type_Bghi == null) {
+      return;
+    }
+    this.jdField_a_of_type_Bghi.a(paramJSONObject, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

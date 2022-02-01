@@ -1,22 +1,17 @@
-import android.os.Bundle;
+import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
 
 public class aose
-  implements aosj
+  extends aorw
 {
-  public EIPCResult a(Bundle paramBundle)
+  protected aose(QQAppInterface paramQQAppInterface, aosm paramaosm)
   {
-    paramBundle = aori.a();
-    if (paramBundle == null)
-    {
-      QLog.e("ArkApp.GetUinHandler", 1, "Handler_GetNickName.onCall, qq app is null");
-      return EIPCResult.createResult(-102, new Bundle());
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("Uin", paramBundle.getCurrentAccountUin());
-    return EIPCResult.createResult(0, localBundle);
+    super(paramQQAppInterface, paramaosm);
+  }
+  
+  public int a(QQMessageFacade.Message paramMessage)
+  {
+    return 266;
   }
 }
 

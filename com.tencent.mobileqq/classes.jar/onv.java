@@ -1,56 +1,48 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.BusinessObserver;
 
 public class onv
+  implements BusinessObserver
 {
-  private JSONObject a = new JSONObject();
+  protected void a(boolean paramBoolean, Object paramObject) {}
   
-  public String a()
-  {
-    return this.a.toString();
-  }
+  protected void b(boolean paramBoolean, Object paramObject) {}
   
-  public onv a()
-  {
-    try
-    {
-      this.a.put("network", ozb.a(BaseApplicationImpl.getApplication().getApplicationContext()));
-      this.a.put("version", ofe.a);
-      this.a.put("os", "1");
-      this.a.put("uin", pay.a());
-      this.a.put("city", ozb.b());
-      return this;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
-    return this;
-  }
+  protected void c(boolean paramBoolean, Object paramObject) {}
   
-  public onv a(int paramInt)
+  protected void d(boolean paramBoolean, Object paramObject) {}
+  
+  protected void e(boolean paramBoolean, Object paramObject) {}
+  
+  protected void f(boolean paramBoolean, Object paramObject) {}
+  
+  protected void g(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    int i = 0;
-    if (paramInt == 41516) {
-      i = 3;
-    }
-    for (;;)
+    switch (paramInt)
     {
-      try
-      {
-        this.a.put("source", i);
-        return this;
-      }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
-      }
-      if (paramInt == 41522) {
-        i = 16;
-      }
+    default: 
+      return;
+    case 0: 
+      a(paramBoolean, paramObject);
+      return;
+    case 1: 
+      b(paramBoolean, paramObject);
+      return;
+    case 2: 
+      c(paramBoolean, paramObject);
+      return;
+    case 3: 
+      d(paramBoolean, paramObject);
+      return;
+    case 4: 
+      e(paramBoolean, paramObject);
+      return;
+    case 5: 
+      f(paramBoolean, paramObject);
+      return;
     }
-    return this;
+    g(paramBoolean, paramObject);
   }
 }
 

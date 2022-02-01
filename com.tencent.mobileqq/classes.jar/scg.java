@@ -1,25 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsStressFollowLayout;
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selecttopic.SelectTopicFragment;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selecttopic.SelectTopicFragment.onCreate..inlined.let.lambda.1;
 import kotlin.Metadata;
-import kotlin.TypeCastException;
-import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "value", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"}, k=3, mv={1, 1, 16})
-final class scg
-  implements ValueAnimator.AnimatorUpdateListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "errorCode", "", "errorMsg", "", "onResult", "com/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/SelectTopicFragment$onCreate$1$1$1"}, k=3, mv={1, 1, 16})
+public final class scg
+  implements ryu
 {
-  scg(scd paramscd) {}
+  public scg(SelectTopicFragment.onCreate..inlined.let.lambda.1 param1, ColumnInfo paramColumnInfo) {}
   
-  public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public final void a(int paramInt, @Nullable String paramString)
   {
-    VideoFeedsStressFollowLayout localVideoFeedsStressFollowLayout = this.a.a();
-    Intrinsics.checkExpressionValueIsNotNull(paramValueAnimator, "value");
-    paramValueAnimator = paramValueAnimator.getAnimatedValue();
-    if (paramValueAnimator == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Float");
-    }
-    localVideoFeedsStressFollowLayout.a(((Float)paramValueAnimator).floatValue());
+    SelectTopicFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelecttopicSelectTopicFragment$onCreate$$inlined$let$lambda$1.this$0, paramInt, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelecttopicSelectTopicFragment$onCreate$$inlined$let$lambda$1.$activity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo.columnID, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelecttopicSelectTopicFragment$onCreate$$inlined$let$lambda$1.$rowKey$inlined, paramString);
   }
 }
 

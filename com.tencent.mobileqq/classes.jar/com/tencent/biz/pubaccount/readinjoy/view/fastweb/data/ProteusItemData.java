@@ -6,17 +6,17 @@ import com.tencent.pts.core.PTSComposer;
 import com.tencent.pts.core.PTSComposer.IPTSUpdateDataListener;
 import com.tencent.pts.core.itemview.PTSItemData;
 import org.json.JSONObject;
-import ssv;
+import tgg;
 
 public class ProteusItemData
   extends BaseData
 {
-  public final String O = "ProteusItemData";
-  public String P;
-  public String Q;
-  public String R;
+  public final String S = "ProteusItemData";
+  public String T;
+  public String U;
+  public String V;
   public TemplateBean a;
-  public PTSComposer.IPTSUpdateDataListener a = new ssv(this);
+  public PTSComposer.IPTSUpdateDataListener a = new tgg(this);
   public PTSComposer a;
   public PTSItemData a;
   public JSONObject c;
@@ -34,7 +34,7 @@ public class ProteusItemData
     super(paramParcel);
   }
   
-  public String a()
+  public String b()
   {
     if ((this.u == 3) && (this.c != null)) {
       return this.c.optString("mVideoVid");
@@ -42,7 +42,7 @@ public class ProteusItemData
     return "";
   }
   
-  public String b()
+  public String c()
   {
     if ((this.u == 2) && (this.c != null)) {
       return this.c.optString("articleImageUrl");
@@ -50,22 +50,22 @@ public class ProteusItemData
     return "";
   }
   
-  public String c()
+  public void c(String paramString)
+  {
+    this.T = paramString;
+  }
+  
+  public String d()
   {
     if ((this.u == 4) && (this.c != null)) {
       return this.c.optString("type");
     }
     return "";
   }
-  
-  public void c(String paramString)
-  {
-    this.P = paramString;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData
  * JD-Core Version:    0.7.0.1
  */

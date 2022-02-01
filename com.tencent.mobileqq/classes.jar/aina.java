@@ -1,24 +1,29 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import java.lang.ref.WeakReference;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.voicetextpanel.controller.VoiceTextSttProcessController.1.1;
+import com.tencent.mobileqq.activity.aio.voicetextpanel.controller.VoiceTextSttProcessController.1.2;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-class aina
-  implements View.OnLongClickListener
+public class aina
+  implements INetInfoHandler
 {
-  private WeakReference<aimv> a;
+  aina(aimz paramaimz) {}
   
-  public aina(aimv paramaimv)
+  public void onNetMobile2None()
   {
-    this.a = new WeakReference(paramaimv);
+    aimz.a(this.a).post(new VoiceTextSttProcessController.1.1(this));
   }
   
-  public boolean onLongClick(View paramView)
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None()
   {
-    aimv localaimv = (aimv)this.a.get();
-    if (localaimv != null) {
-      return localaimv.onLongClick(paramView);
-    }
-    return false;
+    aimz.a(this.a).post(new VoiceTextSttProcessController.1.2(this));
   }
 }
 

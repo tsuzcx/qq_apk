@@ -1,33 +1,20 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
-public class tgo
-  extends apkq
+public abstract interface tgo
 {
-  public tgo(ViolaFragment paramViolaFragment) {}
+  public abstract int a();
   
-  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
-  {
-    super.onAddColorNote(paramBundle, paramBoolean);
-    int i = paramBundle.getInt("color_note_curd_from_type");
-    if (ViolaFragment.access$300(this.a) != null)
-    {
-      ViolaFragment.access$300(this.a).a(i);
-      swy.b(ViolaFragment.access$300(this.a).a());
-    }
-    if (i != 1) {
-      ViolaFragment.access$500(this.a);
-    }
-  }
+  public abstract BaseData a();
   
-  public void onDeleteColorNote(int paramInt, String paramString, boolean paramBoolean)
-  {
-    super.onDeleteColorNote(paramInt, paramString, paramBoolean);
-  }
+  public abstract void a();
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tgo
  * JD-Core Version:    0.7.0.1
  */

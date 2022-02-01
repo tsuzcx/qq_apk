@@ -1,51 +1,65 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
 
 public class rvl
-  extends RecyclerView.ViewHolder
+  implements TextWatcher
 {
-  public final int a;
-  public VideoFeedsAlphaMaskView a;
-  public int b;
-  public int c;
+  private int jdField_a_of_type_Int;
   
-  public rvl(View paramView, int paramInt)
-  {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView = ((VideoFeedsAlphaMaskView)paramView.findViewById(2131364914));
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public rvl(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
   
-  public void a(ruw paramruw, LinearLayoutManager paramLinearLayoutManager, boolean paramBoolean)
+  public void afterTextChanged(Editable paramEditable)
   {
-    int i = 1;
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView.getVisibility() != 0)) {
-      return;
-    }
-    if (paramLinearLayoutManager.getOrientation() == 1)
+    int k = paramEditable.length();
+    int i;
+    int j;
+    label24:
+    Drawable[] arrayOfDrawable;
+    if (this.jdField_a_of_type_Int > 0)
     {
-      if (i == 0) {
-        break label118;
+      i = 1;
+      if (k <= 0) {
+        break label120;
       }
-      i = paramLinearLayoutManager.getDecoratedMeasuredHeight(this.itemView);
+      j = 1;
+      if ((j ^ i) != 0)
+      {
+        arrayOfDrawable = ReadInJoyVideoSearchTagFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment).getCompoundDrawables();
+        if (k <= 0) {
+          break label125;
+        }
+        arrayOfDrawable[2] = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment.getResources().getDrawable(2130839600);
+      }
     }
-    for (float f1 = Math.abs(paramLinearLayoutManager.getDecoratedTop(this.itemView) - (paramLinearLayoutManager.getHeight() / 2 - i / 2)) / i;; f1 = Math.abs(paramLinearLayoutManager.getDecoratedLeft(this.itemView) - (paramLinearLayoutManager.getWidth() / 2 - i / 2)) / i)
+    for (;;)
     {
-      float f2 = Math.round(f1 * 100.0F) / 100.0F;
-      f1 = f2;
-      if (f2 > 1.0F) {
-        f1 = 1.0F;
+      ReadInJoyVideoSearchTagFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment).setCompoundDrawablesWithIntrinsicBounds(arrayOfDrawable[0], arrayOfDrawable[1], arrayOfDrawable[2], arrayOfDrawable[3]);
+      this.jdField_a_of_type_Int = k;
+      if (paramEditable.length() <= 0) {
+        break label133;
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView.setAlpha(f1);
+      pvj.a().g(paramEditable.toString());
       return;
       i = 0;
       break;
-      label118:
-      i = paramLinearLayoutManager.getDecoratedMeasuredWidth(this.itemView);
+      label120:
+      j = 0;
+      break label24;
+      label125:
+      arrayOfDrawable[2] = null;
     }
+    label133:
+    ReadInJoyVideoSearchTagFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment).clear();
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

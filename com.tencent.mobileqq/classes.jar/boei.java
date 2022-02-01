@@ -1,6 +1,17 @@
-public abstract interface boei
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+
+final class boei
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(int paramInt, String paramString);
+  boei(View paramView, float paramFloat) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    this.jdField_a_of_type_AndroidViewView.setTranslationX(this.jdField_a_of_type_Float);
+  }
 }
 
 

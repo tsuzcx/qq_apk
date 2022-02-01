@@ -1,22 +1,24 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Map;
 
-public class awxz
-  implements View.OnClickListener
+class awxz
+  extends awxw<awxy>
 {
-  public awxz(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
-  
-  public void onClick(View paramView)
+  public awxz(awxy paramawxy)
   {
-    if ((this.a.a != null) && (!this.a.isFinishing()))
-    {
-      this.a.a.dismiss();
-      this.a.a = null;
+    super(paramawxy);
+  }
+  
+  public void a(awxy paramawxy, boolean paramBoolean, awxt paramawxt)
+  {
+    if (paramawxy == null) {
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramBoolean)
+    {
+      awxy.a(paramawxy, (awxq)awxy.a(paramawxy).get(paramawxt.h));
+      return;
+    }
+    awxy.a(paramawxy, paramawxt.jdField_a_of_type_JavaLangString, paramawxt.jdField_a_of_type_Int, 1001);
   }
 }
 

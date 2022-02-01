@@ -5,8 +5,8 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import bdca;
-import bdcb;
+import beja;
+import bejb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
@@ -27,7 +27,7 @@ public class QEffectLottieImageView
   extends DiniFlyAnimationView
   implements IQEffect<QEffectData, Drawable>, GravitySensor.GravitySensorListener
 {
-  private OnCompositionLoadedListener jdField_a_of_type_ComTencentMobileqqDiniflyOnCompositionLoadedListener = new bdca(this);
+  private OnCompositionLoadedListener jdField_a_of_type_ComTencentMobileqqDiniflyOnCompositionLoadedListener = new beja(this);
   private QEffectData jdField_a_of_type_ComTencentQqEffectEngineQEffectData;
   protected SensorParams a;
   private boolean jdField_a_of_type_Boolean;
@@ -80,7 +80,7 @@ public class QEffectLottieImageView
       paramQEffectView.putString("key", paramQEffectData.images + paramQEffectData.effectId);
       paramQEffectView.putString("path", paramQEffectData.images);
       LottieComposition.Factory.fromInputStreamWithCacheBitmap(getContext(), paramContext, getLottieDrawable(), this.jdField_a_of_type_ComTencentMobileqqDiniflyOnCompositionLoadedListener, paramQEffectView, BaseApplicationImpl.sImageCache);
-      setImageAssetDelegate(new bdcb());
+      setImageAssetDelegate(new bejb());
       return;
     }
     catch (FileNotFoundException paramContext)

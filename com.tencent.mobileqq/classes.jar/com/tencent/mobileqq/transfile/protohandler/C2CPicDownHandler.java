@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
-import amwm;
-import bcdo;
-import bcel;
+import anza;
+import bdkj;
+import bdlg;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -38,7 +38,7 @@ public class C2CPicDownHandler
     Object localObject1;
     Object localObject2;
     Object localObject3;
-    if (bcdo.a())
+    if (bdkj.a())
     {
       localObject1 = paramGetImgUrlRsp.bytes_big_thumb_down_para.get();
       localObject2 = paramGetImgUrlRsp.bytes_original_down_para.get();
@@ -233,7 +233,7 @@ public class C2CPicDownHandler
     //   209: iload_1
     //   210: ldc 42
     //   212: if_icmpne +137 -> 349
-    //   215: invokestatic 17	bcdo:a	()Z
+    //   215: invokestatic 17	bdkj:a	()Z
     //   218: ifeq +123 -> 341
     //   221: bipush 16
     //   223: istore_1
@@ -369,7 +369,7 @@ public class C2CPicDownHandler
     }
   }
   
-  protected void handleSucResponse(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte, RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp, amwm paramamwm)
+  protected void handleSucResponse(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte, RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp, anza paramanza)
   {
     try
     {
@@ -381,7 +381,7 @@ public class C2CPicDownHandler
     }
     catch (Exception paramProtoResp)
     {
-      setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramamwm, paramRichProtoResp.resps);
+      setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramanza, paramRichProtoResp.resps);
     }
     return;
     label103:
@@ -407,7 +407,7 @@ public class C2CPicDownHandler
             break label307;
           }
           handleResponse(localC2CPicDownReq, paramProtoResp, localPicDownResp);
-          setResult(0, 0, "", "", paramamwm, localPicDownResp);
+          setResult(0, 0, "", "", paramanza, localPicDownResp);
         }
         catch (Exception paramProtoResp) {}
       }
@@ -422,7 +422,7 @@ public class C2CPicDownHandler
       }
       if (localPicDownResp != null)
       {
-        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramamwm, localPicDownResp);
+        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramanza, localPicDownResp);
         continue;
         if (C2CPicUpHandler.shouldRetryByRetCode(i))
         {
@@ -441,11 +441,11 @@ public class C2CPicDownHandler
     for (;;)
     {
       label307:
-      setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), BaseTransProcessor.getUrlReason(i), paramamwm, localPicDownResp);
+      setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), BaseTransProcessor.getUrlReason(i), paramanza, localPicDownResp);
       break label111;
       break;
       label384:
-      bcel.a("Download_C2C_Pic_Request_Error_Param_Check", localC2CPicDownReq.uuid);
+      bdlg.a("Download_C2C_Pic_Request_Error_Param_Check", localC2CPicDownReq.uuid);
     }
   }
   

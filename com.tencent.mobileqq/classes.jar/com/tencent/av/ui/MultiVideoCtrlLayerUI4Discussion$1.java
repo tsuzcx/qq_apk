@@ -7,8 +7,8 @@ import com.tencent.av.VideoController;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.Map;
-import mak;
-import mum;
+import mbf;
+import mvk;
 
 class MultiVideoCtrlLayerUI4Discussion$1
   implements Runnable
@@ -22,7 +22,7 @@ class MultiVideoCtrlLayerUI4Discussion$1
     }
     String str2 = null;
     String str1;
-    if (this.jdField_a_of_type_Int == 2131695075)
+    if (this.jdField_a_of_type_Int == 2131695291)
     {
       if (this.this$0.jdField_a_of_type_JavaUtilMap.containsKey(this.jdField_a_of_type_JavaLangString)) {
         str2 = (String)this.this$0.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaLangString);
@@ -39,10 +39,10 @@ class MultiVideoCtrlLayerUI4Discussion$1
     label323:
     for (;;)
     {
-      float f = this.this$0.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131297158);
-      str1 = mum.a((Context)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get(), str1, this.this$0.jdField_e_of_type_AndroidWidgetTextView, f);
+      float f = this.this$0.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131297159);
+      str1 = mvk.a((Context)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get(), str1, this.this$0.jdField_e_of_type_AndroidWidgetTextView, f);
       str1 = str1 + this.this$0.jdField_a_of_type_AndroidContentResResources.getString(this.jdField_a_of_type_Int);
-      mak.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 3009, str1);
+      mbf.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 3009, str1);
       QLog.e(this.this$0.d, 1, "showHrMeetingInOrOutWordingWithDelay str=" + str1);
       return;
       str2 = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_JavaLangString, String.valueOf(this.this$0.b), this.this$0.jdField_e_of_type_Int);

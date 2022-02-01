@@ -1,24 +1,13 @@
-import android.content.Context;
-import androidx.recyclerview.widget.GridLayoutManager;
-import com.tencent.mobileqq.activity.aio.PanelAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
 
 public class afcf
-  extends GridLayoutManager
+  implements DialogInterface.OnClickListener
 {
-  public afcf(PanelAdapter paramPanelAdapter, Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-  }
+  public afcf(TroopDisbandActivity paramTroopDisbandActivity) {}
   
-  public boolean canScrollHorizontally()
-  {
-    return false;
-  }
-  
-  public boolean canScrollVertically()
-  {
-    return false;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

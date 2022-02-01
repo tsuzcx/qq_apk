@@ -1,28 +1,39 @@
-public class aqps
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.ViewPropertyAnimator;
+import android.view.animation.DecelerateInterpolator;
+
+class aqps
+  implements Animator.AnimatorListener
 {
-  private long a;
-  private long b;
+  aqps(aqpl paramaqpl, boolean paramBoolean) {}
   
-  public aqps(long paramLong)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.b = paramLong;
-    this.a = this.b;
+    aqpl.b(this.jdField_a_of_type_Aqpl).scrollTo(0, 0);
+    aqpl.b(this.jdField_a_of_type_Aqpl).setAlpha(1.0F);
+    aqpl.b(this.jdField_a_of_type_Aqpl).setBackgroundColor(aqpl.a(this.jdField_a_of_type_Aqpl).getResources().getColor(aqpl.a()));
+    paramAnimator = this.jdField_a_of_type_Aqpl.a;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (float f = -this.jdField_a_of_type_Aqpl.a.getMeasuredWidth();; f = this.jdField_a_of_type_Aqpl.a.getMeasuredWidth())
+    {
+      paramAnimator.setX(f);
+      this.jdField_a_of_type_Aqpl.a.setAlpha(0.0F);
+      this.jdField_a_of_type_Aqpl.a.setVisibility(0);
+      this.jdField_a_of_type_Aqpl.a.animate().setInterpolator(new DecelerateInterpolator()).alpha(1.0F).translationX(0.0F).setDuration(180L).start();
+      return;
+    }
   }
   
-  public long a()
-  {
-    return this.b;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public aqps a()
-  {
-    return new aqps(this.b);
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.b = (((float)this.b * paramFloat));
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

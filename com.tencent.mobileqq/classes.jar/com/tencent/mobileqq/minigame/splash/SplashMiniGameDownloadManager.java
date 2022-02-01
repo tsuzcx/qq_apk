@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.minigame.splash;
 
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
 import com.tencent.qphone.base.util.QLog;
 
@@ -16,7 +17,7 @@ public class SplashMiniGameDownloadManager
     {
       try
       {
-        PreDownloadController localPreDownloadController = (PreDownloadController)paramQQAppInterface.getManager(193);
+        PreDownloadController localPreDownloadController = (PreDownloadController)paramQQAppInterface.getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2);
         if (localPreDownloadController.isEnable())
         {
           String str = "minigame_splash_png";

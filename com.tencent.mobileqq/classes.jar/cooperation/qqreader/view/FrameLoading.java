@@ -57,7 +57,7 @@ public class FrameLoading
   
   public void setLoadingText(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131716144, new Object[] { Integer.valueOf(paramInt) }));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131716500, new Object[] { Integer.valueOf(paramInt) }));
   }
 }
 

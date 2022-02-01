@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.richstatus;
 
-import amsw;
 import android.text.TextUtils;
-import baoy;
-import bapb;
+import anvk;
+import bbvn;
+import bbvq;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -14,32 +15,32 @@ import mqq.os.MqqHandler;
 public class StatusManager$3$2
   implements Runnable
 {
-  public StatusManager$3$2(bapb parambapb, boolean paramBoolean) {}
+  public StatusManager$3$2(bbvq parambbvq, boolean paramBoolean) {}
   
   public void run()
   {
     int j = 0;
-    baoy.a(this.jdField_a_of_type_Bapb.a, null);
-    amsw localamsw = (amsw)baoy.a(this.jdField_a_of_type_Bapb.a).getManager(51);
-    if (localamsw != null)
+    bbvn.a(this.jdField_a_of_type_Bbvq.a, null);
+    anvk localanvk = (anvk)bbvn.a(this.jdField_a_of_type_Bbvq.a).getManager(QQManagerFactory.FRIENDS_MANAGER);
+    if (localanvk != null)
     {
-      Object localObject2 = localamsw.a(baoy.a(this.jdField_a_of_type_Bapb.a).getAccount());
+      Object localObject2 = localanvk.a(bbvn.a(this.jdField_a_of_type_Bbvq.a).getAccount());
       localObject1 = localObject2;
       if (localObject2 == null)
       {
         localObject1 = new ExtensionInfo();
-        ((ExtensionInfo)localObject1).uin = baoy.a(this.jdField_a_of_type_Bapb.a).getAccount();
+        ((ExtensionInfo)localObject1).uin = bbvn.a(this.jdField_a_of_type_Bbvq.a).getAccount();
       }
       localObject2 = ((ExtensionInfo)localObject1).getRichStatus();
       if ((localObject2 != null) && ((!TextUtils.isEmpty(((RichStatus)localObject2).actionText)) || (!TextUtils.isEmpty(((RichStatus)localObject2).dataText)) || (!TextUtils.isEmpty(((RichStatus)localObject2).toSpannableStringWithoutAction())))) {
-        break label218;
+        break label219;
       }
       i = 1;
       if ((this.jdField_a_of_type_Boolean) && (i == 0))
       {
         long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
         ((ExtensionInfo)localObject1).setRichBuffer(new byte[0], l);
-        localamsw.a((ExtensionInfo)localObject1);
+        localanvk.a((ExtensionInfo)localObject1);
       }
     }
     ThreadManager.getUIHandler().post(new StatusManager.3.2.1(this));
@@ -49,7 +50,7 @@ public class StatusManager$3$2
     {
       ((gk)localObject1).a(i, RichStatus.getEmptyStatus(), null, 1);
       return;
-      label218:
+      label219:
       i = 0;
       break;
     }

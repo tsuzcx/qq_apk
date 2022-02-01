@@ -1,26 +1,64 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.AlbumUtil;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class addv
-  implements WXShareHelper.WXShareListener
+  implements View.OnClickListener
 {
-  public addv(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public addv(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public void onClick(View paramView)
   {
-    if ((this.a.a == null) || (!this.a.a.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
+    bdla.b(this.a.app, "CliOper", "", "", "0X8004038", "0X8004038", 0, 0, String.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()), "", "", "");
+    if (!azit.a().a(this.a.app, this.a)) {}
+    for (;;)
     {
-    case -2: 
-    case -1: 
-    default: 
-      yyi.a(1, 2131718380);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      AccountManageActivity.a(this.a, bdxj.a(this.a.app));
+      if (this.a.c)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("AccountManage", 2, "onClick v.hashCode()" + paramView.hashCode());
+        }
+      }
+      else
+      {
+        Object localObject = paramView.getTag();
+        if (localObject == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("Switch_Account", 2, "switch a non-existing account");
+          }
+        }
+        else
+        {
+          int i = ((Integer)localObject).intValue();
+          localObject = (SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(i);
+          if (QLog.isColorLevel()) {
+            QLog.d("Switch_Account", 2, "switch uin:" + ((SimpleAccount)localObject).getUin());
+          }
+          if ((localObject != null) && (!((SimpleAccount)localObject).getUin().equals(this.a.app.getCurrentAccountUin())))
+          {
+            bdla.b(this.a.app, "CliOper", "", "", "0X8009C05", "0X8009C05", 0, 0, "", "", "", "");
+            this.a.f();
+            this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = ((SimpleAccount)localObject);
+            AccountManageActivity.b(this.a, true);
+            AccountManageActivity.c(this.a, true);
+            bdla.b(this.a.app, "dc00898", "", "", "0X800AC38", "0X800AC38", 0, 0, "", "", "", "");
+            this.a.app.switchAccount((SimpleAccount)localObject, null);
+            bdxi.a(this.a.app, this.a);
+          }
+          AlbumUtil.clearLastAlbumInfo();
+        }
+      }
     }
-    yyi.a(2, 2131718398);
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.widget.share;
 
 import android.content.DialogInterface.OnDismissListener;
-import bjog;
+import bkzs;
 
 class ShareActionSheetV2$7
-  implements bjog
+  implements bkzs
 {
   ShareActionSheetV2$7(ShareActionSheetV2 paramShareActionSheetV2) {}
   

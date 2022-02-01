@@ -1,50 +1,62 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.Messenger;
-import com.tencent.mobileqq.emosm.Client;
 import com.tencent.qphone.base.util.QLog;
 
 public class aqyn
-  implements ServiceConnection
 {
-  public aqyn(Client paramClient) {}
+  protected String a = "";
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public aqyn() {}
+  
+  public aqyn(String paramString)
   {
-    try
-    {
-      this.a.mIsBound = true;
-      this.a.mService = new Messenger(paramIBinder);
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.emoji.web.Client", 2, "ServiceConnection Attached.");
-      }
-      ardu.a().a();
-      paramComponentName = Message.obtain(null, 1);
-      paramComponentName.replyTo = this.a.mMessenger;
-      this.a.mService.send(paramComponentName);
-      return;
-    }
-    catch (Exception paramComponentName)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("Q.emoji.web.Client", 2, paramComponentName.getMessage());
+    if (paramString != null) {
+      this.a = paramString;
     }
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public aqyo a()
   {
-    this.a.mService = null;
-    this.a.onDisconnectWithService();
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.emoji.web.Client", 2, "Disconnected.");
+    if ((this instanceof aqyo)) {
+      return (aqyo)this;
     }
+    QLog.e("ArkConfBean", 1, "this object is not a ArkAIDictConfBean object");
+    return null;
+  }
+  
+  public aqyp a()
+  {
+    if ((this instanceof aqyp)) {
+      return (aqyp)this;
+    }
+    QLog.e("ArkConfBean", 1, "this object is not a ArkAIKeyWordConfBean object");
+    return null;
+  }
+  
+  public aqyr a()
+  {
+    if ((this instanceof aqyr)) {
+      return (aqyr)this;
+    }
+    QLog.e("ArkConfBean", 1, "this object is not a ArkMsgAIDisableConfBean object");
+    return null;
+  }
+  
+  public aqys a()
+  {
+    if ((this instanceof aqys)) {
+      return (aqys)this;
+    }
+    QLog.e("ArkConfBean", 1, "this object is not a ArkPlatformConfigBean object");
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqyn
  * JD-Core Version:    0.7.0.1
  */

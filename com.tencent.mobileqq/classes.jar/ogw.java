@@ -1,18 +1,27 @@
+import android.support.v4.view.ViewPager.PageTransformer;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.NativeAd.adapter.VerticleViewPager;
 
-class ogw
-  implements View.OnClickListener
+public class ogw
+  implements ViewPager.PageTransformer
 {
-  ogw(ogv paramogv, String paramString) {}
+  private ogw(VerticleViewPager paramVerticleViewPager) {}
   
-  public void onClick(View paramView)
+  public void transformPage(View paramView, float paramFloat)
   {
-    if (this.jdField_a_of_type_Ogv.jdField_a_of_type_Ogn != null) {
-      this.jdField_a_of_type_Ogv.jdField_a_of_type_Ogn.b(this.jdField_a_of_type_Ogv.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    if (paramFloat < -1.0F)
+    {
+      paramView.setAlpha(0.0F);
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramFloat <= 1.0F)
+    {
+      paramView.setAlpha(1.0F);
+      paramView.setTranslationX(paramView.getWidth() * -paramFloat);
+      paramView.setTranslationY(paramView.getHeight() * paramFloat);
+      return;
+    }
+    paramView.setAlpha(0.0F);
   }
 }
 

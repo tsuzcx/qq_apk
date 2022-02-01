@@ -1,36 +1,36 @@
 package com.tencent.qqmini.nativePlugins;
 
-import amtj;
 import android.app.Activity;
 import android.content.Context;
-import bfur;
-import bjae;
-import bjag;
-import bjah;
-import bjai;
+import anvx;
+import bhdj;
+import bkll;
+import bkln;
+import bklo;
+import bklp;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 
 public class TroopAlbumPlugin$2$1
   implements Runnable
 {
-  public TroopAlbumPlugin$2$1(bjag parambjag) {}
+  public TroopAlbumPlugin$2$1(bkln parambkln) {}
   
   public void run()
   {
-    bjae.a(this.a.jdField_a_of_type_Bjae, this.a.jdField_a_of_type_JavaLangString);
-    Activity localActivity = bjae.e(this.a.jdField_a_of_type_Bjae).getAttachedActivity();
-    if (bjae.a(this.a.jdField_a_of_type_Bjae) == null) {
-      bjae.a(this.a.jdField_a_of_type_Bjae, bfur.a(localActivity, 230).setTitle(amtj.a(2131714193)).setMessage(amtj.a(2131714192)).setPositiveButton(amtj.a(2131714191), new bjai(this)).setNegativeButton(localActivity.getString(2131717041), new bjah(this)));
+    bkll.a(this.a.jdField_a_of_type_Bkll, this.a.jdField_a_of_type_JavaLangString);
+    Activity localActivity = bkll.e(this.a.jdField_a_of_type_Bkll).getAttachedActivity();
+    if (bkll.a(this.a.jdField_a_of_type_Bkll) == null) {
+      bkll.a(this.a.jdField_a_of_type_Bkll, bhdj.a(localActivity, 230).setTitle(anvx.a(2131714540)).setMessage(anvx.a(2131714539)).setPositiveButton(anvx.a(2131714538), new bklp(this)).setNegativeButton(localActivity.getString(2131717404), new bklo(this)));
     }
-    if (!bjae.a(this.a.jdField_a_of_type_Bjae).isShowing()) {
-      bjae.a(this.a.jdField_a_of_type_Bjae).show();
+    if (!bkll.a(this.a.jdField_a_of_type_Bkll).isShowing()) {
+      bkll.a(this.a.jdField_a_of_type_Bkll).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.TroopAlbumPlugin.2.1
  * JD-Core Version:    0.7.0.1
  */

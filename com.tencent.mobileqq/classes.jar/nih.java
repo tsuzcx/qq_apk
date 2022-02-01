@@ -1,18 +1,18 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.avgame.ui.AVGameRoomCenterFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.avgame.gameroom.GameRoomFragment.9;
 
 public class nih
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public nih(AVGameRoomCenterFragment paramAVGameRoomCenterFragment) {}
+  public nih(GameRoomFragment.9 param9) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AVGameRoomCenterFragment.a(this.a).finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramDialogInterface.dismiss();
+    if (this.a.a != null) {
+      this.a.a.onClick(paramDialogInterface, paramInt);
+    }
   }
 }
 

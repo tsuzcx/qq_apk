@@ -1,78 +1,19 @@
-import android.content.Context;
-import android.provider.ContactsContract.CommonDataKinds.Phone;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
-
 public class azim
-  extends BaseAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<PhoneContact> jdField_a_of_type_JavaUtilList;
+  public String a;
+  public String b;
+  public String c;
   
-  public azim(Context paramContext, List<PhoneContact> paramList)
+  public azim(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
   
-  private View a(int paramInt, ViewGroup paramViewGroup)
+  public String toString()
   {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560989, null);
-    azio localazio = new azio(null);
-    localazio.a = ((TextView)paramViewGroup.findViewById(2131374105));
-    localazio.b = ((TextView)paramViewGroup.findViewById(2131374104));
-    paramViewGroup.setTag(localazio);
-    return paramViewGroup;
-  }
-  
-  private void a(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = (azio)paramView.getTag();
-    PhoneContact localPhoneContact = (PhoneContact)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    paramInt = localPhoneContact.type;
-    paramView = null;
-    if (paramInt == 0) {
-      paramView = localPhoneContact.label;
-    }
-    paramView = (String)ContactsContract.CommonDataKinds.Phone.getTypeLabel(this.jdField_a_of_type_AndroidContentContext.getResources(), paramInt, paramView);
-    paramViewGroup.a.setText(paramView);
-    paramViewGroup.b.setText(localPhoneContact.mobileNo);
-  }
-  
-  public int getCount()
-  {
-    int i = this.jdField_a_of_type_JavaUtilList.size();
-    if (i > 20) {
-      return 20;
-    }
-    return i;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null) {}
-    for (View localView = a(paramInt, paramViewGroup);; localView = paramView)
-    {
-      a(paramInt, localView, paramViewGroup);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localView;
-    }
+    return "PhoneInfo{countryCode='" + this.a + '\'' + ", areaCode='" + this.b + '\'' + ", rawPhoneNum='" + this.c + '\'' + '}';
   }
 }
 

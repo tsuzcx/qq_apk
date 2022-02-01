@@ -1,48 +1,280 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.vfs.VFSAssistantUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import kotlin.Metadata;
-import kotlin.Unit;
-import kotlin.jvm.JvmStatic;
-import kotlin.jvm.functions.Function1;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/ugc/managecolumn/CreateTopicDispatcher;", "", "()V", "createTopicListenerList", "", "Lkotlin/Function1;", "Lcom/tencent/biz/pubaccount/readinjoy/struct/ColumnInfo;", "Lkotlin/ParameterName;", "name", "topicInfo", "", "addCreateTopicListener", "listener", "notifyTopicCreate", "removeCreateTopicListener", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rmp
+public class rmp
+  extends rmo
 {
-  private static final List<Function1<ColumnInfo, Unit>> a;
-  public static final rmp a;
+  private static int jdField_a_of_type_Int = 0;
+  private static String jdField_a_of_type_JavaLangString = "";
+  private static List<String> jdField_a_of_type_JavaUtilList;
+  private static JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  private static String b;
+  private static String c;
   
-  static
+  public static String a()
   {
-    jdField_a_of_type_Rmp = new rmp();
-    jdField_a_of_type_JavaUtilList = (List)new ArrayList();
+    return VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + ".readInjoy/skin_res/");
   }
   
-  @JvmStatic
-  public static final void a(@NotNull ColumnInfo paramColumnInfo)
+  public static String a(String paramString)
   {
-    Intrinsics.checkParameterIsNotNull(paramColumnInfo, "topicInfo");
-    Iterator localIterator = ((Iterable)jdField_a_of_type_JavaUtilList).iterator();
-    while (localIterator.hasNext()) {
-      ((Function1)localIterator.next()).invoke(paramColumnInfo);
+    return a() + paramString;
+  }
+  
+  public static List<String> a()
+  {
+    Object localObject3 = null;
+    Object localObject2;
+    if (jdField_a_of_type_JavaUtilList != null)
+    {
+      localObject2 = jdField_a_of_type_JavaUtilList;
+      return localObject2;
+    }
+    if (jdField_a_of_type_Int == 0) {
+      a();
+    }
+    Object localObject1;
+    if (jdField_a_of_type_Int == 1) {
+      localObject1 = new File(d() + "refreshAnimatePictures" + "/");
+    }
+    for (;;)
+    {
+      localObject2 = localObject3;
+      if (localObject1 == null) {
+        break;
+      }
+      localObject2 = localObject3;
+      if (!((File)localObject1).exists()) {
+        break;
+      }
+      localObject2 = localObject3;
+      if (!((File)localObject1).isDirectory()) {
+        break;
+      }
+      localObject1 = ((File)localObject1).listFiles();
+      localObject2 = localObject3;
+      if (localObject1 == null) {
+        break;
+      }
+      localObject2 = new ArrayList();
+      int i = 0;
+      for (;;)
+      {
+        if (i < localObject1.length)
+        {
+          if (localObject1[i].getName().endsWith(".png")) {
+            ((List)localObject2).add(localObject1[i].getName());
+          }
+          i += 1;
+          continue;
+          if (jdField_a_of_type_Int != 2) {
+            break label199;
+          }
+          localObject1 = new File(d() + "refreshRandomPictures" + "/");
+          break;
+        }
+      }
+      jdField_a_of_type_JavaUtilList = (List)localObject2;
+      return localObject2;
+      label199:
+      localObject1 = null;
     }
   }
   
-  @JvmStatic
-  public static final void a(@NotNull Function1<? super ColumnInfo, Unit> paramFunction1)
+  public static JSONObject a()
   {
-    Intrinsics.checkParameterIsNotNull(paramFunction1, "listener");
-    jdField_a_of_type_JavaUtilList.add(paramFunction1);
+    if (jdField_a_of_type_OrgJsonJSONObject == null) {}
+    try
+    {
+      jdField_a_of_type_OrgJsonJSONObject = new JSONObject(FileUtils.readFileToString(new File(b() + "/colors.json")));
+      return jdField_a_of_type_OrgJsonJSONObject;
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        localIOException.printStackTrace();
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
   
-  @JvmStatic
-  public static final void b(@NotNull Function1<? super ColumnInfo, Unit> paramFunction1)
+  public static void a()
   {
-    Intrinsics.checkParameterIsNotNull(paramFunction1, "listener");
-    jdField_a_of_type_JavaUtilList.remove(paramFunction1);
+    Object localObject = null;
+    try
+    {
+      String str = FileUtils.readFileToString(new File(d() + "refreshConfig.json"));
+      localObject = str;
+      JSONObject localJSONObject = new JSONObject(str);
+      if (localJSONObject != null)
+      {
+        localObject = str;
+        jdField_a_of_type_Int = localJSONObject.optInt("refresh_type");
+        localObject = str;
+        b = localJSONObject.optString("voice_path");
+        localObject = str;
+        c = localJSONObject.optString("rain_animate_path");
+      }
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      localIOException.printStackTrace();
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.e("CommonSkinRes", 1, "parseRefreshParaJson error json = " + localIOException);
+      localJSONException.printStackTrace();
+    }
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return bdyn.a(new File(a(paramString)));
+  }
+  
+  public static int b()
+  {
+    if (jdField_a_of_type_Int == 0) {
+      a();
+    }
+    return jdField_a_of_type_Int;
+  }
+  
+  public static String b()
+  {
+    return a(jdField_a_of_type_JavaLangString);
+  }
+  
+  public static String b(String paramString)
+  {
+    return c() + paramString;
+  }
+  
+  public static String c()
+  {
+    return VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + ".readInjoy/skin_guide/");
+  }
+  
+  public static String d()
+  {
+    return b() + "/" + "refresh" + "/";
+  }
+  
+  public static String e()
+  {
+    if ((TextUtils.isEmpty(b)) && (jdField_a_of_type_Int == 0)) {
+      a();
+    }
+    if (!TextUtils.isEmpty(b)) {
+      return d() + b;
+    }
+    return null;
+  }
+  
+  public static String f()
+  {
+    if ((TextUtils.isEmpty(c)) && (jdField_a_of_type_Int == 0)) {
+      a();
+    }
+    if (!TextUtils.isEmpty(c)) {
+      return d() + c;
+    }
+    return null;
+  }
+  
+  public int a(String paramString)
+  {
+    JSONObject localJSONObject = a();
+    if (localJSONObject == null) {
+      return 0;
+    }
+    return Color.parseColor(localJSONObject.optString(paramString));
+  }
+  
+  public Drawable a(Resources paramResources, String paramString1, String paramString2)
+  {
+    paramResources = new rmq();
+    paramResources.a = a(paramString1);
+    paramResources.b = a(paramString2);
+    paramString1 = paramResources.b;
+    paramResources.addState(new int[] { 16842913 }, paramString1);
+    paramString1 = paramResources.b;
+    paramResources.addState(new int[] { 16842912 }, paramString1);
+    paramString1 = paramResources.a;
+    paramResources.addState(new int[] { -16842919 }, paramString1);
+    return paramResources;
+  }
+  
+  public Drawable a(String paramString)
+  {
+    Object localObject2 = b() + "/" + paramString;
+    Object localObject1 = new File((String)localObject2 + ".gif");
+    paramString = (String)localObject1;
+    if (!((File)localObject1).exists())
+    {
+      localObject1 = new File((String)localObject2 + ".png");
+      paramString = (String)localObject1;
+      if (!((File)localObject1).exists())
+      {
+        paramString = new File((String)localObject2 + ".jpg");
+        if (!paramString.exists()) {
+          break label219;
+        }
+      }
+    }
+    localObject1 = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject1).mPlayGifImage = azlo.a(paramString.getAbsolutePath());
+    localObject2 = new ColorDrawable(0);
+    ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = ((Drawable)localObject2);
+    ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = ((Drawable)localObject2);
+    ((URLDrawable.URLDrawableOptions)localObject1).mUseAutoScaleParams = true;
+    ((URLDrawable.URLDrawableOptions)localObject1).mUseMemoryCache = false;
+    label219:
+    label228:
+    for (;;)
+    {
+      try
+      {
+        paramString = paramString.toURL();
+        if (!((URLDrawable.URLDrawableOptions)localObject1).mPlayGifImage) {
+          break label228;
+        }
+        paramString = new URL("readinjoy_skin_gif", paramString.getAuthority(), paramString.getFile());
+        paramString = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject1);
+        return paramString;
+      }
+      catch (MalformedURLException paramString)
+      {
+        paramString.printStackTrace();
+      }
+      return new ColorDrawable(0);
+    }
   }
 }
 

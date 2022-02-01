@@ -1,12 +1,12 @@
 package com.tencent.avgame.gameresult;
 
 import com.tencent.mobileqq.utils.FileUtils;
-import nbr;
+import nho;
 
 public class GameResultUploadMgrForRemote$4
   implements Runnable
 {
-  public GameResultUploadMgrForRemote$4(nbr paramnbr, String paramString1, String paramString2) {}
+  public GameResultUploadMgrForRemote$4(nho paramnho, String paramString1, String paramString2) {}
   
   public void run()
   {

@@ -1,21 +1,25 @@
-public class apwp
+import java.util.ArrayList;
+
+class apwp
+  implements agph
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  apwp(apwn paramapwn) {}
   
-  public apwp(String paramString1, String paramString2, String paramString3, String paramString4)
+  public void a()
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
+    boolean bool = ((agnw)apwn.a(this.a).get(apwn.a(this.a))).checkShare();
+    if (bool != apwn.a(this.a))
+    {
+      apwn.a(this.a, bool);
+      apwn.a(this.a, apwn.a(this.a));
+    }
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apwp
  * JD-Core Version:    0.7.0.1
  */

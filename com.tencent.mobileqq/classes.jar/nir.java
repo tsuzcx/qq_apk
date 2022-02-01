@@ -1,14 +1,8 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.avgame.gamelogic.data.RoomInfo;
-
-public class nir
-  extends aliz
+public abstract interface nir
 {
-  public LinearLayout a;
-  public TextView a;
-  public RoomInfo a;
-  public TextView b;
+  public abstract void a(int paramInt);
+  
+  public abstract void b(int paramInt);
 }
 
 

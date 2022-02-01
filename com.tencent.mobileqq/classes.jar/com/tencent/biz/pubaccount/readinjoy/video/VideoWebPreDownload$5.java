@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
-import set;
+import sqy;
 
 public class VideoWebPreDownload$5
   implements Runnable
 {
-  public VideoWebPreDownload$5(set paramset) {}
+  public VideoWebPreDownload$5(sqy paramsqy) {}
   
   public void run()
   {
-    if (set.a(this.this$0) != null)
+    if (sqy.a(this.this$0) != null)
     {
-      set.a(this.this$0).stopCacheData(20160519);
-      set.a(this.this$0).removePreloadCallback();
-      set.a(this.this$0).releasePreload(20160519);
+      sqy.a(this.this$0).stopCacheData(20160519);
+      sqy.a(this.this$0).removePreloadCallback();
+      sqy.a(this.this$0).releasePreload(20160519);
     }
   }
 }

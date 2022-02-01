@@ -1,30 +1,17 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-
-class urn
-  extends Handler
+public class urn
 {
-  private url a;
+  public int a;
+  public long a;
+  public int b = -1;
   
-  urn(Looper paramLooper, url paramurl)
+  public urn()
   {
-    super(paramLooper);
-    this.a = paramurl;
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public void handleMessage(Message paramMessage)
+  public String toString()
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      url.a(this.a);
-      return;
-    }
-    url.b(this.a);
+    return "time: " + this.jdField_a_of_type_Long + " starPosition: " + this.jdField_a_of_type_Int + "  endPostition: " + this.b;
   }
 }
 

@@ -1,6 +1,21 @@
-public abstract interface awqt
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.lyric.widget.LyricViewInternal;
+
+public class awqt
+  extends Handler
 {
-  public abstract void a(int paramInt, byte[] paramArrayOfByte);
+  public awqt(LyricViewInternal paramLyricViewInternal, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.requestLayout();
+    this.a.invalidate();
+  }
 }
 
 

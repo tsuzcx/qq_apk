@@ -1,27 +1,18 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import android.content.Context;
 
-class nco
-  extends myd
+public abstract interface nco
 {
-  private final WeakReference<Handler> a;
+  public abstract Context a();
   
-  nco(Handler paramHandler)
-  {
-    this.a = new WeakReference(paramHandler);
-  }
+  public abstract String a();
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("GameRoomPresenterImp", 2, "onNetTypeChange, [" + paramInt1 + "-->" + paramInt2 + "]");
-    }
-    Handler localHandler = (Handler)this.a.get();
-    if ((localHandler != null) && (paramInt2 != 1) && (paramInt1 == 1)) {
-      localHandler.sendEmptyMessage(8);
-    }
-  }
+  public abstract void a();
+  
+  public abstract String b();
+  
+  public abstract String c();
+  
+  public abstract String d();
 }
 
 

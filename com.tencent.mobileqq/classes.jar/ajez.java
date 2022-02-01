@@ -1,14 +1,25 @@
-import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
+import com.tencent.widget.XListView;
 
-class ajez
-  extends axkx
+public class ajez
+  extends Handler
 {
-  ajez(ajey paramajey) {}
+  public ajez(ShowExternalTroopListActivity paramShowExternalTroopListActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramInt == 0) && (paramBoolean == true)) {
-      ajey.a(this.a);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      this.a.a.springBackOverScrollHeaderView();
+      continue;
+      this.a.a.springBackOverScrollHeaderView();
     }
   }
 }

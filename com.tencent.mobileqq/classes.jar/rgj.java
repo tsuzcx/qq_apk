@@ -1,24 +1,47 @@
-import java.util.HashMap;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class rgj
 {
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public boolean b;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString = "";
+  private List<URL> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private String jdField_b_of_type_JavaLangString = "";
+  private List<teh> jdField_b_of_type_JavaUtilList = new ArrayList();
   
-  public HashMap<String, String> a()
+  private rgj(rgk paramrgk)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_vid", this.jdField_a_of_type_JavaLangString);
-    localHashMap.put("param_success", String.valueOf(this.jdField_a_of_type_Boolean).toLowerCase());
-    localHashMap.put("param_costTime", String.valueOf(this.jdField_a_of_type_Long));
-    localHashMap.put("param_ret_code", String.valueOf(this.jdField_b_of_type_Long));
-    localHashMap.put("param_err_info", this.jdField_b_of_type_JavaLangString);
-    localHashMap.put("param_retry", String.valueOf(this.jdField_b_of_type_Boolean));
-    return localHashMap;
+    this.jdField_a_of_type_JavaUtilList = rgk.a(paramrgk);
+    this.jdField_a_of_type_JavaLangString = rgk.a(paramrgk);
+    this.jdField_b_of_type_JavaLangString = rgk.b(paramrgk);
+    this.jdField_b_of_type_JavaUtilList = rgk.b(paramrgk);
+    this.jdField_a_of_type_Int = rgk.a(paramrgk);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public List<teh> a()
+  {
+    return this.jdField_b_of_type_JavaUtilList;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public List<URL> b()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
   }
 }
 

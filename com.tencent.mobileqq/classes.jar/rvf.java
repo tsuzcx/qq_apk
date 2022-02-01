@@ -1,17 +1,18 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class rvf
-  implements View.OnTouchListener
+public class rvf
+  implements View.OnClickListener
 {
-  rvf(rvd paramrvd, GestureDetector paramGestureDetector) {}
+  public rvf(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-    return true;
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -4,8 +4,8 @@ import android.annotation.TargetApi;
 import android.os.Build.VERSION;
 import android.view.View;
 import android.view.animation.Interpolator;
-import bjqa;
-import bjse;
+import blbm;
+import bldq;
 
 class AbsListView$FlingRunnable
   implements Runnable
@@ -13,11 +13,11 @@ class AbsListView$FlingRunnable
   private static final int FLYWHEEL_TIMEOUT = 40;
   private final Runnable mCheckFlywheel = new AbsListView.FlingRunnable.1(this);
   private int mLastFlingY;
-  private final bjse mScroller;
+  private final bldq mScroller;
   
   AbsListView$FlingRunnable(AbsListView paramAbsListView)
   {
-    this.mScroller = new bjse(paramAbsListView.getContext());
+    this.mScroller = new bldq(paramAbsListView.getContext());
   }
   
   @TargetApi(9)
@@ -27,12 +27,12 @@ class AbsListView$FlingRunnable
     if (this.this$0.mForHongBao) {
       i = this.this$0.getSpringbackOffset();
     }
-    bjse localbjse = this.mScroller;
+    bldq localbldq = this.mScroller;
     int j;
     if (paramInt > 0)
     {
       j = this.this$0.mTopOverflingDistance;
-      localbjse.a(paramInt, i, j);
+      localbldq.a(paramInt, i, j);
       i = this.this$0.getOverScrollMode();
       if ((i != 0) && ((i != 1) || (AbsListView.access$1800(this.this$0)))) {
         break label165;
@@ -122,8 +122,8 @@ class AbsListView$FlingRunnable
             return;
           }
           Object localObject1 = this.mScroller;
-          boolean bool = ((bjse)localObject1).b();
-          int m = ((bjse)localObject1).b();
+          boolean bool = ((bldq)localObject1).b();
+          int m = ((bldq)localObject1).b();
           i = this.mLastFlingY - m;
           if (i > 0)
           {
@@ -191,16 +191,16 @@ class AbsListView$FlingRunnable
     label657:
     for (;;)
     {
-      bjse localbjse;
+      bldq localbldq;
       label560:
       try
       {
-        localbjse = this.mScroller;
-        if (!localbjse.b()) {
+        localbldq = this.mScroller;
+        if (!localbldq.b()) {
           break label642;
         }
         j = this.this$0.getScrollY();
-        k = localbjse.b();
+        k = localbldq.b();
         if (!this.this$0.overScrollBy(0, k - j, 0, j, 0, 0, 0, this.this$0.mOverscrollDistance, false)) {
           break label608;
         }
@@ -211,12 +211,12 @@ class AbsListView$FlingRunnable
         break label657;
       }
       finally {}
-      k = (int)localbjse.a();
+      k = (int)localbldq.a();
       i = k;
       if (j != 0) {
         i = -k;
       }
-      localbjse.a();
+      localbldq.a();
       start(i);
       return;
       label592:

@@ -1,113 +1,52 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.config.AppSetting;
-import com.tencent.ims.AlertReport.ButtonAction;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 
 public class adsr
-  implements DialogInterface.OnClickListener
+  implements bmiz
 {
-  public adsr(NotificationActivity paramNotificationActivity, String paramString1, int paramInt, String paramString2) {}
+  public adsr(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    try
+    int i = 0;
+    boolean bool;
+    Object localObject;
+    if (paramInt == 0)
     {
-      Object localObject;
-      String str;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-      {
-        paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app.getCurrentAccountUin();
-        localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, QQBrowserActivity.class);
-        ((Intent)localObject).putExtra("uin", paramDialogInterface);
-        str = this.jdField_a_of_type_JavaLangString;
-        if (str.indexOf("?") != -1) {
-          break label203;
-        }
-        paramDialogInterface = str + "?uin=" + paramDialogInterface;
-      }
-      for (;;)
-      {
-        ((Intent)localObject).putExtra("url", paramDialogInterface);
-        this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.startActivity((Intent)localObject);
-        try
-        {
-          paramDialogInterface = new AlertReport.ButtonAction();
-          paramDialogInterface.uint32_cmd.set(1);
-          paramDialogInterface.uint32_button_id.set(this.jdField_a_of_type_Int);
-          paramDialogInterface.str_package_name.set(bjhj.c());
-          paramDialogInterface.uint32_app_id.set(AppSetting.a());
-          nmb.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app, paramDialogInterface.toByteArray(), 34, "SecuritySvc.AlertReport");
-          bcef.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007536", "0X8007536", this.jdField_a_of_type_Int, 0, this.b, "", "", "");
-          this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
-          return;
-          label203:
-          paramDialogInterface = str + "&uin=" + paramDialogInterface;
-        }
-        catch (Exception paramDialogInterface)
-        {
-          for (;;)
-          {
-            paramDialogInterface.printStackTrace();
-          }
-        }
-      }
-      try
-      {
-        localObject = new AlertReport.ButtonAction();
-        ((AlertReport.ButtonAction)localObject).uint32_cmd.set(1);
-        ((AlertReport.ButtonAction)localObject).uint32_button_id.set(this.jdField_a_of_type_Int);
-        ((AlertReport.ButtonAction)localObject).str_package_name.set(bjhj.c());
-        ((AlertReport.ButtonAction)localObject).uint32_app_id.set(AppSetting.a());
-        nmb.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app, ((AlertReport.ButtonAction)localObject).toByteArray(), 34, "SecuritySvc.AlertReport");
-        bcef.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007536", "0X8007536", this.jdField_a_of_type_Int, 0, this.b, "", "", "");
-        this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
-        throw paramDialogInterface;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          localException.printStackTrace();
+      this.a.b = true;
+      bool = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isOwnerOrAdim();
+      localObject = this.a.jdField_a_of_type_ArrayOfAndroidViewView[5];
+      if (localObject != null) {
+        if (!bool) {
+          break label120;
         }
       }
     }
-    catch (Exception paramDialogInterface)
+    label120:
+    for (paramInt = 0;; paramInt = 8)
     {
-      paramDialogInterface = paramDialogInterface;
-      paramDialogInterface.printStackTrace();
-      try
-      {
-        paramDialogInterface = new AlertReport.ButtonAction();
-        paramDialogInterface.uint32_cmd.set(1);
-        paramDialogInterface.uint32_button_id.set(this.jdField_a_of_type_Int);
-        paramDialogInterface.str_package_name.set(bjhj.c());
-        paramDialogInterface.uint32_app_id.set(AppSetting.a());
-        nmb.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app, paramDialogInterface.toByteArray(), 34, "SecuritySvc.AlertReport");
-        bcef.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007536", "0X8007536", this.jdField_a_of_type_Int, 0, this.b, "", "", "");
-        this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
-        return;
+      ((View)localObject).setVisibility(paramInt);
+      if (bool) {
+        bhbu.a("Grp_set_new", "grpData_admin", "manageGrp_exp", 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin });
       }
-      catch (Exception paramDialogInterface)
+      localObject = (FormSimpleItem)this.a.jdField_a_of_type_ArrayOfAndroidViewView[6];
+      if (localObject != null)
       {
-        for (;;)
-        {
-          paramDialogInterface.printStackTrace();
+        paramInt = i;
+        if (bool) {
+          paramInt = 3;
         }
+        ((FormSimpleItem)localObject).setBgType(paramInt);
       }
+      return;
     }
-    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adsr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
-
-final class rwz
-  implements pwy
+public final class rwz
 {
-  rwz(String paramString, boolean paramBoolean) {}
+  int a;
+  int b;
+  int c;
+  int d;
+  int e = -16777216;
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFeedsHelper", 2, "followPubAccount() onFollowPublicAccount uin=" + this.jdField_a_of_type_JavaLangString + ", isSuccess=" + paramBoolean + ", isUGC=" + this.jdField_a_of_type_Boolean + ", data=" + paramInt);
-    }
-    rwv.a(paramBoolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    return "Decoration{left=" + this.a + ", right=" + this.b + ", top=" + this.c + ", bottom=" + this.d + ", decorationColor=" + this.e + "}";
   }
 }
 

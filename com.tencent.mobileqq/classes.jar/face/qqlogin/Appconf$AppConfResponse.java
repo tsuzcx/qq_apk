@@ -24,12 +24,13 @@ public final class Appconf$AppConfResponse
   public final PBStringField Session = PBField.initString("");
   public final PBRepeatMessageField<Appconf.Wording> Wordings = PBField.initRepeatMessage(Appconf.Wording.class);
   public final PBRepeatMessageField<Appconf.ServiceProtocol> protocols = PBField.initRepeatMessage(Appconf.ServiceProtocol.class);
+  public final PBStringField select_data = PBField.initString("");
   
   static
   {
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 48, 58, 66, 122, 162 }, new String[] { "AppName", "Wordings", "Mode", "ColorSeq", "Session", "Ret", "ErrMsg", "Debug", "ActionSeq", "protocols" }, new Object[] { "", null, Integer.valueOf(0), localByteStringMicro1, "", Integer.valueOf(0), "", "", localByteStringMicro2, null }, AppConfResponse.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 48, 58, 66, 122, 162, 178 }, new String[] { "AppName", "Wordings", "Mode", "ColorSeq", "Session", "Ret", "ErrMsg", "Debug", "ActionSeq", "protocols", "select_data" }, new Object[] { "", null, Integer.valueOf(0), localByteStringMicro1, "", Integer.valueOf(0), "", "", localByteStringMicro2, null, "" }, AppConfResponse.class);
   }
 }
 

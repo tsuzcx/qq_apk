@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video;
 
-import shf;
+import stv;
 
 class VideoView$10
   implements Runnable

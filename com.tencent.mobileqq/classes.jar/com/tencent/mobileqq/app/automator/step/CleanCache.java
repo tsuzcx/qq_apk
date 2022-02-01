@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import ahtj;
-import amov;
+import aioi;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import anfi;
-import anfj;
-import anfl;
-import anfm;
-import anfn;
-import anfo;
-import anfp;
-import aric;
-import aszt;
-import augf;
-import augn;
-import baic;
+import anri;
+import aohy;
+import aohz;
+import aoib;
+import aoic;
+import aoid;
+import aoie;
+import aoif;
+import asmi;
+import auea;
+import avlz;
+import avmh;
+import bbor;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.DeviceProfileManager;
@@ -106,7 +106,7 @@ public class CleanCache
         j = i;
         break;
         label192:
-        Arrays.sort((Object[])localObject, new anfj(this));
+        Arrays.sort((Object[])localObject, new aohz(this));
         int n = localObject.length;
         localObject = a((File[])localObject, i, j);
         n = i + (n - localObject.length);
@@ -168,10 +168,10 @@ public class CleanCache
     //   81: iload_2
     //   82: if_icmple +406 -> 488
     //   85: aload 14
-    //   87: new 118	anfk
+    //   87: new 118	aoia
     //   90: dup
     //   91: aload_0
-    //   92: invokespecial 119	anfk:<init>	(Lcom/tencent/mobileqq/app/automator/step/CleanCache;)V
+    //   92: invokespecial 119	aoia:<init>	(Lcom/tencent/mobileqq/app/automator/step/CleanCache;)V
     //   95: invokestatic 89	java/util/Arrays:sort	([Ljava/lang/Object;Ljava/util/Comparator;)V
     //   98: aload 14
     //   100: arraylength
@@ -334,7 +334,7 @@ public class CleanCache
     //   400: getfield 159	com/tencent/mobileqq/app/automator/step/CleanCache:jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator	Lcom/tencent/mobileqq/app/automator/Automator;
     //   403: getfield 165	com/tencent/mobileqq/app/automator/Automator:mApp	Lcom/tencent/common/app/AppInterface;
     //   406: invokevirtual 170	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   409: invokestatic 175	bfyz:a	(Ljava/lang/String;)J
+    //   409: invokestatic 175	bhhr:a	(Ljava/lang/String;)J
     //   412: lstore 8
     //   414: invokestatic 180	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getServerTime	()J
     //   417: ldc2_w 181
@@ -365,7 +365,7 @@ public class CleanCache
     //   462: getfield 159	com/tencent/mobileqq/app/automator/step/CleanCache:jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator	Lcom/tencent/mobileqq/app/automator/Automator;
     //   465: getfield 165	com/tencent/mobileqq/app/automator/Automator:mApp	Lcom/tencent/common/app/AppInterface;
     //   468: invokevirtual 170	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   471: invokestatic 204	bfyz:a	(Ljava/lang/String;)V
+    //   471: invokestatic 204	bhhr:a	(Ljava/lang/String;)V
     //   474: iload_2
     //   475: istore_3
     //   476: iload_3
@@ -439,19 +439,23 @@ public class CleanCache
   
   private void a(EntityManager paramEntityManager, List<Setting> paramList1, int paramInt1, List<Setting> paramList2, int paramInt2)
   {
-    Setting localSetting;
+    Object localObject;
     if ((paramList1 != null) && (paramInt1 > paramInt2))
     {
+      localObject = paramList2;
+      if (paramList2 == null) {
+        localObject = new ArrayList();
+      }
       paramList1 = paramList1.iterator();
       for (;;)
       {
         if (paramList1.hasNext())
         {
-          localSetting = (Setting)paramList1.next();
-          if ((localSetting != null) && (!TextUtils.isEmpty(localSetting.uin)))
+          paramList2 = (Setting)paramList1.next();
+          if ((paramList2 != null) && (!TextUtils.isEmpty(paramList2.uin)))
           {
             paramInt2 = 200;
-            if (localSetting.bUsrType == 32)
+            if (paramList2.bUsrType == 32)
             {
               paramInt2 = 202;
               paramInt1 = 0;
@@ -462,31 +466,30 @@ public class CleanCache
     }
     for (;;)
     {
-      String str = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getCustomFaceFilePathBySetting(localSetting, paramInt2, paramInt1);
+      String str = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getCustomFaceFilePathBySetting(paramList2, paramInt2, paramInt1);
       if ((TextUtils.isEmpty(str)) || (new File(str).exists())) {
         break;
       }
-      paramList2.add(localSetting);
+      ((List)localObject).add(paramList2);
       if (!QLog.isColorLevel()) {
         break;
       }
-      QLog.d("QQInitHandler", 2, "cleanSetingData," + localSetting.uin + "," + localSetting.bUsrType + "," + this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getCustomFaceFilePathBySetting(localSetting, paramInt2, 0));
+      QLog.d("QQInitHandler", 2, "cleanSetingData," + paramList2.uin + "," + paramList2.bUsrType + "," + this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getCustomFaceFilePathBySetting(paramList2, paramInt2, 0));
       break;
-      if (localSetting.bUsrType == 16)
+      if (paramList2.bUsrType == 16)
       {
         paramInt1 = 0;
         paramInt2 = 16;
       }
-      else if (localSetting.bUsrType == 116)
+      else if (paramList2.bUsrType == 116)
       {
-        paramInt1 = aric.a;
+        paramInt1 = asmi.a;
         continue;
-        paramInt1 = paramList2.size();
-        if ((paramList2 != null) && (paramInt1 > 0) && (paramEntityManager.isOpen())) {}
+        if ((((List)localObject).size() > 0) && (paramEntityManager.isOpen())) {}
         try
         {
           paramEntityManager.getTransaction().begin();
-          paramList1 = paramList2.iterator();
+          paramList1 = ((List)localObject).iterator();
           while (paramList1.hasNext())
           {
             paramList2 = (Setting)paramList1.next();
@@ -603,36 +606,36 @@ public class CleanCache
     //   10: istore 5
     //   12: aload_0
     //   13: getfield 159	com/tencent/mobileqq/app/automator/step/CleanCache:jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator	Lcom/tencent/mobileqq/app/automator/Automator;
-    //   16: getfield 251	com/tencent/mobileqq/app/automator/Automator:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   19: invokevirtual 344	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/data/QQEntityManagerFactory;
-    //   22: invokevirtual 350	com/tencent/mobileqq/data/QQEntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   16: getfield 254	com/tencent/mobileqq/app/automator/Automator:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   19: invokevirtual 347	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/data/QQEntityManagerFactory;
+    //   22: invokevirtual 353	com/tencent/mobileqq/data/QQEntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
     //   25: astore 7
     //   27: aload 7
     //   29: iconst_0
-    //   30: ldc 234
-    //   32: invokevirtual 355	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   30: ldc 237
+    //   32: invokevirtual 358	java/lang/Class:getSimpleName	()Ljava/lang/String;
     //   35: iconst_2
     //   36: anewarray 10	java/lang/String
     //   39: dup
     //   40: iconst_0
-    //   41: ldc_w 356
+    //   41: ldc_w 359
     //   44: aastore
     //   45: dup
     //   46: iconst_1
-    //   47: ldc_w 357
+    //   47: ldc_w 360
     //   50: aastore
-    //   51: ldc_w 359
+    //   51: ldc_w 362
     //   54: iconst_1
     //   55: anewarray 10	java/lang/String
     //   58: dup
     //   59: iconst_0
-    //   60: ldc_w 361
+    //   60: ldc_w 364
     //   63: aastore
     //   64: aconst_null
     //   65: aconst_null
     //   66: aconst_null
     //   67: aconst_null
-    //   68: invokevirtual 365	com/tencent/mobileqq/persistence/EntityManager:query	(ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   68: invokevirtual 368	com/tencent/mobileqq/persistence/EntityManager:query	(ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   71: astore 8
     //   73: aload 10
     //   75: astore 9
@@ -641,25 +644,25 @@ public class CleanCache
     //   82: aload 10
     //   84: astore 9
     //   86: aload 8
-    //   88: invokeinterface 370 1 0
+    //   88: invokeinterface 373 1 0
     //   93: ifeq +82 -> 175
-    //   96: new 322	java/util/HashMap
+    //   96: new 325	java/util/HashMap
     //   99: dup
     //   100: aload 8
-    //   102: invokeinterface 373 1 0
-    //   107: invokespecial 376	java/util/HashMap:<init>	(I)V
+    //   102: invokeinterface 376 1 0
+    //   107: invokespecial 379	java/util/HashMap:<init>	(I)V
     //   110: astore 9
     //   112: aload 8
     //   114: iconst_0
-    //   115: invokeinterface 379 2 0
+    //   115: invokeinterface 382 2 0
     //   120: astore 10
     //   122: aload 8
     //   124: iconst_1
-    //   125: invokeinterface 383 2 0
+    //   125: invokeinterface 386 2 0
     //   130: istore_2
     //   131: aload_0
     //   132: getfield 159	com/tencent/mobileqq/app/automator/step/CleanCache:jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator	Lcom/tencent/mobileqq/app/automator/Automator;
-    //   135: getfield 251	com/tencent/mobileqq/app/automator/Automator:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   135: getfield 254	com/tencent/mobileqq/app/automator/Automator:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   138: astore 11
     //   140: iload_2
     //   141: iconst_4
@@ -670,31 +673,31 @@ public class CleanCache
     //   150: aload 11
     //   152: iload 6
     //   154: aload 10
-    //   156: invokevirtual 387	com/tencent/mobileqq/app/QQAppInterface:getCustomFaceFilePath	(ZLjava/lang/String;)Ljava/lang/String;
+    //   156: invokevirtual 390	com/tencent/mobileqq/app/QQAppInterface:getCustomFaceFilePath	(ZLjava/lang/String;)Ljava/lang/String;
     //   159: aload 10
-    //   161: invokevirtual 333	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   161: invokevirtual 336	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   164: pop
     //   165: aload 8
-    //   167: invokeinterface 390 1 0
+    //   167: invokeinterface 393 1 0
     //   172: ifne -60 -> 112
     //   175: aload 7
     //   177: new 56	java/lang/StringBuilder
     //   180: dup
     //   181: invokespecial 57	java/lang/StringBuilder:<init>	()V
-    //   184: ldc_w 392
+    //   184: ldc_w 395
     //   187: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   190: ldc 234
-    //   192: invokevirtual 355	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   190: ldc 237
+    //   192: invokevirtual 358	java/lang/Class:getSimpleName	()Ljava/lang/String;
     //   195: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   198: ldc_w 394
+    //   198: ldc_w 397
     //   201: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   204: invokevirtual 74	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   207: invokevirtual 398	com/tencent/mobileqq/persistence/EntityManager:execSQL	(Ljava/lang/String;)Z
+    //   207: invokevirtual 401	com/tencent/mobileqq/persistence/EntityManager:execSQL	(Ljava/lang/String;)Z
     //   210: pop
     //   211: aload 9
     //   213: ifnull +347 -> 560
     //   216: aload 9
-    //   218: invokevirtual 399	java/util/HashMap:size	()I
+    //   218: invokevirtual 402	java/util/HashMap:size	()I
     //   221: ifle +339 -> 560
     //   224: iconst_0
     //   225: istore_3
@@ -717,7 +720,7 @@ public class CleanCache
     //   250: istore 4
     //   252: aload 9
     //   254: aload 11
-    //   256: invokevirtual 402	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   256: invokevirtual 405	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   259: ifeq +285 -> 544
     //   262: aload 10
     //   264: invokevirtual 37	java/io/File:exists	()Z
@@ -736,14 +739,14 @@ public class CleanCache
     //   289: new 56	java/lang/StringBuilder
     //   292: dup
     //   293: invokespecial 57	java/lang/StringBuilder:<init>	()V
-    //   296: ldc_w 404
+    //   296: ldc_w 407
     //   299: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   302: aload 9
     //   304: aload 11
-    //   306: invokevirtual 408	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   306: invokevirtual 411	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   309: checkcast 10	java/lang/String
     //   312: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   315: ldc_w 410
+    //   315: ldc_w 413
     //   318: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   321: aload 11
     //   323: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -796,13 +799,13 @@ public class CleanCache
     //   399: aload 8
     //   401: ifnull +10 -> 411
     //   404: aload 8
-    //   406: invokeinterface 413 1 0
+    //   406: invokeinterface 416 1 0
     //   411: aload 9
     //   413: astore 10
     //   415: aload 7
     //   417: ifnull +12 -> 429
     //   420: aload 7
-    //   422: invokevirtual 414	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   422: invokevirtual 417	com/tencent/mobileqq/persistence/EntityManager:close	()V
     //   425: aload 9
     //   427: astore 10
     //   429: aload 10
@@ -813,13 +816,13 @@ public class CleanCache
     //   437: aload 7
     //   439: ifnull +10 -> 449
     //   442: aload 7
-    //   444: invokeinterface 413 1 0
+    //   444: invokeinterface 416 1 0
     //   449: aload_1
     //   450: astore 10
     //   452: aload 8
     //   454: ifnull -25 -> 429
     //   457: aload 8
-    //   459: invokevirtual 414	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   459: invokevirtual 417	com/tencent/mobileqq/persistence/EntityManager:close	()V
     //   462: aload_1
     //   463: areturn
     //   464: astore_1
@@ -830,11 +833,11 @@ public class CleanCache
     //   472: aload 8
     //   474: ifnull +10 -> 484
     //   477: aload 8
-    //   479: invokeinterface 413 1 0
+    //   479: invokeinterface 416 1 0
     //   484: aload 7
     //   486: ifnull +8 -> 494
     //   489: aload 7
-    //   491: invokevirtual 414	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   491: invokevirtual 417	com/tencent/mobileqq/persistence/EntityManager:close	()V
     //   494: aload_1
     //   495: athrow
     //   496: astore_1
@@ -1109,7 +1112,7 @@ public class CleanCache
         localObject1 = ((File)localObject1).listFiles();
         if ((localObject1 != null) && (localObject1.length > 300))
         {
-          Arrays.sort((Object[])localObject1, new anfl(this));
+          Arrays.sort((Object[])localObject1, new aoib(this));
           n = localObject1.length;
           j = 0;
           k = 0;
@@ -1146,10 +1149,10 @@ public class CleanCache
       QLog.d("ZhituManager", 2, "cleanZhituCache...");
     }
     long l1 = System.currentTimeMillis();
-    if (ahtj.f()) {
+    if (aioi.f()) {
       return;
     }
-    ahtj.d(true);
+    aioi.d(true);
     Object localObject1 = AppConstants.SDCARD_PATH + "zhitu";
     localObject1 = new File(VFSAssistantUtils.getSDKPrivatePath((String)localObject1 + "/" + "origin/"));
     int n;
@@ -1166,7 +1169,7 @@ public class CleanCache
         n = localObject1.length;
         if (n > 200)
         {
-          Arrays.sort((Object[])localObject1, new anfo(this));
+          Arrays.sort((Object[])localObject1, new aoie(this));
           int i1 = localObject1.length;
           k = 0;
           j = 0;
@@ -1191,7 +1194,7 @@ public class CleanCache
     for (;;)
     {
       long l2 = System.currentTimeMillis();
-      ahtj.d(false);
+      aioi.d(false);
       if (!QLog.isColorLevel()) {
         break;
       }
@@ -1217,7 +1220,7 @@ public class CleanCache
       QLog.d("ZhituManager", 2, "cleanLightVideoCache...");
     }
     long l1 = System.currentTimeMillis();
-    Object localObject1 = new File(baic.a);
+    Object localObject1 = new File(bbor.a);
     int n;
     int k;
     if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
@@ -1229,7 +1232,7 @@ public class CleanCache
         m = n;
         if (n > 25)
         {
-          Arrays.sort((Object[])localObject1, new anfp(this));
+          Arrays.sort((Object[])localObject1, new aoif(this));
           int i1 = localObject1.length;
           k = 0;
           i = j;
@@ -1265,14 +1268,14 @@ public class CleanCache
   
   private void i()
   {
-    Object localObject2 = new File(augf.a);
+    Object localObject2 = new File(avlz.a);
     Object localObject1 = ((File)localObject2).listFiles();
     if ((((File)localObject2).exists()) && (((File)localObject2).isDirectory()) && (localObject1.length > 500)) {}
     for (;;)
     {
       try
       {
-        Arrays.sort((Object[])localObject1, new anfi(this));
+        Arrays.sort((Object[])localObject1, new aohy(this));
         localObject2 = new HashSet();
         if (this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app == null) {
           return;
@@ -1285,11 +1288,11 @@ public class CleanCache
         }
         QLog.d("QQInitHandler", 2, "Arrays.sort error");
         continue;
-        Object localObject3 = ((LinkedList)augn.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app).a().clone()).iterator();
+        Object localObject3 = ((LinkedList)avmh.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app).a().clone()).iterator();
         File localFile;
         if (((Iterator)localObject3).hasNext())
         {
-          localFile = augf.a(((HotPicData)((Iterator)localObject3).next()).url);
+          localFile = avlz.a(((HotPicData)((Iterator)localObject3).next()).url);
           if (localFile == null) {
             continue;
           }
@@ -1334,8 +1337,8 @@ public class CleanCache
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "initNoMediaFile");
     }
-    amov.c();
-    aszt.a();
+    anri.c();
+    auea.a();
     String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
     int j = arrayOfString.length;
     int i = 0;
@@ -1357,10 +1360,10 @@ public class CleanCache
       Object localObject = new File("/data/data/com.tencent.mobileqq/files/crashinfo/");
       if ((localObject != null) && (((File)localObject).exists()))
       {
-        localObject = ((File)localObject).listFiles(new anfm(this));
+        localObject = ((File)localObject).listFiles(new aoic(this));
         if ((localObject != null) && (localObject.length > 10))
         {
-          Arrays.sort((Object[])localObject, new anfn(this));
+          Arrays.sort((Object[])localObject, new aoid(this));
           while (i < localObject.length)
           {
             localObject[i].delete();

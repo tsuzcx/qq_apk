@@ -1,120 +1,37 @@
-import com.tencent.mobileqq.mini.appbrand.ui.AppBrandUI;
-import com.tencent.mobileqq.minigame.ui.GameActivity1;
-import com.tencent.qqmini.proxyimpl.ColorNotePlugin.1;
-import com.tencent.qqmini.proxyimpl.ColorNotePlugin.2;
-import com.tencent.qqmini.proxyimpl.ColorNotePlugin.3;
-import com.tencent.qqmini.sdk.annotation.JsEvent;
-import com.tencent.qqmini.sdk.annotation.JsPlugin;
-import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
-import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
-import com.tencent.qqmini.sdk.launcher.core.IProxyManager;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
-import com.tencent.qqmini.sdk.launcher.core.proxy.PageGestureProxy;
-import com.tencent.qqmini.sdk.launcher.core.utils.ApiUtil;
-import com.tencent.qqmini.sdk.launcher.core.utils.AppBrandTask;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.open.agent.FriendChooser;
+import com.tencent.open.agent.OpenFrame;
+import com.tencent.open.agent.datamodel.Friend;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.ArrayList;
+import java.util.List;
 
-@JsPlugin
 public class bjcs
-  extends BaseJsPlugin
+  implements AdapterView.OnItemClickListener
 {
-  private void a(boolean paramBoolean, RequestEvent paramRequestEvent)
+  public bjcs(FriendChooser paramFriendChooser) {}
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.mMiniAppInfo.isLimitedAccessApp())
-    {
-      paramRequestEvent.fail();
+    paramAdapterView = (Friend)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if ((paramAdapterView == null) || (this.a.jdField_a_of_type_Bjgp.a(paramAdapterView.a))) {
       return;
     }
-    Object localObject;
-    if (this.mIsMiniGame)
+    if (this.a.jdField_a_of_type_Bjgp.c() >= this.a.jdField_a_of_type_Int)
     {
-      if ((this.mMiniAppContext.getAttachedActivity() == null) || (!(this.mMiniAppContext.getAttachedActivity() instanceof GameActivity1))) {
-        break label180;
-      }
-      localObject = ((GameActivity1)this.mMiniAppContext.getAttachedActivity()).getColorNoteController();
+      this.a.h();
+      return;
     }
-    for (;;)
-    {
-      if (localObject != null)
-      {
-        if (!((apkn)localObject).c())
-        {
-          if (((apkn)localObject).b())
-          {
-            if (paramBoolean)
-            {
-              AppBrandTask.runTaskOnUiThread(new ColorNotePlugin.1(this, (apkn)localObject, paramRequestEvent));
-              return;
-              localObject = (PageGestureProxy)AppLoaderFactory.g().getProxyManager().get(PageGestureProxy.class);
-              if ((localObject instanceof bjfh)) {
-                localObject = ((bjfh)localObject).a();
-              }
-            }
-            else
-            {
-              AppBrandTask.runTaskOnUiThread(new ColorNotePlugin.2(this, (apkn)localObject, paramRequestEvent));
-            }
-          }
-          else {
-            AppBrandTask.runTaskOnUiThread(new ColorNotePlugin.3(this, (apkn)localObject, paramRequestEvent));
-          }
-        }
-        else {
-          paramRequestEvent.ok();
-        }
-      }
-      else
-      {
-        paramRequestEvent.fail();
-        return;
-      }
-      label180:
-      localObject = null;
-    }
-  }
-  
-  @JsEvent({"addColorSign"})
-  public void addColorSign(RequestEvent paramRequestEvent)
-  {
-    a(false, paramRequestEvent);
-  }
-  
-  @JsEvent({"addColorSignDirectly"})
-  public void addColorSignDirectly(RequestEvent paramRequestEvent)
-  {
-    a(true, paramRequestEvent);
-  }
-  
-  @JsEvent({"isColorSignExistSync"})
-  public String isColorSignExistSync(RequestEvent paramRequestEvent)
-  {
-    new JSONObject();
-    apkn localapkn;
-    if (this.mIsMiniGame)
-    {
-      if ((this.mMiniAppContext.getAttachedActivity() == null) || (!(this.mMiniAppContext.getAttachedActivity() instanceof GameActivity1))) {
-        break label142;
-      }
-      localapkn = ((GameActivity1)this.mMiniAppContext.getAttachedActivity()).getColorNoteController();
-    }
-    for (;;)
-    {
-      if ((localapkn != null) && (localapkn.c()))
-      {
-        return ApiUtil.wrapCallbackOk(paramRequestEvent.event, null).toString();
-        if ((this.mMiniAppContext.getAttachedActivity() != null) && ((this.mMiniAppContext.getAttachedActivity() instanceof AppBrandUI))) {
-          localapkn = ((AppBrandUI)this.mMiniAppContext.getAttachedActivity()).getColorNoteController();
-        }
-      }
-      else
-      {
-        return ApiUtil.wrapCallbackFail(paramRequestEvent.event, null).toString();
-      }
-      label142:
-      localapkn = null;
-    }
+    paramView = (OpenFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView();
+    this.a.b.add(paramAdapterView);
+    this.a.jdField_a_of_type_Bjgp.a(paramAdapterView.a);
+    this.a.e();
+    paramView.g();
+    this.a.b(false);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
   }
 }
 

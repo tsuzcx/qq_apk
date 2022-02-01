@@ -40,7 +40,7 @@ class SelectMemberActivity$16
         return;
       }
       if (this.this$0.mIsTroopAdmin) {}
-      for (int i = 2131693200;; i = 2131693199)
+      for (int i = 2131693378;; i = 2131693377)
       {
         paramMessage = this.this$0.getResources().getString(i);
         break;
@@ -50,7 +50,7 @@ class SelectMemberActivity$16
     String str = (String)paramMessage.obj;
     paramMessage = str;
     if (str == null) {
-      paramMessage = this.this$0.getString(2131693198);
+      paramMessage = this.this$0.getString(2131693376);
     }
     QQToast.a(this.this$0, 1, paramMessage, 1500).b(this.this$0.getTitleBarHeight());
   }

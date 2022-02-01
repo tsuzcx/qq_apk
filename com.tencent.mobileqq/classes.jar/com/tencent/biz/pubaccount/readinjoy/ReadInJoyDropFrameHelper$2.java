@@ -1,24 +1,24 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
-import odq;
-import ojq;
+import olh;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pay;
+import orn;
+import pnn;
 
 public class ReadInJoyDropFrameHelper$2
   implements Runnable
 {
-  public ReadInJoyDropFrameHelper$2(ojq paramojq, String paramString, double paramDouble) {}
+  public ReadInJoyDropFrameHelper$2(orn paramorn, String paramString, double paramDouble) {}
   
   public void run()
   {
     try
     {
-      JSONObject localJSONObject = ojq.a(this.this$0);
+      JSONObject localJSONObject = orn.a(this.this$0);
       localJSONObject.put("channelId", this.jdField_a_of_type_JavaLangString);
       localJSONObject.put("fluency", this.jdField_a_of_type_Double);
-      odq.a(pay.a(), "", "0X8009EFE", "0X8009EFE", 0, 0, "", "", "", localJSONObject.toString(), false);
+      olh.a(pnn.a(), "", "0X8009EFE", "0X8009EFE", 0, 0, "", "", "", localJSONObject.toString(), false);
       return;
     }
     catch (JSONException localJSONException)

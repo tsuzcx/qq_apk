@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bguj;
-import bgve;
-import bgvf;
+import bifb;
+import bifw;
+import bifx;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -50,10 +50,10 @@ public class QzoneVipPaymentJsPlugin
   
   private int generateRequestCode(int paramInt)
   {
-    bguj localbguj = this.parentPlugin.mRuntime.a(this.parentPlugin.mRuntime.a());
+    bifb localbifb = this.parentPlugin.mRuntime.a(this.parentPlugin.mRuntime.a());
     int i = paramInt;
-    if ((localbguj instanceof bgvf)) {
-      i = ((bgvf)localbguj).switchRequestCode(this.parentPlugin, (byte)paramInt);
+    if ((localbifb instanceof bifx)) {
+      i = ((bifx)localbifb).switchRequestCode(this.parentPlugin, (byte)paramInt);
     }
     return i;
   }
@@ -70,14 +70,14 @@ public class QzoneVipPaymentJsPlugin
     } while (localAppInterface == null);
     Intent localIntent = new Intent(BaseApplication.getContext(), PayBridgeActivity.class);
     String str2 = VipUtils.a(paramString4);
-    String str1 = ((Activity)localObject2).getString(2131717174);
-    String str3 = ((Activity)localObject2).getString(2131717175);
+    String str1 = ((Activity)localObject2).getString(2131717537);
+    String str3 = ((Activity)localObject2).getString(2131717538);
     paramString4 = "";
     Object localObject1 = "";
     if ("1".equals(paramString3))
     {
       paramString4 = "xxjzgw";
-      str1 = ((Activity)localObject2).getString(2131717174);
+      str1 = ((Activity)localObject2).getString(2131717537);
       localObject1 = "1450000153";
     }
     for (;;)
@@ -121,7 +121,7 @@ public class QzoneVipPaymentJsPlugin
       if ("2".equals(paramString3))
       {
         paramString4 = "XXJZGHH";
-        str1 = ((Activity)localObject2).getString(2131716794);
+        str1 = ((Activity)localObject2).getString(2131717157);
         localObject1 = "1450001557";
       }
     }

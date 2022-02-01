@@ -1,71 +1,20 @@
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.nearby.gameroom.GameQuickWordsPanel;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.AbsListView.LayoutParams;
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
-public class awkx
-  extends BaseAdapter
+class awkx
+  implements AdapterView.OnItemClickListener
 {
-  protected int a;
+  awkx(awkt paramawkt, PoiSlideBottomPanel paramPoiSlideBottomPanel) {}
   
-  public awkx(GameQuickWordsPanel paramGameQuickWordsPanel)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    if (paramView == null)
-    {
-      localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.getContext()).inflate(2131558610, null);
-      localView.setLayoutParams(new AbsListView.LayoutParams(-1, AIOUtils.dp2px(46.0F, this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.getResources())));
-      paramView = new awky(this);
-      paramView.a = ((TextView)localView.findViewById(2131374621));
-      localView.setTag(paramView);
+    awkt.a(this.jdField_a_of_type_Awkt, true);
+    awkt.a(this.jdField_a_of_type_Awkt).a(paramInt);
+    if (this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel.b()) {
+      bdla.b(null, "CliOper", "", "", "0X800A960", "0X800A960", 0, 0, "0", "0", "0", "");
     }
-    for (;;)
-    {
-      Object localObject = (String)getItem(paramInt);
-      paramView.a.setText((CharSequence)localObject);
-      paramView.a.setTextColor(this.jdField_a_of_type_Int);
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (awky)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-    }
-  }
-  
-  public void notifyDataSetChanged()
-  {
-    HashMap localHashMap = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.jdField_a_of_type_Ahgc.a();
-    if (localHashMap.containsKey("quickWordColor")) {
-      this.jdField_a_of_type_Int = ((Integer)localHashMap.get("quickWordColor")).intValue();
-    }
-    super.notifyDataSetChanged();
   }
 }
 

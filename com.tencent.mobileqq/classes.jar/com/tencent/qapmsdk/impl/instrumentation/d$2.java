@@ -1,44 +1,57 @@
 package com.tencent.qapmsdk.impl.instrumentation;
 
+import com.tencent.qapmsdk.common.logger.Logger;
 import com.tencent.qapmsdk.impl.instrumentation.b.c;
-import javax.net.ssl.HttpsURLConnection;
+import java.io.IOException;
+import java.net.HttpURLConnection;
 
 class d$2
   implements com.tencent.qapmsdk.impl.instrumentation.b.d
 {
-  d$2(d paramd, g paramg) {}
+  d$2(d paramd) {}
   
   public void a(c paramc)
   {
-    if (!this.a.f()) {
-      this.a.b(paramc.a());
+    Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMHttpURLConnectionExtension", "streamError:", paramc.toString() });
+    if (!d.b(this.a).f()) {
+      d.b(this.a).d(paramc.a());
     }
-    d.a(this.b, paramc.b());
+    d.a(this.a, paramc.b());
   }
   
   public void b(c paramc)
   {
-    String str;
-    long l2;
-    long l1;
-    if (!this.a.f())
-    {
-      str = d.a(this.b).getRequestProperty("content-length");
-      l2 = paramc.a();
-      l1 = l2;
-      if (str == null) {}
+    int i;
+    if (!d.b(this.a).f()) {
+      i = 0;
     }
     try
     {
-      l1 = Long.parseLong(str);
-      this.a.b(l1);
-      return;
+      int j = d.a(this.a).getResponseCode();
+      i = j;
+      d.b(this.a).c(j);
+      i = j;
     }
-    catch (NumberFormatException paramc)
+    catch (IOException localIOException)
     {
       for (;;)
       {
+        long l1;
+        long l2;
+      }
+    }
+    l1 = paramc.a();
+    if (i != 206)
+    {
+      l2 = d.a(this.a).getContentLength();
+      if (l2 >= 0L) {
         l1 = l2;
+      }
+      for (;;)
+      {
+        d.b(this.a).d(l1);
+        d.a(this.a, d.b(this.a));
+        return;
       }
     }
   }

@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.emoticonview;
 
-import apxl;
-import apxm;
-import aqzw;
-import avsq;
+import arao;
+import arap;
+import aseg;
+import awyr;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -26,17 +27,17 @@ public class EmoticonPanelTabSortHelper
     super(paramEmoticonPanelController);
   }
   
-  protected void fillDisSelectedDataList(apxm paramapxm)
+  protected void fillDisSelectedDataList(arap paramarap)
   {
     this.mBehindDisSelectedDataList.clear();
     this.mFrontDisSelectedDataList.clear();
-    if ((paramapxm != null) && (!paramapxm.a.isEmpty()))
+    if ((paramarap != null) && (!paramarap.a.isEmpty()))
     {
       int i = 0;
       int j = 0;
-      if (i < paramapxm.a.size())
+      if (i < paramarap.a.size())
       {
-        String str = (String)paramapxm.a.get(i);
+        String str = (String)paramarap.a.get(i);
         int k;
         if ("face".equalsIgnoreCase(str)) {
           k = 1;
@@ -131,11 +132,11 @@ public class EmoticonPanelTabSortHelper
   
   public int getPkgEndSwitchSelectIndex()
   {
-    aqzw localaqzw = (aqzw)this.mPanelController.app.getManager(334);
-    if (!localaqzw.c()) {}
+    aseg localaseg = (aseg)this.mPanelController.app.getManager(QQManagerFactory.CAMERA_EMOTION_MANAGER);
+    if (!localaseg.c()) {}
     for (int j = 4;; j = 5)
     {
-      List localList = ((avsq)this.mPanelController.app.getManager(14)).a(false, this.mPanelController.businessType, this.mPanelController.kanDianBiu);
+      List localList = ((awyr)this.mPanelController.app.getManager(QQManagerFactory.EMOTICON_MANAGER)).a(false, this.mPanelController.businessType, this.mPanelController.kanDianBiu);
       int i;
       if (localList != null)
       {
@@ -152,15 +153,15 @@ public class EmoticonPanelTabSortHelper
       if (localObject != null)
       {
         j = i;
-        if (((apxm)localObject).b.size() > 0)
+        if (((arap)localObject).b.size() > 0)
         {
-          i = ((apxm)localObject).b.size();
-          localObject = ((apxm)localObject).b.iterator();
+          i = ((arap)localObject).b.size();
+          localObject = ((arap)localObject).b.iterator();
           j = i;
           if (((Iterator)localObject).hasNext())
           {
             str = (String)((Iterator)localObject).next();
-            if (("camera".equalsIgnoreCase(str)) && (!localaqzw.c())) {
+            if (("camera".equalsIgnoreCase(str)) && (!localaseg.c())) {
               i -= 1;
             }
           }
@@ -224,9 +225,9 @@ public class EmoticonPanelTabSortHelper
   public void initBefore()
   {
     boolean bool2 = false;
-    apxm localapxm = loadTabSortConObj();
-    if (localapxm != null) {
-      if ((!localapxm.a()) || (!isInAIOPanel()) || (this.mPanelController.mHideAllSettingTabs)) {
+    arap localarap = loadTabSortConObj();
+    if (localarap != null) {
+      if ((!localarap.a()) || (!isInAIOPanel()) || (this.mPanelController.mHideAllSettingTabs)) {
         break label50;
       }
     }
@@ -253,7 +254,7 @@ public class EmoticonPanelTabSortHelper
     localEmoticonPanelSettingHelper.setEmoSettingVisibility(8);
     localEmoticonPanelSettingHelper.setMoreSettingVisibility(8);
     localEmoticonPanelSettingHelper.setHideMoreAndSettingButton(true, true);
-    fillDisSelectedDataList(localapxm);
+    fillDisSelectedDataList(localarap);
     updateLastSelectedSecondTabIndex();
   }
   
@@ -267,9 +268,9 @@ public class EmoticonPanelTabSortHelper
     return (this.mPanelController.mBaseChatPie != null) && (!this.mPanelController.mParams.kanDianBiu) && (this.mPanelController.mBaseChatPie.input != null);
   }
   
-  protected apxm loadTabSortConObj()
+  protected arap loadTabSortConObj()
   {
-    return apxl.a();
+    return arao.a();
   }
   
   public void onDestory()
@@ -389,7 +390,7 @@ public class EmoticonPanelTabSortHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelTabSortHelper
  * JD-Core Version:    0.7.0.1
  */

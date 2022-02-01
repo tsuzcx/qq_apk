@@ -1,32 +1,48 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.UpdateDiscuss;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import org.json.JSONArray;
 
-public class angn
-  extends amrc
+class angn
+  implements amoz
 {
-  private angn(UpdateDiscuss paramUpdateDiscuss) {}
+  angn(angm paramangm) {}
   
-  protected void updateDiscussionList(boolean paramBoolean)
+  public void a(boolean paramBoolean, String paramString1, List<amow> paramList, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "updateDiscussionList: " + paramBoolean);
-    }
-    if (!paramBoolean)
+    QLog.i("ApolloPluginRscLoader", 1, "checkRoomRsc downloadApolloRes onDownLoadFinish success:" + paramBoolean);
+    int i = 0;
+    if (i < this.a.jdField_a_of_type_ArrayOfInt.length)
     {
-      this.a.a(6);
-      return;
+      paramString1 = amov.a().a(8, this.a.jdField_a_of_type_ArrayOfInt[i]);
+      int j;
+      if (paramString1 != null)
+      {
+        paramList = this.a.jdField_a_of_type_Angh;
+        int k = paramString1.b;
+        if (paramString1.a())
+        {
+          j = 0;
+          label88:
+          paramString1 = angh.a(paramList, 8, String.valueOf(k), j);
+          this.a.jdField_a_of_type_OrgJsonJSONArray.put(paramString1);
+        }
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        j = 2;
+        break label88;
+        paramString1 = angh.a(this.a.jdField_a_of_type_Angh, 8, String.valueOf(this.a.jdField_a_of_type_ArrayOfInt[i]), 2);
+        this.a.jdField_a_of_type_OrgJsonJSONArray.put(paramString1);
+      }
     }
-    this.a.a.a.edit().putBoolean("isDiscussionlistok", true).commit();
-    this.a.a.notifyUI(3, true, Integer.valueOf(3));
-    this.a.a(7);
+    this.a.jdField_a_of_type_Angh.a(this.a.jdField_a_of_type_JavaLangString, anvx.a(2131700001), this.a.jdField_a_of_type_OrgJsonJSONArray);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     angn
  * JD-Core Version:    0.7.0.1
  */

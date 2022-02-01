@@ -8,8 +8,8 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Request.Builder;
 import com.squareup.okhttp.Response;
 import com.tencent.qapmsdk.common.logger.Logger;
-import com.tencent.qapmsdk.impl.instrumentation.g;
 import com.tencent.qapmsdk.impl.instrumentation.h;
+import com.tencent.qapmsdk.impl.instrumentation.i;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
@@ -17,7 +17,7 @@ import java.util.List;
 public class a
   extends Call
 {
-  private g a;
+  private h a;
   private Request b = a(paramRequest, paramOkHttpClient);
   private Call c;
   private boolean d = true;
@@ -39,7 +39,7 @@ public class a
       if (com.tencent.qapmsdk.impl.g.b.c())
       {
         if (this.a == null) {
-          this.a = new g(this.d);
+          this.a = new h(this.d);
         }
         a(paramOkHttpClient);
         this.a.b(0);
@@ -52,10 +52,10 @@ public class a
     return paramRequest;
   }
   
-  private g a()
+  private h a()
   {
     if (this.a == null) {
-      this.a = new g(this.d);
+      this.a = new h(this.d);
     }
     return this.a;
   }
@@ -106,26 +106,26 @@ public class a
       if (!com.tencent.qapmsdk.impl.g.b.c()) {
         return;
       }
-      g localg = a();
-      h.a(localg, paramException);
-      if (localg.f()) {
+      h localh = a();
+      i.a(localh, paramException);
+      if (localh.f()) {
         return;
       }
-      locala = localg.j();
+      locala = localh.j();
       if (locala == null) {
         return;
       }
       if (paramResponse != null) {
-        localg.g(com.tencent.qapmsdk.impl.g.a.a(paramResponse.header("Content-Type")));
+        localh.g(com.tencent.qapmsdk.impl.g.a.a(paramResponse.header("Content-Type")));
       }
-      if (localg.h())
+      if (localh.h())
       {
         paramException = "";
-        if (localg.k() != null) {
-          paramException = localg.k();
+        if (localh.k() != null) {
+          paramException = localh.k();
         }
         Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMCallExtension", "error message:", paramException });
-        if (!localg.h()) {
+        if (!localh.h()) {
           return;
         }
         com.tencent.qapmsdk.impl.d.a.a(locala, paramException);

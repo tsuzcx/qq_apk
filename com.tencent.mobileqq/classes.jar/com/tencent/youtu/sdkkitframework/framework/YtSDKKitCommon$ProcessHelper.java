@@ -4,6 +4,41 @@ import com.tencent.youtu.sdkkitframework.common.YtLogger;
 
 public class YtSDKKitCommon$ProcessHelper
 {
+  public static float calcEyeScore(float[] paramArrayOfFloat)
+  {
+    float f1 = paramArrayOfFloat[32] - paramArrayOfFloat[40];
+    float f2 = paramArrayOfFloat[33] - paramArrayOfFloat[41];
+    float f3 = (float)Math.sqrt(f1 * f1 + f2 * f2);
+    float f8 = paramArrayOfFloat[44];
+    float f9 = paramArrayOfFloat[40];
+    float f10 = paramArrayOfFloat[45];
+    float f11 = paramArrayOfFloat[41];
+    float f4 = paramArrayOfFloat[36];
+    float f5 = paramArrayOfFloat[40];
+    float f6 = paramArrayOfFloat[37];
+    float f7 = paramArrayOfFloat[41];
+    f8 = Math.abs(crossProduct(f1, f2, f8 - f9, f10 - f11));
+    f1 = (Math.abs(crossProduct(f1, f2, f4 - f5, f6 - f7)) + f8) / (f3 * f3);
+    f2 = paramArrayOfFloat[56] - paramArrayOfFloat[48];
+    f3 = paramArrayOfFloat[57] - paramArrayOfFloat[49];
+    f4 = (float)Math.sqrt(f2 * f2 + f3 * f3);
+    f9 = paramArrayOfFloat[60];
+    f10 = paramArrayOfFloat[56];
+    f11 = paramArrayOfFloat[61];
+    float f12 = paramArrayOfFloat[57];
+    f5 = paramArrayOfFloat[52];
+    f6 = paramArrayOfFloat[56];
+    f7 = paramArrayOfFloat[53];
+    f8 = paramArrayOfFloat[57];
+    f9 = Math.abs(crossProduct(f2, f3, f9 - f10, f11 - f12));
+    return f1 + (Math.abs(crossProduct(f2, f3, f5 - f6, f7 - f8)) + f9) / (f4 * f4);
+  }
+  
+  public static float calcMouthScore(float[] paramArrayOfFloat)
+  {
+    return Math.abs(paramArrayOfFloat[91] - paramArrayOfFloat[103]) / Math.abs(paramArrayOfFloat[118] - paramArrayOfFloat['']);
+  }
+  
   public static float[] convert90PTo5P(float[] paramArrayOfFloat)
   {
     YtLogger.d("ProcessHelper", "90 to 5 convert size:" + paramArrayOfFloat.length);

@@ -1,25 +1,58 @@
-import android.support.annotation.NonNull;
-import java.util.List;
+import java.util.HashMap;
 
 public class blvk
 {
-  public final int a;
-  public final String a;
-  public final List<String> a;
-  public final String b;
+  private static blvk jdField_a_of_type_Blvk;
+  private HashMap<String, blvj> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public blvk(@NonNull String paramString1, int paramInt, @NonNull String paramString2, @NonNull List<String> paramList)
+  public static blvk a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString2;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    if (jdField_a_of_type_Blvk == null) {}
+    try
+    {
+      if (jdField_a_of_type_Blvk == null) {
+        jdField_a_of_type_Blvk = new blvk();
+      }
+      return jdField_a_of_type_Blvk;
+    }
+    finally {}
   }
   
-  @NonNull
-  public String toString()
+  public blvj a(String paramString)
   {
-    return "{packageName:" + this.jdField_a_of_type_JavaLangString + ", packageVersion:" + this.jdField_a_of_type_Int + ", packageZipPath:" + this.b + ", packageContentList:" + this.jdField_a_of_type_JavaUtilList + "}";
+    blvj localblvj2 = (blvj)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    blvj localblvj1 = localblvj2;
+    if (localblvj2 == null)
+    {
+      localblvj1 = new blvj(paramString);
+      localblvj1.a();
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localblvj1);
+    }
+    return localblvj1;
+  }
+  
+  public void a(String paramString)
+  {
+    if ((blvj)this.jdField_a_of_type_JavaUtilHashMap.get(paramString) != null) {
+      this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    return (blvj)this.jdField_a_of_type_JavaUtilHashMap.get(paramString) != null;
+  }
+  
+  public void b(String paramString)
+  {
+    blvj localblvj2 = (blvj)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    blvj localblvj1 = localblvj2;
+    if (localblvj2 == null)
+    {
+      localblvj1 = new blvj(paramString);
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localblvj1);
+    }
+    localblvj1.a();
   }
 }
 

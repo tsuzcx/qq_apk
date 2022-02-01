@@ -1,39 +1,29 @@
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
-import com.tencent.avgame.gameroom.seat.TalkingEffectLayout;
+import com.tencent.avgame.floatwindow.CommonGameFloatWindowLayout;
 
-public class neb
+class neb
   implements Animator.AnimatorListener
 {
-  public neb(TalkingEffectLayout paramTalkingEffectLayout) {}
+  neb(ndx paramndx, int paramInt1, int paramInt2) {}
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    if (TalkingEffectLayout.a(this.a) != null) {
-      TalkingEffectLayout.a(this.a).onAnimationCancel(paramAnimator);
-    }
+    ndx.a(this.jdField_a_of_type_Ndx).a(this.jdField_a_of_type_Int, this.b);
+    ndx.a(this.jdField_a_of_type_Ndx).d();
+    ndx.a(this.jdField_a_of_type_Ndx, null);
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (TalkingEffectLayout.a(this.a) != null) {
-      TalkingEffectLayout.a(this.a).onAnimationEnd(paramAnimator);
-    }
+    ndx.a(this.jdField_a_of_type_Ndx).a(this.jdField_a_of_type_Int, this.b);
+    ndx.a(this.jdField_a_of_type_Ndx).d();
+    ndx.a(this.jdField_a_of_type_Ndx, null);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    if (TalkingEffectLayout.a(this.a) != null) {
-      TalkingEffectLayout.a(this.a).onAnimationRepeat(paramAnimator);
-    }
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (TalkingEffectLayout.a(this.a) != null) {
-      TalkingEffectLayout.a(this.a).onAnimationStart(paramAnimator);
-    }
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

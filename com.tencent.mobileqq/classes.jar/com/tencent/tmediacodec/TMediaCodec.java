@@ -7,6 +7,7 @@ import android.media.MediaCodec.CryptoInfo;
 import android.media.MediaCrypto;
 import android.media.MediaDescrambler;
 import android.media.MediaFormat;
+import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -28,6 +29,7 @@ public final class TMediaCodec
   public static final String TAG = "TMediaCodec";
   @Nullable
   private CodecCallback codecCallback;
+  public boolean codecFinalReuseEnable;
   @Nullable
   private CodecWrapper codecWrapper;
   private TMediaCodec.CreateBy createBy;
@@ -67,17 +69,12 @@ public final class TMediaCodec
     ThreadManager.postOnSubThread(new TMediaCodec.2(this));
   }
   
-  private void onBeforeConfigure()
+  private void onBeforeConfigure(Surface paramSurface)
   {
+    this.codecFinalReuseEnable = TCodecManager.getInstance().reuseEnable(this, paramSurface);
     this.mCodecStatistics.createByCodecStart();
     this.mCodecStatistics.createByCodecEnd();
-    MediaCodecStatistics localMediaCodecStatistics = this.mCodecStatistics;
-    if ((isReuseEnable()) && (TCodecManager.getInstance().isGlobalReuseEnable())) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localMediaCodecStatistics.configCodecStart(bool);
-      return;
-    }
+    this.mCodecStatistics.configCodecStart(this.codecFinalReuseEnable);
   }
   
   private void onBeforeStart()
@@ -94,7 +91,7 @@ public final class TMediaCodec
       return;
     }
     this.mConfigureCalled = true;
-    onBeforeConfigure();
+    onBeforeConfigure(paramSurface);
     try
     {
       this.codecWrapper = TCodecManager.getInstance().configure(paramMediaFormat, paramSurface, paramInt, paramMediaDescrambler, this);
@@ -118,7 +115,7 @@ public final class TMediaCodec
       return;
     }
     this.mConfigureCalled = true;
-    onBeforeConfigure();
+    onBeforeConfigure(paramSurface);
     try
     {
       this.codecWrapper = TCodecManager.getInstance().configure(paramMediaFormat, paramSurface, paramMediaCrypto, paramInt, this);
@@ -306,25 +303,37 @@ public final class TMediaCodec
   @TargetApi(21)
   public final void setCallback(@Nullable TMediaCodec.Callback paramCallback)
   {
-    if (this.codecWrapper != null)
-    {
-      MediaCodec localMediaCodec = this.codecWrapper.getMediaCodec();
-      if (localMediaCodec != null) {
-        localMediaCodec.setCallback(new TMediaCodec.HookCallback(this, paramCallback));
-      }
+    if (Build.VERSION.SDK_INT < 21) {
+      LogUtils.w("TMediaCodec", "ignore method setCallback for API lower than 21");
     }
+    MediaCodec localMediaCodec;
+    do
+    {
+      do
+      {
+        return;
+      } while (this.codecWrapper == null);
+      localMediaCodec = this.codecWrapper.getMediaCodec();
+    } while (localMediaCodec == null);
+    localMediaCodec.setCallback(new TMediaCodec.HookCallback(this, paramCallback));
   }
   
   @TargetApi(23)
   public final void setCallback(@NonNull TMediaCodec.Callback paramCallback, @Nullable Handler paramHandler)
   {
-    if (this.codecWrapper != null)
-    {
-      MediaCodec localMediaCodec = this.codecWrapper.getMediaCodec();
-      if (localMediaCodec != null) {
-        localMediaCodec.setCallback(new TMediaCodec.HookCallback(this, paramCallback), paramHandler);
-      }
+    if (Build.VERSION.SDK_INT < 23) {
+      LogUtils.w("TMediaCodec", "ignore method setCallback for API lower than 23");
     }
+    MediaCodec localMediaCodec;
+    do
+    {
+      do
+      {
+        return;
+      } while (this.codecWrapper == null);
+      localMediaCodec = this.codecWrapper.getMediaCodec();
+    } while (localMediaCodec == null);
+    localMediaCodec.setCallback(new TMediaCodec.HookCallback(this, paramCallback), paramHandler);
   }
   
   public final void setCodecCallback(@Nullable CodecCallback paramCodecCallback)

@@ -1,23 +1,18 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.vip.ad.TianshuSplashManager.TianShuGetSplashCallback.1;
-import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
-import mqq.os.MqqHandler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.AbsSpinner.SavedState;
 
-public class bkzg
-  implements blbv
+public final class bkzg
+  implements Parcelable.Creator<AbsSpinner.SavedState>
 {
-  public String a;
-  
-  public bkzg(bkzf parambkzf, String paramString)
+  public AbsSpinner.SavedState a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    return new AbsSpinner.SavedState(paramParcel, null);
   }
   
-  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
+  public AbsSpinner.SavedState[] a(int paramInt)
   {
-    if ((paramBoolean) && (paramGetAdsRsp != null)) {
-      ThreadManager.getUIHandler().postDelayed(new TianshuSplashManager.TianShuGetSplashCallback.1(this, paramGetAdsRsp), 500L);
-    }
+    return new AbsSpinner.SavedState[paramInt];
   }
 }
 

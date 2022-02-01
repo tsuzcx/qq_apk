@@ -1,18 +1,11 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import android.widget.ImageView;
 
-class agej
-  extends aghj
+public class agej
+  extends ageo
 {
-  agej(agcw paramagcw)
-  {
-    super(paramagcw, null);
-  }
-  
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new agap(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-  }
+  public View a;
+  public ImageView a;
 }
 
 

@@ -1,23 +1,27 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Handler;
 
-public class akku
-  extends akll
+class akku
+  extends ntf
 {
-  public View a(int paramInt, Object paramObject, aklg paramaklg, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, aknm paramaknm)
+  akku(akkr paramakkr) {}
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    paramObject = paramView;
-    if (paramView == null) {
-      paramObject = LayoutInflater.from(paramContext).inflate(2131558934, null);
+    if ((akkr.a(this.a).isFinishing()) || (this.a.a)) {
+      return;
     }
-    paramObject.setOnClickListener(paramOnClickListener);
-    paramObject.setOnLongClickListener(paramOnLongClickListener);
-    paramObject.setTag(-1, Integer.valueOf(paramInt));
-    return paramObject;
+    this.a.d();
+    if (akkr.a(this.a) != null) {
+      akkr.a(this.a).removeCallbacks(akkr.b(this.a));
+    }
+    if (paramInt == 16)
+    {
+      this.a.e();
+      return;
+    }
+    akkr.a(this.a, akkr.a(this.a));
   }
 }
 

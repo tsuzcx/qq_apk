@@ -1,17 +1,17 @@
 package com.tencent.qidian;
 
-import bily;
+import bjxa;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Friends;
 
 public final class QidianManager$9
   implements Runnable
 {
-  public QidianManager$9(bily parambily, QQAppInterface paramQQAppInterface, Friends[] paramArrayOfFriends) {}
+  public QidianManager$9(bjxa parambjxa, QQAppInterface paramQQAppInterface, Friends[] paramArrayOfFriends) {}
   
   public void run()
   {
-    bily.a(this.jdField_a_of_type_Bily, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ArrayOfComTencentMobileqqDataFriends);
+    bjxa.a(this.jdField_a_of_type_Bjxa, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ArrayOfComTencentMobileqqDataFriends);
   }
 }
 

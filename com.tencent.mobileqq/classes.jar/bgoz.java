@@ -1,69 +1,61 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.AppRuntime;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.TroopFeedItem;
+import com.tencent.mobileqq.utils.StringUtil;
 
-public class bgoz
+class bgoz
+  extends bgoy
 {
-  public String a(Context paramContext)
+  bgoz(bgos parambgos)
   {
-    paramContext = paramContext.getDir("lib", 0).getAbsolutePath();
-    if (paramContext.endsWith(File.separator)) {
-      return paramContext + "kcsdk_4.4.7.3661.jar";
-    }
-    return paramContext + File.separator + "kcsdk_4.4.7.3661.jar";
+    super(parambgos);
   }
   
-  public void a()
+  protected View a(View paramView, TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean)
   {
-    try
-    {
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime instanceof QQAppInterface)) {
-        ((VasQuickUpdateManager)localAppRuntime.getManager(184)).downloadItem(1004L, "kcsdk_4_4_7_3661", "KC.TMSManager");
-      }
-      return;
+    View localView = paramView;
+    if (paramView == null) {
+      localView = LayoutInflater.from(this.a.a).inflate(2131560635, null);
     }
-    finally
+    paramView = (bgpa)localView.getTag();
+    Object localObject = paramView;
+    if (paramView == null)
     {
-      localObject = finally;
-      throw localObject;
+      localObject = new bgpa(this);
+      ((bgpa)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131372790));
+      ((bgpa)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379001));
+      ((bgpa)localObject).jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131381303));
+      ((bgpa)localObject).b = ((TextView)localView.findViewById(2131381306));
+      ((bgpa)localObject).c = ((TextView)localView.findViewById(2131381307));
+      localView.setOnClickListener(this.a);
+      localView.setTag(localObject);
     }
-  }
-  
-  public void a(Context paramContext, int paramInt)
-  {
-    if (paramInt == 0) {}
+    ((bgpa)localObject).jdField_a_of_type_Int = paramInt;
+    ((bgpa)localObject).jdField_a_of_type_ComTencentMobileqqDataTroopFeedItem = paramTroopFeedItem;
+    paramView = "[" + paramTroopFeedItem.tag + "] " + paramTroopFeedItem.title;
+    ((bgpa)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
+    ((bgpa)localObject).b.setText(paramTroopFeedItem.content);
+    ((bgpa)localObject).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    paramView = anvx.a(2131714673) + paramTroopFeedItem.tag + " " + paramTroopFeedItem.title + " " + paramTroopFeedItem.content;
+    if (!StringUtil.isEmpty(paramTroopFeedItem.ex_1))
+    {
+      ((bgpa)localObject).c.setText(paramTroopFeedItem.ex_1);
+      paramView = paramView + " " + paramTroopFeedItem.ex_1;
+    }
     for (;;)
     {
-      try
-      {
-        String str = paramContext.getDir("lib", 0).getAbsolutePath();
-        paramContext = bgox.a().b(paramContext);
-        if (bgae.a(paramContext, str, "kcsdk_4.4.7.3661.jar"))
-        {
-          QLog.d("KC.TMSManager", 1, "unzip succ");
-          bgox.a(bgox.a());
-          return;
-        }
-        QLog.e("KC.TMSManager", 1, new Object[] { "unzip error, libDir=" + str, " zipPath=" + paramContext });
-        continue;
-        QLog.e("KC.TMSManager", 1, "error: " + paramInt);
+      ((bgpa)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843706);
+      paramTroopFeedItem = paramView;
+      if (!paramBoolean) {
+        paramTroopFeedItem = paramView + " " + anvx.a(2131714669);
       }
-      finally {}
+      localView.setContentDescription(paramTroopFeedItem);
+      return localView;
+      ((bgpa)localObject).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     }
-  }
-  
-  public String b(Context paramContext)
-  {
-    paramContext = paramContext.getFilesDir().getAbsolutePath();
-    if (paramContext.endsWith(File.separator)) {
-      return paramContext + "libtmsdualcore.zip";
-    }
-    return paramContext + File.separator + "libtmsdualcore.zip";
   }
 }
 

@@ -1,27 +1,47 @@
 import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qqmini.sdk.launcher.utils.StorageUtil;
+import android.net.Uri;
+import com.tencent.open.agent.TroopAbilityUtils.1;
+import com.tencent.qphone.base.util.QLog;
 
-class bjgf
-  extends ClickableSpan
+public class bjgf
+  implements DialogInterface.OnClickListener
 {
-  bjgf(bjgd parambjgd) {}
+  public bjgf(TroopAbilityUtils.1 param1) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = StorageUtil.getPreference().getString("mini_shortcut_help_url", "https://kf.qq.com/touch/sappfaq/190605Vn2EBv190605zuiEbY.html?scene_id=kf172&platform=15");
-    Intent localIntent = new Intent(BaseApplicationImpl.getContext(), QQBrowserActivity.class);
-    localIntent.setFlags(134217728);
-    localIntent.putExtra("url", paramView);
-    localIntent.putExtra("hide_left_button", false);
-    localIntent.putExtra("show_right_close_button", false);
-    localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-    bjgd.a(this.a).startActivityForResult(localIntent, 1001);
+    if (!this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
+      paramDialogInterface.dismiss();
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        paramDialogInterface = new Intent();
+        paramDialogInterface.addFlags(335544320);
+        if (this.a.jdField_a_of_type_Boolean)
+        {
+          paramDialogInterface.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=complete&response={\"ret\":0}", new Object[] { Long.valueOf(this.a.jdField_a_of_type_JavaLangString), this.a.b })));
+          paramDialogInterface.setPackage(this.a.c);
+          this.a.jdField_a_of_type_AndroidAppActivity.startActivity(paramDialogInterface);
+          return;
+        }
+      }
+      catch (Exception paramDialogInterface)
+      {
+        QLog.e("TroopAbility.Utils", 1, "[startSdkCallback] startActivity failed, exception=", paramDialogInterface);
+        return;
+      }
+      paramDialogInterface.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=error", new Object[] { Long.valueOf(this.a.jdField_a_of_type_JavaLangString), this.a.b })));
+    }
   }
 }
 

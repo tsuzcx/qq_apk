@@ -1,13 +1,12 @@
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.RecentDynamicAvatarView;
-import com.tencent.widget.SingleLineTextView;
-
-public class ajjk
+class ajjk
+  implements ajmo
 {
-  public DragTextView a;
-  public RecentDynamicAvatarView a;
-  public SingleLineTextView a;
-  public SingleLineTextView b;
+  ajjk(ajjf paramajjf) {}
+  
+  public long a()
+  {
+    return ajjf.a(this.a);
+  }
 }
 
 

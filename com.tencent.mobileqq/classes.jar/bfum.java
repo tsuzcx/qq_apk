@@ -1,37 +1,24 @@
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
 public class bfum
-  extends MqqHandler
+  extends RecyclerView.ItemDecoration
 {
-  private final WeakReference<Handler.Callback> a;
+  private int a;
   
-  public bfum(Handler.Callback paramCallback)
+  public bfum(int paramInt)
   {
-    this.a = new WeakReference(paramCallback);
+    this.a = paramInt;
   }
   
-  public bfum(Looper paramLooper, Handler.Callback paramCallback)
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramCallback);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    Handler.Callback localCallback = (Handler.Callback)this.a.get();
-    if (localCallback != null) {
-      localCallback.handleMessage(paramMessage);
+    if (paramRecyclerView.getChildAdapterPosition(paramView) != 0) {
+      paramRect.top = this.a;
     }
-  }
-  
-  public String toString()
-  {
-    Handler.Callback localCallback = (Handler.Callback)this.a.get();
-    return super.toString() + " " + localCallback;
   }
 }
 

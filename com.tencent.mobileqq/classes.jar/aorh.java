@@ -1,37 +1,14 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.widget.RoundImageView;
 
-final class aorh
-  implements aoya
+class aorh
+  implements aqdb
 {
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkApp.ArkCommonUtil", 2, "ArkSafe.report onDisableReport");
-    }
-    aoxw.a().a(null);
-  }
+  aorh(aorg paramaorg) {}
   
-  public void a(String paramString)
+  public void onFaceUpdate(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkApp.ArkCommonUtil", 2, new Object[] { "ArkSafe.report onReportUrlCheck content=", paramString });
-    }
-    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
-    if ((localObject instanceof QQAppInterface)) {}
-    for (localObject = (QQAppInterface)localObject;; localObject = null)
-    {
-      if (localObject != null)
-      {
-        localObject = ((ArkAppCenter)((QQAppInterface)localObject).getManager(121)).a();
-        if (localObject != null) {
-          ((aoul)localObject).a(paramString);
-        }
-      }
-      return;
-    }
+    aorg.a(this.a).setImageBitmap(paramBitmap);
   }
 }
 

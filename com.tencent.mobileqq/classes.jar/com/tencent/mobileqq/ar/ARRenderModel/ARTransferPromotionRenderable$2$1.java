@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import aobk;
-import aobl;
+import apem;
+import apen;
 import com.tencent.mobileqq.ar.ARNativeBridge;
 
 public class ARTransferPromotionRenderable$2$1
   implements Runnable
 {
-  public ARTransferPromotionRenderable$2$1(aobl paramaobl, float[] paramArrayOfFloat) {}
+  public ARTransferPromotionRenderable$2$1(apen paramapen, float[] paramArrayOfFloat) {}
   
   public void run()
   {
-    if ((6 == aobk.a(this.jdField_a_of_type_Aobl.a)) && (this.jdField_a_of_type_Aobl.a.b <= 4)) {
-      aobk.a(this.jdField_a_of_type_Aobl.a).native_setARWorldCupQuaternion(this.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_ArrayOfFloat[2], this.jdField_a_of_type_ArrayOfFloat[3]);
+    if ((6 == apem.a(this.jdField_a_of_type_Apen.a)) && (this.jdField_a_of_type_Apen.a.b <= 4)) {
+      apem.a(this.jdField_a_of_type_Apen.a).native_setARWorldCupQuaternion(this.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_ArrayOfFloat[2], this.jdField_a_of_type_ArrayOfFloat[3]);
     }
   }
 }

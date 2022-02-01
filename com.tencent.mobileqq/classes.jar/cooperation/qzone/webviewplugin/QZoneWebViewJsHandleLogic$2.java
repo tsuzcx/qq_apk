@@ -2,14 +2,14 @@ package cooperation.qzone.webviewplugin;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
-import bgve;
+import bifw;
 import cooperation.qzone.share.WXShareFromQZHelper;
 import java.util.Map;
 
 final class QZoneWebViewJsHandleLogic$2
   implements Runnable
 {
-  QZoneWebViewJsHandleLogic$2(bgve parambgve, Map paramMap, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5) {}
+  QZoneWebViewJsHandleLogic$2(bifw parambifw, Map paramMap, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5) {}
   
   public void run()
   {

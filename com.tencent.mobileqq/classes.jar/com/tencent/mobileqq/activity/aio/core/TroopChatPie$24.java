@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.activity.aio.core;
 
 import android.os.Message;
-import avtd;
-import beaw;
-import bfdf;
-import bfdg;
+import awzf;
+import bfhz;
+import bgll;
+import bglm;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
@@ -21,11 +22,11 @@ class TroopChatPie$24
     do
     {
       return;
-      localObject = bfdg.a(this.this$0.app, this.this$0.sessionInfo.curFriendUin);
-    } while ((localObject == null) || (((bfdf)localObject).a.isEmpty()));
-    Object localObject = (avtd)this.this$0.app.getManager(37);
+      localObject = bglm.a(this.this$0.app, this.this$0.sessionInfo.curFriendUin);
+    } while ((localObject == null) || (((bgll)localObject).a.isEmpty()));
+    Object localObject = (awzf)this.this$0.app.getManager(QQManagerFactory.TROOPINFO_MANAGER);
     if (localObject != null) {
-      ((avtd)localObject).a(Long.valueOf(Long.parseLong(this.this$0.sessionInfo.curFriendUin)), true).a();
+      ((awzf)localObject).a(Long.valueOf(Long.parseLong(this.this$0.sessionInfo.curFriendUin)), true).a();
     }
     if (QLog.isColorLevel()) {
       QLog.d(this.this$0.tag, 2, "handleTroopNotificationMsg. sendMessage = MSG_SHOW_TROOP_FEEDS");

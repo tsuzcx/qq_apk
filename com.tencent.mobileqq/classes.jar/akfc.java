@@ -1,36 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.specify.SpecifyGiftView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment;
 
-public class akfc
-  implements View.OnClickListener
+class akfc
+  implements Animation.AnimationListener
 {
-  public akfc(SpecifyGiftView paramSpecifyGiftView, bcrz parambcrz, View.OnClickListener paramOnClickListener) {}
+  akfc(akfb paramakfb, Activity paramActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    SpecifyGiftView.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpecifySpecifyGiftView).a();
-    if (this.jdField_a_of_type_Bcrz != null) {
-      this.jdField_a_of_type_Bcrz.a();
-    }
-    QQAppInterface localQQAppInterface = akgd.a();
-    if (localQQAppInterface != null)
+    if ((this.jdField_a_of_type_Akfb.a.a.getCount() == 1) && (!MiniMsgTabFragment.b(this.jdField_a_of_type_Akfb.a)))
     {
-      beyh localbeyh = (beyh)localQQAppInterface.getManager(223);
-      if (localbeyh != null) {
-        localbeyh.a(SpecifyGiftView.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpecifySpecifyGiftView).frienduin);
-      }
+      paramAnimation = MiniMsgTabFragment.a(this.jdField_a_of_type_Akfb.a);
+      paramAnimation.putExtra("miniAppID", MiniMsgTabFragment.a(this.jdField_a_of_type_Akfb.a));
+      paramAnimation.putExtra("clickID", -1);
+      this.jdField_a_of_type_AndroidAppActivity.setResult(-1, paramAnimation);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
     }
-    akgd.a(localQQAppInterface, "212", "only.animation.close");
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

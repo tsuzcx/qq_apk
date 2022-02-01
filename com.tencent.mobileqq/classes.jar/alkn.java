@@ -1,31 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.recent.guidebanner.NewerGuideBannerView;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class alkn
+public class alkn
   implements DialogInterface.OnClickListener
 {
-  alkn(alkj paramalkj) {}
+  public alkn(NewerGuideBannerView paramNewerGuideBannerView, BaseActivity paramBaseActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NewFriendMoreSysMsgAdapter", 2, "clear click");
-    }
-    if (NetworkUtil.isNetSupport(alkj.a(this.a)))
-    {
-      bcef.b(this.a.a, "dc00898", "", "", "0X800A328", "0X800A328", 2, 0, "", "", "", "");
-      alkj.b(this.a);
-      this.a.a.getMsgHandler().a().f();
-      ((FriendListHandler)this.a.a.getBusinessHandler(1)).deleteAllSuspiciousMsg();
-      return;
-    }
-    QQToast.a(alkj.a(this.a), 2131694073, 0).a();
+    NewerGuideBannerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentGuidebannerNewerGuideBannerView).c(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
   }
 }
 

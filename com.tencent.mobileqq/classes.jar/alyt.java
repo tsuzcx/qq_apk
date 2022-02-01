@@ -1,43 +1,87 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.selectmember.TroopAddFrdsInnerFrame;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import java.util.Comparator;
 
 public class alyt
+  implements Comparator<TroopMemberInfo>
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  private alyt(TroopAddFrdsInnerFrame paramTroopAddFrdsInnerFrame) {}
   
-  public String a()
+  public int a(TroopMemberInfo paramTroopMemberInfo1, TroopMemberInfo paramTroopMemberInfo2)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (this.d == 0) {
-      localStringBuilder.append(this.jdField_a_of_type_Int).append("_").append(this.b).append("_").append(this.c).append("_").append(this.jdField_a_of_type_JavaLangString);
+    int j = 0;
+    int k = 0;
+    int i;
+    if (this.a.f == TroopAddFrdsInnerFrame.e)
+    {
+      i = paramTroopMemberInfo1.addState - paramTroopMemberInfo2.addState;
+      if (i == 0) {
+        if (paramTroopMemberInfo1.commonFrdCnt == -2147483648)
+        {
+          i = 0;
+          if (paramTroopMemberInfo2.commonFrdCnt != -2147483648) {
+            break label189;
+          }
+          j = 0;
+          label56:
+          if ((i != 0) || (j != 0) || (TroopAddFrdsInnerFrame.a(this.a) == null)) {
+            break label257;
+          }
+          if ((!TroopAddFrdsInnerFrame.a(this.a).isTroopAdmin(paramTroopMemberInfo1.memberuin)) && (!TroopAddFrdsInnerFrame.a(this.a).isTroopOwner(paramTroopMemberInfo1.memberuin))) {
+            break label252;
+          }
+          i = 1;
+          label111:
+          if (!TroopAddFrdsInnerFrame.a(this.a).isTroopAdmin(paramTroopMemberInfo2.memberuin))
+          {
+            j = k;
+            if (!TroopAddFrdsInnerFrame.a(this.a).isTroopOwner(paramTroopMemberInfo2.memberuin)) {}
+          }
+          else
+          {
+            j = 1;
+          }
+          j -= i;
+          i = j;
+          if (j == 0) {
+            i = Long.signum(paramTroopMemberInfo2.last_active_time - paramTroopMemberInfo1.last_active_time);
+          }
+        }
+      }
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.CmGameShareDataHandler", 2, new Object[] { "getCacheKey:", localStringBuilder.toString() });
+      return i;
+      i = paramTroopMemberInfo1.commonFrdCnt;
+      break;
+      label189:
+      j = paramTroopMemberInfo2.commonFrdCnt;
+      break label56;
+      return i;
+      i = j;
+      if (this.a.f == TroopAddFrdsInnerFrame.d)
+      {
+        i = j;
+        if (paramTroopMemberInfo1 != null)
+        {
+          i = j;
+          if (paramTroopMemberInfo1.displayedNamePinyinFirst != null)
+          {
+            i = j;
+            if (paramTroopMemberInfo2 != null)
+            {
+              return paramTroopMemberInfo1.displayedNamePinyinFirst.compareToIgnoreCase(paramTroopMemberInfo2.displayedNamePinyinFirst);
+              label252:
+              i = 0;
+              break label111;
+              label257:
+              i = j - i;
+            }
+          }
+        }
       }
-      return localStringBuilder.toString();
-      localStringBuilder.append(this.jdField_a_of_type_Int).append("_").append(this.b).append("_").append(this.d);
     }
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer("GameShareResult{");
-    localStringBuffer.append("mGameId=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", mActivityId=").append(this.b);
-    localStringBuffer.append(", mUin='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", mAIOType=").append(this.c);
-    localStringBuffer.append(", mShareTo=").append(this.d);
-    localStringBuffer.append(", mShareTS=").append(this.jdField_a_of_type_Long);
-    localStringBuffer.append(", mShareRet=").append(this.e);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
   }
 }
 

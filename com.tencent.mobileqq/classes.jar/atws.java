@@ -1,68 +1,28 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.LabelInfo;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.RedInfo;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.TopCardInfo;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.HashMap;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import java.util.List;
-import java.util.Map;
 
 class atws
-  implements AdapterView.OnItemClickListener
+  implements aagw
 {
-  atws(atwr paramatwr) {}
+  atws(atwr paramatwr, boolean paramBoolean, String paramString, short paramShort) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(List<auao> paramList)
   {
-    FeedsItemData.LabelInfo localLabelInfo = (FeedsItemData.LabelInfo)this.a.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$TopCardInfo.labelInfos.get(paramInt);
-    Object localObject = new HashMap();
-    abet.a((Map)localObject, localLabelInfo.msgId);
-    ((Map)localObject).put(Integer.valueOf(6), localLabelInfo.reportId);
-    ((Map)localObject).put(Integer.valueOf(2), localLabelInfo.msgId);
-    if (atzc.a(localLabelInfo.redInfo))
+    if (this.jdField_a_of_type_Atwr.a.jdField_a_of_type_Atxh != null)
     {
-      ((Map)localObject).put(Integer.valueOf(3), "1");
-      ((Map)localObject).put(Integer.valueOf(4), "20");
-      abet.a(alvx.a(), "769", "205614", localLabelInfo.appId, "76903", "1", "160", (Map)localObject);
-      atzc.a(localLabelInfo.redInfo.redPointId);
-      ((atwn)paramView.getTag()).a.setVisibility(8);
-      if (!localLabelInfo.isFriend) {
-        break label301;
+      if ((paramList != null) && (!paramList.isEmpty())) {
+        break label126;
       }
-      new LinearLayout.LayoutParams(-1, -2).gravity = 80;
-      new atzv(this.a.itemView.getContext(), this.a.jdField_a_of_type_Atwa.a().gameAppId, localLabelInfo.friendType).show();
-      abet.a(alvx.a(), "769", "205355", this.a.jdField_a_of_type_Atwa.a().gameAppId, "76902", "1", "160", new String[] { "", "", "20" });
+      this.jdField_a_of_type_Atwr.a.jdField_a_of_type_Atxh.a(-1000L);
     }
-    for (;;)
+    while (paramList != null)
     {
-      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      bdla.b(this.jdField_a_of_type_Atwr.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_files", null, "oper", "pre_arc_suc", 0, 0, "" + this.jdField_a_of_type_Atwr.a.jdField_a_of_type_Atuz.a().TroopUin, "", auea.f(this.jdField_a_of_type_Atwr.a.c()), "1");
       return;
-      ((Map)localObject).put(Integer.valueOf(3), "0");
-      break;
-      label301:
-      if (!TextUtils.isEmpty(localLabelInfo.jumpUrl)) {
-        if (localLabelInfo.jumpUrl.startsWith("mqqapi://miniapp/"))
-        {
-          MiniAppLauncher.startMiniApp(this.a.jdField_a_of_type_AndroidContentContext, localLabelInfo.jumpUrl, 2016, null);
-        }
-        else
-        {
-          localObject = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-          ((Intent)localObject).putExtra("url", localLabelInfo.jumpUrl);
-          this.a.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-        }
-      }
+      label126:
+      this.jdField_a_of_type_Atwr.a.jdField_a_of_type_Atxh.a(paramList, this.jdField_a_of_type_Atwr.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Atwr.a.b, this.jdField_a_of_type_Atwr.a.c, this.jdField_a_of_type_Atwr.a.d, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Short);
     }
+    bdla.b(this.jdField_a_of_type_Atwr.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_files", null, "oper", "pre_arc_fail", 0, 0, "" + this.jdField_a_of_type_Atwr.a.jdField_a_of_type_Atuz.a().TroopUin, "-1", auea.f(this.jdField_a_of_type_Atwr.a.c()), "1");
   }
 }
 

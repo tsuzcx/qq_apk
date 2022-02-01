@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.richmedia.capture.gesture;
 
-import baba;
-import bbvv;
+import bbhj;
+import bdcq;
 import com.tencent.mobileqq.shortvideo.ptvfilter.material.GameplayEngine;
 
 public class GL3DGesture$1
   implements Runnable
 {
-  public GL3DGesture$1(baba parambaba, bbvv parambbvv) {}
+  public GL3DGesture$1(bbhj parambbhj, bdcq parambdcq) {}
   
   public void run()
   {

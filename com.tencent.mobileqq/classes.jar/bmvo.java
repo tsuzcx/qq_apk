@@ -1,8 +1,22 @@
-public abstract interface bmvo
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import dov.com.qq.im.ae.AECMShowCameraUnit.6;
+import dov.com.qq.im.ae.cmshow.AECMShowLoadingView;
+
+public class bmvo
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(float paramFloat, String paramString, int paramInt);
+  public bmvo(AECMShowCameraUnit.6 param6) {}
   
-  public abstract void a(boolean paramBoolean, String paramString);
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
+    bmvk.a(this.a.this$0).setAlpha(paramValueAnimator.floatValue());
+    bmvk.a(this.a.this$0).setAlpha(paramValueAnimator.floatValue() * 255.0F);
+    bmvk.a(this.a.this$0).setAlpha(1.0F - paramValueAnimator.floatValue());
+  }
 }
 
 

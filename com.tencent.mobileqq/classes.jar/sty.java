@@ -1,85 +1,149 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ImageData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.WebFastImageViewCreator.ImageViewHolder.1.1;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
+import java.util.Arrays;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class sty
-  implements URLDrawableDownListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/PlayerVideoInfo;", "", "playType", "", "vid", "", "(ILjava/lang/String;)V", "urls", "", "(ILjava/lang/String;[Ljava/lang/String;)V", "pid", "isPreload", "", "duration", "", "playMode", "keepLastframe", "coverFrame", "hwCodec", "hwBackupUrls", "preloadDuration", "(ILjava/lang/String;[Ljava/lang/String;Ljava/lang/String;ZJLjava/lang/String;ZZZLjava/lang/String;I)V", "getCoverFrame", "()Z", "setCoverFrame", "(Z)V", "getDuration", "()J", "setDuration", "(J)V", "getHwBackupUrls", "()Ljava/lang/String;", "setHwBackupUrls", "(Ljava/lang/String;)V", "getHwCodec", "setHwCodec", "setPreload", "getKeepLastframe", "setKeepLastframe", "getPid", "getPlayMode", "setPlayMode", "getPlayType", "()I", "getPreloadDuration", "setPreloadDuration", "(I)V", "getUrls", "()[Ljava/lang/String;", "[Ljava/lang/String;", "getVid", "component1", "component10", "component11", "component12", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "(ILjava/lang/String;[Ljava/lang/String;Ljava/lang/String;ZJLjava/lang/String;ZZZLjava/lang/String;I)Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/PlayerVideoInfo;", "equals", "other", "hashCode", "toString", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class sty
 {
-  sty(stx paramstx) {}
+  private final int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  @Nullable
+  private final String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  @Nullable
+  private final String[] jdField_a_of_type_ArrayOfJavaLangString;
+  private int jdField_b_of_type_Int;
+  @Nullable
+  private final String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  @Nullable
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean;
+  @Nullable
+  private String jdField_d_of_type_JavaLangString;
+  private boolean jdField_d_of_type_Boolean;
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public sty(int paramInt, @Nullable String paramString)
   {
-    if (paramURLDrawable == null) {
-      return;
-    }
-    QLog.d("Q.readinjoy.fast_web", 2, " onLoadFailed: " + paramURLDrawable.getURL().toString() + " retryCnt: " + stx.a(this.a));
-    paramThrowable = (ImageData)this.a.a;
-    boolean bool = stw.a(paramURLDrawable.getURL().getFile());
-    if (bool) {}
-    for (paramView = stw.a(paramThrowable.jdField_a_of_type_JavaLangString, paramThrowable);; paramView = paramThrowable.jdField_a_of_type_JavaLangString)
-    {
-      paramView = uet.a(paramView, 4);
-      if ((paramView == null) || (!paramView.equals(paramURLDrawable.getURL()))) {
-        break;
-      }
-      if (stx.b(this.a) < 2) {
-        stx.c(this.a);
-      }
-      stx.d(this.a);
-      if ((bool) && (stx.a(this.a) < 3))
-      {
-        paramThrowable.jdField_a_of_type_Boolean = false;
-        ThreadManager.getUIHandler().post(new WebFastImageViewCreator.ImageViewHolder.1.1(this, paramThrowable));
-      }
-      paramView = new HashMap();
-      paramView.put("isSharpP", String.valueOf(bool));
-      paramView.put("url", paramThrowable.jdField_a_of_type_JavaLangString);
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "NativeWebImageUI", false, 0L, 0L, paramView, "", true);
-      return;
-    }
+    this(paramInt, paramString, null);
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public sty(int paramInt, @Nullable String paramString, @Nullable String[] paramArrayOfString)
   {
-    if (paramURLDrawable == null) {
-      return;
-    }
-    ImageData localImageData = (ImageData)this.a.a;
-    boolean bool = stw.a(paramURLDrawable.getURL().getFile());
-    if (bool) {}
-    for (paramView = stw.a(localImageData.jdField_a_of_type_JavaLangString, localImageData);; paramView = localImageData.jdField_a_of_type_JavaLangString)
+    this(paramInt, paramString, paramArrayOfString, null, false, 0L, null, false, false, false, null, 0, 4080, null);
+  }
+  
+  public sty(int paramInt1, @Nullable String paramString1, @Nullable String[] paramArrayOfString, @Nullable String paramString2, boolean paramBoolean1, long paramLong, @Nullable String paramString3, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, @Nullable String paramString4, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.jdField_c_of_type_Boolean = paramBoolean3;
+    this.jdField_d_of_type_Boolean = paramBoolean4;
+    this.jdField_d_of_type_JavaLangString = paramString4;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public final int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public final long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  @Nullable
+  public final String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public final void a(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public final void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public final void a(@Nullable String paramString)
+  {
+    this.jdField_c_of_type_JavaLangString = paramString;
+  }
+  
+  public final void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  @Nullable
+  public final String[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfJavaLangString;
+  }
+  
+  @Nullable
+  public final String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public final void b(@Nullable String paramString)
+  {
+    this.jdField_d_of_type_JavaLangString = paramString;
+  }
+  
+  public final void b(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public final void c(boolean paramBoolean)
+  {
+    this.jdField_c_of_type_Boolean = paramBoolean;
+  }
+  
+  public final void d(boolean paramBoolean)
+  {
+    this.jdField_d_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if (this != paramObject)
     {
-      paramView = uet.a(paramView, 4);
-      if ((paramView == null) || (!paramView.equals(paramURLDrawable.getURL()))) {
-        break;
-      }
-      if ((localImageData.jdField_a_of_type_Int == 0) || (localImageData.b == 0))
+      if ((paramObject instanceof sty))
       {
-        stx.a(this.a, paramURLDrawable);
-        stx.a(this.a).setImageDrawable(paramURLDrawable);
+        paramObject = (sty)paramObject;
+        if ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (!Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) || (!Intrinsics.areEqual(this.jdField_a_of_type_ArrayOfJavaLangString, paramObject.jdField_a_of_type_ArrayOfJavaLangString)) || (!Intrinsics.areEqual(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString)) || (this.jdField_a_of_type_Boolean != paramObject.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long) || (!Intrinsics.areEqual(this.jdField_c_of_type_JavaLangString, paramObject.jdField_c_of_type_JavaLangString)) || (this.jdField_b_of_type_Boolean != paramObject.jdField_b_of_type_Boolean) || (this.jdField_c_of_type_Boolean != paramObject.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean != paramObject.jdField_d_of_type_Boolean) || (!Intrinsics.areEqual(this.jdField_d_of_type_JavaLangString, paramObject.jdField_d_of_type_JavaLangString)) || (this.jdField_b_of_type_Int != paramObject.jdField_b_of_type_Int)) {}
       }
-      paramView = new HashMap();
-      paramView.put("isSharpP", String.valueOf(bool));
-      paramView.put("url", localImageData.jdField_a_of_type_JavaLangString);
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "NativeWebImageUI", true, 0L, 0L, paramView, "", true);
-      return;
     }
+    else {
+      return true;
+    }
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
+  @NotNull
+  public String toString()
+  {
+    return "PlayerVideoInfo(playType=" + this.jdField_a_of_type_Int + ", vid=" + this.jdField_a_of_type_JavaLangString + ", urls=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString) + ", pid=" + this.jdField_b_of_type_JavaLangString + ", isPreload=" + this.jdField_a_of_type_Boolean + ", duration=" + this.jdField_a_of_type_Long + ", playMode=" + this.jdField_c_of_type_JavaLangString + ", keepLastframe=" + this.jdField_b_of_type_Boolean + ", coverFrame=" + this.jdField_c_of_type_Boolean + ", hwCodec=" + this.jdField_d_of_type_Boolean + ", hwBackupUrls=" + this.jdField_d_of_type_JavaLangString + ", preloadDuration=" + this.jdField_b_of_type_Int + ")";
   }
 }
 

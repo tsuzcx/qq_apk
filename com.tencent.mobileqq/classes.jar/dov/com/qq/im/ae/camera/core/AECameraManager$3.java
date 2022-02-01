@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.camera.core;
 
-import aktu;
+import alrq;
 import com.tencent.mobileqq.qmcf.QmcfManager;
 
 class AECameraManager$3
@@ -12,14 +12,14 @@ class AECameraManager$3
   {
     boolean bool = true;
     AECameraManager.access$100(this.this$0, false);
-    aktu localaktu;
+    alrq localalrq;
     if (AECameraManager.access$200(this.this$0) == 1)
     {
       AECameraManager.access$202(this.this$0, 2);
-      akrw.a = AECameraManager.access$200(this.this$0);
+      alps.a = AECameraManager.access$200(this.this$0);
       if (AECameraManager.access$300(this.this$0) != null)
       {
-        localaktu = AECameraManager.access$300(this.this$0);
+        localalrq = AECameraManager.access$300(this.this$0);
         if (AECameraManager.access$200(this.this$0) != 1) {
           break label120;
         }
@@ -27,7 +27,7 @@ class AECameraManager$3
     }
     for (;;)
     {
-      localaktu.a(bool);
+      localalrq.a(bool);
       AECameraManager.access$402(this.this$0, false);
       QmcfManager.getInstance().setCameraMode(AECameraManager.access$200(this.this$0));
       AECameraManager.access$000(this.this$0, this.val$cameraOpenCallback);

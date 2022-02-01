@@ -1,6 +1,16 @@
-public abstract interface bmpl
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+
+class bmpl
+  implements View.OnTouchListener
 {
-  public abstract void a(bmod parambmod, boolean paramBoolean, int paramInt);
+  bmpl(bmpj parambmpj) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return paramMotionEvent.getAction() == 2;
+  }
 }
 
 

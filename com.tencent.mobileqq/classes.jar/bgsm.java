@@ -1,31 +1,30 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
+import org.json.JSONObject;
 
 public class bgsm
-  extends BroadcastReceiver
+  implements bdyy
 {
-  public bgsm(WebProcessManager paramWebProcessManager) {}
+  public bgsm(TroopInteractGiftAnimationController.1.1 param1, int paramInt1, int paramInt2, String paramString, JSONObject paramJSONObject) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    int i = paramIntent.getIntExtra("user_type", 0);
-    int j = paramIntent.getIntExtra("from_type", 0);
-    paramContext = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramContext instanceof QQAppInterface))
-    {
-      paramContext = (amoa)((QQAppInterface)paramContext).getBusinessHandler(53);
-      if (paramContext != null) {
-        paramContext.a(i, j);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("WebProcessManager", 2, "babyq receiver recv user_type=" + i + ", from_type=" + j);
-      }
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView == null) {
+      return;
     }
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.playTotalMicroseconds / 1000L > this.jdField_a_of_type_Int + this.b)
+    {
+      String str = this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_OrgJsonJSONObject.optString("videoPath", "3.mp4");
+      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView.a(str, new bgsn(this));
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_Bdyy != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_Bdyy.a();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.jdField_a_of_type_Int, true);
   }
 }
 

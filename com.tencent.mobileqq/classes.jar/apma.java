@@ -1,26 +1,33 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
-public class apma
-  implements aplr
+class apma
+  implements apmv
 {
-  private QQAppInterface a()
+  apma(aply paramaply, apmc paramapmc, ArCloudConfigInfo paramArCloudConfigInfo) {}
+  
+  public void a()
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-      return (QQAppInterface)localAppRuntime;
+    if (this.jdField_a_of_type_Apmc != null) {
+      this.jdField_a_of_type_Apmc.e();
     }
-    return null;
   }
   
-  public void launch(Context paramContext, ColorNote paramColorNote)
+  public void a(int paramInt)
   {
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface != null) {
-      ((ahro)localQQAppInterface.getManager(365)).a(paramContext, paramColorNote);
+    if (this.jdField_a_of_type_Apmc != null) {
+      this.jdField_a_of_type_Apmc.b(paramInt);
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Apmc != null) {}
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Apmc != null) {
+      this.jdField_a_of_type_Apmc.b(paramBoolean, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
     }
   }
 }

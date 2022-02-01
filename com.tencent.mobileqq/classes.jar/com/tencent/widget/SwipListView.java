@@ -12,9 +12,9 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.ListAdapter;
 import android.widget.Scroller;
-import bjts;
-import bjtt;
-import bjtu;
+import blfe;
+import blff;
+import blfg;
 
 public class SwipListView
   extends XListView
@@ -26,8 +26,8 @@ public class SwipListView
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private View jdField_a_of_type_AndroidViewView;
   private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private bjts jdField_a_of_type_Bjts;
-  private bjtu jdField_a_of_type_Bjtu;
+  private blfe jdField_a_of_type_Blfe;
+  private blfg jdField_a_of_type_Blfg;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private View jdField_b_of_type_AndroidViewView;
@@ -52,7 +52,7 @@ public class SwipListView
   public SwipListView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext, new bjtt());
+    this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext, new blff());
     paramContext = ViewConfiguration.get(getContext());
     this.g = paramContext.getScaledTouchSlop();
     this.e = (paramContext.getScaledMinimumFlingVelocity() * 4);
@@ -177,8 +177,8 @@ public class SwipListView
     if (paramView != null) {}
     for (int i = paramView.getScrollX();; i = 0)
     {
-      if (this.jdField_a_of_type_Bjtu != null) {
-        this.jdField_a_of_type_Bjtu.a_(null);
+      if (this.jdField_a_of_type_Blfg != null) {
+        this.jdField_a_of_type_Blfg.a_(null);
       }
       if (i != 0) {
         if (!(paramView.getTag(-3) instanceof Integer)) {
@@ -199,8 +199,8 @@ public class SwipListView
         do
         {
           return;
-        } while (this.jdField_a_of_type_Bjts == null);
-        this.jdField_a_of_type_Bjts.b(paramView);
+        } while (this.jdField_a_of_type_Blfe == null);
+        this.jdField_a_of_type_Blfe.b(paramView);
         return;
       }
     }
@@ -222,8 +222,8 @@ public class SwipListView
     {
       j = paramView.getScrollX();
       i = j;
-      if (this.jdField_a_of_type_Bjtu != null) {
-        this.jdField_a_of_type_Bjtu.a_(paramView);
+      if (this.jdField_a_of_type_Blfg != null) {
+        this.jdField_a_of_type_Blfg.a_(paramView);
       }
     }
     for (int i = j;; i = 0)
@@ -245,12 +245,12 @@ public class SwipListView
           this.jdField_a_of_type_AndroidWidgetScroller.startScroll(i, 0, k, 0, a(j, k));
           this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
         }
-        while (this.jdField_a_of_type_Bjts == null)
+        while (this.jdField_a_of_type_Blfe == null)
         {
           int k;
           return;
         }
-        this.jdField_a_of_type_Bjts.a(paramView);
+        this.jdField_a_of_type_Blfe.a(paramView);
         return;
       }
     }
@@ -285,8 +285,8 @@ public class SwipListView
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
         return true;
       }
-      if (this.jdField_a_of_type_Bjts != null) {
-        this.jdField_a_of_type_Bjts.a(this.jdField_c_of_type_AndroidViewView);
+      if ((this.jdField_a_of_type_Blfe != null) && (this.jdField_c_of_type_AndroidViewView != null)) {
+        this.jdField_a_of_type_Blfe.a(this.jdField_c_of_type_AndroidViewView);
       }
       this.jdField_c_of_type_AndroidViewView = null;
       return true;
@@ -302,13 +302,13 @@ public class SwipListView
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
         return true;
       }
-      if (this.jdField_a_of_type_Bjts != null) {
-        this.jdField_a_of_type_Bjts.b(this.jdField_c_of_type_AndroidViewView);
+      if ((this.jdField_a_of_type_Blfe != null) && (this.jdField_c_of_type_AndroidViewView != null)) {
+        this.jdField_a_of_type_Blfe.b(this.jdField_c_of_type_AndroidViewView);
       }
       this.jdField_c_of_type_AndroidViewView = null;
       return true;
-    } while (this.jdField_a_of_type_Bjtu == null);
-    this.jdField_a_of_type_Bjtu.f();
+    } while (this.jdField_a_of_type_Blfg == null);
+    this.jdField_a_of_type_Blfg.g();
     return true;
   }
   
@@ -332,8 +332,8 @@ public class SwipListView
       label75:
       if ((k == 0) && (this.jdField_b_of_type_Boolean))
       {
-        if (this.jdField_a_of_type_Bjtu != null) {
-          this.jdField_a_of_type_Bjtu.e(true);
+        if (this.jdField_a_of_type_Blfg != null) {
+          this.jdField_a_of_type_Blfg.e(true);
         }
         b();
       }
@@ -347,8 +347,8 @@ public class SwipListView
       }
       return super.onInterceptTouchEvent(paramMotionEvent);
       this.jdField_a_of_type_Byte = 0;
-      if (this.jdField_a_of_type_Bjtu != null) {
-        this.jdField_a_of_type_Bjtu.a_(null);
+      if (this.jdField_a_of_type_Blfg != null) {
+        this.jdField_a_of_type_Blfg.a_(null);
       }
       this.jdField_a_of_type_Int = j;
       this.jdField_c_of_type_Int = j;
@@ -429,8 +429,8 @@ public class SwipListView
       this.jdField_b_of_type_Int = -1;
       this.d = -1;
       break label72;
-      if (((k == 1) || (k == 3)) && (this.jdField_a_of_type_Bjtu != null)) {
-        this.jdField_a_of_type_Bjtu.e(false);
+      if (((k == 1) || (k == 3)) && (this.jdField_a_of_type_Blfg != null)) {
+        this.jdField_a_of_type_Blfg.e(false);
       }
     }
   }
@@ -458,8 +458,8 @@ public class SwipListView
       {
         if ((k == 0) && (this.jdField_b_of_type_Boolean))
         {
-          if (this.jdField_a_of_type_Bjtu != null) {
-            this.jdField_a_of_type_Bjtu.e(true);
+          if (this.jdField_a_of_type_Blfg != null) {
+            this.jdField_a_of_type_Blfg.e(true);
           }
           label112:
           bool2 = bool1;
@@ -573,10 +573,10 @@ public class SwipListView
                 a();
                 bool1 = true;
                 continue;
-                if (((k != 1) && (k != 3)) || (this.jdField_a_of_type_Bjtu == null)) {
+                if (((k != 1) && (k != 3)) || (this.jdField_a_of_type_Blfg == null)) {
                   break label112;
                 }
-                this.jdField_a_of_type_Bjtu.e(false);
+                this.jdField_a_of_type_Blfg.e(false);
                 break label112;
               }
               bool1 = false;
@@ -594,8 +594,8 @@ public class SwipListView
   public void setAdapter(ListAdapter paramListAdapter)
   {
     super.setAdapter(paramListAdapter);
-    if ((paramListAdapter instanceof bjtu)) {
-      this.jdField_a_of_type_Bjtu = ((bjtu)paramListAdapter);
+    if ((paramListAdapter instanceof blfg)) {
+      this.jdField_a_of_type_Blfg = ((blfg)paramListAdapter);
     }
   }
   
@@ -607,14 +607,14 @@ public class SwipListView
     }
   }
   
-  public void setRightIconMenuListener(bjts parambjts)
+  public void setRightIconMenuListener(blfe paramblfe)
   {
-    this.jdField_a_of_type_Bjts = parambjts;
+    this.jdField_a_of_type_Blfe = paramblfe;
   }
   
-  public void setSwipListListener(bjtu parambjtu)
+  public void setSwipListListener(blfg paramblfg)
   {
-    this.jdField_a_of_type_Bjtu = parambjtu;
+    this.jdField_a_of_type_Blfg = paramblfg;
   }
   
   public void t()

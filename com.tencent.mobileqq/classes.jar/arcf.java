@@ -1,56 +1,96 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.data.VipComicFavorEmoStructMsgInfo;
-import com.tencent.mobileqq.emosm.favroaming.IPicDownloadListener;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.utils.SecUtil;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
-class arcf
-  extends bgod
+public class arcf
+  extends aqwt<arcd>
 {
-  arcf(arce paramarce, File paramFile, CustomEmotionData paramCustomEmotionData, arba paramarba, List paramList1, IPicDownloadListener paramIPicDownloadListener, List paramList2, EntityManager paramEntityManager, VipComicFavorEmoStructMsgInfo paramVipComicFavorEmoStructMsgInfo, AtomicInteger paramAtomicInteger1, AtomicInteger paramAtomicInteger2) {}
-  
-  public void onDone(bgoe parambgoe)
+  @NonNull
+  public static arcd a()
   {
-    super.onDone(parambgoe);
-    if ((parambgoe.a() == 3) && (parambgoe.a == 0) && (this.jdField_a_of_type_JavaIoFile.exists()))
+    arcd localarcd2 = (arcd)aqxe.a().a(458);
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendContactGuideConfProcessor", 2, "loadConfig bean: " + localarcd2);
+    }
+    arcd localarcd1 = localarcd2;
+    if (localarcd2 == null) {
+      localarcd1 = new arcd();
+    }
+    return localarcd1;
+  }
+  
+  @NonNull
+  public arcd a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendContactGuideConfProcessor", 2, "migrateOldOrDefaultContent " + paramInt);
+    }
+    return new arcd();
+  }
+  
+  @Nullable
+  public arcd a(aqxa[] paramArrayOfaqxa)
+  {
+    return arcd.a(paramArrayOfaqxa);
+  }
+  
+  public void a(arcd paramarcd)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendContactGuideConfProcessor", 2, "onUpdate " + paramarcd.toString());
+    }
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath = this.jdField_a_of_type_JavaIoFile.getAbsolutePath();
-      if ("needDownload".equals(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.RomaingType)) {
-        this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.RomaingType = "isUpdate";
-      }
-      if ((QLog.isColorLevel()) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath)))
+      localObject = (QQAppInterface)localObject;
+      if (((QQAppInterface)localObject).isCreateManager(QQManagerFactory.NEW_FRIEND_MANAGER))
       {
-        parambgoe = SecUtil.getFileMd5(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath);
-        if (!this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5.equals(parambgoe)) {
-          QLog.i("VipComicMqqManager", 2, "init = " + this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5 + " , compute = " + parambgoe);
+        ((aizi)((QQAppInterface)localObject).getManager(QQManagerFactory.NEW_FRIEND_MANAGER)).a = paramarcd;
+        if (QLog.isColorLevel()) {
+          QLog.d("NewFriendContactGuideConfProcessor", 2, "onUpdate bean");
         }
       }
-      this.jdField_a_of_type_Arba.b(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      arce.a(this.jdField_a_of_type_Arce, this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener, this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData, true);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-      if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()) && (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener.onDone(this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList);
-      }
-      return;
-      this.jdField_b_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      this.jdField_a_of_type_Arba.a(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(this.jdField_a_of_type_ComTencentMobileqqDataVipComicFavorEmoStructMsgInfo);
-      arce.a(this.jdField_a_of_type_Arce, this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener, this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData, false);
+  }
+  
+  public Class<arcd> clazz()
+  {
+    return arcd.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendContactGuideConfProcessor", 2, "onReqFailed " + paramInt);
     }
+  }
+  
+  public int type()
+  {
+    return 458;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arcf
  * JD-Core Version:    0.7.0.1
  */

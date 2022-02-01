@@ -1,60 +1,72 @@
-import com.tencent.mobileqq.apollo.GLTextureView;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.AppRuntime;
 
 public class alqj
-  extends alqi
+  implements SeekBar.OnSeekBarChangeListener
 {
-  protected int a;
-  protected int b;
-  private int[] jdField_b_of_type_ArrayOfInt = new int[1];
-  protected int c;
-  protected int d;
-  protected int e;
-  protected int f;
+  public alqj(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public alqj(GLTextureView paramGLTextureView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    super(paramGLTextureView, new int[] { 12324, paramInt1, 12323, paramInt2, 12322, paramInt3, 12321, paramInt4, 12325, paramInt5, 12326, paramInt6, 12344 });
-    this.a = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
-    this.e = paramInt5;
-    this.f = paramInt6;
-  }
-  
-  private int a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, int paramInt1, int paramInt2)
-  {
-    if (paramEGL10.eglGetConfigAttrib(paramEGLDisplay, paramEGLConfig, paramInt1, this.jdField_b_of_type_ArrayOfInt)) {
-      paramInt2 = this.jdField_b_of_type_ArrayOfInt[0];
+    this.a.c = paramInt;
+    if (paramBoolean) {
+      NewFlowCameraActivity.a(this.a, this.a.c, false);
     }
-    return paramInt2;
-  }
-  
-  public EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig)
-  {
-    int j = paramArrayOfEGLConfig.length;
-    int i = 0;
-    while (i < j)
+    float f = this.a.c / 100.0F;
+    if (f != this.a.jdField_a_of_type_Float)
     {
-      EGLConfig localEGLConfig = paramArrayOfEGLConfig[i];
-      int k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12325, 0);
-      int m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12326, 0);
-      if ((k >= this.e) && (m >= this.f))
-      {
-        k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12324, 0);
-        m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12323, 0);
-        int n = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12322, 0);
-        int i1 = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12321, 0);
-        if ((k == this.a) && (m == this.jdField_b_of_type_Int) && (n == this.c) && (i1 == this.d)) {
-          return localEGLConfig;
-        }
+      this.a.jdField_a_of_type_Float = f;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout.a(false, this.a.jdField_a_of_type_Float, this.a.c);
       }
-      i += 1;
     }
-    return null;
+    if (paramBoolean) {
+      NewFlowCameraActivity.a(this.a).setContentDescription(anvx.a(2131706943) + this.a.c + "%");
+    }
+  }
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    if (this.a.jdField_a_of_type_Bkyc != null) {
+      this.a.jdField_a_of_type_Bkyc.removeMessages(1011);
+    }
+    if (this.a.e != null) {
+      this.a.e.setVisibility(0);
+    }
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    if (this.a.jdField_a_of_type_Float >= 0.0F)
+    {
+      SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("beauty_setting", 0);
+      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      localSharedPreferences.edit().putFloat("beauty_radius" + str, this.a.jdField_a_of_type_Float);
+      localSharedPreferences.edit().putFloat("beauty_whitenmag" + str, this.a.jdField_a_of_type_Float);
+      localSharedPreferences.edit().putInt("beauty_level" + str, paramSeekBar.getProgress());
+      localSharedPreferences.edit().commit();
+      if (QLog.isColorLevel()) {
+        QLog.d("beauty", 2, "onStopTrackingTouch mBeautyValue" + this.a.jdField_a_of_type_Float + " mBeautyProcess=" + paramSeekBar.getProgress());
+      }
+      if (this.a.jdField_a_of_type_Bkyc != null)
+      {
+        this.a.jdField_a_of_type_Bkyc.removeMessages(1011);
+        this.a.jdField_a_of_type_Bkyc.sendEmptyMessageDelayed(1011, NewFlowCameraActivity.jdField_a_of_type_Long);
+      }
+      if (this.a.e != null) {
+        this.a.e.setVisibility(4);
+      }
+    }
+    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
 }
 

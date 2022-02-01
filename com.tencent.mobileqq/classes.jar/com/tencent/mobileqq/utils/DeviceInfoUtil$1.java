@@ -3,8 +3,8 @@ package com.tencent.mobileqq.utils;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build;
-import bjms;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.QQDeviceInfo;
 import java.net.URLEncoder;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -36,7 +36,7 @@ final class DeviceInfoUtil$1
         ((JSONObject)localObject2).put("pid", "1");
         ((JSONObject)localObject2).put("device", URLEncoder.encode(Build.MODEL, "UTF-8"));
         ((JSONObject)localObject2).put("version", "1.0.0");
-        ((JSONObject)localObject2).put("uin", bjms.a("a4bd32"));
+        ((JSONObject)localObject2).put("uin", QQDeviceInfo.getIMEI("a4bd32"));
         ((JSONObject)localObject2).put("userSwitch", "0");
         ((JSONObject)localObject2).put("lastSwitch", "0");
         if (QLog.isColorLevel())

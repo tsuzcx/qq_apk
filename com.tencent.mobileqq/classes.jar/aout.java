@@ -1,12 +1,34 @@
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+
 public class aout
+  extends aoui
 {
-  public void a(aouv paramaouv, Object paramObject) {}
-  
-  public void a(boolean paramBoolean, long paramLong, byte[] paramArrayOfByte) {}
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, Object paramObject) {}
-  
-  public void b(boolean paramBoolean, long paramLong, byte[] paramArrayOfByte) {}
+  public aouc a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoul paramaoul)
+  {
+    paramQQAppInterface = new aous(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "od";
+    paramQQAppInterface.c = "openroom";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
+    }
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
+    {
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
+    }
+    return paramQQAppInterface;
+  }
 }
 
 

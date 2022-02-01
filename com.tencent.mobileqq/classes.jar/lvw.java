@@ -1,23 +1,75 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.AVRedPacketConfig.ExpressionInfo;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class lvw
-  implements Parcelable.Creator<AVRedPacketConfig.ExpressionInfo>
+public class lvw
 {
-  public AVRedPacketConfig.ExpressionInfo a(Parcel paramParcel)
+  private static msv a;
+  
+  public static void a(VideoAppInterface paramVideoAppInterface, int paramInt, String paramString)
   {
-    return new AVRedPacketConfig.ExpressionInfo(paramParcel);
+    if (QLog.isColorLevel()) {
+      QLog.d("AVPushReport", 2, "onAvReportPush : rspType = " + paramInt + ",rspBody = " + paramString);
+    }
+    if (a != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AVPushReport", 2, "ReportTask is running.");
+      }
+      return;
+    }
+    String str;
+    if (a()) {
+      str = "https://play.mobile.qq.com/avreport_test/cgi-bin/report";
+    }
+    try
+    {
+      for (;;)
+      {
+        paramString = new JSONObject(paramString).optJSONObject("attach");
+        JSONObject localJSONObject = new JSONObject();
+        try
+        {
+          localJSONObject.put("uin", paramVideoAppInterface.getLongAccountUin());
+          localJSONObject.put("skey", paramVideoAppInterface.b());
+          localJSONObject.put("qqversion", "8.4.10");
+          localJSONObject.put("time", System.currentTimeMillis());
+          if (paramString != null) {
+            localJSONObject.put("attach", paramString);
+          }
+        }
+        catch (JSONException paramVideoAppInterface)
+        {
+          for (;;)
+          {
+            paramVideoAppInterface.printStackTrace();
+          }
+        }
+        a = new lvx(str, localJSONObject.toString(), null);
+        a.execute(new Void[0]);
+        return;
+        str = "https://play.mobile.qq.com/avreport/cgi-bin/report";
+      }
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+        paramString = null;
+      }
+    }
   }
   
-  public AVRedPacketConfig.ExpressionInfo[] a(int paramInt)
+  public static boolean a()
   {
-    return new AVRedPacketConfig.ExpressionInfo[paramInt];
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lvw
  * JD-Core Version:    0.7.0.1
  */

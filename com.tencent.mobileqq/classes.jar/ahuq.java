@@ -1,29 +1,18 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-import com.tencent.mobileqq.activity.bless.BlessActivity.7.1;
-import com.tencent.mobileqq.widget.QQVideoView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.util.WeakReference;
 
-public class ahuq
-  implements MediaPlayer.OnPreparedListener
+class ahuq
+  implements View.OnClickListener
 {
-  public ahuq(BlessActivity paramBlessActivity) {}
+  ahuq(ahup paramahup, int paramInt) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a), 2, "videoview onPrepared");
-    }
-    if (BlessActivity.a(this.a) != null) {
-      BlessActivity.a(this.a).start();
-    }
-    BlessActivity.a(this.a).postDelayed(new BlessActivity.7.1(this), 800L);
-    if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a), 2, "videoview onPrepared");
-    }
-    bcef.b(this.a.app, "CliOper", "", "", "0X800632D", "0X800632D", 0, 0, "", "", "", "");
+    ((PhotoListPanel)this.jdField_a_of_type_Ahup.a.get()).a(paramView, this.jdField_a_of_type_Int);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

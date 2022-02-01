@@ -1,18 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.graphics.Rect;
+import java.net.URL;
 
-class ahfi
-  implements DialogInterface.OnClickListener
+public class ahfi
 {
-  ahfi(ahff paramahff) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    FileUtils.deleteFile(this.a.b);
-    this.a.b = "";
-  }
+  float jdField_a_of_type_Float;
+  int jdField_a_of_type_Int;
+  Rect jdField_a_of_type_AndroidGraphicsRect;
+  URL jdField_a_of_type_JavaNetURL;
+  boolean jdField_a_of_type_Boolean;
+  float jdField_b_of_type_Float;
+  int jdField_b_of_type_Int;
 }
 
 

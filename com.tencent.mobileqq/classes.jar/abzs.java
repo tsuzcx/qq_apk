@@ -1,32 +1,22 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0x11c.MsgBody;
+import android.os.Looper;
+import com.tencent.ad.tangram.offline.AdOfflineAdapter;
 
-public class abzs
-  implements abzb
+public final class abzs
+  implements AdOfflineAdapter
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
+  public String getAppVersion()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "OnLinePushMessageProcessor receive 0x11c push message ");
-    }
-    MsgBody localMsgBody = new MsgBody();
-    try
-    {
-      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-      ((bboi)paramQQAppInterface.getManager(12)).a(localMsgBody);
-      return;
-    }
-    catch (Exception paramQQAppInterface) {}
+    return achs.a();
   }
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public String getVersionIfExists(String paramString)
   {
-    a(paramabxc.a(), paramMsgType0x210);
-    return null;
+    if (Looper.myLooper() == Looper.getMainLooper())
+    {
+      acho.d("GdtOfflineAdapter", "getVersionIfExists error");
+      return null;
+    }
+    return nuz.a(paramString);
   }
 }
 

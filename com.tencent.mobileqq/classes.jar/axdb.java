@@ -1,11 +1,10 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
 
-public class axdb
+class axdb
   implements DialogInterface.OnClickListener
 {
-  public axdb(NearbyProfileFragment paramNearbyProfileFragment) {}
+  axdb(axcx paramaxcx) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {

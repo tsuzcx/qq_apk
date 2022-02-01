@@ -3,12 +3,12 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aqqm;
+import artx;
 
 public class IPSiteModel$GameRich
   implements Parcelable
 {
-  public static final Parcelable.Creator<GameRich> CREATOR = new aqqm();
+  public static final Parcelable.Creator<GameRich> CREATOR = new artx();
   public String anchorFaceUrl;
   public String anchorId;
   public String anchorName;
@@ -53,7 +53,7 @@ public class IPSiteModel$GameRich
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.IPSiteModel.GameRich
  * JD-Core Version:    0.7.0.1
  */

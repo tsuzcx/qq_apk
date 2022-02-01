@@ -1,68 +1,93 @@
+import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-class xht
-  implements vqp<wdu, wdv>
+public class xht
+  extends SimpleJob<Object>
 {
-  xht(xhs paramxhs) {}
-  
-  public void a(@NonNull wdu paramwdu, @Nullable wdv arg2, @NonNull ErrorMessage paramErrorMessage)
+  public xht(VideoViewVideoHolder paramVideoViewVideoHolder, String paramString1, boolean paramBoolean1, int paramInt1, Long paramLong, boolean paramBoolean2, int paramInt2, int paramInt3, int paramInt4, String paramString2, String paramString3, int paramInt5, int paramInt6, int paramInt7, xjz paramxjz, long paramLong1, String paramString4, String paramString5)
   {
-    xvv.a("Q.qqstory.home.data:VideoListPageLoader", "get video list with home pb return:%s", paramErrorMessage.toString());
-    if (xhs.a(this.a))
+    super(paramString1);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    int i = 0;
+    paramJobContext = "0";
+    int j;
+    if (this.jdField_a_of_type_Boolean)
     {
-      xvv.c("Q.qqstory.home.data:VideoListPageLoader", "don't nothing after terminate");
-      return;
+      j = 200;
+      i = this.jdField_a_of_type_Int;
+      paramVarArgs = String.valueOf(i) + "*";
+      paramJobContext = paramVarArgs;
+      i = j;
+      if (this.jdField_a_of_type_JavaLangLong != null)
+      {
+        paramJobContext = paramVarArgs + String.valueOf(SystemClock.uptimeMillis() - this.jdField_a_of_type_JavaLangLong.longValue());
+        i = j;
+      }
+      if ((i != 0) && (i != 7) && ((i != 200) || (this.jdField_a_of_type_Int < 6) || (this.jdField_a_of_type_Int > 10))) {
+        break label509;
+      }
+      if (this.jdField_d_of_type_Int != 1) {
+        break label503;
+      }
+      paramVarArgs = "1";
+      label138:
+      if ((!TextUtils.equals(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString)) || (i == 0)) {
+        break label532;
+      }
+      ykq.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "reportDevPlayerDone, errorCode=%d, suError=%s => treat as success => 300", new Object[] { Integer.valueOf(i), paramJobContext });
+      j = 300;
+      String str = String.valueOf(i) + "*";
+      paramJobContext = str + paramJobContext;
     }
-    paramwdu = new xhv(paramErrorMessage, xhs.a(this.a));
-    paramwdu.d = this.a.jdField_a_of_type_Boolean;
-    if ((??? == null) || (paramErrorMessage.isFail()) || (???.jdField_a_of_type_JavaUtilList.size() == 0))
+    for (;;)
     {
-      xvv.a("Q.qqstory.home.data:VideoListPageLoader", "get video list with home pb fail feedId:%s", xhs.a(this.a));
-      xhs.a(this.a, paramwdu);
-      return;
-    }
-    ??? = (xpe)???.jdField_a_of_type_JavaUtilList.get(0);
-    if (!(??? instanceof xpg))
-    {
-      paramwdu.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(940001, amtj.a(2131715322));
-      xhs.a(this.a, paramwdu);
-      yos.a(???.a().toString() + " is not a video feed", new Object[0]);
-      return;
-    }
-    ??? = (xpg)???;
-    xhs.a(this.a, ???.a().mVideoNextCookie);
-    xhs.a(this.a, ???.a().mVideoPullType);
-    xhs.b(this.a, ???.a().mVideoSeq);
-    paramwdu.jdField_a_of_type_Boolean = ???.a().mIsVideoEnd;
-    paramwdu.jdField_a_of_type_JavaUtilList = ???.a();
-    paramwdu.c = true;
-    if ((!paramwdu.jdField_a_of_type_Boolean) && (TextUtils.isEmpty(xhs.b(this.a)))) {
-      paramwdu.jdField_a_of_type_Boolean = true;
-    }
-    paramwdu.b = ???.a().getOwner().getUnionId();
-    paramwdu.jdField_a_of_type_JavaUtilList = ((xnp)vux.a(11)).a(xhs.a(this.a), paramwdu.jdField_a_of_type_JavaUtilList, paramwdu.c);
-    paramwdu.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo = new FeedVideoInfo(xhs.a(this.a), xhs.b(this.a), xhs.a(this.a), xhs.b(this.a), paramwdu.jdField_a_of_type_Boolean);
-    ??? = new ArrayList(paramwdu.jdField_a_of_type_JavaUtilList.size());
-    paramErrorMessage = paramwdu.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramErrorMessage.hasNext()) {
-      ???.add(((StoryVideoItem)paramErrorMessage.next()).mVid);
-    }
-    wcj.a(???);
-    synchronized (this.a)
-    {
-      this.a.b = true;
-      xhs.a(this.a, paramwdu);
-      return;
+      ykv.b("play_video", "play_result", this.e, j, new String[] { paramJobContext, paramVarArgs, ykv.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()), this.jdField_b_of_type_JavaLangString });
+      ykv.b("play_video", "play_buffering", this.e, j, new String[] { String.valueOf(this.f), String.valueOf(this.g), ykv.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()), this.jdField_b_of_type_JavaLangString });
+      if (this.jdField_a_of_type_Xjz.jdField_a_of_type_Long > 0L) {
+        ykv.b("play_video", "play_bitRate", this.e, j, new String[] { paramJobContext, this.jdField_a_of_type_Xjz.toString(), ykv.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()), this.jdField_b_of_type_JavaLangString });
+      }
+      if (this.jdField_a_of_type_Boolean) {
+        i = 1;
+      }
+      for (;;)
+      {
+        if (i != 0)
+        {
+          long l = 0L;
+          if (this.jdField_a_of_type_Long != 0L) {
+            l = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
+          }
+          ykv.b("sdk_download_video", "video_download_error", this.e, j, new String[] { this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString, String.valueOf(i), String.valueOf(l) });
+        }
+        return null;
+        if (!this.jdField_b_of_type_Boolean) {
+          break;
+        }
+        i = this.jdField_b_of_type_Int;
+        paramJobContext = String.valueOf(this.jdField_c_of_type_Int);
+        break;
+        label503:
+        paramVarArgs = "2";
+        break label138;
+        label509:
+        paramVarArgs = "0";
+        break label138;
+        if (this.jdField_b_of_type_Boolean) {
+          i = 2;
+        } else {
+          i = 0;
+        }
+      }
+      label532:
+      j = i;
     }
   }
 }

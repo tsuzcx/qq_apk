@@ -1,81 +1,118 @@
-import android.app.Activity;
 import android.view.View;
-import android.view.Window;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDisLikeDialogView;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.VersionUtils;
-import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.VideoInfo;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class sir
-  extends sif
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/VideoFeedsGuideProxy;", "", "()V", "columnGuideManager", "Lcom/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnGuideManager;", "getColumnGuideManager", "()Lcom/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnGuideManager;", "setColumnGuideManager", "(Lcom/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnGuideManager;)V", "hasShowVideoColumnGuide", "", "userGuideController", "Lcom/tencent/biz/pubaccount/readinjoy/video/VideofeedsUserGuideController;", "getUserGuideController", "()Lcom/tencent/biz/pubaccount/readinjoy/video/VideofeedsUserGuideController;", "setUserGuideController", "(Lcom/tencent/biz/pubaccount/readinjoy/video/VideofeedsUserGuideController;)V", "dismissGuideAnim", "", "getPlayPercent", "", "currentTs", "", "playParam", "Lcom/tencent/biz/pubaccount/readinjoy/video/VideoFeedsPlayManager$VideoPlayParam;", "hideUserGuide", "needShowVideoColumnGuide", "onVideoProgressChange", "rootView", "Landroid/view/View;", "videoRootView", "setFullScreen", "fullScreen", "setNeedUserGuide", "needGuide", "showUserGuide", "videoInfo", "Lcom/tencent/biz/pubaccount/VideoInfo;", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class sir
 {
-  sir(sig paramsig) {}
+  public static final sis a;
+  @Nullable
+  private src jdField_a_of_type_Src;
+  @Nullable
+  private srv jdField_a_of_type_Srv;
+  private boolean jdField_a_of_type_Boolean;
   
-  private void a(BaseArticleInfo paramBaseArticleInfo, JSONObject paramJSONObject)
+  static
   {
-    try
+    jdField_a_of_type_Sis = new sis(null);
+  }
+  
+  private final float a(long paramLong, skq paramskq)
+  {
+    paramskq = paramskq.jdField_a_of_type_Spn;
+    if (paramskq != null) {}
+    for (long l = paramskq.b();; l = 0L) {
+      return (float)paramLong * 100.0F / (float)l;
+    }
+  }
+  
+  private final boolean a(long paramLong, skq paramskq)
+  {
+    return (stw.a.a()) && (!this.jdField_a_of_type_Boolean) && (a(paramLong, paramskq) >= 20) && (paramskq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a != null);
+  }
+  
+  public final void a()
+  {
+    src localsrc = this.jdField_a_of_type_Src;
+    if (localsrc != null) {
+      localsrc.a();
+    }
+  }
+  
+  public final void a(@NotNull VideoInfo paramVideoInfo)
+  {
+    Intrinsics.checkParameterIsNotNull(paramVideoInfo, "videoInfo");
+    if (paramVideoInfo.a == null)
     {
-      if (!sig.a(this.a).isShowing())
-      {
-        if ((VersionUtils.isJellyBean()) && (!ShortVideoUtils.isInFullScreenBlackList()))
-        {
-          sig.a(this.a).getWindow().setFlags(8, 8);
-          sig.a(this.a).getWindow().getDecorView().setSystemUiVisibility(sig.a(this.a).getWindow().getDecorView().getSystemUiVisibility());
-          sig.a(this.a).setOnShowListener(new siv(this));
-        }
-        sig.a(this.a).show();
-        odq.b(null, null, "0X800913B", "0X800913B", 0, 0, null, null, null, new sie(ofe.a(null, null, null, null, paramJSONObject)).i(paramBaseArticleInfo.innerUniqueID).a().a(), false);
+      src localsrc = this.jdField_a_of_type_Src;
+      if (localsrc != null) {
+        localsrc.a(paramVideoInfo);
       }
+    }
+  }
+  
+  public final void a(@NotNull skq paramskq, long paramLong, @NotNull View paramView1, @NotNull View paramView2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramskq, "playParam");
+    Intrinsics.checkParameterIsNotNull(paramView1, "rootView");
+    Intrinsics.checkParameterIsNotNull(paramView2, "videoRootView");
+    if (a(paramLong, paramskq))
+    {
+      paramskq = this.jdField_a_of_type_Srv;
+      if (paramskq == null) {
+        break label55;
+      }
+    }
+    label55:
+    for (boolean bool = paramskq.a(paramView1, paramView2);; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
       return;
     }
-    catch (Exception paramBaseArticleInfo)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "dislikeSheet.show exception=" + paramBaseArticleInfo);
+  }
+  
+  public final void a(@Nullable src paramsrc)
+  {
+    this.jdField_a_of_type_Src = paramsrc;
+  }
+  
+  public final void a(@Nullable srv paramsrv)
+  {
+    this.jdField_a_of_type_Srv = paramsrv;
+  }
+  
+  public final void a(boolean paramBoolean)
+  {
+    Object localObject = this.jdField_a_of_type_Src;
+    if (localObject != null) {
+      ((src)localObject).a(paramBoolean);
+    }
+    localObject = this.jdField_a_of_type_Srv;
+    if (localObject != null) {
+      ((srv)localObject).a(paramBoolean);
     }
   }
   
-  public int a()
+  public final void b()
   {
-    return 7;
+    Object localObject = this.jdField_a_of_type_Src;
+    if (localObject != null) {
+      ((src)localObject).b();
+    }
+    localObject = this.jdField_a_of_type_Srv;
+    if (localObject != null) {
+      ((srv)localObject).a();
+    }
   }
   
-  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public final void b(boolean paramBoolean)
   {
-    sig.a(this.a, false);
-    paramString = new JSONObject();
-    try
-    {
-      paramString.put("channel_id", sig.a(this.a));
-      paramString.put("source", 1);
-      if ((paramBaseArticleInfo.mDislikeInfos != null) && (paramBaseArticleInfo.mDislikeInfos.size() > 0))
-      {
-        sig.a(this.a, (bjnw)bjon.a(sig.a(this.a), null));
-        paramActionSheetItem = new sis(this);
-        sig.a(this.a).a(paramActionSheetItem);
-        paramActionSheetItem = new ReadInJoyDisLikeDialogView(sig.a(this.a));
-        paramActionSheetItem.setOnUninterestConfirmListener(new sit(this, paramBaseArticleInfo, paramString));
-        paramActionSheetItem.setUninterestData(paramBaseArticleInfo.mDislikeInfos);
-        sig.a(this.a).a(paramActionSheetItem, null);
-        a(paramBaseArticleInfo, paramString);
-        return;
-      }
-    }
-    catch (JSONException paramActionSheetItem)
-    {
-      do
-      {
-        for (;;)
-        {
-          paramActionSheetItem.printStackTrace();
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "文章ID为：" + paramBaseArticleInfo.mArticleID + "的负反馈数据为空!");
+    src localsrc = this.jdField_a_of_type_Src;
+    if (localsrc != null) {
+      localsrc.b(paramBoolean);
     }
   }
 }

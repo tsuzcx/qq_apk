@@ -1,39 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.ark.ArkEnvironmentManager.LibraryLoader;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class apyj
+public final class apyj
+  implements ArkEnvironmentManager.LibraryLoader
 {
-  public String a = "";
-  
-  public apyj() {}
-  
-  public apyj(String paramString)
+  public boolean Load()
   {
-    this.a = paramString;
+    ArkAppCenter.f();
+    return ArkAppCenter.b;
   }
   
-  public static apyj a(String paramString)
+  public boolean isLibraryLoad()
   {
-    try
-    {
-      paramString = new JSONObject(paramString).optString("ShowLocaleEntrance");
-      if (QLog.isColorLevel()) {
-        QLog.e("LocaleConfProcessor", 2, "manager parse, showEntrance: " + paramString);
-      }
-      paramString = new apyj(paramString.trim());
-      return paramString;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
+    return ArkAppCenter.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apyj
  * JD-Core Version:    0.7.0.1
  */

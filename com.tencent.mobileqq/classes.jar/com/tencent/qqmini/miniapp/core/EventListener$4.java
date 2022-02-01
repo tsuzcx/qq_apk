@@ -1,17 +1,13 @@
 package com.tencent.qqmini.miniapp.core;
 
-import com.tencent.qqmini.miniapp.core.page.IAppBrandPageContainer;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-
 class EventListener$4
   implements Runnable
 {
-  EventListener$4(EventListener paramEventListener, IAppBrandPageContainer paramIAppBrandPageContainer, String paramString, RequestEvent paramRequestEvent) {}
+  EventListener$4(EventListener paramEventListener) {}
   
   public void run()
   {
-    this.val$pageContainer.switchTab(this.val$url);
-    this.val$req.ok();
+    this.this$0.moveAppBrandToBack();
   }
 }
 

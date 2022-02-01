@@ -1,22 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-
 public class arkj
-  implements DialogInterface.OnClickListener
 {
-  public arkj(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
+  public String a;
+  public boolean a;
+  public String b = "https://club.vip.qq.com/interact/recovery?_wv=16777218&friend=%s&type=%d";
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public arkj()
   {
-    paramDialogInterface.dismiss();
-    ExtendFriendEditFragment.a(this.a).finish();
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = anvx.a(2131710723);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arkj
  * JD-Core Version:    0.7.0.1
  */

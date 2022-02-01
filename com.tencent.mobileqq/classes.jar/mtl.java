@@ -1,25 +1,24 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.PopupDialog;
 
 public class mtl
+  implements DialogInterface.OnClickListener
 {
-  public HttpNetReq a;
-  public String a = "";
-  public String b = "";
-  public String c = "";
+  public mtl(PopupDialog paramPopupDialog) {}
   
-  public String toString()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
-    localStringBuffer.append(", url='").append(this.a).append('\'');
-    localStringBuffer.append(", md5='").append(this.b).append('\'');
-    localStringBuffer.append(", fileName='").append(this.c).append('\'');
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    if (PopupDialog.a.b != null) {
+      PopupDialog.a.b.onClick(paramDialogInterface, paramInt);
+    }
+    paramDialogInterface.dismiss();
+    PopupDialog.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mtl
  * JD-Core Version:    0.7.0.1
  */

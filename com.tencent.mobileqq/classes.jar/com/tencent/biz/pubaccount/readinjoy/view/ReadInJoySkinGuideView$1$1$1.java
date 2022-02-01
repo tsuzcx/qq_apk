@@ -1,30 +1,30 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import bcra;
-import bcsu;
+import bdxz;
+import bdzt;
 import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
-import odq;
+import olh;
 import org.json.JSONException;
-import pay;
-import pbg;
-import soa;
+import pqg;
+import pqu;
+import tbl;
 
 public class ReadInJoySkinGuideView$1$1$1
   implements Runnable
 {
-  public ReadInJoySkinGuideView$1$1$1(soa paramsoa, bcra parambcra) {}
+  public ReadInJoySkinGuideView$1$1$1(tbl paramtbl, bdxz parambdxz) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Soa.a.this$0.a.a((bcsu)this.jdField_a_of_type_Bcra);
-    this.jdField_a_of_type_Soa.a.this$0.a.a();
-    pbg localpbg = new pbg();
+    this.jdField_a_of_type_Tbl.a.this$0.a.a((bdzt)this.jdField_a_of_type_Bdxz);
+    this.jdField_a_of_type_Tbl.a.this$0.a.a();
+    pqg localpqg = new pqg();
     try
     {
-      localpbg.e();
-      localpbg.a("guide_id", this.jdField_a_of_type_Soa.a.b);
-      localpbg.a("channel_id", this.jdField_a_of_type_Soa.a.jdField_a_of_type_Int);
-      odq.a(this.jdField_a_of_type_Soa.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "0X8008C80", "0X8008C80", 0, 0, this.jdField_a_of_type_Soa.a.b, "" + pay.e(), "" + ReadInJoySkinGuideView.a(this.jdField_a_of_type_Soa.a.this$0), localpbg.a(), false);
+      localpqg.e();
+      localpqg.a("guide_id", this.jdField_a_of_type_Tbl.a.b);
+      localpqg.a("channel_id", this.jdField_a_of_type_Tbl.a.jdField_a_of_type_Int);
+      olh.a(this.jdField_a_of_type_Tbl.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "0X8008C80", "0X8008C80", 0, 0, this.jdField_a_of_type_Tbl.a.b, "" + pqu.a(), "" + ReadInJoySkinGuideView.a(this.jdField_a_of_type_Tbl.a.this$0), localpqg.a(), false);
       return;
     }
     catch (JSONException localJSONException)

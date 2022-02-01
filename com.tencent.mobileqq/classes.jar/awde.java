@@ -1,13 +1,12 @@
-public class awde
+class awde
+  implements ajmo
 {
-  public int a;
-  public awdd a;
-  public awdv a;
-  public String a;
-  public boolean a;
-  public int b;
-  public int c;
-  public int d = 0;
+  awde(awdc paramawdc) {}
+  
+  public long a()
+  {
+    return awdc.a(this.a);
+  }
 }
 
 

@@ -1,72 +1,43 @@
-import java.lang.reflect.Array;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.utils.FileUtils;
+import java.util.Iterator;
+import java.util.List;
 
-public class aubt
+class aubt
+  implements biyc
 {
-  static aubt[][] a;
-  public int a;
-  public int b;
+  aubt(aubq paramaubq, List paramList, athn paramathn, aubv paramaubv) {}
   
-  static
+  public void a(int paramInt)
   {
-    jdField_a_of_type_Array2dOfAubt = (aubt[][])Array.newInstance(aubt.class, new int[] { 3, 3 });
-    int i = 0;
-    while (i < 3)
+    if (paramInt == 2)
     {
-      int j = 0;
-      while (j < 3)
+      audr.d(aubq.a(this.jdField_a_of_type_Aubq).getString(2131692595));
+      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
       {
-        jdField_a_of_type_Array2dOfAubt[i][j] = new aubt(i, j);
-        j += 1;
+        localFileManagerEntity = (FileManagerEntity)localIterator.next();
+        if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+          if (FileUtils.fileExistsAndNotEmpty(localFileManagerEntity.getFilePath())) {
+            this.jdField_a_of_type_Athn.a(localFileManagerEntity.getFilePath(), "", aubq.a(this.jdField_a_of_type_Aubq).getCurrentAccountUin(), 0, false);
+          } else {
+            this.jdField_a_of_type_Athn.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
+          }
+        }
       }
-      i += 1;
+      if (this.jdField_a_of_type_Aubv != null) {
+        this.jdField_a_of_type_Aubv.a(4, 0);
+      }
     }
-  }
-  
-  private aubt(int paramInt1, int paramInt2)
-  {
-    a(paramInt1, paramInt2);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public static aubt a(int paramInt1, int paramInt2)
-  {
-    try
+    while (this.jdField_a_of_type_Aubv == null)
     {
-      a(paramInt1, paramInt2);
-      aubt localaubt = jdField_a_of_type_Array2dOfAubt[paramInt1][paramInt2];
-      return localaubt;
+      Iterator localIterator;
+      FileManagerEntity localFileManagerEntity;
+      return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  private static void a(int paramInt1, int paramInt2)
-  {
-    if ((paramInt1 < 0) || (paramInt1 > 2)) {
-      throw new IllegalArgumentException("row must be in range 0-2");
-    }
-    if ((paramInt2 < 0) || (paramInt2 > 2)) {
-      throw new IllegalArgumentException("column must be in range 0-2");
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
-  public String toString()
-  {
-    return "(row=" + this.jdField_a_of_type_Int + ",clmn=" + this.b + ")";
+    this.jdField_a_of_type_Aubv.a(4, 1);
   }
 }
 

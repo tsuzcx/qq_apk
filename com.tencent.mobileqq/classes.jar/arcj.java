@@ -1,61 +1,98 @@
-import android.os.Bundle;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 
 public class arcj
-  extends areo
+  extends aqwt<arci>
 {
-  public arcj(MessengerService paramMessengerService) {}
-  
-  public void onPackageEnd(EmoticonPackage paramEmoticonPackage, int paramInt)
+  @NonNull
+  public arci a(int paramInt)
   {
-    int i = 2;
-    if (this.a.a != null) {}
-    try
+    return new arci();
+  }
+  
+  @Nullable
+  public arci a(aqxa[] paramArrayOfaqxa)
+  {
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0) && (paramArrayOfaqxa[0] != null))
     {
-      Message localMessage = Message.obtain(null, 5);
-      int j = Integer.valueOf(paramEmoticonPackage.epId).intValue();
-      if (paramInt == 0) {
-        i = 0;
+      arci localarci = arci.a(paramArrayOfaqxa[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("OnlineAutoStatusConfProcessor", 2, "onParsed " + paramArrayOfaqxa[0].a);
       }
-      for (;;)
-      {
-        paramEmoticonPackage = new Bundle();
-        paramEmoticonPackage.putInt("packetid", j);
-        paramEmoticonPackage.putInt("peoriodtype", 1);
-        paramEmoticonPackage.putInt("resultcode", i);
-        localMessage.setData(paramEmoticonPackage);
-        this.a.a.send(localMessage);
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.emoji.web.MessengerService", 2, "resp to sever: ");
-        }
-        return;
-        if (paramInt != 11007) {
-          if (paramInt == 11001) {
-            i = 1;
-          } else if (paramInt == 11000) {
-            i = 6;
-          } else {
-            i = -1;
-          }
-        }
-      }
+      return localarci;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("OnlineAutoStatusConfProcessor", 2, "onParsed is null");
+    }
+    return new arci();
+  }
+  
+  public void a(arci paramarci)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if (localQQAppInterface == null) {
       return;
     }
-    catch (Exception paramEmoticonPackage)
-    {
-      return;
+    azbv localazbv = (azbv)localQQAppInterface.getManager(QQManagerFactory.ONLINE_STATUS_MANAGER);
+    azco localazco = localazbv.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("OnlineAutoStatusConfProcessor", 2, "[status][parser] onUpdate try startDetector conf: " + paramarci.toString());
     }
-    catch (RemoteException paramEmoticonPackage) {}
+    if (azbu.a(localQQAppInterface.getOnlineStatus(), localQQAppInterface.getExtOnlineStatus())) {
+      localazco.a("configUpdate");
+    }
+    localazbv.c(localQQAppInterface.getExtOnlineStatus());
+    localazbv.b(localQQAppInterface.getExtOnlineStatus());
+  }
+  
+  public Class<arci> clazz()
+  {
+    return arci.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public boolean isNeedUpgradeReset()
+  {
+    QLog.d("OnlineAutoStatusConfProcessor", 1, "isNeedUpgradeReset ");
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("OnlineAutoStatusConfProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("OnlineAutoStatusConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public int type()
+  {
+    return 652;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arcj
  * JD-Core Version:    0.7.0.1
  */

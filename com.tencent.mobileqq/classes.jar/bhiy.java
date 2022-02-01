@@ -1,8 +1,30 @@
-import android.view.View;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public abstract interface bhiy
+public final class bhiy
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(View paramView, int paramInt1, int paramInt2);
+  public bhiy(boolean paramBoolean, Context paramContext, String paramString1, String paramString2, int paramInt) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramDialogInterface.putExtra("url", String.format(aijy.jdField_a_of_type_JavaLangString, new Object[] { this.jdField_a_of_type_JavaLangString, "group_aio_popup" }));
+      paramDialogInterface.putExtra("hide_operation_bar", true);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+    }
+    for (;;)
+    {
+      bdla.b(null, "dc00898", "", "", "qq_vip", this.b, this.jdField_a_of_type_Int, 0, "", "", "", "");
+      return;
+      aofp.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, "group_aio_popup");
+    }
+  }
 }
 
 

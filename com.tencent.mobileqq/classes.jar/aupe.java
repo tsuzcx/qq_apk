@@ -1,26 +1,19 @@
-import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.NowEntryData;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedReport;
+import android.graphics.Bitmap;
+import com.qflutter.qqface.data.QQFaceNativeData;
+import com.qflutter.qqface.loader.QQFaceLoader;
 
 class aupe
-  extends CustomizedReport
+  implements aupj
 {
-  aupe(aupc paramaupc) {}
+  aupe(aupd paramaupd) {}
   
-  public void onNowEntry(Bundle paramBundle, NowEntryData paramNowEntryData) {}
-  
-  public void onReport(Bundle paramBundle)
+  public void a(aupb paramaupb, Bitmap paramBitmap, String paramString)
   {
-    auot localauot = auqe.a().a();
-    if (localauot != null) {
-      localauot.a(paramBundle);
-    }
-    if ((paramBundle != null) && ("weishi_service_num".equals(paramBundle.getString("id", "")))) {
-      uvi.a(auqd.jdField_a_of_type_JavaLangString, "", "", auqd.b, auqd.jdField_a_of_type_Int, 4, 2, paramBundle.getInt("play_time"));
-    }
+    QQFaceNativeData localQQFaceNativeData = new QQFaceNativeData();
+    localQQFaceNativeData.setBitmap(paramBitmap);
+    localQQFaceNativeData.setPath(paramString);
+    QQFaceLoader.instance().onUpdate(paramaupb.d, localQQFaceNativeData);
   }
-  
-  public void setNowEntryData(NowEntryData paramNowEntryData) {}
 }
 
 

@@ -1,25 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import Wallet.AcsMsg;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
 
 public class aflo
-  implements DialogInterface.OnClickListener
+  implements afnx
 {
-  public aflo(DoodlePanel paramDoodlePanel) {}
+  public aflo(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(AcsMsg paramAcsMsg)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      bcef.b(this.a.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 0, "", "", "", "");
-      return;
-    }
-    bcef.b(this.a.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 1, "", "", "", "");
-    DoodlePanel.a(this.a).finish(1);
+    Message localMessage = this.a.a.obtainMessage();
+    localMessage.what = 3;
+    Bundle localBundle = new Bundle();
+    localBundle.putSerializable("acsMsg", paramAcsMsg);
+    localMessage.obj = localBundle;
+    this.a.a.sendMessage(localMessage);
   }
 }
 

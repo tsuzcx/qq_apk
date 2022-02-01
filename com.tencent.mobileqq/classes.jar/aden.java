@@ -1,18 +1,20 @@
-import android.app.Dialog;
-import android.view.View;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import mqq.app.AppRuntime.Status;
+import mqq.observer.AccountObserver;
 
 public class aden
-  implements AdapterView.OnItemClickListener
+  extends AccountObserver
 {
-  public aden(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
+  public aden(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a(paramView);
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    AccountManageActivity.b(this.a);
+  }
+  
+  public void onOnlineStatusPush(AppRuntime.Status paramStatus, long paramLong)
+  {
+    AccountManageActivity.b(this.a);
   }
 }
 

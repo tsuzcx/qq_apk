@@ -12,21 +12,21 @@ import com.tencent.pts.core.lite.IPTSLiteEventListener;
 import com.tencent.qphone.base.util.QLog;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
-import oqj;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import oyh;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/channelbanner/RIJChannelBannerView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "ptsItemView", "Lcom/tencent/pts/core/itemview/PTSItemView;", "getPtsItemView", "()Lcom/tencent/pts/core/itemview/PTSItemView;", "setPtsItemView", "(Lcom/tencent/pts/core/itemview/PTSItemView;)V", "refresh", "", "ptsComposer", "Lcom/tencent/pts/core/PTSComposer;", "ptsLiteEventListener", "Lcom/tencent/pts/core/lite/IPTSLiteEventListener;", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class RIJChannelBannerView
   extends FrameLayout
 {
-  public static final oqj a;
+  public static final oyh a;
   @NotNull
   private PTSItemView a;
   
   static
   {
-    jdField_a_of_type_Oqj = new oqj(null);
+    jdField_a_of_type_Oyh = new oyh(null);
   }
   
   public RIJChannelBannerView(@NotNull Context paramContext)

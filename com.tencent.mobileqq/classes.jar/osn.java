@@ -1,29 +1,32 @@
-import android.text.Editable;
-import com.tencent.biz.pubaccount.readinjoy.biu.BiuNicknameSpan;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
-import java.util.Comparator;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment;
+import com.tencent.mobileqq.pluginsdk.IPluginAdapterProxy;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 
 public class osn
-  implements Comparator<BiuNicknameSpan>
+  extends SwiftBrowserUIStyleHandler
 {
-  private Editable jdField_a_of_type_AndroidTextEditable;
+  osn(ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment paramReadInJoyArticleDetailFragment) {}
   
-  public osn(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, Editable paramEditable)
+  public void initWebViewInContentView()
   {
-    this.jdField_a_of_type_AndroidTextEditable = paramEditable;
-  }
-  
-  public int a(BiuNicknameSpan paramBiuNicknameSpan1, BiuNicknameSpan paramBiuNicknameSpan2)
-  {
-    int i = this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramBiuNicknameSpan1);
-    int j = this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramBiuNicknameSpan2);
-    if (i > j) {
-      return 1;
+    super.initWebViewInContentView();
+    if ((this.mComponentContext.a() != null) && (this.a.jdField_a_of_type_Boolean) && (this.a.webView != null) && (this.webviewWrapper != null))
+    {
+      this.a.jdField_a_of_type_AndroidWidgetImageView = new ImageView(ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.a(this.a));
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841693);
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+      localLayoutParams.addRule(13);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+      this.webviewWrapper.addView(this.a.jdField_a_of_type_AndroidWidgetImageView);
+      if (IPluginAdapterProxy.getProxy().isNightMode())
+      {
+        this.webviewWrapper.setBackgroundColor(-6710887);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841694);
+      }
     }
-    if (i < j) {
-      return -1;
-    }
-    return 0;
   }
 }
 

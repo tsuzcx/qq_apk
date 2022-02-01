@@ -13,10 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
-import bljd;
-import bmdb;
-import bmme;
-import bmmg;
+import bmwb;
+import bnst;
+import bobw;
+import boby;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.widget.QQToast;
@@ -48,7 +48,7 @@ public abstract class AbsAEPublishVideoProcessFragment
   protected String missionId;
   protected TAVCutVideoSession tavCutVideoSession;
   protected TAVCutVideoView tavCutVideoView;
-  private bmmg videoParam = bmme.a();
+  private boby videoParam = bobw.a();
   
   private String getMissionId()
   {
@@ -76,7 +76,7 @@ public abstract class AbsAEPublishVideoProcessFragment
   private void initTavCutAndPlayer()
   {
     Log.d("AbsAEPublishVideoProces", "initTavCutAndPlayer: 开始初始化tavcutsession、moviePlayer");
-    MediaModel localMediaModel = bmdb.a().a(this.missionId);
+    MediaModel localMediaModel = bnst.a().a(this.missionId);
     if ((StringUtil.isEmpty(this.missionId)) || (isMediaModelBroken(localMediaModel)))
     {
       Log.e("AbsAEPublishVideoProces", "missionId异常！合成model损坏：" + isMediaModelBroken(localMediaModel));
@@ -215,7 +215,7 @@ public abstract class AbsAEPublishVideoProcessFragment
   
   protected int getPlayerBackColor()
   {
-    return getResources().getColor(2131165267);
+    return getResources().getColor(2131165268);
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -248,7 +248,7 @@ public abstract class AbsAEPublishVideoProcessFragment
   {
     super.onCreate(paramBundle);
     this.missionId = getMissionId();
-    bljd.a();
+    bmwb.a();
     TAVCut.initTAVCut(getActivity(), FeatureManager.getResourceDir(), FeatureManager.getResourceDir(), new AbsAEPublishVideoProcessFragment.1(this));
   }
   
@@ -282,11 +282,11 @@ public abstract class AbsAEPublishVideoProcessFragment
       }
       if (this.mLoadingDialog == null)
       {
-        this.mLoadingDialog = new ReportDialog(getActivity(), 2131755826);
+        this.mLoadingDialog = new ReportDialog(getActivity(), 2131755829);
         this.mLoadingDialog.setCancelable(false);
         this.mLoadingDialog.setCanceledOnTouchOutside(false);
-        this.mLoadingDialog.setContentView(2131559574);
-        ((TextView)this.mLoadingDialog.findViewById(2131372546)).setText("正在保存封面...");
+        this.mLoadingDialog.setContentView(2131559607);
+        ((TextView)this.mLoadingDialog.findViewById(2131372740)).setText("正在保存封面...");
       }
       this.mLoadingDialog.show();
     }

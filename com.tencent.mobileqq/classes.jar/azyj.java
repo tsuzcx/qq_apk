@@ -1,13 +1,8 @@
-import com.tencent.mobileqq.resourcesgrab.ResourceGrabView;
-
-public class azyj
+public abstract interface azyj
 {
-  public ResourceGrabView a;
+  public abstract void a();
   
-  public static azyj a()
-  {
-    return azyl.a();
-  }
+  public abstract void a(String paramString);
 }
 
 

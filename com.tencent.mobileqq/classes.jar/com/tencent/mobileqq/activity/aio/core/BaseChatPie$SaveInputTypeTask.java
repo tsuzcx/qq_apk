@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import amsw;
+import anvk;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.data.NoC2CExtensionInfo;
 import com.tencent.mobileqq.persistence.Entity;
@@ -32,14 +33,14 @@ public class BaseChatPie$SaveInputTypeTask
         return;
         localObject = (QQAppInterface)this.appWeakref.get();
       } while (localObject == null);
-      localObject = (amsw)((QQAppInterface)localObject).getManager(51);
+      localObject = (anvk)((QQAppInterface)localObject).getManager(QQManagerFactory.FRIENDS_MANAGER);
       if ((this.mInfo instanceof ExtensionInfo))
       {
-        ((amsw)localObject).a((ExtensionInfo)this.mInfo);
+        ((anvk)localObject).a((ExtensionInfo)this.mInfo);
         return;
       }
     } while (!(this.mInfo instanceof NoC2CExtensionInfo));
-    ((amsw)localObject).a((NoC2CExtensionInfo)this.mInfo, true);
+    ((anvk)localObject).a((NoC2CExtensionInfo)this.mInfo, true);
   }
 }
 

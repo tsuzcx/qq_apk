@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder.fragment;
 
-import aknm;
-import amxz;
+import aanb;
+import alje;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -14,8 +14,9 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bcef;
-import bjmp;
+import aoan;
+import bdla;
+import bkyc;
 import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
 import com.tencent.biz.richframework.network.VSNetworkHelper;
 import com.tencent.biz.richframework.part.block.BlockContainer;
@@ -24,6 +25,7 @@ import com.tencent.biz.subscribe.network.SubscribeGetFollowFeedsRequest;
 import com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView;
 import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.PublicAccountInfo;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -31,24 +33,23 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import java.util.List;
 import mqq.os.MqqHandler;
-import uaq;
-import uaw;
-import uaz;
-import uba;
-import ubb;
-import ubc;
-import ubd;
-import ugf;
-import ugt;
-import yzu;
-import zbi;
-import zdb;
-import zds;
-import zxp;
+import uon;
+import uot;
+import uow;
+import uox;
+import uoy;
+import uoz;
+import upa;
+import uuc;
+import uuq;
+import zoz;
+import zqn;
+import zsg;
+import zsx;
 
 public class FolderFollowTabFragment
   extends FolderBaseTabFragment
-  implements aknm, Handler.Callback
+  implements alje, Handler.Callback
 {
   public static int c;
   public static String c;
@@ -59,10 +60,10 @@ public class FolderFollowTabFragment
   private ServiceFolderFollowPBHeadView jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoServiceFolderFollowPBHeadView;
   private DragFrameLayout jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bjmp(Looper.getMainLooper(), this, true);
-  private ubd jdField_a_of_type_Ubd;
-  private zdb jdField_a_of_type_Zdb;
-  private zds jdField_a_of_type_Zds;
+  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bkyc(Looper.getMainLooper(), this, true);
+  private upa jdField_a_of_type_Upa;
+  private zsg jdField_a_of_type_Zsg;
+  private zsx jdField_a_of_type_Zsx;
   private boolean b;
   private boolean c;
   
@@ -84,26 +85,26 @@ public class FolderFollowTabFragment
     }
   }
   
-  private void a(List<uaq> paramList)
+  private void a(List<uon> paramList)
   {
     ThreadManager.getSubThreadHandler().post(new FolderFollowTabFragment.7(this, paramList));
   }
   
-  private void a(zds paramzds)
+  private void a(zsx paramzsx)
   {
     SubscribeGetFollowFeedsRequest localSubscribeGetFollowFeedsRequest = new SubscribeGetFollowFeedsRequest(null);
     localSubscribeGetFollowFeedsRequest.setEnableCache(true);
     this.jdField_c_of_type_Boolean = true;
-    VSNetworkHelper.getInstance().sendRequest(localSubscribeGetFollowFeedsRequest, new ubb(this, paramzds));
+    VSNetworkHelper.getInstance().sendRequest(localSubscribeGetFollowFeedsRequest, new uoy(this, paramzsx));
   }
   
   private boolean a(String paramString)
   {
-    amxz localamxz = (amxz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
-    if (localamxz != null)
+    aoan localaoan = (aoan)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER);
+    if (localaoan != null)
     {
-      paramString = localamxz.b(paramString);
-      if ((paramString != null) && (ugf.a(paramString.accountFlag2) == -10L)) {
+      paramString = localaoan.b(paramString);
+      if ((paramString != null) && (uuc.a(paramString.accountFlag2) == -10L)) {
         return true;
       }
     }
@@ -112,8 +113,8 @@ public class FolderFollowTabFragment
   
   private void b()
   {
-    uaw localuaw = uaw.a();
-    List localList = localuaw.b();
+    uot localuot = uot.a();
+    List localList = localuot.b();
     if ((localList != null) && (localList.size() > 0))
     {
       Message localMessage = Message.obtain();
@@ -122,15 +123,15 @@ public class FolderFollowTabFragment
       localMessage.arg1 = jdField_c_of_type_Int;
       this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
     }
-    ThreadManager.executeOnSubThread(new FolderFollowTabFragment.1(this, localuaw));
-    localuaw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, NetConnInfoCenter.getServerTime());
-    ugt.a("SERVICE_FOLDER_COST", null);
+    ThreadManager.executeOnSubThread(new FolderFollowTabFragment.1(this, localuot));
+    localuot.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, NetConnInfoCenter.getServerTime());
+    uuq.a("SERVICE_FOLDER_COST", null);
   }
   
-  private void b(zds paramzds)
+  private void b(zsx paramzsx)
   {
-    SubscribeGetFollowFeedsRequest localSubscribeGetFollowFeedsRequest = new SubscribeGetFollowFeedsRequest(paramzds.a().b(), paramzds.a().b());
-    VSNetworkHelper.getInstance().sendRequest(localSubscribeGetFollowFeedsRequest, new ubc(this, paramzds));
+    SubscribeGetFollowFeedsRequest localSubscribeGetFollowFeedsRequest = new SubscribeGetFollowFeedsRequest(paramzsx.a().b(), paramzsx.a().b());
+    VSNetworkHelper.getInstance().sendRequest(localSubscribeGetFollowFeedsRequest, new uoz(this, paramzsx));
   }
   
   private void c()
@@ -140,31 +141,31 @@ public class FolderFollowTabFragment
     d();
     if (getActivity() != null)
     {
-      this.jdField_a_of_type_Ubd = new ubd(this, null);
+      this.jdField_a_of_type_Upa = new upa(this, null);
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("action_refresh_return_page");
-      getActivity().registerReceiver(this.jdField_a_of_type_Ubd, localIntentFilter);
+      getActivity().registerReceiver(this.jdField_a_of_type_Upa, localIntentFilter);
     }
   }
   
   private void d()
   {
-    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer = ((BlockContainer)this.jdField_a_of_type_AndroidViewView.findViewById(2131377159));
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer = ((BlockContainer)this.jdField_a_of_type_AndroidViewView.findViewById(2131377434));
     this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.setParentFragment(this);
     this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.setLayoutManagerType(3, 2);
     this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.setEnableLoadMore(true);
     this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoServiceFolderFollowPBHeadView = new ServiceFolderFollowPBHeadView(getActivity());
     this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoServiceFolderFollowPBHeadView.setDragHost(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout);
     this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoServiceFolderFollowPBHeadView.setmFolderViewPager(this.jdField_a_of_type_AndroidSupportV4ViewViewPager);
-    this.jdField_a_of_type_Zds = new zds(null);
-    this.jdField_a_of_type_Zds.d(this.b);
-    this.jdField_a_of_type_Zds.c(false);
-    this.jdField_a_of_type_Zds.a(new uaz(this));
-    this.jdField_a_of_type_Zds.d(0);
-    this.jdField_a_of_type_Zdb = new zdb(null);
-    this.jdField_a_of_type_Zdb.b(this.b);
-    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.a(new uba(this, null));
-    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.a(this.jdField_a_of_type_Zds);
+    this.jdField_a_of_type_Zsx = new zsx(null);
+    this.jdField_a_of_type_Zsx.d(this.b);
+    this.jdField_a_of_type_Zsx.c(false);
+    this.jdField_a_of_type_Zsx.a(new uow(this));
+    this.jdField_a_of_type_Zsx.d(0);
+    this.jdField_a_of_type_Zsg = new zsg(null);
+    this.jdField_a_of_type_Zsg.b(this.b);
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.a(new uox(this, null));
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.a(this.jdField_a_of_type_Zsx);
     this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.setExtraTypeInfo(this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo);
     this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.setEnableRefresh(true);
     this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.c();
@@ -178,9 +179,9 @@ public class FolderFollowTabFragment
   protected void a()
   {
     if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getActivity()).inflate(2131558808, null, false);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getActivity()).inflate(2131558833, null, false);
     }
-    this.b = zbi.a();
+    this.b = zqn.a();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = getActivity().app;
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.setHandler(FolderFollowTabFragment.class, this.jdField_a_of_type_MqqOsMqqHandler);
@@ -221,8 +222,8 @@ public class FolderFollowTabFragment
       {
         paramServiceAccountFolderActivityNew.a(8);
         b();
-        if (this.jdField_a_of_type_Zds != null) {
-          a(this.jdField_a_of_type_Zds);
+        if (this.jdField_a_of_type_Zsx != null) {
+          a(this.jdField_a_of_type_Zsx);
         }
       }
     }
@@ -230,18 +231,18 @@ public class FolderFollowTabFragment
   
   public void a(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout)
   {
-    uaq localuaq;
+    uon localuon;
     long l;
     QQAppInterface localQQAppInterface;
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() == -1) && (paramDragFrameLayout.a() != null) && (paramDragFrameLayout.a().getId() == 2131377156))
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() == -1) && (paramDragFrameLayout.a() != null) && (paramDragFrameLayout.a().getId() == 2131377431))
     {
-      localuaq = (uaq)paramDragFrameLayout.a().getTag(2131377150);
-      paramInt = ((Integer)paramDragFrameLayout.a().getTag(2131377148)).intValue();
-      if (localuaq != null)
+      localuon = (uon)paramDragFrameLayout.a().getTag(2131377425);
+      paramInt = ((Integer)paramDragFrameLayout.a().getTag(2131377423)).intValue();
+      if (localuon != null)
       {
-        l = uaw.a().a(localuaq);
+        l = uot.a().a(localuon);
         localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        if (!localuaq.a()) {
+        if (!localuon.a()) {
           break label257;
         }
       }
@@ -249,11 +250,11 @@ public class FolderFollowTabFragment
     label257:
     for (paramDragFrameLayout = "0";; paramDragFrameLayout = "1")
     {
-      bcef.b(localQQAppInterface, "dc01160", "Pb_account_lifeservice", "", "0X800687D", "0X800687D", 0, 0, paramDragFrameLayout, "" + localuaq.b, "" + (paramInt + 1), "" + l);
-      uaw.a().b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localuaq, true);
-      zxp.a(localuaq.a, "auth_page", "ignore", 0, 0, new String[0]);
+      bdla.b(localQQAppInterface, "dc01160", "Pb_account_lifeservice", "", "0X800687D", "0X800687D", 0, 0, paramDragFrameLayout, "" + localuon.b, "" + (paramInt + 1), "" + l);
+      uot.a().b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localuon, true);
+      aanb.a(localuon.a, "auth_page", "ignore", 0, 0, new String[0]);
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_c_of_type_JavaLangString, 2, "onChange->drag red dot:" + localuaq.a);
+        QLog.d(jdField_c_of_type_JavaLangString, 2, "onChange->drag red dot:" + localuon.a);
       }
       return;
     }
@@ -291,9 +292,9 @@ public class FolderFollowTabFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getActivity()).inflate(2131558808, null, false);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getActivity()).inflate(2131558833, null, false);
     }
-    this.b = zbi.a();
+    this.b = zqn.a();
     if (this.b) {
       this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-16777216);
     }
@@ -313,8 +314,8 @@ public class FolderFollowTabFragment
     if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoServiceFolderFollowPBHeadView != null) {
       this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoServiceFolderFollowPBHeadView.a();
     }
-    if ((getActivity() != null) && (this.jdField_a_of_type_Ubd != null)) {
-      getActivity().unregisterReceiver(this.jdField_a_of_type_Ubd);
+    if ((getActivity() != null) && (this.jdField_a_of_type_Upa != null)) {
+      getActivity().unregisterReceiver(this.jdField_a_of_type_Upa);
     }
     if (this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer != null) {
       this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.b();
@@ -326,7 +327,7 @@ public class FolderFollowTabFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment
  * JD-Core Version:    0.7.0.1
  */

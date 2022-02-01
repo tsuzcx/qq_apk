@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import atqa;
+import auuv;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -65,7 +65,7 @@ abstract class ForwardSdkShareProcessor$ForwardStep
       l = System.currentTimeMillis() - this.beginTime;
     }
     QLog.d("Q.share.ForwardSdkShareProcessor", 1, this.stepName + "|finished,cost=" + l);
-    atqa.a(this.stepName, l);
+    auuv.a(this.stepName, l);
     if ((this.nextStep != null) && (!this.isCancelled.get())) {
       this.this$0.mController.mHandler.post(new ForwardSdkShareProcessor.ForwardStep.1(this));
     }

@@ -1,22 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.List;
 
 public class xqb
 {
-  public static void a(String paramString, Object... paramVarArgs)
-  {
-    xvv.e(paramString, xqd.a(paramVarArgs));
-  }
+  public List<String> a = new ArrayList();
+  public List<String> b = new ArrayList();
   
-  public static void b(String paramString, Object... paramVarArgs)
+  public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString, 2, xqd.a(paramVarArgs));
+    if ((!TextUtils.isEmpty(paramString)) && (!this.b.contains(paramString))) {
+      this.b.add(paramString);
     }
-  }
-  
-  public static void c(String paramString, Object... paramVarArgs)
-  {
-    xvv.d(paramString, xqd.a(paramVarArgs));
   }
 }
 

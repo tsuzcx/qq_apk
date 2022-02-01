@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.redtouch;
 
 import android.os.Bundle;
-import aqyp;
-import aqyt;
+import ascz;
+import asdd;
 import java.util.HashMap;
 
 class RedTouchWebviewHandler$1$1
@@ -16,7 +16,7 @@ class RedTouchWebviewHandler$1$1
     Bundle localBundle = (Bundle)this.jdField_a_of_type_JavaUtilHashMap.get("req");
     String str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("jsonResult");
     this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchWebviewHandler$1.this$0.callJs((String)localObject, new String[] { str });
-    localObject = aqyt.a("redTouch_getAppInfo_report", (String)localObject, this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchWebviewHandler$1.this$0.mOnRemoteResp.key, localBundle);
+    localObject = asdd.a("redTouch_getAppInfo_report", (String)localObject, this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchWebviewHandler$1.this$0.mOnRemoteResp.key, localBundle);
     this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchWebviewHandler$1.this$0.sendRemoteReq((Bundle)localObject, false, true);
   }
 }

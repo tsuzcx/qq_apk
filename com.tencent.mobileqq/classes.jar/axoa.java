@@ -1,32 +1,10 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class axoa
-  extends FlingGestureHandler
+final class axoa
+  implements DialogInterface.OnClickListener
 {
-  boolean a = true;
-  
-  public axoa(Activity paramActivity)
-  {
-    super(paramActivity);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.a = paramBoolean;
-    if (!b()) {
-      a();
-    }
-    this.mTopLayout.setInterceptTouchFlag(paramBoolean);
-  }
-  
-  public void flingLToR()
-  {
-    if (this.a) {
-      super.flingLToR();
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

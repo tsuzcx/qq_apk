@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center" android:layout_gravity="center" android:id="@id/fie" android:background="@drawable/tips_popup_win_bg" android:layout_width="160.0dip" android:layout_height="170.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/dx0" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="15.0dip" android:textColor="@color/al3" android:id="@id/np4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="13.0dip" android:text="@string/cuy" android:layout_below="@id/dx0" android:layout_centerHorizontal="true" />
-    <Button android:textColor="@color/al3" android:gravity="center" android:id="@id/afr" android:background="@drawable/bl8" android:paddingLeft="16.0dip" android:paddingTop="6.0dip" android:paddingRight="16.0dip" android:paddingBottom="6.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="取消" android:layout_below="@id/np4" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:id="@id/n6i" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:background="@drawable/f50" android:layout_width="@dimen/bb9" android:layout_height="@dimen/bb9">
+        <com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout android:layout_gravity="center" android:id="@id/nlr" android:layout_width="@dimen/bb6" android:layout_height="@dimen/bb6" android:layout_marginLeft="15.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="15.0dip" app:qqArMapGuideRadius="3">
+            <View android:background="@color/dg" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <ImageView android:id="@id/n2p" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+            <FrameLayout android:id="@id/msl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <com.tencent.mobileqq.dinifly.DiniFlyAnimationView android:layout_gravity="center" android:id="@id/mpk" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" app:dinifly_loop="true" />
+                <ImageView android:layout_gravity="center" android:id="@id/n2r" android:visibility="gone" android:layout_width="23.0dip" android:layout_height="23.0dip" />
+                <ImageView android:layout_gravity="center" android:id="@id/n2s" android:visibility="gone" android:layout_width="25.0dip" android:layout_height="25.0dip" android:src="@drawable/wx" />
+            </FrameLayout>
+        </com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout>
+    </FrameLayout>
+    <TextView android:textSize="11.0sp" android:ellipsize="end" android:gravity="center" android:layout_gravity="center" android:id="@id/nzf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-7.0dip" android:maxLines="1" />
+</LinearLayout>

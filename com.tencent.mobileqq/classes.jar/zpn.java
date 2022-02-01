@@ -1,42 +1,38 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.ViewGroup;
+import com.tencent.biz.richframework.part.extendsblock.HorizontalRvInnerView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.util.ArrayUtils;
 
-class zpn
-  implements bbrg
+public class zpn
+  extends zox
 {
-  zpn(zpm paramzpm) {}
+  public zpn(HorizontalRvInnerView paramHorizontalRvInnerView) {}
   
-  public void onDownloadFinish(String paramString1, int paramInt, String paramString2)
+  public zpm a(ViewGroup paramViewGroup, int paramInt)
   {
-    if (paramString1.startsWith("new_qq_android_native_short_video_"))
-    {
-      if (paramInt == 0) {
-        break label152;
-      }
-      VideoEnvironment.LogDownLoad("TroopMemberApiService", amtj.a(2131714570) + paramInt + "]", null);
-      ShortVideoResourceManager.a(amtj.a(2131714624));
-      bbqi.a(2, paramInt);
-      this.a.jdField_a_of_type_AndroidOsBundle.putInt("result", 0);
+    if (HorizontalRvInnerView.a(this.jdField_a_of_type_ComTencentBizRichframeworkPartExtendsblockHorizontalRvInnerView) != null) {
+      return HorizontalRvInnerView.a(this.jdField_a_of_type_ComTencentBizRichframeworkPartExtendsblockHorizontalRvInnerView).a(paramViewGroup, paramInt);
     }
-    for (;;)
-    {
-      VideoEnvironment.LogDownLoad("TroopMemberApiService", "name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
-      this.a.jdField_a_of_type_Zpf.a.a(93, this.a.jdField_a_of_type_AndroidOsBundle);
-      this.a.jdField_a_of_type_Zpf.a.b = false;
-      return;
-      label152:
-      this.a.jdField_a_of_type_AndroidOsBundle.putInt("result", -2);
-    }
+    return null;
   }
   
-  public void onNetWorkNone()
+  public int getItemCount()
   {
-    this.a.jdField_a_of_type_Zpf.a.b = false;
+    if (HorizontalRvInnerView.a(this.jdField_a_of_type_ComTencentBizRichframeworkPartExtendsblockHorizontalRvInnerView) != null) {
+      return HorizontalRvInnerView.a(this.jdField_a_of_type_ComTencentBizRichframeworkPartExtendsblockHorizontalRvInnerView).c();
+    }
+    return 0;
   }
   
-  public void onUpdateProgress(String paramString, long paramLong1, long paramLong2) {}
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if ((!ArrayUtils.isOutOfArrayIndex(paramInt, this.jdField_a_of_type_JavaUtilArrayList)) && (HorizontalRvInnerView.a(this.jdField_a_of_type_ComTencentBizRichframeworkPartExtendsblockHorizontalRvInnerView) != null)) {
+      HorizontalRvInnerView.a(this.jdField_a_of_type_ComTencentBizRichframeworkPartExtendsblockHorizontalRvInnerView).a(paramViewHolder, paramInt);
+    }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
+  }
 }
 
 

@@ -1,19 +1,26 @@
 package com.tencent.qqmini.sdk.runtime;
 
-import android.app.Activity;
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
-import com.tencent.qqmini.sdk.widget.MiniToast;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 class BaseUIProxy$3
   implements Runnable
 {
-  BaseUIProxy$3(BaseUIProxy paramBaseUIProxy, int paramInt, String paramString) {}
+  BaseUIProxy$3(BaseUIProxy paramBaseUIProxy) {}
   
   public void run()
   {
-    MiniToast.makeText(MiniAppEnv.g().getContext(), "加载失败 retCode=" + this.val$retCode + " " + this.val$msg, 0).show();
-    if (this.this$0.mActivity != null) {
-      this.this$0.mActivity.finish();
+    if (this.this$0.mCurrRuntimeLoader != null)
+    {
+      this.this$0.mCurrRuntimeLoader.startLoadMiniAppContent(this.this$0.mCurrRuntimeLoader.needReloadPage());
+      this.this$0.mCurrRuntimeLoader.onAttachActivity(this.this$0.mActivity, null, this.this$0.mRootLayout);
+    }
+    this.this$0.hideLoading();
+    ChannelProxy localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
+    if ((localChannelProxy != null) && (this.this$0.mCurrRuntimeLoader.getMiniAppInfo() != null)) {
+      localChannelProxy.syncForceGroundAndRefreshBadge(this.this$0.mActivity, this.this$0.mCurrRuntimeLoader.getMiniAppInfo().appId, AppLoaderFactory.g().getProcessName());
     }
   }
 }

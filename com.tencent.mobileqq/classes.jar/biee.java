@@ -1,17 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.filedownload.ui.ApkFileDownloadButton;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class biee
-  implements DialogInterface.OnClickListener
+class biee
+  implements View.OnClickListener
 {
-  public biee(ApkFileDownloadButton paramApkFileDownloadButton) {}
+  biee(bied parambied) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.b(false, true);
-    paramDialogInterface.dismiss();
-    bhzd.b(bhzf.a().a("203").k(this.a.a.a).j("5").l(this.a.a.c).m(this.a.a.d).a(this.a.a.h).b(this.a.a.f).g(this.a.a.e));
+    this.a.mInActivity.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

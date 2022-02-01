@@ -5,6 +5,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
@@ -16,7 +17,9 @@ public final class FeedCloudMeta$StShare
   public final PBBytesField busiData = PBField.initBytes(ByteStringMicro.EMPTY);
   public FeedCloudMeta.StImage cover = new FeedCloudMeta.StImage();
   public final PBStringField desc = PBField.initString("");
+  public final PBRepeatMessageField<FeedCloudMeta.StImage> images = PBField.initRepeatMessage(FeedCloudMeta.StImage.class);
   public FeedCloudMeta.StUser poster = new FeedCloudMeta.StUser();
+  public final PBUInt32Field publishTotalUser = PBField.initUInt32(0);
   public final PBStringField shareCardInfo = PBField.initString("");
   public FeedCloudMeta.StShareQzoneInfo shareQzoneInfo = new FeedCloudMeta.StShareQzoneInfo();
   public final PBStringField shorturl = PBField.initString("");
@@ -28,7 +31,7 @@ public final class FeedCloudMeta$StShare
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 50, 58, 66, 74, 82, 90, 98 }, new String[] { "title", "desc", "type", "url", "author", "poster", "cover", "video", "shorturl", "shareCardInfo", "shareQzoneInfo", "busiData" }, new Object[] { "", "", Integer.valueOf(0), "", null, null, null, null, "", "", null, localByteStringMicro }, StShare.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 50, 58, 66, 74, 82, 90, 98, 106, 112 }, new String[] { "title", "desc", "type", "url", "author", "poster", "cover", "video", "shorturl", "shareCardInfo", "shareQzoneInfo", "busiData", "images", "publishTotalUser" }, new Object[] { "", "", Integer.valueOf(0), "", null, null, null, null, "", "", null, localByteStringMicro, null, Integer.valueOf(0) }, StShare.class);
   }
 }
 

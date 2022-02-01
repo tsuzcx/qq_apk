@@ -1,29 +1,49 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItemViewHolder;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class wyl
-  extends vll<wyc, vsd>
+class wyl
+  implements AdapterView.OnItemClickListener
 {
-  public wyl(wyc paramwyc)
-  {
-    super(paramwyc);
-  }
+  wyl(wyk paramwyk) {}
   
-  public void a(@NonNull wyc paramwyc, @NonNull vsd paramvsd)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((paramwyc.a != null) && (TextUtils.equals(paramwyc.a.b, paramvsd.a)))
+    if (wyk.a(this.a).getActionSheet().isShowing()) {
+      wyk.a(this.a).getActionSheet().dismiss();
+    }
+    int j = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)paramView.getTag()).sheetItem.action;
+    int i;
+    if ((j == 9) || (j == 10)) {
+      if (!WXShareHelper.a().a()) {
+        i = 2131720175;
+      }
+    }
+    for (;;)
     {
-      xvv.a(this.TAG, "receive feed info change event. %s.", paramvsd.toString());
-      paramwyc.i();
+      if (i != -1) {
+        znl.a(1, i);
+      }
+      for (;;)
+      {
+        EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+        return;
+        if (WXShareHelper.a().b()) {
+          break label123;
+        }
+        i = 2131720176;
+        break;
+        this.a.a(j);
+      }
+      label123:
+      i = -1;
     }
   }
-  
-  public Class acceptEventClass()
-  {
-    return vsd.class;
-  }
-  
-  public void b(@NonNull wyc paramwyc, @NonNull vsd paramvsd) {}
 }
 
 

@@ -1,41 +1,17 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.HandlerThread;
-import android.os.IBinder;
-import android.os.Messenger;
-import android.util.SparseArray;
-import com.tencent.qphone.base.util.QLog;
-
 class andh
-  implements ServiceConnection
+  extends andg
 {
-  andh(andf paramandf) {}
+  private int b;
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public andh(int paramInt1, int paramInt2, andi paramandi, ande paramande)
   {
-    andf.a(this.a, 2);
-    andf.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("UploadPhoto", 2, "onServiceConnected()...");
-    }
-    this.a.jdField_a_of_type_AndroidOsMessenger = new Messenger(paramIBinder);
-    this.a.b = new Messenger(this.a.jdField_a_of_type_AndroidOsHandler);
-    andf.b(this.a);
+    super(paramInt1, paramandi, paramande);
+    this.b = paramInt2;
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public amqr a(long paramLong, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UploadPhoto", 2, "onServiceDisconnected()...");
-    }
-    this.a.jdField_a_of_type_AndroidOsMessenger = null;
-    andf.a(this.a, 4);
-    this.a.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    this.a.b = null;
-    andf.a(this.a, true);
-    if (andf.a(this.a) != null) {
-      andf.a(this.a).interrupt();
-    }
+    return null;
   }
 }
 

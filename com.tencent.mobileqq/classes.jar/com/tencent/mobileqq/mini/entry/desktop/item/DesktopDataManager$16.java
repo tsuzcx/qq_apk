@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
 import android.text.TextUtils;
-import anxn;
-import apyt;
+import apap;
+import arbw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.mini.entry.MiniAppRedDotEntity;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.persistence.EntityManager;
@@ -53,11 +54,11 @@ class DesktopDataManager$16
       QLog.e("DesktopDataManager", 1, "initLocalDataRunnable error,", localThrowable);
       return;
     }
-    Object localObject1 = (anxn)localThrowable.getBusinessHandler(148);
+    Object localObject1 = (apap)localThrowable.getBusinessHandler(BusinessHandlerFactory.APPLET_PUSH_HANDLER);
     if (localObject1 != null) {
-      ((anxn)localObject1).c();
+      ((apap)localObject1).c();
     }
-    localObject1 = apyt.a("miniappgetpskeydomain", "qzone.qq.com");
+    localObject1 = arbw.a("miniappgetpskeydomain", "qzone.qq.com");
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
       QLog.d("DesktopDataManager", 1, "getPskeyDomain : " + (String)localObject1);

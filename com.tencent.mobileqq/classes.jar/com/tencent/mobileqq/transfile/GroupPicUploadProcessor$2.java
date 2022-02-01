@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
 import android.os.SystemClock;
-import bnal;
+import boqd;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.highway.api.ITransactionCallback;
 import com.tencent.qphone.base.util.QLog;
@@ -74,7 +74,7 @@ class GroupPicUploadProcessor$2
     {
       this.this$0.sendProgressMessage();
       if (GroupPicUploadProcessor.access$000(this.this$0)) {
-        bnal.a(GroupPicUploadProcessor.access$100(this.this$0), 1002, this.this$0.getProgress());
+        boqd.a(GroupPicUploadProcessor.access$100(this.this$0), 1002, this.this$0.getProgress());
       }
     }
   }

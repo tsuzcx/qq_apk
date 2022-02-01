@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.vas;
 
 import android.os.Handler;
-import bgdk;
+import bhmb;
 import java.io.File;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ColorNickManager$2
   implements Runnable
 {
-  public ColorNickManager$2(bgdk parambgdk, int paramInt) {}
+  public ColorNickManager$2(bhmb parambhmb, int paramInt) {}
   
   public void run()
   {
-    Object localObject = new File(bgdk.a(String.valueOf(this.a)));
+    Object localObject = new File(bhmb.a(String.valueOf(this.a)));
     if (((File)localObject).exists())
     {
-      localObject = bgdk.a(this.this$0, (File)localObject, this.a);
+      localObject = bhmb.a(this.this$0, (File)localObject, this.a);
       if (localObject != null)
       {
         this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.a), localObject);
@@ -25,7 +25,7 @@ public class ColorNickManager$2
       }
       return;
     }
-    bgdk.a(this.this$0, this.a);
+    bhmb.a(this.this$0, this.a);
   }
 }
 

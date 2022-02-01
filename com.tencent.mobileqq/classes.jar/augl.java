@@ -1,17 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.hotpic.HotPicMainPanel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
 public class augl
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  public augl(HotPicMainPanel paramHotPicMainPanel) {}
+  public augl(SendBottomBar paramSendBottomBar) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    HotPicMainPanel.a(this.a);
-    return true;
+    if (paramInt == 1) {
+      this.a.c();
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

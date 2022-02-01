@@ -7,14 +7,14 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
-import bjux;
+import blgj;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashSet;
 import java.util.Iterator;
 
 class ListView$ListDataSetObserver
   extends AbsListView.AdapterDataSetObserver
-  implements bjux
+  implements blgj
 {
   ListView$ListDataSetObserver(ListView paramListView)
   {

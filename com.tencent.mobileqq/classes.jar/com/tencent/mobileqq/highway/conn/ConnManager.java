@@ -187,10 +187,13 @@ public class ConnManager
         {
           paramInt = 10000;
           ??? = new TcpConnection(this, i, localEndPoint1, paramInt, 30000, paramBoolean2);
-          if ((??? == null) || (!((IConnection)???).connect())) {
+          if (??? == null) {
             break;
           }
           ((IConnection)???).setConnectListener(this);
+          if (!((IConnection)???).connect()) {
+            break;
+          }
           this.connections.put(Integer.valueOf(((IConnection)???).getConnId()), ???);
           return ???;
         }
@@ -295,7 +298,6 @@ public class ConnManager
     if (??? != null) {
       localConfigManager = ConfigManager.getInstance((Context)???, this.engine);
     }
-    if (paramIConnection.getProtoType() != 2) {}
     for (;;)
     {
       synchronized (this.connections)
@@ -352,20 +354,18 @@ public class ConnManager
   {
     HwNetworkCenter.getInstance(this.engine.getAppContext()).updateNetInfo(this.engine.getAppContext());
     IConnection localIConnection = (IConnection)this.connections.remove(Integer.valueOf(paramIConnection.getConnId()));
-    if ((localIConnection == null) || (localIConnection.getProtoType() != 2)) {}
-    synchronized (this.connections)
+    if (localIConnection != null)
     {
       BdhLogUtil.LogEvent("C", "OnDisConnect, mHERace.doOnConnFail.");
       this.mHERace.doOnConnFail(localIConnection);
       this.connectedConn -= 1;
       this.engine.mRequestWorker.onConnClose(paramInt);
       BdhLogUtil.LogEvent("C", "OnDisConnect :　connId:" + paramInt + " Size:" + this.connections.size());
-      if (paramIConnection.getConnId() == this.iHttpPatchConnId)
-      {
-        this.iHttpPatchConnId = -1;
-        this.bUseHttpPatch.set(false);
-      }
-      return;
+    }
+    if (paramIConnection.getConnId() == this.iHttpPatchConnId)
+    {
+      this.iHttpPatchConnId = -1;
+      this.bUseHttpPatch.set(false);
     }
   }
   

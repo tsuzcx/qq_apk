@@ -1,23 +1,15 @@
-import org.jetbrains.annotations.Nullable;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.pts.nativemodule.IPTSAllInOneJump;
+import com.tencent.qphone.base.util.QLog;
 
-class qzi
-  implements qxx
+public class qzi
+  implements IPTSAllInOneJump
 {
-  qzi(qzh paramqzh, qxx paramqxx) {}
-  
-  public void a()
+  public void allInOneJump(String paramString)
   {
-    int i = qxt.b().a();
-    qxt.b().a(i + 1);
-    if (this.jdField_a_of_type_Qxx != null) {
-      this.jdField_a_of_type_Qxx.a();
-    }
-  }
-  
-  public void a(int paramInt, @Nullable String paramString)
-  {
-    if (this.jdField_a_of_type_Qxx != null) {
-      this.jdField_a_of_type_Qxx.a(paramInt, paramString);
+    QLog.i("PTSAllInOneJumpModule", 1, "[allInOneJump], url = " + paramString);
+    if (BaseActivity.sTopActivity != null) {
+      pkh.a(BaseActivity.sTopActivity, paramString);
     }
   }
 }

@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.activity.activateFriend.biz;
 
-import aewd;
+import afno;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.qphone.base.util.QLog;
@@ -16,7 +17,7 @@ public class QQReminderStepAsync
     }
     try
     {
-      ((aewd)this.a.app.getManager(378)).a();
+      ((afno)this.a.app.getManager(QQManagerFactory.QQ_NOTIFY_MANAGER)).a();
       return 7;
     }
     catch (Throwable localThrowable)
@@ -32,7 +33,7 @@ public class QQReminderStepAsync
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.biz.QQReminderStepAsync
  * JD-Core Version:    0.7.0.1
  */

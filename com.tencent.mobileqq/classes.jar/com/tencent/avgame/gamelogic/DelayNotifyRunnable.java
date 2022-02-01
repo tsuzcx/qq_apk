@@ -2,9 +2,9 @@ package com.tencent.avgame.gamelogic;
 
 import com.tencent.avgame.gamelogic.data.RoomInfo;
 import com.tencent.common.app.AppInterface;
-import mzk;
-import mzl;
-import naf;
+import nfb;
+import nfc;
+import nfv;
 
 public class DelayNotifyRunnable
   implements Runnable
@@ -12,14 +12,14 @@ public class DelayNotifyRunnable
   int jdField_a_of_type_Int;
   AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   Object jdField_a_of_type_JavaLangObject;
-  mzk jdField_a_of_type_Mzk;
+  nfb jdField_a_of_type_Nfb;
   boolean jdField_a_of_type_Boolean = false;
   
-  public DelayNotifyRunnable(AppInterface paramAppInterface, int paramInt, mzk parammzk, Object paramObject)
+  public DelayNotifyRunnable(AppInterface paramAppInterface, int paramInt, nfb paramnfb, Object paramObject)
   {
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Mzk = parammzk;
+    this.jdField_a_of_type_Nfb = paramnfb;
     this.jdField_a_of_type_JavaLangObject = paramObject;
   }
   
@@ -44,7 +44,7 @@ public class DelayNotifyRunnable
     int i = ((Integer)localObject[1]).intValue();
     localObject = (String)localObject[2];
     paramObject = (String)paramObject;
-    this.jdField_a_of_type_Mzk.a(this.jdField_a_of_type_Int, new Object[] { paramObject, Integer.valueOf(i), localObject });
+    this.jdField_a_of_type_Nfb.a(this.jdField_a_of_type_Int, new Object[] { paramObject, Integer.valueOf(i), localObject });
   }
   
   public void run()
@@ -59,8 +59,8 @@ public class DelayNotifyRunnable
     String str = (String)localObject[0];
     int i = ((Integer)localObject[1]).intValue();
     localObject = (String)localObject[2];
-    str = mzl.a().a().a().getNick(str);
-    this.jdField_a_of_type_Mzk.a(this.jdField_a_of_type_Int, new Object[] { str, Integer.valueOf(i), localObject });
+    str = nfc.a().a().a().getNick(str);
+    this.jdField_a_of_type_Nfb.a(this.jdField_a_of_type_Int, new Object[] { str, Integer.valueOf(i), localObject });
   }
 }
 

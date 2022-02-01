@@ -1,8 +1,8 @@
-import android.os.Bundle;
+import android.view.View;
 
 public abstract interface asir
 {
-  public abstract void a(int paramInt1, int paramInt2, String paramString1, String paramString2, Bundle paramBundle);
+  public abstract void a(View paramView);
 }
 
 

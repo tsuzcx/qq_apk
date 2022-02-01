@@ -1,45 +1,63 @@
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
+import android.os.Build;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.ttpic.baseutils.device.DeviceUtils;
+import com.tencent.ttpic.openapi.offlineset.OfflineConfig;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bobx
 {
-  private static bobx jdField_a_of_type_Bobx = new bobx();
-  private static String jdField_a_of_type_JavaLangString;
-  private boby jdField_a_of_type_Boby;
+  private static List<String> a = new ArrayList();
   
-  private bobx()
+  static
   {
-    jdField_a_of_type_JavaLangString = getClass().getSimpleName();
+    a.add("pbem00");
   }
   
-  public static bobx a()
+  public static int a(double paramDouble)
   {
-    return jdField_a_of_type_Bobx;
+    double d = Math.floor(paramDouble);
+    paramDouble = Math.ceil(paramDouble);
+    if (d % 2.0D == 0.0D) {
+      return (int)d;
+    }
+    return (int)paramDouble;
   }
   
-  private void a(boolean paramBoolean1, int paramInt, String paramString, boolean paramBoolean2)
+  public static <T> T a(T paramT1, T paramT2)
   {
-    if (this.jdField_a_of_type_Boby != null)
-    {
-      if (paramBoolean1) {
-        this.jdField_a_of_type_Boby.a(paramInt, paramString, paramBoolean2);
-      }
+    if (DeviceUtils.getTotalRamMemory(BaseApplicationImpl.getContext()) <= 2147483648L) {
+      return paramT1;
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_Boby.b(paramInt, paramString, paramBoolean2);
+    return paramT2;
   }
   
-  public boolean a(Object paramObject, int paramInt, String paramString)
+  public static <T> T a(T paramT1, T paramT2, T paramT3)
   {
-    if ((paramObject instanceof AudioCapture)) {}
-    switch (paramInt)
-    {
-    default: 
-      return true;
+    if (OfflineConfig.getPhonePerfLevel() <= 2) {
+      return paramT1;
     }
-    a(true, 2001, amtj.a(2131703323) + 2001 + "）", true);
-    return false;
+    if (((OfflineConfig.getPhonePerfLevel() > 2) && (OfflineConfig.getPhonePerfLevel() <= 3)) || (a.contains(Build.MODEL.toLowerCase()))) {
+      return paramT2;
+    }
+    return paramT3;
+  }
+  
+  public static String a()
+  {
+    return (String)a("低端机", "中端机", "高端机");
+  }
+  
+  public static <T> T b(T paramT1, T paramT2, T paramT3)
+  {
+    long l = DeviceUtils.getTotalRamMemory(BaseApplicationImpl.getContext());
+    if (l <= 2147483648L) {
+      return paramT1;
+    }
+    if (l <= 4294967296L) {
+      return paramT2;
+    }
+    return paramT3;
   }
 }
 

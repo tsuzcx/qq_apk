@@ -1,21 +1,35 @@
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.SingleLineTextView;
-
-class ogx
+public class ogx
 {
-  View jdField_a_of_type_AndroidViewView;
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
-  SingleLineTextView jdField_a_of_type_ComTencentWidgetSingleLineTextView;
-  String jdField_a_of_type_JavaLangString;
-  ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView;
-  SingleLineTextView b;
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public long d;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
   
-  ogx(ogv paramogv) {}
+  private ogx(ogz paramogz)
+  {
+    this.jdField_a_of_type_Long = ogz.a(paramogz);
+    this.jdField_b_of_type_Long = ogz.b(paramogz);
+    this.jdField_c_of_type_Long = ogz.c(paramogz);
+    this.jdField_d_of_type_Long = ogz.d(paramogz);
+    this.jdField_a_of_type_JavaLangString = ogz.a(paramogz);
+    this.jdField_b_of_type_JavaLangString = ogz.b(paramogz);
+    this.jdField_c_of_type_JavaLangString = ogz.c(paramogz);
+    this.jdField_d_of_type_JavaLangString = ogz.d(paramogz);
+    this.e = ogz.e(paramogz);
+    this.f = ogz.f(paramogz);
+    this.g = ogz.g(paramogz);
+    this.h = ogz.h(paramogz);
+    this.i = ogz.i(paramogz);
+  }
 }
 
 

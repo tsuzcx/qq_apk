@@ -1,66 +1,149 @@
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.res.Resources;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.listentogether.ListenTogetherSession;
+import com.tencent.mobileqq.listentogether.data.ISong;
+import java.util.List;
 
 public class awfk
+  implements BusinessObserver
 {
-  public static void a(Context paramContext, String paramString)
-  {
-    long l = 0L;
-    for (;;)
-    {
-      try
-      {
-        localObject = new URL(paramString);
-      }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        Object localObject;
-        int i;
-        QLog.e("QQMusicConst", 1, "music player activity url io MalformedURLException ", localMalformedURLException);
-        continue;
-      }
-      try
-      {
-        i = ((URL)localObject).openConnection().getContentLength();
-        l = i;
-      }
-      catch (IOException localIOException)
-      {
-        QLog.e("QQMusicConst", 1, "music player activity url IOException ", localIOException);
-      }
-    }
-    localObject = new Bundle();
-    ((Bundle)localObject).putString("big_brother_source_key", "biz_src_qqmusic");
-    ((Bundle)localObject).putLong("_filesize_from_dlg", l);
-    ((Bundle)localObject).putString("_filename_from_dlg", paramContext.getResources().getString(2131694195));
-    ((Bundle)localObject).putString("FILE_MIME_TYPE", "application/vnd.android.package-archive");
-    ((Bundle)localObject).putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_qqmusic");
-    atdm.a().b(paramString, (Bundle)localObject);
-  }
+  protected void a(int paramInt, String paramString) {}
   
-  public static boolean a(Context paramContext)
-  {
-    return a(paramContext, "com.tencent.qqmusic");
-  }
+  protected void a(int paramInt, String paramString1, String paramString2) {}
   
-  public static boolean a(Context paramContext, String paramString)
+  protected void a(int paramInt, String paramString, boolean paramBoolean) {}
+  
+  protected void a(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void a(ListenTogetherSession paramListenTogetherSession) {}
+  
+  protected void a(ISong paramISong) {}
+  
+  protected void a(String paramString, int paramInt) {}
+  
+  protected void a(String paramString, int paramInt1, int paramInt2) {}
+  
+  protected void a(String paramString1, String paramString2, boolean paramBoolean) {}
+  
+  protected void a(boolean paramBoolean, int paramInt1, String paramString1, long paramLong, int paramInt2, int paramInt3, String paramString2) {}
+  
+  protected void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3) {}
+  
+  protected void a(boolean paramBoolean, ListenTogetherSession paramListenTogetherSession) {}
+  
+  protected void a(boolean paramBoolean, String paramString, int paramInt, List<String> paramList) {}
+  
+  protected void b(int paramInt, String paramString) {}
+  
+  protected void c(int paramInt, String paramString) {}
+  
+  protected void d() {}
+  
+  protected void d(int paramInt, String paramString) {}
+  
+  protected void e(int paramInt, String paramString) {}
+  
+  protected void f(int paramInt, String paramString) {}
+  
+  protected void g(int paramInt, String paramString) {}
+  
+  protected void h(int paramInt, String paramString) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramContext = paramContext.getPackageManager();
-    try
+    switch (paramInt)
     {
-      paramContext.getPackageInfo(paramString, 1);
-      return true;
+    default: 
+      return;
+    case 4: 
+      a((ListenTogetherSession)((Object[])(Object[])paramObject)[0]);
+      return;
+    case 5: 
+      paramObject = (Object[])paramObject;
+      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], ((Boolean)paramObject[2]).booleanValue());
+      return;
+    case 19: 
+      paramObject = (Object[])paramObject;
+      b(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+      return;
+    case 6: 
+      paramObject = (Object[])paramObject;
+      c(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+      return;
+    case 7: 
+      paramObject = (Object[])paramObject;
+      d(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+      return;
+    case 21: 
+      paramObject = (Object[])paramObject;
+      f(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+      return;
+    case 20: 
+      paramObject = (Object[])paramObject;
+      e(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+      return;
+    case 8: 
+      paramObject = (Object[])paramObject;
+      g(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+      return;
+    case 9: 
+      paramObject = (Object[])paramObject;
+      a((String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue());
+      return;
+    case 10: 
+      paramObject = (Object[])paramObject;
+      a((String)paramObject[0], (String)paramObject[1], ((Boolean)paramObject[2]).booleanValue());
+      return;
+    case 11: 
+      paramObject = (Object[])paramObject;
+      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], ((Boolean)paramObject[2]).booleanValue(), ((Boolean)paramObject[3]).booleanValue());
+      return;
+    case 12: 
+      paramObject = (Object[])paramObject;
+      a((String)paramObject[0], ((Integer)paramObject[1]).intValue());
+      return;
+    case 13: 
+      a((ISong)((Object[])(Object[])paramObject)[0]);
+      return;
+    case 14: 
+      paramObject = (Object[])paramObject;
+      h(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+      return;
+    case 15: 
+      paramObject = (Object[])paramObject;
+      a(((Boolean)paramObject[0]).booleanValue(), (ListenTogetherSession)paramObject[1]);
+      return;
+    case 16: 
+      d();
+      return;
+    case 18: 
+      paramObject = (Object[])paramObject;
+      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], (String)paramObject[2]);
+      return;
+    case 22: 
+      paramObject = (Object[])paramObject;
+      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+      return;
+    case 23: 
+      paramObject = (Object[])paramObject;
+      a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1], (String)paramObject[2], ((Integer)paramObject[3]).intValue(), (String)paramObject[4]);
+      return;
+    case 24: 
+      paramObject = (Object[])paramObject;
+      if (paramBoolean)
+      {
+        a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1], ((Long)paramObject[2]).longValue(), ((Integer)paramObject[3]).intValue(), 0, "");
+        return;
+      }
+      a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1], ((Long)paramObject[2]).longValue(), 0, ((Integer)paramObject[3]).intValue(), (String)paramObject[4]);
+      return;
     }
-    catch (PackageManager.NameNotFoundException paramContext) {}
-    return false;
+    paramObject = (Object[])paramObject;
+    if (paramBoolean)
+    {
+      a(true, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (List)paramObject[2]);
+      return;
+    }
+    a(true, (String)paramObject[0], 0, null);
   }
 }
 

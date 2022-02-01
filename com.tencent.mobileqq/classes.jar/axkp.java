@@ -1,80 +1,54 @@
-import android.app.Activity;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.Window;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.util.SystemUtil;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import com.tencent.widget.immersive.SystemBarCompact;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class axkp
+  implements DownloadParams.DecodeHandler
 {
-  public static int a(Activity paramActivity)
-  {
-    return ImmersiveUtils.getStatusBarHeight(paramActivity);
-  }
+  private static final HashMap<String, ArrayList<Integer>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  Object jdField_a_of_type_JavaLangObject;
+  String jdField_a_of_type_JavaLangString;
+  WeakReference<axkq> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public static void a(Activity paramActivity, int paramInt)
+  public axkp(String paramString, axkq paramaxkq, Object paramObject)
   {
-    paramActivity = new SystemBarCompact(paramActivity, true, -1);
-    paramActivity.init();
-    paramActivity.setStatusBarColor(paramInt);
-  }
-  
-  public static void a(Activity paramActivity, boolean paramBoolean)
-  {
-    if (ThemeUtil.isCustomTheme(false))
-    {
-      a(paramActivity, 0);
-      return;
+    if (paramaxkq != null) {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaxkq);
     }
-    if (paramBoolean)
-    {
-      a(paramActivity, -16777216);
-      a(paramActivity, false);
-      return;
-    }
-    if (a(paramActivity, true))
-    {
-      a(paramActivity, -1);
-      return;
-    }
-    a(paramActivity, -2368549);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
   }
   
-  public static boolean a()
+  public static List<Integer> a(String paramString)
   {
-    return ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
+    return (List)jdField_a_of_type_JavaUtilHashMap.get(paramString);
   }
   
-  public static boolean a(Activity paramActivity, boolean paramBoolean)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    int i = 9216;
-    if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.isFlyme()) && (!SystemUtil.isMIUI())) {
-      if (paramBoolean) {
-        paramActivity.getWindow().getDecorView().setSystemUiVisibility(i);
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    for (paramDownloadParams = null;; paramDownloadParams = (axkq)this.jdField_a_of_type_JavaLangRefWeakReference.get())
+    {
+      if (paramDownloadParams != null)
+      {
+        int[] arrayOfInt = axks.a(Bitmap.createBitmap(paramBitmap, 0, paramBitmap.getHeight() / 2, paramBitmap.getWidth(), paramBitmap.getHeight() / 2));
+        if ((arrayOfInt != null) && (arrayOfInt.length >= 2))
+        {
+          ArrayList localArrayList = new ArrayList();
+          localArrayList.add(Integer.valueOf(arrayOfInt[0]));
+          localArrayList.add(Integer.valueOf(arrayOfInt[1]));
+          if (!jdField_a_of_type_JavaUtilHashMap.containsKey(this.jdField_a_of_type_JavaLangString)) {
+            jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_JavaLangString, localArrayList);
+          }
+        }
+        paramDownloadParams.a(this.jdField_a_of_type_JavaLangString, arrayOfInt[0], arrayOfInt[1], this.jdField_a_of_type_JavaLangObject);
       }
+      return paramBitmap;
     }
-    do
-    {
-      return paramBoolean;
-      i = 1280;
-      break;
-      if (!ImmersiveUtils.a()) {
-        break label101;
-      }
-      ImmersiveUtils.a(paramActivity.getWindow(), paramBoolean);
-    } while ((Build.VERSION.SDK_INT < 23) || (!SystemUtil.isMIUI()));
-    if (paramBoolean) {}
-    for (;;)
-    {
-      paramActivity.getWindow().getDecorView().setSystemUiVisibility(i);
-      return paramBoolean;
-      i = 1280;
-    }
-    label101:
-    return false;
   }
 }
 

@@ -1,15 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.app.Activity;
 
-class aona
-  implements ValueAnimator.AnimatorUpdateListener
+public class aona
+  implements aonb
 {
-  aona(aomz paramaomz) {}
+  public void a() {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.a(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-  }
+  public void a(Activity paramActivity) {}
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 

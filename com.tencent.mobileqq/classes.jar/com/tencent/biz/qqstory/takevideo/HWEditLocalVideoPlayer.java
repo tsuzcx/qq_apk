@@ -1,9 +1,6 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import amtj;
-import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Build;
@@ -14,60 +11,53 @@ import android.os.Message;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
 import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import baem;
-import baeo;
-import bagb;
-import bagt;
-import bagu;
-import bagy;
-import bbta;
-import bbwy;
+import anvx;
+import bblb;
+import bbld;
+import bbmq;
+import bbni;
+import bbnj;
+import bbnn;
+import bddt;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.shortvideo.mediadevice.CodecParam;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportProgressDialog;
 import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
-import xvv;
-import xxi;
-import xxq;
-import xzb;
-import xzd;
-import xzp;
-import yan;
-import yar;
-import yau;
-import ybh;
-import yjh;
-import yqs;
+import ykq;
+import ymb;
+import ymj;
+import ynu;
+import ynw;
+import yoi;
+import ypk;
+import ypn;
+import yqa;
+import yya;
+import zfl;
 
 public class HWEditLocalVideoPlayer
-  extends xzb
-  implements Handler.Callback, baem, xzp
+  extends ynu
+  implements Handler.Callback, bblb, yoi
 {
   protected int a;
   private ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bagb jdField_a_of_type_Bagb;
+  private bbmq jdField_a_of_type_Bbmq;
   private HWEditLocalVideoPlayer.ConvertIFramesRunnable jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable;
   protected LocalMediaInfo a;
   public NeoVideoFilterPlayView a;
   private String jdField_a_of_type_JavaLangString;
-  protected List<yau> a;
+  protected List<ypn> a;
   protected boolean a;
   private Handler jdField_b_of_type_AndroidOsHandler = new Handler(ThreadManager.getFileThreadLooper(), this);
   private String jdField_b_of_type_JavaLangString;
@@ -75,12 +65,12 @@ public class HWEditLocalVideoPlayer
   private boolean c = true;
   private boolean d;
   
-  public HWEditLocalVideoPlayer(@NonNull xzd paramxzd)
+  public HWEditLocalVideoPlayer(@NonNull ynw paramynw)
   {
-    super(paramxzd);
+    super(paramynw);
     this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
     this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Boolean = baeo.jdField_b_of_type_Boolean;
+    this.jdField_b_of_type_Boolean = bbld.jdField_b_of_type_Boolean;
     QLog.d("Q.qqstory.record.HWEditLocalVideoPlayer", 2, "HWEditLocalVideoPlayer. ENABLE_FLOW = " + this.jdField_b_of_type_Boolean);
   }
   
@@ -98,10 +88,10 @@ public class HWEditLocalVideoPlayer
     return 2;
   }
   
-  private Bitmap a(@NonNull yau paramyau)
+  private Bitmap a(@NonNull ypn paramypn)
   {
     Object localObject3 = null;
-    Object localObject1 = yau.a(paramyau);
+    Object localObject1 = ypn.a(paramypn);
     if (localObject1 == null) {
       return null;
     }
@@ -110,14 +100,14 @@ public class HWEditLocalVideoPlayer
     if (i != 0) {
       localObject2 = UIUtils.rotateBitmap((Bitmap)localObject1, 360 - i);
     }
-    bagu localbagu = new bagu();
-    localbagu.a(((Bitmap)localObject2).getWidth(), ((Bitmap)localObject2).getHeight());
+    bbnj localbbnj = new bbnj();
+    localbbnj.a(((Bitmap)localObject2).getWidth(), ((Bitmap)localObject2).getHeight());
     Object localObject4 = localObject3;
-    if (yau.a(paramyau))
+    if (ypn.a(paramypn))
     {
       localObject4 = localObject3;
-      if (bagt.a(yau.a(paramyau))) {
-        switch (yau.a(paramyau))
+      if (bbni.a(ypn.a(paramypn))) {
+        switch (ypn.a(paramypn))
         {
         default: 
           localObject1 = null;
@@ -125,9 +115,9 @@ public class HWEditLocalVideoPlayer
           if (localObject1 != null)
           {
             ((GPUBaseFilter)localObject1).init();
-            localObject3 = localbagu.a((Bitmap)localObject2, (GPUBaseFilter)localObject1);
+            localObject3 = localbbnj.a((Bitmap)localObject2, (GPUBaseFilter)localObject1);
             ((GPUBaseFilter)localObject1).destroy();
-            xvv.a("Q.qqstory.record.HWEditLocalVideoPlayer", "updateFragmentThumbBitmapIfNeeded, filterThumbBitmap = %s", localObject3);
+            ykq.a("Q.qqstory.record.HWEditLocalVideoPlayer", "updateFragmentThumbBitmapIfNeeded, filterThumbBitmap = %s", localObject3);
             localObject4 = localObject3;
             if (localObject3 != null) {
               localObject1 = localObject3;
@@ -140,53 +130,53 @@ public class HWEditLocalVideoPlayer
     for (;;)
     {
       localObject2 = localObject1;
-      if (yau.b(paramyau))
+      if (ypn.b(paramypn))
       {
         localObject2 = localObject1;
-        if (yau.b(paramyau) != null)
+        if (ypn.b(paramypn) != null)
         {
-          localObject4 = (bagy)bagt.a(106);
-          if ((this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mBusinessId != 10) && (this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mBusinessId != 12)) {
+          localObject4 = (bbnn)bbni.a(106);
+          if ((this.jdField_a_of_type_Ynw.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mBusinessId != 10) && (this.jdField_a_of_type_Ynw.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mBusinessId != 12)) {
             break label387;
           }
-          ((bagy)localObject4).a(yau.b(paramyau), i);
+          ((bbnn)localObject4).a(ypn.b(paramypn), i);
         }
       }
       for (;;)
       {
-        ((bagy)localObject4).init();
-        localObject2 = localbagu.a((Bitmap)localObject1, (GPUBaseFilter)localObject4);
-        xvv.a("Q.qqstory.record.HWEditLocalVideoPlayer", "updateFragmentThumbBitmapIfNeeded, mosaicThumbBitmap = %s", localObject2);
+        ((bbnn)localObject4).init();
+        localObject2 = localbbnj.a((Bitmap)localObject1, (GPUBaseFilter)localObject4);
+        ykq.a("Q.qqstory.record.HWEditLocalVideoPlayer", "updateFragmentThumbBitmapIfNeeded, mosaicThumbBitmap = %s", localObject2);
         if (localObject2 != null) {
           localObject1 = localObject2;
         }
-        ((bagy)localObject4).destroy();
+        ((bbnn)localObject4).destroy();
         localObject2 = localObject1;
-        if ((localObject3 != null) && (localObject3 != yau.a(paramyau)) && (localObject3 != localObject2)) {
+        if ((localObject3 != null) && (localObject3 != ypn.a(paramypn)) && (localObject3 != localObject2)) {
           ((Bitmap)localObject3).recycle();
         }
-        localbagu.a();
+        localbbnj.a();
         localObject1 = localObject2;
         if (i != 0) {
           localObject1 = UIUtils.rotateBitmap((Bitmap)localObject2, i);
         }
-        if ((localObject1 == yau.a(paramyau)) && (!yau.a(paramyau)) && (!yau.b(paramyau))) {
+        if ((localObject1 == ypn.a(paramypn)) && (!ypn.a(paramypn)) && (!ypn.b(paramypn))) {
           break label399;
         }
         return localObject1;
-        localObject1 = bagt.a(7);
+        localObject1 = bbni.a(7);
         break;
-        localObject1 = bagt.a(4);
+        localObject1 = bbni.a(4);
         break;
-        localObject1 = bagt.a(6);
+        localObject1 = bbni.a(6);
         break;
-        localObject1 = bagt.a(5);
+        localObject1 = bbni.a(5);
         break;
         label387:
-        ((bagy)localObject4).a(yau.b(paramyau));
+        ((bbnn)localObject4).a(ypn.b(paramypn));
       }
       label399:
-      return paramyau.jdField_c_of_type_AndroidGraphicsBitmap;
+      return paramypn.jdField_c_of_type_AndroidGraphicsBitmap;
       localObject1 = localObject2;
       localObject3 = localObject4;
     }
@@ -200,56 +190,21 @@ public class HWEditLocalVideoPlayer
     return new HWEditLocalVideoPlayer.ConvertIFramesRunnable(this, 30, 0, paramInt);
   }
   
-  private void a(Context paramContext, String paramString)
+  private void a(@NonNull ypn paramypn)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DanceMachineQQBrowserActivity", 2, "showProgressDialog");
-    }
-    try
-    {
-      if (this.jdField_a_of_type_AndroidAppProgressDialog != null) {
-        n();
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-        if (this.jdField_a_of_type_AndroidAppProgressDialog.isShowing()) {
-          break;
-        }
-        this.jdField_a_of_type_AndroidAppProgressDialog.show();
-        return;
-        this.jdField_a_of_type_AndroidAppProgressDialog = new ReportProgressDialog(paramContext, 2131755826);
-        this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(false);
-        this.jdField_a_of_type_AndroidAppProgressDialog.getWindow().setDimAmount(0.0F);
-        this.jdField_a_of_type_AndroidAppProgressDialog.show();
-        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2131559574);
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131372546));
-      }
-      return;
-    }
-    catch (Throwable paramContext)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("DanceMachineQQBrowserActivity", 2, "showProgressDialog error " + paramContext.getMessage());
-      }
-    }
-  }
-  
-  private void a(@NonNull yau paramyau)
-  {
-    xvv.b("Q.qqstory.record.HWEditLocalVideoPlayer", "setPlayInfo，index : %d => %d", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(paramyau.jdField_c_of_type_Int));
+    ykq.b("Q.qqstory.record.HWEditLocalVideoPlayer", "setPlayInfo，index : %d => %d", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(paramypn.jdField_c_of_type_Int));
     if (this.jdField_b_of_type_Boolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.setPlayRange((int)yau.a(paramyau), (int)yau.b(paramyau));
-      if (this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter != null) {
-        this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(3, "");
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.setPlayRange((int)ypn.a(paramypn), (int)ypn.b(paramypn));
+      if (this.jdField_a_of_type_Ynw.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter != null) {
+        this.jdField_a_of_type_Ynw.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(3, "");
       }
     }
     for (;;)
     {
-      this.jdField_a_of_type_Int = paramyau.jdField_c_of_type_Int;
+      this.jdField_a_of_type_Int = paramypn.jdField_c_of_type_Int;
       return;
-      if (paramyau.jdField_a_of_type_JavaLangString == null)
+      if (paramypn.jdField_a_of_type_JavaLangString == null)
       {
         if (!this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.a().equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))
         {
@@ -258,23 +213,23 @@ public class HWEditLocalVideoPlayer
           this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.b();
           this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.d();
         }
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.setPlayRange((int)yau.a(paramyau), (int)yau.b(paramyau));
-        if (this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter != null) {
-          this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(3, amtj.a(2131704804));
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.setPlayRange((int)ypn.a(paramypn), (int)ypn.b(paramypn));
+        if (this.jdField_a_of_type_Ynw.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter != null) {
+          this.jdField_a_of_type_Ynw.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(3, anvx.a(2131705155));
         }
       }
       else
       {
-        if (!this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.a().equalsIgnoreCase(paramyau.jdField_a_of_type_JavaLangString))
+        if (!this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.a().equalsIgnoreCase(paramypn.jdField_a_of_type_JavaLangString))
         {
           this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.f();
-          this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.setFilePath(paramyau.jdField_a_of_type_JavaLangString, paramyau.jdField_b_of_type_JavaLangString);
+          this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.setFilePath(paramypn.jdField_a_of_type_JavaLangString, paramypn.jdField_b_of_type_JavaLangString);
           this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.h();
           this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.b();
           this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.d();
         }
-        if (this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter != null) {
-          this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(3, "");
+        if (this.jdField_a_of_type_Ynw.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter != null) {
+          this.jdField_a_of_type_Ynw.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(3, "");
         }
       }
     }
@@ -300,7 +255,7 @@ public class HWEditLocalVideoPlayer
   {
     if (this.jdField_b_of_type_Boolean)
     {
-      xvv.e("Q.qqstory.record.HWEditLocalVideoPlayer", "triggerConvertIFramesRunnable skip");
+      ykq.e("Q.qqstory.record.HWEditLocalVideoPlayer", "triggerConvertIFramesRunnable skip");
       return;
     }
     if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable == null)
@@ -308,10 +263,10 @@ public class HWEditLocalVideoPlayer
       Object localObject;
       if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
       {
-        localObject = (yau)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-        if ((!((yau)localObject).jdField_a_of_type_Boolean) && (TextUtils.isEmpty(((yau)localObject).jdField_a_of_type_JavaLangString)))
+        localObject = (ypn)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+        if ((!((ypn)localObject).jdField_a_of_type_Boolean) && (TextUtils.isEmpty(((ypn)localObject).jdField_a_of_type_JavaLangString)))
         {
-          this.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable = a(((yau)localObject).jdField_c_of_type_Int);
+          this.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable = a(((ypn)localObject).jdField_c_of_type_Int);
           this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable, 300L);
         }
       }
@@ -320,23 +275,23 @@ public class HWEditLocalVideoPlayer
         localObject = this.jdField_a_of_type_JavaUtilList.iterator();
         while (((Iterator)localObject).hasNext())
         {
-          yau localyau = (yau)((Iterator)localObject).next();
-          if ((!localyau.jdField_a_of_type_Boolean) && (TextUtils.isEmpty(localyau.jdField_a_of_type_JavaLangString)))
+          ypn localypn = (ypn)((Iterator)localObject).next();
+          if ((!localypn.jdField_a_of_type_Boolean) && (TextUtils.isEmpty(localypn.jdField_a_of_type_JavaLangString)))
           {
-            this.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable = a(localyau.jdField_c_of_type_Int);
+            this.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable = a(localypn.jdField_c_of_type_Int);
             this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable, 300L);
           }
         }
       }
       if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable == null)
       {
-        xvv.c("Q.qqstory.record.HWEditLocalVideoPlayer", "no fragment info should convert I frame");
+        ykq.c("Q.qqstory.record.HWEditLocalVideoPlayer", "no fragment info should convert I frame");
         return;
       }
-      xvv.b("Q.qqstory.record.HWEditLocalVideoPlayer", "triggerConvertIFramesRunnable, priorVideoIndex=%d, mFrameRate=%d, mIFrameInterval=%d, mFragmentIndex=%d", Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.b), Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.jdField_c_of_type_Int));
+      ykq.b("Q.qqstory.record.HWEditLocalVideoPlayer", "triggerConvertIFramesRunnable, priorVideoIndex=%d, mFrameRate=%d, mIFrameInterval=%d, mFragmentIndex=%d", Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.b), Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.jdField_c_of_type_Int));
       return;
     }
-    xvv.b("Q.qqstory.record.HWEditLocalVideoPlayer", "triggerConvertIFramesRunnable ignore, mFrameRate=%d, mIFrameInterval=%d, mFragmentIndex=%d", Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.b), Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.jdField_c_of_type_Int));
+    ykq.b("Q.qqstory.record.HWEditLocalVideoPlayer", "triggerConvertIFramesRunnable ignore, mFrameRate=%d, mIFrameInterval=%d, mFragmentIndex=%d", Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.b), Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.jdField_c_of_type_Int));
   }
   
   private void c(int paramInt)
@@ -353,16 +308,16 @@ public class HWEditLocalVideoPlayer
       return;
       if ((paramInt == 3) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
       {
-        yau localyau = (yau)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int);
-        if (localyau.jdField_a_of_type_JavaLangString == null) {
+        ypn localypn = (ypn)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int);
+        if (localypn.jdField_a_of_type_JavaLangString == null) {
           this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.c();
         }
         for (;;)
         {
           this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.setSpeedType(3);
           break;
-          xvv.b("Q.qqstory.record.HWEditLocalVideoPlayer", "setPlayMode change to iframe video");
-          a(localyau);
+          ykq.b("Q.qqstory.record.HWEditLocalVideoPlayer", "setPlayMode change to iframe video");
+          a(localypn);
         }
       }
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.setSpeedType(paramInt);
@@ -374,20 +329,20 @@ public class HWEditLocalVideoPlayer
   {
     if (this.jdField_b_of_type_Boolean)
     {
-      this.jdField_a_of_type_Xzd.jdField_a_of_type_Xxq.a(true);
+      this.jdField_a_of_type_Ynw.jdField_a_of_type_Ymj.a(true);
       return;
     }
     int i = 0;
     while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      if ((yau.a((yau)this.jdField_a_of_type_JavaUtilList.get(i)) == 1) && (TextUtils.isEmpty(((yau)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString)))
+      if ((ypn.a((ypn)this.jdField_a_of_type_JavaUtilList.get(i)) == 1) && (TextUtils.isEmpty(((ypn)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString)))
       {
-        this.jdField_a_of_type_Xzd.jdField_a_of_type_Xxq.a(false);
+        this.jdField_a_of_type_Ynw.jdField_a_of_type_Ymj.a(false);
         return;
       }
       i += 1;
     }
-    this.jdField_a_of_type_Xzd.jdField_a_of_type_Xxq.a(true);
+    this.jdField_a_of_type_Ynw.jdField_a_of_type_Ymj.a(true);
   }
   
   private void n()
@@ -407,21 +362,21 @@ public class HWEditLocalVideoPlayer
     catch (Exception localException) {}
   }
   
-  public void Q_()
+  public void S_()
   {
-    super.Q_();
+    super.S_();
     this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.onResume();
     n();
   }
   
-  public void R_()
+  public void T_()
   {
-    super.R_();
+    super.T_();
     this.c = false;
-    if (this.jdField_a_of_type_Bagb != null)
+    if (this.jdField_a_of_type_Bbmq != null)
     {
-      this.jdField_a_of_type_Bagb.a();
-      this.jdField_a_of_type_Bagb = null;
+      this.jdField_a_of_type_Bbmq.a();
+      this.jdField_a_of_type_Bbmq = null;
     }
     if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable != null)
     {
@@ -434,23 +389,23 @@ public class HWEditLocalVideoPlayer
   {
     if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
     {
-      yau localyau = (yau)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      return yau.b(localyau) - yau.a(localyau);
+      ypn localypn = (ypn)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      return ypn.b(localypn) - ypn.a(localypn);
     }
-    xvv.e("Q.qqstory.record.HWEditLocalVideoPlayer", "getDurationOfFragment with invalid index = %d", new Object[] { Integer.valueOf(paramInt) });
+    ykq.e("Q.qqstory.record.HWEditLocalVideoPlayer", "getDurationOfFragment with invalid index = %d", new Object[] { Integer.valueOf(paramInt) });
     return 0L;
   }
   
   public Bitmap a(int paramInt)
   {
     if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-      return a((yau)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+      return a((ypn)this.jdField_a_of_type_JavaUtilList.get(paramInt));
     }
-    xvv.e("Q.qqstory.record.HWEditLocalVideoPlayer", "getDurationOfFragment with invalid index = %d", new Object[] { Integer.valueOf(paramInt) });
+    ykq.e("Q.qqstory.record.HWEditLocalVideoPlayer", "getDurationOfFragment with invalid index = %d", new Object[] { Integer.valueOf(paramInt) });
     return null;
   }
   
-  public List<? extends ybh> a()
+  public List<? extends yqa> a()
   {
     return Collections.unmodifiableList(this.jdField_a_of_type_JavaUtilList);
   }
@@ -460,15 +415,15 @@ public class HWEditLocalVideoPlayer
     super.a();
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
     Object localObject;
-    if ((this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource instanceof EditTakeVideoSource))
+    if ((this.jdField_a_of_type_Ynw.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource instanceof EditTakeVideoSource))
     {
-      localObject = (EditTakeVideoSource)this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource;
+      localObject = (EditTakeVideoSource)this.jdField_a_of_type_Ynw.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource;
       this.jdField_b_of_type_JavaLangString = ((EditTakeVideoSource)localObject).jdField_b_of_type_JavaLangString;
       this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((EditTakeVideoSource)localObject).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
       this.jdField_a_of_type_JavaLangString = ((EditTakeVideoSource)localObject).jdField_a_of_type_JavaLangString;
-      bool1 = xzd.a(this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEnableMasks, 32768);
+      bool1 = ynw.a(this.jdField_a_of_type_Ynw.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEnableMasks, 32768);
       boolean bool2 = VideoEnvironment.getAVCodecSurpportFeature(7);
-      xvv.d("Q.qqstory.record.HWEditLocalVideoPlayer", "recordMultiVideoFragment = %s, supportMultiVideoFragment = %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+      ykq.d("Q.qqstory.record.HWEditLocalVideoPlayer", "recordMultiVideoFragment = %s, supportMultiVideoFragment = %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
       if ((!bool1) || (!bool2)) {
         break label394;
       }
@@ -477,19 +432,19 @@ public class HWEditLocalVideoPlayer
     for (boolean bool1 = true;; bool1 = false)
     {
       this.jdField_a_of_type_Boolean = bool1;
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView = ((NeoVideoFilterPlayView)a(2131368224));
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView = ((NeoVideoFilterPlayView)a(2131368368));
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.setVisibility(0);
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.setFilePath(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.setRepeat(true);
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.setSpeedType(0);
-      if ((this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mBusinessId == 10) || (this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mBusinessId == 12))
+      if ((this.jdField_a_of_type_Ynw.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mBusinessId == 10) || (this.jdField_a_of_type_Ynw.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mBusinessId == 12))
       {
-        int i = yqs.b(this.jdField_a_of_type_JavaLangString);
+        int i = zfl.b(this.jdField_a_of_type_JavaLangString);
         this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.setRotate(i);
         if ((i == 90) || (i == 270))
         {
           localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.getLayoutParams();
-          EditTakeVideoSource localEditTakeVideoSource = (EditTakeVideoSource)this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource;
+          EditTakeVideoSource localEditTakeVideoSource = (EditTakeVideoSource)this.jdField_a_of_type_Ynw.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource;
           ((RelativeLayout.LayoutParams)localObject).height = ((int)(DeviceInfoUtil.getWidth() * localEditTakeVideoSource.getWidth() / localEditTakeVideoSource.getHeight()));
           ((RelativeLayout.LayoutParams)localObject).addRule(13);
           this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.setLayoutParams((ViewGroup.LayoutParams)localObject);
@@ -497,10 +452,10 @@ public class HWEditLocalVideoPlayer
       }
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.setDecodeListener(this);
       if (this.jdField_b_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.setPlayListener(new yar(this));
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.setPlayListener(new ypk(this));
       }
-      a(xzp.class, this);
-      this.jdField_a_of_type_Xzd.jdField_a_of_type_Xxq.a(false);
+      a(yoi.class, this);
+      this.jdField_a_of_type_Ynw.jdField_a_of_type_Ymj.a(false);
       this.jdField_b_of_type_AndroidOsHandler.postDelayed(new HWEditLocalVideoPlayer.2(this), 200L);
       return;
       throw new IllegalArgumentException("HWEditLocalVideoPlayer only support EditTakeVideoSource now");
@@ -509,15 +464,15 @@ public class HWEditLocalVideoPlayer
   
   public void a(int paramInt)
   {
-    xvv.a("Q.qqstory.record.HWEditLocalVideoPlayer", "setPlayMode mode=%s", Integer.valueOf(paramInt));
-    int i = this.jdField_a_of_type_Xzd.a();
+    ykq.a("Q.qqstory.record.HWEditLocalVideoPlayer", "setPlayMode mode=%s", Integer.valueOf(paramInt));
+    int i = this.jdField_a_of_type_Ynw.a();
     if (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      yau localyau = (yau)this.jdField_a_of_type_JavaUtilList.get(i);
-      if (yau.a(localyau) != paramInt)
+      ypn localypn = (ypn)this.jdField_a_of_type_JavaUtilList.get(i);
+      if (ypn.a(localypn) != paramInt)
       {
-        yau.a(localyau, paramInt);
-        yau.c(localyau, true);
+        ypn.a(localypn, paramInt);
+        ypn.c(localypn, true);
       }
     }
   }
@@ -529,18 +484,18 @@ public class HWEditLocalVideoPlayer
     {
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.setColorFilterType(b(paramInt1));
       c(paramInt1);
-      xvv.a("Q.qqstory.record.HWEditLocalVideoPlayer", "setSlideMode lefPlayMode=%s rightMode=%s, offset=%s", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Float.valueOf(paramFloat));
+      ykq.a("Q.qqstory.record.HWEditLocalVideoPlayer", "setSlideMode lefPlayMode=%s rightMode=%s, offset=%s", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Float.valueOf(paramFloat));
     }
     do
     {
       return;
-      if ((this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource instanceof EditLocalVideoSource))
+      if ((this.jdField_a_of_type_Ynw.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource instanceof EditLocalVideoSource))
       {
-        EditLocalVideoSource localEditLocalVideoSource = (EditLocalVideoSource)this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource;
+        EditLocalVideoSource localEditLocalVideoSource = (EditLocalVideoSource)this.jdField_a_of_type_Ynw.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource;
         this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.setColorFilterType(b(paramInt1), b(paramInt2), f, localEditLocalVideoSource.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.rotation);
         return;
       }
-    } while (!(this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource instanceof EditTakeVideoSource));
+    } while (!(this.jdField_a_of_type_Ynw.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource instanceof EditTakeVideoSource));
     this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.setColorFilterType(b(paramInt1), b(paramInt2), f, 0);
   }
   
@@ -581,16 +536,16 @@ public class HWEditLocalVideoPlayer
     throw new RuntimeException(paramThrowable);
   }
   
-  public void a(int paramInt, @NonNull yjh paramyjh)
+  public void a(int paramInt, @NonNull yya paramyya)
   {
     int i;
-    yau localyau;
-    if ((paramyjh.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource))
+    ypn localypn;
+    if ((paramyya.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource))
     {
-      if (this.jdField_a_of_type_Bagb != null)
+      if (this.jdField_a_of_type_Bbmq != null)
       {
-        this.jdField_a_of_type_Bagb.a();
-        this.jdField_a_of_type_Bagb = null;
+        this.jdField_a_of_type_Bbmq.a();
+        this.jdField_a_of_type_Bbmq = null;
       }
       i = this.jdField_a_of_type_JavaUtilList.size();
       if (i <= 1) {
@@ -599,35 +554,35 @@ public class HWEditLocalVideoPlayer
       if (paramInt >= i) {
         break label235;
       }
-      localyau = (yau)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      paramyjh.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.hasFragments = true;
-      paramyjh.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoNeedRotate = false;
-      paramyjh.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoRangeStart = ((int)yau.a(localyau));
-      paramyjh.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoRangeEnd = ((int)yau.b(localyau));
-      paramyjh.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.mIFrameVideoPath = localyau.jdField_a_of_type_JavaLangString;
-      xvv.b("Q.qqstory.record.HWEditLocalVideoPlayer", "editVideoPrePublish : %s", localyau);
+      localypn = (ypn)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      paramyya.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.hasFragments = true;
+      paramyya.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoNeedRotate = false;
+      paramyya.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoRangeStart = ((int)ypn.a(localypn));
+      paramyya.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoRangeEnd = ((int)ypn.b(localypn));
+      paramyya.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.mIFrameVideoPath = localypn.jdField_a_of_type_JavaLangString;
+      ykq.b("Q.qqstory.record.HWEditLocalVideoPlayer", "editVideoPrePublish : %s", localypn);
     }
     for (;;)
     {
-      boolean bool = yqs.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
+      boolean bool = zfl.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
       if (QLog.isColorLevel()) {
         QLog.d("Q.qqstory.record.HWEditLocalVideoPlayer", 2, "landscape:" + bool + " w:" + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth + " h:" + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight + " r:" + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.rotation);
       }
-      paramyjh.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.putExtra("landscape_video", Boolean.valueOf(bool));
+      paramyya.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.putExtra("landscape_video", Boolean.valueOf(bool));
       return;
       label235:
-      xvv.d("Q.qqstory.record.HWEditLocalVideoPlayer", "editVideoPrePublish : get invalid fragment index = %d, fragment count = %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+      ykq.d("Q.qqstory.record.HWEditLocalVideoPlayer", "editVideoPrePublish : get invalid fragment index = %d, fragment count = %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
       continue;
       label264:
       if (paramInt < i)
       {
-        localyau = (yau)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-        paramyjh.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoNeedRotate = false;
-        paramyjh.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.mIFrameVideoPath = localyau.jdField_a_of_type_JavaLangString;
+        localypn = (ypn)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+        paramyya.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoNeedRotate = false;
+        paramyya.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.mIFrameVideoPath = localypn.jdField_a_of_type_JavaLangString;
       }
       else
       {
-        xvv.d("Q.qqstory.record.HWEditLocalVideoPlayer", new Throwable(), "fragment index %d invalid, fragment count %d, again count %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
+        ykq.d("Q.qqstory.record.HWEditLocalVideoPlayer", new Throwable(), "fragment index %d invalid, fragment count %d, again count %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
       }
     }
   }
@@ -639,86 +594,38 @@ public class HWEditLocalVideoPlayer
   
   public void a(long paramLong)
   {
-    int i = 1;
-    EditVideoParams localEditVideoParams;
-    Object localObject;
-    int j;
-    String str;
-    int k;
-    Intent localIntent;
     if (!this.d)
     {
       this.d = true;
-      if (!bbwy.i()) {
-        return;
-      }
-      localEditVideoParams = (EditVideoParams)this.jdField_a_of_type_Yan.getActivity().getIntent().getParcelableExtra(EditVideoParams.class.getName());
-      if ((localEditVideoParams != null) && (NetworkUtil.isNetSupport(this.jdField_a_of_type_Yan.getActivity())))
-      {
-        localObject = localEditVideoParams.mExtra;
-        int m = ((Bundle)localObject).getInt("ptv_template_kind", -999);
-        j = ((Bundle)localObject).getInt("dance_machine_session_type", -999);
-        str = ((Bundle)localObject).getString("dance_machine_session_uin", "");
-        k = ((Bundle)localObject).getInt("dance_machine_score", 0);
-        if (m == 3)
-        {
-          boolean bool = bbta.a().a();
-          this.jdField_a_of_type_Yan.getActivity().runOnUiThread(new HWEditLocalVideoPlayer.5(this));
-          localObject = "";
-          if ((this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource instanceof EditTakeVideoSource)) {
-            localObject = ((EditTakeVideoSource)this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource).jdField_b_of_type_JavaLangString;
-          }
-          localIntent = new Intent();
-          localIntent.putExtra("KEY_AUDIO_FILE_PATH", (String)localObject);
-          localIntent.putExtra("KEY_VIDEO_FILE_PATH", this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource.getSourcePath());
-          localIntent.putExtra(EditVideoParams.class.getName(), localEditVideoParams);
-          localIntent.putExtra("KEY_AUDIO_CHANNEL", CodecParam.mAudioChannel);
-          localIntent.putExtra("KEY_BITRATE", CodecParam.mDstAudioEncBitrate);
-          localIntent.putExtra("KEY_AUDIO_FORMAT", CodecParam.mAudioFormat);
-          localIntent.putExtra("KEY_SAMPLE_RATE", CodecParam.mAudioSampleRate);
-          this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.jdField_b_of_type_Boolean = true;
-          if (QLog.isColorLevel()) {
-            QLog.d("DIDI", 1, "enter Rank mHaveDanceRankShowed=true");
-          }
-          localObject = this.jdField_a_of_type_Yan.getActivity();
-          if (!bool) {
-            break label391;
-          }
-        }
-      }
+      if (bddt.i()) {}
     }
-    for (;;)
+    ymb localymb;
+    do
     {
-      DanceMachineQQBrowserActivity.a((Activity)localObject, j, str, i, localEditVideoParams.mBusinessId, 0, k, localIntent);
-      localObject = (xxi)a(xxi.class);
-      if (localObject == null) {
-        break;
-      }
-      ((xxi)localObject).a(paramLong / 1000000L);
       return;
-      label391:
-      i = 0;
-    }
+      localymb = (ymb)a(ymb.class);
+    } while (localymb == null);
+    localymb.a(paramLong / 1000000L);
   }
   
   public void a(Bitmap paramBitmap) {}
   
   public void a(Bitmap paramBitmap, boolean paramBoolean)
   {
-    int i = this.jdField_a_of_type_Xzd.a();
-    yau localyau;
+    int i = this.jdField_a_of_type_Ynw.a();
+    ypn localypn;
     if (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      localyau = (yau)this.jdField_a_of_type_JavaUtilList.get(i);
-      yau.a(localyau, paramBitmap);
-      if ((!yau.b(localyau)) && (!paramBoolean)) {
+      localypn = (ypn)this.jdField_a_of_type_JavaUtilList.get(i);
+      ypn.a(localypn, paramBitmap);
+      if ((!ypn.b(localypn)) && (!paramBoolean)) {
         break label73;
       }
     }
     label73:
     for (paramBoolean = true;; paramBoolean = false)
     {
-      yau.a(localyau, paramBoolean);
+      ypn.a(localypn, paramBoolean);
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.setMosaicFilterType(paramBitmap);
       return;
     }
@@ -732,9 +639,9 @@ public class HWEditLocalVideoPlayer
   
   public void a(boolean paramBoolean)
   {
-    int i = this.jdField_a_of_type_Xzd.a();
+    int i = this.jdField_a_of_type_Ynw.a();
     if (i < this.jdField_a_of_type_JavaUtilList.size()) {
-      yau.b((yau)this.jdField_a_of_type_JavaUtilList.get(i), paramBoolean);
+      ypn.b((ypn)this.jdField_a_of_type_JavaUtilList.get(i), paramBoolean);
     }
     this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.setMuteAudio(paramBoolean);
   }
@@ -763,10 +670,10 @@ public class HWEditLocalVideoPlayer
       if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
         break label167;
       }
-      paramMessage = (yau)this.jdField_a_of_type_JavaUtilList.get(i);
-      xvv.b("Q.qqstory.record.HWEditLocalVideoPlayer", "MESSAGE_PLAYING_FRAGMENT_CHANGED : fragment = %s", paramMessage);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.setColorFilterType(b(yau.a(paramMessage)));
-      c(yau.a(paramMessage));
+      paramMessage = (ypn)this.jdField_a_of_type_JavaUtilList.get(i);
+      ykq.b("Q.qqstory.record.HWEditLocalVideoPlayer", "MESSAGE_PLAYING_FRAGMENT_CHANGED : fragment = %s", paramMessage);
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView.setColorFilterType(b(ypn.a(paramMessage)));
+      c(ypn.a(paramMessage));
       a(paramMessage);
       b(i);
       this.jdField_b_of_type_AndroidOsHandler.removeMessages(j);
@@ -776,7 +683,7 @@ public class HWEditLocalVideoPlayer
     {
       return false;
       label167:
-      xvv.e("Q.qqstory.record.HWEditLocalVideoPlayer", "MESSAGE_PLAYING_FRAGMENT_CHANGED : get invalid index=%d, video fragment count = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
+      ykq.e("Q.qqstory.record.HWEditLocalVideoPlayer", "MESSAGE_PLAYING_FRAGMENT_CHANGED : get invalid index=%d, video fragment count = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
     }
   }
   
@@ -822,13 +729,13 @@ public class HWEditLocalVideoPlayer
     int i = paramMessage.what;
     if (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      paramMessage = (yau)this.jdField_a_of_type_JavaUtilList.get(i);
+      paramMessage = (ypn)this.jdField_a_of_type_JavaUtilList.get(i);
       Bitmap localBitmap = a(paramMessage);
       if ((localBitmap != null) && (localBitmap != paramMessage.jdField_c_of_type_AndroidGraphicsBitmap))
       {
         paramMessage = paramMessage.a(localBitmap);
         this.jdField_a_of_type_JavaUtilList.set(i, paramMessage);
-        xvv.b("Q.qqstory.record.HWEditLocalVideoPlayer", "update fragment bitmap : %s", paramMessage);
+        ykq.b("Q.qqstory.record.HWEditLocalVideoPlayer", "update fragment bitmap : %s", paramMessage);
         this.jdField_a_of_type_AndroidOsHandler.post(new HWEditLocalVideoPlayer.3(this, i));
       }
     }
@@ -846,7 +753,7 @@ public class HWEditLocalVideoPlayer
   
   public void l()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new HWEditLocalVideoPlayer.6(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new HWEditLocalVideoPlayer.5(this));
   }
 }
 

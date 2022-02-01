@@ -1,23 +1,54 @@
-import Wallet.AcsMsg;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.SearchFriendListActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 public class aevp
-  implements View.OnClickListener
+  extends BaseAdapter
 {
-  public aevp(ReminderListFragment paramReminderListFragment) {}
+  private aevp(SearchFriendListActivity paramSearchFriendListActivity) {}
   
-  public void onClick(View paramView)
+  public int getCount()
   {
-    AcsMsg localAcsMsg = (AcsMsg)paramView.getTag();
-    ReminderListFragment.a(this.a, localAcsMsg);
-    if (ReminderListFragment.a(this.a) != null) {
-      ReminderListFragment.a(this.a).dismiss();
+    return SearchFriendListActivity.a(this.a).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt >= SearchFriendListActivity.a(this.a).size())) {
+      return null;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return SearchFriendListActivity.a(this.a).get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = this.a.getLayoutInflater().inflate(2131562810, paramViewGroup, false);
+      aevq localaevq = new aevq();
+      localaevq.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368094));
+      localaevq.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371980));
+      localaevq.b = ((TextView)paramView.findViewById(2131365454));
+      paramView.setTag(localaevq);
+      paramView.setOnClickListener(this.a);
+    }
+    for (;;)
+    {
+      this.a.a(paramView, paramInt);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+    }
   }
 }
 

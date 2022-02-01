@@ -1,21 +1,39 @@
-import com.tencent.mobileqq.app.ThreadManager;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.avgame.ui.AVGameRoomListFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class npk
-  implements non
+  implements View.OnClickListener
 {
-  public void a(Runnable paramRunnable)
-  {
-    ThreadManager.executeOnNetWorkThread(paramRunnable);
-  }
+  public npk(AVGameRoomListFragment paramAVGameRoomListFragment) {}
   
-  public void b(Runnable paramRunnable)
+  public void onClick(View paramView)
   {
-    ThreadManager.executeOnFileThread(paramRunnable);
-  }
-  
-  public void c(Runnable paramRunnable)
-  {
-    ThreadManager.post(paramRunnable, 5, null, false);
+    Object localObject;
+    if (this.a.a != null)
+    {
+      localObject = this.a.a;
+      bdla.b(null, "dc00898", "", "", "0X800B01D", "0X800B01D", 0, 0, "", "", (String)localObject, "");
+      if (!nqi.a(this.a.getActivity(), this.a.a)) {
+        break label75;
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localObject = "";
+      break;
+      label75:
+      localObject = (ncz)this.a.getActivity().app.getManager(QQManagerFactory.AV_GAME_MANAGER);
+      if (localObject != null) {
+        ((ncz)localObject).a(this.a.getActivity(), 6, this.a.a, 0);
+      }
+    }
   }
 }
 

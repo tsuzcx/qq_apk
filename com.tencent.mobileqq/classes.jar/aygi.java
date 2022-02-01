@@ -1,15 +1,12 @@
 import android.content.DialogInterface;
-import com.tencent.mobileqq.pluspanel.appinfo.ShortVideoAppInfo;
+import android.content.DialogInterface.OnClickListener;
 
-public class aygi
-  extends bfvf
+class aygi
+  implements DialogInterface.OnClickListener
 {
-  public aygi(ShortVideoAppInfo paramShortVideoAppInfo) {}
+  aygi(ayfx paramayfx) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

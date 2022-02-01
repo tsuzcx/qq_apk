@@ -1,34 +1,12 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewStub;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class vbk
-  extends vbc
+final class vbk
+  implements DialogInterface.OnClickListener
 {
-  private ukz<vaq> a;
-  
-  public vbk(Context paramContext, vct paramvct)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramContext, paramvct);
-  }
-  
-  private void e()
-  {
-    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131380722);
-    this.jdField_a_of_type_Ukz = new vav(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Vct);
-    this.jdField_a_of_type_Ukz.a(localViewStub);
-    a(this.jdField_a_of_type_Ukz);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public void d()
-  {
-    super.d();
-    e();
+    paramDialogInterface.dismiss();
   }
 }
 

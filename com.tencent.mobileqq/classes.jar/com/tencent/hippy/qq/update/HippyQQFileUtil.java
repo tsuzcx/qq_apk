@@ -4,7 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.io.File;
-import noe;
+import nvf;
 
 public class HippyQQFileUtil
 {
@@ -312,7 +312,7 @@ public class HippyQQFileUtil
   
   public static File getOfflineDownloadFile()
   {
-    Object localObject = noe.a("1011");
+    Object localObject = nvf.a("1011");
     if (TextUtils.isEmpty((CharSequence)localObject)) {}
     do
     {

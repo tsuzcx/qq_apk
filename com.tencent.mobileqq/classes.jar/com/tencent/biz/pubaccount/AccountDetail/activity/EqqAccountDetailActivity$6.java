@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.AccountDetail.activity;
 
 import android.os.Handler;
-import bcef;
+import bdla;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.PublicAccountHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -26,7 +26,7 @@ class EqqAccountDetailActivity$6
       EqqAccountDetailActivity.b(this.this$0).getMessageFacade().clearHistory(EqqAccountDetailActivity.b(this.this$0), 1008);
       EqqAccountDetailActivity.c(this.this$0).getMessageFacade().clearHistory(EqqAccountDetailActivity.c(this.this$0), 1024);
       EqqAccountDetailActivity.d(this.this$0).getMessageFacade().clearHistory(EqqAccountDetailActivity.d(this.this$0), 0);
-      bcef.b(EqqAccountDetailActivity.e(this.this$0), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.e(this.this$0), "0X8004E43", "0X8004E43", 0, 0, EqqAccountDetailActivity.f(this.this$0), "", "", "");
+      bdla.b(EqqAccountDetailActivity.e(this.this$0), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.e(this.this$0), "0X8004E43", "0X8004E43", 0, 0, EqqAccountDetailActivity.f(this.this$0), "", "", "");
       return;
     }
     catch (Exception localException) {}

@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import mqq.manager.ProxyIpManager;
-import ufa;
+import usx;
 
 public class JSPttUploadProcessor
   extends BaseUploadProcessor
@@ -169,7 +169,7 @@ public class JSPttUploadProcessor
             this.mIpList = paramRichProtoReq.ipList;
             this.mTransferedSize = 0L;
             this.mBlockSize = paramRichProtoReq.blockSize;
-            ufa.c(this.mResid);
+            usx.b(this.mResid);
             sendFile();
           }
         }

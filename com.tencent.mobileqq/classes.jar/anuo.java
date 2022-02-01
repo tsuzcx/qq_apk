@@ -1,33 +1,14 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-
-public class anuo
-  extends anrh
+class anuo
+  implements bdhi
 {
-  public anuo(QQAppInterface paramQQAppInterface, Context paramContext)
+  anuo(anun paramanun) {}
+  
+  public void a()
   {
-    super(paramQQAppInterface, paramContext);
+    this.a.B();
   }
   
-  public boolean a()
-  {
-    boolean bool = false;
-    try
-    {
-      if ("openPlayer".equals(this.jdField_a_of_type_JavaUtilHashMap.get("action"))) {
-        bool = uqs.a().a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap);
-      }
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("WeishiPublicAccountVideoAction", 1, "doAction error: " + localException.getMessage());
-      a("WeishiPublicAccountVideoAction");
-    }
-    return false;
-  }
+  public void b() {}
 }
 
 

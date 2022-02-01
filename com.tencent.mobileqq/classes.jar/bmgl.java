@@ -1,20 +1,23 @@
-import java.util.HashMap;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
-public abstract class bmgl
+public final class bmgl
 {
-  public boolean a;
+  public static String a(Context paramContext)
+  {
+    return paramContext.getSharedPreferences("SETTING", 0).getString("debug_h5_test_env", null);
+  }
   
-  public abstract float a();
+  public static void a(Context paramContext, boolean paramBoolean, String paramString)
+  {
+    paramContext.getSharedPreferences("SETTING", 0).edit().putBoolean("debug_h5_test_mode", paramBoolean).putString("debug_h5_test_env", paramString).apply();
+  }
   
-  public abstract String a();
-  
-  public abstract HashMap<String, String> a();
-  
-  public abstract float b();
-  
-  public abstract String b();
-  
-  public abstract float c();
+  public static boolean a(Context paramContext)
+  {
+    return paramContext.getSharedPreferences("SETTING", 0).getBoolean("debug_h5_test_mode", false);
+  }
 }
 
 

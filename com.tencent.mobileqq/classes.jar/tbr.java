@@ -1,24 +1,29 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class tbr
-  extends AnimatorListenerAdapter
+class tbr
+  implements View.OnClickListener
 {
-  public tbr(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView, View paramView) {}
+  tbr(tbq paramtbq, TabChannelCoverInfo paramTabChannelCoverInfo1, int paramInt, TabChannelCoverInfo paramTabChannelCoverInfo2, ImageView paramImageView) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView, false);
-    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView);
-    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView, this.jdField_a_of_type_AndroidViewView);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView, true);
-    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView);
+    tbq.a(this.jdField_a_of_type_Tbq, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo);
+    if (tbq.a(this.jdField_a_of_type_Tbq) != null) {
+      tbq.a(this.jdField_a_of_type_Tbq).a(this.jdField_a_of_type_Int);
+    }
+    TabChannelCoverInfo localTabChannelCoverInfo = this.b;
+    int j = oxo.b;
+    if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0) {}
+    for (int i = 1;; i = 0)
+    {
+      oxo.a("0X8009496", localTabChannelCoverInfo, j, i, this.jdField_a_of_type_Int);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

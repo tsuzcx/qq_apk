@@ -1,26 +1,30 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.GameRich;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.comic.VipComicJumpActivity;
 
-public final class aqqm
-  implements Parcelable.Creator
+public class aqqm
+  implements aqqr
 {
-  public IPSiteModel.GameRich a(Parcel paramParcel)
+  public String a()
   {
-    IPSiteModel.GameRich localGameRich = new IPSiteModel.GameRich();
-    localGameRich.anchorFaceUrl = paramParcel.readString();
-    localGameRich.anchorId = paramParcel.readString();
-    localGameRich.anchorName = paramParcel.readString();
-    localGameRich.coverUrl = paramParcel.readString();
-    localGameRich.online = paramParcel.readString();
-    localGameRich.title = paramParcel.readString();
-    localGameRich.richJumpUrl = paramParcel.readString();
-    return localGameRich;
+    return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getApp().getResources().getString(2131690663);
   }
   
-  public IPSiteModel.GameRich[] a(int paramInt)
+  public void a(View paramView, int paramInt)
   {
-    return new IPSiteModel.GameRich[paramInt];
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    Object localObject = new Intent("android.intent.action.MAIN");
+    paramView = paramView.getContext();
+    localObject = VipComicJumpActivity.a((Intent)localObject);
+    if (VipComicJumpActivity.a(localQQAppInterface, (Activity)paramView, (blqv)localObject)) {
+      VipComicJumpActivity.a(localQQAppInterface, true);
+    }
+    bdla.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", aqoq.b(paramInt), 0, "", "", "", "");
   }
 }
 

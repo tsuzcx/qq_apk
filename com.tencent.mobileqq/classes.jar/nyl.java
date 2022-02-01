@@ -1,23 +1,23 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
+import android.widget.LinearLayout;
+import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
+import com.tencent.biz.pubaccount.AccountDetailBounceScrollView;
 
 public class nyl
-  extends AnimatorListenerAdapter
+  implements bimf
 {
-  public nyl(AdControlView paramAdControlView) {}
+  public nyl(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    super.onAnimationCancel(paramAnimator);
-    this.a.b = false;
-  }
+  public void a(float paramFloat1, float paramFloat2) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    super.onAnimationEnd(paramAnimator);
-    this.a.b = false;
-    this.a.setVisibility(4);
+    paramInt1 = (int)(this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getHeight() - this.a.b * (1.0D - LebaSearchPluginManagerActivity.jdField_a_of_type_Double) + 56.0F * this.a.jdField_a_of_type_Float);
+    this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBounceScrollView.setMaxOverScrollY(paramInt1);
+    if (LebaSearchPluginManagerActivity.a(this.a))
+    {
+      this.a.a(paramInt2);
+      LebaSearchPluginManagerActivity.b(this.a, paramInt2);
+    }
   }
 }
 

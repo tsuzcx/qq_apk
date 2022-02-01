@@ -1,15 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+import android.content.Context;
+import android.view.animation.Interpolator;
+import android.widget.Scroller;
+import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager;
+import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager.RollViewPager;
+import java.lang.reflect.Field;
 
 public class ayng
-  implements DialogInterface.OnClickListener
+  extends Scroller
 {
-  public ayng(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ayng(AvatarWallViewPager paramAvatarWallViewPager, Context paramContext, Interpolator paramInterpolator)
   {
-    this.a.e();
+    super(paramContext, paramInterpolator);
+  }
+  
+  public void a()
+  {
+    try
+    {
+      Field localField = AvatarWallViewPager.RollViewPager.class.getDeclaredField("mScroller");
+      localField.setAccessible(true);
+      localField.set(this.a.a, this);
+      localField.setAccessible(false);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a.d);
+  }
+  
+  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a.d);
   }
 }
 

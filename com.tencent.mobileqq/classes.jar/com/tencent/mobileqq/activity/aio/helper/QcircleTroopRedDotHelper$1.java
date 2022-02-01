@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import aewz;
-import aezn;
-import afsg;
+import afok;
+import afqz;
+import agju;
 import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
 
 public class QcircleTroopRedDotHelper$1
   implements Runnable
 {
-  public QcircleTroopRedDotHelper$1(afsg paramafsg) {}
+  public QcircleTroopRedDotHelper$1(agju paramagju) {}
   
   public void run()
   {
-    aewz.a().a(this.this$0.a, this.this$0.a.listAdapter.a());
+    afok.a().c(this.this$0.a.getCurTroopUin(), this.this$0.a, this.this$0.a.listAdapter.a());
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.together.writetogether.websocket.msg;
 
-import bdef;
+import beli;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonSerializer;
 import java.lang.reflect.Type;
@@ -23,7 +23,7 @@ public class UserChangesReqMsg
   
   protected Type getDeserializeType()
   {
-    return bdef.class;
+    return beli.class;
   }
   
   Type getHeaderType()
@@ -33,17 +33,17 @@ public class UserChangesReqMsg
   
   protected JsonDeserializer getJsonDeserializer()
   {
-    return bdef.a();
+    return beli.a();
   }
   
   protected JsonSerializer getJsonSerializer()
   {
-    return bdef.a();
+    return beli.a();
   }
   
   protected Type getSerializeType()
   {
-    return bdef.class;
+    return beli.class;
   }
 }
 

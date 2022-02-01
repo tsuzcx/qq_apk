@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.fragment;
 
-import bgsp;
+import bidf;
 import com.tencent.biz.ui.TouchWebView;
 
 class NearbyBaseFragment$1
   implements Runnable
 {
-  NearbyBaseFragment$1(NearbyBaseFragment paramNearbyBaseFragment, bgsp parambgsp) {}
+  NearbyBaseFragment$1(NearbyBaseFragment paramNearbyBaseFragment, bidf parambidf) {}
   
   public void run()
   {

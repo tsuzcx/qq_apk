@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.connections;
 
-import amvo;
+import anyb;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
 import mqq.os.MqqHandler;

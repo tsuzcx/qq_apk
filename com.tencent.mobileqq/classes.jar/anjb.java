@@ -1,96 +1,55 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class anjb
-  extends anio
 {
-  public anjb(QQAppInterface paramQQAppInterface, FriendListHandler paramFriendListHandler)
+  public static void a(String paramString, Bundle paramBundle)
   {
-    super(paramQQAppInterface, paramFriendListHandler);
-  }
-  
-  private int a(ToServiceMsg paramToServiceMsg)
-  {
-    int i = 0;
-    try
+    if (paramBundle == null) {}
+    int i;
+    do
     {
-      Object localObject = ByteBuffer.wrap(paramToServiceMsg.getWupBuffer());
-      paramToServiceMsg = new byte[((ByteBuffer)localObject).getInt() - 4];
-      ((ByteBuffer)localObject).get(paramToServiceMsg);
-      localObject = new oidb_sso.OIDBSSOPkg();
-      ((oidb_sso.OIDBSSOPkg)localObject).mergeFrom(paramToServiceMsg);
-      int j = ((oidb_sso.OIDBSSOPkg)localObject).uint32_service_type.get();
-      i = j;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "getServiceTypeFromToServiceMsg error:" + paramToServiceMsg.getMessage());
-    }
-    return i;
-    return 0;
-  }
-  
-  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    int i = a(paramToServiceMsg);
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("uin", paramToServiceMsg.extraData.getLong("uin"));
-    if (i == 147) {}
-    for (i = 72;; i = 71)
-    {
-      if ((paramObject == null) || (!paramFromServiceMsg.isSuccess()))
+      String str;
+      for (;;)
       {
-        a(i, false, localBundle);
         return;
-      }
-      try
-      {
-        paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
-        paramToServiceMsg.mergeFrom((byte[])paramObject);
-        if ((paramToServiceMsg.uint32_result.has()) && (paramToServiceMsg.uint32_result.get() == 0))
+        try
         {
-          paramToServiceMsg = ByteBuffer.wrap(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
-          long l = paramToServiceMsg.getInt();
-          paramToServiceMsg.getShort();
-          paramFromServiceMsg = new byte[4];
-          paramToServiceMsg.get(paramFromServiceMsg);
-          l = bftf.a(paramFromServiceMsg, 0);
-          int j = paramToServiceMsg.get();
-          localBundle.putLong("uin", l);
-          localBundle.putInt("safety_flag", j & 0x1F);
-          a(i, true, localBundle);
+          if (aniw.a())
+          {
+            i = paramBundle.getInt("featureId");
+            str = paramBundle.getString("featureKey");
+            if ("action_begin_trace".equals(paramString))
+            {
+              aniw.a().a(i, str, paramBundle);
+              return;
+            }
+          }
+        }
+        catch (Exception paramString)
+        {
+          QLog.e("TraceReport", 1, paramString, new Object[0]);
           return;
         }
       }
-      catch (Exception paramToServiceMsg)
+      if ("action_end_trace".equals(paramString))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handle_oidb_0x476 error:" + paramToServiceMsg.getMessage());
-        }
-        a(i, false, localBundle);
+        aniw.a().b(i, str, paramBundle);
         return;
       }
-    }
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    c(paramToServiceMsg, paramFromServiceMsg, paramObject);
-  }
-  
-  public boolean a(String paramString)
-  {
-    return ("OidbSvc.0x476_146".equals(paramString)) || ("OidbSvc.0x476_147".equals(paramString));
+      if ("action_report_span".equals(paramString))
+      {
+        aniw.a().c(i, str, paramBundle);
+        return;
+      }
+      if ("action_update_trace".equals(paramString))
+      {
+        aniw.a().a(i, paramBundle);
+        return;
+      }
+    } while (!"action_enable_trace".equals(paramString));
+    boolean bool = paramBundle.getBoolean("enable");
+    aniw.a().a(i, bool);
   }
 }
 

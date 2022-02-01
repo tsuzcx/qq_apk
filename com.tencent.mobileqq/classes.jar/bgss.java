@@ -1,30 +1,50 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
+import java.util.ArrayList;
 
-class bgss
-  extends bgsv
+public class bgss
 {
-  bgss(bgsp parambgsp)
+  public int a;
+  public bgss a;
+  public String a;
+  public ArrayList<bgss> a;
+  public String b;
+  
+  private bgss() {}
+  
+  public bgss(int paramInt, String paramString1, String paramString2)
   {
-    super(parambgsp, null);
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString1;
+    this.jdField_a_of_type_JavaLangString = paramString2;
   }
   
-  @Override
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  public String a()
   {
-    JsInjector.getInstance().onPageStarted(paramWebView);
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "old shouldInterceptRequest");
+    String str = this.jdField_a_of_type_JavaLangString;
+    bgss localbgss = this;
+    while (localbgss.jdField_a_of_type_Bgss != null)
+    {
+      localbgss = localbgss.jdField_a_of_type_Bgss;
+      str = localbgss.jdField_a_of_type_JavaLangString + "-" + str;
     }
-    return a(paramWebView, paramString);
+    return str;
+  }
+  
+  public void a(bgss parambgss)
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.add(parambgss);
+  }
+  
+  public boolean a(bgss parambgss)
+  {
+    if ((parambgss != null) && (parambgss.jdField_a_of_type_Int + 1 == this.jdField_a_of_type_Int))
+    {
+      this.jdField_a_of_type_Bgss = parambgss;
+      return true;
+    }
+    return false;
   }
 }
 

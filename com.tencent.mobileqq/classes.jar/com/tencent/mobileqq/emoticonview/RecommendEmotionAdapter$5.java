@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.emoticonview;
 
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.vas.VasApngIPCModule;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
@@ -19,7 +20,7 @@ class RecommendEmotionAdapter$5
       return;
     }
     if (this.this$0.app != null) {
-      ((VasQuickUpdateManager)this.this$0.app.getManager(184)).removeCallBacker(this.this$0.callBacker);
+      ((VasQuickUpdateManager)this.this$0.app.getManager(QQManagerFactory.VAS_QUICKUPDATE_MANAGER)).removeCallBacker(this.this$0.callBacker);
     }
     if (QLog.isColorLevel()) {
       QLog.d("RecommendEmotionAdapter", 2, "emoticon Effect callBacker errorCode:" + paramInt1 + ", httpCode:" + paramInt2 + ", apngSoLoaded:" + VasApngIPCModule.getInstance().isLoaded());
@@ -51,7 +52,7 @@ class RecommendEmotionAdapter$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.RecommendEmotionAdapter.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,118 +1,67 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspLoadMoreVideoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupStoryInfo;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.view.MotionEvent;
+import android.widget.RelativeLayout;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialog.OnCommentListViewStateChangeListener.1;
+import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
+import com.tencent.widget.XEditTextEx;
 
 public class xeo
-  extends nmd
+  implements xfh
 {
-  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  private xeo(xeg paramxeg) {}
+  
+  public void a()
   {
-    bool = true;
-    int i = 0;
-    Object localObject1;
-    Object localObject2;
-    if ((paramInt != 0) || (paramArrayOfByte == null))
-    {
-      paramBundle = new qqstory_struct.ErrorInfo();
-      paramBundle.error_code.set(paramInt);
-      localObject1 = paramBundle.error_desc;
-      localObject2 = new StringBuilder().append(paramInt);
-      if (paramArrayOfByte == null)
-      {
-        paramArrayOfByte = ",data is null";
-        ((PBBytesField)localObject1).set(ByteStringMicro.copyFromUtf8(paramArrayOfByte));
-        paramArrayOfByte = paramBundle;
-      }
+    if (!xeg.b(this.a)) {
+      this.a.a();
     }
-    do
-    {
-      for (;;)
-      {
-        return paramArrayOfByte;
-        paramArrayOfByte = ", data is valid";
-        break;
-        Object localObject4 = new qqstory_service.RspLoadMoreVideoList();
-        localObject1 = (vuu)vux.a(5);
-        Object localObject3 = paramBundle.getString("extra_feedid");
-        localObject2 = (vuk)vux.a(19);
-        for (;;)
-        {
-          try
-          {
-            ((qqstory_service.RspLoadMoreVideoList)localObject4).mergeFrom(paramArrayOfByte);
-            paramBundle = (qqstory_struct.ErrorInfo)((qqstory_service.RspLoadMoreVideoList)localObject4).result.get();
-          }
-          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
-          {
-            paramBundle = null;
-            continue;
-            paramArrayOfByte = "";
-            continue;
-            bool = false;
-            continue;
-          }
-          try
-          {
-            localObject3 = ((vuk)localObject2).a((String)localObject3);
-            paramArrayOfByte = paramBundle;
-            if (localObject3 == null) {
-              break;
-            }
-            paramArrayOfByte = paramBundle;
-            if (paramBundle.error_code.get() != 0) {
-              break;
-            }
-            if (!((qqstory_service.RspLoadMoreVideoList)localObject4).next_cookie.has()) {
-              continue;
-            }
-            paramArrayOfByte = ((qqstory_service.RspLoadMoreVideoList)localObject4).next_cookie.get().toStringUtf8();
-            if (((qqstory_service.RspLoadMoreVideoList)localObject4).is_end.get() != 1) {
-              continue;
-            }
-            localObject4 = ((qqstory_service.RspLoadMoreVideoList)localObject4).video_list.get();
-            ((VideoCollectionItem)localObject3).nextCookie = paramArrayOfByte;
-            paramInt = i;
-            if (paramInt < ((List)localObject4).size())
-            {
-              paramArrayOfByte = (qqstory_struct.GroupStoryInfo)((List)localObject4).get(paramInt);
-              StoryVideoItem localStoryVideoItem = new StoryVideoItem();
-              localStoryVideoItem.convertFrom("dummy", paramArrayOfByte);
-              paramArrayOfByte = ((vuu)localObject1).a(localStoryVideoItem.mVid, localStoryVideoItem);
-              ((VideoCollectionItem)localObject3).videoVidList.add(paramArrayOfByte.mVid);
-              paramArrayOfByte = new xlu(paramArrayOfByte.mVid, paramArrayOfByte);
-              ((VideoCollectionItem)localObject3).collectionVideoUIItemList.add(paramArrayOfByte);
-              paramInt += 1;
-            }
-            else
-            {
-              ((vuk)localObject2).a((VideoCollectionItem)localObject3);
-              a((VideoCollectionItem)localObject3, bool);
-              return paramBundle;
-            }
-          }
-          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
-          {
-            paramArrayOfByte = paramBundle;
-          }
-        }
-      }
-    } while (!QLog.isColorLevel());
-    QLog.w("Q.qqstory.discover.ShareGroupManager", 2, "doGetMoreVideoByVideoCollectionItem exception:" + localInvalidProtocolBufferMicroException1);
-    return paramBundle;
   }
   
-  public void a(VideoCollectionItem paramVideoCollectionItem, boolean paramBoolean) {}
+  public void a(CommentEntry paramCommentEntry, int paramInt1, int paramInt2)
+  {
+    if (xeg.a(this.a) != null) {
+      xeg.a(this.a).a(paramCommentEntry, paramInt1, paramInt2);
+    }
+  }
+  
+  public void a(@NonNull xwc paramxwc, ErrorMessage paramErrorMessage)
+  {
+    if (paramErrorMessage.isSuccess())
+    {
+      xeg.a(this.a, paramxwc);
+      xeg.a(this.a).setVisibility(0);
+      xeg.a(this.a, new xwr(this.a.getContext(), xeg.b(this.a), paramxwc, false, 4444, new xel(this.a, null)));
+      if (xeg.a(this.a).a != null) {
+        xeg.a(this.a).a.setText(xeg.a(this.a).a);
+      }
+      if (xeg.a(this.a))
+      {
+        xeg.a(this.a, false);
+        xeg.a(this.a).postDelayed(new CommentFloatDialog.OnCommentListViewStateChangeListener.1(this), 100);
+      }
+      return;
+    }
+    xeg.a(this.a).setVisibility(8);
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    if ((paramMotionEvent.getAction() == 1) && (xeg.a(this.a) != null) && (xeg.a(this.a).a()))
+    {
+      xeg.a(this.a).c();
+      return true;
+    }
+    return false;
+  }
+  
+  public void b(CommentEntry paramCommentEntry, int paramInt1, int paramInt2)
+  {
+    if (xeg.a(this.a) != null) {
+      xeg.a(this.a).b(paramCommentEntry, paramInt1, paramInt2);
+    }
+  }
 }
 
 

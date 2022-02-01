@@ -1,48 +1,16 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextPanel;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract class ahsq
+class ahsq
+  implements DialogInterface.OnClickListener
 {
-  protected ahsg a;
-  protected ahsj a;
-  protected Context a;
-  protected QQAppInterface a;
+  ahsq(ahsp paramahsp) {}
   
-  public ahsq(QQAppInterface paramQQAppInterface, ahsj paramahsj)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Ahsj = paramahsj;
-  }
-  
-  public ahsi a()
-  {
-    return this.jdField_a_of_type_Ahsj.a();
-  }
-  
-  public ahsk a()
-  {
-    return this.jdField_a_of_type_Ahsj.a();
-  }
-  
-  public ahsl a()
-  {
-    return this.jdField_a_of_type_Ahsj.a();
-  }
-  
-  public void a(ahsg paramahsg)
-  {
-    this.jdField_a_of_type_Ahsg = paramahsg;
-  }
-  
-  public void a(VoiceTextPanel paramVoiceTextPanel)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramVoiceTextPanel.getContext();
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Ahsg = null;
+    paramDialogInterface.dismiss();
+    ahso.h(this.a.a).setResult(8001);
   }
 }
 

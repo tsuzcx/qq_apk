@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
-import bkwm;
+import bmhv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.FileUtils;
@@ -13,12 +13,12 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
-import noe;
-import npi;
-import odq;
+import nvf;
+import nwj;
+import olh;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import pay;
+import pkh;
 
 public class KandianReportSoLoader
 {
@@ -39,7 +39,7 @@ public class KandianReportSoLoader
   {
     try
     {
-      SO_DOWNLOAD_DIR = noe.a("3454") + "3454";
+      SO_DOWNLOAD_DIR = nvf.a("3454") + "3454";
       SO_LOAD_DIR = BaseApplicationImpl.getApplication().getFilesDir().getParent() + "/txlib/kandianreport";
       configDownloadPath = SO_DOWNLOAD_DIR + "/so_config.json";
       configLoadPath = SO_LOAD_DIR + "/so_config.json";
@@ -53,9 +53,9 @@ public class KandianReportSoLoader
   
   public static boolean checkSoFileIsReady()
   {
-    boolean bool2 = ((Boolean)bkwm.a("kd_fc_so_copy", Boolean.valueOf(false))).booleanValue();
+    boolean bool2 = ((Boolean)bmhv.a("kd_fc_so_copy", Boolean.valueOf(false))).booleanValue();
     boolean bool1 = new File(configLoadPath).exists();
-    boolean bool3 = ((Boolean)bkwm.a("kd_fc_so_download", Boolean.valueOf(false))).booleanValue();
+    boolean bool3 = ((Boolean)bmhv.a("kd_fc_so_download", Boolean.valueOf(false))).booleanValue();
     boolean bool4 = new File(configDownloadPath).exists();
     QLog.d("kandianreport.KandianReportSoLoader", 1, "copy flag: " + bool2);
     QLog.d("kandianreport.KandianReportSoLoader", 1, "actual copy state: " + bool1);
@@ -72,7 +72,7 @@ public class KandianReportSoLoader
     {
       try
       {
-        if (!npi.a(SO_DOWNLOAD_DIR, "3454"))
+        if (!nwj.a(SO_DOWNLOAD_DIR, "3454"))
         {
           logAndReport("checkSoFileIsReady: verification failed");
           bool2 = false;
@@ -89,7 +89,7 @@ public class KandianReportSoLoader
         QLog.d("kandianreport.KandianReportSoLoader", 1, "download success but not copy");
         bool1 = copySoFromSdcardToData();
         QLog.d("kandianreport.KandianReportSoLoader", 1, "copy result: " + bool1);
-        if (!npi.a(SO_DOWNLOAD_DIR, "3454"))
+        if (!nwj.a(SO_DOWNLOAD_DIR, "3454"))
         {
           logAndReport("checkSoFileIsReady: verification failed");
           return false;
@@ -184,7 +184,7 @@ public class KandianReportSoLoader
     {
       try
       {
-        bkwm.a("kd_fc_so_copy", Boolean.valueOf(false));
+        bmhv.a("kd_fc_so_copy", Boolean.valueOf(false));
         JSONArray localJSONArray = (JSONArray)new JSONObject(TaskOfflineUtils.readInputStreamAsString(new FileInputStream(configDownloadPath))).get("so_name");
         if ((localJSONArray != null) && (localJSONArray.length() > 0))
         {
@@ -195,8 +195,8 @@ public class KandianReportSoLoader
             bool = false;
             return bool;
           }
-          String str1 = npi.a(configDownloadPath);
-          String str2 = npi.a(configLoadPath);
+          String str1 = nwj.a(configDownloadPath);
+          String str2 = nwj.a(configLoadPath);
           logAndReport("so config copy success: " + str1 + " " + str2);
           if (str1 != null)
           {
@@ -215,8 +215,8 @@ public class KandianReportSoLoader
                 bool = false;
                 continue;
               }
-              str2 = npi.a(str3);
-              str1 = npi.a(str1);
+              str2 = nwj.a(str3);
+              str1 = nwj.a(str1);
               logAndReport("so copy success: " + str2 + " " + str1);
               if (str2 == null) {
                 break label385;
@@ -226,7 +226,7 @@ public class KandianReportSoLoader
               }
               break label385;
             }
-            bkwm.a("kd_fc_so_copy", Boolean.valueOf(true));
+            bmhv.a("kd_fc_so_copy", Boolean.valueOf(true));
             bool = true;
             continue;
           }
@@ -259,13 +259,13 @@ public class KandianReportSoLoader
   
   public static void downLoadSoFiles(Runnable paramRunnable)
   {
-    if (((Boolean)bkwm.a("qq_is_reinstall", Boolean.valueOf(true))).booleanValue()) {
-      bkwm.a("qq_is_reinstall", Boolean.valueOf(false));
+    if (((Boolean)bmhv.a("qq_is_reinstall", Boolean.valueOf(true))).booleanValue()) {
+      bmhv.a("qq_is_reinstall", Boolean.valueOf(false));
     }
     try
     {
       if (new File(configDownloadPath).exists()) {
-        bkwm.a("kd_fc_so_download", Boolean.valueOf(true));
+        bmhv.a("kd_fc_so_download", Boolean.valueOf(true));
       }
       QLog.d("kandianreport.KandianReportSoLoader", 1, "download so files now");
       TaskOfflineUtils.checkUpdate("3454", 1, new KandianReportSoLoader.1(paramRunnable));
@@ -394,7 +394,7 @@ public class KandianReportSoLoader
                 }
                 label499:
                 isSoFileLoad = true;
-                odq.a(null, "", "0X80099E1", "0X80099E1", 0, 0, "", "", "", "load so success", false);
+                olh.a(null, "", "0X80099E1", "0X80099E1", 0, 0, "", "", "", "load so success", false);
               }
             }
           }
@@ -414,7 +414,7 @@ public class KandianReportSoLoader
     {
       QLog.d("kandianreport.KandianReportSoLoader", 1, paramString);
       HashMap localHashMap = new HashMap();
-      AppRuntime localAppRuntime = pay.a();
+      AppRuntime localAppRuntime = pkh.a();
       if (localAppRuntime != null) {
         localHashMap.put("uin", localAppRuntime.getAccount());
       }

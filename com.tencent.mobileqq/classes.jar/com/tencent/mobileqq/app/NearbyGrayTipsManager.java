@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import abwx;
-import amxc;
+import acnf;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bblk;
+import anzq;
+import bcsc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
@@ -2437,7 +2437,7 @@ public class NearbyGrayTipsManager
           if (i < 0) {
             break label165;
           }
-          if (!bblk.a(((ChatMessage)paramList.get(i)).msgtype))
+          if (!bcsc.a(((ChatMessage)paramList.get(i)).msgtype))
           {
             k = j + 1;
             j = k;
@@ -2685,7 +2685,8 @@ public class NearbyGrayTipsManager
       c();
     }
     if (!this.jdField_b_of_type_Boolean) {}
-    label258:
+    label256:
+    label259:
     for (;;)
     {
       return null;
@@ -2709,33 +2710,32 @@ public class NearbyGrayTipsManager
         localObject3 = new ArrayList();
         a(localObject1, (List)localObject3);
         a(paramLong, localObject1, (List)localObject3);
-        Collections.sort((List)localObject3, new amxc(this));
-        localObject2 = (QQMessageFacade)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(20);
+        Collections.sort((List)localObject3, new anzq(this));
+        localObject2 = (QQMessageFacade)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_MSG_FACADE);
         paramInt1 = 0;
         localObject3 = ((List)localObject3).iterator();
         if (!((Iterator)localObject3).hasNext()) {
-          break label255;
+          break label256;
         }
         Object localObject4 = (MessageRecord)((Iterator)localObject3).next();
         localObject4 = ((QQMessageFacade)localObject2).getLastMessage(((MessageRecord)localObject4).senderuin, ((MessageRecord)localObject4).istroop);
         if ((localObject4 == null) || (((QQMessageFacade.Message)localObject4).hasReply)) {
-          break label252;
+          break label253;
         }
         paramInt2 = paramInt1 + 1;
         paramInt1 = paramInt2;
         if (paramInt2 < localObject1.sceneTwo.sayHiPeopleCount) {
-          break label252;
+          break label253;
         }
       }
       for (;;)
       {
         if (paramInt2 < localObject1.sceneTwo.sayHiPeopleCount) {
-          break label258;
+          break label259;
         }
         return localObject1;
-        label252:
+        label253:
         break;
-        label255:
         paramInt2 = paramInt1;
       }
     }

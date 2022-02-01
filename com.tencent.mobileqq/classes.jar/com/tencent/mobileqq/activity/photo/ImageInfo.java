@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.photo;
 
-import ajns;
-import ajod;
+import akjg;
+import akjr;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 
 public class ImageInfo
-  extends ajns
+  extends akjg
   implements Parcelable
 {
-  public static final Parcelable.Creator<ImageInfo> CREATOR = new ajod();
+  public static final Parcelable.Creator<ImageInfo> CREATOR = new akjr();
   public long a;
   public int b;
   public long b;

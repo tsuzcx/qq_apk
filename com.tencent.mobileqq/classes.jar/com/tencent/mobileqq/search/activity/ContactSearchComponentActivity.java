@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
-import batw;
+import bcam;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
@@ -98,7 +98,7 @@ public class ContactSearchComponentActivity
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    findViewById(2131376916).setOnTouchListener(new batw(this));
+    findViewById(2131377188).setOnTouchListener(new bcam(this));
     return true;
   }
   

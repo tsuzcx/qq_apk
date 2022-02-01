@@ -1,28 +1,43 @@
-import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.5;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.widget.TextView;
 
-public class nue
-  implements TVK_SDKMgr.InstallListener
+class nue
+  implements Handler.Callback
 {
-  public nue(AccountDetailVideoManager.5 param5) {}
+  nue(nud paramnud) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailVideoManager", 2, "installSDK onInstalledFailed arg0=" + paramInt);
+    int i;
+    if (paramMessage.what == 291) {
+      switch (this.a.jdField_a_of_type_Int)
+      {
+      default: 
+        i = 0;
+      }
     }
-    nua.a = false;
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailVideoManager", 2, "installSDK onInstalledSuccessed");
+    for (;;)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(i));
+      paramMessage = this.a;
+      paramMessage.jdField_a_of_type_Int += 1;
+      if (this.a.jdField_a_of_type_Int == 4) {
+        this.a.jdField_a_of_type_Int = 0;
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(291, 1000L);
+      return false;
+      i = 2131695788;
+      continue;
+      i = 2131695789;
+      continue;
+      i = 2131695790;
+      continue;
+      i = 2131695791;
     }
-    nua.a = true;
   }
 }
 

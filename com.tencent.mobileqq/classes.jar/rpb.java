@@ -1,109 +1,65 @@
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffColorFilter;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ResultRecord;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.articlesummary.articlesummary.AggregatedList;
+import tencent.im.oidb.articlesummary.articlesummary.ArticleSummary;
+import tencent.im.oidb.articlesummary.articlesummary.FeedsInfo;
+import tencent.im.oidb.articlesummary.articlesummary.SocializeFeedsInfo;
 
 public class rpb
-  extends BaseAdapter
-  implements rlk<ObservableArrayList<ResultRecord>>
 {
-  private PorterDuffColorFilter jdField_a_of_type_AndroidGraphicsPorterDuffColorFilter = new PorterDuffColorFilter(-1711276033, PorterDuff.Mode.SRC_ATOP);
-  private ObservableArrayList<ResultRecord> jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList = new ObservableArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  public ArrayList<rpc> a;
+  articlesummary.AggregatedList a;
   
-  public rpb(@NonNull ObservableArrayList<ResultRecord> paramObservableArrayList)
+  public static rpb a(articlesummary.AggregatedList paramAggregatedList)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList = paramObservableArrayList;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.addOnListChangedCallback(this);
-  }
-  
-  public void a()
-  {
-    int i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.size();
-    if (i > 0)
+    if ((paramAggregatedList != null) && (paramAggregatedList.rpt_article_summary.has()))
     {
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.remove(i - 1);
+      rpb localrpb = new rpb();
+      Object localObject = paramAggregatedList.rpt_article_summary.get();
+      localrpb.jdField_a_of_type_JavaUtilArrayList = new ArrayList(((List)localObject).size());
+      localrpb.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$AggregatedList = paramAggregatedList;
+      paramAggregatedList = ((List)localObject).iterator();
+      while (paramAggregatedList.hasNext())
+      {
+        localObject = (articlesummary.ArticleSummary)paramAggregatedList.next();
+        articlesummary.FeedsInfo localFeedsInfo = (articlesummary.FeedsInfo)((articlesummary.ArticleSummary)localObject).msg_feeds_info.get();
+        rpc localrpc = new rpc();
+        localrpc.jdField_a_of_type_Long = ((articlesummary.ArticleSummary)localObject).msg_feeds_info.msg_social_feeds_info.uint64_feeds_id.get();
+        localrpc.jdField_b_of_type_Long = ((articlesummary.ArticleSummary)localObject).uint64_algorithm_id.get();
+        if (localFeedsInfo.feeds_type.has()) {
+          localrpc.jdField_a_of_type_Int = localFeedsInfo.feeds_type.get();
+        }
+        if (((articlesummary.ArticleSummary)localObject).uint32_strategy_id.has()) {
+          localrpc.jdField_b_of_type_Int = ((articlesummary.ArticleSummary)localObject).uint32_strategy_id.get();
+        }
+        if (((articlesummary.ArticleSummary)localObject).uint64_recommend_seq.has()) {
+          localrpc.c = ((articlesummary.ArticleSummary)localObject).uint64_recommend_seq.get();
+        }
+        localrpb.jdField_a_of_type_JavaUtilArrayList.add(localrpc);
       }
+      return localrpb;
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    notifyDataSetChanged();
+    return null;
   }
   
-  public void a(ObservableArrayList<ResultRecord> paramObservableArrayList)
+  public static boolean a(BaseArticleInfo paramBaseArticleInfo)
   {
-    notifyDataSetChanged();
+    return (paramBaseArticleInfo.mExtraBiuBriefInfo != null) && (!paramBaseArticleInfo.isExtraBiuExpanded) && (paramBaseArticleInfo.mExtraBiuBriefInfo.jdField_a_of_type_JavaUtilArrayList != null) && (!paramBaseArticleInfo.mExtraBiuBriefInfo.jdField_a_of_type_JavaUtilArrayList.isEmpty());
   }
   
-  public void a(ObservableArrayList<ResultRecord> paramObservableArrayList, int paramInt1, int paramInt2) {}
-  
-  public void a(ObservableArrayList<ResultRecord> paramObservableArrayList, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void b(ObservableArrayList<ResultRecord> paramObservableArrayList, int paramInt1, int paramInt2)
+  public static boolean b(BaseArticleInfo paramBaseArticleInfo)
   {
-    this.jdField_a_of_type_Boolean = false;
-    notifyDataSetChanged();
+    return (paramBaseArticleInfo.mExtraBiuBriefInfo != null) && (paramBaseArticleInfo.mExtraBiuBriefInfo.jdField_a_of_type_JavaUtilArrayList != null) && (!paramBaseArticleInfo.mExtraBiuBriefInfo.jdField_a_of_type_JavaUtilArrayList.isEmpty());
   }
   
-  public void c(ObservableArrayList<ResultRecord> paramObservableArrayList, int paramInt1, int paramInt2)
+  public byte[] a()
   {
-    this.jdField_a_of_type_Boolean = false;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject1;
-    if (paramView != null)
-    {
-      localObject1 = (ReadInJoyHeadImageView)paramView.getTag();
-      Object localObject2 = getItem(paramInt);
-      if ((localObject2 != null) && ((localObject2 instanceof ResultRecord))) {
-        ((ReadInJoyHeadImageView)localObject1).setHeadImgByUin(((ResultRecord)localObject2).a());
-      }
-      int i = getCount();
-      localObject1 = paramView.findViewById(2131368466);
-      if ((!this.jdField_a_of_type_Boolean) || (paramInt != i - 1)) {
-        break label132;
-      }
-      ((View)localObject1).setVisibility(0);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560275, paramViewGroup, false);
-      localObject1 = (ReadInJoyHeadImageView)paramView.findViewById(2131368465);
-      paramView.setTag(localObject1);
-      break;
-      label132:
-      ((View)localObject1).setVisibility(4);
-    }
+    return ((articlesummary.AggregatedList)this.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$AggregatedList.get()).toByteArray();
   }
 }
 

@@ -1,11 +1,19 @@
-class suh
-  extends pup
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.util.Map;
+import org.json.JSONObject;
+
+final class suh
+  extends suj
 {
-  suh(sug paramsug) {}
-  
-  public void a(String paramString)
+  suh(BaseArticleInfo paramBaseArticleInfo, int paramInt1, int paramInt2, Map paramMap, Activity paramActivity)
   {
-    pkp.a().b();
+    super(paramBaseArticleInfo, paramInt1, paramInt2, paramMap);
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    sug.a(this.a, this, paramJSONObject);
   }
 }
 

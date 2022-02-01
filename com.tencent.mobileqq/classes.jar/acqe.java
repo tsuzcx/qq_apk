@@ -1,21 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity.30;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class acqe
-  implements DialogInterface.OnClickListener
+  implements acpi
 {
-  public acqe(AddFriendVerifyActivity.30 param30) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private static void a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
   {
-    if (paramInt == 1)
-    {
-      this.a.this$0.a.cancel();
-      this.a.this$0.finish();
-    }
+    awiw.a(paramQQAppInterface, paramMsgType0x210.vProtobuf, paramMsgInfo.shMsgSeq, paramMsgInfo.uRealMsgTime, false);
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramMsgInfo, paramMsgType0x210);
+    return null;
   }
 }
 

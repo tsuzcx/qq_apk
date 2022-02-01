@@ -324,14 +324,14 @@ class MiniAppUserAppInfoListManager$5
     //   705: invokestatic 35	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   708: goto -105 -> 603
     //   711: aload_1
-    //   712: sipush 148
-    //   715: invokevirtual 214	com/tencent/common/app/AppInterface:getBusinessHandler	(I)Ljava/lang/Object;
-    //   718: checkcast 216	anxn
+    //   712: getstatic 215	com/tencent/mobileqq/app/BusinessHandlerFactory:APPLET_PUSH_HANDLER	I
+    //   715: invokevirtual 219	com/tencent/common/app/AppInterface:getBusinessHandler	(I)Ljava/lang/Object;
+    //   718: checkcast 221	apap
     //   721: astore_1
     //   722: aload_1
     //   723: ifnull -707 -> 16
     //   726: aload_1
-    //   727: invokevirtual 219	anxn:c	()V
+    //   727: invokevirtual 224	apap:c	()V
     //   730: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -339,7 +339,7 @@ class MiniAppUserAppInfoListManager$5
     //   3	125	1	localObject1	Object
     //   176	5	1	localObject2	Object
     //   182	530	1	localThrowable	java.lang.Throwable
-    //   721	6	1	localanxn	anxn
+    //   721	6	1	localapap	apap
     //   24	628	2	localObject3	Object
     //   48	639	3	localObject4	Object
     //   56	529	4	localStringBuilder	java.lang.StringBuilder

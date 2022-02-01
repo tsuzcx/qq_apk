@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.codeEngine;
 
-import aokm;
-import aokn;
+import apnn;
+import apno;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -18,16 +18,16 @@ public final class MiniScanReport$7
     localHashMap.put("report_key_detect_support_type", String.valueOf(this.a));
     localHashMap.put("report_key_detect_init_cost", String.valueOf(this.b));
     localHashMap.put("report_key_qq_version", "0");
-    localHashMap.put("report_key_qq_subversion", "4810");
-    String str2 = aokm.c("QMCF_qr");
+    localHashMap.put("report_key_qq_subversion", "4875");
+    String str2 = apnn.c("QMCF_qr");
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
     localHashMap.put("report_key_so_md5", str1);
-    aokn.a(localHashMap);
+    apno.a(localHashMap);
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "report_tag_detect_init_cost", true, 0L, 0L, localHashMap, "");
-    if ((QLog.isColorLevel()) || (aokn.a())) {
+    if ((QLog.isColorLevel()) || (apno.a())) {
       QLog.i("MiniRecog.MiniScanReport", 2, String.format("base_test_scan onDetectInitCost [supportType,timeCost]=[%d,%d]", new Object[] { Integer.valueOf(this.a), Integer.valueOf(this.b) }));
     }
   }

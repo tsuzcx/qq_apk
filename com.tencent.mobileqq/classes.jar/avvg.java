@@ -1,20 +1,19 @@
-import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupMigrateFragment;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class avvg
-  implements bhle
+final class avvg
+  implements aqfy
 {
-  public avvg(MsgBackupMigrateFragment paramMsgBackupMigrateFragment) {}
-  
-  public void onItemSelect(View paramView, int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    switch (paramInt)
+    if (paramInt1 == avux.a)
     {
-    default: 
-      return;
+      Intent localIntent = new Intent();
+      localIntent.setAction("action.now.jump");
+      localIntent.putExtra("jump_action", paramInt2);
+      BaseApplicationImpl.getContext().sendBroadcast(localIntent);
     }
-    avwr.a("0X800A242", 1);
-    this.a.onBackEvent();
   }
 }
 

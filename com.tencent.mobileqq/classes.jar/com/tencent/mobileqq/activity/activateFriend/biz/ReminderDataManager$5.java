@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.activateFriend.biz;
 
 import Wallet.AcsMsg;
-import aeuy;
-import aewd;
-import aewk;
+import afmj;
+import afno;
+import afnv;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.activity.activateFriend.biz.entity.ReminderEntity;
@@ -18,15 +18,15 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class ReminderDataManager$5
   implements Runnable
 {
-  public ReminderDataManager$5(aewd paramaewd, boolean paramBoolean, List paramList, aewk paramaewk) {}
+  public ReminderDataManager$5(afno paramafno, boolean paramBoolean, List paramList, afnv paramafnv) {}
   
   public void run()
   {
-    aewd.a(this.this$0);
+    afno.a(this.this$0);
     Object localObject1;
-    if ((aewd.a(this.this$0) != null) && (aewd.a(this.this$0).get()) && (!this.jdField_a_of_type_Boolean))
+    if ((afno.a(this.this$0) != null) && (afno.a(this.this$0).get()) && (!this.jdField_a_of_type_Boolean))
     {
-      localObject1 = new ArrayList(aewd.a(this.this$0).values());
+      localObject1 = new ArrayList(afno.a(this.this$0).values());
       if (QLog.isColorLevel()) {
         QLog.d("ReminderDataManagerNew", 1, new Object[] { "async from cache, msg count: ", Integer.valueOf(((List)localObject1).size()) });
       }
@@ -37,13 +37,13 @@ public class ReminderDataManager$5
       Object localObject2 = (ReminderEntity)((Iterator)localObject1).next();
       this.jdField_a_of_type_JavaUtilList.add(((ReminderEntity)localObject2).getAcsMsg());
       continue;
-      localObject1 = aewd.a(this.this$0, NetConnInfoCenter.getServerTimeMillis());
+      localObject1 = afno.a(this.this$0, NetConnInfoCenter.getServerTimeMillis());
       if (localObject1 == null) {
         if (QLog.isColorLevel()) {
           QLog.d("ReminderDataManagerNew", 1, "async from db, msg list is null");
         }
       }
-      while ((!aewd.a(this.this$0).get()) || (this.jdField_a_of_type_Boolean))
+      while ((!afno.a(this.this$0).get()) || (this.jdField_a_of_type_Boolean))
       {
         localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
         for (;;)
@@ -51,7 +51,7 @@ public class ReminderDataManager$5
           if (((Iterator)localObject1).hasNext())
           {
             localObject2 = (AcsMsg)((Iterator)localObject1).next();
-            aewd.a(this.this$0, (AcsMsg)localObject2, 1);
+            afno.a(this.this$0, (AcsMsg)localObject2, 1);
             continue;
             if (QLog.isColorLevel()) {
               QLog.d("ReminderDataManagerNew", 1, new Object[] { "async from db, msg count: ", Integer.valueOf(((List)localObject1).size()) });
@@ -65,16 +65,16 @@ public class ReminderDataManager$5
             break;
           }
         }
-        aewd.a(this.this$0).set(true);
-        aewd.a(this.this$0).edit().putString("sp_key_cache_list_time", aeuy.a(NetConnInfoCenter.getServerTimeMillis(), "yyyyMMdd")).apply();
+        afno.a(this.this$0).set(true);
+        afno.a(this.this$0).edit().putString("sp_key_cache_list_time", afmj.a(NetConnInfoCenter.getServerTimeMillis(), "yyyyMMdd")).apply();
       }
     }
-    this.jdField_a_of_type_Aewk.a(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Afnv.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.biz.ReminderDataManager.5
  * JD-Core Version:    0.7.0.1
  */

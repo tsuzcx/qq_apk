@@ -1,319 +1,126 @@
-import android.annotation.TargetApi;
+import UserGrowth.stLinkStragegyArgs;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import java.io.File;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import com.tencent.biz.pubaccount.weishi_new.util.WeishiLinkUtil.1;
+import com.tencent.biz.pubaccount.weishi_new.util.WeishiLinkUtil.2;
+import com.tencent.biz.pubaccount.weishi_new.util.WeishiLinkUtil.3;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.ttpic.baseutils.device.DeviceUtils;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.util.DateUtils;
+import mqq.app.AppRuntime;
+import mqq.os.MqqHandler;
 
-@TargetApi(14)
 public class vmq
 {
-  protected static vkq<String, vmr> a = new vkq(200);
-  
-  public static File a(String paramString, int paramInt)
+  private static int a()
   {
-    Object localObject2 = null;
-    QQStoryContext.a();
-    paramString = yns.a(QQStoryContext.a(), paramString);
-    if ((paramString instanceof MessageForShortVideo)) {}
-    for (paramString = (MessageForShortVideo)paramString;; paramString = null)
-    {
-      Object localObject1 = localObject2;
-      if (paramString != null)
-      {
-        if (paramInt != 0) {
-          break label74;
-        }
-        paramString = ShortVideoUtils.getShortVideoSavePath(paramString, "mp4");
-      }
-      for (;;)
-      {
-        localObject1 = localObject2;
-        if (!TextUtils.isEmpty(paramString))
-        {
-          paramString = new File(paramString);
-          localObject1 = localObject2;
-          if (paramString.exists()) {
-            localObject1 = paramString;
-          }
-        }
-        return localObject1;
-        label74:
-        if (paramInt == 2) {
-          paramString = ShortVideoUtils.getShortVideoThumbPicPath(paramString.thumbMD5, "jpg");
-        } else {
-          paramString = null;
-        }
-      }
+    if (!a(b(), c(), 0)) {
+      return 0;
     }
+    return LocalMultiProcConfig.getInt("weishi_usergrowth", b(), 0);
   }
   
-  public static File a(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  public static stLinkStragegyArgs a()
   {
-    StoryVideoItem localStoryVideoItem = ((vuu)vux.a(5)).a(paramString);
-    if ((localStoryVideoItem != null) && (localStoryVideoItem.isMine())) {}
-    for (Object localObject = a(paramString, localStoryVideoItem.mCreateTime, paramInt, false, paramBoolean2);; localObject = a(paramString, paramInt, false, paramBoolean2))
-    {
-      File localFile = new File((String)localObject);
-      if (!localFile.exists()) {
-        break;
-      }
-      if (localStoryVideoItem != null) {
-        a(localStoryVideoItem, (String)localObject, paramInt);
-      }
-      return localFile;
-    }
-    if (localStoryVideoItem != null) {
-      switch (paramInt)
-      {
-      }
-    }
-    while ((yns.a(paramString)) && (a(paramString, paramInt) != null))
-    {
-      return a(paramString, paramInt);
-      if (!TextUtils.isEmpty(localStoryVideoItem.mLocalVideoPath))
-      {
-        localObject = new File(localStoryVideoItem.mLocalVideoPath);
-        if (((File)localObject).exists())
-        {
-          return localObject;
-          if (!TextUtils.isEmpty(localStoryVideoItem.mVideoLocalThumbnailPath))
-          {
-            localObject = new File(localStoryVideoItem.mVideoLocalThumbnailPath);
-            if (((File)localObject).exists())
-            {
-              return localObject;
-              if (!TextUtils.isEmpty(localStoryVideoItem.mLocalMaskPath))
-              {
-                localObject = new File(localStoryVideoItem.mLocalMaskPath);
-                if (((File)localObject).exists()) {
-                  return localObject;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    if (paramBoolean1)
-    {
-      if ((localStoryVideoItem != null) && (localStoryVideoItem.isMine())) {}
-      for (paramString = a(paramString, localStoryVideoItem.mCreateTime, paramInt, true, paramBoolean2);; paramString = a(paramString, paramInt, true, paramBoolean2)) {
-        return new File(paramString);
-      }
-    }
-    return null;
+    stLinkStragegyArgs localstLinkStragegyArgs = new stLinkStragegyArgs();
+    localstLinkStragegyArgs.hasInstalledWeish = zfn.a(BaseApplicationImpl.getApplication().getApplicationContext());
+    localstLinkStragegyArgs.todayClickCount = b();
+    localstLinkStragegyArgs.todayEnterCount = a();
+    localstLinkStragegyArgs.todayLastLinkId = c();
+    return localstLinkStragegyArgs;
   }
   
-  protected static String a(int paramInt)
+  public static void a()
   {
-    switch (paramInt)
-    {
-    case 4: 
-    default: 
-      return ".file";
-    case 0: 
-      return ".mp4";
-    case 3: 
-      return ".png";
-    case 2: 
-      return "thumb.jpeg";
-    case 1: 
-      return "mask.png";
-    }
-    return "at.png";
+    a(b(), c());
   }
   
-  public static String a(File paramFile)
+  public static void a(int paramInt)
   {
-    if (paramFile.exists())
+    ThreadManager.getSubThreadHandler().post(new WeishiLinkUtil.1(paramInt));
+  }
+  
+  private static void a(String paramString1, String paramString2)
+  {
+    ThreadManager.getSubThreadHandler().post(new WeishiLinkUtil.2(paramString1, paramString2));
+  }
+  
+  private static boolean a(String paramString1, String paramString2, int paramInt)
+  {
+    long l = LocalMultiProcConfig.getLong("weishi_usergrowth", paramString2, 0L);
+    boolean bool = DateUtils.isSameDay(System.currentTimeMillis(), l);
+    if (!bool) {
+      ThreadManager.getSubThreadHandler().post(new WeishiLinkUtil.3(paramString1, paramInt, paramString2));
+    }
+    return bool;
+  }
+  
+  private static int b()
+  {
+    if (!a(d(), e(), 0)) {
+      return 0;
+    }
+    return LocalMultiProcConfig.getInt("weishi_usergrowth", d(), 0);
+  }
+  
+  private static String b()
+  {
+    return "key_open_recommend_page_count_" + h();
+  }
+  
+  public static void b()
+  {
+    a(d(), e());
+  }
+  
+  private static int c()
+  {
+    if (!a(f(), g(), -1)) {
+      return -1;
+    }
+    return LocalMultiProcConfig.getInt("weishi_usergrowth", f(), -1);
+  }
+  
+  private static String c()
+  {
+    return "key_open_recommend_page_time_" + h();
+  }
+  
+  private static String d()
+  {
+    return "key_click_recommend_card_count_" + h();
+  }
+  
+  private static String e()
+  {
+    return "key_click_recommend_card_time_" + h();
+  }
+  
+  private static String f()
+  {
+    return "key_last_link_type_" + h();
+  }
+  
+  private static String g()
+  {
+    return "key_last_link_time_" + h();
+  }
+  
+  private static String h()
+  {
+    String str2 = "";
+    String str3 = DeviceUtils.getVersionName(BaseApplicationImpl.getContext());
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    String str1 = str2;
+    if (localAppRuntime != null)
     {
-      String str3 = paramFile.getParentFile().getAbsolutePath();
-      String str2 = paramFile.getName();
-      String str1;
-      if (str2.endsWith(".tmp")) {
-        str1 = str2.substring(0, str2.length() - ".tmp".length());
-      }
-      for (;;)
-      {
-        str1 = str3 + "/" + str1;
-        paramFile.renameTo(new File(str1));
-        return str1;
-        str1 = str2;
-        if (str2.endsWith(".stmp")) {
-          str1 = str2.substring(0, str2.length() - ".stmp".length());
-        }
+      str1 = str2;
+      if (!TextUtils.isEmpty(localAppRuntime.getAccount())) {
+        str1 = bjkp.a(localAppRuntime.getAccount());
       }
     }
-    return "";
-  }
-  
-  public static String a(String paramString)
-  {
-    try
-    {
-      paramString = a(MessageDigest.getInstance("MD5").digest(paramString.getBytes()));
-      return paramString;
-    }
-    catch (NoSuchAlgorithmException paramString)
-    {
-      throw new IllegalStateException(paramString);
-    }
-  }
-  
-  public static String a(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    return vkm.h + a(paramString, false, 0L) + "/" + b(paramString, paramInt, paramBoolean1, paramBoolean2);
-  }
-  
-  public static String a(String paramString, long paramLong, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (yns.a(paramString)) {}
-    for (String str = vkm.h;; str = vkm.i) {
-      return str + a(paramString, true, paramLong) + "/" + b(paramString, paramLong, paramInt, paramBoolean1, paramBoolean2);
-    }
-  }
-  
-  public static String a(String paramString, boolean paramBoolean, long paramLong)
-  {
-    if (yns.a(paramString)) {
-      localObject = StoryVideoItem.getCacheKey(paramString);
-    }
-    String str;
-    do
-    {
-      return localObject;
-      if (paramBoolean) {
-        return String.valueOf(paramLong);
-      }
-      str = b(paramString);
-      localObject = str;
-    } while (!TextUtils.isEmpty(str));
-    Object localObject = a(paramString);
-    a(paramString, (String)localObject);
-    return localObject;
-  }
-  
-  private static String a(byte[] paramArrayOfByte)
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    int j = paramArrayOfByte.length;
-    int i = 0;
-    while (i < j)
-    {
-      localStringBuffer.append(String.format("%02x", new Object[] { Byte.valueOf(paramArrayOfByte[i]) }));
-      i += 1;
-    }
-    return localStringBuffer.toString();
-  }
-  
-  public static void a(StoryVideoItem paramStoryVideoItem, String paramString, int paramInt)
-  {
-    a(paramStoryVideoItem, paramString, paramInt, "");
-  }
-  
-  public static void a(StoryVideoItem paramStoryVideoItem, String paramString1, int paramInt, String paramString2)
-  {
-    vuu localvuu = (vuu)vux.a(5);
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (TextUtils.equals(paramStoryVideoItem.mLocalVideoPath, paramString1));
-        paramStoryVideoItem.mLocalVideoPath = paramString1;
-        if (!TextUtils.isEmpty(paramString2)) {
-          paramStoryVideoItem.mDownloadNetType = paramString2;
-        }
-        localvuu.a(paramStoryVideoItem.mVid, paramStoryVideoItem);
-        return;
-      } while (TextUtils.equals(paramStoryVideoItem.mVideoLocalThumbnailPath, paramString1));
-      paramStoryVideoItem.mVideoLocalThumbnailPath = paramString1;
-      if (!TextUtils.isEmpty(paramString2)) {
-        paramStoryVideoItem.mDownloadNetType = paramString2;
-      }
-      localvuu.a(paramStoryVideoItem.mVid, paramStoryVideoItem);
-      return;
-    } while (TextUtils.equals(paramStoryVideoItem.mLocalMaskPath, paramString1));
-    paramStoryVideoItem.mLocalMaskPath = paramString1;
-    if (!TextUtils.isEmpty(paramString2)) {
-      paramStoryVideoItem.mDownloadNetType = paramString2;
-    }
-    localvuu.a(paramStoryVideoItem.mVid, paramStoryVideoItem);
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    vmr localvmr = new vmr();
-    localvmr.a = paramString2;
-    a.a(paramString1, localvmr);
-  }
-  
-  public static boolean a(File paramFile)
-  {
-    if (!paramFile.exists()) {}
-    while ((paramFile.getName().endsWith(".tmp")) || (paramFile.getName().endsWith(".stmp"))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static String b(String paramString)
-  {
-    paramString = (vmr)a.a(paramString);
-    if (paramString != null) {
-      return paramString.a;
-    }
-    return null;
-  }
-  
-  public static String b(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    String str = a(paramInt);
-    if (TextUtils.isEmpty(str)) {}
-    for (paramString = a(paramString, false, 0L);; paramString = a(paramString, false, 0L) + str)
-    {
-      str = paramString;
-      if (paramBoolean1)
-      {
-        if (!paramBoolean2) {
-          break;
-        }
-        str = paramString + ".stmp";
-      }
-      return str;
-    }
-    return paramString + ".tmp";
-  }
-  
-  public static String b(String paramString, long paramLong, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    String str2 = a(paramInt);
-    String str1 = a(paramString, true, paramLong);
-    paramString = str1;
-    if (!TextUtils.isEmpty(str2)) {
-      paramString = str1 + str2;
-    }
-    str1 = paramString;
-    if (paramBoolean1)
-    {
-      if (paramBoolean2) {
-        str1 = paramString + ".stmp";
-      }
-    }
-    else {
-      return str1;
-    }
-    return paramString + ".tmp";
+    return str1 + "_" + str3;
   }
 }
 

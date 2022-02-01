@@ -1,45 +1,62 @@
 import android.content.Context;
-import android.text.TextUtils;
-import android.widget.AutoCompleteTextView;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.open.component.cache.database.DbCacheData;
+import java.lang.Class<+Lcom.tencent.open.component.cache.database.DbCacheData;>;
+import java.util.HashMap;
 
 public class bjmn
 {
-  public static void a(Context paramContext, int paramInt)
+  protected static bjmn a;
+  protected Context a;
+  protected bjmm a;
+  protected final HashMap<String, bjmk> a;
+  
+  protected bjmn(Context paramContext)
   {
-    if ((paramContext == null) || (!(paramContext instanceof LoginActivity)) || (paramInt != 16908322))
-    {
-      QLog.e("LoginPwdReportUtil", 1, "reportForLoginView fail: params wrong");
-      return;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_Bjmm = new bjmo(this);
+    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+  }
+  
+  public static bjmn a(Context paramContext)
+  {
+    if (jdField_a_of_type_Bjmn != null) {
+      return jdField_a_of_type_Bjmn;
     }
-    paramContext = ((LoginActivity)paramContext).a();
-    if ((paramContext == null) || (!(paramContext instanceof LoginView)))
+    try
     {
-      QLog.e("LoginPwdReportUtil", 1, "reportForLoginView fail: fragment wrong");
-      return;
+      if (jdField_a_of_type_Bjmn == null) {
+        jdField_a_of_type_Bjmn = new bjmn(paramContext);
+      }
+      paramContext = jdField_a_of_type_Bjmn;
+      return paramContext;
     }
-    paramContext = ((LoginView)paramContext).a();
-    if (paramContext == null)
+    finally {}
+  }
+  
+  public bjmk a(Class<? extends DbCacheData> paramClass, long paramLong, String paramString)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
     {
-      QLog.e("LoginPwdReportUtil", 1, "reportForLoginView fail: autoCompleteTextView == null");
-      return;
+      if (this.jdField_a_of_type_AndroidContentContext == null) {
+        throw new RuntimeException("call initiate(Context context) before this");
+      }
     }
-    paramContext = paramContext.getText();
-    if (paramContext == null)
+    if (paramString == null) {
+      throw new RuntimeException("invalid table name");
+    }
+    Object localObject = bjmk.a(paramLong, paramString);
+    localObject = (bjmk)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+    if (localObject == null)
     {
-      QLog.e("LoginPwdReportUtil", 1, "reportForLoginView fail: editable null");
-      return;
+      paramClass = new bjmk(this.jdField_a_of_type_AndroidContentContext, paramClass, paramLong, paramString);
+      paramClass.a(this.jdField_a_of_type_Bjmm);
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramClass.a(), paramClass);
     }
-    paramContext = paramContext.toString();
-    if ((TextUtils.isEmpty(paramContext)) || (!Friends.isValidUin(paramContext)) || (!yyi.i(paramContext)))
+    for (;;)
     {
-      QLog.e("LoginPwdReportUtil", 1, "reportForLoginView fail: uin error");
-      return;
+      return paramClass;
+      paramClass = (Class<? extends DbCacheData>)localObject;
     }
-    bcef.a(null, "dc00898", "", paramContext, "0X800B29A", "0X800B29A", 1, 0, "", "", "", "");
   }
 }
 

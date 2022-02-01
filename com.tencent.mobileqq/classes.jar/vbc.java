@@ -1,208 +1,182 @@
+import UserGrowth.stFeed;
 import UserGrowth.stSimpleMetaFeed;
-import android.content.Context;
-import android.view.GestureDetector;
-import android.view.View;
-import android.view.ViewStub;
-import com.tencent.ad.tangram.util.AdExposureChecker;
-import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.aditem.GdtAppReceiver;
-import cooperation.qzone.util.QZLog;
-import java.lang.ref.WeakReference;
+import android.util.SparseIntArray;
 import java.util.ArrayList;
+import java.util.List;
 
 public class vbc
-  extends vbl
 {
-  public static GdtAppReceiver a;
-  private int jdField_a_of_type_Int;
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  public AdExposureChecker.ExposureCallback a;
-  public ArrayList<AdExposureChecker> a;
-  private ukz<vaq> jdField_a_of_type_Ukz;
-  private vaq jdField_a_of_type_Vaq;
-  private ukz<vaq> b;
-  private ukz<vaq> c;
+  public int a;
+  public SparseIntArray a;
+  public String a;
+  public List<stSimpleMetaFeed> a;
+  private vgb a;
+  public String b;
+  public List<stFeed> b;
   
-  public vbc(Context paramContext, vct paramvct)
+  private vbc()
   {
-    super(paramContext, paramvct);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
   }
   
-  private void e()
+  private List<stSimpleMetaFeed> a(List<stFeed> paramList)
   {
-    if (!a()) {
-      return;
+    ArrayList localArrayList = new ArrayList();
+    if (vmg.a(paramList)) {
+      return localArrayList;
     }
-    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131380733);
-    this.jdField_a_of_type_Ukz = new vax(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment);
-    this.jdField_a_of_type_Ukz.a(localViewStub);
-  }
-  
-  private void f()
-  {
-    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131380721);
-    this.b = new vat(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Vct);
-    this.b.a(localViewStub);
-  }
-  
-  private void g()
-  {
-    if (!a()) {
-      return;
-    }
-    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131380735);
-    this.c = new vaz(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Vct);
-    this.c.a(localViewStub);
-  }
-  
-  private void h()
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      return;
-    }
-    if (jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver == null)
+    int i = 0;
+    while (i < paramList.size())
     {
-      jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = new GdtAppReceiver();
-      jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver.register(BaseApplicationImpl.getContext());
+      stFeed localstFeed = (stFeed)paramList.get(i);
+      if ((localstFeed.feed_type == 2) && (localstFeed.feed != null))
+      {
+        this.jdField_a_of_type_AndroidUtilSparseIntArray.put(this.jdField_b_of_type_JavaUtilList.size() + i, this.jdField_a_of_type_JavaUtilList.size() + localArrayList.size());
+        localArrayList.add(localstFeed.feed);
+      }
+      i += 1;
     }
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidViewView.getContext(), new vbd(this));
-    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new vbe(this));
+    this.jdField_a_of_type_JavaUtilList.addAll(localArrayList);
+    vmp.b("WSVideoDataManager", "position map: " + this.jdField_a_of_type_AndroidUtilSparseIntArray.toString());
+    return localArrayList;
   }
   
-  private void i()
+  public static vbc a()
   {
-    if ((this.jdField_a_of_type_Vaq == null) || (this.jdField_a_of_type_Vaq.a() == null) || (this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_Vct == null) || (this.jdField_a_of_type_Vct.a == null) || (this.jdField_a_of_type_Vaq.a() == null)) {
+    return vbe.a();
+  }
+  
+  private vfg a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, long paramLong, vbf paramvbf)
+  {
+    return new vbd(this, paramBoolean1, paramBoolean2, paramLong, paramInt, paramvbf);
+  }
+  
+  private void a(List<stFeed> paramList, boolean paramBoolean1, int paramInt, boolean paramBoolean2, vbf paramvbf)
+  {
+    if (paramBoolean1)
+    {
+      this.jdField_b_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_AndroidUtilSparseIntArray.clear();
+    }
+    List localList = a(paramList);
+    this.jdField_b_of_type_JavaUtilList.addAll(paramList);
+    if (paramvbf == null) {}
+    do
+    {
+      return;
+      if (paramInt == 9)
+      {
+        if (paramBoolean1)
+        {
+          paramvbf.a(false, this.jdField_b_of_type_JavaUtilList, paramBoolean2);
+          return;
+        }
+        paramvbf.a(true, paramList, paramBoolean2);
+        return;
+      }
+    } while (paramInt != 10);
+    paramvbf.a(true, localList, paramBoolean2);
+  }
+  
+  private void a(vfr paramvfr, long paramLong, int paramInt, boolean paramBoolean)
+  {
+    vmp.a("weishi-beacon", "请求关注流耗时：" + paramLong + "毫秒");
+    switch (paramInt)
+    {
+    }
+    for (String str = "focus";; str = "fullscreen_videoplay")
+    {
+      vkk.a().a(paramLong, paramvfr.a, str, paramBoolean);
       return;
     }
-    GdtAd localGdtAd = new GdtAd(var.a((stSimpleMetaFeed)this.jdField_a_of_type_Vaq.a()));
-    if (this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback == null) {
-      this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback = new vbg(this);
-    }
-    AdExposureChecker.onClick(this.jdField_a_of_type_AndroidViewView.getContext(), localGdtAd, new WeakReference(this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback));
-    var.a(this.jdField_a_of_type_AndroidViewView.getContext(), (stSimpleMetaFeed)this.jdField_a_of_type_Vaq.a(), jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver, this.jdField_a_of_type_Vct.a);
-    this.jdField_a_of_type_Vaq.a().isGdtAdclicked = true;
   }
   
-  public stSimpleMetaFeed a()
+  public vfs a(vdq paramvdq)
   {
-    if ((this.jdField_a_of_type_Vaq != null) && ((this.jdField_a_of_type_Vaq.a() instanceof stSimpleMetaFeed))) {
-      return (stSimpleMetaFeed)this.jdField_a_of_type_Vaq.a();
+    vfs localvfs = paramvdq.jdField_a_of_type_Vfs;
+    Object localObject = localvfs;
+    if (localvfs == null) {
+      localObject = new vhy();
     }
-    return null;
+    ((vhy)localObject).a(paramvdq);
+    return localObject;
+  }
+  
+  public vgb a()
+  {
+    return this.jdField_a_of_type_Vgb;
+  }
+  
+  public vgb a(vdq paramvdq, long paramLong, int paramInt)
+  {
+    vgb localvgb2 = paramvdq.jdField_a_of_type_Vgb;
+    vgb localvgb1 = localvgb2;
+    if (localvgb2 == null) {
+      localvgb1 = new vgb();
+    }
+    localvgb1.jdField_a_of_type_Vgi = paramvdq.jdField_a_of_type_Vgi;
+    localvgb1.jdField_a_of_type_AndroidViewViewGroup = paramvdq.a();
+    localvgb1.jdField_a_of_type_Vfs = paramvdq.jdField_a_of_type_Vfs;
+    localvgb1.jdField_a_of_type_Int = 2;
+    localvgb1.jdField_a_of_type_Long = paramLong;
+    localvgb1.jdField_b_of_type_Boolean = false;
+    localvgb1.jdField_b_of_type_Int = paramInt;
+    localvgb1.jdField_a_of_type_JavaLangString = "follow_tab";
+    return localvgb1;
   }
   
   public void a()
   {
-    super.a();
-    if (this.jdField_a_of_type_Ukz != null) {
-      this.jdField_a_of_type_Ukz.d();
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    if (this.jdField_a_of_type_Vgb != null) {
+      this.jdField_a_of_type_Vgb = null;
     }
-    if (this.b != null) {
-      this.b.d();
+    if (this.jdField_b_of_type_JavaUtilList != null) {
+      this.jdField_b_of_type_JavaUtilList.clear();
     }
-    if (this.c != null) {
-      this.c.d();
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      this.jdField_a_of_type_JavaUtilList.clear();
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Ukz != null) {
-      this.jdField_a_of_type_Ukz.b(paramInt);
-    }
-    if (this.b != null) {
-      this.b.b(paramInt);
-    }
-    if (this.c != null) {
-      this.c.b(paramInt);
+    if (this.jdField_a_of_type_AndroidUtilSparseIntArray != null) {
+      this.jdField_a_of_type_AndroidUtilSparseIntArray.clear();
     }
   }
   
-  public void a(vaq paramvaq)
+  public void a(List<stFeed> paramList)
   {
-    super.a(paramvaq);
-    this.jdField_a_of_type_Vaq = paramvaq;
-    if (this.jdField_a_of_type_Ukz != null) {
-      this.jdField_a_of_type_Ukz.a(paramvaq);
-    }
-    if (this.b != null) {
-      this.b.a(paramvaq);
-    }
-    if (this.c != null) {
-      this.c.a(paramvaq);
+    this.jdField_b_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = 15;
+    a(paramList);
+  }
+  
+  public void a(vdq paramvdq)
+  {
+    paramvdq = paramvdq.jdField_a_of_type_Vgb;
+    if ((paramvdq != null) && ((paramvdq.jdField_a_of_type_Boolean) || ((paramvdq.jdField_a_of_type_Vgh != null) && (paramvdq.jdField_a_of_type_Vgh.e() != 0)))) {
+      paramvdq.jdField_a_of_type_Boolean = false;
     }
   }
   
-  public boolean a()
+  public void a(vgb paramvgb)
   {
-    return true;
+    this.jdField_a_of_type_Vgb = paramvgb;
   }
   
-  public void b()
+  public <T> void a(boolean paramBoolean1, boolean paramBoolean2, String paramString, int paramInt, long paramLong, vbf<T> paramvbf)
   {
-    if ((this.jdField_a_of_type_Vaq != null) && ((this.jdField_a_of_type_Vaq.a() instanceof stSimpleMetaFeed)))
+    if ((!paramBoolean1) && (!paramBoolean2)) {}
+    for (String str = this.jdField_a_of_type_JavaLangString;; str = "")
     {
-      stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)this.jdField_a_of_type_Vaq.a();
-      uql.a().a(localstSimpleMetaFeed.id);
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    AdExposureChecker localAdExposureChecker = new AdExposureChecker(null, new WeakReference(this.jdField_a_of_type_AndroidViewView));
-    if ((this.jdField_a_of_type_Vaq instanceof vaq))
-    {
-      Object localObject = this.jdField_a_of_type_Vaq.a();
-      if ((localObject instanceof stSimpleMetaFeed))
-      {
-        localObject = (stSimpleMetaFeed)localObject;
-        if ((localObject != null) && (((stSimpleMetaFeed)localObject).gdt_ad_type == 1) && (((stSimpleMetaFeed)localObject).gdt_ad_info != null))
-        {
-          localAdExposureChecker = new AdExposureChecker(new GdtAd(var.a((stSimpleMetaFeed)localObject)), new WeakReference(this.jdField_a_of_type_AndroidViewView));
-          if (this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback == null) {
-            this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback = new vbf(this);
-          }
-          localAdExposureChecker.setCallback(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback));
-          QZLog.w("AdExposureChecker", "startonExposure");
-          this.jdField_a_of_type_JavaUtilArrayList.add(localAdExposureChecker);
-        }
-      }
-    }
-    for (;;)
-    {
-      localAdExposureChecker.startCheck();
+      paramString = new vfr(new vku(str, paramBoolean1, paramBoolean2, paramString, paramInt), null, a(paramBoolean1, paramBoolean2, paramInt, paramLong, paramvbf), 3001);
+      vfk.a().a(paramString);
       return;
     }
-  }
-  
-  public void c()
-  {
-    uwy localuwy = new uwy();
-    localuwy.jdField_a_of_type_UserGrowthStSimpleMetaFeed = a();
-    localuwy.jdField_a_of_type_Int = 2;
-    localuwy.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-    localuwy.jdField_a_of_type_JavaLangString = vdq.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a());
-    localuwy.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b();
-    localuwy.c = "more_operations";
-    localuwy.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment);
-    uyd.a(this.jdField_a_of_type_AndroidContentContext, localuwy);
-  }
-  
-  public void c(int paramInt) {}
-  
-  public void d()
-  {
-    super.d();
-    e();
-    g();
-    f();
-    h();
   }
 }
 

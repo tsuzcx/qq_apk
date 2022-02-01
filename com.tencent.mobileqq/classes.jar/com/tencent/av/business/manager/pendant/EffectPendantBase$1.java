@@ -2,19 +2,19 @@ package com.tencent.av.business.manager.pendant;
 
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import lhm;
-import npo;
+import lhy;
+import nwp;
 
 public class EffectPendantBase$1
   implements Runnable
 {
-  public EffectPendantBase$1(lhm paramlhm, File paramFile, String paramString) {}
+  public EffectPendantBase$1(lhy paramlhy, File paramFile, String paramString) {}
   
   public void run()
   {
     try
     {
-      npo.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaLangString);
+      nwp.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaLangString);
       return;
     }
     catch (Exception localException)

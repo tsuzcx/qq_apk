@@ -1,38 +1,21 @@
-import android.text.TextUtils;
-import androidx.annotation.NonNull;
-import org.json.JSONObject;
+import android.os.Bundle;
+import java.util.ArrayList;
 
-public class apuu
+final class apuu
+  extends apvw
 {
-  public int a;
+  apuu(ArrayList paramArrayList) {}
   
-  public static apuu a(String paramString)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return new apuu();
+    if ((paramBoolean) && (paramBundle != null)) {
+      this.a.add(paramBundle.getString("SKey", ""));
     }
-    apuu localapuu = new apuu();
-    try
-    {
-      localapuu.a = new JSONObject(paramString).optInt("enable", 0);
-      return localapuu;
-    }
-    catch (Throwable paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return localapuu;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "switch = " + this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apuu
  * JD-Core Version:    0.7.0.1
  */

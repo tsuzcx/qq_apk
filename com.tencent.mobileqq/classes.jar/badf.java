@@ -1,216 +1,225 @@
-import android.os.Handler;
-import android.os.Looper;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.richmedia.conn.ConnManager.1;
-import com.tencent.mobileqq.richmedia.conn.ConnManager.2;
-import com.tencent.mobileqq.richmedia.conn.ConnManager.3;
-import com.tencent.mobileqq.richmedia.conn.ConnManager.4;
-import com.tencent.mobileqq.richmedia.conn.LiteTcpConnection;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.anim.FriendProfileCardBgDrawable;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.io.File;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Vector;
 
 public class badf
-  implements badi
+  extends bade
 {
-  private static String jdField_a_of_type_JavaLangString = "PeakAudioTransHandler ConnManager";
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private badg jdField_a_of_type_Badg;
-  private badh jdField_a_of_type_Badh;
-  private baif jdField_a_of_type_Baif;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private ArrayList<badg> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  protected ConcurrentLinkedQueue<byte[]> a;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private bacy jdField_a_of_type_Bacy;
+  private String jdField_a_of_type_JavaLangString;
+  private Vector<Drawable> jdField_a_of_type_JavaUtilVector = new Vector();
   
-  public badf(AppInterface paramAppInterface, baif parambaif)
+  public badf(azxt paramazxt, azrb paramazrb)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Baif = parambaif;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    super("VasProfileBackgroundComponent", paramazxt, paramazrb);
   }
   
-  private void b(long paramLong)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new ConnManager.4(this, paramLong));
-  }
-  
-  public void a(long paramLong)
-  {
-    if (this.jdField_a_of_type_Badh != null)
-    {
-      if (!this.jdField_a_of_type_Baif.d()) {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "closeConnection : TCP not opened  mTCPstate =" + this.jdField_a_of_type_Baif.b());
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_Baif.b(13);
-    this.jdField_a_of_type_Badh.b();
-    this.jdField_a_of_type_Badh = null;
-  }
-  
-  public void a(long paramLong, badh parambadh)
+  private void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.e(jdField_a_of_type_JavaLangString, 2, "onDisConnect connId = " + paramLong + ",sendDataQueue size =" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size() + " mTCPstate =" + this.jdField_a_of_type_Baif.b());
+      QLog.d(b(), 2, "releaseBackground");
     }
-    this.jdField_a_of_type_Baif.b(10);
-    this.jdField_a_of_type_Badg = null;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    if (this.jdField_a_of_type_Baif.a())
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
     {
-      ((baig)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(0)).a(String.valueOf(paramLong), "TransInfo.ExitSession", null, 0, 0, false);
-      return;
+      if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof FriendProfileCardBgDrawable)) {
+        ((FriendProfileCardBgDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).a();
+      }
+      if (bhrj.a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable)) {
+        bhrj.a().a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      }
     }
-    QLog.e(jdField_a_of_type_JavaLangString, 1, "onDisConnect : session not open need not sso exit");
   }
   
-  public void a(badg parambadg, long paramLong)
+  private boolean a(long paramLong, String paramString1, String paramString2, File paramFile)
   {
-    if (parambadg == null) {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "openNewConnection : endPoint is null");
+    Object localObject = (Boolean)azrc.b.get(Long.valueOf(paramLong));
+    if ((localObject != null) && (((Boolean)localObject).booleanValue()))
+    {
+      localObject = "profilecard:" + paramString1;
+      BaseApplicationImpl.sImageCache.remove(localObject);
+      azrc.b.remove(Long.valueOf(paramLong));
     }
+    localObject = new badh(this, paramLong, paramString2, null).a();
+    if (((badh)localObject).a()) {}
     do
     {
-      return;
-      if ((TextUtils.isEmpty(parambadg.jdField_a_of_type_JavaLangString)) || (parambadg.jdField_a_of_type_Int == 0))
+      do
       {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "openNewConnection : endPoint is illegal");
-        return;
+        return true;
+        paramFile = new badg(this, paramString2, paramFile, ((badh)localObject).a()).a();
+      } while (paramFile.a());
+      localObject = paramFile.a();
+      paramFile = (File)localObject;
+      if (localObject != null) {
+        break;
       }
-      if (!this.jdField_a_of_type_Baif.a())
-      {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "openNewConnection : Session not Open");
-        return;
+      this.jdField_a_of_type_JavaLangString = null;
+      paramString1 = bhaa.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources(), paramString2, paramString1);
+      paramFile = paramString1;
+      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
+        break;
       }
-      if (!this.jdField_a_of_type_Baif.f())
-      {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "openNewConnection : TCP not Close mTCPstate =" + this.jdField_a_of_type_Baif.b());
-        return;
+      paramFile = paramString1;
+      if (!(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof FriendProfileCardBgDrawable)) {
+        break;
       }
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "openNewConnection : host:" + parambadg.jdField_a_of_type_JavaLangString + ",port=" + parambadg.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Badg = parambadg;
-      if (this.jdField_a_of_type_Badh != null) {
-        this.jdField_a_of_type_Badh.b();
+      paramString2 = ((FriendProfileCardBgDrawable)paramString1).a();
+      localObject = ((FriendProfileCardBgDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).a();
+      paramFile = paramString1;
+      if (localObject == null) {
+        break;
       }
-      this.jdField_a_of_type_Badh = new LiteTcpConnection(this, paramLong, parambadg, 3000, 10000);
-    } while (this.jdField_a_of_type_Badh == null);
-    this.jdField_a_of_type_Badh.a(this);
-    this.jdField_a_of_type_Badh.a();
-    this.jdField_a_of_type_Baif.b(11);
-  }
-  
-  public void a(ArrayList<badg> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-  }
-  
-  public void a(boolean paramBoolean, long paramLong, badh parambadh, badg parambadg, int paramInt)
-  {
-    int j = 0;
-    parambadh = (baig)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(0);
-    if (parambadg == null)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 2, "onConnect failed ep = null return");
-      b(paramLong);
+      paramFile = paramString1;
+      if (localObject != paramString2) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i(b(), 2, "initProfileCardBackground newBitmap == currentBitmap");
+    return true;
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
+      this.jdField_a_of_type_JavaUtilVector.add(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     }
-    for (;;)
-    {
-      return;
-      if (paramBoolean)
+    if (QLog.isColorLevel()) {
+      QLog.d(b(), 2, String.format("initProfileCardBackground bgDrawable=%s", new Object[] { paramFile }));
+    }
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramFile;
+    return true;
+  }
+  
+  private boolean a(bacy parambacy)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(b(), 2, String.format("initProfileCardBackground styleId=%s bgId=%s url=%s strZipUrl=%s heroUrl=%s", new Object[] { Long.valueOf(parambacy.a()), Long.valueOf(parambacy.b()), parambacy.a(), parambacy.b(), parambacy.c() }));
+    }
+    if (!TextUtils.isEmpty(parambacy.a())) {
+      try
       {
-        this.jdField_a_of_type_AndroidOsHandler.post(new ConnManager.1(this, parambadh, paramLong, parambadg));
-        return;
-      }
-      parambadh = parambadg.jdField_a_of_type_JavaLangString;
-      int i = parambadg.jdField_a_of_type_Int;
-      if ((this.jdField_a_of_type_Badg == null) || (!parambadh.equals(this.jdField_a_of_type_Badg.jdField_a_of_type_JavaLangString)) || (i != this.jdField_a_of_type_Badg.jdField_a_of_type_Int))
-      {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, "onConnect ip or port changed ");
-        b(paramLong);
-        return;
-      }
-      if (!this.jdField_a_of_type_Baif.g())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e(jdField_a_of_type_JavaLangString, 2, "onConnect reConnect state legal lSessionID = " + paramLong);
-        }
-        b(paramLong);
-        return;
-      }
-      if (!this.jdField_a_of_type_Baif.e())
-      {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "onConnect : TCP not in Opening state = " + this.jdField_a_of_type_Baif.b());
-        a(paramLong);
-        return;
-      }
-      if (this.jdField_a_of_type_Badg.c >= 1)
-      {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "reConnect > 1 return");
-        paramInt = 0;
-        for (;;)
+        Object localObject;
+        if ((parambacy.b() == 160L) || (parambacy.b() == 1600L))
         {
-          i = j;
-          if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())
-          {
-            parambadh = (badg)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-            if ((parambadh != this.jdField_a_of_type_Badg) && (parambadh.c == 0))
-            {
-              this.jdField_a_of_type_Badg = parambadh;
-              i = 1;
-            }
+          localObject = bhaa.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, parambacy.a());
+          if (!TextUtils.isEmpty(parambacy.b())) {
+            break label259;
           }
-          else
-          {
-            if (i == 0) {
-              break;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d(jdField_a_of_type_JavaLangString, 2, "onConnect failed change ip new ip = " + this.jdField_a_of_type_Badg.jdField_a_of_type_JavaLangString + ", port =" + this.jdField_a_of_type_Badg.jdField_a_of_type_Int);
-            }
-            a(this.jdField_a_of_type_Badg, paramLong);
-            return;
-          }
-          paramInt += 1;
         }
-        QLog.e(jdField_a_of_type_JavaLangString, 2, "onConnect  not ip notify  connect failed ");
-        b(paramLong);
-        return;
+        for (String str = "";; str = azrc.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, parambacy.b()) + ".dynamic")
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(b(), 2, String.format("initProfileCardBackground fileName=%s dynamicFileDirectory=%s", new Object[] { localObject, str }));
+          }
+          File localFile = new File((String)localObject);
+          boolean bool1 = localFile.isFile();
+          boolean bool2 = localFile.exists();
+          if (QLog.isColorLevel()) {
+            QLog.d(b(), 2, String.format("initProfileCardBackground isFile=%s exists=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+          }
+          if ((!bool1) || (!bool2)) {
+            break label355;
+          }
+          return a(parambacy.b(), (String)localObject, str, localFile);
+          localObject = azrc.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, parambacy.a(), parambacy.b());
+          break;
+          label259:
+          str = azrc.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, parambacy.b()) + "dynamicBottom.jpg";
+          if (new File(str).exists()) {
+            localObject = str;
+          }
+        }
+        return false;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "onConnect failed reconnect ip = " + this.jdField_a_of_type_Badg.jdField_a_of_type_JavaLangString + ", port =" + this.jdField_a_of_type_Badg.jdField_a_of_type_Int);
-      }
-      if (paramInt == 3) {
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ConnManager.2(this, paramLong), 2000L);
-      }
-      while (this.jdField_a_of_type_Badg != null)
+      catch (Throwable parambacy)
       {
-        parambadh = this.jdField_a_of_type_Badg;
-        parambadh.c += 1;
-        return;
-        this.jdField_a_of_type_AndroidOsHandler.post(new ConnManager.3(this, paramLong));
+        QLog.e(b(), 1, "initProfileCardBackground fail.", parambacy);
       }
     }
   }
   
-  public boolean a()
+  private void i()
   {
-    return NetworkUtil.isNetSupportHw(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getApplicationContext());
+    if (QLog.isColorLevel()) {
+      QLog.d(b(), 2, String.format("clearBGCache size=%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilVector.size()) }));
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilVector.iterator();
+    while (localIterator.hasNext())
+    {
+      Drawable localDrawable = (Drawable)localIterator.next();
+      if ((localDrawable instanceof FriendProfileCardBgDrawable)) {
+        ((FriendProfileCardBgDrawable)localDrawable).a();
+      } else if (bhrj.a(localDrawable)) {
+        bhrj.a().a(localDrawable);
+      }
+    }
+    this.jdField_a_of_type_JavaUtilVector.clear();
   }
   
-  public byte[] a()
+  public void a(BaseActivity paramBaseActivity, Bundle paramBundle)
   {
-    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty()) {
-      return (byte[])this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+    super.a(paramBaseActivity, paramBundle);
+    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramBaseActivity);
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("qqvip_bg");
+    ((FrameLayout)this.jdField_a_of_type_JavaLangObject).addView(this.jdField_a_of_type_AndroidWidgetImageView);
+  }
+  
+  public boolean a(badb parambadb)
+  {
+    if (parambadb.a() == null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(b());
     }
-    return null;
+    while ((parambadb.a().equals(this.jdField_a_of_type_Bacy)) && (b())) {
+      return true;
+    }
+    this.jdField_a_of_type_Bacy = parambadb.a();
+    boolean bool = a(this.jdField_a_of_type_Bacy);
+    if (QLog.isColorLevel()) {
+      QLog.d(b(), 2, "onCardUpdate initConfigResult=" + bool);
+    }
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      if (bhrj.b(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable)) {
+        a("card-video");
+      }
+      for (;;)
+      {
+        a(true);
+        return true;
+        if (bhrj.c(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable)) {
+          a("card-etc");
+        } else if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof FriendProfileCardBgDrawable)) {
+          if (((FriendProfileCardBgDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).d) {
+            a("card-dynamic");
+          } else {
+            a("card-static");
+          }
+        }
+      }
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(b());
+    a("card-default");
+    a(false);
+    return true;
+  }
+  
+  public void f()
+  {
+    super.f();
+    i();
+    a();
+    ((FrameLayout)this.jdField_a_of_type_JavaLangObject).removeView(this.jdField_a_of_type_AndroidWidgetImageView);
+    this.jdField_a_of_type_AndroidWidgetImageView = null;
   }
 }
 

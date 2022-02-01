@@ -1,52 +1,17 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.ConversationInfo;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import kotlin.Metadata;
 
-public class bdvv
-  implements abya
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"}, k=3, mv={1, 1, 16})
+final class bdvv
+  implements DialogInterface.OnDismissListener
 {
-  public int a(StringBuilder paramStringBuilder)
-  {
-    return 0;
-  }
+  bdvv(bdvs parambdvs) {}
   
-  public boolean a(ConversationInfo paramConversationInfo)
+  public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    return false;
-  }
-  
-  public boolean a(ConversationInfo paramConversationInfo, boolean[] paramArrayOfBoolean)
-  {
-    if (paramConversationInfo.type == 1)
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (localQQAppInterface == null) {
-        return false;
-      }
-      Object localObject = (RecentUser)localQQAppInterface.getProxyManager().a().findRecentUser(paramConversationInfo.uin, paramConversationInfo.type);
-      if ((localObject != null) && ((((RecentUser)localObject).lFlag & 1L) != 0L))
-      {
-        localObject = localQQAppInterface.getHotChatMng(true);
-        if ((localObject != null) && (!((HotChatManager)localObject).b(paramConversationInfo.uin)))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopBlockUnreadMsgNumCallback", 2, "getUnreadMsgsNum invalide hotchat!");
-          }
-          paramArrayOfBoolean[0] = true;
-          return true;
-        }
-      }
-      if (bdvp.a(localQQAppInterface, paramConversationInfo.uin))
-      {
-        paramArrayOfBoolean[0] = true;
-        return true;
-      }
-    }
-    return false;
+    bdvs.a(this.a).b((bdvf)this.a);
+    bdvs.a(this.a).a();
   }
 }
 

@@ -1,31 +1,24 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.app.Activity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.weiyun.WeiyunSaveTipsFactory.1;
 
-class bmrs
-  implements Handler.Callback
+public class bmrs
+  implements View.OnTouchListener
 {
-  bmrs(bmrr parambmrr) {}
+  public bmrs(WeiyunSaveTipsFactory.1 param1) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMessage.what)
+    if (paramMotionEvent.getAction() == 0)
     {
+      QLog.d("hehe", 2, new Object[] { "", "toast touch event" });
+      bmrr.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext());
+      return true;
     }
-    for (;;)
-    {
-      return false;
-      this.a.a.removeMessages(1);
-      if (this.a.a())
-      {
-        this.a.a.sendEmptyMessageDelayed(1, 50L);
-        continue;
-        this.a.a.removeMessages(3);
-        if (this.a.b()) {
-          this.a.a.sendEmptyMessageDelayed(3, 50L);
-        }
-      }
-    }
+    return false;
   }
 }
 

@@ -1,77 +1,51 @@
-import com.tencent.hlyyb.downloader.DownloaderTask;
-import com.tencent.hlyyb.downloader.DownloaderTaskListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.intervideo.now.DownloadEngine.DownloadTaskListenerBridge.1;
-import mqq.os.MqqHandler;
+import android.graphics.Bitmap;
+import com.qflutter.qflutter_network_image.LoadBitmapCallback;
+import com.qflutter.qflutter_network_image.QFlutterNetworkImageInterface;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqcircle.picload.Option;
+import cooperation.qqcircle.picload.QCircleFeedPicLoader;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class auol
-  implements DownloaderTaskListener
+  implements QFlutterNetworkImageInterface
 {
-  private auon a;
+  private static String jdField_a_of_type_JavaLangString;
+  private Map<String, Bitmap> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   
-  public auol(auon paramauon)
+  public static void a(String paramString)
   {
-    this.a = paramauon;
+    jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a()
+  public String getLibPath()
   {
-    this.a = null;
+    QLog.d("QFlutterNetworkImageImpl", 2, "[getLibPath] libPath=" + jdField_a_of_type_JavaLangString);
+    return jdField_a_of_type_JavaLangString;
   }
   
-  public void onTaskCompletedMainloop(DownloaderTask paramDownloaderTask)
+  public void loadBitmap(String paramString, int paramInt1, int paramInt2, LoadBitmapCallback paramLoadBitmapCallback)
   {
-    if (this.a != null) {
-      this.a.a(paramDownloaderTask);
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutterNetworkImageImpl", 2, "[loadBitmap] url=" + paramString + ", decodeWidth=" + paramInt1 + ", decodeHeight=" + paramInt2);
+    }
+    paramString = new Option().setUrl(paramString).setPredecode(true);
+    if ((paramInt1 > 0) && (paramInt2 > 0)) {
+      paramString.setRequestWidth(paramInt1).setRequestHeight(paramInt2);
+    }
+    QCircleFeedPicLoader.g().loadImage(paramString, new auom(this, paramLoadBitmapCallback));
+  }
+  
+  public void releaseBitmap(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutterNetworkImageImpl", 2, "[releaseBitmap] url=" + paramString);
+    }
+    paramString = (Bitmap)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+    if ((paramString == null) || (paramString.isRecycled())) {
+      QLog.w("QFlutterNetworkImageImpl", 1, "[releaseBitmap] bitmap is not supposed to be recycled or null, some problems occurred");
     }
   }
-  
-  public void onTaskCompletedSubloop(DownloaderTask paramDownloaderTask) {}
-  
-  public void onTaskDetectedMainloop(DownloaderTask paramDownloaderTask)
-  {
-    if (this.a != null) {
-      this.a.b(paramDownloaderTask);
-    }
-  }
-  
-  public void onTaskDetectedSubloop(DownloaderTask paramDownloaderTask) {}
-  
-  public void onTaskFailedMainloop(DownloaderTask paramDownloaderTask)
-  {
-    ThreadManager.getSubThreadHandler().post(new DownloadTaskListenerBridge.1(this, paramDownloaderTask));
-  }
-  
-  public void onTaskFailedSubloop(DownloaderTask paramDownloaderTask) {}
-  
-  public void onTaskPausedMainloop(DownloaderTask paramDownloaderTask) {}
-  
-  public void onTaskPausedSubloop(DownloaderTask paramDownloaderTask) {}
-  
-  public void onTaskPendingMainloop(DownloaderTask paramDownloaderTask)
-  {
-    if (this.a != null) {
-      this.a.d(paramDownloaderTask);
-    }
-  }
-  
-  public void onTaskReceivedMainloop(DownloaderTask paramDownloaderTask)
-  {
-    if (this.a != null) {
-      this.a.f(paramDownloaderTask);
-    }
-  }
-  
-  public void onTaskReceivedSubloop(DownloaderTask paramDownloaderTask) {}
-  
-  public void onTaskStartedMainloop(DownloaderTask paramDownloaderTask)
-  {
-    if (this.a != null) {
-      this.a.e(paramDownloaderTask);
-    }
-  }
-  
-  public void onTaskStartedSubloop(DownloaderTask paramDownloaderTask) {}
 }
 
 

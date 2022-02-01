@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
 import android.os.SystemClock;
-import bnal;
+import boqd;
 import com.tencent.mobileqq.highway.api.ITransactionCallback;
 import java.util.HashMap;
 
@@ -45,7 +45,7 @@ class ShortVideoForwardProcessor$4
     {
       this.this$0.sendProgressMessage();
       if (this.this$0.isStoryVideo) {
-        bnal.a(this.this$0.msg, 1002, this.this$0.getProgress());
+        boqd.a(this.this$0.msg, 1002, this.this$0.getProgress());
       }
     }
   }

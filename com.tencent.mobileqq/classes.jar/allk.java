@@ -1,56 +1,147 @@
+import android.content.Context;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.net.URLEncoder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class allk
-  implements View.OnClickListener
+public class allk
+  extends alkr
 {
-  public int a;
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public PressEffectImageView a;
-  public View b;
+  public boolean a;
   
-  allk(allj paramallj) {}
-  
-  public void onClick(View paramView)
+  public allk(Context paramContext)
   {
-    String str3 = this.jdField_a_of_type_Allj.a(this.jdField_a_of_type_Int);
-    if (paramView == this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView)
+    this(paramContext, false);
+  }
+  
+  public allk(Context paramContext, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaLangString = anvx.a(2131697427);
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public Object a(int paramInt, bffl parambffl, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    if (paramMessageRecord == null)
     {
-      if (this.jdField_a_of_type_Allj.jdField_a_of_type_Anaq != null) {
-        this.jdField_a_of_type_Allj.jdField_a_of_type_Anaq.a(this.jdField_a_of_type_Int);
-      }
-      this.jdField_a_of_type_Allj.a();
+      parambffl = null;
+      return parambffl;
     }
-    while (paramView != this.jdField_a_of_type_AndroidViewView)
+    boolean bool = axoi.a(paramMessageRecord);
+    if ((paramMessageRecord.msgtype != -2035) && (paramMessageRecord.msgtype != -2038) && (!bool)) {
+      return null;
+    }
+    if (bool)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      if ((paramObject instanceof allk))
+      {
+        paramObject = (allk)paramObject;
+        paramObject.jdField_a_of_type_Bffm.a(parambffl.jdField_a_of_type_Bffm);
+        return paramObject;
+      }
+      paramObject = new allk(BaseApplication.getContext());
+      paramObject.jdField_a_of_type_Bffm = new bffm(parambffl.jdField_a_of_type_Bffm);
+      return paramObject;
+    }
+    if ((paramMessageRecord instanceof MessageForDeliverGiftTips))
+    {
+      paramQQAppInterface = (MessageForDeliverGiftTips)paramMessageRecord;
+      paramInt = 1;
+      i = 1;
+      if (!(paramObject instanceof allk)) {
+        break label287;
+      }
+      paramMessageRecord = (allk)paramObject;
+      paramInt = i;
+      if (paramMessageRecord.jdField_a_of_type_Boolean)
+      {
+        paramInt = i;
+        if (!paramQQAppInterface.isToAll()) {
+          paramInt = 0;
+        }
+      }
+      i = paramInt;
+      paramObject = paramMessageRecord;
+      if (!paramMessageRecord.jdField_a_of_type_Boolean)
+      {
+        paramMessageRecord.jdField_a_of_type_Bffm.a(parambffl.jdField_a_of_type_Bffm);
+        paramObject = paramMessageRecord;
+      }
+    }
+    for (int i = paramInt;; i = paramInt)
+    {
+      parambffl = paramObject;
+      if (i == 0) {
+        break;
+      }
+      parambffl = paramObject;
+      if (TextUtils.isEmpty(paramQQAppInterface.remindBrief)) {
+        break;
+      }
+      parambffl = paramQQAppInterface.remindBrief.split("#");
+      paramObject.jdField_a_of_type_JavaLangString = ("[" + parambffl[0] + "]");
+      return paramObject;
+      bdla.b(paramQQAppInterface, "P_CliOper", "BizTechReport", "", "Troop_gift", "MsgBizType.TYPE_TROOP_RECEIVED_FLOWSER_MSG, MessageRecord cast to GiftTips", 0, -1, paramMessageRecord.getClass().getName(), "", "", "");
+      return null;
+      label287:
+      paramObject = new allk(BaseApplication.getContext(), paramQQAppInterface.isToAll());
+      paramObject.jdField_a_of_type_Bffm = new bffm(parambffl.jdField_a_of_type_Bffm);
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
+    {
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_Long = paramArrayOfByte.optLong("uniseq");
+      this.jdField_b_of_type_Long = paramArrayOfByte.optLong("shmsgseq");
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.optString("content");
+      this.jdField_b_of_type_Int = paramArrayOfByte.optInt("color");
+      this.jdField_a_of_type_Boolean = paramArrayOfByte.optBoolean("isToAll");
+      if (this.jdField_a_of_type_Bffm == null) {
+        this.jdField_a_of_type_Bffm = new bffm();
+      }
+      this.jdField_a_of_type_Bffm.a(paramArrayOfByte.getString("messageNavInfo"));
       return;
     }
-    String str2 = aqcc.a().c;
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "https://sou.qq.com/kandian/kd.html?_bid=3216&_wv=3&_wwv=1293&_wvSb=0&keyword=$KEYWORD$&from=$FROM$";
-    }
-    str1 = str1.replace("$KEYWORD$", URLEncoder.encode(str3));
-    if ((this.jdField_a_of_type_Allj.jdField_a_of_type_Int == 25) || (this.jdField_a_of_type_Allj.jdField_a_of_type_Int == 10)) {}
-    for (str1 = str1.replace("$FROM$", "kandian_history");; str1 = str1.replace("$FROM$", bbda.a(this.jdField_a_of_type_Allj.jdField_a_of_type_Int)))
+    catch (JSONException paramArrayOfByte)
     {
-      str1 = str1.replace("$SEARCHID$", "" + URLEncoder.encode(UniteSearchActivity.c));
-      bbgk.a(this.jdField_a_of_type_Allj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Allj.jdField_a_of_type_AndroidContentContext, str1);
-      this.jdField_a_of_type_Allj.jdField_a_of_type_Anaq.a(str3);
-      bbda.a(null, new ReportModelDC02528().module("search_his").action("clk_search_his").ver2(bbda.a(this.jdField_a_of_type_Allj.jdField_a_of_type_Int)).ver4(str3).ver7("{experiment_id:" + bbda.b + "}"));
-      new andr(this.jdField_a_of_type_Allj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(this.jdField_a_of_type_Allj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "clk_search_his", "search_his", bbda.a(this.jdField_a_of_type_Allj.jdField_a_of_type_Int), "", str3, "{experiment_id:" + bbda.b + "}");
-      break;
+      paramArrayOfByte.printStackTrace();
+    }
+  }
+  
+  public byte[] a()
+  {
+    return b();
+  }
+  
+  public byte[] b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
+      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      localJSONObject.put("isToAll", this.jdField_a_of_type_Boolean);
+      if (this.jdField_a_of_type_Bffm != null) {
+        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bffm.a());
+      }
+      return localJSONObject.toString().getBytes();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
     }
   }
 }

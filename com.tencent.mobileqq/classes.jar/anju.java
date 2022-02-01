@@ -1,35 +1,31 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.apollo.ApolloResManager.ApolloDressInfo;
+import com.tencent.mobileqq.apollo.data.ApolloDress.Dress;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.filament.CmShowAssetsData;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-class anju
-  implements View.OnClickListener
+public class anju
 {
-  anju(anjr paramanjr, Activity paramActivity, String paramString, boolean paramBoolean, QQAppInterface paramQQAppInterface) {}
-  
-  public void onClick(View paramView)
+  public static CmShowAssetsData a(ApolloResManager.ApolloDressInfo paramApolloDressInfo)
   {
-    Object localObject = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject);
-    if (anjr.a(this.jdField_a_of_type_Anjr) == null)
+    CmShowAssetsData localCmShowAssetsData = new CmShowAssetsData();
+    Iterator localIterator = paramApolloDressInfo.a().entrySet().iterator();
+    while (localIterator.hasNext())
     {
-      anjr.a(this.jdField_a_of_type_Anjr, new anjx(null));
-      localObject = new IntentFilter("com.tencent.mobileqq.InvitationWebViewPlugin.accountIdentityNotify");
-      this.jdField_a_of_type_AndroidAppActivity.registerReceiver(anjr.a(this.jdField_a_of_type_Anjr), (IntentFilter)localObject);
+      ApolloDress.Dress localDress = (ApolloDress.Dress)((Map.Entry)localIterator.next()).getValue();
+      String str = new File("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/dress/" + localDress.jdField_a_of_type_Int).getAbsolutePath();
+      localCmShowAssetsData.dressResMap.put(localDress.jdField_a_of_type_JavaUtilArrayList.get(0), str);
+      QLog.d("cm_res", 1, "part: " + (String)localDress.jdField_a_of_type_JavaUtilArrayList.get(0) + "; dir : " + str);
     }
-    if (this.jdField_a_of_type_Boolean) {}
-    for (localObject = "0X800B277";; localObject = "0X800B274")
-    {
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
+    localCmShowAssetsData.roleResDir = paramApolloDressInfo.b();
+    localCmShowAssetsData.faceDataJsonStr = paramApolloDressInfo.a();
+    QLog.d("cm_res", 1, "roleResDir: " + localCmShowAssetsData.roleResDir);
+    return localCmShowAssetsData;
   }
 }
 

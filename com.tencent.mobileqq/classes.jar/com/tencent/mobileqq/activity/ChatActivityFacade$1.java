@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aycx;
+import azjj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPtt;
 import com.tencent.mobileqq.transfile.TransFileController;
@@ -11,7 +11,7 @@ import com.tencent.qphone.base.util.QLog;
 public final class ChatActivityFacade$1
   implements Runnable
 {
-  public ChatActivityFacade$1(MessageForPtt paramMessageForPtt, QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean, aycx paramaycx, int paramInt1, int paramInt2) {}
+  public ChatActivityFacade$1(MessageForPtt paramMessageForPtt, QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean, azjj paramazjj, int paramInt1, int paramInt2) {}
   
   public void run()
   {
@@ -45,7 +45,7 @@ public final class ChatActivityFacade$1
     for (;;)
     {
       localTransferRequest.mDownMode = i;
-      localTransferRequest.mDownCallBack = this.jdField_a_of_type_Aycx;
+      localTransferRequest.mDownCallBack = this.jdField_a_of_type_Azjj;
       localTransferRequest.mExtraObj = new TransferRequest.PttDownExtraInfo(this.jdField_a_of_type_Int, this.b);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController().transferAsync(localTransferRequest);
       return;

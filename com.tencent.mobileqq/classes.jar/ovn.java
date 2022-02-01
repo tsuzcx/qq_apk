@@ -1,17 +1,12 @@
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
 
-class ovn
-  extends owd
+public class ovn
 {
-  ovn(ouu paramouu, boolean paramBoolean, List paramList)
-  {
-    super(paramouu, null);
-  }
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
   
-  void a(owg paramowg)
-  {
-    paramowg.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, ouu.c(this.jdField_a_of_type_Ouu), 6, 6);
-  }
+  private ovn(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
 }
 
 

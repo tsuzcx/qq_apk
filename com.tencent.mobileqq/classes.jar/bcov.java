@@ -1,18 +1,55 @@
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class bcov
-  implements View.OnClickListener
+public class bcov
+  extends bckq
 {
-  bcov(bcot parambcot) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private bcow jdField_a_of_type_Bcow;
   
-  public final void onClick(View paramView)
+  public bcov(bcke parambcke, Context paramContext)
   {
-    bcot.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(parambcke, paramContext);
+  }
+  
+  private void a()
+  {
+    String str = a();
+    if (!TextUtils.isEmpty(str))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("RichTemplateOneSearchResultView", 2, "data->" + str);
+      }
+      this.jdField_a_of_type_Bcow.a();
+      this.jdField_a_of_type_Bcow.a(str);
+      this.jdField_a_of_type_Bcow.b();
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.e("RichTemplateOneSearchResultView", 2, "empty data");
+  }
+  
+  private void b(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559864, null, false);
+    this.jdField_a_of_type_Bcow.a(this.jdField_a_of_type_AndroidViewView);
+  }
+  
+  public View a(Context paramContext)
+  {
+    this.jdField_a_of_type_Bcow = new bcow(paramContext);
+    b(paramContext);
+    a();
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public void e()
+  {
+    a();
   }
 }
 

@@ -1,47 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.StructMsgObserver.1;
-import com.tencent.mobileqq.activity.StructMsgObserver.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import java.util.Observable;
-import java.util.Observer;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 
 public class aehs
-  implements Observer
+  extends ClickableSpan
 {
-  public void update(Observable paramObservable, Object paramObject)
+  private aehs(LoginInfoActivity paramLoginInfoActivity) {}
+  
+  public void onClick(View paramView) {}
+  
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if (!aeub.a) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            if (!(paramObject instanceof MessageForStructing)) {
-              break;
-            }
-            paramObject = (MessageForStructing)paramObject;
-            paramObservable = paramObject.structingMsg;
-          } while ((paramObject.isSend()) || (!aeub.a(paramObservable)));
-          paramObject = paramObservable.mMsgUrl;
-          str1 = paramObservable.currentAccountUin;
-          str2 = paramObservable.uin;
-          ThreadManager.post(new StructMsgObserver.1(this, paramObject, paramObservable.uinType, str1, str2), 5, null, false);
-          return;
-        } while (!(paramObject instanceof MessageForText));
-        paramObservable = (MessageForText)paramObject;
-      } while ((paramObservable.isSend()) || (TextUtils.isEmpty(paramObservable.msg)));
-      paramObject = aeub.c(paramObservable.msg);
-    } while (TextUtils.isEmpty(paramObject));
-    String str1 = paramObservable.frienduin;
-    String str2 = paramObservable.selfuin;
-    ThreadManager.post(new StructMsgObserver.2(this, paramObject, paramObservable.istroop, str2, str1), 5, null, false);
+    paramTextPaint.setColor(paramTextPaint.linkColor);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

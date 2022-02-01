@@ -1,24 +1,32 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
 
 class vda
-  extends GestureDetector.SimpleOnGestureListener
+  implements vnn
 {
-  vda(vcz paramvcz) {}
+  vda(vcu paramvcu) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void a(String paramString, int paramInt)
   {
-    uya.b("WSVerticalVideoOperationRightItemView", "itemView onDoubleTap");
-    vcz.a(this.a, paramMotionEvent);
-    return super.onDoubleTap(paramMotionEvent);
+    vmr.a(vcu.a(this.a), "biz_src_jc_gzh_weishi", paramString);
+    vcu.a(this.a, "content", vkh.c);
   }
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  public void b(String paramString, int paramInt) {}
+  
+  public void c(String paramString, int paramInt)
   {
-    uya.b("WSVerticalVideoOperationRightItemView", "itemView onSingleTapConfirmed");
-    vcz.a(this.a);
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    WSDownloadParams localWSDownloadParams = new WSDownloadParams();
+    localWSDownloadParams.mScene = 1;
+    localWSDownloadParams.mLinkStrategyType = 0;
+    localWSDownloadParams.mEventId = 700;
+    localWSDownloadParams.mTestId = vnd.a(9);
+    localWSDownloadParams.mScheme = paramString;
+    vbq.a((Activity)vcu.b(this.a), localWSDownloadParams, false);
+    vcu.a(this.a, "content", vkh.b);
   }
+  
+  public void d(String paramString, int paramInt) {}
 }
 
 

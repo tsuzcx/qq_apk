@@ -1,80 +1,62 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class amgv
-  implements amha
+  implements View.OnClickListener
 {
-  amgv(amgo paramamgo) {}
+  amgv(amgs paramamgs) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    QLog.e("AVEngineWalper", 1, "onExitRoomComplete");
-    if (this.a.jdField_a_of_type_Biyn != null) {
-      this.a.jdField_a_of_type_Biyn.a();
+    ((SlideDetectListView)amgs.a(this.a)).resetSlideStatus();
+    Object localObject = (View)paramView.getParent();
+    if ((localObject instanceof ShaderAnimLayout)) {
+      ((ShaderAnimLayout)localObject).hideDirectly();
     }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    QLog.e("AVEngineWalper", 1, "onRoomDisconnect   result=" + paramInt + ", errinfo=" + paramString);
-    if (this.a.jdField_a_of_type_Biyn != null) {
-      this.a.jdField_a_of_type_Biyn.c(paramInt, paramString);
-    }
-  }
-  
-  public void a(int paramInt, String[] paramArrayOfString)
-  {
-    int k = paramArrayOfString.length;
-    int j = 0;
-    String str;
-    if (j < k)
+    localObject = paramView.getTag();
+    if (!(localObject instanceof DiscussionInfo)) {}
+    for (;;)
     {
-      str = paramArrayOfString[j];
-      QLog.i("AVEngineWalper", 1, String.format("onEndpointsUpdateInfo|eventid=%d, id=%s", new Object[] { Integer.valueOf(paramInt), str }));
-      if (!this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
-        break label237;
-      }
-    }
-    label237:
-    for (int i = ((Integer)this.a.jdField_a_of_type_JavaUtilMap.get(str)).intValue();; i = 0)
-    {
-      switch (paramInt)
-      {
-      default: 
-        label116:
-        if (i != 0) {
-          this.a.jdField_a_of_type_JavaUtilMap.put(str, Integer.valueOf(i));
-        }
-        break;
-      }
-      for (;;)
-      {
-        j += 1;
-        break;
-        i |= 0x20;
-        break label116;
-        i &= 0xFFFFFFDF;
-        break label116;
-        i |= 0x1;
-        break label116;
-        i &= 0xFFFFFFFE;
-        break label116;
-        if (this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
-          this.a.jdField_a_of_type_JavaUtilMap.remove(str);
-        }
-      }
-      if (this.a.jdField_a_of_type_Biyn != null) {
-        this.a.jdField_a_of_type_Biyn.a(paramInt, paramArrayOfString);
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-  }
-  
-  public void a(String[] paramArrayOfString)
-  {
-    QLog.e("AVEngineWalper", 1, "onSemiAutoRecvCameraVideo");
-    if (this.a.jdField_a_of_type_Biyn != null) {
-      this.a.jdField_a_of_type_Biyn.a(paramArrayOfString);
+      DiscussionInfo localDiscussionInfo = (DiscussionInfo)localObject;
+      if (NetworkUtil.getSystemNetwork(amgs.a(this.a)) == 0)
+      {
+        localObject = (BaseActivity)amgs.a(this.a);
+        QQToast.a((Context)localObject, 2131695849, 0).b(((BaseActivity)localObject).getTitleBarHeight());
+      }
+      else if ((!localDiscussionInfo.hasCollect) && (((antp)this.a.a.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a() >= 80))
+      {
+        localObject = (BaseActivity)amgs.a(this.a);
+        QQToast.a((Context)localObject, amgs.a(this.a).getString(2131695848, new Object[] { String.valueOf(80) }), 0).b(((BaseActivity)localObject).getTitleBarHeight());
+      }
+      else
+      {
+        antl localantl = (antl)this.a.a.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER);
+        if (localDiscussionInfo.hasCollect) {}
+        for (localObject = "0X8006898";; localObject = "0X8006897")
+        {
+          bdla.b(this.a.a, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
+          if (!localDiscussionInfo.hasCollect) {
+            break label271;
+          }
+          localantl.e(Long.valueOf(localDiscussionInfo.uin).longValue());
+          break;
+        }
+        label271:
+        localantl.d(Long.valueOf(localDiscussionInfo.uin).longValue());
+      }
     }
   }
 }

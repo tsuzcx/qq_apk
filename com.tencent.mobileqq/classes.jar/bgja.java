@@ -1,87 +1,57 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.graphics.Color;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONException;
-import org.json.JSONObject;
+import tencent.im.msg.im_msg_body.GroupBusinessMsg;
 
 public class bgja
-  extends bgit
 {
-  public static bgja a = new bgja();
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
   
-  public static String a(Context paramContext, int paramInt)
+  public bgja()
   {
-    paramContext = a.getDir(paramContext, "specialRing." + paramInt);
-    return paramContext + File.separator + paramInt + ".wav";
+    this.jdField_a_of_type_Int = 1;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt, bgfl parambgfl, boolean paramBoolean)
+  public static bgja a(im_msg_body.GroupBusinessMsg paramGroupBusinessMsg)
   {
-    a.download(paramQQAppInterface, "specialRing." + paramInt, parambgfl, paramBoolean);
-  }
-  
-  public static boolean a(Context paramContext, int paramInt)
-  {
-    Object localObject = "specialRing." + paramInt;
-    paramContext = a.getDir(paramContext, (String)localObject);
-    if (!new File(paramContext).exists()) {
-      return false;
-    }
-    localObject = new String[3];
-    localObject[0] = ".wav";
-    localObject[1] = ".json";
-    localObject[2] = ".jpg";
-    int j = localObject.length;
-    int i = 0;
-    while (i < j)
+    bgja localbgja = new bgja();
+    localbgja.jdField_a_of_type_Int = paramGroupBusinessMsg.uint32_flags.get();
+    localbgja.jdField_a_of_type_JavaLangString = paramGroupBusinessMsg.bytes_head_url.get().toStringUtf8();
+    localbgja.jdField_b_of_type_JavaLangString = paramGroupBusinessMsg.bytes_head_clk_url.get().toStringUtf8();
+    localbgja.jdField_c_of_type_JavaLangString = paramGroupBusinessMsg.bytes_nick.get().toStringUtf8();
+    localbgja.jdField_d_of_type_JavaLangString = paramGroupBusinessMsg.bytes_rank.get().toStringUtf8();
+    try
     {
-      String str = localObject[i];
-      if (!new File(paramContext, paramInt + str).exists())
-      {
-        QLog.e("RingUpdateCallback", 1, "missing: " + paramInt + str);
-        return false;
-      }
-      i += 1;
+      localbgja.jdField_b_of_type_Int = Color.parseColor(paramGroupBusinessMsg.bytes_nick_color.get().toStringUtf8());
+      localbgja.jdField_c_of_type_Int = Color.parseColor(paramGroupBusinessMsg.bytes_rank_color.get().toStringUtf8());
+      localbgja.jdField_d_of_type_Int = Color.parseColor(paramGroupBusinessMsg.bytes_rank_bgcolor.get().toStringUtf8());
+      return localbgja;
     }
-    return true;
-  }
-  
-  public static String b(Context paramContext, int paramInt)
-  {
-    paramContext = a.getDir(paramContext, "specialRing." + paramInt);
-    paramContext = FileUtils.readFileContent(new File(paramContext + File.separator + paramInt + ".json"));
-    if (!TextUtils.isEmpty(paramContext)) {
-      try
-      {
-        paramContext = new JSONObject(paramContext).optString("name", null);
-        return paramContext;
-      }
-      catch (JSONException paramContext)
-      {
-        QLog.e("RingUpdateCallback", 1, "getName error", paramContext);
-        return null;
-      }
+    catch (Exception paramGroupBusinessMsg)
+    {
+      QLog.e(bgiz.jdField_a_of_type_JavaLangString, 2, "the color string cannot parse to color. " + paramGroupBusinessMsg.getMessage());
     }
-    QLog.e("RingUpdateCallback", 1, "getName missing json: " + paramInt);
-    return null;
+    return localbgja;
   }
   
-  public long getBID()
+  public String toString()
   {
-    return 37L;
-  }
-  
-  protected String getRootDir()
-  {
-    return "ring";
-  }
-  
-  protected String getScidPrefix()
-  {
-    return "specialRing.";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TroopBusinessMessage");
+    localStringBuilder.append(",").append("nick").append("=").append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(",").append("flag").append("=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",").append("clk").append("=").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(",").append("head").append("=").append(this.jdField_a_of_type_JavaLangString);
+    return localStringBuilder.toString();
   }
 }
 

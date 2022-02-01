@@ -1,47 +1,107 @@
-import android.hardware.camera2.CameraCaptureSession;
-import android.hardware.camera2.CameraCaptureSession.StateCallback;
-import android.hardware.camera2.CaptureRequest;
-import android.hardware.camera2.CaptureRequest.Builder;
-import android.support.annotation.NonNull;
-import com.samsung.android.sdk.camera.SCameraCaptureProcessor;
-import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
-import java.util.concurrent.Semaphore;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.mobileqq.richmediabrowser.model.AIOVideoData;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import com.tencent.richmediabrowser.core.RichMediaBrowserManager;
+import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
+import com.tencent.richmediabrowser.presenter.IProvider;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneHelper.UserInfo;
+import java.io.File;
 
-public class bbsf
-  extends CameraCaptureSession.StateCallback
+class bbsf
+  implements ShareActionSheet.OnItemClickListener
 {
-  public bbsf(Camera2Control paramCamera2Control) {}
+  bbsf(bbrz parambbrz, AIOVideoData paramAIOVideoData, File paramFile, int paramInt, RichMediaBrowserInfo paramRichMediaBrowserInfo) {}
   
-  public void onConfigureFailed(@NonNull CameraCaptureSession paramCameraCaptureSession)
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    bbsr.a(2, "[Camera2]startPreview onConfigureFailed!");
-    Camera2Control.c(this.a, false);
-    Camera2Control.a(this.a).release();
-    if (this.a.jdField_a_of_type_Bbsm != null) {
-      this.a.jdField_a_of_type_Bbsm.a(-202);
-    }
-  }
-  
-  public void onConfigured(@NonNull CameraCaptureSession paramCameraCaptureSession)
-  {
-    bbsr.a(1, "[Camera2]startPreview onConfigured!");
-    Camera2Control.c(this.a, true);
-    Camera2Control.a(this.a, paramCameraCaptureSession);
-    Camera2Control.a(this.a).set(CaptureRequest.CONTROL_AF_MODE, Integer.valueOf(4));
-    Camera2Control.a(this.a).set(CaptureRequest.CONTROL_AE_MODE, Integer.valueOf(1));
-    Camera2Control.a(this.a).set(CaptureRequest.CONTROL_AE_TARGET_FPS_RANGE, Camera2Control.a(this.a));
-    if (this.a.jdField_a_of_type_Boolean)
+    if (paramActionSheetItem == null) {}
+    int i;
+    label741:
+    do
     {
-      Camera2Control.a(this.a, Camera2Control.a(this.a).buildCaptureRequest(Camera2Control.a(this.a)));
-      this.a.jdField_a_of_type_AndroidHardwareCamera2CameraCaptureSession$CaptureCallback = Camera2Control.a(this.a).createCaptureCallback(Camera2Control.a(this.a), Camera2Control.a(this.a));
-    }
-    for (;;)
-    {
-      Camera2Control.a(this.a);
-      Camera2Control.a(this.a).release();
       return;
-      Camera2Control.b(this.a, Camera2Control.a(this.a).build());
-    }
+      this.jdField_a_of_type_Bbrz.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.dismiss();
+      int j = paramActionSheetItem.action;
+      switch (j)
+      {
+      }
+      for (;;)
+      {
+        i = 0;
+        for (;;)
+        {
+          paramActionSheetItem = this.jdField_a_of_type_Bbrz.jdField_a_of_type_Bbqi.getSelectedItem();
+          if ((paramActionSheetItem == null) || (paramActionSheetItem.baseData == null) || (!AIOVideoData.class.isInstance(paramActionSheetItem.baseData))) {
+            break;
+          }
+          paramActionSheetItem = (AIOVideoData)paramActionSheetItem.baseData;
+          if (paramActionSheetItem.jdField_d_of_type_Int != 0) {
+            break label741;
+          }
+          bdla.b(null, "dc00898", "", "", "0X8009EF9", "0X8009EF9", i, 0, "", "", "", "");
+          return;
+          i = 1;
+          bbrz.a(this.jdField_a_of_type_Bbrz, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOVideoData, j, paramActionSheetItem);
+          continue;
+          paramActionSheetItem = QZoneHelper.UserInfo.getInstance();
+          paramActionSheetItem.qzone_uin = bbph.a().d();
+          QZoneHelper.forwardToPublishMood(this.jdField_a_of_type_Bbrz.mContext, paramActionSheetItem, this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), 10001);
+          bdla.b(null, "dc00898", "", "", "0X8007539", "0X8007539", 0, 0, "", "", "", "");
+          i = 4;
+          continue;
+          bbrz.a(this.jdField_a_of_type_Bbrz, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOVideoData, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo);
+          i = 0;
+          continue;
+          bdla.b(null, "P_CliOper", "dwop_via", "", "0X8009BE4", "0X8009BE4", bbph.a().c(), 0, "", "", "", "");
+          paramShareActionSheet = bbph.a().a();
+          paramActionSheetItem = paramShareActionSheet;
+          if (TextUtils.isEmpty(paramShareActionSheet)) {
+            paramActionSheetItem = bbph.a().c();
+          }
+          bbqs.a(this.jdField_a_of_type_Bbrz.mContext, bbph.a().a(), bbph.a().c(), paramActionSheetItem, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOVideoData.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOVideoData.jdField_d_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOVideoData.jdField_b_of_type_Int, false);
+          i = 6;
+          continue;
+          i = 3;
+          bbrz.a(this.jdField_a_of_type_Bbrz, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOVideoData);
+          continue;
+          i = 7;
+          bbrz.b(this.jdField_a_of_type_Bbrz, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOVideoData);
+          continue;
+          j = 6;
+          i = j;
+          if (RichMediaBrowserManager.getInstance().getProvider() != null)
+          {
+            i = j;
+            if (RichMediaBrowserManager.getInstance().getProvider().isPingBinder())
+            {
+              RichMediaBrowserManager.getInstance().getProvider().saveToWeiyun(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOVideoData.a);
+              QQToast.a(this.jdField_a_of_type_Bbrz.mContext, this.jdField_a_of_type_Bbrz.mContext.getString(2131692595), 0).a();
+              i = j;
+              continue;
+              paramActionSheetItem = new Intent(this.jdField_a_of_type_Bbrz.mContext, ScannerActivity.class);
+              paramActionSheetItem.putExtra("detectType", 1);
+              paramActionSheetItem.putExtra("QRDecode", true);
+              bbqs.a(this.jdField_a_of_type_Bbrz.mContext, bbrz.a(this.jdField_a_of_type_Bbrz), this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOVideoData.jdField_b_of_type_Int, false, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOVideoData.jdField_d_of_type_JavaLangString, "", "", "", 1, bbph.a().d(), bbph.a().c(), paramActionSheetItem);
+              bbrz.a(this.jdField_a_of_type_Bbrz, "0X800ACB7", this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOVideoData.jdField_b_of_type_Int);
+              i = 0;
+            }
+          }
+        }
+        paramActionSheetItem = new Intent(this.jdField_a_of_type_Bbrz.mContext, ScannerActivity.class);
+        paramActionSheetItem.putExtra("detectType", 2);
+        paramActionSheetItem.putExtra("QRDecode", true);
+        bbqs.a(this.jdField_a_of_type_Bbrz.mContext, bbrz.a(this.jdField_a_of_type_Bbrz), this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOVideoData.jdField_b_of_type_Int, false, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOVideoData.jdField_d_of_type_JavaLangString, "", "", "", 2, bbph.a().d(), bbph.a().c(), paramActionSheetItem);
+        bbrz.a(this.jdField_a_of_type_Bbrz, "0X800ACB8", this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOVideoData.jdField_b_of_type_Int);
+      }
+    } while (paramActionSheetItem.jdField_d_of_type_Int != 1);
+    bdla.b(null, "dc00898", "", "", "0X8009EF8", "0X8009EF8", i, 0, "", "", "", "");
   }
 }
 

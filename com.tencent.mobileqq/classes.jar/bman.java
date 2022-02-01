@@ -1,30 +1,109 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.ae.mode.AECaptureMode;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-class bman
-  implements View.OnClickListener
+public final class bman
 {
-  bman(bmam parambmam, AECaptureMode paramAECaptureMode, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public static void a(AppRuntime paramAppRuntime, int paramInt)
   {
-    bmai.a(this.jdField_a_of_type_Bmam.a, this.jdField_a_of_type_DovComQqImAeModeAECaptureMode);
-    if (this.jdField_a_of_type_DovComQqImAeModeAECaptureMode == AECaptureMode.GIF) {
-      bmbc.a().M();
+    a(paramAppRuntime, "User_NewFav", paramInt, 0, 0);
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, int paramInt1, int paramInt2)
+  {
+    a(paramAppRuntime, "User_AddFav", paramInt2, 0, paramInt1);
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("qqfavReport", 2, "subAction= 0X800AA51, actionName = 0X800AA51, fromType = " + paramInt1 + ", actionResult = " + paramInt2 + ", ext2 = " + paramInt3);
     }
-    for (;;)
+    bdla.b(null, "dc00898", "", "", "0X800AA51", "0X800AA51", paramInt1, paramInt2, "" + paramInt3, "", "", "");
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    a(paramAppRuntime, paramString, paramInt1, paramInt2, paramInt3, 0, "", "");
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2, String paramString3)
+  {
+    QQAppInterface localQQAppInterface = null;
+    if ((paramAppRuntime instanceof QQAppInterface)) {
+      localQQAppInterface = (QQAppInterface)paramAppRuntime;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("qqfavReport", 2, "actionName = " + paramString1 + ", fromType = " + paramInt1 + ", actionResult = " + paramInt2 + ", ext2 =" + paramInt3 + ", ext3 =" + paramInt4 + ", ext4 =" + paramString2 + ", ext5 =" + paramString3);
+    }
+    String str1 = "" + paramInt3;
+    String str2 = "" + paramInt4;
+    if (paramString2 == null)
     {
-      bmbx.b("AEVideoStoryCaptureModePart", "【AE_CAPTURE_MODE】:" + this.jdField_a_of_type_Int);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.jdField_a_of_type_DovComQqImAeModeAECaptureMode == AECaptureMode.NORMAL) {
-        bmbc.a().L();
-      } else if (this.jdField_a_of_type_DovComQqImAeModeAECaptureMode == AECaptureMode.PLAY) {
-        bmbc.a().V();
+      paramAppRuntime = "";
+      if (paramString3 != null) {
+        break label196;
       }
     }
+    label196:
+    for (paramString2 = "";; paramString2 = paramString3)
+    {
+      bdla.b(localQQAppInterface, "CliOper", "", "", "Favorite", paramString1, paramInt1, paramInt2, str1, str2, paramAppRuntime, paramString2);
+      return;
+      paramAppRuntime = paramString2;
+      break;
+    }
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, boolean paramBoolean, long paramLong)
+  {
+    Object localObject = new String[3];
+    int i = NetworkUtil.getSystemNetwork(paramAppRuntime.getApplication().getApplicationContext());
+    if (i == 1) {
+      if (paramBoolean)
+      {
+        localObject[0] = "param_WIFIFavoritesUploadFlow";
+        localObject[1] = "param_WIFIFlow";
+        localObject[2] = "param_Flow";
+        paramAppRuntime.sendAppDataIncermentMsg(paramAppRuntime.getAccount(), (String[])localObject, paramLong);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder().append("addFlowCount ").append(paramLong).append(" for ");
+          if (!paramBoolean) {
+            break label156;
+          }
+        }
+      }
+    }
+    label156:
+    for (paramAppRuntime = "upload";; paramAppRuntime = "download")
+    {
+      QLog.d("qqfav", 2, paramAppRuntime + ", netType is " + i);
+      return;
+      localObject[0] = "param_WIFIFavoritesDownloadFlow";
+      break;
+      if (paramBoolean) {
+        localObject[0] = "param_XGFavoritesUploadFlow";
+      }
+      for (;;)
+      {
+        localObject[1] = "param_XGFlow";
+        break;
+        localObject[0] = "param_XGFavoritesDownloadFlow";
+      }
+    }
+  }
+  
+  public static void b(AppRuntime paramAppRuntime, int paramInt)
+  {
+    a(paramAppRuntime, "User_DelFav", 0, 0, paramInt);
+  }
+  
+  public static void b(AppRuntime paramAppRuntime, int paramInt1, int paramInt2)
+  {
+    a(paramAppRuntime, "User_OpenFavPage", paramInt2, 0, paramInt1);
   }
 }
 

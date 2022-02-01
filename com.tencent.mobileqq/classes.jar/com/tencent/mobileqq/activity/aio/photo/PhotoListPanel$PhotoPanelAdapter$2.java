@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import ahbp;
+import ahup;
 import java.util.List;
 
 public class PhotoListPanel$PhotoPanelAdapter$2
   implements Runnable
 {
-  public PhotoListPanel$PhotoPanelAdapter$2(ahbp paramahbp, List paramList) {}
+  public PhotoListPanel$PhotoPanelAdapter$2(ahup paramahup, List paramList) {}
   
   public void run()
   {

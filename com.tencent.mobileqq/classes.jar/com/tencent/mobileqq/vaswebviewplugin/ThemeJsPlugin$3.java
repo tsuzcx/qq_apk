@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import avtb;
-import bdbk;
+import awzc;
+import beik;
 import org.json.JSONObject;
 
 class ThemeJsPlugin$3
-  implements avtb<bdbk>
+  implements awzc<beik>
 {
   ThemeJsPlugin$3(ThemeJsPlugin paramThemeJsPlugin, JSONObject paramJSONObject, String paramString) {}
   
-  public void postQuery(bdbk parambdbk)
+  public void postQuery(beik parambeik)
   {
-    this.this$0.startDownload(this.val$json, this.val$callbackId, parambdbk);
+    this.this$0.startDownload(this.val$json, this.val$callbackId, parambeik);
   }
 }
 

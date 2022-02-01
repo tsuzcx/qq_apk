@@ -1,33 +1,21 @@
-import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.GiftPkgSelectDialog.1.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ume
-  implements zhe
+public class ume
+  implements AdapterView.OnItemClickListener
 {
-  ume(umb paramumb) {}
+  ume(umd paramumd) {}
   
-  public void a()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (umb.a(this.a).a()) {
-      umb.a(this.a).b();
-    }
-    for (;;)
-    {
-      umb.a(this.a, false);
-      return;
-      this.a.dismiss();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (umb.a(this.a) != paramInt)
-    {
-      umb.a(this.a, paramInt);
-      umb.a(this.a);
-      umb.a(this.a).putInt("GroupSoftKeyboardHeight", paramInt);
-      umb.a(this.a).commit();
-    }
-    umb.a(this.a, true);
+    umd.a(this.a, paramInt);
+    umd.a(this.a).notifyDataSetChanged();
+    umd.a(this.a).postDelayed(new GiftPkgSelectDialog.1.1(this, paramInt), 100L);
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 

@@ -1,31 +1,55 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
-import org.json.JSONObject;
+import java.lang.reflect.Field;
 
-class bktt
-  extends bkuk
+public class bktt
 {
-  bktt(bktr parambktr) {}
-  
-  public void a(bkuj parambkuj)
+  public static Object a(Object paramObject, String paramString)
   {
-    parambkuj = parambkuj.a();
-    if (parambkuj == null) {
-      bkvd.a("ReaderTabConfigDataHelper", "Response json is null");
-    }
-    do
+    try
     {
-      return;
-      if (parambkuj.length() == 0)
+      paramObject = paramObject.getClass().getField(paramString).get(paramObject);
+      return paramObject;
+    }
+    catch (NoSuchFieldException paramObject)
+    {
+      return null;
+    }
+    catch (IllegalArgumentException paramObject)
+    {
+      return null;
+    }
+    catch (IllegalAccessException paramObject) {}
+    return null;
+  }
+  
+  public static Object b(Object paramObject, String paramString)
+  {
+    try
+    {
+      String[] arrayOfString = paramString.split("\\.");
+      int j = arrayOfString.length;
+      int i = 0;
+      for (;;)
       {
-        bkvd.a("ReaderTabConfigDataHelper", "后台数据异常");
-        return;
+        paramString = paramObject;
+        if (i >= j) {
+          break;
+        }
+        paramString = arrayOfString[i];
+        paramObject = paramObject.getClass().getField(paramString).get(paramObject);
+        i += 1;
       }
-    } while (!bktr.a(this.a, parambkuj, false));
-    bktr.a(this.a).getSharedPreferences("CGI_RESPONSE", 0).edit().putString("SP_TAB_CONFIG_DATA" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), parambkuj.toString()).apply();
+      return null;
+    }
+    catch (IllegalAccessException paramObject)
+    {
+      paramString = null;
+      return paramString;
+    }
+    catch (IllegalArgumentException paramObject)
+    {
+      return null;
+    }
+    catch (NoSuchFieldException paramObject) {}
   }
 }
 

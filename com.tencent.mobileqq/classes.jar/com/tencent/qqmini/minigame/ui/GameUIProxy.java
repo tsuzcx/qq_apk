@@ -509,14 +509,14 @@ public class GameUIProxy
     }
   }
   
-  public void updateLoadingAdUI(Activity paramActivity, MiniAppInfo paramMiniAppInfo, String paramString, long paramLong)
+  public void updateLoadingAdUI(Activity paramActivity, MiniAppInfo paramMiniAppInfo, String paramString, long paramLong1, long paramLong2)
   {
-    paramActivity.runOnUiThread(new GameUIProxy.3(this, paramMiniAppInfo, paramActivity, paramString, paramLong));
+    paramActivity.runOnUiThread(new GameUIProxy.3(this, paramMiniAppInfo, paramActivity, paramString, paramLong1, paramLong2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.minigame.ui.GameUIProxy
  * JD-Core Version:    0.7.0.1
  */

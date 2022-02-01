@@ -1,100 +1,19 @@
-import android.content.Intent;
-import com.tencent.mobileqq.utils.httputils.PkgTools;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.PinnedHeadAndFootExpandableListView;
 
 public class blea
-  extends MSFServlet
+  implements View.OnClickListener
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    Object localObject;
-    long l;
-    boolean bool;
-    label93:
-    int i;
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder().append("onReceive... ");
-      if (paramFromServiceMsg != null)
-      {
-        localObject = ",failCode=" + paramFromServiceMsg.getBusinessFailCode() + "  errMsg:" + paramFromServiceMsg.getBusinessFailMsg();
-        QLog.d("WadlBusinessServlet", 2, (String)localObject);
-      }
-    }
-    else
-    {
-      l = 0L;
-      if ((paramFromServiceMsg == null) || (!paramFromServiceMsg.isSuccess())) {
-        break label189;
-      }
-      bool = true;
-      if (QLog.isColorLevel())
-      {
-        l = System.currentTimeMillis();
-        QLog.d("WadlBusinessServlet", 2, "onReceive success=" + bool);
-      }
-      localObject = null;
-      if (bool)
-      {
-        i = paramFromServiceMsg.getWupBuffer().length - 4;
-        localObject = new byte[i];
-        PkgTools.copyData((byte[])localObject, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-      }
-      if (paramIntent != null) {
-        break label195;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e("WadlBusinessServlet", 2, "onReceive fail, request is null");
-      }
-    }
-    for (;;)
-    {
-      return;
-      localObject = "";
-      break;
-      label189:
-      bool = false;
-      break label93;
-      label195:
-      i = paramIntent.getIntExtra("wadl_sso_type", 0);
-      if (i == 1) {
-        blef.a().a(paramIntent, bool, (byte[])localObject);
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.d("WadlBusinessServlet", 2, "onReceive exit|cost: " + (System.currentTimeMillis() - l));
-        return;
-        if (i == 0) {
-          blec.a().a(paramIntent, bool, (byte[])localObject);
-        }
-      }
-    }
-  }
+  public blea(PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView1, PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView2) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WadlBusinessServlet", 2, "onSend...");
+    if (this.b.jdField_a_of_type_Blec != null) {
+      this.b.jdField_a_of_type_Blec.a(this.a, this.b.jdField_a_of_type_AndroidViewView, this.b.f);
     }
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("webssoReq");
-    if (paramIntent.getIntExtra("wadl_sso_type", 0) == 1) {
-      paramPacket.setSSOCommand("GDCTrpcProxy.service");
-    }
-    while (arrayOfByte != null)
-    {
-      paramIntent = new byte[arrayOfByte.length + 4];
-      PkgTools.DWord2Byte(paramIntent, 0, arrayOfByte.length + 4);
-      PkgTools.copyData(paramIntent, 4, arrayOfByte, arrayOfByte.length);
-      paramPacket.putSendData(paramIntent);
-      return;
-      paramPacket.setSSOCommand("QQVacCommSvc.web_sso");
-    }
-    paramIntent = new byte[4];
-    PkgTools.DWord2Byte(paramIntent, 0, 4L);
-    paramPacket.putSendData(paramIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

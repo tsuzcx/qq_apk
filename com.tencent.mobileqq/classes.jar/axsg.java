@@ -1,16 +1,31 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
 public class axsg
-  implements ValueAnimator.AnimatorUpdateListener
+  implements bila<oidb_0x8e4.RspBody>
 {
-  public axsg(ScanIconAnimateView paramScanIconAnimateView) {}
+  public axsg(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    if (paramInt == 0)
+    {
+      paramRspBody = paramRspBody.poi_info;
+      String str = paramRspBody.bytes_uid.get().toStringUtf8();
+      this.a.a(HotChatInfo.createHotChat(paramRspBody, false, 0), paramRspBody.uint32_group_code.get(), str, paramRspBody.bytes_name.get().toStringUtf8());
+    }
+    do
+    {
+      return;
+      this.a.a(paramInt, paramRspBody, anvx.a(2131704606));
+    } while (!QLog.isColorLevel());
+    QLog.d("GameRoomInviteActivity", 2, "start game failed! code = " + paramInt);
   }
 }
 

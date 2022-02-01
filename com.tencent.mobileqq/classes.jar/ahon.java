@@ -1,16 +1,14 @@
-import java.util.Date;
-import java.util.List;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahon
+  implements ahnr
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  Date jdField_a_of_type_JavaUtilDate;
-  List<String> jdField_a_of_type_JavaUtilList;
-  String jdField_b_of_type_JavaLangString;
-  Date jdField_b_of_type_JavaUtilDate;
-  String c;
-  String d;
+  public void a(agtf paramagtf, MessageRecord paramMessageRecord, agus paramagus, aftk paramaftk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  {
+    paramagtf.h(paramagus.b);
+  }
 }
 
 

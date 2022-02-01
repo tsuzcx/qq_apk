@@ -7,12 +7,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import aufo;
-import azvi;
-import bcef;
-import bgae;
+import avli;
+import bbbq;
+import bdla;
+import bhiw;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
@@ -57,8 +58,8 @@ public class EmoticonPanelSettingHelper
   public void initBefore()
   {
     EmoticonMainPanel localEmoticonMainPanel = this.mPanelController.getPanel();
-    this.mMoreEmoticonButton = ((ImageView)localEmoticonMainPanel.findViewById(2131363881));
-    this.mEmoticonSettingBtn = ((ImageView)localEmoticonMainPanel.findViewById(2131363968));
+    this.mMoreEmoticonButton = ((ImageView)localEmoticonMainPanel.findViewById(2131363953));
+    this.mEmoticonSettingBtn = ((ImageView)localEmoticonMainPanel.findViewById(2131364042));
     this.mMoreEmoticonButton.setOnClickListener(this);
     this.mEmoticonSettingBtn.setOnClickListener(this);
     if ((this.mPanelController.businessType == 3) || (this.mHideSettingButton) || (this.mPanelController.mHideAllSettingTabs)) {
@@ -93,11 +94,11 @@ public class EmoticonPanelSettingHelper
       return;
       VasWebviewUtil.reportCommercialDrainage(localQQAppInterface.getCurrentUin(), "ep_mall", "click_mine", "", 0, 0, 0, "", "", "");
       EmojiHomeUiPlugin.openEmosmActivity((BaseActivity)localObject, localQQAppInterface.getAccount(), 1, false, "");
-      bcef.b(localQQAppInterface, "dc00898", "", "", "0x800a56d", "0x800a56d", 0, 0, "", "", "", "");
+      bdla.b(localQQAppInterface, "dc00898", "", "", "0x800a56d", "0x800a56d", 0, 0, "", "", "", "");
       i = this.mPanelController.getFromType(false);
       if (i != 0)
       {
-        bcef.b(localQQAppInterface, "dc00898", "", "", "0X800AE0F", "0X800AE0F", i, 0, "", "", "", "");
+        bdla.b(localQQAppInterface, "dc00898", "", "", "0X800AE0F", "0X800AE0F", i, 0, "", "", "", "");
         continue;
         if ((this.mBtnStatus != 2) || (bool)) {
           break;
@@ -107,20 +108,20 @@ public class EmoticonPanelSettingHelper
         }
       }
     }
-    bcef.b(localQQAppInterface, "CliOper", "", "", "ep_mall", "0X80057B7", 0, 0, "", "", "", "");
+    bdla.b(localQQAppInterface, "CliOper", "", "", "ep_mall", "0X80057B7", 0, 0, "", "", "", "");
     if (this.mPanelController.mNewFlag.getVisibility() == 0)
     {
-      bcef.b(localQQAppInterface, "CliOper", "", "", "ep_mall", "0X80057B9", 0, 0, "", "", "", "");
+      bdla.b(localQQAppInterface, "CliOper", "", "", "ep_mall", "0X80057B9", 0, 0, "", "", "", "");
       this.mPanelController.mNewFlag.setVisibility(8);
-      ((azvi)localQQAppInterface.getManager(36)).b(String.valueOf("100610.100611"));
+      ((bbbq)localQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).b(String.valueOf("100610.100611"));
       ((Context)localObject).getSharedPreferences("mobileQQ", 0).edit().putBoolean("emo_panel_mall_new_played", false).apply();
     }
     for (bool = true;; bool = false)
     {
-      bgae.a(localQQAppInterface);
+      bhiw.a(localQQAppInterface);
       this.mPanelController.mWebPreloadHitSession.b();
       EmojiHomeUiPlugin.openEmojiHomePage((BaseActivity)this.mPanelController.context, localQQAppInterface.getAccount(), 1, bool, "");
-      bcef.b(localQQAppInterface, "CliOper", "", "", "0X80047A3", "0X80047A3", 0, 0, "", "", "", "");
+      bdla.b(localQQAppInterface, "CliOper", "", "", "0X80047A3", "0X80047A3", 0, 0, "", "", "", "");
       if (localObject != null)
       {
         localObject = ((Context)localObject).getSharedPreferences("emoticon_panel_" + localQQAppInterface.getCurrentAccountUin(), 0);
@@ -132,12 +133,12 @@ public class EmoticonPanelSettingHelper
       for (i = 1;; i = 0)
       {
         VasWebviewUtil.reportVasStatus("personal_web_preload_hit_rit", "emoticon_main_panel_plus", "0", 0, 0, i, 0, "", "");
-        bcef.b(localQQAppInterface, "dc00898", "", "", "0x800a56c", "0x800a56c", 0, 0, "", "", "", "");
+        bdla.b(localQQAppInterface, "dc00898", "", "", "0x800a56c", "0x800a56c", 0, 0, "", "", "", "");
         i = this.mPanelController.getFromType(false);
         if (i == 0) {
           break;
         }
-        bcef.b(localQQAppInterface, "dc00898", "", "", "0X800AE0E", "0X800AE0E", i, 0, "", "", "", "");
+        bdla.b(localQQAppInterface, "dc00898", "", "", "0X800AE0E", "0X800AE0E", i, 0, "", "", "", "");
         break;
       }
     }
@@ -200,12 +201,12 @@ public class EmoticonPanelSettingHelper
           this.mMoreEmoticonButton.setVisibility(8);
           return;
           this.mMoreEmoticonButton.setVisibility(0);
-          this.mMoreEmoticonButton.setImageResource(2130847047);
+          this.mMoreEmoticonButton.setImageResource(2130847145);
           continue;
           if ((!((EmoticonPanelExtendHelper)this.mPanelController.getHelper(1)).isShowExtendPanel()) && (this.mBtnStatus == 2) && (!localEmoticonPanelParams.disableMoreEmotionButton))
           {
             this.mMoreEmoticonButton.setVisibility(0);
-            this.mMoreEmoticonButton.setImageResource(2130847036);
+            this.mMoreEmoticonButton.setImageResource(2130847134);
             this.mMoreEmoticonButton.setPadding((int)(10.0F * this.mPanelController.density), 0, 0, 0);
             if (QLog.isColorLevel()) {
               QLog.d("EmoticonPanelSettingHelper", 2, "onPageSelected, show del pic");
@@ -242,13 +243,13 @@ public class EmoticonPanelSettingHelper
           this.mMoreEmoticonButton.setVisibility(8);
           return;
           this.mMoreEmoticonButton.setVisibility(0);
-          this.mMoreEmoticonButton.setImageResource(2130847047);
+          this.mMoreEmoticonButton.setImageResource(2130847145);
           this.mMoreEmoticonButton.setScaleType(ImageView.ScaleType.CENTER_CROP);
           continue;
           if ((!((EmoticonPanelExtendHelper)this.mPanelController.getHelper(1)).isShowExtendPanel()) && (this.mBtnStatus == 2) && (!localEmoticonPanelParams.disableMoreEmotionButton))
           {
             this.mMoreEmoticonButton.setVisibility(0);
-            this.mMoreEmoticonButton.setImageResource(2130847036);
+            this.mMoreEmoticonButton.setImageResource(2130847134);
             this.mMoreEmoticonButton.setScaleType(ImageView.ScaleType.CENTER);
             if (QLog.isColorLevel()) {
               QLog.d("EmoticonPanelSettingHelper", 2, "onPageSelected, show del pic");
@@ -265,7 +266,7 @@ public class EmoticonPanelSettingHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelSettingHelper
  * JD-Core Version:    0.7.0.1
  */

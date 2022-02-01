@@ -1,22 +1,42 @@
-import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
-import com.tribe.async.async.JobSegment;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import com.tencent.common.app.AppInterface;
+import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar;
+import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingView;
+import com.tencent.smtt.sdk.WebView;
 
-class ackm
-  extends avrr<JobSegment>
+public class ackm
+  extends acko
 {
-  ackm(ackl paramackl, JobSegment paramJobSegment)
+  public ackm(GdtVideoCeilingView paramGdtVideoCeilingView, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
   {
-    super(paramJobSegment);
+    super(paramContext, paramActivity, paramIntent, paramAppInterface);
   }
   
-  public void a(JobSegment paramJobSegment, boolean paramBoolean, avro paramavro)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    if (paramBoolean)
-    {
-      ackl.a(this.a, paramavro);
-      return;
-    }
-    ackl.a(this.a, new AppInfoError(5, "appInfo error"));
+    super.onPageFinished(paramWebView, paramString);
+    acho.b("GdtVideoCeilingView", "onPageFinished:" + paramString);
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+    acho.b("GdtVideoCeilingView", "onPageStarted:" + paramString);
+  }
+  
+  public void onReceivedTitle(WebView paramWebView, String paramString)
+  {
+    super.onReceivedTitle(paramWebView, paramString);
+    acho.b("GdtVideoCeilingView", "onReceivedTitle: " + paramString);
+    GdtVideoCeilingView.a(this.a).setWebBarTitle(paramString);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    return a(paramWebView, paramString);
   }
 }
 

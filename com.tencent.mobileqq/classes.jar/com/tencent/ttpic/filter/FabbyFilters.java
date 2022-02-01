@@ -13,7 +13,7 @@ import com.tencent.ttpic.baseutils.audio.PlayerUtil.Player;
 import com.tencent.ttpic.model.FabbyFaceActionCounter;
 import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.openapi.filter.FabbyMvPart;
-import com.tencent.ttpic.openapi.filter.MaskStickerFilter.BrushMaskFilter;
+import com.tencent.ttpic.openapi.filter.maskstickerfilter.BrushMaskFilter;
 import com.tencent.ttpic.openapi.model.FaceActionCounter;
 import com.tencent.ttpic.openapi.model.StickerItem;
 import com.tencent.ttpic.openapi.util.VideoPrefsUtil;
@@ -223,7 +223,7 @@ public class FabbyFilters
       this.mTransitionFrame.clear();
     }
     if (this.transitionFilter != null) {
-      this.transitionFilter.ClearGLSL();
+      this.transitionFilter.clearGLSL();
     }
     if (this.mCopyFilter != null) {
       this.mCopyFilter.clearGLSLSelf();

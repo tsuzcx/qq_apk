@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.proxy;
 
-import anuy;
+import aoxy;
 import com.dataline.mpfile.MpfileTaskRecord;
 import com.tencent.mobileqq.persistence.Entity;
 import fb;
@@ -8,7 +8,7 @@ import fb;
 public class MpfileTaskProxy$1
   implements Runnable
 {
-  public MpfileTaskProxy$1(anuy paramanuy, Entity paramEntity, ProxyListener paramProxyListener, fb paramfb) {}
+  public MpfileTaskProxy$1(aoxy paramaoxy, Entity paramEntity, ProxyListener paramProxyListener, fb paramfb) {}
   
   public void run()
   {

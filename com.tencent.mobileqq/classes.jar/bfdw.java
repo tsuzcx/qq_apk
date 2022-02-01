@@ -1,11 +1,23 @@
+import android.os.Handler;
+import android.os.Message;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.GridView;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.mobileqq.widget.CustomHorizontalScrollView;
+
 public class bfdw
+  extends Handler
 {
-  public long a;
-  public long b;
+  public bfdw(NewTroopContactView paramNewTroopContactView) {}
   
-  public String toString()
+  public void handleMessage(Message paramMessage)
   {
-    return " s:" + this.a + " e:" + this.b;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomHorizontalScrollView.scrollTo(this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width, 0);
   }
 }
 

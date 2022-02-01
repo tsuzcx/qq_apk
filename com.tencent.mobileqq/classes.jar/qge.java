@@ -1,116 +1,154 @@
-import android.graphics.Rect;
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.HashMap;
+import java.util.concurrent.ExecutorService;
+import tencent.im.oidb.cmd0xed4.oidb_cmd0xed4.MetaData;
+import tencent.im.oidb.cmd0xed4.oidb_cmd0xed4.ReqBody;
+import tencent.im.oidb.cmd0xed4.oidb_cmd0xed4.RspBody;
+import tencent.im.oidb.cmd0xed4.oidb_cmd0xed4.SecurityInfo;
 
 public class qge
+  extends qhj
 {
-  public static void a(@NonNull View paramView, String paramString)
+  private HashMap<Integer, qgk> a;
+  
+  public qge(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, qxn paramqxn, Handler paramHandler)
   {
-    if (a()) {}
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      a(paramView, localJSONObject);
-      a(paramString, "logViewHierarchy: " + localJSONObject.toString());
+    super(paramAppInterface, paramEntityManager, paramExecutorService, paramqxn, paramHandler);
+    b();
+  }
+  
+  private qgk a(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
+      return (qgk)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    }
+    return null;
+  }
+  
+  private void a(qgk paramqgk)
+  {
+    if ((this.jdField_a_of_type_JavaUtilHashMap == null) || (paramqgk == null)) {
       return;
     }
-    catch (Exception paramView)
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramqgk.a()), paramqgk);
+  }
+  
+  private void a(oidb_cmd0xed4.ReqBody paramReqBody)
+  {
+    Object localObject = new oidb_cmd0xed4.MetaData();
+    ((oidb_cmd0xed4.MetaData)localObject).timestamp.set(NetConnInfoCenter.getServerTimeMillis() / 1000L);
+    paramReqBody.meta.set((MessageMicro)localObject);
+    localObject = new oidb_cmd0xed4.SecurityInfo();
+    ((oidb_cmd0xed4.SecurityInfo)localObject).nickname.set(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentNickname());
+    if (!TextUtils.isEmpty(DeviceInfoUtil.getIMSI())) {
+      ((oidb_cmd0xed4.SecurityInfo)localObject).device_id.set(DeviceInfoUtil.getIMSI());
+    }
+    String str = qcg.a(BaseApplicationImpl.getContext());
+    if (!TextUtils.isEmpty(str)) {
+      ((oidb_cmd0xed4.SecurityInfo)localObject).ip.set(str);
+    }
+    str = DeviceInfoUtil.getIMEI();
+    if (!TextUtils.isEmpty(str)) {
+      ((oidb_cmd0xed4.SecurityInfo)localObject).terminal_id.set(str);
+    }
+    ((oidb_cmd0xed4.SecurityInfo)localObject).os_type.set(2);
+    ((oidb_cmd0xed4.SecurityInfo)localObject).app_version.set("8.4.10");
+    paramReqBody.security_info.set((MessageMicro)localObject);
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    }
+    a(new qgg());
+    a(new qgf());
+    a(new qgh());
+    a(new qgi());
+    a(new qgj());
+  }
+  
+  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    oidb_cmd0xed4.RspBody localRspBody = new oidb_cmd0xed4.RspBody();
+    int i = qxp.a(paramFromServiceMsg, paramObject, localRspBody);
+    paramFromServiceMsg = (Integer)paramToServiceMsg.getAttributes().get("RequestType");
+    if ((i != 0) && (QLog.isColorLevel())) {
+      QLog.e("RIJCoinInfoModule", 2, "handle0xed4CoinInfoResp error, result:" + i);
+    }
+    int j = localRspBody.retcode.get();
+    paramObject = localRspBody.retmsg.get();
+    if (QLog.isColorLevel()) {
+      QLog.d("RIJCoinInfoModule", 2, new Object[] { "handle0xed4CoinInfoResp result = ", i + ", requestType=" + paramFromServiceMsg + ", retCode=" + j + ", retMsg=" + paramObject });
+    }
+    qgk localqgk = a(paramFromServiceMsg.intValue());
+    if (localqgk == null)
     {
-      QLog.e(paramString, 1, "[logViewHierarchy] ", paramView);
+      QLog.e("RIJCoinInfoModule", 1, "dispatch0xed4Resp() cant find requestHandler, requestType=" + paramFromServiceMsg);
+      return;
+    }
+    localqgk.a(paramToServiceMsg, localRspBody, i, j, paramObject);
+  }
+  
+  public void a() {}
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xed4")) {
+      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
     }
   }
   
-  public static void a(@NonNull View paramView, @NonNull JSONObject paramJSONObject)
+  public void a(qxw paramqxw)
   {
-    int i = paramView.getLeft();
-    int j = paramView.getRight();
-    int k = paramView.getTop();
-    int m = paramView.getBottom();
-    Object localObject1 = paramView.getClass().getSimpleName();
-    Object localObject2 = new Rect(i, k, j, m);
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("name", localObject1);
-    localJSONObject.put("visibility", paramView.getVisibility());
-    localJSONObject.put("bounds", localObject2);
-    paramJSONObject.put("view", localJSONObject);
-    if ((paramView instanceof ViewGroup))
-    {
-      j = ((ViewGroup)paramView).getChildCount();
-      localObject1 = new JSONArray();
-      i = 0;
-      while (i < j)
-      {
-        localObject2 = new JSONObject();
-        a(((ViewGroup)paramView).getChildAt(i), (JSONObject)localObject2);
-        ((JSONArray)localObject1).put(localObject2);
-        i += 1;
+    if (paramqxw == null) {
+      if (QLog.isColorLevel()) {
+        QLog.e("RIJCoinInfoModule", 2, "request0xed4CoinInfo params == null");
       }
-      paramJSONObject.put("children", localObject1);
     }
-  }
-  
-  public static void a(@NonNull ViewBase paramViewBase, String paramString)
-  {
-    if (a()) {}
-    try
+    qgk localqgk;
+    do
     {
-      JSONObject localJSONObject = new JSONObject();
-      a(paramViewBase, localJSONObject);
-      a(paramString, "logViewBaseHierarchy: " + localJSONObject.toString());
       return;
-    }
-    catch (Exception paramViewBase)
-    {
-      QLog.e(paramString, 1, "[logViewBaseHierarchy] ", paramViewBase);
-    }
-  }
-  
-  private static void a(@NonNull ViewBase paramViewBase, @NonNull JSONObject paramJSONObject)
-  {
-    Object localObject1 = new Rect(paramViewBase.getDrawLeft(), paramViewBase.getDrawTop(), paramViewBase.getWidth(), paramViewBase.getHeight());
-    Object localObject2 = paramViewBase.getClass().getSimpleName();
-    Object localObject3 = paramViewBase.getName();
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("name", localObject2);
-    localJSONObject.put("id", localObject3);
-    localJSONObject.put("visibility", paramViewBase.getVisibility());
-    localJSONObject.put("bounds", localObject1);
-    paramJSONObject.put("view", localJSONObject);
-    if ((paramViewBase instanceof Layout))
-    {
-      localObject1 = ((Layout)paramViewBase).getSubViews();
-      if ((localObject1 != null) && (((List)localObject1).size() > 0))
+      try
       {
-        paramViewBase = new JSONArray();
-        localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (ViewBase)((Iterator)localObject1).next();
-          localObject3 = new JSONObject();
-          a((ViewBase)localObject2, (JSONObject)localObject3);
-          paramViewBase.put(localObject3);
+        oidb_cmd0xed4.ReqBody localReqBody = new oidb_cmd0xed4.ReqBody();
+        localqgk = a(paramqxw.jdField_a_of_type_Int);
+        if (localqgk != null) {
+          break;
         }
-        paramJSONObject.put("children", paramViewBase);
+        QLog.e("RIJCoinInfoModule", 1, "request0xed4CoinInfo cant find requestHandler, requestType=" + paramqxw.jdField_a_of_type_Int);
+        return;
       }
+      catch (Throwable localThrowable) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("RIJCoinInfoModule", 2, "request0xed4CoinInfo failed. type=" + paramqxw.jdField_a_of_type_Int + ", rowkey=" + paramqxw.jdField_a_of_type_JavaLangString, localThrowable);
+    return;
+    a(localThrowable);
+    localqgk.a(paramqxw, localThrowable);
+    Object localObject = localThrowable.toByteArray();
+    if (QLog.isColorLevel()) {
+      QLog.d("RIJCoinInfoModule", 2, "request0xed4CoinInfo requestType:" + paramqxw.jdField_a_of_type_Int + ", toByteArray size=" + localObject.length);
     }
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    QLog.d(paramString1, 1, paramString2);
-  }
-  
-  public static boolean a()
-  {
-    return true;
+    localObject = qxp.a("OidbSvc.0xed4", 3796, 1, (byte[])localObject);
+    ((ToServiceMsg)localObject).getAttributes().put("RequestType", Integer.valueOf(paramqxw.jdField_a_of_type_Int));
+    if (!TextUtils.isEmpty(paramqxw.jdField_a_of_type_JavaLangString)) {
+      ((ToServiceMsg)localObject).getAttributes().put("RequestRowkey", paramqxw.jdField_a_of_type_JavaLangString);
+    }
+    a((ToServiceMsg)localObject);
   }
 }
 

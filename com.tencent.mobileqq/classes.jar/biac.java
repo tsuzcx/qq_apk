@@ -1,48 +1,88 @@
-import android.database.Cursor;
-import android.os.Parcel;
-import com.tencent.open.component.cache.database.DbCacheData.DbCreator;
-import com.tencent.open.component.cache.database.DbCacheData.Structure;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.MD5;
+import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
+import java.util.Locale;
+import mqq.observer.AccountObserver;
 
-final class biac
-  implements DbCacheData.DbCreator<biab>
+class biac
+  extends AccountObserver
 {
-  public biab a(Cursor paramCursor)
+  final Intent jdField_a_of_type_AndroidContentIntent;
+  final biae jdField_a_of_type_Biae;
+  final String jdField_a_of_type_JavaLangString;
+  
+  biac(Intent paramIntent, String paramString, biae parambiae)
   {
-    try
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Biae = parambiae;
+  }
+  
+  public void onRegisterCommitPassRespWithLhSig(boolean paramBoolean, int paramInt, String paramString, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
+  {
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentIntent);
+    if (paramArrayOfByte2 != null) {}
+    for (;;)
     {
-      String str1 = paramCursor.getString(paramCursor.getColumnIndex("urlKey"));
-      String str2 = paramCursor.getString(paramCursor.getColumnIndex("ETag"));
-      long l1 = paramCursor.getLong(paramCursor.getColumnIndex("lastModify"));
-      long l2 = paramCursor.getLong(paramCursor.getColumnIndex("cacheTime"));
-      Object localObject = paramCursor.getBlob(paramCursor.getColumnIndex("response"));
-      paramCursor = Parcel.obtain();
-      paramCursor.unmarshall((byte[])localObject, 0, localObject.length);
-      paramCursor.setDataPosition(0);
-      localObject = paramCursor.readString();
-      paramCursor.recycle();
-      paramCursor = new biab(str1, str2, l1, l2, (String)localObject);
-      return paramCursor;
+      try
+      {
+        paramArrayOfByte2 = new String(paramArrayOfByte2, "utf-8");
+        if (QLog.isDevelopLevel()) {
+          QLog.i("LHLoginMng", 4, String.format(Locale.getDefault(), "onRegisterCommitPassRespWithLhSig isSuccess: %s, code: %s, uin: %s, error: %s, contactSig: %s, lhsig: %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), paramString, paramArrayOfByte2, MD5.toMD5(paramArrayOfByte1), MD5.toMD5(paramArrayOfByte3) }));
+        }
+        if (paramInt != 0) {
+          break label311;
+        }
+        paramBoolean = true;
+        if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_JavaLangString))) {
+          break label283;
+        }
+        paramBoolean = false;
+        if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.length != 0)) {
+          break label298;
+        }
+        paramBoolean = false;
+        if (!TextUtils.isEmpty(paramArrayOfByte2)) {
+          break label316;
+        }
+        paramString = BaseApplicationImpl.getContext().getString(2131716463);
+        localIntent.putExtra("key_register_prompt_info", paramString);
+        if ((paramArrayOfByte3 != null) && (paramArrayOfByte3.length > 0)) {
+          localIntent.putExtra("key_register_lhsig", paramArrayOfByte3);
+        }
+        if (QLog.isDevelopLevel()) {
+          biaf.a("LHLoginMng -- onRegisterCommitPassRespWithLhSig", localIntent);
+        }
+        if (this.jdField_a_of_type_Biae != null) {
+          this.jdField_a_of_type_Biae.a(localIntent, paramBoolean, this.jdField_a_of_type_JavaLangString, paramArrayOfByte3, paramString);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("LHLoginMng", 2, String.format(Locale.getDefault(), "onRegisterCommitPassRespWithLhSig, lhUin: %s, isSuc: %s, error: %s, code: %s", new Object[] { this.jdField_a_of_type_JavaLangString, Boolean.valueOf(paramBoolean), paramString, Integer.valueOf(paramInt) }));
+        }
+        return;
+      }
+      catch (UnsupportedEncodingException paramArrayOfByte2)
+      {
+        paramArrayOfByte2.printStackTrace();
+      }
+      paramArrayOfByte2 = null;
+      continue;
+      label283:
+      localIntent.putExtra("uin", this.jdField_a_of_type_JavaLangString);
+      continue;
+      label298:
+      localIntent.putExtra("key_register_sign", paramArrayOfByte1);
+      continue;
+      label311:
+      paramBoolean = false;
+      continue;
+      label316:
+      paramString = paramArrayOfByte2;
     }
-    catch (Exception paramCursor)
-    {
-      paramCursor.printStackTrace();
-    }
-    return null;
-  }
-  
-  public String sortOrder()
-  {
-    return null;
-  }
-  
-  public DbCacheData.Structure[] structure()
-  {
-    return new DbCacheData.Structure[] { new DbCacheData.Structure("urlKey", "TEXT"), new DbCacheData.Structure("ETag", "TEXT"), new DbCacheData.Structure("lastModify", "INTEGER"), new DbCacheData.Structure("cacheTime", "INTEGER"), new DbCacheData.Structure("response", "BLOB") };
-  }
-  
-  public int version()
-  {
-    return 1;
   }
 }
 

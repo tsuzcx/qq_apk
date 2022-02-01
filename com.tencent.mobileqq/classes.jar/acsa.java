@@ -1,38 +1,23 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class acsa
-  implements CompoundButton.OnCheckedChangeListener
+  implements acpi
 {
-  public acsa(AssistantSettingActivity paramAssistantSettingActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  private static void a(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
   {
-    boolean bool = false;
-    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
-    {
-      AssistantSettingActivity.a(this.a, 2131692035, 1);
-      this.a.f.setOnCheckedChangeListener(null);
-      FormSwitchItem localFormSwitchItem = this.a.f;
-      if (!paramCompoundButton.isChecked()) {
-        bool = true;
-      }
-      localFormSwitchItem.setChecked(bool);
-      this.a.f.setOnCheckedChangeListener(this);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      ((apil)this.a.app.getManager(380)).a(paramBoolean);
-      bcef.b(this.a.app, "dc00898", "", "", "0X800B333", "0X800B333", 0, 0, "", "", "", "");
-    }
+    ((aozf)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.READINJOY_HANDLER)).a(paramMsgType0x210.vProtobuf);
+    bcrx.a(paramMessageHandler, paramMsgInfo.lFromUin, paramMsgInfo.shMsgSeq, paramMsgInfo.lMsgUid, paramMsgInfo.shMsgType);
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramacnk.a().getMsgHandler(), paramMsgInfo, paramMsgType0x210);
+    return null;
   }
 }
 

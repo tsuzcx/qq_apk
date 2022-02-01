@@ -1,23 +1,17 @@
+import android.os.Handler;
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.2.1;
 
 public class wmg
-  extends QQUIEventReceiver<StoryPlayerActivity, wmf>
+  implements wfk<wnc, wnd>
 {
-  public wmg(@NonNull StoryPlayerActivity paramStoryPlayerActivity)
-  {
-    super(paramStoryPlayerActivity);
-  }
+  wmg(wmd paramwmd) {}
   
-  public void a(@NonNull StoryPlayerActivity paramStoryPlayerActivity, @NonNull wmf paramwmf)
+  public void a(@NonNull wnc paramwnc, @Nullable wnd paramwnd, @NonNull ErrorMessage paramErrorMessage)
   {
-    paramStoryPlayerActivity.b = paramwmf.a;
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wmf.class;
+    this.a.b.post(new MsgTabNodeListLoader.2.1(this, paramwnc, paramwnd, paramErrorMessage));
   }
 }
 

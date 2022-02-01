@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui;
 
-import beno;
-import bent;
-import beoq;
+import bfur;
+import bfuw;
+import bfvt;
 
 public class ImageItem$1
   implements Runnable
 {
-  public ImageItem$1(beoq parambeoq, beno parambeno) {}
+  public ImageItem$1(bfvt parambfvt, bfur parambfur) {}
   
   public void run()
   {
-    beoq.a(this.this$0, (bent)this.a, true);
+    bfvt.a(this.this$0, (bfuw)this.a, true);
   }
 }
 

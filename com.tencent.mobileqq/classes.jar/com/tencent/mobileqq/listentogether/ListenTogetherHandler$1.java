@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.listentogether;
 
-import auyv;
+import awev;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import java.util.HashMap;
@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class ListenTogetherHandler$1
   implements Runnable
 {
-  public ListenTogetherHandler$1(auyv paramauyv, long paramLong1, long paramLong2, int paramInt, long paramLong3) {}
+  public ListenTogetherHandler$1(awev paramawev, long paramLong1, long paramLong2, int paramInt, long paramLong3) {}
   
   public void run()
   {

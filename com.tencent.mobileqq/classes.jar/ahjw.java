@@ -1,32 +1,50 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.persistence.EntityManager;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.item.view.AioMiniProfileLabelFlowLayout;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
+import com.tencent.mobileqq.vas.avatar.AvatarLayout;
+import com.tencent.mobileqq.widget.RoundCorneredRelativeLayout;
 
-class ahjw
-  implements odm
+public class ahjw
+  extends afos
 {
-  ahjw(ahiu paramahiu) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    this.a.b();
-    if (!paramBoolean)
-    {
-      this.a.b(2131694775);
-      return;
-    }
-    EntityManager localEntityManager = this.a.app.getEntityManagerFactory().createEntityManager();
-    AccountDetail localAccountDetail = (AccountDetail)localEntityManager.find(AccountDetail.class, this.a.sessionInfo.curFriendUin);
-    if (localAccountDetail != null) {
-      localEntityManager.remove(localAccountDetail);
-    }
-    localEntityManager.close();
-    this.a.app.getMessageFacade().clearHistory(this.a.sessionInfo.curFriendUin, 1008);
-    this.a.finish();
-  }
+  private amfi jdField_a_of_type_Amfi;
+  private amiu jdField_a_of_type_Amiu;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  private GridView jdField_a_of_type_AndroidWidgetGridView;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private AioMiniProfileLabelFlowLayout jdField_a_of_type_ComTencentMobileqqActivityAioItemViewAioMiniProfileLabelFlowLayout;
+  private DynamicAvatarView jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView;
+  private AvatarLayout jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout;
+  private RoundCorneredRelativeLayout jdField_a_of_type_ComTencentMobileqqWidgetRoundCorneredRelativeLayout;
+  public String a;
+  public boolean a;
+  private View jdField_b_of_type_AndroidViewView;
+  private ViewGroup jdField_b_of_type_AndroidViewViewGroup;
+  private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private View jdField_c_of_type_AndroidViewView;
+  private ViewGroup jdField_c_of_type_AndroidViewViewGroup;
+  private ImageView jdField_c_of_type_AndroidWidgetImageView;
+  private TextView jdField_c_of_type_AndroidWidgetTextView;
+  private View jdField_d_of_type_AndroidViewView;
+  private ViewGroup jdField_d_of_type_AndroidViewViewGroup;
+  private ImageView jdField_d_of_type_AndroidWidgetImageView;
+  private TextView jdField_d_of_type_AndroidWidgetTextView;
+  private View jdField_e_of_type_AndroidViewView;
+  private ViewGroup jdField_e_of_type_AndroidViewViewGroup;
+  private ImageView jdField_e_of_type_AndroidWidgetImageView;
+  private TextView jdField_e_of_type_AndroidWidgetTextView;
+  private TextView f;
+  private TextView g;
+  private TextView h;
+  private TextView i;
+  private TextView j;
 }
 
 

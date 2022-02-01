@@ -1,6 +1,24 @@
-public abstract interface axff
+import android.os.Parcel;
+import android.os.Parcelable.ClassLoaderCreator;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.SavedState;
+
+public final class axff
+  implements Parcelable.ClassLoaderCreator<MultiAIOBaseViewPager.SavedState>
 {
-  public abstract void a(boolean paramBoolean, int paramInt);
+  public MultiAIOBaseViewPager.SavedState a(Parcel paramParcel)
+  {
+    return new MultiAIOBaseViewPager.SavedState(paramParcel, null);
+  }
+  
+  public MultiAIOBaseViewPager.SavedState a(Parcel paramParcel, ClassLoader paramClassLoader)
+  {
+    return new MultiAIOBaseViewPager.SavedState(paramParcel, paramClassLoader);
+  }
+  
+  public MultiAIOBaseViewPager.SavedState[] a(int paramInt)
+  {
+    return new MultiAIOBaseViewPager.SavedState[paramInt];
+  }
 }
 
 

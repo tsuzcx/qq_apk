@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import aeex;
+import aewf;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.view.View;
-import bcef;
+import bdla;
 import com.tencent.common.app.InnerFrameManager;
 import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
 
 class SelectMemberActivity$9
-  implements aeex
+  implements aewf
 {
   SelectMemberActivity$9(SelectMemberActivity paramSelectMemberActivity) {}
   
@@ -44,19 +44,19 @@ class SelectMemberActivity$9
         if (this.this$0.contactSearchFragment != null) {
           localFragmentTransaction.remove(this.this$0.contactSearchFragment);
         }
-        localFragmentTransaction.add(2131376347, localContactSearchFragment);
+        localFragmentTransaction.add(2131376602, localContactSearchFragment);
         localFragmentTransaction.commitAllowingStateLoss();
         this.this$0.contactSearchFragment = localContactSearchFragment;
       }
       if (this.this$0.mSubType == 0) {
-        bcef.b(this.this$0.app, "CliOper", "", "", "0X800543F", "0X800543F", 1, 0, "", "", "", "");
+        bdla.b(this.this$0.app, "CliOper", "", "", "0X800543F", "0X800543F", 1, 0, "", "", "", "");
       }
     }
     else
     {
       return;
     }
-    bcef.b(this.this$0.app, "CliOper", "", "", "0X800543F", "0X800543F", 2, 0, "", "", "", "");
+    bdla.b(this.this$0.app, "CliOper", "", "", "0X800543F", "0X800543F", 2, 0, "", "", "", "");
   }
   
   public void onItemDeleted(ResultRecord paramResultRecord)

@@ -1,13 +1,18 @@
-import android.graphics.Canvas;
+import dov.com.qq.im.capture.view.CountDownView;
+import dov.com.tencent.mobileqq.richmedia.capture.view.AbsAECaptureButton;
 
-public abstract interface bncb
-  extends bned
+class bncb
+  implements bpny
 {
-  public abstract int a(int paramInt);
+  bncb(bnca parambnca, bnhq parambnhq) {}
   
-  public abstract boolean a(int paramInt);
-  
-  public abstract boolean a(int paramInt1, Canvas paramCanvas, int paramInt2, int paramInt3);
+  public void a()
+  {
+    if (bnbp.a(this.jdField_a_of_type_Bnca.a) != null) {
+      bnbp.a(this.jdField_a_of_type_Bnca.a).a(this.jdField_a_of_type_Bnhq.a(), false);
+    }
+    bnbp.a(this.jdField_a_of_type_Bnca.a).setTouchEnable(false);
+  }
 }
 
 

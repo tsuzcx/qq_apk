@@ -1,192 +1,79 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RecommendAdData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import cooperation.qzone.util.NetworkState;
-import org.json.JSONObject;
+import com.tencent.superplayer.api.ISPlayerPreDownloader;
+import com.tencent.superplayer.api.ISPlayerPreDownloader.Listener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class suc
-  implements sth, stm
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/superplayer/SuperPlayerPreloader;", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerPreloader;", "Lcom/tencent/superplayer/api/ISPlayerPreDownloader$Listener;", "preloader", "Lcom/tencent/superplayer/api/ISPlayerPreDownloader;", "(Lcom/tencent/superplayer/api/ISPlayerPreDownloader;)V", "listener", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerPreloader$Listener;", "destory", "", "isVideoCached", "", "videoInfo", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/PlayerVideoInfo;", "onPrepareDownloadProgressUpdate", "p0", "p1", "p2", "p3", "", "p4", "onPrepareError", "onPrepareSuccess", "setPreDownloadListener", "startPreDownload", "videoDurationMs", "preloadDurationMs", "stopPreDownload", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class suc
+  implements ISPlayerPreDownloader.Listener, stq
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
-  private svz jdField_a_of_type_Svz = new svz();
+  private final ISPlayerPreDownloader jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
+  private sts jdField_a_of_type_Sts;
   
-  private void a(Container paramContainer)
+  public suc(@Nullable ISPlayerPreDownloader paramISPlayerPreDownloader)
   {
-    int i = 8;
-    int j = 0;
-    ViewBase localViewBase;
-    if (paramContainer != null)
-    {
-      localViewBase = paramContainer.getVirtualView();
-      if (localViewBase != null)
-      {
-        paramContainer = localViewBase.findViewBaseByName("id_large_video_icon");
-        localViewBase = localViewBase.findViewBaseByName("id_video_bg");
-        if (!NetworkState.isWifiConn()) {
-          break label64;
-        }
-      }
-    }
-    for (;;)
-    {
-      if (paramContainer != null) {
-        paramContainer.setVisibility(j);
-      }
-      if (localViewBase != null) {
-        localViewBase.setVisibility(i);
-      }
-      return;
-      label64:
-      j = 8;
-      i = 0;
+    this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader = paramISPlayerPreDownloader;
+  }
+  
+  public int a(@NotNull sty paramsty)
+  {
+    Intrinsics.checkParameterIsNotNull(paramsty, "videoInfo");
+    return 0;
+  }
+  
+  public void a()
+  {
+    ISPlayerPreDownloader localISPlayerPreDownloader = this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
+    if (localISPlayerPreDownloader != null) {
+      localISPlayerPreDownloader.stopAllPreDownload();
     }
   }
   
-  private void a(Container paramContainer, RecommendAdData paramRecommendAdData)
+  public void a(@Nullable sts paramsts)
   {
-    Object localObject;
-    if (paramContainer != null)
-    {
-      paramContainer = paramContainer.getVirtualView();
-      if (paramContainer != null)
-      {
-        localObject = paramContainer.findViewBaseByName("id_recommend_title");
-        if ((localObject != null) && (((ViewBase)localObject).getNativeView() != null) && ((((ViewBase)localObject).getNativeView() instanceof NativeTextImp)))
-        {
-          localObject = (NativeTextImp)((ViewBase)localObject).getNativeView();
-          ((NativeTextImp)localObject).setLines(2);
-          ((NativeTextImp)localObject).setGravity(51);
-        }
-        localObject = paramContainer.findViewBaseByName("id_recommend_category_download");
-        if ((localObject == null) || (((ViewBase)localObject).getNativeView() == null) || (!(((ViewBase)localObject).getNativeView() instanceof NativeTextImp)) || (paramRecommendAdData.b != 12) || (TextUtils.isEmpty(paramRecommendAdData.h))) {
-          break label152;
-        }
-        localObject = (NativeTextImp)((ViewBase)localObject).getNativeView();
-        if ((localObject == null) || (paramRecommendAdData.c)) {
-          break label133;
-        }
-        ((NativeTextImp)localObject).setVisibility(8);
-      }
-    }
-    label133:
-    label152:
-    label200:
-    for (;;)
-    {
-      return;
-      if (obb.a(BaseApplicationImpl.getContext(), paramRecommendAdData.h)) {
-        ((NativeTextImp)localObject).setText("立即打开");
-      }
-      for (;;)
-      {
-        if (!TextUtils.isEmpty(paramRecommendAdData.D)) {
-          break label200;
-        }
-        paramContainer = paramContainer.findViewBaseByName("id_recommend_account_name");
-        if (paramContainer == null) {
-          break;
-        }
-        paramContainer.getComLayoutParams().mLayoutMarginLeft = AIOUtils.dp2px(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-        return;
-        ((NativeTextImp)localObject).setText("立即下载");
-      }
+    this.jdField_a_of_type_Sts = paramsts;
+    paramsts = this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
+    if (paramsts != null) {
+      paramsts.setOnPreDownloadListener((ISPlayerPreDownloader.Listener)this);
     }
   }
   
-  public int a(BaseData paramBaseData)
+  public void a(@NotNull sty paramsty, long paramLong1, long paramLong2)
   {
-    int i = -1;
-    if ((paramBaseData instanceof RecommendAdData)) {
-      i = 9;
+    Intrinsics.checkParameterIsNotNull(paramsty, "videoInfo");
+    ISPlayerPreDownloader localISPlayerPreDownloader = this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
+    if (localISPlayerPreDownloader != null) {
+      localISPlayerPreDownloader.startPreDownload(stz.a(paramsty), paramLong1, paramLong2);
     }
-    return i;
-  }
-  
-  public stg a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext == null)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new qle();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(paramContext);
-      ozp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "native_article");
-    }
-    if (this.jdField_a_of_type_AndroidContentContext == null) {
-      this.jdField_a_of_type_AndroidContentContext = paramContext;
-    }
-    ProteusItemData localProteusItemData = (ProteusItemData)paramBaseData;
-    paramBaseData = null;
-    try
-    {
-      paramViewGroup = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getViewFactory().inflate(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, localProteusItemData.a);
-      paramBaseData = paramViewGroup;
-      ozp.a(((Container)paramViewGroup).getVirtualView(), localProteusItemData.a.getViewBean());
-      paramBaseData = paramViewGroup;
-      str = localProteusItemData.c.toString();
-      paramBaseData = paramViewGroup;
-    }
-    catch (Exception paramViewGroup)
-    {
-      for (;;)
-      {
-        boolean bool;
-        String str = "error!! msg=" + paramViewGroup.toString();
-      }
-    }
-    bool = false;
-    paramViewGroup = paramBaseData;
-    if (paramBaseData == null)
-    {
-      paramViewGroup = new View(paramContext);
-      bool = true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("WebFastProteusViewAdCreator", 1, "createViewHolder viewIsNull=" + bool + "  proteusData=" + str);
-    }
-    return new sud(this, paramViewGroup, localProteusItemData);
-  }
-  
-  public void a() {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt) {}
-  
-  public boolean a(BaseData paramBaseData)
-  {
-    switch (paramBaseData.r)
-    {
-    default: 
-      return false;
-    }
-    return true;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Svz.a();
+    ISPlayerPreDownloader localISPlayerPreDownloader = this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
+    if (localISPlayerPreDownloader != null) {
+      localISPlayerPreDownloader.destory();
+    }
   }
   
-  public void c() {}
+  public void onPrepareDownloadProgressUpdate(int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2) {}
   
-  public void d()
+  public void onPrepareError(int paramInt)
   {
-    this.jdField_a_of_type_Svz.b();
+    sts localsts = this.jdField_a_of_type_Sts;
+    if (localsts != null) {
+      localsts.a();
+    }
   }
   
-  public void e() {}
+  public void onPrepareSuccess(int paramInt)
+  {
+    sts localsts = this.jdField_a_of_type_Sts;
+    if (localsts != null) {
+      localsts.b();
+    }
+  }
 }
 
 

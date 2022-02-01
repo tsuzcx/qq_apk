@@ -1,18 +1,35 @@
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class apgf
+final class apgf
+  implements INetEngine.IBreakDownFix
 {
-  public int a;
-  public String a;
-  public WeakReference<apge> a;
-  public int b = 0;
-  public int c = 0;
-  
-  public apgf()
+  public void fixReq(NetReq paramNetReq, NetResp paramNetResp)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    if ((paramNetReq == null) || (paramNetResp == null)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!(paramNetReq instanceof HttpNetReq));
+      paramNetReq = (HttpNetReq)paramNetReq;
+      paramNetReq.mStartDownOffset += paramNetResp.mWrittenBlockLen;
+      paramNetResp.mWrittenBlockLen = 0L;
+      paramNetResp = "bytes=" + paramNetReq.mStartDownOffset + "-";
+      paramNetReq.mReqProperties.put("Range", paramNetResp);
+      paramNetResp = paramNetReq.mReqUrl;
+      if (paramNetResp.contains("range="))
+      {
+        String str = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
+        paramNetReq.mReqUrl = (str + "range=" + paramNetReq.mStartDownOffset);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("ArConfig_ArResourceDownload", 2, "IBreakDownFix, " + paramNetResp + ", offset=" + paramNetReq.mStartDownOffset);
   }
 }
 

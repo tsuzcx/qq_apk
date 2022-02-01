@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo;
 
-import bbpu;
+import bcwo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.transfile.HttpNetReq;
 import com.tencent.mobileqq.transfile.INetEngine;
@@ -33,7 +33,7 @@ public class PtvTemplateManager$15
       QLog.d("Doodle_Strokes_PtvTemplateManager", 2, "reqApp:" + localQQAppInterface);
       return;
       HttpNetReq localHttpNetReq = new HttpNetReq();
-      localHttpNetReq.mCallback = new bbpu(this);
+      localHttpNetReq.mCallback = new bcwo(this);
       localHttpNetReq.mReqUrl = this.a.doodleUrl;
       localHttpNetReq.mHttpMethod = 0;
       localHttpNetReq.mOutPath = new File(PtvTemplateManager.b, this.a.doodleName).getPath();

@@ -1,38 +1,126 @@
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.util.QZLog;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.ttpic.baseutils.log.LogUtils;
+import java.util.List;
 
-class bkzz
-  implements ModuleDownloadListener
+public class bkzz
 {
-  bkzz(bkzx parambkzx, blac paramblac) {}
-  
-  public void onDownloadCanceled(String paramString)
+  public static Dialog a(Context paramContext, View paramView)
   {
-    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
+    return a(paramContext, paramView, -1, null);
   }
   
-  public void onDownloadFailed(String paramString)
+  public static Dialog a(Context paramContext, View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
   {
-    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
-    bkzx.b(this.jdField_a_of_type_Bkzx, false);
-    this.jdField_a_of_type_Blac.a(false);
+    paramContext = bkzi.a(paramContext, paramInt, paramLayoutParams);
+    paramContext.a(paramView, null);
+    return paramContext;
   }
   
-  public void onDownloadProgress(String paramString, float paramFloat)
+  public static bkzi a(Context paramContext, bkzi parambkzi, List<bkzh> paramList, bkzq parambkzq)
   {
-    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
+    if ((paramContext == null) || (paramList == null) || (paramList.size() <= 0)) {
+      return null;
+    }
+    int i;
+    if (parambkzi == null)
+    {
+      parambkzi = (bkzi)a(paramContext, null);
+      i = 0;
+      label35:
+      if (i >= paramList.size()) {
+        break label116;
+      }
+      paramContext = (bkzh)paramList.get(i);
+      if (paramContext.d == 0)
+      {
+        if (paramContext.a != 1) {
+          break label99;
+        }
+        parambkzi.a(paramContext, 1);
+      }
+    }
+    for (;;)
+    {
+      i += 1;
+      break label35;
+      parambkzi.c();
+      parambkzi.a();
+      break;
+      label99:
+      if (paramContext.a == 2) {
+        parambkzi.a(paramContext, 3);
+      }
+    }
+    label116:
+    parambkzi.a(parambkzq);
+    return parambkzi;
   }
   
-  public void onDownloadSucceed(String paramString)
+  public static bkzi a(Context paramContext, List<bkzh> paramList, bkzq parambkzq)
   {
-    if (!paramString.equals("libTar.so")) {
+    return a(paramContext, null, paramList, parambkzq);
+  }
+  
+  public static String a(Context paramContext, int paramInt)
+  {
+    if (paramContext == null) {
+      return null;
+    }
+    return paramContext.getString(paramInt);
+  }
+  
+  public static void a(Activity paramActivity, bkzi parambkzi)
+  {
+    if ((paramActivity == null) || (parambkzi == null)) {
       return;
     }
-    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bkzx.c(), " onDownloadSucceed = ", bkzx.d() });
-    LocalMultiProcConfig.putString("VipARUtils_SO_md5", bkzx.d());
-    bkzx.b(this.jdField_a_of_type_Bkzx);
-    this.jdField_a_of_type_Blac.a(bkzx.b(this.jdField_a_of_type_Bkzx));
+    try
+    {
+      if (!paramActivity.isFinishing())
+      {
+        parambkzi.show();
+        return;
+      }
+    }
+    catch (Exception paramActivity)
+    {
+      paramActivity.printStackTrace();
+      return;
+    }
+    LogUtils.e("ActionSheetHelper", "showActionSheet when activity(" + paramActivity + ") is finish!");
+  }
+  
+  public static Dialog b(Context paramContext, View paramView)
+  {
+    paramContext = bkzi.b(paramContext);
+    paramContext.a(paramView, new LinearLayout.LayoutParams(-1, -1));
+    return paramContext;
+  }
+  
+  public static void b(Activity paramActivity, bkzi parambkzi)
+  {
+    if ((paramActivity == null) || (parambkzi == null)) {
+      return;
+    }
+    try
+    {
+      if (!paramActivity.isFinishing())
+      {
+        parambkzi.dismiss();
+        return;
+      }
+    }
+    catch (Exception paramActivity)
+    {
+      paramActivity.printStackTrace();
+      return;
+    }
+    LogUtils.e("ActionSheetHelper", "dismissActionSheet when activity(" + paramActivity + ") is finish!");
   }
 }
 

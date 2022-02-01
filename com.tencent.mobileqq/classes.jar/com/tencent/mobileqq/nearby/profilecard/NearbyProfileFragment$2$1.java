@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import awhl;
-import awhm;
-import axcw;
+import axnn;
+import axno;
+import ayjc;
 
 public class NearbyProfileFragment$2$1
   implements Runnable
 {
-  public NearbyProfileFragment$2$1(axcw paramaxcw, awhl paramawhl) {}
+  public NearbyProfileFragment$2$1(ayjc paramayjc, axnn paramaxnn) {}
   
   public void run()
   {
-    awhm.a(this.jdField_a_of_type_Axcw.a.a.getAppInterface(), this.jdField_a_of_type_Awhl);
+    axno.a(this.jdField_a_of_type_Ayjc.a.a.getAppInterface(), this.jdField_a_of_type_Axnn);
   }
 }
 

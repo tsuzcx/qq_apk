@@ -1,46 +1,37 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.ClipboardManager;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ajhq
+public class ajhq
   implements View.OnClickListener
 {
-  ajhq(ajhm paramajhm) {}
+  public ajhq(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if (QLog.isColorLevel()) {
-      QLog.i(ajhm.jdField_a_of_type_JavaLangString, 2, "onClick, id = " + i);
+    ajfk localajfk;
+    if ((paramView.getTag() instanceof ajfk))
+    {
+      localajfk = (ajfk)paramView.getTag();
+      if ((localajfk != null) && (ajhu.a(TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, localajfk.b))) {
+        break label43;
+      }
     }
-    Object localObject = this.a.jdField_a_of_type_Ajhk;
-    if (this.a.jdField_a_of_type_Ajhk == null) {}
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      switch (i)
-      {
-      default: 
-        break;
-      case 2131365216: 
-        ((ClipboardManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(((ajhk)localObject).a.msg);
-        break;
-      case 2131367094: 
-        Bundle localBundle = new Bundle();
-        localBundle.putInt("forward_type", -1);
-        localBundle.putString("forward_text", ((ajhk)localObject).a.msg);
-        localObject = new Intent();
-        ((Intent)localObject).putExtras(localBundle);
-        atky.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, (Intent)localObject, 21);
-      }
+      label43:
+      ajhu.a(TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, localajfk.b, false);
+      String str = this.a.getString(2131699019);
+      localajfk.a.setText(str);
+      localajfk.a.setClickable(false);
+      localajfk.a.setBackgroundDrawable(null);
+      localajfk.a.setTextAppearance(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131755977);
+      ajhu.a(localajfk.b, TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, "", TroopWithCommonFriendsFragment.a(this.a));
+      bdla.b(null, "dc00898", "", "", "0X800AD26", "0X800AD26", 0, 0, "0", "0", "", "");
     }
   }
 }

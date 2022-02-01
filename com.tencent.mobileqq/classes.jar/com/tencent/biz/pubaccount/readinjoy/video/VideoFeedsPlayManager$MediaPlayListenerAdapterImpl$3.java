@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import rym;
-import ryo;
-import sdj;
+import sko;
+import skq;
+import spn;
 
 public class VideoFeedsPlayManager$MediaPlayListenerAdapterImpl$3
   implements Runnable
 {
-  public VideoFeedsPlayManager$MediaPlayListenerAdapterImpl$3(rym paramrym, ryo paramryo) {}
+  public VideoFeedsPlayManager$MediaPlayListenerAdapterImpl$3(sko paramsko, skq paramskq) {}
   
   public void run()
   {
-    if ((!VideoFeedsPlayManager.a(this.jdField_a_of_type_Rym.a, this.jdField_a_of_type_Ryo)) || (VideoFeedsPlayManager.a(this.jdField_a_of_type_Rym.a, this.jdField_a_of_type_Ryo) == null)) {
+    if ((!VideoFeedsPlayManager.a(this.jdField_a_of_type_Sko.a, this.jdField_a_of_type_Skq)) || (VideoFeedsPlayManager.a(this.jdField_a_of_type_Sko.a, this.jdField_a_of_type_Skq) == null)) {
       return;
     }
-    this.jdField_a_of_type_Ryo.a.a();
+    this.jdField_a_of_type_Skq.a.a();
   }
 }
 

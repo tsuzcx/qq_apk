@@ -1,6 +1,6 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
-import bmhn;
+import bnxf;
 
 class AEEditorCommonEditFragment$4
   implements Runnable

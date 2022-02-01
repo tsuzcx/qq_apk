@@ -1,8 +1,27 @@
-public abstract interface acva
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.Elem;
+import tencent.im.msg.im_msg_body.QQWalletMsg;
+
+public class acva
+  extends acve
 {
-  public abstract void a();
+  public int a()
+  {
+    return 1000;
+  }
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bffl parambffl, bcse parambcse, bcre parambcre)
+  {
+    new bcrt().e(paramList, paramList1, paramStringBuilder, paramMsg, parambffl);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return paramElem.qqwallet_msg.has();
+  }
 }
 
 

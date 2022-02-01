@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import akgd;
+import albw;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
@@ -62,7 +62,7 @@ public class AnimationView$AnimationInfo
     }
     String str = paramString + "Folder";
     File localFile = new File(str);
-    if ((!localFile.exists()) && (!akgd.a(paramString, str))) {
+    if ((!localFile.exists()) && (!albw.a(paramString, str))) {
       return 3;
     }
     paramString = localFile.listFiles();
@@ -98,7 +98,7 @@ public class AnimationView$AnimationInfo
       {
         if ((localObject == null) || (localArrayList1 == null) || (localArrayList1.size() <= 0))
         {
-          paramString = akgd.a(paramString);
+          paramString = albw.a(paramString);
           if ((paramString == null) || (paramString.length <= 0)) {
             return null;
           }
@@ -119,7 +119,7 @@ public class AnimationView$AnimationInfo
           }
           return null;
         }
-        akgd.a(paramString);
+        albw.a(paramString);
         ArrayList localArrayList2 = new ArrayList();
         int i = 0;
         while (i < paramString.length)
@@ -153,7 +153,7 @@ public class AnimationView$AnimationInfo
               }
               while (i < localSparseArray.size())
               {
-                akgd.a((Drawable)localSparseArray.valueAt(i));
+                albw.a((Drawable)localSparseArray.valueAt(i));
                 i += 1;
               }
             }
@@ -178,7 +178,7 @@ public class AnimationView$AnimationInfo
           i = m;
           while (i < localSparseArray.size())
           {
-            akgd.a((Drawable)localSparseArray.valueAt(i));
+            albw.a((Drawable)localSparseArray.valueAt(i));
             i += 1;
           }
           return null;
@@ -294,7 +294,7 @@ public class AnimationView$AnimationInfo
     int i = 0;
     while (i < this.mFrames.size())
     {
-      akgd.a((Drawable)this.mFrames.valueAt(i));
+      albw.a((Drawable)this.mFrames.valueAt(i));
       i += 1;
     }
     this.mFrames.clear();

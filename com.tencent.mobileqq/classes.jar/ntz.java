@@ -1,30 +1,34 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.io.UnsupportedEncodingException;
 
-final class ntz
-  implements BusinessObserver
+public class ntz
 {
-  ntz(QQAppInterface paramQQAppInterface, boolean paramBoolean, amyh paramamyh) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public byte[] a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList isSuccess:" + String.valueOf(paramBoolean));
-    }
-    paramBundle = paramBundle.getByteArray("data");
-    if ((paramBoolean) && (paramBundle != null)) {}
-    for (paramInt = nty.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Boolean, paramBundle, false);; paramInt = 1)
+    if (TextUtils.isEmpty(this.a)) {}
+    do
     {
-      if (this.jdField_a_of_type_Amyh != null) {
-        this.jdField_a_of_type_Amyh.onDynamicListGet(paramBoolean, paramInt);
+      return null;
+      try
+      {
+        byte[] arrayOfByte = this.a.getBytes("ISO-8859-1");
+        return arrayOfByte;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList onReceiveerrCode:" + paramInt);
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        localUnsupportedEncodingException.printStackTrace();
       }
-      return;
-    }
+    } while (!QLog.isColorLevel());
+    QLog.d("AnonymousChatHelper", 2, "getByteAnId UnsupportedEncodingException");
+    return null;
   }
 }
 

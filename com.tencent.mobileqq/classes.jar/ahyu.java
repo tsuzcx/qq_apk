@@ -1,84 +1,44 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.EqqDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import mqq.observer.BusinessObserver;
+import mqq.os.MqqHandler;
 
 public class ahyu
-  implements ahyj
+  implements BusinessObserver
 {
-  public ahyu(SearchBaseFragment paramSearchBaseFragment) {}
+  ahyu(ahyl paramahyl) {}
   
-  public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString, int paramInt3, List<bays> paramList)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    int i = 3;
-    this.a.j();
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessChatPie", 2, "success:" + String.valueOf(paramBoolean));
+    }
+    mobileqq_mp.GetEqqAccountDetailInfoResponse localGetEqqAccountDetailInfoResponse;
     if (paramBoolean)
     {
-      if (paramInt3 == 1) {
-        if (this.a.a != null) {
-          this.a.a.sendMessage(this.a.a.obtainMessage(4, paramList));
-        }
-      }
-      for (;;)
-      {
-        return;
-        if (paramInt3 == 2)
-        {
-          if (this.a.a != null) {
-            this.a.a.sendEmptyMessage(5);
-          }
-        }
-        else if ((paramObject != null) && ((paramObject instanceof ArrayList)))
-        {
-          paramObject = (ArrayList)paramObject;
-          if (paramObject.size() == 0)
-          {
-            if (this.a.a != null)
-            {
-              paramObject = this.a.a;
-              if (!this.a.b) {
-                break label159;
-              }
-            }
-            label159:
-            for (paramInt1 = 3;; paramInt1 = 2)
-            {
-              paramObject.sendEmptyMessage(paramInt1);
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d(SearchBaseFragment.a(), 2, "error! SearchResult is null!");
-              return;
-            }
-          }
-          if (paramObject.size() > 0) {}
-          try
-          {
-            paramString = (ahzl)paramObject.get(0);
-            if ((this.a.a(paramObject)) && (this.a.a != null))
-            {
-              this.a.a.sendEmptyMessage(0);
-              return;
-            }
-          }
-          catch (Exception paramObject)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d(SearchBaseFragment.a(), 2, "", paramObject);
-            }
-            paramObject = this.a.a;
-            if (!this.a.b) {}
-          }
-        }
-      }
-      for (paramInt1 = i;; paramInt1 = 2)
-      {
-        paramObject.sendEmptyMessage(paramInt1);
-        return;
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null) {
+        localGetEqqAccountDetailInfoResponse = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
       }
     }
-    this.a.a(paramInt1, paramObject, paramInt2, paramString);
+    try
+    {
+      localGetEqqAccountDetailInfoResponse.mergeFrom(paramBundle);
+      if (((mobileqq_mp.RetInfo)localGetEqqAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0)
+      {
+        paramBundle = new EqqDetail(localGetEqqAccountDetailInfoResponse);
+        ThreadManager.getFileThreadHandler().post(new BusinessCmrTmpChatPie.2.1(this, paramBundle));
+      }
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramBundle) {}
   }
 }
 

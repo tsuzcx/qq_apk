@@ -1,18 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import android.os.SystemClock;
+import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aoes
-  implements Parcelable.Creator<ARCommonConfigInfo>
+class aoes
+  extends LbsManagerService.OnLocationChangeListener
 {
-  public ARCommonConfigInfo a(Parcel paramParcel)
+  aoes(aoep paramaoep, String paramString1, long paramLong, String paramString2)
   {
-    return new ARCommonConfigInfo(paramParcel);
+    super(paramString1);
   }
   
-  public ARCommonConfigInfo[] a(int paramInt)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    return new ARCommonConfigInfo[paramInt];
+    long l = SystemClock.uptimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopHandler", 2, "onLocationFinish, time=" + (l - this.jdField_a_of_type_Long) + "ms");
+    }
+    if (paramInt != 0) {
+      QLog.i("TroopHandler", 1, "getDetailOnlineMemberList, startLocation, errorCode=" + paramInt);
+    }
+    this.jdField_a_of_type_Aoep.a(this.jdField_a_of_type_JavaLangString, paramSosoLbsInfo);
   }
 }
 

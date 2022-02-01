@@ -1,7 +1,7 @@
 package dov.com.tencent.mobileqq.shortvideo.util;
 
 import android.content.res.AssetManager;
-import bods;
+import bptk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -31,7 +31,7 @@ public class NativeBridge
   private static boolean initSoEnvirontMent(String paramString)
   {
     boolean bool = false;
-    if (!bods.a("TKGLRenderer"))
+    if (!bptk.a("TKGLRenderer"))
     {
       if (QLog.isColorLevel()) {
         QLog.d("ArConfig_ArNativeSoLoader", 2, "native so is not exist!");
@@ -43,7 +43,7 @@ public class NativeBridge
     }
     try
     {
-      int i = bods.a("TKGLRenderer");
+      int i = bptk.a("TKGLRenderer");
       setAssetManager(BaseApplicationImpl.getApplication().getAssets(), paramString + File.separator);
       if (i == 0) {
         bool = true;

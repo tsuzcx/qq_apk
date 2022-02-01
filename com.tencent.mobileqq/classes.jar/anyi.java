@@ -1,29 +1,25 @@
-import com.tencent.mobileqq.app.BusinessObserver;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
 
-public abstract class anyi
-  implements BusinessObserver
+class anyi
+  implements bkzq
 {
-  public abstract void a(aogo paramaogo);
+  anyi(anyb paramanyb, bkzi parambkzi) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARLBSObserver", 2, "type=" + paramInt + ", isSuccess=" + paramBoolean);
-    }
     switch (paramInt)
     {
-    default: 
-      return;
     }
-    try
+    for (;;)
     {
-      a((aogo)paramObject);
+      this.jdField_a_of_type_Bkzi.e();
       return;
-    }
-    catch (Exception paramObject)
-    {
-      a(new aogo());
+      if (QLog.isColorLevel()) {
+        QLog.i("MayknowRecommendManager", 2, " onMsgTabRecommendBClick recommend_item_menu hide clicked");
+      }
+      this.jdField_a_of_type_Anyb.h();
+      bdla.b(null, "dc00899", "Grp_recom", "", "msg_tab", "clk_hide", 0, 0, "", "", "", "");
     }
   }
 }

@@ -1,18 +1,23 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnSeekCompleteListener;
-import org.json.JSONObject;
+import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
+import android.view.View;
 
-class alwh
-  implements MediaPlayer.OnSeekCompleteListener
+public abstract interface alwh
 {
-  alwh(alwf paramalwf, JSONObject paramJSONObject, alxf paramalxf) {}
+  public abstract int a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2);
   
-  public void onSeekComplete(MediaPlayer paramMediaPlayer)
-  {
-    if (this.jdField_a_of_type_OrgJsonJSONObject != null) {
-      alwf.a(this.jdField_a_of_type_Alwf, this.jdField_a_of_type_Alxf, this.jdField_a_of_type_OrgJsonJSONObject);
-    }
-  }
+  @NonNull
+  public abstract View a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(alwi paramalwi);
+  
+  public abstract boolean a(int paramInt);
+  
+  public abstract void b(@ColorInt int paramInt);
+  
+  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

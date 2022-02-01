@@ -1,35 +1,93 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.pts.core.PTSComposer;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Collection;
+import java.util.HashMap;
 import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.text.Regex;
+import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class qyl
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/pts/lite/PTSLiteEventTypeHandler;", "", "()V", "TAG", "", "doRequest0xebf", "", "ptsComposer", "Lcom/tencent/pts/core/PTSComposer;", "dataSet", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "handleEventType", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qyl
 {
-  qyl(qye paramqye) {}
+  public static final qyl a = new qyl();
   
-  public final void onClick(View paramView)
+  private final void b(PTSComposer paramPTSComposer, HashMap<String, String> paramHashMap)
   {
-    qye.a(this.a, 1);
-    Object localObject = qye.b(this.a);
-    if (localObject != null) {
-      ((View)localObject).setBackgroundDrawable(null);
-    }
-    localObject = qye.a(this.a);
-    if (localObject != null) {
-      ((View)localObject).setBackgroundResource(2130841764);
-    }
-    if (qye.a(this.a))
+    Object localObject = (String)paramHashMap.get("businessType");
+    if (localObject != null) {}
+    for (;;)
     {
-      localObject = qye.b(this.a);
-      if (localObject != null) {
-        ((ImageView)localObject).setImageDrawable((Drawable)qye.a(this.a, "https://kd.qpic.cn/bankjiang/apngs/three_cack_apng_7b412611.png"));
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "dataSet[PTSConstantUtil.…SET_BUSINESS_TYPE] ?: \"0\"");
+      String str = (String)paramHashMap.get("requestParams");
+      paramHashMap = (String)paramHashMap.get("extendInfo");
+      try
+      {
+        localObject = Integer.valueOf((String)localObject);
+        Intrinsics.checkExpressionValueIsNotNull(localObject, "Integer.valueOf(businessType)");
+        i = ((Integer)localObject).intValue();
+        qzs.a.a(paramPTSComposer, i, str, paramHashMap);
+        return;
+        localObject = "0";
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        for (;;)
+        {
+          QLog.e("PTSLiteTapEventDispatcher", 1, "[doRequest0xebf] e = " + localNumberFormatException);
+          int i = 0;
+        }
       }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public final void a(@Nullable PTSComposer paramPTSComposer, @Nullable HashMap<String, String> paramHashMap)
+  {
+    if (paramHashMap != null)
+    {
+      localObject = (String)paramHashMap.get("eventType");
+      if (localObject == null) {}
+    }
+    for (;;)
+    {
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "dataSet?.get(PTSConstant…ATA_SET_EVENT_TYPE) ?: \"\"");
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        break;
+      }
+      QLog.i("PTSLiteEventTypeHandler", 1, "[handleEventType], eventTypeString is empty.");
+      return;
+      localObject = "";
+    }
+    QLog.i("PTSLiteEventTypeHandler", 1, "[handleEventType] eventTypeString = " + (String)localObject);
+    Object localObject = (CharSequence)localObject;
+    localObject = ((Collection)new Regex("\\|").split((CharSequence)localObject, 0)).toArray(new String[0]);
+    if (localObject == null) {
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<T>");
+    }
+    String[] arrayOfString = (String[])localObject;
+    int j = arrayOfString.length;
+    int i = 0;
+    label145:
+    if (i < j)
+    {
+      localObject = arrayOfString[i];
+      QLog.i("PTSLiteEventTypeHandler", 1, "[handleEventType], eventType = " + (String)localObject);
+      if (TextUtils.equals((CharSequence)localObject, (CharSequence)"0xebfRequest")) {
+        if (paramHashMap == null) {
+          break label220;
+        }
+      }
+    }
+    label220:
+    for (localObject = paramHashMap;; localObject = new HashMap())
+    {
+      b(paramPTSComposer, (HashMap)localObject);
+      i += 1;
+      break label145;
+      break;
+    }
   }
 }
 

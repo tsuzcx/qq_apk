@@ -1,13 +1,14 @@
-import java.util.ArrayList;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public class xbd
+class xbd
+  extends AnimatorListenerAdapter
 {
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  xbd(xbc paramxbc) {}
   
-  public xbd(String paramString)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super.onAnimationEnd(paramAnimator);
   }
 }
 

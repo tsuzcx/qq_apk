@@ -1,87 +1,49 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import android.content.Intent;
+import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bcuz
-  implements BusinessObserver
+  extends MSFServlet
 {
-  public void a(int paramInt) {}
-  
-  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
-  
-  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
-  
-  public void a(String paramString1, String paramString2, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void b(TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
-  
-  public void c(TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    switch (paramInt)
+    if (paramIntent != null)
     {
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
     }
-    do
+    for (;;)
     {
-      do
+      ((PeakAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
+      return;
+      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (paramIntent != null)
+    {
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (QLog.isColorLevel()) {
+        QLog.d("AudioTransServlet", 2, " onSend runhw:" + paramIntent);
+      }
+      if (paramIntent != null)
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        do
-                        {
-                          do
-                          {
-                            return;
-                          } while (paramObject == null);
-                          b((TeamWorkFileImportInfo)paramObject);
-                          return;
-                        } while (paramObject == null);
-                        paramObject = (Object[])paramObject;
-                      } while (paramObject.length != 2);
-                      a((String)paramObject[0], (TeamWorkFileImportInfo)paramObject[1]);
-                      return;
-                    } while (paramObject == null);
-                    a((TeamWorkFileImportInfo)paramObject);
-                    return;
-                  } while (paramObject == null);
-                  paramObject = (Object[])paramObject;
-                } while (paramObject.length != 1);
-                a(((Integer)paramObject[0]).intValue());
-                return;
-              } while (paramObject == null);
-              paramObject = (Object[])paramObject;
-            } while (paramObject.length != 1);
-            if (((Integer)paramObject[0]).intValue() > 0) {}
-            for (paramBoolean = true;; paramBoolean = false)
-            {
-              a(paramBoolean);
-              return;
-            }
-          } while (paramObject == null);
-          paramObject = (Object[])paramObject;
-        } while (paramObject.length != 3);
-        a((String)paramObject[0], (String)paramObject[1], (TeamWorkFileImportInfo)paramObject[2]);
-        return;
-      } while (paramObject == null);
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length != 1);
-    c((TeamWorkFileImportInfo)paramObject[0]);
+        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
+        paramPacket.putSendData(paramIntent.getWupBuffer());
+        paramPacket.setTimeout(paramIntent.getTimeout());
+        paramPacket.setAttributes(paramIntent.getAttributes());
+        if (!paramIntent.isNeedCallback()) {
+          paramPacket.setNoResponse();
+        }
+      }
+    }
   }
 }
 

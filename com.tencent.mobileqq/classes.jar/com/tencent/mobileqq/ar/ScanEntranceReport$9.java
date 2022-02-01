@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar;
 
-import aoem;
+import apho;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class ScanEntranceReport$9
   implements Runnable
 {
-  public ScanEntranceReport$9(aoem paramaoem) {}
+  public ScanEntranceReport$9(apho paramapho) {}
   
   public void run()
   {

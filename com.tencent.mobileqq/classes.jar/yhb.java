@@ -1,40 +1,13 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class yhb
-  extends ygz<yha>
+class yhb
+  implements ygk
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370327);
+  yhb(ygp paramygp) {}
   
-  yhb(yha paramyha, @NonNull Context paramContext, ViewGroup paramViewGroup)
+  public void a(ErrorMessage paramErrorMessage)
   {
-    super(paramContext, paramViewGroup);
-  }
-  
-  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return LayoutInflater.from(paramContext).inflate(2131561697, paramViewGroup, false);
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-  }
-  
-  public void a(yha paramyha, int paramInt)
-  {
-    super.a(paramyha, paramInt);
-    if (paramyha != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramyha.a());
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+    ykq.e("Q.qqstory.home.StoryListPresenter", "step %s error occur when requestAllDataFromNet error=%s", new Object[] { paramErrorMessage.extraMsg, paramErrorMessage.getErrorMessage() });
   }
 }
 

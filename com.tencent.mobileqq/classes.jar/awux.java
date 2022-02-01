@@ -1,55 +1,83 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_feeds_like.FeedsUnLikeRsp;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.MedalInfo;
+import com.tencent.mobileqq.medalwall.MedalWallMng;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.open.base.MD5Utils;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class awux
-  implements awrb
+public class awux
 {
-  awux(awur paramawur, VideoData paramVideoData) {}
+  public int a;
+  public MedalInfo a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public String c;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public awux()
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null))
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public boolean a()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+    for (;;)
     {
-      paramBundle = new oidb_0xada.RspBody();
       try
       {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (QLog.isColorLevel()) {
-          QLog.i("PlayOperationViewModel", 2, "err_msg:   " + paramBundle.err_msg.get() + " isLiked=" + awur.a(this.jdField_a_of_type_Awur));
+        localJSONArray = new JSONArray(this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.strResJson);
+        localJSONObject = null;
+        i = localJSONArray.length();
+        if ((this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevelCount <= 1) || (i <= this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel)) {
+          continue;
         }
-        if (paramBundle.busi_buf.has())
-        {
-          paramArrayOfByte = new ilive_feeds_like.FeedsUnLikeRsp();
-          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-          this.jdField_a_of_type_Awur.f(false);
-          this.jdField_a_of_type_Awur.d(paramArrayOfByte.total.get());
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_b_of_type_Int = awur.a(this.jdField_a_of_type_Awur);
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_b_of_type_Boolean = false;
-          awur.b(this.jdField_a_of_type_Awur, false);
-          ((axen)this.jdField_a_of_type_Awur.a.getManager(263)).b(awur.a(this.jdField_a_of_type_Awur), paramArrayOfByte.total.get());
-          if (QLog.isColorLevel()) {
-            QLog.i("PlayOperationViewModel", 2, "total:   " + paramArrayOfByte.total.get() + ",ret:     " + paramArrayOfByte.ret.get());
-          }
+        localJSONObject = localJSONArray.getJSONObject(this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel);
+        if ((localJSONObject != null) && (localJSONObject.has("owned3d"))) {
+          this.jdField_a_of_type_JavaLangString = MedalWallMng.a(localJSONObject.getString("owned3d"));
         }
-        return;
+        if ((localJSONObject != null) && (localJSONObject.has("share"))) {
+          this.c = MedalWallMng.a(localJSONObject.getString("share"));
+        }
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      catch (Exception localException)
       {
-        QLog.w("PlayOperationViewModel", 1, "err_msg:   " + paramBundle.err_msg.get() + " isLiked=" + awur.a(this.jdField_a_of_type_Awur) + "  e:" + paramArrayOfByte);
-        return;
+        JSONArray localJSONArray;
+        JSONObject localJSONObject;
+        int i;
+        localException.printStackTrace();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("MedalWallMng", 2, "parse res json fail", localException);
+        continue;
+        if (this.jdField_a_of_type_Int != 1) {
+          continue;
+        }
+        this.jdField_a_of_type_Boolean = true;
+        continue;
+        if (!FileUtils.fileExistsAndNotEmpty(this.b)) {
+          continue;
+        }
+        this.jdField_a_of_type_Boolean = true;
+        continue;
+      }
+      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (TextUtils.isEmpty(this.b))) {
+        this.b = (MedalWallMng.b + MD5Utils.toMD5(this.jdField_a_of_type_JavaLangString));
+      }
+      if (this.jdField_a_of_type_Int != 2) {
+        continue;
+      }
+      this.jdField_a_of_type_Boolean = true;
+      return this.jdField_a_of_type_Boolean;
+      if (i > 1) {
+        localJSONObject = localJSONArray.getJSONObject(1);
       }
     }
-    QLog.w("PlayOperationViewModel", 1, "errorCode:   " + paramInt + " isLiked=" + awur.a(this.jdField_a_of_type_Awur));
-    awur.b(this.jdField_a_of_type_Awur, false);
   }
 }
 

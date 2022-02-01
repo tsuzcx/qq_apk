@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/mj3" android:layout_width="fill_parent" android:layout_height="72.0dip"
+<FrameLayout android:id="@id/mgg" android:padding="8.0dip" android:focusable="true" android:clickable="true" android:layout_width="156.0dip" android:layout_height="156.0dip" android:minHeight="156.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:id="@id/mj1" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginLeft="16.5dip" android:layout_centerVertical="true" />
-    <TextView android:textSize="17.0dip" android:textColor="#ff03081a" android:gravity="center_vertical" android:id="@id/mj5" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginLeft="14.0dip" android:layout_marginTop="13.0dip" android:maxWidth="200.0dip" android:text="11111" android:includeFontPadding="false" android:layout_toRightOf="@id/mj1" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/mj2" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginLeft="10.0dip" android:layout_toRightOf="@id/mj5" android:layout_alignBottom="@id/mj5" />
-    <TextView android:textSize="14.0dip" android:textColor="#ff878b99" android:id="@id/mj4" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginTop="2.0dip" android:singleLine="true" android:layout_below="@id/mj5" android:layout_alignLeft="@id/mj5" />
-    <TextView android:textSize="8.0dip" android:layout_gravity="center_vertical" android:id="@id/mj6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-</RelativeLayout>
+    <ImageView android:gravity="center" android:id="@id/m3p" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:gravity="center" android:layout_gravity="center" android:id="@id/m3q" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="20.0dip" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/m3x" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="24.0dip" />
+</FrameLayout>

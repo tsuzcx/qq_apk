@@ -1,22 +1,7 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
 
-public class srw
-  implements svk
-{
-  public srw(FastWebActivity paramFastWebActivity) {}
-  
-  public void a(svl paramsvl)
-  {
-    ArticleInfo localArticleInfo = paramsvl.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-    int i = FastWebActivity.f(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.i("FastWebActivity", 2, "articleInfo" + localArticleInfo);
-    }
-    swy.a(localArticleInfo, FastWebActivity.g(this.a), i, paramsvl.jdField_a_of_type_Boolean, this.a.b, FastWebActivity.h(this.a));
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnGuideManager$Companion;", "", "()V", "DEFAULT_DAY_INTERVAL", "", "SUFFIX_VIDEO_COLUMN", "", "TAG", "VIDEO_COLUMN_GUIDE_BG_IMG", "VIDEO_COLUMN_GUIDE_DAY_INTERNAL", "VIDEO_COLUMN_GUIDE_OPEN", "VIDEO_COLUMN_GUIDE_URL", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class srw {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

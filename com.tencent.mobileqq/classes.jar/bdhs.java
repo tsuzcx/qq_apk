@@ -1,8 +1,9 @@
-import com.tencent.mobileqq.together.writetogether.websocket.msg.NewChangesMsg.Data;
+import com.tencent.qq.effect.engine.QEffectData;
 
-public class bdhs
+class bdhs
+  extends QEffectData
 {
-  public NewChangesMsg.Data a;
+  bdhs(bdhr parambdhr) {}
 }
 
 

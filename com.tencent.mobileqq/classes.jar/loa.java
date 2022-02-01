@@ -1,71 +1,20 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.avcore.jni.data.AVUserInfo;
+import java.util.ArrayList;
 
-public class loa
+public abstract interface loa
+  extends ncc
 {
-  private static loa a;
+  public abstract long a(int paramInt1, int paramInt2, long paramLong);
   
-  public static loa a()
-  {
-    if (a != null) {
-      return a;
-    }
-    try
-    {
-      a = new loa();
-      loa localloa = a;
-      return localloa;
-    }
-    catch (Exception localException) {}
-    return null;
-  }
+  public abstract lfe a();
   
-  public float a()
-  {
-    try
-    {
-      float f1 = Float.parseFloat(lfi.a(BaseApplicationImpl.getContext()).a("sharp/lowlight_denoise/videodenoiseratio", "15.0"));
-      float f2;
-      if (f1 <= 0.0D) {
-        f2 = 0.0F;
-      }
-      do
-      {
-        return f2;
-        f2 = f1;
-      } while (f1 < 30.0D);
-      return 30.0F;
-    }
-    catch (Exception localException) {}
-    return 15.0F;
-  }
+  public abstract void a(long paramLong1, long paramLong2, ArrayList<lny> paramArrayList);
   
-  public boolean a()
-  {
-    return lfi.a(BaseApplicationImpl.getContext()).a("sharp/lowlight_denoise/lowlightflag", 0) == 1;
-  }
+  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
-  public boolean b()
-  {
-    boolean bool = false;
-    if (lfi.a(BaseApplicationImpl.getContext()).a("sharp/lowlight_denoise/lowlightflag", 0) == -1) {
-      bool = true;
-    }
-    return bool;
-  }
+  public abstract void b(long paramLong1, long paramLong2, String paramString);
   
-  public boolean c()
-  {
-    return lfi.a(BaseApplicationImpl.getContext()).a("sharp/lowlight_denoise/videodenoiseflag", 0) == 1;
-  }
-  
-  public boolean d()
-  {
-    boolean bool = false;
-    if (lfi.a(BaseApplicationImpl.getContext()).a("sharp/lowlight_denoise/videodenoiseflag", 0) == -1) {
-      bool = true;
-    }
-    return bool;
-  }
+  public abstract void b(long paramLong, ArrayList<AVUserInfo> paramArrayList);
 }
 
 

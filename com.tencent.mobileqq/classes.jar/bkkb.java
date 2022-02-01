@@ -1,71 +1,28 @@
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.ilive.time.TimeMonitorData.1;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.EditText;
+import com.tencent.qqconnect.wtlogin.Login;
 
 public class bkkb
+  implements View.OnFocusChangeListener
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString = "";
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public bkkb(Login paramLogin) {}
   
-  public bkkb(String paramString)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    QLog.e("IliveTimeMonitorData", 1, "init TimeMonitor id：" + paramString);
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  private void b()
-  {
-    try
+    if (paramView == this.a.jdField_b_of_type_AndroidWidgetEditText)
     {
-      if (this.jdField_a_of_type_JavaUtilHashMap.size() <= 0) {
-        QLog.e("IliveTimeMonitorData", 1, "mTimeTag is empty");
+      if (true == paramBoolean) {
+        this.a.jdField_b_of_type_AndroidWidgetEditText.selectAll();
       }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        QLog.e("IliveTimeMonitorData", 1, str + "：" + (String)this.jdField_a_of_type_JavaUtilHashMap.get(str));
+      if (!paramBoolean) {
+        this.a.jdField_b_of_type_AndroidViewView.setVisibility(4);
       }
+    }
+    while ((paramView != this.a.jdField_a_of_type_AndroidWidgetEditText) || (paramBoolean)) {
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-      QLog.e("IliveTimeMonitorData", 1, "showDataToQLogcat msg = " + localThrowable.getMessage(), localThrowable);
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap.size() > 0) {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-    }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public void a(String paramString)
-  {
-    a(paramString, null);
-  }
-  
-  public void a(String paramString, long paramLong, HashMap<String, String> paramHashMap)
-  {
-    b();
-    ThreadManagerV2.postImmediately(new TimeMonitorData.1(this, paramString, paramHashMap, paramLong), null, false);
-  }
-  
-  public void a(String paramString, HashMap<String, String> paramHashMap)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap.get(paramString) != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-    }
-    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, String.valueOf(l));
-    a(paramString, l, paramHashMap);
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
   }
 }
 

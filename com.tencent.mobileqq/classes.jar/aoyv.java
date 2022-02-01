@@ -1,21 +1,21 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ark.setting.ArkAppListActivity;
-import com.tencent.mobileqq.ark.setting.ArkAuthorityInfoActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.app.qqdaily.QQDailyArkView;
 
 public class aoyv
-  implements View.OnClickListener
+  implements ArkViewImplement.LoadCallback
 {
-  public aoyv(ArkAppListActivity paramArkAppListActivity, String paramString) {}
+  public aoyv(QQDailyArkView paramQQDailyArkView) {}
   
-  public void onClick(View paramView)
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAppListActivity, ArkAuthorityInfoActivity.class);
-    localIntent.putExtra("intent_extra_authority_app_name", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAppListActivity.startActivity(localIntent);
-    EventCollector.getInstance().onViewClicked(paramView);
+    onLoadState(paramInt1);
+  }
+  
+  public void onLoadState(int paramInt)
+  {
+    if (paramInt != 1) {
+      QQDailyArkView.a(this.a);
+    }
   }
 }
 

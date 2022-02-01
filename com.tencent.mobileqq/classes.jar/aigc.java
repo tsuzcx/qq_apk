@@ -1,23 +1,14 @@
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public class aigc
-  extends CardObserver
+class aigc
+  implements Comparator<MessageRecord>
 {
-  public aigc(SystemMsgListView paramSystemMsgListView) {}
+  aigc(aifz paramaifz) {}
   
-  public void onSetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    if (paramBoolean)
-    {
-      if (SystemMsgListView.a(this.a) != null) {
-        SystemMsgListView.a(this.a).c();
-      }
-      QQToast.a(this.a.getContext(), 2131698373, 3000).a();
-      return;
-    }
-    QQToast.a(this.a.getContext(), 2131698372, 1).a();
+    return (int)(paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq);
   }
 }
 

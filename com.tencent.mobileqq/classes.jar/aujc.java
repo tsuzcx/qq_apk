@@ -1,16 +1,10 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
-
-class aujc
-  implements TVK_IMediaPlayer.OnSeekCompleteListener
+public abstract interface aujc
 {
-  aujc(auix paramauix) {}
+  public abstract void a();
   
-  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
-  {
-    this.a.a.start();
-    this.a.c = 2;
-  }
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void a(Object paramObject, int paramInt);
 }
 
 

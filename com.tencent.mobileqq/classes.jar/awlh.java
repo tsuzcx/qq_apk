@@ -1,23 +1,29 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.widget.TextView;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
 
-class awlh
-  extends BroadcastReceiver
+public class awlh
+  implements View.OnKeyListener
 {
-  awlh(awlc paramawlc) {}
+  public awlh(LocationPickFragment paramLocationPickFragment, EditText paramEditText) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    int i = paramIntent.getIntExtra("SmallScreenState", 0);
-    if (i == 3) {
-      this.a.a.setVisibility(4);
+    if ((paramInt == 4) && (LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).b()))
+    {
+      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).e();
+      return true;
     }
-    while ((i != 2) && (i != 0)) {
-      return;
+    if ((paramInt == 84) || (paramInt == 66))
+    {
+      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim());
+      LocationPickFragment.b(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment);
+      return true;
     }
-    this.a.a.setVisibility(0);
+    return false;
   }
 }
 

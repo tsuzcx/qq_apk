@@ -6,7 +6,7 @@ public class df
   
   protected void a()
   {
-    dc.a(2131693423, 1);
+    dc.a(2131693604, 1);
   }
   
   protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
@@ -16,17 +16,17 @@ public class df
   
   protected void b()
   {
-    dc.a(amtj.a(2131702460), 1);
+    dc.a(anvx.a(2131702811), 1);
   }
   
   protected void c()
   {
-    dc.a(amtj.a(2131702458), 1);
+    dc.a(anvx.a(2131702809), 1);
   }
   
   protected void d()
   {
-    dc.a(amtj.a(2131702457), 1);
+    dc.a(anvx.a(2131702808), 1);
   }
 }
 

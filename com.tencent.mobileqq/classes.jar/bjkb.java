@@ -1,47 +1,58 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.MobileQQ;
+import com.tencent.open.appstore.js.DownloadInterfaceNew;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bjkb
+  implements bjnh
 {
-  private static ConcurrentHashMap<String, bjkc> a = new ConcurrentHashMap();
+  public bjkb(DownloadInterfaceNew paramDownloadInterfaceNew, String paramString) {}
   
-  public static void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void a(int paramInt, String paramString)
   {
-    if (paramFromServiceMsg != null)
+    bjko.e("DownloadInterfaceNew", "[innerQuery] [onException] errorCode=" + paramInt + ", errorMsg=" + paramString);
+  }
+  
+  public void a(List<DownloadInfo> paramList)
+  {
+    bjko.c("DownloadInterfaceNew", "[innerQuery] onResult = " + paramList.size());
+    JSONArray localJSONArray = new JSONArray();
+    int j = paramList.size();
+    int i = 0;
+    for (;;)
     {
-      Object localObject = paramFromServiceMsg.getServiceCmd();
-      localObject = (bjkc)a.get(localObject);
-      if (localObject != null) {
-        ((bjkc)localObject).a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      if (i < j)
+      {
+        JSONObject localJSONObject = new JSONObject();
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
+        try
+        {
+          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
+          localJSONObject.put("packagename", localDownloadInfo.e);
+          localJSONObject.put("versioncode", localDownloadInfo.b);
+          localJSONObject.put("url", localDownloadInfo.d);
+          localJSONObject.put("pro", localDownloadInfo.f);
+          localJSONObject.put("state", localDownloadInfo.a());
+          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
+          localJSONObject.put("download_from", localDownloadInfo.h);
+          localJSONObject.put("writecodestate", localDownloadInfo.j);
+          localJSONArray.put(localJSONObject);
+          i += 1;
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+          }
+        }
       }
     }
-  }
-  
-  public static void a(String paramString, bjkc parambjkc)
-  {
-    if ((paramString != null) && (parambjkc != null)) {
-      a.put(paramString, parambjkc);
-    }
-  }
-  
-  public static boolean a(String paramString, byte[] paramArrayOfByte)
-  {
-    if (paramString == null) {
-      return false;
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-    if (localQQAppInterface == null) {
-      return false;
-    }
-    paramString = new ToServiceMsg("mobileqq.service", localQQAppInterface.getCurrentAccountUin(), paramString);
-    paramString.putWupBuffer(paramArrayOfByte);
-    paramString.extraData.putBoolean("req_pb_protocol_flag", true);
-    localQQAppInterface.sendToService(paramString);
-    return true;
+    paramList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getQueryDownloadAction',{\"guid\": " + this.jdField_a_of_type_JavaLangString + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});}void(0);";
+    bjko.c("DownloadInterfaceNew", "[innerQuery] querySucess : " + paramList);
+    DownloadInterfaceNew.a(this.jdField_a_of_type_ComTencentOpenAppstoreJsDownloadInterfaceNew, paramList);
   }
 }
 

@@ -1,18 +1,22 @@
-import android.app.Notification;
-import android.os.IInterface;
+import com.tencent.av.gaudio.GaInviteLockActivity;
+import com.tencent.av.gaudio.GaInviteLockActivity.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
-public abstract interface lnp
-  extends IInterface
+public class lnp
+  extends let
 {
-  public abstract int a(long paramLong, int paramInt);
+  public lnp(GaInviteLockActivity paramGaInviteLockActivity) {}
   
-  public abstract void a();
-  
-  public abstract void a(lwc paramlwc);
-  
-  public abstract void a(boolean paramBoolean, Notification paramNotification);
-  
-  public abstract void a(byte[] paramArrayOfByte);
+  protected void a(long paramLong1, long paramLong2, ArrayList<lny> paramArrayList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.b, 2, "onReceiveMemberList mMemberChangeEventReceiver size:" + paramArrayList.size());
+    }
+    ThreadManager.getUIHandler().post(new GaInviteLockActivity.1.1(this, paramArrayList));
+  }
 }
 
 

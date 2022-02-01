@@ -95,8 +95,6 @@ public abstract interface Ad
   
   public abstract boolean isCanvas();
   
-  public abstract boolean isHitCanvasVideoCeilingExp();
-  
   public abstract boolean isHitFirstLoadImageExp();
   
   public abstract boolean isHitPreloadCanvasJsonExp();

@@ -58,13 +58,13 @@ public class FriendListProvider
     //   26: aload 9
     //   28: invokevirtual 76	com/tencent/mobileqq/content/FriendListProvider:getRuntime	(Ljava/lang/String;)Lmqq/app/AppRuntime;
     //   31: astore 10
-    //   33: new 78	aqmx
+    //   33: new 78	arqi
     //   36: dup
-    //   37: invokespecial 79	aqmx:<init>	()V
+    //   37: invokespecial 79	arqi:<init>	()V
     //   40: aload 10
     //   42: aload 9
     //   44: iconst_1
-    //   45: invokevirtual 82	aqmx:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Z)Lcom/tencent/mobileqq/app/SQLiteDatabase;
+    //   45: invokevirtual 82	arqi:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Z)Lcom/tencent/mobileqq/app/SQLiteDatabase;
     //   48: astore 9
     //   50: aload 9
     //   52: ifnonnull +32 -> 84
@@ -600,13 +600,13 @@ public class FriendListProvider
     //   111: invokestatic 106	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   114: iconst_0
     //   115: ireturn
-    //   116: new 78	aqmx
+    //   116: new 78	arqi
     //   119: dup
-    //   120: invokespecial 79	aqmx:<init>	()V
+    //   120: invokespecial 79	arqi:<init>	()V
     //   123: aload 4
     //   125: aload_3
     //   126: iconst_0
-    //   127: invokevirtual 82	aqmx:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Z)Lcom/tencent/mobileqq/app/SQLiteDatabase;
+    //   127: invokevirtual 82	arqi:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Z)Lcom/tencent/mobileqq/app/SQLiteDatabase;
     //   130: astore_3
     //   131: aload_3
     //   132: ifnonnull +14 -> 146

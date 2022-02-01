@@ -1,16 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.process.download.CmGameSubRscHandler.2;
+import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
+import java.util.Map;
 
 public class alyz
-  implements DialogInterface.OnClickListener
+  extends anvi
 {
-  public alyz(CmGameSubRscHandler.2 param2) {}
+  public alyz(TroopDiscussionTroop paramTroopDiscussionTroop) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.a.a != null) {
-      this.a.a.a(null);
+    if (paramBoolean1) {
+      this.a.c();
+    }
+  }
+  
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
+  {
+    this.a.c();
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.c();
     }
   }
 }

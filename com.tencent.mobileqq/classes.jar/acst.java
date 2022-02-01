@@ -1,31 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class acst
-  implements View.OnClickListener
+  implements acpi
 {
-  public acst(AssociatedAccountActivity paramAssociatedAccountActivity) {}
-  
-  public void onClick(View paramView)
+  private static void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte)
   {
-    boolean bool = false;
-    bcef.b(this.a.app, "CliOper", "", "", "0X8007144", "0X8007144", 0, 0, "", "", "", "");
-    bcqt localbcqt = (bcqt)this.a.app.getManager(61);
-    if ((localbcqt != null) && (localbcqt.a() >= 2)) {}
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AssociatedAccountActivity", 2, "click top right manage btn underTwo = " + bool);
-      }
-      AssociatedAccountActivity.a(this.a, bool);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      bool = true;
-    }
+    paramQQAppInterface.getGAudioHandler().i(paramArrayOfByte);
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramMsgType0x210.vProtobuf);
+    return null;
   }
 }
 

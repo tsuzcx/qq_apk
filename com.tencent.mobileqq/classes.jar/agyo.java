@@ -1,33 +1,17 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import java.io.File;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class agyo
-  implements bjoe
+  extends ahaa
 {
-  agyo(agyh paramagyh, bjnw parambjnw, AIOImageData paramAIOImageData, File paramFile) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  agyo(agvm paramagvm)
   {
-    if (paramView == null)
-    {
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-    }
-    paramView = this.jdField_a_of_type_Bjnw.a(paramInt);
-    if (paramView == null)
-    {
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-    }
-    if (TextUtils.isEmpty(paramView))
-    {
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-    }
-    if (this.jdField_a_of_type_Agyh.a(paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData, this.jdField_a_of_type_JavaIoFile)) {}
-    this.jdField_a_of_type_Bjnw.dismiss();
+    super(paramagvm, null);
+  }
+  
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new aheo(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

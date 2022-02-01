@@ -1,128 +1,85 @@
 import android.app.Activity;
-import android.app.Dialog;
-import android.view.View;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.mobileqq.Doraemon.DoraemonOpenAPI.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 
-public final class adai
-  implements bhdc
+public class adai
 {
-  public adai(adap paramadap, QQAppInterface paramQQAppInterface, String paramString, int paramInt, Activity paramActivity) {}
-  
-  public void a(Dialog paramDialog, View paramView, boolean paramBoolean)
+  public static adad a(@NonNull Activity paramActivity, int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_Adap != null)
-    {
-      if (paramBoolean)
-      {
-        this.jdField_a_of_type_Adap.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0);
-        this.jdField_a_of_type_Adap.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0);
-      }
-      this.jdField_a_of_type_Adap.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1);
-      this.jdField_a_of_type_Adap.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1);
+    return a(paramActivity, paramInt, paramString, null);
+  }
+  
+  public static adad a(@NonNull Activity paramActivity, int paramInt, String paramString, Bundle paramBundle)
+  {
+    String str = null;
+    adak localadak = null;
+    if (QLog.isColorLevel()) {
+      QLog.i("DoraemonOpenAPI", 2, "createAPIManager type=" + paramInt + ", appid=" + paramString);
     }
-    paramDialog = new StringBuilder();
-    paramView = (amwo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(92);
-    paramView.a(this.jdField_a_of_type_JavaLangString);
-    int i = paramView.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramDialog);
-    if ((paramDialog != null) && (paramDialog.length() > 0)) {}
-    for (paramDialog = paramDialog.toString();; paramDialog = null)
+    if (paramActivity == null)
     {
-      if (i <= 0)
-      {
-        QQToast.a(BaseApplication.getContext(), 2, 2131691367, 1).a();
-        if (this.jdField_a_of_type_Adap != null) {
-          this.jdField_a_of_type_Adap.a(this.jdField_a_of_type_AndroidAppActivity);
-        }
-      }
-      label356:
-      do
-      {
-        return;
-        long l2 = 0L;
-        List localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getMsgList(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-        long l1 = l2;
-        if (localList != null)
-        {
-          l1 = l2;
-          if (!localList.isEmpty())
-          {
-            if (!((MessageRecord)localList.get(localList.size() - 1)).isSendFromLocal()) {
-              break label356;
-            }
-            l1 = ((MessageRecord)localList.get(localList.size() - 1)).time + 2L;
-          }
-        }
-        if (FriendsStatusUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int))
-        {
-          FriendsStatusUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().clearHistory(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true, false);
-        }
-        for (;;)
-        {
-          amat.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "chat_history_c2c_start_del_msg");
-          if (!paramBoolean) {
-            break label442;
-          }
-          if (NetworkUtil.isNetSupport(BaseApplication.getContext())) {
-            break label405;
-          }
-          QQToast.a(BaseApplication.getContext(), 2131691364, 1).a();
-          return;
-          l1 = ((MessageRecord)localList.get(localList.size() - 1)).time;
-          break;
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().clearHistory(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-        }
-        ((amwo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(92)).i();
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-        paramView.n();
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().onCurrentMessageDeleted(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-        if (paramDialog != null) {
-          l2 = 0L;
-        }
-        try
-        {
-          long l3 = Long.parseLong(paramDialog);
-          l2 = l3;
-        }
-        catch (Exception paramDialog)
-        {
-          for (;;)
-          {
-            paramDialog.printStackTrace();
-          }
-        }
-        l1 = Math.max(l2, l1);
-        if (l1 > 0L) {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, l1);
-        }
-        paramView.a().c();
-        paramView.b();
-        if (paramBoolean) {
-          paramView.n();
-        }
-        paramDialog = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
-        if (paramDialog != null)
-        {
-          paramView = paramDialog.obtainMessage(1017);
-          paramView.obj = this.jdField_a_of_type_JavaLangString;
-          paramView.arg1 = this.jdField_a_of_type_Int;
-          paramDialog.sendMessage(paramView);
-        }
-      } while (this.jdField_a_of_type_Adap == null);
-      label405:
-      label442:
-      this.jdField_a_of_type_Adap.a(this.jdField_a_of_type_AndroidAppActivity);
-      return;
+      QLog.e("DoraemonOpenAPI", 1, "can not create APIManager activity == null");
+      return null;
     }
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("DoraemonOpenAPI", 1, "can not create APIManager appid is empty");
+    }
+    Object localObject = localadak;
+    switch (paramInt)
+    {
+    default: 
+      localObject = localadak;
+    case 2: 
+    case 0: 
+    case 1: 
+    case 3: 
+    case 4: 
+    case 5: 
+      while (localObject == null)
+      {
+        QLog.e("DoraemonOpenAPI", 1, "can not create APIManager type=" + paramInt + ", appid=" + paramString);
+        return localObject;
+        if (paramBundle == null) {}
+        for (paramBundle = null; TextUtils.isEmpty(paramBundle); paramBundle = paramBundle.getString("urlSummary", ""))
+        {
+          QLog.e("DoraemonOpenAPI", 1, "can not create APIManger url is empty");
+          return null;
+        }
+        localObject = new adcd(paramActivity, paramInt, paramString, paramBundle);
+        continue;
+        localadak = new adak(paramActivity, paramInt, paramString);
+        if (paramBundle == null) {
+          break label305;
+        }
+        localObject = paramBundle.getString("sdkVersion");
+        str = paramBundle.getString("pkgName");
+        paramActivity = paramBundle.getString("signature");
+        paramBundle = str;
+      }
+    }
+    for (;;)
+    {
+      ((adak)localadak).a((String)localObject, paramBundle, paramActivity);
+      localObject = localadak;
+      break;
+      localObject = new adba(paramActivity, paramInt, paramString);
+      break;
+      ((adad)localObject).a();
+      return localObject;
+      label305:
+      paramBundle = null;
+      localObject = null;
+      paramActivity = str;
+    }
+  }
+  
+  public static void a()
+  {
+    ThreadManager.post(new DoraemonOpenAPI.1(), 5, null, false);
   }
 }
 

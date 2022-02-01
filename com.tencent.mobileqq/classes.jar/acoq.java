@@ -1,17 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.AddAccountActivity;
-
-public class acoq
-  implements DialogInterface.OnDismissListener
-{
-  public acoq(AddAccountActivity paramAddAccountActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    AddAccountActivity.c(this.a, false);
-  }
-}
+public abstract interface acoq
+  extends acnw<Object>
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

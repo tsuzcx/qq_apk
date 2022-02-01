@@ -1,25 +1,25 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
 
-class skk
-  implements Animator.AnimatorListener
+public class skk
+  extends aqnu
 {
-  skk(ski paramski) {}
+  public skk(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
-    QLog.d("TabBarView", 4, "onAnimationEnd");
-    ski.b(this.a);
-    this.a.b.clearAnimation();
+    boolean bool = true;
+    super.onAddColorNote(paramBundle, paramBoolean);
+    if (paramBundle.getInt("color_note_curd_from_type") == 1) {}
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      tkj.a(VideoFeedsPlayActivity.a(this.a), paramBoolean);
+      if (!paramBoolean) {
+        this.a.d();
+      }
+      return;
+    }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

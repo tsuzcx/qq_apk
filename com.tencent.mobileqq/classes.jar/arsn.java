@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.SurfaceView;
+import android.view.TextureView;
+import android.view.View;
 
-class arsn
-  implements DialogInterface.OnClickListener
+public class arsn
 {
-  arsn(arsl paramarsl) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static arsr a(View paramView)
   {
-    arsl.a(this.a).dismiss();
+    if ((paramView instanceof SurfaceView)) {
+      return new arst((SurfaceView)paramView);
+    }
+    if ((paramView instanceof TextureView)) {
+      return new arsu((TextureView)paramView);
+    }
+    return null;
   }
 }
 

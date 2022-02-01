@@ -1,91 +1,96 @@
-import android.content.Context;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.Checkable;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.emosm.view.DragSortItemView;
+import com.tencent.mobileqq.emosm.view.DragSortItemViewCheckable;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class asgb
-  extends asgh
+  extends BaseAdapter
 {
-  public asgb(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  private ListAdapter jdField_a_of_type_AndroidWidgetListAdapter;
+  
+  public asgb(DragSortListView paramDragSortListView, ListAdapter paramListAdapter)
   {
-    super(paramQQAppInterface, paramContext, paramSessionInfo);
-    QLog.e("DefaultBubbleModel", 1, "error, this is a default bubble model.");
+    this.jdField_a_of_type_AndroidWidgetListAdapter = paramListAdapter;
+    this.jdField_a_of_type_AndroidWidgetListAdapter.registerDataSetObserver(new asgc(this, paramDragSortListView));
   }
   
-  public int a()
+  public boolean areAllItemsEnabled()
   {
-    return 0;
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.areAllItemsEnabled();
   }
   
-  public long a()
+  public int getCount()
   {
-    return 0L;
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.getCount();
   }
   
-  public asbb a()
+  public Object getItem(int paramInt)
   {
-    return null;
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.getItem(paramInt);
   }
   
-  public asbe a()
+  public long getItemId(int paramInt)
   {
-    return null;
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.getItemId(paramInt);
   }
   
-  public String a()
+  public int getItemViewType(int paramInt)
   {
-    return null;
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.getItemViewType(paramInt);
   }
   
-  public List<Integer> a(int paramInt)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    return null;
+    if (paramView != null)
+    {
+      localObject = (DragSortItemView)paramView;
+      localView1 = ((DragSortItemView)localObject).getChildAt(0);
+      View localView2 = this.jdField_a_of_type_AndroidWidgetListAdapter.getView(paramInt, localView1, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView);
+      if (localView2 != localView1)
+      {
+        if (localView1 != null) {
+          ((DragSortItemView)localObject).removeViewAt(0);
+        }
+        ((DragSortItemView)localObject).addView(localView2);
+      }
+      DragSortListView.a(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getHeaderViewsCount() + paramInt, (View)localObject, true);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localObject;
+    }
+    View localView1 = this.jdField_a_of_type_AndroidWidgetListAdapter.getView(paramInt, null, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView);
+    if ((localView1 instanceof Checkable)) {}
+    for (Object localObject = new DragSortItemViewCheckable(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getContext());; localObject = new DragSortItemView(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getContext()))
+    {
+      ((DragSortItemView)localObject).setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+      ((DragSortItemView)localObject).addView(localView1);
+      break;
+    }
   }
   
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, View paramView) {}
-  
-  protected void a(ChatMessage paramChatMessage) {}
-  
-  public boolean a()
+  public int getViewTypeCount()
   {
-    return false;
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.getViewTypeCount();
   }
   
-  public int b()
+  public boolean hasStableIds()
   {
-    return 0;
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.hasStableIds();
   }
   
-  public String b()
+  public boolean isEmpty()
   {
-    return null;
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.isEmpty();
   }
   
-  public List<Integer> b(int paramInt)
+  public boolean isEnabled(int paramInt)
   {
-    return null;
-  }
-  
-  public int c()
-  {
-    return 0;
-  }
-  
-  public int d()
-  {
-    return 0;
-  }
-  
-  public int e()
-  {
-    return 0;
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.isEnabled(paramInt);
   }
 }
 

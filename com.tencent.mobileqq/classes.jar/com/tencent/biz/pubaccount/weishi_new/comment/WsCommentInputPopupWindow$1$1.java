@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.weishi_new.comment;
 
-import umb;
-import umc;
+import vab;
+import vac;
 
 public class WsCommentInputPopupWindow$1$1
   implements Runnable
 {
-  public WsCommentInputPopupWindow$1$1(umc paramumc) {}
+  public WsCommentInputPopupWindow$1$1(vac paramvac) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class WsCommentInputPopupWindow$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsCommentInputPopupWindow.1.1
  * JD-Core Version:    0.7.0.1
  */

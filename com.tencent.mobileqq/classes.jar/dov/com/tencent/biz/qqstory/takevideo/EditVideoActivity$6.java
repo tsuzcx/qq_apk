@@ -1,7 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import babd;
-import bnub;
+import bbhm;
+import bpjt;
 
 class EditVideoActivity$6
   implements Runnable
@@ -10,8 +10,8 @@ class EditVideoActivity$6
   
   public void run()
   {
-    babd.b();
-    bnub.a().a(this.this$0.getApplicationContext(), this.this$0, true);
+    bbhm.b();
+    bpjt.a().a(this.this$0.getApplicationContext(), this.this$0, true);
   }
 }
 

@@ -1,14 +1,17 @@
-import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
+import com.tencent.biz.qqstory.database.HotSortVideoEntry;
+import java.util.ArrayList;
 
 public class wql
-  extends ysw
+  extends vzj
 {
-  public wql(StoryPlayerCommentListView paramStoryPlayerCommentListView) {}
+  public ArrayList<HotSortVideoEntry> a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
   
-  public boolean a(boolean paramBoolean)
+  public String toString()
   {
-    StoryPlayerCommentListView.a(this.a).a(StoryPlayerCommentListView.a(this.a).a());
-    return true;
+    return " GetVideoByHotSortEvent " + super.toString();
   }
 }
 

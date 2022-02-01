@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ark;
 
-import ahiu;
+import aido;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -12,8 +12,8 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import bbkv;
-import bbyp;
+import bcrn;
+import bdfk;
 import com.tencent.ark.ArkEnvironmentManager;
 import com.tencent.ark.ark;
 import com.tencent.ark.open.ArkAppMgr;
@@ -30,7 +30,7 @@ import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import gb;
-import nmy;
+import nty;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -334,7 +334,7 @@ public class ArkAppCenterUtil
       try
       {
         localJSONObject2 = new JSONObject();
-        if (!bbyp.b()) {
+        if (!bdfk.b()) {
           continue;
         }
         localJSONObject2.put("mode", "concise");
@@ -365,7 +365,7 @@ public class ArkAppCenterUtil
       if (localObject != null)
       {
         localObject = ((ChatFragment)localObject).a();
-        if ((localObject != null) && ((localObject instanceof ahiu))) {
+        if ((localObject != null) && ((localObject instanceof aido))) {
           return true;
         }
       }
@@ -434,7 +434,7 @@ public class ArkAppCenterUtil
     localIntent.putExtra("bubbleId", paramMessageForArkApp.vipBubbleID);
     localIntent.putExtra("bubbleDiyId", paramMessageForArkApp.vipBubbleDiyTextId);
     localIntent.putExtra("fontId", paramMessageForArkApp.getExtInfoFromExtStr("vip_font_id"));
-    localIntent.putExtra("troop_at_info", paramMessageForArkApp.getExtInfoFromExtStr(bbkv.i));
+    localIntent.putExtra("troop_at_info", paramMessageForArkApp.getExtInfoFromExtStr(bcrn.i));
     localIntent.putExtra("senderUin", paramMessageForArkApp.senderuin);
     localIntent.putExtra("sessionType", paramInt);
     localIntent.putExtra("isMultiMsg", paramMessageForArkApp.isMultiMsg);
@@ -457,7 +457,7 @@ public class ArkAppCenterUtil
         if (1 == paramMessageForArkApp.istroop)
         {
           i = paramInt;
-          if (nmy.a(paramMessageForArkApp)) {
+          if (nty.a(paramMessageForArkApp)) {
             i = 0;
           }
         }

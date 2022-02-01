@@ -2,14 +2,19 @@ package com.tencent.qqlive.module.videoreport;
 
 import android.app.Activity;
 import android.app.Application;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
 import com.tencent.qqlive.module.videoreport.constants.ReportPolicy;
+import com.tencent.qqlive.module.videoreport.data.IElementDynamicParams;
+import com.tencent.qqlive.module.videoreport.dtreport.api.DTConfig;
+import com.tencent.qqlive.module.videoreport.dtreport.api.PageSearchMode;
 import com.tencent.qqlive.module.videoreport.dtreport.audio.data.AudioDataManager;
 import com.tencent.qqlive.module.videoreport.dtreport.audio.data.AudioEntity;
 import com.tencent.qqlive.module.videoreport.dtreport.audio.data.IAudioDataManager;
 import com.tencent.qqlive.module.videoreport.dtreport.stdevent.IEventParamsBuilder;
 import com.tencent.qqlive.module.videoreport.dtreport.stdevent.StdEventCode;
+import com.tencent.qqlive.module.videoreport.dtreport.video.data.VideoEntity;
 import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
 import com.tencent.qqlive.module.videoreport.page.IScrollReader;
 import com.tencent.qqlive.module.videoreport.page.PageInfo;
@@ -39,6 +44,11 @@ public class VideoReport
     AudioDataManager.getInstance().bindAudioInfo(paramObject, paramAudioEntity);
   }
   
+  public static void bindVideoPlayerInfo(@NonNull Object paramObject, VideoEntity paramVideoEntity)
+  {
+    VideoReportInner.getInstance().bindVideoPlayerInfo(paramObject, paramVideoEntity);
+  }
+  
   public static void clearElementExposure(View paramView, boolean paramBoolean)
   {
     VideoReportInner.getInstance().clearElementExposure(paramView, paramBoolean);
@@ -57,6 +67,11 @@ public class VideoReport
   public static PageInfo findOwnerPage(View paramView)
   {
     return VideoReportInner.getInstance().findOwnerPage(paramView);
+  }
+  
+  public static Map<String, ?> getElementParams(Object paramObject)
+  {
+    return VideoReportInner.getInstance().getElementParams(paramObject);
   }
   
   public static ReportPolicy getElementReportPolicy(Object paramObject)
@@ -198,6 +213,11 @@ public class VideoReport
     VideoReportInner.getInstance().setDetectionMode(paramInt);
   }
   
+  public static void setElementDynamicParams(Object paramObject, IElementDynamicParams paramIElementDynamicParams)
+  {
+    VideoReportInner.getInstance().setElementDynamicParams(paramObject, paramIElementDynamicParams);
+  }
+  
   public static void setElementExposureDetectionEnabled(View paramView, boolean paramBoolean)
   {
     VideoReportInner.getInstance().setElementExposureDetectionEnabled(paramView, paramBoolean);
@@ -238,6 +258,11 @@ public class VideoReport
     VideoReportInner.getInstance().setElementReuseIdentifier(paramObject, paramString);
   }
   
+  public static void setElementVirtualParentParams(Object paramObject, int paramInt, String paramString, Map<String, Object> paramMap)
+  {
+    VideoReportInner.getInstance().setElementVirtualParentParams(paramObject, paramInt, paramString, paramMap);
+  }
+  
   public static void setEventAdditionalReport(IAdditionalReportListener paramIAdditionalReportListener)
   {
     VideoReportInner.getInstance().setEventAdditionalReport(paramIAdditionalReportListener);
@@ -258,6 +283,11 @@ public class VideoReport
     VideoReportInner.getInstance().setPageContentId(paramObject, paramString);
   }
   
+  public static void setPageContentId(Object paramObject, String paramString, boolean paramBoolean)
+  {
+    VideoReportInner.getInstance().setPageContentId(paramObject, paramString, paramBoolean);
+  }
+  
   public static void setPageId(Object paramObject, String paramString)
   {
     VideoReportInner.getInstance().setPageId(paramObject, paramString);
@@ -273,9 +303,19 @@ public class VideoReport
     VideoReportInner.getInstance().setPageParams(paramObject1, paramString, paramObject2);
   }
   
+  public static void setPageSearchMode(Object paramObject, @PageSearchMode int paramInt)
+  {
+    VideoReportInner.getInstance().setPageSearchMode(paramObject, paramInt);
+  }
+  
   public static void setPublicParam(String paramString, Object paramObject)
   {
     VideoReportInner.getInstance().setPublicParam(paramString, paramObject);
+  }
+  
+  public static void setVideoReportConfig(@NonNull DTConfig paramDTConfig)
+  {
+    VideoReportInner.getInstance().setVideoReportConfig(paramDTConfig);
   }
   
   public static void startNewSession(SessionChangeReason paramSessionChangeReason)
@@ -316,6 +356,11 @@ public class VideoReport
   public static void triggerExposureInCurrentPage(List<Map<String, Object>> paramList)
   {
     VideoReportInner.getInstance().triggerExposureInCurrentPage(paramList);
+  }
+  
+  public static void unbindVideoPlayerInfo(@NonNull Object paramObject)
+  {
+    VideoReportInner.getInstance().unbindVideoPlayerInfo(paramObject);
   }
   
   @Nullable

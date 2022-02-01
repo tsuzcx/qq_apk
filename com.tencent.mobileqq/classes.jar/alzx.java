@@ -1,74 +1,64 @@
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedListRsp;
+import NS_COMM.COMM.StCommonExt;
 import android.text.TextUtils;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.mobileqq.activity.shopping.ShoppingFragment;
+import com.tencent.mobileqq.activity.shopping.ShoppingHeadView;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.List;
 
 public class alzx
+  implements VSDispatchObserver.onVSRspCallBack<CertifiedAccountRead.StGetFeedListRsp>
 {
-  public static String a;
-  public double a;
-  public int a;
-  public long a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
+  public alzx(ShoppingFragment paramShoppingFragment, zsx paramzsx) {}
   
-  static
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFeedListRsp paramStGetFeedListRsp)
   {
-    jdField_a_of_type_JavaLangString = "cmgame_process.CmGameADInfo";
-  }
-  
-  public alzx()
-  {
-    this.jdField_a_of_type_Double = 0.0D;
-  }
-  
-  public static alzx a(String paramString)
-  {
-    alzx localalzx = new alzx();
-    try
-    {
-      JSONObject localJSONObject2 = new JSONObject(paramString);
-      localalzx.jdField_b_of_type_Int = localJSONObject2.optInt("product_type");
-      JSONObject localJSONObject3 = localJSONObject2.optJSONObject("display_info");
-      JSONObject localJSONObject1 = localJSONObject3.optJSONObject("video_info");
-      localalzx.jdField_b_of_type_JavaLangString = localJSONObject1.optString("tencent_video_id");
-      localalzx.jdField_a_of_type_Int = localJSONObject3.optInt("creative_size");
-      JSONObject localJSONObject4 = localJSONObject3.optJSONObject("basic_info");
-      localalzx.h = localJSONObject4.optString("img");
-      localalzx.e = localJSONObject4.optString("txt");
-      localJSONObject3 = localJSONObject3.optJSONObject("advertiser_info");
-      localalzx.jdField_c_of_type_Int = localJSONObject3.optInt("advertiser_id");
-      localalzx.f = localJSONObject3.optString("corporate_logo");
-      localalzx.d = localJSONObject3.optString("corporate_image_name");
-      localJSONObject3 = localJSONObject2.optJSONObject("report_info");
-      localalzx.g = localJSONObject3.optString("click_url");
-      localalzx.jdField_c_of_type_JavaLangString = localJSONObject3.optString("exposure_url");
-      localJSONObject2 = localJSONObject2.optJSONObject("app_info");
-      localalzx.jdField_a_of_type_Long = localJSONObject2.optLong("download_num");
-      localalzx.j = localJSONObject1.optString("video_url");
-      if ((!TextUtils.isEmpty(localalzx.j)) && (localalzx.j.startsWith("https://"))) {
-        localalzx.j = localalzx.j.replaceFirst("https://", "http://");
-      }
-      if (localJSONObject2.has("app_score_num")) {
-        localalzx.jdField_a_of_type_Double = localJSONObject2.optDouble("app_score_num");
-      }
-      localalzx.i = paramString;
-      return localalzx;
+    boolean bool1 = true;
+    if (QLog.isColorLevel()) {
+      QLog.d(ShoppingFragment.a, 2, "refreshAliveList:" + paramBoolean + " " + paramLong + " " + paramString);
     }
-    catch (Throwable paramString)
+    boolean bool2 = VSNetworkHelper.isProtocolCache(paramString);
+    if ((!paramBoolean) || (paramLong != 0L) || (paramStGetFeedListRsp == null))
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, paramString, new Object[0]);
+      if (!TextUtils.isEmpty(paramString)) {
+        QQToast.a(ShoppingFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingFragment), 1, paramString, 0).a();
+      }
+      if (!bool2) {
+        VSBaseRequest.reMoveCache(paramVSBaseRequest);
+      }
+      if (this.jdField_a_of_type_Zsx.getItemCount() == 0) {
+        ShoppingFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingFragment).a(true);
+      }
+      this.jdField_a_of_type_Zsx.a(paramBoolean);
+      return;
     }
-    return localalzx;
+    ShoppingFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingFragment).a(false);
+    this.jdField_a_of_type_Zsx.a().b(paramStGetFeedListRsp.livePageInfo.get());
+    paramVSBaseRequest = paramStGetFeedListRsp.hotLive.get();
+    if ((paramVSBaseRequest != null) && (paramVSBaseRequest.size() > 0))
+    {
+      paramString = this.jdField_a_of_type_Zsx;
+      COMM.StCommonExt localStCommonExt = paramStGetFeedListRsp.extInfo;
+      if (paramStGetFeedListRsp.isFinish.get() == 1) {
+        paramString.a(paramVSBaseRequest, localStCommonExt, bool1);
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Zsx.a(paramBoolean);
+      return;
+      bool1 = false;
+      break;
+      this.jdField_a_of_type_Zsx.e();
+      ShoppingFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingFragment).a(true);
+    }
   }
 }
 

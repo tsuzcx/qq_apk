@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import amqx;
-import amra;
-import amrb;
+import antl;
+import anto;
+import antp;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,10 +19,10 @@ class DiscussionInfoCardActivity$5
     if (this.a) {}
     try
     {
-      amra localamra = new amra();
-      localamra.a = String.valueOf(DiscussionInfoCardActivity.a(this.this$0));
-      localamra.b = localArrayList.size();
-      DiscussionInfoCardActivity.a(this.this$0).a(localamra);
+      anto localanto = new anto();
+      localanto.a = String.valueOf(DiscussionInfoCardActivity.a(this.this$0));
+      localanto.b = localArrayList.size();
+      DiscussionInfoCardActivity.a(this.this$0).a(localanto);
       return;
     }
     catch (Exception localException)
@@ -34,7 +34,7 @@ class DiscussionInfoCardActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DiscussionInfoCardActivity.5
  * JD-Core Version:    0.7.0.1
  */

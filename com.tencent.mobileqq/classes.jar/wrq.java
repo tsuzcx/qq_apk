@@ -1,26 +1,20 @@
-import android.view.View;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.ReportData;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class wrq
+  implements wfk<wrr, wrs>
 {
-  protected wrq(wry paramwry) {}
-  
-  public static wrq a(wry paramwry)
+  public void a(String paramString)
   {
-    if (paramwry.a().mReportData.from == 86) {
-      return new wrt(paramwry);
-    }
-    return new wrq(paramwry);
+    paramString = new wrr(this, paramString);
+    wfi.a().a(paramString, this);
   }
   
-  public void a(wrw paramwrw) {}
-  
-  public void a(wrw paramwrw, int paramInt1, int paramInt2, wsk paramwsk) {}
-  
-  public void a(wrw paramwrw, View paramView) {}
-  
-  public void a(wrw paramwrw, boolean paramBoolean) {}
+  public void a(@NonNull wrr paramwrr, @Nullable wrs paramwrs, @NonNull ErrorMessage paramErrorMessage)
+  {
+    new wrt(paramErrorMessage, paramwrr.b);
+  }
 }
 
 

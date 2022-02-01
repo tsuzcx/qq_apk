@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.search.fragment.searchentry.nativemethod;
 
-import anaq;
 import android.content.Context;
+import aodf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.modules.Promise;
@@ -21,7 +21,7 @@ class ClearHistoryMethod
   
   public void onCallBack(HippyMap paramHippyMap, Promise paramPromise)
   {
-    anaq.a().a();
+    aodf.a().a();
     paramPromise.resolve("");
   }
 }

@@ -19,7 +19,7 @@ public class KanDianVideoUploadBrocast
     if (paramContext == null) {
       return;
     }
-    QQToast.a(paramContext, paramInt, paramCharSequence, 0).b(paramContext.getResources().getDimensionPixelSize(2131299076));
+    QQToast.a(paramContext, paramInt, paramCharSequence, 0).b(paramContext.getResources().getDimensionPixelSize(2131299080));
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -47,12 +47,12 @@ public class KanDianVideoUploadBrocast
     if ((!this.a.isEmpty()) && (!this.a.contains(str))) {
       return;
     }
-    a(paramContext, 2, paramContext.getString(2131717566));
+    a(paramContext, 2, paramContext.getString(2131717932));
     return;
     str = paramIntent.getStringExtra("mfaileMessage");
     paramIntent = str;
     if (TextUtils.isEmpty(str)) {
-      paramIntent = paramContext.getString(2131717343);
+      paramIntent = paramContext.getString(2131717709);
     }
     a(paramContext, 1, paramIntent);
   }

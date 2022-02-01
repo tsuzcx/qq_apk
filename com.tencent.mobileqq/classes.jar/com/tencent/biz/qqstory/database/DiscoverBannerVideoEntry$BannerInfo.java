@@ -3,12 +3,12 @@ package com.tencent.biz.qqstory.database;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import vtm;
+import wih;
 
 public class DiscoverBannerVideoEntry$BannerInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<BannerInfo> CREATOR = new vtm();
+  public static final Parcelable.Creator<BannerInfo> CREATOR = new wih();
   public String a;
   public String b;
   
@@ -33,7 +33,7 @@ public class DiscoverBannerVideoEntry$BannerInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.DiscoverBannerVideoEntry.BannerInfo
  * JD-Core Version:    0.7.0.1
  */

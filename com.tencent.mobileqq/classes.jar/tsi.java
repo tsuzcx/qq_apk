@@ -1,31 +1,22 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
+import android.graphics.Canvas;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
-class tsi
-  implements DialogInterface.OnClickListener
+public class tsi
+  implements Function1<Canvas, Unit>
 {
-  tsi(tsf paramtsf, boolean paramBoolean) {}
+  public tsi(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Unit a(Canvas paramCanvas)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      if (!tsf.a(this.jdField_a_of_type_Tsf)) {}
-    }
-    while (!(tsf.a(this.jdField_a_of_type_Tsf) instanceof Activity))
-    {
-      return;
-      this.jdField_a_of_type_Tsf.b();
-      return;
-    }
-    twr.b(tsf.a(this.jdField_a_of_type_Tsf));
-    twh.a(tsf.a(this.jdField_a_of_type_Tsf), tsf.a(this.jdField_a_of_type_Tsf).p, tsf.a(this.jdField_a_of_type_Tsf).q, "");
+    ColorBandVideoEntranceButton.b(this.a, paramCanvas);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tsi
  * JD-Core Version:    0.7.0.1
  */

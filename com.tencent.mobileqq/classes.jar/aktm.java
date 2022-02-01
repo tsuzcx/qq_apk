@@ -1,27 +1,26 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
 public class aktm
-  implements Animation.AnimationListener
+  implements PopupWindow.OnDismissListener
 {
-  public aktm(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public aktm(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDismiss()
   {
-    NewFlowCameraActivity.a(this.a).setVisibility(4);
-    NewFlowCameraActivity.a(this.a).setEnabled(false);
-    this.a.e.setVisibility(4);
-    akrx.a("", "0X8007C05", this.a.c + "", "", "", "");
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    NewFlowCameraActivity.a(this.a).setEnabled(false);
+    RedPacketManager.getInstance().onActiveAccount();
+    if ((TroopUnAccalimedRedPacketList.a(this.a) != null) && (aktp.a(TroopUnAccalimedRedPacketList.a(this.a)) != null))
+    {
+      aktp.a(TroopUnAccalimedRedPacketList.a(this.a)).clear();
+      TroopUnAccalimedRedPacketList.a(this.a).notifyDataSetChanged();
+    }
+    if ((!TroopUnAccalimedRedPacketList.a(this.a)) && (TroopUnAccalimedRedPacketList.a(this.a) != null)) {
+      albw.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a).getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.keyback", "", "");
+    }
   }
 }
 

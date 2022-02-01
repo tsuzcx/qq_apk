@@ -1,53 +1,21 @@
-import android.os.Handler;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.gamecenter.util.QQGameHelper.2.2;
-import com.tencent.mobileqq.gamecenter.web.view.QQGamePubWebView;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebSettings;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class atzf
-  extends bgxu
+class atzf
+  implements View.OnClickListener
 {
-  atzf(int paramInt)
-  {
-    super(paramInt);
-  }
+  atzf(atzb paramatzb) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    for (;;)
-    {
-      try
-      {
-        QLog.i("QQGameHelper", 1, "SwiftBrowserIdleTask--> do preloadsw ");
-        if (!atzd.a()) {
-          return 0;
-        }
-        atzd.a(NetConnInfoCenter.getServerTimeMillis());
-        QQGamePubWebView localQQGamePubWebView = new QQGamePubWebView(BaseApplicationImpl.sApplication);
-        WebSettings localWebSettings = localQQGamePubWebView.getSettings();
-        String str = localWebSettings.getUserAgentString();
-        if (localQQGamePubWebView.getX5WebViewExtension() != null)
-        {
-          bool = true;
-          localWebSettings.setUserAgentString(bgyb.a(str, "", bool));
-          localWebSettings.setJavaScriptEnabled(true);
-          localQQGamePubWebView.loadUrl(atzb.d());
-          QLog.i("QQGameHelper", 1, "SwiftBrowserIdleTask--> loadUrl " + atzb.d());
-          localQQGamePubWebView.setWebChromeClient(new atzg(this));
-          ThreadManagerV2.getUIHandlerV2().postDelayed(new QQGameHelper.2.2(this, localQQGamePubWebView), 15000L);
-          return 0;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("QQGameHelper", 1, QLog.getStackTraceString(localThrowable));
-        return 0;
-      }
-      boolean bool = false;
+    int i = aufd.b(this.a.a.e());
+    bdla.b(null, "dc00898", "", "", "0X800A688", "0X800A688", 0, 0, i + "", "", "", "");
+    atvp localatvp = this.a.a.a();
+    if (localatvp != null) {
+      localatvp.a();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

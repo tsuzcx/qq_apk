@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
-import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class aesg
+  implements bhpy
 {
-  public int a;
-  public Entity a;
-  public String a;
+  public aesg(QQSettingMe paramQQSettingMe) {}
   
-  public aesg(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity, int paramInt, Entity paramEntity)
+  public void a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity = paramEntity;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (this.a.a != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSettingRedesign", 2, "enterWordListener");
+      }
+      this.a.c(this.a.a.getAccount());
+    }
   }
 }
 

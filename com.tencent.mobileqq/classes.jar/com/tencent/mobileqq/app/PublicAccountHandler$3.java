@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import ofx;
+import onq;
 
 class PublicAccountHandler$3
   implements Runnable
@@ -9,9 +9,9 @@ class PublicAccountHandler$3
   
   public void run()
   {
-    ofx localofx = (ofx)this.this$0.app.getManager(88);
-    if (localofx != null) {
-      localofx.a(null, "FollowList");
+    onq localonq = (onq)this.this$0.app.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER);
+    if (localonq != null) {
+      localonq.a(null, "FollowList");
     }
   }
 }

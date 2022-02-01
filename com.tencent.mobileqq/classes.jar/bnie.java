@@ -1,27 +1,12 @@
-import android.support.annotation.NonNull;
-import dov.com.qq.im.capture.text.EditTextPreView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class bnie
-  implements bnry
+  implements DialogInterface.OnClickListener
 {
-  bnie(bnhv parambnhv) {}
+  bnie(bnhy parambnhy) {}
   
-  public void a(@NonNull bnsf parambnsf)
-  {
-    switch (parambnsf.a)
-    {
-    }
-    int i;
-    do
-    {
-      return;
-      i = parambnsf.b;
-      this.a.jdField_a_of_type_Bnhf.a = i;
-      this.a.c = i;
-    } while (!(this.a.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem instanceof bmwl));
-    ((bmwl)this.a.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem).a(i);
-    this.a.jdField_a_of_type_DovComQqImCaptureTextEditTextPreView.invalidate();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

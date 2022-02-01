@@ -1,10 +1,19 @@
-public abstract interface bjpp
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.model.CreateVirtualResult;
+
+public final class bjpp
+  implements Parcelable.Creator<CreateVirtualResult>
 {
-  public abstract int a();
+  public CreateVirtualResult a(Parcel paramParcel)
+  {
+    return new CreateVirtualResult(paramParcel);
+  }
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract boolean a(int paramInt);
+  public CreateVirtualResult[] a(int paramInt)
+  {
+    return new CreateVirtualResult[paramInt];
+  }
 }
 
 

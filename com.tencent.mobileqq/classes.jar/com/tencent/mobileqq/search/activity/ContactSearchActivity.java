@@ -1,14 +1,15 @@
 package com.tencent.mobileqq.search.activity;
 
 import Override;
-import amtj;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import bcef;
+import anvx;
+import bcal;
+import bdla;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
 import com.tencent.mobileqq.troop.utils.TroopUtils;
@@ -17,6 +18,7 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class ContactSearchActivity
   extends BaseSearchActivity
 {
+  private bcal a;
   private boolean c;
   private int d;
   private int e;
@@ -42,19 +44,35 @@ public class ContactSearchActivity
     paramContext.startActivity(localIntent);
   }
   
+  private void b()
+  {
+    Object localObject = getIntent();
+    int i = ((Intent)localObject).getIntExtra("key_from_type", 0);
+    int j = ((Intent)localObject).getIntExtra("watch_together_uinType", -1);
+    localObject = ((Intent)localObject).getStringExtra("watch_together_uin");
+    if (i != 0)
+    {
+      this.jdField_a_of_type_Bcal = new bcal(this, i, j, (String)localObject);
+      bdla.b(null, "dc00898", "", "", "0X800B625", "0X800B625", 0, 0, "", "", "", "");
+    }
+  }
+  
   protected BaseSearchFragment a()
   {
-    return ContactSearchFragment.a(this.e, this.d, this.c, this.f);
+    return ContactSearchFragment.a(this.e, this.d, null, null, this.jdField_a_of_type_Bcal, this.c, this.f, -1L);
   }
   
   protected String a()
   {
+    if ((getIntent() != null) && (getIntent().getIntExtra("key_from_type", 0) != 0)) {
+      return anvx.a(2131699077);
+    }
     switch (this.d)
     {
     default: 
-      return amtj.a(2131701696);
+      return anvx.a(2131702047);
     }
-    return amtj.a(2131701679);
+    return anvx.a(2131702030);
   }
   
   @Override
@@ -68,24 +86,32 @@ public class ContactSearchActivity
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if ((paramInt1 == 1300) && (-1 == paramInt2) && (paramIntent != null))
-    {
-      paramIntent = paramIntent.getStringExtra("roomId");
-      if (paramIntent != null)
+    if (paramInt1 == 1300) {
+      if ((-1 == paramInt2) && (paramIntent != null))
       {
-        TroopUtils.enterTroopAio(this, paramIntent, true);
-        bcef.b(this.app, "CliOper", "", "", "0X8006360", "0X8006360", 0, 0, "", "", "", "");
+        paramIntent = paramIntent.getStringExtra("roomId");
+        if (paramIntent != null)
+        {
+          TroopUtils.enterTroopAio(this, paramIntent, true);
+          bdla.b(this.app, "CliOper", "", "", "0X8006360", "0X8006360", 0, 0, "", "", "", "");
+        }
       }
     }
+    while ((paramInt1 != 2020) || (-1 != paramInt2) || (paramIntent == null)) {
+      return;
+    }
+    setResult(-1, paramIntent);
+    finish();
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
-    this.a = true;
+    this.jdField_a_of_type_Boolean = true;
     this.e = getIntent().getIntExtra("fromType", -1);
     this.d = getIntent().getIntExtra("contactSearchSource", 197437);
     this.c = getIntent().getBooleanExtra("isApproximate", false);
     this.f = getIntent().getIntExtra("ContactCombineType", 0);
+    b();
     super.doOnCreate(paramBundle);
     return true;
   }

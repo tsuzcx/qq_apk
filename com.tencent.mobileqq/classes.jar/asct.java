@@ -1,16 +1,230 @@
-class asct
-  implements ascz
+import android.content.Context;
+import android.text.TextUtils;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.CameraEmotionData;
+import com.tencent.mobileqq.emosm.CameraRoamingStrategy.3;
+import com.tencent.mobileqq.emosm.CameraRoamingStrategy.5;
+import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoSingleSend;
+import com.tencent.mobileqq.emoticonview.CameraEmoticonInfo;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.emoticonview.ICustomEmotionInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.GridView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class asct
+  extends ascs
 {
-  asct(asbj paramasbj) {}
+  anrh jdField_a_of_type_Anrh = new ascw(this);
+  private asen jdField_a_of_type_Asen;
+  private List<CameraEmoticonInfo> b = new ArrayList();
+  private volatile boolean c;
   
-  public void a(Object[] paramArrayOfObject)
+  public asct(QQAppInterface paramQQAppInterface, asdl paramasdl)
   {
-    asbj.access$3000(this.a, paramArrayOfObject);
+    super(paramQQAppInterface, paramasdl);
+  }
+  
+  private List<? extends EmoticonInfo> a()
+  {
+    return this.b;
+  }
+  
+  private void i()
+  {
+    this.jdField_a_of_type_Asdl.c.setVisibility(8);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_Asdl.b.getLayoutParams();
+    localLayoutParams.addRule(9, -1);
+    localLayoutParams.addRule(15, -1);
+    localLayoutParams.leftMargin = AIOUtils.dp2px(16.0F, this.jdField_a_of_type_Asdl.b.getContext().getResources());
+  }
+  
+  private void j()
+  {
+    a(new ascu(this));
+  }
+  
+  public int a()
+  {
+    return 2131691843;
+  }
+  
+  public asda<CameraEmotionData> a()
+  {
+    if (this.jdField_a_of_type_Asen == null) {
+      this.jdField_a_of_type_Asen = ((asen)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CAMERA_EMOTION_DB_MANAGER));
+    }
+    return this.jdField_a_of_type_Asen;
+  }
+  
+  public String a(EmoticonInfo paramEmoticonInfo)
+  {
+    if ((paramEmoticonInfo instanceof CameraEmoticonInfo))
+    {
+      String str = ((CameraEmoticonInfo)paramEmoticonInfo).contextKey;
+      paramEmoticonInfo = str;
+      if (TextUtils.isEmpty(str)) {
+        paramEmoticonInfo = "";
+      }
+      return String.format(BaseApplicationImpl.getApplication().getString(2131691842), new Object[] { paramEmoticonInfo });
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anrh);
+    this.jdField_a_of_type_Asdl.b(2131691841);
+    this.c = false;
+    if (this.jdField_a_of_type_Asen == null) {
+      this.jdField_a_of_type_Asen = ((asen)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CAMERA_EMOTION_DB_MANAGER));
+    }
+    i();
+    j();
+  }
+  
+  public void a(asdb paramasdb)
+  {
+    a().a(new ascv(this, paramasdb));
+  }
+  
+  public void a(GridView paramGridView, int paramInt, ICustomEmotionInfo paramICustomEmotionInfo)
+  {
+    Object localObject = ((asen)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CAMERA_EMOTION_DB_MANAGER)).a();
+    if (localObject == null) {}
+    for (;;)
+    {
+      return;
+      int i = paramICustomEmotionInfo.getEmoId();
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        CameraEmotionData localCameraEmotionData = (CameraEmotionData)((Iterator)localObject).next();
+        if (localCameraEmotionData.emoId == i)
+        {
+          QLog.d("CameraRoamingStrategy", 1, new Object[] { "resend, emoId:", Integer.valueOf(localCameraEmotionData.emoId) });
+          localCameraEmotionData.RomaingType = "needUpload";
+          ((CameraEmoticonInfo)paramICustomEmotionInfo).roamingType = "needUpload";
+          if (this.jdField_a_of_type_Asdl != null) {
+            this.jdField_a_of_type_Asdl.a(paramGridView, paramInt);
+          }
+          com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoAllSend.b = false;
+          ThreadManager.excute(new CameraEmoSingleSend(localCameraEmotionData, true), 64, null, false);
+        }
+      }
+    }
+  }
+  
+  public void a(List<EmoticonInfo> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      this.b.clear();
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      EmoticonInfo localEmoticonInfo = (EmoticonInfo)paramList.next();
+      if ((localEmoticonInfo instanceof CameraEmoticonInfo))
+      {
+        ((CameraEmoticonInfo)localEmoticonInfo).isChecked = false;
+        Iterator localIterator = this.b.iterator();
+        while (localIterator.hasNext())
+        {
+          CameraEmoticonInfo localCameraEmoticonInfo = (CameraEmoticonInfo)localIterator.next();
+          if (((CameraEmoticonInfo)localEmoticonInfo).emoId == localCameraEmoticonInfo.emoId) {
+            ((CameraEmoticonInfo)localEmoticonInfo).isChecked = localCameraEmoticonInfo.isChecked;
+          }
+        }
+        localArrayList.add((CameraEmoticonInfo)localEmoticonInfo);
+      }
+    }
+    this.b = localArrayList;
+  }
+  
+  public void d()
+  {
+    super.d();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anrh);
+    this.c = false;
+  }
+  
+  public void e()
+  {
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "ep_mall", "0X800A6AC", 0, 0, "", "", "", "");
+  }
+  
+  public void f()
+  {
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "ep_mall", "0X800A6AD", 0, 0, "", "", "", "");
+  }
+  
+  public void g()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraRoamingStrategy", 2, "doSyncEmotion");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      return;
+    }
+    ThreadManager.excute(new CameraRoamingStrategy.5(this), 128, null, false);
+  }
+  
+  public void h()
+  {
+    if (this.c)
+    {
+      QLog.e("CameraRoamingStrategy", 1, "doDelEmotion,  camera data deleting");
+      return;
+    }
+    this.c = true;
+    ArrayList localArrayList = new ArrayList();
+    List localList = a().a();
+    Object localObject1 = a();
+    if (localList != null)
+    {
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        Object localObject2 = (EmoticonInfo)((Iterator)localObject1).next();
+        if ((localObject2 instanceof CameraEmoticonInfo))
+        {
+          localObject2 = (CameraEmoticonInfo)localObject2;
+          Iterator localIterator = localList.iterator();
+          while (localIterator.hasNext())
+          {
+            CameraEmotionData localCameraEmotionData = (CameraEmotionData)localIterator.next();
+            if ((localCameraEmotionData != null) && (((CameraEmoticonInfo)localObject2).emoId == localCameraEmotionData.emoId) && (((CameraEmoticonInfo)localObject2).isChecked))
+            {
+              ((CameraEmoticonInfo)localObject2).isChecked = false;
+              localArrayList.add(localCameraEmotionData);
+            }
+          }
+        }
+      }
+    }
+    if (localArrayList.size() > 0)
+    {
+      ThreadManager.post(new CameraRoamingStrategy.3(this, localArrayList), 5, null, false);
+      return;
+    }
+    this.c = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asct
  * JD-Core Version:    0.7.0.1
  */

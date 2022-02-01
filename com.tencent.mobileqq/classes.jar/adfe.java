@@ -1,24 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adfe
-  implements View.OnClickListener
+class adfe
+  implements DialogInterface.OnClickListener
 {
-  public adfe(EditInfoActivity paramEditInfoActivity) {}
+  adfe(adfd paramadfd) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847816);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(amtj.a(2131702760));
-    this.a.jdField_a_of_type_Boolean = false;
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramDialogInterface.dismiss();
   }
 }
 

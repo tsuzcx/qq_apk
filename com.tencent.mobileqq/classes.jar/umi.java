@@ -1,6 +1,8 @@
 public abstract interface umi
 {
-  public abstract void a();
+  public abstract oil a();
+  
+  public abstract ued a(String paramString);
 }
 
 

@@ -18,7 +18,7 @@ import android.widget.TextView;
 import com.tencent.biz.common.util.NetworkUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.mini.entry.MiniAppExposureManager;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
@@ -44,12 +44,10 @@ public class MiniAppSearchFragment
   private ImageView mClearHistoryButton;
   private ImageButton mClearInputTextButton;
   private EditText mEditTextView;
-  private ImageView mEmptyBackground;
   private ViewGroup mHistoryAndRecommendContainer;
   private ViewGroup mHistoryListViewGroup;
   private ViewGroup mHistorySearchContainer;
   private SearchRecommendAdapter mHotSearchAdapter;
-  private TextView mHotSearchTitle;
   private ViewGroup mNoSearchResultViewGroup;
   private RecyclerView mRecommendRecyclerView;
   private int mRefer;
@@ -57,6 +55,7 @@ public class MiniAppSearchFragment
   private ListView mResultListView;
   private ViewGroup mSearchResultContainer;
   private TextView mSearchResultExceptionText;
+  private TextView mSearchResultTitle;
   private String mTianShuKeyword;
   
   private void initData()
@@ -72,7 +71,7 @@ public class MiniAppSearchFragment
       this.mEditTextView.setText((CharSequence)localObject);
       this.mEditTextView.setSelection(((String)localObject).length());
     }
-    localObject = (MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(360);
+    localObject = (MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_SEARCH_MANAGER);
     if (((MiniAppSearchDataManager)localObject).getHotSearchData().size() > 0) {
       this.mHotSearchAdapter.setData(((MiniAppSearchDataManager)localObject).getHotSearchData());
     }
@@ -80,19 +79,19 @@ public class MiniAppSearchFragment
   
   private void initHistorySearch()
   {
-    MiniAppSearchDataManager localMiniAppSearchDataManager = (MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(360);
+    MiniAppSearchDataManager localMiniAppSearchDataManager = (MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_SEARCH_MANAGER);
     this.mEditTextView.setOnEditorActionListener(new MiniAppSearchFragment.4(this, localMiniAppSearchDataManager));
     updateSearchRecord(localMiniAppSearchDataManager, localMiniAppSearchDataManager.getCachedHistorySearchList());
   }
   
   private void sendHotSearchRequest()
   {
-    ((MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(360)).sendHotSearchAppRequest();
+    ((MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_SEARCH_MANAGER)).sendHotSearchAppRequest();
   }
   
   private void updateHistorySearchRecordLayout()
   {
-    MiniAppSearchDataManager localMiniAppSearchDataManager = (MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(360);
+    MiniAppSearchDataManager localMiniAppSearchDataManager = (MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_SEARCH_MANAGER);
     this.mHistoryListViewGroup.removeAllViews();
     updateSearchRecord(localMiniAppSearchDataManager, localMiniAppSearchDataManager.getHistorySearchList());
   }
@@ -106,7 +105,7 @@ public class MiniAppSearchFragment
       TextView localTextView = new TextView(getActivity());
       localTextView.setText(str);
       localTextView.setTextColor(-16578534);
-      localTextView.setBackgroundResource(2130841016);
+      localTextView.setBackgroundResource(2130841048);
       localTextView.setOnClickListener(new MiniAppSearchFragment.5(this, localTextView, paramMiniAppSearchDataManager));
       this.mHistoryListViewGroup.addView(localTextView);
     }
@@ -118,6 +117,11 @@ public class MiniAppSearchFragment
       return;
     }
     this.mHistorySearchContainer.setVisibility(8);
+  }
+  
+  public boolean isWrapContent()
+  {
+    return false;
   }
   
   public void onClick(View paramView)
@@ -139,7 +143,7 @@ public class MiniAppSearchFragment
         this.mClearInputTextButton.setVisibility(8);
         continue;
         this.mHistorySearchContainer.setVisibility(8);
-        ((MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(360)).clearHistorySearch();
+        ((MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_SEARCH_MANAGER)).clearHistorySearch();
         MiniProgramLpReportDC04239.reportAsync("desktop", "search", "history_delete", null);
       }
     }
@@ -147,7 +151,7 @@ public class MiniAppSearchFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131559411, null);
+    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131559449, null);
     if (ImmersiveUtils.isSupporImmersive() == 1) {
       paramLayoutInflater.setFitsSystemWindows(true);
     }
@@ -181,7 +185,7 @@ public class MiniAppSearchFragment
   {
     super.onFinish();
     QLog.d("MiniAppSearchFragment", 1, "onFinish");
-    MiniAppSearchDataManager localMiniAppSearchDataManager = (MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(360);
+    MiniAppSearchDataManager localMiniAppSearchDataManager = (MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_SEARCH_MANAGER);
     localMiniAppSearchDataManager.clearSearchResult();
     localMiniAppSearchDataManager.setDataChangedListener(null);
     localMiniAppSearchDataManager.setHotSearchDataChangedListener(null);
@@ -202,16 +206,19 @@ public class MiniAppSearchFragment
         this.mClearInputTextButton.setVisibility(0);
         QLog.d("MiniAppSearchFragment", 1, "onResultDataChanged, history and recommend is gone");
       }
-      if (((MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(360)).getSearchResultData().size() == 0)
+      MiniAppSearchDataManager localMiniAppSearchDataManager = (MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_SEARCH_MANAGER);
+      this.mSearchResultTitle.setText(2131694003);
+      if ((localMiniAppSearchDataManager.getSearchResultData().isEmpty()) || (localMiniAppSearchDataManager.isNoResult()))
       {
-        this.mEmptyBackground.setImageDrawable(URLDrawable.getDrawable("https://qzonestyle.gtimg.cn/aoi/sola/20200317103714_042EdeeOON.png", null));
         this.mNoSearchResultViewGroup.setVisibility(0);
+        this.mSearchResultTitle.setText(2131694002);
+        MiniProgramLpReportDC04239.reportAsync("desktop", "search", "recom_expo", null);
         if (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext()))
         {
-          this.mSearchResultExceptionText.setText(2131697579);
+          this.mSearchResultExceptionText.setText(2131697858);
           return;
         }
-        this.mSearchResultExceptionText.setText(2131693806);
+        this.mSearchResultExceptionText.setText(2131694000);
         return;
       }
       this.mNoSearchResultViewGroup.setVisibility(8);
@@ -235,7 +242,7 @@ public class MiniAppSearchFragment
     QLog.d("MiniAppSearchFragment", 1, "onStop");
     AppInterface localAppInterface = MiniAppUtils.getAppInterface();
     if (localAppInterface != null) {
-      ((MiniAppExposureManager)localAppInterface.getManager(322)).submitSearchReportData();
+      ((MiniAppExposureManager)localAppInterface.getManager(QQManagerFactory.MINI_APP_EXPOSURE_MANAGER)).submitSearchReportData();
     }
   }
   
@@ -249,16 +256,15 @@ public class MiniAppSearchFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.mHistoryAndRecommendContainer = ((ViewGroup)paramView.findViewById(2131371032));
-    this.mSearchResultContainer = ((ViewGroup)paramView.findViewById(2131371134));
-    this.mHistorySearchContainer = ((ViewGroup)paramView.findViewById(2131371114));
-    this.mHistoryListViewGroup = ((ViewGroup)paramView.findViewById(2131371113));
-    this.mNoSearchResultViewGroup = ((ViewGroup)paramView.findViewById(2131371121));
-    this.mEmptyBackground = ((ImageView)paramView.findViewById(2131371136));
-    this.mSearchResultExceptionText = ((TextView)paramView.findViewById(2131371137));
-    this.mHotSearchTitle = ((TextView)paramView.findViewById(2131371127));
-    this.mRecommendRecyclerView = ((RecyclerView)paramView.findViewById(2131371124));
-    paramBundle = (MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(360);
+    this.mHistoryAndRecommendContainer = ((ViewGroup)paramView.findViewById(2131371225));
+    this.mSearchResultContainer = ((ViewGroup)paramView.findViewById(2131371331));
+    this.mHistorySearchContainer = ((ViewGroup)paramView.findViewById(2131371309));
+    this.mHistoryListViewGroup = ((ViewGroup)paramView.findViewById(2131371308));
+    this.mNoSearchResultViewGroup = ((ViewGroup)paramView.findViewById(2131371317));
+    this.mSearchResultExceptionText = ((TextView)paramView.findViewById(2131371333));
+    this.mSearchResultTitle = ((TextView)paramView.findViewById(2131371337));
+    this.mRecommendRecyclerView = ((RecyclerView)paramView.findViewById(2131371321));
+    paramBundle = (MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_SEARCH_MANAGER);
     this.mHotSearchAdapter = new SearchRecommendAdapter(getActivity(), this.mRefer);
     paramBundle.setHotSearchDataChangedListener(this.mHotSearchAdapter);
     this.mRecommendRecyclerView.setAdapter(this.mHotSearchAdapter);
@@ -266,18 +272,18 @@ public class MiniAppSearchFragment
     localGridLayoutManager.setSpanSizeLookup(new MiniAppSearchFragment.1(this));
     this.mRecommendRecyclerView.setLayoutManager(localGridLayoutManager);
     this.mRecommendRecyclerView.addItemDecoration(new SearchRecommendAdapter.TitleDecoration());
-    this.mResultListView = ((ListView)paramView.findViewById(2131371139));
+    this.mResultListView = ((ListView)paramView.findViewById(2131371335));
     this.mResultAdapter = new SearchResultAdapter(getActivity(), this.mRefer);
     this.mResultAdapter.setDataChangedListener(this);
     paramBundle.setDataChangedListener(this.mResultAdapter);
     this.mResultListView.setAdapter(this.mResultAdapter);
-    this.mCancelButton = ((TextView)paramView.findViewById(2131370993));
+    this.mCancelButton = ((TextView)paramView.findViewById(2131371178));
     this.mCancelButton.setOnClickListener(this);
-    this.mClearInputTextButton = ((ImageButton)paramView.findViewById(2131371111));
+    this.mClearInputTextButton = ((ImageButton)paramView.findViewById(2131371303));
     this.mClearInputTextButton.setOnClickListener(this);
-    this.mClearHistoryButton = ((ImageView)paramView.findViewById(2131371110));
+    this.mClearHistoryButton = ((ImageView)paramView.findViewById(2131371302));
     this.mClearHistoryButton.setOnClickListener(this);
-    this.mEditTextView = ((EditText)paramView.findViewById(2131371109));
+    this.mEditTextView = ((EditText)paramView.findViewById(2131371301));
     this.mEditTextView.addTextChangedListener(new MiniAppSearchFragment.SearchEditTextWatcher(this));
     this.mEditTextView.postDelayed(new MiniAppSearchFragment.2(this), 300L);
     this.mResultListView.setOnScrollListener(new MiniAppSearchFragment.3(this));

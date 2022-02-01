@@ -1,10 +1,18 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richstatus.SignatureEditFragment;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+
 public class bbue
+  implements DialogInterface.OnClickListener
 {
-  int jdField_a_of_type_Int = -1;
-  int b = -1;
-  int c = -1;
+  public bbue(SignatureEditFragment paramSignatureEditFragment) {}
   
-  public bbue(bbuc parambbuc) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    VasWebviewUtil.reportCommercialDrainage("signature_update", "click_know", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+    paramDialogInterface.dismiss();
+  }
 }
 
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.search.fragment.searchentry.hotword;
 
-import andr;
 import android.text.TextUtils;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import andt;
-import bass;
-import bbgh;
+import aogi;
+import aogk;
+import bbzh;
+import bcmz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -17,12 +17,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SearchHotwordHandler
-  extends andt
+  extends aogk
 {
   private QQAppInterface app;
   private final HotWordSearchEntryDataModel dataModel;
   private SearchHippyEventEmitter eventEmitter;
-  private final andr uniteSearchHandler;
+  private final aogi uniteSearchHandler;
   
   public SearchHotwordHandler()
   {
@@ -32,7 +32,7 @@ public class SearchHotwordHandler
       this.app.addObserver(this);
     }
     this.dataModel = new HotWordSearchEntryDataModel(this.app, 7, 10, false);
-    this.uniteSearchHandler = new andr(this.app);
+    this.uniteSearchHandler = new aogi(this.app);
   }
   
   @NonNull
@@ -47,7 +47,7 @@ public class SearchHotwordHandler
     String str2 = paramHotSearchItem.jumpUrl;
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
-      str1 = bbgh.a(paramHotSearchItem.recallWord, 5, "kandian_recomword");
+      str1 = bcmz.a(paramHotSearchItem.recallWord, 5, "kandian_recomword");
     }
     localSmartBox_HotWordsItem.sUrl = str1;
     localSmartBox_HotWordsItem.sAppend = paramHotSearchItem.sAppend;
@@ -91,7 +91,7 @@ public class SearchHotwordHandler
   
   public boolean isHotwordVisible()
   {
-    return bass.a(this.app);
+    return bbzh.a(this.app);
   }
   
   public void notifyFEHotwordChanged()
@@ -113,7 +113,7 @@ public class SearchHotwordHandler
   
   public void setHotwordVisibility(boolean paramBoolean)
   {
-    bass.a(this.app, paramBoolean);
+    bbzh.a(this.app, paramBoolean);
   }
 }
 

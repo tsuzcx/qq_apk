@@ -4,9 +4,9 @@ import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
-import bkox;
-import bkpk;
-import bkpl;
+import bmaf;
+import bmas;
+import bmat;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -15,13 +15,13 @@ import mqq.app.AppContentProvider;
 
 public class FavoritesProvider
   extends AppContentProvider
-  implements bkpk
+  implements bmas
 {
   private UriMatcher jdField_a_of_type_AndroidContentUriMatcher;
   private String jdField_a_of_type_JavaLangString;
-  private Map<Integer, bkpl> jdField_a_of_type_JavaUtilMap;
+  private Map<Integer, bmat> jdField_a_of_type_JavaUtilMap;
   
-  private bkpl a(Uri paramUri)
+  private bmat a(Uri paramUri)
   {
     int i = 1;
     int i1 = this.jdField_a_of_type_AndroidContentUriMatcher.match(paramUri);
@@ -55,12 +55,12 @@ public class FavoritesProvider
             int j = i;
             if (i != 0)
             {
-              bkox.a(false);
+              bmaf.a(false);
               j = 0;
             }
             n = j;
             localObject2 = localObject1;
-            if (bkox.a())
+            if (bmaf.a())
             {
               localObject2 = localBaseApplicationImpl.getRuntime();
               n = j;
@@ -88,7 +88,7 @@ public class FavoritesProvider
     paramUri = paramUri.getLastPathSegment();
     if (this.jdField_a_of_type_JavaLangString.equals(paramUri))
     {
-      localObject1 = (bkpl)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i1));
+      localObject1 = (bmat)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i1));
       if (localObject1 != null) {
         switch (i1)
         {
@@ -122,7 +122,7 @@ public class FavoritesProvider
         break;
       }
     }
-    for (paramUri = (bkpl)bkox.a("com.qqfav.data.BizRelatedData$Proxy", null, null); paramUri != null; paramUri = (bkpl)bkox.a("com.qqfav.data.BizRelatedData$GlobalSearchProxy", null, null))
+    for (paramUri = (bmat)bmaf.a("com.qqfav.data.BizRelatedData$Proxy", null, null); paramUri != null; paramUri = (bmat)bmaf.a("com.qqfav.data.BizRelatedData$GlobalSearchProxy", null, null))
     {
       this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i1), paramUri);
       return paramUri;
@@ -135,9 +135,9 @@ public class FavoritesProvider
   
   public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
   {
-    bkpl localbkpl = a(paramUri);
-    if (localbkpl != null) {
-      return localbkpl.delete(paramUri, paramString, paramArrayOfString);
+    bmat localbmat = a(paramUri);
+    if (localbmat != null) {
+      return localbmat.delete(paramUri, paramString, paramArrayOfString);
     }
     return 0;
   }
@@ -149,9 +149,9 @@ public class FavoritesProvider
   
   public Uri insert(Uri paramUri, ContentValues paramContentValues)
   {
-    bkpl localbkpl = a(paramUri);
-    if (localbkpl != null) {
-      return localbkpl.insert(paramUri, paramContentValues);
+    bmat localbmat = a(paramUri);
+    if (localbmat != null) {
+      return localbmat.insert(paramUri, paramContentValues);
     }
     return null;
   }
@@ -169,21 +169,21 @@ public class FavoritesProvider
   
   public Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    bkpl localbkpl = a(paramUri);
+    bmat localbmat = a(paramUri);
     if (QLog.isDevelopLevel()) {
-      QLog.d("qqfav|FavoritesProvider", 4, "query|" + localbkpl + ",uri=" + paramUri + ",selection=" + paramString1);
+      QLog.d("qqfav|FavoritesProvider", 4, "query|" + localbmat + ",uri=" + paramUri + ",selection=" + paramString1);
     }
-    if (localbkpl != null) {
-      return localbkpl.query(paramUri, paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
+    if (localbmat != null) {
+      return localbmat.query(paramUri, paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
     }
     return null;
   }
   
   public int update(Uri paramUri, ContentValues paramContentValues, String paramString, String[] paramArrayOfString)
   {
-    bkpl localbkpl = a(paramUri);
-    if (localbkpl != null) {
-      return localbkpl.update(paramUri, paramContentValues, paramString, paramArrayOfString);
+    bmat localbmat = a(paramUri);
+    if (localbmat != null) {
+      return localbmat.update(paramUri, paramContentValues, paramString, paramArrayOfString);
     }
     return 0;
   }

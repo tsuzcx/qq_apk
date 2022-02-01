@@ -1,6 +1,21 @@
-public abstract interface wco
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import java.util.Iterator;
+import java.util.List;
+
+final class wco
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  wco(List paramList) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      wcn.a((String)localIterator.next());
+    }
+    paramDialogInterface.dismiss();
+  }
 }
 
 

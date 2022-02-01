@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.barrage;
 
-import alrs;
-import alrt;
-import alru;
-import alrw;
-import alrx;
-import alry;
+import amqt;
+import amqu;
+import amqv;
+import amqx;
+import amqy;
+import amqz;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.PorterDuff.Mode;
@@ -16,21 +16,21 @@ import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
-import bjng;
+import bkys;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 
 public class BarrageSurfaceView
   extends SurfaceView
-  implements alrx, Handler.Callback, SurfaceHolder.Callback
+  implements amqy, Handler.Callback, SurfaceHolder.Callback
 {
   private int jdField_a_of_type_Int;
-  private alrs jdField_a_of_type_Alrs;
-  private alrt<Canvas> jdField_a_of_type_Alrt;
+  private amqt jdField_a_of_type_Amqt;
+  private amqu<Canvas> jdField_a_of_type_Amqu;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   private SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder;
-  private bjng jdField_a_of_type_Bjng;
+  private bkys jdField_a_of_type_Bkys;
   private int b;
   
   public BarrageSurfaceView(Context paramContext)
@@ -55,11 +55,11 @@ public class BarrageSurfaceView
   
   private void b()
   {
-    if (this.jdField_a_of_type_Bjng == null) {
+    if (this.jdField_a_of_type_Bkys == null) {
       return;
     }
-    this.jdField_a_of_type_Bjng.removeMessages(16);
-    this.jdField_a_of_type_Bjng.sendEmptyMessage(16);
+    this.jdField_a_of_type_Bkys.removeMessages(16);
+    this.jdField_a_of_type_Bkys.sendEmptyMessage(16);
   }
   
   public int a()
@@ -67,21 +67,21 @@ public class BarrageSurfaceView
     return this.jdField_a_of_type_Int;
   }
   
-  public alrs a()
+  public amqt a()
   {
-    if (this.jdField_a_of_type_Alrs == null) {
-      this.jdField_a_of_type_Alrs = new alru();
+    if (this.jdField_a_of_type_Amqt == null) {
+      this.jdField_a_of_type_Amqt = new amqv();
     }
-    return this.jdField_a_of_type_Alrs;
+    return this.jdField_a_of_type_Amqt;
   }
   
-  public void a(List<alrw> paramList, boolean paramBoolean)
+  public void a(List<amqx> paramList, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bjng == null) {}
+    if (this.jdField_a_of_type_Bkys == null) {}
     while (paramList == null) {
       return;
     }
-    Message localMessage = this.jdField_a_of_type_Bjng.obtainMessage(13);
+    Message localMessage = this.jdField_a_of_type_Bkys.obtainMessage(13);
     localMessage.obj = paramList;
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
@@ -94,10 +94,10 @@ public class BarrageSurfaceView
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bjng == null) {
+    if (this.jdField_a_of_type_Bkys == null) {
       return;
     }
-    this.jdField_a_of_type_Bjng.obtainMessage(15).sendToTarget();
+    this.jdField_a_of_type_Bkys.obtainMessage(15).sendToTarget();
   }
   
   public int b()
@@ -119,35 +119,36 @@ public class BarrageSurfaceView
           do
           {
             return false;
-          } while (this.jdField_a_of_type_Alrt == null);
+          } while (this.jdField_a_of_type_Amqu == null);
           localObject = (List)paramMessage.obj;
           if (paramMessage.arg1 > 0) {
-            this.jdField_a_of_type_Alrt.a(false);
+            this.jdField_a_of_type_Amqu.a(false);
           }
           if ((localObject != null) && (!((List)localObject).isEmpty()))
           {
             paramMessage = ((List)localObject).iterator();
             while (paramMessage.hasNext()) {
-              ((alrw)paramMessage.next()).a();
+              ((amqx)paramMessage.next()).a();
             }
           }
-          this.jdField_a_of_type_Alrt.a((List)localObject);
+          this.jdField_a_of_type_Amqu.a((List)localObject);
           b();
           return false;
-        } while (this.jdField_a_of_type_Alrt == null);
-        paramMessage = (alrw)paramMessage.obj;
-        this.jdField_a_of_type_Alrt.a(paramMessage);
+        } while (this.jdField_a_of_type_Amqu == null);
+        paramMessage = (amqx)paramMessage.obj;
+        this.jdField_a_of_type_Amqu.a(paramMessage);
         b();
         return false;
-      } while (this.jdField_a_of_type_Alrt == null);
-      this.jdField_a_of_type_Alrt.a(false);
+      } while (this.jdField_a_of_type_Amqu == null);
+      this.jdField_a_of_type_Amqu.a(false);
       b();
       return false;
-    } while (this.jdField_a_of_type_Alrt == null);
+    } while (this.jdField_a_of_type_Amqu == null);
     long l = System.currentTimeMillis();
     localObject = null;
     paramMessage = null;
-    boolean bool2 = true;
+    bool2 = true;
+    boolean bool3 = true;
     SurfaceHolder localSurfaceHolder = this.jdField_a_of_type_AndroidViewSurfaceHolder;
     bool1 = bool2;
     for (;;)
@@ -155,23 +156,28 @@ public class BarrageSurfaceView
       try
       {
         localCanvas = this.jdField_a_of_type_AndroidViewSurfaceHolder.lockCanvas();
-        bool1 = bool2;
-        paramMessage = localCanvas;
-        localObject = localCanvas;
-        localCanvas.save();
-        bool1 = bool2;
-        paramMessage = localCanvas;
-        localObject = localCanvas;
-        localCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
-        bool1 = bool2;
-        paramMessage = localCanvas;
-        localObject = localCanvas;
-        bool2 = this.jdField_a_of_type_Alrt.a(localCanvas, 1.0F);
-        bool1 = bool2;
-        paramMessage = localCanvas;
-        localObject = localCanvas;
-        localCanvas.restore();
-        bool3 = bool2;
+        bool1 = bool3;
+        if (localCanvas != null)
+        {
+          bool1 = bool2;
+          paramMessage = localCanvas;
+          localObject = localCanvas;
+          localCanvas.save();
+          bool1 = bool2;
+          paramMessage = localCanvas;
+          localObject = localCanvas;
+          localCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
+          bool1 = bool2;
+          paramMessage = localCanvas;
+          localObject = localCanvas;
+          bool2 = this.jdField_a_of_type_Amqu.a(localCanvas, 1.0F);
+          bool1 = bool2;
+          paramMessage = localCanvas;
+          localObject = localCanvas;
+          localCanvas.restore();
+          bool1 = bool2;
+        }
+        bool2 = bool1;
         if (localCanvas == null) {}
       }
       catch (Exception localException)
@@ -183,12 +189,12 @@ public class BarrageSurfaceView
         }
         localObject = paramMessage;
         QLog.e("BarrageSurfaceView", 2, localException.getMessage());
-        boolean bool3 = bool1;
+        bool2 = bool1;
         if (paramMessage == null) {
           continue;
         }
         this.jdField_a_of_type_AndroidViewSurfaceHolder.unlockCanvasAndPost(paramMessage);
-        bool3 = bool1;
+        bool2 = bool1;
         continue;
       }
       finally
@@ -201,9 +207,9 @@ public class BarrageSurfaceView
       try
       {
         this.jdField_a_of_type_AndroidViewSurfaceHolder.unlockCanvasAndPost(localCanvas);
-        bool3 = bool2;
-        if ((bool3) && (this.jdField_a_of_type_Bjng != null)) {
-          this.jdField_a_of_type_Bjng.sendEmptyMessageDelayed(16, 20L);
+        bool2 = bool1;
+        if ((bool2) && (this.jdField_a_of_type_Bkys != null)) {
+          this.jdField_a_of_type_Bkys.sendEmptyMessageDelayed(16, 20L);
         }
         if (QLog.isColorLevel()) {
           QLog.d("BarrageSurfaceView", 2, "handle MSG_CODE_DRAW_BARRAGE use->" + (System.currentTimeMillis() - l));
@@ -222,18 +228,18 @@ public class BarrageSurfaceView
   
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    if (this.jdField_a_of_type_Alrs == null) {
-      this.jdField_a_of_type_Alrs = new alru();
+    if (this.jdField_a_of_type_Amqt == null) {
+      this.jdField_a_of_type_Amqt = new amqv();
     }
-    if (this.jdField_a_of_type_Alrt == null) {
-      this.jdField_a_of_type_Alrt = new alry();
+    if (this.jdField_a_of_type_Amqu == null) {
+      this.jdField_a_of_type_Amqu = new amqz();
     }
     if (this.jdField_a_of_type_AndroidOsHandlerThread != null) {
       this.jdField_a_of_type_AndroidOsHandlerThread.quit();
     }
     this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("Barrage-Surface-Thread");
     this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_Bjng = new bjng(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
+    this.jdField_a_of_type_Bkys = new bkys(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
   }
   
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder) {}

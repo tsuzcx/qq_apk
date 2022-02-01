@@ -1,7 +1,6 @@
 package cooperation.qzone;
 
 import Override;
-import amtj;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -10,7 +9,8 @@ import android.os.Message;
 import android.os.RemoteException;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import bhzt;
+import anvx;
+import bjkv;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -265,7 +265,7 @@ public class QZoneLiveVideoDownLoadActivtyV2
       return;
     }
     installPlugin();
-    bhzt.a().a(amtj.a(2131711057));
+    bjkv.a().a(anvx.a(2131711404));
     doFinish();
   }
   

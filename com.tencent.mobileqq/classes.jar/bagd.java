@@ -1,12 +1,40 @@
-import android.media.MediaFormat;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bagd
+public class bagd
+  extends auzh
 {
-  public abstract void a();
+  public bagd(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public abstract void a(MediaFormat paramMediaFormat);
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, "onBandIntimateRelationship");
+    }
+    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.a.a))) {
+      QLog.d("intimate_relationship", 1, String.format("onBandIntimateRelationship return, friendUin: %s", new Object[] { paramString }));
+    }
+    while (!paramBoolean) {
+      return;
+    }
+    ProfileCardMoreActivity.a(this.a);
+  }
   
-  public abstract void a(baga parambaga);
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, "ProfileCard onDisbandIntimateRelationship");
+    }
+    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.a.a))) {
+      QLog.d("intimate_relationship", 1, String.format("ProfileCard onDisbandIntimateRelationship, friendUin: %s", new Object[] { paramString }));
+    }
+    while (!paramBoolean1) {
+      return;
+    }
+    ProfileCardMoreActivity.a(this.a);
+  }
 }
 
 

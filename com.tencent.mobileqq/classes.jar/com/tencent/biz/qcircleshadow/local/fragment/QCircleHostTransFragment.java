@@ -39,7 +39,7 @@ public class QCircleHostTransFragment
     {
       paramLayoutInflater = ((PublicFragmentActivity)getActivity()).mSystemBarComp;
       paramLayoutInflater.init();
-      paramLayoutInflater.setStatusBarColor(getResources().getColor(2131167276));
+      paramLayoutInflater.setStatusBarColor(getResources().getColor(2131167296));
     }
     if (getActivity() != null) {
       this.a = getActivity().hashCode();
@@ -53,7 +53,7 @@ public class QCircleHostTransFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.fragment.QCircleHostTransFragment
  * JD-Core Version:    0.7.0.1
  */

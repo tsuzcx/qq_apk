@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.transfile;
 
-import abwz;
+import acnh;
 import android.os.SystemClock;
-import ayeo;
-import ayep;
-import bjyw;
+import azla;
+import azlb;
+import blkh;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferHostInfo;
@@ -64,7 +64,7 @@ public class MultiMsgUpProcessor
   private byte[] mUkey;
   public int multiMsgType;
   private long selfUin;
-  private bjyw sscmObject = new bjyw();
+  private blkh sscmObject = new blkh();
   private long startTime = -1L;
   private byte[] toSendData;
   private byte[] toSendPBData;
@@ -130,11 +130,11 @@ public class MultiMsgUpProcessor
     ((im_msg_head.LoginSig)localObject3).bytes_sig.set(ByteStringMicro.copyFrom(this.mSig));
     localObject1 = new String();
     int i = 0;
-    while (i < "8.4.8".length())
+    while (i < "8.4.10".length())
     {
       localObject2 = localObject1;
-      if ("8.4.8".charAt(i) != '.') {
-        localObject2 = ((String)localObject1).concat(Character.toString("8.4.8".charAt(i)));
+      if ("8.4.10".charAt(i) != '.') {
+        localObject2 = ((String)localObject1).concat(Character.toString("8.4.10".charAt(i)));
       }
       i += 1;
       localObject1 = localObject2;
@@ -410,12 +410,12 @@ public class MultiMsgUpProcessor
     sendMessageToUpdate(1005);
     if (this.mUiRequest.mUpCallBack != null)
     {
-      ayep localayep = new ayep();
-      localayep.jdField_a_of_type_Int = -1;
-      localayep.b = this.errCode;
-      localayep.jdField_a_of_type_JavaLangString = this.errDesc;
-      localayep.jdField_a_of_type_JavaLangObject = Long.valueOf(this.mUiRequest.mUniseq);
-      this.mUiRequest.mUpCallBack.onSend(localayep);
+      azlb localazlb = new azlb();
+      localazlb.jdField_a_of_type_Int = -1;
+      localazlb.b = this.errCode;
+      localazlb.jdField_a_of_type_JavaLangString = this.errDesc;
+      localazlb.jdField_a_of_type_JavaLangObject = Long.valueOf(this.mUiRequest.mUniseq);
+      this.mUiRequest.mUpCallBack.onSend(localazlb);
     }
   }
   
@@ -595,19 +595,19 @@ public class MultiMsgUpProcessor
   public void onSuccess()
   {
     super.onSuccess();
-    ayep localayep;
+    azlb localazlb;
     if (this.mUiRequest.mUpCallBack != null)
     {
-      localayep = new ayep();
-      localayep.b = 0;
-      localayep.jdField_a_of_type_Long = this.mFileSize;
-      localayep.d = this.mMd5Str;
-      localayep.jdField_a_of_type_JavaLangObject = Long.valueOf(this.mUiRequest.mUniseq);
+      localazlb = new azlb();
+      localazlb.b = 0;
+      localazlb.jdField_a_of_type_Long = this.mFileSize;
+      localazlb.d = this.mMd5Str;
+      localazlb.jdField_a_of_type_JavaLangObject = Long.valueOf(this.mUiRequest.mUniseq);
     }
     try
     {
-      localayep.c = new String(this.mResId, "UTF-8");
-      this.mUiRequest.mUpCallBack.onSend(localayep);
+      localazlb.c = new String(this.mResId, "UTF-8");
+      this.mUiRequest.mUpCallBack.onSend(localazlb);
       sendMessageToUpdate(1003);
       return;
     }
@@ -615,9 +615,9 @@ public class MultiMsgUpProcessor
     {
       for (;;)
       {
-        localayep.b = -1;
-        localayep.jdField_a_of_type_JavaLangString = ("Failed. Convert ResID to UTF-8 string failed, resID = " + this.mResId.toString());
-        logRichMediaEvent("onSuccess", localayep.jdField_a_of_type_JavaLangString);
+        localazlb.b = -1;
+        localazlb.jdField_a_of_type_JavaLangString = ("Failed. Convert ResID to UTF-8 string failed, resID = " + this.mResId.toString());
+        logRichMediaEvent("onSuccess", localazlb.jdField_a_of_type_JavaLangString);
       }
     }
   }
@@ -703,7 +703,7 @@ public class MultiMsgUpProcessor
     String str;
     if ((this.mNetReq != null) && ((this.mNetReq instanceof HttpNetReq)))
     {
-      if (!abwz.d(this.mUinType)) {
+      if (!acnh.d(this.mUinType)) {
         break label56;
       }
       str = "multimsgCu";

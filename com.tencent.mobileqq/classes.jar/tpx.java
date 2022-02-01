@@ -1,31 +1,26 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import android.view.View;
 
-public class tpx
+class tpx
+  implements bkzq
 {
-  public static void a(AdvertisementInfo paramAdvertisementInfo, Activity paramActivity, int paramInt1, int paramInt2, int paramInt3, tqh paramtqh)
+  tpx(tps paramtps, bkzi parambkzi) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramAdvertisementInfo == null) {
-      return;
-    }
-    uhs.a(paramActivity);
-    int i = paramAdvertisementInfo.clickPos;
-    boolean bool = tqg.a(paramAdvertisementInfo, paramActivity, paramtqh);
-    if (bool)
+    this.jdField_a_of_type_Bkzi.dismiss();
+    switch (paramInt)
     {
-      paramInt1 = obb.T;
-      paramAdvertisementInfo.clickPos = i;
     }
-    for (;;)
+    do
     {
-      tqk.a(bool, paramActivity, paramAdvertisementInfo, paramInt1, paramInt2, paramInt3);
       return;
-    }
+    } while ((!tps.b(this.jdField_a_of_type_Tps)) || (!tps.a(this.jdField_a_of_type_Tps, "deleteFeeds")));
+    tjm.a(tps.a(this.jdField_a_of_type_Tps), tps.a(this.jdField_a_of_type_Tps));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tpx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,22 @@
-public class ajev
-  implements akjy
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class ajev
+  implements View.OnClickListener
 {
-  public void a(int paramInt) {}
+  ajev(ajep paramajep) {}
   
-  public void a(int paramInt, float paramFloat) {}
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void b(int paramInt1, int paramInt2) {}
+  public void onClick(View paramView)
+  {
+    if (paramView == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      ajep.a(this.a, paramView);
+    }
+  }
 }
 
 

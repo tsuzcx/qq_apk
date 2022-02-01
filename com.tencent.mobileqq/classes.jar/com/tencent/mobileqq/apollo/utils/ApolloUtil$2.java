@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.apollo.utils;
 
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ChatMessage;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
@@ -15,7 +16,7 @@ final class ApolloUtil$2
     Object localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
     if (localObject != null)
     {
-      localObject = (QQMessageFacade)((AppRuntime)localObject).getManager(20);
+      localObject = (QQMessageFacade)((AppRuntime)localObject).getManager(QQManagerFactory.MGR_MSG_FACADE);
       if (localObject != null) {
         ((QQMessageFacade)localObject).updateMsgFieldByUniseq(this.a.frienduin, this.a.istroop, this.a.uniseq, "extStr", this.a.extStr);
       }

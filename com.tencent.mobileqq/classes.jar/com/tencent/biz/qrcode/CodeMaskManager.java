@@ -22,7 +22,7 @@ import java.util.Vector;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import yuu;
+import zjn;
 
 public class CodeMaskManager
 {
@@ -222,7 +222,7 @@ public class CodeMaskManager
     //   188: new 161	java/io/IOException
     //   191: dup
     //   192: ldc 223
-    //   194: invokestatic 228	amtj:a	(I)Ljava/lang/String;
+    //   194: invokestatic 228	anvx:a	(I)Ljava/lang/String;
     //   197: invokespecial 229	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   200: athrow
     //   201: astore 5
@@ -388,7 +388,7 @@ public class CodeMaskManager
     Bundle localBundle = new Bundle();
     if (paramInt == 1)
     {
-      localBundle.putInt("qrbkgRes", 2130843269);
+      localBundle.putInt("qrbkgRes", 2130843305);
       localBundle.putInt("bkgRes", 0);
       localBundle.putInt("nameClr", -16777216);
       localBundle.putInt("tipsClr", -8947849);
@@ -515,9 +515,9 @@ public class CodeMaskManager
     //   0: iconst_0
     //   1: istore_3
     //   2: aconst_null
-    //   3: astore 5
+    //   3: astore 6
     //   5: aconst_null
-    //   6: astore 6
+    //   6: astore 5
     //   8: aload_2
     //   9: ifnull +90 -> 99
     //   12: new 59	java/io/File
@@ -574,7 +574,7 @@ public class CodeMaskManager
     //   112: iconst_0
     //   113: ireturn
     //   114: astore_1
-    //   115: aload 6
+    //   115: aload 5
     //   117: astore_1
     //   118: aload_1
     //   119: ifnull -22 -> 97
@@ -586,7 +586,7 @@ public class CodeMaskManager
     //   129: iconst_0
     //   130: ireturn
     //   131: astore_1
-    //   132: aload 5
+    //   132: aload 6
     //   134: astore_2
     //   135: aload_2
     //   136: ifnull +7 -> 143
@@ -614,9 +614,9 @@ public class CodeMaskManager
     //   0	166	2	paramArrayOfByte	byte[]
     //   1	97	3	bool1	boolean
     //   81	14	4	bool2	boolean
-    //   3	130	5	localObject1	Object
+    //   6	110	5	localObject1	Object
     //   152	5	5	localObject2	Object
-    //   6	110	6	localObject3	Object
+    //   3	130	6	localObject3	Object
     // Exception table:
     //   from	to	target	type
     //   103	111	111	java/io/IOException
@@ -676,7 +676,7 @@ public class CodeMaskManager
     this.jdField_a_of_type_JavaUtilList.clear();
   }
   
-  public void a(yuu paramyuu, boolean paramBoolean1, boolean paramBoolean2, int paramInt, boolean paramBoolean3)
+  public void a(zjn paramzjn, boolean paramBoolean1, boolean paramBoolean2, int paramInt, boolean paramBoolean3)
   {
     if (this.jdField_a_of_type_Boolean) {
       return;
@@ -692,7 +692,7 @@ public class CodeMaskManager
       ((Bundle)localObject).putInt("B", -16777216);
       ((Bundle)localObject).putInt("head", 0);
       ((Bundle)localObject).putInt("type", 1);
-      paramyuu.a(a((Bundle)localObject));
+      paramzjn.a(a((Bundle)localObject));
       return;
     }
     if ((paramBoolean1) && (paramBoolean2) && ((paramInt == 2) || (paramInt == 1)))
@@ -713,7 +713,7 @@ public class CodeMaskManager
       for (;;)
       {
         this.jdField_a_of_type_AndroidOsBundle.putInt("type", 1);
-        paramyuu.a(a(this.jdField_a_of_type_AndroidOsBundle));
+        paramzjn.a(a(this.jdField_a_of_type_AndroidOsBundle));
         return;
         label256:
         if (paramInt == 1) {
@@ -734,12 +734,12 @@ public class CodeMaskManager
     Object localObject = (Bundle)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     if (((Bundle)localObject).getInt("type") == 1)
     {
-      paramyuu.a(a((Bundle)localObject));
+      paramzjn.a(a((Bundle)localObject));
       b();
       return;
     }
-    localObject = new CodeMaskManager.PrepareBundleTask(this, paramyuu, (Bundle)localObject);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new CodeMaskManager.2(this, (CodeMaskManager.PrepareBundleTask)localObject, paramyuu), 10000L);
+    localObject = new CodeMaskManager.PrepareBundleTask(this, paramzjn, (Bundle)localObject);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new CodeMaskManager.2(this, (CodeMaskManager.PrepareBundleTask)localObject, paramzjn), 10000L);
     ((CodeMaskManager.PrepareBundleTask)localObject).start();
   }
 }

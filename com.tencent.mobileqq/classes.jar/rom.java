@@ -1,33 +1,59 @@
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberFragment;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.search.HybridSearchFragment;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.articlesummary.articlesummary.AnswerDetail;
 
 public class rom
-  implements TextWatcher
 {
-  public rom(ReadInJoySelectMemberFragment paramReadInJoySelectMemberFragment) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c = "";
   
-  public void afterTextChanged(Editable paramEditable)
+  public rom()
   {
-    if (paramEditable.length() > 0)
-    {
-      if (!ReadInJoySelectMemberFragment.a(this.a).isVisible()) {
-        this.a.getChildFragmentManager().beginTransaction().add(2131367134, ReadInJoySelectMemberFragment.a(this.a)).addToBackStack(null).commit();
-      }
-      ReadInJoySelectMemberFragment.a(this.a).a(paramEditable.toString());
-    }
-    while (ReadInJoySelectMemberFragment.a(this.a).isDetached()) {
-      return;
-    }
-    this.a.getChildFragmentManager().popBackStackImmediate();
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public static rom a(articlesummary.AnswerDetail paramAnswerDetail)
+  {
+    rom localrom = new rom();
+    if (paramAnswerDetail.question_rowkey.has()) {
+      localrom.jdField_a_of_type_JavaLangString = paramAnswerDetail.question_rowkey.get();
+    }
+    if (paramAnswerDetail.question_title.has()) {
+      localrom.jdField_b_of_type_JavaLangString = paramAnswerDetail.question_title.get();
+    }
+    if (paramAnswerDetail.answer_content.has()) {
+      localrom.c = paramAnswerDetail.answer_content.get();
+    }
+    if (paramAnswerDetail.agreed_num.has()) {
+      localrom.jdField_a_of_type_Int = paramAnswerDetail.agreed_num.get();
+    }
+    if (paramAnswerDetail.card_style.has()) {
+      localrom.jdField_b_of_type_Int = paramAnswerDetail.card_style.get();
+    }
+    return localrom;
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public articlesummary.AnswerDetail a()
+  {
+    articlesummary.AnswerDetail localAnswerDetail = new articlesummary.AnswerDetail();
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      localAnswerDetail.question_rowkey.set(this.jdField_a_of_type_JavaLangString);
+    }
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      localAnswerDetail.question_title.set(this.jdField_b_of_type_JavaLangString);
+    }
+    if (!TextUtils.isEmpty(this.c)) {
+      localAnswerDetail.answer_content.set(this.c);
+    }
+    localAnswerDetail.agreed_num.set(this.jdField_a_of_type_Int);
+    localAnswerDetail.card_style.set(this.jdField_b_of_type_Int);
+    return localAnswerDetail;
+  }
 }
 
 

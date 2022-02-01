@@ -1,41 +1,24 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.PopupDialog;
 
-final class mtk
-  implements INetEngine.IBreakDownFix
+public class mtk
+  implements DialogInterface.OnClickListener
 {
-  public void fixReq(NetReq paramNetReq, NetResp paramNetResp)
+  public mtk(PopupDialog paramPopupDialog) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramNetReq == null) || (paramNetResp == null)) {}
-    HttpNetReq localHttpNetReq;
-    do
-    {
-      do
-      {
-        return;
-      } while (!(paramNetReq instanceof HttpNetReq));
-      localHttpNetReq = (HttpNetReq)paramNetReq;
-      localHttpNetReq.mStartDownOffset += paramNetResp.mWrittenBlockLen;
-      paramNetResp.mWrittenBlockLen = 0L;
-      paramNetResp = "bytes=" + localHttpNetReq.mStartDownOffset + "-";
-      localHttpNetReq.mReqProperties.put("Range", paramNetResp);
-      paramNetResp = localHttpNetReq.mReqUrl;
-      if (paramNetResp.contains("range="))
-      {
-        paramNetResp = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
-        localHttpNetReq.mReqUrl = (paramNetResp + "range=" + localHttpNetReq.mStartDownOffset);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("ScoreManager", 1, "IBreakDownFix. url = " + ((HttpNetReq)paramNetReq).mReqUrl + ", offset=" + localHttpNetReq.mStartDownOffset);
+    if (PopupDialog.a.a != null) {
+      PopupDialog.a.a.onClick(paramDialogInterface, paramInt);
+    }
+    paramDialogInterface.dismiss();
+    PopupDialog.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mtk
  * JD-Core Version:    0.7.0.1
  */

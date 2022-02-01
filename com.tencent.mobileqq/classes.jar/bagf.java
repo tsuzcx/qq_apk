@@ -1,66 +1,29 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity;
 
-class bagf
-  extends Handler
+public class bagf
+  implements azrh
 {
-  protected WeakReference<bage> a;
+  public bagf(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public bagf(bage parambage1, Looper paramLooper, bage parambage2)
+  public void a(int paramInt, String paramString)
   {
-    super(paramLooper);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambage2);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    bage localbage = (bage)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localbage == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("HWAudioEncoder", 2, "AudioEncodeHandler.handleMessage: encoder is null");
-      }
-      return;
-    }
-    int i = paramMessage.what;
-    switch (i)
-    {
-    default: 
-      throw new RuntimeException("Unhandled msg what=" + i);
-    case 1: 
-      paramMessage = (Object[])paramMessage.obj;
-      try
+    if (paramInt == 0) {
+      if (ProfileActivity.AllInOne.b(this.a.a))
       {
-        localbage.a((byte[])paramMessage[0], ((Long)paramMessage[1]).longValue(), false);
-        return;
-      }
-      catch (Exception paramMessage)
-      {
-        QLog.e("HWAudioEncoder", 1, "AudioEncodeHandler encode audio fail.", paramMessage);
-        bage.a(this.jdField_a_of_type_Bage);
-        return;
-      }
-    case 2: 
-      this.jdField_a_of_type_Bage.a();
-      return;
-    case 3: 
-      paramMessage = (String)paramMessage.obj;
-      try
-      {
-        bage.a(this.jdField_a_of_type_Bage, paramMessage);
-        return;
-      }
-      catch (Exception paramMessage)
-      {
-        QLog.e("HWAudioEncoder", 1, "AudioEncodeHandler start fail.", paramMessage);
-        bage.a(this.jdField_a_of_type_Bage);
-        return;
+        paramInt = 1;
+        bdla.b(this.a.app, "CliOper", "", "", "0X80050E7", "0X80050E7", paramInt, 0, "", "", "", "");
+        bdla.b(null, "dc00898", "", "", "0X800A4FD", "0X800A4FD", 0, 0, "", "0", "0", "");
       }
     }
-    this.jdField_a_of_type_Bage.b();
+    while (paramInt != 2) {
+      for (;;)
+      {
+        return;
+        paramInt = 2;
+      }
+    }
+    bdla.b(null, "dc00898", "", "", "0X800A4FE", "0X800A4FE", 0, 0, "", "0", "0", "");
   }
 }
 

@@ -1,71 +1,48 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.utils.FileUtils;
+import java.io.File;
+import java.util.Locale;
 
-public class apxb
+class apxb
+  implements apxl
 {
-  public int a;
-  public String a;
-  public JSONObject a;
+  apxb(apwz paramapwz, apxn paramapxn, apxj paramapxj, String paramString1, apxl paramapxl, String paramString2) {}
   
-  public apxb()
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/mood/lover?_wv=16777219&from=common&qzUseTransparentNavBar=1&_proxy=1";
-  }
-  
-  public static apxb a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
+    if (!paramBoolean) {
+      this.jdField_a_of_type_Apxn.jdField_a_of_type_Boolean = false;
     }
-    try
+    synchronized (this.jdField_a_of_type_Apxn)
     {
-      apxb localapxb = new apxb();
-      localapxb.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramString).optJSONObject("loverAIOPush");
-      return localapxb;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("C2CLovePushGrayConfBean", 2, "C2CLovePushGrayConfBean onParsed erro " + paramString.toString());
-    }
-    return null;
-  }
-  
-  public apxb b(String paramString)
-  {
-    apxb localapxb = new apxb();
-    try
-    {
-      if (this.jdField_a_of_type_OrgJsonJSONObject != null)
+      apxn localapxn2 = this.jdField_a_of_type_Apxn;
+      int i = localapxn2.jdField_a_of_type_Int - 1;
+      localapxn2.jdField_a_of_type_Int = i;
+      if (i > 0)
       {
-        paramString = this.jdField_a_of_type_OrgJsonJSONObject.optJSONObject(paramString);
-        if (paramString != null)
-        {
-          localapxb.jdField_a_of_type_Int = paramString.optInt("linkType", 1);
-          localapxb.jdField_a_of_type_JavaLangString = paramString.optString("linkURL", "https://h5.qzone.qq.com/mood/lover?_wv=16777219&from=common&qzUseTransparentNavBar=1&_proxy=1");
-          return localapxb;
-        }
-        localapxb.jdField_a_of_type_Int = 1;
-        localapxb.jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/mood/lover?_wv=16777219&from=common&qzUseTransparentNavBar=1&_proxy=1";
-        return localapxb;
+        ArkAppCenter.c("ArkApp.Dict.Update", String.format(Locale.CHINA, "updateWordDict, one task complete, name=%s, success=%s, left=%d", new Object[] { this.jdField_a_of_type_Apxj.jdField_a_of_type_JavaLangString, Boolean.toString(paramBoolean), Integer.valueOf(i) }));
+        return;
+      }
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateWordDict, all complete, success=%s", new Object[] { Boolean.toString(this.jdField_a_of_type_Apxn.jdField_a_of_type_Boolean) }));
+      if (!this.jdField_a_of_type_Apxn.jdField_a_of_type_Boolean)
+      {
+        FileUtils.deleteDirectory(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Apxl.a(false);
+        return;
       }
     }
-    catch (Exception paramString)
+    if (!apwz.a(apww.a(this.b), new File(this.jdField_a_of_type_JavaLangString).getParent()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("C2CLovePushGrayProcessor", 2, "getC2CLovePushGrayConfBean Exception :", paramString);
-      }
-      localapxb.jdField_a_of_type_Int = 1;
-      localapxb.jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/mood/lover?_wv=16777219&from=common&qzUseTransparentNavBar=1&_proxy=1";
+      ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, renameDictDirAfterUpdateSuccess fail");
+      this.jdField_a_of_type_Apxl.a(false);
+      return;
     }
-    return localapxb;
+    this.jdField_a_of_type_Apxl.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apxb
  * JD-Core Version:    0.7.0.1
  */

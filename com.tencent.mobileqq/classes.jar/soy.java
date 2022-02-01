@@ -1,13 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
+import android.view.View;
+import android.view.animation.Animation;
 
-public class soy
-  extends ThreadLocal<Boolean>
+class soy
+  extends bkxp
 {
-  public soy(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView) {}
+  soy(sow paramsow) {}
   
-  protected Boolean a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return Boolean.valueOf(false);
+    this.a.a.o.setVisibility(8);
   }
 }
 

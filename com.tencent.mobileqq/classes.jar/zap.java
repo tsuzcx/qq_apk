@@ -1,14 +1,8 @@
-import java.util.concurrent.ThreadFactory;
-
-public final class zap
-  implements ThreadFactory
+public class zap
 {
-  public Thread newThread(Runnable paramRunnable)
-  {
-    paramRunnable = new Thread(paramRunnable);
-    paramRunnable.setName("pre-loader-pool-" + paramRunnable.getId());
-    return paramRunnable;
-  }
+  public zao a;
+  public long b;
+  public boolean d;
 }
 
 

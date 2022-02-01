@@ -1,10 +1,22 @@
-public abstract interface annp
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.apollo.view.CmShowAESurfaceView;
+import com.tencent.qphone.base.util.QLog;
+
+public class annp
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(int paramInt);
+  public annp(CmShowAESurfaceView paramCmShowAESurfaceView) {}
   
-  public abstract void a(long paramLong1, long paramLong2, long paramLong3, long paramLong4);
+  public void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
+  {
+    QLog.i("CmShowAESurfaceView", 1, "onAnimationEnd.");
+  }
   
-  public abstract void b();
+  public void onAnimationStart(Animator paramAnimator, boolean paramBoolean)
+  {
+    QLog.i("CmShowAESurfaceView", 1, "onAnimationStart.");
+  }
 }
 
 

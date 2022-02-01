@@ -1,49 +1,109 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
-import cooperation.vip.pb.TianShuAccess.RspEntry;
-import java.util.HashMap;
-import java.util.Iterator;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Filter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.NewStyleDropdownView;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
-import java.util.Map;
 
-class alny
-  implements blbv
+public class alny
+  extends ArrayAdapter
+  implements View.OnClickListener
 {
-  alny(alnr paramalnr) {}
+  Filter jdField_a_of_type_AndroidWidgetFilter;
   
-  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
+  public alny(LoginView paramLoginView, Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloManager", 2, new Object[] { "onGetAdvs isSucc:", Boolean.valueOf(paramBoolean) });
+    super(paramContext, 2131558412, 2131369185, paramLoginView.jdField_a_of_type_JavaUtilList);
+  }
+  
+  public String a(int paramInt)
+  {
+    String str = ((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_JavaUtilList.get(paramInt)).getUin();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      return str;
     }
-    if ((!paramBoolean) || (paramGetAdsRsp == null)) {
-      return;
+    return this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getUinDisplayNameBeforeLogin(str);
+  }
+  
+  public String b(int paramInt)
+  {
+    return ((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_JavaUtilList.get(paramInt)).getUin();
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_JavaUtilList.size() == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView.b().setVisibility(8);
     }
-    if (paramGetAdsRsp.mapAds.has()) {}
-    for (paramGetAdsRsp = paramGetAdsRsp.mapAds.get(); paramGetAdsRsp == null; paramGetAdsRsp = null)
+    for (;;)
     {
-      QLog.w("ApolloManager", 1, "rspEntries == null");
-      return;
+      return super.getCount();
+      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView.b().setVisibility(0);
     }
-    HashMap localHashMap = new HashMap();
-    paramGetAdsRsp = paramGetAdsRsp.iterator();
-    while (paramGetAdsRsp.hasNext())
+  }
+  
+  public Filter getFilter()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetFilter == null) {
+      this.jdField_a_of_type_AndroidWidgetFilter = new alnz(this);
+    }
+    return this.jdField_a_of_type_AndroidWidgetFilter;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = super.getView(paramInt, paramView, paramViewGroup);
+    LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131363339);
+    ImageView localImageView = (ImageView)localView.findViewById(2131369100);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.a(((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_JavaUtilList.get(paramInt)).getUin(), false);
+    if ((localObject instanceof Bitmap))
     {
-      TianShuAccess.RspEntry localRspEntry = (TianShuAccess.RspEntry)paramGetAdsRsp.next();
-      if ((localRspEntry != null) && (localRspEntry.key.has())) {
-        localHashMap.put(Integer.valueOf(localRspEntry.key.get()), localRspEntry);
+      localImageView.setImageBitmap((Bitmap)localObject);
+      localImageView = (ImageView)localView.findViewById(2131369054);
+      localImageView.setTag(Integer.valueOf(paramInt));
+      localImageView.setOnClickListener(this);
+      localImageView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131719176));
+      localView.setContentDescription(String.format(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131689501) + "%s", new Object[] { ((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_JavaUtilList.get(paramInt)).getUin() }));
+      if (getCount() != 1) {
+        break label280;
+      }
+      localLinearLayout.setPadding(0, AIOUtils.dp2px(7.5F, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.getResources()), 0, AIOUtils.dp2px(7.5F, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.getResources()));
+    }
+    for (;;)
+    {
+      localLinearLayout.setOnClickListener(new aloa(this, paramInt));
+      localView.setOnTouchListener(new mvl());
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localImageView.setImageResource(2130840662);
+      break;
+      label280:
+      if (paramInt == 0) {
+        localLinearLayout.setPadding(0, AIOUtils.dp2px(7.5F, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.getResources()), 0, 0);
+      } else if (paramInt == getCount() - 1) {
+        localLinearLayout.setPadding(0, 0, 0, AIOUtils.dp2px(7.5F, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.getResources()));
+      } else {
+        localLinearLayout.setPadding(0, 0, 0, 0);
       }
     }
-    alnr.a(this.a, (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(364)));
-    alnr.b(this.a, (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(367)));
-    alnr.c(this.a, (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(366)));
-    alnr.d(this.a, (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(365)));
-    alnr.e(this.a, (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(393)));
-    alnr.f(this.a, (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(433)));
-    alnr.a(this.a, (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(501)), true);
-    alnr.a(this.a, (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(502)), false);
+  }
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_Int = ((Integer)paramView.getTag()).intValue();
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.showDialog(1);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

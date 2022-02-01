@@ -1,16 +1,23 @@
-import android.net.Uri;
-import android.net.Uri.Builder;
-import android.provider.ContactsContract.RawContacts;
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
+import android.annotation.TargetApi;
+import android.hardware.Camera;
+import android.hardware.Camera.Face;
+import android.hardware.Camera.FaceDetectionListener;
+import android.os.Handler;
+import com.tencent.mobileqq.camera.CameraManagerImpl.FaceDetectionCallbackForward.1;
+import com.tencent.qphone.base.util.QLog;
 
+@TargetApi(14)
 public class aqmr
+  implements Camera.FaceDetectionListener
 {
-  public static final String[] a = { "_id", "sourceid", "contact_id" };
-  public static final String[] b = { "sync1", "sync2", "sync3" };
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final aqmg jdField_a_of_type_Aqmg;
+  private final aqmk jdField_a_of_type_Aqmk;
   
-  public static final Uri a(String paramString)
+  public void onFaceDetection(Camera.Face[] paramArrayOfFace, Camera paramCamera)
   {
-    return ContactsContract.RawContacts.CONTENT_URI.buildUpon().appendQueryParameter("account_name", paramString).appendQueryParameter("account_type", "com.tencent.mobileqq.account").appendQueryParameter("caller_is_syncadapter", ContactSyncManager.b()).build();
+    QLog.d("Q.camera.CameraManagerImpl", 2, "[onFaceDetection] faces = " + paramArrayOfFace + ", length = " + paramArrayOfFace.length);
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.FaceDetectionCallbackForward.1(this, paramArrayOfFace));
   }
 }
 

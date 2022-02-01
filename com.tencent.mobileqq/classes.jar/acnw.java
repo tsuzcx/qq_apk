@@ -1,24 +1,10 @@
-import com.tencent.mobileqq.activity.AccountManageActivity;
+import java.util.List;
 
-public class acnw
-  extends anbq
+public abstract interface acnw<T>
 {
-  public acnw(AccountManageActivity paramAccountManageActivity) {}
+  public abstract List<T> a();
   
-  protected void a(boolean paramBoolean, bcqu parambcqu)
-  {
-    AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
-  }
-  
-  protected void b(boolean paramBoolean, bcqu parambcqu)
-  {
-    AccountManageActivity.a(this.a, false);
-  }
-  
-  protected void c(boolean paramBoolean, bcqu parambcqu)
-  {
-    AccountManageActivity.a(this.a, false);
-  }
+  public abstract void a(Class<? extends T> paramClass);
 }
 
 

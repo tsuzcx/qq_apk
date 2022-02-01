@@ -1,66 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.DcReportUtil.1;
-import com.tencent.mobileqq.statistics.DcReportUtil.2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.Comparator;
 
-public class bcdf
+class bcdf
+  implements Comparator<bcdh>
 {
-  private static AtomicLong a = new AtomicLong(0L);
+  bcdf(bcdc parambcdc) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  public int a(bcdh parambcdh1, bcdh parambcdh2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    int j = Long.signum(parambcdh1.jdField_a_of_type_Int - parambcdh2.jdField_a_of_type_Int);
+    int i = j;
+    if (j == 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("DcReportUtil", 2, "reportDCEvent tag or detail is null: " + paramString1 + ", " + paramString2);
-      }
-      return;
-    }
-    if (paramQQAppInterface == null)
-    {
-      ThreadManager.post(new DcReportUtil.2(paramString1, paramString2), 5, null, true);
-      return;
-    }
-    a(paramQQAppInterface, paramString1, paramString2, 1);
-  }
-  
-  private static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
-  {
-    if (paramString2 != null)
-    {
-      bcef localbcef = paramQQAppInterface.getReportController();
-      if (localbcef != null)
+      j = Long.signum(parambcdh1.b - parambcdh2.b);
+      i = j;
+      if (j == 0)
       {
-        String str = paramString2;
-        if (paramString2.contains("${uin_unknown}")) {
-          str = paramString2.replace("${uin_unknown}", paramQQAppInterface.getCurrentAccountUin());
+        j = Long.signum(parambcdh1.c - parambcdh2.c);
+        i = j;
+        if (j == 0) {
+          i = Long.signum(-parambcdh1.jdField_a_of_type_Long + parambcdh2.jdField_a_of_type_Long);
         }
-        localbcef.a(paramString1, str, paramInt);
       }
     }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, boolean paramBoolean)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return;
-    }
-    String str = "${count_unknown}|" + paramString2;
-    paramString2 = str;
-    if (!paramBoolean)
-    {
-      long l = a.incrementAndGet();
-      paramString2 = "${report_seq_prefix}" + l + "|" + str;
-    }
-    if (paramQQAppInterface == null)
-    {
-      ThreadManager.post(new DcReportUtil.1(paramString1, paramString2), 5, null, true);
-      return;
-    }
-    a(paramQQAppInterface, paramString1, paramString2, 1);
+    return i;
   }
 }
 

@@ -844,6 +844,7 @@ public abstract class AppRuntime
       localNewIntent.putExtra("K_SEQ", paramLong);
       localNewIntent.putExtra("isUserSet", paramBoolean2);
       localNewIntent.runNow = true;
+      localNewIntent.putExtra("vendor_push_type", ThirdPushSupportHelper.getThirdPushType(getApplication(), null));
       startServlet(localNewIntent);
       setOnlineStatus(paramStatus);
     }
@@ -868,6 +869,7 @@ public abstract class AppRuntime
         localNewIntent.putExtra("batteryCapacity", getBatteryCapacity());
         localNewIntent.putExtra("powerConnect", getPowerConnect());
       }
+      localNewIntent.putExtra("vendor_push_type", ThirdPushSupportHelper.getThirdPushType(getApplication(), null));
       localNewIntent.runNow = true;
       startServlet(localNewIntent);
       setOnlineStatus(paramStatus);

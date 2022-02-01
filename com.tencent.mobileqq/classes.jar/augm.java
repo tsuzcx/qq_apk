@@ -1,22 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.mobileqq.hotpic.HotPicMainPanel;
-import com.tencent.widget.XPanelContainer;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import java.util.ArrayList;
 
 public class augm
-  implements ValueAnimator.AnimatorUpdateListener
+  implements audq
 {
-  public augm(HotPicMainPanel paramHotPicMainPanel, int paramInt) {}
+  public augm(SendBottomBar paramSendBottomBar) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onNo() {}
+  
+  public void onYes()
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (i == this.jdField_a_of_type_Int) {
-      AbstractGifImage.resumeAll();
-    }
-    XPanelContainer.jdField_a_of_type_Int = i;
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel.a.requestLayout();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(atpm.a());
+    Intent localIntent = new Intent();
+    localIntent.putParcelableArrayListExtra("sFilesSelected", localArrayList);
+    SendBottomBar.a(this.a).setResult(-1, localIntent);
+    SendBottomBar.a(this.a).finish();
   }
 }
 

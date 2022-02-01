@@ -1,48 +1,161 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.support.annotation.IntRange;
+import android.arch.lifecycle.Lifecycle;
+import android.arch.lifecycle.Lifecycle.Event;
+import android.arch.lifecycle.LifecycleOwner;
+import android.arch.lifecycle.LifecycleRegistry;
+import android.arch.lifecycle.ViewModelStore;
+import android.arch.lifecycle.ViewModelStoreOwner;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.style.ReplacementSpan;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
 
 public class bmut
-  extends ReplacementSpan
+  implements LifecycleOwner, ViewModelStoreOwner, bori
 {
-  private final float a;
-  private final float b;
+  private LifecycleRegistry jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry = new LifecycleRegistry(this);
+  private ViewModelStore jdField_a_of_type_AndroidArchLifecycleViewModelStore;
   
-  public bmut(float paramFloat1, float paramFloat2)
+  public View a()
   {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
+    return null;
   }
   
-  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, @IntRange(from=0L) int paramInt1, @IntRange(from=0L) int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void a(Intent paramIntent) {}
+  
+  @CallSuper
+  public void a(Bundle paramBundle)
   {
-    if (paramCharSequence != null)
+    this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry = new LifecycleRegistry(this);
+    try
     {
-      paramPaint.setTextSize(this.a);
-      paramCanvas.drawText(paramCharSequence, paramInt1, paramInt2, paramFloat, paramInt4, paramPaint);
+      this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
+      return;
+    }
+    catch (Throwable paramBundle)
+    {
+      QLog.e("QIMCameraLifeCycleBaseUnit", 1, "mLifecycleRegistry 初始化失败");
     }
   }
   
-  public int getSize(@NonNull Paint paramPaint, CharSequence paramCharSequence, @IntRange(from=0L) int paramInt1, @IntRange(from=0L) int paramInt2, @Nullable Paint.FontMetricsInt paramFontMetricsInt)
+  public boolean a(int paramInt, KeyEvent paramKeyEvent, boolean paramBoolean)
   {
-    if (paramCharSequence == null) {
-      return 0;
-    }
-    paramPaint.setTextSize(this.a);
-    if (paramFontMetricsInt != null)
+    return false;
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent, boolean paramBoolean)
+  {
+    return false;
+  }
+  
+  @CallSuper
+  public void b()
+  {
+    try
     {
-      Paint.FontMetricsInt localFontMetricsInt = paramPaint.getFontMetricsInt();
-      paramFontMetricsInt.top = ((int)(localFontMetricsInt.top * this.b));
-      paramFontMetricsInt.ascent = ((int)(localFontMetricsInt.ascent * this.b));
-      paramFontMetricsInt.descent = localFontMetricsInt.descent;
-      paramFontMetricsInt.bottom = localFontMetricsInt.bottom;
-      paramFontMetricsInt.leading = localFontMetricsInt.leading;
+      this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_PAUSE);
+      return;
     }
-    return Math.round(paramPaint.measureText(paramCharSequence, paramInt1, paramInt2));
+    catch (Throwable localThrowable)
+    {
+      QLog.e("QIMCameraLifeCycleBaseUnit", 1, "mLifecycleRegistry 初始化失败");
+    }
+  }
+  
+  public void b(Bundle paramBundle) {}
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  @CallSuper
+  public void c()
+  {
+    try
+    {
+      this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY);
+      if (this.jdField_a_of_type_AndroidArchLifecycleViewModelStore != null) {
+        this.jdField_a_of_type_AndroidArchLifecycleViewModelStore.clear();
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        QLog.e("QIMCameraLifeCycleBaseUnit", 1, "mLifecycleRegistry 初始化失败");
+      }
+    }
+  }
+  
+  @CallSuper
+  public void d()
+  {
+    try
+    {
+      this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_RESUME);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("QIMCameraLifeCycleBaseUnit", 1, "mLifecycleRegistry 初始化失败");
+    }
+  }
+  
+  public Lifecycle getLifecycle()
+  {
+    return this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry;
+  }
+  
+  @NonNull
+  public ViewModelStore getViewModelStore()
+  {
+    if (BaseApplicationImpl.getApplication() == null) {
+      throw new IllegalStateException("Your activity is not yet attached to the Application instance. You can't request ViewModel before onCreate call.");
+    }
+    if (this.jdField_a_of_type_AndroidArchLifecycleViewModelStore == null) {
+      this.jdField_a_of_type_AndroidArchLifecycleViewModelStore = new ViewModelStore();
+    }
+    return this.jdField_a_of_type_AndroidArchLifecycleViewModelStore;
+  }
+  
+  public void i() {}
+  
+  @CallSuper
+  public void j()
+  {
+    try
+    {
+      this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_START);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("QIMCameraLifeCycleBaseUnit", 1, "mLifecycleRegistry 初始化失败");
+    }
+  }
+  
+  @CallSuper
+  public void k()
+  {
+    try
+    {
+      this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_STOP);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("QIMCameraLifeCycleBaseUnit", 1, "mLifecycleRegistry 初始化失败");
+    }
   }
 }
 

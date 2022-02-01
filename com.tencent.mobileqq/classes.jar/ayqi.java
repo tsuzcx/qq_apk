@@ -1,25 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.upload.uinterface.AbstractUploadTask;
-import com.tencent.upload.uinterface.IUploadConfig.UploadImageSize;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ayqi
-  extends ayqd
+final class ayqi
+  implements View.OnClickListener
 {
-  ayqi(ayqh paramayqh, long paramLong)
-  {
-    super(paramLong);
-  }
+  ayqi(FragmentActivity paramFragmentActivity, ayqn paramayqn, int paramInt) {}
   
-  public IUploadConfig.UploadImageSize getUploadImageSize(IUploadConfig.UploadImageSize paramUploadImageSize, int paramInt, AbstractUploadTask paramAbstractUploadTask)
+  public void onClick(View paramView)
   {
-    paramUploadImageSize = ayqc.a(paramAbstractUploadTask.uploadFilePath);
-    if (paramUploadImageSize != null)
-    {
-      paramAbstractUploadTask = new IUploadConfig.UploadImageSize(paramUploadImageSize.getWidth(), paramUploadImageSize.getHeight(), 100);
-      paramUploadImageSize.recycle();
-      return paramAbstractUploadTask;
-    }
-    return new IUploadConfig.UploadImageSize(640, 1136, 100);
+    ayqt.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_Ayqn.e, this.jdField_a_of_type_Ayqn.b, 60011);
+    ayqp.b(this.jdField_a_of_type_Ayqn.f, this.jdField_a_of_type_Int);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

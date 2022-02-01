@@ -1,13 +1,15 @@
-import com.tencent.biz.qrcode.activity.ScannerActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
 
-class yxd
-  extends yxh
+public class yxd
+  implements DialogInterface.OnClickListener
 {
-  yxd(yxc paramyxc) {}
+  public yxd(EditVideoMusicDialog paramEditVideoMusicDialog) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ScannerActivity.a(this.a.a).b();
+    paramDialogInterface.dismiss();
   }
 }
 

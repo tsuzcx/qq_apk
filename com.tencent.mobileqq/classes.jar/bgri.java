@@ -1,256 +1,122 @@
 import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
+import android.content.res.Resources;
+import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
+import com.tencent.mobileqq.util.DisplayUtil;
 
-public class bgri
-  extends VasWebviewJsPlugin
+class bgri
+  extends bgkn
 {
-  public bgri()
-  {
-    this.mPluginNameSpace = "gift";
-  }
+  bgri(bgrg parambgrg) {}
   
-  private void a()
+  public void a(int paramInt, String paramString)
   {
-    Activity localActivity = this.mRuntime.a();
-    if (localActivity != null) {
-      localActivity.finish();
-    }
-  }
-  
-  private void a(String paramString)
-  {
-    int i = 0;
-    Activity localActivity = this.mRuntime.a();
-    if (localActivity == null) {}
-    for (;;)
-    {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView == null) {
       return;
-      if (this.mRuntime.a() != null) {
-        try
-        {
-          Object localObject = new JSONObject(paramString);
-          paramString = ((JSONObject)localObject).optString("url");
-          localObject = ((JSONObject)localObject).optJSONObject("options");
-          int j;
-          if (localObject != null)
-          {
-            j = ((JSONObject)localObject).optInt("style");
-            i = ((JSONObject)localObject).optInt("animation");
-            label75:
-            if (TextUtils.isEmpty(paramString)) {
-              continue;
-            }
-            localObject = localActivity.getIntent().getExtras();
-            ((Bundle)localObject).putString("leftViewText", "");
-            switch (j)
-            {
-            }
-          }
-          for (;;)
-          {
-            Intent localIntent = new Intent(localActivity, QQBrowserActivity.class);
-            localIntent.putExtras((Bundle)localObject);
-            localIntent.putExtra("url", paramString);
-            localIntent.setFlags(0);
-            localActivity.startActivityForResult(localIntent, 100);
-            switch (i)
-            {
-            case 0: 
-            case 1: 
-              localActivity.overridePendingTransition(0, 0);
-              return;
-              ((Bundle)localObject).putBoolean("hide_more_button", false);
-              ((Bundle)localObject).putBoolean("hide_operation_bar", true);
-              continue;
-              ((Bundle)localObject).putBoolean("hide_more_button", true);
-              ((Bundle)localObject).putBoolean("hide_operation_bar", true);
-              continue;
-              ((Bundle)localObject).putBoolean("hide_more_button", false);
-              ((Bundle)localObject).putBoolean("hide_operation_bar", false);
-              ((Bundle)localObject).putString("webStyle", "");
-              continue;
-              ((Bundle)localObject).putBoolean("hide_more_button", true);
-              ((Bundle)localObject).putBoolean("hide_operation_bar", false);
-              ((Bundle)localObject).putString("webStyle", "");
-              break;
-            case 2: 
-              localActivity.overridePendingTransition(2130772300, 0);
-              return;
-              j = 0;
-              break label75;
-            }
-          }
-          return;
-        }
-        catch (JSONException paramString) {}
-      }
     }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VipGiftPlugin", 2, "method:" + paramString1 + ", json:" + paramString2);
-    }
-    callJs(paramString1, new String[] { paramString2 });
-  }
-  
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    if (paramLong == 8589934595L)
+    synchronized (this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView)
     {
-      paramString = this.mRuntime.a();
-      if (paramString != null) {
-        break label22;
-      }
-    }
-    label22:
-    while (!paramString.getClass().getSimpleName().equals("VipGiftBrowserActivity")) {
-      return false;
-    }
-    paramString.finish();
-    return false;
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ("gift".equals(paramString2))
-    {
-      if (("openUrl".equals(paramString3)) && (paramVarArgs.length == 1))
-      {
-        a(paramVarArgs[0]);
-        a();
-      }
-      do
-      {
-        return true;
-        if (("close".equals(paramString3)) && (paramVarArgs.length == 1)) {
-          try
-          {
-            paramString1 = new JSONObject(paramVarArgs[0]);
-            paramJsBridgeListener = paramString1.getString("callback");
-            long l = paramString1.getLong("version");
-            paramString1 = new Bundle();
-            paramString1.putLong("version", l);
-            sendRemoteReq(aqyt.a("close_version", paramJsBridgeListener, this.mOnRemoteResp.key, paramString1), false, false);
-            return true;
-          }
-          catch (Exception paramJsBridgeListener)
-          {
-            return true;
-          }
-        }
-        if ("isFlowerVisible".equals(paramString3)) {
-          try
-          {
-            paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
-            paramString1 = new Bundle();
-            sendRemoteReq(aqyt.a("getFlowerVisibility", paramJsBridgeListener, this.mOnRemoteResp.key, paramString1), false, false);
-            return true;
-          }
-          catch (JSONException paramJsBridgeListener)
-          {
-            paramJsBridgeListener.printStackTrace();
-            return true;
-          }
-        }
-      } while (!"setFlowerVisibility".equals(paramString3));
-      paramString1 = null;
-      paramJsBridgeListener = paramString1;
-      for (;;)
-      {
-        try
-        {
-          paramString2 = new JSONObject(paramVarArgs[0]);
-          paramJsBridgeListener = paramString1;
-          paramString1 = paramString2.optString("callback");
-          paramJsBridgeListener = paramString1;
-          int i = paramString2.getInt("isVisible");
-          paramJsBridgeListener = paramString1;
-          paramString2 = new Bundle();
-          if (i != 1) {
-            break label322;
-          }
-          bool = true;
-          paramJsBridgeListener = paramString1;
-          paramString2.putBoolean("isVisible", bool);
-          paramJsBridgeListener = paramString1;
-          sendRemoteReq(aqyt.a("setFlowerVisibility", paramString1, this.mOnRemoteResp.key, paramString2), false, false);
-          return true;
-        }
-        catch (JSONException paramString1) {}
-        if (TextUtils.isEmpty(paramJsBridgeListener)) {
-          break;
-        }
-        callJs(paramJsBridgeListener, new String[] { String.format("{\"result\": -2, \"message\":\"%s\"}", new Object[] { paramString1 }) });
-        return true;
-        label322:
-        boolean bool = false;
-      }
-    }
-    return false;
-  }
-  
-  public void onResponse(Bundle paramBundle)
-  {
-    JSONObject localJSONObject;
-    String str2;
-    String str1;
-    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == this.mOnRemoteResp.key))
-    {
-      localJSONObject = new JSONObject();
-      str2 = paramBundle.getString("cmd");
-      str1 = paramBundle.getString("callbackid");
-      paramBundle = paramBundle.getBundle("response");
-      if (str2 != null)
-      {
-        if (!"close_version".equals(str2)) {
-          break label111;
-        }
-        i = paramBundle.getInt("result");
-      }
-    }
-    label111:
-    do
-    {
-      try
-      {
-        localJSONObject.put("result", i);
-        a(str1, localJSONObject.toString());
-        a();
+      if ((bgrg.a(this.a) == null) || (this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView == null)) {
         return;
       }
-      catch (JSONException paramBundle)
-      {
-        for (;;)
-        {
-          paramBundle.printStackTrace();
-        }
-      }
-      if ("getFlowerVisibility".equals(str2))
-      {
-        if (paramBundle.getBoolean("result")) {}
-        for (i = 1;; i = 0)
-        {
-          callJs(str1, new String[] { String.format("{\"result\":0, \"data\":{\"isVisible\":%d}}", new Object[] { Integer.valueOf(i) }) });
-          return;
-        }
-      }
-    } while (!"setFlowerVisibility".equals(str2));
-    int i = paramBundle.getInt("result");
-    if (i == 0) {}
-    for (paramBundle = "{\"result\":0}";; paramBundle = String.format("{\"result\": %d, \"message\":\"Unknown error\"}", new Object[] { Integer.valueOf(i) }))
+    }
+    if (paramInt == 20005)
     {
-      callJs(str1, new String[] { paramBundle });
+      bgrg.a(this.a).jdField_a_of_type_Int = 3;
+      paramString = (bgko)((AppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.TROOP_GIFT_MANAGER);
+      if (this.a.jdField_a_of_type_Int > 3) {
+        paramString.a("OidbSvc.0x7f7", 2039, this.a.jdField_a_of_type_Int, bgrg.a(this.a).frienduin, bgrg.a(this.a).bagId, 3000L, bgrg.a(this.a));
+      }
+    }
+    String str1;
+    String str2;
+    label300:
+    do
+    {
+      for (;;)
+      {
+        return;
+        paramString.a("OidbSvc.0x6b5", 1717, this.a.jdField_a_of_type_Int, bgrg.a(this.a).frienduin, bgrg.a(this.a).bagId, 3000L, bgrg.a(this.a));
+      }
+      if (paramInt != -1) {
+        break label498;
+      }
+      str1 = bgrg.a(this.a).getResources().getString(2131697500);
+      str2 = com.tencent.mobileqq.app.AppConstants.NET_TYPE_NAME[com.tencent.mobileqq.utils.NetworkUtil.getSystemNetwork(bgrg.a(this.a))];
+      if (this.a.jdField_a_of_type_Int < 4) {
+        break;
+      }
+      anzp.a("cartoon", "timeout", bgrg.a(this.a).frienduin, bglb.b(bgrg.a(this.a)) + str2, "", "");
+      break label547;
+      if (!(this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView instanceof TroopGiftToAllSurfaceView)) {
+        break label550;
+      }
+      ((TroopGiftToAllSurfaceView)this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView).a(paramString, bgrg.a(this.a).n, DisplayUtil.dip2px(bgrg.a(this.a), 16.0F));
+      bgrg.a(this.a).jdField_a_of_type_Int = 2;
+    } while (bgrg.a(this.a).c <= 0L);
+    if (bgrg.a(this.a).b > bgrg.a(this.a).c + 3000L)
+    {
+      return;
+      if (bgrg.a(this.a) == null) {
+        break label552;
+      }
+    }
+    label547:
+    label550:
+    label552:
+    for (paramString = "0";; paramString = "1")
+    {
+      bdla.b(null, "dc00899", "Grp_flower", "", "forall", "timeout", 0, 0, "" + bgrg.a(this.a).frienduin, "" + bglb.b(bgrg.a(this.a)), paramString, str2);
+      break label547;
+      label498:
+      paramString = bgrg.a(this.a).getResources().getString(2131697499);
+      break label300;
+      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(bgrg.a(this.a));
+      this.a.a(2000L);
+      break;
+      paramString = str1;
+      break label300;
+      break;
+    }
+  }
+  
+  public void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, String paramString)
+  {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView == null) {
+      return;
+    }
+    synchronized (this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView)
+    {
+      if ((bgrg.a(this.a) == null) || (this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView == null)) {
+        return;
+      }
+    }
+    bgrg.a(this.a).b = NetConnInfoCenter.getServerTimeMillis();
+    bgrg.a(this.a).jdField_a_of_type_Int = 2;
+    if (bgrg.a(this.a).c > 0L)
+    {
+      if (bgrg.a(this.a).b > bgrg.a(this.a).c + 3000L) {
+        return;
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(bgrg.a(this.a));
+      this.a.a(2000L);
+    }
+    if (!TextUtils.isEmpty(paramString)) {
+      if (paramInt1 <= 0) {
+        break label224;
+      }
+    }
+    label224:
+    for (paramInt1 = bgrg.a(this.a).m;; paramInt1 = bgrg.a(this.a).n)
+    {
+      ((TroopGiftToAllSurfaceView)this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView).a(paramString, paramInt1, DisplayUtil.dip2px(bgrg.a(this.a), 16.0F));
+      ((TroopGiftToAllSurfaceView)this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView).a();
       return;
     }
   }

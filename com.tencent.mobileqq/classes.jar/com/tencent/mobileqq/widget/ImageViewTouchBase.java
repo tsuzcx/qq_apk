@@ -13,8 +13,8 @@ import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bhex;
-import bhip;
+import bipp;
+import bitf;
 
 public abstract class ImageViewTouchBase
   extends ImageView
@@ -22,14 +22,14 @@ public abstract class ImageViewTouchBase
   static final float SCALE_RATE = 1.15F;
   private boolean bShadow;
   protected Matrix mBaseMatrix = new Matrix();
-  protected final bhip mBitmapDisplayed = new bhip(null);
+  protected final bitf mBitmapDisplayed = new bitf(null);
   private final Matrix mDisplayMatrix = new Matrix();
   protected Handler mHandler = new Handler();
   private final float[] mMatrixValues = new float[9];
   float mMaxZoom = 3.0F;
   float mMinZoom = 0.5F;
   private Runnable mOnLayoutRunnable;
-  private bhex mRecycler;
+  private bipp mRecycler;
   protected Matrix mSuppMatrix = new Matrix();
   int mThisHeight = -1;
   int mThisWidth = -1;
@@ -47,15 +47,15 @@ public abstract class ImageViewTouchBase
     init();
   }
   
-  private void getProperBaseMatrix(bhip parambhip, Matrix paramMatrix)
+  private void getProperBaseMatrix(bitf parambitf, Matrix paramMatrix)
   {
     float f1 = getWidth();
     float f2 = getHeight();
-    float f3 = parambhip.c();
-    float f4 = parambhip.b();
+    float f3 = parambitf.c();
+    float f4 = parambitf.b();
     paramMatrix.reset();
     float f5 = Math.min(Math.min(f1 / f3, 3.0F), Math.min(f2 / f4, 3.0F));
-    paramMatrix.postConcat(parambhip.a());
+    paramMatrix.postConcat(parambitf.a());
     paramMatrix.postScale(f5, f5);
     paramMatrix.postTranslate((f1 - f3 * f5) / 2.0F, (f2 - f4 * f5) / 2.0F);
   }
@@ -186,7 +186,7 @@ public abstract class ImageViewTouchBase
     return this.mMaxZoom;
   }
   
-  public bhip getRotateBitmap()
+  public bitf getRotateBitmap()
   {
     return this.mBitmapDisplayed;
   }
@@ -326,20 +326,20 @@ public abstract class ImageViewTouchBase
   
   public void setImageBitmapResetBase(Bitmap paramBitmap, boolean paramBoolean)
   {
-    setImageRotateBitmapResetBase(new bhip(paramBitmap), paramBoolean);
+    setImageRotateBitmapResetBase(new bitf(paramBitmap), paramBoolean);
   }
   
-  public void setImageRotateBitmapResetBase(bhip parambhip, boolean paramBoolean)
+  public void setImageRotateBitmapResetBase(bitf parambitf, boolean paramBoolean)
   {
     if (getWidth() <= 0)
     {
-      this.mOnLayoutRunnable = new ImageViewTouchBase.1(this, parambhip, paramBoolean);
+      this.mOnLayoutRunnable = new ImageViewTouchBase.1(this, parambitf, paramBoolean);
       return;
     }
-    if (parambhip.a() != null)
+    if (parambitf.a() != null)
     {
-      getProperBaseMatrix(parambhip, this.mBaseMatrix);
-      setImageBitmap(parambhip.a(), parambhip.a());
+      getProperBaseMatrix(parambitf, this.mBaseMatrix);
+      setImageBitmap(parambitf.a(), parambitf.a());
     }
     for (;;)
     {
@@ -354,9 +354,9 @@ public abstract class ImageViewTouchBase
     }
   }
   
-  public void setRecycler(bhex parambhex)
+  public void setRecycler(bipp parambipp)
   {
-    this.mRecycler = parambhex;
+    this.mRecycler = parambipp;
   }
   
   public void setShadow(boolean paramBoolean)

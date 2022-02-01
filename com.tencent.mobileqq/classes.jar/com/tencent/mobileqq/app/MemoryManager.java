@@ -1,10 +1,8 @@
 package com.tencent.mobileqq.app;
 
-import aafl;
-import aafp;
-import achu;
-import amtg;
-import amxy;
+import aaux;
+import aavb;
+import acyc;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
@@ -15,7 +13,9 @@ import android.os.Debug.MemoryInfo;
 import android.os.Process;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
-import bcer;
+import anvu;
+import aoam;
+import bdlm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mobileqq.startup.step.HackVm;
@@ -92,7 +92,7 @@ public class MemoryManager
     if (QLog.isColorLevel()) {
       QLog.d("Q.Memory.MemoryManager", 2, "memory manager set need report = " + this.mNeedReport);
     }
-    registerListener(aafp.a());
+    registerListener(aavb.a());
   }
   
   public static long getAvailClassSize()
@@ -300,11 +300,11 @@ public class MemoryManager
             throw new IllegalStateException("imageHitRate illegal");
           }
           localHashMap.put("imageHitRate", String.valueOf(paramLong2));
-          localHashMap.put("guardConfigId", amtg.a().a());
+          localHashMap.put("guardConfigId", anvu.a().a());
           localHashMap.put("memoryConfigId", MagnifierSDK.a().a().jdField_a_of_type_JavaLangString);
           localHashMap.put("osVersion", Build.VERSION.RELEASE);
           localHashMap.put("resolution", DeviceInfoUtil.getResolutionString());
-          if (MagnifierSDK.a().a().jdField_a_of_type_Aafl.jdField_a_of_type_Boolean)
+          if (MagnifierSDK.a().a().jdField_a_of_type_Aaux.jdField_a_of_type_Boolean)
           {
             localObject = "1";
             label838:
@@ -375,7 +375,7 @@ public class MemoryManager
       StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "oomInfo", true, 0L, 0L, localHashMap, null);
       localSharedPreferences.edit().putLong("oom_scid_count", 0L);
       localSharedPreferences.edit().remove("leak_actvity_count").commit();
-      aafp.a().c();
+      aavb.a().c();
       return;
     }
   }
@@ -445,8 +445,8 @@ public class MemoryManager
       for (long l1 = l2;; l1 = 0L)
       {
         localEditor.putLong("en_sucide_ab", l1);
-        localSharedPreferences.edit().putString("key_top_act", amxy.a());
-        localSharedPreferences.edit().putString("key_mem_usg", bcer.a().a());
+        localSharedPreferences.edit().putString("key_top_act", aoam.a());
+        localSharedPreferences.edit().putString("key_mem_usg", bdlm.a().a());
         localSharedPreferences.edit().commit();
         return;
         l1 = 0L;

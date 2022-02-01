@@ -1,31 +1,17 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.turingfd.sdk.xq.TuringFdConfig;
-import com.tencent.turingfd.sdk.xq.TuringFdConfig.Builder;
-import com.tencent.turingfd.sdk.xq.TuringFdService;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
-public class bfte
+class bfte
+  implements DialogInterface.OnClickListener
 {
-  private static boolean a;
+  bfte(bftd parambftd) {}
   
-  public static void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Context localContext = BaseApplicationImpl.getContext().getApplicationContext();
-    if (!a) {
-      QLog.d("TuringSdkInitHelper", 1, "init TuringSDK");
-    }
-    try
-    {
-      TuringFdService.init(TuringFdConfig.newBuilder(localContext, "").appid("1109803375").build());
-      a = true;
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("TuringSdkInitHelper", 1, localThrowable, new Object[] { "Turing init crash fail" });
-      throw localThrowable;
+    this.a.a.a(this.a.a.a);
+    if (ReciteRecordLayout.a(this.a.a) != null) {
+      ReciteRecordLayout.a(this.a.a).f();
     }
   }
 }

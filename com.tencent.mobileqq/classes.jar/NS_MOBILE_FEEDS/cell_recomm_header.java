@@ -11,6 +11,7 @@ public final class cell_recomm_header
 {
   static s_button cache_left_top_button = new s_button();
   static Map<String, s_picurl> cache_mapCoverUrl = new HashMap();
+  static s_picurl cache_rightBgPic = new s_picurl();
   public String action_type = "";
   public String action_url = "";
   public byte btn_type;
@@ -22,6 +23,7 @@ public final class cell_recomm_header
   public s_button left_top_button;
   public Map<String, s_picurl> mapCoverUrl;
   public long recomm_uin;
+  public s_picurl rightBgPic;
   public String right_title = "";
   
   static
@@ -32,7 +34,7 @@ public final class cell_recomm_header
   
   public cell_recomm_header() {}
   
-  public cell_recomm_header(String paramString1, byte paramByte, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, Map<String, s_picurl> paramMap, long paramLong, String paramString5, String paramString6, s_button params_button)
+  public cell_recomm_header(String paramString1, byte paramByte, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, Map<String, s_picurl> paramMap, long paramLong, String paramString5, String paramString6, s_button params_button, s_picurl params_picurl)
   {
     this.left_title = paramString1;
     this.btn_type = paramByte;
@@ -46,6 +48,7 @@ public final class cell_recomm_header
     this.action_url = paramString5;
     this.action_type = paramString6;
     this.left_top_button = params_button;
+    this.rightBgPic = params_picurl;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -62,6 +65,7 @@ public final class cell_recomm_header
     this.action_url = paramJceInputStream.readString(9, false);
     this.action_type = paramJceInputStream.readString(10, false);
     this.left_top_button = ((s_button)paramJceInputStream.read(cache_left_top_button, 11, false));
+    this.rightBgPic = ((s_picurl)paramJceInputStream.read(cache_rightBgPic, 12, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -93,6 +97,9 @@ public final class cell_recomm_header
     }
     if (this.left_top_button != null) {
       paramJceOutputStream.write(this.left_top_button, 11);
+    }
+    if (this.rightBgPic != null) {
+      paramJceOutputStream.write(this.rightBgPic, 12);
     }
   }
 }

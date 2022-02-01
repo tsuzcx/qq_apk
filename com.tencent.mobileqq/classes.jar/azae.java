@@ -1,35 +1,20 @@
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.profilesetting.InterestSwitchEditActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import android.text.TextPaint;
+import android.widget.TextView;
+import com.tencent.mobileqq.text.QQTextBuilder;
 
-public class azae
-  implements ayzv
+class azae
+  extends Editable.Factory
 {
-  public azae(InterestSwitchEditActivity paramInterestSwitchEditActivity, azaz paramazaz, bjnw parambjnw) {}
+  azae(azac paramazac, TextView paramTextView) {}
   
-  public void a(@NotNull View paramView, @Nullable ayzt paramayzt)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    if (bmbv.a(paramView)) {
-      return;
+    if ((paramCharSequence instanceof QQTextBuilder)) {
+      return (Editable)paramCharSequence;
     }
-    if ((paramayzt == null) || (this.jdField_a_of_type_Azaz.g() == paramayzt.a())) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-      InterestSwitchEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilesettingInterestSwitchEditActivity, paramayzt.a(), this.jdField_a_of_type_Azaz);
-      if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
-      {
-        QQToast.a(BaseApplicationImpl.sApplication, 2131694062, 0).b(this.jdField_a_of_type_ComTencentMobileqqProfilesettingInterestSwitchEditActivity.getTitleBarHeight());
-        return;
-      }
-      InterestSwitchEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilesettingInterestSwitchEditActivity, this.jdField_a_of_type_Azaz, paramayzt.a());
-    }
+    return new QQTextBuilder(paramCharSequence, 3, (int)(this.jdField_a_of_type_AndroidWidgetTextView.getTextSize() / this.jdField_a_of_type_AndroidWidgetTextView.getPaint().density));
   }
 }
 

@@ -1,69 +1,34 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.view.Window;
+import android.content.Intent;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class mup
-  extends bjnw
+final class mup
+  extends BroadcastReceiver
 {
-  public static boolean a;
-  boolean b = false;
-  
-  protected mup(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramContext, paramBoolean1, paramBoolean2);
-  }
-  
-  public static mup a(Context paramContext)
-  {
-    paramContext = new mup(paramContext, false, false);
-    paramContext.getWindow().setWindowAnimations(2131755228);
-    return paramContext;
-  }
-  
-  public static boolean a()
-  {
-    return a;
-  }
-  
-  public void dismiss()
-  {
-    a = false;
-    this.b = false;
-    super.dismiss();
-  }
-  
-  public void onDetachedFromWindow()
-  {
-    if (this.b)
-    {
-      a = false;
-      this.b = false;
-    }
-    super.onDetachedFromWindow();
-  }
-  
-  public void onStop()
-  {
-    if (this.b)
-    {
-      a = false;
-      this.b = false;
-    }
-    super.onStop();
-  }
-  
-  public void show()
-  {
-    if (a == true) {
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    while (!muo.a.equals(paramIntent.getAction())) {
       return;
     }
-    a = true;
-    this.b = true;
-    super.show();
+    if (QLog.isDevelopLevel()) {
+      QLog.w("SensorReport", 1, "H264_decode");
+    }
+    HashMap localHashMap = (HashMap)paramIntent.getSerializableExtra("params");
+    paramIntent = paramIntent.getStringExtra("key");
+    paramContext = paramIntent;
+    if (paramIntent == null) {
+      paramContext = muo.a;
+    }
+    UserAction.onUserAction(paramContext, true, -1L, -1L, localHashMap, true, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mup
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,15 @@
-import com.tencent.mobileqq.data.troop.TroopMemberInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class beps
-  implements ancx
+  implements DialogInterface.OnClickListener
 {
-  beps(bepr parambepr, String paramString1, String paramString2, bepu parambepu) {}
+  beps(bepr parambepr) {}
   
-  public void a(TroopMemberInfo paramTroopMemberInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    List localList = null;
-    if (paramTroopMemberInfo != null) {
-      localList = this.jdField_a_of_type_Bepr.a(paramTroopMemberInfo.honorList);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopHonor.manager", 2, String.format("getTroopHonorList, troopUin: %s, memberUin: %s, honorList: %s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b, localList }));
-    }
-    if (this.jdField_a_of_type_Bepu != null) {
-      this.jdField_a_of_type_Bepu.a(localList);
-    }
+    bepg.a(this.a.a).finish();
   }
 }
 

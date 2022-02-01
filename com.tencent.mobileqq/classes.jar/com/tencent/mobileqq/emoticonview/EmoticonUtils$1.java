@@ -2,8 +2,8 @@ package com.tencent.mobileqq.emoticonview;
 
 import android.app.Activity;
 import android.os.Message;
-import avtb;
-import bcef;
+import awzc;
+import bdla;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -12,7 +12,7 @@ import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 import mqq.os.MqqHandler;
 
 final class EmoticonUtils$1
-  implements avtb<EmoticonPackage>
+  implements awzc<EmoticonPackage>
 {
   EmoticonUtils$1(SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface, int paramInt, Activity paramActivity) {}
   
@@ -24,16 +24,16 @@ final class EmoticonUtils$1
       if (paramEmoticonPackage != null) {
         paramEmoticonPackage.obtainMessage(22, String.valueOf(this.val$touchedEpIdFinal)).sendToTarget();
       }
-      bcef.b(this.val$app, "CliOper", "", "", "ep_mall", "0X8006FFE", 0, 0, String.valueOf(this.val$touchedEpIdFinal), String.valueOf(this.val$touchedEpIdFinal), "", "");
+      bdla.b(this.val$app, "CliOper", "", "", "ep_mall", "0X8006FFE", 0, 0, String.valueOf(this.val$touchedEpIdFinal), String.valueOf(this.val$touchedEpIdFinal), "", "");
       return;
     }
     EmojiHomeUiPlugin.openEmojiDetailPage(this.val$context, this.val$app.getAccount(), 8, String.valueOf(this.val$touchedEpIdFinal), false, true);
-    bcef.b(this.val$app, "CliOper", "", "", "ep_mall", "0X8006FFF", 0, 0, String.valueOf(this.val$touchedEpIdFinal), String.valueOf(this.val$touchedEpIdFinal), "", "");
+    bdla.b(this.val$app, "CliOper", "", "", "ep_mall", "0X8006FFF", 0, 0, String.valueOf(this.val$touchedEpIdFinal), String.valueOf(this.val$touchedEpIdFinal), "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonUtils.1
  * JD-Core Version:    0.7.0.1
  */

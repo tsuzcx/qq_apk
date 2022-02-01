@@ -1,25 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
-import dov.com.qq.im.ae.camera.ui.panel.AEMaterialProviderView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
-public class blsl
-  implements Animation.AnimationListener
+class blsl
+  extends BroadcastReceiver
 {
-  public blsl(AEMaterialPanel paramAEMaterialPanel) {}
+  blsl(blsk paramblsk) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (AEMaterialPanel.a(this.a) != null)
-    {
-      AEMaterialPanel.a(this.a).setAlpha(1.0F);
-      AEMaterialPanel.a(this.a).setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.d("PluginRedTouchManager", 2, "Received red touch push");
     }
+    blsk.a(this.a);
+    blsk.b(this.a);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

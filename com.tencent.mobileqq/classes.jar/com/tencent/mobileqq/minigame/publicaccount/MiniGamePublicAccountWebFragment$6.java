@@ -2,10 +2,10 @@ package com.tencent.mobileqq.minigame.publicaccount;
 
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import bhle;
+import bivu;
 
 class MiniGamePublicAccountWebFragment$6
-  implements bhle
+  implements bivu
 {
   MiniGamePublicAccountWebFragment$6(MiniGamePublicAccountWebFragment paramMiniGamePublicAccountWebFragment) {}
   

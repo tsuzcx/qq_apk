@@ -1,27 +1,44 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class amlw
+final class amlw
+  implements EIPCResultCallback
 {
-  public amlu a;
-  public View a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  public RedTouch a;
-  public ImageView b;
-  public RelativeLayout b;
-  public TextView b;
-  public ImageView c;
-  public RelativeLayout c;
-  public TextView c;
-  public ImageView d;
-  public ImageView e;
+  amlw(anfj paramanfj) {}
+  
+  public void onCallback(EIPCResult paramEIPCResult)
+  {
+    String str = paramEIPCResult.data.getString("apolloErrMsg");
+    long l = paramEIPCResult.data.getLong("startTime");
+    QLog.d("cm_res", 1, "static checkDownloadFaceData errMsg : " + str);
+    if (paramEIPCResult.isSuccess())
+    {
+      if (this.a != null) {
+        this.a.onDownloadFinish(true, paramEIPCResult.code);
+      }
+      anlx.a("apollo_face_data", String.valueOf(System.currentTimeMillis() - l), str);
+      if (!paramEIPCResult.isSuccess()) {
+        break label166;
+      }
+    }
+    label166:
+    for (int i = 0;; i = paramEIPCResult.code)
+    {
+      if (paramEIPCResult.isSuccess()) {
+        str = "";
+      }
+      anis.a(132, String.valueOf(l), 4, i, new Object[] { str });
+      anis.b(132, String.valueOf(l));
+      return;
+      if (this.a == null) {
+        break;
+      }
+      this.a.onDownloadFinish(false, paramEIPCResult.code);
+      break;
+    }
+  }
 }
 
 

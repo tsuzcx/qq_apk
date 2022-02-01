@@ -1,19 +1,24 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
 class sve
-  implements svf
+  extends suv
 {
-  sve(sup paramsup) {}
+  sve(suw paramsuw) {}
   
-  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    paramViewBase = paramProteusItemData.c;
-    if ((paramViewBase != null) && ((paramContext instanceof FastWebActivity))) {
-      swl.a(paramViewBase, (FastWebActivity)paramContext, paramProteusItemData.b, paramProteusItemData.a);
+    if ((paramBaseArticleInfo.qzoneShareUrl != null) && (paramBaseArticleInfo.qzoneShareUrl.contains("kandianshare.html5.qq.com")))
+    {
+      suw.a(this.a).a(paramBaseArticleInfo.qzoneShareUrl);
+      return;
     }
+    suw.a(this.a).a(paramString + "&sourcefrom=6");
+  }
+  
+  public int c()
+  {
+    return 6;
   }
 }
 

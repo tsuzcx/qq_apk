@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.teamwork;
 
-import amtj;
 import android.os.Handler;
 import android.os.Message;
-import aqkv;
-import aqkw;
-import bcef;
-import bcum;
-import bcvf;
-import bcvs;
-import bcxh;
+import anvx;
+import arog;
+import aroh;
+import bdla;
+import bebl;
+import bece;
+import becr;
+import beeg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.FileUtils;
@@ -19,7 +19,7 @@ import org.json.JSONObject;
 public class TeamWorkFileImportHandler$1
   implements Runnable
 {
-  public TeamWorkFileImportHandler$1(bcum parambcum, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  public TeamWorkFileImportHandler$1(bebl parambebl, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
   
   public void run()
   {
@@ -32,36 +32,36 @@ public class TeamWorkFileImportHandler$1
       if ((bool2) || ((this.this$0.app != null) && (bool3) && (bool1))) {
         break label192;
       }
-      bcxh.a("TeamWorkFileImportHandler", "import fail", "filePath is null or app is null", this.a.k);
-      if (bcum.a(this.this$0) != null)
+      beeg.a("TeamWorkFileImportHandler", "import fail", "filePath is null or app is null", this.a.k);
+      if (bebl.a(this.this$0) != null)
       {
-        localObject1 = bcum.a(this.this$0).obtainMessage(8002);
+        localObject1 = bebl.a(this.this$0).obtainMessage(8002);
         ((Message)localObject1).obj = this.a;
         if (bool3) {
           break label170;
         }
-        this.a.h = BaseApplicationImpl.getApplication().getString(2131718861);
+        this.a.h = BaseApplicationImpl.getApplication().getString(2131719254);
       }
     }
     for (;;)
     {
-      bcum.a(this.this$0).sendMessage((Message)localObject1);
+      bebl.a(this.this$0).sendMessage((Message)localObject1);
       return;
-      bool1 = bcvs.a(aqkw.a().a(), this.a.c, this.a.b, this.a.jdField_d_of_type_Long);
+      bool1 = becr.a(aroh.a().a(), this.a.c, this.a.b, this.a.jdField_d_of_type_Long);
       break;
       label170:
       if (!bool1) {
-        this.a.h = BaseApplicationImpl.getApplication().getString(2131718854);
+        this.a.h = BaseApplicationImpl.getApplication().getString(2131719247);
       }
     }
     label192:
     long l1 = System.currentTimeMillis();
-    Object localObject1 = bcvf.a(this.a, this.this$0.app.getCurrentAccountUin());
+    Object localObject1 = bece.a(this.a, this.this$0.app.getCurrentAccountUin());
     long l2 = System.currentTimeMillis();
     Object localObject2 = "";
     if (localObject1 != null)
     {
-      bool1 = bcum.a(this.this$0, (String)localObject1, this.a);
+      bool1 = bebl.a(this.this$0, (String)localObject1, this.a);
       try
       {
         localObject1 = new JSONObject((String)localObject1).getString("url");
@@ -77,7 +77,7 @@ public class TeamWorkFileImportHandler$1
           QLog.e("TeamWorkFileImportHandler", 1, localException.toString());
         }
       }
-      localObject1 = amtj.a(2131713834);
+      localObject1 = anvx.a(2131714181);
       if (this.a.e != 3) {
         break label454;
       }
@@ -93,16 +93,16 @@ public class TeamWorkFileImportHandler$1
     label511:
     for (int i = 1;; i = 2)
     {
-      bcef.b(localQQAppInterface, "dc00898", "", "", "0X8009955", "0X8009955", j, i, l2 - l1 + "", "", (String)localObject1, (String)localObject2);
-      if ((bool1) || (bcum.a(this.this$0) == null)) {
+      bdla.b(localQQAppInterface, "dc00898", "", "", "0X8009955", "0X8009955", j, i, l2 - l1 + "", "", (String)localObject1, (String)localObject2);
+      if ((bool1) || (bebl.a(this.this$0) == null)) {
         break;
       }
-      localObject1 = bcum.a(this.this$0).obtainMessage(8002);
+      localObject1 = bebl.a(this.this$0).obtainMessage(8002);
       ((Message)localObject1).obj = this.a;
-      bcum.a(this.this$0).sendMessage((Message)localObject1);
+      bebl.a(this.this$0).sendMessage((Message)localObject1);
       return;
       this.a.f = -1000;
-      bcxh.a("TeamWorkFileImportHandler", "import fail", "local file network fail", this.a.k);
+      beeg.a("TeamWorkFileImportHandler", "import fail", "local file network fail", this.a.k);
       bool1 = false;
       break label264;
       if (this.a.e == 6)
@@ -125,7 +125,7 @@ public class TeamWorkFileImportHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkFileImportHandler.1
  * JD-Core Version:    0.7.0.1
  */

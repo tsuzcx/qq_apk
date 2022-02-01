@@ -1,71 +1,52 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.View;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.vipav.VipFullScreenVideoView;
-import com.tencent.mobileqq.vipav.VipFunCallPreviewActivity;
-import java.util.ArrayList;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class bgqz
-  extends Handler
+class bgqz
+  implements ITransactionCallback
 {
-  public bgqz(VipFunCallPreviewActivity paramVipFunCallPreviewActivity, Looper paramLooper)
+  bgqz(bgqy parambgqy) {}
+  
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    super(paramLooper);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "upload onFailed errn:" + paramInt);
+    }
+    this.a.e();
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    switch (paramMessage.what)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "upload onSuccess");
     }
-    BitmapDrawable localBitmapDrawable;
-    do
+    paramHashMap = new Bdh_extinfo.CommFileExtRsp();
+    try
     {
-      RelativeLayout localRelativeLayout;
-      do
+      paramHashMap.mergeFrom(paramArrayOfByte);
+      this.a.b = paramHashMap.bytes_download_url.get().toStringUtf8();
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.b();
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
       {
-        do
-        {
-          return;
-          if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-          {
-            if (this.a.jdField_a_of_type_Boolean)
-            {
-              if ((this.a.g instanceof Button)) {
-                ((Button)this.a.g).setText(amtj.a(2131715749));
-              }
-              this.a.g.setEnabled(false);
-              return;
-            }
-            this.a.g.setEnabled(true);
-            return;
-          }
-          if (this.a.jdField_a_of_type_Boolean)
-          {
-            this.a.g.setVisibility(0);
-            this.a.g.setEnabled(true);
-            if ((this.a.g instanceof Button)) {
-              ((Button)this.a.g).setText(amtj.a(2131715743));
-            }
-            this.a.g.setEnabled(false);
-            this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-            this.a.f.setVisibility(8);
-            return;
-          }
-          this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-          return;
-        } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof BitmapDrawable)));
-        localRelativeLayout = (RelativeLayout)this.a.findViewById(2131380887);
-        localBitmapDrawable = (BitmapDrawable)paramMessage.obj;
-      } while ((localBitmapDrawable == null) || (localRelativeLayout == null));
-      localRelativeLayout.setBackgroundDrawable(localBitmapDrawable);
-    } while (paramMessage.arg1 != 1);
-    this.a.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView.setBackgroundDrawable(localBitmapDrawable);
+        paramArrayOfByte.printStackTrace();
+      }
+    }
   }
+  
+  public void onSwitch2BackupChannel() {}
+  
+  public void onTransStart() {}
+  
+  public void onUpdateProgress(int paramInt) {}
 }
 
 

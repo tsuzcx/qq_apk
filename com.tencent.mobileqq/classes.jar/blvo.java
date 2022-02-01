@@ -1,18 +1,6 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.predownload.RunnableTask;
-
-class blvo
-  extends RunnableTask
+public abstract interface blvo
 {
-  blvo(blvn paramblvn, QQAppInterface paramQQAppInterface, String paramString, Runnable paramRunnable, long paramLong)
-  {
-    super(paramQQAppInterface, paramString, paramRunnable, paramLong);
-  }
-  
-  public void realCancel()
-  {
-    bmbx.b("AEResManager", "[startPreDownLoad], preDownloadTask.realCancel()");
-  }
+  public abstract void onPreloadEnd();
 }
 
 

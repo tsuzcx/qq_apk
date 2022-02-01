@@ -1,26 +1,11 @@
-import android.net.ConnectivityManager.NetworkCallback;
-import android.net.Network;
-import android.os.Handler;
-import android.support.annotation.RequiresApi;
-import com.tencent.biz.pubaccount.readinjoy.video.bandwidth.BandwidthPredictor.NetworkCallbackImpl.1;
-import com.tencent.biz.pubaccount.readinjoy.video.bandwidth.BandwidthPredictor.NetworkCallbackImpl.2;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
 
-@RequiresApi(21)
-public final class sfe
-  extends ConnectivityManager.NetworkCallback
+public abstract interface sfe
 {
-  private sfe(sfc paramsfc) {}
+  public abstract void a(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment);
   
-  public void onAvailable(@Nullable Network paramNetwork)
-  {
-    sfc.a(this.a).post(new BandwidthPredictor.NetworkCallbackImpl.1(this));
-  }
-  
-  public void onLost(@Nullable Network paramNetwork)
-  {
-    sfc.a(this.a).post(new BandwidthPredictor.NetworkCallbackImpl.2(this));
-  }
+  public abstract void a(ViolaFragment paramViolaFragment);
 }
 
 

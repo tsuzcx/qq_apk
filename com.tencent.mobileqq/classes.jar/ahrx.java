@@ -1,65 +1,21 @@
-import android.content.Context;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.conditionsearch.widget.TimeSelectView;
-import java.util.Calendar;
-import java.util.Date;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
 class ahrx
-  implements aprs
+  implements DialogInterface.OnKeyListener
 {
-  ahrx(ahru paramahru) {}
+  ahrx(ahri paramahri) {}
   
-  public int a()
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    return 2;
-  }
-  
-  public int a(int paramInt)
-  {
-    switch (paramInt)
+    if (paramInt == 4)
     {
-    default: 
-      return 1;
-    case 0: 
-      if (this.a.c >= 23) {
-        return 365;
-      }
-      return 366;
+      this.a.n = true;
+      ahri.a(this.a).dismiss();
     }
-    if ((ahru.a(this.a).a(0) == 0) && (this.a.c < 23)) {
-      return this.a.a();
-    }
-    return 24;
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      localObject = "";
-      return localObject;
-    case 0: 
-      Calendar localCalendar = Calendar.getInstance();
-      localCalendar.setFirstDayOfWeek(1);
-      if (this.a.c < 23) {}
-      for (paramInt1 = paramInt2;; paramInt1 = paramInt2 + 1)
-      {
-        localCalendar.add(6, paramInt1);
-        localObject = this.a.a(paramInt2, localCalendar);
-        String str = "" + (String)localObject;
-        localObject = str;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("UpComingMsgLogic.UpcomingTimeSelector", 1, str + " day_of_week " + localCalendar.get(7) + "\n" + localCalendar.getTime().toString());
-        return str;
-      }
-    }
-    if ((ahru.a(this.a).a(0) == 0) && (this.a.c < 23)) {}
-    for (Object localObject = this.a.a(paramInt2);; localObject = paramInt2 + this.a.a.getString(2131694174)) {
-      return "" + (String)localObject;
-    }
+    return false;
   }
 }
 

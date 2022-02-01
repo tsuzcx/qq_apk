@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.emogroupstore;
 
-import aitt;
-import aium;
+import ajpi;
+import ajqb;
 
 public class SDKEmotionSettingManager$19
   implements Runnable
 {
-  public SDKEmotionSettingManager$19(aitt paramaitt, String paramString, int paramInt) {}
+  public SDKEmotionSettingManager$19(ajpi paramajpi, String paramString, int paramInt) {}
   
   public void run()
   {
-    aitt.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    ajpi.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
 }
 

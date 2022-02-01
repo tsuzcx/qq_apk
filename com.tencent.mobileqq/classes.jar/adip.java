@@ -1,133 +1,81 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.ContactCard;
-import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
-import com.tencent.mobileqq.widget.VoteView;
-import com.tencent.mobileqq.widget.VoteViewV2;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.HeightAdaptableListView;
 
 public class adip
-  implements Handler.Callback
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adip(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public adip(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    Object localObject2 = null;
-    boolean bool = false;
-    Object localObject1;
-    if (paramMessage.what == 3) {
-      if ((paramMessage.obj instanceof Card))
+    int j = 1;
+    int k = this.a.jdField_a_of_type_ComTencentWidgetHeightAdaptableListView.getChildCount();
+    int i = 0;
+    Object localObject;
+    if (i < k)
+    {
+      localObject = this.a.jdField_a_of_type_ComTencentWidgetHeightAdaptableListView.getChildAt(i);
+      if ((localObject instanceof FormSwitchItem))
       {
-        localObject1 = (Card)paramMessage.obj;
-        String str = ((Card)localObject1).uin;
-        localObject2 = localObject1;
-        localObject1 = str;
+        localObject = (FormSwitchItem)localObject;
+        if (paramCompoundButton != ((FormSwitchItem)localObject).a()) {}
       }
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.profilecard.FrdProfileCard", 2, "MSG_SWITCH_TO_FRIEND, uin = " + (String)localObject1 + ", obj: " + paramMessage.obj + "");
-      }
-      if ((localObject1 != null) && (((String)localObject1).length() > 0)) {
-        this.a.a(localObject2, (String)localObject1);
-      }
-      label273:
-      label318:
-      label365:
+      if ((localObject == null) || (!(((FormSwitchItem)localObject).getTag() instanceof ajmt))) {}
+      ajmt localajmt;
+      boolean bool;
+      label109:
       do
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                int i;
-                do
-                {
-                  return true;
-                  if (!(paramMessage.obj instanceof String)) {
-                    break label596;
-                  }
-                  localObject1 = (String)paramMessage.obj;
-                  break;
-                  if (paramMessage.what != 5) {
-                    break label318;
-                  }
-                  if (paramMessage.arg1 == 1) {}
-                  for (bool = true;; bool = false)
-                  {
-                    i = paramMessage.arg2;
-                    if (!(paramMessage.obj instanceof Card)) {
-                      break;
-                    }
-                    localObject1 = (Card)paramMessage.obj;
-                    this.a.jdField_a_of_type_Aymg.jdField_a_of_type_ComTencentMobileqqDataCard = ((Card)localObject1);
-                    if (QLog.isColorLevel()) {
-                      QLog.d("Q.profilecard.FrdProfileCard", 2, "UI_MSG_UPDATE_CARD: isNegRet = " + bool + " msgSource = " + i);
-                    }
-                    this.a.a((Card)localObject1, bool);
-                    if (i != 1) {
-                      break label273;
-                    }
-                    this.a.jdField_a_of_type_Bfzm.a("updateCardByDbEnd", false);
-                    return true;
-                  }
-                } while ((i != 7) && (i != 8) && (paramMessage.arg2 != 12) && (paramMessage.arg2 != 11));
-                this.a.jdField_a_of_type_Bfzm.a("updateCardBySSOEnd", false);
-                return true;
-                if (paramMessage.what != 4) {
-                  break label365;
-                }
-                if (paramMessage.arg1 == 1) {
-                  bool = true;
-                }
-              } while (!(paramMessage.obj instanceof ContactCard));
-              paramMessage = (ContactCard)paramMessage.obj;
-              this.a.a(paramMessage, bool);
-              return true;
-              if (paramMessage.what != 10) {
-                break label473;
-              }
-            } while (this.a.jdField_a_of_type_Aymg.jdField_a_of_type_ComTencentMobileqqDataCard == null);
-            if (QLog.isColorLevel()) {
-              QLog.i("Q.profilecard.FrdProfileCard", 2, "initHeaderView timeout");
-            }
-            this.a.jdField_a_of_type_Aymg.jdField_a_of_type_Boolean = true;
-            this.a.jdField_a_of_type_Aymg.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId = aymn.a;
-            this.a.jdField_a_of_type_Aymg.jdField_a_of_type_ComTencentMobileqqDataCard.templateRet = 0;
-            this.a.jdField_a_of_type_Aymg.jdField_a_of_type_Aymn = null;
-            this.a.a(this.a.jdField_a_of_type_Aymg.jdField_a_of_type_ComTencentMobileqqDataCard, false);
-            return true;
-          } while (paramMessage.what != 14);
-          if (this.a.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView == null) {
-            break label539;
-          }
-          paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView.a("map_key_like");
-          if ((paramMessage instanceof VoteView))
-          {
-            ((VoteView)paramMessage).a(true);
-            return true;
-          }
-        } while (!(paramMessage instanceof VoteViewV2));
-        ((VoteViewV2)paramMessage).a(true);
-        return true;
-      } while (paramMessage.arg1 <= 0);
-      label473:
-      localObject1 = this.a.b.obtainMessage();
-      label539:
-      ((Message)localObject1).what = paramMessage.what;
-      ((Message)localObject1).arg1 = (paramMessage.arg1 - 1);
-      this.a.b.sendMessageDelayed((Message)localObject1, 1000L);
-      return true;
-      label596:
-      localObject1 = null;
+        EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+        return;
+        i += 1;
+        break;
+        localajmt = (ajmt)((FormSwitchItem)localObject).getTag();
+        if (paramBoolean) {
+          break label267;
+        }
+        bool = true;
+        localajmt.e = bool;
+        if (this.a.jdField_a_of_type_Ajmy != null) {
+          this.a.jdField_a_of_type_Ajmy.a(localajmt, localajmt.e);
+        }
+        localObject = this.a.app;
+        k = localajmt.a;
+        i = j;
+        if (localajmt.e) {
+          i = 2;
+        }
+        bdla.b((QQAppInterface)localObject, "dc00898", "", "", "0X80097A0", "0X80097A0", k, 0, String.valueOf(i), "", "", "");
+      } while (localajmt.a != 3);
+      QQAppInterface localQQAppInterface = this.a.app;
+      if (paramBoolean)
+      {
+        localObject = "0X8009C0A";
+        label227:
+        if (!paramBoolean) {
+          break label280;
+        }
+      }
+      label267:
+      label280:
+      for (String str = "0X8009C0A";; str = "0X8009C0B")
+      {
+        bdla.b(localQQAppInterface, "dc00898", "", "", (String)localObject, str, localajmt.a, 0, "", "", "", "");
+        break;
+        bool = false;
+        break label109;
+        localObject = "0X8009C0B";
+        break label227;
+      }
+      localObject = null;
     }
   }
 }

@@ -1,31 +1,64 @@
 import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.ViewGroup;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import java.util.ArrayList;
 
-class zpo
-  implements amug
+public abstract class zpo
+  extends zou
 {
-  zpo(zpf paramzpf, Bundle paramBundle) {}
+  private BaseWidgetView a;
+  private boolean c = true;
   
-  public boolean a(amul paramamul)
+  public zpo(Bundle paramBundle)
   {
-    Bundle localBundle = new Bundle();
-    amul localamul = paramamul;
-    if (paramamul == null) {
-      localamul = this.jdField_a_of_type_Zpf.a.a.jdField_a_of_type_Amuh.a(this.jdField_a_of_type_Zpf.a.a.jdField_a_of_type_JavaLangString, 1, amuf.a());
+    super(paramBundle);
+  }
+  
+  public int a()
+  {
+    return 3;
+  }
+  
+  protected abstract BaseWidgetView a(ViewGroup paramViewGroup, zou paramzou);
+  
+  public void a(ArrayList paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    notifyDataSetChanged();
+    if (paramArrayList == null) {
+      return;
     }
-    if (localamul != null)
-    {
-      localBundle.putString("url", localamul.b);
-      localBundle.putString("content", localamul.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+    notifyDataSetChanged();
+  }
+  
+  public int getItemCount()
+  {
+    if (this.c) {
+      return 1;
     }
-    for (;;)
-    {
-      localBundle.putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq", -1));
-      this.jdField_a_of_type_Zpf.a.a(101, localBundle);
-      return false;
-      localBundle.putString("url", "");
-      localBundle.putString("content", "");
+    return 0;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    return 1;
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt) {}
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView == null) {
+      this.jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView = a(paramViewGroup, this);
     }
+    return new zoy(this, this.jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView);
+  }
+  
+  public void onViewAttachedToWindow(RecyclerView.ViewHolder paramViewHolder)
+  {
+    super.onViewAttachedToWindow(paramViewHolder);
   }
 }
 

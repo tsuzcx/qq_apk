@@ -1,31 +1,39 @@
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.vas.update.callback.IReportManager;
-import java.util.HashMap;
+import android.util.SparseArray;
+import com.tencent.mobileqq.troop.data.TroopGiftBagInfo;
+import java.util.List;
+import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
 
-public class bgkn
-  implements IReportManager
+public abstract class bgkn
 {
-  public void reportDLEvent(int paramInt1, long paramLong, String paramString1, String paramString2, boolean paramBoolean, int paramInt2, int paramInt3, int paramInt4, String paramString3, String paramString4, String paramString5)
-  {
-    paramInt1 += 100;
-    if (QLog.isColorLevel()) {
-      QLog.d("VasUpdate_ReportImpl", 2, "reportDLEvent: bid = " + paramLong + " scid = " + paramString1 + " dlFrom = " + paramInt1 + " bIncrement = " + paramBoolean + " errorCode = " + paramInt2 + " httpCode = " + paramInt3 + " count = " + paramInt4);
-    }
-    if ((int)(Math.random() * 10000.0D) == 1)
-    {
-      paramString3 = new HashMap();
-      paramString3.put("from", String.valueOf(paramInt1));
-      paramString3.put("bid", String.valueOf(paramLong));
-      paramString3.put("scid", String.valueOf(paramString1));
-      paramString3.put("md5", String.valueOf(paramString2));
-      paramString3.put("eventCode", String.valueOf(paramInt2));
-      paramString3.put("httpCode", String.valueOf(paramInt3));
-      paramString3.put("retry", String.valueOf(paramInt4));
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "qqvas_updatemgr_complete", false, 0L, -1L, paramString3, "", true);
-    }
-  }
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt1, int paramInt2, String paramString, List<bgky> paramList) {}
+  
+  public void a(int paramInt, String paramString) {}
+  
+  public void a(int paramInt, oidb_0x962.RspBody paramRspBody) {}
+  
+  public void a(long paramLong) {}
+  
+  public void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, String paramString) {}
+  
+  public void a(SparseArray<bgla> paramSparseArray) {}
+  
+  public void a(TroopGiftBagInfo paramTroopGiftBagInfo) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString1, int paramInt, String paramString2) {}
+  
+  public void a(List<bgkz> paramList, aaip paramaaip) {}
+  
+  public void a(long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3) {}
+  
+  public void b(int paramInt) {}
+  
+  public void b(int paramInt, String paramString) {}
+  
+  public void c(int paramInt) {}
 }
 
 

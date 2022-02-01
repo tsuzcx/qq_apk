@@ -1,86 +1,14 @@
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
-public class afst
-  implements afrc
+class afst
+  implements biyn
 {
-  private int jdField_a_of_type_Int = 0;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  afst(afsr paramafsr) {}
   
-  public afst(BaseChatPie paramBaseChatPie)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-  }
-  
-  public String a()
-  {
-    String str = null;
-    if (this.jdField_a_of_type_Int == 1) {
-      str = amtj.a(2131713348);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SpecWordEmotionThinkHelper", 2, " getSpecKeyWord:  mSpecWordType=" + this.jdField_a_of_type_Int);
-    }
-    return str;
-  }
-  
-  public void a()
-  {
-    b();
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    b();
-  }
-  
-  public void a(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SpecWordEmotionThinkHelper", 2, " beforeTextChanged:  start=" + paramInt1 + " after=" + paramInt3 + " count=" + paramInt2);
-    }
-    if ((paramInt2 > paramInt3) || (paramInt3 == 0)) {
-      b();
-    }
-  }
-  
-  public boolean a()
-  {
-    boolean bool = true;
-    if (this.jdField_a_of_type_Int == 1) {}
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SpecWordEmotionThinkHelper", 2, " needSendMixMsg:  mSpecWordType=" + this.jdField_a_of_type_Int);
-      }
-      return bool;
-      bool = false;
-    }
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 13, 18 };
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Int = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("SpecWordEmotionThinkHelper", 2, " clearSpecWordType");
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    if (QLog.isColorLevel()) {
-      QLog.d("SpecWordEmotionThinkHelper", 2, " setSpecWordType:  mSpecWordType=" + this.jdField_a_of_type_Int);
+    if (paramBaseResp.errCode != 0) {
+      afsr.a(this.a, 1, 2131693351);
     }
   }
 }

@@ -1,16 +1,21 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.util.Map;
+import java.util.Set;
 
-class pzb
-  implements bjrf
+public abstract interface pzb
+  extends pyk<BaseArticleInfo>
 {
-  pzb(pza parampza) {}
+  public abstract void a(Map<Long, rot> paramMap, boolean paramBoolean);
   
-  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
-  {
-    pyz.a(this.a.jdField_a_of_type_Pyz, this.a.jdField_a_of_type_Soh, this.a.jdField_a_of_type_Pvc, paramInt, paramArrayList, paramObject);
-  }
+  public abstract void a(Map<Long, rot> paramMap, boolean paramBoolean, Map<Long, uvx> paramMap1, String paramString);
+  
+  public abstract void a(Set<Long> paramSet, Map<Long, rot> paramMap);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean, String paramString);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

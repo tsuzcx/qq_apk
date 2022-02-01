@@ -1,255 +1,58 @@
-import UserGrowth.stSimpleMetaFeed;
-import android.app.Activity;
-import android.content.SharedPreferences;
 import android.text.TextUtils;
-import com.google.gson.Gson;
-import com.tencent.biz.pubaccount.readinjoy.engine.WeishiManager.1;
-import com.tencent.biz.pubaccount.readinjoy.engine.WeishiManager.2;
-import com.tencent.biz.pubaccount.readinjoy.engine.WeishiManager.3;
-import com.tencent.biz.pubaccount.readinjoy.struct.WeishiRedDotInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.component.utils.preference.PreferenceManager;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Iterator;
 import java.util.Map;
-import mqq.manager.Manager;
+import java.util.Set;
 
 public class plv
-  implements Manager
+  implements AladdinConfigHandler
 {
-  private QQAppInterface a;
-  
-  public plv(QQAppInterface paramQQAppInterface)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  private MessageRecord a(MessageRecord paramMessageRecord, String paramString, long paramLong)
-  {
-    if (paramMessageRecord == null) {
-      return null;
-    }
-    MessageRecord localMessageRecord = bbli.a(-1000);
-    MessageRecord.copyMessageRecordBaseField(localMessageRecord, paramMessageRecord);
-    localMessageRecord.msgtype = -1000;
-    a(localMessageRecord, paramString, paramLong);
-    return localMessageRecord;
-  }
-  
-  private void a(MessageRecord paramMessageRecord, String paramString, long paramLong)
-  {
-    paramMessageRecord.issend = 1;
-    paramMessageRecord.isread = true;
-    paramMessageRecord.frienduin = AppConstants.WEISHI_UIN;
-    paramMessageRecord.senderuin = AppConstants.WEISHI_UIN;
-    paramMessageRecord.istroop = 1008;
-    paramMessageRecord.msg = paramString;
-    paramMessageRecord.time = paramLong;
-    paramMessageRecord.createMessageUniseq();
-  }
-  
-  public static boolean a(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord == null) {
-      return false;
-    }
-    return TextUtils.equals(paramMessageRecord.frienduin, AppConstants.WEISHI_UIN);
-  }
-  
-  public static void b(stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    if ((paramstSimpleMetaFeed == null) || (paramstSimpleMetaFeed.map_pass_back == null) || (paramstSimpleMetaFeed.map_pass_back.size() != 0)) {}
-    Object localObject;
-    do
+    QLog.d("KingcardConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    paramString = pku.a(paramString);
+    Object localObject = paramString.keySet();
+    for (;;)
     {
-      do
+      String str1;
+      String str2;
+      try
       {
-        do
+        localObject = ((Set)localObject).iterator();
+        if (((Iterator)localObject).hasNext())
         {
-          return;
-          localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        } while (localObject == null);
-        localObject = (plv)((QQAppInterface)localObject).getManager(274);
-      } while (localObject == null);
-      localObject = FileUtils.readFile(((plv)localObject).b());
-    } while (localObject == null);
-    uya.a("weishi-report", "load map passback length:" + localObject.length);
-    uya.b("weishi-report", "load map passback:" + uyo.a((byte[])localObject));
-    paramstSimpleMetaFeed.map_pass_back.put(Integer.valueOf(1), localObject);
-    paramstSimpleMetaFeed.map_ext.put("recmd_feed_key", new Gson().toJson(paramstSimpleMetaFeed.map_pass_back));
-  }
-  
-  public WeishiRedDotInfo a()
-  {
-    if ((this.a == null) || (this.a.getMessageFacade() == null) || (this.a.getConversationFacade() == null)) {
-      return null;
-    }
-    if (this.a.getMessageFacade().getConversationFacade().a(AppConstants.WEISHI_UIN, 1008) > 0)
-    {
-      MessageRecord localMessageRecord = this.a.getMessageFacade().getLastMsgForMsgTab(AppConstants.WEISHI_UIN, 1008);
-      if ((localMessageRecord instanceof MessageForStructing)) {
-        return new WeishiRedDotInfo((MessageForStructing)localMessageRecord);
-      }
-    }
-    return null;
-  }
-  
-  public MessageForStructing a()
-  {
-    if ((this.a == null) || (this.a.getMessageFacade() == null) || (this.a.getMessageFacade().getConversationFacade() == null)) {
-      return null;
-    }
-    MessageRecord localMessageRecord = this.a.getMessageFacade().getLastMsgForMsgTab(AppConstants.WEISHI_UIN, 1008);
-    if ((localMessageRecord instanceof MessageForStructing)) {
-      return (MessageForStructing)localMessageRecord;
-    }
-    return null;
-  }
-  
-  public MessageRecord a(String paramString, long paramLong)
-  {
-    if (this.a == null) {
-      return null;
-    }
-    MessageRecord localMessageRecord = bbli.a(-1000);
-    localMessageRecord.selfuin = this.a.getCurrentAccountUin();
-    a(localMessageRecord, paramString, paramLong);
-    return localMessageRecord;
-  }
-  
-  public String a()
-  {
-    Object localObject = a();
-    if (localObject != null)
-    {
-      localObject = ((MessageForStructing)localObject).structingMsg;
-      if ((localObject != null) && (!TextUtils.isEmpty(((AbsStructMsg)localObject).mMsgActionData))) {
-        return ((AbsStructMsg)localObject).mMsgActionData;
-      }
-    }
-    return "";
-  }
-  
-  public List<Long> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    if ((this.a == null) || (this.a.getMessageFacade() == null) || (this.a.getMessageFacade().getConversationFacade() == null)) {
-      return null;
-    }
-    Object localObject = this.a.getMessageFacade().getLastMsgForMsgTab(AppConstants.WEISHI_UIN, 1008);
-    if ((localObject instanceof MessageForStructing))
-    {
-      localObject = (MessageForStructing)localObject;
-      if ((((MessageForStructing)localObject).structingMsg != null) && (!TextUtils.isEmpty(((MessageForStructing)localObject).structingMsg.mArticleIds)))
-      {
-        localObject = ((MessageForStructing)localObject).structingMsg.mArticleIds.split("\\|");
-        int i = 0;
-        while (i < localObject.length)
+          str1 = (String)((Iterator)localObject).next();
+          str2 = (String)paramString.get(str1);
+          if (TextUtils.equals(str1, "kingcard_switch")) {
+            bmhv.n(Integer.parseInt(str2));
+          }
+        }
+        else
         {
-          localArrayList.add(Long.valueOf(localObject[i]));
-          i += 1;
+          return true;
         }
       }
-    }
-    return localArrayList;
-  }
-  
-  public void a(stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    String str1 = paramstSimpleMetaFeed.id;
-    String str2 = paramstSimpleMetaFeed.feed_desc;
-    paramstSimpleMetaFeed = paramstSimpleMetaFeed.map_pass_back;
-    QLog.d("WeishiManager", 2, "id:" + str1 + ",feed_desc:" + str2);
-    QQMessageFacade localQQMessageFacade = this.a.getMessageFacade();
-    long l = NetConnInfoCenter.getServerTime();
-    if (localQQMessageFacade != null) {
-      ThreadManager.post(new WeishiManager.3(this, str2, l, localQQMessageFacade, str1, paramstSimpleMetaFeed), 10, null, false);
-    }
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    if (this.a == null) {}
-    Object localObject;
-    do
-    {
-      do
+      catch (Throwable paramString)
       {
-        return;
-        localObject = this.a.getMessageFacade();
-      } while (localObject == null);
-      localObject = ((QQMessageFacade)localObject).getConversationFacade();
-    } while ((localObject == null) || (((abwp)localObject).a(AppConstants.WEISHI_UIN, 1008) <= 0));
-    ThreadManager.post(new WeishiManager.1(this, paramActivity), 8, null, false);
-  }
-  
-  public void a(String paramString, long paramLong)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (this.a == null)) {}
-    QQMessageFacade localQQMessageFacade;
-    do
-    {
-      return;
-      localQQMessageFacade = this.a.getMessageFacade();
-    } while (localQQMessageFacade == null);
-    ThreadManager.post(new WeishiManager.2(this, localQQMessageFacade, paramString, paramLong), 10, null, false);
-  }
-  
-  public String b()
-  {
-    return BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath() + "/file/weishi/ws_recommend_mappassback";
-  }
-  
-  public String c()
-  {
-    try
-    {
-      long l = Long.parseLong(this.a.getCurrentAccountUin());
-      String str = PreferenceManager.getDefaultPreference(this.a.getApplication(), l).getString("key_weishi_newest_feed_id", "");
-      return str;
+        paramString.printStackTrace();
+      }
+      if (TextUtils.equals(str1, "kingcard_guide_url")) {
+        bmhv.i(str2);
+      } else if (TextUtils.equals(str1, "kingcard_tiptext")) {
+        bmhv.j(str2);
+      } else if (TextUtils.equals(str1, "kingcard_jumptext")) {
+        bmhv.k(str2);
+      }
     }
-    catch (Exception localException)
-    {
-      localException = localException;
-      QLog.d("WeishiManager", 2, localException.getMessage(), localException);
-      return "";
-    }
-    finally {}
-    return "";
   }
   
-  public String d()
+  public void onWipeConfig(int paramInt)
   {
-    try
-    {
-      long l = Long.parseLong(this.a.getCurrentAccountUin());
-      String str = PreferenceManager.getDefaultPreference(this.a.getApplication(), l).getString("key_weishi_newest_feed_desc", "");
-      return str;
-    }
-    catch (Exception localException)
-    {
-      localException = localException;
-      QLog.d("WeishiManager", 2, localException.getMessage(), localException);
-      return "";
-    }
-    finally {}
-    return "";
-  }
-  
-  public void onDestroy()
-  {
-    this.a = null;
+    bmhv.n(0);
+    bmhv.i("");
+    bmhv.j("");
+    bmhv.k("");
   }
 }
 

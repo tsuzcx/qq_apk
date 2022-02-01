@@ -1,20 +1,19 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
 
-class aljr
-  implements CompoundButton.OnCheckedChangeListener
+public class aljr
+  implements aljm
 {
-  aljr(aljq paramaljq, RedTouch paramRedTouch, aqmf paramaqmf) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public aljl a()
   {
-    if (!AppSetting.c) {
-      aljq.a(this.jdField_a_of_type_Aljq, this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, this.jdField_a_of_type_Aqmf, paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("BannerConflictExperiment", 2, "[getShouldShowBanner] get strategy 3");
     }
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    aljl localaljl = new aljl();
+    localaljl.a = true;
+    localaljl.b = true;
+    localaljl.c = true;
+    localaljl.g = true;
+    return localaljl;
   }
 }
 

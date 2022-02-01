@@ -1,33 +1,29 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioTransitionAnimManager.1;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.data.Card;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import java.util.Set;
 
 public class afgx
-  implements OnCompositionLoadedListener
+  extends CardObserver
 {
-  public afgx(AudioTransitionAnimManager.1 param1) {}
+  public afgx(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    if (paramLottieComposition == null)
-    {
-      QLog.e("AudioTransitionAnimManager", 2, "getDrawable onCompositionLoaded lottieComposition is null or mIsDestroyed:");
-      return;
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("AudioTransitionAnimManager", 2, "AIOAudioPanel getDrawable finish type" + this.a.jdField_a_of_type_Int);
+      QLog.i("Q.systemmsg.TroopRequestActivity", 2, "onCardDownload() isSuccess = " + paramBoolean + "  data:" + paramObject);
     }
-    afgw.a(this.a.this$0).remove(Integer.valueOf(this.a.jdField_a_of_type_Int));
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    afhc localafhc = new afhc(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_JavaLangString);
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.setImageAssetDelegate(localafhc);
-    afgw.a(this.a.this$0).put(this.a.jdField_a_of_type_JavaLangString, localLottieDrawable);
-    afgw.a(this.a.this$0, localLottieDrawable, this.a.jdField_a_of_type_Int);
+    if (paramObject == null) {}
+    Card localCard;
+    do
+    {
+      do
+      {
+        return;
+      } while ((!paramBoolean) || (!(paramObject instanceof Card)));
+      localCard = (Card)paramObject;
+    } while ((localCard.uin == null) || (!localCard.uin.equals(this.a.b)));
+    TroopRequestActivity.a(this.a, (Card)paramObject);
   }
 }
 

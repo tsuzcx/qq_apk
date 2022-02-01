@@ -1,7 +1,7 @@
 import com.dataline.activities.LiteActivity;
 
 public class bm
-  implements ahbs
+  implements ahus
 {
   public bm(LiteActivity paramLiteActivity) {}
 }

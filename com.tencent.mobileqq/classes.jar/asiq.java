@@ -1,14 +1,23 @@
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
+
 public class asiq
 {
-  public long a;
-  public byte[] a;
-  public long b;
-  public byte[] b;
-  
-  public asiq(asii paramasii)
-  {
-    this.jdField_a_of_type_Long = 0L;
-  }
+  public double a;
+  public float a = 1.0F;
+  public int a;
+  public Drawable a;
+  public EmojiStickerManager.StickerInfo a;
+  public String a;
+  public boolean a;
+  public int b;
+  public Drawable b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
 }
 
 

@@ -1,8 +1,19 @@
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.wadl.ipc.WadlResult;
 
-public abstract interface bmqq
+public final class bmqq
+  implements Parcelable.Creator<WadlResult>
 {
-  public abstract void a(int paramInt, View paramView);
+  public WadlResult a(Parcel paramParcel)
+  {
+    return new WadlResult(paramParcel);
+  }
+  
+  public WadlResult[] a(int paramInt)
+  {
+    return new WadlResult[paramInt];
+  }
 }
 
 

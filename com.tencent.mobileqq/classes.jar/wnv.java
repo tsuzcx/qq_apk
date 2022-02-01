@@ -1,24 +1,14 @@
-import android.text.TextUtils;
-import java.util.Collections;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
 public class wnv
+  implements bipw
 {
-  public static ConcurrentHashMap<String, Long> a = new ConcurrentHashMap();
+  public wnv(StoryMsgNodeFrameLayout paramStoryMsgNodeFrameLayout) {}
   
-  public static void a(String paramString)
+  public void a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    long l;
-    Long localLong;
-    do
-    {
-      return;
-      l = System.currentTimeMillis();
-      localLong = (Long)a.get(paramString);
-    } while ((localLong != null) && (Math.abs(l - localLong.longValue()) <= 120000L));
-    a.put(paramString, Long.valueOf(l));
-    wcj.a(Collections.singletonList(paramString));
+    this.a.a.setVisibility(4);
   }
 }
 

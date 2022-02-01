@@ -1,32 +1,35 @@
-import android.os.SystemClock;
-import com.tencent.beacon.event.UserAction;
-import com.tencent.beacon.upload.TunnelInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.HashSet;
-import kotlin.Metadata;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.mobileqq.widget.QQMapView;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.UiSettings;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/officialaccount/OfficialAccountReporter;", "", "()V", "Reporter", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class nsf
+public class nsf
+  implements Animation.AnimationListener
 {
-  private static int jdField_a_of_type_Int;
-  private static long jdField_a_of_type_Long;
-  private static final HashMap<Integer, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private static final HashSet<Integer> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  public static final nsg a;
-  private static int jdField_b_of_type_Int;
-  private static long jdField_b_of_type_Long;
-  private static long c;
-  private static long d;
-  private static long e;
+  public nsf(PoiMapActivity paramPoiMapActivity) {}
   
-  static
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    jdField_a_of_type_Nsg = new nsg(null);
-    QLog.e("OfficialAccountReporter", 2, "OfficialAccountReporter.init: false");
-    UserAction.registerTunnel(new TunnelInfo("00000KCQ7Y3ITP3Z"));
-    c = SystemClock.elapsedRealtime();
+    if (PoiMapActivity.h(this.a) != null) {
+      PoiMapActivity.i(this.a).getMap().getUiSettings().setLogoPositionWithMargin(0, 0, 0, 0, 0);
+    }
+    paramAnimation = (FrameLayout.LayoutParams)this.a.b.getLayoutParams();
+    paramAnimation.bottomMargin = (-this.a.p);
+    this.a.b.setLayoutParams(paramAnimation);
+    if ((this.a.e != null) && (this.a.e.getVisibility() != 0)) {
+      this.a.e.setVisibility(0);
+    }
+    PoiMapActivity.e(this.a).clearAnimation();
+    this.a.a = false;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

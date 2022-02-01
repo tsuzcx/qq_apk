@@ -1,21 +1,14 @@
-import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 class aooc
-  implements aopi
+  implements Comparator<MessageRecord>
 {
-  aooc(aooa paramaooa, long paramLong) {}
+  aooc(aoob paramaoob) {}
   
-  public void a(long paramLong)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Aooa.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
-    }
-  }
-  
-  public void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    aonx.a(this.jdField_a_of_type_Aooa.a, this.jdField_a_of_type_Long, paramBoolean, "Orientation", paramFloat1, paramFloat2, paramFloat3);
+    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
   }
 }
 

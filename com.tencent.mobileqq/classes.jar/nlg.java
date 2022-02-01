@@ -1,20 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.PoiMapActivity;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.avgame.gameroom.stage.StageView;
 
-public class nlg
-  implements View.OnTouchListener
+class nlg
+  implements Animator.AnimatorListener
 {
-  public nlg(PoiMapActivity paramPoiMapActivity) {}
+  nlg(nlf paramnlf) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.b();
-    }
-    return true;
+    this.a.a.removeView(this.a.a.b);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

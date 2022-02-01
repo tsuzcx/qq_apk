@@ -5,13 +5,13 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.util.SparseBooleanArray;
 import android.view.View.BaseSavedState;
-import bjmo;
+import bkyb;
 
 public class AbsListView$SavedState
   extends View.BaseSavedState
 {
   public static final Parcelable.Creator<SavedState> CREATOR = new AbsListView.SavedState.1();
-  bjmo<Integer> checkIdState;
+  bkyb<Integer> checkIdState;
   SparseBooleanArray checkState;
   int checkedItemCount;
   String filter;
@@ -41,7 +41,7 @@ public class AbsListView$SavedState
       if (j <= 0) {
         break;
       }
-      this.checkIdState = new bjmo();
+      this.checkIdState = new bkyb();
       while (i < j)
       {
         long l = paramParcel.readLong();

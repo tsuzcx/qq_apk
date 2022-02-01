@@ -1,9 +1,19 @@
 package dov.com.qq.im.ae.camera.ui.aiscene;
 
+import android.view.View;
+import android.widget.TextView;
+import bncm;
+
 public class VideoStoryAIScenePart$17
   implements Runnable
 {
-  public void run() {}
+  public VideoStoryAIScenePart$17(bncm parambncm) {}
+  
+  public void run()
+  {
+    bncm.a(this.this$0).setVisibility(8);
+    bncm.b(this.this$0).setVisibility(8);
+  }
 }
 
 

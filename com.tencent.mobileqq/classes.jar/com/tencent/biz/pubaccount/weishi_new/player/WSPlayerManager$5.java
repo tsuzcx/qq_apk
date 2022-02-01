@@ -2,10 +2,10 @@ package com.tencent.biz.pubaccount.weishi_new.player;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import urk;
-import urt;
-import uru;
-import urw;
+import vfs;
+import vgb;
+import vgc;
+import vgh;
 
 class WSPlayerManager$5
   implements Runnable
@@ -24,7 +24,7 @@ class WSPlayerManager$5
       {
         Iterator localIterator = WSPlayerManager.a(this.this$0).iterator();
         while (localIterator.hasNext()) {
-          ((uru)localIterator.next()).e(WSPlayerManager.b(this.this$0));
+          ((vgc)localIterator.next()).e(WSPlayerManager.b(this.this$0));
         }
       }
     }
@@ -32,7 +32,7 @@ class WSPlayerManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,54 @@
-import com.tencent.mobileqq.search.mostused.MostUsedSearchItem;
-import java.util.Comparator;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x984.oidb_0x984.RspBody;
 
-final class bbag
-  implements Comparator<bbai>
+public class bbag
+  extends bbbe<ReceiptMessageDetailFragment>
 {
-  public int a(bbai parambbai1, bbai parambbai2)
+  public bbag(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
   {
-    int j = Long.signum(parambbai2.jdField_a_of_type_Int - parambbai1.jdField_a_of_type_Int);
-    int i = j;
-    if (j == 0) {
-      i = Long.signum(parambbai2.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.timeStamp - parambbai1.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.timeStamp);
+    super(paramReceiptMessageDetailFragment);
+  }
+  
+  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if ((paramInt != 0) || (paramArrayOfByte == null))
+    {
+      QLog.d("ReceiptMessageDetailFragment", 1, "getDiscussionSendReadReportCallback error on code: " + paramInt);
+      return;
     }
-    return i;
+    try
+    {
+      paramBundle = new oidb_0x984.RspBody();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if (paramBundle.uint32_code.get() == 0) {
+        break label148;
+      }
+      QLog.d("ReceiptMessageDetailFragment", 1, "getDiscussionSendReadReportCallback fail on code: " + paramBundle.uint32_code.get());
+      if (paramBundle.uint32_code.get() == 20)
+      {
+        ReceiptMessageDetailFragment.n((ReceiptMessageDetailFragment)this.a);
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      QLog.d("ReceiptMessageDetailFragment", 1, "Report read status fail on invalid data");
+      ReceiptMessageDetailFragment.n((ReceiptMessageDetailFragment)this.a);
+      return;
+    }
+    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(5);
+    return;
+    label148:
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageDetailFragment", 2, "getDiscussionSendReadReportCallback succ");
+    }
+    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, 0, 0, false);
+    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(4);
   }
 }
 

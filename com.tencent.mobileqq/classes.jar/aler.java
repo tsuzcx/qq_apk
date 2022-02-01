@@ -1,26 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aler
-  implements Animation.AnimationListener
+class aler
+  implements View.OnClickListener
 {
-  public aler(SpecailCareListActivity paramSpecailCareListActivity, alfk paramalfk) {}
+  aler(aldh paramaldh, azeo paramazeo) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    paramAnimation = new RelativeLayout.LayoutParams(this.jdField_a_of_type_Alfk.a.getLayoutParams());
-    paramAnimation.addRule(15);
-    paramAnimation.setMargins((int)(46.0F * SpecailCareListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0, (int)(10.0F * SpecailCareListActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0);
-    this.jdField_a_of_type_Alfk.a.setLayoutParams(paramAnimation);
-    this.jdField_a_of_type_Alfk.a.clearAnimation();
+    Intent localIntent = azco.a(aldh.a(this.jdField_a_of_type_Aldh).app, this.jdField_a_of_type_Azeo.a);
+    aldh.a(this.jdField_a_of_type_Aldh).startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

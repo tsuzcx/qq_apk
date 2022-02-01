@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.Friends;
 import mqq.app.QQPermissionCallback;
 
 class ajkn
   implements QQPermissionCallback
 {
-  ajkn(ajkm paramajkm) {}
+  ajkn(ajkl paramajkl, View paramView, Friends paramFriends, BaseActivity paramBaseActivity) {}
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    bfur.a(this.a.a, paramArrayOfString, paramArrayOfInt);
+    bhdj.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.a.grant();
+    ajkl.a(this.jdField_a_of_type_Ajkl, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDataFriends);
   }
 }
 

@@ -1,20 +1,8 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.TraeAudioManager;
-import com.tencent.sharp.jni.TraeAudioManager.TraeAudioManagerLooper;
-
-public class bjll
-  implements bjls
+public abstract interface bjll
 {
-  public bjll(TraeAudioManager.TraeAudioManagerLooper paramTraeAudioManagerLooper) {}
+  public abstract void a(String paramString1, String paramString2, String paramString3);
   
-  public void a(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("TraeAudioManager", 1, "_ringPlayer onCompletion, _activeMode[" + this.a.this$0.a + "], _preRingMode[" + this.a.b + "], seq[" + paramLong + "]");
-    }
-    TraeAudioManager.b(paramLong, null, -1L, true);
-    this.a.c(paramLong);
-  }
+  public abstract void b(String paramString1, String paramString2, String paramString3);
 }
 
 

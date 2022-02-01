@@ -1,77 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ResultRecord;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.SelectMemberBuddyListAdapter.1.1;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.data.Friends;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.pts.core.PTSComposer.IPTSUpdateDataListener;
+import com.tencent.pts.core.itemview.PTSItemData;
+import com.tencent.pts.core.itemview.PTSItemData.Builder;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ror
-  implements View.OnClickListener
+  implements PTSComposer.IPTSUpdateDataListener
 {
-  ror(roq paramroq) {}
+  public ror(BaseArticleInfo paramBaseArticleInfo) {}
   
-  public void onClick(View paramView)
+  public void onDataUpdated(String paramString)
   {
-    QLog.d("FriendTeamListInnerFrameBuddyListAdapter", 2, "----->onBuddyListClick");
-    roy localroy = (roy)paramView.getTag();
-    boolean bool;
-    Object localObject;
-    if ((localroy != null) && (localroy.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localroy.jdField_a_of_type_JavaLangObject != null))
+    QLog.i("Q.readinjoy.BaseArticleInfo", 1, "[onDataUpdated] jsonData = " + paramString);
+    PTSItemData localPTSItemData = this.a.ptsItemData;
+    if (localPTSItemData != null)
     {
-      if (!localroy.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled()) {
-        break label291;
-      }
-      if (localroy.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-        break label230;
-      }
-      bool = true;
-      localroy.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
-      if ((localroy.jdField_a_of_type_JavaLangObject instanceof Friends))
+      this.a.ptsItemData = new PTSItemData.Builder().withPageName(localPTSItemData.getPageName()).withItemID(localPTSItemData.getItemID()).withJsonData(paramString).withFrameTreeJson(localPTSItemData.getFrameTreeJson()).build();
+      this.a.ptsItemDataBytes = raf.a(this.a.ptsItemData);
+      paramString = pnn.a();
+      if (paramString != null)
       {
-        localObject = (Friends)localroy.jdField_a_of_type_JavaLangObject;
-        localObject = ResultRecord.a(((Friends)localObject).uin, ((Friends)localObject).name, 1);
-        if (!bool) {
-          break label235;
+        paramString = (pvp)paramString.getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
+        if ((paramString != null) && ((this.a instanceof ArticleInfo))) {
+          paramString.a().b((ArticleInfo)this.a);
         }
-        this.a.a.add(localObject);
       }
-      label116:
-      if (AppSetting.c)
-      {
-        if (!localroy.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-          break label251;
-        }
-        paramView.setContentDescription(localroy.d.getText().toString() + amtj.a(2131712847));
-      }
-      label169:
-      this.a.notifyDataSetChanged();
-      if (AppSetting.c) {
-        paramView.postDelayed(new SelectMemberBuddyListAdapter.1.1(this, paramView), 2000L);
-      }
-    }
-    for (;;)
-    {
-      if (roq.a(this.a) != null) {
-        roq.a(this.a).onClick(paramView);
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label230:
-      bool = false;
-      break;
-      label235:
-      this.a.a.remove(localObject);
-      break label116;
-      label251:
-      paramView.setContentDescription(localroy.d.getText().toString() + amtj.a(2131712857));
-      break label169;
-      label291:
-      this.a.a();
     }
   }
 }

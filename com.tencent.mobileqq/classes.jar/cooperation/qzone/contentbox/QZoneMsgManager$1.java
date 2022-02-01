@@ -1,6 +1,6 @@
 package cooperation.qzone.contentbox;
 
-import aqru;
+import arvg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QzoneCommonIntent;
 import cooperation.qzone.contentbox.model.QZoneMsgReq;
@@ -14,7 +14,7 @@ class QZoneMsgManager$1
   {
     QZoneMsgReq localQZoneMsgReq = new QZoneMsgReq(this.val$app.getLongAccountUin(), "", this.this$0.getLoadNum(1), 2);
     localQZoneMsgReq.setType(1);
-    QzoneCommonIntent localQzoneCommonIntent = new QzoneCommonIntent(this.val$app.getApplication(), aqru.class);
+    QzoneCommonIntent localQzoneCommonIntent = new QzoneCommonIntent(this.val$app.getApplication(), arvg.class);
     localQzoneCommonIntent.setRequest(localQZoneMsgReq);
     localQzoneCommonIntent.setObserver(this.this$0);
     this.val$app.startServlet(localQzoneCommonIntent);

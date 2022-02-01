@@ -1,42 +1,78 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import com.tencent.mobileqq.data.MessageForShakeWindow;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.ShakeWindowMsg;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.Elem;
+import tencent.im.msg.im_msg_body.ShakeWindow;
 
-class acvc
-  implements aprh
+public class acvc
+  extends acve
 {
-  private acvc(acuy paramacuy) {}
-  
-  public void a()
+  private void a(List<im_msg_body.Elem> paramList, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean)
   {
-    if (this.a.a != null) {
-      this.a.a.a();
+    Object localObject = paramList.iterator();
+    do
+    {
+      if (!((Iterator)localObject).hasNext()) {
+        break;
+      }
+      paramList = (im_msg_body.Elem)((Iterator)localObject).next();
+    } while (!paramList.shake_window.has());
+    for (;;)
+    {
+      if (paramList == null) {
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        paramStringBuilder.append("elemType:ShakeWindow;\n");
+      }
+      paramList = (im_msg_body.ShakeWindow)paramList.shake_window.get();
+      localObject = (MessageForShakeWindow)bcsa.a(-2020);
+      ((MessageForShakeWindow)localObject).msgtype = -2020;
+      ((MessageForShakeWindow)localObject).msg = "[Shake Window]";
+      ShakeWindowMsg localShakeWindowMsg = new ShakeWindowMsg();
+      localShakeWindowMsg.mType = paramList.uint32_type.get();
+      localShakeWindowMsg.mReserve = paramList.uint32_reserve.get();
+      if (paramBoolean) {}
+      for (int i = 2;; i = 1)
+      {
+        localShakeWindowMsg.onlineFlag = i;
+        localShakeWindowMsg.shake = true;
+        ((MessageForShakeWindow)localObject).msgData = localShakeWindowMsg.getBytes();
+        if (((MessageForShakeWindow)localObject).msgData != null) {
+          break label186;
+        }
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        paramStringBuilder.append("c2cMsgContent.data:null;\n");
+        return;
+      }
+      label186:
+      paramList1.add(localObject);
+      return;
+      paramList = null;
     }
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public int a()
   {
-    switch (paramInt1)
-    {
-    }
-    for (;;)
-    {
-      acuy.a(this.a);
-      if ((acuy.a(this.a) != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
-        acuy.a(this.a).a(2);
-      }
-      if (this.a.a != null)
-      {
-        paramInt1 = acuy.d(this.a, acuy.a(this.a));
-        paramInt2 = acuy.e(this.a, acuy.b(this.a));
-        int i = acuy.f(this.a, acuy.c(this.a));
-        this.a.a.a(paramInt1, paramInt2, i);
-      }
-      return;
-      acuy.a(this.a, paramInt2);
-      continue;
-      acuy.b(this.a, paramInt2);
-      continue;
-      acuy.c(this.a, paramInt2);
-    }
+    return 1000;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bffl parambffl, bcse parambcse, bcre parambcre)
+  {
+    a(paramList, paramList1, paramStringBuilder, paramBoolean1);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return paramElem.shake_window.has();
   }
 }
 

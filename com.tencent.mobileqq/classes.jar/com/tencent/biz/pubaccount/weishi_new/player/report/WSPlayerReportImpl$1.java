@@ -1,51 +1,51 @@
 package com.tencent.biz.pubaccount.weishi_new.player.report;
 
 import java.util.Properties;
-import urw;
-import usg;
-import ush;
-import usk;
-import uya;
+import vgh;
+import vgr;
+import vgs;
+import vgv;
+import vmp;
 
 public class WSPlayerReportImpl$1
   implements Runnable
 {
-  public WSPlayerReportImpl$1(ush paramush, urw paramurw) {}
+  public WSPlayerReportImpl$1(vgs paramvgs, vgh paramvgh) {}
   
   public void run()
   {
     long l2 = 0L;
-    if (ush.a(this.this$0)) {
+    if (vgs.a(this.this$0)) {
       return;
     }
     Properties localProperties = this.a.a().a();
-    usg localusg = ush.a(this.this$0);
+    vgr localvgr = vgs.a(this.this$0);
     if (localProperties != null)
     {
       l1 = Long.valueOf(localProperties.getProperty("httpdnsMS")).longValue();
-      localusg.i = l1;
-      localusg = ush.a(this.this$0);
+      localvgr.i = l1;
+      localvgr = vgs.a(this.this$0);
       if (localProperties == null) {
         break label362;
       }
       l1 = Long.valueOf(localProperties.getProperty("httpredirectMS")).longValue();
       label89:
-      localusg.j = l1;
-      localusg = ush.a(this.this$0);
+      localvgr.j = l1;
+      localvgr = vgs.a(this.this$0);
       if (localProperties == null) {
         break label367;
       }
       l1 = Long.valueOf(localProperties.getProperty("cacheframeMS")).longValue();
       label123:
-      localusg.n = l1;
-      localusg = ush.a(this.this$0);
+      localvgr.n = l1;
+      localvgr = vgs.a(this.this$0);
       if (localProperties == null) {
         break label372;
       }
       l1 = Long.valueOf(localProperties.getProperty("httpfirstrecvMS")).longValue();
       label157:
-      localusg.k = l1;
-      localusg = ush.a(this.this$0);
+      localvgr.k = l1;
+      localvgr = vgs.a(this.this$0);
       if (localProperties == null) {
         break label377;
       }
@@ -56,14 +56,14 @@ public class WSPlayerReportImpl$1
     label377:
     for (long l1 = Long.valueOf(localProperties.getProperty("getmp4headerMS")).longValue();; l1 = 0L)
     {
-      localusg.m = l1;
-      localusg = ush.a(this.this$0);
+      localvgr.m = l1;
+      localvgr = vgs.a(this.this$0);
       l1 = l2;
       if (localProperties != null) {
         l1 = Long.valueOf(localProperties.getProperty("httpconnectMS")).longValue();
       }
-      localusg.l = l1;
-      uya.e("WS_VIDEO_REPORT", "[WSPlayerReportImpl.java][onVideoPrepared] mHttpDNSTime:" + ush.a(this.this$0).i + ", mHttpRedirectTime:" + ush.a(this.this$0).j + ", mCacheFrameTime:" + ush.a(this.this$0).n + ", mHttpFirstReceiveTime:" + ush.a(this.this$0).k + ", mMp4HeaderParseTime:" + ush.a(this.this$0).m + ", mHttpConnectTime:" + ush.a(this.this$0).l);
+      localvgr.l = l1;
+      vmp.e("WS_VIDEO_REPORT", "[WSPlayerReportImpl.java][onVideoPrepared] mHttpDNSTime:" + vgs.a(this.this$0).i + ", mHttpRedirectTime:" + vgs.a(this.this$0).j + ", mCacheFrameTime:" + vgs.a(this.this$0).n + ", mHttpFirstReceiveTime:" + vgs.a(this.this$0).k + ", mMp4HeaderParseTime:" + vgs.a(this.this$0).m + ", mHttpConnectTime:" + vgs.a(this.this$0).l);
       return;
       l1 = 0L;
       break;
@@ -78,7 +78,7 @@ public class WSPlayerReportImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.report.WSPlayerReportImpl.1
  * JD-Core Version:    0.7.0.1
  */

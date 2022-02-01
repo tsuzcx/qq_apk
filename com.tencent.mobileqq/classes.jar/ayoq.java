@@ -1,25 +1,13 @@
-import com.tencent.mobileqq.profile.like.PraiseManager;
-
 public class ayoq
-  implements ayoo
 {
-  public int a;
-  public ayoo a;
-  public int b;
+  public static final String a = String.valueOf(1816533856L);
   
-  public ayoq(PraiseManager paramPraiseManager) {}
-  
-  public void a(int paramInt1, ayon paramayon, int paramInt2, String paramString)
+  public static final String a()
   {
-    paramInt1 = this.jdField_a_of_type_Int + 1;
-    this.jdField_a_of_type_Int = paramInt1;
-    if (paramInt1 == this.b)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.b(this);
-      if (this.jdField_a_of_type_Ayoo != null) {
-        this.jdField_a_of_type_Ayoo.a(0, null, 0, "");
-      }
+    if (ayos.b()) {
+      return "https://fastest.now.qq.com/qq/mp-v2/notify-manager.html?asyncMode=3&_wv=3&from=60014";
     }
+    return "https://now.qq.com/qq/mp-v2/notify-manager.html?asyncMode=3&_wv=3&from=60014";
   }
 }
 

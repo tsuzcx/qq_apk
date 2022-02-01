@@ -1,77 +1,60 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.MobileQQ;
-import org.json.JSONObject;
+import com.tencent.mobileqq.apollo.GLTextureView;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
 
-class ampj
-  extends bgod
+public class ampj
+  extends ampi
 {
-  ampj(ampi paramampi) {}
+  protected int a;
+  protected int b;
+  private int[] jdField_b_of_type_ArrayOfInt = new int[1];
+  protected int c;
+  protected int d;
+  protected int e;
+  protected int f;
   
-  public void onDone(bgoe parambgoe)
+  public ampj(GLTextureView paramGLTextureView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    super.onDone(parambgoe);
-    parambgoe = parambgoe.a();
-    if ((parambgoe.containsKey("version")) && (parambgoe.containsKey("json_name")))
+    super(paramGLTextureView, new int[] { 12324, paramInt1, 12323, paramInt2, 12322, paramInt3, 12321, paramInt4, 12325, paramInt5, 12326, paramInt6, 12344 });
+    this.a = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
+    this.e = paramInt5;
+    this.f = paramInt6;
+  }
+  
+  private int a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, int paramInt1, int paramInt2)
+  {
+    if (paramEGL10.eglGetConfigAttrib(paramEGLDisplay, paramEGLConfig, paramInt1, this.jdField_b_of_type_ArrayOfInt)) {
+      paramInt2 = this.jdField_b_of_type_ArrayOfInt[0];
+    }
+    return paramInt2;
+  }
+  
+  public EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig)
+  {
+    int j = paramArrayOfEGLConfig.length;
+    int i = 0;
+    while (i < j)
     {
-      int i = parambgoe.getInt("version", -1);
-      parambgoe = parambgoe.getString("json_name");
-      if (bgcw.e.d.equals(parambgoe))
+      EGLConfig localEGLConfig = paramArrayOfEGLConfig[i];
+      int k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12325, 0);
+      int m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12326, 0);
+      if ((k >= this.e) && (m >= this.f))
       {
-        Object localObject = new File(this.a.a.getApplication().getApplicationContext().getFilesDir(), bgcw.e.a);
-        if ((((File)localObject).exists()) && (((File)localObject).isFile()))
-        {
-          localObject = FileUtils.readFileContent((File)localObject);
-          try
-          {
-            localObject = new JSONObject((String)localObject);
-            long l = ((JSONObject)localObject).getLong("timestamp") / 1000L;
-            if (Math.abs(i - l) <= 5L)
-            {
-              bgcw.a(this.a.a.getApplication().getApplicationContext(), parambgoe, i);
-              if (QLog.isColorLevel()) {
-                QLog.i("ClubContentUpdateHandler", 2, "json file update success!");
-              }
-              boolean bool1 = true;
-              if (((JSONObject)localObject).has("enableX5Report"))
-              {
-                boolean bool2 = ((JSONObject)localObject).getBoolean("enableX5Report");
-                bool1 = bool2;
-                if (QLog.isColorLevel())
-                {
-                  QLog.i("ClubContentUpdateHandler", 2, "json file got isEnableX5Report: " + bool2);
-                  bool1 = bool2;
-                }
-              }
-              parambgoe = this.a.a.getApplication().getApplicationContext().getSharedPreferences("WebView_X5_Report", 4);
-              parambgoe.edit().putBoolean("enableX5Report", bool1).commit();
-              parambgoe.edit().putLong("read_vas_asyncCookie", 0L).commit();
-            }
-            for (;;)
-            {
-              ampi.a(this.a, (JSONObject)localObject);
-              return;
-              if (QLog.isColorLevel()) {
-                QLog.i("ClubContentUpdateHandler", 2, "json file update get old file!");
-              }
-            }
-            return;
-          }
-          catch (Exception parambgoe)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("ClubContentUpdateHandler", 2, "Parse webview josn Exception:" + parambgoe.toString());
-            }
-          }
+        k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12324, 0);
+        m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12323, 0);
+        int n = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12322, 0);
+        int i1 = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12321, 0);
+        if ((k == this.a) && (m == this.jdField_b_of_type_Int) && (n == this.c) && (i1 == this.d)) {
+          return localEGLConfig;
         }
       }
+      i += 1;
     }
+    return null;
   }
 }
 

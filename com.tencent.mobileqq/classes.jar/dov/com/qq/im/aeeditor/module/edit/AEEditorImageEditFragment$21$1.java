@@ -1,6 +1,6 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
-import bmid;
+import bnxv;
 import com.tencent.mobileqq.widget.QQToast;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,16 +9,16 @@ import java.util.List;
 public class AEEditorImageEditFragment$21$1
   implements Runnable
 {
-  public AEEditorImageEditFragment$21$1(bmid parambmid, Collection paramCollection) {}
+  public AEEditorImageEditFragment$21$1(bnxv parambnxv, Collection paramCollection) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bmid.a.b();
+    this.jdField_a_of_type_Bnxv.a.b();
     Object localObject = new ArrayList(this.jdField_a_of_type_JavaUtilCollection);
     if (((List)localObject).size() > 0) {}
     for (localObject = (String)((List)localObject).get(0);; localObject = "unknown")
     {
-      QQToast.a(this.jdField_a_of_type_Bmid.a.getActivity(), "导出失败: error code = " + (String)localObject, 0).a();
+      QQToast.a(this.jdField_a_of_type_Bnxv.a.getActivity(), "导出失败: error code = " + (String)localObject, 0).a();
       return;
     }
   }

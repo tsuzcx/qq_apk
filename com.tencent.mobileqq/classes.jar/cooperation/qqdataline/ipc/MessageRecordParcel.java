@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bkou;
+import bmac;
 import com.dataline.mpfile.MpfileTaskRecord;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -12,7 +12,7 @@ import com.tencent.mobileqq.data.MessageRecord;
 public class MessageRecordParcel
   implements Parcelable
 {
-  public static final Parcelable.Creator<MessageRecordParcel> CREATOR = new bkou();
+  public static final Parcelable.Creator<MessageRecordParcel> CREATOR = new bmac();
   private MessageRecord a;
   
   public MessageRecordParcel(MessageRecord paramMessageRecord)

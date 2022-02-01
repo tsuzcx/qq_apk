@@ -1,17 +1,17 @@
 package com.tencent.qg.video.videodecoder;
 
-import biln;
-import bilr;
-import bils;
-import bilt;
+import bjwp;
+import bjwt;
+import bjwu;
+import bjwv;
 
 public class MediaDecoder
 {
   private volatile long jdField_a_of_type_Long;
-  private final biln jdField_a_of_type_Biln;
-  private bilr jdField_a_of_type_Bilr;
-  private final bils jdField_a_of_type_Bils;
-  private bilt jdField_a_of_type_Bilt;
+  private final bjwp jdField_a_of_type_Bjwp;
+  private bjwt jdField_a_of_type_Bjwt;
+  private final bjwu jdField_a_of_type_Bjwu;
+  private bjwv jdField_a_of_type_Bjwv;
   private MediaDecoder.DecodeRunnable jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder$DecodeRunnable;
   private Thread jdField_a_of_type_JavaLangThread;
   private final boolean jdField_a_of_type_Boolean;

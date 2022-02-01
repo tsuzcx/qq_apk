@@ -1,17 +1,60 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
+import java.util.ArrayList;
 
-class agrd
-  implements View.OnClickListener
+public final class agrd
+  extends Drawable.ConstantState
 {
-  agrd(agra paramagra) {}
+  public int a;
+  public final Paint a;
+  public ArrayList<agrg> a;
+  public boolean a;
+  public int b;
+  public ArrayList<Bitmap> b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public int d;
+  public boolean d;
   
-  public void onClick(View paramView)
+  public agrd()
   {
-    agra.b(this.a);
-    bcef.b(null, "dc00898", "", "", "0X800B1A9", "0X800B1A9", 0, 0, "", "", agra.a(this.a), "个性签名");
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Int = 160;
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
+  }
+  
+  public int getChangingConfigurations()
+  {
+    return 0;
+  }
+  
+  @NonNull
+  public Drawable newDrawable()
+  {
+    return new CustomFrameAnimationDrawable(this, null, null);
+  }
+  
+  public Drawable newDrawable(Resources paramResources)
+  {
+    return new CustomFrameAnimationDrawable(this, paramResources, null);
   }
 }
 

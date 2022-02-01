@@ -6,8 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
-import bgpz;
-import bgqg;
+import biaj;
+import biaq;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -16,7 +16,7 @@ public class RegisterLiangHaoPayFailLayoutView
   implements View.OnClickListener
 {
   private View jdField_a_of_type_AndroidViewView;
-  private bgpz jdField_a_of_type_Bgpz;
+  private biaj jdField_a_of_type_Biaj;
   private LiangHaoView jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView;
   
   public RegisterLiangHaoPayFailLayoutView(Context paramContext)
@@ -42,26 +42,26 @@ public class RegisterLiangHaoPayFailLayoutView
     setOrientation(1);
     int i = AIOUtils.dp2px(27.5F, getResources());
     setPadding(i, 0, i, 0);
-    LayoutInflater.from(getContext()).inflate(2131561889, this, true);
-    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView = ((LiangHaoView)findViewById(2131369890));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131369889);
+    LayoutInflater.from(getContext()).inflate(2131561957, this, true);
+    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView = ((LiangHaoView)findViewById(2131370060));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131370059);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
   }
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bgpz.b(this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView.a);
+    this.jdField_a_of_type_Biaj.b(this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public void setLiangHaoHelper(bgpz parambgpz)
+  public void setLiangHaoHelper(biaj parambiaj)
   {
-    this.jdField_a_of_type_Bgpz = parambgpz;
+    this.jdField_a_of_type_Biaj = parambiaj;
   }
   
-  public void setUin(bgqg parambgqg)
+  public void setUin(biaq parambiaq)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView.setUin(parambgqg);
+    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView.setUin(parambiaq);
   }
 }
 

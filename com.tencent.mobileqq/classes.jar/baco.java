@@ -1,18 +1,53 @@
-public abstract interface baco
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnItemTouchListener;
+import android.view.MotionEvent;
+import android.view.ViewParent;
+
+class baco
+  implements RecyclerView.OnItemTouchListener
 {
-  public abstract void a(long paramLong);
+  private float jdField_a_of_type_Float;
+  private boolean jdField_a_of_type_Boolean;
+  private float b;
   
-  public abstract void a(String paramString1, String paramString2);
+  baco(bacm parambacm) {}
   
-  public abstract void a(boolean paramBoolean);
+  private boolean a(MotionEvent paramMotionEvent)
+  {
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    return Math.abs(this.jdField_a_of_type_Float - f1) > Math.abs(this.b - f2);
+  }
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4);
+  public boolean onInterceptTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return false;
+          this.jdField_a_of_type_Float = paramMotionEvent.getX();
+          this.b = paramMotionEvent.getY();
+          this.jdField_a_of_type_Boolean = false;
+          return false;
+        } while (this.jdField_a_of_type_Boolean);
+        this.jdField_a_of_type_Boolean = true;
+      } while ((!a(paramMotionEvent)) || (paramRecyclerView.getParent() == null));
+      paramRecyclerView.getParent().requestDisallowInterceptTouchEvent(true);
+      return false;
+    } while (paramRecyclerView.getParent() == null);
+    paramRecyclerView.getParent().requestDisallowInterceptTouchEvent(false);
+    return false;
+  }
   
-  public abstract boolean a();
+  public void onRequestDisallowInterceptTouchEvent(boolean paramBoolean) {}
   
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c(boolean paramBoolean);
+  public void onTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent) {}
 }
 
 

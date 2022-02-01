@@ -1,6 +1,22 @@
-public abstract interface babg
+import android.os.Handler.Callback;
+import android.os.Message;
+
+class babg
+  implements Handler.Callback
 {
-  public abstract void a(boolean paramBoolean);
+  babg(babf parambabf) {}
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      babf.a(this.a, paramMessage);
+    }
+  }
 }
 
 

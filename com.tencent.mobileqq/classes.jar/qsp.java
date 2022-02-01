@@ -1,12 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil.DrawableCallBack;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
 
-class qsp
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/proteus/utils/RIJProteusDrawableHelper$getDrawableFromNet$3", "Lcom/tencent/image/URLDrawable$DownloadListener;", "reTry", "", "getReTry", "()I", "setReTry", "(I)V", "onFileDownloadFailed", "", "errorCode", "onFileDownloadStarted", "onFileDownloadSucceed", "l", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qsp
+  implements URLDrawable.DownloadListener
 {
-  qsp(qso paramqso) {}
+  private int jdField_a_of_type_Int;
   
-  public void onClick(View paramView) {}
+  qsp(String paramString, DrawableUtil.DrawableCallBack paramDrawableCallBack, URLDrawable paramURLDrawable) {}
+  
+  public void onFileDownloadFailed(int paramInt)
+  {
+    paramInt = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (paramInt + 1);
+    if (paramInt < 3) {
+      this.jdField_a_of_type_ComTencentImageURLDrawable.restartDownload();
+    }
+    for (;;)
+    {
+      QLog.i("Q.readinjoy.proteus", 1, "getDrawable: onFileDownloadFailed :" + this.jdField_a_of_type_JavaLangString + "  reTry: " + this.jdField_a_of_type_Int);
+      return;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewUtilsDrawableUtil$DrawableCallBack.onCallBack(false, (Drawable)this.jdField_a_of_type_ComTencentImageURLDrawable);
+    }
+  }
+  
+  public void onFileDownloadStarted()
+  {
+    QLog.i("Q.readinjoy.proteus", 1, "getDrawable: onFileDownloadStarted :" + this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    QLog.i("Q.readinjoy.proteus", 1, "getDrawable: onFileDownloadSucceed :" + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewUtilsDrawableUtil$DrawableCallBack.onCallBack(true, (Drawable)this.jdField_a_of_type_ComTencentImageURLDrawable);
+  }
 }
 
 

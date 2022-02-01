@@ -1,10 +1,11 @@
 package cooperation.qzone.birthdaynotice;
 
 import GIFT_MALL_PROTOCOL.DouFuInfo;
-import aezm;
-import bbko;
+import afqy;
+import bcrg;
 import com.tencent.mobileqq.activity.aio.BeancurdMsg;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -22,20 +23,20 @@ final class BirthDayNoticeManager$1
       long l2 = System.currentTimeMillis();
       if (Math.abs(l1 - l2) > 432000000L)
       {
-        aezm localaezm = (aezm)this.val$app.getManager(282);
+        afqy localafqy = (afqy)this.val$app.getManager(QQManagerFactory.BEANCURD_MANAGER);
         BeancurdMsg localBeancurdMsg = new BeancurdMsg();
         localBeancurdMsg.buffer = this.val$jsonOb.toString();
         localBeancurdMsg.busiid = 6;
         localBeancurdMsg.frienduin = String.valueOf(str);
         localBeancurdMsg.isNeedDelHistory = true;
         localBeancurdMsg.ispush = false;
-        localBeancurdMsg.startTime = bbko.a();
+        localBeancurdMsg.startTime = bcrg.a();
         localBeancurdMsg.validTime = 432000L;
         localBeancurdMsg.token = this.val$token;
         if (QLog.isColorLevel()) {
           QLog.i("BirthDayNoticeManager", 2, "addBirthDayFeedMessage receiveBeancurd:" + String.valueOf(localBeancurdMsg));
         }
-        localaezm.a(localBeancurdMsg);
+        localafqy.a(localBeancurdMsg);
         this.val$app.getMsgCache().d(String.valueOf(str), l2);
       }
     }

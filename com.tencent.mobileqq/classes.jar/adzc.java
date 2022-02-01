@@ -1,12 +1,18 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class adzc
-  extends adzf
+class adzc
+  implements View.OnClickListener
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
-  TextView b;
+  adzc(adzb paramadzb) {}
+  
+  public void onClick(View paramView)
+  {
+    Object localObject = paramView.getTag();
+    adzb.a(this.a, (ajkw)localObject);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

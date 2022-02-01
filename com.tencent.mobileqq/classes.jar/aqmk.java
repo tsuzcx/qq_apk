@@ -1,7 +1,4 @@
-public class aqmk
-{
-  public static String a = "true";
-}
+public abstract interface aqmk {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

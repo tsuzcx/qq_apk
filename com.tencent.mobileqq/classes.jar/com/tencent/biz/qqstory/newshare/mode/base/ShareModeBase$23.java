@@ -1,20 +1,20 @@
 package com.tencent.biz.qqstory.newshare.mode.base;
 
-import wif;
+import wxa;
 
 public class ShareModeBase$23
   implements Runnable
 {
-  public ShareModeBase$23(wif paramwif) {}
+  public ShareModeBase$23(wxa paramwxa) {}
   
   public void run()
   {
-    wif.a(this.this$0, wif.a(this.this$0));
+    wxa.a(this.this$0, wxa.a(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase.23
  * JD-Core Version:    0.7.0.1
  */

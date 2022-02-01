@@ -1,17 +1,17 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
 
 public class aees
-  implements View.OnFocusChangeListener
+  extends aeer
 {
-  public aees(SelectedAndSearchBar paramSelectedAndSearchBar) {}
-  
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public aees(JumpActivity paramJumpActivity)
   {
-    if (SelectedAndSearchBar.a(this.a) != null) {
-      SelectedAndSearchBar.a(this.a).onEditTextFocusChanged(paramBoolean);
-    }
+    super(paramJumpActivity);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    this.b.a(paramInt1, paramInt2, paramIntent);
   }
 }
 

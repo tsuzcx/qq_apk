@@ -1,33 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 
 public class slw
-  implements peu
+  implements View.OnLayoutChangeListener
 {
-  public slw(ReadInJoyBaseListView paramReadInJoyBaseListView) {}
+  public slw(VideoFeedsRecyclerView paramVideoFeedsRecyclerView) {}
   
-  public void a()
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (paq.a(paq.a()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyBaseListView", 2, new Object[] { "preloadOptimize switch ON, mCurrentStatus = ", Integer.valueOf(this.a.c) });
-      }
-      if ((this.a.c == 0) && ((!uhv.a(this.a.d)) || (!this.a.b)))
-      {
-        this.a.a(4);
-        QLog.d("ReadInJoyBaseListView", 2, "preloadOptimize switch ON, loadingMore()");
-      }
+    this.a.removeOnLayoutChangeListener(this);
+    if (VideoFeedsRecyclerView.a(this.a) != null) {
+      VideoFeedsRecyclerView.a(this.a).a(VideoFeedsRecyclerView.a(this.a).itemView);
     }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyBaseListView", 2, new Object[] { "preloadOptimize switch OFF, mCurrentStatus = ", Integer.valueOf(this.a.c) });
-      }
-    } while ((uhv.a(this.a.d)) && ((this.a.c != 0) || (this.a.b)));
-    this.a.a(4);
-    QLog.d("ReadInJoyBaseListView", 2, "preloadOptimize switch OFF, loadingMore()");
   }
 }
 

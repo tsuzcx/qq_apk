@@ -1,73 +1,53 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
-final class tjp
-  implements pwf
+public class tjp
 {
-  private int jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilList.size();
-  private List<ReadInJoyUserInfo> b = new ArrayList();
+  private final String jdField_a_of_type_JavaLangString;
+  private List<BaseData> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private tjq jdField_a_of_type_Tjq;
+  private List<BaseData> b = new ArrayList();
   
-  tjp(List paramList, String paramString, BridgeModule paramBridgeModule) {}
-  
-  private void a(String paramString)
+  public tjp(String paramString, tjq paramtjq)
   {
-    this.jdField_a_of_type_Int -= 1;
-    if (this.jdField_a_of_type_Int == 0) {
-      b(paramString);
-    }
+    this.jdField_a_of_type_Tjq = paramtjq;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  private void b(String paramString)
+  private void a()
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONArray localJSONArray = new JSONArray();
     try
     {
-      Iterator localIterator = this.b.iterator();
-      while (localIterator.hasNext())
-      {
-        ReadInJoyUserInfo localReadInJoyUserInfo = (ReadInJoyUserInfo)localIterator.next();
-        String str = ReadInJoyUserInfoModule.a(localReadInJoyUserInfo);
-        JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("headUrl", str).put("nickName", localReadInJoyUserInfo.nick).put("uin", localReadInJoyUserInfo.uin).put("vIconUrl", localReadInJoyUserInfo.smallIconUrl);
-        localJSONArray.put(localJSONObject2);
-        continue;
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeJS(paramString, localJSONObject1);
+      if ((this.b != null) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_Tjq != null)) {
+        this.jdField_a_of_type_Tjq.a(true, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, this.b);
       }
-    }
-    catch (Exception localException)
-    {
-      QLog.e("BridgeModuleHelper", 1, localException.getMessage());
-    }
-    for (;;)
-    {
       return;
-      localJSONObject1.put("list", localException);
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public void onLoadUserInfoFailed(String paramString1, String paramString2)
+  public void a(List<BaseData> paramList)
   {
-    a(this.jdField_a_of_type_JavaLangString);
-    QLog.e("BridgeModuleHelper", 1, "[onLoadUserInfoFailed]: " + paramString2 + ", uin: " + paramString1);
+    this.b = paramList;
+    ukq.a("REPORT_LINK", "requestAdData adDatas callback");
+    a();
   }
   
-  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
+  public void b(List<BaseData> paramList)
   {
-    this.b.add(paramReadInJoyUserInfo);
-    a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    ukq.a("REPORT_LINK", "requestAdData recommendDatas callback");
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tjp
  * JD-Core Version:    0.7.0.1
  */

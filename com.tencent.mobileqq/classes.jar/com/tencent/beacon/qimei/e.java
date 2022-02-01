@@ -62,23 +62,6 @@ public class e
     }
   }
   
-  public int a()
-  {
-    String str = com.tencent.beacon.core.strategy.g.b(this.c).a("maxQIMEIQueryOneDay");
-    int i;
-    if ((str != null) && (!str.trim().equals(""))) {
-      i = this.b;
-    }
-    try
-    {
-      int j = Integer.valueOf(str).intValue();
-      return j;
-    }
-    catch (Exception localException) {}
-    return this.b;
-    return i;
-  }
-  
   protected void a(IAsyncQimeiListener paramIAsyncQimeiListener)
   {
     this.d = paramIAsyncQimeiListener;
@@ -111,13 +94,13 @@ public class e
     }
   }
   
-  public boolean b()
+  public boolean a()
   {
     String str = com.tencent.beacon.core.strategy.g.b(this.c).a("qimeiZeroPeak");
     return (str != null) && ("y".equalsIgnoreCase(str)) && (Calendar.getInstance().get(11) == 0);
   }
   
-  public boolean c()
+  public boolean b()
   {
     boolean bool = true;
     String str = com.tencent.beacon.core.strategy.g.b(this.c).a("updateQimei");
@@ -130,34 +113,39 @@ public class e
     return true;
   }
   
-  public void d()
+  public void c()
   {
-    e();
+    d();
     if (j.b(a.a(this.c).c())) {
       com.tencent.beacon.core.a.g.a().a(this.c, this.f);
     }
   }
   
-  public void e()
+  public void d()
   {
     try
     {
-      boolean bool2 = c();
+      boolean bool2 = b();
       boolean bool1 = bool2;
       if (bool2)
       {
         boolean bool3 = i.b(this.c);
         bool1 = bool2;
-        if (bool3) {
+        if (!bool3) {
           bool1 = false;
         }
       }
-      bool2 = "".equals(a.a(this.c).a());
-      if (bool2) {
+      if (!"".equals(a.a(this.c).a()))
+      {
+        bool2 = com.tencent.beacon.core.info.a.k(this.c);
+        if (!bool2) {}
+      }
+      else
+      {
         bool1 = true;
       }
       com.tencent.beacon.core.e.d.a("[module] QIMEI query module > %S", new Object[] { Boolean.valueOf(bool1) });
-      if ((bool1) && (!b()) && (k.a(this.c).f())) {
+      if ((bool1) && (!a()) && (k.a(this.c).f())) {
         com.tencent.beacon.core.a.d.a().a(112, this.e, 0L, 60000L);
       }
       return;

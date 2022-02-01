@@ -1,20 +1,40 @@
-import android.support.annotation.Nullable;
-import java.lang.ref.WeakReference;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.pubaccount.weishi_new.event.WSSimpleBaseEvent;
+import java.util.ArrayList;
+import java.util.List;
 
-class voh
+public abstract interface voh
+  extends uwz<voi>
 {
-  private WeakReference<vog> a;
+  public abstract int a();
   
-  public voh(vog paramvog)
-  {
-    this.a = new WeakReference(paramvog);
-  }
+  public abstract int a(int paramInt);
   
-  @Nullable
-  public vog a()
-  {
-    return (vog)this.a.get();
-  }
+  public abstract long a();
+  
+  public abstract List<vpj> a(ArrayList paramArrayList);
+  
+  public abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
+  
+  public abstract void a(blij<vpj> paramblij, int paramInt);
+  
+  public abstract void a(WSSimpleBaseEvent paramWSSimpleBaseEvent);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, String paramString);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 

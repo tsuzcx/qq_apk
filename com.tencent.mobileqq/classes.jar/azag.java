@@ -1,14 +1,22 @@
 import android.view.View;
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.AutoReplyText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$PrivacySettingClickListener;", "", "onPrivacyCheckClick", "", "view", "Landroid/view/View;", "item", "Lcom/tencent/mobileqq/profilesetting/ProfileDisplaySettingItem;", "onPrivacySettingClick", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface azag
+class azag
+  implements View.OnClickListener
 {
-  public abstract void a(@NotNull View paramView, @Nullable azaz paramazaz);
+  azag(azac paramazac, AutoReplyText paramAutoReplyText) {}
   
-  public abstract void b(@NotNull View paramView, @NotNull azaz paramazaz);
+  public void onClick(View paramView)
+  {
+    if ((azac.a(this.jdField_a_of_type_Azac) != null) && (paramView != null))
+    {
+      int i = this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText.getTextId();
+      azac.a(this.jdField_a_of_type_Azac, (View)paramView.getParent(), i);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

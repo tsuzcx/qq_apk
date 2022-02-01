@@ -1,49 +1,14 @@
-public abstract class baia
+import com.tencent.mobileqq.data.MessageForPtt;
+
+public abstract interface baia
 {
-  public static final String a;
-  public long a;
-  private String b;
+  public abstract void a();
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = babz.jdField_a_of_type_JavaLangString;
-  }
+  public abstract boolean a(MessageForPtt paramMessageForPtt);
   
-  public baia(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
+  public abstract boolean a(MessageForPtt paramMessageForPtt, int paramInt);
   
-  private void a()
-  {
-    if (this.b == null) {
-      this.b = (jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Long + "/");
-    }
-  }
-  
-  public final String a()
-  {
-    a();
-    return this.b + "thumb.jpg";
-  }
-  
-  public final String b()
-  {
-    a();
-    return this.b + "combine.mp4";
-  }
-  
-  public final String c()
-  {
-    a();
-    return this.b + "audio.mp4";
-  }
-  
-  public String d()
-  {
-    a();
-    return this.b;
-  }
+  public abstract boolean b(MessageForPtt paramMessageForPtt);
 }
 
 

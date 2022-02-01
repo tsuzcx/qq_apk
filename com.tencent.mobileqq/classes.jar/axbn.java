@@ -1,15 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.View;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCTransportFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class axbn
-  implements DialogInterface.OnClickListener
+public class axbn
+  implements bivu
 {
-  axbn(axbj paramaxbj, QQCustomDialog paramQQCustomDialog) {}
+  public axbn(MsgBackupPCTransportFragment paramMsgBackupPCTransportFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onItemSelect(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    int i = awzh.a().a();
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "page is in pc Link page! click cancel! bizType = " + i + ", pcHandler = " + this.a.e);
+      }
+      this.a.ax_();
+      return;
+      awzs.a = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "backup is going, page is in link page! click 收起按钮! sIsShouQiBtnClick= " + awzs.a + ", curSpeed = " + this.a.a + ", hasFinishedCount = " + this.a.d);
+      }
+      awzs.a().a().a(null);
+      awzs.a().a(this.a.a, this.a.d, i, this.a.getActivity());
+      if (this.a.b != 1) {
+        break;
+      }
+    } while (!this.a.e);
+    axct.a("0X800A260");
+    return;
+    axct.a("0X800A284");
   }
 }
 

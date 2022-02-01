@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahhp;
-import ahhy;
-import ariy;
-import aros;
+import aici;
+import aicr;
+import asne;
+import assy;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class LimitChatPie$8$1
   implements Runnable
 {
-  public LimitChatPie$8$1(ahhy paramahhy, int paramInt, ariy paramariy) {}
+  public LimitChatPie$8$1(aicr paramaicr, int paramInt, asne paramasne) {}
   
   public void run()
   {
-    aros.a(this.jdField_a_of_type_Ahhy.a.app, this.jdField_a_of_type_Int, this.jdField_a_of_type_Ariy);
+    assy.a(this.jdField_a_of_type_Aicr.a.app, this.jdField_a_of_type_Int, this.jdField_a_of_type_Asne);
     ThreadManager.getUIHandler().post(new LimitChatPie.8.1.1(this));
   }
 }

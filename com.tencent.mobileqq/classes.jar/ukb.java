@@ -1,39 +1,20 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdVideoGuide;
+import kotlin.Metadata;
 
-class ukb
-  implements uyv
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "clickPos", "", "onAdGuideClick", "com/tencent/biz/pubaccount/readinjoyAd/ad/utils/AdVideo185UIStateUtil$onProgressUpdate$2$1"}, k=3, mv={1, 1, 16})
+final class ukb
+  implements unn
 {
-  ukb(uka paramuka) {}
+  ukb(ReadInJoyAdVideoGuide paramReadInJoyAdVideoGuide, AdvertisementInfo paramAdvertisementInfo, sfx paramsfx, spk paramspk) {}
   
-  public void a(String paramString, int paramInt)
+  public final void a(View paramView, int paramInt)
   {
-    uyc.a(uka.a(this.a), "biz_src_jc_gzh_weishi", paramString, 1, umu.a().a(), 0);
-    uka.a(this.a, "gzh_click", "publish_popup", 1000003);
-  }
-  
-  public void b(String paramString, int paramInt)
-  {
-    ukw.a(uka.a(this.a), paramString);
-    uka.a(this.a, "gzh_click", "publish_popup", 1000004);
-  }
-  
-  public void c(String paramString, int paramInt)
-  {
-    WSDownloadParams localWSDownloadParams = new WSDownloadParams();
-    localWSDownloadParams.mScene = 1;
-    localWSDownloadParams.mLinkStrategyType = 0;
-    localWSDownloadParams.mEventId = 401;
-    localWSDownloadParams.mTestId = uvr.b();
-    localWSDownloadParams.mScheme = paramString;
-    unq.a((Activity)uka.a(this.a), localWSDownloadParams, false);
-    uka.a(this.a, "gzh_click", "publish_popup", 1000002);
-  }
-  
-  public void d(String paramString, int paramInt)
-  {
-    ukw.a(uka.a(this.a), paramString, new ukc(this.a, this.a));
-    uka.a(this.a, "gzh_click", "publish_popup", 1000007);
+    paramView = this.jdField_a_of_type_Sfx;
+    if (paramView != null) {
+      paramView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdVideoGuide.getContext(), paramInt, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_Spk.a);
+    }
   }
 }
 

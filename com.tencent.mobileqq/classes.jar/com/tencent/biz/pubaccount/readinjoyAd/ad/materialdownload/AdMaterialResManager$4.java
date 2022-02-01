@@ -7,21 +7,19 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import ttv;
-import tvd;
+import uic;
+import ujd;
 
 public class AdMaterialResManager$4
   implements Runnable
 {
-  public AdMaterialResManager$4(ttv paramttv, String paramString) {}
+  public AdMaterialResManager$4(uic paramuic, String paramString) {}
   
   public void run()
   {
     if (TextUtils.isEmpty(this.a))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AdMaterialResManager", 2, "preload receive json is empty!");
-      }
+      uic.a("preload receive json is empty!");
       return;
     }
     for (;;)
@@ -29,37 +27,33 @@ public class AdMaterialResManager$4
       int i;
       try
       {
-        if ((ttv.a(this.this$0) == null) || (ttv.b(this.this$0).getApp() == null) || (ttv.c(this.this$0).getCurrentAccountUin() == null)) {
+        if ((uic.a(this.this$0) == null) || (uic.b(this.this$0).getApp() == null) || (uic.c(this.this$0).getCurrentAccountUin() == null)) {
           break;
         }
-        tvd.a.a(NetConnInfoCenter.getServerTime());
+        ujd.a.a(NetConnInfoCenter.getServerTime());
         ArrayList localArrayList = new ArrayList();
         Object localObject = new JSONObject(this.a);
-        tvd.a.a(((JSONObject)localObject).optInt("is_preview"));
-        tvd.a.b(((JSONObject)localObject).optLong("req_interval"));
+        ujd.a.a(((JSONObject)localObject).optInt("is_preview"));
+        ujd.a.b(((JSONObject)localObject).optLong("req_interval"));
         localObject = ((JSONObject)localObject).optJSONArray("res_list");
         i = 0;
-        if (i >= ((JSONArray)localObject).length()) {
-          break label270;
+        if (i < ((JSONArray)localObject).length())
+        {
+          MaterialData localMaterialData = new MaterialData(((JSONArray)localObject).getJSONObject(i));
+          if ((localMaterialData.ad_type == 2) && (!TextUtils.isEmpty(localMaterialData.res_md5)) && (localMaterialData.url != null) && (localMaterialData.url.startsWith("http"))) {
+            localArrayList.add(localMaterialData);
+          } else {
+            uic.a("preload ad_material went wrong id = " + localMaterialData.id);
+          }
         }
-        MaterialData localMaterialData = new MaterialData(((JSONArray)localObject).getJSONObject(i));
-        if ((localMaterialData.ad_type == 2) && (!TextUtils.isEmpty(localMaterialData.res_md5)) && (localMaterialData.url != null) && (localMaterialData.url.startsWith("http"))) {
-          localArrayList.add(localMaterialData);
-        } else if (QLog.isColorLevel()) {
-          QLog.d("AdMaterialResManager", 2, "preload ad_material went wrong id = " + localMaterialData.id);
-        }
       }
-      catch (Exception localException) {}
-      if (!QLog.isColorLevel()) {
-        break;
+      catch (Exception localException)
+      {
+        uic.a("resolve json error" + QLog.getStackTraceString(localException));
+        return;
       }
-      QLog.d("AdMaterialResManager", 2, "resolve json error" + QLog.getStackTraceString(localException));
-      return;
-      label270:
-      if (QLog.isColorLevel()) {
-        QLog.d("AdMaterialResManager", 2, "preload ad_material result size" + localException.size());
-      }
-      ttv.a(this.this$0, localException);
+      uic.a("preload ad_material result size" + localException.size());
+      uic.a(this.this$0, localException);
       return;
       i += 1;
     }
@@ -67,7 +61,7 @@ public class AdMaterialResManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload.AdMaterialResManager.4
  * JD-Core Version:    0.7.0.1
  */

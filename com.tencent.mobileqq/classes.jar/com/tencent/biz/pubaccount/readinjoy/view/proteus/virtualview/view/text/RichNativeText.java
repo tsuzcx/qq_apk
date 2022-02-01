@@ -24,7 +24,7 @@ public class RichNativeText
     {
       SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
       RichTextParser.parse(this.mNative, localSpannableStringBuilder, this.richData);
-      setText(localSpannableStringBuilder);
+      setRealText(localSpannableStringBuilder);
       this.mNative.setTruncateAttr(RichTextParser.getTruncate());
     }
   }
@@ -59,7 +59,7 @@ public class RichNativeText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.RichNativeText
  * JD-Core Version:    0.7.0.1
  */

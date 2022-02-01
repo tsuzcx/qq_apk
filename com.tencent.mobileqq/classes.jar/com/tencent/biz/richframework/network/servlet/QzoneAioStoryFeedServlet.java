@@ -3,8 +3,8 @@ package com.tencent.biz.richframework.network.servlet;
 import NS_COMM.COMM.StCommonExt;
 import android.content.Intent;
 import android.os.Bundle;
-import axkw;
-import bgau;
+import ayrb;
+import bhjl;
 import com.tencent.biz.richframework.network.request.QzoneAioStoryFeedRequest;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
@@ -47,20 +47,20 @@ public class QzoneAioStoryFeedServlet
         if (paramFromServiceMsg.isSuccess())
         {
           localBundle.putParcelable("KEY_FOR_AIO_STORY_FEED_DATA", paramFromServiceMsg);
-          notifyObserver(paramIntent, 1010, true, localBundle, axkw.class);
+          notifyObserver(paramIntent, 1010, true, localBundle, ayrb.class);
           return;
         }
         if (QLog.isColorLevel()) {
           QLog.d("QzoneAioStoryFeedServlet", 2, new Object[] { "inform QzoneAioStoryFeedServlet isSuccess false:", paramFromServiceMsg.getBusinessFailMsg() });
         }
-        notifyObserver(paramIntent, 1010, false, localBundle, axkw.class);
+        notifyObserver(paramIntent, 1010, false, localBundle, ayrb.class);
         return;
       }
     }
     catch (Throwable paramIntent)
     {
       QLog.e("QzoneAioStoryFeedServlet", 1, paramIntent + "onReceive error");
-      notifyObserver(null, 1010, false, null, axkw.class);
+      notifyObserver(null, 1010, false, null, ayrb.class);
     }
   }
   
@@ -82,7 +82,7 @@ public class QzoneAioStoryFeedServlet
         localObject = new byte[4];
       }
       paramPacket.setSSOCommand("LightAppSvc.qq_story_client.GetUserNewestStory");
-      paramPacket.putSendData(bgau.a((byte[])localObject));
+      paramPacket.putSendData(bhjl.a((byte[])localObject));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
       return;
     }

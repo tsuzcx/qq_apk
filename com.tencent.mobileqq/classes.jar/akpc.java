@@ -1,65 +1,21 @@
-import android.content.Context;
-import android.graphics.Rect;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView.2;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
 
-public class akpc
-  implements OnCompositionLoadedListener
+class akpc
+  implements agge
 {
-  public akpc(LoginAnimBtnView.2 param2) {}
+  akpc(akpb paramakpb) {}
   
-  public void onCompositionLoaded(LottieComposition arg1)
+  public void a()
   {
-    if ((??? == null) || (LoginAnimBtnView.a(this.a.this$0)))
-    {
-      QLog.e("LoginAnimBtnView", 1, "onCompositionLoaded lottieComposition is null or mIsDestroyed:" + LoginAnimBtnView.a(this.a.this$0));
-      return;
-    }
-    int i = AIOUtils.dp2px(70.0F, this.a.this$0.getResources());
-    int j = AIOUtils.dp2px(70.0F, this.a.this$0.getResources());
-    Object localObject1 = ???.getBounds();
-    float f1 = i / ((Rect)localObject1).width();
-    float f2 = j / ((Rect)localObject1).height();
-    if (QLog.isColorLevel()) {
-      QLog.i("LoginAnimBtnView", 2, "onCompositionLoaded iw:" + i + ", ih:" + j + ": : rw:" + ((Rect)localObject1).width() + ", rh:" + ((Rect)localObject1).height());
-    }
-    localObject1 = new LottieDrawable();
-    ((LottieDrawable)localObject1).setImageAssetDelegate(new akpd(this.a.this$0.getContext().getApplicationContext()));
-    ((LottieDrawable)localObject1).setComposition(???);
-    ((LottieDrawable)localObject1).setScale(f1, f2);
-    ((LottieDrawable)localObject1).loop(true);
-    ??? = ((LottieDrawable)localObject1).getBounds();
-    if (QLog.isColorLevel()) {
-      QLog.i("LoginAnimBtnView", 2, "onCompositionLoaded rw:" + ???.width() + ", rh:" + ???.height() + " mIsDestroyed:" + LoginAnimBtnView.a(this.a.this$0));
-    }
-    LoginAnimBtnView.a(this.a.this$0, (LottieDrawable)localObject1);
-    if (LoginAnimBtnView.a(this.a.this$0))
-    {
-      ((LottieDrawable)localObject1).cancelAnimation();
-      ((LottieDrawable)localObject1).recycleBitmaps();
-      ((LottieDrawable)localObject1).clearComposition();
-      ((LottieDrawable)localObject1).setImageAssetDelegate(null);
-      LoginAnimBtnView.a(this.a.this$0, null);
-    }
-    for (;;)
-    {
-      synchronized (LoginAnimBtnView.a(this.a.this$0))
-      {
-        LoginAnimBtnView.a(this.a.this$0, null);
-        LoginAnimBtnView.a(this.a.this$0, null);
-        return;
-      }
-      if (this.a.this$0.isEnabled())
-      {
-        this.a.this$0.removeCallbacks(LoginAnimBtnView.a(this.a.this$0));
-        this.a.this$0.post(LoginAnimBtnView.a(this.a.this$0));
-      }
-    }
+    ((NewPhotoPreviewActivity)this.a.a.mActivity).setResult(-1, new Intent());
+    ((NewPhotoPreviewActivity)this.a.a.mActivity).finish();
+  }
+  
+  public void b()
+  {
+    ((NewPhotoPreviewActivity)this.a.a.mActivity).setResult(-1, new Intent());
+    ((NewPhotoPreviewActivity)this.a.a.mActivity).finish();
   }
 }
 

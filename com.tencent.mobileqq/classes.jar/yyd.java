@@ -1,250 +1,210 @@
-import QQService.InstanceInfo;
-import RegisterProxySvcPack.OnlineInfos;
-import RegisterProxySvcPack.SvcRespParam;
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import mqq.manager.Manager;
+import android.annotation.TargetApi;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.media.MediaMetadataRetriever;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
+import com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
+import com.tribe.async.async.JobContext;
+import java.io.File;
+import java.lang.ref.WeakReference;
 
+@TargetApi(10)
 public class yyd
-  implements Manager
+  extends yyn<yya, yya>
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ArrayList<yyc> jdField_a_of_type_JavaUtilArrayList;
-  private ArrayList<yyf> b;
+  private final String a;
+  public WeakReference<ylc> a;
   
-  public yyd(QQAppInterface paramQQAppInterface)
+  public yyd()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this(null);
   }
   
-  private void a()
+  public yyd(String paramString)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 1)) {
-      Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, new yye(this));
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public int a()
+  private Bitmap a(yya paramyya, Bitmap paramBitmap)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() < 1)) {
-      return 0;
+    Object localObject = null;
+    if (paramBitmap == null) {
+      return null;
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 1) {
-      return 4;
-    }
-    return ((yyc)this.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_b_of_type_Int;
-  }
-  
-  public String a()
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() < 1)) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject = (apxf)apub.a().a(528);
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (((apxf)localObject).a == 1)) {}
-    for (boolean bool = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), null, "qqsetting_qrlogin_set_mute", false);; bool = false)
+    bbnj localbbnj = new bbnj();
+    localbbnj.a(paramBitmap.getWidth(), paramBitmap.getHeight());
+    paramyya = (yya)localObject;
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() == 1)
+      paramyya = (yya)localObject;
+      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {}
+    }
+    try
+    {
+      paramyya = ((ylc)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().a(0);
+      localObject = paramBitmap;
+      if (paramyya != null)
       {
-        localObject = (yyc)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-        localStringBuilder.append(((yyc)localObject).jdField_a_of_type_JavaLangString).append(" ").append(((yyc)localObject).jdField_b_of_type_JavaLangString).append(" ").append(amtj.a(2131693537));
-        if (bool) {
-          localStringBuilder.append("，").append(amtj.a(2131694394));
+        localObject = (bbnn)bbni.a(106);
+        ((bbnn)localObject).a(paramyya);
+        ((bbnn)localObject).init();
+        paramyya = localbbnj.a(paramBitmap, (GPUBaseFilter)localObject);
+        ykq.a("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "generateMosaicThumbBitmap, mosaicThumbBitmap = %s", paramyya);
+        if (paramyya != null) {
+          paramBitmap = paramyya;
         }
+        ((bbnn)localObject).destroy();
+        localObject = paramBitmap;
       }
+      localbbnj.a();
+      return localObject;
+    }
+    catch (Exception paramyya)
+    {
       for (;;)
       {
-        return localStringBuilder.toString();
-        localStringBuilder.append(amtj.a(2131698311));
-        localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (((Iterator)localObject).hasNext()) {
-          localStringBuilder.append(((yyc)((Iterator)localObject).next()).jdField_a_of_type_JavaLangString).append("、");
-        }
-        if (bool)
-        {
-          localStringBuilder.replace(localStringBuilder.length() - 1, localStringBuilder.length(), "，");
-          localStringBuilder.append(amtj.a(2131694394));
-        }
-        else
-        {
-          localStringBuilder.replace(localStringBuilder.length() - 1, localStringBuilder.length(), "。");
-        }
+        ykq.e("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "generateMosaicThumbBitmap, read mosaic bitmap " + paramyya.toString());
+        paramyya = (yya)localObject;
       }
     }
   }
   
-  public String a(Context paramContext)
+  protected void a(JobContext paramJobContext, yya paramyya)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    String str1;
+    if (((paramyya.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalVideoSource)) || ((paramyya.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource)))
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        localStringBuilder.append(((yyc)localIterator.next()).jdField_a_of_type_JavaLangString).append("、");
+      str1 = this.jdField_a_of_type_JavaLangString;
+      if (str1 != null) {
+        break label481;
       }
-      localStringBuilder.deleteCharAt(localStringBuilder.lastIndexOf("、"));
+      str1 = yyq.a(paramyya.jdField_a_of_type_Int, paramyya.b, ".jpg");
     }
-    return paramContext.getString(2131716157, new Object[] { localStringBuilder.toString() });
-  }
-  
-  public void a(yyf paramyyf)
-  {
-    try
-    {
-      if (this.b == null) {
-        this.b = new ArrayList();
-      }
-      if (!this.b.contains(paramyyf)) {
-        this.b.add(paramyyf);
-      }
-      if (paramyyf != null) {
-        paramyyf.a(this.jdField_a_of_type_JavaUtilArrayList);
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  public boolean a(SvcRespParam paramSvcRespParam)
-  {
-    boolean bool = true;
-    if ((paramSvcRespParam == null) || (paramSvcRespParam.onlineinfos == null))
-    {
-      bool = false;
-      return bool;
-    }
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    Iterator localIterator = paramSvcRespParam.onlineinfos.iterator();
-    int i = 0;
-    label56:
-    while (localIterator.hasNext())
-    {
-      OnlineInfos localOnlineInfos = (OnlineInfos)localIterator.next();
-      if (localOnlineInfos.onlineStatus != 0)
-      {
-        int j = (int)localOnlineInfos.uClientType;
-        if (yyg.a(j))
-        {
-          yyc localyyc = new yyc(j);
-          localyyc.jdField_a_of_type_Long = localOnlineInfos.instanceId;
-          this.jdField_a_of_type_JavaUtilArrayList.add(localyyc);
-          if (QLog.isDevelopLevel()) {
-            QLog.d("LoginDevicesManager", 4, localyyc.toString());
-          }
-        }
-        if ((j != 66818) && (j != 66831) && (j != 81154)) {
-          break label332;
-        }
-        i = 1;
-      }
-    }
-    label332:
+    label407:
+    label414:
+    label429:
+    label473:
+    label478:
+    label481:
     for (;;)
     {
-      break label56;
-      if ((i == 0) && (paramSvcRespParam.PCstat != 0) && ((paramSvcRespParam.iPCClientType == 65793) || (paramSvcRespParam.iPCClientType == 77313)))
+      long l2 = 0L;
+      if ((paramyya.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalVideoSource)) {
+        l2 = ((EditLocalVideoSource)paramyya.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_Int;
+      }
+      String str2 = paramyya.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.getSourcePath();
+      paramJobContext = null;
+      MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
+      for (;;)
       {
-        paramSvcRespParam = new yyc(paramSvcRespParam.iPCClientType);
-        this.jdField_a_of_type_JavaUtilArrayList.add(0, paramSvcRespParam);
-        if (QLog.isDevelopLevel()) {
-          QLog.d("LoginDevicesManager", 4, paramSvcRespParam.toString());
+        try
+        {
+          localMediaMetadataRetriever.setDataSource(str2);
+          if (!paramyya.jdField_a_of_type_Yyg.a) {
+            continue;
+          }
+          l1 = 0L;
+          if ((paramyya.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalVideoSource))
+          {
+            int i = ((EditLocalVideoSource)paramyya.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).b;
+            l1 = i;
+          }
         }
-      }
-      a();
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginDevicesManager", 2, new Object[] { "updateDevListByRegPrxy size:", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) });
-      }
-      if (this.b != null)
-      {
-        paramSvcRespParam = this.b.iterator();
-        while (paramSvcRespParam.hasNext()) {
-          ((yyf)paramSvcRespParam.next()).a(this.jdField_a_of_type_JavaUtilArrayList);
+        catch (IllegalArgumentException paramJobContext)
+        {
+          long l1;
+          Object localObject;
+          boolean bool;
+          ykq.c("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "Video Source is Invalid ! " + str2, paramJobContext);
+          if (localMediaMetadataRetriever == null) {
+            break label473;
+          }
+          localMediaMetadataRetriever.release();
+          paramJobContext = null;
+          continue;
         }
-      }
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-        break;
-      }
-      return false;
-    }
-  }
-  
-  public boolean a(ArrayList<InstanceInfo> paramArrayList)
-  {
-    if (paramArrayList == null) {
-      return false;
-    }
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      InstanceInfo localInstanceInfo = (InstanceInfo)paramArrayList.next();
-      int i = (int)localInstanceInfo.iClientType;
-      if (yyg.a(i))
-      {
-        yyc localyyc = new yyc(i);
-        localyyc.jdField_a_of_type_Long = localInstanceInfo.iAppId;
-        this.jdField_a_of_type_JavaUtilArrayList.add(localyyc);
-        if (QLog.isDevelopLevel()) {
-          QLog.d("LoginDevicesManager", 4, localyyc.toString());
+        finally
+        {
+          if (localMediaMetadataRetriever == null) {
+            continue;
+          }
+          localMediaMetadataRetriever.release();
         }
+        try
+        {
+          paramJobContext = localMediaMetadataRetriever.getFrameAtTime(l1 * 1000L);
+          if (localMediaMetadataRetriever == null) {
+            break label478;
+          }
+          localMediaMetadataRetriever.release();
+          localObject = paramJobContext;
+          if (paramJobContext != null)
+          {
+            localObject = paramJobContext;
+            if (paramyya.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoNeedRotate) {
+              localObject = UIUtils.rotateBitmap(paramJobContext, 90.0F);
+            }
+          }
+          paramJobContext = (JobContext)localObject;
+          if ((paramyya.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource)) {
+            paramJobContext = a(paramyya, (Bitmap)localObject);
+          }
+          if (paramJobContext == null) {
+            break label429;
+          }
+          bool = zdr.a(paramJobContext, Bitmap.CompressFormat.JPEG, 80, str1);
+          paramJobContext.recycle();
+          if (!bool) {
+            break label407;
+          }
+          paramJobContext = new File(str1);
+          if ((!paramJobContext.exists()) || (!paramJobContext.isFile())) {
+            break label414;
+          }
+          ykq.a("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "success : %s", str1);
+          paramyya.jdField_a_of_type_JavaLangString = str1;
+          super.notifyResult(paramyya);
+          return;
+          paramJobContext = localMediaMetadataRetriever.extractMetadata(9);
+          if (paramJobContext == null) {
+            continue;
+          }
+          l1 = Long.valueOf(paramJobContext).longValue();
+          continue;
+        }
+        catch (OutOfMemoryError paramJobContext)
+        {
+          ykq.c("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "getFrameAtTime endTime * 1000L oom", paramJobContext);
+          paramJobContext = null;
+          continue;
+        }
+        try
+        {
+          localObject = localMediaMetadataRetriever.getFrameAtTime(1000L * l2);
+          paramJobContext = (JobContext)localObject;
+        }
+        catch (OutOfMemoryError localOutOfMemoryError)
+        {
+          ykq.c("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "getFrameAtTime startTime * 1000L oom", localOutOfMemoryError);
+        }
+        continue;
+        ykq.d("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "compressToFile error");
+        for (;;)
+        {
+          notifyError(new ErrorMessage(-1, "GenerateLocalVideoSegment error"));
+          return;
+          ykq.d("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "getFrameAtTime error : startTime = %s", new Object[] { Long.valueOf(l2) });
+          continue;
+          ykq.d("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "parameters error : %s", new Object[] { paramyya.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource });
+        }
+        paramJobContext = null;
       }
-    }
-    a();
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginDevicesManager", 2, new Object[] { "updateDevListByOnlinePush size:", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) });
-    }
-    if (this.b != null)
-    {
-      paramArrayList = this.b.iterator();
-      while (paramArrayList.hasNext()) {
-        ((yyf)paramArrayList.next()).a(this.jdField_a_of_type_JavaUtilArrayList);
-      }
-    }
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
-  }
-  
-  public void b(yyf paramyyf)
-  {
-    try
-    {
-      if (this.b != null) {
-        this.b.remove(paramyyf);
-      }
-      return;
-    }
-    finally
-    {
-      paramyyf = finally;
-      throw paramyyf;
-    }
-  }
-  
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_JavaUtilArrayList = null;
-    }
-    if (this.b != null)
-    {
-      this.b.clear();
-      this.b = null;
     }
   }
 }

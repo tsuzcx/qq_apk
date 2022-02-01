@@ -1,151 +1,75 @@
-import android.content.Intent;
-import com.tencent.common.config.AppSetting;
-import com.tencent.ims.AccountSecurityInfo.SecCheckBanner;
-import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.msfmqpsdkbridge.MSFIntChkStrike;
-import com.tencent.msfmqpsdkbridge.MSFNetTransportProvider;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.QSecFramework;
-import com.tencent.qqprotect.sfcfg.QPTxVerifyApkTimerTask;
-import tencent.im.s2c.msgtype0x210.submsgtype0x4a.MsgBody;
+import org.json.JSONObject;
 
 public class anan
-  extends BusinessHandler
 {
-  public static int a;
+  public static String a;
+  public double a;
+  public int a;
+  public long a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
   
-  anan(QQAppInterface paramQQAppInterface)
+  static
   {
-    super(paramQQAppInterface);
+    jdField_a_of_type_JavaLangString = "cmgame_process.CmGameADInfo";
   }
   
-  public static void a()
+  public anan()
   {
+    this.jdField_a_of_type_Double = 0.0D;
+  }
+  
+  public static anan a(String paramString)
+  {
+    anan localanan = new anan();
     try
     {
-      a += 1;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static void b()
-  {
-    try
-    {
-      a -= 1;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    Object localObject = new MsgBody();
-    do
-    {
-      try
-      {
-        ((MsgBody)localObject).mergeFrom(paramArrayOfByte);
-        if ((!((MsgBody)localObject).has()) || (!((MsgBody)localObject).uint32_sec_cmd.has())) {
-          return;
-        }
+      JSONObject localJSONObject2 = new JSONObject(paramString);
+      localanan.jdField_b_of_type_Int = localJSONObject2.optInt("product_type");
+      JSONObject localJSONObject3 = localJSONObject2.optJSONObject("display_info");
+      JSONObject localJSONObject1 = localJSONObject3.optJSONObject("video_info");
+      localanan.jdField_b_of_type_JavaLangString = localJSONObject1.optString("tencent_video_id");
+      localanan.jdField_a_of_type_Int = localJSONObject3.optInt("creative_size");
+      JSONObject localJSONObject4 = localJSONObject3.optJSONObject("basic_info");
+      localanan.h = localJSONObject4.optString("img");
+      localanan.e = localJSONObject4.optString("txt");
+      localJSONObject3 = localJSONObject3.optJSONObject("advertiser_info");
+      localanan.jdField_c_of_type_Int = localJSONObject3.optInt("advertiser_id");
+      localanan.f = localJSONObject3.optString("corporate_logo");
+      localanan.d = localJSONObject3.optString("corporate_image_name");
+      localJSONObject3 = localJSONObject2.optJSONObject("report_info");
+      localanan.g = localJSONObject3.optString("click_url");
+      localanan.jdField_c_of_type_JavaLangString = localJSONObject3.optString("exposure_url");
+      localJSONObject2 = localJSONObject2.optJSONObject("app_info");
+      localanan.jdField_a_of_type_Long = localJSONObject2.optLong("download_num");
+      localanan.j = localJSONObject1.optString("video_url");
+      if ((!TextUtils.isEmpty(localanan.j)) && (localanan.j.startsWith("https://"))) {
+        localanan.j = localanan.j.replaceFirst("https://", "http://");
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                for (;;)
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.d("SafeCenterPushHandler", 2, "onReceive: onReceive push package: msgbody parse fail");
-                  }
-                  paramArrayOfByte.printStackTrace();
-                }
-                switch (((MsgBody)localObject).uint32_sec_cmd.get())
-                {
-                case 5: 
-                default: 
-                  return;
-                case 1: 
-                  new aagy(this.app).a();
-                  return;
-                case 2: 
-                  paramArrayOfByte = (MSFNetTransportProvider)this.app.getBusinessHandler(63);
-                  paramArrayOfByte = new bhoo(this.app.getApp().getApplicationContext(), paramArrayOfByte);
-                }
-              } while (paramArrayOfByte == null);
-              paramArrayOfByte = (bhor)paramArrayOfByte.a("intchk");
-            } while (paramArrayOfByte == null);
-            paramArrayOfByte.a(1, new MSFIntChkStrike(this.app, 1));
-            paramArrayOfByte.a(2, new MSFIntChkStrike(this.app, 2));
-            paramArrayOfByte.a(3, new MSFIntChkStrike(this.app, 3));
-            paramArrayOfByte.b("8.4.8." + AppSetting.g());
-            return;
-            paramArrayOfByte = (MSFNetTransportProvider)this.app.getBusinessHandler(63);
-            paramArrayOfByte = new bhoo(this.app.getApp().getApplicationContext(), paramArrayOfByte);
-          } while (paramArrayOfByte == null);
-          paramArrayOfByte = (bhoq)paramArrayOfByte.a("app_scan");
-        } while (paramArrayOfByte == null);
-        paramArrayOfByte.a(((MsgBody)localObject).bytes_data.get().toByteArray());
-        return;
-        localObject = ((MsgBody)localObject).bytes_data.get().toByteArray();
-        paramArrayOfByte = new AccountSecurityInfo.SecCheckBanner();
-        try
-        {
-          paramArrayOfByte.mergeFrom((byte[])localObject);
-          localObject = paramArrayOfByte.str_wording.get();
-          int i = paramArrayOfByte.u32_timeToShow.get();
-          paramArrayOfByte = new Intent();
-          paramArrayOfByte.putExtra("wording", (String)localObject);
-          paramArrayOfByte.putExtra("timetowait", i);
-          this.app.setSecDetBannerIntent(paramArrayOfByte);
-          return;
-        }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-        {
-          for (;;)
-          {
-            localInvalidProtocolBufferMicroException.printStackTrace();
-          }
-        }
-        new QPTxVerifyApkTimerTask(this.app, true).a();
-        return;
+      if (localJSONObject2.has("app_score_num")) {
+        localanan.jdField_a_of_type_Double = localJSONObject2.optDouble("app_score_num");
       }
-    } while (localInvalidProtocolBufferMicroException.bytes_data.get() == null);
-    QSecFramework.a().a(localInvalidProtocolBufferMicroException.bytes_data.get().toByteArray());
+      localanan.i = paramString;
+      return localanan;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, paramString, new Object[0]);
+    }
+    return localanan;
   }
-  
-  public Class<? extends BusinessObserver> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

@@ -1,26 +1,25 @@
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSJSCLoader.3;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/reward/aidl/RIJAidlServerRewardTaskModule$reportTaskCompleted$1", "Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTaskRemoteRepo$IReportTaskProgressCallback;", "onReportFailed", "", "errorCode", "", "errorMsg", "", "onReportSucceed", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qzd
-  implements qxx
+public class qzd
+  extends qzf
 {
-  qzd(qyt paramqyt) {}
+  public qzd(PTSJSCLoader.3 param3) {}
   
-  public void a()
+  public void loaded(String paramString, int paramInt)
   {
-    qyt localqyt = this.a;
-    if (localqyt != null) {
-      localqyt.a();
+    super.loaded(paramString, paramInt);
+    QLog.i("PTSJSCLoader", 1, "[updatePTSJSC], asyncBack code = " + paramInt + ", param = " + paramString);
+    if ((paramInt == 0) && (paramString == null))
+    {
+      QLog.i("PTSJSCLoader", 1, "[updatePTSJSC], handleDownloadPTSJSC, download succeed.");
+      qzc.b(this.a.this$0);
     }
   }
   
-  public void a(int paramInt, @Nullable String paramString)
+  public void progress(int paramInt)
   {
-    qyt localqyt = this.a;
-    if (localqyt != null) {
-      localqyt.a(paramInt, paramString);
-    }
+    super.progress(paramInt);
   }
 }
 

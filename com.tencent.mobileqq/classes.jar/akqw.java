@@ -1,20 +1,12 @@
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import cooperation.qzone.RDMEtraMsgCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class akqw
-  implements bjoe
+class akqw
+  implements DialogInterface.OnClickListener
 {
-  public akqw(EditLocalVideoActivity paramEditLocalVideoActivity, Bundle paramBundle) {}
+  akqw(akqv paramakqv) {}
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    paramView = "[Actvity]" + getClass().getSimpleName() + " QQCustomDialog click :" + amtj.a(2131702794);
-    RDMEtraMsgCollector.getInstance().addUserAction(paramView);
-    EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).dismiss();
-    EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, this.jdField_a_of_type_AndroidOsBundle);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

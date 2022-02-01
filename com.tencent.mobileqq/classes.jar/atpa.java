@@ -1,19 +1,53 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.DirectForwardActivity;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.filemanager.core.QfavFilePreviewController.2;
+import com.tencent.mobileqq.filemanager.core.QfavFilePreviewController.3;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqfav.QfavPluginProxyService;
 
 public class atpa
-  implements DialogInterface.OnDismissListener
+  extends atlv
 {
-  public atpa(ForwardSdkShareOption paramForwardSdkShareOption) {}
+  private int jdField_a_of_type_Int = 0;
+  private long jdField_a_of_type_Long;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private bmbg jdField_a_of_type_Bmbg = new atpb(this);
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int = 80;
+  private String jdField_b_of_type_JavaLangString;
+  private String c;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public atpa(Bundle paramBundle)
   {
-    if ((this.a.a instanceof DirectForwardActivity)) {
-      this.a.a.finish();
+    QfavPluginProxyService.a().a(3, this.jdField_a_of_type_Bmbg);
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new QfavFilePreviewController.2(this), 300000L);
+  }
+  
+  public int a()
+  {
+    return 4;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    QfavPluginProxyService.a().b(3, this.jdField_a_of_type_Bmbg);
+  }
+  
+  public boolean a()
+  {
+    if (3 != this.jdField_a_of_type_Int)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("QfavFilePreviewController", 4, "sendCS: oldState = " + this.jdField_a_of_type_Int + ", newState = STATE_REQUESTING.");
+      }
+      this.jdField_a_of_type_Int = 1;
+      return true;
     }
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new QfavFilePreviewController.3(this), 2000L);
+    return true;
   }
 }
 

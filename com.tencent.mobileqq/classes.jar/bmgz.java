@@ -1,19 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.aeeditor.module.clip.video.AEEditorMvClipMenu;
 
-public class bmgz
-  implements View.OnClickListener
+class bmgz
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public bmgz(AEEditorMvClipMenu paramAEEditorMvClipMenu) {}
+  bmgz(bmgx parambmgx) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    if (AEEditorMvClipMenu.a(this.a) != null) {
-      AEEditorMvClipMenu.a(this.a).a();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    bmgx.a(this.a, paramInt);
+    EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
   }
 }
 

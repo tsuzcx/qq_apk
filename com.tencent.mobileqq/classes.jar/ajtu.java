@@ -1,15 +1,22 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import java.lang.ref.WeakReference;
 
-class ajtu
-  implements DialogInterface.OnClickListener
+public class ajtu
+  extends aahe
 {
-  ajtu(ajts paramajts) {}
+  WeakReference<aaha> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ajtu(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment, aaha paramaaha)
   {
-    ajtr.a(this.a.a).dismiss();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaaha);
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3)
+  {
+    aaha localaaha = (aaha)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localaaha != null) {
+      localaaha.a(paramBoolean1, paramBoolean2, paramInt1, paramInt2, paramInt3);
+    }
   }
 }
 

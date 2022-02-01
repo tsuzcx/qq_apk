@@ -1,8 +1,18 @@
-import android.view.View;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public abstract interface azww
 {
-  public abstract void a(View paramView);
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(AbsListView.OnScrollListener paramOnScrollListener);
+  
+  public abstract void b();
+  
+  public abstract void b(AbsListView.OnScrollListener paramOnScrollListener);
+  
+  public abstract void c();
 }
 
 

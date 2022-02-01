@@ -1,32 +1,26 @@
-import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemCommonTroopView;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.QZoneClickReport;
-import cooperation.qzone.QZoneClickReport.ReportInfo;
-import cooperation.qzone.QZoneHelper;
-import cooperation.qzone.QZoneHelper.UserInfo;
+import java.util.List;
 
-class agmh
+public class agmh
   implements View.OnClickListener
 {
-  agmh(agmf paramagmf) {}
+  public agmh(IntimateContentItemCommonTroopView paramIntimateContentItemCommonTroopView) {}
   
   public void onClick(View paramView)
   {
-    if (((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+    if ((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.isEmpty())) {}
+    for (;;)
     {
-      Object localObject = new QZoneClickReport.ReportInfo();
-      ((QZoneClickReport.ReportInfo)localObject).actionType = "330";
-      ((QZoneClickReport.ReportInfo)localObject).subactionType = "3";
-      ((QZoneClickReport.ReportInfo)localObject).reserves = "2";
-      QZoneClickReport.startReportImediately(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), (QZoneClickReport.ReportInfo)localObject);
-      localObject = QZoneHelper.UserInfo.getInstance();
-      QZoneHelper.forwardToUserHome((Activity)this.a.jdField_a_of_type_AndroidContentContext, (QZoneHelper.UserInfo)localObject, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, 0, 0, 0);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      TroopWithCommonFriendsFragment.a(this.a.jdField_a_of_type_Agll.a());
+      TroopWithCommonFriendsFragment.a(paramView.getContext(), 2);
+      bdla.b(null, "dc00898", "", "", "0X800AD22", "0X800AD22", 0, 0, "0", "0", "", "");
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

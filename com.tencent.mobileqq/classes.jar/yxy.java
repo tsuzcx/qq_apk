@@ -1,19 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class yxy
-  implements View.OnClickListener
+public class yxy
 {
-  yxy(yxw paramyxw, yyc paramyyc) {}
-  
-  public void onClick(View paramView)
-  {
-    if (yxw.a(this.jdField_a_of_type_Yxw) != null) {
-      yxw.a(this.jdField_a_of_type_Yxw).b(this.jdField_a_of_type_Yyc);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  protected ImageView a;
+  protected TextView a;
 }
 
 

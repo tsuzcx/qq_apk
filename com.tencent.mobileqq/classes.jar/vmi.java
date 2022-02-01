@@ -1,8 +1,15 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-
-public abstract interface vmi
+final class vmi
+  implements bkzs
 {
-  public abstract void a(vmp paramvmp, ErrorMessage paramErrorMessage);
+  vmi(bkzs parambkzs) {}
+  
+  public void onDismiss()
+  {
+    vmp.b("WSFeedUtils", "onDismiss entered");
+    if (this.a != null) {
+      this.a.onDismiss();
+    }
+  }
 }
 
 

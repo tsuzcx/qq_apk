@@ -6,28 +6,28 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
-import obb;
-import obg;
+import ois;
+import oix;
 import org.json.JSONException;
 import org.json.JSONObject;
-import syz;
-import tqi;
-import tuo;
-import tuq;
-import twh;
-import uet;
+import tmh;
+import uea;
+import uiu;
+import uiw;
+import uki;
+import usq;
 
 public class ProteusBannerBigPicItemData
   extends AdData
 {
-  public String S = "";
-  public String T = "";
-  public String U = "";
-  public String V = "";
   public String W = "";
   public String X = "";
   public String Y = "";
   public String Z = "";
+  public String aa = "";
+  public String ab = "";
+  public String ac = "";
+  public String ad = "";
   public boolean f;
   
   public ProteusBannerBigPicItemData()
@@ -41,14 +41,14 @@ public class ProteusBannerBigPicItemData
     String str1 = null;
     JSONObject localJSONObject = new JSONObject();
     Object localObject1;
-    if (twh.b(this)) {
-      localObject1 = tuq.a(localJSONObject, this);
+    if (uki.b(this)) {
+      localObject1 = uiw.a(localJSONObject, this);
     }
     for (;;)
     {
       return localObject1;
-      if (twh.a(this)) {
-        return tuo.a(localJSONObject, this);
+      if (uki.a(this)) {
+        return uiu.a(localJSONObject, this);
       }
       localObject1 = str1;
       Object localObject5;
@@ -109,9 +109,9 @@ public class ProteusBannerBigPicItemData
       }
       try
       {
-        localObject1 = this.W;
-        d1 = obg.a(this.V, 0.0D);
-        d2 = obg.a((String)localObject1, 0.0D);
+        localObject1 = this.aa;
+        d1 = oix.a(this.Z, 0.0D);
+        d2 = oix.a((String)localObject1, 0.0D);
         if (d2 == 0.0D)
         {
           localObject1 = str1;
@@ -140,11 +140,11 @@ public class ProteusBannerBigPicItemData
     if (localObject1 == null)
     {
       d1 = 0.0D;
-      localObject1 = this.Z;
-      localObject5 = this.T;
-      str1 = this.X;
-      str2 = this.U;
-      i = obg.a((String)localObject1, 3000);
+      localObject1 = this.ad;
+      localObject5 = this.X;
+      str1 = this.ab;
+      str2 = this.Y;
+      i = oix.a((String)localObject1, 3000);
       if (d1 > 0.0D) {
         break label685;
       }
@@ -184,7 +184,7 @@ public class ProteusBannerBigPicItemData
           localJSONObject.put("id_tv_title", localObject1);
           if (!TextUtils.isEmpty(this.d))
           {
-            localObject1 = uet.a(this.d, 4);
+            localObject1 = usq.a(this.d, 4);
             localObject4 = new JSONObject();
             ((JSONObject)localObject4).put("image_url", ((URL)localObject1).toString());
             localJSONObject.put("id_ad_banner_bottom_imge", localObject4);
@@ -213,9 +213,9 @@ public class ProteusBannerBigPicItemData
             case 1: 
               ((JSONObject)localObject1).put("text_color", "#000000");
               localJSONObject.put("id_tv_author", localObject1);
-              tqi.a(this, localJSONObject);
+              uea.a(this, localJSONObject);
               break label955;
-              d1 = obb.a((double[])localObject1, BaseApplicationImpl.getContext());
+              d1 = ois.a((double[])localObject1, BaseApplicationImpl.getContext());
               break label140;
               d1 = Math.ceil(d1);
               localObject1 = localObject4;
@@ -260,10 +260,10 @@ public class ProteusBannerBigPicItemData
     this.c = a();
     try
     {
-      syz localsyz = syz.a("native_article", true);
+      tmh localtmh = tmh.a("native_article", true);
       localObject1 = localObject3;
-      if (localsyz != null) {
-        localObject1 = localsyz.getTemplateBean(this.c);
+      if (localtmh != null) {
+        localObject1 = localtmh.getTemplateBean(this.c);
       }
     }
     catch (JSONException localJSONException)
@@ -282,7 +282,7 @@ public class ProteusBannerBigPicItemData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusBannerBigPicItemData
  * JD-Core Version:    0.7.0.1
  */

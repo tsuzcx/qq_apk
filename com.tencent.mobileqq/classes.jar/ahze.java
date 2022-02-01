@@ -1,20 +1,28 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahze
-  implements aibx
+class ahze
+  implements View.OnClickListener
 {
-  public ahze(SearchContactsFragment paramSearchContactsFragment) {}
+  ahze(ahzc paramahzc) {}
   
-  public Activity a()
+  public void onClick(View paramView)
   {
-    return this.a.a();
-  }
-  
-  public QQAppInterface a()
-  {
-    return this.a.a;
+    if (!amwn.e()) {
+      ((amme)this.a.app.getManager(QQManagerFactory.APOLLO_MANAGER)).a().a(this.a.getCurFriendUin(), 319);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.tag, 2, "[onClick] click audio button too fast.");
+      }
+    }
   }
 }
 

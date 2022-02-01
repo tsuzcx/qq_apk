@@ -1,31 +1,42 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class syd
-  implements Animator.AnimatorListener
+  implements View.OnClickListener
 {
-  syd(sya paramsya) {}
+  syd(syc paramsyc, ViewGroup paramViewGroup) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    sya.a(this.a).setVisibility(8);
-    sya.b(this.a).setVisibility(0);
+    int i = ((Integer)paramView.getTag()).intValue();
+    if (ChannelClassificationListView.a(this.jdField_a_of_type_Syc.a) != null) {
+      ChannelClassificationListView.a(this.jdField_a_of_type_Syc.a).onItemClick((AdapterView)this.jdField_a_of_type_AndroidViewViewGroup, paramView, i, this.jdField_a_of_type_Syc.getItemId(i));
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("subchannelid", this.jdField_a_of_type_Syc.a(i).b());
+      localJSONObject.put("subchannelname", this.jdField_a_of_type_Syc.a(i).a());
+      localJSONObject.put("channelid", ChannelClassificationListView.a(this.jdField_a_of_type_Syc.a));
+      olh.a(null, pkh.a() + "", "0X8009933", "0X8009933", 0, 0, "", "", "", localJSONObject.toString(), false);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.a();
-    PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).edit().putLong("search_hotword_show_lasttime", System.currentTimeMillis()).commit();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

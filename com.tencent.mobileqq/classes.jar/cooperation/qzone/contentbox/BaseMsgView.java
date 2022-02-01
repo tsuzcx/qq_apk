@@ -10,7 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import auxb;
+import awda;
 import com.tencent.image.ApngImage;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -137,7 +137,7 @@ public abstract class BaseMsgView
     try
     {
       Field localField = Class.forName("android.support.v4.view.ViewPager").getDeclaredField("mScroller");
-      BaseMsgView.CustumScroller localCustumScroller = new BaseMsgView.CustumScroller(this.mContext, new auxb(0.25D, 0.1000000014901161D, 0.25D, 1.0D));
+      BaseMsgView.CustumScroller localCustumScroller = new BaseMsgView.CustumScroller(this.mContext, new awda(0.25D, 0.1000000014901161D, 0.25D, 1.0D));
       localCustumScroller.setmDuration(400);
       localField.setAccessible(true);
       localField.set(this.viewPager, localCustumScroller);

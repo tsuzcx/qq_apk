@@ -1,12 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemNewDnaView;
 
-class agmr
-  implements DialogInterface.OnClickListener
+public class agmr
+  implements agmu
 {
-  agmr(agmk paramagmk) {}
+  public agmr(IntimateContentItemNewDnaView paramIntimateContentItemNewDnaView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(View paramView, int paramInt, agmf paramagmf)
+  {
+    if ((paramagmf != null) && (!TextUtils.isEmpty(paramagmf.b))) {
+      IntimateContentItemNewDnaView.a(this.a, paramagmf);
+    }
+    do
+    {
+      return;
+      if ((paramagmf != null) && (paramagmf.a == 23))
+      {
+        IntimateContentItemNewDnaView.b(this.a, paramagmf);
+        return;
+      }
+    } while ((paramagmf == null) || (TextUtils.isEmpty(paramagmf.d)));
+    IntimateContentItemNewDnaView.c(this.a, paramagmf);
+  }
 }
 
 

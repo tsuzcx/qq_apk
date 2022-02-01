@@ -14,7 +14,7 @@ import cooperation.vip.pb.vac_adv_get.VacFeedsAdvMetaReq;
 import java.util.Arrays;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
-import zbh;
+import zqm;
 
 public class QQPublicAccountNativePlugin
   implements NativePlugin
@@ -72,8 +72,8 @@ public class QQPublicAccountNativePlugin
           i = paramJSONObject.optInt("type");
           String str = paramJSONObject.optString("feedid");
           long l = paramJSONObject.optLong("createtime");
-          paramJSONObject = zbh.a(str, (String)localObject, i, paramJSONObject.optInt("width"), paramJSONObject.optInt("height"), l);
-          zbh.a(paramJSContext.getActivity(), paramJSONObject, 9001);
+          paramJSONObject = zqm.a(str, (String)localObject, i, paramJSONObject.optInt("width"), paramJSONObject.optInt("height"), l);
+          zqm.a(paramJSContext.getActivity(), paramJSONObject, 9001);
           return;
         }
       }
@@ -89,7 +89,7 @@ public class QQPublicAccountNativePlugin
         if (paramJSONObject != null)
         {
           paramJSONObject = paramJSONObject.optString("uin");
-          zbh.a(paramJSContext.getActivity(), paramJSONObject, 9001);
+          zqm.a(paramJSContext.getActivity(), paramJSONObject, 9001);
         }
       }
       else if ("qsubscribe_getdeviceinfo".equals(localObject))

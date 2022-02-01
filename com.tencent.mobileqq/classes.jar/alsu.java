@@ -1,20 +1,34 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
+import com.tencent.qphone.base.util.QLog;
 
 public class alsu
-  implements also
+  implements Animation.AnimationListener
 {
-  public alsu(CmGameDebugView paramCmGameDebugView) {}
+  private int jdField_a_of_type_Int;
+  private alsv jdField_a_of_type_Alsv;
   
-  public void a(int paramInt)
+  public alsu(VideoFilterViewPager paramVideoFilterViewPager, alsv paramalsv, int paramInt)
   {
-    if (CmGameDebugView.a(this.a).getVisibility() != 0)
-    {
-      CmGameDebugView.b(this.a, true);
-      return;
-    }
-    CmGameDebugView.b(this.a, paramInt);
+    this.jdField_a_of_type_Alsv = paramalsv;
+    this.jdField_a_of_type_Int = paramInt;
   }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if ((this.jdField_a_of_type_Alsv != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaVideoFilterViewPager.getCurrentItem() == this.jdField_a_of_type_Int))
+    {
+      this.jdField_a_of_type_Alsv.a(1);
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFilterViewPager", 2, "OnViewPagerItemVisiableChangeListener animation dismiss state: 1");
+      }
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

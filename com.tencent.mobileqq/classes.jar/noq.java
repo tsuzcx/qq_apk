@@ -1,71 +1,108 @@
+import android.content.Context;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import java.util.HashMap;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import java.util.ArrayList;
+import java.util.List;
 
-class noq
-  implements ITMAssistantDownloadClientListener
+public class noq
+  extends ReportDialog
 {
-  noq(nop paramnop) {}
+  private int jdField_a_of_type_Int;
+  private GridLayoutManager jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private String jdField_a_of_type_JavaLangString;
+  private List<ngc> jdField_a_of_type_JavaUtilList = new ArrayList(0);
+  private nov jdField_a_of_type_Nov;
+  private String b;
   
-  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
+  public noq(Context paramContext, int paramInt, List<ngc> paramList, String paramString1, String paramString2)
   {
-    if (paramTMAssistantDownloadClient == null) {}
+    super(paramContext, 2131755829);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    a();
+    QLog.d("AVGameQuestionClassSelectDialog", 2, "AVGameQuestionClassSelectDialog init");
+  }
+  
+  private void a()
+  {
+    setContentView(2131558750);
+    getWindow().setLayout(-1, -1);
+    Object localObject = (ImageView)findViewById(2131363311);
+    TextView localTextView = (TextView)findViewById(2131363313);
+    if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0))
+    {
+      ((ImageView)localObject).setImageDrawable(URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString));
+      localObject = (Button)findViewById(2131363240);
+      if ((this.b == null) || (this.b.length() <= 0)) {
+        break label262;
+      }
+      ((Button)localObject).setBackgroundDrawable(URLDrawable.getDrawable(this.b));
+    }
+    for (;;)
+    {
+      ((Button)localObject).setOnClickListener(new nor(this));
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131363239));
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setHasFixedSize(true);
+      this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager = new GridLayoutManager(getContext(), 2);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager);
+      this.jdField_a_of_type_Nov = new nov(this, this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Nov);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOverScrollMode(2);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new nou(this, 0, 0));
+      findViewById(2131376947).setOnClickListener(new nos(this));
+      findViewById(2131364405).setOnClickListener(new not(this));
+      return;
+      ((ImageView)localObject).setVisibility(8);
+      localTextView.setVisibility(0);
+      break;
+      label262:
+      ((Button)localObject).setText(getContext().getString(2131690418));
+    }
+  }
+  
+  public static void a(Context paramContext, int paramInt, List<ngc> paramList, String paramString1, String paramString2)
+  {
+    if ((paramContext == null) || (paramInt == 0) || (paramList == null) || (paramList.size() == 0) || (paramString1 == null) || (paramString2 == null)) {
+      return;
+    }
+    new noq(paramContext, paramInt, paramList, paramString1, paramString2).show();
+  }
+  
+  private void a(String paramString)
+  {
+    nfc.a().a(this.jdField_a_of_type_Int, paramString);
+    dismiss();
+    if (paramString == null) {
+      paramString = getContext().getString(2131690418);
+    }
+    for (;;)
+    {
+      bdla.b(null, "dc00898", "", "", "0X800B1F0", "0X800B1F0", this.jdField_a_of_type_Int, 0, "", "", paramString, "");
+      return;
+    }
+  }
+  
+  private static void b(String paramString, ImageView paramImageView)
+  {
+    if ((paramString == null) || (paramImageView == null)) {}
     do
     {
       return;
-      paramTMAssistantDownloadClient = (nok)nop.a().get(paramString);
-    } while ((paramTMAssistantDownloadClient == null) || (paramTMAssistantDownloadClient.a == null));
-    int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-    paramTMAssistantDownloadClient.a.progress(i);
+      paramString = URLDrawable.getDrawable(paramString);
+    } while (paramString == null);
+    paramImageView.setImageDrawable(paramString);
   }
-  
-  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("OfflineDownload", 2, "task onDownloadSDKTaskStateChanged + url = " + paramString1 + ", state = " + paramInt1 + ", errorCode = " + paramInt2);
-    }
-    if (paramTMAssistantDownloadClient == null) {
-      this.a.a(null, paramString1, null, -1, "client is null, " + paramString2);
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          paramString2 = (nok)nop.a().get(paramString1);
-          if ((paramString2 == null) || (paramString2.a == null))
-          {
-            this.a.a(null, paramString1, null, -1, "download info is null or callback is null");
-            return;
-          }
-          switch (paramInt1)
-          {
-          default: 
-            return;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("OfflineDownload", 2, "task downloading + url = " + paramString1);
-        return;
-        this.a.a(paramTMAssistantDownloadClient, paramString2, paramString1);
-        return;
-        this.a.a(paramString2.a, paramString1, paramString2.c, paramInt2, "offline zip download fail");
-        try
-        {
-          this.a.a.cancelDownloadTask(paramString1);
-          return;
-        }
-        catch (Exception paramTMAssistantDownloadClient) {}
-      } while (!QLog.isDevelopLevel());
-      QLog.d("OfflineDownload", 4, paramTMAssistantDownloadClient.toString());
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("OfflineDownload", 2, "task paused + url = " + paramString1);
-  }
-  
-  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient) {}
 }
 
 

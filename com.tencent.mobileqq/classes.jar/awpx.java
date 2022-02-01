@@ -1,62 +1,16 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.DelCommentResp;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
-
-class awpx
-  extends nme
+public class awpx
 {
-  awpx(awpu paramawpu, awpr paramawpr, Comments.Comment paramComment) {}
+  public final int a;
+  public final long a;
+  public final int b;
+  public final long b;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public awpx(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
   {
-    QLog.i("CommentsDataSource", 1, "errorCode:" + paramInt);
-    if ((paramInt == 0) && (paramArrayOfByte != null))
-    {
-      paramBundle = new oidb_0xada.RspBody();
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        QLog.i("CommentsDataSource", 1, "err_msg:" + paramBundle.err_msg.get());
-        if (paramBundle.busi_buf.has())
-        {
-          paramArrayOfByte = new NowNearbyVideoCommentProto.DelCommentResp();
-          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-          if (QLog.isColorLevel()) {
-            QLog.i("CommentsDataSource", 1, "ret:" + paramArrayOfByte.result.get());
-          }
-          this.jdField_a_of_type_Awpr.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, (int)paramArrayOfByte.result.get());
-          paramArrayOfByte = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-          if (paramArrayOfByte == null) {
-            return;
-          }
-          ((axen)paramArrayOfByte.getManager(263)).a(awpu.a(this.jdField_a_of_type_Awpu).a, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment.a);
-          return;
-        }
-        QLog.i("CommentsDataSource", 1, "rspBody.busi_buf is null");
-        this.jdField_a_of_type_Awpr.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        QLog.i("CommentsDataSource", 1, "merge delete resp data error");
-        this.jdField_a_of_type_Awpr.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
-        return;
-      }
-    }
-    else
-    {
-      this.jdField_a_of_type_Awpr.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
-    }
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
 }
 

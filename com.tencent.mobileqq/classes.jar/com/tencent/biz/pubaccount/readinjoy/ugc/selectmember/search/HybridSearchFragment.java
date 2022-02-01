@@ -1,52 +1,52 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.search;
 
 import android.view.View;
-import baum;
-import bayt;
-import bbbg;
-import bbee;
-import bbfe;
+import bcbc;
+import bcfj;
+import bchy;
+import bckw;
+import bclw;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import rpe;
-import rpg;
-import rph;
-import rpi;
+import sbt;
+import sbv;
+import sbw;
+import sbx;
 
 public class HybridSearchFragment
   extends BaseSearchFragment
-  implements bbbg
+  implements bchy
 {
   private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private rph jdField_a_of_type_Rph;
+  private sbw jdField_a_of_type_Sbw;
   
   public static HybridSearchFragment a()
   {
     return new HybridSearchFragment();
   }
   
-  public baum a()
+  public bcbc a()
   {
-    return new rpg(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder);
+    return new sbv(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder);
   }
   
-  public bbfe a()
+  public bclw a()
   {
     ArrayList localArrayList = new ArrayList();
     HashSet localHashSet = new HashSet();
     localHashSet.add(AppConstants.BABY_Q_UIN);
-    localArrayList.add(new bbee(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, -1, 1, null, localHashSet));
-    localArrayList.add(new rpe());
-    return new rpi(localArrayList);
+    localArrayList.add(new bckw(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, -1, 1, null, localHashSet));
+    localArrayList.add(new sbt());
+    return new sbx(localArrayList);
   }
   
-  public void a(rph paramrph)
+  public void a(sbw paramsbw)
   {
-    this.jdField_a_of_type_Rph = paramrph;
+    this.jdField_a_of_type_Sbw = paramsbw;
   }
   
   public boolean a()
@@ -64,9 +64,9 @@ public class HybridSearchFragment
   
   public void onAction(View paramView)
   {
-    paramView = (bayt)paramView.getTag(2131380831);
-    if (this.jdField_a_of_type_Rph != null) {
-      this.jdField_a_of_type_Rph.a(paramView);
+    paramView = (bcfj)paramView.getTag(2131381183);
+    if (this.jdField_a_of_type_Sbw != null) {
+      this.jdField_a_of_type_Sbw.a(paramView);
     }
   }
 }

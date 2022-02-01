@@ -1,47 +1,22 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileWZRYView;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class baes
-  extends baej
+  implements View.OnClickListener
 {
-  public android.opengl.EGLContext a;
-  public javax.microedition.khronos.egl.EGLContext a;
-  public int c = 0;
+  public baes(VasProfileWZRYView paramVasProfileWZRYView, azrb paramazrb) {}
   
-  public baes(baej parambaej)
+  public void onClick(View paramView)
   {
-    super(parambaej.jdField_a_of_type_JavaLangString, parambaej.jdField_a_of_type_Int, parambaej.jdField_b_of_type_Boolean, parambaej.jdField_a_of_type_Boolean, parambaej.jdField_a_of_type_Long, parambaej.jdField_b_of_type_Long);
-  }
-  
-  public baes(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong1, long paramLong2)
-  {
-    super(paramString, paramInt, paramBoolean1, paramBoolean2, paramLong1, paramLong2);
-  }
-  
-  public boolean a(baej parambaej)
-  {
-    boolean bool = super.a(parambaej);
-    if ((parambaej instanceof baes))
-    {
-      parambaej = (baes)parambaej;
-      if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext != parambaej.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext)
-      {
-        this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = parambaej.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
-        bool = true;
-      }
-      if (this.jdField_a_of_type_AndroidOpenglEGLContext != parambaej.jdField_a_of_type_AndroidOpenglEGLContext)
-      {
-        this.jdField_a_of_type_AndroidOpenglEGLContext = parambaej.jdField_a_of_type_AndroidOpenglEGLContext;
-        bool = true;
-      }
-      if (this.c != parambaej.c)
-      {
-        this.c = parambaej.c;
-        return true;
-      }
-    }
-    else
-    {
-      throw new IllegalArgumentException("should be FlowDecodeConfig's instance");
-    }
-    return bool;
+    String str = bhnp.a("gameHonourAddHonour");
+    VasWebviewUtil.openQQBrowserWithoutAD(VasProfileWZRYView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileWZRYView), str, -1L, null, false, -1);
+    VasWebviewUtil.reportCommercialDrainage("", "card_gameking", "clk_into", "0", 1, 0, 0, HttpUtil.getNetWorkTypeByStr(), String.valueOf(this.jdField_a_of_type_Azrb.a.lCurrentBgId), String.valueOf(this.jdField_a_of_type_Azrb.a.lCurrentStyleId));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

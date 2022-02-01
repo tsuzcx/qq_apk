@@ -1,6 +1,15 @@
-public abstract interface apkd
+public class apkd
 {
-  public abstract void a(int paramInt);
+  public String a;
+  public byte[] a;
+  public String b;
+  
+  public apkd(String paramString1, String paramString2, byte[] paramArrayOfByte)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+  }
 }
 
 

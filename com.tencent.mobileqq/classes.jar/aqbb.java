@@ -1,87 +1,28 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.ark.image.ChooseImageIPCModule.1;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import eipc.EIPCResult;
 
 public class aqbb
-  extends aptq<bmxj>
+  implements BusinessObserver
 {
-  @NonNull
-  public bmxj a(int paramInt)
-  {
-    return new bmxj();
-  }
+  public aqbb(ChooseImageIPCModule.1 param1, String paramString) {}
   
-  @Nullable
-  public bmxj a(aptx[] paramArrayOfaptx)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if ((paramArrayOfaptx == null) || (paramArrayOfaptx.length == 0)) {
-      return null;
-    }
-    paramArrayOfaptx = paramArrayOfaptx[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMStickerConfigProcessor", 2, "handleGetQIMPasterConfig onParsed, content:" + paramArrayOfaptx);
-    }
-    return new bmxg().a(paramArrayOfaptx, bmum.a.getAbsolutePath(), "temp_sticker_zip", new aqbc(this));
-  }
-  
-  public void a(bmxj parambmxj)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMStickerConfigProcessor", 2, "handleGetQIMPasterConfig onUpdate");
-    }
-  }
-  
-  public Class<bmxj> clazz()
-  {
-    return bmxj.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (!bmum.a()) {
-      return 0;
-    }
-    return bfyz.C(BaseApplicationImpl.getContext());
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMStickerConfigProcessor", 2, "handleGetQIMPasterConfig onReqFailed");
-    }
-  }
-  
-  public int onSend(int paramInt)
-  {
-    if (!bmum.a())
-    {
-      QLog.i("QIMStickerConfigProcessor", 1, "config file not exist");
-      apub.a().a(304, 0);
-      return 0;
-    }
-    return super.onSend(paramInt);
-  }
-  
-  public int type()
-  {
-    return 304;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", paramInt);
+    localBundle.putBoolean("sucess", paramBoolean);
+    localBundle.putString("data", (String)paramObject);
+    paramObject = EIPCResult.createResult(0, localBundle);
+    QLog.d("ArkApp.ChooseImageIPCModule", 1, new Object[] { "ArkMultiProc.callSendAppMsg success callback cmd=", this.jdField_a_of_type_JavaLangString });
+    this.jdField_a_of_type_ComTencentMobileqqArkImageChooseImageIPCModule$1.this$0.callbackResult(this.jdField_a_of_type_ComTencentMobileqqArkImageChooseImageIPCModule$1.a, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqbb
  * JD-Core Version:    0.7.0.1
  */

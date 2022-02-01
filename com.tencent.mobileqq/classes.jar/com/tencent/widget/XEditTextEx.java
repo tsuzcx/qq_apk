@@ -12,12 +12,11 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewConfiguration;
 import android.view.accessibility.AccessibilityNodeInfo;
-import bjuz;
-import bjva;
-import bjvb;
-import bjvc;
-import bjvd;
-import bjve;
+import blgl;
+import blgm;
+import blgn;
+import blgo;
+import blgp;
 import com.tencent.mobileqq.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -30,16 +29,15 @@ public class XEditTextEx
   implements View.OnTouchListener
 {
   private int jdField_a_of_type_Int;
-  private bjuz jdField_a_of_type_Bjuz;
-  private bjva jdField_a_of_type_Bjva;
-  private bjvb jdField_a_of_type_Bjvb;
-  private bjvc jdField_a_of_type_Bjvc;
-  public bjvd a;
+  private blgl jdField_a_of_type_Blgl;
+  private blgm jdField_a_of_type_Blgm;
+  private blgn jdField_a_of_type_Blgn;
+  private blgo jdField_a_of_type_Blgo;
   private XEditTextEx.PerformClick jdField_a_of_type_ComTencentWidgetXEditTextEx$PerformClick;
   public Object a;
   private List<WeakReference<View.OnClickListener>> jdField_a_of_type_JavaUtilList;
   private int jdField_b_of_type_Int;
-  private List<bjve> jdField_b_of_type_JavaUtilList = new ArrayList();
+  private List<blgp> jdField_b_of_type_JavaUtilList = new ArrayList();
   
   public XEditTextEx(Context paramContext)
   {
@@ -59,9 +57,9 @@ public class XEditTextEx
     this.jdField_a_of_type_JavaUtilList.add(new WeakReference(paramOnClickListener));
   }
   
-  public void a(@Nullable bjve parambjve)
+  public void a(@Nullable blgp paramblgp)
   {
-    this.jdField_b_of_type_JavaUtilList.add(parambjve);
+    this.jdField_b_of_type_JavaUtilList.add(paramblgp);
   }
   
   public boolean a(float paramFloat1, float paramFloat2, float paramFloat3)
@@ -69,14 +67,14 @@ public class XEditTextEx
     return (paramFloat1 >= -paramFloat3) && (paramFloat2 >= -paramFloat3) && (paramFloat1 < getRight() - getLeft() + paramFloat3) && (paramFloat2 < getBottom() - getTop() + paramFloat3);
   }
   
-  public void b(@Nullable bjve parambjve)
+  public void b(@Nullable blgp paramblgp)
   {
-    this.jdField_b_of_type_JavaUtilList.remove(parambjve);
+    this.jdField_b_of_type_JavaUtilList.remove(paramblgp);
   }
   
   public boolean dispatchKeyEventPreIme(KeyEvent paramKeyEvent)
   {
-    if ((this.jdField_a_of_type_Bjuz != null) && (this.jdField_a_of_type_Bjuz.a(paramKeyEvent))) {
+    if ((this.jdField_a_of_type_Blgl != null) && (this.jdField_a_of_type_Blgl.a(paramKeyEvent))) {
       return true;
     }
     return super.dispatchKeyEventPreIme(paramKeyEvent);
@@ -84,8 +82,8 @@ public class XEditTextEx
   
   public boolean onCheckIsTextEditor()
   {
-    if (this.jdField_a_of_type_Bjva != null) {
-      return this.jdField_a_of_type_Bjva.a();
+    if (this.jdField_a_of_type_Blgm != null) {
+      return this.jdField_a_of_type_Blgm.a();
     }
     return super.onCheckIsTextEditor();
   }
@@ -104,8 +102,8 @@ public class XEditTextEx
     if (QLog.isColorLevel()) {
       QLog.d("XEditTextEx", 1, "onPrivateIMECommand(), action:" + paramString + " data:" + paramBundle);
     }
-    if (this.jdField_a_of_type_Bjvb != null) {
-      return this.jdField_a_of_type_Bjvb.a(paramString, paramBundle);
+    if (this.jdField_a_of_type_Blgn != null) {
+      return this.jdField_a_of_type_Blgn.a(paramString, paramBundle);
     }
     return super.onPrivateIMECommand(paramString, paramBundle);
   }
@@ -120,11 +118,11 @@ public class XEditTextEx
         if (!localIterator.hasNext()) {
           continue;
         }
-        localbjve = (bjve)localIterator.next();
+        localblgp = (blgp)localIterator.next();
         switch (paramInt)
         {
         case 16908320: 
-          if (!localbjve.b()) {
+          if (!localblgp.b()) {
             continue;
           }
           return true;
@@ -134,7 +132,7 @@ public class XEditTextEx
       {
         try
         {
-          bjve localbjve;
+          blgp localblgp;
           boolean bool = super.onTextContextMenuItem(paramInt);
           return bool;
         }
@@ -147,10 +145,10 @@ public class XEditTextEx
         QLog.d("XEditTextEx", 2, "onTextContextMenuItem has exception,", localException);
         return false;
       }
-      if (localbjve.a())
+      if (localblgp.a())
       {
         return true;
-        bool = localbjve.c();
+        bool = localblgp.c();
         if (bool) {
           return true;
         }
@@ -202,36 +200,36 @@ public class XEditTextEx
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    if (this.jdField_a_of_type_Bjvc != null) {
-      this.jdField_a_of_type_Bjvc.a(paramBoolean);
+    if (this.jdField_a_of_type_Blgo != null) {
+      this.jdField_a_of_type_Blgo.a(paramBoolean);
     }
   }
   
   public void scrollTo(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_Bjva == null) || (this.jdField_a_of_type_Bjva.a())) {
+    if ((this.jdField_a_of_type_Blgm == null) || (this.jdField_a_of_type_Blgm.a())) {
       super.scrollTo(paramInt1, paramInt2);
     }
   }
   
-  public void setKeyEventPreImeListener(bjuz parambjuz)
+  public void setKeyEventPreImeListener(blgl paramblgl)
   {
-    this.jdField_a_of_type_Bjuz = parambjuz;
+    this.jdField_a_of_type_Blgl = paramblgl;
   }
   
-  public void setOnKeyboardShowListener(bjva parambjva)
+  public void setOnKeyboardShowListener(blgm paramblgm)
   {
-    this.jdField_a_of_type_Bjva = parambjva;
+    this.jdField_a_of_type_Blgm = paramblgm;
   }
   
-  public void setOnPrivateIMECommandListener(bjvb parambjvb)
+  public void setOnPrivateIMECommandListener(blgn paramblgn)
   {
-    this.jdField_a_of_type_Bjvb = parambjvb;
+    this.jdField_a_of_type_Blgn = paramblgn;
   }
   
-  public void setOnWindowFocusChangedListener(bjvc parambjvc)
+  public void setOnWindowFocusChangedListener(blgo paramblgo)
   {
-    this.jdField_a_of_type_Bjvc = parambjvc;
+    this.jdField_a_of_type_Blgo = paramblgo;
   }
 }
 

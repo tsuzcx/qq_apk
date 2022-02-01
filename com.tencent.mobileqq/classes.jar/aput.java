@@ -1,82 +1,24 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.os.Bundle;
+import java.util.ArrayList;
 
-public class aput
-  extends aptq<apus>
+final class aput
+  extends apvt
 {
-  @NonNull
-  public apus a(int paramInt)
+  aput(String paramString, long paramLong, ArrayList paramArrayList)
   {
-    QLog.d("TroopNotificationEntryConfigProcessor", 2, "migrateOldOrDefaultContent, type: " + paramInt);
-    return new apus();
+    super(paramString, paramLong);
   }
   
-  @Nullable
-  public apus a(aptx[] paramArrayOfaptx)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return apus.a(paramArrayOfaptx[0].a);
+    if ((paramBoolean) && (paramBundle != null)) {
+      this.a.add(paramBundle.getString("Nickname", ""));
     }
-    return null;
-  }
-  
-  public void a(apus paramapus)
-  {
-    QLog.d("TroopNotificationEntryConfigProcessor", 1, "onUpdate, newConf = " + paramapus);
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      localObject = (aikq)((AppRuntime)localObject).getManager(383);
-      if (localObject != null)
-      {
-        QLog.d("TroopNotificationEntryConfigProcessor", 1, "call troopNotificationManager.onTroopNotificationConfigUpdate(newConf)");
-        ((aikq)localObject).b(paramapus);
-      }
-    }
-  }
-  
-  public Class<apus> clazz()
-  {
-    return apus.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return true;
-  }
-  
-  public boolean isNeedUpgradeReset()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("TroopNotificationEntryConfigProcessor", 1, "onReqFailed, failCode = " + paramInt);
-  }
-  
-  public int type()
-  {
-    return 691;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aput
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,11 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.richstatus.comment.widget.CommentsView;
-
-public class bapl
-  implements View.OnLongClickListener
+class bapl
+  extends anvi
 {
-  public bapl(CommentsView paramCommentsView, baph parambaph, int paramInt) {}
+  bapl(bapk parambapk) {}
   
-  public boolean onLongClick(View paramView)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    if (this.jdField_a_of_type_Baph.a())
-    {
-      if (CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView) != null) {
-        CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView).a(this.jdField_a_of_type_Int, paramView);
-      }
-      return true;
-    }
-    return false;
+    this.a.a(String.valueOf(paramObject));
   }
 }
 

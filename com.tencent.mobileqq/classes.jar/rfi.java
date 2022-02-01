@@ -1,68 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.articlesummary.feeds_info.ShareWebPageInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class rfi
+class rfi
+  implements View.OnClickListener
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  rfi(rfh paramrfh) {}
   
-  public static rfi a(feeds_info.ShareWebPageInfo paramShareWebPageInfo)
+  public void onClick(View paramView)
   {
-    if (paramShareWebPageInfo == null) {}
-    rfi localrfi;
-    do
-    {
-      return null;
-      localrfi = new rfi();
-      if (paramShareWebPageInfo.bytes_desc.has()) {
-        localrfi.e = paramShareWebPageInfo.bytes_desc.get().toStringUtf8();
-      }
-      if (paramShareWebPageInfo.bytes_pic_url.has()) {
-        localrfi.c = paramShareWebPageInfo.bytes_pic_url.get().toStringUtf8();
-      }
-      if (paramShareWebPageInfo.bytes_title.has()) {
-        localrfi.b = paramShareWebPageInfo.bytes_title.get().toStringUtf8();
-      }
-      if (paramShareWebPageInfo.bytes_source.has()) {
-        localrfi.d = paramShareWebPageInfo.bytes_source.get().toStringUtf8();
-      }
-      if (paramShareWebPageInfo.bytes_web_url.has()) {
-        localrfi.a = paramShareWebPageInfo.bytes_web_url.get().toStringUtf8();
-      }
-      if ((!TextUtils.isEmpty(localrfi.d)) && (!TextUtils.isEmpty(localrfi.a))) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("SocializeFeedsInfo", 2, "WebSharePageInfo core info is empty!");
-    return null;
-    return localrfi;
-  }
-  
-  public feeds_info.ShareWebPageInfo a()
-  {
-    feeds_info.ShareWebPageInfo localShareWebPageInfo = new feeds_info.ShareWebPageInfo();
-    if (!TextUtils.isEmpty(this.a)) {
-      localShareWebPageInfo.bytes_web_url.set(ByteStringMicro.copyFromUtf8(this.a));
+    pnw localpnw = this.a.jdField_a_of_type_Szd.a().a();
+    if (localpnw != null) {
+      localpnw.a(null, ((qfw)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
     }
-    if (!TextUtils.isEmpty(this.c)) {
-      localShareWebPageInfo.bytes_pic_url.set(ByteStringMicro.copyFromUtf8(this.c));
-    }
-    if (!TextUtils.isEmpty(this.b)) {
-      localShareWebPageInfo.bytes_title.set(ByteStringMicro.copyFromUtf8(this.b));
-    }
-    if (!TextUtils.isEmpty(this.d)) {
-      localShareWebPageInfo.bytes_source.set(ByteStringMicro.copyFromUtf8(this.d));
-    }
-    if (!TextUtils.isEmpty(this.e)) {
-      localShareWebPageInfo.bytes_desc.set(ByteStringMicro.copyFromUtf8(this.e));
-    }
-    return localShareWebPageInfo;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

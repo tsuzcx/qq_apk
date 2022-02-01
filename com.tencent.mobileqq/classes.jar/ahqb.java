@@ -1,28 +1,10 @@
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.face.FaceDecoder;
-import com.tencent.mobileqq.widget.QQBlurView;
+import android.view.MotionEvent;
 
-class ahqb
-  implements View.OnAttachStateChangeListener
+public abstract interface ahqb
 {
-  ahqb(ahqa paramahqa) {}
+  public abstract boolean handleTouchEvent(MotionEvent paramMotionEvent);
   
-  public void onViewAttachedToWindow(View paramView) {}
-  
-  public void onViewDetachedFromWindow(View paramView)
-  {
-    if (ahqa.a(this.a) != null) {
-      ahqa.a(this.a).destory();
-    }
-    if (ahqa.a(this.a) != null)
-    {
-      ahqa.a(this.a).c();
-      ahqa.a(this.a, null);
-    }
-    ahqa.a(this.a).removeOnAttachStateChangeListener(this);
-  }
+  public abstract boolean interceptTouchEvent(MotionEvent paramMotionEvent);
 }
 
 

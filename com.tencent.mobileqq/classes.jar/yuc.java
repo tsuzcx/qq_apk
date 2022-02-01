@@ -1,8 +1,13 @@
 public class yuc
 {
-  protected float a;
-  protected int a;
-  protected boolean a;
+  public int a;
+  
+  public yuc(int paramInt)
+  {
+    this.a = paramInt;
+  }
+  
+  public void a() {}
 }
 
 

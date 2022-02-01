@@ -1,28 +1,26 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selecttopic.BaseSelectView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
-public class scc
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "BEAN", "HOLDER", "Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/BaseSelectAdapter$BaseSelectViewHolder;", "<anonymous parameter 0>", "Landroid/widget/AdapterView;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/view/View;", "position", "", "<anonymous parameter 3>", "", "onItemClick"}, k=3, mv={1, 1, 16})
+public final class scc
+  implements AdapterView.OnItemClickListener
 {
-  public static long a;
+  public scc(BaseSelectView paramBaseSelectView) {}
   
-  public static void a()
+  public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    a = System.currentTimeMillis();
-  }
-  
-  public static void a(Context paramContext)
-  {
-    long l = System.currentTimeMillis();
-    if (l - a < 10000L)
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("param_starttime", String.valueOf(l - a));
-      pay.d(paramContext, pay.a(), true, localHashMap);
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsStartStatistic", 2, "doReportStartTime param_starttime=" + (l - a));
-      }
+    Object localObject = this.a.a();
+    if (localObject != null) {
+      localObject = (Unit)((Function1)localObject).invoke(this.a.a().a().get(paramInt));
     }
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 

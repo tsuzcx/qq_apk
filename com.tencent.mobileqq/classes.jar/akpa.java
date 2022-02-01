@@ -1,136 +1,58 @@
-import android.net.Uri;
-import android.os.Build;
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
+import java.util.ArrayList;
 
-public class akpa
-  implements wxb, wxc, wxd, wxe
+class akpa
+  extends akmu
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "N1T", "ZTE A2015", "MI 1S", "GT-S7568I", "ZTE N909" };
-  private static final String[] jdField_b_of_type_ArrayOfJavaLangString = { "SM-A7000", "HM NOTE 1S", "MI 2S" };
-  private static final String[] c = { "vivo X6D" };
-  private static final String[] d = { "MI 4" };
-  private static final String[] e = { "Nexus 5" };
-  private static final String[] f = { "Nexus 5" };
-  private static final String[] g = { "OPPO R7sm" };
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private akpb jdField_a_of_type_Akpb;
-  private Uri jdField_a_of_type_AndroidNetUri;
-  private TextureVideoView jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  private boolean jdField_a_of_type_Boolean;
-  private volatile boolean jdField_b_of_type_Boolean;
-  
-  private void a()
+  protected akpa(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginActivity.GuideVideoHandler", 2, "handleError");
-    }
-    if (this.jdField_a_of_type_Akpb != null) {
-      this.jdField_a_of_type_Akpb.a();
-    }
+    super(paramNewPhotoPreviewActivity);
   }
   
-  public static boolean a(String[] paramArrayOfString)
+  public void initData(Intent paramIntent)
   {
-    boolean bool2 = false;
-    String str = Build.MODEL;
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginActivity.GuideVideoHandler", 2, "isNotSupportLoopVideo model=" + str);
+    super.initData(paramIntent);
+    this.a.customSendBtnText = ((NewPhotoPreviewActivity)this.mActivity).getString(2131689934);
+  }
+  
+  public void initUI()
+  {
+    super.initUI();
+    ((NewPhotoPreviewActivity)this.mActivity).titleView.setVisibility(8);
+    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setOnClickListener(new akpb(this));
+    ((NewPhotoPreviewActivity)this.mActivity).cancelTv.setVisibility(8);
+  }
+  
+  public void onMagicStickClick(View paramView, int paramInt1, Bundle paramBundle, int paramInt2, Intent paramIntent)
+  {
+    if (((NewPhotoPreviewActivity)this.mActivity).getCurrentSelectedPostion() != -1) {
+      this.a.a = ((String)this.a.paths.get(((NewPhotoPreviewActivity)this.mActivity).getCurrentSelectedPostion()));
     }
-    boolean bool1 = bool2;
-    int j;
-    int i;
-    if (str != null)
+    super.onMagicStickClick(paramView, 18003, paramBundle, paramInt2, EditPicActivity.a(this.mActivity, this.a.a, true, true, true, true, true, false, false, false, 2, 122, 0, false, null));
+    AIOLongShotHelper.a("0X8009DED");
+  }
+  
+  public void updateButton()
+  {
+    super.updateButton();
+    if ((this.mPhotoCommonData.selectedPhotoList != null) && (this.mPhotoCommonData.selectedPhotoList.size() > 0)) {}
+    for (int i = 1;; i = 0)
     {
-      j = paramArrayOfString.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < j)
+      if ((i != 0) && ((this.a.g) || (this.a.isSingleMode)))
       {
-        if (str.equals(paramArrayOfString[i])) {
-          bool1 = true;
-        }
+        ((NewPhotoPreviewActivity)this.mActivity).magicStickBtn.setVisibility(0);
+        ((NewPhotoPreviewActivity)this.mActivity).magicStickBtn.setEnabled(true);
       }
-      else {
-        return bool1;
-      }
-      i += 1;
+      return;
     }
-  }
-  
-  public void a(wwz paramwwz)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginActivity.GuideVideoHandler", 2, "MediaPlayer onCompletion has been called.   at " + paramwwz.b() + " mIsPause" + this.jdField_a_of_type_Boolean);
-    }
-    this.jdField_a_of_type_Int = paramwwz.b();
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      paramwwz.c();
-      paramwwz.a(true);
-    }
-    if ((a(c)) && (!this.jdField_a_of_type_Boolean))
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.setVideoURI(this.jdField_a_of_type_AndroidNetUri);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.start();
-    }
-  }
-  
-  public boolean a(wwz paramwwz, int paramInt1, int paramInt2)
-  {
-    paramwwz = new StringBuilder(64);
-    paramwwz.append("bgVideo error-- what=");
-    paramwwz.append(paramInt1);
-    paramwwz.append(" extra=");
-    paramwwz.append(paramInt2);
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginActivity.GuideVideoHandler", 2, paramwwz.toString());
-    }
-    a();
-    paramwwz = Build.MODEL;
-    if (paramwwz != null)
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("crashModel", paramwwz);
-      StatisticCollector.getInstance(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getApplicationContext()).collectPerformance(null, "newHandGuide_error", true, 0L, 0L, localHashMap, "", false);
-    }
-    return true;
-  }
-  
-  public void a_(wwz paramwwz)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.setTalkbackSwitch();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginActivity.GuideVideoHandler", 2, "MediaPlayer onPrepared has been called. talkback=" + AppSetting.c + " videoPrepareTime=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-  }
-  
-  public boolean a_(wwz paramwwz, int paramInt1, int paramInt2)
-  {
-    if (paramInt1 == 3)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginActivity.GuideVideoHandler", 2, "onInfo what===>" + paramInt1);
-      }
-      if (a(f)) {
-        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(103);
-      }
-    }
-    return false;
   }
 }
 

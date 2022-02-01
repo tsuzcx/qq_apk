@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/nct" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/icon" android:layout_width="@dimen/bd9" android:layout_height="@dimen/bd8" android:scaleType="center" />
+    <LinearLayout android:layout_gravity="top" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:id="@id/ncv" android:paddingTop="@dimen/bd_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bd9" android:minHeight="@dimen/bd8">
+            <FrameLayout android:id="@id/ncu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bd7" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" android:layout_weight="1.0" />
+            <FrameLayout android:id="@id/nn4" android:paddingTop="@dimen/bdc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip">
+                <ViewStub android:layout_gravity="end|center|top" android:id="@id/jl7" android:visibility="gone" android:layout="@layout/cku" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <ViewStub android:layout_gravity="end|center|top" android:id="@id/mmk" android:visibility="gone" android:layout="@layout/ckt" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <LinearLayout android:layout_gravity="end|bottom|center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
+                    <TextView android:textAppearance="@style/zf" android:id="@id/info" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+                    <ImageView android:layout_gravity="center" android:id="@id/ia2" android:visibility="gone" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="8.0dip" android:scaleType="centerInside" android:alpha="0.6" />
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+        <ImageView android:id="@id/jpl" android:background="?android:dividerHorizontal" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/bd9" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/jqj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bd9" android:divider="?android:listDivider" android:showDividers="middle" android:dividerPadding="12.0dip" />
+    </LinearLayout>
+</FrameLayout>

@@ -2,7 +2,7 @@ package com.tencent.avgame.gamelogic.controller;
 
 import android.app.Activity;
 import com.tencent.avgame.ui.AVGameActivity;
-import nai;
+import nfy;
 
 public class GameActivityCenterCtrl$RefreshEntryTask
   implements Runnable
@@ -13,7 +13,7 @@ public class GameActivityCenterCtrl$RefreshEntryTask
     Activity localActivity = GameActivityCenterCtrl.a((GameActivityCenterCtrl)localObject);
     localObject = GameActivityCenterCtrl.a((GameActivityCenterCtrl)localObject);
     if (((localActivity instanceof AVGameActivity)) && (!localActivity.isFinishing())) {
-      ((AVGameActivity)localActivity).a((nai)localObject);
+      ((AVGameActivity)localActivity).a((nfy)localObject);
     }
   }
 }

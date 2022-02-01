@@ -1,16 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.app.QQPermissionCallback;
 
-public class agot
-  implements ValueAnimator.AnimatorUpdateListener
+class agot
+  implements QQPermissionCallback
 {
-  public agot(SixCombolEffectView paramSixCombolEffectView) {}
+  agot(agor paramagor, BaseActivity paramBaseActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    bhdj.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
+    this.jdField_a_of_type_Agor.denied();
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_Agor.grant();
   }
 }
 

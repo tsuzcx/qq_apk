@@ -1,25 +1,17 @@
-import android.content.Context;
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.view.View;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afhm
-  extends AccessibilityDelegateCompat
+  implements View.OnClickListener
 {
-  public afhm(PressToSpeakPanel paramPressToSpeakPanel) {}
+  public afhm(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public void onClick(View paramView)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if ((AppSetting.c) && (PressToSpeakPanel.a(this.a) > 0) && (!PressToSpeakPanel.a(this.a)) && (PressToSpeakPanel.a(this.a).a() == 1))
-    {
-      PressToSpeakPanel.a(this.a, true);
-      PressToSpeakPanel.b(this.a);
-      bfpm.a(this.a, this.a.getContext().getString(2131690998));
-    }
+    this.a.e();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -5,6 +5,7 @@ public class QCircleConstants$PushFromScene
   public static final int COMMENT_PANEL = 3;
   public static final int DETAIL_PAGE = 2;
   public static final int FOLLOW_TAB_PAGE = 1;
+  public static final int PERSONAL_PAGE = 4;
 }
 
 

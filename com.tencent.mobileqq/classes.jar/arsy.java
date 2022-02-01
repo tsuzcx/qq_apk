@@ -1,20 +1,12 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceDetailBaseView;
-
 public class arsy
-  implements Animation.AnimationListener
 {
-  public arsy(Face2FaceDetailBaseView paramFace2FaceDetailBaseView) {}
+  public int a = -1;
+  public boolean a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public arsy(int paramInt)
   {
-    this.a.a.b();
+    this.a = paramInt;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,18 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.ocr.data.OcrRecogResult;
 
 public class aytt
-  implements View.OnClickListener
 {
-  public aytt(AbsProfileHeaderView paramAbsProfileHeaderView, aymg paramaymg) {}
-  
-  public void onClick(View paramView)
-  {
-    AbsProfileHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView, this.jdField_a_of_type_Aymg);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public int a;
+  public long a;
+  public OcrRecogResult a;
+  public String a;
 }
 
 

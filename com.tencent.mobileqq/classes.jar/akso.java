@@ -1,48 +1,26 @@
 import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PayBridgeActivity;
+import com.tencent.mobileqq.activity.qwallet.RedPacketVoiceFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class akso
-  extends OrientationEventListener
+  implements View.OnClickListener
 {
-  public akso(NewFlowCameraActivity paramNewFlowCameraActivity, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public akso(RedPacketVoiceFragment paramRedPacketVoiceFragment) {}
   
-  public void onOrientationChanged(int paramInt)
+  public void onClick(View paramView)
   {
-    NewFlowCameraActivity.a(this.a).a(paramInt);
-    if (this.a.i) {}
-    do
+    if ((!this.a.c()) && (RedPacketVoiceFragment.a(this.a) != null) && (paramView != null))
     {
-      return;
-      if (paramInt == -1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PTV.NewFlowCameraActivity", 2, "OrientationEventListener unknown");
-        }
-        this.a.o = 90;
-        return;
-      }
-      if ((paramInt > 315) || (paramInt < 45))
-      {
-        this.a.o = 90;
-        return;
-      }
-      if ((paramInt > 45) && (paramInt < 135))
-      {
-        this.a.o = 180;
-        return;
-      }
-      if ((paramInt > 135) && (paramInt < 225))
-      {
-        this.a.o = 270;
-        return;
-      }
-    } while ((paramInt <= 225) || (paramInt >= 315));
-    this.a.o = 0;
+      Intent localIntent = new Intent(paramView.getContext(), PayBridgeActivity.class);
+      localIntent.putExtras(RedPacketVoiceFragment.a(this.a));
+      localIntent.putExtra("pay_requestcode", 5);
+      paramView.getContext().startActivity(localIntent);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

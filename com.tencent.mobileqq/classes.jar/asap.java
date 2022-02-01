@@ -1,39 +1,17 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentMediaFileTabView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.download.unite.DownloadDialogFragment;
 
 public class asap
-  extends ataq
+  implements DialogInterface.OnClickListener
 {
-  public asap(QfileRecentMediaFileTabView paramQfileRecentMediaFileTabView) {}
+  public asap(DownloadDialogFragment paramDownloadDialogFragment) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.a().b();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().o();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().p();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().q();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().r();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().E();
+    DownloadDialogFragment.a(this.a, 1);
+    DownloadDialogFragment.a(this.a.getActivity());
+    azcl.a("0X800B53C");
   }
 }
 

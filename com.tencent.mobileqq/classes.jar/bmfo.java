@@ -1,16 +1,8 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
-
-public class bmfo
-  implements ValueAnimator.AnimatorUpdateListener
+public final class bmfo
 {
-  public bmfo(AEEditorAILoadingView paramAEEditorAILoadingView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.setAlpha(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-  }
+  public static String a = "tab_index";
+  public static String b = "url_params";
+  public static String c = "com.qqreader.redpoint_change";
 }
 
 

@@ -1,21 +1,25 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import java.util.List;
+import tke;
 
 class FastWebActivity$28
   implements Runnable
 {
-  FastWebActivity$28(FastWebActivity paramFastWebActivity) {}
+  FastWebActivity$28(FastWebActivity paramFastWebActivity, List paramList) {}
   
   public void run()
   {
-    FastWebActivity.a(this.this$0).a(FastWebActivity.a(this.this$0).c);
+    if (FastWebActivity.a(this.this$0) != null)
+    {
+      tke.c(FastWebActivity.a(this.this$0), this.a);
+      FastWebActivity.d(this.this$0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.28
  * JD-Core Version:    0.7.0.1
  */

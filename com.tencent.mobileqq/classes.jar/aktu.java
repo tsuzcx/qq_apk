@@ -1,81 +1,53 @@
-import android.content.res.Resources;
-import android.graphics.Matrix;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
 import com.tencent.qphone.base.util.QLog;
 
 public class aktu
+  extends BroadcastReceiver
 {
-  public static int a;
-  public static boolean a;
-  private static int c;
-  private Matrix a;
-  private int jdField_b_of_type_Int = 90;
-  private Matrix jdField_b_of_type_AndroidGraphicsMatrix = new Matrix();
+  private aktu(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  static
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  public aktu()
-  {
-    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  }
-  
-  private static int a()
-  {
-    if (c == 0)
-    {
-      c = (int)BaseApplicationImpl.getApplication().getResources().getDimension(2131298058);
-      return c;
-    }
-    return c;
-  }
-  
-  private static int a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (paramInt1 > paramInt3) {
-      return paramInt3;
-    }
-    if (paramInt1 < paramInt2) {
-      return paramInt2;
-    }
-    return paramInt1;
-  }
-  
-  public Rect a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2, float paramFloat3)
-  {
-    int i = Float.valueOf(a() * paramFloat3).intValue();
-    paramInt1 = a((int)paramFloat1 - i / 2, 0, paramInt1 - i);
-    paramInt2 = a((int)paramFloat2 - i / 2, 0, paramInt2 - i);
-    RectF localRectF = new RectF(paramInt1, paramInt2, paramInt1 + i, i + paramInt2);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(localRectF);
-    return new Rect(Math.round(localRectF.left), Math.round(localRectF.top), Math.round(localRectF.right), Math.round(localRectF.bottom));
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt == -1) {}
+    if ((!"troop_hblist_broadcast_action".equals(paramIntent.getAction())) || (!TroopUnAccalimedRedPacketList.b(this.a))) {}
     do
     {
-      return;
-      jdField_a_of_type_Int = (paramInt + 45) / 90 * 90;
-    } while ((jdField_a_of_type_Int >= 0) || (!QLog.isColorLevel()));
-    QLog.i("NewFlowCameraOperator", 2, "[onOrientationChanged] origi: " + paramInt + " new:" + jdField_a_of_type_Int);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_b_of_type_AndroidGraphicsMatrix = new Matrix();
-    apju.a(this.jdField_b_of_type_AndroidGraphicsMatrix, jdField_a_of_type_Boolean, this.jdField_b_of_type_Int, paramInt3, paramInt4, paramInt1, paramInt2);
-    this.jdField_b_of_type_AndroidGraphicsMatrix.invert(this.jdField_a_of_type_AndroidGraphicsMatrix);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    jdField_a_of_type_Boolean = paramBoolean;
+      int i;
+      do
+      {
+        do
+        {
+          return;
+          i = paramIntent.getIntExtra("result_code", 0);
+          int j = paramIntent.getIntExtra("grap_hb_state", 0);
+          paramContext = paramIntent.getStringExtra("listid");
+          if (QLog.isColorLevel()) {
+            QLog.d(TroopUnAccalimedRedPacketList.b(), 2, "RedPacketRefreshReceiver|resultCode:" + i + "|listId: " + paramContext + "|grabHbState: " + j);
+          }
+          if (i != -20180322) {
+            break;
+          }
+          if (TroopUnAccalimedRedPacketList.b(this.a) != null) {
+            TroopUnAccalimedRedPacketList.b(this.a).setVisibility(8);
+          }
+        } while (TroopUnAccalimedRedPacketList.a(this.a) == null);
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
+        return;
+      } while (i != -20180323);
+      if (TroopUnAccalimedRedPacketList.b(this.a) != null) {
+        TroopUnAccalimedRedPacketList.b(this.a).setVisibility(0);
+      }
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(0);
+      }
+    } while ((TroopUnAccalimedRedPacketList.a(this.a) == null) || (TextUtils.isEmpty(paramContext)));
+    TroopUnAccalimedRedPacketList.a(this.a).a(paramContext);
+    akwm.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a), paramContext);
   }
 }
 

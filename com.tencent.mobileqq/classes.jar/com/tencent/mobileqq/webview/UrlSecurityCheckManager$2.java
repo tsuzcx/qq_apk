@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.webview;
 
-import aezn;
-import bgsw;
+import afqz;
+import bidm;
 import com.tencent.widget.ListView;
 import java.lang.ref.WeakReference;
 
 public class UrlSecurityCheckManager$2
   implements Runnable
 {
-  public UrlSecurityCheckManager$2(bgsw parambgsw, WeakReference paramWeakReference1, WeakReference paramWeakReference2) {}
+  public UrlSecurityCheckManager$2(bidm parambidm, WeakReference paramWeakReference1, WeakReference paramWeakReference2) {}
   
   public void run()
   {
     ListView localListView = (ListView)this.a.get();
-    aezn localaezn = (aezn)this.b.get();
-    if ((localListView != null) && (localaezn != null)) {
-      bgsw.a(this.this$0, localListView, localaezn);
+    afqz localafqz = (afqz)this.b.get();
+    if ((localListView != null) && (localafqz != null)) {
+      bidm.a(this.this$0, localListView, localafqz);
     }
   }
 }

@@ -1,77 +1,35 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.vashealth.SSOHttpUtils.1.1;
-import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerRsp;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.photo.TroopClipPic;
+import com.tencent.mobileqq.troop.utils.TroopUploadingThread;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
-public final class bgmn
-  implements BusinessObserver
+public abstract class bgmn
+  extends Observable
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  protected TroopUploadingThread a;
+  
+  public ArrayList<bgml> a()
   {
-    String str = "";
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        Object localObject = paramBundle.getByteArray("extra_data");
-        if (localObject == null)
-        {
-          QLog.e("SSOHttpUtils", 1, "report failed response data is null");
-          return;
-        }
-        paramBundle = new WebSSOAgent.UniSsoServerRsp();
-        paramBundle.mergeFrom((byte[])localObject);
-        QLog.i("SSOHttpUtils", 1, "report result:" + paramBundle.rspdata.get() + ",ret:" + paramBundle.ret.get());
-        if (0L == paramBundle.ret.get())
-        {
-          localObject = new NewIntent(BaseApplicationImpl.getApplication(), bgmu.class);
-          ((NewIntent)localObject).putExtra("msf_cmd_type", "cmd_update_lastreport_time");
-          ((NewIntent)localObject).putExtra("last_report_time", new Long(NetConnInfoCenter.getServerTimeMillis()));
-          ((NewIntent)localObject).putExtra("has_report_yes", new Boolean(bgmm.jdField_a_of_type_Boolean));
-          BaseApplicationImpl.getApplication().getRuntime().startServlet((NewIntent)localObject);
-          bgmm.jdField_a_of_type_Float = bgmm.jdField_a_of_type_Int - bgmm.b + bgmm.c;
-          localObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-          if (!TextUtils.isEmpty((CharSequence)localObject)) {
-            bgmm.jdField_a_of_type_JavaLangString = (String)localObject;
-          }
-          bgmm.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
-          QLog.i("SSOHttpUtils", 1, "SSOHttpUtils do report success steps:" + bgmm.jdField_a_of_type_Float);
-        }
-        localObject = new JSONObject(paramBundle.rspdata.get());
-        paramBundle = str;
-        if (((JSONObject)localObject).has("svr_steps"))
-        {
-          paramInt = ((JSONObject)localObject).getInt("svr_steps");
-          QLog.e("SSOHttpUtils", 1, "step reset from server:" + paramInt);
-          paramBundle = new NewIntent(BaseApplicationImpl.getApplication(), bgmu.class);
-          paramBundle.putExtra("msf_cmd_type", "cmd_reset_step");
-          paramBundle.putExtra("server_step", paramInt);
-          BaseApplicationImpl.getApplication().getRuntime().startServlet(paramBundle);
-          paramBundle = str;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        QLog.e("SSOHttpUtils", 1, "Parse response exception:" + paramBundle.getMessage());
-        paramBundle = str;
-        continue;
-      }
-      ThreadManager.post(new SSOHttpUtils.1.1(this, -1, paramBundle), 5, null, true);
-      return;
-      QLog.i("SSOHttpUtils", 1, "SSO sent Failed!!" + paramBundle.toString());
-      paramBundle = paramBundle.toString();
+    if (this.a != null) {
+      return this.a.a();
     }
+    return null;
+  }
+  
+  public abstract void a(Class<? extends Thread> paramClass, ArrayList<TroopClipPic> paramArrayList, HashMap<String, String> paramHashMap, List<String> paramList);
+  
+  public void a(Observer paramObserver)
+  {
+    super.deleteObserver(paramObserver);
+  }
+  
+  public void notifyObservers(Object paramObject)
+  {
+    super.setChanged();
+    super.notifyObservers(paramObject);
   }
 }
 

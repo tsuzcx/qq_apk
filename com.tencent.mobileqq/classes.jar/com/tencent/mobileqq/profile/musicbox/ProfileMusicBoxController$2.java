@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.profile.musicbox;
 
-import ayos;
-import ayou;
+import aztn;
+import aztp;
 
 public class ProfileMusicBoxController$2
   implements Runnable
 {
-  public ProfileMusicBoxController$2(ayos paramayos) {}
+  public ProfileMusicBoxController$2(aztn paramaztn) {}
   
   public void run()
   {
-    if (ayos.a(this.this$0) != null) {
-      ayos.a(this.this$0).a(2);
+    if (aztn.a(this.this$0) != null) {
+      aztn.a(this.this$0).a(2);
     }
-    this.this$0.j();
+    this.this$0.m();
   }
 }
 

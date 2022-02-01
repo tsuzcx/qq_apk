@@ -1,17 +1,31 @@
 import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeInfo;
-import android.widget.EditText;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.ArithResultView;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.CheckArithHWResultFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONException;
 
-final class bfpn
-  extends View.AccessibilityDelegate
+public class bfpn
+  implements View.OnClickListener
 {
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  public bfpn(CheckArithHWResultFragment paramCheckArithHWResultFragment) {}
+  
+  public void onClick(View paramView)
   {
-    EditText localEditText = (EditText)paramView;
-    localEditText.setHint("");
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
-    paramAccessibilityNodeInfo.setContentDescription(localEditText.getContentDescription());
+    try
+    {
+      CheckArithHWResultFragment.a(this.a, CheckArithHWResultFragment.a(this.a).a(), CheckArithHWResultFragment.a(this.a).a());
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+        zdl.a("QQ.Troop.homework.CheckArithHWResultFragment//onClick toJSON error:" + localJSONException, new Object[0]);
+      }
+    }
   }
 }
 

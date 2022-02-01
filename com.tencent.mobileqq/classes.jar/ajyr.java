@@ -1,27 +1,17 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.fragment.KuaKuaHbFragment;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.fpsreport.FPSSwipListView;
 
 public class ajyr
-  implements View.OnClickListener
+  implements View.OnLayoutChangeListener
 {
-  public ajyr(KuaKuaHbFragment paramKuaKuaHbFragment) {}
+  public ajyr(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if ((paramView instanceof TextView))
-    {
-      KuaKuaHbFragment.b(this.a).setVisibility(0);
-      this.a.a = ((TextView)paramView).getText().toString();
-      KuaKuaHbFragment.b(this.a).setText(this.a.a);
-      KuaKuaHbFragment.a(this.a).setText("");
-      this.a.a(this.a.a);
-      KuaKuaHbFragment.a(this.a).setIsShow(false);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    Conversation.a(this.a).removeOnLayoutChangeListener(this);
+    Conversation.j(this.a);
   }
 }
 

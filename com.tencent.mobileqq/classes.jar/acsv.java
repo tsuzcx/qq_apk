@@ -1,151 +1,36 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.qphone.base.remote.SimpleAccount;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import tencent.im.s2c.msgtype0x210.submsgtype0xc1.submsgtype0xc1.MsgBody;
 
 public class acsv
-  extends amsu
+  implements acpi
 {
-  public acsv(AssociatedAccountActivity paramAssociatedAccountActivity) {}
-  
-  private void a(String paramString, ArrayList<bcqi> paramArrayList, alhp paramalhp)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AssociatedAccountActivity", 2, "updateAssociatedAccountInfo  uin = " + paramString);
+      QLog.e("QAV.Random.push", 2, "[random room owner] onLinePush receive 0x210_0xc1");
     }
-    Iterator localIterator = paramArrayList.iterator();
-    boolean bool1 = false;
-    bcqi localbcqi;
-    if (localIterator.hasNext())
+    try
     {
-      localbcqi = (bcqi)localIterator.next();
-      if ((localbcqi.jdField_a_of_type_Int == 2) && (localbcqi.jdField_a_of_type_JavaLangObject != null) && ((localbcqi.jdField_a_of_type_JavaLangObject instanceof ArrayList)))
-      {
-        paramArrayList = ((ArrayList)localbcqi.jdField_a_of_type_JavaLangObject).iterator();
-        do
-        {
-          bool2 = bool1;
-          if (!paramArrayList.hasNext()) {
-            break;
-          }
-        } while (!paramString.equals(((SubAccountInfo)((bcqi)paramArrayList.next()).jdField_a_of_type_JavaLangObject).subuin));
-        String str = ContactUtils.getBuddyNickName(this.a.app, paramString, true);
-        paramArrayList = str;
-        if (TextUtils.isEmpty(str)) {
-          paramArrayList = paramString;
-        }
-        boolean bool2 = bool1;
-        if (!paramArrayList.equals(localbcqi.jdField_a_of_type_JavaLangString))
-        {
-          localbcqi.jdField_a_of_type_JavaLangString = paramArrayList;
-          bool2 = true;
-        }
-        bool1 = bool2;
-      }
+      submsgtype0xc1.MsgBody localMsgBody = new submsgtype0xc1.MsgBody();
+      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+      paramQQAppInterface.getGAudioHandler().a(localMsgBody);
+      return;
     }
-    for (;;)
+    catch (Exception paramQQAppInterface)
     {
-      break;
-      if ((localbcqi.jdField_a_of_type_Int == 6) && (localbcqi.jdField_a_of_type_JavaLangObject != null) && ((localbcqi.jdField_a_of_type_JavaLangObject instanceof SimpleAccount)))
-      {
-        paramArrayList = (SimpleAccount)localbcqi.jdField_a_of_type_JavaLangObject;
-        if (paramString.equals(paramArrayList.getUin()))
-        {
-          paramArrayList = bcqk.a(this.a.app, paramArrayList);
-          if (!paramArrayList.equals(localbcqi.jdField_a_of_type_JavaLangString))
-          {
-            localbcqi.jdField_a_of_type_JavaLangString = paramArrayList;
-            bool1 = true;
-            continue;
-            if (QLog.isColorLevel()) {
-              QLog.d("AssociatedAccountActivity", 2, "updateAssociatedAccountInfo needUpdate = " + bool1);
-            }
-            if (bool1) {
-              paramalhp.notifyDataSetInvalidated();
-            }
-            return;
-          }
-        }
-      }
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QAV.Random.push", 2, "[random room owner] onLinePush 0x210_0xc1 push exception", paramQQAppInterface);
     }
   }
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    int k = 0;
-    int i = 0;
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {
-      return;
-    }
-    Iterator localIterator;
-    label54:
-    boolean bool;
-    if ((this.a.jdField_a_of_type_JavaUtilArrayList != null) && (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-    {
-      localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-      paramBoolean = false;
-      bool = paramBoolean;
-      if (!localIterator.hasNext()) {
-        break label95;
-      }
-      if (!TextUtils.equals(paramString, ((SubAccountInfo)localIterator.next()).subuin)) {
-        break label248;
-      }
-      paramBoolean = true;
-    }
-    label95:
-    label248:
-    for (;;)
-    {
-      break label54;
-      bool = false;
-      int j = k;
-      if (this.a.jdField_b_of_type_JavaUtilArrayList != null)
-      {
-        j = k;
-        if (this.a.jdField_b_of_type_JavaUtilArrayList.size() > 0)
-        {
-          localIterator = this.a.jdField_b_of_type_JavaUtilArrayList.iterator();
-          for (;;)
-          {
-            j = i;
-            if (!localIterator.hasNext()) {
-              break;
-            }
-            if (TextUtils.equals(paramString, ((SimpleAccount)localIterator.next()).getUin())) {
-              i = 1;
-            }
-          }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AssociatedAccountActivity", 2, "onUpdateCustomHead uin = " + paramString + " needUpdate=" + bool);
-      }
-      if (bool) {
-        this.a.jdField_b_of_type_Alhp.notifyDataSetInvalidated();
-      }
-      if (j == 0) {
-        break;
-      }
-      this.a.jdField_a_of_type_Alhp.notifyDataSetInvalidated();
-      return;
-    }
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AssociatedAccountActivity", 2, "onUpdateFriendInfo  uin = " + paramString + " isSuccess = " + paramBoolean);
-    }
-    a(paramString, this.a.d, this.a.jdField_b_of_type_Alhp);
-    a(paramString, this.a.c, this.a.jdField_a_of_type_Alhp);
+    a(paramacnk.a(), paramMsgType0x210);
+    return null;
   }
 }
 

@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
-import npo;
+import nwp;
 
 public class ResDownloadManger
 {
@@ -388,7 +388,7 @@ public class ResDownloadManger
   {
     String str = ResPath + paramString.substring(paramString.lastIndexOf("/") + 1, paramString.length() - 4);
     createAndClearFile(new File(str));
-    npo.a(paramString, str);
+    nwp.a(paramString, str);
   }
   
   public Drawable getDrawable(int paramInt, String paramString, ResDownloadManger.ResLoadListener paramResLoadListener)

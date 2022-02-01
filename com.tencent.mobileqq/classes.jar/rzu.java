@@ -1,56 +1,104 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.VideoInfo.RichTitleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Iterator;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import java.util.List;
+import okio.ByteString;
+import tencent.im.oidb.cmd0xe31.oidb_0xe31.ReqBody;
+import tencent.im.oidb.cmd0xe31.oidb_0xe31.RspBody;
+import tencent.im.oidb.cmd0xe31.oidb_0xe31.TopicListReq;
+import tencent.im.oidb.cmd0xe31.oidb_0xe31.TopicListRsp;
+import tencent.kandian.ugc.topic_info.TopicInfo;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/VideoFeedsReporter;", "", "()V", "doRichTitleExposureReport", "", "videoInfo", "Lcom/tencent/biz/pubaccount/VideoInfo;", "doTopicClickReport", "topicId", "", "doTopicExposureReport", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rzu
+public class rzu
+  extends qjn<ColumnInfo, ByteString>
 {
-  public static final rzu a = new rzu();
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = (QQAppInterface)pkh.a();
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  public final void a(@NotNull VideoInfo paramVideoInfo)
+  private void a(qjs<ColumnInfo, ByteString> paramqjs, byte[] paramArrayOfByte, int paramInt)
   {
-    Intrinsics.checkParameterIsNotNull(paramVideoInfo, "videoInfo");
-    if ((paramVideoInfo.d != null) && (paramVideoInfo.d.size() > 0))
+    ArrayList localArrayList = new ArrayList();
+    for (;;)
     {
-      Iterator localIterator = paramVideoInfo.d.iterator();
-      label111:
-      while (localIterator.hasNext())
+      int i;
+      try
       {
-        Object localObject = (VideoInfo.RichTitleInfo)localIterator.next();
-        String str = ((VideoInfo.RichTitleInfo)localObject).b;
-        Intrinsics.checkExpressionValueIsNotNull(str, "info.topicId");
-        if (((CharSequence)str).length() > 0) {}
-        for (int i = 1;; i = 0)
+        Object localObject = new oidb_0xe31.RspBody();
+        ((oidb_0xe31.RspBody)localObject).mergeFrom(paramArrayOfByte);
+        if ((!((oidb_0xe31.RspBody)localObject).topic_list_req_rsp.has()) || (((oidb_0xe31.RspBody)localObject).topic_list_req_rsp.topics.size() == 0))
         {
-          if (i == 0) {
-            break label111;
+          QLog.e("RIJUGC.MyColumnModel", 1, "handleSuccessResult no column data!");
+          return;
+        }
+        paramArrayOfByte = ((oidb_0xe31.RspBody)localObject).topic_list_req_rsp;
+        localObject = paramArrayOfByte.topics.get();
+        i = 0;
+        if (i < ((List)localObject).size())
+        {
+          ColumnInfo localColumnInfo = new ColumnInfo((topic_info.TopicInfo)((List)localObject).get(i));
+          if (a(localColumnInfo)) {
+            localArrayList.add(localColumnInfo);
           }
-          localObject = ((VideoInfo.RichTitleInfo)localObject).b;
-          Intrinsics.checkExpressionValueIsNotNull(localObject, "info.topicId");
-          a(paramVideoInfo, (String)localObject);
-          break;
+        }
+        else
+        {
+          QLog.i("RIJUGC.MyColumnModel", 2, "loadDataFromNetwork success, topicList.num = " + localArrayList.size());
+          this.jdField_a_of_type_Int = paramArrayOfByte.total.get();
+          paramqjs.a(true, paramArrayOfByte.is_end.get(), paramArrayOfByte.total.get(), localArrayList, ByteString.encodeUtf8(paramArrayOfByte.cookie.get().toStringUtf8()), paramInt, "");
+          return;
         }
       }
+      catch (Exception paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("RIJUGC.MyColumnModel", 2, "loadDataFromNetwork failed.");
+        }
+        paramqjs.a(false, true, 0, new ArrayList(), null, paramInt, "");
+        return;
+      }
+      i += 1;
     }
   }
   
-  public final void a(@NotNull VideoInfo paramVideoInfo, @NotNull String paramString)
+  private boolean a(ColumnInfo paramColumnInfo)
   {
-    Intrinsics.checkParameterIsNotNull(paramVideoInfo, "videoInfo");
-    Intrinsics.checkParameterIsNotNull(paramString, "topicId");
-    odq.a(null, "", "0X800B2A3", "0X800B2A3", 0, 0, "3", "", "", new sie("", paramVideoInfo.j, paramVideoInfo.a, paramVideoInfo.g).i(paramVideoInfo.g).g(paramString).ac(1).a().a(), false);
+    return !paramColumnInfo.coverUrl.isEmpty();
   }
   
-  public final void b(@NotNull VideoInfo paramVideoInfo, @NotNull String paramString)
+  public void a(List<ColumnInfo> paramList) {}
+  
+  public void a(ByteString paramByteString, qjs<ColumnInfo, ByteString> paramqjs)
   {
-    Intrinsics.checkParameterIsNotNull(paramVideoInfo, "videoInfo");
-    Intrinsics.checkParameterIsNotNull(paramString, "topicId");
-    odq.a(null, "", "0X800B2A4", "0X800B2A4", 0, 0, "3", "", "", new sie("", paramVideoInfo.j, paramVideoInfo.a, paramVideoInfo.g).i(paramVideoInfo.g).g(paramString).ac(1).a().a(), false);
+    QLog.i("RIJUGC.MyColumnModel", 2, "loadDataFromNetwork start request cookie = " + paramByteString);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      QLog.i("RIJUGC.MyColumnModel", 2, "loadDataFromNetwork return since mIsRequesting is true start = " + paramByteString);
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    oidb_0xe31.TopicListReq localTopicListReq = new oidb_0xe31.TopicListReq();
+    localTopicListReq.uid.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
+    if (paramByteString != null) {
+      localTopicListReq.cookie.set(ByteStringMicro.copyFrom(paramByteString.toByteArray()));
+    }
+    localTopicListReq.num.set(10);
+    if (this.b != 0) {
+      localTopicListReq.top_topic_id.set(this.b);
+    }
+    paramByteString = new oidb_0xe31.ReqBody();
+    paramByteString.topic_list_req_req.set(localTopicListReq);
+    ntb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new rzv(this, paramqjs), paramByteString.toByteArray(), "OidbSvc.0xe31", 3633, 3);
   }
+  
+  public void a(qjr<ColumnInfo> paramqjr) {}
 }
 
 

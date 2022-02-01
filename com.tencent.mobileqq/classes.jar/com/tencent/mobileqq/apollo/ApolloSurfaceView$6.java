@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import alpo;
+import amoo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -11,17 +11,16 @@ class ApolloSurfaceView$6
   
   public void run()
   {
-    if (this.this$0.mIsDestroy.get()) {
-      return;
-    }
-    if (this.this$0.mSurfaceCallBackData != null)
+    if (this.this$0.mIsDestroy.get()) {}
+    do
     {
+      do
+      {
+        return;
+      } while (this.this$0.mSurfaceCallBackData == null);
       ApolloSurfaceView.access$1101(this.this$0, this.this$0.mSurfaceCallBackData.jdField_a_of_type_AndroidViewSurfaceHolder, this.this$0.mSurfaceCallBackData.jdField_a_of_type_Int, this.this$0.mSurfaceCallBackData.b, this.this$0.mSurfaceCallBackData.c);
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloSurfaceView", 2, new Object[] { "mSurfaceChangeRunnable mSurfaceCallBackData:", this.this$0.mSurfaceCallBackData });
-      }
-    }
-    ApolloSurfaceView.access$1202(this.this$0, false);
+    } while (!QLog.isColorLevel());
+    QLog.d("ApolloSurfaceView", 2, new Object[] { "mSurfaceChangeRunnable mSurfaceCallBackData:", this.this$0.mSurfaceCallBackData });
   }
 }
 

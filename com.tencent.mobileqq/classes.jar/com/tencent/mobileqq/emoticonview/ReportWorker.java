@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.emoticonview;
 
-import alnr;
+import amme;
 import android.util.SparseIntArray;
-import aqyy;
-import avsq;
-import bcef;
+import asdi;
+import awyr;
+import bdla;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.text.EmotcationConstants;
@@ -60,11 +60,11 @@ public class ReportWorker
     label702:
     for (;;)
     {
-      bcef.b(this.mAppInterface, "CliOper", "", "", "ep_mall", "0X80057A3", 0, 0, k + "", "", "", "");
+      bdla.b(this.mAppInterface, "CliOper", "", "", "ep_mall", "0X80057A3", 0, 0, k + "", "", "", "");
       if (TextUtils.isApolloEmoticon(k)) {
-        VipUtils.a(this.mAppInterface, "cmshow", "Apollo", "0X800812E", ApolloUtil.b(this.mCurType), 0, new String[] { String.valueOf(k), String.valueOf(alnr.a(this.mAppInterface)) });
+        VipUtils.a(this.mAppInterface, "cmshow", "Apollo", "0X800812E", ApolloUtil.b(this.mCurType), 0, new String[] { String.valueOf(k), String.valueOf(amme.a(this.mAppInterface)) });
       }
-      avsq.b("0", 1);
+      awyr.b("0", 1);
       j = i;
       if (QLog.isColorLevel())
       {
@@ -102,7 +102,7 @@ public class ReportWorker
           }
         }
       }
-      localObject = aqyy.a((char[])localObject);
+      localObject = asdi.a((char[])localObject);
       if ((localObject != null) && (localObject.length == 2))
       {
         k = localObject[0];
@@ -123,8 +123,8 @@ public class ReportWorker
         if (this.mIsForward) {}
         for (localObject = "0X800588C";; localObject = "0X80057AF")
         {
-          bcef.b(this.mAppInterface, "CliOper", "", "", "ep_mall", (String)localObject, 0, 0, k + "", j + "", str, "");
-          avsq.b("0", 5);
+          bdla.b(this.mAppInterface, "CliOper", "", "", "ep_mall", (String)localObject, 0, 0, k + "", j + "", str, "");
+          awyr.b("0", 5);
           if (QLog.isColorLevel()) {
             QLog.d("ReportWorker", 2, "report small emoticon send amount, epId:" + k + ",eId:" + j + ",tabOrder:" + str);
           }
@@ -137,8 +137,8 @@ public class ReportWorker
         if (k < 0) {
           break;
         }
-        bcef.b(this.mAppInterface, "CliOper", "", "", "ep_mall", "0X80057A4", 0, 0, k + "", "", "", "");
-        avsq.b("0", 1);
+        bdla.b(this.mAppInterface, "CliOper", "", "", "ep_mall", "0X80057A4", 0, 0, k + "", "", "", "");
+        awyr.b("0", 1);
         j = i;
         if (!QLog.isColorLevel()) {
           break;
@@ -154,7 +154,7 @@ public class ReportWorker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.ReportWorker
  * JD-Core Version:    0.7.0.1
  */

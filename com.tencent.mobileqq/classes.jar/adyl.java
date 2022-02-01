@@ -1,46 +1,34 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQIdentiferLegacy;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class adyl
-  extends BroadcastReceiver
+  implements amhf
 {
-  public adyl(QQIdentiferLegacy paramQQIdentiferLegacy) {}
+  public adyl(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(View paramView)
   {
-    paramContext = paramIntent.getAction();
-    if (("tencent.av.v2q.StartVideoChat".equals(paramContext)) || ("tencent.av.v2q.AvSwitch".equals(paramContext)))
-    {
-      i = paramIntent.getIntExtra("sessionType", 0);
-      QLog.d("QQIdentiferLegacy", 1, "received video chat broadcast: " + i);
-      if ((i == 2) || (i == 4))
-      {
-        paramContext = new Intent();
-        paramIntent = new Bundle();
-        paramIntent.putInt("ret", 204);
-        paramIntent.putString("errMsg", auts.a);
-        paramContext.putExtra("data", paramIntent);
-        QQIdentiferLegacy.a(this.a).setResult(2, paramContext);
-        QQIdentiferLegacy.a(this.a).finish();
-      }
+    boolean bool = ForwardRecentActivity.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardEntranceActivity", 2, "onItemViewClicked" + bool);
     }
-    while (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext))
+    if (bool)
     {
-      int i;
+      ForwardRecentActivity.a(this.a, paramView);
       return;
     }
-    QLog.d("QQIdentiferLegacy", 1, "received account kicked broadcast");
-    QQIdentiferLegacy.a(this.a).finish();
+    this.a.a(paramView);
+  }
+  
+  public boolean a(String paramString, int paramInt)
+  {
+    return ForwardRecentActivity.a(this.a, paramString, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adyl
  * JD-Core Version:    0.7.0.1
  */

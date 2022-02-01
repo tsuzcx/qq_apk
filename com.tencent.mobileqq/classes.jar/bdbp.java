@@ -1,18 +1,11 @@
+import java.util.concurrent.atomic.AtomicBoolean;
+
 public class bdbp
 {
-  public void a() {}
-  
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public boolean a(int paramInt)
-  {
-    return false;
-  }
-  
-  public boolean a(bdbk parambdbk)
-  {
-    return false;
-  }
+  public bdba a;
+  public AtomicBoolean a = new AtomicBoolean(false);
+  public bdba b;
+  public bdba c;
 }
 
 

@@ -1,14 +1,17 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.RecommendFriendActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aetg
-  extends axkt
+  implements View.OnClickListener
 {
-  public aetg(VisitorsActivity paramVisitorsActivity) {}
+  public aetg(RecommendFriendActivity paramRecommendFriendActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    this.a.e();
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

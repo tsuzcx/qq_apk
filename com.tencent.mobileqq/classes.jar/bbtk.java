@@ -1,158 +1,81 @@
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import com.tencent.mobileqq.shortvideo.gesture.DownloadInfo;
-import com.tencent.mobileqq.startup.step.AVSoUtils;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.text.Editable;
+import android.text.Spannable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.richstatus.RichStatusEditText;
 
 public class bbtk
+  implements TextWatcher
 {
-  public static int a(DownloadInfo paramDownloadInfo)
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  
+  public bbtk(RichStatusEditText paramRichStatusEditText) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (paramDownloadInfo == null) {}
-    label132:
-    label135:
-    for (;;)
+    if ((this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean))
     {
-      return 11;
-      if (TextUtils.isEmpty(paramDownloadInfo.MD5_so))
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean = false;
+      this.jdField_b_of_type_Boolean = false;
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.getText().replace(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.setSelection(this.jdField_a_of_type_Int + this.jdField_a_of_type_JavaLangString.length());
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean = true;
+    }
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (!this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (paramInt3 > 0)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Int = paramInt1;
+      this.jdField_b_of_type_Int = paramInt3;
+      RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText);
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.setCursorVisible(true);
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    paramCharSequence = RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText, paramInt1, false, false);
+    if (paramCharSequence != null)
+    {
+      paramInt3 = RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText).getSpanStart(paramCharSequence);
+      if (paramInt3 != paramInt1)
       {
-        if (QLog.isDevelopLevel())
-        {
-          QLog.d("QavGesture", 4, String.format("getEnableFlag, %s", new Object[] { paramDownloadInfo }));
-          return 11;
-        }
+        this.jdField_b_of_type_Boolean = true;
+        this.jdField_a_of_type_Int = paramInt3;
+        this.jdField_b_of_type_Int = (paramInt1 - paramInt3);
+        this.jdField_a_of_type_JavaLangString = "";
       }
-      else
+    }
+    RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText, paramInt1, paramInt2);
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (!this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean) {}
+    do
+    {
+      do
       {
-        int i;
-        int j;
-        if (paramDownloadInfo.enable) {
-          if ((!d(paramDownloadInfo)) || (!c(paramDownloadInfo)))
-          {
-            i = 11;
-            if (!paramDownloadInfo.gameEnable) {
-              break label132;
-            }
-            if ((d(paramDownloadInfo)) && (b(paramDownloadInfo))) {
-              break label127;
-            }
-            j = 11;
-          }
-        }
-        for (;;)
-        {
-          if ((j == 11) || (i == 11)) {
-            break label135;
-          }
-          if ((j != 2) || (i != 2)) {
-            break label137;
-          }
-          return 2;
-          i = 1;
-          break;
-          i = 2;
-          break;
-          label127:
-          j = 1;
-          continue;
-          j = 2;
-        }
+        return;
+      } while (!this.jdField_a_of_type_Boolean);
+      bimq localbimq = RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText, paramInt1 + paramInt3, true, false);
+      if ((localbimq != null) && (RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText) != null) && (!RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText).a(localbimq)))
+      {
+        this.jdField_a_of_type_JavaLangString = "";
+        this.jdField_b_of_type_Boolean = true;
+        return;
       }
-    }
-    label137:
-    return 1;
-  }
-  
-  public static String a()
-  {
-    return b() + "model" + File.separator;
-  }
-  
-  public static boolean a(DownloadInfo paramDownloadInfo)
-  {
-    if (paramDownloadInfo == null) {}
-    while ((TextUtils.isEmpty(paramDownloadInfo.url_zip_gamemodel)) || (TextUtils.isEmpty(paramDownloadInfo.MD5_zip_gamemodel)) || (TextUtils.isEmpty(paramDownloadInfo.gamemodel_fullname))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static String b()
-  {
-    return AVSoUtils.b() + "so763" + File.separator;
-  }
-  
-  public static boolean b(DownloadInfo paramDownloadInfo)
-  {
-    String str1 = paramDownloadInfo.MD5_zip_gamemodel;
-    paramDownloadInfo = c() + paramDownloadInfo.gamemodel_fullname;
-    String str2 = DownloadInfo.getSP().getString("gamemodel_zip_md5", null);
-    if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1))) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QavGesture", 4, String.format("isGameModelReady, sp_md5[%s], xmlMd5[%s]", new Object[] { str2, str1 }));
-      }
-    }
-    do
-    {
-      return false;
-      if (FileUtils.fileExists(paramDownloadInfo)) {
-        break;
-      }
-    } while (!QLog.isDevelopLevel());
-    QLog.d("QavGesture", 4, String.format("isGameModelReady, file no exist,  fileName[%s]", new Object[] { paramDownloadInfo }));
-    return false;
-    return true;
-  }
-  
-  public static String c()
-  {
-    return b() + "gamemodel" + File.separator;
-  }
-  
-  public static boolean c(DownloadInfo paramDownloadInfo)
-  {
-    String str1 = paramDownloadInfo.MD5_zip_model;
-    paramDownloadInfo = a() + paramDownloadInfo.model_fullname;
-    String str2 = DownloadInfo.getSP().getString("model_zip_md5", null);
-    if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1))) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QavGesture", 4, String.format("isModelReady, sp_md5[%s], xmlMd5[%s]", new Object[] { str2, str1 }));
-      }
-    }
-    do
-    {
-      return false;
-      if (FileUtils.fileExists(paramDownloadInfo)) {
-        break;
-      }
-    } while (!QLog.isDevelopLevel());
-    QLog.d("QavGesture", 4, String.format("isModelReady, file no exist,  fileName[%s]", new Object[] { paramDownloadInfo }));
-    return false;
-    return true;
-  }
-  
-  public static boolean d(DownloadInfo paramDownloadInfo)
-  {
-    String str1 = paramDownloadInfo.MD5_zip_so;
-    paramDownloadInfo = b() + paramDownloadInfo.so_fullname;
-    String str2 = DownloadInfo.getSP().getString("so_zip_md5", null);
-    if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1))) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QavGesture", 4, String.format("isSoReady, sp_md5[%s], xmlMd5[%s]", new Object[] { str2, str1 }));
-      }
-    }
-    do
-    {
-      return false;
-      if (FileUtils.fileExists(paramDownloadInfo)) {
-        break;
-      }
-    } while (!QLog.isDevelopLevel());
-    QLog.d("QavGesture", 4, String.format("isSoReady, file no exist,  fileName[%s]", new Object[] { paramDownloadInfo }));
-    return false;
-    return true;
+      this.jdField_a_of_type_JavaLangString = paramCharSequence.subSequence(paramInt1, paramInt1 + paramInt3).toString();
+    } while (!this.jdField_a_of_type_JavaLangString.contains("\n"));
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.replace("\n", "");
   }
 }
 

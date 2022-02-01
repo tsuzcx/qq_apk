@@ -1,14 +1,18 @@
-public abstract interface nbl
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.wtogether.view.WatchTogetherOrdinaryControlView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class nbl
+  implements View.OnClickListener
 {
-  public abstract long a();
+  public nbl(WatchTogetherOrdinaryControlView paramWatchTogetherOrdinaryControlView) {}
   
-  public abstract void a();
-  
-  public abstract void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2);
-  
-  public abstract boolean a(long paramLong1, long paramLong2);
-  
-  public abstract boolean a(long paramLong1, long paramLong2, boolean paramBoolean);
+  public void onClick(View paramView)
+  {
+    WatchTogetherOrdinaryControlView.e(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

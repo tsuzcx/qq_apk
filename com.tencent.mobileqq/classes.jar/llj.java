@@ -1,122 +1,72 @@
-import android.graphics.Color;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.av.doodle.DoodleSurfaceView;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class llj
+class llj
+  extends BroadcastReceiver
 {
-  public static boolean a;
+  llj(lli paramlli) {}
   
-  public static int a(int paramInt1, int paramInt2, float paramFloat)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return Math.round((paramInt2 - paramInt1) * paramFloat) + paramInt1;
-  }
-  
-  public static int a(int[] paramArrayOfInt, float paramFloat)
-  {
-    if (paramFloat <= 0.0F) {
-      return paramArrayOfInt[0];
-    }
-    if (paramFloat >= 1.0F) {
-      return paramArrayOfInt[(paramArrayOfInt.length - 1)];
-    }
-    paramFloat = (paramArrayOfInt.length - 1) * paramFloat;
-    int j = (int)paramFloat;
-    paramFloat -= j;
-    int i = paramArrayOfInt[j];
-    j = paramArrayOfInt[(j + 1)];
-    return Color.argb(a(Color.alpha(i), Color.alpha(j), paramFloat), a(Color.red(i), Color.red(j), paramFloat), a(Color.green(i), Color.green(j), paramFloat), a(Color.blue(i), Color.blue(j), paramFloat));
-  }
-  
-  public static DoodleSurfaceView a(ViewGroup paramViewGroup)
-  {
-    Object localObject2 = (DoodleSurfaceView)paramViewGroup.findViewById(2131373278);
-    Object localObject1 = localObject2;
-    View localView;
-    if (localObject2 == null)
+    if (paramIntent.getAction().equalsIgnoreCase("SmartDevice_ReceiveSharpMsg"))
     {
-      localObject1 = new DoodleSurfaceView(paramViewGroup.getContext());
-      localObject2 = new ViewGroup.LayoutParams(-1, -1);
-      localView = paramViewGroup.findViewById(2131373574);
-      if (localView == null) {
-        break label67;
+      if (QLog.isColorLevel()) {
+        QLog.d(lli.jdField_a_of_type_JavaLangString, 2, "recv broadcast : smartdevice receive sharp msg");
+      }
+      paramContext = paramIntent.getBundleExtra("msgData");
+      if (paramContext != null)
+      {
+        paramContext = paramContext.getByteArray("value");
+        if (paramContext != null) {
+          this.a.jdField_a_of_type_Nce.receiveSharpVideoCall(0L, paramContext, null);
+        }
       }
     }
-    label67:
-    for (int i = paramViewGroup.indexOfChild(localView);; i = -1)
+    label154:
+    int i;
+    do
     {
-      paramViewGroup.addView((View)localObject1, i, (ViewGroup.LayoutParams)localObject2);
-      return localObject1;
-    }
-  }
-  
-  public static lle a(int paramInt)
-  {
-    Object localObject;
-    switch (paramInt)
-    {
-    case 2: 
-    default: 
-      localObject = new llk();
-    }
-    for (;;)
-    {
-      ((lle)localObject).a = paramInt;
-      return localObject;
-      localObject = new llk();
-      continue;
-      localObject = new llp(2130968656);
-    }
-  }
-  
-  public static void a(ViewGroup paramViewGroup)
-  {
-    View localView = paramViewGroup.findViewById(2131373278);
-    if (localView != null) {
-      paramViewGroup.removeView(localView);
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    bcef.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
-  }
-  
-  public static boolean a()
-  {
-    if (a) {
-      return true;
-    }
-    if (!b()) {
-      return false;
-    }
-    a = true;
-    return a;
-  }
-  
-  public static boolean b()
-  {
-    int i = lld.e();
-    if (i < 4)
-    {
-      lba.f("DoodleUtils", "isSupportOfDevice error cpucount = " + i);
-      return false;
-    }
-    long l = lld.d();
-    if (l < 1400000L)
-    {
-      lba.f("DoodleUtils", "isSupportOfDevice error cpuFrequency = " + l);
-      return false;
-    }
-    l = DeviceInfoUtil.getSystemTotalMemory();
-    if (l < 1073741824L)
-    {
-      lba.f("DoodleUtils", "isSupportOfDevice error memory = " + l);
-      return false;
-    }
-    return true;
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+                if (!paramIntent.getAction().equalsIgnoreCase("SmartDevice_ReceiveSharpAckMsg")) {
+                  break label154;
+                }
+                if (QLog.isColorLevel()) {
+                  QLog.d(lli.jdField_a_of_type_JavaLangString, 2, "recv broadcast : smartdevice receive sharp ack msg");
+                }
+                if (!paramIntent.getBooleanExtra("timeout", false)) {
+                  break;
+                }
+              } while (!QLog.isColorLevel());
+              QLog.d(lli.jdField_a_of_type_JavaLangString, 2, "recv broadcast : smartdevice receive sharp timeout msg");
+              return;
+              paramContext = paramIntent.getBundleExtra("msgData");
+            } while (paramContext == null);
+            paramContext = paramContext.getByteArray("value");
+          } while (paramContext == null);
+          this.a.jdField_a_of_type_Nce.receiveSharpVideoAck(0L, paramContext, null);
+          return;
+        } while (!paramIntent.getAction().equals("SmartDevice_DeviceUnBindRst"));
+        paramContext = paramIntent.getExtras();
+      } while (paramContext == null);
+      i = paramContext.getInt("deviceoprstcode");
+      paramContext = Long.valueOf(paramContext.getLong("deviceopdin", 0L));
+    } while ((i != 0) || (paramContext.longValue() == 0L) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a() == null) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a() == null) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d == null) || (!this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d.equals(String.valueOf(paramContext))));
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(1000);
   }
 }
 

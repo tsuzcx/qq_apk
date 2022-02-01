@@ -1,27 +1,27 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bnet;
+import boul;
 
 public class EditVideoStoryButton$3
   implements Runnable
 {
-  public EditVideoStoryButton$3(bnet parambnet) {}
+  public EditVideoStoryButton$3(boul paramboul) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_Boolean) {
       return;
     }
-    bnet localbnet;
+    boul localboul;
     if (this.this$0.jdField_a_of_type_Float < 50.0F) {
-      localbnet = this.this$0;
+      localboul = this.this$0;
     }
-    for (localbnet.jdField_a_of_type_Float += this.this$0.b; this.this$0.jdField_a_of_type_Float > 99.0F; localbnet.jdField_a_of_type_Float += 1.0F)
+    for (localboul.jdField_a_of_type_Float += this.this$0.b; this.this$0.jdField_a_of_type_Float > 99.0F; localboul.jdField_a_of_type_Float += 1.0F)
     {
       this.this$0.jdField_a_of_type_Float = 99.0F;
       this.this$0.a((int)this.this$0.jdField_a_of_type_Float);
       return;
-      localbnet = this.this$0;
+      localboul = this.this$0;
     }
     this.this$0.a((int)this.this$0.jdField_a_of_type_Float);
     this.this$0.c();

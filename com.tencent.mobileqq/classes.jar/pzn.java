@@ -1,78 +1,32 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class pzn
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  public pzn(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    JSONObject localJSONObject = new JSONObject();
-    if (paramBaseArticleInfo.mGalleryPicNumber > 2)
+    ReadInJoySelfFragment.a(this.a).b(paramBoolean);
+    if (paramBoolean)
     {
-      localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("gallery_cn_text", paramBaseArticleInfo.mGalleryPicNumber + amtj.a(2131712082));
-      localJSONObject.put("id_gallery_cnt", localObject1);
-      localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("gallery_icon", "qq_readinjoy_gallery_count");
-      localJSONObject.put("id_gallery_img", localObject1);
-      localJSONObject.put("id_gallery_bg", new JSONObject());
+      QQToast.a(this.a.a.getContext(), this.a.a.getContext().getResources().getString(2131699158), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299080));
+      olh.a(null, "CliOper", "", "", "0X80067D6", "0X80067D6", 0, 0, "", "", "", pqf.a(), false);
     }
-    Object localObject2;
-    Object localObject3;
-    if ((paramBaseArticleInfo.mPictures == null) || (paramBaseArticleInfo.mPictures.length <= 0))
+    for (;;)
     {
-      localObject2 = pek.a(paramBaseArticleInfo.mJsonPictureList, "pictures");
-      if ((localObject2 == null) || (((JSONArray)localObject2).length() < 2)) {
-        return localJSONObject;
-      }
-      localObject1 = ((JSONArray)localObject2).optJSONObject(0);
-      if (localObject1 == null)
-      {
-        localObject1 = paramBaseArticleInfo.mFirstPagePicUrl;
-        localObject2 = ((JSONArray)localObject2).optJSONObject(1);
-        if (localObject2 != null) {
-          break label280;
-        }
-      }
-      label280:
-      for (localObject2 = paramBaseArticleInfo.mFirstPagePicUrl;; localObject2 = ((JSONObject)localObject2).optString("picture"))
-      {
-        localObject3 = new JSONObject();
-        ((JSONObject)localObject3).put("multi_img_url1", localObject1);
-        localJSONObject.put("id_multi_img_1", localObject3);
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("multi_img_url2", localObject2);
-        localJSONObject.put("id_multi_img_2", localObject1);
-        qai.a(paramBaseArticleInfo, localJSONObject, true);
-        qai.n(paramBaseArticleInfo, localJSONObject);
-        qai.k(paramBaseArticleInfo, localJSONObject);
-        qai.a(localJSONObject);
-        localJSONObject.put("style_ID", "ReadInjoy_gallery_channel_double_img_cell");
-        qai.a(localJSONObject, paramBaseArticleInfo);
-        return localJSONObject;
-        localObject1 = ((JSONObject)localObject1).optString("picture");
-        break;
-      }
-    }
-    if ((paramBaseArticleInfo.mPictures.length < 1) || (paramBaseArticleInfo.mPictures[0] == null))
-    {
-      localObject1 = paramBaseArticleInfo.mSinglePicture;
-      label313:
-      localObject2 = ((URL)localObject1).getFile();
-      if ((paramBaseArticleInfo.mPictures.length >= 2) && (paramBaseArticleInfo.mPictures[1] != null)) {
-        break label363;
-      }
-    }
-    label363:
-    for (Object localObject1 = paramBaseArticleInfo.mSinglePicture;; localObject1 = paramBaseArticleInfo.mPictures[1])
-    {
-      localObject3 = ((URL)localObject1).getFile();
-      localObject1 = localObject2;
-      localObject2 = localObject3;
-      break;
-      localObject1 = paramBaseArticleInfo.mPictures[0];
-      break label313;
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      olh.a(null, "CliOper", "", "", "0X800705C", "0X800705C", 0, 0, "", "", "", pqf.a(), false);
     }
   }
 }

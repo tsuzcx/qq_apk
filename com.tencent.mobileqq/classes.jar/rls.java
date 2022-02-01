@@ -1,40 +1,29 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.EditVideoFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.TimeZone;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
 
-public class rls
-  implements AdapterView.OnItemClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/reward/utils/Utils;", "", "()V", "MILLIS_IN_DAY", "", "isMainProcess", "", "isSameDayOfMillis", "ms1", "ms2", "toDay", "millis", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rls
 {
-  public rls(EditVideoFragment paramEditVideoFragment) {}
+  public static final rls a = new rls();
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  private final long a(long paramLong)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramView != null)
-    {
-      bool1 = bool2;
-      if ((paramView.getTag(2131365915) instanceof Boolean)) {
-        bool1 = ((Boolean)paramView.getTag(2131365915)).booleanValue();
-      }
-    }
-    if (!bool1)
-    {
-      EditVideoFragment.a(this.a, (ColumnInfo)EditVideoFragment.a(this.a).get(paramInt));
-      if (EditVideoFragment.a(this.a) == null) {}
-    }
-    for (EditVideoFragment.a(this.a).columnId = EditVideoFragment.a(this.a).columnID;; EditVideoFragment.a(this.a).columnId = 0L)
-    {
-      EditVideoFragment.a(this.a).notifyDataSetChanged();
-      EditVideoFragment.a(this.a);
-      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-      return;
-      EditVideoFragment.a(this.a, null);
-    }
+    return (TimeZone.getDefault().getOffset(paramLong) + paramLong) / 86400000L;
+  }
+  
+  @JvmStatic
+  public static final boolean a()
+  {
+    return BaseApplicationImpl.sProcessId == 1;
+  }
+  
+  @JvmStatic
+  public static final boolean a(long paramLong1, long paramLong2)
+  {
+    long l = paramLong1 - paramLong2;
+    return (l < 86400000L) && (l > -86400000L) && (a.a(paramLong1) == a.a(paramLong2));
   }
 }
 

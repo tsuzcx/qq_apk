@@ -1,21 +1,4 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.BusinessObserver;
-
-public class ofb
-  implements BusinessObserver
-{
-  protected void a(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if (paramObject != null)
-    {
-      a(paramBoolean, (Bundle)paramObject);
-      return;
-    }
-    a(paramBoolean, null);
-  }
-}
+class ofb {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

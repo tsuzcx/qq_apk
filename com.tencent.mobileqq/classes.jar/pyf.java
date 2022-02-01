@@ -1,32 +1,24 @@
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.widget.AutoFitTextView;
+
 public class pyf
+  implements bima
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  KanDianUrlRoundCornerImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView;
+  AutoFitTextView jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView;
   
-  public pyf(String paramString)
-  {
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public pyf(pyd parampyd) {}
   
-  public pyf(String paramString1, String paramString2, String paramString3, String paramString4)
+  public int a()
   {
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_Int = 2;
-    this.d = paramString1;
-    this.c = paramString2;
-    this.b = paramString3;
-    this.e = paramString4;
-  }
-  
-  public String toString()
-  {
-    return "type = " + this.jdField_a_of_type_Int + " index = " + this.jdField_a_of_type_JavaLangString + " city = " + this.b + " province = " + this.c + " country = " + this.d + " citycode = " + this.e;
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout.getWidth() - DisplayUtil.dip2px(pyd.a(this.jdField_a_of_type_Pyd), 10.0F);
   }
 }
 

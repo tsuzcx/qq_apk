@@ -1,35 +1,23 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
+import android.app.Activity;
+import com.tencent.avgame.app.AVGameAppInterface;
 
-public class nht
+public abstract interface nht
 {
-  private static final nht jdField_a_of_type_Nht = new nht();
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private Handler b;
+  public abstract Activity a();
   
-  private nht()
-  {
-    HandlerThread localHandlerThread = new HandlerThread("avgame_chat_thread");
-    localHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
-    this.b = new Handler(Looper.getMainLooper());
-  }
+  public abstract void a(int paramInt, String paramString1, String paramString2);
   
-  public static nht a()
-  {
-    return jdField_a_of_type_Nht;
-  }
+  public abstract void a(AVGameAppInterface paramAVGameAppInterface, long paramLong, String paramString1, int paramInt, String paramString2, String paramString3);
   
-  public Handler a()
-  {
-    return this.jdField_a_of_type_AndroidOsHandler;
-  }
+  public abstract void a(String paramString);
   
-  public Handler b()
-  {
-    return this.b;
-  }
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void a(String paramString1, String paramString2, String paramString3);
+  
+  public abstract void a(nfv paramnfv);
+  
+  public abstract void b(nfv paramnfv);
 }
 
 

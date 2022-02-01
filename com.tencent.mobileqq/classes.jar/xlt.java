@@ -1,23 +1,39 @@
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import java.util.Comparator;
+import android.content.Context;
+import android.net.Uri;
+import java.util.Map;
 
 public class xlt
-  implements Comparator<VideoCollectionItem>
+  implements xlr
 {
-  public int a(VideoCollectionItem paramVideoCollectionItem1, VideoCollectionItem paramVideoCollectionItem2)
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Uri jdField_a_of_type_AndroidNetUri;
+  private Map<String, String> jdField_a_of_type_JavaUtilMap;
+  private Uri jdField_b_of_type_AndroidNetUri;
+  private Map<String, String> jdField_b_of_type_JavaUtilMap;
+  
+  public xlt(Context paramContext, Uri paramUri, Map<String, String> paramMap)
   {
-    if ((paramVideoCollectionItem1.collectionType != paramVideoCollectionItem2.collectionType) && (ypb.a(paramVideoCollectionItem1.collectionTime, paramVideoCollectionItem2.collectionTime))) {
-      if (VideoCollectionItem.TYPE_ORDER[paramVideoCollectionItem1.collectionType] >= VideoCollectionItem.TYPE_ORDER[paramVideoCollectionItem2.collectionType]) {}
-    }
-    do
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidNetUri = paramUri;
+    this.jdField_a_of_type_JavaUtilMap = paramMap;
+  }
+  
+  public xlm a()
+  {
+    xlm localxlm = new xlm();
+    localxlm.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_JavaUtilMap);
+    return localxlm;
+  }
+  
+  public xlm b()
+  {
+    if (this.jdField_b_of_type_AndroidNetUri != null)
     {
-      return -1;
-      return 1;
-      if (paramVideoCollectionItem1.collectionTime < paramVideoCollectionItem2.collectionTime) {
-        return 1;
-      }
-    } while (paramVideoCollectionItem1.collectionTime > paramVideoCollectionItem2.collectionTime);
-    return 0;
+      xlm localxlm = new xlm();
+      localxlm.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_AndroidNetUri, this.jdField_b_of_type_JavaUtilMap);
+      return localxlm;
+    }
+    return null;
   }
 }
 

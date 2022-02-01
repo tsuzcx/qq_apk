@@ -1,22 +1,32 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Build;
+import android.os.Build.VERSION;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 public class bddu
 {
-  private bddn a;
+  public static final List<String> a = Arrays.asList(new String[] { "VIVO X7", "VIVO XPLAY5A", "VIVO X6SPLUS", "VIVO X6S A", "REDMI NOTE 3", "REDMI NOTE 4X", "MI 5", "MI-4C", "CAM-AL00", "MLA-AL10", "CAZ-AL10", "VNS-AL00" });
   
-  public bddu(bddn parambddn)
+  public static boolean a()
   {
-    this.a = parambddn;
+    int i = Build.VERSION.SDK_INT;
+    if ((i == 22) || (i == 23) || (i == 24))
+    {
+      String str = Build.MODEL.toUpperCase();
+      Iterator localIterator = a.iterator();
+      while (localIterator.hasNext()) {
+        if (str.contains((String)localIterator.next())) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
   
-  public void a(int paramInt)
+  public static boolean b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ClockView", 2, "notifyChanged : nEventId = " + paramInt);
-    }
-    if (this.a != null) {
-      this.a.a(paramInt);
-    }
+    return (Build.MANUFACTURER.toLowerCase().contains("samsung")) && (Build.VERSION.SDK_INT == 18);
   }
 }
 

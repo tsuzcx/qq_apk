@@ -1,11 +1,4 @@
-import com.tencent.mobileqq.colornote.data.ColorNote;
-
-public abstract interface aplj
-{
-  public abstract void a(ColorNote paramColorNote);
-  
-  public abstract void b(ColorNote paramColorNote);
-}
+public class aplj {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

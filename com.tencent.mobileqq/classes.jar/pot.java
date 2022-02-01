@@ -1,13 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import java.util.List;
 
-public class pot
-  implements pqe
+class pot
+  extends qdb
 {
-  public pot(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
-  
-  public void a()
+  pot(pob parampob, String paramString, List paramList)
   {
-    ReadInJoySelfFragment.c(this.a);
+    super(paramString);
+  }
+  
+  public void a(qcu paramqcu)
+  {
+    paramqcu.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

@@ -1,35 +1,35 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.ShortVideoUpInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
-import mqq.manager.Manager;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicLong;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import mqq.app.NewIntent;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class anba
-  implements Manager
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/request/ApolloRequestCallbackManager;", "", "()V", "mApolloRspCallbackMap", "Ljava/util/HashMap;", "", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mobileqq/apollo/request/ApolloRequestCallbackManager$ApolloRspCallback;", "Lkotlin/collections/HashMap;", "requestIndex", "Ljava/util/concurrent/atomic/AtomicLong;", "handleRspCallBack", "", "callbackIndex", "success", "", "retCode", "errMsg", "", "recordApolloRspCallback", "callback", "intent", "Lmqq/app/NewIntent;", "ApolloRspCallback", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class anba
 {
-  private EntityManager a;
+  public static final anba a;
+  private static final HashMap<Long, WeakReference<anbb>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static final AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(0L);
   
-  public anba(QQAppInterface paramQQAppInterface)
+  static
   {
-    this.a = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    jdField_a_of_type_Anba = new anba();
   }
   
-  public ShortVideoUpInfo a(String paramString)
+  public final void a(@Nullable anbb paramanbb, @NotNull NewIntent paramNewIntent)
   {
-    return (ShortVideoUpInfo)this.a.find(ShortVideoUpInfo.class, paramString);
-  }
-  
-  public boolean a(String paramString)
-  {
-    boolean bool = false;
-    paramString = a(paramString);
-    if (paramString != null) {
-      bool = this.a.remove(paramString);
+    Intrinsics.checkParameterIsNotNull(paramNewIntent, "intent");
+    if (paramanbb != null)
+    {
+      long l = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.incrementAndGet();
+      paramNewIntent.putExtra("index", l);
+      ((Map)jdField_a_of_type_JavaUtilHashMap).put(Long.valueOf(l), new WeakReference(paramanbb));
     }
-    return bool;
   }
-  
-  public void onDestroy() {}
 }
 
 

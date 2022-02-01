@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.compat;
 
-import pkm;
-import puc;
+import pvj;
+import qew;
 
 class ReadInJoyDynamicChannelFragment$3
   implements Runnable
@@ -10,9 +10,9 @@ class ReadInJoyDynamicChannelFragment$3
   
   public void run()
   {
-    puc localpuc = pkm.a().a();
-    if (localpuc != null) {
-      localpuc.b(ReadInJoyDynamicChannelFragment.l(this.this$0));
+    qew localqew = pvj.a().a();
+    if (localqew != null) {
+      localqew.b(ReadInJoyDynamicChannelFragment.l(this.this$0));
     }
   }
 }

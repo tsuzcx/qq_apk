@@ -1,20 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.WeiShiVideoArticleInfo;
-import java.util.Comparator;
+import android.webkit.ValueCallback;
 
 class pxb
-  implements Comparator<WeiShiVideoArticleInfo>
+  implements ValueCallback<Boolean>
 {
-  pxb(pwz parampwz) {}
+  pxb(pxa parampxa) {}
   
-  public int a(WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo1, WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo2)
+  public void a(Boolean paramBoolean)
   {
-    if (paramWeiShiVideoArticleInfo1.recommendSeq == paramWeiShiVideoArticleInfo2.recommendSeq) {
-      return 0;
+    if (paramBoolean.booleanValue())
+    {
+      ujg.a.a("hasResourceInfo", "");
+      ujj.a.a(pxa.a(this.a));
+      ujj.a.a();
+      this.a.a(true);
+      return;
     }
-    if (paramWeiShiVideoArticleInfo1.recommendSeq > paramWeiShiVideoArticleInfo2.recommendSeq) {
-      return -1;
-    }
-    return 1;
+    ujg.a.a("noResourceInfo", "");
+    ujj.a.a(4);
+    this.a.a(false);
   }
 }
 

@@ -1,20 +1,15 @@
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+
 public class owl
+  implements bisn
 {
-  public int a;
-  public long a;
-  public String a;
-  public owj a;
-  public boolean a;
-  public long b;
+  public owl(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  public owl()
+  public void a()
   {
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public String toString()
-  {
-    return "ResponseExtraInfo{commentCnt=" + this.jdField_a_of_type_Long + ", hideCommentCnt=" + this.b + ", showMaskPageNo=" + this.jdField_a_of_type_Int + ", jumpSchema='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isPgcAuthor=" + this.jdField_a_of_type_Boolean + ", label=" + this.jdField_a_of_type_Owj.toString() + '}';
+    if (ReadInJoyDeliverBiuActivity.b(this.a)) {
+      this.a.finish();
+    }
   }
 }
 

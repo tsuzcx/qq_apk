@@ -1,67 +1,119 @@
+import android.view.View;
+import android.view.ViewStub;
+import dov.com.qq.im.ae.camera.ui.FilterPagerViewStubHolder.1;
+import dov.com.qq.im.ae.camera.ui.FilterPagerViewStubHolder.2;
+import dov.com.qq.im.ae.camera.ui.FilterPagerViewStubHolder.3;
+import dov.com.qq.im.ae.camera.ui.FilterPagerViewStubHolder.4;
+import dov.com.qq.im.ae.camera.ui.FilterPagerViewStubHolder.5;
+import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
+
 public class bnbn
+  extends bnbj
 {
-  public int a;
-  public boolean a;
-  private int jdField_b_of_type_Int = -1;
-  private boolean jdField_b_of_type_Boolean = true;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean = true;
-  private int jdField_d_of_type_Int = 1;
-  private boolean jdField_d_of_type_Boolean;
-  private boolean e;
-  private boolean f;
+  private VideoFilterViewPager a;
   
-  public bnbn()
+  public bnbn(ViewStub paramViewStub)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 0;
+    super(paramViewStub);
   }
   
-  public bnbl a()
+  public bbhg a()
   {
-    return new bnbl(this, null);
+    bbhg localbbhg = new bbhg(null);
+    a(new FilterPagerViewStubHolder.2(this, localbbhg));
+    return localbbhg;
   }
   
-  public bnbn a(int paramInt)
+  public void a(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
-    return this;
+    a(new FilterPagerViewStubHolder.5(this, paramInt));
   }
   
-  public bnbn a(boolean paramBoolean)
+  protected void a(View paramView)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    return this;
+    this.a = ((VideoFilterViewPager)paramView.findViewById(2131366988));
   }
   
-  public bnbn b(int paramInt)
+  public void a(bpjy parambpjy)
   {
-    this.jdField_d_of_type_Int = paramInt;
-    return this;
+    a(new FilterPagerViewStubHolder.4(this, parambpjy));
   }
   
-  public bnbn b(boolean paramBoolean)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-    return this;
+    a();
+    a(new FilterPagerViewStubHolder.1(this, paramBoolean));
   }
   
-  public bnbn c(int paramInt)
+  public void b()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
+    if (!a()) {
+      return;
+    }
+    this.a.d();
   }
   
-  public bnbn c(boolean paramBoolean)
+  public void b(boolean paramBoolean)
   {
-    this.e = paramBoolean;
-    return this;
+    if ((!paramBoolean) && (!a())) {
+      return;
+    }
+    a();
+    VideoFilterViewPager localVideoFilterViewPager = this.a;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 4)
+    {
+      localVideoFilterViewPager.setVisibility(i);
+      this.a.setEnabled(paramBoolean);
+      return;
+    }
   }
   
-  public bnbn d(boolean paramBoolean)
+  public void c() {}
+  
+  public void c(boolean paramBoolean)
   {
-    this.f = paramBoolean;
-    return this;
+    boolean bool2 = true;
+    a();
+    VideoFilterViewPager localVideoFilterViewPager;
+    if (this.a != null)
+    {
+      localVideoFilterViewPager = this.a;
+      if (paramBoolean) {
+        break label77;
+      }
+      bool1 = true;
+      localVideoFilterViewPager.setDisableScroll(bool1);
+      localVideoFilterViewPager = this.a;
+      if (paramBoolean) {
+        break label82;
+      }
+    }
+    label77:
+    label82:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localVideoFilterViewPager.a(bool1);
+      if (this.a != null)
+      {
+        this.a.setIsNormalMode(paramBoolean);
+        if (paramBoolean) {
+          break label87;
+        }
+        this.a.a(0);
+      }
+      return;
+      bool1 = false;
+      break;
+    }
+    label87:
+    this.a.a();
+  }
+  
+  public void d(boolean paramBoolean)
+  {
+    a();
+    this.a.post(new FilterPagerViewStubHolder.3(this, paramBoolean));
   }
 }
 

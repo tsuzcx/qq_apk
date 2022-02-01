@@ -1,35 +1,19 @@
-public class nzx
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+
+class nzx
+  implements Animation.AnimationListener
 {
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
+  nzx(nzu paramnzu) {}
   
-  private nzx(nzz paramnzz)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Long = nzz.a(paramnzz);
-    this.jdField_b_of_type_Long = nzz.b(paramnzz);
-    this.jdField_c_of_type_Long = nzz.c(paramnzz);
-    this.jdField_d_of_type_Long = nzz.d(paramnzz);
-    this.jdField_a_of_type_JavaLangString = nzz.a(paramnzz);
-    this.jdField_b_of_type_JavaLangString = nzz.b(paramnzz);
-    this.jdField_c_of_type_JavaLangString = nzz.c(paramnzz);
-    this.jdField_d_of_type_JavaLangString = nzz.d(paramnzz);
-    this.e = nzz.e(paramnzz);
-    this.f = nzz.f(paramnzz);
-    this.g = nzz.g(paramnzz);
-    this.h = nzz.h(paramnzz);
-    this.i = nzz.i(paramnzz);
+    nzu.a(this.a, this.a.a.c, this.a.a.d, 100L, 240L);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

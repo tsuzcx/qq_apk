@@ -1,12 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class bmsx
-  implements DialogInterface.OnClickListener
+public abstract interface bmsx
 {
-  bmsx(bmsw parambmsw) {}
+  public abstract void a(String paramString, long paramLong, float paramFloat);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt);
 }
 
 

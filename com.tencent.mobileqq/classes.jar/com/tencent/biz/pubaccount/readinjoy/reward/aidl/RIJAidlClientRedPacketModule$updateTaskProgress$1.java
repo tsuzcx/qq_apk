@@ -4,8 +4,8 @@ import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Lambda;
-import qyq;
-import qyy;
+import rkw;
+import rle;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 16})
 public final class RIJAidlClientRedPacketModule$updateTaskProgress$1
@@ -19,9 +19,9 @@ public final class RIJAidlClientRedPacketModule$updateTaskProgress$1
   
   public final void invoke()
   {
-    qyq localqyq = qyy.a(qyy.a);
-    if (localqyq != null) {
-      localqyq.a(this.$timeInMx);
+    rkw localrkw = rle.a(rle.a);
+    if (localrkw != null) {
+      localrkw.a(this.$timeInMx);
     }
   }
 }

@@ -1,12 +1,12 @@
 package com.tencent.gdtad.adapter;
 
-import abkj;
+import abzz;
 import com.tencent.mobileqq.app.ThreadManager;
 
 public class GdtThreadManagerAdapter$2
   implements Runnable
 {
-  public GdtThreadManagerAdapter$2(abkj paramabkj, Runnable paramRunnable, int paramInt) {}
+  public GdtThreadManagerAdapter$2(abzz paramabzz, Runnable paramRunnable, int paramInt) {}
   
   public void run()
   {

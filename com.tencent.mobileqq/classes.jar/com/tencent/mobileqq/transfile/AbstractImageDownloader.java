@@ -8,11 +8,11 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.DisplayMetrics;
-import aydl;
-import aydz;
-import ayeb;
-import ayee;
-import bkkh;
+import azjx;
+import azkl;
+import azkn;
+import azkq;
+import blvp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.DownloadParams.DecodeHandler;
@@ -294,9 +294,9 @@ public abstract class AbstractImageDownloader
     if ((paramObject instanceof DownloadParams))
     {
       localObject = (DownloadParams)paramObject;
-      if ((((DownloadParams)localObject).tag instanceof aydz))
+      if ((((DownloadParams)localObject).tag instanceof azkl))
       {
-        paramObject = (aydz)((DownloadParams)localObject).tag;
+        paramObject = (azkl)((DownloadParams)localObject).tag;
         localObject = ((DownloadParams)localObject).url.getProtocol();
         if (paramObject.isSendFromLocal())
         {
@@ -722,11 +722,11 @@ public abstract class AbstractImageDownloader
           logDecodeFile(paramDownloadParams, paramFile, str1, paramOptions, 1, true, "step:create roundBitmap");
           return localObject1;
         }
-        if (!((aydz)paramDownloadParams.tag).isSendFromLocal())
+        if (!((azkl)paramDownloadParams.tag).isSendFromLocal())
         {
           localObject1 = MD5Utils.encodeFileHexStr(paramFile.getAbsolutePath());
-          localObject2 = ((aydz)paramDownloadParams.tag).getPicDownloadInfo();
-          QLog.i("Q.richmedia." + RichMediaUtil.getUinDesc(((aydl)localObject2).b) + ".dw", 1, "id:" + String.valueOf(((aydl)localObject2).a) + "step: UIDecoder FAIL srcPicMD5:" + (String)localObject1);
+          localObject2 = ((azkl)paramDownloadParams.tag).getPicDownloadInfo();
+          QLog.i("Q.richmedia." + RichMediaUtil.getUinDesc(((azjx)localObject2).b) + ".dw", 1, "id:" + String.valueOf(((azjx)localObject2).a) + "step: UIDecoder FAIL srcPicMD5:" + (String)localObject1);
         }
         paramFile.delete();
         logDecodeFile(paramDownloadParams, paramFile, str1, paramOptions, 1, false, "step:decode error, not valid pic");
@@ -1272,7 +1272,7 @@ public abstract class AbstractImageDownloader
       {
         f3 = this.application.getResources().getDisplayMetrics().density;
         int m = this.application.getResources().getDisplayMetrics().densityDpi;
-        boolean bool = bkkh.a(paramDownloadParams.mImgType);
+        boolean bool = blvp.a(paramDownloadParams.mImgType);
         j = CommonImgThumbHelper.getImgThumbMinPx(bool);
         i = CommonImgThumbHelper.getImgThumbMaxPx(bool);
         n = paramBitmap.getWidth();

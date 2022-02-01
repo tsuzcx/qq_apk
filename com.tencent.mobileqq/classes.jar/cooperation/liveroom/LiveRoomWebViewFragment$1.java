@@ -1,13 +1,13 @@
 package cooperation.liveroom;
 
-import bgtj;
-import bgzw;
+import bieb;
+import biko;
 import org.json.JSONObject;
 
 class LiveRoomWebViewFragment$1
-  implements bgzw
+  implements biko
 {
-  LiveRoomWebViewFragment$1(LiveRoomWebViewFragment paramLiveRoomWebViewFragment, bgtj parambgtj) {}
+  LiveRoomWebViewFragment$1(LiveRoomWebViewFragment paramLiveRoomWebViewFragment, bieb parambieb) {}
   
   public long getDetect302Time()
   {

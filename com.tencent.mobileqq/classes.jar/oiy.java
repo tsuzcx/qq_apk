@@ -1,135 +1,42 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.ViewGroup;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Iterator;
+import org.json.JSONObject;
 
-public abstract class oiy
+public class oiy
 {
-  int jdField_a_of_type_Int;
-  protected Activity a;
-  protected Map<Integer, Set<Long>> a;
-  sqh jdField_a_of_type_Sqh;
-  protected Map<Integer, Boolean> b = new HashMap();
-  protected Map<Integer, Map<Long, rcn>> c = new HashMap();
-  protected Map<Integer, rcn> d = new HashMap();
-  
-  protected oiy()
+  private static JSONObject a(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
-  
-  protected oiy(Activity paramActivity)
-  {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  public Activity a()
-  {
-    return this.jdField_a_of_type_AndroidAppActivity;
-  }
-  
-  public ViewGroup a()
-  {
-    return null;
-  }
-  
-  public Map<Long, rcn> a(Integer paramInteger)
-  {
-    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
-    paramInteger = (Map)this.c.get(paramInteger);
-    if ((paramInteger != null) && (!paramInteger.isEmpty())) {
-      localConcurrentHashMap.putAll(paramInteger);
+    if ((paramJSONObject1 != null) && (paramJSONObject2 != null)) {
+      try
+      {
+        Iterator localIterator = paramJSONObject2.keys();
+        while (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          paramJSONObject1.put(str, paramJSONObject2.get(str));
+        }
+        return paramJSONObject1;
+      }
+      catch (Exception paramJSONObject2) {}
     }
-    return localConcurrentHashMap;
+    while (paramJSONObject1 != null) {}
+    if (paramJSONObject2 != null) {
+      return paramJSONObject2;
+    }
+    return new JSONObject();
   }
   
-  public Set<Long> a(Integer paramInteger)
+  public static JSONObject a(JSONObject... paramVarArgs)
   {
-    Set localSet = (Set)this.jdField_a_of_type_JavaUtilMap.get(paramInteger);
-    Object localObject = localSet;
-    if (localSet == null)
+    JSONObject localJSONObject = new JSONObject();
+    new JSONObject();
+    int i = 0;
+    while (i < paramVarArgs.length)
     {
-      localObject = new HashSet();
-      this.jdField_a_of_type_JavaUtilMap.put(paramInteger, localObject);
+      localJSONObject = a(localJSONObject, paramVarArgs[i]);
+      i += 1;
     }
-    return localObject;
+    return localJSONObject;
   }
-  
-  public sdc a()
-  {
-    return null;
-  }
-  
-  public sdv a()
-  {
-    return null;
-  }
-  
-  public void a()
-  {
-    bkwm.e(true);
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(ViewGroup paramViewGroup) {}
-  
-  public void a(sqh paramsqh, int paramInt)
-  {
-    this.jdField_a_of_type_Sqh = paramsqh;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean, int paramInt) {}
-  
-  public boolean a(Integer paramInteger)
-  {
-    paramInteger = (Boolean)this.b.get(paramInteger);
-    if (paramInteger != null) {
-      return paramInteger.booleanValue();
-    }
-    return false;
-  }
-  
-  public Map<Long, rcn> b(Integer paramInteger)
-  {
-    Map localMap = (Map)this.c.get(paramInteger);
-    Object localObject = localMap;
-    if (localMap == null)
-    {
-      localObject = new ConcurrentHashMap();
-      this.c.put(paramInteger, localObject);
-    }
-    return localObject;
-  }
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d()
-  {
-    bkwm.e(false);
-  }
-  
-  public void e() {}
-  
-  public void f() {}
-  
-  public void g() {}
-  
-  public void h() {}
-  
-  public void k() {}
-  
-  public void n() {}
 }
 
 

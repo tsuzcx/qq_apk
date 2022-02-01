@@ -1,16 +1,96 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.home.Conversation.54.1;
-import com.tencent.util.Pair;
+import android.graphics.Color;
+import com.tencent.mobileqq.data.RecommendLabel;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0xe3b.oidb_0xe3b.Color;
+import tencent.im.oidb.cmd0xe3b.oidb_0xe3b.Label;
+import tencent.im.oidb.cmd0xe3b.oidb_0xe3b.RecommendPerson;
 
 public class ajcv
-  implements DialogInterface.OnClickListener
 {
-  public ajcv(Conversation.54.1 param1, bcqk parambcqk, Pair paramPair) {}
+  public int a;
+  public String a;
+  public ArrayList<RecommendLabel> a;
+  public int b;
+  public String b;
+  public String c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static ajcv a(oidb_0xe3b.RecommendPerson paramRecommendPerson)
   {
-    this.jdField_a_of_type_Bcqk.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
+    int j = -1;
+    ajcv localajcv = new ajcv();
+    localajcv.jdField_a_of_type_JavaLangString = String.valueOf(paramRecommendPerson.uint64_uin.get());
+    Object localObject;
+    label74:
+    int i;
+    label98:
+    oidb_0xe3b.Label localLabel;
+    label173:
+    RecommendLabel localRecommendLabel;
+    if (paramRecommendPerson.bytes_title.has())
+    {
+      localObject = paramRecommendPerson.bytes_title.get().toStringUtf8();
+      localajcv.jdField_b_of_type_JavaLangString = ((String)localObject);
+      if (!paramRecommendPerson.bytes_reason.has()) {
+        break label404;
+      }
+      localObject = paramRecommendPerson.bytes_reason.get().toStringUtf8();
+      localajcv.c = ((String)localObject);
+      if (!paramRecommendPerson.uint32_age.has()) {
+        break label410;
+      }
+      i = paramRecommendPerson.uint32_age.get();
+      localajcv.jdField_a_of_type_Int = i;
+      i = j;
+      if (paramRecommendPerson.uint32_gender.has()) {
+        i = paramRecommendPerson.uint32_gender.get();
+      }
+      localajcv.jdField_b_of_type_Int = i;
+      if (!paramRecommendPerson.rpt_msg_label.has()) {
+        break label421;
+      }
+      paramRecommendPerson = paramRecommendPerson.rpt_msg_label.get();
+      localajcv.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramRecommendPerson.size());
+      localObject = paramRecommendPerson.iterator();
+      if (!((Iterator)localObject).hasNext()) {
+        break label421;
+      }
+      localLabel = (oidb_0xe3b.Label)((Iterator)localObject).next();
+      localRecommendLabel = new RecommendLabel();
+      if (!localLabel.bytes_name.has()) {
+        break label415;
+      }
+    }
+    label404:
+    label410:
+    label415:
+    for (paramRecommendPerson = localLabel.bytes_name.get().toStringUtf8();; paramRecommendPerson = "")
+    {
+      localRecommendLabel.bytes_name = paramRecommendPerson;
+      localRecommendLabel.uint32_label_type = localLabel.uint32_label_type.get();
+      if (localLabel.text_color.has()) {
+        localRecommendLabel.text_color = Color.rgb(((oidb_0xe3b.Color)localLabel.text_color.get()).uint32_r.get(), ((oidb_0xe3b.Color)localLabel.text_color.get()).uint32_g.get(), ((oidb_0xe3b.Color)localLabel.text_color.get()).uint32_b.get());
+      }
+      if (localLabel.edging_color.has()) {
+        localRecommendLabel.edging_color = Color.rgb(((oidb_0xe3b.Color)localLabel.edging_color.get()).uint32_r.get(), ((oidb_0xe3b.Color)localLabel.edging_color.get()).uint32_g.get(), ((oidb_0xe3b.Color)localLabel.edging_color.get()).uint32_b.get());
+      }
+      localajcv.jdField_a_of_type_JavaUtilArrayList.add(localRecommendLabel);
+      break label173;
+      localObject = "";
+      break;
+      localObject = "";
+      break label74;
+      i = -1;
+      break label98;
+    }
+    label421:
+    return localajcv;
   }
 }
 

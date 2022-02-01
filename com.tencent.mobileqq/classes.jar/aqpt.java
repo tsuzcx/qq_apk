@@ -1,16 +1,23 @@
-public class aqpt
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+
+class aqpt
+  implements Animator.AnimatorListener
 {
-  private long a;
+  aqpt(aqpl paramaqpl) {}
   
-  public long a()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return this.a;
+    if (aqpl.a(this.a) != null) {
+      aqpl.a(this.a).b();
+    }
   }
   
-  public void a(long paramLong)
-  {
-    this.a = paramLong;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

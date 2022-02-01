@@ -1,6 +1,6 @@
 public abstract interface amsp
 {
-  public abstract void g(boolean paramBoolean);
+  public static final String[] a = { "busId", "gameId", "gameid" };
 }
 
 

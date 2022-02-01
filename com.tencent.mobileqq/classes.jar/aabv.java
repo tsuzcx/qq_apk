@@ -1,51 +1,46 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.HashMap;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StLike;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoLikeRsp;
+import com.tencent.biz.richframework.eventbus.SimpleEventBus;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.biz.subscribe.event.PraisedUpdateEvents;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
 
 class aabv
-  implements View.OnClickListener
+  implements VSDispatchObserver.onVSRspCallBack<CertifiedAccountWrite.StDoLikeRsp>
 {
-  aabv(aabq paramaabq) {}
+  aabv(aabu paramaabu) {}
   
-  public void onClick(View paramView)
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoLikeRsp paramStDoLikeRsp)
   {
-    Activity localActivity = this.a.mRuntime.a();
-    if (localActivity == null) {}
-    for (;;)
+    RelativeFeedItemView.a(this.a.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView, true);
+    if ((!paramBoolean) || (paramLong != 0L) || (paramStDoLikeRsp == null))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      QQToast.a(this.a.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView.getContext(), 1, paramString, 0).a();
       return;
-      if ((aabq.jdField_a_of_type_JavaUtilHashMap != null) && (!TextUtils.isEmpty(aabq.a(this.a))))
-      {
-        uea localuea = (uea)aabq.jdField_a_of_type_JavaUtilHashMap.get(aabq.a(this.a));
-        if (localuea != null) {
-          if (localuea.b() == 3)
-          {
-            localuea.a();
-            this.a.b();
-            localuea.a(4);
-            if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-              this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-            }
-            aabq.jdField_a_of_type_JavaUtilHashMap.remove(aabq.a(this.a));
-          }
-          else if (localuea.b() == 0)
-          {
-            nny.a(localActivity.getApplicationContext(), aabq.a(this.a), localuea.f, localuea.a, localuea);
-            localuea.a(1);
-            if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-              this.a.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-            }
-            this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 2000L);
-          }
-        }
+    }
+    int i;
+    if (paramStDoLikeRsp.like.status.get() == 1)
+    {
+      i = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.likeInfo.count.get() + 1;
+      paramString = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get();
+      if (paramStDoLikeRsp.like.status.get() != 1) {
+        break label268;
       }
+    }
+    label268:
+    for (paramVSBaseRequest = "like";; paramVSBaseRequest = "cancel_like")
+    {
+      aanb.a(paramString, "auth_feeds", paramVSBaseRequest, 0, 0, new String[] { "", RelativeFeedItemView.a(this.a.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView) + "", this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
+      SimpleEventBus.getInstance().dispatchEvent(new PraisedUpdateEvents(this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get(), paramStDoLikeRsp.like.status.get(), i));
+      return;
+      i = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.likeInfo.count.get() - 1;
+      break;
     }
   }
 }

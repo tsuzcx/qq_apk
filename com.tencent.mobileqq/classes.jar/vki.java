@@ -1,23 +1,10 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.album.view.AlbumGalleryCapturePart.7.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import mqq.os.MqqHandler;
-
-public class vki
-  extends SimpleJob<Void>
+public final class vki
 {
-  vki(vkf paramvkf) {}
-  
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
-  {
-    paramJobContext = (via)vux.a(30);
-    paramVarArgs = paramJobContext.b();
-    ThreadManager.getUIHandler().post(new AlbumGalleryCapturePart.7.1(this, paramVarArgs, paramJobContext));
-    return null;
-  }
+  public static int a;
+  public static String a = "";
+  public static volatile boolean a;
+  public static int b;
+  public static String b = "";
 }
 
 

@@ -1,53 +1,17 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.widget.XPanelContainer;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class agxq
-  implements agxf<View>
+class agxq
+  extends ahaa
 {
-  private BaseChatPie a;
-  
-  public agxq(BaseChatPie paramBaseChatPie)
+  agxq(agvm paramagvm)
   {
-    this.a = paramBaseChatPie;
+    super(paramagvm, null);
   }
   
-  public int a()
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    return 38;
-  }
-  
-  public View a()
-  {
-    return null;
-  }
-  
-  public View a(Context paramContext)
-  {
-    return null;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    afsn localafsn = (afsn)this.a.getHelper(52);
-    if (paramInt2 == 0)
-    {
-      localafsn.c(false);
-      localafsn.g();
-      return;
-    }
-    localafsn.c(true);
-    localafsn.h();
-  }
-  
-  public void a(XPanelContainer paramXPanelContainer) {}
-  
-  public boolean a()
-  {
-    return false;
+    return new ahbu(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

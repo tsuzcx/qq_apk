@@ -1,82 +1,65 @@
-import com.tencent.av.random.RandomWebProtocol;
-import java.util.Random;
-import org.json.JSONObject;
-
 public class lsp
-  extends lso
 {
-  int c;
-  int d;
-  int e;
-  String f;
+  private int jdField_a_of_type_Int;
+  private int[] jdField_a_of_type_ArrayOfInt = new int[8];
   
-  public lsp(RandomWebProtocol paramRandomWebProtocol, lso paramlso, String paramString, int paramInt1, int paramInt2, int paramInt3, String... paramVarArgs)
+  public int a()
   {
-    super(paramRandomWebProtocol, paramlso);
-    this.a = 1;
-    this.c = paramString;
-    this.d = paramInt1;
-    this.c = paramInt2;
-    this.e = paramInt3;
-    if ((this.e == 2) && (paramVarArgs != null) && (paramVarArgs.length == 1)) {
-      this.f = paramVarArgs[0];
-    }
-    this.d = "[d] RequestDouble";
+    this.jdField_a_of_type_Int -= 1;
+    return this.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_Int];
   }
   
-  String a()
+  public void a()
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    Object localObject = localJSONObject1;
-    for (;;)
-    {
-      try
-      {
-        this.a = new JSONObject().put("peer_gender", this.c).put("session_type", this.d).put("reqtype", this.e);
-        localObject = localJSONObject1;
-        if (this.e == 2)
-        {
-          localObject = localJSONObject1;
-          if (this.f != null)
-          {
-            localObject = localJSONObject1;
-            this.a.put("uniqkey", this.f);
-            localObject = localJSONObject1;
-            JSONObject localJSONObject2 = new JSONObject(super.a());
-            localObject = localJSONObject1;
-            if (this.e != 1) {
-              break label178;
-            }
-            localObject = localJSONObject1;
-            i = this.b.a;
-            localObject = localJSONObject1;
-            localJSONObject1 = localJSONObject2.put("rand", i);
-            localObject = localJSONObject1;
-            return localJSONObject1.toString();
-          }
-        }
-        localObject = localJSONObject1;
-        if (this.e != 1) {
-          continue;
-        }
-        localObject = localJSONObject1;
-        this.b.a = new Random().nextInt();
-        continue;
-        localObject = localException;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return ((JSONObject)localObject).toString();
-      }
-      label178:
-      int i = new Random().nextInt();
+    this.jdField_a_of_type_Int = 0;
+    if (this.jdField_a_of_type_ArrayOfInt.length != 8) {
+      this.jdField_a_of_type_ArrayOfInt = new int[8];
     }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_ArrayOfInt.length == this.jdField_a_of_type_Int)
+    {
+      arrayOfInt = new int[this.jdField_a_of_type_Int + this.jdField_a_of_type_Int];
+      System.arraycopy(this.jdField_a_of_type_ArrayOfInt, 0, arrayOfInt, 0, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ArrayOfInt = arrayOfInt;
+    }
+    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    arrayOfInt[i] = paramInt;
+  }
+  
+  public int[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfInt;
+  }
+  
+  public int[] a(int[] paramArrayOfInt)
+  {
+    int[] arrayOfInt;
+    if (paramArrayOfInt != null)
+    {
+      arrayOfInt = paramArrayOfInt;
+      if (paramArrayOfInt.length >= this.jdField_a_of_type_Int) {}
+    }
+    else
+    {
+      arrayOfInt = new int[this.jdField_a_of_type_Int];
+    }
+    System.arraycopy(this.jdField_a_of_type_ArrayOfInt, 0, arrayOfInt, 0, this.jdField_a_of_type_Int);
+    return arrayOfInt;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lsp
  * JD-Core Version:    0.7.0.1
  */

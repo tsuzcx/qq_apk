@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.concurrent.TimeoutException;
-import xvv;
+import ykq;
 
 class FFmpegExecuteAsyncTask
   extends AsyncTask<Void, String, CommandResult>
@@ -135,7 +135,7 @@ class FFmpegExecuteAsyncTask
       if (!this.isFFmpegExecutable) {
         this.isFFmpegExecutable = Util.setFileExecutable(new File(FileUtils.getFFmpeg(this.mContext)));
       }
-      xvv.d("Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask", "[story_ffmpeg]execute start cmd=" + Arrays.toString(this.cmd));
+      ykq.d("Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask", "[story_ffmpeg]execute start cmd=" + Arrays.toString(this.cmd));
       this.mProcess = this.shellCommand.run(this.cmd);
       paramVarArgs = this.mProcess;
       if (paramVarArgs == null)
@@ -162,19 +162,19 @@ class FFmpegExecuteAsyncTask
     }
     catch (TimeoutException paramVarArgs)
     {
-      xvv.c("Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask", "FFmpeg timed out", paramVarArgs);
+      ykq.c("Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask", "FFmpeg timed out", paramVarArgs);
       paramVarArgs = new CommandResult(false, paramVarArgs.getMessage());
       return paramVarArgs;
     }
     catch (Exception paramVarArgs)
     {
-      xvv.c("Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask", "Error running FFmpeg", paramVarArgs);
+      ykq.c("Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask", "Error running FFmpeg", paramVarArgs);
       return getFailCommandResult();
     }
     finally
     {
       Util.destroyProcess(this.mProcess);
-      xvv.d("Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask", "[story_ffmpeg]execute end cmd=" + Arrays.toString(this.cmd));
+      ykq.d("Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask", "[story_ffmpeg]execute end cmd=" + Arrays.toString(this.cmd));
     }
   }
   

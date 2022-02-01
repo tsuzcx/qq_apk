@@ -1,31 +1,147 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder.10;
+import android.os.Looper;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.DiscussChatPie.8.2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.utils.SendMessageHandler;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class afzy
-  implements Animation.AnimationListener
+  extends anyz
 {
-  public afzy(GivingHeartItemBuilder.10 param10) {}
+  afzy(afzr paramafzr) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  private void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GivingHeart", 2, "onAnimationEnd " + paramAnimation);
+    try
+    {
+      if (!this.a.mActivity.isFinishing()) {
+        bhdj.a(this.a.mActivity, 230, anvx.a(2131702817), this.a.mActivity.getString(2131718498), new agaa(this, paramString), null).show();
+      }
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e(this.a.tag, 1, "ERR!! send_discussion_msg_failed_not_member:" + paramString.getMessage());
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation)
+  public void onMsgRevokeNotice(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("GivingHeart", 2, "onAnimationRepeat " + paramAnimation);
+      QLog.d(this.a.tag, 2, "onMsgRevokeNotice:" + paramBoolean1);
     }
+    if (!paramBoolean1) {
+      return;
+    }
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      Object localObject = (MessageRecord)paramList.get(0);
+      if (this.a.mTroopTips != null)
+      {
+        int i = this.a.mTroopTips.b();
+        if (i != -1)
+        {
+          bfzk localbfzk = (bfzk)this.a.app.getManager(QQManagerFactory.TROOP_AIO_NAVIGATE_BAR);
+          long l = localbfzk.a(this.a.sessionInfo.curFriendUin + "&" + 3000);
+          if (((MessageRecord)localObject).uniseq == l)
+          {
+            localbfzk.a(this.a.sessionInfo.curFriendUin + "&" + 3000, i);
+            this.a.mTroopTips.a(i);
+            this.a.mTroopTips.e();
+          }
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder("onMsgRevokeNotice==>");
+            ((StringBuilder)localObject).append("navigateType:").append(i).append("|navigaeSeq:").append(l);
+            QLog.d(this.a.tag + ".troop.special_msg", 2, ((StringBuilder)localObject).toString());
+          }
+        }
+      }
+    }
+    super.onMsgRevokeNotice(paramBoolean1, paramList, paramBoolean2);
   }
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void onMsgStartSendingUI(String paramString)
   {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("MsgSend", 4, "delay 100ms, starting upadte ui");
+    }
+    this.a.refresh(131072);
+  }
+  
+  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong)
+  {
+    onSendResult(paramBoolean, paramString, paramLong, null);
+  }
+  
+  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong, anyt paramanyt)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {}
+    while (!paramString.equals(this.a.sessionInfo.curFriendUin)) {
+      return;
+    }
+    this.a.hasSentRecvMsg = true;
+    this.a.refresh(262144, paramanyt, paramLong);
+  }
+  
+  protected void onUpdateMsgContent(boolean paramBoolean, String paramString)
+  {
+    this.a.refresh(65536);
+  }
+  
+  protected void onUpdateSendMsgError(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  {
+    if ((paramString1 == null) || (!paramString1.equals(this.a.sessionInfo.curFriendUin)) || (paramInt1 != this.a.sessionInfo.curType))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.tag, 2, "onUpdateSendMsgError exception uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
+      }
+      return;
+    }
     if (QLog.isColorLevel()) {
-      QLog.d("GivingHeart", 2, "onAnimationStart " + paramAnimation);
+      QLog.d(this.a.tag, 2, "onUpdateSendMsgError uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
+    }
+    if ((paramInt1 == 1) || (paramInt1 == 3000) || (paramInt1 == 0))
+    {
+      paramSendMessageHandler = this.a.app.getMessageFacade().getMsgItemByUniseq(paramString1, paramInt1, paramLong2);
+      if ((paramSendMessageHandler != null) && ((paramSendMessageHandler instanceof MessageForStructing)) && ("viewMultiMsg".equals(((MessageForStructing)paramSendMessageHandler).structingMsg.mMsgAction))) {
+        axio.a().a(this.a.app, paramString1, paramInt1, paramLong2, false);
+      }
+    }
+    if (paramInt1 == 3000) {
+      switch (paramInt2)
+      {
+      default: 
+        if (paramInt2 > 100) {
+          QQToast.a(this.a.mActivity, paramString2, 0).b(this.a.mActivity.getTitleBarHeight());
+        }
+        break;
+      }
+    }
+    for (;;)
+    {
+      this.a.refresh(196608);
+      return;
+      QQToast.a(this.a.mActivity, 2131718497, 1).b(this.a.mActivity.getTitleBarHeight());
+      continue;
+      QQToast.a(this.a.mActivity, 2131718499, 1).b(this.a.mActivity.getTitleBarHeight());
+      continue;
+      bhdj.a(this.a.mActivity, 230, anvx.a(2131702816), this.a.mActivity.getString(2131691756), new afzz(this, paramString1), null).show();
+      continue;
+      if (Looper.myLooper() != Looper.getMainLooper()) {
+        this.a.mActivity.runOnUiThread(new DiscussChatPie.8.2(this, paramString1));
+      } else {
+        a(paramString1);
+      }
     }
   }
 }

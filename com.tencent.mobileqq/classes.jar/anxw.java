@@ -1,57 +1,96 @@
-import com.tencent.mobileqq.applets.data.AppletItem;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.util.Printer;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.MsfCore;
+import com.tencent.mobileqq.statistics.UnifiedMonitor;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
 
 public class anxw
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
+  private static AbstractUnifiedMonitor.ThreadMonitorCallback a = new anxx();
   
-  public anxw a(int paramInt)
+  public static void a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
+    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(4)) {
+      return;
+    }
+    int i = UnifiedMonitor.a().getThreshold(4);
+    UnifiedMonitor.a().setMonitoredThread(4, ThreadManager.getSubThread(), a);
+    aoel localaoel = new aoel(4, "SubLooper");
+    localaoel.a(i, false);
+    ThreadManager.getSubThreadLooper().setMessageLogging(localaoel);
   }
   
-  public anxw a(long paramLong)
+  public static void b()
   {
-    this.jdField_a_of_type_Long = paramLong;
-    return this;
+    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(18)) {
+      return;
+    }
+    Object localObject1 = MsfCore.sCore;
+    if (localObject1 == null)
+    {
+      QLog.e("MagnifierSDK.QAPM", 1, "msf core hasnot init");
+      return;
+    }
+    Object localObject2 = ((MsfCore)localObject1).getNetworkHandlerThread();
+    if (localObject2 == null)
+    {
+      QLog.e("MagnifierSDK.QAPM", 1, "network thread hasnot init");
+      return;
+    }
+    localObject1 = ((HandlerThread)localObject2).getLooper();
+    if (localObject1 == null)
+    {
+      QLog.e("MagnifierSDK.QAPM", 1, "network thread has not start");
+      return;
+    }
+    int i = UnifiedMonitor.a().getThreshold(18);
+    UnifiedMonitor.a().setMonitoredThread(18, (Thread)localObject2, a);
+    localObject2 = new aoel(18, "msf-network");
+    ((aoel)localObject2).a(i, false);
+    ((Looper)localObject1).setMessageLogging((Printer)localObject2);
   }
   
-  public anxw a(String paramString)
+  public static void c()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
+    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(13)) {
+      return;
+    }
+    int i = UnifiedMonitor.a().getThreshold(13);
+    UnifiedMonitor.a().setMonitoredThread(13, ThreadManager.getRecentThread(), a);
+    aoel localaoel = new aoel(13, "RecentLooper");
+    localaoel.a(i, false);
+    ThreadManager.getRecentThreadLooper().setMessageLogging(localaoel);
   }
   
-  public AppletItem a()
+  public static void d()
   {
-    return new AppletItem(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, null);
+    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(5)) {
+      return;
+    }
+    int i = UnifiedMonitor.a().getThreshold(5);
+    UnifiedMonitor.a().setMonitoredThread(5, ThreadManager.getFileThread(), a);
+    aoel localaoel = new aoel(5, "FileLooper");
+    localaoel.a(i, false);
+    ThreadManager.getFileThreadLooper().setMessageLogging(localaoel);
   }
   
-  public void a(String paramString)
+  public static void e()
   {
-    this.c = paramString;
-  }
-  
-  public anxw b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public anxw b(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    return this;
+    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(6))
+    {
+      com.tencent.mobileqq.app.ThreadExcutor.sLooperMonitorSwitch = false;
+      return;
+    }
+    com.tencent.mobileqq.app.ThreadExcutor.sLooperMonitorSwitch = true;
+    com.tencent.mobileqq.app.ThreadExcutor.sThreshTime = UnifiedMonitor.a().getThreshold(6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anxw
  * JD-Core Version:    0.7.0.1
  */

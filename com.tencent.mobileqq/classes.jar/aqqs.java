@@ -1,25 +1,132 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqqs
-  implements View.OnClickListener
 {
-  public aqqs(MessageForArkApp paramMessageForArkApp, QQAppInterface paramQQAppInterface, Context paramContext) {}
+  private aqns jdField_a_of_type_Aqns = new aqns();
+  private aqny jdField_a_of_type_Aqny;
+  private aqoa jdField_a_of_type_Aqoa;
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public void onClick(View paramView)
+  public aqqs()
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appId))
+    this.jdField_a_of_type_Aqns.a(new aqnu());
+    this.jdField_a_of_type_Aqny = new aqny();
+    this.jdField_a_of_type_Aqny.a(this.jdField_a_of_type_Aqns);
+  }
+  
+  private boolean a(int paramInt)
+  {
+    return (paramInt == 16908289) || (paramInt == 16908292) || (paramInt == 16842752);
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_Aqns != null) && (this.jdField_a_of_type_Aqoa != null))
     {
-      MessageForArkApp.access$000(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext);
-      aovl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appName, "AIOArkSdkTailClick", 1, 0, 0L, 0L, 0L, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appView, "");
+      localColorNote = this.jdField_a_of_type_Aqoa.getColorNote();
+      if (localColorNote != null)
+      {
+        this.jdField_a_of_type_Aqns.a(localColorNote.getServiceType(), localColorNote.getSubType(), true);
+        localColorNote = aqoq.a(localColorNote);
+        this.jdField_a_of_type_Aqns.a(localColorNote.getServiceType(), localColorNote.getSubType(), true);
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    while (!QLog.isColorLevel())
+    {
+      ColorNote localColorNote;
+      do
+      {
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.e("ColorNoteStateNotice", 1, "onResume: colorNote is null");
+      return;
+    }
+    QLog.e("ColorNoteStateNotice", 1, "onResume: mColorNoteCurd or mServiceInfo is null");
+  }
+  
+  public void a(aqns paramaqns)
+  {
+    this.jdField_a_of_type_Aqns = paramaqns;
+  }
+  
+  public void a(aqnu paramaqnu)
+  {
+    if (this.jdField_a_of_type_Aqns != null) {
+      this.jdField_a_of_type_Aqns.a(paramaqnu);
+    }
+  }
+  
+  public void a(aqoa paramaqoa)
+  {
+    this.jdField_a_of_type_Aqoa = paramaqoa;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Aqns != null) && (this.jdField_a_of_type_Aqoa != null))
+    {
+      localColorNote = this.jdField_a_of_type_Aqoa.getColorNote();
+      if (localColorNote != null)
+      {
+        this.jdField_a_of_type_Aqns.a(localColorNote.getServiceType(), localColorNote.getSubType(), false);
+        localColorNote = aqoq.a(localColorNote);
+        this.jdField_a_of_type_Aqns.a(localColorNote.getServiceType(), localColorNote.getSubType(), false);
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      ColorNote localColorNote;
+      do
+      {
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.e("ColorNoteStateNotice", 1, "onPause: colorNote is null");
+      return;
+    }
+    QLog.e("ColorNoteStateNotice", 1, "onPause: mColorNoteCurd or mServiceInfo is null");
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    Object localObject;
+    if ((this.jdField_a_of_type_Aqoa != null) && (this.jdField_a_of_type_Aqns != null) && (this.jdField_a_of_type_Aqny != null)) {
+      localObject = null;
+    }
+    try
+    {
+      ColorNote localColorNote = this.jdField_a_of_type_Aqoa.getColorNote();
+      localObject = localColorNote;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("ColorNoteStateNotice", 1, localException, new Object[0]);
+        continue;
+        int i = 0;
+      }
+    }
+    if ((localObject != null) && (a(localObject.getServiceType())))
+    {
+      i = 1;
+      if ((localObject != null) && (i != 0) && (this.jdField_a_of_type_Boolean) && (paramBoolean) && (!this.jdField_a_of_type_Aqns.a(localObject.getServiceType(), localObject.getSubType())))
+      {
+        aqoq.a(localObject);
+        this.jdField_a_of_type_Aqny.a(localObject);
+      }
+      return;
+    }
+  }
+  
+  public void c()
+  {
+    b(true);
   }
 }
 

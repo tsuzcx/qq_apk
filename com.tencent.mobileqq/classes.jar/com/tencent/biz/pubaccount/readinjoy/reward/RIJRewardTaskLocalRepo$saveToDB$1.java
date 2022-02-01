@@ -5,19 +5,19 @@ import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 import kotlin.Metadata;
-import qxt;
+import rjz;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
 public final class RIJRewardTaskLocalRepo$saveToDB$1
   implements Runnable
 {
-  public RIJRewardTaskLocalRepo$saveToDB$1(qxt paramqxt, String paramString) {}
+  public RIJRewardTaskLocalRepo$saveToDB$1(rjz paramrjz, String paramString) {}
   
   public final void run()
   {
     try
     {
-      EntityManager localEntityManager = qxt.a(this.this$0).createEntityManager();
+      EntityManager localEntityManager = rjz.a(this.this$0).createEntityManager();
       RedPacketTaskData localRedPacketTaskData = new RedPacketTaskData();
       localRedPacketTaskData.rowKey = this.a;
       localRedPacketTaskData.insertTime = System.currentTimeMillis();

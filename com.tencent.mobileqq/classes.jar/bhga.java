@@ -1,16 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.widget.ParticipleView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class bhga
-  implements ValueAnimator.AnimatorUpdateListener
+final class bhga
+  extends aofu
 {
-  public bhga(ParticipleView paramParticipleView) {}
+  bhga(String paramString1, QQAppInterface paramQQAppInterface, String paramString2) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected void onGetTroopInfoResult(boolean paramBoolean, String paramString)
   {
-    ParticipleView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.a.invalidate();
+    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString)) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
+    QLog.w("QAVGroupConfig", 1, "onGetTroopInfoResult[" + this.b + "], troopuin[" + this.jdField_a_of_type_JavaLangString + "], isSuc[" + paramBoolean + "]");
+    if (paramBoolean) {
+      bhgc.a(this.b + ".onGetTroopInfoResult", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
   }
 }
 

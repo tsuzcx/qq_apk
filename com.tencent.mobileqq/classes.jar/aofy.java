@@ -1,15 +1,41 @@
-import android.os.Build;
-import com.tencent.mobileqq.utils.StringUtil;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.HandlerThread;
+import android.os.IBinder;
+import android.os.Messenger;
+import android.util.SparseArray;
+import com.tencent.qphone.base.util.QLog;
 
-public class aofy
+class aofy
+  implements ServiceConnection
 {
-  public static boolean a(String paramString)
+  aofy(aofw paramaofw) {}
+  
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    if (StringUtil.isEmpty(paramString)) {}
-    while (!("" + Build.MANUFACTURER).equalsIgnoreCase(paramString)) {
-      return false;
+    aofw.a(this.a, 2);
+    aofw.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("UploadPhoto", 2, "onServiceConnected()...");
     }
-    return true;
+    this.a.jdField_a_of_type_AndroidOsMessenger = new Messenger(paramIBinder);
+    this.a.b = new Messenger(this.a.jdField_a_of_type_AndroidOsHandler);
+    aofw.b(this.a);
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UploadPhoto", 2, "onServiceDisconnected()...");
+    }
+    this.a.jdField_a_of_type_AndroidOsMessenger = null;
+    aofw.a(this.a, 4);
+    this.a.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    this.a.b = null;
+    aofw.a(this.a, true);
+    if (aofw.a(this.a) != null) {
+      aofw.a(this.a).interrupt();
+    }
   }
 }
 

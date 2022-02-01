@@ -1,22 +1,25 @@
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder.4.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public abstract class agst
-  extends aezf
+public class agst
+  extends VasQuickUpdateManager.CallBacker
 {
-  public FrameLayout a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public TextView b;
-  public View c;
-  public TextView c;
-  public View d;
-  public TextView d;
-  public TextView e;
+  agst(agsm paramagsm) {}
+  
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  {
+    if ((paramString1.equals("poke.effectList")) && (paramInt1 == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("GivingHeart", 2, "download vas poke list from GivingHeartItemBuilder, update pokeSvipMap now.");
+      }
+      ThreadManager.getFileThreadHandler().post(new GivingHeartItemBuilder.4.1(this));
+    }
+  }
 }
 
 

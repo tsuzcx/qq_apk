@@ -1,28 +1,66 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.content.Context;
+import android.graphics.PointF;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.LinearSmoothScroller;
+import android.util.DisplayMetrics;
+import android.view.View;
 
-class bngf
-  extends AnimatorListenerAdapter
+final class bngf
+  extends LinearSmoothScroller
 {
-  bngf(bngd parambngd) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  bngf(Context paramContext, LinearLayoutManager paramLinearLayoutManager, boolean paramBoolean)
   {
-    xvv.b(bnfz.a, "scaleAnimator cancel!");
+    super(paramContext);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public int calculateDtToFit(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    xvv.b(bnfz.a, "scaleAnimator end!");
-    this.a.w = 1.0F;
-    this.a.j = false;
-    this.a.b.k();
+    return (paramInt4 + paramInt3) / 2 - (paramInt2 + paramInt1) / 2;
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public float calculateSpeedPerPixel(DisplayMetrics paramDisplayMetrics)
   {
-    xvv.b(bnfz.a, "scaleAnimator start!");
-    this.a.j = true;
+    return 50.0F / paramDisplayMetrics.densityDpi;
+  }
+  
+  public int calculateTimeForScrolling(int paramInt)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return 100;
+    }
+    return Math.min(200, super.calculateTimeForScrolling(paramInt));
+  }
+  
+  public PointF computeScrollVectorForPosition(int paramInt)
+  {
+    int i = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findFirstVisibleItemPosition();
+    int j = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findLastVisibleItemPosition();
+    float f;
+    if (paramInt < i) {
+      f = -1.0F;
+    }
+    for (;;)
+    {
+      return new PointF(f, 0.0F);
+      if (paramInt > j)
+      {
+        f = 1.0F;
+      }
+      else
+      {
+        View localView = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findViewByPosition(paramInt);
+        if (localView != null)
+        {
+          f = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.getWidth() / 2.0F;
+          paramInt = localView.getLeft();
+          f -= (localView.getRight() + paramInt) / 2.0F;
+        }
+        else
+        {
+          f = 0.0F;
+        }
+      }
+    }
   }
 }
 

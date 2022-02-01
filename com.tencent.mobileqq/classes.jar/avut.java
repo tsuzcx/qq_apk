@@ -1,19 +1,179 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupBaseFragment;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class avut
-  implements DialogInterface.OnClickListener
+  extends WebViewPlugin
 {
-  public avut(MsgBackupBaseFragment paramMsgBackupBaseFragment) {}
+  private int jdField_a_of_type_Int;
+  private aady jdField_a_of_type_Aady;
+  final aaea jdField_a_of_type_Aaea = new avuu(this);
+  private int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public avut()
   {
-    if (this.a.getActivity() != null)
+    this.mPluginNameSpace = "nowlive";
+  }
+  
+  private Bundle a(String... paramVarArgs)
+  {
+    if ((paramVarArgs == null) || (paramVarArgs.length == 0)) {
+      return null;
+    }
+    localBundle = new Bundle();
+    try
     {
-      this.a.getActivity().setResult(1001);
-      this.a.getActivity().finish();
+      paramVarArgs = new JSONObject(paramVarArgs[0]);
+      Iterator localIterator = paramVarArgs.keys();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        localBundle.putString(str, paramVarArgs.optString(str));
+      }
+      return localBundle;
+    }
+    catch (JSONException paramVarArgs)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("NowWebViewPlugin", 2, "getFirstParam error: ", paramVarArgs);
+      }
+    }
+  }
+  
+  private void a(int paramInt1, int paramInt2)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("state", paramInt1);
+      localJSONObject.put("progress", paramInt2);
+      callJs("window.__WEBVIEW_GETPLUGININFO && window.__WEBVIEW_GETPLUGININFO(" + localJSONObject.toString() + ");");
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+  }
+  
+  private void a(int paramInt, String paramString)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("errcode", paramInt);
+      localJSONObject.put("desc", paramString);
+      callJs("window.__WEBVIEW_INSTALL && window.__WEBVIEW_INSTALL(" + localJSONObject.toString() + ");");
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public aady a()
+  {
+    return this.jdField_a_of_type_Aady;
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    boolean bool = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("NowWebViewPlugin", 2, "handleJsRequest, url=" + paramString1 + ", pkgName=" + paramString2 + ", methodName=" + paramString3);
+    }
+    if ((this.jdField_a_of_type_Aady == null) || (paramString1 == null) || (!"nowlive".equals(paramString2)) || (paramString3 == null)) {}
+    label343:
+    do
+    {
+      return false;
+      if ("getPluginInfo".equals(paramString3))
+      {
+        this.jdField_a_of_type_Aady.h();
+        a(this.jdField_a_of_type_Int, this.b);
+      }
+      for (;;)
+      {
+        return true;
+        if ("openRoom".equals(paramString3))
+        {
+          if ((paramVarArgs == null) || (paramVarArgs.length == 0)) {
+            break;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("NowWebViewPlugin", 2, "handleJsRequest arg = " + paramVarArgs[0]);
+          }
+          paramJsBridgeListener = paramVarArgs[0];
+          if (TextUtils.isEmpty(paramJsBridgeListener)) {
+            break;
+          }
+          this.jdField_a_of_type_Aady.a(Long.valueOf(paramJsBridgeListener).longValue());
+          continue;
+        }
+        if ("install".equals(paramString3))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("NowWebViewPlugin", 2, "handleJsRequest install arg = " + paramVarArgs[0]);
+          }
+          if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
+            paramJsBridgeListener = paramVarArgs[0];
+          }
+          for (;;)
+          {
+            try
+            {
+              i = Integer.valueOf(paramJsBridgeListener).intValue();
+              paramJsBridgeListener = this.jdField_a_of_type_Aady;
+              if (i == 1) {
+                bool = true;
+              }
+              paramJsBridgeListener.b(bool);
+            }
+            catch (NumberFormatException paramJsBridgeListener)
+            {
+              paramJsBridgeListener.printStackTrace();
+            }
+            int i = 0;
+          }
+        }
+        if ("preload".equals(paramString3))
+        {
+          this.jdField_a_of_type_Aady.a(a(paramVarArgs));
+        }
+        else
+        {
+          if (!"audioRoomSetting".equals(paramString3)) {
+            break label343;
+          }
+          avwj.a(this, paramVarArgs);
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.w("NowWebViewPlugin", 2, "NOT support method " + paramString3 + " yet!!");
+    return false;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    this.jdField_a_of_type_Aady = aady.a();
+    this.jdField_a_of_type_Aady.a();
+    this.jdField_a_of_type_Aady.g(this.jdField_a_of_type_Aaea);
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (this.jdField_a_of_type_Aady != null)
+    {
+      this.jdField_a_of_type_Aady.b();
+      this.jdField_a_of_type_Aady.g();
     }
   }
 }

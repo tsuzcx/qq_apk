@@ -1,124 +1,205 @@
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ar.ScanEntranceReport.1;
-import com.tencent.mobileqq.ar.ScanEntranceReport.4;
-import com.tencent.mobileqq.ar.ScanEntranceReport.5;
-import com.tencent.mobileqq.ar.ScanEntranceReport.6;
-import com.tencent.mobileqq.ar.ScanEntranceReport.9;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.io.File;
 
 public class aoem
 {
   private static aoem jdField_a_of_type_Aoem;
+  private int jdField_a_of_type_Int = -2;
+  private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
+  private boolean c;
   
   public static aoem a()
   {
-    if (jdField_a_of_type_Aoem == null) {
-      jdField_a_of_type_Aoem = new aoem();
-    }
-    return jdField_a_of_type_Aoem;
-  }
-  
-  private boolean a(long paramLong)
-  {
-    return (paramLong >= 0L) && (paramLong <= 600000L);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-  }
-  
-  public void a(long paramLong, int paramInt)
-  {
-    if (paramLong <= 0L) {}
-    do
+    try
     {
-      return;
-      paramLong = System.currentTimeMillis() - paramLong;
-    } while (!a(paramLong));
-    QLog.d("ScanEntranceReport", 2, String.format("reportARCloudFirstSuccess totalTime=%s", new Object[] { Long.valueOf(paramLong) }));
-    ThreadManager.post(new ScanEntranceReport.6(this, paramInt, paramLong), 5, null, false);
-  }
-  
-  public void a(long paramLong1, long paramLong2, long paramLong3, int paramInt)
-  {
-    if ((paramLong1 <= 0L) || (paramLong2 <= 0L) || (paramLong3 <= 0L)) {
-      return;
-    }
-    long l = System.currentTimeMillis();
-    if ((!this.jdField_a_of_type_Boolean) || (this.b)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramLong1 = paramLong2 - paramLong1;
-      paramLong2 = paramLong3 - paramLong2;
-      paramLong3 = l - paramLong3;
-      l = paramLong1 + paramLong2 + paramLong3;
-      if ((!a(paramLong1)) || (!a(paramLong2)) || (!a(paramLong3)) || (!a(l))) {
-        break;
+      if (jdField_a_of_type_Aoem == null) {
+        jdField_a_of_type_Aoem = new aoem();
       }
-      QLog.d("ScanEntranceReport", 2, String.format("reportARCloudFirstUpload firstInit=%s startDelay=%s firstSelectTime=%s firstUploadDelay=%s totalTime=%s", new Object[] { Boolean.valueOf(bool), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3), Long.valueOf(l) }));
-      ThreadManager.post(new ScanEntranceReport.4(this, bool, paramLong1, paramLong2, paramLong3, paramInt, l), 5, null, false);
+      aoem localaoem = jdField_a_of_type_Aoem;
+      return localaoem;
+    }
+    finally {}
+  }
+  
+  private void a()
+  {
+    if ((this.b) || (this.c)) {}
+    for (;;)
+    {
+      int i;
+      try
+      {
+        Object localObject = Thread.currentThread().getThreadGroup();
+        Thread[] arrayOfThread = new Thread[((ThreadGroup)localObject).activeCount()];
+        ((ThreadGroup)localObject).enumerate(arrayOfThread);
+        int j = arrayOfThread.length;
+        i = 0;
+        if (i < j)
+        {
+          Thread localThread = arrayOfThread[i];
+          if (localThread == null) {
+            break label216;
+          }
+          if (localThread.getName() == null) {
+            break label223;
+          }
+          localObject = localThread.getName();
+          if ((this.b) && ("MSF-Receiver".equals(localObject))) {
+            localThread.setPriority(1);
+          } else if ((this.c) && (("logWriteThread".equals(localObject)) || (((String)localObject).startsWith("GlobalPool")) || (((String)localObject).startsWith("Face")) || (((String)localObject).startsWith("um-stack")) || (((String)localObject).startsWith("QQ_FTS")) || (((String)localObject).startsWith("httpcomm")))) {
+            localThread.setPriority(1);
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ThreadManager.Optimizer", 2, "", localException);
+        }
+        if (this.c)
+        {
+          ThreadManager.getSubThread().setPriority(1);
+          ThreadManager.getFileThread().setPriority(1);
+          ThreadManager.getRecentThreadLooper().getThread().setPriority(1);
+        }
+      }
       return;
+      label216:
+      i += 1;
+      continue;
+      label223:
+      String str = "";
     }
   }
   
-  public void a(boolean paramBoolean)
+  private void a(DeviceProfileManager paramDeviceProfileManager, String[] paramArrayOfString)
   {
-    QLog.d("ScanEntranceReport", 2, String.format("reportQBarSoLoadFail systemLoadSuccess=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    HashMap localHashMap = new HashMap();
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "scanner_qbar_so_load_fail", paramBoolean, 0L, 0L, localHashMap, "");
+    float f = Float.parseFloat(paramArrayOfString[1]);
+    if (paramDeviceProfileManager.jdField_a_of_type_Int * 1.0F / 10000.0F < f)
+    {
+      this.jdField_a_of_type_Int = Integer.valueOf(paramArrayOfString[0]).intValue();
+      this.jdField_a_of_type_Boolean = "1".equals(paramArrayOfString[2]);
+      this.b = "1".equals(paramArrayOfString[3]);
+      this.c = "1".equals(paramArrayOfString[4]);
+      return;
+    }
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public void a(boolean paramBoolean, long paramLong)
+  private void a(String[] paramArrayOfString)
   {
-    if (paramLong <= 0L) {}
-    do
+    if (paramArrayOfString.length > 7)
     {
-      return;
-      paramLong = System.currentTimeMillis() - paramLong;
-    } while (!a(paramLong));
-    QLog.d("ScanEntranceReport", 2, String.format("reportARCloudFirstResult success=%s totalTime=%s", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong) }));
-    ThreadManager.post(new ScanEntranceReport.5(this, paramBoolean, paramLong), 5, null, false);
-  }
-  
-  public void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString)
-  {
-    if ((paramLong1 <= 0L) || (paramLong2 <= 0L)) {}
-    long l;
-    do
-    {
-      return;
-      l = System.currentTimeMillis();
-      paramLong1 = paramLong2 - paramLong1;
-      paramLong2 = l - paramLong2;
-      l = paramLong1 + paramLong2;
-    } while ((!a(paramLong1)) || (!a(paramLong2)) || (!a(l)));
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if ((paramBoolean) && (paramLong1 > 500L)) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      this.b = paramBoolean;
-      QLog.d("ScanEntranceReport", 2, String.format("reportActivityLaunchTime procExist=%s procRestart=%s procLoadTimeCost=%s activityLaunchTimeCost=%s totalTimeCost=%s source=%s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(this.b), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(l), paramString }));
-      ThreadManager.post(new ScanEntranceReport.1(this, paramLong1, paramLong2, paramString, l), 5, null, false);
-      return;
+      SharedPreferences localSharedPreferences = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("mobileQQ", 4);
+      boolean bool1 = localSharedPreferences.getBoolean("enableUpdateIconStep", false);
+      boolean bool2 = "1".equals(paramArrayOfString[7]);
+      if (bool1 != bool2) {
+        localSharedPreferences.edit().putBoolean("enableUpdateIconStep", bool2).commit();
+      }
     }
   }
   
-  public void b()
+  private void b(String[] paramArrayOfString)
   {
-    QLog.d("ScanEntranceReport", 2, "reportZoomCamera");
-    ThreadManager.post(new ScanEntranceReport.9(this), 5, null, false);
+    if (paramArrayOfString.length > 6)
+    {
+      if ("1".equals(paramArrayOfString[6])) {
+        com.tencent.common.config.AppSetting.e = true;
+      }
+    }
+    else {
+      return;
+    }
+    com.tencent.common.config.AppSetting.e = false;
+  }
+  
+  private void c(String[] paramArrayOfString)
+  {
+    File localFile;
+    if (paramArrayOfString.length > 5)
+    {
+      localFile = new File(this.jdField_a_of_type_AndroidContentContext.getFilesDir(), "disableSmallLock");
+      if (!"1".equals(paramArrayOfString[5])) {
+        break label47;
+      }
+      if (localFile.exists()) {
+        localFile.delete();
+      }
+    }
+    return;
+    label47:
+    localFile.createNewFile();
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(DeviceProfileManager paramDeviceProfileManager)
+  {
+    Object localObject = paramDeviceProfileManager.a(DeviceProfileManager.DpcNames.qq_thread_config.name());
+    if (QLog.isColorLevel()) {
+      QLog.d("ThreadManager.Optimizer", 2, "config = " + (String)localObject);
+    }
+    if (TextUtils.isEmpty((CharSequence)localObject)) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        localObject = ((String)localObject).split("\\|");
+        if (localObject.length < 5) {
+          continue;
+        }
+        a(paramDeviceProfileManager, (String[])localObject);
+        c((String[])localObject);
+        b((String[])localObject);
+        a((String[])localObject);
+        a();
+        return;
+      }
+      catch (Exception paramDeviceProfileManager)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ThreadManager.Optimizer", 2, "", paramDeviceProfileManager);
+          }
+        }
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean b()
+  {
+    return this.b;
+  }
+  
+  public boolean c()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoem
  * JD-Core Version:    0.7.0.1
  */

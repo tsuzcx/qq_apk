@@ -1,24 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class zxd
-  implements Animation.AnimationListener
+public class zxd
+  implements View.OnClickListener
 {
-  zxd(zxb paramzxb) {}
+  public zxd(SubscribeHybirdFragment paramSubscribeHybirdFragment, zsf paramzsf) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (zxb.a(this.a) != null)
-    {
-      zxb.a(this.a).clearAnimation();
-      zxb.a(this.a).startAnimation(zxb.a(this.a));
-    }
+    this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribeHybirdFragment.a(this.jdField_a_of_type_Zsf);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

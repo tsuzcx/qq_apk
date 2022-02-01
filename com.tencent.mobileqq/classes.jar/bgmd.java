@@ -1,77 +1,74 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-class bgmd
-  implements SensorEventListener
+public class bgmd
 {
-  bgmd(bgma parambgma) {}
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public static final void a()
   {
-    this.a.e = ("Current step data:" + String.valueOf(paramSensorEvent.values[0]));
-    QLog.d("HealthStepCounterPlugin", 1, "onSensorChanged:" + this.a.e);
-    if ((bgma.jdField_b_of_type_Int == 1) && (bgma.jdField_b_of_type_Boolean))
+    a("gfile", "gfile_upload", "", "", "", "");
+  }
+  
+  public static final void a(int paramInt1, int paramInt2)
+  {
+    int i = NetworkUtil.getNetworkType(BaseApplicationImpl.getContext());
+    a("gfile", "gfile_upload_result", "" + paramInt1, "" + paramInt2, "" + i, "");
+  }
+  
+  public static final void a(int paramInt1, int paramInt2, String paramString)
+  {
+    int i = NetworkUtil.getNetworkType(BaseApplicationImpl.getContext());
+    a("gfile", "gfile_upload_result", "" + paramInt1, "" + paramInt2, "" + i, paramString);
+  }
+  
+  public static final void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface)) {}
+    for (localObject = (QQAppInterface)localObject;; localObject = null)
     {
-      this.a.c = ((int)paramSensorEvent.values[0]);
-      bgma.jdField_b_of_type_Boolean = false;
+      bdla.b((QQAppInterface)localObject, "dc00899", "Grp_tech_report", "", paramString1, paramString2, 0, 0, paramString3, paramString4, paramString5, paramString6);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReportTech", 2, "opType=" + paramString1 + ", opName=" + paramString2 + ", r1=" + paramString3 + ", r2=" + paramString4 + ",r3=" + paramString5 + ", r4" + paramString6);
+      }
+      return;
     }
-    if (bgma.jdField_b_of_type_Int == 3)
+  }
+  
+  public static final void a(String paramString, String... paramVarArgs)
+  {
+    String[] arrayOfString = new String[4];
+    arrayOfString[0] = "";
+    arrayOfString[1] = "";
+    arrayOfString[2] = "";
+    arrayOfString[3] = "";
+    if ((paramVarArgs != null) && (paramVarArgs.length <= 4))
     {
-      bgma.jdField_b_of_type_Int = 0;
-      this.a.d = ((int)paramSensorEvent.values[0]);
-    }
-    for (;;)
-    {
-      JSONObject localJSONObject;
-      try
+      int i = 0;
+      while (i < paramVarArgs.length)
       {
-        paramSensorEvent = new JSONObject();
-        paramSensorEvent.put("retCode", 0);
-        paramSensorEvent.put("step", this.a.d - this.a.c);
-        localJSONObject = new JSONObject();
-        localJSONObject.put("source", "none");
-        paramSensorEvent = WebViewPlugin.toJsScript("StepsDetect", paramSensorEvent, localJSONObject);
-        if (bgma.a)
-        {
-          this.a.mRuntime.a().loadUrl("javascript:" + paramSensorEvent);
-          QLog.d("HealthStepCounterPlugin", 1, "Steps detect:" + (this.a.d - this.a.c));
-          bgma.a = false;
-        }
-        bgma.jdField_b_of_type_Boolean = true;
-        return;
-      }
-      catch (Exception paramSensorEvent)
-      {
-        paramSensorEvent = new JSONObject();
-      }
-      try
-      {
-        paramSensorEvent.put("retCode", -1);
-        paramSensorEvent.put("step", 0);
-        localJSONObject = new JSONObject();
-        localJSONObject.put("source", "none");
-        this.a.dispatchJsEvent("StepsDetect", paramSensorEvent, localJSONObject);
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("HealthStepCounterPlugin", 2, "Err StepsDetect");
-      }
-      catch (JSONException paramSensorEvent)
-      {
-        for (;;)
-        {
-          paramSensorEvent.printStackTrace();
-        }
+        arrayOfString[i] = paramVarArgs[i];
+        i += 1;
       }
     }
+    a("page_exp", paramString, arrayOfString[0], arrayOfString[1], arrayOfString[2], arrayOfString[3]);
+  }
+  
+  public static final void b()
+  {
+    a("gfile", "gfile_download", "", "", "", "");
+  }
+  
+  public static final void b(int paramInt1, int paramInt2)
+  {
+    b(paramInt1, paramInt2, "");
+  }
+  
+  public static final void b(int paramInt1, int paramInt2, String paramString)
+  {
+    int i = NetworkUtil.getNetworkType(BaseApplicationImpl.getContext());
+    a("gfile", "gfile_download_result", "" + paramInt1, "" + paramInt2, "" + i, paramString);
   }
 }
 

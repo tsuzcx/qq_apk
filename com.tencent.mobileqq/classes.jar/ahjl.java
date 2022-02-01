@@ -1,59 +1,45 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.RspBody;
 
 class ahjl
-  extends anxq
+  extends bhyn
 {
-  ahjl(ahiu paramahiu, String paramString) {}
-  
-  public int a()
+  ahjl(ahji paramahji, String paramString1, String paramString2)
   {
-    return 5;
+    super(paramString1, paramString2);
   }
   
-  public void a(Object paramObject)
+  public void onCancel(bhyo parambhyo)
   {
-    if ((paramObject instanceof oidb_cmd0xc96.RspBody))
-    {
-      paramObject = (oidb_cmd0xc96.RspBody)paramObject;
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_Ahiu.tag, 2, new Object[] { "0xc96 responseBody success, wording=", paramObject.wording.get() });
-      }
-      ahiu.a(this.jdField_a_of_type_Ahiu, ahiu.a(this.jdField_a_of_type_Ahiu));
-      odq.a(this.jdField_a_of_type_Ahiu.app, "P_CliOper", "Pb_account_lifeservice", this.jdField_a_of_type_JavaLangString, "0X8005A2D", "0X8005A2D", 0, 0, "", "", "", "", false);
-      StructLongMessageDownloadProcessor.deleteTask(this.jdField_a_of_type_Ahiu.app, this.jdField_a_of_type_JavaLangString);
-      ((bfas)this.jdField_a_of_type_Ahiu.app.getManager(132)).a(this.jdField_a_of_type_Ahiu.sessionInfo.curFriendUin);
-      ahiu.b(this.jdField_a_of_type_Ahiu, false);
-      if ((this.jdField_a_of_type_Ahiu.sessionInfo != null) && (this.jdField_a_of_type_Ahiu.sessionInfo.curFriendUin.equals(paramObject.appid.get() + ""))) {
-        this.jdField_a_of_type_Ahiu.finish(1);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatItemBuilder", 2, "coverDownloadListener.onCancel| task:" + parambhyo);
     }
-    else
+  }
+  
+  public void onDone(bhyo parambhyo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatItemBuilder", 2, "coverDownloadListener.onDone| task:" + parambhyo);
+    }
+    if (parambhyo.b()) {}
+    do
     {
       return;
-    }
-    this.jdField_a_of_type_Ahiu.updateSession(this.jdField_a_of_type_Ahiu.mActivity.getIntent());
+      parambhyo.a().getInt("type");
+    } while (parambhyo.a() == -1);
+    parambhyo = new Message();
+    parambhyo.what = ahji.jdField_a_of_type_Int;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(parambhyo);
   }
   
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void b(Object paramObject)
+  public boolean onStart(bhyo parambhyo)
   {
-    this.jdField_a_of_type_Ahiu.b(2131694775);
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject)
-  {
-    ahiu.c(this.jdField_a_of_type_Ahiu);
-    if (ahiu.d(this.jdField_a_of_type_Ahiu) == 0) {
-      this.jdField_a_of_type_Ahiu.b();
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatItemBuilder", 2, "coverDownloadListener.onStart| task:" + parambhyo);
     }
+    return true;
   }
 }
 

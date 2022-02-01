@@ -1,100 +1,119 @@
-import android.content.Context;
+import android.app.Activity;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.ListView;
+import android.widget.PopupWindow;
+import com.tencent.biz.pubaccount.weishi_new.view.WSDragLayout;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class uzl
-  extends ukz<Object>
+  extends PopupWindow
+  implements View.OnClickListener, vsr
 {
-  private WSVerticalPageFragment a;
-  private View b;
-  private View c;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private View jdField_a_of_type_AndroidViewView;
+  ListView jdField_a_of_type_AndroidWidgetListView;
+  private WSDragLayout jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout;
   
-  public uzl(Context paramContext, WSVerticalPageFragment paramWSVerticalPageFragment)
+  private uzl(View paramView, int paramInt1, int paramInt2)
   {
-    super(paramContext);
-    this.a = paramWSVerticalPageFragment;
+    super(paramView, paramInt1, paramInt2);
   }
   
-  private void f()
+  public static uzl a(Activity paramActivity, int paramInt1, int paramInt2)
   {
-    if (this.a.a() == null) {
-      return;
-    }
-    vct localvct = this.a.a().a();
-    if (localvct != null) {
-      localvct.d();
-    }
-    g();
+    uzl localuzl = new uzl(LayoutInflater.from(paramActivity).inflate(2131560044, null), paramInt1, paramInt2);
+    localuzl.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    localuzl.setAnimationStyle(2131755481);
+    localuzl.c();
+    localuzl.setFocusable(true);
+    localuzl.setInputMethodMode(1);
+    localuzl.setSoftInputMode(16);
+    localuzl.setClippingEnabled(false);
+    localuzl.getContentView().setOnKeyListener(new uzm(localuzl));
+    localuzl.setOutsideTouchable(true);
+    return localuzl;
   }
   
-  private void g()
+  private void b(float paramFloat)
   {
-    if (this.a.a() != null) {
-      this.a.a().a(this.a.a());
+    Window localWindow = this.jdField_a_of_type_AndroidAppActivity.getWindow();
+    WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
+    localLayoutParams.alpha = paramFloat;
+    localWindow.addFlags(2);
+    localWindow.setAttributes(localLayoutParams);
+  }
+  
+  private void c()
+  {
+    View localView = getContentView();
+    localView.findViewById(2131376957).setOnClickListener(new uzn(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout = ((WSDragLayout)localView.findViewById(2131365157));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout.setDisableMinScrollY(true);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout.setControlLitTongue(false);
+    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131364921);
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366524));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout.setListView(this.jdField_a_of_type_AndroidWidgetListView);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout.setTouchListener(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout.setMode(1);
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public void a() {}
+  
+  public void a(float paramFloat)
+  {
+    vmp.a("DraggablePopup", "progress = " + paramFloat);
+    b((float)(0.7D + paramFloat * 0.3D));
+  }
+  
+  public void a(int paramInt)
+  {
+    dismiss();
+  }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout.a(0);
     }
   }
   
-  protected void a() {}
-  
-  public void a(boolean paramBoolean)
+  public void dismiss()
   {
-    View localView;
-    if (this.c != null)
+    super.dismiss();
+    b(1.0F);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (paramView.getId() == 2131379315) {
+      dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public void showAtLocation(View paramView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    int i = paramInt3;
+    if (blhi.a(this.jdField_a_of_type_AndroidAppActivity))
     {
-      localView = this.c;
-      if (!paramBoolean) {
-        break label24;
+      i = paramInt3;
+      if (ScreenUtil.isNavigationBarExist(this.jdField_a_of_type_AndroidAppActivity)) {
+        i = paramInt3 + blhi.a(this.jdField_a_of_type_AndroidAppActivity);
       }
     }
-    label24:
-    for (int i = 0;; i = 8)
-    {
-      localView.setVisibility(i);
-      return;
-    }
-  }
-  
-  public void a(boolean paramBoolean, uqp paramuqp)
-  {
-    View localView;
-    if ((this.b != null) && (paramuqp != null))
-    {
-      paramuqp.a(paramBoolean);
-      localView = this.b;
-      if ((paramuqp.a() <= 0) || (!paramBoolean)) {
-        break label42;
-      }
-    }
-    label42:
-    for (int i = 0;; i = 4)
-    {
-      localView.setVisibility(i);
-      return;
-    }
-  }
-  
-  protected int b()
-  {
-    return 2131560008;
-  }
-  
-  protected void b() {}
-  
-  protected void c() {}
-  
-  protected void e()
-  {
-    if (this.a == null) {
-      return;
-    }
-    RelativeLayout localRelativeLayout = (RelativeLayout)a(2131380426);
-    uzy.a(this.a.getActivity(), localRelativeLayout);
-    a(2131380427).setOnClickListener(new uzm(this));
-    this.c = a(2131380429);
-    this.c.setOnClickListener(new uzn(this));
-    this.b = a(2131369142);
-    this.a.a(this.b);
+    super.showAtLocation(paramView, paramInt1, paramInt2, i);
   }
 }
 

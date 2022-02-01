@@ -1,33 +1,33 @@
 package com.tencent.mobileqq.apollo;
 
-import alok;
-import amak;
-import amaz;
-import ambc;
+import amna;
+import anbs;
+import anch;
+import anck;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ApolloPanelManager$2
   implements Runnable
 {
-  public ApolloPanelManager$2(alok paramalok) {}
+  public ApolloPanelManager$2(amna paramamna) {}
   
   public void run()
   {
     Object localObject = this.this$0;
     int i = this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
-    if (this.this$0.jdField_a_of_type_Amlu != null) {}
+    if (this.this$0.jdField_a_of_type_Annl != null) {}
     for (boolean bool = true;; bool = false)
     {
-      ((alok)localObject).a(i, bool, alok.a(this.this$0));
-      if ((this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 0) && (!alok.a(this.this$0)) && (this.this$0.a() != null) && (this.this$0.jdField_a_of_type_Amlu != null))
+      ((amna)localObject).a(i, bool, amna.a(this.this$0));
+      if ((this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 0) && (!amna.a(this.this$0)) && (this.this$0.a() != null) && (this.this$0.jdField_a_of_type_Annl != null))
       {
-        localObject = ambc.a(this.this$0.a()).a();
+        localObject = anck.a(this.this$0.a()).a();
         if (localObject != null) {
-          ((amak)localObject).a(this.this$0.b);
+          ((anbs)localObject).a(this.this$0.b);
         }
       }
-      if (((alok.a(this.this$0)) || (this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0)) && (this.this$0.jdField_a_of_type_Amlu != null)) {
-        alok.a(this.this$0, this.this$0.jdField_a_of_type_Amlu);
+      if (((amna.a(this.this$0)) || (this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0)) && (this.this$0.jdField_a_of_type_Annl != null)) {
+        amna.a(this.this$0, this.this$0.jdField_a_of_type_Annl);
       }
       return;
     }

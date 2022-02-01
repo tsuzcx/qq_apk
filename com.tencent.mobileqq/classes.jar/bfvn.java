@@ -1,41 +1,62 @@
-public class bfvn
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public abstract class bfvn<VH extends RecyclerView.ViewHolder, D extends bfur>
+  implements View.OnClickListener
 {
-  public static int a = 40000;
-  public static int b = 30000;
-  public static int c = 20000;
-  public static int d = 20000;
-  public static int e = 15000;
-  public static int f = 10000;
-  public static int g;
+  public bfvo a;
+  public XMediaEditor a;
   
-  public static int a(int paramInt)
+  public bfvn(XMediaEditor paramXMediaEditor)
   {
-    switch (paramInt)
-    {
-    case 2: 
-    default: 
-      return a;
-    case 1: 
-    case 4: 
-    case 5: 
-      return c;
-    }
-    return b;
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor = paramXMediaEditor;
   }
   
-  public static int b(int paramInt)
+  public abstract VH a(ViewGroup paramViewGroup);
+  
+  public bfvn a(bfvo parambfvo)
   {
-    switch (paramInt)
-    {
-    case 2: 
-    default: 
-      return d + g;
-    case 1: 
-    case 4: 
-    case 5: 
-      return f + g;
-    }
-    return e + g;
+    this.jdField_a_of_type_Bfvo = parambfvo;
+    return this;
+  }
+  
+  public bfvo a()
+  {
+    return this.jdField_a_of_type_Bfvo;
+  }
+  
+  public void a() {}
+  
+  public void a(VH paramVH) {}
+  
+  public abstract void a(VH paramVH, D paramD, int paramInt);
+  
+  public abstract void a(View paramView, VH paramVH);
+  
+  public void b(VH paramVH) {}
+  
+  public void b(View paramView, VH paramVH)
+  {
+    paramView.setTag(paramVH);
+    paramView.setOnClickListener(this);
+  }
+  
+  public void b(D paramD) {}
+  
+  public void c(VH paramVH) {}
+  
+  public void c(D paramD) {}
+  
+  public void d(D paramD) {}
+  
+  public void onClick(View paramView)
+  {
+    a(paramView, (RecyclerView.ViewHolder)paramView.getTag());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

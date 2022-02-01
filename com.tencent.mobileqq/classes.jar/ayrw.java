@@ -1,29 +1,37 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.app.Activity;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import com.tencent.mobileqq.ocr.OCRResultActivity.10.1;
+import com.tencent.mobileqq.ocr.OCRResultActivity.10.2;
+import com.tencent.mobileqq.ocr.OCRResultActivity.10.3;
+import com.tencent.mobileqq.ocr.OCRResultActivity.10.4;
+import mqq.os.MqqHandler;
 
-class ayrw
-  extends anam
+public class ayrw
+  extends becw
 {
-  ayrw(ayrt paramayrt) {}
+  public ayrw(OCRResultActivity paramOCRResultActivity, Activity paramActivity)
+  {
+    super(paramActivity);
+  }
   
   public void a()
   {
-    if ((ayrt.a(this.a) != null) && (VipUtils.b(ayrt.b(this.a))))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AbsProfileHeaderComponent", 2, String.format("onVipStatusChanged mOpenSVipPay=%s", new Object[] { ayrt.a(this.a) }));
-      }
-      if (this.a.a != null) {
-        this.a.a.a();
-      }
-      if ((ayrt.b(this.a).compareAndSet(true, false)) && (ayrt.a(this.a).get())) {
-        bfur.a(ayrt.a(this.a), 232, null, amtj.a(2131704015), null, amtj.a(2131704023), new ayrx(this), null).show();
-      }
-      ayrt.c(this.a).removeObserver(ayrt.a(this.a));
-    }
+    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.1(this));
+  }
+  
+  public void a(int paramInt)
+  {
+    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.4(this, paramInt));
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.3(this));
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.2(this, paramString));
   }
 }
 

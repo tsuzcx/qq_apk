@@ -1,26 +1,44 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
-public class agod
-  implements View.OnClickListener
+class agod
+  extends Handler
 {
-  public agod(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, QQAppInterface paramQQAppInterface) {}
-  
-  public void onClick(View paramView)
+  agod(agoc paramagoc, Looper paramLooper)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c != 0L) && (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c <= 500L)) {}
-    for (;;)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.obj == null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      case 4: 
+        agoc.a(this.a);
+        return;
+      }
+      agoc.a(this.a, true);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c = System.currentTimeMillis();
-      bbwb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.a);
-      akrx.b("", "0X8008CEB");
     }
+    WeakReference localWeakReference = (WeakReference)paramMessage.obj;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      agoc.a(this.a, localWeakReference);
+      return;
+    case 2: 
+      agoc.b(this.a, localWeakReference);
+      return;
+    }
+    agoc.c(this.a, localWeakReference);
   }
 }
 

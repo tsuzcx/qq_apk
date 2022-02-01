@@ -1,18 +1,39 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import android.os.Handler;
+import android.os.Message;
 
-public class sqe
-  implements ViewPager.OnPageChangeListener
+class sqe
+  extends Handler
 {
-  public sqe(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  sqe(sqd paramsqd) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    qoj.a.a().a(true, "MATCH_ALL_UIN");
+    switch (paramMessage.what)
+    {
+    default: 
+    case 100: 
+    case 101: 
+    case 102: 
+      do
+      {
+        return;
+        sqd.a(this.a);
+        return;
+        this.a.l();
+        return;
+        sqd.b(this.a);
+        sendEmptyMessageDelayed(102, 1000L);
+      } while (sqd.a(this.a) != 1);
+      sqd.c(this.a);
+      return;
+    case 103: 
+      sqd.a(this.a, 3);
+      return;
+    case 104: 
+      sqd.d(this.a);
+      return;
+    }
+    sqd.e(this.a);
   }
 }
 

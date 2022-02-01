@@ -1,50 +1,38 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import com.tencent.mobileqq.confess.ConfessInfo;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aorx
-  implements aosj
+  extends aosi
 {
-  public EIPCResult a(Bundle paramBundle)
+  protected aorx(QQAppInterface paramQQAppInterface, aosm paramaosm)
   {
-    QQAppInterface localQQAppInterface = aori.a();
-    if (localQQAppInterface == null)
-    {
-      QLog.e("ArkApp.GetNicknameHandler", 1, "Handler_GetNickName.onCall, qq app is null");
-      return EIPCResult.createResult(-102, new Bundle());
-    }
-    String str = paramBundle.getString("Uin", localQQAppInterface.getCurrentAccountUin());
-    Object localObject = null;
-    if (!TextUtils.isEmpty(afvi.a)) {
-      localObject = ContactUtils.getTroopMemberName(localQQAppInterface, afvi.a, str);
-    }
-    if (localObject != null)
-    {
-      paramBundle = (Bundle)localObject;
-      if (!TextUtils.equals((CharSequence)localObject, str)) {}
-    }
-    else
-    {
-      localObject = ContactUtils.getDateNickName(localQQAppInterface, str);
-      paramBundle = (Bundle)localObject;
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        paramBundle = ContactUtils.getNick(localQQAppInterface, str, 0);
-      }
-    }
-    localObject = new Bundle();
-    if (TextUtils.isEmpty(paramBundle))
-    {
-      QLog.i("ArkApp.GetNicknameHandler", 1, "GetNicknameHandler.onCall, nickname is empty");
-      ((Bundle)localObject).putString("Nickname", "");
-    }
-    for (;;)
-    {
-      return EIPCResult.createResult(0, (Bundle)localObject);
-      ((Bundle)localObject).putString("Nickname", paramBundle);
-    }
+    super(paramQQAppInterface, paramaosm);
+  }
+  
+  public int a(QQMessageFacade.Message paramMessage)
+  {
+    return -113;
+  }
+  
+  public aosm a(QQMessageFacade.Message paramMessage)
+  {
+    Object localObject = bhbd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDrawable(2130844957));
+    this.jdField_a_of_type_Aosm.a((Bitmap)localObject);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131698360);
+    this.jdField_a_of_type_Aosm.c((String)localObject);
+    localObject = new ConfessInfo();
+    ((ConfessInfo)localObject).parseFromJsonStr(paramMessage.getExtInfoFromExtStr("ext_key_confess_info"));
+    localObject = aqvh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ConfessInfo)localObject, paramMessage.senderuin);
+    String str = (String)localObject + "(" + a() + "):" + c();
+    this.jdField_a_of_type_Aosm.b(str);
+    localObject = (String)localObject + ":" + c();
+    this.jdField_a_of_type_Aosm.d((String)localObject);
+    b(paramMessage);
+    return this.jdField_a_of_type_Aosm;
   }
 }
 

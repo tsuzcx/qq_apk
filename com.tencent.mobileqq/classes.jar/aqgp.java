@@ -1,76 +1,86 @@
-import android.support.annotation.NonNull;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.lang.ref.WeakReference;
+import mqq.app.Foreground;
 
 public class aqgp
-  extends aqgc<aqgo>
+  implements aqfx, aqgc
 {
-  public static aqgo c()
+  @Nullable
+  private Object jdField_a_of_type_JavaLangObject;
+  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  
+  aqgp(Context paramContext, @Nullable aqfx paramaqfx)
   {
-    aqgo localaqgo2 = (aqgo)apub.a().a(498);
-    aqgo localaqgo1 = localaqgo2;
-    if (localaqgo2 == null) {
-      localaqgo1 = new aqgo();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_JavaLangObject = paramaqfx;
+  }
+  
+  aqgp(Context paramContext, @Nullable aqgc paramaqgc)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_JavaLangObject = paramaqgc;
+  }
+  
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString)
+  {
+    if ((this.jdField_a_of_type_JavaLangObject instanceof aqgc)) {
+      ((aqgc)this.jdField_a_of_type_JavaLangObject).a(paramBoolean, paramInt1, paramInt2, paramString);
     }
-    return localaqgo1;
   }
   
-  @NonNull
-  public aqgo a()
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString1, String paramString2)
   {
-    return new aqgo();
+    if ((this.jdField_a_of_type_JavaLangObject instanceof aqfx)) {
+      ((aqfx)this.jdField_a_of_type_JavaLangObject).a(paramBoolean1, paramBoolean2, paramInt, paramString1, paramString2);
+    }
   }
   
-  @NonNull
-  public aqgo a(@NonNull aptx[] paramArrayOfaptx)
+  public boolean a()
   {
-    aqgo localaqgo = new aqgo();
-    paramArrayOfaptx = paramArrayOfaptx[0].jdField_a_of_type_JavaLangString;
-    if (TextUtils.isEmpty(paramArrayOfaptx)) {}
-    for (;;)
+    if ((this.jdField_a_of_type_JavaLangObject instanceof aqfx)) {
+      return ((aqfx)this.jdField_a_of_type_JavaLangObject).a();
+    }
+    return false;
+  }
+  
+  void b(boolean paramBoolean, int paramInt1, int paramInt2, String paramString)
+  {
+    QLog.d("TeleScreenListenerWrapper", 1, "jump | jump: " + paramInt1 + ", errCode: " + paramInt2 + ", errMsg: " + paramString);
+    a(paramBoolean, paramInt1, paramInt2, paramString);
+  }
+  
+  void b(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString1, String paramString2)
+  {
+    QLog.d("TeleScreenListenerWrapper", 1, "download | pass: " + paramBoolean2 + ", errCode: " + paramInt + ", errMsg: " + paramString1);
+    a(paramBoolean1, paramBoolean2, paramInt, paramString1, paramString2);
+    if (((this.jdField_a_of_type_JavaLangObject instanceof aqfx)) && (!((aqfx)this.jdField_a_of_type_JavaLangObject).a())) {}
+    Context localContext;
+    do
     {
-      return localaqgo;
-      try
-      {
-        paramArrayOfaptx = new JSONObject(paramArrayOfaptx);
-        localaqgo.jdField_a_of_type_Int = paramArrayOfaptx.optInt("stage");
-        localaqgo.jdField_a_of_type_JavaLangString = paramArrayOfaptx.optString("pay_url");
-        if (QLog.isColorLevel())
-        {
-          QLog.d("vip_ptt.ConfigProcessor", 1, "json parse config.stage:" + localaqgo.jdField_a_of_type_Int + " url=" + localaqgo.jdField_a_of_type_JavaLangString);
-          return localaqgo;
-        }
-      }
-      catch (JSONException paramArrayOfaptx)
-      {
-        QLog.e("vip_ptt.ConfigProcessor", 1, "json parse error:" + paramArrayOfaptx);
-        localaqgo.b = paramArrayOfaptx.toString();
-      }
+      return;
+      localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while ((localContext == null) || (!paramBoolean1) || (paramBoolean2) || (TextUtils.isEmpty(paramString2)));
+    Intent localIntent = new Intent(localContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", paramString2);
+    if ((localContext instanceof Activity)) {}
+    for (paramString1 = (Activity)localContext; paramString1 == null; paramString1 = Foreground.getTopActivity())
+    {
+      localIntent.addFlags(268435456);
+      localContext.startActivity(localIntent);
+      return;
     }
-    return localaqgo;
-  }
-  
-  @NonNull
-  public aqgo b()
-  {
-    return new aqgo();
-  }
-  
-  public Class<aqgo> clazz()
-  {
-    return aqgo.class;
-  }
-  
-  public int type()
-  {
-    return 498;
+    paramString1.startActivity(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqgp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,13 @@
-public abstract interface prl
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+
+class prl
+  extends ntf
 {
-  public abstract void a(String[] paramArrayOfString1, String[] paramArrayOfString2);
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    QLog.d("RIJUserLevelTimeUtils", 1, "observer ,errorCode=" + paramInt + " ，bundle=" + paramBundle);
+  }
 }
 
 

@@ -16,19 +16,19 @@ class MiniAppVideoController$1$1
     do
     {
       return;
-      MiniAppVideoController.access$002(this.this$1.this$0, this.val$view);
-      MiniAppVideoController.access$100(this.this$1.this$0).setUpVideoView(MiniAppVideoController.access$000(this.this$1.this$0), this.this$1.val$config);
-      MiniAppVideoController.access$100(this.this$1.this$0).updateCenterBtn(this.this$1.val$config);
-      MiniAppVideoController.access$200(this.this$1.this$0, this.this$1.val$config);
-    } while ((MiniAppVideoController.access$300(this.this$1.this$0) <= 0L) || (!this.this$1.this$0.isWifiConnect()));
-    QMLog.d("MiniAppVideoController", "play current pos is: " + MiniAppVideoController.access$300(this.this$1.this$0));
-    this.this$1.this$0.play(MiniAppVideoController.access$300(this.this$1.this$0));
-    IVideoPlayerUI localIVideoPlayerUI = MiniAppVideoController.access$100(this.this$1.this$0);
-    if (!MiniAppVideoController.access$400(this.this$1.this$0)) {}
+      MiniAppVideoController.access$200(this.this$1.this$0).setupPlayer(MiniAppVideoController.access$000(this.this$1.this$0), MiniAppVideoController.access$100(this.this$1.this$0));
+      MiniAppVideoController.access$300(this.this$1.this$0).setUpVideoView(this.val$view, MiniAppVideoController.access$000(this.this$1.this$0));
+      MiniAppVideoController.access$300(this.this$1.this$0).updateCenterBtn(MiniAppVideoController.access$000(this.this$1.this$0));
+      MiniAppVideoController.access$400(this.this$1.this$0, MiniAppVideoController.access$000(this.this$1.this$0));
+    } while ((MiniAppVideoController.access$500(this.this$1.this$0) <= 0L) || (!this.this$1.this$0.isWifiConnect()));
+    QMLog.d("MiniAppVideoController", "play current pos is: " + MiniAppVideoController.access$500(this.this$1.this$0));
+    this.this$1.this$0.play(MiniAppVideoController.access$500(this.this$1.this$0));
+    IVideoPlayerUI localIVideoPlayerUI = MiniAppVideoController.access$300(this.this$1.this$0);
+    if (!MiniAppVideoController.access$600(this.this$1.this$0)) {}
     for (boolean bool = true;; bool = false)
     {
       localIVideoPlayerUI.resetControlIvDrawable(bool);
-      MiniAppVideoController.access$502(this.this$1.this$0, MiniAppVideoController.access$400(this.this$1.this$0));
+      MiniAppVideoController.access$702(this.this$1.this$0, MiniAppVideoController.access$600(this.this$1.this$0));
       return;
     }
   }

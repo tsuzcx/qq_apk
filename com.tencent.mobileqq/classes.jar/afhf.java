@@ -1,17 +1,38 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import mqq.app.QQPermissionCallback;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class afhf
-  implements QQPermissionCallback
+  extends bgiw
 {
-  public afhf(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
+  public afhf(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    bfur.a(this.a.a, paramArrayOfString, paramArrayOfInt);
+    if ((paramBoolean) && (paramBundle != null)) {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("structMsg");
+        new structmsg.StructMsg().mergeFrom(paramBundle);
+        TroopRequestActivity.a(this.a, 1);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.systemmsg.TroopRequestActivity", 2, "structMsg merge error");
+        }
+        this.a.h();
+        QQToast.a(this.a, this.a.getString(2131697111), 0).b(this.a.getTitleBarHeight());
+        return;
+      }
+    }
+    this.a.h();
+    QQToast.a(this.a, this.a.getString(2131697111), 0).b(this.a.getTitleBarHeight());
   }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

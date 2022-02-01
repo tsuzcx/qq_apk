@@ -1,47 +1,10 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-
 public class anrg
-  extends anri
 {
-  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
-  {
-    if (paramString.startsWith("mqqapi://vaslive"))
-    {
-      paramQQAppInterface = new anrf(paramQQAppInterface, paramContext);
-      paramQQAppInterface.a = paramString;
-      paramQQAppInterface.b = "vaslive";
-      if (paramString.startsWith("mqqapi://vaslive/watch")) {
-        paramQQAppInterface.c = "watch";
-      }
-      for (;;)
-      {
-        paramContext = paramString.split("\\?");
-        if (paramContext.length == 2) {
-          break;
-        }
-        return paramQQAppInterface;
-        if (paramString.startsWith("mqqapi://vaslive/myshopping")) {
-          paramQQAppInterface.c = "mqqapi://vaslive/myshopping";
-        }
-      }
-      paramContext = paramContext[1].split("&");
-      if (paramContext != null)
-      {
-        int i = 0;
-        while (i < paramContext.length)
-        {
-          paramString = paramContext[i].split("=");
-          if ((paramString != null) && (paramString.length == 2)) {
-            paramQQAppInterface.a(paramString[0], paramString[1]);
-          }
-          i += 1;
-        }
-      }
-      return paramQQAppInterface;
-    }
-    return null;
-  }
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
 }
 
 

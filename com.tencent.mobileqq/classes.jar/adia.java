@@ -1,17 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adia
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adia(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  public adia(AssistantSettingActivity paramAssistantSettingActivity, TroopManager paramTroopManager) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    ForwardTroopListFragment.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.c(paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

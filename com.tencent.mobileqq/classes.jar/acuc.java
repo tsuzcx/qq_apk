@@ -1,63 +1,27 @@
-import android.content.Intent;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AuthDevOpenUgActivity;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.manager.AccountManager;
-import mqq.observer.WtloginObserver;
-import mqq.os.MqqHandler;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
 
 public class acuc
-  extends WtloginObserver
+  extends acve
 {
-  public acuc(AuthDevOpenUgActivity paramAuthDevOpenUgActivity) {}
-  
-  public void onCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
+  public int a()
   {
-    if (paramInt == 0)
-    {
-      paramWUserSigInfo = (AccountManager)this.a.app.getManager(0);
-      if (paramWUserSigInfo != null) {
-        paramWUserSigInfo.refreshDA2(this.a.app.getCurrentAccountUin(), null);
-      }
-      arhf.a().a(this.a.app, this.a, this.a.app.getCurrentAccountUin(), true);
-      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131691843), 0).b(this.a.getTitleBarHeight());
-      paramWUserSigInfo = this.a.app.getHandler(LoginInfoActivity.class);
-      if (paramWUserSigInfo != null) {
-        paramWUserSigInfo.obtainMessage(20140331, 1, 0).sendToTarget();
-      }
-      AuthDevOpenUgActivity.a(this.a, true, 0);
-      paramErrMsg = new Intent();
-      paramErrMsg.putExtra("auth_dev_open", true);
-      if (AuthDevOpenUgActivity.a(this.a) != null) {}
-      for (paramWUserSigInfo = AuthDevOpenUgActivity.a(this.a).Mobile;; paramWUserSigInfo = "")
-      {
-        paramErrMsg.putExtra("phone_num", paramWUserSigInfo);
-        this.a.a(-1, paramErrMsg);
-        return;
-      }
-    }
-    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
-    {
-      QQToast.a(this.a.getApplicationContext(), 1, paramErrMsg.getMessage(), 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131691885), 0).b(this.a.getTitleBarHeight());
+    return 1000;
   }
   
-  public void onCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bffl parambffl, bcse parambcse, bcre parambcre)
   {
-    if ((paramInt != 0) || (paramDevlockInfo == null))
-    {
-      QQToast.a(this.a, this.a.getString(2131691894), 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    AuthDevOpenUgActivity.a(this.a, paramDevlockInfo);
+    new bcrt().d(paramList, paramList1, paramStringBuilder, paramMsg, parambffl);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return (paramElem.common_elem.has()) && (20 == paramElem.common_elem.uint32_service_type.get());
   }
 }
 

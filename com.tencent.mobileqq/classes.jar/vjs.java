@@ -1,8 +1,27 @@
-import java.util.ArrayList;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
-public abstract interface vjs
+class vjs
+  implements Animator.AnimatorListener
 {
-  public abstract void a(ArrayList<vim> paramArrayList);
+  vjs(vjo paramvjo) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    vjo.b(this.a).removeAnimatorListener(this);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    vjo.c(this.a);
+    vjo.b(this.a).setVisibility(8);
+    vjo.b(this.a).removeAnimatorListener(this);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

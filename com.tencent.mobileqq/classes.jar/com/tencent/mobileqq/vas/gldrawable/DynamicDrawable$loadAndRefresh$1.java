@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vas.gldrawable;
 
-import bghx;
-import bghy;
-import bgil;
-import bgim;
+import bhqs;
+import bhqt;
+import bhrg;
+import bhrh;
 import java.lang.ref.WeakReference;
 import kotlin.Metadata;
 
@@ -11,17 +11,17 @@ import kotlin.Metadata;
 public final class DynamicDrawable$loadAndRefresh$1
   implements Runnable
 {
-  public DynamicDrawable$loadAndRefresh$1(bghx parambghx, bgil parambgil) {}
+  public DynamicDrawable$loadAndRefresh$1(bhqs parambhqs, bhrg parambhrg) {}
   
   public final void run()
   {
-    bghy localbghy = new bghy(new WeakReference(this.this$0));
+    bhqt localbhqt = new bhqt(new WeakReference(this.this$0));
     if (!this.a.a())
     {
-      this.a.a((bgim)localbghy);
+      this.a.a((bhrh)localbhqt);
       return;
     }
-    localbghy.a();
+    localbhqt.a();
   }
 }
 

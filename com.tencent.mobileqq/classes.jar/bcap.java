@@ -1,50 +1,18 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.ApngSoLoader;
-import com.tencent.image.ProtocolDownloader;
-import com.tencent.image.URLDrawableParams;
-import com.tencent.mobileqq.transfile.HttpDownloader;
-import com.tencent.mobileqq.vas.VasApngIPCModule;
-import com.tencent.qphone.base.util.BaseApplication;
-import mqq.app.MobileQQ;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.activity.MixSearchWebFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bcap
-  extends URLDrawableParams
+  implements View.OnClickListener
 {
-  private ProtocolDownloader a;
+  public bcap(MixSearchWebFragment paramMixSearchWebFragment) {}
   
-  public bcap(MobileQQ paramMobileQQ)
+  public void onClick(View paramView)
   {
-    super(paramMobileQQ);
-  }
-  
-  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
-  {
-    if ((("http".equals(paramString)) || ("https".equals(paramString))) && (this.a == null)) {
-      this.a = new HttpDownloader();
-    }
-    return this.a;
-  }
-  
-  public String doGetLocalFilePath(String paramString)
-  {
-    return null;
-  }
-  
-  public ApngSoLoader getApngSoLoader()
-  {
-    return VasApngIPCModule.getInstance();
-  }
-  
-  public Drawable getDefaultLoadingDrawable()
-  {
-    return BaseApplicationImpl.getContext().getResources().getDrawable(2130847755);
-  }
-  
-  public Drawable getDefualtFailedDrawable()
-  {
-    return BaseApplicationImpl.getContext().getResources().getDrawable(2130847755);
+    this.a.a(3);
+    this.a.doOnBackEvent();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

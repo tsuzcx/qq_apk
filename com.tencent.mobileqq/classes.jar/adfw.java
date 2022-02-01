@@ -1,7 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+
 public class adfw
+  implements DialogInterface.OnDismissListener
 {
-  public boolean a;
-  public boolean b;
+  public adfw(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.a = null;
+  }
 }
 
 

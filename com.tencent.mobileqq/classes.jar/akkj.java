@@ -1,65 +1,24 @@
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.startup.step.SetSplash;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.qboss.QbossReportManager;
+import com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity;
+import com.tencent.mobileqq.utils.AlbumUtil;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
-class akkj
-  implements URLDrawable.URLDrawableListener
+public class akkj
+  implements AdapterView.OnItemClickListener
 {
-  akkj(akki paramakki, akke paramakke, akkf paramakkf) {}
+  public akkj(QzonePhotoPreviewActivity paramQzonePhotoPreviewActivity) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    QLog.i("QbossADBannerManager", 1, "showQbossADBanner urlDrawable load failed.");
-    paramURLDrawable = null;
-    if (paramThrowable != null) {
-      paramURLDrawable = paramThrowable.getMessage();
-    }
-    try
+    if (QzonePhotoPreviewActivity.a(this.a))
     {
-      if (this.jdField_a_of_type_Akke != null) {
-        QbossReportManager.getInstance().sendErrorReport(2741, this.jdField_a_of_type_Akke.c, 100, "qboss load local photo fail throwable = " + paramURLDrawable + " url = " + this.jdField_a_of_type_Akkf.a + " filePath = " + this.jdField_a_of_type_Akkf.c);
-      }
-      this.jdField_a_of_type_Akki.e();
+      this.a.getActivity().finish();
+      AlbumUtil.anim(this.a.getActivity(), true, false);
       return;
     }
-    catch (Exception paramURLDrawable)
-    {
-      paramURLDrawable.printStackTrace();
-      QLog.e("QbossADBannerManager", 1, "onLoadFailed Exception");
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    QLog.i("QbossADBannerManager", 1, "showQbossADBanner urlDrawable load success. mLayout visiable:" + this.jdField_a_of_type_Akki.jdField_a_of_type_AndroidViewView.getVisibility());
-    try
-    {
-      if ((this.jdField_a_of_type_Akki.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Akki.jdField_a_of_type_ComTencentImageURLImageView != null) && (paramURLDrawable != null))
-      {
-        this.jdField_a_of_type_Akki.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        akki.a(this.jdField_a_of_type_Akki, this.jdField_a_of_type_Akke);
-        this.jdField_a_of_type_Akki.a(this.jdField_a_of_type_Akke);
-        SetSplash.a(this.jdField_a_of_type_Akki.jdField_a_of_type_AndroidViewView);
-        return;
-      }
-      if (this.jdField_a_of_type_Akki.jdField_a_of_type_AndroidViewView != null)
-      {
-        this.jdField_a_of_type_Akki.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        return;
-      }
-    }
-    catch (Exception paramURLDrawable)
-    {
-      paramURLDrawable.printStackTrace();
-      QLog.e("QbossADBannerManager", 1, "onLoadSuccessed Exception");
-    }
+    this.a.a();
   }
 }
 

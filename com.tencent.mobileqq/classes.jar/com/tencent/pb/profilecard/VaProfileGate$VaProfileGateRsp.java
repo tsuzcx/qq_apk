@@ -14,6 +14,8 @@ public final class VaProfileGate$VaProfileGateRsp
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field iRetCode = PBField.initInt32(0);
   public final PBInt32Field lhLogoLv = PBField.initInt32(0);
+  public VaProfileGate.QidInfoItem qid_info = new VaProfileGate.QidInfoItem();
+  public VaProfileGate.QQValueInfoItem qq_value = new VaProfileGate.QQValueInfoItem();
   public final PBRepeatMessageField<VaProfileGate.OidbFlagInfo> rpt_oidb_flag = PBField.initRepeatMessage(VaProfileGate.OidbFlagInfo.class);
   public final PBRepeatMessageField<VaProfileGate.CommTaskInfo> rpt_task_item = PBField.initRepeatMessage(VaProfileGate.CommTaskInfo.class);
   public final PBBytesField sRetMsg = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -24,7 +26,7 @@ public final class VaProfileGate$VaProfileGateRsp
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 64 }, new String[] { "iRetCode", "sRetMsg", "stPrivilegeRsp", "stGiftRsp", "rpt_task_item", "rpt_oidb_flag", "st_vip_care", "lhLogoLv" }, new Object[] { Integer.valueOf(0), localByteStringMicro, null, null, null, null, null, Integer.valueOf(0) }, VaProfileGateRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 64, 74, 82 }, new String[] { "iRetCode", "sRetMsg", "stPrivilegeRsp", "stGiftRsp", "rpt_task_item", "rpt_oidb_flag", "st_vip_care", "lhLogoLv", "qid_info", "qq_value" }, new Object[] { Integer.valueOf(0), localByteStringMicro, null, null, null, null, null, Integer.valueOf(0), null, null }, VaProfileGateRsp.class);
   }
 }
 

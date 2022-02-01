@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo;
 
-import amtj;
+import anvx;
 
 public abstract interface ShortVideoConstants
 {
@@ -28,6 +28,7 @@ public abstract interface ShortVideoConstants
   public static final int EDIT_VIDEO_AIO = 10000;
   public static final int EDIT_VIDEO_BLESS = 10003;
   public static final int EDIT_VIDEO_CIRCLE = 10026;
+  public static final int EDIT_VIDEO_CMJOY = 10027;
   public static final int EDIT_VIDEO_EMOJI_REDPACK = 10022;
   public static final String EDIT_VIDEO_EXTRA_FLAG_NEED_REMOVE_TEMP_DIR = "edit_video_extra_flag_need_remove_temp_dir";
   public static final int EDIT_VIDEO_FACE_UNLOCK = 10025;
@@ -168,9 +169,9 @@ public abstract interface ShortVideoConstants
   public static final int MAX_LENGTH_DEFAULT = 1280;
   public static final long MAX_SIZE_DEFAULT = 754974720L;
   public static final String MEDIA_INFO = "media_info";
-  public static final String MESSAGEFORSHORTVIDEO_MSG = amtj.a(2131713137);
+  public static final String MESSAGEFORSHORTVIDEO_MSG = anvx.a(2131713484);
   public static final String MESSAGE_CLICK_START = "message_click_start";
-  public static final String MESSAGE_FOR_SHORT_VIDEO_PTV = amtj.a(2131713163);
+  public static final String MESSAGE_FOR_SHORT_VIDEO_PTV = anvx.a(2131713510);
   public static final long MIN_BITRATE_DEFAULT = 1048576L;
   public static final double MIN_DENSITY_DEFAULT = 0.067D;
   public static final String MP_VIDEO_COVER = "video_cover";

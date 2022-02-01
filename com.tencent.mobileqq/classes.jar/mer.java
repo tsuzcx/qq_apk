@@ -1,23 +1,20 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.MultiIncomingCallsActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
 
 public class mer
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public mer(MultiIncomingCallsActivity paramMultiIncomingCallsActivity, long paramLong, Intent paramIntent, lez paramlez) {}
+  public mer(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_Lez);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mer
  * JD-Core Version:    0.7.0.1
  */

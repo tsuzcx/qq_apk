@@ -1,17 +1,17 @@
-import android.view.MotionEvent;
-import com.tencent.widget.ARMapHongBaoListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public abstract interface bjnq
+class bjnq
+  implements DialogInterface.OnDismissListener
 {
-  public abstract int getMode();
+  bjnq(bjnn parambjnn) {}
   
-  public abstract int getSpringbackOffset(ARMapHongBaoListView paramARMapHongBaoListView);
-  
-  public abstract void onFlingScrollHeader(int paramInt1, int paramInt2);
-  
-  public abstract void onTouchMoving(ARMapHongBaoListView paramARMapHongBaoListView, boolean paramBoolean, MotionEvent paramMotionEvent);
-  
-  public abstract int onViewCompleteAfterRefresh(ARMapHongBaoListView paramARMapHongBaoListView);
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.a = null;
+    this.a.c = false;
+    this.a.c = false;
+  }
 }
 
 

@@ -1,31 +1,46 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import UserGrowth.stSimpleMetaFeed;
+import android.content.Context;
+import android.view.View;
+import android.widget.RelativeLayout;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
-class vny
-  extends SimpleJob<Object>
+public class vny
+  extends uyw<Object>
 {
-  vny(vns paramvns, String paramString)
+  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
+  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+  
+  public vny(Context paramContext, WSVerticalPageFragment paramWSVerticalPageFragment)
   {
-    super(paramString);
+    super(paramContext);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramWSVerticalPageFragment;
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  protected void a()
   {
-    paramVarArgs = ((vuu)vux.a(5)).a();
-    paramJobContext = new ArrayList(paramVarArgs.size());
-    paramVarArgs = paramVarArgs.iterator();
-    while (paramVarArgs.hasNext()) {
-      paramJobContext.add(new vpd((StoryVideoItem)paramVarArgs.next()));
+    if ((a() != null) && ((a() instanceof stSimpleMetaFeed))) {
+      this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)a());
     }
-    this.a.a(paramJobContext);
-    xvv.c("Q.qqstory.publish.upload:StoryVideoUploadManager", "had load local task size " + paramJobContext.size());
-    return null;
+  }
+  
+  protected int b()
+  {
+    return 2131560050;
+  }
+  
+  protected void b() {}
+  
+  protected void c() {}
+  
+  protected void e()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment == null) {
+      return;
+    }
+    RelativeLayout localRelativeLayout = (RelativeLayout)a(2131380765);
+    voq.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.getActivity(), localRelativeLayout);
+    a(2131380766).setOnClickListener(new vnz(this));
+    a(2131380767).setOnClickListener(new voa(this));
   }
 }
 

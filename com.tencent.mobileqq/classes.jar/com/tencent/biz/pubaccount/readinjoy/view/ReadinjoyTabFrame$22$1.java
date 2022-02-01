@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import spq;
+import tdb;
 
 public class ReadinjoyTabFrame$22$1
   implements Runnable
 {
-  public ReadinjoyTabFrame$22$1(spq paramspq) {}
+  public ReadinjoyTabFrame$22$1(tdb paramtdb) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class ReadinjoyTabFrame$22$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame.22.1
  * JD-Core Version:    0.7.0.1
  */

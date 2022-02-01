@@ -14,7 +14,7 @@ class MiniAppVideoController$14
     do
     {
       return;
-      if (("resetPlayer".equals((String)paramObject)) && (MiniAppVideoController.access$800(this.this$0).autoPauseIfNavigate))
+      if (("resetPlayer".equals((String)paramObject)) && (MiniAppVideoController.access$000(this.this$0).autoPauseIfNavigate))
       {
         this.this$0.smallScreen();
         this.this$0.stop();

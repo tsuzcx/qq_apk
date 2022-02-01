@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import bbjb;
+import bcpt;
 import mqq.manager.Manager;
 
 class QQAppInterface$11

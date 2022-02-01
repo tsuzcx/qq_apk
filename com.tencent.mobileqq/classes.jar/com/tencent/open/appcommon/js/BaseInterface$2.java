@@ -1,6 +1,6 @@
 package com.tencent.open.appcommon.js;
 
-import bhzm;
+import bjko;
 import com.tencent.smtt.sdk.WebView;
 import java.util.List;
 
@@ -17,9 +17,9 @@ class BaseInterface$2
     {
       this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(str);
       label58:
-      bhzm.b("BaseInterface", "Response<callBatch> AsyncInterface result : " + str);
+      bjko.b("BaseInterface", "Response<callBatch> AsyncInterface result : " + str);
       return;
-      bhzm.e("BaseInterface", "Response<callBatch> AsyncInterface result : webview is null !!!");
+      bjko.e("BaseInterface", "Response<callBatch> AsyncInterface result : webview is null !!!");
       return;
     }
     catch (Exception localException)

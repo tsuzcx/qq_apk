@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.LinearLayout.LayoutParams;
-import atky;
-import bcef;
-import bchh;
+import aupt;
+import bdla;
+import bdof;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
@@ -15,7 +15,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Set;
 
 public class ForwardRecommendFriendOption
-  extends atky
+  extends aupt
 {
   AbsShareMsg jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg;
   AbsStructMsg jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
@@ -41,8 +41,8 @@ public class ForwardRecommendFriendOption
   public boolean a()
   {
     super.a();
-    AbsStructMsg localAbsStructMsg = bchh.a(this.jdField_a_of_type_AndroidOsBundle.getByteArray("stuctmsg_bytes"));
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = bchh.a(this.jdField_a_of_type_AndroidOsBundle.getByteArray("struct_msg_show_in_dialog"));
+    AbsStructMsg localAbsStructMsg = bdof.a(this.jdField_a_of_type_AndroidOsBundle.getByteArray("stuctmsg_bytes"));
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = bdof.a(this.jdField_a_of_type_AndroidOsBundle.getByteArray("struct_msg_show_in_dialog"));
     if ((localAbsStructMsg != null) && ((localAbsStructMsg instanceof AbsShareMsg))) {
       this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg = ((AbsShareMsg)localAbsStructMsg);
     }
@@ -73,7 +73,7 @@ public class ForwardRecommendFriendOption
   {
     int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("structmsg_service_id", -1);
     if (i == 63) {
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005B34", "0X8005B34", 0, 0, "", "", "", "");
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005B34", "0X8005B34", 0, 0, "", "", "", "");
     }
     for (;;)
     {
@@ -81,9 +81,9 @@ public class ForwardRecommendFriendOption
       return;
       if (i == 84) {
         if (this.jdField_a_of_type_AndroidContentIntent.getIntExtra("pa_type", -1) == 53) {
-          bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007018", "0X8007018", 0, 0, "", "", "", "");
+          bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007018", "0X8007018", 0, 0, "", "", "", "");
         } else {
-          bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007169", "0X8007169", 0, 0, "", "", "", "");
+          bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007169", "0X8007169", 0, 0, "", "", "", "");
         }
       }
     }
@@ -93,7 +93,7 @@ public class ForwardRecommendFriendOption
   {
     int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("structmsg_service_id", -1);
     if (i == 63) {
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005B35", "0X8005B35", 0, 0, "", "", "", "");
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005B35", "0X8005B35", 0, 0, "", "", "", "");
     }
     for (;;)
     {
@@ -101,9 +101,9 @@ public class ForwardRecommendFriendOption
       return;
       if (i == 84) {
         if (this.jdField_a_of_type_AndroidContentIntent.getIntExtra("pa_type", -1) == 53) {
-          bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007017", "0X8007017", 0, 0, "", "", "", "");
+          bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007017", "0X8007017", 0, 0, "", "", "", "");
         } else {
-          bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800716A", "0X800716A", 0, 0, "", "", "", "");
+          bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800716A", "0X800716A", 0, 0, "", "", "", "");
         }
       }
     }

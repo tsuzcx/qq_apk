@@ -1,17 +1,14 @@
-public class rez
+class rez
+  implements rgm
 {
-  private rfa jdField_a_of_type_Rfa = new rfa(0L);
-  private rfb jdField_a_of_type_Rfb = new rfb("");
-  private rfc jdField_a_of_type_Rfc = new rfc("");
+  rez(rey paramrey) {}
   
-  public void a(rfa paramrfa)
+  public void a()
   {
-    this.jdField_a_of_type_Rfa = paramrfa;
-  }
-  
-  public void a(rfb paramrfb)
-  {
-    this.jdField_a_of_type_Rfb = paramrfb;
+    pnw localpnw = this.a.jdField_a_of_type_Szd.a().a();
+    if (localpnw != null) {
+      localpnw.a(null, ((qfw)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
+    }
   }
 }
 

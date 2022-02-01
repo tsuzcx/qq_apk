@@ -1,17 +1,18 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class agfw
-  extends aghj
+public class agfw
+  implements View.OnClickListener
 {
-  agfw(agcw paramagcw)
-  {
-    super(paramagcw, null);
-  }
+  public agfw(AIOLongShotHelper paramAIOLongShotHelper) {}
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onClick(View paramView)
   {
-    return new agqs(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    AIOLongShotHelper.c(this.a, paramView);
+    AIOLongShotHelper.a("0X8009DEC");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

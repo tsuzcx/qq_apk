@@ -1,36 +1,42 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.MediaBridgeInvokeHandler.register.1;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.MediaBridgeInvokeHandler.register.2;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function2;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.GifDrawable.OnGIFPlayOnceListener;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import mqq.util.WeakReference;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/MediaBridgeInvokeHandler;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "module", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "nameSpace", "", "register", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class tlg
-  extends tks
+class tlg
+  implements GifDrawable.OnGIFPlayOnceListener
 {
-  public static final tlh a = new tlh(null);
+  AbstractGifImage a;
   
-  public tlg(@NotNull BridgeModule paramBridgeModule)
+  tlg(AbstractGifImage paramAbstractGifImage)
   {
-    super(paramBridgeModule);
+    this.a = paramAbstractGifImage;
   }
   
-  @NotNull
-  public String a()
+  public void onPlayOnce()
   {
-    return "media";
-  }
-  
-  public void a()
-  {
-    a("showPicture", (Function2)new MediaBridgeInvokeHandler.register.1(this));
-    a("saveImage", (Function2)new MediaBridgeInvokeHandler.register.2(this));
+    Object localObject = (List)tlf.a().get(this.a);
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
+        if (localWeakReference.get() != null) {
+          ((tlh)localWeakReference.get()).a();
+        }
+      }
+    }
+    this.a.setGIFPlayOnceListener(null);
+    tlf.b().remove(this.a);
+    tlf.a().remove(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tlg
  * JD-Core Version:    0.7.0.1
  */

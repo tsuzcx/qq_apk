@@ -1,17 +1,11 @@
-import java.io.File;
-
-public abstract interface arpc
-  extends bgat
+public class arpc
 {
-  public abstract void a(File paramFile);
-  
-  public abstract void c(boolean paramBoolean);
-  
-  public abstract void f(int paramInt);
+  public int a;
+  public int b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arpc
  * JD-Core Version:    0.7.0.1
  */

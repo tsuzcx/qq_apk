@@ -1,18 +1,14 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import org.json.JSONObject;
-
-public class pov
-  implements pqe
+class pov
+  extends qdb
 {
-  public pov(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
-  
-  public void a()
+  pov(pob parampob, String paramString)
   {
-    pay.a(this.a.a.getContext(), paa.o);
-    JSONObject localJSONObject = pay.a();
-    odq.a(null, "CliOper", "", "", "0X800845A", "0X800845A", 0, 0, ReadInJoySelfFragment.a(this.a, 11) + "", "", "", localJSONObject.toString(), false);
-    ReadInJoySelfFragment.a(this.a, 11);
+    super(paramString);
+  }
+  
+  public void a(qcu paramqcu)
+  {
+    paramqcu.g();
   }
 }
 

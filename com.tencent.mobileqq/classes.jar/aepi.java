@@ -1,56 +1,56 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import android.app.Activity;
+import android.content.Context;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.ViewConfiguration;
+import com.tencent.mobileqq.activity.QQBrowserSwipeLayout;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
 public class aepi
-  implements bjoe
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public aepi(TroopRequestActivity paramTroopRequestActivity, bjnw parambjnw) {}
+  private float jdField_a_of_type_Float;
   
-  public void OnClick(View paramView, int paramInt)
+  public aepi(QQBrowserSwipeLayout paramQQBrowserSwipeLayout, Context paramContext)
   {
-    int i = 20011;
-    switch (paramInt)
-    {
-    default: 
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
+    this.jdField_a_of_type_Float = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 2);
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     }
-    if (NetworkUtil.isNetSupport(BaseApplication.getContext())) {
-      paramInt = i;
+    float f1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+    float f2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / f1);
+    boolean bool = false;
+    if (QQBrowserSwipeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout) != null) {
+      bool = QQBrowserSwipeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout, paramMotionEvent1);
+    }
+    if ((!QQBrowserSwipeLayout.c(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout)) || (paramFloat1 < 200.0F)) {
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    }
+    if ((f1 < 0.0F) && (f2 < 0.5F) && (!bool))
+    {
+      if (!(QQBrowserSwipeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout) instanceof Activity)) {
+        break label175;
+      }
+      QQBrowserSwipeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout, true);
+      if (QQBrowserSwipeLayout.b(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout) != null)
+      {
+        QQBrowserSwipeLayout.c(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout).flingLToR();
+        QQBrowserSwipeLayout.b(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout);
+      }
     }
     for (;;)
     {
-      try
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+      label175:
+      if (QQBrowserSwipeLayout.d(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout) != null)
       {
-        switch (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get())
-        {
-        case 1: 
-        case 22: 
-          long l = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get();
-          paramView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.app.getCurrentAccountUin();
-          aabc.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.t, String.valueOf(l), paramView, paramInt, null);
-        }
+        QQBrowserSwipeLayout.e(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout).flingLToR();
+        QQBrowserSwipeLayout.c(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout);
       }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-        continue;
-      }
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.app, "P_CliOper", "Grp_sysmsg", "", "verify_msg", "report", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.u, "", "");
-      break;
-      paramInt = 20009;
-      continue;
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, 2131694064, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.getTitleBarHeight());
-      continue;
-      paramInt = i;
     }
   }
 }

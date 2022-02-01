@@ -1,13 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import android.view.View;
+import com.tencent.widget.ListView;
 
-public class pox
-  implements pqe
+class pox
+  extends qdb
 {
-  public pox(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
-  
-  public void a()
+  pox(pob parampob, String paramString, View paramView, ListView paramListView)
   {
-    ReadInJoySelfFragment.d(this.a);
+    super(paramString);
+  }
+  
+  public void a(qcu paramqcu)
+  {
+    paramqcu.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentWidgetListView);
   }
 }
 

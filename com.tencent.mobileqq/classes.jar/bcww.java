@@ -1,56 +1,127 @@
-import android.text.TextUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qmcf.QmcfManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoArtResourceMgr.1;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.StringTokenizer;
+import java.io.File;
 
-public abstract class bcww
+public class bcww
 {
-  public int a;
-  protected bcxc a;
-  public QQAppInterface a;
-  public DataLineMsgRecord a;
-  public String a;
-  
-  public bcww(QQAppInterface paramQQAppInterface, DataLineMsgRecord paramDataLineMsgRecord, bcxc parambcxc)
+  public static String a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord = paramDataLineMsgRecord;
-    this.jdField_a_of_type_JavaLangString = paramDataLineMsgRecord.frienduin;
-    this.jdField_a_of_type_Int = paramDataLineMsgRecord.istroop;
-    this.jdField_a_of_type_Bcxc = parambcxc;
+    String str = BaseApplicationImpl.getApplication().getSharedPreferences("QmcfConfig", 4).getString("art_res_sv_md5_version_soname_key", "artfilter000_0");
+    boolean bool = bcwn.a(str, 9);
+    VideoEnvironment.LogDownLoad("ShortVideoArtResourceMgr", "getCurrentPendantUnzipPath success=" + bool + ",md5Version=" + str, null);
+    if (bool) {
+      return str;
+    }
+    return "artfilter000_0";
   }
   
-  public abstract String a();
-  
-  public boolean a()
+  private static void a()
   {
-    Object localObject = aqjz.a().a();
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("BaseTimDataLineTipsProcessor", 1, "config filetype is null, or maybe has not recv");
-      }
+    ThreadManager.post(new ShortVideoArtResourceMgr.1(), 5, null, false);
+  }
+  
+  static boolean a()
+  {
+    return bdee.d();
+  }
+  
+  static boolean a(AppInterface paramAppInterface, ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
+  {
+    if (!bdee.c()) {
+      return false;
     }
-    String str;
-    do
+    int i = bdcu.a();
+    QmcfManager.getInstance().setCurrFrameType(i);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoArtResourceMgr", 2, String.format("supportFrameType[%s]", new Object[] { Integer.valueOf(i) }));
+    }
+    switch (i)
     {
-      while (!((StringTokenizer)localObject).hasMoreTokens())
+    }
+    for (;;)
+    {
+      return true;
+      QmcfManager.getInstance().setQmcfMobileNotSupport(bdcu.a);
+      return false;
+      paramSVConfigItem.armv7a_url = paramSVConfigItem.extend1;
+      paramSVConfigItem.armv7a_md5 = paramSVConfigItem.extend2;
+    }
+  }
+  
+  static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
+  {
+    boolean bool2 = false;
+    paramQQAppInterface = b();
+    paramQQAppInterface = paramQQAppInterface + paramString1 + File.separator;
+    File localFile = new File(paramQQAppInterface);
+    if (localFile.exists())
+    {
+      if ((a().equals(paramString1)) && (bcwn.a(paramQQAppInterface, "artfilter_config_file")))
       {
-        do
-        {
-          return false;
-          str = FileUtil.getExtension(a());
-          localObject = new StringTokenizer((String)localObject, "|");
-          if (((StringTokenizer)localObject).hasMoreTokens()) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.i("BaseTimDataLineTipsProcessor", 1, "config filetype is null");
+        VideoEnvironment.LogDownLoad("ShortVideoArtResourceMgr", "uncompressPendantZip:[checkConfigFileListIsOK]success=true", null);
         return false;
       }
-    } while (!str.equalsIgnoreCase(((StringTokenizer)localObject).nextToken()));
+      FileUtils.deleteDirectory(paramQQAppInterface);
+      VideoEnvironment.LogDownLoad("ShortVideoArtResourceMgr", "uncompressPendantZip:[deleteDirectory|already exists]unzipPath=" + paramQQAppInterface, null);
+    }
+    boolean bool1 = localFile.mkdirs();
+    VideoEnvironment.LogDownLoad("ShortVideoArtResourceMgr", "uncompressPendantZip:[exists]mkOK=" + bool1, null);
+    try
+    {
+      FileUtils.uncompressZip(paramString2, paramQQAppInterface, false);
+      bool1 = bcwn.a(paramQQAppInterface, "artfilter_config_file");
+      VideoEnvironment.LogDownLoad("ShortVideoArtResourceMgr", "uncompressPendantZip:checkConfigFileListIsOK success=" + bool1, null);
+      if (bool1)
+      {
+        boolean bool3 = a(paramString1);
+        VideoEnvironment.LogDownLoad("ShortVideoArtResourceMgr", "uncompressPendantZip:checkConfigFileListIsOK saveOK=" + bool3, null);
+        bool1 = bool2;
+        if (!bool3)
+        {
+          bool3 = a(paramString1);
+          VideoEnvironment.LogDownLoad("ShortVideoArtResourceMgr", "uncompressPendantZip:checkConfigFileListIsOK[two]saveOK=" + bool3, null);
+          bool1 = bool2;
+          if (!bool3)
+          {
+            VideoEnvironment.LogDownLoad("ShortVideoArtResourceMgr", "uncompressPendantZip:checkUnzipFileListSizeIsOK[two] needRestore=true,saveOK=false", null);
+            bool1 = a("artfilter000_0");
+            VideoEnvironment.LogDownLoad("ShortVideoArtResourceMgr", "uncompressPendantZip:checkUnzipFileListSizeIsOK clearMemoryOK=" + bool1 + ",signature=" + paramString1, null);
+            bool1 = true;
+          }
+        }
+        a();
+        return bool1;
+      }
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      paramQQAppInterface.printStackTrace();
+      return true;
+    }
     return true;
+  }
+  
+  private static boolean a(String paramString)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("QmcfConfig", 4).edit();
+    localEditor.putString("art_res_sv_md5_version_soname_key", paramString);
+    return localEditor.commit();
+  }
+  
+  public static String b()
+  {
+    String str = bdee.a();
+    return str + "art_res_cache" + File.separator;
   }
 }
 

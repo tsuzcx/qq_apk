@@ -1,39 +1,26 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.LoginVerifyCodeActivity2;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.SSOAccountObserver;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class adre
-  extends SSOAccountObserver
+  extends allu
 {
-  public adre(LoginVerifyCodeActivity2 paramLoginVerifyCodeActivity2) {}
+  public adre(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a.c();
-  }
-  
-  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SSOAccountObserver", 2, "onGetTicketNoPasswd wtTicket=" + paramArrayOfByte);
+    super.onUpdate(paramInt, paramBoolean, paramObject);
+    if (paramInt == 0)
+    {
+      QQToast.a(BaseApplication.getContext(), 2131698778, 0).a();
+      if (this.a.e != null) {
+        this.a.e.setVisibility(8);
+      }
+      if (ChatSettingActivity.b(this.a) != null) {
+        ChatSettingActivity.b(this.a).setVisibility(8);
+      }
     }
-    String str = null;
-    if (paramInt == 4096) {
-      str = new String(paramArrayOfByte);
-    }
-    paramArrayOfByte = new Intent();
-    paramArrayOfByte.putExtra("last_account", paramString);
-    paramArrayOfByte.putExtra("wtTicket", str);
-    paramArrayOfByte.putExtra("ssobundle", paramBundle);
-    this.a.setResult(-1, paramArrayOfByte);
-    this.a.finish();
-  }
-  
-  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
-  {
-    this.a.c();
   }
 }
 

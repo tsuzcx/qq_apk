@@ -6,6 +6,7 @@ import com.tencent.biz.qcircleshadow.lib.delegate.ILoadPluginDelegate;
 import com.tencent.biz.qcircleshadow.lib.delegate.ILogDelegate;
 import com.tencent.biz.qcircleshadow.lib.delegate.IPluginInfoDelegate;
 import com.tencent.biz.qcircleshadow.lib.delegate.IToastDelegate;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class QCircleInitInject
   private IDaTongReportDelegate mIDaTongReportDelegate;
   private IToastDelegate mIToastDelegate;
   private ILogDelegate mLogDelegate;
-  private List<ILoadPluginDelegate> mPluginCallbacks = new ArrayList();
+  private List<WeakReference<ILoadPluginDelegate>> mPluginCallbacks = new ArrayList();
   private IPluginInfoDelegate mPluginInfoDelegate;
   
   public static QCircleInitInject g()
@@ -47,7 +48,7 @@ public class QCircleInitInject
     return this.mLogDelegate;
   }
   
-  public List<ILoadPluginDelegate> getPluginCallbacks()
+  public List<WeakReference<ILoadPluginDelegate>> getPluginCallbacks()
   {
     return this.mPluginCallbacks;
   }
@@ -83,7 +84,7 @@ public class QCircleInitInject
   public QCircleInitInject injectPluginCallback(ILoadPluginDelegate paramILoadPluginDelegate)
   {
     if (paramILoadPluginDelegate != null) {
-      this.mPluginCallbacks.add(paramILoadPluginDelegate);
+      this.mPluginCallbacks.add(new WeakReference(paramILoadPluginDelegate));
     }
     return this;
   }
@@ -102,7 +103,7 @@ public class QCircleInitInject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.QCircleInitInject
  * JD-Core Version:    0.7.0.1
  */

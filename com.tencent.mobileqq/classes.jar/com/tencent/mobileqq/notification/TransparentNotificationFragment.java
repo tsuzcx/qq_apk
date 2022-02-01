@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.notification;
 
-import amru;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import anui;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -43,11 +43,11 @@ public class TransparentNotificationFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559307, null);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559357, null);
     Object localObject = getActivity().app;
     Intent localIntent = getActivity().getIntent();
-    amru localamru = amru.a((QQAppInterface)localObject);
-    boolean bool2 = localamru.a();
+    anui localanui = anui.a((QQAppInterface)localObject);
+    boolean bool2 = localanui.a();
     boolean bool1;
     int i;
     int j;
@@ -80,7 +80,7 @@ public class TransparentNotificationFragment
       bool1 = false;
       break;
       label284:
-      paramViewGroup = localamru.a(i, paramViewGroup, paramBundle, j);
+      paramViewGroup = localanui.a(i, paramViewGroup, paramBundle, j);
       getActivity().overridePendingTransition(2130771994, 2130771995);
       getActivity().startActivity(paramViewGroup);
       getActivity().finish();

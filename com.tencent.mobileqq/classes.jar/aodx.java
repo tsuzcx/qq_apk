@@ -1,10 +1,28 @@
-public abstract interface aodx
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.util.Queue;
+
+class aodx
+  extends Handler
 {
-  public abstract void a(int paramInt);
+  aodx(aodv paramaodv, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void b(int paramInt1, int paramInt2);
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    paramMessage = (aodz)paramMessage.obj;
+    this.a.a.remove(paramMessage);
+    paramMessage.jdField_a_of_type_AndroidContentContext.startActivity(paramMessage.jdField_a_of_type_AndroidContentIntent);
+  }
 }
 
 

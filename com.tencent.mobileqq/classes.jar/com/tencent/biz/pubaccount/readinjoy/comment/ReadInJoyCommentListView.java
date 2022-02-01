@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.comment;
 
-import amtj;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
@@ -10,18 +9,19 @@ import android.widget.ListAdapter;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bjqx;
+import anvx;
+import blcj;
 import com.tencent.mfsdk.collector.DropFrameMonitor;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.VideoReport;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.XListView;
-import ost;
-import otg;
-import oth;
-import oti;
-import otj;
+import pat;
+import pbi;
+import pbj;
+import pbk;
+import pbl;
 
 public class ReadInJoyCommentListView
   extends XListView
@@ -30,9 +30,9 @@ public class ReadInJoyCommentListView
   protected ProgressBar a;
   protected RelativeLayout a;
   protected TextView a;
-  private ost jdField_a_of_type_Ost;
-  private oti jdField_a_of_type_Oti = new otg(this);
-  public otj a;
+  private pat jdField_a_of_type_Pat;
+  private pbk jdField_a_of_type_Pbk = new pbi(this);
+  public pbl a;
   public boolean a;
   int jdField_b_of_type_Int;
   boolean jdField_b_of_type_Boolean;
@@ -70,17 +70,17 @@ public class ReadInJoyCommentListView
   
   private void h()
   {
-    setOnScrollListener(this.jdField_a_of_type_Oti);
+    setOnScrollListener(this.jdField_a_of_type_Pbk);
   }
   
   private void i()
   {
-    if ((a()) && (this.jdField_a_of_type_Otj != null))
+    if ((a()) && (this.jdField_a_of_type_Pbl != null))
     {
       QLog.d("ReadInJoyCommentListView", 2, "loadingMore| hasMore " + this.jdField_a_of_type_Boolean);
       j();
       this.jdField_a_of_type_Int = 1;
-      this.jdField_a_of_type_Otj.a(this);
+      this.jdField_a_of_type_Pbl.a(this);
     }
   }
   
@@ -95,23 +95,23 @@ public class ReadInJoyCommentListView
   
   private void k()
   {
-    if (this.jdField_a_of_type_Otj != null)
+    if (this.jdField_a_of_type_Pbl != null)
     {
       QLog.d("ReadInJoyCommentListView", 2, "preLoadingMore | hasMore " + this.jdField_a_of_type_Boolean);
       j();
       this.jdField_a_of_type_Int = 1;
-      this.jdField_a_of_type_Otj.a(this);
+      this.jdField_a_of_type_Pbl.a(this);
     }
   }
   
   private void l()
   {
     Object localObject = getAdapter();
-    if ((localObject instanceof bjqx))
+    if ((localObject instanceof blcj))
     {
-      localObject = (bjqx)localObject;
-      if ((((bjqx)localObject).getWrappedAdapter() instanceof BaseAdapter)) {
-        ((BaseAdapter)((bjqx)localObject).getWrappedAdapter()).notifyDataSetChanged();
+      localObject = (blcj)localObject;
+      if ((((blcj)localObject).getWrappedAdapter() instanceof BaseAdapter)) {
+        ((BaseAdapter)((blcj)localObject).getWrappedAdapter()).notifyDataSetChanged();
       }
     }
     while (!(localObject instanceof BaseAdapter)) {
@@ -122,9 +122,9 @@ public class ReadInJoyCommentListView
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559987, this, false));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373177));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373178));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131560031, this, false));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373388));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373389));
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#A6A6A6"));
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 14.0F);
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
@@ -134,8 +134,8 @@ public class ReadInJoyCommentListView
   
   public void a(AbsListView.OnScrollListener paramOnScrollListener)
   {
-    if (this.jdField_a_of_type_Oti != null) {
-      this.jdField_a_of_type_Oti.b(paramOnScrollListener);
+    if (this.jdField_a_of_type_Pbk != null) {
+      this.jdField_a_of_type_Pbk.b(paramOnScrollListener);
     }
   }
   
@@ -223,9 +223,9 @@ public class ReadInJoyCommentListView
         QLog.d("ReadInJoyCommentListView", 2, "loadMoreFail");
       }
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131711882));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131712229));
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new oth(this));
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new pbj(this));
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
       this.jdField_a_of_type_Int = 0;
     }
@@ -275,23 +275,23 @@ public class ReadInJoyCommentListView
   
   public void setOnScrollListener(AbsListView.OnScrollListener paramOnScrollListener)
   {
-    if ((paramOnScrollListener instanceof oti)) {
-      super.setOnScrollListener(this.jdField_a_of_type_Oti);
+    if ((paramOnScrollListener instanceof pbk)) {
+      super.setOnScrollListener(this.jdField_a_of_type_Pbk);
     }
-    while (this.jdField_a_of_type_Oti == null) {
+    while (this.jdField_a_of_type_Pbk == null) {
       return;
     }
-    this.jdField_a_of_type_Oti.a(paramOnScrollListener);
+    this.jdField_a_of_type_Pbk.a(paramOnScrollListener);
   }
   
-  public void setOnScrollOffsetYListener(ost paramost)
+  public void setOnScrollOffsetYListener(pat parampat)
   {
-    this.jdField_a_of_type_Ost = paramost;
+    this.jdField_a_of_type_Pat = parampat;
   }
   
-  public void setRefreshCallback(otj paramotj)
+  public void setRefreshCallback(pbl parampbl)
   {
-    this.jdField_a_of_type_Otj = paramotj;
+    this.jdField_a_of_type_Pbl = parampbl;
   }
 }
 

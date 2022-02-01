@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.qassistant.core;
 
-import azff;
+import bakw;
 
 public class ViewCommandModelCheck$1
   implements Runnable
 {
-  public ViewCommandModelCheck$1(azff paramazff) {}
+  public ViewCommandModelCheck$1(bakw parambakw) {}
   
   public void run()
   {
-    azff.a(azff.a(this.this$0));
+    bakw.a(bakw.a(this.this$0));
   }
 }
 

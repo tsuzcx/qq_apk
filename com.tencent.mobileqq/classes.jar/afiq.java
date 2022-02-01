@@ -1,33 +1,16 @@
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQToast;
 
-class afiq
-  extends amop
+public class afiq
+  implements DialogInterface.OnClickListener
 {
-  afiq(afim paramafim) {}
+  public afiq(TroopTransferActivity paramTroopTransferActivity, QQCustomDialog paramQQCustomDialog) {}
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, Boolean paramBoolean1)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      if ((this.a.mActivity != null) && (this.a.mActivity.isResume())) {
-        afim.a(this.a);
-      }
-      do
-      {
-        do
-        {
-          return;
-        } while (paramBoolean1.booleanValue());
-        paramString1 = BaseActivity.sTopActivity;
-      } while (paramString1 == null);
-      bfur.a(paramString1, 230, paramString1.getString(2131689917), null, null, paramString1.getString(2131718436), new afir(this, paramString1), null).show();
-      return;
-    }
-    QQToast.a(this.a.mContext, paramInt, 0).b(this.a.getTitleBarHeight());
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
   }
 }
 

@@ -1,30 +1,15 @@
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.troop.widget.UsingTimeReportManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.6;
 
 public class awki
-  extends bfev
+  implements DialogInterface.OnClickListener
 {
-  private NearbyAppInterface a;
+  public awki(LocationDialogUtil.6 param6) {}
   
-  public awki(NearbyAppInterface paramNearbyAppInterface, String paramString1, String paramString2, String paramString3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramString1, paramString2, paramString3);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = paramNearbyAppInterface;
-  }
-  
-  public UsingTimeReportManager a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface == null) {
-      return null;
-    }
-    return (UsingTimeReportManager)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(221);
-  }
-  
-  public void a(long paramLong)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.reportClickEvent("dc00899", this.jdField_a_of_type_JavaLangString, "", this.b, this.c, 0, 0, String.valueOf(paramLong), "", "", "");
-    }
+    awju.a(this.a.b, "0X800A76A");
   }
 }
 

@@ -56,7 +56,7 @@ class TroopHWJsPlugin$1
     //   74: aload 4
     //   76: aload 6
     //   78: iconst_2
-    //   79: invokestatic 49	bfuc:encodeToString	([BI)Ljava/lang/String;
+    //   79: invokestatic 49	bhcu:encodeToString	([BI)Ljava/lang/String;
     //   82: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   85: pop
     //   86: goto -54 -> 32
@@ -97,7 +97,7 @@ class TroopHWJsPlugin$1
     //   150: aload 4
     //   152: aload 5
     //   154: iconst_2
-    //   155: invokestatic 49	bfuc:encodeToString	([BI)Ljava/lang/String;
+    //   155: invokestatic 49	bhcu:encodeToString	([BI)Ljava/lang/String;
     //   158: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   161: pop
     //   162: goto -130 -> 32

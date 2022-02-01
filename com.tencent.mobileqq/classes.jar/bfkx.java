@@ -1,23 +1,106 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bfkx
-  implements DialogInterface.OnClickListener
+public class bfkx
 {
-  bfkx(bfkw parambfkw) {}
+  public int a;
+  public ArrayList<String> a;
+  public boolean a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bfkx()
   {
-    paramDialogInterface = String.format("https://qun.qq.com/qunpay/gifts/buy.html?_bid=2204&_wvSb=1&from=7&troopUin=%s", new Object[] { this.a.a.b });
-    Intent localIntent = new Intent(this.a.a, QQBrowserActivity.class);
-    localIntent.putExtra("selfSet_leftViewText", amtj.a(2131714710));
-    localIntent.putExtra("hide_more_button", true);
-    localIntent.putExtra("hide_operation_bar", true);
-    localIntent.putExtra("url", this.a.a.a(paramDialogInterface));
-    this.a.a.startActivity(localIntent);
+    this.jdField_a_of_type_Int = 20;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public static bfkx a(aqxa[] paramArrayOfaqxa)
+  {
+    bfkx localbfkx = new bfkx();
+    int i = 0;
+    if (i < paramArrayOfaqxa.length)
+    {
+      Object localObject = paramArrayOfaqxa[i].a;
+      if (TextUtils.isEmpty((CharSequence)localObject)) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        try
+        {
+          localObject = new JSONObject((String)localObject);
+          if (QLog.isColorLevel()) {
+            QLog.i("TroopEssenceMsgEntryConfig", 2, "jsonObj:" + ((JSONObject)localObject).toString());
+          }
+          localbfkx.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("limitMemberNum", 0);
+          if (((JSONObject)localObject).optInt("globalOpenWithNoCheckGrayUin", 0) > 0) {}
+          for (boolean bool = true;; bool = false)
+          {
+            localbfkx.jdField_a_of_type_Boolean = bool;
+            localObject = ((JSONObject)localObject).optJSONArray("grayQunUin");
+            if ((localObject == null) || (((JSONArray)localObject).length() <= 0)) {
+              break;
+            }
+            int j = 0;
+            while (j < ((JSONArray)localObject).length())
+            {
+              localbfkx.jdField_a_of_type_JavaUtilArrayList.add(String.valueOf(((JSONArray)localObject).get(j)));
+              j += 1;
+            }
+          }
+        }
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+        }
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopEssenceMsgEntryConfig", 2, "config:" + localbfkx.toString());
+    }
+    return localbfkx;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return true;
+    }
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    int i = paramString.length();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    String str;
+    do
+    {
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      str = (String)localIterator.next();
+    } while ((i < str.length()) || (!paramString.substring(i - str.length()).equals(str)));
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mLimitMemberNum:").append(this.jdField_a_of_type_Int).append("\r\n");
+    localStringBuilder.append("mGlobalOpenWithNoCheckGrayUin:").append(this.jdField_a_of_type_Boolean).append("\r\n");
+    localStringBuilder.append("mGrayTroopTailUins:").append(this.jdField_a_of_type_JavaUtilArrayList.toArray()).append("\r\n");
+    return localStringBuilder.toString();
   }
 }
 

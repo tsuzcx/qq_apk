@@ -1,18 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
-
-final class avdy
-  implements DialogInterface.OnClickListener
+class avdy
 {
-  avdy(BaseActivity paramBaseActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    bhlw.c();
-    FloatingScreenPermission.requestPermission(this.a);
-  }
+  public static avdw a = new avdw(null);
 }
 
 

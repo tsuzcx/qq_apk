@@ -1,33 +1,45 @@
-import android.content.SharedPreferences;
-import com.tencent.gamecenter.activities.GameCenterActivity;
-import java.util.HashMap;
-import java.util.List;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class bgxf
+final class bgxf
+  implements DownloadParams.DecodeHandler
 {
-  public static HashMap<String, Integer> a;
-  public static List<String> a;
-  public static int d = -1;
-  public int a;
-  public long a;
-  public SharedPreferences a;
-  public boolean a;
-  public int b;
-  public int c = 6;
-  
-  static
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
-  }
-  
-  public bgxf()
-  {
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public void a(String paramString)
-  {
-    GameCenterActivity.a(paramString, this.jdField_a_of_type_Int, true, this.jdField_a_of_type_Boolean);
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
+    }
+    do
+    {
+      do
+      {
+        Object localObject;
+        do
+        {
+          do
+          {
+            return paramDownloadParams;
+            localObject = paramDownloadParams.tag;
+            paramDownloadParams = paramBitmap;
+          } while (!(localObject instanceof int[]));
+          paramDownloadParams = paramBitmap;
+        } while (((int[])localObject).length != 4);
+        paramDownloadParams = (int[])localObject;
+        if (paramDownloadParams[0] == 0) {
+          paramDownloadParams[0] = paramBitmap.getWidth();
+        }
+        if (paramDownloadParams[1] == 0) {
+          paramDownloadParams[1] = paramBitmap.getHeight();
+        }
+        paramBitmap = bheg.a(paramBitmap, paramDownloadParams[0], paramDownloadParams[1], paramDownloadParams[2], paramDownloadParams[3]);
+        paramDownloadParams = paramBitmap;
+      } while (paramBitmap != null);
+      paramDownloadParams = paramBitmap;
+    } while (!QLog.isDevelopLevel());
+    QLog.w(bgxc.a(), 2, "ROUND_CORNER_DECODER bitmap == null");
+    return paramBitmap;
   }
 }
 

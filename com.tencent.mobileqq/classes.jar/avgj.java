@@ -1,24 +1,55 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.mobileqq.location.ui.LocationShareFragment;
-import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.mobileqq.gamecenter.web.view.QQGameIndicator2;
+import com.tencent.mobileqq.gamecenter.web.view.UnreadTipLayout;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class avgj
   implements View.OnClickListener
 {
-  public avgj(LocationShareFragment paramLocationShareFragment, int paramInt, String paramString) {}
+  public avgj(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
   public void onClick(View paramView)
   {
-    if (LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment).a()) {}
+    int i;
+    int j;
+    if (QQGameFeedWebFragment.a(this.a) != null)
+    {
+      if (QQGameFeedWebFragment.a(this.a) == null) {}
+      for (i = 0; this.a.a >= 3; i = QQGameFeedWebFragment.a(this.a).size())
+      {
+        QQGameFeedWebFragment.a(this.a).setCurrentItem(QQGameFeedWebFragment.a(this.a).getCount());
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+      }
+      j = QQGameFeedWebFragment.a(this.a).getCurrentItem();
+      if (j + 1 >= i) {
+        break label211;
+      }
+      QQGameFeedWebFragment.a(this.a).setCurrentItem(j + 1);
+    }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment.getActivity(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment).a());
-      bcef.b(null, "CliOper", "", "", "0X800A95C", "0X800A95C", 0, 0, "", "0", "0", "");
+      if (this.a.a == 0)
+      {
+        QQGameFeedWebFragment.a(this.a).setVisibility(0);
+        QQGameFeedWebFragment.a(this.a).setVisibility(4);
+        QQGameFeedWebFragment.a(this.a).b();
+      }
+      HashMap localHashMap = new HashMap();
+      localHashMap.put(Integer.valueOf(4), "20");
+      localHashMap.put(Integer.valueOf(24), "1");
+      abuf.a(amwn.a(), "769", "207553", "", "76925", "1", "160", localHashMap);
+      break;
+      label211:
+      if (j == i - 1) {
+        QQGameFeedWebFragment.a(this.a).setCurrentItem(i);
+      }
     }
   }
 }

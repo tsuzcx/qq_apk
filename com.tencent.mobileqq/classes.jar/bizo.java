@@ -1,158 +1,91 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.annotation.JsEvent;
-import com.tencent.qqmini.sdk.annotation.JsPlugin;
-import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
-import com.tencent.qqmini.sdk.launcher.shell.IMiniAppFileManager;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-@JsPlugin(secondary=true)
 public class bizo
-  extends BaseJsPlugin
-  implements EIPCResultCallback
 {
-  private RequestEvent a;
+  public static String a = "ctnet";
+  public static String b = "ctwap";
+  public static String c = "cmnet";
+  public static String d = "cmwap";
+  public static String e = "uninet";
+  public static String f = "uniwap";
+  public static String g = "3gnet";
+  public static String h = "3gwap";
   
-  @JsEvent({"checkin_uploadRes"})
-  public void checkinUploadRes(RequestEvent paramRequestEvent)
+  public static int a(Context paramContext)
   {
+    int i = 0;
+    switch (AppNetConnInfo.getConnInfo())
+    {
+    }
     for (;;)
     {
-      int i;
-      try
-      {
-        this.a = paramRequestEvent;
-        JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams).optJSONObject("data");
-        QLog.d("GroupCheckInUploadPlugin", 1, "data: " + localJSONObject);
-        str1 = ((IMiniAppFileManager)this.mMiniAppContext.getManager(IMiniAppFileManager.class)).getAbsolutePath(localJSONObject.optString("filePath"));
-        if (localJSONObject.optInt("isVideo") != 1) {
-          break label274;
-        }
-        i = 1;
-        localBundle = new Bundle();
-        if (i == 0) {
-          continue;
-        }
-        String str2 = ((IMiniAppFileManager)this.mMiniAppContext.getManager(IMiniAppFileManager.class)).getAbsolutePath(localJSONObject.optString("cover"));
-        if (!FileUtils.fileExists(str1)) {
-          break label273;
-        }
-        if (!FileUtils.fileExists(str2)) {
-          return;
-        }
-        localBundle.putString("BUNDLE_NAME_FILEPATH", str1);
-        localBundle.putString("BUNDLE_NAME_COVER", str2);
-        localBundle.putLong("BUNDLE_NAME_VIDEOTIME", localJSONObject.optLong("videoDuration"));
-        if (i == 0) {
-          continue;
-        }
-        QIPCClientHelper.getInstance().callServer("Module_CheckInServer", "ACTION_UPLOAD_VIDEO", localBundle, this);
-      }
-      catch (JSONException localJSONException)
-      {
-        String str1;
-        Bundle localBundle;
-        QLog.e("GroupCheckInUploadPlugin", 1, "checkinUploadRes(). Failed to parse jsonParams=" + paramRequestEvent.jsonParams);
-        continue;
-        QIPCClientHelper.getInstance().callServer("Module_CheckInServer", "ACTION_UPLOAD_PIC", localBundle, this);
-        continue;
-      }
-      QLog.d("GroupCheckInUploadPlugin", 1, "checkin_uploadRes succeed");
-      paramRequestEvent.ok();
-      return;
-      if (FileUtils.fileExists(str1))
-      {
-        localBundle.putString("BUNDLE_NAME_FILEPATH", str1);
-      }
-      else
-      {
-        label273:
-        return;
-        label274:
-        i = 0;
-      }
-    }
-  }
-  
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    int i = paramEIPCResult.code;
-    Bundle localBundle = paramEIPCResult.data;
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupCheckInUploadPlugin", 2, "result = " + i + ", data = " + localBundle.toString());
-    }
-    paramEIPCResult = new JSONObject();
-    for (;;)
-    {
-      try
-      {
-        int j = localBundle.getInt("isVideo");
-        int k = localBundle.getInt("result");
-        if (k != 1) {
-          break label275;
-        }
-        i = 1;
-        paramEIPCResult.put("isVideo", j);
-        paramEIPCResult.put("result", k);
-        if (j != 1) {
-          continue;
-        }
-        if (i == 0) {
-          continue;
-        }
-        paramEIPCResult.put("url", localBundle.getString("url"));
-        paramEIPCResult.put("vid", localBundle.getString("vid"));
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        if (this.a == null) {
-          break label274;
-        }
-        this.a.fail(paramEIPCResult, "");
-        return;
-        if (i == 0) {
-          continue;
-        }
-        paramEIPCResult.put("url", localException.getString("url"));
-        continue;
-        paramEIPCResult.put("error", localException.getString("error"));
-        continue;
-      }
       if (QLog.isColorLevel()) {
-        QLog.d("GroupCheckInUploadPlugin", 2, "onCallback json = " + paramEIPCResult.toString());
+        QLog.i("NetUtil", 2, "getNetType " + i);
       }
-      if (this.a != null)
+      return i;
+      switch (AppNetConnInfo.getMobileInfo())
       {
-        this.a.ok(paramEIPCResult);
-        return;
-        paramEIPCResult.put("error", localBundle.getString("error"));
-      }
-      else
-      {
-        label274:
-        return;
-        label275:
-        i = 0;
+      default: 
+        break;
+      case 1: 
+        i = 2;
+        break;
+      case 2: 
+        i = 3;
+        break;
+      case 3: 
+        i = 4;
+        continue;
+        i = 1;
       }
     }
   }
   
-  public void onDestroy()
+  public static String a(Context paramContext)
   {
-    QIPCClientHelper.getInstance().callServer("Module_CheckInServer", "ACTION_CANCEL", null, null);
+    String str1 = "nomatch";
+    String str2 = AppNetConnInfo.getCurrentAPN();
+    paramContext = str1;
+    if (!TextUtils.isEmpty(str2))
+    {
+      if (!str2.startsWith(a)) {
+        break label32;
+      }
+      paramContext = a;
+    }
+    label32:
+    do
+    {
+      return paramContext;
+      if (str2.startsWith(b)) {
+        return b;
+      }
+      if (str2.startsWith(c)) {
+        return c;
+      }
+      if (str2.startsWith(d)) {
+        return d;
+      }
+      if (str2.startsWith(e)) {
+        return e;
+      }
+      if (str2.startsWith(f)) {
+        return f;
+      }
+      if (str2.startsWith(g)) {
+        return g;
+      }
+      paramContext = str1;
+    } while (!str2.startsWith(h));
+    return h;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bizo
  * JD-Core Version:    0.7.0.1
  */

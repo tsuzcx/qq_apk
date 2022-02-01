@@ -1,19 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
 
 public class aesv
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public aesv(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  public aesv(QQTranslucentBrowserActivity paramQQTranslucentBrowserActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.l();
-    this.a.a(aymn.g, this.a.a, false);
-    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, HttpUtil.getNetWorkTypeByStr(), "2", "1");
+    this.a.finish();
   }
 }
 

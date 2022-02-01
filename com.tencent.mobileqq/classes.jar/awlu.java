@@ -1,27 +1,93 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.component.network.utils.NetworkUtils;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.MapWidget;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
-public class awlu
-  implements View.OnClickListener
+class awlu
+  implements awiy
 {
-  public awlu(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  awlu(awlt paramawlt) {}
   
-  public void onClick(View paramView)
+  public void a(awit paramawit, int paramInt)
   {
-    if (!NetworkUtils.isNetworkAvailable(this.a)) {
-      QQToast.a(this.a, 1, 2131694064, 1).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, "[LocationShareController] onKickOff: invoked. roomKey: " + paramawit + " mRoomKey: " + awlt.a(this.a));
     }
-    for (;;)
+    QQToast.a(awlt.a(this.a), "已在其他设备进行共享", 0).a();
+    awlt.a(this.a).finish();
+  }
+  
+  public void a(awit paramawit, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, new Object[] { "onOperateRoomResponse: invoked. ", " roomKey: ", paramawit, " errorCode: ", Integer.valueOf(paramInt1), " operateType: ", Integer.valueOf(paramInt2) });
+    }
+    if (!paramawit.equals(awlt.a(this.a))) {}
+    do
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      do
+      {
+        do
+        {
+          return;
+          if (paramInt1 != 10100) {
+            break;
+          }
+          if ((paramInt2 == 2) && (awlt.a(this.a).a() == 1))
+          {
+            if (awlt.a(this.a) != null)
+            {
+              awlt.a(this.a).a.a(1, awlt.a(this.a).a(), awlt.a(this.a).a());
+              QLog.d("LocationShareController", 1, new Object[] { "onOperateRoomResponse: invoked. 兜底处理房间关闭状态，在进房失败后创建房间。 ", " errorCode: ", Integer.valueOf(paramInt1) });
+              return;
+            }
+            QLog.e("LocationShareController", 1, "onOperateRoomResponse: failed. not valid room key. ", new RuntimeException());
+            return;
+          }
+        } while ((awlt.a(this.a) == null) || (awlt.a(this.a).isFinishing()));
+        awju.a(awlt.a(this.a));
+        return;
+      } while (paramInt1 != 10101);
+      if ((awlt.a(this.a) != null) && (!awlt.a(this.a).isFinishing()))
+      {
+        awju.b(awlt.a(this.a));
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("LocationShareController", 2, new Object[] { "join limit, onOperateRoomResponse: invoked. ", " roomKey: ", paramawit });
+  }
+  
+  public void a(awit paramawit, LocationRoom.Venue paramVenue, List<awir> paramList)
+  {
+    if ((!paramawit.equals(awlt.a(this.a))) || (awlt.a(this.a).isFinishing())) {
       return;
-      this.a.d();
-      this.a.a("invite_page", "clk_exit");
     }
+    paramVenue = paramList.iterator();
+    while (paramVenue.hasNext())
+    {
+      awir localawir = (awir)paramVenue.next();
+      Bitmap localBitmap = this.a.a(localawir.a());
+      if (localBitmap != null)
+      {
+        localBitmap = bheg.c(localBitmap, localBitmap.getWidth(), localBitmap.getHeight());
+        awlt.a(this.a).a(localawir.a(), localBitmap);
+      }
+    }
+    awlt.a(this.a).a(paramList);
+    awlt.a(this.a).a(paramawit);
+  }
+  
+  public void b(awit paramawit, int paramInt)
+  {
+    if (!paramawit.equals(awlt.a(this.a))) {}
+    while ((paramInt == 2) || (paramInt == 1)) {
+      return;
+    }
+    awju.a(awlt.a(this.a));
   }
 }
 

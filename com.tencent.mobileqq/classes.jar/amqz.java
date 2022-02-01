@@ -1,117 +1,91 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
 import java.util.List;
-import tencent.im.oidb.cmd0x58a.cmd0x58a.ConfBaseInfo;
-import tencent.im.oidb.cmd0x58a.cmd0x58a.GetConfListRsp;
-import tencent.im.oidb.cmd0x58a.cmd0x58a.RspBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-class amqz
+public class amqz
+  extends amqu<Canvas>
 {
-  private List<cmd0x58a.ConfBaseInfo> jdField_a_of_type_JavaUtilList;
-  private oidb_sso.OIDBSSOPkg jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg;
-  private boolean jdField_a_of_type_Boolean;
-  private List<Long> b;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(2);
+  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private Rect b = new Rect();
   
-  public amqz(amqx paramamqx, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
+  public boolean a(Canvas paramCanvas, float paramFloat)
   {
-    this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg = paramOIDBSSOPkg;
-  }
-  
-  public amqz a()
-  {
-    if ((this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg == null) || (!this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg.uint32_result.has()) || (this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg.uint32_result.get() != 0) || (!this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg.bytes_bodybuffer.has()) || (this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg.bytes_bodybuffer.get() == null))
-    {
-      if (QLog.isColorLevel()) {
-        if (this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg == null) {
-          break label127;
-        }
-      }
-      label127:
-      for (int i = this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg.uint32_result.get();; i = -1)
-      {
-        QLog.e("Q.contacttab.dscs", 2, "sso check fail " + i);
-        this.jdField_a_of_type_Amqx.notifyUI(1000, false, null);
-        this.jdField_a_of_type_Boolean = true;
-        return this;
-      }
+    boolean bool = false;
+    if (paramCanvas == null) {
+      return bool;
     }
-    for (Object localObject = new cmd0x58a.RspBody();; localList1 = null) {
+    label25:
+    amqx localamqx;
+    Bitmap localBitmap;
+    for (;;)
+    {
       try
       {
-        ((cmd0x58a.RspBody)localObject).mergeFrom(this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg.bytes_bodybuffer.get().toByteArray());
-        if (((cmd0x58a.RspBody)localObject).msg_get_conf_list.has())
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        if (!localIterator.hasNext()) {
+          break label360;
+        }
+        localamqx = (amqx)localIterator.next();
+        localamqx.b();
+        if (!localamqx.a())
         {
-          localObject = (cmd0x58a.GetConfListRsp)((cmd0x58a.RspBody)localObject).msg_get_conf_list.get();
-          if (localObject != null) {
-            break;
+          localIterator.remove();
+          if (!QLog.isColorLevel()) {
+            continue;
           }
-          if (QLog.isColorLevel()) {
-            QLog.e("Q.contacttab.dscs", 2, "getConfInfoRsp is null");
-          }
-          this.jdField_a_of_type_Amqx.notifyUI(1000, true, null);
-          this.jdField_a_of_type_Boolean = true;
-          return this;
+          QLog.d("CanvasDisplay", 2, "remove invalidate barrage:" + localamqx);
+          continue;
         }
+        localBitmap = localamqx.a();
       }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+      finally {}
+      if ((localBitmap != null) && (!localBitmap.isRecycled()))
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.contacttab.dscs", 2, "rspBody merge fail " + localInvalidProtocolBufferMicroException.toString());
+        paramCanvas.save();
+        if (paramFloat == 1.0F)
+        {
+          if (this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha() != localamqx.d) {
+            this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(localamqx.d);
+          }
+          label165:
+          if (localamqx.h <= 0.0F) {
+            break label388;
+          }
         }
-        this.jdField_a_of_type_Amqx.notifyUI(1000, false, null);
-        this.jdField_a_of_type_Boolean = true;
-        return this;
       }
     }
-    List localList2;
-    if (localList1.rpt_msg_conf_base_info.has())
+    label388:
+    for (float f1 = localamqx.h;; f1 = 1.0F)
     {
-      localList2 = localList1.rpt_msg_conf_base_info.get();
-      this.jdField_a_of_type_JavaUtilList = localList2;
-      if (!localList1.rpt_uint64_other_conf_list.has()) {
-        break label366;
+      float f2 = localamqx.jdField_e_of_type_Float;
+      float f3 = localamqx.jdField_f_of_type_Float;
+      float f4 = localamqx.jdField_e_of_type_Float;
+      float f5 = localamqx.jdField_e_of_type_Int;
+      float f6 = localamqx.jdField_f_of_type_Float;
+      paramCanvas.clipRect(f2, f3, f4 + f5 * f1, f1 * localamqx.jdField_f_of_type_Int + f6);
+      paramCanvas.translate(localamqx.jdField_e_of_type_Float, localamqx.jdField_f_of_type_Float);
+      if (localamqx.h != 0.0F) {
+        paramCanvas.scale(localamqx.h, localamqx.h);
+      }
+      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
+      this.b.set(0, 0, localamqx.jdField_e_of_type_Int, localamqx.jdField_f_of_type_Int);
+      paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.b, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.restore();
+      break label25;
+      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(255.0F * paramFloat));
+      break label165;
+      label360:
+      bool = this.jdField_a_of_type_JavaUtilList.isEmpty();
+      if (!bool) {}
+      for (bool = true;; bool = false) {
+        break;
       }
     }
-    label366:
-    for (List localList1 = localList1.rpt_uint64_other_conf_list.get();; localList1 = null)
-    {
-      this.b = localList1;
-      if (this.jdField_a_of_type_JavaUtilList != null) {
-        break label371;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e("Q.contacttab.dscs", 2, "baseInfo is null");
-      }
-      this.jdField_a_of_type_Amqx.notifyUI(1000, false, null);
-      this.jdField_a_of_type_Boolean = true;
-      return this;
-      localList2 = null;
-      break;
-    }
-    label371:
-    this.jdField_a_of_type_Boolean = false;
-    return this;
-  }
-  
-  public List<cmd0x58a.ConfBaseInfo> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public List<Long> b()
-  {
-    return this.b;
   }
 }
 

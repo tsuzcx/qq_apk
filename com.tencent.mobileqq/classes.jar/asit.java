@@ -1,10 +1,12 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-abstract interface asit
+public abstract interface asit
 {
-  public abstract void a(String paramString, Bundle paramBundle);
+  public abstract void onPackageAdded(EmoticonPackage paramEmoticonPackage);
   
-  public abstract void a(String paramString, asis paramasis);
+  public abstract void onPackageDeleted(EmoticonPackage paramEmoticonPackage);
+  
+  public abstract void onPackageMoved(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2);
 }
 
 

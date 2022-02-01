@@ -1,30 +1,33 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import mqq.os.MqqHandler;
 
-class afbk
-  implements URLDrawable.URLDrawableListener
+public class afbk
+  extends aofu
 {
-  afbk(afbj paramafbj) {}
+  public afbk(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  protected void onBeKickOutTroop(String paramString)
   {
-    afbj.d(this.a);
-    QQToast.a(this.a.a, 0, 2131693180, 1).a();
+    this.a.c();
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  protected void onTroopBlockStatusChanged(String paramString)
   {
-    afbj.d(this.a);
-    QQToast.a(this.a.a, 0, 2131693180, 1).a();
+    this.a.c();
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  protected void onTroopManagerSuccess(int paramInt1, int paramInt2, String paramString)
   {
-    afbj.d(this.a);
-    afbj.a(this.a, afbj.a(this.a));
+    if (paramInt1 == 6) {
+      if (paramInt2 == 0) {
+        this.a.a.sendEmptyMessage(1);
+      }
+    }
+    while ((paramInt1 != 2) || (paramInt2 != 0)) {
+      return;
+    }
+    awtz.a().b(paramString, this.a.app);
+    this.a.c();
   }
 }
 

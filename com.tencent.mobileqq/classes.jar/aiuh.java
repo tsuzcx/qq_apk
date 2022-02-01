@@ -1,61 +1,123 @@
-import android.app.Activity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.widget.QzoneSearchResultView;
+import java.util.Map;
 
-class aiuh
-  implements acjr
+public class aiuh
+  implements View.OnClickListener
 {
-  aiuh(aitt paramaitt, String paramString) {}
+  aiuh(SearchContactsFragment paramSearchContactsFragment) {}
   
-  public void onComplete()
+  public void onClick(View paramView)
   {
-    QLog.d("SDKEmotionSettingManager", 1, "check api, onComplete");
-  }
-  
-  public void onFailure(int paramInt, String paramString)
-  {
-    QLog.d("SDKEmotionSettingManager", 1, new Object[] { "check api, onFailure, code=", Integer.valueOf(paramInt), ", msg=", paramString });
-    if ((aitt.a(this.jdField_a_of_type_Aitt).isFinishing()) || (this.jdField_a_of_type_Aitt.b))
+    Object localObject1 = paramView.getTag();
+    aiui localaiui;
+    int j;
+    int i;
+    if ((localObject1 != null) && ((localObject1 instanceof aiui)))
     {
-      QLog.d("SDKEmotionSettingManager", 1, "check api, acitivty finish or timeout");
+      localaiui = (aiui)localObject1;
+      if ((localaiui.b != 80000003) || (SearchContactsFragment.c(this.a) == null)) {
+        break label304;
+      }
+      this.a.a(SearchContactsFragment.c(this.a), SearchContactsFragment.a(this.a), SearchContactsFragment.b(this.a));
+      Integer localInteger = (Integer)SearchContactsFragment.a(this.a).get(Integer.valueOf(localaiui.b));
+      Object localObject2 = null;
+      localObject1 = localObject2;
+      if (localaiui.a != null)
+      {
+        localObject1 = localObject2;
+        if (localaiui.a.uin != null) {
+          localObject1 = String.valueOf(localaiui.a.uin.get());
+        }
+      }
+      j = localaiui.b;
+      if (localInteger == null) {
+        break label404;
+      }
+      i = localInteger.intValue();
+      label162:
+      bcnc.a(j, i, 0, true, (String)localObject1, this.a.jdField_a_of_type_JavaLangString, SearchContactsFragment.d());
+      if (localaiui.b != 80000002) {
+        break label455;
+      }
+      localObject2 = this.a.getActivity();
+      if ((localObject2 != null) && ((localObject2 instanceof SearchBaseActivity)))
+      {
+        i = ((SearchBaseActivity)localObject2).a();
+        if (SearchContactsFragment.d() != 12) {
+          break label409;
+        }
+        bdla.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006571", "0X8006571", 0, 1, 0, "0", aits.a(i), (String)localObject1, this.a.jdField_a_of_type_JavaLangString);
+        label268:
+        localObject2 = usa.a();
+        if (localInteger == null) {
+          break label450;
+        }
+        i = localInteger.intValue();
+        label284:
+        ((usa)localObject2).a(2, (String)localObject1, i, SearchContactsFragment.d());
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      label304:
+      if (localaiui.b == 80000004)
+      {
+        QzoneSearchResultView.jumpMoreFeeds(this.a.getActivity(), localaiui.jdField_c_of_type_JavaLangString);
+        break;
+      }
+      i = 0;
+      if (this.a.d == 1)
+      {
+        i = 3;
+        label347:
+        localObject1 = this.a;
+        j = localaiui.b;
+        if (localaiui.jdField_c_of_type_Int != 2) {
+          break label398;
+        }
+      }
+      label398:
+      for (boolean bool = true;; bool = false)
+      {
+        ((SearchContactsFragment)localObject1).a(j, bool, i);
+        break;
+        if (this.a.d != 0) {
+          break label347;
+        }
+        i = 2;
+        break label347;
+      }
+      label404:
+      i = 0;
+      break label162;
+      label409:
+      olh.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D20", "0X8005D20", 0, 0, "0", aits.a(i), this.a.jdField_a_of_type_JavaLangString, "", false);
+      break label268;
+      label450:
+      i = 0;
+      break label284;
+      label455:
+      if (localaiui.b == 80000003)
+      {
+        if (SearchContactsFragment.d() == 12) {
+          bdla.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800658A", "0X800658A", 0, 0, "0", "", this.a.jdField_a_of_type_JavaLangString, "0");
+        } else {
+          olh.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D95", "0X8005D95", 0, 0, "0", "", this.a.jdField_a_of_type_JavaLangString, "0", false);
+        }
+      }
+      else if (localaiui.b == 80000001) {
+        bcnc.a("add_page", "all_result", "clk_more_grp", 0, SearchContactsFragment.a(this.a), new String[] { "", "", this.a.jdField_a_of_type_JavaLangString, "" });
+      }
     }
-    this.jdField_a_of_type_Aitt.c();
-    if (aitt.a(this.jdField_a_of_type_Aitt) != null) {
-      aitt.a(this.jdField_a_of_type_Aitt).removeCallbacks(aitt.a(this.jdField_a_of_type_Aitt));
-    }
-    this.jdField_a_of_type_Aitt.a(amtj.a(2131712714), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onPermission(int paramInt)
-  {
-    QLog.d("SDKEmotionSettingManager", 1, new Object[] { "check api, onPermission, code=", Integer.valueOf(paramInt) });
-    if ((aitt.a(this.jdField_a_of_type_Aitt).isFinishing()) || (this.jdField_a_of_type_Aitt.b)) {
-      return;
-    }
-    this.jdField_a_of_type_Aitt.c();
-    if (aitt.a(this.jdField_a_of_type_Aitt) != null) {
-      aitt.a(this.jdField_a_of_type_Aitt).removeCallbacks(aitt.a(this.jdField_a_of_type_Aitt));
-    }
-    this.jdField_a_of_type_Aitt.a(amtj.a(2131712715), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    QLog.d("SDKEmotionSettingManager", 1, "check api, onSuccess");
-    if ((aitt.a(this.jdField_a_of_type_Aitt).isFinishing()) || (this.jdField_a_of_type_Aitt.b)) {
-      return;
-    }
-    if (aitt.a(this.jdField_a_of_type_Aitt) != null) {
-      aitt.a(this.jdField_a_of_type_Aitt).removeCallbacks(aitt.a(this.jdField_a_of_type_Aitt));
-    }
-    aitt.b(this.jdField_a_of_type_Aitt);
-  }
-  
-  public void onTrigger(JSONObject paramJSONObject)
-  {
-    QLog.d("SDKEmotionSettingManager", 1, "check api, onTrigger");
   }
 }
 

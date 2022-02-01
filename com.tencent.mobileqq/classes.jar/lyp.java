@@ -1,43 +1,52 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
+import android.text.TextUtils;
+import com.tencent.av.share.AVSchema;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class lyp
+  extends aofu
 {
-  protected static int a(Context paramContext, String paramString, int paramInt)
+  public String a;
+  
+  private lyp(AVSchema paramAVSchema) {}
+  
+  protected void onGetSimpleTroopInfoResult(boolean paramBoolean, TroopInfo paramTroopInfo, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString, paramInt);
+    long l = AudioHelper.b();
+    if (this.jdField_a_of_type_ComTencentAvShareAVSchema.a("onGetSimpleTroopInfoResult", l)) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (paramTroopInfo == null);
+        paramString = paramTroopInfo.troopuin;
+      } while ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString)));
+      QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_JavaLangString, 1, "onGetSimpleTroopInfoResult, isSuc[" + paramBoolean + "], enum_verify_status[" + this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_Lyn.a + "], seq[" + l + "]");
+      this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_Lyn.b = paramTroopInfo.troopname;
+    } while (this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_Lyn.a != 0);
+    if (ChatActivityUtils.a(this.jdField_a_of_type_ComTencentAvShareAVSchema.getActivity(), true, new lyq(this, l)))
+    {
+      this.jdField_a_of_type_ComTencentAvShareAVSchema.b(l, this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_JavaLangString, 1, "onGetSimpleTroopInfoResult, 等权限确认, seq[" + l + "]");
   }
   
-  protected static long a(Context paramContext, String paramString, long paramLong)
+  protected void onUpdateTroopList(boolean paramBoolean)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getLong(paramString, paramLong);
-  }
-  
-  protected static void a(Context paramContext, String paramString, int paramInt)
-  {
-    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().putInt(paramString, paramInt).commit();
-  }
-  
-  protected static void a(Context paramContext, String paramString, long paramLong)
-  {
-    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().putLong(paramString, paramLong).commit();
-  }
-  
-  protected static void a(Context paramContext, String paramString, boolean paramBoolean)
-  {
-    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().putBoolean(paramString, paramBoolean).commit();
-  }
-  
-  protected static boolean a(Context paramContext, String paramString, boolean paramBoolean)
-  {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getBoolean(paramString, paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_JavaLangString, 1, "onUpdateTroopList, isSuccess[" + paramBoolean + "]");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lyp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,36 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.gdtad.api.adbox.GdtAdBoxData;
 
 public class acau
-  implements abzb
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
+  private acbd jdField_a_of_type_Acbd;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private GdtAdBoxData jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData;
+  
+  acau(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopNotificationHelper", 2, "get notice from handleC2COnlinePushMsg0x210Resp");
-    }
-    bbnc.a(paramQQAppInterface, paramMsgType0x210.vProtobuf);
-    long l1 = paramMsgInfo.lFromUin;
-    int i = paramMsgInfo.shMsgSeq;
-    long l2 = paramMsgInfo.lMsgUid;
-    int j = paramMsgInfo.shMsgType;
-    bblf.a(paramQQAppInterface.getMsgHandler(), l1, i, l2, j);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public acat a()
   {
-    a(paramabxc.a(), paramMsgInfo, paramMsgType0x210);
-    return null;
+    acat localacat = new acat();
+    localacat.a(this.jdField_a_of_type_AndroidContentContext);
+    localacat.a(this.jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData);
+    localacat.a(this.jdField_a_of_type_Acbd);
+    return localacat;
+  }
+  
+  public acau a(acbd paramacbd)
+  {
+    this.jdField_a_of_type_Acbd = paramacbd;
+    return this;
+  }
+  
+  public acau a(GdtAdBoxData paramGdtAdBoxData)
+  {
+    this.jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData = paramGdtAdBoxData;
+    return this;
   }
 }
 

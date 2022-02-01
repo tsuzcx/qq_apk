@@ -1,18 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class apkg
-  implements View.OnClickListener
+public class apkg
 {
-  apkg(apke paramapke, BaseActivity paramBaseActivity) {}
+  public int a = 3000;
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    apke.a(this.jdField_a_of_type_Apke, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    bcef.a(this.jdField_a_of_type_Apke.a, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 23, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    return "ARCloudRecogReqPreOcrInfo{timeout = " + this.a + '}';
   }
 }
 

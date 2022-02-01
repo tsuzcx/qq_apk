@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bgqg;
+import biaq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 
@@ -18,7 +18,7 @@ public class LiangHaoView
 {
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public bgqg a;
+  public biaq a;
   
   public LiangHaoView(Context paramContext)
   {
@@ -42,7 +42,7 @@ public class LiangHaoView
   {
     setOrientation(0);
     this.jdField_a_of_type_AndroidViewView = new View(getContext());
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130847084);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130847182);
     int i = AIOUtils.dp2px(12.0F, getResources());
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(i, i);
     localLayoutParams.rightMargin = AIOUtils.dp2px(5.0F, getResources());
@@ -67,27 +67,27 @@ public class LiangHaoView
     }
   }
   
-  public void setUin(bgqg parambgqg)
+  public void setUin(biaq parambiaq)
   {
     int j = 0;
-    if ((parambgqg == null) || (TextUtils.isEmpty(parambgqg.a))) {
+    if ((parambiaq == null) || (TextUtils.isEmpty(parambiaq.a))) {
       return;
     }
-    this.jdField_a_of_type_Bgqg = parambgqg;
-    SpannableString localSpannableString = new SpannableString(parambgqg.a);
+    this.jdField_a_of_type_Biaq = parambiaq;
+    SpannableString localSpannableString = new SpannableString(parambiaq.a);
     int i;
-    if (TextUtils.isEmpty(parambgqg.b)) {
+    if (TextUtils.isEmpty(parambiaq.b)) {
       i = -1;
     }
     for (;;)
     {
       if (j != 0) {
-        localSpannableString.setSpan(new ForegroundColorSpan(-31676), i, parambgqg.b.length() + i, 18);
+        localSpannableString.setSpan(new ForegroundColorSpan(-31676), i, parambiaq.b.length() + i, 18);
       }
       this.jdField_a_of_type_AndroidWidgetTextView.setText(localSpannableString);
-      setContentDescription(BaseApplicationImpl.getApplication().getString(2131693322) + " " + parambgqg.a);
+      setContentDescription(BaseApplicationImpl.getApplication().getString(2131693502) + " " + parambiaq.a);
       return;
-      i = parambgqg.a.indexOf(parambgqg.b);
+      i = parambiaq.a.indexOf(parambiaq.b);
       if (i >= 0) {
         j = 1;
       }

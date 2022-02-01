@@ -1,36 +1,23 @@
-import android.view.View;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
+import com.tencent.mobileqq.data.MessageForArkFlashChat;
+import java.lang.ref.WeakReference;
 
-public class agpp
-  implements andi
+class agpp
+  implements agph
 {
-  public agpp(StructingMsgItemBuilder paramStructingMsgItemBuilder, MessageForStructing paramMessageForStructing, BaseChatItemLayout paramBaseChatItemLayout) {}
+  agpp(agpn paramagpn, MessageForArkFlashChat paramMessageForArkFlashChat) {}
   
-  public void a(View paramView, long paramLong, int paramInt1, int paramInt2)
+  public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq != paramLong) {}
-    do
+    AutoStartProgressBar localAutoStartProgressBar = (AutoStartProgressBar)this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat.mSendingProgress.get();
+    if ((localAutoStartProgressBar != null) && (localAutoStartProgressBar.getTag() == this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat))
     {
-      return;
-      paramView = (StructMsgForGeneralShare)this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg;
-      if (paramInt1 != 1001) {
-        paramInt2 = 100;
-      }
-      paramView.setProgress(paramInt2);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.findViewById(2131377849);
-    } while (!(paramView instanceof ProgressBar));
-    ((ProgressBar)paramView).setProgress(paramInt2);
-    if (paramInt2 == 100) {}
-    for (paramInt1 = 8;; paramInt1 = 0)
-    {
-      paramView.setVisibility(paramInt1);
-      return;
+      localAutoStartProgressBar.b();
+      localAutoStartProgressBar.setVisibility(8);
     }
   }
+  
+  public void b() {}
 }
 
 

@@ -1,22 +1,18 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.widget.XPanelContainer;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public abstract interface agxf<T extends View>
+class agxf
+  extends ahaa
 {
-  public abstract int a();
+  agxf(agvm paramagvm)
+  {
+    super(paramagvm, null);
+  }
   
-  public abstract T a();
-  
-  public abstract T a(Context paramContext);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(XPanelContainer paramXPanelContainer);
-  
-  public abstract boolean a();
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahcc(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+  }
 }
 
 

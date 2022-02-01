@@ -1,14 +1,17 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnBufferingUpdateListener;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
 class wxm
-  implements MediaPlayer.OnBufferingUpdateListener
+  extends wwc
 {
-  wxm(wxj paramwxj, wxa paramwxa) {}
-  
-  public void onBufferingUpdate(MediaPlayer paramMediaPlayer, int paramInt)
+  wxm(wxa paramwxa, StoryVideoItem paramStoryVideoItem, wyg paramwyg)
   {
-    this.jdField_a_of_type_Wxa.a(this.jdField_a_of_type_Wxj, paramInt);
+    super(paramStoryVideoItem);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_Wyg.a = ((String)a("result"));
+    return true;
   }
 }
 

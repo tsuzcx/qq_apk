@@ -1,68 +1,45 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.CardProfile;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afkn
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public afkn(TroopChatPie paramTroopChatPie) {}
+  public afkn(VisitorsActivity paramVisitorsActivity, CardProfile paramCardProfile, azti paramazti, int paramInt) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction())) && ("onHomeworkTroopIdentityChanged".equals(paramIntent.getStringExtra("event"))))
+    int i = 1;
+    int j;
+    int k;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type == 3)
     {
-      paramContext = paramIntent.getStringExtra("data");
-      if (!TextUtils.isEmpty(paramContext)) {
-        break label41;
+      j = 1;
+      k = this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.bIsLastVoteCharged;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type != 3) {
+        break label143;
+      }
+      if (!((axpb)this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.app.getManager(QQManagerFactory.NEARBY_LIKE_LIMIT_MANAGER)).c(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.lEctID)) {
+        break label138;
       }
     }
     for (;;)
     {
+      this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.a(this.jdField_a_of_type_Azti, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.bVoteCnt, i);
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.app, "CliOper", "", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.lEctID), "like_mall", "like_list_view", j, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      try
-      {
-        label41:
-        Object localObject = new JSONObject(paramContext);
-        paramContext = ((JSONObject)localObject).optString("groupCode");
-        if (TextUtils.equals(paramContext, this.a.sessionInfo.curFriendUin))
-        {
-          paramIntent = ((JSONObject)localObject).optString("content");
-          String str1 = ((JSONObject)localObject).optString("source");
-          int i = ((JSONObject)localObject).optInt("rankId", 333);
-          String str2 = ((JSONObject)localObject).optString("nickName");
-          String str3 = ((JSONObject)localObject).optString("uin");
-          String str4 = ((JSONObject)localObject).optString("course");
-          localObject = ((JSONObject)localObject).optString("name");
-          if ((!"join".equals(str1)) && (TextUtils.equals(str3, this.a.app.getCurrentAccountUin())))
-          {
-            ((TroopManager)this.a.app.getManager(52)).b(this.a.sessionInfo.curFriendUin, str3, str2, i, str4, (String)localObject);
-            if (this.a.a != null)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d(this.a.tag, 2, "mHomeworkTroopIdentityChangedReceiver dismissTipsBar.");
-              }
-              this.a.a.a(this.a.mTipsMgr, false);
-            }
-            if (TroopChatPie.a(this.a) != null) {
-              TroopChatPie.a(this.a).a(i);
-            }
-          }
-          if (QLog.isColorLevel())
-          {
-            QLog.d("zivonchen", 2, new Object[] { "mHomeworkTroopIdentityChangedReceiver troopUin = ", paramContext, ", content = ", paramIntent, ", source = ", str1, ", rankId = ", Integer.valueOf(i), ", nickName = ", str2, "uin = ", str3 });
-            return;
-          }
-        }
-      }
-      catch (JSONException paramContext) {}
+      j = 0;
+      break;
+      label138:
+      i = 0;
+      continue;
+      label143:
+      i = k;
     }
   }
 }

@@ -1,6 +1,8 @@
+import android.view.MotionEvent;
+
 public abstract interface baht
 {
-  public abstract void a(String paramString);
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 

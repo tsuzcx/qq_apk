@@ -2,7 +2,7 @@ package dov.com.tencent.biz.qqstory.takevideo.multivideo;
 
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
-import bnok;
+import bpec;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -14,7 +14,7 @@ public abstract class DecodeRunnable
   protected int a;
   protected long a;
   protected String a;
-  protected WeakReference<bnok> a;
+  protected WeakReference<bpec> a;
   protected boolean a;
   protected int b;
   protected long b;
@@ -23,9 +23,9 @@ public abstract class DecodeRunnable
   protected int d;
   protected int e = -1;
   
-  public DecodeRunnable(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, bnok parambnok)
+  public DecodeRunnable(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, bpec parambpec)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambnok);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambpec);
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_b_of_type_Long = (1000L * paramLong1);
     this.jdField_c_of_type_Long = (1000L * paramLong2);
@@ -97,9 +97,9 @@ public abstract class DecodeRunnable
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      bnok localbnok = (bnok)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbnok != null) {
-        localbnok.a(paramInt);
+      bpec localbpec = (bpec)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbpec != null) {
+        localbpec.a(paramInt);
       }
     }
   }
@@ -108,9 +108,9 @@ public abstract class DecodeRunnable
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      bnok localbnok = (bnok)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbnok != null) {
-        localbnok.a(paramInt, paramLong, paramBitmap);
+      bpec localbpec = (bpec)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbpec != null) {
+        localbpec.a(paramInt, paramLong, paramBitmap);
       }
     }
   }
@@ -118,25 +118,25 @@ public abstract class DecodeRunnable
   protected void a(List<Long> paramList)
   {
     if ((paramList == null) || (paramList.size() == 0)) {}
-    bnok localbnok;
+    bpec localbpec;
     do
     {
       do
       {
         return;
       } while (this.jdField_a_of_type_JavaLangRefWeakReference == null);
-      localbnok = (bnok)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localbnok == null);
-    localbnok.a(paramList);
+      localbpec = (bpec)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localbpec == null);
+    localbpec.a(paramList);
   }
   
   protected void a(boolean paramBoolean)
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      bnok localbnok = (bnok)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbnok != null) {
-        localbnok.a(paramBoolean);
+      bpec localbpec = (bpec)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbpec != null) {
+        localbpec.a(paramBoolean);
       }
     }
   }
@@ -150,9 +150,9 @@ public abstract class DecodeRunnable
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      bnok localbnok = (bnok)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbnok != null) {
-        localbnok.a();
+      bpec localbpec = (bpec)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbpec != null) {
+        localbpec.a();
       }
     }
   }

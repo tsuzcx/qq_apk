@@ -1,14 +1,53 @@
-import com.tencent.TMG.sdk.AVVideoCtrl.EnableCameraCompleteCallback;
-import com.tencent.TMG.utils.QLog;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.widget.PastablePwdEditText;
 
-class alnk
-  extends AVVideoCtrl.EnableCameraCompleteCallback
+public class alnk
+  implements TextWatcher
 {
-  alnk(alnh paramalnh) {}
+  public alnk(LoginView paramLoginView) {}
   
-  public void onComplete(boolean paramBoolean, int paramInt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    QLog.d("AVCameraCaptureModel", 0, "EnableCameraCompleteCallback.OnComplete. result = " + paramInt);
+    LoginView.a(this.a, null);
+    LoginView.c(this.a);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    LoginView.a(this.a, paramCharSequence.toString());
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null)
+    {
+      paramCharSequence = paramCharSequence.toString();
+      if ((paramCharSequence != null) && (LoginView.a(this.a) != null) && (LoginView.a(this.a).length() != paramCharSequence.length()) && (paramInt3 != 0)) {
+        BaseApplicationImpl.sApplication.refreAccountList();
+      }
+      LoginView.a(this.a, null);
+      if ((LoginView.a(this.a) == null) || (LoginView.a(this.a).length() == 0)) {}
+      do
+      {
+        return;
+        if ((paramCharSequence == null) || (paramCharSequence.length() == 0) || (paramCharSequence.length() != LoginView.a(this.a).length() + 1))
+        {
+          BaseApplicationImpl.sApplication.refreAccountList();
+          return;
+        }
+        if ((!paramCharSequence.substring(0, LoginView.a(this.a).length()).equals(LoginView.a(this.a))) || (this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText == null)) {
+          break;
+        }
+        paramCharSequence = paramCharSequence.substring(LoginView.a(this.a).length());
+      } while ((paramCharSequence == null) || (paramCharSequence.length() != 1));
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setText(paramCharSequence);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setSelection(1);
+      LoginView.c(this.a);
+    }
+    LoginView.a(this.a, null);
   }
 }
 

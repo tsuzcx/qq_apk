@@ -1,19 +1,21 @@
-import android.hardware.Camera;
-import android.hardware.Camera.AutoFocusCallback;
-import com.tencent.av.opengl.GraphicRenderMgr;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Observable;
 
-class ljq
-  implements Camera.AutoFocusCallback
+public class ljq
+  extends Observable
 {
-  ljq(ljp paramljp) {}
-  
-  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
+  public void a(Object[] paramArrayOfObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AndroidCamera", 2, "camera focus success ? " + paramBoolean);
+    try
+    {
+      super.setChanged();
+      super.notifyObservers(paramArrayOfObject);
+      return;
     }
-    GraphicRenderMgr.getInstance().setIsFocusing(false);
+    finally
+    {
+      paramArrayOfObject = finally;
+      throw paramArrayOfObject;
+    }
   }
 }
 

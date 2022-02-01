@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afbj;
+import afsv;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -10,7 +10,7 @@ import cooperation.qzone.api.QZoneApiProxy;
 public class IntimateInfoView$1
   implements Runnable
 {
-  public IntimateInfoView$1(afbj paramafbj, FragmentActivity paramFragmentActivity, QQAppInterface paramQQAppInterface) {}
+  public IntimateInfoView$1(afsv paramafsv, FragmentActivity paramFragmentActivity, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -29,7 +29,7 @@ public class IntimateInfoView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoView.1
  * JD-Core Version:    0.7.0.1
  */

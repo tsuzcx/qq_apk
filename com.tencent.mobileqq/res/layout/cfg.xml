@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:layout_gravity="center_vertical" android:id="@id/mn7" android:layout_width="20.0dip" android:layout_height="20.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/jt" android:indeterminateBehavior="repeat" />
-    <TextView android:textSize="12.0sp" android:textColor="#ff878b99" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/mn6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="@string/cuy" />
-</LinearLayout>
+<RelativeLayout android:orientation="vertical" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <dov.com.qq.im.aeeditor.module.topbar.AEEditorTopBar android:id="@id/jt2" android:background="@color/dg" android:layout_width="fill_parent" android:layout_height="@dimen/bbk" android:layout_alignParentTop="true" />
+    <com.tencent.tavcut.view.TAVCutVideoView android:id="@id/ntp" android:background="@drawable/f8p" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/nc4" android:layout_below="@id/jt2" />
+    <dov.com.qq.im.aeeditor.module.clip.video.AEEditorMvClipMenu android:id="@id/nc4" android:background="@color/dg" android:layout_width="fill_parent" android:layout_height="@dimen/b_a" android:layout_alignParentBottom="true" />
+</RelativeLayout>

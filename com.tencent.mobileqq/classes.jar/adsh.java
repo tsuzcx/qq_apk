@@ -1,21 +1,64 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.Map;
 
 public class adsh
-  implements DialogInterface.OnClickListener
+  extends anvi
 {
-  public adsh(NotificationActivity paramNotificationActivity) {}
+  public adsh(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
   {
-    bcef.a(this.a.app, "dc00898", "", "", "0X800AA16", "0X800AA16", 0, 0, "", "", NotificationActivity.b(this.a), "");
-    this.a.finish();
+    super.onSetGenralSettingsTroopFilter(paramBoolean, paramMap);
+    if ((paramMap == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo == null)) {
+      return;
+    }
+    if (!paramBoolean) {
+      if (paramMap.get(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin) != null) {
+        QQToast.a(this.a.app.getApp(), 1, this.a.getString(2131719664), 0).b(this.a.getTitleBarHeight());
+      }
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(17);
+      return;
+      paramMap = (Integer)paramMap.get(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin);
+      if (paramMap != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopmask = paramMap.intValue();
+      }
+    }
   }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {}
+    try
+    {
+      l = Long.valueOf(paramString).longValue();
+      if (l != 0L) {
+        this.a.a(l);
+      }
+      return;
+    }
+    catch (NumberFormatException paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+        long l = 0L;
+      }
+    }
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adsh
  * JD-Core Version:    0.7.0.1
  */

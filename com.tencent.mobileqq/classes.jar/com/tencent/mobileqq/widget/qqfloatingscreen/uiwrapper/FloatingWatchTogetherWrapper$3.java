@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.widget.qqfloatingscreen.uiwrapper;
 
-import bhmi;
+import biwy;
 
 public class FloatingWatchTogetherWrapper$3
   implements Runnable
 {
-  public FloatingWatchTogetherWrapper$3(bhmi parambhmi, int paramInt) {}
+  public FloatingWatchTogetherWrapper$3(biwy parambiwy, int paramInt) {}
   
   public void run()
   {
-    bhmi.a(this.this$0, this.a);
+    biwy.a(this.this$0, this.a);
     this.this$0.e();
   }
 }

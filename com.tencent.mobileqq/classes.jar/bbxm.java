@@ -1,78 +1,97 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterUtils;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.pic.PicShareToWX;
+import com.tencent.mobileqq.screendetect.ScreenShotFragment;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class bbxm
+  implements AdapterView.OnItemClickListener
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private bbxn jdField_a_of_type_Bbxn = new bbxn(0);
-  private bbxn b = new bbxn(1);
+  public bbxm(ScreenShotFragment paramScreenShotFragment) {}
   
-  public bbxn a()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (bbxn.a(this.jdField_a_of_type_Bbxn).getAndSet(1) == 0) {
-      return this.jdField_a_of_type_Bbxn;
+    if (QLog.isColorLevel()) {
+      QLog.d("ScreenShotFragment", 2, "OnItemClickListener : position = " + paramInt + ", view = " + paramView + ", id = " + paramLong);
     }
-    if (bbxn.a(this.b).getAndSet(1) == 0) {
-      return this.b;
+    paramAdapterView = paramView.getTag();
+    if (paramAdapterView == null) {
+      return;
     }
-    return null;
-  }
-  
-  public void a()
-  {
-    bbxn.a(this.jdField_a_of_type_Bbxn).getAndSet(0);
-    bbxn.a(this.b).getAndSet(0);
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
-    }
-  }
-  
-  public boolean a()
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (bbxn.a(this.jdField_a_of_type_Bbxn).getAndAdd(0) == 0)
+    int i = ((bbxp)paramAdapterView).a.action;
+    paramAdapterView = null;
+    switch (i)
     {
-      bool1 = bool2;
-      if (bbxn.a(this.b).getAndAdd(0) == 0) {
-        bool1 = true;
+    default: 
+      if ((ScreenShotFragment.a(this.a)) && (paramAdapterView != null)) {
+        bbxq.a("0X800A9A9", paramAdapterView, "1");
+      }
+      if ((i != 9) && (i != 10)) {
+        break label300;
+      }
+      paramInt = -1;
+      if (!WXShareHelper.a().a()) {
+        paramInt = 2131720175;
+      }
+      break;
+    }
+    for (;;)
+    {
+      if (paramInt == -1) {
+        break label300;
+      }
+      QQToast.a(this.a.getActivity(), this.a.getActivity().getString(paramInt), 0).b(this.a.getActivity().getResources().getDimensionPixelSize(2131299080));
+      return;
+      bbxq.a("0X8009FF0", 0);
+      paramAdapterView = "1";
+      break;
+      bbxq.a("0X8009FF1", 0);
+      paramAdapterView = "2";
+      break;
+      bbxq.a("0X8009FF2", 0);
+      paramAdapterView = "3";
+      break;
+      bbxq.a("0X8009FF3", 0);
+      paramAdapterView = "4";
+      break;
+      bbxq.a("0X800A77D", 0);
+      paramAdapterView = "5";
+      break;
+      if (!WXShareHelper.a().b()) {
+        paramInt = 2131720176;
       }
     }
-    return bool1;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandlerThread == null)
+    switch (i)
     {
-      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("SharedMemoryCacheProcessor");
-      this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    default: 
+      return;
+    case 2: 
+      ScreenShotFragment.a(this.a.getActivity(), ScreenShotFragment.a(this.a));
+      return;
+    case 3: 
+      ScreenShotFragment.a(this.a, this.a.getActivity(), ScreenShotFragment.a(this.a));
+      return;
+    case 9: 
+      if ((PicShareToWX.a().a()) && (PicShareToWX.a().a(ScreenShotFragment.a(this.a))))
+      {
+        PicShareToWX.a().a(this.a.getActivity(), ScreenShotFragment.a(this.a), ScreenShotFragment.a(this.a), 3);
+        bdla.b(null, "dc00898", "", "", "0X800A505", "0X800A505", 0, 0, "", "", "", "");
+        return;
+      }
+      ScreenShotFragment.a(this.a, ScreenShotFragment.a(this.a), ScreenShotFragment.a(this.a));
+      return;
+    case 10: 
+      label300:
+      ScreenShotFragment.b(this.a, ScreenShotFragment.a(this.a), ScreenShotFragment.a(this.a));
+      return;
     }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
-    {
-      PtvFilterUtils.a(this.jdField_a_of_type_AndroidOsHandlerThread);
-      this.jdField_a_of_type_AndroidOsHandlerThread = null;
-      this.jdField_a_of_type_AndroidOsHandler = null;
-    }
+    ScreenShotFragment.a(this.a, ScreenShotFragment.a(this.a));
   }
 }
 

@@ -1,6 +1,18 @@
-final class azyl
+class azyl
 {
-  private static azyj a = new azyj(null);
+  final String a;
+  final String b;
+  
+  azyl(String paramString1, String paramString2)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+  }
+  
+  public String toString()
+  {
+    return String.format("CopyItem{mMenuTitle=%s mCopyContent=%s}", new Object[] { this.a, this.b });
+  }
 }
 
 

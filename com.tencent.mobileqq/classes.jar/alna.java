@@ -1,42 +1,35 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
-class alna
-  extends Handler
+public class alna
+  implements binb
 {
-  alna(almz paramalmz, Looper paramLooper)
+  public alna(LoginView paramLoginView, ImageView paramImageView, int paramInt) {}
+  
+  public int a()
   {
-    super(paramLooper);
+    return this.jdField_a_of_type_Int;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean)
   {
-    if (paramMessage.what == almz.a(this.a))
+    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
     {
-      QLog.d(almz.a(this.a), 4, "Receive Message!");
-      this.a.a();
+      localImageView.setVisibility(i);
+      return;
     }
-    for (;;)
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (paramBoolean)
     {
-      try
-      {
-        bcef.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 1, "", "", "", "");
-        return;
-      }
-      catch (Exception paramMessage) {}
-      if (paramMessage.what == almz.b(this.a))
-      {
-        QLog.d(almz.a(this.a), 4, "Receive Message!");
-        try
-        {
-          bcef.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 0, "", "", "", "");
-          return;
-        }
-        catch (Exception paramMessage) {}
-      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(0.5F);
+      return;
     }
+    this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
   }
 }
 

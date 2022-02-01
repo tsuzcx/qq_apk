@@ -1,26 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.persistence.EntityManager;
+import java.util.concurrent.ExecutorService;
 
-class qii
-  implements pwy
+public abstract class qii
 {
-  qii(qid paramqid, RecommendFollowInfo paramRecommendFollowInfo) {}
+  public final Handler a;
+  public final AppInterface a;
+  public final EntityManager a;
+  protected final ExecutorService a;
+  public final qep a;
+  protected final qxn a;
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public qii(qep paramqep, Handler paramHandler, AppInterface paramAppInterface, EntityManager paramEntityManager, qxn paramqxn, ExecutorService paramExecutorService)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "followPubAccount() unfollowUin uin=" + paramString + ", isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = false;
-      qid.a(this.jdField_a_of_type_Qid, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
-      qid.a(this.jdField_a_of_type_Qid).notifyDataSetChanged();
-      return;
-    }
-    QQToast.a(qid.c(this.jdField_a_of_type_Qid).getContext(), 1, 2131717436, 0).a();
+    this.jdField_a_of_type_Qep = paramqep;
+    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramEntityManager;
+    this.jdField_a_of_type_Qxn = paramqxn;
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService = paramExecutorService;
   }
 }
 

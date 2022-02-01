@@ -1,23 +1,12 @@
-import UserGrowth.stSchema;
-import android.content.Context;
-import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import android.view.ViewGroup;
+import java.util.ArrayList;
 
-public abstract interface ups
+class ups
 {
-  public abstract stSchema a();
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  ArrayList<ViewGroup> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public abstract Context a();
-  
-  public abstract WSDownloadParams a();
-  
-  public abstract MiniAppLauncher.MiniAppLaunchListener a();
-  
-  public abstract upr a();
-  
-  public abstract uxm a();
-  
-  public abstract boolean a();
+  private ups(upp paramupp) {}
 }
 
 

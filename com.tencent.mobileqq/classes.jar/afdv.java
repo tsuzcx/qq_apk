@@ -1,27 +1,15 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
 
-public class afdv
+class afdv
+  implements DialogInterface.OnClickListener
 {
-  public float a;
-  public int a;
-  public long a;
-  public afdu a;
-  public View a;
-  public boolean a;
-  public float b;
-  public int b;
-  public boolean b;
-  public float c = 0.0F;
-  public float d = 1.0F;
-  public float e = 1.0F;
-  public float f = 1.0F;
+  afdv(afdu paramafdu) {}
   
-  public afdv()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
+    this.a.a.finish();
   }
 }
 

@@ -1,12 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 class agsj
-  extends agsg
+  extends afos
 {
-  public agsj(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  
+  agsj(agsh paramagsh) {}
 }
 
 

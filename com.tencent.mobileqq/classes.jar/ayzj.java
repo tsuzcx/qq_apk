@@ -1,41 +1,65 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.ReqBody;
-import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.UdcUinData;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.face.FaceDrawable;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class ayzj
+class ayzj
+  extends anvi
 {
-  protected ayzl a;
-  protected QQAppInterface a;
+  ayzj(ayzg paramayzg) {}
   
-  public ayzj(QQAppInterface paramQQAppInterface, ayzl paramayzl)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Ayzl = paramayzl;
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (ayzg.a(this.a) == null) || (ayzg.a(this.a).isFinishing()) || (ayzg.a(this.a) == null)) {
+      QLog.d("AccountPanel", 1, String.format("onUpdateCustomHead return, isSuccess: %s, uin: %s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
+    }
+    do
+    {
+      return;
+      ayzz localayzz = ayzg.a(this.a, paramString);
+      if (localayzz != null) {
+        localayzz.a(FaceDrawable.getFaceDrawable(ayzg.a(this.a), 1, paramString));
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("AccountPanel", 2, String.format("onUpdateCustomHead, isSuccess: %s, uin: %s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
   }
   
-  public abstract String a();
-  
-  protected void a(ToServiceMsg paramToServiceMsg)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Ayzl != null)
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (ayzg.a(this.a) == null) || (ayzg.a(this.a).isFinishing()) || (ayzg.a(this.a) == null))
     {
-      paramToServiceMsg.addAttribute("processor_key", a());
-      this.jdField_a_of_type_Ayzl.sendPbReq(paramToServiceMsg);
+      QLog.d("AccountPanel", 1, String.format("onUpdateFriendInfo return, isSuccess: %s, uin: %s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
+      return;
+    }
+    ayzz localayzz = ayzg.a(this.a, paramString);
+    Object localObject;
+    if (localayzz != null)
+    {
+      if (localayzz.jdField_a_of_type_Int != 2) {
+        break label147;
+      }
+      localObject = ContactUtils.getBuddyName(ayzg.a(this.a), paramString, false);
+    }
+    for (;;)
+    {
+      localayzz.a((CharSequence)localObject);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("AccountPanel", 2, String.format("onUpdateFriendInfo, isSuccess: %s, uin: %s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
+      return;
+      label147:
+      localObject = (SimpleAccount)localayzz.jdField_a_of_type_AndroidViewView.getTag(2131361897);
+      if (localObject != null) {
+        localObject = bdxj.a(ayzg.a(this.a), (SimpleAccount)localObject);
+      } else {
+        localObject = null;
+      }
     }
   }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
-  
-  public void a(boolean paramBoolean, oidb_0x5eb.UdcUinData paramUdcUinData) {}
-  
-  public boolean a(oidb_0x5eb.ReqBody paramReqBody)
-  {
-    return false;
-  }
-  
-  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

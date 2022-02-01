@@ -1,32 +1,17 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.RunnableUpdateThumb;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
 
-public class akts
-  implements Animator.AnimatorListener
+class akts
+  extends akto
 {
-  public akts(NewFlowCameraActivity.RunnableUpdateThumb paramRunnableUpdateThumb) {}
+  akts(aktr paramaktr) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(int paramInt)
   {
-    if ((NewFlowCameraActivity.a(this.a.this$0) != null) && (NewFlowCameraActivity.b(this.a.this$0) != null) && (NewFlowCameraActivity.a(this.a.this$0) != null))
-    {
-      NewFlowCameraActivity.a(this.a.this$0).setVisibility(8);
-      NewFlowCameraActivity.b(this.a.this$0).setImageBitmap(this.a.b);
-      NewFlowCameraActivity.b(this.a.this$0).setVisibility(0);
-      NewFlowCameraActivity.a(this.a.this$0).setText(NewFlowCameraActivity.c(this.a.this$0) + "");
-      NewFlowCameraActivity.a(this.a.this$0).setVisibility(0);
+    if (((paramInt == 1) || (paramInt == 10)) && (this.a.a.a != null)) {
+      this.a.a.a.dismiss();
     }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

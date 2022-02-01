@@ -1,6 +1,17 @@
-public abstract interface aube
+import android.view.View;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+
+public class aube
+  implements aujl
 {
-  public abstract void b();
+  public aube(SimpleFileViewer paramSimpleFileViewer) {}
+  
+  public void a()
+  {
+    if (SimpleFileViewer.d(this.a) != null) {
+      SimpleFileViewer.d(this.a).setVisibility(8);
+    }
+  }
 }
 
 

@@ -1,22 +1,11 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import android.widget.TextView;
 
-final class rwx
-  extends ClickableSpan
+public class rwx
+  extends blij<rxh>
 {
-  rwx(TextView paramTextView) {}
-  
-  public void onClick(View paramView)
+  public rwx(rww paramrww, View paramView)
   {
-    this.a.performClick();
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(Color.parseColor("#FF00CAFC"));
+    super(paramView);
   }
 }
 

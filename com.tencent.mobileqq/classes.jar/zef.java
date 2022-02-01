@@ -1,22 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-class zef
-  implements zke
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.FIELD})
+public @interface zef
 {
-  zef(zee paramzee) {}
-  
-  public void a(int paramInt, boolean paramBoolean, String paramString, Object... paramVarArgs)
-  {
-    if (paramBoolean)
-    {
-      if ((paramVarArgs != null) && (paramVarArgs.length > 0) && ((paramVarArgs[0] instanceof ArrayList))) {
-        this.a.a((ArrayList)paramVarArgs[0]);
-      }
-      return;
-    }
-    QLog.d(zee.a, 4, "get drafts failed");
-  }
+  String a();
 }
 
 

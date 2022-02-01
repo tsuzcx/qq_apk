@@ -1,13 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
 
-public class bmis
-  implements DialogInterface.OnClickListener
+class bmis
+  extends RemoteCommand
 {
-  public bmis(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
+  bmis(bmip parambmip, String paramString)
+  {
+    super(paramString);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  {
+    if (paramBundle == null) {
+      paramBundle = null;
+    }
+    Bundle localBundle;
+    do
+    {
+      return paramBundle;
+      paramBundle.setClassLoader(getClass().getClassLoader());
+      localBundle = this.a.b(paramBundle);
+      if (localBundle != null) {
+        localBundle.setClassLoader(getClass().getClassLoader());
+      }
+      paramBundle = localBundle;
+    } while (paramOnInvokeFinishLinstener == null);
+    paramOnInvokeFinishLinstener.onInvokeFinish(localBundle);
+    return localBundle;
+  }
 }
 
 

@@ -1,18 +1,47 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
 
 public class aenk
-  implements View.OnClickListener
+  implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener
 {
-  public aenk(TroopMemberListActivity paramTroopMemberListActivity) {}
-  
-  public void onClick(View paramView)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    TroopMemberListActivity.b(this.a);
-    new bcek(this.a.app).a("dc00899").b("Grp_online").c("mber_list").d("clk_sort").a(new String[] { this.a.b }).a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return false;
+  }
+  
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean onDown(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

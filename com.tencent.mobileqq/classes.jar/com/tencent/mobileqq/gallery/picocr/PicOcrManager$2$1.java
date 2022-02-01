@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.gallery.picocr;
 
-import atvs;
-import atvt;
+import avas;
+import avat;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class PicOcrManager$2$1
   implements Runnable
 {
-  public PicOcrManager$2$1(atvs paramatvs) {}
+  public PicOcrManager$2$1(avas paramavas) {}
   
   public void run()
   {

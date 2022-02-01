@@ -1,23 +1,27 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 class png
-  implements ViewTreeObserver.OnPreDrawListener
+  implements AbsListView.OnScrollListener
 {
-  png(pnf parampnf) {}
+  png(pne parampne) {}
   
-  public boolean onPreDraw()
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    View localView = ReadInJoyChannelPanelFragment.a(this.a.a).getChildAt(ReadInJoyChannelPanelFragment.a(this.a.a).getChildCount() - 1);
-    Object localObject = new int[2];
-    localView.getLocationOnScreen((int[])localObject);
-    localObject = this.a.a.a(pnf.a(this.a), (int[])localObject);
-    ReadInJoyChannelPanelFragment.a(localObject[0], 0.0F, localObject[1], 0.0F, localView);
-    ReadInJoyChannelPanelFragment.a(this.a.a).getViewTreeObserver().removeOnPreDrawListener(pnf.a(this.a));
-    return false;
+    switch (paramInt)
+    {
+    case 1: 
+    case 2: 
+    default: 
+      return;
+    }
+    szd localszd = this.a.a().a();
+    this.a.a().a().a(paramAbsListView.getFirstVisiblePosition(), paramAbsListView.getLastVisiblePosition(), localszd);
+    this.a.a().a().b(paramAbsListView.getFirstVisiblePosition(), paramAbsListView.getLastVisiblePosition(), localszd);
+    this.a.a().a().c(paramAbsListView.getFirstVisiblePosition(), paramAbsListView.getLastVisiblePosition(), localszd);
+    this.a.a().a().d(paramAbsListView.getFirstVisiblePosition(), paramAbsListView.getLastVisiblePosition(), localszd);
   }
 }
 

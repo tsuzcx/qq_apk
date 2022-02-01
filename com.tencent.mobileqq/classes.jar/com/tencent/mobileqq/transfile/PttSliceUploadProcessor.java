@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.transfile;
 
 import android.os.SystemClock;
-import azcv;
-import azcy;
-import bfyl;
+import baij;
+import baim;
+import bhhd;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.highway.transaction.Transaction;
@@ -30,13 +30,13 @@ public class PttSliceUploadProcessor
   private static final float BYTES_MSECOND = 32.0F;
   private static final int BYTES_SECOND = 32000;
   public static final int COMMAND_ID_PTT_SLICE_TRANS = 68;
-  private static final byte[] HEAD = bfyl.a(1, 16000);
+  private static final byte[] HEAD = bhhd.a(1, 16000);
   private static final int SIMPLE_RATE = 16000;
   public static final String TAG = "PttSliceUploadProcessor";
   private SmartPttTranHelper.PttSliceInfoBean mCurInfo;
   private int offset;
   private String pcmPath;
-  private azcy processor;
+  private baim processor;
   private String result = "";
   private Transaction trans;
   private long vadSegEndPos;
@@ -80,7 +80,7 @@ public class PttSliceUploadProcessor
       Object localObject = new byte[(int)(this.vadSegEndPos - this.vadSegStartPos)];
       paramInt = this.mRaf.read((byte[])localObject, 0, (int)(this.vadSegEndPos - this.vadSegStartPos));
       localObject = this.processor.a((byte[])localObject, 0, paramInt);
-      if ((localObject == null) || (((azcv)localObject).jdField_a_of_type_Int == 0))
+      if ((localObject == null) || (((baij)localObject).jdField_a_of_type_Int == 0))
       {
         if (QLog.isColorLevel()) {
           QLog.d("PttSliceUploadProcessor", 2, "last p silk len is 0 ");
@@ -243,7 +243,7 @@ public class PttSliceUploadProcessor
           localPttSliceInfoBean.isLast = false;
           checkNextDataIsValid(localPttSliceInfoBean, i);
           localObject = this.processor.a((byte[])localObject, 0, i);
-          if ((localObject != null) && (((azcv)localObject).jdField_a_of_type_Int != 0)) {
+          if ((localObject != null) && (((baij)localObject).jdField_a_of_type_Int != 0)) {
             break;
           }
           checkIsLast(localPttSliceInfoBean.isLast, false);
@@ -284,7 +284,7 @@ public class PttSliceUploadProcessor
   }
   
   /* Error */
-  private void writeToTmpFile(SmartPttTranHelper.PttSliceInfoBean paramPttSliceInfoBean, azcv paramazcv)
+  private void writeToTmpFile(SmartPttTranHelper.PttSliceInfoBean paramPttSliceInfoBean, baij parambaij)
   {
     // Byte code:
     //   0: aconst_null
@@ -316,7 +316,7 @@ public class PttSliceUploadProcessor
     //   51: aload_0
     //   52: getfield 129	com/tencent/mobileqq/transfile/PttSliceUploadProcessor:offset	I
     //   55: aload_2
-    //   56: getfield 125	azcv:jdField_a_of_type_Int	I
+    //   56: getfield 125	baij:jdField_a_of_type_Int	I
     //   59: getstatic 45	com/tencent/mobileqq/transfile/PttSliceUploadProcessor:HEAD	[B
     //   62: arraylength
     //   63: iadd
@@ -324,11 +324,11 @@ public class PttSliceUploadProcessor
     //   65: putfield 129	com/tencent/mobileqq/transfile/PttSliceUploadProcessor:offset	I
     //   68: aload_3
     //   69: aload_2
-    //   70: getfield 472	azcv:jdField_a_of_type_ArrayOfByte	[B
+    //   70: getfield 472	baij:jdField_a_of_type_ArrayOfByte	[B
     //   73: aload_2
-    //   74: getfield 475	azcv:b	I
+    //   74: getfield 475	baij:b	I
     //   77: aload_2
-    //   78: getfield 125	azcv:jdField_a_of_type_Int	I
+    //   78: getfield 125	baij:jdField_a_of_type_Int	I
     //   81: invokevirtual 478	java/io/FileOutputStream:write	([BII)V
     //   84: aload_3
     //   85: invokevirtual 481	java/io/FileOutputStream:flush	()V
@@ -344,7 +344,7 @@ public class PttSliceUploadProcessor
     //   105: aload_0
     //   106: getfield 129	com/tencent/mobileqq/transfile/PttSliceUploadProcessor:offset	I
     //   109: aload_2
-    //   110: getfield 125	azcv:jdField_a_of_type_Int	I
+    //   110: getfield 125	baij:jdField_a_of_type_Int	I
     //   113: iadd
     //   114: putfield 129	com/tencent/mobileqq/transfile/PttSliceUploadProcessor:offset	I
     //   117: goto -49 -> 68
@@ -397,7 +397,7 @@ public class PttSliceUploadProcessor
     //   start	length	slot	name	signature
     //   0	190	0	this	PttSliceUploadProcessor
     //   0	190	1	paramPttSliceInfoBean	SmartPttTranHelper.PttSliceInfoBean
-    //   0	190	2	paramazcv	azcv
+    //   0	190	2	parambaij	baij
     //   14	157	3	localObject1	Object
     //   175	4	3	localObject2	Object
     //   1	184	4	localObject3	Object
@@ -503,7 +503,7 @@ public class PttSliceUploadProcessor
     //   117: aload 4
     //   119: astore_3
     //   120: aload 7
-    //   122: invokestatic 523	bjkf:a	(Ljava/io/File;)Ljava/lang/String;
+    //   122: invokestatic 523	bkvq:a	(Ljava/io/File;)Ljava/lang/String;
     //   125: astore_1
     //   126: aload_1
     //   127: ifnull +14 -> 141
@@ -644,7 +644,7 @@ public class PttSliceUploadProcessor
     } while (localFile == null);
     this.mFileSize = localFile.length();
     this.voiceID = this.mMd5Str;
-    this.processor = new azcy();
+    this.processor = new baim();
     this.processor.a(new SilkCodecWrapper(BaseApplication.getContext()));
     try
     {

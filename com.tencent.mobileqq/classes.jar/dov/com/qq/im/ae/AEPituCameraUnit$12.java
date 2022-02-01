@@ -1,17 +1,26 @@
 package dov.com.qq.im.ae;
 
-import bljy;
-import dov.com.qq.im.ae.camera.core.AECameraManager;
+import bmxa;
+import borh;
+import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 
 public class AEPituCameraUnit$12
   implements Runnable
 {
-  public AEPituCameraUnit$12(bljy parambljy) {}
+  public AEPituCameraUnit$12(bmxa parambmxa) {}
   
   public void run()
   {
-    if ((this.this$0.a.isFlashEnabled()) && (!bljy.a(this.this$0))) {
-      this.this$0.a.turnFlash(this.this$0.a(), false);
+    LiuHaiUtils.a();
+    LiuHaiUtils.a(this.this$0.a.a());
+    if (LiuHaiUtils.c()) {
+      LiuHaiUtils.b(this.this$0.a.a());
+    }
+    for (;;)
+    {
+      this.this$0.ab();
+      return;
+      LiuHaiUtils.c(this.this$0.a.a());
     }
   }
 }

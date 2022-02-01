@@ -1,38 +1,37 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import android.widget.FrameLayout;
+import com.tencent.superplayer.api.ISuperPlayer;
+import java.util.Timer;
 
 public class aado
-  extends WebViewPlugin
 {
-  public aado()
-  {
-    this.mPluginNameSpace = "troop_member_level_JS_API";
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if (!"troop_member_level_JS_API".equals(paramString2)) {
-      return false;
-    }
-    if (("setTitleBar".equals(paramString3)) && (paramVarArgs.length == 3))
-    {
-      paramString2 = (SwiftBrowserUIStyleHandler)super.getBrowserComponent(2);
-      if (paramString2 != null)
-      {
-        paramString1 = paramVarArgs[0];
-        paramJsBridgeListener = paramString1;
-        if ("RETURN".equals(paramString1)) {
-          paramJsBridgeListener = this.mRuntime.a().getIntent().getStringExtra("leftViewText");
-        }
-        paramString2.mSwiftTitleUI.setTitleBar(paramJsBridgeListener, paramVarArgs[1], paramVarArgs[2]);
-      }
-      return true;
-    }
-    return false;
-  }
+  private double jdField_a_of_type_Double;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private aadm jdField_a_of_type_Aadm;
+  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  private ISuperPlayer jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+  private String jdField_a_of_type_JavaLangString;
+  private Timer jdField_a_of_type_JavaUtilTimer;
+  private boolean jdField_a_of_type_Boolean;
+  private double jdField_b_of_type_Double;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  private double jdField_c_of_type_Double;
+  private int jdField_c_of_type_Int;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean;
+  private double jdField_d_of_type_Double;
+  private int jdField_d_of_type_Int;
+  private boolean jdField_d_of_type_Boolean;
+  private double jdField_e_of_type_Double;
+  private int jdField_e_of_type_Int;
+  private boolean jdField_e_of_type_Boolean;
+  private double jdField_f_of_type_Double;
+  private int jdField_f_of_type_Int;
+  private int g;
+  private int h;
 }
 
 

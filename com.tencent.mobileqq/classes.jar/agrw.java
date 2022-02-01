@@ -1,13 +1,30 @@
-import android.widget.RelativeLayout;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
 class agrw
-  extends aezf
+  extends ClickableSpan
 {
-  public long a;
-  public RelativeLayout a;
-  public String b;
+  agrw(agrt paramagrt) {}
   
-  private agrw(agru paramagru) {}
+  public void onClick(View paramView)
+  {
+    if (!NetworkUtil.isNetSupport(this.a.a))
+    {
+      QQToast.a(this.a.a, anvx.a(2131702710), 2000).a();
+      return;
+    }
+    paramView = new Intent();
+    paramView.setFlags(268435456);
+    paramView.setAction("android.intent.action.VIEW");
+    paramView.putExtra("devlock_open_source", "SmartDeviceMsg");
+    paramView.setData(Uri.parse("mqqdevlock://devlock/open?"));
+    this.a.a.startActivity(paramView);
+  }
 }
 
 

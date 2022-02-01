@@ -1,8 +1,11 @@
 package com.tencent.av.ui;
 
 import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import lez;
+import lfe;
+import mbf;
 
 public class DoubleVideoCtrlUI$1
   implements Runnable
@@ -11,18 +14,23 @@ public class DoubleVideoCtrlUI$1
   
   public void run()
   {
-    lez locallez = this.this$0.a.a();
-    QLog.w(this.this$0.jdField_d_of_type_JavaLangString, 1, "CheckRemoteCameraRunnable, 5s has past, 对方视频数据没来, mRecvVideoData[" + this.this$0.e + "], SessionType[" + locallez.jdField_d_of_type_Int + "], shutCameraAnswer[" + locallez.n + "], cameraPermission[" + locallez.o + "]");
-    if ((!this.this$0.e) && (locallez.jdField_d_of_type_Int == 2))
+    if (this.this$0.h()) {}
+    do
     {
-      this.this$0.a.e(locallez.jdField_d_of_type_JavaLangString);
-      if ((locallez.n) || (!locallez.o))
+      return;
+      long l = AudioHelper.b();
+      if ((!this.this$0.jdField_a_of_type_ComTencentAvVideoController.f()) && (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().f == 1) && (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().j))
       {
-        locallez.a(-1011L, "CheckRemoteCameraRunnable", 1);
-        this.this$0.a("CheckRemoteCameraRunnable", 1);
+        if (QLog.isColorLevel()) {
+          QLog.w(this.this$0.d, 1, "FixTerSwitchStatus ,switch to pc ,local close camera, seq[" + l + "]");
+        }
+        this.this$0.k(l);
+        this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(106), Long.valueOf(l) });
+        mbf.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1021);
       }
-      this.this$0.C(-1011L);
-    }
+      this.this$0.i(l, 16777215);
+    } while (!this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().g);
+    this.this$0.jdField_a_of_type_ComTencentAvVideoController.a(true, this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().d);
   }
 }
 

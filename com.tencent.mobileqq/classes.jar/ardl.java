@@ -1,24 +1,51 @@
-class ardl
-  extends bgod
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
+
+public class ardl
 {
-  ardl(arcu paramarcu) {}
+  private int a;
+  private int b;
+  private int c;
   
-  public void onCancel(bgoe parambgoe) {}
-  
-  public void onDone(bgoe parambgoe)
+  public static ardl a(String paramString)
   {
-    super.onDone(parambgoe);
+    if (paramString == null) {}
+    do
+    {
+      return null;
+      try
+      {
+        ardl localardl = new ardl();
+        paramString = new JSONObject(paramString);
+        localardl.a = paramString.optInt("showVoiceToTextSwitch", -1);
+        localardl.b = paramString.optInt("grayTipShowPerThousand", -1);
+        localardl.c = paramString.optInt("mainSwitch", -1);
+        return localardl;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("PttAutoChangeProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
   }
   
-  public void onDoneFile(bgoe parambgoe) {}
+  public int a()
+  {
+    return this.b;
+  }
   
-  public void onPause(bgoe parambgoe) {}
+  public boolean a()
+  {
+    return this.a == 1;
+  }
   
-  public void onProgress(bgoe parambgoe) {}
+  public String toString()
+  {
+    return "open:" + this.a;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ardl
  * JD-Core Version:    0.7.0.1
  */

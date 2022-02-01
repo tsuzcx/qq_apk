@@ -1,54 +1,61 @@
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Bundle;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenService;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.opengl.GLES20;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
+import java.nio.ShortBuffer;
 
 public class apod
-  implements Application.ActivityLifecycleCallbacks
 {
-  public apod(ColorNoteSmallScreenService paramColorNoteSmallScreenService) {}
+  public static final float[] a;
+  public static final short[] a;
+  private FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
+  private ShortBuffer jdField_a_of_type_JavaNioShortBuffer;
+  public float[] b;
+  public short[] b;
   
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityDestroyed(Activity paramActivity)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteSmallScreenService", 2, "onActivityDestroyed: " + paramActivity.getClass().getName());
-    }
+    jdField_a_of_type_ArrayOfFloat = new float[] { -1.0F, 1.0F, 0.0F, 0.0F, 1.0F, -1.0F, -1.0F, 0.0F, 0.0F, 0.0F, 1.0F, -1.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F };
+    jdField_a_of_type_ArrayOfShort = new short[] { 0, 1, 2, 2, 3, 0 };
   }
   
-  public void onActivityPaused(Activity paramActivity) {}
-  
-  public void onActivityResumed(Activity paramActivity)
+  public apod()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteSmallScreenService", 2, "onActivityResumed: " + paramActivity.getClass().getName());
-    }
-    if (this.a.f)
-    {
-      this.a.f = false;
-      this.a.d = true;
-      this.a.a().removeCallbacks(this.a.b);
-      this.a.a().postDelayed(this.a.b, 200L);
-    }
+    this.jdField_b_of_type_ArrayOfFloat = jdField_a_of_type_ArrayOfFloat;
+    this.jdField_b_of_type_ArrayOfShort = jdField_a_of_type_ArrayOfShort;
+    b();
   }
   
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityStarted(Activity paramActivity)
+  public apod(float[] paramArrayOfFloat, short[] paramArrayOfShort)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteSmallScreenService", 2, "onActivityStarted: " + paramActivity.getClass().getName());
-    }
+    this.jdField_b_of_type_ArrayOfFloat = paramArrayOfFloat;
+    this.jdField_b_of_type_ArrayOfShort = paramArrayOfShort;
+    b();
   }
   
-  public void onActivityStopped(Activity paramActivity)
+  private void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteSmallScreenService", 2, "onActivityStopped: " + paramActivity.getClass().getName());
-    }
+    this.jdField_a_of_type_JavaNioFloatBuffer = ByteBuffer.allocateDirect(this.jdField_b_of_type_ArrayOfFloat.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    this.jdField_a_of_type_JavaNioFloatBuffer.put(this.jdField_b_of_type_ArrayOfFloat).position(0);
+    this.jdField_a_of_type_JavaNioShortBuffer = ByteBuffer.allocateDirect(this.jdField_b_of_type_ArrayOfShort.length * 2).order(ByteOrder.nativeOrder()).asShortBuffer();
+    this.jdField_a_of_type_JavaNioShortBuffer.put(this.jdField_b_of_type_ArrayOfShort).position(0);
+  }
+  
+  public void a()
+  {
+    GLES20.glDrawElements(4, 6, 5123, this.jdField_a_of_type_JavaNioShortBuffer);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    GLES20.glEnableVertexAttribArray(paramInt1);
+    apob.a("glEnableVertexAttribArray aPositionHandle");
+    GLES20.glEnableVertexAttribArray(paramInt2);
+    apob.a("glEnableVertexAttribArray aTextureCoordHandle");
+    this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
+    GLES20.glVertexAttribPointer(paramInt1, 3, 5126, false, 20, this.jdField_a_of_type_JavaNioFloatBuffer);
+    this.jdField_a_of_type_JavaNioFloatBuffer.position(3);
+    GLES20.glVertexAttribPointer(paramInt2, 2, 5126, false, 20, this.jdField_a_of_type_JavaNioFloatBuffer);
   }
 }
 

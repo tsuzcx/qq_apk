@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.debug;
 
-import alsq;
+import amrr;
 
 public class CmGameDebugView$2$1
   implements Runnable
 {
-  public CmGameDebugView$2$1(alsq paramalsq) {}
+  public CmGameDebugView$2$1(amrr paramamrr) {}
   
   public void run()
   {

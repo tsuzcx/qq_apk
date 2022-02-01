@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.receipt;
 
-import azul;
+import bbat;
 
 public class ReceiptMessageReadMemberListContainerFragment$ListProcessHandler$1
   implements Runnable
 {
-  public ReceiptMessageReadMemberListContainerFragment$ListProcessHandler$1(azul paramazul, ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  public ReceiptMessageReadMemberListContainerFragment$ListProcessHandler$1(bbat parambbat, ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
   
   public void run()
   {

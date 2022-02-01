@@ -1,17 +1,13 @@
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+
 class wmm
-  implements wof
+  implements wzg
 {
-  wmm(wml paramwml) {}
-  
-  public void a()
+  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
   {
-    wml.a(this.a);
-  }
-  
-  public void a(wod paramwod, String paramString, boolean paramBoolean)
-  {
-    xvv.d("Q.qqstory.playernew.StoryPlayerImpl", "onGroupDataDelete, groupId=%s, vid=%s", new Object[] { paramwod.a, paramString });
-    wml.a(this.a).a(paramwod, paramString, paramBoolean);
+    return (!StoryVideoItem.isPlayable(paramStoryVideoItem.mVid, true)) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex <= 0L);
   }
 }
 

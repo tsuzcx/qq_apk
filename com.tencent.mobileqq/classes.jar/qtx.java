@@ -1,20 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentComment;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
 
-public class qtx
-  implements View.OnClickListener
+class qtx
+  implements Animator.AnimatorListener
 {
-  public qtx(ComponentComment paramComponentComment, String paramString, ArticleInfo paramArticleInfo) {}
+  qtx(qtv paramqtv) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    pay.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment.getContext(), this.jdField_a_of_type_JavaLangString);
-    pyr.a(1, pay.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
-    EventCollector.getInstance().onViewClicked(paramView);
+    qtv.a(this.a).setSelected(this.a.isSelected());
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    qtv.a(this.a, false);
+    qtv.a(this.a).setSelected(this.a.isSelected());
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

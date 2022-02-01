@@ -4,7 +4,7 @@ import android.graphics.Color;
 import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bmkn;
+import boaf;
 import com.tencent.mobileqq.utils.StringUtil;
 import dov.com.qq.im.aeeditor.manage.AEEditorPagStickerConfig;
 import dov.com.qq.im.aeeditor.manage.AEEditorPagStickerConfig.FrameConfig;
@@ -53,11 +53,11 @@ public class AEEditorTextBean
     AEEditorTextBean localAEEditorTextBean = new AEEditorTextBean();
     localAEEditorTextBean.id = paramAEEditorPagStickerInfo.stickerId;
     localAEEditorTextBean.thumbUrl = paramAEEditorPagStickerInfo.thumbUrl;
-    localAEEditorTextBean.pagFilePath = bmkn.a().e(paramAEEditorPagStickerInfo.stickerId);
+    localAEEditorTextBean.pagFilePath = boaf.a().e(paramAEEditorPagStickerInfo.stickerId);
     if (paramAEEditorPagStickerInfo.backgroundColorAdjustable == 1)
     {
       localAEEditorTextBean.type = 1;
-      localAEEditorTextBean.pagThumbFilePath = bmkn.a().h(paramAEEditorPagStickerInfo.stickerId);
+      localAEEditorTextBean.pagThumbFilePath = boaf.a().h(paramAEEditorPagStickerInfo.stickerId);
     }
     for (;;)
     {
@@ -66,8 +66,8 @@ public class AEEditorTextBean
       if ("blur".equals(paramAEEditorPagStickerInfo.stickerId))
       {
         localAEEditorTextBean.type = 3;
-        localAEEditorTextBean.blurTextPath = bmkn.a().f(paramAEEditorPagStickerInfo.stickerId);
-        localAEEditorTextBean.blurTexturePath = bmkn.a().g(paramAEEditorPagStickerInfo.stickerId);
+        localAEEditorTextBean.blurTextPath = boaf.a().f(paramAEEditorPagStickerInfo.stickerId);
+        localAEEditorTextBean.blurTexturePath = boaf.a().g(paramAEEditorPagStickerInfo.stickerId);
       }
       else
       {

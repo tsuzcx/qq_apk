@@ -1,42 +1,45 @@
-import android.graphics.drawable.Drawable;
-import java.lang.ref.WeakReference;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function0;
-import org.jetbrains.annotations.NotNull;
-
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/gldrawable/DynamicDrawable$MyLoaderCallback;", "Lcom/tencent/mobileqq/vas/gldrawable/GLDrawableProxy$LoaderCallback;", "drawableRef", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mobileqq/vas/gldrawable/DynamicDrawable;", "(Ljava/lang/ref/WeakReference;)V", "getDrawableRef", "()Ljava/lang/ref/WeakReference;", "onLoadFailed", "", "onLoadSucceed", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class bghy
-  implements bgim
+public class bghy
 {
-  @NotNull
-  private final WeakReference<bghx> a;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  private String c;
+  public int d;
   
-  public bghy(@NotNull WeakReference<bghx> paramWeakReference)
+  public String a()
   {
-    this.a = paramWeakReference;
+    if ((this.jdField_a_of_type_Int & 0x4) == 4) {
+      return "classteacher";
+    }
+    if ((this.jdField_a_of_type_Int & 0x8) == 8) {
+      return "teacher";
+    }
+    if ((this.jdField_a_of_type_Int & 0x1) == 1) {
+      return "owner";
+    }
+    if ((this.jdField_a_of_type_Int & 0x2) == 2) {
+      return "admin";
+    }
+    return "other";
   }
   
-  public void a()
+  public void a(String paramString)
   {
-    bghx localbghx = (bghx)this.a.get();
-    if (localbghx != null)
-    {
-      Drawable localDrawable = (Drawable)bghx.a(localbghx).invoke();
-      if (localDrawable != null) {
-        bghx.a(localbghx, localDrawable);
-      }
-      if (localbghx.a() == null) {
-        bghx.a(localbghx, (Drawable)bghx.b(localbghx).invoke());
-      }
-    }
+    this.jdField_c_of_type_JavaLangString = bghx.a(paramString, "").trim().replaceAll("\\s+", " ");
   }
   
-  public void b()
+  public String b()
   {
-    bghx localbghx = (bghx)this.a.get();
-    if ((localbghx != null) && (localbghx.a() == null)) {
-      bghx.a(localbghx, (Drawable)bghx.b(localbghx).invoke());
-    }
+    return this.jdField_c_of_type_JavaLangString;
+  }
+  
+  public String toString()
+  {
+    return "KeywordResult{msgId=" + this.jdField_a_of_type_Long + ", troopUin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", userRole=" + this.jdField_a_of_type_Int + ", action=" + this.jdField_b_of_type_Int + ", keyword='" + this.jdField_b_of_type_JavaLangString + '\'' + ", startPos=" + this.jdField_c_of_type_Int + ", endPos=" + this.d + ", content=" + this.jdField_c_of_type_JavaLangString + '}';
   }
 }
 

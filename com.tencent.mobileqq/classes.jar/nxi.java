@@ -1,37 +1,10 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import OnlinePushPack.SvcRespPushMsg;
 
-public class nxi
-  implements ViewPager.OnPageChangeListener
+public abstract interface nxi
 {
-  public nxi(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  public abstract void a(int paramInt, SvcRespPushMsg paramSvcRespPushMsg);
   
-  public void onPageScrollStateChanged(int paramInt)
-  {
-    PublicAccountAdvertisementActivity localPublicAccountAdvertisementActivity = this.a;
-    if (paramInt != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      PublicAccountAdvertisementActivity.a(localPublicAccountAdvertisementActivity, bool);
-      return;
-    }
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    PublicAccountAdvertisementActivity localPublicAccountAdvertisementActivity = this.a;
-    if (paramInt2 != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      PublicAccountAdvertisementActivity.a(localPublicAccountAdvertisementActivity, bool);
-      return;
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    PublicAccountAdvertisementActivity.a(this.a, paramInt);
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 

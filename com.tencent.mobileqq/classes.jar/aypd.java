@@ -1,22 +1,33 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import android.text.TextPaint;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
-import com.tencent.mobileqq.text.QzoneTextBuilder;
-import com.tencent.widget.XEditTextEx;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnItemTouchListener;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
 
 public class aypd
-  extends Editable.Factory
+  implements RecyclerView.OnItemTouchListener
 {
-  public aypd(StickyNotePublishFragment paramStickyNotePublishFragment) {}
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
+  private View jdField_a_of_type_AndroidViewView;
   
-  public Editable newEditable(CharSequence paramCharSequence)
+  public aypd(Context paramContext, aypf paramaypf)
   {
-    if ((paramCharSequence instanceof QzoneTextBuilder)) {
-      return (Editable)paramCharSequence;
-    }
-    return new QzoneTextBuilder(paramCharSequence, 3, (int)(StickyNotePublishFragment.a(this.a).getTextSize() / StickyNotePublishFragment.a(this.a).getPaint().density));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new aype(this, paramaypf));
   }
+  
+  public boolean onInterceptTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
+  {
+    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    this.jdField_a_of_type_AndroidViewView = paramRecyclerView.findChildViewUnder(paramMotionEvent.getX(), paramMotionEvent.getY());
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+    return false;
+  }
+  
+  public void onRequestDisallowInterceptTouchEvent(boolean paramBoolean) {}
+  
+  public void onTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent) {}
 }
 
 

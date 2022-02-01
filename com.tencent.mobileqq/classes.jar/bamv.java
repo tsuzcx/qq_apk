@@ -1,81 +1,59 @@
-import android.text.Editable;
-import android.text.Spannable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.richstatus.RichStatusEditText;
+import android.content.Context;
+import android.graphics.Rect;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.qassistant.view.AssistantBackView;
 
 public class bamv
-  implements TextWatcher
+  implements OnCompositionLoadedListener
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
+  public bamv(AssistantBackView paramAssistantBackView) {}
   
-  public bamv(RichStatusEditText paramRichStatusEditText) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public void onCompositionLoaded(LottieComposition arg1)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean))
+    if ((??? == null) || (AssistantBackView.a(this.a)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean = false;
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.getText().replace(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.setSelection(this.jdField_a_of_type_Int + this.jdField_a_of_type_JavaLangString.length());
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean = true;
-    }
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (!this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean) {
+      bakl.a("AssistantBackView", "onCompositionLoaded lottieComposition is null or mIsDestroyed:" + AssistantBackView.a(this.a));
       return;
     }
-    if (paramInt3 > 0)
+    int i = AIOUtils.dp2px(70.0F, this.a.getResources());
+    int j = AIOUtils.dp2px(70.0F, this.a.getResources());
+    Object localObject1 = ???.getBounds();
+    float f1 = i / ((Rect)localObject1).width();
+    float f2 = j / ((Rect)localObject1).height();
+    bakl.a("AssistantBackView", "onCompositionLoaded iw:" + i + ", ih:" + j + ": : rw:" + ((Rect)localObject1).width() + ", rh:" + ((Rect)localObject1).height());
+    localObject1 = new LottieDrawable();
+    ((LottieDrawable)localObject1).setImageAssetDelegate(new almz(this.a.getContext().getApplicationContext()));
+    ((LottieDrawable)localObject1).setComposition(???);
+    ((LottieDrawable)localObject1).setScale(f1, f2);
+    ((LottieDrawable)localObject1).loop(true);
+    ??? = ((LottieDrawable)localObject1).getBounds();
+    bakl.a("AssistantBackView", "onCompositionLoaded rw:" + ???.width() + ", rh:" + ???.height() + " mIsDestroyed:" + AssistantBackView.a(this.a));
+    AssistantBackView.a(this.a, (LottieDrawable)localObject1);
+    if (AssistantBackView.a(this.a))
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Int = paramInt1;
-      this.jdField_b_of_type_Int = paramInt3;
-      RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText);
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.setCursorVisible(true);
-      return;
+      ((LottieDrawable)localObject1).cancelAnimation();
+      ((LottieDrawable)localObject1).recycleBitmaps();
+      ((LottieDrawable)localObject1).clearComposition();
+      ((LottieDrawable)localObject1).setImageAssetDelegate(null);
+      AssistantBackView.a(this.a, null);
     }
-    this.jdField_a_of_type_Boolean = false;
-    paramCharSequence = RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText, paramInt1, false, false);
-    if (paramCharSequence != null)
+    for (;;)
     {
-      paramInt3 = RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText).getSpanStart(paramCharSequence);
-      if (paramInt3 != paramInt1)
+      synchronized (AssistantBackView.a(this.a))
       {
-        this.jdField_b_of_type_Boolean = true;
-        this.jdField_a_of_type_Int = paramInt3;
-        this.jdField_b_of_type_Int = (paramInt1 - paramInt3);
-        this.jdField_a_of_type_JavaLangString = "";
-      }
-    }
-    RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText, paramInt1, paramInt2);
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (!this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!this.jdField_a_of_type_Boolean);
-      bhby localbhby = RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText, paramInt1 + paramInt3, true, false);
-      if ((localbhby != null) && (RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText) != null) && (!RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText).a(localbhby)))
-      {
-        this.jdField_a_of_type_JavaLangString = "";
-        this.jdField_b_of_type_Boolean = true;
+        AssistantBackView.a(this.a, null);
+        AssistantBackView.a(this.a, null);
         return;
       }
-      this.jdField_a_of_type_JavaLangString = paramCharSequence.subSequence(paramInt1, paramInt1 + paramInt3).toString();
-    } while (!this.jdField_a_of_type_JavaLangString.contains("\n"));
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.replace("\n", "");
+      if (this.a.isEnabled())
+      {
+        this.a.removeCallbacks(AssistantBackView.a(this.a));
+        this.a.post(AssistantBackView.a(this.a));
+      }
+    }
   }
 }
 

@@ -1,31 +1,18 @@
+import com.tencent.mobileqq.data.CameraEmotionData;
+
 class aseh
+  extends anrh
 {
-  private int jdField_a_of_type_Int;
-  private asec jdField_a_of_type_Asec;
+  aseh(aseg paramaseg) {}
   
-  public aseh(aseg paramaseg, asec paramasec)
+  protected void doOnAddEmoResult(int paramInt, CameraEmotionData paramCameraEmotionData)
   {
-    this.jdField_a_of_type_Asec = paramasec;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public asec a()
-  {
-    return this.jdField_a_of_type_Asec;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a.a(paramInt, paramCameraEmotionData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aseh
  * JD-Core Version:    0.7.0.1
  */

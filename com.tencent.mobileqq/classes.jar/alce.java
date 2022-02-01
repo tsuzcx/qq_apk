@@ -1,43 +1,28 @@
-import android.text.TextUtils;
+import android.graphics.Rect;
+import android.view.View;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class alce
 {
-  public static AtomicBoolean a;
-  public static String[] a;
-  
-  static
+  public static Rect a(View paramView)
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "MI 3", "Coolpad 8675", "OPPO R7", "Redmi Note 2", "MX4", "vivo X5L", "m3 note", "PRO 6" };
+    Rect localRect = new Rect();
+    paramView.getGlobalVisibleRect(localRect);
+    return localRect;
   }
   
-  public static void a(String paramString)
+  public static View a(ChatMessage paramChatMessage, ChatXListView paramChatXListView)
   {
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      try
-      {
-        if (Integer.valueOf(paramString).intValue() == 0)
-        {
-          jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-          if (QLog.isColorLevel()) {
-            QLog.d("ShortVideo.ProgressiveUtils", 2, "parseConfig(): config = " + paramString + ", sProgressiveEnable = " + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
-          }
-          return;
-        }
-        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-        continue;
-      }
-      catch (Exception localException)
-      {
-        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        continue;
-      }
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    int i = ((afqz)((blcj)paramChatXListView.getAdapter()).getWrappedAdapter()).a(paramChatMessage) + paramChatXListView.getHeaderViewsCount();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.delmsg", 2, "pos is:" + i);
     }
+    if (i < 0) {
+      return null;
+    }
+    return paramChatXListView.getChildAt(i - paramChatXListView.getFirstVisiblePosition());
   }
 }
 

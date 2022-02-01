@@ -1,15 +1,23 @@
-import android.graphics.drawable.Drawable;
-import android.text.Html.ImageGetter;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class afqk
-  implements Html.ImageGetter
+public class afqk
+  implements View.OnClickListener
 {
-  afqk(afqj paramafqj) {}
+  public afqk(BaseBubbleBuilder paramBaseBubbleBuilder, long paramLong, int paramInt) {}
   
-  public Drawable getDrawable(String paramString)
+  public void onClick(View paramView)
   {
-    return this.a.a(afqj.a(this.a).mContext, paramString);
+    if ((paramView == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin == null)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bflj.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.jdField_a_of_type_AndroidContentContext);
+    }
   }
 }
 

@@ -1,6 +1,12 @@
-public abstract interface aueu
+public class aueu
 {
-  public abstract void a(boolean paramBoolean);
+  int a;
+  int b;
+  
+  public String toString()
+  {
+    return "Type [type1=" + this.a + ", type2=" + this.b + "]";
+  }
 }
 
 

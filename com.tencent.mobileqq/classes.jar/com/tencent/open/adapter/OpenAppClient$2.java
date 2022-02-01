@@ -1,7 +1,7 @@
 package com.tencent.open.adapter;
 
 import android.content.Context;
-import bhzm;
+import bjko;
 import java.util.HashMap;
 
 final class OpenAppClient$2
@@ -19,7 +19,7 @@ final class OpenAppClient$2
     catch (Exception localException)
     {
       String str = "onPushMsg exception: " + this.jdField_a_of_type_JavaUtilHashMap;
-      bhzm.c(OpenAppClient.a, str, localException);
+      bjko.c(OpenAppClient.a, str, localException);
     }
   }
 }

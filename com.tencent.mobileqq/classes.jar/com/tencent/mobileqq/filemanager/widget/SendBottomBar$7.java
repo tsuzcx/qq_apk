@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.widget;
 
-import atcs;
+import augz;
 
 public class SendBottomBar$7
   implements Runnable
@@ -9,7 +9,7 @@ public class SendBottomBar$7
   
   public void run()
   {
-    new atcs(this).execute(new Object[0]);
+    new augz(this).execute(new Object[0]);
   }
 }
 

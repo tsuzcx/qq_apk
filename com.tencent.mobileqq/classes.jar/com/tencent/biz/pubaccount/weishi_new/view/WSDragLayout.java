@@ -12,8 +12,8 @@ import android.widget.ListView;
 import android.widget.Scroller;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
-import uya;
-import vdy;
+import vmp;
+import vsr;
 
 public class WSDragLayout
   extends LinearLayout
@@ -22,7 +22,7 @@ public class WSDragLayout
   private int jdField_a_of_type_Int = 1;
   private ListView jdField_a_of_type_AndroidWidgetListView;
   private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private vdy jdField_a_of_type_Vdy;
+  private vsr jdField_a_of_type_Vsr;
   boolean jdField_a_of_type_Boolean = false;
   float jdField_b_of_type_Float = 0.0F;
   private int jdField_b_of_type_Int;
@@ -80,19 +80,19 @@ public class WSDragLayout
     boolean bool = true;
     float f1 = -(paramFloat - this.jdField_d_of_type_Float);
     float f2 = a(f1);
-    if ((this.jdField_a_of_type_Vdy != null) && (this.jdField_b_of_type_Int > 0)) {
-      this.jdField_a_of_type_Vdy.a(Math.abs(getScrollY() + f2) / this.jdField_b_of_type_Int);
+    if ((this.jdField_a_of_type_Vsr != null) && (this.jdField_b_of_type_Int > 0)) {
+      this.jdField_a_of_type_Vsr.a(Math.abs(getScrollY() + f2) / this.jdField_b_of_type_Int);
     }
-    vdy localvdy;
+    vsr localvsr;
     if ((this.jdField_c_of_type_Boolean) && (f2 != 0.0F))
     {
       scrollBy(0, (int)f2);
       if (Math.abs(f1) > 5.0F) {
         this.e = true;
       }
-      if (this.jdField_a_of_type_Vdy != null)
+      if (this.jdField_a_of_type_Vsr != null)
       {
-        localvdy = this.jdField_a_of_type_Vdy;
+        localvsr = this.jdField_a_of_type_Vsr;
         if (getScrollY() <= 0) {
           break label142;
         }
@@ -100,7 +100,7 @@ public class WSDragLayout
     }
     for (;;)
     {
-      localvdy.a(bool);
+      localvsr.a(bool);
       this.jdField_d_of_type_Float = paramFloat;
       return;
       if (f2 <= 0.0F) {
@@ -139,7 +139,7 @@ public class WSDragLayout
       i = 0;
       break;
       label132:
-      if (this.jdField_a_of_type_Vdy != null)
+      if (this.jdField_a_of_type_Vsr != null)
       {
         this.f = true;
         a(-this.jdField_b_of_type_Int);
@@ -219,8 +219,8 @@ public class WSDragLayout
       }
       return paramFloat;
     }
-    if (this.jdField_a_of_type_Vdy != null) {
-      this.jdField_a_of_type_Vdy.a();
+    if (this.jdField_a_of_type_Vsr != null) {
+      this.jdField_a_of_type_Vsr.a();
     }
     return i - getScrollY();
   }
@@ -242,9 +242,9 @@ public class WSDragLayout
     if ((this.jdField_a_of_type_AndroidWidgetScroller != null) && (this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset()))
     {
       scrollTo(this.jdField_a_of_type_AndroidWidgetScroller.getCurrX(), this.jdField_a_of_type_AndroidWidgetScroller.getCurrY());
-      uya.a("WSDragLayout", "scrollY = " + this.jdField_a_of_type_AndroidWidgetScroller.getCurrY() + "; dis = " + this.jdField_b_of_type_Int);
-      if ((this.jdField_a_of_type_Vdy != null) && (this.jdField_b_of_type_Int > 0)) {
-        this.jdField_a_of_type_Vdy.a(Math.abs(this.jdField_a_of_type_AndroidWidgetScroller.getCurrY()) / this.jdField_b_of_type_Int);
+      vmp.a("WSDragLayout", "scrollY = " + this.jdField_a_of_type_AndroidWidgetScroller.getCurrY() + "; dis = " + this.jdField_b_of_type_Int);
+      if ((this.jdField_a_of_type_Vsr != null) && (this.jdField_b_of_type_Int > 0)) {
+        this.jdField_a_of_type_Vsr.a(Math.abs(this.jdField_a_of_type_AndroidWidgetScroller.getCurrY()) / this.jdField_b_of_type_Int);
       }
       invalidate();
     }
@@ -255,9 +255,9 @@ public class WSDragLayout
         return;
       } while (!this.f);
       this.f = false;
-    } while (this.jdField_a_of_type_Vdy == null);
-    this.jdField_a_of_type_Vdy.a(1.0F);
-    this.jdField_a_of_type_Vdy.a(this.jdField_a_of_type_Int);
+    } while (this.jdField_a_of_type_Vsr == null);
+    this.jdField_a_of_type_Vsr.a(1.0F);
+    this.jdField_a_of_type_Vsr.a(this.jdField_a_of_type_Int);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -319,14 +319,14 @@ public class WSDragLayout
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void setTouchListener(vdy paramvdy)
+  public void setTouchListener(vsr paramvsr)
   {
-    this.jdField_a_of_type_Vdy = paramvdy;
+    this.jdField_a_of_type_Vsr = paramvsr;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.WSDragLayout
  * JD-Core Version:    0.7.0.1
  */

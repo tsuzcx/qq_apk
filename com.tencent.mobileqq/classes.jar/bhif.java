@@ -1,93 +1,42 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Context;
+import android.text.SpannableString;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.BlockingQueue;
 
 public class bhif
-  extends Handler
 {
-  private long a = 0L;
-  
-  private bhif(Looper paramLooper)
+  public static CharSequence a(Context paramContext, axwq paramaxwq, String paramString)
   {
-    super(paramLooper);
-  }
-  
-  private void a(long paramLong)
-  {
+    if ((paramaxwq == null) || (TextUtils.isEmpty(paramaxwq.a()))) {
+      return paramString;
+    }
+    String str = "#" + paramaxwq.a() + "#";
+    paramString = new SpannableString(str + paramString);
     if (QLog.isColorLevel()) {
-      QLog.d("QQToast", 2, "scheduleNextToast to " + paramLong);
+      QLog.i("TopicHelper", 2, "topicName is " + str);
     }
-    removeMessages(1);
-    sendEmptyMessageDelayed(1, paramLong);
+    paramString.setSpan(new bhig(paramContext, paramaxwq), 0, str.length(), 33);
+    return paramString;
   }
   
-  private void a(bhie parambhie)
+  public static CharSequence b(Context paramContext, axwq paramaxwq, String paramString)
   {
-    long l2 = 0L;
-    parambhie = parambhie.a();
-    long l1;
-    int i;
-    if (parambhie != null)
-    {
-      parambhie.a();
-      if (QQToast.a(parambhie) == 0)
-      {
-        l1 = 2000L;
-        this.a = (System.currentTimeMillis() + l1);
-        i = 1;
-      }
+    if ((paramaxwq == null) || (TextUtils.isEmpty(paramaxwq.a()))) {
+      return paramString;
     }
-    for (;;)
-    {
-      if (!QQToast.a().isEmpty())
-      {
-        if (i != 0) {
-          l2 = 100L + l1;
-        }
-        a(l2);
-      }
-      return;
-      l1 = 3500L;
-      break;
-      i = 0;
-      l1 = 0L;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString).append("\n").append("#").append(paramaxwq.a()).append("#");
+    SpannableString localSpannableString = new SpannableString(localStringBuilder.toString());
+    if (QLog.isColorLevel()) {
+      QLog.i("TopicHelper", 2, "topicAndDescWithLine is " + localStringBuilder);
     }
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    long l;
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQToast", 2, "MSG_SHOW_TOAST received");
-      }
-      l = System.currentTimeMillis();
-      if (l <= this.a + 100L) {
-        break;
-      }
-      paramMessage = (bhie)QQToast.a().poll();
-      if (paramMessage != null)
-      {
-        a(paramMessage);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("QQToast", 2, "MSG_SHOW_TOAST but no message to show");
-    return;
-    a(this.a - l + 100L);
+    localSpannableString.setSpan(new bhih(paramContext, paramaxwq), paramString.length(), localStringBuilder.length(), 33);
+    return localSpannableString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhif
  * JD-Core Version:    0.7.0.1
  */

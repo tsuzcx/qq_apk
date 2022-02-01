@@ -1,22 +1,18 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
 
-public class aphu
-  implements TextWatcher
+public final class aphu
+  implements Parcelable.Creator<ARCommonConfigInfo>
 {
-  public aphu(ClearEllipsisEditText paramClearEllipsisEditText) {}
-  
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public ARCommonConfigInfo a(Parcel paramParcel)
   {
-    if ((ClearEllipsisEditText.a(this.a)) && (!ClearEllipsisEditText.b(this.a))) {
-      ClearEllipsisEditText.a(this.a, paramCharSequence.toString());
-    }
-    ClearEllipsisEditText.a(this.a, false);
+    return new ARCommonConfigInfo(paramParcel);
+  }
+  
+  public ARCommonConfigInfo[] a(int paramInt)
+  {
+    return new ARCommonConfigInfo[paramInt];
   }
 }
 

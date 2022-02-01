@@ -1,16 +1,13 @@
-import android.content.Intent;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class aumg
+class aumg
+  implements agpi
 {
-  public long a;
-  public Intent a;
-  public String a;
-  public String b = "";
-  public String c = "";
+  aumg(aumf paramaumf) {}
   
-  public aumg(aumd paramaumd)
+  public boolean a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    return (avkh.c.get()) && (paramInt == 0);
   }
 }
 

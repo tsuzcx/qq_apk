@@ -1,82 +1,72 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.PrintStream;
 
 public class atrr
-  implements awil
 {
-  public atrr(NearbyHybridFragment paramNearbyHybridFragment) {}
-  
-  public void a(View paramView, int paramInt, long paramLong)
+  public static int a(blkh paramblkh, long paramLong1, long paramLong2, long paramLong3)
   {
-    boolean bool = true;
-    paramView = (awik)this.a.jdField_a_of_type_Awih.a(paramInt);
-    Object localObject;
-    if (paramView.jdField_a_of_type_Int == 1)
+    if (paramLong3 == 0L)
     {
-      this.a.a(this.a.jdField_a_of_type_Awih.a());
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a();
-    }
-    switch (paramView.jdField_a_of_type_Int)
-    {
-    default: 
-      label96:
-      awkj.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, "click_op_button", paramView.jdField_a_of_type_Int);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("nearby.NearbyHybridFragment", 2, "onItemClick:" + paramView.jdField_c_of_type_JavaLangString + ", " + paramView.jdField_a_of_type_JavaLangString);
-      }
-      if ((paramView.jdField_c_of_type_Int == 1) && (!TextUtils.isEmpty(paramView.e)) && (this.a.getActivity() != null) && (bfwv.a(this.a.getActivity(), paramView.e)) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null)) {
-        if (TextUtils.isEmpty(paramView.d)) {
-          break;
+      if (paramLong1 < paramblkh.a(BaseApplication.getContext(), paramLong1, paramLong3, 1024)) {}
+      for (;;)
+      {
+        i = (int)paramLong1;
+        int k = blkk.a(BaseApplication.getContext());
+        int j;
+        if (k != 1)
+        {
+          j = i;
+          if (k != 2) {}
         }
+        else
+        {
+          j = i;
+          if (i > 16384) {
+            j = 16384;
+          }
+        }
+        i = Math.min(j, 1048576);
+        if (QLog.isColorLevel()) {
+          QLog.d("FileHttpUtils<FileAssistant>", 2, "sendFilePakage transferedSize[" + paramLong2 + "], size[" + i + "]");
+        }
+        return i;
+        paramLong1 = 1024L;
       }
+    }
+    int i = paramblkh.a(BaseApplication.getContext(), paramLong1, paramLong2, 131072);
+    if (paramLong1 < i + paramLong2) {}
+    for (paramLong1 -= paramLong2;; paramLong1 = i)
+    {
+      i = (int)paramLong1;
       break;
     }
-    for (;;)
-    {
-      try
-      {
-        localObject = new Intent("android.intent.action.VIEW", Uri.parse(paramView.d));
-        ((Intent)localObject).setFlags(268435456);
-        BaseApplicationImpl.getContext().startActivity((Intent)localObject);
-        if (bool) {
-          break;
-        }
-        this.a.a(paramView);
-      }
-      catch (Exception localException)
-      {
-        QLog.d("nearby.NearbyHybridFragment", 2, "jump to app with scheme Excepyion e = " + localException.getMessage());
-        bool = false;
-        continue;
-      }
-      bool = bfwv.a(this.a.getActivity(), paramView.e, this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin());
-      continue;
-      localException.a(39);
-      break label96;
-      localException.a(25);
-      break label96;
-      localException.a(23);
-      localException.a(26);
-      break label96;
-      localException.a(40);
-      break label96;
-      if (this.a.jdField_a_of_type_Awih == null) {
-        break label96;
-      }
-      this.a.jdField_a_of_type_Awih.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface);
-      break label96;
-      localException.a(41);
-      break label96;
-      bool = false;
+  }
+  
+  public static String a(byte[] paramArrayOfByte)
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    if (paramArrayOfByte == null) {
+      return "";
     }
+    int i = 0;
+    while (i < paramArrayOfByte.length)
+    {
+      String str2 = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
+      String str1 = str2;
+      if (str2.length() == 1) {
+        str1 = '0' + str2;
+      }
+      System.out.print(str1.toUpperCase() + " ");
+      localStringBuffer.append(str1.toUpperCase() + "");
+      i += 1;
+    }
+    return localStringBuffer.toString();
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return (paramInt == 9052) || (paramInt == 9050) || (paramInt == 9055) || (paramInt == 9053) || (paramInt == 9054);
   }
 }
 

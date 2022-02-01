@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.entry.desktop.widget;
 
-import amtj;
-import apyt;
+import anvx;
+import arbw;
 import com.tencent.mobileqq.widget.QQToast;
 import java.util.List;
 
@@ -12,7 +12,7 @@ class DragAdapter$6
   
   public void run()
   {
-    QQToast.a(DragAdapter.access$600(this.this$0), amtj.a(2131702647) + apyt.a() + amtj.a(2131702646), 0).a();
+    QQToast.a(DragAdapter.access$600(this.this$0), anvx.a(2131702998) + arbw.a() + anvx.a(2131702997), 0).a();
     if (this.val$overTopTargetIndex != -1)
     {
       this.this$0.mData.remove(this.val$overTopTargetIndex);

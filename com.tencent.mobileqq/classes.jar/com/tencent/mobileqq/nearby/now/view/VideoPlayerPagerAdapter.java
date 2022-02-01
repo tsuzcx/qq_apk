@@ -10,10 +10,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import awtf;
-import awth;
-import awti;
-import awtt;
+import axzh;
+import axzj;
+import axzk;
+import axzv;
 import com.tencent.image.RegionDrawable;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -35,9 +35,9 @@ public class VideoPlayerPagerAdapter
   implements View.OnClickListener
 {
   public int a;
-  public SparseArray<awti> a;
+  public SparseArray<axzk> a;
   protected LayoutInflater a;
-  private awtf a;
+  private axzh a;
   public QQAppInterface a;
   public StoryPlayController a;
   public List<VideoData> a;
@@ -74,9 +74,9 @@ public class VideoPlayerPagerAdapter
     return (View)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
   }
   
-  public awti a(int paramInt)
+  public axzk a(int paramInt)
   {
-    return (awti)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    return (axzk)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
   }
   
   public VideoData a(int paramInt)
@@ -92,9 +92,9 @@ public class VideoPlayerPagerAdapter
     int i = 0;
     while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
     {
-      awti localawti = (awti)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i));
-      if ((localawti != null) && (localawti.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView != null)) {
-        localawti.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.c();
+      axzk localaxzk = (axzk)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i));
+      if ((localaxzk != null) && (localaxzk.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView != null)) {
+        localaxzk.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.c();
       }
       i += 1;
     }
@@ -114,7 +114,7 @@ public class VideoPlayerPagerAdapter
     while (i >= 0)
     {
       int j = ((Integer)localObject[i]).intValue();
-      localHashMap.put(Integer.valueOf(j + paramInt), (awtt)localHashMap.get(Integer.valueOf(j)));
+      localHashMap.put(Integer.valueOf(j + paramInt), (axzv)localHashMap.get(Integer.valueOf(j)));
       localHashMap.remove(Integer.valueOf(j));
       i -= 1;
     }
@@ -141,9 +141,9 @@ public class VideoPlayerPagerAdapter
       while (paramInt >= 0)
       {
         j = ((Integer)localObject1[paramInt]).intValue();
-        localObject2 = (awti)this.jdField_a_of_type_AndroidUtilSparseArray.get(j);
-        ((awti)localObject2).jdField_a_of_type_Int += i;
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(((awti)this.jdField_a_of_type_AndroidUtilSparseArray.get(j)).jdField_a_of_type_Int, this.jdField_a_of_type_AndroidUtilSparseArray.get(j));
+        localObject2 = (axzk)this.jdField_a_of_type_AndroidUtilSparseArray.get(j);
+        ((axzk)localObject2).jdField_a_of_type_Int += i;
+        this.jdField_a_of_type_AndroidUtilSparseArray.put(((axzk)this.jdField_a_of_type_AndroidUtilSparseArray.get(j)).jdField_a_of_type_Int, this.jdField_a_of_type_AndroidUtilSparseArray.get(j));
         this.jdField_a_of_type_AndroidUtilSparseArray.delete(j);
         paramInt -= 1;
       }
@@ -179,9 +179,9 @@ public class VideoPlayerPagerAdapter
     this.jdField_a_of_type_JavaUtilList.addAll(paramList);
   }
   
-  public void a(awtf paramawtf)
+  public void a(axzh paramaxzh)
   {
-    this.jdField_a_of_type_Awtf = paramawtf;
+    this.jdField_a_of_type_Axzh = paramaxzh;
   }
   
   public void a(StoryPlayController paramStoryPlayController, Bundle paramBundle)
@@ -198,13 +198,13 @@ public class VideoPlayerPagerAdapter
       do
       {
         return;
-      } while ((awti)((View)paramObject).getTag() == null);
+      } while ((axzk)((View)paramObject).getTag() == null);
       View localView = (View)paramObject;
-      ((awti)((View)paramObject).getTag()).jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.c();
+      ((axzk)((View)paramObject).getTag()).jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.c();
       paramViewGroup.removeView(localView);
     } while (((ShortVideoCommentsView)paramObject).jdField_a_of_type_AndroidViewView == null);
-    a((ImageView)((ShortVideoCommentsView)paramObject).jdField_a_of_type_AndroidViewView.findViewById(2131369207));
-    a((ImageView)((ShortVideoCommentsView)paramObject).jdField_a_of_type_AndroidViewView.findViewById(2131365712));
+    a((ImageView)((ShortVideoCommentsView)paramObject).jdField_a_of_type_AndroidViewView.findViewById(2131369370));
+    a((ImageView)((ShortVideoCommentsView)paramObject).jdField_a_of_type_AndroidViewView.findViewById(2131365806));
   }
   
   public int getCount()
@@ -217,7 +217,7 @@ public class VideoPlayerPagerAdapter
     if (paramObject == null) {
       return -2;
     }
-    paramObject = (awti)((View)paramObject).getTag();
+    paramObject = (axzk)((View)paramObject).getTag();
     if (paramObject == null) {
       return -2;
     }
@@ -246,27 +246,27 @@ public class VideoPlayerPagerAdapter
       return null;
     }
     VideoData localVideoData = (VideoData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    awti localawti = new awti(this);
+    axzk localaxzk = new axzk(this);
     ShortVideoCommentsView localShortVideoCommentsView = new ShortVideoCommentsView(paramViewGroup.getContext());
     localShortVideoCommentsView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    localShortVideoCommentsView.a(localawti, localVideoData);
-    localawti.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.setOnCloseListener(this.jdField_a_of_type_Awtf);
-    localawti.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.setOnCommentClickListener(new awth(this, localShortVideoCommentsView));
-    localawti.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData = localVideoData;
+    localShortVideoCommentsView.a(localaxzk, localVideoData);
+    localaxzk.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.setOnCloseListener(this.jdField_a_of_type_Axzh);
+    localaxzk.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.setOnCommentClickListener(new axzj(this, localShortVideoCommentsView));
+    localaxzk.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData = localVideoData;
     if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.a(this.jdField_a_of_type_AndroidViewLayoutInflater, this, localawti);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.a(this.jdField_a_of_type_AndroidViewLayoutInflater, this, localaxzk);
     }
-    localawti.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localawti);
+    localaxzk.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localaxzk);
     this.jdField_b_of_type_AndroidUtilSparseArray.put(paramInt, localShortVideoCommentsView);
-    localShortVideoCommentsView.setTag(localawti);
+    localShortVideoCommentsView.setTag(localaxzk);
     if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController != null)
     {
       StoryPlayController localStoryPlayController = this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController;
       if (paramInt == this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.c) {}
       for (;;)
       {
-        localStoryPlayController.a(localawti, localVideoData, bool, localShortVideoCommentsView);
+        localStoryPlayController.a(localaxzk, localVideoData, bool, localShortVideoCommentsView);
         if (paramInt == this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.jdField_a_of_type_Int) {
           this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.a(paramInt);
         }

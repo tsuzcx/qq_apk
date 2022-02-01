@@ -1,36 +1,67 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
-import com.tencent.widget.XListView;
+import android.os.Bundle;
+import android.os.SystemClock;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class ahyw
-  implements bamo
+class ahyw
+  implements BusinessObserver
 {
-  public ahyw(SearchBaseFragment paramSearchBaseFragment) {}
+  ahyw(ahyl paramahyl) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((paramBitmap == null) || (paramInt2 == 201)) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessChatPie", 2, "success:" + String.valueOf(paramBoolean));
+    }
+    if (!paramBoolean) {
+      this.a.a(2131694983);
+    }
     for (;;)
     {
+      ChatActivityUtils.b();
       return;
-      if ((this.a.e == 0) && (this.a.a != null))
+      try
       {
-        int i = this.a.a.getChildCount();
-        paramInt2 = 0;
-        while (paramInt2 < i)
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
         {
-          paramBitmap = this.a.a.getChildAt(paramInt2).getTag();
-          if ((paramBitmap != null) && ((paramBitmap instanceof ahyz)))
+          mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
+          localFollowResponse.mergeFrom(paramBundle);
+          paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+          if (paramInt == 0)
           {
-            paramBitmap = (ahyz)paramBitmap;
-            if (paramBitmap.jdField_a_of_type_Int == paramInt1) {
-              this.a.a(paramBitmap, paramBitmap.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
+            ((FriendListHandler)this.a.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getFriendGroupList(true, false);
+            paramBundle = (antw)this.a.app.getBusinessHandler(BusinessHandlerFactory.ENTERPRISEQQ_HANDLER);
+            if (paramBundle != null) {
+              paramBundle.a(SystemClock.uptimeMillis());
             }
           }
-          paramInt2 += 1;
+          else if (paramInt == 58)
+          {
+            this.a.a(2131694979);
+          }
+          else if (paramInt == 65)
+          {
+            this.a.a(2131694954);
+          }
+          else if (paramInt == 20)
+          {
+            this.a.a(2131694955);
+          }
+          else
+          {
+            this.a.a(2131694983);
+          }
         }
       }
+      catch (Exception paramBundle) {}
     }
   }
 }

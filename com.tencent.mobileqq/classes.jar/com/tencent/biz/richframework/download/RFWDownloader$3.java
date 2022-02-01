@@ -1,6 +1,6 @@
 package com.tencent.biz.richframework.download;
 
-import bfys;
+import bhhk;
 import com.tencent.qphone.base.util.QLog;
 
 class RFWDownloader$3
@@ -10,7 +10,7 @@ class RFWDownloader$3
   
   public void run()
   {
-    if (bfys.a() == null)
+    if (bhhk.a() == null)
     {
       QLog.i("RFWDownloader", 1, "downloadOrUpdateFile error, SdCardUtil.getSdCardDirectory() == null");
       if (this.val$downloadListener != null) {

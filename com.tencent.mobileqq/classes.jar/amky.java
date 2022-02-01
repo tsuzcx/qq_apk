@@ -1,52 +1,18 @@
-import com.tencent.mobileqq.apollo.view.ApolloDrawerInfoViewListener.1;
-import com.tencent.mobileqq.apollo.view.ApolloDrawerInfoViewListener.2;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
-public class amky
-  extends bggc
-  implements alqx
+class amky
+  implements DialogInterface.OnClickListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private WeakReference<ambl> jdField_a_of_type_JavaLangRefWeakReference;
+  amky(amkw paramamkw) {}
   
-  public amky(ambl paramambl, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramambl);
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  protected void onApolloDressChange(boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloDrawerInfoViewListener", 2, "[onApolloDressChange], result:" + paramBoolean + ",data:" + paramObject);
+    if (QLog.isDevelopLevel()) {
+      QLog.d(amkw.a(this.a), 4, "right button is clicked! ");
     }
-    ThreadManager.post(new ApolloDrawerInfoViewListener.2(this, paramBoolean, paramObject), 5, null, true);
-  }
-  
-  public void onNotifyLongTouch(String paramString) {}
-  
-  public void onNotifyStatusChanged(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloDrawerInfoViewListener", 2, new Object[] { "[onNotifyStatusChanged], clickPart:", Integer.valueOf(paramInt), ",apolloId:", paramString });
-    }
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
-    {
-      amal localamal = ((ambl)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a();
-      if (localamal != null) {
-        localamal.a(ambc.a(paramInt), null, paramString);
-      }
-    }
-  }
-  
-  public void onSurfaceReady(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloDrawerInfoViewListener", 2, "[onSurfaceReady], w:" + paramInt1 + ",h:" + paramInt2);
-    }
-    ThreadManager.post(new ApolloDrawerInfoViewListener.1(this), 8, null, true);
+    amkw.a(this.a, 0);
   }
 }
 

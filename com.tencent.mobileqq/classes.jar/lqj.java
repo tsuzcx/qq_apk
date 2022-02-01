@@ -1,75 +1,274 @@
-import android.graphics.Matrix;
-import android.graphics.RectF;
-import com.tencent.ttpic.facedetect.TTFaceOriginDataModel;
-import java.lang.reflect.Array;
+import android.opengl.GLES20;
+import android.os.Build;
+import com.tencent.av.opengl.program.TextureProgram;
+import com.tencent.av.opengl.utils.AVGLUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.nio.Buffer;
+import java.nio.ByteBuffer;
+import java.nio.FloatBuffer;
 
 public class lqj
+  implements lpw
 {
-  private static int[] a = { 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 30, 31, 32, 33, 34, 35, 36, 37, 22, 23, 24, 25, 26, 27, 28, 29, 46, 47, 48, 49, 50, 51, 52, 53, 38, 39, 40, 41, 42, 43, 44, 45, 54, 55, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 73, 72, 71, 70, 69, 68, 67, 78, 77, 76, 75, 74, 83, 82, 81, 80, 79, 88, 87, 86, 85, 84, 90, 89, 93, 94, 91, 92 };
+  int jdField_a_of_type_Int = -1;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean = true;
+  byte[] jdField_a_of_type_ArrayOfByte;
+  int jdField_b_of_type_Int = -1;
+  private boolean jdField_b_of_type_Boolean = true;
+  byte[] jdField_b_of_type_ArrayOfByte;
+  private int jdField_c_of_type_Int = -1;
+  private byte[] jdField_c_of_type_ArrayOfByte;
+  private int d = -1;
   
-  public static TTFaceOriginDataModel a(TTFaceOriginDataModel paramTTFaceOriginDataModel, RectF paramRectF1, RectF paramRectF2, Matrix paramMatrix, float paramFloat, boolean paramBoolean)
+  public lqj(String paramString)
   {
-    TTFaceOriginDataModel localTTFaceOriginDataModel = new TTFaceOriginDataModel();
-    float f = Math.max(paramRectF2.width() / paramRectF1.width(), paramRectF2.height() / paramRectF1.height());
-    int i = (int)(paramRectF1.width() * f);
-    int j = (int)(paramRectF1.height() * f);
-    if (i > paramRectF2.width()) {
-      paramMatrix.preTranslate((paramRectF2.width() - i) / 2.0F, 0.0F);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    d();
+  }
+  
+  static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, FloatBuffer paramFloatBuffer)
+  {
+    GLES20.glBindFramebuffer(36160, paramInt4);
+    GLES20.glViewport(0, 0, paramInt2, paramInt1);
+    TextureProgram localTextureProgram = lrn.a(5);
+    lrp[] arrayOflrp = localTextureProgram.a();
+    GLES20.glUseProgram(localTextureProgram.a());
+    lqp.a(false);
+    GLES20.glActiveTexture(33984);
+    GLES20.glBindTexture(3553, paramInt3);
+    GLES20.glUniform1i(arrayOflrp[4].jdField_a_of_type_Int, 0);
+    GLES20.glUniform1f(arrayOflrp[2].jdField_a_of_type_Int, 1.0F);
+    GLES20.glUniformMatrix4fv(arrayOflrp[1].jdField_a_of_type_Int, 1, false, AVGLUtils.matrixVRotate90, 0);
+    GLES20.glUniformMatrix4fv(arrayOflrp[3].jdField_a_of_type_Int, 1, false, AVGLUtils.matrix, 0);
+    GLES20.glVertexAttribPointer(arrayOflrp[0].jdField_a_of_type_Int, 2, 5126, false, 8, paramFloatBuffer);
+    GLES20.glEnableVertexAttribArray(arrayOflrp[0].jdField_a_of_type_Int);
+    GLES20.glDrawArrays(5, 0, 4);
+    GLES20.glBindFramebuffer(36160, 0);
+  }
+  
+  public static void a(int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte)
+  {
+    GLES20.glBindFramebuffer(36160, paramInt1);
+    GLES20.glViewport(0, 0, paramInt2, paramInt3);
+    GLES20.glReadPixels(0, 0, paramInt2, paramInt3, 6408, 5121, ByteBuffer.wrap(paramArrayOfByte));
+    GLES20.glBindFramebuffer(36160, 0);
+  }
+  
+  private void a(lpl paramlpl, lox paramlox, lps paramlps, lpk paramlpk, FloatBuffer paramFloatBuffer, lqd paramlqd)
+  {
+    int i = paramlox.jdField_a_of_type_Int;
+    int j = paramlox.jdField_b_of_type_Int;
+    int k = i * j * 3 / 2;
+    if (this.jdField_b_of_type_Boolean)
+    {
+      if ((this.jdField_b_of_type_ArrayOfByte == null) || (this.jdField_b_of_type_ArrayOfByte.length != k)) {
+        this.jdField_b_of_type_ArrayOfByte = new byte[k];
+      }
+      i = i * j * 1 / 2;
+      if ((this.jdField_c_of_type_ArrayOfByte == null) || (this.jdField_c_of_type_ArrayOfByte.length != i)) {
+        this.jdField_c_of_type_ArrayOfByte = new byte[i];
+      }
+      if (!this.jdField_b_of_type_Boolean) {
+        break label311;
+      }
+      b(paramlpl.jdField_a_of_type_Int, paramlpl.jdField_b_of_type_Int, paramlps.jdField_b_of_type_Int, this.jdField_c_of_type_Int, paramFloatBuffer);
+      b(paramlpl.jdField_a_of_type_Int, paramlpl.jdField_b_of_type_Int);
     }
     for (;;)
     {
-      paramMatrix.preScale(f, f);
-      paramMatrix.postScale(paramFloat, paramFloat);
-      i = 0;
-      while (i < paramTTFaceOriginDataModel.facePoint.length)
+      GLES20.glBindFramebuffer(36160, 0);
+      GLES20.glViewport(0, 0, paramlox.jdField_a_of_type_Int, paramlox.jdField_b_of_type_Int);
+      if ((!this.jdField_a_of_type_Boolean) || (!paramlox.b()))
       {
-        if (paramBoolean) {
-          paramTTFaceOriginDataModel.facePoint[i][0] = (paramRectF1.width() - paramTTFaceOriginDataModel.facePoint[i][0]);
+        paramlox.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+        paramlox.jdField_a_of_type_Int = paramlpl.jdField_b_of_type_Int;
+        paramlox.jdField_b_of_type_Int = paramlpl.jdField_a_of_type_Int;
+        paramlox.jdField_c_of_type_Int = 21;
+        if (this.jdField_b_of_type_Boolean)
+        {
+          paramlox.jdField_c_of_type_Int = 100;
+          paramlox.jdField_a_of_type_ArrayOfByte = this.jdField_b_of_type_ArrayOfByte;
         }
-        paramMatrix.mapPoints(localTTFaceOriginDataModel.facePoint[i], paramTTFaceOriginDataModel.facePoint[i]);
-        i += 1;
+        paramlox.d = ((paramlox.d - lqe.a(paramlox.jdField_a_of_type_Boolean) - 1 + 4) % 4);
+        paramlqd.a(paramlox, paramlpk.jdField_a_of_type_ArrayOfByte, paramlpk.jdField_b_of_type_ArrayOfByte, paramlpk.jdField_c_of_type_ArrayOfByte, paramlpk.jdField_a_of_type_Short, paramlpk.jdField_b_of_type_Short);
       }
-      if (j > paramRectF2.height()) {
-        paramMatrix.preTranslate(0.0F, (paramRectF2.height() - j) / 2.0F);
+      this.jdField_a_of_type_Boolean = false;
+      return;
+      i = i * j * 4;
+      if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length == i)) {
+        break;
       }
-    }
-    localTTFaceOriginDataModel.facePointVisible = paramTTFaceOriginDataModel.facePointVisible;
-    localTTFaceOriginDataModel.pitch = paramTTFaceOriginDataModel.pitch;
-    if (paramBoolean)
-    {
-      paramFloat = -paramTTFaceOriginDataModel.yaw;
-      localTTFaceOriginDataModel.yaw = paramFloat;
-      if (!paramBoolean) {
-        break label273;
-      }
-    }
-    label273:
-    for (paramFloat = -paramTTFaceOriginDataModel.roll;; paramFloat = paramTTFaceOriginDataModel.roll)
-    {
-      localTTFaceOriginDataModel.roll = paramFloat;
-      localTTFaceOriginDataModel.cls = paramTTFaceOriginDataModel.cls;
-      return localTTFaceOriginDataModel;
-      paramFloat = paramTTFaceOriginDataModel.yaw;
+      this.jdField_a_of_type_ArrayOfByte = new byte[i];
       break;
+      label311:
+      a(paramlpl.jdField_a_of_type_Int, paramlpl.jdField_b_of_type_Int, paramlps.jdField_b_of_type_Int, this.jdField_b_of_type_Int, paramFloatBuffer);
+      a(this.jdField_b_of_type_Int, paramlpl.jdField_b_of_type_Int, paramlpl.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfByte);
     }
   }
   
-  public static void a(TTFaceOriginDataModel paramTTFaceOriginDataModel)
+  private void b(int paramInt1, int paramInt2)
   {
-    float[][] arrayOfFloat = (float[][])Array.newInstance(Float.TYPE, new int[] { 94, 2 });
-    int i = 0;
-    while (i < a.length)
-    {
-      arrayOfFloat[i][0] = paramTTFaceOriginDataModel.facePoint[(a[i] - 1)][0];
-      arrayOfFloat[i][1] = paramTTFaceOriginDataModel.facePoint[(a[i] - 1)][1];
-      i += 1;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "saveTexture2I420DataBuffer called");
     }
-    paramTTFaceOriginDataModel.facePoint = arrayOfFloat;
+    Object localObject = ByteBuffer.wrap(this.jdField_b_of_type_ArrayOfByte);
+    GLES20.glBindFramebuffer(36160, this.jdField_c_of_type_Int);
+    GLES20.glReadPixels(0, 0, paramInt2 * 2 / 8, paramInt1, 6408, 5121, (Buffer)localObject);
+    localObject = this.jdField_c_of_type_ArrayOfByte;
+    ByteBuffer localByteBuffer = ByteBuffer.wrap((byte[])localObject);
+    GLES20.glReadPixels(paramInt2 * 2 / 8, 0, paramInt2 * 1 / 8, paramInt1, 6408, 5121, localByteBuffer);
+    GLES20.glBindFramebuffer(36160, 0);
+    System.arraycopy(localObject, 0, this.jdField_b_of_type_ArrayOfByte, paramInt2 * paramInt1, localObject.length);
+  }
+  
+  static void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, FloatBuffer paramFloatBuffer)
+  {
+    GLES20.glBindFramebuffer(36160, paramInt4);
+    GLES20.glViewport(0, 0, paramInt2, paramInt1);
+    TextureProgram localTextureProgram = lrn.a(6);
+    lrp[] arrayOflrp = localTextureProgram.a();
+    GLES20.glUseProgram(localTextureProgram.a());
+    lqp.a(false);
+    GLES20.glActiveTexture(33984);
+    GLES20.glBindTexture(3553, paramInt3);
+    GLES20.glUniform1i(arrayOflrp[4].jdField_a_of_type_Int, 0);
+    GLES20.glUniform1f(arrayOflrp[2].jdField_a_of_type_Int, 1.0F);
+    GLES20.glUniformMatrix4fv(arrayOflrp[1].jdField_a_of_type_Int, 1, false, AVGLUtils.matrixVRotate90, 0);
+    GLES20.glUniformMatrix4fv(arrayOflrp[3].jdField_a_of_type_Int, 1, false, AVGLUtils.matrix, 0);
+    GLES20.glUniform1f(arrayOflrp[7].jdField_a_of_type_Int, paramInt1);
+    GLES20.glUniform1f(arrayOflrp[8].jdField_a_of_type_Int, paramInt2);
+    GLES20.glVertexAttribPointer(arrayOflrp[0].jdField_a_of_type_Int, 2, 5126, false, 8, paramFloatBuffer);
+    GLES20.glEnableVertexAttribArray(arrayOflrp[0].jdField_a_of_type_Int);
+    GLES20.glDrawArrays(5, 0, 4);
+    GLES20.glBindFramebuffer(36160, 0);
+  }
+  
+  private void d()
+  {
+    this.jdField_b_of_type_Boolean = mtr.g();
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "initUseRBG2I420Switch useRGB2I420Shader = " + this.jdField_b_of_type_Boolean);
+    if (this.jdField_b_of_type_Boolean)
+    {
+      String str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.useRGB2I420ShaderCfg.name(), "1");
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "initUseRBG2I420Switch dpcValue = " + str);
+      if (str.equals("0")) {
+        this.jdField_b_of_type_Boolean = false;
+      }
+    }
+    if (AudioHelper.a(21) == 1) {
+      this.jdField_b_of_type_Boolean = true;
+    }
+    for (;;)
+    {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "initUseRBG2I420Switch,after getDebugValue, initial useRGB2I420Shader = " + this.jdField_b_of_type_Boolean + ",Build.MODEL = " + Build.MODEL);
+      return;
+      if (AudioHelper.a(21) == 0) {
+        this.jdField_b_of_type_Boolean = false;
+      }
+    }
+  }
+  
+  public int a()
+  {
+    int i = 0;
+    if (this.jdField_a_of_type_ArrayOfByte != null) {
+      i = 42;
+    }
+    while (this.jdField_b_of_type_ArrayOfByte == null) {
+      return i;
+    }
+    return 35;
+  }
+  
+  public void a()
+  {
+    int[] arrayOfInt = new int[1];
+    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
+    if (this.jdField_b_of_type_Boolean)
+    {
+      this.d = arrayOfInt[0];
+      return;
+    }
+    this.jdField_a_of_type_Int = arrayOfInt[0];
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (this.jdField_b_of_type_Boolean)
+    {
+      this.jdField_c_of_type_Int = AVGLUtils.initFrameBuffer(paramInt2, paramInt1, this.d);
+      return;
+    }
+    this.jdField_b_of_type_Int = AVGLUtils.initFrameBuffer(paramInt2, paramInt1, this.jdField_a_of_type_Int);
+  }
+  
+  public void a(lpl paramlpl, lox paramlox, lps paramlps, lpk paramlpk, lqd paramlqd)
+  {
+    if (paramlpl.jdField_a_of_type_Mte != null) {
+      paramlpl.jdField_a_of_type_Mte.a("postRender");
+    }
+    a(paramlpl, paramlox, paramlps, paramlpk, paramlpl.jdField_a_of_type_JavaNioFloatBuffer, paramlqd);
+    if (paramlpl.jdField_a_of_type_Mte != null) {
+      paramlpl.jdField_a_of_type_Mte.b("postRender");
+    }
+    if (paramlpl.jdField_a_of_type_Lpn != null)
+    {
+      paramlox = lps.a(this.jdField_b_of_type_Int, this.jdField_a_of_type_Int);
+      paramlpl.jdField_a_of_type_Lpn.a(paramlpl, 4, null, paramlox);
+      paramlpl.jdField_a_of_type_Lpn.d();
+      paramlox.a();
+    }
+  }
+  
+  public byte[] a()
+  {
+    byte[] arrayOfByte = null;
+    if (this.jdField_a_of_type_ArrayOfByte != null) {
+      arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    }
+    while (this.jdField_b_of_type_ArrayOfByte == null) {
+      return arrayOfByte;
+    }
+    return this.jdField_b_of_type_ArrayOfByte;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ArrayOfByte = null;
+    if (this.jdField_b_of_type_Boolean)
+    {
+      this.jdField_b_of_type_ArrayOfByte = null;
+      this.jdField_c_of_type_ArrayOfByte = null;
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_b_of_type_Boolean)
+    {
+      arrayOfInt = new int[1];
+      arrayOfInt[0] = this.d;
+      GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
+      this.d = -1;
+      GLES20.glDeleteFramebuffers(1, new int[] { this.jdField_c_of_type_Int }, 0);
+      this.jdField_c_of_type_Int = -1;
+      return;
+    }
+    int[] arrayOfInt = new int[1];
+    arrayOfInt[0] = this.jdField_a_of_type_Int;
+    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
+    this.jdField_a_of_type_Int = -1;
+    GLES20.glDeleteFramebuffers(1, new int[] { this.jdField_b_of_type_Int }, 0);
+    this.jdField_b_of_type_Int = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lqj
  * JD-Core Version:    0.7.0.1
  */

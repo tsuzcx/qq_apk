@@ -1,28 +1,13 @@
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.view.View;
+import com.tencent.pts.utils.PTSNodeVirtualUtil.INodeVirtualOnViewClick;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJReadWatchWordPresenter;", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJReadWatchWordShareContract$IPresenter;", "model", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJReadWatchWordShareContract$IModel;", "(Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJReadWatchWordShareContract$IModel;)V", "view", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJReadWatchWordShareContract$IView;", "attachView", "", "detachView", "requestWatchWordUrl", "watchWord", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qzy
+final class qzy
+  implements PTSNodeVirtualUtil.INodeVirtualOnViewClick
 {
-  public static final qzz a;
-  private final qzr jdField_a_of_type_Qzr;
-  private qzs jdField_a_of_type_Qzs;
-  
-  static
+  public void onViewClicked(View paramView)
   {
-    jdField_a_of_type_Qzz = new qzz(null);
-  }
-  
-  public qzy(@NotNull qzr paramqzr)
-  {
-    this.jdField_a_of_type_Qzr = paramqzr;
-  }
-  
-  public void a(@NotNull qzs paramqzs)
-  {
-    Intrinsics.checkParameterIsNotNull(paramqzs, "view");
-    this.jdField_a_of_type_Qzs = paramqzs;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.webview.swift;
 
-import bgvt;
-import bgxh;
+import bigl;
+import bihz;
 
 class WebViewFragment$8$1
   implements Runnable
@@ -10,9 +10,9 @@ class WebViewFragment$8$1
   
   public void run()
   {
-    bgxh localbgxh = (bgxh)this.a.this$0.mComponentsProvider.a(16);
-    if (localbgxh != null) {
-      localbgxh.a();
+    bihz localbihz = (bihz)this.a.this$0.mComponentsProvider.a(16);
+    if (localbihz != null) {
+      localbihz.a();
     }
   }
 }

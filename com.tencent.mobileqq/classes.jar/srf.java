@@ -1,16 +1,27 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
 
 class srf
-  extends DataSetObserver
+  extends Handler
 {
-  srf(sre paramsre) {}
-  
-  public void onChanged()
+  srf(src paramsrc, Looper paramLooper)
   {
-    QLog.d("FastWebActivity", 2, "DataSetObserver ");
-    FastWebActivity.a(this.a.a, 100L);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.pubaccount.video.feeds.VideofeedsUserGuideController", 2, "mUIHandler handleMessage() msg.what = " + paramMessage.what);
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.a();
   }
 }
 

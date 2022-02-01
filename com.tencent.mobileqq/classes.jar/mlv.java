@@ -1,24 +1,21 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.SeekBar;
-import com.tencent.av.ui.beauty.BeautySeekView;
+import com.tencent.av.ui.VideoLayerUI;
 
 public class mlv
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements lso
 {
-  public mlv(BeautySeekView paramBeautySeekView) {}
+  public mlv(VideoLayerUI paramVideoLayerUI, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void onGlobalLayout()
+  public void a()
   {
-    if ((this.a.a) && (BeautySeekView.a(this.a) != null) && (BeautySeekView.a(this.a).getWidth() > 0))
-    {
-      this.a.a = false;
-      BeautySeekView.a(this.a, BeautySeekView.a(this.a).getProgress());
-    }
+    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a[this.jdField_a_of_type_Int].c(this.b);
+    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a[this.jdField_a_of_type_Int].a(Boolean.valueOf(true));
+    VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, 0L);
+    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.c(this.c, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mlv
  * JD-Core Version:    0.7.0.1
  */

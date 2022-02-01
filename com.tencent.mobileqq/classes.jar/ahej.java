@@ -1,17 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
 
-class ahej
-  implements View.OnClickListener
+public class ahej
+  implements DialogInterface.OnClickListener
 {
-  ahej(ahdt paramahdt) {}
+  public ahej(QQStoryItemBuilder paramQQStoryItemBuilder) {}
   
-  public void onClick(View paramView)
-  {
-    paramView.setVisibility(8);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

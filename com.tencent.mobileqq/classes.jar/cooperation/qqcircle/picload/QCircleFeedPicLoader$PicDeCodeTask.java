@@ -2,7 +2,7 @@ package cooperation.qqcircle.picload;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory.Options;
-import bjkq;
+import bkwb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
@@ -63,15 +63,17 @@ public class QCircleFeedPicLoader$PicDeCodeTask
     localObject = null;
     Bitmap localBitmap = null;
     if (SharpPUtil.isSharpPFile(new File(paramString))) {
-      if ((bjkq.a(BaseApplicationImpl.getContext())) && (bjkq.b()))
+      if ((bkwb.a(BaseApplicationImpl.getContext())) && (bkwb.b()))
       {
         paramOptions = SharpPUtil.decodeSharpPByFilePath(paramString);
-        if (paramOptions != null) {
+        if (paramOptions != null)
+        {
           QLog.i(QCircleFeedPicLoader.TAG, 1, "seq = " + this.mOption.getSeq() + " cacheKey = " + this.mOption.getCacheKey() + " decode sharp success  ifFromPreload:" + this.mOption.isFromPreload());
+          paramOption.setPicType(1);
         }
       }
     }
-    for (paramOption.mPicType = 1;; paramOption.mPicType = 0)
+    for (;;)
     {
       if ((paramOptions == null) && (paramString.contains(QCircleFeedPicLoader.access$000())))
       {
@@ -108,6 +110,7 @@ public class QCircleFeedPicLoader$PicDeCodeTask
           }
         }
       }
+      paramOption.setPicType(0);
     }
   }
   

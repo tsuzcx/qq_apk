@@ -5,8 +5,8 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.text.TextUtils;
 import android.util.Base64;
-import bjnd;
-import bkea;
+import bkyp;
+import blpl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -644,7 +644,7 @@ public class MachineLearingSmartReport
   
   public void downloadDataAcquisitionModule()
   {
-    String str1 = bkea.a().a("ClientReport", "SmartReportDataAcquisitionConfig", "");
+    String str1 = blpl.a().a("ClientReport", "SmartReportDataAcquisitionConfig", "");
     Object localObject1;
     String str2;
     Object localObject2;
@@ -652,7 +652,7 @@ public class MachineLearingSmartReport
     {
       try
       {
-        localObject1 = bjnd.b(str1);
+        localObject1 = bkyp.b(str1);
         if (!checkAbsoluteTime((Map)localObject1))
         {
           exceptionReport(2, "downloadDataAcquisitionModule is out of date");
@@ -758,7 +758,7 @@ public class MachineLearingSmartReport
   public boolean isNeedReport()
   {
     boolean bool2 = false;
-    Object localObject = bkea.a().a("ClientReport", "MachinelearningSmartReportConfig", "");
+    Object localObject = blpl.a().a("ClientReport", "MachinelearningSmartReportConfig", "");
     if (QLog.isColorLevel()) {
       QLog.i("MachineLearingSmartReport", 2, "reportconfig:" + (String)localObject);
     }

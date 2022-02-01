@@ -1,26 +1,15 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-
-final class wxv
-  implements URLDrawable.URLDrawableListener
+class wxv
+  extends wwq
 {
-  wxv(ImageView paramImageView, Drawable paramDrawable) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  wxv(wxa paramwxa, String paramString)
   {
-    xvv.d("BannerVideoInfoWidget", "failed to parse the url drawable, error " + paramThrowable);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    super(paramString);
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public boolean b()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+    a("WeChatImageJob_in_drawable", a("UrlDrawableDownloadJob_dra"));
+    return true;
   }
 }
 

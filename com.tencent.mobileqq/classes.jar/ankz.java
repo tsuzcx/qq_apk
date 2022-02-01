@@ -1,39 +1,51 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.utils.ApolloGameShare.2;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class ankz
-  extends anla
+  implements biyn
 {
-  public ankz(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade)
-  {
-    super(paramQQAppInterface, paramQQMessageFacade);
-    this.jdField_a_of_type_JavaLangString = AppConstants.DATALINE_IPAD_UIN;
-    this.jdField_a_of_type_Int = 6003;
-  }
+  public ankz(ApolloGameShare.2 param2) {}
   
-  public long a(DataLineMsgRecord paramDataLineMsgRecord, boolean paramBoolean)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    if (paramDataLineMsgRecord != null)
+    if (paramBaseResp == null) {}
+    do
     {
-      paramDataLineMsgRecord.selfuin = this.jdField_a_of_type_JavaLangString;
-      paramDataLineMsgRecord.frienduin = paramDataLineMsgRecord.selfuin;
-      paramDataLineMsgRecord.senderuin = paramDataLineMsgRecord.selfuin;
-      paramDataLineMsgRecord.istroop = this.jdField_a_of_type_Int;
-      paramDataLineMsgRecord.dataline_type = 1;
+      do
+      {
+        return;
+      } while ((ankx.a(this.a.this$0) == null) || (!ankx.a(this.a.this$0).equals(paramBaseResp.transaction)));
+      QLog.i("ApolloGameShare", 1, "[shareResult2WXFriendOrCircle], resp.errCode:" + paramBaseResp.errCode);
+    } while (paramBaseResp.errCode != 0);
+    paramBaseResp = this.a.this$0.a();
+    int j;
+    int i;
+    if (paramBaseResp == null)
+    {
+      j = -1;
+      if (1 != this.a.a) {
+        break label159;
+      }
+      i = 3;
     }
-    return super.a(paramDataLineMsgRecord, paramBoolean);
-  }
-  
-  protected anuv a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getDataLineMsgProxy(1);
-  }
-  
-  protected void a()
-  {
-    ((amqd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(8)).b(false);
+    for (;;)
+    {
+      VipUtils.a(ankx.a(this.a.this$0), "cmshow", "Apollo", "share_url_succeed", j, i, new String[] { Integer.toString(ankx.a(this.a.this$0)) });
+      return;
+      j = ApolloUtil.b(paramBaseResp.sessionInfo.curType);
+      break;
+      label159:
+      if (2 == this.a.a) {
+        i = 4;
+      } else {
+        i = -1;
+      }
+    }
   }
 }
 

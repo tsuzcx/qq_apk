@@ -1,18 +1,25 @@
-import android.widget.PopupWindow.OnDismissListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.SimpleCommentData;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-class pgr
-  implements PopupWindow.OnDismissListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SimpleCommentData$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SimpleCommentData;", "()V", "RIJ_SHANGHAI_PHP", "", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "(I)[Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SimpleCommentData;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pgr
+  implements Parcelable.Creator<SimpleCommentData>
 {
-  pgr(pgn parampgn, ped paramped) {}
-  
-  public void onDismiss()
+  @NotNull
+  public SimpleCommentData a(@NotNull Parcel paramParcel)
   {
-    pgn.a(this.jdField_a_of_type_Pgn).a(1.0F);
-    if (this.jdField_a_of_type_Ped.a().b())
-    {
-      this.jdField_a_of_type_Ped.a().a().c();
-      this.jdField_a_of_type_Ped.a().f(false);
-    }
+    Intrinsics.checkParameterIsNotNull(paramParcel, "parcel");
+    return new SimpleCommentData(paramParcel);
+  }
+  
+  @NotNull
+  public SimpleCommentData[] a(int paramInt)
+  {
+    return new SimpleCommentData[paramInt];
   }
 }
 

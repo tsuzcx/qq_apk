@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.AppRuntime;
-import npn;
+import nwo;
 import org.json.JSONObject;
 
 public class VipWebViewReportLog
@@ -543,7 +543,7 @@ public class VipWebViewReportLog
           if (!str.equalsIgnoreCase("cookie")) {
             break;
           }
-          localStringBuilder.append(str + ":" + npn.c((String)paramJSONObject.get(str), new String[0]) + "\n");
+          localStringBuilder.append(str + ":" + nwo.c((String)paramJSONObject.get(str), new String[0]) + "\n");
         }
       }
     }
@@ -619,12 +619,12 @@ public class VipWebViewReportLog
         String str = (String)localIterator.next();
         if ((!TextUtils.isEmpty(str)) && (paramString.contains(str)))
         {
-          QLog.d("WebCoreDump", 1, "-->url:" + npn.b(paramString, new String[0]) + " is in white list");
+          QLog.d("WebCoreDump", 1, "-->url:" + nwo.b(paramString, new String[0]) + " is in white list");
           return true;
         }
       }
     }
-    QLog.d("WebCoreDump", 1, "-->url:" + npn.b(paramString, new String[0]) + " is not in white list");
+    QLog.d("WebCoreDump", 1, "-->url:" + nwo.b(paramString, new String[0]) + " is not in white list");
     return false;
   }
   

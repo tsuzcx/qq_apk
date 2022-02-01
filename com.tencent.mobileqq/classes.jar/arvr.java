@@ -1,19 +1,15 @@
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.troop.TroopInfoCheckUtil.2;
 
 public class arvr
-  implements aszj
+  implements DialogInterface.OnClickListener
 {
-  public arvr(UniformDownloadActivity paramUniformDownloadActivity) {}
+  public arvr(TroopInfoCheckUtil.2 param2) {}
   
-  public void onNo()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
-  }
-  
-  public void onYes()
-  {
-    UniformDownloadActivity.a(this.a);
+    paramDialogInterface.dismiss();
   }
 }
 

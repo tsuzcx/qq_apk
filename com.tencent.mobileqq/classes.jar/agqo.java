@@ -1,17 +1,10 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.os.Bundle;
 
-class agqo
-  implements bhba
+public abstract interface agqo
 {
-  agqo(agqn paramagqn) {}
+  public abstract void a();
   
-  public void a(View paramView)
-  {
-    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
-    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
-  }
+  public abstract void a(Bundle paramBundle);
 }
 
 

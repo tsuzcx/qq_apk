@@ -1,25 +1,32 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.qqconnect.wtlogin.Login;
 
 public class bkkd
+  implements TextWatcher
 {
-  private static HashMap<String, Long> a = new HashMap();
+  public bkkd(Login paramLogin) {}
   
-  public static void a(String paramString)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (QLog.isColorLevel()) {
-      a.put(paramString, Long.valueOf(System.currentTimeMillis()));
+    if (paramCharSequence.length() == 0) {
+      this.a.a.setVisibility(4);
     }
-  }
-  
-  public static void b(String paramString)
-  {
-    if ((!QLog.isColorLevel()) || (!a.containsKey(paramString))) {
+    for (;;)
+    {
+      this.a.jdField_b_of_type_Boolean = false;
+      this.a.jdField_b_of_type_AndroidWidgetEditText.setText("");
       return;
+      if (paramInt3 < 2) {
+        this.a.a.setVisibility(0);
+      }
     }
-    long l = ((Long)a.get(paramString)).longValue();
-    a.remove(paramString);
-    QLog.d("ElapseStat", 2, paramString + " elpase:" + (System.currentTimeMillis() - l));
   }
 }
 

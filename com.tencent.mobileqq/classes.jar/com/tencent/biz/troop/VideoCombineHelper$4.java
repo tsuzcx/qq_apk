@@ -1,28 +1,28 @@
 package com.tencent.biz.troop;
 
-import amtj;
+import aafb;
+import aafe;
+import aafm;
+import anvx;
 import java.io.File;
 import java.util.ArrayList;
-import zpq;
-import zpt;
-import zqb;
 
 public class VideoCombineHelper$4
   implements Runnable
 {
   public void run()
   {
-    File localFile1 = new File(zpq.a + File.separator + "v1.mp4");
-    File localFile2 = new File(zpq.a + File.separator + "v2.mp4");
-    File localFile3 = new File(zpq.a + File.separator + "v3.mp4");
-    File localFile4 = new File(zpq.a + File.separator + "v4.mp4");
-    File localFile5 = new File(zpq.a + File.separator + "m1.m4a");
+    File localFile1 = new File(aafb.a + File.separator + "v1.mp4");
+    File localFile2 = new File(aafb.a + File.separator + "v2.mp4");
+    File localFile3 = new File(aafb.a + File.separator + "v3.mp4");
+    File localFile4 = new File(aafb.a + File.separator + "v4.mp4");
+    File localFile5 = new File(aafb.a + File.separator + "m1.m4a");
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(localFile4.getAbsolutePath());
     localArrayList.add(localFile2.getAbsolutePath());
     localArrayList.add(localFile3.getAbsolutePath());
     localArrayList.add(localFile1.getAbsolutePath());
-    new zqb(this.this$0, new zpt(this), "key", localArrayList, localFile5.getAbsolutePath(), amtj.a(2131715130)).a();
+    new aafm(this.this$0, new aafe(this), "key", localArrayList, localFile5.getAbsolutePath(), anvx.a(2131715478)).a();
   }
 }
 

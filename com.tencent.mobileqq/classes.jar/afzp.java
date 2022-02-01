@@ -1,23 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
-import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.app.proxy.ProxyObserver;
 
-public class afzp
-  implements bjoe
+class afzp
+  extends ProxyObserver
 {
-  public afzp(FlashPicItemBuilder paramFlashPicItemBuilder, MessageForPic paramMessageForPic, bjnw parambjnw) {}
+  afzp(afzn paramafzn) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onProxyUpdataTroopMember()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-      FlashPicItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFlashPicItemBuilder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
-    }
+    this.a.instantUpdate(false, false);
   }
 }
 

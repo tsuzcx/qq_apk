@@ -1,8 +1,16 @@
-public class ymo
+import android.os.Handler;
+
+class ymo
+  implements bbhr
 {
-  private ymp jdField_a_of_type_Ymp;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  ymo(yml paramyml) {}
+  
+  public void onGetLocation()
+  {
+    this.a.jdField_a_of_type_Boolean = false;
+    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 10000L);
+    ((ysa)wjs.a(8)).a(zeh.a(this.a.jdField_a_of_type_Ynw.a), this.a.jdField_a_of_type_Ysn);
+  }
 }
 
 

@@ -1,91 +1,135 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.lang.ref.WeakReference;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import android.app.Activity;
+import android.app.Application;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.content.res.Resources;
+import android.os.Handler;
+import com.tencent.avgame.gameroom.video.AVGameLaunchWebHelper.1;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class nmf
-  implements BusinessObserver
+public class nmf
 {
-  public boolean a;
-  public int b;
-  public WeakReference<QQAppInterface> b;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private Application.ActivityLifecycleCallbacks jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks = new nmg(this);
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private bisl jdField_a_of_type_Bisl;
+  private final Runnable jdField_a_of_type_JavaLangRunnable = new AVGameLaunchWebHelper.1(this);
+  private zmp jdField_a_of_type_Zmp;
+  private boolean jdField_a_of_type_Boolean;
   
-  public nmf()
+  public nmf(Activity paramActivity)
   {
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(null);
-    this.a = true;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler();
+    b();
   }
   
-  public nmf(boolean paramBoolean)
+  private void a(Runnable paramRunnable)
   {
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(null);
-    this.a = paramBoolean;
-  }
-  
-  private void a(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (!paramBoolean) {
-      a(-1, null, paramBundle);
+    if (QLog.isColorLevel()) {
+      QLog.d("AVGameLaunchWebHelper", 2, "executeCallable");
     }
-    label168:
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+    }
+  }
+  
+  private void b()
+  {
+    ((Application)this.jdField_a_of_type_AndroidAppActivity.getApplicationContext()).registerActivityLifecycleCallbacks(this.jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks);
+  }
+  
+  private void c()
+  {
+    ((Application)this.jdField_a_of_type_AndroidAppActivity.getApplicationContext()).unregisterActivityLifecycleCallbacks(this.jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks);
+  }
+  
+  private void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AVGameLaunchWebHelper", 2, "showProgress mProgressShowing:" + this.jdField_a_of_type_Boolean);
+    }
+    if (this.jdField_a_of_type_Boolean) {}
     do
     {
-      for (;;)
-      {
-        return;
-        Object localObject = paramBundle.getByteArray("data");
-        if (this.jdField_b_of_type_Int != 1) {
-          break label168;
-        }
-        oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-        try
-        {
-          localObject = (oidb_sso.OIDBSSOPkg)localOIDBSSOPkg.mergeFrom((byte[])localObject);
-          if ((((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get() == 0) || (!a(((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get(), ((oidb_sso.OIDBSSOPkg)localObject).str_error_msg.get(), paramBundle))) {
-            if ((localObject == null) || (!((oidb_sso.OIDBSSOPkg)localObject).uint32_result.has()) || (!((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.has()) || (((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.get() == null))
-            {
-              a(-1, null, paramBundle);
-              return;
-            }
-          }
-        }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-        {
-          a(-1, null, paramBundle);
-          return;
-        }
-      }
-      a(localInvalidProtocolBufferMicroException.uint32_result.get(), localInvalidProtocolBufferMicroException.bytes_bodybuffer.get().toByteArray(), paramBundle);
       return;
-    } while (this.jdField_b_of_type_Int != 2);
-    a(0, localInvalidProtocolBufferMicroException, paramBundle);
+      try
+      {
+        if (this.jdField_a_of_type_Bisl == null)
+        {
+          this.jdField_a_of_type_Bisl = new bisl(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299080));
+          this.jdField_a_of_type_Bisl.a(anvx.a(2131708400));
+          this.jdField_a_of_type_Bisl.c(false);
+        }
+        this.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_Bisl.show();
+        return;
+      }
+      catch (Exception localException) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("AVGameLaunchWebHelper", 2, "");
   }
   
-  public abstract void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
-  
-  public boolean a(int paramInt, String paramString, Bundle paramBundle)
+  private void e()
   {
-    return false;
-  }
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (this.a)
+    if (QLog.isColorLevel()) {
+      QLog.d("AVGameLaunchWebHelper", 2, "hideProgress  mProgressShowing:" + this.jdField_a_of_type_Boolean);
+    }
+    try
     {
-      a(paramInt, paramBoolean, paramBundle);
+      if (this.jdField_a_of_type_AndroidOsHandler != null) {
+        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      }
+      if ((this.jdField_a_of_type_Bisl != null) && (this.jdField_a_of_type_Bisl.isShowing())) {
+        this.jdField_a_of_type_Bisl.dismiss();
+      }
+      this.jdField_a_of_type_Boolean = false;
       return;
     }
-    ThreadManager.post(new ProtoUtils.TroopProtocolObserver.1(this, paramInt, paramBoolean, paramBundle), 5, null, false);
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AVGameLaunchWebHelper", 2, "hide init check progress:" + localException.getMessage());
+      }
+      localException.printStackTrace();
+    }
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AVGameLaunchWebHelper", 2, "release");
+    }
+    e();
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_AndroidOsHandler = null;
+    }
+    if (this.jdField_a_of_type_Zmp != null)
+    {
+      this.jdField_a_of_type_Zmp.a();
+      this.jdField_a_of_type_Zmp = null;
+    }
+  }
+  
+  public void a(Activity paramActivity, Runnable paramRunnable)
+  {
+    QLog.d("AVGameLaunchWebHelper", 2, "preLoadToolProcAndExecuteCallable");
+    if (mvk.a(this.jdField_a_of_type_AndroidAppActivity))
+    {
+      a(paramRunnable);
+      return;
+    }
+    long l = System.currentTimeMillis();
+    if (this.jdField_a_of_type_Zmp == null) {
+      this.jdField_a_of_type_Zmp = new zmp(paramActivity);
+    }
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
+    }
+    this.jdField_a_of_type_Zmp.a("preLoadToolProc", 5000L, new nmh(this, paramRunnable, l));
   }
 }
 

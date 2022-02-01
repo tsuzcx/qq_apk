@@ -1,10 +1,15 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.troop.widget.TroopAIORobotLayout;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-public abstract class bgok
+public class bgok
+  implements bgma
 {
-  public void a(long paramLong, int paramInt, Bundle paramBundle) {}
+  public bgok(TroopAIORobotLayout paramTroopAIORobotLayout, bgoc parambgoc) {}
   
-  public void a(Bundle paramBundle) {}
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  {
+    if (paramInt == 0) {}
+  }
 }
 
 

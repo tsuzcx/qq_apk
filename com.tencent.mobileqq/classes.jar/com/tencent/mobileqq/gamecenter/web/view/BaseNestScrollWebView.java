@@ -4,16 +4,16 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.View;
-import aubg;
-import aubh;
+import avha;
+import avhb;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.biz.ui.TouchWebView;
 
 public abstract class BaseNestScrollWebView
   extends TouchWebView
 {
-  public aubg mIHeaderView;
-  private aubh mILoadingView;
+  public avha mIHeaderView;
+  private avhb mILoadingView;
   public int scrollY;
   public boolean useDefaultLoadingLayout = true;
   
@@ -27,9 +27,9 @@ public abstract class BaseNestScrollWebView
     super(paramContext, paramAttributeSet);
   }
   
-  public void attachHeaderView(aubg paramaubg)
+  public void attachHeaderView(avha paramavha)
   {
-    this.mIHeaderView = paramaubg;
+    this.mIHeaderView = paramavha;
   }
   
   public boolean handleBack()
@@ -99,13 +99,13 @@ public abstract class BaseNestScrollWebView
     this.scrollY = paramInt2;
   }
   
-  public void setLoadingView(aubh paramaubh)
+  public void setLoadingView(avhb paramavhb)
   {
-    if (((paramaubh == null) || (!this.useDefaultLoadingLayout)) && (this.mILoadingView != null)) {
+    if (((paramavhb == null) || (!this.useDefaultLoadingLayout)) && (this.mILoadingView != null)) {
       this.mILoadingView.b(this);
     }
     if (this.mILoadingView == null) {
-      this.mILoadingView = paramaubh;
+      this.mILoadingView = paramavhb;
     }
     if (this.mILoadingView != null) {
       this.mILoadingView.a(this);

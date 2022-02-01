@@ -12,16 +12,16 @@ import android.view.ViewParent;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import androidx.annotation.MainThread;
-import bmpg;
-import bmph;
-import bmpi;
+import boey;
+import boez;
+import bofa;
 
 public class TimelineView
   extends RelativeLayout
 {
   private View jdField_a_of_type_AndroidViewView;
   protected ViewGroup a;
-  private bmpg jdField_a_of_type_Bmpg;
+  private boey jdField_a_of_type_Boey;
   protected SliderView a;
   private View[] jdField_a_of_type_ArrayOfAndroidViewView;
   protected int b;
@@ -55,8 +55,8 @@ public class TimelineView
   private void a(boolean paramBoolean)
   {
     getParent().requestDisallowInterceptTouchEvent(false);
-    if (this.jdField_a_of_type_Bmpg != null) {
-      this.jdField_a_of_type_Bmpg.a(paramBoolean);
+    if (this.jdField_a_of_type_Boey != null) {
+      this.jdField_a_of_type_Boey.a(paramBoolean);
     }
   }
   
@@ -171,7 +171,7 @@ public class TimelineView
   {
     this.jdField_a_of_type_DovComQqImAeeditorViewTimelineSliderView = a();
     this.jdField_a_of_type_DovComQqImAeeditorViewTimelineSliderView.setId(f());
-    this.jdField_a_of_type_DovComQqImAeeditorViewTimelineSliderView.setSliderListener(new bmph(this));
+    this.jdField_a_of_type_DovComQqImAeeditorViewTimelineSliderView.setSliderListener(new boez(this));
     addView(this.jdField_a_of_type_DovComQqImAeeditorViewTimelineSliderView);
   }
   
@@ -179,7 +179,7 @@ public class TimelineView
   {
     this.jdField_b_of_type_DovComQqImAeeditorViewTimelineSliderView = b();
     this.jdField_b_of_type_DovComQqImAeeditorViewTimelineSliderView.setId(g());
-    this.jdField_b_of_type_DovComQqImAeeditorViewTimelineSliderView.setSliderListener(new bmpi(this));
+    this.jdField_b_of_type_DovComQqImAeeditorViewTimelineSliderView.setSliderListener(new bofa(this));
     addView(this.jdField_b_of_type_DovComQqImAeeditorViewTimelineSliderView);
   }
   
@@ -187,7 +187,7 @@ public class TimelineView
   {
     this.jdField_a_of_type_AndroidViewView = a();
     this.jdField_a_of_type_AndroidViewView.setId(i());
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130837854);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130837916);
     addView(this.jdField_a_of_type_AndroidViewView);
   }
   
@@ -195,7 +195,7 @@ public class TimelineView
   {
     this.jdField_b_of_type_AndroidViewView = b();
     this.jdField_b_of_type_AndroidViewView.setId(j());
-    this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130837833);
+    this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130837915);
     addView(this.jdField_b_of_type_AndroidViewView);
   }
   
@@ -214,14 +214,14 @@ public class TimelineView
   protected SliderView a()
   {
     SliderView localSliderView = new SliderView(getContext());
-    localSliderView.setImageResource(2130837750);
+    localSliderView.setImageResource(2130837904);
     return localSliderView;
   }
   
   public void a(float paramFloat)
   {
-    if (this.jdField_a_of_type_Bmpg != null) {
-      this.jdField_a_of_type_Bmpg.a(paramFloat, true);
+    if (this.jdField_a_of_type_Boey != null) {
+      this.jdField_a_of_type_Boey.a(paramFloat, true);
     }
   }
   
@@ -235,14 +235,14 @@ public class TimelineView
   protected SliderView b()
   {
     SliderView localSliderView = new SliderView(getContext());
-    localSliderView.setImageResource(2130837751);
+    localSliderView.setImageResource(2130837905);
     return localSliderView;
   }
   
   public void b(float paramFloat)
   {
-    if (this.jdField_a_of_type_Bmpg != null) {
-      this.jdField_a_of_type_Bmpg.a(paramFloat, false);
+    if (this.jdField_a_of_type_Boey != null) {
+      this.jdField_a_of_type_Boey.a(paramFloat, false);
     }
   }
   
@@ -296,14 +296,14 @@ public class TimelineView
   @IdRes
   protected int c()
   {
-    return 2131362256;
+    return 2131362261;
   }
   
   public void c()
   {
     getParent().requestDisallowInterceptTouchEvent(true);
-    if (this.jdField_a_of_type_Bmpg != null) {
-      this.jdField_a_of_type_Bmpg.b();
+    if (this.jdField_a_of_type_Boey != null) {
+      this.jdField_a_of_type_Boey.b();
     }
   }
   
@@ -320,13 +320,13 @@ public class TimelineView
   @IdRes
   protected int f()
   {
-    return 2131362257;
+    return 2131362262;
   }
   
   @IdRes
   protected int g()
   {
-    return 2131362258;
+    return 2131362263;
   }
   
   protected int h()
@@ -337,13 +337,13 @@ public class TimelineView
   @IdRes
   protected int i()
   {
-    return 2131362259;
+    return 2131362264;
   }
   
   @IdRes
   protected int j()
   {
-    return 2131362255;
+    return 2131362260;
   }
   
   protected int k()
@@ -362,9 +362,9 @@ public class TimelineView
     this.jdField_b_of_type_Int = paramInt;
   }
   
-  public void setTimelineListener(bmpg parambmpg)
+  public void setTimelineListener(boey paramboey)
   {
-    this.jdField_a_of_type_Bmpg = parambmpg;
+    this.jdField_a_of_type_Boey = paramboey;
   }
 }
 

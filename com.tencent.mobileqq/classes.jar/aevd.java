@@ -1,48 +1,48 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCResult;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class aevd
-  extends QIPCModule
-  implements aevk
+  extends WtloginObserver
 {
-  private static volatile aevd a;
+  public aevd(RiskHintDlgFragment paramRiskHintDlgFragment) {}
   
-  public aevd(String paramString)
+  public void onCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    super(paramString);
-  }
-  
-  public static aevd a()
-  {
-    if (a == null) {}
-    try
+    if ((this.a.getActivity() != null) && (!this.a.getActivity().isFinishing()))
     {
-      if (a == null) {
-        a = new aevd("QQNotifyIPCModule");
+      if ((paramInt != 0) || (paramDevlockInfo == null)) {
+        break label305;
       }
-      return a;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("RiskHintDlgFragment", 2, "OnCheckDevLockStatus ret = " + paramInt);
+        QLog.d("RiskHintDlgFragment", 2, "DevlockInfo devSetup:" + paramDevlockInfo.DevSetup + " countryCode:" + paramDevlockInfo.CountryCode + " mobile:" + paramDevlockInfo.Mobile + " MbItemSmsCodeStatus:" + paramDevlockInfo.MbItemSmsCodeStatus + " TimeLimit:" + paramDevlockInfo.TimeLimit + " AvailableMsgCount:" + paramDevlockInfo.AvailableMsgCount + " AllowSet:" + paramDevlockInfo.AllowSet);
+        QLog.d("RiskHintDlgFragment", 2, "DevlockInfo.ProtectIntro:" + paramDevlockInfo.ProtectIntro + "  info.MbGuideType:" + paramDevlockInfo.MbGuideType);
+        QLog.d("RiskHintDlgFragment", 2, "DevlockInfo.MbGuideMsg:" + paramDevlockInfo.MbGuideMsg);
+        QLog.d("RiskHintDlgFragment", 2, "DevlockInfo.MbGuideInfoType:" + paramDevlockInfo.MbGuideInfoType);
+        QLog.d("RiskHintDlgFragment", 2, "DevlockInfo.MbGuideInfo:" + paramDevlockInfo.MbGuideInfo);
+      }
+      aslf.a().a(paramDevlockInfo.TransferInfo);
+      this.a.a = paramDevlockInfo;
     }
-    finally {}
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if ("newSubscribe".equals(paramString)) {}
-    for (;;)
+    label305:
+    do
     {
-      return EIPCResult.createResult(-100, null);
-      if ("query".equals(paramString)) {
-        aewc.c((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramBundle.getString("msgid"), new aeve(this, aevj.a(paramInt)));
+      do
+      {
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.d("RiskHintDlgFragment", 2, "OnCheckDevLockStatus ret = " + paramInt);
+      if (paramErrMsg != null) {
+        QLog.d("RiskHintDlgFragment", 2, "OnCheckDevLockStatus errMsg:" + paramErrMsg.getMessage());
       }
-    }
-  }
-  
-  public void queryHasSetNotify(Bundle paramBundle1, Bundle paramBundle2)
-  {
-    callbackResult(aevj.a(paramBundle2), EIPCResult.createResult(0, paramBundle1));
+    } while (paramDevlockInfo != null);
+    QLog.d("RiskHintDlgFragment", 2, "OnCheckDevLockStatus DevlockInfo is null");
   }
 }
 

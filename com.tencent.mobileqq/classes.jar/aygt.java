@@ -1,52 +1,76 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
+import java.util.List;
 
-public class aygt
-  extends aygp
+class aygt
+  implements DownloadListener
 {
-  aygv a = new aygu();
+  aygt(ayfx paramayfx) {}
   
-  aygt()
+  public void installSucceed(String paramString1, String paramString2)
   {
-    a(new aygl());
+    this.a.jdField_a_of_type_Int = 4;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
+    if (ayfx.a(this.a) != null) {
+      bdla.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "install_done", 0, 0, ayfx.a(this.a).uin, "", "yes", "android");
+    }
   }
   
-  public void b(BaseChatPie paramBaseChatPie)
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
   {
-    QQAppInterface localQQAppInterface = paramBaseChatPie.app;
-    a(paramBaseChatPie.sessionInfo.curType);
-    a(paramBaseChatPie.sessionInfo.curType, 1200000007);
-    a(paramBaseChatPie.sessionInfo.curType, 1106658188);
-    if (augn.a(localQQAppInterface).b()) {
-      a(paramBaseChatPie.sessionInfo.curType, 1107930043);
+    this.a.jdField_a_of_type_Int = 2;
+  }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    this.a.jdField_a_of_type_Int = 3;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+    if (this.a.jdField_a_of_type_Ayjm != null) {
+      this.a.jdField_a_of_type_Ayjm.a(5);
     }
-    a(paramBaseChatPie.sessionInfo.curType, 1104864062);
-    a(paramBaseChatPie.sessionInfo.curType, 1104864068);
-    a(paramBaseChatPie.sessionInfo.curType, 1104864066);
-    a(paramBaseChatPie.sessionInfo.curType, 1104639410);
-    if (this.a.a(paramBaseChatPie.getActivity(), localQQAppInterface.getCurrentAccountUin())) {
-      a(paramBaseChatPie.sessionInfo.curType, 1106114157);
+    if (ayfx.a(this.a) != null) {
+      bdla.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_done", 0, 0, ayfx.a(this.a).uin, "", "yes", "android");
     }
-    a(paramBaseChatPie.sessionInfo.curType, 1200000010);
-    a(paramBaseChatPie.sessionInfo.curType, 1104864070);
-    a(paramBaseChatPie.sessionInfo.curType, 1104788679);
-    a(paramBaseChatPie.sessionInfo.curType, 1104874204);
-    if (azux.a()) {
-      a(paramBaseChatPie.sessionInfo.curType, 1106189400);
-    }
-    if ((alnr.a(paramBaseChatPie.getActivity())) && (alnr.c("discuss") == 1)) {
-      a(paramBaseChatPie.sessionInfo.curType, 1200000008);
-    }
-    if (((bcvg)localQQAppInterface.getManager(283)).a().booleanValue())
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    this.a.jdField_a_of_type_Int = 2;
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    this.a.jdField_a_of_type_Int = 1;
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      a(paramBaseChatPie.sessionInfo.curType, 1200000002);
-      agwt.a(localQQAppInterface, "0X80093F3", paramBaseChatPie.sessionInfo.curType);
-    }
-    if (!aoth.a) {
-      a(paramBaseChatPie.sessionInfo.curType, 1200000009);
+      paramList = (DownloadInfo)paramList.get(0);
+      Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+      localMessage.what = 2;
+      localMessage.arg1 = paramList.f;
+      localMessage.sendToTarget();
+      if ((paramList.f == 0) && (ayfx.a(this.a) != null)) {
+        bdla.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_begin", 0, 0, ayfx.a(this.a).uin, "", "yes", "android");
+      }
     }
   }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    this.a.jdField_a_of_type_Int = 2;
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2) {}
+  
+  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 

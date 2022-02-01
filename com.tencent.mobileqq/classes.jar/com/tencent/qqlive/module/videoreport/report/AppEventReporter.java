@@ -72,8 +72,8 @@ public class AppEventReporter
     if (!this.mAppForegroundReported)
     {
       this.mAppForegroundReported = true;
-      ThreadUtils.runOnUiThread(this.mAppInReportRunnable);
-      this.mListenerMgr.startNotify(new AppEventReporter.4(this));
+      ThreadUtils.execTask(this.mAppInReportRunnable, true);
+      this.mListenerMgr.startNotify(new AppEventReporter.3(this));
     }
   }
   
@@ -128,10 +128,10 @@ public class AppEventReporter
     //   11: putfield 57	com/tencent/qqlive/module/videoreport/report/AppEventReporter:mFirstActivityResumed	Z
     //   14: aload_0
     //   15: aload_0
-    //   16: invokespecial 230	com/tencent/qqlive/module/videoreport/report/AppEventReporter:isDeviceActivated	()Z
-    //   19: putfield 232	com/tencent/qqlive/module/videoreport/report/AppEventReporter:mIsActive	Z
+    //   16: invokespecial 228	com/tencent/qqlive/module/videoreport/report/AppEventReporter:isDeviceActivated	()Z
+    //   19: putfield 230	com/tencent/qqlive/module/videoreport/report/AppEventReporter:mIsActive	Z
     //   22: aload_0
-    //   23: getfield 232	com/tencent/qqlive/module/videoreport/report/AppEventReporter:mIsActive	Z
+    //   23: getfield 230	com/tencent/qqlive/module/videoreport/report/AppEventReporter:mIsActive	Z
     //   26: istore_2
     //   27: iload_2
     //   28: ifeq +6 -> 34
@@ -140,16 +140,16 @@ public class AppEventReporter
     //   33: return
     //   34: aload_0
     //   35: aload_1
-    //   36: ldc 234
-    //   38: invokespecial 212	com/tencent/qqlive/module/videoreport/report/AppEventReporter:interceptAppEvent	(Landroid/app/Activity;Ljava/lang/String;)Z
+    //   36: ldc 232
+    //   38: invokespecial 210	com/tencent/qqlive/module/videoreport/report/AppEventReporter:interceptAppEvent	(Landroid/app/Activity;Ljava/lang/String;)Z
     //   41: ifne -10 -> 31
     //   44: aload_0
-    //   45: invokespecial 237	com/tencent/qqlive/module/videoreport/report/AppEventReporter:setDeviceActivated	()V
+    //   45: invokespecial 235	com/tencent/qqlive/module/videoreport/report/AppEventReporter:setDeviceActivated	()V
     //   48: aload_0
-    //   49: invokespecial 239	com/tencent/qqlive/module/videoreport/report/AppEventReporter:appActivatedDataSender	()V
+    //   49: invokespecial 237	com/tencent/qqlive/module/videoreport/report/AppEventReporter:appActivatedDataSender	()V
     //   52: aload_0
     //   53: iconst_1
-    //   54: putfield 232	com/tencent/qqlive/module/videoreport/report/AppEventReporter:mIsActive	Z
+    //   54: putfield 230	com/tencent/qqlive/module/videoreport/report/AppEventReporter:mIsActive	Z
     //   57: goto -26 -> 31
     //   60: astore_1
     //   61: aload_0
@@ -240,12 +240,20 @@ public class AppEventReporter
   
   private void reportAppLastHeartBeat()
   {
-    ThreadUtils.runOnUiThread(new AppEventReporter.7(this));
+    ThreadUtils.runOnUiThread(new AppEventReporter.6(this));
   }
   
   private void reportVst(String paramString)
   {
-    ThreadUtils.runOnUiThread(new AppEventReporter.3(this, paramString));
+    if (VideoReportInner.getInstance().isDebugMode()) {
+      Log.d("AppEventReporter", "appStartDataSender: 启动上报");
+    }
+    FinalData localFinalData = getFinalData(paramString);
+    IEventDynamicParams localIEventDynamicParams = VideoReportInner.getInstance().getEventDynamicParams();
+    if (localIEventDynamicParams != null) {
+      localIEventDynamicParams.setEventDynamicParams(paramString, localFinalData.getEventParams());
+    }
+    FinalDataTarget.handle(null, localFinalData);
   }
   
   private void setDeviceActivated()
@@ -295,7 +303,7 @@ public class AppEventReporter
         Log.i("AppEventReporter", "appOutDataSender: 后台上报");
       }
       stopAppForegroundSession(paramBoolean);
-      this.mListenerMgr.startNotify(new AppEventReporter.5(this, paramBoolean));
+      this.mListenerMgr.startNotify(new AppEventReporter.4(this, paramBoolean));
     }
   }
   
@@ -358,6 +366,8 @@ public class AppEventReporter
     if (VideoReportInner.getInstance().isDebugMode()) {
       Log.i("AppEventReporter", "onActivityResume: activity=" + paramActivity);
     }
+    appStartDataSender(paramActivity);
+    appInDataSender();
     if (!this.mLastHeartBeatReport)
     {
       this.mLastHeartBeatReport = true;
@@ -373,8 +383,6 @@ public class AppEventReporter
     }
     this.mActivityCount += 1;
     this.mActivityHashCode.add(Integer.valueOf(paramActivity.hashCode()));
-    appStartDataSender(paramActivity);
-    appInDataSender();
   }
   
   public void onActivityStopped(Activity paramActivity)
@@ -384,7 +392,7 @@ public class AppEventReporter
     }
     if (!this.mActivityHashCode.remove(Integer.valueOf(paramActivity.hashCode())))
     {
-      String str = paramActivity.getApplicationContext().getString(2131693337, new Object[] { paramActivity.toString() });
+      String str = paramActivity.getApplicationContext().getString(2131693517, new Object[] { paramActivity.toString() });
       if (VideoReportInner.getInstance().isDebugMode()) {
         Toast.makeText(paramActivity.getApplicationContext(), str, 1).show();
       }
@@ -432,7 +440,7 @@ public class AppEventReporter
     for (;;)
     {
       this.mIsColdStart = bool;
-      this.mSessionChangeListener.startNotify(new AppEventReporter.6(this, paramSessionChangeReason));
+      this.mSessionChangeListener.startNotify(new AppEventReporter.5(this, paramSessionChangeReason));
       return;
       bool = false;
     }

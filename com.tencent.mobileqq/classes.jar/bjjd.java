@@ -1,13 +1,12 @@
-import android.os.Bundle;
-
-public class bjjd
+public abstract interface bjjd
 {
-  int jdField_a_of_type_Int;
-  Bundle jdField_a_of_type_AndroidOsBundle;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
-  int c;
+  public abstract void a(bjje parambjje);
+  
+  public abstract void b(bjje parambjje);
+  
+  public abstract void c(bjje parambjje);
+  
+  public abstract void d(bjje parambjje);
 }
 
 

@@ -1,52 +1,53 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
-class veu
-  implements BusinessObserver
+public class veu
 {
-  veu(veq paramveq) {}
+  private static volatile veu jdField_a_of_type_Veu;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static veu a()
   {
-    if (paramBoolean) {}
+    if (jdField_a_of_type_Veu == null) {}
     try
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
-      {
-        mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
-        localFollowResponse.mergeFrom(paramBundle);
-        paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
-        if (paramInt == 0)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("PublicAccountImageCollectionAdapter", 2, "follow success");
-          }
-          this.a.a = true;
-          veq.a(this.a);
-          return;
-        }
-        if (paramInt == 58)
-        {
-          veq.a(this.a, 2131694772);
-          return;
-        }
-        if (paramInt == 65)
-        {
-          veq.a(this.a, 2131694749);
-          return;
-        }
-        veq.a(this.a, 2131694775);
-        return;
-        veq.a(this.a, 2131694775);
+      if (jdField_a_of_type_Veu == null) {
+        jdField_a_of_type_Veu = new veu();
       }
-      return;
+      return jdField_a_of_type_Veu;
     }
-    catch (Exception paramBundle) {}
+    finally {}
+  }
+  
+  private void a(DiniFlyAnimationView paramDiniFlyAnimationView, Bitmap paramBitmap, vew paramvew)
+  {
+    vmp.a("WSLiveAnimation", "[WSLiveAnimationManager.java]:[startAnimation()]:" + paramDiniFlyAnimationView);
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = veq.a(paramDiniFlyAnimationView);
+    }
+    vmp.a("WSLiveAnimation", "[WSLiveAnimationManager.java]:[startAnimation()]sBitmapLiveLogo:" + this.jdField_a_of_type_AndroidGraphicsBitmap);
+    veq.a(paramDiniFlyAnimationView, this.jdField_a_of_type_AndroidGraphicsBitmap, paramBitmap, paramvew);
+  }
+  
+  private void b(DiniFlyAnimationView paramDiniFlyAnimationView, String paramString, vew paramvew)
+  {
+    paramString = vnd.a(paramString);
+    tlw localtlw = new tlw();
+    localtlw.a = paramString;
+    tlv.a().a(localtlw, new vev(this, paramDiniFlyAnimationView, paramvew));
+  }
+  
+  public void a(DiniFlyAnimationView paramDiniFlyAnimationView)
+  {
+    vmp.a("WSLiveAnimation", "[WSLiveAnimationManager.java]:[stopAnimation()]" + paramDiniFlyAnimationView);
+    if (paramDiniFlyAnimationView != null) {
+      paramDiniFlyAnimationView.cancelAnimation();
+    }
+  }
+  
+  public void a(DiniFlyAnimationView paramDiniFlyAnimationView, String paramString, vew paramvew)
+  {
+    b(paramDiniFlyAnimationView, paramString, paramvew);
   }
 }
 

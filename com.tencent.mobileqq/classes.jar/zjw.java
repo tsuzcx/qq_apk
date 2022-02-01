@@ -1,21 +1,18 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qrcode.activity.QMiniResult;
 
-final class zjw
-  implements View.OnSystemUiVisibilityChangeListener
+public final class zjw
+  implements Parcelable.Creator<QMiniResult>
 {
-  zjw(Window paramWindow) {}
-  
-  public void onSystemUiVisibilityChange(int paramInt)
+  public QMiniResult a(Parcel paramParcel)
   {
-    if (Build.VERSION.SDK_INT >= 19) {}
-    for (paramInt = 5894;; paramInt = 1799)
-    {
-      this.a.getDecorView().setSystemUiVisibility(paramInt);
-      return;
-    }
+    return new QMiniResult(paramParcel);
+  }
+  
+  public QMiniResult[] a(int paramInt)
+  {
+    return new QMiniResult[paramInt];
   }
 }
 

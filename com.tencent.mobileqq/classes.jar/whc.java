@@ -1,34 +1,59 @@
-class whc
-  implements wjt
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqLikeFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspLikeFeed;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+
+public class whc
+  extends whu
 {
-  whc(wgz paramwgz) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  int b = -1;
   
-  public void a()
+  public whc(String paramString, boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    if (wgz.a(this.a) != null) {
-      wgz.a(this.a).c();
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
   }
   
-  public void a(int paramInt)
+  public String a()
   {
-    wgz.a(this.a).a(paramInt);
-    if (wgz.a(this.a) != null) {
-      wgz.a(this.a).b(paramInt);
-    }
+    return wgz.b;
   }
   
-  public void b()
+  public whv a(byte[] paramArrayOfByte)
   {
-    if (wgz.a(this.a) != null) {
-      wgz.a(this.a).d();
+    qqstory_service.RspLikeFeed localRspLikeFeed = new qqstory_service.RspLikeFeed();
+    try
+    {
+      localRspLikeFeed.mergeFrom(paramArrayOfByte);
+      return new whd(localRspLikeFeed);
     }
+    catch (Exception paramArrayOfByte)
+    {
+      ykq.d("Q.qqstory:FeedLikeDataProvider", "" + paramArrayOfByte);
+    }
+    return null;
   }
   
-  public void c()
+  protected byte[] a()
   {
-    if (wgz.a(this.a) != null) {
-      wgz.a(this.a).d(-1);
+    qqstory_service.ReqLikeFeed localReqLikeFeed = new qqstory_service.ReqLikeFeed();
+    localReqLikeFeed.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    PBUInt32Field localPBUInt32Field = localReqLikeFeed.operation;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 1;; i = 2)
+    {
+      localPBUInt32Field.set(i);
+      localReqLikeFeed.source.set(this.jdField_a_of_type_Int);
+      if (this.b != -1) {
+        localReqLikeFeed.type.set(this.b);
+      }
+      return localReqLikeFeed.toByteArray();
     }
   }
 }

@@ -1,22 +1,16 @@
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import java.lang.ref.WeakReference;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bciu
-  implements View.OnLongClickListener
+  implements View.OnClickListener
 {
-  bciu(bcit parambcit) {}
+  bciu(bcit parambcit, bcer parambcer) {}
   
-  public boolean onLongClick(View paramView)
+  public void onClick(View paramView)
   {
-    if (this.a.a != null)
-    {
-      afce localafce = (afce)this.a.a.get();
-      if (localafce != null) {
-        return localafce.onLongClick(paramView);
-      }
-    }
-    return false;
+    this.jdField_a_of_type_Bcer.b(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

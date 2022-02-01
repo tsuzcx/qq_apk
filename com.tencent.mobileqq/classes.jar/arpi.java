@@ -1,25 +1,31 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
-final class arpi
-  implements View.OnClickListener
+class arpi
+  implements arpk
 {
-  arpi(Dialog paramDialog) {}
+  arpi(arph paramarph, QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(View paramView)
+  public int a()
   {
-    bcef.b(null, "dc00898", "", "", "kuolie", "0X80097DF", 0, 0, "", "", "", "");
-    if ((this.a != null) && (this.a.isShowing())) {
-      this.a.dismiss();
+    return bcxg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
+  }
+  
+  public void a(int paramInt)
+  {
+    bcxg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramInt);
+  }
+  
+  public void a(List<String> paramList)
+  {
+    if ((paramList != null) && (paramList.size() > 0)) {
+      bcxg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramList);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arpi
  * JD-Core Version:    0.7.0.1
  */

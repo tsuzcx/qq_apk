@@ -1,28 +1,45 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.open.agent.AuthorityAccountView;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
 
 public class bhpj
-  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public bhpj(AuthorityAccountView paramAuthorityAccountView, ImageView paramImageView) {}
+  private static final Comparator<bhph> jdField_a_of_type_JavaUtilComparator = new bhpk();
+  private List<bhph> jdField_a_of_type_JavaUtilList;
   
-  public void onGlobalLayout()
+  public List<bhph> a()
   {
-    View localView = AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView).findViewById(2131361864);
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localView.getLayoutParams();
-    localLayoutParams.topMargin = (this.jdField_a_of_type_AndroidWidgetImageView.getHeight() / 2 + this.jdField_a_of_type_AndroidWidgetImageView.getTop() - localView.getHeight() / 2);
-    localView.setLayoutParams(localLayoutParams);
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-      return;
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return null;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    return Collections.unmodifiableList(this.jdField_a_of_type_JavaUtilList);
+  }
+  
+  public void a(int[] paramArrayOfInt, int paramInt)
+  {
+    Object localObject = new bhpi();
+    int i = 0;
+    while (i < paramArrayOfInt.length)
+    {
+      ((bhpi)localObject).a(paramArrayOfInt[i]);
+      while (((bhpi)localObject).jdField_a_of_type_JavaUtilList.size() > paramInt) {
+        ((bhpi)localObject).a();
+      }
+      i += 1;
+    }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    paramArrayOfInt = ((bhpi)localObject).jdField_a_of_type_JavaUtilList.iterator();
+    while (paramArrayOfInt.hasNext())
+    {
+      localObject = (bhph)paramArrayOfInt.next();
+      ((bhph)localObject).jdField_a_of_type_Long = ((int)((float)((bhph)localObject).jdField_a_of_type_Long / ((bhph)localObject).jdField_a_of_type_Int));
+      ((bhph)localObject).b = ((int)((float)((bhph)localObject).b / ((bhph)localObject).jdField_a_of_type_Int));
+      ((bhph)localObject).c = ((int)((float)((bhph)localObject).c / ((bhph)localObject).jdField_a_of_type_Int));
+      this.jdField_a_of_type_JavaUtilList.add(localObject);
+    }
+    Collections.sort(this.jdField_a_of_type_JavaUtilList, jdField_a_of_type_JavaUtilComparator);
   }
 }
 

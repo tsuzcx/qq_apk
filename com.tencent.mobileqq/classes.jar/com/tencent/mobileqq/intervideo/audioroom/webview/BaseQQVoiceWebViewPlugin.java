@@ -2,7 +2,7 @@ package com.tencent.mobileqq.intervideo.audioroom.webview;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
-import bgve;
+import bifw;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 

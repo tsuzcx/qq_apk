@@ -1,22 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.Friends;
-import mqq.app.QQPermissionCallback;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.widget.BubbleImageView;
+import java.lang.ref.WeakReference;
 
 class aioy
-  implements QQPermissionCallback
 {
-  aioy(aiow paramaiow, View paramView, Friends paramFriends, BaseActivity paramBaseActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bfur.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    aiow.a(this.jdField_a_of_type_Aiow, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDataFriends);
-  }
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  BubbleImageView jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView;
+  WeakReference<aioz> jdField_a_of_type_JavaLangRefWeakReference;
 }
 
 

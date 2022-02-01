@@ -1,22 +1,22 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.JumpActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adnw
-  extends adnm
+  implements View.OnClickListener
 {
-  public adnw(JumpActivity paramJumpActivity)
-  {
-    super(paramJumpActivity);
-  }
+  public adnw(ChatHistory paramChatHistory) {}
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    this.b.n();
+    this.a.a(12, true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adnw
  * JD-Core Version:    0.7.0.1
  */

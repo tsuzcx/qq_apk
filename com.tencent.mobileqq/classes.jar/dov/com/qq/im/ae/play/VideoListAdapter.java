@@ -134,7 +134,7 @@ public class VideoListAdapter
   
   public VideoListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup paramViewGroup, int paramInt)
   {
-    return new VideoListAdapter.ViewHolder(this, LayoutInflater.from(this.context).inflate(2131558498, paramViewGroup, false));
+    return new VideoListAdapter.ViewHolder(this, LayoutInflater.from(this.context).inflate(2131558509, paramViewGroup, false));
   }
   
   public void setMaterialPath(String paramString)

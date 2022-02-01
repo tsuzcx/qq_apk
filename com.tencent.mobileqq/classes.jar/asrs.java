@@ -1,70 +1,28 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-class asrs
-  implements atad
+public class asrs
+  extends asrp
 {
-  asrs(asrr paramasrr, long paramLong, boolean paramBoolean1, String paramString1, Bundle paramBundle, short paramShort, boolean paramBoolean2, String paramString2, String paramString3) {}
-  
-  public void a(boolean paramBoolean)
+  public asrs(asro paramasro, asqt paramasqt)
   {
-    if (paramBoolean)
+    super(paramasro, paramasqt);
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    this.jdField_a_of_type_Asqt.a();
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    super.a(paramInt1, paramInt2);
+    switch (paramInt1)
     {
-      localObject1 = new HashMap();
-      ((Map)localObject1).put("shouq_bus_type", "bus_type_video_file");
-      localObject2 = new TVK_PlayerVideoInfo();
-      ((TVK_PlayerVideoInfo)localObject2).setReportInfoMap((Map)localObject1);
-      ((TVK_PlayerVideoInfo)localObject2).setPlayType(4);
-      ((TVK_PlayerVideoInfo)localObject2).setConfigMap("RawVideoPlay", "true");
-      ((TVK_PlayerVideoInfo)localObject2).setConfigMap("keep_last_frame", "true");
-      this.jdField_a_of_type_Asrr.jdField_a_of_type_Ashw.a();
-      return;
+    default: 
+      return false;
     }
-    if (this.jdField_a_of_type_Long == -100001L) {}
-    while ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaLangString.length() == 0))
-    {
-      long l = 9360L;
-      if (this.jdField_a_of_type_Long == 0L) {
-        l = 9048L;
-      }
-      this.jdField_a_of_type_Asrr.jdField_a_of_type_Ashw.a((int)l, BaseApplication.getContext().getResources().getString(2131690858));
-      return;
-      if ((this.jdField_a_of_type_Long == -25081L) || (this.jdField_a_of_type_Long == -6101L) || (this.jdField_a_of_type_Long == -7003L))
-      {
-        this.jdField_a_of_type_Asrr.jdField_a_of_type_Asrq.a(true);
-        this.jdField_a_of_type_Asrr.jdField_a_of_type_Ashw.a((int)this.jdField_a_of_type_Long, BaseApplication.getContext().getResources().getString(2131692553));
-        return;
-      }
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Asrr.jdField_a_of_type_Ashw.a((int)9045L, BaseApplication.getContext().getResources().getString(2131690858));
-        return;
-      }
-    }
-    String str = this.jdField_a_of_type_JavaLangString;
-    Object localObject2 = "";
-    Object localObject1 = null;
-    if (this.jdField_a_of_type_AndroidOsBundle != null)
-    {
-      localObject2 = this.jdField_a_of_type_AndroidOsBundle.getString("IPv6Dns", "");
-      localObject1 = this.jdField_a_of_type_AndroidOsBundle.getStringArrayList("ipv6list");
-    }
-    localObject1 = asrq.a(this.jdField_a_of_type_Asrr.jdField_a_of_type_Asrq, (String)localObject2, this.jdField_a_of_type_Short, (List)localObject1, this.jdField_b_of_type_Boolean);
-    if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
-    for (;;)
-    {
-      localObject2 = this.jdField_b_of_type_JavaLangString;
-      localObject1 = "http://" + (String)localObject1 + ":" + String.valueOf(this.jdField_a_of_type_Short) + this.c;
-      this.jdField_a_of_type_Asrr.jdField_a_of_type_Ashw.a((String)localObject1, (String)localObject2);
-      return;
-      localObject1 = str;
-    }
+    this.jdField_a_of_type_Asro.a(2, paramInt2);
+    return true;
   }
 }
 

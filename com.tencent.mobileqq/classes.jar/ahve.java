@@ -1,8 +1,14 @@
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
+
 public class ahve
-  implements Cloneable
+  extends azlv
 {
-  public String a;
-  public String b;
+  public ahve(PlusPanelAppInfo paramPlusPanelAppInfo) {}
+  
+  protected int a()
+  {
+    return this.a.getManageConfigID();
+  }
 }
 
 

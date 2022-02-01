@@ -57,7 +57,7 @@ class AuthDetailDialog$DetailAdapter
       EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
       return localObject;
       label84:
-      paramView = LayoutInflater.from(AuthDetailDialog.access$000(this.this$0)).inflate(2131559381, null);
+      paramView = LayoutInflater.from(AuthDetailDialog.access$000(this.this$0)).inflate(2131559430, null);
       localObject = new AuthDetailDialog.DetailAdapter.DetailViewHolder(this, paramView);
       paramView.setTag(localObject);
     }

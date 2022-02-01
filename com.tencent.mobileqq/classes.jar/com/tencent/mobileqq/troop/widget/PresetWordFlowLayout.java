@@ -9,8 +9,8 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.BaseAdapter;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bffm;
-import bjun;
+import bgnt;
+import blfz;
 
 public class PresetWordFlowLayout
   extends RelativeLayout
@@ -70,7 +70,7 @@ public class PresetWordFlowLayout
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    bjun.a("PresetWordFlowLayout.onLayout");
+    blfz.a("PresetWordFlowLayout.onLayout");
     int j = getWidth();
     int k = getChildCount();
     paramInt2 = 0;
@@ -102,12 +102,12 @@ public class PresetWordFlowLayout
         paramInt3 = i + (this.jdField_a_of_type_Int + m + this.b);
       }
     }
-    bjun.a();
+    blfz.a();
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    bjun.a("PresetWordFlowLayout.onMeasure");
+    blfz.a("PresetWordFlowLayout.onMeasure");
     int i6 = View.MeasureSpec.getSize(paramInt1);
     int i5 = View.MeasureSpec.getSize(paramInt2);
     int i8 = View.MeasureSpec.getMode(paramInt1);
@@ -175,7 +175,7 @@ public class PresetWordFlowLayout
       i = i5;
     }
     setMeasuredDimension(j, i);
-    bjun.a();
+    blfz.a();
   }
   
   public void setAdapter(BaseAdapter paramBaseAdapter)
@@ -187,7 +187,7 @@ public class PresetWordFlowLayout
     this.jdField_a_of_type_AndroidWidgetBaseAdapter = paramBaseAdapter;
     if (this.jdField_a_of_type_AndroidWidgetBaseAdapter != null)
     {
-      this.jdField_a_of_type_AndroidDatabaseDataSetObserver = new bffm(this);
+      this.jdField_a_of_type_AndroidDatabaseDataSetObserver = new bgnt(this);
       this.jdField_a_of_type_AndroidWidgetBaseAdapter.registerDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
       this.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();
     }

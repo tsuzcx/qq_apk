@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import acog;
+import adeq;
 
 public class AccountManageActivity$4$1
   implements Runnable
 {
-  public AccountManageActivity$4$1(acog paramacog) {}
+  public AccountManageActivity$4$1(adeq paramadeq) {}
   
   public void run()
   {

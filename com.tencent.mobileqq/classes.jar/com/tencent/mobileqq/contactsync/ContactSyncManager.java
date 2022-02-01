@@ -24,18 +24,19 @@ import android.provider.ContactsContract.AggregationExceptions;
 import android.provider.ContactsContract.RawContacts;
 import android.text.TextUtils;
 import android.util.Log;
-import aqmk;
-import aqml;
-import aqmm;
-import aqmn;
-import aqmr;
-import aqms;
-import aqmt;
-import avsy;
-import aycd;
+import arpv;
+import arpw;
+import arpx;
+import arpy;
+import arqc;
+import arqd;
+import arqe;
+import awyz;
+import azip;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.PhoneContact;
 import com.tencent.mobileqq.utils.ContactUtils;
@@ -58,13 +59,13 @@ import mqq.os.MqqHandler;
 public class ContactSyncManager
   implements Manager
 {
-  private static String jdField_a_of_type_JavaLangString = aqmk.jdField_a_of_type_JavaLangString;
+  private static String jdField_a_of_type_JavaLangString = arpv.jdField_a_of_type_JavaLangString;
   private static final Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
   private volatile Account jdField_a_of_type_AndroidAccountsAccount;
   private AccountManager jdField_a_of_type_AndroidAccountsAccountManager;
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private Handler jdField_a_of_type_AndroidOsHandler = new aqmn(this, ThreadManager.getSubThreadLooper());
-  private aycd jdField_a_of_type_Aycd = new aqmm(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new arpy(this, ThreadManager.getSubThreadLooper());
+  private azip jdField_a_of_type_Azip = new arpx(this);
   public QQAppInterface a;
   private ContactSyncManager.RefreshContactRunnable jdField_a_of_type_ComTencentMobileqqContactsyncContactSyncManager$RefreshContactRunnable = new ContactSyncManager.RefreshContactRunnable(this, null);
   private Lock jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
@@ -96,7 +97,7 @@ public class ContactSyncManager
         if (!bool) {
           continue;
         }
-        paramQQAppInterface.registObserver(this.jdField_a_of_type_Aycd);
+        paramQQAppInterface.registObserver(this.jdField_a_of_type_Azip);
       }
       catch (Throwable localThrowable)
       {
@@ -124,7 +125,7 @@ public class ContactSyncManager
   }
   
   /* Error */
-  private List<aqms> a()
+  private List<arqd> a()
   {
     // Byte code:
     //   0: aload_0
@@ -139,8 +140,8 @@ public class ContactSyncManager
     //   20: aload_1
     //   21: aload_0
     //   22: invokespecial 228	com/tencent/mobileqq/contactsync/ContactSyncManager:c	()Ljava/lang/String;
-    //   25: invokestatic 233	aqmr:a	(Ljava/lang/String;)Landroid/net/Uri;
-    //   28: getstatic 236	aqmr:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   25: invokestatic 233	arqc:a	(Ljava/lang/String;)Landroid/net/Uri;
+    //   28: getstatic 236	arqc:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   31: aconst_null
     //   32: aconst_null
     //   33: aconst_null
@@ -161,9 +162,9 @@ public class ContactSyncManager
     //   63: ifeq +128 -> 191
     //   66: aload_2
     //   67: astore_1
-    //   68: new 257	aqms
+    //   68: new 257	arqd
     //   71: dup
-    //   72: invokespecial 258	aqms:<init>	()V
+    //   72: invokespecial 258	arqd:<init>	()V
     //   75: astore_3
     //   76: aload_2
     //   77: astore_1
@@ -171,21 +172,21 @@ public class ContactSyncManager
     //   79: aload_2
     //   80: iconst_0
     //   81: invokeinterface 262 2 0
-    //   86: putfield 265	aqms:jdField_a_of_type_Long	J
+    //   86: putfield 265	arqd:jdField_a_of_type_Long	J
     //   89: aload_2
     //   90: astore_1
     //   91: aload_3
     //   92: aload_2
     //   93: iconst_1
     //   94: invokeinterface 269 2 0
-    //   99: putfield 270	aqms:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   99: putfield 270	arqd:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   102: aload_2
     //   103: astore_1
     //   104: aload_3
     //   105: aload_2
     //   106: iconst_2
     //   107: invokeinterface 274 2 0
-    //   112: putfield 277	aqms:jdField_a_of_type_Int	I
+    //   112: putfield 277	arqd:jdField_a_of_type_Int	I
     //   115: aload_2
     //   116: astore_1
     //   117: aload 4
@@ -282,7 +283,7 @@ public class ContactSyncManager
     //   244	14	2	localObject3	Object
     //   279	1	2	localObject4	Object
     //   285	1	2	localObject5	Object
-    //   75	45	3	localaqms	aqms
+    //   75	45	3	localarqd	arqd
     //   127	18	3	localException1	java.lang.Exception
     //   283	1	3	localException2	java.lang.Exception
     //   18	171	4	localArrayList	ArrayList
@@ -313,7 +314,7 @@ public class ContactSyncManager
   
   private Map<String, PhoneContact> a()
   {
-    List localList = ((avsy)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11)).d();
+    List localList = ((awyz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER)).d();
     if (localList != null)
     {
       HashMap localHashMap = new HashMap(localList.size());
@@ -375,7 +376,7 @@ public class ContactSyncManager
         return;
       }
       paramQQAppInterface.getApp().getSharedPreferences("contactsync", 0).edit().putBoolean("pref_remove_account_prefix" + paramAccount.name, true).apply();
-      ??? = (ContactSyncManager)paramQQAppInterface.getManager(41);
+      ??? = (ContactSyncManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_SYNC_CONTACT);
       if (??? != null)
       {
         paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
@@ -403,7 +404,7 @@ public class ContactSyncManager
   
   private void a(List<ContentProviderOperation> paramList, PhoneContact paramPhoneContact)
   {
-    paramList = aqml.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramList, c(), paramPhoneContact.mobileNo, paramPhoneContact.nationCode, paramPhoneContact.mobileCode, paramPhoneContact.ability, paramPhoneContact.contactID);
+    paramList = arpw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramList, c(), paramPhoneContact.mobileNo, paramPhoneContact.nationCode, paramPhoneContact.mobileCode, paramPhoneContact.ability, paramPhoneContact.contactID);
     paramList.a(paramPhoneContact.name);
     paramList.b(paramPhoneContact.mobileNo);
   }
@@ -416,23 +417,23 @@ public class ContactSyncManager
     //   1: getfield 96	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   4: aload_1
     //   5: lload_3
-    //   6: invokestatic 530	aqml:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/util/List;J)Laqml;
+    //   6: invokestatic 538	arpw:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/util/List;J)Larpw;
     //   9: astore 6
     //   11: aload_0
     //   12: getfield 96	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   15: invokevirtual 534	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
-    //   18: invokevirtual 537	mqq/app/MobileQQ:getContentResolver	()Landroid/content/ContentResolver;
+    //   15: invokevirtual 542	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
+    //   18: invokevirtual 545	mqq/app/MobileQQ:getContentResolver	()Landroid/content/ContentResolver;
     //   21: astore_1
     //   22: aload_1
-    //   23: getstatic 541	aqmp:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   26: getstatic 542	aqmp:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
-    //   29: ldc_w 544
+    //   23: getstatic 549	arqa:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
+    //   26: getstatic 550	arqa:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   29: ldc_w 552
     //   32: iconst_1
     //   33: anewarray 189	java/lang/String
     //   36: dup
     //   37: iconst_0
     //   38: lload_3
-    //   39: invokestatic 547	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   39: invokestatic 555	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   42: aastore
     //   43: aconst_null
     //   44: invokevirtual 242	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
@@ -449,8 +450,8 @@ public class ContactSyncManager
     //   70: aload 5
     //   72: iconst_1
     //   73: invokeinterface 269 2 0
-    //   78: ldc_w 549
-    //   81: invokevirtual 359	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   78: ldc_w 557
+    //   81: invokevirtual 364	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   84: ifeq -30 -> 54
     //   87: aload 5
     //   89: astore_1
@@ -461,14 +462,14 @@ public class ContactSyncManager
     //   100: aload 5
     //   102: astore_1
     //   103: aload 7
-    //   105: invokestatic 337	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   105: invokestatic 342	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   108: ifne +18 -> 126
     //   111: aload 5
     //   113: astore_1
     //   114: aload 7
     //   116: aload_2
-    //   117: getfield 520	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
-    //   120: invokevirtual 359	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   117: getfield 528	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
+    //   120: invokevirtual 364	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   123: ifne +42 -> 165
     //   126: aload 5
     //   128: astore_1
@@ -478,17 +479,17 @@ public class ContactSyncManager
     //   137: lstore_3
     //   138: aload 5
     //   140: astore_1
-    //   141: getstatic 541	aqmp:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
+    //   141: getstatic 549	arqa:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
     //   144: lload_3
-    //   145: invokestatic 555	android/content/ContentUris:withAppendedId	(Landroid/net/Uri;J)Landroid/net/Uri;
+    //   145: invokestatic 563	android/content/ContentUris:withAppendedId	(Landroid/net/Uri;J)Landroid/net/Uri;
     //   148: astore 7
     //   150: aload 5
     //   152: astore_1
     //   153: aload 6
     //   155: aload_2
-    //   156: getfield 520	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
+    //   156: getfield 528	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
     //   159: aload 7
-    //   161: invokevirtual 558	aqml:a	(Ljava/lang/String;Landroid/net/Uri;)Laqml;
+    //   161: invokevirtual 566	arpw:a	(Ljava/lang/String;Landroid/net/Uri;)Larpw;
     //   164: pop
     //   165: aload 5
     //   167: ifnull +10 -> 177
@@ -500,7 +501,7 @@ public class ContactSyncManager
     //   182: ifeq -5 -> 177
     //   185: ldc 89
     //   187: iconst_2
-    //   188: ldc_w 560
+    //   188: ldc_w 568
     //   191: aload_1
     //   192: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   195: return
@@ -515,7 +516,7 @@ public class ContactSyncManager
     //   211: astore_1
     //   212: ldc 89
     //   214: iconst_2
-    //   215: ldc_w 562
+    //   215: ldc_w 570
     //   218: aload_2
     //   219: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   222: aload 5
@@ -528,7 +529,7 @@ public class ContactSyncManager
     //   239: ifeq -62 -> 177
     //   242: ldc 89
     //   244: iconst_2
-    //   245: ldc_w 560
+    //   245: ldc_w 568
     //   248: aload_1
     //   249: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   252: return
@@ -546,7 +547,7 @@ public class ContactSyncManager
     //   272: ifeq -6 -> 266
     //   275: ldc 89
     //   277: iconst_2
-    //   278: ldc_w 560
+    //   278: ldc_w 568
     //   281: aload_1
     //   282: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   285: goto -19 -> 266
@@ -561,7 +562,7 @@ public class ContactSyncManager
     //   0	296	2	paramPhoneContact	PhoneContact
     //   0	296	3	paramLong	long
     //   47	181	5	localCursor	android.database.Cursor
-    //   9	145	6	localaqml	aqml
+    //   9	145	6	localarpw	arpw
     //   98	62	7	localObject	Object
     // Exception table:
     //   from	to	target	type
@@ -668,10 +669,10 @@ public class ContactSyncManager
   
   private boolean a(Map<String, PhoneContact> paramMap, int paramInt)
   {
-    label1099:
-    label1105:
-    label1110:
-    label1116:
+    label1100:
+    label1106:
+    label1111:
+    label1117:
     for (;;)
     {
       Object localObject1;
@@ -687,18 +688,18 @@ public class ContactSyncManager
         Object localObject3 = a();
         if ((localObject3 == null) || (((List)localObject3).size() == 0))
         {
-          localObject1 = (PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11);
+          localObject1 = (PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
           if ((localObject1 == null) || (!((PhoneContactManagerImp)localObject1).l())) {
-            break label1105;
+            break label1106;
           }
           i = 1;
           if (i == 0)
           {
             if (!QLog.isColorLevel()) {
-              break label1099;
+              break label1100;
             }
             QLog.d("ContactSync.Manager", 2, "doSyncContacts no read contacts permission !");
-            break label1099;
+            break label1100;
           }
         }
         ArrayList localArrayList = new ArrayList();
@@ -712,16 +713,16 @@ public class ContactSyncManager
         Iterator localIterator = ((List)localObject3).iterator();
         if (localIterator.hasNext())
         {
-          aqms localaqms = (aqms)localIterator.next();
+          arqd localarqd = (arqd)localIterator.next();
           if (a("for1"))
           {
             bool = false;
             continue;
           }
-          String str = localaqms.jdField_a_of_type_JavaLangString;
-          if ((TextUtils.isEmpty(str)) || (!paramMap.containsKey(localaqms.jdField_a_of_type_JavaLangString)))
+          String str = localarqd.jdField_a_of_type_JavaLangString;
+          if ((TextUtils.isEmpty(str)) || (!paramMap.containsKey(localarqd.jdField_a_of_type_JavaLangString)))
           {
-            a(localaqms.jdField_a_of_type_Long, localArrayList);
+            a(localarqd.jdField_a_of_type_Long, localArrayList);
             j = m + 1;
             m = j;
             if (j >= 15) {
@@ -732,7 +733,7 @@ public class ContactSyncManager
               continue;
             }
             m = j;
-            if (!aqmt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localaqms.jdField_a_of_type_Int)) {
+            if (!arqe.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localarqd.jdField_a_of_type_Int)) {
               continue;
             }
             k += 1;
@@ -742,29 +743,29 @@ public class ContactSyncManager
           if ((TextUtils.isEmpty(str)) || (!paramMap.containsKey(str))) {
             continue;
           }
-          if (((Set)localObject2).contains(Integer.valueOf(localaqms.jdField_a_of_type_Int)))
+          if (((Set)localObject2).contains(Integer.valueOf(localarqd.jdField_a_of_type_Int)))
           {
             if (QLog.isColorLevel()) {
               QLog.e("ContactSync.Manager", 2, "doSyncContacts | error: duplicate contact id");
             }
             n += 1;
-            a(localaqms.jdField_a_of_type_Long, localArrayList);
+            a(localarqd.jdField_a_of_type_Long, localArrayList);
             paramMap.remove(str);
             continue;
           }
-          ((Set)localObject2).add(Integer.valueOf(localaqms.jdField_a_of_type_Int));
+          ((Set)localObject2).add(Integer.valueOf(localarqd.jdField_a_of_type_Int));
           j = i;
-          if (((PhoneContact)paramMap.get(str)).contactID == localaqms.jdField_a_of_type_Int) {
-            break label1110;
+          if (((PhoneContact)paramMap.get(str)).contactID == localarqd.jdField_a_of_type_Int) {
+            break label1111;
           }
-          ((Set)localObject1).add(localaqms.jdField_a_of_type_JavaLangString);
+          ((Set)localObject1).add(localarqd.jdField_a_of_type_JavaLangString);
           j = i + 1;
-          a(localArrayList, (PhoneContact)paramMap.get(str), localaqms.jdField_a_of_type_Long);
-          break label1110;
+          a(localArrayList, (PhoneContact)paramMap.get(str), localarqd.jdField_a_of_type_Long);
+          break label1111;
         }
         paramMap = paramMap.values();
         QLog.d("ContactSync.Manager", 1, String.format("doSyncContacts syncFrom|selfUin|syncUin|qqContactSize|rawContactSize|delCnt|delCntConflict|aggCnt|willInsertCnt|dangersDelCnt = %d|%s|%s|%d|%d|%d|%d|%d|%d|%d", new Object[] { Integer.valueOf(paramInt), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), b(a()), Integer.valueOf(i1), Integer.valueOf(((List)localObject3).size()), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i), Integer.valueOf(paramMap.size()), Integer.valueOf(k) }));
-        aqmt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, i1, ((List)localObject3).size(), m, n, k, paramMap.size());
+        arqe.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, i1, ((List)localObject3).size(), m, n, k, paramMap.size());
         a(localArrayList, 0, "doSyncContacts apply update ops");
         paramMap = paramMap.iterator();
         paramInt = 0;
@@ -786,10 +787,10 @@ public class ContactSyncManager
             continue;
           }
           if (!QLog.isColorLevel()) {
-            break label1116;
+            break label1117;
           }
           QLog.d("ContactSync.Manager", 2, "doSyncContacts | contact " + ((PhoneContact)localObject3).contactID + " has two match phonenum");
-          break label1116;
+          break label1117;
         }
         a(localArrayList, 0, "doSyncContacts apply insert ops left");
         QLog.d("ContactSync.Manager", 1, String.format("doSyncContacts realInsertCnt|aggCnt = %d|%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(((Set)localObject1).size()) }));
@@ -805,11 +806,11 @@ public class ContactSyncManager
         localObject2 = ((List)localObject2).iterator();
         if (((Iterator)localObject2).hasNext())
         {
-          localObject3 = (aqms)((Iterator)localObject2).next();
-          if ((((Set)localObject1).contains(((aqms)localObject3).jdField_a_of_type_JavaLangString)) && (paramMap.containsKey(((aqms)localObject3).jdField_a_of_type_JavaLangString)))
+          localObject3 = (arqd)((Iterator)localObject2).next();
+          if ((((Set)localObject1).contains(((arqd)localObject3).jdField_a_of_type_JavaLangString)) && (paramMap.containsKey(((arqd)localObject3).jdField_a_of_type_JavaLangString)))
           {
-            a(localArrayList, ((aqms)localObject3).jdField_a_of_type_Long, ((Long)paramMap.get(((aqms)localObject3).jdField_a_of_type_JavaLangString)).longValue());
-            ((Set)localObject1).remove(((aqms)localObject3).jdField_a_of_type_JavaLangString);
+            a(localArrayList, ((arqd)localObject3).jdField_a_of_type_Long, ((Long)paramMap.get(((arqd)localObject3).jdField_a_of_type_JavaLangString)).longValue());
+            ((Set)localObject1).remove(((arqd)localObject3).jdField_a_of_type_JavaLangString);
           }
           a(localArrayList, 500, "doSyncContacts apply aggregate batch");
           continue;
@@ -853,13 +854,13 @@ public class ContactSyncManager
     //   4: invokevirtual 102	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   7: invokevirtual 223	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
     //   10: astore_2
-    //   11: new 309	java/util/HashMap
+    //   11: new 314	java/util/HashMap
     //   14: dup
-    //   15: invokespecial 352	java/util/HashMap:<init>	()V
+    //   15: invokespecial 357	java/util/HashMap:<init>	()V
     //   18: astore_1
     //   19: aload_2
-    //   20: getstatic 733	aqmq:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   23: getstatic 734	aqmq:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   20: getstatic 741	arqb:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
+    //   23: getstatic 742	arqb:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   26: aconst_null
     //   27: aconst_null
     //   28: aconst_null
@@ -869,11 +870,11 @@ public class ContactSyncManager
     //   34: ifnull +216 -> 250
     //   37: aload_2
     //   38: astore_3
-    //   39: new 309	java/util/HashMap
+    //   39: new 314	java/util/HashMap
     //   42: dup
     //   43: aload_2
     //   44: invokeinterface 248 1 0
-    //   49: invokespecial 314	java/util/HashMap:<init>	(I)V
+    //   49: invokespecial 319	java/util/HashMap:<init>	(I)V
     //   52: astore 4
     //   54: aload_2
     //   55: astore_3
@@ -886,12 +887,12 @@ public class ContactSyncManager
     //   69: aload_2
     //   70: iconst_0
     //   71: invokeinterface 269 2 0
-    //   76: invokestatic 738	aihb:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   76: invokestatic 746	ajca:a	(Ljava/lang/String;)Ljava/lang/String;
     //   79: aload_2
     //   80: iconst_3
     //   81: invokeinterface 262 2 0
-    //   86: invokestatic 462	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   89: invokevirtual 739	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   86: invokestatic 470	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   89: invokevirtual 747	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   92: pop
     //   93: goto -39 -> 54
     //   96: astore_3
@@ -907,7 +908,7 @@ public class ContactSyncManager
     //   112: astore_3
     //   113: ldc 89
     //   115: iconst_2
-    //   116: ldc_w 741
+    //   116: ldc_w 749
     //   119: aload 4
     //   121: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   124: aload_1
@@ -937,7 +938,7 @@ public class ContactSyncManager
     //   163: ifeq -25 -> 138
     //   166: ldc 89
     //   168: iconst_2
-    //   169: ldc_w 743
+    //   169: ldc_w 751
     //   172: aload_2
     //   173: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   176: aload_1
@@ -949,7 +950,7 @@ public class ContactSyncManager
     //   184: ifeq -46 -> 138
     //   187: ldc 89
     //   189: iconst_2
-    //   190: ldc_w 743
+    //   190: ldc_w 751
     //   193: aload_2
     //   194: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   197: aload_1
@@ -968,7 +969,7 @@ public class ContactSyncManager
     //   218: ifeq -6 -> 212
     //   221: ldc 89
     //   223: iconst_2
-    //   224: ldc_w 743
+    //   224: ldc_w 751
     //   227: aload_2
     //   228: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   231: goto -19 -> 212
@@ -1051,14 +1052,14 @@ public class ContactSyncManager
     // Byte code:
     //   0: aload_0
     //   1: getfield 54	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   4: invokeinterface 772 1 0
+    //   4: invokeinterface 780 1 0
     //   9: aload_0
     //   10: aconst_null
-    //   11: putfield 365	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_AndroidAccountsAccount	Landroid/accounts/Account;
+    //   11: putfield 370	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_AndroidAccountsAccount	Landroid/accounts/Account;
     //   14: aload_0
     //   15: getfield 110	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_AndroidAccountsAccountManager	Landroid/accounts/AccountManager;
-    //   18: ldc_w 746
-    //   21: invokevirtual 750	android/accounts/AccountManager:getAccountsByType	(Ljava/lang/String;)[Landroid/accounts/Account;
+    //   18: ldc_w 754
+    //   21: invokevirtual 758	android/accounts/AccountManager:getAccountsByType	(Ljava/lang/String;)[Landroid/accounts/Account;
     //   24: astore 4
     //   26: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   29: ifeq +31 -> 60
@@ -1067,7 +1068,7 @@ public class ContactSyncManager
     //   35: new 134	java/lang/StringBuilder
     //   38: dup
     //   39: invokespecial 135	java/lang/StringBuilder:<init>	()V
-    //   42: ldc_w 774
+    //   42: ldc_w 782
     //   45: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   48: aload 4
     //   50: arraylength
@@ -1093,11 +1094,11 @@ public class ContactSyncManager
     //   86: new 134	java/lang/StringBuilder
     //   89: dup
     //   90: invokespecial 135	java/lang/StringBuilder:<init>	()V
-    //   93: ldc_w 776
+    //   93: ldc_w 784
     //   96: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   99: aload 5
-    //   101: getfield 421	android/accounts/Account:name	Ljava/lang/String;
-    //   104: invokestatic 674	com/tencent/mobileqq/contactsync/ContactSyncManager:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   101: getfield 426	android/accounts/Account:name	Ljava/lang/String;
+    //   104: invokestatic 682	com/tencent/mobileqq/contactsync/ContactSyncManager:b	(Ljava/lang/String;)Ljava/lang/String;
     //   107: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   110: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   113: invokestatic 94	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -1107,20 +1108,20 @@ public class ContactSyncManager
     //   121: monitorenter
     //   122: getstatic 36	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_JavaUtilSet	Ljava/util/Set;
     //   125: aload 5
-    //   127: getfield 421	android/accounts/Account:name	Ljava/lang/String;
-    //   130: invokeinterface 660 2 0
+    //   127: getfield 426	android/accounts/Account:name	Ljava/lang/String;
+    //   130: invokeinterface 668 2 0
     //   135: pop
     //   136: aload_3
     //   137: monitorexit
     //   138: aload_0
     //   139: getfield 110	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_AndroidAccountsAccountManager	Landroid/accounts/AccountManager;
     //   142: aload 5
-    //   144: new 778	aqmo
+    //   144: new 786	arpz
     //   147: dup
     //   148: aload_0
-    //   149: invokespecial 779	aqmo:<init>	(Lcom/tencent/mobileqq/contactsync/ContactSyncManager;)V
+    //   149: invokespecial 787	arpz:<init>	(Lcom/tencent/mobileqq/contactsync/ContactSyncManager;)V
     //   152: aconst_null
-    //   153: invokevirtual 783	android/accounts/AccountManager:removeAccount	(Landroid/accounts/Account;Landroid/accounts/AccountManagerCallback;Landroid/os/Handler;)Landroid/accounts/AccountManagerFuture;
+    //   153: invokevirtual 791	android/accounts/AccountManager:removeAccount	(Landroid/accounts/Account;Landroid/accounts/AccountManagerCallback;Landroid/os/Handler;)Landroid/accounts/AccountManagerFuture;
     //   156: pop
     //   157: iload_1
     //   158: iconst_1
@@ -1137,21 +1138,21 @@ public class ContactSyncManager
     //   175: ifeq +13 -> 188
     //   178: ldc 89
     //   180: iconst_2
-    //   181: ldc_w 785
+    //   181: ldc_w 793
     //   184: aload_3
     //   185: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   188: aload_0
     //   189: getfield 54	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   192: invokeinterface 788 1 0
+    //   192: invokeinterface 796 1 0
     //   197: return
     //   198: aload_0
     //   199: getfield 54	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   202: invokeinterface 788 1 0
+    //   202: invokeinterface 796 1 0
     //   207: return
     //   208: astore_3
     //   209: aload_0
     //   210: getfield 54	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   213: invokeinterface 788 1 0
+    //   213: invokeinterface 796 1 0
     //   218: aload_3
     //   219: athrow
     // Local variable table:
@@ -1247,24 +1248,24 @@ public class ContactSyncManager
       if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
         return false;
       }
-      localObject = (avsy)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11);
+      localObject = (awyz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
       StringBuilder localStringBuilder;
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder().append("coundlAddAccount | pcm = ").append(localObject).append(" | bindState = ");
         if (localObject == null) {
-          break label310;
+          break label311;
         }
       }
-      label310:
-      for (int i = ((avsy)localObject).d();; i = -1000)
+      label311:
+      for (int i = ((awyz)localObject).d();; i = -1000)
       {
         QLog.d("ContactSync.Manager", 2, i);
-        if ((localObject == null) || (!((avsy)localObject).d())) {
+        if ((localObject == null) || (!((awyz)localObject).d())) {
           break;
         }
         if (QLog.isColorLevel()) {
-          QLog.d("ContactSync.Manager", 2, "couldAddAccount | bind state = " + ((avsy)localObject).d());
+          QLog.d("ContactSync.Manager", 2, "couldAddAccount | bind state = " + ((awyz)localObject).d());
         }
         return true;
       }
@@ -1300,32 +1301,32 @@ public class ContactSyncManager
       if (this.jdField_a_of_type_Boolean)
       {
         Object localObject = a();
-        avsy localavsy = (avsy)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11);
+        awyz localawyz = (awyz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
         StringBuilder localStringBuilder = new StringBuilder().append("couldSyncContact | bind state = ");
-        if (localavsy == null) {
-          break label276;
+        if (localawyz == null) {
+          break label277;
         }
         i = 9;
         QLog.d("ContactSync.Manager", 1, i + " | account.name = " + b((String)localObject));
         bool1 = bool2;
-        if (localavsy != null)
+        if (localawyz != null)
         {
           bool1 = bool2;
-          if (localavsy.d())
+          if (localawyz.d())
           {
             bool1 = bool2;
             if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(localObject))
             {
               localObject = this.jdField_a_of_type_AndroidAccountsAccount;
               if (localObject == null) {
-                break label288;
+                break label289;
               }
               bool2 = ContentResolver.getSyncAutomatically((Account)localObject, this.jdField_c_of_type_JavaLangString);
               if (ContentResolver.getIsSyncable((Account)localObject, this.jdField_c_of_type_JavaLangString) <= 0) {
-                break label283;
+                break label284;
               }
               bool1 = true;
-              label220:
+              label221:
               bool3 = ContentResolver.getMasterSyncAutomatically();
             }
           }
@@ -1337,13 +1338,13 @@ public class ContactSyncManager
       QLog.d("ContactSync.Manager", 1, "couldSyncContact | isSystemSyncAutomatic = " + bool2 + " | isSystemSyncable = " + bool1 + " | isMasterSyncAutomatic = " + bool3);
       bool1 = bool2;
       return bool1;
-      label276:
+      label277:
       i = -100000;
       break;
-      label283:
+      label284:
       bool1 = false;
-      break label220;
-      label288:
+      break label221;
+      label289:
       bool1 = false;
       bool2 = false;
     }
@@ -1424,7 +1425,7 @@ public class ContactSyncManager
   }
   
   /* Error */
-  public aqmu a(Uri paramUri)
+  public arqf a(Uri paramUri)
   {
     // Byte code:
     //   0: aload_0
@@ -1438,7 +1439,7 @@ public class ContactSyncManager
     //   16: anewarray 189	java/lang/String
     //   19: dup
     //   20: iconst_0
-    //   21: ldc_w 911
+    //   21: ldc_w 919
     //   24: aastore
     //   25: aconst_null
     //   26: aconst_null
@@ -1463,7 +1464,7 @@ public class ContactSyncManager
     //   63: aload_1
     //   64: invokeinterface 286 1 0
     //   69: lload_2
-    //   70: ldc2_w 912
+    //   70: ldc2_w 920
     //   73: lcmp
     //   74: ifne +137 -> 211
     //   77: aconst_null
@@ -1473,7 +1474,7 @@ public class ContactSyncManager
     //   84: ifeq +14 -> 98
     //   87: ldc 89
     //   89: iconst_2
-    //   90: ldc_w 915
+    //   90: ldc_w 923
     //   93: aload 4
     //   95: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   98: goto -29 -> 69
@@ -1488,14 +1489,14 @@ public class ContactSyncManager
     //   115: astore 4
     //   117: ldc 89
     //   119: iconst_2
-    //   120: ldc_w 917
+    //   120: ldc_w 925
     //   123: aload 5
     //   125: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   128: aload_1
     //   129: ifnull +575 -> 704
     //   132: aload_1
     //   133: invokeinterface 286 1 0
-    //   138: ldc2_w 912
+    //   138: ldc2_w 920
     //   141: lstore_2
     //   142: goto -73 -> 69
     //   145: astore 4
@@ -1503,10 +1504,10 @@ public class ContactSyncManager
     //   150: ifeq +14 -> 164
     //   153: ldc 89
     //   155: iconst_2
-    //   156: ldc_w 915
+    //   156: ldc_w 923
     //   159: aload 4
     //   161: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   164: ldc2_w 912
+    //   164: ldc2_w 920
     //   167: lstore_2
     //   168: goto -99 -> 69
     //   171: astore_1
@@ -1523,24 +1524,24 @@ public class ContactSyncManager
     //   194: ifeq -7 -> 187
     //   197: ldc 89
     //   199: iconst_2
-    //   200: ldc_w 915
+    //   200: ldc_w 923
     //   203: aload 4
     //   205: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   208: goto -21 -> 187
-    //   211: new 919	aqmu
+    //   211: new 927	arqf
     //   214: dup
-    //   215: invokespecial 920	aqmu:<init>	()V
+    //   215: invokespecial 928	arqf:<init>	()V
     //   218: astore 7
     //   220: aload 6
-    //   222: getstatic 541	aqmp:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   225: getstatic 542	aqmp:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
-    //   228: ldc_w 544
+    //   222: getstatic 549	arqa:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
+    //   225: getstatic 550	arqa:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   228: ldc_w 552
     //   231: iconst_1
     //   232: anewarray 189	java/lang/String
     //   235: dup
     //   236: iconst_0
     //   237: lload_2
-    //   238: invokestatic 547	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   238: invokestatic 555	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   241: aastore
     //   242: aconst_null
     //   243: invokevirtual 242	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
@@ -1559,8 +1560,8 @@ public class ContactSyncManager
     //   270: aload_1
     //   271: iconst_1
     //   272: invokeinterface 269 2 0
-    //   277: ldc_w 549
-    //   280: invokevirtual 359	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   277: ldc_w 557
+    //   280: invokevirtual 364	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   283: ifeq -28 -> 255
     //   286: aload_1
     //   287: astore 4
@@ -1568,7 +1569,7 @@ public class ContactSyncManager
     //   291: aload_1
     //   292: iconst_2
     //   293: invokeinterface 269 2 0
-    //   298: putfield 921	aqmu:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   298: putfield 929	arqf:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   301: aload_1
     //   302: astore 4
     //   304: aload_1
@@ -1576,15 +1577,15 @@ public class ContactSyncManager
     //   308: aload_1
     //   309: invokeinterface 286 1 0
     //   314: aload 6
-    //   316: getstatic 378	android/provider/ContactsContract$RawContacts:CONTENT_URI	Landroid/net/Uri;
-    //   319: getstatic 923	aqmr:b	[Ljava/lang/String;
-    //   322: ldc_w 925
+    //   316: getstatic 383	android/provider/ContactsContract$RawContacts:CONTENT_URI	Landroid/net/Uri;
+    //   319: getstatic 931	arqc:b	[Ljava/lang/String;
+    //   322: ldc_w 933
     //   325: iconst_1
     //   326: anewarray 189	java/lang/String
     //   329: dup
     //   330: iconst_0
     //   331: lload_2
-    //   332: invokestatic 547	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   332: invokestatic 555	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   335: aastore
     //   336: aconst_null
     //   337: invokevirtual 242	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
@@ -1602,21 +1603,21 @@ public class ContactSyncManager
     //   365: aload 4
     //   367: iconst_0
     //   368: invokeinterface 269 2 0
-    //   373: putfield 926	aqmu:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   373: putfield 934	arqf:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   376: aload 4
     //   378: astore_1
     //   379: aload 7
     //   381: aload 4
     //   383: iconst_1
     //   384: invokeinterface 269 2 0
-    //   389: putfield 927	aqmu:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   389: putfield 935	arqf:jdField_c_of_type_JavaLangString	Ljava/lang/String;
     //   392: aload 4
     //   394: astore_1
     //   395: aload 7
     //   397: aload 4
     //   399: iconst_2
     //   400: invokeinterface 274 2 0
-    //   405: putfield 928	aqmu:jdField_a_of_type_Int	I
+    //   405: putfield 936	arqf:jdField_a_of_type_Int	I
     //   408: aload 4
     //   410: ifnull +10 -> 420
     //   413: aload 4
@@ -1628,7 +1629,7 @@ public class ContactSyncManager
     //   428: ifeq +14 -> 442
     //   431: ldc 89
     //   433: iconst_2
-    //   434: ldc_w 930
+    //   434: ldc_w 938
     //   437: aload 4
     //   439: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   442: goto -128 -> 314
@@ -1641,7 +1642,7 @@ public class ContactSyncManager
     //   457: astore 4
     //   459: ldc 89
     //   461: iconst_2
-    //   462: ldc_w 917
+    //   462: ldc_w 925
     //   465: aload 5
     //   467: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   470: aload_1
@@ -1656,7 +1657,7 @@ public class ContactSyncManager
     //   491: ifeq +14 -> 505
     //   494: ldc 89
     //   496: iconst_2
-    //   497: ldc_w 930
+    //   497: ldc_w 938
     //   500: aload 4
     //   502: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   505: goto -191 -> 314
@@ -1676,7 +1677,7 @@ public class ContactSyncManager
     //   535: ifeq -7 -> 528
     //   538: ldc 89
     //   540: iconst_2
-    //   541: ldc_w 930
+    //   541: ldc_w 938
     //   544: aload 4
     //   546: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   549: goto -21 -> 528
@@ -1685,7 +1686,7 @@ public class ContactSyncManager
     //   556: ifeq -136 -> 420
     //   559: ldc 89
     //   561: iconst_2
-    //   562: ldc_w 932
+    //   562: ldc_w 940
     //   565: aload_1
     //   566: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   569: goto -149 -> 420
@@ -1700,7 +1701,7 @@ public class ContactSyncManager
     //   588: astore_1
     //   589: ldc 89
     //   591: iconst_2
-    //   592: ldc_w 917
+    //   592: ldc_w 925
     //   595: aload 5
     //   597: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   600: aload 4
@@ -1713,7 +1714,7 @@ public class ContactSyncManager
     //   619: ifeq -199 -> 420
     //   622: ldc 89
     //   624: iconst_2
-    //   625: ldc_w 932
+    //   625: ldc_w 940
     //   628: aload_1
     //   629: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   632: goto -212 -> 420
@@ -1729,7 +1730,7 @@ public class ContactSyncManager
     //   654: ifeq -7 -> 647
     //   657: ldc 89
     //   659: iconst_2
-    //   660: ldc_w 932
+    //   660: ldc_w 940
     //   663: aload_1
     //   664: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   667: goto -20 -> 647
@@ -1748,11 +1749,11 @@ public class ContactSyncManager
     //   698: aload 4
     //   700: astore_1
     //   701: goto -387 -> 314
-    //   704: ldc2_w 912
+    //   704: ldc2_w 920
     //   707: lstore_2
     //   708: goto -639 -> 69
     //   711: goto -642 -> 69
-    //   714: ldc2_w 912
+    //   714: ldc2_w 920
     //   717: lstore_2
     //   718: goto -659 -> 59
     // Local variable table:
@@ -1783,7 +1784,7 @@ public class ContactSyncManager
     //   684	1	5	localException5	java.lang.Exception
     //   693	1	5	localException6	java.lang.Exception
     //   10	305	6	localContentResolver	ContentResolver
-    //   218	203	7	localaqmu	aqmu
+    //   218	203	7	localarqf	arqf
     // Exception table:
     //   from	to	target	type
     //   63	69	79	java/lang/Throwable
@@ -1851,7 +1852,7 @@ public class ContactSyncManager
     //   14: anewarray 189	java/lang/String
     //   17: dup
     //   18: iconst_0
-    //   19: ldc_w 935
+    //   19: ldc_w 943
     //   22: aastore
     //   23: aconst_null
     //   24: aconst_null
@@ -1884,7 +1885,7 @@ public class ContactSyncManager
     //   73: ifeq -6 -> 67
     //   76: ldc 89
     //   78: iconst_2
-    //   79: ldc_w 937
+    //   79: ldc_w 945
     //   82: aload_1
     //   83: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   86: aload_2
@@ -1900,7 +1901,7 @@ public class ContactSyncManager
     //   100: astore_2
     //   101: ldc 89
     //   103: iconst_2
-    //   104: ldc_w 939
+    //   104: ldc_w 947
     //   107: aload_3
     //   108: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   111: aload_1
@@ -1914,7 +1915,7 @@ public class ContactSyncManager
     //   127: ifeq +13 -> 140
     //   130: ldc 89
     //   132: iconst_2
-    //   133: ldc_w 937
+    //   133: ldc_w 945
     //   136: aload_1
     //   137: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   140: aconst_null
@@ -1933,7 +1934,7 @@ public class ContactSyncManager
     //   161: ifeq -6 -> 155
     //   164: ldc 89
     //   166: iconst_2
-    //   167: ldc_w 937
+    //   167: ldc_w 945
     //   170: aload_2
     //   171: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   174: goto -19 -> 155
@@ -2005,7 +2006,7 @@ public class ContactSyncManager
     if (QLog.isColorLevel()) {
       QLog.d("ContactSync.Manager", 2, "deleteSyncContact | mobileNo = " + c(paramString));
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getContentResolver().delete(aqmr.a(c()), "sourceid=?", new String[] { paramString });
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getContentResolver().delete(arqc.a(c()), "sourceid=?", new String[] { paramString });
   }
   
   public void a(boolean paramBoolean)
@@ -2073,7 +2074,7 @@ public class ContactSyncManager
     //   14: anewarray 189	java/lang/String
     //   17: dup
     //   18: iconst_0
-    //   19: ldc_w 997
+    //   19: ldc_w 1005
     //   22: aastore
     //   23: aconst_null
     //   24: aconst_null
@@ -2106,7 +2107,7 @@ public class ContactSyncManager
     //   73: ifeq -6 -> 67
     //   76: ldc 89
     //   78: iconst_2
-    //   79: ldc_w 999
+    //   79: ldc_w 1007
     //   82: aload_1
     //   83: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   86: aload_2
@@ -2122,7 +2123,7 @@ public class ContactSyncManager
     //   100: astore_2
     //   101: ldc 89
     //   103: iconst_2
-    //   104: ldc_w 1001
+    //   104: ldc_w 1009
     //   107: aload_3
     //   108: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   111: aload_1
@@ -2136,7 +2137,7 @@ public class ContactSyncManager
     //   127: ifeq +13 -> 140
     //   130: ldc 89
     //   132: iconst_2
-    //   133: ldc_w 999
+    //   133: ldc_w 1007
     //   136: aload_1
     //   137: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   140: aconst_null
@@ -2155,7 +2156,7 @@ public class ContactSyncManager
     //   161: ifeq -6 -> 155
     //   164: ldc 89
     //   166: iconst_2
-    //   167: ldc_w 999
+    //   167: ldc_w 1007
     //   170: aload_2
     //   171: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   174: goto -19 -> 155
@@ -2207,25 +2208,25 @@ public class ContactSyncManager
     }
     while (i != 0)
     {
-      return String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getResources().getString(2131698094), new Object[] { str1, paramGetOnlineInfoResp });
-      str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698369);
-      paramGetOnlineInfoResp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698370);
+      return String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getResources().getString(2131698380), new Object[] { str1, paramGetOnlineInfoResp });
+      str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698665);
+      paramGetOnlineInfoResp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698666);
       i = 1;
       continue;
-      str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698369);
-      paramGetOnlineInfoResp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698366);
+      str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698665);
+      paramGetOnlineInfoResp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698662);
       i = 1;
       continue;
-      str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698369);
-      paramGetOnlineInfoResp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698367);
+      str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698665);
+      paramGetOnlineInfoResp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698663);
       i = 1;
       continue;
-      str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698369);
-      paramGetOnlineInfoResp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698365);
+      str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698665);
+      paramGetOnlineInfoResp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698661);
       i = 1;
       continue;
-      str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698368);
-      paramGetOnlineInfoResp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698364);
+      str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698664);
+      paramGetOnlineInfoResp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698660);
       i = 1;
     }
   }
@@ -2279,12 +2280,12 @@ public class ContactSyncManager
   public void onDestroy()
   {
     BaseApplicationImpl.sUiHandler.removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqContactsyncContactSyncManager$RefreshContactRunnable);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_Aycd);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_Azip);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.contactsync.ContactSyncManager
  * JD-Core Version:    0.7.0.1
  */

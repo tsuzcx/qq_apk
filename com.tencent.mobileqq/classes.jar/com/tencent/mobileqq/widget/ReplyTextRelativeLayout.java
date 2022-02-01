@@ -38,7 +38,7 @@ public class ReplyTextRelativeLayout
     while (paramInt2 < paramInt4)
     {
       View localView = getChildAt(paramInt2);
-      if ((localView.getVisibility() != 8) && (localView.getId() == 2131369288)) {
+      if ((localView.getVisibility() != 8) && (localView.getId() == 2131369455)) {
         localView.layout(paramInt3 - paramInt1 + 0 - localView.getMeasuredWidth(), 0, paramInt3 - paramInt1 + 0, localView.getMeasuredHeight() + 0);
       }
       paramInt2 += 1;

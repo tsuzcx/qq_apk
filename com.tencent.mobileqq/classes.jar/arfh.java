@@ -1,63 +1,69 @@
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonResp;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.util.WeakReference;
 
-class arfh
-  extends amrh
+public class arfh
+  extends aqwt<arfg>
 {
-  final WeakReference<arfd> a;
-  
-  public arfh(arfd paramarfd)
+  public static arfg a()
   {
-    this.a = new WeakReference(paramarfd);
+    return (arfg)aqxe.a().a(292);
   }
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  @NonNull
+  public arfg a(int paramInt)
+  {
+    return new arfg();
+  }
+  
+  @Nullable
+  public arfg a(aqxa[] paramArrayOfaqxa)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("SogouEmoji", 2, "func onEmosmBack begins, isSuccess:" + paramBoolean + ",type:" + paramInt);
+      QLog.d("ReadInjoySearchJumpurlConfProcessor", 2, "[onParsed] confFiles = " + paramArrayOfaqxa);
     }
-    if ((!paramBoolean) || (paramObject == null) || (paramInt != 3)) {}
-    do
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0))
     {
-      arfd localarfd;
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            localarfd = (arfd)this.a.get();
-            if (localarfd == null)
-            {
-              QLog.d("SogouEmoji", 2, "WeakReference error");
-              return;
-            }
-            paramObject = (EmoticonResp)paramObject;
-          } while (paramObject.data == null);
-          paramObject = (ArrayList)paramObject.data;
-        } while (paramObject.size() == 0);
-        paramBoolean = localarfd.a.a(localarfd.b);
-        if (QLog.isColorLevel()) {
-          QLog.d("SogouEmoji", 2, "func onEmojiKeyBack begins, isTaskExist:" + paramBoolean);
-        }
-        if (paramBoolean) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("SogouEmoji", 2, "func onEmojiKeyBack ends, task CANCELLED by user.");
-      return;
-      localarfd.a((Emoticon)paramObject.get(0));
-    } while (!QLog.isColorLevel());
-    QLog.d("SogouEmoji", 2, "func onEmojiKeyBack ends, Ready to send.");
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInjoySearchJumpurlConfProcessor", 2, "[onParsed] confFiles[0].content= " + paramArrayOfaqxa[0].a);
+      }
+      return arfg.a(paramArrayOfaqxa[0].a);
+    }
+    return null;
+  }
+  
+  public void a(arfg paramarfg) {}
+  
+  public Class<arfg> clazz()
+  {
+    return arfg.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 292;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arfh
  * JD-Core Version:    0.7.0.1
  */

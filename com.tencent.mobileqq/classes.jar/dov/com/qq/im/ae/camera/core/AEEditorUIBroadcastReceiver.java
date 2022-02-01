@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.annotation.NonNull;
-import bmbx;
+import bnrh;
 
 public class AEEditorUIBroadcastReceiver
   extends BroadcastReceiver
@@ -30,7 +30,7 @@ public class AEEditorUIBroadcastReceiver
   {
     paramContext = paramIntent.getAction();
     if (paramContext == null) {
-      bmbx.d("AEEditorUIBroadcastReceiver", "[onReceive] : action is null");
+      bnrh.d("AEEditorUIBroadcastReceiver", "[onReceive] : action is null");
     }
     while (!"AEEDITOR_GENERATE_STATUS_DELETE".equals(paramContext)) {
       return;

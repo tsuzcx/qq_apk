@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.theme.diy;
 
-import bdbv;
+import beiv;
 
 class ThemeDIYActivity$DataLoading$1
-  implements bdbv
+  implements beiv
 {
   ThemeDIYActivity$DataLoading$1(ThemeDIYActivity.DataLoading paramDataLoading) {}
   

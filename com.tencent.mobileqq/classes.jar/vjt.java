@@ -1,40 +1,70 @@
+import UserGrowth.stFeed;
+import UserGrowth.stSimpleMetaPerson;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.album.tools.PhotoSelecter;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.weishi_new.WSFollowFragment;
+import java.util.List;
 
 public class vjt
-  implements Comparable<vjt>
+  extends blig<stSimpleMetaPerson, blij<stSimpleMetaPerson>>
+  implements vjw
 {
-  public int a;
-  Bitmap a;
-  public vim a;
+  private stFeed jdField_a_of_type_UserGrowthStFeed;
+  private uxe jdField_a_of_type_Uxe;
   
-  public int a(@NonNull vjt paramvjt)
+  public vjt(Context paramContext, uxe paramuxe)
   {
-    return (int)(this.jdField_a_of_type_Vim.b - paramvjt.jdField_a_of_type_Vim.b);
+    super(paramContext);
+    this.jdField_a_of_type_Uxe = paramuxe;
   }
   
-  public Bitmap a(Context paramContext)
+  public int a(int paramInt)
   {
-    BitmapFactory.Options localOptions;
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-      localOptions = new BitmapFactory.Options();
+    return 0;
+  }
+  
+  public blij<stSimpleMetaPerson> a(ViewGroup paramViewGroup, int paramInt)
+  {
+    return vju.a(paramViewGroup, this);
+  }
+  
+  public void a(stFeed paramstFeed)
+  {
+    this.jdField_a_of_type_UserGrowthStFeed = paramstFeed;
+  }
+  
+  public void a(stSimpleMetaPerson paramstSimpleMetaPerson)
+  {
+    vbg.a().a(paramstSimpleMetaPerson.id);
+    a(paramstSimpleMetaPerson);
+    paramstSimpleMetaPerson = b();
+    if ((paramstSimpleMetaPerson == null) || (paramstSimpleMetaPerson.size() == 0)) {
+      this.jdField_a_of_type_Uxe.a(this.jdField_a_of_type_UserGrowthStFeed);
     }
-    try
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_Vim.a(paramContext, 1, localOptions);
-      this.jdField_a_of_type_AndroidGraphicsBitmap = vju.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      return this.jdField_a_of_type_AndroidGraphicsBitmap;
+    bjkv.a().a(2131720129);
+  }
+  
+  public void a(blij<stSimpleMetaPerson> paramblij)
+  {
+    super.onViewAttachedToWindow(paramblij);
+    if (((paramblij instanceof vju)) && (this.jdField_a_of_type_Uxe != null) && (this.jdField_a_of_type_Uxe.a().getUserVisibleHint())) {
+      ((vju)paramblij).b();
     }
-    catch (Exception paramContext)
-    {
-      for (;;)
-      {
-        xvv.c(PhotoSelecter.a, "get thumbnail failed!", paramContext);
-      }
+  }
+  
+  public void a(blij<stSimpleMetaPerson> paramblij, int paramInt)
+  {
+    stSimpleMetaPerson localstSimpleMetaPerson = (stSimpleMetaPerson)a(paramInt);
+    if (localstSimpleMetaPerson == null) {}
+    while (!(paramblij instanceof vju)) {
+      return;
     }
+    ((vju)paramblij).a(localstSimpleMetaPerson, paramInt);
+  }
+  
+  public void b(stSimpleMetaPerson paramstSimpleMetaPerson)
+  {
+    vmg.a(this.jdField_a_of_type_Uxe.a(), paramstSimpleMetaPerson.avatarSchema, 702, paramstSimpleMetaPerson.id);
   }
 }
 

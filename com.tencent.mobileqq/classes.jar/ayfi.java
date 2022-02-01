@@ -1,54 +1,12 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-
-public abstract class ayfi
-  extends aptq<ayfj>
+class ayfi
+  extends axvf
 {
-  protected abstract int a();
+  ayfi(ayek paramayek) {}
   
-  @NonNull
-  public ayfj a(int paramInt)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    return new ayfj();
-  }
-  
-  @Nullable
-  public ayfj a(aptx[] paramArrayOfaptx)
-  {
-    ayfj localayfj = new ayfj();
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null)) {
-      ayfj.a(localayfj, paramArrayOfaptx[0].a);
-    }
-    return localayfj;
-  }
-  
-  public void a(ayfj paramayfj) {}
-  
-  public Class<ayfj> clazz()
-  {
-    return ayfj.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return a();
+    ayek.a(this.a, paramBoolean);
+    ayek.a(this.a, 1, 60);
   }
 }
 

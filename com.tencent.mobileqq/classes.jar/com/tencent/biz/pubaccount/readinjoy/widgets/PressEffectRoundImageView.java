@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import bhlf;
+import bivv;
 import com.tencent.mobileqq.widget.RoundImageView;
 
 public class PressEffectRoundImageView
@@ -28,10 +28,10 @@ public class PressEffectRoundImageView
     for (;;)
     {
       return super.onTouchEvent(paramMotionEvent);
-      bhlf.a(this);
+      bivv.a(this);
       super.onTouchEvent(paramMotionEvent);
       return true;
-      bhlf.b(this);
+      bivv.b(this);
     }
   }
   
@@ -42,7 +42,7 @@ public class PressEffectRoundImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.widgets.PressEffectRoundImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.ttpic.openapi.model;
 
 import android.util.Pair;
+import com.tencent.ttpic.filter.juyoujinggame.UKYOScorePositions;
 import com.tencent.ttpic.model.AgeRange;
 import com.tencent.ttpic.model.CharmRange;
 import com.tencent.ttpic.model.CpRange;
@@ -16,6 +17,7 @@ import com.tencent.ttpic.particle.ParticleConfig;
 import com.tencent.ttpic.trigger.TriggerTimeUpdater;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class StickerItem
@@ -71,6 +73,7 @@ public class StickerItem
   public int filterOrderMode;
   public float fingerMusicClockTime;
   public boolean followPhoneAngle = false;
+  public String fragmentShaderPath;
   public double frameDuration;
   public FramePositionsBean framePositionsBean;
   public int[] frameSize;
@@ -91,6 +94,7 @@ public class StickerItem
   public int lockTriggerCountUntilFail;
   public String lutFilterName;
   public int markMode;
+  public float maskBlurStrength = 0.0F;
   public String maskLut;
   public String maskType;
   public int maxScaledWidth;
@@ -106,8 +110,10 @@ public class StickerItem
   public int playBPM;
   public int playCount;
   public int playMode;
+  public String pluginFilterPath;
   public PopularRange popularRange;
   public double[] position;
+  public UKYOScorePositions positionsUKYO;
   public int preTriggerType;
   public int randomGroupNum;
   public int redPacketEndFrame;
@@ -131,6 +137,7 @@ public class StickerItem
   public String subFolder;
   public int support3D;
   public String textureMaterials;
+  public LinkedHashMap<String, Integer> texturesMap;
   public int transformType;
   public Transition transition;
   public int triggedTimes = 0;
@@ -146,6 +153,8 @@ public class StickerItem
   private String triggerType;
   public String triggerWords;
   public int type;
+  public float[] uvValues;
+  public String vertexShaderPath;
   public int width;
   public WMGroupConfig wmGroupConfig;
   public List<WMGroupConfig> wmGroupConfigCopies;

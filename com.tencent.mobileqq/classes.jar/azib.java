@@ -1,45 +1,64 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.OldHttpEngine;
-import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.content.ContentValues;
+import android.database.Cursor;
+import com.tencent.mobileqq.data.RoamSetting;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.NoColumnError;
+import com.tencent.mobileqq.persistence.NoColumnErrorHandler;
+import com.tencent.mobileqq.persistence.OGAbstractDao;
 
-final class azib
-  extends AbsPreDownloadTask
+public class azib
+  extends OGAbstractDao
 {
-  azib(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5)
+  public azib()
   {
-    super(paramQQAppInterface, paramString1);
+    this.columnLen = 2;
   }
   
-  public void realCancel()
+  public Entity cursor2Entity(Entity paramEntity, Cursor paramCursor, boolean paramBoolean, NoColumnErrorHandler paramNoColumnErrorHandler)
   {
-    QLog.i("QSplash@QbossSplashUtil", 1, "ctrl realCancel");
-  }
-  
-  public void realStart()
-  {
-    QLog.i("QSplash@QbossSplashUtil", 1, "downloadPicAGifAVideoRes adid" + this.jdField_a_of_type_JavaLangString);
-    azid.a(this.b + ".splashtemp");
-    Object localObject = new HashMap();
-    ((HashMap)localObject).put("qbossSplashresAppid", this.jdField_a_of_type_JavaLangString);
-    azia.a("qbossSplashrequest", (HashMap)localObject);
-    if (QLog.isColorLevel()) {
-      QLog.i("QSplash@QbossSplashDownloadManager", 2, "qboss_ad_res_png realStart, key  " + this.jdField_a_of_type_JavaLangString + "_" + this.b);
+    paramEntity = (RoamSetting)paramEntity;
+    if (paramNoColumnErrorHandler == null)
+    {
+      paramEntity.path = paramCursor.getString(paramCursor.getColumnIndex("path"));
+      paramEntity.value = paramCursor.getString(paramCursor.getColumnIndex("value"));
+      return paramEntity;
     }
-    localObject = new HttpNetReq();
-    ((HttpNetReq)localObject).mCallback = new azic(this.app, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b + ".splashtemp", this.c, this.d);
-    ((HttpNetReq)localObject).mReqUrl = this.d;
-    ((HttpNetReq)localObject).mHttpMethod = 0;
-    ((HttpNetReq)localObject).mOutPath = (this.b + ".splashtemp");
-    ((OldHttpEngine)this.app.getNetEngine(0)).sendReq((NetReq)localObject);
+    int i = paramCursor.getColumnIndex("path");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("path", String.class));
+    }
+    for (;;)
+    {
+      i = paramCursor.getColumnIndex("value");
+      if (i != -1) {
+        break;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("value", String.class));
+      return paramEntity;
+      paramEntity.path = paramCursor.getString(i);
+    }
+    paramEntity.value = paramCursor.getString(i);
+    return paramEntity;
+  }
+  
+  public void entity2ContentValues(Entity paramEntity, ContentValues paramContentValues)
+  {
+    paramEntity = (RoamSetting)paramEntity;
+    paramContentValues.put("path", paramEntity.path);
+    paramContentValues.put("value", paramEntity.value);
+  }
+  
+  public String getCreateTableSql(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,path TEXT UNIQUE ,value TEXT)");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     azib
  * JD-Core Version:    0.7.0.1
  */

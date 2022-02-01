@@ -1,30 +1,30 @@
-import android.app.Activity;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 
-class agbg
-  extends ClickableSpan
+public class agbg
+  implements Animation.AnimationListener
 {
-  agbg(agap paramagap) {}
+  public agbg(TroopChatPie paramTroopChatPie) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
-    {
-      paramView = bjnw.a(this.a.jdField_a_of_type_AndroidContentContext);
-      paramView.b(2131719041);
-      paramView.c(2131690620);
-      paramView.a(new agbh(this));
-      paramView.a(new agbi(this, paramView));
-      paramView.show();
-      bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005975", "0X8005975", 0, 0, "", "", "", "");
-    }
+    this.a.afRoot.setBackgroundResource(2130843707);
+    this.a.mCustomTitleView.setBackgroundResource(2130843713);
+    this.a.c.setVisibility(8);
+    this.a.d.setVisibility(8);
+    this.a.a.setVisibility(0);
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    paramTextPaint.setColor(-12541697);
+    this.a.c.setVisibility(0);
+    this.a.d.setVisibility(0);
   }
 }
 

@@ -1,105 +1,70 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
+import com.tencent.mobileqq.mini.report.InnerAppReportDc4239;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.qqmini.proxyimpl.MiniAppProxyImpl.14.1;
 import java.util.List;
 
 public class bkpg
+  implements DownloadListener
 {
-  private static bkpg jdField_a_of_type_Bkpg;
-  private ArrayList<bkph> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  public boolean a;
+  bkpg(bkpb parambkpb) {}
   
-  public static bkpg a()
+  public void installSucceed(String paramString1, String paramString2)
   {
-    if (jdField_a_of_type_Bkpg == null) {}
-    try
+    if ((bkpb.b(this.a) != null) && (bkpb.c(this.a) != null) && (bkpb.b(this.a).equals(paramString1)) && (bkpb.c(this.a).equals(paramString2)))
     {
-      if (jdField_a_of_type_Bkpg == null) {
-        jdField_a_of_type_Bkpg = new bkpg();
-      }
-      return jdField_a_of_type_Bkpg;
+      QLog.d("MiniAppProxyImpl", 1, "installSucceed: " + paramString1 + "; pkgname : " + paramString2);
+      InnerAppReportDc4239.innerAppReport(bkpb.a(this.a), null, "launchapp", "installapp", "qqdownload");
     }
-    finally {}
   }
   
-  public bkph a(long paramLong)
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    if ((bkpb.a(this.a) != null) && (paramDownloadInfo != null) && (bkpb.a(this.a).equals(paramDownloadInfo.d))) {
+      QLog.d("MiniAppProxyImpl", 1, "onDownloadCancel");
+    }
+  }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    if ((bkpb.a(this.a) != null) && (paramDownloadInfo != null) && (bkpb.a(this.a).equals(paramDownloadInfo.d))) {
+      QLog.d("MiniAppProxyImpl", 1, "onDownloadError");
+    }
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    if ((bkpb.a(this.a) != null) && (paramDownloadInfo != null) && (bkpb.a(this.a).equals(paramDownloadInfo.d)))
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QfavRequestQueue", 2, "pop, request list is empty");
-        }
-        return null;
-      }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        bkph localbkph = (bkph)localIterator.next();
-        if (localbkph.jdField_a_of_type_Long == paramLong)
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.remove(localbkph);
-          if (QLog.isColorLevel()) {
-            QLog.d("QfavRequestQueue", 2, "pop, id: " + paramLong + "pendingsize:" + this.jdField_a_of_type_JavaUtilArrayList.size());
-          }
-          return localbkph;
-        }
-      }
+      QLog.d("MiniAppProxyImpl", 1, "onDownloadFinish");
+      AppBrandTask.runTaskOnUiThread(new MiniAppProxyImpl.14.1(this));
+      InnerAppReportDc4239.innerAppReport(bkpb.a(this.a), null, "launchapp", "downloadappfinish", "qqdownload");
     }
-    return null;
   }
   
-  public List<Bundle> a(byte[] paramArrayOfByte)
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return null;
-    }
-    Parcel localParcel = Parcel.obtain();
-    localParcel.unmarshall(paramArrayOfByte, 0, paramArrayOfByte.length);
-    localParcel.setDataPosition(0);
-    paramArrayOfByte = (Bundle)Bundle.CREATOR.createFromParcel(localParcel);
-    localParcel.recycle();
-    return paramArrayOfByte.getParcelableArrayList("pendingData");
-  }
-  
-  public boolean a()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    if ((bkpb.a(this.a) != null) && (paramDownloadInfo != null) && (bkpb.a(this.a).equals(paramDownloadInfo.d)))
     {
-      boolean bool = this.jdField_a_of_type_JavaUtilArrayList.isEmpty();
-      return bool;
+      QLog.d("MiniAppProxyImpl", 1, "onDownloadPause");
+      InnerAppReportDc4239.innerAppReport(bkpb.a(this.a), null, "launchapp", "downloadapppause", "qqdownload");
     }
   }
   
-  public byte[] a()
+  public void onDownloadUpdate(List<DownloadInfo> paramList) {}
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
   {
-    ArrayList localArrayList1 = new ArrayList();
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-        return null;
-      }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      if (localIterator.hasNext()) {
-        localArrayList1.add(((bkph)localIterator.next()).jdField_a_of_type_AndroidContentIntent.getExtras());
-      }
+    if ((bkpb.a(this.a) != null) && (paramDownloadInfo != null) && (bkpb.a(this.a).equals(paramDownloadInfo.d))) {
+      QLog.d("MiniAppProxyImpl", 1, "onDownloadWait");
     }
-    if (localArrayList2.isEmpty()) {
-      return null;
-    }
-    ??? = new Bundle();
-    ((Bundle)???).putParcelableArrayList("pendingData", localArrayList2);
-    Parcel localParcel = Parcel.obtain();
-    ((Bundle)???).writeToParcel(localParcel, 0);
-    ??? = localParcel.marshall();
-    localParcel.recycle();
-    return ???;
   }
+  
+  public void packageReplaced(String paramString1, String paramString2) {}
+  
+  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 

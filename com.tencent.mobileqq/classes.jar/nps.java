@@ -1,24 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.text.QQText.LinkSpan;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.avgame.ui.AvGameLoadingActivity;
 
-public class nps
-  extends QQText.LinkSpan
+class nps
+  implements DialogInterface.OnClickListener
 {
-  public nps(npr paramnpr, String paramString)
-  {
-    super(paramnpr, paramString);
-  }
+  nps(npr paramnpr) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (npt.a.matcher(this.mUrl).find())
-    {
-      npr.a(paramView, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      return;
-    }
-    super.onClick(paramView);
+    this.a.a.a();
   }
 }
 

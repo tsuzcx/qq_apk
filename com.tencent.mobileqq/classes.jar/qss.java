@@ -1,19 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.CustomMethodsRegister.CustomMethodInterface;
+import com.tencent.mobileqq.text.QQText;
 
 class qss
-  implements View.OnClickListener
+  implements CustomMethodsRegister.CustomMethodInterface
 {
-  qss(qsr paramqsr) {}
-  
-  public void onClick(View paramView)
+  public Object invoke(String paramString, Object... paramVarArgs)
   {
-    pet localpet = this.a.jdField_a_of_type_Slt.a().a();
-    if (localpet != null) {
-      localpet.a(null, ((pvc)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    String str = "";
+    paramString = str;
+    if (paramVarArgs != null)
+    {
+      paramString = str;
+      if (paramVarArgs.length >= 1) {
+        paramString = bcsc.b(String.valueOf(paramVarArgs[0]));
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new QQText(paramString, 3, 16);
   }
 }
 

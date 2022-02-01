@@ -7,11 +7,11 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import bguj;
-import bgvf;
-import bhwr;
-import bkkq;
-import bkkz;
+import bifb;
+import bifx;
+import bjht;
+import blvy;
+import blwh;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
@@ -22,7 +22,7 @@ import cooperation.plugin.PluginInfo;
 
 public class LiveRoomProxyActivity
   extends PluginProxyActivity
-  implements bguj, bgvf
+  implements bifb, bifx
 {
   public static final String PLUGIN_ACTIVITY_NAME = "com.tencent.gamecontent.livesdkqqplugin.plugins.QQLiveRoomPluginActivity";
   public static final String PROXY_ACTIVITY_NAME = "cooperation.liveroom.LiveRoomProxyActivity";
@@ -52,7 +52,7 @@ public class LiveRoomProxyActivity
     localIntent.putExtra("startOpenPageTime", clickTime);
     localIntent.putExtra("pluginFinished", System.currentTimeMillis());
     paramString = "";
-    if ("com.tencent.mobileqq:tool".equals(bhwr.r())) {
+    if ("com.tencent.mobileqq:tool".equals(bjht.r())) {
       paramString = LiveRoomHelper.getPluginVersionInTool();
     }
     for (;;)
@@ -74,20 +74,20 @@ public class LiveRoomProxyActivity
   private static void launchPlugin(Activity paramActivity, String paramString)
   {
     QLog.d("LiveRoomProxyActivity", 1, "launchPlugin");
-    bkkz localbkkz = new bkkz(1);
-    localbkkz.jdField_b_of_type_JavaLangString = "LiveRoomPlugin.apk";
-    localbkkz.d = "直播SDK";
-    localbkkz.e = "com.tencent.gamecontent.livesdkqqplugin.plugins.QQLiveRoomPluginActivity";
-    localbkkz.jdField_a_of_type_JavaLangClass = LiveRoomProxyActivity.class;
-    localbkkz.jdField_b_of_type_Int = 1011;
-    localbkkz.jdField_a_of_type_AndroidContentIntent = getPluginIntent(paramString);
-    bkkq.a(paramActivity, localbkkz);
+    blwh localblwh = new blwh(1);
+    localblwh.jdField_b_of_type_JavaLangString = "LiveRoomPlugin.apk";
+    localblwh.d = "直播SDK";
+    localblwh.e = "com.tencent.gamecontent.livesdkqqplugin.plugins.QQLiveRoomPluginActivity";
+    localblwh.jdField_a_of_type_JavaLangClass = LiveRoomProxyActivity.class;
+    localblwh.jdField_b_of_type_Int = 1011;
+    localblwh.jdField_a_of_type_AndroidContentIntent = getPluginIntent(paramString);
+    blvy.a(paramActivity, localblwh);
   }
   
   public static void open(Activity paramActivity, String paramString1, String paramString2)
   {
     clickTime = System.currentTimeMillis();
-    boolean bool = "com.tencent.mobileqq:tool".equals(bhwr.r());
+    boolean bool = "com.tencent.mobileqq:tool".equals(bjht.r());
     if (bool)
     {
       if (!LiveRoomHelper.getPluginInstalledInTool()) {}

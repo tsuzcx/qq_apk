@@ -1,20 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import java.util.List;
 
 public class acpb
-  implements DialogInterface.OnClickListener
+  implements acoq
 {
-  public acpb(AddFriendLogicActivity paramAddFriendLogicActivity) {}
+  private acnw<Object> a = new acnx();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public List<Object> a()
   {
-    if (AddFriendLogicActivity.d(this.a) == 1)
-    {
-      this.a.finish();
-      return;
-    }
-    AddFriendLogicActivity.a(this.a);
+    return this.a.a();
+  }
+  
+  public void a(Class<? extends Object> paramClass)
+  {
+    this.a.a(paramClass);
   }
 }
 

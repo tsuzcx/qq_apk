@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.transfile;
 
 import android.text.TextUtils;
-import barf;
-import barh;
-import barq;
-import bcef;
+import bbxu;
+import bbxw;
+import bbyf;
+import bdla;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForScribble;
@@ -32,14 +32,14 @@ public class ScribblePicDownloadProcessor
     if (this.mMsg == null) {
       return;
     }
-    String str = barq.a(this.mUiRequest.mOutFilePath);
+    String str = bbyf.a(this.mUiRequest.mOutFilePath);
     if (str.equalsIgnoreCase(this.mMsg.combineFileMd5))
     {
       if (this.mMsg != null) {
         this.mMsg.mExistInfo.mCombineFileExist = true;
       }
-      int i = barh.b(this.mMsg);
-      if (i == barh.d)
+      int i = bbxw.b(this.mMsg);
+      if (i == bbxw.d)
       {
         if (this.mMsg != null)
         {
@@ -92,7 +92,7 @@ public class ScribblePicDownloadProcessor
       onError();
       return -1;
     }
-    this.mUiRequest.mOutFilePath = barh.a(this.mMsg);
+    this.mUiRequest.mOutFilePath = bbxw.a(this.mMsg);
     if (TextUtils.isEmpty(this.mUiRequest.mOutFilePath))
     {
       setError(9302, getExpStackString(new Exception("combineFileMd5 illegal " + this.mMsg.combineFileMd5)));
@@ -110,20 +110,20 @@ public class ScribblePicDownloadProcessor
     }
     updateMsg(this.mMsg);
     sendMessageToUpdate(2005);
-    barf localbarf = this.app.getScribbleDownloader();
-    if (localbarf != null)
+    bbxu localbbxu = this.app.getScribbleDownloader();
+    if (localbbxu != null)
     {
       if (this.mMsg == null) {
         break label90;
       }
-      localbarf.a(this.mMsg);
+      localbbxu.a(this.mMsg);
     }
     for (;;)
     {
-      bcef.b(this.app, "CliOper", "", "", "0X800945B", "0X800945B", 0, 0, "", "", "", "");
+      bdla.b(this.app, "CliOper", "", "", "0X800945B", "0X800945B", 0, 0, "", "", "", "");
       return;
       label90:
-      localbarf.a(null);
+      localbbxu.a(null);
     }
   }
   
@@ -203,20 +203,20 @@ public class ScribblePicDownloadProcessor
     }
     updateMsg(this.mMsg);
     sendMessageToUpdate(2003);
-    barf localbarf = this.app.getScribbleDownloader();
-    if (localbarf != null)
+    bbxu localbbxu = this.app.getScribbleDownloader();
+    if (localbbxu != null)
     {
       if (this.mMsg == null) {
         break label92;
       }
-      localbarf.a(this.mMsg);
+      localbbxu.a(this.mMsg);
     }
     for (;;)
     {
-      bcef.b(this.app, "CliOper", "", "", "0X800945C", "0X800945C", 0, 0, "", "", "", "");
+      bdla.b(this.app, "CliOper", "", "", "0X800945C", "0X800945C", 0, 0, "", "", "", "");
       return;
       label92:
-      localbarf.a(null);
+      localbbxu.a(null);
     }
   }
   
@@ -249,7 +249,7 @@ public class ScribblePicDownloadProcessor
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        bcef.b(this.app, "CliOper", "", "", "0X800945D", "0X800945D", 0, 0, "", "", "", "");
+        bdla.b(this.app, "CliOper", "", "", "0X800945D", "0X800945D", 0, 0, "", "", "", "");
       }
       for (;;)
       {
@@ -262,7 +262,7 @@ public class ScribblePicDownloadProcessor
           break;
         }
         return;
-        bcef.b(this.app, "CliOper", "", "", "0X800945E", "0X800945E", 0, 0, "", "", "", "");
+        bdla.b(this.app, "CliOper", "", "", "0X800945E", "0X800945E", 0, 0, "", "", "", "");
       }
       this.mNetReq = localHttpNetReq;
       setMtype();
@@ -312,7 +312,7 @@ public class ScribblePicDownloadProcessor
         QLog.i("ScribblePicDownloadProcessor", 2, str);
       }
     }
-    bcef.b(this.app, "CliOper", "", "", "0X800945A", "0X800945A", 0, 0, "", "", "", "");
+    bdla.b(this.app, "CliOper", "", "", "0X800945A", "0X800945A", 0, 0, "", "", "", "");
     recieveFile();
   }
 }

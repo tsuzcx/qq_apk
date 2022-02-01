@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.secspy;
 
-import bbit;
-import bfmf;
+import bcpl;
+import bguw;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class SecSpyFileManager$1
   implements Runnable
 {
-  public SecSpyFileManager$1(bbit parambbit) {}
+  public SecSpyFileManager$1(bcpl parambcpl) {}
   
   public void run()
   {
-    bfmf.a(this.this$0.a.getApplication());
+    bguw.a(this.this$0.a.getApplication());
   }
 }
 

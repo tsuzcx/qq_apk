@@ -1,24 +1,23 @@
-import android.view.View;
-import com.tencent.av.camera.CameraUtils;
-import com.tencent.av.ui.AVActivity;
+import android.graphics.PointF;
+import java.util.ArrayList;
 
-public class mau
-  implements bjoe
+class mau
 {
-  public mau(AVActivity paramAVActivity) {}
+  int jdField_a_of_type_Int;
+  ArrayList<PointF> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  meu jdField_a_of_type_Meu;
+  byte[] jdField_a_of_type_ArrayOfByte;
+  int b;
+  int c;
+  int d;
+  int e;
+  int f;
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    if (this.a.a != null)
-    {
-      this.a.a.a();
-      this.a.a.b();
-    }
-  }
+  mau(mat parammat) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mau
  * JD-Core Version:    0.7.0.1
  */

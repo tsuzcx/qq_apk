@@ -1,12 +1,11 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import android.widget.TextView;
 
-public abstract interface ahmx
+class ahmx
+  extends afqr
 {
-  public abstract List<? extends ahmw> a(String paramString, SessionInfo paramSessionInfo);
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public abstract boolean a(QQAppInterface paramQQAppInterface, String paramString);
+  ahmx(ahmu paramahmu) {}
 }
 
 

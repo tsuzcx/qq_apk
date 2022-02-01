@@ -1,7 +1,7 @@
 package com.etrump.mixlayout;
 
 import android.graphics.Typeface;
-import bgae;
+import bhiw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -73,7 +73,7 @@ public class FontManager$5
           {
             ((ga)localObject).jdField_a_of_type_AndroidGraphicsTypeface = Typeface.createFromFile(((ga)localObject).jdField_a_of_type_JavaLangString);
             gb.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.jdField_a_of_type_Int), localObject);
-            bgae.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+            bhiw.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
             gb.a(this.this$0);
             return;
           }
@@ -99,7 +99,7 @@ public class FontManager$5
         }
         gb.c = true;
         gb.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.jdField_a_of_type_Int), localObject);
-        bgae.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        bhiw.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
         gb.a(this.this$0);
         return;
       } while (!QLog.isColorLevel());
@@ -109,7 +109,7 @@ public class FontManager$5
       ((ga)localObject).c = k.f(this.jdField_a_of_type_Int);
       ((ga)localObject).b = 4;
       gb.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.jdField_a_of_type_Int), localObject);
-      bgae.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      bhiw.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       gb.a(this.this$0);
       return;
       if ((this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(this.jdField_a_of_type_JavaLangString)) || (!this.jdField_a_of_type_Boolean) || (NetworkUtil.isWifiConnected(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication())) || (NetworkUtil.is3Gor4G(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()))) {

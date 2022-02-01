@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import java.util.List;
-import pkl;
+import pvi;
 
 public class ReadInJoyFollowingMemberPrefetcher$2
   implements Runnable
 {
-  public ReadInJoyFollowingMemberPrefetcher$2(pkl parampkl, List paramList, boolean paramBoolean) {}
+  public ReadInJoyFollowingMemberPrefetcher$2(pvi parampvi, List paramList, boolean paramBoolean) {}
   
   public void run()
   {
-    pkl.a(this.this$0, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Boolean);
+    pvi.a(this.this$0, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Boolean);
   }
 }
 

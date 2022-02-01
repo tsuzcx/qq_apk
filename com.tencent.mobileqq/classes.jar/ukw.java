@@ -1,169 +1,147 @@
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
-import com.tencent.biz.pubaccount.weishi_new.push.IWSPushBaseStrategy;
-import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
-import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import cooperation.qzone.QZoneHelper;
-import cooperation.qzone.QZoneHelper.UserInfo;
-import org.json.JSONException;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyPatchAdView;
+import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 import org.json.JSONObject;
 
-public class ukw
+final class ukw
+  implements unx
 {
-  private static WSRedDotPushMsg a()
-  {
-    Object localObject = umy.a();
-    if (localObject != null)
-    {
-      localObject = ((umy)localObject).a;
-      if (localObject != null)
-      {
-        uya.b("WeishiActivityHelper", "transformTrendsTabConfigToPushMsg mStrategyConfig=" + ((una)localObject).a);
-        if (!TextUtils.isEmpty(((una)localObject).a)) {
-          return WSRedDotPushMsg.getInstance(((una)localObject).a);
-        }
-      }
-    }
-    return null;
-  }
+  ukw(ReadInJoyPatchAdView paramReadInJoyPatchAdView, Activity paramActivity, sqd paramsqd, spg paramspg, sqj paramsqj, spa paramspa, ukx paramukx) {}
   
-  private static WSRedDotPushMsg a(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  public void a(spk paramspk, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("TrendsTab RedDot Msg : ");
-    if (paramAppInfo != null) {}
-    for (Object localObject = paramAppInfo.buffer.get();; localObject = "appInfo is null.")
-    {
-      uya.b("WeishiActivityHelper", (String)localObject);
-      if ((paramAppInfo == null) || (TextUtils.isEmpty(paramAppInfo.buffer.get()))) {
-        break label154;
-      }
-      try
-      {
-        localObject = new JSONObject(paramAppInfo.buffer.get());
-        paramAppInfo = ((JSONObject)localObject).optString("_show_mission");
-        localObject = ((JSONObject)localObject).optJSONObject("msg");
-        if ((localObject == null) || (TextUtils.isEmpty(paramAppInfo))) {
-          break label154;
-        }
-        paramAppInfo = ((JSONObject)localObject).optJSONObject(paramAppInfo);
-        if (paramAppInfo == null) {
-          break label154;
-        }
-        paramAppInfo = paramAppInfo.optString("extinfo");
-        uya.b("WeishiActivityHelper", "TrendsTab RedDot extInfoStr : " + paramAppInfo);
-        paramAppInfo = WSRedDotPushMsg.getInstance(paramAppInfo);
-        return paramAppInfo;
-      }
-      catch (JSONException paramAppInfo)
-      {
-        paramAppInfo.printStackTrace();
-      }
-    }
-    label154:
-    return null;
-  }
-  
-  public static void a(Activity paramActivity, Intent paramIntent, WSRedDotPushMsg paramWSRedDotPushMsg)
-  {
-    if (paramIntent == null)
-    {
-      uya.d("WeishiActivityHelper", "gotoVideoLayerFromTrendsTab intent is null.");
+    if (!ukv.a(paramspk)) {
       return;
     }
-    if (paramWSRedDotPushMsg != null) {
-      paramIntent.putExtra("key_weishi_push_msg_data", paramWSRedDotPushMsg);
+    if (QLog.isColorLevel()) {
+      QLog.d(ukv.a, 2, "onStart: id = " + paramspk.a.mArticleID);
     }
-    QZoneHelper.forwardToQzoneTransluentActivity(paramActivity, QZoneHelper.UserInfo.getInstance(), paramIntent);
+    ukv.a(paramspk, paramInt, 1);
+    ukv.b();
   }
   
-  public static void a(Context paramContext, String paramString)
+  public void a(spk paramspk, int paramInt1, int paramInt2)
   {
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    if (!(paramContext instanceof Activity)) {
-      localIntent.addFlags(268435456);
-    }
-    localIntent.putExtra("big_brother_source_key", "biz_src_gzh_weishi");
-    localIntent.putExtra("url", paramString);
-    paramContext.startActivity(localIntent);
-  }
-  
-  public static void a(Context paramContext, String paramString, int paramInt, boolean paramBoolean)
-  {
-    paramInt = 1;
-    uya.d("WeishiActivityHelper", "外部跳转微视公众号 from=" + paramString);
-    if (paramContext == null)
-    {
-      uya.d("WSPushLog", "WeishiActivityHelper handleJumpTargetVideoFeed, context is null.");
+    if (!ukv.a(paramspk)) {
       return;
     }
-    if (TextUtils.equals(paramString, "from_home_page"))
-    {
-      paramString = uyo.a();
-      uvr.a(paramString);
-      uvi.a(paramString);
-      if (a(paramContext, paramString, 2, null))
-      {
-        paramContext = WSPublicAccReport.getInstance();
-        if (paramString == null) {}
-        for (;;)
-        {
-          paramContext.enterPublicAccReport(paramString, paramInt);
-          ulc.a().b();
-          return;
-          paramInt = paramString.mStrategyInfo.getType();
-        }
-      }
-    }
-    WSPublicAccReport.getInstance().enterPublicAccReport(null, 1);
-    WSHomeFragment.a(paramContext, 1, paramBoolean);
-  }
-  
-  public static void a(Context paramContext, String paramString, MiniAppLauncher.MiniAppLaunchListener paramMiniAppLaunchListener)
-  {
-    MiniAppLauncher.startMiniApp(paramContext, uqs.a(paramString), 4006, paramMiniAppLaunchListener);
-  }
-  
-  public static void a(Context paramContext, boolean paramBoolean, BusinessInfoCheckUpdate.AppInfo paramAppInfo, Intent paramIntent)
-  {
-    uya.b("WeishiActivityHelper", "handleTrendsTabClick hasRedDot = " + paramBoolean);
-    if (paramBoolean)
-    {
-      paramAppInfo = a(paramAppInfo);
-      uvr.b();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView.a.clickPos = paramInt2;
+    if (paramInt1 == 1) {
+      paramspk.a.patchStatus.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
     }
     for (;;)
     {
-      uvr.a(paramAppInfo, paramBoolean);
-      WSPublicAccReport.getInstance().enterTrendsTabReport(paramAppInfo, paramBoolean);
-      if (!a(paramContext, paramAppInfo, 6, paramIntent)) {
-        break;
-      }
+      paramspk = uvp.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView.a, null, 3, true, null);
+      ois.a(new ufy().a(this.jdField_a_of_type_AndroidAppActivity).a(1).b(8).a(paramspk).d(paramInt2).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView.a).a());
       return;
-      paramAppInfo = a();
+      paramspk.a.patchStatus.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
     }
-    a((Activity)paramContext, paramIntent, paramAppInfo);
   }
   
-  private static boolean a(Context paramContext, WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt, Intent paramIntent)
+  public void b(spk paramspk, int paramInt)
   {
-    uya.a("WeishiActivityHelper", "handleRedDotClick scene=" + paramInt + ", pushMsgData=" + paramWSRedDotPushMsg);
-    if ((paramWSRedDotPushMsg != null) && (paramWSRedDotPushMsg.mStrategyInfo != null))
+    int i = 1;
+    if (!ukv.a(paramspk)) {}
+    for (;;)
     {
-      uui localuui = (uui)paramWSRedDotPushMsg.mStrategyInfo;
-      paramWSRedDotPushMsg = uut.a(paramWSRedDotPushMsg, paramInt, paramIntent);
-      if (paramWSRedDotPushMsg != null) {
-        return paramWSRedDotPushMsg.a(paramContext, localuui);
+      return;
+      if ((paramInt == 1) && (!paramspk.a.patchStatus.c.get()))
+      {
+        paramspk.a.patchStatus.c.set(true);
+        paramInt = i;
+      }
+      while (paramInt != 0)
+      {
+        ois.a(new ufy().a(BaseApplication.getContext()).a(2).b(4).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView.a).e(new JSONObject()).a());
+        return;
+        if ((paramInt == 2) && (!paramspk.a.patchStatus.d.get()))
+        {
+          paramspk.a.patchStatus.d.set(true);
+          paramInt = i;
+        }
+        else
+        {
+          paramInt = 0;
+        }
       }
     }
-    return false;
+  }
+  
+  public void b(spk paramspk, int paramInt1, int paramInt2)
+  {
+    if (!ukv.a(paramspk)) {}
+    do
+    {
+      do
+      {
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d(ukv.a, 2, "onCompletion: id = " + paramspk.a.mArticleID);
+        }
+        ukv.a(paramspk, paramInt1, 3);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView.setVisibility(8);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView.a();
+        if (paramInt1 != 1) {
+          break;
+        }
+      } while (this.jdField_a_of_type_Sqd.a() != paramspk);
+      switch (paramInt2)
+      {
+      default: 
+        this.jdField_a_of_type_Spg.a(paramspk);
+        return;
+      }
+      this.jdField_a_of_type_Spg.a();
+      return;
+    } while ((this.jdField_a_of_type_Sqj == null) || (paramInt2 != 0));
+    this.jdField_a_of_type_Sqj.a(paramspk);
+    this.jdField_a_of_type_Spa.c();
+  }
+  
+  public void c(spk paramspk, int paramInt)
+  {
+    if (!ukv.a(paramspk)) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d(ukv.a, 2, "onResume: id = " + paramspk.a.mArticleID);
+      }
+      if (this.jdField_a_of_type_Sqd.a().a.patchStatus.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 2)
+      {
+        ukv.a(this.jdField_a_of_type_Sqd.a(), this.jdField_a_of_type_Sqd, true, this.jdField_a_of_type_Ukx);
+        return;
+      }
+    } while (this.jdField_a_of_type_Sqd.a().a.patchStatus.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != 2);
+    ukv.a(this.jdField_a_of_type_Sqd.a(), this.jdField_a_of_type_Sqd, false, true, this.jdField_a_of_type_Sqj, this.jdField_a_of_type_Spa, this.jdField_a_of_type_Ukx);
+  }
+  
+  public void d(spk paramspk, int paramInt)
+  {
+    if (!ukv.a(paramspk)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(ukv.a, 2, "onPause: id = " + paramspk.a.mArticleID);
+    }
+    if (this.jdField_a_of_type_Sqd.a().a.patchStatus.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1) {
+      this.jdField_a_of_type_Sqd.a().a.patchStatus.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView.a();
+      }
+      ukv.c();
+      return;
+      if (this.jdField_a_of_type_Sqd.a().a.patchStatus.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1) {
+        this.jdField_a_of_type_Sqd.a().a.patchStatus.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
+      }
+    }
   }
 }
 

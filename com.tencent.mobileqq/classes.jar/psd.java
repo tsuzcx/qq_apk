@@ -1,103 +1,28 @@
-import android.os.SystemClock;
-import android.util.SparseArray;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class psd
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/decoupling/uilayer/video/RIJVideoViewInterceptor$innerPreloadAvatar$userInfo$1", "Lcom/tencent/biz/pubaccount/readinjoy/model/ReadInJoyUserInfoModule$RefreshUserInfoCallBack;", "onLoadUserInfoFailed", "", "uin", "", "errMsg", "onLoadUserInfoSucceed", "userInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/ReadInJoyUserInfo;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class psd
+  implements qhl
 {
-  public static final int[] a = { 0, 1, 2, 3, 4 };
+  psd(BaseArticleInfo paramBaseArticleInfo) {}
   
-  public static SparseArray<prx> a(ReadInJoyBaseListViewGroup paramReadInJoyBaseListViewGroup)
+  public void onLoadUserInfoFailed(@NotNull String paramString1, @NotNull String paramString2)
   {
-    SparseArray localSparseArray = new SparseArray();
-    int i = 0;
-    if (i < a.length)
-    {
-      int j = a[i];
-      prx localprx = a(j);
-      if (localprx == null) {
-        QLog.d("HandlerFactory", 2, new Object[] { "create handler fail, id : ", Integer.valueOf(j) });
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        localprx.a(paramReadInJoyBaseListViewGroup);
-        localSparseArray.put(j, localprx);
-      }
-    }
-    return localSparseArray;
+    Intrinsics.checkParameterIsNotNull(paramString1, "uin");
+    Intrinsics.checkParameterIsNotNull(paramString2, "errMsg");
+    QLog.e("RIJVideoViewInterceptor", 2, "onLoadUserInfoFailed uin:" + paramString1 + " errMsg:" + paramString2);
   }
   
-  public static Object a(SparseArray<prx> paramSparseArray, pse parampse)
+  public void onLoadUserInfoSucceed(@NotNull String paramString, @NotNull ReadInJoyUserInfo paramReadInJoyUserInfo)
   {
-    if (parampse == null) {
-      return null;
-    }
-    int i = -1;
-    int j = 0;
-    Object localObject = null;
-    long l1;
-    if (j < paramSparseArray.size())
-    {
-      l1 = SystemClock.currentThreadTimeMillis();
-      parampse.a((prx)paramSparseArray.valueAt(j));
-      if (parampse.a == null) {
-        break label189;
-      }
-      if (localObject == null)
-      {
-        localObject = parampse.a;
-        i = ((prx)paramSparseArray.valueAt(j)).a();
-        parampse.a = null;
-      }
-    }
-    label189:
-    for (;;)
-    {
-      long l2 = SystemClock.currentThreadTimeMillis();
-      QLog.d("HandlerFactory", 2, new Object[] { "execute with return value handler job , id : ", Integer.valueOf(paramSparseArray.keyAt(j)), ", jobName : ", parampse.a(), ", cost : ", Long.valueOf(l2 - l1) });
-      j += 1;
-      break;
-      throw new RuntimeException("has more than one handler return value. preHandlerID : " + i + ", now : " + ((prx)paramSparseArray.valueAt(j)).a());
-      return localObject;
-    }
-  }
-  
-  public static prx a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 1: 
-      return new tsm();
-    case 2: 
-      return new prz();
-    case 0: 
-      return new psf();
-    case 3: 
-      return new pry();
-    }
-    return new psl();
-  }
-  
-  public static void a(SparseArray<prx> paramSparseArray, pse parampse)
-  {
-    if (parampse == null) {}
-    for (;;)
-    {
-      return;
-      int i = 0;
-      while (i < paramSparseArray.size())
-      {
-        long l1 = SystemClock.currentThreadTimeMillis();
-        parampse.a((prx)paramSparseArray.valueAt(i));
-        long l2 = SystemClock.currentThreadTimeMillis();
-        QLog.d("HandlerFactory", 2, new Object[] { "execute handler job , id : ", Integer.valueOf(paramSparseArray.keyAt(i)), ", jobName : ", parampse.a(), ", cost : ", Long.valueOf(l2 - l1) });
-        i += 1;
-      }
-    }
+    Intrinsics.checkParameterIsNotNull(paramString, "uin");
+    Intrinsics.checkParameterIsNotNull(paramReadInJoyUserInfo, "userInfo");
+    psa.a(this.jdField_a_of_type_Psa, paramReadInJoyUserInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
   }
 }
 

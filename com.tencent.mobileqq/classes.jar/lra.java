@@ -1,84 +1,24 @@
-import android.opengl.GLES20;
-import com.tencent.av.opengl.program.TextureProgram;
-import com.tencent.av.opengl.program.YUVTextureAliasingProgram;
-import com.tencent.av.opengl.program.YUVTextureProgram;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.ttpic.facedetect.TTFaceOriginDataModel;
+import java.util.List;
 
 public class lra
 {
-  static Map<String, TextureProgram> a = new HashMap();
+  public int a;
+  public List<TTFaceOriginDataModel> a;
+  public boolean a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  public static TextureProgram a(int paramInt)
+  public boolean a()
   {
-    int j = 1;
-    for (;;)
-    {
-      int i;
-      try
-      {
-        String str = paramInt + "_" + Thread.currentThread().getId();
-        localObject1 = (TextureProgram)a.get(str);
-        if (localObject1 == null)
-        {
-          i = 1;
-          if (i != 0) {
-            break label173;
-          }
-          GLES20.glUseProgram(((TextureProgram)localObject1).a());
-          if (lsd.a() != 0)
-          {
-            i = j;
-            break label173;
-            localObject1 = new TextureProgram();
-            a.put(str, localObject1);
-            return localObject1;
-          }
-        }
-        else
-        {
-          i = 0;
-          continue;
-        }
-        i = 0;
-      }
-      finally {}
-      Object localObject1 = new YUVTextureProgram();
-      continue;
-      Object localObject3 = new YUVTextureAliasingProgram();
-      continue;
-      localObject3 = new lqz();
-      continue;
-      localObject3 = new lqy();
-      continue;
-      localObject3 = new lqx();
-      continue;
-      label173:
-      if (i != 0) {
-        switch (paramInt)
-        {
-        }
-      }
-    }
-  }
-  
-  public static void a()
-  {
-    try
-    {
-      a.clear();
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return (this.d != 0) && (this.e != 0) && (this.a != null) && (!this.a.isEmpty());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lra
  * JD-Core Version:    0.7.0.1
  */

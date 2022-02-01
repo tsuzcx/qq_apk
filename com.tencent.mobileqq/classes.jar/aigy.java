@@ -1,30 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QIMFollwerAdd;
+import android.graphics.Point;
 
 public class aigy
-  extends aigo
 {
-  public QIMFollwerAdd a;
+  private int jdField_a_of_type_Int;
+  private aigo jdField_a_of_type_Aigo;
+  private aigp jdField_a_of_type_Aigp;
+  private Point jdField_a_of_type_AndroidGraphicsPoint;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  public aigy(QIMFollwerAdd paramQIMFollwerAdd)
+  aigy(Point paramPoint, String paramString, boolean paramBoolean, aigp paramaigp, aigo paramaigo, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataQIMFollwerAdd = paramQIMFollwerAdd;
-    this.jdField_a_of_type_Long = paramQIMFollwerAdd.upTime;
-  }
-  
-  public String a()
-  {
-    return String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataQIMFollwerAdd.uin);
-  }
-  
-  public String a(QQAppInterface paramQQAppInterface)
-  {
-    return "getMessage";
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataQIMFollwerAdd.isRead;
+    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Aigp = paramaigp;
+    this.jdField_a_of_type_Aigo = paramaigo;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

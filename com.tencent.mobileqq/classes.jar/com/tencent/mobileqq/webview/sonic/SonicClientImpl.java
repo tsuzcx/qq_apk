@@ -4,10 +4,10 @@ import android.content.Context;
 import android.content.MutableContextWrapper;
 import android.net.Uri;
 import android.os.Bundle;
-import bguf;
-import bgvt;
-import bgvz;
-import bgxd;
+import biex;
+import bigl;
+import bigr;
+import bihv;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
@@ -112,17 +112,17 @@ public class SonicClientImpl
       if ((localContext instanceof MutableContextWrapper)) {
         localObject = ((MutableContextWrapper)localContext).getBaseContext();
       }
-      if (!(localObject instanceof bgvz)) {
+      if (!(localObject instanceof bigr)) {
         break label226;
       }
-      localObject = (bgxd)((bgvz)localObject).getComponentProvider().a(-2);
+      localObject = (bihv)((bigr)localObject).getComponentProvider().a(-2);
     }
     for (;;)
     {
       i = k;
       if (localObject != null)
       {
-        if (!((bgxd)localObject).w) {
+        if (!((bihv)localObject).w) {
           break label269;
         }
         i = 2;
@@ -135,17 +135,17 @@ public class SonicClientImpl
         this.webView = null;
         return;
         label226:
-        if (!(localObject instanceof bguf)) {
+        if (!(localObject instanceof biex)) {
           break label285;
         }
-        localObject = ((bguf)localObject).a();
+        localObject = ((biex)localObject).a();
         if (localObject == null) {
           break label285;
         }
-        localObject = (bgxd)((WebViewFragment)localObject).getComponentProvider().a(-2);
+        localObject = (bihv)((WebViewFragment)localObject).getComponentProvider().a(-2);
         break;
         label269:
-        if (bgxd.s) {
+        if (bihv.s) {
           i = 1;
         } else {
           i = 0;

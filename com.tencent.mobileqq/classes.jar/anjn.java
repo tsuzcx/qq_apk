@@ -1,28 +1,57 @@
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.hiddenchat.HiddenChatSettingFragment;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.BlockingQueue;
 
 public class anjn
-  extends CardObserver
 {
-  public anjn(HiddenChatSettingFragment paramHiddenChatSettingFragment) {}
+  public int a;
+  public long a;
+  public anjm a;
+  public Map<Integer, Long> a;
+  public BlockingQueue<anjk> a;
+  public boolean a;
+  public long b;
+  public long c;
   
-  public void onSetHiddenSession(boolean paramBoolean, int paramInt)
+  public anjn(int paramInt)
   {
-    super.onSetHiddenSession(paramBoolean, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("HiddenChatSetting", 2, "onSetHiddenSession " + paramBoolean + " type=" + paramInt);
-    }
-    if (paramInt == 42318) {
-      if (!paramBoolean) {
-        HiddenChatSettingFragment.a(this.a, HiddenChatSettingFragment.a(this.a), anjo.a(HiddenChatSettingFragment.a(this.a).getCurrentUin(), this.a.getActivity()));
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{").append("spanId:").append(this.jdField_a_of_type_Int).append(",result:").append(this.jdField_a_of_type_Anjm);
+    Iterator localIterator;
+    if (this.jdField_a_of_type_JavaUtilMap != null)
+    {
+      localStringBuilder.append(",extra:[");
+      localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        if (QLog.isColorLevel()) {
+          localStringBuilder.append("{").append(localEntry.getKey()).append(",").append(localEntry.getValue()).append("}");
+        } else {
+          localStringBuilder.append("{").append(localEntry.getKey()).append("}");
+        }
       }
+      localStringBuilder.append("]");
     }
-    while ((paramInt != 42319) || (paramBoolean)) {
-      return;
+    if (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue != null)
+    {
+      localStringBuilder.append(",anno:[");
+      localIterator = this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.iterator();
+      while (localIterator.hasNext()) {
+        localStringBuilder.append(((anjk)localIterator.next()).toString());
+      }
+      localStringBuilder.append("]");
     }
-    HiddenChatSettingFragment.a(this.a, HiddenChatSettingFragment.b(this.a), anjo.b(HiddenChatSettingFragment.a(this.a).getCurrentUin(), this.a.getActivity()));
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

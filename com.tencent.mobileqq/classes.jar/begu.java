@@ -1,8 +1,16 @@
-import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailGenTask;
+import android.text.Editable;
+import android.text.Editable.Factory;
 
-public abstract interface begu
+final class begu
+  extends Editable.Factory
 {
-  public abstract void a(String paramString, boolean paramBoolean, int paramInt, TroopFileThumbnailGenTask paramTroopFileThumbnailGenTask);
+  public Editable newEditable(CharSequence paramCharSequence)
+  {
+    if ((paramCharSequence instanceof begt)) {
+      return (Editable)paramCharSequence;
+    }
+    return new begt(paramCharSequence, 16);
+  }
 }
 
 

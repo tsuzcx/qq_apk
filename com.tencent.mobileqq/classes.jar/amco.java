@@ -1,23 +1,27 @@
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
-final class amco
-  implements EIPCResultCallback
+public class amco
+  implements Animation.AnimationListener
 {
-  public void onCallback(EIPCResult paramEIPCResult)
+  public amco(SpecailCareListActivity paramSpecailCareListActivity, amdg paramamdg, int paramInt) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramEIPCResult.code == 0) {
-      ApolloUtil.b("测试版本tips:预下载动作成功");
-    }
-    for (;;)
-    {
-      QLog.i("CmShow_RenderViewController", 1, "CmShow_ preLoadRes result.code:" + paramEIPCResult.code);
-      return;
-      ApolloUtil.b("测试版本tips:预下载动作失败 ret:" + paramEIPCResult.code);
-    }
+    this.jdField_a_of_type_Amdg.a.clearAnimation();
+    paramAnimation = new RelativeLayout.LayoutParams(-2, -2);
+    paramAnimation.addRule(10);
+    paramAnimation.addRule(1, 2131368381);
+    paramAnimation.setMargins(0, (int)(22.0F * SpecailCareListActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), (int)(23.0F * SpecailCareListActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity) + this.jdField_a_of_type_Int), 0);
+    this.jdField_a_of_type_Amdg.a.setLayoutParams(paramAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

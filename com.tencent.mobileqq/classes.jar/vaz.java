@@ -1,68 +1,69 @@
-import UserGrowth.stNewIconStyle;
-import UserGrowth.stSimpleMetaFeed;
-import android.content.Context;
-import android.view.ViewStub;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.TMG.utils.QLog;
 
 public class vaz
-  extends ukz<vaq>
+  extends aqwt<vay>
 {
-  private ViewStub jdField_a_of_type_AndroidViewViewStub;
-  private vba jdField_a_of_type_Vba;
-  private vct jdField_a_of_type_Vct;
-  
-  public vaz(Context paramContext, vct paramvct)
+  @NonNull
+  public vay a(int paramInt)
   {
-    super(paramContext);
-    this.jdField_a_of_type_Vct = paramvct;
+    return new vay();
   }
   
-  private stSimpleMetaFeed a()
+  @Nullable
+  public vay a(aqxa[] paramArrayOfaqxa)
   {
-    vaq localvaq = (vaq)a();
-    if ((localvaq != null) && ((localvaq.a() instanceof stSimpleMetaFeed))) {
-      return (stSimpleMetaFeed)localvaq.a();
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0))
+    {
+      vmp.d("WeSeeConfigProcessor", "onParsed:" + paramArrayOfaqxa[0].a);
+      vay localvay = new vay();
+      localvay.a(paramArrayOfaqxa[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("WeSeeConfigProcessor", 0, "onParsed " + paramArrayOfaqxa[0].a);
+      }
+      return localvay;
     }
     return null;
   }
   
-  private void b(vaq paramvaq)
+  public void a(vay paramvay)
   {
-    if ((a() != null) && (a().new_icon != null) && (a().new_icon.tag_type == 0))
-    {
-      if (this.jdField_a_of_type_Vba == null)
-      {
-        this.jdField_a_of_type_Vba = new vba(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Vct);
-        this.jdField_a_of_type_Vba.a(this.jdField_a_of_type_AndroidViewViewStub);
-      }
-      this.jdField_a_of_type_Vba.a(paramvaq);
+    if (QLog.isColorLevel()) {
+      QLog.d("WeSeeConfigProcessor", 0, "onUpdate " + paramvay);
     }
   }
   
-  protected void a() {}
-  
-  public void a(vaq paramvaq)
+  public Class<vay> clazz()
   {
-    super.a(paramvaq);
-    b(paramvaq);
+    return vay.class;
   }
   
-  protected int b()
+  public boolean isAccountRelated()
   {
-    return 2131560041;
+    return false;
   }
   
-  protected void b() {}
-  
-  protected void c()
+  public boolean isNeedCompressed()
   {
-    if (this.jdField_a_of_type_Vba != null) {
-      this.jdField_a_of_type_Vba.c();
-    }
+    return true;
   }
   
-  protected void e()
+  public boolean isNeedStoreLargeFile()
   {
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131380430));
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 447;
   }
 }
 

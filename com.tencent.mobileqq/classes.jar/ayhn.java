@@ -1,17 +1,36 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ayhn
-  extends aygp
+class ayhn
+  implements View.OnClickListener
 {
-  public void b(BaseChatPie paramBaseChatPie)
+  ayhn(ayhd paramayhd) {}
+  
+  public void onClick(View paramView)
   {
-    a(paramBaseChatPie.sessionInfo.curType, 201);
-    a(paramBaseChatPie.sessionInfo.curType, 202);
-    a(paramBaseChatPie.sessionInfo.curType, 205);
-    a(paramBaseChatPie.sessionInfo.curType, 206);
-    a(paramBaseChatPie.sessionInfo.curType, 208);
-    a(paramBaseChatPie.sessionInfo.curType, 213);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a.getIntExtra("param_mode", 0) == 1) {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131698646);
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.finish();
+      continue;
+      this.a.b();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.i == 0) {
+        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131698646);
+      } else if (this.a.a()) {
+        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131698642);
+      } else {
+        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.d();
+      }
+    }
   }
 }
 

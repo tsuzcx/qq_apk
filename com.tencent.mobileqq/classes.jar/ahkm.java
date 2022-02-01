@@ -1,22 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ahkm
-  implements View.OnClickListener
+  extends ahkn
 {
-  ahkm(ahiu paramahiu) {}
+  ahkm(ahkj paramahkj) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString1, String paramString2, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.a.tag, 2, "mQidianClickListener ... mQidianKefu = " + this.a.x);
+      QLog.i("TribeShortVideoItemBuilder", 2, "get video download finish,vid=" + paramString1);
     }
-    this.a.a(2131694821);
-    this.a.a.a(this.a.mActivity, this.a.sessionInfo.curFriendUin, this.a.f, this.a.g, this.a.h, new ahkn(this));
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (!paramString1.equals(this.jdField_a_of_type_JavaLangString)) {}
+  }
+  
+  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("TribeShortVideoItemBuilder", 2, "Download video failed,vid=" + paramString1);
+    }
+    this.jdField_a_of_type_Ahkj.a(this.jdField_a_of_type_Ahko, this.jdField_a_of_type_Long);
+  }
+  
+  public void b(String paramString1, String paramString2, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("TribeShortVideoItemBuilder", 2, "Download video onPause,vid=" + paramString1);
+    }
+    this.jdField_a_of_type_Ahkj.a(this.jdField_a_of_type_Ahko, this.jdField_a_of_type_Long);
   }
 }
 

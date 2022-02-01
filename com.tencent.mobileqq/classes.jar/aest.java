@@ -1,97 +1,68 @@
-import SummaryCardTaf.SSummaryCardRsp;
-import android.annotation.TargetApi;
-import android.os.Message;
-import android.util.Pair;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity.4.1;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.ims.QQProtectRisks.QQProtectRisksResponse;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity.8.1;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class aest
-  extends CardObserver
+  extends ntf
 {
-  public aest(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  public aest(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  @TargetApi(9)
-  public void onSetCardTemplateReturn(boolean paramBoolean, Object paramObject)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipProfileCardDiyActivity", 2, "CardObserver onSetCardTemplateReturn isSuccess : " + paramBoolean + ", obj : " + paramObject);
-    }
-    this.a.b.set(false);
-    this.a.a.removeMessages(6);
-    this.a.i();
-    if ((paramBoolean) && (paramObject != null)) {
-      if ((paramObject instanceof Card)) {
-        ThreadManager.post(new VipProfileCardDiyActivity.4.1(this, (Card)paramObject), 5, null, true);
-      }
-    }
-    for (;;)
+    int i = 0;
+    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
+    for (paramInt = 0;; paramInt = 1)
     {
-      this.a.f = null;
-      this.a.j = 0;
-      return;
-      if ((paramObject instanceof Pair))
+      if (paramInt != 0) {}
+      try
       {
-        paramObject = (Pair)paramObject;
-        QLog.e("VipProfileCardDiyActivity", 1, "set diy card failed, code=" + paramObject.first + ", msg=" + ((SSummaryCardRsp)paramObject.second).emsg);
-        if (((Integer)paramObject.first).intValue() == 101107)
+        QQProtectRisks.QQProtectRisksResponse localQQProtectRisksResponse = new QQProtectRisks.QQProtectRisksResponse();
+        localQQProtectRisksResponse.mergeFrom(paramArrayOfByte);
+        paramInt = i;
+        if (localQQProtectRisksResponse.uint32_sec_cmd.has()) {
+          paramInt = localQQProtectRisksResponse.uint32_sec_cmd.get();
+        }
+        if (paramInt == 1)
         {
-          this.a.n = 1;
-          this.a.a.obtainMessage(2, ((SSummaryCardRsp)paramObject.second).emsg).sendToTarget();
-          if (VipUtils.c(this.a.app)) {}
-          for (paramObject = "3";; paramObject = "2")
-          {
-            VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081C2", "", 1, 0, 0, "", paramObject, String.valueOf(this.a.j));
-            break;
+          long l = 3600L;
+          paramArrayOfByte = "";
+          if (localQQProtectRisksResponse.uint32_cache_time.has()) {
+            l = localQQProtectRisksResponse.uint32_cache_time.get();
           }
-        }
-        if (((Integer)paramObject.first).intValue() == 101108)
-        {
-          this.a.n = 2;
-          this.a.a.obtainMessage(2, ((SSummaryCardRsp)paramObject.second).emsg).sendToTarget();
-          if (VipUtils.b(this.a.app)) {}
-          for (paramObject = "3";; paramObject = "2")
-          {
-            VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081C2", "", 1, 0, 0, "", paramObject, String.valueOf(this.a.j));
-            break;
+          if (localQQProtectRisksResponse.str_risk_exist.has()) {
+            paramArrayOfByte = localQQProtectRisksResponse.str_risk_exist.get();
           }
-        }
-        if (((Integer)paramObject.first).intValue() == 401019)
-        {
-          this.a.a.obtainMessage(8, ((SSummaryCardRsp)paramObject.second).emsg).sendToTarget();
-        }
-        else if (((Integer)paramObject.first).intValue() == 401020)
-        {
-          this.a.a.obtainMessage(7, ((SSummaryCardRsp)paramObject.second).emsg).sendToTarget();
-        }
-        else
-        {
-          if (((Integer)paramObject.first).intValue() == 401009)
+          paramBundle = paramArrayOfByte;
+          if (TextUtils.isEmpty(paramArrayOfByte))
           {
-            this.a.n = 2;
-            this.a.a.obtainMessage(2, ((SSummaryCardRsp)paramObject.second).emsg).sendToTarget();
-            if (VipUtils.b(this.a.app)) {}
-            for (paramObject = "3";; paramObject = "2")
+            paramBundle = paramArrayOfByte;
+            if (localQQProtectRisksResponse.risk_info_list.has())
             {
-              VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081C2", "", 1, 0, 0, "", paramObject, String.valueOf(this.a.j));
-              break;
+              paramBundle = paramArrayOfByte;
+              if (!localQQProtectRisksResponse.risk_info_list.isEmpty()) {
+                paramBundle = this.a.getString(2131698801);
+              }
             }
           }
-          Message localMessage = this.a.a.obtainMessage(1);
-          if ((((Integer)paramObject.first).intValue() >= 400000) && (((Integer)paramObject.first).intValue() <= 499999)) {
-            localMessage.obj = ((SSummaryCardRsp)paramObject.second).emsg;
-          }
-          this.a.a.sendMessage(localMessage);
-          continue;
-          paramObject = this.a.a.obtainMessage(1);
-          this.a.a.sendMessage(paramObject);
+          QQSettingSettingActivity.a(this.a, l, paramBundle);
+          this.a.runOnUiThread(new QQSettingSettingActivity.8.1(this, paramBundle));
         }
+        return;
+      }
+      catch (Throwable paramArrayOfByte)
+      {
+        paramArrayOfByte.printStackTrace();
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        return;
       }
     }
   }

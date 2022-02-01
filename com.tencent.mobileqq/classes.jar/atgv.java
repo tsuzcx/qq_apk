@@ -1,22 +1,16 @@
-import android.os.Bundle;
-
-public abstract interface atgv
+class atgv
+  implements athg
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
+  atgv(atfq paramatfq) {}
   
-  public abstract void a(int paramInt, String paramString, Bundle paramBundle);
-  
-  public abstract void a(String paramString, long paramLong, Bundle paramBundle);
-  
-  public abstract void b(int paramInt, Bundle paramBundle);
-  
-  public abstract void c(int paramInt, Bundle paramBundle);
-  
-  public abstract void d(int paramInt, Bundle paramBundle);
+  public void a(Object[] paramArrayOfObject)
+  {
+    atfq.v(this.a, paramArrayOfObject);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atgv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package dov.com.qq.im.ae.play;
 
-import adxr;
-import adxs;
+import aeow;
+import aeox;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -26,15 +26,15 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bljs;
-import blvr;
-import blvv;
-import bmbc;
-import bmbk;
-import bmbv;
-import bmbx;
-import bmbz;
-import bnnl;
+import bmws;
+import bnlb;
+import bnlf;
+import bnqm;
+import bnqu;
+import bnrf;
+import bnrh;
+import bnrj;
+import bpdd;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
@@ -70,9 +70,9 @@ import java.util.List;
 
 public class AETemplateInfoFragment
   extends IphoneTitleBarFragment
-  implements adxs, View.OnClickListener
+  implements aeox, View.OnClickListener
 {
-  public static final String CACHE_DIR = bljs.b;
+  public static final String CACHE_DIR = bmws.b;
   public static final String PREFERENCE_K_QUDONG_LAST_CRAZY_FACE_PHOTO = "ae_preference_k_qudong_last_crazy_face_photo";
   public static final int REQUEST_CODE_TAKE_FACE_PHOTO = 1024;
   private static final String TAG = "AETemplateInfoFragment";
@@ -173,7 +173,7 @@ public class AETemplateInfoFragment
       return;
       localBitmap = BitmapUtils.decodeSampleBitmap(getActivity(), paramString, this.screenWidth, this.screenHeight);
     } while (localBitmap == null);
-    bmbk.a().a("ae_preference_k_qudong_last_crazy_face_photo", paramString, 0);
+    bnqu.a().a("ae_preference_k_qudong_last_crazy_face_photo", paramString, 0);
     showLoading(true);
     long l = System.currentTimeMillis();
     this.mNeedPlayVideo = false;
@@ -184,7 +184,7 @@ public class AETemplateInfoFragment
   private String cropHeadOfImage(String paramString)
   {
     Object localObject1 = new File(paramString);
-    Object localObject2 = new File(bljs.a);
+    Object localObject2 = new File(bmws.a);
     if (!((File)localObject2).exists()) {
       ((File)localObject2).mkdirs();
     }
@@ -218,15 +218,15 @@ public class AETemplateInfoFragment
   public static int getFromType(Context paramContext)
   {
     if ((paramContext instanceof Activity)) {
-      return ((Activity)paramContext).getIntent().getIntExtra("VIDEO_STORY_FROM_TYPE", blvr.a.a());
+      return ((Activity)paramContext).getIntent().getIntExtra("VIDEO_STORY_FROM_TYPE", bnlb.a.a());
     }
-    return blvr.a.a();
+    return bnlb.a.a();
   }
   
   private void initData()
   {
-    this.screenWidth = bnnl.a(getActivity());
-    this.screenHeight = bnnl.b(getActivity());
+    this.screenWidth = bpdd.a(getActivity());
+    this.screenHeight = bpdd.b(getActivity());
     Intent localIntent = getActivity().getIntent();
     if (localIntent != null)
     {
@@ -252,7 +252,7 @@ public class AETemplateInfoFragment
       this.isCrazyFace = bool;
       if (this.isCrazyFace)
       {
-        this.mLastPhotoPath = bmbk.a().a("ae_preference_k_qudong_last_crazy_face_photo", null, 0);
+        this.mLastPhotoPath = bnqu.a().a("ae_preference_k_qudong_last_crazy_face_photo", null, 0);
         if (!TextUtils.isEmpty(this.mLastPhotoPath))
         {
           int i = getActivity().getResources().getDimensionPixelSize(2131296365);
@@ -302,24 +302,24 @@ public class AETemplateInfoFragment
   private void initView()
   {
     View localView = getView();
-    this.mNextButton = ((TextView)localView.findViewById(2131371756));
-    this.mLastImg = ((ImageView)localView.findViewById(2131368554));
-    this.mLastLayout = ((ViewGroup)localView.findViewById(2131369698));
+    this.mNextButton = ((TextView)localView.findViewById(2131371944));
+    this.mLastImg = ((ImageView)localView.findViewById(2131368712));
+    this.mLastLayout = ((ViewGroup)localView.findViewById(2131369867));
     this.mNextButton.setOnClickListener(this);
     this.mLastLayout.setOnClickListener(this);
-    this.mTitleTextView = ((TextView)localView.findViewById(2131378707));
-    this.mTipsTextView = ((TextView)localView.findViewById(2131378669));
-    this.mPlayerRateView = ((TextView)localView.findViewById(2131372760));
+    this.mTitleTextView = ((TextView)localView.findViewById(2131379001));
+    this.mTipsTextView = ((TextView)localView.findViewById(2131378963));
+    this.mPlayerRateView = ((TextView)localView.findViewById(2131372953));
     if (isDebugVersion())
     {
       this.mPlayerRateView.setVisibility(0);
       this.mPlayerRateView.setText("0(fps)");
       this.mPlayerRateView.setTextColor(-65536);
     }
-    this.playerStatusView = ((ImageView)localView.findViewById(2131372761));
-    this.mVideoView = ((TextureView)localView.findViewById(2131372927));
+    this.playerStatusView = ((ImageView)localView.findViewById(2131372954));
+    this.mVideoView = ((TextureView)localView.findViewById(2131373137));
     this.mVideoView.setKeepScreenOn(true);
-    this.mPlayerContainer = ((FrameLayout)localView.findViewById(2131372750));
+    this.mPlayerContainer = ((FrameLayout)localView.findViewById(2131372943));
     this.mPlayerContainer.getViewTreeObserver().addOnGlobalLayoutListener(new AETemplateInfoFragment.1(this));
     this.mVideoView.setOnClickListener(this);
     this.mVideoView.setSurfaceTextureListener(new AETemplateInfoFragment.PlayerSurfaceTextureCallback(this));
@@ -331,15 +331,15 @@ public class AETemplateInfoFragment
         this.mLastLayout.setVisibility(0);
         this.mLastImg.setImageBitmap(this.mLastPhoto);
         this.mNextButton.setTextColor(-16777216);
-        this.mNextButton.setBackgroundResource(2130837684);
-        this.mNextButton.setText(2131689769);
+        this.mNextButton.setBackgroundResource(2130837699);
+        this.mNextButton.setText(2131689778);
         this.mTipsTextView.setVisibility(8);
       }
     }
     else {
       return;
     }
-    this.mTipsTextView.setText(2131689766);
+    this.mTipsTextView.setText(2131689775);
     this.mTipsTextView.setVisibility(0);
   }
   
@@ -379,14 +379,14 @@ public class AETemplateInfoFragment
     localIntent.putExtra("loc_play_show_tab_name", paramString1);
     localIntent.putExtra("VIDEO_STORY_FROM_TYPE", getFromType(paramContext));
     localIntent.putExtra("loc_play_show_take_same_name", paramString5);
-    adxr.a(paramContext, localIntent, PublicFragmentActivityForPeak.class, AETemplateInfoFragment.class);
+    aeow.a(paramContext, localIntent, PublicFragmentActivityForPeak.class, AETemplateInfoFragment.class);
   }
   
   private void jumpToPagRealtimePreview(boolean paramBoolean)
   {
     int i = 0;
     Log.i("AETemplateInfoFragment", "未合成视频，将直接实时预览。");
-    bmbx.b("AETemplateInfoFragment", "未合成视频，将直接实时预览。");
+    bnrh.b("AETemplateInfoFragment", "未合成视频，将直接实时预览。");
     if (this.mTemplate == null) {
       return;
     }
@@ -461,7 +461,7 @@ public class AETemplateInfoFragment
     }
     catch (IllegalArgumentException paramString)
     {
-      bmbx.c("AETemplateInfoFragment", "loadTemplate Error!");
+      bnrh.c("AETemplateInfoFragment", "loadTemplate Error!");
     }
   }
   
@@ -470,7 +470,7 @@ public class AETemplateInfoFragment
     int i1 = 1;
     if ((this.mTemplate == null) || (TextUtils.isEmpty(this.mTemplate.getMaterialPath())))
     {
-      bmbx.c("AETemplateInfoFragment", "onNext template Error!");
+      bnrh.c("AETemplateInfoFragment", "onNext template Error!");
       return;
     }
     if (this.isCrazyFace)
@@ -537,7 +537,7 @@ public class AETemplateInfoFragment
   
   private void onPlayError()
   {
-    bmbx.c("AETemplateInfoFragment", "onPlayError!");
+    bnrh.c("AETemplateInfoFragment", "onPlayError!");
   }
   
   private void pauseVideo()
@@ -618,7 +618,7 @@ public class AETemplateInfoFragment
     paramIntent.addFlags(67108864);
     paramIntent.addFlags(536870912);
     paramIntent.putExtra("VIDEO_STORY_FROM_TYPE", getFromType(paramContext));
-    adxr.a(paramContext, paramIntent, PublicFragmentActivityForPeak.class, AETemplateInfoFragment.class);
+    aeow.a(paramContext, paramIntent, PublicFragmentActivityForPeak.class, AETemplateInfoFragment.class);
   }
   
   private void showFirstEntryTipDialog()
@@ -634,15 +634,15 @@ public class AETemplateInfoFragment
         this.tipDialog.show();
       }
       return;
-      this.tipDialog = new ReportDialog(getActivity(), 2131755826);
+      this.tipDialog = new ReportDialog(getActivity(), 2131755829);
       this.tipDialog.setCancelable(true);
       this.tipDialog.setCanceledOnTouchOutside(true);
-      this.tipDialog.setContentView(2131558507);
+      this.tipDialog.setContentView(2131558518);
       Object localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = getActivity().getResources().getDrawable(2131167337);
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = getActivity().getResources().getDrawable(2131167363);
       localObject = URLDrawable.getDrawable("https://dl.url.cn/myapp/qq_desk/qqrm/videofilter/Pturenwu/tipss.png", (URLDrawable.URLDrawableOptions)localObject);
-      URLImageView localURLImageView = (URLImageView)this.tipDialog.findViewById(2131369055);
-      TextView localTextView = (TextView)this.tipDialog.findViewById(2131379427);
+      URLImageView localURLImageView = (URLImageView)this.tipDialog.findViewById(2131369218);
+      TextView localTextView = (TextView)this.tipDialog.findViewById(2131379732);
       localURLImageView.setImageDrawable((Drawable)localObject);
       this.tipDialog.show();
       localTextView.setOnClickListener(new AETemplateInfoFragment.3(this));
@@ -659,10 +659,10 @@ public class AETemplateInfoFragment
       }
       if (this.mLoadingDialog == null)
       {
-        this.mLoadingDialog = new ReportDialog(localFragmentActivity, 2131755826);
+        this.mLoadingDialog = new ReportDialog(localFragmentActivity, 2131755829);
         this.mLoadingDialog.setCancelable(false);
         this.mLoadingDialog.setCanceledOnTouchOutside(false);
-        this.mLoadingDialog.setContentView(2131559574);
+        this.mLoadingDialog.setContentView(2131559607);
       }
       this.mLoadingDialog.show();
     }
@@ -682,7 +682,7 @@ public class AETemplateInfoFragment
       return;
     }
     this.mTitleTextView.setText(this.mMaterialName);
-    getActivity().findViewById(2131365428).setVisibility(8);
+    getActivity().findViewById(2131365521).setVisibility(8);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.mTipsTextView.getLayoutParams();
     this.mTipsTextView.setLines(2);
     localLayoutParams.height = ((int)(32.0F * this.mTipsTextView.getContext().getResources().getDisplayMetrics().density));
@@ -692,7 +692,7 @@ public class AETemplateInfoFragment
   
   private void startAlumNext(int paramInt)
   {
-    bmbz.a(getActivity(), paramInt);
+    bnrj.a(getActivity(), paramInt);
   }
   
   private void startPreviewNext()
@@ -706,16 +706,16 @@ public class AETemplateInfoFragment
   {
     if (!isNeedRealTimePlay())
     {
-      QQToast.a(getActivity(), getActivity().getString(2131689759), 0).a();
+      QQToast.a(getActivity(), getActivity().getString(2131689768), 0).a();
       return;
     }
-    if (bmbk.a().a("key_first_change_face_click_flag", true, 0))
+    if (bnqu.a().a("key_first_change_face_click_flag", true, 0))
     {
-      bmbk.a().a("key_first_change_face_click_flag", false, 0);
+      bnqu.a().a("key_first_change_face_click_flag", false, 0);
       showFirstEntryTipDialog();
       return;
     }
-    blvv.a(getActivity(), 1024, blvr.H.a(), null);
+    bnlf.a(getActivity(), 1024, bnlb.H.a(), null);
   }
   
   private void stopVideo()
@@ -744,7 +744,7 @@ public class AETemplateInfoFragment
       {
         for (;;)
         {
-          bmbx.a("AETemplateInfoFragment", "mVideoPlayer.setSurface(null) raise exception: ", localException);
+          bnrh.a("AETemplateInfoFragment", "mVideoPlayer.setSurface(null) raise exception: ", localException);
         }
       }
     }
@@ -795,7 +795,7 @@ public class AETemplateInfoFragment
       }
       catch (PagNotSupportSystemException paramSurfaceTexture)
       {
-        bmbx.d("AETemplateInfoFragment", paramSurfaceTexture.getMessage());
+        bnrh.d("AETemplateInfoFragment", paramSurfaceTexture.getMessage());
         popNotSupportPagToast("pag版本过低");
         return;
       }
@@ -844,7 +844,7 @@ public class AETemplateInfoFragment
   
   public int getContentLayoutId()
   {
-    return 2131558494;
+    return 2131558505;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -862,7 +862,7 @@ public class AETemplateInfoFragment
   
   public void onClick(View paramView)
   {
-    if (bmbv.a(paramView)) {}
+    if (bnrf.a(paramView)) {}
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
@@ -871,22 +871,22 @@ public class AETemplateInfoFragment
       {
       default: 
         break;
-      case 2131364066: 
+      case 2131364141: 
         onBackPressed();
         break;
-      case 2131371756: 
+      case 2131371944: 
         onNext();
         if (!this.isCrazyFace) {
-          bmbc.a().O();
+          bnqm.a().O();
         } else {
-          bmbc.a().P();
+          bnqm.a().P();
         }
         break;
-      case 2131369698: 
+      case 2131369867: 
         changeFace(this.mLastPhotoPath);
-        bmbc.a().Q();
+        bnqm.a().Q();
         break;
-      case 2131372927: 
+      case 2131373137: 
         toggleVideoStatus();
       }
     }
@@ -965,7 +965,7 @@ public class AETemplateInfoFragment
     this.vg.setTitle("模板详情");
     if (!FeatureManager.Features.PAG.init())
     {
-      bmbx.d("AETemplateInfoFragment", "pag相关so未初始化成功");
+      bnrh.d("AETemplateInfoFragment", "pag相关so未初始化成功");
       QQToast.a(getActivity(), "pag相关so未初始化成功", 0).a();
       return;
     }

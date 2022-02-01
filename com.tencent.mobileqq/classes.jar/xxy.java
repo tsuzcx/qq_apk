@@ -1,13 +1,24 @@
-class xxy
-  extends bbpx
+import android.support.annotation.NonNull;
+
+public class xxy
+  extends wag<xxi, wix>
 {
-  xxy(xxs paramxxs) {}
-  
-  public void a()
+  public xxy(xxi paramxxi)
   {
-    xvv.c("Q.qqstory.publish.edit.StoryDoodle", "DoodleInfoLoadObserver, onLoadSucc");
-    this.a.S_();
+    super(paramxxi);
   }
+  
+  public void a(@NonNull xxi paramxxi, @NonNull wix paramwix)
+  {
+    xxi.a(paramxxi, paramwix.a, this.TAG);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wix.class;
+  }
+  
+  public void b(@NonNull xxi paramxxi, @NonNull wix paramwix) {}
 }
 
 

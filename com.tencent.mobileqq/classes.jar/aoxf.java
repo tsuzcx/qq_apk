@@ -1,29 +1,31 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aoxf
-  implements CompoundButton.OnCheckedChangeListener
+  extends aoui
 {
-  public aoxf(ArkIDESettingFragment paramArkIDESettingFragment) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public aouc a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoul paramaoul)
   {
-    if (paramBoolean)
-    {
-      this.a.b();
-      this.a.a("");
-      ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("IDEDebug is open", new Object[0]));
-    }
+    paramQQAppInterface = new aoxe(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "commonBuddyGroup";
+    paramQQAppInterface.c = "open";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {}
     for (;;)
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      this.a.c();
-      this.a.a("close");
-      ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("IDEDebug is close", new Object[0]));
+      return paramQQAppInterface;
+      paramContext = paramContext[1].split("&");
+      int j = paramContext.length;
+      int i = 0;
+      while (i < j)
+      {
+        paramString = paramContext[i].split("=");
+        if (paramString.length == 2) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
     }
   }
 }

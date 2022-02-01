@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.utils;
 
-import anai;
-import bfun;
+import aocx;
+import bhdf;
 import java.util.List;
 
 public class DBUtils$2
   implements Runnable
 {
-  public DBUtils$2(bfun parambfun, anai paramanai, List paramList) {}
+  public DBUtils$2(bhdf parambhdf, aocx paramaocx, List paramList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Anai.a(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Aocx.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

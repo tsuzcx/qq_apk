@@ -1,83 +1,81 @@
-import android.app.Activity;
+import UserGrowth.eConfigBit;
+import UserGrowth.stSchema;
+import UserGrowth.stUserAuth;
+import android.app.Dialog;
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
-import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import android.view.View;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class uyn
 {
-  public static final int a;
-  private static final Pattern a;
-  public static final int b = ScreenUtil.dip2px(2.0F);
-  public static final int c = ScreenUtil.dip2px(4.0F);
-  public static final int d = ScreenUtil.dip2px(16.0F);
-  public static final int e = ScreenUtil.dip2px(28.0F);
-  public static final int f = ScreenUtil.dip2px(80.0F);
-  private static final int g;
-  private static final int h;
-  private static int i;
-  private static int j;
-  private static int k;
-  private static int l;
+  private Dialog a;
   
-  static
+  private Dialog a(Context paramContext, String paramString)
   {
-    jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("^#([0-9a-fA-F]{8}|[0-9a-fA-F]{6})$");
-    g = ScreenUtil.getRealWidth(BaseApplicationImpl.getApplication());
-    h = ScreenUtil.getRealHeight(BaseApplicationImpl.getApplication());
-    jdField_a_of_type_Int = ScreenUtil.dip2px(0.5F);
+    ReportDialog localReportDialog = new ReportDialog(paramContext, 2131756043);
+    localReportDialog.setContentView(2131560047);
+    View localView = localReportDialog.findViewById(2131365674);
+    localView.findViewById(2131381570).setOnClickListener(new uyp(this, paramContext, paramString));
+    localReportDialog.setOnCancelListener(new uyr(this, paramString));
+    localView.findViewById(2131381569).setOnClickListener(new uys(this, paramString));
+    return localReportDialog;
   }
   
-  public static int a()
+  private static void a()
   {
-    if (k == 0) {
-      k = ScreenUtil.dip2px(16.0F);
-    }
-    return k;
+    vmp.a("WSUserAuthDialog", "doTask: UserConfig request");
+    vfr localvfr = new vfr(new vll(eConfigBit.eShowConfirmWindow), null, new uyo(), 4010);
+    vfk.a().a(localvfr);
   }
   
-  public static int a(Activity paramActivity)
+  public static void a(Context paramContext, String paramString)
   {
-    if (i == 0) {
-      i = LiuHaiUtils.b(paramActivity);
-    }
-    return i;
+    WSPublicAccReport.getInstance().reportCallDialog("gzh_exposure", paramString, "authorized_window", 0);
+    a();
+    new uyn().b(paramContext, paramString);
   }
   
-  public static boolean a(String paramString)
+  public static boolean a()
   {
-    if (TextUtils.isEmpty(paramString)) {
+    stUserAuth localstUserAuth = vau.a().a();
+    vmp.a("WSUserAuthDialog", "判断是否需要弹窗");
+    if (localstUserAuth == null)
+    {
+      vmp.a("WSUserAuthDialog", "没有授权弹窗结构体");
       return false;
     }
-    return jdField_a_of_type_JavaUtilRegexPattern.matcher(paramString).matches();
-  }
-  
-  public static int b()
-  {
-    if (l == 0) {
-      l = ScreenUtil.dip2px(41.0F);
+    if (localstUserAuth.schema == null)
+    {
+      vmp.a("WSUserAuthDialog", "user_auth.schema == null");
+      return false;
     }
-    return l;
-  }
-  
-  public static int b(Activity paramActivity)
-  {
-    if (j == 0) {
-      j = a(paramActivity) + ScreenUtil.dip2px(4.5F);
+    if ((localstUserAuth.schema.type != 1) || (TextUtils.isEmpty(localstUserAuth.schema.miniAppSchema)))
+    {
+      vmp.a("WSUserAuthDialog", "下发scheme不合法，不展示弹窗");
+      return false;
     }
-    return j;
+    vmp.a("WSUserAuthDialog", localstUserAuth.toString());
+    return localstUserAuth.show_confirm;
   }
   
-  public static int c()
+  private void b()
   {
-    return g;
+    vmp.a("WSUserAuthDialog", "dialog dismiss");
+    if ((this.a != null) && (this.a.isShowing())) {
+      this.a.dismiss();
+    }
   }
   
-  public static int d()
+  public void b(Context paramContext, String paramString)
   {
-    return h;
+    this.a = a(paramContext, paramString);
+    if (this.a != null)
+    {
+      this.a.setCanceledOnTouchOutside(true);
+      this.a.show();
+    }
   }
 }
 

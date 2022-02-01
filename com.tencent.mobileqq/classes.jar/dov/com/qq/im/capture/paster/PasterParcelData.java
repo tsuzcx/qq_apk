@@ -6,13 +6,13 @@ import android.graphics.RectF;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bmuf;
+import bojx;
 import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
 
 public class PasterParcelData
   implements Parcelable
 {
-  public static final Parcelable.Creator<PasterParcelData> CREATOR = new bmuf();
+  public static final Parcelable.Creator<PasterParcelData> CREATOR = new bojx();
   public static int a;
   public static int b;
   public float a;

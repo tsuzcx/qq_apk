@@ -1,20 +1,11 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
 
 class blwo
-  implements Animation.AnimationListener
 {
-  blwo(blwn paramblwn) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    blwn.a(this.a).setVisibility(4);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  private blwp jdField_a_of_type_Blwp;
+  private HttpNetReq jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq;
+  private AbsPreDownloadTask jdField_a_of_type_ComTencentMobileqqTransfilePredownloadAbsPreDownloadTask;
 }
 
 

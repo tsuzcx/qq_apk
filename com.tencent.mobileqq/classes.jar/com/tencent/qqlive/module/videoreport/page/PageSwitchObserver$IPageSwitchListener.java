@@ -1,12 +1,15 @@
 package com.tencent.qqlive.module.videoreport.page;
 
 import android.support.annotation.NonNull;
+import android.view.View;
 
 public abstract interface PageSwitchObserver$IPageSwitchListener
 {
   public abstract void onPageAppear(@NonNull PageInfo paramPageInfo);
   
-  public abstract void onPageDisappear(@NonNull PageInfo paramPageInfo, boolean paramBoolean);
+  public abstract boolean onPageDestroyed(@NonNull View paramView);
+  
+  public abstract void onPageDisappear();
 }
 
 

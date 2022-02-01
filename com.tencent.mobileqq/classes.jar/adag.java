@@ -1,18 +1,55 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
+import mqq.app.AppRuntime;
 
 public class adag
-  implements DialogInterface.OnClickListener
 {
-  public adag(ChatSettingActivity paramChatSettingActivity) {}
+  TroopMemberApiService jdField_a_of_type_ComTencentBizTroopTroopMemberApiService;
+  AppRuntime jdField_a_of_type_MqqAppAppRuntime;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public adag(AppRuntime paramAppRuntime, TroopMemberApiService paramTroopMemberApiService)
   {
-    if ((ChatSettingActivity.a(this.a) != null) && (ChatSettingActivity.a(this.a).isShowing())) {
-      ChatSettingActivity.a(this.a).dismiss();
+    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService = paramTroopMemberApiService;
+  }
+  
+  public static void a(int paramInt, Bundle paramBundle, adah paramadah)
+  {
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
     }
+    localBundle.putInt("key_sub_cmd", paramInt);
+    if (paramadah != null)
+    {
+      aady.a().a(118, localBundle, paramadah);
+      return;
+    }
+    aady.a().a(118, localBundle);
+  }
+  
+  public void a(int paramInt1, Bundle paramBundle, int paramInt2)
+  {
+    switch (paramBundle.getInt("key_sub_cmd"))
+    {
+    default: 
+      return;
+    case 1: 
+      paramBundle.putBundle("key_result", adbk.a());
+      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(paramInt1, paramBundle);
+      return;
+    case 2: 
+      str1 = paramBundle.getString("key");
+      paramInt1 = paramBundle.getInt("type");
+      paramBundle = paramBundle.getString("appid");
+      adcu.a().b(str1, paramInt1, paramBundle);
+      return;
+    }
+    String str1 = paramBundle.getString("key");
+    paramInt1 = paramBundle.getInt("type");
+    String str2 = paramBundle.getString("appid");
+    paramBundle = paramBundle.getString("api");
+    adcu.a().b(str1, paramInt1, str2, paramBundle);
   }
 }
 

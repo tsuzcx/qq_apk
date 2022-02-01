@@ -2,15 +2,15 @@ package com.tencent.biz.pubaccount.readinjoy.presenter;
 
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import pvc;
-import pyz;
-import pzd;
-import slt;
+import qfw;
+import qle;
+import qli;
+import szd;
 
 public class ReadInJoyHeaderPresenter$3$1
   implements Runnable
 {
-  public ReadInJoyHeaderPresenter$3$1(pzd parampzd) {}
+  public ReadInJoyHeaderPresenter$3$1(qli paramqli) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class ReadInJoyHeaderPresenter$3$1
     int i = 0;
     while (i < this.a.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      localArrayList.add(((pvc)this.a.jdField_a_of_type_JavaUtilArrayList.get(i)).a());
+      localArrayList.add(((qfw)this.a.jdField_a_of_type_JavaUtilArrayList.get(i)).a());
       i += 1;
     }
     StringBuilder localStringBuilder;
@@ -33,7 +33,7 @@ public class ReadInJoyHeaderPresenter$3$1
     for (String str = "null";; str = this.a.b.toString())
     {
       QLog.d("ReadInJoyHeaderPresenter", 2, str);
-      pyz.a(this.a.jdField_a_of_type_Pyz).a(this.a.jdField_a_of_type_Int, localArrayList, this.a.b, this.a.jdField_a_of_type_JavaLangObject);
+      qle.a(this.a.jdField_a_of_type_Qle).a(this.a.jdField_a_of_type_Int, localArrayList, this.a.b, this.a.jdField_a_of_type_JavaLangObject);
       return;
     }
   }

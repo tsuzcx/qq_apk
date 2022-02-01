@@ -1,27 +1,46 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.recent.data.RecentItemNearbyLiveTipData;
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
-import java.util.Iterator;
-import java.util.List;
-import tencent.nearby.now.nearby_now_anchor.AnchorStatus;
+import android.os.Vibrator;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.conditionsearch.widget.TimeSelectView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
 
 public class aquq
-  extends aquy
+  implements AdapterView.OnItemSelectedListener
 {
-  public aquq(MsgBoxListActivity paramMsgBoxListActivity, List paramList) {}
+  public aquq(TimeSelectView paramTimeSelectView) {}
   
-  public void a(boolean paramBoolean, List<nearby_now_anchor.AnchorStatus> paramList, Bundle paramBundle)
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramBoolean)
+    TimeSelectView.a(this.a, paramView, 1);
+    TimeSelectView.a(this.a, paramView, true);
+    if ((paramView != null) && (paramView.getTag() != null))
     {
-      paramBundle = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramBundle.hasNext())
+      int i = Integer.parseInt(paramView.getTag().toString());
+      int j = paramAdapterView.getChildCount();
+      paramInt = 0;
+      while (paramInt < j)
       {
-        RecentItemNearbyLiveTipData localRecentItemNearbyLiveTipData = (RecentItemNearbyLiveTipData)paramBundle.next();
-        this.jdField_a_of_type_ComTencentMobileqqDatingMsgBoxListActivity.a(localRecentItemNearbyLiveTipData, paramList);
+        if (i != paramInt)
+        {
+          TimeSelectView.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
+          TimeSelectView.a(this.a, paramAdapterView.getChildAt(paramInt), false);
+        }
+        paramInt += 1;
       }
     }
+    if ((!TimeSelectView.a(this.a)) && (this.a.a != null))
+    {
+      this.a.a.vibrate(QQAppInterface.VIBRATOR_TIME_SELECTOR, -1);
+      if (QLog.isColorLevel()) {
+        QLog.d("TimeSelectView", 1, "hasVibrator: " + this.a.a.hasVibrator() + "Vibrator vibrate! " + TimeSelectView.a(this.a));
+      }
+    }
+    TimeSelectView.a(this.a, false);
   }
+  
+  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

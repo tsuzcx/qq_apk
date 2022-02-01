@@ -1,89 +1,33 @@
-import kotlin.Metadata;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.viola.core.ViolaInstance;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/VideoAdReportData;", "", "()V", "autoPlay", "", "getAutoPlay", "()I", "setAutoPlay", "(I)V", "endPos", "getEndPos", "setEndPos", "isFirstPlay", "setFirstPlay", "isPlayOnFirstFrame", "setPlayOnFirstFrame", "isPlayOnLastFrame", "setPlayOnLastFrame", "startPos", "getStartPos", "setStartPos", "videoDuration", "getVideoDuration", "setVideoDuration", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class txs
+public class txs
+  extends txt
 {
-  private int a;
-  private int b;
-  private int c = 1;
-  private int d;
-  private int e = 1;
-  private int f = 1;
-  private int g;
-  
-  public final int a()
+  txs(txq paramtxq1, Activity paramActivity, txq paramtxq2, JSONObject paramJSONObject)
   {
-    return this.a;
+    super(paramtxq1, paramActivity, paramtxq2, paramJSONObject);
   }
   
-  public final void a(int paramInt)
+  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
   {
-    this.a = paramInt;
-  }
-  
-  public final int b()
-  {
-    return this.b;
-  }
-  
-  public final void b(int paramInt)
-  {
-    this.b = paramInt;
-  }
-  
-  public final int c()
-  {
-    return this.c;
-  }
-  
-  public final void c(int paramInt)
-  {
-    this.c = paramInt;
-  }
-  
-  public final int d()
-  {
-    return this.d;
-  }
-  
-  public final void d(int paramInt)
-  {
-    this.d = paramInt;
-  }
-  
-  public final int e()
-  {
-    return this.e;
-  }
-  
-  public final void e(int paramInt)
-  {
-    this.e = paramInt;
-  }
-  
-  public final int f()
-  {
-    return this.f;
-  }
-  
-  public final void f(int paramInt)
-  {
-    this.f = paramInt;
-  }
-  
-  public final int g()
-  {
-    return this.g;
-  }
-  
-  public final void g(int paramInt)
-  {
-    this.g = paramInt;
+    paramString1 = this.jdField_a_of_type_OrgJsonJSONObject.optString("rowkey", "");
+    paramInt = this.jdField_a_of_type_OrgJsonJSONObject.optInt("from_page");
+    if (paramString1.isEmpty())
+    {
+      QLog.e(txq.a, 1, "click add video to topic fail, rowkey=" + paramString1);
+      return;
+    }
+    rth.b(txq.a(this.jdField_a_of_type_Txq).getViolaInstance().getActivity(), paramString1, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     txs
  * JD-Core Version:    0.7.0.1
  */

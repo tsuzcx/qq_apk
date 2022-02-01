@@ -1,35 +1,36 @@
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.text.TextUtils;
 
-public class apvt
-  extends apvq
+public abstract class apvt
+  implements apvj
 {
-  public apvk a(String paramString)
+  private final long jdField_a_of_type_Long;
+  private final String jdField_a_of_type_JavaLangString;
+  
+  public apvt(String paramString, long paramLong)
   {
-    QLog.d("ArkConfProcessor", 1, "[onParsed] type=" + type() + ", content = " + paramString);
-    try
-    {
-      apwe localapwe = (apwe)apul.a(paramString, apwe.class);
-      return new apvn(paramString, localapwe);
-    }
-    catch (QStorageInstantiateException localQStorageInstantiateException)
-    {
-      for (;;)
-      {
-        QLog.i("ArkConfProcessor", 1, "loadConfig:" + paramString + "fail", localQStorageInstantiateException);
-        Object localObject = null;
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public int type()
+  public Bundle a()
   {
-    return 250;
+    Bundle localBundle = new Bundle();
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      localBundle.putString("Uin", this.jdField_a_of_type_JavaLangString);
+    }
+    localBundle.putLong("ViewHandle", this.jdField_a_of_type_Long);
+    return localBundle;
+  }
+  
+  public String a()
+  {
+    return "QQ.GetNickname";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apvt
  * JD-Core Version:    0.7.0.1
  */

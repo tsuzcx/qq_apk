@@ -1,29 +1,55 @@
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import org.json.JSONObject;
 
-public abstract interface amst
+class amst
+  implements EIPCResultCallback
 {
-  public abstract ViewGroup a();
+  amst(amss paramamss) {}
   
-  public abstract bjuq a(String paramString);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
-  
-  public abstract void a(Configuration paramConfiguration);
-  
-  public abstract void a(QQAppInterface paramQQAppInterface);
-  
-  public abstract void a(String paramString, bjuq parambjuq);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public void onCallback(EIPCResult paramEIPCResult)
+  {
+    paramEIPCResult = paramEIPCResult.data;
+    int i = paramEIPCResult.getInt("type");
+    if (i == 1) {
+      paramEIPCResult = paramEIPCResult.getString("nickName");
+    }
+    JSONObject localJSONObject;
+    while (i != 2) {
+      try
+      {
+        localJSONObject = new JSONObject();
+        localJSONObject.put("nickname", 1);
+        localJSONObject.put("data", paramEIPCResult);
+        localJSONObject.put("openId", this.a.jdField_a_of_type_JavaLangString);
+        ApolloGameInterfaceProxy.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameInterfaceProxy, "cs.get_userInfo.local", "" + localJSONObject.toString() + "");
+        return;
+      }
+      catch (Throwable paramEIPCResult)
+      {
+        QLog.e("ApolloGameInterfaceProxy", 1, paramEIPCResult, new Object[0]);
+        return;
+      }
+    }
+    paramEIPCResult = amta.a((Bitmap)paramEIPCResult.getParcelable("head"), 100);
+    try
+    {
+      localJSONObject = new JSONObject();
+      localJSONObject.put("avatar", 1);
+      localJSONObject.put("data", paramEIPCResult);
+      localJSONObject.put("openId", this.a.jdField_a_of_type_JavaLangString);
+      ApolloGameInterfaceProxy.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameInterfaceProxy, "cs.get_userInfo.local", "" + localJSONObject.toString() + "");
+      return;
+    }
+    catch (Throwable paramEIPCResult)
+    {
+      QLog.e("ApolloGameInterfaceProxy", 1, paramEIPCResult, new Object[0]);
+    }
+  }
 }
 
 

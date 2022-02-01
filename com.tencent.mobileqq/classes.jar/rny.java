@@ -1,8 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
-public abstract interface rny
+public class rny
 {
-  public abstract void a(UgcVideo paramUgcVideo);
+  public static void a(BaseArticleInfo paramBaseArticleInfo)
+  {
+    roe localroe = roe.a(paramBaseArticleInfo);
+    if (localroe == null) {
+      return;
+    }
+    localroe.a(paramBaseArticleInfo);
+  }
 }
 
 

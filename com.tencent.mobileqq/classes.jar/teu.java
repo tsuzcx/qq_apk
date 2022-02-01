@@ -1,22 +1,20 @@
-import android.graphics.Canvas;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
-import kotlin.Unit;
-import kotlin.jvm.functions.Function1;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
 public class teu
-  implements Function1<Canvas, Unit>
+  implements MessageQueue.IdleHandler
 {
-  public teu(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
+  public teu(FastWebActivity paramFastWebActivity) {}
   
-  public Unit a(Canvas paramCanvas)
+  public boolean queueIdle()
   {
-    ColorBandVideoEntranceButton.b(this.a, paramCanvas);
-    return null;
+    FastWebActivity.a(this.a, this.a.a);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     teu
  * JD-Core Version:    0.7.0.1
  */

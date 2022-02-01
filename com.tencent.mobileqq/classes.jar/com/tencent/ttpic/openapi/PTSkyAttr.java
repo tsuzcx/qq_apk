@@ -9,6 +9,7 @@ public class PTSkyAttr
   private Bitmap maskBitmap;
   private Frame maskFrame;
   private long nextSurfaceTime;
+  private float[] pixelRange;
   private float[] rotationMatrix;
   private long surfaceTime;
   
@@ -25,6 +26,11 @@ public class PTSkyAttr
   public long getNextSurfaceTime()
   {
     return this.nextSurfaceTime;
+  }
+  
+  public float[] getPixelRange()
+  {
+    return this.pixelRange;
   }
   
   public float[] getRotationMatrix()
@@ -55,6 +61,11 @@ public class PTSkyAttr
   public void setNextSurfaceTime(long paramLong)
   {
     this.nextSurfaceTime = paramLong;
+  }
+  
+  public void setPixelRange(float[] paramArrayOfFloat)
+  {
+    this.pixelRange = paramArrayOfFloat;
   }
   
   public void setRotationMatrix(float[] paramArrayOfFloat)

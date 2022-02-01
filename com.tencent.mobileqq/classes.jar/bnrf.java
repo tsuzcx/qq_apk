@@ -1,26 +1,34 @@
-import android.util.Property;
+import android.util.LruCache;
+import android.view.View;
+import androidx.annotation.NonNull;
 
-class bnrf
-  extends Property<bnrd, Integer>
+public final class bnrf
 {
-  bnrf(bnrd parambnrd, Class paramClass, String paramString)
+  private static final LruCache<String, Long> a = new LruCache(10);
+  
+  public static boolean a(View paramView)
   {
-    super(paramClass, paramString);
+    Object localObject = paramView.getTag(2131362292);
+    long l = System.currentTimeMillis();
+    paramView.setTag(2131362292, Long.valueOf(l));
+    return ((localObject instanceof Long)) && (Math.abs(l - ((Long)localObject).longValue()) <= 500L);
   }
   
-  public Integer a(bnrd parambnrd)
+  public static boolean a(@NonNull String paramString)
   {
-    if (parambnrd != null) {
-      return Integer.valueOf(bnrd.b(parambnrd));
+    Long localLong1 = (Long)a.get(paramString);
+    Long localLong2 = Long.valueOf(System.currentTimeMillis());
+    if (localLong1 == null)
+    {
+      a.put(paramString, localLong2);
+      return false;
     }
-    return Integer.valueOf(255);
-  }
-  
-  public void a(bnrd parambnrd, Integer paramInteger)
-  {
-    if (parambnrd != null) {
-      bnrd.b(parambnrd, paramInteger.intValue());
+    if (Math.abs(localLong2.longValue() - localLong1.longValue()) >= 500L)
+    {
+      a.put(paramString, localLong2);
+      return false;
     }
+    return true;
   }
 }
 

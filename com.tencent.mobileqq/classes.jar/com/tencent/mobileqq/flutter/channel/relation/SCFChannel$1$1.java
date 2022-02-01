@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.flutter.channel.relation;
 
 import android.os.Bundle;
-import atiy;
+import aund;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import eipc.EIPCClient;
@@ -11,7 +11,7 @@ import mqq.os.MqqHandler;
 public class SCFChannel$1$1
   implements Runnable
 {
-  public SCFChannel$1$1(atiy paramatiy, String paramString, Boolean paramBoolean, MethodChannel.Result paramResult) {}
+  public SCFChannel$1$1(aund paramaund, String paramString, Boolean paramBoolean, MethodChannel.Result paramResult) {}
   
   public void run()
   {

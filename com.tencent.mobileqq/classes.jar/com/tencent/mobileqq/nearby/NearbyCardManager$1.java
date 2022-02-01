@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby;
 
-import awka;
+import axqc;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.NearbyPeopleCard;
 import com.tencent.mobileqq.persistence.EntityManager;
@@ -14,7 +14,7 @@ public final class NearbyCardManager$1
   public void run()
   {
     this.a.refreshStrangerFace(this.a.getCurrentAccountUin(), 200, true);
-    long l1 = ((Long)awka.a(this.a.getAccount(), "self_tinnyid", Long.valueOf(0L))).longValue();
+    long l1 = ((Long)axqc.a(this.a.getAccount(), "self_tinnyid", Long.valueOf(0L))).longValue();
     long l2 = l1;
     EntityManager localEntityManager;
     if (l1 == 0L)

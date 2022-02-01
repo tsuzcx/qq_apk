@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.adapter;
 
-import ally;
+import amjz;
 
 class TroopListAdapter2$5$1
   implements Runnable
@@ -9,7 +9,7 @@ class TroopListAdapter2$5$1
   
   public void run()
   {
-    ally.a(this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$5.this$0, this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$5.jdField_a_of_type_Almf, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$5.jdField_a_of_type_Boolean);
+    amjz.a(this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$5.this$0, this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$5.jdField_a_of_type_Amkg, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$5.jdField_a_of_type_Boolean);
   }
 }
 

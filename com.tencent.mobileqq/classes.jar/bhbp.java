@@ -1,25 +1,23 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.CircleProgressBar;
+import android.content.ClipData;
+import android.view.View;
+import java.io.File;
 
 public class bhbp
-  extends Handler
 {
-  public bhbp(CircleProgressBar paramCircleProgressBar) {}
+  public ClipData a;
+  public View a;
+  File a;
   
-  public void handleMessage(Message paramMessage)
+  bhbp(File paramFile, View paramView, ClipData paramClipData)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      paramMessage = this.a;
-      paramMessage.i += 3;
-      this.a.postInvalidate();
-    } while (!this.a.a);
-    sendEmptyMessageDelayed(10000, 50L);
+    this.jdField_a_of_type_JavaIoFile = paramFile;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidContentClipData = paramClipData;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_JavaIoFile.exists()) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidContentClipData != null);
   }
 }
 

@@ -1,6 +1,6 @@
-public abstract interface avtb<R>
+public abstract interface avtb
 {
-  public abstract void postQuery(R paramR);
+  public abstract void a(boolean paramBoolean);
 }
 
 

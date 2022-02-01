@@ -14,8 +14,8 @@ public final class QIMUserManager$4
   {
     try
     {
-      Drawable localDrawable1 = SkinEngine.getInstances().getDefaultThemeDrawable(2130850030);
-      Drawable localDrawable2 = SkinEngine.getInstances().getDefaultThemeDrawable(2130850034);
+      Drawable localDrawable1 = SkinEngine.getInstances().getDefaultThemeDrawable(2130850123);
+      Drawable localDrawable2 = SkinEngine.getInstances().getDefaultThemeDrawable(2130850127);
       StateListDrawable localStateListDrawable = new StateListDrawable();
       localStateListDrawable.addState(new int[] { 16842910 }, localDrawable1);
       localStateListDrawable.addState(new int[] { 16842919, 16842910 }, localDrawable2);

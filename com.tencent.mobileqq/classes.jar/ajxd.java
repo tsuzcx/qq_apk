@@ -1,50 +1,18 @@
-import Wallet.PfaFriendRsp;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.home.Conversation;
 
-final class ajxd
-  extends Handler
+public class ajxd
+  implements DialogInterface.OnDismissListener
 {
-  ajxd(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public ajxd(Conversation paramConversation) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    boolean bool2 = true;
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    if (paramDialogInterface == Conversation.a(this.a)) {
+      Conversation.a(this.a, null);
     }
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramMessage.obj != null)
-    {
-      localObject1 = localObject2;
-      if ((paramMessage.obj instanceof PfaFriendRsp)) {
-        localObject1 = (PfaFriendRsp)paramMessage.obj;
-      }
-    }
-    boolean bool1;
-    if (paramMessage.arg1 == 1)
-    {
-      bool1 = true;
-      if (paramMessage.arg2 != 1) {
-        break label93;
-      }
-    }
-    for (;;)
-    {
-      ajxc.a(bool1, (PfaFriendRsp)localObject1, bool2);
-      return;
-      bool1 = false;
-      break;
-      label93:
-      bool2 = false;
-    }
+    this.a.a(1134057, 50L, true);
   }
 }
 

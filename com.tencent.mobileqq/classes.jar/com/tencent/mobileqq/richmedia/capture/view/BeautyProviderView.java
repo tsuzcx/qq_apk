@@ -8,7 +8,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bacv;
+import bbje;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class BeautyProviderView
@@ -27,20 +27,20 @@ public class BeautyProviderView
   
   private void a(TextView paramTextView)
   {
-    paramTextView.setBackgroundResource(2130845825);
+    paramTextView.setBackgroundResource(2130845913);
     paramTextView.setTextColor(Color.parseColor("#12B7F5"));
   }
   
   private void b(TextView paramTextView)
   {
-    paramTextView.setBackgroundResource(2130845824);
+    paramTextView.setBackgroundResource(2130845912);
     paramTextView.setTextColor(Color.parseColor("#FFFFFF"));
   }
   
   public void onClick(View paramView)
   {
     setBeautyLevel(((Integer)paramView.getTag()).intValue());
-    this.jdField_a_of_type_Bacv.a(((Integer)paramView.getTag()).intValue());
+    this.jdField_a_of_type_Bbje.a(((Integer)paramView.getTag()).intValue());
     EventCollector.getInstance().onViewClicked(paramView);
   }
   

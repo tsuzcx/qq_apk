@@ -1,9 +1,14 @@
-class agbd
-  implements bjog
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+
+public class agbd
+  extends aogc
 {
-  agbd(agbc paramagbc) {}
+  public agbd(TroopChatPie paramTroopChatPie) {}
   
-  public void onDismiss() {}
+  public void a(boolean paramBoolean, Object paramObject)
+  {
+    this.a.refresh(65536);
+  }
 }
 
 

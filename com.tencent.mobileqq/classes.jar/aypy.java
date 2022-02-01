@@ -1,21 +1,8 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-
-class aypy
-  implements URLDrawable.URLDrawableListener
+public abstract interface aypy
 {
-  aypy(ayps paramayps) {}
+  public abstract void a(int paramInt, String paramString);
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    this.a.notifyDataSetChanged();
-  }
+  public abstract void a(byte[] paramArrayOfByte);
 }
 
 

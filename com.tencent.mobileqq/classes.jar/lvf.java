@@ -1,44 +1,51 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.redpacket.ui.RedPacketRollTextView;
-import java.lang.ref.WeakReference;
-
 public class lvf
-  extends Handler
+  extends lum
 {
-  WeakReference<RedPacketRollTextView> a;
+  public boolean a;
   
-  public lvf(RedPacketRollTextView paramRedPacketRollTextView)
+  public void a(long paramLong)
   {
-    this.a = new WeakReference(paramRedPacketRollTextView);
+    long l = paramLong - this.jdField_a_of_type_Long;
+    a((float)(paramLong - this.jdField_a_of_type_Long) / 50.0F);
+    int j = 0;
+    int i;
+    if (l < 500L) {
+      i = (int)(l * 255L / 500L);
+    }
+    for (;;)
+    {
+      a(i);
+      return;
+      if (((l >= 500L) && (l <= 5397L)) || (!this.jdField_a_of_type_Boolean))
+      {
+        i = 255;
+      }
+      else
+      {
+        i = j;
+        if (l > 5397L)
+        {
+          i = j;
+          if (l < 5564L)
+          {
+            i = j;
+            if (this.jdField_a_of_type_Boolean) {
+              i = (int)((l - 5564L) * 255L / -167L);
+            }
+          }
+        }
+      }
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    RedPacketRollTextView localRedPacketRollTextView = (RedPacketRollTextView)this.a.get();
-    if (localRedPacketRollTextView == null) {}
-    do
-    {
-      Bundle localBundle;
-      do
-      {
-        return;
-        localBundle = paramMessage.getData();
-      } while (localBundle == null);
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      }
-      localRedPacketRollTextView.setText(localBundle.getString("content"));
-    } while (RedPacketRollTextView.a(localRedPacketRollTextView) == null);
-    RedPacketRollTextView.a(localRedPacketRollTextView).a(null);
+    a(paramInt1 * 5 / 1500, paramInt2 - paramInt1 * 752 / 750, paramInt1 * 1495 / 1500, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lvf
  * JD-Core Version:    0.7.0.1
  */

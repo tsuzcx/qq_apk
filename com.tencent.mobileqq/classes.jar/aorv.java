@@ -1,45 +1,32 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aorv
-  implements aosj
+  extends aosi
 {
-  private int a()
+  protected aorv(QQAppInterface paramQQAppInterface, aosm paramaosm)
   {
-    int i = -1;
-    if (lfg.a(BaseApplicationImpl.getContext())) {
-      i = 1;
-    }
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      return i;
-      if (AudioHelper.a(BaseApplicationImpl.getContext())) {
-        return 2;
-      }
-      localQQAppInterface = aori.a();
-    } while (localQQAppInterface == null);
-    if (localQQAppInterface.getLoudSpeakerState()) {
-      return 4;
-    }
-    return 3;
+    super(paramQQAppInterface, paramaosm);
   }
   
-  public EIPCResult a(Bundle paramBundle)
+  public int a(QQMessageFacade.Message paramMessage)
   {
-    if (aori.a() == null)
-    {
-      QLog.e("ArkApp.GetAudioOutputModeHandler", 1, "GetAudioOutputModeHandler.onCall, qq app is null");
-      return EIPCResult.createResult(-102, new Bundle());
-    }
-    int i = a();
-    paramBundle = new Bundle();
-    paramBundle.putInt("mode", i);
-    return EIPCResult.createResult(0, paramBundle);
+    return -113;
+  }
+  
+  public aosm a(QQMessageFacade.Message paramMessage)
+  {
+    Object localObject = bhbd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDrawable(2130844688));
+    this.jdField_a_of_type_Aosm.a((Bitmap)localObject);
+    localObject = a() + ": ";
+    this.jdField_a_of_type_Aosm.b((String)localObject);
+    localObject = c();
+    this.jdField_a_of_type_Aosm.d((String)localObject);
+    b(paramMessage);
+    return this.jdField_a_of_type_Aosm;
   }
 }
 

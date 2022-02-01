@@ -1,18 +1,15 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.DialogInterface.OnClickListener;
 
-class aqay
-  implements bmxi
+public class aqay
 {
-  aqay(aqax paramaqax) {}
-  
-  public void a(String paramString)
-  {
-    bnub.a(BaseApplicationImpl.getContext(), paramString);
-  }
+  public DialogInterface.OnClickListener a;
+  public String a;
+  public String b;
+  public String c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqay
  * JD-Core Version:    0.7.0.1
  */

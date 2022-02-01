@@ -18,31 +18,39 @@ public class AdABTest
     boolean bool = true;
     if (TextUtils.isEmpty(paramString)) {}
     long l;
-    List localList;
     do
     {
-      for (;;)
+      List localList;
+      do
       {
-        return false;
-        try
+        for (;;)
         {
-          l = Long.valueOf(paramString).longValue();
-          if ((l != -2147483648L) && (paramLimitByUIN != null))
+          return false;
+          try
           {
-            localList = Arrays.asList(paramLimitByUIN.whiteList);
-            if ((localList != null) && (localList.contains(paramString))) {
-              return true;
+            l = Long.valueOf(paramString).longValue();
+            if ((l != -2147483648L) && (paramLimitByUIN != null)) {
+              if (paramLimitByUIN.whiteList != null)
+              {
+                localList = Arrays.asList(paramLimitByUIN.whiteList);
+                if ((localList != null) && (localList.contains(paramString))) {
+                  return true;
+                }
+              }
             }
           }
+          catch (Throwable paramString)
+          {
+            AdLog.e("AdABTest", "isABTestByUIN", paramString);
+            return false;
+          }
         }
-        catch (Throwable paramString)
-        {
-          AdLog.e("AdABTest", "isABTestByUIN", paramString);
-          return false;
+        if (paramLimitByUIN.blackList == null) {
+          break;
         }
-      }
-      localList = Arrays.asList(paramLimitByUIN.blackList);
-    } while (((localList != null) && (localList.contains(paramString))) || (TextUtils.isEmpty(paramLimitByUIN.lower)) || (TextUtils.isEmpty(paramLimitByUIN.upper)));
+        localList = Arrays.asList(paramLimitByUIN.blackList);
+      } while ((localList != null) && (localList.contains(paramString)));
+    } while ((TextUtils.isEmpty(paramLimitByUIN.lower)) || (TextUtils.isEmpty(paramLimitByUIN.upper)));
     for (;;)
     {
       try
@@ -73,7 +81,7 @@ public class AdABTest
             break;
           }
           if ((i > l) || (l > j)) {
-            break label263;
+            break label277;
           }
           return bool;
         }
@@ -86,7 +94,7 @@ public class AdABTest
         AdLog.e("AdABTest", "isABTestByUIN", paramString);
         return false;
       }
-      label263:
+      label277:
       bool = false;
     }
   }

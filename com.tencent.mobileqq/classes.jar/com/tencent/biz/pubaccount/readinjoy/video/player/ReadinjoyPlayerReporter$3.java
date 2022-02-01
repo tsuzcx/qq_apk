@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.video.player;
 
-import sdj;
-import sgu;
+import spn;
+import ssz;
 
 public class ReadinjoyPlayerReporter$3
   implements Runnable
 {
-  public ReadinjoyPlayerReporter$3(sgu paramsgu, sdj paramsdj) {}
+  public ReadinjoyPlayerReporter$3(ssz paramssz, spn paramspn) {}
   
   public void run()
   {
-    if (sgu.a(this.this$0)) {
+    if (ssz.a(this.this$0)) {
       return;
     }
     this.a.a();

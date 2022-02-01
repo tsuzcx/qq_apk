@@ -2,7 +2,7 @@ package cooperation.qzone.webviewplugin.famous;
 
 import android.app.Activity;
 import android.content.Intent;
-import bgve;
+import bifw;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import cooperation.qzone.webviewplugin.QZoneJsConstants;

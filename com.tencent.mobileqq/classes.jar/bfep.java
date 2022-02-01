@@ -1,8 +1,19 @@
-import com.tencent.map.lib.basemap.data.GeoPoint;
-
-public abstract interface bfep
+class bfep
 {
-  public abstract void a(int paramInt, GeoPoint paramGeoPoint);
+  final float jdField_a_of_type_Float;
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = 0L;
+  float b = 0.0F;
+  
+  public bfep(bfem parambfem, float paramFloat)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Int * this.jdField_a_of_type_Float * 0.4F + this.b * 0.6F;
+  }
 }
 
 

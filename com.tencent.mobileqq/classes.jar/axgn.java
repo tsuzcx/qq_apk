@@ -1,23 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
 
-class axgn
-  implements Callback
+public class axgn
+  implements axfk
 {
-  axgn(axgm paramaxgm) {}
+  public axgn(MultiCardFragment paramMultiCardFragment) {}
   
-  public void onFailure(Call paramCall, IOException paramIOException)
+  public void a(boolean paramBoolean)
   {
-    QLog.e("TurtleReportCenter", 4, paramIOException, new Object[0]);
-  }
-  
-  public void onResponse(Call paramCall, Response paramResponse)
-  {
-    if ((paramResponse != null) && (paramResponse.code() == 200)) {
-      QLog.i("TurtleReportCenter", 4, "data report success.");
+    if (MultiCardFragment.a(this.a) != null) {
+      MultiCardFragment.a(this.a).setViewPagerBusy(paramBoolean);
     }
   }
 }

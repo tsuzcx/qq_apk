@@ -36,44 +36,40 @@ public class FaceCropFilter
   
   private void updateParams(List<PointF> paramList, float[] paramArrayOfFloat, float paramFloat, int paramInt)
   {
-    Object localObject1 = (FaceCropItem.CropFrame)this.faceCropItem.frameList.get(paramInt);
-    float f2 = (float)Math.min(((FaceCropItem.CropFrame)localObject1).width / this.width, ((FaceCropItem.CropFrame)localObject1).height / this.height);
-    paramFloat = (float)(((FaceCropItem.CropFrame)localObject1).width / f2);
-    float f1 = (float)(((FaceCropItem.CropFrame)localObject1).height / f2);
-    Object localObject2 = new PointF((paramFloat - this.width) / 2.0F, (f1 - this.height) / 2.0F);
-    f1 = (float)(((FaceCropItem.CropFrame)localObject1).faceWidth / f2);
-    paramFloat = (float)(((FaceCropItem.CropFrame)localObject1).noseX / f2 - ((PointF)localObject2).x);
-    f2 = (float)(((FaceCropItem.CropFrame)localObject1).noseY / f2 - ((PointF)localObject2).y);
-    localObject2 = FaceOffUtil.getFullCoords(paramList, 3.0F);
-    paramList = ((List)localObject2).iterator();
-    PointF localPointF;
+    Object localObject2 = (FaceCropItem.CropFrame)this.faceCropItem.frameList.get(paramInt);
+    paramFloat = (float)Math.min(((FaceCropItem.CropFrame)localObject2).width / this.width, ((FaceCropItem.CropFrame)localObject2).height / this.height);
+    float f1 = (float)(((FaceCropItem.CropFrame)localObject2).width / paramFloat);
+    float f2 = (float)(((FaceCropItem.CropFrame)localObject2).height / paramFloat);
+    Object localObject3 = FaceOffUtil.getFullCoords(paramList, 3.0F);
+    paramList = ((List)localObject3).iterator();
     while (paramList.hasNext())
     {
-      localPointF = (PointF)paramList.next();
-      localPointF.x = ((float)(localPointF.x / this.mFaceDetScale));
-      localPointF.y = ((float)(localPointF.y / this.mFaceDetScale));
+      localObject1 = (PointF)paramList.next();
+      ((PointF)localObject1).x = ((float)(((PointF)localObject1).x / this.mFaceDetScale));
+      ((PointF)localObject1).y = ((float)(((PointF)localObject1).y / this.mFaceDetScale));
     }
-    float f5 = distanceOf((PointF)((List)localObject2).get(0), (PointF)((List)localObject2).get(18));
-    float f3 = ((PointF)((List)localObject2).get(64)).x;
-    float f4 = ((PointF)((List)localObject2).get(64)).y;
+    float f3 = distanceOf((PointF)((List)localObject3).get(0), (PointF)((List)localObject3).get(18));
     paramList = new ArrayList();
-    paramList.add(((List)localObject2).get(99));
-    paramList.add(((List)localObject2).get(105));
-    paramList.add(((List)localObject2).get(101));
-    paramList.add(((List)localObject2).get(103));
-    f1 /= f5;
-    localObject2 = new Matrix();
-    ((Matrix)localObject2).reset();
-    ((Matrix)localObject2).postRotate(radians2DEGREES((float)(paramArrayOfFloat[2] - ((FaceCropItem.CropFrame)localObject1).faceAngle)), f3, f4);
-    ((Matrix)localObject2).postScale(f1, f1, f3, f4);
-    ((Matrix)localObject2).postTranslate(paramFloat - f3, f2 - f4);
+    paramList.add(((List)localObject3).get(99));
+    paramList.add(((List)localObject3).get(105));
+    paramList.add(((List)localObject3).get(101));
+    paramList.add(((List)localObject3).get(103));
+    f3 = (float)(((FaceCropItem.CropFrame)localObject2).faceWidth / paramFloat) / f3;
+    Object localObject1 = new Matrix();
+    ((Matrix)localObject1).reset();
+    float f4 = ((PointF)((List)localObject3).get(64)).x;
+    float f5 = ((PointF)((List)localObject3).get(64)).y;
+    ((Matrix)localObject1).postRotate(radians2DEGREES((float)(paramArrayOfFloat[2] - ((FaceCropItem.CropFrame)localObject2).faceAngle)), f4, f5);
+    ((Matrix)localObject1).postScale(f3, f3, f4, f5);
+    paramArrayOfFloat = new PointF((f1 - this.width) / 2.0F, (f2 - this.height) / 2.0F);
+    ((Matrix)localObject1).postTranslate((float)(((FaceCropItem.CropFrame)localObject2).noseX / paramFloat - paramArrayOfFloat.x) - f4, (float)(((FaceCropItem.CropFrame)localObject2).noseY / paramFloat - paramArrayOfFloat.y) - f5);
     paramArrayOfFloat = new ArrayList();
-    localObject1 = paramList.iterator();
-    while (((Iterator)localObject1).hasNext())
+    localObject2 = paramList.iterator();
+    while (((Iterator)localObject2).hasNext())
     {
-      localPointF = (PointF)((Iterator)localObject1).next();
+      localObject3 = (PointF)((Iterator)localObject2).next();
       float[] arrayOfFloat = new float[2];
-      ((Matrix)localObject2).mapPoints(arrayOfFloat, new float[] { localPointF.x, localPointF.y });
+      ((Matrix)localObject1).mapPoints(arrayOfFloat, new float[] { ((PointF)localObject3).x, ((PointF)localObject3).y });
       paramArrayOfFloat.add(new PointF(arrayOfFloat[0], arrayOfFloat[1]));
     }
     int i = 0;

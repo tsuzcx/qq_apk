@@ -1,24 +1,22 @@
-import android.graphics.Bitmap;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.DownloadListener;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
 
-public class bdtb
-  implements URLDrawable.DownloadListener
+class bdtb
+  implements bdtr
 {
-  public bdtb(TroopCreateLogicActivity paramTroopCreateLogicActivity, URLDrawable paramURLDrawable, bdtc parambdtc) {}
+  bdtb(bdsz parambdsz, CountdownTextView paramCountdownTextView) {}
   
-  public void onFileDownloadFailed(int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_Bdtc.a(null);
+    this.jdField_a_of_type_Bdsz.jdField_d_of_type_Long = 0L;
+    this.jdField_a_of_type_Bdsz.jdField_d_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(bdsz.a(this.jdField_a_of_type_Bdsz, 0L));
   }
   
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong)
+  public void a(long paramLong)
   {
-    Bitmap localBitmap = bhzk.a(this.jdField_a_of_type_ComTencentImageURLDrawable, 100, 100);
-    this.jdField_a_of_type_Bdtc.a(localBitmap);
+    paramLong /= 1000L;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(bdsz.a(this.jdField_a_of_type_Bdsz, paramLong));
+    this.jdField_a_of_type_Bdsz.jdField_d_of_type_Long = paramLong;
   }
 }
 

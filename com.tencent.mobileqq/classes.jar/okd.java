@@ -1,29 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 
-class okd
-  extends Handler
+public class okd
+  implements DialogInterface.OnClickListener
 {
-  private WeakReference<okb> a;
+  public okd(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, long paramLong, String paramString2, String paramString3) {}
   
-  public okd(okb paramokb)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = new WeakReference(paramokb);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    okb localokb = (okb)this.a.get();
-    if ((localokb == null) || (!localokb.b())) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    localokb.b();
+    PublicAccountJavascriptInterface.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
+    PublicAccountJavascriptInterface.setLocationPermissionGrant(this.b, this.c, 1);
   }
 }
 

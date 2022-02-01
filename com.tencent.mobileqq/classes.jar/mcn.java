@@ -1,43 +1,60 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.DoubleVideoCtrlUI;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.BeautyToolbar;
+import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class mcn
-  implements Animation.AnimationListener
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public mcn(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, long paramLong) {}
+  public mcn(BeautyToolbar paramBeautyToolbar) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    QLog.w(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.d, 1, "showNoAnswerAnimation, onAnimationEnd, seq[" + this.jdField_a_of_type_Long + "]");
-    if (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a != null)
+    if (this.a.mBeautyValue != paramInt)
     {
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.b = true;
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a.j();
+      this.a.updateTip(paramInt);
+      if ((paramInt != 0) || (this.a.mBeautyValue <= 0)) {
+        break label125;
+      }
+      this.a.mSeek.setThumb(this.a.mThumb_0);
     }
-    paramAnimation = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a();
-    if (paramAnimation != null) {
-      paramAnimation.g(this.jdField_a_of_type_Long);
+    for (;;)
+    {
+      if (paramBoolean) {
+        this.a.mSeek.setContentDescription(paramInt + "%");
+      }
+      this.a.mBeautyValue = paramInt;
+      this.a.mApp.a("BEAUTY_SKIN", this.a.mBeautyValue, false);
+      EffectSettingUi.a(this.a.mApp, -1003L);
+      return;
+      label125:
+      if ((paramInt > 0) && (paramInt <= 30) && ((this.a.mBeautyValue <= 0) || (this.a.mBeautyValue > 30))) {
+        this.a.mSeek.setThumb(this.a.mThumb_30);
+      } else if ((paramInt > 30) && (paramInt <= 60) && ((this.a.mBeautyValue <= 30) || (this.a.mBeautyValue > 60))) {
+        this.a.mSeek.setThumb(this.a.mThumb_60);
+      } else if ((paramInt > 60) && (paramInt <= 100) && ((this.a.mBeautyValue <= 60) || (this.a.mBeautyValue > 100))) {
+        this.a.mSeek.setThumb(this.a.mThumb_100);
+      }
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    QLog.w(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.d, 1, "showNoAnswerAnimation, onAnimationStart, seq[" + this.jdField_a_of_type_Long + "]");
-    paramAnimation = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a();
-    if (paramAnimation != null) {
-      paramAnimation.g(this.jdField_a_of_type_Long);
-    }
+    EffectSettingUi.a(this.a.mApp, -1004L);
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    this.a.mApp.a("BEAUTY_SKIN", this.a.mBeautyValue, true);
+    EffectSettingUi.a(this.a.mApp, -1005L);
+    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mcn
  * JD-Core Version:    0.7.0.1
  */

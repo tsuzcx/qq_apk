@@ -1,31 +1,18 @@
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import dov.com.qq.im.aeeditor.module.text.AEEditorColorSelectorView;
 
 public class bocc
+  extends LinearLayoutManager
 {
-  public static int a;
-  public static boolean a;
-  
-  static
+  public bocc(AEEditorColorSelectorView paramAEEditorColorSelectorView, Context paramContext, int paramInt, boolean paramBoolean)
   {
-    jdField_a_of_type_Int = 1500;
+    super(paramContext, paramInt, paramBoolean);
   }
   
-  public static boolean a()
+  public boolean canScrollHorizontally()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HwEnvData", 2, "[@] supportHardWareCodec:SDK_INT=" + Build.VERSION.SDK_INT + "dpcSupportHwCodec=" + jdField_a_of_type_Boolean);
-    }
-    boolean bool = bbub.a(bbub.r);
-    if (bool) {
-      if (QLog.isColorLevel()) {
-        QLog.d("HwEnvData", 2, "[@] supportHardWareCodec:black=" + bool);
-      }
-    }
-    while (Build.VERSION.SDK_INT < 18) {
-      return false;
-    }
-    return jdField_a_of_type_Boolean;
+    return false;
   }
 }
 

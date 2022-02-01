@@ -1,6 +1,25 @@
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+
 class vag
+  implements TextView.OnEditorActionListener
 {
-  private static final vae a = new vae(null);
+  vag(vab paramvab) {}
+  
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    switch (paramInt)
+    {
+    case 5: 
+    default: 
+      return false;
+    }
+    if (vab.a(this.a) != null) {
+      vab.a(this.a).a();
+    }
+    return true;
+  }
 }
 
 

@@ -1,18 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.widget.SlideDownFrameLayout;
+import java.util.Comparator;
 
-public class bhjc
-  implements ValueAnimator.AnimatorUpdateListener
+public final class bhjc
+  implements Comparator<String>
 {
-  public bhjc(SlideDownFrameLayout paramSlideDownFrameLayout) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public int a(String paramString1, String paramString2)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    SlideDownFrameLayout.a(this.a).a().setY(f);
-    SlideDownFrameLayout.a(this.a).a(f, SlideDownFrameLayout.a(this.a).a().getHeight());
+    if ((paramString1 != null) && (paramString2 != null)) {
+      if (paramString1.length() <= paramString2.length()) {}
+    }
+    while (paramString1 != null)
+    {
+      return -1;
+      if (paramString1.length() >= paramString2.length()) {
+        break;
+      }
+      return 1;
+    }
+    if (paramString2 != null) {
+      return 1;
+    }
+    return 0;
   }
 }
 

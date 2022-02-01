@@ -1,21 +1,17 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import dov.com.qq.im.aeeditor.lyric.widget.LyricWithBuoyView;
-
-public class bmes
-  extends Handler
+class bmes
+  implements bmeg
 {
-  public bmes(LyricWithBuoyView paramLyricWithBuoyView, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bmes(bmer parambmer) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    if (paramMessage.what == 1) {
-      this.a.a();
+    if (bmer.a(this.a) != null) {
+      bmer.a(this.a);
     }
+    while (bmer.a(this.a) == null) {
+      return;
+    }
+    bmer.a(this.a, bmer.a(this.a));
   }
 }
 

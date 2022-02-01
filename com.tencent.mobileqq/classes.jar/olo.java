@@ -1,19 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity.1;
-import com.tencent.qphone.base.util.QLog;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 
 public class olo
-  implements nnv
+  extends oln
 {
-  public olo(ReadInJoyFeedsActivity.1 param1) {}
-  
-  public void loaded(String paramString, int paramInt)
+  protected byte[] a(FromServiceMsg paramFromServiceMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseActivity", 2, "load 3256 html web resource finish");
+    paramFromServiceMsg = super.a(paramFromServiceMsg);
+    if (paramFromServiceMsg != null)
+    {
+      PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+      try
+      {
+        localStQWebRsp.mergeFrom(paramFromServiceMsg);
+        paramFromServiceMsg = localStQWebRsp.busiBuff.get().toByteArray();
+        return paramFromServiceMsg;
+      }
+      catch (Throwable paramFromServiceMsg)
+      {
+        paramFromServiceMsg.printStackTrace();
+      }
     }
+    return null;
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

@@ -44,6 +44,7 @@ import com.tencent.viola.ui.dom.style.font.TextDecoration;
 import com.tencent.viola.ui.view.VTextView;
 import com.tencent.viola.utils.ColorParseUtils;
 import com.tencent.viola.utils.ViolaLogUtils;
+import com.tencent.viola.utils.ViolaUtils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -332,8 +333,10 @@ public class DomObjectText
             }
           }
           localObject2 = ViolaSDKManager.getInstance().getComponentAdapter();
-          if (localObject2 != null) {
-            localSpanText.text = ((VComponentAdapter)localObject2).setEmoticonText((CharSequence)localObject1, this.mFontSize);
+          if (localObject2 != null)
+          {
+            paramInt = (int)ViolaUtils.getFaceSize(getStyle().get("emojiSize"), -1.0F);
+            localSpanText.text = ((VComponentAdapter)localObject2).setEmoticonText((CharSequence)localObject1, this.mFontSize, paramInt);
           }
         }
         for (;;)
@@ -553,8 +556,10 @@ public class DomObjectText
     {
       VComponentAdapter localVComponentAdapter = ViolaSDKManager.getInstance().getComponentAdapter();
       CharSequence localCharSequence = paramCharSequence;
-      if (localVComponentAdapter != null) {
-        localCharSequence = localVComponentAdapter.setEmoticonText(paramCharSequence.toString(), this.mFontSize);
+      if (localVComponentAdapter != null)
+      {
+        int i = (int)ViolaUtils.getFaceSize(getStyle().get("emojiSize"), -1.0F);
+        localCharSequence = localVComponentAdapter.setEmoticonText(paramCharSequence.toString(), this.mFontSize, i);
       }
       paramCharSequence = new SpannableString(localCharSequence);
       updateSpannable(paramCharSequence, 17);

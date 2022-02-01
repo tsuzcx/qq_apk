@@ -1,105 +1,45 @@
-import java.io.File;
-import java.io.IOException;
-import java.io.RandomAccessFile;
-import java.nio.channels.FileChannel;
-import java.nio.channels.FileLock;
+import android.app.Activity;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class achd
+class achd
+  extends ache
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private FileChannel jdField_a_of_type_JavaNioChannelsFileChannel;
-  private FileLock jdField_a_of_type_JavaNioChannelsFileLock;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  
-  public achd(String paramString)
+  public boolean a(acfw paramacfw, String paramString, String... paramVarArgs)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramacfw != null) {}
+    for (localActivity = paramacfw.a(); (paramacfw == null) || (localActivity == null); localActivity = null)
+    {
+      QLog.i("WebGdtMvWebGetAdInfoHandler", 1, "webPlugin == null || activity == null");
+      return true;
+    }
+    localObject = "";
     try
     {
-      this.jdField_a_of_type_Boolean = true;
-      return;
+      String str = new JSONObject(paramVarArgs[0]).optString("traceId");
+      localObject = str;
     }
-    catch (Exception paramString)
-    {
-      acgp.a("KingKongUtils", "Initial FileChannel exception : " + paramString);
-      this.jdField_a_of_type_Boolean = false;
-    }
-  }
-  
-  public void a()
-  {
-    if (!this.b) {
-      return;
-    }
-    acgp.a("KingKongUtils", "Release Inter-Process Lock " + this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_JavaNioChannelsFileLock != null) {}
-    try
-    {
-      this.jdField_a_of_type_JavaNioChannelsFileLock.release();
-      if (this.jdField_a_of_type_JavaNioChannelsFileChannel == null) {}
-    }
-    catch (IOException localIOException1)
+    catch (Throwable localThrowable)
     {
       try
       {
-        this.jdField_a_of_type_JavaNioChannelsFileChannel.close();
-        this.b = false;
-        return;
-        localIOException1 = localIOException1;
-        acgp.a("KingKongUtils", "Release Inter-Process Lock " + this.jdField_a_of_type_JavaLangString + " exception : " + localIOException1);
-        localIOException1.printStackTrace();
+        paramacfw.callJs(paramString, new String[] { localObject });
+        AdReporterForAnalysis.reportForJSBridgeInvoked(localActivity, false, "getAdInfo", paramacfw.a());
+        return true;
+        localThrowable = localThrowable;
+        QLog.i("WebGdtMvWebGetAdInfoHandler", 1, "json", localThrowable);
       }
-      catch (IOException localIOException2)
+      catch (Throwable paramString)
       {
         for (;;)
         {
-          acgp.a("KingKongUtils", "Release Inter-Process Lock " + this.jdField_a_of_type_JavaLangString + " exception : " + localIOException2);
+          QLog.i("WebGdtMvWebGetAdInfoHandler", 1, "callJs", paramString);
         }
       }
     }
-  }
-  
-  public boolean a()
-  {
-    if ((!this.jdField_a_of_type_Boolean) || (this.b)) {
-      return false;
-    }
-    acgp.a("KingKongUtils", "Do Inter-Process Lock " + this.jdField_a_of_type_JavaLangString);
-    try
-    {
-      this.jdField_a_of_type_JavaNioChannelsFileChannel = new RandomAccessFile(new File(this.jdField_a_of_type_JavaLangString), "rw").getChannel();
-      this.jdField_a_of_type_JavaNioChannelsFileLock = this.jdField_a_of_type_JavaNioChannelsFileChannel.lock();
-      this.b = true;
-      acgp.a("KingKongUtils", "Do Inter-Process Lock OK " + this.jdField_a_of_type_JavaLangString);
-      return true;
-    }
-    catch (Exception localException)
-    {
-      acgp.a("KingKongUtils", "Do Inter-Process Lock " + this.jdField_a_of_type_JavaLangString + " exception : " + localException);
-      if (this.jdField_a_of_type_JavaNioChannelsFileLock == null) {}
-    }
-    try
-    {
-      this.jdField_a_of_type_JavaNioChannelsFileLock.release();
-      label166:
-      if (this.jdField_a_of_type_JavaNioChannelsFileChannel != null) {}
-      try
-      {
-        this.jdField_a_of_type_JavaNioChannelsFileChannel.close();
-        label180:
-        acgp.a("KingKongUtils", "Do Inter-Process Lock failed " + this.jdField_a_of_type_JavaLangString);
-        return false;
-      }
-      catch (IOException localIOException1)
-      {
-        break label180;
-      }
-    }
-    catch (IOException localIOException2)
-    {
-      break label166;
-    }
+    localObject = String.format("{\"adInfo\":%s}", new Object[] { a((String)localObject) });
+    QLog.i("WebGdtMvWebGetAdInfoHandler", 1, "args=" + paramVarArgs[0] + ",result=" + (String)localObject);
   }
 }
 

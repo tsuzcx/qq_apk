@@ -1,25 +1,27 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class axay
-  implements aprh
+public class axay
+  implements View.OnClickListener
 {
-  axay(axax paramaxax, IphonePickerView paramIphonePickerView, bjnw parambjnw) {}
+  public axay(MsgBackupDateFragment paramMsgBackupDateFragment) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_Bjnw != null) && (this.jdField_a_of_type_Bjnw.isShowing()))
-    {
-      axax.a(this.jdField_a_of_type_Axax, this.jdField_a_of_type_Axax.b, false);
-      this.jdField_a_of_type_Bjnw.dismiss();
+    if (MsgBackupDateFragment.a(this.a) == 0) {
+      axct.a("0X800A237");
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    paramInt1 = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0);
-    this.jdField_a_of_type_Axax.b.setTag(Byte.valueOf((byte)paramInt1));
-    this.jdField_a_of_type_Axax.b.setText(axax.a(this.jdField_a_of_type_Axax).a(0, paramInt1));
+    for (;;)
+    {
+      this.a.a();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (awzs.c) {
+        axct.a("0X800A25C");
+      }
+    }
   }
 }
 

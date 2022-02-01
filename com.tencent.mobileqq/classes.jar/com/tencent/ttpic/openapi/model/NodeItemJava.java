@@ -32,6 +32,7 @@ public class NodeItemJava
   public int playCount = 0;
   public int rotateRequied = 0;
   public TriggerCtrlItem triggerCtrlItem;
+  public ArrayList<String> triggerState;
   public String triggerType;
   
   public boolean getHide()

@@ -1,31 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import android.arch.lifecycle.Observer;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function1;
+import org.jetbrains.annotations.Nullable;
 
-public class axnf
-  implements View.OnTouchListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "T", "it", "onChanged", "(Ljava/lang/Object;)V"}, k=3, mv={1, 1, 16})
+final class axnf<T>
+  implements Observer<T>
 {
-  public axnf(ScanOcrActivity paramScanOcrActivity) {}
+  axnf(Function1 paramFunction1) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public final void onChanged(@Nullable T paramT)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if (paramView == ScanOcrActivity.a(this.a))
-      {
-        paramView.setAlpha(0.7F);
-      }
-      else
-      {
-        paramView.setAlpha(0.5F);
-        continue;
-        paramView.setAlpha(1.0F);
-      }
+    if (paramT != null) {
+      this.a.invoke(paramT);
     }
   }
 }

@@ -123,7 +123,7 @@ public class ActFilters
     }
   }
   
-  public void ApplyGLSLFilter()
+  public void apply()
   {
     this.mCopyFilter.apply();
     this.mVideoFilter.apply();

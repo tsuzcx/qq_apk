@@ -1,6 +1,17 @@
-public abstract interface ainl
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextEditScrollerView;
+
+public class ainl
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract int c();
+  public ainl(VoiceTextEditScrollerView paramVoiceTextEditScrollerView, int paramInt1, int paramInt2, View paramView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView, paramValueAnimator, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidViewView);
+  }
 }
 
 

@@ -1,21 +1,33 @@
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import com.tencent.widget.XListView;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import com.tencent.qphone.base.util.QLog;
 
-class ahhk
-  implements AbsListView.OnScrollListener
+public class ahhk
+  extends AnimatorListenerAdapter
 {
-  ahhk(ahgz paramahgz) {}
+  public ahhk(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((paramInt == 0) && (this.a.jdField_a_of_type_ComTencentWidgetXListView != null) && (this.a.jdField_a_of_type_ComTencentWidgetXListView.getLastVisiblePosition() == this.a.jdField_a_of_type_ComTencentWidgetXListView.getCount() - 1) && (this.a.jdField_a_of_type_Aljn != null) && (this.a.jdField_a_of_type_Aljn.a() != 0) && (this.a.jdField_a_of_type_Aljn.a()))
-    {
-      this.a.jdField_a_of_type_Aljn.b();
-      ahgz.a(this.a, this.a.jdField_a_of_type_Aljn.a(), 10);
+    super.onAnimationEnd(paramAnimator);
+    if (!SixCombolEffectView.jdField_a_of_type_Boolean) {
+      return;
     }
+    SixCombolEffectView.b(this.a).start();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+    if (SixCombolEffectView.a(this.a)) {}
+    do
+    {
+      return;
+      SixCombolEffectView.jdField_a_of_type_Int = 2;
+    } while (!QLog.isColorLevel());
+    QLog.w("SixCombolEffectView", 2, "Animation 2 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
   }
 }
 

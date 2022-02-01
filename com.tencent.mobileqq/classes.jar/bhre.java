@@ -1,33 +1,16 @@
-import android.os.Handler;
+import android.graphics.drawable.Drawable;
 import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-import com.tencent.open.agent.CardContainer;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import kotlin.jvm.functions.Function0;
 
-public class bhre
-  extends Handler
+class bhre
+  implements Function0<Drawable>
 {
-  public bhre(CardContainer paramCardContainer, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bhre(bhrc parambhrc, File paramFile, Looper paramLooper, boolean paramBoolean) {}
   
-  public void handleMessage(Message paramMessage)
+  public Drawable a()
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("CardContainer", 2, "-->handleMessage MSG_UPDATE");
-      }
-      CardContainer.a(this.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageDrawable(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    }
+    return this.jdField_a_of_type_Bhrc.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_AndroidOsLooper, this.jdField_a_of_type_Boolean);
   }
 }
 

@@ -11,13 +11,13 @@ import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import bjwf;
-import bjwj;
-import bmbx;
-import bmoi;
-import bmol;
-import bmom;
-import bmou;
+import blhq;
+import blhu;
+import bnrh;
+import boea;
+import boed;
+import boee;
+import boem;
 import com.tencent.tavsticker.utils.ViewUtils;
 import com.tencent.weseevideo.camera.mvauto.redo.CutModelKt;
 import java.util.List;
@@ -37,9 +37,9 @@ public final class ReorderContainerView
   private int jdField_a_of_type_Int;
   private final LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
   private RecyclerView.ViewHolder jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
-  private bjwf jdField_a_of_type_Bjwf;
+  private blhq jdField_a_of_type_Blhq;
   @Nullable
-  private bmom jdField_a_of_type_Bmom;
+  private boee jdField_a_of_type_Boee;
   private final String jdField_a_of_type_JavaLangString = "ReorderContainerView";
   private final Lazy jdField_a_of_type_KotlinLazy = LazyKt.lazy((Function0)ReorderContainerView.adapter.2.INSTANCE);
   private String jdField_b_of_type_JavaLangString;
@@ -66,9 +66,9 @@ public final class ReorderContainerView
     this.jdField_a_of_type_Int = -1;
   }
   
-  private final bmoi a()
+  private final boea a()
   {
-    return (bmoi)this.jdField_a_of_type_KotlinLazy.getValue();
+    return (boea)this.jdField_a_of_type_KotlinLazy.getValue();
   }
   
   public final int a(@NotNull String paramString, @NotNull Point paramPoint)
@@ -84,34 +84,34 @@ public final class ReorderContainerView
   }
   
   @Nullable
-  public final bmom a()
+  public final boee a()
   {
-    return this.jdField_a_of_type_Bmom;
+    return this.jdField_a_of_type_Boee;
   }
   
   public final void a()
   {
     setLayoutManager((RecyclerView.LayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
     setAdapter((RecyclerView.Adapter)a());
-    addItemDecoration((RecyclerView.ItemDecoration)new bmou(getResources().getDimensionPixelSize(2131296306)));
-    this.jdField_a_of_type_Bjwf = new bjwf((bjwj)new bmol(this, 51, 0));
-    bjwf localbjwf = this.jdField_a_of_type_Bjwf;
-    if (localbjwf != null) {
-      localbjwf.attachToRecyclerView((RecyclerView)this);
+    addItemDecoration((RecyclerView.ItemDecoration)new boem(getResources().getDimensionPixelSize(2131296306)));
+    this.jdField_a_of_type_Blhq = new blhq((blhu)new boed(this, 51, 0));
+    blhq localblhq = this.jdField_a_of_type_Blhq;
+    if (localblhq != null) {
+      localblhq.attachToRecyclerView((RecyclerView)this);
     }
   }
   
   public final void a(int paramInt)
   {
-    bmbx.b(this.jdField_a_of_type_JavaLangString, "startDrag() called with: index = [" + paramInt + ']');
+    bnrh.b(this.jdField_a_of_type_JavaLangString, "startDrag() called with: index = [" + paramInt + ']');
     RecyclerView.ViewHolder localViewHolder = findViewHolderForLayoutPosition(paramInt + 1);
     if (localViewHolder != null)
     {
-      bjwf localbjwf = this.jdField_a_of_type_Bjwf;
-      if (localbjwf != null) {
-        localbjwf.startDrag(localViewHolder);
+      blhq localblhq = this.jdField_a_of_type_Blhq;
+      if (localblhq != null) {
+        localblhq.startDrag(localViewHolder);
       }
-      bmbx.b(this.jdField_a_of_type_JavaLangString, "startDrag() called with: vh = [$]");
+      bnrh.b(this.jdField_a_of_type_JavaLangString, "startDrag() called with: vh = [$]");
     }
   }
   
@@ -123,14 +123,14 @@ public final class ReorderContainerView
   
   public boolean dispatchTouchEvent(@Nullable MotionEvent paramMotionEvent)
   {
-    bmbx.a(this.jdField_a_of_type_JavaLangString, "dispatchTouchEvent: width: " + getWidth() + ", height: " + getHeight());
-    bmbx.b(this.jdField_a_of_type_JavaLangString, "dispatchTouchEvent() called with: ev = [" + paramMotionEvent + ']');
+    bnrh.a(this.jdField_a_of_type_JavaLangString, "dispatchTouchEvent: width: " + getWidth() + ", height: " + getHeight());
+    bnrh.b(this.jdField_a_of_type_JavaLangString, "dispatchTouchEvent() called with: ev = [" + paramMotionEvent + ']');
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
-  public final void setReorderListener(@Nullable bmom parambmom)
+  public final void setReorderListener(@Nullable boee paramboee)
   {
-    this.jdField_a_of_type_Bmom = parambmom;
+    this.jdField_a_of_type_Boee = paramboee;
   }
 }
 

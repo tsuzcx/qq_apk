@@ -1,6 +1,9 @@
-public abstract interface bdbu
+import com.tencent.maxvideo.common.AVIOStruct;
+
+public class bdbu
 {
-  public abstract void onScreenChange(int paramInt);
+  public AVIOStruct a;
+  public byte[] a;
 }
 
 

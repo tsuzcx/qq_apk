@@ -1,113 +1,33 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.util.SharePreferenceUtils;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.manager.Manager;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
 
 public class bfee
-  implements Manager
+  implements View.OnTouchListener
 {
-  protected Handler a;
-  QQAppInterface a;
-  public Map<String, Integer> a;
+  float jdField_a_of_type_Float = 0.0F;
+  float b = 0.0F;
   
-  public bfee(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    b();
-  }
+  public bfee(NewTroopContactView paramNewTroopContactView) {}
   
-  public int a(String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramString = (Integer)this.jdField_a_of_type_JavaUtilMap.get(String.valueOf(paramString));
-    if (paramString != null) {
-      return paramString.intValue();
-    }
-    return 0;
-  }
-  
-  public void a()
-  {
-    Object localObject = new StringBuilder();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
+    int i = paramMotionEvent.getAction();
+    if (i == 0)
     {
-      String str = (String)localIterator.next();
-      if (((Integer)this.jdField_a_of_type_JavaUtilMap.get(str)).intValue() == 1) {
-        ((StringBuilder)localObject).append(str).append(";");
-      }
+      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+      this.b = paramMotionEvent.getRawY();
     }
-    if (((StringBuilder)localObject).length() > 0)
+    for (;;)
     {
-      localObject = ((StringBuilder)localObject).substring(0, ((StringBuilder)localObject).length() - 1).toString();
-      SharePreferenceUtils.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "TroopVideoNotify", (String)localObject);
-      return;
-    }
-    SharePreferenceUtils.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "TroopVideoNotify", "");
-  }
-  
-  public void a(long paramLong)
-  {
-    int j = 0;
-    Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(String.valueOf(paramLong));
-    if (localInteger != null) {}
-    for (int i = localInteger.intValue();; i = 0)
-    {
-      boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAVNotifyCenter().c(paramLong);
-      if ((bool) && (i == 0)) {
-        j = 1;
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_JavaUtilMap.put(String.valueOf(paramLong), Integer.valueOf(j));
-        if (j != i) {
-          a();
-        }
-        return;
-        if (bool) {
-          j = i;
-        }
+      return false;
+      if ((i == 2) && ((paramMotionEvent.getRawX() - this.jdField_a_of_type_Float > 10.0F) || (paramMotionEvent.getRawY() - this.b > 10.0F))) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.a.clearFocus();
       }
     }
   }
-  
-  public void a(String paramString)
-  {
-    if (a(paramString) == 1)
-    {
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, Integer.valueOf(2));
-      a();
-    }
-  }
-  
-  public void b()
-  {
-    Object localObject = SharePreferenceUtils.get(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "TroopVideoNotify");
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      localObject = ((String)localObject).split(";");
-      if (localObject != null)
-      {
-        int i = 0;
-        while (i < localObject.length)
-        {
-          this.jdField_a_of_type_JavaUtilMap.put(localObject[i], Integer.valueOf(1));
-          i += 1;
-        }
-      }
-    }
-  }
-  
-  public void onDestroy() {}
 }
 
 

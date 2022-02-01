@@ -1,19 +1,20 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class axbd
-  implements TextWatcher
+public class axbd
+  implements View.OnClickListener
 {
-  axbd(axax paramaxax) {}
+  public axbd(MsgBackupDateFragment paramMsgBackupDateFragment) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    awkj.a(this.a.e, 40);
+    if ((MsgBackupDateFragment.a(this.a) != null) && (MsgBackupDateFragment.a(this.a).isShowing())) {
+      MsgBackupDateFragment.a(this.a).dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

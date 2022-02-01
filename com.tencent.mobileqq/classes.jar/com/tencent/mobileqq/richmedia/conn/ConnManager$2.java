@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.richmedia.conn;
 
-import badf;
-import baif;
+import bbju;
+import bbou;
 
 public class ConnManager$2
   implements Runnable
 {
-  public ConnManager$2(badf parambadf, long paramLong) {}
+  public ConnManager$2(bbju parambbju, long paramLong) {}
   
   public void run()
   {
-    badf.a(this.this$0).b(10);
-    this.this$0.a(badf.a(this.this$0), this.a);
+    bbju.a(this.this$0).b(10);
+    this.this$0.a(bbju.a(this.this$0), this.a);
   }
 }
 

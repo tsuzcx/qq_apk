@@ -1,20 +1,17 @@
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class aeol
   implements View.OnTouchListener
 {
-  public aeol(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aeol(PublicAccountListActivity paramPublicAccountListActivity, InputMethodManager paramInputMethodManager) {}
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramMotionEvent.getAction() == 4)
-    {
-      this.a.a.dismiss();
-      return true;
-    }
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
     return false;
   }
 }

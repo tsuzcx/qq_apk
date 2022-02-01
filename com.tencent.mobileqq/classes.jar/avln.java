@@ -1,10 +1,4 @@
-public class avln
-{
-  public int a;
-  public int b;
-  public int c;
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avln

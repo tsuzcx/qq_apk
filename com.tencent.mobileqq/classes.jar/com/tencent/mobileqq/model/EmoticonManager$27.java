@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.model;
 
-import avsq;
+import awyr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.pb.emosm.EmosmPb.SubCmd0x5RspBQRecommend;
@@ -10,7 +10,7 @@ import mqq.app.MobileQQ;
 public class EmoticonManager$27
   implements Runnable
 {
-  public EmoticonManager$27(avsq paramavsq, int paramInt, EmosmPb.SubCmd0x5RspBQRecommend paramSubCmd0x5RspBQRecommend) {}
+  public EmoticonManager$27(awyr paramawyr, int paramInt, EmosmPb.SubCmd0x5RspBQRecommend paramSubCmd0x5RspBQRecommend) {}
   
   public void run()
   {

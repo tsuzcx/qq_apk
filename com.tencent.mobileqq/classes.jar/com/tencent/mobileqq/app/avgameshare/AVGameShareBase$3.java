@@ -3,7 +3,7 @@ package com.tencent.mobileqq.app.avgameshare;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import angs;
+import aoji;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
@@ -11,7 +11,7 @@ import java.util.Map;
 public class AVGameShareBase$3
   implements Runnable
 {
-  public AVGameShareBase$3(angs paramangs, Map paramMap, Runnable paramRunnable) {}
+  public AVGameShareBase$3(aoji paramaoji, Map paramMap, Runnable paramRunnable) {}
   
   private void a(Bitmap paramBitmap)
   {

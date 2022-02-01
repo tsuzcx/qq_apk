@@ -1,17 +1,18 @@
-import android.app.Activity;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class agyk
-  implements EIPCResultCallback
+  extends ahaa
 {
-  agyk(agyh paramagyh) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
+  agyk(agvm paramagvm)
   {
-    if (-102 == paramEIPCResult.code) {
-      agyh.r(this.a).finish();
-    }
+    super(paramagvm, null);
+  }
+  
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ShortVideoRealItemBuilder(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

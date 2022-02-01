@@ -1,142 +1,108 @@
-import android.content.Context;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import java.util.ArrayList;
+import java.util.List;
 
-public class bclv
-  extends bcgy
+public abstract class bclv
 {
-  public boolean c;
-  public int o;
-  public int p = 3;
+  public long a;
+  public final bclw a;
+  public String a;
+  public int b;
+  public int c;
   
-  public bclv()
+  public bclv(GroupSearchEngine paramGroupSearchEngine, bclw parambclw, String paramString, int paramInt)
   {
-    this(null);
+    this.jdField_a_of_type_Bclw = parambclw;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramInt;
   }
   
-  public bclv(String paramString)
-  {
-    super(paramString, "summary");
-  }
+  protected abstract bcfi a(List<bcfj> paramList, String paramString);
   
-  public View a(Context paramContext, View paramView, Bundle paramBundle)
+  public List<bcfi> a(bcmk parambcmk)
   {
-    Object localObject1;
-    if ((paramBundle != null) && (paramBundle.containsKey("extend-data-json")) && (paramBundle.getInt("serviceID", 0) == 128))
-    {
-      localObject1 = paramBundle.getString("extend-data-json");
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {}
+    boolean bool2 = false;
+    long l = System.currentTimeMillis();
+    if (parambcmk.jdField_a_of_type_AndroidOsBundle == null) {
+      parambcmk.jdField_a_of_type_AndroidOsBundle = new Bundle();
     }
-    try
+    parambcmk.jdField_a_of_type_AndroidOsBundle.putBoolean("searchRequestFromHome", true);
+    ArrayList localArrayList = new ArrayList();
+    List localList = this.jdField_a_of_type_Bclw.a(parambcmk);
+    this.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
+    if ((localList != null) && (!localList.isEmpty()))
     {
-      Object localObject2;
-      Object localObject3;
-      if ((paramContext instanceof BaseActivity))
+      bcfi localbcfi = a(localList, parambcmk.jdField_a_of_type_JavaLangString);
+      if (((localbcfi instanceof bcet)) && (localbcfi.a() != null) && (localbcfi.a().size() > 0)) {
+        parambcmk.jdField_a_of_type_AndroidOsBundle.putBoolean("hasLocalPeopleOrTroop", true);
+      }
+      boolean bool1;
+      if (localbcfi != null)
       {
-        localObject2 = new JSONObject((String)localObject1);
-        localObject3 = ((BaseActivity)paramContext).app;
-        localStringBuilder = new StringBuilder();
-        if (!((JSONObject)localObject2).has("senderuin")) {
-          break label308;
+        bool1 = bool2;
+        if (localbcfi.a() != null)
+        {
+          bool1 = bool2;
+          if (localbcfi.a().size() > localbcfi.a()) {
+            bool1 = true;
+          }
         }
-        localObject1 = ((JSONObject)localObject2).optString("senderuin");
-        if (!TextUtils.equals((CharSequence)localObject1, ((QQAppInterface)localObject3).getCurrentUin())) {
-          break label247;
+        if (!(localbcfi instanceof bmbe)) {
+          break label385;
         }
-        localObject1 = ContactUtils.getNick((QQAppInterface)localObject3, ((JSONObject)localObject2).optString("invitedUin"), 0);
-        localStringBuilder.append("你邀请").append(ContactUtils.getFitString((String)localObject1, 12.0F));
       }
       for (;;)
       {
-        localObject1 = ((JSONObject)localObject2).optString("groupname");
-        localObject3 = (TroopManager)((QQAppInterface)localObject3).getManager(52);
-        if (localObject3 == null) {
-          break;
+        localArrayList.add(localbcfi);
+        localbcfi = b(localList, parambcmk.jdField_a_of_type_JavaLangString);
+        if (((localbcfi instanceof bcet)) && (localbcfi.a() != null) && (localbcfi.a().size() > 0)) {
+          parambcmk.jdField_a_of_type_AndroidOsBundle.putBoolean("hasLocalPeopleOrTroop", true);
         }
-        localObject2 = ((TroopManager)localObject3).b(((JSONObject)localObject2).optString("groupcode"));
-        if (localObject2 == null) {
-          break;
+        if (localbcfi != null)
+        {
+          localArrayList.add(new bceq(localbcfi));
+          localArrayList.add(localbcfi);
         }
-        localObject2 = ((TroopInfo)localObject2).getTroopName();
-        if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          break;
+        localbcfi = c(localList, parambcmk.jdField_a_of_type_JavaLangString);
+        if (((localbcfi instanceof bcev)) && (localbcfi.a() != null) && (localbcfi.a().size() > 0)) {
+          parambcmk.jdField_a_of_type_AndroidOsBundle.putBoolean("hasLocalPeopleOrTroop", true);
         }
-        localObject1 = localObject2;
-        localStringBuilder.append("加入群聊“").append(ContactUtils.getFitString((String)localObject1, 12.0F)).append("”，进入可查看详情。");
-        this.ai = localStringBuilder.toString();
-        return super.a(paramContext, paramView, paramBundle);
-        label247:
-        localStringBuilder.append(ContactUtils.getFitString(ContactUtils.getNick((QQAppInterface)localObject3, (String)localObject1, 0), 12.0F)).append("邀请你");
+        if (localbcfi != null)
+        {
+          localArrayList.add(new bceq(localbcfi));
+          localArrayList.add(localbcfi);
+        }
+        this.jdField_b_of_type_Int = localList.size();
+        return localArrayList;
+        label385:
+        if ((localbcfi instanceof atqq)) {
+          localArrayList.add(new bceq(localbcfi, anvx.a(2131704864), bool1));
+        } else if (bhkf.e(GroupSearchEngine.a(this.jdField_b_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine)) == 1) {
+          localArrayList.add(new bceq(localbcfi, localbcfi.a().toString() + " " + this.jdField_a_of_type_Long + "ms", bool1));
+        } else if ((localbcfi instanceof bcfb)) {
+          localArrayList.add(new bceq(localbcfi, anvx.a(2131704844), true));
+        } else if ((localbcfi instanceof bcex)) {
+          localArrayList.add(new bceq(localbcfi, localbcfi.a(), bool1));
+        } else if ((localbcfi instanceof bcdb)) {
+          localArrayList.add(new bceq(localbcfi, anvx.a(2131704852), bool1));
+        } else {
+          localArrayList.add(new bceq(localbcfi));
+        }
       }
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        StringBuilder localStringBuilder;
-        QLog.d("StructMsg", 1, "createView error:" + localThrowable.getMessage());
-        continue;
-        label308:
-        localStringBuilder.append("邀请");
-      }
-    }
+    this.jdField_b_of_type_Int = 0;
+    return localArrayList;
   }
   
-  public String a()
+  protected bcfi b(List<bcfj> paramList, String paramString)
   {
-    return "Summary";
+    return null;
   }
   
-  public void a(AbsShareMsg paramAbsShareMsg)
+  protected bcfi c(List<bcfj> paramList, String paramString)
   {
-    paramAbsShareMsg.mContentSummary = this.ai;
-  }
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    this.c = paramBoolean;
-    this.o = paramInt;
-  }
-  
-  public int b()
-  {
-    if ((this.a != null) && (this.a.mMsgServiceID == 35)) {
-      return super.b();
-    }
-    return this.p;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.p = paramInt;
-  }
-  
-  public int c()
-  {
-    return 2131379856;
-  }
-  
-  public int e()
-  {
-    if ((this.c) && (this.o != 0)) {
-      return -1;
-    }
-    return -8355712;
-  }
-  
-  public int f()
-  {
-    return 28;
+    return null;
   }
 }
 

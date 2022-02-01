@@ -1,6 +1,20 @@
-public abstract interface axfe
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+
+public class axfe
+  extends DataSetObserver
 {
-  public abstract void a(boolean paramBoolean, int paramInt);
+  public axfe(MultiAIOBaseViewPager paramMultiAIOBaseViewPager) {}
+  
+  public void onChanged()
+  {
+    this.a.b();
+  }
+  
+  public void onInvalidated()
+  {
+    this.a.b();
+  }
 }
 
 

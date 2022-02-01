@@ -1,25 +1,16 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class zgg
   implements View.OnClickListener
 {
-  zgg(zgc paramzgc, CertifiedAccountMeta.StReply paramStReply) {}
+  zgg(zgc paramzgc) {}
   
   public void onClick(View paramView)
   {
-    ClipboardManager localClipboardManager = (ClipboardManager)zfs.i(this.jdField_a_of_type_Zgc.a).getSystemService("clipboard");
-    if (localClipboardManager != null)
-    {
-      localClipboardManager.setPrimaryClip(ClipData.newPlainText("", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply.content.get()));
-      zfs.a(this.jdField_a_of_type_Zgc.a).dismiss();
-    }
+    ykv.a("home_page", "guide_close", 0, 0, new String[0]);
+    this.a.dismiss();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

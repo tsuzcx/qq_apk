@@ -1,16 +1,186 @@
-import com.tencent.av.opengl.program.TextureProgram;
+import android.graphics.Matrix;
+import android.graphics.RectF;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.baseutils.io.FileUtils;
+import com.tencent.ttpic.facedetect.TTFaceOriginDataModel;
+import com.tencent.ttpic.model.SizeI;
+import com.tencent.util.Pair;
+import java.io.File;
+import java.util.List;
 
 public class lqx
-  extends TextureProgram
 {
-  public lqx()
+  private final int jdField_a_of_type_Int;
+  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
+  private final String jdField_a_of_type_JavaLangString = "MultipleTextureProcessor-" + Integer.toHexString(hashCode());
+  private lqu jdField_a_of_type_Lqu;
+  private lqz jdField_a_of_type_Lqz;
+  private lrc jdField_a_of_type_Lrc;
+  private final int jdField_b_of_type_Int;
+  private lrc jdField_b_of_type_Lrc;
+  
+  public lqx(int paramInt1, int paramInt2)
   {
-    super("uniform  mat4   uMatrix;\nuniform  mat4 uTextureMatrix;\nattribute vec2  aPosition ;\nvarying vec2 vTextureCoord;\nvoid main(void)\n{\nvec4 pos = vec4(aPosition, 0.0, 1.0);\n gl_Position = uMatrix * pos;\n vTextureCoord = (uTextureMatrix * (pos+vec4(0.5,0.5,0.0,0.0))).xy;\n}\n", "\n\nprecision highp float;\nprecision highp int;\nvarying vec2 vTextureCoord;\t\t\t\t//vTextureCoord;\nuniform sampler2D uTextureSampler0;\t\t\t// 原始纹理 rgba\nuniform float fWidth;\t\t\t// 纹理宽 短边\nuniform float fHeight;\t\t\t// 纹理高 长边\n\n\nvec4 averageSmapling(float x,float y,float dx,float dy){\n    vec4 c0=texture2D(uTextureSampler0,vec2(x,y));\n    vec4 c1=texture2D(uTextureSampler0,vec2(x+dx,y));\n    vec4 c2=texture2D(uTextureSampler0,vec2(x,y+dy));\n    vec4 c3=texture2D(uTextureSampler0,vec2(x+dx,y+dy));\n    return (c0+c1+c2+c3)/4.;\n}\n\nvec2 calcuBasePos(float t,float shifty,float textrureCoX,float textrureCoY){\n    vec2 pos=vec2(floor(fWidth*textrureCoX),floor(fHeight*textrureCoY));\n    return vec2(pos.x*t,mod(pos.y*shifty,fHeight));\n}\n\n//顶点旋转后，纹理坐标原点变为右下角，x轴向上，y轴向左\nvoid main() {\n\n    vec2 samplingPos =vec2(0.0,0.0);\n\tvec4 texel=vec4(0.0,0.0,0.0,0.0);\n\t\n\tvec3 offset = vec3(0.0, 0.5, 0.5);\n\t//颜色系数矩阵\n\tvec3 ycoeff = vec3(0.2990, 0.5870, 0.1140);\n\tvec3 ucoeff = vec3(-0.1687,-0.3313, 0.5);\n\tvec3 vcoeff = vec3(0.5,-0.4187,-0.0813);\n\n\tvec2 nowTxtPos = vTextureCoord;\n\tvec2 size = vec2(fWidth, fHeight);\n\n\tvec2 hehe =vec2(0.0,0.0);\n\n    float dx = 1.0/fWidth;\n    float dy = 1.0/fHeight;\n    // y 占1/4\n\tif(nowTxtPos.y <= 1.0 && nowTxtPos.y >= 0.75){ //1\n\t    //移到原点\n        //nowTxtPos.y = (nowTxtPos.y - 0.75)* 4.0;\n\t\t//nowTxtPos.x = nowTxtPos.x* 1.0;\n        // y base postion\n        //vec2 basePos1 = (nowTxtPos * size +hehe) ;\n        //vec2 basePos =vec2(int(basePos1.x),int(basePos1.y));//取整\n        vec2 basePos = calcuBasePos(1.0,4.0,nowTxtPos.x,nowTxtPos.y - 0.75);\n\t\tfloat y1,y2,y3,y4;\n\n\t\t//1\n\t\tbasePos.y -= 0.0;\n\t\tbasePos.x -= 0.0;\n\t\tsamplingPos =  basePos / size;\n\t\ttexel = texture2D(uTextureSampler0, samplingPos);\n\t\ty1 = dot(texel.rgb, ycoeff);\n\t\ty1 += offset.x;\n\n\t    //2\n\t\tbasePos.y-=1.0;\n\t\tsamplingPos = basePos/size;\n\t\ttexel = texture2D(uTextureSampler0, samplingPos);\n\t\ty2 = dot(texel.rgb, ycoeff);\n\t\ty2 += offset.x;\n\n\t    //3\n\t\tbasePos.y-=1.0;\n\t\tsamplingPos = basePos/size;\n\t\ttexel = texture2D(uTextureSampler0, samplingPos);\n\t\ty3 = dot(texel.rgb, ycoeff);\n\t\ty3 += offset.x;\n\n\t    //4\n\t\tbasePos.y-=1.0;\n\t\tsamplingPos = basePos/size;\n\t\ttexel = texture2D(uTextureSampler0, samplingPos);\n\t\ty4 = dot(texel.rgb, ycoeff);\n\t\ty4 += offset.x;\n\n\t\t//写入亮度值\n\t\tgl_FragColor = vec4(y1, y2, y3, y4);\n\n\t}\n\t//采集V\n\telse if(nowTxtPos.y >=0.625 && nowTxtPos.y < 0.75 && nowTxtPos.x >= 0.5)\n\t{\n\t\t//移到原点\n        //nowTxtPos.y = (nowTxtPos.y - 0.625)* 8.0;\n\n        //nowTxtPos.x = (nowTxtPos.x-0.5)* 2.0;\n\t\t//vec2 basePos1 = (nowTxtPos * size +hehe) ;//采样基准点\n        //vec2 basePos =vec2(int(basePos1.x),int(basePos1.y));//取整\n        vec2 basePos = calcuBasePos(2.0,8.0,nowTxtPos.x-0.5,nowTxtPos.y - 0.625);\n\t\t//得到像素坐标\n        float v1,v2,v3,v4;\n\n        //1\n        basePos.y -= 0.0;\n\t\tbasePos.x -= 0.0;\n\t\tsamplingPos = basePos/size;\n\t\ttexel = averageSmapling(samplingPos.x,samplingPos.y,dx,dy);\n\t\tv1 = dot(texel.rgb, vcoeff);\n\t\tv1 += offset.z;\n\t\t//2\n        basePos.y -= 2.0;\n\t\tsamplingPos = basePos/size;\n        texel = averageSmapling(samplingPos.x,samplingPos.y,dx,dy);\n\t\tv2 = dot(texel.rgb, vcoeff);\n\t\tv2 += offset.z;\n\t\t//3\n        basePos.y -= 2.0;\n\t\tsamplingPos = basePos/size;\n        texel = averageSmapling(samplingPos.x,samplingPos.y,dx,dy);\n\t\tv3 = dot(texel.rgb, vcoeff);\n\t\tv3 += offset.z;\n\t\t//4\n        basePos.y -= 2.0;\n\t\tsamplingPos = basePos/size;\n        texel = averageSmapling(samplingPos.x,samplingPos.y,dx,dy);\n\t\tv4 = dot(texel.rgb, vcoeff);\n\t\tv4 += offset.z;\n\n\n\t\t//写入V值\n        gl_FragColor = vec4(v1, v2, v3, v4);\n\n\t}\n\t//奇数行采集U\n\telse if(nowTxtPos.y >=0.625 && nowTxtPos.y < 0.75 && nowTxtPos.x <= 0.5 )\n\t{\n\n\t\t//移到原点\n        //nowTxtPos.y = (nowTxtPos.y - 0.625)* 8.0;\n        //nowTxtPos.x = nowTxtPos.x* 2.0;\n        //vec2 basePos1 = (nowTxtPos * size +hehe) ;//采样基准点\n        //vec2 basePos =vec2(int(basePos1.x),int(basePos1.y));//取整\n\n        vec2 basePos = calcuBasePos(2.0,8.0,nowTxtPos.x,nowTxtPos.y - 0.625);\n        //得到像素坐标\n        float u1,u2,u3,u4;\n\n        //1\n        basePos.y -= 0.0;\n        basePos.x += 0.0;\n\t\tsamplingPos = basePos/size;\n        texel = averageSmapling(samplingPos.x,samplingPos.y,dx,dy);\n\t\tu1 = dot(texel.rgb, ucoeff);\n\t\tu1 += offset.y;\n\t\t//2\n        basePos.y -= 2.0;\n\t\tsamplingPos = basePos/size;\n        texel = averageSmapling(samplingPos.x,samplingPos.y,dx,dy);\n\t\tu2 = dot(texel.rgb, ucoeff);\n\t\tu2 += offset.y;\n\t\t//3\n        basePos.y -= 2.0;\n\t\tsamplingPos = basePos/size;\n        texel = averageSmapling(samplingPos.x,samplingPos.y,dx,dy);\n\t\tu3 = dot(texel.rgb, ucoeff);\n\t\tu3 += offset.y;\n\t\t//4\n        basePos.y -= 2.0;\n\t\tsamplingPos = basePos/size;\n        texel = averageSmapling(samplingPos.x,samplingPos.y,dx,dy);\n\t\tu4 = dot(texel.rgb, ucoeff);\n\t\tu4 += offset.y;\n\n\t\t//写入U值\n        gl_FragColor = vec4(u1, u2, u3, u4);\n\t}\n\telse\n\t{\n\t\tgl_FragColor = vec4(0.0, 0.0, 1.0, 1.0);\n\t}\n}", new lrc[] { new lrb("aPosition"), new lrd("uMatrix"), new lrd("uAlpha"), new lrd("uTextureMatrix"), new lrd("uTextureSampler0"), new lrd("uTextureSampler1"), new lrd("uTextureSampler2"), new lrd("fWidth"), new lrd("fHeight"), new lrd("colorMat"), new lrd("yuvFormat"), new lrd("leavel") }, false);
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "MultipleTextureProcessor: " + paramInt1 + ", " + paramInt2);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Lqz = new lqz();
+    this.jdField_a_of_type_Lqz.a(new lqy(this));
+    this.jdField_a_of_type_Lqz.d();
+    this.jdField_a_of_type_Lqu = new lqu(paramInt1, paramInt2);
+    this.jdField_a_of_type_Lqz.a(this.jdField_a_of_type_Lqu);
+  }
+  
+  private lrc a(String paramString)
+  {
+    if (!FileUtils.exists(paramString))
+    {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "createCompositeFilter: " + paramString + " not exists");
+      return null;
+    }
+    lrb locallrb = new lrb(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "createCompositeFilter: create filter#" + Integer.toHexString(locallrb.hashCode()));
+    locallrb.a(paramString);
+    return locallrb;
+  }
+  
+  private void a(List<lra> paramList)
+  {
+    if ((this.jdField_a_of_type_Lrc == null) || (!(this.jdField_a_of_type_Lrc instanceof lrb))) {}
+    Object localObject;
+    float f1;
+    do
+    {
+      return;
+      localObject = ((lrb)this.jdField_a_of_type_Lrc).a();
+      f1 = this.jdField_a_of_type_Int / ((SizeI)localObject).width;
+      localObject = ((lrb)this.jdField_a_of_type_Lrc).a();
+    } while (((List)localObject).size() != paramList.size());
+    int i = 0;
+    label74:
+    Pair localPair;
+    lra locallra;
+    if (i < paramList.size())
+    {
+      localPair = (Pair)((List)localObject).get(i);
+      locallra = (lra)paramList.get(i);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("MultipleTextureProcessor", 1, "convertFaceDataModel #" + i + " (" + locallra.jdField_b_of_type_Int + ", " + locallra.c + "), (" + locallra.d + ", " + locallra.e + ")");
+      }
+      if ((locallra.jdField_a_of_type_JavaUtilList != null) && (locallra.e != 0) && (locallra.d != 0)) {
+        break label234;
+      }
+    }
+    for (;;)
+    {
+      i += 1;
+      break label74;
+      break;
+      label234:
+      int j = 0;
+      while (j < locallra.jdField_a_of_type_JavaUtilList.size())
+      {
+        float f2 = Math.max(((RectF)localPair.first).width() / locallra.d, ((RectF)localPair.first).height() / locallra.e);
+        locallra.jdField_a_of_type_JavaUtilList.set(j, lqw.a((TTFaceOriginDataModel)locallra.jdField_a_of_type_JavaUtilList.get(j), new RectF(0.0F, 0.0F, locallra.d, locallra.e), (RectF)localPair.first, (Matrix)localPair.second, f1, locallra.jdField_a_of_type_Boolean));
+        locallra.d = ((int)(locallra.d * f2));
+        locallra.e = ((int)(locallra.e * f2));
+        j += 1;
+      }
+      if (locallra.jdField_a_of_type_Boolean)
+      {
+        j = 0;
+        while (j < locallra.jdField_a_of_type_JavaUtilList.size())
+        {
+          lqw.a((TTFaceOriginDataModel)locallra.jdField_a_of_type_JavaUtilList.get(j));
+          j += 1;
+        }
+      }
+    }
+  }
+  
+  private lrc b(String paramString)
+  {
+    if (!FileUtils.exists(paramString))
+    {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "createDecorateFilter: " + paramString + " not exists");
+      return null;
+    }
+    lqt locallqt = new lqt();
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "createDecorateFilter: create filter#" + Integer.toHexString(locallqt.hashCode()));
+    locallqt.a(paramString);
+    return locallqt;
+  }
+  
+  public Frame a(List<lra> paramList, long paramLong)
+  {
+    a(paramList);
+    this.jdField_a_of_type_Lqz.a(paramList, paramLong);
+    paramList = this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
+    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = null;
+    return paramList;
+  }
+  
+  public void a()
+  {
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "destroy: ");
+    if (this.jdField_a_of_type_Lqz != null)
+    {
+      this.jdField_a_of_type_Lqz.e();
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "destroy: source#" + Integer.toHexString(this.jdField_a_of_type_Lqz.hashCode()));
+      this.jdField_a_of_type_Lqz = null;
+    }
+    if (this.jdField_a_of_type_Lqu != null)
+    {
+      this.jdField_a_of_type_Lqu.c();
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "destroy: filter#" + Integer.toHexString(this.jdField_a_of_type_Lqu.hashCode()));
+      this.jdField_a_of_type_Lqu = null;
+    }
+    if (this.jdField_a_of_type_Lrc != null)
+    {
+      this.jdField_a_of_type_Lrc.c();
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "destroy: filter#" + Integer.toHexString(this.jdField_a_of_type_Lrc.hashCode()));
+      this.jdField_a_of_type_Lrc = null;
+    }
+    if (this.jdField_b_of_type_Lrc != null)
+    {
+      this.jdField_b_of_type_Lrc.c();
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "destroy: filter#" + Integer.toHexString(this.jdField_b_of_type_Lrc.hashCode()));
+      this.jdField_b_of_type_Lrc = null;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "applyMaterial: " + paramString);
+    lrc locallrc = a(paramString + File.separator + "pag" + File.separator + "pag");
+    Object localObject = locallrc;
+    if (locallrc == null) {
+      localObject = this.jdField_a_of_type_Lqu;
+    }
+    paramString = b(paramString + File.separator + "ae");
+    this.jdField_a_of_type_Lqz.c();
+    if ((this.jdField_a_of_type_Lrc != null) && (this.jdField_a_of_type_Lrc != this.jdField_a_of_type_Lqu))
+    {
+      this.jdField_a_of_type_Lrc.a().c();
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "applyMaterial: destroy filter#" + Integer.toHexString(this.jdField_a_of_type_Lrc.hashCode()));
+    }
+    this.jdField_a_of_type_Lqz.a((lrc)localObject);
+    this.jdField_a_of_type_Lrc = ((lrc)localObject);
+    if (this.jdField_b_of_type_Lrc != null)
+    {
+      this.jdField_b_of_type_Lrc.a().c();
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "applyMaterial: destroy filter#" + Integer.toHexString(this.jdField_b_of_type_Lrc.hashCode()));
+    }
+    if (paramString != null) {
+      ((lrc)localObject).a(paramString, 0);
+    }
+    this.jdField_b_of_type_Lrc = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lqx
  * JD-Core Version:    0.7.0.1
  */

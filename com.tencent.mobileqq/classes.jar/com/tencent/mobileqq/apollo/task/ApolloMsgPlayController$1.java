@@ -1,19 +1,20 @@
 package com.tencent.mobileqq.apollo.task;
 
-import alom;
-import amgj;
+import amnd;
+import anhr;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ApolloActionPush;
 
 public class ApolloMsgPlayController$1
   implements Runnable
 {
-  public ApolloMsgPlayController$1(amgj paramamgj, QQAppInterface paramQQAppInterface, ApolloActionPush paramApolloActionPush) {}
+  public ApolloMsgPlayController$1(anhr paramanhr, QQAppInterface paramQQAppInterface, ApolloActionPush paramApolloActionPush) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      ((alom)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(227)).a(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPush);
+      ((amnd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.APOLLO_PUSH_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPush);
     }
   }
 }

@@ -1,115 +1,35 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.transfile.IPAddressUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
-import java.util.List;
+import com.tencent.kwstudio.office.base.Log;
+import com.tencent.kwstudio.office.preview.IHostInterface.IHttpListener;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 
-public class aujs
+public final class aujs
+  implements INetEngine.INetEngineListener
 {
-  private static volatile aujs jdField_a_of_type_Aujs;
-  public static final List<String> a;
-  public static final List<String> b = Arrays.asList(new String[] { "setFaceData", "changeSecureMobile", "deleteFace", "identify" });
-  public static final List<String> c = Arrays.asList(new String[] { "loginVerify", "identifyNoLogin" });
-  public static final List<String> d = Arrays.asList(new String[] { "loginVerify", "changeSecureMobile" });
-  public static final List<String> e = Arrays.asList(new String[] { "identify", "identifyNoLogin" });
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
+  private final IHostInterface.IHttpListener jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener;
+  private final String jdField_a_of_type_JavaLangString;
   
-  static
+  private aujs(String paramString, IHostInterface.IHttpListener paramIHttpListener)
   {
-    jdField_a_of_type_JavaUtilList = Arrays.asList(new String[] { "loginVerify", "identify", "changeSecureMobile", "identifyNoLogin" });
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener = paramIHttpListener;
   }
   
-  public static aujs a()
+  public void onResp(NetResp paramNetResp)
   {
-    if (jdField_a_of_type_Aujs == null) {}
-    try
+    if ((paramNetResp.mHttpCode == 200) || (paramNetResp.mHttpCode == 206)) {}
+    for (String str = new String(paramNetResp.mRespData);; str = null)
     {
-      if (jdField_a_of_type_Aujs == null) {
-        jdField_a_of_type_Aujs = new aujs();
+      if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener != null) {
+        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener.onResponse(paramNetResp.mHttpCode, str);
       }
-      return jdField_a_of_type_Aujs;
-    }
-    finally {}
-  }
-  
-  public auka a()
-  {
-    if ((this.jdField_a_of_type_Int == 11) || (this.jdField_a_of_type_Int == 0)) {
-      return new aukr();
-    }
-    if (this.jdField_a_of_type_Int == 10)
-    {
-      this.jdField_a_of_type_JavaLangString = "根据当地法规，人脸识别功能无法启用";
-      return new aukq(this.jdField_a_of_type_JavaLangString);
-    }
-    QLog.d("FaceContext", 1, new Object[] { "unknown usable state : ", Integer.valueOf(this.jdField_a_of_type_Int) });
-    return null;
-  }
-  
-  public void a(int paramInt, String paramString1, String paramString2, axkv paramaxkv)
-  {
-    QLog.d("FaceContext", 1, "start refreshIpStateOnSubProcess");
-    Bundle localBundle = new Bundle();
-    localBundle.putString("method", paramString2);
-    localBundle.putInt("srcAppId", paramInt);
-    localBundle.putString("uin", paramString1);
-    QIPCClientHelper.getInstance().callServer("IdentificationIpcServer_Model", "action_face_usable", localBundle, new auju(this, paramaxkv));
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, axkv paramaxkv)
-  {
-    a(paramQQAppInterface, paramContext, paramInt, paramString, null, paramaxkv);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2, axkv paramaxkv)
-  {
-    paramContext = new aujt(this, paramaxkv);
-    QLog.d("FaceContext", 1, "start refreshIpState");
-    if (b.contains(paramString1)) {
-      bbon.a(paramQQAppInterface, paramInt, paramContext);
-    }
-    while (!c.contains(paramString1)) {
+      Log.i("TdsReaderView_", "onResp url:" + this.jdField_a_of_type_JavaLangString + ", status=" + paramNetResp.mHttpCode + ", rsp=" + str);
       return;
     }
-    paramString1 = dp.a(false);
-    paramQQAppInterface = new byte[0];
-    long l1;
-    if (IPAddressUtil.isIPv4LiteralAddress(paramString1))
-    {
-      paramQQAppInterface = IPAddressUtil.textToNumericFormatV4(paramString1);
-      QLog.d("FaceContext", 1, "v4");
-      l1 = 0L;
-      if (paramString2 != null) {
-        break label129;
-      }
-      l1 = 0L;
-    }
-    for (;;)
-    {
-      bbon.a(paramInt, paramQQAppInterface, l1, paramContext);
-      return;
-      if (!IPAddressUtil.isIPv6LiteralAddress(paramString1)) {
-        break;
-      }
-      paramQQAppInterface = IPAddressUtil.textToNumericFormatV6(paramString1);
-      QLog.e("FaceContext", 1, "v6");
-      break;
-      try
-      {
-        label129:
-        long l2 = Long.parseLong(paramString2);
-        l1 = l2;
-      }
-      catch (Exception paramString1)
-      {
-        QLog.d("FaceContext", 1, new Object[] { "parse uin error, ", paramString1.getMessage() });
-      }
-    }
   }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

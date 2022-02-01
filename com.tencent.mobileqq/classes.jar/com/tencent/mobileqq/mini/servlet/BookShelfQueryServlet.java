@@ -4,7 +4,7 @@ import NS_MINI_BOOK_SHELF.MiniBookShelf.Information;
 import NS_MINI_BOOK_SHELF.MiniBookShelf.StQueryBookShelfRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bgau;
+import bhjl;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -84,7 +84,7 @@ public class BookShelfQueryServlet
       localObject1 = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_book_shelf.QueryBookShelf");
-    paramPacket.putSendData(bgau.a((byte[])localObject1));
+    paramPacket.putSendData(bhjl.a((byte[])localObject1));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }

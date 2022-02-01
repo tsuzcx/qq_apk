@@ -1,39 +1,111 @@
-import android.content.Context;
-import android.widget.OverScroller;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class avzj
-  extends OverScroller
+  extends WebViewPlugin
 {
-  private avzk a;
+  private String a;
   
-  public avzj(Context paramContext)
+  public avzj()
   {
-    super(paramContext);
+    this.mPluginNameSpace = "deviceProtect";
   }
   
-  public void a(avzk paramavzk)
+  private void a()
   {
-    this.a = paramavzk;
+    Object localObject2;
+    try
+    {
+      Object localObject4 = QIPCClientHelper.getInstance().getClient().callServer("DeviceProtectQIPCModule", "ACTION_GET_DEVICE_INFO", null);
+      if (((EIPCResult)localObject4).code != 0)
+      {
+        QLog.e("DeviceProtectJsApiPlugin", 1, "handleGetDeviceInfo error: result.code != EIPCResult.CODE_NO_ERR");
+        localObject1 = new JSONObject();
+        ((JSONObject)localObject1).put("retCode", -1);
+        callJs(this.a, new String[] { ((JSONObject)localObject1).toString() });
+        return;
+      }
+      Object localObject3 = new JSONObject();
+      JSONObject localJSONObject = new JSONObject();
+      Object localObject1 = ((EIPCResult)localObject4).data.getString("guid", "");
+      localObject2 = ((EIPCResult)localObject4).data.getString("qimei", "");
+      String str1 = ((EIPCResult)localObject4).data.getString("subappid", "");
+      String str2 = ((EIPCResult)localObject4).data.getString("platform", "");
+      String str3 = ((EIPCResult)localObject4).data.getString("brand", "");
+      String str4 = ((EIPCResult)localObject4).data.getString("model", "");
+      localObject4 = ((EIPCResult)localObject4).data.getString("bssid", "");
+      localJSONObject.put("guid", localObject1);
+      localJSONObject.put("qimei", localObject2);
+      localJSONObject.put("subappid", str1);
+      localJSONObject.put("platform", str2);
+      localJSONObject.put("brand", str3);
+      localJSONObject.put("model", str4);
+      localJSONObject.put("bssid", localObject4);
+      localJSONObject.put("devInfo", str3 + " " + str4);
+      ((JSONObject)localObject3).put("retCode", 0);
+      ((JSONObject)localObject3).put("retData", localJSONObject);
+      callJs(this.a, new String[] { ((JSONObject)localObject3).toString() });
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("guid:").append((String)localObject1).append("qimei:").append((String)localObject2).append("subappid:").append(str1).append("platform:").append(str2).append("brand:").append(str3).append("model:").append(str4).append("bssid:").append((String)localObject4);
+      QLog.d("DeviceProtectJsApiPlugin", 1, "handleGetDeviceInfo info: " + localObject3);
+      return;
+    }
+    catch (Exception localException) {}
+    try
+    {
+      localObject2 = new JSONObject();
+      ((JSONObject)localObject2).put("retCode", -1);
+      callJs(this.a, new String[] { ((JSONObject)localObject2).toString() });
+      QLog.e("DeviceProtectJsApiPlugin", 1, "GetDeviceInfo callJs error", localException);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("DeviceProtectJsApiPlugin", 1, "GetDeviceInfo callJs JSONException", localJSONException);
+      }
+    }
   }
   
-  public void fling(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioOverScroller", 2, "fling() called with: startX = [" + paramInt1 + "], startY = [" + paramInt2 + "], velocityX = [" + paramInt3 + "], velocityY = [" + paramInt4 + "], minX = [" + paramInt5 + "], maxX = [" + paramInt6 + "], minY = [" + paramInt7 + "], maxY = [" + paramInt8 + "], overX = [" + paramInt9 + "], overY = [" + paramInt10 + "]");
+    if (TextUtils.isEmpty(paramString1)) {
+      QLog.e("DeviceProtectJsApiPlugin", 1, "Call getDeviceInfo error, url is empty");
     }
-    super.fling(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramInt9, paramInt10);
+    do
+    {
+      return false;
+      QLog.d("DeviceProtectJsApiPlugin", 1, "Call DeviceProtectJsApiPlugin handleJsRequest, url" + paramString1 + " pkgName:" + paramString2);
+    } while ((!"deviceProtect".equals(paramString2)) || (!"getDeviceInfo".equals(paramString3)));
+    QLog.d("DeviceProtectJsApiPlugin", 1, "Call getDeviceInfo, args:" + paramVarArgs);
+    paramJsBridgeListener = paramString1.split("#");
+    if ((paramJsBridgeListener != null) && (paramJsBridgeListener.length == 2))
+    {
+      this.a = paramJsBridgeListener[1];
+      a();
+      return true;
+    }
+    QLog.e("DeviceProtectJsApiPlugin", 1, "Call getDeviceInfo error, jsapi does not contain callback");
+    return false;
   }
   
-  public boolean springBack(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public void onCreate()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioOverScroller", 2, "springBack() called with: startX = [" + paramInt1 + "], startY = [" + paramInt2 + "], minX = [" + paramInt3 + "], maxX = [" + paramInt4 + "], minY = [" + paramInt5 + "], maxY = [" + paramInt6 + "]");
-    }
-    if (this.a != null) {
-      this.a.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
-    }
-    return super.springBack(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
+    super.onCreate();
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
   }
 }
 

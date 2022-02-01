@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.qassistant.wake;
 
-import azhh;
-import azhk;
-import azhn;
+import banp;
+import bans;
+import banv;
 
 public class WakeManager$ServiceHelloQQCallback$1
   implements Runnable
 {
-  public WakeManager$ServiceHelloQQCallback$1(azhk paramazhk) {}
+  public WakeManager$ServiceHelloQQCallback$1(bans parambans) {}
   
   public void run()
   {
-    if (azhh.a(this.a.a) != null) {
-      azhh.a(this.a.a).a();
+    if (banp.a(this.a.a) != null) {
+      banp.a(this.a.a).a();
     }
   }
 }

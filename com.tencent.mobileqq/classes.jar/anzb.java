@@ -1,12 +1,10 @@
-public class anzb
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
+
+public abstract interface anzb
 {
-  public int a = 2;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
+  public static final String a = asdi.a("VIP_roam_msg_search_cfg", "https://i.gtimg.cn/qqshow/admindata/comdata/searchStrategy/xydata.json");
+  public static final String b = BaseApplication.getContext().getFilesDir() + File.separator + "searchInCloudConfig.json";
 }
 
 

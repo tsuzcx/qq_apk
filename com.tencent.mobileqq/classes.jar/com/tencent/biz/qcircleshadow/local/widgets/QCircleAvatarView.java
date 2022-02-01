@@ -17,7 +17,7 @@ import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.mobileqq.widget.SquareImageView;
 import cooperation.qqcircle.utils.QCircleImageLoader;
 import feedcloud.FeedCloudMeta.StUser;
-import vhe;
+import vvx;
 
 public class QCircleAvatarView
   extends FrameLayout
@@ -31,7 +31,7 @@ public class QCircleAvatarView
   private int d;
   private int e;
   private int f;
-  private int g = 2130843966;
+  private int g = 2130844006;
   
   public QCircleAvatarView(Context paramContext)
   {
@@ -70,7 +70,7 @@ public class QCircleAvatarView
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setLayoutParams(paramContext);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setRoundRect(90);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setBackgroundDrawable(getResources().getDrawable(2130840312));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setBackgroundDrawable(getResources().getDrawable(2130840348));
     if (this.c != 0) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setBackgroundColor(this.c);
     }
@@ -136,13 +136,13 @@ public class QCircleAvatarView
     if ((paramStUser != null) && (!TextUtils.isEmpty(paramStUser.id.get())))
     {
       setAvatar(paramAppInterface, paramStUser.id.get());
-      setIsAuth(vhe.b(paramStUser));
+      setIsAuth(vvx.b(paramStUser));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.widgets.QCircleAvatarView
  * JD-Core Version:    0.7.0.1
  */

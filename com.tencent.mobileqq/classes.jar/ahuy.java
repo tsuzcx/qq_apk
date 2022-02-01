@@ -1,37 +1,28 @@
-import com.tencent.mobileqq.activity.bless.BlessTask;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
+import com.tencent.widget.RoundRectImageView;
 
 class ahuy
-  extends bgod
+  implements Animation.AnimationListener
 {
-  ahuy(ahux paramahux, String paramString1, String paramString2) {}
+  ahuy(ahux paramahux) {}
   
-  public void onCancel(bgoe parambgoe)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ahux.a(this.jdField_a_of_type_Ahux).remove(this.jdField_a_of_type_JavaLangString);
+    paramAnimation = new AnimationSet(false);
+    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.7F, 1.0F, 0.7F, 1.0F, this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.getWidth() / 2, this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.getHeight() / 2);
+    paramAnimation.addAnimation(this.a.b);
+    paramAnimation.addAnimation(localScaleAnimation);
+    paramAnimation.setDuration(200L);
+    this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.startAnimation(paramAnimation);
+    paramAnimation.setAnimationListener(this.a.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
   }
   
-  public void onDone(bgoe parambgoe)
-  {
-    ahux.a(this.jdField_a_of_type_Ahux).remove(this.jdField_a_of_type_JavaLangString);
-    if (parambgoe.a() == 3)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BlessManager", 2, "download finished " + this.b);
-      }
-      if ((this.b != null) && (ahux.a(this.jdField_a_of_type_Ahux) != null) && (this.b.equals(ahux.a(this.jdField_a_of_type_Ahux).starVideo))) {
-        ahux.b(this.jdField_a_of_type_Ahux);
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      return;
-      ahux.a(this.jdField_a_of_type_Ahux);
-      return;
-    }
-    QLog.d("BlessManager", 2, "downloadFile failed: " + parambgoe.b + " code=" + parambgoe.a);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

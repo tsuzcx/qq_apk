@@ -12,19 +12,19 @@ class RegisterVerifyCodeActivity$1
   {
     if (RegisterVerifyCodeActivity.a(this.this$0) == 1)
     {
-      RegisterVerifyCodeActivity.a(this.this$0).setText(2131716125);
+      RegisterVerifyCodeActivity.a(this.this$0).setText(2131716478);
       RegisterVerifyCodeActivity.a(this.this$0).setEnabled(true);
       RegisterVerifyCodeActivity.a(this.this$0).setClickable(true);
       return;
     }
     RegisterVerifyCodeActivity.b(this.this$0);
-    RegisterVerifyCodeActivity.a(this.this$0).setText(this.this$0.getString(2131716125) + "(" + RegisterVerifyCodeActivity.a(this.this$0) + "s)");
+    RegisterVerifyCodeActivity.a(this.this$0).setText(this.this$0.getString(2131716478) + "(" + RegisterVerifyCodeActivity.a(this.this$0) + "s)");
     this.this$0.a.postDelayed(this, 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterVerifyCodeActivity.1
  * JD-Core Version:    0.7.0.1
  */

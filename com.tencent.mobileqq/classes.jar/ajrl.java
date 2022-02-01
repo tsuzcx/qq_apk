@@ -1,19 +1,14 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
 
-class ajrl
-  implements aszj
+public class ajrl
+  implements ajxa
 {
-  ajrl(ajrk paramajrk) {}
+  public ajrl(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  public void onNo()
+  public void a(MotionEvent paramMotionEvent)
   {
-    ((NewPhotoPreviewActivity)this.a.a.mActivity).sendBtn.setClickable(true);
-  }
-  
-  public void onYes()
-  {
-    this.a.a.d();
+    this.a.a.a(paramMotionEvent);
   }
 }
 

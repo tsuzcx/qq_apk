@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import alwt;
-import amgo;
+import amxj;
+import anhw;
 import com.tencent.qphone.base.util.QLog;
 
 public class CmGameAvHandler$1
   implements Runnable
 {
-  public CmGameAvHandler$1(alwt paramalwt, String paramString, long paramLong, int paramInt) {}
+  public CmGameAvHandler$1(amxj paramamxj, String paramString, long paramLong, int paramInt) {}
   
   public void run()
   {
-    amgo.a().b(alwt.a(this.this$0));
-    amgo.a().b(this.jdField_a_of_type_JavaLangString);
-    amgo.a().a(this.jdField_a_of_type_Long);
-    amgo.a().a(0);
-    amgo.a().b("" + this.jdField_a_of_type_Int, true, true);
+    anhw.a().b(amxj.a(this.this$0));
+    anhw.a().b(this.jdField_a_of_type_JavaLangString);
+    anhw.a().a(this.jdField_a_of_type_Long);
+    anhw.a().a(0);
+    anhw.a().b("" + this.jdField_a_of_type_Int, true, true);
     if (QLog.isColorLevel()) {
       QLog.d("CmGameAvHandler", 2, "avHandler enterRoom=" + this.jdField_a_of_type_Int);
     }
-    alwt.a(this.this$0, this.jdField_a_of_type_Int);
+    amxj.a(this.this$0, this.jdField_a_of_type_Int);
   }
 }
 

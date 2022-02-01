@@ -1,23 +1,15 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
-import java.util.List;
-
-public class wxr
-  extends wun
+class wxr
+  extends wwi
 {
-  public wxr(AbsVideoInfoWidget paramAbsVideoInfoWidget, StoryPlayerGroupHolder paramStoryPlayerGroupHolder) {}
-  
-  public void a(int paramInt)
+  wxr(wxa paramwxa, String paramString1, String paramString2, boolean paramBoolean, wyj paramwyj)
   {
-    super.a(paramInt);
-    paramInt = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder.b;
-    if ((paramInt >= this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.a.size()) || (paramInt < 0))
-    {
-      xvv.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.b, "Position error , get data error, current position = %d , size = %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.a.size()) });
-      return;
-    }
-    wsk localwsk = (wsk)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.a.get(paramInt);
-    AbsVideoInfoWidget.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget, localwsk);
+    super(paramString1, paramString2, paramBoolean);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_Wyj.d = ((String)a("EncryptUrlJob_encryptedUrl"));
+    return true;
   }
 }
 

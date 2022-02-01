@@ -1,25 +1,36 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemLongClickListener;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bdoq
-  implements AdapterView.OnItemLongClickListener
+  implements View.OnClickListener
 {
-  public bdoq(MediaPreviewActivity paramMediaPreviewActivity) {}
+  public bdoq(StructMsgForGeneralShare paramStructMsgForGeneralShare, Context paramContext, PopupWindow paramPopupWindow) {}
   
-  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    if (this.a.a != null)
-    {
-      paramAdapterView = this.a.a.a(paramInt);
-      if ((paramAdapterView == null) || (paramAdapterView.a != 1)) {
-        return false;
-      }
+    QLog.d(StructMsgForGeneralShare.access$000(), 1, "filter_ad");
+    ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().startDelAnimAndDelMsg((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
+    ((onx)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.ESHOP_AD_HANDLER)).a(7, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
+    QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131692186), 1).a();
+    if (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()) {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
     }
-    MediaPreviewActivity.a(this.a);
-    return true;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

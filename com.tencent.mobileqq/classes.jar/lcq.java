@@ -1,16 +1,28 @@
-import android.media.MediaPlayer.OnCompletionListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
 
-public abstract class lcq
-  implements MediaPlayer.OnCompletionListener
+public class lcq
+  implements DialogInterface.OnClickListener
 {
-  public long a;
+  public lcq(VideoController paramVideoController, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public lcq(VideoController paramVideoController) {}
-  
-  public String toString()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return "Custom." + this.a;
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      paramInt = this.jdField_a_of_type_ComTencentAvVideoController.f();
+      this.jdField_a_of_type_ComTencentAvVideoController.a("onHowling_click", this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_Long, true, false, -1);
+      this.jdField_a_of_type_ComTencentAvVideoController.a(-1L, paramInt, this.jdField_a_of_type_ComTencentAvVideoController.f());
+      if (this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
+        this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(108) });
+      }
+    }
+    if (this.b) {
+      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_Muy.d();
+    }
+    bdla.b(null, "CliOper", "", "", "0x8006993", "0x8006993", 0, 0, "", "", "", "");
   }
 }
 

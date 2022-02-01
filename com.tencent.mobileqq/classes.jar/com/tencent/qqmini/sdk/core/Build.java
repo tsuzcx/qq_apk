@@ -7,16 +7,16 @@ import com.tencent.qqmini.sdk.launcher.shell.IBuild;
 public class Build
   implements IBuild
 {
-  public static final String VersionName = "1.8.0_25_0ea610c";
+  public static final String VersionName = "1.9.0_75_e0f9b31";
   
   public String getVersionName()
   {
-    return "1.8.0_25_0ea610c";
+    return "1.9.0_75_e0f9b31";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.Build
  * JD-Core Version:    0.7.0.1
  */

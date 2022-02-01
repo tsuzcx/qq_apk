@@ -1,27 +1,28 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
-import com.tencent.mobileqq.text.TextUtils;
+import android.view.MotionEvent;
+import java.lang.ref.WeakReference;
 
-class mme
-  extends AccessibilityDelegateCompat
+public class mme
+  implements lsd
 {
-  mme(mmd parammmd, mmn parammmn) {}
+  private WeakReference<mmd> a;
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public mme(mmd parammmd)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if (this.jdField_a_of_type_Mmn.a() != null)
-    {
-      paramView = TextUtils.emoticonToTextForTalkBack(this.jdField_a_of_type_Mmn.a().toString());
-      paramAccessibilityNodeInfoCompat.setText(paramView);
-      paramAccessibilityNodeInfoCompat.setContentDescription(paramView);
+    this.a = new WeakReference(parammmd);
+  }
+  
+  public boolean a(lsc paramlsc, MotionEvent paramMotionEvent)
+  {
+    mmd localmmd = (mmd)this.a.get();
+    if (localmmd != null) {
+      return localmmd.a(paramlsc, paramMotionEvent);
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mme
  * JD-Core Version:    0.7.0.1
  */

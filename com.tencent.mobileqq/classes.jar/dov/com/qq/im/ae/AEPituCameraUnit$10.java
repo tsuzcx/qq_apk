@@ -1,26 +1,19 @@
 package dov.com.qq.im.ae;
 
-import bljy;
-import bnbp;
-import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
+import bmxa;
+import bnbg;
+import bnbn;
 
 public class AEPituCameraUnit$10
   implements Runnable
 {
-  public AEPituCameraUnit$10(bljy parambljy) {}
+  public AEPituCameraUnit$10(bmxa parambmxa) {}
   
   public void run()
   {
-    LiuHaiUtils.a();
-    LiuHaiUtils.a(this.this$0.a.a());
-    if (LiuHaiUtils.c()) {
-      LiuHaiUtils.b(this.this$0.a.a());
-    }
-    for (;;)
-    {
-      this.this$0.S();
-      return;
-      LiuHaiUtils.c(this.this$0.a.a());
+    this.this$0.jdField_a_of_type_Bnbg.c();
+    if (this.this$0.jdField_a_of_type_Bnbn != null) {
+      this.this$0.jdField_a_of_type_Bnbn.b(true);
     }
   }
 }

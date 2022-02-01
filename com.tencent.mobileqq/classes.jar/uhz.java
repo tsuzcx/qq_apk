@@ -1,66 +1,61 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0x64e.oidb_cmd0x64e.SRTClickInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.PhoneInfo;
+import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.ReqAdvertisePara;
+import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.ReqBody;
+import tencent.im.oidb.cmd0x885.oidb_0x885.AdReqInfo;
 
 public class uhz
+  extends BusinessHandler
 {
-  public static void a(ArticleInfo paramArticleInfo, int paramInt)
+  public static long a = 1800L;
+  
+  public uhz(QQAppInterface paramQQAppInterface)
   {
-    ReportInfo localReportInfo = new ReportInfo();
-    localReportInfo.mUin = pay.a();
-    localReportInfo.mSource = 0;
-    localReportInfo.mSourceArticleId = paramArticleInfo.mArticleID;
-    localReportInfo.mChannelId = paramInt;
-    localReportInfo.mAlgorithmId = ((int)paramArticleInfo.mAlgorithmID);
-    localReportInfo.mStrategyId = paramArticleInfo.mStrategyId;
-    localReportInfo.mOperation = 1;
-    localReportInfo.mServerContext = paramArticleInfo.mServerContext;
-    localReportInfo.mReadTimeLength = -1;
-    localReportInfo.mInnerId = paramArticleInfo.innerUniqueID;
-    if (paramArticleInfo.mSocialFeedInfo != null)
+    super(paramQQAppInterface);
+  }
+  
+  public void a()
+  {
+    oidb_0x6cf.ReqBody localReqBody = new oidb_0x6cf.ReqBody();
+    oidb_0x6cf.ReqAdvertisePara localReqAdvertisePara = new oidb_0x6cf.ReqAdvertisePara();
+    oidb_0x885.AdReqInfo localAdReqInfo = new oidb_0x885.AdReqInfo();
+    if ((this.app != null) && (this.app.getLongAccountUin() != 0L)) {
+      localReqBody.uint64_uin.set(this.app.getLongAccountUin());
+    }
+    try
     {
-      localObject1 = new rdy();
-      ((rdy)localObject1).jdField_a_of_type_Long = paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Long;
-      if (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rer != null) {
-        ((rdy)localObject1).jdField_b_of_type_Long = paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rer.jdField_a_of_type_Long;
-      }
-      ((rdy)localObject1).jdField_a_of_type_Int = paramArticleInfo.mSocialFeedInfo.jdField_b_of_type_Int;
-      ((rdy)localObject1).jdField_b_of_type_Int = paramArticleInfo.mSocialFeedInfo.d;
-      Object localObject2 = paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_JavaUtilList;
-      if ((localObject2 != null) && (!((List)localObject2).isEmpty()))
+      localAdReqInfo.int32_req_type.set(3);
+      localReqAdvertisePara.msg_ad_req_info.set(localAdReqInfo);
+      localReqAdvertisePara.msg_phone_info.set(ujw.a());
+      localReqBody.req_advertise_para.set(localReqAdvertisePara);
+      ntb.a(this.app, new uia(this), localReqBody.toByteArray(), "OidbSvc.0x6cf", 1743, 0, new Bundle(), 6000L);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        ((rdy)localObject1).jdField_a_of_type_JavaUtilList = new ArrayList();
-        localObject2 = ((List)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          rer localrer = (rer)((Iterator)localObject2).next();
-          if (localrer != null) {
-            ((rdy)localObject1).jdField_a_of_type_JavaUtilList.add(Long.valueOf(localrer.jdField_a_of_type_Long));
-          }
+        if (QLog.isColorLevel()) {
+          QLog.d("AdMaterialHandler", 2, "Exception error" + QLog.getStackTraceString(localException));
         }
       }
-      localReportInfo.mFeedsReportData = ((rdy)localObject1);
     }
-    if (pcl.c((int)paramArticleInfo.mChannelID)) {
-      localReportInfo.mSearchTagName = pay.g(paramArticleInfo);
-    }
-    Object localObject1 = pau.a().a();
-    if (localObject1 != null) {
-      localReportInfo.srtClickInfo = ((oidb_cmd0x64e.SRTClickInfo)localObject1);
-    }
-    if ((!rbt.c(paramArticleInfo)) && (!pau.a().a()) && (pay.a(BaseApplicationImpl.getApplication().getApplicationContext(), paramArticleInfo))) {
-      localReportInfo.noDifferenceJump = 1;
-    }
-    localObject1 = new ArrayList();
-    ((List)localObject1).add(localReportInfo);
-    pkm.a().a((List)localObject1);
-    pma.a.b(paramInt, paramArticleInfo);
   }
+  
+  public Class<? extends BusinessObserver> observerClass()
+  {
+    return uib.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

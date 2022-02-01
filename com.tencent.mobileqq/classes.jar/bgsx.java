@@ -1,17 +1,15 @@
-import android.os.Bundle;
-
-class bgsx
-  implements bgtc
+public class bgsx
 {
-  bgsx(bgsw parambgsw) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
   
-  public void a(Bundle paramBundle)
+  public String toString()
   {
-    if (this.a.c) {
-      return;
-    }
-    this.a.b = false;
-    bgsw.a(this.a);
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    localStringBuilder.append("[").append(this.jdField_a_of_type_JavaLangString).append(",").append(this.jdField_a_of_type_Long).append(",").append(this.jdField_a_of_type_Int).append(",").append(this.b).append("]");
+    return localStringBuilder.toString();
   }
 }
 

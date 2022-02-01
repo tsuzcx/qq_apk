@@ -1,20 +1,55 @@
+import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class ahjc
-  implements View.OnClickListener
+public class ahjc
+  implements bils
 {
-  ahjc(ahiu paramahiu) {}
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<Activity> b;
   
-  public void onClick(View paramView)
+  ahjc(ahit paramahit, QQAppInterface paramQQAppInterface, Activity paramActivity)
   {
-    if (this.a.a != null) {
-      bcef.b(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X8004EFC", "0X8004EFC", 0, 0, "", "", "" + this.a.a.msgId, "");
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramActivity);
+  }
+  
+  public void a(View paramView)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Activity localActivity = (Activity)this.b.get();
+    if ((localActivity == null) || (localQQAppInterface == null)) {
+      QLog.e("ChatItemBuilder", 1, "TextItemBuilder  onDoubleClick  app null fa null");
     }
-    this.a.openOptionActivity();
-    EventCollector.getInstance().onViewClicked(paramView);
+    do
+    {
+      do
+      {
+        return;
+        AIOUtils.isUserOperatedInAIO = true;
+      } while (this.jdField_a_of_type_Ahit.a());
+      localObject = AIOUtils.getMessage(paramView);
+    } while ((aqvh.a((MessageRecord)localObject)) || (aweo.a(this.jdField_a_of_type_Ahit.a)) || (((ChatMessage)localObject).istroop == 10007) || (paramView.getId() == 2131378885) || (paramView.getId() == 2131371598) || (paramView.getId() == 2131364550));
+    Object localObject = (FragmentActivity)paramView.getContext();
+    if (localObject != null) {}
+    for (localObject = ((FragmentActivity)localObject).getChatFragment();; localObject = null)
+    {
+      if (localObject == null)
+      {
+        ChatActivityUtils.a(localQQAppInterface, paramView, localActivity);
+        return;
+      }
+      ChatActivityUtils.a(localQQAppInterface, paramView, localActivity, this.jdField_a_of_type_Ahit.a.curType);
+      return;
+    }
   }
 }
 

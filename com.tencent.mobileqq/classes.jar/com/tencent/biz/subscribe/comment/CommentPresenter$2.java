@@ -1,33 +1,33 @@
 package com.tencent.biz.subscribe.comment;
 
 import android.widget.TextView;
-import zfs;
-import zgb;
-import zgv;
+import zux;
+import zvg;
+import zwa;
 
 public class CommentPresenter$2
   implements Runnable
 {
-  public CommentPresenter$2(zfs paramzfs) {}
+  public CommentPresenter$2(zux paramzux) {}
   
   public void run()
   {
-    if (zfs.a(this.this$0) != null) {
-      zfs.a(this.this$0).a(zfs.a(this.this$0));
+    if (zux.a(this.this$0) != null) {
+      zux.a(this.this$0).a(zux.a(this.this$0));
     }
-    if (zfs.a(this.this$0) != null)
+    if (zux.a(this.this$0) != null)
     {
-      if (zfs.a(this.this$0) > 0)
+      if (zux.a(this.this$0) > 0)
       {
-        zfs.a(this.this$0).setText(zgv.a(zfs.a(this.this$0)));
-        zfs.a(this.this$0).setVisibility(0);
+        zux.a(this.this$0).setText(zwa.a(zux.a(this.this$0)));
+        zux.a(this.this$0).setVisibility(0);
       }
     }
     else {
       return;
     }
-    zfs.a(this.this$0).setText("");
-    zfs.a(this.this$0).setVisibility(8);
+    zux.a(this.this$0).setText("");
+    zux.a(this.this$0).setVisibility(8);
   }
 }
 

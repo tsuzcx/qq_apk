@@ -1,27 +1,30 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import java.util.ArrayList;
-import tencent.im.oidb.cmd0x934.cmd0x934.Item;
-import tencent.im.oidb.cmd0x934.cmd0x934.List;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
 
-public class bffy
+class bffy
+  implements Animation.AnimationListener
 {
-  public String a;
-  public ArrayList<bffv> a;
+  bffy(bffw parambffw) {}
   
-  public static bffy a(cmd0x934.List paramList)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    bffy localbffy = new bffy();
-    localbffy.jdField_a_of_type_JavaLangString = paramList.name.get();
-    localbffy.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramList.items.size());
-    int i = 0;
-    while (i < paramList.items.size())
-    {
-      localbffy.jdField_a_of_type_JavaUtilArrayList.add(bffv.a((cmd0x934.Item)paramList.items.get(i)));
-      i += 1;
+    if (bffw.a(this.a) != null) {
+      bffw.a(this.a).a.clearAnimation();
     }
-    return localbffy;
+    bffw.a(this.a);
+    if ((bffw.a(this.a) != null) && (!bffw.a(this.a).isSend())) {
+      ((bfge)this.a.a.getManager(QQManagerFactory.TROOP_AIO_KEYWORD_TIP_MANAGER)).a(this.a.a.getCurrentAccountUin(), bffw.a(this.a).getExtInfoFromExtStr("key_aio_keyword"), Integer.valueOf(bffw.a(this.a).ruleId));
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

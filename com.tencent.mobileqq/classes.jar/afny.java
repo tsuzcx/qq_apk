@@ -1,13 +1,10 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import Wallet.AcsMsg;
 
 public class afny
-  implements agwi
 {
-  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
-  {
-    afnx.a(paramQQAppInterface, paramMessageRecord, 1);
-  }
+  public int a;
+  public AcsMsg a;
+  public String a;
 }
 
 

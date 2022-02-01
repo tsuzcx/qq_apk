@@ -7,15 +7,20 @@ import android.view.View;
 public final class BaseListenTogetherPanel$5
   implements Runnable
 {
-  public BaseListenTogetherPanel$5(View paramView) {}
+  public BaseListenTogetherPanel$5(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
   public void run()
   {
     Object localObject = new Rect();
-    ((Rect)localObject).setEmpty();
-    localObject = new TouchDelegate((Rect)localObject, this.a);
-    if (View.class.isInstance(this.a.getParent())) {
-      ((View)this.a.getParent()).setTouchDelegate((TouchDelegate)localObject);
+    this.jdField_a_of_type_AndroidViewView.setEnabled(true);
+    this.jdField_a_of_type_AndroidViewView.getHitRect((Rect)localObject);
+    ((Rect)localObject).top -= this.jdField_a_of_type_Int;
+    ((Rect)localObject).bottom += this.b;
+    ((Rect)localObject).left -= this.c;
+    ((Rect)localObject).right += this.d;
+    localObject = new TouchDelegate((Rect)localObject, this.jdField_a_of_type_AndroidViewView);
+    if (View.class.isInstance(this.jdField_a_of_type_AndroidViewView.getParent())) {
+      ((View)this.jdField_a_of_type_AndroidViewView.getParent()).setTouchDelegate((TouchDelegate)localObject);
     }
   }
 }

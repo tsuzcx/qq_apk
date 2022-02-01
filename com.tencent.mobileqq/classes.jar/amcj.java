@@ -1,13 +1,62 @@
-import com.tencent.mobileqq.apollo.sdk.CmShowTest.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class amcj
-  implements amkm
+public class amcj
 {
-  public void a(int paramInt)
+  public List<amck> a = new ArrayList();
+  
+  public static amcj a(JSONObject paramJSONObject)
   {
-    ThreadManager.getUIHandler().post(new CmShowTest.1.1(this));
+    if (paramJSONObject == null) {
+      paramJSONObject = new amcj();
+    }
+    for (;;)
+    {
+      return paramJSONObject;
+      localamcj = new amcj();
+      try
+      {
+        JSONArray localJSONArray = new JSONArray(paramJSONObject.getString("items"));
+        paramJSONObject = localamcj;
+        if (localJSONArray == null) {
+          continue;
+        }
+        paramJSONObject = localamcj;
+        if (localJSONArray.length() < 0) {
+          continue;
+        }
+        int j = localJSONArray.length();
+        int i = 0;
+        for (;;)
+        {
+          paramJSONObject = localamcj;
+          if (i >= j) {
+            break;
+          }
+          paramJSONObject = amck.a(localJSONArray.getJSONObject(i));
+          localamcj.a.add(paramJSONObject);
+          i += 1;
+        }
+        return localamcj;
+      }
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return localamcj;
+      }
+      catch (OutOfMemoryError paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return localamcj;
+      }
+      catch (Exception paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+      }
+    }
   }
 }
 

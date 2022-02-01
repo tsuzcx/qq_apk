@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.config.splashlogo;
 
-import aqlw;
+import arph;
 import com.tencent.mobileqq.app.NearbyGrayTipsManager;
 import com.tencent.mobileqq.app.NearbyGrayTipsManager.GrayTipsConfig;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -13,7 +13,7 @@ import oicq.wlogin_sdk.tools.MD5;
 public class ConfigServlet$8
   implements Runnable
 {
-  public ConfigServlet$8(aqlw paramaqlw, String paramString1, File paramFile, String paramString2, NearbyGrayTipsManager paramNearbyGrayTipsManager) {}
+  public ConfigServlet$8(arph paramarph, String paramString1, File paramFile, String paramString2, NearbyGrayTipsManager paramNearbyGrayTipsManager) {}
   
   public void run()
   {

@@ -1,6 +1,20 @@
-public abstract interface aquo
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.conditionsearch.widget.TimeSelectView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class aquo
+  implements View.OnClickListener
 {
-  public abstract void a(boolean paramBoolean);
+  public aquo(TimeSelectView paramTimeSelectView) {}
+  
+  public void onClick(View paramView)
+  {
+    if (TimeSelectView.a(this.a) != null) {
+      TimeSelectView.a(this.a).a(paramView);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

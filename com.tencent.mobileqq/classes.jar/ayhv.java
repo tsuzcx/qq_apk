@@ -1,23 +1,37 @@
-import android.view.animation.Interpolator;
+import android.annotation.TargetApi;
+import android.content.ClipData;
+import android.content.ClipData.Item;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
 
 class ayhv
-  implements Interpolator
+  implements View.OnLongClickListener
 {
-  public float getInterpolation(float paramFloat)
+  ayhv(ayhd paramayhd) {}
+  
+  @TargetApi(11)
+  public boolean onLongClick(View paramView)
   {
-    if (paramFloat < 0.2094D) {
-      return (float)(-34.0D * (paramFloat - 0.18D) * (paramFloat - 0.18D) + 1.08D);
+    if (this.a.a.getChildCount() <= 1) {
+      return true;
     }
-    if (paramFloat < 0.404D) {
-      return (float)(5.9D * (paramFloat - 0.34D) * (paramFloat - 0.34D) + 0.95D);
+    Object localObject = new ClipData.Item("");
+    paramView.startDrag(new ClipData("", new String[] { "text/plain" }, (ClipData.Item)localObject), new ayig(this.a, paramView), paramView, 0);
+    localObject = ayhd.a(this.a, (PicInfo)paramView.getTag(), null);
+    ((RelativeLayout)localObject).setVisibility(4);
+    ayhd.a(this.a, (RelativeLayout)localObject);
+    int i = this.a.a.indexOfChild(paramView);
+    if (i != -1)
+    {
+      this.a.a.removeView(paramView);
+      this.a.a.addView(ayhd.a(this.a), i);
+      return true;
     }
-    if (paramFloat < 0.6045D) {
-      return (float)(-3.0D * (paramFloat - 0.53D) * (paramFloat - 0.53D) + 1.02D);
-    }
-    if (paramFloat < 0.8064D) {
-      return (float)((paramFloat - 0.72D) * (paramFloat - 0.72D) + 0.99D);
-    }
-    return (float)(-0.3D * (paramFloat - 0.915D) * (paramFloat - 0.915D) + 1.001D);
+    paramView.setVisibility(4);
+    return true;
   }
 }
 

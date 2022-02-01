@@ -1,12 +1,26 @@
-import java.io.File;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import org.json.JSONObject;
 
-public abstract interface bkko
+class bkko
+  implements MiniAppCmdInterface
 {
-  public abstract void a(File paramFile1, File paramFile2);
+  bkko(bkkn parambkkn, RequestEvent paramRequestEvent) {}
   
-  public abstract void a(File paramFile1, File paramFile2, File paramFile3);
-  
-  public abstract void a(File paramFile1, File paramFile2, Throwable paramThrowable);
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
+  {
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok(paramJSONObject);
+      return;
+    }
+    if (paramJSONObject != null) {}
+    for (paramJSONObject = paramJSONObject.optString("errMsg");; paramJSONObject = "")
+    {
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail(paramJSONObject);
+      return;
+    }
+  }
 }
 
 

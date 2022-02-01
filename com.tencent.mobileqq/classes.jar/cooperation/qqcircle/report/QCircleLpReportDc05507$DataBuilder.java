@@ -4,53 +4,53 @@ import java.util.HashMap;
 
 public class QCircleLpReportDc05507$DataBuilder
 {
-  public long actTime;
-  public int actionType;
-  public String authorUin = "";
-  public int clear;
-  public int cubage;
-  public String errorCode = "";
-  public String ext1 = "";
-  public String ext10 = "";
-  public String ext2 = "";
-  public String ext3 = "";
-  public String ext4 = "";
-  public String ext5 = "";
-  public String ext6 = "";
-  public String ext7 = "";
-  public String ext8 = "";
-  public String ext9 = "";
-  public HashMap<String, String> extras = new HashMap();
-  public int fPageId;
-  public String feedId = "";
-  public String feedTag = "";
-  public int feedType1;
-  public int feedType2;
-  public int feedType3;
-  public String feedUrl = "";
-  public int ffPageId = -1;
-  public int height;
-  public boolean isAutoPlay;
-  public String itemDetail = "";
-  public String lloc = "";
-  public int pageId;
-  public String picInfo = "";
-  public String playId = "";
-  public int playScene;
-  public String playUrl = "";
-  public int position;
-  public byte[] reportInfo;
-  public String requestId = "";
-  public String ruleId = "";
-  public int subActionType;
-  public String toUin = "";
-  public String vid = "";
-  public long videoPlayTime;
-  public long videoSoloTime;
-  public String videoTag = "";
-  public int videoTotalTime;
-  public String videoType = "";
-  public int width;
+  private long actTime;
+  private int actionType;
+  private String authorUin = "";
+  private int clear;
+  private int cubage;
+  private String errorCode = "";
+  private String ext1 = "";
+  private String ext10 = "";
+  private String ext2 = "";
+  private String ext3 = "";
+  private String ext4 = "";
+  private String ext5 = "";
+  private String ext6 = "";
+  private String ext7 = "";
+  private String ext8 = "";
+  private String ext9 = "";
+  private HashMap<String, String> extras = new HashMap();
+  private int fPageId;
+  private String feedId = "";
+  private String feedTag = "";
+  private int feedType1;
+  private int feedType2;
+  private int feedType3;
+  private String feedUrl = "";
+  private int ffPageId = -1;
+  private int height;
+  private boolean isAutoPlay;
+  private String itemDetail = "";
+  private String lloc = "";
+  private int pageId;
+  private String picInfo = "";
+  private String playId = "";
+  private int playScene;
+  private String playUrl = "";
+  private int position;
+  private byte[] reportInfo;
+  private String requestId = "";
+  private String ruleId = "";
+  private int subActionType;
+  private String toUin = "";
+  private String vid = "";
+  private long videoPlayTime;
+  private long videoSoloTime;
+  private String videoTag = "";
+  private int videoTotalTime;
+  private String videoType = "";
+  private int width;
   
   public QCircleLpReportDc05507$DataBuilder() {}
   
@@ -106,6 +106,241 @@ public class QCircleLpReportDc05507$DataBuilder
     setExt10(paramDataBuilder.ext10);
     setReportInfo(paramDataBuilder.reportInfo);
     this.extras.putAll(paramDataBuilder.extras);
+  }
+  
+  public long getActTime()
+  {
+    return this.actTime;
+  }
+  
+  public int getActionType()
+  {
+    return this.actionType;
+  }
+  
+  public String getAuthorUin()
+  {
+    return this.authorUin;
+  }
+  
+  public int getClear()
+  {
+    return this.clear;
+  }
+  
+  public int getCubage()
+  {
+    return this.cubage;
+  }
+  
+  public String getErrorCode()
+  {
+    return this.errorCode;
+  }
+  
+  public String getExt1()
+  {
+    return this.ext1;
+  }
+  
+  public String getExt10()
+  {
+    return this.ext10;
+  }
+  
+  public String getExt2()
+  {
+    return this.ext2;
+  }
+  
+  public String getExt3()
+  {
+    return this.ext3;
+  }
+  
+  public String getExt4()
+  {
+    return this.ext4;
+  }
+  
+  public String getExt5()
+  {
+    return this.ext5;
+  }
+  
+  public String getExt6()
+  {
+    return this.ext6;
+  }
+  
+  public String getExt7()
+  {
+    return this.ext7;
+  }
+  
+  public String getExt8()
+  {
+    return this.ext8;
+  }
+  
+  public String getExt9()
+  {
+    return this.ext9;
+  }
+  
+  public HashMap<String, String> getExtras()
+  {
+    return this.extras;
+  }
+  
+  public String getFeedId()
+  {
+    return this.feedId;
+  }
+  
+  public String getFeedTag()
+  {
+    return this.feedTag;
+  }
+  
+  public int getFeedType1()
+  {
+    return this.feedType1;
+  }
+  
+  public int getFeedType2()
+  {
+    return this.feedType2;
+  }
+  
+  public int getFeedType3()
+  {
+    return this.feedType3;
+  }
+  
+  public String getFeedUrl()
+  {
+    return this.feedUrl;
+  }
+  
+  public int getFfPageId()
+  {
+    return this.ffPageId;
+  }
+  
+  public int getHeight()
+  {
+    return this.height;
+  }
+  
+  public String getItemDetail()
+  {
+    return this.itemDetail;
+  }
+  
+  public String getLloc()
+  {
+    return this.lloc;
+  }
+  
+  public int getPageId()
+  {
+    return this.pageId;
+  }
+  
+  public String getPicInfo()
+  {
+    return this.picInfo;
+  }
+  
+  public String getPlayId()
+  {
+    return this.playId;
+  }
+  
+  public int getPlayScene()
+  {
+    return this.playScene;
+  }
+  
+  public String getPlayUrl()
+  {
+    return this.playUrl;
+  }
+  
+  public int getPosition()
+  {
+    return this.position;
+  }
+  
+  public byte[] getReportInfo()
+  {
+    return this.reportInfo;
+  }
+  
+  public String getRequestId()
+  {
+    return this.requestId;
+  }
+  
+  public String getRuleId()
+  {
+    return this.ruleId;
+  }
+  
+  public int getSubActionType()
+  {
+    return this.subActionType;
+  }
+  
+  public String getToUin()
+  {
+    return this.toUin;
+  }
+  
+  public String getVid()
+  {
+    return this.vid;
+  }
+  
+  public long getVideoPlayTime()
+  {
+    return this.videoPlayTime;
+  }
+  
+  public long getVideoSoloTime()
+  {
+    return this.videoSoloTime;
+  }
+  
+  public String getVideoTag()
+  {
+    return this.videoTag;
+  }
+  
+  public int getVideoTotalTime()
+  {
+    return this.videoTotalTime;
+  }
+  
+  public String getVideoType()
+  {
+    return this.videoType;
+  }
+  
+  public int getWidth()
+  {
+    return this.width;
+  }
+  
+  public int getfPageId()
+  {
+    return this.fPageId;
+  }
+  
+  public boolean isAutoPlay()
+  {
+    return this.isAutoPlay;
   }
   
   public DataBuilder setActTime(long paramLong)

@@ -1,28 +1,23 @@
-import com.tencent.YTFace.model.FaceStatus;
+import com.tencent.mobileqq.app.automator.step.CleanCache;
+import java.io.File;
+import java.util.Comparator;
 
 public class aohz
+  implements Comparator<File>
 {
-  public float a;
-  public int a;
-  public FaceStatus a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  public aohz(CleanCache paramCleanCache) {}
   
-  public String toString()
+  public int a(File paramFile1, File paramFile2)
   {
-    return "FaceInfo{name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", tracked=" + this.jdField_a_of_type_Boolean + ", lostCount=" + this.c + ", faceType=" + this.jdField_a_of_type_Int + ", faceStatus=" + this.jdField_a_of_type_ComTencentYTFaceModelFaceStatus + '}';
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aohz
  * JD-Core Version:    0.7.0.1
  */

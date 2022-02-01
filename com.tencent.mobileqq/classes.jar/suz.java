@@ -1,32 +1,25 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AuthorData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
 class suz
-  implements svf
+  implements URLDrawable.URLDrawableListener
 {
-  suz(sup paramsup) {}
+  suz(suw paramsuw) {}
   
-  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if ((paramProteusItemData instanceof AuthorData))
+    if ((suw.a(this.a) != null) && (suw.a(this.a).getStatus() == 1) && ((suw.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
     {
-      paramViewBase = (AuthorData)paramProteusItemData;
-      if (!TextUtils.isEmpty(paramViewBase.jdField_a_of_type_JavaLangString)) {
-        break label23;
-      }
+      paramURLDrawable = (RegionDrawable)suw.a(this.a).getCurrDrawable();
+      suw.a(this.a, paramURLDrawable.getBitmap());
     }
-    label23:
-    while (paramViewBase.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {
-      return;
-    }
-    paramContext = paramViewBase.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-    pay.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramContext;
-    paramProteusItemData = ((AuthorData)paramProteusItemData).c;
-    svv.a(this.a.a.getContext(), paramContext, paramProteusItemData, paramViewBase.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo, false);
   }
 }
 

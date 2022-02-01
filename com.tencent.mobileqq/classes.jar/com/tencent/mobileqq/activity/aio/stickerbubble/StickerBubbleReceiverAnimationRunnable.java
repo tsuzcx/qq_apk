@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.stickerbubble;
 
-import ahlz;
-import ahmg;
-import ahmj;
-import amat;
+import aigt;
+import aiha;
+import aihd;
+import ancb;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Handler;
@@ -19,7 +19,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class StickerBubbleReceiverAnimationRunnable
-  implements ahmj, Runnable
+  implements aihd, Runnable
 {
   public static volatile boolean a;
   private int jdField_a_of_type_Int;
@@ -46,11 +46,11 @@ public class StickerBubbleReceiverAnimationRunnable
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_a_of_type_AndroidViewView = paramView;
     this.jdField_a_of_type_JavaLangString = paramString;
-    if (!amat.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {}
+    if (!ancb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {}
     for (boolean bool = true;; bool = false)
     {
       this.d = bool;
-      ahmg.a().a(this);
+      aiha.a().a(this);
       return;
     }
   }
@@ -61,9 +61,9 @@ public class StickerBubbleReceiverAnimationRunnable
     int m = 0;
     Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     if (this.jdField_a_of_type_Int * 80 < 5000) {
-      return ahlz.a((QQAppInterface)localObject);
+      return aigt.a((QQAppInterface)localObject);
     }
-    localObject = ahlz.a((QQAppInterface)localObject);
+    localObject = aigt.a((QQAppInterface)localObject);
     int n = localObject.length;
     int j = 0;
     for (int i = 0; j < n; i = k)
@@ -96,14 +96,14 @@ public class StickerBubbleReceiverAnimationRunnable
   public void b()
   {
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    ahlz.a(this, this.jdField_a_of_type_AndroidViewView);
+    aigt.a(this, this.jdField_a_of_type_AndroidViewView);
     this.f = false;
     this.jdField_b_of_type_Boolean = true;
     jdField_a_of_type_Boolean = false;
     AIOUtils.pokeEmoAnimatingCount = 0;
     if (this.d)
     {
-      amat.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "StickerBubble", false);
+      ancb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "StickerBubble", false);
       this.e = true;
     }
   }
@@ -116,13 +116,13 @@ public class StickerBubbleReceiverAnimationRunnable
     jdField_a_of_type_Boolean = true;
     if ((this.d) && (!this.e))
     {
-      amat.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "StickerBubble", true);
+      ancb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "StickerBubble", true);
       this.e = true;
     }
     if (QLog.isColorLevel()) {
       QLog.d("StickerBubbleRunnable", 2, "showReceiveAnimationView from runnable");
     }
-    StickerBubbleAnimationView localStickerBubbleAnimationView = ahmg.a().b((ViewGroup)this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidContentContext);
+    StickerBubbleAnimationView localStickerBubbleAnimationView = aiha.a().b((ViewGroup)this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidContentContext);
     if (!this.c)
     {
       localStickerBubbleAnimationView.bringToFront();
@@ -143,11 +143,11 @@ public class StickerBubbleReceiverAnimationRunnable
     }
     if (this.jdField_b_of_type_Int == 2)
     {
-      ahlz.b(this, this.jdField_a_of_type_AndroidViewView);
+      aigt.b(this, this.jdField_a_of_type_AndroidViewView);
       this.f = true;
       this.g = false;
     }
-    localStickerBubbleAnimationView.a(ahlz.a(this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_ArrayOfInt));
+    localStickerBubbleAnimationView.a(aigt.a(this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_ArrayOfInt));
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 80L);
   }
 }

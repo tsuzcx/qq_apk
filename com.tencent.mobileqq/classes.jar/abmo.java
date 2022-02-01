@@ -1,19 +1,11 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
-
-public final class abmo
-  implements Parcelable.Creator<GdtInterstitialParams>
+public class abmo
 {
-  public GdtInterstitialParams a(Parcel paramParcel)
-  {
-    return new GdtInterstitialParams(paramParcel);
-  }
-  
-  public GdtInterstitialParams[] a(int paramInt)
-  {
-    return new GdtInterstitialParams[paramInt];
-  }
+  public int a;
+  public int b = 1;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
 }
 
 

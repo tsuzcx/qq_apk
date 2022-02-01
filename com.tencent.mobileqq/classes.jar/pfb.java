@@ -1,14 +1,16 @@
+import java.util.List;
+
 class pfb
-  extends pse
+  extends pfe
 {
-  pfb(pey parampey, String paramString)
+  pfb(pdv parampdv, List paramList)
   {
-    super(paramString);
+    super(parampdv, null);
   }
   
-  public void a(prx paramprx)
+  void a(pfh parampfh)
   {
-    paramprx.b();
+    parampfh.onCommentListLoad(1, true, this.jdField_a_of_type_JavaUtilList, pdv.b(this.jdField_a_of_type_Pdv), 3, 3);
   }
 }
 

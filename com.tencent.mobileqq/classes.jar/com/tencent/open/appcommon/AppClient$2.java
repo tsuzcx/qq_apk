@@ -4,11 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bhpc;
-import bhwr;
-import bhzj;
-import bhzm;
-import bicl;
+import bizw;
+import bjht;
+import bjkl;
+import bjko;
+import bjnn;
 import com.tencent.open.applist.QZoneAppListActivity;
 import com.tencent.tmassistantbase.common.DownloadSDKConfigManager;
 import java.io.File;
@@ -28,17 +28,17 @@ public final class AppClient$2
     Bundle localBundle;
     label169:
     Object localObject3;
-    if (bhwr.a(this.jdField_a_of_type_AndroidOsBundle.getString("schemaUrl")).get("auto_download") != null)
+    if (bjht.a(this.jdField_a_of_type_AndroidOsBundle.getString("schemaUrl")).get("auto_download") != null)
     {
       bool = true;
-      if (!bicl.a().a(bhpc.a().a(), this.jdField_b_of_type_AndroidOsBundle, bool, false))
+      if (!bjnn.a().a(bizw.a().a(), this.jdField_b_of_type_AndroidOsBundle, bool, false))
       {
-        localObject1 = bhwr.g() + File.separator + "qapp_center_detail.htm";
+        localObject1 = bjht.g() + File.separator + "qapp_center_detail.htm";
         localObject2 = new File((String)localObject1);
         if (!((File)localObject2).exists())
         {
-          bhzm.d("AppClient", "file" + (String)localObject1 + " not exist copyassets.");
-          bhzj.a("Page/system", bhwr.h());
+          bjko.d("AppClient", "file" + (String)localObject1 + " not exist copyassets.");
+          bjkl.a("Page/system", bjht.h());
         }
         localIntent = new Intent();
         localBundle = new Bundle();
@@ -76,7 +76,7 @@ public final class AppClient$2
       else
       {
         label300:
-        localIntent.setClass(bhpc.a().a(), QZoneAppListActivity.class);
+        localIntent.setClass(bizw.a().a(), QZoneAppListActivity.class);
         if (!DownloadSDKConfigManager.canGotoNewDetailPage(this.d)) {
           break label523;
         }
@@ -90,16 +90,16 @@ public final class AppClient$2
         if (this.jdField_a_of_type_AndroidOsBundle.getInt("process_id") == 2) {
           localBundle.putInt("process_id", 2);
         }
-        bhzm.b("Jie", "APP_URL:" + (String)localObject2 + " |  PARAMS >>> " + localBundle.getString("APP_PARAMS"));
+        bjko.b("Jie", "APP_URL:" + (String)localObject2 + " |  PARAMS >>> " + localBundle.getString("APP_PARAMS"));
         localIntent.putExtras(localBundle);
         localIntent.putExtra("adapter_action", "action_app_detail");
         localIntent.addFlags(872415232);
-        bhpc.a().a().startActivity(localIntent);
+        bizw.a().a().startActivity(localIntent);
         return;
         bool = false;
         break;
         label461:
-        localObject2 = bhwr.m() + File.separator + "qapp_center_detail.htm";
+        localObject2 = bjht.m() + File.separator + "qapp_center_detail.htm";
         break label169;
         localObject3 = (String)localObject1 + "&" + this.jdField_b_of_type_JavaLangString;
         break label300;

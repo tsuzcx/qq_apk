@@ -1,52 +1,30 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.teamwork.ReSendCmd;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.TicketManager;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
-
-class bcve
-  implements WtTicketPromise
+public class bcve
 {
-  bcve(bcvc parambcvc, TicketManager paramTicketManager, ReSendCmd paramReSendCmd) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public boolean c;
   
-  public void Done(Ticket paramTicket)
+  public bcve(bcvc parambcvc)
   {
-    int i;
-    if (paramTicket == null) {
-      i = 1;
-    }
-    for (;;)
-    {
-      QLog.i("TeamWorkHandler", 1, "getSkeyFromServerAndRetry get skey from server : Done,result: " + i);
-      paramTicket = this.jdField_a_of_type_MqqManagerTicketManager.getSkey(this.jdField_a_of_type_Bcvc.mApp.getCurrentAccountUin());
-      if ((!TextUtils.isEmpty(paramTicket)) && (paramTicket.length() > 0))
-      {
-        bcvc.b(this.jdField_a_of_type_Bcvc, 0);
-        QLog.i("TeamWorkHandler", 1, "getSkeyFromServerAndRetry get skey from server success!");
-      }
-      bcvc.a(this.jdField_a_of_type_Bcvc, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
-      return;
-      if ((paramTicket != null) && (paramTicket._sig == null)) {
-        i = 2;
-      } else {
-        i = 0;
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
   }
   
-  public void Failed(ErrMsg paramErrMsg)
+  public String toString()
   {
-    QLog.i("TeamWorkHandler", 1, "getSkeyFromServerAndRetry get skey from server : Failed, " + paramErrMsg);
-    bcvc.a(this.jdField_a_of_type_Bcvc, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    QLog.i("TeamWorkHandler", 1, "getSkeyFromServerAndRetry get skey from server : Timeout, " + paramErrMsg);
-    bcvc.a(this.jdField_a_of_type_Bcvc, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    localStringBuilder.append("mUnread=" + this.jdField_a_of_type_Long);
+    localStringBuilder.append(",mNewMsg=" + this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("mText=" + this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",mIconPath=" + this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("mRedPoint=" + this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(",mTab=" + this.c);
+    localStringBuilder.append(",mType=" + this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 

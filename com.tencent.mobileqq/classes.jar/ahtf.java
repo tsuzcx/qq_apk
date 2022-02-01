@@ -1,20 +1,28 @@
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahtf
+class ahtf
+  implements View.OnClickListener
 {
-  public static void a(int paramInt1, int paramInt2)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("issuccess", String.valueOf(paramInt1));
-    localHashMap.put("errorcode", String.valueOf(paramInt2));
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "pttSliceToText", true, 0L, 0L, localHashMap, "");
-  }
+  ahtf(ahte paramahte, String paramString) {}
   
-  public static void a(String paramString, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    bcef.b(null, "dc00898", "", "", paramString, paramString, paramInt1, paramInt2, "", "", "", "");
+    if ((ahte.a(this.jdField_a_of_type_Ahte) == null) || (ahte.a(this.jdField_a_of_type_Ahte).a.a(this.jdField_a_of_type_JavaLangString) == null))
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    boolean bool = ahte.a(this.jdField_a_of_type_Ahte).a.a(this.jdField_a_of_type_JavaLangString, ahte.a(this.jdField_a_of_type_Ahte).jdField_d_of_type_Int, ahte.a(this.jdField_a_of_type_Ahte).jdField_d_of_type_JavaUtilList);
+    String str2 = ahte.a(this.jdField_a_of_type_Ahte) + "";
+    if (bool) {}
+    for (String str1 = "1";; str1 = "2")
+    {
+      bdla.b(null, "dc00898", "", "", "0X800AC87", "0X800AC87", 1, 0, str2, str1, "", "");
+      this.jdField_a_of_type_Ahte.notifyDataSetChanged();
+      break;
+    }
   }
 }
 

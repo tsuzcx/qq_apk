@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import aobk;
+import apem;
 import com.tencent.mobileqq.ar.ARNativeBridge;
 import com.tencent.qphone.base.util.QLog;
 
 public class ARTransferPromotionRenderable$21
   implements Runnable
 {
-  public ARTransferPromotionRenderable$21(aobk paramaobk) {}
+  public ARTransferPromotionRenderable$21(apem paramapem) {}
   
   public void run()
   {
-    QLog.i("ARTransferPromotionRenderable", 1, "zoomOutWorldCupSparks. hasDrawedFrame = " + aobk.e(this.this$0));
-    if ((aobk.a(this.this$0) != null) && (aobk.e(this.this$0))) {
-      aobk.a(this.this$0).native_zoomOutWorldCupSparks();
+    QLog.i("ARTransferPromotionRenderable", 1, "zoomOutWorldCupSparks. hasDrawedFrame = " + apem.e(this.this$0));
+    if ((apem.a(this.this$0) != null) && (apem.e(this.this$0))) {
+      apem.a(this.this$0).native_zoomOutWorldCupSparks();
     }
   }
 }

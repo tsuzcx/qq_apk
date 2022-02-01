@@ -8,18 +8,18 @@ import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import pay;
-import pvc;
-import qpj;
-import qps;
-import qtr;
+import pqw;
+import qfw;
+import rbo;
+import rbx;
+import rfw;
 
 public class ComponentNotIntrest
   extends FrameLayout
-  implements View.OnClickListener, qpj
+  implements View.OnClickListener, rbo
 {
   public View a;
-  qtr a;
+  rfw a;
   
   public ComponentNotIntrest(Context paramContext)
   {
@@ -41,7 +41,7 @@ public class ComponentNotIntrest
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_Qtr = new qtr();
+    this.jdField_a_of_type_Rfw = new rfw();
     a(paramContext);
     a();
   }
@@ -53,31 +53,31 @@ public class ComponentNotIntrest
   
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131560141, this, true).findViewById(2131380137);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131560188, this, true).findViewById(2131380472);
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof pvc))
+    if ((paramObject instanceof qfw))
     {
-      this.jdField_a_of_type_Qtr.a((pvc)paramObject);
+      this.jdField_a_of_type_Rfw.a((qfw)paramObject);
       b();
     }
   }
   
-  public void a(qps paramqps)
+  public void a(rbx paramrbx)
   {
-    this.jdField_a_of_type_Qtr.a(paramqps);
+    this.jdField_a_of_type_Rfw.a(paramrbx);
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Qtr.a())
+    if (this.jdField_a_of_type_Rfw.a())
     {
       this.jdField_a_of_type_AndroidViewView.setPadding(AIOUtils.dp2px(5.0F, getResources()), AIOUtils.dp2px(5.0F, getResources()), AIOUtils.dp2px(5.0F, getResources()), AIOUtils.dp2px(5.0F, getResources()));
       return;
     }
-    if (pay.l(this.jdField_a_of_type_Qtr.jdField_a_of_type_Pvc.a()))
+    if (pqw.l(this.jdField_a_of_type_Rfw.jdField_a_of_type_Qfw.a()))
     {
       this.jdField_a_of_type_AndroidViewView.setPadding(AIOUtils.dp2px(5.0F, getResources()), AIOUtils.dp2px(5.0F, getResources()), AIOUtils.dp2px(9.0F, getResources()), AIOUtils.dp2px(5.0F, getResources()));
       return;
@@ -87,8 +87,8 @@ public class ComponentNotIntrest
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Qtr.jdField_a_of_type_Qps != null) {
-      this.jdField_a_of_type_Qtr.jdField_a_of_type_Qps.a(paramView, null);
+    if (this.jdField_a_of_type_Rfw.jdField_a_of_type_Rbx != null) {
+      this.jdField_a_of_type_Rfw.jdField_a_of_type_Rbx.a(paramView, null);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

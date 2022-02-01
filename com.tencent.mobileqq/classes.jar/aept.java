@@ -1,28 +1,29 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.widget.QQToast;
-import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.DelResult;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
+import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.ServiceProtocolSerializable;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aept
-  extends anbn
 {
-  public aept(TroopRequestActivity paramTroopRequestActivity) {}
-  
-  public void a(boolean paramBoolean, PBRepeatMessageField<oidb_0x5d4.DelResult> paramPBRepeatMessageField)
+  public static void a(FaceDetectForThirdPartyManager.AppConf paramAppConf, String paramString)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    if (paramBoolean)
+    if ((paramAppConf == null) || (paramAppConf.serviceProtocols.isEmpty()))
     {
-      QQToast.a(this.a.getApplicationContext(), 2, this.a.getApplicationContext().getResources().getString(2131718527), 0).a();
-      this.a.c.setVisibility(8);
+      QLog.d("QQIdentiferUtil", 1, new Object[] { "report action=", paramString, ", appConf.serviceProtocols.isEmpty, not save" });
+      ForwardUtils.report(null, paramString, 1, new String[0]);
       return;
     }
-    QQToast.a(this.a.getApplicationContext(), 1, this.a.getApplicationContext().getResources().getString(2131718524), 0).a();
+    paramAppConf = (FaceDetectForThirdPartyManager.ServiceProtocolSerializable)paramAppConf.serviceProtocols.get(0);
+    if ((TextUtils.isEmpty(paramAppConf.name)) || (TextUtils.isEmpty(paramAppConf.url)))
+    {
+      QLog.d("QQIdentiferUtil", 1, new Object[] { "report action=", paramString, ", sp.name || sp.url empty, not save" });
+      ForwardUtils.report(null, paramString, 1, new String[0]);
+      return;
+    }
+    QLog.d("QQIdentiferUtil", 1, new Object[] { "report action=", paramString, ", auto save" });
+    ForwardUtils.report(null, paramString, 2, new String[0]);
   }
 }
 

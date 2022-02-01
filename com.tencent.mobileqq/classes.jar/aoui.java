@@ -1,10 +1,9 @@
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aoui
+public abstract class aoui
 {
-  public WeakReference<PreDownloadController> a;
-  public boolean a = false;
+  public abstract aouc a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoul paramaoul);
 }
 
 

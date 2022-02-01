@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.qim;
 
-import ahce;
+import ahww;
 import com.tencent.mobileqq.troop.widget.RedDotImageView;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -15,12 +15,12 @@ class QIMUserManager$5$1
     Iterator localIterator = this.a.a.iterator();
     while (localIterator.hasNext())
     {
-      ahce localahce = (ahce)localIterator.next();
-      if (localahce.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView != null) {
-        localahce.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView.setImageDrawable(localahce.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      ahww localahww = (ahww)localIterator.next();
+      if (localahww.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView != null) {
+        localahww.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView.setImageDrawable(localahww.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       }
-      localahce.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView = null;
-      localahce.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+      localahww.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView = null;
+      localahww.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
     }
     this.a.a.clear();
   }

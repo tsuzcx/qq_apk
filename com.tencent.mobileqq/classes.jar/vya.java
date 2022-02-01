@@ -1,22 +1,19 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Comparator;
 
 class vya
-  implements amqq
+  implements Comparator<vxh>
 {
-  vya(vxx paramvxx) {}
+  vya(vxz paramvxz) {}
   
-  public void onDpcPullFinished(boolean paramBoolean)
+  public int a(vxh paramvxh1, vxh paramvxh2)
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface)) {}
-    for (localObject = (QQAppInterface)localObject;; localObject = null)
-    {
-      if (localObject != null) {
-        ((vkz)((QQAppInterface)localObject).getBusinessHandler(98)).notifyUI(1023, true, Boolean.valueOf(paramBoolean));
-      }
-      return;
+    if (paramvxh1.b == paramvxh2.b) {
+      return 0;
     }
+    if (paramvxh1.b > paramvxh2.b) {
+      return 1;
+    }
+    return -1;
   }
 }
 

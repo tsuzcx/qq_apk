@@ -1,31 +1,22 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.servlet.LoginVerifyServlet.4;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSession;
 
-class bcvl
-  implements View.OnClickListener
+public class bcvl
+  implements HostnameVerifier
 {
-  bcvl(bcvk parambcvk, DialogInterface.OnClickListener paramOnClickListener) {}
+  public bcvl(LoginVerifyServlet.4 param4, URL paramURL) {}
   
-  public void onClick(View paramView)
+  public boolean verify(String paramString, SSLSession paramSSLSession)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bcvk, 1);
+    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.jdField_a_of_type_JavaNetURL.getHost(), paramSSLSession);
+    if (!bool) {
+      QLog.d("LoginVerifyServlet", 1, new Object[] { "OpenVirtual.HostnameVerifier.host:", this.jdField_a_of_type_JavaNetURL.getHost(), ",address:", paramSSLSession.getPeerHost(), ",isverify:", Boolean.valueOf(bool) });
     }
-    try
-    {
-      if (this.jdField_a_of_type_Bcvk.isShowing()) {
-        this.jdField_a_of_type_Bcvk.dismiss();
-      }
-      label38:
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label38;
-    }
+    return bool;
   }
 }
 

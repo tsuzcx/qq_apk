@@ -1,15 +1,25 @@
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
 
-public class avxp
-  implements amwt
+class avxp
+  implements IVideoInnerStatusListener
 {
-  public avxp(MultiAIOFragment paramMultiAIOFragment) {}
+  avxp(avxo paramavxo) {}
   
-  public void a(String paramString, int paramInt)
+  public void notifyVideoClose(int paramInt) {}
+  
+  public void notifyVideoSeek(int paramInt) {}
+  
+  public void notifyVideoStart()
   {
-    MultiAIOFragment.a(this.a).a(paramString, paramInt);
+    if (avxo.a(this.a) != null)
+    {
+      awvk.a().a(1, avxo.a(this.a));
+      return;
+    }
+    this.a.a(false);
   }
+  
+  public void notifyVideoStop() {}
 }
 
 

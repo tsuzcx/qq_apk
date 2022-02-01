@@ -1,46 +1,53 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterControlPanel;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import cooperation.vip.VasAdvService;
+import cooperation.vip.VasAdvService.ServiceCode;
+import cooperation.vip.VasAdvService.reportAd.1;
+import cooperation.vip.pb.adv_report.MobileAdvReportRsp;
+import java.util.concurrent.atomic.AtomicBoolean;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class bmkh
-  implements SeekBar.OnSeekBarChangeListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"cooperation/vip/VasAdvService$reportAd$1$callback$1", "Lcooperation/vip/VasAdvCallback;", "onError", "", "errMsg", "", "e", "", "onRsp", "rspBytes", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bmkh
+  implements bmkd
 {
-  public bmkh(AEEditorFilterControlPanel paramAEEditorFilterControlPanel) {}
-  
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void a(@NotNull String paramString, @Nullable Throwable paramThrowable)
   {
-    if ((paramBoolean) && (paramSeekBar.getVisibility() == 0))
+    Intrinsics.checkParameterIsNotNull(paramString, "errMsg");
+    this.a.this$0.a(VasAdvService.ServiceCode.REPORT_CMD_ERROR, "report ad onError: " + paramString);
+    VasAdvService.c(this.a.this$0).set(false);
+  }
+  
+  public void a(@NotNull byte[] paramArrayOfByte)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "rspBytes");
+    for (;;)
     {
-      if (AEEditorFilterControlPanel.a(this.a) != null) {
-        AEEditorFilterControlPanel.a(this.a).setText(paramInt + "%");
+      try
+      {
+        localMobileAdvReportRsp = new adv_report.MobileAdvReportRsp();
+        localMobileAdvReportRsp.mergeFrom(paramArrayOfByte);
+        bool = VasAdvService.a(this.a.this$0, localMobileAdvReportRsp);
+        if (bool != true) {
+          continue;
+        }
+        this.a.this$0.a(localMobileAdvReportRsp);
       }
-      if (AEEditorFilterControlPanel.a(this.a) != null) {
-        AEEditorFilterControlPanel.a(this.a).a(this.a.a(), paramInt / 100.0F);
+      catch (Exception paramArrayOfByte)
+      {
+        adv_report.MobileAdvReportRsp localMobileAdvReportRsp;
+        boolean bool;
+        this.a.this$0.a(VasAdvService.ServiceCode.REPORT_RSP_PARSE_ERR, "parse report rsp exception: " + paramArrayOfByte.getMessage());
+        continue;
+      }
+      VasAdvService.c(this.a.this$0).set(false);
+      return;
+      if (!bool) {
+        this.a.this$0.a(VasAdvService.ServiceCode.REPORT_RSP_FAIL, "report rsp ret code:" + localMobileAdvReportRsp.ret_code.get());
       }
     }
-  }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    if (AEEditorFilterControlPanel.a(this.a) != null) {
-      AEEditorFilterControlPanel.a(this.a).setVisibility(0);
-    }
-    if (AEEditorFilterControlPanel.a(this.a) != null) {
-      AEEditorFilterControlPanel.a(this.a).u();
-    }
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    if (AEEditorFilterControlPanel.a(this.a) != null) {
-      AEEditorFilterControlPanel.a(this.a).setVisibility(4);
-    }
-    if (AEEditorFilterControlPanel.a(this.a) != null) {
-      AEEditorFilterControlPanel.a(this.a).v();
-    }
-    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
 }
 

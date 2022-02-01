@@ -1,18 +1,22 @@
+import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
 
 class aasj
-  extends TransProcessorHandler
+  extends Handler
 {
-  aasj(aasi paramaasi, Looper paramLooper)
+  aasj(aasg paramaasg, Looper paramLooper)
   {
     super(paramLooper);
   }
   
   public void handleMessage(Message paramMessage)
   {
-    this.a.a(paramMessage);
+    if (!(paramMessage.obj instanceof bijj)) {}
+    while (paramMessage.what != 204) {
+      return;
+    }
+    this.a.a((bijj)paramMessage.obj);
   }
 }
 

@@ -1,28 +1,17 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.Job;
-import com.tribe.async.async.JobContext;
-import java.util.Map;
+import android.view.View;
 
-class vmh
-  extends Job<Object, Object, Object>
+final class vmh
+  implements bkzq
 {
-  vmh(vmg paramvmg, String paramString, vmp paramvmp)
-  {
-    super(paramString);
-  }
+  vmh(bkzq parambkzq, bkzi parambkzi) {}
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Vmp.jdField_a_of_type_Vmo.a(this.jdField_a_of_type_Vmp);
-    this.jdField_a_of_type_Vmg.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Vmp.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Vmg.jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_Vmp.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Vmp);
-    return null;
-  }
-  
-  public int getJobType()
-  {
-    return 16;
+    vmp.b("WSFeedUtils", "clickedView :" + paramView + ", which: " + paramInt);
+    if (this.jdField_a_of_type_Bkzq != null) {
+      this.jdField_a_of_type_Bkzq.OnClick(paramView, paramInt);
+    }
+    this.jdField_a_of_type_Bkzi.dismiss();
   }
 }
 

@@ -1,119 +1,73 @@
-import android.text.TextUtils;
+import android.app.Activity;
+import android.content.Context;
+import android.provider.Settings.Secure;
+import android.view.View;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
-import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import java.io.File;
-import java.util.HashMap;
 
-class bkxz
-  implements ITMAssistantDownloadClientListener
+public class bkxz
 {
-  bkxz(bkxy parambkxy) {}
-  
-  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
+  public static void a(Activity paramActivity)
   {
-    paramTMAssistantDownloadClient = (bkya)bkxy.a(this.a).get(paramString);
-    if (paramTMAssistantDownloadClient != null) {
-      paramTMAssistantDownloadClient.a(paramString, paramLong1, paramLong2);
+    try
+    {
+      InputMethodManager localInputMethodManager = (InputMethodManager)paramActivity.getSystemService("input_method");
+      if (localInputMethodManager.isActive()) {
+        localInputMethodManager.hideSoftInputFromWindow(paramActivity.getWindow().getDecorView().getWindowToken(), 0);
+      }
+      return;
+    }
+    catch (Exception paramActivity)
+    {
+      while (!QLog.isDevelopLevel()) {}
+      paramActivity.printStackTrace();
     }
   }
   
-  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public static void a(View paramView)
   {
-    int j = 6;
-    String str = "";
-    Object localObject;
-    int i;
-    if (paramInt1 == 4)
+    ((InputMethodManager)paramView.getContext().getSystemService("input_method")).showSoftInput(paramView, 0);
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    boolean bool2 = false;
+    try
     {
-      str = (String)bkxy.b(this.a).get(paramString1);
-      localObject = "";
-      try
-      {
-        paramTMAssistantDownloadClient = paramTMAssistantDownloadClient.getDownloadTaskState(paramString1);
-        if (paramTMAssistantDownloadClient != null) {
-          break label153;
-        }
-        paramTMAssistantDownloadClient = null;
-      }
-      catch (Exception paramTMAssistantDownloadClient)
-      {
-        for (;;)
+      paramContext = Settings.Secure.getString(paramContext.getContentResolver(), "default_input_method");
+      bool1 = bool2;
+      if (paramContext != null) {
+        if ((!paramContext.contains("com.sohu.inputmethod.sogou")) && (!paramContext.contains("com.tencent.qqpinyin")))
         {
-          QLog.e(bkxy.a, 2, paramTMAssistantDownloadClient.toString());
-          paramTMAssistantDownloadClient = (TMAssistantDownloadClient)localObject;
-          continue;
-          QLog.e(bkxy.a, 2, "file renameTo faild frompath:" + paramTMAssistantDownloadClient + " topath:" + str);
-          i = 0;
+          bool1 = bool2;
+          if (!paramContext.contains("com.sogou.zhuyininput")) {}
         }
-        QLog.e(bkxy.a, 2, "file not exist path:" + paramTMAssistantDownloadClient);
-      }
-      if (!TextUtils.isEmpty(paramTMAssistantDownloadClient))
-      {
-        localObject = new File(paramTMAssistantDownloadClient);
-        if (((File)localObject).exists()) {
-          if (((File)localObject).renameTo(new File(str)))
-          {
-            i = 1;
-            if (i != 0) {
-              break label265;
-            }
-            paramTMAssistantDownloadClient = (bkya)bkxy.a(this.a).get(paramString1);
-            if (paramTMAssistantDownloadClient != null) {
-              paramTMAssistantDownloadClient.a(paramString1, 6, 0, "", "");
-            }
-            bkxy.a(this.a).remove(paramString1);
-            bkxy.b(this.a).remove(paramString1);
-          }
+        else
+        {
+          bool1 = true;
         }
       }
     }
-    label153:
-    do
+    catch (NullPointerException paramContext)
     {
-      return;
-      paramTMAssistantDownloadClient = paramTMAssistantDownloadClient.mSavePath;
-      break;
-      for (;;)
+      do
       {
-        i = 0;
-        break;
-        QLog.e(bkxy.a, 2, "currentPath is null");
-      }
-      paramTMAssistantDownloadClient = (bkya)bkxy.a(this.a).get(paramString1);
-    } while (paramTMAssistantDownloadClient == null);
-    label265:
-    switch (paramInt1)
-    {
-    default: 
-      paramInt1 = 0;
+        boolean bool1 = bool2;
+      } while (!QLog.isColorLevel());
+      QLog.d("InputMethodUtil", 2, "checkSogouInputDefault(), e = " + paramContext.getStackTrace());
     }
-    for (;;)
-    {
-      paramTMAssistantDownloadClient.a(paramString1, paramInt1, paramInt2, paramString2, str);
-      return;
-      paramInt1 = 2;
-      continue;
-      bkxy.a(this.a).remove(paramString1);
-      bkxy.b(this.a).remove(paramString1);
-      paramInt1 = j;
-      continue;
-      paramInt1 = 3;
-      bkxy.a(this.a).remove(paramString1);
-      bkxy.b(this.a).remove(paramString1);
-      continue;
-      paramInt1 = 4;
-      continue;
-      paramInt1 = 1;
-      continue;
-      paramInt1 = 5;
-      bkxy.a(this.a).remove(paramString1);
-      bkxy.b(this.a).remove(paramString1);
-    }
+    return bool1;
+    return false;
   }
   
-  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient) {}
+  public static void b(View paramView)
+  {
+    if (paramView == null) {
+      return;
+    }
+    ((InputMethodManager)paramView.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+  }
 }
 
 

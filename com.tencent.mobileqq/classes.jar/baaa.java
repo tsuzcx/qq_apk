@@ -1,62 +1,54 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.profilecard.bussiness.anonymous.views.AnonymousView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class baaa
-  implements INetEngine.INetEngineListener
+  implements View.OnClickListener
 {
-  baaa(azzx paramazzx, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, bbpy parambbpy) {}
+  baaa(azzz paramazzz, azzl paramazzl, baae parambaae) {}
   
-  public void onResp(NetResp paramNetResp)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CapturePtvTemplateManager", 2, "onResp url: " + this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl + " resultcode: " + paramNetResp.mHttpCode);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable = this.jdField_a_of_type_Azzx.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
-    paramNetResp = this.jdField_a_of_type_Azzx.a.iterator();
-    while (paramNetResp.hasNext())
+    switch (paramView.getId())
     {
-      Object localObject = (baap)paramNetResp.next();
-      if (((baap)localObject).a != null)
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      AnonymousView.a(this.jdField_a_of_type_Azzz.a);
+      int i = (int)this.jdField_a_of_type_Azzl.e;
+      azzl localazzl = this.jdField_a_of_type_Azzl;
+      long l;
+      if (this.jdField_a_of_type_Azzl.jdField_b_of_type_Boolean)
       {
-        localObject = ((baap)localObject).a.iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)((Iterator)localObject).next();
-          if (localPtvTemplateInfo.id.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)) {
-            localPtvTemplateInfo.usable = this.jdField_a_of_type_Azzx.a(localPtvTemplateInfo);
-          }
+        l = i - 1;
+        label104:
+        localazzl.e = l;
+        azzu.a(this.jdField_a_of_type_Azzz.a.a, this.jdField_a_of_type_Azzl);
+        localazzl = this.jdField_a_of_type_Azzl;
+        if (this.jdField_a_of_type_Azzl.jdField_b_of_type_Boolean) {
+          break label199;
         }
       }
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable) {}
-    try
-    {
-      npo.a(new File(azzx.b, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5), azzx.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5));
-      if (this.jdField_a_of_type_Bbpy != null) {
-        this.jdField_a_of_type_Bbpy.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable);
-      }
-      return;
-    }
-    catch (IOException paramNetResp)
-    {
-      for (;;)
+      label199:
+      for (boolean bool = true;; bool = false)
       {
-        paramNetResp.printStackTrace();
+        localazzl.jdField_b_of_type_Boolean = bool;
+        azzz.a(this.jdField_a_of_type_Azzz, this.jdField_a_of_type_Azzl.jdField_b_of_type_Boolean, this.jdField_a_of_type_Baae.d, this.jdField_a_of_type_Baae.g, this.jdField_a_of_type_Azzl.e);
+        break;
+        l = i + 1;
+        break label104;
       }
-    }
-  }
-  
-  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
-  {
-    if (this.jdField_a_of_type_Bbpy != null) {
-      this.jdField_a_of_type_Bbpy.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, (int)(100L * paramLong1 / paramLong2));
+      AnonymousView.a(this.jdField_a_of_type_Azzz.a);
+      azsy.a(paramView);
+      azzu.a((BaseActivity)AnonymousView.a(this.jdField_a_of_type_Azzz.a), AnonymousView.a(this.jdField_a_of_type_Azzz.a), this.jdField_a_of_type_Azzl.a, this.jdField_a_of_type_Azzl.jdField_b_of_type_Long);
+      continue;
+      AnonymousView.a(this.jdField_a_of_type_Azzz.a);
+      azsy.a(paramView);
+      azzu.a((BaseActivity)AnonymousView.b(this.jdField_a_of_type_Azzz.a), AnonymousView.a(this.jdField_a_of_type_Azzz.a), this.jdField_a_of_type_Azzl.a, "", 8, this.jdField_a_of_type_Azzl.jdField_b_of_type_Long);
     }
   }
 }

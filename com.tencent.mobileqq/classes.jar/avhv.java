@@ -1,52 +1,48 @@
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.ViewParent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.location.ui.LocationShareFragment;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 class avhv
-  implements bhlz
+  implements asir
 {
-  QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-  boolean jdField_a_of_type_Boolean = false;
+  avhv(avhu paramavhu) {}
   
-  avhv(avhu paramavhu, BaseActivity paramBaseActivity, avcq paramavcq) {}
-  
-  public boolean a()
+  public void a(View paramView)
   {
-    if ((this.jdField_a_of_type_Avhu.a.isBackgroundPause) || (this.jdField_a_of_type_Avhu.a.isBackgroundStop)) {
-      avhu.a(this.jdField_a_of_type_Avhu, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Avcq);
+    String str = bhnp.a("aioEmojiStickerDetail");
+    ViewParent localViewParent = paramView.getParent();
+    if (localViewParent != null)
+    {
+      localViewParent = localViewParent.getParent();
+      if ((localViewParent instanceof ChatXListView)) {
+        EmojiStickerManager.k = ((ChatXListView)localViewParent).getPositionForView(paramView);
+      }
+    }
+    paramView = new Intent(this.a.a.getApp(), QQBrowserActivity.class);
+    paramView.setFlags(268435456);
+    paramView.putExtra("vasUsePreWebview", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(this.a.a.getApp(), str, -1L, paramView, false, -1);
+    int i;
+    if (EmojiStickerManager.a().a == 0) {
+      i = 1;
     }
     for (;;)
     {
-      bcef.b(null, "CliOper", "", "", "0X800A978", "0X800A978", 0, 0, "", "0", "0", "");
-      return true;
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = avdr.a(this.jdField_a_of_type_Avcq.a(), this.jdField_a_of_type_Avcq.a());
-        this.jdField_a_of_type_Boolean = true;
-        if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
-          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new avhw(this));
-        }
+      VasWebviewUtil.reportCommercialDrainage(this.a.a.getCurrentUin(), "Stick", "ClickDetail", String.valueOf(i), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+      return;
+      if (EmojiStickerManager.a().a == 1) {
+        i = 2;
+      } else if (EmojiStickerManager.a().a == 3000) {
+        i = 3;
+      } else {
+        i = -1;
       }
     }
-  }
-  
-  public boolean a(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationFloatWindowManager", 2, new Object[] { "onEnterClick: invoked. ", " centerX: ", Integer.valueOf(paramInt1), " centerY: ", Integer.valueOf(paramInt2) });
-    }
-    LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Avcq.a(), this.jdField_a_of_type_Avcq.a(), 4);
-    avhh.d();
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      return false;
-    }
-    catch (Exception localException) {}
-    return false;
   }
 }
 

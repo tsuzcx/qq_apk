@@ -1,24 +1,72 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
+import java.util.List;
 
-public class aiyc
-  implements View.OnClickListener
+class aiyc
+  extends anvi
 {
-  public aiyc(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
+  aiyc(aiya paramaiya) {}
   
-  public void onClick(View paramView)
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
   {
-    switch (paramView.getId())
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("ConnectsExplorationFriendAdapter", 2, "onCancelMayKnowRecommend isSuccess = " + paramBoolean);
     }
-    for (;;)
+    if (paramBoolean) {
+      this.a.a(false);
+    }
+  }
+  
+  public void onGetConnectionsPerson(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (paramInt2 == aiya.a(this.a)) {
+      this.a.a(false);
+    }
+  }
+  
+  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
+  {
+    if ((paramBoolean) && (aiya.a(this.a) == 23)) {
+      this.a.a(false);
+    }
+  }
+  
+  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
+  {
+    super.onMayKnowListPushAdd(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("ConnectsExplorationFriendAdapter", 2, "onMayKnowListPushAdd isSuccess = " + paramBoolean);
+    }
+    if (paramBoolean) {
+      this.a.a(false);
+    }
+  }
+  
+  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
+  {
+    super.onMayKnowListPushDel(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("ConnectsExplorationFriendAdapter", 2, "onMayKnowListPushDel isSuccess = " + paramBoolean);
+    }
+    if (paramBoolean) {
+      this.a.a(false);
+    }
+  }
+  
+  protected void onMayknowStateChanged(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ConnectsExplorationFriendAdapter", 2, "onMayknowStateChanged isSuccess = " + paramBoolean);
+    }
+    if (paramBoolean)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (ChatHistoryTroopFileFragment.a(this.a) != null) {
-        ChatHistoryTroopFileFragment.a(this.a).setVisibility(8);
+      this.a.notifyDataSetChanged();
+      if (aiya.a(this.a) != null)
+      {
+        aiya.a(this.a).removeCallbacks(this.a.a);
+        aiya.a(this.a).postDelayed(this.a.a, 1600L);
       }
     }
   }

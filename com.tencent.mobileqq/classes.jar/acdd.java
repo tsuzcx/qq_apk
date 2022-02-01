@@ -1,19 +1,19 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function0;
 
-public class acdd
-  implements abzb
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+public final class acdd
+  implements View.OnClickListener
 {
-  private static void a()
-  {
-    xwa.a("dyn", "refresh", 0, 0, new String[] { "2" });
-  }
+  public acdd(Function0 paramFunction0) {}
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public final void onClick(View paramView)
   {
-    a();
-    return null;
+    this.a.invoke();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

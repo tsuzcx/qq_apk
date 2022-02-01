@@ -1,15 +1,21 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.view.RIJDownloadView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-class ufp
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class ufp
   implements View.OnClickListener
 {
-  ufp(ufd paramufd) {}
+  ufp(ufn paramufn) {}
   
-  public void onClick(View paramView)
+  public final void onClick(View paramView)
   {
-    this.a.a.dismiss();
+    RIJDownloadView localRIJDownloadView = this.a.a();
+    if (localRIJDownloadView != null) {
+      localRIJDownloadView.a(8);
+    }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

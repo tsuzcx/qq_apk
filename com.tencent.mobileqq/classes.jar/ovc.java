@@ -1,22 +1,64 @@
-import org.jetbrains.annotations.Nullable;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class ovc
-  implements oxs
+public class ovc
+  implements seb
 {
-  ovc(ouu paramouu) {}
+  public ovc(ReadInJoyUploadAvatarFragment paramReadInJoyUploadAvatarFragment) {}
   
-  public void a(long paramLong, boolean paramBoolean1, int paramInt1, int paramInt2, @Nullable String paramString1, @Nullable String paramString2, int paramInt3, boolean paramBoolean2)
+  public void a() {}
+  
+  public void a(float paramFloat) {}
+  
+  public void a(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    if (paramBoolean2) {
-      this.a.a(paramLong, paramBoolean1, paramInt2, paramString1, paramString2, paramInt3);
+    QLog.d(ReadInJoyUploadAvatarFragment.a, 1, "onFileTransferFinished,retCode:" + paramInt + "  fileUrl:" + paramString1 + "  fileMd5:" + paramString2 + "  uuid:" + paramString3);
+    paramString3 = this.a.getActivity();
+    if (paramString3 == null)
+    {
+      QLog.e(ReadInJoyUploadAvatarFragment.a, 1, "onFileTransferFinished activity = null");
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    switch (paramInt)
+    {
+    default: 
+      QLog.e(ReadInJoyUploadAvatarFragment.a, 1, "onFileTransferFinished no handler, retCode=" + paramInt);
+      paramString1 = "";
+      paramString2 = "";
+      paramInt = 3;
     }
     for (;;)
     {
-      if (!paramBoolean1) {
-        oxr.a(paramInt1);
-      }
+      localBundle.putInt("retCode", paramInt);
+      localBundle.putString("msg", paramString2);
+      localBundle.putString("url", paramString1);
+      paramString1 = paramString3.getIntent();
+      paramString1.putExtra("Bundle", localBundle);
+      paramString3.setResult(-1, paramString1);
+      paramString3.finish();
       return;
-      this.a.a(paramLong, paramBoolean1, paramInt2, paramString1, paramInt3);
+      paramInt = 0;
+      paramString2 = anvx.a(2131712573);
+      continue;
+      paramString2 = anvx.a(2131712578);
+      paramString1 = "";
+      paramInt = 2;
+      continue;
+      paramString2 = anvx.a(2131712508);
+      paramString1 = "";
+      paramInt = 2;
+      continue;
+      paramString2 = anvx.a(2131712303);
+      paramString1 = "";
+      paramInt = 3;
+      continue;
+      paramString2 = anvx.a(2131712270);
+      paramString1 = "";
+      paramInt = 3;
     }
   }
 }

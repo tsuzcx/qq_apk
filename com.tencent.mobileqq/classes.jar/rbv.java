@@ -1,23 +1,22 @@
-import java.util.Deque;
-import java.util.LinkedList;
+import android.widget.PopupWindow.OnDismissListener;
 
 class rbv
+  implements PopupWindow.OnDismissListener
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  Deque<rbx> jdField_a_of_type_JavaUtilDeque = new LinkedList();
-  int b;
-  int c = 0;
-  private final int d = 50;
+  rbv(rbp paramrbp, blcn paramblcn) {}
   
-  rbv(rbt paramrbt) {}
-  
-  boolean a(rbx paramrbx)
+  public void onDismiss()
   {
-    if (this.jdField_a_of_type_JavaUtilDeque.size() >= 50) {
-      this.jdField_a_of_type_JavaUtilDeque.poll();
+    this.jdField_a_of_type_Blcn.a(1.0F);
+    if (this.jdField_a_of_type_Rbp.a.c())
+    {
+      spg localspg = this.jdField_a_of_type_Rbp.a.a();
+      if (localspg != null)
+      {
+        localspg.c();
+        this.jdField_a_of_type_Rbp.a.b(false);
+      }
     }
-    return this.jdField_a_of_type_JavaUtilDeque.offer(paramrbx);
   }
 }
 

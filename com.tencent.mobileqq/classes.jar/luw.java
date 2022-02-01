@@ -1,138 +1,46 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.redpacket.AVRedPacketManager;
 
 public class luw
-  extends ltz
+  extends lva
 {
-  public boolean a;
+  public int b;
+  
+  public luw()
+  {
+    this.jdField_b_of_type_Int = 667;
+    this.c = new lvm[8];
+    this.jdField_b_of_type_Long = 1250L;
+  }
   
   public void a(long paramLong)
   {
-    long l = paramLong - this.jdField_a_of_type_Long;
-    int k = 0;
-    int j = 0;
-    int i;
-    float f;
-    if (this.jdField_a_of_type_Boolean) {
-      if ((l > 0L) && (l < 100L))
-      {
-        i = (int)(255L * l / 100L);
-        if ((l <= 0L) || (l > 200L)) {
-          break label226;
-        }
-        f = -0.0035F * (float)l + 1.5F;
-      }
+    super.a(paramLong);
+    long l = this.a;
+    int i = 0;
+    if (paramLong - l <= this.jdField_b_of_type_Long) {
+      i = 255;
     }
-    label539:
-    for (;;)
-    {
-      QLog.d("RedPacketGameParticleTopWordTip", 2, "WL_DEBUG update duration = " + l + ", alpha = " + i + ", scale = " + f + ", curTime = " + paramLong + ", mStartTime = " + this.jdField_a_of_type_Long);
-      a(i);
-      b(f);
-      return;
-      if ((l >= 100L) && (l <= 1200L))
-      {
-        i = 255;
-        break;
-      }
-      i = j;
-      if (l <= 1200L) {
-        break;
-      }
-      i = j;
-      if (l >= 1250L) {
-        break;
-      }
-      i = (int)(255L * (l - 1250L) / -50L);
-      break;
-      label226:
-      if ((l > 200L) && (l <= 350L))
-      {
-        f = 0.001333333F * (float)l + 0.5333334F;
-      }
-      else if ((l > 350L) && (l <= 450L))
-      {
-        f = -0.001F * (float)l + 1.35F;
-      }
-      else if ((l > 450L) && (l <= 550L))
-      {
-        f = 0.001F * (float)l + 0.45F;
-      }
-      else if ((l > 550L) && (l <= 1100L))
-      {
-        f = 1.0F;
-      }
-      else if ((l > 1100L) && (l <= 1150L))
-      {
-        f = 0.0016F * (float)l - 0.76F;
-      }
-      else if ((l > 1150L) && (l <= 1250L))
-      {
-        f = -0.0108F * (float)l + 13.5F;
-      }
-      else
-      {
-        f = 0.0F;
-        continue;
-        if ((l > 0L) && (l < 100L)) {
-          i = (int)(255L * l / 100L);
-        }
-        for (;;)
-        {
-          if ((l <= 0L) || (l > 200L)) {
-            break label539;
-          }
-          f = -0.0035F * (float)l + 1.5F;
-          break;
-          if ((l >= 100L) && (l <= 700L))
-          {
-            i = 255;
-          }
-          else
-          {
-            i = k;
-            if (l > 700L)
-            {
-              i = k;
-              if (l < 750L) {
-                i = (int)(255L * (l - 750L) / -50L);
-              }
-            }
-          }
-        }
-        if ((l > 200L) && (l <= 350L)) {
-          f = 0.001333333F * (float)l + 0.5333334F;
-        } else if ((l > 350L) && (l <= 450L)) {
-          f = -0.001F * (float)l + 1.35F;
-        } else if ((l > 450L) && (l <= 550L)) {
-          f = 0.001F * (float)l + 0.45F;
-        } else if ((l > 550L) && (l <= 600L)) {
-          f = 1.0F;
-        } else if ((l > 600L) && (l <= 650L)) {
-          f = 0.0016F * (float)l + 0.04F;
-        } else if ((l > 650L) && (l <= 750L)) {
-          f = -0.0108F * (float)l + 8.1F;
-        } else {
-          f = 0.0F;
-        }
-      }
-    }
+    a(i);
   }
   
-  public void a(boolean paramBoolean)
+  public void a(AVRedPacketManager paramAVRedPacketManager)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    int i = 0;
+    while (i < this.c.length)
+    {
+      this.c[i] = new lvm(paramAVRedPacketManager.a("qav_redpacket_excellent_" + i * 2 + ".png"));
+      i += 1;
+    }
   }
   
   public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    paramInt2 = paramInt1 * 39 / 750;
-    paramInt3 = paramInt1 * 59 / 750;
-    a(paramInt2, paramInt3, paramInt1 - paramInt2, paramInt1 * 268 / 750 + paramInt3);
+    a(0, 0, paramInt1, this.jdField_b_of_type_Int * paramInt1 / 750);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     luw
  * JD-Core Version:    0.7.0.1
  */

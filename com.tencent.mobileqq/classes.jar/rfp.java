@@ -1,33 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.articlesummary.articlesummary.SubscriptInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class rfp
+class rfp
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
+  rfp(rfo paramrfo) {}
   
-  public static void a(BaseArticleInfo paramBaseArticleInfo, articlesummary.SubscriptInfo paramSubscriptInfo)
+  public void onClick(View paramView)
   {
-    if (paramBaseArticleInfo == null)
-    {
-      QLog.d("SubscriptInfo", 2, "articleinfo == null");
-      return;
+    pnw localpnw = this.a.jdField_a_of_type_Szd.a().a();
+    if (localpnw != null) {
+      localpnw.a(null, ((qfw)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
     }
-    paramBaseArticleInfo.subscriptWording = qlg.a(paramSubscriptInfo.bytes_subscript_txt, "");
-    paramBaseArticleInfo.subscriptWordingColor = qlg.a(paramSubscriptInfo.bytes_subscript_color, "");
-    paramBaseArticleInfo.subscriptBgColor = qlg.a(paramSubscriptInfo.bytes_background_color, "");
-    paramBaseArticleInfo.subscriptLocation = qlg.a(paramSubscriptInfo.uint32_is_show_top, 0);
-    paramBaseArticleInfo.subscriptType = qlg.a(paramSubscriptInfo.uint32_subscript_type, 0);
-    QLog.d("SubscriptInfo", 2, "parseByPB | wording: " + paramBaseArticleInfo.subscriptWording + " \ntxtColor : " + paramBaseArticleInfo.subscriptWordingColor + " \nbgColor : " + paramBaseArticleInfo.subscriptBgColor + " \nisShowTop : " + paramBaseArticleInfo.subscriptLocation + " \ntype : " + paramBaseArticleInfo.subscriptType + " \n");
-  }
-  
-  public String toString()
-  {
-    return "SubscriptInfo{wording='" + this.jdField_a_of_type_JavaLangString + '\'' + ", wordingColor='" + this.jdField_b_of_type_JavaLangString + '\'' + ", bgColor='" + this.c + '\'' + ", type=" + this.jdField_a_of_type_Int + ", location=" + this.jdField_b_of_type_Int + '}';
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

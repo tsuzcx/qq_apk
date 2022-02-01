@@ -1,19 +1,19 @@
 package com.tencent.biz.richframework.preload;
 
-import zal;
-import zam;
-import zas;
+import zpq;
+import zpr;
+import zpx;
 
 class Worker$2
   implements Runnable
 {
-  Worker$2(Worker paramWorker, zas paramzas, Object[] paramArrayOfObject) {}
+  Worker$2(Worker paramWorker, zpx paramzpx, Object[] paramArrayOfObject) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Zas.a(this.jdField_a_of_type_ArrayOfJavaLangObject);
+    this.jdField_a_of_type_Zpx.a(this.jdField_a_of_type_ArrayOfJavaLangObject);
     if (this.this$0.a.a) {
-      zam.a(Worker.a(this.this$0));
+      zpr.a(Worker.a(this.this$0));
     }
   }
 }

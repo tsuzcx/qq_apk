@@ -1,22 +1,16 @@
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ocj
+class ocj
+  implements View.OnClickListener
 {
-  public ocj(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, boolean paramBoolean1, int paramInt, boolean paramBoolean2, String paramString, long paramLong) {}
+  ocj(oci paramoci) {}
   
-  @QQPermissionDenied(1)
-  public void denied()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
-  }
-  
-  @QQPermissionGrant(1)
-  public void grant()
-  {
-    SosoInterface.startLocation(new ocv(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, 0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long));
+    this.a.a.a(this.a.a.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

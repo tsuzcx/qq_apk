@@ -1,82 +1,39 @@
-import java.lang.ref.WeakReference;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowRequest;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoRequest;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
-public class bgiv<E>
+public class bgiv
 {
-  private HashMap<String, CopyOnWriteArrayList<E>> a = new HashMap();
-  
-  public List<E> a(String paramString)
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, ntf paramntf)
   {
-    try
-    {
-      CopyOnWriteArrayList localCopyOnWriteArrayList = (CopyOnWriteArrayList)this.a.get(paramString);
-      paramString = localCopyOnWriteArrayList;
-      if (localCopyOnWriteArrayList == null) {
-        paramString = Collections.emptyList();
-      }
-      return paramString;
-    }
-    finally {}
-  }
-  
-  public void a(String paramString, E paramE)
-  {
-    try
-    {
-      CopyOnWriteArrayList localCopyOnWriteArrayList2 = (CopyOnWriteArrayList)this.a.get(paramString);
-      CopyOnWriteArrayList localCopyOnWriteArrayList1 = localCopyOnWriteArrayList2;
-      if (localCopyOnWriteArrayList2 == null)
-      {
-        localCopyOnWriteArrayList1 = new CopyOnWriteArrayList();
-        this.a.put(paramString, localCopyOnWriteArrayList1);
-      }
-      localCopyOnWriteArrayList1.add(paramE);
+    if (paramLong <= 0L) {
       return;
     }
-    finally {}
+    mobileqq_mp.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
+    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.4.10,3,4875");
+    localGetPublicAccountDetailInfoRequest.version.set(1);
+    localGetPublicAccountDetailInfoRequest.seqno.set(0);
+    localGetPublicAccountDetailInfoRequest.luin.set(paramLong);
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("uin", paramLong);
+    ntb.a(paramQQAppInterface, paramntf, localGetPublicAccountDetailInfoRequest.toByteArray(), "PubAccountSvc.get_detail_info", localBundle);
   }
   
-  public void a(String paramString, Object paramObject, boolean paramBoolean)
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, ntf paramntf, Bundle paramBundle)
   {
-    try
-    {
-      paramString = (CopyOnWriteArrayList)this.a.get(paramString);
-      if (paramString != null)
-      {
-        if (paramBoolean)
-        {
-          Iterator localIterator = paramString.iterator();
-          while (localIterator.hasNext())
-          {
-            Object localObject1 = localIterator.next();
-            Object localObject2 = ((WeakReference)localObject1).get();
-            if ((localObject2 == null) || (localObject2 == paramObject)) {
-              paramString.remove(localObject1);
-            }
-          }
-        }
-        paramString.remove(paramObject);
-      }
+    mobileqq_mp.FollowRequest localFollowRequest = new mobileqq_mp.FollowRequest();
+    localFollowRequest.luin.set(paramLong);
+    localFollowRequest.ext.set("0");
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
     }
-    finally {}
-  }
-  
-  public List<E> b(String paramString)
-  {
-    try
-    {
-      CopyOnWriteArrayList localCopyOnWriteArrayList = (CopyOnWriteArrayList)this.a.remove(paramString);
-      paramString = localCopyOnWriteArrayList;
-      if (localCopyOnWriteArrayList == null) {
-        paramString = Collections.emptyList();
-      }
-      return paramString;
-    }
-    finally {}
+    ntb.a(paramQQAppInterface, paramntf, localFollowRequest.toByteArray(), "PubAccountSvc.follow", localBundle);
+    olh.a(paramQQAppInterface, "" + paramLong, 0);
   }
 }
 

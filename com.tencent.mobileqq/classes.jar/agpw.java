@@ -1,30 +1,120 @@
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.activity.aio.item.ArkSSODataRequest.2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import java.lang.ref.WeakReference;
 
 public class agpw
-  implements View.OnClickListener
+  extends agpj
 {
-  public agpw(StructingMsgItemBuilder paramStructingMsgItemBuilder, AbsShareMsg paramAbsShareMsg) {}
+  private static int d;
+  private WeakReference<QQAppInterface> a;
+  private int c;
+  protected String c;
   
-  public void onClick(View paramView)
+  agpw(QQAppInterface paramQQAppInterface, String paramString)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgActionData;
-    int i = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.uinType;
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      localObject = bfwg.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_AndroidContentContext, (String)localObject);
-      if (localObject != null)
-      {
-        ((bfvp)localObject).b("webview");
-        ((bfvp)localObject).a("uin_type", i + "");
-        ((bfvp)localObject).a();
-      }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_c_of_type_JavaLangString = paramString;
+  }
+  
+  private void b(int paramInt)
+  {
+    WeakReference localWeakReference = new WeakReference(this);
+    ArkAppCenter.a().post(this.jdField_c_of_type_JavaLangString, new ArkSSODataRequest.2(this, localWeakReference, paramInt));
+  }
+  
+  protected String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    while ((paramString.length() < 6) || (!paramString.substring(0, 6).equalsIgnoreCase("sso://"))) {
+      return null;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    int i = paramString.indexOf('/', 6);
+    if (i == -1) {
+      return paramString.substring(6);
+    }
+    return paramString.substring(6, i);
+  }
+  
+  public void a()
+  {
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_b_of_type_JavaLangString = null;
+    a(null);
+  }
+  
+  public void a(int paramInt1, int paramInt2, String paramString)
+  {
+    if (paramInt1 != this.jdField_c_of_type_Int) {
+      ArkAppCenter.c("ArkApp.SSODataRequest", String.format("# onComplete, req canceled, cookie=%d-%d, ret=%d, rsp=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(this.jdField_c_of_type_Int), Integer.valueOf(paramInt2), paramString }));
+    }
+    do
+    {
+      return;
+      this.jdField_b_of_type_Int = paramInt2;
+      this.jdField_b_of_type_JavaLangString = paramString;
+      this.jdField_c_of_type_Int = 0;
+      paramString = this.jdField_a_of_type_Agpk;
+      this.jdField_a_of_type_Agpk = null;
+    } while (paramString == null);
+    paramString.a();
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (!super.a(paramString))
+    {
+      ArkAppCenter.c("ArkApp.SSODataRequest", String.format("# fail to open, url=%s", new Object[] { paramString }));
+      return false;
+    }
+    return true;
+  }
+  
+  protected boolean a(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    Object localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject == null)
+    {
+      ArkAppCenter.c("ArkApp.SSODataRequest", String.format("# fail to send, app is null, url=%s, req=%s", new Object[] { this.jdField_a_of_type_JavaLangString, paramString2 }));
+      return false;
+    }
+    localObject = ((ArkAppCenter)((QQAppInterface)localObject).getManager(QQManagerFactory.ARK_APP_CENTER_MANAGER)).a();
+    WeakReference localWeakReference = new WeakReference(this);
+    return ((apyz)localObject).a(paramString1, paramString2, this.jdField_a_of_type_Int, paramInt2, new agpx(this, localWeakReference));
+  }
+  
+  public boolean b(String paramString)
+  {
+    boolean bool = true;
+    if ((this.jdField_c_of_type_Int != 0) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    {
+      ArkAppCenter.c("ArkApp.SSODataRequest", String.format("# fail to send, cookie=%d, url=%s, req=%s", new Object[] { Integer.valueOf(this.jdField_c_of_type_Int), this.jdField_a_of_type_JavaLangString, paramString }));
+      bool = false;
+    }
+    int i;
+    String str;
+    do
+    {
+      return bool;
+      i = d + 1;
+      d = i;
+      this.jdField_c_of_type_Int = i;
+      str = a(this.jdField_a_of_type_JavaLangString);
+      if (TextUtils.isEmpty(str))
+      {
+        ArkAppCenter.c("ArkApp.SSODataRequest", String.format("# fail to send, cmd is empty, cookie=%d, url=%s, reqData=%s", new Object[] { Integer.valueOf(i), this.jdField_a_of_type_JavaLangString, paramString }));
+        b(i);
+        return true;
+      }
+    } while (a(str, paramString, this.jdField_a_of_type_Int, i));
+    ArkAppCenter.c("ArkApp.SSODataRequest", String.format("# fail to send, sso.sendAppMsg fail, cookie=%d, url=%s, reqData=%s", new Object[] { Integer.valueOf(i), this.jdField_a_of_type_JavaLangString, paramString }));
+    b(i);
+    return true;
   }
 }
 

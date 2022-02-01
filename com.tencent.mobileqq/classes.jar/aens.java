@@ -1,42 +1,24 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.20;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x74f.oidb_cmd0x74f.RspBody;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aens
-  extends nmf
+  implements View.OnClickListener
 {
-  public aens(TroopMemberListActivity.20 param20) {}
+  public aens(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
-    do
+    String str = this.a.getIntent().getStringExtra("uin");
+    if ((str != null) && (str.equals(this.a.app.getCurrentAccountUin())))
     {
-      for (;;)
-      {
-        return;
-        try
-        {
-          paramBundle = new oidb_cmd0x74f.RspBody();
-          paramBundle.mergeFrom(paramArrayOfByte);
-          if ((paramBundle.uint32_ret_code.get() == 0) && (paramBundle.bool_display_entrance.get()))
-          {
-            TroopMemberListActivity.a(this.a.this$0, paramBundle.range.get());
-            TroopMemberListActivity.c(this.a.this$0);
-            TroopMemberListActivity.a(this.a.this$0, paramBundle.uint64_next_pull_time.get());
-            return;
-          }
-        }
-        catch (Exception paramArrayOfByte) {}
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("TroopMemberListActivityget_troop_member", 2, "initListView, get0x74f：failed");
+      ProfileLabelEditorActivity.a(this.a);
+      bdla.b(this.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "4", "", "", "");
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

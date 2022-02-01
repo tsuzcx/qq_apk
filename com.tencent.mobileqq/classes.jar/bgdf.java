@@ -1,36 +1,64 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.QLog;
 
 public class bgdf
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+  extends aofu
 {
-  public int a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  bgdb jdField_a_of_type_Bgdb;
-  bgdg jdField_a_of_type_Bgdg;
-  ImageView b;
+  public bgdf(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
   
-  public bgdf(View paramView, bgdb parambgdb, bgdg parambgdg)
+  public void onQueryJoinTroopCanNoVerify(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2)
   {
-    super(paramView);
-    this.jdField_a_of_type_Bgdb = parambgdb;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364727));
-    this.b = ((ImageView)paramView.findViewById(2131364728));
-    paramView.setOnClickListener(this);
-    this.jdField_a_of_type_Bgdg = parambgdg;
+    if (!paramString1.equals(this.a.a.troopUin)) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("VisitorTroopCardFragment.Activity", 2, "onQueryJoinTroopCanNoVerify result:" + paramBoolean);
+      }
+    } while (VisitorTroopCardFragment.a(this.a, paramBoolean, paramInt2));
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VisitorTroopCardFragment.Activity", 2, "onQueryJoinTroopCanNoVerify noVerify:" + paramInt1);
+      }
+      this.a.b = paramInt1;
+      this.a.c = paramInt2;
+      if ((this.a.b == 1) && (paramInt2 == 0))
+      {
+        if (this.a.a.isHomeworkTroop())
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("VisitorTroopCardFragment.Activity", 2, "onQueryJoinTroopCanNoVerify isHomeworkTroop true");
+          }
+          this.a.b(1);
+          return;
+        }
+        this.a.e();
+        return;
+      }
+      VisitorTroopCardFragment.b(this.a);
+      return;
+    }
+    VisitorTroopCardFragment.b(this.a);
   }
   
-  public void onClick(View paramView)
+  public void onQueryJoinTroopWhetherHighRisk(boolean paramBoolean, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Bgdb.a(this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Bgdg != null) {
-      this.jdField_a_of_type_Bgdg.a(this.jdField_a_of_type_Bgdb.a(this.jdField_a_of_type_Int));
+    if (!paramString.equals(this.a.a.troopUin)) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("VisitorTroopCardFragment.Activity", 2, "onQueryJoinTroopCanNoVerify result:" + paramBoolean + "highRiskTroop" + paramInt);
+      }
+    } while (VisitorTroopCardFragment.a(this.a, paramBoolean, paramInt));
+    if (paramBoolean) {}
+    for (this.a.c = paramInt;; this.a.c = 0)
+    {
+      VisitorTroopCardFragment.b(this.a);
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

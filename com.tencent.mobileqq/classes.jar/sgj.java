@@ -1,24 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import android.app.Activity;
+import android.database.ContentObserver;
+import android.net.Uri;
+import android.os.Handler;
+import android.provider.Settings.System;
 
-final class sgj
-  implements sym
+class sgj
+  extends ContentObserver
 {
-  sgj(BaseArticleInfo paramBaseArticleInfo, URL paramURL) {}
-  
-  public void a(syo paramsyo, int paramInt) {}
-  
-  public void a(syo paramsyo, Throwable paramThrowable)
+  sgj(sgi paramsgi, Handler paramHandler)
   {
-    QLog.e(sgi.a, 2, "preload failed " + this.jdField_a_of_type_JavaNetURL);
+    super(paramHandler);
   }
   
-  public void a(syo paramsyo, syk paramsyk)
+  public void onChange(boolean paramBoolean, Uri paramUri)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.setHasFirstFramePreload(true);
-    if (QLog.isColorLevel()) {
-      QLog.d(sgi.a, 2, "preload success width: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.getFirstFrameWidth() + ", height: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.getFirstFrameHeight() + ", " + this.jdField_a_of_type_JavaNetURL + ", title: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mTitle);
+    super.onChange(paramBoolean, paramUri);
+    int i = Settings.System.getInt(sgi.a(this.a).getContentResolver(), "screen_brightness", 125);
+    if ((sgi.a(this.a)) && (i > 0)) {
+      this.a.a(i / 255.0F);
     }
   }
 }

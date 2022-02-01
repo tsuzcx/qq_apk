@@ -1,18 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.data.CommentData;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.SubCommentData;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity.13.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class owk
+  extends anvi
 {
-  public String a;
-  public List<CommentData> a = new ArrayList();
-  public boolean a;
-  public List<SubCommentData> b = new ArrayList();
+  public owk(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  public boolean a()
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    return (this.a != null) && (this.a.size() > 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyDeliverBiuActivity", 2, "current uin = " + paramString + " is success " + paramBoolean);
+    }
+    if (paramBoolean) {
+      ThreadManager.getUIHandler().post(new ReadInJoyDeliverBiuActivity.13.1(this));
+    }
   }
 }
 

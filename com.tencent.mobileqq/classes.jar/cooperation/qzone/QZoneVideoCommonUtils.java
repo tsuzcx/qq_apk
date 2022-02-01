@@ -6,7 +6,7 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import babd;
+import bbhm;
 import com.tencent.mobileqq.shortvideo.mediacodec.ShortVideoCodec;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -54,7 +54,7 @@ public class QZoneVideoCommonUtils
         }
         else
         {
-          paramBundle = paramActivity.getString(2131717153);
+          paramBundle = paramActivity.getString(2131717516);
         }
         if (paramonForwardVideoActivityFailedListener != null) {
           paramonForwardVideoActivityFailedListener.onFail(paramActivity, paramBundle);
@@ -96,7 +96,7 @@ public class QZoneVideoCommonUtils
         }
         else
         {
-          str = paramActivity.getString(2131717153);
+          str = paramActivity.getString(2131717516);
         }
         if (paramonForwardVideoActivityFailedListener != null) {
           paramonForwardVideoActivityFailedListener.onFail(paramActivity, str);
@@ -272,7 +272,7 @@ public class QZoneVideoCommonUtils
       }
       return QZoneVideoCommonUtils.VideoSupport.ExternalSpaceBanned;
     }
-    if (!babd.a())
+    if (!bbhm.a())
     {
       if (QLog.isColorLevel()) {
         QLog.i("QZoneVideoCommonUtils", 2, "CaptureUtil.supportCapture is false");

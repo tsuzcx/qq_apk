@@ -1,44 +1,27 @@
-final class aptz
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.TelSchemeHandler.1;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+
+public class aptz
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b;
-  private final String c;
+  public aptz(ArkAppSchemeCenter.TelSchemeHandler.1 param1, QQCustomDialog paramQQCustomDialog) {}
   
-  public aptz(int paramInt, String paramString1, long paramLong, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.b = paramString2;
-    this.c = (this.jdField_a_of_type_Int + "-" + this.jdField_a_of_type_JavaLangString + "-" + this.jdField_a_of_type_Long);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (!(paramObject instanceof aptz)) {}
-    do
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
+    try
     {
-      return false;
-      paramObject = (aptz)paramObject;
-    } while ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long));
-    return true;
-  }
-  
-  public int hashCode()
-  {
-    return this.c.hashCode();
-  }
-  
-  public String toString()
-  {
-    return "Entry{type=" + this.jdField_a_of_type_Int + ", key='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin=" + this.jdField_a_of_type_Long + ", path='" + this.b + '\'' + '}';
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      return;
+    }
+    catch (Exception paramDialogInterface) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aptz
  * JD-Core Version:    0.7.0.1
  */

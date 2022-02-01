@@ -1,9 +1,8 @@
 package com.tencent.qapmsdk.impl.instrumentation.a;
 
-import com.tencent.qapmsdk.impl.instrumentation.b.c;
 import com.tencent.qapmsdk.impl.instrumentation.b.d;
 import com.tencent.qapmsdk.impl.instrumentation.b.f;
-import com.tencent.qapmsdk.impl.instrumentation.g;
+import com.tencent.qapmsdk.impl.instrumentation.h;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -14,18 +13,18 @@ public class b
   implements d, HttpEntity
 {
   private final HttpEntity a;
-  private final g b;
+  private final h b;
   
-  public b(HttpEntity paramHttpEntity, g paramg)
+  public b(HttpEntity paramHttpEntity, h paramh)
   {
     this.a = paramHttpEntity;
-    this.b = paramg;
+    this.b = paramh;
   }
   
-  public void a(c paramc)
+  public void a(com.tencent.qapmsdk.impl.instrumentation.b.c paramc)
   {
     ((f)paramc.getSource()).b(this);
-    com.tencent.qapmsdk.impl.instrumentation.b.a(this.b, paramc.b());
+    com.tencent.qapmsdk.impl.instrumentation.c.a(this.b, paramc.b());
     if (!this.b.f())
     {
       this.b.b(paramc.a());
@@ -33,7 +32,7 @@ public class b
     }
   }
   
-  public void b(c paramc)
+  public void b(com.tencent.qapmsdk.impl.instrumentation.b.c paramc)
   {
     ((f)paramc.getSource()).b(this);
     this.b.b(paramc.a());
@@ -48,7 +47,7 @@ public class b
     }
     catch (IOException localIOException)
     {
-      com.tencent.qapmsdk.impl.instrumentation.b.a(this.b, localIOException);
+      com.tencent.qapmsdk.impl.instrumentation.c.a(this.b, localIOException);
       if (!this.b.f()) {
         com.tencent.qapmsdk.impl.d.a.a(this.b.j(), localIOException);
       }
@@ -71,7 +70,7 @@ public class b
     }
     catch (IOException localIOException)
     {
-      com.tencent.qapmsdk.impl.instrumentation.b.a(this.b, localIOException);
+      com.tencent.qapmsdk.impl.instrumentation.c.a(this.b, localIOException);
       if (!this.b.f()) {
         com.tencent.qapmsdk.impl.d.a.a(this.b.j(), localIOException);
       }
@@ -79,7 +78,7 @@ public class b
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      com.tencent.qapmsdk.impl.instrumentation.b.a(this.b, localIllegalStateException);
+      com.tencent.qapmsdk.impl.instrumentation.c.a(this.b, localIllegalStateException);
       if (!this.b.f()) {
         com.tencent.qapmsdk.impl.d.a.a(this.b.j(), localIllegalStateException);
       }
@@ -133,7 +132,7 @@ public class b
     }
     catch (IOException paramOutputStream)
     {
-      com.tencent.qapmsdk.impl.instrumentation.b.a(this.b, paramOutputStream);
+      com.tencent.qapmsdk.impl.instrumentation.c.a(this.b, paramOutputStream);
       if (!this.b.f()) {
         com.tencent.qapmsdk.impl.d.a.a(this.b.j(), paramOutputStream);
       }

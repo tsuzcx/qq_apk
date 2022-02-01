@@ -1,21 +1,26 @@
 import android.os.Handler;
+import android.os.Message;
 import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.qzone.util.QZLog;
+import dov.com.qq.im.ae.album.logic.AEPhotoListLogicDefault.7.1;
+import mqq.util.WeakReference;
 
-class bnag
+public class bnag
   implements VideoCompositeHelper.VideoCompositeCallBack
 {
-  bnag(bnaf parambnaf) {}
-  
   public void onVideoCompositeFinish(int paramInt, String paramString1, String paramString2)
   {
-    this.a.a.b();
     if (paramInt == 0)
     {
-      this.a.a.a.sendEmptyMessage(3);
+      QZLog.d("PhotoListActivity", 2, new Object[] { "encode video cost time = ", Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
+      ThreadManager.postImmediately(new AEPhotoListLogicDefault.7.1(this), null, true);
       return;
     }
-    this.a.a.a.sendEmptyMessage(5);
+    paramString1 = Message.obtain();
+    paramString1.what = 2;
+    paramString1.obj = Integer.valueOf(paramInt);
+    ((bmza)this.jdField_a_of_type_Bnaa.a.get()).a.sendMessage(paramString1);
   }
 }
 

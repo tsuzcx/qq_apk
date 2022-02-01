@@ -1,16 +1,18 @@
-class asjv
-  extends asjn
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionBaseFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class asjv
+  implements View.OnClickListener
 {
-  asjv(asji paramasji)
-  {
-    super(paramasji);
-    this.a = true;
-    this.b = true;
-  }
+  public asjv(AIOEmotionBaseFragment paramAIOEmotionBaseFragment) {}
   
-  protected String a()
+  public void onClick(View paramView)
   {
-    return "StateEnd";
+    this.a.a("0X8009980");
+    this.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

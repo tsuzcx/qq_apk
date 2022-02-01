@@ -1,16 +1,19 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class ajxg
-  implements DialogInterface.OnClickListener
+public class ajxg
+  implements View.OnClickListener
 {
-  ajxg(Activity paramActivity) {}
+  public ajxg(Conversation paramConversation) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.setResult(-1);
-    this.a.finish();
+    this.a.a.b.performClick();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

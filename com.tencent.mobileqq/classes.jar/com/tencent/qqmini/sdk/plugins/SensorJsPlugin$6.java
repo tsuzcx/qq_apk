@@ -7,7 +7,7 @@ class SensorJsPlugin$6
   
   public void run()
   {
-    SensorJsPlugin.access$400(this.this$0, 400L);
+    SensorJsPlugin.access$100(this.this$0, 400L);
   }
 }
 

@@ -1,26 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.VideoInfo.RichTitleInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-final class rxd
-  implements View.OnClickListener
+class rxd
+  implements rxg
 {
-  private long jdField_a_of_type_Long;
+  rxd(rxb paramrxb) {}
   
-  rxd(TextView paramTextView, VideoInfo.RichTitleInfo paramRichTitleInfo, VideoInfo paramVideoInfo) {}
-  
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2, long paramLong)
   {
-    if ((this.jdField_a_of_type_Long == 0L) || (System.currentTimeMillis() - this.jdField_a_of_type_Long > 2000L))
-    {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      pay.a(this.jdField_a_of_type_AndroidWidgetTextView.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$RichTitleInfo.d);
-      rzu.a.b(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$RichTitleInfo.b);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    rxb.a(this.a).b(paramLong);
+    this.a.a((int)(rxb.a(this.a) * (float)paramLong));
+    rxb.a(this.a).a(rxb.a(this.a), false);
   }
 }
 

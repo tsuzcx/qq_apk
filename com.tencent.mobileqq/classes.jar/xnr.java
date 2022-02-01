@@ -1,58 +1,69 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 
-class xnr
-  implements vqp<wdu, vqm>
+public class xnr
+  extends wag<xnp, wsb>
 {
-  xnr(xnp paramxnp) {}
-  
-  public void a(@NonNull wdu paramwdu, @Nullable vqm paramvqm, @NonNull ErrorMessage paramErrorMessage)
+  public xnr(xnp paramxnp)
   {
-    paramvqm = (wdv)paramvqm;
-    int j = paramErrorMessage.errorCode;
-    int k = paramwdu.b.size();
-    if (paramvqm == null) {}
-    for (int i = 0;; i = paramvqm.jdField_a_of_type_JavaUtilList.size())
+    super(paramxnp);
+  }
+  
+  public void a(@NonNull xnp paramxnp, @NonNull wsb paramwsb)
+  {
+    if (xnp.a(paramxnp) != 1) {}
+    label149:
+    label209:
+    label218:
+    for (;;)
     {
-      xvv.d("Q.qqstory.home.data.FeedManager", "request feed item list from net rec , error :%d , req size :%d , resp size :%d , list :%s", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i), paramwdu.b });
-      if ((!paramErrorMessage.isFail()) && (paramvqm != null)) {
-        break;
-      }
-      paramwdu = paramwdu.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramwdu.hasNext())
+      return;
+      int i = 0;
+      StoryVideoItem localStoryVideoItem;
+      if (i < paramwsb.a.size())
       {
-        paramvqm = (xnh)paramwdu.next();
-        xnp.a().remove(paramvqm.a);
+        localStoryVideoItem = (StoryVideoItem)paramwsb.a.get(i);
+        if (!localStoryVideoItem.mVid.equals(xnp.a(paramxnp))) {}
       }
-    }
-    if (paramwdu.jdField_a_of_type_JavaUtilList.size() != paramvqm.jdField_a_of_type_JavaUtilList.size())
-    {
-      paramErrorMessage = new ArrayList();
-      paramwdu = paramwdu.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramwdu.hasNext())
+      for (paramwsb = localStoryVideoItem;; paramwsb = null)
       {
-        xnh localxnh = (xnh)paramwdu.next();
-        if (!paramvqm.jdField_a_of_type_JavaUtilHashSet.contains(localxnh.a))
+        if ((paramwsb == null) || (paramwsb.mErrorCode != 0)) {
+          break label218;
+        }
+        localStoryVideoItem = xnp.a(paramxnp).a();
+        i = localStoryVideoItem.comparedLevel;
+        int j = xnp.a(paramxnp).a.jdField_a_of_type_Int;
+        String str = xnp.a(paramxnp).a.jdField_a_of_type_JavaLangString;
+        xnp.a(paramxnp, xnp.a(paramxnp), str, false, i, j);
+        paramxnp = ((wke)wjs.a(2)).b(paramwsb.mOwnerUid);
+        if ((paramxnp != null) && (paramxnp.isVip))
         {
-          paramErrorMessage.add(localxnh.a);
-          xnp.a().remove(localxnh.a);
+          i = 1;
+          if (i == 0) {
+            break label209;
+          }
+        }
+        for (paramxnp = "2";; paramxnp = "1")
+        {
+          ykv.a("play_video", "multishoot_entry_clk", 0, j, new String[] { paramxnp, paramwsb.mVid, paramwsb.mOwnerUid, localStoryVideoItem.mVid });
+          return;
+          i += 1;
+          break;
+          i = 0;
+          break label149;
         }
       }
-      xvv.d("Q.qqstory.home.data.FeedManager", "request feed item list from net rec warning , some feed not return ! %s", new Object[] { paramErrorMessage });
-    }
-    paramwdu = paramvqm.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramwdu.hasNext())
-    {
-      paramvqm = (xpe)paramwdu.next();
-      this.a.a(paramvqm.a());
     }
   }
+  
+  public Class acceptEventClass()
+  {
+    return wsb.class;
+  }
+  
+  public void b(@NonNull xnp paramxnp, @NonNull wsb paramwsb) {}
 }
 
 

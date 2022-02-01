@@ -1,94 +1,56 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.LocalMultiProcConfig;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
+import java.util.UUID;
 
-public class atjz
-  extends QIPCModule
+class atjz
+  extends atjw
 {
-  private static volatile atjz a;
-  public static volatile boolean a;
+  private long jdField_a_of_type_Long;
+  private Bundle jdField_a_of_type_AndroidOsBundle;
+  private atju jdField_a_of_type_Atju;
+  private bfol jdField_a_of_type_Bfol = new atka(this);
+  private String jdField_a_of_type_JavaLangString;
+  private UUID jdField_a_of_type_JavaUtilUUID;
+  private boolean jdField_a_of_type_Boolean;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
   
-  private atjz(String paramString)
+  private atjz(atiy paramatiy, String paramString1, String paramString2)
   {
-    super(paramString);
+    super(paramatiy);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFilePath", this.jdField_b_of_type_JavaLangString);
+    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter begin filename " + this.jdField_a_of_type_JavaLangString);
   }
   
-  public static atjz a()
+  void a(String paramString, int paramInt)
   {
-    if (jdField_a_of_type_Atjz == null) {}
-    try
-    {
-      if (jdField_a_of_type_Atjz == null) {
-        jdField_a_of_type_Atjz = new atjz("FlutterSubQIPCModule");
-      }
-      return jdField_a_of_type_Atjz;
-    }
-    finally {}
+    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter stopped WorkerId[" + this.jdField_a_of_type_JavaUtilUUID + "] filename " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Boolean = true;
+    bfoh.a().a(this.jdField_a_of_type_JavaUtilUUID, null);
   }
   
-  public static void a()
+  void a(String paramString, int paramInt, atju paramatju)
   {
-    if (!jdField_a_of_type_Boolean) {}
-    try
+    if (paramatju == null)
     {
-      QIPCClientHelper.getInstance().register(a());
-      jdField_a_of_type_Boolean = true;
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter run but callback is null filename " + this.jdField_a_of_type_JavaLangString);
       return;
     }
-    catch (Exception localException)
-    {
-      QLog.d("FlutterSubQIPCModule", 1, "register", localException);
-    }
-  }
-  
-  public static void b()
-  {
-    try
-    {
-      if (QIPCClientHelper.getInstance().getClient() != null)
-      {
-        QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
-        jdField_a_of_type_Boolean = false;
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("FlutterSubQIPCModule", 1, "unregister", localException);
-    }
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    boolean bool1;
-    if ("ACTION_INSTALL_RESULT".equals(paramString))
-    {
-      bool1 = paramBundle.getBoolean("KEY_INSTALL_RESULT");
-      paramString = paramBundle.getString("KEY_INSTALL_DIR");
-      boolean bool2 = paramBundle.getBoolean("KEY_IS_ENGINE_EXIST");
-      boolean bool3 = paramBundle.getBoolean("KEY_IS_APP_EXIST");
-      QLog.d("FlutterSubQIPCModule", 1, String.format("install finish isSuccess: %s, installDir: %s, isEngineExist: %s, isAppExist: %s", new Object[] { Boolean.valueOf(bool1), paramString, Boolean.valueOf(bool2), Boolean.valueOf(bool3) }));
-      atke.a().a(bool1, paramString, bool2, bool3);
-    }
-    for (;;)
-    {
-      return null;
-      if ("ACTION_PREDOWNLOAD_RESULT".equals(paramString))
-      {
-        bool1 = paramBundle.getBoolean("KEY_INSTALL_RESULT");
-        QLog.d("FlutterSubQIPCModule", 1, "predownload finish isSuccess=" + bool1);
-        LocalMultiProcConfig.putBool("qzone_flutter_predownload_success", bool1);
-      }
-    }
+    this.jdField_a_of_type_Atju = paramatju;
+    this.jdField_b_of_type_Long = Long.parseLong(paramString);
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardReceiverUin", String.valueOf(this.jdField_b_of_type_Long));
+    this.jdField_a_of_type_JavaUtilUUID = UUID.randomUUID();
+    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter run WorkerId[" + this.jdField_a_of_type_JavaUtilUUID + "] filename " + this.jdField_a_of_type_JavaLangString);
+    bfoh.a().a(this.jdField_a_of_type_JavaUtilUUID, this.jdField_b_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Bfol);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atjz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
-import absn;
-import abso;
+import acim;
+import acin;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniLog;
-import oge;
+import onx;
 
 public class EcshopAdHandler$1
   implements Runnable
 {
-  public EcshopAdHandler$1(oge paramoge) {}
+  public EcshopAdHandler$1(onx paramonx) {}
   
   public void run()
   {
     MiniLog.init();
-    absn.a().a(BaseApplicationImpl.getApplication().getApplicationContext(), new abso());
+    acim.a().a(BaseApplicationImpl.getApplication().getApplicationContext(), new acin());
   }
 }
 

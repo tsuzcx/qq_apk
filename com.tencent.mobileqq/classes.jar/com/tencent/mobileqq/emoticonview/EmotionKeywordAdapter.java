@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import acvv;
+import admh;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
@@ -21,8 +21,8 @@ import android.widget.ImageView.ScaleType;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import avsq;
-import bcef;
+import awyr;
+import bdla;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -32,6 +32,7 @@ import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.data.EmoticonResp;
@@ -61,7 +62,7 @@ public class EmotionKeywordAdapter
   private int contentHeight;
   private int contentWidth;
   private List<Emoticon> data;
-  private avsq dbManager;
+  private awyr dbManager;
   private float density;
   URLDrawableDownListener drawableListener = new EmotionKeywordAdapter.1(this);
   private List<Emoticon> exposeReportData = new ArrayList();
@@ -92,7 +93,7 @@ public class EmotionKeywordAdapter
     this.contentHeight = ((int)(this.density * 80.0F));
     this.imgWidth = ((int)(this.density * 65.0F));
     this.imgHeight = ((int)(this.density * 65.0F));
-    this.dbManager = ((avsq)paramQQAppInterface.getManager(14));
+    this.dbManager = ((awyr)paramQQAppInterface.getManager(QQManagerFactory.EMOTICON_MANAGER));
     this.mBaseChatPie = paramBaseChatPie;
   }
   
@@ -286,7 +287,7 @@ public class EmotionKeywordAdapter
         paramView.addRule(13, -1);
         ((EmotionKeywordAdapter.ViewHolder)localObject1).contentLayout.addView(((EmotionKeywordAdapter.ViewHolder)localObject1).img, paramView);
         ((EmotionKeywordAdapter.ViewHolder)localObject1).progressBar = new ProgressBar(this.mContext);
-        ((EmotionKeywordAdapter.ViewHolder)localObject1).progressBar.setIndeterminateDrawable(this.mContext.getResources().getDrawable(2130839445));
+        ((EmotionKeywordAdapter.ViewHolder)localObject1).progressBar.setIndeterminateDrawable(this.mContext.getResources().getDrawable(2130839466));
         paramView = new RelativeLayout.LayoutParams((int)(this.density * 30.0F), (int)(this.density * 30.0F));
         paramView.addRule(13, -1);
         ((EmotionKeywordAdapter.ViewHolder)localObject1).contentLayout.addView(((EmotionKeywordAdapter.ViewHolder)localObject1).progressBar, paramView);
@@ -422,7 +423,7 @@ public class EmotionKeywordAdapter
           QLog.d("EmotionKeywordAdapter", 2, "onClick , " + localEmotionKeyword);
         }
         int i = this.data.indexOf(localObject) + 1;
-        bcef.b(this.app, "CliOper", "", "", "ep_mall", "Clk_associate", 0, 0, getReportNetType() + "", ((Emoticon)localObject).epId, ((Emoticon)localObject).eId + "_" + i, this.keyword);
+        bdla.b(this.app, "CliOper", "", "", "ep_mall", "Clk_associate", 0, 0, getReportNetType() + "", ((Emoticon)localObject).epId, ((Emoticon)localObject).eId + "_" + i, this.keyword);
         if (QLog.isColorLevel()) {
           QLog.d("EmotionKeywordAdapter", 2, "onclick report log : keyword" + this.keyword + "epId = " + ((Emoticon)localObject).epId + ",eid = " + ((Emoticon)localObject).eId + ",index = " + i);
         }
@@ -434,7 +435,7 @@ public class EmotionKeywordAdapter
       }
       for (;;)
       {
-        acvv.a(this.app, this.mContext, this.sessionInfo, (Emoticon)localObject);
+        admh.a(this.app, this.mContext, this.sessionInfo, (Emoticon)localObject);
         break;
         QLog.e("EmotionKeywordAdapter", 1, "onClick input == null");
       }
@@ -451,7 +452,7 @@ public class EmotionKeywordAdapter
       paramView.getGlobalVisibleRect(tmp);
       float f = this.mContext.getResources().getDisplayMetrics().density;
       EmojiStickerManager.StickerFrameLayout localStickerFrameLayout = new EmojiStickerManager.StickerFrameLayout(this.mContext);
-      localStickerFrameLayout.setId(2131373968);
+      localStickerFrameLayout.setId(2131374197);
       URLImageView localURLImageView = new URLImageView(this.mContext);
       localURLImageView.setAdjustViewBounds(false);
       localURLImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
@@ -467,7 +468,7 @@ public class EmotionKeywordAdapter
       localLayoutParams.addRule(11);
       localLayoutParams.addRule(10);
       localStickerFrameLayout.addView(paramView, localLayoutParams);
-      paramView.setImageDrawable(this.mContext.getResources().getDrawable(2130847079));
+      paramView.setImageDrawable(this.mContext.getResources().getDrawable(2130847177));
       paramView.setVisibility(4);
       paramView = new ImageView(this.mContext);
       localLayoutParams = new RelativeLayout.LayoutParams((int)(this.density * 20.0F), (int)(this.density * 20.0F));
@@ -475,7 +476,7 @@ public class EmotionKeywordAdapter
       localLayoutParams.addRule(12);
       localStickerFrameLayout.addView(paramView, localLayoutParams);
       paramView.setVisibility(4);
-      paramView.setImageDrawable(this.mContext.getResources().getDrawable(2130848481));
+      paramView.setImageDrawable(this.mContext.getResources().getDrawable(2130848573));
       int k = (int)(5.0F * f);
       int i = (int)(110.0F * f);
       int j = (int)(110.0F * f);
@@ -561,12 +562,12 @@ public class EmotionKeywordAdapter
         }
       }
       label224:
-      bcef.b(this.app, "CliOper", "", "", "ep_mall", "View_associate", 0, 0, getReportNetType() + "", "", localStringBuilder1.toString(), this.keyword);
-      bcef.b(this.app, "CliOper", "", "", "ep_mall", "View_associate_2", 0, 0, getReportNetType() + "", "", localStringBuilder2.toString(), this.keyword);
+      bdla.b(this.app, "CliOper", "", "", "ep_mall", "View_associate", 0, 0, getReportNetType() + "", "", localStringBuilder1.toString(), this.keyword);
+      bdla.b(this.app, "CliOper", "", "", "ep_mall", "View_associate_2", 0, 0, getReportNetType() + "", "", localStringBuilder2.toString(), this.keyword);
       if (localStringBuilder3.length() > 0)
       {
-        bcef.b(this.app, "CliOper", "", "", "ep_mall", "View_associate", 0, 0, getReportNetType() + "", "", localStringBuilder3.toString(), this.keyword);
-        bcef.b(this.app, "CliOper", "", "", "ep_mall", "View_associate_2", 0, 0, getReportNetType() + "", "", localStringBuilder4.toString(), this.keyword);
+        bdla.b(this.app, "CliOper", "", "", "ep_mall", "View_associate", 0, 0, getReportNetType() + "", "", localStringBuilder3.toString(), this.keyword);
+        bdla.b(this.app, "CliOper", "", "", "ep_mall", "View_associate_2", 0, 0, getReportNetType() + "", "", localStringBuilder4.toString(), this.keyword);
       }
       if (QLog.isColorLevel()) {
         QLog.d("EmotionKeywordAdapter", 2, "reportExposeData : keyword = " + this.keyword + "fistReportItem = " + localStringBuilder1.toString() + ";secondReportItem = " + localStringBuilder3 + ";fistEpReportItem = " + localStringBuilder2.toString() + ";secondEpReportItem = " + localStringBuilder4);
@@ -640,7 +641,7 @@ public class EmotionKeywordAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionKeywordAdapter
  * JD-Core Version:    0.7.0.1
  */

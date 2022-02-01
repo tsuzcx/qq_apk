@@ -1,25 +1,72 @@
 import android.os.Bundle;
-import com.tencent.biz.pubaccount.EncryptUinInfo;
-import com.tencent.mobileqq.app.BusinessObserver;
-import java.util.List;
+import com.tencent.biz.pubaccount.AccountDetail.activity.PubAccountMoreInfoActivity;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse;
 
-public abstract class nzt
+public class nzt
   implements BusinessObserver
 {
-  protected abstract void a(boolean paramBoolean, List<EncryptUinInfo> paramList, Bundle paramBundle);
+  public nzt(PubAccountMoreInfoActivity paramPubAccountMoreInfoActivity) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramObject != null) {}
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("PubAccountMoreInfoActivity", 2, "success:" + String.valueOf(paramBoolean));
+    }
+    if (!paramBoolean)
     {
-      paramObject = (Bundle)paramObject;
-      a(paramBoolean, paramObject.getParcelableArrayList("KEY_ENCRYPT_RESULT_LIST"), paramObject);
+      this.a.a(2131694983);
       return;
     }
-    catch (Exception paramObject) {}
-    a(false, null, new Bundle());
-    return;
+    for (;;)
+    {
+      byte[] arrayOfByte;
+      oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse;
+      try
+      {
+        arrayOfByte = paramBundle.getByteArray("data");
+        paramInt = paramBundle.getInt("type", 0);
+        if (arrayOfByte == null) {
+          break;
+        }
+        paramBundle = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
+        localGetPublicAccountDetailInfoResponse = new oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse();
+        if (paramInt == 0)
+        {
+          paramBundle.mergeFrom(arrayOfByte);
+          paramBoolean = true;
+          if (!paramBoolean) {
+            break;
+          }
+          if (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.get() != 0) {
+            break label259;
+          }
+          if ((this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null) && ((!paramBundle.seqno.has()) || (paramBundle.seqno.get() == this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.seqno))) {
+            break;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("PubAccountMoreInfoActivity", 2, "sendPublicAccountDetailInfoRequest: need update local data , new seqno = " + paramBundle.seqno.get());
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountDetailInfoResponse = paramBundle;
+          this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail = new AccountDetail(this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountDetailInfoResponse);
+          PubAccountMoreInfoActivity.a(this.a);
+          return;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        this.a.a(2131694983);
+        return;
+      }
+      paramBoolean = uuc.a(arrayOfByte, localGetPublicAccountDetailInfoResponse, paramBundle);
+    }
+    label259:
+    this.a.a(2131694983);
   }
 }
 

@@ -1,34 +1,62 @@
+import android.app.Activity;
+import android.content.res.Resources;
+import java.util.ArrayList;
+import java.util.List;
+
 public class yak
 {
-  public int a;
-  public long a;
-  public boolean a;
+  public static int a;
+  public static int b = 2;
+  public Activity a;
+  public String a;
+  private List<zgz> a;
+  public yhd a;
+  public int c;
+  public int d;
   
-  public boolean equals(Object paramObject)
+  static
   {
-    if (this == paramObject) {}
-    do
+    jdField_a_of_type_Int = 1;
+  }
+  
+  public yak(Activity paramActivity, int paramInt1, String paramString, int paramInt2, yhd paramyhd)
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.d = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramInt2;
+    this.jdField_a_of_type_Yhd = paramyhd;
+    if (paramInt2 == jdField_a_of_type_Int)
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (yak)paramObject;
-      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
-        return false;
-      }
-    } while (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long);
-    return false;
+      a();
+      return;
+    }
+    if (paramInt2 == b)
+    {
+      b();
+      return;
+    }
+    throw new IllegalStateException("setup profile list error because unknown list type.");
   }
   
-  public int hashCode()
+  private void a()
   {
-    return this.jdField_a_of_type_Int * 31 + (int)(this.jdField_a_of_type_Long ^ this.jdField_a_of_type_Long >>> 32);
+    this.jdField_a_of_type_JavaUtilList.add(new yay(this.jdField_a_of_type_AndroidAppActivity, this.d, this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_JavaUtilList.add(new yaw(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), this.jdField_a_of_type_AndroidAppActivity, 12, this.jdField_a_of_type_Yhd, false));
+    this.jdField_a_of_type_JavaUtilList.add(new yav(this.jdField_a_of_type_AndroidAppActivity, "FeedSegment", this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131699193), 2130846616, 2130846617));
   }
   
-  public String toString()
+  private void b()
   {
-    return "EditBehavior{hasMusic=" + this.jdField_a_of_type_Boolean + ", musicType=" + this.jdField_a_of_type_Int + ", musicId=" + this.jdField_a_of_type_Long + '}';
+    this.jdField_a_of_type_JavaUtilList.add(new yay(this.jdField_a_of_type_AndroidAppActivity, this.d, this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_JavaUtilList.add(new yba(this.jdField_a_of_type_AndroidAppActivity, this.d, this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_JavaUtilList.add(new yaz(this.jdField_a_of_type_AndroidAppActivity, this.d, this.jdField_a_of_type_JavaLangString));
+  }
+  
+  public List<zgz> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
   }
 }
 

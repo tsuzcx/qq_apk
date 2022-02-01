@@ -1,29 +1,50 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Goods;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class aqqn
-  implements Parcelable.Creator
+public class aqqn
+  implements aqqr
 {
-  public IPSiteModel.Goods a(Parcel paramParcel)
+  public String a()
   {
-    IPSiteModel.Goods localGoods = new IPSiteModel.Goods();
-    localGoods.cover = paramParcel.readString();
-    localGoods.goodsTags = paramParcel.readString();
-    localGoods.id = paramParcel.readString();
-    localGoods.name = paramParcel.readString();
-    localGoods.price = paramParcel.readString();
-    localGoods.saleTags = paramParcel.readString();
-    localGoods.svipPrice = paramParcel.readString();
-    localGoods.url = paramParcel.readString();
-    localGoods.moreUrl = paramParcel.readString();
-    localGoods.saleNum = paramParcel.readString();
-    return localGoods;
+    return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getApp().getResources().getString(2131692175);
   }
   
-  public IPSiteModel.Goods[] a(int paramInt)
+  public void a(View paramView, int paramInt)
   {
-    return new IPSiteModel.Goods[paramInt];
+    boolean bool2 = true;
+    Context localContext = paramView.getContext();
+    boolean bool1;
+    if (!((BaseActivity)paramView.getContext()).isInMultiWindow())
+    {
+      bool1 = true;
+      if (!(localContext instanceof BaseActivity)) {
+        break label121;
+      }
+      if (((BaseActivity)localContext).isInMultiWindow()) {
+        break label116;
+      }
+      bool1 = bool2;
+    }
+    label116:
+    label121:
+    for (;;)
+    {
+      paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      bmaf.a((Activity)localContext, paramView.getAccount(), null, -1, bool1);
+      bman.b(paramView, 6, 0);
+      bmar.a(paramView.getCurrentAccountUin());
+      bdla.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", 2, 0, "", "", "", "");
+      return;
+      bool1 = false;
+      break;
+      bool1 = false;
+    }
   }
 }
 

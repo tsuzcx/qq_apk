@@ -1,16 +1,30 @@
-import java.util.List;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.HorizontalListView;
+import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
 
-public abstract interface alrx
+class alrx
+  implements HorizontalListView.OnScrollStateChangedListener
 {
-  public abstract int a();
+  alrx(alrt paramalrt) {}
   
-  public abstract alrs a();
-  
-  public abstract void a(List<alrw> paramList, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract int b();
+  public void onScrollStateChanged(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PtvTemplateManager", 2, "ptv template listview onScrollStateChanged state: " + paramInt);
+    }
+    if (paramInt == 4097)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("PtvTemplateManager", 2, "ptv template listview onScrollStateChanged state is idle.");
+      }
+      this.a.b = this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.getFirstVisiblePosition();
+      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 400L);
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1000);
+  }
 }
 
 

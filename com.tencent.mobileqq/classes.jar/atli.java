@@ -1,54 +1,30 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.util.Log;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.Arrays;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 class atli
-  extends bdgm
+  extends MqqHandler
 {
-  atli(atky paramatky, boolean[] paramArrayOfBoolean, String[] paramArrayOfString1, String[] paramArrayOfString2, int[] paramArrayOfInt, int paramInt) {}
-  
-  public void a(int paramInt, boolean paramBoolean, Object[] paramArrayOfObject)
+  atli(atlh paramatlh, Looper paramLooper)
   {
-    super.a(paramInt, paramBoolean, paramArrayOfObject);
-    atky.e(this.jdField_a_of_type_Atky);
-    if (!paramBoolean)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      Log.d("onSentMessage", "onSentMessage() called with: type = [" + paramInt + "], result = [" + paramArrayOfObject[1] + "], isExpiredMessage: " + Arrays.toString(atky.a(this.jdField_a_of_type_Atky)) + " padId: " + Arrays.toString((Object[])paramArrayOfObject[0]));
-      if (((Integer)paramArrayOfObject[1]).intValue() == 505)
-      {
-        paramArrayOfObject = (String[])paramArrayOfObject[0];
-        paramInt = 0;
-        while (paramInt < this.jdField_a_of_type_ArrayOfBoolean.length)
-        {
-          if ((this.jdField_a_of_type_ArrayOfJavaLangString[paramInt].equals(paramArrayOfObject[0])) && (this.b[paramInt].equals(paramArrayOfObject[1])) && (this.jdField_a_of_type_ArrayOfInt[paramInt] == Integer.parseInt(paramArrayOfObject[2]))) {
-            atky.a(this.jdField_a_of_type_Atky)[paramInt] = 1;
-          }
-          paramInt += 1;
-        }
-      }
-      QQToast.a(this.jdField_a_of_type_Atky.jdField_a_of_type_AndroidAppActivity, "发送失败，请稍后重试。", 0).a();
-      this.jdField_a_of_type_Atky.d = 0;
-      this.jdField_a_of_type_Atky.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_Atky.jdField_a_of_type_AndroidAppActivity.setResult(15);
-      paramArrayOfObject = this.jdField_a_of_type_Atky;
-      paramInt = paramArrayOfObject.d + 1;
-      paramArrayOfObject.d = paramInt;
-    } while (paramInt != this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Atky.jdField_a_of_type_AndroidOsBundle.putBooleanArray("forward_write_together_is_expired", atky.a(this.jdField_a_of_type_Atky));
-    this.jdField_a_of_type_Atky.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
-    if (this.jdField_a_of_type_Atky.i())
-    {
-      atky.a(this.jdField_a_of_type_Atky);
+    default: 
       return;
     }
-    this.jdField_a_of_type_Atky.d();
+    if (QLog.isColorLevel()) {
+      QLog.i("FileManagerNotifyCenter<FileAssistant>", 1, "recv Netchang event!");
+    }
+    this.a.a.getFileManagerRSCenter().a(true);
+    this.a.a.getOnlineFileSessionCenter().b(-1);
+    atma.a();
   }
 }
 

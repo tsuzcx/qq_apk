@@ -8,19 +8,19 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.util.Pair;
 import java.util.List;
 import mqq.os.MqqHandler;
-import tql;
-import ttp;
+import ued;
+import uhw;
 
 public class AdDownloadProxy$1
   implements Runnable
 {
-  public AdDownloadProxy$1(tql paramtql) {}
+  public AdDownloadProxy$1(ued paramued) {}
   
   public void run()
   {
     if ((this.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.gameAdComData != null) && (!TextUtils.isEmpty(this.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.gameAdComData.d)) && (this.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.gameAdComData.u != null))
     {
-      Pair localPair = ttp.a(this.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.gameAdComData.d);
+      Pair localPair = uhw.a(this.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.gameAdComData.d);
       if (((this.this$0.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (localPair.first != null) && (((List)localPair.first).size() > 0))
       {
         Activity localActivity = (Activity)this.this$0.jdField_a_of_type_AndroidContentContext;
@@ -36,7 +36,7 @@ public class AdDownloadProxy$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.AdDownloadProxy.1
  * JD-Core Version:    0.7.0.1
  */

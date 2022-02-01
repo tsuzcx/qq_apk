@@ -6,15 +6,15 @@ import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
-import oxr;
-import oxs;
+import pgv;
+import pgx;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "errorCode", "", "<anonymous parameter 1>", "", "invoke"}, k=3, mv={1, 1, 16})
 public final class RIJCommentNetworkHelper$createSubComment$2
   extends Lambda
   implements Function2<Integer, String, Unit>
 {
-  public RIJCommentNetworkHelper$createSubComment$2(oxs paramoxs, long paramLong1, String paramString, int paramInt, boolean paramBoolean, long paramLong2)
+  public RIJCommentNetworkHelper$createSubComment$2(pgx parampgx, long paramLong1, String paramString, int paramInt, boolean paramBoolean, long paramLong2)
   {
     super(2);
   }
@@ -23,7 +23,7 @@ public final class RIJCommentNetworkHelper$createSubComment$2
   {
     Intrinsics.checkParameterIsNotNull(paramString, "<anonymous parameter 1>");
     this.$callback.a(this.$commentSeq, false, paramInt, 1, "", this.$commentJsonStr, this.$feedsType, this.$isFeeds);
-    oxr.a(oxr.a, -1, System.currentTimeMillis() - this.$requestTime);
+    pgv.a(pgv.a, -1, System.currentTimeMillis() - this.$requestTime);
   }
 }
 

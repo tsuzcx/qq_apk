@@ -17,40 +17,44 @@ public class b
   LongSparseArray<ColorStateList> b;
   SkinEngine c;
   
-  public b(SkinEngine paramSkinEngine, Resources paramResources, LongSparseArray paramLongSparseArray, int paramInt1, int paramInt2)
+  public b(SkinEngine paramSkinEngine, Resources paramResources, LongSparseArray paramLongSparseArray, int paramInt1, int paramInt2, int paramInt3)
   {
     this.c = paramSkinEngine;
     this.b = paramLongSparseArray;
     this.a = new LongSparseArray(paramInt1 + 10);
     long l1 = SystemClock.uptimeMillis();
     paramSkinEngine = new TypedValue();
-    try
+    while (paramInt2 <= paramInt3)
     {
-      for (;;)
+      try
       {
         paramResources.getValue(paramInt2, paramSkinEngine, true);
         if ((paramSkinEngine.type >= 28) && (paramSkinEngine.type <= 31))
         {
           paramInt2 += 1;
+          continue;
         }
-        else
-        {
-          if (paramSkinEngine.string.toString().endsWith(".xml")) {
-            this.a.put(paramSkinEngine.assetCookie << 32 | paramSkinEngine.data, Integer.valueOf(paramInt2));
-          }
-          paramInt2 += 1;
+        if (paramSkinEngine.string.toString().endsWith(".xml")) {
+          this.a.put(paramSkinEngine.assetCookie << 32 | paramSkinEngine.data, Integer.valueOf(paramInt2));
         }
+        paramInt1 = paramInt2 + 1;
       }
-      long l2;
-      return;
-    }
-    catch (Resources.NotFoundException paramSkinEngine)
-    {
-      if (SkinEngine.DEBUG)
+      catch (Resources.NotFoundException paramLongSparseArray)
       {
-        l2 = SystemClock.uptimeMillis();
-        Log.d("SkinEngine", "int ColorStateListPreloadIntercepter cost: " + (l2 - l1));
+        for (;;)
+        {
+          paramLongSparseArray = paramLongSparseArray;
+          h.a("ColorStateListPreloadIntercepter", 1, "", paramLongSparseArray);
+          paramInt1 = paramInt2 + 1;
+        }
       }
+      finally {}
+      paramInt2 = paramInt1;
+    }
+    if (SkinEngine.DEBUG)
+    {
+      long l2 = SystemClock.uptimeMillis();
+      Log.d("SkinEngine", "int ColorStateListPreloadIntercepter cost: " + (l2 - l1));
     }
   }
   

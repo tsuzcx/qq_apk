@@ -1,98 +1,49 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.TopGestureDetector;
+import com.tencent.mobileqq.ark.ArkTopGestureLayout;
 
 public class apzu
-  extends aptq<apzr>
+  extends TopGestureLayout.TopGestureDetector
 {
-  public static apzr b(int paramInt)
+  public apzu(ArkTopGestureLayout paramArkTopGestureLayout, Context paramContext)
   {
-    apzr localapzr = (apzr)apub.a().a(paramInt);
-    if (localapzr != null) {
-      return localapzr;
-    }
-    return new apzr();
+    super(paramArkTopGestureLayout, paramContext);
   }
   
-  @NonNull
-  public apzr a(int paramInt)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    return new apzr();
-  }
-  
-  @Nullable
-  public apzr a(aptx[] paramArrayOfaptx)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramArrayOfaptx != null)
+    if ((this.a.isGestureIdle()) || (this.a.isGestureEnd())) {}
+    do
     {
-      localObject1 = localObject2;
-      if (paramArrayOfaptx.length > 0)
+      do
       {
-        localObject1 = paramArrayOfaptx[0].a;
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {
-          break label125;
-        }
-        QLog.d("OpenSdkRandomProcessor", 1, "OpenVirtual.[onParsed] type=" + type() + ", content = " + (String)localObject1);
-      }
-    }
-    try
-    {
-      paramArrayOfaptx = (apzs)apul.a(localObject1, apzs.class);
-      localObject1 = new apzr((String)localObject1, paramArrayOfaptx);
-      return localObject1;
-    }
-    catch (QStorageInstantiateException paramArrayOfaptx)
-    {
-      for (;;)
-      {
-        QLog.i("OpenSdkRandomProcessor", 1, "readJsonOrXml:" + (String)localObject1 + "fail", paramArrayOfaptx);
-        paramArrayOfaptx = null;
-      }
-    }
-    label125:
-    QLog.d("OpenSdkRandomProcessor", 1, "OpenVirtual.[onParsed] content is empty, config type = " + type());
-    return null;
-  }
-  
-  public void a(apzr paramapzr)
-  {
-    QLog.d("OpenSdkRandomProcessor", 1, "OpenVirtual.[onUpdate] type=" + type() + ", content = " + paramapzr.a());
-  }
-  
-  public Class<apzr> clazz()
-  {
-    return apzr.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
+        do
+        {
+          do
+          {
+            return false;
+            paramFloat1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+            paramFloat2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat1);
+            if (!this.a.hasGestureFlag(1)) {
+              break;
+            }
+          } while ((paramFloat1 >= 0.0F) || (paramFloat2 >= 0.5F) || (this.a.mOnFlingGesture == null));
+          this.a.setGestureFlag(-1);
+        } while (ArkTopGestureLayout.a(this.a));
+        this.a.mOnFlingGesture.flingLToR();
+        return false;
+      } while ((!this.a.hasGestureFlag(2)) || (paramFloat1 <= 0.0F) || (paramFloat2 >= 0.5F) || (this.a.mOnFlingGesture == null));
+      this.a.setGestureFlag(-1);
+    } while (ArkTopGestureLayout.b(this.a));
+    this.a.mOnFlingGesture.flingRToL();
     return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 466;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apzu
  * JD-Core Version:    0.7.0.1
  */

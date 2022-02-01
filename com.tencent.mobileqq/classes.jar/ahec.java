@@ -1,44 +1,28 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.EqqDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
+import android.support.v4.app.FragmentActivity;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
-public class ahec
-  implements BusinessObserver
+class ahec
+  extends GestureDetector.SimpleOnGestureListener
 {
-  ahec(ahdt paramahdt) {}
+  ahec(aheb paramaheb) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BusinessChatPie", 2, "success:" + String.valueOf(paramBoolean));
+    if (this.a.jdField_a_of_type_Ahdz.a()) {
+      return false;
     }
-    mobileqq_mp.GetEqqAccountDetailInfoResponse localGetEqqAccountDetailInfoResponse;
-    if (paramBoolean)
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null) {
-        localGetEqqAccountDetailInfoResponse = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
-      }
+    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
+    ChatActivityUtils.a(this.a.jdField_a_of_type_Ahdz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidViewView, (FragmentActivity)this.a.jdField_a_of_type_Ahdz.jdField_a_of_type_AndroidContentContext);
+    return true;
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent)
+  {
+    if (this.a.jdField_a_of_type_Aftk != null) {
+      this.a.jdField_a_of_type_Aftk.onLongClick(this.a.jdField_a_of_type_AndroidViewView);
     }
-    try
-    {
-      localGetEqqAccountDetailInfoResponse.mergeFrom(paramBundle);
-      if (((mobileqq_mp.RetInfo)localGetEqqAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0)
-      {
-        paramBundle = new EqqDetail(localGetEqqAccountDetailInfoResponse);
-        ThreadManager.getFileThreadHandler().post(new BusinessCmrTmpChatPie.2.1(this, paramBundle));
-      }
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramBundle) {}
   }
 }
 

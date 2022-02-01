@@ -1,19 +1,32 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.util.SystemUtil;
-import java.io.File;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.mobileqq.freshnews.BlockableEditTextView;
 
 public class auyr
+  implements ActionMode.Callback
 {
-  public static String a = new File(BaseApplicationImpl.getApplication().getFilesDir(), "ListenTogether_v828").getAbsolutePath();
+  public auyr(BlockableEditTextView paramBlockableEditTextView) {}
   
-  static
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    if (SystemUtil.isExistSDCard())
-    {
-      a = new File(AppConstants.SDCARD_PATH, "ListenTogether_v828").getAbsolutePath();
-      return;
+    return false;
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    if (BlockableEditTextView.a(this.a) == 0) {
+      return true;
     }
+    return BlockableEditTextView.a(this.a);
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
   }
 }
 

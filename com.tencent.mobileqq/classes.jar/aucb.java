@@ -1,48 +1,17 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.ViewParent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.app.Activity;
+import java.util.List;
 
 class aucb
-  implements arel
+  implements audq
 {
-  aucb(auca paramauca) {}
+  aucb(aubw paramaubw, List paramList) {}
   
-  public void a(View paramView)
+  public void onNo() {}
+  
+  public void onYes()
   {
-    String str = bgev.a("aioEmojiStickerDetail");
-    ViewParent localViewParent = paramView.getParent();
-    if (localViewParent != null)
-    {
-      localViewParent = localViewParent.getParent();
-      if ((localViewParent instanceof ChatXListView)) {
-        EmojiStickerManager.k = ((ChatXListView)localViewParent).getPositionForView(paramView);
-      }
-    }
-    paramView = new Intent(this.a.a.getApp(), QQBrowserActivity.class);
-    paramView.setFlags(268435456);
-    paramView.putExtra("vasUsePreWebview", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(this.a.a.getApp(), str, -1L, paramView, false, -1);
-    int i;
-    if (EmojiStickerManager.a().a == 0) {
-      i = 1;
-    }
-    for (;;)
-    {
-      VasWebviewUtil.reportCommercialDrainage(this.a.a.getCurrentUin(), "Stick", "ClickDetail", String.valueOf(i), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
-      return;
-      if (EmojiStickerManager.a().a == 1) {
-        i = 2;
-      } else if (EmojiStickerManager.a().a == 3000) {
-        i = 3;
-      } else {
-        i = -1;
-      }
-    }
+    audr.d(aubw.a(this.jdField_a_of_type_Aubw).getString(2131692595));
+    bgke.a(aubw.a(this.jdField_a_of_type_Aubw), aubw.a(this.jdField_a_of_type_Aubw), this.jdField_a_of_type_JavaUtilList);
   }
 }
 

@@ -1,19 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import java.util.UUID;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.teamwork.TeamWorkForceShare;
+import com.tencent.mobileqq.teamwork.TeamWorkForceShare.ImageRequestTask;
+import com.tencent.qphone.base.util.QLog;
 
-class beca
-  implements DialogInterface.OnClickListener
+public class beca
+  implements URLDrawableHandler
 {
-  beca(bebp parambebp, TroopFileTransferManager paramTroopFileTransferManager, UUID paramUUID) {}
+  public beca(TeamWorkForceShare.ImageRequestTask paramImageRequestTask) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void doCancel() {}
+  
+  public boolean isCancelled()
   {
-    if (paramInt == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.c(this.jdField_a_of_type_JavaUtilUUID);
-    }
+    return false;
   }
+  
+  public void onFileDownloadFailed(int paramInt)
+  {
+    QLog.d(TeamWorkForceShare.a(), 1, "download failed, code = " + paramInt + ", url = " + TeamWorkForceShare.ImageRequestTask.a(this.a));
+    TeamWorkForceShare.ImageRequestTask.a(this.a, true);
+  }
+  
+  public void onFileDownloadStarted()
+  {
+    QLog.d(TeamWorkForceShare.a(), 1, "start download, url = " + TeamWorkForceShare.ImageRequestTask.a(this.a));
+  }
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    QLog.d(TeamWorkForceShare.a(), 1, "download success, size = " + paramLong + ", url = " + TeamWorkForceShare.ImageRequestTask.a(this.a));
+    TeamWorkForceShare.ImageRequestTask.a(this.a, true);
+  }
+  
+  public void publishProgress(int paramInt) {}
 }
 
 

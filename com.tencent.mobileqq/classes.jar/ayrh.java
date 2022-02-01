@@ -1,10 +1,24 @@
-import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ocr.OCRTextSearchInfo.SougouSearchInfo;
+import java.util.List;
 
 class ayrh
+  extends ayri
 {
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  
   ayrh(ayrg paramayrg) {}
+  
+  public void a(boolean paramBoolean, String paramString, List<OCRTextSearchInfo.SougouSearchInfo> paramList)
+  {
+    paramList = this.a.a(paramList);
+    ayre localayre = (ayre)this.a.a.getBusinessHandler(BusinessHandlerFactory.OCR_HANDLER);
+    if (paramBoolean) {}
+    for (int i = 0;; i = -1)
+    {
+      localayre.notifyUI(3, paramBoolean, new Object[] { Integer.valueOf(i), paramString, paramList });
+      return;
+    }
+  }
 }
 
 

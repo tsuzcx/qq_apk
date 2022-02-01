@@ -1,54 +1,111 @@
-import android.content.Context;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.os.Bundle;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class utg
-  implements TVK_SDKMgr.InstallListener, usp
+final class utg
+  implements aaea
 {
-  private usq a;
+  utg(twh paramtwh, String paramString) {}
   
-  public void a()
+  public void callback(Bundle paramBundle)
   {
-    TVK_SDKMgr.setOnLogListener(new uti(null));
-  }
-  
-  public void a(Context paramContext)
-  {
-    TVK_SDKMgr.setDebugEnable(true);
-    TVK_SDKMgr.initSdk(paramContext, "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
-  }
-  
-  public void a(Context paramContext, usq paramusq)
-  {
-    this.a = paramusq;
-    if (paramContext != null) {
-      TVK_SDKMgr.installPlugin(paramContext, this);
-    }
-  }
-  
-  public boolean a(Context paramContext)
-  {
-    return TVK_SDKMgr.isInstalled(paramContext);
-  }
-  
-  public void onInstallProgress(float paramFloat)
-  {
-    if (this.a != null) {
-      this.a.a(paramFloat);
-    }
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    if (this.a != null) {
-      this.a.a(paramInt);
-    }
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    if (this.a != null) {
-      this.a.a();
+    Object localObject1 = paramBundle.getString("action");
+    if ("onCommentSend".equals(localObject1)) {}
+    for (;;)
+    {
+      String str;
+      Object localObject2;
+      int i;
+      try
+      {
+        localObject1 = paramBundle.getString("commentId", "");
+        str = paramBundle.getString("rowKey", "");
+        localObject2 = paramBundle.getString("commentContent", "");
+        i = paramBundle.getInt("firstLevelComment");
+        paramBundle = paramBundle.getString("parentCommentId", "");
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("type", "onCommentSend");
+        localJSONObject.put("commentId", localObject1);
+        localJSONObject.put("rowKey", str);
+        localJSONObject.put("commentContent", localObject2);
+        localJSONObject.put("firstLevelComment", i + 1);
+        localJSONObject.put("parentCommentID", paramBundle);
+        localJSONObject.put("result", "success");
+        if (this.jdField_a_of_type_Twh != null) {
+          this.jdField_a_of_type_Twh.a(this.jdField_a_of_type_JavaLangString, localJSONObject);
+        }
+        return;
+      }
+      catch (JSONException paramBundle)
+      {
+        paramBundle.printStackTrace();
+        return;
+      }
+      if ("onCommentLike".equals(localObject1)) {
+        try
+        {
+          localObject1 = paramBundle.getString("commentId", "");
+          str = paramBundle.getString("rowKey", "");
+          paramBundle = paramBundle.getString("likeStatus", "");
+          localObject2 = new JSONObject();
+          ((JSONObject)localObject2).put("type", "onCommentLike");
+          ((JSONObject)localObject2).put("rowKey", str);
+          ((JSONObject)localObject2).put("commentId", localObject1);
+          ((JSONObject)localObject2).put("likeStatus", paramBundle);
+          ((JSONObject)localObject2).put("result", "success");
+          if (this.jdField_a_of_type_Twh == null) {
+            continue;
+          }
+          this.jdField_a_of_type_Twh.a(this.jdField_a_of_type_JavaLangString, (JSONObject)localObject2);
+          return;
+        }
+        catch (JSONException paramBundle)
+        {
+          paramBundle.printStackTrace();
+          return;
+        }
+      } else if ("onCommentDelete".equals(localObject1)) {
+        try
+        {
+          localObject1 = paramBundle.getString("commentId", "");
+          str = paramBundle.getString("rowKey", "");
+          i = paramBundle.getInt("totalDeleteCount", 0);
+          paramBundle = new JSONObject();
+          paramBundle.put("type", "onCommentDelete");
+          paramBundle.put("totalDelete", i);
+          paramBundle.put("commentID", localObject1);
+          paramBundle.put("rowKey", str);
+          paramBundle.put("result", "success");
+          if (this.jdField_a_of_type_Twh == null) {
+            continue;
+          }
+          this.jdField_a_of_type_Twh.a(this.jdField_a_of_type_JavaLangString, paramBundle);
+          return;
+        }
+        catch (JSONException paramBundle)
+        {
+          paramBundle.printStackTrace();
+          return;
+        }
+      } else if ("onPanelClose".equals(localObject1)) {
+        try
+        {
+          paramBundle = paramBundle.getString("rowKey", "");
+          localObject1 = new JSONObject();
+          ((JSONObject)localObject1).put("type", "onPanelClose");
+          ((JSONObject)localObject1).put("rowKey", paramBundle);
+          ((JSONObject)localObject1).put("result", "success");
+          if (this.jdField_a_of_type_Twh != null)
+          {
+            this.jdField_a_of_type_Twh.a(this.jdField_a_of_type_JavaLangString, (JSONObject)localObject1);
+            return;
+          }
+        }
+        catch (JSONException paramBundle)
+        {
+          paramBundle.printStackTrace();
+        }
+      }
     }
   }
 }

@@ -1,17 +1,27 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserShareMenuHandler.4.1;
+import com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity;
 
 public class bgwz
   implements DialogInterface.OnClickListener
 {
-  bgwz(bgww parambgww, int paramInt, String paramString) {}
+  public bgwz(UpgradeDetailActivity paramUpgradeDetailActivity, int paramInt) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ThreadManager.excute(new SwiftBrowserShareMenuHandler.4.1(this), 128, null, false);
-    bgww.a(this.jdField_a_of_type_Bgww, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      bgvx.a().b(false);
+      paramDialogInterface.dismiss();
+      UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeActivityUpgradeDetailActivity, this.jdField_a_of_type_Int, 3);
+      return;
+    }
+    UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeActivityUpgradeDetailActivity, this.jdField_a_of_type_ComTencentMobileqqUpgradeActivityUpgradeDetailActivity, this.jdField_a_of_type_Int);
+    paramDialogInterface.dismiss();
+    UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeActivityUpgradeDetailActivity, this.jdField_a_of_type_Int, 2);
   }
 }
 

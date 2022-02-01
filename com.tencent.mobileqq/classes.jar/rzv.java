@@ -1,122 +1,24 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsResourceLoader.1;
-import com.tencent.biz.pubaccount.readinjoy.view.LayoutInflateProcessor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import java.util.ArrayList;
 
-public class rzv
+class rzv
+  extends ntf
 {
-  private static int jdField_a_of_type_Int;
-  private static LayoutInflateProcessor jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor;
-  private static HashMap<Integer, Drawable> jdField_a_of_type_JavaUtilHashMap;
-  private Handler jdField_a_of_type_AndroidOsHandler;
+  rzv(rzu paramrzu, qjs paramqjs) {}
   
-  public rzv(Context paramContext)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor = new LayoutInflateProcessor(paramContext.getApplicationContext());
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    jdField_a_of_type_Int += 1;
-    a(paramContext);
-  }
-  
-  public static Drawable a(Context paramContext, int paramInt)
-  {
-    if (jdField_a_of_type_JavaUtilHashMap == null) {}
-    do
+    rzu.a(this.jdField_a_of_type_Rzu, false);
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-      return null;
-      if (jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
-        return (Drawable)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+      if (QLog.isColorLevel()) {
+        QLog.d("RIJUGC.MyColumnModel", 2, "loadDataFromNetwork failed.");
       }
-      try
-      {
-        paramContext = paramContext.getResources().getDrawable(paramInt);
-        jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), paramContext);
-        return paramContext;
-      }
-      catch (OutOfMemoryError paramContext) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("VideoFeedsResourceLoader", 2, "innerGetDrawableFromCache() OutOfMemoryError e=" + paramContext.getMessage());
-    return null;
-  }
-  
-  public static View a(int paramInt, boolean paramBoolean, ViewGroup.LayoutParams paramLayoutParams)
-  {
-    View localView = null;
-    if (jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor != null) {
-      localView = jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor.a(paramInt, paramBoolean, paramLayoutParams);
-    }
-    while (!paramBoolean) {
-      return localView;
-    }
-    localView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(paramInt, null, false);
-    localView.setLayoutParams(paramLayoutParams);
-    return localView;
-  }
-  
-  public static LayoutInflateProcessor a()
-  {
-    return jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor;
-  }
-  
-  private sln a()
-  {
-    return new sln(2131560324, null, new rzw(this));
-  }
-  
-  private sln a(int paramInt)
-  {
-    if (bkwm.d()) {
-      return new sln(2131560343, paramInt, null, new rzx(this));
-    }
-    return new sln(2131560328, paramInt, null, new rzy(this));
-  }
-  
-  private void a(Context paramContext)
-  {
-    ThreadManager.excute(new VideoFeedsResourceLoader.1(this, new WeakReference(paramContext)), 16, null, true);
-  }
-  
-  public void a()
-  {
-    if (jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor != null) {
-      jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor.a();
-    }
-    if (jdField_a_of_type_JavaUtilHashMap != null) {
-      jdField_a_of_type_JavaUtilHashMap.clear();
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    jdField_a_of_type_Int -= 1;
-    if (jdField_a_of_type_Int <= 0)
-    {
-      jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor = null;
-      jdField_a_of_type_JavaUtilHashMap = null;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt == 0) {}
-    for (sln localsln1 = new sln(2131560359, null, null);; localsln1 = null)
-    {
-      sln localsln2 = new sln(2131560103, null, null);
-      sln localsln3 = new sln(2131560263, null, null);
-      sln localsln4 = a(1);
-      sln localsln5 = a();
-      sln localsln6 = a(2);
-      jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor.a(new sln[] { localsln1, localsln2, localsln3, localsln4, localsln5, localsln6 });
+      this.jdField_a_of_type_Qjs.a(false, true, 0, new ArrayList(), null, paramInt, "");
       return;
     }
+    rzu.a(this.jdField_a_of_type_Rzu, this.jdField_a_of_type_Qjs, paramArrayOfByte, paramInt);
   }
 }
 

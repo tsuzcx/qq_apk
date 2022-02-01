@@ -1,14 +1,22 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.ThemeRecentDynamicAvatarView;
+import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class awbc
+class awbc
+  extends LbsManagerService.OnLocationChangeListener
 {
-  public int a;
-  public ImageView a;
-  public DragTextView a;
-  public ThemeRecentDynamicAvatarView a;
-  public String a;
+  awbc(awbb paramawbb, String paramString)
+  {
+    super(paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(this.a.jdField_a_of_type_Away.TAG, 2, "onLocationFinish errCode = " + paramInt);
+    }
+    away.a(this.a.jdField_a_of_type_Away, paramSosoLbsInfo, this.a.jdField_a_of_type_JavaLangString);
+  }
 }
 
 

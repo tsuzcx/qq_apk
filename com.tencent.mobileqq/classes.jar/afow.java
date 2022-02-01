@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class afow
-  implements DialogInterface.OnClickListener
+final class afow
+  implements afpm
 {
-  public afow(AIOLongShotHelper paramAIOLongShotHelper) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    paramDialogInterface.dismiss();
+    paramQQAppInterface = new ProfileActivity.AllInOne(paramMessageRecord.senderuin, 2);
+    paramQQAppInterface.h = paramSessionInfo.curFriendNick;
+    return paramQQAppInterface;
   }
 }
 

@@ -1,47 +1,29 @@
-import android.os.Handler;
-import android.os.Message;
-import android.support.v7.widget.RecyclerView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.3;
 
-public class ahzu
-  extends Handler
+class ahzu
+  implements Animator.AnimatorListener
 {
-  public ahzu(Face2FaceAddContactFragment paramFace2FaceAddContactFragment) {}
+  ahzu(ahzt paramahzt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramMessage.what == 5)
-    {
-      Face2FaceAddContactFragment.a(this.a).setText(2131692014);
-      Face2FaceAddContactFragment.a(this.a).setVisibility(8);
-      Face2FaceAddContactFragment.a(this.a).setVisibility(0);
+    if (ahzq.a(this.a.a.this$0) != null) {
+      ahzq.a(this.a.a.this$0).setVisibility(0);
     }
-    do
-    {
-      return;
-      if (paramMessage.what == 301)
-      {
-        Face2FaceAddContactFragment.a(this.a);
-        return;
-      }
-      if (paramMessage.what == 500)
-      {
-        Face2FaceAddContactFragment.b(this.a);
-        return;
-      }
-      if (paramMessage.what == 401)
-      {
-        removeMessages(301);
-        this.a.d();
-        return;
-      }
-    } while (paramMessage.what != 6);
-    Face2FaceAddContactFragment.c(this.a);
-    QQToast.a(this.a.getActivity(), this.a.getString(2131690936), 0).a();
+    if (ahzq.a(this.a.a.this$0) != null) {
+      ahzq.a(this.a.a.this$0).setVisibility(4);
+    }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

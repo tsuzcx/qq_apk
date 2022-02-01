@@ -1,18 +1,22 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
+import com.tencent.mobileqq.transfile.URLDrawableHelper.Adapter;
 
 public class akrp
-  extends OrientationEventListener
+  extends URLDrawableHelper.Adapter
 {
-  public akrp(FlowCameraActivity2 paramFlowCameraActivity2, Context paramContext)
+  public akrp(RedPacketEmojiFragment paramRedPacketEmojiFragment) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    super(paramContext);
+    super.onLoadFialed(paramURLDrawable, paramThrowable);
+    this.a.b();
   }
   
-  public void onOrientationChanged(int paramInt)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.a.k = paramInt;
+    super.onLoadSuccessed(paramURLDrawable);
+    this.a.d();
   }
 }
 

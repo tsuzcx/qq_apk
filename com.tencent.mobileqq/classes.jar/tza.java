@@ -1,40 +1,121 @@
-import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdDownloadView.3.1;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdDownloadView.3.2;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdDownloadView.3.3;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdDownloadView.3.4;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.PublicAccountNewBridgeInvokeHandler.register.1;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.PublicAccountNewBridgeInvokeHandler.register.2;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.PublicAccountNewBridgeInvokeHandler.register.3;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function2;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class tza
-  implements tqo
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/PublicAccountNewBridgeInvokeHandler;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "module", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "getRIJAppType", "", "param", "Lorg/json/JSONObject;", "callbackId", "", "getUserInfo", "nameSpace", "register", "showReadInJoyNativeCommentView", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tza
+  extends tyg
 {
-  tza(tyx paramtyx) {}
+  public static final tzb a = new tzb(null);
   
-  public void a()
+  public tza(@NotNull BridgeModule paramBridgeModule)
   {
-    ThreadManager.getUIHandler().post(new ReadInJoyAdDownloadView.3.1(this));
+    super(paramBridgeModule);
   }
   
-  public void a(int paramInt)
+  private final void a(JSONObject paramJSONObject, String paramString)
   {
-    ThreadManager.getUIHandler().post(new ReadInJoyAdDownloadView.3.3(this, paramInt));
-  }
-  
-  public void a(txh paramtxh, int paramInt1, int paramInt2)
-  {
-    if (tyx.a(this.a).a(paramtxh)) {
-      ThreadManager.getUIHandler().post(new ReadInJoyAdDownloadView.3.4(this, paramInt1, paramInt2));
+    if (paramJSONObject != null) {
+      if (!TextUtils.isEmpty((CharSequence)paramJSONObject.optString("callback"))) {
+        break label39;
+      }
+    }
+    label39:
+    for (String str = paramString;; str = paramJSONObject.optString("callback"))
+    {
+      uta.a(paramJSONObject, str, (twh)new tzd(this, paramString));
+      return;
     }
   }
   
-  public void b()
+  private final void b(JSONObject paramJSONObject, String paramString)
   {
-    ThreadManager.getUIHandler().post(new ReadInJoyAdDownloadView.3.2(this));
+    if (paramJSONObject != null)
+    {
+      QLog.d("PublicAccountNewBridgeInvokeHandler", 1, "call getRIJAppType");
+      if (!TextUtils.isEmpty((CharSequence)paramJSONObject.optString("callback"))) {
+        break label93;
+      }
+    }
+    try
+    {
+      for (;;)
+      {
+        paramJSONObject = new JSONObject().put("app_type", uvs.c()).toString();
+        Intrinsics.checkExpressionValueIsNotNull(paramJSONObject, "JSONObject().put(\"app_ty…portAppType()).toString()");
+        QLog.d("PublicAccountNewBridgeInvokeHandler", 1, "callback: " + paramString + "result: " + paramJSONObject);
+        a(paramString, paramJSONObject);
+        return;
+        label93:
+        paramString = paramJSONObject.optString("callback");
+      }
+    }
+    catch (JSONException paramJSONObject)
+    {
+      for (;;)
+      {
+        QLog.e("PublicAccountNewBridgeInvokeHandler", 1, paramJSONObject.getMessage());
+      }
+    }
+  }
+  
+  private final void c(JSONObject paramJSONObject, String paramString)
+  {
+    String str;
+    if (paramJSONObject != null)
+    {
+      QLog.d("PublicAccountNewBridgeInvokeHandler", 1, "call getUserInfo");
+      if (!TextUtils.isEmpty((CharSequence)paramJSONObject.optString("callback"))) {
+        break label59;
+      }
+      str = paramString;
+    }
+    try
+    {
+      for (;;)
+      {
+        ReadInJoyUserInfoModule.a(Long.parseLong(paramJSONObject.opt("uin").toString()), (qhl)new tzc(str, this, paramString));
+        return;
+        label59:
+        str = paramJSONObject.optString("callback");
+      }
+    }
+    catch (Exception paramJSONObject)
+    {
+      for (;;)
+      {
+        QLog.e("PublicAccountNewBridgeInvokeHandler", 1, paramJSONObject.getMessage());
+        a(str, uta.a(paramJSONObject.getMessage()));
+      }
+    }
+  }
+  
+  @NotNull
+  public String a()
+  {
+    return "publicAccountNew";
+  }
+  
+  public void a()
+  {
+    a("showReadInJoyNativeCommentView", (Function2)new PublicAccountNewBridgeInvokeHandler.register.1((tza)this));
+    a("getRIJAppType", (Function2)new PublicAccountNewBridgeInvokeHandler.register.2((tza)this));
+    a("getUserInfo", (Function2)new PublicAccountNewBridgeInvokeHandler.register.3((tza)this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tza
  * JD-Core Version:    0.7.0.1
  */

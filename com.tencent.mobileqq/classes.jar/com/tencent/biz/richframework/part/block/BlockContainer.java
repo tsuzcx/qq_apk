@@ -19,15 +19,15 @@ import com.tencent.biz.subscribe.widget.StatusView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import org.jetbrains.annotations.NotNull;
-import yze;
-import yzi;
-import yzj;
-import yzn;
-import yzo;
-import yzp;
-import zad;
-import zae;
-import zaf;
+import zoj;
+import zon;
+import zoo;
+import zos;
+import zot;
+import zou;
+import zpi;
+import zpj;
+import zpk;
 
 public class BlockContainer
   extends FrameLayout
@@ -38,7 +38,7 @@ public class BlockContainer
   protected NestScrollRecyclerView a;
   private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
   private StatusView jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView;
-  public yzj a;
+  public zoo a;
   
   public BlockContainer(Context paramContext)
   {
@@ -57,14 +57,14 @@ public class BlockContainer
   }
   
   @NotNull
-  private yzj b()
+  private zoo b()
   {
-    return new yzj(this);
+    return new zoo(this);
   }
   
   protected int a()
   {
-    return 2131558775;
+    return 2131558800;
   }
   
   public Fragment a()
@@ -105,9 +105,9 @@ public class BlockContainer
     return paramView;
   }
   
-  public yzj a()
+  public zoo a()
   {
-    return this.jdField_a_of_type_Yzj;
+    return this.jdField_a_of_type_Zoo;
   }
   
   protected void a()
@@ -118,43 +118,43 @@ public class BlockContainer
   
   protected void a(FrameLayout paramFrameLayout)
   {
-    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseNestScrollRecyclerView = ((NestScrollRecyclerView)paramFrameLayout.findViewById(2131364340));
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseNestScrollRecyclerView = ((NestScrollRecyclerView)paramFrameLayout.findViewById(2131364421));
     this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseNestScrollRecyclerView.setHasFixedSize(true);
     this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseNestScrollRecyclerView.setNestedScrollingEnabled(false);
-    this.jdField_a_of_type_Yzj = b();
-    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseNestScrollRecyclerView.setAdapter(this.jdField_a_of_type_Yzj);
-    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseNestScrollRecyclerView.addItemDecoration(new yzi(this, this.jdField_a_of_type_Yzj));
+    this.jdField_a_of_type_Zoo = b();
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseNestScrollRecyclerView.setAdapter(this.jdField_a_of_type_Zoo);
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseNestScrollRecyclerView.addItemDecoration(new zon(this, this.jdField_a_of_type_Zoo));
     setLayoutManagerType(1, 1);
     this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseNestScrollRecyclerView.setItemAnimator(null);
     this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseNestScrollRecyclerView.setOverScrollMode(2);
   }
   
-  public void a(ArrayList<yzp> paramArrayList)
+  public void a(ArrayList<zou> paramArrayList)
   {
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext()) {
-      a((yzp)paramArrayList.next());
+      a((zou)paramArrayList.next());
     }
   }
   
-  public void a(yzo paramyzo)
+  public void a(zot paramzot)
   {
-    if (this.jdField_a_of_type_Yzj != null) {
-      this.jdField_a_of_type_Yzj.a(paramyzo);
+    if (this.jdField_a_of_type_Zoo != null) {
+      this.jdField_a_of_type_Zoo.a(paramzot);
     }
   }
   
-  public void a(yzp paramyzp)
+  public void a(zou paramzou)
   {
-    if (this.jdField_a_of_type_Yzj != null) {
-      this.jdField_a_of_type_Yzj.a(paramyzp);
+    if (this.jdField_a_of_type_Zoo != null) {
+      this.jdField_a_of_type_Zoo.a(paramzou);
     }
   }
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_Yzj != null) {
-      return this.jdField_a_of_type_Yzj.a();
+    if (this.jdField_a_of_type_Zoo != null) {
+      return this.jdField_a_of_type_Zoo.a();
     }
     return false;
   }
@@ -168,8 +168,8 @@ public class BlockContainer
       }
       this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseNestScrollRecyclerView.setAdapter(null);
     }
-    if (this.jdField_a_of_type_Yzj != null) {
-      this.jdField_a_of_type_Yzj.c();
+    if (this.jdField_a_of_type_Zoo != null) {
+      this.jdField_a_of_type_Zoo.c();
     }
     if ((a() != null) && (a().a() != null)) {
       a().a().setImageDrawable(null);
@@ -179,16 +179,16 @@ public class BlockContainer
   
   public boolean b()
   {
-    if (this.jdField_a_of_type_Yzj != null) {
-      return this.jdField_a_of_type_Yzj.d();
+    if (this.jdField_a_of_type_Zoo != null) {
+      return this.jdField_a_of_type_Zoo.d();
     }
     return false;
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Yzj != null) {
-      this.jdField_a_of_type_Yzj.d();
+    if (this.jdField_a_of_type_Zoo != null) {
+      this.jdField_a_of_type_Zoo.d();
     }
   }
   
@@ -202,24 +202,24 @@ public class BlockContainer
     super.onDetachedFromWindow();
   }
   
-  public void setBlockWrapper(yze paramyze)
+  public void setBlockWrapper(zoj paramzoj)
   {
-    if (this.jdField_a_of_type_Yzj != null) {
-      this.jdField_a_of_type_Yzj.a(paramyze);
+    if (this.jdField_a_of_type_Zoo != null) {
+      this.jdField_a_of_type_Zoo.a(paramzoj);
     }
   }
   
   public void setEnableLoadMore(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Yzj != null) {
-      this.jdField_a_of_type_Yzj.c(paramBoolean);
+    if (this.jdField_a_of_type_Zoo != null) {
+      this.jdField_a_of_type_Zoo.c(paramBoolean);
     }
   }
   
   public void setEnableRefresh(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Yzj != null) {
-      this.jdField_a_of_type_Yzj.a(paramBoolean);
+    if (this.jdField_a_of_type_Zoo != null) {
+      this.jdField_a_of_type_Zoo.a(paramBoolean);
     }
   }
   
@@ -236,16 +236,16 @@ public class BlockContainer
     for (;;)
     {
       this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseNestScrollRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager);
-      this.jdField_a_of_type_Yzj.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager);
+      this.jdField_a_of_type_Zoo.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager);
       return;
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = new zae(getContext(), 1, false);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = new zpj(getContext(), 1, false);
       continue;
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = new zad(getContext(), paramInt2);
-      ((zad)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager).setSpanSizeLookup(this.jdField_a_of_type_Yzj.a());
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = new zpi(getContext(), paramInt2);
+      ((zpi)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager).setSpanSizeLookup(this.jdField_a_of_type_Zoo.a());
       continue;
       this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseNestScrollRecyclerView.setHasFixedSize(false);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = new zaf(paramInt2, 1);
-      ((zaf)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager).setGapStrategy(0);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = new zpk(paramInt2, 1);
+      ((zpk)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager).setGapStrategy(0);
     }
   }
   
@@ -256,21 +256,21 @@ public class BlockContainer
   
   public void setRefreshing(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Yzj != null)
+    if (this.jdField_a_of_type_Zoo != null)
     {
-      if ((paramBoolean) && (!this.jdField_a_of_type_Yzj.c())) {
-        this.jdField_a_of_type_Yzj.b(true);
+      if ((paramBoolean) && (!this.jdField_a_of_type_Zoo.c())) {
+        this.jdField_a_of_type_Zoo.b(true);
       }
-      if ((!paramBoolean) && (this.jdField_a_of_type_Yzj.c())) {
-        this.jdField_a_of_type_Yzj.b(false);
+      if ((!paramBoolean) && (this.jdField_a_of_type_Zoo.c())) {
+        this.jdField_a_of_type_Zoo.b(false);
       }
     }
   }
   
-  public void setShareData(String paramString, yzn paramyzn)
+  public void setShareData(String paramString, zos paramzos)
   {
-    if (this.jdField_a_of_type_Yzj != null) {
-      this.jdField_a_of_type_Yzj.a(paramString, paramyzn);
+    if (this.jdField_a_of_type_Zoo != null) {
+      this.jdField_a_of_type_Zoo.a(paramString, paramzos);
     }
   }
   

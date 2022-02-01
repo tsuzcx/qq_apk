@@ -1,8 +1,25 @@
-public abstract interface aokj
+import java.util.Comparator;
+
+public final class aokj
+  implements Comparator<String>
 {
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
+  public int a(String paramString1, String paramString2)
+  {
+    try
+    {
+      long l1 = Long.parseLong(paramString1);
+      long l2 = Long.parseLong(paramString2);
+      if (l1 == l2) {
+        return 0;
+      }
+      if (l1 > l2) {
+        return 2;
+      }
+      return -1;
+    }
+    catch (Exception paramString1) {}
+    return 0;
+  }
 }
 
 

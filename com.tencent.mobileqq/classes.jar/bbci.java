@@ -1,76 +1,39 @@
-import android.graphics.Color;
-import android.text.SpannableString;
 import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
-import android.view.View;
-import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bbci
-  implements bbbn<bayr, bbha>
 {
-  public void a(bayr parambayr, bbha parambbha)
+  int jdField_a_of_type_Int = 0;
+  final List<Long> jdField_a_of_type_JavaUtilList = new ArrayList(5);
+  
+  public bbci(String paramString)
   {
-    bbio localbbio = (bbio)parambbha;
-    baya localbaya;
-    Object localObject;
-    if ((parambayr instanceof baya))
+    try
     {
-      localbaya = (baya)parambayr;
-      localObject = localbaya.a();
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        break label342;
+      paramString = aqwg.a(paramString, "troop_member_list_config");
+      if (paramString != null)
+      {
+        Object localObject = new JSONObject(paramString);
+        this.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("maxTroopMemberSize");
+        localObject = ((JSONObject)localObject).optJSONArray("troopClassIdList");
+        while ((localObject != null) && (i < ((JSONArray)localObject).length()))
+        {
+          this.jdField_a_of_type_JavaUtilList.add(Long.valueOf(((JSONArray)localObject).optLong(i)));
+          i += 1;
+        }
       }
-      localObject = "";
+      if (QLog.isColorLevel()) {
+        QLog.i("AddFrdHelper", 2, String.format("TroopMemberListConfig max: %s, idList: %s, config: %s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), TextUtils.join(",", this.jdField_a_of_type_JavaUtilList), paramString }));
+      }
+      return;
     }
-    label203:
-    label337:
-    label342:
-    for (;;)
+    catch (Throwable paramString)
     {
-      if (((baya)parambayr).b())
-      {
-        String str = localbaya.b();
-        if (!TextUtils.isEmpty(str))
-        {
-          str = bbgk.a(localbbio.a(), 10.0F * bbgk.a(localbbio.a(), amtj.a(2131712762)), 1, str, str, false, false, true).toString();
-          localObject = new SpannableString(str + "-" + (String)localObject);
-          ((SpannableString)localObject).setSpan(new ForegroundColorSpan(Color.parseColor("#12B7F5")), 0, str.length(), 34);
-          localbbio.a().setText((CharSequence)localObject);
-          if (!localbaya.a()) {
-            break label312;
-          }
-          parambbha.b().setText(localbaya.c());
-          parambbha.b().setVisibility(0);
-          parambbha.b().setTag(2131380832, Integer.valueOf(-1));
-          if ((parambayr instanceof bays))
-          {
-            parambayr = (bays)parambayr;
-            parambbha.b().setOnClickListener(new bbcj(this, parambayr));
-          }
-          parambayr = parambbha.a().getTag(2131380832);
-          if (!(parambayr instanceof Integer)) {
-            break label337;
-          }
-        }
-      }
-      for (int i = ((Integer)parambayr).intValue();; i = -1)
-      {
-        if (i > 0) {
-          localbbio.a(true);
-        }
-        while (i != 0)
-        {
-          return;
-          localbbio.a().setText((CharSequence)localObject);
-          break;
-          localbbio.a().setText((CharSequence)localObject);
-          break;
-          parambbha.b().setVisibility(8);
-          break label203;
-        }
-        localbbio.a(false);
-        return;
-      }
+      paramString.printStackTrace();
     }
   }
 }

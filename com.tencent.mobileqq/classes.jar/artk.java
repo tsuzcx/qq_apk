@@ -1,16 +1,9 @@
 public class artk
-  extends arti
+  implements Thread.UncaughtExceptionHandler
 {
-  public String a;
-  public boolean a;
-  public String b;
-  
-  public artk(String paramString1, boolean paramBoolean, String paramString2, String paramString3)
+  public void uncaughtException(Thread paramThread, Throwable paramThrowable)
   {
-    super(1, paramString1);
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.b = paramString3;
+    artm.a("DanmakuManager", "danmaku crash thread:" + paramThread.getName(), paramThrowable);
   }
 }
 

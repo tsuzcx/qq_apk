@@ -1,55 +1,43 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import mqq.app.AppRuntime;
+import com.tencent.gdtad.views.image.GdtGifImageView;
+import com.tencent.image.URLDrawable;
+import java.lang.ref.WeakReference;
+import java.net.URL;
 
 public class acjx
+  implements acjw
 {
-  TroopMemberApiService jdField_a_of_type_ComTencentBizTroopTroopMemberApiService;
-  AppRuntime jdField_a_of_type_MqqAppAppRuntime;
+  public acjx(GdtGifImageView paramGdtGifImageView) {}
   
-  public acjx(AppRuntime paramAppRuntime, TroopMemberApiService paramTroopMemberApiService)
+  public void a(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService = paramTroopMemberApiService;
+    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
+    for (String str = paramURLDrawable.getURL().toString();; str = null)
+    {
+      acho.b("GdtImageView", String.format("onLoadSuccessful %s", new Object[] { str }));
+      if ((!GdtGifImageView.a(this.a)) || (!GdtGifImageView.b(this.a))) {
+        GdtGifImageView.a(this.a, paramURLDrawable, str);
+      }
+      if ((GdtGifImageView.a(this.a) != null) && (GdtGifImageView.a(this.a).get() != null) && (GdtGifImageView.c(this.a))) {
+        ((acjy)GdtGifImageView.a(this.a).get()).a(true);
+      }
+      return;
+    }
   }
   
-  public static void a(int paramInt, Bundle paramBundle, acjy paramacjy)
+  public void b(URLDrawable paramURLDrawable)
   {
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    localBundle.putInt("key_sub_cmd", paramInt);
-    if (paramacjy != null)
+    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
+    for (String str = paramURLDrawable.getURL().toString();; str = null)
     {
-      zon.a().a(118, localBundle, paramacjy);
+      acho.b("GdtImageView", String.format("onLoadFailed %s", new Object[] { str }));
+      if ((!GdtGifImageView.a(this.a)) || (!GdtGifImageView.b(this.a))) {
+        GdtGifImageView.a(this.a, paramURLDrawable, str);
+      }
+      if ((GdtGifImageView.a(this.a) != null) && (GdtGifImageView.a(this.a).get() != null)) {
+        ((acjy)GdtGifImageView.a(this.a).get()).a(false);
+      }
       return;
     }
-    zon.a().a(118, localBundle);
-  }
-  
-  public void a(int paramInt1, Bundle paramBundle, int paramInt2)
-  {
-    switch (paramBundle.getInt("key_sub_cmd"))
-    {
-    default: 
-      return;
-    case 1: 
-      paramBundle.putBundle("key_result", aclb.a());
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(paramInt1, paramBundle);
-      return;
-    case 2: 
-      str1 = paramBundle.getString("key");
-      paramInt1 = paramBundle.getInt("type");
-      paramBundle = paramBundle.getString("appid");
-      acml.a().b(str1, paramInt1, paramBundle);
-      return;
-    }
-    String str1 = paramBundle.getString("key");
-    paramInt1 = paramBundle.getInt("type");
-    String str2 = paramBundle.getString("appid");
-    paramBundle = paramBundle.getString("api");
-    acml.a().b(str1, paramInt1, str2, paramBundle);
   }
 }
 

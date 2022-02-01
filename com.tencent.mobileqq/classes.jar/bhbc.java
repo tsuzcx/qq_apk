@@ -1,99 +1,35 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Looper;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.animation.TranslateAnimation;
-import android.widget.FrameLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.AntiphingToast.3;
-import java.util.Timer;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.org.pb.oidb_0xe96.RspBody;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class bhbc
+class bhbc
+  extends ayra
 {
-  private int jdField_a_of_type_Int;
-  private Resources jdField_a_of_type_AndroidContentResResources;
-  public Handler a;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View jdField_a_of_type_AndroidViewView;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private String jdField_a_of_type_JavaLangString = "AntiPhing";
-  private boolean jdField_a_of_type_Boolean = true;
+  bhbc(bhav parambhav, QQAppInterface paramQQAppInterface, Context paramContext, String paramString) {}
   
-  public bhbc()
+  public void getSecurePhoneSuccess(oidb_0xe96.RspBody paramRspBody)
   {
-    this.jdField_a_of_type_AndroidOsHandler = new bhbd(this, Looper.getMainLooper());
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, boolean paramBoolean)
-  {
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, paramFloat1, paramFloat2);
-    localTranslateAnimation.setFillAfter(true);
-    localTranslateAnimation.setDuration(700L);
-    localTranslateAnimation.setStartOffset(20L);
-    if (paramBoolean == true) {
-      localTranslateAnimation.setAnimationListener(new bhbe(this));
-    }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.startAnimation(localTranslateAnimation);
-  }
-  
-  public void a(int paramInt)
-  {
-    a(this.jdField_a_of_type_AndroidContentResResources.getString(paramInt));
-  }
-  
-  public void a(int paramInt1, int paramInt2, FrameLayout paramFrameLayout)
-  {
-    a(paramFrameLayout);
-    a(paramInt1);
-    b(paramInt2);
-  }
-  
-  public void a(FrameLayout paramFrameLayout)
-  {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = paramFrameLayout;
-    this.jdField_a_of_type_AndroidContentResResources = paramFrameLayout.getContext().getResources();
-  }
-  
-  public void a(CharSequence paramCharSequence)
-  {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-  }
-  
-  public boolean a(String paramString)
-  {
-    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_AndroidWidgetFrameLayout == null)) {
-      return false;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeAllViewsInLayout();
-    if (this.jdField_a_of_type_AndroidViewLayoutInflater == null) {
-      this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidWidgetFrameLayout.getContext());
-    }
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    bhav.a(this.jdField_a_of_type_Bhav, paramRspBody.str_change_mibao_url.get());
+    bhav.a(this.jdField_a_of_type_Bhav, paramRspBody.uint32_next_access_time.get());
+    bhav.b(this.jdField_a_of_type_Bhav, paramRspBody.str_tips_content.get());
+    bhav.b(this.jdField_a_of_type_Bhav, paramRspBody.uint32_display_flag.get());
+    bhav.c(this.jdField_a_of_type_Bhav, paramRspBody.str_hori_bar_content.get());
+    bhav.d(this.jdField_a_of_type_Bhav, paramRspBody.str_tips_header.get());
+    QLog.d("SecurePhoneBannerManager", 1, new Object[] { "getSecurePhoneState, displayTag : ", Integer.valueOf(bhav.a(this.jdField_a_of_type_Bhav)) });
+    if (bhav.a(this.jdField_a_of_type_Bhav) == 1)
     {
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561826, null);
-      if (this.jdField_a_of_type_AndroidViewView != null)
-      {
-        TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362721);
-        if ((localTextView != null) && (paramString != null)) {
-          localTextView.setText(paramString);
-        }
-      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class).sendEmptyMessage(1134069);
+      bhav.a(this.jdField_a_of_type_Bhav, true);
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B0C3", "0X800B0C3", 0, 0, "", "", "", "");
+      bdla.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009EDE", "0X8009EDE", 24, 0, "", "", "", "");
+      return;
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setFocusable(false);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.bringToFront();
-    a(-80.0F, 0.0F, false);
-    new Timer().schedule(new AntiphingToast.3(this), this.jdField_a_of_type_Int + 700);
-    return true;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
+    bhhr.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, true, "sp_key_secure_phone_notice_time", Integer.valueOf(bhav.b(this.jdField_a_of_type_Bhav)));
   }
 }
 

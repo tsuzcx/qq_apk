@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class aekr
-  extends amwl
+  extends CardObserver
 {
-  public aekr(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public aekr(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
   
-  protected void onPushReadedNotify(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong)
+  public void onSetPCActiveState(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
   {
-    this.a.c();
-  }
-  
-  protected void onUpdateRecentList()
-  {
-    this.a.c();
+    if (paramBoolean1)
+    {
+      SettingCloneUtil.writeValue(this.a.app.getApp(), paramString2, null, "qqsetting_pcactive_key", true);
+      QLog.i("CardObserver_onSetPCActiveState", 1, "Set the PC Active State " + paramBoolean1);
+    }
   }
 }
 

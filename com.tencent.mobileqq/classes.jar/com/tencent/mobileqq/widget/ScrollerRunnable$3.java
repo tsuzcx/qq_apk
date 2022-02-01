@@ -15,7 +15,7 @@ class ScrollerRunnable$3
     if (ScrollerRunnable.a(this.this$0) != null) {
       ScrollerRunnable.a(this.this$0).setBackgroundColor(0);
     }
-    this.a.setBackgroundColor(BaseApplicationImpl.getContext().getResources().getColor(2131167038));
+    this.a.setBackgroundColor(BaseApplicationImpl.getContext().getResources().getColor(2131167052));
     ScrollerRunnable.a(this.this$0, this.a);
   }
 }

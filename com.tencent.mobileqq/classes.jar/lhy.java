@@ -1,267 +1,271 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.MemoryInfo;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.HandlerThread;
-import android.os.Process;
+import android.text.TextUtils;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.report.VideoNodeReporter.2;
-import com.tencent.av.business.manager.report.VideoNodeReporter.3;
-import com.tencent.av.business.manager.report.VideoNodeReporter.4;
-import com.tencent.av.business.manager.report.VideoNodeReporter.5;
-import com.tencent.av.business.manager.report.VideoNodeReporter.6;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.av.business.manager.EffectConfigBase;
+import com.tencent.av.business.manager.pendant.EffectPendantBase.1;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
+import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
+import com.tencent.ttpic.openapi.util.VideoTemplateParser;
+import com.tencent.ttpic.util.DecryptListener;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
+import java.util.BitSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import mqq.app.MobileQQ;
 
-public class lhy
-  extends lgd
+public abstract class lhy
+  extends EffectConfigBase<PendantItem>
+  implements lha
 {
-  static String b;
-  int jdField_a_of_type_Int;
-  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new lhz(this);
-  Handler jdField_a_of_type_AndroidOsHandler;
-  HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("VideoNodeReportThread");
-  public List<lia> a;
+  private static final DecryptListener a;
+  protected final lia a;
+  protected lic a;
+  protected boolean a;
+  protected String[] c;
+  
+  static
+  {
+    jdField_a_of_type_ComTencentTtpicUtilDecryptListener = new lhz();
+  }
   
   public lhy(VideoAppInterface paramVideoAppInterface)
   {
     super(paramVideoAppInterface);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
-    String[] arrayOfString = BaseApplicationImpl.processName.split(":");
-    Object localObject = null;
-    paramVideoAppInterface = localObject;
-    if (arrayOfString != null)
-    {
-      paramVideoAppInterface = localObject;
-      if (arrayOfString.length == 2) {
-        paramVideoAppInterface = arrayOfString[1];
-      }
-    }
-    b = "avideo_node_report_" + paramVideoAppInterface;
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoNodeReporter", 2, "construct VideoNodeReporter  sSPName = " + b);
-    }
+    this.jdField_a_of_type_Lia = new lia();
   }
   
-  static String a()
+  public static VideoMaterial a(String paramString1, String paramString2)
   {
-    return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(System.currentTimeMillis()));
+    return VideoTemplateParser.parseVideoMaterial(paramString1, paramString2, false, jdField_a_of_type_ComTencentTtpicUtilDecryptListener);
   }
   
-  private String a(long paramLong)
+  public VideoMaterial a(String paramString)
   {
-    String str = BaseApplicationImpl.getApplication().getSystemSharedPreferences(b, 0).getString(String.valueOf(paramLong), "");
-    QLog.d("VideoNodeReporter", 1, "getSpSessionRecord roomId = " + paramLong + ",result = " + str);
+    VideoMaterial localVideoMaterial = a(paramString, "params");
+    localVideoMaterial.setDataPath(paramString);
+    return localVideoMaterial;
+  }
+  
+  public Class<?> a()
+  {
+    return PendantItem.class;
+  }
+  
+  public String a(PendantItem paramPendantItem)
+  {
+    String str = null;
+    if (paramPendantItem != null) {
+      str = lbh.c() + paramPendantItem.getMd5();
+    }
     return str;
   }
   
-  private void a(long paramLong, String paramString)
+  public List<PendantItem> a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoNodeReporter", 2, "writeSpSessionRecord,roomId = " + paramLong + ",detail = " + paramString);
+    paramString = super.a(paramString);
+    ArrayList localArrayList = new ArrayList();
+    if (paramString != null) {
+      localArrayList.addAll(paramString);
     }
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSystemSharedPreferences(b, 0).edit();
-    localEditor.putString(String.valueOf(paramLong), paramString);
-    localEditor.commit();
+    return localArrayList;
   }
   
-  private void b(long paramLong1, int paramInt, long paramLong2)
+  public lia a(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoNodeReporter", 2, " reportNode ,node = " + paramInt + ",value = " + paramLong2 + ",roomId = " + paramLong1);
+    if (!lph.g()) {
+      return null;
     }
-    Object localObject2 = a(paramLong1);
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
+    VideoMemoryManager.getInstance().setForceLoadFromSdCard(true);
+    PendantItem localPendantItem = (PendantItem)a();
+    if (this.jdField_a_of_type_Boolean)
     {
-      localObject1 = new lia();
-      ((lia)localObject1).a = paramLong1;
-      this.jdField_a_of_type_JavaUtilList.add(localObject1);
+      this.jdField_a_of_type_Boolean = false;
+      c();
     }
-    localObject2 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
-    lez locallez = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a();
-    if (((lia)localObject1).a == locallez.b()) {
-      ((lia)localObject1).a(locallez, (String)localObject2);
+    if ((paramInt1 == 0) || (paramInt2 == 0) || (localPendantItem == null) || (TextUtils.isEmpty(localPendantItem.getId())))
+    {
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_Lia.jdField_a_of_type_JavaLangString)) {
+        this.jdField_a_of_type_Lia.jdField_a_of_type_JavaLangString = null;
+      }
+      return null;
     }
-    localObject2 = ((lia)localObject1).a();
-    localObject1 = ((lia)localObject1).a(paramInt, paramLong2);
-    a(paramLong1, (String)localObject2 + (String)localObject1);
+    String str1 = c(localPendantItem);
+    String str2 = localPendantItem.getId();
+    if ((str1.equals(this.jdField_a_of_type_Lia.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Lia.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem != null) && (str2.equals(this.jdField_a_of_type_Lia.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem.getId()))) {
+      return this.jdField_a_of_type_Lia;
+    }
+    long l = System.currentTimeMillis();
+    VideoMaterial localVideoMaterial = a(str1);
+    this.jdField_a_of_type_Lia.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial = localVideoMaterial;
+    this.jdField_a_of_type_Lia.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem = localPendantItem;
+    this.jdField_a_of_type_Lia.jdField_a_of_type_JavaLangString = str1;
+    lbd.f(this.jdField_a_of_type_JavaLangString, String.format("getVideoPendant, patternPath[%s], id[%s], material[%s], cost[%s]", new Object[] { str1, str2, localVideoMaterial, Long.valueOf(System.currentTimeMillis() - l) }));
+    return this.jdField_a_of_type_Lia;
   }
   
-  private void c()
+  public void a()
   {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSystemSharedPreferences(b, 0);
-    Map localMap = localSharedPreferences.getAll();
-    if ((localMap != null) && (localMap.size() > 0))
+    super.a();
+    lgz locallgz = (lgz)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(12);
+    if (locallgz != null) {
+      locallgz.a(b(), this);
+    }
+  }
+  
+  protected void a(long paramLong, PendantItem paramPendantItem)
+  {
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
+      ((lhb)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1)).a(paramLong, paramPendantItem);
+    }
+  }
+  
+  public void a(lic paramlic)
+  {
+    this.jdField_a_of_type_Lic = paramlic;
+  }
+  
+  public boolean a(long paramLong, PendantItem paramPendantItem)
+  {
+    boolean bool = super.a(paramLong, paramPendantItem);
+    lfe locallfe = VideoController.a().a();
+    a(paramLong, paramPendantItem);
+    if ((paramPendantItem != null) && (!TextUtils.isEmpty(paramPendantItem.getId())))
     {
-      QLog.d("VideoNodeReporter", 1, "checkAndReportCrashRecord, allContent.size() = " + localMap.size());
-      Iterator localIterator = localMap.entrySet().iterator();
-      while (localIterator.hasNext())
+      locallfe.a.set(1);
+      return bool;
+    }
+    locallfe.a.clear(1);
+    return bool;
+  }
+  
+  protected boolean a(PendantItem paramPendantItem)
+  {
+    boolean bool = super.a(paramPendantItem);
+    String str1;
+    Object localObject;
+    int k;
+    int i;
+    if (bool)
+    {
+      str1 = c(paramPendantItem);
+      if ((this.c == null) || (this.c.length <= 0)) {
+        break label284;
+      }
+      localObject = this.c;
+      int m = localObject.length;
+      k = 0;
+      i = 0;
+      j = i;
+      if (k < m)
       {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
-        try
-        {
-          b(Long.decode((String)localEntry.getKey()).longValue());
+        String str2 = localObject[k];
+        File localFile = new File(str1, str2);
+        long l = localFile.length();
+        if (((!localFile.exists()) || (l >= 1L)) && (localFile.exists())) {
+          break label265;
         }
-        catch (Exception localException)
-        {
-          QLog.d("VideoNodeReporter", 1, "checkAndReportCrashRecord Exception ", localException);
-          localSharedPreferences.edit().remove((String)localEntry.getKey()).commit();
+        j = 1;
+        label111:
+        if ((j == 0) && (i == 0)) {
+          break label270;
+        }
+        i = 1;
+        label121:
+        if ((j != 0) && (QLog.isColorLevel())) {
+          QLog.i(this.jdField_a_of_type_JavaLangString, 2, "isTemplateUsable, fileName[" + str2 + "], item[" + paramPendantItem + "]");
+        }
+        if (i == 0) {
+          break label275;
         }
       }
     }
-    QLog.d("VideoNodeReporter", 1, "checkAndReportCrashRecord allContent = " + localMap);
-  }
-  
-  private void c(long paramLong)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSystemSharedPreferences(b, 0).edit();
-    localEditor.remove(String.valueOf(paramLong));
-    localEditor.commit();
-    lba.g("VideoNodeReporter", "removeSpSessionRecord,roomId = " + paramLong);
-  }
-  
-  lia a(long paramLong)
-  {
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+    label265:
+    label270:
+    label275:
+    label284:
+    for (int j = i;; j = 0)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
+      if (j != 0)
       {
-        lia locallia = (lia)localIterator.next();
-        if (paramLong == locallia.a) {
-          return locallia;
+        str1 = a(paramPendantItem);
+        localObject = b(paramPendantItem);
+        ThreadManager.excute(new EffectPendantBase.1(this, new File(str1), (String)localObject), 16, null, false);
+        if (QLog.isDevelopLevel()) {
+          QLog.i(this.jdField_a_of_type_JavaLangString, 4, "isTemplateUsable, need unzip item[" + paramPendantItem + "]");
         }
       }
+      return bool;
+      j = 0;
+      break label111;
+      i = 0;
+      break label121;
+      k += 1;
+      break;
     }
-    return null;
-  }
-  
-  protected void a()
-  {
-    lba.g("VideoNodeReporter", "onCreate ");
-    c();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(int paramInt, long paramLong)
-  {
-    QLog.d("VideoNodeReporter", 1, " report ,node = " + paramInt + ",value = " + paramLong);
-    if ((this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) || (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a() == null) || (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a() == null))
-    {
-      lba.g("VideoNodeReporter", " report error 0: " + paramInt + "|" + this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.e)
-    {
-      lba.g("VideoNodeReporter", " report error 1 ,exit has been called,node = " + paramInt);
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.post(new VideoNodeReporter.3(this, paramInt, paramLong));
-  }
-  
-  public void a(long paramLong)
-  {
-    QLog.d("VideoNodeReporter", 1, "updateCallerRoomId roomId = " + paramLong);
-    this.jdField_a_of_type_AndroidOsHandler.post(new VideoNodeReporter.2(this, paramLong));
-  }
-  
-  public void a(long paramLong1, int paramInt, long paramLong2)
-  {
-    QLog.d("VideoNodeReporter", 1, " reportByRoomId ,node = " + paramInt + ",value = " + paramLong2);
-    if ((this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) || (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a() == null) || (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a() == null))
-    {
-      lba.g("VideoNodeReporter", " reportByRoomId error 0: " + paramInt + "|" + this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.e)
-    {
-      lba.g("VideoNodeReporter", " reportByRoomId error 1 ,exit has been called,node = " + paramInt);
-      return;
-    }
-    if (paramLong1 == 0L)
-    {
-      QLog.d("VideoNodeReporter", 1, "reportByRoomId rooid is 0", new Throwable("test"));
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.post(new VideoNodeReporter.4(this, paramLong1, paramInt, paramLong2));
-  }
-  
-  protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
-  {
-    lba.g("VideoNodeReporter", " onSessionStatusChanged :" + paramInt + ",para = " + paramString2);
-    switch (paramInt)
-    {
-    case 2: 
-    case 3: 
-    default: 
-      return;
-    }
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
-    {
-      paramString1 = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramString1.hasNext()) {
-        ((lia)paramString1.next()).b = System.currentTimeMillis();
-      }
-    }
-    a(38, this.jdField_a_of_type_Int);
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new VideoNodeReporter.5(this, paramString));
   }
   
   protected boolean a(String paramString)
   {
-    return true;
+    return lir.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
   }
   
-  public void b()
+  public abstract int b();
+  
+  public String b(PendantItem paramPendantItem)
   {
-    try
-    {
-      ActivityManager localActivityManager = (ActivityManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getSystemService("activity");
-      ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
-      localActivityManager.getMemoryInfo(localMemoryInfo);
-      long l1 = DeviceInfoUtil.getApplicationMemory(Process.myPid()) / 1024L / 1024L;
-      long l2 = localMemoryInfo.availMem / 1024L / 1024L;
-      long l3 = localMemoryInfo.threshold / 1024L / 1024L;
-      boolean bool = localMemoryInfo.lowMemory;
-      QLog.d("VideoNodeReporter", 1, "reportMemoryStatus,availMem = " + l2 + ",threshold = " + l3 + ",isLowMemory = " + bool + ",pss = " + l1);
-      a(21, l3);
-      a(15, l2);
-      a(22, l1);
-      return;
+    String str = "";
+    if (paramPendantItem != null) {
+      str = lbh.d() + paramPendantItem.getMd5() + File.separator;
     }
-    catch (Exception localException)
+    return str;
+  }
+  
+  protected String c(PendantItem paramPendantItem)
+  {
+    Object localObject1 = "";
+    Object localObject3 = localObject1;
+    Object localObject2;
+    String str;
+    if (paramPendantItem != null)
     {
-      QLog.d("VideoNodeReporter", 1, "reportMemoryStatus,Exception ", localException);
+      localObject2 = null;
+      str = b(paramPendantItem) + paramPendantItem.getName() + File.separator;
+      if (!new File(str).exists()) {
+        break label142;
+      }
+      localObject1 = str;
+    }
+    for (;;)
+    {
+      localObject3 = localObject1;
+      if (TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        localObject3 = localObject1;
+        if (QLog.isDevelopLevel())
+        {
+          QLog.i(this.jdField_a_of_type_JavaLangString, 4, "getFilterPathForRead, new[" + str + "], old[" + (String)localObject2 + "], item[" + paramPendantItem + "]");
+          localObject3 = localObject1;
+        }
+      }
+      return localObject3;
+      label142:
+      localObject3 = lbh.b() + paramPendantItem.getName() + File.separator;
+      localObject2 = localObject3;
+      if (new File((String)localObject3).exists())
+      {
+        localObject1 = localObject3;
+        localObject2 = localObject3;
+      }
     }
   }
   
-  public void b(long paramLong)
+  public void c()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new VideoNodeReporter.6(this, paramLong));
+    this.jdField_a_of_type_Lia.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial = null;
+    this.jdField_a_of_type_Lia.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem = null;
+    this.jdField_a_of_type_Lia.jdField_a_of_type_JavaLangString = null;
   }
 }
 

@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.activity;
 
 import android.text.TextUtils;
-import bbox;
+import bcvr;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.UndealCount.QZoneCountInfo;
 import cooperation.qzone.UndealCount.QZoneCountUserInfo;
@@ -15,28 +16,28 @@ class Leba$33
   
   public void run()
   {
-    localObject4 = (bbox)this.this$0.a.getManager(10);
+    localObject4 = (bcvr)this.this$0.a.getManager(QQManagerFactory.QZONE_MANAGER);
     int j;
     Object localObject1;
     if (localObject4 != null)
     {
-      j = ((bbox)localObject4).a(1);
+      j = ((bcvr)localObject4).a(1);
       if (localObject4 == null) {
-        break label180;
+        break label181;
       }
-      localObject1 = ((bbox)localObject4).a();
-      label41:
+      localObject1 = ((bcvr)localObject4).a();
+      label42:
       if (QLog.isColorLevel()) {
         QLog.d("UndealCount.Q.lebatab.leba", 2, "TYPE_PASSIVE_FEED freshEntryItemUI num=" + j);
       }
       this.this$0.b(new Leba.33.1(this, j));
       if (localObject4 == null) {
-        break label186;
+        break label187;
       }
-      i = ((bbox)localObject4).a(2);
-      label100:
+      i = ((bcvr)localObject4).a(2);
+      label101:
       if ((i <= 0) || (localObject1 == null) || (((ArrayList)localObject1).size() <= 0)) {
-        break label191;
+        break label192;
       }
       if ((!QLog.isColorLevel()) || (QLog.isColorLevel())) {
         QLog.d("UndealCount.Q.lebatab.leba", 2, "TYPE_ACTIVE_FEED updateQZoneFlag.mQzoneFeedSubIcon setImageDrawable");
@@ -50,34 +51,34 @@ class Leba$33
       return;
       j = 0;
       break;
-      label180:
+      label181:
       localObject1 = null;
-      break label41;
-      label186:
+      break label42;
+      label187:
       i = 0;
-      break label100;
+      break label101;
       for (;;)
       {
         for (;;)
         {
           try
           {
-            label191:
+            label192:
             if (QLog.isColorLevel()) {
               QLog.d("UndealCount.Q.lebatab.leba", 2, "updateQZoneFlag.noflag count=" + i);
             }
             if (localObject4 == null) {
               continue;
             }
-            localObject1 = ((bbox)localObject4).a(6);
+            localObject1 = ((bcvr)localObject4).a(6);
             if (localObject4 == null) {
               continue;
             }
-            localObject5 = ((bbox)localObject4).a(61);
+            localObject5 = ((bcvr)localObject4).a(61);
             if (localObject4 == null) {
               continue;
             }
-            localQZoneCountInfo = ((bbox)localObject4).a(3);
+            localQZoneCountInfo = ((bcvr)localObject4).a(3);
             localObject6 = "";
             localObject4 = "";
             if ((localObject1 == null) || (((QZoneCountInfo)localObject1).friendList == null) || (((QZoneCountInfo)localObject1).friendList.size() <= 0) || (((QZoneCountUserInfo)((QZoneCountInfo)localObject1).friendList.get(0)).uin <= 0L) || (((QZoneCountInfo)localObject1).uCount <= 0L)) {
@@ -172,7 +173,7 @@ class Leba$33
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Leba.33
  * JD-Core Version:    0.7.0.1
  */

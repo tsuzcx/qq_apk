@@ -1,10 +1,17 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.ecshopassit.view.CustomTabView;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface opn
+public class opn
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public abstract void a(PublishVideoEntry paramPublishVideoEntry, int paramInt, String paramString);
+  public opn(CustomTabView paramCustomTabView) {}
   
-  public abstract void a(PublishVideoEntry paramPublishVideoEntry, String paramString);
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  {
+    QLog.i("EcshopCustomTabView", 2, "onLaunchResult" + paramBoolean);
+  }
 }
 
 

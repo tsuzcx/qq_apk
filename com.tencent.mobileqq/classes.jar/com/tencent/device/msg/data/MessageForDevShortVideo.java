@@ -1,8 +1,8 @@
 package com.tencent.device.msg.data;
 
-import aavq;
-import amtj;
+import ablc;
 import android.os.Parcelable.Creator;
+import anvx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForShortVideo;
@@ -11,7 +11,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class MessageForDevShortVideo
   extends MessageForShortVideo
 {
-  public static final Parcelable.Creator<MessageForShortVideo> CREATOR = new aavq();
+  public static final Parcelable.Creator<MessageForShortVideo> CREATOR = new ablc();
   public long fileSessionId;
   
   public String getSummary()
@@ -25,13 +25,13 @@ public class MessageForDevShortVideo
     default: 
       return null;
     case 2003: 
-      return amtj.a(2131705714);
+      return anvx.a(2131706065);
     case 1003: 
-      return ((QQAppInterface)localObject).getApp().getString(2131691174);
+      return ((QQAppInterface)localObject).getApp().getString(2131691259);
     case 1005: 
-      return ((QQAppInterface)localObject).getApp().getString(2131691174);
+      return ((QQAppInterface)localObject).getApp().getString(2131691259);
     }
-    return amtj.a(2131705709);
+    return anvx.a(2131706060);
   }
 }
 

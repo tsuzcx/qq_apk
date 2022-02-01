@@ -1,21 +1,22 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
-
-class ttn
-  implements ViewFactory.FoundClickableViewListener
+public abstract interface ttn
 {
-  ttn(ttm paramttm, BaseData paramBaseData, Context paramContext) {}
+  public abstract void a();
   
-  public void onFound(ViewBase paramViewBase)
-  {
-    paramViewBase.setOnClickListener(new tto(this));
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(boolean paramBoolean, int paramInt);
+  
+  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ttn
  * JD-Core Version:    0.7.0.1
  */

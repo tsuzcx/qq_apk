@@ -1,15 +1,11 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import kotlin.Metadata;
 
-class sts
-  extends stg
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerPreloader$Listener;", "", "onPreloadFailed", "", "onPreloadSuccess", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface sts
 {
-  public sts(stp paramstp, View paramView, BaseData paramBaseData)
-  {
-    super(paramView, paramBaseData);
-  }
+  public abstract void a();
   
-  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean) {}
+  public abstract void b();
 }
 
 

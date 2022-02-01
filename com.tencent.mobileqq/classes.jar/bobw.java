@@ -1,6 +1,14 @@
-public abstract interface bobw
+public class bobw
 {
-  public abstract int a(bobw parambobw, boolean paramBoolean, int paramInt1, int paramInt2);
+  public static bobv a()
+  {
+    return new bobt();
+  }
+  
+  public static boby a()
+  {
+    return new bobu();
+  }
 }
 
 

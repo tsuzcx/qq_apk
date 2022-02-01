@@ -1,17 +1,25 @@
-class tfh
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.qphone.base.util.QLog;
+
+public class tfh
+  implements tiw
 {
-  final int jdField_a_of_type_Int;
-  final int b;
+  public tfh(FastWebActivity paramFastWebActivity) {}
   
-  public tfh(tfg paramtfg, int paramInt1, int paramInt2)
+  public void a(tix paramtix)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    ArticleInfo localArticleInfo = paramtix.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+    int i = FastWebActivity.f(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("FastWebActivity", 2, "articleInfo" + localArticleInfo);
+    }
+    tkj.a(localArticleInfo, FastWebActivity.g(this.a), i, paramtix.jdField_a_of_type_Boolean, this.a.b, FastWebActivity.h(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tfh
  * JD-Core Version:    0.7.0.1
  */

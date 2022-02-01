@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.selectable;
 
-import akyk;
-import akym;
+import alwg;
+import alwi;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,11 +13,11 @@ import com.tencent.qphone.base.util.QLog;
 
 public class SelectableLinearLayout
   extends LinearLayout
-  implements akyk
+  implements alwg
 {
   private int jdField_a_of_type_Int;
-  private akyk jdField_a_of_type_Akyk;
-  private akym jdField_a_of_type_Akym;
+  private alwg jdField_a_of_type_Alwg;
+  private alwi jdField_a_of_type_Alwi;
   private boolean jdField_a_of_type_Boolean;
   private final int[] jdField_a_of_type_ArrayOfInt = new int[2];
   private int jdField_b_of_type_Int;
@@ -40,9 +40,9 @@ public class SelectableLinearLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void bind(@Nullable akym paramakym)
+  public void bind(@Nullable alwi paramalwi)
   {
-    this.jdField_a_of_type_Akym = paramakym;
+    this.jdField_a_of_type_Alwi = paramalwi;
   }
   
   public void clearHighlightContent()
@@ -53,8 +53,8 @@ public class SelectableLinearLayout
     while (i < j)
     {
       View localView = getChildAt(i);
-      if ((localView instanceof akyk)) {
-        ((akyk)localView).clearHighlightContent();
+      if ((localView instanceof alwg)) {
+        ((alwg)localView).clearHighlightContent();
       }
       i += 1;
     }
@@ -69,8 +69,8 @@ public class SelectableLinearLayout
     while (i < j)
     {
       View localView = getChildAt(i);
-      if ((localView instanceof akyk)) {
-        localStringBuilder.append(((akyk)localView).content());
+      if ((localView instanceof alwg)) {
+        localStringBuilder.append(((alwg)localView).content());
       }
       i += 1;
     }
@@ -85,10 +85,10 @@ public class SelectableLinearLayout
     if (j < k)
     {
       View localView = getChildAt(j);
-      if (!(localView instanceof akyk)) {
+      if (!(localView instanceof alwg)) {
         break label51;
       }
-      i = ((akyk)localView).contentLength() + i;
+      i = ((alwg)localView).contentLength() + i;
     }
     label51:
     for (;;)
@@ -100,9 +100,9 @@ public class SelectableLinearLayout
   }
   
   @Nullable
-  public akym delegate()
+  public alwi delegate()
   {
-    return this.jdField_a_of_type_Akym;
+    return this.jdField_a_of_type_Alwi;
   }
   
   public void doSelecting(ChatMessage paramChatMessage)
@@ -112,10 +112,10 @@ public class SelectableLinearLayout
         QLog.d("SelectableLinearLayout", 2, "doSelecting msg = null.");
       }
     }
-    while (this.jdField_a_of_type_Akym == null) {
+    while (this.jdField_a_of_type_Alwi == null) {
       return;
     }
-    this.jdField_a_of_type_Akym.a(paramChatMessage);
+    this.jdField_a_of_type_Alwi.a(paramChatMessage);
   }
   
   public boolean hasSelected()
@@ -133,7 +133,7 @@ public class SelectableLinearLayout
     while (paramInt1 < j)
     {
       View localView = getChildAt(paramInt1);
-      if ((localView instanceof akyk))
+      if ((localView instanceof alwg))
       {
         if (QLog.isColorLevel()) {
           QLog.d("SelectableLinearLayout", 2, new Object[] { "left=", Integer.valueOf(localView.getLeft()), " right=", Integer.valueOf(localView.getRight()), " top=", Integer.valueOf(localView.getTop()), " bottom=", Integer.valueOf(localView.getBottom()), " relativeX=", Integer.valueOf(i), " relativeY=", Integer.valueOf(paramInt2) });
@@ -166,14 +166,14 @@ public class SelectableLinearLayout
     if (i < j)
     {
       localObject = getChildAt(i);
-      if ((localObject instanceof akyk))
+      if ((localObject instanceof alwg))
       {
-        localObject = (akyk)localObject;
-        if (!((akyk)localObject).hasSelected()) {
+        localObject = (alwg)localObject;
+        if (!((alwg)localObject).hasSelected()) {
           break label74;
         }
-        ((akyk)localObject).highlightBackgroundColor(this.jdField_c_of_type_Int);
-        ((akyk)localObject).highlightContent();
+        ((alwg)localObject).highlightBackgroundColor(this.jdField_c_of_type_Int);
+        ((alwg)localObject).highlightContent();
       }
     }
     for (;;)
@@ -182,7 +182,7 @@ public class SelectableLinearLayout
       break label19;
       break;
       label74:
-      ((akyk)localObject).clearHighlightContent();
+      ((alwg)localObject).clearHighlightContent();
     }
   }
   
@@ -194,11 +194,11 @@ public class SelectableLinearLayout
     if (i < j)
     {
       localObject = getChildAt(i);
-      if (!(localObject instanceof akyk)) {
+      if (!(localObject instanceof alwg)) {
         break label79;
       }
-      localObject = (akyk)localObject;
-      int k = ((akyk)localObject).contentLength();
+      localObject = (alwg)localObject;
+      int k = ((alwg)localObject).contentLength();
       if (paramInt > k) {
         paramInt -= k;
       }
@@ -208,7 +208,7 @@ public class SelectableLinearLayout
     {
       i += 1;
       break;
-      ((akyk)localObject).locationByIndex(paramInt, paramArrayOfInt, paramBoolean);
+      ((alwg)localObject).locationByIndex(paramInt, paramArrayOfInt, paramBoolean);
       return;
     }
   }
@@ -228,7 +228,7 @@ public class SelectableLinearLayout
     int i;
     int k;
     label46:
-    akyk localakyk;
+    alwg localalwg;
     int m;
     int j;
     if ((paramInt1 == -1) || (paramInt2 == -1))
@@ -245,19 +245,19 @@ public class SelectableLinearLayout
         break label257;
       }
       View localView = getChildAt(k);
-      if (!(localView instanceof akyk)) {
+      if (!(localView instanceof alwg)) {
         break label266;
       }
-      localakyk = (akyk)localView;
+      localalwg = (alwg)localView;
       if (paramInt1 != 0) {
         break label237;
       }
-      m = localakyk.contentLength();
+      m = localalwg.contentLength();
       if (paramInt2 < m) {
         break label190;
       }
       i -= m;
-      localakyk.selectContent(-1, -1);
+      localalwg.selectContent(-1, -1);
       j = paramInt2 - m;
       paramInt2 = paramInt1;
       paramInt1 = j;
@@ -293,7 +293,7 @@ public class SelectableLinearLayout
       }
       for (;;)
       {
-        localakyk.selectContent(paramInt2, paramInt1);
+        localalwg.selectContent(paramInt2, paramInt1);
         if (j != 0) {
           break label258;
         }
@@ -305,7 +305,7 @@ public class SelectableLinearLayout
         j = 1;
       }
       label237:
-      localakyk.selectContent(-1, -1);
+      localalwg.selectContent(-1, -1);
       j = paramInt1;
       paramInt1 = paramInt2;
       paramInt2 = j;
@@ -335,16 +335,16 @@ public class SelectableLinearLayout
     if (j < k)
     {
       localObject = getChildAt(j);
-      if (!(localObject instanceof akyk)) {
+      if (!(localObject instanceof alwg)) {
         break label238;
       }
-      akyk localakyk = (akyk)localObject;
+      alwg localalwg = (alwg)localObject;
       if ((m > ((View)localObject).getLeft()) && (m < ((View)localObject).getRight()) && (n > ((View)localObject).getTop()) && (n < ((View)localObject).getBottom()))
       {
-        this.jdField_a_of_type_Akyk = localakyk;
-        return localakyk.touchIndex(paramInt1, paramInt2) + i;
+        this.jdField_a_of_type_Alwg = localalwg;
+        return localalwg.touchIndex(paramInt1, paramInt2) + i;
       }
-      i = localakyk.contentLength() + i;
+      i = localalwg.contentLength() + i;
     }
     label235:
     label238:
@@ -357,14 +357,14 @@ public class SelectableLinearLayout
       if (j < k)
       {
         localObject = getChildAt(j);
-        if (!(localObject instanceof akyk)) {
+        if (!(localObject instanceof alwg)) {
           break label235;
         }
-        localObject = (akyk)localObject;
-        if (this.jdField_a_of_type_Akyk == localObject) {
-          return this.jdField_a_of_type_Akyk.touchIndex(paramInt1, paramInt2) + i;
+        localObject = (alwg)localObject;
+        if (this.jdField_a_of_type_Alwg == localObject) {
+          return this.jdField_a_of_type_Alwg.touchIndex(paramInt1, paramInt2) + i;
         }
-        i = ((akyk)localObject).contentLength() + i;
+        i = ((alwg)localObject).contentLength() + i;
       }
       for (;;)
       {

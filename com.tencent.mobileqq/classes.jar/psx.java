@@ -1,23 +1,87 @@
-import android.text.TextUtils;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
+import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"putStringIfNotEmpty", "", "Lorg/json/JSONObject;", "key", "", "value", "defaultValue", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
-public final class psx
+public class psx
+  implements ITMAssistantDownloadClientListener
 {
-  public static final void a(@NotNull JSONObject paramJSONObject, @Nullable String paramString1, @Nullable String paramString2, @Nullable String paramString3)
+  private List<psw> a = new LinkedList();
+  
+  private static String a(int paramInt)
   {
-    Intrinsics.checkParameterIsNotNull(paramJSONObject, "$this$putStringIfNotEmpty");
-    if (!TextUtils.isEmpty((CharSequence)paramString2)) {
-      paramJSONObject.put(paramString1, paramString2);
+    switch (paramInt)
+    {
+    default: 
+      return "UNKNOWN";
+    case 1: 
+      return "DownloadSDKTaskState_WAITING";
+    case 2: 
+      return "DownloadSDKTaskState_DOWNLOADING";
+    case 4: 
+      return "DownloadSDKTaskState_SUCCEED";
+    case 3: 
+      return "DownloadSDKTaskState_PAUSED";
+    case 6: 
+      return "DownloadSDKTaskState_DELETE";
     }
-    while (paramString3 == null) {
+    return "DownloadSDKTaskState_FAILED";
+  }
+  
+  public void a(psw parampsw)
+  {
+    if (!this.a.contains(parampsw)) {
+      this.a.add(parampsw);
+    }
+  }
+  
+  public void b(psw parampsw)
+  {
+    this.a.remove(parampsw);
+  }
+  
+  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
+  {
+    try
+    {
+      QLog.d("DownloadListenerDelegate", 2, "[onDownloadSDKTaskProgressChanged] url=" + paramString + " receiveLen=" + paramLong1 + " totalLen=" + paramLong2 + " progress=" + paramLong1 * 1.0D / paramLong2 * 100.0D);
       return;
     }
-    paramJSONObject.put(paramString1, paramString3);
+    catch (Throwable paramTMAssistantDownloadClient)
+    {
+      QLog.e("DownloadListenerDelegate", 1, "[onDownloadSDKTaskProgressChanged] ", paramTMAssistantDownloadClient);
+    }
+  }
+  
+  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    if (paramTMAssistantDownloadClient != null) {
+      try
+      {
+        paramTMAssistantDownloadClient = paramTMAssistantDownloadClient.getDownloadTaskState(paramString1);
+        if (paramTMAssistantDownloadClient != null)
+        {
+          QLog.d("DownloadListenerDelegate", 2, "[onDownloadSDKTaskProgressChanged] url=" + paramString1 + " savedPath= " + paramTMAssistantDownloadClient.mSavePath + " state=" + a(paramInt1) + " errorCode=" + paramInt2 + " errorMsg=" + paramString2);
+          Iterator localIterator = this.a.iterator();
+          while (localIterator.hasNext()) {
+            ((psw)localIterator.next()).a(paramString1, paramTMAssistantDownloadClient.mSavePath, paramInt1, paramInt2, paramString2);
+          }
+        }
+        return;
+      }
+      catch (Throwable paramTMAssistantDownloadClient)
+      {
+        QLog.e("DownloadListenerDelegate", 1, "[onDownloadSDKTaskStateChanged] ", paramTMAssistantDownloadClient);
+      }
+    }
+  }
+  
+  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient)
+  {
+    QLog.d("DownloadListenerDelegate", 2, "[onDwonloadSDKServiceInvalid] ");
   }
 }
 

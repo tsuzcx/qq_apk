@@ -1,46 +1,44 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.SquareImageView;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.qphone.base.util.QLog;
 
 public class bbib
-  extends bbhi
+  extends OrientationEventListener
 {
-  public Button a;
-  public ImageView a;
-  public LinearLayout a;
-  public RelativeLayout a;
-  public TextView a;
-  public SquareImageView a;
-  public Button b;
-  public LinearLayout b;
-  public TextView b;
-  public LinearLayout c;
-  
-  public bbib(ViewGroup paramViewGroup, int paramInt)
+  public bbib(CameraCaptureView paramCameraCaptureView, Context paramContext)
   {
-    super(paramViewGroup, paramInt);
+    super(paramContext);
   }
   
-  protected void a()
+  public void onOrientationChanged(int paramInt)
   {
-    super.a();
-    View localView = a(this.jdField_c_of_type_Int);
-    a(localView);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131376603));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131363946));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369364));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131370141));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131370142));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379509));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379508));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)localView.findViewById(2131369181));
-    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131370140));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131363775));
+    this.a.v = paramInt;
+    if (paramInt == -1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CameraCaptureView", 2, "OrientationEventListener unknown");
+      }
+      this.a.w = 90;
+    }
+    if ((paramInt > 315) || (paramInt < 45)) {
+      this.a.w = 90;
+    }
+    for (;;)
+    {
+      if (this.a.g) {
+        this.a.u = this.a.w;
+      }
+      bbht.a = this.a.u;
+      return;
+      if ((paramInt > 45) && (paramInt < 135)) {
+        this.a.w = 180;
+      } else if ((paramInt > 135) && (paramInt < 225)) {
+        this.a.w = 270;
+      } else if ((paramInt > 225) && (paramInt < 315)) {
+        this.a.w = 0;
+      }
+    }
   }
 }
 

@@ -1,21 +1,26 @@
 package dov.com.qq.im.ae.camera.ui.aiscene;
 
-import android.app.Activity;
-import android.content.Intent;
-import bljy;
-import blpb;
+import android.animation.AnimatorSet;
+import android.animation.AnimatorSet.Builder;
+import android.animation.ObjectAnimator;
+import android.widget.TextView;
+import bncm;
 
 public class VideoStoryAIScenePart$20
   implements Runnable
 {
-  public VideoStoryAIScenePart$20(blpb paramblpb) {}
+  public VideoStoryAIScenePart$20(bncm parambncm) {}
   
   public void run()
   {
-    Intent localIntent = new Intent();
-    localIntent.setAction("ae_editor_bottom_tab_show_hide");
-    localIntent.putExtra("is_show", true);
-    blpb.a(this.this$0).a().sendBroadcast(localIntent);
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(bncm.a(this.this$0), "translationY", new float[] { 0.0F });
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(bncm.b(this.this$0), "translationY", new float[] { 0.0F });
+    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(bncm.b(this.this$0), "translationY", new float[] { 0.0F });
+    Object localObject = new int[2];
+    bncm.a(this.this$0).getLocationInWindow((int[])localObject);
+    localObject = new AnimatorSet();
+    ((AnimatorSet)localObject).play(localObjectAnimator1).with(localObjectAnimator2).with(localObjectAnimator3);
+    ((AnimatorSet)localObject).setDuration(300L).start();
   }
 }
 

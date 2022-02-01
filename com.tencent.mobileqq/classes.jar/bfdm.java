@@ -1,1224 +1,697 @@
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.support.v4.util.ArrayMap;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import android.widget.EditText;
+import android.content.res.Resources;
+import android.util.SparseArray;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.troop.org.pb.oidb_0x496.Robot;
-import com.tencent.mobileqq.troop.org.pb.oidb_0x496.RobotSubscribeCategory;
-import com.tencent.mobileqq.troop.org.pb.oidb_0x496.UinRange;
-import com.tencent.mobileqq.troop.utils.TroopRobotManager.1;
-import com.tencent.mobileqq.troop.utils.TroopRobotManager.3;
-import com.tencent.mobileqq.troop.utils.TroopRobotManager.6;
-import com.tencent.mobileqq.troop.utils.TroopRobotManager.7;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter.3;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.mobileqq.troop.createNewTroop.RelationTroopEntity;
 import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.widget.ExpandableListView;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import mqq.manager.Manager;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.oidb.cmd0x934.cmd0x934.ReqBody;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
 public class bfdm
-  implements Manager
+  extends amga
+  implements View.OnClickListener, View.OnLongClickListener, awza
 {
-  static Object jdField_a_of_type_JavaLangObject = new Object();
-  protected int a;
-  private amsu jdField_a_of_type_Amsu;
-  protected Handler a;
-  protected ArrayMap<Long, ArrayList<bfdl>> a;
-  protected AppInterface a;
-  protected String a;
-  public WeakReference<bfdv> a;
-  protected ArrayList<String> a;
-  protected HashMap<Long, MessageForUniteGrayTip> a;
-  protected List<bfdw> a;
-  public boolean a;
-  protected ArrayMap<Long, ArrayList<bfdl>> b;
-  public String b;
-  HashMap<String, Long> jdField_b_of_type_JavaUtilHashMap = new HashMap();
-  protected List<String> b;
-  private boolean jdField_b_of_type_Boolean;
-  protected ArrayMap<Long, Integer> c;
-  public String c;
-  private HashMap<String, ArrayList<String>> c;
-  protected List<String> c;
-  public String d;
-  protected List<String> d;
-  public String e;
-  List<oidb_0x496.RobotSubscribeCategory> e = new ArrayList();
-  private String f = "";
-  private String g = "";
-  private String h;
+  private static final bfds jdField_a_of_type_Bfds = new bfds(null);
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private final SparseArray<ArrayList<Entity>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bfdn(this);
+  bfeq jdField_a_of_type_Bfeq;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  protected NewTroopContactView a;
+  private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
+  private final ArrayList<Groups> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean = true;
+  private final View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new bfdo(this);
+  private ExpandableListView jdField_b_of_type_ComTencentWidgetExpandableListView;
   
-  public bfdm(AppInterface paramAppInterface)
+  public bfdm(NewTroopContactView paramNewTroopContactView, QQAppInterface paramQQAppInterface, ExpandableListView paramExpandableListView, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(5);
-    this.jdField_b_of_type_JavaUtilList = new ArrayList(5);
-    this.jdField_c_of_type_JavaUtilList = new ArrayList(5);
-    this.jdField_d_of_type_JavaUtilList = new ArrayList(5);
-    this.jdField_a_of_type_Int = 60000;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_c_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap(20);
-    this.jdField_b_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap(50);
-    this.jdField_c_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap(50);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_c_of_type_JavaUtilList.add(amtj.a(2131714775));
-    this.jdField_d_of_type_JavaUtilList.add(amtj.a(2131714761));
-    ThreadManager.post(new TroopRobotManager.1(this), 5, null, true);
-    b();
+    super(paramNewTroopContactView.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopCreateActivity, paramQQAppInterface, paramExpandableListView);
+    this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView = paramNewTroopContactView;
+    this.jdField_a_of_type_AndroidContentContext = paramNewTroopContactView.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopCreateActivity;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_b_of_type_ComTencentWidgetExpandableListView = paramExpandableListView;
+    paramExpandableListView.post(new ContactListAdapter.3(this));
   }
   
-  private void a(QQAppInterface paramQQAppInterface)
+  private int a(int paramInt1, int paramInt2)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_JavaUtilArrayList == null)
-      {
-        QLog.d("TroopRobotManager", 2, "initRobotRedInRedList ");
-        this.jdField_a_of_type_JavaUtilArrayList = bezm.a(paramQQAppInterface);
-        if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-          this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-        }
-      }
-      return;
+    if (((Groups)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1)).group_id == 1002) {
+      return 1;
     }
-  }
-  
-  public static void a(MessageRecord paramMessageRecord)
-  {
-    if (!TextUtils.isEmpty(paramMessageRecord.msg))
-    {
-      Object localObject = bfwx.d.matcher(paramMessageRecord.msg);
-      if (((Matcher)localObject).find())
-      {
-        localObject = ((Matcher)localObject).group(0);
-        int i = paramMessageRecord.msg.indexOf((String)localObject);
-        if (i >= 0)
-        {
-          String str = paramMessageRecord.msg.substring(0, i);
-          paramMessageRecord.saveExtInfoToExtStr("robot_short_link_url", (String)localObject);
-          paramMessageRecord.saveExtInfoToExtStr("robot_short_link_description", str);
-          paramMessageRecord.saveExtInfoToExtStr("robot_processed", "true");
-        }
-      }
+    if (((Groups)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1)).group_id == 1008) {
+      return 2;
     }
+    return 0;
   }
   
-  private void a(MessageRecord paramMessageRecord, String paramString)
+  private View a(int paramInt1, int paramInt2, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
   {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getSharedPreferences("robot_subcribmsg_timestamp", 0);
-    long l;
-    if (!this.jdField_b_of_type_JavaUtilHashMap.containsKey(paramString))
+    Object localObject;
+    if (paramView == null)
     {
-      l = localSharedPreferences.getLong(paramString, 0L);
-      this.jdField_b_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(l));
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560479, paramViewGroup, false);
+      paramViewGroup = new bfdu();
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368381));
+      paramViewGroup.d = ((TextView)paramView.findViewById(2131371803));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131364612));
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131380136);
+      if (this.jdField_b_of_type_AndroidViewView$OnClickListener != null) {
+        paramView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
+      }
+      paramView.findViewById(2131379987).setVisibility(8);
+      paramView.setTag(paramViewGroup);
+      localObject = getChild(paramInt1, paramInt2);
+      Friends localFriends = (Friends)localObject;
+      paramViewGroup.jdField_a_of_type_Long = getGroupId(paramInt1);
+      paramViewGroup.jdField_a_of_type_JavaLangObject = localObject;
+      paramViewGroup.jdField_a_of_type_JavaLangString = localFriends.uin;
+      a(paramViewGroup, null);
+      if (paramViewGroup.jdField_a_of_type_AndroidViewView != null)
+      {
+        if (!bghs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramViewGroup.jdField_a_of_type_JavaLangString)) {
+          break label375;
+        }
+        paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      }
+      label204:
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(null);
+      localObject = ContactUtils.getFriendName(localFriends);
+      paramViewGroup.d.setText((CharSequence)localObject);
+      if (!this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.a(paramViewGroup.jdField_a_of_type_JavaLangString)) {
+        break label388;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
+      label254:
+      if ((this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.jdField_a_of_type_JavaUtilArrayList == null) || (!this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.jdField_a_of_type_JavaUtilArrayList.contains(localFriends.uin))) {
+        break label400;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(false);
     }
     for (;;)
     {
-      if (paramMessageRecord.shmsgseq > ((Long)this.jdField_b_of_type_JavaUtilHashMap.get(paramString)).longValue())
+      if ((AppSetting.c) && (paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled()))
       {
-        localSharedPreferences.edit().putLong(paramString, paramMessageRecord.shmsgseq).commit();
-        this.jdField_b_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(paramMessageRecord.shmsgseq));
+        if (!paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+          break label412;
+        }
+        paramView.setContentDescription((String)localObject + anvx.a(2131701994));
       }
-      return;
-      l = Math.max(((Long)this.jdField_b_of_type_JavaUtilHashMap.get(paramString)).longValue(), localSharedPreferences.getLong(paramString, 0L));
-      localSharedPreferences.edit().putLong(paramString, l).commit();
-      this.jdField_b_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(l));
+      return paramView;
+      paramViewGroup = (bfdu)paramView.getTag();
+      paramViewGroup.d.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+      break;
+      label375:
+      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      break label204;
+      label388:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+      break label254;
+      label400:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(true);
     }
+    label412:
+    paramView.setContentDescription((String)localObject + anvx.a(2131701980));
+    return paramView;
   }
   
-  private void a(MessageRecord paramMessageRecord, String paramString1, String paramString2, String paramString3)
+  private void a(List<bfdq> paramList)
   {
-    b(paramMessageRecord.frienduin, paramString1, paramString2);
-    b(Long.parseLong(paramMessageRecord.frienduin), Long.parseLong(paramString1), paramString3, new bfdr(this, paramString3));
-  }
-  
-  private void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    QQAppInterface localQQAppInterface;
-    do
+    try
     {
-      return;
-      localQQAppInterface = null;
-      if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
-        localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface;
-      }
-    } while (localQQAppInterface == null);
-    bfyz.c(localQQAppInterface.getApplication(), localQQAppInterface.getCurrentUin(), paramString, false);
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
-  {
-    bcef.b(null, "dc00899", "Grp_robot", "", paramString1, paramString2, 0, 0, paramString3, paramString4, paramString5, paramString6);
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidOsHandler.post(new TroopRobotManager.3(this));
-  }
-  
-  public static boolean a(TextView paramTextView, MessageRecord paramMessageRecord)
-  {
-    boolean bool = false;
-    String str1 = paramMessageRecord.getExtInfoFromExtStr("robot_short_link_url");
-    if (!TextUtils.isEmpty(str1))
-    {
-      paramTextView.setText(paramMessageRecord.getExtInfoFromExtStr("robot_short_link_description"));
-      paramTextView.append("\r\n");
-      String str2 = amtj.a(2131714763);
-      SpannableString localSpannableString = new SpannableString(str2);
-      localSpannableString.setSpan(new bfdo(str1, paramMessageRecord), 0, str2.length(), 33);
-      paramTextView.append(localSpannableString);
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public static String b(MessageRecord paramMessageRecord)
-  {
-    if (b(paramMessageRecord))
-    {
-      String str = paramMessageRecord.getExtInfoFromExtStr("robot_short_link_url");
-      paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("robot_short_link_description");
-      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramMessageRecord))) {
-        return paramMessageRecord + amtj.a(2131714771);
-      }
-    }
-    return null;
-  }
-  
-  private void b()
-  {
-    if ((this.jdField_a_of_type_Amsu != null) || (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) || (!(this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface))) {
+      Collections.sort(paramList, jdField_a_of_type_Bfds);
       return;
     }
-    this.jdField_a_of_type_Amsu = new bfdp(this);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Amsu);
+    catch (ArrayIndexOutOfBoundsException paramList)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("createNewTroop.ContactListAdapter", 2, "", paramList);
+    }
   }
   
-  public static boolean b(MessageRecord paramMessageRecord)
+  private View b(int paramInt1, int paramInt2, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
   {
-    return false;
+    PhoneContact localPhoneContact;
+    if (paramView == null)
+    {
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560479, paramViewGroup, false);
+      paramViewGroup = new bfdu();
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368381));
+      paramViewGroup.d = ((TextView)paramView.findViewById(2131371803));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131364612));
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131380136);
+      if (this.jdField_b_of_type_AndroidViewView$OnClickListener != null) {
+        paramView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
+      }
+      paramView.setTag(paramViewGroup);
+      Object localObject = getChild(paramInt1, paramInt2);
+      localPhoneContact = (PhoneContact)localObject;
+      paramViewGroup.jdField_a_of_type_JavaLangObject = localObject;
+      paramViewGroup.jdField_a_of_type_JavaLangString = localPhoneContact.mobileCode;
+      a(paramViewGroup, null);
+      if (paramViewGroup.jdField_a_of_type_AndroidViewView != null) {
+        paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      }
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(null);
+      paramViewGroup.d.setText(localPhoneContact.name);
+      if (!this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.a(paramViewGroup.jdField_a_of_type_JavaLangString)) {
+        break label353;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
+      label214:
+      if ((this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.jdField_a_of_type_JavaUtilArrayList == null) || ("0".equals(localPhoneContact.uin)) || (!this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.jdField_a_of_type_JavaUtilArrayList.contains(localPhoneContact.uin))) {
+        break label365;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(false);
+    }
+    for (;;)
+    {
+      if ((AppSetting.c) && (paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled()))
+      {
+        if (!paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+          break label377;
+        }
+        paramView.setContentDescription(localPhoneContact.name + anvx.a(2131701988));
+      }
+      return paramView;
+      paramViewGroup = (bfdu)paramView.getTag();
+      paramViewGroup.d.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+      break;
+      label353:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+      break label214;
+      label365:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(true);
+    }
+    label377:
+    paramView.setContentDescription(localPhoneContact.name + anvx.a(2131701993));
+    return paramView;
+  }
+  
+  private View c(int paramInt1, int paramInt2, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
+  {
+    if ((paramView == null) || ((paramView.getTag() instanceof bfdu)))
+    {
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559663, paramViewGroup, false);
+      paramViewGroup = new bfdt();
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368381));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366925));
+      paramViewGroup.d = ((TextView)paramView.findViewById(2131378659));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373322));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373305));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131373332));
+      paramViewGroup.e = ((TextView)paramView.findViewById(2131378661));
+      paramView.setTag(paramViewGroup);
+      if (this.jdField_b_of_type_AndroidViewView$OnClickListener == null) {
+        break label483;
+      }
+      paramView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
+    }
+    label483:
+    for (;;)
+    {
+      Object localObject = getChild(paramInt1, paramInt2);
+      PublicAccountInfo localPublicAccountInfo = (PublicAccountInfo)localObject;
+      paramViewGroup.jdField_a_of_type_JavaLangObject = localObject;
+      paramViewGroup.jdField_a_of_type_JavaLangString = Long.toString(localPublicAccountInfo.uin);
+      paramViewGroup.d.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131167026));
+      if (PublicAccountInfo.isLooker(localPublicAccountInfo))
+      {
+        paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+        paramViewGroup.d.setVisibility(8);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(null);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        paramViewGroup.b.setVisibility(8);
+        paramViewGroup.e.setVisibility(8);
+        if (AppSetting.c) {
+          paramView.setContentDescription(paramViewGroup.d.getText());
+        }
+        return paramView;
+        paramViewGroup = (bfdt)paramView.getTag();
+        paramViewGroup.d.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+      }
+      else
+      {
+        paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+        paramViewGroup.d.setVisibility(0);
+        paramViewGroup.e.setVisibility(0);
+        paramViewGroup.d.setText(localPublicAccountInfo.name);
+        if (localPublicAccountInfo.certifiedGrade > 0L)
+        {
+          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130841803);
+        }
+        for (;;)
+        {
+          paramViewGroup.e.setText(localPublicAccountInfo.summary);
+          a(paramViewGroup, null);
+          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+          paramViewGroup.b.setVisibility(8);
+          break;
+          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        }
+      }
+    }
   }
   
   private void c()
   {
-    if ((this.jdField_a_of_type_Amsu != null) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null))
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
+    if (localObject1 != null)
     {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Amsu);
-      this.jdField_a_of_type_Amsu = null;
+      Object localObject3 = ((aoxz)localObject1).getRecentList(true);
+      if (localObject3 != null)
+      {
+        Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+        localObject1 = new ArrayList();
+        localObject3 = ((List)localObject3).iterator();
+        while (((Iterator)localObject3).hasNext())
+        {
+          Object localObject4 = (RecentUser)((Iterator)localObject3).next();
+          if (localObject4 != null) {
+            try
+            {
+              if ((((RecentUser)localObject4).getType() == 0) && (Long.parseLong(((RecentUser)localObject4).uin) >= 10000L) && (!((RecentUser)localObject4).uin.equals(localObject2)) && (!this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.b.contains(((RecentUser)localObject4).uin)) && (!bhbx.b(((RecentUser)localObject4).uin)) && (!bghs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((RecentUser)localObject4).uin)))
+              {
+                localObject4 = ((anvk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(((RecentUser)localObject4).uin);
+                if ((localObject4 != null) && (((Friends)localObject4).isFriend()) && (!bjxa.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((Friends)localObject4).uin))) {
+                  ((ArrayList)localObject1).add(localObject4);
+                }
+              }
+            }
+            catch (NumberFormatException localNumberFormatException) {}
+          }
+        }
+        if (!((ArrayList)localObject1).isEmpty())
+        {
+          localObject2 = new Groups();
+          ((Groups)localObject2).group_id = 1003;
+          ((Groups)localObject2).group_name = this.jdField_a_of_type_AndroidContentContext.getString(2131717980);
+          ((Groups)localObject2).group_friend_count = ((ArrayList)localObject1).size();
+          ((Groups)localObject2).seqid = 0;
+          this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
+          this.jdField_a_of_type_AndroidUtilSparseArray.put(((Groups)localObject2).group_id, localObject1);
+        }
+      }
     }
   }
   
   private void d()
   {
-    Object localObject1 = bfyz.f(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-    if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-      try
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    this.jdField_a_of_type_Bfeq.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_AndroidUtilSparseArray);
+    c();
+    anvk localanvk = (anvk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    Object localObject2 = null;
+    Object localObject1;
+    Object localObject3;
+    if (localanvk != null)
+    {
+      localObject1 = localanvk.b();
+      if ((localObject1 != null) && (((List)localObject1).size() != 0)) {
+        break label611;
+      }
+      if (QLog.isColorLevel())
       {
-        localObject1 = new JSONArray((String)localObject1);
-        this.jdField_c_of_type_JavaUtilHashMap.clear();
-        int i = 0;
-        while (i < ((JSONArray)localObject1).length())
+        localObject3 = new StringBuilder().append("group list is ");
+        if (localObject1 != null) {
+          break label289;
+        }
+        localObject2 = "null";
+        label105:
+        QLog.d("createNewTroop.ContactListAdapter", 2, (String)localObject2);
+      }
+      if (localObject1 != null) {
+        break label611;
+      }
+      localObject1 = new ArrayList();
+    }
+    label289:
+    label608:
+    label611:
+    for (;;)
+    {
+      localObject3 = ((List)localObject1).iterator();
+      Groups localGroups;
+      Object localObject4;
+      Object localObject5;
+      int i;
+      if (((Iterator)localObject3).hasNext())
+      {
+        localGroups = (Groups)((Iterator)localObject3).next();
+        this.jdField_a_of_type_JavaUtilArrayList.add(localGroups);
+        localObject2 = localanvk.a(String.valueOf(localGroups.group_id));
+        if (localObject2 == null) {}
+        for (localObject2 = new ArrayList();; localObject2 = new ArrayList((Collection)localObject2))
         {
-          Object localObject3 = ((JSONArray)localObject1).optJSONObject(i);
-          if (localObject3 != null)
-          {
-            String str = ((JSONObject)localObject3).optString("robotUin");
-            localObject3 = ((JSONObject)localObject3).optJSONArray("barItem");
-            if ((!TextUtils.isEmpty(str)) && (localObject3 != null))
-            {
-              ArrayList localArrayList = new ArrayList(((JSONArray)localObject3).length());
-              int j = 0;
-              while (j < ((JSONArray)localObject3).length())
-              {
-                localArrayList.add(((JSONArray)localObject3).optString(j));
-                j += 1;
-              }
-              this.jdField_c_of_type_JavaUtilHashMap.put(str, localArrayList);
-            }
+          localObject4 = new ArrayList();
+          localObject5 = ((List)localObject2).iterator();
+          while (((Iterator)localObject5).hasNext()) {
+            ((ArrayList)localObject4).add(new bfdq((Friends)((Iterator)localObject5).next(), -1));
+          }
+          localObject1 = localObject2;
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("createNewTroop.ContactListAdapter", 2, "FriendManager is null");
+          localObject1 = localObject2;
+          break;
+          localObject2 = "empty";
+          break label105;
+        }
+        a((List)localObject4);
+        ((List)localObject2).clear();
+        localObject4 = ((ArrayList)localObject4).iterator();
+        while (((Iterator)localObject4).hasNext()) {
+          ((List)localObject2).add(((bfdq)((Iterator)localObject4).next()).a);
+        }
+        localObject4 = ((List)localObject2).iterator();
+        i = 0;
+        label376:
+        if (((Iterator)localObject4).hasNext())
+        {
+          localObject5 = (Friends)((Iterator)localObject4).next();
+          int j = ContactUtils.getFriendStatus(((Friends)localObject5).detalStatusFlag, ((Friends)localObject5).iTermType);
+          if ((j == 0) || (j == 6)) {
+            break label608;
           }
           i += 1;
         }
-        localObject2 = bfyz.g(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
       }
-      catch (JSONException localJSONException1)
-      {
-        localJSONException1.printStackTrace();
-      }
-    }
-    Object localObject2;
-    if (!TextUtils.isEmpty((CharSequence)localObject2)) {}
-    try
-    {
-      localObject2 = new JSONObject((String)localObject2);
-      this.f = ((JSONObject)localObject2).optString("userTail");
-      this.g = ((JSONObject)localObject2).optString("robotTail");
-      localObject2 = aqiq.a();
-      if (localObject2 != null) {
-        a(((aqiq)localObject2).a(), ((aqiq)localObject2).a());
-      }
-      return;
-    }
-    catch (JSONException localJSONException2)
-    {
       for (;;)
       {
-        localJSONException2.printStackTrace();
-      }
-    }
-  }
-  
-  public static boolean d(MessageRecord paramMessageRecord)
-  {
-    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("robot_processed");
-    return (!TextUtils.isEmpty(paramMessageRecord)) && (paramMessageRecord.equals("true"));
-  }
-  
-  public int a(long paramLong)
-  {
-    int i = 0;
-    if (this.jdField_c_of_type_AndroidSupportV4UtilArrayMap != null) {
-      synchronized (this.jdField_c_of_type_AndroidSupportV4UtilArrayMap)
-      {
-        if (this.jdField_c_of_type_AndroidSupportV4UtilArrayMap.containsKey(Long.valueOf(paramLong))) {
-          i = ((Integer)this.jdField_c_of_type_AndroidSupportV4UtilArrayMap.get(Long.valueOf(paramLong))).intValue();
+        break label376;
+        localObject4 = new ArrayList();
+        i = 0;
+        while (i < ((List)localObject2).size())
+        {
+          localObject5 = (Friends)((List)localObject2).get(i);
+          if ((!((Friends)localObject5).uin.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) && (!this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.b.contains(((Friends)localObject5).uin)) && (!bhbx.b(((Friends)localObject5).uin)) && (!bghs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((Friends)localObject5).uin)) && (!bjxa.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((Friends)localObject5).uin))) {
+            ((ArrayList)localObject4).add(((List)localObject2).get(i));
+          }
+          i += 1;
         }
-        return i;
+        this.jdField_a_of_type_AndroidUtilSparseArray.put(localGroups.group_id, localObject4);
+        break;
+        if ((!((List)localObject1).isEmpty()) && (this.jdField_a_of_type_Boolean)) {
+          this.jdField_b_of_type_ComTencentWidgetExpandableListView.a(0);
+        }
+        return;
       }
     }
-    return 0;
   }
   
-  public int a(ChatMessage paramChatMessage)
+  public Groups a(long paramLong)
   {
-    paramChatMessage = paramChatMessage.getExtInfoFromExtStr("robot_news_class_id");
     int i = 0;
-    if (!TextUtils.isEmpty(paramChatMessage)) {}
-    try
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      i = Integer.parseInt(paramChatMessage);
-      return i;
-    }
-    catch (Exception paramChatMessage) {}
-    return 0;
-  }
-  
-  public bfdk a(long paramLong)
-  {
-    bfdk localbfdk = new bfdk();
-    localbfdk.jdField_a_of_type_JavaUtilArrayList = a(paramLong);
-    localbfdk.b = b(paramLong);
-    localbfdk.jdField_a_of_type_Int = a(paramLong);
-    return localbfdk;
-  }
-  
-  public oidb_0x496.RobotSubscribeCategory a(int paramInt)
-  {
-    Iterator localIterator = this.e.iterator();
-    while (localIterator.hasNext())
-    {
-      oidb_0x496.RobotSubscribeCategory localRobotSubscribeCategory = (oidb_0x496.RobotSubscribeCategory)localIterator.next();
-      if (localRobotSubscribeCategory.id.get() == paramInt) {
-        return localRobotSubscribeCategory;
+      Groups localGroups = (Groups)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      if (localGroups.group_id == paramLong) {
+        return localGroups;
       }
+      i += 1;
     }
     return null;
   }
   
-  public String a()
-  {
-    return this.h;
-  }
-  
-  public String a(QQAppInterface paramQQAppInterface, MessageForPtt paramMessageForPtt)
-  {
-    return "";
-  }
-  
-  public String a(MessageRecord paramMessageRecord)
-  {
-    String str = paramMessageRecord.getExtInfoFromExtStr("robot_news_class_id");
-    return paramMessageRecord.frienduin + "_" + str;
-  }
-  
-  public ArrayList<bfdl> a(long paramLong)
-  {
-    ArrayList localArrayList = new ArrayList(0);
-    if (this.jdField_b_of_type_AndroidSupportV4UtilArrayMap != null) {
-      synchronized (this.jdField_b_of_type_AndroidSupportV4UtilArrayMap)
-      {
-        if (this.jdField_b_of_type_AndroidSupportV4UtilArrayMap.containsKey(Long.valueOf(paramLong)))
-        {
-          Iterator localIterator = ((ArrayList)this.jdField_b_of_type_AndroidSupportV4UtilArrayMap.get(Long.valueOf(paramLong))).iterator();
-          while (localIterator.hasNext())
-          {
-            bfdl localbfdl = (bfdl)localIterator.next();
-            if (localbfdl.a()) {
-              localArrayList.add(localbfdl);
-            }
-          }
-        }
-      }
-    }
-    return localArrayList1;
-  }
-  
   public void a()
   {
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_d_of_type_JavaLangString = null;
-    a(false);
+    super.notifyDataSetChanged();
   }
   
-  public void a(int paramInt1, long paramLong1, long paramLong2, int paramInt2, bfdu parambfdu)
+  public void a(int paramInt)
   {
-    cmd0x934.ReqBody localReqBody = new cmd0x934.ReqBody();
-    localReqBody.cmd.set(paramInt1, true);
-    localReqBody.version.set(paramInt2, true);
-    localReqBody.group_id.set(paramLong1, true);
-    localReqBody.robot_uin.set(paramLong2);
-    nmb.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, new bfds(this, parambfdu), localReqBody.toByteArray(), "OidbSvc.0x934_1", 2356, 1, new Bundle(), 12000L);
+    notifyDataSetChanged();
   }
   
-  public void a(int paramInt, long paramLong1, long paramLong2, String paramString, bfdu parambfdu)
-  {
-    cmd0x934.ReqBody localReqBody = new cmd0x934.ReqBody();
-    localReqBody.cmd.set(paramInt, true);
-    localReqBody.group_id.set(paramLong1, true);
-    localReqBody.keyword.set(paramString, true);
-    localReqBody.robot_uin.set(paramLong2);
-    nmb.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, new bfdt(this, parambfdu), localReqBody.toByteArray(), "OidbSvc.0x934_1", 2356, 1, new Bundle(), 12000L);
-  }
+  public void a(long paramLong) {}
   
-  public void a(long paramLong, int paramInt, bfdu parambfdu)
+  public void a(View paramView, int paramInt)
   {
-    a(4, 0L, paramLong, paramInt, parambfdu);
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    MessageForUniteGrayTip localMessageForUniteGrayTip = (MessageForUniteGrayTip)this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramLong1));
-    if (localMessageForUniteGrayTip != null)
+    bfdr localbfdr = (bfdr)paramView.getTag();
+    if (localbfdr == null)
     {
-      localMessageForUniteGrayTip.shmsgseq = paramLong2;
-      aucg.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, localMessageForUniteGrayTip);
-    }
-  }
-  
-  public void a(long paramLong1, long paramLong2, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopRobotManager", 2, "onSetTroopRobot troopuin:" + paramLong1 + " robotuin:" + paramLong2 + " status:" + paramInt);
-    }
-    if (this.jdField_b_of_type_AndroidSupportV4UtilArrayMap != null) {
-      for (;;)
-      {
-        synchronized (this.jdField_b_of_type_AndroidSupportV4UtilArrayMap)
-        {
-          if (this.jdField_b_of_type_AndroidSupportV4UtilArrayMap.containsKey(Long.valueOf(paramLong1)))
-          {
-            ArrayList localArrayList = (ArrayList)this.jdField_b_of_type_AndroidSupportV4UtilArrayMap.get(Long.valueOf(paramLong1));
-            Object localObject4 = null;
-            Object localObject1 = localArrayList.iterator();
-            if (!((Iterator)localObject1).hasNext()) {
-              break label243;
-            }
-            bfdl localbfdl = (bfdl)((Iterator)localObject1).next();
-            if (localbfdl.a() != paramLong2) {
-              continue;
-            }
-            localObject1 = localObject4;
-            if (!localbfdl.a())
-            {
-              localObject1 = localObject4;
-              if (paramInt == 1) {
-                localObject1 = localbfdl;
-              }
-            }
-            localbfdl.a(paramInt);
-            if (localObject1 != null)
-            {
-              localArrayList.remove(localObject1);
-              localArrayList.add(0, localObject1);
-              if (QLog.isColorLevel()) {
-                QLog.d("TroopRobotManager", 2, "onSetTroopRobot move position " + ((bfdl)localObject1).a());
-              }
-            }
-          }
-          return;
-        }
-        label243:
-        Object localObject3 = null;
-      }
-    }
-  }
-  
-  public void a(long paramLong1, long paramLong2, int paramInt, bfdu parambfdu)
-  {
-    a(1, paramLong1, paramLong2, paramInt, parambfdu);
-  }
-  
-  public void a(long paramLong1, long paramLong2, String paramString, bfdu parambfdu)
-  {
-    a(3, paramLong1, paramLong2, paramString, parambfdu);
-  }
-  
-  public void a(long paramLong, String paramString, bfdu parambfdu)
-  {
-    a(Long.valueOf("1").longValue(), paramLong, paramString, parambfdu);
-  }
-  
-  public void a(long paramLong, ArrayList<bfdl> paramArrayList)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onGetAddedRobot ").append(paramLong).append(" ");
-      if (paramArrayList != null) {
-        break label93;
-      }
-      ??? = "null";
+      localbfdr = new bfdr();
+      paramView.findViewById(2131369395).setVisibility(0);
+      localbfdr.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367894));
+      paramView.setTag(localbfdr);
     }
     for (;;)
     {
-      QLog.d("TroopRobotManager", 2, (String)???);
-      if ((paramArrayList != null) && (this.jdField_b_of_type_AndroidSupportV4UtilArrayMap != null)) {}
-      synchronized (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap)
-      {
-        this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(Long.valueOf(paramLong), paramArrayList);
-        return;
-        label93:
-        ??? = paramArrayList.toString();
-      }
-    }
-  }
-  
-  public void a(long paramLong, ArrayList<bfdl> arg3, int paramInt)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onGetAllRobot ").append(paramLong).append(" ");
-      if (??? != null) {
-        break label137;
-      }
-      ??? = "null";
-    }
-    for (;;)
-    {
-      QLog.d("TroopRobotManager", 2, (String)??? + " " + paramInt);
-      if ((??? != null) && (this.jdField_b_of_type_AndroidSupportV4UtilArrayMap != null)) {}
-      synchronized (this.jdField_b_of_type_AndroidSupportV4UtilArrayMap)
-      {
-        this.jdField_b_of_type_AndroidSupportV4UtilArrayMap.put(Long.valueOf(paramLong), ???);
-        if (this.jdField_c_of_type_AndroidSupportV4UtilArrayMap == null) {}
-      }
-      synchronized (this.jdField_c_of_type_AndroidSupportV4UtilArrayMap)
-      {
-        this.jdField_c_of_type_AndroidSupportV4UtilArrayMap.put(Long.valueOf(paramLong), Integer.valueOf(paramInt));
-        return;
-        label137:
-        ??? = ???.toString();
-        continue;
-        ??? = finally;
-        throw ???;
-      }
-    }
-  }
-  
-  public void a(Context paramContext, BaseChatPie paramBaseChatPie, QQAppInterface paramQQAppInterface, EditText paramEditText, SessionInfo paramSessionInfo, ChatMessage paramChatMessage, String paramString)
-  {
-    String str = ContactUtils.getTroopMemberName(paramQQAppInterface, paramChatMessage.frienduin, paramChatMessage.senderuin);
-    paramEditText = bevq.a(paramQQAppInterface, paramContext, paramSessionInfo.curFriendUin, paramChatMessage.senderuin, str, false, paramEditText, true, true);
-    paramContext = new ArrayList();
-    paramEditText = bevq.a(paramEditText, paramContext);
-    paramSessionInfo = paramChatMessage.getExtInfoFromExtStr("robot_news_class_id");
-    try
-    {
-      int i = Integer.parseInt(paramSessionInfo);
-      paramBaseChatPie.sendRobotNextMessage(paramEditText + " " + paramString, paramContext, i);
-      new bcek(paramQQAppInterface).a("dc00899").b("Grp_robot").c("sub_page").d("next_msg_clk").a(new String[] { paramChatMessage.frienduin, paramSessionInfo }).a();
+      Groups localGroups = (Groups)getGroup(paramInt);
+      localbfdr.jdField_a_of_type_AndroidWidgetTextView.setText(localGroups.group_name);
+      ((CheckBox)paramView.findViewById(2131369395)).setChecked(this.jdField_b_of_type_ComTencentWidgetExpandableListView.c(paramInt));
       return;
     }
-    catch (Exception paramContext)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("TroopRobotManager", 2, "parse robotNewTipsClsId error");
-    }
   }
   
-  public void a(bfdv parambfdv)
+  public void a(bfeq parambfeq)
   {
-    if (parambfdv == null)
-    {
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
-      return;
-    }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambfdv);
+    this.jdField_a_of_type_Bfeq = parambfeq;
   }
   
-  public void a(QQAppInterface paramQQAppInterface, long paramLong, ArrayList<String> paramArrayList)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    int k = 0;
     if (QLog.isColorLevel()) {
-      QLog.d("TroopRobotManager", 2, "onGetRobotRedInfo cacheTime" + paramLong);
+      QLog.d("createNewTroop.ContactListAdapter", 2, "onRecommendCountChanged count=" + paramInt);
     }
-    a(paramQQAppInterface);
-    ArrayList localArrayList;
-    int i;
-    label182:
-    String str;
-    label271:
-    int j;
-    synchronized (jdField_a_of_type_JavaLangObject)
+    notifyDataSetChanged();
+  }
+  
+  public int a_()
+  {
+    return 2131558982;
+  }
+  
+  public void b()
+  {
+    super.b();
+  }
+  
+  public void b(int paramInt) {}
+  
+  public void c(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("createNewTroop.ContactListAdapter", 2, "onUpdateContactList, " + paramInt);
+    }
+    notifyDataSetChanged();
+  }
+  
+  public Object getChild(int paramInt1, int paramInt2)
+  {
+    return ((ArrayList)this.jdField_a_of_type_AndroidUtilSparseArray.get(((Groups)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1)).group_id)).get(paramInt2);
+  }
+  
+  public long getChildId(int paramInt1, int paramInt2)
+  {
+    Object localObject = getChild(paramInt1, paramInt2);
+    if ((localObject instanceof Friends))
     {
-      localArrayList = bezm.b(paramQQAppInterface);
-      if (localArrayList == null)
+      localObject = (Friends)localObject;
+      try
       {
-        localArrayList = new ArrayList();
-        if ((paramArrayList == null) || (paramArrayList.size() == 0))
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.clear();
-          bezm.a(paramQQAppInterface, this.jdField_a_of_type_JavaUtilArrayList);
-          bezm.a(paramQQAppInterface, false);
-          bezm.c(paramQQAppInterface, false);
-          return;
-        }
-        QLog.d("TroopRobotManager", 2, "onGetRobotRedInfo historyList " + localArrayList.size() + " uinList: " + paramArrayList.size() + " red:" + this.jdField_a_of_type_JavaUtilArrayList.size());
-        try
-        {
-          i = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-          if (i >= 0)
-          {
-            str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-            if (paramArrayList.contains(str)) {
-              break label527;
-            }
-            this.jdField_a_of_type_JavaUtilArrayList.remove(i);
-            QLog.d("TroopRobotManager", 2, "onGetRobotRedInfo remove red newing " + str + " index: " + i);
-            break label527;
-          }
-          i = paramArrayList.size() - 1;
-          j = k;
-          if (i < 0) {
-            break label402;
-          }
-          str = (String)paramArrayList.get(i);
-          if (localArrayList.contains(str))
-          {
-            paramArrayList.remove(i);
-            QLog.d("TroopRobotManager", 2, "onGetRobotRedInfo remove red uinList " + str + " index: " + i);
-          }
-          else
-          {
-            localArrayList.add(str);
-          }
-        }
-        catch (Exception paramQQAppInterface)
-        {
-          QLog.e("TroopRobotManager", 2, "onGetRobotRedInfo REMOVE EXCEPTION" + paramQQAppInterface.toString());
-        }
-        label392:
-        return;
+        long l = Long.parseLong(((Friends)localObject).uin);
+        return l;
       }
+      catch (Throwable localThrowable)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("createNewTroop.ContactListAdapter", 2, QLog.getStackTraceString(localThrowable));
+        }
+      }
+    }
+    do
+    {
+      return 0L;
+      if ((localThrowable instanceof PublicAccountInfo)) {
+        return ((PublicAccountInfo)localThrowable).uin;
+      }
+    } while (!(localThrowable instanceof RelationTroopEntity));
+    RelationTroopEntity localRelationTroopEntity = (RelationTroopEntity)localThrowable;
+    return this.jdField_a_of_type_Bfeq.a(localRelationTroopEntity.troopInfo.troopuin).longValue();
+  }
+  
+  public int getChildType(int paramInt1, int paramInt2)
+  {
+    return a(paramInt1, paramInt2);
+  }
+  
+  public int getChildTypeCount()
+  {
+    return 3;
+  }
+  
+  public View getChildView(int paramInt1, int paramInt2, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
+  {
+    blfz.a("getChildView");
+    if (a(paramInt1, paramInt2) == 0) {
+      paramView = a(paramInt1, paramInt2, paramBoolean, paramView, paramViewGroup);
     }
     for (;;)
     {
-      label402:
-      if (j < paramArrayList.size())
+      blfz.a();
+      return paramView;
+      if (a(paramInt1, paramInt2) == 1)
       {
-        str = (String)paramArrayList.get(j);
-        if (!this.jdField_a_of_type_JavaUtilArrayList.contains(str))
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.add(str);
-          QLog.d("TroopRobotManager", 2, "onGetRobotRedInfo add red uinList " + str + " index: " + j);
-        }
+        paramView = b(paramInt1, paramInt2, paramBoolean, paramView, paramViewGroup);
+      }
+      else if (a(paramInt1, paramInt2) == 2)
+      {
+        RelationTroopEntity localRelationTroopEntity = (RelationTroopEntity)getChild(paramInt1, paramInt2);
+        paramView = this.jdField_a_of_type_Bfeq.a(paramInt1, paramInt2, paramView, paramViewGroup, this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_AndroidViewView$OnClickListener, localRelationTroopEntity);
       }
       else
       {
-        bezm.a(paramQQAppInterface, this.jdField_a_of_type_JavaUtilArrayList);
-        bezm.b(paramQQAppInterface, localArrayList);
-        if (paramArrayList.size() <= 0) {
-          break label392;
-        }
-        bezm.a(paramQQAppInterface, true);
-        bezm.c(paramQQAppInterface, true);
-        break label392;
-        break;
-        i -= 1;
-        break label182;
-        i -= 1;
-        break label271;
-      }
-      label527:
-      j += 1;
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    a(paramQQAppInterface);
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.contains(paramString))) {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(paramString);
-      }
-      bezm.a(paramQQAppInterface, this.jdField_a_of_type_JavaUtilArrayList);
-      QLog.d("TroopRobotManager", 2, "removeRobotRedUinInRed " + paramString);
-      return;
-    }
-  }
-  
-  public void a(oidb_0x496.Robot paramRobot)
-  {
-    try
-    {
-      int i;
-      if (paramRobot.uin_range.has())
-      {
-        this.jdField_a_of_type_JavaUtilList.clear();
-        i = 0;
-        while ((i < paramRobot.uin_range.size()) && (i < 5))
-        {
-          oidb_0x496.UinRange localUinRange = (oidb_0x496.UinRange)paramRobot.uin_range.get(i);
-          bfdw localbfdw = new bfdw();
-          localbfdw.a = localUinRange.start_uin.get();
-          localbfdw.b = localUinRange.end_uin.get();
-          this.jdField_a_of_type_JavaUtilList.add(localbfdw);
-          i += 1;
-        }
-      }
-      if (paramRobot.fire_keywords.has())
-      {
-        this.jdField_b_of_type_JavaUtilList.clear();
-        i = 0;
-        while ((i < paramRobot.fire_keywords.size()) && (i < 5))
-        {
-          this.jdField_b_of_type_JavaUtilList.add(paramRobot.fire_keywords.get(i));
-          i += 1;
-        }
-      }
-      if (paramRobot.start_keywords.has())
-      {
-        this.jdField_c_of_type_JavaUtilList.clear();
-        i = 0;
-        while ((i < paramRobot.start_keywords.size()) && (i < 5))
-        {
-          this.jdField_c_of_type_JavaUtilList.add(paramRobot.start_keywords.get(i));
-          i += 1;
-        }
-      }
-      if (paramRobot.end_keywords.has())
-      {
-        this.jdField_d_of_type_JavaUtilList.clear();
-        i = 0;
-        while ((i < paramRobot.end_keywords.size()) && (i < 5))
-        {
-          this.jdField_d_of_type_JavaUtilList.add(paramRobot.end_keywords.get(i));
-          i += 1;
-        }
-      }
-      if (paramRobot.session_timeout.has()) {
-        this.jdField_a_of_type_Int = paramRobot.session_timeout.get();
-      }
-      if (paramRobot.subscribe_categories.has())
-      {
-        this.e.clear();
-        this.e.addAll(paramRobot.subscribe_categories.get());
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopRobotManager", 2, "setRobotConfig " + this.jdField_a_of_type_JavaUtilList.toString());
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    b("1", paramString1, paramString2);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    if ((this.jdField_c_of_type_JavaLangString == null) || (!TextUtils.isEmpty(paramString1))) {}
-    try
-    {
-      b(Long.parseLong(paramString1), Long.parseLong(paramString2), paramString3, new bfdq(this, paramString3));
-      a();
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      return;
-    }
-    catch (Exception paramString3)
-    {
-      for (;;)
-      {
-        QLog.e("TroopRobotManager", 2, "release exception, troopuin:" + paramString1 + " robotuin:" + paramString2);
+        paramView = c(paramInt1, paramInt2, paramBoolean, paramView, paramViewGroup);
       }
     }
   }
   
-  public void a(String paramString1, String paramString2, cmd0x934.RspBody paramRspBody)
+  public int getChildrenCount(int paramInt)
   {
-    ThreadManager.post(new TroopRobotManager.7(this, paramString1, paramString2, paramRspBody), 5, null, true);
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    JSONArray localJSONArray = paramJSONObject.optJSONArray("robot_aio_bar");
-    if (localJSONArray != null) {
-      bfyz.f(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), localJSONArray.toString());
+    Groups localGroups = (Groups)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    if ((localGroups == null) || (this.jdField_a_of_type_AndroidUtilSparseArray.get(localGroups.group_id) == null)) {
+      return 0;
     }
-    paramJSONObject = paramJSONObject.optJSONObject("robot_voice_tail");
-    if (paramJSONObject != null) {
-      bfyz.g(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramJSONObject.toString());
-    }
-    d();
+    return ((ArrayList)this.jdField_a_of_type_AndroidUtilSparseArray.get(((Groups)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).group_id)).size();
   }
   
-  public void a(boolean paramBoolean, String paramString)
+  public Object getGroup(int paramInt)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    this.h = paramString;
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
   }
   
-  public boolean a()
+  public int getGroupCount()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
   }
   
-  public boolean a(long paramLong)
+  public long getGroupId(int paramInt)
   {
-    boolean bool2 = false;
-    int i = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        bfdw localbfdw = (bfdw)this.jdField_a_of_type_JavaUtilList.get(i);
-        if ((localbfdw != null) && (paramLong >= localbfdw.a) && (paramLong <= localbfdw.b)) {
-          bool1 = true;
-        }
-      }
-      else
-      {
-        return bool1;
-      }
-      i += 1;
-    }
+    return ((Groups)getGroup(paramInt)).group_id;
   }
   
-  public boolean a(Context paramContext, String paramString, long paramLong)
+  public View getGroupView(int paramInt, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
   {
-    if (a(paramLong))
-    {
-      bezm.a(paramContext, paramString, String.valueOf(paramLong));
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
-  {
-    return false;
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
-  {
-    boolean bool2 = false;
-    if (!bezm.d(paramQQAppInterface, paramString2))
-    {
-      QLog.d("TroopRobotManager", 2, "isRobotUinNeedShowRed RobotRed ：" + paramString1 + " role not show red in troop:" + paramString2);
-      return false;
-    }
-    a(paramQQAppInterface);
-    paramQQAppInterface = jdField_a_of_type_JavaLangObject;
-    boolean bool1 = bool2;
-    try
-    {
-      if (this.jdField_a_of_type_JavaUtilArrayList != null)
-      {
-        bool1 = bool2;
-        if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramString1)) {
-          bool1 = true;
-        }
-      }
-      QLog.d("TroopRobotManager", 2, "isRobotUinNeedShowRed RobotRed ：" + paramString1 + " " + bool1);
-      return bool1;
-    }
-    finally {}
-  }
-  
-  public boolean a(MessageRecord paramMessageRecord)
-  {
-    boolean bool3 = true;
-    int j = 0;
-    boolean bool2 = false;
-    boolean bool1;
-    if ((!a(paramMessageRecord.frienduin)) || (paramMessageRecord.mRobotFlag == -1)) {
-      bool1 = false;
-    }
     Object localObject;
-    label187:
-    do
+    if (paramView != null)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return bool1;
-                bool1 = bool3;
-              } while (paramMessageRecord.mRobotFlag == 1);
-              localObject = ((HotChatManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(60)).a(paramMessageRecord.frienduin);
-              if ((localObject == null) || (!((HotChatInfo)localObject).isRobotHotChat)) {
-                break label187;
-              }
-              if (((paramMessageRecord instanceof MessageForText)) || ((paramMessageRecord instanceof MessageForReplyText)) || ((paramMessageRecord instanceof MessageForPtt))) {
-                break;
-              }
-              bool1 = bool3;
-            } while (!(paramMessageRecord instanceof MessageForMixedMsg));
-            bool1 = bool3;
-          } while (paramMessageRecord.atInfoList == null);
-          bool1 = bool3;
-        } while (paramMessageRecord.atInfoList.size() <= 0);
-        i = 0;
-        for (;;)
-        {
-          bool1 = bool2;
-          if (i < paramMessageRecord.atInfoList.size())
-          {
-            if (a(((MessageForText.AtTroopMemberInfo)paramMessageRecord.atInfoList.get(i)).uin)) {
-              bool1 = true;
-            }
-          }
-          else {
-            return bool1;
-          }
-          i += 1;
-        }
-        if ((!(paramMessageRecord instanceof MessageForText)) && (!(paramMessageRecord instanceof MessageForReplyText)) && (!(paramMessageRecord instanceof MessageForPtt)) && (!(paramMessageRecord instanceof MessageForMixedMsg))) {
-          break label1098;
-        }
-        if (this.jdField_c_of_type_JavaLangString == null) {
-          break;
-        }
-        bool1 = bool3;
-      } while (paramMessageRecord.atInfoList == null);
-      bool1 = bool3;
-    } while (paramMessageRecord.atInfoList.size() <= 0);
-    int i = 0;
+      localObject = (bfdr)paramView.getTag();
+      paramViewGroup = paramView;
+      paramView = (View)localObject;
+    }
     for (;;)
     {
-      bool1 = bool3;
-      if (i >= paramMessageRecord.atInfoList.size()) {
-        break;
-      }
-      if (a(((MessageForText.AtTroopMemberInfo)paramMessageRecord.atInfoList.get(i)).uin))
+      localObject = (Groups)getGroup(paramInt);
+      paramView.jdField_a_of_type_Int = paramInt;
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((Groups)localObject).group_name);
+      if (AppSetting.c)
       {
-        bool1 = bool3;
-        if ((paramMessageRecord instanceof MessageForPtt)) {
+        if (!paramBoolean) {
           break;
         }
-        bool1 = bool3;
-        if ((paramMessageRecord instanceof MessageForMixedMsg)) {
-          break;
-        }
-        localObject = paramMessageRecord.msg.replace("@" + this.jdField_c_of_type_JavaLangString + " ", "").replace("@" + this.jdField_c_of_type_JavaLangString, "");
-        i = j;
-        for (;;)
-        {
-          bool1 = bool3;
-          if (i >= this.jdField_d_of_type_JavaUtilList.size()) {
-            break;
-          }
-          if (((String)localObject).equals(((String)this.jdField_d_of_type_JavaUtilList.get(i)).replace("$ROBOTNICK$", this.jdField_c_of_type_JavaLangString)))
-          {
-            a(paramMessageRecord.frienduin, this.jdField_b_of_type_JavaLangString, (String)this.jdField_d_of_type_JavaUtilList.get(i));
-            return true;
-          }
-          i += 1;
-        }
+        paramViewGroup.setContentDescription(((Groups)localObject).group_name + anvx.a(2131701982));
       }
-      i += 1;
+      return paramViewGroup;
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560478, paramViewGroup, false);
+      paramView = new bfdr();
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131367894));
+      paramViewGroup.setTag(paramView);
+      paramViewGroup.setOnClickListener(this);
     }
-    String str1;
-    if ((paramMessageRecord.atInfoList != null) && (paramMessageRecord.atInfoList.size() > 0))
-    {
-      i = 0;
-      for (;;)
-      {
-        if (i >= paramMessageRecord.atInfoList.size()) {
-          break label880;
-        }
-        localObject = (MessageForText.AtTroopMemberInfo)paramMessageRecord.atInfoList.get(i);
-        if (a(((MessageForText.AtTroopMemberInfo)localObject).uin))
-        {
-          this.jdField_a_of_type_JavaLangString = (((MessageForText.AtTroopMemberInfo)localObject).uin + "");
-          str1 = ContactUtils.getTroopMemberName((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramMessageRecord.frienduin, "" + ((MessageForText.AtTroopMemberInfo)localObject).uin);
-          BaseApplication.getContext().getSharedPreferences("troop_robot_nickname", 0).edit().putString("troopuin_" + paramMessageRecord.frienduin, str1).commit();
-          bool1 = bool3;
-          if ((paramMessageRecord instanceof MessageForPtt)) {
-            break;
-          }
-          bool1 = bool3;
-          if ((paramMessageRecord instanceof MessageForMixedMsg)) {
-            break;
-          }
-          String str2 = paramMessageRecord.msg.replace("@" + str1 + " ", "").replace("@" + str1, "");
-          j = 0;
-          for (;;)
-          {
-            bool1 = bool3;
-            if (j >= this.jdField_c_of_type_JavaUtilList.size()) {
-              break;
-            }
-            if (str2.equals(((String)this.jdField_c_of_type_JavaUtilList.get(j)).replace("$ROBOTNICK$", str1)))
-            {
-              a(paramMessageRecord, "" + ((MessageForText.AtTroopMemberInfo)localObject).uin, str1, (String)this.jdField_c_of_type_JavaUtilList.get(j));
-              bcef.b((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, "dc00899", "Grp_robot", "", "msg", "conti_dialog_msg", 0, 0, paramMessageRecord.frienduin, this.jdField_a_of_type_JavaLangString, (String)this.jdField_c_of_type_JavaUtilList.get(i), "");
-              return true;
-            }
-            j += 1;
-          }
-        }
-        i += 1;
-      }
-    }
-    label880:
-    if (((paramMessageRecord instanceof MessageForPtt)) || ((paramMessageRecord instanceof MessageForMixedMsg))) {
-      return false;
-    }
-    i = 0;
-    while (i < this.jdField_b_of_type_JavaUtilList.size())
-    {
-      localObject = BaseApplication.getContext().getSharedPreferences("troop_robot_nickname", 0).getString("troopuin_" + paramMessageRecord.frienduin, this.jdField_c_of_type_JavaLangString);
-      if (localObject == null) {}
-      for (localObject = "";; localObject = ((String)localObject).toUpperCase().replaceAll(" ", ""))
-      {
-        localObject = ((String)this.jdField_b_of_type_JavaUtilList.get(i)).replace("$ROBOTNICK$", (CharSequence)localObject);
-        str1 = paramMessageRecord.msg.toUpperCase().replaceAll(" ", "");
-        if ((TextUtils.isEmpty((CharSequence)localObject)) || (!str1.contains((CharSequence)localObject))) {
-          break;
-        }
-        bcef.b((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, "dc00899", "Grp_robot", "", "msg", "keyword_msg", 0, 0, paramMessageRecord.frienduin, this.jdField_a_of_type_JavaLangString, (String)this.jdField_b_of_type_JavaUtilList.get(i), "");
-        return true;
-      }
-      i += 1;
-    }
-    label1098:
+    paramViewGroup.setContentDescription(((Groups)localObject).group_name + anvx.a(2131701999));
+    return paramViewGroup;
+  }
+  
+  public boolean hasStableIds()
+  {
     return false;
   }
   
-  public boolean a(String paramString)
+  public boolean isChildSelectable(int paramInt1, int paramInt2)
   {
-    HotChatInfo localHotChatInfo = ((HotChatManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(60)).a(paramString);
-    if (localHotChatInfo != null) {
-      return localHotChatInfo.isRobotHotChat;
-    }
-    paramString = ((TroopManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(52)).b(paramString);
-    return (paramString != null) && ((paramString.dwAppPrivilegeFlag & 0x10000000) != 0L);
+    return true;
   }
   
-  public boolean a(String paramString1, String paramString2, String paramString3)
+  public void notifyDataSetChanged()
   {
-    boolean bool2 = false;
-    paramString2 = ContactUtils.getTroopMemberName((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramString3, "" + paramString2);
-    paramString1 = paramString1.replace("@" + paramString2 + " ", "").replace("@" + paramString2, "");
-    int i = 0;
+    d();
+    super.notifyDataSetChanged();
+  }
+  
+  public void onClick(View paramView)
+  {
+    bfdr localbfdr = (bfdr)paramView.getTag();
+    if (this.jdField_a_of_type_ComTencentWidgetExpandableListView.c(localbfdr.jdField_a_of_type_Int)) {
+      this.jdField_a_of_type_ComTencentWidgetExpandableListView.b(localbfdr.jdField_a_of_type_Int);
+    }
     for (;;)
     {
-      boolean bool1 = bool2;
-      if (i < this.jdField_c_of_type_JavaUtilList.size())
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      try
       {
-        if (paramString1.equals(((String)this.jdField_c_of_type_JavaUtilList.get(i)).replace("$ROBOTNICK$", paramString2))) {
-          bool1 = true;
-        }
+        this.jdField_a_of_type_ComTencentWidgetExpandableListView.a(localbfdr.jdField_a_of_type_Int);
       }
-      else {
-        return bool1;
-      }
-      i += 1;
+      catch (Throwable localThrowable) {}
     }
   }
   
-  public byte[] a()
+  public boolean onLongClick(View paramView)
   {
-    return FileUtils.fileToBytes(BaseApplication.getContext().getFileStreamPath("troop_robot_config"));
+    bhjq localbhjq = new bhjq();
+    localbhjq.a(0, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692986));
+    bhcw.a(paramView, localbhjq, this.jdField_a_of_type_AndroidViewView$OnClickListener, new bfdp(this));
+    return true;
   }
   
-  public byte[] a(String paramString1, String paramString2)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    return FileUtils.fileToBytes(BaseApplication.getContext().getFileStreamPath("troop_robot_panel_data_" + paramString1 + "_" + paramString2));
-  }
-  
-  public ArrayList<bfdl> b(long paramLong)
-  {
-    ArrayList localArrayList = new ArrayList(0);
-    if (this.jdField_b_of_type_AndroidSupportV4UtilArrayMap != null) {
-      synchronized (this.jdField_b_of_type_AndroidSupportV4UtilArrayMap)
-      {
-        if (this.jdField_b_of_type_AndroidSupportV4UtilArrayMap.containsKey(Long.valueOf(paramLong)))
-        {
-          Iterator localIterator = ((ArrayList)this.jdField_b_of_type_AndroidSupportV4UtilArrayMap.get(Long.valueOf(paramLong))).iterator();
-          while (localIterator.hasNext())
-          {
-            bfdl localbfdl = (bfdl)localIterator.next();
-            if (!localbfdl.a()) {
-              localArrayList.add(localbfdl);
-            }
-          }
-        }
-      }
-    }
-    return localArrayList1;
-  }
-  
-  public void b(int paramInt, long paramLong1, long paramLong2, String paramString, bfdu parambfdu)
-  {
-    cmd0x934.ReqBody localReqBody = new cmd0x934.ReqBody();
-    localReqBody.cmd.set(paramInt, true);
-    localReqBody.group_id.set(paramLong1, true);
-    localReqBody.keyword.set(paramString, true);
-    localReqBody.robot_uin.set(paramLong2);
-    nmb.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, new bfdn(this, parambfdu), localReqBody.toByteArray(), "OidbSvc.0x934_1", 2356, 1, new Bundle(), 12000L);
-  }
-  
-  public void b(long paramLong1, long paramLong2, String paramString, bfdu parambfdu)
-  {
-    b(2, paramLong1, paramLong2, paramString, parambfdu);
-  }
-  
-  public void b(long paramLong, String paramString, bfdu parambfdu)
-  {
-    b(2, Long.valueOf("1").longValue(), paramLong, paramString, parambfdu);
-  }
-  
-  public void b(oidb_0x496.Robot paramRobot)
-  {
-    ThreadManager.post(new TroopRobotManager.6(this, paramRobot), 5, null, true);
-  }
-  
-  public void b(String paramString1, String paramString2, String paramString3)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_d_of_type_JavaLangString = paramString1;
-    a(true);
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public boolean b(String paramString)
-  {
-    try
-    {
-      long l = Long.valueOf(paramString).longValue();
-      return a(l);
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(paramString));
-      }
-    }
-    return false;
-  }
-  
-  public boolean b(String paramString1, String paramString2, String paramString3)
-  {
-    if ((!a()) || (this.jdField_c_of_type_JavaLangString == null)) {}
-    for (;;)
-    {
-      return false;
-      paramString1 = paramString1.replace("@" + this.jdField_c_of_type_JavaLangString + " ", "").replace("@" + this.jdField_c_of_type_JavaLangString, "");
-      int i = 0;
-      while (i < this.jdField_d_of_type_JavaUtilList.size())
-      {
-        if (paramString1.equals(((String)this.jdField_d_of_type_JavaUtilList.get(i)).replace("$ROBOTNICK$", this.jdField_c_of_type_JavaLangString))) {
-          return true;
-        }
-        i += 1;
-      }
+    super.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    if (this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener != null) {
+      this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
   }
   
-  public boolean c(MessageRecord paramMessageRecord)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (!b(paramMessageRecord.senderuin)) {}
-    String str;
-    do
-    {
-      return false;
-      str = a(paramMessageRecord);
-    } while (TextUtils.isEmpty(str));
-    a(paramMessageRecord, str);
-    if (paramMessageRecord.shmsgseq == ((Long)this.jdField_b_of_type_JavaUtilHashMap.get(str)).longValue()) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    super.onScrollStateChanged(paramAbsListView, paramInt);
+    if (this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener != null) {
+      this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener.onScrollStateChanged(paramAbsListView, paramInt);
     }
-  }
-  
-  public void onDestroy()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopRobotManager", 2, "TroopRobotManager: onDestroy");
-    }
-    c();
   }
 }
 

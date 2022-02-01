@@ -1,36 +1,41 @@
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.util.QZLog;
-import cooperation.vip.ar.util.VipARUtils.3;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
 public class blaa
-  implements ModuleDownloadListener
+  implements blga
 {
-  public blaa(VipARUtils.3 param3) {}
+  private Locale jdField_a_of_type_JavaUtilLocale;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onDownloadCanceled(String paramString)
+  public blaa(Context paramContext)
   {
-    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
+    this.jdField_a_of_type_JavaUtilLocale = paramContext.getResources().getConfiguration().locale;
   }
   
-  public void onDownloadFailed(String paramString)
+  public void a(boolean paramBoolean)
   {
-    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void onDownloadProgress(String paramString, float paramFloat)
+  public CharSequence getTransformation(CharSequence paramCharSequence, View paramView)
   {
-    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
-  }
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (!paramString.equals("vip_tar_engine.jar")) {
-      return;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (paramCharSequence != null) {
+        return paramCharSequence.toString().toUpperCase(this.jdField_a_of_type_JavaUtilLocale);
+      }
+      return null;
     }
-    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bkzx.a(), " onDownloadSucceed = ", bkzx.b() });
-    LocalMultiProcConfig.putString("VipARUtils_JAR_md5", bkzx.b());
+    QLog.w("AllCapsTransformationMethod", 2, "Caller did not enable length changes; not transforming text");
+    return paramCharSequence;
   }
+  
+  public void onFocusChanged(View paramView, CharSequence paramCharSequence, boolean paramBoolean, int paramInt, Rect paramRect) {}
 }
 
 

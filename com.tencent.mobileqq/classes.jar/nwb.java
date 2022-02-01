@@ -1,15 +1,14 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import android.content.DialogInterface.OnCancelListener;
 
-public class nwb
-  implements DialogInterface.OnDismissListener
+class nwb
+  implements DialogInterface.OnCancelListener
 {
-  public nwb(AccountDetailActivity paramAccountDetailActivity) {}
+  nwb(nvz paramnvz) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a.o = false;
+    nvz.a(this.a);
   }
 }
 

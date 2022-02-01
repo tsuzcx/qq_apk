@@ -1,21 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchGroupFragment;
-import com.tencent.qphone.base.util.BaseApplication;
+import java.util.ArrayList;
+import org.json.JSONObject;
 
 public class asms
-  implements View.OnTouchListener
 {
-  public asms(FileSelectorSearchGroupFragment paramFileSelectorSearchGroupFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
-  }
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<String> a;
+  public JSONObject a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
 }
 
 

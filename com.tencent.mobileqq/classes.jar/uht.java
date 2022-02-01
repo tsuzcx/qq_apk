@@ -1,103 +1,89 @@
-import android.graphics.Point;
-import android.graphics.Rect;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusBannerVideoItemData;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyArticleBottomVideoView;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
 public class uht
+  extends uhj
 {
-  public static String a;
-  private List<uhu> a;
+  private ReadInJoyArticleBottomVideoView jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyArticleBottomVideoView;
+  private quz jdField_a_of_type_Quz;
+  private qve jdField_a_of_type_Qve;
   
-  static
+  public uht(View paramView, BaseData paramBaseData, WeakReference<Context> paramWeakReference)
   {
-    jdField_a_of_type_JavaLangString = "ReadinjoyH5ElementManager";
-  }
-  
-  public uht()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      return;
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
+    super(paramBaseData, paramWeakReference, localWeakReference);
+    if ((paramBaseData != null) && (((Container)paramBaseData).getVirtualView() != null)) {
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyArticleBottomVideoView == null)
       {
-        uhu localuhu = (uhu)this.jdField_a_of_type_JavaUtilList.get(i);
-        if ((localuhu != null) && (paramString.equals(localuhu.jdField_a_of_type_JavaLangString)))
-        {
-          this.jdField_a_of_type_JavaUtilList.remove(i);
-          return;
-        }
-        i += 1;
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyArticleBottomVideoView = ((ReadInJoyArticleBottomVideoView)((Container)paramBaseData).getVirtualView().findViewBaseByName("id_ad_banner_bottom_video"));
+        ukq.a("VideoPlayerWrapper_AD", "bottomView create - item:" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyArticleBottomVideoView.hashCode());
       }
     }
-  }
-  
-  public void a(String paramString, Rect paramRect)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (a(paramString))) {
+    try
+    {
+      if (this.jdField_a_of_type_Quz == null) {
+        this.jdField_a_of_type_Quz = ((quz)((Container)paramBaseData).getVirtualView().findViewBaseByName("id_ad_title_mask"));
+      }
+      if (this.jdField_a_of_type_Qve == null) {
+        this.jdField_a_of_type_Qve = ((qve)((Container)paramBaseData).getVirtualView().findViewBaseByName("id_tv_title_inner"));
+      }
       return;
     }
-    uhu localuhu = new uhu();
-    localuhu.jdField_a_of_type_JavaLangString = paramString;
-    localuhu.jdField_a_of_type_AndroidGraphicsRect = paramRect;
-    this.jdField_a_of_type_JavaUtilList.add(localuhu);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilList.isEmpty();
-  }
-  
-  public boolean a(Point paramPoint)
-  {
-    boolean bool2 = false;
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "pt.x = " + paramPoint.x + "  pt.y=" + paramPoint.y);
-    }
-    int i = 0;
-    for (;;)
+    catch (Exception paramView)
     {
-      boolean bool1 = bool2;
-      if (i < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        uhu localuhu = (uhu)this.jdField_a_of_type_JavaUtilList.get(i);
-        if ((localuhu != null) && (localuhu.jdField_a_of_type_AndroidGraphicsRect != null) && (localuhu.jdField_a_of_type_AndroidGraphicsRect.contains(paramPoint.x, paramPoint.y))) {
-          bool1 = true;
-        }
-      }
-      else
-      {
-        return bool1;
-      }
-      i += 1;
+      ukq.a("WebFastProteusViewAdBannerVideoCreator", "ProteusItemViewHolder create error: " + paramView.getMessage());
     }
   }
   
-  public boolean a(String paramString)
+  private void a(ProteusBannerVideoItemData paramProteusBannerVideoItemData1, ProteusBannerVideoItemData paramProteusBannerVideoItemData2)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
+    if ((paramProteusBannerVideoItemData1 == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyArticleBottomVideoView == null)) {}
+    do
     {
-      return false;
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        uhu localuhu = (uhu)this.jdField_a_of_type_JavaUtilList.get(i);
-        if ((localuhu != null) && (paramString.equals(localuhu.jdField_a_of_type_JavaLangString))) {
-          return true;
-        }
-        i += 1;
-      }
-    }
+      return;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyArticleBottomVideoView.setVisibility(0);
+      ohr localohr = new ohr();
+      AdvertisementInfo localAdvertisementInfo = ukt.a(paramProteusBannerVideoItemData1);
+      localohr.e = paramProteusBannerVideoItemData1.d;
+      localohr.d = paramProteusBannerVideoItemData1.o;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyArticleBottomVideoView.a(localohr, localAdvertisementInfo, paramProteusBannerVideoItemData1, paramProteusBannerVideoItemData2);
+    } while (!paramProteusBannerVideoItemData1.f);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyArticleBottomVideoView.c();
   }
+  
+  protected void a(BaseData paramBaseData, Context paramContext, JSONObject paramJSONObject)
+  {
+    ViewFactory.findClickableViewListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), new uhu(this, paramBaseData, paramContext));
+  }
+  
+  public void a(BaseData paramBaseData1, BaseData paramBaseData2)
+  {
+    if (!(paramBaseData1 instanceof ProteusBannerVideoItemData)) {
+      return;
+    }
+    if ((paramBaseData2 != null) && (paramBaseData2.r == 17))
+    {
+      paramBaseData2 = (ProteusBannerVideoItemData)paramBaseData2;
+      a((ProteusBannerVideoItemData)paramBaseData1, paramBaseData2);
+      return;
+    }
+    a((ProteusBannerVideoItemData)paramBaseData1, null);
+  }
+  
+  protected boolean a(BaseData paramBaseData1, BaseData paramBaseData2)
+  {
+    return paramBaseData1 == paramBaseData2;
+  }
+  
+  protected void b() {}
 }
 
 

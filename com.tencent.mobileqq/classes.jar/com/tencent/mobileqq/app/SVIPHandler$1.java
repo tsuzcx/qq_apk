@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.app;
 
-import anaj;
-import anak;
-import apec;
+import aocy;
+import aocz;
+import aqhg;
 
 public class SVIPHandler$1
   implements Runnable
 {
-  public SVIPHandler$1(anaj paramanaj, String paramString) {}
+  public SVIPHandler$1(aocy paramaocy, String paramString) {}
   
   public void run()
   {
-    apec localapec = apec.a();
-    localapec.a(this.this$0.app, this.a, new anak(this, localapec));
+    aqhg localaqhg = aqhg.a();
+    localaqhg.a(this.this$0.app, this.a, new aocz(this, localaqhg));
   }
 }
 

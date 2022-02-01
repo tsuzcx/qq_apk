@@ -1,23 +1,71 @@
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 
-class yzy
-  extends RecyclerView.OnScrollListener
+public class yzy
+  extends blhu
 {
-  yzy(yzx paramyzx) {}
+  private yzl a;
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public yzy(yzl paramyzl)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    this.a = paramyzl;
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public void clearView(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
   {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    if (paramInt2 > 0) {
-      this.a.g();
+    super.clearView(paramRecyclerView, paramViewHolder);
+    if ((paramViewHolder instanceof yzu))
+    {
+      ((yzu)paramViewHolder).a = false;
+      if ((paramRecyclerView.getScrollState() == 0) && (!paramRecyclerView.isComputingLayout())) {
+        paramRecyclerView.getAdapter().notifyItemChanged(paramViewHolder.getAdapterPosition(), Integer.valueOf(0));
+      }
     }
   }
+  
+  public float getMoveThreshold(RecyclerView.ViewHolder paramViewHolder)
+  {
+    return 0.25F;
+  }
+  
+  public int getMovementFlags(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
+  {
+    paramRecyclerView = paramRecyclerView.getLayoutManager();
+    if (((paramRecyclerView instanceof LinearLayoutManager)) && (((LinearLayoutManager)paramRecyclerView).getOrientation() == 0)) {}
+    for (int i = 15;; i = 0) {
+      return makeMovementFlags(i, 0);
+    }
+  }
+  
+  public boolean isItemViewSwipeEnabled()
+  {
+    return false;
+  }
+  
+  public boolean onMove(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder1, RecyclerView.ViewHolder paramViewHolder2)
+  {
+    if (this.a != null) {
+      this.a.a(paramViewHolder1.getAdapterPosition(), paramViewHolder2.getAdapterPosition());
+    }
+    return false;
+  }
+  
+  public void onSelectedChanged(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    super.onSelectedChanged(paramViewHolder, paramInt);
+    if ((paramInt == 2) && ((paramViewHolder instanceof yzu)))
+    {
+      paramViewHolder = (yzu)paramViewHolder;
+      paramViewHolder.a = true;
+      if ((this.a instanceof yzr)) {
+        ((yzr)this.a).notifyItemChanged(paramViewHolder.getAdapterPosition(), Integer.valueOf(0));
+      }
+    }
+  }
+  
+  public void onSwiped(RecyclerView.ViewHolder paramViewHolder, int paramInt) {}
 }
 
 

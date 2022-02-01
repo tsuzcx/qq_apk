@@ -1,53 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Dialog;
+import android.view.View;
 
-public final class ayfg
+class ayfg
+  implements aynu
 {
-  public final List<ayfh> a = new ArrayList();
+  ayfg(ayek paramayek) {}
   
-  private void a(String paramString)
+  public void a(Dialog paramDialog, View paramView, aynt paramaynt)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      try
-      {
-        paramString = new JSONObject(paramString).optJSONArray("c2c");
-        if (paramString.length() > 0)
-        {
-          int j = paramString.length();
-          int i = 0;
-          while (i < j)
-          {
-            ayfh localayfh = new ayfh();
-            JSONObject localJSONObject = paramString.getJSONObject(i);
-            localayfh.jdField_a_of_type_Int = localJSONObject.optInt("appid");
-            localayfh.d = localJSONObject.optString("title");
-            localayfh.e = localJSONObject.optString("iconNormal");
-            localayfh.f = localJSONObject.optString("iconPress");
-            localayfh.g = localJSONObject.optString("iconNightNormal");
-            localayfh.h = localJSONObject.optString("iconNightPress");
-            localayfh.jdField_b_of_type_Int = localJSONObject.optInt("redDotID");
-            localayfh.jdField_c_of_type_JavaLangString = localJSONObject.optString("redDotPath");
-            localayfh.jdField_a_of_type_JavaLangString = localJSONObject.optString("actionType");
-            localayfh.jdField_b_of_type_JavaLangString = localJSONObject.optString("action");
-            localayfh.jdField_c_of_type_Int = localJSONObject.optInt("order");
-            localayfh.a();
-            localayfh.b();
-            this.a.add(localayfh);
-            i += 1;
-          }
-        }
-        return;
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("AIOPanelIconConfigProcessor", 1, paramString, new Object[0]);
-      }
-    }
+    aynv.a(this.a.a, paramaynt, "data_card");
+    paramDialog.dismiss();
   }
 }
 

@@ -1,35 +1,31 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
 public class aeoc
-  implements Animation.AnimationListener
+  extends aoav
 {
-  public aeoc(TroopMemberListActivity paramTroopMemberListActivity, TranslateAnimation paramTranslateAnimation1, TranslateAnimation paramTranslateAnimation2, int paramInt) {}
+  public aeoc(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onFollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
   {
-    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidAppDialog.show();
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidWidgetLinearLayout.setAnimation(null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a.setVisibility(8);
+    if (paramInt == 0) {
+      this.a.c();
     }
-    while (paramAnimation != this.b) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidWidgetLinearLayout.setAnimation(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidWidgetLinearLayout.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidWidgetLinearLayout.requestLayout();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onUnfollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    if (paramInt == 0) {
+      this.a.c();
+    }
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onUpdateUserFollowList(int paramInt, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.c();
+    }
+  }
 }
 
 

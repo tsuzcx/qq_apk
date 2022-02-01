@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pkp;
-import pvj;
+import pvm;
+import qgh;
 
 public class RIJCoinInfoModule$CoinRewardRequestHandler$1
   implements Runnable
 {
-  public RIJCoinInfoModule$CoinRewardRequestHandler$1(pvj parampvj, boolean paramBoolean, int paramInt, String paramString) {}
+  public RIJCoinInfoModule$CoinRewardRequestHandler$1(qgh paramqgh, boolean paramBoolean, int paramInt, String paramString) {}
   
   public void run()
   {
-    pkp.a().a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    pvm.a().a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 

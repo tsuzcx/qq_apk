@@ -1,12 +1,49 @@
-import com.tencent.mobileqq.music.SongInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
-public abstract interface awei
+public class awei
+  implements View.OnClickListener
 {
-  public abstract String getToken();
+  WeakReference<aweh> a;
   
-  public abstract void onPlaySongChanged(SongInfo paramSongInfo);
+  public awei(aweh paramaweh)
+  {
+    this.a = new WeakReference(paramaweh);
+  }
   
-  public abstract void onPlayStateChanged(int paramInt);
+  public void onClick(View paramView)
+  {
+    aweh localaweh = (aweh)this.a.get();
+    if (localaweh == null) {
+      QLog.i("Q.lebatab.LebaTableLogic", 1, "logic == null");
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (aweh.a(localaweh) != null)
+      {
+        arpq localarpq = localaweh.a(paramView);
+        if ((localarpq != null) && (localaweh.a != null))
+        {
+          awdq localawdq = new awdq();
+          localawdq.jdField_a_of_type_Boolean = true;
+          localawdq.jdField_a_of_type_Long = localarpq.jdField_a_of_type_Long;
+          localawdq.jdField_a_of_type_Int = (paramView.getId() + 1);
+          if ((paramView instanceof RedTouch))
+          {
+            localawdq.b = awds.a((RedTouch)paramView);
+            localawdq.c = awds.b((RedTouch)paramView);
+          }
+          localaweh.a.a(paramView, localarpq, localawdq);
+        }
+      }
+    }
+  }
 }
 
 

@@ -29,9 +29,9 @@ public class FormSwitchSimpleItem
     {
       this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
       this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 14.0F);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131167106));
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131167120));
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.rightMargin = getResources().getDimensionPixelSize(2131297272);
+      localLayoutParams.rightMargin = getResources().getDimensionPixelSize(2131297273);
       localLayoutParams.addRule(0, this.jdField_a_of_type_ComTencentWidgetSwitch.getId());
       localLayoutParams.addRule(15);
       addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);

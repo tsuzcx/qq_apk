@@ -1,50 +1,20 @@
-import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
-import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
-import com.tencent.mobileqq.javahooksdk.MethodHookParam;
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.LinearLayout;
 
 class ausn
-  implements HookMethodCallback
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private int a;
+  ausn(ausm paramausm) {}
   
-  public ausn(int paramInt)
+  public void onGlobalLayout()
   {
-    this.a = paramInt;
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.a.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
+    ausm.a(this.a);
   }
-  
-  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
-  {
-    if (paramMethodHookParam.throwable == null) {
-      return;
-    }
-    Throwable localThrowable;
-    if (paramMethodHookParam.throwable.getCause() != null) {
-      localThrowable = paramMethodHookParam.throwable.getCause();
-    }
-    while ((localThrowable instanceof OutOfMemoryError))
-    {
-      ausm.b();
-      try
-      {
-        paramMethodHookParam.result = JavaHookBridge.invokeOriginMethod(paramMethodHookParam.method, paramMethodHookParam.thisObject, paramMethodHookParam.args);
-        paramMethodHookParam.throwable = null;
-        ausm.a(true, this.a);
-        return;
-      }
-      catch (Exception paramMethodHookParam)
-      {
-        ausm.a(false, this.a);
-        return;
-        localThrowable = paramMethodHookParam.throwable;
-      }
-      catch (Error paramMethodHookParam)
-      {
-        ausm.a(false, this.a);
-      }
-    }
-  }
-  
-  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
 }
 
 

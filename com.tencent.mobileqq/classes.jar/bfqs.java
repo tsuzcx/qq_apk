@@ -1,36 +1,38 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.util.CustomLruCache;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.telephony.TelephonyManager;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
 
 public class bfqs
+  extends BroadcastReceiver
 {
-  private CustomLruCache<String, Drawable> jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache;
-  private final HashMap<String, WeakReference<Drawable>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public bfqs(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public bfqs(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramInt = Math.max(paramInt, 5);
-    if (QLog.isColorLevel()) {
-      QLog.d("ImageCache", 2, "Memory cache size = " + paramInt + "MB");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache = new bfqt(this, paramInt * 1024 * 1024);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache.evictAll();
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-  }
-  
-  public void a(String paramString, Drawable paramDrawable)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache.get(paramString) == null))
+    if (this.a.a != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache.put(paramString, paramDrawable);
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, new WeakReference(paramDrawable));
+      paramContext = paramIntent.getAction();
+      if (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
+        break label51;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PublishHomeWorkFragment", 2, "receive action_recv_video_request");
+      }
+      this.a.a.a(102);
     }
+    label51:
+    while (!"android.intent.action.PHONE_STATE".equals(paramContext)) {
+      return;
+    }
+    if ((((TelephonyManager)this.a.getActivity().getSystemService("phone")).getCallState() == 1) && (QLog.isColorLevel())) {
+      QLog.d("PublishHomeWorkFragment", 2, "receive action_phone_state_changed|call_state_ringing");
+    }
+    this.a.a.a(102);
   }
 }
 

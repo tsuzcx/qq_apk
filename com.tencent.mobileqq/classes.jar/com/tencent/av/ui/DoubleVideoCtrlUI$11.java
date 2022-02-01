@@ -1,15 +1,18 @@
 package com.tencent.av.ui;
 
-import mua;
+import com.tencent.av.app.VideoAppInterface;
 
 class DoubleVideoCtrlUI$11
   implements Runnable
 {
-  DoubleVideoCtrlUI$11(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, long paramLong) {}
+  DoubleVideoCtrlUI$11(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
   public void run()
   {
-    mua.a().a(this.a, this.this$0.a, 2131230736, null, 0, null);
+    if (this.this$0.h()) {
+      return;
+    }
+    this.this$0.a.a(new Object[] { Integer.valueOf(102) });
   }
 }
 

@@ -1,33 +1,27 @@
-import android.content.Context;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.BusinessObserver;
 
 public class aodo
+  implements BusinessObserver
 {
-  Context a;
-  public axqp a;
-  public QQCustomDialog a;
+  public static final int OBSERVER_TYPE_CHECK_REALNAME = 1;
   
-  public aodo(Context paramContext, axqp paramaxqp)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Axqp = paramaxqp;
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bfur.a(this.jdField_a_of_type_AndroidContentContext, 230);
-    paramContext = new aodp(this);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131690105, paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131690104, paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(2131690107);
-  }
+  public void onCheckRealNameRsp(boolean paramBoolean, int paramInt) {}
   
-  public void a()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+    if ((paramObject != null) && ((paramObject instanceof Object[]))) {}
+    for (paramObject = (Object[])paramObject;; paramObject = null)
+    {
+      switch (paramInt)
+      {
+      }
+      do
+      {
+        return;
+      } while (paramObject == null);
+      onCheckRealNameRsp(paramBoolean, ((Integer)paramObject[0]).intValue());
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceUIController", 2, "doOnClickFeedBack");
-    }
-    bcef.b(null, "dc00898", "", "", "0X8008352", "0X8008352", 0, 0, "", "", "", "");
   }
 }
 

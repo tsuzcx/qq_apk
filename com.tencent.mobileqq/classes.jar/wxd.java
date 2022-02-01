@@ -1,6 +1,38 @@
-public abstract interface wxd
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
+
+class wxd
+  extends wwe
 {
-  public abstract boolean a_(wwz paramwwz, int paramInt1, int paramInt2);
+  wxd(wxa paramwxa, StoryVideoItem paramStoryVideoItem)
+  {
+    super(paramStoryVideoItem);
+  }
+  
+  public boolean b()
+  {
+    Object localObject = (String)a("result");
+    try
+    {
+      localObject = new URI((String)localObject);
+      if ("file".equals(((URI)localObject).getScheme()))
+      {
+        localObject = new File((URI)localObject);
+        if (((File)localObject).exists())
+        {
+          a("UploadImageJob_in_image_file_path", ((File)localObject).getAbsolutePath());
+          return true;
+        }
+      }
+    }
+    catch (URISyntaxException localURISyntaxException)
+    {
+      ykq.c(this.b, "Error: 保存投票失败", localURISyntaxException);
+    }
+    return false;
+  }
 }
 
 

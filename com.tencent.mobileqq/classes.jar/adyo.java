@@ -1,34 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.ServiceProtocolSerializable;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adyo
+  implements View.OnClickListener
 {
-  public static void a(FaceDetectForThirdPartyManager.AppConf paramAppConf, String paramString)
+  public adyo(ForwardRecentActivity paramForwardRecentActivity) {}
+  
+  public void onClick(View paramView)
   {
-    if ((paramAppConf == null) || (paramAppConf.serviceProtocols.isEmpty()))
-    {
-      QLog.d("QQIdentiferUtil", 1, new Object[] { "report action=", paramString, ", appConf.serviceProtocols.isEmpty, not save" });
-      ForwardUtils.report(null, paramString, 1, new String[0]);
-      return;
-    }
-    paramAppConf = (FaceDetectForThirdPartyManager.ServiceProtocolSerializable)paramAppConf.serviceProtocols.get(0);
-    if ((TextUtils.isEmpty(paramAppConf.name)) || (TextUtils.isEmpty(paramAppConf.url)))
-    {
-      QLog.d("QQIdentiferUtil", 1, new Object[] { "report action=", paramString, ", sp.name || sp.url empty, not save" });
-      ForwardUtils.report(null, paramString, 1, new String[0]);
-      return;
-    }
-    QLog.d("QQIdentiferUtil", 1, new Object[] { "report action=", paramString, ", auto save" });
-    ForwardUtils.report(null, paramString, 2, new String[0]);
+    bdla.b(this.a.app, "CliOper", "", "", "friendchoose", "0X8009D97", ForwardRecentActivity.a(this.a), 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adyo
  * JD-Core Version:    0.7.0.1
  */

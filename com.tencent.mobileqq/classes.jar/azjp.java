@@ -1,57 +1,20 @@
-import com.tencent.mobileqq.soload.LoadExtResult;
-import com.tencent.mobileqq.videoplatform.api.ILoadSo;
-import com.tencent.mobileqq.videoplatform.api.LoadSoCallback;
-import com.tencent.mobileqq.videoplatform.util.LogUtil;
+import android.content.Intent;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.pic.CompressInfo;
+import java.util.ArrayList;
 
-public class azjp
-  implements ILoadSo
+public abstract interface azjp
 {
-  boolean a = false;
+  public abstract azjz a(Intent paramIntent);
   
-  public boolean isCkeygeneratorV2Load()
-  {
-    return this.a;
-  }
+  public abstract azjz a(MessageForPic paramMessageForPic, int paramInt, String paramString1, String paramString2, String paramString3);
   
-  public boolean isCkguardLoad()
-  {
-    return this.a;
-  }
+  public abstract azkn a(Intent paramIntent);
   
-  public boolean isDownProxyLoad()
-  {
-    return this.a;
-  }
+  public abstract CompressInfo a(Intent paramIntent);
   
-  public boolean isTPCoreLoad()
-  {
-    return this.a;
-  }
-  
-  public boolean loadDownProxySync()
-  {
-    boolean bool = bbzm.a().a("DownloadProxy").isSucc();
-    if (LogUtil.isColorLevel()) {
-      LogUtil.d("[VideoPlatform]QQLoadSoImp", 2, "loadDownProxySync, bDownProxyResult  = " + bool);
-    }
-    return bool;
-  }
-  
-  public void loadSo(LoadSoCallback paramLoadSoCallback)
-  {
-    bbzm localbbzm = bbzm.a();
-    paramLoadSoCallback = new azjq(this, paramLoadSoCallback);
-    localbbzm.a(new String[] { "TPCore-master", "DownloadProxy", "ckguard", "ckeygeneratorV2" }, paramLoadSoCallback);
-  }
-  
-  public boolean loadTPCoreSync()
-  {
-    boolean bool = bbzm.a().a("TPCore-master").isSucc();
-    if (LogUtil.isColorLevel()) {
-      LogUtil.d("[VideoPlatform]QQLoadSoImp", 2, "loadTPCoreSync, bTPCoreResult  = " + bool);
-    }
-    return bool;
-  }
+  public abstract ArrayList<azjz> a(MessageForMixedMsg paramMessageForMixedMsg, int paramInt, String paramString1, String paramString2, String paramString3);
 }
 
 

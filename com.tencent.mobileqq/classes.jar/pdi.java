@@ -1,56 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.biz.pubaccount.readinjoy.comment.base.bridgeimpl.QQViewBridgeImpl.GifUi.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.hotpic.HotPicData;
+import mqq.os.MqqHandler;
 
 public class pdi
-  extends SimpleConfigHandler
-  implements AladdinConfigHandler
+  implements avom
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    QLog.d("VideoDynamicBufferConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
-    paramString = pbt.a(paramString);
-    Object localObject = paramString.keySet();
-    for (;;)
-    {
-      String str1;
-      String str2;
-      try
-      {
-        localObject = ((Set)localObject).iterator();
-        if (((Iterator)localObject).hasNext())
-        {
-          str1 = (String)((Iterator)localObject).next();
-          str2 = (String)paramString.get(str1);
-          if (TextUtils.equals(str1, "dynamic_buffer_switch")) {
-            bkwm.k(Integer.parseInt(str2));
-          }
-        }
-        else
-        {
-          return true;
-        }
-      }
-      catch (Throwable paramString)
-      {
-        paramString.printStackTrace();
-      }
-      if (TextUtils.equals(str1, "dynamic_buffer_config_json")) {
-        bkwm.f(str2);
-      }
-    }
-  }
+  pdi(pdh parampdh) {}
   
-  public void onWipeConfig(int paramInt)
+  public void a(HotPicData paramHotPicData)
   {
-    super.onWipeConfig(paramInt);
-    bkwm.k(0);
-    bkwm.f("");
+    this.a.a = paramHotPicData;
+    ThreadManager.getUIHandler().post(new QQViewBridgeImpl.GifUi.1.1(this));
   }
 }
 

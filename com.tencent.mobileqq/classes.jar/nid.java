@@ -1,15 +1,18 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.avgame.gamelogic.controller.GameActivityCenterCtrl;
+import com.tencent.avgame.gameroom.GameRoomFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class nid
+public class nid
   implements View.OnClickListener
 {
-  nid(nic paramnic, nam paramnam) {}
+  public nid(GameRoomFragment paramGameRoomFragment) {}
   
   public void onClick(View paramView)
   {
-    nhx.a(this.jdField_a_of_type_Nic.a, this.jdField_a_of_type_Nam.a);
+    bdla.b(null, "dc00898", "", "", "0X800B51B", "0X800B51B", 0, 0, "", "", "", "");
+    GameActivityCenterCtrl.a().c(this.a.getActivity());
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

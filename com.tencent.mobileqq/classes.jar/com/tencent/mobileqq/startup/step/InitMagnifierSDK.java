@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import amxq;
+import aoae;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mfsdk.collector.ResultObject;
 import com.tencent.mfsdk.reporter.ReporterMachine;
@@ -38,7 +38,7 @@ public class InitMagnifierSDK
   
   protected boolean doStep()
   {
-    if (amxq.a()) {
+    if (aoae.a()) {
       MagnifierSDK.a().a();
     }
     return true;

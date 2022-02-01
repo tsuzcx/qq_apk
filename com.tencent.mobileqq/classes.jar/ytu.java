@@ -1,35 +1,24 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.biz.qqstory.view.xrecyclerview.XRecyclerView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
 
-public class ytu
-  extends RecyclerView.OnScrollListener
+class ytu
+  implements Animation.AnimationListener
 {
-  public ytu(XRecyclerView paramXRecyclerView) {}
+  ytu(ytt paramytt) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    paramInt = paramRecyclerView.getChildCount();
-    if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
-    {
-      paramRecyclerView = (StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager();
-      int i = paramRecyclerView.getItemCount();
-      int[] arrayOfInt = paramRecyclerView.findFirstVisibleItemPositions(null);
-      if (i - paramInt > paramRecyclerView.getSpanCount() * 3 + arrayOfInt[0]) {
-        break label76;
-      }
-    }
-    label76:
-    for (paramInt = 1;; paramInt = 0)
-    {
-      if (paramInt != 0) {
-        XRecyclerView.a(this.a).b(false);
-      }
-      return;
+    this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
+    if (this.a.a.jdField_a_of_type_Yto != null) {
+      this.a.a.jdField_a_of_type_Yto.a(null);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

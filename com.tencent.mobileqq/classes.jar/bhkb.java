@@ -1,265 +1,103 @@
-import android.os.Handler;
-import com.tencent.mobileqq.widget.WebViewProgressBar;
+import android.view.MotionEvent;
 
 public class bhkb
 {
-  private byte jdField_a_of_type_Byte = -1;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bhkd(this);
-  protected WebViewProgressBar a;
-  public boolean a;
-  private byte jdField_b_of_type_Byte = 6;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int = 255;
-  private boolean jdField_b_of_type_Boolean;
-  private float c;
-  private float d;
-  private float e;
+  protected float a;
+  protected bhkc a;
+  private bhkd a;
+  protected bhke a;
+  protected boolean a;
+  protected float b;
+  protected boolean b;
+  protected boolean c;
+  protected boolean d = true;
   
-  public bhkb()
+  public bhkb(bhkc parambhkc, bhke parambhke, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  private long a(long paramLong)
-  {
-    long l = paramLong;
-    if (paramLong > 30L) {
-      l = 30L;
+    if ((parambhkc != null) && (parambhke != null))
+    {
+      this.jdField_a_of_type_Bhkc = parambhkc;
+      this.jdField_a_of_type_Bhke = parambhke;
+      return;
     }
-    return l;
+    throw new IllegalArgumentException("DragSource and DropTarget shouldn't be null!");
   }
   
-  public byte a()
+  public void a(float paramFloat1, float paramFloat2)
   {
-    return this.jdField_b_of_type_Byte;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
   }
   
-  public float a()
+  public boolean a(MotionEvent paramMotionEvent)
   {
-    return this.e;
-  }
-  
-  public int a()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public void a()
-  {
-    int j = bhkc.a(0).b();
-    int i = j;
-    if (j <= 0) {
-      i = bhkc.a(0).a();
+    float f2;
+    float f1;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      f2 = paramMotionEvent.getRawX();
+      f1 = paramMotionEvent.getRawY();
+      f2 += this.jdField_a_of_type_Float;
+      f1 += this.jdField_b_of_type_Float;
+      switch (paramMotionEvent.getAction())
+      {
+      }
     }
-    this.c = (20.0F / i);
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Byte = 0;
-    this.e = this.d;
-    this.jdField_b_of_type_Int = 255;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setVisibility(0);
-    }
-    e();
-  }
-  
-  public void a(byte paramByte)
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
+    label258:
     do
     {
-      return;
-      switch (paramByte)
+      do
       {
-      default: 
-        return;
+        do
+        {
+          return false;
+          f2 = paramMotionEvent.getX();
+          f1 = paramMotionEvent.getY();
+          break;
+          this.jdField_a_of_type_Bhkd = this.jdField_a_of_type_Bhkc.a(f2, f1);
+        } while (this.jdField_a_of_type_Bhkd == null);
+        if ((this.jdField_a_of_type_Bhkc.a(this.jdField_a_of_type_Bhkd, f2, f1)) && (this.jdField_a_of_type_Bhkd.a(this.jdField_a_of_type_Bhkc, f2, f1))) {
+          this.jdField_b_of_type_Boolean = true;
+        }
+        return true;
+      } while (!this.jdField_b_of_type_Boolean);
+      this.jdField_a_of_type_Bhkc.a(this.jdField_a_of_type_Bhkd, f2, f1);
+      this.jdField_a_of_type_Bhkd.a(this.jdField_a_of_type_Bhkc, f2, f1);
+      if (this.d)
+      {
+        if (!this.jdField_a_of_type_Bhke.a(f2, f1)) {
+          break label258;
+        }
+        if (!this.c)
+        {
+          this.c = true;
+          this.d = this.jdField_a_of_type_Bhke.b(this.jdField_a_of_type_Bhkc, this.jdField_a_of_type_Bhkd, f2, f1);
+        }
+        this.jdField_a_of_type_Bhke.b(this.jdField_a_of_type_Bhkc, this.jdField_a_of_type_Bhkd, f2, f1);
       }
-    } while (this.jdField_a_of_type_Byte == 0);
-    this.jdField_a_of_type_Byte = 0;
-    a();
-    return;
-    b();
-    return;
-    if ((this.jdField_a_of_type_Byte == 0) || (this.jdField_a_of_type_Byte == 1)) {
-      c();
-    }
-    this.jdField_a_of_type_Byte = 2;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(WebViewProgressBar paramWebViewProgressBar)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar = paramWebViewProgressBar;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean == this.jdField_a_of_type_Boolean) {}
-    while (paramBoolean) {
-      return;
-    }
-    if (this.jdField_a_of_type_Byte != 2) {
-      a((byte)2);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setVisibility(8);
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public byte b()
-  {
-    return this.jdField_a_of_type_Byte;
-  }
-  
-  public void b()
-  {
-    bhkc.a(0).a();
-    int j = bhkc.a(1).b();
-    int i = j;
-    if (j <= 0) {
-      i = bhkc.a(1).a();
-    }
-    this.c = (60.0F / i);
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_b_of_type_Byte = 2;
-    this.jdField_a_of_type_Byte = 1;
-    e();
-  }
-  
-  public void c()
-  {
-    bhkc.a(1).a();
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_b_of_type_Byte = 5;
-    this.c = 0.1333333F;
-    if (this.jdField_b_of_type_Float <= 60.0F) {
-      this.c = ((40.0F + (60.0F - this.jdField_b_of_type_Float) * 0.5F) / 300.0F);
-    }
-    for (this.jdField_a_of_type_Float = 0.8166667F;; this.jdField_a_of_type_Float = (245.0F * this.c / (100.0F - this.jdField_b_of_type_Float)))
-    {
-      e();
-      return;
-    }
-  }
-  
-  public void d()
-  {
-    this.jdField_b_of_type_Byte = 6;
-    this.jdField_b_of_type_Float = 0.0F;
-    this.d = ((int)(this.jdField_b_of_type_Float * this.jdField_a_of_type_Int / 100.0F));
-    this.jdField_b_of_type_Int = 255;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public void e()
-  {
-    long l1;
-    if (this.jdField_b_of_type_Byte != 6)
-    {
-      l1 = System.currentTimeMillis();
-      if (this.jdField_b_of_type_Float < 100.0F) {
-        break label66;
+      for (;;)
+      {
+        return true;
+        if (this.c)
+        {
+          this.c = false;
+          this.jdField_a_of_type_Bhke.a(this.jdField_a_of_type_Bhkc, this.jdField_a_of_type_Bhkd, f2, f1);
+        }
       }
-      d();
+    } while (!this.jdField_b_of_type_Boolean);
+    if ((this.jdField_a_of_type_Bhke.a(f2, f1)) && (this.jdField_a_of_type_Bhke.a(this.jdField_a_of_type_Bhkc, this.jdField_a_of_type_Bhkd, f2, f1)))
+    {
+      this.jdField_a_of_type_Bhkc.a(this.jdField_a_of_type_Bhke, this.jdField_a_of_type_Bhkd, f2, f1);
+      this.jdField_a_of_type_Bhkd.a(this.jdField_a_of_type_Bhkc, this.jdField_a_of_type_Bhke, f2, f1);
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(200);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(200, 20L);
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar != null) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.invalidate();
-      }
-      return;
-      label66:
-      long l2;
-      float f;
-      switch (this.jdField_b_of_type_Byte)
-      {
-      default: 
-        break;
-      case 0: 
-        l2 = a(l1 - this.jdField_a_of_type_Long);
-        f = this.jdField_b_of_type_Float;
-        this.jdField_b_of_type_Float = ((float)l2 * this.c + f);
-        this.jdField_a_of_type_Long = l1;
-        if (this.jdField_b_of_type_Float >= 20.0F)
-        {
-          this.jdField_a_of_type_Long = l1;
-          this.jdField_b_of_type_Byte = 1;
-          this.c /= 5.0F;
-        }
-        this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
-        break;
-      case 1: 
-        l2 = a(l1 - this.jdField_a_of_type_Long);
-        f = this.jdField_b_of_type_Float;
-        this.jdField_b_of_type_Float = ((float)l2 * this.c + f);
-        this.jdField_a_of_type_Long = l1;
-        if (this.jdField_b_of_type_Float >= 98.0F)
-        {
-          this.jdField_a_of_type_Long = l1;
-          this.jdField_b_of_type_Byte = 4;
-          this.jdField_b_of_type_Float = 98.0F;
-          this.c = 0.0F;
-        }
-        this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
-        break;
-      case 2: 
-        l2 = a(l1 - this.jdField_a_of_type_Long);
-        f = this.jdField_b_of_type_Float;
-        this.jdField_b_of_type_Float = ((float)l2 * this.c + f);
-        this.jdField_a_of_type_Long = l1;
-        if (this.jdField_b_of_type_Float >= 80.0F)
-        {
-          this.jdField_a_of_type_Long = l1;
-          this.jdField_b_of_type_Byte = 3;
-          this.c /= 20.0F;
-        }
-        this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
-        break;
-      case 3: 
-        l2 = a(l1 - this.jdField_a_of_type_Long);
-        f = this.jdField_b_of_type_Float;
-        this.jdField_b_of_type_Float = ((float)l2 * this.c + f);
-        this.jdField_a_of_type_Long = l1;
-        if (this.jdField_b_of_type_Float >= 98.0F)
-        {
-          this.jdField_a_of_type_Long = l1;
-          this.jdField_b_of_type_Byte = 4;
-          this.c = 0.0F;
-        }
-        this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
-        break;
-      case 5: 
-        l2 = a(l1 - this.jdField_a_of_type_Long);
-        this.jdField_b_of_type_Float += (float)l2 * this.c;
-        this.jdField_a_of_type_Long = l1;
-        this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
-        if (this.jdField_b_of_type_Boolean)
-        {
-          if (this.e >= this.jdField_a_of_type_Int) {
-            this.e = this.jdField_a_of_type_Int;
-          }
-        }
-        else
-        {
-          this.jdField_b_of_type_Int -= (int)((float)l2 * this.jdField_a_of_type_Float);
-          if (this.jdField_b_of_type_Int <= 0)
-          {
-            d();
-            this.jdField_b_of_type_Int = 0;
-          }
-        }
-        break;
-      case 4: 
-        this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
-      }
+      this.jdField_b_of_type_Boolean = false;
+      this.c = false;
+      this.d = true;
+      return true;
+      this.jdField_a_of_type_Bhkc.a(null, this.jdField_a_of_type_Bhkd, f2, f1);
+      this.jdField_a_of_type_Bhkd.a(this.jdField_a_of_type_Bhkc, null, f2, f1);
     }
   }
 }

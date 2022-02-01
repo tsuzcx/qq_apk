@@ -1,70 +1,35 @@
-public class ydg
-  implements Cloneable
+import com.tencent.biz.qqstory.notification.StoryPushMsg;
+
+class ydg
+  extends vzx
 {
-  public final int a;
-  public final String a;
-  public final String b;
-  public final String c;
-  public final String d;
-  public final String e;
-  public final String f;
-  public final String g;
-  public String h;
+  ydg(ydd paramydd) {}
   
-  public ydg(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  public void a(StoryPushMsg paramStoryPushMsg)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = null;
-    this.d = paramString3;
-    this.e = paramString4;
-    this.f = paramString5;
-    this.g = paramString6;
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public ydg(wgc paramwgc)
-  {
-    this.jdField_a_of_type_JavaLangString = paramwgc.jdField_a_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaLangString = paramwgc.jdField_b_of_type_JavaLangString;
-    this.c = paramwgc.c;
-    this.d = paramwgc.d;
-    this.e = paramwgc.e;
-    this.f = paramwgc.g;
-    this.g = paramwgc.f;
-    this.jdField_a_of_type_Int = paramwgc.jdField_b_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.h;
-  }
-  
-  public void a(String paramString)
-  {
-    this.h = paramString;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {
-      return true;
+    if ((paramStoryPushMsg.a == 15) || (paramStoryPushMsg.a == 19))
+    {
+      ykq.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive new comment push: %s", new Object[] { paramStoryPushMsg });
+      this.a.a(paramStoryPushMsg.d);
     }
-    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-      return false;
-    }
-    paramObject = (ydg)paramObject;
-    return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
-  }
-  
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_JavaLangString.hashCode();
-  }
-  
-  public String toString()
-  {
-    return "DoodleEmojiItem{mPackId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mLogoUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mDownloadLogoUrl='" + this.c + '\'' + ", mPackName='" + this.d + '\'' + ", mPackDownloadUrl='" + this.e + '\'' + ", mPackMd5='" + this.g + '\'' + ", mLocalEmojiFolderPath='" + this.h + '\'' + ", mConfig='" + this.f + '\'' + '}';
+    do
+    {
+      return;
+      if ((paramStoryPushMsg.a == 14) || (paramStoryPushMsg.a == 18))
+      {
+        ykq.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive new like push: %s", new Object[] { paramStoryPushMsg });
+        this.a.b(paramStoryPushMsg.d);
+        return;
+      }
+      if (paramStoryPushMsg.a == 17)
+      {
+        ykq.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive delete comment push: %s", new Object[] { paramStoryPushMsg });
+        ((wip)wjs.a(17)).a(paramStoryPushMsg.d, paramStoryPushMsg.c);
+        return;
+      }
+    } while (paramStoryPushMsg.a != 16);
+    ykq.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive delete like push: %s", new Object[] { paramStoryPushMsg });
+    this.a.b(paramStoryPushMsg.d);
   }
 }
 

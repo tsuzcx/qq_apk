@@ -1,18 +1,65 @@
-import com.tencent.mobileqq.activity.contacts.base.Contacts;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextPanel;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 
 public class aino
-  extends aico
+  implements ainf
 {
-  public aino(Contacts paramContacts) {}
+  public aino(VoiceTextPanel paramVoiceTextPanel) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NewFriendVerification.manager", 2, "ui.onGetAddFriendBlockedRedPoint, success=" + paramBoolean1 + ",blockedUin=" + paramString);
+    VoiceTextPanel.a(this.a).mCustomTitleView.setVisibility(0);
+    VoiceTextPanel.a(this.a).j();
+    if (!VoiceTextPanel.a(this.a).a().a())
+    {
+      VoiceTextPanel.a(this.a).showAudioPanel(false);
+      VoiceTextPanel.a(this.a).a();
     }
-    ((aiej)this.a.a.getManager(34)).c();
+    for (;;)
+    {
+      VoiceTextPanel.a(this.a);
+      return;
+      VoiceTextPanel.a(this.a).a(1);
+      VoiceTextPanel.a(this.a).hideAllPanels();
+    }
+  }
+  
+  public void a(MotionEvent paramMotionEvent)
+  {
+    if ((paramMotionEvent.getAction() == 2) || (!VoiceTextPanel.a(this.a).a().a())) {
+      return;
+    }
+    VoiceTextPanel.a(this.a).a(paramMotionEvent);
+  }
+  
+  public void a(String paramString)
+  {
+    VoiceTextPanel.a(this.a).b(paramString);
+    VoiceTextPanel.a(this.a).a().b(true);
+    VoiceTextPanel.a(this.a).a();
+    this.a.c();
+  }
+  
+  public void b()
+  {
+    VoiceTextPanel.a(this.a).mCustomTitleView.setVisibility(0);
+    if (!VoiceTextPanel.a(this.a).a().a())
+    {
+      VoiceTextPanel.a(this.a).showAudioPanel(false);
+      VoiceTextPanel.a(this.a).a();
+      VoiceTextPanel.a(this.a).g();
+      aioe.a("0X800A1DB", 1, 0);
+    }
+    for (;;)
+    {
+      VoiceTextPanel.a(this.a);
+      return;
+      VoiceTextPanel.a(this.a).a(1);
+      VoiceTextPanel.a(this.a).hideAllPanels();
+      aioe.a("0X800A1DB", 2, 0);
+    }
   }
 }
 

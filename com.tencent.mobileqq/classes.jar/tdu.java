@@ -1,10 +1,21 @@
-public abstract interface tdu
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
+
+public class tdu
 {
-  public abstract void a(tdz paramtdz);
+  public ReadInJoyBaseFragment a;
+  public sxs a;
+  public boolean a;
+  public boolean b;
   
-  public abstract void b(tdz paramtdz);
+  public tdu()
+  {
+    this.jdField_a_of_type_Boolean = false;
+  }
   
-  public abstract void c(tdz paramtdz);
+  public ReadInJoyBaseFragment a()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyBaseFragment;
+  }
 }
 
 

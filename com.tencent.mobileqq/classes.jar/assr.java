@@ -1,14 +1,20 @@
-class assr
-  implements bcan
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.pb.profilecard.EditExtendFriendInfo.SchoolInfo;
+
+final class assr
+  implements DialogInterface.OnClickListener
 {
-  assr(assj paramassj) {}
+  assr(aslm paramaslm, EditExtendFriendInfo.SchoolInfo paramSchoolInfo) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    aszt.a(this.a.a, this.a.d());
+    if (this.jdField_a_of_type_Aslm != null) {
+      this.jdField_a_of_type_Aslm.a(this.jdField_a_of_type_ComTencentPbProfilecardEditExtendFriendInfo$SchoolInfo);
+    }
+    bdla.b(null, "dc00898", "", "", "0X800ADA8", "0X800ADA8", 1, 0, "", "", "", "");
+    paramDialogInterface.dismiss();
   }
-  
-  public void b() {}
 }
 
 

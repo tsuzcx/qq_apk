@@ -1,20 +1,16 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
 
 class bfxv
-  implements View.OnClickListener
+  implements bghf
 {
-  bfxv(bfxr parambfxr, DialogInterface.OnClickListener paramOnClickListener) {}
+  bfxv(bfxr parambfxr, TroopChatPie paramTroopChatPie) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bfxr, 1);
+    if (!bghd.a(paramInt)) {
+      this.jdField_a_of_type_Bfxr.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie);
     }
-    this.jdField_a_of_type_Bfxr.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Bfxr.e(bghd.b(paramInt));
   }
 }
 

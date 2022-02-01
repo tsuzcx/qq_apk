@@ -1,11 +1,15 @@
+import android.util.Log;
+import com.tencent.TMG.sdk.AVRoomMulti.RequestViewListCompleteCallback;
+import com.tencent.TMG.sdk.AVView;
+
 class amxp
-  extends anaa
+  implements AVRoomMulti.RequestViewListCompleteCallback
 {
-  amxp(amxn paramamxn) {}
+  amxp(amxj paramamxj) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void OnComplete(String[] paramArrayOfString, AVView[] paramArrayOfAVView, int paramInt1, int paramInt2, String paramString)
   {
-    this.a.a();
+    Log.d("CmGameAvHandler", "RequestViewListCompleteCallback.OnComplete result: " + paramInt2 + paramString);
   }
 }
 

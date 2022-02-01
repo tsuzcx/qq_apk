@@ -1,9 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem;
-import java.util.List;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPublish;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
-public abstract interface rie
+public class rie
+  extends ClickableSpan
 {
-  public abstract void a(List<ReadInJoyDraftboxItem> paramList);
+  public rie(ComponentHeaderPublish paramComponentHeaderPublish) {}
+  
+  public void onClick(View paramView)
+  {
+    pqx.a(this.a.getContext(), this.a.a.a.a(), 1, false, 8, false);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-14132075);
+    paramTextPaint.setTextSize(AIOUtils.sp2TextSize(2, 14, this.a.getResources()));
+  }
 }
 
 

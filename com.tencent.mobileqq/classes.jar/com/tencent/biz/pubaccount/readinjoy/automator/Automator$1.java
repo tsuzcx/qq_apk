@@ -2,21 +2,21 @@ package com.tencent.biz.pubaccount.readinjoy.automator;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import onz;
-import ooa;
+import ovw;
+import ovx;
 
 public class Automator$1
   implements Runnable
 {
-  public Automator$1(onz paramonz, ooa[] paramArrayOfooa, boolean paramBoolean) {}
+  public Automator$1(ovw paramovw, ovx[] paramArrayOfovx, boolean paramBoolean) {}
   
   public void run()
   {
-    onz.a(this.this$0).clear();
-    Collections.addAll(onz.a(this.this$0), this.jdField_a_of_type_ArrayOfOoa);
-    Collections.addAll(onz.a(this.this$0), this.jdField_a_of_type_ArrayOfOoa);
+    ovw.a(this.this$0).clear();
+    Collections.addAll(ovw.a(this.this$0), this.jdField_a_of_type_ArrayOfOvx);
+    Collections.addAll(ovw.a(this.this$0), this.jdField_a_of_type_ArrayOfOvx);
     if (this.jdField_a_of_type_Boolean) {
-      onz.a(this.this$0);
+      ovw.a(this.this$0);
     }
   }
 }

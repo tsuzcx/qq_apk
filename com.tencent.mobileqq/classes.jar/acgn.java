@@ -1,23 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.intervideo.nowproxy.proxyinner.channel.FromService;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
 
-public final class acgn
-  implements Parcelable.Creator<FromService>
+public class acgn
+  implements acgx
 {
-  public FromService a(Parcel paramParcel)
+  public boolean a(acfw paramacfw, String paramString, String... paramVarArgs)
   {
-    FromService localFromService = new FromService();
-    localFromService.jdField_a_of_type_Int = paramParcel.readInt();
-    localFromService.b = paramParcel.readInt();
-    localFromService.c = paramParcel.readInt();
-    localFromService.jdField_a_of_type_AndroidOsBundle = paramParcel.readBundle();
-    return localFromService;
-  }
-  
-  public FromService[] a(int paramInt)
-  {
-    return new FromService[paramInt];
+    Object localObject = null;
+    aady localaady = aady.a();
+    localaady.a();
+    localaady.i(new acgo(this, paramacfw, paramString, paramVarArgs, localaady));
+    if (paramacfw != null) {}
+    for (paramString = paramacfw.a();; paramString = null)
+    {
+      paramVarArgs = localObject;
+      if (paramacfw != null) {
+        paramVarArgs = paramacfw.a();
+      }
+      AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, false, "getUserInfo", paramVarArgs);
+      return true;
+    }
   }
 }
 

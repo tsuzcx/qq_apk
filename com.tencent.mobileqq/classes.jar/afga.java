@@ -1,6 +1,28 @@
-public abstract interface afga
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class afga
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public afga(TroopMemberListActivity paramTroopMemberListActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString(bhoy.e, anvx.a(2131714970));
+    localBundle.putString(bhoy.f, "CJCLUBT");
+    localBundle.putString(bhoy.d, "1450000516");
+    localBundle.putInt(bhoy.b, 3);
+    localBundle.putString(bhoy.i, "https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=" + "mvip.pt.vipsite.tqtips_chengyuan");
+    localBundle.putString(bhoy.g, "svip");
+    localBundle.putString(bhoy.a, this.a.app.getCurrentAccountUin());
+    bhoy.a(this.a.app, this.a, localBundle);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

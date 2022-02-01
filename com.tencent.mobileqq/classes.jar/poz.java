@@ -1,14 +1,16 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.widget.AbsListView;
 
-public class poz
-  implements pqe
+class poz
+  extends qdb
 {
-  public poz(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
-  
-  public void a()
+  poz(pob parampob, String paramString, AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.getActivity().finish();
+    super(paramString);
+  }
+  
+  public void a(qcu paramqcu)
+  {
+    paramqcu.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int, this.b, this.c);
   }
 }
 

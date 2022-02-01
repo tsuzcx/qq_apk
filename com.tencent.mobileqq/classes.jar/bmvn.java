@@ -1,70 +1,50 @@
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.util.WeakReference;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.util.Log;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import dov.com.qq.im.ae.AECMShowCameraUnit.6;
+import dov.com.qq.im.ae.cmshow.AECMShowLoadingView;
 
-class bmvn
-  implements INetEngine.INetEngineListener
+public class bmvn
+  implements Animator.AnimatorListener
 {
-  bmvn(bmvm parambmvm) {}
+  public bmvn(AECMShowCameraUnit.6 param6) {}
   
-  public void onResp(NetResp arg1)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    bmvl localbmvl = (bmvl)???.mReq.getUserData();
-    if (QLog.isColorLevel()) {
-      QLog.i("DText", 2, "onResp, url is: " + localbmvl.jdField_a_of_type_JavaLangString + " http status: " + ???.mHttpCode);
-    }
-    bmvm.a(this.a, localbmvl);
-    if ((bmvm.a(this.a).b(localbmvl)) && (bmvm.a(this.a).a(localbmvl))) {}
-    for (boolean bool = true;; bool = false) {
-      for (;;)
-      {
-        int i;
-        synchronized (bmvm.a(this.a))
-        {
-          ArrayList localArrayList = (ArrayList)bmvm.a(this.a).remove(localbmvl.jdField_a_of_type_JavaLangString);
-          i = localArrayList.size() - 1;
-          if (i >= 0)
-          {
-            WeakReference localWeakReference = (WeakReference)localArrayList.get(i);
-            if (localWeakReference.get() != null) {
-              ((bmvo)localWeakReference.get()).a(bool, localbmvl.jdField_a_of_type_JavaLangString);
-            }
-          }
-          else
-          {
-            return;
-          }
-        }
-        i -= 1;
-      }
-    }
+    bmvk.a(this.a.this$0).setAlpha(1.0F);
+    bmvk.a(this.a.this$0).setAlpha(255);
+    bmvk.a(this.a.this$0).setVisibility(8);
+    Log.d(this.a.this$0.a, "MakeFaceSucc -> onAnimationEnd: 设置为蓝色背景");
+    bmvk.a(this.a.this$0).setBackgroundDrawable(this.a.this$0.a().getResources().getDrawable(2130837603));
+    bmvk.a(this.a.this$0).setTextColor(-1);
+    bmvk.a(this.a.this$0).setText(2131690857);
   }
   
-  public void onUpdateProgeress(NetReq arg1, long paramLong1, long paramLong2)
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    bmvl localbmvl = (bmvl)???.getUserData();
-    synchronized (bmvm.a(this.a))
-    {
-      Iterator localIterator = ((ArrayList)bmvm.a(this.a).get(localbmvl.jdField_a_of_type_JavaLangString)).iterator();
-      while (localIterator.hasNext())
-      {
-        WeakReference localWeakReference = (WeakReference)localIterator.next();
-        if (localWeakReference.get() != null) {
-          ((bmvo)localWeakReference.get()).a((float)(100L * paramLong1 / paramLong2), localbmvl.jdField_a_of_type_JavaLangString, localbmvl.jdField_a_of_type_Int);
-        }
-      }
-    }
-    float f = (float)paramLong1 * 100.0F / (float)paramLong2;
-    localObject.b = ((int)f);
-    if (QLog.isColorLevel()) {
-      QLog.i("DText", 2, "onResDownloadProgressUpdate url: " + localObject.jdField_a_of_type_JavaLangString + " progress: " + f + " curOffset: " + paramLong1 + " totalLen: " + paramLong2);
-    }
+    bmvk.a(this.a.this$0).setVisibility(8);
+    bmvk.a(this.a.this$0).setAlpha(0.0F);
+    bmvk.a(this.a.this$0).setTag(Integer.valueOf(1));
+    bmvk.a(this.a.this$0).setClickable(true);
+    Log.d(this.a.this$0.a, "MakeFaceSucc -> onAnimationStart: 设置为蓝色背景");
+    bmvk.a(this.a.this$0).setBackgroundDrawable(this.a.this$0.a().getResources().getDrawable(2130837603));
+    bmvk.a(this.a.this$0).setTextColor(-1);
+    bmvk.a(this.a.this$0).setText(2131690857);
+    bmvk.a(this.a.this$0).setVisibility(0);
+    bmvk.a(this.a.this$0).setImageDrawable(this.a.this$0.a().getResources().getDrawable(2130837666));
+    bmvk.a(this.a.this$0).setTag(Integer.valueOf(4));
+    bmvk.a(this.a.this$0).setAlpha(0);
+    bmvk.a(this.a.this$0).setVisibility(0);
+    bmvk.a(this.a.this$0).setClickable(true);
   }
 }
 

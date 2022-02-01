@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import baid;
+import bbos;
 
 class LightVideoUploadProcessor$FileSlice
 {
@@ -9,7 +9,7 @@ class LightVideoUploadProcessor$FileSlice
   long fileSize;
   int index;
   String path;
-  baid sendInfo;
+  bbos sendInfo;
   byte[] thumbMD5;
   byte[] ticket;
   

@@ -5,6 +5,7 @@ import com.tencent.ttpic.gameplaysdk.model.Range;
 public class AnimojiExpressionJava
 {
   public String controlledName;
+  public Range controlledRange = new Range();
   public String shapeName;
   public Range shapeRange = new Range();
 }

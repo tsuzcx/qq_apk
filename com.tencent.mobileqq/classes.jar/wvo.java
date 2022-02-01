@@ -1,39 +1,53 @@
-import android.app.AlertDialog.Builder;
-import android.content.Context;
-import android.widget.MediaController;
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.MsgTabNodeInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgListHeadNode;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class wvo
-  implements wxc
+  extends wfh
 {
-  public wvo(TextureVideoView paramTextureVideoView) {}
+  private String jdField_a_of_type_JavaLangString;
+  private List<wly> jdField_a_of_type_JavaUtilList;
   
-  public boolean a(wwz paramwwz, int paramInt1, int paramInt2)
+  public wvo(@NonNull qqstory_service.RspMsgListHeadNode paramRspMsgListHeadNode)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "Error: " + paramInt1 + "," + paramInt2);
-    }
-    this.a.jdField_a_of_type_Int = -1;
-    this.a.b = -1;
-    if (this.a.jdField_a_of_type_AndroidWidgetMediaController != null) {
-      this.a.jdField_a_of_type_AndroidWidgetMediaController.hide();
-    }
-    if ((this.a.jdField_a_of_type_Wxc != null) && (this.a.jdField_a_of_type_Wxc.a(paramwwz, paramInt1, paramInt2))) {}
-    while (this.a.getWindowToken() == null) {
-      return true;
-    }
-    this.a.getContext().getResources();
-    if (paramInt1 == 200) {}
-    for (paramInt1 = 17039381;; paramInt1 = 17039377)
+    super(paramRspMsgListHeadNode.result);
+    this.jdField_a_of_type_JavaLangString = paramRspMsgListHeadNode.list_seq.get().toStringUtf8();
+    this.jdField_a_of_type_JavaUtilList = a(paramRspMsgListHeadNode.node_list.get());
+  }
+  
+  private static List<wly> a(List<qqstory_service.MsgTabNodeInfo> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      paramwwz = TextureVideoView.a(this.a);
-      if (paramwwz == null) {
-        break;
-      }
-      new AlertDialog.Builder(paramwwz).setMessage(paramInt1).setPositiveButton(17039376, new wvp(this)).setCancelable(false).show();
-      return true;
+      qqstory_service.MsgTabNodeInfo localMsgTabNodeInfo = (qqstory_service.MsgTabNodeInfo)paramList.next();
+      wly localwly = new wly();
+      localwly.a(localMsgTabNodeInfo);
+      localArrayList.add(localwly);
     }
+    return localArrayList;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public List<wly> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public String toString()
+  {
+    return "RecentTabHaloResponse{mSeq='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mMsgTabNodeInfos=" + this.jdField_a_of_type_JavaUtilList + ", errorCode=" + this.jdField_a_of_type_Int + ", errorMsg='" + this.b + '\'' + '}';
   }
 }
 

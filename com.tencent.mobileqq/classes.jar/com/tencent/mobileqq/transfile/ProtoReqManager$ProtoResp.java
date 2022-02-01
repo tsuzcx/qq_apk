@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import amwm;
+import anza;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 
 public class ProtoReqManager$ProtoResp
@@ -11,7 +11,7 @@ public class ProtoReqManager$ProtoResp
   public FromServiceMsg resp;
   public ProtoReqManager.ProtoReqRunnable[] runs;
   public long startTime;
-  public amwm statisInfo = new amwm();
+  public anza statisInfo = new anza();
 }
 
 

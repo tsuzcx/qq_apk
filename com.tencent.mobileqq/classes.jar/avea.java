@@ -1,12 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.qphone.base.util.QLog;
 
-final class avea
-  implements DialogInterface.OnClickListener
+public class avea
+  extends acnf
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public avea(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager, acne paramacne)
   {
-    bcef.b(null, "CliOper", "", "", "0X800A971", "0X800A971", 0, 0, "0", "0", "0", "");
+    super(paramQQAppInterface, paramProxyManager, paramacne);
+    if (QLog.isColorLevel()) {
+      QLog.d("TinyIdMsgProxy", 2, "TinyIdMsgProxy() called with: _app = [" + paramQQAppInterface + "], pm = [" + paramProxyManager + "], msgPool = [" + paramacne + "]");
+    }
   }
 }
 

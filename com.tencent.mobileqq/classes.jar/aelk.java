@@ -1,20 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aelk
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aelk(TroopInfoActivity paramTroopInfoActivity, QQCustomDialog paramQQCustomDialog) {}
+  public aelk(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    TroopInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity, true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.finish();
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
+    if (NotifyPushSettingActivity.a(this.a) == null)
+    {
+      NotifyPushSettingActivity.a(this.a, new aelq(this.a, this.a.app, NotifyPushSettingActivity.a(this.a), NotifyPushSettingActivity.a(this.a), NotifyPushSettingActivity.a(this.a)));
+      aelq.a(NotifyPushSettingActivity.a(this.a), NotifyPushSettingActivity.a(this.a));
     }
+    if (NotifyPushSettingActivity.a(this.a))
+    {
+      int i = (int)NetConnInfoCenter.getServerTime();
+      int j = SettingCloneUtil.readValueForInt(this.a.getApplicationContext(), null, "no_disturb_mode", "qqsetting_nodisturb_mode_key", 2147483647);
+      NotifyPushSettingActivity.a(this.a).a(j - i);
+    }
+    NotifyPushSettingActivity.a(this.a).show();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

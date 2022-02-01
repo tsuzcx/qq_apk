@@ -1,15 +1,8 @@
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ArithmeticViewHolder.ArithmeticImageView;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import java.util.List;
 
-public class beod
-  implements bhfe
+public abstract interface beod
 {
-  public beod(ArithmeticViewHolder.ArithmeticImageView paramArithmeticImageView) {}
-  
-  public void a(String paramString)
-  {
-    this.a.a.setVisibility(8);
-  }
+  public abstract void a(String paramString, List<String> paramList, boolean paramBoolean);
 }
 
 

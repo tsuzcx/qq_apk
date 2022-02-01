@@ -1,103 +1,39 @@
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import org.json.JSONObject;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetUserSelfInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserSelfInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
-public abstract class yfy
+public class yfy
+  extends wfm<yfz>
 {
-  private float jdField_a_of_type_Float = 0.1F;
-  private int jdField_a_of_type_Int = 5;
-  public Drawable a;
-  public final String a;
-  public String b;
-  public String c;
-  public String d;
-  private String e;
+  public static final String a = weg.a("StorySvc.get_user_base_info");
   
-  public yfy(@NonNull String paramString)
+  public String a()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      throw new IllegalStateException("FacePackage'id can not be null.");
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
+    return a;
   }
   
-  public float a()
+  public yfz a(byte[] paramArrayOfByte)
   {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public abstract String a();
-  
-  public void a(String paramString)
-  {
-    int i;
-    if (TextUtils.isEmpty(paramString))
+    qqstory_service.RspGetUserSelfInfo localRspGetUserSelfInfo = new qqstory_service.RspGetUserSelfInfo();
+    try
     {
-      xvv.e("FacePackage", "config json is empty.");
-      i = 0;
-      if (i == 0)
-      {
-        xvv.e("FacePackage", "config json is illegal, use default value, type : %s", new Object[] { a() });
-        if (!"NormalFacePackage".equals(a())) {
-          break label237;
-        }
-        if (!"1".equals(this.jdField_a_of_type_JavaLangString)) {
-          break label223;
-        }
-        this.jdField_a_of_type_Int = 5;
-        this.jdField_a_of_type_Float = 0.1F;
-      }
+      localRspGetUserSelfInfo.mergeFrom(paramArrayOfByte);
+      return new yfz(localRspGetUserSelfInfo);
     }
-    for (;;)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
       for (;;)
       {
-        this.e = null;
-        return;
-        try
-        {
-          JSONObject localJSONObject = new JSONObject(paramString);
-          this.jdField_a_of_type_Int = localJSONObject.getInt("amount");
-          this.jdField_a_of_type_Float = Float.valueOf(localJSONObject.getString("spacing")).floatValue();
-          if ((this.jdField_a_of_type_Int < 1) || (this.jdField_a_of_type_Float < 0.0F) || (this.jdField_a_of_type_Float >= 0.5D))
-          {
-            xvv.e("FacePackage", "config json is illegal : %s", new Object[] { paramString });
-            i = 0;
-            break;
-          }
-          this.e = paramString;
-          xvv.a("FacePackage", "parse config json success : %s", paramString);
-          i = 1;
-        }
-        catch (Exception localException)
-        {
-          xvv.e("FacePackage", "parse config json error : " + paramString + ", exception : " + localException.toString());
-          i = 0;
-        }
+        paramArrayOfByte.printStackTrace();
+        ykq.c("Q.qqstory.home.GetUserSelfInfoStep", "decodeResponse error=%s", paramArrayOfByte);
       }
-      break;
-      label223:
-      this.jdField_a_of_type_Int = 3;
-      this.jdField_a_of_type_Float = 0.05F;
-      continue;
-      label237:
-      if (!"LocationFacePackage".equals(a())) {
-        break label263;
-      }
-      this.jdField_a_of_type_Int = 2;
-      this.jdField_a_of_type_Float = 0.1F;
     }
-    label263:
-    throw new IllegalStateException("unknown face package, type:" + a());
   }
   
-  public abstract int b();
+  protected byte[] a()
+  {
+    return new qqstory_service.ReqGetUserSelfInfo().toByteArray();
+  }
 }
 
 

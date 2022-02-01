@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.intervideo.od;
 
 import android.os.Bundle;
-import aumc;
+import avrx;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
@@ -15,7 +15,7 @@ class ODLoadingActivity$3
   {
     try
     {
-      ((aumc)this.jdField_a_of_type_JavaUtilConcurrentFuture.get(6L, TimeUnit.SECONDS)).enter(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidOsBundle, ODLoadingActivity.a(this.this$0));
+      ((avrx)this.jdField_a_of_type_JavaUtilConcurrentFuture.get(6L, TimeUnit.SECONDS)).enter(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidOsBundle, ODLoadingActivity.a(this.this$0));
       return;
     }
     catch (Exception localException)

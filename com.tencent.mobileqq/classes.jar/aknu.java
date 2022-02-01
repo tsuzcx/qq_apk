@@ -1,8 +1,19 @@
-public abstract interface aknu
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+
+class aknu
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(byte[] paramArrayOfByte);
+  aknu(aknr paramaknr) {}
   
-  public abstract byte[] a();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (((NewPhotoListActivity)this.a.mActivity).sendBtn != null) {
+      ((NewPhotoListActivity)this.a.mActivity).sendBtn.setClickable(true);
+    }
+  }
 }
 
 

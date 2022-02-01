@@ -1,53 +1,66 @@
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import tencent.im.msg.im_msg_body.RichText;
 
-class bbbd
-  implements View.OnLongClickListener
+public class bbbd
+  implements azla
 {
-  bbbd(bbbc parambbbc, bayt parambayt) {}
+  int jdField_a_of_type_Int;
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  String jdField_a_of_type_JavaLangString;
+  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public boolean onLongClick(View paramView)
+  public bbbd(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, String paramString, int paramInt)
   {
-    paramView = new AlertDialog.Builder(paramView.getContext());
-    paramView.setTitle(amtj.a(2131701700));
-    long l = ((bayp)this.jdField_a_of_type_Bayt).b();
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = SearchConfigManager.contactSearchPinyinBaseBit;
-    int j = SearchConfigManager.contactSearchPinyinBaseBit;
-    localStringBuilder.append("拼音匹配：");
-    localStringBuilder.append((9223372036854775807L << i & l) >> j);
-    localStringBuilder.append('\n');
-    i = SearchConfigManager.contactSearchRecentBaseBit;
-    j = SearchConfigManager.contactSearchRecentBaseBit;
-    int k = SearchConfigManager.contactSearchRecentBaseBit;
-    localStringBuilder.append("最近联系人排序：");
-    localStringBuilder.append((9223372036854775807L >> 63 - (i + 10) & l & 9223372036854775807L << j) >> k);
-    localStringBuilder.append('\n');
-    i = SearchConfigManager.contactSearchIndexBaseBit;
-    j = SearchConfigManager.contactSearchIndexBaseBit;
-    k = SearchConfigManager.contactSearchIndexBaseBit;
-    localStringBuilder.append("字符串匹配度：");
-    localStringBuilder.append((9223372036854775807L >> 63 - (i + 8) & l & 9223372036854775807L << j) >> k);
-    localStringBuilder.append('\n');
-    i = SearchConfigManager.contactSearchTypeBaseBit;
-    j = SearchConfigManager.contactSearchTypeBaseBit;
-    k = SearchConfigManager.contactSearchTypeBaseBit;
-    localStringBuilder.append("数据类型：");
-    localStringBuilder.append((9223372036854775807L >> 63 - (i + 8) & l & 9223372036854775807L << j) >> k);
-    localStringBuilder.append('\n');
-    i = SearchConfigManager.contactSearchFieldBaseBit;
-    j = SearchConfigManager.contactSearchFieldBaseBit;
-    k = SearchConfigManager.contactSearchFieldBaseBit;
-    localStringBuilder.append("字段类型：");
-    localStringBuilder.append((l & 9223372036854775807L >> 63 - (i + 8) & 9223372036854775807L << j) >> k);
-    localStringBuilder.append('\n');
-    paramView.setMessage(localStringBuilder.toString());
-    paramView.create().show();
-    return false;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
+  
+  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
+  {
+    return null;
+  }
+  
+  public void onSend(azlb paramazlb)
+  {
+    if (paramazlb.jdField_a_of_type_Int == 0)
+    {
+      MessageForStructing localMessageForStructing = (MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      localMessageForStructing.structingMsg.mResid = paramazlb.c;
+      localMessageForStructing.structingMsg.mFileName = String.valueOf(localMessageForStructing.uniseq);
+      ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getMessageFacade().updateMsgContentByUniseq(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, localMessageForStructing.uniseq, localMessageForStructing.structingMsg.getBytes());
+      ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getMessageFacade().sendMessage(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReceiptMsgManager", 2, "send real struct msg done, uniseq: " + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMsgManager", 2, "upload receipt msg pack failed, result.errStr=" + paramazlb.b + ",result.errStr=" + paramazlb.jdField_a_of_type_JavaLangString + " uniseq=" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.extraflag = 32768;
+    ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getMsgCache().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
+    paramazlb = ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getMessageFacade().getLastMessage(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    if ((paramazlb != null) && (paramazlb.uniseq == this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq)) {
+      paramazlb.extraflag = 32768;
+    }
+    paramazlb = this.jdField_a_of_type_JavaLangString;
+    int i = this.jdField_a_of_type_Int;
+    long l = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq;
+    ((MessageHandler)((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).notifyUI(MessageHandler.a(this.jdField_a_of_type_Int), false, new Object[] { paramazlb, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
+  }
+  
+  public void updateMsg(azlb paramazlb) {}
 }
 
 

@@ -1,29 +1,36 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import com.tencent.biz.subscribe.comment.CommentBottomBar;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.os.Handler;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
 
-class zdn
-  implements zko
+public final class zdn
 {
-  zdn(zdg paramzdg, CertifiedAccountMeta.StFeed paramStFeed) {}
+  private final zdo a;
+  
+  public zdn(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener)
+  {
+    this(paramContext, paramOnGestureListener, null);
+  }
+  
+  public zdn(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener, Handler paramHandler)
+  {
+    this.a = new zdp(paramContext, paramOnGestureListener, paramHandler);
+  }
   
   public void a(int paramInt)
   {
-    QLog.d(zdg.jdField_a_of_type_JavaLangString, 2, "count:" + paramInt);
-    if ((zdg.n(this.jdField_a_of_type_Zdg) != null) && (paramInt == 1))
-    {
-      if (zkn.a().a(zdg.o(this.jdField_a_of_type_Zdg), "subscribe_sp_key_show_praise_guide") != 0) {
-        break label90;
-      }
-      if ((this.jdField_a_of_type_Zdg.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar != null) && (!this.jdField_a_of_type_Zdg.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.a())) {
-        this.jdField_a_of_type_Zdg.h();
-      }
-    }
-    label90:
-    while ((zkn.a().a(zdg.p(this.jdField_a_of_type_Zdg), "subscribe_sp_key_show_follow_guide") != 0) || (zbi.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed))) {
-      return;
-    }
-    this.jdField_a_of_type_Zdg.g();
+    zdp.a(paramInt);
+  }
+  
+  public void a(GestureDetector.OnDoubleTapListener paramOnDoubleTapListener)
+  {
+    this.a.a(paramOnDoubleTapListener);
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    return this.a.a(paramMotionEvent);
   }
 }
 

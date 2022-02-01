@@ -1,20 +1,37 @@
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class amsi
-  extends axus
+  extends amsf
 {
-  public amsi(FrameHelperActivity paramFrameHelperActivity) {}
-  
-  public void a(int paramInt)
+  public amsi(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "onBatteryChanged updateOnlineStatusItem");
-    }
-    if (FrameHelperActivity.a(this.a) != null) {
-      FrameHelperActivity.a(this.a).a(paramInt);
-    }
-    this.a.a("OnBatteryChangeObserver");
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void a(anct paramanct, Context paramContext, QQAppInterface paramQQAppInterface) {}
+  
+  public void a(anct paramanct, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if (!a()) {}
+    SharedPreferences localSharedPreferences;
+    do
+    {
+      return;
+      this.b = true;
+      localSharedPreferences = paramContext.getSharedPreferences("apollo_sp", 0);
+    } while (!localSharedPreferences.getBoolean(paramQQAppInterface.getAccount() + "apollo_settingme_first_enter", true));
+    anck.a(paramanct, anvx.a(2131704083), 7, 0);
+    localSharedPreferences.edit().putBoolean(paramQQAppInterface.getAccount() + "apollo_settingme_first_enter", false).commit();
+    a(paramContext, paramQQAppInterface);
+  }
+  
+  public boolean a()
+  {
+    return (this.c) && (!this.jdField_a_of_type_Boolean);
   }
 }
 

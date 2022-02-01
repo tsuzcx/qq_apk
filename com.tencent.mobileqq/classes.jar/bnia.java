@@ -1,42 +1,31 @@
+import android.content.Context;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import com.tencent.widget.XPanelContainer;
-import dov.com.qq.im.capture.text.DynamicTextItem;
+import com.tencent.aekit.api.standard.AEModule;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.ae.camera.ui.poi.AESelectLocationFragment;
 
 class bnia
-  implements bmvs
+  implements View.OnClickListener
 {
-  bnia(bnhv parambnhv) {}
+  bnia(bnhy parambnhy) {}
   
-  public void a(View paramView, DynamicTextItem paramDynamicTextItem, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((paramDynamicTextItem != null) && (paramInt > -1))
+    InputMethodManager localInputMethodManager = (InputMethodManager)AEModule.getContext().getSystemService("input_method");
+    if (bnhy.a(this.a) != null)
     {
-      paramView = paramDynamicTextItem.a(paramInt);
-      if (paramView != null)
-      {
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramView);
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.length());
-        if (!paramView.equals(bmvk.a(paramDynamicTextItem.c(), paramInt))) {
-          break label139;
-        }
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(bnhv.a(this.a));
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelectAllOnFocus(true);
-        if (this.a.jdField_a_of_type_AndroidWidgetEditText.hasFocus()) {
-          this.a.jdField_a_of_type_AndroidWidgetEditText.selectAll();
-        }
-      }
-      for (;;)
-      {
-        if (this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer != null) {
-          this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(34);
-        }
-        return;
-        label139:
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(null);
-      }
+      localInputMethodManager.hideSoftInputFromWindow(bnhy.a(this.a).getWindowToken(), 0);
+      bnhy.a(this.a, bnhy.a(this.a));
+      bnhy.a(this.a).setTextColor(-1);
     }
-    this.a.a(false);
+    if (bnhy.a(this.a) != null) {
+      bnhy.a(this.a).b();
+    }
+    AESelectLocationFragment.a(bnhy.a(this.a), 203);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

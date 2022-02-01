@@ -1,29 +1,19 @@
-import android.view.ScaleGestureDetector;
-import com.tencent.mobileqq.activity.PortraitImageview;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.text.QQTextBuilder;
 
 public class adwe
-  extends adwg
+  extends Editable.Factory
 {
-  public adwe(PortraitImageview paramPortraitImageview) {}
+  public adwe(EditInfoActivity paramEditInfoActivity) {}
   
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    if ((paramScaleGestureDetector != null) && (paramScaleGestureDetector.isInProgress())) {
-      try
-      {
-        float f1 = this.a.a();
-        float f2 = paramScaleGestureDetector.getScaleFactor();
-        f1 = Math.min(this.a.b(), Math.max(f1 * f2, 0.1F));
-        this.a.a(f1, paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
-        this.a.invalidate();
-        return true;
-      }
-      catch (IllegalArgumentException paramScaleGestureDetector)
-      {
-        paramScaleGestureDetector.printStackTrace();
-      }
+    if ((paramCharSequence instanceof QQTextBuilder)) {
+      return (Editable)paramCharSequence;
     }
-    return false;
+    return new QQTextBuilder(paramCharSequence, 3, 20);
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.qassistant.core;
 
-import azfg;
-import azfi;
-import azfk;
+import bakx;
+import bakz;
+import balb;
 
 public class VoiceAssistantManager$2
   implements Runnable
 {
-  public VoiceAssistantManager$2(azfg paramazfg, azfk paramazfk) {}
+  public VoiceAssistantManager$2(bakx parambakx, balb parambalb) {}
   
   public void run()
   {
-    azfg.a(this.this$0).n(this.a);
+    bakx.a(this.this$0).p(this.a);
   }
 }
 

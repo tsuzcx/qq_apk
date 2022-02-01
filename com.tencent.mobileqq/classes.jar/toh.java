@@ -1,18 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import android.graphics.RectF;
+import com.tencent.biz.pubaccount.readinjoy.view.ucrop.GestureCropImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ucrop.UCropView;
 
-class toh
-  implements ote
+public class toh
+  implements tok
 {
-  toh(toc paramtoc) {}
+  public toh(UCropView paramUCropView) {}
   
-  public void onViewCreated(boolean paramBoolean)
+  public void a(RectF paramRectF)
   {
-    toc.a(this.a).d();
+    UCropView.a(this.a).setCropRect(paramRectF);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     toh
  * JD-Core Version:    0.7.0.1
  */

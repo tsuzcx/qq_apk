@@ -1,22 +1,35 @@
-import android.text.TextUtils.EllipsizeCallback;
-import android.widget.TextView;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.mobileqq.text.QQText;
-
-final class bdyl
-  implements TextUtils.EllipsizeCallback
+public class bdyl
+  extends bdyd
 {
-  bdyl(bdym parambdym, String paramString) {}
+  private float d;
+  private float e;
   
-  public void ellipsized(int paramInt1, int paramInt2)
+  public bdyl(int paramInt, float paramFloat1, float paramFloat2)
   {
-    if (paramInt1 == paramInt2)
-    {
-      this.jdField_a_of_type_Bdym.c.setText(this.jdField_a_of_type_JavaLangString);
-      return;
+    super(paramInt, 2, 0);
+    this.d = paramFloat1;
+    this.e = paramFloat2;
+  }
+  
+  protected void a(int paramInt, float paramFloat)
+  {
+    this.jdField_c_of_type_Float = (this.d + (this.e - this.d) * paramFloat);
+    if (this.e - this.d > 0.0F) {
+      if (this.jdField_c_of_type_Float >= this.e) {
+        this.jdField_c_of_type_Float = this.e;
+      }
     }
-    String str = this.jdField_a_of_type_JavaLangString.substring(0, paramInt1);
-    this.jdField_a_of_type_Bdym.c.setText(new QQText(HttpUtil.unEscape(HttpUtil.removeHtmlTags(str + "...")), 3, 14));
+    for (;;)
+    {
+      if (paramInt >= this.jdField_c_of_type_Int) {
+        this.jdField_c_of_type_Float = this.e;
+      }
+      super.a(paramInt, paramFloat);
+      return;
+      if (this.jdField_c_of_type_Float <= this.e) {
+        this.jdField_c_of_type_Float = this.e;
+      }
+    }
   }
 }
 

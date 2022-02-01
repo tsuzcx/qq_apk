@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import sek;
-import sen;
+import sqp;
+import sqs;
 
 public class VideoVolumeControl$VolumeReceiver$1
   implements Runnable
 {
-  public VideoVolumeControl$VolumeReceiver$1(sen paramsen) {}
+  public VideoVolumeControl$VolumeReceiver$1(sqs paramsqs) {}
   
   public void run()
   {
-    sek.d(this.a.a, false);
+    sqp.d(this.a.a, false);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.device;
 
-import aara;
+import abgm;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -13,12 +13,13 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Environment;
 import android.text.TextUtils;
-import bfpx;
-import bfvo;
-import bhpc;
+import bgyo;
+import bheg;
+import bizw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.device.datadef.DeviceInfo;
 import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.transfile.TlsSniSocketFactory;
 import com.tencent.mobileqq.util.SystemUtil;
@@ -28,7 +29,7 @@ import com.tencent.theme.SkinnableBitmapDrawable;
 import java.io.File;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
-import npn;
+import nwo;
 import org.apache.http.conn.params.ConnManagerParams;
 import org.apache.http.conn.scheme.PlainSocketFactory;
 import org.apache.http.conn.scheme.Scheme;
@@ -43,8 +44,8 @@ public class DeviceHeadMgr
 {
   private static final String PREF_NAME = "sd_http_lastmodify";
   private static final String TAG = "SDHeadImage";
-  protected static final String URI_DEVICE_ICON_FORMAT = "http://i.gtimg.cn/open/device_icon/%s/%s/%s/%s/%s.png";
-  protected static final String URI_DEVICE_ICON_FORMAT_SHORTCUT = "http://i.gtimg.cn/open/device_icon/%s/%s/%s/%s/%s_mark.png";
+  protected static final String URI_DEVICE_ICON_FORMAT = "https://i.gtimg.cn/open/device_icon/%s/%s/%s/%s/%s.png";
+  protected static final String URI_DEVICE_ICON_FORMAT_SHORTCUT = "https://i.gtimg.cn/open/device_icon/%s/%s/%s/%s/%s_mark.png";
   private static DeviceHeadMgr instance;
   private HashMap<Integer, Object> mDeviceHeadMap;
   private HashMap<Integer, Bitmap> mDeviceOriginalHeadMap;
@@ -61,7 +62,7 @@ public class DeviceHeadMgr
     for (String str = "00000000" + paramString;; str = paramString)
     {
       str = str.substring(str.length() - 8);
-      return String.format("http://i.gtimg.cn/open/device_icon/%s/%s/%s/%s/%s.png", new Object[] { str.substring(0, 2), str.substring(2, 4), str.substring(4, 6), str.substring(6, 8), paramString });
+      return String.format("https://i.gtimg.cn/open/device_icon/%s/%s/%s/%s/%s.png", new Object[] { str.substring(0, 2), str.substring(2, 4), str.substring(4, 6), str.substring(6, 8), paramString });
     }
   }
   
@@ -77,7 +78,7 @@ public class DeviceHeadMgr
   
   private String getLastModified(String paramString)
   {
-    return bhpc.a().a().getSharedPreferences("sd_http_lastmodify", 0).getString(paramString, "");
+    return bizw.a().a().getSharedPreferences("sd_http_lastmodify", 0).getString(paramString, "");
   }
   
   public static String getLogoIconUrl(String paramString)
@@ -89,7 +90,7 @@ public class DeviceHeadMgr
     for (String str = "00000000" + paramString;; str = paramString)
     {
       str = str.substring(str.length() - 8);
-      return String.format("http://i.gtimg.cn/open/device_icon/%s/%s/%s/%s/%s_mark.png", new Object[] { str.substring(0, 2), str.substring(2, 4), str.substring(4, 6), str.substring(6, 8), paramString });
+      return String.format("https://i.gtimg.cn/open/device_icon/%s/%s/%s/%s/%s_mark.png", new Object[] { str.substring(0, 2), str.substring(2, 4), str.substring(4, 6), str.substring(6, 8), paramString });
     }
   }
   
@@ -106,7 +107,7 @@ public class DeviceHeadMgr
       HttpConnectionParams.setConnectionTimeout(localBasicHttpParams, 30000);
       HttpConnectionParams.setSoTimeout(localBasicHttpParams, 30000);
       this.sHttpClient = new DefaultHttpClient(new ThreadSafeClientConnManager(new BasicHttpParams(), localSchemeRegistry), null);
-      npn.a(this.mStrCachePath);
+      nwo.a(this.mStrCachePath);
       if (SystemUtil.isExistSDCard()) {}
       for (this.mStrCachePath = AppConstants.DEVICE_HEAD_PATH;; this.mStrCachePath = "/data/data/com.tencent.mobileqq/files/head/_dhd/")
       {
@@ -130,7 +131,7 @@ public class DeviceHeadMgr
   
   private void saveLastModified(String paramString1, String paramString2)
   {
-    SharedPreferences.Editor localEditor = bhpc.a().a().getSharedPreferences("sd_http_lastmodify", 0).edit();
+    SharedPreferences.Editor localEditor = bizw.a().a().getSharedPreferences("sd_http_lastmodify", 0).edit();
     localEditor.putString(paramString1, paramString2);
     localEditor.commit();
   }
@@ -525,7 +526,7 @@ public class DeviceHeadMgr
   
   public Bitmap getDeviceHeadByDin(String paramString)
   {
-    paramString = ((aara)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(51)).a(Long.parseLong(paramString));
+    paramString = ((abgm)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(Long.parseLong(paramString));
     if (paramString == null) {
       return getDeviceHeadByPID(0);
     }
@@ -550,7 +551,7 @@ public class DeviceHeadMgr
       }
       try
       {
-        ??? = BitmapFactory.decodeResource(BaseApplication.getContext().getResources(), 2130839606);
+        ??? = BitmapFactory.decodeResource(BaseApplication.getContext().getResources(), 2130839627);
         return ???;
       }
       catch (OutOfMemoryError localOutOfMemoryError)
@@ -565,7 +566,7 @@ public class DeviceHeadMgr
     }
     else
     {
-      Bitmap localBitmap1 = bfpx.a(str);
+      Bitmap localBitmap1 = bgyo.a(str);
       AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
       if (!this.mDownedDevicePid.containsKey(Integer.valueOf(paramInt)))
       {
@@ -597,10 +598,10 @@ public class DeviceHeadMgr
           if (localBitmap1 != null) {
             return ???;
           }
-          return bfpx.a(BaseApplication.getContext().getResources(), 2130839606);
+          return bgyo.a(BaseApplication.getContext().getResources(), 2130839627);
           new Thread(new DeviceHeadMgr.2(this, (String)???, str, paramInt)).start();
           break;
-          localBitmap1 = bfvo.c(localBitmap1, 50, 50);
+          localBitmap1 = bheg.c(localBitmap1, 50, 50);
         }
       }
     }
@@ -611,18 +612,18 @@ public class DeviceHeadMgr
   {
     if (AppConstants.SMARTDEVICE_SEARCH_UIN.equals(paramString))
     {
-      paramString = bfpx.a(BaseApplication.getContext().getResources(), 2130839608);
+      paramString = bgyo.a(BaseApplication.getContext().getResources(), 2130839629);
       return new BitmapDrawable(BaseApplication.getContext().getResources(), paramString);
     }
     long l = Long.parseLong(paramString);
-    DeviceInfo localDeviceInfo = ((aara)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(51)).a(Long.valueOf(l).longValue());
+    DeviceInfo localDeviceInfo = ((abgm)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(Long.valueOf(l).longValue());
     Bitmap localBitmap = null;
     if (localDeviceInfo != null)
     {
       localBitmap = getDeviceHeadByPID(localDeviceInfo.productId);
       if (isLostQfindDevice(paramString))
       {
-        paramString = BaseApplication.getContext().getResources().getDrawable(2130839605);
+        paramString = BaseApplication.getContext().getResources().getDrawable(2130839626);
         if ((paramString instanceof SkinnableBitmapDrawable)) {
           ((SkinnableBitmapDrawable)paramString).setGravity(119);
         }
@@ -641,13 +642,13 @@ public class DeviceHeadMgr
   
   public Bitmap getDeviceHeadSD(int paramInt)
   {
-    return bfpx.a(this.mStrCachePath + paramInt);
+    return bgyo.a(this.mStrCachePath + paramInt);
   }
   
   public Bitmap getDeviceWithLogoByPid(int paramInt)
   {
     if (paramInt == 9971) {
-      ??? = bfpx.a(BaseApplication.getContext().getResources(), 2130839609);
+      ??? = bgyo.a(BaseApplication.getContext().getResources(), 2130839630);
     }
     for (;;)
     {
@@ -659,7 +660,7 @@ public class DeviceHeadMgr
         if (localBitmap != null) {
           continue;
         }
-        localBitmap = bfpx.a(this.mStrCachePath + String.valueOf(paramInt) + "_mark");
+        localBitmap = bgyo.a(this.mStrCachePath + String.valueOf(paramInt) + "_mark");
         ??? = localBitmap;
         if (localBitmap != null) {
           continue;
@@ -669,14 +670,14 @@ public class DeviceHeadMgr
         if (localBitmap != null) {
           continue;
         }
-        return bfpx.a(BaseApplication.getContext().getResources(), 2130839606);
+        return bgyo.a(BaseApplication.getContext().getResources(), 2130839627);
       }
     }
   }
   
   public boolean isLostQfindDevice(String paramString)
   {
-    return ((aara)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(51)).a(Long.parseLong(paramString));
+    return ((abgm)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(Long.parseLong(paramString));
   }
 }
 

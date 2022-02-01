@@ -1,194 +1,154 @@
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.os.Bundle;
+import android.graphics.Bitmap;
 import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.miniapp.ui.MiniAppActivity;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qg.qq.QGameApp.1;
-import com.tencent.qg.qq.QGameApp.3;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.IEventReceiver;
-import java.io.File;
-import org.json.JSONObject;
+import android.os.Looper;
+import android.os.Message;
+import android.view.ViewGroup;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
+import java.util.HashMap;
 
 public class bilj
-  extends avrl
-  implements IEventReceiver
+  implements FaceDecoder.DecodeTaskCompletionListener
 {
-  public static volatile boolean a;
-  private bill a;
+  aapg jdField_a_of_type_Aapg = (aapg)aapg.jdField_a_of_type_JavaUtilHashMap.get("Werewolves.apk");
+  public aiav a;
+  Handler jdField_a_of_type_AndroidOsHandler = new bilk(this, Looper.getMainLooper());
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  bili jdField_a_of_type_Bili;
+  public FaceDecoder a;
+  public String a;
   
-  public bilj(MiniAppActivity paramMiniAppActivity, String paramString, int paramInt)
+  public bilj(String paramString)
   {
-    super(paramMiniAppActivity, paramString, paramInt);
-  }
-  
-  public static String a(Context paramContext, String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return paramContext.getCacheDir().getAbsolutePath();
+    if (this.jdField_a_of_type_Aapg == null) {
+      this.jdField_a_of_type_Aapg = new aapg("2584", "Werewolves.apk");
     }
-    return paramContext.getCacheDir().getAbsolutePath() + File.separator + paramString;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public static String a(Context paramContext, String paramString1, String paramString2)
+  public bili a()
   {
-    if (TextUtils.isEmpty(paramString2)) {
-      return a(paramContext, paramString1);
+    return this.jdField_a_of_type_Bili;
+  }
+  
+  public String a(String paramString)
+  {
+    if (this.jdField_a_of_type_Bili != null) {
+      return this.jdField_a_of_type_Bili.a(paramString);
     }
-    return a(paramContext, paramString1) + File.separator + paramString2;
-  }
-  
-  private String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return "";
-      paramString = new File(paramString);
-    } while ((!paramString.exists()) || (paramString.length() <= 0L));
-    try
-    {
-      paramString = new JSONObject(FileUtils.readFileToString(paramString)).optString("version");
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return "";
-  }
-  
-  public static String a(String paramString1, String paramString2, String paramString3)
-  {
-    String str = paramString1;
-    if (!TextUtils.isEmpty(paramString2)) {
-      str = paramString1 + File.separator + paramString2;
-    }
-    paramString1 = str;
-    if (!TextUtils.isEmpty(paramString3)) {
-      paramString1 = str + File.separator + paramString3;
-    }
-    return paramString1;
-  }
-  
-  private void a(int paramInt)
-  {
-    QLog.e("QGameApp", 1, new Object[] { "dispatchAppInitFailed. errorCode=", Integer.valueOf(paramInt) });
-    avrn localavrn = new avrn();
-    localavrn.jdField_a_of_type_Int = 4;
-    localavrn.jdField_a_of_type_Avro = this.jdField_a_of_type_Avro;
-    vli.a().dispatch("MiniAppManager", localavrn);
-  }
-  
-  private void a(boolean paramBoolean, String paramString)
-  {
-    ThreadManagerV2.excute(new QGameApp.3(this, paramBoolean, paramString), 64, null, true);
-  }
-  
-  private boolean a(boolean paramBoolean, String paramString)
-  {
-    boolean bool = false;
-    String str1;
-    String str2;
-    if (!paramBoolean)
-    {
-      str1 = a(a(this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity, "qgamelibs", "libsconfig.json"));
-      str2 = a(a(paramString, "", "libsconfig.json"));
-      if ((!TextUtils.isEmpty(str2)) && (str2.equals(str1))) {
-        paramBoolean = true;
-      }
-    }
-    do
-    {
-      return paramBoolean;
-      str1 = a(paramString, "qgamelibs", "");
-      str2 = a(this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity, "qgamelibs") + File.separator;
-      FileUtils.deleteFilesInDirectory(str2);
-      paramBoolean = bool;
-    } while (FileUtils.copyDirectory(str1, str2, false) < 0);
-    return FileUtils.copyFile(a(paramString, "", "libsconfig.json"), a(this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity, "qgamelibs", "libsconfig.json"));
-  }
-  
-  private String[] a()
-  {
-    String str3 = this.jdField_a_of_type_Avro.a.getString("unzipped_path");
-    String str2 = a(this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity, "qgamelibs", "ejecta.js");
-    String str1 = null;
-    if (!TextUtils.isEmpty(str3)) {
-      str1 = a(str3, this.jdField_a_of_type_Avro.h, "index.js");
-    }
-    return new String[] { str2, str1 };
-  }
-  
-  @SuppressLint({"UnsafeDynamicallyLoadedCode"})
-  private boolean b()
-  {
-    int i = 0;
-    if (!jdField_a_of_type_Boolean)
-    {
-      Object localObject = new File(a(this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity, "qgamelibs"));
-      if (!((File)localObject).isDirectory()) {}
-      do
-      {
-        return false;
-        localObject = ((File)localObject).listFiles(new bilk(this));
-      } while ((localObject == null) || (localObject.length == 0));
-      int j = localObject.length;
-      while (i < j)
-      {
-        System.load(localObject[i].getAbsolutePath());
-        i += 1;
-      }
-      jdField_a_of_type_Boolean = true;
-    }
-    return true;
-  }
-  
-  private void d()
-  {
-    ThreadManagerV2.getUIHandlerV2().postDelayed(new QGameApp.1(this), 1000L);
+    return null;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity != null)
+    if (!this.jdField_a_of_type_Aapg.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Bill = new bill(this);
-      vli.a().registerSubscriber(this.jdField_a_of_type_Bill);
-      avrm localavrm = avrt.a().a("ak:3214");
-      if (localavrm != null) {
-        localavrm.a("ak:3214", "QGameApp", this.jdField_a_of_type_Avro.h);
-      }
+      this.jdField_a_of_type_Aapg.a(false);
+      return;
     }
+    if (this.jdField_a_of_type_Bili == null) {
+      this.jdField_a_of_type_Bili = new bili(this, this.jdField_a_of_type_Aapg.jdField_a_of_type_JavaLangClassLoader);
+    }
+    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+    localMessage.arg1 = 0;
+    localMessage.sendToTarget();
+  }
+  
+  public void a(aiav paramaiav)
+  {
+    if (this.jdField_a_of_type_Aiav != paramaiav) {}
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_Bili != null) {
+        this.jdField_a_of_type_Bili.b();
+      }
+      if (this.jdField_a_of_type_AndroidViewViewGroup != null)
+      {
+        this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
+        this.jdField_a_of_type_AndroidViewViewGroup = null;
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder != null) {
+        this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.destory();
+      }
+    } while (this.jdField_a_of_type_Aapg == null);
+    this.jdField_a_of_type_Aapg.jdField_a_of_type_Aapf = null;
+  }
+  
+  public void a(ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
+    this.jdField_a_of_type_Bili.a(paramViewGroup, this.jdField_a_of_type_Aapg.jdField_a_of_type_Aapf);
+  }
+  
+  public void a(BaseActivity paramBaseActivity, aiav paramaiav)
+  {
+    this.jdField_a_of_type_Aiav = paramaiav;
+    this.jdField_a_of_type_Aapg.a(paramBaseActivity);
+    if (this.jdField_a_of_type_Bili != null)
+    {
+      this.jdField_a_of_type_Bili.a();
+      this.jdField_a_of_type_Bili.a(this.jdField_a_of_type_Aapg.jdField_a_of_type_Aapf);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder = new FaceDecoder((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.setDecodeTaskCompletionListener(this);
+      return;
+      this.jdField_a_of_type_Bili = new bili(this, this.jdField_a_of_type_Aapg.jdField_a_of_type_JavaLangClassLoader);
+    }
+  }
+  
+  public void a(String paramString, byte[] paramArrayOfByte)
+  {
+    if (this.jdField_a_of_type_Bili == null) {
+      return;
+    }
+    this.jdField_a_of_type_Bili.a(paramString, paramArrayOfByte);
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity != null;
+    return this.jdField_a_of_type_Aapg.jdField_a_of_type_Boolean;
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity.finish();
+    if (this.jdField_a_of_type_Bili != null) {
+      this.jdField_a_of_type_Bili.a();
+    }
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null)
+    {
+      this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
+      this.jdField_a_of_type_AndroidViewViewGroup = null;
+    }
+    this.jdField_a_of_type_Aiav = null;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.destory();
+    }
+    if (this.jdField_a_of_type_Aapg != null) {
+      this.jdField_a_of_type_Aapg.c();
     }
   }
   
-  public void c()
+  public boolean b()
   {
-    super.c();
-    if (this.jdField_a_of_type_Bill != null) {
-      vli.a().unRegisterSubscriber(this.jdField_a_of_type_Bill);
+    if (this.jdField_a_of_type_Bili == null) {}
+    while ((this.jdField_a_of_type_Bili != null) && (this.jdField_a_of_type_Bili.a())) {
+      return true;
     }
+    return false;
   }
   
-  public boolean isValidate()
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    return true;
+    if ((this.jdField_a_of_type_Bili != null) && ((paramInt2 == 32) || (paramInt2 == 1))) {
+      this.jdField_a_of_type_Bili.a(paramString, paramBitmap);
+    }
   }
 }
 

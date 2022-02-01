@@ -1,10 +1,19 @@
-import com.tencent.mobileqq.apollo.view.ApolloPanelGuideView;
+import android.content.Context;
 
-public abstract interface amnc
+public class amnc
 {
-  public abstract void a(ApolloPanelGuideView paramApolloPanelGuideView);
+  public int a;
+  public Context a;
+  public int b;
   
-  public abstract void b(ApolloPanelGuideView paramApolloPanelGuideView);
+  public amnc() {}
+  
+  public amnc(Context paramContext, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
 }
 
 

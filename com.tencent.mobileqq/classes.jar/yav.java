@@ -1,18 +1,23 @@
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
-import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity.2.1;
-import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
+import android.content.Context;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
 public class yav
-  implements wxe
+  extends yjv
 {
-  public yav(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
-  
-  public void a_(wwz paramwwz)
+  public yav(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    xvv.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "video prrepared completed!");
-    LocalVideoSelectActivity.a(this.a).c();
-    LocalVideoSelectActivity.a(this.a).postDelayed(new LocalVideoSelectActivity.2.1(this), 300L);
+    super(paramContext, paramString1, paramString2, paramInt1, paramInt2);
+  }
+  
+  protected void Q_()
+  {
+    zgz localzgz = a().a("FeedSegment");
+    if ((localzgz != null) && (localzgz.a() == 0))
+    {
+      this.a = true;
+      return;
+    }
+    this.a = false;
   }
 }
 

@@ -1,53 +1,11 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
-
-public class atxk
-  extends atxg
+class atxk
+  implements asze
 {
-  private ImageView b;
-  private TextView d;
-  private TextView e;
+  atxk(atxi paramatxi) {}
   
-  public atxk(Context paramContext, View paramView, ViewGroup paramViewGroup)
+  public void a(long paramLong)
   {
-    super(paramContext, paramView, paramViewGroup);
-    paramContext = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559203, paramViewGroup, false);
-    if (paramContext != null) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(paramContext);
-    }
-    this.b = ((ImageView)paramContext.findViewById(2131368564));
-    this.d = ((TextView)paramContext.findViewById(2131379855));
-    this.e = ((TextView)paramContext.findViewById(2131379719));
-  }
-  
-  public void a(FeedsItemData paramFeedsItemData)
-  {
-    super.a(paramFeedsItemData);
-    this.e.setText(paramFeedsItemData.title + "");
-    if (TextUtils.isEmpty(paramFeedsItemData.subTitle)) {
-      this.d.setVisibility(8);
-    }
-    for (;;)
-    {
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = this.itemView.getResources().getDrawable(2130846989);
-      localURLDrawableOptions.mFailedDrawable = this.itemView.getResources().getDrawable(2130846989);
-      paramFeedsItemData = URLDrawable.getDrawable(paramFeedsItemData.coverImgUrl, localURLDrawableOptions);
-      this.b.setImageDrawable(paramFeedsItemData);
-      return;
-      this.d.setVisibility(0);
-      this.d.setText(paramFeedsItemData.subTitle + "");
-    }
+    atxi.a(this.a, paramLong);
   }
 }
 

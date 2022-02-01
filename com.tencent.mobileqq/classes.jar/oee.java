@@ -1,24 +1,88 @@
-import com.tencent.biz.pubaccount.QualityReporter.1;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import tencent.im.oidb.cc_sso_report_svr.cc_sso_report_svr.ReportInfoReq;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.view.View;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
+import com.tencent.biz.pubaccount.Advertisement.fragment.WebpageFragment;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class oee
+  extends Handler
 {
-  public static void a(rdt paramrdt)
+  public oee(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity, Looper paramLooper)
   {
-    ThreadManager.excute(new QualityReporter.1(paramrdt), 16, null, true);
+    super(paramLooper);
   }
   
-  private static void b(cc_sso_report_svr.ReportInfoReq paramReportInfoReq)
+  public void handleMessage(Message paramMessage)
   {
-    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), odw.class);
-    localNewIntent.putExtra("cmd", "FeedsContentCenter.QualityReport");
-    localNewIntent.putExtra("data", paramReportInfoReq.toByteArray());
-    localNewIntent.setObserver(new oef(localNewIntent));
-    pay.a().startServlet(localNewIntent);
+    boolean bool = true;
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            int i;
+            do
+            {
+              do
+              {
+                return;
+                i = paramMessage.arg1;
+              } while (PublicAccountAdvertisementActivity.a(this.a) == null);
+              PublicAccountAdvertisementActivity.a(this.a).a(i);
+              if ((i > 0) && (i < 100))
+              {
+                PublicAccountAdvertisementActivity.a(this.a).c(true);
+                return;
+              }
+            } while (i != 100);
+            PublicAccountAdvertisementActivity.a(this.a).c(false);
+            return;
+            switch (paramMessage.arg1)
+            {
+            case 201: 
+            case 202: 
+            case 203: 
+            default: 
+              this.a.a(2131689545);
+              return;
+            case -24: 
+              this.a.b(this.a.getString(2131689543));
+              return;
+            }
+            this.a.a(2131689546);
+            return;
+            this.a.b(this.a.getString(2131689544));
+            return;
+          } while (PublicAccountAdvertisementActivity.a(this.a) == null);
+          VideoCoverFragment localVideoCoverFragment = PublicAccountAdvertisementActivity.a(this.a);
+          if (paramMessage.arg1 == 1) {}
+          for (;;)
+          {
+            localVideoCoverFragment.c(bool);
+            return;
+            bool = false;
+          }
+        } while (!this.a.isResume());
+        paramMessage = this.a.getSupportFragmentManager().beginTransaction();
+        PublicAccountAdvertisementActivity.a(this.a, WebpageFragment.a(this.a.getIntent()));
+        PublicAccountAdvertisementActivity.a(this.a).a(PublicAccountAdvertisementActivity.a(this.a));
+        paramMessage.add(2131381403, PublicAccountAdvertisementActivity.a(this.a));
+        paramMessage.commit();
+      } while (!ThemeUtil.isInNightMode(this.a.getAppRuntime()));
+      paramMessage = this.a.findViewById(2131371990);
+    } while (paramMessage == null);
+    paramMessage.setVisibility(0);
   }
 }
 

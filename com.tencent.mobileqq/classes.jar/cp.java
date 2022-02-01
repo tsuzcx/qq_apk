@@ -9,9 +9,9 @@ import java.util.Iterator;
 import java.util.List;
 
 public class cp
-  implements aszj
+  implements audq
 {
-  public cp(LiteMutiPicViewerActivity paramLiteMutiPicViewerActivity, amqd paramamqd) {}
+  public cp(LiteMutiPicViewerActivity paramLiteMutiPicViewerActivity, ansr paramansr) {}
   
   public void onNo() {}
   
@@ -70,10 +70,10 @@ public class cp
       }
     }
     if ((localObject2 != null) && (localObject2.size() > 0)) {
-      this.jdField_a_of_type_Amqd.a(localObject2, true);
+      this.jdField_a_of_type_Ansr.a(localObject2, true);
     }
     if ((localObject1 != null) && (localObject1.size() > 0)) {
-      this.jdField_a_of_type_Amqd.a(localObject1);
+      this.jdField_a_of_type_Ansr.a(localObject1);
     }
     LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity);
   }

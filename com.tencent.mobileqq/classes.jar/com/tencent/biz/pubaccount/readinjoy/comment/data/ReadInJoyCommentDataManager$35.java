@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.comment.data;
 
-import ouu;
-import owd;
-import owg;
+import pdv;
+import pfe;
+import pfh;
 
 public class ReadInJoyCommentDataManager$35
   implements Runnable
 {
-  public ReadInJoyCommentDataManager$35(ouu paramouu, owd paramowd, owg paramowg) {}
+  public ReadInJoyCommentDataManager$35(pdv parampdv, pfe parampfe, pfh parampfh) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Owd.a(this.jdField_a_of_type_Owg);
+    this.jdField_a_of_type_Pfe.a(this.jdField_a_of_type_Pfh);
   }
 }
 

@@ -1,34 +1,36 @@
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class txf
+final class txf
+  implements DialogInterface.OnClickListener
 {
-  public static ConcurrentHashMap<Integer, Object> a = new ConcurrentHashMap();
+  txf(JSONObject paramJSONObject, BridgeModule paramBridgeModule, String paramString) {}
   
-  public static Object a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (a.containsKey(Integer.valueOf(paramInt))) {
-      return a.get(Integer.valueOf(paramInt));
-    }
-    return null;
-  }
-  
-  public static void a(int paramInt)
-  {
-    a.remove(Integer.valueOf(paramInt));
-  }
-  
-  public static void a(int paramInt, Object paramObject)
-  {
-    if (paramObject == null) {
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new JSONObject();
+    try
+    {
+      paramDialogInterface.put("button", 1);
+      paramDialogInterface.put("buttonText", this.jdField_a_of_type_OrgJsonJSONObject.optString("okBtnText", ""));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
       return;
     }
-    a.remove(Integer.valueOf(paramInt));
-    a.put(Integer.valueOf(paramInt), paramObject);
+    catch (JSONException paramDialogInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("BridgeModuleHelper", 2, "showDialog error" + paramDialogInterface.getMessage());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     txf
  * JD-Core Version:    0.7.0.1
  */

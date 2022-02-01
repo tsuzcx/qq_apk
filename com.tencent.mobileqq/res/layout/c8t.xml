@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<dov.com.qq.im.aeeditor.lyric.widget.LyricViewScroll android:id="@id/l37" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:paddingTop="7.0dip" android:paddingBottom="7.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <dov.com.qq.im.aeeditor.lyric.widget.LyricViewInternalSingleLine android:id="@id/l36" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="1.0dip" />
-    </FrameLayout>
-</dov.com.qq.im.aeeditor.lyric.widget.LyricViewScroll>
+    <View android:id="@id/o27" android:background="@drawable/bi6" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/myi" android:layout_width="@dimen/bb0" android:layout_height="@dimen/bb0" android:src="@drawable/bi4" android:scaleType="centerInside" android:layout_centerInParent="true" />
+</RelativeLayout>

@@ -1,6 +1,12 @@
+import android.os.Bundle;
+
 public abstract interface bhpn
 {
-  public abstract void a();
+  public abstract void a(int paramInt, Bundle paramBundle);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

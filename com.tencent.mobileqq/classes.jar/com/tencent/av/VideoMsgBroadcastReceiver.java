@@ -8,11 +8,11 @@ import android.text.TextUtils;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import lbt;
-import lcv;
+import lby;
+import lda;
 import mqq.app.AccountNotMatchException;
 import mqq.app.MobileQQ;
-import mtt;
+import mur;
 
 public class VideoMsgBroadcastReceiver
   extends BroadcastReceiver
@@ -29,11 +29,12 @@ public class VideoMsgBroadcastReceiver
       QLog.w("VideoMsgBroadcastReceiver", 1, "onReceive, intent or context is null!");
     }
     String str3;
-    Object localObject1;
+    Object localObject;
     do
     {
       do
       {
+        Bundle localBundle;
         String str1;
         boolean bool;
         do
@@ -46,15 +47,15 @@ public class VideoMsgBroadcastReceiver
             do
             {
               return;
-              localObject2 = paramIntent.getExtras();
-              if (localObject2 == null)
+              localBundle = paramIntent.getExtras();
+              if (localBundle == null)
               {
                 QLog.d("VideoMsgBroadcastReceiver", 1, "onReceive data is null!");
                 return;
               }
-              paramContext = ((Bundle)localObject2).getString("uin");
-              str1 = ((Bundle)localObject2).getString("fromUin");
-              String str2 = ((Bundle)localObject2).getString("gatewayip");
+              paramContext = localBundle.getString("uin");
+              str1 = localBundle.getString("fromUin");
+              String str2 = localBundle.getString("gatewayip");
               if (paramContext == null)
               {
                 QLog.d("VideoMsgBroadcastReceiver", 1, "onReceive uin is null!");
@@ -69,8 +70,8 @@ public class VideoMsgBroadcastReceiver
               QLog.d("VideoMsgBroadcastReceiver", 1, "onReceive Recv uin = " + paramContext + " action " + str3);
               try
               {
-                localObject1 = MobileQQ.sMobileQQ;
-                if (localObject1 == null)
+                localObject = MobileQQ.sMobileQQ;
+                if (localObject == null)
                 {
                   QLog.d("VideoMsgBroadcastReceiver", 1, "onReceive mobileQQ is null!");
                   return;
@@ -80,7 +81,7 @@ public class VideoMsgBroadcastReceiver
               {
                 QLog.d("VideoMsgBroadcastReceiver", 1, "onReceive Account not match: uin = " + paramContext);
                 return;
-                localVideoAppInterface = (VideoAppInterface)((MobileQQ)localObject1).getAppRuntime(paramContext);
+                localVideoAppInterface = (VideoAppInterface)((MobileQQ)localObject).getAppRuntime(paramContext);
                 if (localVideoAppInterface == null)
                 {
                   QLog.d("VideoMsgBroadcastReceiver", 1, "onReceive app is null!");
@@ -92,16 +93,16 @@ public class VideoMsgBroadcastReceiver
                 QLog.d("VideoMsgBroadcastReceiver", 1, "onReceive Exception Account not match: uin = " + paramContext + "app == null", paramIntent);
                 return;
               }
-              localObject1 = localVideoAppInterface.a();
+              localObject = localVideoAppInterface.a();
               if (str2 != null) {
-                ((VideoController)localObject1).h(str2, 0);
+                ((VideoController)localObject).h(str2, 0);
               }
               if (!str3.equals("com.tencent.av.ui.VChatActivity")) {
                 break;
               }
-              i = ((Bundle)localObject2).getInt("source");
-              j = ((Bundle)localObject2).getInt("type");
-              l1 = ((Bundle)localObject2).getLong("processExitTimestamp");
+              i = localBundle.getInt("source");
+              j = localBundle.getInt("type");
+              l1 = localBundle.getLong("processExitTimestamp");
               QLog.d("VideoMsgBroadcastReceiver", 1, String.format("onReceive ACTION_AWAKE_PROCESS source=%s type=%s processExitTimestamp=%s sHasRecoverLastCall=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Long.valueOf(l1), Boolean.valueOf(b) }));
               if (a) {
                 localVideoAppInterface.b(true);
@@ -116,25 +117,25 @@ public class VideoMsgBroadcastReceiver
           if (!str3.equals("tencent.video.q2v.RecvSharpVideoCall")) {
             break;
           }
-          l1 = ((Bundle)localObject2).getLong("onLineStatus");
-          bool = ((Bundle)localObject2).getBoolean("isRequest");
+          l1 = localBundle.getLong("onLineStatus");
+          bool = localBundle.getBoolean("isRequest");
           QLog.d("VideoMsgBroadcastReceiver", 1, "avideo receiveSharpVideoOfflineMsg:" + l1 + "|" + bool);
-          ((VideoController)localObject1).a.b((Bundle)localObject2);
+          ((VideoController)localObject).a.b(localBundle);
         } while (!bool);
-        ((VideoController)localObject1).b(201, str1);
-        if (((VideoController)localObject1).a() == 0)
+        ((VideoController)localObject).b(201, str1);
+        if (((VideoController)localObject).a() == 0)
         {
-          ((VideoController)localObject1).b(207, str1);
+          ((VideoController)localObject).b(207, str1);
           return;
         }
-        ((VideoController)localObject1).b(206, str1);
+        ((VideoController)localObject).b(206, str1);
         return;
         if (str3.equals("tencent.video.q2v.RecvMultiVideoCall"))
         {
           if (QLog.isColorLevel()) {
             QLog.d("VideoMsgBroadcastReceiver", 2, "receiveMultiVideoOfflineMsg");
           }
-          ((VideoController)localObject1).a.c((Bundle)localObject2);
+          ((VideoController)localObject).a.c(localBundle);
           return;
         }
         if (!str3.equals("tencent.video.q2v.RecvBaseIMSharpMsg")) {
@@ -143,19 +144,19 @@ public class VideoMsgBroadcastReceiver
         paramContext = paramIntent.getBundleExtra("msgData");
         QLog.d("VideoMsgBroadcastReceiver", 1, "RecvBaseIMSharpMsg:" + paramContext);
       } while (paramContext == null);
-      Object localObject2 = paramContext.getByteArray("value");
+      paramContext = paramContext.getByteArray("value");
       l1 = paramIntent.getLongExtra("tinyid", 0L);
       paramIntent = new Bundle();
-      paramIntent.putByteArray("buffer", (byte[])localObject2);
+      paramIntent.putByteArray("buffer", paramContext);
       paramIntent.putLong("tiny_id", l1);
-      ((VideoController)localObject1).a.a(paramContext);
+      ((VideoController)localObject).a.a(paramIntent);
       return;
     } while (!str3.equals("tencent.video.q2v.sendQueryRoomInfoRequest"));
     long l1 = paramIntent.getLongExtra("roomId", 0L);
     long l2 = paramIntent.getLongExtra("peerUin", 0L);
-    long l3 = mtt.a(paramIntent);
+    long l3 = mur.a(paramIntent);
     QLog.w("VideoMsgBroadcastReceiver", 1, "QueryRoomInfo.receive, roomId[" + l1 + "], peerUin[" + l2 + "], seq[" + l3 + "]");
-    ((VideoController)localObject1).c(l1, l2);
+    ((VideoController)localObject).c(l1, l2);
   }
 }
 

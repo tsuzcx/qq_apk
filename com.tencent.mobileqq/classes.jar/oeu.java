@@ -1,18 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.LikeActionDownloadBar;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
+import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
 
-public final class oeu
-  implements Parcelable.Creator<VideoInfo.LikeActionDownloadBar>
+public class oeu
+  implements View.OnTouchListener
 {
-  public VideoInfo.LikeActionDownloadBar a(Parcel paramParcel)
-  {
-    return new VideoInfo.LikeActionDownloadBar(paramParcel);
-  }
+  public oeu(VideoCoverFragment paramVideoCoverFragment) {}
   
-  public VideoInfo.LikeActionDownloadBar[] a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new VideoInfo.LikeActionDownloadBar[paramInt];
+    if (paramMotionEvent.getAction() == 0)
+    {
+      VideoCoverFragment.a(this.a).b();
+      if (!this.a.a())
+      {
+        if (!VideoCoverFragment.a(this.a)) {
+          break label47;
+        }
+        this.a.a(false);
+      }
+    }
+    return false;
+    label47:
+    this.a.a(true);
+    return false;
   }
 }
 

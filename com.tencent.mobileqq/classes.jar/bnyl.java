@@ -1,17 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
 
 public class bnyl
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public bnyl(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout) {}
+  public bnyl(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a.setCenterScaleValue(f);
+    AEEditorVideoEditFragment.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mqp.app.sec;
 
-import bcef;
+import bdla;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -321,7 +321,7 @@ public class MQPSecUtil
     if (QLog.isColorLevel()) {
       QLog.d("MQPSecUtil", 2, "report_tracer:" + paramString);
     }
-    bcef.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "P_CliOper", "Safe_MQPSecUtil", "", "AntiTrace", paramString, 0, 0, "", "", "", "");
+    bdla.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "P_CliOper", "Safe_MQPSecUtil", "", "AntiTrace", paramString, 0, 0, "", "", "", "");
   }
   
   public static native boolean memchk(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte);

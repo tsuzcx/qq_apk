@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public abstract class AdProxy
 {
@@ -78,11 +79,11 @@ public abstract class AdProxy
   
   public void selectLoadingAd(Context paramContext, Bundle paramBundle, String paramString, AdProxy.ILoadingAdListener paramILoadingAdListener) {}
   
-  public void updateLoadingAdLayoutAndShow(Context paramContext, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, AdProxy.ILoadingAdListener paramILoadingAdListener) {}
+  public void updateLoadingAdLayoutAndShow(Context paramContext, MiniAppInfo paramMiniAppInfo, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, long paramLong1, long paramLong2, AdProxy.ILoadingAdListener paramILoadingAdListener) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy
  * JD-Core Version:    0.7.0.1
  */

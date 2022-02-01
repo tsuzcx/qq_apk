@@ -1,12 +1,12 @@
+import com.tencent.richmediabrowser.view.IBrowserViewHolder;
+import com.tencent.richmediabrowser.view.recyclerview.BrowserScaleView;
+
 public class bbrx
+  extends IBrowserViewHolder
 {
-  public int a;
-  public long a;
-  public int b;
-  public long b;
-  public int c;
-  public int d;
-  public int e;
+  public BrowserScaleView a;
+  
+  public bbrx(bbrl parambbrl) {}
 }
 
 

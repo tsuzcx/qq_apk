@@ -1,106 +1,47 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.yiqikan.TogetherBusinessServlet.ResultInfo;
-import com.tencent.mobileqq.intervideo.yiqikan.TogetherBusinessServlet.RspOpenStart;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.forward.ForwardMixedMsgOption;
+import com.tencent.mobileqq.forward.ForwardReplyMsgOption;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.observer.BusinessObserver;
-import mqq.util.WeakReference;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aurm
-  implements BusinessObserver
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference<QIPCModule> jdField_a_of_type_MqqUtilWeakReference;
+  public aurm(ForwardMixedMsgOption paramForwardMixedMsgOption) {}
   
-  public aurm(QIPCModule paramQIPCModule, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramQIPCModule);
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private void a(Bundle paramBundle, TogetherBusinessServlet.RspOpenStart paramRspOpenStart)
-  {
-    int i;
-    long l;
-    String str;
-    QQAppInterface localQQAppInterface;
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TogetherObserver", 2, "handleStartPackage TogetherControlManager");
-      }
-      i = paramBundle.getInt("session_type", -1);
-      l = paramBundle.getLong("uin", -1L);
-      int j = paramBundle.getInt("business_type", 0);
-      str = paramBundle.getString("appid", "");
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (j == 2) {
-        if (i != 2) {
-          break label154;
-        }
-      }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg != null) {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {}
     }
-    label154:
-    for (paramBundle = "c2c_AIO";; paramBundle = "Grp_AIO")
+    for (;;)
     {
-      bcef.b(localQQAppInterface, "dc00899", paramBundle, "", "video_tab", "clk_share_suc", 0, 0, l + "", str, "", "");
-      bddg.a(localQQAppInterface, paramRspOpenStart.jumpType, paramRspOpenStart.jumpUrl, null, new Bundle(), i);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-  }
-  
-  private boolean a(TogetherBusinessServlet.RspOpenStart paramRspOpenStart)
-  {
-    if ((paramRspOpenStart.resultInfo != null) && (paramRspOpenStart.resultInfo.showErrorMsg) && (!TextUtils.isEmpty(paramRspOpenStart.resultInfo.errorMsg))) {}
-    while (((paramRspOpenStart.jumpType != 1) && (paramRspOpenStart.jumpType != 2)) || (TextUtils.isEmpty(paramRspOpenStart.jumpUrl))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherObserver", 2, "type:" + paramInt + " isSuccess:" + paramBoolean);
-    }
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("TogetherObserver", 2, " mRef is empty");
-      }
-    }
-    Object localObject;
-    do
-    {
-      do
+      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.hideSoftInputFromWindow();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.hasReplyText())
       {
-        do
-        {
-          return;
-          localObject = (QIPCModule)this.jdField_a_of_type_MqqUtilWeakReference.get();
-          if ((12 == paramInt) && (paramBoolean))
-          {
-            ((QIPCModule)localObject).callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, paramBundle));
-            return;
-          }
-        } while ((13 != paramInt) || (!paramBoolean));
-        ((QIPCModule)localObject).callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, paramBundle));
-        localObject = (TogetherBusinessServlet.RspOpenStart)paramBundle.getSerializable("QQAIOMediaSvc.open_start");
-        paramBundle = paramBundle.getBundle("bundle");
-        if ((paramBundle != null) && (localObject != null)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("TogetherObserver", 2, "bundleExtra is null or rspOpenStart is null");
-      return;
-    } while (!a((TogetherBusinessServlet.RspOpenStart)localObject));
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherObserver", 2, "handleStartPackage jumpToTogetherBusiness");
+        ((bben)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FORWARD_MSG_MANAGER)).a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg);
+        ForwardReplyMsgOption.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq);
+      }
+      for (;;)
+      {
+        this.a.F();
+        break;
+        ausm localausm = new ausm(this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        localausm.a(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131692554), this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg);
+        this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.addPreviewView(localausm.b());
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("ForwardOption.ForwardMixedMsgOption", 2, "no msg not enter preview");
+      }
     }
-    a(paramBundle, (TogetherBusinessServlet.RspOpenStart)localObject);
   }
 }
 

@@ -1,17 +1,11 @@
-class assf
-  implements asrl
+import android.view.View;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Mode;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.State;
+
+public abstract interface assf<V extends View>
 {
-  assf(assd paramassd) {}
-  
-  public void a()
-  {
-    this.a.a(true, asyq.a(this.a.a.a()), this.a.c(), new assg(this));
-  }
-  
-  public void b()
-  {
-    assd.b(this.a);
-  }
+  public abstract void a(PullToRefreshBase<V> paramPullToRefreshBase, PullToRefreshBase.State paramState, PullToRefreshBase.Mode paramMode);
 }
 
 

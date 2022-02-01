@@ -1,24 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class asvb
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  asvb(asuz paramasuz) {}
+  asvb(asva paramasva) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (asuz.a(this.a)) {
-      asuz.a(this.a);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      asuz.b(this.a);
-    }
+    this.a.a.c();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

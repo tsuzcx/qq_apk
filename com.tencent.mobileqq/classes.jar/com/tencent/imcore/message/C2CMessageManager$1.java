@@ -1,6 +1,6 @@
 package com.tencent.imcore.message;
 
-import abwe;
+import acml;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 public class C2CMessageManager$1
   implements Runnable
 {
-  public C2CMessageManager$1(abwe paramabwe, MessageRecord paramMessageRecord) {}
+  public C2CMessageManager$1(acml paramacml, MessageRecord paramMessageRecord) {}
   
   public void run()
   {

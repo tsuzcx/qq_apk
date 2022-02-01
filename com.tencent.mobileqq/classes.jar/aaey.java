@@ -1,96 +1,42 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.view.View;
-import com.tencent.biz.widgets.ViewFinderView.1;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 
-public class aaey
-  extends View
+class aaey
+  implements bcya
 {
-  protected double a;
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long;
-  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-  Rect jdField_a_of_type_AndroidGraphicsRect;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130843290);
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 0;
-  Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130843307);
-  protected int c;
-  protected int d = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
+  aaey(aaex paramaaex) {}
   
-  public aaey(Context paramContext)
+  public void onDownloadFinish(String paramString1, int paramInt, String paramString2)
   {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(1275068416);
-  }
-  
-  public void a()
-  {
-    if (!this.jdField_a_of_type_Boolean)
+    if (paramString1.startsWith("new_qq_android_native_short_video_"))
     {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_Boolean = true;
-      invalidate();
+      if (paramInt == 0) {
+        break label152;
+      }
+      VideoEnvironment.LogDownLoad("TroopMemberApiService", anvx.a(2131714917) + paramInt + "]", null);
+      ShortVideoResourceManager.a(anvx.a(2131714971));
+      bcxc.a(2, paramInt);
+      this.a.jdField_a_of_type_AndroidOsBundle.putInt("result", 0);
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    Rect localRect = new Rect(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(localRect);
-    this.c = (paramInt4 - paramInt2 - this.d);
-    this.jdField_a_of_type_Double = (this.c / 5000.0D);
-    this.jdField_a_of_type_AndroidGraphicsRect = localRect;
-    invalidate();
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  protected void onDraw(Canvas paramCanvas)
-  {
-    Rect localRect = this.jdField_a_of_type_AndroidGraphicsRect;
-    if ((localRect == null) || (localRect.width() == 0) || (localRect.height() == 0)) {
-      paramCanvas.drawRect(0.0F, 0.0F, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
-    }
-    do
+    for (;;)
     {
+      VideoEnvironment.LogDownLoad("TroopMemberApiService", "name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
+      this.a.jdField_a_of_type_Aaeq.a.a(93, this.a.jdField_a_of_type_AndroidOsBundle);
+      this.a.jdField_a_of_type_Aaeq.a.b = false;
       return;
-      paramCanvas.drawRect(0.0F, 0.0F, this.jdField_a_of_type_Int, localRect.top, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawRect(0.0F, localRect.top, localRect.left, localRect.bottom, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawRect(localRect.right, localRect.top, this.jdField_a_of_type_Int, localRect.bottom, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawRect(0.0F, localRect.bottom, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-    } while (!this.jdField_a_of_type_Boolean);
-    int i = (int)((System.currentTimeMillis() - this.jdField_a_of_type_Long) * this.jdField_a_of_type_Double) % this.c;
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds(localRect.left, localRect.top + i, localRect.right, i + localRect.top + this.d);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-    postInvalidateDelayed(20L, localRect.left, localRect.top, localRect.right, localRect.bottom);
-  }
-  
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    invalidate();
-  }
-  
-  public void postInvalidateDelayed(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if (Build.VERSION.SDK_INT >= 14)
-    {
-      super.postInvalidateDelayed(paramLong, paramInt1, paramInt2, paramInt3, paramInt4);
-      return;
+      label152:
+      this.a.jdField_a_of_type_AndroidOsBundle.putInt("result", -2);
     }
-    postDelayed(new ViewFinderView.1(this, paramInt1, paramInt2, paramInt3, paramInt4), paramLong);
   }
+  
+  public void onNetWorkNone()
+  {
+    this.a.jdField_a_of_type_Aaeq.a.b = false;
+  }
+  
+  public void onUpdateProgress(String paramString, long paramLong1, long paramLong2) {}
 }
 
 

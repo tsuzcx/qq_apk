@@ -1,22 +1,33 @@
-public final class akxa
-  implements akxd
+import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+
+public class akxa
 {
-  public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  int jdField_a_of_type_Int = 0;
+  akxd jdField_a_of_type_Akxd;
+  HashMap<String, PreloadManager.PathResult> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  List<DownloadParam> jdField_a_of_type_JavaUtilList;
+  boolean jdField_a_of_type_Boolean = false;
+  
+  public akxa(List<DownloadParam> paramList, akxd paramakxd)
   {
-    paramInt1 = paramInt2 - paramInt1;
-    if (paramInt1 >= 0) {
-      return paramInt1;
-    }
-    return -paramInt1;
+    this.jdField_a_of_type_JavaUtilList = paramakxd;
+    Object localObject;
+    this.jdField_a_of_type_Akxd = localObject;
   }
   
-  public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  public void a()
   {
-    paramInt1 = paramInt2 - paramInt1;
-    if (paramInt1 >= 0) {
-      return paramInt1;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      DownloadParam localDownloadParam = (DownloadParam)localIterator.next();
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager.a(localDownloadParam, new akxb(this));
     }
-    return -paramInt1;
   }
 }
 

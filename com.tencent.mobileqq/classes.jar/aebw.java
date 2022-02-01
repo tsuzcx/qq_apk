@@ -1,10 +1,33 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.RecentLoginDevActivity;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
 
 public class aebw
-  extends Handler
+  extends aawb
 {
-  public aebw(RecentLoginDevActivity paramRecentLoginDevActivity) {}
+  public aebw(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity) {}
+  
+  public aavi a(Activity paramActivity, aavo paramaavo)
+  {
+    return super.a(paramActivity, paramaavo);
+  }
+  
+  public aavk a(Activity paramActivity, aavo paramaavo)
+  {
+    this.a.a = new azpc((FriendProfilePicBrowserActivity)paramActivity, paramaavo);
+    return this.a.a;
+  }
+  
+  public aavo a(Activity paramActivity)
+  {
+    paramActivity = new aydd(this.a, FriendProfilePicBrowserActivity.a(this.a));
+    paramActivity.a(FriendProfilePicBrowserActivity.a(this.a));
+    return paramActivity;
+  }
+  
+  public aavp a(Activity paramActivity, aavo paramaavo)
+  {
+    return null;
+  }
 }
 
 

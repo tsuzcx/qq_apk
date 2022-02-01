@@ -1,41 +1,60 @@
-import com.tencent.mobileqq.data.Setting;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity.8.1;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.SingleLineTextView;
 
-class adju
-  extends amsu
+public class adju
+  extends anvi
 {
-  adju(adjt paramadjt) {}
+  public adju(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
+  void a(String paramString, View paramView)
   {
-    if ((paramSetting == null) || (!this.a.b.equals(paramSetting.uin))) {}
-    do
-    {
+    if ((TextUtils.isEmpty(paramString)) || (paramView == null)) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.profilecard.Avatar", 2, "onGetHeadInfo: uin=" + paramSetting.uin);
-      }
-    } while ((!this.a.jdField_a_of_type_Boolean) || (paramSetting.url == null) || (paramSetting.url.length() <= 0));
-    this.a.a(paramSetting.uin, paramSetting.bFaceFlags, paramSetting.url);
+    }
+    this.a.runOnUiThread(new AssociatedAccountManageActivity.8.1(this, paramString, paramView));
   }
   
   protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if (!this.a.b.equals(paramString)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.Avatar", 2, "onUpdateCustomHead: uin=" + paramString);
-    }
-    this.a.b(this.a.jdField_a_of_type_Adjx);
-    if (paramBoolean)
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
+    View localView;
+    do
     {
-      this.a.a(this.a.jdField_a_of_type_Adjx, false);
-      this.a.c(this.a.jdField_a_of_type_Adjx);
       return;
+      localView = AssociatedAccountManageActivity.a(this.a, paramString, 0);
+      if (localView != null) {
+        a(paramString, localView);
+      }
+      localView = AssociatedAccountManageActivity.a(this.a, paramString, 1);
+    } while (localView == null);
+    a(paramString, localView);
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AssociatedAccountManage", 2, "onUpdateFriendInfo  uin = " + paramString + " isSuccess = " + paramBoolean);
     }
-    this.a.jdField_a_of_type_Adjx.a = 2;
-    this.a.c(this.a.jdField_a_of_type_Adjx);
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
+    View localView;
+    do
+    {
+      return;
+      localView = AssociatedAccountManageActivity.a(this.a, paramString, 0);
+      if (localView != null)
+      {
+        ((SingleLineTextView)localView.findViewById(2131371803)).setText(ContactUtils.getAccountNickName(this.a.app, paramString));
+        a(paramString, localView);
+      }
+      localView = AssociatedAccountManageActivity.a(this.a, paramString, 1);
+    } while (localView == null);
+    ((SingleLineTextView)localView.findViewById(2131371803)).setText(ContactUtils.getAccountNickName(this.a.app, paramString));
+    a(paramString, localView);
   }
 }
 

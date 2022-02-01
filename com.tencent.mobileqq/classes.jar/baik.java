@@ -1,29 +1,8 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.richmediabrowser.AIOBrowserBaseData;
-
-public final class baik
-  implements Parcelable.Creator<AIOBrowserBaseData>
+public abstract interface baik
 {
-  public AIOBrowserBaseData a(Parcel paramParcel)
-  {
-    Object localObject = paramParcel.readString();
-    try
-    {
-      localObject = AIOBrowserBaseData.a((String)localObject);
-      ((AIOBrowserBaseData)localObject).readFromParcel(paramParcel);
-      return localObject;
-    }
-    catch (ClassNotFoundException paramParcel)
-    {
-      throw new RuntimeException(paramParcel);
-    }
-  }
+  public abstract void a(baii parambaii, baij parambaij);
   
-  public AIOBrowserBaseData[] a(int paramInt)
-  {
-    return new AIOBrowserBaseData[paramInt];
-  }
+  public abstract void b(baii parambaii, baij parambaij);
 }
 
 

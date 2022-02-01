@@ -13,12 +13,18 @@ import cooperation.qzone.contentbox.model.MQMsg;
 import cooperation.qzone.contentbox.model.MQMsgBody;
 import cooperation.qzone.contentbox.model.MQMsgInteractData;
 import cooperation.qzone.contentbox.model.MsgOnClickListener;
+import cooperation.qzone.report.lp.LpReportInfo_dc02880;
+import cooperation.qzone.report.lp.LpReportManager;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Map;
 
 public class QZoneMsgAdapter
   extends BaseAdapter
 {
+  public static final int FROM_DB = 2;
+  public static final int FROM_PRELOAD = 1;
+  public static final int FROM_REFRESH = 0;
   private ArrayList<MQMsg> MQMsgs = new ArrayList();
   private boolean isNightMode;
   private BaseActivity mActivity;
@@ -31,6 +37,18 @@ public class QZoneMsgAdapter
   public QZoneMsgAdapter(BaseActivity paramBaseActivity)
   {
     this.mActivity = paramBaseActivity;
+  }
+  
+  private void reportExpose(MQMsg paramMQMsg, int paramInt)
+  {
+    if ((paramMQMsg != null) && (paramInt == 0))
+    {
+      LpReportInfo_dc02880 localLpReportInfo_dc02880 = new LpReportInfo_dc02880(8, 1, null, paramMQMsg.reportValue);
+      if ((paramMQMsg.expand != null) && (paramMQMsg.expand.containsKey("feedid"))) {
+        localLpReportInfo_dc02880.reserves3 = ((String)paramMQMsg.expand.get("feedid"));
+      }
+      LpReportManager.getInstance().reportToDC02880(localLpReportInfo_dc02880, false, true);
+    }
   }
   
   public void addMQMsgs(ArrayList<MQMsg> paramArrayList)
@@ -140,7 +158,7 @@ public class QZoneMsgAdapter
   public boolean removeLastEmptyMQMsg()
   {
     MQMsg localMQMsg = getLastMQMsg();
-    if ((localMQMsg.msgBody.photolist == null) || (localMQMsg.msgBody.photolist.isEmpty()))
+    if ((localMQMsg == null) || (localMQMsg.msgBody == null) || (localMQMsg.msgBody.photolist == null) || (localMQMsg.msgBody.photolist.isEmpty()))
     {
       boolean bool = this.MQMsgs.remove(localMQMsg);
       if ((bool) && (this.mFeedHolder != null)) {
@@ -158,16 +176,17 @@ public class QZoneMsgAdapter
     this.mUseNewUI = paramBoolean2;
   }
   
-  public void setMQMsgs(ArrayList<MQMsg> paramArrayList)
+  public void setMQMsgs(ArrayList<MQMsg> paramArrayList, int paramInt)
   {
     if (this.mFeedHolder != null) {
       this.mFeedHolder.clearCache();
     }
-    if (paramArrayList != null)
+    if ((paramArrayList != null) && (paramArrayList.size() > 0))
     {
       this.MQMsgs.clear();
       this.MQMsgs.addAll(paramArrayList);
       notifyDataSetChanged();
+      reportExpose((MQMsg)paramArrayList.get(0), paramInt);
       return;
     }
     this.MQMsgs.clear();

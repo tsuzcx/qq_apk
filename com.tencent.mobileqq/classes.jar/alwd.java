@@ -1,16 +1,16 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.widget.ContainerView;
 
 class alwd
-  implements AudioManager.OnAudioFocusChangeListener
+  implements View.OnLongClickListener
 {
-  alwd(alwb paramalwb) {}
+  alwd(alwb paramalwb, ContainerView paramContainerView) {}
   
-  public void onAudioFocusChange(int paramInt)
+  public boolean onLongClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(alwb.a, 2, new Object[] { "[onAudioFocusChange],focusChange:", Integer.valueOf(paramInt) });
-    }
+    this.jdField_a_of_type_Alwb.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView, paramView);
+    return false;
   }
 }
 

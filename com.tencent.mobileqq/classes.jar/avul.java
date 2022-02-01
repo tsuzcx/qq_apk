@@ -1,46 +1,45 @@
-import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
+import com.tencent.hlyyb.downloader.DownloaderTask;
+import com.tencent.qphone.base.util.QLog;
 
 public class avul
 {
-  private int jdField_a_of_type_Int;
-  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  public long a;
+  private DownloaderTask a;
+  public String a;
+  public String b;
+  public String c;
+  public String d = "now_for_qq";
+  public String e = "now_appid_2";
+  public String f = "now";
+  public String g;
+  public String h;
   
-  public avuk a()
+  public static avul a(String paramString1, String paramString2, String paramString3)
   {
-    return new avuk(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData, this.jdField_b_of_type_Int);
+    avul localavul = new avul();
+    localavul.jdField_a_of_type_JavaLangString = "2";
+    localavul.g = paramString3.substring(0, paramString3.lastIndexOf("/") + 1);
+    localavul.h = paramString3.substring(paramString3.lastIndexOf("/") + 1);
+    localavul.b = paramString1;
+    localavul.c = paramString2;
+    localavul.jdField_a_of_type_Long = System.currentTimeMillis();
+    QLog.i("NowDownloadTaskInfo", 4, localavul.toString());
+    return localavul;
   }
   
-  public avul a(int paramInt)
+  public DownloaderTask a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
+    return this.jdField_a_of_type_ComTencentHlyybDownloaderDownloaderTask;
   }
   
-  public avul a(MsgBackupUserData paramMsgBackupUserData)
+  public void a(DownloaderTask paramDownloaderTask)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
-    return this;
+    this.jdField_a_of_type_ComTencentHlyybDownloaderDownloaderTask = paramDownloaderTask;
   }
   
-  public avul a(String paramString)
+  public String toString()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public avul b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public avul b(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    return this;
+    return "appid = " + this.jdField_a_of_type_JavaLangString + ", url = " + this.b + ", downloadDir = " + this.g + ", fileName = " + this.h + ", taskSource = " + this.e + ", appName = " + this.f;
   }
 }
 

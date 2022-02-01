@@ -3,12 +3,12 @@ package com.tencent.mobileqq.startup.step;
 import android.os.Build.VERSION;
 import android.os.Environment;
 import android.text.TextUtils;
-import bcat;
-import bcau;
-import bcav;
-import bcaw;
-import bcay;
-import bdbz;
+import bdho;
+import bdhp;
+import bdhq;
+import bdhr;
+import bdht;
+import beiz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.JpegExifReader;
 import com.tencent.image.URLDrawable;
@@ -30,7 +30,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class InitUrlDrawable
   extends Step
 {
-  private static IDiniFlyQLog jdField_a_of_type_ComTencentMobileqqDiniflyIDiniFlyQLog = new bcat();
+  private static IDiniFlyQLog jdField_a_of_type_ComTencentMobileqqDiniflyIDiniFlyQLog = new bdho();
   public static DiskCache a;
   private static List<String> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
   public static volatile boolean a;
@@ -127,8 +127,8 @@ public class InitUrlDrawable
     }
     jdField_a_of_type_Boolean = true;
     DiniFlyLog.setLog(jdField_a_of_type_ComTencentMobileqqDiniflyIDiniFlyQLog);
-    QEffectEngine.getInstance().setJsonConvert(new bcaw());
-    QEffectEngine.getInstance().registerLoad(new bdbz());
+    QEffectEngine.getInstance().setJsonConvert(new bdhr());
+    QEffectEngine.getInstance().registerLoad(new beiz());
     QEffectEngine.getInstance().registerEffect(2, "a.png", QEffectApngImageView.class);
     QEffectEngine.getInstance().registerEffect(3, "lottie", QEffectLottieImageView.class);
     QEffectEngine.getInstance().registerEffect(8, "gif", QEffectGifImageView.class);
@@ -142,15 +142,15 @@ public class InitUrlDrawable
     {
       for (;;)
       {
-        URLDrawable.init(localBaseApplicationImpl, new bcay(localBaseApplicationImpl));
+        URLDrawable.init(localBaseApplicationImpl, new bdht(localBaseApplicationImpl));
         if (Build.VERSION.SDK_INT >= 11) {
-          URLDrawable.setDebuggableCallback(new bcau());
+          URLDrawable.setDebuggableCallback(new bdhp());
         }
         URLDrawable.isPublicVersion = true;
         localFile = new File(localFile, "diskcache");
         jdField_a_of_type_ComTencentMobileqqTransfileDiskCache = new DiskCache(localFile);
         com.tencent.mobileqq.transfile.URLDrawableHelper.diskCachePath = localFile;
-        JpegExifReader.initJpegExifReader(new bcav());
+        JpegExifReader.initJpegExifReader(new bdhq());
         return true;
         localFile = localBaseApplicationImpl.getCacheDir();
       }
@@ -166,7 +166,7 @@ public class InitUrlDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.InitUrlDrawable
  * JD-Core Version:    0.7.0.1
  */

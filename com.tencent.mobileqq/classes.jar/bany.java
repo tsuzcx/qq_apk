@@ -1,16 +1,32 @@
-import com.tencent.mobileqq.emoticonview.EmoticonListProvider;
-import com.tencent.mobileqq.emoticonview.EmotionPanelInfo;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public final class bany
-  implements EmoticonListProvider
+public class bany
+  extends banv
 {
-  public List<EmotionPanelInfo> getEmotionPanelInfo(boolean paramBoolean1, boolean paramBoolean2)
+  public static banv b()
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new EmotionPanelInfo(7, 7, null));
-    return localArrayList;
+    return banz.a();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (bang.b))
+    {
+      if (BaseActivity.sTopActivity == null) {
+        break label42;
+      }
+      new bann(BaseActivity.sTopActivity, true).show();
+    }
+    for (;;)
+    {
+      bakl.a("HelloQQWake", "WakeServiceCallBackWithTips show tips");
+      bang.b = false;
+      return;
+      label42:
+      QQToast.a(BaseApplicationImpl.getApplication(), 2, BaseApplicationImpl.getApplication().getString(2131695072), 1).a();
+    }
   }
 }
 

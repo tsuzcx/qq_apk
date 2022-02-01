@@ -1,51 +1,35 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.comic.VipComicJumpActivity;
+import org.json.JSONObject;
 
-public class alej
-  extends Handler
+class alej
+  implements View.OnClickListener
 {
-  public alej(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
+  alej(aldh paramaldh, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-    default: 
-    case 8193: 
-    case 8194: 
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            if (QQSpecialFriendSettingActivity.a(this.a) == null)
-            {
-              QQSpecialFriendSettingActivity.a(this.a, new bhht(this.a, this.a.getTitleBarHeight()));
-              if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String))) {
-                QQSpecialFriendSettingActivity.a(this.a).a((String)paramMessage.obj);
-              }
-            }
-          } while ((this.a.isFinishing()) || (QQSpecialFriendSettingActivity.a(this.a).isShowing()));
-          try
-          {
-            QQSpecialFriendSettingActivity.a(this.a).show();
-            return;
-          }
-          catch (Exception paramMessage) {}
-        } while (!QLog.isColorLevel());
-        QLog.e("QQSpecialFriendSettingActivity", 2, "QQProgressDialog show exception.", paramMessage);
-        return;
-      } while ((QQSpecialFriendSettingActivity.a(this.a) == null) || (!QQSpecialFriendSettingActivity.a(this.a).isShowing()));
-      QQSpecialFriendSettingActivity.a(this.a).dismiss();
-      QQSpecialFriendSettingActivity.a(this.a, null);
+      localJSONObject.put("from", "20");
+      label17:
+      Intent localIntent = new Intent(aldh.a(this.jdField_a_of_type_Aldh), VipComicJumpActivity.class);
+      localIntent.putExtra("options", localJSONObject.toString());
+      aldh.a(this.jdField_a_of_type_Aldh).startActivity(localIntent);
+      blrb.a(aldh.a(this.jdField_a_of_type_Aldh).getAppInterface(), "100007", "2", "40040", this.jdField_a_of_type_JavaLangString, new String[0]);
+      bdla.a(aldh.a(this.jdField_a_of_type_Aldh).app, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 2, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    QQToast.a(this.a, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight());
+    catch (Exception localException)
+    {
+      break label17;
+    }
   }
 }
 

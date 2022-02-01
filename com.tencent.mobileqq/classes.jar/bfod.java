@@ -1,17 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
+import android.os.Bundle;
 
-public class bfod
-  implements DialogInterface.OnClickListener
+public abstract interface bfod
 {
-  public bfod(UpgradeActivity paramUpgradeActivity) {}
+  public abstract void a(long paramLong1, long paramLong2);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    bcef.b(this.a.app, "CliOper", "", "", "0X8004DA2", "0X8004DA2", 0, 0, bfnf.b(), String.valueOf(0), bfng.a(), "0");
-    this.a.finish();
-  }
+  public abstract void a(long paramLong1, String paramString, long paramLong2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, Bundle paramBundle, int paramInt);
+  
+  public abstract void b(long paramLong1, long paramLong2, long paramLong3);
 }
 
 

@@ -1,519 +1,590 @@
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.os.SystemClock;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.AuthorityActivity.8.5;
-import com.tencent.open.agent.AuthorityActivity.8.6;
-import com.tencent.open.agent.AuthorityActivity.8.7;
-import com.tencent.open.agent.CardContainer;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.Ads;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.MsgIconsurl;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.GetAuthApiListRequest;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.GetAuthApiListResponse;
-import com.tencent.qconn.protofile.appType.PassData;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VipGrayConfigHelper.1;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import cooperation.qqfav.util.HandlerPlus;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import org.json.JSONException;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.atomic.AtomicReference;
+import mqq.app.AppRuntime;
+import mqq.os.MqqHandler;
+import mqq.util.WeakReference;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class bhpw
-  implements Handler.Callback
 {
-  public bhpw(AuthorityActivity paramAuthorityActivity) {}
+  private static bhpw jdField_a_of_type_Bhpw;
+  private static final Runnable jdField_a_of_type_JavaLangRunnable = new VipGrayConfigHelper.1();
+  private static final List<String> jdField_a_of_type_JavaUtilList;
+  private static final Map<String, AtomicInteger> jdField_a_of_type_JavaUtilMap;
+  private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private static final Map<String, AtomicInteger> jdField_b_of_type_JavaUtilMap;
+  private static final Map<String, AtomicReference<Intent>> c;
+  private static final Map<String, AtomicLong> d;
+  private int jdField_a_of_type_Int = 1;
+  public String a;
+  public String b;
+  private List<WeakReference<bhpy>> jdField_b_of_type_JavaUtilList = new ArrayList();
+  public String c;
+  public String d;
+  private String e = "https://imgcache.gtimg.cn/club/mqgame/";
   
-  public boolean handleMessage(Message paramMessage)
+  static
   {
-    SdkAuthorize.GetAuthApiListResponse localGetAuthApiListResponse;
-    int i;
-    label268:
-    label565:
-    Object localObject2;
-    Object localObject1;
-    switch (paramMessage.what)
-    {
-    case 10: 
-    default: 
-    case 0: 
-      for (;;)
-      {
-        return true;
-        localGetAuthApiListResponse = (SdkAuthorize.GetAuthApiListResponse)paramMessage.obj;
-        if (localGetAuthApiListResponse != null) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("AuthorityActivity", 2, "GET_API_LIST_DONE  response = null");
-        }
-      }
-      i = localGetAuthApiListResponse.ret.get();
-      if (i != 0)
-      {
-        QLog.d("AuthorityActivity", 1, "rec | cmd: G_A_L_D | uin : *" + bhwf.a(this.a.jdField_a_of_type_Biej.jdField_a_of_type_JavaLangString) + " | ret : success | code : " + i);
-        try
-        {
-          bhvw.a().a(this.a.jdField_a_of_type_Biej.jdField_a_of_type_JavaLangString, "", AuthorityActivity.jdField_e_of_type_JavaLangString, "1", "6", "" + i, false);
-          if (TextUtils.isEmpty(localGetAuthApiListResponse.msg.get())) {}
-          for (paramMessage = String.format(this.a.getResources().getString(2131694252), new Object[] { Integer.valueOf(i) }); i == 110405; paramMessage = String.format(this.a.getResources().getString(2131695971), new Object[] { localGetAuthApiListResponse.msg.get(), Integer.valueOf(i) }))
-          {
-            bhwf.a(this.a, paramMessage, new bhpx(this));
-            this.a.b(i, paramMessage);
-            return true;
-          }
-          if (i != 110509) {
-            break label565;
-          }
-          if (AuthorityActivity.a(this.a) < 0)
-          {
-            AuthorityActivity.a(this.a, 0);
-            atqa.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD");
-            biek.a().a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_MqqObserverSSOAccountObserver, AuthorityActivity.jdField_e_of_type_JavaLangString, 3);
-            AuthorityActivity.a(this.a).jdField_a_of_type_Long = System.currentTimeMillis();
-          }
-          else
-          {
-            QLog.d("AuthorityActivity", 1, "showLoginActivity GET_API_LIST_DONE 110509 ");
-            QQToast.a(this.a, 1, amtj.a(2131706961), 0).a();
-            this.a.c(this.a.jdField_a_of_type_JavaLangString);
-          }
-        }
-        catch (JSONException paramMessage) {}
-      }
-      else
-      {
-        this.a.jdField_h_of_type_Long = SystemClock.elapsedRealtime();
-        if (!this.a.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(localGetAuthApiListResponse)) {
-          break label1113;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("AuthorityActivity", 2, "rec | cmd: G_A_L_D | authorized");
-        }
-        this.a.jdField_f_of_type_Boolean = true;
-        this.a.jdField_a_of_type_AndroidWidgetButton.setText(2131694259);
-        this.a.jdField_a_of_type_AndroidWidgetButton.setTag(this.a.jdField_b_of_type_JavaLangString);
-        if (localGetAuthApiListResponse.auth_response != null) {
-          this.a.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse = ((SdkAuthorize.AuthorizeResponse)localGetAuthApiListResponse.auth_response.get());
-        }
-        if ((this.a.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse != null) || (!this.a.jdField_c_of_type_Boolean)) {
-          break label853;
-        }
-        this.a.k();
-        return true;
-      }
-      if (i == 110513)
-      {
-        this.a.b(110513, "", "", "");
-        return true;
-      }
-      if (i == 100044)
-      {
-        localObject2 = AuthorityActivity.a(this.a).getBundleExtra("key_params");
-        localObject1 = ((Bundle)localObject2).getString("packagename");
-        if (localObject1 != null) {
-          break label3704;
-        }
-        localObject1 = "";
-      }
-      break;
+    jdField_a_of_type_JavaUtilMap = new HashMap();
+    jdField_b_of_type_JavaUtilMap = new HashMap();
+    jdField_c_of_type_JavaUtilMap = new HashMap();
+    jdField_d_of_type_JavaUtilMap = new HashMap();
+    jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public bhpw()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+  }
+  
+  public static bhpw a()
+  {
+    if (jdField_a_of_type_Bhpw == null) {
+      jdField_a_of_type_Bhpw = new bhpw();
     }
-    label853:
-    label1113:
-    label2019:
-    label2167:
-    label3704:
+    return jdField_a_of_type_Bhpw;
+  }
+  
+  public static void a()
+  {
+    int i = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
+    if ((i < 0) || (i >= jdField_a_of_type_JavaUtilList.size())) {}
+    Object localObject;
+    do
+    {
+      return;
+      localObject = (String)jdField_a_of_type_JavaUtilList.get(i);
+      localObject = (AtomicLong)jdField_d_of_type_JavaUtilMap.get(localObject);
+    } while (localObject == null);
+    ThreadManager.getSubThreadHandler().removeCallbacks(jdField_a_of_type_JavaLangRunnable);
+    ThreadManager.getSubThreadHandler().postDelayed(jdField_a_of_type_JavaLangRunnable, ((AtomicLong)localObject).get());
+  }
+  
+  private void a(AppRuntime paramAppRuntime, JSONArray paramJSONArray, boolean paramBoolean)
+  {
+    if ((paramAppRuntime == null) || (paramJSONArray == null) || (paramJSONArray.length() < 0))
+    {
+      QLog.e("VipGrayConfigHelper", 1, "parseVipGrayConfig app = null or configList = null or len < 0");
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("VipGrayConfigHelper", 2, "parseVipGrayConfig begin config = " + paramJSONArray.toString());
+    }
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("vipGrayConfigSp", 0);
+    if (paramBoolean)
+    {
+      jdField_a_of_type_JavaUtilList.clear();
+      jdField_a_of_type_JavaUtilMap.clear();
+      jdField_b_of_type_JavaUtilMap.clear();
+      jdField_d_of_type_JavaUtilMap.clear();
+      jdField_c_of_type_JavaUtilMap.clear();
+      localSharedPreferences.edit().clear().apply();
+    }
     for (;;)
     {
-      Object localObject3 = ((Bundle)localObject2).getString("packagesign");
-      localObject2 = localObject3;
-      if (localObject3 == null) {
-        localObject2 = "";
+      if (paramBoolean) {
+        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
       }
-      localObject3 = new Bundle();
-      ((Bundle)localObject3).putString("uin", this.a.jdField_a_of_type_Biej.jdField_a_of_type_JavaLangString);
-      ((Bundle)localObject3).putString("openid", "");
-      ((Bundle)localObject3).putString("report_type", "1");
-      ((Bundle)localObject3).putString("act_type", "7");
-      ((Bundle)localObject3).putString("via", "2");
-      ((Bundle)localObject3).putString("app_id", AuthorityActivity.jdField_e_of_type_JavaLangString);
-      ((Bundle)localObject3).putString("packagename", (String)localObject1);
-      ((Bundle)localObject3).putString("stringext_1", (String)localObject2);
-      ((Bundle)localObject3).putString("result", "0");
-      bhvw.a().a((Bundle)localObject3, AuthorityActivity.jdField_e_of_type_JavaLangString, this.a.jdField_a_of_type_Biej.jdField_a_of_type_JavaLangString, false);
-      localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("ret", localGetAuthApiListResponse.ret.get());
-      ((JSONObject)localObject1).put("msg", localGetAuthApiListResponse.msg.get());
-      bhwf.a(this.a, paramMessage, new bhpy(this, localGetAuthApiListResponse, (JSONObject)localObject1));
-      break label268;
-      if (!this.a.jdField_b_of_type_Boolean) {
-        this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+      a(paramAppRuntime, paramJSONArray, paramBoolean, localSharedPreferences);
+      a();
+      return;
+      if (jdField_a_of_type_JavaUtilList.isEmpty()) {
+        paramBoolean = true;
       }
-      paramMessage = new HashMap();
-      paramMessage.put("appid", AuthorityActivity.jdField_e_of_type_JavaLangString);
-      paramMessage.put("p1", "logged");
-      paramMessage.put("p2", "auth");
-      StatisticCollector.getInstance(this.a).collectPerformance(this.a.jdField_a_of_type_JavaLangString, "connect_sso_pageview", false, System.currentTimeMillis() - this.a.jdField_a_of_type_Long, 0L, paramMessage, "");
-      this.a.b("wtl_loggednunauthorized", this.a.jdField_a_of_type_Biej.jdField_a_of_type_JavaLangString);
-      if ((this.a.jdField_b_of_type_Boolean) && (this.a.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse != null))
+    }
+  }
+  
+  private void a(AppRuntime paramAppRuntime, JSONArray paramJSONArray, boolean paramBoolean, SharedPreferences paramSharedPreferences)
+  {
+    for (;;)
+    {
+      int i;
+      JSONObject localJSONObject;
+      String str;
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("SDKQQAgentPref", 2, "AutoLogin: " + SystemClock.elapsedRealtime());
+        int j = paramJSONArray.length();
+        i = 0;
+        if (i < j)
+        {
+          localJSONObject = paramJSONArray.getJSONObject(i);
+          str = localJSONObject.optString("business");
+          if ("vipEnterText".equals(str))
+          {
+            a(paramAppRuntime, localJSONObject);
+          }
+          else if (("backgroundWebView".equals(str)) && (paramBoolean))
+          {
+            if (!a(paramAppRuntime, paramSharedPreferences, localJSONObject)) {}
+          }
+          else if ("gameIcon".equals(str))
+          {
+            if (!a(paramAppRuntime, localJSONObject)) {
+              break label264;
+            }
+            this.e = localJSONObject.optString("baseUrl", "");
+            this.jdField_a_of_type_Int = localJSONObject.optInt("expireDay", 0);
+            if (!QLog.isColorLevel()) {
+              break label264;
+            }
+            QLog.d("VipGrayConfigHelper", 2, "king info, url = " + this.e + ",expireDay = " + this.jdField_a_of_type_Int);
+          }
         }
-        this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-        paramMessage = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-        paramMessage.what = 1;
-        paramMessage.obj = this.a.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse;
-        this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(paramMessage);
       }
-      if (!AuthorityActivity.a(this.a)) {
-        this.a.j();
-      }
-      long l1;
-      for (;;)
+      catch (Exception paramAppRuntime)
       {
-        l1 = Long.parseLong(AuthorityActivity.jdField_e_of_type_JavaLangString);
-        this.a.a(l1);
-        break;
-        if (QLog.isColorLevel()) {
-          QLog.d("AuthorityActivity", 2, "rec | cmd: G_A_L_D | not authorized");
-        }
-        this.a.jdField_f_of_type_Boolean = false;
-        this.a.jdField_a_of_type_AndroidWidgetButton.setText(2131694259);
-        this.a.jdField_a_of_type_AndroidWidgetButton.setTag(this.a.jdField_c_of_type_JavaLangString);
-        this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-        paramMessage = new HashMap();
-        paramMessage.put("appid", AuthorityActivity.jdField_e_of_type_JavaLangString);
-        paramMessage.put("p1", "logged");
-        paramMessage.put("p2", "uauth");
-        StatisticCollector.getInstance(this.a).collectPerformance(this.a.jdField_a_of_type_JavaLangString, "connect_sso_pageview", false, System.currentTimeMillis() - this.a.jdField_a_of_type_Long, 0L, paramMessage, "");
-        if (!this.a.jdField_e_of_type_Boolean) {
-          this.a.b("wtl_loggednauthorized", this.a.jdField_a_of_type_Biej.jdField_a_of_type_JavaLangString);
-        }
-        this.a.j();
+        QLog.e("VipGrayConfigHelper", 1, "parseVipGrayConfig exception", paramAppRuntime);
       }
+      return;
+      if (("ipStackConfigDic".equals(str)) && (a(paramAppRuntime, localJSONObject)))
+      {
+        long l = localJSONObject.optLong("ipStackTimeInterval");
+        ((awyq)paramAppRuntime.getManager(QQManagerFactory.COMMERCIAL_DRAINAGE_MANAGER)).a(l);
+        if (QLog.isColorLevel()) {
+          QLog.d("VipGrayConfigHelper", 2, "ipsite interval = " + l);
+        }
+      }
+      label264:
+      i += 1;
+    }
+  }
+  
+  private void a(AppRuntime paramAppRuntime, JSONObject paramJSONObject)
+  {
+    if (a(paramAppRuntime, paramJSONObject))
+    {
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("notVip");
+      this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("outdatedVip");
+      this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("vip");
+      this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("svip");
       if (QLog.isColorLevel()) {
-        QLog.d("SDKQQAgentPref", 2, "AUTHORIZE_DONE:" + SystemClock.elapsedRealtime());
+        QLog.d("VipGrayConfigHelper", 2, "parse vipEnterText notvip = " + this.jdField_a_of_type_JavaLangString + ", outdatevip = " + this.jdField_c_of_type_JavaLangString + ", vipstr= " + this.jdField_b_of_type_JavaLangString + ", svip = " + this.jdField_d_of_type_JavaLangString);
       }
-      localObject1 = (SdkAuthorize.AuthorizeResponse)paramMessage.obj;
-      i = ((SdkAuthorize.AuthorizeResponse)localObject1).ret.get();
+    }
+  }
+  
+  private boolean a(AppRuntime paramAppRuntime, SharedPreferences paramSharedPreferences, JSONObject paramJSONObject)
+  {
+    return false;
+  }
+  
+  private void b()
+  {
+    try
+    {
+      int j = this.jdField_b_of_type_JavaUtilList.size();
+      if (j > 0)
+      {
+        int i = 0;
+        while (i < j)
+        {
+          bhpy localbhpy = (bhpy)((WeakReference)this.jdField_b_of_type_JavaUtilList.get(i)).get();
+          if (localbhpy != null) {
+            localbhpy.a();
+          }
+          i += 1;
+        }
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.e = "https://imgcache.gtimg.cn/club/mqgame/";
+    this.jdField_a_of_type_Int = 1;
+  }
+  
+  public String a(String paramString, long paramLong, int paramInt, boolean paramBoolean)
+  {
+    return a(paramString, paramLong, paramInt, paramBoolean, false);
+  }
+  
+  public String a(String paramString, long paramLong, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    int k = 0;
+    if (QLog.isColorLevel()) {
+      QLog.i("VipGrayConfigHelper", 2, "getNamePlateOfKingUrl, gameAppId = " + paramLong + " dan = " + paramInt + " danSwitch = " + paramBoolean1 + " isSetting = " + paramBoolean2);
+    }
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    int j;
+    SharedPreferences localSharedPreferences;
+    int i;
+    if ((!TextUtils.isEmpty(this.e)) && (paramLong != 0L))
+    {
+      j = 1;
+      if (!(localObject instanceof QQAppInterface)) {
+        break label385;
+      }
+      localObject = (QQAppInterface)localObject;
+      localSharedPreferences = ((QQAppInterface)localObject).getApp().getSharedPreferences("sp_plate_of_king", 0);
+      if ((TextUtils.isEmpty(paramString)) || (!((QQAppInterface)localObject).getCurrentUin().equals(paramString))) {
+        break label255;
+      }
+      i = 1;
+    }
+    label146:
+    for (boolean bool = localSharedPreferences.getBoolean("plate_of_king_display_switch_" + ((QQAppInterface)localObject).getCurrentUin(), true);; bool = true)
+    {
       if (i != 0)
       {
-        QLog.d("AuthorityActivity", 1, "rec | cmd: A_D | uin : *" + bhwf.a(this.a.jdField_a_of_type_Biej.jdField_a_of_type_JavaLangString) + " | ret : success | code : " + i);
-        try
-        {
-          localObject2 = ((SdkAuthorize.AuthorizeResponse)localObject1).msg.get();
-          if (TextUtils.isEmpty((CharSequence)localObject2)) {}
-          for (paramMessage = String.format(this.a.getResources().getString(2131694252), new Object[] { Integer.valueOf(i) }); i == 110405; paramMessage = String.format(this.a.getResources().getString(2131695971), new Object[] { localObject2, Integer.valueOf(i) }))
+        i = k;
+        if (j != 0) {
+          if (!bool)
           {
-            bhwf.a(this.a, paramMessage, new bhpz(this));
-            this.a.b(i, paramMessage);
-            return true;
-          }
-          if (i != 110509) {
-            break label2167;
-          }
-          if (AuthorityActivity.a(this.a) < 1)
-          {
-            AuthorityActivity.a(this.a, 1);
-            atqa.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD");
-            biek.a().a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_MqqObserverSSOAccountObserver, AuthorityActivity.jdField_e_of_type_JavaLangString, 3);
-            AuthorityActivity.a(this.a).jdField_a_of_type_Long = System.currentTimeMillis();
+            i = k;
+            if (!paramBoolean2) {}
           }
           else
           {
-            QLog.d("AuthorityActivity", 1, "showLoginActivity AUTHORIZE_DONE 110509");
-            QQToast.a(this.a, 1, amtj.a(2131706961), 0).a();
-            this.a.c(this.a.jdField_a_of_type_JavaLangString);
+            i = 1;
           }
         }
-        catch (JSONException paramMessage) {}
-      }
-      else
-      {
-        this.a.b(((SdkAuthorize.AuthorizeResponse)localObject1).openid.get());
-        this.a.a(((SdkAuthorize.AuthorizeResponse)localObject1).openid.get(), ((SdkAuthorize.AuthorizeResponse)localObject1).encrytoken.get());
-        try
-        {
-          paramMessage = new JSONObject();
-          paramMessage.put("ret", ((SdkAuthorize.AuthorizeResponse)localObject1).ret.get());
-          paramMessage.put("openid", ((SdkAuthorize.AuthorizeResponse)localObject1).openid.get());
-          paramMessage.put("access_token", ((SdkAuthorize.AuthorizeResponse)localObject1).access_token.get());
-          paramMessage.put("pay_token", ((SdkAuthorize.AuthorizeResponse)localObject1).pay_token.get());
-          paramMessage.put("expires_in", ((SdkAuthorize.AuthorizeResponse)localObject1).expires_in.get());
-          paramMessage.put("pf", ((SdkAuthorize.AuthorizeResponse)localObject1).pf.get());
-          paramMessage.put("pfkey", ((SdkAuthorize.AuthorizeResponse)localObject1).pfkey.get());
-          paramMessage.put("msg", ((SdkAuthorize.AuthorizeResponse)localObject1).msg.get());
-          paramMessage.put("login_cost", this.a.jdField_e_of_type_Long - this.a.d);
-          paramMessage.put("query_authority_cost", this.a.jdField_g_of_type_Long - this.a.jdField_f_of_type_Long);
-          if (this.a.i != 0L) {
-            break label2354;
-          }
-          paramMessage.put("authority_cost", 0);
-          if (((SdkAuthorize.AuthorizeResponse)localObject1).sendinstall.has()) {
-            paramMessage.put("sendinstall", ((SdkAuthorize.AuthorizeResponse)localObject1).sendinstall.get());
-          }
-          if ((((SdkAuthorize.AuthorizeResponse)localObject1).installwording.has()) && (!TextUtils.isEmpty(((SdkAuthorize.AuthorizeResponse)localObject1).installwording.get()))) {
-            paramMessage.put("installwording", ((SdkAuthorize.AuthorizeResponse)localObject1).installwording.get());
-          }
-          if ((!((SdkAuthorize.AuthorizeResponse)localObject1).passDataResp.has()) || (((SdkAuthorize.AuthorizeResponse)localObject1).passDataResp.size() <= 0)) {
-            break label2380;
-          }
-          localObject2 = ((SdkAuthorize.AuthorizeResponse)localObject1).passDataResp.get().iterator();
-          while (((Iterator)localObject2).hasNext())
-          {
-            localObject3 = (appType.PassData)((Iterator)localObject2).next();
-            paramMessage.put(((appType.PassData)localObject3).key.get(), ((appType.PassData)localObject3).value.get());
-          }
-          localObject1 = new HashMap();
-        }
-        catch (JSONException paramMessage) {}
-        if (!this.a.jdField_h_of_type_Boolean) {
-          break label2449;
-        }
-      }
-      for (paramMessage = "1";; paramMessage = "0")
-      {
-        ((HashMap)localObject1).put("autologin", paramMessage);
-        if (!this.a.jdField_e_of_type_Boolean) {
-          break label2552;
-        }
-        if (!this.a.jdField_f_of_type_Boolean) {
-          break label2456;
-        }
-        ((HashMap)localObject1).put("appid", AuthorityActivity.jdField_e_of_type_JavaLangString);
-        ((HashMap)localObject1).put("p1", "notlogged");
-        ((HashMap)localObject1).put("p2", "auth");
-        StatisticCollector.getInstance(this.a).collectPerformance(this.a.jdField_a_of_type_JavaLangString, "connect_sso_lognback", true, System.currentTimeMillis() - this.a.jdField_b_of_type_Long, 0L, (HashMap)localObject1, "");
-        this.a.b("wtl_lognback", this.a.jdField_a_of_type_Biej.jdField_a_of_type_JavaLangString);
-        break;
-        if (i == 1105030)
-        {
-          this.a.d(i, (String)localObject2);
-          paramMessage = bifi.a(AuthorityActivity.jdField_e_of_type_JavaLangString, this.a.jdField_a_of_type_Biej.jdField_a_of_type_JavaLangString);
-          if ((paramMessage != null) && (paramMessage.length > 0))
-          {
-            localObject3 = new SdkAuthorize.AuthorizeResponse();
-            try
-            {
-              paramMessage = (SdkAuthorize.AuthorizeResponse)((SdkAuthorize.AuthorizeResponse)localObject3).mergeFrom(paramMessage);
-              localObject3 = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-              ((Message)localObject3).what = 1;
-              ((Message)localObject3).obj = paramMessage;
-              this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject3);
-              return true;
-            }
-            catch (InvalidProtocolBufferMicroException paramMessage) {}
-          }
-          this.a.c(i, (String)localObject2);
-          return true;
-        }
-        if (i != 100044) {
-          break label1464;
-        }
-        localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put("ret", ((SdkAuthorize.AuthorizeResponse)localObject1).ret.get());
-        ((JSONObject)localObject2).put("msg", ((SdkAuthorize.AuthorizeResponse)localObject1).msg.get());
-        bhwf.a(this.a, paramMessage, new bhqa(this, (SdkAuthorize.AuthorizeResponse)localObject1, (JSONObject)localObject2));
-        break label1464;
-        paramMessage.put("authority_cost", this.a.i - this.a.jdField_h_of_type_Long);
-        break label1867;
-        if (AuthorityActivity.b(this.a))
-        {
-          ForwardUtils.reportAuthorityTotal(((SdkAuthorize.AuthorizeResponse)localObject1).ret.get(), this.a.jdField_a_of_type_Biej);
-          bhuh.a().a(this.a.jdField_a_of_type_AndroidOsBundle, true);
-          break label2019;
-        }
-        this.a.b(((SdkAuthorize.AuthorizeResponse)localObject1).ret.get(), paramMessage.toString(), null, null);
-        break label2019;
-      }
-      ((HashMap)localObject1).put("appid", AuthorityActivity.jdField_e_of_type_JavaLangString);
-      ((HashMap)localObject1).put("p1", "notlogged");
-      ((HashMap)localObject1).put("p2", "uauth");
-      StatisticCollector.getInstance(this.a).collectPerformance(this.a.jdField_a_of_type_JavaLangString, "connect_sso_lognback", true, System.currentTimeMillis() - this.a.jdField_b_of_type_Long, 0L, (HashMap)localObject1, "");
-      this.a.b("wtl_lognauthorizenback", this.a.jdField_a_of_type_Biej.jdField_a_of_type_JavaLangString);
-      break;
-      label2552:
-      if (this.a.jdField_f_of_type_Boolean)
-      {
-        ((HashMap)localObject1).put("appid", AuthorityActivity.jdField_e_of_type_JavaLangString);
-        ((HashMap)localObject1).put("p1", "logged");
-        ((HashMap)localObject1).put("p2", "auth");
-        StatisticCollector.getInstance(this.a).collectPerformance(this.a.jdField_a_of_type_JavaLangString, "connect_sso_lognback", true, System.currentTimeMillis() - this.a.jdField_b_of_type_Long, 0L, (HashMap)localObject1, "");
-        this.a.b("wtl_loggednunauthorizedback", this.a.jdField_a_of_type_Biej.jdField_a_of_type_JavaLangString);
-        break;
-      }
-      ((HashMap)localObject1).put("appid", AuthorityActivity.jdField_e_of_type_JavaLangString);
-      ((HashMap)localObject1).put("p1", "logged");
-      ((HashMap)localObject1).put("p2", "uauth");
-      StatisticCollector.getInstance(this.a).collectPerformance(this.a.jdField_a_of_type_JavaLangString, "connect_sso_lognback", true, System.currentTimeMillis() - this.a.jdField_b_of_type_Long, 0L, (HashMap)localObject1, "");
-      this.a.b("wtl_loggednauthorizedback", this.a.jdField_a_of_type_Biej.jdField_a_of_type_JavaLangString);
-      break;
-      paramMessage = (SdkAuthorize.GetAuthApiListRequest)paramMessage.obj;
-      this.a.a(paramMessage);
-      break;
-      paramMessage = (GetAppInfoProto.GetAppinfoResponse)paramMessage.obj;
-      if ((paramMessage != null) && (paramMessage.appName != null) && (!TextUtils.isEmpty(paramMessage.appName.get())))
-      {
-        localObject1 = paramMessage.appName.get();
-        this.a.jdField_a_of_type_ComTencentOpenAgentCardContainer.a((String)localObject1, null);
-        QLog.i("AuthorityActivity", 1, "get app info done, appName is " + (String)localObject1);
-      }
-      int m;
-      int j;
-      if ((!this.a.jdField_g_of_type_Boolean) && (paramMessage != null) && (paramMessage.iconsURL != null) && (paramMessage.iconsURL.has()))
-      {
-        m = 0;
-        j = 0;
-        i = 0;
-        if (i >= paramMessage.iconsURL.get().size()) {
-          break label3699;
-        }
-        localObject1 = (GetAppInfoProto.MsgIconsurl)paramMessage.iconsURL.get(i);
       }
       for (;;)
       {
-        try
+        if (i != 0)
         {
-          k = Integer.parseInt(((GetAppInfoProto.MsgIconsurl)localObject1).size.get());
-          if (k >= 100)
+          if (paramInt == 0)
           {
-            localObject1 = (GetAppInfoProto.MsgIconsurl)paramMessage.iconsURL.get(i);
-            if (localObject1 != null)
-            {
-              QLog.i("AuthorityActivity", 1, "get app info done, imgUrl is " + localObject1);
-              ThreadManager.executeOnNetWorkThread(new AuthorityActivity.8.5(this, (GetAppInfoProto.MsgIconsurl)localObject1));
+            return this.e + paramLong + ".png";
+            j = 0;
+            break;
+            label255:
+            i = 0;
+            break label146;
+            i = k;
+            if (j == 0) {
+              continue;
             }
-            if ((this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface != null) && (QLog.isColorLevel())) {
-              QLog.i("AuthorityActivity", 2, "user uin = " + this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getCurrentAccountUin());
+            i = k;
+            if (!paramBoolean1) {
+              continue;
             }
-            if (paramMessage == null) {
-              break label3434;
-            }
-            if ((paramMessage.ads == null) || (!paramMessage.ads.has())) {
-              break label3394;
-            }
-            paramMessage = (GetAppInfoProto.Ads)paramMessage.ads.get();
-            if ((!paramMessage.beginTime.has()) || (!paramMessage.endTime.has())) {
-              break label3354;
-            }
-            l1 = paramMessage.beginTime.get();
-            long l2 = paramMessage.endTime.get();
-            long l3 = paramMessage.serverTime.get();
-            localObject1 = paramMessage.imgURL.get();
-            if (QLog.isColorLevel()) {
-              QLog.i("AuthorityActivity", 2, "Ads begin time = " + l1 + " endTime = " + l2 + " serverTime = " + l3 + " imgURL = " + (String)localObject1 + " adsTxt = " + paramMessage.txt.get());
-            }
-            if ((l3 < l1) || (l3 > l2)) {
-              break label3329;
-            }
-            localObject2 = new Message();
-            ((Message)localObject2).obj = paramMessage.txt.get();
-            ((Message)localObject2).what = 8;
-            this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject2);
-            ThreadManager.executeOnNetWorkThread(new AuthorityActivity.8.6(this, (String)localObject1));
+            i = 1;
+            continue;
           }
+          return this.e + paramLong + "_" + paramInt + ".png";
         }
-        catch (NumberFormatException localNumberFormatException)
+      }
+      QLog.e("VipGrayConfigHelper", 1, "getNamePlateOfKingUrl namePlateOfKingUrl = null gameAppId= " + paramLong + " dan= " + paramInt + " danSwitch= " + paramBoolean1 + " localSwitch = " + bool);
+      return null;
+      i = 0;
+    }
+  }
+  
+  /* Error */
+  public void a(bhpy parambhpy)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: iconst_0
+    //   3: istore_2
+    //   4: iload_2
+    //   5: aload_0
+    //   6: getfield 73	bhpw:jdField_b_of_type_JavaUtilList	Ljava/util/List;
+    //   9: invokeinterface 89 1 0
+    //   14: if_icmpge +38 -> 52
+    //   17: aload_0
+    //   18: getfield 73	bhpw:jdField_b_of_type_JavaUtilList	Ljava/util/List;
+    //   21: iload_2
+    //   22: invokeinterface 92 2 0
+    //   27: checkcast 298	mqq/util/WeakReference
+    //   30: invokevirtual 301	mqq/util/WeakReference:get	()Ljava/lang/Object;
+    //   33: checkcast 303	bhpy
+    //   36: astore_3
+    //   37: aload_3
+    //   38: aload_1
+    //   39: if_acmpne +6 -> 45
+    //   42: aload_0
+    //   43: monitorexit
+    //   44: return
+    //   45: iload_2
+    //   46: iconst_1
+    //   47: iadd
+    //   48: istore_2
+    //   49: goto -45 -> 4
+    //   52: aload_1
+    //   53: ifnull -11 -> 42
+    //   56: aload_0
+    //   57: getfield 73	bhpw:jdField_b_of_type_JavaUtilList	Ljava/util/List;
+    //   60: new 298	mqq/util/WeakReference
+    //   63: dup
+    //   64: aload_1
+    //   65: invokespecial 367	mqq/util/WeakReference:<init>	(Ljava/lang/Object;)V
+    //   68: invokeinterface 370 2 0
+    //   73: pop
+    //   74: goto -32 -> 42
+    //   77: astore_1
+    //   78: aload_0
+    //   79: monitorexit
+    //   80: aload_1
+    //   81: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	82	0	this	bhpw
+    //   0	82	1	parambhpy	bhpy
+    //   3	46	2	i	int
+    //   36	2	3	localbhpy	bhpy
+    // Exception table:
+    //   from	to	target	type
+    //   4	37	77	finally
+    //   56	74	77	finally
+  }
+  
+  public void a(URLImageView paramURLImageView, boolean paramBoolean1, long paramLong1, long paramLong2, int paramInt, boolean paramBoolean2, String paramString)
+  {
+    if (paramURLImageView == null) {}
+    do
+    {
+      return;
+      paramURLImageView.setVisibility(8);
+    } while (!a(paramBoolean1, paramLong1));
+    paramURLImageView.setVisibility(0);
+    paramString = a(paramString, paramLong2, paramInt, paramBoolean2);
+    if (TextUtils.isEmpty(paramString))
+    {
+      paramURLImageView.setVisibility(8);
+      return;
+    }
+    URLDrawable localURLDrawable = URLDrawable.getDrawable(paramString, new ColorDrawable(), new ColorDrawable());
+    if (localURLDrawable.getStatus() != 1) {
+      localURLDrawable.restartDownload();
+    }
+    paramURLImageView.setBackgroundDrawable(localURLDrawable);
+    paramURLImageView.setURLDrawableDownListener(new bhpx(this, paramString, paramURLImageView));
+  }
+  
+  public void a(AppRuntime paramAppRuntime)
+  {
+    a(paramAppRuntime, false);
+  }
+  
+  public void a(AppRuntime paramAppRuntime, boolean paramBoolean)
+  {
+    if (paramAppRuntime == null) {
+      QLog.e("VipGrayConfigHelper", 1, "parsejson error, app = null");
+    }
+    Object localObject;
+    for (;;)
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("VipGrayConfigHelper", 2, "parsejson, begin");
+      }
+      c();
+      try
+      {
+        localObject = VasQuickUpdateManager.getJSONFromLocal(paramAppRuntime, "vip_personal_card.json", true, null);
+        if (localObject == null)
         {
-          int k = 0;
-          continue;
-          int n = m;
-          if (k > m)
-          {
-            j = i;
-            n = k;
+          if (!QLog.isColorLevel()) {
+            continue;
           }
-          i += 1;
-          m = n;
+          QLog.d("VipGrayConfigHelper", 2, "parsejson file not exists");
         }
-        break label2892;
-        this.a.jdField_a_of_type_ComTencentOpenAgentCardContainer.a = false;
-        this.a.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(null);
-        break;
-        this.a.jdField_a_of_type_ComTencentOpenAgentCardContainer.a = false;
-        this.a.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(null);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("AuthorityActivity", 2, "Ads begin time or endTime = null");
-        break;
-        this.a.jdField_a_of_type_ComTencentOpenAgentCardContainer.a = false;
-        this.a.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(null);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("AuthorityActivity", 2, "Ads = null");
-        break;
-        this.a.jdField_a_of_type_ComTencentOpenAgentCardContainer.a = false;
-        this.a.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(null);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("AuthorityActivity", 2, "response = null");
-        break;
-        paramMessage = (Bitmap)paramMessage.obj;
-        this.a.jdField_g_of_type_Boolean = true;
-        QLog.i("AuthorityActivity", 1, "get app icon done");
-        this.a.jdField_a_of_type_ComTencentOpenAgentCardContainer.a("", paramMessage);
-        break;
-        this.a.jdField_a_of_type_ComTencentOpenAgentCardContainer.a = true;
-        paramMessage = (String)paramMessage.obj;
-        this.a.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(paramMessage);
-        break;
-        paramMessage = (Bitmap)paramMessage.obj;
-        this.a.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(paramMessage);
-        break;
-        this.a.a();
-        break;
-        ThreadManager.postImmediately(new AuthorityActivity.8.7(this), null, true);
-        break;
-        i = paramMessage.arg1;
-        paramMessage = (String)paramMessage.obj;
-        this.a.b(i, paramMessage);
-        break;
-        this.a.j();
-        if (this.a.j) {
-          break;
-        }
-        localObject2 = paramMessage.getData();
-        i = ((Bundle)localObject2).getInt("error", -1);
-        paramMessage = ((Bundle)localObject2).getString("response");
-        String str = ((Bundle)localObject2).getString("msg");
-        localObject2 = ((Bundle)localObject2).getString("detail");
-        this.a.b(i, paramMessage, str, (String)localObject2);
-        break;
-        i = j;
+      }
+      catch (Exception paramAppRuntime)
+      {
+        QLog.e("VipGrayConfigHelper", 1, "parseJson exception", paramAppRuntime);
       }
     }
-    label1464:
-    label1867:
-    label2380:
-    label2892:
-    label3434:
-    label3699:
-    return true;
-    label2354:
-    label3394:
-    return true;
+    for (;;)
+    {
+      b();
+      return;
+      localObject = ((JSONObject)localObject).optJSONArray("vipGrayConfig");
+      if ((localObject != null) && (((JSONArray)localObject).length() > 0)) {
+        a(paramAppRuntime, (JSONArray)localObject, paramBoolean);
+      } else {
+        QLog.e("VipGrayConfigHelper", 1, "parsejson configList = null or len < 0");
+      }
+    }
+  }
+  
+  public boolean a(AppRuntime paramAppRuntime, JSONObject paramJSONObject)
+  {
+    bool3 = false;
+    bool1 = false;
+    boolean bool2 = true;
+    if ((paramAppRuntime == null) || (paramJSONObject == null))
+    {
+      QLog.e("VipGrayConfigHelper", 1, "isConfigValid app = null || config = null");
+      bool2 = bool1;
+      return bool2;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("VipGrayConfigHelper", 2, "isConfigValid config = " + paramJSONObject.toString());
+    }
+    try
+    {
+      i = paramJSONObject.optInt("platformId");
+      if (i != 0)
+      {
+        bool1 = bool3;
+        if (i != 2) {
+          break label300;
+        }
+      }
+      if (!paramJSONObject.has("minVersion")) {
+        break label434;
+      }
+      str = paramJSONObject.getString("minVersion");
+      if ((TextUtils.isEmpty(str)) || (bhnm.a(str, "8.4.10.4875"))) {
+        break label434;
+      }
+      i = 0;
+    }
+    catch (Exception paramAppRuntime)
+    {
+      for (;;)
+      {
+        String str;
+        int j;
+        int k;
+        long l1;
+        long l2;
+        long l3;
+        label300:
+        label340:
+        label383:
+        QLog.e("VipGrayConfigHelper", 1, "isConfigValid exception", paramAppRuntime);
+        bool1 = bool3;
+        continue;
+        int i = 1;
+        continue;
+        bool1 = false;
+      }
+    }
+    j = i;
+    if (i != 0)
+    {
+      j = i;
+      if (paramJSONObject.has("maxVersion"))
+      {
+        str = paramJSONObject.getString("maxVersion");
+        j = i;
+        if (!TextUtils.isEmpty(str))
+        {
+          j = i;
+          if (!bhnm.a("8.4.10.4875", str)) {
+            j = 0;
+          }
+        }
+      }
+    }
+    bool1 = bool3;
+    if (j != 0)
+    {
+      paramAppRuntime = paramAppRuntime.getAccount();
+      i = paramJSONObject.optInt("startIndex");
+      j = paramJSONObject.optInt("endIndex");
+      if (i < j) {
+        break label383;
+      }
+      k = paramAppRuntime.length();
+      if ((k < i) || (k < j)) {
+        break label340;
+      }
+      l1 = Long.parseLong(paramAppRuntime.substring(k - i, k - j + 1));
+      l2 = paramJSONObject.optLong("min");
+      l3 = paramJSONObject.optLong("max");
+      if ((l1 < l2) || (l1 > l3)) {
+        break label439;
+      }
+    }
+    for (bool1 = bool2;; bool1 = bool3)
+    {
+      bool2 = bool1;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("VipGrayConfigHelper", 2, "isConfigValid valid = " + bool1);
+      return bool1;
+      QLog.e("VipGrayConfigHelper", 1, "parseJson, index config error, uin length=" + k + ", config=" + paramJSONObject.toString());
+      break label439;
+      QLog.e("VipGrayConfigHelper", 1, "parseJson, startIndex < endIndex, element=" + paramJSONObject);
+    }
+  }
+  
+  public boolean a(boolean paramBoolean, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VipGrayConfigHelper", 2, "showNamePlateOfKing, isSuperVip = " + paramBoolean + ", lastLoginTime = " + paramLong);
+    }
+    if (!paramBoolean) {
+      return false;
+    }
+    long l = paramLong;
+    if (paramLong < 0L) {
+      l = 0L;
+    }
+    paramLong = NetConnInfoCenter.getServerTime();
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.setTimeInMillis(paramLong * 1000L);
+    int i = localCalendar.get(6);
+    localCalendar.setTimeInMillis(l * 1000L);
+    return i - localCalendar.get(6) <= this.jdField_a_of_type_Int;
+  }
+  
+  public void b(bhpy parambhpy)
+  {
+    int i = 0;
+    for (;;)
+    {
+      try
+      {
+        if (i < this.jdField_b_of_type_JavaUtilList.size())
+        {
+          if ((bhpy)((WeakReference)this.jdField_b_of_type_JavaUtilList.get(i)).get() == parambhpy)
+          {
+            parambhpy = this.jdField_b_of_type_JavaUtilList.get(i);
+            if (parambhpy != null) {
+              this.jdField_b_of_type_JavaUtilList.remove(parambhpy);
+            }
+            return;
+          }
+          i += 1;
+        }
+        else
+        {
+          parambhpy = null;
+        }
+      }
+      finally {}
+    }
   }
 }
 

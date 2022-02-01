@@ -19,6 +19,7 @@ import com.tencent.open.base.MD5Utils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qqcircle.QCircleConstants;
+import cooperation.qqcircle.picload.avatar.QCircleAvatarLoader;
 import cooperation.qqcircle.report.QCircleQualityReporter;
 import java.util.HashMap;
 import java.util.concurrent.BlockingQueue;
@@ -46,7 +47,7 @@ public class QCircleFeedPicLoader
   public static String TAG = "QCircleFeedPicLoader";
   private static QCircleFeedPicLoader mInstance;
   private static HashMap<String, String> mKeyHashMap;
-  private final AtomicInteger mAtomicInteger = new AtomicInteger(10000);
+  public static final AtomicInteger sAtomicInteger = new AtomicInteger(10000);
   private final byte[] mCacheLock = new byte[1];
   private ThreadPoolExecutor mDecodeExecutor;
   private ConcurrentHashMap<String, QCircleFeedPicLoader.PicDeCodeTask> mDecodeTasks;
@@ -120,7 +121,7 @@ public class QCircleFeedPicLoader
     if (NinePatch.isNinePatchChunk(arrayOfByte))
     {
       paramBitmap = new NinePatchDrawable(BaseApplicationImpl.getContext().getResources(), paramBitmap, arrayOfByte, new Rect(), null);
-      paramOption.mPicType = 2;
+      paramOption.setPicType(2);
       return paramBitmap;
     }
     return new BitmapDrawable(BaseApplicationImpl.getContext().getResources(), paramBitmap);
@@ -172,9 +173,9 @@ public class QCircleFeedPicLoader
     SharePreferenceUtils.set(BaseApplicationImpl.getApplication(), "qcircle_pic_cache_time", String.valueOf(l));
   }
   
-  private ThreadPoolExecutor createPool(int paramInt1, int paramInt2)
+  public static ThreadPoolExecutor createPool(int paramInt1, int paramInt2)
   {
-    return new ThreadPoolExecutor(paramInt1, paramInt2, 120L, TimeUnit.SECONDS, new PriorityBlockingQueue(200, new QCircleFeedPicLoader.2(this)), Executors.defaultThreadFactory(), new QCircleFeedPicLoader.3(this));
+    return new ThreadPoolExecutor(paramInt1, paramInt2, 120L, TimeUnit.SECONDS, new PriorityBlockingQueue(200, new QCircleFeedPicLoader.2()), Executors.defaultThreadFactory(), new QCircleFeedPicLoader.3());
   }
   
   private void decodeFile(@NotNull Option paramOption, QCircleFeedPicLoader.QCirclePicStateListener paramQCirclePicStateListener)
@@ -185,7 +186,7 @@ public class QCircleFeedPicLoader
     {
       return;
       localPicDeCodeTask = (QCircleFeedPicLoader.PicDeCodeTask)this.mDecodeTasks.get(str);
-    } while ((localPicDeCodeTask != null) && (localPicDeCodeTask.mOption.getTargetView() == paramOption.getTargetView()));
+    } while ((localPicDeCodeTask != null) && (localPicDeCodeTask.mOption.getTargetView() != null) && (localPicDeCodeTask.mOption.getTargetView() == paramOption.getTargetView()));
     paramOption.mDecodeStartTime = Long.valueOf(System.currentTimeMillis());
     QCircleFeedPicLoader.PicDeCodeTask localPicDeCodeTask = new QCircleFeedPicLoader.PicDeCodeTask(this, paramOption);
     localPicDeCodeTask.setStatusListener(paramQCirclePicStateListener);
@@ -206,7 +207,7 @@ public class QCircleFeedPicLoader
     {
       return;
       localPicDownLoadTask = (QCircleFeedPicLoader.PicDownLoadTask)this.mDownLoadTasks.get(str);
-    } while ((localPicDownLoadTask != null) && (localPicDownLoadTask.mOption.getTargetView() == paramOption.getTargetView()));
+    } while ((localPicDownLoadTask != null) && (localPicDownLoadTask.mOption.getTargetView() != null) && (localPicDownLoadTask.mOption.getTargetView() == paramOption.getTargetView()));
     paramOption.mDownLoadStartTime = Long.valueOf(System.currentTimeMillis());
     QCircleFeedPicLoader.PicDownLoadTask localPicDownLoadTask = new QCircleFeedPicLoader.PicDownLoadTask(this, paramOption);
     localPicDownLoadTask.setStatusListener(paramQCirclePicStateListener);
@@ -291,7 +292,7 @@ public class QCircleFeedPicLoader
       if (paramOption.mDecodeStartTime != null) {
         d = (float)(System.currentTimeMillis() - paramOption.mDecodeStartTime.longValue()) / 1000.0F;
       }
-      QCircleQualityReporter.reportImageQualityEvent("image_decode_ret", String.valueOf(d), String.valueOf(paramInt), paramOption.getUrl(), paramOption.mPicType);
+      QCircleQualityReporter.reportImageQualityEvent("image_decode_ret", String.valueOf(d), String.valueOf(paramInt), paramOption.getUrl(), paramOption.getPicType());
     }
   }
   
@@ -303,7 +304,7 @@ public class QCircleFeedPicLoader
       if (paramOption.mDownLoadStartTime != null) {
         d = (float)(System.currentTimeMillis() - paramOption.mDownLoadStartTime.longValue()) / 1000.0F;
       }
-      QCircleQualityReporter.reportImageQualityEvent("image_download_ret", String.valueOf(d), String.valueOf(paramInt), paramOption.getUrl() + "  iP:" + paramOption.getIP(), paramOption.mPicType);
+      QCircleQualityReporter.reportImageQualityEvent("image_download_ret", String.valueOf(d), String.valueOf(paramInt), paramOption.getUrl() + "  iP:" + paramOption.getIP(), paramOption.getPicType());
     }
   }
   
@@ -433,8 +434,12 @@ public class QCircleFeedPicLoader
   {
     String str = getCacheKey(paramOption);
     Object localObject = getCache(str);
-    paramOption.setSeq(this.mAtomicInteger.getAndIncrement());
-    paramOption.mStartTime = Long.valueOf(System.currentTimeMillis());
+    if (paramOption.getSeq() == 0) {
+      paramOption.setSeq(sAtomicInteger.getAndIncrement());
+    }
+    if (paramOption.mStartTime == null) {
+      paramOption.mStartTime = Long.valueOf(System.currentTimeMillis());
+    }
     QLog.i(TAG, 1, "seq = " + paramOption.getSeq() + " cacheKey = " + paramOption.getCacheKey() + " url = " + paramOption.getUrl() + " isFromPreload:" + paramOption.isFromPreload());
     if ((localObject instanceof Bitmap))
     {
@@ -454,6 +459,7 @@ public class QCircleFeedPicLoader
   
   public void release()
   {
+    QCircleAvatarLoader.g().release();
     this.mDownLoadTasks.clear();
     this.mDecodeTasks.clear();
     this.mDecodeExecutor.getQueue().clear();

@@ -30,7 +30,7 @@ public class TroopStoryLineLinearLayout
   @TargetApi(16)
   private void a()
   {
-    Drawable localDrawable = getResources().getDrawable(2130840550);
+    Drawable localDrawable = getResources().getDrawable(2130840589);
     Object localObject;
     float f;
     if ((localDrawable instanceof RotateDrawable))

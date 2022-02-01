@@ -1,25 +1,49 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QZoneConfigHelper;
+import cooperation.qzone.contentbox.QZoneMsgActivity;
 
-class aowl
-  extends amwl
+public class aowl
+  extends aouc
 {
-  aowl(aowk paramaowk) {}
-  
-  public void onMsgRevokeNotice(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
+  public aowl(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if ((aowk.a(this.a) != null) && (paramList != null))
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        MessageRecord localMessageRecord = (MessageRecord)paramList.next();
-        if ((localMessageRecord != null) && (localMessageRecord.uniseq == aowk.a(this.a).b)) {
-          this.a.a(localMessageRecord.uniseq);
-        }
-      }
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  private boolean C()
+  {
+    if (this.a == null) {
+      return false;
     }
+    long l = QZoneConfigHelper.enableQZoneContentBoxMiniProgram();
+    if (l != 0L) {
+      QZoneMsgActivity.launchContentBoxMiniProgram(l, this.a);
+    }
+    for (;;)
+    {
+      return true;
+      Intent localIntent = new Intent(this.a, QZoneMsgActivity.class);
+      localIntent.addFlags(67108864);
+      this.a.startActivity(localIntent);
+    }
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      boolean bool = C();
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QzonePublicAccountAction", 1, "doAction error: " + localException.getMessage());
+      a("QzonePublicAccountAction");
+    }
+    return false;
   }
 }
 

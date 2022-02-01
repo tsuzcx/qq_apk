@@ -1,16 +1,10 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-
-class bhee
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface bhee
 {
-  bhee(bheb parambheb) {}
+  public abstract void a(String paramString, int paramInt);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    bheb.b(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.a.invalidateSelf();
-  }
+  public abstract void a(String paramString, long paramLong1, long paramLong2);
+  
+  public abstract void b(String paramString, int paramInt);
 }
 
 

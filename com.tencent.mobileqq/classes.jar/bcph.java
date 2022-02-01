@@ -1,23 +1,15 @@
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONObject;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class bcph
+class bcph
+  implements View.OnTouchListener
 {
-  public JSONObject a = new JSONObject();
+  bcph(bcpg parambcpg) {}
   
-  public boolean a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    JSONObject localJSONObject = this.a.optJSONObject("plugin");
-    if (localJSONObject != null) {
-      return localJSONObject.optInt("preload", 0) == 1;
-    }
-    return false;
-  }
-  
-  @NotNull
-  public String toString()
-  {
-    return "StudyRoomConfBean{data=" + this.a + '}';
+    return true;
   }
 }
 

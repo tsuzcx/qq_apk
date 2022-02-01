@@ -1,57 +1,195 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqCheckBlackList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckBlackList;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter;
+import com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter.Builder;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.HashMap;
+import java.util.Map;
 
 public class vit
-  extends vqr<viu>
 {
-  private static final String jdField_a_of_type_JavaLangString = vpl.a("StorySvc.check_location_blacklist");
-  private List<vjq> jdField_a_of_type_JavaUtilList;
+  private static Map<String, Long> a = new HashMap();
   
-  public String a()
+  private static WSStatisticsReporter.Builder a(String paramString)
   {
-    return jdField_a_of_type_JavaLangString;
+    return new WSStatisticsReporter.Builder().setSopName(paramString).setSceneFrom("QQ_profile_settings").setFlush(true).setImmediatelyUpload(vnd.c());
   }
   
-  public vqm a(byte[] paramArrayOfByte)
+  private static String a(azrb paramazrb)
   {
-    qqstory_service.RspCheckBlackList localRspCheckBlackList = new qqstory_service.RspCheckBlackList();
-    try
+    if ((paramazrb != null) && (paramazrb.a != null)) {
+      return paramazrb.a.jdField_a_of_type_JavaLangString;
+    }
+    return "";
+  }
+  
+  private static String a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      return "profile_main";
+    }
+    return "profile_guest";
+  }
+  
+  public static void a()
+  {
+    a("privacy_settings", "");
+  }
+  
+  public static void a(azrb paramazrb, QQAppInterface paramQQAppInterface)
+  {
+    String str = a(paramazrb);
+    a(a(a(paramazrb, paramQQAppInterface, str)), str);
+  }
+  
+  private static void a(WSStatisticsReporter.Builder paramBuilder, String paramString)
+  {
+    paramBuilder.build(paramString).report();
+  }
+  
+  private static void a(String paramString1, String paramString2)
+  {
+    a.put(paramString1, Long.valueOf(System.currentTimeMillis()));
+    a(paramString1, "1", 0L, paramString2);
+  }
+  
+  private static void a(String paramString1, String paramString2, long paramLong, String paramString3)
+  {
+    paramString1 = a(paramString1).addParams("event_type", paramString2);
+    if (TextUtils.equals("2", paramString2)) {
+      paramString1.addParams("page_live_time", String.valueOf(paramLong));
+    }
+    if (!TextUtils.isEmpty(paramString3))
     {
-      localRspCheckBlackList.mergeFrom(paramArrayOfByte);
-      return new viu(localRspCheckBlackList);
+      paramString2 = new HashMap();
+      paramString2.put("owner_id", paramString3);
+      paramString1.addExtParams(paramString2);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    a(paramString1, "gzh_pagevisit");
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      return;
+    }
+    a(a("privacy_settings").addParams("position", "weishi_switch").addParams("feed_id", "").addParams("owner_id", ""), "gzh_exposure");
+  }
+  
+  public static void a(boolean paramBoolean, String paramString)
+  {
+    WSStatisticsReporter.Builder localBuilder = a(a(paramBoolean));
+    if (paramBoolean) {}
+    for (String str = "my_weishi";; str = "owner_weishi")
     {
-      paramArrayOfByte.printStackTrace();
+      a(localBuilder.addParams("position", str).addParams("feed_id", "").addParams("owner_id", paramString), "gzh_exposure");
+      return;
     }
-    return null;
   }
   
-  public void a(@NonNull List<vjq> paramList)
+  public static void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    Object localObject2 = a(a(paramBoolean1));
+    Object localObject1;
+    if (paramBoolean1)
+    {
+      localObject1 = "my_weishi_jump";
+      localObject2 = ((WSStatisticsReporter.Builder)localObject2).addParams("position", (String)localObject1);
+      if (!paramBoolean2) {
+        break label115;
+      }
+      localObject1 = vkh.c;
+      label37:
+      localObject1 = ((WSStatisticsReporter.Builder)localObject2).addParams("action_id", (String)localObject1).addParams("feed_id", "").addParams("owner_id", paramString);
+      localObject2 = new HashMap();
+      if (paramBoolean1) {
+        if (!paramBoolean3) {
+          break label123;
+        }
+      }
+    }
+    label115:
+    label123:
+    for (paramString = "0";; paramString = "1")
+    {
+      ((Map)localObject2).put("click_status", paramString);
+      ((WSStatisticsReporter.Builder)localObject1).addExtParams((Map)localObject2);
+      a((WSStatisticsReporter.Builder)localObject1, "gzh_click");
+      return;
+      localObject1 = "owner_weishi_jump";
+      break;
+      localObject1 = vkh.b;
+      break label37;
+    }
   }
   
-  protected byte[] a()
+  private static boolean a(azrb paramazrb, QQAppInterface paramQQAppInterface, String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      throw new QQStoryCmdHandler.IllegalUinException("req gps list is null");
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramazrb != null)
+    {
+      bool1 = bool2;
+      if (paramazrb.a != null)
+      {
+        bool1 = bool2;
+        if (paramQQAppInterface != null)
+        {
+          bool1 = bool2;
+          if (!TextUtils.isEmpty(paramString)) {
+            if (paramazrb.a.jdField_a_of_type_Int != 0)
+            {
+              bool1 = bool2;
+              if (!TextUtils.equals(paramQQAppInterface.getCurrentAccountUin(), paramString)) {}
+            }
+            else
+            {
+              bool1 = true;
+            }
+          }
+        }
+      }
     }
-    qqstory_service.ReqCheckBlackList localReqCheckBlackList = new qqstory_service.ReqCheckBlackList();
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(((vjq)localIterator.next()).a());
+    return bool1;
+  }
+  
+  public static void b()
+  {
+    b("privacy_settings", "");
+  }
+  
+  public static void b(azrb paramazrb, QQAppInterface paramQQAppInterface)
+  {
+    String str = a(paramazrb);
+    b(a(a(paramazrb, paramQQAppInterface, str)), str);
+  }
+  
+  private static void b(String paramString1, String paramString2)
+  {
+    Long localLong = Long.valueOf(0L);
+    if (a != null) {
+      localLong = (Long)a.get(paramString1);
     }
-    localReqCheckBlackList.gps_list.addAll(localArrayList);
-    return localReqCheckBlackList.toByteArray();
+    if ((localLong != null) && (localLong.longValue() > 0L)) {}
+    for (long l = System.currentTimeMillis() - localLong.longValue();; l = 0L)
+    {
+      a(paramString1, "2", l, paramString2);
+      return;
+    }
+  }
+  
+  public static void b(boolean paramBoolean)
+  {
+    WSStatisticsReporter.Builder localBuilder = a("privacy_settings").addParams("position", "weishi_switch").addParams("action_id", vkh.jdField_a_of_type_JavaLangString).addParams("feed_id", "").addParams("owner_id", "");
+    HashMap localHashMap = new HashMap();
+    if (paramBoolean) {}
+    for (String str = "1";; str = "0")
+    {
+      localHashMap.put("switch", str);
+      localBuilder.addExtParams(localHashMap);
+      a(localBuilder, "gzh_click");
+      return;
+    }
   }
 }
 

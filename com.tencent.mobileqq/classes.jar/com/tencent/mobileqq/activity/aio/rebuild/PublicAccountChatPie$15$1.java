@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahiu;
-import ahiz;
+import aido;
+import aidt;
 import android.view.View;
 import android.widget.RelativeLayout;
 
 public class PublicAccountChatPie$15$1
   implements Runnable
 {
-  public PublicAccountChatPie$15$1(ahiz paramahiz) {}
+  public PublicAccountChatPie$15$1(aidt paramaidt) {}
   
   public void run()
   {
     if (this.a.a.a != null) {
       this.a.a.a.clearAnimation();
     }
-    ahiu.b(this.a.a).removeView(this.a.a.a);
+    aido.b(this.a.a).removeView(this.a.a.a);
   }
 }
 

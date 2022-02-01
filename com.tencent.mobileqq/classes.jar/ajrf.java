@@ -1,16 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.mobileqq.app.proxy.ProxyObserver;
+import mqq.os.MqqHandler;
 
-class ajrf
-  implements View.OnClickListener
+public class ajrf
+  extends ProxyObserver
 {
-  ajrf(ajre paramajre) {}
+  public ajrf(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  public void onClick(View paramView)
+  public void onProxySaveToDbFinished()
   {
-    ajre.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a.sendEmptyMessage(41);
   }
 }
 

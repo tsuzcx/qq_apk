@@ -1,22 +1,23 @@
 package com.tencent.mobileqq.apollo;
 
-import alnr;
-import alpg;
-import alph;
+import amme;
+import amog;
+import amoh;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ApolloActionData;
 
 public class ApolloResponseManager$1$1
   implements Runnable
 {
-  public ApolloResponseManager$1$1(alph paramalph, ApolloActionData paramApolloActionData) {}
+  public ApolloResponseManager$1$1(amoh paramamoh, ApolloActionData paramApolloActionData) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Alph.a.a == null) {
+    if (this.jdField_a_of_type_Amoh.a.a == null) {
       return;
     }
-    ((alnr)this.jdField_a_of_type_Alph.a.a.getManager(153)).a(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData, 4);
+    ((amme)this.jdField_a_of_type_Amoh.a.a.getManager(QQManagerFactory.APOLLO_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData, 4);
   }
 }
 

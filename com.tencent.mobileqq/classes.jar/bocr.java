@@ -1,14 +1,16 @@
-public class bocr
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
+class bocr
+  implements DialogInterface.OnDismissListener
 {
-  public static Object a;
-  public static String a;
-  public static volatile boolean a;
-  public static String b = "tag_v";
+  bocr(bocp parambocp) {}
   
-  static
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_JavaLangString = "captureTest";
+    if (bocp.a(this.a) != null) {
+      bocp.a(this.a).a();
+    }
   }
 }
 

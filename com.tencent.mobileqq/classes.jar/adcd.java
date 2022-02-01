@@ -1,41 +1,33 @@
-import android.content.res.Resources;
-import android.graphics.LightingColorFilter;
-import android.graphics.drawable.Drawable;
-import android.util.DisplayMetrics;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.app.Activity;
+import java.util.Map;
 
 public class adcd
-  implements View.OnTouchListener
+  extends adak
 {
-  public adcd(ChatSettingForTroop paramChatSettingForTroop) {}
+  public boolean b;
+  protected String c;
+  public String d;
+  public String e;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public adcd(Activity paramActivity, int paramInt, String paramString1, String paramString2)
   {
-    int i;
-    if ((TroopInfo.hasPayPrivilege(this.a.a.mTroopPrivilegeFlag, 128)) && (TroopInfo.hasPayPrivilege(this.a.a.mTroopPrivilegeFlag, 512)))
-    {
-      i = 1;
-      if ((!this.a.a.isMember) && (i != 0)) {
-        break label66;
-      }
-    }
-    label66:
-    do
-    {
-      return false;
-      i = 0;
-      break;
-      if (paramMotionEvent.getAction() == 0) {
-        paramView.getBackground().setColorFilter(new LightingColorFilter(0, -950263));
-      }
-    } while ((paramMotionEvent.getX() < this.a.getResources().getDisplayMetrics().widthPixels - 2) && (paramMotionEvent.getX() > 0.0F) && (paramMotionEvent.getY() > 0.0F) && (paramMotionEvent.getY() <= this.a.getResources().getDimensionPixelSize(2131297076) - 2) && (paramMotionEvent.getAction() != 3) && (paramMotionEvent.getAction() != 1));
-    paramView.getBackground().setColorFilter(new LightingColorFilter(0, -158425));
-    return false;
+    super(paramActivity, paramInt, paramString1);
+    this.c = paramString2;
+  }
+  
+  protected Map<String, adab> a()
+  {
+    return adcn.a();
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Int == 2;
+  }
+  
+  protected void c()
+  {
+    adap.a().a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.c, new adce(this));
   }
 }
 

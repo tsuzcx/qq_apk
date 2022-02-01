@@ -1,7 +1,8 @@
 package com.etrump.mixlayout;
 
-import amsw;
+import anvk;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import gb;
 
@@ -12,7 +13,7 @@ public class FontManager$4
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = ((amsw)this.this$0.a.getManager(51)).a(this.jdField_a_of_type_JavaLangString);
+    ExtensionInfo localExtensionInfo = ((anvk)this.this$0.a.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.jdField_a_of_type_JavaLangString);
     gb.a(this.this$0.a, this.jdField_a_of_type_JavaLangString, localExtensionInfo, this.jdField_a_of_type_Int, this.b);
   }
 }

@@ -4,16 +4,16 @@ import com.tencent.av.app.VideoAppInterface;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
-import lbx;
+import lcc;
 
 public class VideoCallStateMonitor$1
   implements Runnable
 {
-  public VideoCallStateMonitor$1(lbx paramlbx, HashMap paramHashMap) {}
+  public VideoCallStateMonitor$1(lcc paramlcc, HashMap paramHashMap) {}
   
   public void run()
   {
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(lbx.a(this.this$0).getCurrentAccountUin(), "av_memory_details", true, 0L, 0L, this.a, "");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(lcc.a(this.this$0).getCurrentAccountUin(), "av_memory_details", true, 0L, 0L, this.a, "");
   }
 }
 

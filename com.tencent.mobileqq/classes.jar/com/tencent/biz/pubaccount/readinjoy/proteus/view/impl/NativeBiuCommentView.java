@@ -1,23 +1,23 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view.impl;
 
-import amtj;
 import android.content.Context;
+import anvx;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import pvc;
-import qjq;
-import qtr;
-import tfp;
-import tfq;
-import tfr;
+import qfw;
+import qvv;
+import rfw;
+import ttb;
+import ttc;
+import ttd;
 
 public class NativeBiuCommentView
   extends NativeCommentView
-  implements IView, tfr<CharSequence>
+  implements IView, ttd<CharSequence>
 {
   public NativeBiuCommentView(Context paramContext)
   {
@@ -29,25 +29,25 @@ public class NativeBiuCommentView
   private void b()
   {
     QLog.d("NativeBiuCommentView", 2, "bindRecommendCommentHeader | linkTextColor " + this.b);
-    if (this.jdField_a_of_type_Tfp != null)
+    if (this.jdField_a_of_type_Ttb != null)
     {
-      ArticleInfo localArticleInfo = (ArticleInfo)this.jdField_a_of_type_Tfp.a();
+      ArticleInfo localArticleInfo = (ArticleInfo)this.jdField_a_of_type_Ttb.a();
       a(localArticleInfo);
       setMaxLines(a(localArticleInfo));
-      setSpanText(amtj.a(2131706190));
-      setMoreSpan(new qjq(this, localArticleInfo, this.b));
-      this.jdField_a_of_type_Tfp.a(this.b);
-      this.jdField_a_of_type_Tfq = this.jdField_a_of_type_Tfp.c();
-      this.jdField_a_of_type_Tfq.a(this);
-      QLog.d("NativeBiuCommentView", 2, "bindRecommendCommentHeader: " + this.jdField_a_of_type_Tfq.a());
-      setText((CharSequence)this.jdField_a_of_type_Tfq.a());
+      setSpanText(anvx.a(2131706542));
+      setMoreSpan(new qvv(this, localArticleInfo, this.b));
+      this.jdField_a_of_type_Ttb.a(this.b);
+      this.jdField_a_of_type_Ttc = this.jdField_a_of_type_Ttb.c();
+      this.jdField_a_of_type_Ttc.a(this);
+      QLog.d("NativeBiuCommentView", 2, "bindRecommendCommentHeader: " + this.jdField_a_of_type_Ttc.a());
+      setText((CharSequence)this.jdField_a_of_type_Ttc.a());
     }
   }
   
-  public void a(tfq<CharSequence> paramtfq)
+  public void a(ttc<CharSequence> paramttc)
   {
-    paramtfq = (CharSequence)paramtfq.a();
-    ThreadManager.getUIHandler().post(new NativeBiuCommentView.1(this, paramtfq));
+    paramttc = (CharSequence)paramttc.a();
+    ThreadManager.getUIHandler().post(new NativeBiuCommentView.1(this, paramttc));
   }
   
   public void comLayout(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -83,23 +83,23 @@ public class NativeBiuCommentView
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.jdField_a_of_type_Tfq != null) {
-      this.jdField_a_of_type_Tfq.b(this);
+    if (this.jdField_a_of_type_Ttc != null) {
+      this.jdField_a_of_type_Ttc.b(this);
     }
   }
   
   public void onStartTemporaryDetach()
   {
     super.onStartTemporaryDetach();
-    if (this.jdField_a_of_type_Tfq != null) {
-      this.jdField_a_of_type_Tfq.b(this);
+    if (this.jdField_a_of_type_Ttc != null) {
+      this.jdField_a_of_type_Ttc.b(this);
     }
   }
   
-  public void setModel(pvc parampvc)
+  public void setModel(qfw paramqfw)
   {
-    this.jdField_a_of_type_Qtr.a(parampvc);
-    this.jdField_a_of_type_Tfp = parampvc.a().articleViewModel;
+    this.jdField_a_of_type_Rfw.a(paramqfw);
+    this.jdField_a_of_type_Ttb = paramqfw.a().articleViewModel;
     b();
   }
 }

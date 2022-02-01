@@ -1,42 +1,38 @@
-import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.photo.PhotoCropForPortraitActivity;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class ajoq
-  implements View.OnClickListener
+  implements AdapterView.OnItemClickListener
 {
-  public ajoq(PhotoCropForPortraitActivity paramPhotoCropForPortraitActivity) {}
+  public ajoq(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    int i = 1;
-    Object localObject = this.a.a;
-    boolean bool;
-    String str;
-    if (!this.a.a.isChecked())
+    ajow localajow = (ajow)EmoticonGroupStoreFragment.a(this.a).get(paramInt);
+    boolean bool = localajow.jdField_a_of_type_Boolean;
+    if (bool)
     {
-      bool = true;
-      ((CheckBox)localObject).setChecked(bool);
-      this.a.d = this.a.a.isChecked();
-      this.a.i = 2;
-      localObject = this.a;
-      str = this.a.getCurrentAccountUin();
-      if (!this.a.d) {
-        break label103;
+      if (EmoticonGroupStoreFragment.b(this.a).contains(localajow.jdField_a_of_type_JavaLangString)) {
+        EmoticonGroupStoreFragment.b(this.a).remove(localajow.jdField_a_of_type_JavaLangString);
+      }
+      localajow = (ajow)EmoticonGroupStoreFragment.a(this.a).get(paramInt);
+      if (bool) {
+        break label144;
       }
     }
-    for (;;)
+    label144:
+    for (bool = true;; bool = false)
     {
-      bfyz.E((Context)localObject, str, i);
-      EventCollector.getInstance().onViewClicked(paramView);
+      localajow.jdField_a_of_type_Boolean = bool;
+      EmoticonGroupStoreFragment.a(this.a).notifyDataSetChanged();
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
       return;
-      bool = false;
+      EmoticonGroupStoreFragment.b(this.a).add(localajow.jdField_a_of_type_JavaLangString);
       break;
-      label103:
-      i = 0;
     }
   }
 }

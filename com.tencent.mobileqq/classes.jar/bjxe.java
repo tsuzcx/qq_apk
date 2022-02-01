@@ -1,93 +1,30 @@
-import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import com.tencent.qidian.QidianProfileCardActivity;
+import com.tencent.widget.BubblePopupWindow;
 
 public class bjxe
+  implements View.OnLongClickListener
 {
-  protected int a;
-  Context a;
-  protected bjxd a;
-  protected bjxg a;
-  protected boolean a;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bjxf(this);
+  public BubblePopupWindow a;
+  public String a;
   
-  public bjxe(bjxd parambjxd, Context paramContext)
+  public bjxe(QidianProfileCardActivity paramQidianProfileCardActivity)
   {
-    this.jdField_a_of_type_Int = 5;
-    this.jdField_a_of_type_Bjxd = parambjxd;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public int a()
+  public boolean onLongClick(View paramView)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(bjxg parambjxg)
-  {
-    this.jdField_a_of_type_Bjxg = parambjxg;
-    if (parambjxg != null)
-    {
-      a(true);
-      a(true, false);
-    }
-    this.jdField_a_of_type_Bjxd.setOnClickListener(new bjxf(this));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Boolean == paramBoolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Bjxd.a(3);
-      return;
-    }
-    this.jdField_a_of_type_Bjxd.a(0);
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (!paramBoolean1)
-    {
-      this.jdField_a_of_type_Bjxd.a(5);
-      return;
-    }
-    if (paramBoolean2) {}
-    for (int i = 3;; i = 4)
-    {
-      this.jdField_a_of_type_Bjxd.a(i);
-      if ((!this.jdField_a_of_type_Bjxd.b(i)) || (this.jdField_a_of_type_Bjxg == null)) {
-        break;
-      }
-      this.jdField_a_of_type_Bjxg.c();
-      return;
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    boolean bool;
-    do
-    {
-      do
-      {
-        return;
-      } while ((this.jdField_a_of_type_Bjxd.a() == 0) || (!this.jdField_a_of_type_Bjxd.b(2)));
-      bool = true;
-      if (this.jdField_a_of_type_Bjxg != null) {
-        bool = this.jdField_a_of_type_Bjxg.a(paramBoolean);
-      }
-    } while (!bool);
-    this.jdField_a_of_type_Bjxd.a(2);
+    int i = paramView.getId();
+    this.jdField_a_of_type_JavaLangString = String.valueOf(paramView.getTag());
+    bhjq localbhjq = new bhjq();
+    localbhjq.a(i, anvx.a(2131709204));
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bhcw.a(paramView, localbhjq, this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new bjxg(this));
+    return true;
   }
 }
 

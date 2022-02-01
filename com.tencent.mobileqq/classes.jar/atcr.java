@@ -1,53 +1,37 @@
-import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.mobileqq.filemanager.activity.favfile.QfileFavPicFileTabView;
+import com.tencent.mobileqq.filemanager.data.FavFileInfo;
 
 public class atcr
-  implements bjof
+  implements atcq
 {
-  public atcr(SendBottomBar paramSendBottomBar) {}
+  public atcr(QfileFavPicFileTabView paramQfileFavPicFileTabView) {}
   
-  public void a(View paramView, int paramInt, String paramString)
+  public View.OnClickListener a(TextView paramTextView)
   {
-    if (paramString.equals(amtj.a(2131712890)))
-    {
-      paramView = aszt.a("排序方式:\n时间", amtj.a(2131712899), null);
-      SendBottomBar.a(this.a).setText(paramView);
-      if (SendBottomBar.a(this.a).g() == 0) {
-        return;
-      }
-      SendBottomBar.a(this.a).d(0);
-    }
-    for (;;)
-    {
-      this.a.a.dismiss();
-      return;
-      if (paramString.equals(amtj.a(2131712919)))
-      {
-        paramView = aszt.a("排序方式:\n大小", amtj.a(2131712893), null);
-        SendBottomBar.a(this.a).setText(paramView);
-        if (SendBottomBar.a(this.a).g() == 1) {
-          break;
-        }
-        SendBottomBar.a(this.a).d(1);
-        continue;
-      }
-      if (paramString.equals(amtj.a(2131712892)))
-      {
-        paramView = aszt.a("排序方式:\n类型", amtj.a(2131712915), null);
-        SendBottomBar.a(this.a).setText(paramView);
-        if (SendBottomBar.a(this.a).g() == 2) {
-          break;
-        }
-        SendBottomBar.a(this.a).d(2);
-      }
-    }
+    this.a.g();
+    return null;
+  }
+  
+  public boolean a()
+  {
+    return this.a.a();
+  }
+  
+  public boolean a(FavFileInfo paramFavFileInfo)
+  {
+    return false;
+  }
+  
+  public boolean b()
+  {
+    return this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atcr
  * JD-Core Version:    0.7.0.1
  */

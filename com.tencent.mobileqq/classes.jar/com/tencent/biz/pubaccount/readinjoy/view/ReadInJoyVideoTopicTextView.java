@@ -44,7 +44,7 @@ public class ReadInJoyVideoTopicTextView
     int i;
     if (paramInt == 1)
     {
-      localObject = getResources().getDrawable(2130843209);
+      localObject = getResources().getDrawable(2130843245);
       paramInt = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 12.0F);
       ((Drawable)localObject).setBounds(0, 0, paramInt, paramInt);
       setCompoundDrawablePadding(DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 3.0F));
@@ -60,7 +60,7 @@ public class ReadInJoyVideoTopicTextView
       setPadding(DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 8.0F), i, DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 8.0F), i);
       setClickable(true);
       setFocusable(true);
-      setBackgroundResource(2130843206);
+      setBackgroundResource(2130843242);
       setSingleLine(true);
       setGravity(17);
       return;

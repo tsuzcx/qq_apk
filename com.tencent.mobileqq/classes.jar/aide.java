@@ -1,22 +1,24 @@
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
 
 class aide
-  extends CardObserver
+  extends anvi
 {
-  aide(aidb paramaidb) {}
+  aide(aidd paramaidd) {}
   
-  public void onSetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
+  protected void onAddFriend(String paramString)
   {
-    if (paramBoolean)
+    if (this.a.sessionInfo.curFriendUin.equals(paramString))
     {
-      QQToast.a(aidb.a(this.a), 2131698373, 3000).a();
-      if (aidb.a(this.a) != 23) {
-        this.a.a(true);
+      Intent localIntent = this.a.mActivity.getIntent();
+      localIntent.putExtra("uintype", 0);
+      aidd.b(this.a, localIntent);
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.tag + "Q.nearby.follow", 2, "onAddFriend, addUin:" + paramString + "|updateSession");
       }
-      return;
     }
-    QQToast.a(aidb.a(this.a), 2131698372, 0).a();
   }
 }
 

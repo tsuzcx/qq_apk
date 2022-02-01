@@ -1,17 +1,23 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class afch
-  implements Observer<ArrayList<ayfo>>
+class afch
+  implements DialogInterface.OnClickListener
 {
-  public afch(PlusPanel paramPlusPanel) {}
+  afch(afcg paramafcg, QQCustomDialog paramQQCustomDialog) {}
   
-  public void a(@Nullable ArrayList<ayfo> paramArrayList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(paramArrayList);
-    PlusPanel.a(this.a).a(this.a.a, new afci(this));
+    bdla.b(this.jdField_a_of_type_Afcg.a.app, "P_CliOper", "Grp_manage", "", "del_grp", "Clk_more", 0, 0, this.jdField_a_of_type_Afcg.a.a, "", "", "");
+    paramDialogInterface = new Intent(this.jdField_a_of_type_Afcg.a, QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", "https://kf.qq.com/touch/apifaq/120307IVnEni140626N3EZzq.html?platform=15&ADTAG=veda.mobileqq.app&_wv=1027");
+    paramDialogInterface.putExtra("webStyle", "noBottomBar");
+    this.jdField_a_of_type_Afcg.a.startActivity(paramDialogInterface);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
   }
 }
 

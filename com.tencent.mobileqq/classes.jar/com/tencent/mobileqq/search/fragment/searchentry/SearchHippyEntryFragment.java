@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.search.fragment.searchentry;
 
-import andr;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,10 +7,11 @@ import android.text.Editable;
 import android.util.Log;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
-import bass;
-import bbaa;
-import bbda;
-import bjne;
+import aogi;
+import bbzh;
+import bcgq;
+import bcjs;
+import bkyq;
 import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
 import com.tencent.hippy.qq.app.HippyQQEngine;
 import com.tencent.hippy.qq.app.HippyQQEngine.HippyQQEngineListener;
@@ -27,8 +27,8 @@ import com.tencent.mobileqq.search.report.ReportModelDC02528;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import sya;
-import thu;
+import tli;
+import tvg;
 
 public class SearchHippyEntryFragment
   extends ViolaFragment
@@ -54,8 +54,8 @@ public class SearchHippyEntryFragment
     this.nativeMethodController.registerNativeMethod(this.mHippyQQEngine);
     this.eventEmitter = new SearchHippyEventEmitter(this.mHippyQQEngine, this.hotwordHandler);
     this.hotwordHandler.setEventEmitter(this.eventEmitter);
-    bbda.a(this.app, new ReportModelDC02528().module("search_hippy").action("load_start"));
-    new andr(this.app).b(this.app, "load_start", "search_hippy", bbda.a(25), "", "", "");
+    bcjs.a(this.app, new ReportModelDC02528().module("search_hippy").action("load_start"));
+    new aogi(this.app).b(this.app, "load_start", "search_hippy", bcjs.a(25), "", "", "");
   }
   
   private void setBackgroundColor(ViewGroup paramViewGroup)
@@ -152,7 +152,7 @@ public class SearchHippyEntryFragment
       this.mHippyQQEngine.onDestroy();
     }
     this.hotwordHandler.destroy();
-    sya.a += bass.a;
+    tli.a += bbzh.a;
   }
   
   public void onError(int paramInt, String paramString)
@@ -165,8 +165,8 @@ public class SearchHippyEntryFragment
       SearchEntryHippyEngine.hippyError = true;
       UniteSearchActivity.a(getActivity(), null, 25, 0L, null, 0, null);
     }
-    bbda.a(this.app, new ReportModelDC02528().module("search_hippy").action("load_error").ver4(paramString));
-    new andr(this.app).b(this.app, "load_error", "search_hippy", bbda.a(25), "", paramString, "");
+    bcjs.a(this.app, new ReportModelDC02528().module("search_hippy").action("load_error").ver4(paramString));
+    new aogi(this.app).b(this.app, "load_error", "search_hippy", bcjs.a(25), "", paramString, "");
   }
   
   public void onHotwordClick(int paramInt)
@@ -209,13 +209,13 @@ public class SearchHippyEntryFragment
     this.hotwordHandler.notifyFEHotwordChanged();
     Log.d("SearchHippyEntryFragmen", "hippyengine onSuccess: ");
     this.hotwordHandler.getSearchFEHotwordItems(new SearchHippyEntryFragment.3(this));
-    bbda.a(this.app, new ReportModelDC02528().module("search_hippy").action("load_success"));
-    new andr(this.app).b(this.app, "load_success", "search_hippy", bbda.a(25), "", "", "");
+    bcjs.a(this.app, new ReportModelDC02528().module("search_hippy").action("load_success"));
+    new aogi(this.app).b(this.app, "load_success", "search_hippy", bcjs.a(25), "", "", "");
   }
   
   public void refresh() {}
   
-  public void refreshDataModels(List<bbaa> paramList, boolean paramBoolean) {}
+  public void refreshDataModels(List<bcgq> paramList, boolean paramBoolean) {}
   
   public void requestSearchHotWord(boolean paramBoolean)
   {
@@ -229,7 +229,7 @@ public class SearchHippyEntryFragment
   
   public void setHotwordVisible(boolean paramBoolean)
   {
-    bjne.a(new SearchHippyEntryFragment.1(this, paramBoolean));
+    bkyq.a(new SearchHippyEntryFragment.1(this, paramBoolean));
   }
   
   public void setInitData(@NonNull Bundle paramBundle)

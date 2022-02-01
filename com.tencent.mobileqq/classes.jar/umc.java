@@ -1,18 +1,6 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.biz.pubaccount.weishi_new.comment.WsCommentInputPopupWindow.1.1;
-
-public class umc
-  implements zfn
+public abstract interface umc
 {
-  umc(umb paramumb) {}
-  
-  public void a(View paramView)
-  {
-    if (this.a.isShowing()) {
-      umb.a(this.a).runOnUiThread(new WsCommentInputPopupWindow.1.1(this));
-    }
-  }
+  public abstract void a();
 }
 
 

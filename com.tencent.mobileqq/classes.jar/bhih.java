@@ -1,70 +1,37 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.content.Intent;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
 
-class bhih
-  extends Handler
+final class bhih
+  extends ClickableSpan
 {
-  bhih(bhig parambhig, Looper paramLooper)
+  bhih(Context paramContext, axwq paramaxwq) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramLooper);
+    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_Axwq.b());
+    if (QLog.isColorLevel()) {
+      QLog.i("TopicHelper", 2, "mVideoData.topicInfo.getTopicJumpUrl() :" + this.jdField_a_of_type_Axwq.b());
+    }
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    bhii localbhii = (bhii)paramMessage.obj;
-    paramMessage = localbhii.jdField_a_of_type_JavaLangString;
-    if ((paramMessage == null) || (paramMessage.length() == 0)) {}
-    for (;;)
-    {
-      try
-      {
-        String str = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(localbhii.b);
-        paramMessage = str;
-        if (this.a.jdField_a_of_type_AndroidWidgetToast != null) {
-          break label116;
-        }
-        this.a.jdField_a_of_type_AndroidWidgetToast = QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, localbhii.jdField_a_of_type_Int, paramMessage, localbhii.c).a(localbhii.d);
-        if (this.a.jdField_a_of_type_AndroidWidgetToast != null) {
-          this.a.jdField_a_of_type_AndroidWidgetToast.show();
-        }
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-      continue;
-      try
-      {
-        label116:
-        View localView = this.a.jdField_a_of_type_AndroidWidgetToast.getView();
-        ((TextView)localView.findViewById(2131378890)).setText(paramMessage);
-        ((ImageView)localView.findViewById(2131378887)).setImageResource(QQToast.a(localbhii.jdField_a_of_type_Int));
-        this.a.jdField_a_of_type_AndroidWidgetToast.setDuration(localbhii.c);
-      }
-      catch (Throwable paramMessage)
-      {
-        paramMessage.printStackTrace();
-        this.a.jdField_a_of_type_AndroidWidgetToast = null;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("QQToastNotifier", 2, paramMessage.toString());
-      }
-    }
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(Color.parseColor("#00aced"));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhih
  * JD-Core Version:    0.7.0.1
  */

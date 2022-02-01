@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import achu;
+import acyc;
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -11,7 +11,7 @@ import android.content.SharedPreferences.Editor;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.util.Pair;
-import bfsn;
+import bhbe;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mobileqq.activity.NotificationActivity;
 import com.tencent.mobileqq.statistics.StatisticCollector;
@@ -199,7 +199,7 @@ class MemoryManager$AlertMemoryRunner
       continue;
       long l4;
       label647:
-      bfsn.a((ArrayList)localObject4);
+      bhbe.a((ArrayList)localObject4);
       Object localObject4 = (ActivityManager)this.context.getSystemService("activity");
       Object localObject3 = localObject2.edit();
       ((SharedPreferences.Editor)localObject3).putLong("lastClearTime", System.currentTimeMillis());

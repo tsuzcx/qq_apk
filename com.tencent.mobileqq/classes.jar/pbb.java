@@ -1,23 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.16.1;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.16.2;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class pbb
-  implements bjsz
+public class pbb
+  implements pby
 {
-  pbb(BaseActivity paramBaseActivity) {}
+  public pbb(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
   
-  public void a(bjsy parambjsy)
+  public void a()
   {
-    switch (parambjsy.a)
-    {
-    default: 
-      return;
-    case 0: 
-      sou.a(this.a, new ReadInJoyUtils.16.1(this));
-      return;
+    if (ReadInJoyCommentListFragment.a(this.a) != null) {
+      ReadInJoyCommentListFragment.a(this.a).a();
     }
-    sou.a(this.a, new ReadInJoyUtils.16.2(this));
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.a(false, null, null);
+    }
   }
 }
 

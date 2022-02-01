@@ -1,29 +1,15 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
 
-class pxy
-  implements zop
+public class pxy
+  extends pvq
 {
-  pxy(pxw parampxw, String paramString) {}
+  public pxy(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment) {}
   
-  public void callback(Bundle paramBundle)
+  public void a(TopBannerInfo paramTopBannerInfo)
   {
-    if (QLog.isDebugVersion()) {
-      QLog.d("ReadInJoyWebviewPlugin", 4, "receive setSkinAndSound callback resp:" + paramBundle.toString());
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      paramBundle = localJSONObject.put("retCode", paramBundle.getInt("retCode")).put("skinId", "" + paramBundle.getString("skinId"));
-      this.jdField_a_of_type_Pxw.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
-      return;
-    }
-    catch (JSONException paramBundle)
-    {
-      QLog.w("ReadInJoyWebviewPlugin", 1, "readSkinAndSound error " + paramBundle.toString());
-      this.jdField_a_of_type_Pxw.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"retCode\":-1}" });
+    if (paramTopBannerInfo.mChannelId == 2000000000) {
+      this.a.a(paramTopBannerInfo);
     }
   }
 }

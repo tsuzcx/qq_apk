@@ -1,17 +1,26 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
 
 class aggi
-  extends aghj
+  implements bkzq
 {
-  aggi(agcw paramagcw)
-  {
-    super(paramagcw, null);
-  }
+  aggi(aggh paramaggh, boolean paramBoolean, bkzi parambkzi) {}
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void OnClick(View paramView, int paramInt)
   {
-    return new afzd(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      if (aggh.a(this.jdField_a_of_type_Aggh) != null) {
+        aggh.a(this.jdField_a_of_type_Aggh, aggh.a(this.jdField_a_of_type_Aggh));
+      }
+      aggh.a(this.jdField_a_of_type_Aggh, "0X800A7F5", this.jdField_a_of_type_Boolean);
+      continue;
+      aggh.a(this.jdField_a_of_type_Aggh, "0X800A7F6", this.jdField_a_of_type_Boolean);
+    }
   }
 }
 

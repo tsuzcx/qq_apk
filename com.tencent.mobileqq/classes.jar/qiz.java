@@ -1,13 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.model.handler.RIJLimitFriendHandler.1;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.concurrent.ExecutorService;
+import tencent.im.oidb.cmd0xbd6.oidb_cmd0xbd6.RspBody;
 
 public class qiz
-  implements ViewBase.IBuilder
+  extends qii
 {
-  public ViewBase build(VafContext paramVafContext)
+  public qiz(qep paramqep, Handler paramHandler, AppInterface paramAppInterface, EntityManager paramEntityManager, qxn paramqxn, ExecutorService paramExecutorService)
   {
-    return new qix(paramVafContext);
+    super(paramqep, paramHandler, paramAppInterface, paramEntityManager, paramqxn, paramExecutorService);
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    oidb_cmd0xbd6.RspBody localRspBody = new oidb_cmd0xbd6.RspBody();
+    int i = qxp.a(paramFromServiceMsg, paramObject, localRspBody);
+    paramFromServiceMsg = paramFromServiceMsg.getServiceCmd();
+    paramToServiceMsg = (String)paramToServiceMsg.getAttribute("rowKey");
+    this.a.post(new RIJLimitFriendHandler.1(this, paramFromServiceMsg, i, localRspBody, paramToServiceMsg));
   }
 }
 

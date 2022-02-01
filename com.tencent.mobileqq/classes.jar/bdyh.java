@@ -1,19 +1,56 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-
-public abstract class bdyh
+public class bdyh
+  extends bdyd
 {
-  public static final int ITEM_TYPE_AUDIO = 2;
-  public static final int ITEM_TYPE_MUSIC = 3;
-  public static final int ITEM_TYPE_NONE = 0;
-  public static final int ITEM_TYPE_PIC = 1;
-  public static final int ITEM_TYPE_VIDEO = 4;
-  protected static final String TAG = "publish_mediaInfo";
+  private float d;
+  private float e;
+  private float f;
+  private float g;
   
-  public abstract String getJsonText();
+  public bdyh(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    super(paramInt, 1, 0);
+    this.d = paramFloat1;
+    this.e = paramFloat2;
+    this.f = paramFloat3;
+    this.g = paramFloat4;
+  }
   
-  public abstract View getView(Context paramContext, View.OnClickListener paramOnClickListener);
+  protected void a(int paramInt, float paramFloat)
+  {
+    this.a = (this.d + (this.f - this.d) * paramFloat);
+    this.b = (this.e + (this.g - this.e) * paramFloat);
+    if (this.f - this.d > 0.0F)
+    {
+      if (this.a >= this.f) {
+        this.a = this.f;
+      }
+      if (this.g - this.e <= 0.0F) {
+        break label162;
+      }
+      if (this.b >= this.g) {
+        this.b = this.g;
+      }
+    }
+    for (;;)
+    {
+      if (paramInt >= this.c)
+      {
+        this.a = this.f;
+        this.b = this.g;
+      }
+      super.a(paramInt, paramFloat);
+      return;
+      if (this.a > this.f) {
+        break;
+      }
+      this.a = this.f;
+      break;
+      label162:
+      if (this.b <= this.g) {
+        this.b = this.g;
+      }
+    }
+  }
 }
 
 

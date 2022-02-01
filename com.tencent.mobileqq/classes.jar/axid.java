@@ -1,53 +1,61 @@
-import android.app.PendingIntent;
-import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import kotlin.text.StringsKt;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/notification/modularize/business/AudioRoomScheme;", "Lcom/tencent/mobileqq/notification/modularize/BaseJumpScheme;", "()V", "customJumpIntent", "Landroid/app/PendingIntent;", "pushComponent", "Lcom/tencent/mobileqq/notification/modularize/PushComponent;", "modifyAudioRoomScheme", "", "scheme", "needCustomJump", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class axid
-  extends axhx
+public class axid
+  extends axic
 {
-  public static final axie a = new axie(null);
-  
-  private final String a(String paramString)
+  public axid(QQAppInterface paramQQAppInterface)
   {
-    QLog.d("AudioRoomScheme", 2, "before modify scheme: " + paramString);
-    String str = StringsKt.replace$default(paramString, "mqqapi://now/audioroom", "mqqapi://now/openroom", false, 4, null);
-    paramString = str;
-    if (!StringsKt.contains$default((CharSequence)str, (CharSequence)"src_type", false, 2, null)) {
-      paramString = str + "&src_type=app";
-    }
-    str = paramString;
-    if (!StringsKt.contains$default((CharSequence)paramString, (CharSequence)"version", false, 2, null)) {
-      str = paramString + "&version=1";
-    }
-    paramString = str;
-    if (!StringsKt.contains$default((CharSequence)str, (CharSequence)"fromid", false, 2, null)) {
-      paramString = str + "&fromid=10026";
-    }
-    str = paramString;
-    if (!StringsKt.contains$default((CharSequence)paramString, (CharSequence)"roomtype", false, 2, null)) {
-      str = paramString + "&roomtype=10001";
-    }
-    QLog.d("AudioRoomScheme", 2, "after modify: " + str);
-    return str;
+    super(paramQQAppInterface);
   }
   
-  @NotNull
-  protected PendingIntent a(@NotNull axib paramaxib)
+  private void a(HashMap<String, ArrayList<MessageRecord>> paramHashMap)
   {
-    Intrinsics.checkParameterIsNotNull(paramaxib, "pushComponent");
-    if (StringsKt.startsWith$default(paramaxib.d, "mqqapi://now/audioroom", false, 2, null)) {
-      paramaxib.d = a(paramaxib.d);
+    if ((paramHashMap == null) || (paramHashMap.isEmpty())) {
+      return;
     }
-    return d(paramaxib);
+    Iterator localIterator = paramHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      ArrayList localArrayList = (ArrayList)paramHashMap.get((String)localIterator.next());
+      int i = 0;
+      while (i < localArrayList.size())
+      {
+        MessageRecord localMessageRecord = (MessageRecord)localArrayList.get(i);
+        if (((localMessageRecord instanceof MessageForFile)) || ((localMessageRecord instanceof MessageForTroopFile)))
+        {
+          String str = anvx.a(2131692201) + localMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+          localArrayList.set(i, this.a.getProxyManager().a().a(localMessageRecord, str, true));
+        }
+        i += 1;
+      }
+    }
   }
   
-  protected boolean a()
+  public void a(axiu paramaxiu, HashMap<String, ArrayList<MessageRecord>> paramHashMap, axif paramaxif)
   {
-    return true;
+    if (paramaxiu == null) {
+      return;
+    }
+    if ((paramaxiu.b == 8) || (paramaxiu.b == 9)) {}
+    for (paramaxiu = new atqe(this.a, paramaxiu, paramHashMap, paramaxif);; paramaxiu = new atqc(this.a, paramaxiu, paramHashMap, paramaxif))
+    {
+      this.a.getFileManagerEngine().a().a(paramaxiu, paramHashMap);
+      return;
+      if (paramaxiu.b == 2)
+      {
+        a(paramHashMap);
+        paramaxif.a(0, 2, paramaxiu);
+        return;
+      }
+    }
   }
 }
 

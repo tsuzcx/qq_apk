@@ -1,10 +1,21 @@
-import android.util.Pair;
+import com.tencent.mobileqq.gamecenter.media.DanmakuLayout;
 
-public abstract interface avdh
+public abstract class avdh
 {
-  public abstract Pair<Integer, String> a();
+  int jdField_a_of_type_Int;
+  int b;
+  int c;
+  int d;
   
-  public abstract avco a();
+  avdh(DanmakuLayout paramDanmakuLayout) {}
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
+  }
 }
 
 

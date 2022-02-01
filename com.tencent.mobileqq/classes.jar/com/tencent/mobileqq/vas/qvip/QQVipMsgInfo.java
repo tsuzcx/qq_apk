@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.vas.qvip;
 
 import android.text.TextUtils;
-import anxs;
-import atzc;
-import atzd;
-import bcgw;
-import bcgx;
-import bcit;
-import bciz;
-import bclv;
-import bgjg;
+import apau;
+import aver;
+import aves;
+import bdnu;
+import bdnv;
+import bdpr;
+import bdpx;
+import bdsv;
+import bhsb;
 import com.tencent.mobileqq.data.ArkAppMessage;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.mobileqq.data.MessageForPubAccount;
@@ -25,7 +25,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import ueg;
+import usd;
 
 public class QQVipMsgInfo
   implements Serializable
@@ -69,7 +69,7 @@ public class QQVipMsgInfo
     } while (!(paramMessageRecord.structingMsg instanceof StructMsgForGeneralShare));
     Object localObject = (StructMsgForGeneralShare)paramMessageRecord.structingMsg;
     paramMessageRecord = (ArrayList)((StructMsgForGeneralShare)localObject).getStructMsgItemLists();
-    paramQQVipMsgInfo.title = ((StructMsgItemTitle)((bcgx)paramMessageRecord.get(0)).a.get(0)).ai;
+    paramQQVipMsgInfo.title = ((StructMsgItemTitle)((bdnv)paramMessageRecord.get(0)).a.get(0)).ai;
     StringBuilder localStringBuilder = new StringBuilder();
     paramQQVipMsgInfo.url = ((StructMsgForGeneralShare)localObject).mMsgUrl;
     int k = 1;
@@ -77,15 +77,15 @@ public class QQVipMsgInfo
     int j = 0;
     if (k < paramMessageRecord.size())
     {
-      localObject = ((bcgx)paramMessageRecord.get(k)).a;
+      localObject = ((bdnv)paramMessageRecord.get(k)).a;
       int m = 0;
       while (m < ((ArrayList)localObject).size())
       {
         int n = j;
         String str;
-        if ((((ArrayList)localObject).get(m) instanceof bclv))
+        if ((((ArrayList)localObject).get(m) instanceof bdsv))
         {
-          str = ((bclv)((ArrayList)localObject).get(m)).ai;
+          str = ((bdsv)((ArrayList)localObject).get(m)).ai;
           n = j;
           if (!TextUtils.isEmpty(str))
           {
@@ -93,9 +93,9 @@ public class QQVipMsgInfo
             n = 1;
           }
         }
-        if ((((ArrayList)localObject).get(m) instanceof bcit))
+        if ((((ArrayList)localObject).get(m) instanceof bdpr))
         {
-          str = ((bcit)((ArrayList)localObject).get(m)).b;
+          str = ((bdpr)((ArrayList)localObject).get(m)).b;
           if ((TextUtils.isEmpty(paramQQVipMsgInfo.url)) && (!TextUtils.isEmpty(str))) {
             paramQQVipMsgInfo.url = str;
           }
@@ -138,9 +138,9 @@ public class QQVipMsgInfo
         int i1;
         int j;
         if (n < paramMessageRecord.size()) {
-          if ((paramMessageRecord.get(n) instanceof bcgx))
+          if ((paramMessageRecord.get(n) instanceof bdnv))
           {
-            localObject = ((bcgx)paramMessageRecord.get(n)).a;
+            localObject = ((bdnv)paramMessageRecord.get(n)).a;
             i1 = 0;
             j = 0;
           }
@@ -161,9 +161,9 @@ public class QQVipMsgInfo
           }
           for (;;)
           {
-            if (((((ArrayList)localObject).get(i1) instanceof bcit)) && (TextUtils.isEmpty(paramQQVipMsgInfo.url)))
+            if (((((ArrayList)localObject).get(i1) instanceof bdpr)) && (TextUtils.isEmpty(paramQQVipMsgInfo.url)))
             {
-              String str = ((bcit)((ArrayList)localObject).get(i1)).b;
+              String str = ((bdpr)((ArrayList)localObject).get(i1)).b;
               if (!TextUtils.isEmpty(str)) {
                 paramQQVipMsgInfo.url = str;
               }
@@ -171,7 +171,7 @@ public class QQVipMsgInfo
             if ((m == 0) || (k == 0) || (TextUtils.isEmpty(paramQQVipMsgInfo.url))) {
               break label319;
             }
-            paramQQVipMsgInfo.url = ((bcgw)paramMessageRecord.get(n)).b;
+            paramQQVipMsgInfo.url = ((bdnu)paramMessageRecord.get(n)).b;
             if ((m != 0) && (k != 0)) {
               break;
             }
@@ -180,13 +180,13 @@ public class QQVipMsgInfo
             break;
             k = j;
             m = i;
-            if ((((ArrayList)localObject).get(i1) instanceof bciz))
+            if ((((ArrayList)localObject).get(i1) instanceof bdpx))
             {
               k = j;
               m = i;
               if (j == 0)
               {
-                paramQQVipMsgInfo.coverUrl = ((bciz)((ArrayList)localObject).get(i1)).ac;
+                paramQQVipMsgInfo.coverUrl = ((bdpx)((ArrayList)localObject).get(i1)).ac;
                 k = 1;
                 m = i;
               }
@@ -199,7 +199,7 @@ public class QQVipMsgInfo
     } while (!(paramMessageRecord instanceof MessageForPubAccount));
     label264:
     paramMessageRecord = (MessageForPubAccount)paramMessageRecord;
-    paramMessageRecord.mPAMessage = ueg.a(paramMessageRecord.msgData);
+    paramMessageRecord.mPAMessage = usd.a(paramMessageRecord.msgData);
     paramQQVipMsgInfo.coverUrl = ((PAMessage.Item)paramMessageRecord.mPAMessage.items.get(0)).cover;
     paramQQVipMsgInfo.title = ((PAMessage.Item)paramMessageRecord.mPAMessage.items.get(0)).title;
     paramQQVipMsgInfo.url = ((PAMessage.Item)paramMessageRecord.mPAMessage.items.get(0)).url;
@@ -239,7 +239,7 @@ public class QQVipMsgInfo
     localQQVipMsgInfo.frienduin = paramMessageRecord.frienduin;
     localQQVipMsgInfo.msgTime = paramMessageRecord.time;
     parseQGameInfo(paramMessageRecord, localQQVipMsgInfo);
-    localQQVipMsgInfo.fullPopData = atzd.a(paramMessageRecord);
+    localQQVipMsgInfo.fullPopData = aves.a(paramMessageRecord);
     if ((paramMessageRecord instanceof MessageForArkApp))
     {
       c(paramMessageRecord, localQQVipMsgInfo);
@@ -266,10 +266,10 @@ public class QQVipMsgInfo
       }
       if (n < localArrayList1.size())
       {
-        if (!(localArrayList1.get(n) instanceof bcgx)) {
+        if (!(localArrayList1.get(n) instanceof bdnv)) {
           break label340;
         }
-        localArrayList2 = ((bcgx)localArrayList1.get(n)).a;
+        localArrayList2 = ((bdnv)localArrayList1.get(n)).a;
         k = i;
         i = j;
         i1 = 0;
@@ -291,7 +291,7 @@ public class QQVipMsgInfo
         else
         {
           k = i;
-          if (!(localArrayList2.get(i1) instanceof bciz)) {
+          if (!(localArrayList2.get(i1) instanceof bdpx)) {
             continue;
           }
           j = 1;
@@ -344,7 +344,7 @@ public class QQVipMsgInfo
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
       localObject1 = paramMessageRecord.mExJsonObject.toString();
     }
-    paramQQVipMsgInfo.paMsgid = bgjg.a(paramMessageRecord);
+    paramQQVipMsgInfo.paMsgid = bhsb.a(paramMessageRecord);
     if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
     do
     {
@@ -354,7 +354,7 @@ public class QQVipMsgInfo
         if (!TextUtils.isEmpty((CharSequence)localObject1))
         {
           paramQQVipMsgInfo.triggerInfo = ((String)localObject1);
-          paramQQVipMsgInfo.advId = anxs.a((String)localObject1);
+          paramQQVipMsgInfo.advId = apau.a((String)localObject1);
           localObject1 = new JSONObject((String)localObject1).optString("game_extra", "");
           if (!TextUtils.isEmpty((CharSequence)localObject1))
           {
@@ -419,10 +419,10 @@ public class QQVipMsgInfo
         if (n >= localArrayList.size()) {
           break label554;
         }
-        if (!(localArrayList.get(n) instanceof bcgx)) {
+        if (!(localArrayList.get(n) instanceof bdnv)) {
           break label587;
         }
-        localObject2 = ((bcgx)localArrayList.get(n)).a;
+        localObject2 = ((bdnv)localArrayList.get(n)).a;
         i1 = 0;
         k = j;
         m = i;
@@ -435,7 +435,7 @@ public class QQVipMsgInfo
           if ((k == 0) || (j == 0)) {
             break label575;
           }
-          paramQQVipMsgInfo.gameAppId = atzc.a(((bcgw)localArrayList.get(n)).b);
+          paramQQVipMsgInfo.gameAppId = aver.a(((bdnu)localArrayList.get(n)).b);
           return;
         }
       }
@@ -445,7 +445,7 @@ public class QQVipMsgInfo
         return;
       }
       int k = i;
-      if ((((ArrayList)localObject2).get(i1) instanceof bciz))
+      if ((((ArrayList)localObject2).get(i1) instanceof bdpx))
       {
         j = 1;
         k = i;
@@ -454,7 +454,7 @@ public class QQVipMsgInfo
         if (localArrayList.size() != 2) {
           break;
         }
-        paramQQVipMsgInfo.gameAppId = atzc.a(paramMessageRecord.mMsgUrl);
+        paramQQVipMsgInfo.gameAppId = aver.a(paramMessageRecord.mMsgUrl);
         return;
         label575:
         i1 += 1;

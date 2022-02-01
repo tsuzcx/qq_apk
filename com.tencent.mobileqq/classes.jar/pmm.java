@@ -1,19 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.feedspopup.steps.RIJSkinOperationPopupStep.5.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class pmm
-  extends rat
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  pmm(pmj parampmj) {}
-  
-  public void a(boolean paramBoolean, oidb_0x5bd.SkinInfo paramSkinInfo, oidb_0x5bd.GuideInfo paramGuideInfo1, oidb_0x5bd.GuideInfo paramGuideInfo2, oidb_0x5bd.RefreshInfo paramRefreshInfo, int paramInt)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    if ((paramBoolean) && (paramInt == 0)) {
-      ThreadManager.excute(new RIJSkinOperationPopupStep.5.1(this, paramGuideInfo2, paramInt, paramRefreshInfo, paramSkinInfo, paramGuideInfo1), 16, null, true);
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d("VideoSingleModeConfigHandler", 2, "[onReceiveConfig] " + paramString);
+    paramString = pku.a(paramString);
+    if ((String)paramString.get("readinjoy_single_video_switch") != null) {
+      bmhv.a((String)paramString.get("readinjoy_single_video_switch"));
     }
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    super.onWipeConfig(paramInt);
+    bmhv.a(null);
   }
 }
 

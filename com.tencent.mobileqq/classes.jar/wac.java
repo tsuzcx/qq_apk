@@ -1,81 +1,29 @@
-import android.app.Activity;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
-import com.tencent.biz.qqstory.playvideo.dataprovider.MsgTabPlayInfo;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class wac
-  extends SimpleObserver<List<wkm>>
+  implements ThreadExcutor.IThreadListener
 {
-  wac(vzt paramvzt, vxd paramvxd, View paramView, Activity paramActivity) {}
+  wac(wab paramwab, Runnable paramRunnable) {}
   
-  private void a(String paramString1, String paramString2, ArrayList<String> paramArrayList, HashMap<String, String> paramHashMap)
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    if ((!TextUtils.isEmpty(paramString2)) && (TextUtils.isEmpty(paramString1))) {
-      paramString1 = "NO_SUCH_FEED_ID";
-    }
-    for (;;)
-    {
-      paramString1 = new OpenPlayerBuilder(new MsgTabPlayInfo(this.jdField_a_of_type_Vxd.a, 0, null, paramString1, paramString2, paramArrayList, paramHashMap), 106);
-      paramString1.a(this.jdField_a_of_type_Vzt.a());
-      paramString1 = paramString1.a();
-      paramString1.mUIStyle.bottomWidgetShowFlag = 3;
-      if ((this.jdField_a_of_type_AndroidViewView instanceof StoryMsgNodeFrameLayout))
-      {
-        wmu.a(this.jdField_a_of_type_AndroidAppActivity, paramString1, ((StoryMsgNodeFrameLayout)this.jdField_a_of_type_AndroidViewView).a);
-        return;
-      }
-      wmu.a(this.jdField_a_of_type_AndroidAppActivity, paramString1, this.jdField_a_of_type_AndroidViewView);
-      return;
+    wab.a(this.jdField_a_of_type_Wab).decrementAndGet();
+    ykq.b(wab.a(this.jdField_a_of_type_Wab), "threshold after running current task is " + wab.a(this.jdField_a_of_type_Wab).get());
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      ykq.b(wab.a(this.jdField_a_of_type_Wab), "threshold after running current task is:" + this.jdField_a_of_type_JavaLangRunnable.hashCode());
     }
   }
   
-  public void a(List<wkm> paramList)
+  public void onPreRun()
   {
-    Object localObject = woq.a(paramList);
-    String str1;
-    if (localObject != null)
-    {
-      str1 = ((wkm)localObject).a;
-      localObject = ((wkm)localObject).b;
+    wab.a(this.jdField_a_of_type_Wab).incrementAndGet();
+    ykq.a(wab.a(this.jdField_a_of_type_Wab), "execute %s", this.jdField_a_of_type_JavaLangRunnable);
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      ykq.b(wab.a(this.jdField_a_of_type_Wab), "execute hashcode:" + this.jdField_a_of_type_JavaLangRunnable.hashCode());
     }
-    for (;;)
-    {
-      ArrayList localArrayList = new ArrayList();
-      HashMap localHashMap = new HashMap();
-      int i = 0;
-      for (;;)
-      {
-        String str2;
-        if (i < paramList.size())
-        {
-          str2 = ((wkm)paramList.get(i)).b;
-          if (!TextUtils.isEmpty(str2)) {}
-        }
-        else
-        {
-          a(str1, (String)localObject, localArrayList, localHashMap);
-          return;
-        }
-        localArrayList.add(str2);
-        localHashMap.put(str2, ((wkm)paramList.get(i)).a);
-        i += 1;
-      }
-      localObject = null;
-      str1 = null;
-    }
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    a("", "", null, null);
   }
 }
 

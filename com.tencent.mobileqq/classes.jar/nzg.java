@@ -1,18 +1,31 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import android.os.SystemClock;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.beacon.upload.TunnelInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.HashSet;
+import kotlin.Metadata;
 
-class nzg
-  implements DialogInterface.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/officialaccount/OfficialAccountReporter;", "", "()V", "Reporter", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class nzg
 {
-  nzg(nyz paramnyz, JsResult paramJsResult, Context paramContext) {}
+  private static int jdField_a_of_type_Int;
+  private static long jdField_a_of_type_Long;
+  private static final HashMap<Integer, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static final HashSet<Integer> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  public static final nzh a;
+  private static int jdField_b_of_type_Int;
+  private static long jdField_b_of_type_Long;
+  private static long c;
+  private static long d;
+  private static long e;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  static
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
-    ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
+    jdField_a_of_type_Nzh = new nzh(null);
+    QLog.e("OfficialAccountReporter", 2, "OfficialAccountReporter.init: false");
+    UserAction.registerTunnel(new TunnelInfo("00000KCQ7Y3ITP3Z"));
+    c = SystemClock.elapsedRealtime();
   }
 }
 

@@ -2,10 +2,11 @@ package com.tencent.av;
 
 import android.os.Handler;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import lez;
-import msw;
-import mum;
+import java.util.ArrayList;
+import java.util.Iterator;
+import lcu;
 
 class VideoController$31
   implements Runnable
@@ -14,23 +15,23 @@ class VideoController$31
   
   public void run()
   {
-    if (this.this$0.f) {
-      return;
-    }
-    long l = this.this$0.a();
-    if (l > 0L)
+    ArrayList localArrayList = new ArrayList();
+    long l = AudioHelper.a() / 1000L;
+    Iterator localIterator = VideoController.a(this.this$0).iterator();
+    while (localIterator.hasNext())
     {
-      l %= 60L;
-      if (l % 30L == 0L)
-      {
-        String str = mum.a(this.this$0.a());
-        msw.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(this.this$0.a().c, this.this$0.a().d, str);
-        if ((this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.isBackgroundStop) && (l % 10L == 0L)) {
-          QLog.w(VideoController.jdField_a_of_type_JavaLangString, 1, "chattingTimerRunnale -->updateNotification() sessionId = " + this.this$0.a().c);
-        }
+      lcu locallcu = (lcu)localIterator.next();
+      if ((locallcu.h) || (locallcu.d + 60L > l)) {
+        localArrayList.add(locallcu);
       }
     }
-    this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 1000L);
+    if (localArrayList.size() != VideoController.a(this.this$0).size())
+    {
+      VideoController.a(this.this$0, localArrayList);
+      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(708), Long.valueOf(1L), Long.valueOf(1L), VideoController.a(this.this$0) });
+    }
+    this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(VideoController.a(this.this$0), 10000L);
+    QLog.d(VideoController.jdField_a_of_type_JavaLangString, 1, "InviteMemberList call mRemoveUnAttenedMember");
   }
 }
 

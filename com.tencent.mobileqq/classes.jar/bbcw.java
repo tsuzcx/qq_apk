@@ -1,65 +1,113 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.face.FaceDecoder;
-import java.util.Set;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class bbcw
-  extends bbbc
+  extends aqwt<bbcu>
 {
-  private Set<String> b;
-  
-  public bbcw(FaceDecoder paramFaceDecoder, bbbg parambbbg, Set<String> paramSet1, Set<String> paramSet2)
+  @NonNull
+  public bbcu a(int paramInt)
   {
-    super(paramFaceDecoder, parambbbg, paramSet1);
-    this.b = paramSet2;
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendClueConfigProcessor", 2, String.format("migrateOldOrDefaultContent type=%s", new Object[] { Integer.valueOf(paramInt) }));
+    }
+    return new bbcu();
   }
   
-  public void b(bayt parambayt, bbhb parambbhb)
+  @Nullable
+  public bbcu a(aqxa[] paramArrayOfaqxa)
   {
-    super.b(parambayt, parambbhb);
-    if (parambbhb.c() != null)
+    Object localObject3 = null;
+    Object localObject1 = localObject3;
+    int i;
+    if (paramArrayOfaqxa != null)
     {
-      localObject = parambayt.b();
-      if ((this.b != null) && (this.b.contains(localObject))) {
-        parambbhb.c().setText(amtj.a(2131712836));
-      }
-    }
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    boolean bool = bezm.b((QQAppInterface)localObject, parambayt.b());
-    if ((localObject instanceof QQAppInterface))
-    {
-      if (!(parambbhb instanceof bbgv)) {
-        break label165;
-      }
-      ((bbgv)parambbhb).a(bool);
-    }
-    for (;;)
-    {
-      if (parambbhb.a() != null)
+      localObject1 = localObject3;
+      if (paramArrayOfaqxa.length > 0)
       {
-        if ((!(parambayt instanceof baxo)) && (!(parambayt instanceof baxb)) && (!(parambayt instanceof baxj))) {
-          break;
+        int j = paramArrayOfaqxa.length;
+        i = 0;
+        localObject1 = localObject3;
+        if (i < j)
+        {
+          localObject1 = paramArrayOfaqxa[i];
+          if (localObject1 == null) {
+            break label179;
+          }
         }
-        if (parambbhb.c() != null) {
-          parambbhb.c().setVisibility(8);
-        }
-        parambbhb.a().setVisibility(0);
-      }
-      return;
-      label165:
-      if ((parambbhb instanceof bbis)) {
-        ((bbis)parambbhb).a(bool);
       }
     }
-    if (parambbhb.c() != null) {
-      parambbhb.c().setVisibility(0);
+    label179:
+    Object localObject2;
+    for (localObject1 = ((aqxa)localObject1).a;; localObject2 = null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendClueConfigProcessor", 2, String.format("onParsed content=\n%s", new Object[] { localObject1 }));
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        try
+        {
+          bbcu localbbcu = new bbcu();
+          localObject1 = new JSONObject((String)localObject1);
+          if (((JSONObject)localObject1).has("friendClueSwitch")) {
+            localbbcu.a = ((JSONObject)localObject1).getBoolean("friendClueSwitch");
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("FriendClueConfigProcessor", 2, String.format("onParsed friendClueConfig=%s", new Object[] { localbbcu }));
+          }
+          localObject1 = localbbcu;
+          return localObject1;
+        }
+        catch (Exception localException)
+        {
+          QLog.d("FriendClueConfigProcessor", 1, "onParsed fail.", localException);
+        }
+      }
+      i += 1;
+      break;
     }
-    parambbhb.a().setVisibility(8);
   }
   
-  public void d(bayt parambayt, bbhb parambbhb) {}
+  public void a(bbcu parambbcu)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendClueConfigProcessor", 2, String.format("onUpdate newConf=%s", new Object[] { parambbcu }));
+    }
+  }
+  
+  public Class<bbcu> clazz()
+  {
+    return bbcu.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendClueConfigProcessor", 2, String.format("onReqFailed failCode=%s", new Object[] { Integer.valueOf(paramInt) }));
+    }
+  }
+  
+  public int type()
+  {
+    return 677;
+  }
 }
 
 

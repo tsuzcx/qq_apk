@@ -1,138 +1,257 @@
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.biz.subscribe.SubscribeJsPlugin.2;
+import com.tencent.biz.subscribe.SubscribeJsPlugin.3;
+import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
+import com.tencent.biz.subscribe.widget.commodity.CommodityBean;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import cooperation.qzone.QZoneHelper;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.UUID;
-import mqq.app.AppRuntime;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class zqj
-  extends zqo
+  extends WebViewPlugin
+  implements aqdb
 {
-  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  HashMap<String, File> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private aady jdField_a_of_type_Aady;
+  private aqcx jdField_a_of_type_Aqcx;
   
-  public zqj(zpq paramzpq, zqp paramzqp, String paramString)
+  private void a(String paramString)
   {
-    super(paramzpq, paramzqp, paramString);
-    paramzpq = a();
-    if (paramzpq != null)
+    paramString = new zql(this, paramString);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("code", paramString.optString("code"));
+    localBundle.putString("location", paramString.optString("location"));
+    if (this.jdField_a_of_type_Aady == null)
     {
-      int i = 0;
-      while (i < paramzpq.jdField_a_of_type_JavaUtilArrayList.size())
+      this.jdField_a_of_type_Aady = aady.a();
+      this.jdField_a_of_type_Aady.a();
+    }
+    this.jdField_a_of_type_Aady.d(localBundle);
+  }
+  
+  private void a(String paramString, Bitmap paramBitmap)
+  {
+    ThreadManager.post(new SubscribeJsPlugin.3(this, paramBitmap, paramString), 8, null, false);
+  }
+  
+  private void a(String paramString, String[] paramArrayOfString)
+  {
+    if ("opendetail".equals(paramString)) {
+      if (a(paramArrayOfString)) {}
+    }
+    do
+    {
+      do
       {
-        paramzqp = (String)paramzpq.jdField_a_of_type_JavaUtilArrayList.get(i);
-        paramString = a(paramzqp, ".mp4");
-        paramzpq.jdField_b_of_type_JavaUtilArrayList.add(paramString);
-        if ((!new File(paramString).exists()) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramzqp)))
+        do
         {
-          this.jdField_a_of_type_JavaUtilArrayList.add(paramzqp);
-          this.jdField_a_of_type_JavaUtilHashMap.put(paramzqp, new File(paramString));
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        do
+                        {
+                          return;
+                          paramString = new zql(this, paramArrayOfString[0]);
+                          QLog.d(this.TAG, 2, paramString.toString());
+                          if ((this.mRuntime != null) && ((this.mRuntime.a() instanceof SubscribeHybirdFragment)))
+                          {
+                            ((SubscribeHybirdFragment)this.mRuntime.a()).a(zqm.a(paramString.getString("feedid"), paramString.getString("uin"), paramString.getInt("type"), paramString.getInt("width"), paramString.getInt("height"), Long.valueOf(paramString.getString("createtime")).longValue()));
+                            return;
+                          }
+                        } while ((this.mRuntime == null) || (this.mRuntime.a() == null));
+                        zqm.a(null, zqm.a(paramString.getString("feedid"), paramString.getString("uin"), paramString.getInt("type"), paramString.getInt("width"), paramString.getInt("height"), Long.valueOf(paramString.getString("createtime")).longValue()));
+                        return;
+                        if (!"sharepersonalpage".equals(paramString)) {
+                          break;
+                        }
+                      } while (!a(paramArrayOfString));
+                      paramString = new zql(this, paramArrayOfString[0]);
+                    } while ((this.mRuntime == null) || (!(this.mRuntime.a() instanceof SubscribeHybirdFragment)));
+                    QLog.d(this.TAG, 2, paramString.toString());
+                    ((SubscribeHybirdFragment)this.mRuntime.a()).a(paramString.getString("uin"), paramString.getString("nickname"), paramString.getString("icon"), paramString.getString("desc"), paramString.getString("usertype"));
+                    return;
+                    if (!"reloadmainpage".equals(paramString)) {
+                      break;
+                    }
+                  } while ((this.mRuntime == null) || (!(this.mRuntime.a() instanceof SubscribeHybirdFragment)));
+                  ((SubscribeHybirdFragment)this.mRuntime.a()).a();
+                  return;
+                  if (!"openpublishpage".equals(paramString)) {
+                    break;
+                  }
+                } while ((!a(paramArrayOfString)) || (this.mRuntime == null) || (this.mRuntime.a() == null));
+                paramString = new zql(this, paramArrayOfString[0]).optString("puin");
+                new Intent().putExtra("postUin", paramString);
+                QZoneHelper.forwardToQQPublicAccountPublishPage(this.mRuntime.a().getActivity(), null, 0);
+                return;
+                if (!"attachGoods".equals(paramString)) {
+                  break;
+                }
+              } while (!a(paramArrayOfString));
+              b(paramArrayOfString[0]);
+              return;
+              if (!"cancelfollow".equals(paramString)) {
+                break;
+              }
+            } while (!a(paramArrayOfString));
+            c(paramArrayOfString[0]);
+            return;
+            if (!"getavatar".equals(paramString)) {
+              break;
+            }
+          } while (!a(paramArrayOfString));
+          d(paramArrayOfString[0]);
+          return;
+          if (!"refreshreturnpage".equals(paramString)) {
+            break;
+          }
+        } while ((this.mRuntime == null) || (!(this.mRuntime.a() instanceof SubscribeHybirdFragment)));
+        ((SubscribeHybirdFragment)this.mRuntime.a()).b();
+        return;
+        if (!"getlbslocation".equals(paramString)) {
+          break;
+        }
+      } while (!a(paramArrayOfString));
+      a(paramArrayOfString[0]);
+      return;
+    } while ((!"openhomepage".equals(paramString)) || (!a(paramArrayOfString)));
+    zqm.a(null, new zql(this, paramArrayOfString[0]).optString("uid"));
+  }
+  
+  private boolean a(String[] paramArrayOfString)
+  {
+    boolean bool = true;
+    if ((paramArrayOfString == null) || (paramArrayOfString.length < 1))
+    {
+      QLog.e(this.TAG, 2, "args is null");
+      bool = false;
+    }
+    return bool;
+  }
+  
+  private void b(String paramString)
+  {
+    paramString = new zql(this, paramString).getJSONArray("goods");
+    if (paramString != null)
+    {
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      while (i < paramString.length())
+      {
+        JSONObject localJSONObject = paramString.getJSONObject(i);
+        if (localJSONObject != null) {
+          localArrayList.add(new CommodityBean(localJSONObject));
         }
         i += 1;
       }
-      if (!TextUtils.isEmpty(paramzpq.jdField_b_of_type_JavaLangString))
-      {
-        paramzqp = new File(a(paramzpq.jdField_b_of_type_JavaLangString, ".m4a"));
-        if (!paramzqp.exists())
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.add(paramzpq.jdField_b_of_type_JavaLangString);
-          this.jdField_a_of_type_JavaUtilHashMap.put(paramzpq.jdField_b_of_type_JavaLangString, new File(paramzqp.getAbsolutePath()));
-        }
-        paramzpq.d = paramzqp.getAbsolutePath();
+      if ((this.mRuntime != null) && ((this.mRuntime.a() instanceof SubscribeHybirdFragment))) {
+        ((SubscribeHybirdFragment)this.mRuntime.a()).a(localArrayList);
       }
     }
   }
   
-  private String a(String paramString1, String paramString2)
+  private void c(String paramString)
   {
-    paramString1 = UUID.nameUUIDFromBytes(paramString1.getBytes());
-    paramString1 = b().getAbsolutePath() + File.separator + "v_" + paramString1.toString() + paramString2;
-    paramString2 = new File(paramString1);
-    if (!paramString2.getParentFile().exists()) {
-      paramString2.mkdirs();
-    }
-    return paramString1;
-  }
-  
-  public void a()
-  {
-    long l = System.currentTimeMillis();
-    Object localObject1 = new Bundle();
-    zqa localzqa = a();
-    if (localzqa.jdField_b_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Zqp.b(this);
+    if ((this.mRuntime == null) || (this.mRuntime.a() == null) || (this.mRuntime.a().getActivity() == null)) {
       return;
     }
-    ArrayList localArrayList = new ArrayList();
-    Object localObject2;
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-    {
-      localObject2 = new bgoe(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilHashMap, this.c);
-      ((bgoe)localObject2).b = 3;
-      this.jdField_a_of_type_Zpq.a().a((bgoe)localObject2, new zqk(this, localzqa, localArrayList, l), (Bundle)localObject1);
-      label111:
-      if (QLog.isColorLevel()) {
-        QLog.d(".troop.VideoCombineHelper", 2, "start Download key = " + this.c);
-      }
+    Object localObject = new zql(this, paramString);
+    paramString = ((zql)localObject).optString("uin");
+    String str = ((zql)localObject).optString("nick");
+    localObject = ((zql)localObject).optString("callback");
+    zzk.a(this.mRuntime.a().getActivity(), paramString, str, new zqk(this, (String)localObject, str));
+  }
+  
+  private void d(String paramString)
+  {
+    if ((this.mRuntime == null) || (this.mRuntime.a() == null) || (this.mRuntime.a().getActivity() == null)) {
+      return;
     }
-    else
+    paramString = new zql(this, paramString);
+    JSONArray localJSONArray = paramString.optJSONArray("accountList");
+    int i;
+    if ("1".equals(paramString.getString("avatarType")))
     {
-      try
-      {
-        localObject1 = localzqa.jdField_b_of_type_JavaUtilArrayList.iterator();
-        int i = 1;
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (String)((Iterator)localObject1).next();
-          File localFile = new File(a() + File.separator + "v_" + i + ".mp4");
-          localArrayList.add(localFile.getAbsolutePath());
-          if (localFile.exists())
-          {
-            i += 1;
-          }
-          else
-          {
-            if (!localFile.exists()) {
-              localFile.createNewFile();
-            }
-            ypi.a(new File((String)localObject2), localFile);
-            i += 1;
-          }
-        }
-        b();
+      i = 4;
+      if (this.jdField_a_of_type_Aqcx != null) {
+        break label130;
       }
-      catch (IOException localIOException)
-      {
-        QLog.e(".troop.VideoCombineHelper", 1, localIOException, new Object[0]);
-        this.jdField_a_of_type_Zqp.a(this);
-        localzqa.jdField_b_of_type_JavaUtilArrayList = localArrayList;
-        this.jdField_a_of_type_Zqp.b(this);
-        this.jdField_a_of_type_Zqo = new zqb(this.jdField_a_of_type_Zpq, this.jdField_a_of_type_Zqp, this.c, localzqa.jdField_b_of_type_JavaUtilArrayList, localzqa.d, localzqa.c);
-        if (!VideoEnvironment.checkAVCodecLoadIsOK((AppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("modular_web"))) {}
-      }
+      this.jdField_a_of_type_Aqcx = new aqcx(this.mRuntime.a(), i);
+      this.jdField_a_of_type_Aqcx.a();
+      this.jdField_a_of_type_Aqcx.a(this);
     }
     for (;;)
     {
-      QLog.d(".troop.trace_video_combine", 2, "downLoadTime = " + (System.currentTimeMillis() - l));
-      break label111;
+      ThreadManagerV2.excute(new SubscribeJsPlugin.2(this, localJSONArray), 16, null, false);
+      return;
+      i = 1;
       break;
-      if (localzqa.jdField_a_of_type_Boolean)
+      label130:
+      this.jdField_a_of_type_Aqcx.a(i);
+    }
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ("qsubscribe".equals(paramString2))
+    {
+      QLog.i(this.TAG, 2, "handleJsRequest:" + paramString1);
+      try
       {
-        this.jdField_a_of_type_Zqp.b(this.jdField_a_of_type_Zqo);
+        a(paramString3, paramVarArgs);
+        return true;
       }
-      else
+      catch (JSONException paramJsBridgeListener)
       {
-        this.jdField_a_of_type_Zqo.d = "lib not ready";
-        this.jdField_a_of_type_Zqp.a(this.jdField_a_of_type_Zqo);
+        for (;;)
+        {
+          QLog.d(this.TAG, 2, paramJsBridgeListener, new Object[0]);
+        }
       }
+    }
+    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (this.jdField_a_of_type_Aady != null)
+    {
+      this.jdField_a_of_type_Aady.b();
+      this.jdField_a_of_type_Aady = null;
+    }
+    if (this.jdField_a_of_type_Aqcx != null)
+    {
+      this.jdField_a_of_type_Aqcx.b();
+      this.jdField_a_of_type_Aqcx = null;
+    }
+  }
+  
+  public void onFaceUpdate(String paramString1, String paramString2, Bitmap paramBitmap)
+  {
+    a(paramString1, paramBitmap);
+    if (QLog.isColorLevel()) {
+      QLog.i(this.TAG, 4, "handleGetAvatar onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
     }
   }
 }

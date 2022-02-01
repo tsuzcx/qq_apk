@@ -270,7 +270,7 @@ public class MiniAppEnv
     processConfiguration(paramConfiguration);
     bindFields();
     this.miniAppInterface.onCreate(paramContext, paramConfiguration);
-    QMLog.i("MiniAppEnv", "Init MiniAppEnv. MiniSdkVersion:1.8.0_25_0ea610c QUA:" + QUAUtil.getQUA() + " PlatformQUA:" + QUAUtil.getPlatformQUA());
+    QMLog.i("MiniAppEnv", "Init MiniAppEnv. MiniSdkVersion:1.9.0_75_e0f9b31 QUA:" + QUAUtil.getQUA() + " PlatformQUA:" + QUAUtil.getPlatformQUA());
   }
   
   public void setApkgLoader(ApkgLoader paramApkgLoader)
@@ -297,7 +297,7 @@ public class MiniAppEnv
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.MiniAppEnv
  * JD-Core Version:    0.7.0.1
  */

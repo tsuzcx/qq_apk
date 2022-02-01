@@ -559,7 +559,7 @@ public class e
     //   43: ldc 14
     //   45: areturn
     //   46: aload_1
-    //   47: invokestatic 334	com/tencent/beacon/core/info/a:h	(Landroid/content/Context;)Z
+    //   47: invokestatic 334	com/tencent/beacon/core/info/a:i	(Landroid/content/Context;)Z
     //   50: istore_2
     //   51: iload_2
     //   52: ifeq +24 -> 76
@@ -645,7 +645,7 @@ public class e
       } else {
         try
         {
-          boolean bool = a.h(paramContext);
+          boolean bool = a.i(paramContext);
           if (bool) {
             paramContext = ((TelephonyManager)paramContext.getSystemService("phone")).getImei(1);
           }
@@ -699,14 +699,14 @@ public class e
     //   28: areturn
     //   29: aload_1
     //   30: ifnonnull +16 -> 46
-    //   33: ldc_w 379
+    //   33: ldc_w 380
     //   36: iconst_0
     //   37: anewarray 4	java/lang/Object
     //   40: invokestatic 102	com/tencent/beacon/core/e/d:b	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   43: ldc 14
     //   45: areturn
     //   46: aload_1
-    //   47: invokestatic 334	com/tencent/beacon/core/info/a:h	(Landroid/content/Context;)Z
+    //   47: invokestatic 334	com/tencent/beacon/core/info/a:i	(Landroid/content/Context;)Z
     //   50: istore_2
     //   51: iload_2
     //   52: ifeq +24 -> 76
@@ -714,7 +714,7 @@ public class e
     //   56: ldc_w 336
     //   59: invokevirtual 85	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
     //   62: checkcast 338	android/telephony/TelephonyManager
-    //   65: invokevirtual 382	android/telephony/TelephonyManager:getSubscriberId	()Ljava/lang/String;
+    //   65: invokevirtual 383	android/telephony/TelephonyManager:getSubscriberId	()Ljava/lang/String;
     //   68: astore_1
     //   69: aload_1
     //   70: ifnonnull +35 -> 105
@@ -723,7 +723,7 @@ public class e
     //   76: new 23	java/lang/StringBuilder
     //   79: dup
     //   80: invokespecial 24	java/lang/StringBuilder:<init>	()V
-    //   83: ldc_w 384
+    //   83: ldc_w 385
     //   86: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   89: aload_3
     //   90: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -740,7 +740,7 @@ public class e
     //   113: astore_1
     //   114: ldc 14
     //   116: astore_1
-    //   117: ldc_w 386
+    //   117: ldc_w 387
     //   120: iconst_0
     //   121: anewarray 4	java/lang/Object
     //   124: invokestatic 102	com/tencent/beacon/core/e/d:b	(Ljava/lang/String;[Ljava/lang/Object;)V
@@ -935,7 +935,7 @@ public class e
     //   44: astore_3
     //   45: goto -20 -> 25
     //   48: aload_1
-    //   49: invokestatic 334	com/tencent/beacon/core/info/a:h	(Landroid/content/Context;)Z
+    //   49: invokestatic 334	com/tencent/beacon/core/info/a:i	(Landroid/content/Context;)Z
     //   52: istore_2
     //   53: iload_2
     //   54: ifeq -29 -> 25

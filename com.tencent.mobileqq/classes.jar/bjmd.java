@@ -1,38 +1,36 @@
+import android.text.TextUtils;
+
 public class bjmd
 {
-  public static void a(Object paramObject)
-  {
-    a((String)null, paramObject);
-  }
+  public String a = "";
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  public String j = "";
+  public String k = "";
+  public String l = "";
   
-  public static void a(String paramString)
+  public String a()
   {
-    if (paramString == null) {
-      throw new AssertionError();
+    if (TextUtils.isEmpty(this.f)) {
+      return bjkj.a(bizw.a().a());
     }
-    throw new AssertionError(paramString);
+    return this.f;
   }
   
-  public static void a(String paramString, Object paramObject)
+  public boolean a()
   {
-    if (paramObject != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a(paramString, bool);
-      return;
-    }
+    return (!TextUtils.isEmpty(this.c)) && (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.f)) && (!TextUtils.isEmpty(this.g)) && (!TextUtils.isEmpty(this.d)) && (!TextUtils.isEmpty(this.b));
   }
   
-  public static void a(String paramString, boolean paramBoolean)
+  public String toString()
   {
-    if (!paramBoolean) {
-      a(paramString);
-    }
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    a((String)null, paramBoolean);
+    return this.d + "_" + this.a + "_" + this.b + "_" + this.c + "_" + this.f + "_" + this.g;
   }
 }
 

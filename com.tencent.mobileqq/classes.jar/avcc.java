@@ -1,35 +1,116 @@
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.gamecenter.message.TinyInfo;
 
-class avcc
-  implements auzr
+public class avcc
 {
-  avcc(avca paramavca) {}
+  public static final String a;
+  public TinyInfo a;
+  public byte[] a;
+  public String b;
   
-  public void a() {}
-  
-  public void a(boolean paramBoolean)
+  static
   {
-    ListenTogetherManager.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app).a(this.a.jdField_a_of_type_Avci.jdField_a_of_type_Int, this.a.jdField_a_of_type_Avci.jdField_a_of_type_JavaLangString, paramBoolean);
-    bcef.b(null, "dc00899", this.a.jdField_a_of_type_Avch.jdField_a_of_type_JavaLangString, "", "music_tab", "clk_quit", 0, 0, this.a.jdField_a_of_type_Avch.b, "", this.a.jdField_a_of_type_Avch.jdField_a_of_type_Int + "", "");
-    String str2;
-    String str3;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getCurrentAccountUin().equalsIgnoreCase(this.a.jdField_a_of_type_Avci.c))
+    jdField_a_of_type_JavaLangString = avec.jdField_a_of_type_JavaLangString + "GameQQPlayerUtil";
+  }
+  
+  public avcc()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageTinyInfo = new TinyInfo();
+  }
+  
+  public static String a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (paramQQAppInterface == null)
     {
-      str2 = this.a.jdField_a_of_type_Avch.jdField_a_of_type_JavaLangString;
-      str3 = this.a.jdField_a_of_type_Avch.b;
-      if (!paramBoolean) {
-        break label185;
-      }
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "[getMsgExtraString] fails, app is null");
+      return null;
     }
-    label185:
-    for (String str1 = "1";; str1 = "0")
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 0, "[getMsgExtraString], friendUin:" + paramString);
+    }
+    paramQQAppInterface = ((avds)paramQQAppInterface.getManager(QQManagerFactory.GAME_CENTER_MSG_MANAGER)).a;
+    if (paramQQAppInterface == null) {
+      return null;
+    }
+    if (!paramQQAppInterface.a(paramString))
     {
-      bcef.b(null, "dc00899", str2, "", "music_tab", "clk_quit_opener", 0, 0, str3, "", str1, "");
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "NOT same aio.");
+      return null;
+    }
+    paramQQAppInterface = paramQQAppInterface.jdField_a_of_type_ComTencentMobileqqGamecenterMessageTinyInfo;
+    if (paramQQAppInterface == null) {
+      return null;
+    }
+    return paramQQAppInterface.toJsonStr();
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, long paramLong, String paramString7, String paramString8, int paramInt)
+  {
+    if (paramQQAppInterface == null) {}
+    try
+    {
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "[openGameMsgAIO] fails, app is null.");
       return;
     }
+    catch (Throwable paramQQAppInterface)
+    {
+      avcc localavcc;
+      String str;
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[openGameMsgAIO] " + paramQQAppInterface.getMessage());
+    }
+    localavcc = ((avds)paramQQAppInterface.getManager(QQManagerFactory.GAME_CENTER_MSG_MANAGER)).a;
+    str = paramQQAppInterface.getTinyIdCache().a(paramString8, paramString7);
+    localavcc.b = str;
+    localavcc.a(paramQQAppInterface, paramString1, paramString2, paramString3, paramString4, paramString6, paramLong, paramString7, paramString8, paramInt);
+    paramQQAppInterface = new Intent(paramContext, ChatActivity.class);
+    paramQQAppInterface.putExtra("uin", str);
+    paramQQAppInterface.putExtra("game_msg_friend_role_id", paramString3);
+    paramQQAppInterface.putExtra("game_msg_my_role_id", paramString1);
+    paramQQAppInterface.putExtra("game_msg_top_gray_text", paramString5);
+    paramQQAppInterface.putExtra("uintype", 10007);
+    paramQQAppInterface.putExtra("game_msg_open_aio_from", 3);
+    paramQQAppInterface.addFlags(268435456);
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "[openGameMsgAIO],convertUin:" + str + ",topGrayText:" + paramString5);
+    paramContext.startActivity(paramQQAppInterface);
+    return;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, long paramLong, String paramString6, String paramString7, int paramInt)
+  {
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageTinyInfo.fromRoleId = paramString1;
+      this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageTinyInfo.toRoleId = paramString3;
+      this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageTinyInfo.fromOpenId = paramString2;
+      this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageTinyInfo.toOpenId = paramString4;
+      this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageTinyInfo.gameAppId = paramLong;
+      this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageTinyInfo.fromTinyId = Long.parseLong(paramString6);
+      this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageTinyInfo.toTinyId = Long.parseLong(paramString7);
+      this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageTinyInfo.windowFlag = paramInt;
+      this.jdField_a_of_type_ArrayOfByte = axln.a(paramString5);
+      paramQQAppInterface.getMsgCache().d(this.b, paramQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageTinyInfo.toString();
+        QLog.d(jdField_a_of_type_JavaLangString, 0, "[setTinyInfo] " + paramQQAppInterface + ",");
+      }
+      return;
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, paramQQAppInterface.getMessage());
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(this.b));
   }
 }
 

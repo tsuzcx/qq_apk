@@ -1,60 +1,46 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticonview.EmoticonUtils;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.qwallet.widget.HongBaoPanel;
 
-class agil
-  implements avtb<EmoticonPackage>
+public class agil
+  implements agin
 {
-  agil(agif paramagif, int paramInt, ChatMessage paramChatMessage) {}
+  private ahqe jdField_a_of_type_Ahqe;
+  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public agil(BaseChatPie paramBaseChatPie)
   {
-    String str = "0";
-    int i = -1;
-    if (paramEmoticonPackage != null)
-    {
-      str = paramEmoticonPackage.epId;
-      if ((3 == paramEmoticonPackage.jobType) || (5 == paramEmoticonPackage.jobType)) {
-        i = 2;
-      }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+  }
+  
+  private HongBaoPanel a()
+  {
+    if (this.jdField_a_of_type_Ahqe == null) {
+      this.jdField_a_of_type_Ahqe = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getPanelManager();
     }
-    else
-    {
-      if (this.jdField_a_of_type_Int != 2131365382) {
-        break label98;
-      }
-      acvv.b(this.jdField_a_of_type_Agif.b, this.jdField_a_of_type_Agif.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      bcef.b(this.jdField_a_of_type_Agif.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006447", "0X8006447", 0, 0, "4", "", "", "");
+    return (HongBaoPanel)this.jdField_a_of_type_Ahqe.a(10);
+  }
+  
+  private void a()
+  {
+    HongBaoPanel localHongBaoPanel = a();
+    if (localHongBaoPanel != null) {
+      localHongBaoPanel.onDestory();
     }
-    label98:
-    do
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
     {
-      do
-      {
-        return;
-        i = 1;
-        break;
-        if (this.jdField_a_of_type_Int == 2131362195)
-        {
-          this.jdField_a_of_type_Agif.a(paramEmoticonPackage, str, i);
-          return;
-        }
-        if ((this.jdField_a_of_type_Int == 2131367111) || (this.jdField_a_of_type_Int == 2131366827))
-        {
-          this.jdField_a_of_type_Agif.a(paramEmoticonPackage, str, i, this.jdField_a_of_type_Int);
-          return;
-        }
-      } while (this.jdField_a_of_type_Int != 2131371454);
-      if (QLog.isColorLevel()) {
-        QLog.d("MarketFaceItemBuilder", 4, "marketface related click");
-      }
-    } while ((agif.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo == null) || (agif.jdField_a_of_type_ComTencentMobileqqDataChatMessage == null) || (agif.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.emoticon == null));
-    bcef.b(this.jdField_a_of_type_Agif.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_Agif.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "0X800B115", "0X800B115", EmoticonUtils.getRelatedEmotionReportFromType(this.jdField_a_of_type_Agif.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType), 0, "1", "", agif.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.emoticon.epId, agif.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.emoticon.eId);
-    this.jdField_a_of_type_Agif.h(agif.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    default: 
+      return;
+    }
+    a();
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 14 };
   }
 }
 

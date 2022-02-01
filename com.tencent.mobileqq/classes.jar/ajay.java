@@ -1,46 +1,71 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.mobileqq.app.FriendListHandler.AddBatchPhoneFriendResult;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class ajay
-  implements View.OnClickListener
+public class ajay
+  extends anvi
 {
-  ajay(ajaw paramajaw, TroopLinkElement paramTroopLinkElement, ajba paramajba) {}
+  public ajay(SystemMsgListView paramSystemMsgListView) {}
   
-  public void onClick(View paramView)
+  public void onAddBatchPhoneFriend(boolean paramBoolean, ArrayList<FriendListHandler.AddBatchPhoneFriendResult> paramArrayList)
   {
-    Object localObject;
-    if (!ajaw.a(this.jdField_a_of_type_Ajaw))
-    {
-      localObject = new Intent(ajaw.a(this.jdField_a_of_type_Ajaw), QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("url", this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement.url);
-      ajaw.a(this.jdField_a_of_type_Ajaw).startActivity((Intent)localObject);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    if (paramBoolean) {
+      SystemMsgListView.a(this.a).c();
     }
-    boolean bool = ajba.a(this.jdField_a_of_type_Ajba).isChecked();
-    if (bool)
+  }
+  
+  public void onGetConnectionsPerson(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.newfriendSystemMsgListView", 2, "onGetConnectionsPerson " + paramBoolean + " " + paramInt1 + " " + paramInt2);
+    }
+    if (paramBoolean)
     {
-      ajaw.a(this.jdField_a_of_type_Ajaw).remove(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement);
-      label92:
-      localObject = ajba.a(this.jdField_a_of_type_Ajba);
-      if (bool) {
-        break label134;
+      localaiyl = SystemMsgListView.a(this.a).a();
+      if ((localaiyl != null) && (localaiyl.a()) && (localaiyl.a == paramInt2) && (!SystemMsgListView.a(this.a, paramInt2, paramInt3))) {
+        SystemMsgListView.a(this.a).a(0L);
       }
     }
-    label134:
-    for (bool = true;; bool = false)
+    while (paramInt1 != 1205)
     {
-      ((CheckBox)localObject).setChecked(bool);
-      break;
-      ajaw.a(this.jdField_a_of_type_Ajaw).add(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement);
-      break label92;
+      aiyl localaiyl;
+      return;
+    }
+    SystemMsgListView.a(this.a).a(0L);
+  }
+  
+  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.newfriendSystemMsgListView", 2, "onGetMayKnowRecommend " + paramBoolean);
+    }
+    if (paramBoolean) {
+      SystemMsgListView.a(this.a).c();
+    }
+  }
+  
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
+  {
+    if (paramBoolean) {
+      SystemMsgListView.a(this.a).c();
+    }
+  }
+  
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  {
+    if (paramBoolean1)
+    {
+      paramString = paramBundle.getString("uin");
+      int i = paramBundle.getInt("source_id");
+      paramBundle = paramBundle.getString("extra");
+      if (((i == 3006) || (i == 3075)) && ("ContactMatchBuilder".equals(paramBundle))) {
+        this.a.a(paramString);
+      }
+      if (bpup.a(i)) {
+        SystemMsgListView.a(this.a).c();
+      }
     }
   }
 }

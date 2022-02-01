@@ -1,44 +1,70 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCResult;
-import java.util.Map;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
+import java.io.File;
 
-class bicj
-  extends QIPCModule
+public class bicj
 {
-  bicj(bici parambici, String paramString)
+  public static final int a = ListenChangeVoicePanel.a.length;
+  
+  public static String a(String paramString)
   {
-    super(paramString);
+    String str = paramString.substring(0, paramString.lastIndexOf(".")).concat(".pcm");
+    new File(paramString).renameTo(new File(str));
+    return str;
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public static String a(String paramString, int paramInt)
   {
-    bhzm.c("DownloaderWriteCodeIPC", "onCall action|" + paramString + " params|" + paramBundle + " callbackId|" + paramInt);
-    Object localObject = bici.a(this.a);
-    if (localObject == null) {
-      bhzm.c("DownloaderWriteCodeIPC", "onCall action but appInterface is null");
-    }
-    String str;
-    int i;
-    do
+    int i = paramString.lastIndexOf(".");
+    return paramString.substring(0, i).concat("_" + paramInt).concat(paramString.substring(i, paramString.length()));
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    new File(paramString1).delete();
+    new File(paramString2).delete();
+    int i = 0;
+    while (i < a)
     {
-      do
+      new File(a(paramString1, i)).delete();
+      i += 1;
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, int paramInt)
+  {
+    String str = null;
+    new File(paramString1).delete();
+    new File(paramString2).delete();
+    int i = 0;
+    paramString2 = str;
+    if (i < a)
+    {
+      str = a(paramString1, i);
+      if (i == paramInt) {
+        paramString2 = str;
+      }
+      for (;;)
       {
-        return null;
-      } while ((!"DownloaderWriteCodeIPC_Action__GetCode".equals(paramString)) || (paramBundle == null));
-      str = paramBundle.getString("PackageName");
-      i = paramBundle.getInt("VersionCode");
-      bhzm.c("DownloaderWriteCodeIPC", "onCall action|" + paramString + " packageName|" + str + " versionCode|" + i);
-    } while (str == null);
-    ((QQAppInterface)localObject).addDefaultObservers(bici.a(this.a));
-    paramString = (ampt)((QQAppInterface)localObject).getBusinessHandler(4);
-    localObject = str + "_" + i;
-    paramBundle.putInt("CallbackId", paramInt);
-    paramBundle = new Bundle(paramBundle);
-    bici.a(this.a).put(localObject, paramBundle);
-    paramString.a(str, i, (String)localObject);
-    return null;
+        i += 1;
+        break;
+        new File(str).delete();
+      }
+    }
+    if (paramString2 != null) {
+      new File(paramString2).renameTo(new File(paramString1));
+    }
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    new File(paramString1).deleteOnExit();
+    new File(paramString2).deleteOnExit();
+    int i = 0;
+    while (i < a)
+    {
+      new File(a(paramString1, i)).deleteOnExit();
+      i += 1;
+    }
   }
 }
 

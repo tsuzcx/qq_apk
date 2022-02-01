@@ -1,28 +1,22 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class oqm
-  extends ClickableSpan
+class oqm
+  implements ViewBase.OnClickListener
 {
-  public oqm(CommentInfo paramCommentInfo1, CommentInfo paramCommentInfo2, BaseActivity paramBaseActivity) {}
+  oqm(oql paramoql) {}
   
-  public void onClick(View paramView)
+  public void onClick(ViewBase paramViewBase)
   {
-    oto.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.toUin, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    paramView = new otr(this.b.articleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo).a(osu.a).b(this.b.area).c(0).a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.toUin).a();
-    odq.a(null, oto.a(this.b.articleInfo), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.b.articleInfo.mArticleID), String.valueOf(this.b.articleInfo.mAlgorithmID), this.b.articleInfo.innerUniqueID, paramView, false);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#4D7CAF"));
-    paramTextPaint.setUnderlineText(false);
+    if (paramViewBase.getEventAttachedData() == null)
+    {
+      QLog.e("DailyHeaderViewController", 1, "[onClick] attach event data is null");
+      return;
+    }
+    oqb.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_OrgJsonJSONObject);
+    pkh.a(paramViewBase.getNativeView().getContext(), paramViewBase.getEventAttachedData());
   }
 }
 

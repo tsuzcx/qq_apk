@@ -1,6 +1,19 @@
-public abstract interface apoj
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArFeatureInfo;
+
+public final class apoj
+  implements Parcelable.Creator<ArFeatureInfo>
 {
-  public abstract void onServiceSyncSucc(boolean paramBoolean);
+  public ArFeatureInfo a(Parcel paramParcel)
+  {
+    return new ArFeatureInfo(paramParcel);
+  }
+  
+  public ArFeatureInfo[] a(int paramInt)
+  {
+    return new ArFeatureInfo[paramInt];
+  }
 }
 
 

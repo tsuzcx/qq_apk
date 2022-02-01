@@ -1,19 +1,29 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aheh
+public class aheh
   implements View.OnClickListener
 {
-  aheh(ahdt paramahdt) {}
+  public aheh(QQStoryItemBuilder paramQQStoryItemBuilder) {}
   
   public void onClick(View paramView)
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
-    bcef.b(this.a.app, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(0), "", "", "");
-    afcm.a(this.a.app, this.a.mActivity, this.a.sessionInfo, true, null, this.a);
-    bcef.b(this.a.app, "dc00899", "Qidian", "", "0X8008FEB", "qidianMasterVideo", 1, 1, 0, "2", "0", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    ahen localahen = (ahen)AIOUtils.getHolder(paramView);
+    if (paramView == localahen.jdField_a_of_type_AndroidWidgetFrameLayout) {
+      this.a.b(localahen);
+    }
+    for (;;)
+    {
+      bdla.b(this.a.a, "dc00898", "", "", "0x8009434", "0x8009434", 0, 0, "", "5", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (paramView == localahen.jdField_a_of_type_AndroidWidgetRelativeLayout) {
+        this.a.a(localahen);
+      }
+    }
   }
 }
 

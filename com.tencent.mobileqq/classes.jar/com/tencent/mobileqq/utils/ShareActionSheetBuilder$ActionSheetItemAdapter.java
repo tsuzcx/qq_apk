@@ -100,7 +100,7 @@ public class ShareActionSheetBuilder$ActionSheetItemAdapter
   
   protected int getLayoutId()
   {
-    return 2131558942;
+    return 2131558969;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -110,7 +110,7 @@ public class ShareActionSheetBuilder$ActionSheetItemAdapter
       this.mRes = paramViewGroup.getContext().getResources();
     }
     if (this.mIconSize == 0) {
-      this.mIconSize = ((int)this.mRes.getDimension(2131296795));
+      this.mIconSize = ((int)this.mRes.getDimension(2131296796));
     }
     if (this.mIconFactory == null) {
       this.mIconFactory = createIconFactory(paramViewGroup.getContext());
@@ -120,8 +120,8 @@ public class ShareActionSheetBuilder$ActionSheetItemAdapter
     {
       localView = this.inflater.inflate(getLayoutId(), paramViewGroup, false);
       paramView = new ShareActionSheetBuilder.ActionSheetItemViewHolder();
-      paramView.vIcon = ((ImageView)localView.findViewById(2131377257));
-      paramView.vLabel = ((TextView)localView.findViewById(2131377258));
+      paramView.vIcon = ((ImageView)localView.findViewById(2131377530));
+      paramView.vLabel = ((TextView)localView.findViewById(2131377531));
       localView.setTag(paramView);
     }
     for (;;)
@@ -138,9 +138,9 @@ public class ShareActionSheetBuilder$ActionSheetItemAdapter
       paramView = (View)localObject1;
     }
     localView.setId(paramView.sheetItem.id);
-    float f = this.mRes.getDimension(2131296795);
+    float f = this.mRes.getDimension(2131296796);
     Object localObject1 = paramView.vLabel.getPaint();
-    ((TextPaint)localObject1).setTextSize(this.mRes.getDimensionPixelSize(2131299005));
+    ((TextPaint)localObject1).setTextSize(this.mRes.getDimensionPixelSize(2131299009));
     Object localObject2 = paramView.vLabel;
     String str = paramView.sheetItem.label;
     int i;

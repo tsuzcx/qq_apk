@@ -1,14 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import tencent.im.oidb.articlesummary.articlesummary.BiuMultiLevel;
+import android.content.Context;
+import com.tencent.mobileqq.app.face.FaceDecoder;
 
-public final class rec
-  implements psw<articlesummary.BiuMultiLevel, rep>
+public class rec
+  extends rbp
 {
-  public rec(SocializeFeedsInfo paramSocializeFeedsInfo) {}
-  
-  public rep a(articlesummary.BiuMultiLevel paramBiuMultiLevel)
+  public rec(Context paramContext, FaceDecoder paramFaceDecoder, szd paramszd)
   {
-    return this.a.a(paramBiuMultiLevel);
+    super(paramContext, paramFaceDecoder, paramszd);
+  }
+  
+  public rbp a()
+  {
+    return this;
+  }
+  
+  public rbp d()
+  {
+    return this;
+  }
+  
+  public rbp e()
+  {
+    return null;
   }
 }
 

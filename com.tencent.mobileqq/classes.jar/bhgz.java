@@ -1,24 +1,17 @@
-public class bhgz
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+final class bhgz
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  bhgz(Dialog paramDialog) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    StringBuilder localStringBuilder = new StringBuilder(64);
-    localStringBuilder.append("DataItem:position=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", type=").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", coverUrl=").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(", feedId=").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(", vid=").append(this.c);
-    localStringBuilder.append(", jumpUrl=").append(this.d);
-    localStringBuilder.append(", spiritImageUrl=").append(this.e);
-    return localStringBuilder.toString();
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

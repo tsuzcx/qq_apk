@@ -1,13 +1,14 @@
 package com.etrump.mixlayout;
 
-import amsw;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import auef;
-import bcef;
-import bgae;
+import anvk;
+import avjz;
+import bdla;
+import bhiw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -49,7 +50,7 @@ public class FontSoLoader
       }
       if (bool2)
       {
-        String str = bgae.a();
+        String str = bhiw.a();
         bool1 = new File(str + "libvipfont808.so").exists();
       }
       return bool1;
@@ -83,22 +84,22 @@ public class FontSoLoader
           bool = false;
           return bool;
         }
-        switch (bgae.a(bgae.a(), "libvipfont808.so"))
+        switch (bhiw.a(bhiw.a(), "libvipfont808.so"))
         {
         case 1: 
           localObject1 = BaseApplicationImpl.getApplication().getRuntime();
           if (!(localObject1 instanceof QQAppInterface)) {
-            break label250;
+            break label251;
           }
           QQAppInterface localQQAppInterface = (QQAppInterface)localObject1;
-          ((VasQuickUpdateManager)localQQAppInterface.getManager(184)).downloadItem(1004L, "libVipFont_808", "FontManager_initHYEngine");
-          localObject1 = ((amsw)localQQAppInterface.getManager(51)).a(localQQAppInterface.getAccount());
+          ((VasQuickUpdateManager)localQQAppInterface.getManager(QQManagerFactory.VAS_QUICKUPDATE_MANAGER)).downloadItem(1004L, "libVipFont_808", "FontManager_initHYEngine");
+          localObject1 = ((anvk)localQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(localQQAppInterface.getAccount());
           if ((localObject1 != null) && (0L != ((ExtensionInfo)localObject1).uVipFont) && (((ExtensionInfo)localObject1).vipFontType == 1))
           {
             localObject1 = "0";
-            bcef.b(localQQAppInterface, "CliOper", "", "", "Font_Mall", "0X80072C8", 0, 0, "1", (String)localObject1, "", "");
+            bdla.b(localQQAppInterface, "CliOper", "", "", "Font_Mall", "0X80072C8", 0, 0, "1", (String)localObject1, "", "");
             if (!QLog.isColorLevel()) {
-              break label250;
+              break label251;
             }
             QLog.d("VipFontSoLoader", 2, "VipFontReport: early download start, restartDownload=true, type=" + (String)localObject1);
           }
@@ -109,12 +110,12 @@ public class FontSoLoader
       String str = "1";
       continue;
       ETEngine.isSOLoaded.set(true);
-      auef.a().a();
+      avjz.a().a();
       sIsVipFontSoLoaded.set(true);
       BaseApplication.getContext().getSharedPreferences("early_qq.android.native.vipfont.v5", 4).edit().putBoolean("vip_font_so_downloaded", true).commit();
       boolean bool = true;
       continue;
-      label250:
+      label251:
       bool = false;
     }
   }

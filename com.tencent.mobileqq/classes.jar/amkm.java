@@ -1,6 +1,19 @@
-public abstract interface amkm
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import java.util.Comparator;
+
+public class amkm
+  implements Comparator<TroopInfo>
 {
-  public abstract void a(int paramInt);
+  public int a(TroopInfo paramTroopInfo1, TroopInfo paramTroopInfo2)
+  {
+    if (paramTroopInfo1.lastMsgTime > paramTroopInfo2.lastMsgTime) {
+      return -1;
+    }
+    if (paramTroopInfo1.lastMsgTime < paramTroopInfo2.lastMsgTime) {
+      return 1;
+    }
+    return ansk.a(paramTroopInfo1.mComparePartInt, paramTroopInfo1.mCompareSpell, paramTroopInfo2.mComparePartInt, paramTroopInfo2.mCompareSpell);
+  }
 }
 
 

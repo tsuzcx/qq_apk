@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.utils;
 
-import afvh;
-import afvi;
-import afvl;
-import afvm;
+import agnw;
+import agnx;
+import agoa;
+import agob;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface.OnDismissListener;
@@ -24,7 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import aowr;
+import apzv;
 import com.tencent.ark.ArkViewImplement;
 import com.tencent.ark.ArkViewImplement.LoadCallback;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
@@ -44,10 +44,10 @@ public class QQCustomArkDialogForAio
   int adjustHeight = -1;
   int arkapp_height_fromsdk = 0;
   int arkapp_width_fromsdk = 0;
-  afvi mAppContainer;
+  agnx mAppContainer;
   ArkAppLoadLayout mArkLoadLayout;
   ArkAppView mArkView;
-  private afvl mCallback = new QQCustomArkDialogForAio.1(this);
+  private agoa mCallback = new QQCustomArkDialogForAio.1(this);
   private ArkViewImplement.LoadCallback mLoadCallback = new QQCustomArkDialogForAio.2(this);
   int mWidth = 0;
   int maxHight = 0;
@@ -64,9 +64,9 @@ public class QQCustomArkDialogForAio
     super(paramContext, paramInt);
   }
   
-  private afvi createApp(QQCustomArkDialogForAio.AppInfo paramAppInfo)
+  private agnx createApp(QQCustomArkDialogForAio.AppInfo paramAppInfo)
   {
-    this.mAppContainer = new afvh();
+    this.mAppContainer = new agnw();
     int i = this.mArkView.getWidth();
     int j = this.mArkView.getHeight();
     if (QLog.isDebugVersion()) {
@@ -78,7 +78,7 @@ public class QQCustomArkDialogForAio
     }
     for (;;)
     {
-      aopk.a = false;
+      apsl.a = false;
       return this.mAppContainer;
       this.mAppContainer.setFixSize(this.mWidth, this.adjustHeight);
       this.mAppContainer.setMaxSize(this.mWidth, this.maxHight);
@@ -120,7 +120,7 @@ public class QQCustomArkDialogForAio
     if (QLog.isColorLevel()) {
       QLog.d("QQCustomArkDialog", 2, "dismiss");
     }
-    aopk.a = true;
+    apsl.a = true;
     super.dismiss();
   }
   
@@ -132,13 +132,13 @@ public class QQCustomArkDialogForAio
       if (QLog.isColorLevel()) {
         QLog.i("QQCustomArkDialog", 2, "initArkView:" + paramBundle);
       }
-      setContentView(2131559016);
-      View localView = LayoutInflater.from(paramContext).inflate(2131558834, null);
+      setContentView(2131559043);
+      View localView = LayoutInflater.from(paramContext).inflate(2131558859, null);
       localView.setPadding(0, 0, 0, 0);
-      this.mArkView = ((ArkAppView)localView.findViewById(2131362940));
-      this.mArkLoadLayout = ((ArkAppLoadLayout)localView.findViewById(2131370257));
-      localView.findViewById(2131362966).setPadding(0, 0, 0, 0);
-      ((LinearLayout)localView.findViewById(2131362949)).setVisibility(8);
+      this.mArkView = ((ArkAppView)localView.findViewById(2131362957));
+      this.mArkLoadLayout = ((ArkAppLoadLayout)localView.findViewById(2131370436));
+      localView.findViewById(2131362983).setPadding(0, 0, 0, 0);
+      ((LinearLayout)localView.findViewById(2131362966)).setVisibility(8);
       this.mArkView.setBorderType(0);
       this.mArkView.setLoadCallback(this.mLoadCallback);
       boolean bool1 = paramBundle.getBoolean("is_ark_display_share", false);
@@ -180,16 +180,16 @@ public class QQCustomArkDialogForAio
       this.rootView.setPadding(0, 0, 0, 0);
       if (!bool1)
       {
-        localObject2 = findViewById(2131363734);
+        localObject2 = findViewById(2131363805);
         if (localObject2 != null) {
           ((View)localObject2).setVisibility(8);
         }
         this.mArkView.setOnTouchListener(this.mArkView);
-        localObject2 = findViewById(2131365514);
+        localObject2 = findViewById(2131365606);
         if (localObject2 != null) {
           ((View)localObject2).setVisibility(8);
         }
-        localObject2 = findViewById(2131365532);
+        localObject2 = findViewById(2131365624);
         if (localObject2 != null) {
           ((View)localObject2).setVisibility(8);
         }
@@ -227,7 +227,7 @@ public class QQCustomArkDialogForAio
         }
         paramContext = (Activity)paramContext;
         if (paramContext != null) {
-          aowr.a(paramContext, this.mArkView);
+          apzv.a(paramContext, this.mArkView);
         }
       }
     }

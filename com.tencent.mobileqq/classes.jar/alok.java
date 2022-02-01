@@ -1,574 +1,65 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import android.text.Editable;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.apollo.ApolloPanelManager.1;
-import com.tencent.mobileqq.apollo.ApolloPanelManager.2;
-import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.data.ApolloSlaveInfo;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import android.os.Build;
+import android.text.TextUtils;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.os.MqqHandler;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import common.config.service.QzoneConfig;
 
 public class alok
+  implements MediaPlayer.OnErrorListener
 {
-  public volatile int a;
-  public long a;
-  public amlu a;
-  public String a;
-  private WeakReference<QQAppInterface> a;
-  public ConcurrentHashMap<Long, ApolloSlaveInfo> a;
-  public AtomicInteger a;
-  public volatile boolean a;
-  public int b;
-  private amlu jdField_b_of_type_Amlu;
-  private WeakReference<BaseChatPie> jdField_b_of_type_JavaLangRefWeakReference;
-  private boolean jdField_b_of_type_Boolean;
-  private WeakReference<alol> c;
+  public alok(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public alok(QQAppInterface paramQQAppInterface)
+  private String[] a()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-  }
-  
-  private void b(amlu paramamlu)
-  {
-    if ((a() == null) || (this.jdField_b_of_type_JavaLangRefWeakReference.get() == null) || (paramamlu == null)) {
-      return;
-    }
-    BaseChatPie localBaseChatPie = (BaseChatPie)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-    SessionInfo localSessionInfo = ((BaseChatPie)this.jdField_b_of_type_JavaLangRefWeakReference.get()).getSessionInfo();
-    localBaseChatPie.mApolloInfo = paramamlu;
-    int i;
-    if (localSessionInfo.curType == 3000) {
-      i = 11;
-    }
-    for (;;)
-    {
-      Intent localIntent = TroopMemberListActivity.a(localBaseChatPie.mActivity, localSessionInfo.curFriendUin, i);
-      if (localBaseChatPie.getCurrentPanel() == 21) {
-        localIntent.putExtra("param_troop_send_apollo_msg", true);
-      }
-      localIntent.putExtra("param_is_pop_up_style", true);
-      localIntent.putExtra("param_troop_send_apollo_msg", true);
-      localBaseChatPie.mActivity.startActivityForResult(localIntent, 6001);
-      VipUtils.a(localBaseChatPie.app, "cmshow", "Apollo", "g_action_double_clk", localSessionInfo.curFriendUin, -1, ApolloUtil.b(localSessionInfo.curType), new String[] { "" + paramamlu.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId, "655_" + paramamlu.jdField_a_of_type_Int, "1", String.valueOf(System.currentTimeMillis() / 1000L) });
-      return;
-      if (localSessionInfo.curType == 1) {
-        i = 3;
-      } else {
-        i = 0;
-      }
-    }
-  }
-  
-  public QQAppInterface a()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+    String str = QzoneConfig.getInstance().getConfig("VideoEdit", "VideoLoadErrorReturnCode");
+    if (str == null) {
       return null;
     }
-    return (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    return str.split(",");
   }
   
-  public void a()
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    if (this.c != null)
-    {
-      this.c.clear();
-      this.c = null;
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (this.c != null)
-    {
-      alol localalol = (alol)this.c.get();
-      if (localalol != null) {
-        localalol.a(paramInt, paramBoolean1, paramBoolean2);
-      }
-    }
-  }
-  
-  public void a(long paramLong, String paramString1, String paramString2)
-  {
-    boolean bool = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("Apollo_PanelManager", 2, new Object[] { "[onGetSlaveListFromSvr], ret:", Long.valueOf(paramLong), "resqData:", paramString1, ",reqData:", paramString2 });
-    }
-    if (0L != paramLong) {
-      return;
-    }
+    QLog.e("EditLocalVideoActivity", 2, "VideoView onError, what:" + paramInt1 + ", extra:" + paramInt2);
     for (;;)
     {
-      int i;
       try
       {
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        i = new JSONObject(paramString2).optInt("actionId");
-        if (QLog.isColorLevel()) {
-          QLog.d("Apollo_PanelManager", 2, new Object[] { "actionId:", Integer.valueOf(i), ",orgActionId:" });
-        }
-        paramString2 = a().getCurrentAccountUin();
-        paramString1 = new JSONObject(paramString1);
-        this.jdField_a_of_type_JavaLangString = paramString1.toString();
-        paramString1 = paramString1.getJSONObject("data");
-        JSONArray localJSONArray = paramString1.getJSONArray("slaveInfoList");
-        if ((localJSONArray != null) && (localJSONArray.length() > 0))
+        Toast.makeText(this.a.getApplicationContext(), anvx.a(2131703129), 1).show();
+        paramMediaPlayer = a();
+        if (paramMediaPlayer == null)
         {
-          i = 0;
-          if (i < localJSONArray.length())
-          {
-            ApolloSlaveInfo localApolloSlaveInfo = (ApolloSlaveInfo)bfra.a(localJSONArray.getJSONObject(i), ApolloSlaveInfo.class);
-            if (localApolloSlaveInfo == null) {
-              break label341;
-            }
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(localApolloSlaveInfo.uin), localApolloSlaveInfo);
-            break label341;
+          EditLocalVideoActivity.a(this.a, "play_local_video", "play_local_video_success", "4", "what: " + paramInt1 + ",   extra: " + paramInt2 + ",   " + Build.MODEL);
+          this.a.setResult(0);
+          return true;
+        }
+        int k = paramMediaPlayer.length;
+        int i = 0;
+        int j = 1;
+        if (i < k)
+        {
+          if (TextUtils.equals(paramMediaPlayer[i], paramInt1 + "-" + paramInt2)) {
+            j = 0;
           }
         }
-        this.jdField_b_of_type_Int = paramString1.optInt("defaultActId");
-        paramString1 = (ApolloSlaveInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(Long.parseLong(paramString2)));
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramString1.slaveTotal);
-        if (paramString1.isCaptured == 1) {
-          bool = true;
-        }
-        this.jdField_b_of_type_Boolean = bool;
-        if (QLog.isColorLevel()) {
-          QLog.d("Apollo_PanelManager", 2, new Object[] { "my slave info", paramString1.toString() });
-        }
-        ThreadManager.getUIHandler().post(new ApolloPanelManager.2(this));
-        return;
-      }
-      catch (Throwable paramString1)
-      {
-        QLog.e("Apollo_PanelManager", 1, "[onGetSlaveListFromSvr], errInfo->", paramString1);
-        return;
-      }
-      label341:
-      i += 1;
-    }
-  }
-  
-  public void a(alol paramalol)
-  {
-    this.c = new WeakReference(paramalol);
-  }
-  
-  public void a(amlu paramamlu)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Apollo_PanelManager", 2, "[checkSlavesBeforeSend]");
-    }
-    this.jdField_a_of_type_Amlu = paramamlu;
-    if ((System.currentTimeMillis() - this.jdField_a_of_type_Long <= 120000L) && (paramamlu != null))
-    {
-      ThreadManager.getUIHandler().post(new ApolloPanelManager.1(this, paramamlu));
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        localJSONObject = new JSONObject();
-        localJSONObject.put("cmd", "apollo_terminal_info.get_user_slaves_v2");
-        localJSONObject.put("from", "android");
-        if (paramamlu == null) {
-          break label196;
-        }
-        if (paramamlu.jdField_a_of_type_ComTencentMobileqqDataApolloActionData != null) {
-          break label180;
-        }
-      }
-      catch (Throwable paramamlu)
-      {
-        JSONObject localJSONObject;
-        QLog.e("Apollo_PanelManager", 1, "[checkSlavesBeforeSend], errInfo->", paramamlu);
-        return;
-      }
-      localJSONObject.put("actionId", paramamlu);
-      paramamlu = new JSONArray();
-      paramamlu.put(Long.parseLong(a().getCurrentAccountUin()));
-      localJSONObject.put("toUins", paramamlu);
-      ((VasExtensionHandler)a().getBusinessHandler(71)).a("apollo_terminal_info.get_user_slaves_v2", localJSONObject.toString(), -1L, 7);
-      return;
-      label180:
-      int i = paramamlu.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId;
-      paramamlu = Integer.valueOf(i);
-      continue;
-      label196:
-      paramamlu = null;
-    }
-  }
-  
-  public void a(amlu paramamlu, BaseChatPie paramBaseChatPie)
-  {
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseChatPie);
-    a(paramamlu);
-  }
-  
-  public void a(BaseChatPie paramBaseChatPie, amlu paramamlu)
-  {
-    if ((paramBaseChatPie == null) || (paramBaseChatPie.app == null)) {
-      return;
-    }
-    this.jdField_b_of_type_Amlu = paramamlu;
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseChatPie);
-    this.jdField_a_of_type_Boolean = true;
-    ((VasExtensionHandler)paramBaseChatPie.app.getBusinessHandler(71)).a(paramBaseChatPie.app.getCurrentUin(), 262144, "get gold balance");
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_b_of_type_JavaLangRefWeakReference == null) || (this.jdField_b_of_type_JavaLangRefWeakReference.get() == null) || (this.jdField_b_of_type_Amlu == null)) {}
-    for (;;)
-    {
-      return;
-      this.jdField_a_of_type_Boolean = false;
-      BaseChatPie localBaseChatPie = (BaseChatPie)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-      SessionInfo localSessionInfo = localBaseChatPie.getSessionInfo();
-      ApolloActionData localApolloActionData = this.jdField_b_of_type_Amlu.jdField_a_of_type_ComTencentMobileqqDataApolloActionData;
-      int i = this.jdField_a_of_type_Int;
-      if (localApolloActionData.currencyType != 1) {
-        continue;
-      }
-      HashMap localHashMap = new HashMap();
-      int j = this.jdField_a_of_type_Int;
-      Object localObject4;
-      String str2;
-      Object localObject5;
-      Object localObject3;
-      Object localObject2;
-      String str1;
-      Object localObject1;
-      if (localApolloActionData.currencyNum <= i)
-      {
-        localObject4 = amtj.a(2131699626);
-        str2 = String.format(localBaseChatPie.mContext.getResources().getString(2131690044), new Object[] { Integer.valueOf(localApolloActionData.currencyNum), Integer.valueOf(j) });
-        localObject5 = amtj.a(2131699631);
-        localObject3 = "requestSSO";
-        localObject2 = localObject5;
-        str1 = str2;
-        localObject1 = localObject4;
-        if (localSessionInfo == null) {
-          break label583;
-        }
-        VipUtils.a(localBaseChatPie.app, "cmshow", "Apollo", "icon_alert_show", ApolloUtil.b(localSessionInfo.curType), 0, new String[] { "" + localApolloActionData.actionId });
-        localObject1 = "requestSSO";
-        str1 = str2;
-        localObject2 = localObject4;
-        localHashMap.put("APOLLO_POP_TYPE", "dialog");
-        localHashMap.put("feeType", String.valueOf(localApolloActionData.feeType));
-        localHashMap.put("title", localObject2);
-        localHashMap.put("content", str1);
-        localHashMap.put("rightString", localObject5);
-        localHashMap.put("url", localObject1);
-        localHashMap.put("actionId", String.valueOf(localApolloActionData.actionId));
-        localObject1 = new JSONObject();
-      }
-      try
-      {
-        ((JSONObject)localObject1).put("packageId", String.valueOf(this.jdField_b_of_type_Amlu.jdField_a_of_type_Int));
-        localHashMap.put("extendJson", ((JSONObject)localObject1).toString());
-        localObject1 = localBaseChatPie.app.getHandler(ChatActivity.class);
-        if (localObject1 == null) {
-          continue;
-        }
-        localObject1 = ((MqqHandler)localObject1).obtainMessage(45);
-        ((Message)localObject1).obj = localHashMap;
-        ((Message)localObject1).sendToTarget();
-        return;
-        localObject4 = amtj.a(2131699623);
-        str2 = String.format(localBaseChatPie.mContext.getString(2131690043), new Object[] { Integer.valueOf(localApolloActionData.currencyNum), Integer.valueOf(j) });
-        localObject5 = amtj.a(2131699629);
-        String str3 = amip.Z + "&adtag=authGold";
-        localObject3 = str3;
-        localObject2 = localObject5;
-        str1 = str2;
-        localObject1 = localObject4;
-        if (localSessionInfo != null)
+        else
         {
-          VipUtils.a(localBaseChatPie.app, "cmshow", "Apollo", "debt_alert_show", ApolloUtil.b(localSessionInfo.curType), 0, new String[] { "" + localApolloActionData.actionId });
-          localObject1 = localObject4;
-          str1 = str2;
-          localObject2 = localObject5;
-          localObject3 = str3;
-        }
-        label583:
-        localObject4 = localObject1;
-        localObject1 = localObject3;
-        localObject5 = localObject2;
-        localObject2 = localObject4;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.e("Apollo_PanelManager", 1, "[authGoldAction] Exception:", localException);
-        }
-      }
-    }
-  }
-  
-  public void b(BaseChatPie paramBaseChatPie, amlu paramamlu)
-  {
-    if ((paramamlu == null) || (paramBaseChatPie == null) || (paramBaseChatPie.app == null) || (paramBaseChatPie.input == null) || (paramBaseChatPie.input.getText() == null)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Apollo_PanelManager", 2, new Object[] { "[sendActionMsg] mainInfo=", paramamlu });
-    }
-    SessionInfo localSessionInfo = paramBaseChatPie.getSessionInfo();
-    paramamlu.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.atNickName = "";
-    paramamlu.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.inputText = "";
-    if (localSessionInfo.curType == 0)
-    {
-      paramamlu.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.peerUin = localSessionInfo.curFriendUin;
-      paramamlu.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.inputText = com.tencent.mobileqq.text.TextUtils.emoticonToText(paramBaseChatPie.input.getText().toString());
-    }
-    label123:
-    while (((localSessionInfo.curType != 1) && (localSessionInfo.curType != 3000)) || (paramBaseChatPie.mActivity == null))
-    {
-      localObject1 = paramBaseChatPie.input.getText().toString();
-      if ((localObject1 == null) || (((String)localObject1).length() <= 99)) {
-        break;
-      }
-      ChatActivityUtils.a(paramBaseChatPie.app.getApplication(), 2131718135, 1);
-      return;
-    }
-    Object localObject1 = new ArrayList();
-    bevq.a(paramBaseChatPie.input.getEditableText(), (ArrayList)localObject1);
-    Object localObject2;
-    if (paramamlu.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.personNum == 1) {
-      if ((((ArrayList)localObject1).size() == 1) && (0L != ((MessageForText.AtTroopMemberInfo)((ArrayList)localObject1).get(0)).uin) && (((MessageForText.AtTroopMemberInfo)((ArrayList)localObject1).get(0)).startPos == 0)) {
-        localObject2 = com.tencent.mobileqq.text.TextUtils.emoticonToText(paramBaseChatPie.input.getText().toString());
-      }
-    }
-    label782:
-    label822:
-    label1140:
-    for (;;)
-    {
-      try
-      {
-        paramamlu.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.atNickName = ((String)localObject2).substring(0, ((MessageForText.AtTroopMemberInfo)((ArrayList)localObject1).get(0)).textLen);
-        if (((MessageForText.AtTroopMemberInfo)((ArrayList)localObject1).get(0)).textLen >= paramBaseChatPie.input.getText().length() - 1)
-        {
-          paramamlu.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.inputText = "";
-          paramamlu.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.peerUin = (((MessageForText.AtTroopMemberInfo)((ArrayList)localObject1).get(0)).uin + "");
-          paramBaseChatPie.input.getText().clear();
-          i = 0;
-          if (!android.text.TextUtils.isEmpty(paramamlu.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.inputText)) {
-            break label782;
-          }
-          j = 2;
-          i = j;
-          if (android.text.TextUtils.isEmpty(paramamlu.jdField_b_of_type_JavaLangString)) {
-            break label1140;
-          }
-          if (paramamlu.d != 0) {
+          if (j == 0) {
             continue;
           }
-          i = 6;
-          VipUtils.a(paramBaseChatPie.app, "cmshow", "Apollo", "g_action_double_clk", localSessionInfo.curFriendUin, -1, ApolloUtil.b(localSessionInfo.curType), new String[] { "" + paramamlu.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId, "655_" + paramamlu.jdField_a_of_type_Int, "0", String.valueOf(System.currentTimeMillis() / 1000L) });
-          localObject2 = paramBaseChatPie.app;
-          String str1 = localSessionInfo.curFriendUin;
-          j = ApolloUtil.b(localSessionInfo.curType);
-          String str2 = "" + paramamlu.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId;
-          String str3 = "655_" + paramamlu.jdField_a_of_type_Int;
-          if (!android.text.TextUtils.isEmpty(paramamlu.jdField_b_of_type_JavaLangString)) {
-            break label822;
-          }
-          localObject1 = "0";
-          VipUtils.a((AppInterface)localObject2, "cmshow", "Apollo", "g_action_double_sent", str1, i, j, new String[] { str2, str3, localObject1, paramamlu.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.peerUin, String.valueOf(System.currentTimeMillis() / 1000L) });
-          break label123;
+          EditLocalVideoActivity.a(this.a, "play_local_video", "play_local_video_success", "4", "what: " + paramInt1 + ",   extra: " + paramInt2 + ",   " + Build.MODEL);
+          continue;
         }
-        paramamlu.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.inputText = ((String)localObject2).substring(((MessageForText.AtTroopMemberInfo)((ArrayList)localObject1).get(0)).textLen);
-        continue;
+        i += 1;
       }
-      catch (Exception localException)
+      catch (Exception paramMediaPlayer)
       {
-        int j;
-        if (QLog.isColorLevel()) {
-          QLog.d("Apollo_PanelManager", 2, "inputText err:" + localException.getMessage());
-        }
-        paramamlu.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.inputText = "";
-        continue;
-        i = j;
-        if (paramamlu.d != 1) {
-          break label1140;
-        }
+        QLog.e("EditLocalVideoActivity", 2, "VideoView onError", paramMediaPlayer);
+        return true;
       }
-      int i = 7;
-      continue;
-      if (android.text.TextUtils.isEmpty(paramamlu.jdField_b_of_type_JavaLangString))
-      {
-        i = 3;
-      }
-      else if (paramamlu.d == 0)
-      {
-        i = 4;
-      }
-      else if (paramamlu.d == 1)
-      {
-        i = 5;
-        continue;
-        localObject1 = paramamlu.jdField_b_of_type_JavaLangString;
-        continue;
-        if (paramamlu.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionType == 5)
-        {
-          a(paramamlu, paramBaseChatPie);
-          return;
-        }
-        paramBaseChatPie.mApolloInfo = paramamlu;
-        i = 0;
-        if (localSessionInfo.curType == 3000) {
-          i = 11;
-        }
-        for (;;)
-        {
-          localObject1 = TroopMemberListActivity.a(paramBaseChatPie.mActivity, localSessionInfo.curFriendUin, i);
-          if (paramBaseChatPie.getCurrentPanel() == 21) {
-            ((Intent)localObject1).putExtra("param_troop_send_apollo_msg", true);
-          }
-          ((Intent)localObject1).putExtra("param_is_pop_up_style", true);
-          ((Intent)localObject1).putExtra("param_troop_send_apollo_msg", true);
-          paramBaseChatPie.mActivity.startActivityForResult((Intent)localObject1, 6001);
-          VipUtils.a(paramBaseChatPie.app, "cmshow", "Apollo", "g_action_double_clk", localSessionInfo.curFriendUin, -1, ApolloUtil.b(localSessionInfo.curType), new String[] { "" + paramamlu.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId, "655_" + paramamlu.jdField_a_of_type_Int, "1", String.valueOf(System.currentTimeMillis() / 1000L) });
-          return;
-          if (localSessionInfo.curType == 1) {
-            i = 3;
-          }
-        }
-        if (paramamlu.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.personNum != 0) {
-          break label123;
-        }
-        paramamlu.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.inputText = com.tencent.mobileqq.text.TextUtils.emoticonToText(paramBaseChatPie.input.getText().toString());
-        paramBaseChatPie.input.getText().clear();
-        break label123;
-        if ((localSessionInfo.curType != 1) && (localSessionInfo.curType != 3000)) {
-          paramBaseChatPie.input.getText().clear();
-        }
-        if (paramBaseChatPie.mActivity == null) {
-          break;
-        }
-        paramBaseChatPie.send(paramamlu);
-        return;
-      }
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = null;
-    }
-    this.jdField_a_of_type_JavaLangString = null;
-  }
-  
-  public void c(BaseChatPie paramBaseChatPie, amlu paramamlu)
-  {
-    if ((paramBaseChatPie == null) || (paramBaseChatPie.app == null) || (paramBaseChatPie.getSessionInfo() == null)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Apollo_PanelManager", 2, new Object[] { "[previewNewAction] apolloInfo=", paramamlu });
-    }
-    SessionInfo localSessionInfo = paramBaseChatPie.getSessionInfo();
-    ApolloActionData localApolloActionData = paramamlu.jdField_a_of_type_ComTencentMobileqqDataApolloActionData;
-    SpriteTaskParam localSpriteTaskParam = new SpriteTaskParam();
-    localSpriteTaskParam.f = localApolloActionData.actionId;
-    localSpriteTaskParam.jdField_c_of_type_Int = 0;
-    localSpriteTaskParam.h = localSessionInfo.curType;
-    localSpriteTaskParam.g = 3;
-    localSpriteTaskParam.jdField_a_of_type_Long = -10000L;
-    localSpriteTaskParam.i = 0;
-    localSpriteTaskParam.jdField_a_of_type_Float = 0.0F;
-    boolean bool;
-    if (paramamlu.d == 1)
-    {
-      bool = true;
-      localSpriteTaskParam.jdField_b_of_type_Boolean = bool;
-      localSpriteTaskParam.jdField_c_of_type_JavaLangString = paramamlu.jdField_b_of_type_JavaLangString;
-      localSpriteTaskParam.e = localApolloActionData.personNum;
-      paramamlu = paramBaseChatPie.app.getCurrentUin();
-      localSpriteTaskParam.jdField_a_of_type_JavaLangString = String.valueOf(paramamlu);
-      if (localSessionInfo.curType != 0) {
-        break label338;
-      }
-      localSpriteTaskParam.jdField_b_of_type_JavaLangString = localSessionInfo.curFriendUin;
-    }
-    label338:
-    while (localSpriteTaskParam.e == 0)
-    {
-      if (localApolloActionData.actionType == 5)
-      {
-        localSpriteTaskParam.jdField_c_of_type_Int = 5;
-        paramamlu = (alnr)paramBaseChatPie.app.getManager(153);
-        if ((paramamlu != null) && (paramamlu.a() != null))
-        {
-          localSpriteTaskParam.d = paramamlu.a().jdField_a_of_type_JavaLangString;
-          if (QLog.isColorLevel()) {
-            QLog.d("Apollo_PanelManager", 2, new Object[] { "[previewNewAction] mSlaveExtJson=", localSpriteTaskParam.d });
-          }
-        }
-      }
-      paramamlu = ambc.a(paramBaseChatPie.app);
-      if (paramamlu != null) {
-        paramamlu.a().a(localSpriteTaskParam);
-      }
-      VipUtils.a(paramBaseChatPie.app, "cmshow", "Apollo", "action_preview_play", ApolloUtil.b(localSessionInfo.curType), 0, new String[] { String.valueOf(localApolloActionData.actionId) });
-      return;
-      bool = false;
-      break;
-    }
-    paramamlu = ((amsw)paramBaseChatPie.app.getManager(51)).b(paramamlu);
-    int i;
-    if (paramamlu != null) {
-      if (paramamlu.gender == 1) {
-        i = 1;
-      }
-    }
-    for (;;)
-    {
-      label377:
-      if (i != 0) {}
-      for (paramamlu = "-2";; paramamlu = "-1")
-      {
-        localSpriteTaskParam.jdField_b_of_type_JavaLangString = paramamlu;
-        break;
-        i = 0;
-        break label377;
-      }
-      i = 1;
     }
   }
 }

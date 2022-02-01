@@ -1,36 +1,51 @@
-import android.graphics.Paint;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.util.DisplayUtil;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
 
 public class adzk
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements aewf
 {
-  public adzk(QQMapActivity paramQQMapActivity) {}
+  public adzk(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void onGlobalLayout()
+  public void afterTextChanged(Editable paramEditable)
   {
-    int i = this.a.jdField_c_of_type_AndroidWidgetLinearLayout.getWidth();
-    if (i > 0)
-    {
-      int j = DisplayUtil.dip2px(this.a, 10.0F);
-      Object localObject = new Paint();
-      ((Paint)localObject).setTextSize(DisplayUtil.dip2px(this.a, 14.0F));
-      ((Paint)localObject).setAntiAlias(true);
-      int k = (int)(((Paint)localObject).measureText(this.a.e.getText().toString()) + 1.0F);
-      ((Paint)localObject).setTextSize(DisplayUtil.dip2px(this.a, 20.0F));
-      if ((int)(((Paint)localObject).measureText(this.a.jdField_c_of_type_AndroidWidgetTextView.getText().toString()) + 1.0F) + (k + j) > i)
-      {
-        localObject = this.a.jdField_c_of_type_AndroidWidgetTextView.getLayoutParams();
-        ((ViewGroup.LayoutParams)localObject).width = (i - j - k);
-        this.a.jdField_c_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      }
-      this.a.jdField_c_of_type_AndroidWidgetLinearLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    paramEditable = paramEditable.toString();
+    if (TextUtils.isEmpty(paramEditable)) {
+      ForwardTroopListFragment.a(this.a).setVisibility(8);
     }
+    for (;;)
+    {
+      if (ForwardTroopListFragment.a(this.a) != null) {
+        ForwardTroopListFragment.a(this.a).a(paramEditable);
+      }
+      return;
+      ForwardTroopListFragment.a(this.a).setVisibility(0);
+    }
+  }
+  
+  public void onEditTextFocusChanged(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (ForwardTroopListFragment.a(this.a) == null))
+    {
+      ForwardTroopListFragment.a(this.a, ContactSearchFragment.a(8, 2097176, null, null, ForwardTroopListFragment.a(this.a)));
+      FragmentTransaction localFragmentTransaction = this.a.getActivity().getSupportFragmentManager().beginTransaction();
+      localFragmentTransaction.add(2131376602, ForwardTroopListFragment.a(this.a));
+      localFragmentTransaction.commitAllowingStateLoss();
+    }
+  }
+  
+  public void onItemDeleted(ResultRecord paramResultRecord)
+  {
+    if (paramResultRecord != null) {
+      ForwardTroopListFragment.a(this.a, paramResultRecord.uin, paramResultRecord.getUinType());
+    }
+    this.a.a.notifyDataSetChanged();
   }
 }
 

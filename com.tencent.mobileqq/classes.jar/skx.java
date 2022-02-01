@@ -1,25 +1,19 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
 
-class skx
-  implements View.OnClickListener
+public class skx
+  extends ojo
 {
-  skx(skv paramskv, Activity paramActivity) {}
+  private skx(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, String paramString)
   {
-    if (this.jdField_a_of_type_AndroidAppActivity != null)
-    {
-      QLog.d("DailyFeedsDiandianEntranceManager", 2, "jump to recommend feeds");
-      smd.a(this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 2130772313);
-      this.jdField_a_of_type_Skv.b();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    VideoFeedsPlayActivity.a("onSendArticleLikeReq isSuccess=" + paramBoolean + ", articleID=" + paramString);
   }
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt) {}
+  
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
 }
 
 

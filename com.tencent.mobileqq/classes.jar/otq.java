@@ -1,8 +1,15 @@
-public abstract interface otq
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
+import java.util.List;
+
+public class otq
+  extends pvq
 {
-  public abstract void a(boolean paramBoolean, String paramString1, String paramString2);
+  public otq(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity) {}
   
-  public abstract void b(int paramInt);
+  public void a_(List<uqv> paramList)
+  {
+    this.a.a(paramList);
+  }
 }
 
 

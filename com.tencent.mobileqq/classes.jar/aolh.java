@@ -1,18 +1,33 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArDefaultSetting;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-public final class aolh
-  implements Parcelable.Creator<ArDefaultSetting>
+public abstract class aolh
 {
-  public ArDefaultSetting a(Parcel paramParcel)
+  public FriendListHandler a;
+  protected QQAppInterface a;
+  
+  public aolh(QQAppInterface paramQQAppInterface, FriendListHandler paramFriendListHandler)
   {
-    return new ArDefaultSetting(paramParcel);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler = paramFriendListHandler;
   }
   
-  public ArDefaultSetting[] a(int paramInt)
+  protected final void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return new ArDefaultSetting[paramInt];
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.notifyUI(paramInt, paramBoolean, paramObject);
+  }
+  
+  protected abstract void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject);
+  
+  public abstract boolean a(String paramString);
+  
+  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (a(paramFromServiceMsg.getServiceCmd())) {
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import avnb;
+import awtg;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
@@ -16,7 +16,7 @@ import java.lang.ref.WeakReference;
 public class SaveTextDraftJob
   implements Runnable
 {
-  private avnb jdField_a_of_type_Avnb;
+  private awtg jdField_a_of_type_Awtg;
   private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   private MessageForReplyText.SourceMsgInfo jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;
@@ -27,11 +27,11 @@ public class SaveTextDraftJob
   private WeakReference<BaseChatPie> jdField_b_of_type_JavaLangRefWeakReference;
   private String c;
   
-  public SaveTextDraftJob(BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo, avnb paramavnb, String paramString1, CharSequence paramCharSequence, QQAppInterface paramQQAppInterface, String paramString2, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, Object paramObject, String paramString3)
+  public SaveTextDraftJob(BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo, awtg paramawtg, String paramString1, CharSequence paramCharSequence, QQAppInterface paramQQAppInterface, String paramString2, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, Object paramObject, String paramString3)
   {
     this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseChatPie);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_Avnb = paramavnb;
+    this.jdField_a_of_type_Awtg = paramawtg;
     this.c = paramString1;
     this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
@@ -62,10 +62,10 @@ public class SaveTextDraftJob
         {
           return;
         } while ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin.length() <= 2) || (((QQAppInterface)localObject1).getMessageFacade() == null));
-        if (this.jdField_a_of_type_Avnb == null) {
-          this.jdField_a_of_type_Avnb = avnb.a((QQAppInterface)localObject1);
+        if (this.jdField_a_of_type_Awtg == null) {
+          this.jdField_a_of_type_Awtg = awtg.a((QQAppInterface)localObject1);
         }
-        localObject2 = this.jdField_a_of_type_Avnb.b((QQAppInterface)localObject1, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType);
+        localObject2 = this.jdField_a_of_type_Awtg.b((QQAppInterface)localObject1, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType);
       } while (((StringUtil.isEmpty(this.jdField_a_of_type_JavaLangString)) && (StringUtil.isEmpty(String.valueOf(this.jdField_a_of_type_JavaLangCharSequence))) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo == null) && (((DraftTextInfo)localObject2).sourceMsgSeq == 0L)) || ((!StringUtil.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(String.valueOf(this.jdField_a_of_type_JavaLangCharSequence)))));
       if (((this.jdField_a_of_type_JavaLangCharSequence == null) || (this.jdField_a_of_type_JavaLangCharSequence.length() <= 0)) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo == null)) {
         break label504;
@@ -97,18 +97,18 @@ public class SaveTextDraftJob
     } while (localBaseChatPie == null);
     localBaseChatPie.mDraftText = ((DraftTextInfo)localObject2).text;
     ((DraftTextInfo)localObject2).time = NetConnInfoCenter.getServerTimeMillis();
-    this.jdField_a_of_type_Avnb.a((QQAppInterface)localObject1, (DraftTextInfo)localObject2);
+    this.jdField_a_of_type_Awtg.a((QQAppInterface)localObject1, (DraftTextInfo)localObject2);
     for (;;)
     {
       localObject2 = ((QQAppInterface)localObject1).getMessageFacade();
-      localObject1 = this.jdField_a_of_type_Avnb.a((QQAppInterface)localObject1, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType);
+      localObject1 = this.jdField_a_of_type_Awtg.a((QQAppInterface)localObject1, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType);
       if (localObject1 == null) {
         break;
       }
       ((QQMessageFacade)localObject2).notifyDraftUpdated(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.troopUin, ((DraftSummaryInfo)localObject1).getSummary(), ((DraftSummaryInfo)localObject1).getTime());
       return;
       label504:
-      this.jdField_a_of_type_Avnb.a((QQAppInterface)localObject1, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType);
+      this.jdField_a_of_type_Awtg.a((QQAppInterface)localObject1, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType);
     }
     ((QQMessageFacade)localObject2).notifyDraftUpdated(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.troopUin, "", 0L);
   }

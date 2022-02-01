@@ -1,9 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import amsw;
+import agmc;
+import agmd;
+import agmf;
 import android.text.TextUtils;
-import awfy;
+import anvk;
+import axma;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBoolField;
@@ -26,7 +30,9 @@ import tencent.im.oidb.oidb_0xcf4.oidb_0xcf4.CommonBody;
 import tencent.im.oidb.oidb_0xcf4.oidb_0xcf4.CommonGroupChatInfo;
 import tencent.im.oidb.oidb_0xcf4.oidb_0xcf4.DateTips;
 import tencent.im.oidb.oidb_0xcf4.oidb_0xcf4.DnaInfo;
+import tencent.im.oidb.oidb_0xcf4.oidb_0xcf4.EmptyStatusInfo;
 import tencent.im.oidb.oidb_0xcf4.oidb_0xcf4.FriendInfo;
+import tencent.im.oidb.oidb_0xcf4.oidb_0xcf4.LoveAchievementInfo;
 import tencent.im.oidb.oidb_0xcf4.oidb_0xcf4.MutualMarkInfo;
 import tencent.im.oidb.oidb_0xcf4.oidb_0xcf4.MutualScoreCard;
 import tencent.im.oidb.oidb_0xcf4.oidb_0xcf4.OneGroupInfo;
@@ -55,6 +61,8 @@ public class IntimateInfo
   @notColumn
   public List<IntimateInfo.DNAInfo> dnaInfoList;
   public String dnaInfoListJonStr;
+  @notColumn
+  public agmc emptyStatusInfo;
   public IntimateInfo.FriendGiftInfo friendGiftInfo;
   @unique
   public String friendUin;
@@ -63,6 +71,8 @@ public class IntimateInfo
   public boolean isShowRedPoint;
   public int lastAnimAfterFriendDays;
   public int lastAnimAfterScore;
+  @notColumn
+  public agmd loveAchievementInfo;
   @notColumn
   public int mCanRecheckCount;
   @notColumn
@@ -74,6 +84,8 @@ public class IntimateInfo
   @notColumn
   public List<IntimateInfo.MemoryDayInfo> memoryDayInfoList;
   public String memoryDayListJsonStr;
+  @notColumn
+  public ArrayList<agmf> newDnaInfos;
   @notColumn
   public List<IntimateInfo.PrefetchMutualMarkInfo> prefetchMutualMarkInfoList;
   public String prefetchMutualMarkInfoListJsonStr;
@@ -151,13 +163,13 @@ public class IntimateInfo
         if (localObject1 != null)
         {
           if (!((oidb_0xcf4.MutualMarkInfo)localObject1).eMutualMarkNewType.has()) {
-            break label472;
+            break label473;
           }
           i = ((oidb_0xcf4.MutualMarkInfo)localObject1).eMutualMarkNewType.get();
           label106:
           localIntimateInfo.maskType = i;
           if (!((oidb_0xcf4.MutualMarkInfo)localObject1).uint32_level.has()) {
-            break label477;
+            break label478;
           }
           i = ((oidb_0xcf4.MutualMarkInfo)localObject1).uint32_level.get();
           label132:
@@ -175,13 +187,13 @@ public class IntimateInfo
         if (localObject1 != null)
         {
           if (!((oidb_0xcf4.FriendInfo)localObject1).uint32_add_frd_days.has()) {
-            break label482;
+            break label483;
           }
           i = ((oidb_0xcf4.FriendInfo)localObject1).uint32_add_frd_days.get();
           label214:
           localIntimateInfo.beFriendDays = i;
           if (!((oidb_0xcf4.FriendInfo)localObject1).uint32_add_frd_source.has()) {
-            break label487;
+            break label488;
           }
           i = ((oidb_0xcf4.FriendInfo)localObject1).uint32_add_frd_source.get();
           label240:
@@ -192,37 +204,37 @@ public class IntimateInfo
           }
           localIntimateInfo.addFriendSubSource = i;
           if (!((oidb_0xcf4.FriendInfo)localObject1).bytes_add_frd_wording.has()) {
-            break label492;
+            break label493;
           }
         }
       }
     }
     Object localObject2;
     Object localObject3;
-    label472:
-    label477:
-    label482:
-    label487:
-    label492:
+    label473:
+    label478:
+    label483:
+    label488:
+    label493:
     for (Object localObject1 = ((oidb_0xcf4.FriendInfo)localObject1).bytes_add_frd_wording.get().toStringUtf8();; localObject1 = "")
     {
       localIntimateInfo.addFriendWording = ((String)localObject1);
       if (!paramRspBody.msg_common_group_chat_info.has()) {
-        break label526;
+        break label528;
       }
       localObject1 = (oidb_0xcf4.CommonGroupChatInfo)paramRspBody.msg_common_group_chat_info.get();
       if (localObject1 == null) {
-        break label526;
+        break label528;
       }
       if (((oidb_0xcf4.CommonGroupChatInfo)localObject1).msg_one_group_info.has()) {
         localIntimateInfo.recentChatTroopInfo = IntimateInfo.CommonTroopInfo.copyFrom((oidb_0xcf4.OneGroupInfo)((oidb_0xcf4.CommonGroupChatInfo)localObject1).msg_one_group_info.get());
       }
       if (!((oidb_0xcf4.CommonGroupChatInfo)localObject1).rpt_msg_one_group_info.has()) {
-        break label499;
+        break label501;
       }
       localObject2 = ((oidb_0xcf4.CommonGroupChatInfo)localObject1).rpt_msg_one_group_info.get();
       if ((localObject2 == null) || (((List)localObject2).size() <= 0)) {
-        break label499;
+        break label501;
       }
       localIntimateInfo.commonTroopInfoList = new ArrayList();
       localObject2 = ((List)localObject2).iterator();
@@ -244,11 +256,11 @@ public class IntimateInfo
       i = -1;
       break label240;
     }
-    label499:
+    label501:
     if (((oidb_0xcf4.CommonGroupChatInfo)localObject1).bytes_wording.has()) {
       localIntimateInfo.commonTroopTips = ((oidb_0xcf4.CommonGroupChatInfo)localObject1).bytes_wording.get().toStringUtf8();
     }
-    label526:
+    label528:
     if (paramRspBody.rpt_msg_mutual_mark_info.has())
     {
       localObject1 = paramRspBody.rpt_msg_mutual_mark_info.get();
@@ -259,7 +271,7 @@ public class IntimateInfo
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = IntimateInfo.MutualMarkInfo.copyFrom((oidb_0xcf4.MutualMarkInfo)((Iterator)localObject1).next());
-          if ((localObject2 != null) && (awfy.b(((IntimateInfo.MutualMarkInfo)localObject2).type))) {
+          if ((localObject2 != null) && (axma.b(((IntimateInfo.MutualMarkInfo)localObject2).type))) {
             localIntimateInfo.markInfoList.add(localObject2);
           }
         }
@@ -275,7 +287,7 @@ public class IntimateInfo
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = IntimateInfo.PrefetchMutualMarkInfo.copyFrom((oidb_0xcf4.PrefetchMutualMarkInfo)((Iterator)localObject1).next());
-          if ((localObject2 != null) && (awfy.b(((IntimateInfo.PrefetchMutualMarkInfo)localObject2).type))) {
+          if ((localObject2 != null) && (axma.b(((IntimateInfo.PrefetchMutualMarkInfo)localObject2).type))) {
             localIntimateInfo.prefetchMutualMarkInfoList.add(localObject2);
           }
         }
@@ -358,9 +370,23 @@ public class IntimateInfo
       }
     }
     localIntimateInfo.updateTimeMills = NetConnInfoCenter.getServerTimeMillis();
-    localIntimateInfo.isFriend = ((amsw)paramQQAppInterface.getManager(51)).b(localIntimateInfo.friendUin);
+    localIntimateInfo.isFriend = ((anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(localIntimateInfo.friendUin);
     localIntimateInfo.commonBodies = paramRspBody.rpt_msg_common_rspbody.get();
+    copyFrom848NewInfo(paramQQAppInterface, paramRspBody, localIntimateInfo);
     return localIntimateInfo;
+  }
+  
+  private static void copyFrom848NewInfo(QQAppInterface paramQQAppInterface, oidb_0xcf4.RspBody paramRspBody, IntimateInfo paramIntimateInfo)
+  {
+    if (paramRspBody.msg_love_ach_info.has()) {
+      paramIntimateInfo.loveAchievementInfo = agmd.a((oidb_0xcf4.LoveAchievementInfo)paramRspBody.msg_love_ach_info.get());
+    }
+    if (paramRspBody.rpt_new_dna_info.has()) {
+      paramIntimateInfo.newDnaInfos = agmf.a(paramRspBody.rpt_new_dna_info.get());
+    }
+    if (paramRspBody.msg_empty_status.has()) {
+      paramIntimateInfo.emptyStatusInfo = agmc.a((oidb_0xcf4.EmptyStatusInfo)paramRspBody.msg_empty_status.get());
+    }
   }
   
   public static String getUinFromGroupCardKey(String paramString)
@@ -632,7 +658,7 @@ public class IntimateInfo
         }
       }
       if ((this.markInfoList == null) || (this.markInfoList.size() <= 0)) {
-        break label250;
+        break label251;
       }
       localObject = new JSONArray();
       localIterator = this.markInfoList.iterator();
@@ -640,11 +666,11 @@ public class IntimateInfo
         ((JSONArray)localObject).put(((IntimateInfo.MutualMarkInfo)localIterator.next()).getJSONObject());
       }
     }
-    label250:
+    label251:
     for (this.markInfoListJsonStr = ((JSONArray)localObject).toString();; this.markInfoListJsonStr = "")
     {
       if ((this.prefetchMutualMarkInfoList == null) || (this.prefetchMutualMarkInfoList.size() <= 0)) {
-        break label333;
+        break label335;
       }
       localObject = new JSONArray();
       localIterator = this.prefetchMutualMarkInfoList.iterator();
@@ -652,11 +678,11 @@ public class IntimateInfo
         ((JSONArray)localObject).put(((IntimateInfo.PrefetchMutualMarkInfo)localIterator.next()).getJSONObject());
       }
     }
-    label333:
+    label335:
     for (this.prefetchMutualMarkInfoListJsonStr = ((JSONArray)localObject).toString();; this.prefetchMutualMarkInfoListJsonStr = "")
     {
       if ((this.dnaInfoList == null) || (this.dnaInfoList.size() <= 0)) {
-        break label404;
+        break label407;
       }
       localObject = new JSONArray();
       localIterator = this.dnaInfoList.iterator();
@@ -664,11 +690,11 @@ public class IntimateInfo
         ((JSONArray)localObject).put(((IntimateInfo.DNAInfo)localIterator.next()).getJSONObject());
       }
     }
-    label404:
+    label407:
     for (this.dnaInfoListJonStr = ((JSONArray)localObject).toString();; this.dnaInfoListJonStr = "")
     {
       if (this.memoryDayInfoList == null) {
-        break label487;
+        break label491;
       }
       localObject = new JSONArray();
       localIterator = this.memoryDayInfoList.iterator();
@@ -676,11 +702,11 @@ public class IntimateInfo
         ((JSONArray)localObject).put(((IntimateInfo.MemoryDayInfo)localIterator.next()).getJSONObject());
       }
     }
-    label487:
+    label491:
     for (this.memoryDayListJsonStr = ((JSONArray)localObject).toString();; this.memoryDayListJsonStr = "")
     {
       if ((this.commonBodyList == null) || (this.commonBodyList.size() <= 0)) {
-        break label526;
+        break label531;
       }
       localObject = new JSONArray();
       localIterator = this.commonBodyList.iterator();
@@ -688,7 +714,7 @@ public class IntimateInfo
         ((JSONArray)localObject).put(((IntimateInfo.CommonBody)localIterator.next()).getJSONObject());
       }
     }
-    label526:
+    label531:
     for (this.commonBodyListStr = ((JSONArray)localObject).toString(); this.scoreCardInfo != null; this.commonBodyListStr = "")
     {
       this.scoreCardInfoJsonStr = this.scoreCardInfo.getJSONObject().toString();
@@ -699,12 +725,12 @@ public class IntimateInfo
   
   public String toString()
   {
-    return "IntimateInfo{friendUin='" + this.friendUin + '\'' + ", maskType=" + this.maskType + ", maskLevel=" + this.maskLevel + ", maskDays=" + this.maskDays + ", useNewType=" + this.useNewType + ", beFriendDays=" + this.beFriendDays + ", lastAnimAfterFriendDays=" + this.lastAnimAfterFriendDays + ", currentScore=" + this.currentScore + ", lastAnimAfterScore=" + this.lastAnimAfterScore + ", addFriendSource=" + this.addFriendSource + ", addFriendSubSource=" + this.addFriendSubSource + ", addFriendWording=" + this.addFriendWording + ", commonTroopInfoList=" + this.commonTroopInfoList + ", recentChatTroopInfo=" + this.recentChatTroopInfo + ", commonTroopTips=" + this.commonTroopTips + ", dnaInfoList=" + this.dnaInfoList + ", memoryDayInfoList=" + this.memoryDayInfoList + ", isFriend=" + this.isFriend + ", updateTimeMills=" + this.updateTimeMills + ", scoreCardInfo=" + this.scoreCardInfo + '}';
+    return "IntimateInfo{friendUin='" + this.friendUin + '\'' + ", maskType=" + this.maskType + ", maskLevel=" + this.maskLevel + ", maskDays=" + this.maskDays + ", useNewType=" + this.useNewType + ", beFriendDays=" + this.beFriendDays + ", lastAnimAfterFriendDays=" + this.lastAnimAfterFriendDays + ", currentScore=" + this.currentScore + ", lastAnimAfterScore=" + this.lastAnimAfterScore + ", addFriendSource=" + this.addFriendSource + ", addFriendSubSource=" + this.addFriendSubSource + ", addFriendWording=" + this.addFriendWording + ", markInfoListJsonStr=" + this.markInfoListJsonStr + ", prefetchMutualMarkInfoListJsonStr=" + this.prefetchMutualMarkInfoListJsonStr + ", commonTroopInfoList=" + this.commonTroopInfoList + ", recentChatTroopInfo=" + this.recentChatTroopInfo + ", commonTroopTips=" + this.commonTroopTips + ", dnaInfoList=" + this.dnaInfoList + ", memoryDayInfoList=" + this.memoryDayInfoList + ", isFriend=" + this.isFriend + ", updateTimeMills=" + this.updateTimeMills + ", scoreCardInfo=" + this.scoreCardInfo + ", newDnaInfos=" + this.newDnaInfos + ", loveAchievementInfo=" + this.loveAchievementInfo + ", emptyStatusInfo=" + this.emptyStatusInfo + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.IntimateInfo
  * JD-Core Version:    0.7.0.1
  */

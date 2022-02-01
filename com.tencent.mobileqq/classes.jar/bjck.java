@@ -1,31 +1,61 @@
-import NS_MINI_INTERFACE.INTERFACE.StJudgeTimingRsp;
-import com.tencent.mobileqq.mini.servlet.MiniAppSSOCmdHelper.MiniAppCmdCallback;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.os.Build.VERSION;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.open.agent.CreateVirtualAccountFragment;
+import com.tencent.open.agent.PublicFragmentActivityForOpenSDK;
 
-class bjck
-  implements MiniAppSSOCmdHelper.MiniAppCmdCallback<INTERFACE.StJudgeTimingRsp>
+public class bjck
+  implements bkzq
 {
-  bjck(bjce parambjce, AsyncResult paramAsyncResult) {}
+  public bjck(CreateVirtualAccountFragment paramCreateVirtualAccountFragment, bkzi parambkzi) {}
   
-  public void a(boolean paramBoolean, INTERFACE.StJudgeTimingRsp paramStJudgeTimingRsp)
+  public void OnClick(View paramView, int paramInt)
   {
-    JSONObject localJSONObject;
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult != null) {
-      localJSONObject = new JSONObject();
-    }
-    try
+    switch (paramInt)
     {
-      localJSONObject.put("response", paramStJudgeTimingRsp);
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(paramBoolean, localJSONObject);
-      return;
     }
-    catch (Throwable paramStJudgeTimingRsp)
+    for (;;)
     {
-      for (;;)
+      try
       {
-        QLog.e("ChannelProxyImpl", 1, "tianshuRequestAdv", paramStJudgeTimingRsp);
+        this.jdField_a_of_type_Bkzi.dismiss();
+        return;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+      }
+      paramView = new Intent();
+      paramInt = bhaa.b(this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getActivity());
+      paramView.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
+      paramView.putExtra("Business_Origin", 103);
+      paramView.putExtra("BUSINESS_ORIGIN_NEW", 103);
+      paramView.putExtra("PhotoConst.PHOTOLIST_KEY_FILTER_GIF_VIDEO", true);
+      paramView.putExtra("fromWhereClick", 11);
+      PhotoUtils.startPhotoListEdit(paramView, this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getActivity(), PublicFragmentActivityForOpenSDK.class.getName(), paramInt, paramInt, 1080, 1080, aoks.a());
+      continue;
+      if (Build.VERSION.SDK_INT >= 23)
+      {
+        if (this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getActivity().checkSelfPermission("android.permission.CAMERA") != 0)
+        {
+          paramInt = 1;
+          if (paramInt != 0) {
+            this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getActivity().requestPermissions(new bjcl(this), 2, new String[] { "android.permission.CAMERA" });
+          }
+        }
+        else
+        {
+          paramInt = 0;
+          continue;
+        }
+        this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.a = ProfileActivity.a(this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getActivity(), 257);
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.a = ProfileActivity.a(this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getActivity(), 257);
       }
     }
   }

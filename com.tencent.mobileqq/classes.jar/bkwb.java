@@ -1,31 +1,64 @@
-import android.os.Bundle;
+import android.content.Context;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.startup.step.AVSoUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public abstract class bkwb
+public final class bkwb
 {
-  protected final int a;
-  public String a;
-  protected final int b;
-  public String b;
-  public int c = -9999999;
-  public int d;
+  public static boolean a;
   
-  public bkwb()
+  public static File a(File paramFile)
   {
-    this.jdField_a_of_type_Int = -9999999;
-    this.jdField_b_of_type_Int = 0;
+    File localFile = new File(paramFile.getAbsolutePath() + ".shp");
+    if (paramFile.exists()) {
+      paramFile.renameTo(localFile);
+    }
+    return localFile;
   }
   
-  public void a(Bundle paramBundle)
+  public static String a(File paramFile)
   {
-    paramBundle.putInt("_mqqpay_baseresp_retcode", this.c);
-    paramBundle.putString("_mqqpay_baseresp_retmsg", this.jdField_a_of_type_JavaLangString);
-    paramBundle.putString("_mqqpay_baseapi_apiname", this.jdField_b_of_type_JavaLangString);
-    paramBundle.putInt("_mqqpay_baseapi_apimark", this.d);
+    return paramFile.getAbsolutePath() + ".shp";
   }
   
-  public boolean a()
+  public static boolean a()
   {
-    return this.c == 0;
+    Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.vip_individuation.name());
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      localObject = ((String)localObject).split("\\|");
+      if ((localObject != null) && (localObject.length >= 2) && (!"0".equals(localObject[1]))) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    boolean bool = a();
+    if ((!a) && (bool)) {
+      a = AVSoUtils.a();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSharpPUtil", 2, "isSharpPAvaliable: " + a);
+    }
+    return (a) && (bool);
+  }
+  
+  public static boolean b()
+  {
+    String str = Build.CPU_ABI + Build.CPU_ABI2;
+    if (Build.VERSION.SDK_INT < 14) {}
+    while ((!str.contains("armeabi-v7a")) && (!str.contains("armeabi"))) {
+      return false;
+    }
+    return true;
   }
 }
 

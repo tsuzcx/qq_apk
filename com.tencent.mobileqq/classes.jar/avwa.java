@@ -1,60 +1,20 @@
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedTicket;
+import java.util.concurrent.Future;
 
-public class avwa
-  extends avwf<MessageForMixedMsg>
+class avwa
+  implements CustomizedTicket
 {
-  public avwa(MessageForMixedMsg paramMessageForMixedMsg)
+  avwa(avvz paramavvz) {}
+  
+  public Future<Bundle> getA1(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    super(paramMessageForMixedMsg);
+    return this.a.a(paramString1, paramString2, paramString3, paramString4);
   }
   
-  protected int a()
+  public Future<Bundle> getAccessToken(String paramString1, String paramString2)
   {
-    return 1;
-  }
-  
-  public List<MsgBackupResEntity> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = ((MessageForMixedMsg)this.a).msgElemList.iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (MessageRecord)localIterator.next();
-      if ((localObject instanceof MessageForPic))
-      {
-        localObject = avtz.a((MessageRecord)localObject);
-        ((avwf)localObject).a(this.a);
-        localArrayList.addAll(((avwf)localObject).a());
-      }
-    }
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = ((MessageForMixedMsg)this.a).msgElemList.iterator();
-    while (localIterator.hasNext())
-    {
-      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-      if ((localMessageRecord instanceof MessageForPic)) {
-        avtz.a(localMessageRecord).a();
-      }
-    }
-  }
-  
-  public void b()
-  {
-    if (((MessageForMixedMsg)this.a).isSendFromLocal())
-    {
-      ((MessageForMixedMsg)this.a).issend = 2;
-      ((MessageForMixedMsg)this.a).prewrite();
-    }
+    return this.a.a(paramString1, paramString2);
   }
 }
 

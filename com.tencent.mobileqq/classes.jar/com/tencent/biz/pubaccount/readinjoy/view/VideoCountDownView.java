@@ -14,8 +14,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import java.net.URL;
-import rsd;
-import rwv;
+import ses;
+import six;
 
 public class VideoCountDownView
   extends RelativeLayout
@@ -27,7 +27,7 @@ public class VideoCountDownView
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
-  private rsd jdField_a_of_type_Rsd;
+  private ses jdField_a_of_type_Ses;
   private boolean jdField_a_of_type_Boolean;
   public final int b;
   private Button jdField_b_of_type_AndroidWidgetButton;
@@ -51,29 +51,29 @@ public class VideoCountDownView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = getResources().getDimensionPixelOffset(2131296923);
-    this.jdField_b_of_type_Int = getResources().getDimensionPixelOffset(2131296911);
-    this.jdField_c_of_type_Int = getResources().getDimensionPixelOffset(2131296913);
+    this.jdField_a_of_type_Int = getResources().getDimensionPixelOffset(2131296924);
+    this.jdField_b_of_type_Int = getResources().getDimensionPixelOffset(2131296912);
+    this.jdField_c_of_type_Int = getResources().getDimensionPixelOffset(2131296914);
     d();
   }
   
   private void d()
   {
-    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560360, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379873));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363939));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131363910));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131369420));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131367345);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369375));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369376));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369377));
-    this.d = ((ImageView)findViewById(2131369378));
-    this.e = ((ImageView)findViewById(2131369379));
-    Drawable localDrawable = getResources().getDrawable(2130843264);
+    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560410, this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380206));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131364013));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131363983));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131369589));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131367469);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369541));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369542));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369543));
+    this.d = ((ImageView)findViewById(2131369544));
+    this.e = ((ImageView)findViewById(2131369545));
+    Drawable localDrawable = getResources().getDrawable(2130843300);
     localDrawable.setBounds(0, 0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
     this.jdField_a_of_type_AndroidWidgetButton.setCompoundDrawables(localDrawable, null, null, null);
-    localDrawable = getResources().getDrawable(2130843260);
+    localDrawable = getResources().getDrawable(2130843296);
     localDrawable.setBounds(0, 0, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
     this.jdField_b_of_type_AndroidWidgetButton.setCompoundDrawables(localDrawable, null, null, null);
   }
@@ -85,7 +85,7 @@ public class VideoCountDownView
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131717585, new Object[] { Integer.valueOf(paramInt), this.jdField_a_of_type_Rsd.jdField_a_of_type_JavaLangString }));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131717951, new Object[] { Integer.valueOf(paramInt), this.jdField_a_of_type_Ses.jdField_a_of_type_JavaLangString }));
   }
   
   public void a(URL paramURL)
@@ -118,21 +118,21 @@ public class VideoCountDownView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setNextVideoInfo(rsd paramrsd)
+  public void setNextVideoInfo(ses paramses)
   {
-    this.jdField_a_of_type_Rsd = paramrsd;
-    if (this.jdField_a_of_type_Rsd == null) {
+    this.jdField_a_of_type_Ses = paramses;
+    if (this.jdField_a_of_type_Ses == null) {
       return;
     }
     this.jdField_b_of_type_AndroidWidgetButton.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131717586, new Object[] { this.jdField_a_of_type_Rsd.jdField_a_of_type_JavaLangString }));
-      this.jdField_b_of_type_AndroidWidgetButton.setText(getResources().getString(2131717584, new Object[] { rwv.b(paramrsd.jdField_a_of_type_Long) }));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131717952, new Object[] { this.jdField_a_of_type_Ses.jdField_a_of_type_JavaLangString }));
+      this.jdField_b_of_type_AndroidWidgetButton.setText(getResources().getString(2131717950, new Object[] { six.b(paramses.jdField_a_of_type_Long) }));
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetButton.setText(getResources().getString(2131717587));
+    this.jdField_b_of_type_AndroidWidgetButton.setText(getResources().getString(2131717953));
   }
   
   public void setOnCustomClickListener(View.OnClickListener paramOnClickListener)
@@ -152,7 +152,7 @@ public class VideoCountDownView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.VideoCountDownView
  * JD-Core Version:    0.7.0.1
  */

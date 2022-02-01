@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.qqmini.sdk.annotation.RuntimeLoaderConfig;
 import com.tencent.qqmini.sdk.core.MiniAppEnv;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
@@ -419,6 +420,13 @@ public class AppRuntimeLoaderManager
       QMLog.e("minisdk-start_AppRuntimeLoaderManager", "Failed to preLaunch RuntimeLoader, appInfo is null");
       return;
     }
+    Object localObject = WnsConfig.getConfig("qqminiapp", "prelaunch_white_list", "1108291530,1109896843");
+    QMLog.i("minisdk-start_AppRuntimeLoaderManager", "preLaunch whitelist=" + (String)localObject + " appid=" + paramMiniAppInfo.appId);
+    if ((TextUtils.isEmpty((CharSequence)localObject)) || (!((String)localObject).contains(paramMiniAppInfo.appId)))
+    {
+      QMLog.e("minisdk-start_AppRuntimeLoaderManager", "preLaunch white list not hit, Stop preLaunch!");
+      return;
+    }
     if (this.mPrelaunchRuntimeLoader != null)
     {
       QMLog.e("minisdk-start_AppRuntimeLoaderManager", "There is a preLaunch loader now! Stop preLaunch!");
@@ -427,10 +435,10 @@ public class AppRuntimeLoaderManager
     MiniAppPrelaunchRecorder.get().onPrelaunch(paramMiniAppInfo.appId);
     try
     {
-      BaseRuntimeLoader localBaseRuntimeLoader = queryAppRunTimeLoader(paramMiniAppInfo);
-      if (localBaseRuntimeLoader != null)
+      localObject = queryAppRunTimeLoader(paramMiniAppInfo);
+      if (localObject != null)
       {
-        QMLog.w("minisdk-start_AppRuntimeLoaderManager", "preLaunchRuntimeLoader, There is a loader now! No need PreLaunch! " + localBaseRuntimeLoader.toSimpleString());
+        QMLog.w("minisdk-start_AppRuntimeLoaderManager", "preLaunchRuntimeLoader, There is a loader now! No need PreLaunch! " + ((BaseRuntimeLoader)localObject).toSimpleString());
         return;
       }
     }

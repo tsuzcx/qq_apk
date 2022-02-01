@@ -1,24 +1,24 @@
 package com.tencent.open.appstore.dl;
 
-import bhyo;
-import bhzm;
+import bjjq;
+import bjko;
 import com.tencent.tmdownloader.TMAssistantDownloadClient;
 
 public class DownloadManagerV2$14
   implements Runnable
 {
-  public DownloadManagerV2$14(bhyo parambhyo, String paramString) {}
+  public DownloadManagerV2$14(bjjq parambjjq, String paramString) {}
   
   public void run()
   {
     try
     {
-      bhyo.a(this.this$0).pauseDownloadTask(this.a);
+      bjjq.a(this.this$0).pauseDownloadTask(this.a);
       return;
     }
     catch (Exception localException)
     {
-      bhzm.c("DownloadManagerV2", "downloadSDKClient>>>", localException);
+      bjko.c("DownloadManagerV2", "downloadSDKClient>>>", localException);
     }
   }
 }

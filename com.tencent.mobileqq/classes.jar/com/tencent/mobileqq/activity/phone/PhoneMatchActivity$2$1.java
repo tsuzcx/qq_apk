@@ -2,6 +2,7 @@ package com.tencent.mobileqq.activity.phone;
 
 import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 class PhoneMatchActivity$2$1
   implements Runnable
@@ -10,7 +11,7 @@ class PhoneMatchActivity$2$1
   
   public void run()
   {
-    PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)this.a.this$0.app.getManager(11);
+    PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)this.a.this$0.app.getManager(QQManagerFactory.CONTACT_MANAGER);
     localPhoneContactManagerImp.j();
     localPhoneContactManagerImp.e = true;
   }

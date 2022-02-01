@@ -1,34 +1,13 @@
-import android.os.Build.VERSION;
-import android.os.HandlerThread;
+import com.tencent.image.URLImageView;
 
-public class uxw
+class uxw
+  implements urs
 {
-  private HandlerThread a;
-  
-  public HandlerThread a()
-  {
-    if (this.a == null) {
-      this.a = new HandlerThread("WeishiHandlerThread");
-    }
-    return this.a;
-  }
+  uxw(uxu paramuxu, URLImageView paramURLImageView, String paramString) {}
   
   public void a()
   {
-    if (this.a != null)
-    {
-      if (Build.VERSION.SDK_INT < 18) {
-        break label29;
-      }
-      this.a.quitSafely();
-    }
-    for (;;)
-    {
-      this.a = null;
-      return;
-      label29:
-      this.a.quit();
-    }
+    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(uxu.a(this.jdField_a_of_type_Uxu, this.jdField_a_of_type_JavaLangString, true));
   }
 }
 

@@ -1,19 +1,17 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.comment.CommentBottomBar;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class zew
+class zew
   implements View.OnClickListener
 {
-  public zew(CommentBottomBar paramCommentBottomBar) {}
+  zew(zev paramzev) {}
   
   public void onClick(View paramView)
   {
-    if (CommentBottomBar.a(this.a) != null)
-    {
-      CommentBottomBar.a(this.a).a(CommentBottomBar.a(this.a), CommentBottomBar.a(this.a));
-      CommentBottomBar.a(this.a);
+    zer localzer = this.a.jdField_a_of_type_Zer;
+    if (localzer != null) {
+      localzer.a(this.a.jdField_a_of_type_Zex, this.a);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

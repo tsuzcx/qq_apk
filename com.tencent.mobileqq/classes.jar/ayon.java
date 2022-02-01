@@ -1,106 +1,100 @@
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.text.TextUtils;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyLockScreenJumpDelegate;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianDailyManager;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import org.json.JSONException;
-import org.json.JSONObject;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.text.Charsets;
+import org.jetbrains.annotations.NotNull;
 
-public class ayon
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/notification/modularize/business/KanDianJumpScheme;", "Lcom/tencent/mobileqq/notification/modularize/BaseJumpScheme;", "()V", "customJumpIntent", "Landroid/app/PendingIntent;", "pushComponent", "Lcom/tencent/mobileqq/notification/modularize/PushComponent;", "generatePendingIntent", "Landroid/content/Intent;", "app", "Lcom/tencent/mobileqq/app/QQAppInterface;", "messageRecord", "Lcom/tencent/mobileqq/data/MessageRecord;", "context", "Landroid/content/Context;", "nativeJumpIntent", "needCustomJump", "", "processMsg0x210Sub0x135ExtData", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ayon
+  extends ayoc
 {
-  public int a;
-  public Bitmap a;
-  public String a;
-  public int b;
-  public Bitmap b;
-  public String b;
-  public Bitmap c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  public static final ayoo a = new ayoo(null);
   
-  public ayon(int paramInt)
+  private final Intent a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, Context paramContext, ayog paramayog)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public static ayon a(int paramInt, String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
+    if (pkh.b(paramMessageRecord))
+    {
+      paramQQAppInterface = paramQQAppInterface.getManager(QQManagerFactory.KANDIAN_DAILY_MANAGER);
+      if (paramQQAppInterface == null) {
+        throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.engine.KandianDailyManager");
+      }
+      paramQQAppInterface = ReadInJoyLockScreenJumpDelegate.a(paramContext, 6, ((KandianDailyManager)paramQQAppInterface).b());
+      Intrinsics.checkExpressionValueIsNotNull(paramQQAppInterface, "ReadInJoyLockScreenJumpD…moveLockScreenRedDodInfo)");
+    }
     for (;;)
     {
-      return null;
-      try
-      {
-        paramString = a(paramString);
-        if (TextUtils.isEmpty(paramString)) {
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("PraiseInfo", 2, "content:" + paramString);
-        }
-        paramString = new JSONObject(paramString);
-        ayon localayon = new ayon(paramInt);
-        localayon.jdField_a_of_type_JavaLangString = paramString.optString("name");
-        localayon.jdField_b_of_type_JavaLangString = paramString.optString("text");
-        if (paramString.has("color"))
-        {
-          String str = paramString.optString("color").trim();
-          paramString = str;
-          if (str.startsWith("0x")) {
-            paramString = str.substring(2);
-          }
-        }
-        try
-        {
-          localayon.jdField_b_of_type_Int = Color.parseColor("#" + paramString);
-          return localayon;
-        }
-        catch (Exception paramString)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("PraiseInfo", 2, "color invalid");
-            }
-          }
-        }
-        return null;
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("PraiseInfo", 1, "parsePraiseInfo failed with JsonException.", paramString);
-        return null;
-      }
-      catch (IOException paramString)
-      {
-        QLog.e("PraiseInfo", 1, "parsePraiseInfo failed with IOException.", paramString);
-      }
+      paramQQAppInterface.putExtra("is_from_push_component", true);
+      paramQQAppInterface.putExtra("push_main_business_id", paramayog.jdField_a_of_type_Int);
+      paramQQAppInterface.putExtra("push_sub_business_id", paramayog.b);
+      paramQQAppInterface.putExtra("push_id", paramayog.c);
+      paramQQAppInterface.addFlags(268435456);
+      return paramQQAppInterface;
+      paramQQAppInterface = osg.a(paramContext, 6);
+      Intrinsics.checkExpressionValueIsNotNull(paramQQAppInterface, "ReadInJoyActivityHelper.…tent(context, launchFrom)");
     }
   }
   
-  private static String a(String paramString)
+  private final MessageRecord a(QQAppInterface paramQQAppInterface, ayog paramayog)
   {
-    File localFile = new File(paramString);
-    if (!localFile.exists()) {
-      QLog.e("PraiseInfo", 1, paramString + " not exist!");
+    paramQQAppInterface = paramQQAppInterface.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER);
+    if (paramQQAppInterface == null) {
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager");
     }
-    do
+    paramQQAppInterface = ((KandianMergeManager)paramQQAppInterface).a(paramayog.jdField_a_of_type_ArrayOfByte, paramayog.jdField_a_of_type_JavaLangString);
+    Intrinsics.checkExpressionValueIsNotNull(paramQQAppInterface, "km.createFakeMsgFrom0x13…ata, pushComponent.title)");
+    return paramQQAppInterface;
+  }
+  
+  private final PendingIntent e(ayog paramayog)
+  {
+    Object localObject = (Intent)null;
+    BaseApplication localBaseApplication = BaseApplication.context;
+    if (paramayog.b == 1)
     {
-      return null;
-      try
-      {
-        paramString = FileUtils.readFileToString(localFile);
-        return paramString;
+      QLog.d("KanDianJumpScheme", 1, "nativeJumpIntent bytesExtData: " + new String(paramayog.jdField_a_of_type_ArrayOfByte, Charsets.UTF_8));
+      localObject = BaseApplicationImpl.getApplication();
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getApplication()");
+      localObject = ((BaseApplicationImpl)localObject).getRuntime();
+      if (localObject == null) {
+        throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
       }
-      catch (OutOfMemoryError paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("PraiseInfo", 2, paramString.getMessage());
-    return null;
+      QQAppInterface localQQAppInterface = (QQAppInterface)localObject;
+      MessageRecord localMessageRecord = a(localQQAppInterface, paramayog);
+      Intrinsics.checkExpressionValueIsNotNull(localBaseApplication, "context");
+      localObject = a(localQQAppInterface, localMessageRecord, (Context)localBaseApplication, paramayog);
+      pkh.a(localQQAppInterface.getMessageFacade(), localMessageRecord, (Intent)localObject);
+    }
+    for (;;)
+    {
+      paramayog = PendingIntent.getActivity((Context)localBaseApplication, paramayog.d, (Intent)localObject, 134217728);
+      Intrinsics.checkExpressionValueIsNotNull(paramayog, "PendingIntent.getActivit…tent.FLAG_UPDATE_CURRENT)");
+      return paramayog;
+      QLog.d("KanDianJumpScheme", 1, new Object[] { "nativeJumpIntent: called. ", "invalid subBusinessId. pushComponent: " + paramayog });
+    }
+  }
+  
+  @NotNull
+  protected PendingIntent a(@NotNull ayog paramayog)
+  {
+    Intrinsics.checkParameterIsNotNull(paramayog, "pushComponent");
+    return e(paramayog);
+  }
+  
+  protected boolean a()
+  {
+    return true;
   }
 }
 

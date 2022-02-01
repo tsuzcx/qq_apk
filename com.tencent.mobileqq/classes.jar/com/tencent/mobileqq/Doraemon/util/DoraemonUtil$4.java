@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.Doraemon.util;
 
-import acjr;
+import adaa;
 
 public final class DoraemonUtil$4
   implements Runnable
 {
-  public DoraemonUtil$4(acjr paramacjr, int paramInt) {}
+  public DoraemonUtil$4(adaa paramadaa, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Acjr.onPermission(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Adaa.a(this.jdField_a_of_type_Int);
   }
 }
 

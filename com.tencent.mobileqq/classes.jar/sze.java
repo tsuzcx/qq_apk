@@ -1,32 +1,4 @@
-public class sze
-{
-  public String a;
-  public syz a;
-  public String b;
-  
-  public sze(String paramString, syz paramsyz, boolean paramBoolean)
-  {
-    if (paramString == null) {
-      throw new IllegalArgumentException();
-    }
-    this.jdField_a_of_type_Syz = paramsyz;
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_JavaLangString = paramString;
-      return;
-    }
-    this.b = paramString;
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      return this.b;
-    }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sze

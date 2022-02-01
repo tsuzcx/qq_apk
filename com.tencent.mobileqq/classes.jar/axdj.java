@@ -1,96 +1,53 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qconn.protofile.fastauthorize.FastAuthorize.AuthorizeResponse;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.MultiForwardActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-class axdj
-  implements BusinessObserver
+public class axdj
+  extends WebViewPlugin
 {
-  axdj(axdh paramaxdh, String paramString, Context paramContext, int paramInt) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    new Bundle();
-    String str = this.jdField_a_of_type_JavaLangString;
-    Object localObject = str;
-    if (paramBoolean) {
-      localObject = paramBundle.getByteArray("data");
+    int i = 0;
+    if ((paramString2 == null) || (!"msgForward".equalsIgnoreCase(paramString2)) || (paramString3 == null)) {}
+    while ((this.mRuntime == null) || (this.mRuntime.a() == null) || (!"showForwardToWXMsg".equalsIgnoreCase(paramString3)) || (paramVarArgs == null)) {
+      return false;
     }
+    if (paramVarArgs.length > 0) {
+      while (i < paramVarArgs.length)
+      {
+        QLog.d("MsgforwardWXWebViewPlugin", 1, paramVarArgs[i]);
+        i += 1;
+      }
+    }
+    paramJsBridgeListener = "0";
     try
     {
-      paramBundle = new FastAuthorize.AuthorizeResponse();
-      paramBundle.mergeFrom((byte[])localObject);
-      this.jdField_a_of_type_Axdh.jdField_a_of_type_AndroidOsHandler.removeMessages(6);
-      if ((paramBundle.ret.get().equals("0")) && (paramBundle.apk_name.has()))
-      {
-        if (paramBundle.access_token.has())
-        {
-          localObject = paramBundle.access_token.get();
-          this.jdField_a_of_type_Axdh.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Axdh.jdField_a_of_type_JavaLangString.replace("$AT$", (CharSequence)localObject);
-        }
-        if (paramBundle.pay_token.has())
-        {
-          localObject = paramBundle.pay_token.get();
-          this.jdField_a_of_type_Axdh.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Axdh.jdField_a_of_type_JavaLangString.replace("$PT$", (CharSequence)localObject);
-        }
-        if (paramBundle.openid.has())
-        {
-          localObject = paramBundle.openid.get();
-          this.jdField_a_of_type_Axdh.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Axdh.jdField_a_of_type_JavaLangString.replace("$OPID$", (CharSequence)localObject);
-        }
-        if (paramBundle.pfkey.has())
-        {
-          localObject = paramBundle.pfkey.get();
-          this.jdField_a_of_type_Axdh.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Axdh.jdField_a_of_type_JavaLangString.replace("$PF$", (CharSequence)localObject);
-        }
-        if (paramBundle.encrykey.has())
-        {
-          localObject = paramBundle.encrykey.get();
-          this.jdField_a_of_type_Axdh.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Axdh.jdField_a_of_type_JavaLangString.replace("$ESK$", (CharSequence)localObject);
-        }
-        localObject = paramBundle.apk_name.get();
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          return;
-        }
-        paramBundle = (Bundle)localObject;
-        if (((String)localObject).contains(this.jdField_a_of_type_JavaLangString)) {}
-      }
-      else
-      {
-        QLog.d(this.jdField_a_of_type_Axdh.getClass().getSimpleName(), 4, "start without login state");
-        paramBundle = str;
-      }
-      localObject = paramBundle;
+      paramString1 = new JSONObject(paramVarArgs[0]).optString("rId");
+      paramJsBridgeListener = paramString1;
     }
-    catch (InvalidProtocolBufferMicroException paramBundle)
+    catch (Exception paramString1)
     {
       for (;;)
       {
-        localObject = str;
-        if (QLog.isColorLevel())
-        {
-          QLog.d(this.jdField_a_of_type_Axdh.getClass().getSimpleName(), 2, paramBundle.getMessage());
-          localObject = str;
-        }
+        long l;
+        QLog.e("MsgforwardWXWebViewPlugin", 1, "MsgforwardWXWebViewPlugin get resid exception!");
       }
     }
-    paramBundle = bbkb.a(this.jdField_a_of_type_Axdh.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d(getClass().getSimpleName(), 2, "lauchApp now");
-    }
-    biam.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject, paramBundle, this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Axdh.jdField_a_of_type_MqqAppNewIntent != null)
-    {
-      this.jdField_a_of_type_Axdh.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-      this.jdField_a_of_type_Axdh.jdField_a_of_type_MqqAppNewIntent = null;
-      return;
-    }
+    paramString1 = this.mRuntime.a();
+    l = paramJsBridgeListener.hashCode();
+    paramString2 = new Intent(paramString1, MultiForwardActivity.class);
+    paramString2.putExtra("chat_subType", 3);
+    paramString2.putExtra("uin", "0");
+    paramString2.putExtra("uintype", 1040);
+    paramString2.putExtra("multi_url", paramJsBridgeListener);
+    paramString2.putExtra("multi_uniseq", l);
+    paramString1.startActivity(paramString2);
+    paramString1.finish();
+    return true;
   }
 }
 

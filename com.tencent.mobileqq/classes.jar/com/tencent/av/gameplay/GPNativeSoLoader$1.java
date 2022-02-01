@@ -1,13 +1,13 @@
 package com.tencent.av.gameplay;
 
-import lmc;
+import lmp;
 
 public final class GPNativeSoLoader$1
   implements Runnable
 {
   public void run()
   {
-    lmc.a().c();
+    lmp.a().c();
   }
 }
 

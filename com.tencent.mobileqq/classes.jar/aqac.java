@@ -1,159 +1,90 @@
+import android.app.Activity;
+import android.app.Dialog;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import mqq.observer.BusinessObserver;
 
-public class aqac
+class aqac
+  implements BusinessObserver
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
-  public long e = 31457280L;
-  public long f = 31457280L;
-  public long g = 100L;
-  public long h = 150L;
-  public long i = 40960L;
-  public long j = 71680L;
-  public long k = 204800L;
-  public long l = 1L;
-  public long m = 819200L;
+  aqac(aqab paramaqab, Activity paramActivity) {}
   
-  public aqac()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Long = 1L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 524288000L;
-    this.jdField_d_of_type_Long = 31457280L;
-    this.jdField_a_of_type_JavaLangString = "12000|600|20000|400|6000|300|20000|200";
-    this.jdField_b_of_type_JavaLangString = "20|10|50|10";
-    this.jdField_c_of_type_JavaLangString = "51f3f3f7";
-    this.jdField_d_of_type_JavaLangString = "20-24;0-1";
-    this.jdField_a_of_type_Int = 1000;
-    this.jdField_b_of_type_Int = 32;
-  }
-  
-  public static aqac a(aptx[] paramArrayOfaptx)
-  {
-    aqac localaqac = new aqac();
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
+    String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131690185);
+    localObject1 = str;
+    if (paramBoolean) {
+      localObject2 = str;
+    }
+    for (;;)
     {
-      int i1 = paramArrayOfaptx.length;
-      int n = 0;
-      if (n < i1)
+      try
       {
-        Object localObject = paramArrayOfaptx[n];
-        if (localObject == null) {}
-        for (;;)
+        paramBundle = paramBundle.getByteArray("data");
+        localObject1 = str;
+        if (paramBundle != null)
         {
-          n += 1;
-          break;
-          localObject = ((aptx)localObject).jdField_a_of_type_JavaLangString;
-          try
+          localObject2 = str;
+          GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
+          localObject2 = str;
+          localGetAppinfoResponse.mergeFrom(paramBundle);
+          localObject1 = str;
+          localObject2 = str;
+          if (localGetAppinfoResponse.has())
           {
-            JSONObject localJSONObject = new JSONObject((String)localObject);
-            a(localJSONObject, localaqac);
-            b(localJSONObject, localaqac);
-            c(localJSONObject, localaqac);
-            if (QLog.isColorLevel()) {
-              QLog.i("PicPreDownloadBean", 2, "parse: " + (String)localObject + " bean:" + localaqac.toString());
-            }
-          }
-          catch (JSONException localJSONException)
-          {
-            for (;;)
+            localObject1 = str;
+            localObject2 = str;
+            if (localGetAppinfoResponse.ret.get() == 0)
             {
-              localJSONException.printStackTrace();
+              localObject1 = str;
+              localObject2 = str;
+              if (localGetAppinfoResponse.androidInfo != null)
+              {
+                localObject2 = str;
+                paramBundle = localGetAppinfoResponse.androidInfo;
+                localObject2 = str;
+                if (paramBundle.messagetail != null) {
+                  continue;
+                }
+                localObject1 = "";
+                localObject2 = localObject1;
+                ((String)localObject1).trim();
+              }
             }
           }
         }
       }
+      catch (Exception paramBundle)
+      {
+        localObject1 = localObject2;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ArkWebModule", 2, paramBundle.getMessage());
+        localObject1 = localObject2;
+        continue;
+      }
+      paramBundle = (Bundle)localObject1;
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        paramBundle = this.jdField_a_of_type_AndroidAppActivity.getString(2131690185);
+      }
+      localObject1 = this.jdField_a_of_type_AndroidAppActivity.getString(2131690186);
+      this.jdField_a_of_type_Aqab.a(String.format((String)localObject1, new Object[] { paramBundle }));
+      aqab.a(this.jdField_a_of_type_Aqab).show();
+      return;
+      localObject2 = str;
+      localObject1 = paramBundle.messagetail.get();
     }
-    return localaqac;
-  }
-  
-  private static void a(JSONObject paramJSONObject, aqac paramaqac)
-  {
-    if (paramJSONObject.has("PicPreDownSwitchNew")) {
-      paramaqac.jdField_a_of_type_Long = paramJSONObject.optLong("PicPreDownSwitchNew");
-    }
-    if (paramJSONObject.has("PicAuDownTimePoint")) {
-      paramaqac.jdField_b_of_type_Long = paramJSONObject.optLong("PicAuDownTimePoint");
-    }
-    if (paramJSONObject.has("MaxWifiFlow")) {
-      paramaqac.jdField_c_of_type_Long = paramJSONObject.optLong("MaxWifiFlow");
-    }
-    if (paramJSONObject.has("Max4GFlow")) {
-      paramaqac.jdField_d_of_type_Long = paramJSONObject.optLong("Max4GFlow");
-    }
-    if (paramJSONObject.has("Max3GFlow")) {
-      paramaqac.e = paramJSONObject.optLong("Max3GFlow");
-    }
-    if (paramJSONObject.has("Max2GFlow")) {
-      paramaqac.f = paramJSONObject.optLong("Max2GFlow");
-    }
-  }
-  
-  private static void b(JSONObject paramJSONObject, aqac paramaqac)
-  {
-    if (paramJSONObject.has("flowCombination")) {
-      paramaqac.jdField_a_of_type_JavaLangString = paramJSONObject.optString("flowCombination");
-    }
-    if (paramJSONObject.has("troopCombination")) {
-      paramaqac.jdField_b_of_type_JavaLangString = paramJSONObject.optString("troopCombination");
-    }
-    if (paramJSONObject.has("maxRequest")) {
-      paramaqac.g = paramJSONObject.optLong("maxRequest");
-    }
-    if (paramJSONObject.has("xGPreDownPolicy")) {
-      paramaqac.jdField_c_of_type_JavaLangString = paramJSONObject.optString("xGPreDownPolicy");
-    }
-    if (paramJSONObject.has("AFBFlowHitXG")) {
-      paramaqac.h = paramJSONObject.optLong("AFBFlowHitXG");
-    }
-    if (paramJSONObject.has("AFBFlowMissXG")) {
-      paramaqac.i = paramJSONObject.optLong("AFBFlowMissXG");
-    }
-    if (paramJSONObject.has("APicAvgSize")) {
-      paramaqac.j = paramJSONObject.optLong("APicAvgSize");
-    }
-    if (paramJSONObject.has("APicMaxSize")) {
-      paramaqac.k = paramJSONObject.optLong("APicMaxSize");
-    }
-    if (paramJSONObject.has("enablePeakFlow")) {
-      paramaqac.l = paramJSONObject.optLong("enablePeakFlow");
-    }
-    if (paramJSONObject.has("PeakFlowTimePeriod")) {
-      paramaqac.jdField_d_of_type_JavaLangString = paramJSONObject.optString("PeakFlowTimePeriod");
-    }
-    if (paramJSONObject.has("PeakFlowMaxPicSize")) {
-      paramaqac.m = paramJSONObject.optLong("PeakFlowMaxPicSize");
-    }
-  }
-  
-  private static void c(JSONObject paramJSONObject, aqac paramaqac)
-  {
-    if (paramJSONObject.has("gifWifiPreDownloadLimit")) {
-      paramaqac.jdField_a_of_type_Int = paramJSONObject.optInt("gifWifiPreDownloadLimit");
-    }
-    if (paramJSONObject.has("gifXgPreDownloadLimit")) {
-      paramaqac.jdField_b_of_type_Int = paramJSONObject.optInt("gifXgPreDownloadLimit");
-    }
-  }
-  
-  public String toString()
-  {
-    return "PicPreDownloadBean{PreDownSwitchNew=" + this.jdField_a_of_type_Long + ",PicAuDownTimePoint=" + this.jdField_b_of_type_Long + ",PreDownMaxWifiFlow=" + this.jdField_c_of_type_Long + ",PreDownMax4GFlow=" + this.jdField_d_of_type_Long + ",PreDownMax3GFlow=" + this.e + ",PreDownMax2GFlow=" + this.f + ",flowsCombination=" + this.jdField_a_of_type_JavaLangString + ",troopCombination=" + this.jdField_b_of_type_JavaLangString + ",requestListMaxSize=" + this.g + ",xGPreDownPolicy=" + this.jdField_c_of_type_JavaLangString + ",xgFlowHitFeedback=" + this.h + ",XgFlowMissFeedback=" + this.i + ",pisSizeAvg=" + this.j + ",pisSizeMax=" + this.k + ",mEnablePeakFlow=" + this.l + ",mPeakFlowTimePeriod=" + this.jdField_d_of_type_JavaLangString + ",mPeakFlowMaxPicSize=" + this.m + ",gifWifiPreDownloadLimit=" + this.jdField_a_of_type_Int + ",gifXgPreDownloadLimit=" + this.jdField_b_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqac
  * JD-Core Version:    0.7.0.1
  */

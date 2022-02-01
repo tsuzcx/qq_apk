@@ -1,123 +1,38 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.ark.ArkEnvironmentManager;
-import com.tencent.ark.ArkPlayer;
-import com.tencent.ark.ark.PlayerStubFactory;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkMediaPlayer.2;
-import com.tencent.mobileqq.ark.ArkMediaPlayer.3;
-import java.lang.ref.WeakReference;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aowc
-  extends ArkPlayer
+  extends aoui
 {
-  public static final ark.PlayerStubFactory a;
-  private static final Set<WeakReference<aowc>> jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int b = 1;
-  private int c = 2;
-  private int d = 3;
-  private int e = 4;
-  private int f = this.jdField_a_of_type_Int;
-  
-  static
+  public aouc a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoul paramaoul)
   {
-    jdField_a_of_type_ComTencentArkArk$PlayerStubFactory = new aowd();
-  }
-  
-  protected aowc()
-  {
-    jdField_a_of_type_JavaUtilSet.add(new WeakReference(this));
-    ENV.logI("Ark.ArkMediaPlayer", String.format("ArkMediaPlayer.create.%h", new Object[] { this }));
-  }
-  
-  public static void a()
-  {
-    synchronized (jdField_a_of_type_JavaUtilSet)
+    paramQQAppInterface = new aowb(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "qqnotify";
+    paramQQAppInterface.c = "open";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
+    }
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
     {
-      Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
-      while (localIterator.hasNext())
+      int i = 0;
+      while (i < paramContext.length)
       {
-        Object localObject2 = (WeakReference)localIterator.next();
-        if (localObject2 != null)
-        {
-          localObject2 = (aowc)((WeakReference)localObject2).get();
-          if (localObject2 != null) {
-            ((aowc)localObject2).c();
-          }
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
         }
+        i += 1;
       }
     }
-  }
-  
-  public static void b()
-  {
-    synchronized (jdField_a_of_type_JavaUtilSet)
-    {
-      Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject2 = (WeakReference)localIterator.next();
-        if (localObject2 != null)
-        {
-          localObject2 = (aowc)((WeakReference)localObject2).get();
-          if (localObject2 != null) {
-            ((aowc)localObject2).d();
-          }
-        }
-      }
-    }
-  }
-  
-  public boolean Pause()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.f = this.d;
-    }
-    return super.Pause();
-  }
-  
-  public boolean Play()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.f = this.b;
-    }
-    return super.Play();
-  }
-  
-  public boolean Resume()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.f = this.e;
-    }
-    return super.Resume();
-  }
-  
-  public boolean Stop()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.f = this.c;
-    }
-    return super.Stop();
-  }
-  
-  public void c()
-  {
-    ArkAppCenter.a().post(this.mQueueKey, new ArkMediaPlayer.2(this));
-  }
-  
-  public void d()
-  {
-    ArkAppCenter.a().post(this.mQueueKey, new ArkMediaPlayer.3(this));
+    return paramQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aowc
  * JD-Core Version:    0.7.0.1
  */

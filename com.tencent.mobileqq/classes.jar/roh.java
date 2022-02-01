@@ -1,15 +1,32 @@
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.FriendListFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import kotlin.Metadata;
 
-public class roh
-  implements bjqk
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdaterOutsideLink;", "Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdater;", "()V", "process", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class roh
+  extends roe
 {
-  public roh(FriendListFragment paramFriendListFragment) {}
-  
-  public void a(int paramInt)
+  protected void a()
   {
-    if (FriendListFragment.a(this.a) != null) {
-      FriendListFragment.a(this.a).onClick(null);
+    Object localObject = a();
+    if (localObject != null) {
+      ((SocializeFeedsInfo)localObject).a = 19191924;
+    }
+    localObject = a();
+    if (localObject != null) {
+      ((rrl)localObject).a = true;
+    }
+    BaseArticleInfo localBaseArticleInfo = a();
+    localObject = a();
+    if (localObject != null)
+    {
+      localObject = ((rre)localObject).a;
+      if (localObject == null) {}
+    }
+    for (localObject = ((rrk)localObject).a;; localObject = null)
+    {
+      localBaseArticleInfo.mTitle = ((String)localObject);
+      return;
     }
   }
 }

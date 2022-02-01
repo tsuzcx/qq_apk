@@ -1,23 +1,39 @@
-import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bcbz
+class bcbz
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  bcbz(bcby parambcby, String paramString, int paramInt) {}
   
-  private bcbz(MigrateSubscribeDB paramMigrateSubscribeDB) {}
-  
-  public String toString()
+  public void onClick(View paramView)
   {
-    return "mSubscribeID: " + this.jdField_a_of_type_JavaLangString + " | mSubscribeName: " + this.jdField_b_of_type_JavaLangString + " | mLastMsg: " + this.jdField_c_of_type_JavaLangString + " | mLastMsgTime: " + this.jdField_a_of_type_Long + " | mLastMsgID: " + this.jdField_b_of_type_Long + " | mLastReorderTime: " + this.jdField_c_of_type_Long + " | mDraft: " + this.d + " | mDraftTime: " + this.e + " | mSubscribeHeadUrl: " + this.f + " | mUnreadCount: " + this.jdField_a_of_type_Int;
+    Object localObject = this.jdField_a_of_type_Bcby.a.getActivity();
+    if ((this.jdField_a_of_type_Bcby.a.getActivity() instanceof bcbx))
+    {
+      localObject = (bcbx)localObject;
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      bcjs.a(null, new ReportModelDC02528().module("all_search").action("clk_frame_up").ver1(this.jdField_a_of_type_JavaLangString).ver2("kandian").ver3(UniteSearchActivity.d).ver4(this.jdField_a_of_type_Bcby.a.jdField_a_of_type_JavaLangString).ver5(this.jdField_a_of_type_Int / 2 + 1 + "").ver6(UniteSearchActivity.c).session_id(UniteSearchActivity.e));
+    }
+    for (;;)
+    {
+      if (localObject != null) {
+        ((bcbx)localObject).c(this.jdField_a_of_type_JavaLangString);
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (AssociateSearchWordsFragment.a(this.jdField_a_of_type_Bcby.a) != null) {
+        localObject = AssociateSearchWordsFragment.a(this.jdField_a_of_type_Bcby.a);
+      } else {
+        localObject = null;
+      }
+    }
   }
 }
 

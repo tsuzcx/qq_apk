@@ -1,16 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
-
 public class ywo
-  implements DialogInterface.OnCancelListener
 {
-  public ywo(QRLoginAuthActivity paramQRLoginAuthActivity) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    this.a.finish();
-  }
+  public int a;
+  public String a;
+  public ywk<Boolean, ywp> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public ywk<Boolean, ywq> b;
+  public boolean b;
+  public int c;
+  public int d;
 }
 
 

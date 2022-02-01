@@ -39,7 +39,7 @@ public class b
     this.h = 1;
     this.j = a.a(paramContext);
     this.k = "beacon";
-    this.l = "3.2.2.22";
+    this.l = "3.2.2.30";
     this.m = "unknown";
     this.o = a(paramContext);
     this.p = c.a(e(paramContext));
@@ -346,7 +346,7 @@ public class b
   
   public static String i()
   {
-    return "3.2.2.22";
+    return "3.2.2.30";
   }
   
   /* Error */

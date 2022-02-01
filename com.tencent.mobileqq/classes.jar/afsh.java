@@ -1,46 +1,28 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
 public class afsh
-  implements afrc
 {
-  private afiw a;
+  public int a;
+  public long a;
+  public String a;
+  public String b;
   
-  public afsh(afiw paramafiw)
+  public boolean a()
   {
-    this.a = paramafiw;
+    return !TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
   }
   
-  public void a(int paramInt)
+  @NonNull
+  public String toString()
   {
-    switch (paramInt)
-    {
-    }
-    SessionInfo localSessionInfo;
-    do
-    {
-      return;
-      localObject = this.a.a;
-      localSessionInfo = this.a.sessionInfo;
-      if ((localObject != null) && ((localSessionInfo.curType == 1024) || (((bily)localObject).a(localSessionInfo.curFriendUin)))) {
-        ((bily)localObject).a(localSessionInfo.curFriendUin, localSessionInfo.curType);
-      }
-      if ((localObject != null) && (((bily)localObject).a(localSessionInfo.curFriendUin))) {
-        ((bing)this.a.app.getBusinessHandler(85)).a(null, localSessionInfo.curFriendUin, false);
-      }
-    } while ((!(this.a instanceof ahdt)) && (!nns.b(localSessionInfo.curFriendUin)));
-    if (localObject == null) {}
-    for (Object localObject = "";; localObject = ((bily)localObject).a(localSessionInfo.curFriendUin))
-    {
-      bcef.b(this.a.app, "dc00899", "Qidian", localSessionInfo.curFriendUin, "0X8009787", "CloseAIO", 1, 0, String.valueOf(NetConnInfoCenter.getServerTime()), (String)localObject, "8.4.8", "");
-      return;
-    }
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 13 };
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MutualMarkPushGrayTipInfo{");
+    localStringBuilder.append("notifyTime:").append(this.jdField_a_of_type_Long).append(", ");
+    localStringBuilder.append("grayTipTemplate:").append(this.jdField_a_of_type_JavaLangString).append(", ");
+    localStringBuilder.append("grayTipType:").append(this.jdField_a_of_type_Int).append(", ");
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

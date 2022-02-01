@@ -1,25 +1,36 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.AnimatorSet;
-import com.tencent.avgame.gameroom.gamelist.GameListRecyclerViewAdapter.1;
+import java.util.List;
 
-public class nda
-  implements Animator.AnimatorListener
+class nda
+  extends ndm
 {
-  public nda(GameListRecyclerViewAdapter.1 param1) {}
+  nda(ncz paramncz) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    if (ncz.a(this.a.this$0) != null) {
-      ncz.a(this.a.this$0).start();
-    }
+    if (paramString1 == null) {}
+    do
+    {
+      do
+      {
+        return;
+        if (paramInt != 1) {
+          break;
+        }
+      } while (this.a.b(paramString1));
+      ncz.a(this.a, paramString1, true);
+      return;
+    } while ((paramInt != 5) || (!this.a.b(paramString1)));
+    ncz.a(this.a, paramString1, false);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void a(int paramInt, String paramString, ndn paramndn)
+  {
+    if ((paramInt != 0) || (paramndn == null) || (paramndn.jdField_a_of_type_JavaUtilList == null) || (paramndn.jdField_a_of_type_JavaLangString == null)) {}
+    while (paramndn.jdField_a_of_type_JavaUtilList.size() != 0) {
+      return;
+    }
+    ncz.a(this.a, paramndn.jdField_a_of_type_JavaLangString, false);
+  }
 }
 
 

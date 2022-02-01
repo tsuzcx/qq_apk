@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import java.util.List;
+import java.util.regex.Matcher;
 
-public class beln
-  implements DialogInterface.OnClickListener
+final class beln
+  implements bemp
 {
-  public beln(ReciteFragment paramReciteFragment) {}
+  beln(List paramList, beli parambeli) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String a(Matcher paramMatcher)
   {
-    this.a.h();
+    this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_Beli.a(belm.a(paramMatcher.group(1))));
+    return "";
   }
 }
 

@@ -1,18 +1,38 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-public final class bmso
-  implements Parcelable.Creator<QIMFilterCategoryItem>
+class bmso
+  implements INetInfoHandler
 {
-  public QIMFilterCategoryItem a(Parcel paramParcel)
+  bmso(bmsl parambmsl) {}
+  
+  public void onNetMobile2None()
   {
-    return new QIMFilterCategoryItem(paramParcel);
+    this.a.a(false, false);
   }
   
-  public QIMFilterCategoryItem[] a(int paramInt)
+  public void onNetMobile2Wifi(String paramString)
   {
-    return new QIMFilterCategoryItem[paramInt];
+    this.a.a(true, true);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    this.a.a(false, true);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    this.a.a(true, true);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    this.a.a(false, true);
+  }
+  
+  public void onNetWifi2None()
+  {
+    this.a.a(false, false);
   }
 }
 

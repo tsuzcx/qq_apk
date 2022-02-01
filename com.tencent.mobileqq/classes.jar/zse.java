@@ -1,43 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.UploadFileRspBody;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 
-public abstract class zse
-  extends nmf
+public class zse
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public int a;
+  public CertifiedAccountMeta.StFeed a;
+  public CertifiedAccountMeta.StUser a;
+  
+  public zse(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    b(paramInt, paramArrayOfByte, paramBundle);
+    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = paramStFeed;
+    this.jdField_a_of_type_Int = 2;
   }
   
-  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d6.UploadFileRspBody paramUploadFileRspBody, Bundle paramBundle);
-  
-  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public zse(CertifiedAccountMeta.StUser paramStUser)
   {
-    if (paramInt != 0)
-    {
-      a(false, paramInt, null, paramBundle);
-      return;
-    }
-    oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
-    try
-    {
-      localRspBody.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = (oidb_0x6d6.UploadFileRspBody)localRspBody.upload_file_rsp.get();
-      if (paramArrayOfByte.int32_ret_code.has())
-      {
-        a(true, 0, paramArrayOfByte, paramBundle);
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      a(false, -1, null, paramBundle);
-      return;
-    }
-    a(false, -1, null, paramBundle);
+    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser = paramStUser;
+    this.jdField_a_of_type_Int = 1;
   }
 }
 

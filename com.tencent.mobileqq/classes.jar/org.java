@@ -1,28 +1,9 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class org
-  implements ViewBase.OnClickListener
+public abstract interface org
 {
-  org(ouc paramouc, ouo paramouo) {}
-  
-  public final void onClick(ViewBase paramViewBase)
-  {
-    ArrayList localArrayList = new ArrayList();
-    Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "viewBase");
-    localArrayList.add(paramViewBase.getEventAttachedData());
-    QLog.d("CommentProteusUtil", 2, "comment media url : " + paramViewBase.getEventAttachedData());
-    beqn.a((Activity)this.jdField_a_of_type_Ouc.a(), 0, localArrayList, true, "", 1888);
-    if (this.jdField_a_of_type_Ouc.a() != null) {
-      this.jdField_a_of_type_Ouc.a().f(this.jdField_a_of_type_Ouo);
-    }
-  }
+  public abstract void a(List<TabChannelCoverInfo> paramList);
 }
 
 

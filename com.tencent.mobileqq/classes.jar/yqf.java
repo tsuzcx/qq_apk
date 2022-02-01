@@ -1,33 +1,80 @@
-class yqf
-  implements ypx
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterManager;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+
+public class yqf
+  extends bhyn
 {
-  yqf(yqe paramyqe) {}
+  public yqf(ArtFilterManager paramArtFilterManager) {}
   
-  public void a(yqc paramyqc, boolean paramBoolean)
+  public void onDone(bhyo parambhyo)
   {
-    int i = 0;
-    if (paramBoolean)
-    {
-      yqc[] arrayOfyqc = this.a.a();
-      j = arrayOfyqc.length;
-      i = 0;
-      while (i < j)
-      {
-        yqc localyqc = arrayOfyqc[i];
-        if (localyqc != paramyqc) {
-          localyqc.a(false);
-        }
-        i += 1;
+    long l2 = -1L;
+    super.onDone(parambhyo);
+    Object localObject2 = parambhyo.a();
+    if (localObject2 == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ArtFilterManager", 2, "download bundle null");
       }
     }
-    paramyqc = this.a.a();
-    int j = paramyqc.length;
+    String str;
+    Object localObject1;
+    do
+    {
+      return;
+      str = ((Bundle)localObject2).getString("url");
+      localObject1 = ((Bundle)localObject2).getString("md5");
+      localObject2 = ((Bundle)localObject2).getString("path");
+      if ((str != null) && (localObject1 != null) && (localObject2 != null)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ArtFilterManager", 2, "download bundle parms null");
+    return;
+    if (parambhyo.a == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ArtFilterManager", 2, "[onDone] download finished " + str);
+      }
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        this.a.a((String)localObject2);
+      }
+    }
     for (;;)
     {
-      if ((i >= j) || (paramyqc[i].a())) {
-        return;
+      localObject1 = (PreDownloadController)ArtFilterManager.a(this.a).getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2);
+      localObject2 = new File((String)localObject2);
+      long l1 = l2;
+      if (parambhyo.a == 0)
+      {
+        l1 = l2;
+        if (((File)localObject2).exists()) {
+          l1 = ((File)localObject2).length();
+        }
       }
-      i += 1;
+      ((PreDownloadController)localObject1).preDownloadSuccess(str, l1);
+      return;
+      if (((String)localObject1).equalsIgnoreCase(this.a.a((String)localObject2)))
+      {
+        this.a.a((String)localObject2);
+      }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ArtFilterManager", 2, "[onDone] checkMd5 failed: " + (String)localObject2);
+        }
+        FileUtils.deleteFile((String)localObject2);
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("ArtFilterManager", 2, "[onDone] downloadFile failed: " + parambhyo.a);
+        }
+      }
     }
   }
 }

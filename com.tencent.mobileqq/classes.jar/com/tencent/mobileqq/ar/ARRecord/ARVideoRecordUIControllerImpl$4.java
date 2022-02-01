@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import aoai;
+import apdk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class ARVideoRecordUIControllerImpl$4
   implements Runnable
 {
-  public ARVideoRecordUIControllerImpl$4(aoai paramaoai) {}
+  public ARVideoRecordUIControllerImpl$4(apdk paramapdk) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, aoai.b, 1).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, apdk.b, 1).a();
   }
 }
 

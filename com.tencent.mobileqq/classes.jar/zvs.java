@@ -1,19 +1,26 @@
-import WEISHI_USER_GROWTH.WEISHI.stMetaFeed;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.subscribe.comment.EmoView;
 
 public class zvs
+  extends Handler
 {
-  int jdField_a_of_type_Int;
-  WEISHI.stMetaFeed jdField_a_of_type_WEISHI_USER_GROWTHWEISHI$stMetaFeed = null;
+  public zvs(EmoView paramEmoView) {}
   
-  zvs(WEISHI.stMetaFeed paramstMetaFeed, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_WEISHI_USER_GROWTHWEISHI$stMetaFeed = paramstMetaFeed;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
+    int i;
+    if (paramMessage.what == 0)
+    {
+      i = EmoView.a(this.a) + 1;
+      if ((i <= 4) && (EmoView.a(this.a)[EmoView.a(this.a)] == 0)) {}
+    }
+    else
+    {
+      return;
+    }
+    EmoView.a(this.a, i);
+    EmoView.a(this.a)[EmoView.a(this.a)] = 1;
   }
 }
 

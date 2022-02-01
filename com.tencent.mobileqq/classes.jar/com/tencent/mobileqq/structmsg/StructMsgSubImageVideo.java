@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.structmsg;
 
-import amtj;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
-import bcgv;
-import bchb;
-import bcin;
+import anvx;
+import bdnt;
+import bdnz;
+import bdpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -32,46 +32,46 @@ public class StructMsgSubImageVideo
     super(paramBundle);
   }
   
-  public StructMsgSubImageVideo(bcin parambcin)
+  public StructMsgSubImageVideo(bdpl parambdpl)
   {
-    super(parambcin);
-    if (parambcin.a == null) {}
+    super(parambdpl);
+    if (parambdpl.a == null) {}
     for (;;)
     {
       return;
-      Iterator localIterator = parambcin.a.iterator();
+      Iterator localIterator = parambdpl.a.iterator();
       while (localIterator.hasNext())
       {
-        parambcin = (bcin)localIterator.next();
+        parambdpl = (bdpl)localIterator.next();
         Object localObject;
-        if ((parambcin == null) || (!"item".equals(parambcin.b)))
+        if ((parambdpl == null) || (!"item".equals(parambdpl.b)))
         {
           localObject = new StringBuilder().append("StructMsgSubImageVideo: null or wrong node ");
-          if (parambcin == null) {}
-          for (parambcin = "null";; parambcin = parambcin.b)
+          if (parambdpl == null) {}
+          for (parambdpl = "null";; parambdpl = parambdpl.b)
           {
-            Log.i("StructMsgSubImageVideo", parambcin);
+            Log.i("StructMsgSubImageVideo", parambdpl);
             break;
           }
         }
-        if ((parambcin.a == null) || (parambcin.a.isEmpty()))
+        if ((parambdpl.a == null) || (parambdpl.a.isEmpty()))
         {
           Log.i("StructMsgSubImageVideo", "StructMsgSubImageVideo: no child in node");
         }
         else
         {
-          localObject = parambcin.a("apptype");
+          localObject = parambdpl.a("apptype");
           if (!"10".equals(localObject))
           {
             Log.i("StructMsgSubImageVideo", "StructMsgSubImageVideo: wrong app type " + (String)localObject);
           }
           else
           {
-            localObject = parambcin.a("type");
+            localObject = parambdpl.a("type");
             if ("0".equals(localObject)) {
-              this.videoItem = StructMsgSubImageVideo.VideoItem.access$000(parambcin);
+              this.videoItem = StructMsgSubImageVideo.VideoItem.access$000(parambdpl);
             } else if ("1".equals(localObject)) {
-              this.imageItem = StructMsgSubImageVideo.ImageItem.access$100(parambcin);
+              this.imageItem = StructMsgSubImageVideo.ImageItem.access$100(parambdpl);
             } else {
               Log.i("StructMsgSubImageVideo", "StructMsgSubImageVideo: wrong type " + (String)localObject);
             }
@@ -117,7 +117,7 @@ public class StructMsgSubImageVideo
   
   public String getSourceName()
   {
-    return amtj.a(2131713651);
+    return anvx.a(2131713998);
   }
   
   public View getSourceView(Context paramContext, View paramView)
@@ -160,24 +160,24 @@ public class StructMsgSubImageVideo
   
   protected void toXml(ByteArrayOutputStream paramByteArrayOutputStream, String paramString)
   {
-    bcgv localbcgv = new bcgv(this, new bchb());
+    bdnt localbdnt = new bdnt(this, new bdnz());
     try
     {
-      localbcgv.setOutput(paramByteArrayOutputStream, paramString);
-      localbcgv.startDocument(paramString, Boolean.valueOf(true));
-      localbcgv.startTag(null, "msg");
-      localbcgv.attribute(null, "serviceID", String.valueOf(this.mMsgServiceID));
-      localbcgv.attribute(null, "flag", String.valueOf(this.mFlag));
-      localbcgv.attribute(null, "brief", this.mMsgBrief);
+      localbdnt.setOutput(paramByteArrayOutputStream, paramString);
+      localbdnt.startDocument(paramString, Boolean.valueOf(true));
+      localbdnt.startTag(null, "msg");
+      localbdnt.attribute(null, "serviceID", String.valueOf(this.mMsgServiceID));
+      localbdnt.attribute(null, "flag", String.valueOf(this.mFlag));
+      localbdnt.attribute(null, "brief", this.mMsgBrief);
       if (this.videoItem != null) {
-        this.videoItem.toXml(localbcgv);
+        this.videoItem.toXml(localbdnt);
       }
       if (this.imageItem != null) {
-        this.imageItem.toXml(localbcgv);
+        this.imageItem.toXml(localbdnt);
       }
-      localbcgv.endTag(null, "msg");
-      localbcgv.endDocument();
-      localbcgv.flush();
+      localbdnt.endTag(null, "msg");
+      localbdnt.endDocument();
+      localbdnt.flush();
       return;
     }
     catch (IOException paramByteArrayOutputStream)
@@ -214,7 +214,7 @@ public class StructMsgSubImageVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgSubImageVideo
  * JD-Core Version:    0.7.0.1
  */

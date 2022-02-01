@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.mini.entry;
 
+import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import bgyr;
-import com.tencent.mobileqq.app.ThreadManager;
+import bijj;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
 final class MiniAppUtils$4
   extends Handler
 {
-  MiniAppUtils$4(Looper paramLooper, String paramString1, String paramString2)
+  MiniAppUtils$4(Looper paramLooper, Context paramContext, String paramString1, String paramString2)
   {
     super(paramLooper);
   }
@@ -19,13 +18,13 @@ final class MiniAppUtils$4
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    if ((paramMessage.obj instanceof bgyr))
+    if ((paramMessage.obj instanceof bijj))
     {
-      bgyr localbgyr = (bgyr)paramMessage.obj;
-      if (localbgyr.c == 0)
+      bijj localbijj = (bijj)paramMessage.obj;
+      if (localbijj.c == 0)
       {
         QLog.d("MiniAppUtils", 2, "handleMessage() called with: msg = [" + paramMessage + "]");
-        ThreadManager.getFileThreadHandler().post(new MiniAppUtils.4.1(this, localbgyr));
+        MiniAppUtils.access$000(this.val$context, this.val$appId, this.val$dataCacheKey, localbijj.d);
       }
     }
   }

@@ -1,14 +1,52 @@
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
 public class avxs
-  implements avzi
+  implements awvo
 {
-  public avxs(MultiAIOFragment paramMultiAIOFragment) {}
+  private WeakReference<IVideoOuterStatusListener> a;
   
-  public void a(boolean paramBoolean)
+  public avxs(WeakReference<IVideoOuterStatusListener> paramWeakReference)
   {
-    MultiAIOFragment.a(this.a).setViewPagerBusy(paramBoolean);
+    this.a = paramWeakReference;
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    if ((this.a == null) || (this.a.get() == null)) {
+      return;
+    }
+    IVideoOuterStatusListener localIVideoOuterStatusListener = (IVideoOuterStatusListener)this.a.get();
+    if (paramBoolean)
+    {
+      localIVideoOuterStatusListener.onVideoStop();
+      return;
+    }
+    localIVideoOuterStatusListener.onVideoStart(-1);
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
+    case 1: 
+      QLog.i("WatchFloatingWindowController", 1, "onFocusChange: MEDIAFOCUS_GAIN");
+      avxo.a().a(false);
+      a(false);
+      return;
+    }
+    QLog.i("WatchFloatingWindowController", 1, "onFocusChange: MEDIAFOCUS_LOSS");
+    avxo.a().a(true);
+    a(true);
+  }
+  
+  public void a(WeakReference<IVideoOuterStatusListener> paramWeakReference)
+  {
+    this.a = paramWeakReference;
   }
 }
 

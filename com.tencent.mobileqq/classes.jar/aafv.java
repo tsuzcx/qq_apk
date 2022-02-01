@@ -1,62 +1,83 @@
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
-import android.database.sqlite.SQLiteOpenHelper;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import mqq.app.AppRuntime;
 
-public class aafv
-  extends SQLiteOpenHelper
-  implements aafu
+class aafv
+  extends bhyn
 {
-  public aafv(Context paramContext, String paramString, SQLiteDatabase.CursorFactory paramCursorFactory, int paramInt)
-  {
-    super(paramContext, paramString, paramCursorFactory, paramInt);
-  }
+  aafv(aafu paramaafu, aafl paramaafl, ArrayList paramArrayList, long paramLong) {}
   
-  public void onCreate(SQLiteDatabase paramSQLiteDatabase)
+  public void onDone(bhyo parambhyo)
   {
-    paramSQLiteDatabase.execSQL(" CREATE TABLE IF NOT EXISTS qz_configs (main_key text  NOT NULL COLLATE NOCASE,second_key text  NOT NULL COLLATE NOCASE,value String,PRIMARY KEY (main_key,second_key))");
-    paramSQLiteDatabase.execSQL(" CREATE TABLE IF NOT EXISTS qz_cookie (name text PRIMARY KEY NOT NULL,cookie text NOT NULL)");
-    paramSQLiteDatabase.execSQL(" CREATE TABLE IF NOT EXISTS qz_update (name text PRIMARY KEY NOT NULL,updatelog text NOT NULL)");
-    paramSQLiteDatabase.execSQL(" CREATE TABLE IF NOT EXISTS qz_isp_config (key text PRIMARY KEY NOT NULL,value text)");
-    paramSQLiteDatabase.execSQL(" CREATE TABLE IF NOT EXISTS qz_check_time (name text PRIMARY KEY NOT NULL,check_time INTEGER NOT NULL)");
-    paramSQLiteDatabase.execSQL(" CREATE TABLE IF NOT EXISTS qz_navigator_bar (uin text PRIMARY KEY NOT NULL,entraceid INTEGER NOT NULL,entracename text NOT NULL,entraceicon text,entraceaction text,isDefault INTEGER,tabid INTEGER,qbossentraceicon text,qbosstraceinfo text)");
-    paramSQLiteDatabase.execSQL("create table if not exists table_qz_unread(own_uin text, type integer, ucount integer,icontrol integer,frienduins BLOB,friendMsg text,friendsNum integer,trace_info text,existDL integer, pushMsg text,schema text,iconUrl text,showMsg text,reportValue text,countID text,cTime text,iShowLevel integer,hasShow integer,  PRIMARY KEY(own_uin,type))");
-  }
-  
-  public void onDowngrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QZoneConfigHelper", 2, "updating database from version " + paramInt1 + " to " + paramInt2);
+    if (parambhyo.a == 0)
+    {
+      parambhyo = this.jdField_a_of_type_Aafu.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      while (parambhyo.hasNext()) {
+        if (!((File)parambhyo.next()).exists())
+        {
+          this.jdField_a_of_type_Aafu.jdField_a_of_type_Aaga.a(this.jdField_a_of_type_Aafu);
+          return;
+        }
+      }
+      try
+      {
+        parambhyo = this.jdField_a_of_type_Aafl.b.iterator();
+        int i = 1;
+        while (parambhyo.hasNext())
+        {
+          String str = (String)parambhyo.next();
+          File localFile = new File(this.jdField_a_of_type_Aafu.a() + File.separator + "v_" + i + ".mp4");
+          this.jdField_a_of_type_JavaUtilArrayList.add(localFile.getAbsolutePath());
+          if (localFile.exists())
+          {
+            i += 1;
+          }
+          else
+          {
+            if (!localFile.exists()) {
+              localFile.createNewFile();
+            }
+            zeb.a(new File(str), localFile);
+            i += 1;
+          }
+        }
+        this.jdField_a_of_type_Aafu.b();
+      }
+      catch (IOException parambhyo)
+      {
+        QLog.e(".troop.VideoCombineHelper", 1, parambhyo, new Object[0]);
+        this.jdField_a_of_type_Aafu.jdField_a_of_type_Aaga.a(this.jdField_a_of_type_Aafu);
+        this.jdField_a_of_type_Aafl.b = this.jdField_a_of_type_JavaUtilArrayList;
+        this.jdField_a_of_type_Aafu.jdField_a_of_type_Aaga.b(this.jdField_a_of_type_Aafu);
+        this.jdField_a_of_type_Aafu.jdField_a_of_type_Aafz = new aafm(this.jdField_a_of_type_Aafu.jdField_a_of_type_Aafb, this.jdField_a_of_type_Aafu.jdField_a_of_type_Aaga, this.jdField_a_of_type_Aafu.c, this.jdField_a_of_type_Aafl.b, this.jdField_a_of_type_Aafl.d, this.jdField_a_of_type_Aafl.c);
+        if (!VideoEnvironment.checkAVCodecLoadIsOK((AppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("modular_web"))) {}
+      }
+      for (;;)
+      {
+        QLog.d(".troop.trace_video_combine", 2, "downLoadTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+        return;
+        if (this.jdField_a_of_type_Aafl.a) {
+          this.jdField_a_of_type_Aafu.jdField_a_of_type_Aaga.b(this.jdField_a_of_type_Aafu.jdField_a_of_type_Aafz);
+        } else {
+          this.jdField_a_of_type_Aafu.jdField_a_of_type_Aaga.a(this.jdField_a_of_type_Aafu.jdField_a_of_type_Aafz);
+        }
+      }
     }
-    paramSQLiteDatabase.execSQL("drop table if exists qz_configs");
-    paramSQLiteDatabase.execSQL("drop table if exists qz_cookie");
-    paramSQLiteDatabase.execSQL("drop table if exists qz_update");
-    paramSQLiteDatabase.execSQL("drop table if exists qz_isp_config");
-    paramSQLiteDatabase.execSQL("drop table if exists qz_check_time");
-    paramSQLiteDatabase.execSQL("drop table if exists qz_navigator_bar");
-    paramSQLiteDatabase.execSQL("drop table if exists table_qz_unread");
-    onCreate(paramSQLiteDatabase);
-  }
-  
-  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QZoneConfigHelper", 2, "updating database from version " + paramInt1 + " to " + paramInt2);
-    }
-    paramSQLiteDatabase.execSQL("drop table if exists qz_configs");
-    paramSQLiteDatabase.execSQL("drop table if exists qz_cookie");
-    paramSQLiteDatabase.execSQL("drop table if exists qz_update");
-    paramSQLiteDatabase.execSQL("drop table if exists qz_isp_config");
-    paramSQLiteDatabase.execSQL("drop table if exists qz_check_time");
-    paramSQLiteDatabase.execSQL("drop table if exists qz_navigator_bar");
-    paramSQLiteDatabase.execSQL("drop table if exists table_qz_unread");
-    onCreate(paramSQLiteDatabase);
+    this.jdField_a_of_type_Aafu.d = ("donwload failed!code = " + parambhyo.a + "errmsg = " + parambhyo.b);
+    this.jdField_a_of_type_Aafu.jdField_a_of_type_Aaga.a(this.jdField_a_of_type_Aafu);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aafv
  * JD-Core Version:    0.7.0.1
  */

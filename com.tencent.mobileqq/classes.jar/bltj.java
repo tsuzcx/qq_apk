@@ -1,24 +1,14 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import android.view.View;
-
-class bltj
-  implements Observer<Boolean>
+public class bltj
 {
-  bltj(bltd parambltd) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void a(@Nullable Boolean paramBoolean)
+  public bltj(int paramInt, String paramString1, String paramString2)
   {
-    if (paramBoolean == null) {
-      return;
-    }
-    View localView = bltd.a(this.a);
-    if (paramBoolean.booleanValue()) {}
-    for (int i = 0;; i = 4)
-    {
-      localView.setVisibility(i);
-      return;
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
   }
 }
 

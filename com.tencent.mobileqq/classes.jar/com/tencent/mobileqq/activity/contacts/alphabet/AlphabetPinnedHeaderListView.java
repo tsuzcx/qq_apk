@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.contacts.alphabet;
 
-import aimv;
+import ajik;
 import android.content.Context;
 import android.util.AttributeSet;
-import bhgj;
+import birb;
 import com.tencent.mobileqq.widget.PinnedDividerListView;
 
 public class AlphabetPinnedHeaderListView
@@ -28,9 +28,9 @@ public class AlphabetPinnedHeaderListView
   
   public void setChildViewCanAction(boolean paramBoolean)
   {
-    bhgj localbhgj = a();
-    if ((localbhgj instanceof aimv)) {
-      ((aimv)localbhgj).a(paramBoolean);
+    birb localbirb = a();
+    if ((localbirb instanceof ajik)) {
+      ((ajik)localbirb).a(paramBoolean);
     }
     this.a = paramBoolean;
   }

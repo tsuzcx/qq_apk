@@ -1,13 +1,12 @@
-import android.support.annotation.NonNull;
-import android.view.View;
+import org.json.JSONObject;
 
-public abstract interface akyn
+public class akyn
 {
-  public abstract void a();
-  
-  public abstract void a(@NonNull View paramView1, int paramInt1, int paramInt2, @NonNull View paramView2, boolean paramBoolean);
-  
-  public abstract boolean a();
+  public int a;
+  public String a;
+  public JSONObject a;
+  public String b;
+  public String c;
 }
 
 

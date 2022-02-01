@@ -1,8 +1,29 @@
-import com.tencent.widget.ListView;
+import android.os.AsyncTask;
+import android.text.TextUtils;
 
-public abstract interface nvx
+final class nvx
+  extends AsyncTask<Void, Void, Void>
 {
-  public abstract void a(ListView paramListView);
+  String jdField_a_of_type_JavaLangString = "";
+  
+  nvx(nvy paramnvy, String paramString) {}
+  
+  protected Void a(Void... paramVarArgs)
+  {
+    this.jdField_a_of_type_JavaLangString = nvw.a(this.b);
+    return null;
+  }
+  
+  protected void a(Void paramVoid)
+  {
+    super.onPostExecute(paramVoid);
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      this.jdField_a_of_type_Nvy.a();
+      return;
+    }
+    this.jdField_a_of_type_Nvy.a(this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 

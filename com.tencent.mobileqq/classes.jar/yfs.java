@@ -1,63 +1,80 @@
-import android.graphics.PointF;
-import android.opengl.GLES20;
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.mobileqq.shortvideo.ptvfilter.DoodleMagicAlgoHandler.RenderPoint;
-import com.tencent.view.RendererUtils;
-import java.util.ArrayList;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetUserGuideInfoStep.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class yfs
-  extends yfj
+  extends yge
 {
-  Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
-  public String a;
-  ArrayList<DoodleMagicAlgoHandler.RenderPoint> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  CopyOnWriteArrayList<PointF> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  volatile boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  volatile boolean jdField_b_of_type_Boolean;
-  int jdField_c_of_type_Int;
-  volatile boolean jdField_c_of_type_Boolean;
-  boolean d;
-  boolean e = false;
+  private yfu jdField_a_of_type_Yfu;
+  private boolean jdField_a_of_type_Boolean;
   
-  public yfs(int paramInt, String paramString)
+  public yfs(yfu paramyfu)
   {
-    super(paramInt);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
+    this.jdField_a_of_type_Yfu = paramyfu;
   }
   
-  public Frame a(int paramInt1, int paramInt2)
+  public String a()
   {
-    this.jdField_c_of_type_Int = RendererUtils.createTexture();
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-    GLES20.glBindTexture(3553, this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.bindFrame(this.jdField_c_of_type_Int, paramInt1, paramInt2, 1.0D);
-    GLES20.glBindFramebuffer(36160, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getFBO());
-    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
-    GLES20.glClear(16640);
-    GLES20.glFlush();
-    return this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
+    return "GetUserGuideInfoStep";
   }
   
   public void a()
   {
-    if ((this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame != null) && (!this.e))
+    ykq.d("Q.qqstory.home.GetUserGuideInfoStep", "run");
+    yfv localyfv = new yfv();
+    wfi.a().a(localyfv, new yft(this));
+  }
+  
+  public void a(@NonNull yfv paramyfv, @Nullable yfw paramyfw, @NonNull ErrorMessage paramErrorMessage)
+  {
+    ykq.d("Q.qqstory.home.GetUserGuideInfoStep", "onCmdRespond");
+    if (b())
     {
-      this.e = true;
-      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-      RendererUtils.clearTexture(this.jdField_c_of_type_Int);
+      ykq.e("Q.qqstory.home.GetUserGuideInfoStep", "GetUserGuideInfoStep was reseted !");
+      d();
+      return;
+    }
+    if (paramErrorMessage.isFail())
+    {
+      ykq.c("Q.qqstory.home.GetUserGuideInfoStep", "GetUserGuideInfoStep is failed:%s", paramErrorMessage);
+      b(paramErrorMessage);
+      return;
+    }
+    ThreadManager.getUIHandler().post(new GetUserGuideInfoStep.1(this, paramyfw));
+    d();
+  }
+  
+  public void b() {}
+  
+  public boolean b()
+  {
+    try
+    {
+      boolean bool = this.jdField_a_of_type_Boolean;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public void b()
+  public void c()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.b = true;
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    try
+    {
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 

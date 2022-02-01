@@ -1,69 +1,8 @@
-import android.text.TextUtils.TruncateAt;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
+import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
 
-public class asnk
-  implements bbhb
+public abstract interface asnk
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private EllipsizingTextView jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
-  
-  public asnk(ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560795, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366631));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView = ((EllipsizingTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366642));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365420));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setMaxLines(1);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.a();
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public View a(String paramString)
-  {
-    return null;
-  }
-  
-  public ImageView a()
-  {
-    return null;
-  }
-  
-  public TextView a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
-  }
-  
-  public ImageView b()
-  {
-    return this.jdField_a_of_type_AndroidWidgetImageView;
-  }
-  
-  public TextView b()
-  {
-    return null;
-  }
-  
-  public TextView c()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  public TextView d()
-  {
-    return null;
-  }
+  public abstract void a(boolean paramBoolean, MiniAppRecommInfo paramMiniAppRecommInfo);
 }
 
 

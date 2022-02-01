@@ -1,18 +1,14 @@
+import android.support.v4.view.ViewPropertyAnimatorListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.troop.EditUniqueTitleActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class zoi
-  implements View.OnClickListener
+class zoi
+  implements ViewPropertyAnimatorListener
 {
-  public zoi(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
+  public void onAnimationCancel(View paramView) {}
   
-  public void onClick(View paramView)
-  {
-    EditUniqueTitleActivity.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public void onAnimationEnd(View paramView) {}
+  
+  public void onAnimationStart(View paramView) {}
 }
 
 

@@ -1,20 +1,18 @@
+import com.tencent.tavcut.TAVCut.Callback;
+import dov.com.qq.im.aeeditor.AEEditorActivity;
+import java.util.List;
+
 public class bnsi
+  implements TAVCut.Callback
 {
-  public static int a = 0;
+  public bnsi(AEEditorActivity paramAEEditorActivity) {}
   
-  public static void a(String paramString1, String paramString2)
+  public void onDone(int paramInt)
   {
-    a(paramString1, paramString2, "");
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3)
-  {
-    bcef.b(null, "dc00898", paramString1, "", paramString2, paramString2, a, 0, paramString3, "", "", "");
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
-  {
-    bcef.b(null, "dc00898", paramString1, "", paramString2, paramString2, a, 0, paramString3, paramString4, paramString5, paramString6);
+    bnrh.b("AEEditorActivity", "TAVCut init ret code = " + paramInt);
+    if (paramInt != 0) {
+      AEEditorActivity.a(this.a).add(new bnsj(this.a, -8));
+    }
   }
 }
 

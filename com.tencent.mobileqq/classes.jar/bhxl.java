@@ -1,60 +1,24 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.open.appcommon.js.OpenJsBridge.OpenJsBridgeListener.1;
-import com.tencent.open.appcommon.js.OpenJsBridge.OpenJsBridgeListener.2;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiUiPlugin;
 
 public class bhxl
-  extends ausv
+  extends EmojiUiPlugin
 {
-  public long b;
-  String jdField_b_of_type_JavaLangString;
-  WeakReference<WebView> jdField_b_of_type_JavaLangRefWeakReference;
-  
-  public bhxl(WebView paramWebView, long paramLong, String paramString)
+  public void OnActivityCreate()
   {
-    super(paramWebView, paramLong, paramString);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramWebView);
-    this.jdField_b_of_type_Long = paramLong;
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.mActivityType = 2;
+    super.OnActivityCreate();
   }
   
-  public void a(String paramString, Object paramObject)
+  public void OnActivityPause()
   {
-    WebView localWebView = (WebView)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-    if ((localWebView == null) || (paramObject == null)) {
-      return;
-    }
-    String str = "'undefined'";
-    if ((paramObject instanceof String))
-    {
-      paramObject = ((String)paramObject).replace("\\", "\\\\").replace("'", "\\'");
-      str = "'" + paramObject + "'";
-    }
-    for (;;)
-    {
-      new Handler(Looper.getMainLooper()).post(new OpenJsBridge.OpenJsBridgeListener.1(this, paramString, str, localWebView));
-      return;
-      if (((paramObject instanceof Number)) || ((paramObject instanceof Long)) || ((paramObject instanceof Integer)) || ((paramObject instanceof Double)) || ((paramObject instanceof Float))) {
-        str = paramObject.toString();
-      } else if ((paramObject instanceof Boolean)) {
-        str = paramObject.toString();
-      }
-    }
+    super.OnActivityPause();
+    this.mRuntime.a().loadUrl("javascript:var webviewEvent = document.createEvent('Events');webviewEvent.initEvent('webviewobserve');webviewEvent.name = 'stopAudio';document.dispatchEvent(webviewEvent);");
   }
   
-  public void b(String paramString)
+  public long getPluginBusiness()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("OpenJsBridge", 4, "onNoMatchMethod");
-    }
-    WebView localWebView = (WebView)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-    if (localWebView == null) {
-      return;
-    }
-    new Handler(Looper.getMainLooper()).post(new OpenJsBridge.OpenJsBridgeListener.2(this, paramString, localWebView));
+    return 8L;
   }
 }
 

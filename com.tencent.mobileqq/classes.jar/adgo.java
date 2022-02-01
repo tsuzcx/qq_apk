@@ -1,33 +1,21 @@
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity.30;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class adgo
-  extends PagerAdapter
+  implements DialogInterface.OnClickListener
 {
-  public adgo(FontSettingActivity paramFontSettingActivity) {}
+  public adgo(AddFriendVerifyActivity.30 param30) {}
   
-  public void destroyItem(View paramView, int paramInt, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((ViewPager)paramView).removeView((View)this.a.a.get(paramInt));
-  }
-  
-  public int getCount()
-  {
-    return this.a.a.size();
-  }
-  
-  public Object instantiateItem(View paramView, int paramInt)
-  {
-    ((ViewPager)paramView).addView((View)this.a.a.get(paramInt), 0);
-    return this.a.a.get(paramInt);
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
+    if (paramInt == 1)
+    {
+      this.a.this$0.a.cancel();
+      this.a.this$0.finish();
+    }
   }
 }
 

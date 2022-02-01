@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import amwl;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import bfuj;
-import bfvo;
+import anyz;
+import bhdb;
+import bheg;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.KandianRedDotInfo;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -27,25 +27,27 @@ import java.util.LinkedList;
 import java.util.List;
 import mqq.manager.Manager;
 import mqq.os.MqqHandler;
-import okj;
 import org.json.JSONObject;
-import pay;
+import osg;
 import pkh;
-import pki;
-import pkj;
-import pwf;
-import syf;
-import ugf;
+import prd;
+import prr;
+import pve;
+import pvf;
+import pvg;
+import qhl;
+import tln;
+import uuc;
 
 public class KandianSubscribeManager
   implements Manager
 {
   public static final String a;
-  private amwl jdField_a_of_type_Amwl = new pkh(this);
+  private anyz jdField_a_of_type_Anyz = new pve(this);
   private KandianSubscribeManager.MsgBoxSetTopInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianSubscribeManager$MsgBoxSetTopInfo;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<pkj> jdField_a_of_type_JavaUtilList = new LinkedList();
-  pwf jdField_a_of_type_Pwf = new pki(this);
+  private List<pvg> jdField_a_of_type_JavaUtilList = new LinkedList();
+  qhl jdField_a_of_type_Qhl = new pvf(this);
   
   static
   {
@@ -55,7 +57,7 @@ public class KandianSubscribeManager
   public KandianSubscribeManager(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianSubscribeManager$MsgBoxSetTopInfo = ((KandianSubscribeManager.MsgBoxSetTopInfo)pay.a(paramQQAppInterface, "kandian_subscribe_settop_info_key", true));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianSubscribeManager$MsgBoxSetTopInfo = ((KandianSubscribeManager.MsgBoxSetTopInfo)prd.a(paramQQAppInterface, "kandian_subscribe_settop_info_key", true));
     QLog.d(jdField_a_of_type_JavaLangString, 1, "read settop info from sp. " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianSubscribeManager$MsgBoxSetTopInfo);
   }
   
@@ -81,17 +83,17 @@ public class KandianSubscribeManager
             if (!TextUtils.isEmpty((CharSequence)localObject2))
             {
               paramQQAppInterface = paramQQAppInterface.getFaceBitmapCacheKey(1, "kd_dt_" + (String)localObject2, (byte)3, 0, 100, true);
-              Object localObject3 = (syf)bfuj.a(paramQQAppInterface);
+              Object localObject3 = (tln)bhdb.a(paramQQAppInterface);
               if (localObject3 != null)
               {
                 QLog.d(jdField_a_of_type_JavaLangString, 2, "getMergeIcon From cache ! key : " + paramQQAppInterface + ", tipUin : " + (String)localObject2);
                 return localObject3;
               }
-              localObject3 = bfvo.a(paramDrawable);
+              localObject3 = bheg.a(paramDrawable);
               if (localObject3 != null)
               {
-                localObject1 = new syf((Bitmap)localObject3, AIOUtils.dp2px(50.0F, (Resources)localObject1), (Resources)localObject1, (String)localObject2, 1);
-                bfuj.a(paramQQAppInterface, (Sizeable)localObject1);
+                localObject1 = new tln((Bitmap)localObject3, AIOUtils.dp2px(50.0F, (Resources)localObject1), (Resources)localObject1, (String)localObject2, 1);
+                bhdb.a(paramQQAppInterface, (Sizeable)localObject1);
                 return localObject1;
               }
             }
@@ -115,7 +117,7 @@ public class KandianSubscribeManager
   
   public static KandianRedDotInfo a()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)pay.a();
+    QQAppInterface localQQAppInterface = (QQAppInterface)pkh.a();
     if (localQQAppInterface == null) {
       return null;
     }
@@ -125,7 +127,7 @@ public class KandianSubscribeManager
     }
     if ((localMessageRecord instanceof MessageForStructing))
     {
-      pay.a(AppConstants.KANDIAN_SUBSCRIBE_UIN, localQQAppInterface);
+      prr.a(AppConstants.KANDIAN_SUBSCRIBE_UIN, localQQAppInterface);
       return KandianRedDotInfo.createRedDotFromMessageRecord(localMessageRecord, "kandian_dt_red_dot_info");
     }
     return null;
@@ -141,7 +143,7 @@ public class KandianSubscribeManager
     if (paramContext == null) {
       return;
     }
-    Intent localIntent = okj.b(paramContext, paramInt2, 70);
+    Intent localIntent = osg.b(paramContext, paramInt2, 70);
     KandianRedDotInfo localKandianRedDotInfo = a();
     if (localKandianRedDotInfo != null) {
       localIntent.putExtra("kandian_feeds_red_pnt_info", localKandianRedDotInfo);
@@ -172,9 +174,9 @@ public class KandianSubscribeManager
     paramMessageRecord.createMessageUniseq();
   }
   
-  public amwl a()
+  public anyz a()
   {
-    return this.jdField_a_of_type_Amwl;
+    return this.jdField_a_of_type_Anyz;
   }
   
   public void a()
@@ -196,7 +198,7 @@ public class KandianSubscribeManager
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianSubscribeManager$MsgBoxSetTopInfo != null) {
         localMsgBoxSetTopInfo.lastSetTopTimeMillis = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianSubscribeManager$MsgBoxSetTopInfo.lastSetTopTimeMillis;
       }
-      pay.a("kandian_subscribe_settop_info_key", localMsgBoxSetTopInfo, true);
+      prd.a("kandian_subscribe_settop_info_key", localMsgBoxSetTopInfo, true);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianSubscribeManager$MsgBoxSetTopInfo = localMsgBoxSetTopInfo;
       QLog.d(jdField_a_of_type_JavaLangString, 1, "update settop info : " + localMsgBoxSetTopInfo);
       return;
@@ -208,7 +210,7 @@ public class KandianSubscribeManager
     if (paramArticleInfo == null) {
       return;
     }
-    String str = ugf.a(paramArticleInfo, this.jdField_a_of_type_Pwf);
+    String str = uuc.a(paramArticleInfo, this.jdField_a_of_type_Qhl);
     if (paramArticleInfo.msgBoxBriefPreFixType == 2) {}
     for (paramArticleInfo = paramArticleInfo.msgBoxBriefPreFix; (TextUtils.isEmpty(str)) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null); paramArticleInfo = null)
     {
@@ -218,9 +220,9 @@ public class KandianSubscribeManager
     ThreadManager.post(new KandianSubscribeManager.4(this, str, paramLong, paramArticleInfo), 10, null, false);
   }
   
-  public void a(pkj parampkj)
+  public void a(pvg parampvg)
   {
-    this.jdField_a_of_type_JavaUtilList.remove(parampkj);
+    this.jdField_a_of_type_JavaUtilList.remove(parampvg);
   }
   
   public boolean a()

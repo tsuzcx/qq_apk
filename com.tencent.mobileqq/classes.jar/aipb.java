@@ -1,17 +1,16 @@
-import com.tencent.mobileqq.activity.contacts.device.DeviceFragment;
+import java.util.List;
 
 public class aipb
-  extends amqk
 {
-  public aipb(DeviceFragment paramDeviceFragment) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  @bgzt(a=String.class)
+  List<String> jdField_a_of_type_JavaUtilList;
+  String b;
   
-  protected void b()
+  public String toString()
   {
-    if (this.a.a == null) {
-      return;
-    }
-    this.a.a.d();
-    this.a.a.notifyDataSetChanged();
+    return "ZhituReportRequest{, type=" + this.jdField_a_of_type_Int + ", md5='" + this.jdField_a_of_type_JavaLangString + '\'' + ", text='" + bkwk.a(this.b) + '\'' + '}';
   }
 }
 

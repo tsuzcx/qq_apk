@@ -1,34 +1,36 @@
-import android.os.SystemClock;
-import com.tribe.async.async.JobSegment;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
 
-public abstract class yju<IN, OUT>
-  extends JobSegment<IN, OUT>
+public class yju
+  extends zgz
 {
-  protected long a;
   private final String a;
-  private long b;
   
-  public yju()
+  public yju(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = ("Q.qqstory.publish.edit." + getClass().getSimpleName());
+    super(paramContext);
+    this.a = paramString;
   }
   
-  public void call(IN paramIN)
+  public int a()
   {
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    super.call(paramIN);
+    return 0;
   }
   
-  public void notifyError(Error paramError)
+  public View a(int paramInt, yhc paramyhc, ViewGroup paramViewGroup)
   {
-    this.b = SystemClock.uptimeMillis();
-    super.notifyError(paramError);
+    return null;
   }
   
-  public void notifyResult(OUT paramOUT)
+  public String a()
   {
-    this.b = SystemClock.uptimeMillis();
-    super.notifyResult(paramOUT);
+    return this.a;
+  }
+  
+  public yhc a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return null;
   }
 }
 

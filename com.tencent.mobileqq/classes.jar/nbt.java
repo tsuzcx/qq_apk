@@ -1,6 +1,8 @@
-public abstract interface nbt
+public class nbt
 {
-  public abstract void a(String paramString1, int paramInt, String paramString2);
+  public String a;
+  public String b;
+  public String c;
 }
 
 

@@ -1,19 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.util.Pair;
+import java.util.Comparator;
 
-public class pjv
-  extends BroadcastReceiver
+class pjv
+  implements Comparator<Pair<Long, Pair<View, BaseArticleInfo>>>
 {
-  public pjv(KandianMergeManager paramKandianMergeManager) {}
+  pjv(pju parampju) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public int a(Pair<Long, Pair<View, BaseArticleInfo>> paramPair1, Pair<Long, Pair<View, BaseArticleInfo>> paramPair2)
   {
-    paramContext = pkm.a().a();
-    if (paramContext != null) {
-      paramContext.a();
-    }
+    return ((Long)paramPair2.first).compareTo((Long)paramPair1.first);
   }
 }
 

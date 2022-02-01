@@ -5,13 +5,13 @@ import android.app.Application.ActivityLifecycleCallbacks;
 import android.content.Context;
 import com.tencent.qapmsdk.base.config.DefaultPluginConfig;
 import com.tencent.qapmsdk.base.config.PluginCombination;
+import com.tencent.qapmsdk.base.config.SDKConfig;
 import com.tencent.qapmsdk.base.dbpersist.DBHandler;
 import com.tencent.qapmsdk.base.dbpersist.DBHelper;
 import com.tencent.qapmsdk.base.meta.BaseInfo;
 import com.tencent.qapmsdk.base.meta.BaseInfo.Info;
 import com.tencent.qapmsdk.base.monitorplugin.PluginController;
 import com.tencent.qapmsdk.base.reporter.ReporterMachine;
-import com.tencent.qapmsdk.base.reporter.authorization.Authorization;
 import com.tencent.qapmsdk.common.activty.LifecycleCallback;
 import com.tencent.qapmsdk.common.logger.Logger;
 import com.tencent.qapmsdk.common.network.NetworkWatcher;
@@ -83,20 +83,20 @@ public final class QAPMLauncher
     Object localObject = BaseInfo.app;
     if (localObject != null)
     {
-      if (!Authorization.isAuthorize)
+      if (!SDKConfig.PURE_QAPM)
       {
         NetworkWatcher localNetworkWatcher = NetworkWatcher.INSTANCE;
         localObject = ((Application)localObject).getApplicationContext();
         Intrinsics.checkExpressionValueIsNotNull(localObject, "it.applicationContext");
         localNetworkWatcher.init((Context)localObject);
       }
-      if (((!isMonitorInitiated) && (!environmentChecker.checkSysPermission())) || ((Authorization.isAuthorize) && (!environmentChecker.checkAuthorization())))
+      if (((!isMonitorInitiated) && (!environmentChecker.checkSysPermission())) || ((SDKConfig.PURE_QAPM) && (!environmentChecker.checkAuthorization())))
       {
         Logger.INSTANCE.e(new String[] { "QAPM_manager_QAPMLauncher", "launch QAPM error, please check environment!" });
         return;
       }
       int i = paramInt;
-      if (Authorization.isAuthorize) {
+      if (SDKConfig.PURE_QAPM) {
         i = environmentChecker.checkConfigs(paramInt);
       }
       if (i != 0)

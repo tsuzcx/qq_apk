@@ -1,94 +1,59 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StShare;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import NS_COMM.COMM.Entry;
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.biz.richframework.network.request.SubscribePersonalDetailRequest;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import mqq.app.AppRuntime;
+import android.graphics.Color;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class zbc
+class zbc
 {
-  private static volatile CertifiedAccountMeta.StUser jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser;
-  private static CertifiedAccountRead.StGetMainPageRsp jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp;
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  TextView c;
+  TextView d;
   
-  public static CertifiedAccountMeta.StUser a()
+  public zbc(View paramView)
   {
-    try
-    {
-      if (jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser == null)
-      {
-        COMM.StCommonExt localStCommonExt = new COMM.StCommonExt();
-        COMM.Entry localEntry = new COMM.Entry();
-        localEntry.key.set("user_info");
-        localEntry.value.set("1");
-        localStCommonExt.mapInfo.add(localEntry);
-        if (VSNetworkHelper.getInstance() != null) {
-          VSNetworkHelper.getInstance().sendRequest(new SubscribePersonalDetailRequest(BaseApplicationImpl.getApplication().getRuntime().getAccount(), localStCommonExt), new zbd());
-        }
-      }
-      return jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131378468));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378491));
+    this.b = ((TextView)paramView.findViewById(2131378459));
+    this.c = ((TextView)paramView.findViewById(2131378458));
+    this.d = ((TextView)paramView.findViewById(2131378496));
   }
   
-  public static CertifiedAccountRead.StGetMainPageRsp a()
+  private void a(TextView paramTextView, String paramString)
   {
-    return jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp;
-  }
-  
-  public static void a()
-  {
-    try
+    if (TextUtils.isEmpty(paramString))
     {
-      jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser = null;
-      jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp = null;
+      paramTextView.setVisibility(8);
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    paramTextView.setVisibility(0);
+    paramTextView.setText(paramString);
   }
   
-  public static void a(CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
+  public void a(zbd paramzbd1, zbd paramzbd2)
   {
-    if (jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp == null) {
-      jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp = new CertifiedAccountRead.StGetMainPageRsp();
+    a(this.jdField_a_of_type_AndroidWidgetTextView, paramzbd1.jdField_a_of_type_Zbe.jdField_a_of_type_JavaLangString);
+    a(this.b, paramzbd1.jdField_a_of_type_Zbe.b);
+    if (paramzbd1.jdField_a_of_type_Int <= 0) {
+      this.c.setVisibility(8);
     }
-    if (jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser == null) {
-      jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser = new CertifiedAccountMeta.StUser();
-    }
-    CertifiedAccountMeta.StUser localStUser = paramStGetMainPageRsp.user;
-    if (localStUser == null) {}
-    do
+    for (;;)
     {
+      a(this.d, paramzbd1.jdField_a_of_type_JavaLangString);
+      if (!paramzbd1.equals(paramzbd2)) {
+        break;
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846852);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FFA34B"));
       return;
-      jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.feedCount.set(paramStGetMainPageRsp.feedCount.get());
-      jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.followCount.set(paramStGetMainPageRsp.followCount.get());
-      jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.fansCount.set(paramStGetMainPageRsp.fansCount.get());
-      jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.user.set(paramStGetMainPageRsp.user.get());
-      jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.share.set(paramStGetMainPageRsp.share);
-    } while (!zbi.a(localStUser.attr.get()));
-    jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.set(localStUser.id.get());
-    jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.nick.set(localStUser.nick.get());
-    jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.icon.set(localStUser.icon.get());
-    jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.followState.set(localStUser.followState.get());
-    jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.attr.set(localStUser.attr.get());
-    jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.youZhan.set(localStUser.youZhan.get());
-    jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.type.set(localStUser.type.get());
+      a(this.c, paramzbd1.jdField_a_of_type_Int + anvx.a(2131710512));
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846856);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FFFFFF"));
   }
 }
 

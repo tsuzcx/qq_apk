@@ -1,40 +1,60 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.SquareImageView;
+import android.support.v4.view.ViewPager;
+import android.view.MotionEvent;
+import com.tencent.ttpic.openapi.filter.GLGestureListener;
+import com.tencent.ttpic.openapi.filter.GLGestureProxy;
 
 public class bbhg
-  extends bbhi
+  implements GLGestureListener
 {
-  public int a;
-  public LinearLayout a;
-  public TextView a;
-  public URLImageView a;
-  public SquareImageView a;
-  public int b;
-  public LinearLayout b;
-  public LinearLayout c;
-  public LinearLayout d;
+  private ViewPager a;
   
-  public bbhg(ViewGroup paramViewGroup, int paramInt)
+  public bbhg(ViewPager paramViewPager)
   {
-    super(paramViewGroup, paramInt);
+    this.a = paramViewPager;
   }
   
-  protected void a()
+  public void a(ViewPager paramViewPager)
   {
-    View localView = a(this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378707));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)localView.findViewById(2131377526));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131368435));
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131369846));
-    this.jdField_b_of_type_Int = this.jdField_b_of_type_AndroidWidgetLinearLayout.getChildCount();
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131368438));
-    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131372632));
-    this.d = ((LinearLayout)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131372633));
+    this.a = paramViewPager;
+  }
+  
+  public int onGetPriority()
+  {
+    return 1002;
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
+  {
+    int i = paramMotionEvent.getPointerCount();
+    paramMotionEvent.getAction();
+    if ((i == 1) && (!paramBoolean) && (this.a != null) && (this.a.isShown())) {}
+    try
+    {
+      this.a.onTouchEvent(paramMotionEvent);
+      if ((i != 2) || (!paramBoolean) || (this.a == null) || (!this.a.isShown())) {}
+    }
+    catch (Exception localException)
+    {
+      try
+      {
+        if (GLGestureProxy.getInstance().checkSecendFinger(paramMotionEvent))
+        {
+          paramMotionEvent = GLGestureProxy.getInstance().getSecendFingerMotionEvent(paramMotionEvent);
+          this.a.onTouchEvent(paramMotionEvent);
+          paramMotionEvent.recycle();
+        }
+        return false;
+        localException = localException;
+        localException.printStackTrace();
+      }
+      catch (Exception paramMotionEvent)
+      {
+        for (;;)
+        {
+          paramMotionEvent.printStackTrace();
+        }
+      }
+    }
   }
 }
 

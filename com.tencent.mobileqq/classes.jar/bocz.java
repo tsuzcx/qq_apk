@@ -1,12 +1,7 @@
-class bocz
-  implements bocx
+public abstract interface bocz
+  extends bocy
 {
-  bocz(bocy parambocy) {}
-  
-  public boolean a(double paramDouble)
-  {
-    return bocy.a(this.a);
-  }
+  public abstract void x();
 }
 
 

@@ -1,72 +1,36 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
 
 public class apxj
-  extends aptq<apxk>
 {
-  public static apxk a()
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  
+  public void a()
   {
-    return (apxk)apub.a().a(620);
+    this.e = null;
+    this.f = null;
+    this.g = null;
   }
   
-  @NonNull
-  public apxk a(int paramInt)
+  public boolean a()
   {
-    return new apxk();
+    return (this.jdField_a_of_type_Int >= 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c)) && (!TextUtils.isEmpty(this.d));
   }
   
-  @Nullable
-  public apxk a(aptx[] paramArrayOfaptx)
+  public boolean b()
   {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return apxk.a(paramArrayOfaptx);
-    }
-    return null;
-  }
-  
-  public void a(apxk paramapxk)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonSearchTagsConfProcessor", 2, "EmoticonSearchTagsConfProcessor onUpdate");
-    }
-  }
-  
-  public Class<apxk> clazz()
-  {
-    return apxk.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 620;
+    return (!TextUtils.isEmpty(this.e)) && (!TextUtils.isEmpty(this.f)) && (!TextUtils.isEmpty(this.g));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apxj
  * JD-Core Version:    0.7.0.1
  */

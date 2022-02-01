@@ -1,492 +1,464 @@
-import android.graphics.BitmapFactory.Options;
-import android.os.Bundle;
+import android.content.res.Resources;
+import android.os.Build.VERSION;
+import android.text.GetChars;
+import android.text.SpanWatcher;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.Spanned;
 import android.text.TextUtils;
-import com.tencent.mm.vfs.VFSFile;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailFetchWorker.1;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.util.DisplayMetrics;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.emoticon.QQSysFaceUtil;
+import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.text.QQText.EmoticonSpan;
+import com.tencent.mobileqq.text.QQText.SmallEmojiSpan;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.UUID;
 
 public class begq
-  implements bego
+  implements GetChars, Spannable, CharSequence, Cloneable
 {
-  public int a;
-  public long a;
-  protected beep a;
-  protected begn a;
-  protected begs a;
-  public TroopFileTransferManager.Item a;
+  private int jdField_a_of_type_Int;
   public String a;
-  protected Timer a;
-  zsa a;
-  public boolean a;
-  protected int b;
-  protected String b;
-  protected boolean b;
-  protected String c;
-  public String d;
-  public String e;
+  private ArrayList<Object> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private String jdField_b_of_type_JavaLangString;
+  private ArrayList<begr> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   
-  protected begq(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt, begs parambegs)
+  public begq(CharSequence paramCharSequence, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Zsa = new begr(this);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item = paramItem;
-    this.jdField_a_of_type_Begs = parambegs;
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = begp.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id, paramInt);
-    if (aszt.a(FileUtil.getExtension(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName)) == 2) {
-      this.jdField_b_of_type_Boolean = true;
-    }
-  }
-  
-  public static begq a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt, begs parambegs)
-  {
-    if (paramLong == 0L)
+    if (paramCharSequence == null)
     {
-      befc.a("TroopFileDownloadWorker", befc.jdField_a_of_type_Int, "getWoker. troopuin=0");
-      return null;
+      this.jdField_b_of_type_JavaLangString = "";
+      this.jdField_a_of_type_JavaLangString = "";
     }
-    if (paramItem == null)
+    for (;;)
     {
-      befc.a("TroopFileDownloadWorker", befc.jdField_a_of_type_Int, "getWoker. item=null");
-      return null;
-    }
-    if (paramItem.Id == null)
-    {
-      befc.a("TroopFileDownloadWorker", befc.jdField_a_of_type_Int, "getWoker. item.id=null");
-      return null;
-    }
-    if (paramInt == 0)
-    {
-      befc.a("TroopFileDownloadWorker", befc.jdField_a_of_type_Int, "getWoker. nThumbSize=0");
-      return null;
-    }
-    return new begq(paramLong, paramItem, paramInt, parambegs);
-  }
-  
-  private void g()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_JavaUtilTimer != null)
-      {
-        this.jdField_a_of_type_JavaUtilTimer.cancel();
-        this.jdField_a_of_type_JavaUtilTimer = null;
-      }
       return;
+      this.jdField_a_of_type_JavaLangString = paramCharSequence.toString();
+      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      paramInt = (int)(paramInt * BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density + 0.5F);
+      Object localObject = new StringBuilder(paramCharSequence);
+      a(0, ((StringBuilder)localObject).length(), paramInt, (StringBuilder)localObject);
+      this.jdField_b_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+      if (!QQText.IS_FXXKED_MTK) {
+        this.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+      }
+      if ((paramCharSequence instanceof Spanned))
+      {
+        localObject = (Spanned)paramCharSequence;
+        int k = paramCharSequence.length();
+        paramCharSequence = ((Spanned)localObject).getSpans(0, paramCharSequence.length(), Object.class);
+        paramInt = 0;
+        while (paramInt < paramCharSequence.length)
+        {
+          int j = ((Spanned)localObject).getSpanStart(paramCharSequence[paramInt]);
+          int m = ((Spanned)localObject).getSpanEnd(paramCharSequence[paramInt]);
+          int n = ((Spanned)localObject).getSpanFlags(paramCharSequence[paramInt]);
+          int i = j;
+          if (j < 0) {
+            i = 0;
+          }
+          j = m;
+          if (m > k) {
+            j = k;
+          }
+          setSpan(paramCharSequence[paramInt], i - 0, j - 0, n);
+          paramInt += 1;
+        }
+      }
     }
-    finally
+  }
+  
+  private static String a(int paramInt1, int paramInt2)
+  {
+    return "(" + paramInt1 + " ... " + paramInt2 + ")";
+  }
+  
+  private void a(int paramInt1, int paramInt2, int paramInt3, StringBuilder paramStringBuilder)
+  {
+    int k = paramStringBuilder.length();
+    while (paramInt1 < paramInt2)
     {
-      localObject = finally;
-      throw localObject;
+      if ((paramStringBuilder.charAt(paramInt1) == '<') && (paramInt1 < k - 2))
+      {
+        int i2 = paramStringBuilder.charAt(paramInt1 + 1);
+        int j;
+        int i;
+        if ((i2 == 36) && (paramInt1 < k - 3))
+        {
+          j = paramStringBuilder.charAt(paramInt1 + 2);
+          if (QQText.IS_FXXKED_MTK) {
+            paramStringBuilder.replace(paramInt1 + 1, paramInt1 + 3, "##");
+          }
+          for (;;)
+          {
+            if ((j == 255) || (j == 511) || (j == 250)) {
+              break label203;
+            }
+            if (paramStringBuilder.charAt(paramInt1 + 3) != '>') {
+              break label651;
+            }
+            j = QQSysFaceUtil.convertToLocal(j);
+            i = j;
+            if (j == 250) {
+              i = 10;
+            }
+            if (!QQSysFaceUtil.isValidFaceId(i)) {
+              break label651;
+            }
+            a(new QQText.EmoticonSpan(i, paramInt3, 1), paramInt1, paramInt1 + 4, 33);
+            paramInt1 += 4;
+            break;
+            if (j == 10) {
+              paramStringBuilder.setCharAt(paramInt1 + 2, 'ú');
+            }
+          }
+          label203:
+          if ((j >= 255) && (paramInt1 + 6 < k))
+          {
+            if (paramStringBuilder.charAt(paramInt1 + 6) == '>')
+            {
+              char[] arrayOfChar = new char[3];
+              arrayOfChar[0] = paramStringBuilder.charAt(paramInt1 + 3);
+              arrayOfChar[1] = paramStringBuilder.charAt(paramInt1 + 4);
+              arrayOfChar[2] = ((char)(paramStringBuilder.charAt(paramInt1 + 5) & 0xFF));
+              i = 0;
+              if (i < 3)
+              {
+                if (arrayOfChar[i] == 'ú') {
+                  arrayOfChar[i] = '\n';
+                }
+                for (;;)
+                {
+                  i += 1;
+                  break;
+                  if (arrayOfChar[i] == 'þ') {
+                    arrayOfChar[i] = '\r';
+                  }
+                }
+              }
+              boolean bool;
+              if (j == 511)
+              {
+                bool = true;
+                a(new QQText.SmallEmojiSpan(arrayOfChar, paramInt3, true, bool), paramInt1, paramInt1 + 7, 33);
+                i = 2;
+                label375:
+                if (i >= 5) {
+                  break label451;
+                }
+                if (paramStringBuilder.charAt(paramInt1 + i) != '\n') {
+                  break label422;
+                }
+                paramStringBuilder.setCharAt(paramInt1 + i, 'ú');
+              }
+              for (;;)
+              {
+                i += 1;
+                break label375;
+                bool = false;
+                break;
+                if (paramStringBuilder.charAt(paramInt1 + i) == '\r') {
+                  paramStringBuilder.setCharAt(paramInt1 + i, 'þ');
+                }
+              }
+              paramInt1 += 7;
+            }
+          }
+          else if (j == 250)
+          {
+            if (QQText.IS_FXXKED_MTK) {
+              paramStringBuilder.replace(paramInt1 + 1, paramInt1 + 3, "##");
+            }
+            a(new QQText.EmoticonSpan(10, paramInt3, 1), paramInt1, paramInt1 + 4, 33);
+            paramInt1 += 4;
+          }
+        }
+        else
+        {
+          label422:
+          label451:
+          if (((i2 == 37) || (i2 == 38)) && (paramInt1 < k - 6))
+          {
+            j = paramStringBuilder.charAt(paramInt1 + 2);
+            int m = paramStringBuilder.charAt(paramInt1 + 3);
+            int n = paramStringBuilder.charAt(paramInt1 + 4);
+            int i1 = paramStringBuilder.charAt(paramInt1 + 5);
+            i = 3;
+            if (i2 == 38) {
+              i = 2;
+            }
+            a(new bhmv(i, (i1 & 0xFF) + ((j << 24) + 0 + (m << 16 & 0xFF0000) + (n << 8 & 0xFF00))), paramInt1, paramInt1 + 7, 33);
+            paramInt1 += 7;
+            continue;
+          }
+        }
+      }
+      label651:
+      paramInt1 += 1;
     }
+  }
+  
+  private void a(Object paramObject, int paramInt1, int paramInt2)
+  {
+    SpanWatcher[] arrayOfSpanWatcher = (SpanWatcher[])getSpans(paramInt1, paramInt2, SpanWatcher.class);
+    int j = arrayOfSpanWatcher.length;
+    int i = 0;
+    while (i < j)
+    {
+      arrayOfSpanWatcher[i].onSpanAdded(this, paramObject, paramInt1, paramInt2);
+      i += 1;
+    }
+  }
+  
+  private void a(Object paramObject, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramObject);
+    paramObject = new begr(paramInt1, paramInt2, paramInt3);
+    this.jdField_b_of_type_JavaUtilArrayList.add(paramObject);
+  }
+  
+  private void a(Object paramObject, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    SpanWatcher[] arrayOfSpanWatcher = (SpanWatcher[])getSpans(Math.min(paramInt1, paramInt3), Math.max(paramInt2, paramInt4), SpanWatcher.class);
+    int j = arrayOfSpanWatcher.length;
+    int i = 0;
+    while (i < j)
+    {
+      arrayOfSpanWatcher[i].onSpanChanged(this, paramObject, paramInt1, paramInt2, paramInt3, paramInt4);
+      i += 1;
+    }
+  }
+  
+  private void a(String paramString, int paramInt1, int paramInt2)
+  {
+    if (paramInt2 < paramInt1) {
+      throw new IndexOutOfBoundsException(paramString + " " + a(paramInt1, paramInt2) + " has end before start");
+    }
+    int i = length();
+    if ((paramInt1 > i) || (paramInt2 > i)) {
+      throw new IndexOutOfBoundsException(paramString + " " + a(paramInt1, paramInt2) + " ends beyond length " + i);
+    }
+    if ((paramInt1 < 0) || (paramInt2 < 0)) {
+      throw new IndexOutOfBoundsException(paramString + " " + a(paramInt1, paramInt2) + " starts before 0");
+    }
+  }
+  
+  private void b(Object paramObject, int paramInt1, int paramInt2)
+  {
+    SpanWatcher[] arrayOfSpanWatcher = (SpanWatcher[])getSpans(paramInt1, paramInt2, SpanWatcher.class);
+    int j = arrayOfSpanWatcher.length;
+    int i = 0;
+    while (i < j)
+    {
+      arrayOfSpanWatcher[i].onSpanRemoved(this, paramObject, paramInt1, paramInt2);
+      i += 1;
+    }
+  }
+  
+  public SpannableString a()
+  {
+    SpannableString localSpannableString = new SpannableString(this.jdField_b_of_type_JavaLangString);
+    TextUtils.copySpansFrom(this, 0, length(), Object.class, localSpannableString, 0);
+    return localSpannableString;
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.jdField_b_of_type_JavaLangString;
   }
   
-  public UUID a()
+  public char charAt(int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id;
+    if ((paramInt < 0) || (paramInt > length())) {
+      return '\000';
+    }
+    return this.jdField_b_of_type_JavaLangString.charAt(paramInt);
   }
   
-  public void a()
+  public void getChars(int paramInt1, int paramInt2, char[] paramArrayOfChar, int paramInt3)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      befc.c("TroopFileDownloadWorker", befc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] stop. but had stoped. mStatus:" + this.jdField_b_of_type_Int);
-      return;
+    int i = paramInt1;
+    if (paramInt1 < 0) {
+      i = 0;
     }
-    this.jdField_a_of_type_Boolean = true;
-    befc.c("TroopFileDownloadWorker", befc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] stop fetch. mStatus:" + this.jdField_b_of_type_Int);
-    if (this.jdField_b_of_type_Int == 2)
-    {
-      if (this.jdField_a_of_type_Begn == null) {
-        break label197;
-      }
-      this.jdField_a_of_type_Begn.c();
-      this.jdField_a_of_type_Begn = null;
+    int j = length();
+    paramInt1 = paramInt2;
+    if (paramInt2 > j) {
+      paramInt1 = j;
     }
-    for (;;)
-    {
-      g();
-      if (this.jdField_a_of_type_Beep != null)
-      {
-        zrj.a(befa.a(), this.jdField_a_of_type_Beep);
-        this.jdField_a_of_type_Beep = null;
-      }
-      e();
-      if (!TextUtils.isEmpty(this.d)) {
-        FileUtils.deleteFile(this.d);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.StatusUpdateTimeMs = 0L;
-      beel.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
-      b(0);
-      return;
-      label197:
-      befc.b("TroopFileDownloadWorker", befc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] stop downloader=null");
-    }
+    this.jdField_b_of_type_JavaLangString.getChars(i, paramInt1, paramArrayOfChar, paramInt3);
   }
   
-  public void a(int paramInt)
+  public int getSpanEnd(Object paramObject)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.duration == 0) && (paramInt != 0))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.duration = paramInt;
-      this.jdField_a_of_type_Begn.b(true);
+    int i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramObject);
+    if (this.jdField_b_of_type_JavaUtilArrayList.size() < i) {}
+    while (i < 0) {
+      return -1;
     }
+    return ((begr)this.jdField_b_of_type_JavaUtilArrayList.get(i)).b;
   }
   
-  protected void a(int paramInt1, String paramString, int paramInt2)
+  public int getSpanFlags(Object paramObject)
   {
-    QQAppInterface localQQAppInterface = befa.a();
-    if (localQQAppInterface == null)
-    {
-      befc.a("TroopFileDownloadWorker", befc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] startFetch app=null");
-      c(bfdy.w);
-      return;
+    int i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramObject);
+    if (this.jdField_b_of_type_JavaUtilArrayList.size() < i) {}
+    while (i < 0) {
+      return 0;
     }
-    FileUtils.deleteFile(this.d);
-    boolean bool3 = false;
-    boolean bool2 = false;
-    Object localObject3 = null;
-    Object localObject2 = null;
-    Object localObject1 = "/ftn_handler/" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadUrl + "/?fname=" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath + "&pictype=cut&size=" + this.jdField_a_of_type_Int + "*" + this.jdField_a_of_type_Int;
+    return ((begr)this.jdField_b_of_type_JavaUtilArrayList.get(i)).c;
+  }
+  
+  public int getSpanStart(Object paramObject)
+  {
+    int i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramObject);
+    if (this.jdField_b_of_type_JavaUtilArrayList.size() < i) {}
+    while (i < 0) {
+      return -1;
+    }
+    return ((begr)this.jdField_b_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int;
+  }
+  
+  public <T> T[] getSpans(int paramInt1, int paramInt2, Class<T> paramClass)
+  {
+    int j = 0;
     ArrayList localArrayList = new ArrayList();
-    int i;
-    boolean bool1;
-    if (this.jdField_b_of_type_Boolean)
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      i = paramInt1;
-      if (paramInt1 <= 0) {
-        i = 443;
-      }
-      localObject1 = localObject2;
-      bool1 = bool2;
-      if (bfby.d(localQQAppInterface))
+      Object localObject = this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      if (paramClass.isInstance(localObject))
       {
-        localObject1 = localObject2;
-        bool1 = bool2;
-        if (!TextUtils.isEmpty(paramString))
-        {
-          bool1 = true;
-          localObject1 = paramString;
+        begr localbegr = (begr)this.jdField_b_of_type_JavaUtilArrayList.get(i);
+        if ((localbegr.jdField_a_of_type_Int >= paramInt1) && (localbegr.b <= paramInt2)) {
+          localArrayList.add(localObject);
         }
       }
-      if (!bool1) {
-        break label1225;
-      }
-      paramInt1 = paramInt2;
-      if (paramInt2 > 0) {}
+      i += 1;
     }
-    label779:
-    label1171:
-    label1225:
-    for (paramInt1 = 443;; paramInt1 = i)
+    paramClass = (Object[])Array.newInstance(paramClass, localArrayList.size());
+    paramInt1 = j;
+    while (paramInt1 < localArrayList.size())
     {
-      localObject2 = "/ftn_video_pic/rkey=" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadUrl + "&filetype=17&size=" + this.jdField_a_of_type_Int + "*" + this.jdField_a_of_type_Int + "&";
-      localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp + ":" + paramInt1);
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS))
+      paramClass[paramInt1] = localArrayList.get(paramInt1);
+      paramInt1 += 1;
+    }
+    return paramClass;
+  }
+  
+  public int length()
+  {
+    return this.jdField_b_of_type_JavaLangString.length();
+  }
+  
+  public int nextSpanTransition(int paramInt1, int paramInt2, Class paramClass)
+  {
+    Object localObject = paramClass;
+    if (paramClass == null) {
+      localObject = Object.class;
+    }
+    int k = 0;
+    while (k < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      paramClass = this.jdField_a_of_type_JavaUtilArrayList.get(k);
+      begr localbegr = (begr)this.jdField_b_of_type_JavaUtilArrayList.get(k);
+      int i = paramInt2;
+      if (((Class)localObject).isInstance(paramClass))
       {
-        if (!asgv.a().a(localQQAppInterface, 3)) {
-          break label779;
-        }
-        QLog.i("TroopFileDownloadWorker", 1, "[" + this.jdField_a_of_type_JavaLangString + "] [IPv6-File] download troopVideo thumb. is config enable IPv6. domain[" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS + "]");
-        paramString = new asgw(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS, paramInt1);
-        paramString = asgv.a().a(localQQAppInterface, paramString, 3);
-        if ((paramString != null) && (!paramString.a()))
+        int j = paramInt2;
+        if (localbegr.jdField_a_of_type_Int > paramInt1)
         {
-          if (asgv.a())
-          {
-            QLog.d("TroopFileDownloadWorker", 1, "[" + this.jdField_a_of_type_JavaLangString + "] [IPv6-File] download troopVideo thumb. debugIsDisableIPv4OnDoubleStack");
-            localArrayList.clear();
-          }
-          asgv.a(paramString.a, localArrayList, false, false);
-          QLog.i("TroopFileDownloadWorker", 1, "[" + this.jdField_a_of_type_JavaLangString + "] [IPv6-File] download troopVideo thumb. use IPv6. iplist:" + localArrayList.toString());
-        }
-      }
-      else
-      {
-        paramString = (String)localObject1;
-        localObject1 = localObject2;
-      }
-      for (;;)
-      {
-        long l = befa.a();
-        befc.c("TroopFileDownloadWorker", befc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] startFetch. nSessionId:" + l + " firstIP=" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp + " urlParams:" + (String)localObject1 + " mTmpFilePath:" + this.d + " bUseHttps:" + bool1 + " httpsDomain:" + paramString);
-        if (this.jdField_a_of_type_Begn != null)
-        {
-          this.jdField_a_of_type_Begn.c();
-          this.jdField_a_of_type_Begn = null;
-        }
-        this.jdField_a_of_type_Begn = begn.a(localQQAppInterface, l, this.d, 0L, localArrayList, (String)localObject1, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue, this.jdField_b_of_type_Boolean, bool1, paramString);
-        if (this.jdField_a_of_type_Begn != null) {
-          break label1171;
-        }
-        c(bfdy.w);
-        return;
-        QLog.i("TroopFileDownloadWorker", 1, "[" + this.jdField_a_of_type_JavaLangString + "] [IPv6-File] download troopVideo thumb. use IPv4:");
-        localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS + ":" + paramInt1);
-        break;
-        localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS + ":" + paramInt1);
-        break;
-        paramString = localObject3;
-        bool1 = bool3;
-        if (bfby.d(localQQAppInterface))
-        {
-          paramString = localObject3;
-          bool1 = bool3;
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS))
-          {
-            bool1 = true;
-            paramString = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS;
+          j = paramInt2;
+          if (localbegr.jdField_a_of_type_Int < paramInt2) {
+            j = localbegr.jdField_a_of_type_Int;
           }
         }
-        localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp);
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS))
+        i = j;
+        if (localbegr.b > paramInt1)
         {
-          if (asgv.a().a(localQQAppInterface, 3))
-          {
-            QLog.i("TroopFileDownloadWorker", 1, "[" + this.jdField_a_of_type_JavaLangString + "] [IPv6-File] download troopImage thumb. is config enable IPv6. domain[" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS + "]");
-            localObject2 = new asgw(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS, 0);
-            localObject2 = asgv.a().a(localQQAppInterface, (asgw)localObject2, 3);
-            if ((localObject2 != null) && (!((asgy)localObject2).a()))
-            {
-              if (asgv.a())
-              {
-                QLog.d("TroopFileDownloadWorker", 1, "[" + this.jdField_a_of_type_JavaLangString + "] [IPv6-File] download troopImage thumb. debugIsDisableIPv4OnDoubleStack");
-                localArrayList.clear();
-              }
-              asgv.a(((asgy)localObject2).a, localArrayList, true, false);
-              QLog.i("TroopFileDownloadWorker", 1, "[" + this.jdField_a_of_type_JavaLangString + "] [IPv6-File] download troopImage thumb. use IPv6. iplist:" + localArrayList.toString());
-            }
-            for (;;)
-            {
-              break;
-              QLog.i("TroopFileDownloadWorker", 1, "[" + this.jdField_a_of_type_JavaLangString + "] [IPv6-File] download troopImage thumb. use IPv4");
-              localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS);
-            }
+          i = j;
+          if (localbegr.b < j) {
+            i = localbegr.b;
           }
-          localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS);
         }
       }
-      this.jdField_a_of_type_Begn.a(this);
-      this.jdField_a_of_type_Begn.i();
-      this.jdField_a_of_type_Begn.a(false);
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.duration != 0) {
-        this.jdField_a_of_type_Begn.b(true);
-      }
-      this.jdField_a_of_type_Begn.b();
-      b(2);
-      return;
+      k += 1;
+      paramInt2 = i;
+    }
+    return paramInt2;
+  }
+  
+  public void removeSpan(Object paramObject)
+  {
+    int i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramObject);
+    if (i >= 0)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.remove(i);
+      begr localbegr = (begr)this.jdField_b_of_type_JavaUtilArrayList.remove(i);
+      b(paramObject, localbegr.jdField_a_of_type_Int, localbegr.b);
     }
   }
   
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public void a(String paramString)
+  public void setSpan(Object paramObject, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    a(false);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Beep = null;
-    g();
-    if ((!paramBoolean) && (!aszt.a(new VFSFile(this.d), new VFSFile(this.e))))
+    a("setSpan", paramInt1, paramInt2);
+    if ((paramInt3 & 0x33) == 51)
     {
-      befc.a("TroopFileDownloadWorker", befc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] renameFile fail  mFilePath:" + this.e);
-      if (FileUtils.fileExistsAndNotEmpty(this.e)) {
-        c(bfdy.o);
-      }
-    }
-    do
-    {
-      return;
-      b(3);
-      f();
-      befc.c("TroopFileDownloadWorker", befc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onFetchSuc  mFilePath:" + this.e);
-      if (!paramBoolean) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.StatusUpdateTimeMs = 0L;
-      }
-      if ((this.jdField_a_of_type_Int == 640) && (!FileUtil.isFileExists(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getThumbnailFile(this.jdField_a_of_type_Long, 383)))) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.genThumb_Middle_OnGettedLargeOrOrigPic = true;
-      }
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inJustDecodeBounds = true;
-      atal.a(this.e, localOptions);
-      if ((localOptions.outWidth > 0) && (localOptions.outHeight > 0))
+      char c;
+      if ((paramInt1 != 0) && (paramInt1 != length()))
       {
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.width = localOptions.outWidth;
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.height = localOptions.outHeight;
+        c = charAt(paramInt1 - 1);
+        if (c != '\n') {
+          throw new RuntimeException("PARAGRAPH span must start at paragraph boundary (" + paramInt1 + " follows " + c + ")");
+        }
       }
-      beel.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
-      beel.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
-    } while (this.jdField_a_of_type_Begs == null);
-    this.jdField_a_of_type_Begs.a(a(), true, 0, this);
-  }
-  
-  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2, Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    while (!paramBoolean) {
-      return;
-    }
-    befc.a("TroopFileDownloadWorker", befc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onHasErr. fetch fail. errCode:" + paramInt + " transferedSize:" + paramLong);
-    int i;
-    if (paramInt == -5000) {
-      i = bfdy.h;
-    }
-    for (;;)
-    {
-      c(i);
-      return;
-      if (paramInt == -5001)
+      if ((paramInt2 != 0) && (paramInt2 != length()))
       {
-        i = bfdy.g;
-      }
-      else if (paramInt == 9039)
-      {
-        i = bfdy.n;
-      }
-      else if (paramInt == 9004)
-      {
-        i = bfdy.k;
-      }
-      else if (paramInt == 9301)
-      {
-        i = bfdy.i;
-      }
-      else if (paramInt == -5001)
-      {
-        i = bfdy.q;
-      }
-      else if (this.jdField_a_of_type_Begn.b())
-      {
-        i = bfdy.p;
-      }
-      else
-      {
-        i = paramInt;
-        if (paramInt == -5003) {
-          i = bfdy.y;
+        c = charAt(paramInt2 - 1);
+        if (c != '\n') {
+          throw new RuntimeException("PARAGRAPH span must end at paragraph boundary (" + paramInt2 + " follows " + c + ")");
         }
       }
     }
-  }
-  
-  public boolean a()
-  {
-    befc.c("TroopFileDownloadWorker", befc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] start fetch thumb. filename:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName + " filePath:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath);
-    this.jdField_a_of_type_Boolean = false;
-    ThreadManager.post(new TroopFileThumbnailFetchWorker.1(this), 8, null, false);
-    return true;
-  }
-  
-  public void b()
-  {
-    QQAppInterface localQQAppInterface = befa.a();
-    if (localQQAppInterface == null)
+    int i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramObject);
+    begr localbegr;
+    if ((i > 0) && (this.jdField_b_of_type_JavaUtilArrayList.size() > i))
     {
-      befc.a("TroopFileDownloadWorker", befc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] reqFetch app=null");
-      c(bfdy.w);
-      return;
+      localbegr = (begr)this.jdField_b_of_type_JavaUtilArrayList.get(i);
+      int j = localbegr.jdField_a_of_type_Int;
+      int k = localbegr.b;
+      localbegr.jdField_a_of_type_Int = paramInt1;
+      localbegr.b = paramInt2;
+      localbegr.c = paramInt3;
+      a(paramObject, j, k, paramInt1, paramInt2);
     }
-    befc.c("TroopFileDownloadWorker", befc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] reqFetch");
-    this.jdField_a_of_type_Beep = zrj.a(localQQAppInterface, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int, false, false, this.jdField_a_of_type_Zsa);
-    b(1);
-  }
-  
-  protected void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void b(String paramString) {}
-  
-  public void c()
-  {
-    if ((!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.c))) {
-      return;
-    }
-    this.jdField_b_of_type_JavaLangString = begv.a();
-    this.c = this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Beep = null;
-    g();
-    if (!TextUtils.isEmpty(this.d)) {
-      FileUtils.deleteFile(this.d);
-    }
-    b(4);
-    e();
-    befc.a("TroopFileDownloadWorker", befc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onFetchErr  errCode:" + paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.StatusUpdateTimeMs = 0L;
-    if (paramInt == bfdy.y) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.thumbInvalidCode = 1;
-    }
-    for (;;)
+    if (i < 0)
     {
-      beel.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
-      if (this.jdField_a_of_type_Begs != null) {
-        this.jdField_a_of_type_Begs.a(a(), false, paramInt, this);
-      }
-      return;
-      if (paramInt == bfdy.p) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.thumbInvalidCode = 2;
-      } else {
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.thumbInvalidCode = 0;
-      }
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramObject);
+      localbegr = new begr(paramInt1, paramInt2, paramInt3);
+      this.jdField_b_of_type_JavaUtilArrayList.add(localbegr);
+      a(paramObject, paramInt1, paramInt2);
     }
   }
   
-  public void d() {}
-  
-  protected void e()
+  public CharSequence subSequence(int paramInt1, int paramInt2)
   {
-    begv.b(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Int == 383) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ThumbnailDownloading_Middle_Fail = true;
+    int i = paramInt1;
+    if (paramInt1 < 0) {
+      i = 0;
     }
-  }
-  
-  protected void f()
-  {
-    begv.b(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int);
-    boolean bool = begv.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int, this.e);
-    TroopFileTransferManager.Item localItem;
-    if (this.jdField_a_of_type_Int == 383)
-    {
-      localItem = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item;
-      if (bool) {
-        break label58;
-      }
+    int j = length();
+    paramInt1 = paramInt2;
+    if (paramInt2 > j) {
+      paramInt1 = j;
     }
-    label58:
-    for (bool = true;; bool = false)
-    {
-      localItem.ThumbnailDownloading_Middle_Fail = bool;
-      return;
+    if ((Build.VERSION.SDK_INT >= 26) && (i == 0) && (paramInt1 == length())) {
+      return this;
     }
+    return this.jdField_b_of_type_JavaLangString.substring(i, paramInt1);
   }
 }
 

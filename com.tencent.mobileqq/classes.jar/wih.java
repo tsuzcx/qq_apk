@@ -1,12 +1,18 @@
-class wih
-  extends wht
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.database.DiscoverBannerVideoEntry.BannerInfo;
+
+public final class wih
+  implements Parcelable.Creator<DiscoverBannerVideoEntry.BannerInfo>
 {
-  wih(wif paramwif, wjm paramwjm) {}
-  
-  public boolean b()
+  public DiscoverBannerVideoEntry.BannerInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Wjm.a = ((String)a("UploadImageJob_out_image_url"));
-    return true;
+    return new DiscoverBannerVideoEntry.BannerInfo(paramParcel);
+  }
+  
+  public DiscoverBannerVideoEntry.BannerInfo[] a(int paramInt)
+  {
+    return new DiscoverBannerVideoEntry.BannerInfo[paramInt];
   }
 }
 

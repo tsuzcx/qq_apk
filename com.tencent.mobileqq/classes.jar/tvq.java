@@ -1,10 +1,26 @@
-import kotlin.Metadata;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.viola.core.ViolaInstance;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/ResCheckStep$Companion;", "", "()V", "SCENE_RES_CHECK", "", "SCENE_SHOW_CHECK", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class tvq {}
+public class tvq
+  implements spv
+{
+  public tvq(BridgeModule paramBridgeModule, List paramList) {}
+  
+  public List<spw> a(int paramInt, boolean paramBoolean)
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public boolean a()
+  {
+    return NetworkUtil.isWifiConnected(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance().getActivity());
+  }
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tvq
  * JD-Core Version:    0.7.0.1
  */

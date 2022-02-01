@@ -1,30 +1,22 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneMsfPushAckRequest;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
 
 public class bbpc
-  extends MSFServlet
+  extends BroadcastReceiver
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg) {}
+  public bbpc(AIOGalleryActivity paramAIOGalleryActivity) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramIntent == null) {
-      return;
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
+    {
+      BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryActivity", 4, "receive videochat in aiogallery");
+      this.a.finish();
     }
-    long l = paramIntent.getLongExtra("timestamp", 0L);
-    byte[] arrayOfByte = new QZoneMsfPushAckRequest(paramIntent.getLongExtra("hostuin", 0L), l, paramIntent.getStringExtra("refer"), paramIntent.getLongExtra("flag", 0L), paramIntent.getStringExtra("mark")).encode();
-    paramIntent = arrayOfByte;
-    if (arrayOfByte == null) {
-      paramIntent = new byte[4];
-    }
-    paramPacket.setTimeout(60000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + "wns.pushrsp");
-    paramPacket.putSendData(paramIntent);
-    QLog.d("MessageSvc.WNSQzone.Push", 2, "发送push ack 时间:" + l);
   }
 }
 

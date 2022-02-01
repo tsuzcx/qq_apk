@@ -1,43 +1,60 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.app.Dialog;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import com.tencent.mobileqq.profilesetting.InterestSwitchEditActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class babb
+class babb
+  implements View.OnClickListener
 {
-  public static int a()
+  babb(baax parambaax, Card paramCard) {}
+  
+  public void onClick(View paramView)
   {
-    int j = 2;
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4);
-    long l = localSharedPreferences.getLong("key_open_camera_time", 0L);
-    int i = j;
-    if (l != 0L)
+    switch (paramView.getId())
     {
-      i = j;
-      if (System.currentTimeMillis() - l < 300000L) {
-        i = localSharedPreferences.getInt("camera", 2);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if ((baax.a(this.jdField_a_of_type_Baax) != null) && (baax.a(this.jdField_a_of_type_Baax).isShowing())) {
+        baax.a(this.jdField_a_of_type_Baax).dismiss();
+      }
+      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCard.declaration))
+      {
+        bdla.b(baax.c(this.jdField_a_of_type_Baax), "dc00898", "", "", "0X80092EC", "0X80092EC", 0, 0, "", "", "", "");
+      }
+      else
+      {
+        bdla.b(baax.d(this.jdField_a_of_type_Baax), "dc00898", "", "", "0X80092E9", "0X80092E9", 0, 0, "", "", "", "");
+        continue;
+        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCard.declaration)) {
+          PublicFragmentActivity.a(baax.g(this.jdField_a_of_type_Baax), ExtendFriendEditFragment.class);
+        }
+        for (;;)
+        {
+          if ((baax.a(this.jdField_a_of_type_Baax) != null) && (baax.a(this.jdField_a_of_type_Baax).isShowing())) {
+            baax.a(this.jdField_a_of_type_Baax).dismiss();
+          }
+          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCard.declaration)) {
+            break label284;
+          }
+          bdla.b(baax.e(this.jdField_a_of_type_Baax), "dc00898", "", "", "0X80092EB", "0X80092EB", 0, 0, "", "", "", "");
+          break;
+          Intent localIntent = InterestSwitchEditActivity.a(baax.h(this.jdField_a_of_type_Baax));
+          baax.i(this.jdField_a_of_type_Baax).startActivityForResult(localIntent, 1022);
+        }
+        label284:
+        bdla.b(baax.f(this.jdField_a_of_type_Baax), "dc00898", "", "", "0X80092E8", "0X80092E8", 0, 0, "", "", "", "");
       }
     }
-    return i;
-  }
-  
-  public static void a()
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4).edit();
-    localEditor.putLong("key_open_camera_time", System.currentTimeMillis());
-    localEditor.apply();
-  }
-  
-  public static void a(int paramInt)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4).edit();
-    localEditor.putInt("camera", paramInt);
-    localEditor.putLong("key_open_camera_time", System.currentTimeMillis());
-    localEditor.apply();
-  }
-  
-  public static boolean a()
-  {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4).contains("camera");
   }
 }
 

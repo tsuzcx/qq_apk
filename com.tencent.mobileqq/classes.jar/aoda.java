@@ -1,47 +1,49 @@
+import com.tencent.mobileqq.addon.DiyPendantEntity;
+import com.tencent.mobileqq.addon.DiyPendantSticker;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.SVIPHandler.2;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArraySet;
 
-class aoda
-  implements aojg
+public class aoda
+  implements BusinessObserver
 {
-  aoda(aocz paramaocz, String paramString, aojg paramaojg) {}
+  public aoda(SVIPHandler.2 param2, amks paramamks) {}
   
-  public void a()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (this.jdField_a_of_type_Aojg != null) {
-      this.jdField_a_of_type_Aojg.a();
-    }
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    if (this.jdField_a_of_type_Aojg != null) {
-      this.jdField_a_of_type_Aojg.a(paramLong1, paramLong2);
-    }
-  }
-  
-  public void a(boolean paramBoolean, aojh paramaojh)
-  {
-    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes onARResourceDownloadComplete. result = " + paramBoolean + ", name = " + paramaojh.d + ", filename = " + paramaojh.c + ", url = " + paramaojh.jdField_a_of_type_JavaLangString);
-    if (paramBoolean) {
-      if (!aocz.a(this.jdField_a_of_type_Aocz, paramaojh.c, paramaojh.b))
+    try
+    {
+      if ((paramObject instanceof List))
       {
-        aocz.a(this.jdField_a_of_type_Aocz, paramaojh.c);
-        QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes failed. checkFileValid failed.");
+        paramObject = (List)paramObject;
+        if (paramObject.size() > 0)
+        {
+          paramObject = paramObject.iterator();
+          while (paramObject.hasNext())
+          {
+            Iterator localIterator = ((DiyPendantEntity)paramObject.next()).getStickerInfoList().iterator();
+            while (localIterator.hasNext())
+            {
+              Object localObject = (DiyPendantSticker)localIterator.next();
+              localObject = this.jdField_a_of_type_Amks.a((DiyPendantSticker)localObject);
+              this.jdField_a_of_type_Amks.b.add(localObject);
+            }
+          }
+        }
+      }
+      return;
+    }
+    catch (Exception paramObject)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("SVIPHandler", 2, paramObject.getMessage());
       }
     }
-    while (this.jdField_a_of_type_Aojg == null)
-    {
-      return;
-      if ((!paramaojh.d.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_Aocz.a(paramaojh.d, paramaojh.c, paramaojh.b) != 0)) {}
-    }
-    this.jdField_a_of_type_Aojg.a(paramBoolean, paramaojh);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Aojg != null) {
-      this.jdField_a_of_type_Aojg.b();
-    }
+    this.jdField_a_of_type_Amks.b();
   }
 }
 

@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.startup.step.RecordTracer;
+import com.tencent.trackrecordlib.core.IRecordCallback;
+import cooperation.qzone.report.wmd.WMDReportManager;
 
-class bdiy
-  extends bdji<UserState>
+public class bdiy
+  implements IRecordCallback
 {
-  bdiy(bdiu parambdiu, UserState paramUserState, List paramList)
-  {
-    super(paramUserState, paramList);
-  }
+  public bdiy(RecordTracer paramRecordTracer) {}
   
-  public void a(UserState paramUserState)
+  public void onRecordEvent(String paramString)
   {
-    super.a(paramUserState);
-    bdiu.a(this.jdField_a_of_type_Bdiu).b(this.jdField_a_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(paramString)) {
+      WMDReportManager.getInstance().report(paramString);
+    }
   }
 }
 

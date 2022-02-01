@@ -1,23 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
 
-class aefc
-  implements DialogInterface.OnClickListener
+public class aefc
+  extends aeer
 {
-  aefc(aeey paramaeey) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aefc(JumpActivity paramJumpActivity)
   {
-    this.a.b = true;
-    aeey.b(this.a);
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+    super(paramJumpActivity);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    this.b.l();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aefc
  * JD-Core Version:    0.7.0.1
  */

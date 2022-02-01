@@ -7,21 +7,21 @@ import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory.Options;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import bcre;
-import bcrg;
-import bcri;
-import bcsi;
-import bcsl;
-import bfvo;
+import bdyd;
+import bdyf;
+import bdyh;
+import bdzh;
+import bdzk;
+import bheg;
 import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
-import slp;
-import slq;
-import slr;
+import syz;
+import sza;
+import szb;
 
 public class RainView
   extends SpriteGLView
@@ -33,9 +33,9 @@ public class RainView
   private static int e = 3;
   private static int f = 6;
   private Context jdField_a_of_type_AndroidContentContext;
-  private bcsl jdField_a_of_type_Bcsl;
+  private bdzk jdField_a_of_type_Bdzk;
   private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-  private slr jdField_a_of_type_Slr;
+  private szb jdField_a_of_type_Szb;
   private AtomicInteger jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger;
   private int g;
   private int h;
@@ -76,7 +76,7 @@ public class RainView
     }
     Object localObject = new BitmapFactory.Options();
     ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-    bfvo.a(paramString, (BitmapFactory.Options)localObject);
+    bheg.a(paramString, (BitmapFactory.Options)localObject);
     int i2 = ((BitmapFactory.Options)localObject).outHeight;
     int m = ((BitmapFactory.Options)localObject).outWidth;
     int n = DisplayUtil.dip2px(getContext(), 80.0F);
@@ -105,7 +105,7 @@ public class RainView
         ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
         try
         {
-          localObject = bfvo.a(paramString, (BitmapFactory.Options)localObject);
+          localObject = bheg.a(paramString, (BitmapFactory.Options)localObject);
           paramString = (String)localObject;
           if (localObject != null) {
             break;
@@ -129,9 +129,9 @@ public class RainView
     {
       paramString = a(paramString);
       if (paramString != null) {
-        this.jdField_a_of_type_Bcsl = new bcsl(this, paramString);
+        this.jdField_a_of_type_Bdzk = new bdzk(this, paramString);
       }
-      if (this.jdField_a_of_type_Bcsl != null)
+      if (this.jdField_a_of_type_Bdzk != null)
       {
         this.g = (paramInt1 / e);
         this.h = paramInt2;
@@ -144,10 +144,10 @@ public class RainView
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("SpriteGLView", 2, "rain animation run initCount = " + m + " mTexture = " + this.jdField_a_of_type_Bcsl);
+        QLog.d("SpriteGLView", 2, "rain animation run initCount = " + m + " mTexture = " + this.jdField_a_of_type_Bdzk);
       }
       return;
-      if ((m > 1) && (this.jdField_a_of_type_Bcsl != null)) {
+      if ((m > 1) && (this.jdField_a_of_type_Bdzk != null)) {
         b(this);
       }
     }
@@ -166,31 +166,31 @@ public class RainView
     int m = 0;
     while (m < e)
     {
-      bcsi localbcsi = new bcsi(this);
-      localbcsi.a(this.jdField_a_of_type_Bcsl);
-      localbcsi.e = ((new Random().nextInt(2) * 2 + 8) / 10.0F);
+      bdzh localbdzh = new bdzh(this);
+      localbdzh.a(this.jdField_a_of_type_Bdzk);
+      localbdzh.e = ((new Random().nextInt(2) * 2 + 8) / 10.0F);
       int n = this.h - new Random().nextInt(DisplayUtil.dip2px(getContext(), d));
       int i1 = this.i;
       int i2 = this.g * m + new Random().nextInt(this.g + 1);
-      localbcsi.a(i2, n);
-      Object localObject = new bcri(jdField_a_of_type_Int, i2, n, a(i2), i1);
-      localbcsi.a(new bcre[] { localObject });
-      ((bcri)localObject).a(new slp(this, localbcsi));
+      localbdzh.a(i2, n);
+      Object localObject = new bdyh(jdField_a_of_type_Int, i2, n, a(i2), i1);
+      localbdzh.a(new bdyd[] { localObject });
+      ((bdyh)localObject).a(new syz(this, localbdzh));
       if (m == 0)
       {
-        localObject = new bcrg(jdField_b_of_type_Int);
-        localbcsi.a(new bcre[] { localObject });
-        ((bcrg)localObject).a(new slq(this));
+        localObject = new bdyf(jdField_b_of_type_Int);
+        localbdzh.a(new bdyd[] { localObject });
+        ((bdyf)localObject).a(new sza(this));
       }
-      a(localbcsi);
+      a(localbdzh);
       m += 1;
     }
     this.j += 1;
   }
   
-  public void setAnimationEndListener(slr paramslr)
+  public void setAnimationEndListener(szb paramszb)
   {
-    this.jdField_a_of_type_Slr = paramslr;
+    this.jdField_a_of_type_Szb = paramszb;
   }
 }
 

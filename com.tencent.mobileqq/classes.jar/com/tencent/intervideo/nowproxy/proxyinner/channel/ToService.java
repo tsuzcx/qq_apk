@@ -1,6 +1,6 @@
 package com.tencent.intervideo.nowproxy.proxyinner.channel;
 
-import acgo;
+import acww;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,7 +9,7 @@ import android.os.Parcelable.Creator;
 public class ToService
   implements Parcelable
 {
-  public static final Parcelable.Creator<ToService> CREATOR = new acgo();
+  public static final Parcelable.Creator<ToService> CREATOR = new acww();
   public int a;
   public long a;
   public Bundle a;

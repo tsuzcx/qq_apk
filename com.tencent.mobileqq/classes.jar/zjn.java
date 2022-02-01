@@ -1,15 +1,8 @@
-final class zjn
-  implements bjog
+import android.os.Bundle;
+
+public abstract interface zjn
 {
-  zjn(bjnw parambjnw, zjq paramzjq) {}
-  
-  public void onDismiss()
-  {
-    this.jdField_a_of_type_Bjnw.dismiss();
-    if (this.jdField_a_of_type_Zjq != null) {
-      this.jdField_a_of_type_Zjq.a(true);
-    }
-  }
+  public abstract void a(Bundle paramBundle);
 }
 
 

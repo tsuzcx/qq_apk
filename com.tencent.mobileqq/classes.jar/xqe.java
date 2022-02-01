@@ -1,11 +1,24 @@
-final class xqe
-  extends ThreadLocal<StringBuilder>
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.qqstory.settings.QGSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class xqe
+  implements CompoundButton.OnCheckedChangeListener
 {
-  protected StringBuilder a()
+  public xqe(QGSettingFragment paramQGSettingFragment) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder(512);
-    localStringBuilder.setLength(0);
-    return localStringBuilder;
+    if (paramBoolean) {
+      QGSettingFragment.a(true);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      QGSettingFragment.a(false);
+    }
   }
 }
 

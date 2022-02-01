@@ -1,6 +1,5 @@
 package cooperation.qqcircle.utils;
 
-import amsw;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -10,9 +9,11 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
+import anvk;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import common.config.service.QzoneConfig;
@@ -23,7 +24,7 @@ import mqq.app.AppRuntime;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zbi;
+import zqn;
 
 public class QCircleCommonUtil
 {
@@ -152,12 +153,12 @@ public class QCircleCommonUtil
   
   public static int getDefaultThemeColor()
   {
-    return getDefaultThemeColor(zbi.a());
+    return getDefaultThemeColor(zqn.a());
   }
   
   public static int getDefaultThemeColor(boolean paramBoolean)
   {
-    int j = BaseApplicationImpl.getContext().getResources().getColor(2131166253);
+    int j = BaseApplicationImpl.getContext().getResources().getColor(2131166262);
     int i = j;
     if (paramBoolean) {
       i = getNightModeColor(j);
@@ -229,12 +230,12 @@ public class QCircleCommonUtil
       return false;
       localQQAppInterface = getQQAppInterface();
     } while (localQQAppInterface == null);
-    return ((amsw)localQQAppInterface.getManager(51)).b(paramString);
+    return ((anvk)localQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramString);
   }
   
   public static boolean isInNightMode()
   {
-    return zbi.a();
+    return zqn.a();
   }
   
   public static boolean isOwner(String paramString)

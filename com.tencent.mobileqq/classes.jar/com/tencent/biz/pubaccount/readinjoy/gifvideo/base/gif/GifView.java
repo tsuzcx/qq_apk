@@ -18,9 +18,9 @@ import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.atomic.AtomicLong;
-import pai;
-import pqx;
-import pqy;
+import pjr;
+import qbv;
+import qbw;
 
 public class GifView
   extends FrameLayout
@@ -61,7 +61,7 @@ public class GifView
   private static Drawable getLoadingDrawable()
   {
     if (mLoadingDrawable == null) {
-      mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841730);
+      mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841740);
     }
     return mLoadingDrawable;
   }
@@ -82,10 +82,10 @@ public class GifView
       l = System.currentTimeMillis();
       localAtomicLong3 = new AtomicLong(l);
       localAtomicLong4 = new AtomicLong(0L);
-      paramURLDrawable.setDownloadListener(new pqx(this, localAtomicLong3, localAtomicLong1, l, localAtomicLong2, localAtomicLong4, paramURLDrawable));
+      paramURLDrawable.setDownloadListener(new qbv(this, localAtomicLong3, localAtomicLong1, l, localAtomicLong2, localAtomicLong4, paramURLDrawable));
     } while (this.mGifImageView == null);
     StringBuilder localStringBuilder = new StringBuilder();
-    this.mGifImageView.setURLDrawableDownListener(new pqy(this, l, localAtomicLong3, localAtomicLong1, localAtomicLong4, localAtomicLong2, localStringBuilder, paramURLDrawable));
+    this.mGifImageView.setURLDrawableDownListener(new qbw(this, l, localAtomicLong3, localAtomicLong1, localAtomicLong4, localAtomicLong2, localStringBuilder, paramURLDrawable));
   }
   
   private void hideGifAnim()
@@ -121,6 +121,23 @@ public class GifView
   private boolean shouldTryLoad()
   {
     return this.mTryCounts <= 2;
+  }
+  
+  private void useURLDrawable(String paramString)
+  {
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mRequestWidth = this.mGifWidth;
+    localURLDrawableOptions.mRequestHeight = this.mGifHeight;
+    if ((this.mContext != null) && (this.mContext.getResources() != null)) {
+      localURLDrawableOptions.mLoadingDrawable = this.mContext.getResources().getDrawable(2130841740);
+    }
+    paramString = URLDrawable.getDrawable(new URL(paramString), localURLDrawableOptions);
+    this.mStaticZImageView.setImageDrawable(paramString);
+  }
+  
+  private boolean willBitmapCut()
+  {
+    return (this.mGifHeight >= 2048) || (this.mGifWidth >= 2048);
   }
   
   public void displayCover()
@@ -173,7 +190,7 @@ public class GifView
     if ((this.mCoverImageView != null) && (paramString != null)) {}
     try
     {
-      pai.a(this.mCoverImageView, new URL(this.mCoverUrl), getContext());
+      pjr.a(this.mCoverImageView, new URL(this.mCoverUrl), getContext());
       return;
     }
     catch (MalformedURLException paramString)
@@ -231,15 +248,21 @@ public class GifView
   
   public void setStaticImageUrl(String paramString)
   {
-    if ((this.mStaticZImageView != null) && (paramString != null)) {}
-    try
-    {
-      pai.a(this.mStaticZImageView, new URL(paramString), getContext());
-      return;
-    }
-    catch (MalformedURLException paramString)
-    {
-      QLog.d("gifvideo.GifView", 2, paramString.getMessage());
+    if ((this.mStaticZImageView != null) && (paramString != null)) {
+      try
+      {
+        if (willBitmapCut())
+        {
+          useURLDrawable(paramString);
+          return;
+        }
+        pjr.a(this.mStaticZImageView, new URL(paramString), getContext());
+        return;
+      }
+      catch (MalformedURLException paramString)
+      {
+        QLog.d("gifvideo.GifView", 2, paramString.getMessage());
+      }
     }
   }
 }

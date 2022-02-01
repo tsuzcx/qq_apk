@@ -1,71 +1,21 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleView;
+import android.view.animation.Animation;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
-public abstract class afkt
+public class afkt
+  extends bkxp
 {
-  protected Context a;
-  protected Rect a;
-  protected DoodleView a;
+  public afkt(VisitorsActivity paramVisitorsActivity) {}
   
-  public afkt(DoodleView paramDoodleView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    if (paramDoodleView == null) {
-      throw new IllegalStateException("DoodleView can not be null.");
-    }
-    this.jdField_a_of_type_AndroidContentContext = paramDoodleView.getContext();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView = paramDoodleView;
+    this.a.f = false;
   }
   
-  public void a()
+  public void onAnimationStart(Animation paramAnimation)
   {
-    c();
+    this.a.c.setVisibility(0);
   }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2);
-  }
-  
-  public final void a(Canvas paramCanvas)
-  {
-    b(paramCanvas);
-  }
-  
-  public boolean a()
-  {
-    return b();
-  }
-  
-  public final boolean a(MotionEvent paramMotionEvent)
-  {
-    b();
-    return b(paramMotionEvent);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView.invalidate();
-    }
-  }
-  
-  protected abstract void b(Canvas paramCanvas);
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  protected abstract boolean b(MotionEvent paramMotionEvent);
-  
-  public void c() {}
 }
 
 

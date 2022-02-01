@@ -1,8 +1,8 @@
-public abstract interface bdhv
+public class bdhv
 {
-  public abstract void a(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3);
-  
-  public abstract void b(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3);
+  public int a;
+  public String a;
+  public int b;
 }
 
 

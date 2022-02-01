@@ -16,16 +16,16 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import bnfx;
-import bnfy;
-import bngj;
-import bngv;
-import bngy;
-import bnhb;
-import bnkb;
-import bnke;
-import bnkt;
-import bnnl;
+import bovp;
+import bovq;
+import bowb;
+import bown;
+import bowq;
+import bowt;
+import bozt;
+import bozw;
+import bpal;
+import bpdd;
 import com.tencent.mobileqq.app.ThreadManager;
 import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
 import dov.com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
@@ -42,7 +42,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import mqq.os.MqqHandler;
-import xvv;
+import ykq;
 
 public class DoodleView
   extends View
@@ -52,15 +52,15 @@ public class DoodleView
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  protected bnfy a;
-  protected bngv a;
-  public bnhb a;
+  protected bovq a;
+  protected bown a;
+  public bowt a;
   public EditVideoParams a;
   public DoodleLayout a;
-  private Comparator<bngv> jdField_a_of_type_JavaUtilComparator = new bnke(this);
-  private LinkedList<bngv> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  protected List<bngv> a;
-  protected Map<String, bngv> a;
+  private Comparator<bown> jdField_a_of_type_JavaUtilComparator = new bozw(this);
+  private LinkedList<bown> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  protected List<bown> a;
+  protected Map<String, bown> a;
   public boolean a;
   public int b;
   private boolean b;
@@ -93,13 +93,13 @@ public class DoodleView
       this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
       bool1 = true;
       bool2 = true;
-      xvv.b("DoodleView", "create Doodle bitmap, width:" + this.c + ",height:" + this.d);
+      ykq.b("DoodleView", "create Doodle bitmap, width:" + this.c + ",height:" + this.d);
       bool1 = bool2;
       return bool1;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      xvv.c("DoodleView", "create doodle bitmap failed: %s", localOutOfMemoryError);
+      ykq.c("DoodleView", "create doodle bitmap failed: %s", localOutOfMemoryError);
     }
     return bool1;
   }
@@ -111,7 +111,7 @@ public class DoodleView
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
     while (localIterator.hasNext()) {
-      if (!((bngv)localIterator.next()).a(paramLong)) {
+      if (!((bown)localIterator.next()).a(paramLong)) {
         return true;
       }
     }
@@ -120,21 +120,21 @@ public class DoodleView
   
   private void b()
   {
-    this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_Bnfy);
-    this.jdField_a_of_type_Bnhb.jdField_a_of_type_Bngy.a(this.jdField_a_of_type_JavaUtilList, this);
+    this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_Bovq);
+    this.jdField_a_of_type_Bowt.jdField_a_of_type_Bowq.a(this.jdField_a_of_type_JavaUtilList, this);
     Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
     while (((Iterator)localObject).hasNext())
     {
-      bngv localbngv = (bngv)((Iterator)localObject).next();
-      this.jdField_a_of_type_JavaUtilMap.put(localbngv.a(), localbngv);
+      bown localbown = (bown)((Iterator)localObject).next();
+      this.jdField_a_of_type_JavaUtilMap.put(localbown.a(), localbown);
     }
-    xvv.b("DoodleView", "DoodleView hold layers:" + this.jdField_a_of_type_JavaUtilMap.toString());
-    this.jdField_a_of_type_Bngv = this.jdField_a_of_type_Bnfy;
+    ykq.b("DoodleView", "DoodleView hold layers:" + this.jdField_a_of_type_JavaUtilMap.toString());
+    this.jdField_a_of_type_Bown = this.jdField_a_of_type_Bovq;
     if (this.jdField_a_of_type_JavaUtilList.size() > 1) {}
-    for (localObject = (bngv)this.jdField_a_of_type_JavaUtilList.get(1);; localObject = null)
+    for (localObject = (bown)this.jdField_a_of_type_JavaUtilList.get(1);; localObject = null)
     {
-      if ((localObject != null) && ((((bngv)localObject).c() != this.jdField_a_of_type_Int) || (((bngv)localObject).d() != this.jdField_b_of_type_Int))) {
-        onSizeChanged(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, ((bngv)localObject).c(), ((bngv)localObject).d());
+      if ((localObject != null) && ((((bown)localObject).c() != this.jdField_a_of_type_Int) || (((bown)localObject).d() != this.jdField_b_of_type_Int))) {
+        onSizeChanged(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, ((bown)localObject).c(), ((bown)localObject).d());
       }
       super.requestLayout();
       return;
@@ -144,27 +144,27 @@ public class DoodleView
   private void d()
   {
     long l = SystemClock.uptimeMillis();
-    Object localObject = (bngj)this.jdField_a_of_type_JavaUtilMap.get("LineLayer");
-    if ((localObject != null) && (((bngj)localObject).a.a()) && (((bngj)localObject).a.jdField_a_of_type_AndroidGraphicsBitmap == null)) {
-      ((bngj)localObject).a.b(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth());
+    Object localObject = (bowb)this.jdField_a_of_type_JavaUtilMap.get("LineLayer");
+    if ((localObject != null) && (((bowb)localObject).a.a()) && (((bowb)localObject).a.jdField_a_of_type_AndroidGraphicsBitmap == null)) {
+      ((bowb)localObject).a.b(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth());
     }
     this.jdField_a_of_type_AndroidGraphicsCanvas.drawPaint(this.jdField_a_of_type_AndroidGraphicsPaint);
     Canvas localCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
     if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams != null) && (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a()) && (localObject != null)) {
-      ((bngj)localObject).c(localCanvas);
+      ((bowb)localObject).c(localCanvas);
     }
     localObject = new LinkedList(this.jdField_a_of_type_JavaUtilMap.values());
     Collections.sort((List)localObject, this.jdField_a_of_type_JavaUtilComparator);
     int i = ((LinkedList)localObject).size() - 1;
     while (i >= 0)
     {
-      bngv localbngv = (bngv)((LinkedList)localObject).get(i);
-      if (localbngv != null) {
-        localbngv.b(localCanvas);
+      bown localbown = (bown)((LinkedList)localObject).get(i);
+      if (localbown != null) {
+        localbown.b(localCanvas);
       }
       i -= 1;
     }
-    xvv.b("DoodleView", "drawLayerInDoodleBitmap cost time:" + (SystemClock.uptimeMillis() - l));
+    ykq.b("DoodleView", "drawLayerInDoodleBitmap cost time:" + (SystemClock.uptimeMillis() - l));
   }
   
   private boolean d()
@@ -181,37 +181,37 @@ public class DoodleView
   {
     if (!a())
     {
-      xvv.e("DoodleView", "create doodle bitmap failed.");
+      ykq.e("DoodleView", "create doodle bitmap failed.");
       return null;
     }
     d();
     return this.jdField_a_of_type_AndroidGraphicsBitmap;
   }
   
-  public bngv a()
+  public bown a()
   {
-    return this.jdField_a_of_type_Bngv;
+    return this.jdField_a_of_type_Bown;
   }
   
-  public bngv a(MotionEvent paramMotionEvent)
+  public bown a(MotionEvent paramMotionEvent)
   {
     LinkedList localLinkedList = new LinkedList(this.jdField_a_of_type_JavaUtilList);
     Collections.sort(localLinkedList, this.jdField_a_of_type_JavaUtilComparator);
     int i = 0;
     while (i < localLinkedList.size())
     {
-      bngv localbngv = (bngv)localLinkedList.get(i);
-      if ((localbngv != null) && (localbngv.b(paramMotionEvent))) {
-        return localbngv;
+      bown localbown = (bown)localLinkedList.get(i);
+      if ((localbown != null) && (localbown.b(paramMotionEvent))) {
+        return localbown;
       }
       i += 1;
     }
-    return this.jdField_a_of_type_Bnfy;
+    return this.jdField_a_of_type_Bovq;
   }
   
-  public <LAYER extends bngv> LAYER a(String paramString)
+  public <LAYER extends bown> LAYER a(String paramString)
   {
-    paramString = (bngv)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    paramString = (bown)this.jdField_a_of_type_JavaUtilMap.get(paramString);
     if (paramString == null) {
       throw new IllegalArgumentException("this layer is not exist in DoodleView.");
     }
@@ -224,33 +224,33 @@ public class DoodleView
     this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_JavaUtilMap = new LinkedHashMap();
-    this.jdField_a_of_type_Bnfy = new bnfy(this);
-    this.jdField_a_of_type_Bngv = this.jdField_a_of_type_Bnfy;
+    this.jdField_a_of_type_Bovq = new bovq(this);
+    this.jdField_a_of_type_Bown = this.jdField_a_of_type_Bovq;
   }
   
   public void a(EditVideoParams paramEditVideoParams)
   {
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams = paramEditVideoParams;
-    Object localObject = (bngj)this.jdField_a_of_type_JavaUtilMap.get("LineLayer");
+    Object localObject = (bowb)this.jdField_a_of_type_JavaUtilMap.get("LineLayer");
     if (localObject != null)
     {
-      localObject = (bnkt)((bngj)localObject).a.a(103);
+      localObject = (bpal)((bowb)localObject).a.a(103);
       if (localObject != null)
       {
         if (!paramEditVideoParams.a()) {
           break label55;
         }
-        ((bnkt)localObject).a(104);
+        ((bpal)localObject).a(104);
       }
     }
     return;
     label55:
     if (((paramEditVideoParams.a instanceof EditTakeVideoSource)) || ((paramEditVideoParams.a instanceof EditLocalVideoSource)))
     {
-      ((bnkt)localObject).a(105);
+      ((bpal)localObject).a(105);
       return;
     }
-    ((bnkt)localObject).a(103);
+    ((bpal)localObject).a(103);
   }
   
   public void a(boolean paramBoolean1, float paramFloat1, float paramFloat2, float paramFloat3, PointF paramPointF, boolean paramBoolean2, int paramInt)
@@ -268,7 +268,7 @@ public class DoodleView
   
   public boolean b()
   {
-    return this.jdField_a_of_type_Bngv == this.jdField_a_of_type_Bnfy;
+    return this.jdField_a_of_type_Bown == this.jdField_a_of_type_Bovq;
   }
   
   public int c()
@@ -280,7 +280,7 @@ public class DoodleView
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((bngv)localIterator.next()).b();
+      ((bown)localIterator.next()).b();
     }
     h();
   }
@@ -289,7 +289,7 @@ public class DoodleView
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      if (!((bngv)localIterator.next()).a()) {
+      if (!((bown)localIterator.next()).a()) {
         return false;
       }
     }
@@ -298,8 +298,8 @@ public class DoodleView
   
   public void f()
   {
-    setActiveLayer(this.jdField_a_of_type_Bnfy);
-    setTopLevelLayer(this.jdField_a_of_type_Bnfy);
+    setActiveLayer(this.jdField_a_of_type_Bovq);
+    setTopLevelLayer(this.jdField_a_of_type_Bovq);
   }
   
   public void g()
@@ -308,7 +308,7 @@ public class DoodleView
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((bngv)localIterator.next()).a();
+        ((bown)localIterator.next()).a();
       }
       if (this.jdField_a_of_type_AndroidGraphicsCanvas != null) {
         this.jdField_a_of_type_AndroidGraphicsCanvas.drawPaint(this.jdField_a_of_type_AndroidGraphicsPaint);
@@ -319,7 +319,7 @@ public class DoodleView
   
   public void h()
   {
-    xvv.b("DoodleView", "recycle bitmap.");
+    ykq.b("DoodleView", "recycle bitmap.");
     if (d())
     {
       this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
@@ -330,9 +330,9 @@ public class DoodleView
   
   public void i()
   {
-    bngj localbngj = (bngj)this.jdField_a_of_type_JavaUtilMap.get("LineLayer");
-    if ((localbngj != null) && (localbngj.a.a()) && (this.c > 0)) {
-      localbngj.a.a(this.c);
+    bowb localbowb = (bowb)this.jdField_a_of_type_JavaUtilMap.get("LineLayer");
+    if ((localbowb != null) && (localbowb.a.a()) && (this.c > 0)) {
+      localbowb.a.a(this.c);
     }
   }
   
@@ -354,9 +354,9 @@ public class DoodleView
         localObject = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
         while (((Iterator)localObject).hasNext())
         {
-          bngv localbngv = (bngv)((Map.Entry)((Iterator)localObject).next()).getValue();
-          if ((localbngv instanceof bngj)) {
-            ((bngj)localbngv).a.a(paramCanvas);
+          bown localbown = (bown)((Map.Entry)((Iterator)localObject).next()).getValue();
+          if ((localbown instanceof bowb)) {
+            ((bowb)localbown).a.a(paramCanvas);
           }
         }
       }
@@ -366,9 +366,9 @@ public class DoodleView
       int i = this.jdField_a_of_type_JavaUtilLinkedList.size() - 1;
       while (i >= 0)
       {
-        localObject = (bngv)this.jdField_a_of_type_JavaUtilLinkedList.get(i);
+        localObject = (bown)this.jdField_a_of_type_JavaUtilLinkedList.get(i);
         if (localObject != null) {
-          ((bngv)localObject).d(paramCanvas);
+          ((bown)localObject).d(paramCanvas);
         }
         i -= 1;
       }
@@ -392,40 +392,40 @@ public class DoodleView
     if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
       return;
     }
-    if (this.jdField_a_of_type_Bnhb != null)
+    if (this.jdField_a_of_type_Bowt != null)
     {
-      xvv.b("DoodleView", "DoodleViewWidth:" + paramInt1 + ",DoodleViewHeight:" + paramInt2 + ",MaxWidth:" + this.jdField_a_of_type_Bnhb.jdField_a_of_type_Int + ",MaxHeight:" + this.jdField_a_of_type_Bnhb.jdField_b_of_type_Int);
+      ykq.b("DoodleView", "DoodleViewWidth:" + paramInt1 + ",DoodleViewHeight:" + paramInt2 + ",MaxWidth:" + this.jdField_a_of_type_Bowt.jdField_a_of_type_Int + ",MaxHeight:" + this.jdField_a_of_type_Bowt.jdField_b_of_type_Int);
       this.jdField_a_of_type_Int = paramInt1;
       this.jdField_b_of_type_Int = paramInt2;
-      if (this.jdField_a_of_type_Bnhb.jdField_a_of_type_Int == 0)
+      if (this.jdField_a_of_type_Bowt.jdField_a_of_type_Int == 0)
       {
         paramInt3 = this.jdField_a_of_type_Int;
         label108:
-        if (this.jdField_a_of_type_Bnhb.jdField_b_of_type_Int != 0) {
+        if (this.jdField_a_of_type_Bowt.jdField_b_of_type_Int != 0) {
           break label227;
         }
       }
       label227:
-      for (paramInt4 = this.jdField_b_of_type_Int;; paramInt4 = this.jdField_a_of_type_Bnhb.jdField_b_of_type_Int)
+      for (paramInt4 = this.jdField_b_of_type_Int;; paramInt4 = this.jdField_a_of_type_Bowt.jdField_b_of_type_Int)
       {
-        float f = bnnl.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt3, paramInt4);
+        float f = bpdd.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt3, paramInt4);
         this.c = ((int)(this.jdField_a_of_type_Int * f));
         this.d = ((int)(this.jdField_b_of_type_Int * f));
         Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
         while (localIterator.hasNext())
         {
-          bngv localbngv = (bngv)localIterator.next();
-          localbngv.b(f);
-          localbngv.a(paramInt1, paramInt2);
+          bown localbown = (bown)localIterator.next();
+          localbown.b(f);
+          localbown.a(paramInt1, paramInt2);
         }
         break;
-        paramInt3 = this.jdField_a_of_type_Bnhb.jdField_a_of_type_Int;
+        paramInt3 = this.jdField_a_of_type_Bowt.jdField_a_of_type_Int;
         break label108;
       }
     }
     this.c = 0;
     this.d = 0;
-    xvv.e("DoodleView", "DoodleConfig is null.");
+    ykq.e("DoodleView", "DoodleConfig is null.");
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -433,14 +433,14 @@ public class DoodleView
     if (this.jdField_b_of_type_Boolean) {
       return true;
     }
-    if ((this.jdField_a_of_type_Bngv == this.jdField_a_of_type_Bnfy) && (paramMotionEvent.getAction() == 0))
+    if ((this.jdField_a_of_type_Bown == this.jdField_a_of_type_Bovq) && (paramMotionEvent.getAction() == 0))
     {
-      this.jdField_a_of_type_Bngv = a(paramMotionEvent);
-      this.jdField_a_of_type_Bngv.d(true);
-      this.jdField_a_of_type_Bngv.n();
-      xvv.b("DoodleView", this.jdField_a_of_type_Bngv.toString() + " hold the TouchEvent.");
+      this.jdField_a_of_type_Bown = a(paramMotionEvent);
+      this.jdField_a_of_type_Bown.d(true);
+      this.jdField_a_of_type_Bown.n();
+      ykq.b("DoodleView", this.jdField_a_of_type_Bown.toString() + " hold the TouchEvent.");
     }
-    return this.jdField_a_of_type_Bngv.d(paramMotionEvent);
+    return this.jdField_a_of_type_Bown.d(paramMotionEvent);
   }
   
   protected void onVisibilityChanged(View paramView, int paramInt)
@@ -451,21 +451,21 @@ public class DoodleView
     }
   }
   
-  public void setActiveLayer(bngv parambngv)
+  public void setActiveLayer(bown parambown)
   {
-    bngv localbngv = this.jdField_a_of_type_Bngv;
-    this.jdField_a_of_type_Bngv = parambngv;
-    if (localbngv == this.jdField_a_of_type_Bngv) {
+    bown localbown = this.jdField_a_of_type_Bown;
+    this.jdField_a_of_type_Bown = parambown;
+    if (localbown == this.jdField_a_of_type_Bown) {
       return;
     }
-    localbngv.l();
-    this.jdField_a_of_type_Bngv.m();
+    localbown.l();
+    this.jdField_a_of_type_Bown.m();
   }
   
-  public void setDoodleConfig(bnhb parambnhb)
+  public void setDoodleConfig(bowt parambowt)
   {
-    xvv.b("DoodleView", "init DoodleConfig: " + parambnhb.toString());
-    this.jdField_a_of_type_Bnhb = parambnhb;
+    ykq.b("DoodleView", "init DoodleConfig: " + parambowt.toString());
+    this.jdField_a_of_type_Bowt = parambowt;
     this.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_a_of_type_JavaUtilMap.clear();
     b();
@@ -501,23 +501,23 @@ public class DoodleView
     ThreadManager.getUIHandler().post(new DoodleView.2(this, paramLong));
   }
   
-  public void setTopLevelLayer(bngv parambngv)
+  public void setTopLevelLayer(bown parambown)
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     int i = 0;
     if (localIterator.hasNext())
     {
-      bngv localbngv = (bngv)localIterator.next();
-      if ((localbngv.a() <= i) || ((localbngv instanceof bnfx))) {
+      bown localbown = (bown)localIterator.next();
+      if ((localbown.a() <= i) || ((localbown instanceof bovp))) {
         break label64;
       }
-      i = localbngv.a();
+      i = localbown.a();
     }
     label64:
     for (;;)
     {
       break;
-      parambngv.c(i);
+      parambown.c(i);
       return;
     }
   }

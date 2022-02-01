@@ -7,9 +7,9 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import bkkq;
-import bkkz;
-import bksb;
+import blvy;
+import blwh;
+import bmdk;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -21,28 +21,28 @@ public class QQPimPluginProxyActivity
   {
     Intent localIntent = new Intent();
     localIntent.putExtras(paramBundle);
-    a(paramActivity, localIntent, paramBundle.getString(bksb.l), bksb.i, QQPimPluginProxyActivity.class, paramDialog);
+    a(paramActivity, localIntent, paramBundle.getString(bmdk.l), bmdk.i, QQPimPluginProxyActivity.class, paramDialog);
   }
   
   private static boolean a(Activity paramActivity, Intent paramIntent, String paramString1, String paramString2, Class<? extends Activity> paramClass, Dialog paramDialog)
   {
     paramIntent.putExtra("userQqResources", 2);
     paramIntent.putExtra("useSkinEngine", true);
-    bkkz localbkkz = new bkkz(1);
-    localbkkz.jdField_b_of_type_JavaLangString = "qqpim_plugin.apk";
-    localbkkz.d = "QQ同步助手插件";
-    localbkkz.jdField_a_of_type_JavaLangString = paramString1;
-    localbkkz.e = paramString2;
-    localbkkz.jdField_a_of_type_JavaLangClass = paramClass;
-    localbkkz.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localbkkz.jdField_b_of_type_Int = -1;
-    localbkkz.jdField_a_of_type_AndroidAppDialog = paramDialog;
-    localbkkz.c = 30000;
-    localbkkz.f = null;
-    localbkkz.jdField_b_of_type_Boolean = false;
-    bkkq.a(paramActivity, localbkkz);
+    blwh localblwh = new blwh(1);
+    localblwh.jdField_b_of_type_JavaLangString = "qqpim_plugin.apk";
+    localblwh.d = "QQ同步助手插件";
+    localblwh.jdField_a_of_type_JavaLangString = paramString1;
+    localblwh.e = paramString2;
+    localblwh.jdField_a_of_type_JavaLangClass = paramClass;
+    localblwh.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localblwh.jdField_b_of_type_Int = -1;
+    localblwh.jdField_a_of_type_AndroidAppDialog = paramDialog;
+    localblwh.c = 30000;
+    localblwh.f = null;
+    localblwh.jdField_b_of_type_Boolean = false;
+    blvy.a(paramActivity, localblwh);
     if (QLog.isColorLevel()) {
-      QLog.i(bksb.jdField_a_of_type_JavaLangString, 2, "QQPimPluginProxyActivity.openPluginActivityForResult() " + paramString2 + " IPluginManager.SUPPORT_NETWORKING " + true);
+      QLog.i(bmdk.jdField_a_of_type_JavaLangString, 2, "QQPimPluginProxyActivity.openPluginActivityForResult() " + paramString2 + " IPluginManager.SUPPORT_NETWORKING " + true);
     }
     return true;
   }
@@ -51,7 +51,7 @@ public class QQPimPluginProxyActivity
   {
     Intent localIntent = new Intent();
     localIntent.putExtras(paramBundle);
-    a(paramActivity, localIntent, paramBundle.getString(bksb.l), bksb.j, QQPimPluginProxyActivity.class, paramDialog);
+    a(paramActivity, localIntent, paramBundle.getString(bmdk.l), bmdk.j, QQPimPluginProxyActivity.class, paramDialog);
   }
   
   @Override

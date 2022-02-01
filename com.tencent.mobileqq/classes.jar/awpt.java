@@ -1,10 +1,26 @@
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
+import com.tencent.mobileqq.loverzone.LoveZoneTabRedDotView;
 
-public abstract interface awpt
+public class awpt
+  implements Drawable.Callback
 {
-  public abstract void a(Comments.Comment paramComment);
+  public awpt(LoveZoneTabRedDotView paramLoveZoneTabRedDotView) {}
   
-  public abstract void a(Comments.Comment paramComment, int paramInt, String paramString);
+  public void invalidateDrawable(Drawable paramDrawable)
+  {
+    this.a.invalidate();
+  }
+  
+  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
+  {
+    this.a.scheduleDrawable(paramDrawable, paramRunnable, paramLong);
+  }
+  
+  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
+  {
+    this.a.unscheduleDrawable(paramDrawable, paramRunnable);
+  }
 }
 
 

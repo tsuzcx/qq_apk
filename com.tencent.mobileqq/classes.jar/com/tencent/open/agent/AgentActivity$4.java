@@ -1,6 +1,7 @@
 package com.tencent.open.agent;
 
 import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
 class AgentActivity$4
   implements Runnable
@@ -9,7 +10,9 @@ class AgentActivity$4
   
   public void run()
   {
-    AgentActivity.b(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle, this.b, this.jdField_a_of_type_Boolean);
+    QLog.d("SDK_LOGIN.AgentActivity", 1, "addExpiredRunnable run expired");
+    AgentActivity.a(this.this$0);
+    AgentActivity.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle, this.b, this.jdField_a_of_type_Boolean);
   }
 }
 

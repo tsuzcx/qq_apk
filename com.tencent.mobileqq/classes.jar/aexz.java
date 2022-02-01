@@ -1,17 +1,16 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 
-final class aexz
-  implements aeya
+class aexz
+  implements behm
 {
-  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
+  aexz(aexy paramaexy) {}
+  
+  public void onCancel() {}
+  
+  public void onConfirm()
   {
-    paramString = new ProfileActivity.AllInOne(paramMessageRecord.senderuin, 46);
-    paramString.h = ContactUtils.getDiscussionMemberShowName(paramQQAppInterface, paramMessageRecord.frienduin, paramMessageRecord.senderuin);
-    return paramString;
+    aexr.a(this.a.jdField_a_of_type_Aexv.a).b();
+    aexv.a(this.a.jdField_a_of_type_Aexv, this.a.jdField_a_of_type_Int);
   }
 }
 

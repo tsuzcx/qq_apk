@@ -1,28 +1,20 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aual
-  implements bhle
+class aual
+  implements View.OnClickListener
 {
-  public aual(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
+  aual(auai paramauai) {}
   
-  public void onItemSelect(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 5)
-    {
-      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
-      paramView.putExtra("uin", "2747277822");
-      paramView.putExtra("fromQGamePub", true);
-      this.a.startActivity(paramView);
-    }
-    while (paramInt != 1) {
-      return;
-    }
-    QQGameFeedWebFragment.a(this.a, this.a.a);
-    this.a.getActivity().finish();
+    auai.a(this.a, true);
+    this.a.jdField_a_of_type_Aubl.f(true);
+    this.a.jdField_a_of_type_Aubl.d(false);
+    auai.a(this.a);
+    this.a.jdField_a_of_type_Atxa.f();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

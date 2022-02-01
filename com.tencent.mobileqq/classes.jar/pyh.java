@@ -1,47 +1,24 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule;
-import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
-import com.tencent.biz.pubaccount.readinjoy.position.SelectCityPresenter.1;
-import com.tencent.biz.pubaccount.readinjoy.position.SelectCityPresenter.2;
-import java.util.List;
-import mqq.util.WeakReference;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyFragment;
 
 public class pyh
-  implements pwl
+  extends BroadcastReceiver
 {
-  private SelectPositionModule jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule = pkm.a().a();
-  private WeakReference<pyi> jdField_a_of_type_MqqUtilWeakReference;
+  public pyh(ReadInJoyDailyFragment paramReadInJoyDailyFragment) {}
   
-  public pyh(pyi parampyi)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule.a(this);
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(parampyi);
-  }
-  
-  private void b(List<pyf> paramList)
-  {
-    pyi localpyi = (pyi)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if ((localpyi != null) && (paramList != null)) {
-      localpyi.a(paramList);
+    if (this.a.getActivity() != null)
+    {
+      if (ReadInJoyDailyFragment.a(this.a) != null) {
+        ReadInJoyDailyFragment.a(this.a).i();
+      }
+      ReadInJoyDailyFragment.a(this.a, true);
+      this.a.getActivity().finish();
     }
-  }
-  
-  public void a()
-  {
-    SelectPositionModule localSelectPositionModule = pkm.a().a();
-    if (localSelectPositionModule != null) {
-      b(localSelectPositionModule.a());
-    }
-  }
-  
-  public void a(SelectPositionModule.PositionData paramPositionData)
-  {
-    bijk.a().post(new SelectCityPresenter.2(this, paramPositionData));
-  }
-  
-  public void a(List<pyf> paramList)
-  {
-    bijk.a().post(new SelectCityPresenter.1(this, paramList));
   }
 }
 

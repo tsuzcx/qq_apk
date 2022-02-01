@@ -1,49 +1,32 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.HexUtil;
-import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.CommTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
+import com.tencent.gdtad.api.GdtAd;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class acgb
-  implements abyl
+class acgb
+  implements View.OnClickListener
 {
-  public int a()
-  {
-    return 10004;
-  }
+  acgb(acfz paramacfz) {}
   
-  public boolean a()
+  public void onClick(View paramView)
   {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
-    localCommTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    localCommTmp.c2c_type.set(1);
-    localCommTmp.svr_type.set(153);
-    paramRoutingHead.comm_tmp.set(localCommTmp);
-    paramMessageRecord = paramQQAppInterface.getMsgCache().m(paramMessageRecord.frienduin);
-    if (paramMessageRecord != null)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("MovieTicketTmpRoutingType", 2, "movieTicket------>" + HexUtil.bytes2HexStr(paramMessageRecord) + ",length:" + paramMessageRecord.length);
-      }
-      localCommTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
+    if (this.a.a() == null) {
+      Toast.makeText(this.a.getActivity().getApplicationContext(), "error", 0).show();
     }
-    paramRoutingHead.comm_tmp.set(localCommTmp);
-    return true;
-  }
-  
-  public int b()
-  {
-    return 8032;
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (!this.a.a().isLoaded()) {
+        Toast.makeText(this.a.getActivity().getApplicationContext(), "ad is not loaded", 0).show();
+      } else if (this.a.a().isInvalidated()) {
+        Toast.makeText(this.a.getActivity().getApplicationContext(), "ad is invalidated", 0).show();
+      } else {
+        this.a.a();
+      }
+    }
   }
 }
 

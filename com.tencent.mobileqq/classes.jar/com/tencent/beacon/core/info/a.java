@@ -21,6 +21,7 @@ public class a
   public static int d = 0;
   public static String e = "";
   public static boolean f;
+  private static boolean g;
   
   public static String a()
   {
@@ -278,7 +279,31 @@ public class a
     }
   }
   
-  public static boolean f(Context paramContext)
+  public static void f(Context paramContext)
+  {
+    try
+    {
+      f localf = f.a(paramContext);
+      String str = localf.a("last_app_version", "");
+      paramContext = a(paramContext);
+      if ((!j.b(str)) && (paramContext.equals(str)))
+      {
+        g = false;
+        return;
+      }
+      g = true;
+      localf = localf.b();
+      localf.a("last_app_version", paramContext).a();
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      d.b("[core] app version check fail!", new Object[0]);
+      d.a(paramContext);
+    }
+  }
+  
+  public static boolean g(Context paramContext)
   {
     boolean bool3 = false;
     boolean bool2 = false;
@@ -323,12 +348,12 @@ public class a
     }
   }
   
-  public static boolean g(Context paramContext)
+  public static boolean h(Context paramContext)
   {
     return a(paramContext, paramContext.getPackageName());
   }
   
-  public static boolean h(Context paramContext)
+  public static boolean i(Context paramContext)
   {
     try
     {
@@ -342,7 +367,7 @@ public class a
     finally {}
   }
   
-  public static boolean i(Context paramContext)
+  public static boolean j(Context paramContext)
   {
     bool2 = false;
     bool1 = false;
@@ -395,6 +420,11 @@ public class a
       d.b("[core] updateLocalAPPKEY fail!", new Object[0]);
       d.a(paramContext);
     }
+  }
+  
+  public static boolean k(Context paramContext)
+  {
+    return g;
   }
 }
 

@@ -1,19 +1,28 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import org.json.JSONObject;
 
-class bfgs
-  extends bfgp
+public class bfgs
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
-  TextView c;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  bfgs(bfgr parambfgr)
+  public bfgs() {}
+  
+  public bfgs(JSONObject paramJSONObject)
   {
-    super(parambfgr.a);
+    this.a = paramJSONObject.optString("serverip", "");
+    this.b = paramJSONObject.optString("serverport", "");
+    this.c = paramJSONObject.optString("checkkey", "");
+    this.d = paramJSONObject.optString("exists", "");
+    this.e = paramJSONObject.optString("uin", "");
+    this.f = paramJSONObject.optString("vid", "");
+    this.g = paramJSONObject.optString("fid", "");
+    this.h = paramJSONObject.optString("complete", "");
   }
 }
 

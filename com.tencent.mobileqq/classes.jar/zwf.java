@@ -1,38 +1,10 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.content.DialogInterface;
 
-class zwf
-  implements Animator.AnimatorListener
+public abstract interface zwf
 {
-  zwf(zwd paramzwd) {}
+  public abstract void a(DialogInterface paramDialogInterface);
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    if (zwd.a(this.a) != null) {
-      zwd.a(this.a).a();
-    }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (zwd.a(this.a) != null) {
-      zwd.a(this.a).a();
-    }
-    if (zwd.a(this.a) != null)
-    {
-      zwd.a(zwd.a(this.a), null);
-      zwd.a(this.a).a();
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (zwd.a(this.a) != null) {
-      zwd.a(this.a).a();
-    }
-  }
+  public abstract void l();
 }
 
 

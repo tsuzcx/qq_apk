@@ -1,26 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class aitx
-  implements DialogInterface.OnClickListener
+public class aitx
 {
-  aitx(aitt paramaitt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    try
-    {
-      paramDialogInterface.dismiss();
-      aitt.a(this.a, aitt.a(this.a), Long.valueOf(aitt.a(this.a)).longValue());
-      aitt.a(this.a);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      QLog.e("SDKEmotionSettingManager", 1, "setNegativeButton cancel error");
-    }
-  }
+  public int a;
+  public long a;
+  public ImageView a;
+  public TextView a;
+  public String a;
+  public TextView b;
+  public String b;
+  public TextView c;
+  public String c;
+  public TextView d;
 }
 
 

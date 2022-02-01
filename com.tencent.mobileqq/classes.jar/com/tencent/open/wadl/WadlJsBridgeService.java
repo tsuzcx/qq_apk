@@ -7,9 +7,9 @@ import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
-import bifn;
-import bldt;
-import bldu;
+import bjqp;
+import bmqk;
+import bmql;
 import cooperation.wadl.ipc.WadlParams;
 import mqq.app.AppService;
 
@@ -24,7 +24,7 @@ public class WadlJsBridgeService
   
   public WadlJsBridgeService()
   {
-    bifn.c(jdField_a_of_type_JavaLangString, "WadlJsBridgeService new instance");
+    bjqp.c(jdField_a_of_type_JavaLangString, "WadlJsBridgeService new instance");
   }
   
   private int a(String paramString)
@@ -51,7 +51,7 @@ public class WadlJsBridgeService
   public boolean handleMessage(Message paramMessage)
   {
     String str = (String)paramMessage.obj;
-    bifn.c(jdField_a_of_type_JavaLangString, "handleMessage what=" + paramMessage.what + "," + paramMessage.obj);
+    bjqp.c(jdField_a_of_type_JavaLangString, "handleMessage what=" + paramMessage.what + "," + paramMessage.obj);
     switch (paramMessage.what)
     {
     case 2: 
@@ -63,16 +63,16 @@ public class WadlJsBridgeService
       {
         stopSelf(paramMessage.arg1);
         return false;
-        bldt.a().b(4, str);
+        bmqk.a().b(4, str);
       }
     case 5: 
-      bldt.a().a(4, str);
+      bmqk.a().a(4, str);
       return false;
     }
     paramMessage = new WadlParams(str, "");
     paramMessage.d = 4;
     paramMessage.p = "biz_src_zf_games";
-    bldt.a().b(paramMessage);
+    bmqk.a().b(paramMessage);
     return false;
   }
   
@@ -84,7 +84,7 @@ public class WadlJsBridgeService
   public void onCreate()
   {
     super.onCreate();
-    bifn.c(jdField_a_of_type_JavaLangString, "onCreate...");
+    bjqp.c(jdField_a_of_type_JavaLangString, "onCreate...");
     HandlerThread localHandlerThread = new HandlerThread(this.b, 10);
     localHandlerThread.start();
     this.jdField_a_of_type_AndroidOsLooper = localHandlerThread.getLooper();
@@ -94,17 +94,17 @@ public class WadlJsBridgeService
   public void onDestroy()
   {
     super.onDestroy();
-    bifn.c(jdField_a_of_type_JavaLangString, "Service is Destroyed");
+    bjqp.c(jdField_a_of_type_JavaLangString, "Service is Destroyed");
   }
   
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
-    bifn.c(jdField_a_of_type_JavaLangString, "onStartCommand flags=," + paramInt1 + ",startId=" + paramInt2 + ",intent=" + paramIntent);
+    bjqp.c(jdField_a_of_type_JavaLangString, "onStartCommand flags=," + paramInt1 + ",startId=" + paramInt2 + ",intent=" + paramIntent);
     if (paramIntent != null)
     {
       String str = paramIntent.getStringExtra("ACTIONNAME");
       paramIntent = paramIntent.getStringExtra("appid");
-      bifn.c(jdField_a_of_type_JavaLangString, "onStartCommand actionName= " + str + ",appId=" + paramIntent);
+      bjqp.c(jdField_a_of_type_JavaLangString, "onStartCommand actionName= " + str + ",appId=" + paramIntent);
       Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
       localMessage.what = a(str);
       localMessage.obj = paramIntent;

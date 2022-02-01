@@ -7,7 +7,7 @@ class BaseChatPie$51
   
   public void run()
   {
-    this.this$0.playPersonalSound(2131230732);
+    this.this$0.switchReceiptMode();
   }
 }
 

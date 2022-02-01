@@ -1,29 +1,17 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class afmy
-  extends afng
+  implements View.OnClickListener
 {
-  public int a;
-  public int b;
-  public int c;
+  public afmy(ReminderListFragment paramReminderListFragment) {}
   
-  public afmy(int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (paramObject == null) {}
-    do
-    {
-      do
-      {
-        return false;
-      } while (!(paramObject instanceof afmy));
-      paramObject = (afmy)paramObject;
-    } while ((this.a != paramObject.a) || (this.c != paramObject.c) || (this.b != paramObject.b));
-    return true;
+    ReminderListFragment.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

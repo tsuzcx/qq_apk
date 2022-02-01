@@ -1,84 +1,119 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.apollo.view.ApolloGameProcessBar;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
 
 public class amlf
-  extends QQCustomDialog
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ApolloGameProcessBar jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameProcessBar;
+  private static amlf jdField_a_of_type_Amlf;
+  private Map<Long, amlg> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private Map<Long, Long> b = new HashMap();
   
-  public amlf(Context paramContext)
+  public static amlf a()
   {
-    super(paramContext, 2131755202);
-    a(paramContext);
+    if (jdField_a_of_type_Amlf == null) {
+      jdField_a_of_type_Amlf = new amlf();
+    }
+    return jdField_a_of_type_Amlf;
   }
   
-  @TargetApi(16)
-  private void a(Context paramContext)
+  public int a(long paramLong)
   {
-    LinearLayout localLinearLayout = new LinearLayout(paramContext);
-    Object localObject = new FrameLayout.LayoutParams(-2, -2, 17);
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameProcessBar = new ApolloGameProcessBar(paramContext, 2130838642, 2130838644);
-    localObject = new LinearLayout.LayoutParams(AIOUtils.dp2px(80.0F, paramContext.getResources()), AIOUtils.dp2px(80.0F, paramContext.getResources()));
-    ((LinearLayout.LayoutParams)localObject).setMargins(AIOUtils.dp2px(60.5F, paramContext.getResources()), 0, AIOUtils.dp2px(60.5F, paramContext.getResources()), 0);
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameProcessBar.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameProcessBar);
-    localObject = new TextView(paramContext);
-    ((TextView)localObject).setText(amtj.a(2131699539));
-    ((TextView)localObject).setTextSize(16.0F);
-    ((TextView)localObject).setTextColor(Color.parseColor("#ababab"));
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.setMargins(0, AIOUtils.dp2px(10.0F, paramContext.getResources()), 0, 0);
-    localLayoutParams.gravity = 1;
-    ((TextView)localObject).setLayoutParams(localLayoutParams);
-    localLinearLayout.addView((View)localObject);
-    this.jdField_a_of_type_AndroidWidgetButton = new Button(paramContext);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(amtj.a(2131699530));
-    this.jdField_a_of_type_AndroidWidgetButton.setTextSize(14.0F);
-    this.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#ffffff"));
-    this.jdField_a_of_type_AndroidWidgetButton.setBackground(paramContext.getResources().getDrawable(2130838643));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new amlg(this));
-    localObject = new LinearLayout.LayoutParams(AIOUtils.dp2px(100.0F, paramContext.getResources()), AIOUtils.dp2px(30.0F, paramContext.getResources()));
-    ((LinearLayout.LayoutParams)localObject).setMargins(0, AIOUtils.dp2px(35.0F, paramContext.getResources()), 0, 0);
-    ((LinearLayout.LayoutParams)localObject).gravity = 1;
-    this.jdField_a_of_type_AndroidWidgetButton.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetButton);
-    getWindow().setDimAmount(0.85F);
-    getWindow().setGravity(17);
-    setContentView(localLinearLayout);
-    setCanceledOnTouchOutside(false);
-    setCancelable(false);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new amlh(this));
+    long l = System.currentTimeMillis();
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong)))
+    {
+      amlg localamlg = (amlg)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
+      if (l - localamlg.jdField_a_of_type_Long < 3600000L)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("AntiFraud", 4, "Found from local cache, the fraud flag is true");
+        }
+        return localamlg.jdField_a_of_type_Int;
+      }
+      if (QLog.isDevelopLevel()) {
+        QLog.d("AntiFraud", 4, "Found from local cache, timestamp is out of data");
+      }
+      this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
+      return 0;
+    }
+    if (this.b.containsKey(Long.valueOf(paramLong)))
+    {
+      if (l - ((Long)this.b.get(Long.valueOf(paramLong))).longValue() < 43200000L)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("AntiFraud", 4, "Found from local cache, the fraud flag is false");
+        }
+        return 0;
+      }
+      if (QLog.isDevelopLevel()) {
+        QLog.d("AntiFraud", 4, "Found from local cache, timestamp is out of data");
+      }
+      this.b.remove(Long.valueOf(paramLong));
+      return 0;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AntiFraud", 4, "use default value, false");
+    }
+    return 0;
   }
   
-  public void a(View.OnClickListener paramOnClickListener)
+  public void a(long paramLong)
   {
-    if (this.jdField_a_of_type_AndroidWidgetButton != null) {
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramOnClickListener);
+    long l = System.currentTimeMillis();
+    if (this.b.size() > 500) {
+      this.b.clear();
+    }
+    this.b.put(Long.valueOf(paramLong), Long.valueOf(l));
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong))) {
+      this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
     }
   }
   
-  public void setProgress(int paramInt)
+  public void a(long paramLong, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameProcessBar != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameProcessBar.setProgress(paramInt);
+    long l = System.currentTimeMillis();
+    amlg localamlg = new amlg(this);
+    localamlg.jdField_a_of_type_Int = paramInt;
+    localamlg.jdField_a_of_type_Long = l;
+    if (this.jdField_a_of_type_JavaUtilMap.size() > 500) {
+      this.jdField_a_of_type_JavaUtilMap.clear();
     }
+    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), localamlg);
+    if (this.b.containsKey(Long.valueOf(paramLong))) {
+      this.b.remove(Long.valueOf(paramLong));
+    }
+  }
+  
+  public boolean a(long paramLong)
+  {
+    long l = System.currentTimeMillis();
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong)))
+    {
+      if (l - ((amlg)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong))).jdField_a_of_type_Long > 3600000L)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("AntiFraud", 4, "FraudUin, Found from local cache, timestamp is out of data");
+        }
+        this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
+        return true;
+      }
+      return false;
+    }
+    if (this.b.containsKey(Long.valueOf(paramLong)))
+    {
+      if (l - ((Long)this.b.get(Long.valueOf(paramLong))).longValue() > 43200000L)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("AntiFraud", 4, "NonFraudUin, Found from local cache, timestamp is out of data");
+        }
+        this.b.remove(Long.valueOf(paramLong));
+        return true;
+      }
+      return false;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AntiFraud", 4, "Out of date, use default value, true!");
+    }
+    return true;
   }
 }
 

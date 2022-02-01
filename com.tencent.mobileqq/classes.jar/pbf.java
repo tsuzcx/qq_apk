@@ -1,6 +1,6 @@
 public abstract interface pbf
 {
-  public abstract void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2);
+  public abstract void a(boolean paramBoolean);
 }
 
 

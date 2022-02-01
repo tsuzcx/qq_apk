@@ -1,27 +1,17 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multicard.MultiCardRootLayout;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import org.json.JSONObject;
 
 public class awbk
-  implements bjqp
+  implements twh
 {
-  public awbk(MultiCardRootLayout paramMultiCardRootLayout) {}
+  public awbk(UiApiPlugin paramUiApiPlugin) {}
   
-  public boolean a(MotionEvent paramMotionEvent)
+  public void a(String paramString, JSONObject paramJSONObject)
   {
-    int i = paramMotionEvent.getActionMasked();
-    if (MultiCardRootLayout.a(this.a) != null)
-    {
-      awbm localawbm = (awbm)MultiCardRootLayout.a(this.a).get();
-      if ((localawbm != null) && (localawbm.a(i))) {
-        return true;
-      }
+    if ((!TextUtils.isEmpty(paramString)) && (paramJSONObject != null)) {
+      this.a.callJs(paramString, new String[] { paramJSONObject.toString() });
     }
-    if (MultiCardRootLayout.a(this.a) != null) {
-      MultiCardRootLayout.a(this.a).onTouchEvent(paramMotionEvent);
-    }
-    return false;
   }
 }
 

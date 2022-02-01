@@ -1,18 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayoutNew;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
 
 public class bnyt
-  implements ValueAnimator.AnimatorUpdateListener
+  implements bnvc
 {
-  public bnyt(QIMCameraCaptureButtonLayoutNew paramQIMCameraCaptureButtonLayoutNew) {}
+  public bnyt(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt, bnwd parambnwd)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a.setCenterScaleValue(f);
+    if ((parambnwd instanceof bnwo)) {
+      this.a.a = ((bnwo)parambnwd);
+    }
   }
+  
+  public void aF_() {}
 }
 
 

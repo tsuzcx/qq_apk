@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo;
 
-import bbpv;
+import bcwp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.transfile.HttpNetReq;
 import com.tencent.mobileqq.transfile.INetEngine;
@@ -34,7 +34,7 @@ public class PtvTemplateManager$5
       QLog.i("PtvTemplateManager", 2, "preDownloadTemplates  null!");
       return;
       HttpNetReq localHttpNetReq = new HttpNetReq();
-      localHttpNetReq.mCallback = new bbpv(this);
+      localHttpNetReq.mCallback = new bcwp(this);
       localHttpNetReq.mReqUrl = this.a.resurl;
       localHttpNetReq.mHttpMethod = 0;
       localHttpNetReq.mOutPath = new File(PtvTemplateManager.a, this.a.name).getPath();

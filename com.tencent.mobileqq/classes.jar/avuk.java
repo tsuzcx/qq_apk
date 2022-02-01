@@ -1,52 +1,58 @@
-import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
+import com.tencent.hlyyb.downloader.Downloader;
+import com.tencent.hlyyb.downloader.DownloaderTask;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class avuk
+class avuk
+  implements avui
 {
-  private int jdField_a_of_type_Int;
-  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  avuk(avuj paramavuj) {}
   
-  public avuk(int paramInt1, String paramString1, String paramString2, MsgBackupUserData paramMsgBackupUserData, int paramInt2)
+  public void a(DownloaderTask paramDownloaderTask)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
-    this.jdField_b_of_type_Int = paramInt2;
+    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskCompleted url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSavePath() }));
+    if (avuj.a(this.a) != null) {
+      avuj.a(this.a).deleteTask(paramDownloaderTask, false);
+    }
+    if ((avuj.a(this.a) != null) && (avuj.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (avuj.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
+      ((avuh)avuj.a(this.a).get(paramDownloaderTask.getUrl())).a();
+    }
+    avuj.a(this.a, paramDownloaderTask.getUrl());
   }
   
-  public int a()
+  public void b(DownloaderTask paramDownloaderTask)
   {
-    return this.jdField_a_of_type_Int;
+    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskDetected url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSaveDir() }));
   }
   
-  public MsgBackupUserData a()
+  public void c(DownloaderTask paramDownloaderTask)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
+    QLog.e("DownloadManager_Now_for_qq", 1, String.format("onTaskFailed url=%s failCode=%s failInfo=%s", new Object[] { paramDownloaderTask.getUrl(), Integer.valueOf(paramDownloaderTask.getFailCode()), paramDownloaderTask.getFailInfo() }));
+    if (avuj.a(this.a) != null) {
+      avuj.a(this.a).deleteTask(paramDownloaderTask, false);
+    }
+    if ((avuj.a(this.a) != null) && (avuj.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (avuj.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
+      ((avuh)avuj.a(this.a).get(paramDownloaderTask.getUrl())).a(paramDownloaderTask.getFailCode(), paramDownloaderTask.getFailCode(), "failed");
+    }
+    avuj.a(this.a, paramDownloaderTask.getUrl());
   }
   
-  public String a()
+  public void d(DownloaderTask paramDownloaderTask)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskPending url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSaveDir() }));
   }
   
-  public int b()
+  public void e(DownloaderTask paramDownloaderTask)
   {
-    return this.jdField_b_of_type_Int;
+    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskStarted url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSaveDir() }));
   }
   
-  public String b()
+  public void f(DownloaderTask paramDownloaderTask)
   {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("--MsgBackupQryStateRsp--");
-    localStringBuilder.append(",state:").append(this.jdField_a_of_type_Int).append(",token:").append(this.jdField_a_of_type_JavaLangString).append(",encryptKey:").append(this.jdField_b_of_type_JavaLangString).append(",userData:").append(this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData).append(",bizType:").append(this.jdField_b_of_type_Int);
-    return localStringBuilder.toString();
+    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskReceived url=%s percent=%s", new Object[] { paramDownloaderTask.getUrl(), Integer.valueOf(paramDownloaderTask.getPercentage()) }));
+    if ((avuj.a(this.a) != null) && (avuj.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (avuj.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
+      ((avuh)avuj.a(this.a).get(paramDownloaderTask.getUrl())).a(paramDownloaderTask.getReceivedLength(), paramDownloaderTask.getTotalLength(), paramDownloaderTask.getPercentage());
+    }
   }
 }
 

@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.apollo.sdk;
 
-import ambs;
-import ambw;
-import amcl;
+import anda;
+import ande;
+import andt;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 public class CmShowViewListener$1
   implements Runnable
 {
-  public CmShowViewListener$1(amcl paramamcl, int paramInt1, int paramInt2) {}
+  public CmShowViewListener$1(andt paramandt, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if (amcl.a(this.this$0).get() != null) {
-      ((ambw)amcl.a(this.this$0).get()).a(amcl.a(this.this$0));
+    if (andt.a(this.this$0).get() != null) {
+      ((ande)andt.a(this.this$0).get()).a(andt.a(this.this$0));
     }
     QLog.d("CmShow_ApolloDrawerInfoViewListener", 1, new Object[] { "onSurfaceReady w:", Integer.valueOf(this.a), " h:", Integer.valueOf(this.b) });
-    if (amcl.a(this.this$0) != null) {
-      amcl.a(this.this$0).a(this.a, this.b);
+    if (andt.a(this.this$0) != null) {
+      andt.a(this.this$0).a(this.a, this.b);
     }
   }
 }

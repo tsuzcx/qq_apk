@@ -1,24 +1,74 @@
-import com.google.gson.ExclusionStrategy;
-import com.google.gson.FieldAttributes;
-import java.lang.reflect.ParameterizedType;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-final class anmy
-  implements ExclusionStrategy
+public class anmy
+  implements ampw, ampy
 {
-  public boolean shouldSkipClass(Class<?> paramClass)
+  public WeakReference<BaseChatPie> a;
+  private WeakReference<ampw> b;
+  
+  public anmy(BaseChatPie paramBaseChatPie)
   {
-    return false;
+    if (((paramBaseChatPie instanceof agab)) || ((paramBaseChatPie instanceof TroopChatPie)) || ((paramBaseChatPie instanceof afzr)) || ((paramBaseChatPie instanceof aibs))) {
+      this.a = new WeakReference(paramBaseChatPie);
+    }
   }
   
-  public boolean shouldSkipField(FieldAttributes paramFieldAttributes)
+  public void a(int paramInt1, int paramInt2, String paramString)
   {
-    if ((paramFieldAttributes.hasModifier(128)) || (paramFieldAttributes.hasModifier(8)) || (paramFieldAttributes.hasModifier(64))) {
-      return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloBackgroundViewListener", 2, "onCompleteRender");
     }
-    if ((anmw.a(paramFieldAttributes.getDeclaredClass())) || (anmw.a(paramFieldAttributes.getDeclaredClass().getComponentType())) || (((paramFieldAttributes.getDeclaredType() instanceof ParameterizedType)) && (anmw.a(((ParameterizedType)paramFieldAttributes.getDeclaredType()).getActualTypeArguments()[0])))) {
-      return false;
+    if ((this.b != null) && (this.b.get() != null)) {
+      ((ampw)this.b.get()).a(paramInt1, paramInt2, paramString);
     }
-    return paramFieldAttributes.getAnnotation(anlz.class) == null;
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloBackgroundViewListener", 2, "onStartRender");
+    }
+    if ((this.b != null) && (this.b.get() != null)) {
+      ((ampw)this.b.get()).a(paramInt, paramString);
+    }
+  }
+  
+  public void a(ampw paramampw)
+  {
+    this.b = new WeakReference(paramampw);
+  }
+  
+  public void onNotifyLongTouch(String paramString) {}
+  
+  public void onNotifyStatusChanged(int paramInt, String paramString) {}
+  
+  public void onSurfaceReady(int paramInt1, int paramInt2)
+  {
+    Object localObject2 = (BaseChatPie)this.a.get();
+    if ((localObject2 == null) || (((BaseChatPie)localObject2).mApolloViewController == null)) {}
+    Object localObject1;
+    do
+    {
+      do
+      {
+        return;
+        localObject1 = ((BaseChatPie)localObject2).app;
+        localObject2 = ((BaseChatPie)localObject2).mApolloViewController.a();
+      } while ((localObject1 == null) || (localObject2 == null));
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloBackgroundViewListener", 2, "surfaceView.getWidth():" + ((ApolloTextureView)localObject2).getWidth());
+      }
+      ((ApolloTextureView)localObject2).getRenderImpl().a(1, null, 0, 1.0F, 250.0F, 0.0F);
+      ((ApolloTextureView)localObject2).getRenderImpl().a(1000L);
+      localObject1 = ((anch)((AppInterface)localObject1).getManager(QQManagerFactory.SPRITE_SCRIPT_MANAGER)).a();
+    } while (localObject1 == null);
+    ((anby)localObject1).b();
   }
 }
 

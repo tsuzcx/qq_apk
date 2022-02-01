@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import bcra;
-import bcsu;
+import bdxz;
+import bdzt;
 import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
-import soc;
+import tbn;
 
 public class ReadInJoySkinSlideDownView$1$1
   implements Runnable
 {
-  public ReadInJoySkinSlideDownView$1$1(soc paramsoc, bcra parambcra) {}
+  public ReadInJoySkinSlideDownView$1$1(tbn paramtbn, bdxz parambdxz) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Soc.a.a.a((bcsu)this.jdField_a_of_type_Bcra);
-    this.jdField_a_of_type_Soc.a.a.a();
+    this.jdField_a_of_type_Tbn.a.a.a((bdzt)this.jdField_a_of_type_Bdxz);
+    this.jdField_a_of_type_Tbn.a.a.a();
   }
 }
 

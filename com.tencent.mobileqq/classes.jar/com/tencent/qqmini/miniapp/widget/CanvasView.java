@@ -404,452 +404,442 @@ public class CanvasView
     //   5: astore 18
     //   7: aload 18
     //   9: invokestatic 586	com/tencent/qqmini/sdk/core/utils/StringUtil:isEmpty	(Ljava/lang/String;)Z
-    //   12: ifne +802 -> 814
-    //   15: aload 18
-    //   17: ldc_w 588
-    //   20: invokevirtual 591	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   23: ifeq +346 -> 369
-    //   26: aload_0
-    //   27: invokespecial 311	com/tencent/qqmini/miniapp/widget/CanvasView:getMiniAppContext	()Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
-    //   30: ldc_w 593
-    //   33: invokeinterface 597 2 0
-    //   38: checkcast 593	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager
-    //   41: aload 18
-    //   43: invokevirtual 600	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager:getAbsolutePath	(Ljava/lang/String;)Ljava/lang/String;
-    //   46: astore 18
-    //   48: aload 18
-    //   50: invokestatic 586	com/tencent/qqmini/sdk/core/utils/StringUtil:isEmpty	(Ljava/lang/String;)Z
-    //   53: ifne +315 -> 368
-    //   56: aload_2
-    //   57: iconst_1
-    //   58: dconst_0
-    //   59: invokevirtual 342	org/json/JSONArray:optDouble	(ID)D
-    //   62: d2f
-    //   63: fstore 9
-    //   65: aload_2
-    //   66: iconst_2
-    //   67: dconst_0
-    //   68: invokevirtual 342	org/json/JSONArray:optDouble	(ID)D
-    //   71: d2f
-    //   72: fstore 10
-    //   74: aload_2
-    //   75: iconst_3
-    //   76: dconst_0
-    //   77: invokevirtual 342	org/json/JSONArray:optDouble	(ID)D
-    //   80: d2f
-    //   81: fstore 6
-    //   83: aload_2
-    //   84: iconst_4
-    //   85: dconst_0
-    //   86: invokevirtual 342	org/json/JSONArray:optDouble	(ID)D
-    //   89: d2f
-    //   90: fstore 5
-    //   92: aload_2
-    //   93: iconst_5
-    //   94: dconst_0
-    //   95: invokevirtual 342	org/json/JSONArray:optDouble	(ID)D
-    //   98: d2i
-    //   99: istore 12
-    //   101: aload_2
-    //   102: bipush 6
-    //   104: dconst_0
-    //   105: invokevirtual 342	org/json/JSONArray:optDouble	(ID)D
-    //   108: d2i
-    //   109: istore 13
-    //   111: aload_2
-    //   112: bipush 7
-    //   114: dconst_0
-    //   115: invokevirtual 342	org/json/JSONArray:optDouble	(ID)D
-    //   118: d2i
-    //   119: istore 14
-    //   121: aload_2
-    //   122: bipush 8
-    //   124: dconst_0
-    //   125: invokevirtual 342	org/json/JSONArray:optDouble	(ID)D
-    //   128: d2i
-    //   129: istore 15
-    //   131: new 602	android/graphics/BitmapFactory$Options
-    //   134: dup
-    //   135: invokespecial 603	android/graphics/BitmapFactory$Options:<init>	()V
-    //   138: astore 19
-    //   140: aload 18
-    //   142: invokestatic 608	com/tencent/qqmini/sdk/core/utils/ImageUtil:getExifOrientation	(Ljava/lang/String;)I
-    //   145: istore 16
-    //   147: fload 6
-    //   149: fstore_3
+    //   12: ifne +777 -> 789
+    //   15: aload_0
+    //   16: invokespecial 311	com/tencent/qqmini/miniapp/widget/CanvasView:getMiniAppContext	()Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
+    //   19: ldc_w 588
+    //   22: invokeinterface 592 2 0
+    //   27: checkcast 588	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager
+    //   30: aload 18
+    //   32: invokevirtual 595	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager:getAbsolutePath	(Ljava/lang/String;)Ljava/lang/String;
+    //   35: astore 18
+    //   37: aload 18
+    //   39: invokestatic 586	com/tencent/qqmini/sdk/core/utils/StringUtil:isEmpty	(Ljava/lang/String;)Z
+    //   42: ifne +315 -> 357
+    //   45: aload_2
+    //   46: iconst_1
+    //   47: dconst_0
+    //   48: invokevirtual 342	org/json/JSONArray:optDouble	(ID)D
+    //   51: d2f
+    //   52: fstore 9
+    //   54: aload_2
+    //   55: iconst_2
+    //   56: dconst_0
+    //   57: invokevirtual 342	org/json/JSONArray:optDouble	(ID)D
+    //   60: d2f
+    //   61: fstore 10
+    //   63: aload_2
+    //   64: iconst_3
+    //   65: dconst_0
+    //   66: invokevirtual 342	org/json/JSONArray:optDouble	(ID)D
+    //   69: d2f
+    //   70: fstore 6
+    //   72: aload_2
+    //   73: iconst_4
+    //   74: dconst_0
+    //   75: invokevirtual 342	org/json/JSONArray:optDouble	(ID)D
+    //   78: d2f
+    //   79: fstore 5
+    //   81: aload_2
+    //   82: iconst_5
+    //   83: dconst_0
+    //   84: invokevirtual 342	org/json/JSONArray:optDouble	(ID)D
+    //   87: d2i
+    //   88: istore 12
+    //   90: aload_2
+    //   91: bipush 6
+    //   93: dconst_0
+    //   94: invokevirtual 342	org/json/JSONArray:optDouble	(ID)D
+    //   97: d2i
+    //   98: istore 13
+    //   100: aload_2
+    //   101: bipush 7
+    //   103: dconst_0
+    //   104: invokevirtual 342	org/json/JSONArray:optDouble	(ID)D
+    //   107: d2i
+    //   108: istore 14
+    //   110: aload_2
+    //   111: bipush 8
+    //   113: dconst_0
+    //   114: invokevirtual 342	org/json/JSONArray:optDouble	(ID)D
+    //   117: d2i
+    //   118: istore 15
+    //   120: new 597	android/graphics/BitmapFactory$Options
+    //   123: dup
+    //   124: invokespecial 598	android/graphics/BitmapFactory$Options:<init>	()V
+    //   127: astore 19
+    //   129: aload 18
+    //   131: invokestatic 603	com/tencent/qqmini/sdk/core/utils/ImageUtil:getExifOrientation	(Ljava/lang/String;)I
+    //   134: istore 16
+    //   136: fload 6
+    //   138: fstore_3
+    //   139: aload 19
+    //   141: iconst_1
+    //   142: putfield 606	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   145: fload 6
+    //   147: fstore_3
+    //   148: aload 18
     //   150: aload 19
-    //   152: iconst_1
-    //   153: putfield 611	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   152: invokestatic 612	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   155: pop
     //   156: fload 6
-    //   158: fstore_3
-    //   159: aload 18
-    //   161: aload 19
-    //   163: invokestatic 617	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   166: pop
-    //   167: fload 6
-    //   169: fconst_0
-    //   170: fcmpg
-    //   171: ifle +17 -> 188
-    //   174: fload 5
-    //   176: fstore_3
-    //   177: fload 6
-    //   179: fstore 4
-    //   181: fload 5
-    //   183: fconst_0
-    //   184: fcmpg
-    //   185: ifgt +22 -> 207
-    //   188: iload 14
-    //   190: ifle +193 -> 383
-    //   193: iload 15
-    //   195: ifle +188 -> 383
-    //   198: iload 14
-    //   200: i2f
-    //   201: fstore 4
-    //   203: iload 15
-    //   205: i2f
-    //   206: fstore_3
-    //   207: fload 4
-    //   209: fconst_0
-    //   210: fcmpl
-    //   211: ifle +157 -> 368
-    //   214: fload_3
-    //   215: fconst_0
-    //   216: fcmpl
-    //   217: ifle +151 -> 368
-    //   220: aload 19
-    //   222: iconst_1
-    //   223: putfield 620	android/graphics/BitmapFactory$Options:inDither	Z
-    //   226: iload 14
-    //   228: ifle +300 -> 528
-    //   231: iload 15
-    //   233: ifle +295 -> 528
-    //   236: aload 18
-    //   238: iconst_0
-    //   239: invokestatic 626	android/graphics/BitmapRegionDecoder:newInstance	(Ljava/lang/String;Z)Landroid/graphics/BitmapRegionDecoder;
-    //   242: astore 18
-    //   244: aload 18
-    //   246: aload_0
-    //   247: iload 12
-    //   249: iload 13
-    //   251: iload 14
-    //   253: iload 15
-    //   255: aload 19
-    //   257: iload 16
-    //   259: invokespecial 630	com/tencent/qqmini/miniapp/widget/CanvasView:getCropRect	(IIIILandroid/graphics/BitmapFactory$Options;I)Landroid/graphics/Rect;
-    //   262: aload 19
-    //   264: invokevirtual 634	android/graphics/BitmapRegionDecoder:decodeRegion	(Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   267: astore_2
-    //   268: aload 18
-    //   270: invokevirtual 637	android/graphics/BitmapRegionDecoder:recycle	()V
-    //   273: aload_2
-    //   274: ifnull +94 -> 368
-    //   277: aload_2
-    //   278: astore 18
-    //   280: iload 16
-    //   282: ifeq +11 -> 293
-    //   285: iload 16
-    //   287: aload_2
-    //   288: invokestatic 641	com/tencent/qqmini/sdk/core/utils/ImageUtil:rotaingImageView	(ILandroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
-    //   291: astore 18
-    //   293: new 348	android/graphics/RectF
-    //   296: dup
-    //   297: invokespecial 349	android/graphics/RectF:<init>	()V
-    //   300: astore_2
+    //   158: fconst_0
+    //   159: fcmpg
+    //   160: ifle +17 -> 177
+    //   163: fload 5
+    //   165: fstore_3
+    //   166: fload 6
+    //   168: fstore 4
+    //   170: fload 5
+    //   172: fconst_0
+    //   173: fcmpg
+    //   174: ifgt +22 -> 196
+    //   177: iload 14
+    //   179: ifle +179 -> 358
+    //   182: iload 15
+    //   184: ifle +174 -> 358
+    //   187: iload 14
+    //   189: i2f
+    //   190: fstore 4
+    //   192: iload 15
+    //   194: i2f
+    //   195: fstore_3
+    //   196: fload 4
+    //   198: fconst_0
+    //   199: fcmpl
+    //   200: ifle +157 -> 357
+    //   203: fload_3
+    //   204: fconst_0
+    //   205: fcmpl
+    //   206: ifle +151 -> 357
+    //   209: aload 19
+    //   211: iconst_1
+    //   212: putfield 615	android/graphics/BitmapFactory$Options:inDither	Z
+    //   215: iload 14
+    //   217: ifle +286 -> 503
+    //   220: iload 15
+    //   222: ifle +281 -> 503
+    //   225: aload 18
+    //   227: iconst_0
+    //   228: invokestatic 621	android/graphics/BitmapRegionDecoder:newInstance	(Ljava/lang/String;Z)Landroid/graphics/BitmapRegionDecoder;
+    //   231: astore 18
+    //   233: aload 18
+    //   235: aload_0
+    //   236: iload 12
+    //   238: iload 13
+    //   240: iload 14
+    //   242: iload 15
+    //   244: aload 19
+    //   246: iload 16
+    //   248: invokespecial 625	com/tencent/qqmini/miniapp/widget/CanvasView:getCropRect	(IIIILandroid/graphics/BitmapFactory$Options;I)Landroid/graphics/Rect;
+    //   251: aload 19
+    //   253: invokevirtual 629	android/graphics/BitmapRegionDecoder:decodeRegion	(Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   256: astore_2
+    //   257: aload 18
+    //   259: invokevirtual 632	android/graphics/BitmapRegionDecoder:recycle	()V
+    //   262: aload_2
+    //   263: ifnull +94 -> 357
+    //   266: aload_2
+    //   267: astore 18
+    //   269: iload 16
+    //   271: ifeq +11 -> 282
+    //   274: iload 16
+    //   276: aload_2
+    //   277: invokestatic 636	com/tencent/qqmini/sdk/core/utils/ImageUtil:rotaingImageView	(ILandroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
+    //   280: astore 18
+    //   282: new 348	android/graphics/RectF
+    //   285: dup
+    //   286: invokespecial 349	android/graphics/RectF:<init>	()V
+    //   289: astore_2
+    //   290: aload_2
+    //   291: aload_0
+    //   292: fload 9
+    //   294: f2d
+    //   295: invokevirtual 346	com/tencent/qqmini/miniapp/widget/CanvasView:mpx2px	(D)F
+    //   298: putfield 352	android/graphics/RectF:left	F
     //   301: aload_2
     //   302: aload_0
-    //   303: fload 9
+    //   303: fload 10
     //   305: f2d
     //   306: invokevirtual 346	com/tencent/qqmini/miniapp/widget/CanvasView:mpx2px	(D)F
-    //   309: putfield 352	android/graphics/RectF:left	F
+    //   309: putfield 355	android/graphics/RectF:top	F
     //   312: aload_2
-    //   313: aload_0
-    //   314: fload 10
-    //   316: f2d
-    //   317: invokevirtual 346	com/tencent/qqmini/miniapp/widget/CanvasView:mpx2px	(D)F
-    //   320: putfield 355	android/graphics/RectF:top	F
-    //   323: aload_2
-    //   324: aload_2
-    //   325: getfield 352	android/graphics/RectF:left	F
-    //   328: aload_0
-    //   329: fload 4
-    //   331: f2d
-    //   332: invokevirtual 346	com/tencent/qqmini/miniapp/widget/CanvasView:mpx2px	(D)F
-    //   335: fadd
-    //   336: putfield 358	android/graphics/RectF:right	F
-    //   339: aload_2
-    //   340: aload_2
-    //   341: getfield 355	android/graphics/RectF:top	F
-    //   344: aload_0
-    //   345: fload_3
-    //   346: f2d
-    //   347: invokevirtual 346	com/tencent/qqmini/miniapp/widget/CanvasView:mpx2px	(D)F
-    //   350: fadd
-    //   351: putfield 361	android/graphics/RectF:bottom	F
-    //   354: aload_1
-    //   355: aload 18
-    //   357: aconst_null
-    //   358: aload_2
-    //   359: aconst_null
-    //   360: invokevirtual 645	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/RectF;Landroid/graphics/Paint;)V
-    //   363: aload 18
-    //   365: invokevirtual 648	android/graphics/Bitmap:recycle	()V
-    //   368: return
-    //   369: aload_0
-    //   370: getfield 255	com/tencent/qqmini/miniapp/widget/CanvasView:mApkgInfo	Lcom/tencent/qqmini/sdk/launcher/core/model/ApkgInfo;
-    //   373: aload 18
-    //   375: invokevirtual 653	com/tencent/qqmini/sdk/launcher/core/model/ApkgInfo:getChildFileAbsolutePath	(Ljava/lang/String;)Ljava/lang/String;
-    //   378: astore 18
-    //   380: goto -332 -> 48
-    //   383: iload 16
-    //   385: bipush 90
-    //   387: if_icmpeq +11 -> 398
-    //   390: iload 16
-    //   392: sipush 270
-    //   395: if_icmpne +31 -> 426
-    //   398: fload 6
-    //   400: fstore_3
-    //   401: aload 19
-    //   403: getfield 656	android/graphics/BitmapFactory$Options:outHeight	I
-    //   406: i2f
-    //   407: fstore 4
-    //   409: fload 4
-    //   411: fstore_3
-    //   412: aload 19
-    //   414: getfield 659	android/graphics/BitmapFactory$Options:outWidth	I
-    //   417: i2f
-    //   418: fstore 6
-    //   420: fload 6
-    //   422: fstore_3
-    //   423: goto -216 -> 207
-    //   426: fload 6
-    //   428: fstore_3
-    //   429: aload 19
-    //   431: getfield 659	android/graphics/BitmapFactory$Options:outWidth	I
-    //   434: i2f
-    //   435: fstore 4
-    //   437: fload 4
-    //   439: fstore_3
-    //   440: aload 19
-    //   442: getfield 656	android/graphics/BitmapFactory$Options:outHeight	I
-    //   445: istore 17
-    //   447: iload 17
-    //   449: i2f
-    //   450: fstore_3
-    //   451: goto -244 -> 207
-    //   454: astore_2
-    //   455: fload_3
-    //   456: fstore 4
-    //   458: ldc 149
-    //   460: new 476	java/lang/StringBuilder
-    //   463: dup
-    //   464: invokespecial 477	java/lang/StringBuilder:<init>	()V
-    //   467: ldc_w 661
-    //   470: invokevirtual 483	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   473: aload_2
-    //   474: invokestatic 489	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   477: invokevirtual 483	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   480: invokevirtual 493	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   483: invokestatic 499	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   486: fload 5
-    //   488: fstore_3
-    //   489: goto -282 -> 207
-    //   492: astore 18
-    //   494: aconst_null
-    //   495: astore_2
-    //   496: ldc 149
-    //   498: new 476	java/lang/StringBuilder
-    //   501: dup
-    //   502: invokespecial 477	java/lang/StringBuilder:<init>	()V
-    //   505: ldc_w 663
-    //   508: invokevirtual 483	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   511: aload 18
-    //   513: invokestatic 489	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   516: invokevirtual 483	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   519: invokevirtual 493	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   522: invokestatic 499	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   525: goto -252 -> 273
-    //   528: aload 19
-    //   530: iconst_0
-    //   531: putfield 611	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   534: aload 19
-    //   536: getfield 659	android/graphics/BitmapFactory$Options:outWidth	I
-    //   539: i2f
-    //   540: fstore 8
-    //   542: aload 19
-    //   544: getfield 656	android/graphics/BitmapFactory$Options:outHeight	I
-    //   547: i2f
-    //   548: fstore 7
-    //   550: fload 4
-    //   552: fload_3
-    //   553: fmul
-    //   554: aload 19
-    //   556: getfield 659	android/graphics/BitmapFactory$Options:outWidth	I
-    //   559: i2f
-    //   560: fdiv
-    //   561: aload 19
-    //   563: getfield 656	android/graphics/BitmapFactory$Options:outHeight	I
-    //   566: i2f
-    //   567: fdiv
-    //   568: f2d
-    //   569: invokestatic 669	java/lang/Math:sqrt	(D)D
-    //   572: d2f
-    //   573: fstore 11
-    //   575: fload 7
+    //   313: aload_2
+    //   314: getfield 352	android/graphics/RectF:left	F
+    //   317: aload_0
+    //   318: fload 4
+    //   320: f2d
+    //   321: invokevirtual 346	com/tencent/qqmini/miniapp/widget/CanvasView:mpx2px	(D)F
+    //   324: fadd
+    //   325: putfield 358	android/graphics/RectF:right	F
+    //   328: aload_2
+    //   329: aload_2
+    //   330: getfield 355	android/graphics/RectF:top	F
+    //   333: aload_0
+    //   334: fload_3
+    //   335: f2d
+    //   336: invokevirtual 346	com/tencent/qqmini/miniapp/widget/CanvasView:mpx2px	(D)F
+    //   339: fadd
+    //   340: putfield 361	android/graphics/RectF:bottom	F
+    //   343: aload_1
+    //   344: aload 18
+    //   346: aconst_null
+    //   347: aload_2
+    //   348: aconst_null
+    //   349: invokevirtual 640	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/RectF;Landroid/graphics/Paint;)V
+    //   352: aload 18
+    //   354: invokevirtual 643	android/graphics/Bitmap:recycle	()V
+    //   357: return
+    //   358: iload 16
+    //   360: bipush 90
+    //   362: if_icmpeq +11 -> 373
+    //   365: iload 16
+    //   367: sipush 270
+    //   370: if_icmpne +31 -> 401
+    //   373: fload 6
+    //   375: fstore_3
+    //   376: aload 19
+    //   378: getfield 646	android/graphics/BitmapFactory$Options:outHeight	I
+    //   381: i2f
+    //   382: fstore 4
+    //   384: fload 4
+    //   386: fstore_3
+    //   387: aload 19
+    //   389: getfield 649	android/graphics/BitmapFactory$Options:outWidth	I
+    //   392: i2f
+    //   393: fstore 6
+    //   395: fload 6
+    //   397: fstore_3
+    //   398: goto -202 -> 196
+    //   401: fload 6
+    //   403: fstore_3
+    //   404: aload 19
+    //   406: getfield 649	android/graphics/BitmapFactory$Options:outWidth	I
+    //   409: i2f
+    //   410: fstore 4
+    //   412: fload 4
+    //   414: fstore_3
+    //   415: aload 19
+    //   417: getfield 646	android/graphics/BitmapFactory$Options:outHeight	I
+    //   420: istore 17
+    //   422: iload 17
+    //   424: i2f
+    //   425: fstore_3
+    //   426: goto -230 -> 196
+    //   429: astore_2
+    //   430: fload_3
+    //   431: fstore 4
+    //   433: ldc 149
+    //   435: new 476	java/lang/StringBuilder
+    //   438: dup
+    //   439: invokespecial 477	java/lang/StringBuilder:<init>	()V
+    //   442: ldc_w 651
+    //   445: invokevirtual 483	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   448: aload_2
+    //   449: invokestatic 489	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   452: invokevirtual 483	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   455: invokevirtual 493	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   458: invokestatic 499	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   461: fload 5
+    //   463: fstore_3
+    //   464: goto -268 -> 196
+    //   467: astore 18
+    //   469: aconst_null
+    //   470: astore_2
+    //   471: ldc 149
+    //   473: new 476	java/lang/StringBuilder
+    //   476: dup
+    //   477: invokespecial 477	java/lang/StringBuilder:<init>	()V
+    //   480: ldc_w 653
+    //   483: invokevirtual 483	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   486: aload 18
+    //   488: invokestatic 489	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   491: invokevirtual 483	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   494: invokevirtual 493	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   497: invokestatic 499	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   500: goto -238 -> 262
+    //   503: aload 19
+    //   505: iconst_0
+    //   506: putfield 606	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   509: aload 19
+    //   511: getfield 649	android/graphics/BitmapFactory$Options:outWidth	I
+    //   514: i2f
+    //   515: fstore 8
+    //   517: aload 19
+    //   519: getfield 646	android/graphics/BitmapFactory$Options:outHeight	I
+    //   522: i2f
+    //   523: fstore 7
+    //   525: fload 4
+    //   527: fload_3
+    //   528: fmul
+    //   529: aload 19
+    //   531: getfield 649	android/graphics/BitmapFactory$Options:outWidth	I
+    //   534: i2f
+    //   535: fdiv
+    //   536: aload 19
+    //   538: getfield 646	android/graphics/BitmapFactory$Options:outHeight	I
+    //   541: i2f
+    //   542: fdiv
+    //   543: f2d
+    //   544: invokestatic 659	java/lang/Math:sqrt	(D)D
+    //   547: d2f
+    //   548: fstore 11
+    //   550: fload 7
+    //   552: fstore 6
+    //   554: fload 8
+    //   556: fstore 5
+    //   558: fload 11
+    //   560: fconst_1
+    //   561: fcmpg
+    //   562: ifge +17 -> 579
+    //   565: fload 8
+    //   567: fload 11
+    //   569: fmul
+    //   570: fstore 5
+    //   572: fload 7
+    //   574: fload 11
+    //   576: fmul
     //   577: fstore 6
-    //   579: fload 8
-    //   581: fstore 5
-    //   583: fload 11
-    //   585: fconst_1
-    //   586: fcmpg
-    //   587: ifge +17 -> 604
-    //   590: fload 8
-    //   592: fload 11
-    //   594: fmul
-    //   595: fstore 5
-    //   597: fload 7
-    //   599: fload 11
-    //   601: fmul
-    //   602: fstore 6
-    //   604: aload 18
-    //   606: invokestatic 672	com/tencent/qqmini/sdk/core/utils/ImageUtil:isPngFile	(Ljava/lang/String;)Z
-    //   609: ifeq +102 -> 711
-    //   612: aload 19
-    //   614: getstatic 678	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
-    //   617: putfield 681	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
-    //   620: ldc2_w 145
-    //   623: fload 5
-    //   625: f2d
-    //   626: ddiv
-    //   627: fload 6
-    //   629: f2d
-    //   630: ddiv
-    //   631: ldc2_w 682
-    //   634: ddiv
-    //   635: invokestatic 669	java/lang/Math:sqrt	(D)D
-    //   638: d2f
-    //   639: fstore 7
-    //   641: fload 7
-    //   643: fconst_1
-    //   644: fcmpg
-    //   645: ifge +112 -> 757
-    //   648: aload 19
-    //   650: aload 19
-    //   652: fload 5
-    //   654: fload 7
-    //   656: fmul
-    //   657: fload 6
-    //   659: fload 7
-    //   661: fmul
-    //   662: invokestatic 687	com/tencent/qqmini/sdk/core/utils/ImageUtil:calculateInSampleSize	(Landroid/graphics/BitmapFactory$Options;FF)I
-    //   665: putfield 690	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   668: aload 18
-    //   670: aload 19
-    //   672: invokestatic 617	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   675: astore_2
-    //   676: aload_2
-    //   677: ifnonnull +134 -> 811
-    //   680: aload 19
-    //   682: getfield 690	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   685: ifle +97 -> 782
-    //   688: aload 19
-    //   690: aload 19
-    //   692: getfield 690	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   695: iconst_2
-    //   696: imul
-    //   697: putfield 690	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   700: aload 18
-    //   702: aload 19
-    //   704: invokestatic 617	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   707: astore_2
-    //   708: goto -435 -> 273
-    //   711: aload 19
-    //   713: getstatic 693	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
-    //   716: putfield 681	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
-    //   719: ldc2_w 145
-    //   722: fload 5
-    //   724: f2d
-    //   725: ddiv
-    //   726: fload 6
-    //   728: f2d
-    //   729: ddiv
-    //   730: ldc2_w 694
-    //   733: ddiv
-    //   734: invokestatic 669	java/lang/Math:sqrt	(D)D
-    //   737: d2f
-    //   738: fstore 7
-    //   740: goto -99 -> 641
+    //   579: aload 18
+    //   581: invokestatic 662	com/tencent/qqmini/sdk/core/utils/ImageUtil:isPngFile	(Ljava/lang/String;)Z
+    //   584: ifeq +102 -> 686
+    //   587: aload 19
+    //   589: getstatic 668	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
+    //   592: putfield 671	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
+    //   595: ldc2_w 145
+    //   598: fload 5
+    //   600: f2d
+    //   601: ddiv
+    //   602: fload 6
+    //   604: f2d
+    //   605: ddiv
+    //   606: ldc2_w 672
+    //   609: ddiv
+    //   610: invokestatic 659	java/lang/Math:sqrt	(D)D
+    //   613: d2f
+    //   614: fstore 7
+    //   616: fload 7
+    //   618: fconst_1
+    //   619: fcmpg
+    //   620: ifge +112 -> 732
+    //   623: aload 19
+    //   625: aload 19
+    //   627: fload 5
+    //   629: fload 7
+    //   631: fmul
+    //   632: fload 6
+    //   634: fload 7
+    //   636: fmul
+    //   637: invokestatic 677	com/tencent/qqmini/sdk/core/utils/ImageUtil:calculateInSampleSize	(Landroid/graphics/BitmapFactory$Options;FF)I
+    //   640: putfield 680	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   643: aload 18
+    //   645: aload 19
+    //   647: invokestatic 612	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   650: astore_2
+    //   651: aload_2
+    //   652: ifnonnull +134 -> 786
+    //   655: aload 19
+    //   657: getfield 680	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   660: ifle +97 -> 757
+    //   663: aload 19
+    //   665: aload 19
+    //   667: getfield 680	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   670: iconst_2
+    //   671: imul
+    //   672: putfield 680	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   675: aload 18
+    //   677: aload 19
+    //   679: invokestatic 612	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   682: astore_2
+    //   683: goto -421 -> 262
+    //   686: aload 19
+    //   688: getstatic 683	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
+    //   691: putfield 671	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
+    //   694: ldc2_w 145
+    //   697: fload 5
+    //   699: f2d
+    //   700: ddiv
+    //   701: fload 6
+    //   703: f2d
+    //   704: ddiv
+    //   705: ldc2_w 684
+    //   708: ddiv
+    //   709: invokestatic 659	java/lang/Math:sqrt	(D)D
+    //   712: d2f
+    //   713: fstore 7
+    //   715: goto -99 -> 616
+    //   718: astore_2
+    //   719: ldc 149
+    //   721: ldc_w 687
+    //   724: invokestatic 690	com/tencent/qqmini/sdk/launcher/log/QMLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   727: aconst_null
+    //   728: astore_2
+    //   729: goto -78 -> 651
+    //   732: aload 18
+    //   734: aload 19
+    //   736: invokestatic 612	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   739: astore_2
+    //   740: goto -89 -> 651
     //   743: astore_2
     //   744: ldc 149
-    //   746: ldc_w 697
-    //   749: invokestatic 700	com/tencent/qqmini/sdk/launcher/log/QMLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   746: ldc_w 692
+    //   749: invokestatic 690	com/tencent/qqmini/sdk/launcher/log/QMLog:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   752: aconst_null
     //   753: astore_2
-    //   754: goto -78 -> 676
-    //   757: aload 18
-    //   759: aload 19
-    //   761: invokestatic 617	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   764: astore_2
-    //   765: goto -89 -> 676
-    //   768: astore_2
-    //   769: ldc 149
-    //   771: ldc_w 702
-    //   774: invokestatic 700	com/tencent/qqmini/sdk/launcher/log/QMLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   777: aconst_null
-    //   778: astore_2
-    //   779: goto -103 -> 676
-    //   782: aload 19
-    //   784: iconst_2
-    //   785: putfield 690	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   788: goto -88 -> 700
-    //   791: astore_2
-    //   792: ldc 149
-    //   794: ldc_w 704
-    //   797: aload_2
-    //   798: invokestatic 707	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   801: aconst_null
-    //   802: astore_2
-    //   803: goto -530 -> 273
-    //   806: astore 18
-    //   808: goto -312 -> 496
-    //   811: goto -538 -> 273
-    //   814: goto -766 -> 48
+    //   754: goto -103 -> 651
+    //   757: aload 19
+    //   759: iconst_2
+    //   760: putfield 680	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   763: goto -88 -> 675
+    //   766: astore_2
+    //   767: ldc 149
+    //   769: ldc_w 694
+    //   772: aload_2
+    //   773: invokestatic 697	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   776: aconst_null
+    //   777: astore_2
+    //   778: goto -516 -> 262
+    //   781: astore 18
+    //   783: goto -312 -> 471
+    //   786: goto -524 -> 262
+    //   789: goto -752 -> 37
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	817	0	this	CanvasView
-    //   0	817	1	paramCanvas	Canvas
-    //   0	817	2	paramJSONArray	JSONArray
-    //   149	404	3	f1	float
-    //   179	372	4	f2	float
-    //   90	633	5	f3	float
-    //   81	646	6	f4	float
-    //   548	191	7	f5	float
-    //   540	51	8	f6	float
-    //   63	241	9	f7	float
-    //   72	243	10	f8	float
-    //   573	27	11	f9	float
-    //   99	149	12	i	int
-    //   109	141	13	j	int
-    //   119	133	14	k	int
-    //   129	125	15	m	int
-    //   145	251	16	n	int
-    //   445	3	17	i1	int
-    //   5	374	18	localObject	Object
-    //   492	266	18	localException1	Exception
-    //   806	1	18	localException2	Exception
-    //   138	645	19	localOptions	BitmapFactory.Options
+    //   0	792	0	this	CanvasView
+    //   0	792	1	paramCanvas	Canvas
+    //   0	792	2	paramJSONArray	JSONArray
+    //   138	390	3	f1	float
+    //   168	358	4	f2	float
+    //   79	619	5	f3	float
+    //   70	632	6	f4	float
+    //   523	191	7	f5	float
+    //   515	51	8	f6	float
+    //   52	241	9	f7	float
+    //   61	243	10	f8	float
+    //   548	27	11	f9	float
+    //   88	149	12	i	int
+    //   98	141	13	j	int
+    //   108	133	14	k	int
+    //   118	125	15	m	int
+    //   134	237	16	n	int
+    //   420	3	17	i1	int
+    //   5	348	18	localObject	Object
+    //   467	266	18	localException1	Exception
+    //   781	1	18	localException2	Exception
+    //   127	631	19	localOptions	BitmapFactory.Options
     // Exception table:
     //   from	to	target	type
-    //   150	156	454	java/lang/Exception
-    //   159	167	454	java/lang/Exception
-    //   401	409	454	java/lang/Exception
-    //   412	420	454	java/lang/Exception
-    //   429	437	454	java/lang/Exception
-    //   440	447	454	java/lang/Exception
-    //   236	268	492	java/lang/Exception
-    //   668	676	743	java/lang/Throwable
-    //   757	765	768	java/lang/Throwable
-    //   700	708	791	java/lang/Throwable
-    //   268	273	806	java/lang/Exception
+    //   139	145	429	java/lang/Exception
+    //   148	156	429	java/lang/Exception
+    //   376	384	429	java/lang/Exception
+    //   387	395	429	java/lang/Exception
+    //   404	412	429	java/lang/Exception
+    //   415	422	429	java/lang/Exception
+    //   225	257	467	java/lang/Exception
+    //   643	651	718	java/lang/Throwable
+    //   732	740	743	java/lang/Throwable
+    //   675	683	766	java/lang/Throwable
+    //   257	262	781	java/lang/Exception
   }
   
   private Bitmap getCacheBitmapFromView(View paramView, boolean paramBoolean)
@@ -1156,30 +1146,30 @@ public class CanvasView
     //   0: aconst_null
     //   1: astore 18
     //   3: aload_3
-    //   4: ldc_w 784
+    //   4: ldc_w 774
     //   7: invokevirtual 567	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   10: istore 9
     //   12: aload_3
-    //   13: ldc_w 799
+    //   13: ldc_w 789
     //   16: invokevirtual 567	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   19: istore 10
     //   21: aload_3
-    //   22: ldc_w 886
+    //   22: ldc_w 876
     //   25: invokevirtual 567	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   28: istore 11
     //   30: aload_3
-    //   31: ldc_w 888
+    //   31: ldc_w 878
     //   34: invokevirtual 567	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   37: istore 12
     //   39: aconst_null
     //   40: aload_3
     //   41: ldc 139
-    //   43: invokestatic 894	com/tencent/qqmini/sdk/core/utils/NativeBuffer:unpackNativeBuffer	(Lcom/tencent/qqmini/sdk/launcher/core/IJsService;Lorg/json/JSONObject;Ljava/lang/String;)Lcom/tencent/qqmini/sdk/core/utils/NativeBuffer;
+    //   43: invokestatic 884	com/tencent/qqmini/sdk/core/utils/NativeBuffer:unpackNativeBuffer	(Lcom/tencent/qqmini/sdk/launcher/core/IJsService;Lorg/json/JSONObject;Ljava/lang/String;)Lcom/tencent/qqmini/sdk/core/utils/NativeBuffer;
     //   46: astore_3
     //   47: aload_3
     //   48: ifnull +364 -> 412
     //   51: aload_3
-    //   52: getfield 898	com/tencent/qqmini/sdk/core/utils/NativeBuffer:buf	[B
+    //   52: getfield 888	com/tencent/qqmini/sdk/core/utils/NativeBuffer:buf	[B
     //   55: astore_3
     //   56: iload 11
     //   58: iload 12
@@ -1244,7 +1234,7 @@ public class CanvasView
     //   159: iadd
     //   160: sipush 256
     //   163: irem
-    //   164: invokestatic 747	android/graphics/Color:argb	(IIII)I
+    //   164: invokestatic 737	android/graphics/Color:argb	(IIII)I
     //   167: iastore
     //   168: iload 8
     //   170: iconst_1
@@ -1253,8 +1243,8 @@ public class CanvasView
     //   174: goto -103 -> 71
     //   177: iload 11
     //   179: iload 12
-    //   181: getstatic 678	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
-    //   184: invokestatic 732	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   181: getstatic 668	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
+    //   184: invokestatic 722	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
     //   187: astore_3
     //   188: aload_3
     //   189: aload 19
@@ -1264,14 +1254,14 @@ public class CanvasView
     //   195: iconst_0
     //   196: iload 11
     //   198: iload 12
-    //   200: invokevirtual 902	android/graphics/Bitmap:setPixels	([IIIIIII)V
+    //   200: invokevirtual 892	android/graphics/Bitmap:setPixels	([IIIIIII)V
     //   203: new 259	android/graphics/Paint
     //   206: dup
-    //   207: invokespecial 903	android/graphics/Paint:<init>	()V
+    //   207: invokespecial 893	android/graphics/Paint:<init>	()V
     //   210: astore 18
     //   212: aload 18
     //   214: iconst_1
-    //   215: invokevirtual 906	android/graphics/Paint:setAntiAlias	(Z)V
+    //   215: invokevirtual 896	android/graphics/Paint:setAntiAlias	(Z)V
     //   218: aload_0
     //   219: iload 9
     //   221: i2d
@@ -1301,21 +1291,21 @@ public class CanvasView
     //   261: invokevirtual 346	com/tencent/qqmini/miniapp/widget/CanvasView:mpx2px	(D)F
     //   264: fload 6
     //   266: fadd
-    //   267: invokespecial 909	android/graphics/RectF:<init>	(FFFF)V
+    //   267: invokespecial 899	android/graphics/RectF:<init>	(FFFF)V
     //   270: aload 18
-    //   272: invokevirtual 645	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/RectF;Landroid/graphics/Paint;)V
+    //   272: invokevirtual 640	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/RectF;Landroid/graphics/Paint;)V
     //   275: aload_0
     //   276: aload_2
     //   277: aconst_null
     //   278: iload 4
-    //   280: invokevirtual 913	com/tencent/qqmini/miniapp/widget/CanvasView:callbackJsEventOK	(Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   280: invokevirtual 903	com/tencent/qqmini/miniapp/widget/CanvasView:callbackJsEventOK	(Ljava/lang/String;Lorg/json/JSONObject;I)V
     //   283: aload_3
     //   284: ifnull +14 -> 298
     //   287: aload_3
-    //   288: invokevirtual 917	android/graphics/Bitmap:isRecycled	()Z
+    //   288: invokevirtual 907	android/graphics/Bitmap:isRecycled	()Z
     //   291: ifne +7 -> 298
     //   294: aload_3
-    //   295: invokevirtual 648	android/graphics/Bitmap:recycle	()V
+    //   295: invokevirtual 643	android/graphics/Bitmap:recycle	()V
     //   298: return
     //   299: astore_3
     //   300: aconst_null
@@ -1324,7 +1314,7 @@ public class CanvasView
     //   304: new 476	java/lang/StringBuilder
     //   307: dup
     //   308: invokespecial 477	java/lang/StringBuilder:<init>	()V
-    //   311: ldc_w 919
+    //   311: ldc_w 909
     //   314: invokevirtual 483	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   317: aload_3
     //   318: invokestatic 489	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
@@ -1335,14 +1325,14 @@ public class CanvasView
     //   331: aload_2
     //   332: aconst_null
     //   333: iload 4
-    //   335: invokevirtual 922	com/tencent/qqmini/miniapp/widget/CanvasView:callbackJsEventFail	(Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   335: invokevirtual 912	com/tencent/qqmini/miniapp/widget/CanvasView:callbackJsEventFail	(Ljava/lang/String;Lorg/json/JSONObject;I)V
     //   338: aload_1
     //   339: ifnull -41 -> 298
     //   342: aload_1
-    //   343: invokevirtual 917	android/graphics/Bitmap:isRecycled	()Z
+    //   343: invokevirtual 907	android/graphics/Bitmap:isRecycled	()Z
     //   346: ifne -48 -> 298
     //   349: aload_1
-    //   350: invokevirtual 648	android/graphics/Bitmap:recycle	()V
+    //   350: invokevirtual 643	android/graphics/Bitmap:recycle	()V
     //   353: return
     //   354: astore_1
     //   355: aload 18
@@ -1350,10 +1340,10 @@ public class CanvasView
     //   358: aload_2
     //   359: ifnull +14 -> 373
     //   362: aload_2
-    //   363: invokevirtual 917	android/graphics/Bitmap:isRecycled	()Z
+    //   363: invokevirtual 907	android/graphics/Bitmap:isRecycled	()Z
     //   366: ifne +7 -> 373
     //   369: aload_2
-    //   370: invokevirtual 648	android/graphics/Bitmap:recycle	()V
+    //   370: invokevirtual 643	android/graphics/Bitmap:recycle	()V
     //   373: aload_1
     //   374: athrow
     //   375: astore_1

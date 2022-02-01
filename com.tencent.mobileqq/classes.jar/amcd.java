@@ -1,31 +1,50 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.sdk.CmShowSpriteDrawerInfoBridge.4.1;
-import com.tencent.mobileqq.apollo.sdk.IPCSpriteContext;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
 
-public class amcd
-  implements EIPCResultCallback
+class amcd
+  implements DialogInterface.OnDismissListener
 {
-  amcd(amcb paramamcb, amca paramamca) {}
+  amcd(amcc paramamcc, aorg paramaorg) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    Object localObject = (IPCSpriteContext)paramEIPCResult.data.getParcelable("IPCSpriteContext");
-    paramEIPCResult = paramEIPCResult.data.getString("js_content");
-    QLog.i("CmShow_SpriteDrawerInfoBridge", 1, "checkfDressChanged CmShow_ spriteJs:" + paramEIPCResult);
-    if (TextUtils.isEmpty(paramEIPCResult)) {
-      amhk.a(this.jdField_a_of_type_Amca.a(), 300, 301, new Object[] { "spriteJs is empty" });
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialFriendSettingActivity", 2, "finish all settings when dialog dismiss");
     }
-    do
+    if (NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_Amcc.a))
     {
+      boolean bool1 = QQSpecialFriendSettingActivity.a(this.jdField_a_of_type_Amcc.a).a();
+      boolean bool2 = QQSpecialFriendSettingActivity.b(this.jdField_a_of_type_Amcc.a).a();
+      paramDialogInterface = QQSpecialFriendSettingActivity.a(this.jdField_a_of_type_Amcc.a);
+      String str = QQSpecialFriendSettingActivity.a(this.jdField_a_of_type_Amcc.a);
+      int i = QQSpecialFriendSettingActivity.a(this.jdField_a_of_type_Amcc.a);
+      paramDialogInterface.setSpecialCareSwitchesOfAPerson(str, new int[] { 2, 3 }, new boolean[] { bool1, bool2 }, new String[] { String.valueOf(i), null });
+      paramDialogInterface = this.jdField_a_of_type_Amcc.a.a.obtainMessage(8193);
+      paramDialogInterface.obj = this.jdField_a_of_type_Amcc.a.getString(2131698887);
+      this.jdField_a_of_type_Amcc.a.a.sendMessage(paramDialogInterface);
+      if ((bool1) && (bool2))
+      {
+        paramDialogInterface = "0";
+        bdla.b(null, "CliOper", "", "", "0X80050E2", "0X80050E2", 0, 0, paramDialogInterface, "", "", "");
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Aorg.a();
       return;
-      localObject = (ambx)amcb.a(this.jdField_a_of_type_Amcb).a(100);
-    } while (localObject == null);
-    ThreadManagerV2.excute(new CmShowSpriteDrawerInfoBridge.4.1(this, paramEIPCResult, (ambx)localObject), 16, null, false);
+      paramDialogInterface = "1";
+      break;
+      paramDialogInterface = this.jdField_a_of_type_Amcc.a.a.obtainMessage(8195);
+      paramDialogInterface.arg1 = 0;
+      paramDialogInterface.arg2 = 2131692125;
+      this.jdField_a_of_type_Amcc.a.a.sendMessage(paramDialogInterface);
+    }
   }
 }
 

@@ -1,16 +1,13 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import java.util.List;
+import com.tencent.mfsdk.impls.memory.MemoryDumpHelper.5;
 
 public class acyz
-  implements aszj
+  implements acyb
 {
-  public acyz(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList) {}
+  public acyz(MemoryDumpHelper.5 param5) {}
   
-  public void onNo() {}
-  
-  public void onYes()
+  public void a()
   {
-    aszt.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
+    acyw.c(this.a.this$0);
   }
 }
 

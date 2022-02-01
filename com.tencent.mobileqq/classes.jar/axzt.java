@@ -1,21 +1,47 @@
-import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/onlinestatus/view/WeatherView$initData$1", "Lcom/tencent/mobileqq/onlinestatus/weather/WeatherObserver;", "receiveReqWeather", "", "success", "", "bundle", "Landroid/os/Bundle;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class axzt
-  extends ayaa
+class axzt
+  implements TVK_SDKMgr.OnLogListener
 {
-  public void a(boolean paramBoolean, @Nullable Bundle paramBundle)
+  public int d(String paramString1, String paramString2)
   {
-    super.a(paramBoolean, paramBundle);
     if (QLog.isColorLevel()) {
-      QLog.d("WeatherView", 2, new Object[] { "receiveReqWeather: called. ", "bundle: " + paramBundle, " success: " + paramBoolean });
+      QLog.d(paramString1, 2, paramString2);
     }
-    if (paramBoolean) {
-      this.a.a();
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(paramString1, 2, paramString2);
     }
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(paramString1, 2, paramString2);
+    }
+    return 0;
   }
 }
 

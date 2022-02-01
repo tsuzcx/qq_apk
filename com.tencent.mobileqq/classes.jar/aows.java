@@ -1,13 +1,22 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aows
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class aows
+  extends aouc
 {
-  aows(aowr paramaowr) {}
-  
-  public void onGlobalLayout()
+  public aows(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    aowr.a(this.a);
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  private boolean C()
+  {
+    return true;
+  }
+  
+  public boolean a()
+  {
+    return C();
   }
 }
 

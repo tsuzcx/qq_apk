@@ -1,80 +1,43 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class afcq
-  implements bjoe
+public class afcq
+  extends BroadcastReceiver
 {
-  afcq(mup parammup, int[] paramArrayOfInt, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface, BaseChatPie paramBaseChatPie, Context paramContext, String paramString) {}
+  public afcq(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Mup.dismiss();
-    QQAppInterface localQQAppInterface;
-    switch (this.jdField_a_of_type_ArrayOfInt[paramInt])
+    if (paramIntent == null) {}
+    do
     {
-    case 3: 
-    case 4: 
-    default: 
-      return;
-    case 1: 
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 1001) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 10002))
+      do
       {
-        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005150", "0X8005150", 0, 0, "", "", "", "");
-        if (!amuu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.showNearPeopleOperDialog(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getActivity().getString(2131694042));
-          bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005154", "0X8005154", 0, 0, "", "", "", "");
-          localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 1001) {}
-          for (paramView = "0";; paramView = "1")
-          {
-            bcef.b(localQQAppInterface, "dc00899", "grp_lbs", "", "c2c_tmp", "tip_annoy", 0, 0, paramView, "0", "", "");
-            return;
-          }
-        }
-      }
-      else if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 1010) && (!aquj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin)))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.showNearPeopleOperDialog(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getActivity().getString(2131694042));
-        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049C8", "0X80049C8", 0, 0, "", "", "", "");
         return;
+      } while (!"changeGroupTribe".equals(paramIntent.getStringExtra("event")));
+      paramContext = paramIntent.getStringExtra("data");
+    } while (paramContext == null);
+    try
+    {
+      paramContext = new JSONObject(paramContext);
+      this.a.a.tribeId = paramContext.optInt("bid");
+      this.a.a.tribeName = paramContext.optString("bname");
+      this.a.e = true;
+      paramContext = new ArrayList();
+      if (!TextUtils.isEmpty(this.a.a.tribeName)) {
+        paramContext.add(this.a.a.tribeName);
       }
-      afcm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, this.jdField_a_of_type_JavaLangString, null);
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004861", "0X8004861", 0, 0, "", "", "", "");
-      return;
-    case 2: 
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 1001) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 10002))
-      {
-        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005151", "0X8005151", 0, 0, "", "", "", "");
-        if (!amuu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.showNearPeopleOperDialog(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getActivity().getString(2131694043));
-          bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005155", "0X8005155", 0, 0, "", "", "", "");
-          localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 1001) {}
-          for (paramView = "0";; paramView = "1")
-          {
-            bcef.b(localQQAppInterface, "dc00899", "grp_lbs", "", "c2c_tmp", "tip_annoy", 0, 0, paramView, "1", "", "");
-            return;
-          }
-        }
-      }
-      else if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 1010) && (!aquj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin)))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.showNearPeopleOperDialog(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getActivity().getString(2131694043));
-        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049C8", "0X80049C8", 0, 0, "", "", "", "");
-        return;
-      }
-      afcm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false, this.jdField_a_of_type_JavaLangString, null);
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004C09", "0X8004C09", 0, 0, "", "", "", "");
+      this.a.a(9, paramContext, true, 1, true);
       return;
     }
-    paramView = ((bily)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(165)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin);
-    npt.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin);
+    catch (JSONException paramContext) {}
   }
 }
 

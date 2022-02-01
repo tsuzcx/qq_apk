@@ -1,12 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class bbig
-  implements View.OnClickListener
+public abstract interface bbig
 {
-  bbig(bbie parambbie) {}
-  
-  public void onClick(View paramView) {}
+  public abstract void a();
 }
 
 

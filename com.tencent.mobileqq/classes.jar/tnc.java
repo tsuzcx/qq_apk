@@ -1,126 +1,202 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.ViewGroup;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.RotateAnimation;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.ViolaVideoView;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.utils.ProteusCDNUtils.1;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.utils.ProteusCDNUtils.2;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class tnc
-  extends Handler
 {
-  private tnc(ViolaVideoView paramViolaVideoView) {}
-  
-  public void handleMessage(Message paramMessage)
+  public static String a(String paramString)
   {
-    switch (paramMessage.what)
-    {
+    return "sp_key_readinjoy_cdn_url_" + paramString;
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    QLog.i("ProteusCDNUtils", 1, "[updateCDNUrl], bid = " + paramString1 + ", cdn url = " + paramString2);
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
+      bmhv.a(a(paramString1), paramString2);
     }
-    do
+  }
+  
+  public static void a(String paramString1, String paramString2, int paramInt)
+  {
+    QLog.i("ProteusCDNUtils", 1, "[checkUpdate], bid = " + paramString1 + ", retStr = " + paramString2 + ", retCode = " + paramInt);
+    try
     {
-      do
+      if (a(paramString2)) {
+        b(paramString1);
+      }
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      QLog.e("ProteusCDNUtils", 1, "[checkUpdate], e = " + paramString1);
+    }
+  }
+  
+  private static boolean a(String paramString)
+  {
+    bool2 = false;
+    if (TextUtils.isEmpty(paramString))
+    {
+      QLog.i("ProteusCDNUtils", 1, "[shouldDownloadByCDN], retStr is null, no need download by CDN.");
+      return false;
+    }
+    try
+    {
+      paramString = new JSONObject(paramString).optJSONArray("data");
+      bool1 = bool2;
+      if (paramString != null)
       {
-        do
+        bool1 = bool2;
+        if (paramString.length() > 0)
         {
-          do
+          paramString = paramString.optJSONObject(0);
+          bool1 = bool2;
+          if (paramString != null)
           {
-            do
+            int i = paramString.optInt("code");
+            if (i < 10)
             {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        return;
-                        ViolaVideoView.a(this.a).sendEmptyMessageDelayed(0, 3000L);
-                        long l = ViolaVideoView.a(this.a);
-                        l = 3000L - (System.currentTimeMillis() - l);
-                        if (l > 0L)
-                        {
-                          ViolaVideoView.a(this.a).removeMessages(0);
-                          ViolaVideoView.a(this.a).sendEmptyMessageDelayed(0, l);
-                          return;
-                        }
-                      } while (!ViolaVideoView.a(this.a).d());
-                      ViolaVideoView.a(this.a, false);
-                      return;
-                      if (QLog.isColorLevel()) {
-                        QLog.d("ViolaVideoView", 2, "mUiHandler.postDelayed() innerChangePlayButton(MSG_SHOW_LOADING_BTN) mIsNeedShowLoading = " + ViolaVideoView.a(this.a));
-                      }
-                    } while (!ViolaVideoView.a(this.a));
-                    ViolaVideoView.a(this.a, 3, null);
-                    return;
-                  } while (ViolaVideoView.a(this.a).a() == null);
-                  ViolaVideoView.a(this.a).setBackgroundDrawable(ViolaVideoView.a(this.a, 2130843256));
-                  ViolaVideoView.a(this.a).clearAnimation();
-                  paramMessage = new RotateAnimation(0.0F, 360.0F, 1, 0.5F, 1, 0.5F);
-                  paramMessage.setDuration(500L);
-                  paramMessage.setRepeatCount(-1);
-                  paramMessage.setRepeatMode(1);
-                  paramMessage.setStartTime(-1L);
-                  paramMessage.setInterpolator(new LinearInterpolator());
-                  ViolaVideoView.a(this.a).startAnimation(paramMessage);
-                  ViolaVideoView.b(this.a).setVisibility(0);
-                  ViolaVideoView.b(this.a).setText("");
-                  return;
-                } while (ViolaVideoView.a(this.a).a() == null);
-                ViolaVideoView.a(this.a).clearAnimation();
-                ViolaVideoView.a(this.a).setBackgroundDrawable(ViolaVideoView.a(this.a, 2130843258));
-                ViolaVideoView.b(this.a).setVisibility(0);
-                ViolaVideoView.b(this.a).setText("");
-                return;
-              } while (ViolaVideoView.a(this.a).a() == null);
-              ViolaVideoView.a(this.a).clearAnimation();
-              ViolaVideoView.a(this.a).setBackgroundDrawable(ViolaVideoView.a(this.a, 2130843258));
-              ViolaVideoView.b(this.a).setVisibility(8);
-              ViolaVideoView.b(this.a).setText("");
-              return;
-            } while (ViolaVideoView.a(this.a).a() == null);
-            ViolaVideoView.a(this.a).clearAnimation();
-            ViolaVideoView.a(this.a).setBackgroundDrawable(ViolaVideoView.a(this.a, 2130843258));
-            ViolaVideoView.b(this.a).setVisibility(0);
-            ViolaVideoView.b(this.a).setText("");
-            return;
-          } while (ViolaVideoView.a(this.a).a() == null);
-          ViolaVideoView.a(this.a).clearAnimation();
-          ViolaVideoView.a(this.a).setBackgroundDrawable(ViolaVideoView.a(this.a, 2130843257));
-          ViolaVideoView.b(this.a).setText("");
-          return;
-        } while (ViolaVideoView.a(this.a).a() == null);
-        ViolaVideoView.a(this.a).clearAnimation();
-        ViolaVideoView.a(this.a).setBackgroundDrawable(ViolaVideoView.a(this.a, 2130843257));
-        ViolaVideoView.b(this.a).setVisibility(8);
-        ViolaVideoView.b(this.a).setText("");
-      } while ((ViolaVideoView.c(this.a).getVisibility() != 0) || (!NetworkUtil.isMobileNetWork(this.a.getContext())));
-      ViolaVideoView.a(this.a).setVisibility(0);
-      ViolaVideoView.c(this.a).setVisibility(8);
-      return;
-    } while (ViolaVideoView.a(this.a).a() == null);
-    ViolaVideoView.a(this.a).clearAnimation();
-    ViolaVideoView.a(this.a).setBackgroundDrawable(ViolaVideoView.a(this.a, 2130848544));
-    ViolaVideoView.b(this.a).setVisibility(0);
-    ViolaVideoView.b(this.a).setVisibility(0);
-    TextView localTextView = ViolaVideoView.b(this.a);
-    if (paramMessage.obj != null) {}
-    for (paramMessage = paramMessage.obj.toString();; paramMessage = "")
+              bool1 = bool2;
+              if (i > 0) {}
+            }
+            else
+            {
+              bool1 = true;
+            }
+          }
+        }
+      }
+    }
+    catch (JSONException paramString)
     {
-      localTextView.setText(paramMessage);
+      for (;;)
+      {
+        QLog.e("ProteusCDNUtils", 1, "[shouldDownloadByCDN] parse json exception, e = " + paramString);
+        bool1 = bool2;
+      }
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        QLog.e("ProteusCDNUtils", 1, "[shouldDownloadByCDN], e = " + paramString);
+        boolean bool1 = bool2;
+      }
+    }
+    QLog.i("ProteusCDNUtils", 1, "[shouldDownloadByCDN], ret = " + bool1);
+    return bool1;
+  }
+  
+  private static String b(String paramString)
+  {
+    String str = (String)bmhv.a(a(paramString), "");
+    QLog.i("ProteusCDNUtils", 1, "[getCDNUrl], bid = " + paramString + ", cdnUrl = " + str);
+    return str;
+  }
+  
+  private static void b(String paramString)
+  {
+    if (!b(paramString))
+    {
+      QLog.i("ProteusCDNUtils", 1, "[downloadByCDN], no need to download by cdn, bid = " + paramString);
       return;
+    }
+    String str1 = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH_READINJOY_OFFLINE_TEMP_FOLDER + paramString + ".7z");
+    String str2 = b(paramString);
+    QLog.i("ProteusCDNUtils", 1, "[downloadByCDN], bid = " + paramString + ", localPath = " + str1 + ", cdnUrl = " + str2);
+    ThreadManager.excute(new ProteusCDNUtils.1(str1, paramString, str2), 128, null, false);
+    c("0X800ABFE", paramString);
+  }
+  
+  private static boolean b(String paramString)
+  {
+    long l2 = 0L;
+    Object localObject = b(paramString);
+    if ((TextUtils.isEmpty((CharSequence)localObject)) || (TextUtils.equals("0", (CharSequence)localObject)))
+    {
+      QLog.i("ProteusCDNUtils", 1, "[isAbleToDownloadByCDN], cdn url is null or 0.");
+      return false;
+    }
+    for (;;)
+    {
+      try
+      {
+        localObject = ((String)localObject).split("/");
+        if (localObject.length > 0)
+        {
+          localObject = Pattern.compile("\\d+").matcher(localObject[(localObject.length - 1)]);
+          if (((Matcher)localObject).find())
+          {
+            localObject = ((Matcher)localObject).group();
+            try
+            {
+              l1 = Long.valueOf((String)localObject).longValue();
+              paramString = nuz.a(paramString);
+              if (paramString != null) {
+                l2 = paramString.optLong("version", 0L);
+              }
+              QLog.i("ProteusCDNUtils", 1, "[isAbleToDownloadByCDN], urlVersion = " + l1 + ", localVersion = " + l2);
+              if (l1 <= l2) {
+                break label216;
+              }
+              return true;
+            }
+            catch (NumberFormatException localNumberFormatException)
+            {
+              QLog.e("ProteusCDNUtils", 1, "[isAbleToDownloadByCDN], e = " + localNumberFormatException);
+            }
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        long l1;
+        QLog.e("ProteusCDNUtils", 1, "[isAbleToDownloadByCDN], e = " + localException);
+        continue;
+      }
+      l1 = 0L;
+    }
+    label216:
+    return false;
+  }
+  
+  private static void c(String paramString)
+  {
+    ThreadManager.excute(new ProteusCDNUtils.2(paramString), 64, null, false);
+  }
+  
+  private static void c(String paramString1, String paramString2)
+  {
+    QLog.i("ProteusCDNUtils", 1, "[reportData], eventType = " + paramString1 + ", bid = " + paramString2);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("bid", paramString2);
+      olh.a(null, "", paramString1, paramString1, 0, 0, "", "", "", localJSONObject.toString(), false);
+      return;
+    }
+    catch (JSONException paramString2)
+    {
+      for (;;)
+      {
+        QLog.e("ProteusCDNUtils", 1, "[reportData], e = " + paramString2);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tnc
  * JD-Core Version:    0.7.0.1
  */

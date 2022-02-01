@@ -10,7 +10,7 @@ import android.view.Display;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import bfvh;
+import bhdz;
 import com.tencent.mobileqq.utils.NetworkUtil;
 
 public class PropertyUtils
@@ -80,7 +80,7 @@ public class PropertyUtils
     if (mTitleBarHeight > 0) {
       return mTitleBarHeight;
     }
-    mTitleBarHeight = paramActivity.getResources().getDimensionPixelSize(2131299076);
+    mTitleBarHeight = paramActivity.getResources().getDimensionPixelSize(2131299080);
     return mTitleBarHeight;
   }
   
@@ -89,7 +89,7 @@ public class PropertyUtils
     if (mToastOffset > 0) {
       return mToastOffset;
     }
-    mToastOffset = paramContext.getResources().getDimensionPixelSize(2131299076) - (int)bfvh.a(paramContext, 5.0F);
+    mToastOffset = paramContext.getResources().getDimensionPixelSize(2131299080) - (int)bhdz.a(paramContext, 5.0F);
     return mToastOffset;
   }
 }

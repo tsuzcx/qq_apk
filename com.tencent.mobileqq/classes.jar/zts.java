@@ -1,26 +1,24 @@
-import android.graphics.Color;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnItemTouchListener;
+import android.view.MotionEvent;
 
-public class zts
-  implements View.OnClickListener
+class zts
+  implements RecyclerView.OnItemTouchListener
 {
-  public zts(TroopGiftPanel paramTroopGiftPanel) {}
+  zts(ztn paramztn) {}
   
-  public void onClick(View paramView)
+  public boolean onInterceptTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
   {
-    TroopGiftPanel.a(this.a).setSelected(false);
-    this.a.a.a(-1);
-    TroopGiftPanel.b(this.a).setSelected(true);
-    ((TextView)TroopGiftPanel.b(this.a).findViewById(2131379646)).setTextColor(Color.parseColor("#ffff5b84"));
-    TroopGiftPanel.b(this.a).findViewById(2131380792).setVisibility(0);
-    ((TextView)TroopGiftPanel.a(this.a).findViewById(2131379645)).setTextColor(Color.parseColor("#ff878b99"));
-    TroopGiftPanel.a(this.a).findViewById(2131380798).setVisibility(8);
-    this.a.onTabSelected(this.a.h, TroopGiftPanel.c);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return ztn.a(this.a, paramMotionEvent);
+  }
+  
+  public void onRequestDisallowInterceptTouchEvent(boolean paramBoolean) {}
+  
+  public void onTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
+  {
+    if (ztn.a(this.a) != null) {
+      ztn.a(this.a).a(paramMotionEvent);
+    }
   }
 }
 

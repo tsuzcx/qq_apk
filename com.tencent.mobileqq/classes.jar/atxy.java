@@ -1,17 +1,16 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.activity.ChatActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class atxy
+class atxy
+  implements View.OnClickListener
 {
-  public static void a(Context paramContext, String paramString, int paramInt)
+  atxy(atxr paramatxr) {}
+  
+  public void onClick(View paramView)
   {
-    QLog.i("GameBuddyUtil", 1, "[openGameBuddyAio]");
-    Intent localIntent = new Intent(paramContext, ChatActivity.class);
-    localIntent.putExtra("uin", paramString);
-    localIntent.putExtra("uintype", paramInt);
-    paramContext.startActivity(localIntent);
+    auea.a(this.a.a, this.a.d());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

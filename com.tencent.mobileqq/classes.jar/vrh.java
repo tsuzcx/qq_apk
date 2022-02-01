@@ -1,51 +1,36 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqDelFeedComment;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDelFeedComment;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import NS_KING_SOCIALIZE_META.stMetaUgcVideoSeg;
+import UserGrowth.stSimpleMetaFeed;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class vrh
-  extends vsz
+class vrh
+  implements SeekBar.OnSeekBarChangeListener
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  vtb jdField_a_of_type_Vtb;
+  vrh(vrf paramvrf) {}
   
-  public vrh(CommentEntry paramCommentEntry, vtb paramvtb)
-  {
-    this.jdField_a_of_type_JavaLangString = paramCommentEntry.feedId;
-    this.jdField_a_of_type_Int = paramCommentEntry.commentId;
-    this.jdField_a_of_type_Vtb = paramvtb;
-  }
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
   
-  public String a()
-  {
-    return vrd.b;
-  }
+  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
   
-  public vta a(byte[] paramArrayOfByte)
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    qqstory_service.RspDelFeedComment localRspDelFeedComment = new qqstory_service.RspDelFeedComment();
-    try
+    if ((paramSeekBar == null) || (vrf.a(this.a) == null) || (vrf.a(this.a) == null)) {}
+    for (;;)
     {
-      localRspDelFeedComment.mergeFrom(paramArrayOfByte);
-      return new vri(localRspDelFeedComment, this.jdField_a_of_type_Vtb);
+      EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
+      return;
+      vpj localvpj = (vpj)vrf.a(this.a).a;
+      if ((localvpj != null) && ((localvpj.a() instanceof stSimpleMetaFeed)))
+      {
+        float f = paramSeekBar.getProgress();
+        int i = ((stSimpleMetaFeed)localvpj.a()).video.duration;
+        int j = (int)(f / 1000.0F * i);
+        vmp.a("WS_VIDEO_seekBar", "WSVerticalItemVideoProgressController onStopTrackingTouch() progress:" + f + ", videoDuration:" + i + ", position:" + j);
+        vrf.a(this.a).a(j, true);
+      }
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      xvv.d("Q.qqstory:FeedCommentDataProvider", "" + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqDelFeedComment localReqDelFeedComment = new qqstory_service.ReqDelFeedComment();
-    localReqDelFeedComment.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-    localReqDelFeedComment.comment_id.set(this.jdField_a_of_type_Int);
-    return localReqDelFeedComment.toByteArray();
   }
 }
 

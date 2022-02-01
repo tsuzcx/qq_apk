@@ -1,26 +1,42 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
+import com.tencent.mobileqq.apollo.ApolloResManager.6;
 
-final class amob
-  implements Animation.AnimationListener
+public class amob
+  implements anfg
 {
-  amob(View paramView) {}
+  public amob(ApolloResManager.6 param6) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    if ((this.a != null) && (this.a.getVisibility() == 0))
+    amoe localamoe;
+    if (this.a.a != null)
     {
-      paramAnimation = AnimationUtils.loadAnimation(this.a.getContext(), 2130772232);
-      paramAnimation.setAnimationListener(this);
-      this.a.startAnimation(paramAnimation);
+      localamoe = this.a.a;
+      if (!paramBoolean) {
+        break label69;
+      }
+      paramString = "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/role/" + paramInt1;
+      if (!paramBoolean) {
+        break label74;
+      }
+      paramArrayOfInt = "success";
+      label51:
+      if (!paramBoolean) {
+        break label81;
+      }
+    }
+    label69:
+    label74:
+    label81:
+    for (paramInt1 = 0;; paramInt1 = -5003)
+    {
+      localamoe.a(paramString, paramArrayOfInt, paramInt1);
+      return;
+      paramString = null;
+      break;
+      paramArrayOfInt = "download error";
+      break label51;
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

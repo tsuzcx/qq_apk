@@ -1,35 +1,27 @@
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.MessageForFuDai;
-import com.tencent.mobileqq.widget.FilterRelativeLayout;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
 
 public class atvn
-  extends aezf
+  implements aqqr
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private FilterRelativeLayout jdField_a_of_type_ComTencentMobileqqWidgetFilterRelativeLayout;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private ImageView c;
-  private ImageView d;
-  private int e;
-  
-  private void a(View paramView)
+  public String a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFilterRelativeLayout = ((FilterRelativeLayout)paramView.findViewById(2131367328));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367322));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367326));
-    this.c = ((ImageView)paramView.findViewById(2131367327));
-    this.d = ((ImageView)paramView.findViewById(2131367323));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367329));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367330));
+    return anvx.a(2131698826);
   }
   
-  private void a(MessageForFuDai paramMessageForFuDai)
+  public void a(View paramView, int paramInt)
   {
-    this.e = paramMessageForFuDai.themeId;
+    if (paramView == null) {}
+    while (paramInt != 17039360) {
+      return;
+    }
+    paramView = paramView.getContext();
+    Intent localIntent = new Intent(paramView, FileAssistantActivity.class);
+    localIntent.putExtra("from", "FileAssistant");
+    paramView.startActivity(localIntent);
+    bdla.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", 1, 0, "", "", "", "");
   }
 }
 

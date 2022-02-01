@@ -1,24 +1,24 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 class nsu
-  implements View.OnClickListener
+  implements AdapterView.OnItemClickListener
 {
-  nsu(nst paramnst) {}
+  nsu(nst paramnst, PoiMapActivity paramPoiMapActivity) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    ((AccountDetailActivity)this.a.jdField_a_of_type_AndroidAppActivity).E();
-    String str2 = this.a.jdField_a_of_type_JavaLangString;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType == 1) {}
-    for (String str1 = "02";; str1 = "01")
+    this.jdField_a_of_type_Nst.a(paramInt, true);
+    int i = this.jdField_a_of_type_Nst.jdField_a_of_type_ComTencentBizPoiMapActivity.a.length;
+    paramInt = 0;
+    while (paramInt < i)
     {
-      odq.a(null, str2, "0X8007CA4", "0X8007CA4", 0, 0, str1, String.valueOf(nst.a(this.a)), "", "", false);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      if (this.jdField_a_of_type_Nst.e != paramInt) {
+        this.jdField_a_of_type_Nst.jdField_a_of_type_ComTencentBizPoiMapActivity.a[paramInt].a(-1, false);
+      }
+      paramInt += 1;
     }
   }
 }

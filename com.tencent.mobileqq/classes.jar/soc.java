@@ -1,17 +1,37 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinSlideDownView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinSlideDownView.1.1;
-import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
+import android.view.View;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-public class soc
-  implements bcrx
+public abstract interface soc
 {
-  public soc(ReadInJoySkinSlideDownView paramReadInJoySkinSlideDownView) {}
+  public abstract int a();
   
-  public void a(bcra parambcra)
-  {
-    ReadInJoySkinSlideDownView.a(this.a, parambcra);
-    this.a.a.post(new ReadInJoySkinSlideDownView.1.1(this, parambcra));
-  }
+  public abstract CharSequence a();
+  
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(double paramDouble);
+  
+  public abstract void a(VideoInfo paramVideoInfo);
+  
+  public abstract void a(VideoInfo paramVideoInfo, swu paramswu);
+  
+  public abstract void a(sob paramsob);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(VideoInfo paramVideoInfo);
+  
+  public abstract boolean a(VideoInfo paramVideoInfo, swu paramswu, double paramDouble, long paramLong);
+  
+  public abstract String b();
+  
+  public abstract String c();
+  
+  public abstract String d();
+  
+  public abstract void onClick(View paramView);
 }
 
 

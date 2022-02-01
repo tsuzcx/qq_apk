@@ -1,8 +1,10 @@
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+
 public abstract interface qhl
 {
-  public abstract void a();
+  public abstract void onLoadUserInfoFailed(String paramString1, String paramString2);
   
-  public abstract void b();
+  public abstract void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo);
 }
 
 

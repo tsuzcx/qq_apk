@@ -1,18 +1,41 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import android.content.Context;
+import android.os.SystemClock;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.ImgDownloadListener.1;
+import com.tencent.mobileqq.nearby.ImgDownloadListener.2;
 
-public final class axnq
-  implements Parcelable.Creator<OcrRecogResult>
+public class axnq
+  implements URLDrawable.DownloadListener
 {
-  public OcrRecogResult a(Parcel paramParcel)
+  private long jdField_a_of_type_Long;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private String jdField_a_of_type_JavaLangString = "freshnews.small_pic_download";
+  
+  public axnq(Context paramContext)
   {
-    return new OcrRecogResult(paramParcel);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public OcrRecogResult[] a(int paramInt)
+  public axnq(Context paramContext, String paramString)
   {
-    return new OcrRecogResult[paramInt];
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void onFileDownloadFailed(int paramInt)
+  {
+    ThreadManager.postImmediately(new ImgDownloadListener.2(this, paramInt), null, true);
+  }
+  
+  public void onFileDownloadStarted()
+  {
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+  }
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    ThreadManager.postImmediately(new ImgDownloadListener.1(this, paramLong), null, true);
   }
 }
 

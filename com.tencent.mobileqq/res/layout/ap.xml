@@ -7,6 +7,6 @@
             <TextView android:textSize="16.0dip" android:textColor="@color/skin_gray3" android:gravity="center" android:layout_gravity="center" android:id="@id/hzb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/j2n" />
         </LinearLayout>
         <ViewStub android:id="@id/ky_" android:visibility="gone" android:layout="@layout/a8o" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <RelativeLayout android:id="@id/ky9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     </FrameLayout>
-    <RelativeLayout android:id="@id/ky9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </FrameLayout>

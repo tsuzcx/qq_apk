@@ -1,38 +1,16 @@
-import android.os.SystemClock;
+import com.tencent.aladdin.config.utils.SpUtils.IAladdinSpOperator;
 
-public class pla
+final class pla
+  implements SpUtils.IAladdinSpOperator
 {
-  final long a;
-  public final String a;
-  long b;
-  public final String b;
-  
-  pla(String paramString1, String paramString2)
+  public <T> T getSpValue(String paramString, T paramT, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    return bmhv.a(paramString, paramT, paramBoolean);
   }
   
-  pla(String paramString1, String paramString2, long paramLong)
+  public <T> void updateSpValue(String paramString, T paramT, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    this.jdField_b_of_type_Long = paramLong;
-  }
-  
-  boolean a()
-  {
-    if (this.jdField_b_of_type_Long > 0L) {
-      if (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long <= this.jdField_b_of_type_Long) {}
-    }
-    while (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long > 300000L)
-    {
-      return true;
-      return false;
-    }
-    return false;
+    bmhv.a(paramString, paramT, paramBoolean);
   }
 }
 

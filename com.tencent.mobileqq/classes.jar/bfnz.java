@@ -1,16 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
-
-public class bfnz
-  implements DialogInterface.OnDismissListener
+public abstract interface bfnz
 {
-  public bfnz(UpgradeActivity paramUpgradeActivity) {}
+  public abstract int a();
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.finish();
-  }
+  public abstract long a();
+  
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(bfoa parambfoa);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract String b();
+  
+  public abstract boolean c();
+  
+  public abstract boolean d();
+  
+  public abstract int h();
 }
 
 

@@ -7,8 +7,8 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import azbx;
-import bbom;
+import bahl;
+import bcvg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -273,7 +273,7 @@ public class InnerDns
     {
       str1 = str2;
       if (str2.equals(String.valueOf(1))) {
-        str1 = azbx.a(localContext);
+        str1 = bahl.a(localContext);
       }
     }
     return str1;
@@ -577,7 +577,7 @@ public class InnerDns
     if ((BaseApplicationImpl.sProcessId == 1) && (!this.mIsRequestingIPDomaining))
     {
       QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      localQQAppInterface.startServlet(new NewIntent(localQQAppInterface.getApp(), bbom.class));
+      localQQAppInterface.startServlet(new NewIntent(localQQAppInterface.getApp(), bcvg.class));
       this.mIsRequestingIPDomaining = true;
     }
   }

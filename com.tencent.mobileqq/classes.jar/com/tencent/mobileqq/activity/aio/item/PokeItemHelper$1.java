@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agkg;
+import ahcw;
 import com.immersion.stickersampleapp.HapticManager;
 
 public final class PokeItemHelper$1
@@ -10,7 +10,7 @@ public final class PokeItemHelper$1
   
   public void run()
   {
-    HapticManager.a().a(String.valueOf(this.a), agkg.e + this.a + "/" + this.a + ".hapt");
+    HapticManager.a().a(String.valueOf(this.a), ahcw.e + this.a + "/" + this.a + ".hapt");
   }
 }
 

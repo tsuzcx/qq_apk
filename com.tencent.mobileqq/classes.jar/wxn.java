@@ -1,14 +1,12 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnSeekCompleteListener;
-
 class wxn
-  implements MediaPlayer.OnSeekCompleteListener
+  extends wwo
 {
-  wxn(wxj paramwxj, wxf paramwxf) {}
+  wxn(wxa paramwxa, wyi paramwyi) {}
   
-  public void onSeekComplete(MediaPlayer paramMediaPlayer)
+  public boolean b()
   {
-    this.jdField_a_of_type_Wxf.a(this.jdField_a_of_type_Wxj);
+    this.jdField_a_of_type_Wyi.e = ((String)a("UploadImageJob_out_image_url"));
+    return true;
   }
 }
 

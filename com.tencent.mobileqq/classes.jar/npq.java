@@ -1,58 +1,23 @@
-import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.coupon.CouponActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.avgame.ui.AvGameLoadingActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class npq
-  extends WebViewPlugin
+  extends BroadcastReceiver
 {
-  public npq()
-  {
-    this.mPluginNameSpace = "coupon";
-  }
+  public npq(AvGameLoadingActivity paramAvGameLoadingActivity) {}
   
-  public void a(String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Activity localActivity = this.mRuntime.a();
-    int i;
-    if ((localActivity instanceof CouponActivity))
+    paramContext = paramIntent.getAction();
+    QLog.d("AvGameManagerAvGameLoadingActivity", 2, "receive broadcast");
+    if ("com.tencent.avgame.ui.AvGameLoadingActivity.ACTION_LOADING_FINISH".equals(paramContext))
     {
-      localObject = (CouponActivity)localActivity;
-      i = ((CouponActivity)localObject).a;
-      if ((i & 0x8) != 0)
-      {
-        paramString = new Intent();
-        paramString.putExtra("toPage", 2);
-        ((CouponActivity)localObject).setResult(-1, paramString);
-        ((CouponActivity)localObject).superFinish();
-      }
+      nqc.a().a("param_StepLoading", 0);
+      AvGameLoadingActivity.a(this.a, true, 0);
     }
-    else
-    {
-      return;
-    }
-    Object localObject = new Intent(localActivity, CouponActivity.class);
-    ((Intent)localObject).putExtra("from", (i | 0xA) & 0xE);
-    if (!TextUtils.isEmpty(paramString)) {
-      ((Intent)localObject).putExtra("jsonParams", paramString);
-    }
-    localActivity.startActivity((Intent)localObject);
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ("coupon".equals(paramString2))
-    {
-      if (("goToCouponHomePage".equals(paramString3)) && (paramVarArgs.length == 1))
-      {
-        a(paramVarArgs[0]);
-        paramJsBridgeListener.a(null);
-      }
-      return true;
-    }
-    return false;
   }
 }
 

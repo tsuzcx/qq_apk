@@ -1,14 +1,14 @@
 package com.tencent.biz.qqstory.utils;
 
-import bhht;
+import bisl;
 
 public class UIUtils$StoryProgressUI
 {
-  bhht mProgressDialog;
+  bisl mProgressDialog;
   
-  UIUtils$StoryProgressUI(bhht parambhht)
+  UIUtils$StoryProgressUI(bisl parambisl)
   {
-    this.mProgressDialog = parambhht;
+    this.mProgressDialog = parambisl;
   }
   
   public void dismiss()

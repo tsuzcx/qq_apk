@@ -1,11 +1,13 @@
-public abstract interface bgzs
-  extends bguj
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.FIELD})
+public @interface bgzs
 {
-  public abstract int a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(long paramLong);
+  String a() default "";
 }
 
 

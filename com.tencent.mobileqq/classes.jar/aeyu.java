@@ -1,21 +1,19 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeInfo;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
 
 public class aeyu
-  extends View.AccessibilityDelegate
+  implements DialogInterface.OnKeyListener
 {
-  public aeyu(BaseBubbleBuilder paramBaseBubbleBuilder) {}
+  public aeyu(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
   
-  @TargetApi(16)
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      paramAccessibilityNodeInfo.setVisibleToUser(false);
+    if (paramInt == 4) {
+      this.a.finish();
     }
+    return false;
   }
 }
 

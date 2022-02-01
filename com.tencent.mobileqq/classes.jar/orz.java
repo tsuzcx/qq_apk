@@ -1,26 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.lang.ref.WeakReference;
 
-final class orz
-  implements DialogInterface.OnClickListener
+class orz
+  implements szb
 {
-  orz(ouc paramouc, ouo paramouo) {}
+  private WeakReference<ory> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public orz(ory paramory)
   {
-    if (paramInt == 1)
-    {
-      if (this.jdField_a_of_type_Ouc != null)
-      {
-        paramDialogInterface = this.jdField_a_of_type_Ouc.a();
-        if (paramDialogInterface != null)
-        {
-          paramDialogInterface.a(this.jdField_a_of_type_Ouo);
-          this.jdField_a_of_type_Ouc.notifyDataSetChanged();
-        }
-      }
-      bkwm.a("family_comment_card_hide_timestamp", Long.valueOf(System.currentTimeMillis()));
+    this.a = new WeakReference(paramory);
+  }
+  
+  public void a()
+  {
+    ory localory = (ory)this.a.get();
+    if ((localory == null) || (!localory.b())) {
+      return;
     }
+    ory.a(localory).sendEmptyMessage(1);
   }
 }
 

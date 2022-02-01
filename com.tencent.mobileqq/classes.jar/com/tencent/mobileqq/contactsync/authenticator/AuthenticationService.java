@@ -3,12 +3,12 @@ package com.tencent.mobileqq.contactsync.authenticator;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import aqmv;
+import arqg;
 
 public class AuthenticationService
   extends Service
 {
-  private aqmv a;
+  private arqg a;
   
   public IBinder onBind(Intent paramIntent)
   {
@@ -18,7 +18,7 @@ public class AuthenticationService
   public void onCreate()
   {
     super.onCreate();
-    this.a = new aqmv(this);
+    this.a = new arqg(this);
   }
   
   public void onDestroy() {}

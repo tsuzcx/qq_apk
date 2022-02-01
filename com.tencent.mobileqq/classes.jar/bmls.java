@@ -1,26 +1,26 @@
-import NS_QQ_STORY_CLIENT.CLIENT.StSmartMatchMusicRsp;
-import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.OnScaleGestureListener;
 
-public final class bmls
-  implements VSDispatchObserver.onVSRspCallBack<CLIENT.StSmartMatchMusicRsp>
+class bmls
+  implements ScaleGestureDetector.OnScaleGestureListener
 {
-  public bmls(VSDispatchObserver.onVSRspCallBack paramonVSRspCallBack, long paramLong) {}
+  bmls(bmlo parambmlo) {}
   
-  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CLIENT.StSmartMatchMusicRsp paramStSmartMatchMusicRsp)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    bmbx.b("AEEditorMusicHelper", "[requestRecommendedMusicList], onReceive(), isSuccess=" + paramBoolean + ", retCode=" + paramLong + ", errMsg=" + paramString);
-    if (this.jdField_a_of_type_ComTencentBizRichframeworkNetworkObserverVSDispatchObserver$onVSRspCallBack != null) {
-      this.jdField_a_of_type_ComTencentBizRichframeworkNetworkObserverVSDispatchObserver$onVSRspCallBack.onReceive(paramVSBaseRequest, paramBoolean, paramLong, paramString, paramStSmartMatchMusicRsp);
+    float f = paramScaleGestureDetector.getScaleFactor();
+    if (bmlo.a(this.a) != null) {
+      bmlo.a(this.a).a("onActionScale", new float[] { f });
     }
-    long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    int i = (int)paramLong;
-    if (paramBoolean) {
-      i = 1000;
-    }
-    bmbc.a().a(i, l1 - l2 + "", "AEEditorMusicList", 0);
+    return true;
   }
+  
+  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    return true;
+  }
+  
+  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
 }
 
 

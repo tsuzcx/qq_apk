@@ -1,16 +1,11 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
-class ajia
-  implements View.OnTouchListener
+public class ajia
+  extends ajhy
 {
-  ajia(ajhz paramajhz) {}
+  public int a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public String toString()
   {
-    ajhz.a(this.a, paramView);
-    return false;
+    return "InviteJoinGroupSecFrontInfo{index=" + this.a + '}';
   }
 }
 

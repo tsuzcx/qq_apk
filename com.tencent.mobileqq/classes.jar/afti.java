@@ -1,65 +1,65 @@
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopAppInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.mobileqq.transfile.chatpic.PicDownloadExplicitError;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class afti
-  implements nqw
+public class afti
+  implements View.OnClickListener
 {
-  afti(afth paramafth) {}
+  private long a;
+  public SessionInfo a;
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if ((ChatActivityUtils.a(afth.a(this.a).sessionInfo.curFriendUin, afth.a(this.a).app.getCurrentAccountUin()) != null) || (QLog.isColorLevel())) {
-      QLog.d(".troop.notify_feeds.aio", 2, "getAppIds onFailed, reqNotifyItems");
-    }
-    bezz.a(afth.a(this.a).app, afth.a(this.a).sessionInfo.curFriendUin);
-  }
-  
-  public void a(ArrayList<TroopAppInfo> paramArrayList)
-  {
-    if ((afth.a(this.a) == null) || (afth.a(this.a).app == null) || (afth.a(this.a).sessionInfo == null)) {}
-    ArrayList localArrayList;
-    do
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long < 1000L) {}
+    for (;;)
     {
-      do
-      {
-        return;
-      } while (ChatActivityUtils.a(afth.a(this.a).sessionInfo.curFriendUin, afth.a(this.a).app.getCurrentAccountUin()) != null);
-      localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(1L));
-      localArrayList.add(Long.valueOf(2L));
-      localArrayList.add(Long.valueOf(1101236949L));
-      localArrayList.add(Long.valueOf(1101484419L));
-      localArrayList.add(Long.valueOf(1102858908L));
-      localArrayList.add(Long.valueOf(1106611799L));
-      localArrayList.add(Long.valueOf(1104445552L));
-      localArrayList.add(Long.valueOf(1106717414L));
-      localArrayList.add(Long.valueOf(101509131L));
-      localArrayList.add(Long.valueOf(1106588005L));
-      localArrayList.add(Long.valueOf(1106664488L));
-      localArrayList.add(Long.valueOf(101618516L));
-      localArrayList.add(Long.valueOf(101872323L));
-      localArrayList.add(Long.valueOf(101890494L));
-      localArrayList.add(Long.valueOf(101896870L));
-      if ((paramArrayList != null) && (paramArrayList.size() > 0))
-      {
-        paramArrayList = paramArrayList.iterator();
-        while (paramArrayList.hasNext()) {
-          localArrayList.add(Long.valueOf(((TroopAppInfo)paramArrayList.next()).appId));
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_Long = l;
+      Object localObject = (URLImageView)paramView;
+      MessageForPic localMessageForPic = (MessageForPic)((URLImageView)localObject).getTag(2131364536);
+      URLDrawable localURLDrawable = (URLDrawable)((URLImageView)localObject).getDrawable();
+      if (localURLDrawable != null) {
+        switch (localURLDrawable.getStatus())
+        {
+        default: 
+          break;
+        case 0: 
+          if (!localURLDrawable.isDownloadStarted()) {
+            localURLDrawable.startDownload();
+          }
+          break;
+        case 2: 
+          localObject = PicDownloadExplicitError.getFailedTip(localURLDrawable);
+          if (localObject != null) {
+            QQToast.a(paramView.getContext(), (CharSequence)localObject, 0).a();
+          } else if (FileUtils.checkFolder(paramView.getContext())) {
+            localURLDrawable.restartDownload();
+          }
+          break;
+        case 1: 
+          if (ahcj.a(localMessageForPic))
+          {
+            AIOEmotionFragment.a(paramView.getContext(), localMessageForPic, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, aavz.a(paramView));
+          }
+          else
+          {
+            localMessageForPic.isInMixedMsg = true;
+            ahcj.a(wzk.a(), paramView.getContext(), (View)localObject, localMessageForPic, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false, true, true, null);
+          }
+          break;
         }
       }
-      paramArrayList = (anca)afth.a(this.a).app.getBusinessHandler(20);
-    } while (paramArrayList == null);
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.notify_feeds.aio", 2, "send_oidb_0x8c9_2, appIds.size=" + localArrayList.size());
     }
-    paramArrayList.a(afth.a(this.a).sessionInfo.curFriendUin, localArrayList, false);
   }
 }
 

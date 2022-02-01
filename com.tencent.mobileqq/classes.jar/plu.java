@@ -1,44 +1,33 @@
-import android.util.Pair;
-import java.util.ArrayList;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class plu
+public class plu
+  implements AladdinConfigHandler
 {
-  public static <T, S> String a(List<Pair<T, S>> paramList, String paramString1, String paramString2)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder(1024);
-    if (paramList.size() > 0)
+    QLog.d("KandianOpenOptConfigHandler", 2, "[onReceiveConfig] " + paramString);
+    paramString = pku.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      ArrayList localArrayList = new ArrayList(paramList);
-      int i = 0;
-      while (i < localArrayList.size())
-      {
-        Pair localPair = (Pair)localArrayList.get(i);
-        if (i != 0) {
-          localStringBuilder.append(paramString2);
-        }
-        localStringBuilder.append(localPair.first);
-        if (i != 0) {
-          localStringBuilder.append(paramString1).append(localPair.second);
-        }
-        i += 1;
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("KandianOpenOptConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (TextUtils.equals(str1, "opt_open_cost")) {
+        bmhv.a("preload_controller", Boolean.valueOf("1".equals(str2)));
       }
-      paramList.removeAll(localArrayList);
     }
-    return localStringBuilder.toString();
+    return true;
   }
   
-  public static String a(boolean paramBoolean, String paramString1, String paramString2)
+  public void onWipeConfig(int paramInt)
   {
-    if (paramBoolean) {
-      return paramString1;
-    }
-    return paramString2;
-  }
-  
-  public static <T> boolean a(T paramT1, T paramT2)
-  {
-    return paramT1 == paramT2;
+    bmhv.a("preload_controller", Boolean.valueOf(true));
   }
 }
 

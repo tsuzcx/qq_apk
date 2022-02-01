@@ -1,40 +1,16 @@
-import android.support.annotation.UiThread;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class utm<V extends uiz>
-  implements ujc<V>
+class utm
+  implements View.OnClickListener
 {
-  private WeakReference<V> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
+  utm(uta paramuta) {}
   
-  @UiThread
-  public V a()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      return null;
-    }
-    return (uiz)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      this.jdField_a_of_type_JavaLangRefWeakReference.clear();
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    }
-  }
-  
-  @UiThread
-  public void a(V paramV)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramV);
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = true;
+    this.a.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

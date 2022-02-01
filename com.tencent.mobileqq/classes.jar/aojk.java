@@ -1,177 +1,228 @@
-import android.annotation.TargetApi;
-import android.os.Environment;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.model.ArFeatureInfo;
-import com.tencent.mobileqq.ar.model.ArModelResource;
-import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vfs.VFSAssistantUtils;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.activity.ForwardRecentTranslucentActivity;
+import com.tencent.mobileqq.ark.ArkAppCenterUtil;
+import com.tencent.mobileqq.utils.QQCustomArkDialog.AppInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aojk
+  extends aoji
 {
-  public static String a()
+  public long a;
+  
+  public aojk(Activity paramActivity, String paramString1, String paramString2, long paramLong, String paramString3, int paramInt)
   {
-    if (a()) {}
-    for (String str = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH);; str = BaseApplicationImpl.sApplication.getFilesDir().getAbsolutePath() + File.separator)
+    super(paramActivity, paramString1, paramString2, paramString3, paramInt);
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public static String a(String paramString1, long paramLong, String paramString2)
+  {
+    long l = System.currentTimeMillis() / 1000L;
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
+    localJSONObject2.put("type", "invite");
+    JSONObject localJSONObject3 = new JSONObject();
+    StringBuilder localStringBuilder = new StringBuilder("mqqapi://avgame/join_room");
+    localStringBuilder.append("?").append("uin").append("=").append(paramString1).append("&").append("room").append("=").append(paramLong);
+    localJSONObject3.put("jump_url", localStringBuilder.toString());
+    localJSONObject3.put("h5_url", paramString2);
+    localJSONObject3.put("icon_url", "https://qqvgame.qq.com/d55d788cc3c423807d830230aad935b2.png");
+    localJSONObject3.put("roomid", String.valueOf(paramLong));
+    localJSONObject3.put("timestamp", String.valueOf(l));
+    localJSONObject2.put("extra", localJSONObject3);
+    localJSONObject1.put("invite", localJSONObject2);
+    return localJSONObject1.toString();
+  }
+  
+  protected Intent a()
+  {
+    QLog.d("AVGameShareEntry", 1, "getShareArkIntent");
+    if (a() == null)
     {
-      QLog.d("AREngine_ARResouceDir", 1, "initArResourceFilePath rootPath:=" + str);
-      return str;
-      if (QLog.isColorLevel()) {
-        QLog.i("AREngine_ARResouceDir", 2, "no_sdcard");
-      }
-      float f = FileUtils.getAvailableInnernalMemorySize();
-      if ((f < 15728640.0F) && (QLog.isColorLevel())) {
-        QLog.i("AREngine_ARResouceDir", 2, "inner memory avail may not enough : " + f);
-      }
+      QLog.e("AVGameShareEntry", 1, "getShareArkIntent error: activity is null");
+      return null;
     }
-  }
-  
-  public static String a(ArCloudConfigInfo paramArCloudConfigInfo)
-  {
-    return paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d + paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.d + File.separator;
-  }
-  
-  public static String a(String paramString)
-  {
-    return a() + "ar_cloud_transfer/" + paramString + File.separator;
-  }
-  
-  /* Error */
-  public static void a(@androidx.annotation.NonNull String paramString)
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: aload_0
-    //   4: invokestatic 111	com/tencent/mobileqq/utils/FileUtils:fileExists	(Ljava/lang/String;)Z
-    //   7: istore_1
-    //   8: iload_1
-    //   9: ifne +8 -> 17
-    //   12: aload_0
-    //   13: invokestatic 115	com/tencent/mobileqq/utils/FileUtils:createFile	(Ljava/lang/String;)Ljava/io/File;
-    //   16: pop
-    //   17: ldc 2
-    //   19: monitorexit
-    //   20: return
-    //   21: astore_0
-    //   22: invokestatic 47	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   25: ifeq -8 -> 17
-    //   28: ldc 23
-    //   30: iconst_2
-    //   31: ldc 117
-    //   33: aload_0
-    //   34: invokestatic 120	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   37: goto -20 -> 17
-    //   40: astore_0
-    //   41: ldc 2
-    //   43: monitorexit
-    //   44: aload_0
-    //   45: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	46	0	paramString	String
-    //   7	2	1	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   12	17	21	java/io/IOException
-    //   3	8	40	finally
-    //   12	17	40	finally
-    //   22	37	40	finally
-  }
-  
-  @TargetApi(18)
-  public static boolean a()
-  {
+    localIntent = new Intent(a(), ForwardRecentActivity.class);
     try
     {
-      boolean bool = Environment.getExternalStorageState().equals("mounted");
-      return bool;
-    }
-    catch (Exception localException) {}
-    return false;
-  }
-  
-  public static String b()
-  {
-    return a() + "ar_relationship/";
-  }
-  
-  public static String b(ArCloudConfigInfo paramArCloudConfigInfo)
-  {
-    try
-    {
-      if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource == null) {
-        return "";
+      localIntent.putExtra("forward_type", 27);
+      localIntent.putExtra("is_ark_display_share", true);
+      localIntent.putExtra("forward_ark_app_name", "com.tencent.avgame");
+      localIntent.putExtra("forward_ark_app_view", "invite");
+      localIntent.putExtra("forward_ark_app_ver", "1.0.0.1");
+      if (TextUtils.isEmpty(c())) {}
+      for (String str = "邀请你加入派对";; str = c() + "邀请你加入派对")
+      {
+        localIntent.putExtra("forward_ark_app_prompt", str);
+        localIntent.putExtra("selection_mode", 2);
+        localIntent.putExtra("avgame_share_callback_key", true);
+        str = h();
+        QLog.d("AVGameShareEntry", 1, "getShareArkIntent metaDataString: " + str);
+        localIntent.putExtra("forward_ark_app_meta", str);
+        localIntent.putExtras(QQCustomArkDialog.AppInfo.zipArgs("com.tencent.avgame", "invite", "1.0.0.1", str, ArkAppCenterUtil.getDensity(), null, null));
+        break;
       }
-      String str = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.a;
-      paramArCloudConfigInfo = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d + str + File.separator;
-      return paramArCloudConfigInfo;
+      return localIntent;
     }
-    catch (Exception paramArCloudConfigInfo)
+    catch (JSONException localJSONException)
     {
-      QLog.i("AREngine_ARResouceDir", 2, "get3DModelUnzipDir error " + paramArCloudConfigInfo.getMessage());
+      QLog.e("AVGameShareEntry", 1, "getShareArkIntent exception message: " + localJSONException.getMessage());
     }
-    return "";
   }
   
-  public static String c(ArCloudConfigInfo paramArCloudConfigInfo)
+  protected void b(int paramInt)
   {
-    try
-    {
-      if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource == null) {
-        return "";
-      }
-      String str1 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.a;
-      String str2 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.d;
-      paramArCloudConfigInfo = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d + str1 + File.separator + str2;
-      return paramArCloudConfigInfo;
-    }
-    catch (Exception paramArCloudConfigInfo)
-    {
-      QLog.i("AREngine_ARResouceDir", 2, "get3DModelLuaFilePath error " + paramArCloudConfigInfo.getMessage());
-    }
-    return "";
+    super.b(paramInt);
+    aojq.a().a(a(), 2, true);
   }
   
-  public static String d(ArCloudConfigInfo paramArCloudConfigInfo)
+  protected void b(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    try
-    {
-      if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource == null) {
-        return "";
-      }
-      String str = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.a;
-      if (TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.c)) {
-        return "";
-      }
-      paramArCloudConfigInfo = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d + str + File.separator + paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.c;
-      return paramArCloudConfigInfo;
+    QLog.d("AVGameShareEntry", 1, "shareToSpecifiedFriend");
+    if (a() == 0) {
+      bdla.b(null, "dc00898", "", "", "0X800B066", "0X800B066", a(), 0, "0", String.valueOf(this.jdField_a_of_type_Long), "", "");
     }
-    catch (Exception paramArCloudConfigInfo)
+    Bundle localBundle;
+    for (;;)
     {
-      QLog.i("AREngine_ARResouceDir", 2, "get3DModelMusicFilePath error " + paramArCloudConfigInfo.getMessage());
+      localBundle = new Bundle();
+      localBundle.putInt("key_req", ForwardRecentActivity.f);
+      localBundle.putInt("key_direct_show_uin_type", paramActionSheetItem.uinType);
+      localBundle.putString("key_direct_show_uin", paramActionSheetItem.uin);
+      paramActionSheetItem = a();
+      if (paramActionSheetItem != null) {
+        break;
+      }
+      QLog.e("AVGameShareEntry", 1, "shareToSpecifiedFriend error: intent is null");
+      QQToast.a(a(), 2131690497, 0).a();
+      return;
+      bdla.b(null, "dc00898", "", "", "0X800B065", "0X800B065", a(), 0, "0", String.valueOf(this.jdField_a_of_type_Long), "", "");
     }
-    return "";
+    paramActionSheetItem.putExtras(localBundle);
+    aupt.a(a(), paramActionSheetItem, ForwardRecentTranslucentActivity.class, -1);
+    QLog.d("AVGameShareEntry", 1, "shareToSpecifiedFriend success");
+    if (a() == 0)
+    {
+      bdla.b(null, "dc00898", "", "", "0X800B068", "0X800B068", a(), 0, "0", String.valueOf(this.jdField_a_of_type_Long), "", "");
+      return;
+    }
+    bdla.b(null, "dc00898", "", "", "0X800B064", "0X800B064", a(), 0, "0", String.valueOf(this.jdField_a_of_type_Long), "", "");
   }
   
-  public static String e(ArCloudConfigInfo paramArCloudConfigInfo)
+  public void c()
   {
-    try
+    QLog.d("AVGameShareEntry", 1, "showActionSheet");
+    if ((a() == null) || (TextUtils.isEmpty(b())) || (TextUtils.isEmpty(a())))
     {
-      paramArCloudConfigInfo = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d + ((ArVideoResourceInfo)paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.get(0)).c + "_model.zip";
-      return paramArCloudConfigInfo;
+      QLog.e("AVGameShareEntry", 1, "showActionSheet error: params wrong");
+      QQToast.a(a(), 2131690497, 0).a();
+      return;
     }
-    catch (Exception paramArCloudConfigInfo)
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet == null)
     {
-      QLog.i("AREngine_ARResouceDir", 2, "getVideoFilePath error " + paramArCloudConfigInfo.getMessage());
+      QLog.e("AVGameShareEntry", 1, "mShareActionSheet is null");
+      return;
     }
-    return "";
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.isShowing())
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.dismiss();
+      return;
+    }
+    a().getIntent().putExtra("big_brother_source_key", "biz_src_jc_av_game");
+    List localList1 = a();
+    List localList2 = b();
+    Intent localIntent = a();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setIntentForStartForwardRecentActivity(localIntent);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setRowVisibility(0, 0, 0);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setActionSheetItems(localList1, localList2);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setItemClickListenerV2(new aojl(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.show();
+  }
+  
+  protected void d()
+  {
+    if (a() == 0) {
+      bdla.b(null, "dc00898", "", "", "0X800B066", "0X800B066", a(), 0, "1", String.valueOf(this.jdField_a_of_type_Long), "", "");
+    }
+    Intent localIntent;
+    for (;;)
+    {
+      QLog.d("AVGameShareEntry", 1, "shareToQQ");
+      localIntent = a();
+      if (localIntent != null) {
+        break;
+      }
+      QLog.e("AVGameShareEntry", 1, "shareToQQ error: params wrong");
+      QQToast.a(a(), 2131690497, 0).a();
+      return;
+      bdla.b(null, "dc00898", "", "", "0X800B065", "0X800B065", a(), 0, "1", String.valueOf(this.jdField_a_of_type_Long), "", "");
+    }
+    a().startActivityForResult(localIntent, -1);
+    QLog.d("AVGameShareEntry", 1, "shareToQQ success");
+    if (a() == 0)
+    {
+      bdla.b(null, "dc00898", "", "", "0X800B068", "0X800B068", a(), 0, "1", String.valueOf(this.jdField_a_of_type_Long), "", "");
+      return;
+    }
+    bdla.b(null, "dc00898", "", "", "0X800B064", "0X800B064", a(), 0, "1", String.valueOf(this.jdField_a_of_type_Long), "", "");
+  }
+  
+  protected void e()
+  {
+    QLog.d("AVGameShareEntry", 1, "shareToQzone");
+    if (a() == 0) {
+      bdla.b(null, "dc00898", "", "", "0X800B066", "0X800B066", a(), 0, "2", String.valueOf(this.jdField_a_of_type_Long), "", "");
+    }
+    for (;;)
+    {
+      a();
+      if (a() != 0) {
+        break;
+      }
+      bdla.b(null, "dc00898", "", "", "0X800B068", "0X800B068", a(), 0, "2", String.valueOf(this.jdField_a_of_type_Long), "", "");
+      return;
+      bdla.b(null, "dc00898", "", "", "0X800B065", "0X800B065", a(), 0, "2", String.valueOf(this.jdField_a_of_type_Long), "", "");
+    }
+    bdla.b(null, "dc00898", "", "", "0X800B064", "0X800B064", a(), 0, "2", String.valueOf(this.jdField_a_of_type_Long), "", "");
+  }
+  
+  protected void f(int paramInt)
+  {
+    QLog.d("AVGameShareEntry", 1, "shareToWeChat: shareType is " + paramInt);
+    if (paramInt == 9) {
+      if (a() == 0) {
+        bdla.b(null, "dc00898", "", "", "0X800B066", "0X800B066", a(), 0, "3", String.valueOf(this.jdField_a_of_type_Long), "", "");
+      }
+    }
+    for (;;)
+    {
+      e(paramInt);
+      return;
+      bdla.b(null, "dc00898", "", "", "0X800B065", "0X800B065", a(), 0, "3", String.valueOf(this.jdField_a_of_type_Long), "", "");
+      continue;
+      if (paramInt == 10) {
+        if (a() == 0) {
+          bdla.b(null, "dc00898", "", "", "0X800B066", "0X800B066", a(), 0, "4", String.valueOf(this.jdField_a_of_type_Long), "", "");
+        } else {
+          bdla.b(null, "dc00898", "", "", "0X800B065", "0X800B065", a(), 0, "4", String.valueOf(this.jdField_a_of_type_Long), "", "");
+        }
+      }
+    }
+  }
+  
+  protected String h()
+  {
+    return a(b(), this.jdField_a_of_type_Long, a());
   }
 }
 

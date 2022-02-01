@@ -1,19 +1,27 @@
-import android.annotation.TargetApi;
-import android.content.ClipData;
-import android.content.Context;
-import android.os.Build.VERSION;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
-public final class nou
+public class nou
+  extends RecyclerView.ItemDecoration
 {
-  @TargetApi(11)
-  public static void a(Context paramContext, String paramString)
+  private int jdField_a_of_type_Int;
+  private int b;
+  
+  public nou(noq paramnoq, int paramInt1, int paramInt2)
   {
-    if (Build.VERSION.SDK_INT >= 11)
-    {
-      ((android.content.ClipboardManager)paramContext.getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(null, paramString));
-      return;
-    }
-    ((android.text.ClipboardManager)paramContext.getSystemService("clipboard")).setText(paramString);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    paramRect.bottom = 0;
+    paramRect.top = 0;
+    paramRect.right = 0;
+    paramRect.left = 0;
   }
 }
 

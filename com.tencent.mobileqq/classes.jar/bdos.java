@@ -1,26 +1,27 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
-public class bdos
-  implements bjoe
+class bdos
+  extends QIPCModule
 {
-  public bdos(MediaPreviewActivity paramMediaPreviewActivity, bjnw parambjnw, URLDrawable paramURLDrawable) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  bdos(bdor parambdor, String paramString)
   {
-    paramView = this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.jdField_a_of_type_Bffh.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.jdField_a_of_type_Int);
-    String str = this.jdField_a_of_type_Bjnw.a(paramInt);
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131693017).equals(str)) && (paramView != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.a(this.jdField_a_of_type_ComTencentImageURLDrawable, paramView.a);
+    super(paramString);
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if ("receipt_set_read".equals(paramString)) {
+      bdor.a(this.a, paramBundle);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131693023).equals(str)) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.a(this.jdField_a_of_type_ComTencentImageURLDrawable);
+      return null;
+      if (QLog.isColorLevel()) {
+        QLog.d(StructMsgForGeneralShare.access$000(), 2, "unknown action");
       }
     }
   }

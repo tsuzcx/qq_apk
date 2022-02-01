@@ -1,75 +1,39 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.troop.file.MoveFileActivity;
 
-public abstract class aago
+public class aago
+  implements DialogInterface.OnClickListener
 {
-  public static final int PHOTO_LAST_SELECTED = 3;
-  public static final int PHOTO_SELECTED = 1;
-  public static final int PHOTO_UNSELECTED = 2;
-  public boolean isImgCenterCropMode;
-  public int selectStatus = 2;
-  public Rect thubmRect;
+  public aago(MoveFileActivity paramMoveFileActivity) {}
   
-  public static int getCutValue(Rect paramRect, Drawable paramDrawable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    float f1 = paramRect.width();
-    float f2 = paramRect.height();
-    float f3 = paramDrawable.getIntrinsicWidth();
-    float f4 = paramDrawable.getIntrinsicHeight();
-    if ((f1 <= 0.0F) || (f2 <= 0.0F) || (f3 <= 0.0F) || (f4 <= 0.0F)) {}
+    paramDialogInterface = (aatk)paramDialogInterface;
+    this.a.jdField_a_of_type_JavaLangString = paramDialogInterface.getInputValue().trim();
+    if (this.a.jdField_a_of_type_JavaLangString.length() > bgke.a)
+    {
+      paramDialogInterface.a(this.a.getString(2131697108), -65536);
+      bdla.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "over_num", 0, 0, this.a.jdField_a_of_type_Long + "", "", "", "");
+    }
     do
     {
-      return 0;
-      f1 = f1 * f4 / (f2 * f3);
-      if (f1 < 1.0F) {
-        return 1;
+      return;
+      if (bgke.a(this.a.jdField_a_of_type_JavaLangString))
+      {
+        paramDialogInterface.a(this.a.getString(2131697109), -65536);
+        bdla.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "sensitive", 0, 0, this.a.jdField_a_of_type_Long + "", "0", "", "");
+        return;
       }
-    } while (f1 <= 1.0F);
-    return 2;
-  }
-  
-  public abstract Drawable getAnimationDrawable();
-  
-  public abstract int getCutValue();
-  
-  public int getSelected()
-  {
-    return this.selectStatus;
-  }
-  
-  public Rect getStartSrcRect()
-  {
-    return null;
-  }
-  
-  public int getStartX()
-  {
-    return 0;
-  }
-  
-  public int getStartY()
-  {
-    return 0;
-  }
-  
-  public Rect getThumbRect()
-  {
-    return this.thubmRect;
-  }
-  
-  public boolean needAnimation(boolean paramBoolean)
-  {
-    return true;
-  }
-  
-  public void setSelected(int paramInt)
-  {
-    this.selectStatus = paramInt;
+      paramDialogInterface.dismiss();
+    } while (bgke.a(this.a.app, this.a, this.a.jdField_a_of_type_Long) == 0);
+    aagu.a(this.a.app, this.a.jdField_a_of_type_Long, "/", this.a.jdField_a_of_type_JavaLangString, MoveFileActivity.a(this.a));
+    this.a.a(2131697036);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aago
  * JD-Core Version:    0.7.0.1
  */

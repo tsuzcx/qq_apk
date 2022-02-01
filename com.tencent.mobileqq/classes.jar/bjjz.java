@@ -1,20 +1,68 @@
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.open.appstore.js.DINewForCommonWebView;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.io.File;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bjjz
-  implements bjjj
+public class bjjz
+  implements bjnh
 {
-  bjjz(bjjy parambjjy) {}
+  public bjjz(DINewForCommonWebView paramDINewForCommonWebView, String paramString) {}
   
-  public int a(long paramLong1, long paramLong2, long paramLong3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
+  public void a(int paramInt, String paramString)
   {
-    if ((paramObject1 != null) && ((paramObject1 instanceof String)))
+    bjko.e("DINewForCommonWebView", "[innerQuery] [onException] errorCode=" + paramInt + ", errorMsg=" + paramString);
+  }
+  
+  public void a(List<DownloadInfo> paramList)
+  {
+    bjko.c("DINewForCommonWebView", "[innerQuery] onResult = " + paramList.size());
+    JSONArray localJSONArray = new JSONArray();
+    int j = paramList.size();
+    int i = 0;
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.Rpt", 2, String.format("Op: %d, Rid: %d, val: %s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), (String)paramObject1 }));
+      if (i < j)
+      {
+        JSONObject localJSONObject = new JSONObject();
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
+        try
+        {
+          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
+          localJSONObject.put("packagename", localDownloadInfo.e);
+          localJSONObject.put("versioncode", localDownloadInfo.b);
+          localJSONObject.put("url", localDownloadInfo.d);
+          localJSONObject.put("pro", localDownloadInfo.f);
+          localJSONObject.put("state", localDownloadInfo.a());
+          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
+          localJSONObject.put("download_from", localDownloadInfo.h);
+          localJSONObject.put("writecodestate", localDownloadInfo.j);
+          if (TextUtils.isEmpty(localDownloadInfo.l)) {
+            localJSONObject.put("final_file_exits", "false");
+          }
+          for (;;)
+          {
+            localJSONArray.put(localJSONObject);
+            i += 1;
+            break;
+            localJSONObject.put("final_file_exits", new File(localDownloadInfo.l).exists());
+          }
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+          }
+        }
       }
-      this.a.a((int)paramLong1, (int)paramLong2, (String)paramObject1);
     }
-    return 0;
+    paramList = "javascript:" + this.jdField_a_of_type_JavaLangString + "(" + localJSONArray.toString() + ")";
+    bjko.c("DINewForCommonWebView", "[innerQuery] querySucess : " + paramList);
+    DINewForCommonWebView.a(this.jdField_a_of_type_ComTencentOpenAppstoreJsDINewForCommonWebView, paramList);
   }
 }
 

@@ -11,10 +11,12 @@ public final class stGetPersonalFeedListRsp
   extends JceStruct
 {
   static stGlobalConfig cache_config;
+  static stFeedStatus cache_contextFeedStatus = new stFeedStatus();
   static ArrayList<stSimpleMetaFeed> cache_feeds = new ArrayList();
   static Map<String, String> cache_map_ext;
   public String attach_info = "";
   public stGlobalConfig config;
+  public stFeedStatus contextFeedStatus;
   public ArrayList<stSimpleMetaFeed> feeds;
   public boolean is_finished = true;
   public Map<String, String> map_ext;
@@ -31,7 +33,7 @@ public final class stGetPersonalFeedListRsp
   
   public stGetPersonalFeedListRsp() {}
   
-  public stGetPersonalFeedListRsp(ArrayList<stSimpleMetaFeed> paramArrayList, String paramString1, boolean paramBoolean, stGlobalConfig paramstGlobalConfig, String paramString2, Map<String, String> paramMap)
+  public stGetPersonalFeedListRsp(ArrayList<stSimpleMetaFeed> paramArrayList, String paramString1, boolean paramBoolean, stGlobalConfig paramstGlobalConfig, String paramString2, Map<String, String> paramMap, stFeedStatus paramstFeedStatus)
   {
     this.feeds = paramArrayList;
     this.attach_info = paramString1;
@@ -39,6 +41,7 @@ public final class stGetPersonalFeedListRsp
     this.config = paramstGlobalConfig;
     this.traceId = paramString2;
     this.map_ext = paramMap;
+    this.contextFeedStatus = paramstFeedStatus;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -49,6 +52,7 @@ public final class stGetPersonalFeedListRsp
     this.config = ((stGlobalConfig)paramJceInputStream.read(cache_config, 3, false));
     this.traceId = paramJceInputStream.readString(4, false);
     this.map_ext = ((Map)paramJceInputStream.read(cache_map_ext, 5, false));
+    this.contextFeedStatus = ((stFeedStatus)paramJceInputStream.read(cache_contextFeedStatus, 6, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -68,6 +72,9 @@ public final class stGetPersonalFeedListRsp
     }
     if (this.map_ext != null) {
       paramJceOutputStream.write(this.map_ext, 5);
+    }
+    if (this.contextFeedStatus != null) {
+      paramJceOutputStream.write(this.contextFeedStatus, 6);
     }
   }
 }

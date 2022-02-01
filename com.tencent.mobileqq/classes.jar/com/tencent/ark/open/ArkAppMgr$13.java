@@ -21,7 +21,7 @@ class ArkAppMgr$13
     ((SharedPreferences.Editor)localObject).putLong("PredownloadAppUpdateTime", System.currentTimeMillis());
     ((SharedPreferences.Editor)localObject).commit();
     ArkAppMgr.access$100().logI("ArkApp.ArkAppMgr", String.format("updatePredownloadAppList, delta=%d, lastUpdateTime=%d", new Object[] { Long.valueOf(l2), Long.valueOf(l1) }));
-    if (ArkEnvironmentManager.getInstance().isTestEnv()) {}
+    if (!ArkEnvironmentManager.getInstance().isTestEnv()) {}
     for (localObject = "https://cdn.ark.qq.com/arkapp/app_config.json";; localObject = "https://test.ark.qq.com/arkapp/app_config.json")
     {
       ArkAppCGIMgr.getInstance().getPredownloadAppList((String)localObject, null, new ArkAppMgr.13.1(this));

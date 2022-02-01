@@ -2,8 +2,8 @@ package com.tencent.biz.pubaccount.serviceAccountFolder.fragment;
 
 import java.util.Iterator;
 import java.util.List;
-import uaq;
-import uaw;
+import uon;
+import uot;
 
 class FolderFollowTabFragment$7
   implements Runnable
@@ -17,9 +17,9 @@ class FolderFollowTabFragment$7
       Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext())
       {
-        uaq localuaq = (uaq)localIterator.next();
-        if (localuaq.b > 0) {
-          uaw.a().b(FolderFollowTabFragment.a(this.this$0), localuaq, false);
+        uon localuon = (uon)localIterator.next();
+        if (localuon.b > 0) {
+          uot.a().b(FolderFollowTabFragment.a(this.this$0), localuon, false);
         }
       }
     }
@@ -27,7 +27,7 @@ class FolderFollowTabFragment$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment.7
  * JD-Core Version:    0.7.0.1
  */

@@ -1,88 +1,45 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.intervideo.now.ShareToQQActivity;
-import java.util.List;
-
 public class aupb
-  extends anax
 {
-  public aupb(ShareToQQActivity paramShareToQQActivity) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
   
-  protected void a(boolean paramBoolean, List<Long> paramList)
+  public aupb(int paramInt1, String paramString, int paramInt2)
   {
-    if (this.a.a == null)
-    {
-      this.a.finish();
-      return;
-    }
-    String str = this.a.a.a;
-    if (ProfileActivity.AllInOne.i(this.a.a)) {
-      str = this.a.a();
-    }
-    for (;;)
-    {
-      if (paramList == null) {}
-      int k;
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        k = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (bftf.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
-      }
-      if (k != 0)
-      {
-        paramList = new Intent();
-        paramList.putExtra("isSuccess", paramBoolean);
-        paramList.putExtra("isCancelShield", false);
-        this.a.setResult(-1, paramList);
-      }
-      this.a.finish();
-      return;
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int);
+    this.c = a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    this.d = (paramString + "_" + paramInt1 + "_" + paramInt2);
   }
   
-  protected void b(boolean paramBoolean, List<Long> paramList)
+  private static String a(int paramInt, String paramString)
   {
-    int k = 0;
-    if (this.a.a == null)
-    {
-      this.a.finish();
-      return;
-    }
-    String str = this.a.a.a;
-    if (ProfileActivity.AllInOne.i(this.a.a)) {
-      str = this.a.a();
-    }
-    for (;;)
-    {
-      if (paramList == null) {}
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (bftf.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
-      }
-      if (k != 0)
-      {
-        paramList = new Intent();
-        paramList.putExtra("isSuccess", paramBoolean);
-        paramList.putExtra("isCancelShield", true);
-        this.a.setResult(-1, paramList);
-      }
-      this.a.finish();
-      return;
-    }
+    return "flutter_face_path_" + paramInt + "_" + paramString;
+  }
+  
+  private static String a(int paramInt1, String paramString, int paramInt2)
+  {
+    return "flutter_face_bmp_" + paramInt1 + "_" + paramString + "_" + paramInt2;
+  }
+  
+  public static String[] a(int paramInt, String paramString)
+  {
+    return new String[] { a(paramInt, paramString, 1), a(paramInt, paramString, 2), a(paramInt, paramString, 3) };
+  }
+  
+  public static String[] b(int paramInt, String paramString)
+  {
+    return new String[] { a(paramInt, paramString) };
+  }
+  
+  public String toString()
+  {
+    return "DecodeRequest{faceType=" + this.jdField_a_of_type_Int + ", faceUin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", faceShape=" + this.jdField_b_of_type_Int + '}';
   }
 }
 

@@ -1,59 +1,71 @@
-import android.content.res.Resources;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.widget.CircleBubbleImageView;
+import java.net.URL;
 
 class ahgo
-  implements bjoe
+  extends CircleBubbleImageView
 {
-  ahgo(ahgc paramahgc, bjnw parambjnw) {}
+  URLDrawable a;
+  URLDrawable b;
   
-  public void OnClick(View paramView, int paramInt)
+  public ahgo(Context paramContext)
   {
-    switch (paramInt)
-    {
+    super(paramContext);
+    a(true);
+  }
+  
+  public void a(URLDrawable paramURLDrawable)
+  {
+    if (this.a != null) {
+      this.a.setURLDrawableListener(null);
     }
-    for (;;)
+    paramURLDrawable.setURLDrawableListener(this);
+    this.a = paramURLDrawable;
+    paramURLDrawable.startDownload();
+  }
+  
+  public boolean a(String paramString)
+  {
+    return (this.b == null) || (!this.b.getURL().getPath().equals(paramString));
+  }
+  
+  public void b(URLDrawable paramURLDrawable)
+  {
+    setImageDrawable(paramURLDrawable);
+    if (this.b != paramURLDrawable) {
+      this.b = paramURLDrawable;
+    }
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (paramURLDrawable == this.a)
     {
-      try
-      {
-        this.jdField_a_of_type_Bjnw.dismiss();
-        return;
-      }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-      }
-      if (NetworkUtil.isNetSupport(this.jdField_a_of_type_Ahgc.getActivity())) {
-        try
-        {
-          ((bhab)this.jdField_a_of_type_Ahgc.app.getBusinessHandler(107)).a(this.jdField_a_of_type_Ahgc.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo, new ahgp(this));
-          this.jdField_a_of_type_Ahgc.jdField_a_of_type_Bhht = new bhht(this.jdField_a_of_type_Ahgc.getActivity(), this.jdField_a_of_type_Ahgc.getTitleBarHeight());
-          this.jdField_a_of_type_Ahgc.jdField_a_of_type_Bhht.setContentView(2131562728);
-          this.jdField_a_of_type_Ahgc.jdField_a_of_type_Bhht.a(this.jdField_a_of_type_Ahgc.getActivity().getString(2131691946));
-          this.jdField_a_of_type_Ahgc.jdField_a_of_type_Bhht.setCancelable(false);
-          this.jdField_a_of_type_Ahgc.jdField_a_of_type_Bhht.show();
-          paramView = this.jdField_a_of_type_Ahgc.jdField_a_of_type_Bhar.a();
-          if ((paramView == null) || (!paramView.b())) {
-            continue;
-          }
-          bcef.b(this.jdField_a_of_type_Ahgc.app, "dc00899", "Grp_wolf", "", "in_game", "run_away", 0, 0, "", "", "", "");
-        }
-        catch (Exception paramView)
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.e(this.jdField_a_of_type_Ahgc.tag, 2, "the sessionInfo.curFriendUin is wrong: " + this.jdField_a_of_type_Ahgc.sessionInfo.curFriendUin);
-          continue;
-        }
-      } else {
-        QQToast.a(this.jdField_a_of_type_Ahgc.getActivity(), 2130839615, this.jdField_a_of_type_Ahgc.getActivity().getResources().getString(2131694108), 0).b(this.jdField_a_of_type_Ahgc.getTitleBarHeight());
-      }
+      b(paramURLDrawable);
+      return;
+    }
+    super.onLoadFialed(paramURLDrawable, paramThrowable);
+  }
+  
+  @TargetApi(11)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (paramURLDrawable == this.a) {
+      b(paramURLDrawable);
+    }
+    super.onLoadSuccessed(paramURLDrawable);
+  }
+  
+  public void setImageDrawable(Drawable paramDrawable)
+  {
+    super.setImageDrawable(paramDrawable);
+    if (this.a != null)
+    {
+      this.a.setURLDrawableListener(null);
+      this.a = null;
     }
   }
 }

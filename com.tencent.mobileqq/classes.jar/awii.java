@@ -1,26 +1,18 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
-import android.view.animation.DecelerateInterpolator;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.listentogether.ui.BaseListenTogetherPanel.7;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class awii
-  extends AnimatorListenerAdapter
+public class awii
+  implements View.OnClickListener
 {
-  awii(awih paramawih, awim paramawim, URLDrawable paramURLDrawable) {}
+  public awii(BaseListenTogetherPanel.7 param7) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Awih.a() != null)
-    {
-      this.jdField_a_of_type_Awim.b.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-      paramAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_Awim.b, "alpha", new float[] { 0.2F, 1.0F });
-      paramAnimator.setInterpolator(new DecelerateInterpolator());
-      paramAnimator.setDuration(300L).start();
-      return;
-    }
-    this.jdField_a_of_type_Awim.b.setAlpha(1.0F);
+    this.a.this$0.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

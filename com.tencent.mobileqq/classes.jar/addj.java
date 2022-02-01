@@ -1,22 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.activity.DialogActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class addj
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public addj(DialogActivity paramDialogActivity) {}
+  public addj(AboutActivity paramAboutActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    QLog.d("qqBaseActivity", 1, "checkBackgroundRestricWhilteList conform to setting.");
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Intent("android.settings.IGNORE_BACKGROUND_DATA_RESTRICTIONS_SETTINGS", Uri.parse("package:" + this.a.getPackageName()));
-    this.a.startActivity(paramDialogInterface);
-    this.a.finish();
+    Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
+    localIntent.putExtra("uin", this.a.app.getCurrentAccountUin());
+    this.a.startActivity(localIntent.putExtra("url", AboutActivity.a(this.a)));
+    bdla.b(this.a.app, "CliOper", "", "", "0X8005745", "0X8005745", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

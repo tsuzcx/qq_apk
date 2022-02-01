@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.chat;
 
-import amtj;
-import apka;
+import anvx;
+import aqne;
 import com.tencent.common.config.AppSetting;
 import java.util.HashMap;
 
 public class MessageNotificationSettingManager$1
   extends HashMap<Integer, String>
 {
-  public MessageNotificationSettingManager$1(apka paramapka)
+  public MessageNotificationSettingManager$1(aqne paramaqne)
   {
-    put(Integer.valueOf(2131230759), amtj.a(2131705763));
-    put(Integer.valueOf(2131230721), amtj.a(2131705765));
-    put(Integer.valueOf(2131230758), amtj.a(2131705760));
-    put(Integer.valueOf(2131230720), amtj.a(2131705761));
-    put(Integer.valueOf(AppSetting.d), amtj.a(2131705764));
-    put(Integer.valueOf(AppSetting.e), amtj.a(2131705768));
+    put(Integer.valueOf(2131230759), anvx.a(2131706114));
+    put(Integer.valueOf(2131230721), anvx.a(2131706116));
+    put(Integer.valueOf(2131230758), anvx.a(2131706111));
+    put(Integer.valueOf(2131230720), anvx.a(2131706112));
+    put(Integer.valueOf(AppSetting.d), anvx.a(2131706115));
+    put(Integer.valueOf(AppSetting.e), anvx.a(2131706119));
   }
 }
 

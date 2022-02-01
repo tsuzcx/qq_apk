@@ -1,23 +1,66 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.miniapp.MiniAppInfoManager.1;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class awxu
-  implements ampq
 {
-  public awxu(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  Map<String, awxt> a = new ConcurrentHashMap();
   
-  public void a(int paramInt, boolean paramBoolean)
+  awxt a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    if ((paramBoolean) && (paramInt == 2))
+    awxt localawxt = (awxt)this.a.get(paramString);
+    if ((localawxt != null) && (paramBoolean)) {
+      if (!a(localawxt, paramInt1, paramInt2)) {}
+    }
+    while (!QLog.isColorLevel())
     {
-      if ((NearbyPeopleProfileActivity.a(this.a) == null) || (this.a.e != 1)) {
-        break label41;
+      return localawxt;
+      return null;
+    }
+    QLog.d("MiniAppInfoManager", 2, new Object[] { "getAppInfoFromCache cache invalid. cacheKey=", paramString });
+    return localawxt;
+  }
+  
+  void a(awxt paramawxt, int paramInt, awxw paramawxw)
+  {
+    ThreadManagerV2.excute(new MiniAppInfoManager.1(this, paramawxw, paramawxt, paramInt), 128, null, true);
+  }
+  
+  boolean a(awxt paramawxt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppInfoManager", 2, new Object[] { "verifyAppInfo. appState=", Integer.valueOf(paramawxt.jdField_c_of_type_Int) });
+    }
+    return (paramawxt != null) && (paramawxt.jdField_c_of_type_Int == 1);
+  }
+  
+  boolean a(awxt paramawxt, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppInfoManager", 2, new Object[] { "getAppInfoFromCache cache valid. cacheKey=", paramawxt.h });
+    }
+    if (paramInt2 == 1)
+    {
+      if (paramawxt.jdField_c_of_type_Long <= NetConnInfoCenter.getServerTimeMillis()) {}
+    }
+    else {
+      while ((paramInt2 == 0) && (((paramInt1 == 1) && (paramawxt.a > NetConnInfoCenter.getServerTimeMillis())) || ((paramInt1 == 2) && (paramawxt.b > NetConnInfoCenter.getServerTimeMillis())))) {
+        return true;
       }
-      NearbyPeopleProfileActivity.a(this.a).d();
     }
-    label41:
-    while (NearbyPeopleProfileActivity.a(this.a) == null) {
-      return;
+    return false;
+  }
+  
+  boolean b(awxt paramawxt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppInfoManager", 2, new Object[] { "verifyDownloadUrl. downloadUrl=", paramawxt.f });
     }
+    return !TextUtils.isEmpty(paramawxt.f);
   }
 }
 

@@ -1,29 +1,53 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.app.Activity;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.os.Bundle;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenService;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class aqrh
-  implements URLDrawable.URLDrawableListener
+public class aqrh
+  implements Application.ActivityLifecycleCallbacks
 {
-  aqrh(aqrg paramaqrg) {}
+  public aqrh(ColorNoteSmallScreenService paramColorNoteSmallScreenService) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onActivityDestroyed(Activity paramActivity)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MessageForGrayTips", 2, "onLoadSuccessed() called with: urlDrawable = [" + paramURLDrawable + "]");
+      QLog.d("ColorNoteSmallScreenService", 2, "onActivityDestroyed: " + paramActivity.getClass().getName());
     }
-    paramURLDrawable = paramURLDrawable.getCallback();
-    if ((paramURLDrawable instanceof View))
+  }
+  
+  public void onActivityPaused(Activity paramActivity) {}
+  
+  public void onActivityResumed(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNoteSmallScreenService", 2, "onActivityResumed: " + paramActivity.getClass().getName());
+    }
+    if (this.a.f)
     {
-      ((View)paramURLDrawable).invalidate();
-      ((View)paramURLDrawable).requestLayout();
+      this.a.f = false;
+      this.a.d = true;
+      this.a.a().removeCallbacks(this.a.b);
+      this.a.a().postDelayed(this.a.b, 200L);
+    }
+  }
+  
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityStarted(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNoteSmallScreenService", 2, "onActivityStarted: " + paramActivity.getClass().getName());
+    }
+  }
+  
+  public void onActivityStopped(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNoteSmallScreenService", 2, "onActivityStopped: " + paramActivity.getClass().getName());
     }
   }
 }

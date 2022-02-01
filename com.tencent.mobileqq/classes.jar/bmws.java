@@ -1,15 +1,11 @@
-import android.support.annotation.NonNull;
+import java.io.File;
 
-class bmws
-  implements bmvq
+public class bmws
 {
-  bmws(bmwr parambmwr) {}
-  
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
-  {
-    return bfby.b(paramString);
-  }
+  public static final String a = bmwx.b + File.separator + "playshow";
+  public static final String b = a + File.separator + "crazyface_tmp";
+  public static final String c = a + File.separator + "qudong_tmp";
+  public static final String d = a + File.separator + "web_tmp";
 }
 
 

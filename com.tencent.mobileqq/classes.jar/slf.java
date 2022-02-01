@@ -1,12 +1,13 @@
 public abstract interface slf
+  extends slx
 {
-  public abstract void a();
+  public abstract void a(boolean paramBoolean);
   
-  public abstract boolean a();
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract void b();
+  public abstract void b(boolean paramBoolean);
   
-  public abstract void setIsResume(boolean paramBoolean);
+  public abstract void c();
 }
 
 

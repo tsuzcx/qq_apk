@@ -1,26 +1,33 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class aozi
-  implements BusinessObserver
+  extends pvq
+  implements pvb, pvc, pvd
 {
-  public void a(boolean paramBoolean, int paramInt, long paramLong) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void E_()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArMapObserver", 2, new Object[] { "onUpdate, type=", Integer.valueOf(paramInt), ", isSuccess=", Boolean.valueOf(paramBoolean) });
-    }
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-    } while (!(paramObject instanceof Object[]));
-    paramObject = (Object[])paramObject;
-    a(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Long)paramObject[1]).longValue());
+    c();
   }
+  
+  public void a() {}
+  
+  public void a(MessageRecord paramMessageRecord)
+  {
+    c();
+  }
+  
+  public void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle)
+  {
+    c();
+  }
+  
+  public void b(MessageRecord paramMessageRecord)
+  {
+    c();
+  }
+  
+  public void c() {}
 }
 
 

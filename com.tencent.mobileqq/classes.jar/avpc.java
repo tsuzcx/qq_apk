@@ -1,29 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPClientConnectListener;
-
-class avpc
-  implements EIPClientConnectListener
+public class avpc
+  implements Cloneable
 {
-  avpc(avpb paramavpb) {}
+  public int a;
+  public long a;
+  public String a;
+  public String b = "";
   
-  public void connectFailed()
+  public avpc(avor paramavor, int paramInt, long paramLong)
   {
-    avpb.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("MediaFocusIpcClient", 2, "connectFailed");
-    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public void connectSuccess(EIPCConnection paramEIPCConnection)
+  protected avpc a()
   {
-    if (paramEIPCConnection != null) {
-      avpb.a(this.a, paramEIPCConnection.procName);
-    }
-    avpb.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("MediaFocusIpcClient", 2, "connectSuccess");
-    }
+    return (avpc)super.clone();
   }
 }
 

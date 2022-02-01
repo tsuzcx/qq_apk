@@ -1,73 +1,105 @@
-import android.content.Intent;
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.os.IBinder;
+import android.os.Parcel;
 
-public class lxd
-  extends amsu
+class lxd
+  implements lxb
 {
-  public lxd(QQServiceForAV paramQQServiceForAV) {}
+  private IBinder a;
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  lxd(IBinder paramIBinder)
   {
-    Intent localIntent = new Intent("com.tencent.qqhead.getheadresp2");
-    localIntent.putExtra("uin", paramString);
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
-    if (this.a.b.contains(paramString)) {
-      localQQAppInterface.getApp().sendBroadcast(localIntent);
+    this.a = paramIBinder;
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.av.service.IQQServiceLocationCallback");
+      localParcel.writeInt(paramInt);
+      localParcel.writeString(paramString);
+      this.a.transact(1, localParcel, null, 1);
+      return;
     }
-    this.a.b.remove(paramString);
-    if (this.a.b()) {
-      localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Amsu);
+    finally
+    {
+      localParcel.recycle();
     }
   }
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  /* Error */
+  public void a(boolean paramBoolean, com.tencent.av.service.LBSInfo paramLBSInfo)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("QQServiceForAV", 2, "onUpdateFriendInfo uin = " + paramString);
-      QLog.d("QQServiceForAV", 2, "onUpdateFriendInfo isSuccess = " + paramBoolean);
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
-    Intent localIntent;
-    if ((paramBoolean) && (paramString != null))
-    {
-      localIntent = new Intent();
-      localIntent.setAction("tencent.video.q2v.ACTION_ON_UPDATE_FRIEND_INFO");
-      localIntent.putExtra("uin", paramString);
-      localObject = (amsw)QQServiceForAV.m(this.a).getManager(51);
-      if (localObject == null) {
-        break label205;
-      }
-      localObject = ((amsw)localObject).e(paramString);
-      if (localObject == null) {
-        break label205;
-      }
-    }
-    label205:
-    for (Object localObject = ContactUtils.getFriendName((Friends)localObject);; localObject = paramString)
-    {
-      localIntent.putExtra("nick", (String)localObject);
-      localIntent.setPackage(localQQAppInterface.getApplication().getPackageName());
-      localQQAppInterface.getApp().sendBroadcast(localIntent);
-      this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramString);
-      if (this.a.b()) {
-        localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Amsu);
-      }
-      return;
-    }
+    // Byte code:
+    //   0: iconst_1
+    //   1: istore_3
+    //   2: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   5: astore 4
+    //   7: aload 4
+    //   9: ldc 25
+    //   11: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   14: iload_1
+    //   15: ifeq +47 -> 62
+    //   18: aload 4
+    //   20: iload_3
+    //   21: invokevirtual 33	android/os/Parcel:writeInt	(I)V
+    //   24: aload_2
+    //   25: ifnull +42 -> 67
+    //   28: aload 4
+    //   30: iconst_1
+    //   31: invokevirtual 33	android/os/Parcel:writeInt	(I)V
+    //   34: aload_2
+    //   35: aload 4
+    //   37: iconst_0
+    //   38: invokevirtual 52	com/tencent/av/service/LBSInfo:writeToParcel	(Landroid/os/Parcel;I)V
+    //   41: aload_0
+    //   42: getfield 15	lxd:a	Landroid/os/IBinder;
+    //   45: iconst_2
+    //   46: aload 4
+    //   48: aconst_null
+    //   49: iconst_1
+    //   50: invokeinterface 42 5 0
+    //   55: pop
+    //   56: aload 4
+    //   58: invokevirtual 45	android/os/Parcel:recycle	()V
+    //   61: return
+    //   62: iconst_0
+    //   63: istore_3
+    //   64: goto -46 -> 18
+    //   67: aload 4
+    //   69: iconst_0
+    //   70: invokevirtual 33	android/os/Parcel:writeInt	(I)V
+    //   73: goto -32 -> 41
+    //   76: astore_2
+    //   77: aload 4
+    //   79: invokevirtual 45	android/os/Parcel:recycle	()V
+    //   82: aload_2
+    //   83: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	84	0	this	lxd
+    //   0	84	1	paramBoolean	boolean
+    //   0	84	2	paramLBSInfo	com.tencent.av.service.LBSInfo
+    //   1	63	3	i	int
+    //   5	73	4	localParcel	Parcel
+    // Exception table:
+    //   from	to	target	type
+    //   7	14	76	finally
+    //   18	24	76	finally
+    //   28	41	76	finally
+    //   41	56	76	finally
+    //   67	73	76	finally
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lxd
  * JD-Core Version:    0.7.0.1
  */

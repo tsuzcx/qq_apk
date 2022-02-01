@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n9" android:layout_marginBottom="@dimen/n9"
+<RelativeLayout android:paddingLeft="15.0dip" android:paddingBottom="17.0dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/aym" android:textColor="@color/bp" android:gravity="center" android:id="@id/nxr" android:paddingLeft="@dimen/mp" android:paddingRight="@dimen/mp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:maxLength="14" android:layout_centerInParent="true" />
-    <View android:background="@color/k8" android:layout_width="55.0dip" android:layout_height="0.30000007dip" android:layout_toLeftOf="@id/nxr" android:layout_centerVertical="true" />
-    <View android:background="@color/k8" android:layout_width="55.0dip" android:layout_height="0.30000007dip" android:layout_toRightOf="@id/nxr" android:layout_centerVertical="true" />
+    <ViewStub android:id="@id/o3c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/o4z" android:layout_alignParentLeft="true" />
+    <LinearLayout android:gravity="center_vertical" android:id="@id/o4z" android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true">
+        <TextView android:textSize="12.0sp" android:textColor="#ccffffff" android:gravity="center" android:id="@id/o5a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:text="分享" android:drawableTop="@drawable/i4l" />
+        <TextView android:textSize="12.0sp" android:textColor="#ccffffff" android:gravity="center" android:id="@id/o3q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:text="评论" android:drawableTop="@drawable/i4g" />
+        <RelativeLayout android:id="@id/o4q" android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="15.0dip">
+            <ImageView android:id="@id/o4s" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/bky" android:scaleType="fitXY" android:layout_centerHorizontal="true" />
+            <ImageView android:id="@id/o4r" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/i4j" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="13.0sp" android:textColor="#ccffffff" android:id="@id/o4t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="赞" android:layout_below="@id/o4s" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <ViewStub android:id="@id/o4p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="18.0dip" />
+    </LinearLayout>
 </RelativeLayout>

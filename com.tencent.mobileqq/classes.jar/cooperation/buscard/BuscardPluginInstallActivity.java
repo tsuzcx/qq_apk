@@ -1,23 +1,24 @@
 package cooperation.buscard;
 
 import Override;
-import amtj;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import bhht;
-import bkeh;
-import bkei;
-import bkej;
-import bkkq;
-import bkkz;
+import anvx;
+import bisl;
+import blps;
+import blpt;
+import blpu;
+import blvy;
+import blwh;
 import com.tencent.mobileqq.activity.LoginActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FontSettingManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
@@ -35,10 +36,10 @@ public class BuscardPluginInstallActivity
   extends BaseActivity
 {
   public long a;
-  private bhht jdField_a_of_type_Bhht;
-  private bkei jdField_a_of_type_Bkei;
-  private bkkq jdField_a_of_type_Bkkq;
-  private OnPluginInstallListener jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener = new bkeh(this);
+  private bisl jdField_a_of_type_Bisl;
+  private blpt jdField_a_of_type_Blpt;
+  private blvy jdField_a_of_type_Blvy;
+  private OnPluginInstallListener jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener = new blps(this);
   protected QWalletPayProgressDialog a;
   private String jdField_a_of_type_JavaLangString;
   private StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder("load plugin cost time info:");
@@ -96,7 +97,7 @@ public class BuscardPluginInstallActivity
       QLog.i("BuscardPluginInstallActivity", 4, "initPluginManager");
     }
     long l1 = System.currentTimeMillis();
-    this.jdField_a_of_type_Bkkq = ((bkkq)this.app.getManager(27));
+    this.jdField_a_of_type_Blvy = ((blvy)this.app.getManager(QQManagerFactory.MGR_PLUGIN));
     long l2 = System.currentTimeMillis();
     this.jdField_a_of_type_JavaLangStringBuilder.append(" ==step2:initPluginManager app.getManager cost=" + (l2 - l1));
     a(true);
@@ -154,7 +155,7 @@ public class BuscardPluginInstallActivity
           localIntent.putExtra("buscard_pluginNewNfcAPIFlag", (String)localObject3);
           localIntent.putExtra("buscard_pluginNewNfcAPIBlackModel", (String)localObject1);
           BridgeHelper.a(this, this.app, localIntent, (String)localObject2, "BuscardPlugin.apk", PluginInfo.f);
-          bkej.a();
+          blpu.a();
           return;
           Intent localIntent = new Intent();
         }
@@ -167,7 +168,7 @@ public class BuscardPluginInstallActivity
             paramString = this.app.getCurrentAccountUin();
             localObject1 = ((StringBuilder)localObject1).append(paramString).append("; error=");
             if ((localThrowable1 == null) || (localThrowable1.getMessage() == null)) {
-              break label637;
+              break label640;
             }
             paramString = localThrowable1.getMessage();
             QLog.i("BuscardPluginInstallActivity", 4, paramString);
@@ -178,8 +179,8 @@ public class BuscardPluginInstallActivity
           long l2 = System.currentTimeMillis();
           this.jdField_a_of_type_JavaLangStringBuilder.append(" ==step6:goPlugin isPluginLaunchModeBridge() cost=" + (l2 - l1) + ";start time=" + l1);
           l1 = System.currentTimeMillis();
-          if (!this.jdField_a_of_type_Bkkq.isPlugininstalled("BuscardPlugin.apk")) {
-            break label644;
+          if (!this.jdField_a_of_type_Blvy.isPlugininstalled("BuscardPlugin.apk")) {
+            break label647;
           }
           this.jdField_b_of_type_Boolean = true;
           this.jdField_a_of_type_JavaLangStringBuilder.append(" ==step7:goPlugin plugin has installed, cost=" + (System.currentTimeMillis() - l1));
@@ -203,15 +204,15 @@ public class BuscardPluginInstallActivity
             }
             paramString = "null";
             continue;
-            label637:
+            label640:
             paramString = "null";
           }
         }
-        label644:
+        label647:
         this.jdField_b_of_type_Boolean = false;
         this.jdField_a_of_type_JavaLangStringBuilder.append(" ==step7:goPlugin plugin has not installed, cost=" + (System.currentTimeMillis() - l1));
         this.jdField_a_of_type_Long = System.currentTimeMillis();
-        this.jdField_a_of_type_Bkkq.installPlugin("BuscardPlugin.apk", this.jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener);
+        this.jdField_a_of_type_Blvy.installPlugin("BuscardPlugin.apk", this.jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener);
       }
     }
   }
@@ -233,7 +234,7 @@ public class BuscardPluginInstallActivity
     {
       return;
       this.jdField_a_of_type_CooperationQwalletPluginQWalletPayProgressDialog = new QWalletPayProgressDialog(this);
-      this.jdField_a_of_type_CooperationQwalletPluginQWalletPayProgressDialog.setMessage(amtj.a(2131700388));
+      this.jdField_a_of_type_CooperationQwalletPluginQWalletPayProgressDialog.setMessage(anvx.a(2131700739));
       this.jdField_a_of_type_CooperationQwalletPluginQWalletPayProgressDialog.show();
       return;
     }
@@ -278,27 +279,27 @@ public class BuscardPluginInstallActivity
         localIntent.putExtra("plugin_lunch_start", this.jdField_b_of_type_Long);
         localIntent.putExtra("plugin_openActivity_start", l1);
         localIntent.putExtra("plugin_is_installed", this.jdField_b_of_type_Boolean);
-        localObject1 = new bkkz(1);
-        ((bkkz)localObject1).jdField_b_of_type_JavaLangString = "BuscardPlugin.apk";
-        ((bkkz)localObject1).d = "BuscardPlugin";
-        ((bkkz)localObject1).jdField_a_of_type_AndroidAppDialog = null;
-        ((bkkz)localObject1).jdField_a_of_type_JavaLangString = this.app.getCurrentAccountUin();
-        ((bkkz)localObject1).jdField_a_of_type_AndroidContentIntent = localIntent;
-        ((bkkz)localObject1).e = a(this.jdField_a_of_type_JavaLangString, localIntent);
-        ((bkkz)localObject1).jdField_a_of_type_JavaLangClass = QWalletNFCProxyActivity.class;
-        ((bkkz)localObject1).jdField_b_of_type_Int = 19;
-        ((bkkz)localObject1).c = 15000;
-        ((bkkz)localObject1).jdField_b_of_type_Boolean = false;
-        ((bkkz)localObject1).f = null;
-        bkkq.a(this, (bkkz)localObject1);
+        localObject1 = new blwh(1);
+        ((blwh)localObject1).jdField_b_of_type_JavaLangString = "BuscardPlugin.apk";
+        ((blwh)localObject1).d = "BuscardPlugin";
+        ((blwh)localObject1).jdField_a_of_type_AndroidAppDialog = null;
+        ((blwh)localObject1).jdField_a_of_type_JavaLangString = this.app.getCurrentAccountUin();
+        ((blwh)localObject1).jdField_a_of_type_AndroidContentIntent = localIntent;
+        ((blwh)localObject1).e = a(this.jdField_a_of_type_JavaLangString, localIntent);
+        ((blwh)localObject1).jdField_a_of_type_JavaLangClass = QWalletNFCProxyActivity.class;
+        ((blwh)localObject1).jdField_b_of_type_Int = 19;
+        ((blwh)localObject1).c = 15000;
+        ((blwh)localObject1).jdField_b_of_type_Boolean = false;
+        ((blwh)localObject1).f = null;
+        blvy.a(this, (blwh)localObject1);
         l2 = System.currentTimeMillis();
         this.jdField_a_of_type_JavaLangStringBuilder.append(" ==step10:launchBuscardPlugin openActivityForResult cost=" + (l2 - l1));
         l1 = System.currentTimeMillis();
-        bkej.a();
-        if (this.jdField_a_of_type_Bhht != null)
+        blpu.a();
+        if (this.jdField_a_of_type_Bisl != null)
         {
-          this.jdField_a_of_type_Bhht.dismiss();
-          this.jdField_a_of_type_Bhht = null;
+          this.jdField_a_of_type_Bisl.dismiss();
+          this.jdField_a_of_type_Bisl = null;
         }
         localIntent = new Intent();
         localIntent.putExtra("ret", "ok");
@@ -360,8 +361,8 @@ public class BuscardPluginInstallActivity
     {
       paramBundle = new IntentFilter();
       paramBundle.addAction("bridge.plugin.onresume.broadcast");
-      this.jdField_a_of_type_Bkei = new bkei(this, null);
-      registerReceiver(this.jdField_a_of_type_Bkei, paramBundle);
+      this.jdField_a_of_type_Blpt = new blpt(this, null);
+      registerReceiver(this.jdField_a_of_type_Blpt, paramBundle);
       Intent localIntent = getIntent();
       if (localIntent != null)
       {
@@ -400,8 +401,8 @@ public class BuscardPluginInstallActivity
     StringBuilder localStringBuilder;
     try
     {
-      if (this.jdField_a_of_type_Bkei != null) {
-        unregisterReceiver(this.jdField_a_of_type_Bkei);
+      if (this.jdField_a_of_type_Blpt != null) {
+        unregisterReceiver(this.jdField_a_of_type_Blpt);
       }
       a(false);
       super.doOnDestroy();

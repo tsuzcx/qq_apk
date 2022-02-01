@@ -1,31 +1,27 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.util.Vector;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class xod
-  implements vqp<weg, wgd>
+public class xod
+  extends QQUIEventReceiver<xnt, wrd>
 {
-  xod(xnz paramxnz, JobContext paramJobContext, xnm paramxnm) {}
-  
-  public void a(@NonNull weg paramweg, @Nullable wgd paramwgd, @NonNull ErrorMessage arg3)
+  public xod(@NonNull xnt paramxnt)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    super(paramxnt);
+  }
+  
+  public void a(@NonNull xnt paramxnt, @NonNull wrd paramwrd)
+  {
+    if (paramwrd.a.isSuccess())
     {
-      xvv.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "segment cancel on net respond");
-      return;
+      ykq.a(paramxnt.b, "receive user info event. %s.", paramwrd.toString());
+      paramxnt.i();
     }
-    if ((paramwgd == null) || (???.isFail())) {
-      xvv.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for feature request, %s", new Object[] { ???.toString() });
-    }
-    synchronized (this.jdField_a_of_type_Xnz)
-    {
-      xnz.a(this.jdField_a_of_type_Xnz, paramwgd);
-      xnz.a(this.jdField_a_of_type_Xnz).remove(paramweg);
-      xnz.a(this.jdField_a_of_type_Xnz, this.jdField_a_of_type_Xnm);
-      return;
-    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wrd.class;
   }
 }
 

@@ -1,31 +1,25 @@
-import SummaryCard.CondFitUser;
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
 
 public class apqh
-  implements amps
+  implements View.OnTouchListener
 {
-  public apqh(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  public apqh(QRScanEntryView paramQRScanEntryView) {}
   
-  public void a(boolean paramBoolean1, List<CondFitUser> paramList, boolean paramBoolean2, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a();
-    if (paramInt != 1) {
-      return;
-    }
-    if (!paramBoolean1)
+    switch (paramMotionEvent.getAction())
     {
-      QQToast.a(this.a, 2131690934, 0).b(this.a.getTitleBarHeight());
-      return;
     }
-    if ((paramList == null) || (paramList.isEmpty()))
+    for (;;)
     {
-      QQToast.a(this.a, 2131690937, 0).b(this.a.getTitleBarHeight());
-      return;
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
     }
-    SearchResultActivity.a(this.a, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.c, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_Ampm.b(), this.a.jdField_a_of_type_Ampm.c(), this.a.e, this.a.d, paramList, paramBoolean2);
   }
 }
 

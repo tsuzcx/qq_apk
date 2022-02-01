@@ -1,25 +1,41 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopAssistantData;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
-import com.tencent.mobileqq.imcore.proxy.RecentRoute.TroopAssistantManagerProxy.Proxy;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class bcbi
-  implements RecentRoute.TroopAssistantManagerProxy.Proxy
+class bcbi
+  implements View.OnClickListener
 {
-  public TroopAssistantData a(IMCoreAppRuntime paramIMCoreAppRuntime)
-  {
-    if ((paramIMCoreAppRuntime instanceof QQAppInterface)) {
-      return avnu.a().a((QQAppInterface)paramIMCoreAppRuntime);
-    }
-    return null;
-  }
+  bcbi(bcbg parambcbg, ViewGroup paramViewGroup) {}
   
-  public int getTroopAssistantUnreadNum(IMCoreAppRuntime paramIMCoreAppRuntime)
+  public void onClick(View paramView)
   {
-    if ((paramIMCoreAppRuntime instanceof QQAppInterface)) {
-      return avnu.a().a(null, (QQAppInterface)paramIMCoreAppRuntime);
+    bcnc.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_AndroidViewViewGroup.getContext(), this.jdField_a_of_type_Bcbg.jdField_a_of_type_Bcfx.m);
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("project", bcjs.a());
+      localJSONObject.put("event_src", "client");
+      localJSONObject.put("get_src", "web");
+      bcjs.a(localQQAppInterface, new ReportModelDC02528().module("all_result").action("clk_more").obj1(this.jdField_a_of_type_Bcbg.jdField_a_of_type_Long + "").ver1(UniteSearchActivity.b).ver2(bcjs.a(this.jdField_a_of_type_Bcbg.jdField_a_of_type_Int)).ver3("right").ver7(localJSONObject.toString()).session_id(localQQAppInterface.getCurrentAccountUin() + bbzq.jdField_a_of_type_Long));
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    return 0;
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e(bcbg.jdField_a_of_type_JavaLangString, 2, "e = " + localJSONException);
+      }
+    }
   }
 }
 

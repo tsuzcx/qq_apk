@@ -1,17 +1,20 @@
-import com.tencent.biz.qqstory.database.HotSortVideoEntry;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class wbq
-  extends vko
+class wbq
+  extends SimpleJob
 {
-  public ArrayList<HotSortVideoEntry> a;
-  public boolean a;
-  public boolean b;
-  public boolean c;
-  
-  public String toString()
+  wbq(wbp paramwbp, String paramString, boolean paramBoolean)
   {
-    return " GetVideoByHotSortEvent " + super.toString();
+    super(paramString);
+  }
+  
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  {
+    this.jdField_a_of_type_Wbp.b(this.jdField_a_of_type_Boolean);
+    return null;
   }
 }
 

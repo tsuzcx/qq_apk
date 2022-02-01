@@ -1,53 +1,71 @@
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.location.ui.LocationShareFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
-class awjp
-  extends amwl
+public class awjp
 {
-  awjp(awjn paramawjn) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  protected void onInsertIntoBlackList(boolean paramBoolean, Object[] paramArrayOfObject)
+  public awjp(QQAppInterface paramQQAppInterface, BaseChatPie paramBaseChatPie)
   {
-    if (((Integer)paramArrayOfObject[0]).intValue() != 1) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyProxy", 2, "onInsertIntoBlackList from nearby");
-    }
-    if ((paramBoolean) && (paramArrayOfObject.length == 4))
-    {
-      ((Long)paramArrayOfObject[1]).longValue();
-      String str = (String)paramArrayOfObject[2];
-      int i = ((Integer)paramArrayOfObject[3]).intValue();
-      awka.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "blacklist_sequence", Integer.valueOf(i));
-      paramArrayOfObject = new ArrayList();
-      paramArrayOfObject.add(Long.valueOf(str));
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.a.jdField_a_of_type_Anax);
-      ((avnk)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(16)).a(1001, paramArrayOfObject, 1);
-      return;
-    }
-    awjn.a(this.a, 4115, new Object[] { Boolean.valueOf(false) });
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    b();
   }
   
-  protected void onRemoveFromBlackList(boolean paramBoolean, String paramString, int paramInt)
+  private void b()
   {
-    if (paramInt != 1) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyProxy", 2, "onRemoveFromBlackList from nearby");
-    }
-    if (paramBoolean)
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null)
     {
-      avnk localavnk = (avnk)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(16);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(paramString));
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.a.jdField_a_of_type_Anax);
-      localavnk.b(1001, localArrayList, 1);
+      this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getActivity();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getSessionInfo();
+    }
+  }
+  
+  private void c()
+  {
+    LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curType, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin, 1);
+    bdla.b(null, "CliOper", "", "", "0X800A763", "0X800A763", 0, 0, "", "0", "0", "");
+  }
+  
+  private void d()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null)
+    {
+      aftr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getActivity());
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getActivity().setCanLock(false);
+    }
+    ahpt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800407F", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType);
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationSheet", 2, new Object[] { "show: invoked. ", " sessionInfo: ", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo });
+    }
+    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)) {
       return;
     }
-    awjn.a(this.a, 4116, new Object[] { Boolean.valueOf(false) });
+    Object localObject = (anvk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    if (((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof afzr)) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin())) || ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 0) && (!((anvk)localObject).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin))))
+    {
+      d();
+      return;
+    }
+    localObject = bkzi.a(this.jdField_a_of_type_AndroidContentContext);
+    ((bkzi)localObject).a(2131718505, 0);
+    ((bkzi)localObject).a(2131718778, 0);
+    ((bkzi)localObject).c(2131690697);
+    ((bkzi)localObject).a(new awjq(this, (bkzi)localObject));
+    ((bkzi)localObject).show();
   }
 }
 

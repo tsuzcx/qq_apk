@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aygr
-  extends aygp
+class aygr
+  implements View.OnClickListener
 {
-  protected void b(BaseChatPie paramBaseChatPie)
+  aygr(ayfx paramayfx) {}
+  
+  public void onClick(View paramView)
   {
-    if (bezm.b(paramBaseChatPie.app, paramBaseChatPie.sessionInfo.curFriendUin))
+    if (!this.a.a.onBackEvent())
     {
-      a(paramBaseChatPie.sessionInfo.curType, 217);
-      a(paramBaseChatPie.sessionInfo.curType, 218);
-      return;
+      this.a.a.finish();
+      this.a.a.c(false);
     }
-    a(paramBaseChatPie.sessionInfo.curType, 205);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,34 +1,52 @@
-import java.util.Observable;
-import java.util.Observer;
-import mqq.util.WeakReference;
+import android.os.Handler;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import com.tencent.av.ui.beauty.BeautySeekView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class mmt
-  implements Observer
+public class mmt
+  implements SeekBar.OnSeekBarChangeListener
 {
-  private final WeakReference<mmp> a;
+  public mmt(BeautySeekView paramBeautySeekView) {}
   
-  mmt(mmp parammmp)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    this.a = new WeakReference(parammmp);
+    if (BeautySeekView.a(this.a) != paramInt)
+    {
+      BeautySeekView.a(this.a, paramInt);
+      if ((paramBoolean) && (BeautySeekView.a(this.a) != null)) {
+        BeautySeekView.a(this.a).setContentDescription(paramInt + "%");
+      }
+      BeautySeekView.a(this.a, paramInt);
+      BeautySeekView.b(this.a, BeautySeekView.a(this.a));
+    }
+    if (BeautySeekView.a(this.a) != null) {
+      BeautySeekView.a(this.a).a(BeautySeekView.a(this.a), 2, paramInt);
+    }
   }
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    paramObservable = (Object[])paramObject;
-    switch (((Integer)paramObservable[0]).intValue())
-    {
+    BeautySeekView.a(this.a).removeCallbacks(this.a.a);
+    BeautySeekView.a(this.a).setVisibility(0);
+    if (BeautySeekView.a(this.a) != null) {
+      BeautySeekView.a(this.a).a(BeautySeekView.a(this.a), 1, BeautySeekView.a(this.a));
     }
-    do
-    {
-      return;
-      paramObject = (mmp)this.a.get();
-    } while ((paramObject == null) || (paramObservable.length < 2) || (!(paramObservable[1] instanceof Boolean)) || (((Boolean)paramObservable[1]).booleanValue()));
-    paramObject.a();
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    BeautySeekView.a(this.a).postDelayed(this.a.a, 300L);
+    if (BeautySeekView.a(this.a) != null) {
+      BeautySeekView.a(this.a).a(BeautySeekView.a(this.a), 3, BeautySeekView.a(this.a));
+    }
+    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mmt
  * JD-Core Version:    0.7.0.1
  */

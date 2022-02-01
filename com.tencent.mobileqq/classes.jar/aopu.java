@@ -1,32 +1,34 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.API.ArkAppMusicModule.GlobalMusicCallback.1;
-import com.tencent.mobileqq.ark.API.ArkAppMusicModule.GlobalMusicCallback.2;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
+import com.tencent.robolectric.ShadowParcel;
+import java.util.Arrays;
 
-public final class aopu
-  implements awei
+class aopu
+  implements PermissionMonitor.Listener
 {
-  private String a;
-  
-  public aopu(String paramString)
+  static
   {
-    this.a = paramString;
+    if (!aopp.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      jdField_a_of_type_Boolean = bool;
+      return;
+    }
   }
   
-  public String getToken()
-  {
-    return aopt.a();
-  }
+  aopu(aopp paramaopp) {}
   
-  public void onPlaySongChanged(SongInfo paramSongInfo)
+  public void onMethodEntry(String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject)
   {
-    ArkAppCenter.a().post(this.a, new ArkAppMusicModule.GlobalMusicCallback.2(this, paramSongInfo));
-  }
-  
-  public void onPlayStateChanged(int paramInt)
-  {
-    ArkAppCenter.a().post(this.a, new ArkAppMusicModule.GlobalMusicCallback.1(this, paramInt));
+    if (aopp.a(this.jdField_a_of_type_Aopp) != Thread.currentThread()) {}
+    while ((!aopp.a(this.jdField_a_of_type_Aopp)) || (paramArrayOfObject.length != 4)) {
+      return;
+    }
+    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[0] != aopp.a(this.jdField_a_of_type_Aopp))) {
+      throw new AssertionError();
+    }
+    ShadowParcel.a((int)aopp.a(this.jdField_a_of_type_Aopp), (byte[])paramArrayOfObject[1], ((Integer)paramArrayOfObject[2]).intValue(), ((Integer)paramArrayOfObject[3]).intValue());
+    QLog.i("ParcelHooker", 2, "onMethodEntry() called with: className = [" + paramString1 + "], methodName = [" + paramString2 + "], sig = [" + paramString3 + "], arguments = [" + Arrays.toString(paramArrayOfObject) + "]");
   }
 }
 

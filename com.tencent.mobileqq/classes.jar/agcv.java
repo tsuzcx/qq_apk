@@ -1,9 +1,10 @@
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
-
-public class agcv
-  extends aezf
+final class agcv
+  implements agdj<agcu>
 {
-  public HiBoomTextView a;
+  public agcu a(agdg paramagdg)
+  {
+    return new agcu(paramagdg);
+  }
 }
 
 

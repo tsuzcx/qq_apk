@@ -319,6 +319,28 @@ public class TNNSegGpuInitializer
     //   232	248	251	finally
     //   252	254	251	finally
   }
+  
+  public void setMode(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == 1) {
+      synchronized (this.rapidnetGPUSegmentationHair)
+      {
+        if (this.modelManager.isModelLoaded(1)) {
+          this.rapidnetGPUSegmentationHair.setMode(paramInt2);
+        }
+        return;
+      }
+    }
+    if (paramInt1 == 2) {
+      synchronized (this.rapidnetGPUSegmentationSky)
+      {
+        if (this.modelManager.isModelLoaded(2)) {
+          this.rapidnetGPUSegmentationSky.setMode(paramInt2);
+        }
+        return;
+      }
+    }
+  }
 }
 
 

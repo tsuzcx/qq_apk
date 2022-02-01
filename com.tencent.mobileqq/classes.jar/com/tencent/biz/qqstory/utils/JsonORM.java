@@ -9,12 +9,12 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ypm;
-import ypn;
+import zef;
+import zeg;
 
 public class JsonORM
 {
-  private static final Map<Class, ypn[]> a = new IdentityHashMap();
+  private static final Map<Class, zeg[]> a = new IdentityHashMap();
   
   public static int a(Class<?> paramClass)
   {
@@ -48,7 +48,7 @@ public class JsonORM
     if ((paramJSONObject == null) || (paramClass == null)) {
       throw new IllegalArgumentException("both jsonObject and clazz should not be null");
     }
-    Object localObject2 = (ypn[])a.get(paramClass);
+    Object localObject2 = (zeg[])a.get(paramClass);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
@@ -123,7 +123,7 @@ public class JsonORM
       throw new IllegalArgumentException("object should not be null");
     }
     Class localClass = paramObject.getClass();
-    Object localObject2 = (ypn[])a.get(localClass);
+    Object localObject2 = (zeg[])a.get(localClass);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
@@ -264,20 +264,20 @@ public class JsonORM
     paramField.set(paramObject, paramJSONObject.optString(paramString));
   }
   
-  private static void a(Class<?> paramClass, ArrayList<ypn> paramArrayList)
+  private static void a(Class<?> paramClass, ArrayList<zeg> paramArrayList)
   {
     paramClass = paramClass.getDeclaredFields();
     int i = 0;
     if (i != paramClass.length)
     {
       Field localField = paramClass[i];
-      ypm localypm = (ypm)localField.getAnnotation(ypm.class);
-      if (localypm == null) {}
+      zef localzef = (zef)localField.getAnnotation(zef.class);
+      if (localzef == null) {}
       for (;;)
       {
         i += 1;
         break;
-        paramArrayList.add(new ypn(localypm.a(), a(localField.getType()), localField));
+        paramArrayList.add(new zeg(localzef.a(), a(localField.getType()), localField));
       }
     }
   }
@@ -310,7 +310,7 @@ public class JsonORM
     return arrayOfObject;
   }
   
-  private static ypn[] a(Class<?> paramClass)
+  private static zeg[] a(Class<?> paramClass)
   {
     ArrayList localArrayList = new ArrayList();
     while (paramClass != null)
@@ -318,7 +318,7 @@ public class JsonORM
       a(paramClass, localArrayList);
       paramClass = paramClass.getSuperclass();
     }
-    paramClass = new ypn[localArrayList.size()];
+    paramClass = new zeg[localArrayList.size()];
     localArrayList.toArray(paramClass);
     return paramClass;
   }

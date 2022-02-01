@@ -1,50 +1,53 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopDateFragment;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.datepicker.CalendarDay;
+import com.tencent.mobileqq.widget.datepicker.SimpleMonthView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
 
-class ajtn
-  implements View.OnClickListener
+public class ajtn
+  implements bivj
 {
-  ajtn(ajtm paramajtm) {}
+  CalendarDay jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
+  CalendarDay b;
   
-  public void onClick(View paramView)
+  public ajtn(ChatHistoryTroopDateFragment paramChatHistoryTroopDateFragment, CalendarDay paramCalendarDay1, CalendarDay paramCalendarDay2)
   {
-    Intent localIntent = new Intent();
-    int i = ((NewPhotoPreviewActivity)this.a.mActivity).getCurrentSelectedPostion();
-    if ((ajtm.a(this.a).selectedPhotoList == null) || (ajtm.b(this.a).selectedPhotoList.size() == 0)) {
-      if ((ajtm.a(this.a).paths != null) && (i != -1))
-      {
-        ArrayList localArrayList = new ArrayList();
-        String str = (String)ajtm.b(this.a).paths.get(i);
-        if (TextUtils.isEmpty(str)) {
-          break label182;
-        }
-        localArrayList.add(str);
-        localIntent.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", localArrayList);
-        bcef.b(null, "CliOper", "", "", "0X800A6DB", "0X800A6DB", 0, 0, "1", "", "", "");
-      }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = paramCalendarDay1;
+    this.b = paramCalendarDay2;
+  }
+  
+  public CalendarDay a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay == null) {
+      return new CalendarDay(System.currentTimeMillis());
     }
-    for (;;)
+    return this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
+  }
+  
+  public void a(CalendarDay paramCalendarDay, MessageRecord paramMessageRecord)
+  {
+    String str = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopDateFragment.jdField_b_of_type_JavaLangString;
+    ChatHistoryBubbleListForTroopFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopDateFragment.getActivity(), str, paramMessageRecord, -1, 3);
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopDateFragment.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_date", "date_clk", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopDateFragment.jdField_b_of_type_JavaLangString, "", "", "");
+    QLog.i(ChatHistoryTroopDateFragment.b(), 1, "clickDay: CalendarDay" + paramCalendarDay + " | MessageRecord:" + paramMessageRecord);
+  }
+  
+  public void a(SimpleMonthView paramSimpleMonthView, int paramInt1, int paramInt2)
+  {
+    if (!ChatHistoryTroopDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopDateFragment, paramInt1, paramInt2)) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopDateFragment.a(paramInt1, paramInt2);
+    }
+  }
+  
+  public CalendarDay b()
+  {
+    if (this.b == null)
     {
-      ((NewPhotoPreviewActivity)this.a.mActivity).setResult(-1, localIntent);
-      ((NewPhotoPreviewActivity)this.a.mActivity).finish();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label182:
-      if (QLog.isColorLevel())
-      {
-        QLog.d("PhotoPreviewActivity", 2, "sendBtn click currentPath is null");
-        continue;
-        localIntent.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", ajtm.c(this.a).selectedPhotoList);
-        bcef.b(null, "CliOper", "", "", "0X800A6DB", "0X800A6DB", 0, 0, String.valueOf(ajtm.d(this.a).selectedPhotoList.size()), "", "", "");
-      }
+      CalendarDay localCalendarDay = new CalendarDay(System.currentTimeMillis());
+      return new CalendarDay(localCalendarDay.year + 1, localCalendarDay.month, localCalendarDay.month);
     }
+    return this.b;
   }
 }
 

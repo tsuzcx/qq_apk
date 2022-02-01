@@ -1,49 +1,28 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import cooperation.qwallet.plugin.QWalletHelper;
-import mqq.app.AppRuntime;
+import com.tencent.qphone.base.util.QLog;
 
-public class bktb
-  extends RemoteCommand
+class bktb
+  implements bkuu
 {
-  public bktb()
-  {
-    super("qqreader_plugin_asyn_cmd");
-  }
+  bktb(bkta parambkta) {}
   
-  private QQAppInterface a()
+  public int a(long paramLong1, long paramLong2, long paramLong3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    return null;
-  }
-  
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
-  {
-    switch (paramBundle.getInt("CommondType"))
+    if ((paramObject1 != null) && ((paramObject1 instanceof String)) && (paramObject2 != null) && ((paramObject2 instanceof byte[])))
     {
+      if (QLog.isColorLevel()) {
+        QLog.d("QSec.CSP", 2, String.format("Cookie: %08X, cmd: %s", new Object[] { Long.valueOf(paramLong1), paramObject1 }));
+      }
+      if (paramLong1 == 0L) {
+        break label99;
+      }
+      this.a.a((String)paramObject1, (byte[])paramObject2, new bkte(this.a, paramLong1));
     }
     for (;;)
     {
-      return null;
-      if (a() != null)
-      {
-        paramBundle = paramBundle.getString("publicaccount_uin");
-        ugf.a(a(), a().getApp(), paramBundle, new bktc(this, paramOnInvokeFinishLinstener));
-        continue;
-        QWalletHelper.preloadQWallet(a());
-      }
+      return 0;
+      label99:
+      this.a.a((String)paramObject1, (byte[])paramObject2, null);
     }
-  }
-  
-  public boolean isSynchronized()
-  {
-    return false;
   }
 }
 

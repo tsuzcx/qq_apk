@@ -1,19 +1,43 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Message;
 
-public abstract interface aidp
+class aidp
+  extends Handler
 {
-  public abstract QQAppInterface a();
+  aidp(aido paramaido) {}
   
-  public abstract void a();
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract Activity getActivity();
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    case 5: 
+    case 8: 
+    default: 
+      return;
+    case 1: 
+      aido.a(this.a);
+      return;
+    case 2: 
+      aido.b(this.a);
+      return;
+    case 3: 
+      aido.c(this.a);
+      return;
+    case 4: 
+      aido.d(this.a);
+      return;
+    case 6: 
+      aido.a(this.a, paramMessage);
+      return;
+    case 9: 
+      aido.b(this.a, paramMessage);
+      return;
+    case 7: 
+      aido.e(this.a);
+      return;
+    }
+    aido.f(this.a);
+  }
 }
 
 

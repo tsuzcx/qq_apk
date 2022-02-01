@@ -47,7 +47,7 @@ public class QQPtBeautyFilter
   {
     this.mBeautyFrame.clear();
     if (this.mBeautyFilter != null) {
-      this.mBeautyFilter.ClearGLSL();
+      this.mBeautyFilter.clearGLSL();
     }
     GLES20.glDeleteTextures(this.mBeautyTextureId.length, this.mBeautyTextureId, 0);
     if ((this.skinRegionOpen) && (this.skinRegionFilter != null))
@@ -169,7 +169,7 @@ public class QQPtBeautyFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQPtBeautyFilter
  * JD-Core Version:    0.7.0.1
  */

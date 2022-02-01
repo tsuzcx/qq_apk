@@ -1,37 +1,89 @@
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class avwm
+  extends avts
+  implements aaea
 {
-  private boolean a;
+  private String c;
   
-  public static avwm a(String paramString)
+  public avwm()
   {
-    boolean bool = true;
-    if (paramString == null) {
-      return null;
+    this.mPluginNameSpace = "odapp";
+  }
+  
+  public void callback(Bundle paramBundle)
+  {
+    if (paramBundle == null) {}
+    while ((!"onOpenRoomResult".equals(paramBundle.getString("method"))) || (this.c == null)) {
+      return;
     }
+    int i = paramBundle.getInt("code", 0);
+    paramBundle = new JSONObject();
     try
     {
-      avwm localavwm = new avwm();
-      if (new JSONObject(paramString).optInt("isChatMigrateEnable", 0) == 1) {}
+      paramBundle.put("code", i);
+      callJs(this.c, new String[] { paramBundle.toString() });
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
       for (;;)
       {
-        localavwm.a = bool;
-        return localavwm;
-        bool = false;
+        localJSONException.printStackTrace();
       }
-      return null;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("MsgBackupConfigProcessor", 2, "MsgBackupConfigData parse error", paramString);
     }
   }
   
-  public boolean a()
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    return this.a;
+    if (!"odapp".equals(paramString2)) {}
+    label129:
+    do
+    {
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.i("XProxy|ODAppJSPlugin", 2, "handleJsRequest: url = " + paramString1 + ", pkgName = " + paramString2 + ", method = " + paramString3 + ", args = " + paramVarArgs);
+      }
+      if ((TextUtils.equals(paramString3, "open")) || (TextUtils.equals(paramString3, "cancelPage")))
+      {
+        super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+        return false;
+      }
+      paramString2 = "";
+      paramString1 = "";
+      paramJsBridgeListener = null;
+      try
+      {
+        localObject = new JSONObject(paramVarArgs[0]);
+        paramJsBridgeListener = (JsBridgeListener)localObject;
+      }
+      catch (JSONException localJSONException)
+      {
+        Object localObject;
+        break label129;
+        int j = 0;
+        int i = 0;
+        paramJsBridgeListener = paramString2;
+        continue;
+      }
+      if (paramJsBridgeListener == null) {
+        break;
+      }
+      localObject = paramJsBridgeListener.optString("callback");
+      i = paramJsBridgeListener.optInt("roomid");
+      paramString2 = paramJsBridgeListener.optString("vasname");
+      paramString1 = paramJsBridgeListener.optString("userdata");
+      j = paramJsBridgeListener.optInt("fromid");
+      this.c = ((String)localObject);
+      paramJsBridgeListener = paramString2;
+    } while ((!"odOpenRoom".equals(paramString3)) || (paramVarArgs.length != 1));
+    this.a.a(0, i, paramJsBridgeListener, paramString1, j);
+    return true;
   }
 }
 

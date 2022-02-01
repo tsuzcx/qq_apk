@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity;
 
-import acyr;
+import adpd;
 import android.os.Message;
-import argi;
-import bjng;
+import asko;
+import bkys;
 
 public class ChatHistoryEmotionView$2
   implements Runnable
 {
-  public ChatHistoryEmotionView$2(acyr paramacyr) {}
+  public ChatHistoryEmotionView$2(adpd paramadpd) {}
   
   public void run()
   {
-    Object localObject = acyr.a(this.this$0).a(acyr.a(this.this$0), acyr.a(this.this$0), true);
-    localObject = acyr.a(this.this$0).obtainMessage(1, localObject);
-    acyr.a(this.this$0).sendMessage((Message)localObject);
+    Object localObject = adpd.a(this.this$0).a(adpd.a(this.this$0), adpd.a(this.this$0), true);
+    localObject = adpd.a(this.this$0).obtainMessage(1, localObject);
+    adpd.a(this.this$0).sendMessage((Message)localObject);
   }
 }
 

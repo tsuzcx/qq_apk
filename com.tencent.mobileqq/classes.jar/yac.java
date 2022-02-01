@@ -1,80 +1,44 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.SystemClock;
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.reactive.SimpleObserver;
-import dov.com.tencent.mobileqq.activity.richmedia.SaveVideoActivity;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class yac
-  extends SimpleObserver<yjh>
+public class yac
+  extends QQUIEventReceiver<xzx, wcx>
 {
-  yac(yaa paramyaa, yjh paramyjh) {}
-  
-  public void a(yjh paramyjh)
+  public yac(xzx paramxzx)
   {
-    super.onNext(paramyjh);
-    this.jdField_a_of_type_Yaa.a(5);
-    paramyjh = this.jdField_a_of_type_Yjh.a;
-    xvv.b("EditVideoSave", "publishParam = " + paramyjh);
-    Intent localIntent;
-    int j;
-    int i;
-    if (this.jdField_a_of_type_Yaa.jdField_a_of_type_Yan.getActivity() != null)
+    super(paramxzx);
+  }
+  
+  public void a(@NonNull xzx paramxzx, @NonNull wcx paramwcx)
+  {
+    if (paramwcx.a.isSuccess())
     {
-      localIntent = this.jdField_a_of_type_Yaa.jdField_a_of_type_Yan.getActivity().getIntent();
-      if (localIntent == null) {
-        break label331;
+      if (!paramwcx.a()) {
+        break label25;
       }
-      j = localIntent.getIntExtra("sv_total_frame_count", 0);
-      i = localIntent.getIntExtra("sv_total_record_time", 0);
+      ykq.c("Q.qqstory.memories.ProfileFeedPresenter", "ignore this upload status event, because it's a troop video.");
     }
-    for (;;)
+    label25:
+    do
     {
-      localIntent = SaveVideoActivity.a(this.jdField_a_of_type_Yaa.jdField_a_of_type_Yan.a(), paramyjh.b, i, j, this.jdField_a_of_type_Yaa.jdField_a_of_type_Xzd.a.getBussinessId());
-      yaa.a(this.jdField_a_of_type_Yaa, paramyjh.b);
-      localIntent.putExtra("mediacodec_encode_enable", true);
-      this.jdField_a_of_type_Yaa.jdField_a_of_type_Yan.getActivity().startActivityForResult(localIntent, 111);
-      yaa.a(this.jdField_a_of_type_Yaa, SystemClock.elapsedRealtime());
-      this.jdField_a_of_type_Yaa.jdField_a_of_type_Int = 5;
-      this.jdField_a_of_type_Yaa.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Yaa.b = ((int)(7000.0D / paramyjh.a * 4.0D));
-      xvv.b("EditVideoSave", "[30s]progressIncrement Old = " + this.jdField_a_of_type_Yaa.b);
-      if (this.jdField_a_of_type_Yaa.b <= 0) {
-        this.jdField_a_of_type_Yaa.b = 2;
-      }
-      xvv.b("EditVideoSave", "[30s]progressIncrement new = " + this.jdField_a_of_type_Yaa.b);
-      this.jdField_a_of_type_Yaa.g();
-      if (bbuc.a().jdField_a_of_type_Int == 1) {}
-      for (i = 1;; i = 2)
+      do
       {
-        babc.h(i);
         return;
-      }
-      label331:
-      i = 0;
-      j = 0;
-    }
+        if (paramwcx.c())
+        {
+          ykq.b("Q.qqstory.memories.ProfileFeedPresenter", "receive share group video upload status change event. %s.", paramwcx.toString());
+          return;
+        }
+      } while (!paramwcx.b());
+      ykq.a("Q.qqstory.memories.ProfileFeedPresenter", "receive personal video upload status change event. %s. start to refresh year node list", paramwcx.toString());
+    } while (paramwcx.b == null);
+    xzx.a(paramxzx, true);
   }
   
-  public void onCancel()
+  public Class acceptEventClass()
   {
-    super.onCancel();
-    xvv.d("EditVideoSave", "saveVideo cancel !");
-    this.jdField_a_of_type_Yaa.jdField_a_of_type_Xzd.a(0);
-    this.jdField_a_of_type_Yaa.h();
-    QQToast.a(this.jdField_a_of_type_Yaa.jdField_a_of_type_Yan.a(), amtj.a(2131702879), 0).a();
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    xvv.e("EditVideoSave", "saveVideo error ：" + paramError);
-    this.jdField_a_of_type_Yaa.jdField_a_of_type_Xzd.a(0);
-    QQToast.a(this.jdField_a_of_type_Yaa.jdField_a_of_type_Yan.a(), 1, amtj.a(2131702944) + paramError, 0).a();
-    this.jdField_a_of_type_Yaa.h();
+    return wcx.class;
   }
 }
 

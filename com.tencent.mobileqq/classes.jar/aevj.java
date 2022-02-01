@@ -1,112 +1,56 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.activateFriend.QQRecurrentNotifySettingFragment;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.ScoreQAVFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aevj
+  implements View.OnClickListener
 {
-  public static int a(Bundle paramBundle)
+  public aevj(ScoreQAVFragment paramScoreQAVFragment) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramBundle == null) {
-      return -1;
+    this.a.a();
+    long l2 = 0L;
+    long l1 = l2;
+    if (this.a.jdField_b_of_type_JavaLangString != null)
+    {
+      l1 = l2;
+      if (!this.a.jdField_b_of_type_JavaLangString.isEmpty()) {
+        l1 = mug.a(this.a.jdField_b_of_type_JavaLangString);
+      }
     }
-    return paramBundle.getInt("callback_id", -1);
-  }
-  
-  public static Bundle a(int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("callback_id", paramInt);
-    return localBundle;
-  }
-  
-  public static Bundle a(int paramInt, String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("retcode", paramInt);
-    localBundle.putString("retmsg", paramString);
-    return localBundle;
-  }
-  
-  public static Bundle a(int paramInt1, String paramString, int paramInt2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("retcode", paramInt1);
-    localBundle.putString("retmsg", paramString);
-    if (paramInt2 != -1) {
-      localBundle.putInt("has_subscribe", paramInt2);
+    SharedPreferences localSharedPreferences = bhhr.e(this.a.jdField_d_of_type_JavaLangString);
+    l2 = localSharedPreferences.getLong("qav_roomid", 0L);
+    long l3 = localSharedPreferences.getLong(lch.g, 0L);
+    bdlo.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_Long, this.a.jdField_b_of_type_Long, this.a.jdField_c_of_type_Long, this.a.jdField_d_of_type_Long, this.a.e, this.a.jdField_a_of_type_Int, l3, l1, l2, this.a.jdField_c_of_type_JavaLangString, this.a.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.d("ScoreActivity", 2, "reportEvent beginTime: " + this.a.jdField_a_of_type_Long + ", endTime: " + this.a.jdField_b_of_type_Long + ", sdkVersion: " + this.a.jdField_a_of_type_Int + ", peerSdkVersion: " + l3 + ", bussinessType: " + this.a.jdField_c_of_type_Long + ", bussinessFlag: " + this.a.jdField_d_of_type_Long + ", ip: " + this.a.jdField_b_of_type_JavaLangString + ", toUin: " + this.a.jdField_c_of_type_JavaLangString + ", score: " + this.a.e + ", problems: " + this.a.jdField_a_of_type_JavaLangString);
     }
-    return localBundle;
-  }
-  
-  public static Bundle a(String paramString1, String paramString2, String paramString3)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("busiid", paramString3);
-    localBundle.putString("msgid", paramString1);
-    localBundle.putString("domain", paramString2);
-    return localBundle;
-  }
-  
-  public static String a(Bundle paramBundle)
-  {
-    int i = paramBundle.getInt("retcode", -1);
-    String str = paramBundle.getString("retmsg", "");
-    int j = paramBundle.getInt("has_subscribe", -1);
-    paramBundle = new JSONObject();
+    localSharedPreferences.edit().putBoolean(lch.l, true).commit();
+    if (this.a.f != 0L) {}
     try
     {
-      paramBundle.put("retcode", i);
-      paramBundle.put("retmsg", str);
-      if (i == 0) {
-        paramBundle.put("has_subscribe", j);
-      }
-      paramBundle = paramBundle.toString();
-      return paramBundle;
-    }
-    catch (JSONException paramBundle)
-    {
-      paramBundle.printStackTrace();
-    }
-    return "";
-  }
-  
-  public static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    if (TextUtils.isEmpty(paramString1))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQNotifyUtils", 1, "newSubscribeNotify msgId is empty");
-      }
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().removeMsgByUniseq(this.a.jdField_c_of_type_JavaLangString, this.a.jdField_b_of_type_Int, this.a.f);
+      this.a.getActivity().finish();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    QQRecurrentNotifySettingFragment.a(paramActivity, paramString1, paramString3, paramString2, paramInt);
-  }
-  
-  public static void a(@NonNull String paramString1, String paramString2, String paramString3, @NonNull aevk paramaevk)
-  {
-    if (TextUtils.isEmpty(paramString1))
+    catch (Exception localException)
     {
-      paramaevk.queryHasSetNotify(a(4, "params error"), null);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQNotifyUtils", 1, "hasBusinessSetNotify msgId is empty");
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("ScoreActivity", 2, "removeMsgByUniseq : " + localException);
+        }
       }
-      return;
     }
-    if (BaseApplicationImpl.sProcessId == 1)
-    {
-      aewc.c((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramString1, new aeve(paramaevk, null));
-      return;
-    }
-    paramString1 = a(paramString1, paramString2, paramString3);
-    QIPCClientHelper.getInstance().callServer("QQNotifyIPCModule", "query", paramString1, new aeve(paramaevk, null));
   }
 }
 

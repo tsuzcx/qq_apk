@@ -1,9 +1,14 @@
-public abstract class bhct
-  implements bhbf
+final class bhct
+  implements bide
 {
-  public static final bhbf a = new bhcu();
-  public static final bhbf b = new bhcv();
-  public static final bhbf c = new bhcw();
+  bhct(avli paramavli) {}
+  
+  public void onResult(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.a != null)) {
+      this.a.a();
+    }
+  }
 }
 
 

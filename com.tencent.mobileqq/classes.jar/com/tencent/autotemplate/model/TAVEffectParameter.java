@@ -12,6 +12,8 @@ public class TAVEffectParameter
   public String filePath;
   @SerializedName("fontId")
   public String fontId;
+  @SerializedName("fontName")
+  public String fontName;
   @SerializedName("position")
   public StickerPosition position = new StickerPosition();
   @SerializedName("procMethod")
@@ -26,8 +28,6 @@ public class TAVEffectParameter
   public float scale = 1.0F;
   @SerializedName("speed")
   public float speed;
-  @SerializedName("textColor")
-  public String textColor;
   @SerializedName("textType")
   public String textType;
   @SerializedName("type")

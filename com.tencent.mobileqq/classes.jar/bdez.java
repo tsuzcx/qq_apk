@@ -1,20 +1,23 @@
-public abstract interface bdez
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
+
+public class bdez
+  extends bdfc
 {
-  public abstract bdef a();
+  public bdez(TCProgressBar paramTCProgressBar)
+  {
+    super(paramTCProgressBar);
+  }
   
-  public abstract bdfk a(String paramString);
-  
-  public abstract void a();
-  
-  public abstract void a(bdee parambdee, String paramString);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString1, String paramString2, bdef parambdef);
-  
-  public abstract boolean a();
-  
-  public abstract boolean b();
+  public void a(Canvas paramCanvas)
+  {
+    this.a.b.left = this.f;
+    this.a.b.right = (this.f + this.g);
+    this.a.a.setColor(this.a.m);
+    paramCanvas.drawRect(this.a.b, this.a.a);
+    super.a(paramCanvas);
+  }
 }
 
 

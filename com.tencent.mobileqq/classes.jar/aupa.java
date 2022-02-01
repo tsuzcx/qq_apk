@@ -1,22 +1,35 @@
-import android.content.Intent;
-import com.tencent.mobileqq.intervideo.now.ShareToQQActivity;
+import com.idlefish.flutterboost.FlutterBoost;
+import com.idlefish.flutterboost.FlutterBoost.BoostLifecycleListener;
+import com.tencent.qphone.base.util.QLog;
+import io.flutter.embedding.engine.FlutterEngine;
+import io.flutter.plugins.GeneratedPluginRegistrant;
 
-public class aupa
-  extends amsu
+class aupa
+  implements FlutterBoost.BoostLifecycleListener
 {
-  public aupa(ShareToQQActivity paramShareToQQActivity) {}
+  aupa(auoy paramauoy) {}
   
-  protected void onUpdateFriendShieldFlag(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  public void beforeCreateEngine()
   {
-    if ((paramLong != 0L) && (this.a.a != null) && (this.a.a.equals(paramLong + "")))
-    {
-      paramString = new Intent();
-      paramString.putExtra("isSuccess", paramBoolean2);
-      paramString.putExtra("isCancelShield", false);
-      this.a.setResult(-1, paramString);
-    }
-    this.a.finish();
+    QLog.d("QFlutter.launcher", 1, "beforeCreateEngine");
   }
+  
+  public void onEngineCreated()
+  {
+    QLog.d("QFlutter.launcher", 1, "onEngineCreated");
+    FlutterEngine localFlutterEngine = FlutterBoost.instance().engineProvider();
+    GeneratedPluginRegistrant.registerWith(localFlutterEngine);
+    aump.a().a(localFlutterEngine.getDartExecutor(), localFlutterEngine.getRenderer());
+    auoy.a(this.a).e();
+    auoy.a(this.a, 0, true);
+  }
+  
+  public void onEngineDestroy()
+  {
+    QLog.d("QFlutter.launcher", 1, "onEngineDestroy");
+  }
+  
+  public void onPluginsRegistered() {}
 }
 
 

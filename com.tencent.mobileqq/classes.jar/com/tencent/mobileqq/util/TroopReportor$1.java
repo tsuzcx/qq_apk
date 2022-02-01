@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.util;
 
-import bftc;
+import bhbu;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class TroopReportor$1
@@ -10,7 +10,7 @@ public final class TroopReportor$1
   
   public void run()
   {
-    bftc.a("Grp_edu", this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, new String[] { this.jdField_a_of_type_ArrayOfJavaLangString[0], bftc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.c, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()), this.jdField_a_of_type_ArrayOfJavaLangString[2], this.jdField_a_of_type_ArrayOfJavaLangString[3] });
+    bhbu.a("Grp_edu", this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, new String[] { this.jdField_a_of_type_ArrayOfJavaLangString[0], bhbu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.c, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()), this.jdField_a_of_type_ArrayOfJavaLangString[2], this.jdField_a_of_type_ArrayOfJavaLangString[3] });
   }
 }
 

@@ -1,80 +1,66 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import com.tencent.mobileqq.activity.richmedia.FlowActivity;
+import android.support.v4.app.FragmentActivity;
+import android.telephony.TelephonyManager;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
 
 public class aksb
-  extends akrz
-  implements agxc
+  extends BroadcastReceiver
 {
-  int jdField_a_of_type_Int = -1;
-  private View jdField_a_of_type_AndroidViewView;
+  public aksb(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  public aksb(FlowActivity paramFlowActivity)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramFlowActivity);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-  }
-  
-  public void a(ViewGroup paramViewGroup)
-  {
-    PanelIconLinearLayout localPanelIconLinearLayout = new PanelIconLinearLayout(paramViewGroup.getContext(), null);
-    localPanelIconLinearLayout.setPanelIconListener(this);
-    int i = (int)(40.0F * paramViewGroup.getResources().getDisplayMetrics().density + 0.5F);
-    Object localObject = new RelativeLayout.LayoutParams(-1, -2);
-    ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131366944);
-    paramViewGroup.addView(localPanelIconLinearLayout, (ViewGroup.LayoutParams)localObject);
-    localPanelIconLinearLayout.setCustomHeight(i);
-    paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowActivity.getIntent().getExtras();
-    if ((paramViewGroup != null) && (paramViewGroup.containsKey("selected_item")))
+    int i;
+    if (paramIntent != null)
     {
-      this.jdField_a_of_type_Int = paramViewGroup.getInt("selected_item");
-      if (paramViewGroup.containsKey("selected_data"))
+      paramContext = paramIntent.getAction();
+      if (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
+        break label79;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("RedPacketKSongFragment", 2, "receive action_recv_video_request");
+      }
+      i = 1;
+    }
+    for (;;)
+    {
+      if (i != 0)
       {
-        localObject = (ArrayList)paramViewGroup.getSerializable("selected_data");
-        localPanelIconLinearLayout.a.clear();
-        localPanelIconLinearLayout.a.addAll((Collection)localObject);
+        if ((!this.a.b) || (!this.a.c) || (this.a.a.getVisibility() != 0)) {
+          break label151;
+        }
+        this.a.a();
       }
-      localPanelIconLinearLayout.b();
-      localPanelIconLinearLayout.setSelected(this.jdField_a_of_type_Int);
-      if (paramViewGroup.containsKey("flow_key_need_poke_red")) {
-        localPanelIconLinearLayout.setShowRed(23, paramViewGroup.getBoolean("flow_key_need_poke_red"));
+      label79:
+      while (!this.a.d)
+      {
+        return;
+        if (!"android.intent.action.PHONE_STATE".equals(paramContext)) {
+          break label188;
+        }
+        paramContext = (TelephonyManager)this.a.getActivity().getSystemService("phone");
+        if (QLog.isColorLevel()) {
+          QLog.d("RedPacketKSongFragment", 2, "receive action_phone_state_changed|call_state_ringing" + paramContext.getCallState());
+        }
+        if (paramContext.getCallState() != 1) {
+          break label188;
+        }
+        i = 1;
+        break;
       }
-      this.jdField_a_of_type_AndroidViewView = localPanelIconLinearLayout;
+      label151:
+      if (QLog.isColorLevel()) {
+        QLog.d("RedPacketKSongFragment", 2, "receive pause action");
+      }
+      this.a.b(anvx.a(2131712786));
       return;
+      label188:
+      i = 0;
     }
-    throw new RuntimeException("No pass args SELECTED_ITEM");
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-  }
-  
-  public void onPanelIconClick(Object paramObject)
-  {
-    Intent localIntent = ((FlowActivity)a()).getIntent();
-    if ((paramObject == null) || (!(paramObject instanceof Integer))) {
-      return;
-    }
-    int i = ((Integer)paramObject).intValue();
-    QLog.d("XPanel", 2, " FlowPlusPanel  onPanelIconClick  i==" + i + "panelType===" + this.jdField_a_of_type_Int);
-    localIntent.putExtra("click_item", i);
-    ((FlowActivity)a()).setResult(1000, localIntent);
-    ((FlowActivity)a()).finish();
   }
 }
 

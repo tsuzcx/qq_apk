@@ -1,19 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.QQLSActivity.20.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.VersionUtils;
+import mqq.os.MqqHandler;
 
 public class aepy
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public aepy(TroopRequestActivity paramTroopRequestActivity) {}
+  public aepy(QQLSActivity paramQQLSActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    String str = this.a.d;
-    beqn.a(this.a, str);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a.removeMessages(99);
+    if (VersionUtils.isJellyBean())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQLSActivity", 2, "do SmoothFinish");
+      }
+      QQLSActivity.g(this.a);
+      this.a.finish();
+      return;
+    }
+    this.a.a.postAtFrontOfQueue(new QQLSActivity.20.1(this));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

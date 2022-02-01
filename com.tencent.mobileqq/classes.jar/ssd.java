@@ -1,23 +1,9 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AuthorData;
-import java.util.Map;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryBannerInfo;
 
-public class ssd
-  implements puy
+public abstract interface ssd
 {
-  public ssd(FastWebActivity paramFastWebActivity) {}
-  
-  public void a(int paramInt, Map<Long, rcz> paramMap)
-  {
-    if (FastWebActivity.a(this.a) != null)
-    {
-      FastWebActivity.a(this.a).a(paramMap);
-      if (FastWebActivity.a(this.a) != null) {
-        FastWebActivity.a(this.a).notifyDataSetChanged();
-      }
-      FastWebActivity.q(this.a);
-    }
-  }
+  public abstract void a(View paramView, DiscoveryBannerInfo paramDiscoveryBannerInfo);
 }
 
 

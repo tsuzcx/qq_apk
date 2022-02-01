@@ -1,15 +1,8 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import java.util.Comparator;
-
-class ptp
-  implements Comparator<AdvertisementInfo>
+public abstract interface ptp
 {
-  ptp(pto parampto) {}
+  public abstract void c();
   
-  public int a(AdvertisementInfo paramAdvertisementInfo1, AdvertisementInfo paramAdvertisementInfo2)
-  {
-    return paramAdvertisementInfo1.mAdKdPos - paramAdvertisementInfo2.mAdKdPos;
-  }
+  public abstract void d();
 }
 
 

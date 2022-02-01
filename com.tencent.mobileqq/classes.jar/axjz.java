@@ -1,130 +1,57 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.AppRuntime;
-import mqq.manager.TicketManager;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.music.SongInfo;
 
-public class axjz
+public abstract class axjz
+  extends Binder
+  implements axjy
 {
-  public static axjz a;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private long b;
-  
-  public static long a()
+  public axjz()
   {
-    AppInterface localAppInterface = a();
-    if (localAppInterface == null) {
-      return 0L;
-    }
-    return localAppInterface.getLongAccountUin();
+    attachInterface(this, "com.tencent.mobileqq.music.IQQPlayerCallback");
   }
   
-  public static axjz a()
+  public static axjy a(IBinder paramIBinder)
   {
-    if (jdField_a_of_type_Axjz == null) {
-      jdField_a_of_type_Axjz = new axjz();
-    }
-    return jdField_a_of_type_Axjz;
-  }
-  
-  public static AppInterface a()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    return null;
-  }
-  
-  public static String a()
-  {
-    AppInterface localAppInterface = a();
-    if (localAppInterface == null) {
-      return "";
-    }
-    return localAppInterface.getCurrentAccountUin();
-  }
-  
-  public static TicketManager a()
-  {
-    AppInterface localAppInterface = a();
-    if (localAppInterface == null) {}
-    while (TextUtils.isEmpty(localAppInterface.getCurrentAccountUin())) {
+    if (paramIBinder == null) {
       return null;
     }
-    return (TicketManager)localAppInterface.getManager(2);
-  }
-  
-  public static void a()
-  {
-    jdField_a_of_type_Axjz = null;
-  }
-  
-  public static String b()
-  {
-    Object localObject = a();
-    if (localObject == null) {
-      localObject = "";
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.music.IQQPlayerCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof axjy))) {
+      return (axjy)localIInterface;
     }
-    String str;
-    do
+    return new axka(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      return localObject;
-      str = ((TicketManager)localObject).getSkey(a());
-      localObject = str;
-    } while (!TextUtils.isEmpty(str));
-    return "";
-  }
-  
-  public static String c()
-  {
-    Object localObject = a();
-    if (localObject == null) {
-      localObject = "";
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.music.IQQPlayerCallback");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerCallback");
+      a(paramParcel1.readInt());
+      return true;
     }
-    String str;
-    do
+    paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerCallback");
+    if (paramParcel1.readInt() != 0) {}
+    for (paramParcel1 = (SongInfo)SongInfo.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
     {
-      return localObject;
-      str = ((TicketManager)localObject).getA2(a());
-      localObject = str;
-    } while (!TextUtils.isEmpty(str));
-    return "";
-  }
-  
-  void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public long b()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  void b(long paramLong)
-  {
-    this.b = paramLong;
-  }
-  
-  public long c()
-  {
-    return this.b;
-  }
-  
-  public String d()
-  {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      return "";
+      a(paramParcel1);
+      return true;
     }
-    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

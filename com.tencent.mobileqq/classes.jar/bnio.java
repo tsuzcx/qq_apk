@@ -1,16 +1,9 @@
-import android.animation.ValueAnimator;
+import com.google.gson.reflect.TypeToken;
+import dov.com.qq.im.ae.cmshow.AECMShowJsonModel;
 
-public class bnio
-  implements bnin
-{
-  public void a(ValueAnimator paramValueAnimator) {}
-  
-  public void b(ValueAnimator paramValueAnimator) {}
-  
-  public void c(ValueAnimator paramValueAnimator) {}
-  
-  public void d(ValueAnimator paramValueAnimator) {}
-}
+public final class bnio
+  extends TypeToken<AECMShowJsonModel>
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

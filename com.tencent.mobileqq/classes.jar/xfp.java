@@ -1,27 +1,39 @@
-import android.graphics.drawable.Drawable;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
+import android.view.ViewGroup;
 import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
 
-public final class xfp
-  implements URLDrawable.URLDrawableListener
+final class xfp
+  extends AnimatorListenerAdapter
 {
-  public xfp(ImageView paramImageView, Drawable paramDrawable) {}
+  xfp(Animator.AnimatorListener paramAnimatorListener, ViewGroup paramViewGroup, ImageView paramImageView) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "iconDrawable onLoadFialed, exception: " + QLog.getStackTraceString(paramThrowable));
-    }
+    super.onAnimationCancel(paramAnimator);
+    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationCancel(paramAnimator);
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    ykq.b("Q.qqstory.playernew.AnimationUtils", "doEnterAnimation, onAnimationEnd");
+    this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_AndroidWidgetImageView);
+    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationEnd(paramAnimator);
+    paramAnimator = ValueAnimator.ofInt(new int[] { 255, 0 });
+    paramAnimator.setStartDelay(400L);
+    paramAnimator.setDuration(400L);
+    paramAnimator.addUpdateListener(new xfq(this));
+    paramAnimator.addListener(new xfr(this));
+    paramAnimator.start();
+  }
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationStart(paramAnimator);
+  }
 }
 
 

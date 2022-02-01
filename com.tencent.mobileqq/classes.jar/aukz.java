@@ -1,295 +1,409 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.Rect;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemImaxADData;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanageraux.util.UniformDownloader.2;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class aukz
 {
-  public static String a(String paramString1, String paramString2)
+  public static String a;
+  private int jdField_a_of_type_Int = 0;
+  final long jdField_a_of_type_Long;
+  private final Bundle jdField_a_of_type_AndroidOsBundle;
+  private aulb jdField_a_of_type_Aulb;
+  private aulc jdField_a_of_type_Aulc = new aula(this);
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private List<aulc> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private Bundle jdField_b_of_type_AndroidOsBundle;
+  private Object jdField_b_of_type_JavaLangObject = new Object();
+  private final String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  
+  static
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("imax_ad_item_del_" + paramString1, 4).getString(paramString2, "");
+    jdField_a_of_type_JavaLangString = "UniformDownloader<FileAssistant>";
   }
   
-  public static Map<String, ?> a(String paramString)
+  public aukz(long paramLong, String paramString, Bundle paramBundle)
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("imax_ad_item_data_" + paramString, 4).getAll();
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public static void a(String paramString)
+  public static String a(int paramInt)
   {
-    BaseApplicationImpl.getApplication().getSharedPreferences("imax_ad_item_data_" + paramString, 4).edit().clear().apply();
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    BaseApplicationImpl.getApplication().getSharedPreferences("imax_ad_item_del_" + paramString1, 4).edit().remove(paramString2).apply();
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3)
-  {
-    BaseApplicationImpl.getApplication().getSharedPreferences("imax_ad_item_del_" + paramString1, 4).edit().putString(paramString2, paramString3).apply();
-  }
-  
-  public static boolean a(int paramInt, RecentBaseData paramRecentBaseData)
-  {
-    return (paramInt == 10005) && ((paramRecentBaseData instanceof RecentItemImaxADData)) && (!TextUtils.isEmpty(((RecentItemImaxADData)paramRecentBaseData).mHeaderUrl));
-  }
-  
-  public static boolean a(View paramView)
-  {
-    if (paramView != null)
+    String str = anvx.a(2131715248);
+    switch (paramInt)
     {
-      int i = paramView.getHeight();
-      Rect localRect = new Rect();
-      paramView.getGlobalVisibleRect(localRect);
-      if (localRect.height() >= i / 2) {
-        return true;
+    default: 
+      return str + "[" + String.valueOf(paramInt) + "]";
+    case 0: 
+      return "";
+    case 1: 
+      return str + "[" + String.valueOf(paramInt) + "]";
+    case 2: 
+      return anvx.a(2131715254);
+    case 3: 
+      return anvx.a(2131715242);
+    case 4: 
+      return anvx.a(2131715247);
+    case 5: 
+      return anvx.a(2131715244);
+    case 6: 
+      return anvx.a(2131715255);
+    case 7: 
+      return anvx.a(2131715252);
+    case 8: 
+      return anvx.a(2131715253);
+    case 9: 
+      return anvx.a(2131715251);
+    case 10: 
+      return "SDK下载服务错误";
+    case 11: 
+      return anvx.a(2131715246);
+    case 12: 
+      return "下载器DC失败";
+    case 13: 
+      return anvx.a(2131715245);
+    }
+    return anvx.a(2131715250);
+  }
+  
+  private List<aulc> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    synchronized (this.jdField_b_of_type_JavaLangObject)
+    {
+      int j = this.jdField_a_of_type_JavaUtilList.size();
+      int i = 0;
+      while (i < j)
+      {
+        localArrayList.add((aulc)this.jdField_a_of_type_JavaUtilList.get(i));
+        i += 1;
       }
+      return localArrayList;
+    }
+  }
+  
+  private void a(int paramInt, String paramString, Bundle paramBundle)
+  {
+    ThreadManager.getSubThreadHandler().post(new UniformDownloader.2(this, paramBundle, paramInt, paramString));
+  }
+  
+  /* Error */
+  private boolean a(boolean paramBoolean, Bundle paramBundle)
+  {
+    // Byte code:
+    //   0: iconst_1
+    //   1: istore_3
+    //   2: aload_0
+    //   3: monitorenter
+    //   4: aload_0
+    //   5: getfield 150	aukz:jdField_a_of_type_Aulb	Laulb;
+    //   8: ifnull +24 -> 32
+    //   11: aload_0
+    //   12: getfield 150	aukz:jdField_a_of_type_Aulb	Laulb;
+    //   15: aconst_null
+    //   16: invokeinterface 155 2 0
+    //   21: pop
+    //   22: aload_0
+    //   23: getfield 150	aukz:jdField_a_of_type_Aulb	Laulb;
+    //   26: invokeinterface 157 1 0
+    //   31: pop
+    //   32: iload_1
+    //   33: ifeq +96 -> 129
+    //   36: aload_0
+    //   37: iconst_1
+    //   38: putfield 29	aukz:jdField_a_of_type_Int	I
+    //   41: aload_0
+    //   42: new 159	auld
+    //   45: dup
+    //   46: aload_0
+    //   47: getfield 51	aukz:jdField_a_of_type_Long	J
+    //   50: invokespecial 162	auld:<init>	(J)V
+    //   53: putfield 150	aukz:jdField_a_of_type_Aulb	Laulb;
+    //   56: aload_0
+    //   57: getfield 150	aukz:jdField_a_of_type_Aulb	Laulb;
+    //   60: aload_0
+    //   61: getfield 45	aukz:jdField_a_of_type_Aulc	Laulc;
+    //   64: invokeinterface 155 2 0
+    //   69: pop
+    //   70: iload_3
+    //   71: istore_1
+    //   72: aload_0
+    //   73: getfield 150	aukz:jdField_a_of_type_Aulb	Laulb;
+    //   76: aload_0
+    //   77: getfield 47	aukz:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   80: aload_2
+    //   81: invokeinterface 165 3 0
+    //   86: ifeq +39 -> 125
+    //   89: getstatic 22	aukz:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   92: iconst_1
+    //   93: new 65	java/lang/StringBuilder
+    //   96: dup
+    //   97: invokespecial 66	java/lang/StringBuilder:<init>	()V
+    //   100: ldc 167
+    //   102: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   105: aload_0
+    //   106: getfield 51	aukz:jdField_a_of_type_Long	J
+    //   109: invokevirtual 170	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   112: ldc 172
+    //   114: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   117: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   120: invokestatic 178	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   123: iconst_0
+    //   124: istore_1
+    //   125: aload_0
+    //   126: monitorexit
+    //   127: iload_1
+    //   128: ireturn
+    //   129: aload_0
+    //   130: iconst_2
+    //   131: putfield 29	aukz:jdField_a_of_type_Int	I
+    //   134: aload_0
+    //   135: new 180	aull
+    //   138: dup
+    //   139: aload_0
+    //   140: getfield 51	aukz:jdField_a_of_type_Long	J
+    //   143: invokespecial 181	aull:<init>	(J)V
+    //   146: putfield 150	aukz:jdField_a_of_type_Aulb	Laulb;
+    //   149: goto -93 -> 56
+    //   152: astore_2
+    //   153: aload_0
+    //   154: monitorexit
+    //   155: aload_2
+    //   156: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	157	0	this	aukz
+    //   0	157	1	paramBoolean	boolean
+    //   0	157	2	paramBundle	Bundle
+    //   1	70	3	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   4	32	152	finally
+    //   36	56	152	finally
+    //   56	70	152	finally
+    //   72	123	152	finally
+    //   129	149	152	finally
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Aulb != null)
+    {
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. start. ");
+      return this.jdField_a_of_type_Aulb.a();
+    }
+    QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. start. mDownloadler = null.");
+    return -1;
+  }
+  
+  public String a()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public void a(aulc paramaulc)
+  {
+    synchronized (this.jdField_b_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_JavaUtilList.contains(paramaulc)) {
+        this.jdField_a_of_type_JavaUtilList.remove(paramaulc);
+      }
+      return;
+    }
+  }
+  
+  public void a(aulc paramaulc, boolean paramBoolean)
+  {
+    for (;;)
+    {
+      synchronized (this.jdField_b_of_type_JavaLangObject)
+      {
+        int j = this.jdField_a_of_type_JavaUtilList.size();
+        i = 0;
+        if (i >= j) {
+          break label243;
+        }
+        if ((aulc)this.jdField_a_of_type_JavaUtilList.get(i) == paramaulc)
+        {
+          if (paramBoolean == true)
+          {
+            if ((!paramBoolean) || (i < 0)) {
+              break label109;
+            }
+            paramaulc = (aulc)this.jdField_a_of_type_JavaUtilList.remove(i);
+            this.jdField_a_of_type_JavaUtilList.add(paramaulc);
+            this.jdField_b_of_type_Boolean = true;
+            return;
+          }
+          return;
+        }
+      }
+      i += 1;
+      continue;
+      label109:
+      if (paramaulc != null)
+      {
+        if (!this.jdField_b_of_type_Boolean) {
+          break label229;
+        }
+        i = this.jdField_a_of_type_JavaUtilList.size();
+        aulc localaulc = (aulc)this.jdField_a_of_type_JavaUtilList.remove(i - 1);
+        this.jdField_a_of_type_JavaUtilList.add(paramaulc);
+        this.jdField_a_of_type_JavaUtilList.add(localaulc);
+      }
+      for (;;)
+      {
+        QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. addListenser. size=" + this.jdField_a_of_type_JavaUtilList.size());
+        if (paramBoolean) {
+          this.jdField_b_of_type_Boolean = true;
+        }
+        return;
+        label229:
+        this.jdField_a_of_type_JavaUtilList.add(paramaulc);
+      }
+      label243:
+      int i = -1;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. setNotifyUserStarted." + this.jdField_a_of_type_Boolean + "->" + paramBoolean);
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      return;
+    }
+  }
+  
+  public boolean a()
+  {
+    int i = f();
+    if ((1 == i) || (6 == i)) {}
+    while ((2 == this.jdField_a_of_type_Int) && (8 == i)) {
+      return true;
     }
     return false;
   }
   
-  public static boolean a(MessageRecord paramMessageRecord)
+  public boolean a(Bundle paramBundle)
   {
-    return paramMessageRecord.istroop == 10005;
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. >>>init UniformDownloader");
+    Object localObject2 = paramBundle.getString("_PARAM_FILENAME");
+    long l = paramBundle.getLong("_PARAM_FILESIZE");
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. init err. filename=null");
+      localObject1 = "unnamefile";
+    }
+    if (0L == l)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. init err. filesize=0");
+      return false;
+    }
+    localObject2 = new Bundle();
+    String str1 = auea.b(audf.a().c() + (String)localObject1);
+    String str2 = audf.a().b() + (String)localObject1;
+    ((Bundle)localObject2).putString("_PARAM_FILENAME", (String)localObject1);
+    ((Bundle)localObject2).putString("_PARAM_TMP_FILEPATH", str1);
+    ((Bundle)localObject2).putString("_PARAM_FILEPATH", str2);
+    ((Bundle)localObject2).putLong("_PARAM_FILESIZE", l);
+    ((Bundle)localObject2).putLong("_PARAM_POS", 0L);
+    paramBundle = paramBundle.getBundle("_PARAM_USER_DATA");
+    if (paramBundle != null)
+    {
+      paramBundle = paramBundle.getString("COOKIE");
+      if (!TextUtils.isEmpty(paramBundle)) {
+        ((Bundle)localObject2).putString("_PARAM_COOKIE", paramBundle);
+      }
+    }
+    this.jdField_b_of_type_AndroidOsBundle = ((Bundle)localObject2);
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. >>>init UniformDownload info :: filename:[" + (String)localObject1 + "] fileSize:[" + l + "] tmpPath(maybe change):[" + str1 + "] savePath(maybe change):[" + str2 + "] url:[" + this.jdField_b_of_type_JavaLangString + "]");
+    return a(auku.a((String)localObject1), (Bundle)localObject2);
   }
   
-  /* Error */
-  public static byte[] a(byte[] paramArrayOfByte)
+  public int b()
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 6
-    //   3: aload_0
-    //   4: ifnull +8 -> 12
-    //   7: aload_0
-    //   8: arraylength
-    //   9: ifne +16 -> 25
-    //   12: ldc 116
-    //   14: iconst_1
-    //   15: ldc 118
-    //   17: invokestatic 124	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   20: aload 6
-    //   22: astore_2
-    //   23: aload_2
-    //   24: areturn
-    //   25: new 126	java/io/ByteArrayOutputStream
-    //   28: dup
-    //   29: invokespecial 127	java/io/ByteArrayOutputStream:<init>	()V
-    //   32: astore_1
-    //   33: new 129	java/io/ByteArrayInputStream
-    //   36: dup
-    //   37: aload_0
-    //   38: iconst_0
-    //   39: aload_0
-    //   40: arraylength
-    //   41: invokespecial 132	java/io/ByteArrayInputStream:<init>	([BII)V
-    //   44: astore 5
-    //   46: aload 5
-    //   48: astore_3
-    //   49: aload_1
-    //   50: astore_2
-    //   51: new 134	java/util/zip/GZIPInputStream
-    //   54: dup
-    //   55: aload 5
-    //   57: aload_0
-    //   58: arraylength
-    //   59: invokespecial 137	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;I)V
-    //   62: astore 4
-    //   64: aload 5
-    //   66: astore_3
-    //   67: aload_1
-    //   68: astore_2
-    //   69: aload_0
-    //   70: arraylength
-    //   71: iconst_5
-    //   72: imul
-    //   73: newarray byte
-    //   75: astore_0
-    //   76: aload 5
-    //   78: astore_3
-    //   79: aload_1
-    //   80: astore_2
-    //   81: aload_1
-    //   82: aload_0
-    //   83: iconst_0
-    //   84: aload 4
-    //   86: aload_0
-    //   87: invokevirtual 141	java/util/zip/GZIPInputStream:read	([B)I
-    //   90: invokevirtual 144	java/io/ByteArrayOutputStream:write	([BII)V
-    //   93: aload 5
-    //   95: astore_3
-    //   96: aload_1
-    //   97: astore_2
-    //   98: aload 4
-    //   100: invokevirtual 147	java/util/zip/GZIPInputStream:close	()V
-    //   103: aload 5
-    //   105: astore_3
-    //   106: aload_1
-    //   107: astore_2
-    //   108: aload_1
-    //   109: invokevirtual 151	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   112: astore_0
-    //   113: aload 5
-    //   115: ifnull +8 -> 123
-    //   118: aload 5
-    //   120: invokevirtual 152	java/io/ByteArrayInputStream:close	()V
-    //   123: aload_0
-    //   124: astore_2
-    //   125: aload_1
-    //   126: ifnull -103 -> 23
-    //   129: aload_1
-    //   130: invokevirtual 153	java/io/ByteArrayOutputStream:close	()V
-    //   133: aload_0
-    //   134: areturn
-    //   135: astore_1
-    //   136: ldc 116
-    //   138: iconst_1
-    //   139: ldc 155
-    //   141: aload_1
-    //   142: invokestatic 158	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   145: aload_0
-    //   146: areturn
-    //   147: astore 4
-    //   149: aconst_null
-    //   150: astore_0
-    //   151: aconst_null
-    //   152: astore_1
-    //   153: aload_0
-    //   154: astore_3
-    //   155: aload_1
-    //   156: astore_2
-    //   157: ldc 116
-    //   159: iconst_1
-    //   160: ldc 160
-    //   162: aload 4
-    //   164: invokestatic 158	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   167: aload_0
-    //   168: ifnull +7 -> 175
-    //   171: aload_0
-    //   172: invokevirtual 152	java/io/ByteArrayInputStream:close	()V
-    //   175: aload 6
-    //   177: astore_2
-    //   178: aload_1
-    //   179: ifnull -156 -> 23
-    //   182: aload_1
-    //   183: invokevirtual 153	java/io/ByteArrayOutputStream:close	()V
-    //   186: aconst_null
-    //   187: areturn
-    //   188: astore_0
-    //   189: ldc 116
-    //   191: iconst_1
-    //   192: ldc 155
-    //   194: aload_0
-    //   195: invokestatic 158	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   198: aconst_null
-    //   199: areturn
-    //   200: astore_0
-    //   201: aconst_null
-    //   202: astore_3
-    //   203: aconst_null
-    //   204: astore_1
-    //   205: aload_3
-    //   206: ifnull +7 -> 213
-    //   209: aload_3
-    //   210: invokevirtual 152	java/io/ByteArrayInputStream:close	()V
-    //   213: aload_1
-    //   214: ifnull +7 -> 221
-    //   217: aload_1
-    //   218: invokevirtual 153	java/io/ByteArrayOutputStream:close	()V
-    //   221: aload_0
-    //   222: athrow
-    //   223: astore_1
-    //   224: ldc 116
-    //   226: iconst_1
-    //   227: ldc 155
-    //   229: aload_1
-    //   230: invokestatic 158	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   233: goto -12 -> 221
-    //   236: astore_0
-    //   237: aconst_null
-    //   238: astore_3
-    //   239: goto -34 -> 205
-    //   242: astore_0
-    //   243: aload_2
-    //   244: astore_1
-    //   245: goto -40 -> 205
-    //   248: astore 4
-    //   250: aconst_null
-    //   251: astore_0
-    //   252: goto -99 -> 153
-    //   255: astore 4
-    //   257: aload 5
-    //   259: astore_0
-    //   260: goto -107 -> 153
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	263	0	paramArrayOfByte	byte[]
-    //   32	98	1	localByteArrayOutputStream	java.io.ByteArrayOutputStream
-    //   135	7	1	localIOException1	java.io.IOException
-    //   152	66	1	localObject1	Object
-    //   223	7	1	localIOException2	java.io.IOException
-    //   244	1	1	localObject2	Object
-    //   22	222	2	localObject3	Object
-    //   48	191	3	localObject4	Object
-    //   62	37	4	localGZIPInputStream	java.util.zip.GZIPInputStream
-    //   147	16	4	localException1	java.lang.Exception
-    //   248	1	4	localException2	java.lang.Exception
-    //   255	1	4	localException3	java.lang.Exception
-    //   44	214	5	localByteArrayInputStream	java.io.ByteArrayInputStream
-    //   1	175	6	localObject5	Object
-    // Exception table:
-    //   from	to	target	type
-    //   118	123	135	java/io/IOException
-    //   129	133	135	java/io/IOException
-    //   25	33	147	java/lang/Exception
-    //   171	175	188	java/io/IOException
-    //   182	186	188	java/io/IOException
-    //   25	33	200	finally
-    //   209	213	223	java/io/IOException
-    //   217	221	223	java/io/IOException
-    //   33	46	236	finally
-    //   51	64	242	finally
-    //   69	76	242	finally
-    //   81	93	242	finally
-    //   98	103	242	finally
-    //   108	113	242	finally
-    //   157	167	242	finally
-    //   33	46	248	java/lang/Exception
-    //   51	64	255	java/lang/Exception
-    //   69	76	255	java/lang/Exception
-    //   81	93	255	java/lang/Exception
-    //   98	103	255	java/lang/Exception
-    //   108	113	255	java/lang/Exception
+    if (this.jdField_a_of_type_Aulb != null)
+    {
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. pause. ");
+      return this.jdField_a_of_type_Aulb.c();
+    }
+    QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. pause. mDownloadler = null.");
+    return -1;
   }
   
-  public static String b(String paramString1, String paramString2)
+  public boolean b()
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("imax_ad_item_data_" + paramString1, 4).getString(paramString2, "");
+    return 2 == f();
   }
   
-  public static void b(String paramString)
+  public int c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ImaxAdvertisement", 2, paramString);
+    if (this.jdField_a_of_type_Aulb != null)
+    {
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. resume. ");
+      return this.jdField_a_of_type_Aulb.d();
+    }
+    QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. resume. mDownloadler = null.");
+    return -1;
+  }
+  
+  public boolean c()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      boolean bool = this.jdField_a_of_type_Boolean;
+      return bool;
     }
   }
   
-  public static void b(String paramString1, String paramString2)
+  public int d()
   {
-    BaseApplicationImpl.getApplication().getSharedPreferences("imax_ad_item_data_" + paramString1, 4).edit().remove(paramString2).apply();
+    if (this.jdField_a_of_type_Aulb != null)
+    {
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. stop. ");
+      return this.jdField_a_of_type_Aulb.b();
+    }
+    QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. stop. mDownloadler = null.");
+    return -1;
   }
   
-  public static void b(String paramString1, String paramString2, String paramString3)
+  public int e()
   {
-    BaseApplicationImpl.getApplication().getSharedPreferences("imax_ad_item_data_" + paramString1, 4).edit().putString(paramString2, paramString3).apply();
+    if (this.jdField_a_of_type_Aulb != null)
+    {
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. pauseSlience. ");
+      return this.jdField_a_of_type_Aulb.f();
+    }
+    QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. pauseSlience. mDownloadler = null.");
+    return -1;
+  }
+  
+  public int f()
+  {
+    if (this.jdField_a_of_type_Aulb != null) {
+      return this.jdField_a_of_type_Aulb.e();
+    }
+    QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. getStatus. mDownloadler = null.");
+    return 0;
+  }
+  
+  public int g()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 

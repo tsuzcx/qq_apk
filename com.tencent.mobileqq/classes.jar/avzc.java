@@ -1,19 +1,41 @@
-import android.database.DataSetObserver;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import android.app.Activity;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
 
 public class avzc
-  extends DataSetObserver
+  extends WebViewPlugin
 {
-  public avzc(MultiAIOBaseViewPager paramMultiAIOBaseViewPager) {}
+  private Activity a;
   
-  public void onChanged()
+  public avzc()
   {
-    this.a.b();
+    this.mPluginNameSpace = "accounts";
   }
   
-  public void onInvalidated()
+  private Activity a()
   {
-    this.a.b();
+    for (Activity localActivity = this.mRuntime.a(); (localActivity instanceof BasePluginActivity); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
+    return localActivity;
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (("accounts".equals(paramString2)) && ("faceDelete".equals(paramString3)))
+    {
+      QLog.d("AccountsPlugin", 1, "receive api METHOD_DELETE_FACE");
+      this.a.setResult(-1);
+      this.a.finish();
+      return true;
+    }
+    return false;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    this.a = a();
   }
 }
 

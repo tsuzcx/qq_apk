@@ -1,35 +1,67 @@
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aehi
   implements CompoundButton.OnCheckedChangeListener
 {
-  public aehi(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public aehi(LoginInfoActivity paramLoginInfoActivity) {}
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    int i = 1;
-    QQAppInterface localQQAppInterface;
-    if (paramBoolean)
+    if (paramCompoundButton == LoginInfoActivity.a(this.a).a())
     {
-      this.a.app.setTroopGeneralSettingRing(1);
       localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label78;
+      if (paramBoolean)
+      {
+        i = 1;
+        bdla.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Mobile_pc_online", 0, i, "", "", "", "");
+        if (!paramBoolean) {
+          break label142;
+        }
+        bdla.b(null, "dc00898", "", "", "0X800A721", "0X800A721", 0, 0, "", "", "", "");
+        if (QLog.isColorLevel()) {
+          QLog.d("DevRpt", 2, "帐号安全页点击“允许手机、电脑同时在线”进行开启！0X800A721");
+        }
+        label96:
+        SettingCloneUtil.writeValue(this.a, this.a.app.getCurrentAccountUin(), "login_accounts", "qqsetting_bothonline_key", paramBoolean);
+        this.a.app.sendRegisterPush();
       }
     }
-    for (;;)
+    label142:
+    label219:
+    do
     {
-      bcef.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_notice_gupsound", 0, i, "", "", "", "");
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      this.a.app.setTroopGeneralSettingRing(0);
+      for (;;)
+      {
+        EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+        return;
+        i = 0;
+        break;
+        bdla.b(null, "dc00898", "", "", "0X800A722", "0X800A722", 0, 0, "", "", "", "");
+        if (!QLog.isColorLevel()) {
+          break label96;
+        }
+        QLog.d("DevRpt", 2, "帐号安全页点击“允许手机、电脑同时在线”进行关闭！0X800A722");
+        break label96;
+        if ((LoginInfoActivity.b(this.a) == null) || (paramCompoundButton != LoginInfoActivity.b(this.a).a())) {
+          break label219;
+        }
+        LoginInfoActivity.a(this.a, paramBoolean);
+      }
+    } while (paramCompoundButton != LoginInfoActivity.c(this.a).a());
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      bdla.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Security_check", 0, i, "", "", "", "");
+      SettingCloneUtil.writeValue(this.a, null, "security_scan_key", "qqsetting_security_scan_key", paramBoolean);
       break;
-      label78:
-      i = 0;
     }
   }
 }

@@ -1,19 +1,30 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.data.MessageForStructing;
 
 public class aijo
-  implements View.OnClickListener
+  implements aijn
 {
-  public aijo(NotificationView paramNotificationView, structmsg.SystemMsg paramSystemMsg) {}
-  
-  public void onClick(View paramView)
+  public void a(MessageForStructing paramMessageForStructing, afqr paramafqr, View paramView, boolean paramBoolean)
   {
-    aynd.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.jdField_a_of_type_Aiiz.a(), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.group_code.get()), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.action_uin.get()), -1, 1);
-    EventCollector.getInstance().onViewClicked(paramView);
+    int i;
+    if (paramMessageForStructing.isSend()) {
+      if (paramBoolean) {
+        i = 2130850015;
+      }
+    }
+    for (;;)
+    {
+      AIOUtils.setViewDrawalbe(paramafqr.a, i);
+      return;
+      i = 2130850016;
+      continue;
+      if (paramBoolean) {
+        i = 2130849839;
+      } else {
+        i = 2130849840;
+      }
+    }
   }
 }
 

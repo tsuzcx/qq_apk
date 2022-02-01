@@ -1,64 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import mqq.app.AppRuntime;
-import org.json.JSONObject;
+import android.text.Editable;
+import com.tencent.biz.pubaccount.readinjoy.biu.BiuNicknameSpan;
+import java.util.Comparator;
 
-public class pcx
-  implements AladdinConfigHandler
+class pcx
+  implements Comparator<BiuNicknameSpan>
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  private final Editable jdField_a_of_type_AndroidTextEditable;
+  
+  public pcx(pcw parampcw, Editable paramEditable)
   {
-    QLog.d("NativeProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
-    for (;;)
-    {
-      try
-      {
-        Object localObject1 = pbt.a(paramString);
-        Object localObject2 = ((Map)localObject1).keySet();
-        paramString = new JSONObject();
-        paramInt1 = 0;
-        localObject2 = ((Set)localObject2).iterator();
-        if (((Iterator)localObject2).hasNext())
-        {
-          String str1 = (String)((Iterator)localObject2).next();
-          String str2 = (String)((Map)localObject1).get(str1);
-          if (!TextUtils.isEmpty(str2))
-          {
-            paramString.put(str1, str2);
-            paramInt1 = 1;
-          }
-        }
-        else
-        {
-          if (paramInt1 != 0)
-          {
-            localObject1 = pay.a();
-            if (localObject1 != null)
-            {
-              bkwm.a((AppRuntime)localObject1, "local_kd_native_main_text_style", paramString.toString());
-              QLog.d("NativeProteusBidConfigHandler", 1, "[onReceiveConfig],content: " + paramString.toString());
-            }
-          }
-          return true;
-        }
-      }
-      catch (Exception paramString)
-      {
-        return true;
-      }
-    }
+    this.jdField_a_of_type_AndroidTextEditable = paramEditable;
   }
   
-  public void onWipeConfig(int paramInt)
+  public int a(BiuNicknameSpan paramBiuNicknameSpan1, BiuNicknameSpan paramBiuNicknameSpan2)
   {
-    AppRuntime localAppRuntime = pay.a();
-    if (localAppRuntime != null) {
-      bkwm.a(localAppRuntime, "local_kd_native_main_text_style", "");
+    int i = this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramBiuNicknameSpan1);
+    int j = this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramBiuNicknameSpan2);
+    if (i > j) {
+      return 1;
     }
+    if (i < j) {
+      return -1;
+    }
+    return 0;
   }
 }
 

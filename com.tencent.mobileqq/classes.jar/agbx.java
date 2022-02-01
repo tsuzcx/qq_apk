@@ -1,34 +1,71 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleView;
 
-class agbx
-  implements bjoe
+public abstract class agbx
 {
-  agbx(agbw paramagbw, bjnw parambjnw) {}
+  protected Context a;
+  protected Rect a;
+  protected DoodleView a;
   
-  public void OnClick(View paramView, int paramInt)
+  public agbx(DoodleView paramDoodleView)
   {
-    this.jdField_a_of_type_Bjnw.dismiss();
-    switch (paramInt)
-    {
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    if (paramDoodleView == null) {
+      throw new IllegalStateException("DoodleView can not be null.");
     }
-    do
-    {
-      return;
-    } while (this.jdField_a_of_type_Agbw.jdField_a_of_type_Agap.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType != 3000);
-    try
-    {
-      long l = Long.valueOf(this.jdField_a_of_type_Agbw.jdField_a_of_type_Agap.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin).longValue();
-      paramView = (amoo)this.jdField_a_of_type_Agbw.jdField_a_of_type_Agap.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(22);
-      if (paramView != null) {
-        paramView.a(l);
-      }
-      bcef.b(this.jdField_a_of_type_Agbw.jdField_a_of_type_Agap.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_discuss", "", "grey", "Clk", 0, 0, "", String.valueOf(this.jdField_a_of_type_Agbw.jdField_a_of_type_Int), "", "");
-      return;
-    }
-    catch (NumberFormatException paramView) {}
+    this.jdField_a_of_type_AndroidContentContext = paramDoodleView.getContext();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView = paramDoodleView;
   }
+  
+  public void a()
+  {
+    c();
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2);
+  }
+  
+  public final void a(Canvas paramCanvas)
+  {
+    b(paramCanvas);
+  }
+  
+  public boolean a()
+  {
+    return b();
+  }
+  
+  public final boolean a(MotionEvent paramMotionEvent)
+  {
+    b();
+    return b(paramMotionEvent);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView.invalidate();
+    }
+  }
+  
+  protected abstract void b(Canvas paramCanvas);
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  protected abstract boolean b(MotionEvent paramMotionEvent);
+  
+  public void c() {}
 }
 
 

@@ -1,13 +1,18 @@
-public class agzh
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
+
+class agzh
+  extends ahaa
 {
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
-  boolean c = false;
-  boolean d = false;
-  boolean e = false;
-  boolean f = false;
+  agzh(agvm paramagvm)
+  {
+    super(paramagvm, null);
+  }
   
-  public agzh(agyh paramagyh) {}
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new agow(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+  }
 }
 
 

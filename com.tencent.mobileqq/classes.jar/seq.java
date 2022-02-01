@@ -1,26 +1,10 @@
-import android.telephony.PhoneStateListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCVoiceInfo;
 
-class seq
-  extends PhoneStateListener
+public abstract interface seq
 {
-  seq(seo paramseo) {}
+  public abstract void a(SocializeFeedsInfo.UGCVoiceInfo paramUGCVoiceInfo);
   
-  public void onCallStateChanged(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoVolumeController", 2, "onCallStateChanged:" + paramInt);
-    }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.a(true);
-      return;
-    }
-    this.a.a(true);
-  }
+  public abstract void b(SocializeFeedsInfo.UGCVoiceInfo paramUGCVoiceInfo);
 }
 
 

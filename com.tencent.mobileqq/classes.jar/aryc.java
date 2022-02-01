@@ -1,32 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileTabView;
-import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class aryc
-  implements View.OnClickListener
+public abstract interface aryc
 {
-  public aryc(QfileFavFileTabView paramQfileFavFileTabView) {}
-  
-  public void onClick(View paramView)
-  {
-    if (!QfileFavFileTabView.a(this.a)) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      QfileFavFileTabView.a(this.a);
-      this.a.a();
-      if (this.a.jdField_a_of_type_Arvv.getGroupCount() > 0) {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.a(this.a.jdField_a_of_type_Arvv.getGroupCount() - 1);
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.getAdapter().getCount() - 1);
-      QfileFavFileTabView.a(this.a, false);
-      this.a.g();
-    }
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

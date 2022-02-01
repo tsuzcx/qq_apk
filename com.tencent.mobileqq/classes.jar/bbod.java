@@ -1,34 +1,10 @@
-import com.qq.jce.wup.UniPacket;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class bbod
-  extends aafe
+public abstract interface bbod
 {
-  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "QQServiceTroopSvc" };
-  private bbob jdField_a_of_type_Bbob = new bbob();
-  private bboc jdField_a_of_type_Bboc;
+  public abstract void onSendBegin(MessageRecord paramMessageRecord);
   
-  public bbod(AppInterface paramAppInterface)
-  {
-    this.jdField_a_of_type_Bboc = new bboc(paramAppInterface);
-  }
-  
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    return this.jdField_a_of_type_Bbob.a(paramToServiceMsg, paramFromServiceMsg);
-  }
-  
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    return this.jdField_a_of_type_Bboc.a(paramToServiceMsg, paramUniPacket);
-  }
-  
-  public String[] a()
-  {
-    return jdField_a_of_type_ArrayOfJavaLangString;
-  }
+  public abstract void onSendEnd(boolean paramBoolean, long paramLong);
 }
 
 

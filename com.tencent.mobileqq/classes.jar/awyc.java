@@ -1,24 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.miniapp.MiniAppOptions;
 
-public class awyc
-  implements Animation.AnimationListener
+public final class awyc
+  implements Parcelable.Creator<MiniAppOptions>
 {
-  public awyc(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public MiniAppOptions a(Parcel paramParcel)
   {
-    paramAnimation = this.a;
-    paramAnimation.k += 1;
-    if (NearbyPeopleProfileActivity.a(this.a) != null) {
-      NearbyPeopleProfileActivity.a(this.a).a(NearbyPeopleProfileActivity.a(this.a));
-    }
+    return new MiniAppOptions(paramParcel);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public MiniAppOptions[] a(int paramInt)
+  {
+    return new MiniAppOptions[paramInt];
+  }
 }
 
 

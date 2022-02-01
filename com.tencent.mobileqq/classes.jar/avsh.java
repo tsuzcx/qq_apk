@@ -1,32 +1,14 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
+import android.content.Context;
+import java.util.concurrent.Callable;
 
-class avsh
-  extends amwl
+final class avsh
+  implements Callable<avrx>
 {
-  avsh(avsf paramavsf, QQAppInterface paramQQAppInterface, MessageForMixedMsg paramMessageForMixedMsg, String paramString, int paramInt) {}
+  avsh(Context paramContext, String paramString) {}
   
-  public void onNotifyResultAfterSendRich(boolean paramBoolean, long paramLong, amwm paramamwm)
+  public avrx a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().notifyUI(6003, true, new Object[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq + "" });
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().updateMsgContentByUniseq(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgData);
-    if (paramBoolean)
-    {
-      avsf.a(this.jdField_a_of_type_Avsf, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, true);
-      return;
-    }
-    avsf localavsf = this.jdField_a_of_type_Avsf;
-    MessageForMixedMsg localMessageForMixedMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg;
-    StringBuilder localStringBuilder = new StringBuilder().append("sendStructLongMsg fail : errCode = ");
-    if (paramamwm != null) {}
-    for (paramamwm = Integer.valueOf(paramamwm.b);; paramamwm = "")
-    {
-      avsf.a(localavsf, localMessageForMixedMsg, true, paramamwm);
-      return;
-    }
+    return avsg.b(this.jdField_a_of_type_AndroidContentContext, "Now", this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,14 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoListLogicBase;
+import mqq.app.AppRuntime;
 
-class akmf
-  implements DialogInterface.OnDismissListener
+public class akmf
+  extends ayrb
 {
-  akmf(akmc paramakmc) {}
+  public akmf(NewPhotoListActivity paramNewPhotoListActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected void onGetQZoneAlbumListNum(boolean paramBoolean, Bundle paramBundle)
   {
-    akmc.a(this.a, false);
+    paramBundle = paramBundle.getSerializable("data");
+    if ((paramBoolean) && ((paramBundle instanceof get_albumlist_num_rsp))) {
+      ((akmq)this.a.mPhotoListLogic.mOtherCommonData).a = ((get_albumlist_num_rsp)paramBundle).album_num;
+    }
+    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(this.a.a);
   }
 }
 

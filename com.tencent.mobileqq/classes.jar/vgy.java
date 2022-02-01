@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.videoplatform.SDKInitListener;
-import com.tencent.qphone.base.util.QLog;
-
-class vgy
-  implements SDKInitListener
+public abstract interface vgy<U, V>
 {
-  vgy(vgw paramvgw) {}
+  public abstract void a();
   
-  public void onSDKInited(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      QLog.i("QCIRCLE_PLUGIN", 4, "preload playSdk success");
-    }
-  }
+  public abstract void a(vgu<U, V> paramvgu);
+  
+  public abstract void a(vgz paramvgz);
+  
+  public abstract boolean a(vgu<U, V> paramvgu);
+  
+  public abstract void b();
 }
 
 

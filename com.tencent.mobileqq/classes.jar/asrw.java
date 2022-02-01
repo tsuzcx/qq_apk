@@ -1,113 +1,104 @@
-import android.content.Context;
-import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import com.tencent.mobileqq.utils.HexUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.extendfriend.limitchat.limitchatstatehandler.BaseStateHandler.1;
+import com.tencent.mobileqq.extendfriend.limitchat.limitchatstatehandler.BaseStateHandler.2;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
+import mqq.os.MqqHandler;
 
-class asrw
-  extends zsa
+public class asrw
 {
-  asrw(asrv paramasrv, ashw paramashw) {}
+  private int a;
+  public asne a;
+  public asry a;
+  public final String a;
   
-  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
+  asrw(asry paramasry, int paramInt)
   {
-    if (paramDownloadFileRspBody == null)
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "ExtendFriendLimitChat";
+    this.jdField_a_of_type_Asne = new asne();
+    this.jdField_a_of_type_Asry = paramasry;
+    this.jdField_a_of_type_Asne.a();
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  void a()
+  {
+    QLog.i("ExtendFriendLimitChat", 2, "StateHandlerType : " + this.jdField_a_of_type_Int + " cancelMatch in wrong state!!");
+  }
+  
+  void a(int paramInt)
+  {
+    QLog.i("ExtendFriendLimitChat", 2, "StateHandlerType : " + this.jdField_a_of_type_Int + " requestMatch in wrong state!! id:" + paramInt);
+  }
+  
+  public void a(asne paramasne)
+  {
+    this.jdField_a_of_type_Asne.jdField_a_of_type_JavaLangString = paramasne.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Asne.jdField_a_of_type_ArrayOfByte = paramasne.jdField_a_of_type_ArrayOfByte;
+    this.jdField_a_of_type_Asne.jdField_b_of_type_JavaLangString = paramasne.jdField_b_of_type_JavaLangString;
+    this.jdField_a_of_type_Asne.c = paramasne.c;
+    this.jdField_a_of_type_Asne.jdField_a_of_type_Long = paramasne.jdField_a_of_type_Long;
+    this.jdField_a_of_type_Asne.jdField_a_of_type_Int = paramasne.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Asne.e = paramasne.e;
+    this.jdField_a_of_type_Asne.jdField_b_of_type_Int = paramasne.jdField_b_of_type_Int;
+    this.jdField_a_of_type_Asne.f = paramasne.f;
+    this.jdField_a_of_type_Asne.jdField_a_of_type_Asmk = paramasne.jdField_a_of_type_Asmk;
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString1))
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.e("VideoForTroop<QFile>", 4, "error DownloadFileRspBody is null!!!!!");
-      }
-      this.jdField_a_of_type_Ashw.a(-1, "");
+      QLog.e("ExtendFriendLimitChat", 2, "saveMatchAlgorithmId UIN IS EMPTY");
       return;
     }
-    paramBundle = TroopFileTransferManager.a(asrv.a(this.jdField_a_of_type_Asrv).b);
-    if (paramBundle == null)
+    String str = paramString2;
+    if (TextUtils.isEmpty(paramString2))
     {
-      QLog.e("VideoForTroop<QFile>", 1, "getUrl: onReqDownloadFileResult: get troopFileTransferManager failed.");
-      return;
+      str = "0";
+      QLog.e("ExtendFriendLimitChat", 2, "saveMatchAlgorithmId algorithmId IS EMPTY");
     }
-    TroopFileTransferManager.Item localItem = paramBundle.a(asrv.a(this.jdField_a_of_type_Asrv));
-    if (localItem == null)
-    {
-      this.jdField_a_of_type_Ashw.a(-2, "");
-      return;
+    ThreadManager.getSubThreadHandler().post(new BaseStateHandler.1(this, paramString1, str));
+  }
+  
+  protected void a(String paramString1, String paramString2, byte[] paramArrayOfByte)
+  {
+    this.jdField_a_of_type_Asry.a.getMsgCache().c(String.valueOf(paramString1), String.valueOf(paramString2), paramArrayOfByte);
+  }
+  
+  void a(boolean paramBoolean)
+  {
+    QLog.i("ExtendFriendLimitChat", 2, "StateHandlerType : " + this.jdField_a_of_type_Int + " onCScancelMatchMsg in wrong state!! " + paramBoolean);
+  }
+  
+  void a(boolean paramBoolean, int paramInt, asne paramasne, String paramString)
+  {
+    QLog.i("ExtendFriendLimitChat", 2, "StateHandlerType : " + this.jdField_a_of_type_Int + " onCSRequestMsg in wrong state!!");
+  }
+  
+  void a(boolean paramBoolean, asne paramasne)
+  {
+    QLog.i("ExtendFriendLimitChat", 2, "StateHandlerType : " + this.jdField_a_of_type_Int + " onPushMsg in wrong state!!");
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Asne.a();
+  }
+  
+  public void b(asne paramasne)
+  {
+    this.jdField_a_of_type_Asne.a();
+    if (paramasne != null) {
+      a(paramasne);
     }
-    paramInt = paramDownloadFileRspBody.int32_ret_code.get();
-    QLog.e("VideoForTroop<QFile>", 1, String.format("onRspDownload - retCode: %d", new Object[] { Integer.valueOf(paramInt) }));
-    if (paramDownloadFileRspBody.bytes_cookie_val.has())
-    {
-      localItem.cookieValue = HexUtil.bytes2HexStr(paramDownloadFileRspBody.bytes_cookie_val.get().toByteArray());
-      localItem.cookieValue = localItem.cookieValue.toLowerCase();
-    }
-    localItem.DownloadIp = paramDownloadFileRspBody.str_download_ip.get();
-    localItem.DownloadUrl = HexUtil.bytes2HexStr(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
-    localItem.Md5 = paramDownloadFileRspBody.bytes_md5.get().toByteArray();
-    localItem.NameForSave = paramDownloadFileRspBody.str_save_file_name.get();
-    if ((paramInt == -133) || (paramInt == -132) || (paramInt == -134))
-    {
-      QLog.w("VideoForTroop<QFile>", 1, "file invalidate retCode = " + paramInt);
-      paramDownloadFileRspBody = String.format(this.jdField_a_of_type_Asrv.a.getApp().getBaseContext().getString(2131696789), new Object[] { localItem.FileName });
-      this.jdField_a_of_type_Ashw.a(paramInt, paramDownloadFileRspBody);
-      return;
-    }
-    if ((paramInt == -103) || (paramInt == -301))
-    {
-      QLog.w("VideoForTroop<QFile>", 1, "file invalidate retCode = " + paramInt);
-      paramDownloadFileRspBody = String.format(this.jdField_a_of_type_Asrv.a.getApp().getBaseContext().getString(2131696790), new Object[] { localItem.FileName });
-      this.jdField_a_of_type_Ashw.a(paramInt, paramDownloadFileRspBody);
-      return;
-    }
-    paramBundle = localItem.DownloadIp;
-    String str = paramDownloadFileRspBody.str_download_dns.get().toStringUtf8();
-    paramDownloadFileRspBody = paramBundle;
-    if (!TextUtils.isEmpty(str))
-    {
-      paramDownloadFileRspBody = paramBundle;
-      if (asgv.a().a(this.jdField_a_of_type_Asrv.a, 3))
-      {
-        QLog.i("VideoForTroop<QFile>", 1, "[IPv6-File] troopVideo download. is config enable IPv6. domain[" + str + "]");
-        paramDownloadFileRspBody = new asgw(str, 0);
-        paramDownloadFileRspBody = asgv.a().a(this.jdField_a_of_type_Asrv.a, paramDownloadFileRspBody, 3);
-        if ((paramDownloadFileRspBody == null) || (paramDownloadFileRspBody.a())) {
-          break label645;
-        }
-        paramDownloadFileRspBody = (asgx)paramDownloadFileRspBody.a.get(0);
-        if ((paramDownloadFileRspBody == null) || (TextUtils.isEmpty(paramDownloadFileRspBody.a))) {
-          break label674;
-        }
-        paramDownloadFileRspBody = paramDownloadFileRspBody.a;
-        QLog.i("VideoForTroop<QFile>", 1, "[IPv6-File] troopVideo download. use IPv6. hostlist:" + paramDownloadFileRspBody);
-      }
-    }
-    for (;;)
-    {
-      paramDownloadFileRspBody = asqa.a(paramDownloadFileRspBody, localItem.DownloadUrl, localItem.FilePath, localItem.cookieValue, "");
-      QLog.i("VideoForTroop<QFile>", 1, "troopVideo download. downloadUrl:" + paramDownloadFileRspBody);
-      if (!TextUtils.isEmpty(paramDownloadFileRspBody))
-      {
-        this.jdField_a_of_type_Ashw.a(paramDownloadFileRspBody, localItem.cookieValue);
-        return;
-        label645:
-        QLog.i("VideoForTroop<QFile>", 1, "[IPv6-File] troopVideo download. use IPv4");
-        paramDownloadFileRspBody = paramBundle;
-      }
-      else
-      {
-        this.jdField_a_of_type_Ashw.a(-3, "");
-        return;
-        label674:
-        paramDownloadFileRspBody = paramBundle;
-      }
-    }
+  }
+  
+  protected void c(asne paramasne)
+  {
+    ThreadManager.getSubThreadHandler().post(new BaseStateHandler.2(this, paramasne));
   }
 }
 

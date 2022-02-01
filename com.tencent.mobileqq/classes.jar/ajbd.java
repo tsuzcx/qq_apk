@@ -1,205 +1,190 @@
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
-import com.tencent.mobileqq.activity.history.link.search.LinkMessageResultAdapter.1;
-import com.tencent.mobileqq.activity.history.link.search.LinkMessageResultAdapter.2;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ChatHistorySearchData;
-import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.KplRoleInfo.WZRYUIinfo;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.widget.ColorNickTextView;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class ajbd
-  extends ajgb
+  extends anyz
 {
-  public Object a;
-  private SimpleDateFormat a;
-  public List<ajhk> a;
-  public Set<Long> a;
-  private List<TroopLinkElement> c;
+  public ajbd(SystemMsgListView paramSystemMsgListView) {}
   
-  public ajbd(Context paramContext, bjmp parambjmp, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
+  public void onAddFriendByContact(String paramString)
   {
-    super(paramContext, parambjmp, paramSessionInfo, paramQQAppInterface);
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    this.jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("M月d日");
-  }
-  
-  public ChatHistorySearchData a(SessionInfo paramSessionInfo, String paramString)
-  {
-    paramSessionInfo = new ChatHistorySearchData();
-    paramSessionInfo.mSearchData1 = new ArrayList();
-    Iterator localIterator = this.c.iterator();
-    while (localIterator.hasNext())
-    {
-      TroopLinkElement localTroopLinkElement = (TroopLinkElement)localIterator.next();
-      MessageForText localMessageForText = bbli.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), localTroopLinkElement.uin, "", 0, (byte)1, (byte)0, (short)0, localTroopLinkElement.description());
-      localMessageForText.msgData = bdvb.a(localTroopLinkElement);
-      localMessageForText.shmsgseq = Long.parseLong(localTroopLinkElement.msgSeq);
-      if (localMessageForText.msg.contains(paramString)) {
-        paramSessionInfo.mSearchData1.add(localMessageForText);
-      }
+    if (SystemMsgListView.a(this.a) != null) {
+      SystemMsgListView.a(this.a).c();
     }
-    paramSessionInfo.mSearchData2 = new ArrayList();
-    return paramSessionInfo;
   }
   
-  public void a()
+  protected void onGetDelSystemMsgError()
   {
-    this.b.clear();
-    notifyDataSetChanged();
-  }
-  
-  public void a(long paramLong, String paramString, int paramInt)
-  {
-    ThreadManager.post(new LinkMessageResultAdapter.1(this, paramString, paramInt, paramLong), 8, null, false);
-  }
-  
-  public void a(List<TroopLinkElement> paramList)
-  {
-    this.c = paramList;
-  }
-  
-  public void a(List<ajhk> paramList, int paramInt1, boolean paramBoolean, int paramInt2)
-  {
-    Object localObject;
-    int i;
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder().append("setMessageItems loadType: ").append(paramInt1).append(", searchMode: ").append(paramInt2).append(", cloudGetCompleted: ").append(paramBoolean).append(", messageItems size: ");
-      if (paramList == null)
-      {
-        i = 0;
-        QLog.d("LinkMessageResultAdapter", 2, i);
-      }
-    }
-    else
-    {
-      if ((paramInt1 != 1) || (paramInt2 != 0)) {
-        break label98;
-      }
-      this.b = paramList;
-    }
-    label98:
-    do
-    {
-      do
-      {
-        return;
-        i = paramList.size();
-        break;
-        if ((paramInt1 == 2) && (paramInt2 == 0))
-        {
-          this.b.addAll(paramList);
-          return;
-        }
-      } while ((paramInt1 != 4) || (paramList == null) || (paramList.size() == 0) || (paramInt2 != 1));
-      if ((this.b.size() <= 0) || (paramList.size() <= 0)) {
-        break label237;
-      }
-      localObject = (ajhk)paramList.get(0);
-      ajhk localajhk = (ajhk)this.b.get(this.b.size() - 1);
-      if (((ajhk)localObject).a.time <= localajhk.a.time) {
-        break label237;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("LinkMessageResultAdapter", 2, "setMessageItems: error firstItem time > lastItem time");
-    return;
-    label237:
-    this.b.addAll(paramList);
-  }
-  
-  public void a(List<ajhk> paramList, String paramString, long paramLong)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
     if (QLog.isColorLevel()) {
-      QLog.d("LinkMessageResultAdapter", 2, "displayCloudMessages...");
+      QLog.i("Q.newfriendSystemMsgListView", 2, "onGetDelSystemMsgError");
     }
-    ThreadManager.post(new LinkMessageResultAdapter.2(this, paramString, paramLong, paramList), 8, null, false);
+    this.a.k();
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1016);
   }
   
-  public void a(List<ajhk> paramList, boolean paramBoolean)
+  protected void onGetDelSystemMsgFin(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((paramList == null) || (paramList.size() <= 0)) {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.newfriendSystemMsgListView", 2, "onGetDelSystemMsgFin.bengin");
+    }
+    this.a.k();
+    if (paramBoolean1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.newfriendSystemMsgListView", 2, "onGetDelSystemMsgFin.success");
+      }
+      if (SystemMsgListView.a(this.a) != null) {
+        SystemMsgListView.a(this.a).c();
+      }
+    }
+    while (!paramBoolean2) {
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1016);
+  }
+  
+  protected void onGetSystemMsgFin(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.newfriendSystemMsgListView", 2, "onGetSystemMsgFin.bengin");
+    }
+    if (((Activity)SystemMsgListView.a(this.a)).isFinishing()) {}
+    while (!paramBoolean1) {
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("LinkMessageResultAdapter", 2, "mergeMsgsAtFirstTime: merge cloud and local msgs cloudGetCompleted: " + paramBoolean);
+      QLog.i("Q.newfriendSystemMsgListView", 2, "onGetSystemMsgFin.success");
     }
-    this.b.clear();
-    this.b.addAll(paramList);
+    try
+    {
+      if (SystemMsgListView.a(this.a) != null) {
+        SystemMsgListView.a(this.a).c();
+      }
+      this.a.i();
+      return;
+    }
+    catch (Exception paramList)
+    {
+      paramList.printStackTrace();
+    }
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  protected void onSendSystemMsgActionError(String paramString)
   {
-    ajhk localajhk = (ajhk)getItem(paramInt);
-    ajgc localajgc;
-    if (paramView == null)
+    if (this.a.jdField_a_of_type_Aiyo.a())
     {
-      paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559344, null);
-      localajgc = new ajgc();
-      localajgc.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView = ((ColorNickTextView)paramView.findViewById(2131378811));
-      localajgc.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365444));
-      localajgc.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368236));
-      paramView.setTag(localajgc);
+      paramString = SystemMsgListView.a(this.a).getResources().getString(2131719155);
+      QQToast.a(SystemMsgListView.a(this.a), 1, paramString, 0).b(this.a.a());
     }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("Q.newfriendSystemMsgListView", 2, "onSendSystemMsgActionError");
+  }
+  
+  protected void onSendSystemMsgActionFin(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
+  {
+    long l1 = bdzx.a().b();
+    if (!TextUtils.isEmpty(paramString1)) {}
     for (;;)
     {
-      Object localObject1 = localajhk.a;
-      TroopLinkElement localTroopLinkElement = new TroopLinkElement();
+      structmsg.StructMsg localStructMsg;
       try
       {
-        localObject1 = bdvb.a(((MessageRecord)localObject1).msgData);
-        if (localObject1 == null) {
-          break label331;
+        l2 = Long.parseLong(paramString1);
+        l1 = l2;
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1012);
+        localStructMsg = bdzx.a().a(Long.valueOf(l1));
+        if (this.a.jdField_a_of_type_Aiyo.a()) {
+          break label90;
         }
-        localTroopLinkElement = (TroopLinkElement)localObject1;
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.newfriendSystemMsgListView", 2, "onSendSystemMsgActionFin");
+        }
+        return;
       }
-      catch (Exception localException)
+      catch (Exception paramString1)
+      {
+        paramString1.printStackTrace();
+      }
+      continue;
+      label90:
+      if (!paramBoolean)
+      {
+        if (!TextUtils.isEmpty(paramString3)) {}
+        for (;;)
+        {
+          QQToast.a(SystemMsgListView.a(this.a), 1, paramString3, 0).b(this.a.a());
+          bdzz.a(localStructMsg, paramInt3, paramString2, paramString4);
+          return;
+          paramString3 = SystemMsgListView.a(this.a).getResources().getString(2131718500);
+        }
+      }
+      paramString1 = SystemMsgListView.a(this.a).getResources().getString(2131692562);
+      QQToast.a(SystemMsgListView.a(this.a), 2, paramString1, 0).b(this.a.a());
+      long l2 = bdzx.a().a();
+      bdzz.a(localStructMsg, paramInt1, paramString2, paramInt2);
+      if ((l2 != 0L) && (localStructMsg != null)) {}
+      try
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().updateMsgContentByUniseq(AppConstants.FRIEND_SYSTEM_MSG_UIN, 0, l2, localStructMsg.toByteArray());
+        if ((paramInt1 != 0) || (localStructMsg == null)) {
+          continue;
+        }
+        paramString3 = new Bundle();
+        paramString3.putString("base_uin", String.valueOf(localStructMsg.req_uin.get()));
+        paramString2 = localStructMsg.msg.req_uin_nick.get();
+        paramString1 = paramString2;
+        if (TextUtils.isEmpty(paramString2)) {
+          paramString1 = String.valueOf(localStructMsg.req_uin.get());
+        }
+        paramString3.putString("base_nick", paramString1);
+        paramString3.putInt("verfy_type", localStructMsg.msg.sub_type.get());
+        paramString3.putString("verfy_msg", localStructMsg.msg.msg_additional.get());
+        if (ajbi.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(localStructMsg.req_uin.get()), localStructMsg, false))
+        {
+          paramString4 = new String(localStructMsg.msg.bytes_game_nick.get().toByteArray());
+          paramString2 = paramString1;
+          if (!TextUtils.isEmpty(paramString4)) {
+            paramString2 = KplRoleInfo.WZRYUIinfo.buildNickName(paramString1, paramString4);
+          }
+          paramString3.putString("base_nick", paramString2);
+          paramString3.putBoolean("isFromWzry", true);
+        }
+        AutoRemarkActivity.a(this.a.jdField_a_of_type_Aiyo.getActivity(), 0, String.valueOf(localStructMsg.req_uin.get()), l1, paramString3);
+        return;
+      }
+      catch (Exception paramString1)
       {
         for (;;)
         {
-          Object localObject2;
-          continue;
-          localException.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130850386));
+          paramString1.printStackTrace();
+          if (QLog.isColorLevel()) {
+            QLog.i("Q.newfriendSystemMsgListView", 2, "onSendSystemMsgActionFin Exception!");
+          }
         }
       }
-      localObject2 = localTroopLinkElement.nickname;
-      localObject1 = localObject2;
-      if (TextUtils.isEmpty((CharSequence)localObject2)) {
-        localObject1 = localTroopLinkElement.uin;
-      }
-      localObject2 = localajhk.a(localTroopLinkElement.title, -11353092);
-      localajgc.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView.setText((CharSequence)localObject2);
-      localObject2 = new Date(Long.parseLong(localTroopLinkElement.timeSecond) * 1000L);
-      localObject2 = this.jdField_a_of_type_JavaTextSimpleDateFormat.format((Date)localObject2);
-      localObject1 = String.format(amtj.a(2131705251), new Object[] { localObject2, localObject1 });
-      localajgc.jdField_a_of_type_AndroidWidgetTextView.setText(localajhk.a((String)localObject1, -11353092));
-      if (TextUtils.isEmpty(localTroopLinkElement.iconUrl)) {
-        break;
-      }
-      ajaw.a(localajgc.jdField_a_of_type_AndroidWidgetImageView, localTroopLinkElement.iconUrl);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      localajgc = (ajgc)paramView.getTag();
     }
   }
 }

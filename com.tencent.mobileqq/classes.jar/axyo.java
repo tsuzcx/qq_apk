@@ -1,17 +1,17 @@
-import com.tencent.map.geolocation.TencentDirectionListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class axyo
-  implements TencentDirectionListener
+public class axyo
+  implements View.OnClickListener
 {
-  axyo(axym paramaxym) {}
+  public axyo(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void onDirectionChanged(double paramDouble, int paramInt)
+  public void onClick(View paramView)
   {
-    if (axym.a(this.a) != null)
-    {
-      axym.a(this.a, 180.0D + paramDouble);
-      axym.a(this.a, false);
-    }
+    ShortVideoCommentsView.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

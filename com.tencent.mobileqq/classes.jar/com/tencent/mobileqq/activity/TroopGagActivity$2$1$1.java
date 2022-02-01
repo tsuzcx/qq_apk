@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import aeld;
-import aelf;
-import aelg;
-import ancz;
+import afcl;
+import afcn;
+import afco;
+import aofq;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -21,19 +21,19 @@ class TroopGagActivity$2$1$1
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
       {
-        ancz localancz = (ancz)localIterator.next();
-        aelf localaelf = new aelf();
-        localaelf.jdField_a_of_type_JavaLangString = localancz.jdField_a_of_type_JavaLangString;
-        localaelf.jdField_a_of_type_Long = localancz.jdField_a_of_type_Long;
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopGagActivity$2$1.a.a.jdField_a_of_type_JavaUtilList.add(localaelf);
+        aofq localaofq = (aofq)localIterator.next();
+        afcn localafcn = new afcn();
+        localafcn.jdField_a_of_type_JavaLangString = localaofq.jdField_a_of_type_JavaLangString;
+        localafcn.jdField_a_of_type_Long = localaofq.jdField_a_of_type_Long;
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopGagActivity$2$1.a.a.jdField_a_of_type_JavaUtilList.add(localafcn);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopGagActivity$2$1.a.a.jdField_a_of_type_Aelg.notifyDataSetChanged();
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopGagActivity$2$1.a.a.jdField_a_of_type_Afco.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopGagActivity.2.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,14 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import mqq.app.AppRuntime;
+import android.media.MediaScannerConnection.OnScanCompletedListener;
+import android.net.Uri;
+import com.tencent.qphone.base.util.QLog;
 
 final class auer
-  implements aueg
+  implements MediaScannerConnection.OnScanCompletedListener
 {
-  public String a()
+  public void onScanCompleted(String paramString, Uri paramUri)
   {
-    return aynu.a;
-  }
-  
-  public void a(int paramInt)
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      ((VasQuickUpdateManager)localAppRuntime.getManager(184)).downloadItem(5L, "font.diycard.android." + paramInt, "HiBoomDownloader");
+    if (QLog.isDebugVersion()) {
+      QLog.i("FilePathUtil<FileAssistant>", 1, "MediaScannerConnection Scanned:\n" + paramString + ":\nuri=" + paramUri);
     }
   }
 }

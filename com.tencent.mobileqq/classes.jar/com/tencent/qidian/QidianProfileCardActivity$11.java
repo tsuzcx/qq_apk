@@ -1,7 +1,7 @@
 package com.tencent.qidian;
 
-import aymg;
-import bbyp;
+import azrb;
+import bdfk;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -12,8 +12,8 @@ class QidianProfileCardActivity$11
   
   public void run()
   {
-    if (bbyp.b()) {}
-    for (this.this$0.jdField_a_of_type_AndroidGraphicsBitmap = this.this$0.app.getFaceBitmap(this.this$0.jdField_a_of_type_Aymg.a.a, (byte)2, true);; this.this$0.jdField_a_of_type_AndroidGraphicsBitmap = this.this$0.app.getFaceBitmap(this.this$0.jdField_a_of_type_Aymg.a.a, true))
+    if (bdfk.b()) {}
+    for (this.this$0.jdField_a_of_type_AndroidGraphicsBitmap = this.this$0.app.getFaceBitmap(this.this$0.jdField_a_of_type_Azrb.a.a, (byte)2, true);; this.this$0.jdField_a_of_type_AndroidGraphicsBitmap = this.this$0.app.getFaceBitmap(this.this$0.jdField_a_of_type_Azrb.a.a, true))
     {
       this.this$0.c();
       return;

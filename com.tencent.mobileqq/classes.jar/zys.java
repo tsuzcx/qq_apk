@@ -1,18 +1,13 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.TextView;
-import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
-
-public class zys
-  extends AnimatorListenerAdapter
+final class zys
+  implements bkzs
 {
-  public zys(SingleLyricView paramSingleLyricView) {}
+  zys(bkzi parambkzi, zyv paramzyv) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onDismiss()
   {
-    super.onAnimationCancel(paramAnimator);
-    if (SingleLyricView.a(this.a) != null) {
-      SingleLyricView.a(this.a).setAlpha(1.0F);
+    this.jdField_a_of_type_Bkzi.dismiss();
+    if (this.jdField_a_of_type_Zyv != null) {
+      this.jdField_a_of_type_Zyv.a(true);
     }
   }
 }

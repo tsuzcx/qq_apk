@@ -1,26 +1,18 @@
-import UserGrowth.stPublisherRsp;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.7;
+import com.tencent.mobileqq.app.FontSettingManager;
 
 class utv
-  implements uqy
+  implements DialogInterface.OnClickListener
 {
-  utv(utr paramutr) {}
+  utv(utu paramutu) {}
   
-  public void a(urj paramurj)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!paramurj.a()) {
-      uya.d("WSHomeFragmentPresenter", "GetFeedDetailRequest onTaskResponse failed code:" + paramurj.jdField_a_of_type_Int + ", msg:" + paramurj.jdField_a_of_type_JavaLangString);
-    }
-    do
-    {
-      return;
-      if (!(paramurj.jdField_a_of_type_JavaLangObject instanceof stPublisherRsp)) {
-        break;
-      }
-      paramurj = (stPublisherRsp)paramurj.jdField_a_of_type_JavaLangObject;
-    } while (this.a.a() == null);
-    ((uue)this.a.a()).a(paramurj);
-    return;
-    uya.d("WSHomeFragmentPresenter", "GetPublisherRequest onTaskResponse failed");
+    FontSettingManager.killProcess();
+    this.a.a.this$0.a.finish();
   }
 }
 

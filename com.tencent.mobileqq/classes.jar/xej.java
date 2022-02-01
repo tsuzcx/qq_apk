@@ -1,27 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tribe.async.dispatch.Dispatcher;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class xej
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  xej(xei paramxei) {}
+  xej(xeg paramxeg) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    xec localxec = new xec();
-    if (this.a.a.a) {
-      this.a.a.a = false;
-    }
-    for (localxec.a = 0;; localxec.a = 1)
-    {
-      vli.a().dispatch(localxec);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.a.a = true;
-    }
+    this.a.dismiss();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

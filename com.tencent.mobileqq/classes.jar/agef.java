@@ -1,17 +1,19 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.doodle.control.ColorView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class agef
-  extends aghj
+public class agef
+  implements View.OnClickListener
 {
-  agef(agcw paramagcw)
-  {
-    super(paramagcw, null);
-  }
+  public agef(ColorView paramColorView) {}
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onClick(View paramView)
   {
-    return new agjt(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if (ColorView.a(this.a) != null) {
+      ColorView.a(this.a).a();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

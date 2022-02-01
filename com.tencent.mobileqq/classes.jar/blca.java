@@ -1,32 +1,34 @@
-import android.graphics.drawable.Drawable;
-import cooperation.vip.vipcomponent.ui.QzoneHuangzuanVipIconShow;
-import cooperation.vip.vipcomponent.util.VipResourcesListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.FitSystemWindowsRelativeLayout;
 
 public class blca
+  extends AnimatorListenerAdapter
 {
-  public static blca a;
+  public blca(FitSystemWindowsRelativeLayout paramFitSystemWindowsRelativeLayout) {}
   
-  public static blca a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (a == null) {}
-    try
+    int i = 1;
+    super.onAnimationEnd(paramAnimator);
+    if (this.a.jdField_a_of_type_Boolean)
     {
-      if (a == null) {
-        a = new blca();
+      if (anck.a(FitSystemWindowsRelativeLayout.a(this.a)).d == 1) {
+        i = 0;
       }
-      return a;
+      if (i != 0)
+      {
+        ancb.a(FitSystemWindowsRelativeLayout.a(this.a), "vas_poke", false);
+        if (QLog.isColorLevel()) {
+          QLog.i("placeholder.sprite", 2, "show sprite (normal) in fullscreen.");
+        }
+      }
+      this.a.jdField_a_of_type_Boolean = false;
+      this.a.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(null);
+      this.a.removeView(this.a.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView);
     }
-    finally {}
-  }
-  
-  public Drawable a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString1, int paramInt3, int paramInt4, String paramString2, VipResourcesListener paramVipResourcesListener)
-  {
-    return QzoneHuangzuanVipIconShow.getInstance().getLayers(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramString1, paramInt3, paramInt4, paramString2, paramVipResourcesListener, 0);
-  }
-  
-  public Drawable a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString, int paramInt3, VipResourcesListener paramVipResourcesListener)
-  {
-    return a(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramString, paramInt3, 100, null, paramVipResourcesListener);
   }
 }
 

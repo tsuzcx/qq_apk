@@ -2,7 +2,7 @@ package cooperation.qqcircle;
 
 public class QCircleConstants$KeyInEntry
 {
-  public static final String IS_VERIFIED = "IsVerified";
+  public static final String USER_CERTIFICATION = "user-certification";
 }
 
 

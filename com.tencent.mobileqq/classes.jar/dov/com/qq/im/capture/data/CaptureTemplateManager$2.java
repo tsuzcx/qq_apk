@@ -1,7 +1,7 @@
 package dov.com.qq.im.capture.data;
 
-import bmsa;
-import bmsb;
+import bohs;
+import boht;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.transfile.HttpNetReq;
 import com.tencent.mobileqq.transfile.INetEngine;
@@ -12,16 +12,16 @@ import com.tencent.qphone.base.util.QLog;
 public class CaptureTemplateManager$2
   implements Runnable
 {
-  public CaptureTemplateManager$2(bmsa parambmsa, String paramString1, String paramString2, String paramString3) {}
+  public CaptureTemplateManager$2(bohs parambohs, String paramString1, String paramString2, String paramString3) {}
   
   public void run()
   {
-    if (bmsa.a(this.this$0, this.a, this.b)) {}
+    if (bohs.a(this.this$0, this.a, this.b)) {}
     do
     {
       return;
       HttpNetReq localHttpNetReq = new HttpNetReq();
-      localHttpNetReq.mCallback = new bmsb(this);
+      localHttpNetReq.mCallback = new boht(this);
       localHttpNetReq.mReqUrl = this.c;
       localHttpNetReq.mHttpMethod = 0;
       localHttpNetReq.mOutPath = this.a;

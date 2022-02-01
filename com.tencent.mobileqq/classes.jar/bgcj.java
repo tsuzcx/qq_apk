@@ -1,135 +1,67 @@
-import android.graphics.Color;
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import java.util.Arrays;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.view.View;
+import com.tencent.biz.qqstory.widget.OverScrollRecyclerView;
+import java.util.ArrayList;
 
-public final class bgcj
+class bgcj
+  extends RecyclerView.OnScrollListener
 {
-  private final int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
-  @Nullable
-  private float[] jdField_a_of_type_ArrayOfFloat;
-  private final int b;
-  private final int c;
-  private final int d;
-  private final int e;
-  private int f;
-  private int g;
+  bgcj(bgch parambgch) {}
   
-  public bgcj(@ColorInt int paramInt1, int paramInt2)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.jdField_a_of_type_Int = Color.red(paramInt1);
-    this.b = Color.green(paramInt1);
-    this.c = Color.blue(paramInt1);
-    this.d = paramInt1;
-    this.e = paramInt2;
-  }
-  
-  private void a()
-  {
-    int j;
-    if (!this.jdField_a_of_type_Boolean)
+    int i = 0;
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (bgch.a(this.a) == null) {
+      break label18;
+    }
+    for (;;)
     {
-      i = bgcd.a(-1, this.d, 4.5F);
-      j = bgcd.a(-1, this.d, 3.0F);
-      if ((i != -1) && (j != -1))
+      label18:
+      return;
+      if ((paramInt == 0) || (paramInt == 1))
       {
-        this.g = bgcd.b(-1, i);
-        this.f = bgcd.b(-1, j);
-        this.jdField_a_of_type_Boolean = true;
+        paramRecyclerView = bgch.a(this.a).getLayoutManager();
+        if (!(paramRecyclerView instanceof LinearLayoutManager)) {
+          break;
+        }
+        paramRecyclerView = (LinearLayoutManager)paramRecyclerView;
+        int k = paramRecyclerView.findFirstVisibleItemPosition();
+        paramInt = paramRecyclerView.findLastVisibleItemPosition();
+        if (paramInt == 0) {
+          if (bgch.a(this.a) != null)
+          {
+            int j = bgch.a(this.a).size();
+            paramInt = j;
+            if (j > 6) {
+              paramInt = 6;
+            }
+          }
+        }
+        while (i < paramInt - k)
+        {
+          if (bgch.a(this.a).getChildAt(i) != null)
+          {
+            paramRecyclerView = bgch.a(this.a).getChildAt(i);
+            if ((paramRecyclerView.getTag() != null) && ((paramRecyclerView.getTag() instanceof bgba)))
+            {
+              paramRecyclerView = (bgba)paramRecyclerView.getTag();
+              bgch.a(this.a).c(Long.valueOf(paramRecyclerView.a()), Long.valueOf(paramRecyclerView.b()));
+            }
+          }
+          i += 1;
+          continue;
+          paramInt = 0;
+        }
       }
     }
-    else
-    {
-      return;
-    }
-    int m = bgcd.a(-16777216, this.d, 4.5F);
-    int k = bgcd.a(-16777216, this.d, 3.0F);
-    if ((m != -1) && (k != -1))
-    {
-      this.g = bgcd.b(-16777216, m);
-      this.f = bgcd.b(-16777216, k);
-      this.jdField_a_of_type_Boolean = true;
-      return;
-    }
-    if (i != -1)
-    {
-      i = bgcd.b(-1, i);
-      this.g = i;
-      if (j == -1) {
-        break label175;
-      }
-    }
-    label175:
-    for (int i = bgcd.b(-1, j);; i = bgcd.b(-16777216, k))
-    {
-      this.f = i;
-      this.jdField_a_of_type_Boolean = true;
-      return;
-      i = bgcd.b(-16777216, m);
-      break;
-    }
   }
   
-  @ColorInt
-  public int a()
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    return this.d;
-  }
-  
-  @NonNull
-  public float[] a()
-  {
-    if (this.jdField_a_of_type_ArrayOfFloat == null) {
-      this.jdField_a_of_type_ArrayOfFloat = new float[3];
-    }
-    bgcd.a(this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_ArrayOfFloat);
-    return this.jdField_a_of_type_ArrayOfFloat;
-  }
-  
-  public int b()
-  {
-    return this.e;
-  }
-  
-  @ColorInt
-  public int c()
-  {
-    a();
-    return this.f;
-  }
-  
-  @ColorInt
-  public int d()
-  {
-    a();
-    return this.g;
-  }
-  
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (bgcj)paramObject;
-    } while ((this.e == paramObject.e) && (this.d == paramObject.d));
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    return this.d * 31 + this.e;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return getClass().getSimpleName() + " [RGB: #" + Integer.toHexString(a()) + ']' + " [HSL: " + Arrays.toString(a()) + ']' + " [Population: " + this.e + ']' + " [Title Text: #" + Integer.toHexString(c()) + ']' + " [Body Text: #" + Integer.toHexString(d()) + ']';
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
   }
 }
 

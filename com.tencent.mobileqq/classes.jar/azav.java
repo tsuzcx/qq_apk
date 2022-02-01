@@ -1,75 +1,37 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity;
-import java.util.List;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.TextView;
+import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+import com.tencent.mobileqq.text.TextUtils;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class azav
-  extends anax
+  implements TextWatcher
 {
-  public azav(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  private int jdField_a_of_type_Int;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private int b;
   
-  protected void a(boolean paramBoolean, List<Long> paramList)
+  public azav(AutoReplyEditActivity paramAutoReplyEditActivity) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (this.a.a == null) {
-      return;
-    }
-    String str = this.a.a.a;
-    if (ProfileActivity.AllInOne.i(this.a.a)) {
-      str = this.a.a();
-    }
-    for (;;)
+    if ((this.jdField_a_of_type_JavaLangCharSequence != null) && (TextUtils.getQQTextCharCount(String.valueOf(this.jdField_a_of_type_JavaLangCharSequence), 3) > 100))
     {
-      if (paramList == null) {}
-      int k;
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        k = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (bftf.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
-      }
-      if (k == 0) {
-        break;
-      }
-      this.a.a(paramBoolean, false);
-      return;
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyEditActivity.getActivity(), 1, 2131690259, 0).a();
+      paramEditable.delete(this.jdField_a_of_type_Int, this.b);
     }
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyEditActivity.rightViewText.setEnabled(AutoReplyEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyEditActivity, String.valueOf(AutoReplyEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyEditActivity).getText())));
   }
   
-  protected void b(boolean paramBoolean, List<Long> paramList)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    int k = 0;
-    if (this.a.a == null) {
-      return;
-    }
-    String str = this.a.a.a;
-    if (ProfileActivity.AllInOne.i(this.a.a)) {
-      str = this.a.a();
-    }
-    for (;;)
-    {
-      if (paramList == null) {}
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (bftf.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
-      }
-      if (k == 0) {
-        break;
-      }
-      this.a.a(paramBoolean, true);
-      return;
-    }
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = (paramInt1 + paramInt3);
   }
 }
 

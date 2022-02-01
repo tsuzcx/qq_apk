@@ -1,15 +1,38 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
+import UserGrowth.stSimpleGetFeedListRsp;
+import UserGrowth.stSimpleMetaFeed;
+import android.text.TextUtils;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
+import java.util.List;
 
 public class vpe
-  implements vox
+  implements uyy
 {
-  public vpe(StoryVideoUploadTask paramStoryVideoUploadTask, vpd paramvpd) {}
+  public vpe(WSVerticalDataManager paramWSVerticalDataManager, vos paramvos) {}
   
-  public void a(vow paramvow)
+  public void a(JceStruct paramJceStruct)
   {
-    this.jdField_a_of_type_Vpd.k = ((vor)paramvow).b;
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoUploadTask.a(1, new ErrorMessage());
+    vmp.a("WSVerticalDataManagerLog", "onReadCacheCompleted");
+    if (!(paramJceStruct instanceof stSimpleGetFeedListRsp)) {
+      vmp.a("WSVerticalDataManagerLog", "struct not instanceof stSimpleGetFeedListRsp");
+    }
+    do
+    {
+      stSimpleMetaFeed localstSimpleMetaFeed;
+      do
+      {
+        do
+        {
+          return;
+          paramJceStruct = ((stSimpleGetFeedListRsp)paramJceStruct).feeds;
+        } while ((paramJceStruct == null) || (paramJceStruct.size() <= 0));
+        localstSimpleMetaFeed = (stSimpleMetaFeed)paramJceStruct.get(0);
+      } while (!TextUtils.equals(localstSimpleMetaFeed.id, WSVerticalDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalDataManager)));
+      WSPublicAccReport.getInstance().getRecommendFullScreenInfo().a(localstSimpleMetaFeed.video_url);
+      vmp.a("WSVerticalDataManagerLog", "onReadCacheCompleted feeds.size() = " + paramJceStruct.size());
+    } while (this.jdField_a_of_type_Vos == null);
+    this.jdField_a_of_type_Vos.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalDataManager.a(paramJceStruct), false, true, null);
   }
 }
 

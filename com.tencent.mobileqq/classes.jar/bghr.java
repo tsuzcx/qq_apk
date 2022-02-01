@@ -1,50 +1,61 @@
-import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.theme.TextHook;
+import com.tencent.mobileqq.activity.recent.data.RecentItemTroopMsgData;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.widget.SingleLineTextView.IconDrawableInfo;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
-final class bghr
-  extends bbyo
+public class bghr
 {
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
+  public static ArrayList<SingleLineTextView.IconDrawableInfo> a(QQAppInterface paramQQAppInterface, RecentItemTroopMsgData paramRecentItemTroopMsgData)
   {
-    paramInt = 0;
-    Object localObject1;
-    if (paramBoolean1)
+    if (paramRecentItemTroopMsgData == null) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    if (!a(paramRecentItemTroopMsgData.troopLuckyCharacter, localArrayList)) {
+      a(paramQQAppInterface, paramRecentItemTroopMsgData.troopHonorStr, localArrayList);
+    }
+    if (localArrayList.size() > 2) {
+      return new ArrayList(localArrayList.subList(0, 2));
+    }
+    return localArrayList;
+  }
+  
+  private static void a(QQAppInterface paramQQAppInterface, String paramString, ArrayList<SingleLineTextView.IconDrawableInfo> paramArrayList)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramArrayList == null)) {}
+    for (;;)
     {
-      localObject1 = BaseApplicationImpl.getApplication().getApplicationContext();
-      if (!bbyp.b()) {
-        break label48;
-      }
-      localObject2 = TextHook.getFontPath((Context)localObject1);
-      if (!TextUtils.isEmpty((CharSequence)localObject2))
+      return;
+      paramQQAppInterface = ((bfwu)paramQQAppInterface.getManager(QQManagerFactory.TROOP_HONOR_MANAGER)).a(paramString);
+      if ((paramQQAppInterface != null) && (!paramQQAppInterface.isEmpty()))
       {
-        bghq.a((Context)localObject1, (String)localObject2);
-        bghq.a(false);
+        Collections.sort(paramQQAppInterface);
+        paramQQAppInterface = paramQQAppInterface.iterator();
+        while (paramQQAppInterface.hasNext())
+        {
+          paramString = (bfxc)paramQQAppInterface.next();
+          SingleLineTextView.IconDrawableInfo localIconDrawableInfo = new SingleLineTextView.IconDrawableInfo();
+          localIconDrawableInfo.icon_static_url = paramString.b;
+          paramArrayList.add(localIconDrawableInfo);
+        }
       }
     }
-    label48:
-    do
-    {
-      return;
-      localObject1 = bghq.a((Context)localObject1);
-    } while (TextUtils.isEmpty((CharSequence)localObject1));
-    Object localObject2 = aszt.a((String)localObject1).split("\\.");
-    try
-    {
-      int i = Integer.parseInt(localObject2[0]);
-      if (localObject2.length > 2) {
-        paramInt = Integer.parseInt(localObject2[1]);
-      }
-      bghq.b(i, paramInt);
-      return;
+  }
+  
+  private static boolean a(String paramString, ArrayList<SingleLineTextView.IconDrawableInfo> paramArrayList)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramArrayList == null)) {
+      return false;
     }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      QLog.e("ThemeFontAdapter", 1, "switchFont  prePath:" + (String)localObject1, localNumberFormatException);
-      localNumberFormatException.printStackTrace();
-    }
+    SingleLineTextView.IconDrawableInfo localIconDrawableInfo = new SingleLineTextView.IconDrawableInfo();
+    localIconDrawableInfo.icon_static_url = paramString;
+    paramArrayList.add(localIconDrawableInfo);
+    return true;
   }
 }
 

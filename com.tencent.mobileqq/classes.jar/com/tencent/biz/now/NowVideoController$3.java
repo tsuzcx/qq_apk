@@ -5,17 +5,17 @@ import android.view.View;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.PAVideoView;
 import com.tencent.widget.AbsListView;
-import nrz;
-import ofx;
+import nza;
+import onq;
 
 public class NowVideoController$3
   implements Runnable
 {
-  public NowVideoController$3(nrz paramnrz, int paramInt1, int paramInt2) {}
+  public NowVideoController$3(nza paramnza, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if (nrz.a(this.this$0) == null) {
+    if (nza.a(this.this$0) == null) {
       return;
     }
     int i = this.a;
@@ -23,7 +23,7 @@ public class NowVideoController$3
     Object localObject;
     if (i <= this.b)
     {
-      localObject = nrz.a(this.this$0).getChildAt(i - this.a);
+      localObject = nza.a(this.this$0).getChildAt(i - this.a);
       if (localObject != null) {
         break label52;
       }
@@ -34,11 +34,11 @@ public class NowVideoController$3
       break label16;
       break;
       label52:
-      localObject = (PAVideoView)((View)localObject).findViewById(2131377864);
+      localObject = (PAVideoView)((View)localObject).findViewById(2131378150);
       if ((localObject != null) && (((PAVideoView)localObject).jdField_j_of_type_Int == 4))
       {
-        ((PAVideoView)localObject).getGlobalVisibleRect(nrz.a());
-        if ((((PAVideoView)localObject).getHeight() == nrz.a().height()) && (NetworkUtil.isWifiConnected(((PAVideoView)localObject).getContext())) && (ofx.a) && (nrz.a().top > 0) && (!((PAVideoView)localObject).jdField_j_of_type_Boolean)) {
+        ((PAVideoView)localObject).getGlobalVisibleRect(nza.a());
+        if ((((PAVideoView)localObject).getHeight() == nza.a().height()) && (NetworkUtil.isWifiConnected(((PAVideoView)localObject).getContext())) && (onq.a) && (nza.a().top > 0) && (!((PAVideoView)localObject).jdField_j_of_type_Boolean)) {
           ((PAVideoView)localObject).f();
         } else {
           ((PAVideoView)localObject).e();

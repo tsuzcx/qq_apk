@@ -1,25 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.os.Build.VERSION;
-import android.widget.LinearLayout;
+import android.view.animation.Interpolator;
 
 class asxc
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Interpolator
 {
-  asxc(aswz paramaswz) {}
+  asxc(asww paramasww) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public float getInterpolation(float paramFloat)
   {
-    if (Build.VERSION.SDK_INT >= 11)
-    {
-      float f = Float.valueOf(paramValueAnimator.getAnimatedValue().toString()).floatValue();
-      if ((aswz.a(this.a).getVisibility() == 0) && (Math.abs(aswz.a(this.a).getAlpha() - f) >= 0.02F)) {
-        aswz.a(this.a).setAlpha(f);
-      }
-      if ((aswz.a(this.a).getVisibility() == 0) && (Math.abs(aswz.a(this.a).getAlpha() - f) >= 0.02F)) {
-        aswz.a(this.a).setAlpha(f);
-      }
-    }
+    paramFloat -= 1.0F;
+    return 1.0F - paramFloat * (paramFloat * paramFloat * paramFloat);
   }
 }
 

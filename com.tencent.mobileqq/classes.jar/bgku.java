@@ -1,33 +1,32 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.vas.wallpaper.VipWallpaperService;
-import com.tencent.mobileqq.vas.wallpaper.WallpaperHelper;
-import com.tencent.mobileqq.vas.wallpaper.WallpaperHelper.ConfigChangeListener.1;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
 
-public class bgku
-  implements SharedPreferences.OnSharedPreferenceChangeListener
+class bgku
+  extends ntc
 {
-  private bgks jdField_a_of_type_Bgks;
-  private final WeakReference<WallpaperHelper> jdField_a_of_type_JavaLangRefWeakReference;
+  bgku(bgko parambgko, bgkn parambgkn) {}
   
-  public bgku(WallpaperHelper paramWallpaperHelper)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramWallpaperHelper);
-  }
-  
-  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
-  {
-    paramString = (WallpaperHelper)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramString != null)
+    paramBundle = new oidb_0x962.RspBody();
+    if (paramArrayOfByte != null) {}
+    try
     {
-      paramSharedPreferences = VipWallpaperService.a(paramSharedPreferences);
-      if ((this.jdField_a_of_type_Bgks == null) || (!this.jdField_a_of_type_Bgks.equals(paramSharedPreferences)))
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if (this.jdField_a_of_type_Bgkn != null) {
+        this.jdField_a_of_type_Bgkn.a(paramInt, paramBundle);
+      }
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
       {
-        this.jdField_a_of_type_Bgks = paramSharedPreferences;
-        ThreadManagerV2.getUIHandlerV2().post(new WallpaperHelper.ConfigChangeListener.1(this, paramString, paramSharedPreferences));
+        if (QLog.isColorLevel()) {
+          QLog.i(".troop.send_gift", 2, "send_oidb_0x962. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
+        }
       }
     }
   }

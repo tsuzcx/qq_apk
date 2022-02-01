@@ -1,16 +1,45 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.2;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.utils.quic.QuicResDownload;
+import java.util.Properties;
+import mqq.app.MobileQQ;
 
 public class bcxx
-  implements DialogInterface.OnClickListener
+  implements bcya
 {
-  public bcxx(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
+  public bcxx(ShortVideoResourceManager.2 param2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDownloadFinish(String paramString1, int paramInt, String paramString2)
   {
-    ((QQCustomDialog)paramDialogInterface).getCheckBoxState();
+    VideoEnvironment.LogDownLoad("QuicResDownload", "doUserDownloadQuicResourceAsync: [onDownloadFinish]name=" + paramString1 + " filepath=" + paramString2, null);
+  }
+  
+  public void onNetWorkNone()
+  {
+    VideoEnvironment.LogDownLoad("QuicResDownload", "doUserDownloadQuicResourceAsync: [onNetWorkNone]", null);
+  }
+  
+  public void onUpdateProgress(String paramString, long paramLong1, long paramLong2)
+  {
+    if ((paramLong1 == paramLong2) && (!QuicResDownload.a)) {
+      QuicResDownload.a = true;
+    }
+    try
+    {
+      Properties localProperties = new Properties();
+      localProperties.put("version", "8.4.10.4875");
+      localProperties.put("appid", String.valueOf(AppSetting.a()));
+      localProperties.put("release", String.valueOf(true));
+      localProperties.put("name", paramString);
+      bdkp.a(this.a.a.getApplication().getApplicationContext()).reportKVEvent("msf_quic_resdown", localProperties);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
 }
 

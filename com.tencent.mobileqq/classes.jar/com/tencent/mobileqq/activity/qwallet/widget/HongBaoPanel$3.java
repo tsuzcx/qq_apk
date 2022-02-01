@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet.widget;
 
-import akcu;
-import akgc;
+import akyn;
+import albv;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.utils.StringUtil;
@@ -17,8 +17,8 @@ class HongBaoPanel$3
   {
     try
     {
-      akcu localakcu = (akcu)paramView.getTag();
-      if (localakcu == null)
+      akyn localakyn = (akyn)paramView.getTag();
+      if (localakyn == null)
       {
         EventCollector.getInstance().onViewClicked(paramView);
         return;
@@ -40,7 +40,7 @@ class HongBaoPanel$3
           {
             str = str.jdField_a_of_type_OrgJsonJSONObject.optString("url");
             if (!StringUtil.isEmpty(str)) {
-              akgc.b(this.this$0.mContext, str);
+              albv.b(this.this$0.mContext, str);
             }
           }
           break;
@@ -50,7 +50,7 @@ class HongBaoPanel$3
         case 102: 
           str = str.jdField_a_of_type_OrgJsonJSONObject.optString("url");
           if (!StringUtil.isEmpty(str)) {
-            akgc.b(this.this$0.mContext, str);
+            albv.b(this.this$0.mContext, str);
           }
           break;
         }

@@ -1,87 +1,67 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.httputils.PkgTools;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
-import tencent.im.msg.im_msg_body.MsgBody;
 
 public class bbme
-  implements bbls
 {
-  private long a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public final int a;
+  public final long a;
+  private List<bble> a;
+  private int b;
+  public final long b;
+  private int c;
+  
+  public bbme(int paramInt, long paramLong1, long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopSystemMessageDecoder", 2, "<---decodeC2CMsgPkg_GroupSys");
-    }
-    long l2;
-    if ((!paramMsg.msg_body.has()) || (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopSystemMessageDecoder", 2, "<---decodeC2CMsgPkg_GroupSys return null:hasBody:" + paramMsg.msg_body.has() + ",hasMsgContent" + ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has() + ",isReaded:" + paramBoolean1 + "syncOther:" + paramBoolean2);
-      }
-      l2 = 0L;
-      return l2;
-    }
-    Long.valueOf(paramMessageHandler.app.getCurrentAccountUin()).longValue();
-    long l3 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get();
-    int i = (short)((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_type.get();
-    byte[] arrayOfByte = ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get().toByteArray();
-    if ((arrayOfByte != null) && (arrayOfByte.length > 0)) {}
-    for (long l1 = PkgTools.getLongData(arrayOfByte, 0);; l1 = 0L)
-    {
-      Object localObject = (msg_comm.MsgHead)paramMsg.msg_head.get();
-      if (localObject != null)
-      {
-        localObject = ((msg_comm.MsgHead)localObject).group_name.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopSystemMessageDecoder.sysnick", 2, "TroopCode:" + l1 + "TroopName:" + (String)localObject);
-        }
-        paramMessageHandler.c("" + l1, (String)localObject);
-      }
-      l2 = l1;
-      if (paramBoolean1) {
-        break;
-      }
-      l2 = l1;
-      if (paramBoolean2) {
-        break;
-      }
-      l2 = l1;
-      if (paramBoolean3) {
-        break;
-      }
-      paramMessageHandler.a().a(i, arrayOfByte, l3, ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get(), (msg_comm.MsgHead)paramMsg.msg_head.get());
-      return l1;
-    }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
   }
   
-  public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbkm parambbkm)
+  private void a()
   {
-    paramList = (msg_comm.MsgHead)paramMsg.msg_head.get();
-    long l1 = paramList.from_uin.get();
-    long l2 = paramList.msg_time.get();
-    int i = paramList.msg_type.get();
-    if ((i == 85) || (i == 36)) {}
-    for (i = 1;; i = 0)
-    {
-      if ((!parambbkm.c) && (i == 0)) {
-        paramMessageHandler.a().a(3, 1, false);
-      }
-      parambbkm.e = 9998L;
-      a(paramMessageHandler, paramMsg, parambbkm.a, parambbkm.f, parambbkm.d);
-      if (i == 0) {
-        bcsz.a().a(l1, l2, paramMessageHandler.app);
-      }
-      return;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((bble)localIterator.next()).b();
     }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_b_of_type_Int = 0;
+  }
+  
+  private void b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((bble)localIterator.next()).c();
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_b_of_type_Int = 0;
+  }
+  
+  public int a(float paramFloat)
+  {
+    int i = this.jdField_a_of_type_JavaUtilList.size();
+    if (i >= 6)
+    {
+      bble localbble1 = (bble)this.jdField_a_of_type_JavaUtilList.get(0);
+      bble localbble2 = (bble)this.jdField_a_of_type_JavaUtilList.get(i - 1);
+      float f = (float)(localbble2.b() - localbble1.b()) * 1000.0F / (i - 1);
+      paramFloat = (float)(Math.abs(localbble2.a()) - Math.abs(localbble1.a())) / ((i - 1) * paramFloat);
+      f = 1.1F * f;
+      if (f < paramFloat) {
+        return 1;
+      }
+      i = (int)Math.floor(f / (f - paramFloat));
+      ykq.a("FlowEdit_VideoFlowDecodeTask", "averageDecodeTime = %.1f us, averagePlayTime = %.1f us, dropRate = %d", Float.valueOf(f), Float.valueOf(paramFloat), Integer.valueOf(i));
+      return Math.min(8, i);
+    }
+    return 1;
+  }
+  
+  public String toString()
+  {
+    return "DecodeSegmentInfo{Index=" + this.jdField_a_of_type_Int + ", StartUs=" + this.jdField_a_of_type_Long + ", EndUs=" + this.jdField_b_of_type_Long + ", Size=" + this.jdField_a_of_type_JavaUtilList.size() + ", Decoding=" + this.jdField_b_of_type_Int + '}';
   }
 }
 

@@ -1,39 +1,20 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Message;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
+import mqq.os.MqqHandler;
 
 public class aehy
-  implements View.OnClickListener
+  extends MqqHandler
 {
-  public aehy(SubAccountBindActivity paramSubAccountBindActivity) {}
+  public aehy(LoginPhoneNumActivity2 paramLoginPhoneNumActivity2) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onAddAccountClick.onClick:add account");
-    }
-    Object localObject = (bcqt)this.a.app.getManager(61);
-    if (localObject != null) {}
-    for (int i = ((bcqt)localObject).a();; i = 0)
+    switch (paramMessage.what)
     {
-      if (i < 2)
-      {
-        localObject = new Intent(this.a, SubLoginActivity.class);
-        ((Intent)localObject).putExtra("fromWhere", this.a.b);
-        this.a.startActivity((Intent)localObject);
-      }
-      for (;;)
-      {
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        bcqk.a(this.a.app, this.a);
-      }
+    default: 
+      return;
     }
+    this.a.finish();
   }
 }
 

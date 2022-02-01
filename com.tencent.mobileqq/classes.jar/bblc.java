@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
 
-public class bblc
+public abstract interface bblc
 {
-  public MessageForReplyText.SourceMsgInfo a;
-  public MessageForText.AtTroopMemberInfo a;
-  public String a;
-  public byte[] a;
-  public String b;
+  public abstract void a();
   
-  public bblc(bblb parambblb) {}
+  public abstract void a(int paramInt);
+  
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void a(bbky parambbky, int paramInt, SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener, bblb parambblb);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

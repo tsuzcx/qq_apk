@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/nfk" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:background="@drawable/bio" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" />
+<RelativeLayout android:background="@drawable/f2o" android:layout_width="@dimen/bav" android:layout_height="@dimen/bas" android:layout_marginLeft="@dimen/bat" android:layout_marginRight="@dimen/bat"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout android:id="@id/mmn" android:layout_width="@dimen/bax" android:layout_height="@dimen/baw" android:layout_centerInParent="true" app:qqArMapGuideRadius="3">
+        <View android:id="@id/o21" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/dce" android:layout_width="fill_parent" android:layout_height="70.0dip" android:scaleType="centerCrop" />
+        <ImageView android:id="@id/npd" android:background="@color/rk" android:paddingBottom="20.0dip" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/f3a" android:scaleType="center" />
+        <TextView android:textSize="@dimen/bek" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="bottom" android:id="@id/jfo" android:layout_width="fill_parent" android:layout_height="20.0dip" android:text="@string/wnd" android:layout_alignParentBottom="true" />
+        <ImageView android:layout_gravity="right" android:id="@id/mpu" android:visibility="visible" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/f37" />
+        <ImageView android:layout_gravity="right" android:id="@id/mpt" android:visibility="visible" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/f34" />
+        <ImageView android:layout_gravity="right" android:id="@id/ef9" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/f37" />
+        <ImageView android:layout_gravity="right" android:id="@id/n77" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/f38" />
+        <dov.com.qq.im.ae.view.AEDownLoadingView android:layout_gravity="right" android:id="@id/g2d" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" />
+    </com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout>
 </RelativeLayout>

@@ -6,16 +6,16 @@ import com.tencent.mobileqq.app.ThreadManager;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import oix;
+import oqt;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ssq;
-import swa;
+import tgb;
+import tjl;
 
 public class WebFastAdapter$9
   implements Runnable
 {
-  public WebFastAdapter$9(ssq paramssq) {}
+  public WebFastAdapter$9(tgb paramtgb) {}
   
   public void run()
   {
@@ -49,7 +49,7 @@ public class WebFastAdapter$9
                 break label310;
               }
               j = i;
-              swa localswa = new swa(localJSONObject.optString("kd_ug_rsp_info"));
+              tjl localtjl = new tjl(localJSONObject.optString("kd_ug_rsp_info"));
               Object localObject3;
               if (i == 0)
               {
@@ -77,9 +77,9 @@ public class WebFastAdapter$9
                 }
               }
               j = i;
-              oix.a(oix.a(localswa.a, (String)localObject1, "19"));
+              oqt.a(oqt.a(localtjl.a, (String)localObject1, "19"));
               j = i;
-              oix.a(oix.a(localswa.a, (String)localObject1, "106"));
+              oqt.a(oqt.a(localtjl.a, (String)localObject1, "106"));
               j = i;
               ThreadManager.getUIHandler().postDelayed(new WebFastAdapter.9.1(this), 200L);
               k = 1;
@@ -87,7 +87,7 @@ public class WebFastAdapter$9
               j = i;
               localObject1 = localJSONObject.getJSONObject("id_recommend_category_txt");
               j = i;
-              ((JSONObject)localObject1).put("text", localswa.g);
+              ((JSONObject)localObject1).put("text", localtjl.g);
               j = i;
               ((JSONObject)localObject1).put("label_ug_progress_progress", 100);
             }
@@ -117,7 +117,7 @@ public class WebFastAdapter$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.adapter.WebFastAdapter.9
  * JD-Core Version:    0.7.0.1
  */

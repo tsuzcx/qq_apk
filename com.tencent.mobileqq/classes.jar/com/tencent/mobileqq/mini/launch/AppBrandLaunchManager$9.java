@@ -1,27 +1,36 @@
 package com.tencent.mobileqq.mini.launch;
 
-import amtj;
-import android.app.Activity;
-import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
-import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.widget.QQToast;
+import anvx;
+import com.tencent.mobileqq.mini.apkg.BaseLibManager.UpdateListener;
 import com.tencent.qphone.base.util.QLog;
 
 class AppBrandLaunchManager$9
-  implements Runnable
+  implements BaseLibManager.UpdateListener
 {
-  AppBrandLaunchManager$9(AppBrandLaunchManager paramAppBrandLaunchManager, MiniAppConfig paramMiniAppConfig, Activity paramActivity) {}
+  AppBrandLaunchManager$9(AppBrandLaunchManager paramAppBrandLaunchManager) {}
   
-  public void run()
+  public void onUpdateResult(int paramInt)
   {
-    if (this.val$appConfig.config == null) {
-      QLog.e("miniapp-process_AppBrandLaunchManager", 1, "启动失败, Appid 为空 appConfig.config==null Activity=" + this.val$activity);
+    QLog.w("miniapp-process_AppBrandLaunchManager", 1, "updateBaseLib ret=" + paramInt);
+    if (paramInt == 0) {
+      return;
+    }
+    if (paramInt == 1)
+    {
+      QLog.w("miniapp-process_AppBrandLaunchManager", 1, anvx.a(2131700097));
+      return;
+    }
+    String str = anvx.a(2131700094);
+    if (paramInt == 1100) {
+      str = anvx.a(2131700100);
     }
     for (;;)
     {
-      QQToast.a(AppBrandLaunchManager.access$100(this.this$0), amtj.a(2131699751), 2000).a();
+      QLog.w("miniapp-process_AppBrandLaunchManager", 1, str);
       return;
-      QLog.e("miniapp-process_AppBrandLaunchManager", 1, "启动失败, Appid 为空" + this.val$appConfig.config.toString() + " Activity=" + this.val$activity);
+      if (paramInt == 1101) {
+        str = anvx.a(2131700103);
+      }
     }
   }
 }

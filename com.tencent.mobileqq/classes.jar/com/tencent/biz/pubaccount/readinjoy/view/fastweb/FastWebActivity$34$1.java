@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import srx;
+import tfi;
 
 public class FastWebActivity$34$1
   implements Runnable
 {
-  public FastWebActivity$34$1(srx paramsrx, boolean paramBoolean, FastWebArticleInfo paramFastWebArticleInfo) {}
+  public FastWebActivity$34$1(tfi paramtfi, boolean paramBoolean, FastWebArticleInfo paramFastWebArticleInfo) {}
   
   public void run()
   {
@@ -14,16 +14,16 @@ public class FastWebActivity$34$1
     {
       if (this.jdField_a_of_type_Boolean)
       {
-        FastWebActivity.a(this.jdField_a_of_type_Srx.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo);
-        FastWebActivity.j(this.jdField_a_of_type_Srx.a);
+        FastWebActivity.a(this.jdField_a_of_type_Tfi.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo);
+        FastWebActivity.k(this.jdField_a_of_type_Tfi.a);
       }
       for (;;)
       {
-        if ((this.jdField_a_of_type_Boolean) && (FastWebActivity.a(this.jdField_a_of_type_Srx.a) != null) && (!FastWebActivity.e(this.jdField_a_of_type_Srx.a))) {
-          FastWebActivity.l(this.jdField_a_of_type_Srx.a);
+        if ((this.jdField_a_of_type_Boolean) && (FastWebActivity.a(this.jdField_a_of_type_Tfi.a) != null) && (!FastWebActivity.e(this.jdField_a_of_type_Tfi.a))) {
+          FastWebActivity.m(this.jdField_a_of_type_Tfi.a);
         }
         return;
-        FastWebActivity.k(this.jdField_a_of_type_Srx.a);
+        FastWebActivity.l(this.jdField_a_of_type_Tfi.a);
       }
     }
     catch (Exception localException)
@@ -37,7 +37,7 @@ public class FastWebActivity$34$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.34.1
  * JD-Core Version:    0.7.0.1
  */

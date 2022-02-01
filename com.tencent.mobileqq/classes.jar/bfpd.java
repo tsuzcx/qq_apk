@@ -1,32 +1,22 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
-final class bfpd
-  implements DownloadParams.DecodeHandler
+public class bfpd
+  extends JobSegment<String, bfph>
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  private bfpf jdField_a_of_type_Bfpf;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public bfpd(bfpf parambfpf)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("zivonchen", 2, "mRoundCornerDecoder---------------");
-    }
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    Object localObject;
-    do
-    {
-      do
-      {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 3);
-    paramDownloadParams = (int[])localObject;
-    return bfvo.b(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
+    this.jdField_a_of_type_Bfpf = parambfpf;
+  }
+  
+  protected void a(JobContext paramJobContext, String paramString)
+  {
+    ykq.d("QQ.Troop.homework.SendArithHomeResultSegment", "runSegment " + paramString);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    wfi.a().a(new bfpg(this.jdField_a_of_type_Bfpf, this.jdField_a_of_type_JavaLangString), new bfpe(this));
   }
 }
 

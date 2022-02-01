@@ -1,12 +1,58 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.ApngSoLoader;
+import com.tencent.image.LocaleFileDownloader;
+import com.tencent.image.ProtocolDownloader;
+import com.tencent.image.URLDrawableParams;
+import com.tencent.mobileqq.transfile.FileAssistantDownloader;
+import com.tencent.mobileqq.transfile.HttpDownloader;
+import com.tencent.mobileqq.vas.VasApngIPCModule;
 
-class ncw
-  implements View.OnClickListener
+public class ncw
+  extends URLDrawableParams
 {
-  ncw(ncu paramncu) {}
+  private ProtocolDownloader jdField_a_of_type_ComTencentImageProtocolDownloader;
   
-  public void onClick(View paramView) {}
+  public ncw(AVGameAppInterface paramAVGameAppInterface, Context paramContext)
+  {
+    super(paramContext);
+  }
+  
+  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
+  {
+    if ("fileassistantimage".equals(paramString)) {
+      return new FileAssistantDownloader(BaseApplicationImpl.getApplication());
+    }
+    if ("file".equalsIgnoreCase(paramString)) {
+      return new LocaleFileDownloader();
+    }
+    if (this.jdField_a_of_type_ComTencentImageProtocolDownloader == null) {
+      this.jdField_a_of_type_ComTencentImageProtocolDownloader = new HttpDownloader();
+    }
+    return this.jdField_a_of_type_ComTencentImageProtocolDownloader;
+  }
+  
+  public String doGetLocalFilePath(String paramString)
+  {
+    return null;
+  }
+  
+  public ApngSoLoader getApngSoLoader()
+  {
+    return VasApngIPCModule.getInstance();
+  }
+  
+  public Drawable getDefaultLoadingDrawable()
+  {
+    return null;
+  }
+  
+  public Drawable getDefualtFailedDrawable()
+  {
+    return null;
+  }
 }
 
 

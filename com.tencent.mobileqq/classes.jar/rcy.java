@@ -1,50 +1,19 @@
-import java.net.URL;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class rcy
+class rcy
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private URL jdField_a_of_type_JavaNetURL;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  rcy(rcr paramrcr) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public URL a()
-  {
-    return this.jdField_a_of_type_JavaNetURL;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(URL paramURL)
-  {
-    this.jdField_a_of_type_JavaNetURL = paramURL;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.b = paramInt;
+    pnw localpnw = this.a.jdField_a_of_type_Szd.a().a();
+    if (localpnw != null) {
+      localpnw.a(null, ((qfw)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

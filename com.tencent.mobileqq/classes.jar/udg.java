@@ -1,92 +1,35 @@
-public class udg
-  implements udx
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/webarticle/RIJWebArticlePreloadUtil$PreloadData;", "", "url", "", "sessionId", "(Ljava/lang/String;Ljava/lang/String;)V", "getSessionId", "()Ljava/lang/String;", "getUrl", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class udg
 {
-  int jdField_a_of_type_Int = 0;
-  Object jdField_a_of_type_JavaLangObject = null;
-  final udx jdField_a_of_type_Udx;
-  int b = -1;
-  int c = -1;
+  @Nullable
+  private final String a;
+  @Nullable
+  private final String b;
   
-  public udg(udx paramudx)
+  public udg(@Nullable String paramString1, @Nullable String paramString2)
   {
-    this.jdField_a_of_type_Udx = paramudx;
+    this.a = paramString1;
+    this.b = paramString2;
   }
   
-  public void a()
+  @Nullable
+  public final String a()
   {
-    if (this.jdField_a_of_type_Int == 0) {
-      return;
-    }
-    switch (this.jdField_a_of_type_Int)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaLangObject = null;
-      this.jdField_a_of_type_Int = 0;
-      return;
-      this.jdField_a_of_type_Udx.a(this.b, this.c);
-      continue;
-      this.jdField_a_of_type_Udx.b(this.b, this.c);
-      continue;
-      this.jdField_a_of_type_Udx.a(this.b, this.c, this.jdField_a_of_type_JavaLangObject);
-    }
+    return this.a;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  @Nullable
+  public final String b()
   {
-    if ((this.jdField_a_of_type_Int == 1) && (paramInt1 >= this.b) && (paramInt1 <= this.b + this.c))
-    {
-      this.c += paramInt2;
-      this.b = Math.min(paramInt1, this.b);
-      return;
-    }
-    a();
-    this.b = paramInt1;
-    this.c = paramInt2;
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public void a(int paramInt1, int paramInt2, Object paramObject)
-  {
-    if ((this.jdField_a_of_type_Int == 3) && (paramInt1 <= this.b + this.c) && (paramInt1 + paramInt2 >= this.b) && (this.jdField_a_of_type_JavaLangObject == paramObject))
-    {
-      int i = this.b;
-      int j = this.c;
-      this.b = Math.min(paramInt1, this.b);
-      this.c = (Math.max(i + j, paramInt1 + paramInt2) - this.b);
-      return;
-    }
-    a();
-    this.b = paramInt1;
-    this.c = paramInt2;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Int = 3;
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    if ((this.jdField_a_of_type_Int == 2) && (this.b >= paramInt1) && (this.b <= paramInt1 + paramInt2))
-    {
-      this.c += paramInt2;
-      this.b = paramInt1;
-      return;
-    }
-    a();
-    this.b = paramInt1;
-    this.c = paramInt2;
-    this.jdField_a_of_type_Int = 2;
-  }
-  
-  public void c(int paramInt1, int paramInt2)
-  {
-    a();
-    this.jdField_a_of_type_Udx.c(paramInt1, paramInt2);
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     udg
  * JD-Core Version:    0.7.0.1
  */

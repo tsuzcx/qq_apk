@@ -1,45 +1,73 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.UploadFileRspBody;
 
-final class bfon
-  implements DownloadParams.DecodeHandler
+class bfon
+  extends aahq
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  bfon(bfom parambfom) {}
+  
+  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.UploadFileRspBody paramUploadFileRspBody, Bundle paramBundle)
   {
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    do
+    bfom.a(this.a, null);
+    if (bfom.a(this.a))
     {
-      do
+      bfmf.b("TroopFileUploadSimpleWorker", bfmf.a, "[" + bfom.a(this.a) + "] onReqUploadFileResult.but stoped");
+      return;
+    }
+    if ((paramUploadFileRspBody == null) || (!paramBoolean))
+    {
+      bfmf.a("TroopFileUploadSimpleWorker", bfmf.a, "[" + bfom.a(this.a) + "] onReqUploadFileResult isSuccess:false  errCode:" + paramInt);
+      bfom.a(this.a, bgme.A);
+      bfom.a(this.a, true);
+      return;
+    }
+    int i = paramUploadFileRspBody.int32_ret_code.get();
+    bfmf.c("TroopFileUploadSimpleWorker", bfmf.a, "[" + bfom.a(this.a) + "] onReqUploadFileResult isSuccess:true  errCode:" + paramInt + " retCode:" + i);
+    if (i < 0)
+    {
+      bfom.a(this.a, false);
+      paramInt = 207;
+      switch (i)
       {
-        Object localObject;
-        do
+      }
+      for (;;)
+      {
+        bfom.a(this.a, paramInt);
+        return;
+        paramInt = 202;
+        continue;
+        paramInt = 208;
+        continue;
+        paramInt = 210;
+        continue;
+        if (bfom.a(this.a) != 104)
         {
-          do
-          {
-            return paramDownloadParams;
-            localObject = paramDownloadParams.tag;
-            paramDownloadParams = paramBitmap;
-          } while (!(localObject instanceof int[]));
-          paramDownloadParams = paramBitmap;
-        } while (((int[])localObject).length != 3);
-        paramDownloadParams = (int[])localObject;
-        if (paramDownloadParams[0] == 0) {
-          paramDownloadParams[0] = paramBitmap.getWidth();
+          bfom.a(this.a, 104);
+          bfom.a(this.a);
+          return;
+          paramInt = 209;
+          continue;
+          paramInt = -136;
+          continue;
+          paramInt = -138;
+          continue;
+          bfom.a(this.a, paramUploadFileRspBody.str_client_wording.get());
+          paramInt = 704;
         }
-        if (paramDownloadParams[1] == 0) {
-          paramDownloadParams[1] = paramBitmap.getHeight();
-        }
-        paramBitmap = bfvo.c(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
-        paramDownloadParams = paramBitmap;
-      } while (paramBitmap != null);
-      paramDownloadParams = paramBitmap;
-    } while (!QLog.isDevelopLevel());
-    QLog.w(bfol.a(), 2, "ROUND_CORNER_DECODER bitmap == null");
-    return paramBitmap;
+      }
+    }
+    bfom.b(this.a, paramUploadFileRspBody.str_file_id.get());
+    bfom.c(this.a, paramUploadFileRspBody.str_upload_ip.get());
+    bfom.d(this.a, paramUploadFileRspBody.str_server_dns.get());
+    bfom.a(this.a, paramUploadFileRspBody.bytes_check_key.get().toByteArray());
+    bfom.a(this.a, paramUploadFileRspBody.uint32_bus_id.get());
+    bfmf.c("TroopFileUploadSimpleWorker", bfmf.a, "[" + bfom.a(this.a) + "] onReqUploadFileResult fileid:" + bfom.b(this.a) + " UploadIp:" + bfom.c(this.a) + " ServerDns:" + bfom.d(this.a) + " busId:" + bfom.a(this.a));
+    this.a.a(false);
   }
 }
 

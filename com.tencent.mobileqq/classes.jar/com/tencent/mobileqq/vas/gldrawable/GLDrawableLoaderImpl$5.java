@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.vas.gldrawable;
 
 import android.content.Context;
-import bgic;
-import bgim;
+import bhqx;
+import bhrh;
 
 public class GLDrawableLoaderImpl$5
   implements Runnable
 {
-  public GLDrawableLoaderImpl$5(bgic parambgic, Context paramContext, bgim parambgim) {}
+  public GLDrawableLoaderImpl$5(bhqx parambhqx, Context paramContext, bhrh parambhrh) {}
   
   public void run()
   {
-    bgic.a(this.this$0, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bgim);
+    bhqx.a(this.this$0, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bhrh);
   }
 }
 

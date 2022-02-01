@@ -1,23 +1,21 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.shopping.ShoppingFragment;
-import com.tencent.mobileqq.app.BusinessObserver;
-import cooperation.vip.pb.VacAdvGetAccess.VacMemberGetOrderCntRsp;
-import mqq.os.MqqHandler;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-public class alby
-  implements BusinessObserver
+final class alby
+  extends ClickableSpan
 {
-  public alby(ShoppingFragment paramShoppingFragment) {}
+  alby(alcb paramalcb, String paramString) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof VacAdvGetAccess.VacMemberGetOrderCntRsp)))
-    {
-      Message localMessage = Message.obtain();
-      localMessage.obj = paramObject;
-      localMessage.what = 1001;
-      ShoppingFragment.a(this.a).sendMessage(localMessage);
-    }
+    this.jdField_a_of_type_Alcb.a(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

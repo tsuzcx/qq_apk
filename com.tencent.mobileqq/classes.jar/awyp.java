@@ -1,38 +1,47 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.ChatBackgroundManager;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-class awyp
-  implements View.OnClickListener
+public class awyp
+  extends Handler
 {
-  awyp(awyf paramawyf, ImageView paramImageView1, ImageView paramImageView2, ImageView paramImageView3) {}
+  public awyp() {}
   
-  public void onClick(View paramView)
+  public awyp(Looper paramLooper)
   {
-    if (paramView == this.jdField_a_of_type_AndroidWidgetImageView)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    int i = paramMessage.what;
+    Object localObject = (Object[])paramMessage.obj;
+    if (i == 1)
     {
-      awyf.a(this.jdField_a_of_type_Awyf, 1);
-      new bcek(this.jdField_a_of_type_Awyf.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_dislike").e(this.jdField_a_of_type_Awyf.a.a.a).a();
+      if (ChatBackgroundManager.c < 3)
+      {
+        paramMessage = (String)localObject[0];
+        localObject = (QQAppInterface)localObject[1];
+        ChatBackgroundManager.a((QQAppInterface)localObject, paramMessage, StatisticCollector.getInstance(BaseApplication.getContext()));
+        ChatBackgroundManager.c += 1;
+        if (QLog.isColorLevel()) {
+          QLog.d("ThemeDownloadTrace", 2, "reportTimes is:" + ChatBackgroundManager.c);
+        }
+        Message localMessage = ChatBackgroundManager.a.obtainMessage();
+        localMessage.what = 1;
+        localMessage.obj = new Object[] { paramMessage, localObject };
+        ChatBackgroundManager.a.sendMessageDelayed(localMessage, 120000L);
+      }
     }
-    for (;;)
-    {
-      awyf.b(this.jdField_a_of_type_Awyf);
-      EventCollector.getInstance().onViewClicked(paramView);
+    else {
       return;
-      if (paramView == this.b)
-      {
-        awyf.a(this.jdField_a_of_type_Awyf, 2);
-        new bcek(this.jdField_a_of_type_Awyf.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_superlike").e(this.jdField_a_of_type_Awyf.a.a.a).a();
-      }
-      else if (paramView == this.c)
-      {
-        awyf.a(this.jdField_a_of_type_Awyf, 3);
-        new bcek(this.jdField_a_of_type_Awyf.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_like").e(this.jdField_a_of_type_Awyf.a.a.a).a();
-      }
     }
+    ChatBackgroundManager.c = 0;
   }
 }
 

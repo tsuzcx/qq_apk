@@ -1,26 +1,23 @@
-public abstract interface akvf
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import com.tencent.mobileqq.widget.AnimationView;
+import com.tencent.mobileqq.widget.AnimationView.MyAnimationListener;
+
+public class akvf
+  implements AnimationView.MyAnimationListener
 {
-  public abstract yir a();
+  public akvf(ThemeHbFragment paramThemeHbFragment) {}
   
-  public abstract void a();
+  public void onAnimationEnd(AnimationView paramAnimationView) {}
   
-  public abstract void a(int paramInt);
+  public void onAnimationRepeat(AnimationView paramAnimationView) {}
   
-  public abstract void a(String paramString);
-  
-  public abstract void a(yir paramyir);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract boolean b();
-  
-  public abstract void c();
-  
-  public abstract boolean c();
-  
-  public abstract void d();
+  public void onAnimationStart(AnimationView paramAnimationView)
+  {
+    if (ThemeHbFragment.a(this.a).getChildCount() > 0) {
+      ThemeHbFragment.a(this.a).removeViewAt(0);
+    }
+  }
 }
 
 

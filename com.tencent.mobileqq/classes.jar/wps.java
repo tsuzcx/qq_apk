@@ -1,30 +1,76 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
-import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.qphone.base.util.QLog;
 
-class wps
-  extends vrq
+public class wps
+  extends wpo
 {
-  wps(wpq paramwpq) {}
-  
-  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
+  public wps(ViewGroup paramViewGroup, int paramInt)
   {
-    xvv.a("Q.qqstory.player.CommentFloatDialog", "post comment result is %s.", Boolean.valueOf(paramBoolean));
-    if (!wpl.b(this.a.a)) {
-      wpl.a(this.a.a).p();
-    }
+    super(paramViewGroup, paramInt);
   }
   
-  public boolean a(CommentEntry paramCommentEntry, qqstory_service.RspAddFeedComment paramRspAddFeedComment)
+  protected void a(ShareGroupItem paramShareGroupItem)
   {
-    vtu localvtu = (vtu)vux.a(17);
-    localvtu.a(paramCommentEntry.commentId);
-    paramCommentEntry.commentId = paramRspAddFeedComment.comment_id.get();
-    paramCommentEntry.status = 0;
-    localvtu.a(paramCommentEntry);
-    return true;
+    String str;
+    Object localObject;
+    int i;
+    RelativeLayout.LayoutParams localLayoutParams;
+    if ((paramShareGroupItem == null) || (TextUtils.isEmpty(paramShareGroupItem.getName())))
+    {
+      str = anvx.a(2131713383);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+      localObject = (xrf)wjs.a(24);
+      i = this.jdField_a_of_type_AndroidWidgetImageView.getContext().getResources().getDimensionPixelSize(2131298517);
+      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+      if (localLayoutParams != null) {
+        break label116;
+      }
+      localLayoutParams = new RelativeLayout.LayoutParams(i, i);
+      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+      label91:
+      if (paramShareGroupItem != null) {
+        break label131;
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(((xrf)localObject).a());
+    }
+    label116:
+    do
+    {
+      return;
+      str = paramShareGroupItem.getName();
+      break;
+      localLayoutParams.width = i;
+      localLayoutParams.height = i;
+      break label91;
+      localObject = ((xrf)localObject).a(paramShareGroupItem.headerUnionIdList, str);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+    } while (!QLog.isColorLevel());
+    label131:
+    paramShareGroupItem = new StringBuilder("nickname = ").append(str).append(", headerUnionIdList = ").append(paramShareGroupItem.headerUnionIdList);
+    QLog.e("zivonxxx", 2, "ShareGroupViewHolder: " + paramShareGroupItem.toString());
+  }
+  
+  public void a(wly paramwly)
+  {
+    super.a(paramwly);
+    this.itemView.setTag(paramwly.a);
+    ShareGroupItem localShareGroupItem = ((xti)wjs.a(7)).a(paramwly.a);
+    a(localShareGroupItem);
+    if (localShareGroupItem == null) {
+      new wqm(paramwly.a, String.valueOf(System.currentTimeMillis())).a();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("zivonchen", 2, "ShareGroupViewHolder groupItem = " + localShareGroupItem + ", unionId = " + paramwly.a);
+    }
   }
 }
 

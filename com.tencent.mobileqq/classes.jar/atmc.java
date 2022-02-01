@@ -1,16 +1,10 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.forward.ForwardFileOption;
-
-public class atmc
-  implements View.OnLongClickListener
+public abstract interface atmc
 {
-  public atmc(ForwardFileOption paramForwardFileOption) {}
+  public abstract void a();
   
-  public boolean onLongClick(View paramView)
-  {
-    return true;
-  }
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(String paramString1, String paramString2);
 }
 
 

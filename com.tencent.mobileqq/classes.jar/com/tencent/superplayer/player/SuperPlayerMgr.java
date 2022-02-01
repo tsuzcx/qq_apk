@@ -40,7 +40,9 @@ import com.tencent.superplayer.view.SPlayerVideoView;
 import com.tencent.superplayer.view.SPlayerVideoView.SurfaceObject;
 import com.tencent.thumbplayer.api.TPPlayerMsg.TPDownLoadProgressInfo;
 import com.tencent.thumbplayer.api.TPPlayerMsg.TPMediaCodecInfo;
+import com.tencent.thumbplayer.api.TPProgramInfo;
 import com.tencent.thumbplayer.api.TPTrackInfo;
+import java.util.Map;
 
 public class SuperPlayerMgr
   implements ISuperPlayer, FrameComparePipeLine.OnVideoFrameCheckListener, SuperPlayerMgrInternal.SPlayerManagerInternalListener, ISPlayerVideoView.IVideoViewCallBack
@@ -221,6 +223,16 @@ public class SuperPlayerMgr
     }
   }
   
+  public void addExtReportData(String paramString1, String paramString2)
+  {
+    this.mReporter.addExtReportData(paramString1, paramString2);
+  }
+  
+  public void addExtReportData(Map<String, String> paramMap)
+  {
+    this.mReporter.addExtReportData(paramMap);
+  }
+  
   public void addSubtitleSource(String paramString1, String paramString2, String paramString3)
   {
     this.mPlayerMgrInternal.addSubtitleSource(paramString1, paramString2, paramString3);
@@ -282,6 +294,11 @@ public class SuperPlayerMgr
   public MediaInfo getMediaInfo()
   {
     return this.mPlayerMgrInternal.getMediaInfo();
+  }
+  
+  public TPProgramInfo[] getProgramInfo()
+  {
+    return this.mPlayerMgrInternal.getProgramInfo();
   }
   
   public String getStreamDumpInfo()
@@ -388,6 +405,14 @@ public class SuperPlayerMgr
   {
     if (this.mPlayerWrapper != null) {
       return this.mPlayerWrapper.getMediaInfo();
+    }
+    return null;
+  }
+  
+  public TPProgramInfo[] handleGetProgramInfo()
+  {
+    if (this.mPlayerWrapper != null) {
+      return this.mPlayerWrapper.getProgramInfo();
     }
     return null;
   }
@@ -568,6 +593,13 @@ public class SuperPlayerMgr
     }
   }
   
+  public void handleSelectProgram(int paramInt, long paramLong)
+  {
+    if (this.mPlayerWrapper != null) {
+      this.mPlayerWrapper.selectProgram(paramInt, paramLong);
+    }
+  }
+  
   public void handleSelectTrack(int paramInt, long paramLong)
   {
     if (this.mPlayerWrapper != null) {
@@ -727,7 +759,13 @@ public class SuperPlayerMgr
     LogUtil.e(this.mTAG, "onSurfaceCreated view created. mVideoView.getViewSurface() = null");
   }
   
-  public void onSurfaceDestroy(Object paramObject) {}
+  public void onSurfaceDestroy(Object paramObject)
+  {
+    LogUtil.i(this.mTAG, "api handle : onSurfaceDestroy");
+    if (this.mPlayerWrapper != null) {
+      this.mPlayerWrapper.setSurface(null);
+    }
+  }
   
   public void onVideoFrameCheckResult(int paramInt)
   {
@@ -802,6 +840,7 @@ public class SuperPlayerMgr
   {
     LogUtil.i(this.mTAG, "api call : seekTo, positionMilsec:" + paramInt);
     this.mIsSeeking = true;
+    this.mReporter.onSeek(getCurrentPositionMs(), paramInt);
     this.mPlayerMgrInternal.seekTo(paramInt);
   }
   
@@ -809,7 +848,13 @@ public class SuperPlayerMgr
   {
     LogUtil.i(this.mTAG, "api call : seekTo, positionMs:" + paramInt1 + ", mode:" + paramInt2);
     this.mIsSeeking = true;
+    this.mReporter.onSeek(getCurrentPositionMs(), paramInt1);
     this.mPlayerMgrInternal.seekTo(paramInt1, paramInt2);
+  }
+  
+  public void selectProgram(int paramInt, long paramLong)
+  {
+    this.mPlayerMgrInternal.selectProgram(paramInt, paramLong);
   }
   
   public void selectTrack(int paramInt, long paramLong)
@@ -929,6 +974,7 @@ public class SuperPlayerMgr
   {
     LogUtil.i(this.mTAG, "api call : start");
     this.mPlayState.changeStateAndNotify(5);
+    this.mReporter.onStart();
     this.mPlayerMgrInternal.start();
   }
   

@@ -1,24 +1,74 @@
-import android.widget.TextView;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class aiie
-  implements AbsListView.OnScrollListener
+public class aiie
+  extends aqwt<aiid>
 {
-  aiie(aiid paramaiid) {}
-  
-  private boolean a(AbsListView paramAbsListView)
+  @NonNull
+  public aiid a(int paramInt)
   {
-    return (paramAbsListView.getChildAt(paramAbsListView.getChildCount() - 1) == this.a.a) && (this.a.a.getBottom() == this.a.a.getBottom());
+    return new aiid();
   }
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  @Nullable
+  public aiid a(aqxa[] paramArrayOfaqxa)
   {
-    if ((paramInt == 0) && (a(paramAbsListView))) {
-      this.a.f();
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0))
+    {
+      aiid localaiid = aiid.a(paramArrayOfaqxa[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerRecConfigProcessor", 2, "onParsed " + paramArrayOfaqxa[0].a);
+      }
+      return localaiid;
     }
+    return null;
+  }
+  
+  public void a(aiid paramaiid)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      localObject = (QQAppInterface)localObject;
+      String str = ((QQAppInterface)localObject).getCurrentUin();
+      aiin.a(BaseApplicationImpl.getApplication(), str, paramaiid.a());
+      aiin.a((QQAppInterface)localObject, paramaiid.a());
+    }
+  }
+  
+  public Class<aiid> clazz()
+  {
+    return aiid.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return super.isAccountRelated();
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 410;
   }
 }
 

@@ -10,7 +10,7 @@ public class ai
   
   public void onGlobalLayout()
   {
-    if ((this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getLineCount() > 3) && (!LiteActivity.a(this.a)) && (!bbyp.b()))
+    if ((this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getLineCount() > 3) && (!LiteActivity.a(this.a)) && (!bdfk.b()))
     {
       this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
       return;

@@ -1,15 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.s2c.msgtype0x210.submsgtype0x103.submsgtype0x103.MsgBody;
 
 public class acpm
-  implements DialogInterface.OnDismissListener
+  implements acpi
 {
-  public acpm(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    this.a.a = null;
+    submsgtype0x103.MsgBody localMsgBody = new submsgtype0x103.MsgBody();
+    try
+    {
+      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+      paramQQAppInterface.getProxyManager().a().a(localMsgBody);
+      return;
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x103 wrong:" + paramQQAppInterface.toString());
+    }
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramMsgType0x210);
+    return null;
   }
 }
 

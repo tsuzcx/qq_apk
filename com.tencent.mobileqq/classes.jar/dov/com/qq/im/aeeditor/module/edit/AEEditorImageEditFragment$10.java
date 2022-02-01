@@ -2,8 +2,8 @@ package dov.com.qq.im.aeeditor.module.edit;
 
 import android.graphics.Bitmap;
 import android.util.SparseArray;
-import bmbx;
-import bmde;
+import bnrh;
+import bnsw;
 import com.microrapid.opencv.ImageAutoProcessor;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.tavcut.util.BitmapUtil;
@@ -26,14 +26,14 @@ class AEEditorImageEditFragment$10
       return;
       if ((AEEditorImageEditFragment.a(this.this$0) == null) || (AEEditorImageEditFragment.a(this.this$0).size() <= this.a) || (AEEditorImageEditFragment.a(this.this$0).get(this.a) == null))
       {
-        bmbx.d("AEEditorImageEditFragment", "source image info error.");
+        bnrh.d("AEEditorImageEditFragment", "source image info error.");
         return;
       }
-      Object localObject = (bmde)AEEditorImageEditFragment.a(this.this$0).get(this.a);
-      localObject = BitmapUtil.cropBitmap(((bmde)localObject).jdField_a_of_type_JavaLangString, ((bmde)localObject).jdField_a_of_type_ComTencentTavcutBeanCropConfig);
+      Object localObject = (bnsw)AEEditorImageEditFragment.a(this.this$0).get(this.a);
+      localObject = BitmapUtil.cropBitmap(((bnsw)localObject).jdField_a_of_type_JavaLangString, ((bnsw)localObject).jdField_a_of_type_ComTencentTavcutBeanCropConfig);
       if (localObject == null)
       {
-        bmbx.d("AEEditorImageEditFragment", "extractColor error input bitmap null.");
+        bnrh.d("AEEditorImageEditFragment", "extractColor error input bitmap null.");
         return;
       }
       try
@@ -46,7 +46,7 @@ class AEEditorImageEditFragment$10
           localList.add(localList.remove(0));
         }
         AEEditorImageEditFragment.b(this.this$0).put(this.a, localList);
-        bmbx.a("AEEditorImageEditFragment", "[extractColor], extracted color cached, index=" + this.a);
+        bnrh.a("AEEditorImageEditFragment", "[extractColor], extracted color cached, index=" + this.a);
         if (this.a == AEEditorImageEditFragment.a(this.this$0))
         {
           ThreadManager.getUIHandler().post(new AEEditorImageEditFragment.10.1(this));

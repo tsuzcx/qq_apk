@@ -1,15 +1,24 @@
-import android.graphics.Bitmap;
-import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public abstract interface bfle
+class bfle
+  implements bfli
 {
-  public abstract View a();
+  bfle(bflc parambflc, bfkz parambfkz) {}
   
-  public abstract void a();
-  
-  public abstract void b();
-  
-  public abstract void setBitmap(Bitmap paramBitmap);
+  public void a(long paramLong, HashMap<bfkz, bfla> paramHashMap)
+  {
+    if (paramHashMap == null) {}
+    do
+    {
+      return;
+      paramHashMap = (bfla)paramHashMap.get(this.jdField_a_of_type_Bfkz);
+    } while ((paramHashMap == null) || (paramHashMap.a != 1));
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopEssenceMsgManager", 2, "isEssenceMsg refreshAio key:" + paramLong);
+    }
+    bflc.a(this.jdField_a_of_type_Bflc, paramLong);
+  }
 }
 
 

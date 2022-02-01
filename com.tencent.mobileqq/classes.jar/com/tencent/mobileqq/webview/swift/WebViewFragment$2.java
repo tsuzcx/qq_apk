@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webview.swift;
 
-import bgxw;
+import biio;
 
 class WebViewFragment$2
   implements Runnable
@@ -9,7 +9,7 @@ class WebViewFragment$2
   
   public void run()
   {
-    bgxw.a(this.this$0.getUrlFromIntent());
+    biio.a(this.this$0.getUrlFromIntent());
   }
 }
 

@@ -1,144 +1,89 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload.MaterialData;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vfs.VFSAssistantUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.manager.Manager;
+import java.util.Arrays;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.jvm.JvmField;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public abstract class ral
-  implements Manager
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushComponentExtData;", "", "articleIds", "", "foldStatus", "algorithmId", "strategyId", "subscripts", "pushExtData", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[B)V", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "equals", "", "other", "hashCode", "", "toString", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ral
 {
-  protected bgoj a;
-  protected AppInterface a;
-  protected EntityManager a;
-  protected ArrayList<bgod> a;
-  protected HashMap<String, String> a;
-  protected ConcurrentHashMap<String, String> a;
+  @JvmField
+  @NotNull
+  public String a;
+  @JvmField
+  @NotNull
+  public byte[] a;
+  @JvmField
+  @NotNull
+  public String b;
+  @JvmField
+  @NotNull
+  public String c;
+  @JvmField
+  @NotNull
+  public String d;
+  @JvmField
+  @NotNull
+  public String e;
   
-  public ral(AppInterface paramAppInterface)
+  public ral()
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Bgoj = ((bgog)paramAppInterface.getManager(47)).a(1);
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory().createEntityManager();
+    this(null, null, null, null, null, null, 63, null);
   }
   
-  public String a(String paramString)
+  public ral(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, @NotNull String paramString4, @NotNull String paramString5, @NotNull byte[] paramArrayOfByte)
   {
-    String str2 = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + ".readInjoy/resource/");
-    String str1 = str2;
-    if (!TextUtils.isEmpty(paramString)) {
-      str1 = str2 + paramString + "/";
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if ((ral)this == paramObject) {
+      return true;
     }
-    return str1;
-  }
-  
-  public String a(String paramString1, String paramString2)
-  {
-    String str = a(paramString1);
-    paramString1 = str;
-    if (!TextUtils.isEmpty(paramString2)) {
-      paramString1 = str + paramString2 + "/";
-    }
-    return paramString1;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public void a(Context paramContext, String paramString, BaseResData paramBaseResData) {}
-  
-  public void a(bgod parambgod)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(parambgod);
-  }
-  
-  public void a(String paramString, bgoe parambgoe) {}
-  
-  public void a(String paramString, BaseResData paramBaseResData) {}
-  
-  public void a(String[] paramArrayOfString) {}
-  
-  public boolean a(String paramString, BaseResData paramBaseResData)
-  {
-    return a(paramString, paramBaseResData, 0);
-  }
-  
-  public boolean a(String paramString, BaseResData paramBaseResData, int paramInt)
-  {
-    boolean bool = false;
-    Object localObject = paramBaseResData.id;
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseResManager", 2, "downloadGuide: id = " + (String)localObject);
-    }
-    String str = a(paramString, (String)localObject);
-    if (bcro.a(new File(str)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("readinjoy", 4, "isAnimationPackageValid");
-      }
-      bool = true;
-    }
-    do
-    {
-      do
-      {
-        return bool;
-        if (this.jdField_a_of_type_JavaUtilHashMap.get(paramString + "_" + (String)localObject) == null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("readinjoy", 4, "mDownloadingRes _");
+    Class localClass = getClass();
+    if (paramObject != null) {}
+    for (Object localObject = paramObject.getClass(); (Intrinsics.areEqual(localClass, localObject) ^ true); localObject = null) {
       return false;
-      if (!(paramBaseResData instanceof MaterialData)) {
-        FileUtils.deleteDirectory(str);
-      }
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString + "_" + (String)localObject, paramBaseResData.url);
-      str = str + ".zip";
-      File localFile = new File(str);
-      Bundle localBundle = new Bundle();
-      localBundle.putString("resId", (String)localObject);
-      localBundle.putString("prefix", paramString);
-      localObject = new bgoe(paramBaseResData.url, localFile);
-      ((bgoe)localObject).b = paramInt;
-      ((bgoe)localObject).d = 60L;
-      this.jdField_a_of_type_Bgoj.a((bgoe)localObject, new ram(this, paramBaseResData, str, paramString), localBundle);
-    } while (!QLog.isColorLevel());
-    QLog.d("readinjoy", 4, "startDownload");
-    return false;
+    }
+    if (paramObject == null) {
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.push.RIJPushComponentExtData");
+    }
+    localObject = (ral)paramObject;
+    if ((Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, ((ral)paramObject).jdField_a_of_type_JavaLangString) ^ true)) {
+      return false;
+    }
+    if ((Intrinsics.areEqual(this.b, ((ral)paramObject).b) ^ true)) {
+      return false;
+    }
+    if ((Intrinsics.areEqual(this.c, ((ral)paramObject).c) ^ true)) {
+      return false;
+    }
+    if ((Intrinsics.areEqual(this.d, ((ral)paramObject).d) ^ true)) {
+      return false;
+    }
+    if ((Intrinsics.areEqual(this.e, ((ral)paramObject).e) ^ true)) {
+      return false;
+    }
+    return Arrays.equals(this.jdField_a_of_type_ArrayOfByte, ((ral)paramObject).jdField_a_of_type_ArrayOfByte);
   }
   
-  public void b(bgod parambgod)
+  public int hashCode()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.remove(parambgod);
+    return ((((this.jdField_a_of_type_JavaLangString.hashCode() * 31 + this.b.hashCode()) * 31 + this.c.hashCode()) * 31 + this.d.hashCode()) * 31 + this.e.hashCode()) * 31 + Arrays.hashCode(this.jdField_a_of_type_ArrayOfByte);
   }
   
-  public abstract void b(String paramString, BaseResData paramBaseResData);
-  
-  public abstract boolean b(String paramString, BaseResData paramBaseResData);
-  
-  public abstract boolean c(String paramString, BaseResData paramBaseResData);
-  
-  public void onDestroy()
+  @NotNull
+  public String toString()
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
-    a();
+    return "RIJPushComponentExtData(articleIds=" + this.jdField_a_of_type_JavaLangString + ", foldStatus=" + this.b + ", algorithmId=" + this.c + ", strategyId=" + this.d + ", subscripts=" + this.e + ", pushExtData=" + Arrays.toString(this.jdField_a_of_type_ArrayOfByte) + ")";
   }
 }
 

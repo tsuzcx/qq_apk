@@ -1,19 +1,18 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class alai
-  implements View.OnClickListener
+public class alai
+  implements DialogInterface.OnClickListener
 {
-  alai(alag paramalag) {}
+  public alai(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    GroupManagerActivity.a((Activity)alag.a(this.a));
-    bcef.b(alag.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((DrawRedpacketPannelPreviewFragment.a(this.a) != null) && (DrawRedpacketPannelPreviewFragment.a(this.a).isShowing())) {
+      DrawRedpacketPannelPreviewFragment.a(this.a).dismiss();
+    }
   }
 }
 

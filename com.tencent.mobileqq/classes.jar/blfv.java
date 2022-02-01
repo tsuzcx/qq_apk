@@ -1,12 +1,8 @@
-import com.tencent.weiyun.utils.Singleton;
+import com.tencent.widget.TCWNumberPicker;
 
-final class blfv
-  extends Singleton<blfu, Void>
+public abstract interface blfv
 {
-  protected blfu a(Void paramVoid)
-  {
-    return new blfu(null);
-  }
+  public abstract void a(TCWNumberPicker paramTCWNumberPicker, int paramInt1, int paramInt2);
 }
 
 

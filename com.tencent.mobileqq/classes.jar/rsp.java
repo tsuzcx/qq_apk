@@ -1,11 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-
-public abstract interface rsp
+public class rsp
 {
-  public abstract void a(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment);
-  
-  public abstract void a(ViolaFragment paramViolaFragment);
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public int d;
+  public int e;
 }
 
 

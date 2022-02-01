@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
 import com.tencent.biz.pubaccount.util.PreloadManager;
-import uen;
+import usk;
 
 public final class ReadinjoyJumpUtils$1
   implements Runnable
 {
-  public ReadinjoyJumpUtils$1(PreloadManager paramPreloadManager, uen paramuen) {}
+  public ReadinjoyJumpUtils$1(PreloadManager paramPreloadManager, usk paramusk) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilPreloadManager.b(this.jdField_a_of_type_Uen.a);
+    this.jdField_a_of_type_ComTencentBizPubaccountUtilPreloadManager.b(this.jdField_a_of_type_Usk.a);
   }
 }
 

@@ -4,17 +4,17 @@ import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.LinkedList;
 import java.util.List;
-import ped;
-import pgv;
+import pne;
+import ppz;
 
 public class RIJPreloadImage$1
   implements Runnable
 {
-  public RIJPreloadImage$1(pgv parampgv, long paramLong1, List paramList, int paramInt1, int paramInt2, ped paramped, long paramLong2) {}
+  public RIJPreloadImage$1(ppz paramppz, long paramLong1, List paramList, int paramInt1, int paramInt2, pne parampne, long paramLong2) {}
   
   public void run()
   {
-    if (pgv.a(this.this$0) != this.jdField_a_of_type_Long) {}
+    if (ppz.a(this.this$0) != this.jdField_a_of_type_Long) {}
     label25:
     LinkedList localLinkedList;
     label38:
@@ -46,23 +46,23 @@ public class RIJPreloadImage$1
             break label38;
             i = this.jdField_a_of_type_JavaUtilList.size();
             break label25;
-            if (pgv.a(this.this$0) != this.jdField_a_of_type_Long) {
+            if (ppz.a(this.this$0) != this.jdField_a_of_type_Long) {
               break;
             }
             try
             {
               BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)this.jdField_a_of_type_JavaUtilList.get(j);
-              pgv.a(this.this$0, localLinkedList, j, localBaseArticleInfo, this.jdField_a_of_type_Ped);
+              this.this$0.a(localLinkedList, j, localBaseArticleInfo, this.jdField_a_of_type_Pne);
             }
             catch (Exception localException)
             {
               localException.printStackTrace();
             }
           }
-        } while (pgv.a(this.this$0) == this.jdField_a_of_type_Long);
+        } while (ppz.a(this.this$0) == this.jdField_a_of_type_Long);
         return;
-      } while (pgv.a(this.this$0) != this.jdField_a_of_type_Long);
-      pgv.a(this.this$0, localLinkedList);
+      } while (ppz.a(this.this$0) != this.jdField_a_of_type_Long);
+      ppz.a(this.this$0, localLinkedList);
     } while (!QLog.isColorLevel());
     QLog.d("RIJPreloadImage", 2, "preloadImg size:" + localLinkedList.size() + " cost:" + (System.currentTimeMillis() - this.jdField_b_of_type_Long));
   }

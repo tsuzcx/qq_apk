@@ -1,53 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-public class apzw
-  implements apts<String>
+class apzw
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public boolean a;
+  apzw(apzv paramapzv) {}
   
-  public void a(String paramString)
+  public void onGlobalLayout()
   {
-    boolean bool = false;
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("OpenSdkSwitchConfig", 1, "OpenVirtual.config content is empty");
-    }
-    for (;;)
-    {
-      return;
-      QLog.i("OpenSdkSwitchConfig", 1, "OpenVirtual.switch.config.parse=" + paramString);
-      try
-      {
-        if (new JSONObject(paramString).optInt("enable", 0) == 1) {
-          bool = true;
-        }
-        this.a = bool;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("OpenSdkSwitchConfig", 2, new Object[] { "OpenVirtual.switch.config.parse=", toString() });
-          return;
-        }
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("OpenSdkSwitchConfig", 1, "OpenVirtual.config.getException.", paramString);
-      }
-    }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("OpenSdkSwitchConfig={");
-    localStringBuilder.append("enable:").append(this.a);
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    apzv.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apzw
  * JD-Core Version:    0.7.0.1
  */

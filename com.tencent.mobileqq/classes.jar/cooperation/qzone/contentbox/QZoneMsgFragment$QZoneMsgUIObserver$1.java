@@ -14,7 +14,7 @@ import java.util.Iterator;
 class QZoneMsgFragment$QZoneMsgUIObserver$1
   implements Runnable
 {
-  QZoneMsgFragment$QZoneMsgUIObserver$1(QZoneMsgFragment.QZoneMsgUIObserver paramQZoneMsgUIObserver, QZoneMsgEntityNew paramQZoneMsgEntityNew) {}
+  QZoneMsgFragment$QZoneMsgUIObserver$1(QZoneMsgFragment.QZoneMsgUIObserver paramQZoneMsgUIObserver, QZoneMsgEntityNew paramQZoneMsgEntityNew, boolean paramBoolean) {}
   
   public void run()
   {
@@ -34,21 +34,20 @@ class QZoneMsgFragment$QZoneMsgUIObserver$1
         for (;;)
         {
           if (QZoneMsgFragment.access$1000(this.this$1.this$0) == null) {
-            break label421;
+            break label436;
           }
           localMQMsg.uniKey = QZoneMsgFragment.access$1000(this.this$1.this$0).unikey;
           localMQMsg.eventTitle = QZoneMsgFragment.access$1000(this.this$1.this$0).title;
           localMQMsg.capTime = QZoneMsgFragment.access$1000(this.this$1.this$0).capTime;
+          if (localMQMsg.msgBody == null) {
+            localMQMsg.msgBody = new MQMsgBody();
+          }
           if (localMQMsg.msgBody.photolist == null) {
             localMQMsg.msgBody.photolist = new ArrayList();
           }
-          if (localMQMsg.msgBody == null)
-          {
-            localMQMsg.msgBody = new MQMsgBody();
-            localMQMsg.msgBody.photolist.clear();
-          }
+          localMQMsg.msgBody.photolist.clear();
           if (QZoneMsgFragment.access$1000(this.this$1.this$0).pathList == null) {
-            break label429;
+            break label444;
           }
           int i = 0;
           while (i < QZoneMsgFragment.access$1000(this.this$1.this$0).pathList.size())
@@ -71,20 +70,21 @@ class QZoneMsgFragment$QZoneMsgUIObserver$1
         QLog.e("QZoneMsgManager.QZoneMsgFragment", 2, "rsp.ArkNes_vec.get(0) == null");
         label336:
         if ((!QZoneMsgFragment.access$200(this.this$1.this$0)) || (localMQMsg == null)) {
-          break label665;
+          break label681;
         }
         if ((localMQMsg.msgType != 9) || (QZoneMsgFragment.access$1000(this.this$1.this$0) != null)) {
-          break label638;
+          break label653;
         }
-        this.this$1.this$0.adapter.setMQMsgs(new ArrayList());
+        this.this$1.this$0.adapter.setMQMsgs(new ArrayList(), 0);
       }
       for (;;)
       {
         QZoneMsgFragment.access$400(this.this$1.this$0).postDelayed(new QZoneMsgFragment.QZoneMsgUIObserver.1.1(this), 500L);
+        QZoneMsgFragment.access$900(this.this$1.this$0, this.val$isSuc);
         return;
-        label421:
+        label436:
         QLog.e("QZoneMsgManager.QZoneMsgFragment", 2, "mLocalPhotoGroupData == null");
-        label429:
+        label444:
         break;
         if (!QLog.isColorLevel()) {
           break label336;
@@ -102,10 +102,10 @@ class QZoneMsgFragment$QZoneMsgUIObserver$1
         }
         QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "updateMQMsg: mqMsg.msgBody.photolist==null");
         break label336;
-        label638:
-        this.this$1.this$0.adapter.setMQMsgs(new ArrayList(Collections.singletonList(localMQMsg)));
+        label653:
+        this.this$1.this$0.adapter.setMQMsgs(new ArrayList(Collections.singletonList(localMQMsg)), 0);
         continue;
-        label665:
+        label681:
         this.this$1.this$0.adapter.updateMQMsgs(localMQMsg);
       }
       localMQMsg = null;

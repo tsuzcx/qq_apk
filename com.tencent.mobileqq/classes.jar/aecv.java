@@ -1,32 +1,41 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aecv
-  extends MqqHandler
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aecv(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  public aecv(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    switch (paramMessage.what)
+    int j = 1;
+    Object localObject = this.a;
+    String str = this.a.app.getCurrentAccountUin();
+    if (paramBoolean)
     {
-    }
-    do
-    {
-      return;
-      this.a.finish();
-      return;
-      paramMessage = (String)paramMessage.obj;
-      if (!TextUtils.isEmpty(paramMessage))
-      {
-        RegisterPhoneNumActivity.a(this.a).a(paramMessage);
-        return;
+      i = 2;
+      GesturePWDUtils.setGesturePWDState((Context)localObject, str, i);
+      this.a.a(paramBoolean);
+      localObject = this.a.app;
+      if (!paramBoolean) {
+        break label105;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("RegisterPhoneNumActivity", 2, "captcha sig is empty");
+    }
+    label105:
+    for (int i = j;; i = 0)
+    {
+      bdla.b((QQAppInterface)localObject, "CliOper", "", "", "Setting_tab", "Setting_Gesture_password", 0, i, "", "", "", "");
+      this.a.a();
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      i = 1;
+      break;
+    }
   }
 }
 

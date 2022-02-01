@@ -1,25 +1,38 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Map;
 
-class xxt
-  implements xzv
+public final class xxt
+  extends QQUIEventReceiver<xxi, wjx>
 {
-  xxt(xxs paramxxs) {}
-  
-  public void a()
+  public xxt(@NonNull xxi paramxxi)
   {
-    xvv.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocationCancel");
+    super(paramxxi);
   }
   
-  public void a(TroopBarPOI paramTroopBarPOI)
+  public void a(@NonNull xxi paramxxi, @NonNull wjx paramwjx)
   {
-    xvv.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocation " + paramTroopBarPOI);
-    if (paramTroopBarPOI != null)
-    {
-      this.a.a.setLocation(paramTroopBarPOI.a());
-      return;
+    if (xxi.a(paramxxi) == null) {
+      ykq.b("Q.qqstory.detail.StoryDetailPresenter", "ignore this tag info event. %s.", paramwjx.toString());
     }
-    this.a.a.setLocation("None for test!!");
+    do
+    {
+      do
+      {
+        return;
+      } while (!paramwjx.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+      ykq.a("Q.qqstory.detail.StoryDetailPresenter", "receive tag info event. %s.", paramwjx.toString());
+      paramwjx = (wtd)paramwjx.jdField_a_of_type_JavaUtilMap.get(xxi.a(paramxxi));
+    } while (paramwjx == null);
+    paramwjx = ((wjv)wjs.a(27)).a(xxi.a(paramxxi).a(), paramwjx.a);
+    xxi.a(paramxxi).b(paramwjx, true);
+    paramxxi.a();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wjx.class;
   }
 }
 

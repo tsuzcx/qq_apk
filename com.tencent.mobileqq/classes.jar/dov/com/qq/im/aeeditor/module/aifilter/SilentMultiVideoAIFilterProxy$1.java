@@ -1,26 +1,26 @@
 package dov.com.qq.im.aeeditor.module.aifilter;
 
 import android.content.Context;
-import bmbx;
-import bmgj;
-import bmgr;
+import bnrh;
+import bnwb;
+import bnwj;
 import com.tencent.tavcut.session.TAVCutVideoSession;
 import java.util.List;
 
 public class SilentMultiVideoAIFilterProxy$1
   implements Runnable
 {
-  public SilentMultiVideoAIFilterProxy$1(bmgr parambmgr, List paramList, Context paramContext, bmgj parambmgj) {}
+  public SilentMultiVideoAIFilterProxy$1(bnwj parambnwj, List paramList, Context paramContext, bnwb parambnwb) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession != null)
     {
-      bmbx.a("SilentMultiVideoAIFilterProxy", "getVideoFrame start");
+      bnrh.a("SilentMultiVideoAIFilterProxy", "getVideoFrame start");
       this.this$0.jdField_a_of_type_JavaUtilList = this.this$0.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getMultiVideoFrame(this.jdField_a_of_type_JavaUtilList, 250);
-      bmbx.a("SilentMultiVideoAIFilterProxy", "getVideoFrame end");
+      bnrh.a("SilentMultiVideoAIFilterProxy", "getVideoFrame end");
       this.this$0.jdField_a_of_type_Int = this.this$0.jdField_a_of_type_JavaUtilList.size();
-      this.this$0.a(this.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Bmgj);
+      this.this$0.a(this.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Bnwb);
     }
   }
 }

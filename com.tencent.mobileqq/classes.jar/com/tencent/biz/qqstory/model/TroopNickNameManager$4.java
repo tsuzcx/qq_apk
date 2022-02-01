@@ -5,12 +5,12 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import vvf;
+import wka;
 
 public class TroopNickNameManager$4
   implements Runnable
 {
-  public TroopNickNameManager$4(vvf paramvvf) {}
+  public TroopNickNameManager$4(wka paramwka) {}
   
   public void run()
   {
@@ -38,7 +38,7 @@ public class TroopNickNameManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.TroopNickNameManager.4
  * JD-Core Version:    0.7.0.1
  */

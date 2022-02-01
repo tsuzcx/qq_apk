@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.richmedia.state;
 
-import akvk;
-import akvv;
+import altg;
+import altr;
 
 public class RMVideoInitState$4
   implements Runnable
 {
-  public RMVideoInitState$4(akvk paramakvk) {}
+  public RMVideoInitState$4(altg paramaltg) {}
   
   public void run()
   {

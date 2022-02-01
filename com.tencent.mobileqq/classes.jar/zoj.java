@@ -1,59 +1,107 @@
-import android.content.res.Resources;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.TextView;
-import com.tencent.biz.troop.EditUniqueTitleActivity;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.view.View;
+import com.tencent.biz.richframework.part.block.BlockContainer;
+import java.util.ArrayList;
 
 public class zoj
-  implements TextWatcher
+  extends zok
 {
-  public zoj(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
+  private final int a;
+  protected BlockContainer a;
+  protected final ArrayList<zou> a;
+  private int b;
+  private int c;
   
-  public void afterTextChanged(Editable paramEditable)
+  public BlockContainer a()
   {
-    String str = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    int i;
-    if (str.equals(""))
-    {
-      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
-      i = str.length();
-      ThemeUtil.getCurrentThemeInfo().getString("themeId");
-      if (i <= 6) {
-        break label215;
-      }
-      EditUniqueTitleActivity.a(this.a, false);
-      if (!this.a.jdField_a_of_type_Boolean) {
-        this.a.rightViewText.setAlpha(0.5F);
-      }
-    }
-    for (paramEditable = this.a.getResources().getColorStateList(2131167154);; paramEditable = this.a.getResources().getColorStateList(2131167098))
-    {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramEditable);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(str.length() + "/" + 6);
-      int j = 6 - str.length();
-      i = j;
-      if (j < 0) {
-        i = 0;
-      }
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(String.format(this.a.getString(2131695626), new Object[] { Integer.valueOf(i) }));
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-      break;
-      label215:
-      EditUniqueTitleActivity.b(this.a, true);
-      if (!this.a.jdField_a_of_type_Boolean) {
-        this.a.rightViewText.setAlpha(1.0F);
-      }
+    return this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer;
+  }
+  
+  protected BlockContainer a(Context paramContext)
+  {
+    return new BlockContainer(paramContext);
+  }
+  
+  public String a()
+  {
+    return "BlockPart";
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if ((a() != null) && (a().a() != null)) {
+      a().a().a(paramInt1, paramInt2, paramIntent);
     }
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  protected void a(View paramView)
+  {
+    super.a(paramView);
+    if (this.jdField_a_of_type_Int != 0) {
+      this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer = ((BlockContainer)paramView.findViewById(this.jdField_a_of_type_Int));
+    }
+    if (this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer == null) {
+      this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer = a(paramView.getContext());
+    }
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.setLayoutManagerType(this.c, this.b);
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.setBlockWrapper(this);
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.setParentFragment(a());
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.a(this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.c();
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public boolean a()
+  {
+    if ((this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer != null) && (this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.a())) {
+      return true;
+    }
+    return super.a();
+  }
+  
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityDestroyed(Activity paramActivity)
+  {
+    if ((a() != null) && (a().a() != null)) {
+      a().a().onActivityDestroyed(paramActivity);
+    }
+    if (a() != null) {
+      a().b();
+    }
+  }
+  
+  public void onActivityPaused(Activity paramActivity)
+  {
+    if ((a() != null) && (a().a() != null)) {
+      a().a().onActivityPaused(paramActivity);
+    }
+  }
+  
+  public void onActivityResumed(Activity paramActivity)
+  {
+    if ((a() != null) && (a().a() != null)) {
+      a().a().onActivityResumed(paramActivity);
+    }
+  }
+  
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityStarted(Activity paramActivity)
+  {
+    if ((a() != null) && (a().a() != null)) {
+      a().a().onActivityStarted(paramActivity);
+    }
+  }
+  
+  public void onActivityStopped(Activity paramActivity)
+  {
+    if ((a() != null) && (a().a() != null)) {
+      a().a().onActivityStopped(paramActivity);
+    }
+  }
 }
 
 

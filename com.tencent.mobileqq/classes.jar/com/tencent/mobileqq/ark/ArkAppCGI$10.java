@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.ark;
 
-import aoul;
-import aouu;
-import aoux;
+import apxp;
+import apxy;
+import apyb;
 import java.util.ArrayList;
 
 public class ArkAppCGI$10
   implements Runnable
 {
-  public ArkAppCGI$10(aoul paramaoul, aoux paramaoux, boolean paramBoolean, byte[] paramArrayOfByte) {}
+  public ArkAppCGI$10(apxp paramapxp, apyb paramapyb, boolean paramBoolean, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    synchronized (aoul.a(this.this$0))
+    synchronized (apxp.a(this.this$0))
     {
-      aoul.a(this.this$0).remove(this.jdField_a_of_type_Aoux);
-      this.jdField_a_of_type_Aoux.a.a(this.jdField_a_of_type_Aoux, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfByte);
+      apxp.a(this.this$0).remove(this.jdField_a_of_type_Apyb);
+      this.jdField_a_of_type_Apyb.a.a(this.jdField_a_of_type_Apyb, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfByte);
       return;
     }
   }

@@ -1,24 +1,42 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDailyXListView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.Random;
 
 public class sme
-  implements peu
+  extends bcpv
 {
-  public sme(ReadInJoyDailyXListView paramReadInJoyDailyXListView) {}
+  VideoFeedsAppInterface jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAppInterface;
+  Random jdField_a_of_type_JavaUtilRandom = new Random();
   
-  public void a()
+  public sme(VideoFeedsAppInterface paramVideoFeedsAppInterface)
   {
-    if (ReadInJoyDailyXListView.a(this.a))
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAppInterface = paramVideoFeedsAppInterface;
+    jdField_a_of_type_Int = Math.abs(this.jdField_a_of_type_JavaUtilRandom.nextInt());
+  }
+  
+  public AppInterface a()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAppInterface;
+  }
+  
+  protected void a()
+  {
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyDailyXListView", 2, new Object[] { "preloadOptimize switch ON, mCurrentStatus = ", this.a.c + " mNoMoreData : " + this.a.b });
-      }
-      if ((this.a.c == 0) && ((!uhv.a(this.a.d)) || (!this.a.b)))
-      {
-        this.a.a(4);
-        QLog.d("ReadInJoyDailyXListView", 2, "preloadOptimize switch ON, loadingMore()");
-      }
+      super.a();
+      return;
     }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg)
+  {
+    super.b(paramToServiceMsg, null, smf.class);
   }
 }
 

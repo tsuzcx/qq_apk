@@ -1,104 +1,89 @@
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.shortvideo.util.VidUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.common.app.AppInterface;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class bbwp
+  extends bbwj
 {
-  private FileOutputStream jdField_a_of_type_JavaIoFileOutputStream;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  
-  public bbwp(String paramString)
+  public bbwp(Context paramContext, AppInterface paramAppInterface, View paramView, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + File.separator + "audio_data_cache" + File.separator);
-    paramString = new File(this.jdField_a_of_type_JavaLangString);
-    boolean bool1 = paramString.mkdirs();
-    boolean bool2 = paramString.isDirectory();
-    if ((!bool1) && (!bool2)) {
-      throw new RuntimeException("AudioDataCache: mkd=" + bool1 + " isdir=" + bool2);
+    super(paramContext, paramAppInterface, paramView, paramString);
+    this.e = 0;
+  }
+  
+  public View a(RichStatus paramRichStatus)
+  {
+    paramRichStatus = super.a(paramRichStatus);
+    l();
+    return paramRichStatus;
+  }
+  
+  protected CharSequence a(RichStatus paramRichStatus, bbws parambbws, int paramInt)
+  {
+    if (paramRichStatus == null) {
+      parambbws = "";
+    }
+    do
+    {
+      return parambbws;
+      localObject1 = paramRichStatus.toSpannableStringWithoutAction(parambbws);
+      parambbws = (bbws)localObject1;
+    } while (TextUtils.isEmpty(paramRichStatus.actionText));
+    Object localObject2 = paramRichStatus.actionText;
+    parambbws = (bbws)localObject2;
+    if (!TextUtils.isEmpty(paramRichStatus.dataText)) {
+      parambbws = (String)localObject2 + paramRichStatus.dataText;
+    }
+    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130849598);
+    localObject2 = new SpannableStringBuilder((CharSequence)localObject1);
+    ((SpannableStringBuilder)localObject2).insert(0, "[S] ");
+    Object localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130849591);
+    String str = bbvh.a().a(paramRichStatus.actionId);
+    paramRichStatus = (RichStatus)localObject1;
+    if (!TextUtils.isEmpty(str))
+    {
+      paramRichStatus = URLDrawable.URLDrawableOptions.obtain();
+      paramRichStatus.mLoadingDrawable = ((Drawable)localObject1);
+      paramRichStatus.mFailedDrawable = ((Drawable)localObject1);
+      paramRichStatus.mRequestWidth = paramInt;
+      paramRichStatus.mRequestHeight = paramInt;
+      paramRichStatus = URLDrawable.getDrawable(str, paramRichStatus);
+      paramRichStatus.setCallback(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView);
+    }
+    paramRichStatus.setBounds(0, 0, paramInt, paramInt);
+    int i = Color.parseColor("#ffa8a8a8");
+    if ((Build.VERSION.SDK_INT >= 4) && (Build.VERSION.SDK_INT != 20)) {}
+    for (paramRichStatus = new bbtz(paramRichStatus, 1, parambbws, i, localDrawable, paramInt);; paramRichStatus = new bbtz(paramRichStatus, 0, parambbws, i, localDrawable, paramInt))
+    {
+      ((SpannableStringBuilder)localObject2).setSpan(paramRichStatus, 0, "[S]".length(), 17);
+      return localObject2;
     }
   }
   
-  private static void a(String paramString, Throwable paramThrowable)
+  protected boolean b()
   {
-    if (QLog.isColorLevel())
-    {
-      if (paramThrowable != null) {
-        QLog.d("AudioDataCache", 2, "[@] " + paramString, paramThrowable);
-      }
-    }
-    else {
-      return;
-    }
-    QLog.d("AudioDataCache", 2, "[@] " + paramString);
-  }
-  
-  public String a(RMVideoStateMgr paramRMVideoStateMgr)
-  {
-    a("closeCache: path=" + this.b, null);
-    String str = this.jdField_a_of_type_JavaLangString + this.b;
-    if ((this.jdField_a_of_type_JavaIoFileOutputStream == null) || (paramRMVideoStateMgr != null)) {}
-    try
-    {
-      paramRMVideoStateMgr.g();
-      this.jdField_a_of_type_JavaIoFileOutputStream.close();
-    }
-    catch (IOException paramRMVideoStateMgr)
-    {
-      label74:
-      break label74;
-    }
-    this.jdField_a_of_type_JavaIoFileOutputStream = null;
-    this.b = null;
-    return str;
-  }
-  
-  public void a(RMVideoStateMgr paramRMVideoStateMgr)
-  {
-    a("initCache: oldpath=" + this.b + " mOutStream=" + this.jdField_a_of_type_JavaIoFileOutputStream, null);
-    a(paramRMVideoStateMgr);
-    this.b = VidUtil.generateVid();
-    paramRMVideoStateMgr = this.jdField_a_of_type_JavaLangString + this.b;
-    File localFile = new File(paramRMVideoStateMgr);
-    if (localFile.exists()) {
-      throw new RuntimeException("AudioDataCache: file exists| " + paramRMVideoStateMgr);
-    }
-    try
-    {
-      this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(localFile);
-      a("initCache: newPath=" + this.b, null);
-      return;
-    }
-    catch (FileNotFoundException paramRMVideoStateMgr)
-    {
-      for (;;)
-      {
-        this.jdField_a_of_type_JavaIoFileOutputStream = null;
-      }
-    }
-  }
-  
-  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_JavaIoFileOutputStream != null) {}
-    try
-    {
-      this.jdField_a_of_type_JavaIoFileOutputStream.write(paramArrayOfByte, paramInt1, paramInt2);
-      bool = true;
-      return bool;
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-      a("writeData: exp=", paramArrayOfByte);
-    }
     return false;
+  }
+  
+  protected boolean d()
+  {
+    return false;
+  }
+  
+  protected void e()
+  {
+    int i = jdField_a_of_type_ArrayOfInt[6];
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(i, i, i, i);
   }
 }
 

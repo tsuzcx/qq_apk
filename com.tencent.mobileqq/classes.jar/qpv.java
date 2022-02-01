@@ -1,19 +1,37 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
-import com.tencent.mobileqq.app.face.FaceDecoder;
+import android.content.Intent;
+import android.media.AudioManager;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ViewBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-public class qpv
-  extends qpu
+class qpv
+  extends BroadcastReceiver
 {
-  public qpv(Context paramContext, FaceDecoder paramFaceDecoder, slt paramslt)
-  {
-    super(paramContext, paramFaceDecoder, paramslt);
-  }
+  qpv(qph paramqph, VideoView paramVideoView, ViewBean paramViewBean, ViewBase paramViewBase) {}
   
-  public qpk g()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Qpj = new ComponentContentBigImageVideo(this.jdField_a_of_type_AndroidContentContext);
-    return this;
+    boolean bool;
+    if (((AudioManager)paramContext.getSystemService("audio")).getStreamVolume(3) <= 0)
+    {
+      bool = true;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.setMute(bool);
+      paramIntent = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanViewBean;
+      if (!bool) {
+        break label62;
+      }
+    }
+    label62:
+    for (paramContext = "video_audio_mute";; paramContext = "video_audio_speak")
+    {
+      paramIntent.putMapValue("pgc_video_content_audio_icon", paramContext);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.bindDynamicValue(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanViewBean);
+      return;
+      bool = false;
+      break;
+    }
   }
 }
 

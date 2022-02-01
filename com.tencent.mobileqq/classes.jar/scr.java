@@ -1,19 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsUGView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
 
-public class scr
-  implements View.OnClickListener
+public class scr<K, V>
 {
-  public scr(VideoFeedsUGView paramVideoFeedsUGView) {}
+  private Map a = new LinkedHashMap();
   
-  public void onClick(View paramView)
+  public void a(V paramV, scs paramscs)
   {
-    bfyz.a("ug_prefix_ug_1get3_ug_close_time", System.currentTimeMillis());
-    this.a.setVisibility(8);
-    oix.a(oix.b(this.a.jdField_a_of_type_Oey.i, "101", this.a.jdField_a_of_type_JavaLangString));
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.put(paramscs, paramV);
+  }
+  
+  public boolean a(K paramK, sct paramsct)
+  {
+    Iterator localIterator = this.a.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      scs localscs = (scs)localIterator.next();
+      if ((localscs != null) && (!localscs.a(paramK)))
+      {
+        if ((paramsct != null) && (this.a.get(localscs) != null)) {
+          paramsct.a(this.a.get(localscs));
+        }
+        return false;
+      }
+    }
+    if (paramsct != null) {
+      paramsct.a();
+    }
+    return true;
   }
 }
 

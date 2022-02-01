@@ -1,27 +1,18 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import com.tencent.maxvideo.trim.TrimNative;
+import dov.com.qq.im.aeeditor.data.AEEditorDownloadResBean;
+import dov.com.qq.im.aeeditor.manage.AEEditorResourceDownloader.3;
+import java.util.concurrent.CountDownLatch;
 
 public class bnuw
+  implements bnuy
 {
-  private static int a;
-  private static int b;
+  public bnuw(AEEditorResourceDownloader.3 param3, int paramInt, AEEditorDownloadResBean paramAEEditorDownloadResBean, CountDownLatch paramCountDownLatch) {}
   
-  public static Bitmap a(long paramLong1, long paramLong2)
+  public void a(int paramInt) {}
+  
+  public void a(boolean paramBoolean)
   {
-    if ((a <= 0) || (b <= 0)) {}
-    Bitmap localBitmap;
-    do
-    {
-      return null;
-      localBitmap = Bitmap.createBitmap(a, b, Bitmap.Config.ARGB_8888);
-      if (TrimNative.getThumbnail(paramLong1, paramLong2, localBitmap) == 0) {
-        break;
-      }
-    } while ((localBitmap == null) || (localBitmap.isRecycled()));
-    localBitmap.recycle();
-    return null;
-    return localBitmap;
+    bnrh.b(this.jdField_a_of_type_DovComQqImAeeditorManageAEEditorResourceDownloader$3.this$0.c, "preDownloadAllRes---[finish] " + this.jdField_a_of_type_Int + ", id=" + this.jdField_a_of_type_DovComQqImAeeditorDataAEEditorDownloadResBean.getId());
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
   }
 }
 

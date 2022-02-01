@@ -1,40 +1,19 @@
-import android.view.View;
-import android.widget.TextView;
+import android.graphics.Bitmap;
 
 public class yqa
-  extends yqc
 {
-  TextView a;
+  public final int c;
+  public final Bitmap c;
   
-  public yqa(yqe paramyqe, View paramView)
+  public yqa(int paramInt, Bitmap paramBitmap)
   {
-    super(paramyqe, paramView);
-    this.a = ((TextView)paramView.findViewById(2131378406));
-    this.a.setMaxLines(1);
-    this.a.setSingleLine();
+    this.jdField_c_of_type_Int = paramInt;
+    this.jdField_c_of_type_AndroidGraphicsBitmap = paramBitmap;
   }
   
-  public CharSequence a()
+  public String toString()
   {
-    return this.a.getText();
-  }
-  
-  public void a(CharSequence paramCharSequence)
-  {
-    paramCharSequence = paramCharSequence.toString();
-    this.a.setText(paramCharSequence);
-    paramCharSequence = ypt.a(this.a, 1);
-    this.a.setText(paramCharSequence);
-  }
-  
-  public void e_(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.a.setBackgroundResource(2130844482);
-      return;
-    }
-    this.a.setBackgroundResource(0);
+    return "VideoFragmentInfo{blockIndex=" + this.jdField_c_of_type_Int + '}';
   }
 }
 

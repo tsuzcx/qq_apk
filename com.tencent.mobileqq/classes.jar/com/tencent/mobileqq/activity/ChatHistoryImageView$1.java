@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import agye;
-import agzn;
-import ahae;
-import aham;
+import ahrf;
+import ahsn;
+import ahte;
+import ahtm;
 import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
 import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -24,14 +24,14 @@ class ChatHistoryImageView$1
       if ((localObject != null) && (QLog.isColorLevel())) {
         QLog.i("ChatHistoryImageView", 2, "onRevokeMsg, seq:" + ((ChatMessage)localObject).uniseq);
       }
-      localObject = this.this$0.jdField_a_of_type_Agzn.a(this.a);
+      localObject = this.this$0.jdField_a_of_type_Ahsn.a(this.a);
       if (localObject != null)
       {
-        this.this$0.jdField_a_of_type_Agzn.b((aham)localObject);
-        this.this$0.jdField_a_of_type_Ahae.notifyDataSetChanged();
+        this.this$0.jdField_a_of_type_Ahsn.b((ahtm)localObject);
+        this.this$0.jdField_a_of_type_Ahte.notifyDataSetChanged();
       }
     } while ((!this.this$0.g) || (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData == null) || (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.f != this.a));
-    agye.a(this.this$0.jdField_a_of_type_AndroidAppActivity);
+    ahrf.a(this.this$0.jdField_a_of_type_AndroidAppActivity);
   }
 }
 

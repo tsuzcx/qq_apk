@@ -49,4 +49,5 @@
     <integer name="ag">16</integer>
     <integer name="ah">2100</integer>
     <integer name="ai">1800</integer>
+    <integer name="am">250</integer>
 </resources>

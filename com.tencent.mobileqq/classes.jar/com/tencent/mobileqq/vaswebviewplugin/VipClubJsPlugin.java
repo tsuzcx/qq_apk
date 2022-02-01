@@ -1,14 +1,17 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
-import bgio;
-import bgks;
-import bgve;
+import bhqa;
+import bhrj;
+import bhvc;
+import bifw;
 import com.tencent.mobileqq.model.ChatBackgroundManager;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.theme.diy.ThemeBackground;
 import com.tencent.mobileqq.vas.wallpaper.VipWallpaperService;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResultCallback;
+import gk;
 import java.io.File;
 import java.util.concurrent.atomic.AtomicBoolean;
 import org.json.JSONObject;
@@ -30,7 +33,7 @@ public class VipClubJsPlugin
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      if (bgio.a()) {}
+      if (bhrj.a()) {}
       for (String str = "0";; str = "1")
       {
         localJSONObject.put("result", str);
@@ -69,6 +72,48 @@ public class VipClubJsPlugin
     QLog.e("VipClubJsPlugin", 1, "paySuccess wrong type: " + paramObject.getClass());
   }
   
+  @VasWebviewJsPluginV2.JsbridgeSubscribe(args="callback|status", method="qidResult")
+  public void qidResult(String paramString, Object paramObject)
+  {
+    boolean bool = true;
+    label114:
+    for (;;)
+    {
+      try
+      {
+        QLog.d("VipClubJsPlugin", 1, "qidResult");
+        if ((paramObject instanceof String))
+        {
+          i = Integer.parseInt((String)paramObject);
+          paramObject = this.mRuntime.a();
+          if (i == 1)
+          {
+            bhqa.a(paramObject, bool);
+            paramObject = new JSONObject();
+            paramObject.put("result", "0");
+            super.callJs(paramString, new String[] { paramObject.toString() });
+          }
+        }
+        else
+        {
+          if (!(paramObject instanceof Number)) {
+            break label114;
+          }
+          i = ((Number)paramObject).intValue();
+          continue;
+        }
+        bool = false;
+        continue;
+        int i = 0;
+      }
+      catch (Exception paramObject)
+      {
+        super.callJsOnError(paramString, paramObject.getMessage());
+        return;
+      }
+    }
+  }
+  
   @VasWebviewJsPluginV2.JsbridgeSubscribe(args="callback", method="themeSupportVideo")
   public void themeSupportVideo(String paramString)
   {
@@ -91,15 +136,34 @@ public class VipClubJsPlugin
     }
   }
   
+  @VasWebviewJsPluginV2.JsbridgeSubscribe(args="callback", method="updateQQValueCard")
+  public void updateQQValueCard(String paramString)
+  {
+    try
+    {
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("result", "0");
+      ((JSONObject)localObject).put("msg", "收到刷新请求");
+      super.callJs(paramString, new String[] { ((JSONObject)localObject).toString() });
+      localObject = new VipClubJsPlugin.1(this);
+      QIPCClientHelper.getInstance().callServer("VasFontIPCModule", gk.l, null, (EIPCResultCallback)localObject);
+      return;
+    }
+    catch (Exception localException)
+    {
+      super.callJsOnError(paramString, localException.getMessage());
+    }
+  }
+  
   @VasWebviewJsPluginV2.JsbridgeSubscribe(args="callback", method="wallpaperGetChatBg")
   public void wallpaperGetChatBg(String paramString)
   {
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      bgks localbgks = VipWallpaperService.a(this.mRuntime.a(), true);
+      bhvc localbhvc = VipWallpaperService.a(this.mRuntime.a(), true);
       localJSONObject.put("result", "0");
-      localJSONObject.put("id", localbgks.a);
+      localJSONObject.put("id", localbhvc.a);
       super.callJs(paramString, new String[] { localJSONObject.toString() });
       return;
     }
@@ -119,7 +183,7 @@ public class VipClubJsPlugin
         paramString3 = new JSONObject();
         if ("0".equals(paramString2))
         {
-          VipWallpaperService.a(this.mRuntime.a(), new bgks(), null);
+          VipWallpaperService.a(this.mRuntime.a(), new bhvc(), null);
           paramString3.put("result", "0");
           paramString3.put("msg", "恢复系统壁纸");
           super.callJs(paramString1, new String[] { paramString3.toString() });
@@ -129,7 +193,7 @@ public class VipClubJsPlugin
         if (new File(str).exists())
         {
           AtomicBoolean localAtomicBoolean = new AtomicBoolean();
-          paramString2 = new bgks(paramString2, str, "");
+          paramString2 = new bhvc(paramString2, str, "");
           VipWallpaperService.a(this.mRuntime.a(), paramString2, localAtomicBoolean);
           paramString3.put("result", "0");
           paramString3.put("msg", "设置成功");

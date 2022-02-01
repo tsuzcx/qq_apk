@@ -174,17 +174,17 @@ public class BusinessAlbumInfo
     while (i == 0)
     {
       return null;
-      i = 2131716845;
+      i = 2131717208;
       continue;
-      i = 2131716846;
+      i = 2131717209;
       continue;
-      i = 2131716591;
+      i = 2131716954;
       continue;
-      i = 2131716589;
+      i = 2131716952;
       continue;
-      i = 2131716594;
+      i = 2131716957;
       continue;
-      i = 2131716590;
+      i = 2131716953;
     }
     return BaseApplication.getContext().getResources().getString(i);
   }

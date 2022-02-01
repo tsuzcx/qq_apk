@@ -1,36 +1,18 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
 
-class afak
-  implements akbj
+public class afak
+  implements bguo
 {
-  afak(afai paramafai, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
+  public afak(TextPreviewActivity paramTextPreviewActivity) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void a() {}
+  
+  public void b()
   {
-    paramPathResult = paramPathResult.folderPath;
-    if (paramInt == 0) {}
-    try
-    {
-      paramPathResult = paramPathResult + File.separator;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.specailBackgroundAnimInfo = AnimationView.AnimationInfo.loadFromFolder(paramPathResult + "anim_bg");
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "TYPE_SPECAIL_ANIM specailBackgroundAnimInfo=" + this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.specailBackgroundAnimInfo);
-      }
-      CustomizeStrategyFactory.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo);
-      return;
-    }
-    catch (Throwable paramPathResult)
-    {
-      for (;;)
-      {
-        paramPathResult.printStackTrace();
-      }
-    }
+    Message localMessage = this.a.a.obtainMessage(20);
+    this.a.a.sendMessage(localMessage);
   }
 }
 

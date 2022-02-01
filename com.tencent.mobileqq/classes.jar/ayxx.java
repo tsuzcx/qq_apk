@@ -1,71 +1,53 @@
-import android.app.Activity;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.util.DisplayMetrics;
+import android.widget.ImageView;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.mobileqq.olympic.activity.PromotionEntry;
+import com.tencent.mobileqq.olympic.activity.PromotionEntry.UpdateOperateBtnStatusRunnable;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.io.File;
+import java.lang.ref.WeakReference;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilecard/vas/component/background/VasProfileDiyBackgroundComponent;", "Lcom/tencent/mobileqq/profilecard/vas/component/background/AbsVasProfileBackgroundComponent;", "componentCenter", "Lcom/tencent/mobileqq/profilecard/base/framework/IComponentCenter;", "cardInfo", "Lcom/tencent/mobileqq/profile/ProfileCardInfo;", "(Lcom/tencent/mobileqq/profilecard/base/framework/IComponentCenter;Lcom/tencent/mobileqq/profile/ProfileCardInfo;)V", "mQVipBackgroundCreator", "Lcom/tencent/mobileqq/vip/diy/QVipBackgroundCreator;", "onDestroy", "", "onVasDataUpdate", "", "data", "Lcom/tencent/mobileqq/profilecard/vas/VasProfileData;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class ayxx
-  extends ayxt
+class ayxx
+  implements ImageAssetDelegate
 {
-  private bgpf a;
+  ayxx(ayxw paramayxw) {}
   
-  public ayxx(@Nullable aysx paramaysx, @Nullable aymg paramaymg)
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    super("VasProfileDiyBackgroundComponent", paramaysx, paramaymg);
-  }
-  
-  public boolean a(@NotNull ayxq paramayxq)
-  {
-    Intrinsics.checkParameterIsNotNull(paramayxq, "data");
-    if (this.jdField_a_of_type_Bgpf != null) {
-      return true;
+    Object localObject = (ImageView)PromotionEntry.UpdateOperateBtnStatusRunnable.a(this.a.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable).get();
+    int i;
+    int j;
+    if (localObject != null)
+    {
+      paramLottieImageAsset = paramLottieImageAsset.getFileName();
+      i = ((ImageView)localObject).getResources().getDisplayMetrics().densityDpi;
+      j = ((ImageView)localObject).getResources().getDisplayMetrics().densityDpi;
+      localObject = this.a.jdField_a_of_type_JavaLangString + "entry_images" + File.separator + paramLottieImageAsset;
     }
-    label149:
     for (;;)
     {
       try
       {
-        paramayxq = paramayxq.a();
-        if (paramayxq != null)
-        {
-          if ((paramayxq.b() instanceof JSONObject))
-          {
-            this.jdField_a_of_type_Bgpf = bgpf.a((Activity)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).a((ViewGroup)a()).a((JSONObject)paramayxq.b());
-            break label149;
-          }
+        paramLottieImageAsset = mqx.a((String)localObject, i, j);
+        localObject = paramLottieImageAsset;
+        if (paramLottieImageAsset == null) {
+          localObject = Bitmap.createBitmap(1, 1, Bitmap.Config.ALPHA_8);
         }
-        else
-        {
-          a("card-diy");
-          return true;
-        }
+        return localObject;
       }
-      catch (Exception paramayxq)
+      catch (Exception paramLottieImageAsset)
       {
-        QLog.e(b(), 1, (Throwable)paramayxq, new Object[0]);
-        a().removeAllViews();
-        return true;
+        if (AudioHelper.f()) {
+          QLog.w(PromotionEntry.jdField_a_of_type_JavaLangString, 1, "UpdateOperateBtnStatusRunnable Exception, imagePath[" + (String)localObject + "]", paramLottieImageAsset);
+        }
       }
-      if ((paramayxq.b() instanceof JSONArray)) {
-        this.jdField_a_of_type_Bgpf = bgpf.a((Activity)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).a((ViewGroup)a()).a((JSONArray)paramayxq.b());
-      }
+      paramLottieImageAsset = null;
     }
-  }
-  
-  public void f()
-  {
-    super.f();
-    bgpf localbgpf = this.jdField_a_of_type_Bgpf;
-    if (localbgpf != null) {
-      localbgpf.a();
-    }
-    this.jdField_a_of_type_Bgpf = ((bgpf)null);
   }
 }
 

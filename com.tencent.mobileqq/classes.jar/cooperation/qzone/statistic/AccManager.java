@@ -71,7 +71,7 @@ public class AccManager
       localStatistic.setValue(WnsKeys.ResultCode_i, Integer.valueOf(paramInt1));
       localStatistic.setValue(WnsKeys.ToUIN, Long.valueOf(l1));
       localStatistic.setValue(WnsKeys.Qua, QUA.getQUA3());
-      localStatistic.setValue(WnsKeys.Build, "4810");
+      localStatistic.setValue(WnsKeys.Build, "4875");
       localStatistic.setValue(WnsKeys.TimeCost, Integer.valueOf(paramInt2));
       if (paramString2 != null) {
         localStatistic.setValue(WnsKeys.Detail, paramString2);
@@ -124,7 +124,7 @@ public class AccManager
       localStatistic.setValue(WnsKeys.ResultCode_i, Integer.valueOf(paramInt1));
       localStatistic.setValue(WnsKeys.ToUIN, Long.valueOf(l1));
       localStatistic.setValue(WnsKeys.Qua, QUA.getQUA3());
-      localStatistic.setValue(WnsKeys.Build, "4810");
+      localStatistic.setValue(WnsKeys.Build, "4875");
       if (paramString2 != null) {
         localStatistic.setValue(WnsKeys.Detail, paramString2);
       }

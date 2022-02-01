@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.DownloadBarInfo;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class oen
-  implements Parcelable.Creator<VideoInfo.DownloadBarInfo>
+public class oen
+  implements View.OnClickListener
 {
-  public VideoInfo.DownloadBarInfo a(Parcel paramParcel)
-  {
-    return new VideoInfo.DownloadBarInfo(paramParcel);
-  }
+  public oen(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity, Dialog paramDialog) {}
   
-  public VideoInfo.DownloadBarInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new VideoInfo.DownloadBarInfo[paramInt];
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

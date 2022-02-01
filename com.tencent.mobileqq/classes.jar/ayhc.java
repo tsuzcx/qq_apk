@@ -1,124 +1,34 @@
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluspanel.appinfo.PlusPanelAppInfo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
 
 public abstract class ayhc
-  extends aygw
+  extends ayei
 {
-  boolean a;
+  public boolean a;
   
-  ayhc()
+  public ayhc(Context paramContext)
   {
-    this.jdField_a_of_type_Boolean = false;
-    a(new aygk());
+    super(paramContext);
   }
   
-  private ayfo a(BaseChatPie paramBaseChatPie, PlusPanelAppInfo paramPlusPanelAppInfo)
-  {
-    ayfo localayfo = new ayfo();
-    localayfo.jdField_a_of_type_AndroidGraphicsDrawableDrawable = a(paramBaseChatPie.app, paramPlusPanelAppInfo);
-    localayfo.jdField_a_of_type_Int = paramPlusPanelAppInfo.getAppID();
-    localayfo.jdField_b_of_type_Int = paramPlusPanelAppInfo.getAppID();
-    localayfo.c = String.valueOf(paramPlusPanelAppInfo.getRedDotID());
-    localayfo.e = paramPlusPanelAppInfo.actionType;
-    localayfo.d = paramPlusPanelAppInfo.action;
-    localayfo.jdField_a_of_type_JavaLangString = a(paramPlusPanelAppInfo);
-    localayfo.jdField_b_of_type_JavaLangString = (localayfo.jdField_a_of_type_JavaLangString + amtj.a(2131707412));
-    return localayfo;
-  }
+  public abstract void a();
   
-  private void a(BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
-  {
-    QQAppInterface localQQAppInterface = paramBaseChatPie.getApp();
-    if (localQQAppInterface == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("PlusPanel", 2, "reloadFriend app is null");
-      }
-    }
-    do
-    {
-      return;
-      if (paramSessionInfo != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("PlusPanel", 2, "reloadFriend() sessionInfo is null");
-    return;
-    b(paramBaseChatPie);
-    bcef.b(localQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "transferAIOshow", 0, 0, "", "", "", "");
-  }
+  public abstract void a(int paramInt);
   
-  private ayfo b(BaseChatPie paramBaseChatPie, PlusPanelAppInfo paramPlusPanelAppInfo)
-  {
-    ayfo localayfo = new ayfo();
-    localayfo.jdField_a_of_type_Int = paramPlusPanelAppInfo.getAppID();
-    localayfo.jdField_b_of_type_Int = paramPlusPanelAppInfo.getAppID();
-    localayfo.e = paramPlusPanelAppInfo.actionType;
-    localayfo.d = paramPlusPanelAppInfo.action;
-    localayfo.jdField_a_of_type_JavaLangString = paramPlusPanelAppInfo.getTitle();
-    localayfo.jdField_b_of_type_JavaLangString = (localayfo.jdField_a_of_type_JavaLangString + amtj.a(2131707412));
-    if (paramPlusPanelAppInfo.getAppID() == 209)
-    {
-      localayfo.jdField_a_of_type_AndroidGraphicsDrawableDrawable = agxo.a(paramBaseChatPie.app).a();
-      localayfo.jdField_a_of_type_JavaLangString = apyt.a().g();
-      if (paramPlusPanelAppInfo.getAppID() != 204) {
-        break label182;
-      }
-      if (!ShortVideoUtils.isHotPicConfiginitied) {
-        ShortVideoUtils.isHotPicConfiginitied = true;
-      }
-    }
-    for (;;)
-    {
-      localayfo.jdField_b_of_type_JavaLangString = (paramPlusPanelAppInfo.getTitle() + amtj.a(2131707420));
-      return localayfo;
-      localayfo.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(paramPlusPanelAppInfo.defaultDrawableID());
-      break;
-      label182:
-      if (paramPlusPanelAppInfo.getAppID() == 209) {
-        localayfo.jdField_a_of_type_Boolean = agxo.a(paramBaseChatPie.app).b();
-      } else {
-        localayfo.jdField_a_of_type_Boolean = false;
-      }
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
   
-  public ayfo a(BaseChatPie paramBaseChatPie, PlusPanelAppInfo paramPlusPanelAppInfo, int paramInt)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return a(paramBaseChatPie, paramPlusPanelAppInfo);
-    }
-    return b(paramBaseChatPie, paramPlusPanelAppInfo);
-  }
+  public abstract void a(String paramString, int paramInt);
   
-  public void a(BaseChatPie paramBaseChatPie)
-  {
-    super.a(paramBaseChatPie);
-    a(paramBaseChatPie, paramBaseChatPie.sessionInfo);
-    a(paramBaseChatPie.app, paramBaseChatPie.sessionInfo.curType, paramBaseChatPie.sessionInfo.curFriendUin);
-  }
+  public abstract boolean a();
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
+  public abstract boolean a(PicInfo paramPicInfo);
   
-  abstract void b(BaseChatPie paramBaseChatPie);
+  public abstract void b();
   
-  void c(int paramInt)
-  {
-    if (bbyp.b())
-    {
-      a(paramInt, 217);
-      a(paramInt, 218);
-    }
-  }
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

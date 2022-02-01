@@ -3,19 +3,20 @@ package dov.com.qq.im.aeeditor.module.music;
 import NS_QQ_STORY_CLIENT.CLIENT.StBatchGetMusicInfoRsp;
 import NS_QQ_STORY_CLIENT.CLIENT.StSmartMatchMusicRsp;
 import NS_QQ_STORY_META.META.StMusic;
+import aang;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import bmbx;
-import bmcz;
-import bmlo;
-import bmlr;
-import bmls;
-import bmlt;
-import bmlu;
-import bmlv;
+import bnrh;
+import bnsr;
+import bobg;
+import bobj;
+import bobk;
+import bobl;
+import bobm;
+import bobn;
 import com.tencent.beacon.event.UserAction;
 import com.tencent.biz.richframework.network.VSNetworkHelper;
 import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
@@ -43,21 +44,20 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import org.json.JSONObject;
-import zxu;
 
 public class AEEditorMusicHelper
 {
   @Nullable
   public static VsMusicItemInfo a(@NonNull Intent paramIntent)
   {
-    bmbx.b("AEEditorMusicHelper", "[parseMusicWebData]");
+    bnrh.b("AEEditorMusicHelper", "[parseMusicWebData]");
     String str = paramIntent.getStringExtra("data");
     paramIntent = paramIntent.getStringExtra("event");
-    bmbx.b("AEEditorMusicHelper", "[parseMusicWebData], eventValue=" + paramIntent);
+    bnrh.b("AEEditorMusicHelper", "[parseMusicWebData], eventValue=" + paramIntent);
     if ((TextUtils.isEmpty(paramIntent)) || (!paramIntent.equals("kTribeSelectMusic"))) {
       return null;
     }
-    bmbx.b("AEEditorMusicHelper", "[parseMusicWebData], dataValue=" + str);
+    bnrh.b("AEEditorMusicHelper", "[parseMusicWebData], dataValue=" + str);
     try
     {
       paramIntent = new VsMusicItemInfo(new JSONObject(str));
@@ -65,7 +65,7 @@ public class AEEditorMusicHelper
     }
     catch (Exception paramIntent)
     {
-      bmbx.a("AEEditorMusicHelper", "[parseMusicWebData], error=", paramIntent);
+      bnrh.a("AEEditorMusicHelper", "[parseMusicWebData], error=", paramIntent);
     }
     return null;
   }
@@ -86,13 +86,13 @@ public class AEEditorMusicHelper
   }
   
   @NonNull
-  public static String a(@Nullable bmlo parambmlo)
+  public static String a(@Nullable bobg parambobg)
   {
-    bmbx.b("AEEditorMusicHelper", "[getLocalMusicPath], editorMusicInfo=" + parambmlo);
-    if ((parambmlo == null) || (parambmlo.a())) {
+    bnrh.b("AEEditorMusicHelper", "[getLocalMusicPath], editorMusicInfo=" + parambobg);
+    if ((parambobg == null) || (parambobg.a())) {
       return "";
     }
-    return bmcz.c + File.separator + parambmlo.a() + ".m4a";
+    return bnsr.c + File.separator + parambobg.a() + ".m4a";
   }
   
   private static List<Long> a(long paramLong)
@@ -122,7 +122,7 @@ public class AEEditorMusicHelper
   @NonNull
   public static List<VsMusicItemInfo> a(@Nullable List<META.StMusic> paramList)
   {
-    bmbx.b("AEEditorMusicHelper", "[convertToMusicItemList]");
+    bnrh.b("AEEditorMusicHelper", "[convertToMusicItemList]");
     if (paramList == null) {
       return new LinkedList();
     }
@@ -144,7 +144,7 @@ public class AEEditorMusicHelper
   
   public static void a(@NonNull Context paramContext)
   {
-    bmbx.b("AEEditorMusicHelper", "[preLoadWebView]");
+    bnrh.b("AEEditorMusicHelper", "[preLoadWebView]");
     Intent localIntent = new Intent(paramContext, PreloadWebService.class);
     try
     {
@@ -153,28 +153,28 @@ public class AEEditorMusicHelper
     }
     catch (Throwable paramContext)
     {
-      bmbx.a("AEEditorMusicHelper", "[preLoadWebView], error=", paramContext);
+      bnrh.a("AEEditorMusicHelper", "[preLoadWebView], error=", paramContext);
     }
   }
   
   public static void a(@NonNull Context paramContext, @NonNull String paramString)
   {
-    bmbx.b("AEEditorMusicHelper", "[startMusicWebView]");
+    bnrh.b("AEEditorMusicHelper", "[startMusicWebView]");
     Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
     localIntent.putExtra("url", String.format("https://ti.qq.com/music/index.html?_wv=5&_bid=2831&device_id=%s&client_ip=%s&bustype=%s&sessionId=%s&source=%s", new Object[] { UserAction.getQIMEI(), "", Integer.valueOf(6), paramString, "qcirclePublish" }));
     paramContext.startActivity(localIntent);
   }
   
-  public static void a(@NonNull AppInterface paramAppInterface, @NonNull bmlo parambmlo, @NonNull String paramString1, @NonNull String paramString2, @Nullable bmlv parambmlv)
+  public static void a(@NonNull AppInterface paramAppInterface, @NonNull bobg parambobg, @NonNull String paramString1, @NonNull String paramString2, @Nullable bobn parambobn)
   {
-    bmbx.b("AEEditorMusicHelper", "[downloadMusic], url=" + paramString1 + ", localPath=" + paramString2);
+    bnrh.b("AEEditorMusicHelper", "[downloadMusic], url=" + paramString1 + ", localPath=" + paramString2);
     HttpNetReq localHttpNetReq = new HttpNetReq();
     localHttpNetReq.mReqUrl = paramString1;
     localHttpNetReq.mHttpMethod = 0;
     localHttpNetReq.mOutPath = paramString2;
     localHttpNetReq.mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
     localHttpNetReq.mExcuteTimeLimit = 30000L;
-    localHttpNetReq.mCallback = new bmlu(parambmlv, parambmlo, paramString2);
+    localHttpNetReq.mCallback = new bobm(parambobn, parambobg, paramString2);
     try
     {
       paramAppInterface.getNetEngine(0).sendReq(localHttpNetReq);
@@ -182,15 +182,15 @@ public class AEEditorMusicHelper
     }
     catch (Exception paramAppInterface)
     {
-      bmbx.d("AEEditorMusicHelper", "[downloadMusic], error=" + paramAppInterface);
+      bnrh.d("AEEditorMusicHelper", "[downloadMusic], error=" + paramAppInterface);
     }
   }
   
-  public static void a(@Nullable TAVCutVideoSession paramTAVCutVideoSession, @Nullable zxu paramzxu)
+  public static void a(@Nullable TAVCutVideoSession paramTAVCutVideoSession, @Nullable aang paramaang)
   {
     long l2 = 0L;
-    if (((paramTAVCutVideoSession == null) || (paramTAVCutVideoSession.getDuration() == null) || (paramTAVCutVideoSession.getDuration().getTimeUs() == 0L)) && (paramzxu != null)) {
-      paramzxu.a(false, null, -1L);
+    if (((paramTAVCutVideoSession == null) || (paramTAVCutVideoSession.getDuration() == null) || (paramTAVCutVideoSession.getDuration().getTimeUs() == 0L)) && (paramaang != null)) {
+      paramaang.a(false, null, -1L);
     }
     long l1 = l2;
     if (paramTAVCutVideoSession != null)
@@ -200,29 +200,29 @@ public class AEEditorMusicHelper
         l1 = paramTAVCutVideoSession.getDuration().getTimeUs() / 1000L;
       }
     }
-    ThreadManager.executeOnFileThread(new AEEditorMusicHelper.2(paramTAVCutVideoSession, a(l1), ((Long)VSConfigManager.getInstance().getValue("SmartCutPicWidth", Long.valueOf(224L))).longValue(), ((Long)VSConfigManager.getInstance().getValue("SmartCutPicQuality_And", Long.valueOf(80L))).longValue(), ((Long)VSConfigManager.getInstance().getValue("SmartCutPicMaxByte", Long.valueOf(90000L))).longValue(), paramzxu));
+    ThreadManager.executeOnFileThread(new AEEditorMusicHelper.2(paramTAVCutVideoSession, a(l1), ((Long)VSConfigManager.getInstance().getValue("SmartCutPicWidth", Long.valueOf(224L))).longValue(), ((Long)VSConfigManager.getInstance().getValue("SmartCutPicQuality_And", Long.valueOf(80L))).longValue(), ((Long)VSConfigManager.getInstance().getValue("SmartCutPicMaxByte", Long.valueOf(90000L))).longValue(), paramaang));
   }
   
-  public static void a(@NonNull String paramString, int paramInt1, int paramInt2, long paramLong1, long paramLong2, @Nullable zxu paramzxu)
+  public static void a(@NonNull String paramString, int paramInt1, int paramInt2, long paramLong1, long paramLong2, @Nullable aang paramaang)
   {
-    bmbx.b("AEEditorMusicHelper", "[extractFrameForSmartMusic], videoPath=" + paramString + ", videoWidth=" + paramInt1 + ", videoHeight=" + paramInt2 + ", videoClipStart=" + paramLong1 + ", videoClipEnd=" + paramLong2);
+    bnrh.b("AEEditorMusicHelper", "[extractFrameForSmartMusic], videoPath=" + paramString + ", videoWidth=" + paramInt1 + ", videoHeight=" + paramInt2 + ", videoClipStart=" + paramLong1 + ", videoClipEnd=" + paramLong2);
     paramString = new FrameVideoHelper(paramString, paramInt1, paramInt2, paramLong2);
-    paramString.a(paramLong1, new bmlr(paramString, paramzxu));
+    paramString.a(paramLong1, new bobj(paramString, paramaang));
   }
   
   public static void a(@NonNull ArrayList<String> paramArrayList, @Nullable VSDispatchObserver.onVSRspCallBack<CLIENT.StBatchGetMusicInfoRsp> paramonVSRspCallBack)
   {
-    bmbx.b("AEEditorMusicHelper", "[requestDetailedMusicInfo]");
+    bnrh.b("AEEditorMusicHelper", "[requestDetailedMusicInfo]");
     long l = System.currentTimeMillis();
-    VSNetworkHelper.getInstance().sendRequest(new BatchGetMusicInfoRequest(paramArrayList), new bmlt(paramonVSRspCallBack, l));
+    VSNetworkHelper.getInstance().sendRequest(new BatchGetMusicInfoRequest(paramArrayList), new bobl(paramonVSRspCallBack, l));
   }
   
   public static void a(@NonNull ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, @Nullable SosoInterface.SosoLocation paramSosoLocation, boolean paramBoolean, @Nullable LocalMediaInfo paramLocalMediaInfo, int paramInt, @Nullable VSDispatchObserver.onVSRspCallBack<CLIENT.StSmartMatchMusicRsp> paramonVSRspCallBack)
   {
-    bmbx.b("AEEditorMusicHelper", "[requestRecommendMusicList]");
+    bnrh.b("AEEditorMusicHelper", "[requestRecommendMusicList]");
     paramArrayList = new SmartMusicMatchRequest(paramArrayList, paramSosoLocation, paramBoolean, paramInt, paramLocalMediaInfo);
     long l = System.currentTimeMillis();
-    VSNetworkHelper.getInstance().sendRequest(paramArrayList, new bmls(paramonVSRspCallBack, l));
+    VSNetworkHelper.getInstance().sendRequest(paramArrayList, new bobk(paramonVSRspCallBack, l));
   }
   
   public static boolean a(@NonNull VsMusicItemInfo paramVsMusicItemInfo)
@@ -232,16 +232,16 @@ public class AEEditorMusicHelper
   
   public static boolean a(@Nullable String paramString)
   {
-    bmbx.b("AEEditorMusicHelper", "[localMusicExists], localMusicPath=" + paramString);
+    bnrh.b("AEEditorMusicHelper", "[localMusicExists], localMusicPath=" + paramString);
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
     return new File(paramString).exists();
   }
   
-  public static List<bmlo> b(@Nullable List<VsMusicItemInfo> paramList)
+  public static List<bobg> b(@Nullable List<VsMusicItemInfo> paramList)
   {
-    bmbx.b("AEEditorMusicHelper", "[assembleEditorMusicInfoList]");
+    bnrh.b("AEEditorMusicHelper", "[assembleEditorMusicInfoList]");
     if (paramList == null) {
       return new LinkedList();
     }
@@ -255,7 +255,7 @@ public class AEEditorMusicHelper
       {
         i += 1;
         break;
-        localLinkedList.add(new bmlo(localVsMusicItemInfo, false, 2, true, i + 1));
+        localLinkedList.add(new bobg(localVsMusicItemInfo, false, 2, true, i + 1));
       }
     }
     return localLinkedList;

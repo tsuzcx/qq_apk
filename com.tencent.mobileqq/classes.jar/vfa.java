@@ -1,27 +1,153 @@
-import android.text.Editable;
+import NS_KING_SOCIALIZE_META.stMetaUgcImage;
+import NS_KING_SOCIALIZE_META.stMetaUgcVideoSeg;
+import UserGrowth.stFloatingLayerCardStyle;
+import UserGrowth.stSimpleMetaFeed;
+import UserGrowth.stSimpleMetaPerson;
+import android.content.Context;
 import android.text.TextUtils;
-import android.text.TextWatcher;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.google.gson.Gson;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashMap<Ljava.lang.String;Ljava.lang.String;>;
+import org.json.JSONObject;
 
 public class vfa
-  implements TextWatcher
 {
-  public vfa(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  private stSimpleMetaFeed a(JSONObject paramJSONObject)
   {
-    PublicAccountImageCollectionCommentActivity.a(this.a, paramEditable.toString());
+    if (paramJSONObject != null)
+    {
+      Gson localGson = new Gson();
+      stSimpleMetaFeed localstSimpleMetaFeed = new stSimpleMetaFeed();
+      localstSimpleMetaFeed.id = paramJSONObject.optString("id");
+      localstSimpleMetaFeed.ding_count = paramJSONObject.optInt("dingCount");
+      localstSimpleMetaFeed.is_ding = paramJSONObject.optInt("isDing");
+      localstSimpleMetaFeed.total_comment_num = paramJSONObject.optInt("commentNum");
+      localstSimpleMetaFeed.material_desc = paramJSONObject.optString("materialDesc");
+      localstSimpleMetaFeed.material_thumburl = paramJSONObject.optString("materialThumburl");
+      localstSimpleMetaFeed.feed_desc = paramJSONObject.optString("feedDesc");
+      localstSimpleMetaFeed.video = ((stMetaUgcVideoSeg)localGson.fromJson(paramJSONObject.optJSONObject("video").toString(), stMetaUgcVideoSeg.class));
+      localstSimpleMetaFeed.video_url = paramJSONObject.optString("videoUrl");
+      ArrayList localArrayList = new ArrayList();
+      stMetaUgcImage localstMetaUgcImage = new stMetaUgcImage();
+      localstMetaUgcImage.url = paramJSONObject.optString("coverUrl");
+      localstMetaUgcImage.height = paramJSONObject.optInt("coverHeight");
+      localstMetaUgcImage.width = paramJSONObject.optInt("coverWidth");
+      localArrayList.add(localstMetaUgcImage);
+      localstSimpleMetaFeed.images = localArrayList;
+      localstSimpleMetaFeed.poster_id = paramJSONObject.optString("posterId");
+      localstSimpleMetaFeed.poster = ((stSimpleMetaPerson)localGson.fromJson(paramJSONObject.optJSONObject("poster").toString(), stSimpleMetaPerson.class));
+      paramJSONObject = new stFloatingLayerCardStyle();
+      paramJSONObject.cardType = 3;
+      localstSimpleMetaFeed.floatingLayerCardStyle = paramJSONObject;
+      return localstSimpleMetaFeed;
+    }
+    return null;
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public static String a(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramCharSequence)) && (paramCharSequence.length() - paramInt2 + paramInt3 > 100)) {
-      QQToast.a(this.a, 0, this.a.getString(2131694764), 0).b(this.a.getTitleBarHeight());
+    if (TextUtils.isEmpty(paramString)) {
+      return paramString;
+    }
+    String str = "_ct=" + System.currentTimeMillis();
+    if (paramString.contains("?")) {}
+    for (paramString = paramString + "&" + str;; paramString = paramString + "?" + str) {
+      return paramString;
     }
   }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  private ArrayList<stSimpleMetaFeed> a(HashMap<String, String> paramHashMap)
+  {
+    if (paramHashMap == null) {
+      return null;
+    }
+    Object localObject = (String)paramHashMap.get("feeds");
+    paramHashMap = (String)paramHashMap.get("scene");
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return null;
+    }
+    if (TextUtils.isEmpty(paramHashMap)) {
+      vnd.d(paramHashMap);
+    }
+    try
+    {
+      paramHashMap = URLDecoder.decode((String)localObject, "UTF-8");
+      vmp.b("WSMiniAppHelper", "小程序传过来的feed： " + paramHashMap);
+    }
+    catch (UnsupportedEncodingException paramHashMap)
+    {
+      for (;;)
+      {
+        try
+        {
+          localObject = new ArrayList();
+          paramHashMap = a(new JSONObject(paramHashMap));
+          if (paramHashMap != null) {
+            ((ArrayList)localObject).add(paramHashMap);
+          }
+          return localObject;
+        }
+        catch (Exception paramHashMap)
+        {
+          paramHashMap.printStackTrace();
+          vmp.d("WSMiniAppHelper", "parse json error: " + paramHashMap.getMessage());
+        }
+        paramHashMap = paramHashMap;
+        paramHashMap.printStackTrace();
+        paramHashMap = (HashMap<String, String>)localObject;
+      }
+    }
+    return null;
+  }
+  
+  public static vfa a()
+  {
+    return vfc.a();
+  }
+  
+  public void a(Context paramContext, String paramString)
+  {
+    uyt.a(paramContext, paramString, new vfb(this));
+  }
+  
+  public boolean a(Context paramContext, HashMap<String, String> paramHashMap)
+  {
+    if (paramContext == null) {
+      return false;
+    }
+    ArrayList localArrayList = a(paramHashMap);
+    String str2 = "mini_app_personal_guest";
+    String str3 = "homepage_guest";
+    String str1 = str2;
+    paramHashMap = str3;
+    if (localArrayList != null)
+    {
+      str1 = str2;
+      paramHashMap = str3;
+      if (localArrayList.size() > 0)
+      {
+        stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)localArrayList.get(0);
+        str1 = str2;
+        paramHashMap = str3;
+        if (localstSimpleMetaFeed.poster != null)
+        {
+          str1 = str2;
+          paramHashMap = str3;
+          if (TextUtils.equals(localstSimpleMetaFeed.poster.id, vnd.f()))
+          {
+            str1 = "mini_app_personal_main";
+            paramHashMap = "homepage_main";
+          }
+        }
+      }
+    }
+    WSVerticalPageFragment.a(paramContext, str1, paramHashMap, localArrayList, 0, true);
+    return true;
+  }
 }
 
 

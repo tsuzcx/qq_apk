@@ -7,8 +7,8 @@ import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import apkz;
-import aplc;
+import aqod;
+import aqog;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -16,12 +16,12 @@ import java.util.List;
 
 public class MusicDanceDrawable
   extends Drawable
-  implements apkz, Runnable
+  implements aqod, Runnable
 {
   private static List<Double>[] jdField_a_of_type_ArrayOfJavaUtilList;
   private int jdField_a_of_type_Int;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private List<aplc> jdField_a_of_type_JavaUtilList;
+  private List<aqog> jdField_a_of_type_JavaUtilList;
   private boolean jdField_a_of_type_Boolean;
   private int b;
   private int c;
@@ -60,7 +60,7 @@ public class MusicDanceDrawable
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_JavaUtilList.add(new aplc(this, paramInt1, paramInt2, paramInt3, paramInt4, null));
+    this.jdField_a_of_type_JavaUtilList.add(new aqog(this, paramInt1, paramInt2, paramInt3, paramInt4, null));
   }
   
   public void a(Context paramContext, int paramInt1, int paramInt2)
@@ -94,9 +94,9 @@ public class MusicDanceDrawable
     int i = 0;
     while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      aplc localaplc = (aplc)this.jdField_a_of_type_JavaUtilList.get(i);
-      paramCanvas.drawRect(this.jdField_a_of_type_Int, this.b - aplc.a(localaplc), this.jdField_a_of_type_Int + aplc.b(localaplc), this.b, this.jdField_a_of_type_AndroidGraphicsPaint);
-      this.jdField_a_of_type_Int += aplc.b(localaplc) + this.c;
+      aqog localaqog = (aqog)this.jdField_a_of_type_JavaUtilList.get(i);
+      paramCanvas.drawRect(this.jdField_a_of_type_Int, this.b - aqog.a(localaqog), this.jdField_a_of_type_Int + aqog.b(localaqog), this.b, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.jdField_a_of_type_Int += aqog.b(localaqog) + this.c;
       i += 1;
     }
   }
@@ -124,8 +124,8 @@ public class MusicDanceDrawable
       while (i < this.jdField_a_of_type_JavaUtilList.size())
       {
         double d1 = ((Double)jdField_a_of_type_ArrayOfJavaUtilList[i].get(this.f)).doubleValue();
-        aplc localaplc = (aplc)this.jdField_a_of_type_JavaUtilList.get(i);
-        localaplc.a((int)(d1 * aplc.c(localaplc)));
+        aqog localaqog = (aqog)this.jdField_a_of_type_JavaUtilList.get(i);
+        localaqog.a((int)(d1 * aqog.c(localaqog)));
         i += 1;
       }
       scheduleSelf(this, 50L);

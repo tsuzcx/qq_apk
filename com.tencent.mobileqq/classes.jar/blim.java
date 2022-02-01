@@ -1,6 +1,19 @@
-public class blim
+import android.view.View;
+import android.view.View.OnLongClickListener;
+
+class blim
+  implements View.OnLongClickListener
 {
-  public void a() {}
+  blim(blik paramblik, blij paramblij) {}
+  
+  public boolean onLongClick(View paramView)
+  {
+    int i = this.jdField_a_of_type_Blij.getPosition();
+    if (i >= 0) {
+      this.jdField_a_of_type_Blik.a.a(this.jdField_a_of_type_Blij.itemView, i);
+    }
+    return true;
+  }
 }
 
 

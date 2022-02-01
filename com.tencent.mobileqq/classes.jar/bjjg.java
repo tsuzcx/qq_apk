@@ -1,39 +1,27 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.QSecFramework;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.open.applist.QZoneAppListActivity;
+import com.tencent.open.applist.QZoneAppListActivity.1.1;
 
 public class bjjg
-  extends Handler
+  extends OnPluginInstallListener.Stub
 {
-  public bjjg(QSecFramework paramQSecFramework, Looper paramLooper)
+  public bjjg(QZoneAppListActivity paramQZoneAppListActivity) {}
+  
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
   {
-    super(paramLooper);
+    this.a.a(paramInt1 / paramInt2 * 100);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onInstallError(String paramString, int paramInt)
   {
-    try
-    {
-      if ((paramMessage.what == 1) && (!TextUtils.isEmpty((CharSequence)paramMessage.obj)))
-      {
-        long l = Long.parseLong((String)paramMessage.obj);
-        if (l != 0L)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QSecFramework", 2, "handle native msg for cookie:" + l);
-          }
-          QSecFramework.a(6L, l, 0L, 0L, null, null, null, null);
-        }
-      }
-      return;
-    }
-    catch (Exception paramMessage)
-    {
-      paramMessage.printStackTrace();
-    }
+    this.a.runOnUiThread(new QZoneAppListActivity.1.1(this));
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    QZoneAppListActivity.a(this.a);
   }
 }
 

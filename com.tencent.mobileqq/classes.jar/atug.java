@@ -1,69 +1,80 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.transfile.predownload.HttpEngineTask;
-import com.tencent.mobileqq.transfile.predownload.HttpEngineTask.IHttpEngineTask;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.os.Bundle;
+import com.tencent.tbs.reader.TbsReaderView.ReaderCallback;
 
 class atug
-  implements HttpEngineTask.IHttpEngineTask
+  implements TbsReaderView.ReaderCallback
 {
-  atug(atud paramatud) {}
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private atuf jdField_a_of_type_Atuf;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onPreDownloadStart(HttpEngineTask paramHttpEngineTask)
+  public atug(atua paramatua, atuf paramatuf, Activity paramActivity, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IntimateInfoManager", 2, String.format("onPreDownloadStart url=%s", new Object[] { paramHttpEngineTask.httpReq.mReqUrl }));
-    }
+    this.jdField_a_of_type_Atuf = paramatuf;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void onResp(NetResp paramNetResp)
+  public void a(Object paramObject, String paramString, int paramInt)
   {
-    Object localObject = ((HttpNetReq)paramNetResp.mReq).mReqUrl;
-    if (QLog.isColorLevel()) {
-      QLog.d("IntimateInfoManager", 2, String.format("onResp url=%s result=%s", new Object[] { localObject, Integer.valueOf(paramNetResp.mResult) }));
+    if ((paramObject == null) || (!(paramObject instanceof Bundle))) {
+      return;
     }
-    switch (paramNetResp.mResult)
+    ((Bundle)paramObject).putInt(paramString, paramInt);
+  }
+  
+  public void a(Object paramObject, String paramString, boolean paramBoolean)
+  {
+    if ((paramObject == null) || (!(paramObject instanceof Bundle))) {
+      return;
+    }
+    ((Bundle)paramObject).putBoolean(paramString, paramBoolean);
+  }
+  
+  public void onCallBackAction(Integer paramInteger, Object paramObject1, Object paramObject2)
+  {
+    boolean bool = true;
+    switch (paramInteger.intValue())
     {
     }
-    do
+    for (;;)
     {
-      boolean bool1;
-      boolean bool2;
-      do
+      this.jdField_a_of_type_Atua.a(paramInteger.intValue(), this.jdField_a_of_type_Atuf);
+      if (paramInteger.intValue() == 6001) {
+        this.jdField_a_of_type_Atua.a(this.jdField_a_of_type_AndroidAppActivity, paramObject1, paramObject2, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Atuf);
+      }
+      return;
+      this.jdField_a_of_type_Atua.a(paramObject1, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Atuf);
+      continue;
+      a(paramObject2, "is_bar_animating", false);
+      continue;
+      this.jdField_a_of_type_Atua.a(paramObject1, this.jdField_a_of_type_JavaLangString);
+      continue;
+      a(paramObject2, "TitleHeight", (int)this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131299080));
+      continue;
+      if (this.jdField_a_of_type_Atuf != null)
       {
-        return;
-        if (atud.a(this.a) != null) {
-          atud.a(this.a).preDownloadSuccess((String)localObject, paramNetResp.mTotalFileLen);
-        }
-        paramNetResp = (HttpNetReq)paramNetResp.mReq;
-        if (!atud.a(this.a, paramNetResp.mOutPath, atud.a(this.a))) {
+        if (this.jdField_a_of_type_Atuf.a()) {}
+        for (int i = 0;; i = 1)
+        {
+          a(paramObject2, "is_bar_show", i);
           break;
         }
-        localObject = new File(atud.a());
-        if (!((File)localObject).exists()) {
-          ((File)localObject).mkdirs();
+        if ((paramObject1 != null) && ((paramObject1 instanceof Integer)))
+        {
+          atua localatua = this.jdField_a_of_type_Atua;
+          if (((Integer)paramObject1).intValue() == 0) {}
+          for (;;)
+          {
+            atua.a(localatua, false, bool);
+            break;
+            bool = false;
+          }
+          atua.a(this.jdField_a_of_type_Atua, false, false);
         }
-        bool1 = atud.b(this.a, paramNetResp.mOutPath, atud.a());
-        bool2 = atud.a(this.a);
-      } while (!QLog.isColorLevel());
-      QLog.d("IntimateInfoManager", 2, String.format("onResp ResultOk unzip result=%s unzipped=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.e("IntimateInfoManager", 2, "onResp ResultOk file check invalid.");
       }
-      atud.a(this.a, paramNetResp.mOutPath);
-      return;
-    } while (atud.a(this.a) == null);
-    atud.a(this.a).preDownloadSuccess((String)localObject, -1L);
-  }
-  
-  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("IntimateInfoManager", 2, String.format("onUpdateProgeress url=%s totalLen=%s curOffset=%s", new Object[] { ((HttpNetReq)paramNetReq).mReqUrl, Long.valueOf(paramLong2), Long.valueOf(paramLong1) }));
     }
   }
 }

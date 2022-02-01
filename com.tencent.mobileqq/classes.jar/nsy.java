@@ -1,17 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.PoiMapActivity;
 
-class nsy
-  implements View.OnClickListener
+public abstract class nsy
 {
-  nsy(nst paramnst) {}
+  public int a;
+  public int b;
+  public int c;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  public void onClick(View paramView)
-  {
-    this.a.d(this.a.b());
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public nsy(PoiMapActivity paramPoiMapActivity) {}
 }
 
 

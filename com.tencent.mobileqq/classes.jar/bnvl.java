@@ -1,24 +1,28 @@
-import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesRetriever;
-import java.util.concurrent.ConcurrentHashMap;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
 
 public class bnvl
-  implements Comparable<bnvl>
+  implements Animator.AnimatorListener
 {
-  public int a;
-  public long a;
-  public int b;
+  public bnvl(AEEditorAILoadingView paramAEEditorAILoadingView) {}
   
-  public bnvl(VideoFramesRetriever paramVideoFramesRetriever, long paramLong, int paramInt1, int paramInt2)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = Math.min(paramInt2, VideoFramesRetriever.a(paramVideoFramesRetriever));
-    VideoFramesRetriever.a(paramVideoFramesRetriever).put(Integer.valueOf(paramInt1), this);
+    AEEditorAILoadingView.a(this.a).setVisibility(8);
+    AEEditorAILoadingView.b(this.a).setVisibility(0);
+    AEEditorAILoadingView.b(this.a).playAnimation();
   }
   
-  public int a(bnvl parambnvl)
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    return -(int)(this.jdField_a_of_type_Long - parambnvl.jdField_a_of_type_Long);
+    AEEditorAILoadingView.a(this.a).setAlpha(1.0F);
   }
 }
 

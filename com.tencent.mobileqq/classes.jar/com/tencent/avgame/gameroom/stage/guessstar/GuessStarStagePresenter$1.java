@@ -3,31 +3,31 @@ package com.tencent.avgame.gameroom.stage.guessstar;
 import android.content.res.Resources;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
-import ncq;
-import neg;
-import nfa;
-import ngu;
-import nhn;
+import nio;
+import nky;
+import nls;
+import nnm;
+import nof;
 
 public class GuessStarStagePresenter$1
   implements Runnable
 {
-  public GuessStarStagePresenter$1(nfa paramnfa) {}
+  public GuessStarStagePresenter$1(nls paramnls) {}
   
   public void run()
   {
-    if ((!nfa.a(this.this$0)) || (this.this$0.jdField_a_of_type_Neg == null) || (this.this$0.jdField_a_of_type_Nee == null) || (!(this.this$0.jdField_a_of_type_Nee instanceof GuessStarStageView))) {}
+    if ((!nls.a(this.this$0)) || (this.this$0.jdField_a_of_type_Nky == null) || (this.this$0.jdField_a_of_type_Nkw == null) || (!(this.this$0.jdField_a_of_type_Nkw instanceof GuessStarStageView))) {}
     do
     {
       do
       {
         return;
-      } while (!((GuessStarStageView)this.this$0.jdField_a_of_type_Nee).isShown());
-      localObject = ngu.b().a();
-    } while ((localObject == null) || (((nhn)localObject).e));
-    Object localObject = BaseApplicationImpl.getContext().getResources().getString(2131690352);
-    this.this$0.jdField_a_of_type_Neg.a().a((String)localObject);
-    nfa.a(this.this$0, false);
+      } while (!((GuessStarStageView)this.this$0.jdField_a_of_type_Nkw).isShown());
+      localObject = nnm.b().a();
+    } while ((localObject == null) || (((nof)localObject).e));
+    Object localObject = BaseApplicationImpl.getContext().getResources().getString(2131690392);
+    this.this$0.jdField_a_of_type_Nky.a().a((String)localObject);
+    nls.a(this.this$0, false);
   }
 }
 

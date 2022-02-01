@@ -1,21 +1,18 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
-import com.tencent.biz.pubaccount.readinjoy.view.RecyclerViewWithHeaderFooterFix;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 
-public class soz
-  extends RecyclerViewWithHeaderFooterFix
+class soz
+  extends bkxp
 {
-  public soz(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, Context paramContext)
+  soz(sow paramsow, AlphaAnimation paramAlphaAnimation) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramContext);
+    this.jdField_a_of_type_Sow.a.o.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
   }
   
-  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    super.a(paramViewHolder, paramInt);
-    this.a.a(paramViewHolder, paramInt);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

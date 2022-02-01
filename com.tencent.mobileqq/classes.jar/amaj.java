@@ -1,44 +1,52 @@
 import android.content.Context;
-import android.view.View;
-import com.tencent.common.app.AppInterface;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.13.1;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
 
-public abstract interface amaj
+public class amaj
+  implements TVK_SDKMgr.InstallListener
 {
-  public abstract int a();
+  public amaj(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public abstract long a();
+  public void onInstallProgress(float paramFloat) {}
   
-  public abstract View a();
+  public void onInstalledFailed(int paramInt)
+  {
+    ShortVideoPlayActivity.a(this.a, false);
+    ShortVideoPlayActivity.d(this.a, System.currentTimeMillis() - ShortVideoPlayActivity.c(this.a));
+    this.a.a(this.a.a.getResources().getString(2131697477));
+    ShortVideoPlayActivity.c(this.a, 3000);
+    ShortVideoPlayActivity.d(this.a, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onInstalledFailed:" + paramInt);
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_entrance", "ShortVideoPlayActivity");
+    localHashMap.put("param_erroCode", String.valueOf(paramInt));
+    localHashMap.put("param_result", "0");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actInstallTVK", false, 0L, 0L, localHashMap, "");
+  }
   
-  public abstract void a();
-  
-  public abstract void a(amai paramamai);
-  
-  public abstract void a(amai paramamai, long paramLong);
-  
-  public abstract void a(Context paramContext, AppInterface paramAppInterface);
-  
-  public abstract void a(String paramString1, String paramString2, int paramInt);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract long b();
-  
-  public abstract void b();
-  
-  public abstract void b(amai paramamai);
-  
-  public abstract boolean b();
-  
-  public abstract int c();
-  
-  public abstract boolean c();
-  
-  public abstract boolean d();
+  public void onInstalledSuccessed()
+  {
+    ShortVideoPlayActivity.a(this.a, true);
+    ShortVideoPlayActivity.d(this.a, System.currentTimeMillis() - ShortVideoPlayActivity.c(this.a));
+    if (this.a.b.get() != null) {
+      ((MqqHandler)this.a.b.get()).post(new ShortVideoPlayActivity.13.1(this));
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_entrance", "ShortVideoPlayActivity");
+    localHashMap.put("param_erroCode", "0");
+    localHashMap.put("param_result", "1");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actInstallTVK", true, 0L, 0L, localHashMap, "");
+  }
 }
 
 

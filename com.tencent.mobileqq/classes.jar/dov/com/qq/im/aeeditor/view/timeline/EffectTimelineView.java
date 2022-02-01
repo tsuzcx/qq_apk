@@ -9,26 +9,26 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import bmoc;
-import bmod;
-import bmoe;
-import bmof;
-import bmoz;
-import bmpf;
-import bmpg;
+import bodu;
+import bodv;
+import bodw;
+import bodx;
+import boer;
+import boex;
+import boey;
 
 public class EffectTimelineView
   extends TimelineView
-  implements bmoc, bmod, bmpg
+  implements bodu, bodv, boey
 {
   public static long a;
   private float jdField_a_of_type_Float;
   protected int a;
   private PointF jdField_a_of_type_AndroidGraphicsPointF;
-  protected bmoe a;
-  protected bmof a;
-  protected bmoz a;
-  protected bmpf a;
+  protected bodw a;
+  protected bodx a;
+  protected boer a;
+  protected boex a;
   private boolean jdField_a_of_type_Boolean;
   protected long b;
   private boolean b;
@@ -83,37 +83,37 @@ public class EffectTimelineView
     super.a(paramFloat);
     this.jdField_b_of_type_Boolean = true;
     long l1;
-    if ((this.jdField_a_of_type_Bmof != null) && (this.jdField_a_of_type_Bmoz != null))
+    if ((this.jdField_a_of_type_Bodx != null) && (this.jdField_a_of_type_Boer != null))
     {
-      this.j = this.jdField_a_of_type_Bmoz.a(paramFloat);
+      this.j = this.jdField_a_of_type_Boer.a(paramFloat);
       l1 = this.d + this.j;
-      if ((paramFloat >= this.jdField_a_of_type_Float) || (!this.jdField_a_of_type_Bmof.a())) {
+      if ((paramFloat >= this.jdField_a_of_type_Float) || (!this.jdField_a_of_type_Bodx.a())) {
         break label189;
       }
-      this.jdField_a_of_type_Bmof.a();
+      this.jdField_a_of_type_Bodx.a();
       this.e = (this.c - this.j);
     }
     for (;;)
     {
       this.jdField_a_of_type_Float = paramFloat;
       Log.i("miles", "handleLeftSliderMove. moveX:" + paramFloat + ". scrollValue:" + this.j + ". raw startValue:" + l1 + ". adjusted value:" + this.jdField_b_of_type_Long);
-      if ((this.jdField_a_of_type_Bmpf != null) && (this.jdField_a_of_type_Bmoz != null)) {
-        this.jdField_a_of_type_Bmpf.a(this, this.jdField_b_of_type_Long, this.jdField_a_of_type_Bmoz.a(paramFloat));
+      if ((this.jdField_a_of_type_Boex != null) && (this.jdField_a_of_type_Boer != null)) {
+        this.jdField_a_of_type_Boex.a(this, this.jdField_b_of_type_Long, this.jdField_a_of_type_Boer.a(paramFloat));
       }
       return;
       label189:
-      if ((paramFloat > this.jdField_a_of_type_Float) && (this.jdField_a_of_type_Bmof.b()))
+      if ((paramFloat > this.jdField_a_of_type_Float) && (this.jdField_a_of_type_Bodx.b()))
       {
-        this.jdField_a_of_type_Bmof.a();
+        this.jdField_a_of_type_Bodx.a();
         this.e = (this.c - this.j);
       }
       else
       {
-        long l2 = this.jdField_a_of_type_Bmof.a(this, l1);
+        long l2 = this.jdField_a_of_type_Bodx.a(this, l1);
         if (l2 >= 0L)
         {
           this.jdField_b_of_type_Long = l2;
-          this.jdField_a_of_type_Bmof.a(this);
+          this.jdField_a_of_type_Bodx.a(this);
         }
       }
     }
@@ -125,14 +125,14 @@ public class EffectTimelineView
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bmof != null)
+    if (this.jdField_a_of_type_Bodx != null)
     {
-      this.jdField_a_of_type_Bmof.a();
+      this.jdField_a_of_type_Bodx.a();
       this.d = (this.jdField_b_of_type_Long - this.j);
       this.e = (this.c - this.j);
     }
-    if (this.jdField_a_of_type_Bmpf != null) {
-      this.jdField_a_of_type_Bmpf.a(this, this.jdField_b_of_type_Long, this.c, this.jdField_a_of_type_Int, paramBoolean);
+    if (this.jdField_a_of_type_Boex != null) {
+      this.jdField_a_of_type_Boex.a(this, this.jdField_b_of_type_Long, this.c, this.jdField_a_of_type_Int, paramBoolean);
     }
     if (a()) {
       bringToFront();
@@ -166,37 +166,37 @@ public class EffectTimelineView
     super.b(paramFloat);
     this.jdField_b_of_type_Boolean = true;
     long l1;
-    if (this.jdField_a_of_type_Bmof != null)
+    if (this.jdField_a_of_type_Bodx != null)
     {
-      this.j = this.jdField_a_of_type_Bmoz.a(paramFloat);
+      this.j = this.jdField_a_of_type_Boer.a(paramFloat);
       l1 = this.e + this.j;
-      if ((paramFloat >= this.jdField_a_of_type_Float) || (!this.jdField_a_of_type_Bmof.a())) {
+      if ((paramFloat >= this.jdField_a_of_type_Float) || (!this.jdField_a_of_type_Bodx.a())) {
         break label175;
       }
-      this.jdField_a_of_type_Bmof.a();
+      this.jdField_a_of_type_Bodx.a();
       this.e = (this.c - this.j);
     }
     for (;;)
     {
       this.jdField_a_of_type_Float = paramFloat;
       Log.i("miles", "handleRightSliderMove. moveX:" + paramFloat + ". scrollValue:" + this.j + ". raw endValue:" + l1 + ". adjusted value:" + this.c);
-      if (this.jdField_a_of_type_Bmpf != null) {
-        this.jdField_a_of_type_Bmpf.b(this, this.c, this.jdField_a_of_type_Bmoz.a(paramFloat));
+      if (this.jdField_a_of_type_Boex != null) {
+        this.jdField_a_of_type_Boex.b(this, this.c, this.jdField_a_of_type_Boer.a(paramFloat));
       }
       return;
       label175:
-      if ((paramFloat > this.jdField_a_of_type_Float) && (this.jdField_a_of_type_Bmof.b()))
+      if ((paramFloat > this.jdField_a_of_type_Float) && (this.jdField_a_of_type_Bodx.b()))
       {
-        this.jdField_a_of_type_Bmof.a();
+        this.jdField_a_of_type_Bodx.a();
         this.e = (this.c - this.j);
       }
       else
       {
-        long l2 = this.jdField_a_of_type_Bmof.b(this, l1);
+        long l2 = this.jdField_a_of_type_Bodx.b(this, l1);
         if (l2 >= 0L)
         {
           this.c = l2;
-          this.jdField_a_of_type_Bmof.a(this);
+          this.jdField_a_of_type_Bodx.a(this);
         }
       }
     }
@@ -237,9 +237,9 @@ public class EffectTimelineView
     this.h = paramLong;
   }
   
-  public void setScaleModel(bmoz parambmoz)
+  public void setScaleModel(boer paramboer)
   {
-    this.jdField_a_of_type_Bmoz = parambmoz;
+    this.jdField_a_of_type_Boer = paramboer;
   }
   
   public void setSelected(boolean paramBoolean)
@@ -253,11 +253,11 @@ public class EffectTimelineView
     {
       return;
       this.jdField_a_of_type_Boolean = paramBoolean;
-      if (this.jdField_a_of_type_Bmoe != null) {
-        this.jdField_a_of_type_Bmoe.a(this, paramBoolean);
+      if (this.jdField_a_of_type_Bodw != null) {
+        this.jdField_a_of_type_Bodw.a(this, paramBoolean);
       }
-    } while (this.jdField_a_of_type_Bmpf == null);
-    this.jdField_a_of_type_Bmpf.a(paramBoolean, this);
+    } while (this.jdField_a_of_type_Boex == null);
+    this.jdField_a_of_type_Boex.a(paramBoolean, this);
   }
   
   public void setStartValue(long paramLong)
@@ -265,14 +265,14 @@ public class EffectTimelineView
     this.jdField_b_of_type_Long = paramLong;
   }
   
-  public void setStateChangeListener(bmoe parambmoe)
+  public void setStateChangeListener(bodw parambodw)
   {
-    this.jdField_a_of_type_Bmoe = parambmoe;
+    this.jdField_a_of_type_Bodw = parambodw;
   }
   
-  public void setTimeLineViewListener(bmpf parambmpf)
+  public void setTimeLineViewListener(boex paramboex)
   {
-    this.jdField_a_of_type_Bmpf = parambmpf;
+    this.jdField_a_of_type_Boex = paramboex;
   }
   
   public void setTrackIndex(int paramInt)
@@ -280,9 +280,9 @@ public class EffectTimelineView
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void setValueChangeListener(bmof parambmof)
+  public void setValueChangeListener(bodx parambodx)
   {
-    this.jdField_a_of_type_Bmof = parambmof;
+    this.jdField_a_of_type_Bodx = parambodx;
   }
 }
 

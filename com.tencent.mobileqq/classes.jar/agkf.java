@@ -1,13 +1,6 @@
-class agkf
+public abstract interface agkf
 {
-  public int a;
-  public long a;
-  public int b;
-  
-  agkf(agkc paramagkc)
-  {
-    this.jdField_a_of_type_Long = -1L;
-  }
+  public abstract void a(int paramInt);
 }
 
 

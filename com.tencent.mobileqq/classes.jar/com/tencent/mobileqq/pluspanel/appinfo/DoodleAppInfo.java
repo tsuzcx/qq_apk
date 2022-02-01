@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import ayfu;
-import barf;
+import ahvi;
+import bbxu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.scribble.ScribbleResMgr;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -21,7 +22,7 @@ public class DoodleAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130838218;
+    return 2130838232;
   }
   
   public int getAppID()
@@ -50,17 +51,17 @@ public class DoodleAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131697928);
+    return BaseApplicationImpl.getContext().getString(2131698211);
   }
   
-  public void onPlusPanelAppClick(ayfu paramayfu, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     QQAppInterface localQQAppInterface = paramBaseChatPie.app;
     localQQAppInterface.getScribbleDownloader().a();
     if (((paramSessionInfo.curType == 0) || (paramSessionInfo.curType == 3000)) && (ScribbleResMgr.a(localQQAppInterface.getApp().getBaseContext(), localQQAppInterface.getCurrentAccountUin())))
     {
       ScribbleResMgr.a(localQQAppInterface.getApp().getBaseContext(), localQQAppInterface.getCurrentAccountUin());
-      paramayfu.b(paramBaseChatPie);
+      paramahvi.b(paramBaseChatPie);
     }
     paramBaseChatPie.showScribblePanel();
   }

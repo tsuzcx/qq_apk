@@ -1,12 +1,23 @@
-import com.tencent.biz.qqstory.msgTabNode.view.DotAnimationView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.album.view.AlbumGalleryCapturePart.7.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import mqq.os.MqqHandler;
 
 public class vzd
+  extends SimpleJob<Void>
 {
-  public float a;
-  public float b;
-  public float c;
+  vzd(vza paramvza) {}
   
-  private vzd(DotAnimationView paramDotAnimationView) {}
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    paramJobContext = (vwv)wjs.a(30);
+    paramVarArgs = paramJobContext.b();
+    ThreadManager.getUIHandler().post(new AlbumGalleryCapturePart.7.1(this, paramVarArgs, paramJobContext));
+    return null;
+  }
 }
 
 

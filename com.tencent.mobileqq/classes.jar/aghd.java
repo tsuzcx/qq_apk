@@ -1,17 +1,20 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
-class aghd
-  extends aghj
+public class aghd
 {
-  aghd(agcw paramagcw)
+  public static boolean a(BaseChatPie paramBaseChatPie)
   {
-    super(paramagcw, null);
-  }
-  
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new agsu(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if (paramBaseChatPie == null) {
+      return false;
+    }
+    boolean bool1 = ((awio)paramBaseChatPie.getHelper(33)).c();
+    boolean bool2 = ((agkk)paramBaseChatPie.getHelper(43)).c();
+    boolean bool3 = ((ailk)paramBaseChatPie.getHelper(75)).d();
+    boolean bool4 = ((blvc)paramBaseChatPie.getHelper(81)).d();
+    if ((bool1) || (bool2) || (bool3) || (bool4)) {}
+    for (bool1 = true;; bool1 = false) {
+      return bool1;
+    }
   }
 }
 

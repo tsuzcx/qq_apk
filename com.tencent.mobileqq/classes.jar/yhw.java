@@ -1,11 +1,21 @@
-import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class yhw
+class yhw
+  extends SimpleJob<Object>
 {
-  public int a;
-  public long a = -1L;
-  public Bitmap a;
-  public String a;
+  yhw(yhn paramyhn, String paramString1, String paramString2)
+  {
+    super(paramString1);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    yhn.a(this.jdField_a_of_type_Yhn).a(this.jdField_a_of_type_JavaLangString);
+    return null;
+  }
 }
 
 

@@ -1,17 +1,14 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.soload.SoLoadInfo;
-import eipc.EIPCResult;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 class akcd
-  implements bbzg
+  implements Comparator<akcy>
 {
-  akcd(akbx paramakbx, int paramInt) {}
+  akcd(akcc paramakcc) {}
   
-  public void a(SoLoadInfo paramSoLoadInfo)
+  public int a(akcy paramakcy1, akcy paramakcy2)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putSerializable("res", paramSoLoadInfo);
-    this.jdField_a_of_type_Akbx.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
+    return (int)(paramakcy2.a.time - paramakcy1.a.time);
   }
 }
 

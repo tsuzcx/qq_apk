@@ -1,21 +1,73 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.forward.ForwardPhotoOption;
+import com.tencent.qphone.base.util.QLog;
 
-public class atnk
-  implements View.OnTouchListener
+class atnk
+  extends atfq
 {
-  public atnk(ForwardPhotoOption paramForwardPhotoOption) {}
+  atnk(atni paramatni) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void a(long paramLong)
   {
-    return true;
+    if (0L == paramLong) {
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileProgressDirectDone sessionid error.return");
+    }
+    atno localatno;
+    do
+    {
+      return;
+      localatno = this.a.a(paramLong);
+      if (localatno == null)
+      {
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileProgressDirectDone");
+        return;
+      }
+      localatno.h();
+    } while (!localatno.c());
+    this.a.c(paramLong);
+  }
+  
+  protected void b(long paramLong)
+  {
+    if (0L == paramLong) {
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileRecvButSenderReplayTimeOut sessionid error.return");
+    }
+    atno localatno;
+    do
+    {
+      return;
+      localatno = this.a.a(paramLong);
+      if (localatno == null)
+      {
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileRecvButSenderReplayTimeOut");
+        return;
+      }
+      localatno.j();
+    } while (!localatno.c());
+    this.a.c(paramLong);
+  }
+  
+  protected void c(long paramLong)
+  {
+    if (0L == paramLong) {
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileQueryUpProgressTimeOut sessionid error.return");
+    }
+    atno localatno;
+    do
+    {
+      return;
+      localatno = this.a.a(paramLong);
+      if (localatno == null)
+      {
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileQueryUpProgressTimeOut");
+        return;
+      }
+      localatno.l();
+    } while (!localatno.c());
+    this.a.c(paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atnk
  * JD-Core Version:    0.7.0.1
  */

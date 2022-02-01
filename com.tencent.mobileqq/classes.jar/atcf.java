@@ -1,28 +1,108 @@
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.mobileqq.filemanager.data.FavFileInfo;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-public class atcf
-  implements aszj
+class atcf
+  extends atch
 {
-  public atcf(SendBottomBar paramSendBottomBar) {}
+  Comparator<FavFileInfo> jdField_a_of_type_JavaUtilComparator = new atcg(this);
+  Map<Long, FavFileInfo> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  public void onNo() {}
-  
-  public void onYes()
+  atcf(atcb paramatcb)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(aslg.a());
-    Intent localIntent = new Intent();
-    localIntent.putParcelableArrayListExtra("sFilesSelected", localArrayList);
-    SendBottomBar.a(this.a).setResult(-1, localIntent);
-    SendBottomBar.a(this.a).finish();
+    super(paramatcb);
+  }
+  
+  FavFileInfo a(long paramLong)
+  {
+    return (FavFileInfo)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
+  }
+  
+  List<FavFileInfo> a(int paramInt)
+  {
+    if (paramInt == 1) {
+      return this.jdField_a_of_type_JavaUtilArrayList;
+    }
+    if (paramInt == 2) {
+      return this.b;
+    }
+    if (paramInt == 3) {
+      return this.c;
+    }
+    if (paramInt == 4) {
+      return this.d;
+    }
+    if (paramInt == 5) {
+      return this.e;
+    }
+    return this.e;
+  }
+  
+  void a()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.b.clear();
+    this.c.clear();
+    this.d.clear();
+    this.e.clear();
+    this.jdField_a_of_type_JavaUtilMap.clear();
+    QLog.i(atcb.a, 1, atcb.b + "FavFileRecords clear...");
+  }
+  
+  void a(List<FavFileInfo> paramList, int paramInt)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {
+      return;
+    }
+    ArrayList localArrayList;
+    if (paramInt == 1) {
+      localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    }
+    int i;
+    for (;;)
+    {
+      Iterator localIterator = paramList.iterator();
+      i = 0;
+      while (localIterator.hasNext())
+      {
+        FavFileInfo localFavFileInfo = (FavFileInfo)localIterator.next();
+        if (localFavFileInfo != null)
+        {
+          if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(localFavFileInfo.a))) {
+            QLog.w(atcb.a, 1, atcb.b + "addOrUpdateFileRecords favfile is exsited, favid:" + localFavFileInfo.a);
+          }
+          localArrayList.add(localFavFileInfo);
+          this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(localFavFileInfo.a), localFavFileInfo);
+          i = 1;
+        }
+      }
+      if (paramInt == 2) {
+        localArrayList = this.b;
+      } else if (paramInt == 3) {
+        localArrayList = this.c;
+      } else if (paramInt == 4) {
+        localArrayList = this.d;
+      } else if (paramInt == 5) {
+        localArrayList = this.e;
+      } else {
+        localArrayList = this.e;
+      }
+    }
+    if (i != 0) {
+      Collections.sort(localArrayList, this.jdField_a_of_type_JavaUtilComparator);
+    }
+    QLog.i(atcb.a, 1, atcb.b + "addOrUpdateFileRecords recordType:" + paramInt + " addsize:" + paramList.size() + " recordSize:" + localArrayList.size());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atcf
  * JD-Core Version:    0.7.0.1
  */

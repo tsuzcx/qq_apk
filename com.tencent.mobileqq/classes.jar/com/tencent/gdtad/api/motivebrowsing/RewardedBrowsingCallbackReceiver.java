@@ -1,28 +1,28 @@
 package com.tencent.gdtad.api.motivebrowsing;
 
-import abnw;
+import acdk;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.RewardedVideoAdPlugin;
+import bkqx;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.proxyimpl.AdProxyImpl;
 import kotlin.Metadata;
 import mqq.util.WeakReference;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gdtad/api/motivebrowsing/RewardedBrowsingCallbackReceiver;", "Landroid/content/BroadcastReceiver;", "plugin", "Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/RewardedVideoAdPlugin;", "proxy", "Lcom/tencent/qqmini/proxyimpl/AdProxyImpl;", "(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/RewardedVideoAdPlugin;Lcom/tencent/qqmini/proxyimpl/AdProxyImpl;)V", "mPlugin", "Lmqq/util/WeakReference;", "mProxy", "onReceive", "", "context", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gdtad/api/motivebrowsing/RewardedBrowsingCallbackReceiver;", "Landroid/content/BroadcastReceiver;", "plugin", "Lcom/tencent/qqmini/proxyimpl/RewardedVideoAdPlugin;", "proxy", "Lcom/tencent/qqmini/proxyimpl/AdProxyImpl;", "(Lcom/tencent/qqmini/proxyimpl/RewardedVideoAdPlugin;Lcom/tencent/qqmini/proxyimpl/AdProxyImpl;)V", "mPlugin", "Lmqq/util/WeakReference;", "mProxy", "onReceive", "", "context", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class RewardedBrowsingCallbackReceiver
   extends BroadcastReceiver
 {
-  public static final abnw a;
-  private final WeakReference<RewardedVideoAdPlugin> a;
+  public static final acdk a;
+  private final WeakReference<bkqx> a;
   private final WeakReference<AdProxyImpl> b;
   
   static
   {
-    jdField_a_of_type_Abnw = new abnw(null);
+    jdField_a_of_type_Acdk = new acdk(null);
   }
   
   public RewardedBrowsingCallbackReceiver()
@@ -30,9 +30,9 @@ public final class RewardedBrowsingCallbackReceiver
     this(null, null, 3, null);
   }
   
-  public RewardedBrowsingCallbackReceiver(@Nullable RewardedVideoAdPlugin paramRewardedVideoAdPlugin, @Nullable AdProxyImpl paramAdProxyImpl)
+  public RewardedBrowsingCallbackReceiver(@Nullable bkqx parambkqx, @Nullable AdProxyImpl paramAdProxyImpl)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramRewardedVideoAdPlugin);
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(parambkqx);
     this.b = new WeakReference(paramAdProxyImpl);
   }
   
@@ -41,27 +41,13 @@ public final class RewardedBrowsingCallbackReceiver
     if (QLog.isColorLevel()) {
       QLog.d("RewardedBrowsingCallbackReceiver", 2, "RewardedBrowsingCallbackReceiver onReceive");
     }
-    if (paramIntent != null)
+    if ((paramIntent != null) && (TextUtils.equals((CharSequence)paramIntent.getAction(), (CharSequence)"AD_PROXY_ACTION_MOTIVE_BROWSING_END")))
     {
-      paramContext = paramIntent.getAction();
-      if (!TextUtils.equals((CharSequence)paramContext, (CharSequence)"REWARDED_PLUGIN_ACTION_MOTIVE_BROWSING_END")) {
-        break label59;
-      }
-      paramContext = (RewardedVideoAdPlugin)this.jdField_a_of_type_MqqUtilWeakReference.get();
+      paramContext = (AdProxyImpl)this.b.get();
       if (paramContext != null) {
-        paramContext.onReceiveVideoClose(paramIntent);
+        paramContext.a(paramIntent);
       }
     }
-    label59:
-    do
-    {
-      do
-      {
-        return;
-      } while (!TextUtils.equals((CharSequence)paramContext, (CharSequence)"AD_PROXY_ACTION_MOTIVE_BROWSING_END"));
-      paramContext = (AdProxyImpl)this.b.get();
-    } while (paramContext == null);
-    paramContext.a(paramIntent);
   }
 }
 

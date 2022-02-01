@@ -1,21 +1,41 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.MessageForTroopEffectPic;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public abstract interface bgtk
+class bgtk
+  extends azky
 {
-  public abstract void buildBottomBar();
+  bgtk(bgtj parambgtj, azjx paramazjx, TroopChatPie paramTroopChatPie, MessageForTroopEffectPic paramMessageForTroopEffectPic, boolean paramBoolean) {}
   
-  public abstract void buildContentView(Bundle paramBundle);
+  public void a(int paramInt, azkf paramazkf)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopPicEffectsController", 2, "2g diy gif onDownload");
+    }
+    paramazkf = new File(this.jdField_a_of_type_Azjx.c());
+    bggl localbggl = (bggl)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.app.getManager(QQManagerFactory.AIO_ANIMATION_MANAGER);
+    if ((paramazkf.exists()) && (localbggl != null))
+    {
+      localbggl.a = 1;
+      localbggl.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie);
+      localbggl.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopEffectPic, this.jdField_a_of_type_Boolean);
+      localbggl.f();
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("TroopPicEffectsController", 2, "[EffectPic] file not exist or isplaying.");
+  }
   
-  public abstract void buildData();
-  
-  public abstract void buildLayout();
-  
-  public abstract void buildTitleBar();
-  
-  public abstract void buildWebView(AppInterface paramAppInterface);
-  
-  public abstract void preInitWebviewPlugin();
+  public void a_(int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopPicEffectsController", 2, "2g diy gif onUpdateProgress");
+    }
+  }
 }
 
 

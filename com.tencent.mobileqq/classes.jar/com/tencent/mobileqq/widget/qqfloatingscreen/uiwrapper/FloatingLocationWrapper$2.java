@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.widget.qqfloatingscreen.uiwrapper;
 
 import android.view.View;
-import bhmc;
+import biws;
 import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
 import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams;
 
 public class FloatingLocationWrapper$2
   implements Runnable
 {
-  public FloatingLocationWrapper$2(bhmc parambhmc, View paramView, FloatingScreenParams paramFloatingScreenParams) {}
+  public FloatingLocationWrapper$2(biws parambiws, View paramView, FloatingScreenParams paramFloatingScreenParams) {}
   
   public void run()
   {

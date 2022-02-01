@@ -1,48 +1,27 @@
-import Wallet.BroadCastInfo;
-import Wallet.GetBroadCastHbIdiomRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
-import mqq.observer.BusinessObserver;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ajup
-  implements BusinessObserver
+public class ajup
+  implements View.OnClickListener
 {
-  ajup(ajuo paramajuo) {}
+  public ajup(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, int paramInt1, int paramInt2) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (paramInt == 28)
-    {
-      paramBundle = (GetBroadCastHbIdiomRsp)paramBundle.getSerializable("rsp");
-      if (paramBundle != null) {
-        break label21;
-      }
-    }
-    for (;;)
-    {
-      return;
-      label21:
-      if (paramBoolean)
-      {
-        this.a.jdField_a_of_type_Ajul.a = false;
-        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          BroadCastInfo localBroadCastInfo = (BroadCastInfo)paramBundle.sendlistIdiomInfoDict.get(str);
-          if ((this.a.jdField_a_of_type_Ajul.a(str) != null) && (localBroadCastInfo != null)) {
-            if (localBroadCastInfo.isFinished == 1) {
-              this.a.jdField_a_of_type_Ajul.a(str);
-            } else {
-              this.a.jdField_a_of_type_Ajul.a(str, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, localBroadCastInfo.idiomSeq, localBroadCastInfo.hbIdiom, localBroadCastInfo.hbIdiomLastPY, localBroadCastInfo.hbPoemRule);
-            }
-          }
-        }
-      }
-    }
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity(), TroopMemberListActivity.class);
+    localIntent.putExtra("troop_uin", this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.c);
+    localIntent.putExtra("param_from", 15);
+    localIntent.putExtra("param_seq_days", ChatHistoryTroopMemberFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment));
+    localIntent.putExtra("param_seq_name", ChatHistoryTroopMemberFragment.c(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment));
+    localIntent.putExtra("TROOP_INFO_MEMBER_NUM", this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.startActivityForResult(localIntent, 4);
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity().app, "dc00899", "Grp_mber", "", "mber_list", "clk_inacentry", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.c, "" + this.b, "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

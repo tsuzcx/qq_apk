@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@id/mgw" android:paddingLeft="16.0dip" android:paddingTop="13.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="38.0dip"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="@color/agl" android:id="@id/n_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wrm" />
-</LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/mn9" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <android.support.v7.widget.RecyclerView android:id="@id/myx" android:layout_width="@dimen/bed" android:layout_height="wrap_content" />
+        <View android:layout_gravity="center_vertical" android:id="@id/mnd" android:background="@color/al3" android:layout_width="1.0dip" android:layout_height="15.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:scaleType="center" />
+        <android.support.v7.widget.RecyclerView android:id="@id/mo1" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <TextView android:textSize="12.0dip" android:textColor="@color/dy" android:id="@id/nxg" android:paddingLeft="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" android:text="@string/w_4" android:shadowColor="#6e000000" android:shadowDx="1.0" android:shadowDy="1.0" android:shadowRadius="2.0" android:layout_above="@id/mn9" />
+</RelativeLayout>

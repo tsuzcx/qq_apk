@@ -1,8 +1,18 @@
-public class avch
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+
+public abstract class avch
+  extends RecyclerView.ViewHolder
 {
-  public int a;
-  public String a;
-  public String b;
+  public avch(Context paramContext, View paramView, ViewGroup paramViewGroup)
+  {
+    super(paramView);
+  }
+  
+  public abstract void a(FeedsItemData paramFeedsItemData);
 }
 
 

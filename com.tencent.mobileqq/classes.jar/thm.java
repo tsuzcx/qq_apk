@@ -1,10 +1,33 @@
-import kotlin.Metadata;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnticipateInterpolator;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/components/VideoAnimationComponent$Companion;", "", "()V", "AUTO_PLAY", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class thm {}
+class thm
+  implements Animation.AnimationListener
+{
+  thm(thl paramthl, FastWebArticleInfo paramFastWebArticleInfo) {}
+  
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation)
+  {
+    ImageView localImageView = thl.a(this.jdField_a_of_type_Thl);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo.a) {}
+    for (int i = 2130842914;; i = 2130841702)
+    {
+      localImageView.setImageResource(i);
+      paramAnimation.setInterpolator(new AnticipateInterpolator());
+      return;
+    }
+  }
+  
+  public void onAnimationStart(Animation paramAnimation) {}
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     thm
  * JD-Core Version:    0.7.0.1
  */

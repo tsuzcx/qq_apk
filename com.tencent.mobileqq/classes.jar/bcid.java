@@ -1,36 +1,54 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import java.util.List;
 
 public class bcid
-  extends Animation
+  extends bciz
 {
-  int jdField_a_of_type_Int;
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  
-  public bcid(ViewGroup paramViewGroup)
+  public bcid(FaceDecoder paramFaceDecoder)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidViewViewGroup.getHeight();
+    super(paramFaceDecoder, 268435456);
   }
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void a(bcfh parambcfh, bcns parambcns)
   {
-    paramTransformation = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-    paramTransformation.height = ((int)(this.jdField_a_of_type_Int * (1.0F - paramFloat)));
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
-    if (paramFloat == 1.0F)
+    Object localObject1 = (bcfi)parambcfh;
+    parambcfh = ((bcnq)parambcns).a();
+    if (parambcfh != null)
     {
-      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-      paramTransformation.height = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
+      List localList = ((bcfi)localObject1).a();
+      if (localList != null)
+      {
+        parambcfh.removeAllViews();
+        int j = Math.min(localList.size(), ((bcfi)localObject1).a());
+        int i = 0;
+        while (i < j)
+        {
+          localObject1 = new bcpb(((bcnq)parambcns).a(), 268435456);
+          Object localObject2 = ((bcpb)localObject1).a();
+          bcfj localbcfj = (bcfj)localList.get(i);
+          ((View)localObject2).setTag(2131381183, localbcfj);
+          ((View)localObject2).setTag(2131381188, localObject1);
+          ((View)localObject2).setTag(2131381184, Integer.valueOf(i));
+          ((View)localObject2).setTag(2131381182, Integer.valueOf(localList.size()));
+          ((View)localObject2).setTag(2131381185, this.a);
+          if ((localbcfj instanceof bceh)) {
+            bcnf.a((bceh)localbcfj, j, i);
+          }
+          localObject2 = new LinearLayout.LayoutParams(-1, -2);
+          parambcfh.addView(((bcpb)localObject1).a(), (ViewGroup.LayoutParams)localObject2);
+          this.a.a(localbcfj, (bcnu)localObject1);
+          i += 1;
+        }
+      }
     }
-  }
-  
-  public boolean willChangeBounds()
-  {
-    return true;
+    if (parambcns.b() != null) {
+      parambcns.b().setVisibility(8);
+    }
   }
 }
 

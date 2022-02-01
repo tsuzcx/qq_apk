@@ -1,18 +1,34 @@
-import android.os.Handler;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3.1.1;
+import android.util.SparseArray;
+import android.view.View;
+import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
 
 public class bedl
-  implements bcrx
+  implements bkzq
 {
-  public bedl(TroopEnterEffectController.3 param3) {}
+  public bedl(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment, SparseArray paramSparseArray, bkzi parambkzi) {}
   
-  public void a(bcra parambcra)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView == null) {
-      return;
+    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null)
+    {
+      paramInt = -1;
+      switch (paramInt)
+      {
+      }
     }
-    this.a.this$0.jdField_a_of_type_AndroidOsHandler.post(new TroopEnterEffectController.3.1.1(this, parambcra));
+    for (;;)
+    {
+      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment);
+      if (this.jdField_a_of_type_Bkzi.isShowing()) {
+        this.jdField_a_of_type_Bkzi.dismiss();
+      }
+      return;
+      paramInt = ((Integer)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).intValue();
+      break;
+      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 2);
+      continue;
+      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 3);
+    }
   }
 }
 

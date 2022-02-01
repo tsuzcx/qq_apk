@@ -1,31 +1,179 @@
-import android.content.Context;
-import android.hardware.SensorEvent;
-import android.hardware.SensorManager;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.RspBody;
 
 public class apar
-  extends apap
+  extends apaq
 {
-  private float[] d = new float[16];
+  private apas a;
+  protected QQAppInterface a;
   
-  public apar(Context paramContext, int paramInt, SensorManager paramSensorManager, apah paramapah)
+  public apar(apas paramapas)
   {
-    super(paramContext, paramInt, paramSensorManager, paramapah);
-    paramContext = paramSensorManager.getDefaultSensor(11);
-    if ((Build.VERSION.SDK_INT >= 9) && (paramContext != null))
-    {
-      this.a.add(paramContext);
-      return;
-    }
-    throw new OrientationProviderNotFound(String.valueOf(3));
+    this.jdField_a_of_type_Apas = paramapas;
   }
   
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public apar(apas paramapas, QQAppInterface paramQQAppInterface)
   {
-    apaj.a(this.d, paramSensorEvent);
-    super.a(this.d);
+    this.jdField_a_of_type_Apas = paramapas;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  private void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AppletsObserver", 2, "removeObserver  " + this);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
+    }
+  }
+  
+  private void a(boolean paramBoolean, Object paramObject)
+  {
+    if (this.jdField_a_of_type_Apas == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AppletsObserver", 2, "No Set ResponseResultListener, ignore Response!");
+      }
+    }
+    while (4 != this.jdField_a_of_type_Apas.a()) {
+      return;
+    }
+    this.jdField_a_of_type_Apas.a(paramBoolean, paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletsObserver", 2, this + "      Follow isSuccess:" + paramBoolean);
+    }
+    oidb_cmd0xc96.RspBody localRspBody;
+    if (paramBoolean)
+    {
+      localRspBody = new oidb_cmd0xc96.RspBody();
+      if (!(paramObject instanceof byte[])) {}
+    }
+    for (;;)
+    {
+      try
+      {
+        localRspBody.mergeFrom((byte[])paramObject);
+        this.jdField_a_of_type_Apas.a(localRspBody);
+        this.jdField_a_of_type_Apas.b(paramBoolean, paramObject);
+        a();
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+      {
+        QLog.w("AppletsObserver", 4, localInvalidProtocolBufferMicroException.getMessage(), localInvalidProtocolBufferMicroException);
+        this.jdField_a_of_type_Apas.b(paramObject);
+        continue;
+      }
+      catch (Exception localException)
+      {
+        QLog.w("AppletsObserver", 4, localException.getMessage(), localException);
+        this.jdField_a_of_type_Apas.b(paramObject);
+        continue;
+      }
+      this.jdField_a_of_type_Apas.b(paramObject);
+      continue;
+      this.jdField_a_of_type_Apas.b(paramObject);
+    }
+  }
+  
+  private void b(boolean paramBoolean, Object paramObject)
+  {
+    if (this.jdField_a_of_type_Apas == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AppletsObserver", 2, "No Set ResponseResultListener, ignore Response!");
+      }
+    }
+    while (5 != this.jdField_a_of_type_Apas.a()) {
+      return;
+    }
+    this.jdField_a_of_type_Apas.a(paramBoolean, paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletsObserver", 2, this + "      unFollow isSuccess:" + paramBoolean);
+    }
+    oidb_cmd0xc96.RspBody localRspBody;
+    if (paramBoolean)
+    {
+      localRspBody = new oidb_cmd0xc96.RspBody();
+      if (!(paramObject instanceof byte[])) {}
+    }
+    for (;;)
+    {
+      try
+      {
+        localRspBody.mergeFrom((byte[])paramObject);
+        this.jdField_a_of_type_Apas.a(localRspBody);
+        this.jdField_a_of_type_Apas.b(paramBoolean, paramObject);
+        a();
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+      {
+        QLog.w("AppletsObserver", 4, localInvalidProtocolBufferMicroException.getMessage(), localInvalidProtocolBufferMicroException);
+        this.jdField_a_of_type_Apas.b(paramObject);
+        continue;
+      }
+      catch (Exception localException)
+      {
+        QLog.w("AppletsObserver", 4, localException.getMessage(), localException);
+        this.jdField_a_of_type_Apas.b(paramObject);
+        continue;
+      }
+      this.jdField_a_of_type_Apas.b(paramObject);
+      continue;
+      this.jdField_a_of_type_Apas.b(paramObject);
+    }
+  }
+  
+  private void c(boolean paramBoolean, Object paramObject)
+  {
+    if (this.jdField_a_of_type_Apas == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AppletsObserver", 2, "No Set ResponseResultListener, ignore Response!");
+      }
+    }
+    while (7 != this.jdField_a_of_type_Apas.a()) {
+      return;
+    }
+    this.jdField_a_of_type_Apas.a(paramBoolean, paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletsObserver", 2, "PublicAccountNotifySetting isSuccess:" + paramBoolean);
+    }
+    if (paramBoolean) {
+      this.jdField_a_of_type_Apas.a(paramObject);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Apas.b(paramBoolean, paramObject);
+      a();
+      return;
+      this.jdField_a_of_type_Apas.b(paramObject);
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
+      super.onUpdate(paramInt, paramBoolean, paramObject);
+    case 6: 
+      return;
+    case 4: 
+      a(paramBoolean, paramObject);
+      return;
+    case 5: 
+      b(paramBoolean, paramObject);
+      return;
+    }
+    c(paramBoolean, paramObject);
   }
 }
 

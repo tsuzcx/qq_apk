@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.messagesearch;
 
-import ajgd;
+import akbr;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class BaseMessageSearchDialog$2
   implements Runnable
 {
-  public BaseMessageSearchDialog$2(ajgd paramajgd) {}
+  public BaseMessageSearchDialog$2(akbr paramakbr) {}
   
   public void run()
   {
-    AIOUtils.showKeyboard(this.this$0.findViewById(2131366179));
+    AIOUtils.showKeyboard(this.this$0.findViewById(2131366280));
   }
 }
 

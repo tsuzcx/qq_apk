@@ -1,38 +1,33 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.EventBridgeInvokeHandler.register.1;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.EventBridgeInvokeHandler.register.2;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.EventBridgeInvokeHandler.register.3;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function2;
-import org.jetbrains.annotations.NotNull;
+import android.view.View;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/EventBridgeInvokeHandler;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "module", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "nameSpace", "", "register", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class tlc
-  extends tks
+class tlc
+  implements URLDrawableDownListener
 {
-  public static final tld a = new tld(null);
+  tlc(tkx paramtkx) {}
   
-  public tlc(@NotNull BridgeModule paramBridgeModule)
-  {
-    super(paramBridgeModule);
-  }
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
   
-  @NotNull
-  public String a()
-  {
-    return "event";
-  }
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  public void a()
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    a("addEventListener", (Function2)new EventBridgeInvokeHandler.register.1(this));
-    a("removeEventListener", (Function2)new EventBridgeInvokeHandler.register.2(this));
-    a("dispatchEvent", (Function2)new EventBridgeInvokeHandler.register.3(this));
+    AbstractGifImage.resumeAll();
+    tkx.a(this.a).setVisibility(0);
+    this.a.a("0X800920C", new JSONObject());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tlc
  * JD-Core Version:    0.7.0.1
  */

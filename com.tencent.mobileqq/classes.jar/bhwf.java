@@ -1,470 +1,179 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.utils.HexUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.PublicFragmentActivityForOpenSDK;
-import com.tencent.open.agent.util.AuthorityUtil.1;
-import com.tencent.qconn.protofile.appType.LoginSig;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
-import mqq.manager.TicketManager;
-import mqq.manager.WtloginManager;
-import oicq.wlogin_sdk.request.Ticket;
-import tencent.im.login.GatewayVerify.ReqBody;
-import tencent.im.login.GatewayVerify.ReqConnectLogin;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import mqq.observer.BusinessObserver;
 
 public class bhwf
+  implements BusinessObserver
 {
-  public static Bitmap a(Context paramContext, Bitmap paramBitmap, int paramInt1, int paramInt2)
-  {
-    if (paramBitmap == null) {
-      return null;
-    }
-    float f2 = paramContext.getResources().getDisplayMetrics().density;
-    int i = paramBitmap.getWidth();
-    float f1 = f2;
-    if (i > 0)
-    {
-      f1 = f2;
-      if (i < paramInt1 * f2) {
-        f1 = i / paramInt1;
-      }
-    }
-    paramInt1 = (int)(paramInt1 * f1);
-    paramInt2 = (int)(f1 * paramInt2);
-    return bfvo.a(paramBitmap, paramInt1, paramInt1, paramInt2);
-  }
+  public bhwf(HealthBusinessPlugin paramHealthBusinessPlugin, String paramString) {}
   
-  public static Bundle a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
+  /* Error */
+  public void onReceive(int paramInt, boolean paramBoolean, android.os.Bundle paramBundle)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("platform", "1");
-    localBundle.putString("result", paramString1);
-    localBundle.putString("code", paramString2);
-    localBundle.putString("tmcost", paramString3);
-    localBundle.putString("rate", paramString4);
-    localBundle.putString("cmd", paramString5);
-    localBundle.putString("uin", paramString6);
-    localBundle.putString("appid", paramString7);
-    localBundle.putString("share_type", paramString8);
-    localBundle.putString("detail", paramString9);
-    localBundle.putString("os_ver", Build.VERSION.RELEASE);
-    localBundle.putString("network", bhzh.a(bhpc.a().a()));
-    localBundle.putString("apn", bhzh.b(bhpc.a().a()));
-    localBundle.putString("model_name", Build.MODEL);
-    localBundle.putString("qq_ver", bhpc.a().c());
-    return localBundle;
-  }
-  
-  public static Bundle a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("uin", paramString1);
-    localBundle.putString("openid", paramString2);
-    localBundle.putString("report_type", paramString3);
-    localBundle.putString("act_type", paramString4);
-    localBundle.putString("via", "2");
-    localBundle.putString("app_id", paramString5);
-    localBundle.putString("result", paramString6);
-    localBundle.putString("type", paramString7);
-    localBundle.putString("login_status", paramString8);
-    localBundle.putString("need_user_auth", paramString9);
-    localBundle.putString("to_uin", paramString10);
-    localBundle.putString("to_type", paramString11);
-    localBundle.putString("platform", "4");
-    localBundle.putString("app_type", Integer.toString(1));
-    return localBundle;
-  }
-  
-  public static String a(Activity paramActivity)
-  {
-    if (paramActivity == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("AuthorityUtil", 2, "getSrcPackageName activity is null");
-      }
-    }
-    do
-    {
-      return null;
-      paramActivity = paramActivity.getIntent().getBundleExtra("key_params");
-      if (paramActivity != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("AuthorityUtil", 2, "getSrcPackageName bundle is null");
-    return null;
-    return paramActivity.getString("packagename");
-  }
-  
-  public static String a(Context paramContext, String paramString1, String paramString2)
-  {
-    bhzm.b("AuthorityUtil", "getOpenId uin = " + paramString1 + ", appid = " + paramString2);
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return null;
-    }
-    return biew.a(paramContext, "uin_openid_store").getString(paramString2 + ":" + paramString1, null);
-  }
-  
-  public static String a(Intent paramIntent, String paramString)
-  {
-    try
-    {
-      paramIntent = paramIntent.getStringExtra(paramString);
-      return paramIntent;
-    }
-    catch (Exception paramIntent)
-    {
-      QLog.e("AuthorityUtil", 1, "getStringExtra :", paramIntent);
-    }
-    return null;
-  }
-  
-  public static String a(Bundle paramBundle, String paramString1, String paramString2)
-  {
-    if (paramBundle == null)
-    {
-      QLog.e("AuthorityUtil", 1, "getString error, params==null");
-      return paramString2;
-    }
-    if (!paramBundle.containsKey(paramString1))
-    {
-      QLog.e("AuthorityUtil", 1, "getString error, not comtain : " + paramString1);
-      return paramString2;
-    }
-    paramBundle = paramBundle.get(paramString1);
-    if ((paramBundle instanceof String)) {}
-    for (paramBundle = (String)paramBundle;; paramBundle = paramString2) {
-      return paramBundle;
-    }
-  }
-  
-  public static String a(String paramString)
-  {
-    try
-    {
-      if (TextUtils.isEmpty(paramString)) {
-        return "0";
-      }
-      paramString = paramString.substring(paramString.length() - 4);
-      return paramString;
-    }
-    catch (Exception paramString) {}
-    return "0";
-  }
-  
-  public static String a(AppRuntime paramAppRuntime, biej parambiej, appType.LoginSig paramLoginSig, String paramString1, String paramString2)
-  {
-    Object localObject = paramAppRuntime.getAccount();
-    String str = parambiej.a;
-    boolean bool2 = ((OpenSDKAppInterface)paramAppRuntime).a().a(str);
-    boolean bool1;
-    if ((!bool2) && (TextUtils.equals((CharSequence)localObject, str))) {
-      if (a(parambiej.a, paramAppRuntime, true) != null)
-      {
-        bool1 = true;
-        boolean bool3 = a(parambiej.a, paramAppRuntime);
-        QLog.d("AuthorityUtil", 1, new Object[] { "getMsfCommand qq current account hasA2=", Boolean.valueOf(bool1), ", hasD2=", Boolean.valueOf(bool3) });
-        if ((!bool1) || (!bool3)) {
-          break label124;
-        }
-        paramAppRuntime = paramString1;
-      }
-    }
-    label124:
-    do
-    {
-      return paramAppRuntime;
-      bool1 = false;
-      break;
-      paramString1 = new appType.LoginSig();
-      paramString1.type.set(8);
-      localObject = a(parambiej.a, paramAppRuntime, true);
-      if ((!bool2) && (localObject != null) && (a(parambiej.a, paramAppRuntime)))
-      {
-        QLog.d("AuthorityUtil", 1, "getMsfCommand use qq cache");
-        paramString1.appid.set(16);
-        paramString1.sig.set(ByteStringMicro.copyFrom((byte[])localObject));
-        paramLoginSig.set(paramString1);
-        return paramString2;
-      }
-      parambiej = a(parambiej.a, paramAppRuntime, false);
-      paramAppRuntime = paramString2;
-    } while (parambiej == null);
-    QLog.d("AuthorityUtil", 1, "getMsfCommand use opensdk cache");
-    paramString1.appid.set(1600001540);
-    paramString1.sig.set(ByteStringMicro.copyFrom(parambiej));
-    paramLoginSig.set(paramString1);
-    return paramString2;
-  }
-  
-  public static void a(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, Long paramLong, int paramInt2, int paramInt3, String paramString5)
-  {
-    try
-    {
-      bibc.a().a(paramInt1, paramString1, paramString2, paramString3, paramString4, paramLong, paramInt2, paramInt3, paramString5);
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      QLog.e("AuthorityUtil", 1, "Exception", paramString1);
-    }
-  }
-  
-  public static void a(Activity paramActivity, String paramString, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    if ((paramActivity == null) || (paramActivity.isFinishing()) || ((Build.VERSION.SDK_INT >= 17) && (paramActivity.isDestroyed())))
-    {
-      QLog.e("AuthorityUtil", 1, "showDialog activity is null/finished. sdk_int: " + Build.VERSION.SDK_INT);
-      return;
-    }
-    bfur.b(paramActivity, 230).setMessageWithUrl(paramString).setTitle(paramActivity.getString(2131717803)).setPositiveButton(17039370, paramOnClickListener).show();
-  }
-  
-  public static void a(Activity paramActivity, String paramString, boolean paramBoolean)
-  {
-    if ((paramActivity == null) || (paramActivity.isFinishing()))
-    {
-      QLog.e("AuthorityUtil", 1, "showToast activity is null/finished");
-      return;
-    }
-    paramActivity.runOnUiThread(new AuthorityUtil.1(paramActivity, paramBoolean, paramString));
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, boolean paramBoolean)
-  {
-    try
-    {
-      bhvw.a().a(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramBoolean);
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      QLog.e("AuthorityUtil", 1, "Exception", paramString1);
-    }
-  }
-  
-  public static void a(AppRuntime paramAppRuntime, String paramString)
-  {
-    QLog.d("AuthorityUtil", 1, new Object[] { "syncLoginAccount-", a(paramString) });
-    Object localObject = paramAppRuntime.getApplication().getAllAccounts();
-    if (localObject != null) {
-      if (((List)localObject).size() >= 8) {
-        QLog.d("AuthorityUtil", 1, new Object[] { "syncLoginAccount-max count=", Integer.valueOf(((List)localObject).size()) });
-      }
-    }
-    for (;;)
-    {
-      return;
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        if (paramString.equals(((SimpleAccount)((Iterator)localObject).next()).getUin()))
-        {
-          QLog.d("AuthorityUtil", 1, "syncLoginAccount-exist!!!");
-          return;
-        }
-      }
-      bcef.b(null, "dc00898", "", "", "0X800AC2F", "0X800AC2F", 0, 0, "", "", "", "");
-      QLog.d("AuthorityUtil", 1, new Object[] { "sync opensdk account 0X800AC2F uin=", a(paramString) });
-      MsfSdkUtils.addLoginSimpleAccount(paramString, false);
-      paramAppRuntime.getApplication().setSortAccountList(MsfSdkUtils.getLoginedAccountList());
-      paramAppRuntime = paramAppRuntime.getApplication().getAllAccounts();
-      if (paramAppRuntime != null)
-      {
-        paramAppRuntime = paramAppRuntime.iterator();
-        while (paramAppRuntime.hasNext())
-        {
-          paramString = (SimpleAccount)paramAppRuntime.next();
-          QLog.d("AuthorityUtil", 1, "after syncLoginAccount " + a(paramString.getUin()));
-        }
-      }
-    }
-  }
-  
-  public static boolean a(Activity paramActivity)
-  {
-    return ((paramActivity instanceof AuthorityActivity)) || ((paramActivity instanceof PublicFragmentActivityForOpenSDK));
-  }
-  
-  public static boolean a(String paramString, AppRuntime paramAppRuntime)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("AuthorityUtil", 1, "getDA2 false, currentAccount empty");
-    }
-    do
-    {
-      return false;
-      if (paramAppRuntime == null)
-      {
-        QLog.e("AuthorityUtil", 1, "getDA2 false appInterface is null");
-        return false;
-      }
-      paramAppRuntime = (TicketManager)paramAppRuntime.getManager(2);
-      if (paramAppRuntime == null)
-      {
-        QLog.e("AuthorityUtil", 1, "getDA2 false TicketManager is null");
-        return false;
-      }
-      paramString = paramAppRuntime.getLocalTicket(paramString, 262144);
-    } while (paramString == null);
-    paramString = paramString._sig;
-    if ((paramString != null) && (paramString.length != 0)) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
-  }
-  
-  public static boolean a(AppRuntime paramAppRuntime, String paramString)
-  {
-    Object localObject = paramAppRuntime.getAccount();
-    boolean bool2 = ((OpenSDKAppInterface)paramAppRuntime).a().a(paramString);
-    if ((!bool2) && (TextUtils.equals((CharSequence)localObject, paramString)))
-    {
-      if (a(paramString, paramAppRuntime, true) != null) {}
-      for (boolean bool1 = true;; bool1 = false)
-      {
-        boolean bool3 = a(paramString, paramAppRuntime);
-        QLog.d("AuthorityUtil", 1, new Object[] { "isUse540Ticket qq current account hasA2=", Boolean.valueOf(bool1), ", hasD2=", Boolean.valueOf(bool3) });
-        if ((!bool1) || (!bool3)) {
-          break;
-        }
-        return false;
-      }
-    }
-    localObject = a(paramString, paramAppRuntime, true);
-    if ((!bool2) && (localObject != null) && (a(paramString, paramAppRuntime)))
-    {
-      QLog.d("AuthorityUtil", 1, "isUse540Ticket use qq cache");
-      return false;
-    }
-    if (a(paramString, paramAppRuntime, false) != null)
-    {
-      QLog.d("AuthorityUtil", 1, "isUse540Ticket use opensdk cache");
-      return true;
-    }
-    QLog.d("AuthorityUtil", 1, "isUse540Ticket use qq skey cache");
-    return false;
-  }
-  
-  public static boolean a(WtloginManager paramWtloginManager, String paramString)
-  {
-    if (paramWtloginManager.isNeedLoginWithPasswd(paramString, 16))
-    {
-      QLog.d("AuthorityUtil", 1, "IsNeedLoginWithPasswd appid=16, uin=" + a(paramString));
-      if (paramWtloginManager.isNeedLoginWithPasswd(paramString, 1600001540))
-      {
-        QLog.d("AuthorityUtil", 1, "IsNeedLoginWithPasswd appid=1600001540, uin=" + a(paramString));
-        return true;
-      }
-    }
-    QLog.d("AuthorityUtil", 1, "IsNeedLoginWithPasswd false uin=" + a(paramString));
-    return false;
-  }
-  
-  public static byte[] a(String paramString)
-  {
-    GatewayVerify.ReqBody localReqBody = new GatewayVerify.ReqBody();
-    GatewayVerify.ReqConnectLogin localReqConnectLogin = new GatewayVerify.ReqConnectLogin();
-    localReqConnectLogin.str_connect_data.set("appid=" + paramString + "&sdkp=a");
-    localReqBody.msg_req_connect_login.set(localReqConnectLogin);
-    QLog.e("AuthorityUtil", 1, "getConnectData appid=" + paramString + "&sdkp=a");
-    return localReqBody.toByteArray();
-  }
-  
-  public static byte[] a(String paramString, AppRuntime paramAppRuntime, boolean paramBoolean)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      QLog.e("AuthorityUtil", 1, "getA2 false, currentAccount empty");
-      return null;
-    }
-    if (paramAppRuntime == null)
-    {
-      QLog.e("AuthorityUtil", 1, "getA2 false appInterface is null");
-      return null;
-    }
-    paramAppRuntime = (TicketManager)paramAppRuntime.getManager(2);
-    if (paramAppRuntime == null)
-    {
-      QLog.e("AuthorityUtil", 1, "getA2 false TicketManager is null");
-      return null;
-    }
-    String str;
-    if (paramBoolean)
-    {
-      paramAppRuntime = paramAppRuntime.getA2(paramString);
-      StringBuilder localStringBuilder = new StringBuilder();
-      if (!paramBoolean) {
-        break label151;
-      }
-      str = "host";
-      label86:
-      QLog.d("AuthorityUtil", 1, str + " getA2 uin=" + a(paramString) + "  " + a(paramAppRuntime));
-      if (!TextUtils.isEmpty(paramAppRuntime)) {
-        break label158;
-      }
-    }
-    label151:
-    label158:
-    for (paramString = null;; paramString = HexUtil.hexStr2Bytes(paramAppRuntime))
-    {
-      return paramString;
-      paramAppRuntime = paramAppRuntime.getOpenSdkKey(paramString, 64);
-      break;
-      str = "opensdk";
-      break label86;
-    }
-  }
-  
-  public static String[] a(SharedPreferences paramSharedPreferences)
-  {
-    paramSharedPreferences = paramSharedPreferences.getString("accList", null);
-    if (paramSharedPreferences == null) {
-      return null;
-    }
-    return paramSharedPreferences.split(",");
-  }
-  
-  public static boolean b(WtloginManager paramWtloginManager, String paramString)
-  {
-    if (paramWtloginManager == null)
-    {
-      QLog.d("AuthorityUtil", 1, "isUserHaveA1 null == wtManager, uin=" + a(paramString));
-      return false;
-    }
-    if (paramWtloginManager.isUserHaveA1(paramString, 16L))
-    {
-      QLog.d("AuthorityUtil", 1, "isUserHaveA1 appid=16, uin=" + a(paramString));
-      return true;
-    }
-    if (paramWtloginManager.isUserHaveA1(paramString, 1600001540L))
-    {
-      QLog.d("AuthorityUtil", 1, "isUserHaveA1 appid=*540, uin=" + a(paramString));
-      return true;
-    }
-    QLog.d("AuthorityUtil", 1, "isUserHaveA1 false uin=" + a(paramString));
-    return false;
+    // Byte code:
+    //   0: invokestatic 29	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +25 -> 28
+    //   6: ldc 31
+    //   8: iconst_2
+    //   9: iconst_2
+    //   10: anewarray 4	java/lang/Object
+    //   13: dup
+    //   14: iconst_0
+    //   15: ldc 33
+    //   17: aastore
+    //   18: dup
+    //   19: iconst_1
+    //   20: iload_2
+    //   21: invokestatic 39	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   24: aastore
+    //   25: invokestatic 43	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   28: new 45	org/json/JSONObject
+    //   31: dup
+    //   32: invokespecial 46	org/json/JSONObject:<init>	()V
+    //   35: astore 4
+    //   37: iload_2
+    //   38: ifne +44 -> 82
+    //   41: ldc 31
+    //   43: iconst_1
+    //   44: ldc 48
+    //   46: invokestatic 52	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   49: aload 4
+    //   51: ldc 54
+    //   53: iconst_m1
+    //   54: invokevirtual 58	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   57: pop
+    //   58: aload_0
+    //   59: getfield 13	bhwf:jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin	Lcom/tencent/mobileqq/vashealth/HealthBusinessPlugin;
+    //   62: aload_0
+    //   63: getfield 15	bhwf:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   66: iconst_1
+    //   67: anewarray 60	java/lang/String
+    //   70: dup
+    //   71: iconst_0
+    //   72: aload 4
+    //   74: invokevirtual 64	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   77: aastore
+    //   78: invokevirtual 70	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   81: return
+    //   82: aload_3
+    //   83: ldc 72
+    //   85: invokevirtual 78	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
+    //   88: astore_3
+    //   89: aload_3
+    //   90: ifnull +159 -> 249
+    //   93: new 80	com/tencent/mobileqq/mp/mobileqq_mp$FollowResponse
+    //   96: dup
+    //   97: invokespecial 81	com/tencent/mobileqq/mp/mobileqq_mp$FollowResponse:<init>	()V
+    //   100: astore 5
+    //   102: aload 5
+    //   104: aload_3
+    //   105: invokevirtual 85	com/tencent/mobileqq/mp/mobileqq_mp$FollowResponse:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   108: pop
+    //   109: aload 5
+    //   111: getfield 89	com/tencent/mobileqq/mp/mobileqq_mp$FollowResponse:ret_info	Lcom/tencent/mobileqq/mp/mobileqq_mp$RetInfo;
+    //   114: invokevirtual 95	com/tencent/mobileqq/mp/mobileqq_mp$RetInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   117: checkcast 91	com/tencent/mobileqq/mp/mobileqq_mp$RetInfo
+    //   120: astore_3
+    //   121: aload_3
+    //   122: getfield 99	com/tencent/mobileqq/mp/mobileqq_mp$RetInfo:ret_code	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   125: invokevirtual 104	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   128: istore_1
+    //   129: aload_3
+    //   130: getfield 108	com/tencent/mobileqq/mp/mobileqq_mp$RetInfo:err_info	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   133: invokevirtual 112	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   136: astore_3
+    //   137: aload 4
+    //   139: ldc 54
+    //   141: iconst_0
+    //   142: invokevirtual 58	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   145: pop
+    //   146: new 45	org/json/JSONObject
+    //   149: dup
+    //   150: invokespecial 46	org/json/JSONObject:<init>	()V
+    //   153: astore 5
+    //   155: iload_1
+    //   156: ifne +50 -> 206
+    //   159: invokestatic 29	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   162: ifeq +11 -> 173
+    //   165: ldc 31
+    //   167: iconst_2
+    //   168: ldc 114
+    //   170: invokestatic 116	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   173: aload 5
+    //   175: ldc 118
+    //   177: iconst_1
+    //   178: invokevirtual 121	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
+    //   181: pop
+    //   182: aload 4
+    //   184: ldc 123
+    //   186: aload 5
+    //   188: invokevirtual 126	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   191: pop
+    //   192: goto -134 -> 58
+    //   195: astore_3
+    //   196: ldc 31
+    //   198: iconst_1
+    //   199: ldc 128
+    //   201: aload_3
+    //   202: invokestatic 131	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   205: return
+    //   206: ldc 31
+    //   208: iconst_1
+    //   209: iconst_4
+    //   210: anewarray 4	java/lang/Object
+    //   213: dup
+    //   214: iconst_0
+    //   215: ldc 133
+    //   217: aastore
+    //   218: dup
+    //   219: iconst_1
+    //   220: iload_1
+    //   221: invokestatic 138	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   224: aastore
+    //   225: dup
+    //   226: iconst_2
+    //   227: ldc 140
+    //   229: aastore
+    //   230: dup
+    //   231: iconst_3
+    //   232: aload_3
+    //   233: aastore
+    //   234: invokestatic 142	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   237: aload 5
+    //   239: ldc 118
+    //   241: iconst_0
+    //   242: invokevirtual 121	org/json/JSONObject:put	(Ljava/lang/String;Z)Lorg/json/JSONObject;
+    //   245: pop
+    //   246: goto -64 -> 182
+    //   249: ldc 31
+    //   251: iconst_1
+    //   252: ldc 144
+    //   254: invokestatic 52	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   257: aload 4
+    //   259: ldc 54
+    //   261: iconst_m1
+    //   262: invokevirtual 58	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   265: pop
+    //   266: goto -208 -> 58
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	269	0	this	bhwf
+    //   0	269	1	paramInt	int
+    //   0	269	2	paramBoolean	boolean
+    //   0	269	3	paramBundle	android.os.Bundle
+    //   35	223	4	localJSONObject	org.json.JSONObject
+    //   100	138	5	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   28	37	195	java/lang/Exception
+    //   41	58	195	java/lang/Exception
+    //   58	81	195	java/lang/Exception
+    //   82	89	195	java/lang/Exception
+    //   93	155	195	java/lang/Exception
+    //   159	173	195	java/lang/Exception
+    //   173	182	195	java/lang/Exception
+    //   182	192	195	java/lang/Exception
+    //   206	246	195	java/lang/Exception
+    //   249	266	195	java/lang/Exception
   }
 }
 

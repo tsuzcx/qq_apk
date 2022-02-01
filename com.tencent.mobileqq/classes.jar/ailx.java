@@ -1,24 +1,34 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
-import mqq.os.MqqHandler;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ailx
-  implements bjoe
+class ailx
+  implements View.OnClickListener
 {
-  public ailx(TroopSuspiciousFragment paramTroopSuspiciousFragment, bjnw parambjnw) {}
+  ailx(ailw paramailw) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    QQAppInterface localQQAppInterface;
+    String str2;
+    if (this.a.a())
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopSuspiciousFragment.a != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopSuspiciousFragment.a.sendEmptyMessage(1014);
+      awtz.a().a(ailw.a(this.a), ailw.a(this.a).curFriendUin);
+      ailw.a(this.a).a();
+      localQQAppInterface = ailw.a(this.a);
+      str2 = ailw.a(this.a).curFriendUin;
+      if (ailw.a(this.a).getTroopMask(ailw.a(this.a).curFriendUin) != 3) {
+        break label121;
       }
+    }
+    label121:
+    for (String str1 = "1";; str1 = "0")
+    {
+      bdla.b(localQQAppInterface, "dc00899", "Grp_msg", "", "aio-topbar", "Clk_close", 0, 0, str2, str1, "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
   }
 }

@@ -1,61 +1,93 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
-import com.tencent.mobileqq.teamwork.TenDocWebPreLoadHelper.1;
+import NS_MOBILE_QBOSS_PROTO.tMobileQbossFeedBackInfo;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.qboss.QbossReportRequest;
+import java.util.ArrayList;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bcvy
+  extends MSFServlet
 {
-  public static volatile String a = "";
-  
-  public static TouchWebView a(Context paramContext)
+  private tMobileQbossFeedBackInfo a(String paramString1, int paramInt1, int paramInt2, String paramString2, long paramLong, String paramString3, int paramInt3)
   {
-    bcvz localbcvz = bcvz.a();
-    Object localObject = paramContext;
-    if (paramContext == null) {
-      localObject = BaseApplicationImpl.sApplication;
-    }
-    return localbcvz.a((Context)localObject);
+    tMobileQbossFeedBackInfo localtMobileQbossFeedBackInfo = new tMobileQbossFeedBackInfo();
+    localtMobileQbossFeedBackInfo.uiUin = paramLong;
+    localtMobileQbossFeedBackInfo.sQBosstrace = paramString1;
+    localtMobileQbossFeedBackInfo.iOperType = paramInt1;
+    localtMobileQbossFeedBackInfo.iOperSource = paramInt2;
+    localtMobileQbossFeedBackInfo.sQua = paramString3;
+    localtMobileQbossFeedBackInfo.sUserID = paramString2;
+    localtMobileQbossFeedBackInfo.iOperTimes = paramInt3;
+    return localtMobileQbossFeedBackInfo;
   }
   
-  public static void a(String paramString)
+  private ArrayList<tMobileQbossFeedBackInfo> a(String paramString1, int paramInt, String paramString2, long paramLong, String paramString3)
   {
-    QLog.d("TenDocWebPreLoadHelper", 1, "tendocpreload preCreateWebViewNoWebProcess ");
-    bcvz.a().a(paramString);
+    paramString1 = a(paramString1, paramInt, 2, paramString2, paramLong, paramString3, 1);
+    paramString2 = new ArrayList(1);
+    paramString2.add(paramString1);
+    return paramString2;
   }
   
-  public static boolean a(Activity paramActivity, String paramString)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (!aqku.a().a()) {}
-    while ((paramActivity == null) || (TextUtils.isEmpty(paramString)) || ((!(paramActivity instanceof TeamWorkDocEditBrowserActivity)) && (!bcvs.c(paramString))) || (!bcvz.a().a()) || ((!paramString.contains(a)) && (a != null))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static void b(String paramString)
-  {
-    QLog.d("TenDocWebPreLoadHelper", 1, "tendocpreload preloadTenDocUrl ");
-    if (!TextUtils.isEmpty(paramString))
+    if (paramFromServiceMsg != null) {}
+    for (int i = paramFromServiceMsg.getResultCode();; i = -1)
     {
-      a = paramString;
-      if (Looper.getMainLooper() != Looper.myLooper()) {
-        break label61;
+      paramIntent = new Bundle();
+      paramIntent.putString("msg", "servlet result code is " + i);
+      QLog.d("QbossReportServlet", 2, "qboss onReceive onSend");
+      if (i != 1000) {
+        break label152;
       }
-      if ((bcvs.c(paramString)) && (!bcvz.a().a(paramString)))
-      {
-        bcvz.a().a(paramString);
-        bcvz.a().a(paramString);
+      paramFromServiceMsg = QbossReportRequest.onResponse(paramFromServiceMsg.getWupBuffer());
+      if (paramFromServiceMsg == null) {
+        break;
       }
+      paramIntent.putInt("ret", 0);
+      paramIntent.putSerializable("data", paramFromServiceMsg);
+      QLog.d("QbossReportServlet", 2, "qboss onReceive ret");
+      notifyObserver(null, 1008, true, paramIntent, ayrb.class);
+      return;
     }
+    QLog.d("QbossReportServlet", 2, "qboss onReceive ok");
+    if (QLog.isColorLevel()) {
+      QLog.d("QbossReportServlet", 2, "QZONE_REPORT_QBOSS fail, decode result is null");
+    }
+    paramIntent.putInt("ret", -2);
+    notifyObserver(null, 1008, false, paramIntent, ayrb.class);
     return;
-    label61:
-    new Handler(Looper.getMainLooper()).post(new TenDocWebPreLoadHelper.1(paramString));
+    label152:
+    if (QLog.isColorLevel()) {
+      QLog.d("QbossReportServlet", 2, "QZONE_REPORT_QBOSS fail, resultCode=" + i);
+    }
+    QLog.d("QbossReportServlet", 2, "qboss onReceive not ok");
+    paramIntent.putInt("ret", -3);
+    notifyObserver(null, 1008, false, paramIntent, ayrb.class);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    Object localObject1 = paramIntent.getStringExtra("sQBosstrace");
+    int i = paramIntent.getIntExtra("iOperType", 0);
+    Object localObject2 = paramIntent.getStringExtra("sUserID");
+    long l = paramIntent.getLongExtra("uin", 0L);
+    paramIntent = paramIntent.getStringExtra("qua");
+    QLog.d("QbossReportServlet", 2, "qboss onSend");
+    localObject2 = new QbossReportRequest(a((String)localObject1, i, (String)localObject2, l, paramIntent));
+    localObject1 = ((QbossReportRequest)localObject2).encode();
+    paramIntent = (Intent)localObject1;
+    if (localObject1 == null)
+    {
+      QLog.e("QbossReportServlet", 1, "onSend request encode result is null.cmd=" + ((QbossReportRequest)localObject2).uniKey());
+      paramIntent = new byte[4];
+    }
+    paramPacket.setTimeout(60000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + ((QbossReportRequest)localObject2).uniKey());
+    paramPacket.putSendData(paramIntent);
   }
 }
 

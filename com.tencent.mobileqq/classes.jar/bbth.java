@@ -1,85 +1,115 @@
-import com.tencent.mobileqq.shortvideo.gesture.DownloadInfo;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bbth
-  implements INetEngine.INetEngineListener
+public class bbth
+  extends WebViewPlugin
 {
-  bbth(bbtg parambbtg, String paramString, DownloadInfo paramDownloadInfo, int paramInt1, int paramInt2) {}
-  
-  public void onResp(NetResp paramNetResp)
+  public bbth()
   {
-    HttpNetReq localHttpNetReq = (HttpNetReq)paramNetResp.mReq;
-    if (this.jdField_a_of_type_Bbtg.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq == localHttpNetReq) {
-      this.jdField_a_of_type_Bbtg.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("QavGesture", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localHttpNetReq.mReqUrl, Integer.valueOf(paramNetResp.mResult), Integer.valueOf(paramNetResp.mHttpCode), this.jdField_a_of_type_JavaLangString }));
-    }
-    int i;
-    if (paramNetResp.mResult == 0)
-    {
-      paramNetResp = new File(localHttpNetReq.mOutPath);
-      if (paramNetResp.exists())
-      {
-        try
-        {
-          String str = paramNetResp.getParent();
-          FileUtils.uncompressZip(localHttpNetReq.mOutPath, str, false);
-          bbtf.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo, this.jdField_a_of_type_Int);
-          i = 1;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            localException.printStackTrace();
-            i = 0;
-          }
-          bbtf.a(-1);
-          this.jdField_a_of_type_Bbtg.jdField_a_of_type_Boolean = false;
-          return;
-        }
-        paramNetResp.delete();
-      }
-    }
-    for (;;)
-    {
-      if (i != 0)
-      {
-        bbtf.a(100 / this.jdField_a_of_type_Bbtg.jdField_a_of_type_Int + this.jdField_a_of_type_Bbtg.b);
-        paramNetResp = this.jdField_a_of_type_Bbtg;
-        paramNetResp.b += 100 / this.jdField_a_of_type_Bbtg.jdField_a_of_type_Int;
-        if (!this.jdField_a_of_type_Bbtg.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo, this.b - 1)) {
-          this.jdField_a_of_type_Bbtg.jdField_a_of_type_Boolean = false;
-        }
-        return;
-      }
-      i = 0;
-    }
+    this.mPluginNameSpace = "historicalSig";
   }
   
-  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    int i;
-    if (paramLong2 == 0L) {
-      i = 0;
-    }
-    for (;;)
+    if (paramString2.equalsIgnoreCase("historicalSig"))
     {
-      bbtf.a(i / this.jdField_a_of_type_Bbtg.jdField_a_of_type_Int + this.jdField_a_of_type_Bbtg.b);
-      return;
-      if (paramLong1 >= paramLong2) {
-        i = 99;
-      } else {
-        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-      }
+      paramString1 = this.mRuntime.a().getAccount();
+      paramJsBridgeListener = this.mRuntime.a();
+      if (paramString3.equalsIgnoreCase("historicalSiglist")) {}
+      do
+      {
+        do
+        {
+          do
+          {
+            try
+            {
+              paramString2 = new JSONObject(paramVarArgs[0]);
+              paramString1 = paramString2.optString("fromType");
+              paramString2 = paramString2.optString("fromUin");
+              if (ChatActivityUtils.a(paramString2))
+              {
+                paramString3 = new Intent(paramJsBridgeListener, PublicFragmentActivity.class);
+                paramString3.putExtra("key_uin", paramString2);
+                if (paramString1.equalsIgnoreCase("1"))
+                {
+                  paramString3.putExtra("key_open_via", "history-msglist");
+                  paramJsBridgeListener.finish();
+                }
+                aeow.a(paramJsBridgeListener, paramString3, PublicFragmentActivity.class, SignatureHistoryFragment.class);
+              }
+              QLog.d("JumpProfilePlugin", 1, new Object[] { "historicalSiglist", "fromType=", paramString1, " fromUin", StringUtil.getSimpleUinForPrint(paramString2) });
+            }
+            catch (JSONException paramJsBridgeListener)
+            {
+              while (!QLog.isColorLevel()) {}
+              QLog.i("JumpProfilePlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
+              return true;
+            }
+            return true;
+            if (!paramString3.equalsIgnoreCase("personalTagList")) {
+              break;
+            }
+            try
+            {
+              paramString2 = new JSONObject(paramVarArgs[0]);
+              paramString1 = paramString2.optString("fromType");
+              paramString2 = paramString2.optString("fromUin");
+              if (ChatActivityUtils.a(paramString2))
+              {
+                paramString3 = new Intent(this.mRuntime.a(), PersonalityLabelGalleryActivity.class);
+                paramString3.putExtra("uin", paramString2);
+                if (paramString1.equalsIgnoreCase("1")) {
+                  paramString3.putExtra("fromType", 4);
+                }
+                paramJsBridgeListener.startActivity(paramString3);
+                paramJsBridgeListener.finish();
+              }
+              QLog.d("JumpProfilePlugin", 1, new Object[] { "personalTagList", "fromType=", paramString1, " fromUin", StringUtil.getSimpleUinForPrint(paramString2) });
+              return true;
+            }
+            catch (JSONException paramJsBridgeListener) {}
+          } while (!QLog.isColorLevel());
+          QLog.i("JumpProfilePlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
+          return true;
+        } while (!paramString3.equalsIgnoreCase("zanlist"));
+        try
+        {
+          paramString3 = new JSONObject(paramVarArgs[0]);
+          paramString2 = paramString3.optString("fromType");
+          paramString3 = paramString3.optString("fromUin");
+          if ((ChatActivityUtils.a(paramString3)) && (paramString3.equalsIgnoreCase(paramString1)))
+          {
+            paramString1 = new Intent(paramJsBridgeListener, VisitorsActivity.class);
+            paramString1.putExtra("toUin", Long.valueOf(paramString3));
+            paramString1.putExtra("extra_show_rank", true);
+            if (paramString2.equalsIgnoreCase("1")) {
+              paramString1.putExtra("extra_from", 2);
+            }
+            paramJsBridgeListener.startActivity(paramString1);
+            paramJsBridgeListener.finish();
+          }
+          QLog.d("JumpProfilePlugin", 1, new Object[] { "zanlist", "fromType=", paramString2, " fromUin", StringUtil.getSimpleUinForPrint(paramString3) });
+          return true;
+        }
+        catch (JSONException paramJsBridgeListener) {}
+      } while (!QLog.isColorLevel());
+      QLog.i("JumpProfilePlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
+      return true;
     }
+    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
   }
 }
 

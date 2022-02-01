@@ -4,12 +4,12 @@ import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.dating.MsgBoxListActivity;
 import com.tencent.qphone.base.util.QLog;
-import nmq;
+import ntq;
 
 public class TroopRedTouchManager$2
   implements Runnable
 {
-  public TroopRedTouchManager$2(nmq paramnmq, QQAppInterface paramQQAppInterface) {}
+  public TroopRedTouchManager$2(ntq paramntq, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {

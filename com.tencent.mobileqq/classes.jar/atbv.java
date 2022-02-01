@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.filemanager.activity.favfile.QfileBaseFavFileTabView;
 
 public class atbv
-  implements aszj
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public atbv(QfileEditBottomBar paramQfileEditBottomBar) {}
+  public atbv(QfileBaseFavFileTabView paramQfileBaseFavFileTabView) {}
   
-  public void onNo() {}
-  
-  public void onYes()
+  public void onGlobalLayout()
   {
-    QfileEditBottomBar.a(this.a);
+    this.a.p();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atbv
  * JD-Core Version:    0.7.0.1
  */

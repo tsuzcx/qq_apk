@@ -1,19 +1,42 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.gamecenter.protocol.ReportTypeRsp;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
 
 class atyt
-  implements BusinessObserver
+  implements ativ
 {
-  atyt(atys paramatys) {}
+  atyt(atyq paramatyq) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a()
   {
-    paramBundle = (ReportTypeRsp)paramBundle.getSerializable("rsp");
-    if (QLog.isColorLevel()) {
-      QLog.d("GameShare.NetHelper", 2, "ReportTypeRsp reportObserver:" + paramBoolean + "|" + paramBundle);
+    int i = aufd.b(this.a.jdField_a_of_type_Atxa.e());
+    bdla.b(null, "dc00898", "", "", "0X800A688", "0X800A688", 0, 0, i + "", "", "", "");
+    atvp localatvp = this.a.jdField_a_of_type_Atxa.a();
+    if (localatvp != null)
+    {
+      localatvp.a();
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.d(false);
     }
+  }
+  
+  public void b()
+  {
+    atip localatip = atyq.a(this.a);
+    if (localatip == null) {
+      return;
+    }
+    String str = this.a.jdField_a_of_type_Atxa.j();
+    if (localatip.a())
+    {
+      if (!TextUtils.isEmpty(str))
+      {
+        atip.a(str, 1);
+        return;
+      }
+      QLog.i("ApkForAppStoreFilePresenter", 1, "app store has installed, but apk package name is null!");
+      return;
+    }
+    localatip.b(this.a.jdField_a_of_type_AndroidAppActivity, str);
   }
 }
 

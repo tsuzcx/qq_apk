@@ -1,47 +1,19 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
+import java.util.Comparator;
 
-public class ansa
-  extends anrh
+class ansa
+  implements Comparator<BaseAddress>
 {
-  public ansa(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  ansa(anrz paramanrz) {}
   
-  public boolean a()
+  public int a(BaseAddress paramBaseAddress1, BaseAddress paramBaseAddress2)
   {
-    try
-    {
-      i = Integer.parseInt(this.c);
-      switch (i)
-      {
-      default: 
-        return true;
-      }
+    int j = paramBaseAddress1.pinyinFirst.compareTo(paramBaseAddress2.pinyinFirst);
+    int i = j;
+    if (j == 0) {
+      i = paramBaseAddress1.pinyinAll.compareTo(paramBaseAddress2.pinyinAll);
     }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
-      {
-        QLog.e("QQFavAction", 1, "doAction error NumberFormatException: " + localNumberFormatException.getMessage());
-        int i = -1;
-      }
-      Intent localIntent = new Intent();
-      localIntent.putExtra("selfSet_leftViewText", BaseApplicationImpl.getApplication().getApplicationContext().getString(2131690599));
-      boolean bool = bkox.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), localIntent, -1, false);
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("QQFavAction", 1, "doAction error: " + localException.getMessage());
-      a("QQFavAction");
-    }
-    return false;
+    return i;
   }
 }
 

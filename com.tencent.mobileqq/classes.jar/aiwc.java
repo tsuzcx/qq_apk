@@ -1,30 +1,27 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment.3.1;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aiwc
-  implements amwq
+  implements View.OnClickListener
 {
-  public aiwc(ChatHistoryC2CDateFragment paramChatHistoryC2CDateFragment) {}
+  public aiwc(TroopView paramTroopView) {}
   
-  public void a(amwq paramamwq) {}
-  
-  public void a(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(ChatHistoryC2CDateFragment.b(), 2, "onGetRoamMsgForDate " + paramBoolean);
-    }
-    this.a.p();
-    if (paramBoolean)
-    {
-      ThreadManagerV2.executeOnSubThread(new ChatHistoryC2CDateFragment.3.1(this));
-      return;
-    }
-    this.a.c(this.a.getString(2131690690));
+    Intent localIntent = new Intent(this.a.jdField_a_of_type_Aitf.a(), SearchContactsActivity.class);
+    localIntent.putExtra("from_key", 1);
+    localIntent.putExtra("fromType", 13);
+    this.a.jdField_a_of_type_Aitf.a().startActivity(localIntent);
+    this.a.jdField_a_of_type_Aitf.a().overridePendingTransition(0, 0);
+    bcnc.a("add_page", "search", "active_frame", 2, 0, new String[] { "" });
+    bdla.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004BEC", "0X8004BEC", 2, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void b(int paramInt1, int paramInt2, Object paramObject) {}
 }
 
 

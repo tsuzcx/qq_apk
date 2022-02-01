@@ -13,12 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import aqzw;
-import avsq;
+import aseg;
+import awyr;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
@@ -51,9 +52,9 @@ public class EmoticonTabAdapter
     this.mContext = paramContext;
     this.mInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
     this.mData = new ArrayList();
-    this.mNormalDrawable = paramContext.getResources().getDrawable(2130838043);
-    this.mSelectedDrawable = paramContext.getResources().getDrawable(2130838044);
-    this.mItemSelectedDrawable = ViewUtils.getShapeDrawable(this.mContext.getResources().getColor(2131166522), ViewUtils.dip2px(18.0F));
+    this.mNormalDrawable = paramContext.getResources().getDrawable(2130838057);
+    this.mSelectedDrawable = paramContext.getResources().getDrawable(2130838058);
+    this.mItemSelectedDrawable = ViewUtils.getShapeDrawable(this.mContext.getResources().getColor(2131166536), ViewUtils.dip2px(18.0F));
     this.mItemNormalDrawable = new ColorDrawable(0);
     this.mBusinessType = paramInt;
   }
@@ -158,16 +159,16 @@ public class EmoticonTabAdapter
       localViewHolder = new EmoticonTabAdapter.ViewHolder(this);
       paramView = HorizontalListViewEx.consumeView();
       if (paramView != null) {
-        break label725;
+        break label726;
       }
-      paramView = this.mInflater.inflate(2131559151, paramViewGroup, false);
+      paramView = this.mInflater.inflate(2131559180, paramViewGroup, false);
     }
-    label725:
+    label726:
     for (;;)
     {
-      localViewHolder.tabImage = ((URLImageView)paramView.findViewById(2131378106));
-      localViewHolder.redImage = ((ImageView)paramView.findViewById(2131376196));
-      localViewHolder.emoContainer = paramView.findViewById(2131365955);
+      localViewHolder.tabImage = ((URLImageView)paramView.findViewById(2131378394));
+      localViewHolder.redImage = ((ImageView)paramView.findViewById(2131376444));
+      localViewHolder.emoContainer = paramView.findViewById(2131366056);
       paramView.setTag(localViewHolder);
       Object localObject;
       for (View localView = paramView;; localView = paramView)
@@ -209,13 +210,13 @@ public class EmoticonTabAdapter
         paramView = localView;
         break;
         localViewHolder.emoContainer.setBackgroundDrawable(null);
-        localView.setBackgroundDrawable(this.mContext.getResources().getDrawable(2130839676));
+        localView.setBackgroundDrawable(this.mContext.getResources().getDrawable(2130839697));
         break label235;
-        paramView = this.mContext.getResources().getDrawable(2130847062);
+        paramView = this.mContext.getResources().getDrawable(2130847160);
         if (this.app != null)
         {
-          localObject = (avsq)this.app.getManager(14);
-          if ((localObject != null) && (((avsq)localObject).a(this.mBusinessType)))
+          localObject = (awyr)this.app.getManager(QQManagerFactory.EMOTICON_MANAGER);
+          if ((localObject != null) && (((awyr)localObject).a(this.mBusinessType)))
           {
             localViewHolder.redImage.setVisibility(0);
             this.app.getApplication().getSharedPreferences("recommendEmotion_sp_name", 0).edit().putBoolean("recommemd_red_effect", true).apply();
@@ -224,18 +225,18 @@ public class EmoticonTabAdapter
           else
           {
             continue;
-            paramView = this.mContext.getResources().getDrawable(2130847046);
+            paramView = this.mContext.getResources().getDrawable(2130847144);
             continue;
-            paramView = this.mContext.getResources().getDrawable(2130847045);
+            paramView = this.mContext.getResources().getDrawable(2130847143);
             continue;
-            if (((aqzw)this.app.getManager(334)).b()) {
+            if (((aseg)this.app.getManager(QQManagerFactory.CAMERA_EMOTION_MANAGER)).b()) {
               localViewHolder.redImage.setVisibility(0);
             }
-            paramView = this.mContext.getResources().getDrawable(2130838024);
+            paramView = this.mContext.getResources().getDrawable(2130838038);
             continue;
-            paramView = this.mContext.getResources().getDrawable(2130838042);
+            paramView = this.mContext.getResources().getDrawable(2130838056);
             continue;
-            paramView = this.mContext.getResources().getDrawable(2130838027);
+            paramView = this.mContext.getResources().getDrawable(2130838041);
             continue;
             paramView = getTabDrawable((EmoticonTabAdapter.EmoticonTabItem)localObject);
             if (paramView == null)
@@ -247,9 +248,9 @@ public class EmoticonTabAdapter
               paramView.addState(new int[0], localDrawable);
               ThreadManager.post(new EmoticonTabAdapter.1(this, (EmoticonTabAdapter.EmoticonTabItem)localObject), 5, null, false);
               continue;
-              paramView = this.mContext.getResources().getDrawable(2130847054);
+              paramView = this.mContext.getResources().getDrawable(2130847152);
               continue;
-              paramView = this.mContext.getResources().getDrawable(2130847055);
+              paramView = this.mContext.getResources().getDrawable(2130847153);
             }
             else {}
           }
@@ -272,7 +273,7 @@ public class EmoticonTabAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonTabAdapter
  * JD-Core Version:    0.7.0.1
  */

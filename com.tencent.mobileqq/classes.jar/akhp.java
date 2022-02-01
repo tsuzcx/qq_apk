@@ -1,29 +1,17 @@
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
 
-class akhp
-  implements avsz
+public class akhp
+  implements DialogInterface.OnClickListener
 {
-  akhp(akho paramakho) {}
+  public akhp(BindVerifyActivity paramBindVerifyActivity) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    akho.a(this.a).removeMessages(11);
-    akho.a(this.a).sendEmptyMessageDelayed(11, 1000L);
-  }
-  
-  public void a(long paramLong) {}
-  
-  public void a(boolean paramBoolean, int paramInt) {}
-  
-  public void b(int paramInt) {}
-  
-  public void c(int paramInt)
-  {
-    if ((paramInt & 0x1) != 0)
-    {
-      akho.a(this.a).removeMessages(11);
-      akho.a(this.a).sendEmptyMessageDelayed(11, 1000L);
-    }
+    paramDialogInterface.dismiss();
+    this.a.setResult(0);
+    this.a.finish();
   }
 }
 

@@ -15,7 +15,7 @@ class MiniAppVideoController$5
   {
     QMLog.d("MiniAppVideoController", "video player onBackClick");
     if (MiniAppVideoController.access$1200(this.this$0) == null) {}
-    while (!MiniAppVideoController.access$800(this.this$0).isFullScreen) {
+    while (!MiniAppVideoController.access$000(this.this$0).isFullScreen) {
       return;
     }
     this.this$0.smallScreen();
@@ -25,7 +25,7 @@ class MiniAppVideoController$5
   {
     QMLog.d("MiniAppVideoController", "video player onBackOnFullScreenClick");
     if (MiniAppVideoController.access$1200(this.this$0) == null) {}
-    while (!MiniAppVideoController.access$800(this.this$0).isFullScreen) {
+    while (!MiniAppVideoController.access$000(this.this$0).isFullScreen) {
       return;
     }
     this.this$0.smallScreen();

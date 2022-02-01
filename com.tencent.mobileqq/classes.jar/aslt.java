@@ -1,18 +1,29 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aslt
-  implements Parcelable.Creator<OfflineFileInfo>
+class aslt
+  implements assu
 {
-  public OfflineFileInfo a(Parcel paramParcel)
-  {
-    return new OfflineFileInfo(paramParcel);
-  }
+  aslt(aslo paramaslo) {}
   
-  public OfflineFileInfo[] a(int paramInt)
+  public void a(boolean paramBoolean, asmo paramasmo)
   {
-    return new OfflineFileInfo[paramInt];
+    if (aslo.a(this.a) == null)
+    {
+      QLog.e("ExtendFriendManager", 2, "enterExtendFriend onGetLocationInfo null");
+      return;
+    }
+    if (!paramBoolean) {
+      QLog.e("ExtendFriendManager", 2, "enterExtendFriend onGetLocationInfo NOT suc");
+    }
+    if (this.a.k())
+    {
+      ((aslm)aslo.a(this.a).getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER)).a(paramasmo);
+      QLog.i("ExtendFriendManager", 2, "enterExtendFriend onGetLocationInfo NOT suc:" + paramBoolean);
+      return;
+    }
+    QLog.e("ExtendFriendManager", 2, "enterExtendFriend onGetLocationInfo NOT In extendfriend");
   }
 }
 

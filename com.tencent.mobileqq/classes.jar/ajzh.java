@@ -1,21 +1,13 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.fragment.SendHbMainFragment;
-import com.tencent.mobileqq.widget.TipsBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.home.MainFragment;
 
 public class ajzh
-  implements View.OnClickListener
+  implements biue
 {
-  public ajzh(SendHbMainFragment paramSendHbMainFragment, TipsBar paramTipsBar, SharedPreferences paramSharedPreferences, int paramInt) {}
+  public ajzh(MainFragment paramMainFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(8);
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("red_packet_bulletin", this.jdField_a_of_type_Int).apply();
-    EventCollector.getInstance().onViewClicked(paramView);
+    MainFragment.c(this.a);
   }
 }
 

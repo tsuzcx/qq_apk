@@ -1,17 +1,28 @@
-import android.widget.BaseAdapter;
+import android.view.View;
 import com.tencent.mobileqq.data.ChatMessage;
 
 class aggl
-  extends aghj
+  implements bkzq
 {
-  aggl(agcw paramagcw)
-  {
-    super(paramagcw, null);
-  }
+  aggl(aggh paramaggh, ChatMessage paramChatMessage, bkzi parambkzi) {}
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void OnClick(View paramView, int paramInt)
   {
-    return new afuq(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if (paramInt == 0)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop != 3000) {
+        break label41;
+      }
+      audy.a("0X8005E4F");
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Aggh.e(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      label41:
+      audy.a("0X8005E4D");
+    }
   }
 }
 

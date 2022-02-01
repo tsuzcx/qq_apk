@@ -1,37 +1,51 @@
+import com.tencent.av.VideoController;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.qphone.base.util.QLog;
+
 public class lqf
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  private int jdField_a_of_type_Int;
-  
-  public float a()
+  public static void a(boolean paramBoolean)
   {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(float paramFloat)
-  {
-    if (paramFloat >= 0.0F) {}
-    for (boolean bool = true;; bool = false)
+    VideoController.a().j(paramBoolean);
+    if (VideoController.a().k() == VideoController.l)
     {
-      bjmd.a(bool);
-      this.jdField_a_of_type_Float = paramFloat;
-      return;
+      QLog.i("RenderUtils", 1, "setAEDetectInited, init FaceSDK falied.");
+      lts.a();
     }
   }
   
-  public void a(int paramInt)
+  public static boolean a(PendantItem paramPendantItem1, PendantItem paramPendantItem2)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if ((paramPendantItem1 == null) && (paramPendantItem2 == null)) {}
+    do
+    {
+      return true;
+      if ((paramPendantItem1 == null) || (paramPendantItem2 == null)) {
+        break;
+      }
+    } while ((paramPendantItem1.getId() == null) || (paramPendantItem2.getId() == null) || (paramPendantItem1.getId().equalsIgnoreCase(paramPendantItem2.getId())));
+    return false;
+    return false;
+  }
+  
+  public static boolean a(FilterDesc paramFilterDesc1, FilterDesc paramFilterDesc2)
+  {
+    if ((paramFilterDesc1 == null) && (paramFilterDesc2 == null)) {}
+    do
+    {
+      return true;
+      if ((paramFilterDesc1 == null) || (paramFilterDesc2 == null)) {
+        break;
+      }
+    } while ((paramFilterDesc1.name == null) || (paramFilterDesc2.name == null) || (paramFilterDesc1.name.equalsIgnoreCase(paramFilterDesc2.name)));
+    return false;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lqf
  * JD-Core Version:    0.7.0.1
  */

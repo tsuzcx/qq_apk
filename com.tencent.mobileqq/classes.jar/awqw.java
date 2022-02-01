@@ -1,18 +1,8 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
 
-class awqw
-  extends nme
+public abstract interface awqw
 {
-  awqw(awqu paramawqu, awrb paramawrb) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    QLog.i("reportPlay", 1, " reportPlay code:" + paramInt);
-    if (this.jdField_a_of_type_Awrb != null) {
-      this.jdField_a_of_type_Awrb.a(paramInt, paramArrayOfByte, paramBundle);
-    }
-  }
+  public abstract void a(Bitmap paramBitmap);
 }
 
 

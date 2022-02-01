@@ -1,42 +1,63 @@
-import android.media.MediaCodec;
-import android.media.MediaFormat;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.AudioPlayback;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import com.tencent.biz.qqstory.newshare.job.ShareGroupAvatarSaveFileJob.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.util.Map;
 
 public class wwm
-  extends wwn
+  extends wwk
 {
-  private AudioPlayback a;
+  private final String c;
   
-  public wwm(wwr paramwwr, boolean paramBoolean, int paramInt, wwp paramwwp, AudioPlayback paramAudioPlayback)
+  private boolean a(xqx paramxqx)
   {
-    super(paramwwr, paramBoolean, paramInt, paramwwp);
-    this.a = paramAudioPlayback;
-    a();
-  }
-  
-  protected void a(MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
-  {
-    super.a(paramMediaCodec, paramMediaFormat);
-    this.a.a(paramMediaFormat);
-  }
-  
-  protected void a(MediaFormat paramMediaFormat)
-  {
-    this.a.a(paramMediaFormat);
-  }
-  
-  public void a(wwo paramwwo, long paramLong)
-  {
-    this.a.a(paramwwo.jdField_a_of_type_JavaNioByteBuffer, paramwwo.jdField_a_of_type_Long);
-    b(paramwwo);
-  }
-  
-  protected boolean a()
-  {
-    if (!c()) {
-      return this.a.a() < 200000L;
+    boolean bool = false;
+    try
+    {
+      Bitmap localBitmap = Bitmap.createBitmap(paramxqx.a(), paramxqx.b(), Bitmap.Config.ARGB_8888);
+      Canvas localCanvas = new Canvas(localBitmap);
+      localCanvas.drawColor(-1);
+      localCanvas.drawBitmap(paramxqx.a(), 0.0F, 0.0F, null);
+      bheg.a(bheg.a(localBitmap, 100), new File(this.c));
+      bool = true;
     }
-    return super.a();
+    catch (IOException paramxqx)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramxqx, new Object[0]);
+      return false;
+    }
+    catch (OutOfMemoryError paramxqx)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramxqx, new Object[0]);
+    }
+    return bool;
+    return false;
+  }
+  
+  protected void a(Error paramError)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramError, new Object[0]);
+    }
+    b(false);
+  }
+  
+  protected void a(Map<String, Object> paramMap)
+  {
+    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("ShareGroupAvatarSaveFileJob_sgi"))) {
+      this.a = ((String)a("ShareGroupAvatarSaveFileJob_sgi"));
+    }
+  }
+  
+  protected void a(xqx paramxqx)
+  {
+    ThreadManager.post(new ShareGroupAvatarSaveFileJob.1(this, paramxqx), 8, null, true);
   }
 }
 

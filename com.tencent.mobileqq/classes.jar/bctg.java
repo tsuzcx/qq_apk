@@ -1,129 +1,100 @@
-import android.content.Intent;
-import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.tablequery.ReportData.ReportDataItem;
-import com.tencent.mobileqq.tablequery.ReportData.RspBody;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.msf.service.protocol.pb.SubMsgType0x51.MsgBody;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
 import java.util.List;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import msf.msgcomm.msg_comm.MsgType0x210;
 
 public class bctg
-  extends MSFServlet
+  implements bctu
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  private void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, MessageHandler paramMessageHandler)
   {
-    Bundle localBundle = new Bundle();
-    bool1 = paramFromServiceMsg.isSuccess();
-    bool2 = bool1;
-    Object localObject;
-    if (bool1)
-    {
-      localObject = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
-      paramFromServiceMsg = new byte[((ByteBuffer)localObject).getInt() - 4];
-      ((ByteBuffer)localObject).get(paramFromServiceMsg);
-      localObject = new oidb_sso.OIDBSSOPkg();
-      bool2 = bool1;
+    byte[] arrayOfByte = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush recv msg0x210.Submsgtype0x51");
     }
+    if (paramMsgType0x210.sub_msg_type.get() != 81) {
+      if (QLog.isColorLevel()) {
+        QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush submsgtype != 0x51");
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (paramMsgType0x210.msg_content != null) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush msg_content is null");
+      return;
+      paramMsgType0x210 = paramMsgType0x210.msg_content.get().toByteArray();
+      if (paramMsgType0x210 != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush decode ox210Stream is null");
+    return;
+    new SubMsgType0x51.MsgBody();
     for (;;)
     {
       try
       {
-        ((oidb_sso.OIDBSSOPkg)localObject).mergeFrom(paramFromServiceMsg);
-        bool2 = bool1;
-        i = ((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get();
-        if (i != 0) {
-          continue;
+        SubMsgType0x51.MsgBody localMsgBody = new SubMsgType0x51.MsgBody();
+        localMsgBody.mergeFrom(paramMsgType0x210);
+        if (!localMsgBody.bytes_qrsig_url.has()) {
+          break label335;
         }
-        bool1 = true;
-        if (!bool1) {
-          continue;
+        paramMsgType0x210 = new String(localMsgBody.bytes_qrsig_url.get().toByteArray(), "utf-8");
+        if (!localMsgBody.bytes_hint1.has()) {
+          break label330;
         }
-        bool2 = bool1;
-        ReportData.RspBody localRspBody = new ReportData.RspBody();
-        bool2 = bool1;
-        localRspBody.mergeFrom(((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.get().toByteArray());
-        bool2 = bool1;
-        l = localRspBody.ret.get();
-        bool2 = bool1;
-        paramFromServiceMsg = localRspBody.msg.get().toByteArray();
-        bool2 = bool1;
-        localObject = localRspBody.reportArray.get();
-        bool2 = bool1;
-        if (localObject != null)
-        {
-          bool2 = bool1;
-          i = ((List)localObject).size();
-          if (i != 0) {
-            continue;
-          }
-          bool2 = bool1;
+        paramMsg = new String(localMsgBody.bytes_hint1.get().toByteArray(), "utf-8");
+        if (!localMsgBody.bytes_hint2.has()) {
+          break label324;
         }
+        str = new String(localMsgBody.bytes_hint2.get().toByteArray(), "utf-8");
+        if (localMsgBody.bytes_login_conf.has()) {
+          arrayOfByte = localMsgBody.bytes_login_conf.get().toByteArray();
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush recv devlock quicklogin push qrcode=" + paramMsgType0x210 + " maintip=" + paramMsg + " smalltip" + str);
+        }
+        asll.a().a(paramMessageHandler.app, paramMsgType0x210, paramMsg, str, arrayOfByte);
+        return;
       }
-      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-      {
-        int i;
-        long l;
-        QLog.e("TableQueryServlet", 2, paramFromServiceMsg, new Object[0]);
-        continue;
-        bool2 = bool1;
-        QLog.d("TableQueryServlet", 1, "OIDBSSOPkg回包错误，Result: " + i);
-        bool2 = bool1;
-        continue;
+      catch (Exception paramMsgType0x210) {}
+      if (!QLog.isColorLevel()) {
+        break;
       }
-      notifyObserver(paramIntent, 0, bool2, localBundle, bctf.class);
+      QLog.d("DevLock", 2, "failed to parse msg0x210.Submsgtype0x51");
       return;
-      bool1 = false;
+      label324:
+      String str = null;
       continue;
-      bool2 = bool1;
-      localObject = (ReportData.ReportDataItem)((List)localObject).get(0);
-      bool2 = bool1;
-      localBundle.putLong("ret", l);
-      bool2 = bool1;
-      localBundle.putByteArray("msg", paramFromServiceMsg);
-      bool2 = bool1;
-      localBundle.putString("reqReportId", ((ReportData.ReportDataItem)localObject).reqReportId.get());
-      bool2 = bool1;
-      localBundle.putString("reportId", ((ReportData.ReportDataItem)localObject).reportId.get());
-      bool2 = bool1;
-      localBundle.putLong("pv", ((ReportData.ReportDataItem)localObject).pv.get());
-      bool2 = bool1;
-      localBundle.putString("pv_day_earlier", ((ReportData.ReportDataItem)localObject).pv_day_earlier.get());
-      bool2 = bool1;
-      localBundle.putString("pv_month_earlier", ((ReportData.ReportDataItem)localObject).pv_month_earlier.get());
-      bool2 = bool1;
-      localBundle.putLong("uv", ((ReportData.ReportDataItem)localObject).uv.get());
-      bool2 = bool1;
-      localBundle.putString("uv_day_earlier", ((ReportData.ReportDataItem)localObject).uv_day_earlier.get());
-      bool2 = bool1;
-      localBundle.putString("uv_month_earlier", ((ReportData.ReportDataItem)localObject).uv_month_earlier.get());
-      bool2 = bool1;
-      localBundle.putString("time", ((ReportData.ReportDataItem)localObject).time.get());
-      bool2 = bool1;
-      localBundle.putString("param", ((ReportData.ReportDataItem)localObject).param.get());
-      bool2 = bool1;
-      localBundle.putString("description", ((ReportData.ReportDataItem)localObject).description.get());
-      bool2 = bool1;
+      label330:
+      paramMsg = null;
+      continue;
+      label335:
+      paramMsgType0x210 = null;
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre, MessageHandler paramMessageHandler)
   {
-    if (paramIntent == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("DevLockQuickLoginDecoder", 2, "<---decodeC2CMsgPkg_MsgType0x210 : subtype 0x51");
     }
-    paramPacket.setSSOCommand("OidbSvc.0xd34_2");
-    paramPacket.putSendData(bgau.a(paramIntent.getByteArrayExtra("RequestBytes")));
+    a(paramMsgType0x210, paramMsg, paramMessageHandler);
+    bcrx.a(paramMessageHandler, paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get());
   }
 }
 

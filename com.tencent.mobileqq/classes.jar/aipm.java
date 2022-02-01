@@ -1,25 +1,19 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.contacts.friend.SimpleTextView;
-import com.tencent.mobileqq.mutualmark.view.MutualMarkIconsView;
-import com.tencent.mobileqq.onlinestatus.OnlineStatusView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
 
 public class aipm
-  extends ainm
+  extends BroadcastReceiver
 {
-  public ImageView a;
-  public LinearLayout a;
-  public URLImageView a;
-  public SimpleTextView a;
-  public MutualMarkIconsView a;
-  public OnlineStatusView a;
-  public StringBuilder a;
-  public boolean a;
-  public ImageView b;
-  public URLImageView b;
-  public boolean b;
-  public ImageView c;
+  public aipm(BlessActivity paramBlessActivity) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) {
+      BlessActivity.a(this.a, true);
+    }
+  }
 }
 
 

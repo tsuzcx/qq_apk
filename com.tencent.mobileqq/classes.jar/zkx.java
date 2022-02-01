@@ -1,34 +1,47 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.util.SparseBooleanArray;
-import android.view.View;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import java.util.HashMap;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class zkx
-  extends AnimatorListenerAdapter
+  implements ShareActionSheet.OnItemClickListener
 {
-  public zkx(VideoPlayerView paramVideoPlayerView, int paramInt1, View paramView, boolean paramBoolean, int paramInt2) {}
+  public zkx(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b, false);
-    }
-    while ((this.jdField_a_of_type_Int != 0) || (VideoPlayerView.a() == null) || (VideoPlayerView.a().get(this.jdField_a_of_type_AndroidViewView.getId()))) {
+    paramShareActionSheet.dismiss();
+    QLog.d("QRDisplayActivity", 2, " showMyQrCodeActionSheet() click item = " + paramActionSheetItem.action);
+    switch (paramActionSheetItem.action)
+    {
+    default: 
+      return;
+    case 26: 
+      QRDisplayActivity.a(this.a, 6000, AppConstants.DATALINE_PC_UIN);
+      return;
+    case 72: 
+      QRDisplayActivity.a(this.a, paramActionSheetItem.uinType, paramActionSheetItem.uin);
+      return;
+    case 2: 
+      this.a.i = 0;
+      QRDisplayActivity.a(this.a);
+      return;
+    case 3: 
+      this.a.i = 1;
+      QRDisplayActivity.a(this.a);
+      return;
+    case 9: 
+      this.a.i = 2;
+      QRDisplayActivity.a(this.a);
+      return;
+    case 10: 
+      this.a.i = 3;
+      QRDisplayActivity.a(this.a);
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if ((this.jdField_a_of_type_Int == 1) && (VideoPlayerView.a() != null) && (!VideoPlayerView.a().get(this.jdField_a_of_type_AndroidViewView.getId()))) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
-    if ((this.jdField_a_of_type_Int == 0) && (VideoPlayerView.a() != null) && (!VideoPlayerView.a().get(this.jdField_a_of_type_AndroidViewView.getId()))) {
-      VideoPlayerView.a().put(this.jdField_a_of_type_AndroidViewView, Integer.valueOf(this.jdField_a_of_type_AndroidViewView.getVisibility()));
-    }
+    this.a.e();
   }
 }
 

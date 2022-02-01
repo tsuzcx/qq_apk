@@ -1,18 +1,67 @@
-public abstract interface ula<T>
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.biz.pubaccount.NativeAd.report.JumpMode;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyTelePhoneUtils.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.app.AppActivity;
+import org.json.JSONObject;
+
+public class ula
 {
-  public abstract void a();
+  public static JSONObject a(int paramInt1, int paramInt2, String paramString, AdvertisementInfo paramAdvertisementInfo)
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("perstatus", paramInt1);
+      localJSONObject.put("callact", paramInt2);
+      localJSONObject.put("callnum", paramString);
+      if (paramAdvertisementInfo != null) {
+        localJSONObject.put("phone_cmpt_id", String.valueOf(paramAdvertisementInfo.mPhoneComponetId));
+      }
+      paramString = new JSONObject();
+      paramString.put("comp_stat_src", "");
+      paramString.put("phone_component_info", localJSONObject.toString());
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
+  }
   
-  public abstract void a(int paramInt);
+  public static void a(Context paramContext, AdvertisementInfo paramAdvertisementInfo)
+  {
+    if ((paramAdvertisementInfo == null) || (paramAdvertisementInfo.mAdRl == null)) {
+      return;
+    }
+    ThreadManager.excute(new ReadInJoyTelePhoneUtils.1(paramAdvertisementInfo, paramContext), 128, null, true);
+  }
   
-  public abstract void a(T paramT);
+  public static void a(Context paramContext, String paramString, AdvertisementInfo paramAdvertisementInfo)
+  {
+    if (!(paramContext instanceof AppActivity)) {
+      return;
+    }
+    b(paramContext, paramString, paramAdvertisementInfo);
+  }
   
-  public abstract void b();
+  public static boolean a(AdvertisementInfo paramAdvertisementInfo)
+  {
+    return (paramAdvertisementInfo != null) && (paramAdvertisementInfo.mPhoneComponetId != 0) && (ukr.e(paramAdvertisementInfo));
+  }
   
-  public abstract void b(int paramInt);
-  
-  public abstract void c();
-  
-  public abstract void c(int paramInt);
+  public static void b(Context paramContext, String paramString, AdvertisementInfo paramAdvertisementInfo)
+  {
+    if (paramContext == null) {
+      return;
+    }
+    paramContext.startActivity(new Intent("android.intent.action.DIAL", Uri.parse("tel:" + paramString)));
+    ois.a(new ufy().a(paramContext).a(116).a(JumpMode.PHONE_WIDGET).b(28).a(paramAdvertisementInfo).e(a(2, 1, paramString, paramAdvertisementInfo)).a());
+  }
 }
 
 

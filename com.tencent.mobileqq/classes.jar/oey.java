@@ -1,22 +1,60 @@
-public class oey
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+
+class oey
+  implements URLDrawable.DownloadListener
 {
-  public int a = 5;
-  public String a;
-  public int b = 10;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
-  public String n;
+  oey(oex paramoex) {}
+  
+  public void onFileDownloadFailed(int paramInt)
+  {
+    synchronized ()
+    {
+      String str = (String)oex.a(this.a).get(0);
+      oex.a(this.a).remove(0);
+      if (oex.b(this.a) != null)
+      {
+        if (!oex.b(this.a).contains(str)) {
+          break label119;
+        }
+        oex.b(this.a).remove(str);
+        if (QLog.isColorLevel()) {
+          QLog.d("AdvertisementCoverPreloadManager", 2, "onFileDownloadFailed(delete) url:" + str);
+        }
+      }
+      label119:
+      do
+      {
+        oex.a(this.a, null);
+        oex.a(this.a);
+        return;
+        oex.a(this.a).add(str);
+        oex.b(this.a).add(str);
+      } while (!QLog.isColorLevel());
+      QLog.d("AdvertisementCoverPreloadManager", 2, "onFileDownloadFailed(retry) url:" + str);
+    }
+  }
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    synchronized ()
+    {
+      String str = (String)oex.a(this.a).get(0);
+      oex.a(this.a).remove(0);
+      if ((oex.b(this.a) != null) && (oex.b(this.a).contains(str))) {
+        oex.b(this.a).remove(str);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("AdvertisementCoverPreloadManager", 2, "onFileDownloadSucceed url:" + str);
+      }
+      oex.a(this.a, null);
+      oex.a(this.a);
+      return;
+    }
+  }
 }
 
 

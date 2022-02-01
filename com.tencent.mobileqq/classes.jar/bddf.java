@@ -1,142 +1,33 @@
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
 
-public abstract class bddf
-  implements Cloneable
+class bddf
+  extends AsyncTask<String, Integer, Boolean>
 {
-  public long c;
-  public int d;
-  public long d;
-  public int e;
-  public long e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  @Nullable
-  public String g;
-  public int h;
-  public String h = "";
-  public int i;
-  public int j;
-  public int k = 0;
+  bddf(bdcw parambdcw) {}
   
-  public bddf()
+  protected Boolean a(String... paramVarArgs)
   {
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_f_of_type_Int = -1;
-    this.jdField_f_of_type_JavaLangString = "";
-  }
-  
-  public int a()
-  {
-    return bjuk.b;
-  }
-  
-  public String a()
-  {
-    return "";
-  }
-  
-  public String a(QQAppInterface paramQQAppInterface)
-  {
-    return "";
-  }
-  
-  protected String a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    String str;
-    if (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString))
+    if (bdcw.a(this.a) != null)
     {
-      str = a(paramQQAppInterface, this.jdField_e_of_type_JavaLangString, this.jdField_f_of_type_JavaLangString);
-      if (!TextUtils.isEmpty(str)) {
-        str = bddg.a(16, str);
-      }
+      bdcw.a(this.a).h = 1;
+      long l = bdcw.a(this.a).a;
+      paramVarArgs = bdcw.a(this.a).e;
+      int i = bdcw.a(this.a).g;
+      Bundle localBundle = new Bundle();
+      localBundle.putLong("VALUE_MSG_UINSEQ", l);
+      localBundle.putString("VALUE_MSG_FRIENDUIN", paramVarArgs);
+      localBundle.putInt("VALUE_MSG_ISTROOP", i);
+      localBundle.putString("VALUE_MSG_VIDEO_ID", bdcw.a(this.a).c);
+      bddh.a().a("CMD_UPDATE_MSG_FOR_VIDEO_REDBAG_STAT", localBundle);
     }
-    for (;;)
-    {
-      return str + paramQQAppInterface.getApp().getString(paramInt);
-      str = paramQQAppInterface.getApp().getString(2131698688);
-      continue;
-      str = paramQQAppInterface.getApp().getString(2131698688);
-    }
+    return Boolean.valueOf(true);
   }
   
-  protected String a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
+  protected void a(Boolean paramBoolean)
   {
-    Object localObject = "";
-    String str;
-    if (this.g != 3)
-    {
-      str = a(paramQQAppInterface, 2131698652);
-      if (this.jdField_f_of_type_Int != 1) {
-        break label60;
-      }
-      localObject = str + paramQQAppInterface.getApp().getString(paramInt1);
-    }
-    label60:
-    do
-    {
-      return localObject;
-      localObject = str;
-    } while (this.jdField_f_of_type_Int <= 1);
-    return str + String.format(paramQQAppInterface.getApp().getString(paramInt2), new Object[] { Integer.valueOf(this.jdField_f_of_type_Int) });
-  }
-  
-  protected String a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, int paramInt3)
-  {
-    String str = "";
-    if (this.g != 3)
-    {
-      if (this.jdField_f_of_type_Int == 1) {
-        str = "" + paramQQAppInterface.getApp().getString(paramInt1);
-      }
-    }
-    else {
-      return str;
-    }
-    if (this.jdField_f_of_type_Int > 1) {
-      return "" + String.format(paramQQAppInterface.getApp().getString(paramInt2), new Object[] { Integer.valueOf(this.jdField_f_of_type_Int) });
-    }
-    return a(paramQQAppInterface, paramInt3);
-  }
-  
-  public String a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    return ContactUtils.getFriendNameCheckFriends(paramQQAppInterface, paramString);
-  }
-  
-  public String a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
-  {
-    return ContactUtils.getTroopMemberName(paramQQAppInterface, paramString1, paramString2);
-  }
-  
-  public String a(boolean paramBoolean, QQAppInterface paramQQAppInterface)
-  {
-    return "";
-  }
-  
-  public boolean a()
-  {
-    return ((this.jdField_e_of_type_Int == 2) || (this.jdField_e_of_type_Int == 1)) && (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString));
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public String b(QQAppInterface paramQQAppInterface)
-  {
-    return "";
-  }
-  
-  public int d()
-  {
-    return 2131698714;
+    this.a.b(bdcw.a(this.a));
   }
 }
 

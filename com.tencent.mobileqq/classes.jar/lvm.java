@@ -1,52 +1,43 @@
-import java.util.HashMap;
-import java.util.Map;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
 
 public class lvm
 {
-  private static volatile lvm jdField_a_of_type_Lvm;
-  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  public Bitmap a;
+  public Rect a;
   
-  private lvm()
+  public lvm(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_JavaUtilMap.put("request", new String("-1"));
-    this.jdField_a_of_type_JavaUtilMap.put("update", new String("-1"));
-    this.jdField_a_of_type_JavaUtilMap.put("load", new String("-1"));
-  }
-  
-  public static lvm a()
-  {
-    if (jdField_a_of_type_Lvm == null) {}
-    try
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
     {
-      if (jdField_a_of_type_Lvm == null) {
-        jdField_a_of_type_Lvm = new lvm();
-      }
-      return jdField_a_of_type_Lvm;
+      this.jdField_a_of_type_AndroidGraphicsRect.right = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+      this.jdField_a_of_type_AndroidGraphicsRect.bottom = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
     }
-    finally {}
   }
   
-  public String a(String paramString)
+  public void a()
   {
-    return (String)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, String.valueOf(paramInt));
-      return;
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
+    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    this.jdField_a_of_type_AndroidGraphicsRect = null;
+  }
+  
+  public void a(Canvas paramCanvas, Rect paramRect, Paint paramPaint)
+  {
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, paramRect, paramPaint);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lvm
  * JD-Core Version:    0.7.0.1
  */

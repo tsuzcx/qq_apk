@@ -78,7 +78,7 @@ public class MiniAppCamera
     //   68: getstatic 110	com/tencent/mobileqq/microapp/widget/media/MiniAppCamera:h	I
     //   71: getstatic 112	com/tencent/mobileqq/microapp/widget/media/MiniAppCamera:i	I
     //   74: iload_3
-    //   75: invokestatic 117	bfvo:a	(Ljava/lang/String;Ljava/lang/String;III)Ljava/lang/String;
+    //   75: invokestatic 117	bheg:a	(Ljava/lang/String;Ljava/lang/String;III)Ljava/lang/String;
     //   78: astore_0
     //   79: aload 6
     //   81: ifnull +8 -> 89

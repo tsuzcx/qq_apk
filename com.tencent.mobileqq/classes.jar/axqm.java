@@ -1,46 +1,77 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.NearbyUtils.1;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Random;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
 public class axqm
-  extends bbjd
+  implements BusinessObserver
 {
-  OlympicToolAppInterface jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface;
-  Random jdField_a_of_type_JavaUtilRandom = new Random();
+  public axqm(NearbyUtils.1 param1) {}
   
-  public axqm(OlympicToolAppInterface paramOlympicToolAppInterface)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("OlympicToolService", 2, "new OlympicToolService");
+    if (paramBoolean) {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+          localWebSsoResponseBody.mergeFrom(paramBundle);
+          paramInt = localWebSsoResponseBody.ret.get();
+          paramBundle = new JSONObject(localWebSsoResponseBody.data.get());
+          if (paramInt != 0)
+          {
+            paramBundle = paramBundle.optString("msg");
+            if (!TextUtils.isEmpty(paramBundle)) {
+              QLog.d("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig,targetUin:" + this.a.jdField_a_of_type_JavaLangString + ", errMsg:" + paramBundle);
+            }
+          }
+          else
+          {
+            paramBundle = paramBundle.optString("signature");
+            if (QLog.isColorLevel()) {
+              QLog.d("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig,targetUin:" + this.a.jdField_a_of_type_JavaLangString + "signature:" + paramBundle);
+            }
+            try
+            {
+              if (TextUtils.isEmpty(paramBundle)) {
+                return;
+              }
+              if (this.a.jdField_a_of_type_Int != 0) {
+                break label283;
+              }
+              this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().h(this.a.jdField_a_of_type_JavaLangString, bhcu.decode(paramBundle, 0));
+              return;
+            }
+            catch (Exception paramBundle)
+            {
+              if (!QLog.isColorLevel()) {
+                return;
+              }
+            }
+            QLog.e("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig Exception:" + paramBundle.toString());
+            return;
+          }
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        if (QLog.isColorLevel())
+        {
+          QLog.d("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig Exception" + paramBundle.toString());
+          return;
+          label283:
+          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().i(this.a.jdField_a_of_type_JavaLangString, bhcu.decode(paramBundle, 0));
+        }
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface = paramOlympicToolAppInterface;
-    jdField_a_of_type_Int = Math.abs(this.jdField_a_of_type_JavaUtilRandom.nextInt());
-  }
-  
-  public AppInterface a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface;
-  }
-  
-  protected void a()
-  {
-    try
-    {
-      super.a();
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg)
-  {
-    super.b(paramToServiceMsg, null, axqn.class);
   }
 }
 

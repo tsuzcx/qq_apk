@@ -13,7 +13,7 @@ import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import apnq;
+import aqqu;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -27,15 +27,15 @@ public class ColorNoteSmallScreenFullToast
   private WindowManager jdField_a_of_type_AndroidViewWindowManager;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout.LayoutParams jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-  private apnq jdField_a_of_type_Apnq;
+  private aqqu jdField_a_of_type_Aqqu;
   public boolean a;
   
-  public ColorNoteSmallScreenFullToast(Context paramContext, apnq paramapnq)
+  public ColorNoteSmallScreenFullToast(Context paramContext, aqqu paramaqqu)
   {
     super(paramContext);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Apnq = paramapnq;
+    this.jdField_a_of_type_Aqqu = paramaqqu;
     this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window"));
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = -1;
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = -1;
@@ -48,8 +48,8 @@ public class ColorNoteSmallScreenFullToast
     for (this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.type = 2038;; this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.type = 2002)
     {
       this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(paramContext.getResources().getString(2131690796));
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839305);
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(paramContext.getResources().getString(2131690881));
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839326);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = new RelativeLayout.LayoutParams(AIOUtils.dp2px(24.0F, paramContext.getResources()), AIOUtils.dp2px(24.0F, paramContext.getResources()));
       addView(this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
@@ -160,7 +160,7 @@ public class ColorNoteSmallScreenFullToast
     //   75: ifeq +248 -> 323
     //   78: aload_0
     //   79: getfield 30	com/tencent/mobileqq/colornote/smallscreen/ColorNoteSmallScreenFullToast:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   82: invokestatic 238	apnt:a	(Landroid/content/Context;)Z
+    //   82: invokestatic 238	aqqx:a	(Landroid/content/Context;)Z
     //   85: istore_1
     //   86: invokestatic 136	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   89: ifeq +56 -> 145
@@ -326,8 +326,8 @@ public class ColorNoteSmallScreenFullToast
   {
     if (paramKeyEvent.getKeyCode() == 4)
     {
-      if (this.jdField_a_of_type_Apnq != null) {
-        this.jdField_a_of_type_Apnq.a();
+      if (this.jdField_a_of_type_Aqqu != null) {
+        this.jdField_a_of_type_Aqqu.a();
       }
       a();
       return true;
@@ -339,16 +339,16 @@ public class ColorNoteSmallScreenFullToast
   {
     a();
     if (paramView == this) {
-      if (this.jdField_a_of_type_Apnq != null) {
-        this.jdField_a_of_type_Apnq.c();
+      if (this.jdField_a_of_type_Aqqu != null) {
+        this.jdField_a_of_type_Aqqu.c();
       }
     }
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if ((paramView == this.jdField_a_of_type_AndroidWidgetImageView) && (this.jdField_a_of_type_Apnq != null)) {
-        this.jdField_a_of_type_Apnq.d();
+      if ((paramView == this.jdField_a_of_type_AndroidWidgetImageView) && (this.jdField_a_of_type_Aqqu != null)) {
+        this.jdField_a_of_type_Aqqu.d();
       }
     }
   }

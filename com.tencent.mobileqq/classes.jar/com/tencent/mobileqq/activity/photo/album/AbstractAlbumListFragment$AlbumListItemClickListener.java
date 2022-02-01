@@ -19,7 +19,7 @@ class AbstractAlbumListFragment$AlbumListItemClickListener
     paramView = this.this$0.getActivity().getIntent();
     if ((paramAdapterView == null) || (paramAdapterView.mMediaFileCount <= 0) || (TextUtils.isEmpty(paramAdapterView.name)))
     {
-      QQToast.a(this.this$0.getActivity(), 2131689988, 0).a();
+      QQToast.a(this.this$0.getActivity(), 2131690017, 0).a();
       return;
     }
     boolean bool = this.this$0.mAlbumListLogic.onItemClick(paramAdapterView, paramInt, paramView);

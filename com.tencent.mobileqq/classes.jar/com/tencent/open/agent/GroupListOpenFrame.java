@@ -9,10 +9,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bhsh;
-import bhsi;
-import bhvo;
-import bhzm;
+import bjde;
+import bjdf;
+import bjgp;
+import bjko;
 import com.tencent.widget.XListView;
 
 public class GroupListOpenFrame
@@ -20,7 +20,7 @@ public class GroupListOpenFrame
 {
   protected EditText a;
   protected TextView a;
-  protected bhsi a;
+  protected bjdf a;
   protected RecommendListManager a;
   public XListView a;
   protected TextView b;
@@ -33,29 +33,29 @@ public class GroupListOpenFrame
   public void a()
   {
     this.jdField_a_of_type_ComTencentOpenAgentRecommendListManager.b();
-    bhzm.c("GroupListOpenFrame", "-->onResume()");
+    bjko.c("GroupListOpenFrame", "-->onResume()");
     super.a();
   }
   
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    bhzm.c("GroupListOpenFrame", "-->onCreate()");
-    super.setContentView(2131562790);
-    this.jdField_a_of_type_Bhsi = new bhsi(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131381259));
-    paramBundle = (LinearLayout)super.a().getLayoutInflater().inflate(2131559685, null);
-    paramBundle.findViewById(2131363774).setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131378530));
-    this.b = ((TextView)paramBundle.findViewById(2131378531));
-    this.jdField_a_of_type_ComTencentOpenAgentRecommendListManager = ((RecommendListManager)paramBundle.findViewById(2131377591));
+    bjko.c("GroupListOpenFrame", "-->onCreate()");
+    super.setContentView(2131562861);
+    this.jdField_a_of_type_Bjdf = new bjdf(this);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131381622));
+    paramBundle = (LinearLayout)super.a().getLayoutInflater().inflate(2131559721, null);
+    paramBundle.findViewById(2131363845).setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131378821));
+    this.b = ((TextView)paramBundle.findViewById(2131378822));
+    this.jdField_a_of_type_ComTencentOpenAgentRecommendListManager = ((RecommendListManager)paramBundle.findViewById(2131377865));
     this.jdField_a_of_type_ComTencentOpenAgentRecommendListManager.setActivity(this.jdField_a_of_type_ComTencentOpenAgentFriendChooser);
     this.jdField_a_of_type_ComTencentOpenAgentRecommendListManager.a();
-    this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(2131167276);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(2131167296);
     this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView(paramBundle);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Bhsi);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramBundle.findViewById(2131366179));
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new bhsh(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Bjdf);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramBundle.findViewById(2131366280));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new bjde(this));
   }
   
   public void a(String paramString)
@@ -66,20 +66,20 @@ public class GroupListOpenFrame
   public void b(Bundle paramBundle)
   {
     super.b(paramBundle);
-    bhzm.c("GroupListOpenFrame", "-->onStart()");
-    this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(false, true, "", this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.getString(2131690851));
+    bjko.c("GroupListOpenFrame", "-->onStart()");
+    this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(false, true, "", this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.getString(2131690936));
   }
   
   public void g()
   {
-    if (this.jdField_a_of_type_Bhvo.a() == 0)
+    if (this.jdField_a_of_type_Bjgp.a() == 0)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_a_of_type_ComTencentOpenAgentRecommendListManager.setVisibility(8);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bhsi.notifyDataSetChanged();
+      this.jdField_a_of_type_Bjdf.notifyDataSetChanged();
       return;
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_a_of_type_ComTencentOpenAgentRecommendListManager.setVisibility(0);

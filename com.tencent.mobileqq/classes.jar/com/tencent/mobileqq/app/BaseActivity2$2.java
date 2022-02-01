@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app;
 
-import amon;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
-import bcfj;
+import anra;
+import bdme;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 class BaseActivity2$2
@@ -14,21 +14,21 @@ class BaseActivity2$2
   public void run()
   {
     int i = 0;
-    boolean bool = SettingCloneUtil.readValue(this.this$0, null, this.this$0.getString(2131694546), "qqsetting_screenshot_key", false);
+    boolean bool = SettingCloneUtil.readValue(this.this$0, null, this.this$0.getString(2131694747), "qqsetting_screenshot_key", false);
     if ((bool) && (BaseActivity2.access$300() == null))
     {
-      localamon = new amon(null);
+      localanra = new anra(null);
       localSensorManager = (SensorManager)this.this$0.getSystemService("sensor");
       localSensor = localSensorManager.getDefaultSensor(1);
-      if (bcfj.a().a()) {
+      if (bdme.a().a()) {
         i = 2;
       }
-      localSensorManager.registerListener(localamon, localSensor, i);
-      BaseActivity2.access$302(localamon);
+      localSensorManager.registerListener(localanra, localSensor, i);
+      BaseActivity2.access$302(localanra);
     }
     while ((bool) || (BaseActivity2.access$300() == null))
     {
-      amon localamon;
+      anra localanra;
       SensorManager localSensorManager;
       Sensor localSensor;
       return;

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
 import android.app.Activity;
-import asuz;
+import atzg;
 import java.util.TimerTask;
 
 public class MusicFilePresenter$5
   extends TimerTask
 {
-  public MusicFilePresenter$5(asuz paramasuz) {}
+  public MusicFilePresenter$5(atzg paramatzg) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class MusicFilePresenter$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.MusicFilePresenter.5
  * JD-Core Version:    0.7.0.1
  */

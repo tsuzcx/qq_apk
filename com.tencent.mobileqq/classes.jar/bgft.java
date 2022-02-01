@@ -1,128 +1,136 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.vas.VasApngFactory.sam.java_lang_Runnable.0;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.URL;
-import kotlin.Metadata;
-import kotlin.Unit;
-import kotlin.jvm.JvmOverloads;
-import kotlin.jvm.JvmStatic;
-import kotlin.jvm.functions.Function0;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/VasApngFactory;", "", "()V", "TAG", "", "doOnMainThread", "", "block", "Lkotlin/Function0;", "getApngDrawableFromUrl", "Lcom/tencent/image/URLDrawable;", "filePath", "urlStr", "options", "Lcom/tencent/mobileqq/vas/VasApngFactory$Options;", "getApngURLDrawable", "Options", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class bgft
+public class bgft
 {
-  public static final bgft a = new bgft();
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString = "";
+  private List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private String b = "";
+  private String c = "";
   
-  @JvmStatic
-  @JvmOverloads
-  @Nullable
-  public static final URLDrawable a(@NotNull String paramString, @NotNull bgfu parambgfu)
+  public static bgft a(String paramString)
   {
-    return a(paramString, parambgfu, null, 4, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopGameCardConfig", 2, "content : " + paramString);
+    }
+    if (TextUtils.isEmpty(paramString)) {
+      paramString = null;
+    }
+    bgft localbgft;
+    do
+    {
+      return paramString;
+      localbgft = new bgft();
+      try
+      {
+        Object localObject = new JSONObject(paramString);
+        localbgft.a(((JSONObject)localObject).optString("resUrl", ""));
+        localbgft.b(((JSONObject)localObject).optString("resMd5", ""));
+        localbgft.c = ((JSONObject)localObject).optString("troopCardTipsContent", "");
+        localbgft.jdField_a_of_type_Int = ((JSONObject)localObject).getInt("numOfMsgToCheck");
+        paramString = new ArrayList();
+        localObject = ((JSONObject)localObject).getJSONArray("grayTroopUins");
+        if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+        {
+          int i = 0;
+          while (i < ((JSONArray)localObject).length())
+          {
+            paramString.add(Integer.valueOf(((JSONArray)localObject).getInt(i)));
+            i += 1;
+          }
+        }
+        localbgft.jdField_a_of_type_JavaUtilList = paramString;
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          paramString.printStackTrace();
+        }
+      }
+      paramString = localbgft;
+    } while (!QLog.isColorLevel());
+    QLog.d("TroopGameCardConfig", 2, "resUrl : " + "");
+    return localbgft;
   }
   
-  @JvmStatic
-  @JvmOverloads
-  @Nullable
-  public static final URLDrawable a(@NotNull String paramString1, @NotNull bgfu parambgfu, @NotNull String paramString2)
+  public int a()
   {
-    Intrinsics.checkParameterIsNotNull(paramString1, "urlStr");
-    Intrinsics.checkParameterIsNotNull(parambgfu, "options");
-    Intrinsics.checkParameterIsNotNull(paramString2, "filePath");
-    bgfv localbgfv = new bgfv(parambgfu);
-    paramString1 = a.a(paramString2, paramString1, parambgfu);
-    if (paramString1 != null)
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean a(String paramString)
+  {
+    boolean bool2 = true;
+    boolean bool1 = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopGameCardConfig", 2, "isGrayTroop troopUin = " + paramString);
+    }
+    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_JavaUtilList == null))
     {
-      int i = paramString1.getStatus();
-      if (i != 1)
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("VasApngFactory", 2, "UrlDrawable is not  SUCCESSED :" + i);
-        }
-        paramString1.setURLDrawableListener((URLDrawable.URLDrawableListener)localbgfv);
-        if (i == 2) {
-          paramString1.restartDownload();
+        paramString = new StringBuilder().append("mGrayTroopUinList isNull:  ");
+        if (this.jdField_a_of_type_JavaUtilList != null) {
+          break label96;
         }
       }
       for (;;)
       {
-        return paramString1;
-        if (i != 0)
-        {
-          paramString1.startDownload();
-          continue;
-          localbgfv.onLoadSuccessed(paramString1);
-        }
+        QLog.d("TroopGameCardConfig", 2, bool1);
+        bool2 = false;
+        return bool2;
+        label96:
+        bool1 = false;
       }
     }
-    return null;
-  }
-  
-  private final URLDrawable a(String paramString1, String paramString2, bgfu parambgfu)
-  {
-    if (((CharSequence)paramString1).length() == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      return null;
+    paramString = paramString.substring(paramString.length() - 1);
+    int i = 0;
+    label114:
+    if (i < this.jdField_a_of_type_JavaUtilList.size()) {
+      if (!String.valueOf(this.jdField_a_of_type_JavaUtilList.get(i)).equals(paramString)) {}
     }
-    String str = new File(paramString2).getName();
-    try
+    for (bool1 = bool2;; bool1 = false)
     {
-      Object localObject = parambgfu.a();
-      ((Bundle)localObject).putInt("key_loop", parambgfu.a());
-      ((Bundle)localObject).putIntArray("key_tagId_arr", parambgfu.a());
-      ((Bundle)localObject).putBoolean("key_double_bitmap", true);
-      ((Bundle)localObject).putString("key_name", str);
-      paramString2 = new URL("vasapngdownloader", paramString1, paramString2);
-      localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mExtraInfo = parambgfu.a();
-      ((URLDrawable.URLDrawableOptions)localObject).mUseApngImage = true;
-      ((URLDrawable.URLDrawableOptions)localObject).mUseMemoryCache = parambgfu.a();
-      ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = String.valueOf(parambgfu.a());
-      ((URLDrawable.URLDrawableOptions)localObject).mUseUnFinishCache = parambgfu.c();
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = parambgfu.b();
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = parambgfu.c();
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = parambgfu.a();
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = parambgfu.a();
-      ((URLDrawable.URLDrawableOptions)localObject).mUseAutoScaleParams = parambgfu.b();
-      paramString2 = URLDrawable.getDrawable(paramString2, (URLDrawable.URLDrawableOptions)localObject);
-      if (QLog.isColorLevel()) {
-        QLog.d("VasApngFactory", 2, "getApngDrawable ApngImage ok path:" + paramString1 + ", name=" + str);
+      bool2 = bool1;
+      if (!QLog.isColorLevel()) {
+        break;
       }
-      return paramString2;
+      QLog.d("TroopGameCardConfig", 2, "isGrayTroop grayTroopUinList size = " + this.jdField_a_of_type_JavaUtilList.size() + ", isGrayTroop = " + bool1);
+      return bool1;
+      i += 1;
+      break label114;
     }
-    catch (Throwable paramString2)
-    {
-      QLog.e("VasApngFactory", 1, "getApngDrawable ApngImage err:" + paramString2 + ", path:" + paramString1 + ", name=" + str);
-    }
-    return null;
   }
   
-  private final void a(Function0<Unit> paramFunction0)
+  public String b()
   {
-    if (Intrinsics.areEqual(Looper.getMainLooper(), Looper.myLooper()))
-    {
-      paramFunction0.invoke();
-      return;
-    }
-    Handler localHandler = ThreadManagerV2.getUIHandlerV2();
-    if (paramFunction0 != null) {
-      paramFunction0 = new VasApngFactory.sam.java_lang_Runnable.0(paramFunction0);
-    }
-    for (;;)
-    {
-      localHandler.post((Runnable)paramFunction0);
-      return;
-    }
+    return this.b;
+  }
+  
+  void b(String paramString)
+  {
+    this.b = paramString;
+  }
+  
+  public String c()
+  {
+    return this.c;
   }
 }
 

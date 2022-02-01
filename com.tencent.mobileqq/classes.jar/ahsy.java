@@ -1,38 +1,34 @@
-import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
 
-class ahsy
-  implements CompoundButton.OnCheckedChangeListener
+public class ahsy
+  extends bcym
 {
-  ahsy(ahsx paramahsx) {}
+  public ahsy(AIOImageProviderService paramAIOImageProviderService, long paramLong, int paramInt1, int paramInt2) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(int paramInt)
   {
-    if (paramBoolean)
-    {
-      if (this.a.a().e()) {
-        this.a.a(true);
-      }
-      ahsx.a(this.a, true);
-      ahsx.a(this.a).setText(2131718140);
-      this.a.a().c(true);
-      ahsx.a(this.a);
+    ahts localahts = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a;
+    if (localahts != null) {
+      localahts.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, paramInt, 0L, true);
     }
-    for (;;)
+  }
+  
+  public void a(int paramInt, bcyf parambcyf)
+  {
+    ahts localahts = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a;
+    if (parambcyf.jdField_a_of_type_Int == 0)
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      parambcyf = (azjk)parambcyf.jdField_a_of_type_JavaLangObject;
+      if (localahts != null) {
+        localahts.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, 1, parambcyf.b, false);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, parambcyf.b);
       return;
-      ahsx.a(this.a, false);
-      ahsx.a(this.a).setText(2131718138);
-      if ((this.a.a().f()) && (StringUtil.isEmpty(this.a.a.a()))) {
-        this.a.a(false);
-      }
-      this.a.a().c(false);
-      ahsx.b(this.a);
     }
+    if (localahts != null) {
+      localahts.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, 2, "step:" + parambcyf.jdField_a_of_type_Azkb.a + ", desc:" + parambcyf.jdField_a_of_type_Azkb.b, false);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, "I:E");
   }
 }
 

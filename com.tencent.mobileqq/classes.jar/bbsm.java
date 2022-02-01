@@ -1,8 +1,11 @@
-public abstract interface bbsm
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class bbsm
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
+  public int a;
+  public ImageView a;
+  public TextView a;
 }
 
 

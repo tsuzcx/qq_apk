@@ -1,25 +1,28 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.1;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import java.lang.ref.SoftReference;
 
-public class ojw
-  extends bjmc
+class ojw
+  implements bigp
 {
-  public ojw(ReadInJoyNaviController.1 param1, View paramView) {}
+  ojw(oju paramoju) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public Object a(int paramInt)
   {
-    paramAnimation = new TranslateAnimation(0.0F, 0.0F, ojv.e, 0.0F);
-    paramAnimation.setDuration(30L);
-    paramAnimation.setAnimationListener(new ojx(this));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    ojv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyNaviController$1.this$0).setAlpha(1.0F);
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    }
+    if (oju.a(this.a) != null)
+    {
+      ojz localojz = (ojz)oju.a(this.a).get();
+      if (localojz != null)
+      {
+        localojz.a();
+        oju.a(this.a).clear();
+      }
+    }
+    oju.a(this.a, new SoftReference(new ojz(this.a, null)));
+    return oju.a(this.a).get();
   }
 }
 

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.servlet;
 
-import abet;
-import bboi;
-import blec;
+import abuf;
+import bcvc;
+import bmqt;
 
 public class GameCenterManagerImp$1
   implements Runnable
 {
-  public GameCenterManagerImp$1(bboi parambboi) {}
+  public GameCenterManagerImp$1(bcvc parambcvc) {}
   
   public void run()
   {
-    blec.a().a();
-    abet.a(bboi.a(this.this$0), "426", "202238", "", "42601", "1", "116");
+    bmqt.a().a();
+    abuf.a(bcvc.a(this.this$0), "426", "202238", "", "42601", "1", "116");
   }
 }
 

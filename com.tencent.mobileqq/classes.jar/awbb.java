@@ -1,14 +1,25 @@
-import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
+import com.tencent.mobileqq.app.soso.LbsManagerService;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
 
-public class awbb
-  implements avzk
+class awbb
 {
-  public awbb(MultiCardPageIndicator paramMultiCardPageIndicator) {}
+  awbb(away paramaway, String paramString) {}
   
-  public boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  @QQPermissionDenied(1)
+  public void denied()
   {
-    MultiCardPageIndicator.a(this.a);
-    return false;
+    this.jdField_a_of_type_Away.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
+  }
+  
+  @QQPermissionGrant(1)
+  public void grant()
+  {
+    LbsManagerService.startLocation(new awbc(this, "webview"));
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_Away.TAG, 2, "SosoInterface.startLocation");
+    }
   }
 }
 

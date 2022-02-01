@@ -1,62 +1,34 @@
-import android.util.Log;
-import com.tencent.mobileqq.now.loginmerge.LoginMergedProto.AccountBaseInfo;
-import com.tencent.mobileqq.now.loginmerge.LoginMergedProto.LoginRsp;
-import com.tencent.mobileqq.now.loginmerge.LoginMergedProto.TicketInfo;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.qphone.base.util.QLog;
 
 class axjv
-  implements axjt
+  implements bcxq
 {
-  axjv(axju paramaxju, axjx paramaxjx) {}
+  axjv(axjk paramaxjk, axjf paramaxjf, String paramString) {}
   
-  public void a(int paramInt, String paramString)
+  public void a(int paramInt)
   {
-    Log.d("now_live_login_mgr", "login faile, errCode=" + paramInt + ", errMsg=" + paramString);
-    if (this.jdField_a_of_type_Axjx != null) {
-      this.jdField_a_of_type_Axjx.a(paramInt, paramString);
+    if ((this.jdField_a_of_type_Axjf.a != null) && (this.jdField_a_of_type_Axjf.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null) && (QLog.isColorLevel())) {
+      QLog.d("MultiRichMediaSaveManager", 2, "downloadVideo onComplete, key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramInt + " , uniseq = " + this.jdField_a_of_type_Axjf.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
     }
+    this.jdField_a_of_type_Axjk.a(this.jdField_a_of_type_Axjf, paramInt, 0, "");
   }
   
-  public void a(byte[] paramArrayOfByte)
+  public void b(int paramInt)
   {
-    if (axju.a(this.jdField_a_of_type_Axju)) {
-      return;
+    if ((this.jdField_a_of_type_Axjf.a != null) && (this.jdField_a_of_type_Axjf.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null) && (QLog.isColorLevel())) {
+      QLog.d("MultiRichMediaSaveManager", 2, "downloadVideo onProgress , key = " + this.jdField_a_of_type_JavaLangString + ", pos = " + paramInt + " , uniseq = " + this.jdField_a_of_type_Axjf.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
     }
-    for (;;)
+    if (this.jdField_a_of_type_Axjf.a != null)
     {
-      try
+      String str = this.jdField_a_of_type_Axjk.a(this.jdField_a_of_type_Axjf.a.jdField_a_of_type_Bcxb);
+      axjg localaxjg = this.jdField_a_of_type_Axjk.a(str);
+      if ((localaxjg != null) && (!localaxjg.a))
       {
-        Log.d("now_live_login_mgr", "login success");
-        LoginMergedProto.LoginRsp localLoginRsp = new LoginMergedProto.LoginRsp();
-        localLoginRsp.mergeFrom(paramArrayOfByte);
-        axjz.a().a(localLoginRsp.account_base_info.uid.get());
-        axjz.a().b(localLoginRsp.account_base_info.tinyid.get());
-        axjz.a().a(localLoginRsp.tickets.auth_key.get());
-        paramArrayOfByte = this.jdField_a_of_type_Axju;
-        if (localLoginRsp.result.get() != 0) {
-          break label185;
-        }
-        bool = true;
-        axju.a(paramArrayOfByte, bool);
-        if (this.jdField_a_of_type_Axjx == null) {
-          break;
-        }
-        this.jdField_a_of_type_Axjx.a(localLoginRsp.result.get(), localLoginRsp.errMsg.get());
-        return;
+        localaxjg.c = paramInt;
+        this.jdField_a_of_type_Axjk.a(str, localaxjg);
+        axjk.a(this.jdField_a_of_type_Axjk, localaxjg, localaxjg.c);
       }
-      catch (Exception paramArrayOfByte)
-      {
-        Log.d("now_live_login_mgr", "login parse exception, errMsg=" + paramArrayOfByte.getMessage());
-      }
-      if (this.jdField_a_of_type_Axjx == null) {
-        break;
-      }
-      this.jdField_a_of_type_Axjx.a(1000001, "login parse exception");
-      return;
-      label185:
-      boolean bool = false;
     }
   }
 }

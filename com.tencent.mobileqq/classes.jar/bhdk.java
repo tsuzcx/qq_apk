@@ -1,82 +1,61 @@
-import android.graphics.Point;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.GridView;
-import com.tencent.mobileqq.widget.DraggableGridView;
-import com.tencent.mobileqq.widget.MeasureGridView;
-import com.tencent.widget.ListView;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.widget.TextView;
+import com.tencent.mobileqq.utils.DialogUtil.1.1;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class bhdk
-  implements Animation.AnimationListener
+public final class bhdk
+  extends QQCustomDialog
 {
-  private int jdField_a_of_type_Int;
-  private Point jdField_a_of_type_AndroidGraphicsPoint;
-  private boolean jdField_a_of_type_Boolean;
-  private Point b;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private int b = this.jdField_a_of_type_Int;
   
-  public bhdk(DraggableGridView paramDraggableGridView, Point paramPoint1, Point paramPoint2, boolean paramBoolean)
+  bhdk(Context paramContext, int paramInt1, int paramInt2, boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_AndroidGraphicsPoint = new Point(paramPoint1);
-    this.b = new Point(paramPoint2);
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = 0;
-    DraggableGridView.b(paramDraggableGridView, true);
+    super(paramContext, paramInt1);
   }
   
-  public void onAnimationEnd(Animation paramAnimation)
+  private Runnable a()
   {
-    int i = this.jdField_a_of_type_Int - 1;
-    this.jdField_a_of_type_Int = i;
-    if (i <= 0)
+    return new DialogUtil.1.1(this);
+  }
+  
+  private void a(Runnable paramRunnable)
+  {
+    if (this.b > 0)
     {
-      i = 0;
-      while (i < DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).getChildCount())
-      {
-        paramAnimation = DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).getChildAt(i);
-        if ((paramAnimation instanceof MeasureGridView))
-        {
-          paramAnimation = (GridView)paramAnimation;
-          int j = 0;
-          if (j < paramAnimation.getChildCount())
-          {
-            paramAnimation.getChildAt(j).clearAnimation();
-            if ((((Integer)paramAnimation.getTag()).intValue() == DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).y) && (j == DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).x) && (!this.jdField_a_of_type_Boolean)) {
-              paramAnimation.getChildAt(j).setVisibility(4);
-            }
-            for (;;)
-            {
-              j += 1;
-              break;
-              paramAnimation.getChildAt(j).setVisibility(0);
-            }
-          }
-        }
-        i += 1;
-      }
-      if (!this.jdField_a_of_type_Boolean) {
-        break label216;
-      }
-      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_AndroidGraphicsPoint.y, this.jdField_a_of_type_AndroidGraphicsPoint.x);
-      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).set(-1, -1);
-    }
-    for (;;)
-    {
-      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).notifyDataSetChanged();
-      DraggableGridView.b(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView, false);
+      this.lBtn.setText(String.format("%s(%d)", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.b) }));
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(paramRunnable, 1000L);
       return;
-      label216:
-      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_AndroidGraphicsPoint.y, this.jdField_a_of_type_AndroidGraphicsPoint.x, this.b.y, this.b.x);
     }
+    this.lBtn.setText(this.jdField_a_of_type_JavaLangString);
+    this.b = this.jdField_a_of_type_Int;
+    this.lBtn.setEnabled(true);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void dismiss()
+  {
+    super.dismiss();
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onBackPressed() {}
+  
+  public void show()
+  {
+    super.show();
+    if ((this.jdField_a_of_type_Boolean) && (this.b > 0))
+    {
+      this.lBtn.setText(String.format("%s(%d)", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.b) }));
+      this.lBtn.setEnabled(false);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(a(), 1000L);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhdk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,6 @@
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.Comparator;
-
-public class adht
-  implements Comparator<RecentUser>
-{
-  public adht(ForwardRecentActivity paramForwardRecentActivity) {}
-  
-  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
-  {
-    return (int)(paramRecentUser2.showUpTime - paramRecentUser1.showUpTime);
-  }
-}
-
+// INTERNAL ERROR //
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adht
  * JD-Core Version:    0.7.0.1
  */

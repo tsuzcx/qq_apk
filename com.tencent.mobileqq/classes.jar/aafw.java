@@ -1,49 +1,45 @@
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class aafw
-  implements aagl
+public class aafw
+  implements FFmpegExecuteResponseCallback
 {
-  protected long a;
-  protected ArrayList<aagl> a;
-  protected boolean a;
-  public boolean b = true;
-  public boolean c;
+  aafw(aafb paramaafb) {}
   
-  public aafw()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Long = 350L;
-  }
+  public void a(boolean paramBoolean) {}
   
-  public long a()
+  public void onFailure(String paramString)
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Long = 350L;
-  }
-  
-  public void a(aagl paramaagl)
-  {
-    if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramaagl)) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramaagl);
+    a(false);
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onFailure" + paramString);
     }
   }
   
-  public boolean a()
+  public void onFinish(boolean paramBoolean) {}
+  
+  public void onProgress(String paramString)
   {
-    return this.jdField_a_of_type_Boolean;
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onProgress" + paramString);
+    }
   }
   
-  public abstract boolean b();
+  public void onStart()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onStart");
+    }
+  }
   
-  public abstract boolean c();
+  public void onSuccess(String paramString)
+  {
+    a(true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aafw
  * JD-Core Version:    0.7.0.1
  */

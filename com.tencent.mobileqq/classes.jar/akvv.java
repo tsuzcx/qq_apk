@@ -1,42 +1,57 @@
-public abstract interface akvv
+import Wallet.SkinInfo;
+import java.util.Iterator;
+import java.util.List;
+
+public class akvv
 {
-  public abstract void a(int paramInt);
+  public static akvt a(String paramString)
+  {
+    akvt localakvt = new akvt(anvx.a(2131704911));
+    localakvt.jdField_b_of_type_Int = -2;
+    localakvt.jdField_a_of_type_WalletSkinInfo.skin_id = -2;
+    localakvt.jdField_a_of_type_WalletSkinInfo.skin_permission_state = 1L;
+    localakvt.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title = paramString;
+    localakvt.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.icon = null;
+    localakvt.jdField_a_of_type_Int = 0;
+    return localakvt;
+  }
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public static akvt a(List<akvt> paramList, int paramInt)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      akvt localakvt = (akvt)paramList.next();
+      if (localakvt.jdField_a_of_type_WalletSkinInfo.skin_id == paramInt) {
+        return localakvt;
+      }
+    }
+    return null;
+  }
   
-  public abstract void a(int paramInt, String paramString, boolean paramBoolean);
+  public static akvt b(String paramString)
+  {
+    akvt localakvt = new akvt(anvx.a(2131704913));
+    localakvt.jdField_b_of_type_Int = -1;
+    localakvt.jdField_a_of_type_WalletSkinInfo.skin_id = 0;
+    localakvt.jdField_a_of_type_WalletSkinInfo.skin_permission_state = 1L;
+    localakvt.jdField_a_of_type_WalletSkinInfo.is_hide_title = 0;
+    localakvt.jdField_a_of_type_WalletSkinInfo.blessing = anvx.a(2131696541);
+    localakvt.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title = paramString;
+    localakvt.jdField_a_of_type_Int = -1;
+    return localakvt;
+  }
   
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract int d();
-  
-  public abstract void g(boolean paramBoolean);
-  
-  public abstract void k();
-  
-  public abstract void l();
-  
-  public abstract void m();
-  
-  public abstract void n();
-  
-  public abstract void o();
-  
-  public abstract void p();
-  
-  public abstract void q();
-  
-  public abstract void r();
-  
-  public abstract void t();
-  
-  public abstract void u();
-  
-  public abstract void v();
-  
-  public abstract void w();
-  
-  public abstract void x();
+  public static akvt c(String paramString)
+  {
+    akvt localakvt = new akvt(anvx.a(2131704912));
+    localakvt.jdField_b_of_type_JavaLangString = paramString;
+    localakvt.jdField_b_of_type_Int = 1;
+    localakvt.jdField_a_of_type_Int = 1000;
+    localakvt.jdField_a_of_type_WalletSkinInfo.skin_id = -1;
+    localakvt.jdField_a_of_type_WalletSkinInfo.skin_permission_state = 1L;
+    return localakvt;
+  }
 }
 
 

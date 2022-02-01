@@ -1,31 +1,30 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment.WeakReferenceRunnable;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
-class qbp
-  implements Animation.AnimationListener
+public class qbp
+  implements TVK_SDKMgr.InstallListener
 {
-  qbp(qbn paramqbn, View paramView, boolean paramBoolean, Activity paramActivity, ArticleInfo paramArticleInfo) {}
+  public qbp(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onInstallProgress(float paramFloat)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null)
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        qbn.a(this.jdField_a_of_type_Qbn, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, false);
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    acho.a("ReadInjoyIMAXAdFragment", "installSDK onInstallProgress arg0=");
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onInstalledFailed(int paramInt)
+  {
+    acho.a("ReadInjoyIMAXAdFragment", "installSDK onInstalledFailed arg0=");
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onInstalledSuccessed()
+  {
+    acho.a("ReadInjoyIMAXAdFragment", "installSDK onInstalledSuccessed");
+    if ((ReadInjoyIMAXAdFragment.a()) && (ReadInjoyIMAXAdFragment.b(this.a) != null)) {
+      ReadInjoyIMAXAdFragment.b(this.a).post(new ReadInjoyIMAXAdFragment.WeakReferenceRunnable(this.a, 4));
+    }
+  }
 }
 
 

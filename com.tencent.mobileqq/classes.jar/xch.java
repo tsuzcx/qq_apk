@@ -1,10 +1,12 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.reactive.Stream;
+import java.util.List;
 
-abstract interface xch<T>
+public abstract interface xch
 {
-  @NonNull
-  public abstract Stream<T> a(xcd paramxcd);
+  public abstract List<String> a();
+  
+  public abstract boolean a();
+  
+  public abstract boolean b();
 }
 
 

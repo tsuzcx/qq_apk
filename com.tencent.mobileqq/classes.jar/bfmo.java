@@ -1,44 +1,94 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.pb.unifiedebug.RemoteDebugReportMsg.RemoteLogRsp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.cs.cmd0x383.cmd0x383.ApplyFileSearchRspBody.Item;
+import tencent.im.cs.cmd0x383.cmd0x383.ApplyGetFileListRspBody.FileInfo;
 
-class bfmo
-  implements BusinessObserver
+public class bfmo
 {
-  bfmo(bfmn parambfmn) {}
+  public long a;
+  public bfif a;
+  public String a;
+  public ArrayList<String> a;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public String d;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public bfmo(QQAppInterface paramQQAppInterface, cmd0x383.ApplyFileSearchRspBody.Item paramItem)
   {
-    if (paramBoolean)
+    if (paramItem == null) {
+      return;
+    }
+    this.jdField_a_of_type_Long = paramItem.uint64_group_code.get();
+    this.jdField_a_of_type_JavaLangString = paramItem.bytes_group_name.get().toStringUtf8();
+    this.jdField_b_of_type_Long = paramItem.uint64_upload_uin.get();
+    this.jdField_b_of_type_JavaLangString = paramItem.bytes_uploader_nick_name.get().toStringUtf8();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    List localList = paramItem.bytes_match_word.get();
+    if (localList != null)
     {
-      paramBundle = paramBundle.getByteArray("extra_data");
-      if (paramBundle == null) {}
-    }
-    while (!QLog.isColorLevel()) {
-      try
+      int i = 0;
+      while (i < localList.size())
       {
-        RemoteDebugReportMsg.RemoteLogRsp localRemoteLogRsp = new RemoteDebugReportMsg.RemoteLogRsp();
-        localRemoteLogRsp.mergeFrom(paramBundle);
-        if (localRemoteLogRsp.i32_ret.has())
-        {
-          paramInt = localRemoteLogRsp.i32_ret.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("UnifiedDebugReporter", 2, "onReceive: retCode=" + paramInt);
-          }
+        this.jdField_a_of_type_JavaUtilArrayList.add(((ByteStringMicro)localList.get(i)).toStringUtf8());
+        i += 1;
+      }
+    }
+    this.jdField_c_of_type_Long = paramItem.uint64_match_uin.get();
+    if (this.jdField_c_of_type_Long > 0L)
+    {
+      paramQQAppInterface = ((anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(String.valueOf(this.jdField_c_of_type_Long));
+      if (paramQQAppInterface != null)
+      {
+        this.jdField_c_of_type_JavaLangString = paramQQAppInterface.name;
+        this.d = paramQQAppInterface.remark;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopFileSearchItemData<QFile>", 2, "TroopFileSearchItemData matchUin:" + this.jdField_c_of_type_Long + ", name:" + this.jdField_c_of_type_JavaLangString + ", remark = " + this.d);
+      }
+    }
+    this.jdField_a_of_type_Bfif = new bfif((cmd0x383.ApplyGetFileListRspBody.FileInfo)paramItem.file_info.get());
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("groupCode = " + this.jdField_a_of_type_Long);
+    localStringBuilder.append(", groupName = " + this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", uploaderUin = " + this.jdField_b_of_type_Long);
+    localStringBuilder.append(", uploaderNickName = " + this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", matchUin = " + this.jdField_c_of_type_Long);
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      localStringBuilder.append(", matchWord: = ");
+      int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+      int i = 0;
+      if (i < j)
+      {
+        if (i == j - 1) {
+          localStringBuilder.append((String)this.jdField_a_of_type_JavaUtilArrayList.get(i) + ", ");
         }
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.e("UnifiedDebugReporter", 2, "onReceive: exception=" + paramBundle.getMessage());
-        return;
+        for (;;)
+        {
+          i += 1;
+          break;
+          localStringBuilder.append((String)this.jdField_a_of_type_JavaUtilArrayList.get(i)).append("、 ");
+        }
       }
     }
-    QLog.e("UnifiedDebugReporter", 2, "onReceive: isSuccess=" + paramBoolean);
+    if (this.jdField_a_of_type_Bfif != null) {
+      localStringBuilder.append(", fileInfo = " + this.jdField_a_of_type_Bfif.toString());
+    }
+    return localStringBuilder.toString();
   }
 }
 

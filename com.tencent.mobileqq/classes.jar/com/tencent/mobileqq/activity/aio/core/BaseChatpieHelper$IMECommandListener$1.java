@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import afih;
+import afzm;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import bgrk;
-import bgrn;
-import bgrp;
+import bica;
+import bicd;
+import bicf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPtt;
 import com.tencent.mobileqq.transfile.BuddyTransfileProcessor;
@@ -20,7 +20,7 @@ import java.io.File;
 public class BaseChatpieHelper$IMECommandListener$1
   implements Runnable
 {
-  public BaseChatpieHelper$IMECommandListener$1(afih paramafih, QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2, Context paramContext, View paramView) {}
+  public BaseChatpieHelper$IMECommandListener$1(afzm paramafzm, QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2, Context paramContext, View paramView) {}
   
   public void run()
   {
@@ -37,7 +37,7 @@ public class BaseChatpieHelper$IMECommandListener$1
     do
     {
       return;
-      afih.a(this.this$0).recordingUniseq = 0L;
+      afzm.a(this.this$0).recordingUniseq = 0L;
       Object localObject3 = new File(str);
       if (((File)localObject3).exists()) {
         l = ((File)localObject3).length();
@@ -46,9 +46,9 @@ public class BaseChatpieHelper$IMECommandListener$1
       if (QLog.isColorLevel()) {
         QLog.d("sougouptt", 2, "file size = " + l + " timelength = " + d);
       }
-      localObject3 = new bgrk((String)localObject2, this.jdField_a_of_type_Int, ((QQRecorder.RecorderParam)localObject1).b, ((QQRecorder.RecorderParam)localObject1).c, 0);
-      bgrn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), (bgrk)localObject3, null, null, bgrp.a(str));
-      afih.a(this.this$0).sendPttForIME((String)localObject2, (int)d, (QQRecorder.RecorderParam)localObject1, this.b);
+      localObject3 = new bica((String)localObject2, this.jdField_a_of_type_Int, ((QQRecorder.RecorderParam)localObject1).b, ((QQRecorder.RecorderParam)localObject1).c, 0);
+      bicd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), (bica)localObject3, null, null, bicf.a(str));
+      afzm.a(this.this$0).sendPttForIME((String)localObject2, (int)d, (QQRecorder.RecorderParam)localObject1, this.b);
       localObject1 = (InputMethodManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("input_method");
     } while (localObject1 == null);
     localObject2 = new Bundle();

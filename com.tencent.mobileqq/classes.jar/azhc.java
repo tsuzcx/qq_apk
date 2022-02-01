@@ -1,32 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-class azhc
-  implements View.OnClickListener
+public class azhc
+  implements BusinessObserver
 {
-  azhc(azgy paramazgy) {}
-  
-  public void onClick(View paramView)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    bcef.b(null, "dc00898", "", "", "0X800B44D", "0X800B44D", 0, 0, "", "", "", "");
-    this.a.a = -1;
-    this.a.dismiss();
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("PaiYiPaiObserver", 2, "onUpdate() called with: type = [" + paramInt + "], isSuccess = [" + paramBoolean + "], data = [" + paramObject + "]");
+    }
+    switch (paramInt)
     {
-      azge.a(azeu.a(), true);
-      azhh.a().a(true);
-      azhh.a().a("QQAssistantGuider");
-      EventCollector.getInstance().onViewClicked(paramView);
+    case 1003: 
+    case 1004: 
+    case 1005: 
+    default: 
+      return;
+    case 1001: 
+      QQToast.a(BaseApplicationImpl.getContext(), 0, 2131694497, 0).a();
+      return;
+    case 1002: 
+      QQToast.a(BaseApplicationImpl.getContext(), 0, 2131694492, 0).a();
+      return;
+    case 1006: 
+      QQToast.a(BaseApplicationImpl.getContext(), 0, 2131694493, 0).a();
       return;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        azeu.a("HelloQQWake", "QQAssistantGuider cardHandler.setQQAssistantSwitch:" + localException.getMessage());
-      }
-    }
+    QQToast.a(BaseApplicationImpl.getContext(), 0, 2131694488, 0).a();
   }
 }
 

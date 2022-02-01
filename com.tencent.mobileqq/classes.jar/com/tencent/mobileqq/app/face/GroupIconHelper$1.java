@@ -2,6 +2,7 @@ package com.tencent.mobileqq.app.face;
 
 import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 public class GroupIconHelper$1
   implements Runnable
@@ -11,7 +12,7 @@ public class GroupIconHelper$1
   public void run()
   {
     this.a.addObserver(this.this$0);
-    PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)this.a.getManager(11);
+    PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)this.a.getManager(QQManagerFactory.CONTACT_MANAGER);
     if (localPhoneContactManagerImp != null) {
       localPhoneContactManagerImp.a(this.this$0);
     }

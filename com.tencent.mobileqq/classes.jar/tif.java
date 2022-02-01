@@ -1,47 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.viola.core.ViolaInstance;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
-public class tif
-  implements toi
+class tif
+  implements tir
 {
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  tif(tia paramtia) {}
   
-  public tif(BridgeModule paramBridgeModule) {}
-  
-  public void a() {}
-  
-  public void a(boolean paramBoolean)
+  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
   {
-    ViolaFragment localViolaFragment;
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance() != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance().getFragment() instanceof ViolaFragment)))
+    JSONObject localJSONObject = paramProteusItemData.c;
+    if (tia.a(this.a, localJSONObject))
     {
-      localViolaFragment = (ViolaFragment)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance().getFragment();
-      if (!paramBoolean) {
-        break label85;
-      }
-      this.jdField_a_of_type_JavaLangString = localViolaFragment.getStatusBarColor();
-      this.jdField_a_of_type_Boolean = localViolaFragment.getStatusBarFontColorWhite().booleanValue();
-      localViolaFragment.setStatusBarColor("#FF000000");
-      localViolaFragment.initStatusBarColor("#FF000000");
-      localViolaFragment.setStatusBarFontColor(Boolean.valueOf(true), true);
-    }
-    label85:
-    do
-    {
+      tia.a(this.a, paramViewBase, paramContext, paramProteusItemData);
       return;
-      localViolaFragment.setStatusBarColor(this.jdField_a_of_type_JavaLangString);
-      localViolaFragment.initStatusBarColor(this.jdField_a_of_type_JavaLangString);
-      localViolaFragment.setStatusBarFontColor(Boolean.valueOf(this.jdField_a_of_type_Boolean), true);
-    } while ((!localViolaFragment.isSuspension()) || (localViolaFragment.getCommonSuspensionGestureLayout() == null));
-    localViolaFragment.getCommonSuspensionGestureLayout().g();
+    }
+    tia.b(this.a, paramViewBase, paramContext, paramProteusItemData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tif
  * JD-Core Version:    0.7.0.1
  */

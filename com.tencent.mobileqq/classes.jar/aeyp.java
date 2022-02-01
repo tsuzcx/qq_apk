@@ -1,20 +1,49 @@
-import android.content.Context;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aeyp
-  extends aezz
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aeyp(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, Context paramContext, View.OnClickListener paramOnClickListener)
-  {
-    super(paramQQAppInterface, paramSessionInfo, paramContext, paramOnClickListener);
-  }
+  public aeyp(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  protected void a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, ViewGroup paramViewGroup, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, aezf paramaezf) {}
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    int i = 1;
+    label61:
+    QQAppInterface localQQAppInterface;
+    if (paramBoolean)
+    {
+      SoundAndVibrateActivity.b(this.a, 0);
+      SoundAndVibrateActivity.e(this.a).setBackgroundResource(2130839512);
+      if (this.a.app.getTroopGeneralSettingVibrate() == 0)
+      {
+        this.a.b.setChecked(false);
+        this.a.app.setALLGeneralSettingVibrate(1);
+        localQQAppInterface = this.a.app;
+        if (!paramBoolean) {
+          break label157;
+        }
+      }
+    }
+    for (;;)
+    {
+      bdla.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_notice_shake", 0, i, "", "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      this.a.b.setChecked(true);
+      break;
+      SoundAndVibrateActivity.b(this.a, 8);
+      SoundAndVibrateActivity.e(this.a).setBackgroundResource(2130839496);
+      this.a.app.setALLGeneralSettingVibrate(0);
+      break label61;
+      label157:
+      i = 0;
+    }
+  }
 }
 
 

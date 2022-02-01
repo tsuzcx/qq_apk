@@ -1,29 +1,20 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-class vnl
-  extends SimpleJob<Void>
+final class vnl
+  implements Animation.AnimationListener
 {
-  vnl(vnk paramvnk, String paramString)
+  vnl(View paramView) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramString);
+    this.a.setTag(-1, null);
   }
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
-  {
-    boolean bool = ypi.a(500L);
-    if (this.a.a(bool)) {
-      vnk.a(this.a, bool);
-    }
-    return null;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public int getJobType()
-  {
-    return 4;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

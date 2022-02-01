@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.activity;
 
-import bdsm;
+import bezp;
 
 public class TroopBarReplyActivity$12$2
   implements Runnable
 {
-  public TroopBarReplyActivity$12$2(bdsm parambdsm) {}
+  public TroopBarReplyActivity$12$2(bezp parambezp) {}
   
   public void run()
   {

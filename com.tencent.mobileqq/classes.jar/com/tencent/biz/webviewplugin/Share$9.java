@@ -1,12 +1,12 @@
 package com.tencent.biz.webviewplugin;
 
-import aadf;
+import aasr;
 import com.tencent.biz.pubaccount.CustomWebView;
 
 public class Share$9
   implements Runnable
 {
-  public Share$9(aadf paramaadf, String paramString) {}
+  public Share$9(aasr paramaasr, String paramString) {}
   
   public void run()
   {

@@ -1,36 +1,34 @@
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import msf.msgsvc.msg_svc.Grp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
 public class acwc
+  implements acos
 {
-  public int a;
-  public long a;
-  public MessageForReplyText.SourceMsgInfo a;
-  public EmojiStickerManager.StickerInfo a;
-  public String a;
-  public boolean a = true;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  public long c;
-  public String c;
-  public boolean c;
-  public int d;
-  public long d;
-  public String d;
-  public boolean d;
-  public int e;
-  public long e;
-  public boolean e;
-  public int f;
-  public boolean f;
-  public int g = -1;
-  public boolean g;
-  public boolean h;
-  public boolean i;
-  public boolean j;
+  public int a()
+  {
+    return 1;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = new msg_svc.Grp();
+    paramQQAppInterface.group_code.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    paramRoutingHead.grp.set(paramQQAppInterface);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 3002;
+  }
 }
 
 

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.app.automator.step;
 
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.concurrent.atomic.AtomicBoolean;
-import nns;
+import nut;
 
 class AfterSyncMsg$3
   implements Runnable
@@ -11,8 +11,8 @@ class AfterSyncMsg$3
   
   public void run()
   {
-    if (!nns.a.get()) {
-      nns.a(BaseApplicationImpl.getContext());
+    if (!nut.a.get()) {
+      nut.a(BaseApplicationImpl.getContext());
     }
   }
 }

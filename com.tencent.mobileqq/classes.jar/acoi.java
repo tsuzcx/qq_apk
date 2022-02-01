@@ -1,26 +1,12 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.ConversationInfo;
 
-public class acoi
-  implements View.OnClickListener
+public abstract interface acoi
 {
-  public acoi(AccountManageActivity paramAccountManageActivity) {}
+  public abstract int a(String paramString, StringBuilder paramStringBuilder);
   
-  public void onClick(View paramView)
-  {
-    if (!aych.a().a(this.a.app, this.a)) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((this.a.b == null) || (!this.a.b.isShowing())) {
-        AccountManageActivity.a(this.a);
-      }
-    }
-  }
+  public abstract boolean a(ConversationInfo paramConversationInfo);
+  
+  public abstract boolean a(ConversationInfo paramConversationInfo, boolean[] paramArrayOfBoolean);
 }
 
 

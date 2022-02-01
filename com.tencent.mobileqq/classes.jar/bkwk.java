@@ -1,79 +1,70 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayOutputStream;
-import java.io.ObjectOutputStream;
-
 public class bkwk
 {
-  private ByteArrayOutputStream jdField_a_of_type_JavaIoByteArrayOutputStream = new ByteArrayOutputStream();
-  private ObjectOutputStream jdField_a_of_type_JavaIoObjectOutputStream = new ObjectOutputStream(this.jdField_a_of_type_JavaIoByteArrayOutputStream);
+  public static char[] a = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
   
-  public void a(int paramInt)
+  public static String a(String paramString)
   {
-    this.jdField_a_of_type_JavaIoObjectOutputStream.writeInt(paramInt);
+    return a(a(paramString));
   }
   
-  public void a(Object paramObject)
+  public static String a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_JavaIoObjectOutputStream.writeObject(paramObject);
-  }
-  
-  public void a(String paramString)
-  {
-    a(paramString, "");
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (paramString1 == null)
+    int i = 0;
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length == 16))
     {
-      this.jdField_a_of_type_JavaIoObjectOutputStream.writeUTF(paramString2);
-      return;
-    }
-    this.jdField_a_of_type_JavaIoObjectOutputStream.writeUTF(paramString1);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaIoObjectOutputStream.writeBoolean(paramBoolean);
-  }
-  
-  public byte[] a()
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaIoObjectOutputStream.close();
-      try
+      char[] arrayOfChar = new char[32];
+      int j = 0;
+      while (i < 16)
       {
-        label7:
-        arrayOfByte1 = this.jdField_a_of_type_JavaIoByteArrayOutputStream.toByteArray();
+        int k = paramArrayOfByte[i];
+        int m = j + 1;
+        arrayOfChar[j] = a[(k >>> 4 & 0xF)];
+        j = m + 1;
+        arrayOfChar[m] = a[(k & 0xF)];
+        i += 1;
       }
-      catch (Exception localException1)
-      {
-        for (;;)
-        {
-          try
-          {
-            byte[] arrayOfByte1;
-            this.jdField_a_of_type_JavaIoByteArrayOutputStream.close();
-            return arrayOfByte1;
-          }
-          catch (Exception localException3)
-          {
-            byte[] arrayOfByte2;
-            return arrayOfByte2;
-          }
-          localException1 = localException1;
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.msg.qqwalletmsg", 2, "flushDataAndCloseStream toByteArray Exception", localException1);
-          }
-          arrayOfByte2 = null;
-        }
-      }
+      return new String(arrayOfChar);
     }
-    catch (Exception localException2)
-    {
-      break label7;
-    }
+    return "";
+  }
+  
+  /* Error */
+  public static byte[] a(String paramString)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: ifnonnull +5 -> 6
+    //   4: aconst_null
+    //   5: areturn
+    //   6: ldc 48
+    //   8: invokestatic 54	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   11: astore_1
+    //   12: aload_0
+    //   13: ldc 56
+    //   15: invokevirtual 59	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   18: astore_0
+    //   19: aload_1
+    //   20: aload_0
+    //   21: invokevirtual 63	java/security/MessageDigest:digest	([B)[B
+    //   24: areturn
+    //   25: astore_0
+    //   26: aload_0
+    //   27: invokevirtual 66	java/lang/Exception:printStackTrace	()V
+    //   30: aconst_null
+    //   31: areturn
+    //   32: astore_0
+    //   33: aload_0
+    //   34: invokevirtual 67	java/io/UnsupportedEncodingException:printStackTrace	()V
+    //   37: aconst_null
+    //   38: areturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	39	0	paramString	String
+    //   11	9	1	localMessageDigest	java.security.MessageDigest
+    // Exception table:
+    //   from	to	target	type
+    //   6	12	25	java/lang/Exception
+    //   12	19	32	java/io/UnsupportedEncodingException
   }
 }
 

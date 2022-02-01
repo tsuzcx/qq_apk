@@ -1,67 +1,45 @@
-import android.view.KeyEvent;
+import android.content.Intent;
 import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
+import android.view.ViewParent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-class afqf
-  implements View.OnKeyListener, TextView.OnEditorActionListener
+public class afqf
+  implements asir
 {
-  private afqf(afqd paramafqd) {}
+  public afqf(BaseBubbleBuilder paramBaseBubbleBuilder) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void a(View paramView)
   {
-    if (paramInt == 4)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("EnterForSendHelper", 2, "IME_ACTION_SEND");
-      }
-      afqd.a(this.a).clickSendTextButton();
-      return true;
+    String str = bhnp.a("aioEmojiStickerDetail");
+    ViewParent localViewParent = paramView.getParent();
+    if ((localViewParent instanceof ChatXListView)) {
+      EmojiStickerManager.k = ((ChatXListView)localViewParent).getPositionForView(paramView);
     }
-    return false;
-  }
-  
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    paramView = afqd.a(this.a).input;
-    if (paramKeyEvent.getKeyCode() == 66)
+    paramView = new Intent(this.a.a.getApp(), QQBrowserActivity.class);
+    paramView.setFlags(268435456);
+    paramView.putExtra("vasUsePreWebview", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(this.a.a.getApp(), str, -1L, paramView, false, -1);
+    int i;
+    if (EmojiStickerManager.a().a == 0) {
+      i = 1;
+    }
+    for (;;)
     {
-      if (paramKeyEvent.getAction() == 1)
-      {
-        paramView = paramView.getText().toString();
-        if (QLog.isColorLevel()) {
-          QLog.d("EnterForSendHelper", 2, " sendOnEnterEnabled = " + this.a.a);
-        }
-        if ((this.a.a) && (paramView.length() > 0)) {
-          afqd.a(this.a).send();
-        }
-      }
-      if (this.a.a) {
-        return true;
+      VasWebviewUtil.reportCommercialDrainage(this.a.a.getCurrentUin(), "Stick", "ClickDetail", String.valueOf(i), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+      return;
+      if (EmojiStickerManager.a().a == 1) {
+        i = 2;
+      } else if (EmojiStickerManager.a().a == 3000) {
+        i = 3;
+      } else {
+        i = -1;
       }
     }
-    else if ((paramKeyEvent.getKeyCode() == 67) && (paramKeyEvent.getAction() == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("EnterForSendHelper", 2, "on delete, start: " + paramView.getSelectionStart() + ", end: " + paramView.getSelectionEnd() + ", span: " + paramView.getTag(2131373788));
-      }
-      if ((paramView.getSelectionStart() == 0) && (paramView.getSelectionEnd() == 0) && (paramView.getTag(2131373788) != null))
-      {
-        paramKeyEvent = paramView.getCompoundDrawables();
-        paramView.setCompoundDrawables(paramKeyEvent[0], null, paramKeyEvent[2], paramKeyEvent[3]);
-        paramView.setTag(2131373788, null);
-        paramView.setSelection(0);
-        afqd.a(this.a).mSourceMsgInfo = null;
-        afqd.a(this.a).shouldHideLightVideoBtn(2);
-        bcef.b(null, "dc00898", "", "", "0X800A9AC", "0X800A9AC", 0, 1, "", "", "", "");
-        return true;
-      }
-    }
-    return false;
   }
 }
 

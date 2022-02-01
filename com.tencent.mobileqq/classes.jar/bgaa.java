@@ -1,6 +1,15 @@
-abstract interface bgaa<T>
+import android.text.Editable;
+import java.util.Comparator;
+
+final class bgaa
+  implements Comparator
 {
-  public abstract T a(float paramFloat, T paramT1, T paramT2);
+  bgaa(Editable paramEditable) {}
+  
+  public int compare(Object paramObject1, Object paramObject2)
+  {
+    return this.a.getSpanStart(paramObject1) - this.a.getSpanStart(paramObject2);
+  }
 }
 
 

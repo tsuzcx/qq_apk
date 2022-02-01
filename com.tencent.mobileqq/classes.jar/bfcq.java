@@ -1,38 +1,97 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt64Field;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x9e9.cmd0x9e9.RspBody;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bfcq
-  extends nme
+public class bfcq
 {
-  bfcq(bfci parambfci, bfch parambfch) {}
+  private List<Integer> a = new ArrayList();
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public static bfcq a(String paramString)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.send_gift", 2, "requestGiftPoint. onResult error=" + paramInt + " data=" + paramArrayOfByte);
-      }
-      if (this.jdField_a_of_type_Bfch != null) {
-        this.jdField_a_of_type_Bfch.a(paramInt, "sso request error or callback is null.");
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopBlockConfig", 2, "content : " + paramString);
     }
-    do
+    if (TextUtils.isEmpty(paramString)) {
+      paramString = null;
+    }
+    ArrayList localArrayList;
+    bfcq localbfcq;
+    for (;;)
     {
-      return;
-      paramBundle = new cmd0x9e9.RspBody();
+      return paramString;
+      localArrayList = new ArrayList();
       try
       {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        this.jdField_a_of_type_Bfch.a(paramBundle.int64_total_point.get() / 100L);
-        return;
+        paramString = new JSONObject(paramString).getJSONArray("grayTroopUins");
+        if ((paramString != null) && (paramString.length() > 0))
+        {
+          int i = 0;
+          while (i < paramString.length())
+          {
+            localArrayList.add(Integer.valueOf(paramString.getInt(i)));
+            i += 1;
+          }
+        }
+        if (!QLog.isColorLevel()) {}
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
-    } while (!QLog.isColorLevel());
-    QLog.i(".troop.send_gift", 2, "requestGiftPoint. error=" + QLog.getStackTraceString(paramArrayOfByte));
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+        localbfcq = new bfcq();
+        localbfcq.a = localArrayList;
+        paramString = localbfcq;
+      }
+    }
+    QLog.d("TroopBlockConfig", 2, "tempGrayList.size : " + localArrayList.size());
+    return localbfcq;
+  }
+  
+  public boolean a(String paramString)
+  {
+    boolean bool2 = true;
+    boolean bool1 = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopBlockConfig", 2, "isGrayTroop troopUin = " + paramString);
+    }
+    if ((TextUtils.isEmpty(paramString)) || (this.a == null))
+    {
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder().append("grayTroopUinList isNull:  ");
+        if (this.a != null) {
+          break label96;
+        }
+      }
+      for (;;)
+      {
+        QLog.d("TroopBlockConfig", 2, bool1);
+        bool2 = false;
+        return bool2;
+        label96:
+        bool1 = false;
+      }
+    }
+    paramString = paramString.substring(paramString.length() - 1);
+    int i = 0;
+    label114:
+    if (i < this.a.size()) {
+      if (!String.valueOf(this.a.get(i)).equals(paramString)) {}
+    }
+    for (bool1 = bool2;; bool1 = false)
+    {
+      bool2 = bool1;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("TroopBlockConfig", 2, "isGrayTroop grayTroopUinList size = " + this.a.size() + ", isGrayTroop = " + bool1);
+      return bool1;
+      i += 1;
+      break label114;
+    }
   }
 }
 

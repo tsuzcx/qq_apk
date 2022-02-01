@@ -1,32 +1,21 @@
-import com.tencent.mobileqq.activity.JumpActivity;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adng
-  extends WtloginObserver
+public final class adng
+  implements DialogInterface.OnClickListener
 {
-  public adng(JumpActivity paramJumpActivity) {}
+  public adng(adnm paramadnm) {}
   
-  public void onCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramDevlockInfo != null) {
-      argz.a().a(paramDevlockInfo.TransferInfo);
-    }
-    paramWUserSigInfo = this.a;
-    if (paramInt == 0) {}
-    for (;;)
-    {
-      paramWUserSigInfo.a(paramDevlockInfo);
-      return;
-      paramDevlockInfo = null;
+    if (this.a != null) {
+      this.a.onCancel();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adng
  * JD-Core Version:    0.7.0.1
  */

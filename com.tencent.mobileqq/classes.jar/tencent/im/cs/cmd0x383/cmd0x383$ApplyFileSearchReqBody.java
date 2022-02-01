@@ -18,6 +18,7 @@ public final class cmd0x383$ApplyFileSearchReqBody
   public static final int PICTURE = 4;
   public static final int SEARCH_BY_FILE_TYPE = 2;
   public static final int SEARCH_BY_KEY_WORD = 0;
+  public static final int SEARCH_BY_KEY_WORD_AND_VIDEO = 3;
   public static final int VIDEO = 2;
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_key_word = PBField.initBytes(ByteStringMicro.EMPTY);

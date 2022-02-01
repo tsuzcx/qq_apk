@@ -1,14 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder.3.1;
+import com.tencent.qphone.base.util.QLog;
 
-class ahfs
-  implements DialogInterface.OnClickListener
+public final class ahfs
+  implements bisc
 {
-  ahfs(ahfp paramahfp, ahfz paramahfz) {}
+  public ahfs(Handler paramHandler) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onProgressChanged(bisa parambisa, int paramInt1, int paramInt2) {}
+  
+  public void onProgressCompleted(bisa parambisa)
   {
-    ahfp.a(this.jdField_a_of_type_Ahfp, this.jdField_a_of_type_Ahfz);
+    if (QLog.isColorLevel()) {
+      QLog.i("ScribbleItemBuilder", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambisa);
+    }
+    this.a.postDelayed(new ScribbleItemBuilder.3.1(this, parambisa), 100L);
   }
 }
 

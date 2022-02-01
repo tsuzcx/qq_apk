@@ -1,40 +1,41 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.pubaccount.Advertisement.adapter.VideoCoverAdapter;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
-import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
-import com.tencent.biz.pubaccount.Advertisement.view.AdvertisementSplitedProgressBar;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import com.tencent.biz.game.SensorAPIJavaScript;
 
 public class nxt
-  implements ViewPager.OnPageChangeListener
+  implements SensorEventListener
 {
-  public nxt(VideoCoverFragment paramVideoCoverFragment, ViewPager.OnPageChangeListener paramOnPageChangeListener) {}
+  protected byte a;
+  protected String a;
   
-  public void onPageScrollStateChanged(int paramInt)
+  public nxt(SensorAPIJavaScript paramSensorAPIJavaScript, byte paramByte, String paramString)
   {
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener != null) {
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener.onPageScrollStateChanged(paramInt);
-    }
+    this.jdField_a_of_type_Byte = paramByte;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener != null) {
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener.onPageScrolled(paramInt1, paramFloat, paramInt2);
-    }
-  }
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
   
-  public void onPageSelected(int paramInt)
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment, paramInt);
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener != null) {
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener.onPageSelected(paramInt);
+    switch (this.jdField_a_of_type_Byte)
+    {
+    default: 
+      return;
+    case 0: 
+      f1 = paramSensorEvent.values[0];
+      float f2 = paramSensorEvent.values[1];
+      float f3 = paramSensorEvent.values[2];
+      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(f1), String.valueOf(f2), String.valueOf(f3) });
+      return;
+    case 1: 
+      f1 = paramSensorEvent.values[0];
+      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(f1) });
+      return;
     }
-    if (VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment) != null) {
-      VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment).a(paramInt);
-    }
-    if (VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment) != null) {
-      VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment).a().setProgress(paramInt, 0);
-    }
+    float f1 = paramSensorEvent.values[0];
+    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(f1) });
   }
 }
 

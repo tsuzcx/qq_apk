@@ -1,34 +1,124 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import org.jetbrains.annotations.NotNull;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class bdlp
-  extends ClickableSpan
+class bdlp
 {
-  public bdlp(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, bdmu parambdmu) {}
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public long d;
+  public String d;
+  public long e;
+  public String e;
+  public long f;
+  public String f;
+  public long g;
+  public long h;
+  public long i = 0L;
+  public long j = 4L;
+  public long k = a();
+  public long l = Build.VERSION.SDK_INT;
+  public long m;
+  public long n = 0L;
+  public long o = 0L;
+  public long p = 0L;
+  public long q = 0L;
   
-  public void onClick(@NotNull View paramView)
+  public bdlp()
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity(), QQBrowserActivity.class);
-    paramView.putExtra("url", String.format("https://buluo.qq.com/mobile/topic_video_group.html?themeid=%d&_bid=128&_wwv=1024&_wv=1027&webview=1", new Object[] { Integer.valueOf(this.jdField_a_of_type_Bdmu.h) }));
-    this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity().startActivity(paramView);
-    if (this.jdField_a_of_type_Bdmu.c == 31) {}
-    for (paramView = "1";; paramView = "2")
+    this.jdField_e_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "8.4.10";
+    this.jdField_c_of_type_JavaLangString = Build.MODEL;
+  }
+  
+  public int a()
+  {
+    int i2 = 0;
+    int i1;
+    if (AppNetConnInfo.isWifiConn()) {
+      i1 = 2;
+    }
+    for (;;)
     {
-      bcef.b(null, "dc00899", "Grp_tribe", "", "video_player", "Clk_theme", 0, 0, this.jdField_a_of_type_Bdmu.d, this.jdField_a_of_type_Bdmu.b + "", "", paramView);
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ScoreReportController", 2, "getNetType: " + i1);
+      }
+      return i1;
+      i1 = i2;
+      if (AppNetConnInfo.isMobileConn()) {
+        switch (AppNetConnInfo.getMobileInfo())
+        {
+        default: 
+          i1 = i2;
+          break;
+        case 1: 
+          i1 = 3;
+          break;
+        case 2: 
+          i1 = 4;
+          break;
+        case 3: 
+          i1 = 5;
+        }
+      }
     }
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public String a()
   {
-    paramTextPaint.setColor(-18432);
-    paramTextPaint.setUnderlineText(false);
+    StringBuilder localStringBuilder = new StringBuilder(256);
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_e_of_type_Long);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_f_of_type_Long);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.g);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.h);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.i);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.j);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.k);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.l);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.m);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.n);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.o);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.p);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.q);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
+    localStringBuilder.append('|');
+    return localStringBuilder.toString();
   }
 }
 

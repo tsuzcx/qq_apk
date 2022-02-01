@@ -1,8 +1,8 @@
 package cooperation.qzone.webviewplugin;
 
-import adxr;
+import aeow;
 import android.content.Intent;
-import bgve;
+import bifw;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.activity.activateFriend.ActivateFriendShareFragment;
@@ -51,7 +51,7 @@ public class QzoneBasicJsPlugin
           paramString3.putExtra("content", paramJsBridgeListener);
           paramString3.putExtra("jumpUrl", paramString1);
           paramString3.putExtra("timestamp", l);
-          adxr.a(this.parentPlugin.mRuntime.a(), paramString3, PublicTransFragmentActivity.class, ActivateFriendShareFragment.class);
+          aeow.a(this.parentPlugin.mRuntime.a(), paramString3, PublicTransFragmentActivity.class, ActivateFriendShareFragment.class);
           return false;
         }
         catch (Throwable paramJsBridgeListener)

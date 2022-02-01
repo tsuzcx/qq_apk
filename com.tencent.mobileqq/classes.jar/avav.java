@@ -1,29 +1,88 @@
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.graphics.Point;
+import java.util.ArrayList;
 
-class avav
-  implements bjoe
+public class avav
 {
-  avav(avau paramavau, bjnw parambjnw, boolean paramBoolean) {}
+  public int a;
+  public String a;
+  public ArrayList<Point> a;
+  public boolean a;
+  public int b = -1;
+  public int c;
+  public int d;
   
-  public void OnClick(View paramView, int paramInt)
+  public int a()
   {
-    this.jdField_a_of_type_Bjnw.dismiss();
-    if (this.jdField_a_of_type_Boolean) {
-      switch (paramInt)
-      {
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() < 2)) {
+      return 0;
+    }
+    Point localPoint1 = (Point)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+    Point localPoint2 = (Point)this.jdField_a_of_type_JavaUtilArrayList.get(1);
+    int i = localPoint2.x - localPoint1.x;
+    int j = localPoint2.y - localPoint1.y;
+    double d1 = Math.sqrt(i * i + j * j);
+    float f = (float)(Math.asin(j / d1) / 3.141592653589793D * 180.0D);
+    if (localPoint2.x < localPoint1.x) {
+      if (f > 0.0F) {
+        f = 180.0F - f;
       }
     }
     for (;;)
     {
-      this.jdField_a_of_type_Avau.b(false);
-      return;
-      auzn.a(BaseActivity.sTopActivity, this.jdField_a_of_type_Avau.a().e, this.jdField_a_of_type_Avau.a().b);
-      continue;
-      this.jdField_a_of_type_Avau.g();
-      continue;
-      this.jdField_a_of_type_Avau.g();
+      return Math.round(f);
+      f = -(180.0F + f);
     }
+  }
+  
+  public int a(float paramFloat)
+  {
+    return (int)Math.ceil(b() * paramFloat);
+  }
+  
+  public Point a()
+  {
+    return (Point)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+  }
+  
+  public void a(float paramFloat)
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      int i = 0;
+      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      {
+        ((Point)this.jdField_a_of_type_JavaUtilArrayList.get(i)).x = ((int)(((Point)this.jdField_a_of_type_JavaUtilArrayList.get(i)).x * paramFloat));
+        ((Point)this.jdField_a_of_type_JavaUtilArrayList.get(i)).y = ((int)(((Point)this.jdField_a_of_type_JavaUtilArrayList.get(i)).y * paramFloat));
+        i += 1;
+      }
+      this.jdField_a_of_type_Boolean = true;
+    }
+  }
+  
+  public int b()
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() < 4)) {
+      return 0;
+    }
+    return ayrt.a((Point)this.jdField_a_of_type_JavaUtilArrayList.get(0), (Point)this.jdField_a_of_type_JavaUtilArrayList.get(1));
+  }
+  
+  public int b(float paramFloat)
+  {
+    return (int)Math.ceil(c() * paramFloat);
+  }
+  
+  public Point b()
+  {
+    return (Point)this.jdField_a_of_type_JavaUtilArrayList.get(3);
+  }
+  
+  public int c()
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() < 4)) {
+      return 0;
+    }
+    return ayrt.a((Point)this.jdField_a_of_type_JavaUtilArrayList.get(0), (Point)this.jdField_a_of_type_JavaUtilArrayList.get(3));
   }
 }
 

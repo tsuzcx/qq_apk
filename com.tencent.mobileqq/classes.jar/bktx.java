@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qqreader.js.JsCallParams;
+import android.util.Pair;
 
-public final class bktx
-  implements Parcelable.Creator<JsCallParams>
+final class bktx
+  implements bktz
 {
-  public JsCallParams a(Parcel paramParcel)
+  public Pair<String, String> a(String paramString)
   {
-    return new JsCallParams(paramParcel, null);
-  }
-  
-  public JsCallParams[] a(int paramInt)
-  {
-    return new JsCallParams[paramInt];
+    paramString = paramString.split(":", 2);
+    if ((paramString == null) || (paramString.length < 2)) {
+      return null;
+    }
+    return new Pair(paramString[0].trim(), paramString[1].trim());
   }
 }
 

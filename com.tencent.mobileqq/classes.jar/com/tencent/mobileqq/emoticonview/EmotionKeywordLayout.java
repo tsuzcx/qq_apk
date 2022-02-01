@@ -43,16 +43,16 @@ public class EmotionKeywordLayout
   private void initUIView()
   {
     if (this.mTitleContainer == null) {
-      this.mTitleContainer = ((LinearLayout)findViewById(2131365988));
+      this.mTitleContainer = ((LinearLayout)findViewById(2131366089));
     }
     if (this.mTitleView == null) {
-      this.mTitleView = ((TextView)findViewById(2131365987));
+      this.mTitleView = ((TextView)findViewById(2131366088));
     }
     if (this.mEmotionView == null) {
-      this.mEmotionView = ((EmotionKeywordHorizonListView)findViewById(2131366017));
+      this.mEmotionView = ((EmotionKeywordHorizonListView)findViewById(2131366118));
     }
     if (this.mAnimationContainer == null) {
-      this.mAnimationContainer = ((LinearLayout)findViewById(2131362694));
+      this.mAnimationContainer = ((LinearLayout)findViewById(2131362709));
     }
   }
   
@@ -168,7 +168,7 @@ public class EmotionKeywordLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionKeywordLayout
  * JD-Core Version:    0.7.0.1
  */

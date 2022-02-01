@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
 import com.tencent.av.app.VideoAppInterface;
-import mom;
+import mpj;
 
 public abstract class ZimuViewMotion
   extends ZimuView
@@ -18,7 +18,7 @@ public abstract class ZimuViewMotion
   {
     super(paramLong, paramVideoAppInterface, paramContext, paramAttributeSet);
     this.c = 92;
-    this.jdField_a_of_type_AndroidOsHandler = new mom(this);
+    this.jdField_a_of_type_AndroidOsHandler = new mpj(this);
   }
   
   public int a()

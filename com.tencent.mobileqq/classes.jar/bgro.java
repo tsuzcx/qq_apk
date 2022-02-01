@@ -1,66 +1,27 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.face.FaceDrawable.OnLoadingStateChangeListener;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5.4.1;
+import com.tencent.mobileqq.troopgift.TroopGiftToPersonalSurfaceView;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
 
-class bgro
-  extends bgod
+public class bgro
+  implements FaceDrawable.OnLoadingStateChangeListener
 {
-  bgro(bgrn parambgrn) {}
+  public bgro(TroopGiftAnimationController.5 param5) {}
   
-  public void onDone(bgoe parambgoe)
+  public void onLoadingStateChanged(int paramInt1, int paramInt2)
   {
-    if (parambgoe == null)
+    if ((paramInt1 == 0) && (paramInt2 == 1) && ((this.a.this$0.a instanceof TroopGiftToPersonalSurfaceView)))
     {
-      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-      {
-        localObject = (String)this.a.jdField_a_of_type_JavaUtilArrayList.remove(0);
-        if (QLog.isColorLevel()) {
-          QLog.d("VoiceChangeManager", 2, "picDownloadListener mUrlList.size()=" + this.a.jdField_a_of_type_JavaUtilArrayList.size() + ", url=" + (String)localObject);
-        }
-        if (TextUtils.isEmpty((CharSequence)localObject))
-        {
-          QLog.e("VoiceChangeManager", 1, "picDownloadListener url = null");
-          onDone(null);
-        }
-      }
-      else
-      {
-        while (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.d("VoiceChangeManager", 2, "picDownloadListener mUrlList.size() = 0");
-        return;
-      }
-      File localFile = new File(bgrn.jdField_a_of_type_JavaLangString + ((String)localObject).substring(((String)localObject).lastIndexOf("/") + 1));
-      if ((localFile.isFile()) && (localFile.exists()))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("VoiceChangeManager", 2, "picDownloadListener  file.exists()");
-        }
-        onDone(null);
-        return;
-      }
-      parambgoe = new Bundle();
-      Object localObject = new bgoe((String)localObject, localFile);
-      ((bgoe)localObject).n = true;
-      ((bgog)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(47)).a(1).a((bgoe)localObject, this.a.jdField_a_of_type_Bgod, parambgoe);
-      return;
-    }
-    super.onDone(parambgoe);
-    parambgoe.a();
-    if ((parambgoe.a() == 3) && (parambgoe.jdField_a_of_type_Int == 0)) {
       if (QLog.isColorLevel()) {
-        QLog.d("VoiceChangeManager", 2, "picDownloadListener downloadOk task.key = " + parambgoe.jdField_a_of_type_JavaLangString);
+        QLog.d("TroopGiftAnimationController", 2, "onLoadingStateChanged: curState = " + paramInt2);
       }
-    }
-    for (;;)
-    {
-      onDone(null);
-      return;
-      QLog.e("VoiceChangeManager", 1, "picDownloadListener download Error task.key = " + parambgoe.jdField_a_of_type_JavaLangString);
+      Bitmap localBitmap = TroopUtils.headDrawableToBitamp(this.a.this$0.a(String.valueOf(this.a.a.receiverUin), null));
+      this.a.this$0.a.b(new TroopGiftAnimationController.5.4.1(this, localBitmap));
     }
   }
 }

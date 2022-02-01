@@ -1,19 +1,24 @@
-import android.os.AsyncTask;
+import android.view.View;
+import com.tencent.mobileqq.text.QQText.LinkSpan;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-class nwt
-  extends AsyncTask<Void, Void, Void>
+public class nwt
+  extends QQText.LinkSpan
 {
-  nwt(nws paramnws, adjx paramadjx) {}
-  
-  protected Void a(Void... paramVarArgs)
+  public nwt(nws paramnws, String paramString)
   {
-    this.jdField_a_of_type_Nws.a.a(this.jdField_a_of_type_Adjx);
-    return null;
+    super(paramnws, paramString);
   }
   
-  protected void a(Void paramVoid)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Nws.a.a(-1);
+    if (nwu.a.matcher(this.mUrl).find())
+    {
+      nws.a(paramView, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      return;
+    }
+    super.onClick(paramView);
   }
 }
 

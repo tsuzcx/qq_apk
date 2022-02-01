@@ -1,32 +1,33 @@
-import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
 
-class alkb
-  implements View.OnTouchListener
+public class alkb
 {
-  alkb(aljz paramaljz) {}
+  public final int a;
+  public final Drawable a;
+  public final boolean a;
+  public final boolean b;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  private alkb(int paramInt, Drawable paramDrawable, boolean paramBoolean1, boolean paramBoolean2)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if ((paramView instanceof ImageView))
-      {
-        ((ImageView)paramView).getDrawable().setColorFilter(855638016, PorterDuff.Mode.SRC_ATOP);
-        continue;
-        if ((paramView instanceof ImageView)) {
-          ((ImageView)paramView).getDrawable().clearColorFilter();
-        }
-      }
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
+  }
+  
+  static alkb a()
+  {
+    return new alkb(2, null, false, false);
+  }
+  
+  static alkb a(Drawable paramDrawable, boolean paramBoolean)
+  {
+    return new alkb(0, paramDrawable, paramBoolean, false);
+  }
+  
+  static alkb a(boolean paramBoolean)
+  {
+    return new alkb(1, null, false, paramBoolean);
   }
 }
 

@@ -24,8 +24,12 @@ class AEDetector$2
       IDetect localIDetect = (IDetect)localIterator.next();
       if (!localIDetect.getModuleType().equals(AEDetectorType.FACE.value))
       {
-        ((Handler)AEDetector.access$200(this.this$0).get(localIDetect.getModuleType())).removeCallbacksAndMessages(null);
-        ((Handler)AEDetector.access$200(this.this$0).get(localIDetect.getModuleType())).post(new AEDetector.2.1(this, localIDetect));
+        Handler localHandler = (Handler)AEDetector.access$200(this.this$0).get(localIDetect.getModuleType());
+        if (localHandler != null)
+        {
+          localHandler.removeCallbacksAndMessages(null);
+          localHandler.post(new AEDetector.2.1(this, localIDetect));
+        }
       }
     }
     if (AEDetector.access$100(this.this$0) != null) {

@@ -1,99 +1,112 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.opengl.GLES20;
-import com.tencent.aekit.api.standard.AEModule;
-import com.tencent.aekit.openrender.util.GlUtil;
-import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
-import com.tencent.ttpic.util.MustRunOnGLThread;
+import android.os.Handler;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import cooperation.ilive.group.IliveGroupTipsManager.1;
+import java.util.HashMap;
+import mqq.manager.Manager;
+import tencent.im.oidb.cmd0x857.TroopTips0x857.QQVaLiveNotifyMsg;
 
 public class blvf
+  implements Manager
 {
-  public static boolean a;
-  private int a;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
+  public static String a;
+  public static String b = "source_push";
+  public static String c = "source_loop";
+  private blva jdField_a_of_type_Blva;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private HashMap<Long, Boolean> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public blvf()
+  static
   {
-    jdField_a_of_type_Boolean = false;
+    jdField_a_of_type_JavaLangString = "source_resume";
   }
   
-  public int a()
+  public blvf(QQAppInterface paramQQAppInterface)
   {
-    return this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  @MustRunOnGLThread
-  public void a()
+  private void a(long paramLong, boolean paramBoolean, String paramString)
   {
-    int[] arrayOfInt = new int[1];
-    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
-    this.jdField_c_of_type_Int = arrayOfInt[0];
-    this.jdField_c_of_type_Boolean = true;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  @MustRunOnGLThread
-  public void b()
-  {
-    int[] arrayOfInt = new int[1];
-    arrayOfInt[0] = this.jdField_c_of_type_Int;
-    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  public int c()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  @MustRunOnGLThread
-  public void c()
-  {
-    if ((!this.jdField_c_of_type_Boolean) || (this.jdField_b_of_type_Boolean)) {}
-    Bitmap localBitmap1;
-    do
-    {
+    if (this.jdField_a_of_type_Blva == null) {
       return;
-      localBitmap1 = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), "/sdcard/Tencent/aekit/test.png", 1);
-    } while (!BitmapUtils.isLegal(localBitmap1));
-    Bitmap localBitmap2;
-    if (Math.abs(localBitmap1.getHeight() / localBitmap1.getWidth() - 1.777778F) > 0.0001D)
-    {
-      int i = (int)(localBitmap1.getWidth() * 16.0F / 9.0F);
-      localBitmap2 = Bitmap.createBitmap(localBitmap1.getWidth(), i, Bitmap.Config.ARGB_8888);
-      localBitmap2.eraseColor(-1);
-      Canvas localCanvas = new Canvas(localBitmap2);
-      Paint localPaint = new Paint(6);
-      localPaint.setAntiAlias(true);
-      localCanvas.drawBitmap(localBitmap1, 0.0F, (i - localBitmap1.getHeight()) / 2, localPaint);
-      GlUtil.loadTexture(this.jdField_c_of_type_Int, localBitmap2);
-      localBitmap1.recycle();
-      localBitmap2.recycle();
-      this.jdField_a_of_type_Int = localBitmap2.getWidth();
     }
-    for (this.jdField_b_of_type_Int = localBitmap2.getHeight();; this.jdField_b_of_type_Int = localBitmap1.getHeight())
+    if (paramBoolean) {}
+    for (long l = 3000L;; l = 0L)
     {
-      this.jdField_b_of_type_Boolean = true;
+      ThreadManagerV2.getUIHandlerV2().postDelayed(new IliveGroupTipsManager.1(this, paramBoolean, paramString, paramLong), l);
       return;
-      GlUtil.loadTexture(this.jdField_c_of_type_Int, localBitmap1);
-      localBitmap1.recycle();
-      this.jdField_a_of_type_Int = localBitmap1.getWidth();
+    }
+  }
+  
+  public static boolean a()
+  {
+    return QzoneConfig.getInstance().getConfig("qqLive", "iliveTopsLoopEnable", 1) == 1;
+  }
+  
+  public void a(blva paramblva)
+  {
+    this.jdField_a_of_type_Blva = paramblva;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(paramblva);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    ((bluz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.ILIVE_COMMON_HANDLER)).a("", paramString1, paramString2);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    ((bluz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.ILIVE_COMMON_HANDLER)).a(paramString1, paramString2, paramString3);
+  }
+  
+  public void a(TroopTips0x857.QQVaLiveNotifyMsg paramQQVaLiveNotifyMsg, long paramLong)
+  {
+    boolean bool2 = false;
+    if (paramQQVaLiveNotifyMsg == null) {
+      return;
+    }
+    boolean bool1 = bool2;
+    if (paramQQVaLiveNotifyMsg.notify_type.has())
+    {
+      bool1 = bool2;
+      if (paramQQVaLiveNotifyMsg.notify_type.get() == 1) {
+        bool1 = true;
+      }
+    }
+    if (paramQQVaLiveNotifyMsg.bytes_uid.has()) {}
+    for (paramQQVaLiveNotifyMsg = paramQQVaLiveNotifyMsg.bytes_uid.get().toStringUtf8();; paramQQVaLiveNotifyMsg = "")
+    {
+      QLog.d("IliveGroupTipsManager", 1, "handlePushLiveData isLive = " + bool1 + " puid = " + paramQQVaLiveNotifyMsg + " troopUin = " + paramLong);
+      this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), Boolean.valueOf(bool1));
+      ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(String.valueOf(paramLong)).setIsTroopLive(bool1);
+      if (this.jdField_a_of_type_Blva == null) {
+        break;
+      }
+      a(paramLong, bool1, paramQQVaLiveNotifyMsg);
+      return;
+    }
+  }
+  
+  public void b(blva paramblva)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(paramblva);
+    this.jdField_a_of_type_Blva = null;
+  }
+  
+  public void onDestroy()
+  {
+    if ((this.jdField_a_of_type_Blva != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Blva);
     }
   }
 }

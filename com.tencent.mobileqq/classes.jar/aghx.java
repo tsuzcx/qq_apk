@@ -1,15 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.MessageForLongMsg;
+import android.text.InputFilter;
+import android.text.Spanned;
 
 class aghx
-  implements DialogInterface.OnClickListener
+  implements InputFilter
 {
-  aghx(aghv paramaghv, MessageForLongMsg paramMessageForLongMsg) {}
+  aghx(aght paramaght) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    acvv.a(this.jdField_a_of_type_Aghv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aghv.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aghv.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongMsg);
+    paramInt3 = 4500 - (paramSpanned.length() - (paramInt4 - paramInt3));
+    if (paramInt3 <= 0)
+    {
+      aght.a(this.a);
+      return "";
+    }
+    if (paramInt3 >= paramInt2 - paramInt1) {
+      return null;
+    }
+    paramInt3 += paramInt1;
+    paramInt2 = paramInt3;
+    if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3 - 1)))
+    {
+      paramInt3 -= 1;
+      paramInt2 = paramInt3;
+      if (paramInt3 == paramInt1)
+      {
+        aght.a(this.a);
+        return "";
+      }
+    }
+    aght.a(this.a);
+    return paramCharSequence.subSequence(paramInt1, paramInt2);
   }
 }
 

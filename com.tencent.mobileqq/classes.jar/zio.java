@@ -1,18 +1,11 @@
+import android.util.Property;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class zio
-  implements View.OnClickListener
 {
-  public zio(SubscribeVideoDetailFragment paramSubscribeVideoDetailFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.onBackEvent();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public float a;
+  public Property<View, Float> a;
+  public float b;
 }
 
 

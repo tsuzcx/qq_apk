@@ -1,50 +1,16 @@
-import android.view.View;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.mobileqq.nearby.widget.AvatarWallPagerAdapter;
-import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager;
-import com.tencent.widget.GridView;
-import java.util.Collection;
-import java.util.Map;
-
-public class awzo
-  extends AvatarWallPagerAdapter<GridView>
+public abstract interface awzo
 {
-  protected LinearLayout.LayoutParams a;
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public awzo(awyf paramawyf, AvatarWallViewPager paramAvatarWallViewPager)
-  {
-    super(paramAvatarWallViewPager);
-  }
+  public abstract void a(long paramLong);
   
-  public View a(int paramInt, GridView paramGridView)
-  {
-    return awyf.a(this.jdField_a_of_type_Awyf, awyf.a(this.jdField_a_of_type_Awyf), paramInt);
-  }
+  public abstract void a(boolean paramBoolean);
   
-  public View a(boolean paramBoolean, int paramInt)
-  {
-    View localView = new View(this.jdField_a_of_type_Awyf.jdField_a_of_type_AndroidContentContext);
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams == null)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(UIUtils.dip2px(this.jdField_a_of_type_Awyf.jdField_a_of_type_AndroidContentContext, 30.0F), UIUtils.dip2px(this.jdField_a_of_type_Awyf.jdField_a_of_type_AndroidContentContext, 1.5F));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = UIUtils.dip2px(this.jdField_a_of_type_Awyf.jdField_a_of_type_AndroidContentContext, 2.0F);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.rightMargin = UIUtils.dip2px(this.jdField_a_of_type_Awyf.jdField_a_of_type_AndroidContentContext, 2.0F);
-    }
-    localView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
-    if (paramBoolean)
-    {
-      localView.setBackgroundColor(-1);
-      return localView;
-    }
-    localView.setBackgroundColor(1728053247);
-    return localView;
-  }
+  public abstract void b(int paramInt1, int paramInt2);
   
-  public void a(int paramInt, View paramView)
-  {
-    this.jdField_a_of_type_Awyf.jdField_a_of_type_JavaUtilMap.values().remove(paramView);
-  }
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c(boolean paramBoolean);
 }
 
 

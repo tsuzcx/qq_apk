@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.utils;
 
-import afvi;
-import afvl;
-import afvm;
-import amtj;
+import agnx;
+import agoa;
+import agob;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface.OnDismissListener;
@@ -25,8 +24,9 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import aowr;
-import bftq;
+import anvx;
+import apzv;
+import bhci;
 import com.tencent.ark.ArkEnvironmentManager;
 import com.tencent.ark.ArkViewImplement;
 import com.tencent.ark.ArkViewImplement.LoadCallback;
@@ -56,10 +56,10 @@ public class QQCustomArkDialog
   int arkapp_height_fromsdk = 0;
   int arkapp_width_fromsdk = 0;
   private WeakReference<Activity> mActivityRef;
-  afvi mAppContainer;
+  agnx mAppContainer;
   ArkAppLoadLayout mArkLoadLayout;
   ArkAppView mArkView;
-  private afvl mCallback = new QQCustomArkDialog.1(this);
+  private agoa mCallback = new QQCustomArkDialog.1(this);
   private ArkViewImplement.LoadCallback mLoadCallback = new QQCustomArkDialog.2(this);
   int mWidth = 0;
   int maxHight = 0;
@@ -69,7 +69,7 @@ public class QQCustomArkDialog
   
   public QQCustomArkDialog(Context paramContext)
   {
-    super(paramContext, 2131755826);
+    super(paramContext, 2131755829);
   }
   
   public QQCustomArkDialog(Context paramContext, int paramInt)
@@ -105,9 +105,9 @@ public class QQCustomArkDialog
     QLog.d("QQCustomArkDialog", 1, "onLoadFinish.right now activity is null or finished");
   }
   
-  private afvi createApp(QQCustomArkDialog.AppInfo paramAppInfo, Bundle paramBundle)
+  private agnx createApp(QQCustomArkDialog.AppInfo paramAppInfo, Bundle paramBundle)
   {
-    this.mAppContainer = new afvi();
+    this.mAppContainer = new agnx();
     int i = this.mArkView.getWidth();
     int j = this.mArkView.getHeight();
     if (QLog.isDebugVersion()) {
@@ -124,13 +124,13 @@ public class QQCustomArkDialog
     }
     for (;;)
     {
-      aopk.a = false;
+      apsl.a = false;
       return this.mAppContainer;
       paramBundle = getMetaData(paramBundle, "com.tencent.structmsg");
       if (QLog.isColorLevel()) {
         QLog.d("QQCustomArkDialog", 2, ",metaData=" + paramBundle);
       }
-      this.mAppContainer.a("com.tencent.structmsg", bftq.a(i), "0.0.0.1", paramBundle, ArkAppCenterUtil.getDensity(), paramAppInfo.session);
+      this.mAppContainer.a("com.tencent.structmsg", bhci.a(i), "0.0.0.1", paramBundle, ArkAppCenterUtil.getDensity(), paramAppInfo.session);
       break;
       label232:
       this.mAppContainer.setFixSize(this.mWidth, this.adjustHeight);
@@ -183,8 +183,8 @@ public class QQCustomArkDialog
       if (!TextUtils.isEmpty(str3))
       {
         str1 = str3;
-        if (str3.contains(amtj.a(2131709304))) {
-          str1 = str3.replace(amtj.a(2131709308), "");
+        if (str3.contains(anvx.a(2131709651))) {
+          str1 = str3.replace(anvx.a(2131709655), "");
         }
       }
       localJSONObject2.put("desc", str1);
@@ -282,7 +282,7 @@ public class QQCustomArkDialog
       this.mAppContainer.doOnEvent(2);
     }
     QLog.d("QQCustomArkDialog", 1, "dismiss");
-    aopk.a = true;
+    apsl.a = true;
     super.dismiss();
   }
   
@@ -292,12 +292,12 @@ public class QQCustomArkDialog
     this.title.setVisibility(8);
     this.mRlMultiForwardTarget.setVisibility(8);
     this.mRlForwardTarget.setVisibility(8);
-    ((TextView)this.mRlTitle.findViewById(2131380050)).setText(paramString);
+    ((TextView)this.mRlTitle.findViewById(2131380385)).setText(paramString);
   }
   
   public void hideInputContainer()
   {
-    ((LinearLayout)findViewById(2131368762)).setVisibility(8);
+    ((LinearLayout)findViewById(2131368921)).setVisibility(8);
   }
   
   public void initArkView(Context paramContext, Bundle paramBundle)
@@ -310,15 +310,15 @@ public class QQCustomArkDialog
       }
       QLog.i("QQCustomArkDialog", 1, "get init dialog stack", new Exception("InitQQCustomArkDialogStack"));
       setEmoticonType(7);
-      setContentView(2131559027);
-      View localView = LayoutInflater.from(paramContext).inflate(2131558834, null);
+      setContentView(2131559055);
+      View localView = LayoutInflater.from(paramContext).inflate(2131558859, null);
       localView.setPadding(0, 0, 0, 0);
-      this.mArkView = ((ArkAppView)localView.findViewById(2131362940));
-      this.mArkLoadLayout = ((ArkAppLoadLayout)localView.findViewById(2131370257));
-      Object localObject1 = localView.findViewById(2131362966);
+      this.mArkView = ((ArkAppView)localView.findViewById(2131362957));
+      this.mArkLoadLayout = ((ArkAppLoadLayout)localView.findViewById(2131370436));
+      Object localObject1 = localView.findViewById(2131362983);
       ((RelativeLayout.LayoutParams)((View)localObject1).getLayoutParams()).addRule(14);
       ((View)localObject1).setPadding(0, 0, 0, 0);
-      ((LinearLayout)localView.findViewById(2131362949)).setVisibility(8);
+      ((LinearLayout)localView.findViewById(2131362966)).setVisibility(8);
       this.mArkView.setBorderType(0);
       this.mArkView.setLoadCallback(this.mLoadCallback);
       boolean bool1 = paramBundle.getBoolean("is_ark_display_share", false);
@@ -357,23 +357,23 @@ public class QQCustomArkDialog
       if (this.bodyLayout != null)
       {
         localObject1 = (RelativeLayout.LayoutParams)this.bodyLayout.getLayoutParams();
-        ((RelativeLayout.LayoutParams)localObject1).topMargin = ((int)paramContext.getResources().getDimension(2131296901));
-        ((RelativeLayout.LayoutParams)localObject1).leftMargin = ((int)paramContext.getResources().getDimension(2131296872));
-        ((RelativeLayout.LayoutParams)localObject1).rightMargin = ((int)paramContext.getResources().getDimension(2131296873));
-        ((RelativeLayout.LayoutParams)localObject1).bottomMargin = ((int)paramContext.getResources().getDimension(2131296897));
+        ((RelativeLayout.LayoutParams)localObject1).topMargin = ((int)paramContext.getResources().getDimension(2131296902));
+        ((RelativeLayout.LayoutParams)localObject1).leftMargin = ((int)paramContext.getResources().getDimension(2131296873));
+        ((RelativeLayout.LayoutParams)localObject1).rightMargin = ((int)paramContext.getResources().getDimension(2131296874));
+        ((RelativeLayout.LayoutParams)localObject1).bottomMargin = ((int)paramContext.getResources().getDimension(2131296898));
       }
       if (!bool1)
       {
-        localObject2 = findViewById(2131363734);
+        localObject2 = findViewById(2131363805);
         if (localObject2 != null) {
           ((View)localObject2).setVisibility(8);
         }
         this.mArkView.setOnTouchListener(this.mArkView);
-        localObject2 = findViewById(2131365514);
+        localObject2 = findViewById(2131365606);
         if (localObject2 != null) {
           ((View)localObject2).setVisibility(8);
         }
-        localObject2 = findViewById(2131365532);
+        localObject2 = findViewById(2131365624);
         if (localObject2 != null) {
           ((View)localObject2).setVisibility(8);
         }
@@ -397,7 +397,7 @@ public class QQCustomArkDialog
         this.maxHight = MessageForArkApp.dp2px(390.0F);
         this.minWidth = MessageForArkApp.dp2px(30.0F);
         this.minHight = MessageForArkApp.dp2px(30.0F);
-        i = paramContext.getResources().getDimensionPixelSize(2131296896);
+        i = paramContext.getResources().getDimensionPixelSize(2131296897);
         j = ((RelativeLayout.LayoutParams)localObject1).leftMargin;
         j = ((RelativeLayout.LayoutParams)localObject1).rightMargin + j;
         QLog.i("QQCustomArkDialog", 1, "init bundle mWidth=" + this.mWidth + ", dialogWidth=" + i + ",bodyMargin=" + j);
@@ -415,7 +415,7 @@ public class QQCustomArkDialog
         paramContext = (Activity)paramContext;
         if (paramContext != null)
         {
-          aowr.a(paramContext, this.mArkView);
+          apzv.a(paramContext, this.mArkView);
           this.mActivityRef = new WeakReference(paramContext);
         }
         ThreadManager.getUIHandler().postDelayed(new QQCustomArkDialog.4(this), 200L);

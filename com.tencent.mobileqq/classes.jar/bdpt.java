@@ -1,27 +1,23 @@
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.activity.photo.TroopPhotoController;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import android.view.View.OnTouchListener;
+import java.lang.ref.WeakReference;
 
-public class bdpt
-  implements bjoe
+class bdpt
+  implements View.OnTouchListener
 {
-  public bdpt(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, bjnw parambjnw) {}
+  bdpt(bdpr parambdpr) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramInt)
+    if (this.a.a != null)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-      if (System.currentTimeMillis() - TroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity) > 500L)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoTroopPhotoController.onDeleteItem(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_Int);
-        TroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity, System.currentTimeMillis());
+      aftk localaftk = (aftk)this.a.a.get();
+      if (localaftk != null) {
+        return localaftk.onTouch(paramView, paramMotionEvent);
       }
     }
+    return false;
   }
 }
 

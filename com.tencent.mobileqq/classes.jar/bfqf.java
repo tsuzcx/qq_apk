@@ -1,6 +1,10 @@
-public abstract interface bfqf
+import android.widget.CheckBox;
+import android.widget.TextView;
+
+class bfqf
 {
-  public abstract void onInfo(long paramLong, double paramDouble);
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
 }
 
 

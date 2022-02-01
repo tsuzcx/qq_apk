@@ -1,60 +1,7 @@
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
-import com.tencent.tav.coremedia.CMTime;
-import com.tencent.tavcut.player.MoviePlayer;
-import com.tencent.weseevideo.camera.mvauto.redo.ResourceModel;
+import kotlin.Metadata;
 
-public class bmkf
-  extends ViewModel
-{
-  public MutableLiveData<ResourceModel> a;
-  private MoviePlayer a;
-  private MutableLiveData<Long> b = new MutableLiveData();
-  
-  public bmkf()
-  {
-    this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData = new MutableLiveData();
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer != null) {
-      this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.play();
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    this.b.postValue(Long.valueOf(paramLong));
-  }
-  
-  public void a(CMTime paramCMTime)
-  {
-    if (this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer != null) {
-      this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.seekToTime(paramCMTime);
-    }
-  }
-  
-  public void a(MoviePlayer paramMoviePlayer)
-  {
-    this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer = paramMoviePlayer;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer != null) {
-      return this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.isPlaying();
-    }
-    return false;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer != null) {
-      this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.pause();
-    }
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcooperation/vip/VasAdvService$Companion;", "", "()V", "CMD_ADV_GET", "", "CMD_ADV_REPORT", "TAG", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bmkf {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

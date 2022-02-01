@@ -1,24 +1,21 @@
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class aglz
-  implements View.OnClickListener
+  extends anvi
 {
-  aglz(agly paramagly) {}
+  aglz(aglx paramaglx) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    String str = (String)paramView.getTag();
-    if (!TextUtils.isEmpty(str))
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a != null) && (paramString.equals(this.a.a.getCurrentAccountUin())))
     {
-      akgc.b(this.a.jdField_a_of_type_AndroidContentContext, str);
-      if ((this.a.m > 0) && ((this.a.n == 2) || (this.a.n == 3))) {
-        bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "wrap.aiotail.click", 0, 0, "" + this.a.m, "", "", "");
+      paramString = this.a.a.getFaceBitmap(this.a.a.getCurrentAccountUin(), (byte)3, false);
+      if ((paramString != null) && (aglx.a(this.a) != null)) {
+        aglx.a(this.a).setImageBitmap(paramString);
       }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,8 +1,7 @@
 package com.dataline.activities;
 
 import Override;
-import abdm;
-import amtj;
+import absy;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -12,6 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
+import anvx;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -36,11 +36,11 @@ public class PrinterBindTipActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.getWindow().setBackgroundDrawableResource(2131165437);
-    super.setContentView(2131559588);
-    super.setTitle(amtj.a(2131707532));
-    super.setLeftViewName(2131691454);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131363507));
+    super.getWindow().setBackgroundDrawableResource(2131165443);
+    super.setContentView(2131559621);
+    super.setTitle(anvx.a(2131707879));
+    super.setLeftViewName(2131691539);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131363576));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     paramBundle = super.getIntent();
     this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("printer_bind_url");
@@ -50,8 +50,8 @@ public class PrinterBindTipActivity
   
   public void onClick(View paramView)
   {
-    abdm.a();
-    abdm.a(this.app, this.jdField_a_of_type_Long, "printer_hp", 5, 0, 0);
+    absy.a();
+    absy.a(this.app, this.jdField_a_of_type_Long, "printer_hp", 5, 0, 0);
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
       Intent localIntent = new Intent(this, QQBrowserActivity.class);

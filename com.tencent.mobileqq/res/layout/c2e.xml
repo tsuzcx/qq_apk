@@ -2,8 +2,8 @@
 <LinearLayout android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:orientation="vertical" android:id="@id/ik9" android:background="@drawable/skin_searchbar_bg" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <include android:id="@id/ngr" android:clickable="true" layout="@layout/b1x" />
-        <include android:id="@id/ngs" android:visibility="gone" android:clickable="true" layout="@layout/cq1" />
+        <include android:id="@id/np1" android:clickable="true" layout="@layout/b1x" />
+        <include android:id="@id/np2" android:visibility="gone" android:clickable="true" layout="@layout/cs9" />
     </LinearLayout>
     <FrameLayout android:id="@id/fid" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <FrameLayout android:id="@id/cyj" android:layout_width="fill_parent" android:layout_height="fill_parent" />

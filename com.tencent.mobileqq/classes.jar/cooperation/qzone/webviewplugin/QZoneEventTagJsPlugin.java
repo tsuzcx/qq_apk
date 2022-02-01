@@ -3,7 +3,7 @@ package cooperation.qzone.webviewplugin;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bgve;
+import bifw;
 import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -70,7 +70,7 @@ public class QZoneEventTagJsPlugin
     }
   }
   
-  private void openAddFriendActivity(WebViewPlugin paramWebViewPlugin, bgve parambgve, String[] paramArrayOfString)
+  private void openAddFriendActivity(WebViewPlugin paramWebViewPlugin, bifw parambifw, String[] paramArrayOfString)
   {
     try
     {
@@ -78,7 +78,7 @@ public class QZoneEventTagJsPlugin
       long l = paramWebViewPlugin.getLong("uin");
       int i = paramWebViewPlugin.optInt("sourceId", 3011);
       int j = paramWebViewPlugin.optInt("subSourceId", 21);
-      paramWebViewPlugin = parambgve.a();
+      paramWebViewPlugin = parambifw.a();
       paramWebViewPlugin.startActivity(AddFriendLogicActivity.a(paramWebViewPlugin, 1, String.valueOf(l), "", i, j, null, null, null, null, null));
       return;
     }

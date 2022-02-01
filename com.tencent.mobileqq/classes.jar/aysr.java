@@ -1,17 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.1;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.2;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.3;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.4;
+import mqq.os.MqqHandler;
 
-class aysr
-  implements View.OnClickListener
+public class aysr
+  extends becw
 {
-  aysr(aysl paramaysl, bjnw parambjnw) {}
-  
-  public void onClick(View paramView)
+  public aysr(OCRResultFragmentNew paramOCRResultFragmentNew, Activity paramActivity)
   {
-    bcef.b(aysl.d(this.jdField_a_of_type_Aysl), "dc00898", "", "", "0X800A97D", "0X800A97D", 3, 0, "0", "0", "", "");
-    this.jdField_a_of_type_Bjnw.a.onClick(null);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramActivity);
+  }
+  
+  public void a()
+  {
+    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.1(this));
+  }
+  
+  public void a(int paramInt)
+  {
+    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.4(this, paramInt));
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.3(this));
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.2(this, paramString));
   }
 }
 

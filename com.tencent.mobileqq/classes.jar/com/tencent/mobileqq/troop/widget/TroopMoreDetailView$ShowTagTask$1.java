@@ -9,7 +9,14 @@ class TroopMoreDetailView$ShowTagTask$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopMoreDetailView.a(0, this.jdField_a_of_type_JavaUtilArrayList, true, 2, true);
+    TroopMoreDetailView localTroopMoreDetailView = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopMoreDetailView;
+    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopMoreDetailView$ShowTagTask.this$0.a) {}
+    for (int i = 3;; i = 2)
+    {
+      localTroopMoreDetailView.a(0, localArrayList, true, i, true);
+      return;
+    }
   }
 }
 

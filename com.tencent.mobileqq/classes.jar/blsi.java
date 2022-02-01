@@ -1,22 +1,6 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
-
-public class blsi
-  implements Animator.AnimatorListener
+public abstract interface blsi
 {
-  public blsi(AEMaterialPanel paramAEMaterialPanel) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    bmbx.d("AEMaterialPanel", "[openWithAnimation] translationY - onAnimationCancel");
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public abstract void a(int paramInt, String paramString);
 }
 
 

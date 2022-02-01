@@ -1,7 +1,7 @@
 package cooperation.qzone.webviewplugin;
 
 import android.text.TextUtils;
-import bgve;
+import bifw;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
@@ -49,7 +49,7 @@ public class QzoneBannerJsPlugin
     }
     while (paramJsBridgeListener != null)
     {
-      paramString1 = paramJsBridgeListener.getTag(2131368290);
+      paramString1 = paramJsBridgeListener.getTag(2131368435);
       if ((paramString1 != null) && ((paramString1 instanceof QzoneBannerJsPlugin.WebViewBannerInterface)))
       {
         paramString1 = (QzoneBannerJsPlugin.WebViewBannerInterface)paramString1;
@@ -100,7 +100,7 @@ public class QzoneBannerJsPlugin
       paramString1.close();
       return true;
     }
-    if (("enableGesture".equals(paramString3)) && (paramVarArgs.length >= 1))
+    if (("enableGesture".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length >= 1))
     {
       paramJsBridgeListener = toJson(paramVarArgs[0]);
       if (paramJsBridgeListener == null) {
@@ -114,7 +114,7 @@ public class QzoneBannerJsPlugin
         paramString1.enableGesture(bool);
       }
     }
-    if (("getBannerData".equals(paramString3)) && (paramVarArgs.length >= 1))
+    if (("getBannerData".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length >= 1))
     {
       paramString2 = toJson(paramVarArgs[0]);
       if (paramString2 == null) {
@@ -132,7 +132,7 @@ public class QzoneBannerJsPlugin
         QLog.i(this.TAG, 1, "getBannerData " + paramString1);
       }
     }
-    if (("qbossReport".equals(paramString3)) && (paramVarArgs.length >= 1))
+    if (("qbossReport".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length >= 1))
     {
       paramString2 = toJson(paramVarArgs[0]);
       if (paramString2 == null) {

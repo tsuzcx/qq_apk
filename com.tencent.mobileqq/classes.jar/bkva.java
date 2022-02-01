@@ -1,14 +1,14 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
-
-public final class bkva
+class bkva
 {
-  private static SharedPreferences b(Context paramContext)
-  {
-    return paramContext.getSharedPreferences("reader_user" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0);
-  }
+  public int a;
+  public bkvl a;
+  public String a = "";
+  public int b;
+  public String b = "";
+  public int c;
+  public int d = -1;
+  public int e;
+  public int f;
 }
 
 

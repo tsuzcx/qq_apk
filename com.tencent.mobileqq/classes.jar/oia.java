@@ -1,26 +1,65 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.ecshopassit.view.MinusViewBotomView;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.NativeAd.report.constant.ReportAction;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONObject;
 
-public class oia
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/NativeAd/report/bean/AMSReportObj;", "Lcom/tencent/biz/pubaccount/NativeAd/report/IReportObj;", "()V", "amsClickUrl", "", "amsConvUrl", "amsExpUrl", "amsNFBUrl", "getKey", "parseAdReportData", "", "adReportData", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData;", "toJsonObject", "Lorg/json/JSONObject;", "valid", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oia
+  extends ohv
 {
-  public oia(MinusViewBotomView paramMinusViewBotomView, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
+  private String a;
+  private String b;
+  private String c;
+  private String d;
   
-  public void onClick(View paramView)
+  @NotNull
+  public String a()
   {
-    ohn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewMinusViewBotomView.getContext(), "jumpPreview", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, "fypbtn");
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewMinusViewBotomView.getContext() instanceof ChatActivity)) {
-      ((ChatActivity)this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewMinusViewBotomView.getContext()).finish();
-    }
-    ohq.a(null, "gouwu_fypbtn_click", "", NetConnInfoCenter.getServerTimeMillis() + "", "");
-    ohq.b(null, "gouwu_fypbtn_click", "", NetConnInfoCenter.getServerTimeMillis() + "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    return "report";
+  }
+  
+  @Nullable
+  public JSONObject a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    ohy.a(localJSONObject, "amsExpUrl", this.a);
+    ohy.a(localJSONObject, "amsClickUrl", this.b);
+    ohy.a(localJSONObject, "amsConvUrl", this.c);
+    ohy.a(localJSONObject, "amsNFBUrl", this.d);
+    return localJSONObject;
+  }
+  
+  public void a(@NotNull ufw paramufw)
+  {
+    Intrinsics.checkParameterIsNotNull(paramufw, "adReportData");
+    ReportAction localReportAction = oik.a(paramufw);
+    if (localReportAction == null) {}
+    do
+    {
+      do
+      {
+        return;
+        switch (oib.a[localReportAction.ordinal()])
+        {
+        default: 
+          return;
+        }
+      } while (paramufw.a() == null);
+      this.a = paramufw.a().mAdApurl;
+      return;
+    } while (paramufw.a() == null);
+    this.b = paramufw.a().mAdEffectUrl;
+    this.c = paramufw.a().mAdRl;
+    return;
+    this.d = oik.c(paramufw);
+  }
+  
+  public boolean a()
+  {
+    return (this.a != null) || (this.b != null) || (this.c != null) || (this.d != null);
   }
 }
 

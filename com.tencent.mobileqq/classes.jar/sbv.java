@@ -1,30 +1,27 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.ViewGroup;
-import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.search.HybridSearchFragment;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.widget.ListView;
 
-class sbv
-  implements ValueAnimator.AnimatorUpdateListener
+public class sbv
+  extends bcbd<bcfj, bcnt>
 {
-  sbv(sbt paramsbt, LinearLayout.LayoutParams paramLayoutParams, boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public sbv(HybridSearchFragment paramHybridSearchFragment, ListView paramListView, FaceDecoder paramFaceDecoder)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.bottomMargin = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      if (!this.b) {
-        break label63;
-      }
-      sbt.a(this.jdField_a_of_type_Sbt).A.setVisibility(0);
+    super(paramListView, paramFaceDecoder);
+  }
+  
+  protected bcif<bcfj, bcnt> a(int paramInt)
+  {
+    if (((bcfj)a(paramInt) instanceof bcdu)) {
+      return new bcjo(this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment, HybridSearchFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment), null);
     }
-    for (;;)
-    {
-      sbt.a(this.jdField_a_of_type_Sbt).y.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
-      return;
-      label63:
-      sbt.a(this.jdField_a_of_type_Sbt).z.setVisibility(0);
-    }
+    return new sbr(this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment, HybridSearchFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment));
+  }
+  
+  protected bcnu a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new bcnn(paramViewGroup, 2131562824);
   }
 }
 

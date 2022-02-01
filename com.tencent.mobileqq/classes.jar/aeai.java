@@ -1,26 +1,14 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aeai
-  extends BroadcastReceiver
+class aeai
+  implements DialogInterface.OnClickListener
 {
-  public aeai(QQSettingMe paramQQSettingMe) {}
+  aeai(aeag paramaeag) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, "UpdateVipInfoReceiver: intent=" + paramIntent.toString());
-    }
-    if ((paramIntent != null) && (paramIntent.getBooleanExtra("key_pay_action_result", false)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "UpdateVipInfoReceiver: need update ");
-      }
-      this.a.w();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

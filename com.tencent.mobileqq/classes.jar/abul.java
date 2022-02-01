@@ -1,19 +1,68 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
+import java.util.Map;
 
 public class abul
-  implements View.OnClickListener
+  implements avdp
 {
-  public abul(GdtVideoCeilingTitleBar paramGdtVideoCeilingTitleBar) {}
+  public abul(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
   
-  public void onClick(View paramView)
+  public void onAudioMute(boolean paramBoolean, int paramInt)
   {
-    if (GdtVideoCeilingTitleBar.a(this.a) != null) {
-      GdtVideoCeilingTitleBar.a(this.a).a(paramView);
+    abuq localabuq = (abuq)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt));
+    if (localabuq != null)
+    {
+      localabuq.a = paramBoolean;
+      this.a.callJs(localabuq.e + "(" + localabuq.a() + ");");
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public void onSrceenModeChanged(boolean paramBoolean, int paramInt)
+  {
+    abuq localabuq = (abuq)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt));
+    if (localabuq != null)
+    {
+      localabuq.c = paramBoolean;
+      this.a.callJs(localabuq.d + "(" + localabuq.a() + ");");
+    }
+  }
+  
+  public void onVideoStatusChanged(int paramInt1, int paramInt2)
+  {
+    abuq localabuq;
+    if (paramInt1 == 3)
+    {
+      localabuq = (abuq)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
+      if (localabuq != null) {
+        this.a.callJs(localabuq.g + "(" + localabuq.a() + ");");
+      }
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            if (paramInt1 != 5) {
+              break;
+            }
+            localabuq = (abuq)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
+          } while (localabuq == null);
+          this.a.callJs(localabuq.f + "(" + localabuq.a() + ");");
+          return;
+          if (paramInt1 != 7) {
+            break;
+          }
+          localabuq = (abuq)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
+        } while (localabuq == null);
+        this.a.callJs(localabuq.h + "(" + localabuq.a() + ");");
+        return;
+      } while (paramInt1 != 0);
+      localabuq = (abuq)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
+    } while (localabuq == null);
+    this.a.callJs(localabuq.i + "(" + localabuq.a() + ");");
   }
 }
 

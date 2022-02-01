@@ -1,21 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class yvu
-  implements DialogInterface.OnCancelListener
+  extends yvs<yvt>
 {
-  public yvu(QRDisplayActivity paramQRDisplayActivity) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370508);
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  yvu(yvt paramyvt, @NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    if (this.a.h) {
+    super(paramContext, paramViewGroup);
+  }
+  
+  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  {
+    return LayoutInflater.from(paramContext).inflate(2131561765, paramViewGroup, false);
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+  }
+  
+  public void a(yvt paramyvt, int paramInt)
+  {
+    super.a(paramyvt, paramInt);
+    if (paramyvt != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramyvt.a());
       return;
     }
-    this.a.i = -1;
-    this.a.h = true;
-    QRDisplayActivity.a(this.a).dismiss();
+    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
   }
 }
 

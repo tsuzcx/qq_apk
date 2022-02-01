@@ -1,20 +1,15 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class ayhg
-  extends ayhc
+class ayhg
+  implements DialogInterface.OnClickListener
 {
-  void b(BaseChatPie paramBaseChatPie)
+  ayhg(ayhd paramayhd, QQCustomDialog paramQQCustomDialog) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    c(paramBaseChatPie.sessionInfo.curType);
-    a(paramBaseChatPie.sessionInfo.curType, 203);
-    if (augn.a(paramBaseChatPie.app).b()) {
-      a(paramBaseChatPie.sessionInfo.curType, 204);
-    }
-    a(paramBaseChatPie.sessionInfo.curType, 219);
-    a(paramBaseChatPie.sessionInfo.curType, 205);
-    a(paramBaseChatPie.sessionInfo.curType, 206);
-    a(paramBaseChatPie.sessionInfo.curType, 208);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
   }
 }
 

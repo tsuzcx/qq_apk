@@ -1,32 +1,59 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
-final class bgad
-  implements Handler.Callback
+class bgad
+  implements Comparator<ajvr>
 {
-  public boolean handleMessage(Message paramMessage)
+  private final TroopInfo a;
+  
+  bgad(TroopInfo paramTroopInfo)
   {
-    QQAppInterface localQQAppInterface;
-    if ((BaseApplicationImpl.getApplication().waitAppRuntime(null) instanceof QQAppInterface))
-    {
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().waitAppRuntime(null);
-      switch (paramMessage.what)
-      {
-      }
+    this.a = paramTroopInfo;
+  }
+  
+  public int a(ajvr paramajvr1, ajvr paramajvr2)
+  {
+    int j = 5;
+    int i;
+    if (bfzz.b(paramajvr1.jdField_a_of_type_JavaLangString, this.a)) {
+      i = 5;
     }
     for (;;)
     {
-      return true;
-      QQToast.a(localQQAppInterface.getApplication(), amtj.a(2131715062), 0).a();
-      continue;
-      QQToast.a(localQQAppInterface.getApplication(), amtj.a(2131715061), 0).a();
-      continue;
-      QQToast.a(localQQAppInterface.getApplication(), amtj.a(2131715060), 0).a();
-      continue;
-      QQToast.a(localQQAppInterface.getApplication(), amtj.a(2131715063), 0).a();
+      if (bfzz.b(paramajvr2.jdField_a_of_type_JavaLangString, this.a)) {}
+      for (;;)
+      {
+        if (i != j)
+        {
+          return j - i;
+          if (bfzz.a(paramajvr1.jdField_a_of_type_JavaLangString, this.a))
+          {
+            i = 3;
+            break;
+          }
+          if (!paramajvr1.jdField_a_of_type_Boolean) {
+            break label134;
+          }
+          i = 1;
+          break;
+          if (bfzz.a(paramajvr2.jdField_a_of_type_JavaLangString, this.a))
+          {
+            j = 3;
+            continue;
+          }
+          if (!paramajvr2.jdField_a_of_type_Boolean) {
+            break label128;
+          }
+          j = 1;
+          continue;
+        }
+        return ChnToSpell.a(bfzz.c(paramajvr1), 1).compareToIgnoreCase(ChnToSpell.a(bfzz.c(paramajvr2), 1));
+        label128:
+        j = 0;
+      }
+      label134:
+      i = 0;
     }
   }
 }

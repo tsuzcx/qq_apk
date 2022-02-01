@@ -1,21 +1,22 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import afqj;
-import afqw;
-import ahtj;
-import com.tencent.widget.XEditTextEx;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import anka;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 class BaseChatPie$14
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   BaseChatPie$14(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (ahtj.a(this.this$0.app).a(this.this$0.input.getText())) {
-      this.this$0.showZhituAfterDraft();
-    }
-    ((afqj)this.this$0.helperProvider.a(24)).a();
+    paramDialogInterface = new Intent(this.this$0.mActivity, QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", anka.l);
+    this.this$0.mActivity.startActivityForResult(paramDialogInterface, 0);
   }
 }
 

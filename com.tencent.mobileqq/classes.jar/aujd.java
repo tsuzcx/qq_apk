@@ -1,35 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
+import com.tencent.mobileqq.transfile.NetResp;
 
-class aujd
-  implements TVK_IMediaPlayer.OnInfoListener
+public abstract interface aujd
 {
-  aujd(auix paramauix) {}
+  public abstract long a(NetResp paramNetResp, aujb paramaujb);
   
-  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoBaseItem", 2, "video start buffering !");
-      }
-      if (auix.a(this.a) != null) {
-        auix.a(this.a).a(this.a.b, 0);
-      }
-      this.a.c = 6;
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoBaseItem", 2, "video end buffering !");
-      }
-    } while (auix.a(this.a) == null);
-    auix.a(this.a).a(this.a.b, 1);
-    return false;
-  }
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void a(aujb paramaujb);
+  
+  public abstract void a(boolean paramBoolean, aujb paramaujb);
+  
+  public abstract byte[] a(byte[] paramArrayOfByte, long paramLong, aujb paramaujb);
+  
+  public abstract void b(aujb paramaujb);
 }
 
 

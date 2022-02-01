@@ -1,63 +1,33 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import android.os.Build.VERSION;
+import android.os.HandlerThread;
 
-class vml
-  implements vmo
+public class vml
 {
-  protected INetEngine.IBreakDownFix a;
+  private HandlerThread a;
   
-  private vml(vmg paramvmg)
+  public HandlerThread a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new vmn(this);
-  }
-  
-  protected INetEngine a()
-  {
-    AppInterface localAppInterface = bmql.a();
-    if (localAppInterface != null) {
-      return localAppInterface.getNetEngine(0);
+    if (this.a == null) {
+      this.a = new HandlerThread("WeishiHandlerThread");
     }
-    return null;
+    return this.a;
   }
   
-  public void a(vmp paramvmp)
+  public void a()
   {
-    paramvmp.jdField_d_of_type_Int = 0;
-    HttpNetReq localHttpNetReq = new HttpNetReq();
-    localHttpNetReq.mReqUrl = paramvmp.jdField_d_of_type_JavaLangString;
-    localHttpNetReq.mHttpMethod = 0;
-    localHttpNetReq.mOutPath = paramvmp.e;
-    localHttpNetReq.mTempPath = paramvmp.f;
-    localHttpNetReq.mPrioty = paramvmp.g;
-    localHttpNetReq.mContinuErrorLimit = 3;
-    localHttpNetReq.setUserData(paramvmp);
-    localHttpNetReq.mBreakDownFix = this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix;
-    paramvmp.a = localHttpNetReq;
-    localHttpNetReq.mCallback = new vmm(this);
-    INetEngine localINetEngine = a();
-    if (localINetEngine != null) {
-      localINetEngine.sendReq(localHttpNetReq);
-    }
-    xvv.a("AsyncFileDownloader", "start download with base downloader, task = %s", paramvmp);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public void b(vmp paramvmp)
-  {
-    HttpNetReq localHttpNetReq = paramvmp.a;
-    if (localHttpNetReq != null)
+    if (this.a != null)
     {
-      INetEngine localINetEngine = a();
-      if (localINetEngine != null) {
-        localINetEngine.cancelReq(localHttpNetReq);
+      if (Build.VERSION.SDK_INT < 18) {
+        break label29;
       }
-      xvv.b("AsyncFileDownloader", String.format("cancel task with base downloader, task = %s", new Object[] { paramvmp }));
+      this.a.quitSafely();
+    }
+    for (;;)
+    {
+      this.a = null;
+      return;
+      label29:
+      this.a.quit();
     }
   }
 }

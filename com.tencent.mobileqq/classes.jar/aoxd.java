@@ -1,26 +1,30 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.debug.ArkAsyncShareMiniAppTest.1.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aoxd
-  implements aoyy
+  extends aoui
 {
-  public boolean needProcess(JSONObject paramJSONObject)
+  public aouc a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoul paramaoul)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ArkApp.ArkAsyncShareMiniAppTest", 2, new Object[] { "AAShare.mArkMessagePreprocessor needProcess=", Boolean.valueOf(true) });
+    paramQQAppInterface = new aoxc(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "manage_troop";
+    paramQQAppInterface.c = "main_page";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
     }
-    return true;
-  }
-  
-  public void process(JSONObject paramJSONObject, aoyz paramaoyz, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("ArkApp.ArkAsyncShareMiniAppTest", 2, new Object[] { "AAShare.process msgJson=", paramJSONObject.toString() });
+    paramContext = paramContext[1].split("&");
+    int i = 0;
+    while (i < paramContext.length)
+    {
+      paramString = paramContext[i].split("=");
+      if (paramString.length == 2) {
+        paramQQAppInterface.a(paramString[0], paramString[1]);
+      }
+      i += 1;
     }
-    ThreadManager.getFileThreadHandler().postDelayed(new ArkAsyncShareMiniAppTest.1.1(this, paramJSONObject, paramaoyz, paramObject), 20000L);
+    return paramQQAppInterface;
   }
 }
 

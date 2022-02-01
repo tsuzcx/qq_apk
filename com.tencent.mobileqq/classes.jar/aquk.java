@@ -1,18 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.dating.DatingUtil.1;
-
-public class aquk
-  implements DialogInterface.OnClickListener
+public abstract interface aquk
 {
-  public aquk(DatingUtil.1 param1) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

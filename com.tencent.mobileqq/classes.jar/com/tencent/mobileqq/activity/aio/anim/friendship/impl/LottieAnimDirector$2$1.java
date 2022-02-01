@@ -1,35 +1,35 @@
 package com.tencent.mobileqq.activity.aio.anim.friendship.impl;
 
-import afft;
-import affv;
-import afge;
+import afwy;
+import afxa;
+import afxj;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class LottieAnimDirector$2$1
   implements Runnable
 {
-  public LottieAnimDirector$2$1(affv paramaffv, boolean paramBoolean) {}
+  public LottieAnimDirector$2$1(afxa paramafxa, boolean paramBoolean) {}
   
   public void run()
   {
-    if ((afft.b(this.jdField_a_of_type_Affv.jdField_a_of_type_Afft)) || (afft.a(this.jdField_a_of_type_Affv.jdField_a_of_type_Afft))) {}
+    if ((afwy.b(this.jdField_a_of_type_Afxa.jdField_a_of_type_Afwy)) || (afwy.a(this.jdField_a_of_type_Afxa.jdField_a_of_type_Afwy))) {}
     do
     {
       return;
       if (this.jdField_a_of_type_Boolean)
       {
-        QQAppInterface localQQAppInterface = afft.a(this.jdField_a_of_type_Affv.jdField_a_of_type_Afft);
+        QQAppInterface localQQAppInterface = afwy.a(this.jdField_a_of_type_Afxa.jdField_a_of_type_Afwy);
         if (localQQAppInterface != null) {
-          afft.a(this.jdField_a_of_type_Affv.jdField_a_of_type_Afft, localQQAppInterface);
+          afwy.a(this.jdField_a_of_type_Afxa.jdField_a_of_type_Afwy, localQQAppInterface);
         }
       }
-    } while (this.jdField_a_of_type_Affv.jdField_a_of_type_Afge == null);
-    this.jdField_a_of_type_Affv.jdField_a_of_type_Afge.a(this.jdField_a_of_type_Boolean);
+    } while (this.jdField_a_of_type_Afxa.jdField_a_of_type_Afxj == null);
+    this.jdField_a_of_type_Afxa.jdField_a_of_type_Afxj.a(this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.friendship.impl.LottieAnimDirector.2.1
  * JD-Core Version:    0.7.0.1
  */

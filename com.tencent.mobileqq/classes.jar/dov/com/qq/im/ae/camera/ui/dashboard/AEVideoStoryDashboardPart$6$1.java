@@ -2,18 +2,20 @@ package dov.com.qq.im.ae.camera.ui.dashboard;
 
 import android.os.Bundle;
 import android.widget.TextView;
-import blrm;
-import blrs;
+import bnev;
+import bnfb;
+import com.tencent.ttpic.openapi.offlineset.OfflineConfig;
 import eipc.EIPCResult;
 
 public class AEVideoStoryDashboardPart$6$1
   implements Runnable
 {
-  public AEVideoStoryDashboardPart$6$1(blrs paramblrs, EIPCResult paramEIPCResult) {}
+  public AEVideoStoryDashboardPart$6$1(bnfb parambnfb, EIPCResult paramEIPCResult) {}
   
   public void run()
   {
-    blrm.a(this.jdField_a_of_type_Blrs.a).setText(this.jdField_a_of_type_EipcEIPCResult.data.getString("KEY_ENV_INFO"));
+    String str = this.jdField_a_of_type_EipcEIPCResult.data.getString("KEY_ENV_INFO") + ", PerfLevel: " + OfflineConfig.getPhonePerfLevel();
+    bnev.a(this.jdField_a_of_type_Bnfb.a).setText(str);
   }
 }
 

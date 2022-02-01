@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.TreeMap;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -96,7 +97,7 @@ public class DTReportChannel
   
   private boolean shouldReportImmediately(String paramString)
   {
-    return ("dt_act".equals(paramString)) || ("dt_origin_vst".equals(paramString)) || ("dt_vst".equals(paramString));
+    return ("dt_act".equals(paramString)) || ("dt_vst".equals(paramString)) || ("dt_origin_vst".equals(paramString)) || ("dt_appin".equals(paramString)) || ("dt_appout".equals(paramString));
   }
   
   private String transformEvent(String paramString)
@@ -119,13 +120,22 @@ public class DTReportChannel
     Map localMap = getParamsMap(paramMap);
     boolean bool2 = shouldReportImmediately(paramString1);
     if (this.mDTReport == null) {}
+    label233:
     for (;;)
     {
       return;
       if (TextUtils.isEmpty(paramString2)) {}
-      for (boolean bool1 = this.mDTReport.dtEvent(paramObject, paramString1, localMap, bool2); VideoReport.isDebugMode(); bool1 = this.mDTReport.dtEvent(paramObject, paramString1, localMap, bool2, paramString2))
+      for (boolean bool1 = this.mDTReport.dtEvent(paramObject, paramString1, localMap, bool2);; bool1 = this.mDTReport.dtEvent(paramObject, paramString1, localMap, bool2, paramString2))
       {
-        Log.i("DTReportChannel", "eventId = " + paramString1 + ", immediately = " + bool2 + ", isSuccess=" + bool1 + ", params = " + new JSONObject(paramMap));
+        if (!VideoReport.isDebugMode()) {
+          break label233;
+        }
+        Log.i("DTReportChannel", "eventId = BeaconReporter_" + paramString1 + ", immediately = " + bool2 + ", isSuccess=" + bool1 + ", params = " + new JSONObject(new TreeMap(paramMap)));
+        paramObject = paramMap.get("udf_kv");
+        if (!(paramObject instanceof Map)) {
+          break;
+        }
+        Log.i("DTReportChannel", "eventId = BeaconReporter_udfkv_" + paramString1 + ", immediately = " + bool2 + ", isSuccess=" + bool1 + ", params = " + new JSONObject(new TreeMap((Map)paramObject)));
         return;
       }
     }

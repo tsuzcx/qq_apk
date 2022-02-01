@@ -86,7 +86,6 @@
                 "view_type": "UIView",
                 "view_id": "id_middle_body_wrapper",
                 "direction": "vertical",
-                "padding_top": "12",
                 "margin_left": "12",
                 "margin_right": "12",
                 "margin_bottom": "10",
@@ -95,7 +94,7 @@
                     "type": "wrap_content"
                 },
                 "width": {
-                    "type": "match_parent"
+                    "type": "wrap_content"
                 },
                 "attributes": {
                     "setCornerRadiusString:":"6",
@@ -103,26 +102,13 @@
                 },
                 "subviews": [
                     {
-                        "view_type": "ReadInJoySummaryView",
-                        "view_id": "id_summary",
-                        "margin_left": "12",
-                        "margin_right": "12",
-                        "margin_bottom": "12",
-                        "height": {
-                            "type": "wrap_content"
-                        },
-                        "width": {
-                            "type": "match_parent"
-                        },
-                        "attributes": {
-                            "setArticleModel:": "-1"
-                        }
-                    },
-                    {
                         "$includeComponet": "componet/RIJ_biu_more_image.geojson"
                     },
                     {
                         "$includeComponet": "componet/RIJ_biu_big_video.geojson"
+                    },
+                    {
+                        "$includeComponet": "componet/RIJ_biu_small_video.geojson"
                     }
                 ]
             },
@@ -152,7 +138,21 @@
                 }
             },
             {
-                "$includeComponet": "componet/separator_normal_bottom.geojson"
+                "view_type": "container",
+                "default_visible": "YES",
+                "margin_top": "-10",
+                "height": {
+                    "type": "wrap_content"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "375"
+                },
+                "subviews": [
+                    {
+                        "$includeComponet": "componet/separator_normal_bottom.geojson"
+                    }
+                ]
             }
         ]
     }

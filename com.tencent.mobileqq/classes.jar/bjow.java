@@ -1,31 +1,72 @@
-import android.view.View;
-import android.view.ViewTreeObserver.OnScrollChangedListener;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.widget.BubblePopupWindow;
-import java.lang.ref.WeakReference;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import com.tencent.open.export.js.VipDownloadInterface;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bjow
-  implements ViewTreeObserver.OnScrollChangedListener
+  implements bjoh
 {
-  public bjow(BubblePopupWindow paramBubblePopupWindow) {}
+  protected final String a;
   
-  public void onScrollChanged()
+  public bjow(VipDownloadInterface paramVipDownloadInterface, String paramString)
   {
-    if (BubblePopupWindow.a(this.a) != null) {}
-    WindowManager.LayoutParams localLayoutParams;
-    for (View localView = (View)BubblePopupWindow.a(this.a).get();; localView = null)
-    {
-      if ((localView != null) && (BubblePopupWindow.a(this.a) != null))
-      {
-        localLayoutParams = (WindowManager.LayoutParams)BubblePopupWindow.a(this.a).getLayoutParams();
-        if (localLayoutParams != null) {
-          break;
-        }
-      }
+    bjko.b(paramVipDownloadInterface.jdField_a_of_type_JavaLangString, "new  JsCheckUpdateCallback");
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void onException(String paramString)
+  {
+    if (!this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.hasRight()) {
       return;
     }
-    BubblePopupWindow.a(this.a, localView, localLayoutParams, BubblePopupWindow.a(this.a), BubblePopupWindow.b(this.a));
-    this.a.a(localLayoutParams.x, localLayoutParams.y, -1, -1, true);
+    bjko.e(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "JsCheckUpdateCallback onException >>> " + paramString);
+    paramString = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{\"guid\":\"" + this.jdField_a_of_type_JavaLangString + "\",\"r\":\"-1\"});}void(0);";
+    this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.a(paramString);
+  }
+  
+  public void onResult(ArrayList<ApkUpdateDetail> paramArrayList)
+  {
+    if (!this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.hasRight()) {
+      return;
+    }
+    bjko.a(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "JsCheckUpdateCallback onResult >>> " + paramArrayList.size());
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONArray localJSONArray = new JSONArray();
+    int i = 0;
+    try
+    {
+      while (i < paramArrayList.size())
+      {
+        ApkUpdateDetail localApkUpdateDetail = (ApkUpdateDetail)paramArrayList.get(i);
+        JSONObject localJSONObject2 = new JSONObject();
+        localJSONObject2.put("packageName", localApkUpdateDetail.packageName);
+        localJSONObject2.put("newapksize", localApkUpdateDetail.newapksize);
+        localJSONObject2.put("patchsize", localApkUpdateDetail.patchsize);
+        localJSONObject2.put("updatemethod", localApkUpdateDetail.updatemethod);
+        localJSONObject2.put("versioncode", localApkUpdateDetail.versioncode);
+        localJSONObject2.put("versionname", localApkUpdateDetail.versionname);
+        localJSONObject2.put("fileMd5", localApkUpdateDetail.fileMd5);
+        localJSONObject2.put("sigMd5", localApkUpdateDetail.sigMd5);
+        localJSONObject2.put("url", localApkUpdateDetail.url);
+        localJSONArray.put(localJSONObject2);
+        i += 1;
+      }
+      localJSONObject1.put("guid", this.jdField_a_of_type_JavaLangString);
+      localJSONObject1.put("content", localJSONArray.toString());
+      localJSONObject1.put("resultCode", "0");
+      paramArrayList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{'guid':'" + this.jdField_a_of_type_JavaLangString + "','r':'0','data':'" + localJSONArray.toString() + "'});}void(0);";
+    }
+    catch (JSONException paramArrayList)
+    {
+      for (;;)
+      {
+        paramArrayList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{\"guid\":\"" + this.jdField_a_of_type_JavaLangString + "\",\"r\":\"-1\"});}void(0);";
+      }
+    }
+    bjko.b(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, ">>checkUpdate jsUrl:" + paramArrayList);
+    this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.a(paramArrayList);
   }
 }
 

@@ -1,13 +1,6 @@
-class azcs
+public abstract interface azcs
 {
-  String a;
-  String b;
-  
-  public azcs(String paramString1, String paramString2)
-  {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
+  public abstract void a(int paramInt);
 }
 
 

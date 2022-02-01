@@ -12,10 +12,10 @@ import android.os.Looper;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.ImageView;
-import bmyz;
-import bmza;
-import bmzb;
-import bmzc;
+import boor;
+import boos;
+import boot;
+import boou;
 import com.tencent.mobileqq.utils.ViewUtils;
 import java.util.ArrayList;
 import java.util.List;
@@ -105,8 +105,8 @@ public class QIMCircleProgress
   {
     setLayerType(1, null);
     this.jdField_b_of_type_Float = getResources().getDisplayMetrics().density;
-    this.jdField_d_of_type_Int = getResources().getColor(2131165660);
-    this.jdField_f_of_type_Int = getResources().getColor(2131166298);
+    this.jdField_d_of_type_Int = getResources().getColor(2131165669);
+    this.jdField_f_of_type_Int = getResources().getColor(2131166307);
     this.jdField_e_of_type_Int = 51;
     this.h = 100;
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
@@ -116,7 +116,7 @@ public class QIMCircleProgress
     this.jdField_d_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_d_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_d_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_d_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167337));
+    this.jdField_d_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167363));
     this.jdField_c_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_c_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
@@ -162,8 +162,8 @@ public class QIMCircleProgress
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(150L);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(3);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(2);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bmyz(this));
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new bmza(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new boor(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new boos(this));
     }
     if (this.jdField_b_of_type_AndroidAnimationValueAnimator == null)
     {
@@ -171,8 +171,8 @@ public class QIMCircleProgress
       this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(400L);
       this.jdField_b_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
       this.jdField_b_of_type_AndroidAnimationValueAnimator.setRepeatMode(2);
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bmzb(this));
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new bmzc(this));
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new boot(this));
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new boou(this));
     }
   }
   
@@ -237,7 +237,7 @@ public class QIMCircleProgress
           this.jdField_d_of_type_AndroidGraphicsPaint.setStrokeWidth((int)(this.jdField_c_of_type_Int * (1.0D - 0.38D * this.jdField_c_of_type_Float)));
           this.jdField_d_of_type_AndroidGraphicsPaint.setAlpha((int)(255.0F * this.jdField_c_of_type_Float));
           if (Build.VERSION.SDK_INT >= 21) {
-            this.jdField_d_of_type_AndroidGraphicsPaint.setShadowLayer(this.jdField_d_of_type_Float * this.jdField_c_of_type_Float, 0.0F, 0.0F, getResources().getColor(2131167337));
+            this.jdField_d_of_type_AndroidGraphicsPaint.setShadowLayer(this.jdField_d_of_type_Float * this.jdField_c_of_type_Float, 0.0F, 0.0F, getResources().getColor(2131167363));
           }
           paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, f3, f1, false, this.jdField_a_of_type_AndroidGraphicsPaint);
           paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, f3, f1, false, this.jdField_d_of_type_AndroidGraphicsPaint);

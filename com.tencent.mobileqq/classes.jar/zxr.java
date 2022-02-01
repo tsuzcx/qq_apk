@@ -1,47 +1,22 @@
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.richframework.eventbus.SimpleEventBus;
+import com.tencent.biz.subscribe.event.UserStateUpdateEvent;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment;
 
-class zxr
-  implements FFmpegExecuteResponseCallback
+public class zxr
+  extends BroadcastReceiver
 {
-  zxr(zxq paramzxq, zxs paramzxs, zxt paramzxt) {}
+  private zxr(SubscribePersonalDetailFragment paramSubscribePersonalDetailFragment) {}
   
-  public void onFailure(String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_Zxs != null)
+    if ((paramIntent != null) && (TextUtils.equals(paramIntent.getAction(), "action_reload_get_main_page")))
     {
-      this.jdField_a_of_type_Zxt.a(943004);
-      this.jdField_a_of_type_Zxt.a(paramString);
-      this.jdField_a_of_type_Zxs.failed(this.jdField_a_of_type_Zxt);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.videostory.capture", 2, "picToVideo failure");
-    }
-  }
-  
-  public void onFinish(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.videostory.capture", 2, "picToVideo finish");
-    }
-  }
-  
-  public void onProgress(String paramString) {}
-  
-  public void onStart()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.videostory.capture", 2, "picToVideo start");
-    }
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    if (this.jdField_a_of_type_Zxs != null) {
-      this.jdField_a_of_type_Zxs.success(this.jdField_a_of_type_Zxt);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.videostory.capture", 2, "picToVideo sucess");
+      SubscribePersonalDetailFragment.b(this.a, false);
+      SimpleEventBus.getInstance().dispatchEvent(new UserStateUpdateEvent());
     }
   }
 }

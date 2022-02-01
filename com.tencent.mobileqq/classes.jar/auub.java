@@ -1,38 +1,38 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.jsp.MediaApiPlugin;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class auub
-  implements QQPermissionCallback
+  implements DialogInterface.OnClickListener
 {
-  public auub(MediaApiPlugin paramMediaApiPlugin, Intent paramIntent, Context paramContext, String paramString, JSONObject paramJSONObject, boolean paramBoolean, AppActivity paramAppActivity) {}
+  public auub(ForwardSdkShareOption paramForwardSdkShareOption) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.d(MediaApiPlugin.jdField_a_of_type_JavaLangString, 1, "User requestPermissions RECORD_AUDIO denied");
-    bfur.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    try
+    if (paramInt == 1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, (byte)1);
-      MediaApiPlugin.a(this.jdField_a_of_type_AndroidContentContext).edit().putString("camera_photo_path", this.jdField_a_of_type_JavaLangString).putString("getMediaParam", this.jdField_a_of_type_OrgJsonJSONObject.toString()).putBoolean("calledFromOpenApi", this.jdField_a_of_type_Boolean).commit();
+      if (ForwardSdkShareOption.a(this.a))
+      {
+        this.a.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
+        this.a.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
+        this.a.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", aupp.e.intValue());
+        this.a.m();
+      }
+      StatisticCollector.getInstance(BaseApplication.getContext()).reportActionCountCliOper(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", "multi_account", "click_next", 0, 1, 0);
+    }
+    while (paramInt != 0) {
       return;
     }
-    catch (Exception paramArrayOfString)
-    {
-      QLog.e(MediaApiPlugin.jdField_a_of_type_JavaLangString, 1, paramArrayOfString, new Object[0]);
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131690618, 0).a();
-    }
+    paramDialogInterface = this.a.jdField_a_of_type_AndroidAppActivity;
+    Activity localActivity = this.a.jdField_a_of_type_AndroidAppActivity;
+    paramDialogInterface.setResult(0);
+    StatisticCollector.getInstance(BaseApplication.getContext()).reportActionCountCliOper(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", "multi_account", "click_cancel", 0, 1, 0);
+    this.a.jdField_a_of_type_AndroidAppActivity.finish();
   }
 }
 

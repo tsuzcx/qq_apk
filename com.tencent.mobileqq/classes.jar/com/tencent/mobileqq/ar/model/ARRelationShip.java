@@ -3,12 +3,12 @@ package com.tencent.mobileqq.ar.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aole;
+import apof;
 
 public class ARRelationShip
   implements Parcelable
 {
-  public static final Parcelable.Creator<ARRelationShip> CREATOR = new aole();
+  public static final Parcelable.Creator<ARRelationShip> CREATOR = new apof();
   public long a;
   public String a;
   public String b;

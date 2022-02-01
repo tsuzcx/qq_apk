@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.utils;
 
-import amtj;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -16,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import anvx;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.app.AppConstants;
@@ -64,7 +64,7 @@ public class QQCustomDialogWtihForwardAvatar
   {
     Display localDisplay = paramActivity.getWindowManager().getDefaultDisplay();
     float f2 = localDisplay.getWidth();
-    int i = paramActivity.getResources().getDimensionPixelSize(2131296896);
+    int i = paramActivity.getResources().getDimensionPixelSize(2131296897);
     float f1 = paramFloat;
     if (i > f2 * paramFloat)
     {
@@ -85,17 +85,17 @@ public class QQCustomDialogWtihForwardAvatar
   {
     this.title.setVisibility(8);
     this.mRlTitle.setVisibility(0);
-    ((TextView)this.mRlTitle.findViewById(2131380050)).setText(paramString);
+    ((TextView)this.mRlTitle.findViewById(2131380385)).setText(paramString);
   }
   
   @TargetApi(11)
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.mRlTitle = ((RelativeLayout)findViewById(2131376626));
-    this.mTxvTitle = ((TextView)this.mRlTitle.findViewById(2131380053));
-    this.mRlForwardTarget = ((RelativeLayout)this.mRlTitle.findViewById(2131367976));
-    this.mRlMultiForwardTarget = ((RelativeLayout)this.mRlTitle.findViewById(2131367977));
+    this.mRlTitle = ((RelativeLayout)findViewById(2131376888));
+    this.mTxvTitle = ((TextView)this.mRlTitle.findViewById(2131380388));
+    this.mRlForwardTarget = ((RelativeLayout)this.mRlTitle.findViewById(2131368112));
+    this.mRlMultiForwardTarget = ((RelativeLayout)this.mRlTitle.findViewById(2131368113));
   }
   
   public void showForwardTargetAvatar(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString1, int paramInt, String paramString2, boolean paramBoolean)
@@ -106,16 +106,16 @@ public class QQCustomDialogWtihForwardAvatar
     this.mRlMultiForwardTarget.setVisibility(8);
     this.mRlForwardTarget.setVisibility(0);
     this.mTxvTitle.setText(paramString2);
-    ImageView localImageView1 = (ImageView)this.mRlTitle.findViewById(2131368605);
-    RelativeLayout localRelativeLayout = (RelativeLayout)this.mRlTitle.findViewById(2131378748);
-    ImageView localImageView2 = (ImageView)this.mRlTitle.findViewById(2131368603);
+    ImageView localImageView1 = (ImageView)this.mRlTitle.findViewById(2131368764);
+    RelativeLayout localRelativeLayout = (RelativeLayout)this.mRlTitle.findViewById(2131379041);
+    ImageView localImageView2 = (ImageView)this.mRlTitle.findViewById(2131368762);
     QQCustomDialogWtihForwardAvatar.1 local1 = new QQCustomDialogWtihForwardAvatar.1(this, paramQQAppInterface, paramString2, paramString1, paramInt);
     paramActivity = new QQCustomDialogWtihForwardAvatar.2(this, paramInt, paramQQAppInterface, paramActivity, paramString1, paramString2);
     if ((paramInt == 0) || (paramInt == 1000))
     {
       localImageView1.setImageDrawable(FaceDrawable.getFaceDrawable(paramQQAppInterface, 1, paramString1));
       this.mRlForwardTarget.setOnClickListener(paramActivity);
-      this.mRlForwardTarget.setBackgroundResource(2130840171);
+      this.mRlForwardTarget.setBackgroundResource(2130840193);
       return;
     }
     if (paramInt == 1)
@@ -126,7 +126,7 @@ public class QQCustomDialogWtihForwardAvatar
         localImageView1.setImageDrawable(paramQQAppInterface);
         localImageView1.setOnClickListener(local1);
         localRelativeLayout.setOnClickListener(paramActivity);
-        localRelativeLayout.setBackgroundResource(2130840171);
+        localRelativeLayout.setBackgroundResource(2130840193);
         return;
       }
     }
@@ -135,30 +135,30 @@ public class QQCustomDialogWtihForwardAvatar
       localImageView1.setImageDrawable(FaceDrawable.getFaceDrawable(paramQQAppInterface, 101, paramString1));
       localImageView1.setOnClickListener(local1);
       localRelativeLayout.setOnClickListener(paramActivity);
-      localRelativeLayout.setBackgroundResource(2130840171);
+      localRelativeLayout.setBackgroundResource(2130840193);
       return;
     }
     if (paramInt == 1006)
     {
       localImageView1.setImageDrawable(FaceDrawable.getFaceDrawable(paramQQAppInterface, 11, paramString1));
       this.mRlForwardTarget.setOnClickListener(paramActivity);
-      this.mRlForwardTarget.setBackgroundResource(2130840171);
+      this.mRlForwardTarget.setBackgroundResource(2130840193);
       return;
     }
     if (AppConstants.DATALINE_PC_UIN.equals(paramString1))
     {
-      localImageView1.setImageResource(2130844119);
+      localImageView1.setImageResource(2130844186);
       localImageView1.setOnClickListener(local1);
       this.mRlForwardTarget.setOnClickListener(paramActivity);
-      this.mRlForwardTarget.setBackgroundResource(2130840171);
+      this.mRlForwardTarget.setBackgroundResource(2130840193);
       return;
     }
     if (AppConstants.DATALINE_IPAD_UIN.equals(paramString1))
     {
-      localImageView1.setImageResource(2130844117);
+      localImageView1.setImageResource(2130844184);
       localImageView1.setOnClickListener(local1);
       this.mRlForwardTarget.setOnClickListener(paramActivity);
-      this.mRlForwardTarget.setBackgroundResource(2130840171);
+      this.mRlForwardTarget.setBackgroundResource(2130840193);
       return;
     }
     localImageView2.setVisibility(8);
@@ -172,8 +172,8 @@ public class QQCustomDialogWtihForwardAvatar
     this.mRlMultiForwardTarget.setVisibility(0);
     this.title.setVisibility(8);
     this.mRlForwardTarget.setVisibility(8);
-    ((TextView)this.mRlTitle.findViewById(2131380050)).setText(amtj.a(2131709303));
-    GridView localGridView = (GridView)this.mRlTitle.findViewById(2131367839);
+    ((TextView)this.mRlTitle.findViewById(2131380385)).setText(anvx.a(2131709650));
+    GridView localGridView = (GridView)this.mRlTitle.findViewById(2131367975);
     localGridView.setNumColumns(5);
     localGridView.setHorizontalSpacing((AIOUtils.dp2px(236.0F, getContext().getResources()) - this.mImgvHeadWidth * 5) / 5);
     localGridView.setVerticalSpacing(AIOUtils.dp2px(10.0F, getContext().getResources()));

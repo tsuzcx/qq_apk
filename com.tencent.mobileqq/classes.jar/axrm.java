@@ -1,52 +1,46 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.util.DisplayMetrics;
-import android.widget.ImageView;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
-import com.tencent.mobileqq.olympic.activity.PromotionEntry;
-import com.tencent.mobileqq.olympic.activity.PromotionEntry.UpdateOperateBtnStatusRunnable;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
+import android.util.SparseArray;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
-class axrm
-  implements ImageAssetDelegate
+public class axrm
+  implements bila<oidb_0x8e4.RspBody>
 {
-  axrm(axrl paramaxrl) {}
+  public axrm(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    Object localObject = (ImageView)PromotionEntry.UpdateOperateBtnStatusRunnable.a(this.a.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable).get();
-    int i;
-    int j;
-    if (localObject != null)
+    if ((paramInt == 0) || (paramInt == 1004))
     {
-      paramLottieImageAsset = paramLottieImageAsset.getFileName();
-      i = ((ImageView)localObject).getResources().getDisplayMetrics().densityDpi;
-      j = ((ImageView)localObject).getResources().getDisplayMetrics().densityDpi;
-      localObject = this.a.jdField_a_of_type_JavaLangString + "entry_images" + File.separator + paramLottieImageAsset;
+      this.a.jdField_a_of_type_Axrb.d();
+      bhhr.a(this.a, this.a.app.getCurrentAccountUin(), false, System.currentTimeMillis());
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.jdField_b_of_type_Long = this.a.app.getLongAccountUin();
+      this.a.jdField_b_of_type_JavaLangString = null;
+      GameRoomInviteActivity.jdField_a_of_type_JavaLangString = null;
+      this.a.jdField_a_of_type_JavaUtilList = null;
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      if (this.a.jdField_b_of_type_JavaUtilList != null) {
+        this.a.jdField_b_of_type_JavaUtilList.clear();
+      }
+      this.a.f = false;
+      this.a.a();
+      paramRspBody = this.a.a();
+      if ((paramRspBody != null) && (paramRspBody.jdField_a_of_type_Boolean)) {
+        QQToast.a(this.a, anvx.a(2131704535), 0).a();
+      }
+      this.a.jdField_a_of_type_Axsi.notifyDataSetChanged();
+      this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
     }
     for (;;)
     {
-      try
-      {
-        paramLottieImageAsset = mqa.a((String)localObject, i, j);
-        localObject = paramLottieImageAsset;
-        if (paramLottieImageAsset == null) {
-          localObject = Bitmap.createBitmap(1, 1, Bitmap.Config.ALPHA_8);
-        }
-        return localObject;
-      }
-      catch (Exception paramLottieImageAsset)
-      {
-        if (AudioHelper.f()) {
-          QLog.w(PromotionEntry.jdField_a_of_type_JavaLangString, 1, "UpdateOperateBtnStatusRunnable Exception, imagePath[" + (String)localObject + "]", paramLottieImageAsset);
-        }
-      }
-      paramLottieImageAsset = null;
+      this.a.jdField_b_of_type_AndroidViewView.setEnabled(true);
+      return;
+      this.a.a(paramInt, paramRspBody, (String)GameRoomInviteActivity.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
     }
   }
 }

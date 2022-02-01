@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.phone;
 
-import ajnk;
+import akiy;
 import android.os.Handler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -12,12 +12,12 @@ public class PhoneMatchView$1
   
   public void run()
   {
-    this.this$0.a(2131718142, 1000L, true);
+    this.this$0.a(2131718527, 1000L, true);
     PhoneMatchView.a(this.this$0).sendEmptyMessageDelayed(0, 15000L);
-    if (this.this$0.jdField_a_of_type_Aycd == null)
+    if (this.this$0.jdField_a_of_type_Azip == null)
     {
-      this.this$0.jdField_a_of_type_Aycd = new ajnk(this);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.this$0.jdField_a_of_type_Aycd);
+      this.this$0.jdField_a_of_type_Azip = new akiy(this);
+      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.this$0.jdField_a_of_type_Azip);
     }
     ThreadManager.excute(new PhoneMatchView.1.2(this), 16, null, false);
   }

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.persistence.Entity;
-import rdu;
+import rqb;
 import tencent.im.oidb.articlesummary.articlesummary.RecommendAccountInfo;
 import tencent.im.oidb.oidb_0xc2f.RecommendAccountInfo;
 
@@ -17,7 +17,7 @@ public class RecommendFollowInfo
   extends Entity
   implements Parcelable
 {
-  public static Parcelable.Creator<RecommendFollowInfo> CREATOR = new rdu();
+  public static Parcelable.Creator<RecommendFollowInfo> CREATOR = new rqb();
   public long algorithmId;
   public String className;
   public boolean hasReport;

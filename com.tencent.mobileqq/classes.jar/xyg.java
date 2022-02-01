@@ -1,75 +1,86 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.text.TextUtils;
-import android.util.SparseArray;
-import android.util.SparseIntArray;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.biz.qqstory.takevideo.EditVideoFilter;
-import com.tencent.biz.qqstory.takevideo.EditVideoFilter.FilterPagerAdapter;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
 public class xyg
-  implements ViewPager.OnPageChangeListener
+  extends zgz
 {
-  private xyg(EditVideoFilter paramEditVideoFilter) {}
+  public static final String KEY = "DetailEmptyInteractionSegment";
+  private int a;
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public xyg(Context paramContext)
   {
-    paramInt2 = 0;
-    int i = paramInt1 % this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a();
-    Object localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(i);
-    if (localObject != null) {}
-    for (paramInt1 = ((ygy)localObject).jdField_a_of_type_Int;; paramInt1 = 0)
+    super(paramContext);
+  }
+  
+  public void P_()
+  {
+    zgz localzgz1 = a().a("DetailCommentSegment");
+    zgz localzgz2 = a().a("DetailLikeListSegment");
+    xyf localxyf = (xyf)a().a("DetailDoubleTabSegment");
+    if ((localxyf != null) && (localxyf.a() > 0) && (localzgz1 != null) && (localzgz1.a() == 0) && (localzgz2 != null) && (localzgz2.a() == 0))
     {
-      localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a((i + 1) % this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a());
-      if (localObject != null) {
-        paramInt2 = ((ygy)localObject).jdField_a_of_type_Int;
-      }
-      localObject = (xzp)this.a.a(xzp.class);
-      if (localObject != null) {
-        ((xzp)localObject).a(paramInt1, paramInt2, paramFloat);
-      }
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Int = localxyf.b();
       return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public View a(int paramInt, yhc paramyhc, ViewGroup paramViewGroup)
+  {
+    paramInt = UIUtils.getWindowScreenHeight(this.jdField_a_of_type_AndroidContentContext);
+    int i = UIUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidContentContext);
+    int j = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getTitleBarHeight();
+    int k = UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 56.0F);
+    paramViewGroup = (xyr)a().a("GeneralFeedProfileSegment");
+    xyt localxyt = (xyt)a().a("ShareGroupFeedProfileSegment");
+    xya localxya = (xya)a().a("BannerProfileSegment");
+    xyi localxyi = (xyi)a().a("DetailInteractSegment");
+    xyf localxyf = (xyf)a().a("DetailDoubleTabSegment");
+    paramInt = paramInt - i - j - (paramViewGroup.b() + localxyt.b() + localxya.b() + localxyi.b() + localxyf.c()) - k;
+    if (paramInt > UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 50.0F))
+    {
+      paramyhc.a().getLayoutParams().height = paramInt;
+      ykq.b("Q.qqstory.detail.DetailEmptyInteractionSegment", "view height is %d.", Integer.valueOf(paramyhc.a().getLayoutParams().height));
+      paramViewGroup = (TextView)paramyhc.a(2131378086);
+      if (this.jdField_a_of_type_Int != 1) {
+        break label247;
+      }
+      paramViewGroup.setText(anvx.a(2131702619));
+    }
+    for (;;)
+    {
+      return paramyhc.a();
+      paramyhc.a().getLayoutParams().height = UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 50.0F);
+      break;
+      label247:
+      paramViewGroup.setText(anvx.a(2131702620));
     }
   }
   
-  public void onPageSelected(int paramInt)
+  public String a()
   {
-    Object localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt);
-    if (localObject != null) {}
-    for (int i = ((ygy)localObject).jdField_a_of_type_Int;; i = 0)
-    {
-      this.a.jdField_a_of_type_AndroidUtilSparseArray.put(this.a.jdField_a_of_type_Xzd.a(), localObject);
-      if ((i == 2) || (i == 1) || (i == 3))
-      {
-        localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt);
-        if ((localObject != null) && (TextUtils.isEmpty(((ygz)localObject).jdField_a_of_type_Ygy.b))) {
-          EditVideoFilter.a((ygz)localObject);
-        }
-      }
-      localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt - 1);
-      ygz localygz = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt + 1);
-      if (localObject != null) {
-        ((ygz)localObject).jdField_a_of_type_AndroidViewView.clearAnimation();
-      }
-      if (localygz != null) {
-        localygz.jdField_a_of_type_AndroidViewView.clearAnimation();
-      }
-      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.a.jdField_a_of_type_Int = i;
-      EditVideoFilter.a(this.a).put(this.a.jdField_a_of_type_Xzd.a(), paramInt);
-      localObject = (xzp)this.a.a(xzp.class);
-      if (localObject != null) {
-        ((xzp)localObject).a(i);
-      }
-      if (i != 0)
-      {
-        this.a.jdField_a_of_type_Xzd.a("608", "9", "0", true);
-        xwb.a("0X80076DE");
-      }
-      xvv.a("Q.qqstory.publish.edit.EditVideoFilter", "LastSelectVideoFilterTime : %s , LastSelectVideoPlayMode : %s .", Long.valueOf(this.a.jdField_a_of_type_Long), Integer.valueOf(this.a.jdField_a_of_type_Int));
-      return;
-    }
+    return "DetailEmptyInteractionSegment";
+  }
+  
+  public yhc a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new yhc(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561647, paramViewGroup, false));
   }
 }
 

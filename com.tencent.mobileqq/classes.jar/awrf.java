@@ -1,17 +1,28 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil.1.2.1;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class awrf
-  implements awro
+final class awrf
+  extends Handler
 {
-  awrf(awrd paramawrd) {}
+  java.lang.ref.WeakReference<awqv> a;
   
-  public void a(boolean paramBoolean)
+  public awrf(awqv paramawqv)
   {
-    if (paramBoolean) {
-      ThreadManagerV2.excute(new ShortVideoShareUtil.1.2.1(this, (awhw)this.a.a.getManager(106)), 16, null, false);
-    }
+    super(Looper.getMainLooper());
+    this.a = new mqq.util.WeakReference(paramawqv);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.a == null) {}
+    awqv localawqv;
+    do
+    {
+      return;
+      localawqv = (awqv)this.a.get();
+    } while (localawqv == null);
+    localawqv.a(paramMessage);
   }
 }
 

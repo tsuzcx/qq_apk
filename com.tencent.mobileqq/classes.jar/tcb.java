@@ -1,8 +1,13 @@
-public abstract interface tcb
+import android.widget.ImageView;
+import android.widget.TextView;
+
+class tcb
 {
-  public abstract void a(int paramInt);
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView b;
   
-  public abstract void a(int paramInt1, int paramInt2);
+  private tcb(tbz paramtbz) {}
 }
 
 

@@ -1,36 +1,18 @@
-import com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
-import java.io.File;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import android.view.Window;
+import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
 
-class nyi
-  implements TVK_ICacheMgr.IPreloadCompleteCallback
+public class nyi
+  implements View.OnLayoutChangeListener
 {
-  private nyi(nyd paramnyd) {}
+  public nyi(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
   
-  public void onComplete(String paramString1, String paramString2)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    for (;;)
-    {
-      synchronized (nyd.a(this.a))
-      {
-        nyd.c("onPreloadComplete vid:" + paramString1 + ", detail:" + paramString2);
-        paramString2 = new File(nyd.b(paramString1));
-        if (paramString2.exists()) {
-          paramString2.renameTo(new File(nyd.a(paramString1)));
-        }
-        bcef.a(null, "dc00898", "", "", "0X8008F77", "0X8008F77", 0, 0, "", "", nyd.a(this.a).mVideoVid, String.valueOf(nyd.a(this.a).mSource));
-        paramString2 = (QQAppInterface)nyd.a(this.a).get();
-        if (paramString2 != null)
-        {
-          paramString2 = paramString2.getCurrentAccountUin();
-          nya.b(paramString2, paramString1);
-          nyd.a(this.a, nyd.a(this.a));
-          return;
-        }
-      }
-      paramString2 = "";
+    paramInt1 = this.a.getWindow().getDecorView().getBottom() - this.a.getWindow().getDecorView().getTop();
+    if (paramInt1 != this.a.b) {
+      LebaSearchPluginManagerActivity.a(this.a, paramInt1);
     }
   }
 }

@@ -1,29 +1,16 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.biz.PoiMapActivity;
+import com.tencent.avgame.gameroom.stage.StageView;
 
 public class nld
-  implements Animation.AnimationListener
+  implements nkx
 {
-  public nld(PoiMapActivity paramPoiMapActivity) {}
+  public nld(StageView paramStageView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    paramAnimation = (FrameLayout.LayoutParams)PoiMapActivity.c(this.a).getLayoutParams();
-    paramAnimation.bottomMargin = (this.a.p + this.a.q);
-    PoiMapActivity.c(this.a).setLayoutParams(paramAnimation);
-    if ((this.a.e != null) && (this.a.e.getVisibility() != 8)) {
-      this.a.e.setVisibility(8);
-    }
-    PoiMapActivity.d(this.a).clearAnimation();
-    this.a.a = true;
+    this.a.a().a();
+    bdla.b(null, "dc00898", "", "", "0X800B04A", "0X800B04A", 2, 0, "", "", "", "");
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

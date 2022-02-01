@@ -1,179 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.aekit.openrender.util.AEProfilerBase;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.model.VideoMaterial;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.net.Uri;
 
-public class bmat
-  extends AEProfilerBase
-  implements bmax
+public abstract interface bmat
 {
-  private static boolean jdField_a_of_type_Boolean;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString = "none";
-  private List<Float> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
+  public abstract int delete(Uri paramUri, String paramString, String[] paramArrayOfString);
   
-  public bmat()
-  {
-    jdField_a_of_type_Boolean = false;
-    this.mEnableBase = true;
-  }
+  public abstract Uri insert(Uri paramUri, ContentValues paramContentValues);
   
-  private float a()
-  {
-    a("getAverageFps: fps list size=" + this.jdField_a_of_type_JavaUtilList.size());
-    float f = 0.0F;
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      f += ((Float)this.jdField_a_of_type_JavaUtilList.get(i)).floatValue();
-      i += 1;
-    }
-    return f / this.jdField_a_of_type_JavaUtilList.size();
-  }
+  public abstract Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2);
   
-  private void a(String paramString)
-  {
-    if (jdField_a_of_type_Boolean) {
-      QLog.i("AEFpsManager", 2, "report fps: " + paramString);
-    }
-  }
-  
-  private void h()
-  {
-    a("startMonitor");
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  private void i()
-  {
-    if ((!this.jdField_b_of_type_Boolean) || (this.c)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 5000L);
-      if (this.jdField_a_of_type_Int >= 30)
-      {
-        if (this.jdField_b_of_type_Long > 0L)
-        {
-          float f = this.jdField_a_of_type_Int * 1000.0F / (float)this.jdField_b_of_type_Long;
-          if (this.jdField_a_of_type_JavaUtilList.size() >= 500) {
-            this.jdField_a_of_type_JavaUtilList.remove(0);
-          }
-          this.jdField_a_of_type_JavaUtilList.add(Float.valueOf(f));
-        }
-        this.jdField_a_of_type_Int = 0;
-        this.jdField_b_of_type_Long = 0L;
-        return;
-      }
-    } while (this.mOneFrameCost == 0L);
-    this.jdField_b_of_type_Long += this.mOneFrameCost;
-    this.jdField_a_of_type_Int += 1;
-  }
-  
-  private void j()
-  {
-    boolean bool = true;
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
-      return;
-    }
-    float f = a();
-    bmbc localbmbc = bmbc.a();
-    String str = this.jdField_a_of_type_JavaLangString;
-    if (akrw.jdField_a_of_type_Int == 1) {}
-    for (;;)
-    {
-      localbmbc.a(str, bool, f, 0.0D, 0.0D, "");
-      a("fps=" + f);
-      return;
-      bool = false;
-    }
-  }
-  
-  public void a()
-  {
-    a("stopMonitor");
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public void a(VideoMaterial paramVideoMaterial)
-  {
-    a("onMaterialSelected, useMaterial=" + paramVideoMaterial);
-    if ((paramVideoMaterial == null) || (TextUtils.isEmpty(paramVideoMaterial.getId()))) {}
-    for (this.jdField_a_of_type_JavaLangString = "none";; this.jdField_a_of_type_JavaLangString = paramVideoMaterial.getId())
-    {
-      a();
-      h();
-      return;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    a("onCameraSwitch");
-    j();
-    a();
-    h();
-  }
-  
-  public void b()
-  {
-    a("onCameraOpened");
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    a("onModeChangedToGif");
-    this.c = paramBoolean;
-    if (paramBoolean) {
-      a();
-    }
-  }
-  
-  public void c()
-  {
-    a("onFirstFrame");
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    h();
-  }
-  
-  public void d()
-  {
-    i();
-  }
-  
-  public void e()
-  {
-    a("onCaptureVideo");
-    j();
-    a();
-  }
-  
-  public void f()
-  {
-    a("onEnterActivity");
-  }
-  
-  public void g()
-  {
-    a("onExitActivity");
-    a();
-  }
+  public abstract int update(Uri paramUri, ContentValues paramContentValues, String paramString, String[] paramArrayOfString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bmat
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.superplayer.view.ISPlayerVideoView.IVideoViewCallBack;
-
-class alzz
-  implements ISPlayerVideoView.IVideoViewCallBack
+public abstract interface alzz
 {
-  alzz(alzy paramalzy) {}
+  public abstract void a();
   
-  public void onSurfaceChanged(Object paramObject)
-  {
-    QLog.i("CmGameGdtVideoPlayer", 1, "[onSurfaceChanged]");
-  }
+  public abstract void b();
   
-  public void onSurfaceCreated(Object paramObject)
-  {
-    QLog.i("CmGameGdtVideoPlayer", 1, "[onSurfaceCreated]");
-  }
+  public abstract void c();
   
-  public void onSurfaceDestroy(Object paramObject)
-  {
-    QLog.i("CmGameGdtVideoPlayer", 1, "[onSurfaceDestroy]");
-    alzy.a(this.a, true);
-  }
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

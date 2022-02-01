@@ -1,25 +1,55 @@
-import android.text.TextUtils;
-import com.tencent.biz.game.SensorAPIJavaScript;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class nqp
-  implements nnv
 {
-  public nqp(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
-  
-  public void loaded(String paramString, int paramInt)
+  public static int a(Context paramContext)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return;
+    Object localObject = new DisplayMetrics();
+    paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
+    try
+    {
+      if (Build.VERSION.SDK_INT >= 17)
+      {
+        paramContext.getRealMetrics((DisplayMetrics)localObject);
+        return ((DisplayMetrics)localObject).heightPixels;
+      }
+      localObject = Display.class.getMethod("getRawHeight", new Class[0]);
+      try
+      {
+        int i = ((Integer)((Method)localObject).invoke(paramContext, new Object[0])).intValue();
+        return i;
+      }
+      catch (IllegalArgumentException paramContext)
+      {
+        QLog.e("tag", 1, paramContext.getMessage());
+        return -1;
+      }
+      catch (IllegalAccessException paramContext)
+      {
+        QLog.e("tag", 1, paramContext.getMessage());
+        return -1;
+      }
+      catch (InvocationTargetException paramContext)
+      {
+        QLog.e("tag", 1, paramContext.getMessage());
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("forceUpdate", 2, "loaded code:" + paramInt);
+    catch (NoSuchMethodException paramContext)
+    {
+      for (;;)
+      {
+        QLog.e("tag", 1, paramContext.getMessage());
+      }
     }
-    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.notifyCacheReady(paramInt);
+    return -1;
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

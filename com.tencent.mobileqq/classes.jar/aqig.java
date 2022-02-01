@@ -1,65 +1,76 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.mobilereport.MobileReportManager;
-
-class aqig
-  implements DialogInterface.OnClickListener
+public class aqig
+  extends aqie
 {
-  aqig(aqid paramaqid, Context paramContext, boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
+  public float a;
+  public float b;
+  public boolean b;
+  public float c;
+  public boolean c;
+  public float d;
+  public float e;
+  public int e;
+  public float f;
+  public int f;
+  public float g;
+  public int g;
+  public float h;
+  public int h;
+  public int i;
+  public int j = 1;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aqig()
   {
-    Object localObject = this.jdField_a_of_type_AndroidContentContext;
-    if (this.jdField_a_of_type_Boolean)
+    this.jdField_e_of_type_Int = 0;
+    this.jdField_f_of_type_Int = 100;
+    this.jdField_g_of_type_Int = 100;
+  }
+  
+  public aqig a()
+  {
+    aqig localaqig = new aqig();
+    localaqig.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
+    localaqig.jdField_b_of_type_Float = this.d;
+    localaqig.jdField_c_of_type_Float = this.jdField_a_of_type_Float;
+    localaqig.d = this.jdField_b_of_type_Float;
+    this.jdField_a_of_type_JavaLangString += "reverse";
+    boolean bool;
+    if (!this.jdField_b_of_type_Boolean)
     {
-      str = this.jdField_a_of_type_Aqid.h.a(this.jdField_a_of_type_JavaLangString);
-      bgge.a((Context)localObject, str);
-      paramDialogInterface.dismiss();
-      if (!this.jdField_a_of_type_Boolean) {
-        break label136;
+      bool = true;
+      localaqig.jdField_b_of_type_Boolean = bool;
+      localaqig.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+      localaqig.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+      localaqig.jdField_f_of_type_Int = this.jdField_g_of_type_Int;
+      localaqig.jdField_g_of_type_Int = this.jdField_f_of_type_Int;
+      localaqig.jdField_h_of_type_Int = this.i;
+      localaqig.i = this.jdField_h_of_type_Int;
+      if (!this.jdField_c_of_type_Boolean) {
+        break label214;
       }
-      paramDialogInterface = "0X800AE6A";
-      label50:
-      localObject = this.jdField_a_of_type_JavaLangString;
-      if (!this.b) {
-        break label142;
-      }
-      str = "size";
-      label66:
-      aqid.a(paramDialogInterface, (String)localObject, str);
-      localObject = MobileReportManager.getInstance();
-      if (!this.jdField_a_of_type_Boolean) {
-        break label148;
-      }
-      paramDialogInterface = "2";
-      label88:
-      if (!this.jdField_a_of_type_Boolean) {
-        break label154;
-      }
+      localaqig.jdField_e_of_type_Float = this.jdField_e_of_type_Float;
+      localaqig.jdField_g_of_type_Float = this.jdField_g_of_type_Float;
+      localaqig.jdField_f_of_type_Float = this.jdField_f_of_type_Float;
     }
-    label136:
-    label142:
-    label148:
-    label154:
-    for (String str = "2";; str = "1")
+    for (localaqig.jdField_h_of_type_Float = this.jdField_h_of_type_Float;; localaqig.jdField_h_of_type_Float = this.jdField_f_of_type_Float)
     {
-      ((MobileReportManager)localObject).reportAction("Open", "4", "platform898", paramDialogInterface, str, 102, 1, System.currentTimeMillis());
-      return;
-      str = this.jdField_a_of_type_Aqid.i.a(this.jdField_a_of_type_JavaLangString);
+      localaqig.jdField_e_of_type_Int = this.jdField_e_of_type_Int;
+      localaqig.jdField_c_of_type_Boolean = this.jdField_c_of_type_Boolean;
+      localaqig.j = this.j;
+      localaqig.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+      localaqig.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      return localaqig;
+      bool = false;
       break;
-      paramDialogInterface = "0X800AE64";
-      break label50;
-      str = "full";
-      break label66;
-      paramDialogInterface = "3";
-      break label88;
+      label214:
+      localaqig.jdField_e_of_type_Float = this.jdField_g_of_type_Float;
+      localaqig.jdField_g_of_type_Float = this.jdField_e_of_type_Float;
+      localaqig.jdField_f_of_type_Float = this.jdField_h_of_type_Float;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqig
  * JD-Core Version:    0.7.0.1
  */

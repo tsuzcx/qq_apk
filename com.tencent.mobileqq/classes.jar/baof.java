@@ -1,15 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.OldHttpEngine;
+import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class baof
-  implements DialogInterface.OnClickListener
+class baof
+  extends AbsPreDownloadTask
 {
-  public baof(SignatureHistoryFragment paramSignatureHistoryFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  baof(baoe parambaoe, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    bcef.b(null, "dc00898", "", "", "0X800A98D", "0X800A98D", 2, 0, "0", "0", "", "");
+    super(paramQQAppInterface, paramString1);
+  }
+  
+  public void realCancel()
+  {
+    QLog.i("QbossPreDownloadManager", 1, "ctrl realCancel");
+  }
+  
+  public void realStart()
+  {
+    QLog.i("QbossPreDownloadManager", 1, "downloadRes realStart packagename:" + this.jdField_a_of_type_JavaLangString + ",path" + this.b);
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("Qboss_PreDownload_PackageName", this.jdField_a_of_type_JavaLangString);
+    baoe.a("Qboss_PreDownload_Start", (HashMap)localObject);
+    localObject = new HttpNetReq();
+    ((HttpNetReq)localObject).mCallback = new baog(this.app, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d);
+    ((HttpNetReq)localObject).mReqUrl = this.c;
+    ((HttpNetReq)localObject).mHttpMethod = 0;
+    ((HttpNetReq)localObject).mOutPath = this.b;
+    ((OldHttpEngine)this.app.getNetEngine(0)).sendReq((NetReq)localObject);
   }
 }
 

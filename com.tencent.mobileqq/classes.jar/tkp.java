@@ -1,32 +1,62 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import org.json.JSONObject;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 public class tkp
-  extends tkf
 {
-  tkp(tkc paramtkc1, Activity paramActivity, tkc paramtkc2, JSONObject paramJSONObject)
+  private String jdField_a_of_type_JavaLangString = "";
+  private StringBuilder jdField_a_of_type_JavaLangStringBuilder;
+  private boolean jdField_a_of_type_Boolean = true;
+  private String b = "utf-8";
+  
+  public tkp(String paramString)
   {
-    super(paramtkc1, paramActivity, paramtkc2, paramJSONObject);
+    this(paramString, "utf-8");
   }
   
-  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
+  public tkp(String paramString1, String paramString2)
   {
-    if (!TextUtils.isEmpty(paramString3))
-    {
-      paramString1 = new Intent(this.jdField_a_of_type_AndroidAppActivity, AccountDetailActivity.class);
-      paramString1.putExtra("uin", paramString3);
-      paramString1.putExtra("from_js", true);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString1);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    a();
+    this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  private void a()
+  {
+    if (!this.jdField_a_of_type_JavaLangString.endsWith("?")) {
+      this.jdField_a_of_type_JavaLangString += "?";
     }
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangStringBuilder.toString();
+  }
+  
+  public tkp a(String paramString1, String paramString2)
+  {
+    try
+    {
+      if (!this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_JavaLangStringBuilder.append("&");
+      }
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_JavaLangStringBuilder.append(paramString1);
+      this.jdField_a_of_type_JavaLangStringBuilder.append("=");
+      this.jdField_a_of_type_JavaLangStringBuilder.append(URLEncoder.encode(paramString2, this.b));
+      return this;
+    }
+    catch (UnsupportedEncodingException paramString1)
+    {
+      paramString1.printStackTrace();
+    }
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tkp
  * JD-Core Version:    0.7.0.1
  */

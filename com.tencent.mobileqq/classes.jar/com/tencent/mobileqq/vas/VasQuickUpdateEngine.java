@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.vas;
 
 import androidx.annotation.Keep;
-import bgfh;
-import bgfl;
-import bgit;
-import bgjd;
-import bgka;
+import bhoc;
+import bhog;
+import bhro;
+import bhry;
+import bhuj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -14,7 +14,7 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 public class VasQuickUpdateEngine
-  implements bgka
+  implements bhuj
 {
   public static final String ENGINE_CONFIG_PATH = BaseApplicationImpl.getApplication().getFilesDir().getAbsolutePath() + File.separator + "quickupdate";
   private static final String TAG = "VasQuickUpdateEngine";
@@ -61,15 +61,15 @@ public class VasQuickUpdateEngine
     if (QLog.isColorLevel()) {
       QLog.d("VasQuickUpdateEngine", 2, "getItemInfo bid = " + paramLong + " scid = " + paramString);
     }
-    bgit localbgit = bgjd.a(paramLong);
+    bhro localbhro = bhry.a(paramLong);
     QQAppInterface localQQAppInterface = getApp();
     if (localQQAppInterface == null) {
       QLog.e("VasQuickUpdateEngine", 1, "getItemInfo: get null app " + paramString);
     }
-    if (localbgit == null) {
+    if (localbhro == null) {
       return null;
     }
-    return localbgit.getItemInfo(localQQAppInterface, paramLong, paramString);
+    return localbhro.getItemInfo(localQQAppInterface, paramLong, paramString);
   }
   
   @Keep
@@ -778,12 +778,12 @@ public class VasQuickUpdateEngine
     if (QLog.isColorLevel()) {
       QLog.d("VasQuickUpdateEngine", 2, "deleteFiles bid = " + paramLong + " scid = " + paramString);
     }
-    bgit localbgit = bgjd.a(paramLong);
+    bhro localbhro = bhry.a(paramLong);
     QQAppInterface localQQAppInterface = getApp();
     if (localQQAppInterface == null) {
       QLog.e("VasQuickUpdateEngine", 1, "deleteFiles: get null app " + paramString);
     }
-    return (localbgit != null) && (localbgit.deleteFiles(localQQAppInterface, paramLong, paramString));
+    return (localbhro != null) && (localbhro.deleteFiles(localQQAppInterface, paramLong, paramString));
   }
   
   public void downloadGatherItem(long paramLong, String paramString1, String[] paramArrayOfString, String paramString2)
@@ -798,14 +798,14 @@ public class VasQuickUpdateEngine
   public void onCompleted(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3)
   {
     QLog.d("VasQuickUpdateEngine", 1, "onCompleted bid = " + paramLong + " scid = " + paramString1 + " from = " + paramString3 + " dlFrom = " + paramInt1 + " errorCode = " + paramInt2 + " httpCode = " + paramInt3);
-    bgit localbgit = bgjd.a(paramLong);
-    if (localbgit != null)
+    bhro localbhro = bhry.a(paramLong);
+    if (localbhro != null)
     {
       QQAppInterface localQQAppInterface = getApp();
       if (localQQAppInterface == null) {
         QLog.e("VasQuickUpdateEngine", 1, "onCompleted: get null app " + paramString1);
       }
-      localbgit.onCompleted(localQQAppInterface, paramLong, paramString1, paramString2, paramString3, paramInt2, paramInt3);
+      localbhro.onCompleted(localQQAppInterface, paramLong, paramString1, paramString2, paramString3, paramInt2, paramInt3);
     }
   }
   
@@ -818,14 +818,14 @@ public class VasQuickUpdateEngine
     if (QLog.isColorLevel()) {
       QLog.d("VasQuickUpdateEngine", 2, "onProgress bid = " + paramLong1 + " scid = " + paramString1 + " cfgScid = " + paramString2 + "dwProgress = " + paramLong2 + " dwProgressMax = " + paramLong3);
     }
-    bgit localbgit = bgjd.a(paramLong1);
-    if (localbgit != null)
+    bhro localbhro = bhry.a(paramLong1);
+    if (localbhro != null)
     {
       QQAppInterface localQQAppInterface = getApp();
       if (localQQAppInterface == null) {
         QLog.e("VasQuickUpdateEngine", 1, "onProgress: get null app " + paramString1);
       }
-      localbgit.onProgress(localQQAppInterface, paramLong1, paramString1, paramString2, paramLong2, paramLong3);
+      localbhro.onProgress(localQQAppInterface, paramLong1, paramString1, paramString2, paramLong2, paramLong3);
     }
   }
   

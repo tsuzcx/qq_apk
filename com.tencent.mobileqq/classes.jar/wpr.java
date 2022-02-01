@@ -1,35 +1,71 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.msgTabNode.view.viewholder.old_version.RecommendActivityViewHolder.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 
-class wpr
-  implements vtb
+public class wpr
+  extends wpo
 {
-  wpr(wpq paramwpq, CommentEntry paramCommentEntry, boolean paramBoolean) {}
-  
-  public void a(int paramInt, Bundle paramBundle)
+  public static final void b(wly paramwly)
   {
-    a(-1, amtj.a(2131701326));
+    ThreadManager.post(new RecommendActivityViewHolder.1(paramwly), 8, null, true);
   }
   
-  public void a(int paramInt, String paramString)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
-    QQToast.a(BaseApplication.getContext(), 1, amtj.a(2131701323), 0).a();
-    xvv.e("Q.qqstory.player.CommentFloatDialog", "delete comment failed. errorCode = %d, errorMsg=%s.", new Object[] { Integer.valueOf(paramInt), paramString });
+    this.itemView.setTag(2131374695, null);
   }
   
-  public void a(MessageMicro paramMessageMicro)
+  public void a(wly paramwly)
   {
-    if (!wpl.b(this.jdField_a_of_type_Wpq.a)) {
-      wpl.a(this.jdField_a_of_type_Wpq.a).a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Boolean);
+    super.a(paramwly);
+    wzk.b(this.jdField_a_of_type_AndroidWidgetImageView, paramwly.jdField_b_of_type_JavaLangString, true, (int)bhdz.a(this.jdField_a_of_type_AndroidWidgetTextView.getContext(), 50.0F));
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    String str;
+    int i;
+    if (TextUtils.isEmpty(paramwly.c))
+    {
+      str = anvx.a(2131712725);
+      localTextView.setText(str);
+      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.c.setVisibility(0);
+      if (paramwly.jdField_b_of_type_Int <= 0) {
+        break label247;
+      }
+      i = 1;
+      label92:
+      a(1, i);
+      if (QLog.isColorLevel()) {
+        QLog.e("zivonchen", 2, "FollowPersonViewHolder userItem = " + paramwly.c + ", faceDrawable = " + paramwly.jdField_b_of_type_JavaLangString);
+      }
+      str = (String)this.itemView.getTag(2131374695);
+      if (!TextUtils.equals(paramwly.jdField_a_of_type_JavaLangString, str)) {
+        switch (paramwly.jdField_a_of_type_Int)
+        {
+        default: 
+          str = "unknown";
+        }
+      }
+    }
+    for (;;)
+    {
+      ykv.a("PGC_story", "video_exp", "exp_newsrecommend", 0, 0, new String[] { paramwly.jdField_a_of_type_JavaLangString, str });
+      this.itemView.setTag(2131374695, paramwly.jdField_a_of_type_JavaLangString);
+      return;
+      str = paramwly.c;
+      break;
+      label247:
+      i = 0;
+      break label92;
+      str = "2";
+      continue;
+      str = "3";
     }
   }
-  
-  public void a(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

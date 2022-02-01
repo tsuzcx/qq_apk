@@ -1,19 +1,24 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.URLThemeImageView;
-
-public class aklq
-  extends akln
+public abstract interface aklq
 {
-  public View a;
-  public TextView a;
-  public DragTextView a;
-  public URLThemeImageView a;
-  public TextView b;
-  public URLThemeImageView b;
-  public TextView c;
-  public TextView d;
+  public abstract void a(aklw paramaklw);
+  
+  public abstract void a(aklw paramaklw, int paramInt);
+  
+  public abstract void a(aklw paramaklw, int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(aklw paramaklw, long paramLong);
+  
+  public abstract void a(aklw paramaklw, boolean paramBoolean);
+  
+  public abstract void b(aklw paramaklw);
+  
+  public abstract void b(aklw paramaklw, int paramInt);
+  
+  public abstract void c(aklw paramaklw);
+  
+  public abstract void d(aklw paramaklw);
+  
+  public abstract void v();
 }
 
 

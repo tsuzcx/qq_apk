@@ -1,25 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.studymode.ModeRadioGroup;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import kotlin.Metadata;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import com.tencent.widget.HorizontalListView;
+import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"}, k=3, mv={1, 1, 16})
-public final class bcoe
-  implements DialogInterface.OnClickListener
+public class bcoe
+  extends bcoa
+  implements HorizontalListView.OnScrollStateChangedListener
 {
-  public bcoe(ModeRadioGroup paramModeRadioGroup, int paramInt) {}
+  public bcfx a;
+  public HorizontalListView a;
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bcoe(ViewGroup paramViewGroup, int paramInt)
   {
-    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup.getContext())) {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup.getContext(), 1, 2131694108, 1).a();
+    super(paramViewGroup, paramInt);
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)((LinearLayout)a(paramInt)).findViewById(2131377222));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnScrollStateChangedListener(this);
+  }
+  
+  public void onScrollStateChanged(int paramInt)
+  {
+    if (paramInt == 4097) {
+      this.jdField_a_of_type_Bcfx.b = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getCurrentX();
     }
-    while (!ModeRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup)) {
-      return;
-    }
-    ModeRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup, this.jdField_a_of_type_Int, true, false, 4, null);
   }
 }
 

@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5.5;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bfiy
-  implements bcsd
+class bfiy
+  implements DialogInterface.OnClickListener
 {
-  public bfiy(TroopGiftAnimationController.5.5 param5) {}
+  bfiy(bfis parambfis, bfif parambfif) {}
   
-  public void a(bcsi parambcsi)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.this$0.a();
+    bgjh.a(this.jdField_a_of_type_Bfis.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bfis.jdField_a_of_type_Long).b(this.jdField_a_of_type_Bfif);
+    paramDialogInterface.dismiss();
   }
 }
 

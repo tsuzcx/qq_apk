@@ -1,6 +1,5 @@
 package cooperation.qzone.webviewplugin.personalize;
 
-import amtj;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
@@ -10,9 +9,10 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.TextView;
-import bguj;
-import bgve;
-import bgvf;
+import anvx;
+import bifb;
+import bifw;
+import bifx;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
 import com.tencent.common.app.AppInterface;
@@ -94,10 +94,10 @@ public class QZoneCoverStoreJsPlugin
   
   private int generateRequestCode(int paramInt)
   {
-    bguj localbguj = this.mRuntime.a(this.mRuntime.a());
+    bifb localbifb = this.mRuntime.a(this.mRuntime.a());
     int i = paramInt;
-    if ((localbguj instanceof bgvf)) {
-      i = ((bgvf)localbguj).switchRequestCode(this, (byte)paramInt);
+    if ((localbifb instanceof bifx)) {
+      i = ((bifx)localbifb).switchRequestCode(this, (byte)paramInt);
     }
     return i;
   }
@@ -130,11 +130,11 @@ public class QZoneCoverStoreJsPlugin
     do
     {
       return;
-      j = this.mRuntime.a().getResources().getDimensionPixelSize(2131299076);
+      j = this.mRuntime.a().getResources().getDimensionPixelSize(2131299080);
       if (!QZoneHelper.isBestPerformanceDevice()) {}
       for (int i = 1; i != 0; i = 0)
       {
-        QQToast.a(this.mRuntime.a(), 2131717153, 0).b(j);
+        QQToast.a(this.mRuntime.a(), 2131717516, 0).b(j);
         return;
       }
       registerBroadcast();
@@ -151,7 +151,7 @@ public class QZoneCoverStoreJsPlugin
         localBaseBusinessAlbumInfo.mUin = this.mRuntime.a().getLongAccountUin();
         localBaseBusinessAlbumInfo.mAlbumType = 10;
         localBaseBusinessAlbumInfo.mAnonymity = 10;
-        localBaseBusinessAlbumInfo.mTitle = this.mRuntime.a().getString(2131716646);
+        localBaseBusinessAlbumInfo.mTitle = this.mRuntime.a().getString(2131717009);
         QZoneHelper.forwardToPersonalAlbumVideoList(this.mRuntime.a(), localUserInfo, localBaseBusinessAlbumInfo, -1, "cover_mall_record_video");
         return;
       }
@@ -546,12 +546,12 @@ public class QZoneCoverStoreJsPlugin
       if (this.mRuntime.a() == null) {
         return false;
       }
-      paramJsBridgeListener = (TextView)this.mRuntime.a().findViewById(2131369099);
+      paramJsBridgeListener = (TextView)this.mRuntime.a().findViewById(2131369262);
       if (paramJsBridgeListener != null)
       {
         paramJsBridgeListener.setVisibility(0);
         paramJsBridgeListener.setTextColor(-1);
-        paramJsBridgeListener.setText(amtj.a(2131710744));
+        paramJsBridgeListener.setText(anvx.a(2131711091));
         paramJsBridgeListener.setOnClickListener(new QZoneCoverStoreJsPlugin.1(this));
       }
     }
@@ -607,7 +607,7 @@ public class QZoneCoverStoreJsPlugin
           }
           paramJsBridgeListener = this.mRuntime.a().getAccount();
           paramString1 = new Intent();
-          paramString2 = amtj.a(2131710742);
+          paramString2 = anvx.a(2131711089);
           QzonePluginProxyActivity.setActivityNameToIntent(paramString1, "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity");
           if (TextUtils.isEmpty(this.mAid)) {
             this.mAid = getAid();
@@ -706,7 +706,7 @@ public class QZoneCoverStoreJsPlugin
         if (this.mRuntime.a() == null) {
           return false;
         }
-        ((TextView)this.mRuntime.a().findViewById(2131369068)).performClick();
+        ((TextView)this.mRuntime.a().findViewById(2131369231)).performClick();
         return true;
       }
     } while (!"Init".equals(paramString3));

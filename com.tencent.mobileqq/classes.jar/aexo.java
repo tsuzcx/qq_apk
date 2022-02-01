@@ -1,16 +1,59 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.SigCommentListActivity;
+import com.tencent.mobileqq.app.SignatureManager.SigComments;
+import java.util.List;
 
-final class aexo
-  implements aeya
+public class aexo
+  extends aods
 {
-  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
+  public aexo(SigCommentListActivity paramSigCommentListActivity) {}
+  
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    paramQQAppInterface = new ProfileActivity.AllInOne(paramSessionInfo.curFriendUin, 72);
-    paramQQAppInterface.h = paramSessionInfo.curFriendNick;
-    return paramQQAppInterface;
+    List localList;
+    if (this.a.isResume())
+    {
+      this.a.stopTitleProgress();
+      if (!paramBoolean) {
+        break label175;
+      }
+      if ((paramObject instanceof Bundle))
+      {
+        paramObject = (SignatureManager.SigComments)((Bundle)paramObject).getSerializable("data");
+        paramBoolean = paramObject.isOver;
+        paramObject = paramObject.mlist;
+        localList = this.a.a.a();
+        if (paramObject.size() <= 0) {
+          break label128;
+        }
+        if (localList == null) {
+          break label113;
+        }
+        localList.addAll(localList.size(), paramObject);
+        this.a.a.a(localList, paramBoolean);
+        this.a.a.notifyDataSetChanged();
+      }
+    }
+    label113:
+    do
+    {
+      return;
+      this.a.a.a(paramObject, paramBoolean);
+      break;
+      if ((localList != null) && (localList.size() > 0)) {
+        this.a.a.a(localList, paramBoolean);
+      }
+      for (;;)
+      {
+        this.a.a.notifyDataSetChanged();
+        return;
+        SigCommentListActivity.a(this.a, 3);
+      }
+      paramObject = this.a.a.a();
+    } while ((paramObject != null) && (paramObject.size() > 0));
+    label128:
+    label175:
+    SigCommentListActivity.a(this.a, 2);
   }
 }
 

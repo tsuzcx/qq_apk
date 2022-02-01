@@ -1,81 +1,68 @@
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+
 public class bbkx
 {
-  public byte a;
-  public long a;
-  public String a;
-  public short a;
-  public byte[] a;
-  public byte b;
-  public long b;
-  public String b;
-  public short b;
-  public byte[] b;
-  public byte c;
-  public long c;
-  public String c;
-  public byte[] c;
-  public long d;
-  public long e;
-  public long f;
-  public long g;
-  public long h;
-  public long i;
-  public long j;
-  public long k;
+  protected int a;
+  protected PublishVideoEntry a;
+  protected int b;
+  protected int c;
+  protected int d = -1;
+  protected int e = -1;
   
-  public bbkx(bbkw parambbkw, long paramLong, String paramString, byte paramByte1, byte paramByte2)
+  public bbkx(int paramInt, PublishVideoEntry paramPublishVideoEntry)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Byte = paramByte1;
-    this.jdField_a_of_type_Byte = paramByte2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = new PublishVideoEntry();
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.copy(paramPublishVideoEntry);
+    a(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.saveMode);
   }
   
-  public bbkx(bbkw parambbkw, long paramLong1, String paramString, byte paramByte1, byte paramByte2, long paramLong2, long paramLong3, long paramLong4, long paramLong5, short paramShort, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte paramByte3, long paramLong6)
+  private int b(int paramInt)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Byte = paramByte1;
-    this.jdField_a_of_type_Byte = paramByte2;
-    this.g = paramLong2;
-    this.h = paramLong3;
-    this.i = paramLong4;
-    this.j = paramLong5;
-    this.jdField_b_of_type_Short = paramShort;
-    this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte1;
-    this.jdField_c_of_type_ArrayOfByte = paramArrayOfByte2;
-    this.jdField_c_of_type_Byte = paramByte3;
-    this.k = paramLong6;
+    switch (paramInt)
+    {
+    default: 
+      return 0;
+    case 7: 
+      return 5;
+    case 8: 
+      return 6;
+    case 9: 
+      return 7;
+    }
+    return 4;
   }
   
-  public bbkx(bbkw parambbkw, long paramLong1, String paramString1, byte paramByte1, byte paramByte2, long paramLong2, String paramString2, long paramLong3, long paramLong4, short paramShort, long paramLong5, String paramString3, long paramLong6)
+  public int a(int paramInt)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_Byte = paramByte1;
-    this.jdField_a_of_type_Byte = paramByte2;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_Long = paramLong3;
-    this.d = paramLong4;
-    this.jdField_a_of_type_Short = paramShort;
-    this.e = paramLong5;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.f = paramLong6;
+    switch (paramInt)
+    {
+    case 3: 
+    case 4: 
+    default: 
+      return 0;
+    case 1: 
+      return 1;
+    case 2: 
+      return 2;
+    }
+    return 3;
   }
   
-  public bbkx(bbkw parambbkw, long paramLong, String paramString, byte paramByte1, byte paramByte2, byte[] paramArrayOfByte)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Byte = paramByte1;
-    this.jdField_a_of_type_Byte = paramByte2;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.b = b(paramInt);
+    this.c = a(paramInt);
+  }
+  
+  public void b(int paramInt)
+  {
+    this.d = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbkx
  * JD-Core Version:    0.7.0.1
  */

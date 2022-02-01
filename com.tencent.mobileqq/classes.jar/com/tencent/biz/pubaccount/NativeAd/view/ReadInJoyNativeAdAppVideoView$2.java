@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.NativeAd.view;
 
 import android.content.Context;
 import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import obl;
+import ojc;
 
 public class ReadInJoyNativeAdAppVideoView$2
   implements Runnable
@@ -11,7 +11,7 @@ public class ReadInJoyNativeAdAppVideoView$2
   
   public void run()
   {
-    TVK_SDKMgr.installPlugin(this.a, new obl(this));
+    TVK_SDKMgr.installPlugin(this.a, new ojc(this));
   }
 }
 

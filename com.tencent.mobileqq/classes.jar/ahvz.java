@@ -1,8 +1,6 @@
-import com.tencent.mobileqq.data.ChatMessage;
-
 public abstract interface ahvz
 {
-  public abstract void a(ChatMessage paramChatMessage);
+  public abstract boolean a();
 }
 
 

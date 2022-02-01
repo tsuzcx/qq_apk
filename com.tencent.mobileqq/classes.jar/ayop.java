@@ -1,8 +1,39 @@
-import android.os.Bundle;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.qphone.base.util.BaseApplication;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public abstract interface ayop
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/notification/modularize/business/NativeUiJumpScheme;", "Lcom/tencent/mobileqq/notification/modularize/BaseJumpScheme;", "()V", "customJumpIntent", "Landroid/app/PendingIntent;", "pushComponent", "Lcom/tencent/mobileqq/notification/modularize/PushComponent;", "nativeUiIntent", "needCustomJump", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ayop
+  extends ayoc
 {
-  public abstract void a(int paramInt1, int paramInt2, String paramString, Bundle paramBundle);
+  @NotNull
+  protected PendingIntent a(@NotNull ayog paramayog)
+  {
+    Intrinsics.checkParameterIsNotNull(paramayog, "pushComponent");
+    return e(paramayog);
+  }
+  
+  protected boolean a()
+  {
+    return true;
+  }
+  
+  @NotNull
+  public final PendingIntent e(@NotNull ayog paramayog)
+  {
+    Intrinsics.checkParameterIsNotNull(paramayog, "pushComponent");
+    BaseApplication localBaseApplication = BaseApplication.context;
+    Intent localIntent = new Intent((Context)localBaseApplication, NotifyPushSettingActivity.class);
+    localIntent.addFlags(268435456);
+    paramayog = PendingIntent.getActivity((Context)localBaseApplication, paramayog.d, localIntent, 134217728);
+    Intrinsics.checkExpressionValueIsNotNull(paramayog, "PendingIntent.getActivit…tent.FLAG_UPDATE_CURRENT)");
+    return paramayog;
+  }
 }
 
 

@@ -1,6 +1,17 @@
-public abstract interface blac
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class blac
+  implements View.OnClickListener
 {
-  public abstract void a(boolean paramBoolean);
+  blac(blab paramblab) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

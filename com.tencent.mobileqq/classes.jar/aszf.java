@@ -1,270 +1,33 @@
-import android.graphics.BitmapFactory.Options;
+import android.graphics.Color;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.transfile.TransfileUtile;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
 import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.UUID;
 
 public class aszf
-  implements atas
+  implements TextWatcher
 {
-  QQAppInterface a;
+  public aszf(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
   
-  public aszf(QQAppInterface paramQQAppInterface)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  public long a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5, long paramLong, int paramInt3)
-  {
-    return a(paramString1, paramInt1, paramString2, paramInt2, paramString3, paramString4, paramString5, paramLong, paramInt3, 0L, 0);
-  }
-  
-  public long a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5, long paramLong1, int paramInt3, long paramLong2, int paramInt4)
-  {
-    paramString5 = bfbb.a(this.a, Long.parseLong(paramString2));
-    if (paramString5 != null) {
-      paramString5.c(paramString3, paramString4, paramLong1, paramInt2);
+    paramEditable = MPFileVerifyPwdView.a(this.a).getText().toString();
+    if ((!TextUtils.isEmpty(paramEditable)) && (paramEditable.length() >= 16)) {
+      audr.a(BaseApplicationImpl.getContext().getString(2131694114));
     }
-    String str = TransfileUtile.makeTransFileProtocolData("", 0L, 0, true);
-    long l1 = 0L;
-    try
-    {
-      long l2 = Long.parseLong(paramString2);
-      l1 = l2;
-      paramString5 = bfbb.a(this.a, l2).a(paramString3);
-      l1 = l2;
-    }
-    catch (Exception paramString5)
-    {
-      do
-      {
-        for (;;)
-        {
-          FileManagerEntity localFileManagerEntity;
-          paramString5 = null;
-          continue;
-          if (paramInt1 != 3000) {
-            break;
-          }
-          localFileManagerEntity.nOpType = 25;
-          if (QLog.isColorLevel()) {
-            QLog.i("C2CProcessCallBack<FileAssistant>", 1, "getC2CProcessCallBack->prepareForward nSessionId[" + localFileManagerEntity.nSessionId + "],[troopToDisc]");
-          }
-        }
-      } while (!QLog.isDevelopLevel());
-      throw new NullPointerException("群同事传递的peerType不对！");
-    }
-    localFileManagerEntity = new FileManagerEntity();
-    localFileManagerEntity.nSessionId = aszt.a().longValue();
-    localFileManagerEntity.fileName = paramString4;
-    if ((paramString5 != null) && (FileUtil.fileExistsAndNotEmpty(paramString5.k)))
-    {
-      paramString4 = new BitmapFactory.Options();
-      paramString4.inJustDecodeBounds = true;
-      atal.a(paramString5.k, paramString4);
-      if ((paramString4.outHeight > 0) && (paramString4.outWidth > 0))
-      {
-        localFileManagerEntity.imgWidth = paramString4.outWidth;
-        localFileManagerEntity.imgHeight = paramString4.outHeight;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("C2CProcessCallBack<FileAssistant>", 1, "[" + localFileManagerEntity.nSessionId + "]entity forward from troop no size, get and use thumb size(wh)[" + localFileManagerEntity.imgWidth + ":" + localFileManagerEntity.imgHeight + "]");
-      }
-    }
-    paramString4 = bbli.a(-1000);
-    afoa.a().a(paramString4.uniseq, paramLong2, paramInt4);
-    paramLong2 = paramString4.uniseq;
-    localFileManagerEntity.uniseq = paramLong2;
-    if (paramInt1 == 0)
-    {
-      localFileManagerEntity.nOpType = 24;
-      if (QLog.isColorLevel()) {
-        QLog.i("C2CProcessCallBack<FileAssistant>", 1, "getC2CProcessCallBack->prepareForward nSessionId[" + localFileManagerEntity.nSessionId + "],[troopToOffline]");
-      }
-      localFileManagerEntity.bSend = true;
-      localFileManagerEntity.isReaded = true;
-      localFileManagerEntity.peerType = paramInt1;
-      localFileManagerEntity.peerUin = paramString1;
-      localFileManagerEntity.peerNick = aszt.a(this.a, paramString1, null, paramInt1);
-      localFileManagerEntity.selfUin = paramString2;
-      localFileManagerEntity.srvTime = (bbko.a() * 1000L);
-      localFileManagerEntity.setCloudType(4);
-      localFileManagerEntity.status = 2;
-      localFileManagerEntity.msgSeq = aszt.a();
-      localFileManagerEntity.msgUid = aszt.b();
-      localFileManagerEntity.fileSize = paramLong1;
-      localFileManagerEntity.TroopUin = l1;
-      localFileManagerEntity.busId = paramInt2;
-      localFileManagerEntity.strTroopFilePath = paramString3;
-      if (paramString5 != null)
-      {
-        localFileManagerEntity.strTroopFileID = paramString5.a.toString();
-        localFileManagerEntity.lastTime = paramString5.c;
-      }
-      localFileManagerEntity.TroopUin = l1;
-      localFileManagerEntity.forwardTroopFileEntrance = paramInt3;
-      paramString2 = TroopFileTransferManager.a(l1);
-      if (paramString2 != null)
-      {
-        paramString2 = paramString2.a(paramString3);
-        if (paramString2 != null)
-        {
-          localFileManagerEntity.yybApkPackageName = paramString2.k;
-          localFileManagerEntity.yybApkName = paramString2.l;
-          localFileManagerEntity.yybApkIconUrl = paramString2.m;
-        }
-      }
-      paramString2 = this.a.getCurrentAccountUin();
-      this.a.getFileManagerDataCenter().a(paramString1, paramString2, true, "", paramLong1, true, paramInt1, str, localFileManagerEntity.msgSeq, localFileManagerEntity.msgSeq, paramString3, 1, paramLong2, localFileManagerEntity.msgUid, -1L, bbko.a());
-      this.a.getFileManagerDataCenter().a(localFileManagerEntity);
-      return localFileManagerEntity.nSessionId;
-    }
-  }
-  
-  public String a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, long paramLong1, long paramLong2, long paramLong3, int paramInt3)
-  {
-    return null;
-  }
-  
-  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("C2CProcessCallBack<FileAssistant>", 1, "getC2CProcessCallBack->onResult bSuccess[" + paramBoolean + "],nSessionId[" + paramLong + "],retCode[" + paramInt + "],retMsg[" + paramString1 + "],uuid[" + paramString2 + "],troopUin[" + paramString3 + "],strNewPath[" + paramString4 + "]");
-    }
-    FileManagerEntity localFileManagerEntity = this.a.getFileManagerDataCenter().b(paramLong);
-    if (localFileManagerEntity == null)
-    {
-      QLog.e("C2CProcessCallBack<FileAssistant>", 1, "getC2CProcessCallBack->onResult,but entity is null SessionId[" + paramLong + "]");
+    while (TextUtils.isEmpty(paramEditable)) {
       return;
     }
-    label214:
-    label232:
-    String str;
-    if (localFileManagerEntity.nOpType == 24)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("C2CProcessCallBack<FileAssistant>", 1, "getC2CProcessCallBack->onResult [troopToOffline]");
-      }
-      if ((paramBoolean) && (TextUtils.isEmpty(paramString4) != true)) {
-        break label444;
-      }
-      localFileManagerEntity.status = 0;
-      if (TextUtils.isEmpty(paramString4) == true) {
-        QLog.e("C2CProcessCallBack<FileAssistant>", 1, "!!!!!!!！！！new uuid is null!!!!!!!");
-      }
-      if (paramInt != 0)
-      {
-        if (TextUtils.isEmpty(paramString1)) {
-          break label793;
-        }
-        aszk.c(paramString1);
-        paramBoolean = false;
-      }
-      if (localFileManagerEntity.peerType != 0) {
-        break label816;
-      }
-      paramString4 = this.a;
-      str = localFileManagerEntity.forwardTroopFileEntrance + "";
-      if (paramBoolean != true) {
-        break label808;
-      }
-      paramString2 = "1";
-      label283:
-      bcef.b(paramString4, "P_CliOper", "Grp_files", "", "transfer", "Clk_fri", 0, 0, paramString3, str, paramString2, localFileManagerEntity.peerUin);
-      label315:
-      paramString2 = this.a.getFileManagerNotifyCenter();
-      if (localFileManagerEntity.status != 1) {
-        break label908;
-      }
-    }
-    label908:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      paramString2.a(paramBoolean, 46, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Integer.valueOf(paramInt), paramString1 });
-      return;
-      if (localFileManagerEntity.nOpType == 25)
-      {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("C2CProcessCallBack<FileAssistant>", 1, "getC2CProcessCallBack->onResult [troopToDisc]");
-        break;
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("C2CProcessCallBack<FileAssistant>", 1, "getC2CProcessCallBack->onResult operation Error![" + localFileManagerEntity.nOpType + "]");
-      break;
-      label444:
-      localFileManagerEntity.status = 1;
-      localFileManagerEntity.setCloudType(1);
-      localFileManagerEntity.Uuid = paramString4;
-      localFileManagerEntity.TroopUin = 0L;
-      localFileManagerEntity.strTroopFileID = null;
-      localFileManagerEntity.strTroopFilePath = null;
-      if (QLog.isColorLevel()) {
-        QLog.i("C2CProcessCallBack<FileAssistant>", 1, "onResult bSuccess[true],peerType[" + localFileManagerEntity.peerType + "],peerUin[" + localFileManagerEntity.peerUin + "],uuid[" + localFileManagerEntity.Uuid + "]");
-      }
-      paramString2 = null;
-      if (localFileManagerEntity.peerType == 3000)
-      {
-        this.a.getFileManagerNotifyCenter().a(localFileManagerEntity, 64, "");
-        this.a.getFileTransferHandler().a(localFileManagerEntity.nSessionId, localFileManagerEntity.peerUin, this.a.getCurrentAccountUin(), localFileManagerEntity.fileName, localFileManagerEntity.fileSize, paramString4, localFileManagerEntity.uniseq, localFileManagerEntity.msgUid, null);
-        if (aszt.a(localFileManagerEntity.fileName) == 0) {
-          paramString2 = this.a.getFileManagerEngine().a(localFileManagerEntity, 5);
-        }
-      }
-      for (;;)
-      {
-        if (paramString2 == null) {
-          break label791;
-        }
-        localFileManagerEntity.strLargeThumPath = paramString2;
-        break;
-        if (aszt.a(localFileManagerEntity.fileName) == 2)
-        {
-          paramString2 = this.a.getFileManagerEngine().b(localFileManagerEntity);
-          continue;
-          this.a.getFileManagerNotifyCenter().a(localFileManagerEntity, 63, "");
-          this.a.getFileTransferHandler().a(localFileManagerEntity.peerUin, localFileManagerEntity, null);
-          if (aszt.a(localFileManagerEntity.fileName) == 0) {
-            paramString2 = this.a.getFileManagerEngine().a(localFileManagerEntity, 5);
-          } else if (aszt.a(localFileManagerEntity.fileName) == 2) {
-            paramString2 = this.a.getFileManagerEngine().a(localFileManagerEntity);
-          }
-        }
-      }
-      label791:
-      break label214;
-      label793:
-      aszk.c(BaseApplicationImpl.getContext().getString(2131692372));
-      break label232;
-      label808:
-      paramString2 = "2";
-      break label283;
-      label816:
-      if (localFileManagerEntity.peerType != 3000) {
-        break label315;
-      }
-      paramString4 = this.a;
-      str = localFileManagerEntity.forwardTroopFileEntrance + "";
-      if (paramBoolean == true) {}
-      for (paramString2 = "1";; paramString2 = "2")
-      {
-        bcef.b(paramString4, "P_CliOper", "Grp_files", "", "transfer", "Clk_talk", 0, 0, paramString3, str, paramString2, "");
-        break;
-      }
-    }
+    MPFileVerifyPwdView.b(this.a).setEnabled(true);
+    MPFileVerifyPwdView.b(this.a).setTextColor(Color.parseColor("#00a5e0"));
   }
   
-  public void a(boolean paramBoolean, String paramString1, long paramLong, int paramInt, String paramString2, String paramString3, String paramString4) {}
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

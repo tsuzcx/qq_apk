@@ -1,38 +1,77 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class lmr
 {
-  public int a;
-  final long jdField_a_of_type_Long = AudioHelper.b();
-  public int b;
-  public long b;
-  public int c;
-  public long c;
-  public int d;
-  public int e;
-  public int f;
+  int jdField_a_of_type_Int = 0;
+  ArrayList<lmq> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  lmo jdField_a_of_type_Lmo = null;
   
-  public lmr(AVNotifyCenter paramAVNotifyCenter) {}
-  
-  public boolean a()
+  lmr()
   {
-    return (this.jdField_b_of_type_Int == 2) && (this.d == 2) && (this.e == 4) && (this.jdField_c_of_type_Int == 0);
+    a(BaseApplicationImpl.getApplication());
+    this.jdField_a_of_type_Lmo = lmo.a();
+    this.jdField_a_of_type_Int = lmw.a(this.jdField_a_of_type_Lmo);
+    QLog.d("QavGPDownloadManager", 1, String.format("QavGPDownloadObserver, mStatusGameplay[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
   }
   
-  public boolean b()
+  boolean a()
   {
-    return (this.jdField_b_of_type_Int == 2) && (this.d == 2) && (this.e == 5) && (this.jdField_c_of_type_Int == 0);
+    this.jdField_a_of_type_Lmo = lmo.a();
+    this.jdField_a_of_type_Int = lmw.a(this.jdField_a_of_type_Lmo);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavGPDownloadManager", 4, String.format("checkResReady, mStatusGameplay[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+    }
+    return 11 != this.jdField_a_of_type_Int;
   }
   
-  public String toString()
+  boolean a(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    return "seq[" + this.jdField_a_of_type_Long + "], relationId[" + this.jdField_b_of_type_Long + "], avtype[" + this.jdField_b_of_type_Int + "], roomMode[" + this.d + "], gameId[" + this.e + "], liveExtraMode[" + this.jdField_c_of_type_Int + "], memberNum[" + this.jdField_a_of_type_Int + "], event[" + this.f + "], time[" + this.jdField_c_of_type_Long + "]";
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavGPDownloadManager", 4, String.format("registReceiver[%s]", new Object[] { paramBaseApplicationImpl.getQQProcessName() }));
+    }
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("tencent.video.qavgameplaysomgr.notify");
+    return paramBaseApplicationImpl.registerReceiver(new lms(this), localIntentFilter) != null;
+  }
+  
+  boolean b()
+  {
+    return this.jdField_a_of_type_Int == 1;
+  }
+  
+  boolean c()
+  {
+    this.jdField_a_of_type_Lmo = lmo.a();
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = lmw.a(this.jdField_a_of_type_Lmo);
+    if (this.jdField_a_of_type_Int == 11)
+    {
+      this.jdField_a_of_type_Int = 12;
+      BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+      Intent localIntent = new Intent();
+      localIntent.setAction("from_qavgpsomgr_download");
+      localIntent.setClass(localBaseApplicationImpl.getApplicationContext(), JumpActivity.class);
+      localIntent.addFlags(268435456);
+      localBaseApplicationImpl.getBaseContext().startActivity(localIntent);
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QavGPDownloadManager", 2, String.format("nodifyDownloadRes, lastStatus[%s], mStatusGameplay[%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(this.jdField_a_of_type_Int) }));
+      }
+      return bool;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lmr
  * JD-Core Version:    0.7.0.1
  */

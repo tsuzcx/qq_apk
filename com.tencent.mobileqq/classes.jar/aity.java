@@ -1,26 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import java.util.ArrayList;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
 
-class aity
-  implements DialogInterface.OnClickListener
+public class aity
 {
-  aity(aitt paramaitt, ArrayList paramArrayList, int paramInt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    aitt.a(this.jdField_a_of_type_Aitt, true);
-    aitt.a(this.jdField_a_of_type_Aitt).a(1);
-    aitt.a(this.jdField_a_of_type_Aitt, this.jdField_a_of_type_JavaUtilArrayList.size(), 0.0F);
-    if (NetworkUtil.isNetSupport(BaseApplicationImpl.getContext()))
-    {
-      paramInt = (int)(90.0F / this.jdField_a_of_type_Int);
-      aitt.a(this.jdField_a_of_type_Aitt).b(paramInt);
-    }
-    aitt.a(this.jdField_a_of_type_Aitt, this.jdField_a_of_type_JavaUtilArrayList);
-  }
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public RichStatus a;
+  public AccountSearchPb.record a;
+  public String a;
+  public boolean a = true;
+  public int b;
+  public TextView b;
+  public String b;
+  public int c;
+  public TextView c;
+  public TextView d;
 }
 
 

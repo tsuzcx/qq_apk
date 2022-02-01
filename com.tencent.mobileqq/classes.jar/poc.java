@@ -1,49 +1,19 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONObject;
-import tencent.im.oidb.gallery.galleryFeeds.GalleryFeedsInfo;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 class poc
-  implements View.OnClickListener
+  implements AbsListView.OnScrollListener
 {
-  poc(pnz parampnz, ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
+  poc(pob parampob) {}
   
-  public void onClick(View paramView)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    Object localObject = new Intent(this.jdField_a_of_type_Pnz.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", this.jdField_a_of_type_Pnz.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mGalleryFeedsInfo.bytes_attachment_jump_url.get().toStringUtf8());
-    this.jdField_a_of_type_Pnz.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-    localObject = ozb.a(this.jdField_a_of_type_Pnz.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Pnz.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.a(), 3, this.jdField_a_of_type_Pnz.a(), (ArticleInfo)this.jdField_a_of_type_Pnz.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-    try
-    {
-      ((JSONObject)localObject).put("exptime", System.currentTimeMillis());
-      ((JSONObject)localObject).put("proxy_bytes", this.jdField_a_of_type_Pnz.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.galleryReprotExdData);
-      ((JSONObject)localObject).put("operation_id", this.jdField_a_of_type_Pnz.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mGalleryFeedsInfo.bytes_operation_id.get().toStringUtf8());
-      ozd localozd = new ozd(this.jdField_a_of_type_Pnz.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-      localozd.e = String.valueOf(this.jdField_a_of_type_Pnz.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mArticleID);
-      localozd.f = String.valueOf(this.jdField_a_of_type_Pnz.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mStrategyId);
-      localozd.g = ((JSONObject)localObject).toString();
-      localozd.a = String.valueOf(this.jdField_a_of_type_Pnz.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.publishUin);
-      localozd.b = "0X8009A7B";
-      localozd.c = "0X8009A7B";
-      ozb.a(localozd);
-      label236:
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label236;
-    }
+    this.a.a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    this.a.a(paramAbsListView, paramInt);
   }
 }
 

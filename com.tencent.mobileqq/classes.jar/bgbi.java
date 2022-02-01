@@ -1,63 +1,61 @@
-import android.app.Dialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
-import androidx.annotation.NonNull;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class bgbi
-  extends ReportDialog
+class bgbi
+  extends BroadcastReceiver
 {
-  protected Context a;
-  private String a;
-  private String b;
-  private String c;
+  bgbi(bgbg parambgbg) {}
   
-  public bgbi(@NonNull Context paramContext)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramContext, 2131755206);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    setCanceledOnTouchOutside(true);
-  }
-  
-  public bgbi a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public bgbi b(String paramString)
-  {
-    this.b = paramString;
-    return this;
-  }
-  
-  public bgbi c(String paramString)
-  {
-    this.c = paramString;
-    return this;
-  }
-  
-  protected void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    paramBundle = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562883, null);
-    setContentView(paramBundle);
-    TextView localTextView = (TextView)paramBundle.findViewById(2131367563);
-    localTextView.setOnClickListener(new bgbj(this));
-    if (this.c != null) {
-      localTextView.setText(this.c);
+    String str;
+    if ("com.tencent.mobileqq.addgroupapplication".equals(paramIntent.getAction()))
+    {
+      str = paramIntent.getStringExtra("groupUin");
+      paramContext = paramIntent.getStringExtra("appId");
+      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramContext))) {
+        break label57;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopShortcutBarManager", 2, "BroadcastReceiver onReceive Failed");
+      }
     }
-    localTextView = (TextView)paramBundle.findViewById(2131378707);
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      localTextView.setText(this.jdField_a_of_type_JavaLangString);
-    }
-    paramBundle = (TextView)paramBundle.findViewById(2131365451);
-    if (this.b != null) {
-      paramBundle.setText(this.b);
-    }
+    label57:
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopShortcutBarManager", 2, "BroadcastReceiver onReceive troopUin:" + str + "appId: " + paramContext);
+      }
+      paramContext = null;
+      try
+      {
+        long l = Long.parseLong(str);
+        paramContext = Long.valueOf(l);
+      }
+      catch (Exception paramIntent)
+      {
+        for (;;)
+        {
+          QLog.e("TroopShortcutBarManager", 1, "parseLong troopUin exception");
+        }
+      }
+      paramContext = this.a.a(paramContext);
+      if (paramContext != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("TroopShortcutBarManager", 2, "BroadcastReceiver onReceive info is not null");
+        }
+        paramContext.d(0);
+        paramContext.a(0L);
+        paramContext.c(0);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("TroopShortcutBarManager", 2, "BroadcastReceiver onReceive info is null");
   }
 }
 

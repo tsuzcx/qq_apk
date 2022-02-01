@@ -1,14 +1,20 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
+import com.tencent.biz.qqstory.base.preload.PreloadQueue;
 
-public class wby
-  extends vko
+public final class wby
 {
-  public List<xem> a;
+  protected int a = 0;
   
-  public wby(ErrorMessage paramErrorMessage)
+  public PreloadQueue a()
   {
-    this.a = paramErrorMessage;
+    PreloadQueue localPreloadQueue = new PreloadQueue();
+    PreloadQueue.access$002(localPreloadQueue, this.a);
+    return localPreloadQueue;
+  }
+  
+  public wby a(int paramInt)
+  {
+    this.a = paramInt;
+    return this;
   }
 }
 

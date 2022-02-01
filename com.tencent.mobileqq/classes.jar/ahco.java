@@ -1,41 +1,24 @@
-import android.widget.RelativeLayout;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.QQWalletBaseMsgElem;
 
 public class ahco
-  extends ahcf
+  extends RecyclerView.ViewHolder
 {
-  public ahco(QQAppInterface paramQQAppInterface, ahcz paramahcz, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt, afaf paramafaf)
-  {
-    super(paramQQAppInterface, paramahcz, paramQQWalletBaseMsgElem, paramInt, paramafaf);
-    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.isSend()) {
-      this.i = 0;
-    }
-    this.j = 2130847145;
-  }
+  public ImageView a;
+  public ProgressBar a;
+  public TextView a;
+  public ImageView b;
   
-  public boolean b()
+  public ahco(View paramView)
   {
-    boolean bool = super.b();
-    if (bool) {
-      return bool;
-    }
-    this.jdField_a_of_type_Ahcz.b.setVisibility(0);
-    this.jdField_a_of_type_Ahcz.b.setTextColor(-8947849);
-    this.jdField_a_of_type_Ahcz.b.setText(ahck.b);
-    return false;
-  }
-  
-  public void i()
-  {
-    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.isSend())
-    {
-      this.jdField_a_of_type_Ahcz.d.setVisibility(0);
-      return;
-    }
-    super.i();
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372982));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372981));
+    this.b = ((ImageView)paramView.findViewById(2131372979));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131372983));
   }
 }
 

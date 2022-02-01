@@ -1,116 +1,57 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManagerExecutor;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.Executor;
+import android.os.IBinder;
+import android.os.Parcel;
 
-public class rlb
-  implements rkt, rkx
+class rlb
+  implements rkz
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new rlc(this);
-  private Queue<rku> jdField_a_of_type_JavaUtilQueue = new ArrayDeque();
-  private Executor jdField_a_of_type_JavaUtilConcurrentExecutor = ThreadManagerExecutor.getExecutorService(64);
-  private rky jdField_a_of_type_Rky;
-  private boolean jdField_a_of_type_Boolean;
-  private Queue<rku> b = new ArrayDeque();
+  private IBinder a;
   
-  public rlb(rky paramrky)
+  rlb(IBinder paramIBinder)
   {
-    this.jdField_a_of_type_Rky = paramrky;
-    this.jdField_a_of_type_Rky.a(this);
-  }
-  
-  private boolean a()
-  {
-    return this.b.size() < 3;
-  }
-  
-  private void b()
-  {
-    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaUtilQueue.isEmpty())) {
-      if (QLog.isColorLevel()) {
-        QLog.w("PreviewCaptureManager", 2, "fetchTaskToExe return for capturePrepared is false or waittingTaskQueue is Empty");
-      }
-    }
-    for (;;)
-    {
-      return;
-      while (a())
-      {
-        rku localrku = (rku)this.jdField_a_of_type_JavaUtilQueue.poll();
-        if (localrku != null) {
-          e(localrku);
-        }
-      }
-    }
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1000);
-  }
-  
-  private void d(rku paramrku)
-  {
-    paramrku.a(this.jdField_a_of_type_Rky);
-    paramrku.a(this);
-  }
-  
-  private void e(rku paramrku)
-  {
-    this.b.add(paramrku);
-    d(paramrku);
-    paramrku.executeOnExecutor(this.jdField_a_of_type_JavaUtilConcurrentExecutor, null);
+    this.a = paramIBinder;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilQueue);
-    localArrayList.addAll(this.b);
-    this.jdField_a_of_type_JavaUtilQueue.clear();
-    this.b.clear();
-    int i = 0;
-    while (i < localArrayList.size())
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
-      rku localrku = (rku)localArrayList.get(i);
-      if (localrku != null) {
-        localrku.cancel(true);
-      }
-      i += 1;
-    }
-    if (this.jdField_a_of_type_Rky != null) {
-      this.jdField_a_of_type_Rky.a();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, long paramLong)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    c();
-  }
-  
-  public void a(rku paramrku) {}
-  
-  public void b(rku paramrku)
-  {
-    this.b.remove(paramrku);
-    c();
-  }
-  
-  public void c(rku paramrku)
-  {
-    if ((this.jdField_a_of_type_JavaUtilQueue.contains(paramrku)) || (this.b.contains(paramrku))) {
+      localParcel1.writeInterfaceToken("com.tencent.biz.pubaccount.readinjoy.reward.aidl.IReportTaskProgressCallback");
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("PreviewCaptureManager", 2, "addCaptureTask task:" + paramrku);
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
-    this.jdField_a_of_type_JavaUtilQueue.add(paramrku);
-    c();
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.biz.pubaccount.readinjoy.reward.aidl.IReportTaskProgressCallback");
+      localParcel1.writeInt(paramInt);
+      localParcel1.writeString(paramString);
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
   }
 }
 

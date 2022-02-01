@@ -1,26 +1,28 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public abstract class aigo
+public class aigo
 {
-  public long a;
-  public String a;
-  public boolean b;
+  public double a;
+  public double b;
   
-  public String a()
+  public aigo(double paramDouble1, double paramDouble2)
   {
-    return "";
+    this.a = paramDouble1;
+    this.b = paramDouble2;
   }
   
-  public String a(QQAppInterface paramQQAppInterface)
+  public aigo(aigo paramaigo)
   {
-    return this.a;
+    a(paramaigo);
   }
   
-  public abstract boolean a();
-  
-  public boolean a(QQAppInterface paramQQAppInterface)
+  public void a(aigo paramaigo)
   {
-    return false;
+    this.a = paramaigo.a;
+    this.b = paramaigo.b;
+  }
+  
+  public String toString()
+  {
+    return "Acceleration{ax=" + this.a + ", ay=" + this.b + '}';
   }
 }
 

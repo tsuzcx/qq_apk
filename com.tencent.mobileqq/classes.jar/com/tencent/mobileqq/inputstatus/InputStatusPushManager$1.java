@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.inputstatus;
 
-import aull;
-import aulp;
+import avrg;
+import avrk;
 
 public class InputStatusPushManager$1
   implements Runnable
 {
-  public InputStatusPushManager$1(aulp paramaulp) {}
+  public InputStatusPushManager$1(avrk paramavrk) {}
   
   public void run()
   {
-    if (aulp.a(this.this$0) != null) {
-      aulp.a(this.this$0).a(false, "");
+    if (avrk.a(this.this$0) != null) {
+      avrk.a(this.this$0).a(false, "");
     }
   }
 }

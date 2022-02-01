@@ -1,21 +1,13 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
 
-class ajrv
-  implements MediaScanner.OnMediaInfoScannerListener
+public class ajrv
+  implements blbv
 {
-  ajrv(ajru paramajru) {}
+  public ajrv(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
   
-  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public void a(int paramInt)
   {
-    if (bnsr.a(this.a.mActivity, paramLocalMediaInfo))
-    {
-      ajru.a(this.a, paramLocalMediaInfo);
-      zxp.a("mystatus_localupload", "pic_select", 0, 0, new String[0]);
-      return;
-    }
-    ((NewPhotoListActivity)this.a.mActivity).cancleProgressDailog();
+    bdla.b(this.a.a, "dc00898", "", "", "0X800AC87", "0X800AC87", 3, 0, "1", "1", "", "");
   }
 }
 

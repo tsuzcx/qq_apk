@@ -1,46 +1,70 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import android.support.annotation.NonNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arle
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends arjj<arld>
 {
-  private int jdField_a_of_type_Int;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private boolean jdField_a_of_type_Boolean;
+  public static arld a = new arld();
   
-  public arle(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
-  
-  public void onGlobalLayout()
+  public static arld c()
   {
-    ExtendFriendProfileEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment).getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
-    int i = this.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_AndroidGraphicsRect.top;
-    if (i != this.jdField_a_of_type_Int)
-    {
-      int j = ExtendFriendProfileEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment).getRootView().getHeight();
-      int k = j - i;
-      if (k <= j / 4) {
-        break label90;
-      }
-      ExtendFriendProfileEditFragment.c(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment, k);
-      this.jdField_a_of_type_Boolean = true;
-      ExtendFriendProfileEditFragment.d(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment);
+    arld localarld2 = (arld)aqxe.a().a(423);
+    arld localarld1 = localarld2;
+    if (localarld2 == null) {
+      localarld1 = new arld();
     }
-    for (;;)
+    return localarld1;
+  }
+  
+  @NonNull
+  public arld a()
+  {
+    return a;
+  }
+  
+  @NonNull
+  public arld a(aqxa[] paramArrayOfaqxa)
+  {
+    boolean bool = true;
+    localarld = new arld();
+    paramArrayOfaqxa = paramArrayOfaqxa[0].a;
+    try
     {
-      this.jdField_a_of_type_Int = i;
-      return;
-      label90:
-      if (this.jdField_a_of_type_Boolean) {
-        ExtendFriendProfileEditFragment.e(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment);
+      if (new JSONObject(paramArrayOfaqxa).optInt("show_red_name_card", 0) == 1) {}
+      for (;;)
+      {
+        localarld.a = bool;
+        return localarld;
+        bool = false;
       }
+      return localarld;
     }
+    catch (JSONException paramArrayOfaqxa)
+    {
+      ykq.e("QVipRedNameCardProcessor", "QVipRedNameCardConfig onParsed exception :" + paramArrayOfaqxa.getMessage());
+    }
+  }
+  
+  @NonNull
+  public arld b()
+  {
+    return a;
+  }
+  
+  public Class<arld> clazz()
+  {
+    return arld.class;
+  }
+  
+  public int type()
+  {
+    return 423;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arle
  * JD-Core Version:    0.7.0.1
  */

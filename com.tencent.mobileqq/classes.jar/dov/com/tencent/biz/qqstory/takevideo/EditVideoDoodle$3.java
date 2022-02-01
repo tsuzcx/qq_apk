@@ -1,17 +1,17 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bndn;
-import bnhh;
-import vux;
+import botf;
+import bowz;
+import wjs;
 
 public class EditVideoDoodle$3
   implements Runnable
 {
-  public EditVideoDoodle$3(bndn parambndn) {}
+  public EditVideoDoodle$3(botf parambotf) {}
   
   public void run()
   {
-    ((bnhh)vux.a(39)).c();
+    ((bowz)wjs.a(39)).c();
   }
 }
 

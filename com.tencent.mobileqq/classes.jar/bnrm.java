@@ -1,26 +1,31 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import android.graphics.Paint;
+import dov.com.qq.im.ae.view.AECMShowFaceScanView;
 
 public class bnrm
-  extends Property<PickerContainer, Float>
+  implements Animator.AnimatorListener
 {
-  public bnrm(PickerContainer paramPickerContainer, Class paramClass, String paramString)
+  public bnrm(AECMShowFaceScanView paramAECMShowFaceScanView, ValueAnimator paramValueAnimator) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramClass, paramString);
+    AECMShowFaceScanView.a(this.jdField_a_of_type_DovComQqImAeViewAECMShowFaceScanView, false);
+    this.jdField_a_of_type_DovComQqImAeViewAECMShowFaceScanView.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(255);
+    this.jdField_a_of_type_DovComQqImAeViewAECMShowFaceScanView.d.setAlpha(255);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
   }
   
-  public Float a(PickerContainer paramPickerContainer)
-  {
-    if (paramPickerContainer != null) {
-      return PickerContainer.a(paramPickerContainer);
-    }
-    return Float.valueOf(1.0F);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void a(PickerContainer paramPickerContainer, Float paramFloat)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if (paramPickerContainer != null) {
-      PickerContainer.a(paramPickerContainer, paramFloat);
+    AECMShowFaceScanView.a(this.jdField_a_of_type_DovComQqImAeViewAECMShowFaceScanView, true);
+    if (this.jdField_a_of_type_DovComQqImAeViewAECMShowFaceScanView.jdField_a_of_type_Bnrq != null) {
+      this.jdField_a_of_type_DovComQqImAeViewAECMShowFaceScanView.jdField_a_of_type_Bnrq.G();
     }
   }
 }

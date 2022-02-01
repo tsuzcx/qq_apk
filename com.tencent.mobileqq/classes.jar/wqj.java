@@ -1,63 +1,55 @@
-import android.view.View;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.ReqGetGroupHotRankVideo;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGetGroupHotRankVideo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class wqj
-  extends xqa
+  extends whu
 {
-  public wqj(wqg paramwqg) {}
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void a(int paramInt, View paramView, Object paramObject, xsh paramxsh)
+  public wqj(wqi paramwqi, boolean paramBoolean)
   {
-    if ((paramInt < 0) || (paramInt > this.a.a.a(wqg.a(this.a)).size())) {}
-    do
-    {
-      return;
-      paramObject = (CommentEntry)this.a.a.a(wqg.a(this.a)).get(paramInt);
-      switch (paramView.getId())
-      {
-      default: 
-        return;
-      }
-    } while ((paramObject.authorRole == 1002) || (paramObject.authorRole == 1003));
-    vpl.a(paramView.getContext(), 12, paramObject.authorUnionId);
-    return;
-    if (wqg.a(this.a) != null) {
-      wqg.a(this.a).a(paramObject, paramInt, wqg.a(this.a).a());
-    }
-    wqg.a(this.a).a(wqg.a(this.a).a());
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void b(int paramInt, View paramView, Object paramObject, xsh paramxsh)
+  public String a()
   {
-    if ((paramInt < 0) || (paramInt > this.a.a.a(wqg.a(this.a)).size())) {
-      return;
-    }
-    paramObject = (CommentEntry)this.a.a.a(wqg.a(this.a)).get(paramInt);
-    switch (paramView.getId())
+    return weg.a("StoryGroupSvc.get_hot_rank_video_list");
+  }
+  
+  public whv a(byte[] paramArrayOfByte)
+  {
+    qqstory_group.RspGetGroupHotRankVideo localRspGetGroupHotRankVideo = new qqstory_group.RspGetGroupHotRankVideo();
+    try
     {
-    default: 
-      return;
-    case 2131364836: 
-      paramView = wqg.a(this.a).a();
-      if ((paramView != null) && (paramView.a != null)) {
-        if (!paramView.a.getOwner().isMe()) {
-          break label194;
-        }
-      }
-      label194:
-      for (paramView = "2";; paramView = "1")
-      {
-        xwa.a("home_page", "press_reply", 0, 0, new String[] { paramView, xwa.a(wqg.a(this.a)) });
-        if (wqg.a(this.a) == null) {
-          break;
-        }
-        wqg.a(this.a).b(paramObject, paramInt, wqg.a(this.a).a());
-        return;
+      localRspGetGroupHotRankVideo.mergeFrom(paramArrayOfByte);
+      return new wqk(this.jdField_a_of_type_Wqi, localRspGetGroupHotRankVideo, this.jdField_a_of_type_Boolean);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      ykq.d("GetHotSortVideoHandler", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_group.ReqGetGroupHotRankVideo localReqGetGroupHotRankVideo = new qqstory_group.ReqGetGroupHotRankVideo();
+    localReqGetGroupHotRankVideo.union_id.set(ByteStringMicro.copyFromUtf8(wqi.a(this.jdField_a_of_type_Wqi)));
+    localReqGetGroupHotRankVideo.size.set(10);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      localReqGetGroupHotRankVideo.seq.set(wqi.a(this.jdField_a_of_type_Wqi));
+      if (!TextUtils.isEmpty(wqi.b(this.jdField_a_of_type_Wqi))) {
+        localReqGetGroupHotRankVideo.start_cookie.set(ByteStringMicro.copyFromUtf8(wqi.b(this.jdField_a_of_type_Wqi)));
       }
     }
-    wqg.a(this.a).a(wqg.a(this.a).a());
+    return localReqGetGroupHotRankVideo.toByteArray();
   }
 }
 

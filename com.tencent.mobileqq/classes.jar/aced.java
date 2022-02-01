@@ -1,37 +1,70 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.Iterator;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
+import android.text.TextUtils;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
+import com.tencent.gdtad.views.video.GdtVideoData;
+import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
 public class aced
-  extends acew
 {
-  public int a()
+  private GdtAd jdField_a_of_type_ComTencentGdtadAditemGdtAd;
+  private GdtMotiveVideoPageData jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData;
+  private GdtVideoData jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData;
+  private qq_ad_get.QQAdGetRsp.AdInfo jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo;
+  
+  public aced(GdtMotiveVideoPageData paramGdtMotiveVideoPageData)
   {
-    return -1000;
+    acho.a("GdtMotiveVideoModel", "[GdtMotiveVideoModel]\n" + paramGdtMotiveVideoPageData.adsContent);
+    this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData = paramGdtMotiveVideoPageData;
+    b(paramGdtMotiveVideoPageData);
+    a(paramGdtMotiveVideoPageData);
   }
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bdyi parambdyi, bblm parambblm, bbkm parambbkm)
+  private void a(GdtMotiveVideoPageData paramGdtMotiveVideoPageData)
   {
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    this.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo);
+    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData = new GdtVideoData();
+    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData.setAd(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
+    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData.setPlayScene(11);
+    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData.setUrl(paramGdtMotiveVideoPageData.url);
+  }
+  
+  private void b(GdtMotiveVideoPageData paramGdtMotiveVideoPageData)
+  {
+    if (TextUtils.isEmpty(paramGdtMotiveVideoPageData.adsContent))
     {
-      paramStringBuilder = (im_msg_body.Elem)paramList.next();
-      if (a(paramStringBuilder)) {
-        atym.a(paramMsg, paramStringBuilder, paramList1, (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), parambbkm);
-      }
+      acho.d("GdtMotiveVideoModel", "[adJson==null error]");
+      return;
     }
-    return false;
+    try
+    {
+      this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo = ((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(achn.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramGdtMotiveVideoPageData.adsContent))));
+      return;
+    }
+    catch (Throwable paramGdtMotiveVideoPageData)
+    {
+      acho.d("GdtMotiveVideoModel", "GdtMotiveVideoModel error]", paramGdtMotiveVideoPageData);
+    }
   }
   
-  public boolean a(im_msg_body.Elem paramElem)
+  public GdtAd a()
   {
-    return (paramElem.common_elem.has()) && (34 == paramElem.common_elem.uint32_service_type.get());
+    return this.jdField_a_of_type_ComTencentGdtadAditemGdtAd;
+  }
+  
+  public GdtMotiveVideoPageData a()
+  {
+    return this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData;
+  }
+  
+  public GdtVideoData a()
+  {
+    return this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData;
+  }
+  
+  public qq_ad_get.QQAdGetRsp.AdInfo a()
+  {
+    return this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo;
   }
 }
 

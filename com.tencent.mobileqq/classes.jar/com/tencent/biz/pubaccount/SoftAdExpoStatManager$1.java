@@ -5,12 +5,12 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import oeg;
+import olx;
 
 public class SoftAdExpoStatManager$1
   implements Runnable
 {
-  public SoftAdExpoStatManager$1(oeg paramoeg, Map paramMap) {}
+  public SoftAdExpoStatManager$1(olx paramolx, Map paramMap) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class SoftAdExpoStatManager$1
       Map.Entry localEntry = (Map.Entry)localIterator.next();
       localStringBuilder.append((String)localEntry.getKey()).append("&&").append(localEntry.getValue()).append(",,");
     }
-    SharePreferenceUtils.set(oeg.a(this.this$0), oeg.a(this.this$0) + "expo_stat_key_timewindow", localStringBuilder.delete(localStringBuilder.length() - 2, localStringBuilder.length()).toString());
+    SharePreferenceUtils.set(olx.a(this.this$0), olx.a(this.this$0) + "expo_stat_key_timewindow", localStringBuilder.delete(localStringBuilder.length() - 2, localStringBuilder.length()).toString());
   }
 }
 

@@ -1,15 +1,15 @@
 package cooperation.qwallet.plugin.ipc;
 
-import amsu;
 import android.os.Bundle;
 import android.os.ResultReceiver;
+import anvi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.ContactUtils;
 import cooperation.qwallet.plugin.QWalletHelper;
 import java.util.HashMap;
 
 class CorpReq$TenpayFriendListObserver
-  extends amsu
+  extends anvi
 {
   private static TenpayFriendListObserver _self;
   private HashMap<String, ResultReceiver> mRecieverMap = new HashMap();

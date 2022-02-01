@@ -1,74 +1,131 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.ContentValues;
+import android.database.Cursor;
+import com.tencent.mobileqq.data.SearchHistory;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.NoColumnError;
+import com.tencent.mobileqq.persistence.NoColumnErrorHandler;
+import com.tencent.mobileqq.persistence.OGAbstractDao;
 
 public class azic
-  implements INetEngine.INetEngineListener
+  extends OGAbstractDao
 {
-  int jdField_a_of_type_Int;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String jdField_a_of_type_JavaLangString;
-  String b;
-  String c;
-  String d;
-  
-  public azic(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4)
+  public azic()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString4;
-    this.d = paramString2;
-    this.c = paramString3;
+    this.columnLen = 8;
   }
   
-  public void onResp(NetResp paramNetResp)
+  public Entity cursor2Entity(Entity paramEntity, Cursor paramCursor, boolean paramBoolean, NoColumnErrorHandler paramNoColumnErrorHandler)
   {
-    try
+    paramEntity = (SearchHistory)paramEntity;
+    if (paramNoColumnErrorHandler == null)
     {
-      if (paramNetResp.mResult == 0)
-      {
-        QLog.i("QSplash@QbossSplashDownloadManager", 1, "ResFile has download!");
-        if (!TextUtils.isEmpty(this.d))
-        {
-          if (azie.a(this.d, false))
-          {
-            paramNetResp = new File(this.d);
-            paramNetResp.renameTo(new File(this.d.substring(0, this.d.lastIndexOf("."))));
-            long l = paramNetResp.length();
-            paramNetResp = (PreDownloadController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(193);
-            if (paramNetResp.isEnable())
-            {
-              QLog.i("QSplash@QbossSplashUtil", 1, "preDownloadSuccess");
-              paramNetResp.preDownloadSuccess(this.b, l);
-            }
-            azia.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_JavaLangString);
-            return;
-          }
-          azia.a(this.b, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-          QLog.i("QSplash@QbossSplashUtil", 1, "ResFile check not exist");
-        }
-      }
-      else if (paramNetResp.mResult == 1)
-      {
-        azia.a(this.b, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-        QLog.i("QSplash@QbossSplashUtil", 1, "ResFile dowload faield");
-      }
-      return;
+      paramEntity.key = paramCursor.getString(paramCursor.getColumnIndex("key"));
+      paramEntity.type = paramCursor.getInt(paramCursor.getColumnIndex("type"));
+      paramEntity.uin = paramCursor.getString(paramCursor.getColumnIndex("uin"));
+      paramEntity.troopUin = paramCursor.getString(paramCursor.getColumnIndex("troopUin"));
+      paramEntity.displayName = paramCursor.getString(paramCursor.getColumnIndex("displayName"));
+      paramEntity.extralInfo = paramCursor.getString(paramCursor.getColumnIndex("extralInfo"));
+      paramEntity.count = paramCursor.getInt(paramCursor.getColumnIndex("count"));
+      paramEntity.time = paramCursor.getLong(paramCursor.getColumnIndex("time"));
+      return paramEntity;
     }
-    catch (Exception paramNetResp) {}
+    int i = paramCursor.getColumnIndex("key");
+    if (i == -1)
+    {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("key", String.class));
+      i = paramCursor.getColumnIndex("type");
+      if (i != -1) {
+        break label448;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("type", Integer.TYPE));
+      label225:
+      i = paramCursor.getColumnIndex("uin");
+      if (i != -1) {
+        break label463;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("uin", String.class));
+      label259:
+      i = paramCursor.getColumnIndex("troopUin");
+      if (i != -1) {
+        break label478;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("troopUin", String.class));
+      label293:
+      i = paramCursor.getColumnIndex("displayName");
+      if (i != -1) {
+        break label493;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("displayName", String.class));
+      label327:
+      i = paramCursor.getColumnIndex("extralInfo");
+      if (i != -1) {
+        break label508;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("extralInfo", String.class));
+      label361:
+      i = paramCursor.getColumnIndex("count");
+      if (i != -1) {
+        break label523;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("count", Integer.TYPE));
+    }
+    for (;;)
+    {
+      i = paramCursor.getColumnIndex("time");
+      if (i != -1) {
+        break label538;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("time", Long.TYPE));
+      return paramEntity;
+      paramEntity.key = paramCursor.getString(i);
+      break;
+      label448:
+      paramEntity.type = paramCursor.getInt(i);
+      break label225;
+      label463:
+      paramEntity.uin = paramCursor.getString(i);
+      break label259;
+      label478:
+      paramEntity.troopUin = paramCursor.getString(i);
+      break label293;
+      label493:
+      paramEntity.displayName = paramCursor.getString(i);
+      break label327;
+      label508:
+      paramEntity.extralInfo = paramCursor.getString(i);
+      break label361;
+      label523:
+      paramEntity.count = paramCursor.getInt(i);
+    }
+    label538:
+    paramEntity.time = paramCursor.getLong(i);
+    return paramEntity;
   }
   
-  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
+  public void entity2ContentValues(Entity paramEntity, ContentValues paramContentValues)
+  {
+    paramEntity = (SearchHistory)paramEntity;
+    paramContentValues.put("key", paramEntity.key);
+    paramContentValues.put("type", Integer.valueOf(paramEntity.type));
+    paramContentValues.put("uin", paramEntity.uin);
+    paramContentValues.put("troopUin", paramEntity.troopUin);
+    paramContentValues.put("displayName", paramEntity.displayName);
+    paramContentValues.put("extralInfo", paramEntity.extralInfo);
+    paramContentValues.put("count", Integer.valueOf(paramEntity.count));
+    paramContentValues.put("time", Long.valueOf(paramEntity.time));
+  }
+  
+  public String getCreateTableSql(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,key TEXT UNIQUE ,type INTEGER ,uin TEXT ,troopUin TEXT ,displayName TEXT ,extralInfo TEXT ,count INTEGER ,time INTEGER)");
+    return localStringBuilder.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     azic
  * JD-Core Version:    0.7.0.1
  */

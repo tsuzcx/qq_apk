@@ -1,80 +1,88 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import org.json.JSONObject;
 
-public class aqcf
-  extends aptq<aqcg>
+class aqcf
+  implements aqcd
 {
-  @NonNull
-  public aqcg a(int paramInt)
-  {
-    return new aqcg();
-  }
+  aqcf(aqce paramaqce) {}
   
-  @Nullable
-  public aqcg a(aptx[] paramArrayOfaptx)
+  public void a(boolean paramBoolean, JSONObject paramJSONObject, Object arg3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadinjoyResetFunctionConfProcessor", 2, "[onParsed]");
-    }
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
+    QQAppInterface localQQAppInterface = (QQAppInterface)aqce.a(this.a).get();
+    if ((localQQAppInterface == null) || (??? == null) || (!(??? instanceof Bundle)))
     {
-      aqcg localaqcg = new aqcg();
-      localaqcg.a(paramArrayOfaptx);
-      return localaqcg;
+      QLog.e("ArkApp.ArkAsyncShareMsgManager", 1, new Object[] { "AAShare.sArkMsgPrepCallback invalid param app=", localQQAppInterface, ",userData=", ??? });
+      return;
     }
-    return new aqcg();
-  }
-  
-  public void a(aqcg paramaqcg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadinjoyResetFunctionConfProcessor", 2, "[onUpdate]");
-    }
-  }
-  
-  public Class<aqcg> clazz()
-  {
-    return aqcg.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return false;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)pay.a();
-    if (localQQAppInterface != null)
+    Object localObject1 = (Bundle)???;
+    long l = ((Bundle)localObject1).getLong("key_process_message_uniseq");
+    Object localObject2 = ((Bundle)localObject1).getString("key_process_message_friend_uin");
+    int i = ((Bundle)localObject1).getInt("key_process_message_uin_type");
+    synchronized (aqce.a(this.a))
     {
-      String str = localQQAppInterface.getCurrentUin();
-      return bfyz.O(localQQAppInterface.getApp(), str);
+      if ((Bundle)aqce.a(this.a).get(Long.valueOf(l)) != null)
+      {
+        aqce.a(this.a).remove(Long.valueOf(l));
+        aqce.a(this.a).removeMessages(1, localObject1);
+        ??? = localQQAppInterface.getMessageFacade().queryMsgItemByUniseq((String)localObject2, i, l);
+        if ((??? == null) || (!(??? instanceof MessageForArkApp))) {
+          QLog.e("ArkApp.ArkAsyncShareMsgManager", 1, "AAShare.sArkMsgPrepCallback find ArkMsg failed!");
+        }
+      }
+      else
+      {
+        QLog.e("ArkApp.ArkAsyncShareMsgManager", 1, new Object[] { "AAShare.sArkMsgPrepCallback.failed for msg callback timeout uniseq=", Long.valueOf(l) });
+        return;
+      }
     }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
+    localObject1 = (MessageForArkApp)???;
     if (QLog.isColorLevel()) {
-      QLog.d("ReadinjoyResetFunctionConfProcessor", 2, new Object[] { "[onReqFailed] failCode=", Integer.valueOf(paramInt) });
+      QLog.d("ArkApp.ArkAsyncShareMsgManager", 2, new Object[] { "AAShare.sArkMsgPrepCallback  uniseq=", Long.valueOf(l), ", processState=", Integer.valueOf(((MessageForArkApp)localObject1).getProcessState()), ", success=", Boolean.valueOf(paramBoolean), String.format(" ,msg=%h", new Object[] { localObject1 }), ", this=", ((MessageForArkApp)localObject1).getBaseInfoString(), ", msgJson=", paramJSONObject });
     }
-  }
-  
-  public int type()
-  {
-    return 368;
+    if (((MessageForArkApp)localObject1).ark_app_message != null)
+    {
+      localObject2 = new HashMap();
+      ((HashMap)localObject2).put("appid", ((MessageForArkApp)localObject1).ark_app_message.appName);
+      if (!paramBoolean) {
+        break label441;
+      }
+    }
+    label441:
+    for (??? = "1";; ??? = "2")
+    {
+      ((HashMap)localObject2).put("result", ???);
+      StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actAsyncShareCallback", true, 0L, 0L, (HashMap)localObject2, null);
+      if (!paramBoolean) {
+        break;
+      }
+      ((MessageForArkApp)localObject1).updateArkAppMetaData(paramJSONObject);
+      ((MessageForArkApp)localObject1).updateProcessStateAndExtraFlag(1002);
+      ((MessageForArkApp)localObject1).saveMsgData(localQQAppInterface);
+      ((MessageForArkApp)localObject1).saveMsgExtStrAndFlag(localQQAppInterface);
+      localQQAppInterface.getMessageFacade().sendMessage((MessageRecord)localObject1, null);
+      return;
+    }
+    ((MessageForArkApp)localObject1).updateProcessStateAndExtraFlag(1003);
+    ((MessageForArkApp)localObject1).saveMsgData(localQQAppInterface);
+    ((MessageForArkApp)localObject1).saveMsgExtStrAndFlag(localQQAppInterface);
+    localQQAppInterface.getMsgCache().a(((MessageForArkApp)localObject1).frienduin, ((MessageForArkApp)localObject1).istroop, ((MessageForArkApp)localObject1).uniseq);
+    aqce.a(this.a, localQQAppInterface, (MessageForArkApp)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqcf
  * JD-Core Version:    0.7.0.1
  */

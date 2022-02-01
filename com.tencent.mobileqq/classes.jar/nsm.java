@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.biz.PoiMapActivity;
 
 public class nsm
-  implements DialogInterface.OnDismissListener
+  implements View.OnTouchListener
 {
-  public nsm(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
+  public nsm(PoiMapActivity paramPoiMapActivity, InputMethodManager paramInputMethodManager) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.b = false;
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

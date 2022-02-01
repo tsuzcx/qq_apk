@@ -1,32 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberFromFriendGroup;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
-
-class alar
-  implements View.OnClickListener
+public class alar
 {
-  alar(alaq paramalaq) {}
+  private static volatile alar jdField_a_of_type_Alar;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  public static alar a()
   {
-    alas localalas = (alas)paramView.getTag();
-    if (this.a.a.a.contains(localalas.jdField_a_of_type_ComTencentMobileqqDataGroups))
+    if (jdField_a_of_type_Alar == null) {}
+    try
     {
-      this.a.a.a.remove(localalas.jdField_a_of_type_ComTencentMobileqqDataGroups);
-      localalas.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
-      this.a.a.a(localalas.jdField_a_of_type_ComTencentMobileqqDataGroups, false);
+      if (jdField_a_of_type_Alar == null) {
+        jdField_a_of_type_Alar = new alar();
+      }
+      return jdField_a_of_type_Alar;
     }
-    for (;;)
+    finally {}
+  }
+  
+  public void a(alat paramalat)
+  {
+    if (this.jdField_a_of_type_Boolean)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      if (paramalat != null) {
+        paramalat.a(true);
+      }
       return;
-      this.a.a.a.add(localalas.jdField_a_of_type_ComTencentMobileqqDataGroups);
-      localalas.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
-      this.a.a.a(localalas.jdField_a_of_type_ComTencentMobileqqDataGroups, true);
     }
+    bdgh.a().a("tensorflowlite_jni", new alas(this, paramalat));
   }
 }
 

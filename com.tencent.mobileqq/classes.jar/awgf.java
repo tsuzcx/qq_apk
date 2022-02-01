@@ -1,30 +1,26 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import java.util.HashMap;
+import android.view.View;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
-class awgf
-  implements INetEngine.IBreakDownFix
+public class awgf
+  implements bkzq
 {
-  awgf(awgd paramawgd) {}
+  public awgf(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, ListenTogetherManager paramListenTogetherManager) {}
   
-  public void fixReq(NetReq paramNetReq, NetResp paramNetResp)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramNetReq != null) && (paramNetResp != null) && ((paramNetReq instanceof HttpNetReq)))
+    switch (paramInt)
     {
-      paramNetReq = (HttpNetReq)paramNetReq;
-      paramNetReq.mStartDownOffset += paramNetResp.mWrittenBlockLen;
-      paramNetResp.mWrittenBlockLen = 0L;
-      paramNetResp = "bytes=" + paramNetReq.mStartDownOffset + "-";
-      paramNetReq.mReqProperties.put("Range", paramNetResp);
-      paramNetResp = paramNetReq.mReqUrl;
-      if (paramNetResp.contains("range="))
-      {
-        paramNetResp = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
-        paramNetReq.mReqUrl = (paramNetResp + "range=" + paramNetReq.mStartDownOffset);
-      }
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.a(false);
+      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).dismiss();
+      return;
     }
+    ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment);
+    ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).dismiss();
+    ListenTogetherOverlayFragment.b(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment, true);
   }
 }
 

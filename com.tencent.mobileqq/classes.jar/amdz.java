@@ -1,9 +1,15 @@
-import java.util.List;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
 
-public abstract interface amdz
-  extends amdy
+public class amdz
+  implements bisn
 {
-  public abstract void a(boolean paramBoolean, String paramString, List<amdx> paramList);
+  public amdz(SessionClearFragment paramSessionClearFragment) {}
+  
+  public void a()
+  {
+    SessionClearFragment.a(this.a).onBackPressed();
+  }
 }
 
 

@@ -1,19 +1,14 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.util.Map;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.model.RIJUserLevelRequestModule.UserLevelInfo;
 
-final class shr
-  extends sht
+class shr
+  implements qha
 {
-  shr(BaseArticleInfo paramBaseArticleInfo, int paramInt1, int paramInt2, Map paramMap, Activity paramActivity)
-  {
-    super(paramBaseArticleInfo, paramInt1, paramInt2, paramMap);
-  }
+  shr(shl paramshl, swj paramswj, VideoInfo paramVideoInfo) {}
   
-  public void a(JSONObject paramJSONObject)
+  public void a(RIJUserLevelRequestModule.UserLevelInfo paramUserLevelInfo)
   {
-    shq.a(this.a, this, paramJSONObject);
+    shl.a(this.jdField_a_of_type_Shl, this.jdField_a_of_type_Swj, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.util;
 
 import android.net.Uri;
-import odq;
+import olh;
 
 public final class PublicAccountUtil$16
   implements Runnable
@@ -19,8 +19,8 @@ public final class PublicAccountUtil$16
         if (this.jdField_a_of_type_Int == 0)
         {
           i = 100;
-          odq.a(null, "dc00899", "Pb_account_lifeservice", "", "0X8006DF8", "0X8006DF8", this.b, 0, str, this.jdField_a_of_type_JavaLangString, "" + i, "", false);
-          odq.a("0X8006DF8", "", str, this.jdField_a_of_type_JavaLangString, "" + i, "" + this.b);
+          olh.a(null, "dc00899", "Pb_account_lifeservice", "", "0X8006DF8", "0X8006DF8", this.b, 0, str, this.jdField_a_of_type_JavaLangString, "" + i, "", false);
+          olh.a("0X8006DF8", "", str, this.jdField_a_of_type_JavaLangString, "" + i, "" + this.b);
           return;
         }
       }
@@ -33,7 +33,7 @@ public final class PublicAccountUtil$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.PublicAccountUtil.16
  * JD-Core Version:    0.7.0.1
  */

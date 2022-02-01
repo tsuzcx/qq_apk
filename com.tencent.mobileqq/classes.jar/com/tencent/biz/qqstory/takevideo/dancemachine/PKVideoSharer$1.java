@@ -1,8 +1,8 @@
 package com.tencent.biz.qqstory.takevideo.dancemachine;
 
-import amtj;
+import anvx;
 import com.tencent.mobileqq.widget.QQToast;
-import ybu;
+import yqn;
 
 public class PKVideoSharer$1
   implements Runnable
@@ -11,14 +11,14 @@ public class PKVideoSharer$1
   {
     String str = "";
     if (this.a == -1) {
-      str = amtj.a(2131707297);
+      str = anvx.a(2131707644);
     }
     for (;;)
     {
       QQToast.a(this.this$0.a, 1, str, 0).a();
       return;
       if (this.a == -2) {
-        str = amtj.a(2131707293);
+        str = anvx.a(2131707640);
       }
     }
   }

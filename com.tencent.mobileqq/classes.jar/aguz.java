@@ -1,14 +1,6 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
-
-public class aguz
-  implements agut
+public abstract interface aguz
 {
-  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
-  {
-    paramagap.d(paramagcc.b, paramString);
-  }
+  public abstract void a();
 }
 
 

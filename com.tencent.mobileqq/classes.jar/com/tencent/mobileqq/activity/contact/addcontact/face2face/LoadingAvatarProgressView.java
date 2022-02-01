@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.contact.addcontact.face2face;
 
-import aiai;
-import aiaj;
+import aivh;
+import aivi;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -23,7 +23,7 @@ public class LoadingAvatarProgressView
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
-  private aiaj jdField_a_of_type_Aiaj;
+  private aivi jdField_a_of_type_Aivi;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Path jdField_a_of_type_AndroidGraphicsPath;
   private PathMeasure jdField_a_of_type_AndroidGraphicsPathMeasure;
@@ -79,7 +79,7 @@ public class LoadingAvatarProgressView
     this.jdField_c_of_type_Float = this.jdField_a_of_type_AndroidGraphicsPathMeasure.getLength();
     localObject = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     ((ValueAnimator)localObject).setDuration(this.e);
-    ((ValueAnimator)localObject).addUpdateListener(new aiai(this));
+    ((ValueAnimator)localObject).addUpdateListener(new aivh(this));
     ((ValueAnimator)localObject).start();
   }
   
@@ -159,8 +159,8 @@ public class LoadingAvatarProgressView
         paramCanvas.drawRoundRect(this.jdField_b_of_type_AndroidGraphicsRectF, this.i, this.i, this.jdField_b_of_type_AndroidGraphicsPaint);
         paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
       }
-    } while (this.jdField_a_of_type_Aiaj == null);
-    this.jdField_a_of_type_Aiaj.a(this.f);
+    } while (this.jdField_a_of_type_Aivi == null);
+    this.jdField_a_of_type_Aivi.a(this.f);
   }
   
   private void c(Canvas paramCanvas)
@@ -180,8 +180,8 @@ public class LoadingAvatarProgressView
         paramCanvas.drawCircle(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, Math.min(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int), this.jdField_b_of_type_AndroidGraphicsPaint);
         paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
       }
-    } while (this.jdField_a_of_type_Aiaj == null);
-    this.jdField_a_of_type_Aiaj.a(this.f);
+    } while (this.jdField_a_of_type_Aivi == null);
+    this.jdField_a_of_type_Aivi.a(this.f);
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -233,9 +233,9 @@ public class LoadingAvatarProgressView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setProgressListener(aiaj paramaiaj)
+  public void setProgressListener(aivi paramaivi)
   {
-    this.jdField_a_of_type_Aiaj = paramaiaj;
+    this.jdField_a_of_type_Aivi = paramaivi;
   }
   
   public void setRoundSize(int paramInt)

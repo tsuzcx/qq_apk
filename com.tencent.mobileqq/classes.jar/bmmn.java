@@ -1,27 +1,21 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.qq.im.aeeditor.module.text.AEEditorTextControlPanel;
+import cooperation.vip.impl.VasAdvInterfaceBinder.Companion.app.2;
+import cooperation.vip.impl.VasAdvInterfaceBinder.Companion.gdt.2;
+import kotlin.Lazy;
+import kotlin.LazyKt;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function0;
 
-public class bmmn
-  implements Animator.AnimatorListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcooperation/vip/impl/VasAdvInterfaceBinder;", "", "()V", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bmmn
 {
-  public bmmn(AEEditorTextControlPanel paramAEEditorTextControlPanel) {}
+  public static final bmmo a;
+  private static final Lazy a;
+  private static final Lazy b = LazyKt.lazy((Function0)VasAdvInterfaceBinder.Companion.gdt.2.INSTANCE);
   
-  public void onAnimationCancel(Animator paramAnimator)
+  static
   {
-    AEEditorTextControlPanel.a(this.a, false);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    AEEditorTextControlPanel.a(this.a, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.setVisibility(0);
+    jdField_a_of_type_Bmmo = new bmmo(null);
+    jdField_a_of_type_KotlinLazy = LazyKt.lazy((Function0)VasAdvInterfaceBinder.Companion.app.2.INSTANCE);
   }
 }
 

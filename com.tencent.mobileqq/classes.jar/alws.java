@@ -1,37 +1,40 @@
-import org.json.JSONObject;
+import SecurityAccountServer.RespondQueryQQBindingStat;
+import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class alws
-  implements alxg
+  extends azip
 {
-  private int a;
+  public alws(ContactsInnerFrame paramContactsInnerFrame) {}
   
-  public alws()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    int i = alxf.a;
-    alxf.a = i + 1;
-    this.a = i;
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public JSONObject a(alxf paramalxf, JSONObject paramJSONObject)
-  {
-    if ("cs.audio_create.local".equals(paramJSONObject.optString("N_R_CMD")))
+    this.a.a.unRegistObserver(this);
+    switch (ContactsInnerFrame.a(this.a).d())
     {
-      paramJSONObject = new alwf(paramJSONObject.optInt("N_R_OBJ"), paramJSONObject.optInt("id"), paramJSONObject.optString("type"));
-      if (paramalxf != null) {
-        paramalxf.a(paramJSONObject);
-      }
+    case 2: 
+    case 3: 
+    case 4: 
+    case 8: 
+    default: 
+      ContactsInnerFrame.c(this.a);
+      return;
+    case 0: 
+    case 7: 
+    case 9: 
+      ContactsInnerFrame.a(this.a);
+      return;
+    case 1: 
+    case 5: 
+      ContactsInnerFrame.b(this.a);
+      return;
     }
-    return null;
-  }
-  
-  public int c()
-  {
-    return this.a;
+    if (ContactsInnerFrame.a(this.a).a().lastUsedFlag == 2L)
+    {
+      ContactsInnerFrame.a(this.a);
+      return;
+    }
+    ContactsInnerFrame.b(this.a);
   }
 }
 

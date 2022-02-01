@@ -1,38 +1,66 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class xnf
-  implements xgp
+public class xnf
+  extends QQUIEventReceiver<xmx, wzt>
 {
-  xnf(xne paramxne, JobContext paramJobContext, xng paramxng) {}
-  
-  public void a(xgq paramxgq)
+  public xnf(@NonNull xmx paramxmx)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
-    {
-      xvv.d("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment is cancel, feedId:%d", new Object[] { this.jdField_a_of_type_Xng });
+    super(paramxmx);
+  }
+  
+  public void a(@NonNull xmx paramxmx, @NonNull wzt paramwzt)
+  {
+    if (TextUtils.equals(String.valueOf(paramxmx.hashCode()), paramwzt.jdField_a_of_type_JavaLangString)) {
+      b(paramxmx, paramwzt);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wzt.class;
+  }
+  
+  public void b(xmx paramxmx, wzt paramwzt)
+  {
+    paramxmx = ((StoryPlayerGroupHolder)paramxmx.a()).a();
+    if (paramxmx != null) {
+      paramxmx.c(false);
+    }
+    if (paramwzt.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
       return;
     }
-    xne.a(this.jdField_a_of_type_Xne);
-    xvv.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "on comment back loop count:%d, event:%s", Integer.valueOf(xne.b(this.jdField_a_of_type_Xne)), paramxgq);
-    if (paramxgq.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    boolean bool = wzk.a(paramwzt.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    switch (paramwzt.jdField_a_of_type_Int)
     {
-      xne.a(this.jdField_a_of_type_Xne).addAll(paramxgq.jdField_a_of_type_JavaUtilList);
-      if ((!paramxgq.jdField_a_of_type_Boolean) && (xne.b(this.jdField_a_of_type_Xne) < 10))
+    case 0: 
+    default: 
+      return;
+    case 1: 
+      QQToast.a(BaseApplicationImpl.getContext(), 1, anvx.a(2131700673), 0).a();
+      return;
+    case 2: 
+      if (bool) {}
+      for (paramxmx = "2";; paramxmx = "1")
       {
-        xvv.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull next page, loop count:%d", Integer.valueOf(xne.b(this.jdField_a_of_type_Xne)));
-        xne.a(this.jdField_a_of_type_Xne).c();
+        ykv.a("play_video", "down_suc", 0, 0, new String[] { paramxmx, "", "", paramwzt.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+        QQToast.a(BaseApplicationImpl.getContext(), 2, weg.a(2131699219), 0).a();
         return;
       }
-      paramxgq.jdField_a_of_type_JavaUtilList = xne.a(this.jdField_a_of_type_Xne);
-      xvv.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull comment end, comment count:%d", Integer.valueOf(xne.a(this.jdField_a_of_type_Xne).size()));
-      xne.a(this.jdField_a_of_type_Xne, paramxgq);
+    }
+    if (bool) {}
+    for (paramxmx = "2";; paramxmx = "1")
+    {
+      ykv.a("play_video", "down_fail", 0, 0, new String[] { paramxmx, "", "", paramwzt.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+      QQToast.a(BaseApplicationImpl.getContext(), 1, anvx.a(2131700674), 0).a();
       return;
     }
-    paramxgq.jdField_a_of_type_JavaUtilList = xne.a(this.jdField_a_of_type_Xne);
-    xvv.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull comment error, comment count:%d", Integer.valueOf(xne.a(this.jdField_a_of_type_Xne).size()));
-    xne.b(this.jdField_a_of_type_Xne, paramxgq);
   }
 }
 

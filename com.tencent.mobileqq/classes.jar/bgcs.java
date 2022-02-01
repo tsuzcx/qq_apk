@@ -1,39 +1,18 @@
-public class bgcs
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bgcs
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
+  bgcs(bgcr parambgcr) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b(String paramString)
-  {
-    this.b = paramString;
-  }
-  
-  public void c(String paramString)
-  {
-    this.c = paramString;
-  }
-  
-  public String toString()
-  {
-    return super.toString();
+    if (bgcr.a(this.a) != null) {
+      bgcr.a(this.a).onClick(paramView);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

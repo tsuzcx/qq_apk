@@ -1,14 +1,36 @@
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class amjd
-  implements amdy
+class amjd
+  implements View.OnClickListener
 {
-  amjd(amjf paramamjf, long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, alsg paramalsg, int[] paramArrayOfInt) {}
+  amjd(amjc paramamjc) {}
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Amjf != null) {
-      this.jdField_a_of_type_Amjf.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Alsg.a, this.jdField_a_of_type_ArrayOfInt, 22);
+    Object localObject = paramView.getTag();
+    if ((localObject != null) && ((localObject instanceof amjj)))
+    {
+      localObject = (amjj)localObject;
+      bghs.a(amjc.a(this.a), amjc.a(this.a), ((amjj)localObject).a);
+      bgls localbgls = (bgls)amjc.a(this.a).getManager(QQManagerFactory.TROOP_ROBOT_MANAGER);
+      if ((localbgls != null) && (localbgls.a(amjc.a(this.a), ((amjj)localObject).a, amjc.a(this.a)))) {
+        localbgls.a(amjc.a(this.a), ((amjj)localObject).a);
+      }
+      if (amjc.a(this.a) != null) {
+        break label121;
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label121:
+      bdla.b(amjc.a(this.a).app, "dc00898", "", "", "", "0X8009F9F", 0, 0, ((amjj)localObject).a, "", "", "");
     }
   }
 }

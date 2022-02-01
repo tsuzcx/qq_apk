@@ -1,35 +1,62 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberAQFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-public class rok
-  extends pkt
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdaterVideoSmallPic;", "Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdater;", "()V", "process", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rok
+  extends roe
 {
-  public rok(ReadInJoySelectMemberAQFragment paramReadInJoySelectMemberAQFragment) {}
-  
-  public void a(String paramString, int paramInt)
+  protected void a()
   {
-    if (("OidbSvc.0xbd4_1".equals(paramString)) && (this.a.getActivity() != null))
+    rre localrre1 = null;
+    Object localObject1 = a();
+    if (localObject1 != null) {
+      ((SocializeFeedsInfo)localObject1).a = 1;
+    }
+    Object localObject2 = a();
+    localObject1 = a();
+    if (localObject1 != null)
     {
-      this.a.a = true;
-      this.a.a();
-      if (paramInt == 0)
+      localObject1 = ((rre)localObject1).a;
+      if (localObject1 == null) {}
+    }
+    for (localObject1 = ((rrn)localObject1).g;; localObject1 = null)
+    {
+      ((BaseArticleInfo)localObject2).mTitle = ((String)localObject1);
+      localObject2 = a();
+      if (localObject2 != null)
       {
-        ReadInJoySelectMemberAQFragment.a(this.a, 0);
-        ReadInJoySelectMemberAQFragment.a(this.a, false);
-        this.a.c();
-        this.a.getActivity().finish();
-        ReadInJoySelectMemberAQFragment.a(this.a, true);
+        ((rrl)localObject2).a = true;
+        rre localrre2 = a();
+        localObject1 = localrre1;
+        if (localrre2 != null) {
+          localObject1 = localrre2.a;
+        }
+        ((rrl)localObject2).b = new ArrayList();
+        ((rrl)localObject2).b.add(localObject1);
+      }
+      try
+      {
+        localObject1 = a();
+        localrre1 = a();
+        if (localrre1 == null) {
+          Intrinsics.throwNpe();
+        }
+        ((BaseArticleInfo)localObject1).mSinglePicture = new URL(localrre1.a.d);
+        return;
+      }
+      catch (MalformedURLException localMalformedURLException)
+      {
+        for (;;)
+        {
+          localMalformedURLException.printStackTrace();
+        }
       }
     }
-    else
-    {
-      return;
-    }
-    ReadInJoySelectMemberAQFragment.a(this.a, true);
-    ReadInJoySelectMemberAQFragment.a(this.a, 2);
-    ReadInJoySelectMemberAQFragment.a(this.a, amtj.a(2131711861) + paramInt);
-    QQToast.a(this.a.getActivity(), 1, this.a.getString(2131717494), 0).b(ReadInJoySelectMemberAQFragment.a(this.a));
   }
 }
 

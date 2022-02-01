@@ -1,33 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.handlers.FrameworkHandler.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class qcx
-  implements qlb
+public class qcx
+  implements View.OnClickListener
 {
-  qcx(qcv paramqcv, List paramList, ArticleInfo paramArticleInfo, pvc parampvc) {}
+  qcx(qcw paramqcw) {}
   
-  public void a(int paramInt, ViewBase paramViewBase, TemplateBean paramTemplateBean)
+  public void onClick(View paramView)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size()))
-    {
-      QLog.i("PackProteusItem", 1, "[onItemClick] position overflow, position = " + paramInt + ", size = " + this.jdField_a_of_type_JavaUtilList.size());
-      return;
-    }
-    try
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.invalidateProteusTemplateBean();
-      paramTemplateBean = (BaseArticleInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      this.jdField_a_of_type_Pvc.a().a().a().a(paramTemplateBean, paramViewBase.getNativeView(), paramInt, paramInt);
-      return;
-    }
-    catch (Exception paramViewBase)
-    {
-      QLog.e("PackProteusItem", 1, "[onItemClick], e = " + paramViewBase);
-    }
+    this.a.a(false);
+    ThreadManager.executeOnSubThread(new FrameworkHandler.2.1(this));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

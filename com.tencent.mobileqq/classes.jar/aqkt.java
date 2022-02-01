@@ -1,53 +1,23 @@
-import com.tencent.TMG.utils.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.businessCard.data.CardOCRInfo;
 
-public class aqkt
+public final class aqkt
+  implements Parcelable.Creator<CardOCRInfo>
 {
-  private boolean a;
-  private boolean b;
-  private boolean c;
-  
-  public static aqkt a(aptx[] paramArrayOfaptx)
+  public CardOCRInfo a(Parcel paramParcel)
   {
-    if ((paramArrayOfaptx == null) || (paramArrayOfaptx.length <= 0)) {
-      return null;
-    }
-    aqkt localaqkt = new aqkt();
-    try
-    {
-      paramArrayOfaptx = new JSONObject(paramArrayOfaptx[0].a);
-      localaqkt.a = paramArrayOfaptx.getBoolean("fastload");
-      localaqkt.b = paramArrayOfaptx.getBoolean("prefetch");
-      localaqkt.c = paramArrayOfaptx.getBoolean("preloadWebView");
-      QLog.v("TencentDocPreloadConfigBean", 0, "fastload = " + localaqkt.a + ", prefetch = " + localaqkt.b + ", preloadWebView = " + localaqkt.c);
-      return localaqkt;
-    }
-    catch (JSONException paramArrayOfaptx)
-    {
-      QLog.e("TencentDocPreloadConfigBean", 1, paramArrayOfaptx.getLocalizedMessage(), paramArrayOfaptx);
-    }
-    return localaqkt;
+    return new CardOCRInfo(paramParcel);
   }
   
-  public boolean a()
+  public CardOCRInfo[] a(int paramInt)
   {
-    return this.a;
-  }
-  
-  public boolean b()
-  {
-    return this.b;
-  }
-  
-  public boolean c()
-  {
-    return this.c;
+    return new CardOCRInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqkt
  * JD-Core Version:    0.7.0.1
  */

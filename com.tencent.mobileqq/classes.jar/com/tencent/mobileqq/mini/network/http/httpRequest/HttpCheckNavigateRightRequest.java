@@ -4,7 +4,7 @@ import NS_MINI_INTERFACE.INTERFACE.StCheckNavigateRightReq;
 import NS_MINI_INTERFACE.INTERFACE.StCheckNavigateRightRsp;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.util.Log;
-import bgau;
+import bhjl;
 import com.tencent.mobileqq.mini.network.http.HttpProtoBufRequest;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -51,7 +51,7 @@ public class HttpCheckNavigateRightRequest
     INTERFACE.StCheckNavigateRightRsp localStCheckNavigateRightRsp = new INTERFACE.StCheckNavigateRightRsp();
     try
     {
-      localStQWebRsp.mergeFrom(bgau.b(paramArrayOfByte));
+      localStQWebRsp.mergeFrom(bhjl.b(paramArrayOfByte));
       localStCheckNavigateRightRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
       QLog.d("HttpCheckNavigateRightRequest", 1, "[miniapp-http].onResponse, retCode: " + localStQWebRsp.retCode.get() + ", errMsg: " + localStQWebRsp.errMsg.get().toStringUtf8());
       if (localStCheckNavigateRightRsp != null)

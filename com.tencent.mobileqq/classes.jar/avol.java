@@ -1,23 +1,34 @@
-import android.animation.ArgbEvaluator;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl.9.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import mqq.os.MqqHandler;
 
 public class avol
-  implements ValueAnimator.AnimatorUpdateListener
+  implements TVK_SDKMgr.InstallListener
 {
-  public avol(MedalGuideView paramMedalGuideView) {}
+  avol(avod paramavod) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue("alpha")).floatValue();
-    MedalGuideView.a(this.a, f);
-    int i = ((Integer)this.a.jdField_a_of_type_AndroidAnimationArgbEvaluator.evaluate(f, Integer.valueOf(0), Integer.valueOf(this.a.jdField_a_of_type_Int))).intValue();
-    this.a.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(i);
-    if (paramValueAnimator.getAnimatedFraction() >= 1.0F) {
-      paramValueAnimator.removeAllUpdateListeners();
+    avod.a = false;
+    this.a.a(anvx.a(2131707858));
+    if (QLog.isColorLevel()) {
+      QLog.d("PresenceInterfaceImpl", 2, "tencent sdk onInstalledFail");
     }
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    avod.a = false;
+    if (!this.a.c)
+    {
+      ThreadManager.getSubThreadHandler().post(new PresenceInterfaceImpl.9.1(this));
+      QLog.d("PresenceInterfaceImpl", 2, "run installSDK here");
+    }
+    QLog.d("PresenceInterfaceImpl", 2, "tencent sdk onInstall sucess");
   }
 }
 

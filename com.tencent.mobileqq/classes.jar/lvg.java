@@ -1,36 +1,33 @@
-import com.tencent.av.redpacket.ui.RedPacketShareFragment;
-import com.tencent.av.redpacket.ui.RedPacketShareFragment.3;
-import com.tencent.av.redpacket.ui.RedPacketShareFragment.3.1;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.redpacket.AVRedPacketManager;
 
 public class lvg
-  implements WXShareHelper.WXShareListener
+  extends lva
 {
-  public lvg(RedPacketShareFragment.3.1 param1) {}
-  
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public lvg()
   {
-    if ((RedPacketShareFragment.d(this.a.a.this$0) == null) || (!RedPacketShareFragment.d(this.a.a.this$0).equals(paramBaseResp.transaction))) {
-      return;
-    }
-    QLog.d("RedPacketShareFragment", 1, "WL_DEBUG ActionSheetAdapter.CHANNEL_WX_FRIEND onWXShareResp resp.errCode = " + paramBaseResp.errCode);
-    switch (paramBaseResp.errCode)
+    this.c = new lvm[6];
+    this.b = 1000L;
+    a(255);
+  }
+  
+  public void a(AVRedPacketManager paramAVRedPacketManager)
+  {
+    int i = 0;
+    while (i < this.c.length)
     {
+      this.c[i] = new lvm(paramAVRedPacketManager.a("qav_redpacket_lightning_" + (i + 1) + ".png"));
+      i += 1;
     }
-    for (;;)
-    {
-      WXShareHelper.getInstance().removeObserver(this);
-      return;
-      RedPacketShareFragment.a("0X8008CF8", 3);
-    }
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    a(0, paramInt2 - paramInt1 * 120 / 750, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lvg
  * JD-Core Version:    0.7.0.1
  */

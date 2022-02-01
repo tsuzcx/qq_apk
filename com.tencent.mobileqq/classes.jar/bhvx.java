@@ -1,32 +1,87 @@
 import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin.11.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
-class bhvx
-  extends Handler
+public class bhvx
+  implements View.OnClickListener
 {
-  bhvx(bhvw parambhvw, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public bhvx(HealthBusinessPlugin paramHealthBusinessPlugin, String paramString, bhwi parambhwi) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
+    Object localObject3 = (FrameLayout)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.e.get(this.jdField_a_of_type_JavaLangString);
+    Object localObject1 = (SeekBar)((FrameLayout)localObject3).findViewById(2131377267);
+    Object localObject2 = (TextView)((FrameLayout)localObject3).findViewById(2131374458);
+    TextView localTextView1 = (TextView)((FrameLayout)localObject3).findViewById(2131374457);
+    ImageView localImageView1 = (ImageView)((FrameLayout)localObject3).findViewById(2131374456);
+    ImageView localImageView2 = (ImageView)((FrameLayout)localObject3).findViewById(2131374455);
+    TextView localTextView2 = (TextView)((FrameLayout)localObject3).findViewById(2131374454);
+    localObject3 = new HealthBusinessPlugin.11.1(this, (SeekBar)localObject1, (TextView)localObject2, localTextView1, localImageView1, localImageView2, localTextView2);
+    int i;
+    if (!this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.f) {
+      if (((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).isPlaying())
+      {
+        i = 2130848634;
+        localImageView1.setImageResource(i);
+        localImageView1.setVisibility(0);
+        this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.f = true;
+        ((SeekBar)localObject1).setVisibility(0);
+        ((TextView)localObject2).setVisibility(0);
+        localTextView1.setVisibility(0);
+        localImageView2.setVisibility(4);
+        localTextView2.setVisibility(4);
+        if (((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).isPlaying())
+        {
+          this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_c_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+          this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_c_of_type_AndroidOsHandler.postDelayed((Runnable)localObject3, 3000L);
+        }
+      }
     }
     for (;;)
     {
-      super.handleMessage(paramMessage);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      bhvw localbhvw = this.a;
-      if (paramMessage.obj == null) {}
-      for (String str = null;; str = (String)paramMessage.obj)
+      i = 2130849183;
+      break;
+      if (((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).isPlaying())
       {
-        localbhvw.a(str);
-        break;
+        this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_c_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+        ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).pause();
+        this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_c_of_type_Boolean = true;
+        localImageView1.setImageResource(2130849183);
+        localImageView1.setVisibility(0);
+        if (QLog.isColorLevel()) {
+          QLog.d("HealthBusinessPlugin", 2, "play onclick in video ");
+        }
       }
-      this.a.a();
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_c_of_type_Boolean = false;
+        localObject1 = this.jdField_a_of_type_JavaLangString;
+        this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_c_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+        this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_c_of_type_AndroidOsHandler.postDelayed((Runnable)localObject3, 3000L);
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.keySet().iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (String)((Iterator)localObject1).next();
+          ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(localObject2)).pause();
+        }
+        ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).start();
+        this.jdField_a_of_type_Bhwi.a.setImageResource(2130848634);
+        this.jdField_a_of_type_Bhwi.a.setVisibility(0);
+      }
     }
   }
 }

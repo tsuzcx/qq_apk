@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.search.activity;
 
 import Override;
-import amtj;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
+import anvx;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.mobileqq.search.fragment.PublicAcntSearchFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import uex;
+import usu;
 
 public class PublicAcntSearchActivity
   extends BaseSearchActivity
@@ -32,9 +32,9 @@ public class PublicAcntSearchActivity
   protected String a()
   {
     if (d == 12) {
-      return amtj.a(2131707852) + uex.a(this.app, getApplicationContext());
+      return anvx.a(2131708199) + usu.a(this.app, getApplicationContext());
     }
-    return amtj.a(2131707910);
+    return anvx.a(2131708257);
   }
   
   @Override

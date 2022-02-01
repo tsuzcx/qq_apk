@@ -1,14 +1,24 @@
-import android.graphics.Bitmap;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import android.view.View;
 
 class bnpv
-  implements aozx
+  implements Observer<Boolean>
 {
-  bnpv(bnpt parambnpt) {}
+  bnpv(bnps parambnps) {}
   
-  public void onFaceUpdate(String paramString1, String paramString2, Bitmap paramBitmap)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    if (bnpt.a(this.a) != null) {
-      bnpt.a(this.a).a(paramString1, 4, paramString2, paramBitmap);
+    if (paramBoolean == null) {}
+    while (!bnps.b(this.a)) {
+      return;
+    }
+    View localView = bnps.a(this.a);
+    if (paramBoolean.booleanValue()) {}
+    for (int i = 0;; i = 4)
+    {
+      localView.setVisibility(i);
+      return;
     }
   }
 }

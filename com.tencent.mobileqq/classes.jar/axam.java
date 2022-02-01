@@ -1,49 +1,52 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.widget.ProgressButton;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
 
-class axam
-  implements DialogInterface.OnClickListener
+public class axam
 {
-  axam(awzr paramawzr) {}
+  private int jdField_a_of_type_Int;
+  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public axam(int paramInt1, String paramString1, String paramString2, MsgBackupUserData paramMsgBackupUserData, int paramInt2)
   {
-    if (paramInt == 1)
-    {
-      if (this.a.jdField_a_of_type_Axdh != null) {
-        this.a.jdField_a_of_type_Axdh.a(2);
-      }
-      if (awzr.a(this.a) != null)
-      {
-        if (!this.a.n) {
-          break label88;
-        }
-        bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_trigger", 0, 0, awzr.a(this.a).uin, "", "yes", "android");
-      }
-    }
-    label88:
-    do
-    {
-      do
-      {
-        return;
-        bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_goon", 0, 0, awzr.a(this.a).uin, "", "yes", "android");
-        return;
-      } while (paramInt != 0);
-      if (this.a.jdField_a_of_type_Axdh != null) {
-        this.a.jdField_a_of_type_Axdh.a(10);
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton != null)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131698120);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(0);
-      }
-      this.a.jdField_a_of_type_Int = 2;
-    } while (awzr.a(this.a) == null);
-    bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_cancel", 0, 0, awzr.a(this.a).uin, "", "yes", "android");
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public MsgBackupUserData a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("--MsgBackupQryStateRsp--");
+    localStringBuilder.append(",state:").append(this.jdField_a_of_type_Int).append(",token:").append(this.jdField_a_of_type_JavaLangString).append(",encryptKey:").append(this.jdField_b_of_type_JavaLangString).append(",userData:").append(this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData).append(",bizType:").append(this.jdField_b_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 

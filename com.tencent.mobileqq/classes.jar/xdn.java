@@ -1,44 +1,24 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tribe.async.async.ThreadOffFunction;
+import com.tribe.async.reactive.Stream;
 
 public class xdn
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, xec>
+  implements xdf
 {
-  public xdn(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  private final xdm a;
+  
+  public xdn(xdm paramxdm)
   {
-    super(paramQQStoryShareGroupProfileActivity);
+    this.a = paramxdm;
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull xec paramxec)
+  public void a(xdg paramxdg)
   {
-    if (paramxec.a == 1)
-    {
-      paramQQStoryShareGroupProfileActivity.g = true;
-      paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Xeb.a();
-      paramQQStoryShareGroupProfileActivity.b(true);
-      paramxec = paramQQStoryShareGroupProfileActivity.b;
-      if (!paramQQStoryShareGroupProfileActivity.g) {
-        break label82;
-      }
+    Stream localStream2 = Stream.of(this.a.a).map(new ThreadOffFunction("Q.qqstory.player.data.MsgTabPlayPageLoader", 2)).map(new wmo("Q.qqstory.player.data.MsgTabPlayPageLoader", this.a.c, this.a.d, this.a));
+    Stream localStream1 = localStream2;
+    if (this.a.a.a == 5) {
+      localStream1 = localStream2.map(new wml()).map(new wmb(this.a.a));
     }
-    label82:
-    for (paramQQStoryShareGroupProfileActivity = "1";; paramQQStoryShareGroupProfileActivity = "2")
-    {
-      xwa.a("share_story", "clk_rank", 0, 0, new String[] { paramxec, paramQQStoryShareGroupProfileActivity });
-      return;
-      if (paramxec.a != 0) {
-        break;
-      }
-      paramQQStoryShareGroupProfileActivity.g = false;
-      paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Boolean = false;
-      break;
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return xec.class;
+    localStream1.subscribe(new xdo(this, paramxdg));
   }
 }
 

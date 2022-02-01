@@ -1,23 +1,40 @@
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.gamecenter.view.TextHeaderView;
+import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class avgb
+public class avgb
   implements View.OnClickListener
 {
-  avgb(avga paramavga, avfq paramavfq) {}
+  public avgb(TextHeaderView paramTextHeaderView, Activity paramActivity, QQGameMsgInfo paramQQGameMsgInfo, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Avga.jdField_a_of_type_Avfq.a()) {}
-    for (;;)
+    if (!TextUtils.isEmpty(TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView)))
     {
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+      localIntent.putExtra("url", TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+      abuf.a(amwn.a(), "769", "205019", this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.gameAppId, "76901", "1", "160", new String[] { this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.paMsgid, "", "20" });
+      bmqt.a(3, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.paMsgid, TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
+    }
+    try
+    {
+      aves.a(118, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo, this.jdField_a_of_type_Int);
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      avfq.a(this.jdField_a_of_type_Avga.jdField_a_of_type_Avfq).c(true);
-      avfq.a(this.jdField_a_of_type_Avga.jdField_a_of_type_Avfq);
-      bcef.b(null, "CliOper", "", "", "0X800A973", "0X800A973", 0, 0, "0", "0", "0", "");
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
     }
   }
 }

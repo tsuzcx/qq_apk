@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.automator;
 
-import onz;
-import ooa;
+import ovw;
+import ovx;
 
 public class Automator$5
   implements Runnable
 {
-  public Automator$5(onz paramonz, ooa paramooa) {}
+  public Automator$5(ovw paramovw, ovx paramovx) {}
   
   public void run()
   {
     this.a.c();
-    onz.a(this.this$0);
+    ovw.a(this.this$0);
   }
 }
 

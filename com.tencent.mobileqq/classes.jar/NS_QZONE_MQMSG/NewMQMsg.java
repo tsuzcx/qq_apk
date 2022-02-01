@@ -27,6 +27,7 @@ public final class NewMQMsg
   public String nick = "";
   public String promot = "";
   public long pushTime;
+  public String reportValue = "";
   public String title = "";
   public String userAvatar = "";
   public UserPersonalData userPersonalData;
@@ -44,7 +45,7 @@ public final class NewMQMsg
   
   public NewMQMsg() {}
   
-  public NewMQMsg(int paramInt, String paramString1, long paramLong, String paramString2, String paramString3, String paramString4, MsgBody paramMsgBody, MsgInteractData paramMsgInteractData, String paramString5, BottomCell paramBottomCell, Map<String, String> paramMap, UserPersonalData paramUserPersonalData, ArrayList<single_feed> paramArrayList)
+  public NewMQMsg(int paramInt, String paramString1, long paramLong, String paramString2, String paramString3, String paramString4, MsgBody paramMsgBody, MsgInteractData paramMsgInteractData, String paramString5, BottomCell paramBottomCell, Map<String, String> paramMap, UserPersonalData paramUserPersonalData, ArrayList<single_feed> paramArrayList, String paramString6)
   {
     this.msgType = paramInt;
     this.title = paramString1;
@@ -59,6 +60,7 @@ public final class NewMQMsg
     this.mpExtent = paramMap;
     this.userPersonalData = paramUserPersonalData;
     this.all_feeds_data = paramArrayList;
+    this.reportValue = paramString6;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -76,6 +78,7 @@ public final class NewMQMsg
     this.mpExtent = ((Map)paramJceInputStream.read(cache_mpExtent, 10, false));
     this.userPersonalData = ((UserPersonalData)paramJceInputStream.read(cache_userPersonalData, 11, false));
     this.all_feeds_data = ((ArrayList)paramJceInputStream.read(cache_all_feeds_data, 12, false));
+    this.reportValue = paramJceInputStream.readString(13, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -114,6 +117,9 @@ public final class NewMQMsg
     }
     if (this.all_feeds_data != null) {
       paramJceOutputStream.write(this.all_feeds_data, 12);
+    }
+    if (this.reportValue != null) {
+      paramJceOutputStream.write(this.reportValue, 13);
     }
   }
 }

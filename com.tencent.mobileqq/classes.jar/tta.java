@@ -1,64 +1,43 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
+import android.util.TypedValue;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ticker.TickerView;
 
 public class tta
-  extends tsy
 {
-  public tta(View paramView, BaseData paramBaseData, WeakReference<Context> paramWeakReference)
+  public float a;
+  public int a;
+  public String a;
+  public float b;
+  public int b;
+  public float c;
+  public int c;
+  public float d;
+  public int d;
+  
+  public tta(TickerView paramTickerView, Resources paramResources)
   {
-    super(paramBaseData, paramWeakReference, localWeakReference);
+    this.jdField_c_of_type_Int = -16777216;
+    this.jdField_d_of_type_Float = TypedValue.applyDimension(2, 12.0F, paramResources.getDisplayMetrics());
+    this.jdField_a_of_type_Int = 8388611;
   }
   
-  protected void a(BaseData paramBaseData, Context paramContext, JSONObject paramJSONObject)
+  public void a(TypedArray paramTypedArray)
   {
-    ViewFactory.findClickableViewListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), new ttb(this, paramContext));
-  }
-  
-  protected void a(Container paramContainer, ProteusItemData paramProteusItemData)
-  {
-    super.a(paramContainer, paramProteusItemData);
-    if (paramContainer != null)
-    {
-      ViewBase localViewBase1 = paramContainer.getVirtualView();
-      if (((paramProteusItemData instanceof AdData)) && (((AdData)paramProteusItemData).a != null) && (twh.a((AdData)paramProteusItemData)))
-      {
-        ViewBase localViewBase2 = localViewBase1.findViewBaseByName("id_inner_small_img");
-        if (((localViewBase2 instanceof qiv)) && (((AdData)paramProteusItemData).a.a != null) && (!TextUtils.isEmpty(((AdData)paramProteusItemData).a.k))) {
-          twh.a(paramContainer.getContext(), localViewBase2, ((AdData)paramProteusItemData).a.k, 10);
-        }
-        localViewBase2 = localViewBase1.findViewBaseByName("id_inner_game_img1");
-        if (((localViewBase2 instanceof qiv)) && (((AdData)paramProteusItemData).a.a != null) && (!TextUtils.isEmpty(((AdData)paramProteusItemData).a.a.d))) {
-          twh.a(paramContainer.getContext(), localViewBase2, ((AdData)paramProteusItemData).a.a.d, 10);
-        }
-        localViewBase2 = localViewBase1.findViewBaseByName("id_inner_game_img2");
-        if (((localViewBase2 instanceof qiv)) && (((AdData)paramProteusItemData).a.a != null) && (!TextUtils.isEmpty(((AdData)paramProteusItemData).a.a.e))) {
-          twh.a(paramContainer.getContext(), localViewBase2, ((AdData)paramProteusItemData).a.a.e, 10);
-        }
-        localViewBase1 = localViewBase1.findViewBaseByName("id_inner_game_img3");
-        if (((localViewBase1 instanceof qiv)) && (((AdData)paramProteusItemData).a.a != null) && (!TextUtils.isEmpty(((AdData)paramProteusItemData).a.a.f))) {
-          twh.a(paramContainer.getContext(), localViewBase1, ((AdData)paramProteusItemData).a.a.f, 10);
-        }
-      }
-    }
-  }
-  
-  protected boolean a(BaseData paramBaseData1, BaseData paramBaseData2)
-  {
-    return true;
+    this.jdField_a_of_type_Int = paramTypedArray.getInt(4, this.jdField_a_of_type_Int);
+    this.jdField_b_of_type_Int = paramTypedArray.getColor(6, this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_Float = paramTypedArray.getFloat(7, this.jdField_a_of_type_Float);
+    this.jdField_b_of_type_Float = paramTypedArray.getFloat(8, this.jdField_b_of_type_Float);
+    this.jdField_c_of_type_Float = paramTypedArray.getFloat(9, this.jdField_c_of_type_Float);
+    this.jdField_a_of_type_JavaLangString = paramTypedArray.getString(5);
+    this.jdField_c_of_type_Int = paramTypedArray.getColor(3, this.jdField_c_of_type_Int);
+    this.jdField_d_of_type_Float = paramTypedArray.getDimension(1, this.jdField_d_of_type_Float);
+    this.jdField_d_of_type_Int = paramTypedArray.getInt(2, this.jdField_d_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tta
  * JD-Core Version:    0.7.0.1
  */

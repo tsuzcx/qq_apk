@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.search.fragment;
 
 import android.view.View;
-import bavx;
+import bccn;
 import java.util.List;
 
 public class PublicAcntSearchFragment$2$1
   implements Runnable
 {
-  public PublicAcntSearchFragment$2$1(bavx parambavx, boolean paramBoolean) {}
+  public PublicAcntSearchFragment$2$1(bccn parambccn, boolean paramBoolean) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bavx.a.jdField_c_of_type_AndroidViewView.setVisibility(8);
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bavx.a.jdField_c_of_type_JavaUtilList != null) && (this.jdField_a_of_type_Bavx.a.jdField_c_of_type_JavaUtilList.size() > 0)) {
-      this.jdField_a_of_type_Bavx.a.f_(true);
+    this.jdField_a_of_type_Bccn.a.jdField_c_of_type_AndroidViewView.setVisibility(8);
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bccn.a.jdField_c_of_type_JavaUtilList != null) && (this.jdField_a_of_type_Bccn.a.jdField_c_of_type_JavaUtilList.size() > 0)) {
+      this.jdField_a_of_type_Bccn.a.f_(true);
     }
   }
 }

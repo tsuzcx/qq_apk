@@ -1,37 +1,44 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.data.MessageForQQStoryComment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AbsListView;
 
-class aglk
-  implements View.OnClickListener
+public class aglk
+  implements agin
 {
-  long jdField_a_of_type_Long = 0L;
-  
-  aglk(aglj paramaglj) {}
-  
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long < 50L) {}
-    for (;;)
+    switch (paramInt)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+    default: 
       return;
-      this.jdField_a_of_type_Long = l;
-      MessageForQQStoryComment localMessageForQQStoryComment = (MessageForQQStoryComment)((aezf)AIOUtils.getHolder(paramView)).a;
-      if (yns.a(localMessageForQQStoryComment.vid))
-      {
-        wmu.a(this.jdField_a_of_type_Aglj.a, localMessageForQQStoryComment.vid, "CommentItemBuilder_Feed_Id", 1004);
-        xwa.a("story_grp", "aio_obj", 0, 0, new String[] { "", "", "", "" });
-      }
-      else
-      {
-        wmu.b((Activity)this.jdField_a_of_type_Aglj.a, localMessageForQQStoryComment.vid, "CommentItemBuilder_Feed_Id_NOT_GS", 7);
-      }
+    case 6: 
+      zzu.a().a();
+      return;
+    case 11: 
+      zzu.a().b();
+      return;
     }
+    zzu.a().c();
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt)
+  {
+    zzu.a().a(paramAbsListView, paramInt);
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    zzu.a().a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (agqf.class.isInstance(paramObject)) {
+      zzu.a().a((agqf)paramObject);
+    }
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 14, 8, 6, 11 };
   }
 }
 

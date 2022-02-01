@@ -1,10 +1,24 @@
-public abstract interface aydz
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+
+public class aydz
+  implements ansd
 {
-  public abstract aydl getPicDownloadInfo();
+  public aydz(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public abstract ayeb getPicUploadInfo();
-  
-  public abstract boolean isSendFromLocal();
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (paramInt == 2))
+    {
+      if ((NearbyPeopleProfileActivity.a(this.a) == null) || (this.a.e != 1)) {
+        break label41;
+      }
+      NearbyPeopleProfileActivity.a(this.a).d();
+    }
+    label41:
+    while (NearbyPeopleProfileActivity.a(this.a) == null) {
+      return;
+    }
+  }
 }
 
 

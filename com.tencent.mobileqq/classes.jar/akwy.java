@@ -1,21 +1,26 @@
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
+
 public class akwy
+  extends akwz
 {
-  public int a;
-  public boolean a;
+  bhyn jdField_a_of_type_Bhyn;
+  PreloadModule jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadModule;
+  PreloadResource jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource;
   
-  public static int a(int paramInt)
+  public akwy(PreloadResource paramPreloadResource, PreloadModule paramPreloadModule, bhyn parambhyn)
   {
-    switch (paramInt)
-    {
-    case 90: 
-    default: 
-      return 0;
-    case 0: 
-      return 270;
-    case 180: 
-      return 90;
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource = paramPreloadResource;
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadModule = paramPreloadModule;
+    this.jdField_a_of_type_Bhyn = parambhyn;
+  }
+  
+  public void a(PreloadManager paramPreloadManager)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.handleFlowConfig(paramPreloadManager, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadModule, this.jdField_a_of_type_Bhyn);
     }
-    return 180;
   }
 }
 

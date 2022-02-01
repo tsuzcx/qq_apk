@@ -1,20 +1,35 @@
-import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-class rkr
-  implements rkw
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class rkr
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = -1;
+  rkr(rkk paramrkk) {}
   
-  public rkr(rko paramrko, int paramInt)
+  public final void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a() {}
-  
-  public void a(Bitmap paramBitmap, rku paramrku)
-  {
-    rko.a(this.jdField_a_of_type_Rko).a(this.jdField_a_of_type_Int);
+    rkk.a(this.a, 1);
+    Object localObject = rkk.b(this.a);
+    if (localObject != null) {
+      ((View)localObject).setBackgroundDrawable(null);
+    }
+    localObject = rkk.a(this.a);
+    if (localObject != null) {
+      ((View)localObject).setBackgroundResource(2130841774);
+    }
+    if (rkk.a(this.a))
+    {
+      localObject = rkk.b(this.a);
+      if (localObject != null) {
+        ((ImageView)localObject).setImageDrawable((Drawable)rkk.a(this.a, "https://kd.qpic.cn/bankjiang/apngs/three_cack_apng_7b412611.png"));
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

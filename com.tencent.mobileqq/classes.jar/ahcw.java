@@ -1,90 +1,1244 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
+import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Environment;
+import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.widget.ImageView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.mobileqq.activity.aio.item.PokeItemHelper.1;
+import com.tencent.mobileqq.activity.aio.item.PokeItemHelper.4;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.QQWalletAioBodyReserve;
-import com.tencent.mobileqq.data.QQWalletBaseMsgElem;
-import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
+import com.tencent.mobileqq.emoticonview.EmoticonUtils;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.mobileqq.vfs.VFSAssistantUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.List;
+import java.util.Vector;
+import mqq.app.AppRuntime;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class ahcw
-  implements View.OnClickListener
+public class ahcw
 {
-  ahcw(ahcp paramahcp) {}
+  public static int a;
+  public static String a;
+  static ArrayList<android.graphics.Bitmap> jdField_a_of_type_JavaUtilArrayList;
+  private static BitSet jdField_a_of_type_JavaUtilBitSet;
+  public static final Vector<Integer> a;
+  public static boolean a;
+  private static final int[] jdField_a_of_type_ArrayOfInt;
+  public static android.graphics.Bitmap[] a;
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString;
+  public static int b;
+  public static final String b;
+  public static final Vector<Integer> b;
+  public static volatile boolean b;
+  public static android.graphics.Bitmap[] b;
+  public static int c;
+  public static final String c;
+  public static final Vector<Integer> c;
+  public static volatile boolean c;
+  public static android.graphics.Bitmap[] c;
+  public static int d;
+  public static final String d;
+  public static final Vector<Integer> d;
+  public static boolean d;
+  public static android.graphics.Bitmap[] d;
+  public static int e;
+  public static final String e;
+  public static volatile boolean e;
+  public static int f;
+  public static final String f;
+  private static boolean f;
+  public static int g;
+  public static String g;
+  private static boolean g;
+  public static int h;
+  public static String h;
+  private static boolean h;
+  public static int i;
+  public static String i;
+  private static boolean i;
+  public static int j;
+  public static String j;
+  private static boolean j;
+  public static int k;
+  private static String jdField_k_of_type_JavaLangString;
+  private static boolean jdField_k_of_type_Boolean;
+  public static int l;
+  private static String l;
+  public static int m;
+  private static String m;
+  public static int n;
+  private static String n;
+  public static int o;
+  private static String o;
+  private static int jdField_p_of_type_Int;
+  private static String jdField_p_of_type_JavaLangString;
+  private static int q;
+  private static int r;
+  private static int s;
+  private static int t;
+  private static int u;
+  private static int v;
   
-  public void onClick(View paramView)
+  static
   {
-    if (paramView.getTag() == null) {}
+    jdField_a_of_type_JavaLangString = "PokeItemHelper";
+    jdField_p_of_type_Int = BaseApplicationImpl.getContext().getResources().getDisplayMetrics().densityDpi;
+    jdField_b_of_type_JavaLangString = Environment.getExternalStorageDirectory().getAbsolutePath();
+    jdField_c_of_type_JavaLangString = jdField_b_of_type_JavaLangString + "/Tencent/MobileQQ/";
+    jdField_d_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath(jdField_c_of_type_JavaLangString);
+    jdField_e_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath(jdField_c_of_type_JavaLangString + ".vaspoke/");
+    jdField_f_of_type_JavaLangString = jdField_e_of_type_JavaLangString + "vasPokeMarket.json";
+    jdField_a_of_type_JavaUtilVector = new Vector();
+    jdField_b_of_type_JavaUtilVector = new Vector();
+    jdField_c_of_type_JavaUtilVector = new Vector();
+    jdField_d_of_type_JavaUtilVector = new Vector();
+    jdField_a_of_type_Int = -1;
+    jdField_l_of_type_JavaLangString = "";
+    jdField_m_of_type_JavaLangString = "";
+    jdField_n_of_type_JavaLangString = "";
+    jdField_o_of_type_JavaLangString = "";
+    jdField_p_of_type_JavaLangString = "";
+    jdField_b_of_type_Int = -1;
+    jdField_c_of_type_Int = -1;
+    jdField_d_of_type_Int = 10;
+    jdField_e_of_type_Int = 60;
+    jdField_f_of_type_Int = -1;
+    jdField_g_of_type_Int = -1;
+    jdField_h_of_type_Int = 10;
+    jdField_i_of_type_Int = 60;
+    jdField_n_of_type_Int = 50;
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "chuo_icon", "bixin_icon", "zan_icon", "xinsui_icon", "666_icon", "dazhao_icon", "chuo_motion", "bixin_motion", "zan_motion", "xinsui_motion", "666_motion", "dazhao_motion" };
+    jdField_a_of_type_ArrayOfInt = new int[] { 22, 22, 22, 22, 22, 22, 35, 99, 25, 60, 0, 0 };
+    jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = new android.graphics.Bitmap[6];
+    jdField_b_of_type_ArrayOfAndroidGraphicsBitmap = new android.graphics.Bitmap[6];
+    jdField_c_of_type_ArrayOfAndroidGraphicsBitmap = new android.graphics.Bitmap[6];
+    jdField_d_of_type_ArrayOfAndroidGraphicsBitmap = new android.graphics.Bitmap[6];
+    jdField_d_of_type_Boolean = true;
+  }
+  
+  public static int a(QQAppInterface paramQQAppInterface)
+  {
+    return a(paramQQAppInterface, 1);
+  }
+  
+  public static int a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    String str = paramQQAppInterface.getAccount();
+    if ((!jdField_i_of_type_Boolean) || (!jdField_n_of_type_JavaLangString.equals(str)))
+    {
+      paramQQAppInterface = PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp());
+      if (paramQQAppInterface.contains(str + "_" + "poke_bar_config_version"))
+      {
+        q = paramQQAppInterface.getInt(str + "_" + "aio_unique_poke_show", 0);
+        r = paramQQAppInterface.getInt(str + "_" + "aio_unique_poke_type", 0);
+      }
+      jdField_n_of_type_JavaLangString = str;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("pokeMsg", 2, String.format("uniquepoke show %d type %d", new Object[] { Integer.valueOf(q), Integer.valueOf(r) }));
+    }
+    jdField_g_of_type_Boolean = true;
+    if (paramInt == 1) {
+      return q;
+    }
+    if (paramInt == 2) {
+      return r;
+    }
+    return -1;
+  }
+  
+  public static int a(String paramString)
+  {
+    return new JSONObject(paramString).getInt("comboNum");
+  }
+  
+  public static android.graphics.Bitmap a(android.graphics.Bitmap paramBitmap)
+  {
+    int i1 = paramBitmap.getWidth();
+    int i2 = paramBitmap.getHeight();
+    Matrix localMatrix = new Matrix();
+    localMatrix.postScale(-1.0F, 1.0F);
+    try
+    {
+      paramBitmap = android.graphics.Bitmap.createBitmap(paramBitmap, 0, 0, i1, i2, localMatrix, true);
+      if ((QLog.isColorLevel()) && (paramBitmap != null)) {
+        Log.d("test", "convertBmp w=" + paramBitmap.getWidth());
+      }
+      return paramBitmap;
+    }
+    catch (OutOfMemoryError paramBitmap)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "get pokeFriendPokeImage oom" + paramBitmap);
+        }
+        paramBitmap = null;
+      }
+    }
+  }
+  
+  public static Drawable a(int paramInt, boolean paramBoolean, Resources paramResources)
+  {
+    int i3 = 2130844790;
+    int i4 = 2130844789;
+    if ((paramInt < 0) || (paramInt > 6)) {
+      paramInt = 1;
+    }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.a.jdField_a_of_type_Ajxv != null) {
-        this.a.jdField_a_of_type_Ajxv.a(10);
-      }
-      long l = System.currentTimeMillis();
-      if (!akgc.a(ahcp.jdField_a_of_type_Long, l)) {
-        continue;
-      }
-      ahcp.jdField_a_of_type_Long = l;
-      Object localObject2 = (MessageForQQWalletMsg)paramView.getTag();
-      QQWalletRedPacketMsg localQQWalletRedPacketMsg = ((MessageForQQWalletMsg)localObject2).mQQWalletRedPacketMsg;
-      ajul localajul = (ajul)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(125);
-      if (nmy.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin))
+      if (paramInt == 0) {}
+      for (int i2 = 1;; i2 = paramInt)
       {
-        localajul.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, 10);
-        if (!QLog.isColorLevel()) {
-          continue;
+        paramInt = i4;
+        int i1 = i3;
+        switch (i2)
+        {
+        default: 
+          i1 = i3;
+          paramInt = i4;
+        case 0: 
+        case 1: 
+        case 2: 
+        case 3: 
+        case 4: 
+        case 6: 
+          for (;;)
+          {
+            i2 -= 1;
+            a(jdField_c_of_type_ArrayOfAndroidGraphicsBitmap, jdField_a_of_type_ArrayOfAndroidGraphicsBitmap, i2, paramResources, paramInt, i1);
+            if (!paramBoolean)
+            {
+              if ((jdField_c_of_type_ArrayOfAndroidGraphicsBitmap[i2] != null) && (jdField_d_of_type_ArrayOfAndroidGraphicsBitmap[i2] == null)) {
+                jdField_d_of_type_ArrayOfAndroidGraphicsBitmap[i2] = a(jdField_c_of_type_ArrayOfAndroidGraphicsBitmap[i2]);
+              }
+              if ((jdField_b_of_type_ArrayOfAndroidGraphicsBitmap[i2] != null) && (jdField_b_of_type_ArrayOfAndroidGraphicsBitmap[i2] == null)) {
+                jdField_b_of_type_ArrayOfAndroidGraphicsBitmap[i2] = a(jdField_b_of_type_ArrayOfAndroidGraphicsBitmap[i2]);
+              }
+            }
+            if (!paramBoolean) {
+              break;
+            }
+            return bkxu.a(paramResources, jdField_c_of_type_ArrayOfAndroidGraphicsBitmap[i2], jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i2]);
+            paramInt = 2130844728;
+            i1 = 2130844729;
+            continue;
+            paramInt = 2130844712;
+            i1 = 2130844713;
+            continue;
+            paramInt = 2130844733;
+            i1 = 2130844734;
+            continue;
+            paramInt = 2130844730;
+            i1 = 2130844731;
+          }
         }
-        QLog.d("PasswdRedBagManager", 2, "current is in Anonymous, dont show passwdredbag tips");
-        continue;
+        if (paramBoolean)
+        {
+          a(jdField_c_of_type_ArrayOfAndroidGraphicsBitmap, jdField_a_of_type_ArrayOfAndroidGraphicsBitmap, i2 - 1, paramResources, 2130844737, 2130844738);
+          return bkxu.a(paramResources, jdField_c_of_type_ArrayOfAndroidGraphicsBitmap[(i2 - 1)], jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[(i2 - 1)]);
+        }
+        a(jdField_d_of_type_ArrayOfAndroidGraphicsBitmap, jdField_b_of_type_ArrayOfAndroidGraphicsBitmap, i2 - 1, paramResources, 2130844735, 2130844736);
+        return bkxu.a(paramResources, jdField_d_of_type_ArrayOfAndroidGraphicsBitmap[(i2 - 1)], jdField_b_of_type_ArrayOfAndroidGraphicsBitmap[(i2 - 1)]);
+        return bkxu.a(paramResources, jdField_d_of_type_ArrayOfAndroidGraphicsBitmap[i2], jdField_b_of_type_ArrayOfAndroidGraphicsBitmap[i2]);
       }
-      Object localObject1 = localajul.a(localQQWalletRedPacketMsg.redPacketId);
-      l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-      if ((localObject1 != null) && ((((ajuk)localObject1).jdField_a_of_type_Boolean) || (((ajuk)localObject1).b) || (((ajuk)localObject1).c) || (((ajuk)localObject1).jdField_a_of_type_Long < l)))
+    }
+  }
+  
+  public static Drawable a(android.graphics.Bitmap paramBitmap)
+  {
+    int i1 = paramBitmap.getWidth();
+    int i2 = paramBitmap.getHeight();
+    Matrix localMatrix = new Matrix();
+    localMatrix.postScale(-1.0F, 1.0F);
+    try
+    {
+      paramBitmap = android.graphics.Bitmap.createBitmap(paramBitmap, 0, 0, i1, i2, localMatrix, true);
+      if ((QLog.isColorLevel()) && (paramBitmap != null)) {
+        Log.d("test", "convertBmp w=" + paramBitmap.getWidth());
+      }
+      paramBitmap = new BitmapDrawable(paramBitmap);
+      ((BitmapDrawable)paramBitmap).setTargetDensity(jdField_p_of_type_Int);
+      return paramBitmap;
+    }
+    catch (OutOfMemoryError paramBitmap)
+    {
+      for (;;)
       {
-        localajul.a(localQQWalletRedPacketMsg.redPacketId, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType);
-        l = VACDReportUtil.a(null, "qqwallet", "graphb", "pwd.click", "msgType=" + ((MessageForQQWalletMsg)localObject2).messageType, 0, null);
-        Bundle localBundle = new Bundle();
-        localBundle.putInt("subchannel", localQQWalletRedPacketMsg.body.subChannel);
-        localajul.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (ajuk)localObject1, l, ((MessageForQQWalletMsg)localObject2).fromHBList, localBundle);
-        localajul.a(localQQWalletRedPacketMsg.redPacketId, true);
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "get pokeFriendPokeImage oom" + paramBitmap);
         }
-        QLog.d("PasswdRedBagManager", 2, "click open passwdredbag, isPasswdRedBagOpen=" + ((ajuk)localObject1).jdField_a_of_type_Boolean + ",isPasswdRedBagFinish=" + ((ajuk)localObject1).b + ",isPasswdRedBagOverDue=" + ((ajuk)localObject1).c);
-        continue;
+        paramBitmap = null;
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null)
+    }
+  }
+  
+  public static String a()
+  {
+    return VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_POKE);
+  }
+  
+  public static String a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface != null)
+    {
+      String str = paramQQAppInterface.getAccount();
+      if ((!jdField_h_of_type_Boolean) || (!jdField_m_of_type_JavaLangString.equals(str)))
       {
-        localObject2 = (afsd)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getHelper(27);
-        if ((localObject2 != null) && (localObject1 != null)) {
-          ((afsd)localObject2).a(localQQWalletRedPacketMsg.redPacketId, ((ajuk)localObject1).e, localQQWalletRedPacketMsg.body.subChannel);
+        paramQQAppInterface = PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp());
+        if (paramQQAppInterface.contains(str + "_" + "poke_bar_config_version"))
+        {
+          jdField_k_of_type_JavaLangString = paramQQAppInterface.getString(str + "_" + "aio_poke_panel_config", "".toString());
+          if (jdField_k_of_type_JavaLangString == null) {
+            jdField_k_of_type_JavaLangString = "";
+          }
         }
+        jdField_m_of_type_JavaLangString = str;
       }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("pokeMsg", 2, "PokePanelPlaceInfo:" + jdField_k_of_type_JavaLangString);
+    }
+    jdField_h_of_type_Boolean = true;
+    return jdField_k_of_type_JavaLangString;
+  }
+  
+  public static String a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    a(paramQQAppInterface);
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    case 5: 
+      return jdField_g_of_type_JavaLangString;
+    case 6: 
+      return jdField_h_of_type_JavaLangString;
+    case 7: 
+      return jdField_i_of_type_JavaLangString;
+    }
+    return jdField_j_of_type_JavaLangString;
+  }
+  
+  public static String a(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    paramString = new JSONObject(paramString);
+    if (paramString.getInt("isShowPanel") == 1)
+    {
+      paramString = paramString.getJSONArray("panel_source");
+      int i1 = 0;
+      while (i1 < paramString.length())
+      {
+        localStringBuilder.append(paramString.getInt(i1));
+        i1 += 1;
+      }
+      return localStringBuilder.toString();
+    }
+    return null;
+  }
+  
+  public static ArrayList<afuf> a(AppRuntime paramAppRuntime, VasQuickUpdateManager.CallBacker paramCallBacker)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject1 = new File(jdField_f_of_type_JavaLangString);
+    if (((File)localObject1).exists()) {}
+    for (;;)
+    {
+      int i1;
       try
       {
-        localObject1 = new ArrayList(1);
-        ((ArrayList)localObject1).add(localQQWalletRedPacketMsg.redPacketId);
-        localajul.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (ArrayList)localObject1);
-        label482:
-        localajul.a(localQQWalletRedPacketMsg.redPacketId, false);
-        if (!QLog.isColorLevel()) {
+        localObject1 = new JSONObject(FileUtils.readFileContent((File)localObject1));
+        try
+        {
+          if (!((JSONObject)localObject1).optBoolean("lottieEnable", true))
+          {
+            if (!QLog.isColorLevel()) {
+              break label644;
+            }
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "lottie disable");
+            break label644;
+          }
+          localObject1 = ((JSONObject)localObject1).optJSONArray("itemList");
+          i1 = 0;
+          if (i1 < ((JSONArray)localObject1).length())
+          {
+            localObject2 = (JSONObject)((JSONArray)localObject1).get(i1);
+            Object localObject3 = ((JSONObject)localObject2).optString("id");
+            Object localObject4 = ((JSONObject)localObject2).optString("name");
+            int i2 = ((JSONObject)localObject2).optInt("feeType", 0);
+            int i3 = ((JSONObject)localObject2).optInt("status", 0);
+            int i4 = ((JSONObject)localObject2).optInt("isShow", 0);
+            String str = ((JSONObject)localObject2).optString("minVersion");
+            if (!a(str))
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d(jdField_a_of_type_JavaLangString, 2, "curr ver: 8.4.10, config qqVer:" + str);
+              }
+            }
+            else if ((i3 == 1) && (i4 == 1))
+            {
+              localObject2 = new afuf();
+              ((afuf)localObject2).jdField_a_of_type_Int = 126;
+              ((afuf)localObject2).jdField_b_of_type_Int = Integer.parseInt((String)localObject3);
+              ((afuf)localObject2).jdField_a_of_type_JavaLangString = ((String)localObject4);
+              ((afuf)localObject2).jdField_c_of_type_Int = i2;
+              ((afuf)localObject2).jdField_b_of_type_JavaLangString = ((String)localObject4);
+              ((afuf)localObject2).jdField_c_of_type_JavaLangString = str;
+              localObject3 = (VasQuickUpdateManager)paramAppRuntime.getManager(QQManagerFactory.VAS_QUICKUPDATE_MANAGER);
+              if (!a("effect.gif", ((afuf)localObject2).jdField_b_of_type_Int))
+              {
+                ((afuf)localObject2).jdField_c_of_type_Boolean = true;
+                ((VasQuickUpdateManager)localObject3).downloadItem(21L, "poke.item.effect." + ((afuf)localObject2).jdField_b_of_type_Int, "parseVasPokeConfig");
+                ((VasQuickUpdateManager)localObject3).addCallBacker(paramCallBacker);
+              }
+              localObject4 = URLDrawable.URLDrawableOptions.obtain();
+              ((URLDrawable.URLDrawableOptions)localObject4).mLoadingDrawable = BaseApplication.getContext().getResources().getDrawable(2130847412);
+              ((URLDrawable.URLDrawableOptions)localObject4).mFailedDrawable = BaseApplication.getContext().getResources().getDrawable(2130847412);
+              ((URLDrawable.URLDrawableOptions)localObject4).mPlayGifImage = true;
+              ((URLDrawable.URLDrawableOptions)localObject4).mGifRoundCorner = 0.0F;
+              ((afuf)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable = URLDrawable.getDrawable(new File(jdField_e_of_type_JavaLangString + ((afuf)localObject2).jdField_b_of_type_Int + "/" + "effect.gif"), (URLDrawable.URLDrawableOptions)localObject4);
+              if (QLog.isColorLevel()) {
+                QLog.i(jdField_a_of_type_JavaLangString, 2, "name: " + ((afuf)localObject2).jdField_a_of_type_JavaLangString + " resId: " + ((afuf)localObject2).jdField_b_of_type_Int + " feeType: " + ((afuf)localObject2).jdField_c_of_type_Int);
+              }
+              localArrayList.add(localObject2);
+              if (!a("bubble", ((afuf)localObject2).jdField_b_of_type_Int))
+              {
+                ((afuf)localObject2).jdField_b_of_type_Boolean = true;
+                if (!EmoticonUtils.isWifi()) {
+                  break label647;
+                }
+                ((VasQuickUpdateManager)localObject3).downloadItem(21L, "poke.item.res." + ((afuf)localObject2).jdField_b_of_type_Int, "parseVasPokeConfig");
+                ((VasQuickUpdateManager)localObject3).addCallBacker(paramCallBacker);
+              }
+            }
+          }
+        }
+        catch (Exception paramAppRuntime)
+        {
+          QLog.e("PokeItemHelper", 1, "parse json config fail", paramAppRuntime);
+        }
+      }
+      catch (Throwable paramAppRuntime)
+      {
+        Object localObject2;
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "getJsonOOM,json_name:vasPoke", paramAppRuntime);
+        continue;
+      }
+      return localArrayList;
+      ((afuf)localObject2).jdField_b_of_type_Boolean = false;
+      break label647;
+      a(paramAppRuntime, paramCallBacker);
+      continue;
+      label644:
+      return localArrayList;
+      label647:
+      i1 += 1;
+    }
+  }
+  
+  public static void a()
+  {
+    if (jdField_a_of_type_JavaUtilArrayList != null) {
+      jdField_a_of_type_JavaUtilArrayList.clear();
+    }
+    jdField_a_of_type_JavaUtilArrayList = null;
+  }
+  
+  public static void a(int paramInt)
+  {
+    jdField_j_of_type_Boolean = true;
+    s = paramInt;
+  }
+  
+  public static void a(int paramInt1, int paramInt2)
+  {
+    jdField_i_of_type_Boolean = true;
+    q = paramInt1;
+    r = paramInt2;
+  }
+  
+  public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    jdField_g_of_type_Boolean = true;
+    jdField_b_of_type_Int = paramInt1;
+    jdField_c_of_type_Int = paramInt2;
+    jdField_d_of_type_Int = paramInt3;
+    jdField_e_of_type_Int = paramInt4;
+  }
+  
+  public static void a(ImageView paramImageView, int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == 126)
+    {
+      File localFile = new File(jdField_e_of_type_JavaLangString + paramInt2 + "/pressed.png");
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = BaseApplication.getContext().getResources().getDrawable(2130847412);
+      localURLDrawableOptions.mFailedDrawable = BaseApplication.getContext().getResources().getDrawable(2130847412);
+      paramImageView.setImageDrawable(URLDrawable.getDrawable(localFile, localURLDrawableOptions));
+      return;
+    }
+    paramImageView.setImageResource(paramInt2);
+  }
+  
+  private static void a(QQAppInterface paramQQAppInterface)
+  {
+    String str;
+    if (paramQQAppInterface != null)
+    {
+      str = paramQQAppInterface.getAccount();
+      if ((!jdField_g_of_type_Boolean) || (!jdField_l_of_type_JavaLangString.equals(str)))
+      {
+        paramQQAppInterface = PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp());
+        if (!paramQQAppInterface.contains(str + "_" + "poke_bar_config_version")) {
+          break label672;
+        }
+        jdField_b_of_type_Int = paramQQAppInterface.getInt(str + "_" + "poke_bar_switch", jdField_f_of_type_Int);
+        jdField_c_of_type_Int = paramQQAppInterface.getInt(str + "_" + "poke_pad_switch", jdField_g_of_type_Int);
+        jdField_e_of_type_Int = paramQQAppInterface.getInt(str + "_" + "aio_poke_unittime", jdField_i_of_type_Int);
+        jdField_d_of_type_Int = paramQQAppInterface.getInt(str + "_" + "aio_poke_unitcount", jdField_h_of_type_Int);
+        jdField_j_of_type_Int = paramQQAppInterface.getInt(str + "_" + "aio_poke_entry_type", 0);
+        jdField_k_of_type_Int = paramQQAppInterface.getInt(str + "_" + "aio_pe_view_type", 0);
+        jdField_g_of_type_JavaLangString = paramQQAppInterface.getString(str + "_" + "poke_emo_res_url", "");
+        jdField_h_of_type_JavaLangString = paramQQAppInterface.getString(str + "_" + "poke_emo_res_md5", "");
+        jdField_i_of_type_JavaLangString = paramQQAppInterface.getString(str + "_" + "poke_emo_surprice_indexs", "");
+        jdField_j_of_type_JavaLangString = paramQQAppInterface.getString(str + "_" + "poke_emo_order", "");
+        jdField_l_of_type_Int = paramQQAppInterface.getInt(str + "_" + "aio_pe_input_switch", 0);
+        jdField_m_of_type_Int = paramQQAppInterface.getInt(str + "_" + "aio_pe_feed_back_switch", 0);
+        jdField_n_of_type_Int = paramQQAppInterface.getInt(str + "_" + "aio_pe_bubble_limit_count", 50);
+        jdField_a_of_type_Int = paramQQAppInterface.getInt(str + "_" + "pe_last_tab_index", -1);
+      }
+    }
+    for (;;)
+    {
+      jdField_l_of_type_JavaLangString = str;
+      jdField_g_of_type_Boolean = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("pokeMsg", 2, String.format("getPokeSwitch, first init, bar switch: %d, pad switch: %d, uin: %s ,limited count:%d,limited time:%d,peInputSwitch:%d,entryType:%d,viewType:%d", new Object[] { Integer.valueOf(jdField_b_of_type_Int), Integer.valueOf(jdField_c_of_type_Int), jdField_l_of_type_JavaLangString, Integer.valueOf(jdField_d_of_type_Int), Integer.valueOf(jdField_e_of_type_Int), Integer.valueOf(jdField_l_of_type_Int), Integer.valueOf(jdField_j_of_type_Int), Integer.valueOf(jdField_k_of_type_Int) }));
+      }
+      return;
+      label672:
+      jdField_b_of_type_Int = jdField_f_of_type_Int;
+      jdField_c_of_type_Int = jdField_g_of_type_Int;
+      jdField_j_of_type_Int = 0;
+      jdField_k_of_type_Int = 0;
+      jdField_l_of_type_Int = 0;
+      jdField_m_of_type_Int = 0;
+      jdField_n_of_type_Int = 50;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, String paramString1, int paramInt2, String paramString2, int paramInt3)
+  {
+    ((VasExtensionHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.VAS_EXTENSION_HANDLER)).a(paramInt1, paramString1, paramInt2, paramString2, paramInt3);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2, int paramInt3, int paramInt4)
+  {
+    jdField_j_of_type_Int = paramInt1;
+    jdField_k_of_type_Int = paramInt4;
+    jdField_g_of_type_JavaLangString = paramString1;
+    jdField_h_of_type_JavaLangString = paramString2;
+    jdField_i_of_type_JavaLangString = paramString3;
+    jdField_j_of_type_JavaLangString = paramString4;
+    jdField_l_of_type_Int = paramInt2;
+    jdField_n_of_type_Int = paramInt3;
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "setPokeEmoPanelConfig|entryType: " + jdField_j_of_type_Int + ",peSurpriseIndexs: " + jdField_i_of_type_JavaLangString + ",peOders: " + paramString4);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    paramQQAppInterface = new ahcz(paramQQAppInterface, paramInt2, paramActivity, paramInt1);
+    paramQQAppInterface = bhdj.a(paramActivity, 0, anvx.a(2131707781), paramString1, anvx.a(2131707780), paramString2, paramQQAppInterface, paramQQAppInterface);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.show();
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, @NonNull DiniFlyAnimationView paramDiniFlyAnimationView, @Nullable agsz paramagsz, int paramInt, String paramString)
+  {
+    if (a()) {
+      ThreadManager.postImmediately(new PokeItemHelper.1(paramInt), null, true);
+    }
+    paramQQAppInterface = jdField_e_of_type_JavaLangString + paramInt + "/" + paramString + "/";
+    paramQQAppInterface = new File(paramQQAppInterface + paramString + ".json");
+    try
+    {
+      paramagsz = new ahcx(paramDiniFlyAnimationView, paramagsz, paramString);
+      Bundle localBundle = new Bundle();
+      localBundle.putString("key", "lottie_vaspoke_" + String.valueOf(paramInt) + paramString);
+      localBundle.putString("path", jdField_e_of_type_JavaLangString + paramInt + "/" + paramString + "/images/");
+      LottieComposition.Factory.fromInputStreamWithCacheBitmap(paramContext, new FileInputStream(paramQQAppInterface), paramDiniFlyAnimationView.getLottieDrawable(), paramagsz, localBundle, BaseApplicationImpl.sImageCache);
+      return;
+    }
+    catch (FileNotFoundException paramQQAppInterface)
+    {
+      QLog.e("PokeItemHelper", 2, "vaspoke, file not found. id: " + paramInt + " ,category: " + paramString, paramQQAppInterface);
+      return;
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      QLog.e("PokeItemHelper", 2, "vaspoke, exception occur, id: " + paramInt + " ,category: " + paramString, paramQQAppInterface);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3)
+  {
+    if (!jdField_d_of_type_Boolean) {}
+    do
+    {
+      do
+      {
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("PokeEmo", 2, "startDownloadPERes resUrl " + paramString1 + ",resMD5" + paramString2);
+        }
+        if (!jdField_c_of_type_Boolean) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("PokeEmo", 2, "other request is downloading ");
+      return;
+      if (jdField_o_of_type_Int <= 15) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("PokeEmo", 2, "pe res download exceed limit 5 ");
+    return;
+    jdField_c_of_type_Boolean = true;
+    String str = paramString3 + "pe.zip";
+    paramString2 = new ahda(paramString3, paramString2);
+    paramQQAppInterface = paramQQAppInterface.getNetEngine(0);
+    paramString3 = new HttpNetReq();
+    paramString3.mCallback = paramString2;
+    paramString3.mHttpMethod = 0;
+    paramString3.mReqUrl = paramString1;
+    paramString3.mOutPath = str;
+    paramString3.mPrioty = 0;
+    paramQQAppInterface.sendReq(paramString3);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    if (((paramBoolean == true) && (u != 2)) || ((!paramBoolean) && (u != 1)))
+    {
+      paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
+      if (paramQQAppInterface != null) {
+        paramQQAppInterface.edit().putBoolean("sp_aio_panel_unique_clicked", true).commit();
+      }
+      if (paramBoolean) {
+        u = 2;
+      }
+    }
+    else
+    {
+      return;
+    }
+    u = 1;
+  }
+  
+  public static void a(String paramString)
+  {
+    jdField_h_of_type_Boolean = true;
+    jdField_k_of_type_JavaLangString = paramString;
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).edit();
+    localEditor.putInt(paramString + "_" + "pe_last_tab_index", paramInt);
+    localEditor.apply();
+  }
+  
+  private static void a(String paramString1, String paramString2)
+  {
+    int i1 = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "[res checking]" + paramString1 + paramString2);
+    }
+    if (paramString2.equals("dazhao_motion")) {
+      jdField_a_of_type_JavaUtilBitSet.set(11, false);
+    }
+    for (;;)
+    {
+      return;
+      if (paramString2.equals("666_motion"))
+      {
+        jdField_a_of_type_JavaUtilBitSet.set(10, false);
+        return;
+      }
+      while (i1 < 12)
+      {
+        if (jdField_a_of_type_ArrayOfJavaLangString[i1].equals(paramString2))
+        {
+          Object localObject = new File(paramString1 + paramString2);
+          if (((File)localObject).isDirectory())
+          {
+            localObject = ((File)localObject).list();
+            if ((localObject != null) && (localObject.length >= jdField_a_of_type_ArrayOfInt[i1]))
+            {
+              jdField_a_of_type_JavaUtilBitSet.set(i1, true);
+              if (QLog.isColorLevel()) {
+                QLog.d(jdField_a_of_type_JavaLangString, 2, "[res checked]" + paramString2);
+              }
+            }
+          }
+        }
+        i1 += 1;
+      }
+    }
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, VasQuickUpdateManager.CallBacker paramCallBacker)
+  {
+    if (VasQuickUpdateManager.getFileFromLocal(paramAppRuntime, 21L, "poke.effectList", jdField_f_of_type_JavaLangString, true, paramCallBacker) != null)
+    {
+      paramAppRuntime = (asbm)paramAppRuntime.getManager(QQManagerFactory.EARLY_DOWNLOAD_MANAGER);
+      if (paramAppRuntime != null)
+      {
+        paramAppRuntime = (ascd)paramAppRuntime.a("qq.android.poke.res_0625");
+        if ((paramAppRuntime != null) && (!paramAppRuntime.g()))
+        {
+          paramAppRuntime.f();
+          if (QLog.isColorLevel()) {
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "vas poke config exists, do not download, set ready");
+          }
+        }
+      }
+    }
+  }
+  
+  public static void a(android.graphics.Bitmap[] paramArrayOfBitmap1, android.graphics.Bitmap[] paramArrayOfBitmap2, int paramInt1, Resources paramResources, int paramInt2, int paramInt3)
+  {
+    if (paramArrayOfBitmap1[paramInt1] == null)
+    {
+      android.graphics.Bitmap localBitmap = bheg.a(paramResources, paramInt2);
+      if (localBitmap != null) {
+        paramArrayOfBitmap1[paramInt1] = localBitmap;
+      }
+    }
+    if (paramArrayOfBitmap2[paramInt1] == null)
+    {
+      paramArrayOfBitmap1 = bheg.a(paramResources, paramInt3);
+      if (paramArrayOfBitmap1 != null) {
+        paramArrayOfBitmap2[paramInt1] = paramArrayOfBitmap1;
+      }
+    }
+  }
+  
+  public static boolean a()
+  {
+    boolean bool2 = false;
+    Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.vip_individuation.name());
+    boolean bool1 = bool2;
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      localObject = ((String)localObject).split("\\|");
+      bool1 = bool2;
+      if (localObject != null)
+      {
+        bool1 = bool2;
+        if (localObject.length >= 7)
+        {
+          bool1 = bool2;
+          if (!"0".equals(localObject[6])) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if ((paramInt < 0) || (paramInt > 6)) {
+      bool1 = false;
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return bool1;
+            if (paramInt != 6) {
+              break;
+            }
+            if (jdField_a_of_type_JavaUtilBitSet == null)
+            {
+              jdField_a_of_type_JavaUtilBitSet = new BitSet(12);
+              jdField_a_of_type_JavaUtilBitSet.clear();
+              jdField_a_of_type_JavaUtilBitSet.set(6);
+            }
+            bool1 = bool2;
+          } while (jdField_a_of_type_JavaUtilBitSet.get(11));
+          Object localObject = jdField_d_of_type_JavaLangString + "/poke/dazhao_motion/";
+          File localFile1 = new File((String)localObject, "dazhao_move.png");
+          File localFile2 = new File((String)localObject, "dazhao_motion");
+          localObject = new File((String)localObject, "dazhao2_motion");
+          if ((localFile1.exists()) && (localFile2.exists()) && (localFile2.isDirectory()) && (localFile2.list().length == 34) && (((File)localObject).exists()) && (((File)localObject).isDirectory()) && (((File)localObject).list().length == 22))
+          {
+            jdField_a_of_type_JavaUtilBitSet.set(11, true);
+            return true;
+          }
+          return false;
+          bool1 = bool2;
+        } while (paramInt == 5);
+        bool1 = bool2;
+      } while (paramInt == 0);
+      bool1 = bool2;
+    } while (paramInt == 1);
+    return c(paramInt + 6 - 1);
+  }
+  
+  public static boolean a(SharedPreferences paramSharedPreferences)
+  {
+    if (u == 0) {
+      if (paramSharedPreferences.getBoolean("sp_aio_panel_unique_clicked", false)) {
+        u = 1;
+      }
+    }
+    while ((u == 1) || (u != 2))
+    {
+      return false;
+      u = 2;
+      return true;
+    }
+    return true;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    return b(paramQQAppInterface) == 1;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  {
+    long l1 = bcrg.a();
+    paramSessionInfo = paramQQAppInterface.getMessageFacade().getMsgList(paramSessionInfo.curFriendUin, paramSessionInfo.curType);
+    int i1;
+    MessageRecord localMessageRecord;
+    boolean bool;
+    if ((paramSessionInfo != null) && (paramSessionInfo.size() > 0))
+    {
+      int i2 = paramSessionInfo.size() - 1;
+      i1 = 0;
+      for (;;)
+      {
+        if (i2 >= 0)
+        {
+          localMessageRecord = (MessageRecord)paramSessionInfo.get(i2);
+          if (!localMessageRecord.isSend()) {
+            i2 -= 1;
+          } else if (l1 - localMessageRecord.time > b(paramQQAppInterface, 3)) {
+            bool = true;
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "isCanSendPoke, isCansend= " + bool);
+      }
+      return bool;
+      if ((localMessageRecord instanceof MessageForPoke))
+      {
+        int i3 = i1 + 1;
+        i1 = i3;
+        if (i3 < b(paramQQAppInterface, 2)) {
+          break;
+        }
+        bool = false;
+        continue;
+      }
+      break;
+      bool = true;
+    }
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (AppSetting.a(paramString) < 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "curr ver: 8.4.10, config qqVer:" + paramString);
+      }
+      return false;
+    }
+    return true;
+  }
+  
+  public static boolean a(String paramString, int paramInt)
+  {
+    bpqb.a(jdField_e_of_type_JavaLangString);
+    if (("bubble".equals(paramString)) || ("fullscreen".equals(paramString)) || ("view_aio".equals(paramString))) {
+      return new File(jdField_e_of_type_JavaLangString + paramInt + File.separator + paramString + File.separator + paramString + ".json").exists();
+    }
+    return new File(jdField_e_of_type_JavaLangString + paramInt + "/" + paramString).exists();
+  }
+  
+  public static int b(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {
+      return 0;
+    }
+    String str = paramQQAppInterface.getAccount();
+    if ((!jdField_j_of_type_Boolean) || (!jdField_o_of_type_JavaLangString.equals(str)))
+    {
+      paramQQAppInterface = PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp());
+      if (paramQQAppInterface.contains(str + "_" + "poke_bar_config_version")) {
+        s = paramQQAppInterface.getInt(str + "_" + "aio_poke_touch_effect", 0);
+      }
+      jdField_o_of_type_JavaLangString = str;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("pokeMsg", 2, String.format("touchEffect apply:%d", new Object[] { Integer.valueOf(s) }));
+    }
+    jdField_j_of_type_Boolean = true;
+    return s;
+  }
+  
+  public static int b(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    a(paramQQAppInterface);
+    switch (paramInt)
+    {
+    case 5: 
+    case 6: 
+    case 7: 
+    case 8: 
+    default: 
+      return -1;
+    case 1: 
+      return jdField_b_of_type_Int;
+    case 0: 
+      return jdField_c_of_type_Int;
+    case 2: 
+      return jdField_d_of_type_Int;
+    case 3: 
+      return jdField_e_of_type_Int;
+    case 4: 
+      return jdField_j_of_type_Int;
+    case 11: 
+      return jdField_k_of_type_Int;
+    case 9: 
+      return jdField_l_of_type_Int;
+    }
+    return jdField_n_of_type_Int;
+  }
+  
+  public static int b(String paramString)
+  {
+    return new JSONObject(paramString).getInt("TouchFeelingEntrance");
+  }
+  
+  public static void b()
+  {
+    android.graphics.Bitmap[][] arrayOfBitmap; = new android.graphics.Bitmap[4][];
+    arrayOfBitmap;[0] = jdField_b_of_type_ArrayOfAndroidGraphicsBitmap;
+    arrayOfBitmap;[1] = jdField_d_of_type_ArrayOfAndroidGraphicsBitmap;
+    arrayOfBitmap;[2] = jdField_c_of_type_ArrayOfAndroidGraphicsBitmap;
+    arrayOfBitmap;[3] = jdField_a_of_type_ArrayOfAndroidGraphicsBitmap;
+    int i1 = 0;
+    while (i1 < arrayOfBitmap;.length)
+    {
+      [Landroid.graphics.Bitmap localBitmap; = arrayOfBitmap;[i1];
+      int i2 = 0;
+      while (i2 < localBitmap;.length)
+      {
+        if (localBitmap;[i2] != null)
+        {
+          localBitmap;[i2].recycle();
+          localBitmap;[i2] = null;
+        }
+        i2 += 1;
+      }
+      i1 += 1;
+    }
+  }
+  
+  public static void b(int paramInt)
+  {
+    jdField_m_of_type_Int = paramInt;
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    if (((paramBoolean == true) && (v != 2)) || ((!paramBoolean) && (v != 1)))
+    {
+      paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
+      if (paramQQAppInterface != null) {
+        paramQQAppInterface.edit().putBoolean("sp_aio_panel_poke_clicked", true).commit();
+      }
+      if (paramBoolean) {
+        v = 2;
+      }
+    }
+    else
+    {
+      return;
+    }
+    v = 1;
+  }
+  
+  public static void b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "[all res checking]  dir" + paramString);
+    }
+    if (jdField_a_of_type_JavaUtilBitSet == null)
+    {
+      jdField_a_of_type_JavaUtilBitSet = new BitSet(12);
+      jdField_a_of_type_JavaUtilBitSet.clear();
+      jdField_a_of_type_JavaUtilBitSet.set(7);
+    }
+    Object localObject = new File(paramString);
+    if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
+    {
+      localObject = ((File)localObject).list();
+      if (localObject != null)
+      {
+        int i2 = localObject.length;
+        int i1 = 0;
+        while (i1 < i2)
+        {
+          a(paramString, localObject[i1]);
+          i1 += 1;
+        }
+      }
+    }
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt > 6)) {
+      return false;
+    }
+    if (paramInt == 0) {
+      return true;
+    }
+    return c(paramInt - 1);
+  }
+  
+  public static boolean b(SharedPreferences paramSharedPreferences)
+  {
+    if (v == 0) {
+      if (paramSharedPreferences.getBoolean("sp_aio_panel_poke_clicked", false)) {
+        v = 2;
+      }
+    }
+    do
+    {
+      return true;
+      v = 1;
+      return false;
+      if (v == 1) {
+        return false;
+      }
+    } while (v == 2);
+    return false;
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface)
+  {
+    return jdField_m_of_type_Int == 1;
+  }
+  
+  public static int c(String paramString)
+  {
+    return new JSONObject(paramString).getInt("IndependentEntrance");
+  }
+  
+  public static void c(int paramInt)
+  {
+    jdField_k_of_type_Boolean = true;
+    t = paramInt;
+  }
+  
+  public static boolean c(int paramInt)
+  {
+    if (jdField_a_of_type_JavaUtilBitSet == null)
+    {
+      jdField_a_of_type_JavaUtilBitSet = new BitSet(12);
+      jdField_a_of_type_JavaUtilBitSet.clear();
+      jdField_a_of_type_JavaUtilBitSet.set(6);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "[res check] type:" + paramInt);
+    }
+    boolean bool2 = jdField_a_of_type_JavaUtilBitSet.get(paramInt);
+    boolean bool1 = bool2;
+    if (!bool2)
+    {
+      Object localObject = new File(jdField_d_of_type_JavaLangString + "poke/" + jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "[res dir]" + jdField_d_of_type_JavaLangString + "poke/" + jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
+      }
+      bool1 = bool2;
+      if (((File)localObject).exists())
+      {
+        bool1 = bool2;
+        if (((File)localObject).isDirectory())
+        {
+          localObject = ((File)localObject).list();
+          if (localObject == null) {
+            break label225;
+          }
+          bool1 = bool2;
+          if (localObject.length == jdField_a_of_type_ArrayOfInt[paramInt])
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d(jdField_a_of_type_JavaLangString, 2, "[res checked]");
+            }
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
+    label225:
+    return false;
+  }
+  
+  public static boolean c(QQAppInterface paramQQAppInterface)
+  {
+    if (!jdField_f_of_type_Boolean) {}
+    while ((b(paramQQAppInterface, 9) == 0) || ((b(paramQQAppInterface, 4) == 0) && (b(paramQQAppInterface, 11) == 1))) {
+      return false;
+    }
+    return jdField_b_of_type_Boolean;
+  }
+  
+  public static int d(String paramString)
+  {
+    try
+    {
+      int i1 = new JSONObject(paramString).getInt("IndependentEntranceType");
+      return i1;
+    }
+    catch (JSONException paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, paramString.toString());
+      }
+    }
+    return 0;
+  }
+  
+  public static boolean d(QQAppInterface paramQQAppInterface)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PokeEmo", 2, "checkPEResDownloaded mIsPeResDownloaded =  " + jdField_b_of_type_Boolean);
+    }
+    boolean bool;
+    if (jdField_b_of_type_Boolean) {
+      bool = true;
+    }
+    for (;;)
+    {
+      if ((jdField_b_of_type_Boolean) && (!aigs.jdField_b_of_type_Boolean))
+      {
+        aigs.jdField_b_of_type_Boolean = true;
+        ThreadManager.executeOnSubThread(new PokeItemHelper.4());
+      }
+      return bool;
+      if (!jdField_d_of_type_Boolean)
+      {
+        paramQQAppInterface = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PE);
+        File localFile = new File(paramQQAppInterface);
+        if (!localFile.exists())
+        {
+          localFile.mkdirs();
+          bool = FileUtils.copyAssetDirsToSdcard(BaseApplicationImpl.getContext(), "pe", paramQQAppInterface);
+          bpqb.a(paramQQAppInterface);
+        }
+        for (;;)
+        {
+          jdField_b_of_type_Boolean = bool;
+          return jdField_b_of_type_Boolean;
+          bool = true;
+        }
+      }
+      if (!bhhr.c())
+      {
+        if ((!TextUtils.isEmpty(jdField_g_of_type_JavaLangString)) && (!TextUtils.isEmpty(jdField_h_of_type_JavaLangString)))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("PokeEmo", 2, "peResUrl = " + jdField_g_of_type_JavaLangString + " ,peResMD5 = " + jdField_h_of_type_JavaLangString);
+          }
+          a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), jdField_g_of_type_JavaLangString, jdField_h_of_type_JavaLangString, jdField_d_of_type_JavaLangString);
+          bool = false;
+        }
+      }
+      else
+      {
+        if (!jdField_e_of_type_Boolean)
+        {
+          jdField_e_of_type_Boolean = true;
+          if (!aigs.a(a(paramQQAppInterface, 8)))
+          {
+            jdField_b_of_type_Boolean = false;
+            bhhr.a(false);
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "checkPEResDownloaded isDownload = " + false);
+          }
+          bool = false;
           continue;
         }
-        QLog.d("PasswdRedBagManager", 2, "show passwdredbag tips = " + localQQWalletRedPacketMsg.elem.title);
+        jdField_b_of_type_Boolean = true;
       }
-      catch (Throwable localThrowable)
-      {
-        break label482;
-      }
+      bool = false;
     }
   }
 }

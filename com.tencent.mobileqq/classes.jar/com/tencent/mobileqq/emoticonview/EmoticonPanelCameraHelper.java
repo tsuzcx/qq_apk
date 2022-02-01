@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.emoticonview;
 
-import amou;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Handler;
@@ -10,12 +9,14 @@ import android.view.ViewStub;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import aqzw;
-import arad;
-import bfur;
-import bfyz;
+import anrh;
+import aseg;
+import asen;
+import bhdj;
+import bhhr;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoAllSend;
@@ -32,7 +33,7 @@ public class EmoticonPanelCameraHelper
   private volatile long lastJumpCameraTime;
   private ViewStub mCameraEmoGuideVS;
   private RelativeLayout mCameraEmoGuideView;
-  amou sCameraEmoObserver = new EmoticonPanelCameraHelper.2(this);
+  anrh sCameraEmoObserver = new EmoticonPanelCameraHelper.2(this);
   
   public EmoticonPanelCameraHelper(EmoticonPanelController paramEmoticonPanelController)
   {
@@ -59,7 +60,7 @@ public class EmoticonPanelCameraHelper
       if ((BaseActivity.sTopActivity == null) || (localEmoticonMainPanel.getVisibility() != 0) || (localEmoticonPanelViewPager.getCurrentItem() != paramInt)) {
         break;
       }
-      bfur.a(BaseActivity.sTopActivity, localContext.getString(2131691749), 2131691750, 2131691756, new EmoticonPanelCameraHelper.4(this, localContext), new EmoticonPanelCameraHelper.5(this)).show();
+      bhdj.a(BaseActivity.sTopActivity, localContext.getString(2131691837), 2131691838, 2131691844, new EmoticonPanelCameraHelper.4(this, localContext), new EmoticonPanelCameraHelper.5(this)).show();
       return;
     }
   }
@@ -76,13 +77,13 @@ public class EmoticonPanelCameraHelper
     {
       this.mCameraEmoGuideView = ((RelativeLayout)this.mCameraEmoGuideVS.inflate());
       tryUpdateGuideImg();
-      ImageView localImageView = (ImageView)this.mCameraEmoGuideView.findViewById(2131364159);
+      ImageView localImageView = (ImageView)this.mCameraEmoGuideView.findViewById(2131364234);
       if (localImageView != null) {
         localImageView.setOnClickListener(new EmoticonPanelCameraHelper.1(this));
       }
     }
     this.mCameraEmoGuideView.setClickable(true);
-    this.mCameraEmoGuideView.setBackgroundColor(this.mPanelController.context.getResources().getColor(2131165631));
+    this.mCameraEmoGuideView.setBackgroundColor(this.mPanelController.context.getResources().getColor(2131165637));
     this.mCameraEmoGuideView.setVisibility(0);
   }
   
@@ -101,7 +102,7 @@ public class EmoticonPanelCameraHelper
   
   protected int getDefaultExternalPanelHeight()
   {
-    int j = ((Integer)bfyz.a(BaseApplication.getContext(), "", "sp_key_input_height", Integer.valueOf(0))).intValue();
+    int j = ((Integer)bhhr.a(BaseApplication.getContext(), "", "sp_key_input_height", Integer.valueOf(0))).intValue();
     int i = j;
     if (j == 0) {
       i = (int)(XPanelContainer.b() * this.mPanelController.context.getResources().getDisplayMetrics().density);
@@ -117,7 +118,7 @@ public class EmoticonPanelCameraHelper
   public void initBefore()
   {
     this.app = this.mPanelController.app;
-    this.mCameraEmoGuideVS = ((ViewStub)this.mPanelController.getPanel().findViewById(2131380971));
+    this.mCameraEmoGuideVS = ((ViewStub)this.mPanelController.getPanel().findViewById(2131381323));
   }
   
   public int[] interestedIn()
@@ -162,11 +163,11 @@ public class EmoticonPanelCameraHelper
     if (paramEmotionPanelInfo.type == 11)
     {
       doSyncCameraEmotion();
-      paramEmotionPanelInfo = (aqzw)this.app.getManager(334);
+      paramEmotionPanelInfo = (aseg)this.app.getManager(QQManagerFactory.CAMERA_EMOTION_MANAGER);
       if (paramEmotionPanelInfo.b()) {
         paramEmotionPanelInfo.a(false);
       }
-      if (((arad)this.app.getManager(333)).a() == 0) {
+      if (((asen)this.app.getManager(QQManagerFactory.CAMERA_EMOTION_DB_MANAGER)).a() == 0) {
         tryShowCameraEmoGuide();
       }
       return;
@@ -181,7 +182,7 @@ public class EmoticonPanelCameraHelper
     do
     {
       return;
-      localImageView = (ImageView)this.mCameraEmoGuideView.findViewById(2131364161);
+      localImageView = (ImageView)this.mCameraEmoGuideView.findViewById(2131364236);
     } while ((localImageView == null) || (this.mPanelController.viewPager == null));
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localImageView.getLayoutParams();
     int i = getDefaultExternalPanelHeight();
@@ -201,7 +202,7 @@ public class EmoticonPanelCameraHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelCameraHelper
  * JD-Core Version:    0.7.0.1
  */

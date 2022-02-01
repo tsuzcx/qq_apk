@@ -1,38 +1,23 @@
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.widget.TipsBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.phone.CountryActivity;
 
-class akhz
-  implements View.OnClickListener
+public class akhz
+  implements Animation.AnimationListener
 {
-  akhz(akho paramakho, TipsBar paramTipsBar) {}
+  public akhz(CountryActivity paramCountryActivity, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (!FileUtil.isFileExists(asqh.a().b()))
-    {
-      asqh.a().c();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(8);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
-      localForwardFileInfo.b(10008);
-      Intent localIntent = new Intent(akho.a(this.jdField_a_of_type_Akho), FileBrowserActivity.class);
-      localIntent.putExtra("fileinfo", localForwardFileInfo);
-      akho.a(this.jdField_a_of_type_Akho).startActivity(localIntent);
-      aszr.a("0X8004BFE");
-      bcef.a(akho.a(this.jdField_a_of_type_Akho).app, "dc00898", "", "", "0X8009EE5", "0X8009EE5", 2, 0, "", "", "", "");
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.setAnimation(null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.offsetTopAndBottom(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.requestLayout();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

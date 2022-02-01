@@ -13,6 +13,7 @@ public class AEModuleConfig
   private boolean enableProfiler;
   private boolean enableReducedMeidaLibrary;
   private boolean enableResourceCheck;
+  private boolean enableSoLoadCheck = true;
   private boolean isFramebufferFetchEnable;
   private boolean isLoadSo;
   private String license;
@@ -44,6 +45,7 @@ public class AEModuleConfig
     this.enableReducedMeidaLibrary = AEModuleConfig.Builder.access$1500(paramBuilder);
     this.networkRequest = AEModuleConfig.Builder.access$1600(paramBuilder);
     this.authMode = AEModuleConfig.Builder.access$1700(paramBuilder);
+    this.enableSoLoadCheck = AEModuleConfig.Builder.access$1800(paramBuilder);
   }
   
   public static AEModuleConfig.Builder newBuilder()
@@ -129,6 +131,11 @@ public class AEModuleConfig
   public boolean isEnableResourceCheck()
   {
     return this.enableResourceCheck;
+  }
+  
+  public boolean isEnableSoLoadCheck()
+  {
+    return this.enableSoLoadCheck;
   }
   
   public boolean isFramebufferFetchEnable()

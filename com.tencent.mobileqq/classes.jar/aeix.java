@@ -1,18 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.NearbyActivity;
 
 public class aeix
-  implements View.OnClickListener
+  implements Handler.Callback
 {
-  public aeix(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  public aeix(NearbyActivity paramNearbyActivity) {}
   
-  public void onClick(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a.b(this.a.getShareUrl());
-    paramView.setEnabled(false);
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (!this.a.c)
+      {
+        this.a.g();
+        this.a.b.removeMessages(1000);
+        this.a.b.sendEmptyMessageDelayed(1000, this.a.n);
+        continue;
+        NearbyActivity.a(this.a);
+      }
+    }
   }
 }
 

@@ -1,66 +1,17 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
+import java.util.List;
 
-public class beqc
-  extends aptq<beqb>
+class beqc
+  extends beql<UserState>
 {
-  @NonNull
-  public beqb a(int paramInt)
+  beqc(bepx parambepx, UserState paramUserState, List paramList)
   {
-    QLog.d("TroopHonor.config", 2, "migrateOldOrDefaultContent, type: " + paramInt);
-    return new beqb();
+    super(paramUserState, paramList);
   }
   
-  @Nullable
-  public beqb a(aptx[] paramArrayOfaptx)
+  public void a(UserState paramUserState)
   {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return beqb.a(paramArrayOfaptx[0].a);
-    }
-    return null;
-  }
-  
-  public void a(beqb parambeqb)
-  {
-    QLog.d("TroopHonor.config", 1, "onUpdate, newConf = " + parambeqb);
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      ((bepr)((QQAppInterface)localAppRuntime).getManager(346)).a(parambeqb, false);
-    }
-  }
-  
-  public Class<beqb> clazz()
-  {
-    return beqb.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("TroopHonor.config", 1, "onReqFailed, failCode = " + paramInt);
-  }
-  
-  public int type()
-  {
-    return 544;
+    bepx.a(this.a).g();
   }
 }
 

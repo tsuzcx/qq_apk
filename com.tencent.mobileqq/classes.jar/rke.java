@@ -1,99 +1,40 @@
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class rke
-  extends bjwy<rgo>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTaskRemoteRepo$reportTaskCompleted$1", "Lcom/tencent/biz/ProtoUtils$TroopProtocolObserver;", "onError", "", "errorCode", "", "errorMsg", "", "bundle", "Landroid/os/Bundle;", "onResult", "", "data", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rke
+  extends ntf
 {
-  public View a;
-  public ImageView a;
+  rke(rkd paramrkd) {}
   
-  public rke(rkd paramrkd, ViewGroup paramViewGroup, int paramInt)
+  public void a(int paramInt, @Nullable byte[] paramArrayOfByte, @Nullable Bundle paramBundle)
   {
-    super(paramViewGroup, paramInt);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131369207));
-    this.jdField_a_of_type_AndroidViewView = a(2131370613);
-  }
-  
-  protected URL a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("albumthumbpreview");
-    localStringBuilder.append("://");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("#");
-    localStringBuilder.append("FLOW_THUMB");
-    try
+    QLog.i("RIJRewardTaskRemoteRepo", 1, "report task completed onResult() <-- errorCode: " + paramInt);
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      paramString = new URL(localStringBuilder.toString());
-      return paramString;
-    }
-    catch (MalformedURLException paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SelectPhotoTrace", 2, paramString.getMessage(), paramString);
+      paramArrayOfByte = this.a;
+      if (paramArrayOfByte != null) {
+        paramArrayOfByte.a();
       }
     }
-    return null;
+    do
+    {
+      return;
+      paramArrayOfByte = this.a;
+    } while (paramArrayOfByte == null);
+    paramArrayOfByte.a(paramInt, "");
   }
   
-  public void a(int paramInt, rgo paramrgo)
+  public boolean a(int paramInt, @Nullable String paramString, @Nullable Bundle paramBundle)
   {
-    if (rkd.a(this.jdField_a_of_type_Rkd) == paramInt) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a(bool);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new rkf(this, paramInt));
-      a(paramrgo);
-      return;
+    QLog.e("RIJRewardTaskRemoteRepo", 1, "report task completed onError() <-- errorCode: " + paramInt + ", errorMsg: " + paramString);
+    paramBundle = this.a;
+    if (paramBundle != null) {
+      paramBundle.a(paramInt, paramString);
     }
-  }
-  
-  protected void a(rgo paramrgo)
-  {
-    try
-    {
-      Object localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = this.jdField_a_of_type_AndroidWidgetImageView.getWidth();
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = this.jdField_a_of_type_AndroidWidgetImageView.getHeight();
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = rkd.a(this.jdField_a_of_type_Rkd);
-      ((URLDrawable.URLDrawableOptions)localObject).mPriority = 2;
-      String str = paramrgo.b;
-      if (TextUtils.isEmpty(str))
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(rkd.a(this.jdField_a_of_type_Rkd));
-        return;
-      }
-      localObject = URLDrawable.getDrawable(a(str), (URLDrawable.URLDrawableOptions)localObject);
-      if (paramrgo.a != null)
-      {
-        paramrgo.a.thumbWidth = this.jdField_a_of_type_AndroidWidgetImageView.getWidth();
-        paramrgo.a.thumbHeight = this.jdField_a_of_type_AndroidWidgetImageView.getHeight();
-        ((URLDrawable)localObject).setTag(paramrgo.a);
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      return;
-    }
-    catch (Throwable paramrgo)
-    {
-      QLog.e("RIJUGC.LocalMediaGridAdapter", 1, "load cover failed", paramrgo);
-    }
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    return true;
   }
 }
 

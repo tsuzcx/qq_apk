@@ -1,23 +1,61 @@
-import android.annotation.TargetApi;
-import android.graphics.drawable.Drawable;
-import android.view.View;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-@TargetApi(16)
-class aroh
+public class aroh
+  extends aqwt<arog>
 {
-  public static void a(View paramView, Drawable paramDrawable)
+  public static arog a()
   {
-    paramView.setBackground(paramDrawable);
+    return (arog)aqxe.a().a(451);
   }
   
-  public static void a(View paramView, Runnable paramRunnable)
+  @NonNull
+  public arog a(int paramInt)
   {
-    paramView.postOnAnimation(paramRunnable);
+    return new arog();
+  }
+  
+  @Nullable
+  public arog a(aqxa[] paramArrayOfaqxa)
+  {
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0)) {
+      return arog.a(paramArrayOfaqxa);
+    }
+    return null;
+  }
+  
+  public void a(arog paramarog) {}
+  
+  public Class<arog> clazz()
+  {
+    return arog.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 451;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aroh
  * JD-Core Version:    0.7.0.1
  */

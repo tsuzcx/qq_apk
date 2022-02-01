@@ -1,8 +1,7 @@
-import com.tribe.async.dispatch.IEventReceiver;
-
-public abstract class vtz
-  implements IEventReceiver
-{}
+public abstract interface vtz
+{
+  public abstract void a(Object paramObject);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

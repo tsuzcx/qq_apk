@@ -1,28 +1,16 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.AddAccountActivity;
-
 public class acox
-  implements TextWatcher
+  implements acow
 {
-  public acox(AddAccountActivity paramAddAccountActivity) {}
+  private acny<Integer, acov> a = new acnz();
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public acov a(Integer paramInteger)
   {
-    if (paramCharSequence.length() > 0) {
-      if (this.a.a != null) {
-        this.a.a.setVisibility(0);
-      }
-    }
-    while ((this.a.a == null) || (!this.a.a.isShown())) {
-      return;
-    }
-    this.a.a.setVisibility(8);
+    return (acov)this.a.a(paramInteger);
+  }
+  
+  public void a(Integer paramInteger, Class<? extends acov> paramClass)
+  {
+    this.a.a(paramInteger, paramClass);
   }
 }
 

@@ -1,100 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import kotlin.Metadata;
-import tencent.im.oidb.articlesummary.articlesummary.PGCPicInfo;
-import tencent.im.oidb.articlesummary.articlesummary.PGCVideoInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdaterShortContent;", "Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdater;", "()V", "process", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rcc
-  extends rby
+class rcc
+  implements View.OnClickListener
 {
-  protected void a()
+  rcc(rcb paramrcb, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2, LinearLayout paramLinearLayout3) {}
+  
+  public void onClick(View paramView)
   {
-    rff localrff = null;
-    Object localObject1 = a();
-    if (localObject1 != null) {
-      ((SocializeFeedsInfo)localObject1).jdField_a_of_type_Int = 3;
+    bmhv.f(pkh.a(), this.jdField_a_of_type_AndroidWidgetLinearLayout.getTop() + this.b.getTop() + this.c.getTop());
+    pnw localpnw = this.jdField_a_of_type_Rcb.jdField_a_of_type_Szd.a().a();
+    if (localpnw != null) {
+      localpnw.a(null, ((qfw)this.jdField_a_of_type_Rcb.jdField_a_of_type_JavaLangObject).a(), 2);
     }
-    rfe localrfe = a();
-    if (localrfe != null)
+    if (QLog.isColorLevel())
     {
-      localrfe.jdField_a_of_type_Boolean = true;
-      localObject1 = a();
-      if (localObject1 != null)
-      {
-        localObject1 = ((rex)localObject1).a;
-        if (localObject1 == null) {
-          return;
-        }
-        localObject1 = a();
-        if (localObject1 == null) {
-          break label352;
-        }
-        localObject1 = ((rex)localObject1).a;
-        if (localObject1 == null) {
-          break label352;
-        }
-      }
-      label352:
-      for (localObject1 = ((ren)localObject1).jdField_a_of_type_JavaUtilArrayList;; localObject1 = null)
-      {
-        if (localObject1 == null) {
-          return;
-        }
-        Object localObject2 = a();
-        Object localObject3 = a();
-        localObject1 = localrff;
-        if (localObject3 != null)
-        {
-          localObject3 = ((rex)localObject3).a;
-          localObject1 = localrff;
-          if (localObject3 != null) {
-            localObject1 = ((ren)localObject3).jdField_b_of_type_JavaLangString;
-          }
-        }
-        ((BaseArticleInfo)localObject2).mTitle = ((String)localObject1);
-        localrfe.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-        localObject1 = a();
-        if (localObject1 == null) {
-          return;
-        }
-        localObject1 = ((rex)localObject1).a;
-        if (localObject1 == null) {
-          return;
-        }
-        localObject1 = ((ren)localObject1).jdField_a_of_type_JavaUtilArrayList;
-        if (localObject1 == null) {
-          return;
-        }
-        localObject1 = ((Iterable)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (articlesummary.PGCPicInfo)((Iterator)localObject1).next();
-          localrff = new rff();
-          localrff.jdField_b_of_type_JavaLangString = ((articlesummary.PGCPicInfo)localObject2).bytes_pic_url.get().toStringUtf8();
-          localrff.jdField_c_of_type_JavaLangString = ((articlesummary.PGCPicInfo)localObject2).bytes_thumbnail_url.get().toStringUtf8();
-          localrff.jdField_a_of_type_Int = ((articlesummary.PGCPicInfo)localObject2).uint32_pic_width.get();
-          localrff.jdField_b_of_type_Int = ((articlesummary.PGCPicInfo)localObject2).uint32_pic_height.get();
-          localrff.jdField_a_of_type_JavaLangString = ((articlesummary.PGCPicInfo)localObject2).bytes_pic_md5.get().toStringUtf8();
-          localrff.jdField_c_of_type_Int = ((articlesummary.PGCPicInfo)localObject2).is_animation.get();
-          localrff.d = ((articlesummary.PGCPicInfo)localObject2).bytes_pic_desc.get().toStringUtf8();
-          localrff.jdField_a_of_type_Long = ((articlesummary.PGCPicInfo)localObject2).uint64_gallery_index.get();
-          localrff.jdField_a_of_type_Rfg = new rfg((articlesummary.PGCVideoInfo)((articlesummary.PGCPicInfo)localObject2).msg_video_info.get());
-          localObject2 = localrfe.jdField_a_of_type_JavaUtilArrayList;
-          if (localObject2 != null) {
-            ((ArrayList)localObject2).add(localrff);
-          }
-        }
-        localObject1 = null;
-        break;
-      }
+      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "firstlayout top" + this.jdField_a_of_type_AndroidWidgetLinearLayout.getTop() });
+      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "firstlayout width" + this.jdField_a_of_type_AndroidWidgetLinearLayout.getWidth() });
+      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "thirdlayout top" + this.b.getTop() });
+      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "thirdlayout width" + this.b.getWidth() });
+      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "secondlayout top" + this.c.getTop() });
+      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "secondlayout width" + this.c.getWidth() });
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

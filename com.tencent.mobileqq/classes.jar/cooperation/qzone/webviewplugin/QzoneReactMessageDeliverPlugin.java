@@ -1,7 +1,7 @@
 package cooperation.qzone.webviewplugin;
 
 import android.content.Intent;
-import bgve;
+import bifw;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -12,9 +12,9 @@ public class QzoneReactMessageDeliverPlugin
 {
   public static final String NAMESPACE = "Qzone";
   
-  private void deliverMsg(WebViewPlugin paramWebViewPlugin, bgve parambgve, String[] paramArrayOfString)
+  private void deliverMsg(WebViewPlugin paramWebViewPlugin, bifw parambifw, String[] paramArrayOfString)
   {
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0) || (parambgve == null)) {
+    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0) || (parambifw == null)) {
       return;
     }
     QLog.i("QzoneReactMessageDeliverPlugin", 1, paramArrayOfString[0]);

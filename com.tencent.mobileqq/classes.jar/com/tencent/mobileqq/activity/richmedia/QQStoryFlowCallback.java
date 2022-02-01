@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import akry;
+import alpu;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -12,12 +12,12 @@ import com.tencent.biz.qqstory.takevideo.EditVideoActivity;
 import com.tencent.biz.qqstory.takevideo.EditVideoParams;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import java.io.File;
-import xvv;
-import yjx;
-import ypi;
+import ykq;
+import yyq;
+import zeb;
 
 public class QQStoryFlowCallback
-  implements akry
+  implements alpu
 {
   public static float a;
   public static int a;
@@ -48,7 +48,7 @@ public class QQStoryFlowCallback
     if (paramActivity.getIntent().hasExtra("extra_upload_temp_directory")) {
       return paramActivity.getIntent().getStringExtra("extra_upload_temp_directory");
     }
-    String str = yjx.a(paramInt);
+    String str = yyq.a(paramInt);
     paramActivity.getIntent().putExtra("extra_upload_temp_directory", str);
     return str;
   }
@@ -63,16 +63,16 @@ public class QQStoryFlowCallback
     String str = paramActivity.getIntent().getStringExtra("extra_upload_temp_directory");
     if (!paramActivity.getIntent().getBooleanExtra("edit_video_extra_flag_need_remove_temp_dir", false))
     {
-      xvv.b("Q.qqstory.publish.QQStoryFlowCallback", "Publish onActivityResult user confirmed, no need remove temp dir %s!", String.valueOf(str));
+      ykq.b("Q.qqstory.publish.QQStoryFlowCallback", "Publish onActivityResult user confirmed, no need remove temp dir %s!", String.valueOf(str));
       return;
     }
     if (str != null)
     {
-      ypi.a(new File(str));
-      xvv.b("Q.qqstory.publish.QQStoryFlowCallback", "Publish onActivityResult user cancel, delete all files in temp dir %s!", str);
+      zeb.a(new File(str));
+      ykq.b("Q.qqstory.publish.QQStoryFlowCallback", "Publish onActivityResult user cancel, delete all files in temp dir %s!", str);
       return;
     }
-    xvv.e("Q.qqstory.publish.QQStoryFlowCallback", "Publish onActivityResult user cancel, delete all files in temp dir (null)!");
+    ykq.e("Q.qqstory.publish.QQStoryFlowCallback", "Publish onActivityResult user cancel, delete all files in temp dir (null)!");
   }
   
   public static void a(Activity paramActivity, String paramString1, LocalMediaInfo paramLocalMediaInfo, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2, String paramString3, long paramLong, boolean paramBoolean, int paramInt5)
@@ -160,7 +160,7 @@ public class QQStoryFlowCallback
             paramString1.mExtra.putString("shareGroupName", paramString3);
             paramString1.mExtra.putInt("add_video_source", paramInt5);
             paramString1.mExtra.putLong("groupUin", paramLong);
-            xvv.b("Q.qqstory.publish.QQStoryFlowCallback", "EditVideoParams params:" + paramString1.toString());
+            ykq.b("Q.qqstory.publish.QQStoryFlowCallback", "EditVideoParams params:" + paramString1.toString());
             paramLocalMediaInfo = new Intent(paramActivity, EditVideoActivity.class);
             paramLocalMediaInfo.putExtra(EditVideoParams.class.getName(), paramString1);
             paramLocalMediaInfo.putExtra("op_department", "grp_qq");
@@ -194,7 +194,7 @@ public class QQStoryFlowCallback
       }
       catch (Exception paramActivity)
       {
-        xvv.e("Q.qqstory.publish.QQStoryFlowCallback", "startEditVideoActivity exception:" + paramActivity);
+        ykq.e("Q.qqstory.publish.QQStoryFlowCallback", "startEditVideoActivity exception:" + paramActivity);
         return;
       }
       label686:
@@ -308,7 +308,7 @@ public class QQStoryFlowCallback
         paramInt2 = paramInt1 & 0xFFFDFFFF;
       }
       paramString = new EditVideoParams(1, paramInt2, paramString, localBundle);
-      xvv.b("Q.qqstory.publish.QQStoryFlowCallback", "EditVideoParams params:" + paramString.toString());
+      ykq.b("Q.qqstory.publish.QQStoryFlowCallback", "EditVideoParams params:" + paramString.toString());
       paramLocalMediaInfo = new Intent(paramActivity, EditVideoActivity.class);
       paramLocalMediaInfo.putExtra(EditVideoParams.class.getName(), paramString);
       paramActivity.startActivityForResult(paramLocalMediaInfo, 10002);
@@ -353,7 +353,7 @@ public class QQStoryFlowCallback
     //   51: new 332	java/lang/IllegalArgumentException
     //   54: dup
     //   55: ldc_w 333
-    //   58: invokestatic 336	amtj:a	(I)Ljava/lang/String;
+    //   58: invokestatic 336	anvx:a	(I)Ljava/lang/String;
     //   61: invokespecial 337	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
     //   64: athrow
     //   65: aload 16
@@ -447,10 +447,10 @@ public class QQStoryFlowCallback
     //   262: ifnull +314 -> 576
     //   265: ldc 128
     //   267: ldc_w 392
-    //   270: invokestatic 244	xvv:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   270: invokestatic 244	ykq:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   273: ldc 128
     //   275: aload 11
-    //   277: invokestatic 397	yno:a	(Ljava/lang/String;Landroid/os/Bundle;)V
+    //   277: invokestatic 397	zch:a	(Ljava/lang/String;Landroid/os/Bundle;)V
     //   280: aload 16
     //   282: getfield 105	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mDuration	J
     //   285: sipush 10000
@@ -488,7 +488,7 @@ public class QQStoryFlowCallback
     //   339: iconst_1
     //   340: aload 15
     //   342: aastore
-    //   343: invokestatic 404	xvv:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   343: invokestatic 404	ykq:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   346: aload 11
     //   348: astore 13
     //   350: aload 12
@@ -521,10 +521,10 @@ public class QQStoryFlowCallback
     //   414: ifnull +54 -> 468
     //   417: ldc 128
     //   419: ldc_w 392
-    //   422: invokestatic 244	xvv:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   422: invokestatic 244	ykq:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   425: ldc 128
     //   427: aload 11
-    //   429: invokestatic 397	yno:a	(Ljava/lang/String;Landroid/os/Bundle;)V
+    //   429: invokestatic 397	zch:a	(Ljava/lang/String;Landroid/os/Bundle;)V
     //   432: aload 16
     //   434: getfield 105	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mDuration	J
     //   437: sipush 10000
@@ -737,9 +737,9 @@ public class QQStoryFlowCallback
   
   public void localVideoClick(Activity paramActivity)
   {
-    xvv.b("Q.qqstory.publish.QQStoryFlowCallback", "localVideoClick");
+    ykq.b("Q.qqstory.publish.QQStoryFlowCallback", "localVideoClick");
     if (paramActivity == null) {
-      xvv.e("Q.qqstory.publish.QQStoryFlowCallback", "context == null");
+      ykq.e("Q.qqstory.publish.QQStoryFlowCallback", "context == null");
     }
   }
   
@@ -753,7 +753,7 @@ public class QQStoryFlowCallback
       if (jdField_a_of_type_AndroidGraphicsBitmap != null)
       {
         jdField_a_of_type_AndroidGraphicsBitmap = null;
-        xvv.c("Q.qqstory.publish.QQStoryFlowCallback", "mVideoThumbnailCache clear()");
+        ykq.c("Q.qqstory.publish.QQStoryFlowCallback", "mVideoThumbnailCache clear()");
       }
       return;
     }

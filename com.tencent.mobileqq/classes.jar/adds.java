@@ -1,18 +1,27 @@
 import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class adds
-  implements DialogInterface.OnClickListener
+public class adds
+  implements View.OnClickListener
 {
-  adds(addr paramaddr) {}
+  public adds(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((this.a.a.a != null) && (this.a.a.a.isShowing()) && (this.a.a.a.getWindow() != null)) {
-      this.a.a.a.dismiss();
+    bdla.b(this.a.app, "CliOper", "", "", "Quit", "Setting_Quit", 0, 0, "2", "", "", "");
+    if (SettingCloneUtil.readValue(this.a.app.getApplication(), this.a.app.getAccount(), null, "pcactive_config", false)) {
+      this.a.app.startPCActivePolling(this.a.app.getAccount(), "logout");
     }
+    AccountManageActivity.a(this.a.getActivity(), this.a.app);
+    if ((this.a.b != null) && (this.a.b.isShowing())) {
+      this.a.b.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

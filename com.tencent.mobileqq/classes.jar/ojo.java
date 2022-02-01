@@ -1,64 +1,91 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BusinessObserver;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
-class ojo
-  implements pty
+public class ojo
+  implements BusinessObserver
 {
-  ojo(ojm paramojm, ptv paramptv) {}
+  public void a(vus paramvus) {}
   
-  private long a(List<ArticleInfo> paramList)
-  {
-    paramList = paramList.iterator();
-    long l = 0L;
-    if (paramList.hasNext())
-    {
-      ArticleInfo localArticleInfo = (ArticleInfo)paramList.next();
-      if (l >= localArticleInfo.mRecommendSeq) {
-        break label50;
-      }
-      l = localArticleInfo.mRecommendSeq;
-    }
-    label50:
-    for (;;)
-    {
-      break;
-      return l;
-    }
-  }
+  public void a(boolean paramBoolean) {}
   
-  public List<ArticleInfo> a(int paramInt, List<ArticleInfo> paramList1, List<ArticleInfo> paramList2)
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void a(boolean paramBoolean, String paramString) {}
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt) {}
+  
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
+  
+  public void a(boolean paramBoolean, ArrayList<vuv> paramArrayList) {}
+  
+  public void a(boolean paramBoolean, vus paramvus, byte[] paramArrayOfByte, String paramString) {}
+  
+  public void b(boolean paramBoolean, int paramInt) {}
+  
+  public void c(boolean paramBoolean, int paramInt) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if ((!pcl.c(paramInt)) || (paramList2 == null) || (paramList1 == null) || (paramList2.isEmpty())) {
-      return null;
-    }
-    long l = a(paramList2);
-    if (l < 1000L)
+    switch (paramInt)
     {
-      QLog.d("ReadInJoyDailyViewController", 1, "onPreDeal : " + l);
-      return null;
-    }
-    paramList2 = new ArrayList();
-    if (!ojm.a())
-    {
-      paramList1 = paramList1.iterator();
-      while (paramList1.hasNext())
+    case 3: 
+    case 5: 
+    case 6: 
+    default: 
+      return;
+    case 2: 
+      if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Bundle)))
       {
-        ArticleInfo localArticleInfo = (ArticleInfo)paramList1.next();
-        if ((localArticleInfo.mRecommendSeq > 0L) && (localArticleInfo.mRecommendSeq < 1000L))
-        {
-          localArticleInfo.mRecommendSeq += l;
-          paramList2.add(localArticleInfo);
-          QLog.d("ReadInJoyDailyViewController", 1, "onPreDeal : " + l + "  seq: " + localArticleInfo.mRecommendSeq);
-        }
+        paramObject = (Bundle)paramObject;
+        a(true, paramObject.getString("VALUE_ARTICLE_ID"), paramObject.getInt("VALUE_ARTICLE_LIKE_COUNT"));
+        return;
       }
+      a(false, null, 0);
+      return;
+    case 0: 
+      if ((paramObject != null) && ((paramObject instanceof Bundle)))
+      {
+        a(paramBoolean, ((Bundle)paramObject).getString("VALUE_ARTICLE_ID"));
+        return;
+      }
+      a(false, null);
+      return;
+    case 1: 
+      if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Bundle)))
+      {
+        paramObject = (Bundle)paramObject;
+        a(true, paramObject.getString("VALUE_ARTICLE_ID"), Boolean.valueOf(paramObject.getBoolean("VALUE_ARTICLE_IS_LIKED")).booleanValue());
+        return;
+      }
+      a(false, null, false);
+      return;
+    case 4: 
+      if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Bundle)))
+      {
+        paramObject = (Bundle)paramObject;
+        if (paramObject.getBoolean("VALUE_ARTICLE_IMAGEE_IS_SUCCESS", false))
+        {
+          b(true, paramObject.getInt("VALUE_ARTICLE_COMMENT_COUNT"));
+          return;
+        }
+        b(false, 0);
+        return;
+      }
+      b(false, 0);
+      return;
     }
-    bkwm.a(ojm.a(), Boolean.valueOf(true));
-    ojm.a(true);
-    this.jdField_a_of_type_Ptv.a(null);
-    return paramList2;
+    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Bundle)))
+    {
+      if (((Bundle)paramObject).getBoolean("VALUE_ARTICLE_IMAGEE_IS_SUCCESS", false))
+      {
+        a(true);
+        return;
+      }
+      a(false);
+      return;
+    }
+    a(false);
   }
 }
 

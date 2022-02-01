@@ -1,89 +1,47 @@
-import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import com.tencent.av.VideoController;
-import com.tencent.av.screenshare.ScreenShareCtrl;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import android.graphics.Typeface;
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ViewSwitcher.ViewFactory;
+import com.tencent.av.redpacket.ui.RedPacketRollTextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.portal.StrokeTextView;
 
 public class lvq
-  implements lon, mja
+  implements ViewSwitcher.ViewFactory
 {
-  private final lvr jdField_a_of_type_Lvr = new lvr();
-  private final WeakReference<ScreenShareCtrl> jdField_a_of_type_MqqUtilWeakReference;
+  public lvq(RedPacketRollTextView paramRedPacketRollTextView, boolean paramBoolean) {}
   
-  public lvq(ScreenShareCtrl paramScreenShareCtrl)
+  public View makeView()
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramScreenShareCtrl);
-  }
-  
-  @TargetApi(21)
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("AVShare", 2, "onMediaProjectionEnd fromType:=" + paramInt);
-    }
-    ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localScreenShareCtrl == null) {}
-    while (paramInt != 2) {
-      return;
-    }
-    if (localScreenShareCtrl.a(2) == 1) {}
-    for (paramInt = 2;; paramInt = 3)
+    localStrokeTextView = new StrokeTextView(RedPacketRollTextView.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView));
+    try
     {
-      ScreenShareCtrl.a(paramInt);
-      return;
-    }
-  }
-  
-  public void a(long paramLong) {}
-  
-  public void a(Bitmap paramBitmap, mwf parammwf)
-  {
-    ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localScreenShareCtrl != null) {
-      localScreenShareCtrl.a(paramBitmap, parammwf);
-    }
-  }
-  
-  @TargetApi(21)
-  public void a(mwf parammwf, int paramInt1, int paramInt2)
-  {
-    ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localScreenShareCtrl == null) {}
-    do
-    {
-      return;
-      localScreenShareCtrl.a(parammwf, paramInt1, paramInt2);
-      if (localScreenShareCtrl.a(1) == 1)
+      localStrokeTextView.setLayoutParams(new FrameLayout.LayoutParams(AIOUtils.dp2px(42.0F, this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView.getResources()), -1));
+      localStrokeTextView.setTextSize(0, RedPacketRollTextView.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView));
+      localStrokeTextView.setIncludeFontPadding(false);
+      if (this.jdField_a_of_type_Boolean) {}
+      for (String str = "0";; str = "")
       {
-        ScreenShareCtrl.a(4);
-        return;
+        localStrokeTextView.setText(str);
+        localStrokeTextView.setStrokeEnable(true);
+        localStrokeTextView.setStrokeColor(-1);
+        localStrokeTextView.setStrokeSize(AIOUtils.dp2px(6.0F, this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView.getResources()));
+        localStrokeTextView.setInnerTextColor(-2094274);
+        localStrokeTextView.setTypeface(Typeface.defaultFromStyle(1));
+        localStrokeTextView.setGravity(17);
+        return localStrokeTextView;
       }
-      ScreenShareCtrl.a(6);
-      parammwf = VideoController.a().a();
-    } while (parammwf == null);
-    parammwf.a(1);
-  }
-  
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, mwf parammwf)
-  {
-    this.jdField_a_of_type_Lvr.a(1, paramArrayOfByte, paramInt1, paramInt2, parammwf);
-    ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localScreenShareCtrl != null) {
-      localScreenShareCtrl.a(paramArrayOfByte, paramInt1, paramInt2, parammwf);
+      return localStrokeTextView;
     }
-  }
-  
-  public void b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("AVShare", 2, "onMediaProjectionReady errorReason:=" + paramInt);
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lvq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,53 +1,66 @@
-import android.view.LayoutInflater;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
+import com.tencent.qphone.base.util.QLog;
 
 public class bbiq
-  implements bbha
+  implements ViewPager.OnPageChangeListener
 {
-  private TextView a;
-  protected List<bbhb> a;
-  protected View b;
-  protected TextView c;
+  public int a;
   
-  public bbiq() {}
+  public bbiq(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
   
-  public bbiq(ViewGroup paramViewGroup, int paramInt)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    this.b = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
-    this.c = ((TextView)this.b.findViewById(2131371352));
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add(new bbir(this.b.findViewById(2131368850)));
-    this.jdField_a_of_type_JavaUtilList.add(new bbir(this.b.findViewById(2131368856)));
-    this.jdField_a_of_type_JavaUtilList.add(new bbir(this.b.findViewById(2131368862)));
-    if ((paramInt == 2131559640) || (paramInt == 2131562743))
-    {
-      this.jdField_a_of_type_JavaUtilList.add(new bbir(this.b.findViewById(2131368868)));
-      this.jdField_a_of_type_JavaUtilList.add(new bbir(this.b.findViewById(2131368869)));
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFilterViewPager", 2, "onPageScrollStateChanged state: " + paramInt);
     }
   }
   
-  public View a()
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    return this.b;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFilterViewPager", 2, "onPageScrolled position: " + paramInt1 + ", positionOffset: " + paramFloat + ", positionOffsetPixels: " + paramInt2);
+    }
   }
   
-  public TextView a()
+  public void onPageSelected(int paramInt)
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  public List<bbhb> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public TextView b()
-  {
-    return this.c;
+    if (this.jdField_a_of_type_Int == paramInt) {
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFilterViewPager", 2, "onPageSelected l " + this.jdField_a_of_type_Int + ",n " + paramInt);
+      }
+    }
+    Object localObject;
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFilterViewPager", 2, "onPageSelected l " + this.jdField_a_of_type_Int + ",n" + paramInt);
+      }
+      alpt.a("", "0X8007804", "", "", "", "");
+      this.jdField_a_of_type_Int = paramInt;
+      View localView = CaptureVideoFilterViewPager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager).a(paramInt);
+      if (localView != null)
+      {
+        localObject = (Runnable)localView.getTag();
+        if (localObject != null)
+        {
+          localView.removeCallbacks((Runnable)localObject);
+          localView.setTag(null);
+        }
+        CaptureVideoFilterViewPager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager, localView, paramInt, false);
+      }
+      localView = CaptureVideoFilterViewPager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager).a(paramInt - 1);
+      localObject = CaptureVideoFilterViewPager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager).a(paramInt + 1);
+      if (localView != null)
+      {
+        localView.removeCallbacks((Runnable)localView.getTag());
+        localView.clearAnimation();
+      }
+    } while (localObject == null);
+    ((View)localObject).removeCallbacks((Runnable)((View)localObject).getTag());
+    ((View)localObject).clearAnimation();
   }
 }
 

@@ -10,6 +10,7 @@ public abstract interface AppConstants$MainTabIndex
   public static final int TAB_FLOW_CAMERA = 8;
   public static final int TAB_LEBA = 4;
   public static final int TAB_NOW = 6;
+  public static final int TAB_QCIRCLE = 10;
   public static final int TAB_QZONE = 9;
   public static final int TAB_SETTING = 5;
 }

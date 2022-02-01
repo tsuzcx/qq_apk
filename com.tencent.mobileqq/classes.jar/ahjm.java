@@ -1,26 +1,15 @@
-import android.os.Bundle;
-import android.os.Handler;
-import mqq.observer.BusinessObserver;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
 
 class ahjm
-  implements BusinessObserver
+  extends afos
 {
-  ahjm(ahiu paramahiu) {}
+  public ViewGroup a;
+  public AnyScaleTypeImageView a;
+  public TextView b;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (paramBundle != null)
-    {
-      paramInt = paramBundle.getInt("update_type");
-      if (paramInt != 2) {}
-    }
-    else
-    {
-      return;
-    }
-    if (paramInt == 1) {}
-    this.a.a.sendEmptyMessage(2);
-  }
+  ahjm(ahji paramahji) {}
 }
 
 

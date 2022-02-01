@@ -1,13 +1,22 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
 
 public class agve
-  implements agut
+  extends AnimatorListenerAdapter
 {
-  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  public agve(HeartCombolEffectView paramHeartCombolEffectView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    paramagap.e(paramafce, paramagcc, paramString);
+    super.onAnimationCancel(paramAnimator);
+    this.a.setVisibility(8);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    this.a.setVisibility(8);
   }
 }
 

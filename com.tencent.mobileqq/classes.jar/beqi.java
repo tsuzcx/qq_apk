@@ -1,23 +1,17 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
+import java.util.List;
 
-final class beqi
-  implements DialogInterface.OnClickListener
+class beqi
+  extends beql<UserState>
 {
-  beqi(Context paramContext, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  beqi(bepx parambepx, UserState paramUserState, List paramList)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    paramDialogInterface = new Intent();
-    paramDialogInterface.setClass(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramDialogInterface.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+    super(paramUserState, paramList);
+  }
+  
+  public void a(UserState paramUserState)
+  {
+    bepx.a(this.a).h();
   }
 }
 

@@ -1,26 +1,14 @@
-import java.net.URL;
+import com.tencent.biz.pubaccount.readinjoy.viola.wormhole.WormholeView;
 
-public class ucz
+public abstract interface ucz
 {
-  public int a;
-  public String a;
-  public URL a;
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
+  public abstract void a(WormholeView paramWormholeView);
   
-  public ucz()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public abstract void b(WormholeView paramWormholeView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ucz
  * JD-Core Version:    0.7.0.1
  */

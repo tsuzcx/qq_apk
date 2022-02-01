@@ -1,16 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
-
-class pff
-  extends pse
+public class pff
 {
-  pff(pey parampey, String paramString, ReadInJoyBaseListView paramReadInJoyBaseListView, int paramInt)
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  
+  public pff(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    super(paramString);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
   }
   
-  public void a(prx paramprx)
+  public void a(boolean paramBoolean)
   {
-    paramprx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListView, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

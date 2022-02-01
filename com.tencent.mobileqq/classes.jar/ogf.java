@@ -1,10 +1,16 @@
-import com.google.gson.reflect.TypeToken;
-import java.util.Set;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
 class ogf
-  extends TypeToken<Set<Long>>
+  implements DialogInterface.OnClickListener
 {
-  ogf(oge paramoge) {}
+  ogf(ofz paramofz, JsResult paramJsResult) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.confirm();
+  }
 }
 
 

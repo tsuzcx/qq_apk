@@ -1,35 +1,72 @@
-import com.tencent.upload.uinterface.AbstractUploadTask;
-import com.tencent.upload.uinterface.IUploadTaskCallback;
+import android.util.Log;
+import com.tencent.mobileqq.now.netchannel.websso.WebServiceSSO;
+import com.tencent.mobileqq.now.netchannel.websso.WebServiceSSO.WebServiceSSOSender;
+import com.tencent.mobileqq.now.netchannel.websso.WebServiceSSO.WebServiceSSOSender.SSOException;
+import java.net.URL;
+import java.util.concurrent.Callable;
+import okhttp3.Call;
+import okhttp3.OkHttpClient;
+import okhttp3.Request.Builder;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class ayqf
-  implements IUploadTaskCallback
+public class ayqf
+  implements Callable<byte[]>
 {
-  ayqf(ayqe paramayqe) {}
+  final int jdField_a_of_type_Int;
+  final String jdField_a_of_type_JavaLangString;
+  final byte[] jdField_a_of_type_ArrayOfByte;
   
-  public void onUploadError(AbstractUploadTask paramAbstractUploadTask, int paramInt, String paramString)
+  public ayqf(WebServiceSSO.WebServiceSSOSender paramWebServiceSSOSender, int paramInt, String paramString, byte[] paramArrayOfByte)
   {
-    this.a.f = 1002;
-    this.a.jdField_a_of_type_Int = paramInt;
-    this.a.c = paramString;
-    this.a.a(1002, new Object[0]);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
   }
   
-  public void onUploadProgress(AbstractUploadTask paramAbstractUploadTask, long paramLong1, long paramLong2) {}
-  
-  public void onUploadStateChange(AbstractUploadTask paramAbstractUploadTask, int paramInt)
+  private byte[] a(URL paramURL, byte[] paramArrayOfByte)
   {
-    if (this.a.f != paramInt)
+    Object localObject = null;
+    paramArrayOfByte = RequestBody.create(null, paramArrayOfByte);
+    paramURL = new Request.Builder().url(paramURL).post(paramArrayOfByte).build();
+    paramArrayOfByte = WebServiceSSO.a(this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO$WebServiceSSOSender.a).newCall(paramURL).execute();
+    paramURL = localObject;
+    if (paramArrayOfByte.isSuccessful())
     {
-      this.a.f = paramInt;
-      this.a.a(this.a.f, new Object[0]);
+      paramArrayOfByte.body().contentLength();
+      paramURL = paramArrayOfByte.body().bytes();
+      paramArrayOfByte.body().close();
+      try
+      {
+        paramArrayOfByte = new JSONObject(new String(paramURL));
+        try
+        {
+          int i = paramArrayOfByte.getInt("ErrorCode");
+          paramArrayOfByte = paramArrayOfByte.getString("ErrorInfo");
+          throw new WebServiceSSO.WebServiceSSOSender.SSOException(this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO$WebServiceSSOSender, i, paramArrayOfByte);
+        }
+        catch (JSONException paramArrayOfByte)
+        {
+          throw new WebServiceSSO.WebServiceSSOSender.SSOException(this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO$WebServiceSSOSender, -3, "SSO通信异常，异常信息解析错误。原始内容：" + new String(paramURL));
+        }
+        return paramURL;
+      }
+      catch (Exception paramArrayOfByte) {}
     }
   }
   
-  public void onUploadSucceed(AbstractUploadTask paramAbstractUploadTask, Object paramObject)
+  public byte[] a()
   {
-    this.a.f = 1001;
-    this.a.jdField_a_of_type_JavaLangObject = paramObject;
-    this.a.a(1001, new Object[0]);
+    if (WebServiceSSO.a(this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO$WebServiceSSOSender.a)) {}
+    for (Object localObject = "https://test.tim.qq.com/v4/";; localObject = "https://open.tim.qq.com/v4/")
+    {
+      localObject = new URL((String)localObject + "NowSSOSvcProxy" + "/" + this.jdField_a_of_type_JavaLangString + WebServiceSSO.a(this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO$WebServiceSSOSender.a));
+      Log.d("RequestCallable", "WebServiceSSO--send url=" + ((URL)localObject).toString());
+      return a((URL)localObject, this.jdField_a_of_type_ArrayOfByte);
+    }
   }
 }
 

@@ -1,45 +1,28 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.haoliyou.JefsClass;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class aucl
-  implements apct
+  extends aucg
 {
-  public aucl(JefsClass paramJefsClass, Runnable paramRunnable, WeakReference paramWeakReference, String paramString) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString1, String paramString2)
+  public aucl(bfjs parambfjs)
   {
-    if ((!paramBoolean1) || ((paramBoolean2) && (this.jdField_a_of_type_JavaLangRunnable != null)))
-    {
-      JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, this.jdField_a_of_type_JavaLangRunnable);
-      return;
-    }
-    paramString1 = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramString1 != null) {
-      if ((paramString1 instanceof BaseActivity))
-      {
-        paramString1 = ((BaseActivity)paramString1).app;
-        if (this.jdField_a_of_type_JavaLangString != null) {
-          break label111;
-        }
-      }
-    }
-    label111:
-    for (paramString2 = "";; paramString2 = this.jdField_a_of_type_JavaLangString)
-    {
-      bcef.b(paramString1, "dc00898", "", "", "0X8009C5A", "0X8009C5A", 0, 0, "1", "", paramString2, "");
-      return;
-      paramString1 = null;
-      break;
-      paramString1 = null;
-      break;
-    }
+    this.jdField_a_of_type_JavaLangString = parambfjs.e;
+    this.jdField_a_of_type_Int = 1;
+    this.b = String.valueOf(parambfjs.b);
   }
   
-  public boolean a()
+  public String a()
   {
-    return this.jdField_a_of_type_JavaLangRunnable != null;
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.b)))
+    {
+      QLog.e("TroopFileControlReq<QFile>", 1, "key params is null");
+      return "";
+    }
+    return a(this.jdField_a_of_type_Int + "", this.b, this.jdField_a_of_type_JavaLangString);
   }
 }
 

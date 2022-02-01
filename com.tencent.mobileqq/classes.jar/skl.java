@@ -1,20 +1,22 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.BezierSideBarView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
 
 public class skl
-  implements ValueAnimator.AnimatorUpdateListener
+  implements TopGestureLayout.OnGestureListener
 {
-  public skl(BezierSideBarView paramBezierSideBarView, ValueAnimator.AnimatorUpdateListener paramAnimatorUpdateListener) {}
+  public skl(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void flingLToR()
   {
-    BezierSideBarView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBezierSideBarView, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBezierSideBarView.invalidate();
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener != null) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener.onAnimationUpdate(paramValueAnimator);
+    if ((VideoFeedsPlayActivity.a(this.a) != null) && (VideoFeedsPlayActivity.a(this.a).a())) {
+      return;
     }
+    VideoFeedsPlayActivity.a(this.a, true);
+    this.a.d();
   }
+  
+  public void flingRToL() {}
 }
 
 

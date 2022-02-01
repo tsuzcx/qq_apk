@@ -18,7 +18,7 @@ final class WebViewFragmentWithArk$webViewWrapper$2
   
   public final RefreshView invoke()
   {
-    return (RefreshView)this.this$0.contentView.findViewById(2131381053);
+    return (RefreshView)this.this$0.contentView.findViewById(2131381412);
   }
 }
 

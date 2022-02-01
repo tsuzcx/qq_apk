@@ -1,21 +1,10 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import javax.microedition.khronos.opengles.GL10;
 
-public class apqg
-  extends Handler
+public abstract interface apqg
 {
-  public apqg(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  public abstract void a(GL10 paramGL10);
   
-  public void handleMessage(Message paramMessage)
-  {
-    if ((paramMessage.what == 1000) && ((this.a.j == 1) || (this.a.j == 2)))
-    {
-      this.a.a();
-      QQToast.a(this.a, 2131690945, 0).b(this.a.getTitleBarHeight());
-    }
-  }
+  public abstract void a(GL10 paramGL10, int paramInt1, int paramInt2);
 }
 
 

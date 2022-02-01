@@ -1,14 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import tencent.im.oidb.articlesummary.articlesummary.UGCFeedsInfo;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
+import com.tencent.mobileqq.app.face.FaceDecoder;
 
-public final class ref
-  implements psw<articlesummary.UGCFeedsInfo, rfj>
+public class ref
+  extends red
 {
-  public ref(SocializeFeedsInfo paramSocializeFeedsInfo) {}
-  
-  public rfj a(articlesummary.UGCFeedsInfo paramUGCFeedsInfo)
+  public ref(Context paramContext, FaceDecoder paramFaceDecoder, szd paramszd)
   {
-    return rfj.a(this.a, paramUGCFeedsInfo);
+    super(paramContext, paramFaceDecoder, paramszd);
+  }
+  
+  public rbp g()
+  {
+    this.jdField_a_of_type_Rbo = new ComponentContentBigImageVideo(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 

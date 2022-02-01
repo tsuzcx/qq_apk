@@ -1,78 +1,56 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.activity.QQSettingMe.34.1;
-import com.tencent.mobileqq.activity.QQSettingMe.34.2;
-import com.tencent.mobileqq.activity.QQSettingMe.34.3;
-import com.tencent.mobileqq.activity.QQSettingMe.34.4;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.CardObserver;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
 public class aeaw
-  extends CardObserver
+  implements bkzq
 {
-  public aeaw(QQSettingMe paramQQSettingMe) {}
+  public aeaw(FriendProfileImageActivity paramFriendProfileImageActivity, aebd paramaebd, boolean paramBoolean, bkzi parambkzi) {}
   
-  public void onAnonymousSettingMeRedPoint(boolean paramBoolean1, boolean paramBoolean2)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, String.format("onAnonymousSettingMeRedPoint success=%s enable=%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) }));
-    }
-    if ((paramBoolean1) && (this.a.c)) {
-      QQSettingMe.a(this.a, false);
-    }
-  }
-  
-  public void onCardDownload(boolean paramBoolean, Object paramObject)
-  {
-    if (paramObject == null) {}
-    do
+    switch (paramInt)
     {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
       return;
-      if ((paramBoolean) && (this.a.c) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && ((paramObject instanceof Card)) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(((Card)paramObject).uin)))
+      bhaa.a(this.jdField_a_of_type_Aebd.c, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity);
+      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app;
+      if (this.jdField_a_of_type_Boolean) {}
+      for (paramView = "1";; paramView = "2")
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new QQSettingMe.34.1(this));
-        ThreadManager.post(new QQSettingMe.34.2(this), 5, null, true);
-        return;
+        bdla.b(localQQAppInterface, "dc00898", "", "", "0X800A8CA", "0X800A8CA", 0, 0, paramView, "", "", "");
+        break;
       }
-    } while ((!paramBoolean) || (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (!(paramObject instanceof Card)) || (this.a.c) || (!this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(((Card)paramObject).uin)));
-    ThreadManager.post(new QQSettingMe.34.3(this, (Card)paramObject), 5, null, true);
-  }
-  
-  public void onGetMedal(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (this.a.c)) {
-      QQSettingMe.a(this.a, false);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, String.format("onGetMedal [%b, %b] medalSwitchDisable= ", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(this.a.c), Boolean.valueOf(paramBoolean2) }));
-    }
-  }
-  
-  public void onGetSignInInfo(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      ThreadManager.getUIHandler().post(new QQSettingMe.34.4(this));
-    }
-  }
-  
-  public void onSetMedal(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (this.a.c)) {
-      QQSettingMe.a(this.a, false);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, String.format("onSetMedal [%b %b]", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.a.c) }));
-    }
-  }
-  
-  public void onUpdateAvatar(boolean paramBoolean, String paramString, int paramInt)
-  {
-    if ((paramBoolean) && (this.a.c) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (bftf.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-      this.a.b(paramString);
+      bhaa.a(this.jdField_a_of_type_Aebd.c, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity);
+      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app;
+      if (this.jdField_a_of_type_Boolean) {}
+      for (paramView = "1";; paramView = "2")
+      {
+        bdla.b(localQQAppInterface, "dc00898", "", "", "0X800A8CB", "0X800A8CB", 0, 0, paramView, "", "", "");
+        break;
+      }
+      FriendProfileImageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity, this.jdField_a_of_type_Aebd.c);
+      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app;
+      if (this.jdField_a_of_type_Boolean) {}
+      for (paramView = "1";; paramView = "2")
+      {
+        bdla.b(localQQAppInterface, "dc00898", "", "", "0X800A8CC", "0X800A8CC", 0, 0, paramView, "", "", "");
+        break;
+      }
+      bhaa.b(this.jdField_a_of_type_Aebd.c, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity);
+      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app;
+      if (this.jdField_a_of_type_Boolean) {}
+      for (paramView = "1";; paramView = "2")
+      {
+        bdla.b(localQQAppInterface, "dc00898", "", "", "0X800A8CD", "0X800A8CD", 0, 0, paramView, "", "", "");
+        break;
+      }
+      if ((!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.b) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.b(this.jdField_a_of_type_Aebd);
+      }
     }
   }
 }

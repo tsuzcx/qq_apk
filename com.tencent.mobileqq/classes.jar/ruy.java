@@ -1,84 +1,42 @@
-import android.os.Handler;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.VideoAdInfo;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.video.ADVideoAppDownloadManager;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdGestureView;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyPrivacyListFragment;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyPrivacyListView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class ruy
-  implements ryp
+public class ruy
+  extends pvq
 {
-  ruy(ruw paramruw) {}
+  public ruy(ReadInJoyPrivacyListFragment paramReadInJoyPrivacyListFragment) {}
   
-  public void a(long paramLong)
+  public void a(int paramInt1, long paramLong, List<Long> paramList, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    if (ruw.a(this.a) != null) {
-      ruw.a(this.a).a(paramLong);
-    }
-    if ((ruw.a(this.a) instanceof rvi))
+    StringBuilder localStringBuilder = new StringBuilder().append("onGetPrivacyList | retcode ").append(paramInt1).append(" | feedsId ").append(paramLong).append("| totalCnt ").append(paramInt3).append(" | nextPageStartIndex ").append(paramInt2).append(" | hasNextPage ").append(paramBoolean).append("| uinList size ");
+    int i;
+    if (paramList != null)
     {
-      localrvi = (rvi)ruw.a(this.a);
-      if ((twr.a(localrvi)) && (((rvi)ruw.a(this.a)).jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdGestureView != null))
-      {
-        ((rvi)ruw.a(this.a)).jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdGestureView.setGestureAdInfo(localrvi, ruw.a(this.a));
-        twr.a(((rvi)ruw.a(this.a)).jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdGestureView, ((rvi)ruw.a(this.a)).b);
+      i = paramList.size();
+      QLog.d("ReadInJoyPrivacyListFragment", 1, i);
+      if (paramInt1 != 0) {
+        break label180;
       }
-      if ((paramLong >= twr.a((rvi)ruw.a(this.a), true)) && (paramLong <= twr.a((rvi)ruw.a(this.a), false))) {
-        if (((rvi)ruw.a(this.a)).jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdGestureView != null)
-        {
-          ((rvi)ruw.a(this.a)).jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdGestureView.setVisibility(0);
-          ((rvi)ruw.a(this.a)).jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdGestureView.a(true);
-        }
+      ReadInJoyPrivacyListFragment.a(this.a, paramInt2);
+      ReadInJoyPrivacyListFragment.b(this.a, paramInt3);
+      ReadInJoyPrivacyListFragment.a(this.a, paramBoolean);
+      if (paramList != null) {
+        ReadInJoyPrivacyListFragment.a(this.a).addAll(paramList);
+      }
+      if (ReadInJoyPrivacyListFragment.a(this.a) != null) {
+        ReadInJoyPrivacyListFragment.a(this.a).a(ReadInJoyPrivacyListFragment.a(this.a));
       }
     }
-    while (!(ruw.a(this.a) instanceof rvn))
+    label180:
+    while (ReadInJoyPrivacyListFragment.a(this.a) == null)
     {
-      rvi localrvi;
-      for (;;)
-      {
-        int i = twr.a(localrvi.jdField_a_of_type_Ryo.a.a.v, false);
-        if (((localrvi.jdField_a_of_type_Int == 5) || (localrvi.jdField_a_of_type_Int == 7)) && (paramLong >= i) && (!ruw.g(this.a)) && (ruw.a(this.a) != null))
-        {
-          ruw.a(this.a).sendEmptyMessage(6);
-          ruw.f(this.a, true);
-          if (twd.a(localrvi.jdField_a_of_type_Ryo.a)) {
-            ruw.a(this.a).sendEmptyMessage(8);
-          }
-        }
-        if (((localrvi.jdField_a_of_type_Int == 5) || (localrvi.jdField_a_of_type_Int == 7)) && (!ruw.h(this.a)) && (!ruw.i(this.a)) && (twq.b(localrvi.jdField_a_of_type_Ryo.a.a)) && (ruw.a(this.a) != null) && (((!ruw.a(this.a).a()) && (!ruw.a(this.a).b())) || ((twr.b(localrvi.jdField_a_of_type_Ryo.a)) && (localrvi.jdField_a_of_type_Ryo.a.a.b))))
-        {
-          int j = twr.a(localrvi.jdField_a_of_type_Ryo.a.a.v, true);
-          i = j;
-          if (j < 0) {
-            i = uex.jdField_a_of_type_Int * 1000;
-          }
-          j = i;
-          if (ruw.a(localrvi.jdField_a_of_type_Ryo.a))
-          {
-            j = i;
-            if (localrvi.jdField_a_of_type_Ryo.a.a != null) {
-              j = 3000;
-            }
-          }
-          if ((paramLong >= j) && ((!twr.a(localrvi)) || (ruw.a(localrvi.jdField_a_of_type_Ryo.a))))
-          {
-            if (localrvi.d.getVisibility() == 0) {
-              localrvi.d.setVisibility(8);
-            }
-            ruw.a(this.a).sendEmptyMessage(9);
-            ruw.g(this.a, true);
-          }
-        }
-        return;
-        if (((rvi)ruw.a(this.a)).jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdGestureView != null)
-        {
-          ((rvi)ruw.a(this.a)).jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdGestureView.setVisibility(4);
-          ((rvi)ruw.a(this.a)).jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdGestureView.a(false);
-          ((rvi)ruw.a(this.a)).jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdGestureView.b();
-        }
-      }
+      return;
+      i = 0;
+      break;
     }
-    ruw.f(this.a, false);
+    ReadInJoyPrivacyListFragment.a(this.a).a();
   }
 }
 

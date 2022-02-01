@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import admr;
-import adms;
-import amtj;
+import aedy;
+import aedz;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
@@ -24,8 +23,9 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import ayiz;
-import bcef;
+import anvx;
+import aznu;
+import bdla;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -37,7 +37,7 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.manager.TicketManager;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
-import ugf;
+import uuc;
 
 public class HongbaoShowerActivity
   extends BaseActivity
@@ -52,7 +52,7 @@ public class HongbaoShowerActivity
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  ayiz jdField_a_of_type_Ayiz;
+  aznu jdField_a_of_type_Aznu;
   private SanHuaView jdField_a_of_type_ComTencentMobileqqPortalSanHuaView;
   private String jdField_a_of_type_JavaLangString;
   boolean jdField_a_of_type_Boolean = false;
@@ -92,9 +92,9 @@ public class HongbaoShowerActivity
     {
     default: 
       return null;
-    case 2130844828: 
+    case 2130844902: 
       return "shower_star_high_bg";
-    case 2130844827: 
+    case 2130844901: 
       return "shower_star_bg";
     }
     return "shower_business_high_bg";
@@ -152,13 +152,13 @@ public class HongbaoShowerActivity
   
   private void a()
   {
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376564));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376823));
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
     this.jdField_a_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(2, 0.0F, 2, 0.0F, 2, -1.0F, 2, 0.0F);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.setInterpolator(new adms(this));
+    this.jdField_a_of_type_AndroidViewAnimationAnimation.setInterpolator(new aedz(this));
     this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(800L);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(new admr(this));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131368132);
+    this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(new aedy(this));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131368275);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.0F, 0.7F);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(350L);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setFillAfter(true);
@@ -188,13 +188,13 @@ public class HongbaoShowerActivity
       QLog.d("PortalManager.HongbaoShowerActivity", 2, "showHongbaoResult mGiftUrl " + this.jdField_a_of_type_JavaLangString);
     }
     if (!NetworkUtil.isNetSupport(this)) {
-      QQToast.a(this, amtj.a(2131704650), 1).a();
+      QQToast.a(this, anvx.a(2131705001), 1).a();
     }
     while ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_JavaLangString == null)) {
       return;
     }
     if ((this.jdField_a_of_type_AndroidWidgetCheckBox != null) && (this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked())) {
-      ugf.a(getAppInterface(), this, this.jdField_b_of_type_JavaLangString, null, 113);
+      uuc.a(getAppInterface(), this, this.jdField_b_of_type_JavaLangString, null, 113);
     }
     for (int i = 1;; i = 0)
     {
@@ -216,7 +216,7 @@ public class HongbaoShowerActivity
         if (i != 0) {}
         for (localObject1 = "1";; localObject1 = "2")
         {
-          bcef.b((QQAppInterface)localObject2, "dc01440", "", "", "0X80077E9", "0X80077E9", 0, 0, "1", (String)localObject1, "", "");
+          bdla.b((QQAppInterface)localObject2, "dc01440", "", "", "0X80077E9", "0X80077E9", 0, 0, "1", (String)localObject1, "", "");
           break;
         }
       }
@@ -233,7 +233,7 @@ public class HongbaoShowerActivity
       if (i != 0) {}
       for (localObject1 = "1";; localObject1 = "2")
       {
-        bcef.b((QQAppInterface)localObject2, "dc01440", "", "", "0X80077E9", "0X80077E9", 0, 0, "2", (String)localObject1, "", "");
+        bdla.b((QQAppInterface)localObject2, "dc01440", "", "", "0X80077E9", "0X80077E9", 0, 0, "2", (String)localObject1, "", "");
         break;
       }
     }
@@ -418,498 +418,498 @@ public class HongbaoShowerActivity
     //   337: aload_0
     //   338: aload_0
     //   339: getfield 57	com/tencent/mobileqq/activity/HongbaoShowerActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   342: bipush 79
-    //   344: invokevirtual 63	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   347: checkcast 495	com/tencent/mobileqq/portal/PortalManager
-    //   350: aload_0
-    //   351: getfield 40	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Int	I
-    //   354: iload_3
-    //   355: aload_0
-    //   356: getfield 466	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_b_of_type_Int	I
-    //   359: iload_2
-    //   360: invokevirtual 498	com/tencent/mobileqq/portal/PortalManager:a	(IIII)Layiz;
-    //   363: putfield 500	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Ayiz	Layiz;
-    //   366: aload_0
-    //   367: getfield 500	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Ayiz	Layiz;
-    //   370: ifnonnull +9 -> 379
-    //   373: aload_0
-    //   374: invokevirtual 324	com/tencent/mobileqq/activity/HongbaoShowerActivity:finish	()V
-    //   377: iconst_0
-    //   378: ireturn
-    //   379: aload_0
+    //   342: getstatic 498	com/tencent/mobileqq/app/QQManagerFactory:MGR_PORTAL	I
+    //   345: invokevirtual 63	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   348: checkcast 500	com/tencent/mobileqq/portal/PortalManager
+    //   351: aload_0
+    //   352: getfield 40	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Int	I
+    //   355: iload_3
+    //   356: aload_0
+    //   357: getfield 466	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_b_of_type_Int	I
+    //   360: iload_2
+    //   361: invokevirtual 503	com/tencent/mobileqq/portal/PortalManager:a	(IIII)Laznu;
+    //   364: putfield 505	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Aznu	Laznu;
+    //   367: aload_0
+    //   368: getfield 505	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Aznu	Laznu;
+    //   371: ifnonnull +9 -> 380
+    //   374: aload_0
+    //   375: invokevirtual 324	com/tencent/mobileqq/activity/HongbaoShowerActivity:finish	()V
+    //   378: iconst_0
+    //   379: ireturn
     //   380: aload_0
-    //   381: getfield 500	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Ayiz	Layiz;
-    //   384: getfield 503	ayiz:e	Ljava/lang/String;
-    //   387: putfield 116	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   390: aload_0
+    //   381: aload_0
+    //   382: getfield 505	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Aznu	Laznu;
+    //   385: getfield 508	aznu:e	Ljava/lang/String;
+    //   388: putfield 116	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_c_of_type_JavaLangString	Ljava/lang/String;
     //   391: aload_0
-    //   392: getfield 500	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Ayiz	Layiz;
-    //   395: getfield 504	ayiz:jdField_g_of_type_JavaLangString	Ljava/lang/String;
-    //   398: putfield 506	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   401: aload_0
+    //   392: aload_0
+    //   393: getfield 505	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Aznu	Laznu;
+    //   396: getfield 509	aznu:jdField_g_of_type_JavaLangString	Ljava/lang/String;
+    //   399: putfield 511	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   402: aload_0
-    //   403: getfield 500	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Ayiz	Layiz;
-    //   406: getfield 508	ayiz:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   409: putfield 509	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   412: aload_0
+    //   403: aload_0
+    //   404: getfield 505	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Aznu	Laznu;
+    //   407: getfield 513	aznu:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   410: putfield 514	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   413: aload_0
-    //   414: getfield 500	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Ayiz	Layiz;
-    //   417: getfield 510	ayiz:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   420: putfield 102	com/tencent/mobileqq/activity/HongbaoShowerActivity:f	Ljava/lang/String;
-    //   423: aload_0
+    //   414: aload_0
+    //   415: getfield 505	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Aznu	Laznu;
+    //   418: getfield 515	aznu:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   421: putfield 102	com/tencent/mobileqq/activity/HongbaoShowerActivity:f	Ljava/lang/String;
     //   424: aload_0
-    //   425: getfield 500	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Ayiz	Layiz;
-    //   428: getfield 511	ayiz:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   431: putfield 106	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_g_of_type_JavaLangString	Ljava/lang/String;
-    //   434: aload_0
+    //   425: aload_0
+    //   426: getfield 505	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Aznu	Laznu;
+    //   429: getfield 516	aznu:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   432: putfield 106	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_g_of_type_JavaLangString	Ljava/lang/String;
     //   435: aload_0
-    //   436: getfield 500	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Ayiz	Layiz;
-    //   439: getfield 512	ayiz:f	Ljava/lang/String;
-    //   442: putfield 112	com/tencent/mobileqq/activity/HongbaoShowerActivity:h	Ljava/lang/String;
-    //   445: aload_0
+    //   436: aload_0
+    //   437: getfield 505	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Aznu	Laznu;
+    //   440: getfield 517	aznu:f	Ljava/lang/String;
+    //   443: putfield 112	com/tencent/mobileqq/activity/HongbaoShowerActivity:h	Ljava/lang/String;
     //   446: aload_0
-    //   447: getfield 500	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Ayiz	Layiz;
-    //   450: getfield 513	ayiz:h	Ljava/lang/String;
-    //   453: putfield 316	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   456: aload_0
-    //   457: getfield 500	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Ayiz	Layiz;
-    //   460: getfield 515	ayiz:jdField_d_of_type_Int	I
-    //   463: tableswitch	default:+21 -> 484, 1:+703->1166, 2:+696->1159
-    //   485: iconst_1
-    //   486: putfield 36	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Boolean	Z
-    //   489: ldc_w 516
-    //   492: istore_2
-    //   493: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   496: ifeq +35 -> 531
-    //   499: ldc 142
-    //   501: iconst_1
-    //   502: new 276	java/lang/StringBuilder
-    //   505: dup
-    //   506: invokespecial 277	java/lang/StringBuilder:<init>	()V
-    //   509: ldc_w 518
-    //   512: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   515: aload_0
-    //   516: getfield 500	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Ayiz	Layiz;
-    //   519: getfield 515	ayiz:jdField_d_of_type_Int	I
-    //   522: invokevirtual 484	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   525: invokevirtual 286	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   528: invokestatic 148	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   531: iload_2
-    //   532: ifeq -502 -> 30
-    //   535: aload_0
-    //   536: iload_2
-    //   537: invokespecial 521	com/tencent/mobileqq/app/BaseActivity:setContentView	(I)V
-    //   540: aload_0
-    //   541: aload_0
-    //   542: ldc_w 522
-    //   545: invokevirtual 159	com/tencent/mobileqq/activity/HongbaoShowerActivity:findViewById	(I)Landroid/view/View;
-    //   548: checkcast 161	android/widget/RelativeLayout
-    //   551: putfield 245	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidWidgetRelativeLayout	Landroid/widget/RelativeLayout;
-    //   554: aload_0
-    //   555: getfield 245	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidWidgetRelativeLayout	Landroid/widget/RelativeLayout;
+    //   447: aload_0
+    //   448: getfield 505	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Aznu	Laznu;
+    //   451: getfield 518	aznu:h	Ljava/lang/String;
+    //   454: putfield 316	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   457: aload_0
+    //   458: getfield 505	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Aznu	Laznu;
+    //   461: getfield 520	aznu:jdField_d_of_type_Int	I
+    //   464: tableswitch	default:+24 -> 488, 1:+706->1170, 2:+699->1163
+    //   489: iconst_1
+    //   490: putfield 36	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Boolean	Z
+    //   493: ldc_w 521
+    //   496: istore_2
+    //   497: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   500: ifeq +35 -> 535
+    //   503: ldc 142
+    //   505: iconst_1
+    //   506: new 276	java/lang/StringBuilder
+    //   509: dup
+    //   510: invokespecial 277	java/lang/StringBuilder:<init>	()V
+    //   513: ldc_w 523
+    //   516: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   519: aload_0
+    //   520: getfield 505	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Aznu	Laznu;
+    //   523: getfield 520	aznu:jdField_d_of_type_Int	I
+    //   526: invokevirtual 484	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   529: invokevirtual 286	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   532: invokestatic 148	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   535: iload_2
+    //   536: ifeq -506 -> 30
+    //   539: aload_0
+    //   540: iload_2
+    //   541: invokespecial 526	com/tencent/mobileqq/app/BaseActivity:setContentView	(I)V
+    //   544: aload_0
+    //   545: aload_0
+    //   546: ldc_w 527
+    //   549: invokevirtual 159	com/tencent/mobileqq/activity/HongbaoShowerActivity:findViewById	(I)Landroid/view/View;
+    //   552: checkcast 161	android/widget/RelativeLayout
+    //   555: putfield 245	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidWidgetRelativeLayout	Landroid/widget/RelativeLayout;
     //   558: aload_0
-    //   559: getfield 500	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Ayiz	Layiz;
-    //   562: getfield 523	ayiz:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   565: invokevirtual 527	android/widget/RelativeLayout:setContentDescription	(Ljava/lang/CharSequence;)V
-    //   568: aload_0
-    //   569: getfield 245	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidWidgetRelativeLayout	Landroid/widget/RelativeLayout;
-    //   572: new 529	admn
-    //   575: dup
-    //   576: aload_0
-    //   577: invokespecial 530	admn:<init>	(Lcom/tencent/mobileqq/activity/HongbaoShowerActivity;)V
-    //   580: invokevirtual 534	android/widget/RelativeLayout:setOnTouchListener	(Landroid/view/View$OnTouchListener;)V
-    //   583: aload_0
-    //   584: aload_0
-    //   585: ldc_w 535
-    //   588: invokevirtual 159	com/tencent/mobileqq/activity/HongbaoShowerActivity:findViewById	(I)Landroid/view/View;
-    //   591: checkcast 537	android/widget/TextView
-    //   594: putfield 539	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_b_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
-    //   597: aload_0
-    //   598: getfield 539	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_b_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   559: getfield 245	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidWidgetRelativeLayout	Landroid/widget/RelativeLayout;
+    //   562: aload_0
+    //   563: getfield 505	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Aznu	Laznu;
+    //   566: getfield 528	aznu:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   569: invokevirtual 532	android/widget/RelativeLayout:setContentDescription	(Ljava/lang/CharSequence;)V
+    //   572: aload_0
+    //   573: getfield 245	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidWidgetRelativeLayout	Landroid/widget/RelativeLayout;
+    //   576: new 534	aedu
+    //   579: dup
+    //   580: aload_0
+    //   581: invokespecial 535	aedu:<init>	(Lcom/tencent/mobileqq/activity/HongbaoShowerActivity;)V
+    //   584: invokevirtual 539	android/widget/RelativeLayout:setOnTouchListener	(Landroid/view/View$OnTouchListener;)V
+    //   587: aload_0
+    //   588: aload_0
+    //   589: ldc_w 540
+    //   592: invokevirtual 159	com/tencent/mobileqq/activity/HongbaoShowerActivity:findViewById	(I)Landroid/view/View;
+    //   595: checkcast 542	android/widget/TextView
+    //   598: putfield 544	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_b_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
     //   601: aload_0
-    //   602: getfield 116	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   605: invokevirtual 542	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
-    //   608: aload_0
-    //   609: aload_0
-    //   610: ldc_w 543
-    //   613: invokevirtual 159	com/tencent/mobileqq/activity/HongbaoShowerActivity:findViewById	(I)Landroid/view/View;
-    //   616: checkcast 537	android/widget/TextView
-    //   619: putfield 545	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_d_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
-    //   622: aload_0
-    //   623: getfield 545	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_d_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
-    //   626: astore 7
-    //   628: aload_0
-    //   629: getfield 40	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Int	I
-    //   632: ifne +552 -> 1184
-    //   635: ldc_w 546
-    //   638: invokestatic 297	amtj:a	(I)Ljava/lang/String;
-    //   641: astore_1
-    //   642: aload 7
-    //   644: aload_1
-    //   645: invokevirtual 542	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
-    //   648: aload_0
-    //   649: getfield 545	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_d_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
-    //   652: new 548	admo
-    //   655: dup
-    //   656: aload_0
-    //   657: invokespecial 549	admo:<init>	(Lcom/tencent/mobileqq/activity/HongbaoShowerActivity;)V
-    //   660: invokevirtual 553	android/widget/TextView:setOnClickListener	(Landroid/view/View$OnClickListener;)V
-    //   663: aload_0
-    //   664: ldc_w 554
-    //   667: invokevirtual 159	com/tencent/mobileqq/activity/HongbaoShowerActivity:findViewById	(I)Landroid/view/View;
-    //   670: checkcast 537	android/widget/TextView
-    //   673: astore 7
-    //   675: aload_0
-    //   676: getfield 40	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Int	I
-    //   679: ifne +515 -> 1194
-    //   682: ldc_w 555
-    //   685: invokestatic 297	amtj:a	(I)Ljava/lang/String;
-    //   688: astore_1
-    //   689: aload 7
-    //   691: aload_1
-    //   692: invokevirtual 542	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
-    //   695: aload_0
-    //   696: getfield 40	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Int	I
-    //   699: ifeq +11 -> 710
-    //   702: aload_0
-    //   703: getfield 40	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Int	I
-    //   706: iconst_1
-    //   707: if_icmpne +115 -> 822
-    //   710: aload_0
-    //   711: getfield 500	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Ayiz	Layiz;
-    //   714: getfield 557	ayiz:jdField_g_of_type_Int	I
-    //   717: iconst_1
-    //   718: if_icmpne +104 -> 822
-    //   721: aload_0
-    //   722: getfield 506	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   725: invokestatic 563	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   728: ifne +94 -> 822
-    //   731: aload_0
-    //   732: ldc_w 564
-    //   735: invokevirtual 159	com/tencent/mobileqq/activity/HongbaoShowerActivity:findViewById	(I)Landroid/view/View;
-    //   738: iconst_0
-    //   739: invokevirtual 567	android/view/View:setVisibility	(I)V
-    //   742: aload_0
-    //   743: aload_0
-    //   744: ldc_w 568
-    //   747: invokevirtual 159	com/tencent/mobileqq/activity/HongbaoShowerActivity:findViewById	(I)Landroid/view/View;
-    //   750: checkcast 537	android/widget/TextView
-    //   753: putfield 570	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_c_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
-    //   756: aload_0
-    //   757: getfield 570	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_c_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   602: getfield 544	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_b_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   605: aload_0
+    //   606: getfield 116	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   609: invokevirtual 547	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   612: aload_0
+    //   613: aload_0
+    //   614: ldc_w 548
+    //   617: invokevirtual 159	com/tencent/mobileqq/activity/HongbaoShowerActivity:findViewById	(I)Landroid/view/View;
+    //   620: checkcast 542	android/widget/TextView
+    //   623: putfield 550	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_d_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   626: aload_0
+    //   627: getfield 550	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_d_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   630: astore 7
+    //   632: aload_0
+    //   633: getfield 40	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Int	I
+    //   636: ifne +552 -> 1188
+    //   639: ldc_w 551
+    //   642: invokestatic 297	anvx:a	(I)Ljava/lang/String;
+    //   645: astore_1
+    //   646: aload 7
+    //   648: aload_1
+    //   649: invokevirtual 547	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   652: aload_0
+    //   653: getfield 550	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_d_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   656: new 553	aedv
+    //   659: dup
+    //   660: aload_0
+    //   661: invokespecial 554	aedv:<init>	(Lcom/tencent/mobileqq/activity/HongbaoShowerActivity;)V
+    //   664: invokevirtual 558	android/widget/TextView:setOnClickListener	(Landroid/view/View$OnClickListener;)V
+    //   667: aload_0
+    //   668: ldc_w 559
+    //   671: invokevirtual 159	com/tencent/mobileqq/activity/HongbaoShowerActivity:findViewById	(I)Landroid/view/View;
+    //   674: checkcast 542	android/widget/TextView
+    //   677: astore 7
+    //   679: aload_0
+    //   680: getfield 40	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Int	I
+    //   683: ifne +515 -> 1198
+    //   686: ldc_w 560
+    //   689: invokestatic 297	anvx:a	(I)Ljava/lang/String;
+    //   692: astore_1
+    //   693: aload 7
+    //   695: aload_1
+    //   696: invokevirtual 547	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   699: aload_0
+    //   700: getfield 40	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Int	I
+    //   703: ifeq +11 -> 714
+    //   706: aload_0
+    //   707: getfield 40	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Int	I
+    //   710: iconst_1
+    //   711: if_icmpne +115 -> 826
+    //   714: aload_0
+    //   715: getfield 505	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Aznu	Laznu;
+    //   718: getfield 562	aznu:jdField_g_of_type_Int	I
+    //   721: iconst_1
+    //   722: if_icmpne +104 -> 826
+    //   725: aload_0
+    //   726: getfield 511	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   729: invokestatic 568	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   732: ifne +94 -> 826
+    //   735: aload_0
+    //   736: ldc_w 569
+    //   739: invokevirtual 159	com/tencent/mobileqq/activity/HongbaoShowerActivity:findViewById	(I)Landroid/view/View;
+    //   742: iconst_0
+    //   743: invokevirtual 572	android/view/View:setVisibility	(I)V
+    //   746: aload_0
+    //   747: aload_0
+    //   748: ldc_w 573
+    //   751: invokevirtual 159	com/tencent/mobileqq/activity/HongbaoShowerActivity:findViewById	(I)Landroid/view/View;
+    //   754: checkcast 542	android/widget/TextView
+    //   757: putfield 575	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_c_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
     //   760: aload_0
-    //   761: getfield 506	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   764: invokevirtual 542	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
-    //   767: aload_0
-    //   768: aload_0
-    //   769: ldc_w 571
-    //   772: invokevirtual 159	com/tencent/mobileqq/activity/HongbaoShowerActivity:findViewById	(I)Landroid/view/View;
-    //   775: checkcast 307	android/widget/CheckBox
-    //   778: putfield 46	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidWidgetCheckBox	Landroid/widget/CheckBox;
-    //   781: aload_0
-    //   782: getfield 34	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_b_of_type_Boolean	Z
-    //   785: ifne +11 -> 796
-    //   788: aload_0
-    //   789: getfield 46	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidWidgetCheckBox	Landroid/widget/CheckBox;
-    //   792: iconst_0
-    //   793: invokevirtual 574	android/widget/CheckBox:setChecked	(Z)V
-    //   796: aload_0
-    //   797: aload_0
-    //   798: ldc_w 575
-    //   801: invokevirtual 159	com/tencent/mobileqq/activity/HongbaoShowerActivity:findViewById	(I)Landroid/view/View;
-    //   804: putfield 577	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_b_of_type_AndroidViewView	Landroid/view/View;
-    //   807: aload_0
-    //   808: getfield 577	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_b_of_type_AndroidViewView	Landroid/view/View;
-    //   811: new 579	admp
-    //   814: dup
-    //   815: aload_0
-    //   816: invokespecial 580	admp:<init>	(Lcom/tencent/mobileqq/activity/HongbaoShowerActivity;)V
-    //   819: invokevirtual 581	android/view/View:setOnClickListener	(Landroid/view/View$OnClickListener;)V
-    //   822: aload_0
-    //   823: ldc_w 582
-    //   826: invokevirtual 159	com/tencent/mobileqq/activity/HongbaoShowerActivity:findViewById	(I)Landroid/view/View;
-    //   829: astore_1
-    //   830: aload_1
-    //   831: ifnull +18 -> 849
-    //   834: aload_0
-    //   835: getfield 40	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Int	I
-    //   838: iconst_1
-    //   839: if_icmpne +365 -> 1204
-    //   842: iconst_0
-    //   843: istore_2
-    //   844: aload_1
-    //   845: iload_2
-    //   846: invokevirtual 567	android/view/View:setVisibility	(I)V
-    //   849: aload_0
-    //   850: invokestatic 588	java/lang/System:currentTimeMillis	()J
-    //   853: putfield 32	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Long	J
-    //   856: aload_0
-    //   857: aload_0
-    //   858: ldc_w 589
-    //   861: invokevirtual 159	com/tencent/mobileqq/activity/HongbaoShowerActivity:findViewById	(I)Landroid/view/View;
-    //   864: checkcast 537	android/widget/TextView
-    //   867: putfield 591	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
-    //   870: aload_0
-    //   871: getfield 591	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
-    //   874: new 593	admq
-    //   877: dup
-    //   878: aload_0
-    //   879: invokespecial 594	admq:<init>	(Lcom/tencent/mobileqq/activity/HongbaoShowerActivity;)V
-    //   882: invokevirtual 553	android/widget/TextView:setOnClickListener	(Landroid/view/View$OnClickListener;)V
-    //   885: aload_0
-    //   886: getfield 500	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Ayiz	Layiz;
-    //   889: getfield 515	ayiz:jdField_d_of_type_Int	I
-    //   892: iconst_2
-    //   893: if_icmpne +348 -> 1241
-    //   896: aload_0
-    //   897: ldc_w 595
-    //   900: invokevirtual 159	com/tencent/mobileqq/activity/HongbaoShowerActivity:findViewById	(I)Landroid/view/View;
-    //   903: checkcast 264	android/widget/ImageView
-    //   906: astore 7
-    //   908: aload 7
-    //   910: ifnull +86 -> 996
-    //   913: ldc_w 596
-    //   916: invokestatic 597	com/tencent/mobileqq/activity/HongbaoShowerActivity:a	(I)Ljava/lang/String;
-    //   919: invokestatic 600	com/tencent/mobileqq/portal/PortalManager:a	(Ljava/lang/String;)Landroid/graphics/Bitmap;
-    //   922: astore_1
-    //   923: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   926: ifeq +41 -> 967
-    //   929: new 276	java/lang/StringBuilder
-    //   932: dup
-    //   933: invokespecial 277	java/lang/StringBuilder:<init>	()V
-    //   936: ldc_w 602
-    //   939: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   942: astore 8
-    //   944: aload_1
-    //   945: ifnull +265 -> 1210
-    //   948: iconst_1
-    //   949: istore 5
-    //   951: ldc 142
-    //   953: iconst_2
-    //   954: aload 8
-    //   956: iload 5
-    //   958: invokevirtual 605	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   961: invokevirtual 286	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   964: invokestatic 148	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   967: aload_1
-    //   968: ifnonnull +450 -> 1418
-    //   971: ldc_w 596
-    //   974: invokestatic 597	com/tencent/mobileqq/activity/HongbaoShowerActivity:a	(I)Ljava/lang/String;
-    //   977: ldc_w 596
-    //   980: invokestatic 608	com/tencent/mobileqq/portal/PortalManager:a	(Ljava/lang/String;I)Landroid/graphics/Bitmap;
-    //   983: astore_1
-    //   984: aload_1
-    //   985: ifnonnull +231 -> 1216
-    //   988: aload 7
-    //   990: ldc_w 596
-    //   993: invokevirtual 611	android/widget/ImageView:setImageResource	(I)V
-    //   996: aload_0
-    //   997: ldc 155
-    //   999: invokevirtual 159	com/tencent/mobileqq/activity/HongbaoShowerActivity:findViewById	(I)Landroid/view/View;
-    //   1002: checkcast 161	android/widget/RelativeLayout
-    //   1005: astore 8
-    //   1007: aload 8
-    //   1009: ifnull +94 -> 1103
-    //   1012: ldc_w 612
-    //   1015: invokestatic 597	com/tencent/mobileqq/activity/HongbaoShowerActivity:a	(I)Ljava/lang/String;
-    //   1018: invokestatic 600	com/tencent/mobileqq/portal/PortalManager:a	(Ljava/lang/String;)Landroid/graphics/Bitmap;
-    //   1021: astore 7
-    //   1023: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1026: ifeq +44 -> 1070
-    //   1029: new 276	java/lang/StringBuilder
-    //   1032: dup
-    //   1033: invokespecial 277	java/lang/StringBuilder:<init>	()V
-    //   1036: ldc_w 614
-    //   1039: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1042: astore_1
-    //   1043: iload 6
-    //   1045: istore 5
-    //   1047: aload 7
-    //   1049: ifnull +6 -> 1055
-    //   1052: iconst_1
-    //   1053: istore 5
-    //   1055: ldc 142
-    //   1057: iconst_2
-    //   1058: aload_1
-    //   1059: iload 5
-    //   1061: invokevirtual 605	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1064: invokevirtual 286	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1067: invokestatic 148	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1070: aload 7
-    //   1072: astore_1
-    //   1073: aload 7
-    //   1075: ifnonnull +16 -> 1091
-    //   1078: ldc_w 612
-    //   1081: invokestatic 597	com/tencent/mobileqq/activity/HongbaoShowerActivity:a	(I)Ljava/lang/String;
-    //   1084: ldc_w 612
-    //   1087: invokestatic 608	com/tencent/mobileqq/portal/PortalManager:a	(Ljava/lang/String;I)Landroid/graphics/Bitmap;
-    //   1090: astore_1
-    //   1091: aload_1
-    //   1092: ifnonnull +133 -> 1225
-    //   1095: aload 8
-    //   1097: ldc_w 612
-    //   1100: invokevirtual 617	android/widget/RelativeLayout:setBackgroundResource	(I)V
-    //   1103: aload_0
-    //   1104: aload_0
-    //   1105: ldc_w 618
-    //   1108: invokevirtual 159	com/tencent/mobileqq/activity/HongbaoShowerActivity:findViewById	(I)Landroid/view/View;
-    //   1111: checkcast 264	android/widget/ImageView
-    //   1114: putfield 620	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_b_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
-    //   1117: aload_0
-    //   1118: getfield 620	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_b_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
-    //   1121: ifnull +28 -> 1149
-    //   1124: aload_0
-    //   1125: getfield 509	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   1128: ifnull +21 -> 1149
-    //   1131: aload_0
-    //   1132: getfield 620	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_b_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
-    //   1135: new 259	android/graphics/drawable/BitmapDrawable
-    //   1138: dup
-    //   1139: aload_0
-    //   1140: getfield 509	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   1143: invokespecial 262	android/graphics/drawable/BitmapDrawable:<init>	(Landroid/graphics/Bitmap;)V
-    //   1146: invokevirtual 623	android/widget/ImageView:setBackgroundDrawable	(Landroid/graphics/drawable/Drawable;)V
-    //   1149: aload_0
-    //   1150: invokespecial 625	com/tencent/mobileqq/activity/HongbaoShowerActivity:a	()V
+    //   761: getfield 575	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_c_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   764: aload_0
+    //   765: getfield 511	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   768: invokevirtual 547	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   771: aload_0
+    //   772: aload_0
+    //   773: ldc_w 576
+    //   776: invokevirtual 159	com/tencent/mobileqq/activity/HongbaoShowerActivity:findViewById	(I)Landroid/view/View;
+    //   779: checkcast 307	android/widget/CheckBox
+    //   782: putfield 46	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidWidgetCheckBox	Landroid/widget/CheckBox;
+    //   785: aload_0
+    //   786: getfield 34	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_b_of_type_Boolean	Z
+    //   789: ifne +11 -> 800
+    //   792: aload_0
+    //   793: getfield 46	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidWidgetCheckBox	Landroid/widget/CheckBox;
+    //   796: iconst_0
+    //   797: invokevirtual 579	android/widget/CheckBox:setChecked	(Z)V
+    //   800: aload_0
+    //   801: aload_0
+    //   802: ldc_w 580
+    //   805: invokevirtual 159	com/tencent/mobileqq/activity/HongbaoShowerActivity:findViewById	(I)Landroid/view/View;
+    //   808: putfield 582	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_b_of_type_AndroidViewView	Landroid/view/View;
+    //   811: aload_0
+    //   812: getfield 582	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_b_of_type_AndroidViewView	Landroid/view/View;
+    //   815: new 584	aedw
+    //   818: dup
+    //   819: aload_0
+    //   820: invokespecial 585	aedw:<init>	(Lcom/tencent/mobileqq/activity/HongbaoShowerActivity;)V
+    //   823: invokevirtual 586	android/view/View:setOnClickListener	(Landroid/view/View$OnClickListener;)V
+    //   826: aload_0
+    //   827: ldc_w 587
+    //   830: invokevirtual 159	com/tencent/mobileqq/activity/HongbaoShowerActivity:findViewById	(I)Landroid/view/View;
+    //   833: astore_1
+    //   834: aload_1
+    //   835: ifnull +18 -> 853
+    //   838: aload_0
+    //   839: getfield 40	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Int	I
+    //   842: iconst_1
+    //   843: if_icmpne +365 -> 1208
+    //   846: iconst_0
+    //   847: istore_2
+    //   848: aload_1
+    //   849: iload_2
+    //   850: invokevirtual 572	android/view/View:setVisibility	(I)V
+    //   853: aload_0
+    //   854: invokestatic 593	java/lang/System:currentTimeMillis	()J
+    //   857: putfield 32	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Long	J
+    //   860: aload_0
+    //   861: aload_0
+    //   862: ldc_w 594
+    //   865: invokevirtual 159	com/tencent/mobileqq/activity/HongbaoShowerActivity:findViewById	(I)Landroid/view/View;
+    //   868: checkcast 542	android/widget/TextView
+    //   871: putfield 596	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   874: aload_0
+    //   875: getfield 596	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   878: new 598	aedx
+    //   881: dup
+    //   882: aload_0
+    //   883: invokespecial 599	aedx:<init>	(Lcom/tencent/mobileqq/activity/HongbaoShowerActivity;)V
+    //   886: invokevirtual 558	android/widget/TextView:setOnClickListener	(Landroid/view/View$OnClickListener;)V
+    //   889: aload_0
+    //   890: getfield 505	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Aznu	Laznu;
+    //   893: getfield 520	aznu:jdField_d_of_type_Int	I
+    //   896: iconst_2
+    //   897: if_icmpne +348 -> 1245
+    //   900: aload_0
+    //   901: ldc_w 600
+    //   904: invokevirtual 159	com/tencent/mobileqq/activity/HongbaoShowerActivity:findViewById	(I)Landroid/view/View;
+    //   907: checkcast 264	android/widget/ImageView
+    //   910: astore 7
+    //   912: aload 7
+    //   914: ifnull +86 -> 1000
+    //   917: ldc_w 601
+    //   920: invokestatic 602	com/tencent/mobileqq/activity/HongbaoShowerActivity:a	(I)Ljava/lang/String;
+    //   923: invokestatic 605	com/tencent/mobileqq/portal/PortalManager:a	(Ljava/lang/String;)Landroid/graphics/Bitmap;
+    //   926: astore_1
+    //   927: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   930: ifeq +41 -> 971
+    //   933: new 276	java/lang/StringBuilder
+    //   936: dup
+    //   937: invokespecial 277	java/lang/StringBuilder:<init>	()V
+    //   940: ldc_w 607
+    //   943: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   946: astore 8
+    //   948: aload_1
+    //   949: ifnull +265 -> 1214
+    //   952: iconst_1
+    //   953: istore 5
+    //   955: ldc 142
+    //   957: iconst_2
+    //   958: aload 8
+    //   960: iload 5
+    //   962: invokevirtual 610	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   965: invokevirtual 286	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   968: invokestatic 148	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   971: aload_1
+    //   972: ifnonnull +450 -> 1422
+    //   975: ldc_w 601
+    //   978: invokestatic 602	com/tencent/mobileqq/activity/HongbaoShowerActivity:a	(I)Ljava/lang/String;
+    //   981: ldc_w 601
+    //   984: invokestatic 613	com/tencent/mobileqq/portal/PortalManager:a	(Ljava/lang/String;I)Landroid/graphics/Bitmap;
+    //   987: astore_1
+    //   988: aload_1
+    //   989: ifnonnull +231 -> 1220
+    //   992: aload 7
+    //   994: ldc_w 601
+    //   997: invokevirtual 616	android/widget/ImageView:setImageResource	(I)V
+    //   1000: aload_0
+    //   1001: ldc 155
+    //   1003: invokevirtual 159	com/tencent/mobileqq/activity/HongbaoShowerActivity:findViewById	(I)Landroid/view/View;
+    //   1006: checkcast 161	android/widget/RelativeLayout
+    //   1009: astore 8
+    //   1011: aload 8
+    //   1013: ifnull +94 -> 1107
+    //   1016: ldc_w 617
+    //   1019: invokestatic 602	com/tencent/mobileqq/activity/HongbaoShowerActivity:a	(I)Ljava/lang/String;
+    //   1022: invokestatic 605	com/tencent/mobileqq/portal/PortalManager:a	(Ljava/lang/String;)Landroid/graphics/Bitmap;
+    //   1025: astore 7
+    //   1027: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1030: ifeq +44 -> 1074
+    //   1033: new 276	java/lang/StringBuilder
+    //   1036: dup
+    //   1037: invokespecial 277	java/lang/StringBuilder:<init>	()V
+    //   1040: ldc_w 619
+    //   1043: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1046: astore_1
+    //   1047: iload 6
+    //   1049: istore 5
+    //   1051: aload 7
+    //   1053: ifnull +6 -> 1059
+    //   1056: iconst_1
+    //   1057: istore 5
+    //   1059: ldc 142
+    //   1061: iconst_2
+    //   1062: aload_1
+    //   1063: iload 5
+    //   1065: invokevirtual 610	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   1068: invokevirtual 286	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1071: invokestatic 148	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1074: aload 7
+    //   1076: astore_1
+    //   1077: aload 7
+    //   1079: ifnonnull +16 -> 1095
+    //   1082: ldc_w 617
+    //   1085: invokestatic 602	com/tencent/mobileqq/activity/HongbaoShowerActivity:a	(I)Ljava/lang/String;
+    //   1088: ldc_w 617
+    //   1091: invokestatic 613	com/tencent/mobileqq/portal/PortalManager:a	(Ljava/lang/String;I)Landroid/graphics/Bitmap;
+    //   1094: astore_1
+    //   1095: aload_1
+    //   1096: ifnonnull +133 -> 1229
+    //   1099: aload 8
+    //   1101: ldc_w 617
+    //   1104: invokevirtual 622	android/widget/RelativeLayout:setBackgroundResource	(I)V
+    //   1107: aload_0
+    //   1108: aload_0
+    //   1109: ldc_w 623
+    //   1112: invokevirtual 159	com/tencent/mobileqq/activity/HongbaoShowerActivity:findViewById	(I)Landroid/view/View;
+    //   1115: checkcast 264	android/widget/ImageView
+    //   1118: putfield 625	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_b_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   1121: aload_0
+    //   1122: getfield 625	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_b_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   1125: ifnull +28 -> 1153
+    //   1128: aload_0
+    //   1129: getfield 514	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   1132: ifnull +21 -> 1153
+    //   1135: aload_0
+    //   1136: getfield 625	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_b_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   1139: new 259	android/graphics/drawable/BitmapDrawable
+    //   1142: dup
+    //   1143: aload_0
+    //   1144: getfield 514	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   1147: invokespecial 262	android/graphics/drawable/BitmapDrawable:<init>	(Landroid/graphics/Bitmap;)V
+    //   1150: invokevirtual 628	android/widget/ImageView:setBackgroundDrawable	(Landroid/graphics/drawable/Drawable;)V
     //   1153: aload_0
-    //   1154: invokespecial 627	com/tencent/mobileqq/activity/HongbaoShowerActivity:c	()V
-    //   1157: iconst_1
-    //   1158: ireturn
-    //   1159: ldc_w 628
-    //   1162: istore_2
-    //   1163: goto -670 -> 493
-    //   1166: ldc_w 516
-    //   1169: istore_2
-    //   1170: goto -677 -> 493
-    //   1173: astore_1
-    //   1174: aload_1
-    //   1175: invokevirtual 629	java/lang/OutOfMemoryError:printStackTrace	()V
-    //   1178: aload_0
-    //   1179: invokevirtual 324	com/tencent/mobileqq/activity/HongbaoShowerActivity:finish	()V
-    //   1182: iconst_0
-    //   1183: ireturn
-    //   1184: ldc_w 630
-    //   1187: invokestatic 297	amtj:a	(I)Ljava/lang/String;
-    //   1190: astore_1
-    //   1191: goto -549 -> 642
-    //   1194: ldc_w 631
-    //   1197: invokestatic 297	amtj:a	(I)Ljava/lang/String;
-    //   1200: astore_1
-    //   1201: goto -512 -> 689
-    //   1204: bipush 8
-    //   1206: istore_2
-    //   1207: goto -363 -> 844
-    //   1210: iconst_0
-    //   1211: istore 5
-    //   1213: goto -262 -> 951
-    //   1216: aload 7
-    //   1218: aload_1
-    //   1219: invokevirtual 634	android/widget/ImageView:setImageBitmap	(Landroid/graphics/Bitmap;)V
-    //   1222: goto -226 -> 996
-    //   1225: aload 8
-    //   1227: new 259	android/graphics/drawable/BitmapDrawable
-    //   1230: dup
-    //   1231: aload_1
-    //   1232: invokespecial 262	android/graphics/drawable/BitmapDrawable:<init>	(Landroid/graphics/Bitmap;)V
-    //   1235: invokevirtual 635	android/widget/RelativeLayout:setBackgroundDrawable	(Landroid/graphics/drawable/Drawable;)V
-    //   1238: goto -135 -> 1103
-    //   1241: aload_0
-    //   1242: getfield 500	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Ayiz	Layiz;
-    //   1245: getfield 515	ayiz:jdField_d_of_type_Int	I
-    //   1248: iconst_1
-    //   1249: if_icmpne -100 -> 1149
-    //   1252: aload_0
-    //   1253: ldc_w 595
-    //   1256: invokevirtual 159	com/tencent/mobileqq/activity/HongbaoShowerActivity:findViewById	(I)Landroid/view/View;
-    //   1259: checkcast 264	android/widget/ImageView
-    //   1262: astore 8
-    //   1264: aload 8
-    //   1266: ifnull +90 -> 1356
-    //   1269: ldc_w 636
-    //   1272: invokestatic 597	com/tencent/mobileqq/activity/HongbaoShowerActivity:a	(I)Ljava/lang/String;
-    //   1275: invokestatic 600	com/tencent/mobileqq/portal/PortalManager:a	(Ljava/lang/String;)Landroid/graphics/Bitmap;
-    //   1278: astore 7
-    //   1280: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1283: ifeq +40 -> 1323
-    //   1286: new 276	java/lang/StringBuilder
-    //   1289: dup
-    //   1290: invokespecial 277	java/lang/StringBuilder:<init>	()V
-    //   1293: ldc_w 638
-    //   1296: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1299: astore_1
-    //   1300: aload 7
-    //   1302: ifnull +6 -> 1308
-    //   1305: iconst_1
-    //   1306: istore 5
-    //   1308: ldc 142
-    //   1310: iconst_2
-    //   1311: aload_1
-    //   1312: iload 5
-    //   1314: invokevirtual 605	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1317: invokevirtual 286	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1320: invokestatic 148	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1323: aload 7
-    //   1325: astore_1
-    //   1326: aload 7
-    //   1328: ifnonnull +16 -> 1344
-    //   1331: ldc_w 636
-    //   1334: invokestatic 597	com/tencent/mobileqq/activity/HongbaoShowerActivity:a	(I)Ljava/lang/String;
-    //   1337: ldc_w 636
-    //   1340: invokestatic 608	com/tencent/mobileqq/portal/PortalManager:a	(Ljava/lang/String;I)Landroid/graphics/Bitmap;
-    //   1343: astore_1
-    //   1344: aload_1
-    //   1345: ifnonnull +54 -> 1399
-    //   1348: aload 8
-    //   1350: ldc_w 636
-    //   1353: invokevirtual 611	android/widget/ImageView:setImageResource	(I)V
-    //   1356: aload_0
-    //   1357: aload_0
-    //   1358: ldc_w 639
-    //   1361: invokevirtual 159	com/tencent/mobileqq/activity/HongbaoShowerActivity:findViewById	(I)Landroid/view/View;
-    //   1364: checkcast 264	android/widget/ImageView
-    //   1367: putfield 641	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
-    //   1370: aload_0
-    //   1371: getfield 641	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
-    //   1374: ifnull -225 -> 1149
-    //   1377: aload_0
-    //   1378: getfield 509	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   1381: ifnull -232 -> 1149
-    //   1384: aload_0
-    //   1385: aload_0
-    //   1386: getfield 641	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   1154: invokespecial 630	com/tencent/mobileqq/activity/HongbaoShowerActivity:a	()V
+    //   1157: aload_0
+    //   1158: invokespecial 632	com/tencent/mobileqq/activity/HongbaoShowerActivity:c	()V
+    //   1161: iconst_1
+    //   1162: ireturn
+    //   1163: ldc_w 633
+    //   1166: istore_2
+    //   1167: goto -670 -> 497
+    //   1170: ldc_w 521
+    //   1173: istore_2
+    //   1174: goto -677 -> 497
+    //   1177: astore_1
+    //   1178: aload_1
+    //   1179: invokevirtual 634	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   1182: aload_0
+    //   1183: invokevirtual 324	com/tencent/mobileqq/activity/HongbaoShowerActivity:finish	()V
+    //   1186: iconst_0
+    //   1187: ireturn
+    //   1188: ldc_w 635
+    //   1191: invokestatic 297	anvx:a	(I)Ljava/lang/String;
+    //   1194: astore_1
+    //   1195: goto -549 -> 646
+    //   1198: ldc_w 636
+    //   1201: invokestatic 297	anvx:a	(I)Ljava/lang/String;
+    //   1204: astore_1
+    //   1205: goto -512 -> 693
+    //   1208: bipush 8
+    //   1210: istore_2
+    //   1211: goto -363 -> 848
+    //   1214: iconst_0
+    //   1215: istore 5
+    //   1217: goto -262 -> 955
+    //   1220: aload 7
+    //   1222: aload_1
+    //   1223: invokevirtual 639	android/widget/ImageView:setImageBitmap	(Landroid/graphics/Bitmap;)V
+    //   1226: goto -226 -> 1000
+    //   1229: aload 8
+    //   1231: new 259	android/graphics/drawable/BitmapDrawable
+    //   1234: dup
+    //   1235: aload_1
+    //   1236: invokespecial 262	android/graphics/drawable/BitmapDrawable:<init>	(Landroid/graphics/Bitmap;)V
+    //   1239: invokevirtual 640	android/widget/RelativeLayout:setBackgroundDrawable	(Landroid/graphics/drawable/Drawable;)V
+    //   1242: goto -135 -> 1107
+    //   1245: aload_0
+    //   1246: getfield 505	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_Aznu	Laznu;
+    //   1249: getfield 520	aznu:jdField_d_of_type_Int	I
+    //   1252: iconst_1
+    //   1253: if_icmpne -100 -> 1153
+    //   1256: aload_0
+    //   1257: ldc_w 600
+    //   1260: invokevirtual 159	com/tencent/mobileqq/activity/HongbaoShowerActivity:findViewById	(I)Landroid/view/View;
+    //   1263: checkcast 264	android/widget/ImageView
+    //   1266: astore 8
+    //   1268: aload 8
+    //   1270: ifnull +90 -> 1360
+    //   1273: ldc_w 641
+    //   1276: invokestatic 602	com/tencent/mobileqq/activity/HongbaoShowerActivity:a	(I)Ljava/lang/String;
+    //   1279: invokestatic 605	com/tencent/mobileqq/portal/PortalManager:a	(Ljava/lang/String;)Landroid/graphics/Bitmap;
+    //   1282: astore 7
+    //   1284: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1287: ifeq +40 -> 1327
+    //   1290: new 276	java/lang/StringBuilder
+    //   1293: dup
+    //   1294: invokespecial 277	java/lang/StringBuilder:<init>	()V
+    //   1297: ldc_w 643
+    //   1300: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1303: astore_1
+    //   1304: aload 7
+    //   1306: ifnull +6 -> 1312
+    //   1309: iconst_1
+    //   1310: istore 5
+    //   1312: ldc 142
+    //   1314: iconst_2
+    //   1315: aload_1
+    //   1316: iload 5
+    //   1318: invokevirtual 610	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   1321: invokevirtual 286	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1324: invokestatic 148	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1327: aload 7
+    //   1329: astore_1
+    //   1330: aload 7
+    //   1332: ifnonnull +16 -> 1348
+    //   1335: ldc_w 641
+    //   1338: invokestatic 602	com/tencent/mobileqq/activity/HongbaoShowerActivity:a	(I)Ljava/lang/String;
+    //   1341: ldc_w 641
+    //   1344: invokestatic 613	com/tencent/mobileqq/portal/PortalManager:a	(Ljava/lang/String;I)Landroid/graphics/Bitmap;
+    //   1347: astore_1
+    //   1348: aload_1
+    //   1349: ifnonnull +54 -> 1403
+    //   1352: aload 8
+    //   1354: ldc_w 641
+    //   1357: invokevirtual 616	android/widget/ImageView:setImageResource	(I)V
+    //   1360: aload_0
+    //   1361: aload_0
+    //   1362: ldc_w 644
+    //   1365: invokevirtual 159	com/tencent/mobileqq/activity/HongbaoShowerActivity:findViewById	(I)Landroid/view/View;
+    //   1368: checkcast 264	android/widget/ImageView
+    //   1371: putfield 646	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   1374: aload_0
+    //   1375: getfield 646	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   1378: ifnull -225 -> 1153
+    //   1381: aload_0
+    //   1382: getfield 514	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   1385: ifnull -232 -> 1153
+    //   1388: aload_0
     //   1389: aload_0
-    //   1390: getfield 509	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   1393: invokespecial 643	com/tencent/mobileqq/activity/HongbaoShowerActivity:a	(Landroid/widget/ImageView;Landroid/graphics/Bitmap;)V
-    //   1396: goto -247 -> 1149
-    //   1399: aload 8
-    //   1401: aload_1
-    //   1402: invokevirtual 634	android/widget/ImageView:setImageBitmap	(Landroid/graphics/Bitmap;)V
-    //   1405: goto -49 -> 1356
-    //   1408: astore_1
-    //   1409: iconst_m1
-    //   1410: istore_2
-    //   1411: goto -1091 -> 320
-    //   1414: astore_1
+    //   1390: getfield 646	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   1393: aload_0
+    //   1394: getfield 514	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   1397: invokespecial 648	com/tencent/mobileqq/activity/HongbaoShowerActivity:a	(Landroid/widget/ImageView;Landroid/graphics/Bitmap;)V
+    //   1400: goto -247 -> 1153
+    //   1403: aload 8
+    //   1405: aload_1
+    //   1406: invokevirtual 639	android/widget/ImageView:setImageBitmap	(Landroid/graphics/Bitmap;)V
+    //   1409: goto -49 -> 1360
+    //   1412: astore_1
+    //   1413: iconst_m1
+    //   1414: istore_2
     //   1415: goto -1095 -> 320
-    //   1418: goto -434 -> 984
+    //   1418: astore_1
+    //   1419: goto -1099 -> 320
+    //   1422: goto -434 -> 988
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1421	0	this	HongbaoShowerActivity
-    //   0	1421	1	paramBundle	Bundle
-    //   123	1288	2	i	int
-    //   69	286	3	j	int
+    //   0	1425	0	this	HongbaoShowerActivity
+    //   0	1425	1	paramBundle	Bundle
+    //   123	1292	2	i	int
+    //   69	287	3	j	int
     //   95	37	4	k	int
-    //   1	1312	5	bool1	boolean
-    //   4	1040	6	bool2	boolean
-    //   626	701	7	localObject1	Object
-    //   942	458	8	localObject2	Object
+    //   1	1316	5	bool1	boolean
+    //   4	1044	6	bool2	boolean
+    //   630	701	7	localObject1	Object
+    //   946	458	8	localObject2	Object
     // Exception table:
     //   from	to	target	type
     //   32	70	315	java/lang/Exception
-    //   535	540	1173	java/lang/OutOfMemoryError
-    //   70	124	1408	java/lang/Exception
-    //   130	139	1414	java/lang/Exception
-    //   139	151	1414	java/lang/Exception
+    //   539	544	1177	java/lang/OutOfMemoryError
+    //   70	124	1412	java/lang/Exception
+    //   130	139	1418	java/lang/Exception
+    //   139	151	1418	java/lang/Exception
   }
   
   public boolean isWrapContent()
@@ -940,7 +940,7 @@ public class HongbaoShowerActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.HongbaoShowerActivity
  * JD-Core Version:    0.7.0.1
  */

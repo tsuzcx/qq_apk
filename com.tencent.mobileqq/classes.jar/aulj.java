@@ -1,27 +1,30 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Bundle;
 
-public final class aulj
+public class aulj
 {
-  public boolean a;
-  public boolean b = true;
+  public long a;
+  public long b;
   
-  private void a(String paramString)
+  public aulj(long paramLong1, long paramLong2)
   {
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.a = paramString.optBoolean("input_status_gray_switch", false);
-      this.b = paramString.optBoolean("expand_chat_input_status_switch", true);
-      return;
+    this.a = paramLong1;
+    this.b = paramLong2;
+  }
+  
+  public static aulj a(Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      return null;
     }
-    catch (JSONException paramString)
-    {
-      QLog.e("InputStatusConfig", 1, paramString, new Object[0]);
-    }
+    return new aulj(paramBundle.getLong("RPARAM_RECV_SIZE"), paramBundle.getLong("RPARAM_TRANS_SIZE"));
+  }
+  
+  public Bundle a()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("RPARAM_RECV_SIZE", this.a);
+    localBundle.putLong("RPARAM_TRANS_SIZE", this.b);
+    return localBundle;
   }
 }
 

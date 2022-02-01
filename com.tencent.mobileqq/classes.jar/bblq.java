@@ -1,30 +1,11 @@
-import java.util.List;
+import android.opengl.GLSurfaceView.EGLConfigChooser;
+import android.opengl.GLSurfaceView.EGLContextFactory;
 
-public class bblq
-  implements bblp
+public abstract interface bblq
 {
-  private abxo<bbls> jdField_a_of_type_Abxo = new abxp();
-  private abxq<Integer, bbls> jdField_a_of_type_Abxq = new abxr();
+  public abstract GLSurfaceView.EGLConfigChooser a();
   
-  public bbls a(Integer paramInteger)
-  {
-    return (bbls)this.jdField_a_of_type_Abxq.a(paramInteger);
-  }
-  
-  public List<bbls> a()
-  {
-    return this.jdField_a_of_type_Abxo.a();
-  }
-  
-  public void a(Class<? extends bbls> paramClass)
-  {
-    this.jdField_a_of_type_Abxo.a(paramClass);
-  }
-  
-  public void a(Integer paramInteger, Class<? extends bbls> paramClass)
-  {
-    this.jdField_a_of_type_Abxq.a(paramInteger, paramClass);
-  }
+  public abstract GLSurfaceView.EGLContextFactory a();
 }
 
 

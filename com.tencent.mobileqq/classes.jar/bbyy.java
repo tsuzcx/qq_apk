@@ -1,41 +1,49 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.soload.LoadParam;
-import com.tencent.mobileqq.soload.LoadParam.LoadItem;
-import com.tencent.mobileqq.soload.config.SoConfig.SoDetailInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.GIFInfo;
 
 class bbyy
-  implements akbj
+  implements bbzb
 {
-  bbyy(bbyv parambbyv, boolean paramBoolean1, boolean paramBoolean2, bbzx parambbzx) {}
+  bbyy(bbyv parambbyv, HotWordSearchEntryDataModel.GIFInfo paramGIFInfo) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SoLoadWidget.GetSoTaskAsync", 2, "[downloadSo] resCode=" + paramInt + ",pathRes=" + paramPathResult);
-    }
-    bbzi.a(this.jdField_a_of_type_Bbyv.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam, this.jdField_a_of_type_Bbyv.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mReportSeq, null, "load.item.download.end", "sc=" + paramPathResult.subErrCode, paramInt, null);
-    this.jdField_a_of_type_Bbyv.jdField_a_of_type_Int = paramPathResult.subErrCode;
-    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
+    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext());
+    int i = localSharedPreferences.getInt("HotWordSearchEntryModel.psk_hot_search_try_time", 0);
+    String str = localSharedPreferences.getString("HotWordSearchEntryModel.psk_hot_search_try_id", "");
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    aogi localaogi = new aogi(localQQAppInterface);
+    if (!TextUtils.equals(str, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID))
     {
-      this.jdField_a_of_type_Bbyv.jdField_a_of_type_Boolean = true;
-      paramPathResult = new File(paramPathResult.folderPath, this.jdField_a_of_type_Bbyv.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.soFileName).getAbsolutePath();
-      bbyv.a(this.jdField_a_of_type_Bbyv, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_Bbzx, paramPathResult, this.jdField_a_of_type_Bbyv.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig$SoDetailInfo.crc, 2);
+      localSharedPreferences.edit().putString("HotWordSearchEntryModel.psk_hot_search_try_id", this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID).apply();
+      localSharedPreferences.edit().putInt("HotWordSearchEntryModel.psk_hot_search_try_time", 1).apply();
+      localaogi.a(localQQAppInterface, "gif_sta_first", null, null, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID);
       return;
     }
-    if (paramInt == 2)
-    {
-      bbyv.a(this.jdField_a_of_type_Bbyv, 4);
-      return;
+    localSharedPreferences.edit().putInt("HotWordSearchEntryModel.psk_hot_search_try_time", i + 1).apply();
+    localaogi.a(localQQAppInterface, "gif_sta_second", null, null, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID);
+  }
+  
+  public void b()
+  {
+    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext());
+    int i = localSharedPreferences.getInt("HotWordSearchEntryModel.psk_hot_search_try_time", 0);
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    aogi localaogi = new aogi(localQQAppInterface);
+    if (i == 1) {
+      localaogi.a(localQQAppInterface, "gif_suc_first", null, null, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID);
     }
-    if (paramPathResult.subErrCode == 404)
+    for (;;)
     {
-      bbyv.a(this.jdField_a_of_type_Bbyv, 9);
+      localSharedPreferences.edit().putString("HotWordSearchEntryModel.psk_hot_search_last_show_id", this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID).apply();
       return;
+      localaogi.a(localQQAppInterface, "gif_suc_second", null, null, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID);
     }
-    bbyv.a(this.jdField_a_of_type_Bbyv, 3);
   }
 }
 

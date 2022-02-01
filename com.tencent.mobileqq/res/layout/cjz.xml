@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/na2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<FrameLayout android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="16.0dip" android:textColor="@color/al3" android:ellipsize="marquee" android:id="@id/ln6" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:onClick="BtnOnClick" />
-    <ImageView android:id="@id/lnp" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:src="@drawable/g9i" android:layout_toRightOf="@id/ln6" android:layout_centerVertical="true" android:onClick="BtnOnClick" />
-</RelativeLayout>
+    <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:orientation="vertical" android:id="@id/n4m" android:background="@color/agk" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountNavBar android:gravity="center_vertical" android:id="@id/rlCommenTitle" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_marginTop="30.0dip" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/n4m">
+                <com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountHeadLayout android:id="@id/cw5" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountWebView android:id="@id/cwr" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                </com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountHeadLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</FrameLayout>

@@ -1,17 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardSendHongBaoOption;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-
-public class atpl
-  implements DialogInterface.OnClickListener
+public abstract interface atpl
 {
-  public atpl(ForwardSendHongBaoOption paramForwardSendHongBaoOption, QQCustomDialog paramQQCustomDialog) {}
+  public abstract void onError(int paramInt, String paramString);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-  }
+  public abstract void onSuccess();
 }
 
 

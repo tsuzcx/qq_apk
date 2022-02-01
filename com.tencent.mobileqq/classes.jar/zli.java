@@ -1,56 +1,107 @@
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.biz.subscribe.widget.VideoNextFeedsView;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.biz.qrcode.activity.QRJumpActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.superplayer.api.ISuperPlayer;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
 public class zli
-  implements IVideoInnerStatusListener
+  implements BusinessObserver
 {
-  public zli(VideoPlayerView paramVideoPlayerView) {}
+  public zli(QRJumpActivity paramQRJumpActivity, String paramString1, String paramString2, Activity paramActivity, String paramString3) {}
   
-  public void notifyVideoClose(int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    VideoPlayerView.b(this.a, false);
-    if (VideoPlayerView.a(this.a) != null)
-    {
-      VideoPlayerView.a(this.a).b();
-      VideoPlayerView.a(this.a, null);
-    }
-    VideoPlayerView.a(this.a, null);
-    this.a.i();
-  }
-  
-  public void notifyVideoSeek(int paramInt)
-  {
-    QLog.d("VideoPlayerView", 4, "notifyVideoSeek seek " + paramInt);
-    this.a.a(paramInt * this.a.a().getDurationMs() / 100L);
-  }
-  
-  public void notifyVideoStart()
-  {
-    if (this.a.a().getCurrentPositionMs() < this.a.a().getDurationMs())
-    {
-      this.a.e();
+    Object localObject1 = null;
+    int i = 0;
+    if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRJumpActivity.isFinishing()) {
       return;
     }
-    if (VideoPlayerView.b(this.a))
+    if (QLog.isColorLevel()) {
+      QLog.i("QRJumpActivity", 2, String.format("JumpUrl onReceive suc=%b ", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    if ((paramBoolean) && (paramBundle != null))
     {
-      QLog.d("VideoPlayerView", 4, "has more , wait for auto play next");
-      return;
+      paramBundle = paramBundle.getString("result");
+      QLog.i("QRJumpActivity", 2, String.format("JumpUrl onReceive result=%s", new Object[] { paramBundle }));
     }
-    this.a.a().setLoopback(true);
-    this.a.h();
-    if (VideoPlayerView.a(this.a) != null) {
-      VideoPlayerView.a(this.a).onVideoStart((int)this.a.a().getDurationMs());
+    for (;;)
+    {
+      try
+      {
+        Object localObject2 = new JSONObject(paramBundle);
+        zjr localzjr;
+        if (((JSONObject)localObject2).getInt("r") == 0) {
+          localzjr = new zjr(((JSONObject)localObject2).getString("d"));
+        }
+        boolean bool;
+        Bundle localBundle;
+        paramBundle = null;
+      }
+      catch (Exception paramBundle)
+      {
+        try
+        {
+          if (((JSONObject)localObject2).has("wpa"))
+          {
+            paramBoolean = "1".equals(((JSONObject)localObject2).getString("wpa"));
+            bool = ((JSONObject)localObject2).has("extvalue");
+            paramInt = i;
+            if (((JSONObject)localObject2).has("exttype"))
+            {
+              if ("2".equals(((JSONObject)localObject2).getString("exttype"))) {
+                break label353;
+              }
+              paramInt = i;
+              if ("1".equals(((JSONObject)localObject2).getString("exttype"))) {
+                break label353;
+              }
+            }
+            paramBundle = new Bundle();
+            if (paramBoolean) {}
+            try
+            {
+              paramBundle.putBoolean("issupportwpa", paramBoolean);
+              if ((paramInt != 0) && (bool))
+              {
+                localObject1 = ((JSONObject)localObject2).getString("exttype");
+                localObject2 = ((JSONObject)localObject2).getString("extvalue");
+                paramBundle.putString("exttype", (String)localObject1);
+                paramBundle.putString("extvalue", (String)localObject2);
+              }
+              paramBundle.putString("authKey", this.jdField_a_of_type_JavaLangString);
+              paramBundle.putString("authSig", this.b);
+              localObject1 = paramBundle;
+              paramBundle = localzjr;
+            }
+            catch (Exception localException)
+            {
+              localBundle = paramBundle;
+              paramBundle = localzjr;
+              continue;
+            }
+            if (localObject1 != null) {
+              zjv.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRJumpActivity.app, this.jdField_a_of_type_AndroidAppActivity, paramBundle, this.c, (Bundle)localObject1);
+            }
+            this.jdField_a_of_type_AndroidAppActivity.finish();
+            return;
+            paramBundle = paramBundle;
+            paramBundle = null;
+            continue;
+          }
+        }
+        catch (Exception paramBundle)
+        {
+          paramBundle = localzjr;
+          continue;
+          paramBoolean = false;
+          continue;
+        }
+      }
+      continue;
+      label353:
+      paramInt = 1;
     }
-    QLog.d("VideoPlayerView", 4, "no more, player repeat");
-  }
-  
-  public void notifyVideoStop()
-  {
-    this.a.f();
   }
 }
 

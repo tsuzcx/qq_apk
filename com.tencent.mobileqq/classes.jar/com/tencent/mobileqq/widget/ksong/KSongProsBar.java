@@ -12,7 +12,7 @@ import android.graphics.RectF;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
-import bhky;
+import bivo;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.text.SimpleDateFormat;
@@ -24,7 +24,7 @@ public class KSongProsBar
   private int jdField_a_of_type_Int;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private bhky jdField_a_of_type_Bhky;
+  private bivo jdField_a_of_type_Bivo;
   private String jdField_a_of_type_JavaLangString;
   private int jdField_b_of_type_Int;
   private Paint jdField_b_of_type_AndroidGraphicsPaint = new Paint();
@@ -143,23 +143,23 @@ public class KSongProsBar
   
   public void a(long paramLong)
   {
-    if ((this.jdField_a_of_type_Int <= 0) || (this.jdField_a_of_type_Bhky == null))
+    if ((this.jdField_a_of_type_Int <= 0) || (this.jdField_a_of_type_Bivo == null))
     {
       QLog.i("KSongProsBar", 2, "error call, not initialized...");
       return;
     }
     this.jdField_a_of_type_JavaLangString = a(paramLong);
-    this.jdField_c_of_type_Int = ((int)((float)paramLong / (float)this.jdField_a_of_type_Bhky.e * this.jdField_a_of_type_Int));
+    this.jdField_c_of_type_Int = ((int)((float)paramLong / (float)this.jdField_a_of_type_Bivo.e * this.jdField_a_of_type_Int));
     postInvalidate();
   }
   
-  public void a(bhky parambhky)
+  public void a(bivo parambivo)
   {
-    if (parambhky == null) {
+    if (parambivo == null) {
       return;
     }
-    this.jdField_a_of_type_Bhky = parambhky;
-    this.jdField_b_of_type_JavaLangString = a(parambhky.e);
+    this.jdField_a_of_type_Bivo = parambivo;
+    this.jdField_b_of_type_JavaLangString = a(parambivo.e);
     this.jdField_a_of_type_JavaLangString = a(0L);
     postInvalidate();
   }

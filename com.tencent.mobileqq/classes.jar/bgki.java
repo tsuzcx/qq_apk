@@ -1,150 +1,49 @@
-import android.content.Context;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vas.VasQuickUpdateEngine;
-import com.tencent.open.base.BspatchUtil;
-import com.tencent.open.base.MD5Utils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.vas.update.callback.ICommonManager;
-import java.io.File;
+import java.util.ArrayList;
 
 public class bgki
-  implements ICommonManager
 {
-  public boolean copyFile(String paramString1, String paramString2)
+  public int a;
+  public bgkj a;
+  public bgkk a;
+  public bgkl a;
+  public bgkm a;
+  public String a;
+  public ArrayList<aofq> a;
+  public int b = -1;
+  
+  public bgki(String paramString, bgkj parambgkj)
   {
-    boolean bool = false;
-    paramString1 = new File(paramString1);
-    if (paramString1.exists()) {}
-    try
-    {
-      bool = FileUtils.copyFile(paramString1, FileUtils.createFile(paramString2));
-      return bool;
-    }
-    catch (Throwable paramString1)
-    {
-      paramString1.printStackTrace();
-    }
-    return false;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Bgkj = parambgkj;
+    this.jdField_a_of_type_Int = 5;
   }
   
-  public boolean filePatch(String paramString1, String paramString2)
+  public bgki(String paramString, bgkk parambgkk)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasUpdate_CommonManagerImpl", 2, "bsPatch: srcFile = " + paramString1 + " patchFile = " + paramString2);
-    }
-    return BspatchUtil.a(paramString1, paramString2, paramString1);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Bgkk = parambgkk;
+    this.jdField_a_of_type_Int = 4;
   }
   
-  public String getAppVersion()
+  public bgki(String paramString, bgkl parambgkl)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasUpdate_CommonManagerImpl", 2, "getAppVersion = 8.4.8");
-    }
-    return "8.4.8";
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Bgkl = parambgkl;
+    this.jdField_a_of_type_Int = 2;
   }
   
-  public Context getApplicationContext()
+  public bgki(String paramString, bgkm parambgkm)
   {
-    return BaseApplicationImpl.getContext();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Bgkm = parambgkm;
+    this.jdField_a_of_type_Int = 1;
   }
   
-  public String getFileMd5(String paramString)
+  public bgki(String paramString, ArrayList<aofq> paramArrayList)
   {
-    return MD5Utils.encodeFileHexStr(paramString);
-  }
-  
-  public int getNetType()
-  {
-    int j = 0;
-    int i = j;
-    switch (HttpUtil.getNetWorkType())
-    {
-    default: 
-      i = j;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VasUpdate_CommonManagerImpl", 2, "getNetType netType = " + i + " local = " + HttpUtil.getNetWorkType());
-      }
-      return i;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 5;
-      continue;
-      i = 4;
-      continue;
-      i = 3;
-    }
-  }
-  
-  public String getReportVersion()
-  {
-    return "8.4.8.4810";
-  }
-  
-  public String getSeqConfigPath()
-  {
-    return VasQuickUpdateEngine.ENGINE_CONFIG_PATH;
-  }
-  
-  public long getServiceTime()
-  {
-    return NetConnInfoCenter.getServerTime();
-  }
-  
-  public long getTimerDelay()
-  {
-    return 500L;
-  }
-  
-  public String unCompressFile(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasUpdate_CommonManagerImpl", 2, "uncompressZip: type = " + paramInt + " srcFile = " + paramString);
-    }
-    if (paramInt != 1) {}
-    for (;;)
-    {
-      return null;
-      Object localObject = new File(paramString);
-      if (!((File)localObject).exists())
-      {
-        QLog.e("VasUpdate_CommonManagerImpl", 1, "uncompressZip file un exist");
-        return null;
-      }
-      paramString = ((File)localObject).getParent() + File.separator;
-      try
-      {
-        localObject = VasQuickUpdateEngine.unZipFile((File)localObject, paramString);
-        if (localObject != null)
-        {
-          paramString = paramString + (String)localObject;
-          if (QLog.isColorLevel()) {
-            QLog.d("VasUpdate_CommonManagerImpl", 2, "uncompressZip result = " + paramString);
-          }
-        }
-        else
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.e("VasUpdate_CommonManagerImpl", 2, "uncompressZip fail");
-          return null;
-        }
-      }
-      catch (Throwable paramString)
-      {
-        QLog.e("VasUpdate_CommonManagerImpl", 1, "uncompressZip error : ", paramString);
-        return null;
-      }
-    }
-    return paramString;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_Int = 3;
   }
 }
 

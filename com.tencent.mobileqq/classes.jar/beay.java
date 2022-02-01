@@ -1,172 +1,33 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.data.TroopFeedsDataManager.3.1;
-import com.tencent.mobileqq.troop.data.TroopFeedsDataManager.3.2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.LinkedHashMap;
-import java.util.List;
-import mqq.os.MqqHandler;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 public class beay
-  implements bezd
 {
-  beay(beaw parambeaw) {}
+  public static String a;
+  public static final Integer[] a;
+  public static String b;
+  public static String c;
+  public static String d;
+  public static String e;
+  public static String f;
+  public static String g;
+  public static String h = "teamwork_sonic_switch";
+  public static String i = "docs_gray_tips_info_tag";
+  public static String j = "0";
+  public static String k = "1";
+  public static String l = ".docs.qq.com/preview/imp/import_office";
+  public static String m = ".docs.qq.com/preview/imp/import_office_url";
+  public static String n = ".docs.qq.com/ep/pad/impexp/import_office";
+  public static String o = ".docs.qq.com/ep/pad/impexp/import_office_url";
+  public static String p = "https://docs.qq.com/scenario/importFile.html?folderId=%s&md5=%s&fileName=%s&filePath=%s&from=%s";
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  static
   {
-    if (paramJSONObject != null) {}
-    for (;;)
-    {
-      try
-      {
-        if (paramJSONObject.optInt("retcode") == 0) {
-          break label760;
-        }
-        i = paramJSONObject.optInt("ec");
-        if (i == 0) {
-          break label760;
-        }
-        i = 0;
-        if (i == 0)
-        {
-          if ((paramInt == 1000) || (paramInt == 1002))
-          {
-            beaw.e(this.a);
-            this.a.notifyObservers(Integer.valueOf(103));
-            if (paramInt == 1002) {
-              this.a.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-            }
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopFeedsDataManager", 2, "cgi end(failed): " + System.currentTimeMillis());
-          }
-          return;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle = paramBundle;
-        paramBundle.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopFeedsDataManager", 2, "cgi end(suc): " + System.currentTimeMillis());
-        }
-        if (paramInt == 1000)
-        {
-          ThreadManager.getSubThreadHandler().post(new TroopFeedsDataManager.3.1(this, paramJSONObject));
-          return;
-        }
-      }
-      finally {}
-      if (paramInt == 1002)
-      {
-        ThreadManager.getSubThreadHandler().post(new TroopFeedsDataManager.3.2(this, paramJSONObject));
-        return;
-      }
-      if (paramInt == 1007)
-      {
-        this.a.b = paramJSONObject;
-        beaw.f(this.a);
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopFeedsDataManager", 2, "cgi return. requestCode: GET_TROOP_NOTICE, msg = NOTIFY_REMIND_NOTICE");
-        }
-        this.a.notifyObservers(Integer.valueOf(1011));
-        return;
-      }
-      Object localObject;
-      JSONObject localJSONObject;
-      if ((paramInt == 1004) || (paramInt == 1003))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopFeedsDataManager", 2, "cgi return. requestCode: GET_NOR_NOTICE");
-        }
-        localObject = paramJSONObject.optJSONArray("feeds");
-        paramBundle = paramJSONObject.optJSONArray("inst");
-        if ((localObject != null) && (((JSONArray)localObject).length() == 1))
-        {
-          localJSONObject = ((JSONArray)localObject).optJSONObject(0);
-          this.a.b = localJSONObject;
-          this.a.jdField_a_of_type_Int = paramJSONObject.optInt("ad");
-          paramInt = 1;
-        }
-      }
-      for (;;)
-      {
-        i = paramInt;
-        if (paramBundle != null)
-        {
-          i = paramInt;
-          if (paramBundle.length() > 0)
-          {
-            paramBundle = paramBundle.optJSONObject(0);
-            long l2 = paramBundle.optLong("pubt");
-            long l1 = 0L;
-            if (this.a.b != null) {
-              l1 = this.a.b.optLong("pubt");
-            }
-            i = paramInt;
-            if (l2 > l1)
-            {
-              this.a.b = paramBundle;
-              this.a.jdField_a_of_type_Int = paramJSONObject.optInt("ad");
-              i = 1;
-            }
-          }
-        }
-        if (i != 0)
-        {
-          beaw.g(this.a);
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopFeedsDataManager", 2, "cgi return. NOTIFY_NOR_NOTICE");
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopFeedsDataManager", 2, "NOTIFY_NOR_NOTICE : " + this.a.countObservers());
-          }
-          this.a.notifyObservers(Integer.valueOf(1007));
-          return;
-          if ((localObject != null) && (((JSONArray)localObject).length() == 2))
-          {
-            localJSONObject = ((JSONArray)localObject).optJSONObject(0);
-            localObject = ((JSONArray)localObject).optJSONObject(1);
-            if (localJSONObject.optLong("pubt") >= ((JSONObject)localObject).optLong("pubt")) {
-              this.a.b = localJSONObject;
-            }
-            for (this.a.jdField_a_of_type_Int = paramJSONObject.optInt("ad");; this.a.jdField_a_of_type_Int = paramJSONObject.optInt("ad"))
-            {
-              paramInt = 1;
-              break;
-              this.a.b = ((JSONObject)localObject);
-            }
-          }
-        }
-        else
-        {
-          beaw.h(this.a);
-          this.a.notifyObservers(Integer.valueOf(1012));
-          return;
-          if ((paramInt != 1005) && (paramInt != 1006)) {
-            break;
-          }
-          paramJSONObject = bean.a(paramJSONObject, "" + this.a.jdField_a_of_type_JavaLangLong, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-          paramBundle = (List)paramJSONObject[0];
-          paramJSONObject = (List)paramJSONObject[1];
-          this.a.jdField_a_of_type_JavaUtilList = paramJSONObject;
-          beaw.i(this.a);
-          if (paramInt == 1005)
-          {
-            this.a.notifyObservers(Integer.valueOf(1008));
-            return;
-          }
-          this.a.notifyObservers(Integer.valueOf(1009));
-          return;
-        }
-        paramInt = 0;
-      }
-      label760:
-      int i = 1;
-    }
+    jdField_a_of_type_JavaLangString = "team_work_title";
+    b = "team_work_summary";
+    c = "team_work_key_param_thrumb_url";
+    d = "team_work_param_mini_program_url";
+    e = "key_qun_id";
+    f = "key_from_web_open_native_files_to_import_docs";
+    g = "key_from_web_import_docs_folderid";
+    jdField_a_of_type_ArrayOfJavaLangInteger = new Integer[] { Integer.valueOf(100), Integer.valueOf(101), Integer.valueOf(102), Integer.valueOf(103), Integer.valueOf(104), Integer.valueOf(105), Integer.valueOf(106), Integer.valueOf(107), Integer.valueOf(108), Integer.valueOf(109), Integer.valueOf(110), Integer.valueOf(111), Integer.valueOf(112), Integer.valueOf(113), Integer.valueOf(114), Integer.valueOf(115), Integer.valueOf(116), Integer.valueOf(-100), Integer.valueOf(-101), Integer.valueOf(-102), Integer.valueOf(-103), Integer.valueOf(-104), Integer.valueOf(-105), Integer.valueOf(-106), Integer.valueOf(-107), Integer.valueOf(-108), Integer.valueOf(-109), Integer.valueOf(-110), Integer.valueOf(-111), Integer.valueOf(-112), Integer.valueOf(-113), Integer.valueOf(-114), Integer.valueOf(-115), Integer.valueOf(-116) };
   }
 }
 

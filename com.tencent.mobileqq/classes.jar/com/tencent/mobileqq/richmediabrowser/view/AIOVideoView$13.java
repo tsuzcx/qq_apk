@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmediabrowser.view;
 
-import balk;
+import bbrz;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import com.tencent.mobileqq.widget.share.ShareActionSheet;
@@ -10,7 +10,7 @@ import java.util.Iterator;
 public class AIOVideoView$13
   implements Runnable
 {
-  public AIOVideoView$13(balk parambalk, ArrayList paramArrayList) {}
+  public AIOVideoView$13(bbrz parambbrz, ArrayList paramArrayList) {}
   
   public void run()
   {
@@ -18,9 +18,9 @@ public class AIOVideoView$13
     while (localIterator.hasNext())
     {
       ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = (ShareActionSheetBuilder.ActionSheetItem)localIterator.next();
-      balk.a(this.this$0).add(balk.a(this.this$0).size() - 1, localActionSheetItem);
+      bbrz.a(this.this$0).add(bbrz.a(this.this$0).size() - 1, localActionSheetItem);
     }
-    this.this$0.a.setActionSheetItems(balk.b(this.this$0), balk.a(this.this$0));
+    this.this$0.a.setActionSheetItems(bbrz.b(this.this$0), bbrz.a(this.this$0));
     if (this.this$0.a.isShowing())
     {
       if (QLog.isColorLevel()) {

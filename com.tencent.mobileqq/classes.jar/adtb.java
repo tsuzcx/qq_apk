@@ -1,48 +1,42 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.ChatSettingForTroop.62;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
 
 public class adtb
   implements DialogInterface.OnClickListener
 {
-  public adtb(NotificationActivity paramNotificationActivity) {}
+  public adtb(ChatSettingForTroop.62 param62) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.app.logout(true);
-    bfyz.a(this.a.app.getApp(), this.a.app.getCurrentAccountUin(), false);
-    paramDialogInterface = (bcqt)this.a.app.getManager(61);
-    if (paramDialogInterface != null) {}
-    for (paramDialogInterface = paramDialogInterface.a();; paramDialogInterface = null)
+    if (paramInt == 1)
     {
-      if ((paramDialogInterface != null) && (paramDialogInterface.size() > 0))
-      {
-        paramDialogInterface = paramDialogInterface.iterator();
-        while (paramDialogInterface.hasNext())
-        {
-          String str = (String)paramDialogInterface.next();
-          if (!aych.a().a(this.a.app, str))
-          {
-            this.a.app.updateSubAccountLogin(str, false);
-            this.a.app.getApplication().refreAccountList();
-          }
-        }
-      }
-      this.a.startActivity(new Intent(this.a, LoginActivity.class).addFlags(67108864));
-      this.a.finish();
+      this.a.this$0.a.cancel();
       return;
+    }
+    try
+    {
+      ForwardSdkShareOption.a(this.a.this$0, true, "action_game_join_group", Long.valueOf(this.a.this$0.e).longValue(), -1, this.a.a);
+      this.a.this$0.a.cancel();
+      this.a.this$0.finish();
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      for (;;)
+      {
+        QLog.e("Q.chatopttroop", 1, "showAlertDlg error = " + paramDialogInterface);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adtb
  * JD-Core Version:    0.7.0.1
  */

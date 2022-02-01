@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.intervideo.now.dynamic;
 
-import amtj;
-import auqc;
+import anvx;
+import avvx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class NowShadowImpl$2
   implements Runnable
 {
-  public NowShadowImpl$2(auqc paramauqc) {}
+  public NowShadowImpl$2(avvx paramavvx) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), amtj.a(2131706781), 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), anvx.a(2131707127), 0).a();
   }
 }
 

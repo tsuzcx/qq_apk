@@ -1,6 +1,6 @@
 package com.tencent.biz.webviewplugin;
 
-import aabc;
+import aaqo;
 
 class NewReportPlugin$1$1
   implements Runnable
@@ -9,7 +9,7 @@ class NewReportPlugin$1$1
   
   public void run()
   {
-    aabc.a(this.this$0.a, this.a);
+    aaqo.a(this.this$0.a, this.a);
   }
 }
 

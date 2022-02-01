@@ -1,21 +1,17 @@
-import android.widget.MediaController;
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetWeather;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
 
 public class wvm
-  implements wxb
+  extends wfh
 {
-  public wvm(TextureVideoView paramTextureVideoView) {}
+  public final String a;
+  public final int b;
   
-  public void a(wwz paramwwz)
+  public wvm(qqstory_service.RspGetWeather paramRspGetWeather)
   {
-    this.a.jdField_a_of_type_Int = 5;
-    this.a.b = 5;
-    if (this.a.jdField_a_of_type_AndroidWidgetMediaController != null) {
-      this.a.jdField_a_of_type_AndroidWidgetMediaController.hide();
-    }
-    if (this.a.jdField_a_of_type_Wxb != null) {
-      this.a.jdField_a_of_type_Wxb.a(this.a.jdField_a_of_type_Wwz);
-    }
+    this.b = paramRspGetWeather.temperature.get();
+    this.a = paramRspGetWeather.wea_desc.get();
   }
 }
 

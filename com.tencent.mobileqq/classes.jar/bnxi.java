@@ -1,30 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
+import dov.com.qq.im.aeeditor.manage.AEEditorEffectGroupListBean.AEEditorEffectItem;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorCommonEditFragment;
+import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterBean;
+import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterControlPanel;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public class bnxi
-  implements DialogInterface.OnClickListener
+  implements Observer<List<AEEditorFilterBean>>
 {
-  public bnxi(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public bnxi(AEEditorCommonEditFragment paramAEEditorCommonEditFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(@Nullable List<AEEditorFilterBean> paramList)
   {
-    Object localObject = ShortVideoPreviewActivity.a(this.a);
-    paramDialogInterface = ((Intent)localObject).getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
-    localObject = ((Intent)localObject).getStringExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME");
-    Intent localIntent = new Intent();
-    localIntent.setClassName((String)localObject, paramDialogInterface);
-    localIntent.addFlags(603979776);
-    localIntent.putExtra("file_send_path", this.a.d);
-    localIntent.putExtra("file_send_size", this.a.a);
-    localIntent.putExtra("file_send_duration", this.a.b);
-    localIntent.putExtra("file_source", this.a.c);
-    this.a.startActivity(localIntent);
-    ShortVideoPreviewActivity.a(this.a);
-    localObject = new Intent("key_video_select_confirm_ok_click");
-    ((Intent)localObject).putExtra("className", paramDialogInterface);
-    this.a.sendBroadcast((Intent)localObject);
+    bnrh.b(AEEditorCommonEditFragment.c(), "mFiltersObserver-onChanged");
+    paramList = new LinkedList(paramList);
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
+    {
+      AEEditorFilterBean localAEEditorFilterBean = (AEEditorFilterBean)localIterator.next();
+      if (this.a.b())
+      {
+        if ((localAEEditorFilterBean.getEditorEffectItem().getDisableForImage() == 1) || (AEEditorCommonEditFragment.jdField_a_of_type_Int < localAEEditorFilterBean.getEditorEffectItem().getImageShowLevel())) {
+          localIterator.remove();
+        }
+      }
+      else if ((localAEEditorFilterBean.getEditorEffectItem().getDisableForVideo() == 1) || (AEEditorCommonEditFragment.jdField_a_of_type_Int < localAEEditorFilterBean.getEditorEffectItem().getVideoShowLevel())) {
+        localIterator.remove();
+      }
+    }
+    this.a.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel.setFiltersData(paramList);
+    boaf.a().d();
+    boaf.a(this.a.getActivity().getApplicationContext());
+    this.a.m();
   }
 }
 

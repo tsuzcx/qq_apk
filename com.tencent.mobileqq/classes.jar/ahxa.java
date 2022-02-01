@@ -1,20 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQWalletBaseMsgElem;
 
-class ahxa
-  implements ValueAnimator.AnimatorUpdateListener
+public class ahxa
+  extends ahwx
 {
-  ahxa(ahwx paramahwx) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public ahxa(QQAppInterface paramQQAppInterface, ahxr paramahxr, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt, afrr paramafrr)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = (FrameLayout.LayoutParams)this.a.a.a.getLayoutParams();
-    paramValueAnimator.topMargin = i;
-    this.a.a.a.setLayoutParams(paramValueAnimator);
+    super(paramQQAppInterface, paramahxr, paramQQWalletBaseMsgElem, paramInt, paramafrr);
+  }
+  
+  public boolean b()
+  {
+    boolean bool = super.b();
+    if (bool) {
+      return bool;
+    }
+    this.a.b.setVisibility(0);
+    this.a.b.setTextColor(-8947849);
+    this.a.b.setText(ahxc.c);
+    return false;
   }
 }
 

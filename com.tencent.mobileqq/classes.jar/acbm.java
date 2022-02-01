@@ -1,145 +1,46 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
-import tencent.im.s2c.msgtype0x210.submsgtype0x83.SubMsgType0x83.MsgBody;
-import tencent.im.s2c.msgtype0x210.submsgtype0x83.SubMsgType0x83.MsgParams;
+import android.content.Context;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
+import com.tencent.gdtad.api.banner.letter.GdtBannerViewWithLetterStyle;
+import com.tencent.gdtad.api.banner.rectangle.GdtBannerViewWithRectangleStyle;
+import java.lang.ref.WeakReference;
 
-public class acbm
-  implements abzb
+public final class acbm
 {
-  private static void a(abxc paramabxc, byte[] paramArrayOfByte)
+  public static int a(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SubMsgType0x83");
+    if (paramInt1 == 0) {
+      return Double.valueOf(1.0D * paramInt2 / 1026.0D * 249.0D).intValue();
     }
-    Object localObject = new SubMsgType0x83.MsgBody();
-    do
-    {
-      try
-      {
-        ((SubMsgType0x83.MsgBody)localObject).mergeFrom(paramArrayOfByte);
-        if (!((SubMsgType0x83.MsgBody)localObject).uint64_group_id.has())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SubMsgType0x83 : msg has not uint64_group_id");
-          }
-          return;
-        }
-      }
-      catch (Exception paramabxc)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.e("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SubMsgType0x83 : fail to parse submsgtype0x83.");
-        return;
-      }
-    } while (!((SubMsgType0x83.MsgBody)localObject).rpt_msg_params.has());
-    paramArrayOfByte = ((SubMsgType0x83.MsgBody)localObject).rpt_msg_params;
-    if (((SubMsgType0x83.MsgBody)localObject).uint64_seq.has()) {}
-    for (long l1 = ((SubMsgType0x83.MsgBody)localObject).uint64_seq.get();; l1 = -1L)
-    {
-      if (((SubMsgType0x83.MsgBody)localObject).uint64_group_id.has()) {}
-      for (long l2 = ((SubMsgType0x83.MsgBody)localObject).uint64_group_id.get();; l2 = -1L)
-      {
-        int i = 0;
-        label133:
-        if (i < paramArrayOfByte.size())
-        {
-          localObject = (SubMsgType0x83.MsgParams)paramArrayOfByte.get(i);
-          if ((localObject != null) && (((SubMsgType0x83.MsgParams)localObject).uint32_type.has())) {
-            break label174;
-          }
-        }
-        for (;;)
-        {
-          i += 1;
-          break label133;
-          break;
-          label174:
-          int j = ((SubMsgType0x83.MsgParams)localObject).uint32_type.get();
-          a(paramabxc.a(), l1, l2, (SubMsgType0x83.MsgParams)localObject, j);
-        }
-      }
-    }
+    acho.d("GdtBannerViewBuilder", "getHeight error");
+    return -2147483648;
   }
   
-  private static void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, SubMsgType0x83.MsgParams paramMsgParams, int paramInt)
+  public static acbl a(acbk paramacbk)
   {
-    if ((paramInt >= 2001) && (paramInt <= 3000)) {
-      if ((paramMsgParams.str_data.has()) && (paramMsgParams.uint64_from_uin.has()) && (paramMsgParams.uint64_to_uin.has())) {}
-    }
-    do
+    if ((paramacbk == null) || (!paramacbk.a()) || (!paramacbk.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a()))
     {
-      int i;
-      do
-      {
-        return;
-        localObject = paramMsgParams.str_data.get();
-        try
-        {
-          i = new JSONObject((String)localObject).getInt("count");
-          paramQQAppInterface.getGAudioHandler().a(paramInt, paramMsgParams.uint64_from_uin.get(), paramMsgParams.uint64_to_uin.get(), i, paramLong1, paramLong2);
-          return;
-        }
-        catch (Exception paramQQAppInterface)
-        {
-          return;
-        }
-        if (paramInt != 1005) {
-          break;
-        }
-      } while ((!paramMsgParams.str_data.has()) || (!paramMsgParams.uint64_from_uin.has()) || (!paramMsgParams.uint64_to_uin.has()));
-      Object localObject = paramMsgParams.str_data.get();
-      try
-      {
-        localObject = new JSONObject((String)localObject);
-        paramInt = ((JSONObject)localObject).optInt("enable");
-        i = ((JSONObject)localObject).optInt("level");
-        paramQQAppInterface.getGAudioHandler().a(paramMsgParams.uint32_type.get(), paramMsgParams.uint64_from_uin.get(), paramMsgParams.uint64_to_uin.get(), paramInt, i, paramLong1, paramLong2);
-        return;
+      acho.d("GdtBannerViewBuilder", "build error");
+      return null;
+    }
+    Object localObject;
+    if (paramacbk.jdField_a_of_type_Int == 0) {
+      if (paramacbk.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_ComTencentGdtadAditemGdtAd.isBannerWithRectangleStyle()) {
+        localObject = new GdtBannerViewWithRectangleStyle((Context)paramacbk.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_JavaLangRefWeakReference.get(), paramacbk.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params);
       }
-      catch (Exception paramQQAppInterface)
-      {
-        return;
-      }
-    } while ((paramInt != 1010) || (!paramMsgParams.bytes_data.has()));
-    paramMsgParams = new String(paramMsgParams.bytes_data.get().toByteArray());
+    }
     for (;;)
     {
-      try
-      {
-        paramMsgParams = new JSONObject(paramMsgParams);
-        if (paramMsgParams.getInt("sndRank") != 0)
-        {
-          paramInt = 1;
-          boolean bool = paramMsgParams.getBoolean("rank_changed");
-          if ((paramInt == 0) || (!bool)) {
-            break;
-          }
-          paramQQAppInterface.getGAudioHandler().a(paramLong2);
-          return;
-        }
+      if (localObject != null) {
+        ((acbl)localObject).setSize(paramacbk.b, paramacbk.c);
       }
-      catch (Exception paramQQAppInterface)
-      {
-        return;
-      }
-      paramInt = 0;
+      AdReporterForAnalysis.reportForBanner((Context)paramacbk.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_JavaLangRefWeakReference.get(), paramacbk.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
+      return localObject;
+      localObject = new GdtBannerViewWithLetterStyle((Context)paramacbk.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_JavaLangRefWeakReference.get(), paramacbk.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
+      continue;
+      localObject = null;
     }
-  }
-  
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
-  {
-    a(paramabxc, paramMsgType0x210.vProtobuf);
-    return null;
   }
 }
 

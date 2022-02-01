@@ -13,8 +13,9 @@ import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import apyt;
+import arbw;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
@@ -165,7 +166,7 @@ public abstract class DragAdapter
       {
         try
         {
-          ((DesktopDataManager)MiniAppUtils.getAppInterface().getManager(336)).onItemChanged(this.mIntertTarget, new DesktopAppInfo(3, paramViewHolder.mMiniAppInfo));
+          ((DesktopDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER)).onItemChanged(this.mIntertTarget, new DesktopAppInfo(3, paramViewHolder.mMiniAppInfo));
           MiniAppCmdUtil.getInstance().setUserAppTop(paramViewHolder.mMiniAppInfo.appId, 1, paramViewHolder.mMiniAppInfo.verType, -1, 0, null, new DragAdapter.5(this));
           localObject1 = new MiniAppConfig(paramViewHolder.mMiniAppInfo);
           if (paramViewHolder.getModuleType() == 1)
@@ -221,7 +222,7 @@ public abstract class DragAdapter
           MiniProgramLpReportDC04239.reportAsync(localThrowable, "desktop", "add", "add_recommend", null);
           return;
         }
-        if (getItemCount() > apyt.a())
+        if (getItemCount() > arbw.a())
         {
           paramInt = this.mIntertTarget;
           this.mMainHandler.post(new DragAdapter.6(this, paramInt));
@@ -234,7 +235,7 @@ public abstract class DragAdapter
         try
         {
           notifyItemChanged(this.mIntertTarget);
-          m = ((DesktopDataManager)MiniAppUtils.getAppInterface().getManager(336)).getTopModuleInfoIndex();
+          m = ((DesktopDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER)).getTopModuleInfoIndex();
           j = this.mDragIndex;
           k = this.mIntertTarget;
           i = j;
@@ -797,7 +798,7 @@ public abstract class DragAdapter
     this.mDragMirrorLayout.clearAnimation();
     paramViewHolder = (DesktopAppInfo)this.mData.get(paramViewHolder.getAdapterPosition());
     this.mDragMirrorImage.setImageDrawable(MiniAppUtils.getIcon(this.mContext, paramViewHolder.mMiniAppInfo.iconUrl, true));
-    this.mDragMirrorMarkImage.setImageResource(2130840974);
+    this.mDragMirrorMarkImage.setImageResource(2130841007);
     this.mDragMirrorLayout.setVisibility(0);
     this.mDragMirrorLayout.setAnimation(this.mirrorZoomAnimation);
     this.mirrorZoomAnimation.start();
@@ -900,7 +901,7 @@ public abstract class DragAdapter
         this.mDeletePrepared = true;
         if (this.mDragMirrorMarkImage != null)
         {
-          this.mDragMirrorMarkImage.setImageResource(2130840973);
+          this.mDragMirrorMarkImage.setImageResource(2130841006);
           this.mDragMirrorMarkImage.setVisibility(0);
         }
       }
@@ -914,7 +915,7 @@ public abstract class DragAdapter
       QLog.i("DragAdapter", 1, "Desktop-Drag onItemDelete Prepared target：" + paramInt);
       this.mDeletePrepared = false;
     } while (this.mDragMirrorMarkImage == null);
-    this.mDragMirrorMarkImage.setImageResource(2130840974);
+    this.mDragMirrorMarkImage.setImageResource(2130841007);
     ImageView localImageView = this.mDragMirrorMarkImage;
     paramInt = i;
     if (this.mIntertTarget <= 0) {
@@ -964,8 +965,8 @@ public abstract class DragAdapter
     this.mDragMirrorLayout = paramView;
     if (paramView != null)
     {
-      this.mDragMirrorImage = ((ImageView)paramView.findViewById(2131371003));
-      this.mDragMirrorMarkImage = ((ImageView)paramView.findViewById(2131371005));
+      this.mDragMirrorImage = ((ImageView)paramView.findViewById(2131371196));
+      this.mDragMirrorMarkImage = ((ImageView)paramView.findViewById(2131371198));
       this.mDragMirrorMarkImage.setVisibility(4);
     }
   }

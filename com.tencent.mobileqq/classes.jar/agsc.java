@@ -1,17 +1,11 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
-class agsc
-  implements View.OnTouchListener
+public class agsc
+  extends afos
 {
-  agsc(agrz paramagrz, afce paramafce) {}
+  TextView b;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    this.jdField_a_of_type_Afce.onTouch(paramView, paramMotionEvent);
-    return false;
-  }
+  agsc(agsb paramagsb) {}
 }
 
 

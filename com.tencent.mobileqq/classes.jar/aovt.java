@@ -1,18 +1,45 @@
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import QQWalletPay.RespCheckChangePwdAuth;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 class aovt
-  implements ArkAppMgr.IGetAppPathByNameCallback
+  extends Handler
 {
-  aovt(aovs paramaovs, String paramString) {}
+  private aovt(aovq paramaovq) {}
   
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public void handleMessage(Message paramMessage)
   {
-    QLog.i("ArkApp.ArkAppPreDownloadMgr", 1, "profiling onReleaseAndReload onGetAppPathByName app=" + this.jdField_a_of_type_JavaLangString + ",retcode=" + paramInt + ",msg=" + paramString);
-    if ((paramInt == 0) && (paramAppPathInfo != null) && (paramAppPathInfo.path != null)) {
-      aovq.a(this.jdField_a_of_type_Aovs.a, this.jdField_a_of_type_JavaLangString, paramAppPathInfo.path, aovq.a(this.jdField_a_of_type_Aovs.a), 2);
+    if (paramMessage.what != 1) {
+      return;
     }
+    if (aovq.a(this.a) != null)
+    {
+      aovq.a(this.a).a();
+      this.a.a.removeObserver(aovq.a(this.a));
+    }
+    if (paramMessage.arg1 != 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QwalletModifyPassAction", 2, "msf return error ");
+      }
+      aovq.a(this.a, 1);
+      return;
+    }
+    if ((paramMessage.obj instanceof RespCheckChangePwdAuth))
+    {
+      paramMessage = (RespCheckChangePwdAuth)paramMessage.obj;
+      if (paramMessage.retCode == 0)
+      {
+        aovq.b(this.a);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("QwalletModifyPassAction", 2, "server return error, errorCode: " + paramMessage.retCode + " errorMsg: " + paramMessage.retMsg);
+      }
+    }
+    aovq.a(this.a, 1);
   }
 }
 

@@ -1,57 +1,55 @@
-import android.graphics.Canvas;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
+import android.annotation.TargetApi;
+import android.media.MediaCodec;
+import android.media.MediaCodec.BufferInfo;
+import android.media.MediaFormat;
+import android.view.Surface;
 
+@TargetApi(16)
 public class bjwu
-  extends bjwt
+  extends bjwr
 {
-  private float a(RecyclerView paramRecyclerView, View paramView)
+  private Surface a;
+  
+  protected String a()
   {
-    int j = paramRecyclerView.getChildCount();
-    int i = 0;
-    float f1 = 0.0F;
-    if (i < j)
+    return "Q.qqstory.mediadecoderMediaCodecVideoRender";
+  }
+  
+  protected void a(MediaCodec paramMediaCodec, MediaCodec.BufferInfo paramBufferInfo)
+  {
+    boolean bool = true;
+    int i = paramMediaCodec.dequeueOutputBuffer(paramBufferInfo, 10000L);
+    switch (i)
     {
-      View localView = paramRecyclerView.getChildAt(i);
-      float f2;
-      if (localView == paramView) {
-        f2 = f1;
-      }
-      for (;;)
+    default: 
+      if ((paramBufferInfo.flags & 0x4) != 0)
       {
-        i += 1;
-        f1 = f2;
+        ykq.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "output EOS");
+        this.jdField_b_of_type_Boolean = true;
+      }
+      if (paramBufferInfo.size == 0) {
         break;
-        float f3 = ViewCompat.getElevation(localView);
-        f2 = f1;
-        if (f3 > f1) {
-          f2 = f3;
-        }
       }
     }
-    return f1;
-  }
-  
-  public void a(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean)
-  {
-    if ((paramBoolean) && (paramView.getTag(2131369020) == null))
+    for (;;)
     {
-      float f = ViewCompat.getElevation(paramView);
-      ViewCompat.setElevation(paramView, 1.0F + a(paramRecyclerView, paramView));
-      paramView.setTag(2131369020, Float.valueOf(f));
+      paramMediaCodec.releaseOutputBuffer(i, bool);
+      ykq.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "dequeueOutputBuffer render");
+      return;
+      ykq.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "INFO_OUTPUT_BUFFERS_CHANGED");
+      this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = paramMediaCodec.getOutputBuffers();
+      return;
+      ykq.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "New format " + this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat());
+      return;
+      ykq.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "dequeueOutputBuffer timed out!");
+      return;
+      bool = false;
     }
-    super.a(paramCanvas, paramRecyclerView, paramView, paramFloat1, paramFloat2, paramInt, paramBoolean);
   }
   
-  public void a(View paramView)
+  protected void a(bjws parambjws, MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
   {
-    Object localObject = paramView.getTag(2131369020);
-    if ((localObject != null) && ((localObject instanceof Float))) {
-      ViewCompat.setElevation(paramView, ((Float)localObject).floatValue());
-    }
-    paramView.setTag(2131369020, null);
-    super.a(paramView);
+    paramMediaCodec.configure(paramMediaFormat, this.jdField_a_of_type_AndroidViewSurface, null, 0);
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bflj;
+import bgua;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 final class TroopUtils$3
   implements Runnable
 {
-  TroopUtils$3(bflj parambflj, TroopInfoData paramTroopInfoData) {}
+  TroopUtils$3(bgua parambgua, TroopInfoData paramTroopInfoData) {}
   
   public void run()
   {

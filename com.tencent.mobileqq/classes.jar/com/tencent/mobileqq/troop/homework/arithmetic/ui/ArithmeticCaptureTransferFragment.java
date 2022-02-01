@@ -7,9 +7,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import benl;
-import benm;
-import bftc;
+import bfuo;
+import bfup;
+import bhbu;
 import com.tencent.mobileqq.troop.homework.entry.ui.api.AbsHomeWorkFragment;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import org.json.JSONObject;
 public class ArithmeticCaptureTransferFragment
   extends AbsHomeWorkFragment
 {
-  private benl jdField_a_of_type_Benl;
+  private bfuo jdField_a_of_type_Bfuo;
   private String jdField_a_of_type_JavaLangString;
   
   public static void a(Context paramContext, String paramString1, int paramInt, String paramString2)
@@ -35,7 +35,7 @@ public class ArithmeticCaptureTransferFragment
   {
     try
     {
-      this.jdField_a_of_type_Benl = new benl(new JSONObject(paramString));
+      this.jdField_a_of_type_Bfuo = new bfuo(new JSONObject(paramString));
       if (QLog.isColorLevel()) {
         QLog.d("ArithmeticCaptureTransferFragment", 2, "init data ,homework = " + paramString);
       }
@@ -49,7 +49,7 @@ public class ArithmeticCaptureTransferFragment
   
   public int getContentLayoutId()
   {
-    return 2131560629;
+    return 2131560682;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -60,16 +60,16 @@ public class ArithmeticCaptureTransferFragment
       paramIntent = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
       if ((paramIntent != null) && (paramIntent.size() > 0))
       {
-        benm localbenm = new benm();
-        localbenm.b = ((String)paramIntent.get(0));
-        this.jdField_a_of_type_Benl.a(localbenm);
+        bfup localbfup = new bfup();
+        localbfup.b = ((String)paramIntent.get(0));
+        this.jdField_a_of_type_Bfuo.a(localbfup);
         if (QLog.isColorLevel()) {
-          QLog.d("ArithmeticCaptureTransferFragment", 2, "new picture ,path = " + localbenm.b);
+          QLog.d("ArithmeticCaptureTransferFragment", 2, "new picture ,path = " + localbfup.b);
         }
-        bftc.a("Grp_edu", "Grp_oral", "Oral_Photoedit_Finish", 0, 0, new String[] { this.jdField_a_of_type_JavaLangString, "" });
+        bhbu.a("Grp_edu", "Grp_oral", "Oral_Photoedit_Finish", 0, 0, new String[] { this.jdField_a_of_type_JavaLangString, "" });
       }
     }
-    a(this.jdField_a_of_type_Benl.a(1));
+    a(this.jdField_a_of_type_Bfuo.a(1));
     a();
   }
   

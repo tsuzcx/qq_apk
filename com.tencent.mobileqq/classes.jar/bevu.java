@@ -1,45 +1,64 @@
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import java.util.List;
-import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupInfo;
-import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.Utils;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 
-public abstract interface bevu
+public class bevu
+  extends AsyncTask<Void, Void, Bundle>
 {
-  public abstract void a();
+  public bevu(MediaPreviewActivity paramMediaPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
+  protected Bundle a(Void... paramVarArgs)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("forward_type", 1);
+    paramVarArgs = new File(AppConstants.SDCARD_IMG_FORWARD_URLDRAWABLE);
+    if (!paramVarArgs.exists()) {
+      paramVarArgs.mkdirs();
+    }
+    String str = AppConstants.SDCARD_IMG_FORWARD_URLDRAWABLE + Utils.Crc64String(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
+    paramVarArgs = str;
+    if (!new File(str).exists()) {}
+    try
+    {
+      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(str);
+      localBundle.putBoolean("forward_urldrawable", true);
+      localBundle.putString("forward_urldrawable_thumb_url", this.jdField_a_of_type_JavaLangString);
+      localBundle.putString("forward_filepath", paramVarArgs);
+      localBundle.putString("forward_urldrawable_big_url", this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
+      localBundle.putString("forward_extra", paramVarArgs);
+      return localBundle;
+    }
+    catch (IOException paramVarArgs)
+    {
+      QLog.e("foward", 2, "IOException", paramVarArgs);
+    }
+    return null;
+  }
   
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
-  
-  public abstract void a(long paramLong, List<oidb_0x899.memberlist> paramList);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(oidb_0x88d.GroupInfo paramGroupInfo);
-  
-  public abstract void a(boolean paramBoolean, long paramLong, TroopInfo paramTroopInfo);
-  
-  public abstract void a(boolean paramBoolean, String paramString, int paramInt, long paramLong);
-  
-  public abstract void a(boolean paramBoolean, List<ajnr> paramList);
-  
-  public abstract void b();
-  
-  public abstract void b(String paramString);
-  
-  public abstract void c();
-  
-  public abstract void c(String paramString);
-  
-  public abstract void d();
-  
-  public abstract void d(String paramString);
-  
-  public abstract void e(String paramString);
+  protected void a(Bundle paramBundle)
+  {
+    if (paramBundle == null)
+    {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, anvx.a(2131705989), 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getTitleBarHeight());
+      return;
+    }
+    Intent localIntent = new Intent();
+    localIntent.putExtras(paramBundle);
+    aupt.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, localIntent, 21);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bevu
  * JD-Core Version:    0.7.0.1
  */

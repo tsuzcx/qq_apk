@@ -1,25 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import friendlist.GetOnlineInfoResp;
+import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
+import com.tencent.qphone.base.util.QLog;
 
-class xkm
-  extends amsu
+public class xkm
+  implements xlx
 {
-  xkm(xkl paramxkl) {}
+  public xkm(TrimTextureVideoView paramTrimTextureVideoView) {}
   
-  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
+  public boolean a(xlu paramxlu, int paramInt1, int paramInt2)
   {
-    if ((!paramBoolean) || (this.a.a == null) || (paramGetOnlineInfoResp == null) || (!TextUtils.equals(paramString, this.a.a.qq))) {}
-    while (xkl.a(this.a) == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.e(this.a.a, 2, "TrimTextureVideoView MediaPlayer onError==>what:" + paramInt1 + "|extra:" + paramInt2);
     }
-    paramString = xkl.a(this.a);
-    if (paramGetOnlineInfoResp.eIconType == 11) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      paramString.b(paramBoolean);
-      return;
-    }
+    return true;
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.script;
 
-import ambb;
-import ambe;
+import ancj;
+import ancm;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -11,23 +11,26 @@ import java.util.ArrayList;
 public class SpriteTaskParam
   implements Parcelable
 {
-  public static final Parcelable.Creator<SpriteTaskParam> CREATOR = new ambb();
+  public static final Parcelable.Creator<SpriteTaskParam> CREATOR = new ancj();
   public float a;
   public int a;
   public long a;
-  public ambe a;
+  public ancm a;
   public Bundle a;
   public String a;
   public ArrayList<Integer> a;
   public boolean a;
+  public float b;
   public int b;
   public String b;
   public ArrayList<Integer> b;
   public boolean b;
   public int c;
   public String c;
+  public boolean c;
   public int d;
   public String d;
+  public boolean d;
   public int e;
   public String e;
   public int f;
@@ -43,11 +46,15 @@ public class SpriteTaskParam
   public SpriteTaskParam()
   {
     this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Float = 0.1F;
+    this.jdField_d_of_type_Boolean = true;
   }
   
   public SpriteTaskParam(Parcel paramParcel)
   {
     this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Float = 0.1F;
+    this.jdField_d_of_type_Boolean = true;
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_b_of_type_Int = paramParcel.readInt();
     this.jdField_c_of_type_Int = paramParcel.readInt();
@@ -68,21 +75,31 @@ public class SpriteTaskParam
       this.jdField_c_of_type_JavaLangString = paramParcel.readString();
       this.j = paramParcel.readInt();
       if (paramParcel.readByte() == 0) {
-        break label210;
+        break label243;
       }
-    }
-    label210:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
+      bool1 = true;
+      label170:
       this.jdField_b_of_type_Boolean = bool1;
       this.jdField_d_of_type_JavaLangString = paramParcel.readString();
       this.k = paramParcel.readInt();
       this.jdField_e_of_type_JavaLangString = paramParcel.readString();
       this.m = paramParcel.readInt();
       this.n = paramParcel.readInt();
+      if (paramParcel.readByte() == 0) {
+        break label248;
+      }
+    }
+    label243:
+    label248:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      this.jdField_c_of_type_Boolean = bool1;
+      this.jdField_b_of_type_Float = paramParcel.readFloat();
       return;
       bool1 = false;
       break;
+      bool1 = false;
+      break label170;
     }
   }
   
@@ -114,9 +131,11 @@ public class SpriteTaskParam
     localStringBuffer.append(", mActionList=").append(this.jdField_a_of_type_JavaUtilArrayList);
     localStringBuffer.append(", mBackgroundActionList=").append(this.jdField_b_of_type_JavaUtilArrayList);
     localStringBuffer.append(", mExtendJson='").append(this.jdField_d_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", mBridgeImp=").append(this.jdField_a_of_type_Ambe);
+    localStringBuffer.append(", mBridgeImp=").append(this.jdField_a_of_type_Ancm);
     localStringBuffer.append(", mRscType=").append(this.k);
     localStringBuffer.append(", mActionJs='").append(this.jdField_e_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", mNeedRecordFrame='").append(this.jdField_c_of_type_Boolean).append('\'');
+    localStringBuffer.append(", mFrameTime='").append(this.jdField_b_of_type_Float).append('\'');
     localStringBuffer.append('}');
     return localStringBuffer.toString();
   }
@@ -144,21 +163,31 @@ public class SpriteTaskParam
       paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
       paramParcel.writeInt(this.j);
       if (!this.jdField_b_of_type_Boolean) {
-        break label198;
+        break label221;
       }
-    }
-    label198:
-    for (paramInt = i1;; paramInt = 0)
-    {
+      paramInt = 1;
+      label146:
       paramParcel.writeByte((byte)paramInt);
       paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
       paramParcel.writeInt(this.k);
       paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
       paramParcel.writeInt(this.m);
       paramParcel.writeInt(this.n);
+      if (!this.jdField_c_of_type_Boolean) {
+        break label226;
+      }
+    }
+    label221:
+    label226:
+    for (paramInt = i1;; paramInt = 0)
+    {
+      paramParcel.writeByte((byte)paramInt);
+      paramParcel.writeFloat(this.jdField_b_of_type_Float);
       return;
       paramInt = 0;
       break;
+      paramInt = 0;
+      break label146;
     }
   }
 }

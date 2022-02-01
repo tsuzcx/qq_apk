@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import syp;
+import tlx;
 
 class ReadinjoyTabFrame$13$1
   implements Runnable
@@ -9,12 +9,12 @@ class ReadinjoyTabFrame$13$1
   
   public void run()
   {
-    syp.a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$13.this$0.a, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b);
+    tlx.a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$13.this$0.a, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame.13.1
  * JD-Core Version:    0.7.0.1
  */

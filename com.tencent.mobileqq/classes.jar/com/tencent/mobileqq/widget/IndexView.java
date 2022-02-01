@@ -11,8 +11,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import bhey;
-import bhez;
+import bipq;
+import bipr;
 import com.tencent.qphone.base.util.QLog;
 
 public class IndexView
@@ -21,8 +21,8 @@ public class IndexView
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  private bhey jdField_a_of_type_Bhey;
-  private bhez jdField_a_of_type_Bhez;
+  private bipq jdField_a_of_type_Bipq;
+  private bipr jdField_a_of_type_Bipr;
   private boolean jdField_a_of_type_Boolean;
   private int[] jdField_a_of_type_ArrayOfInt;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
@@ -321,7 +321,7 @@ public class IndexView
           break label425;
         }
         f2 = paramMotionEvent.getY();
-        if ((this.jdField_a_of_type_Bhey == null) || (f2 < 0.0F)) {
+        if ((this.jdField_a_of_type_Bipq == null) || (f2 < 0.0F)) {
           break label419;
         }
         i = getHeight() - getPaddingTop() - getPaddingBottom();
@@ -380,9 +380,9 @@ public class IndexView
       if (i >= this.jdField_a_of_type_ArrayOfInt.length) {
         j = this.jdField_a_of_type_ArrayOfInt.length - 1;
       }
-      this.jdField_a_of_type_Bhey.a(this.jdField_a_of_type_ArrayOfJavaLangString[j]);
-      if (this.jdField_a_of_type_Bhez != null) {
-        this.jdField_a_of_type_Bhez.a(this.jdField_a_of_type_ArrayOfJavaLangString[j], k);
+      this.jdField_a_of_type_Bipq.a(this.jdField_a_of_type_ArrayOfJavaLangString[j]);
+      if (this.jdField_a_of_type_Bipr != null) {
+        this.jdField_a_of_type_Bipr.a(this.jdField_a_of_type_ArrayOfJavaLangString[j], k);
       }
       bool = true;
       do
@@ -398,12 +398,12 @@ public class IndexView
     if ("$".equals(paramArrayOfString[0]))
     {
       this.jdField_b_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840450);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840488);
       this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
     }
     if (this.c)
     {
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840449);
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840487);
       this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
     }
     this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
@@ -486,14 +486,14 @@ public class IndexView
     }
   }
   
-  public void setOnIndexChangedListener(bhey parambhey)
+  public void setOnIndexChangedListener(bipq parambipq)
   {
-    this.jdField_a_of_type_Bhey = parambhey;
+    this.jdField_a_of_type_Bipq = parambipq;
   }
   
-  public void setOnIndexChangedListener2(bhez parambhez)
+  public void setOnIndexChangedListener2(bipr parambipr)
   {
-    this.jdField_a_of_type_Bhez = parambhez;
+    this.jdField_a_of_type_Bipr = parambipr;
   }
 }
 

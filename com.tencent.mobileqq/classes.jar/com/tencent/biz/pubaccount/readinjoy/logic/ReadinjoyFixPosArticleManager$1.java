@@ -4,30 +4,30 @@ import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import ptk;
-import slt;
+import qeh;
+import szd;
 
 public class ReadinjoyFixPosArticleManager$1
   implements Runnable
 {
-  public ReadinjoyFixPosArticleManager$1(ptk paramptk, slt paramslt, int paramInt) {}
+  public ReadinjoyFixPosArticleManager$1(qeh paramqeh, szd paramszd, int paramInt) {}
   
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
-    Object localObject = this.jdField_a_of_type_Slt.a().iterator();
+    Object localObject = this.jdField_a_of_type_Szd.a().iterator();
     while (((Iterator)localObject).hasNext())
     {
       BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)((Iterator)localObject).next();
-      if (!ptk.a(localBaseArticleInfo.mRecommendSeq)) {
+      if (!qeh.a(localBaseArticleInfo.mRecommendSeq)) {
         localArrayList.add(localBaseArticleInfo);
       }
     }
     localObject = this.this$0.a(this.jdField_a_of_type_Int, localArrayList, localArrayList, 3);
-    if (ptk.a(this.this$0, (List)localObject, localArrayList))
+    if (qeh.a(this.this$0, (List)localObject, localArrayList))
     {
-      this.jdField_a_of_type_Slt.a((List)localObject);
-      this.jdField_a_of_type_Slt.notifyDataSetChanged();
+      this.jdField_a_of_type_Szd.a((List)localObject);
+      this.jdField_a_of_type_Szd.notifyDataSetChanged();
     }
   }
 }

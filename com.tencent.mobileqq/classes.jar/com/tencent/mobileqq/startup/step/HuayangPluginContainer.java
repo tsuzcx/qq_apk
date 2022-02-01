@@ -2,9 +2,9 @@ package com.tencent.mobileqq.startup.step;
 
 import android.os.Debug;
 import android.widget.Toast;
-import aulz;
-import aupc;
-import bcap;
+import avru;
+import avux;
+import bdhk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.shadow.core.common.LoggerFactory;
@@ -26,12 +26,12 @@ public class HuayangPluginContainer
       Toast.makeText(BaseApplicationImpl.getContext(), "waitForDebugger", 1).show();
       Debug.waitForDebugger();
     }
-    LoggerFactory.setILoggerFactory(aulz.a());
+    LoggerFactory.setILoggerFactory(avru.a());
     BaseApplicationImpl.getApplication().registerActivityLifecycleCallbacks(PluginProcessService.getActivityHolder());
     DynamicRuntime.recoveryRuntime(BaseApplicationImpl.getContext());
-    aupc.d();
-    bcap localbcap = new bcap(BaseApplicationImpl.getApplication());
-    URLDrawable.init(BaseApplicationImpl.getApplication(), localbcap);
+    avux.d();
+    bdhk localbdhk = new bdhk(BaseApplicationImpl.getApplication());
+    URLDrawable.init(BaseApplicationImpl.getApplication(), localbdhk);
     new InitUrlDrawable().step();
     new InitMemoryCache().step();
     return true;
@@ -39,7 +39,7 @@ public class HuayangPluginContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.HuayangPluginContainer
  * JD-Core Version:    0.7.0.1
  */

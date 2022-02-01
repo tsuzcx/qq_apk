@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.miniapp.MiniAppOptions;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.shadow.dynamic.host.EnterCallback;
+import com.tencent.shadow.dynamic.host.PluginManager;
 
-public final class avrx
-  implements Parcelable.Creator<MiniAppOptions>
+public abstract interface avrx
+  extends PluginManager
 {
-  public MiniAppOptions a(Parcel paramParcel)
-  {
-    return new MiniAppOptions(paramParcel);
-  }
-  
-  public MiniAppOptions[] a(int paramInt)
-  {
-    return new MiniAppOptions[paramInt];
-  }
+  public abstract void a(Context paramContext, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback);
 }
 
 

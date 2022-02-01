@@ -1,58 +1,49 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import android.content.Context;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.ViewConfiguration;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
 
 public class alpr
-  implements alqn
+  extends GestureDetector.SimpleOnGestureListener
 {
-  private alpr(ApolloTextureView paramApolloTextureView) {}
+  float jdField_a_of_type_Float;
   
-  public EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+  public alpr(FlowCameraActivity2 paramFlowCameraActivity2, Context paramContext)
   {
-    if (this.a.mIsDestroy != null) {
-      this.a.mIsDestroy.set(false);
-    }
-    int i = alnr.a();
-    QLog.d("ApolloTextureView", 1, new Object[] { "[createContext], id:" + Thread.currentThread().getId(), ",openGLVersion: ", i + ", hashCode: " + hashCode() });
-    int[] arrayOfInt = new int[3];
-    arrayOfInt[0] = 12440;
-    arrayOfInt[1] = i;
-    arrayOfInt[2] = 12344;
-    EGLContext localEGLContext2 = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, arrayOfInt);
-    EGLContext localEGLContext1 = localEGLContext2;
-    if (localEGLContext2 == null)
-    {
-      localEGLContext1 = localEGLContext2;
-      if (arrayOfInt[1] == 3)
-      {
-        QLog.e("ApolloTextureView", 1, "[createContext], context error, try foll back opengl 2.0");
-        arrayOfInt[1] = 2;
-        localEGLContext1 = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, arrayOfInt);
-      }
-    }
-    return localEGLContext1;
+    this.jdField_a_of_type_Float = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 2);
   }
   
-  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    StringBuilder localStringBuilder = new StringBuilder("[destroyContext], id:").append(Thread.currentThread().getId());
-    if ((this.a.mRender != null) && (this.a.mRender.getSavaWrapper() != null)) {
-      localStringBuilder.append(", director: ").append(this.a.mRender.getSavaWrapper().toString() + ", hashCode: " + hashCode());
+    return super.onDown(paramMotionEvent);
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
+      return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     }
-    QLog.d("ApolloTextureView", 1, localStringBuilder.toString());
-    if (this.a.mIsDestroy != null) {
-      this.a.mIsDestroy.set(true);
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.h) || (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.i)) {
+      return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     }
-    if (this.a.mRender != null) {
-      this.a.mRender.onDestroy();
+    float f = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+    if (Math.abs(f) > this.jdField_a_of_type_Float)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.a(f);
+      return true;
     }
-    paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext);
+    return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return super.onSingleTapUp(paramMotionEvent);
   }
 }
 

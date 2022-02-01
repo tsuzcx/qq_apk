@@ -1,15 +1,29 @@
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.concurrent.Callable;
 
-public class bdwu
-  extends amsu
+class bdwu
+  implements Callable<File>
 {
-  public bdwu(NewTroopContactView paramNewTroopContactView) {}
+  bdwu(bdwt parambdwt) {}
   
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  public File a()
   {
-    if (paramBoolean1) {
-      this.a.a.notifyDataSetChanged();
+    if ((!bdwt.a(this.a).exists()) || (!bdwt.a(this.a)))
+    {
+      long l = System.currentTimeMillis();
+      if (!bdwt.a(this.a, bdwt.a(this.a), bdwt.a(this.a), bdwt.a(this.a).getAbsolutePath())) {
+        break label111;
+      }
+      QLog.i("studyroom.AssetsPmUpdater", 1, "copy asset pm success, cost=" + (System.currentTimeMillis() - l));
     }
+    while (bdwt.a(this.a).exists())
+    {
+      return bdwt.a(this.a);
+      label111:
+      QLog.i("studyroom.AssetsPmUpdater", 1, "copy asset pm fail");
+    }
+    return null;
   }
 }
 

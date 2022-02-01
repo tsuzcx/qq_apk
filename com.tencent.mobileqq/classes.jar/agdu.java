@@ -1,24 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.ArkAppMessage.Config;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
+import java.lang.ref.WeakReference;
 
-final class agdu
-  implements aghk
+class agdu
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  WeakReference<DoodleMsgLayout> jdField_a_of_type_JavaLangRefWeakReference;
+  long b;
+  
+  public agdu(agdt paramagdt, long paramLong1, long paramLong2, int paramInt, DoodleMsgLayout paramDoodleMsgLayout)
   {
-    paramQQAppInterface = (MessageForArkApp)paramChatMessage;
-    paramChatMessage = new ArkAppMessage.Config();
-    paramChatMessage.fromString(paramQQAppInterface.ark_app_message.config);
-    if ((paramChatMessage.type != null) && (paramChatMessage.type.equals("multiple"))) {
-      return 112;
-    }
-    if ((paramChatMessage.type != null) && (paramChatMessage.type.equals("card"))) {
-      return 81;
-    }
-    return 47;
+    this.jdField_a_of_type_Long = paramLong2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramLong1;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDoodleMsgLayout);
   }
 }
 

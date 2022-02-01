@@ -1,38 +1,98 @@
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/experiment/AdExperimentData;", "", "()V", "superMaskExposeType", "", "getSuperMaskExposeType", "()I", "setSuperMaskExposeType", "(I)V", "videoGuide", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/experiment/AdExperimentData$VideoGuide;", "getVideoGuide", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/experiment/AdExperimentData$VideoGuide;", "setVideoGuide", "(Lcom/tencent/biz/pubaccount/readinjoyAd/ad/experiment/AdExperimentData$VideoGuide;)V", "Companion", "VideoGuide", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class trw
+public class trw
 {
-  public static final trx a;
-  private int jdField_a_of_type_Int = 2;
-  @Nullable
-  private try jdField_a_of_type_Try;
-  
-  static
+  public static String a(int paramInt, String paramString)
   {
-    jdField_a_of_type_Trx = new trx(null);
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("url", paramString);
+      localJSONObject.put("num", paramInt);
+      paramString = localJSONObject.toString();
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return "";
   }
   
-  public final int a()
+  public static pqg a(int paramInt)
   {
-    return this.jdField_a_of_type_Int;
+    return new pqg().b().a(paramInt);
   }
   
-  @Nullable
-  public final try a()
+  public static pqg a(int paramInt, String paramString1, String paramString2, boolean paramBoolean)
   {
-    return this.jdField_a_of_type_Try;
+    localpqg = a(paramInt);
+    try
+    {
+      paramString1 = localpqg.b(paramString1).a("URL", paramString2);
+      if (paramBoolean) {}
+      for (paramInt = 1;; paramInt = 0)
+      {
+        paramString1 = paramString1.a("ad_page", paramInt);
+        return paramString1;
+      }
+      return localpqg;
+    }
+    catch (JSONException paramString1)
+    {
+      paramString1.printStackTrace();
+    }
   }
   
-  public final void a(@Nullable try paramtry)
+  public static void a(String paramString, int paramInt1, int paramInt2, int paramInt3, rsa paramrsa)
   {
-    this.jdField_a_of_type_Try = paramtry;
+    if ((paramrsa instanceof rsc)) {}
+    for (String str = ((rsc)paramrsa).f;; str = "0")
+    {
+      olh.a(null, "", paramString, paramString, 0, 0, String.valueOf(paramInt3), String.valueOf(paramInt1), String.valueOf(paramrsa.jdField_a_of_type_Int), a(paramInt2, paramrsa.e, str, paramrsa.jdField_a_of_type_Boolean).a(), false);
+      return;
+    }
+  }
+  
+  public static void a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    pqg localpqg = a(paramInt1);
+    if (paramBoolean) {
+      paramInt1 = 1;
+    }
+    try
+    {
+      for (;;)
+      {
+        localpqg.a("ad_page_include", paramInt1);
+        olh.a(null, "", paramString, paramString, 0, 0, String.valueOf(paramInt2), "", "", localpqg.a(), false);
+        return;
+        paramInt1 = 0;
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+  }
+  
+  public static void a(String paramString, int paramInt, rsa paramrsa)
+  {
+    if ((paramrsa instanceof rsc)) {}
+    for (paramrsa = ((rsc)paramrsa).f;; paramrsa = "0")
+    {
+      olh.a(null, "", paramString, paramString, 0, 0, String.valueOf(paramInt), "", "", a(paramInt, paramrsa), false);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     trw
  * JD-Core Version:    0.7.0.1
  */

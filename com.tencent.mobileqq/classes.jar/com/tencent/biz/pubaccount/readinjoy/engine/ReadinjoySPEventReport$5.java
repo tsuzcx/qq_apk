@@ -1,59 +1,60 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import android.util.Pair;
-import bkwm;
+import bmhv;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import pay;
-import ple;
+import pkh;
+import prr;
+import pwb;
 
 public class ReadinjoySPEventReport$5
   implements Runnable
 {
-  public ReadinjoySPEventReport$5(ple parample, int paramInt) {}
+  public ReadinjoySPEventReport$5(pwb parampwb, int paramInt) {}
   
   public void run()
   {
     int i;
-    if (ple.a(this.this$0) != null)
+    if (pwb.a(this.this$0) != null)
     {
-      if (((Integer)ple.a(this.this$0).second).intValue() == this.a) {
+      if (((Integer)pwb.a(this.this$0).second).intValue() == this.a) {
         return;
       }
-      if (((Integer)ple.a(this.this$0).second).intValue() < this.a) {
+      if (((Integer)pwb.a(this.this$0).second).intValue() < this.a) {
         i = 1;
       }
     }
     for (;;)
     {
       label59:
-      int j = ple.a(this.this$0).size();
+      int j = pwb.a(this.this$0).size();
       long l1;
-      if (j > bkwm.c(pay.a())) {
-        l1 = j - bkwm.c(pay.a());
+      if (j > bmhv.c(pkh.a())) {
+        l1 = j - bmhv.c(pkh.a());
       }
       for (;;)
       {
         long l2 = l1 - 1L;
         if (l1 > 0L)
         {
-          if (ple.a(this.this$0).size() <= 1) {
+          if (pwb.a(this.this$0).size() <= 1) {
             break label824;
           }
-          ple.a(this.this$0).remove(1);
+          pwb.a(this.this$0).remove(1);
           l1 = l2;
           continue;
           i = 0;
           break label59;
         }
-        ple.a(this.this$0, false);
+        pwb.a(this.this$0, false);
         if (j == 0) {
-          ple.a(this.this$0).add(new Pair(Long.valueOf(System.currentTimeMillis() / 1000L), Integer.valueOf(0)));
+          pwb.a(this.this$0).add(new Pair(Long.valueOf(System.currentTimeMillis() / 1000L), Integer.valueOf(0)));
         }
-        ple.a(this.this$0, new Pair(Long.valueOf(System.currentTimeMillis() / 1000L - ((Long)((Pair)ple.a(this.this$0).get(0)).first).longValue()), Integer.valueOf(this.a)));
-        ple.a(this.this$0).add(ple.a(this.this$0));
-        QLog.d(ple.class.getSimpleName(), 2, "update msg tab total red pnt change, cnt : " + this.a);
-        j = pay.b();
+        pwb.a(this.this$0, new Pair(Long.valueOf(System.currentTimeMillis() / 1000L - ((Long)((Pair)pwb.a(this.this$0).get(0)).first).longValue()), Integer.valueOf(this.a)));
+        pwb.a(this.this$0).add(pwb.a(this.this$0));
+        QLog.d(pwb.class.getSimpleName(), 2, "update msg tab total red pnt change, cnt : " + this.a);
+        j = prr.b();
         if (j < 0) {
           break;
         }
@@ -62,57 +63,57 @@ public class ReadinjoySPEventReport$5
         }
         for (;;)
         {
-          int k = ple.b(this.this$0).size();
-          if (k > bkwm.d(pay.a())) {
-            l1 = k - bkwm.d(pay.a());
+          int k = pwb.b(this.this$0).size();
+          if (k > bmhv.d(pkh.a())) {
+            l1 = k - bmhv.d(pkh.a());
           }
           for (;;)
           {
             l2 = l1 - 1L;
             if (l1 > 0L)
             {
-              if (ple.b(this.this$0).size() > 1)
+              if (pwb.b(this.this$0).size() > 1)
               {
-                ple.b(this.this$0).remove(1);
+                pwb.b(this.this$0).remove(1);
                 l1 = l2;
               }
             }
             else
             {
-              if ((ple.b(this.this$0) != null) && (((Integer)ple.b(this.this$0).second).intValue() == j)) {
+              if ((pwb.b(this.this$0) != null) && (((Integer)pwb.b(this.this$0).second).intValue() == j)) {
                 break;
               }
               if (k == 0) {
-                ple.b(this.this$0).add(new Pair(Long.valueOf(System.currentTimeMillis() / 1000L), Integer.valueOf(0)));
+                pwb.b(this.this$0).add(new Pair(Long.valueOf(System.currentTimeMillis() / 1000L), Integer.valueOf(0)));
               }
-              ple.b(this.this$0, new Pair(Long.valueOf(System.currentTimeMillis() / 1000L - ((Long)((Pair)ple.b(this.this$0).get(0)).first).longValue()), Integer.valueOf(j)));
-              ple.b(this.this$0).add(ple.b(this.this$0));
-              QLog.d(ple.class.getSimpleName(), 2, "update msg tab first screen red pnt change, cnt : " + j);
-              j = bkwm.c();
-              if ((this.a <= j) && (!ple.a(this.this$0)) && (i == 0))
+              pwb.b(this.this$0, new Pair(Long.valueOf(System.currentTimeMillis() / 1000L - ((Long)((Pair)pwb.b(this.this$0).get(0)).first).longValue()), Integer.valueOf(j)));
+              pwb.b(this.this$0).add(pwb.b(this.this$0));
+              QLog.d(pwb.class.getSimpleName(), 2, "update msg tab first screen red pnt change, cnt : " + j);
+              j = bmhv.c();
+              if ((this.a <= j) && (!pwb.a(this.this$0)) && (i == 0))
               {
-                if ((ple.c(this.this$0) != null) && (ple.c(this.this$0).size() > 0))
+                if ((pwb.c(this.this$0) != null) && (pwb.c(this.this$0).size() > 0))
                 {
-                  i = ((Integer)((Pair)ple.c(this.this$0).get(ple.c(this.this$0).size() - 1)).second).intValue();
-                  l1 = ((Long)((Pair)ple.c(this.this$0).get(0)).first).longValue();
-                  l2 = ((Long)((Pair)ple.c(this.this$0).get(ple.c(this.this$0).size() - 1)).first).longValue();
+                  i = ((Integer)((Pair)pwb.c(this.this$0).get(pwb.c(this.this$0).size() - 1)).second).intValue();
+                  l1 = ((Long)((Pair)pwb.c(this.this$0).get(0)).first).longValue();
+                  l2 = ((Long)((Pair)pwb.c(this.this$0).get(pwb.c(this.this$0).size() - 1)).first).longValue();
                   if ((System.currentTimeMillis() / 1000L - (l1 + l2) <= 600L) && (i == 1))
                   {
-                    ple.a(this.this$0, true);
+                    pwb.a(this.this$0, true);
                     return;
                   }
                 }
-                if (ple.a(this.this$0) != null) {
+                if (pwb.a(this.this$0) != null) {
                   break label804;
                 }
-                ple.a(this.this$0, 0);
+                pwb.a(this.this$0, 0);
               }
               for (;;)
               {
-                ple.b(this.this$0, false);
+                pwb.b(this.this$0, false);
                 return;
                 label804:
-                ple.a(this.this$0);
+                pwb.a(this.this$0);
               }
             }
             l1 = l2;

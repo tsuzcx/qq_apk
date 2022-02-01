@@ -1,62 +1,89 @@
-import android.graphics.Bitmap;
-import android.graphics.Point;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.widget.XListView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class arcc
-  implements arby
+  extends aqwt<arcb>
 {
-  private int jdField_a_of_type_Int = -16777216;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private XListView jdField_a_of_type_ComTencentWidgetXListView;
+  private static arcb a;
   
-  public arcc(XListView paramXListView)
+  public static arcb a()
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
-  }
-  
-  public View a(int paramInt)
-  {
-    View localView = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(this.jdField_a_of_type_ComTencentWidgetXListView.getHeaderViewsCount() + paramInt - this.jdField_a_of_type_ComTencentWidgetXListView.getFirstVisiblePosition());
-    if (localView == null) {}
-    do
-    {
-      return null;
-      localView.setPressed(false);
-      localView.setDrawingCacheEnabled(true);
-    } while (localView.getDrawingCache() == null);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(localView.getDrawingCache());
-    localView.setDrawingCacheEnabled(false);
-    if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
-      this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_ComTencentWidgetXListView.getContext());
+    arcb localarcb2 = (arcb)aqxe.a().a(524);
+    arcb localarcb1 = localarcb2;
+    if (localarcb2 == null) {
+      localarcb1 = arcb.a();
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundColor(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetImageView.setPadding(0, 0, 0, 0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(new ViewGroup.LayoutParams(localView.getWidth(), localView.getHeight()));
-    return this.jdField_a_of_type_AndroidWidgetImageView;
+    return localarcb1;
   }
   
-  public void a(View paramView)
+  @NonNull
+  public arcb a(int paramInt)
   {
-    ((ImageView)paramView).setImageDrawable(null);
-    this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    if (a != null) {
+      return a;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("MutualMarkConfProcessor", 2, "migrateOldOrDefaultContent ");
+    }
+    a = arcb.a();
+    return a;
   }
   
-  public void a(View paramView, Point paramPoint1, Point paramPoint2) {}
-  
-  public void f(int paramInt)
+  @Nullable
+  public arcb a(aqxa[] paramArrayOfaqxa)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0))
+    {
+      paramArrayOfaqxa = arcb.a(paramArrayOfaqxa[0].a);
+      a = null;
+      return paramArrayOfaqxa;
+    }
+    return arcb.a();
+  }
+  
+  public void a(arcb paramarcb)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MutualMarkConfProcessor", 2, "onUpdate newConf:" + paramarcb);
+    }
+  }
+  
+  public Class<arcb> clazz()
+  {
+    return arcb.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MutualMarkConfProcessor", 2, "onReqFailed failCode:" + paramInt);
+    }
+  }
+  
+  public int type()
+  {
+    return 524;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arcc
  * JD-Core Version:    0.7.0.1
  */

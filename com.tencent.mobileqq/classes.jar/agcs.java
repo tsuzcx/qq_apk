@@ -1,23 +1,25 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 
-class agcs
-  implements aufd
+public class agcs
+  implements DialogInterface.OnClickListener
 {
-  agcs(agcr paramagcr) {}
+  public agcs(DoodlePanel paramDoodlePanel) {}
   
-  public void a(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HiBoomFont.ItemBuilder", 2, "onDoubleClick");
-    }
-    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
-    if (this.a.a()) {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      bdla.b(this.a.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 0, "", "", "", "");
       return;
     }
-    ChatActivityUtils.a(this.a.a, paramView, (FragmentActivity)this.a.b);
+    bdla.b(this.a.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 1, "", "", "", "");
+    DoodlePanel.a(this.a).finish(1);
   }
 }
 

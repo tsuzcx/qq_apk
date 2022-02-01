@@ -1,8 +1,29 @@
-import android.graphics.Canvas;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import mqq.app.AppRuntime;
 
-public abstract interface aqpe
+public class aqpe
+  implements aqov
 {
-  public abstract void a(Canvas paramCanvas, aqoj paramaqoj, long paramLong);
+  private QQAppInterface a()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
+      return (QQAppInterface)localAppRuntime;
+    }
+    return null;
+  }
+  
+  public void launch(Context paramContext, ColorNote paramColorNote)
+  {
+    QQAppInterface localQQAppInterface = a();
+    if (localQQAppInterface != null) {
+      ((aimn)localQQAppInterface.getManager(QQManagerFactory.UPCOMING_MSG_PRE_MANAGER)).a(paramContext, paramColorNote);
+    }
+  }
 }
 
 

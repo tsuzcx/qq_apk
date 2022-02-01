@@ -1,10 +1,12 @@
-public abstract interface bmpe
+import android.graphics.drawable.Drawable;
+
+public abstract class bmpe
 {
-  public abstract void a();
+  public volatile int mCount;
   
-  public abstract void a(float paramFloat);
+  public abstract void onDownloaded(String paramString1, int paramInt, String paramString2, Drawable paramDrawable);
   
-  public abstract void b();
+  public abstract void onFailed(String paramString1, int paramInt, String paramString2);
 }
 
 

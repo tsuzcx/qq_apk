@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ajnr;
+import akjf;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
@@ -36,13 +36,13 @@ public class AvatarGridView
     if (localListAdapter != null)
     {
       localObject1 = localObject2;
-      if ((getAdapter().getItem(paramInt1 - 1) instanceof ajnr)) {
-        localObject1 = (ajnr)getAdapter().getItem(paramInt1 - 1);
+      if ((getAdapter().getItem(paramInt1 - 1) instanceof akjf)) {
+        localObject1 = (akjf)getAdapter().getItem(paramInt1 - 1);
       }
     }
     int i;
     if (localObject1 != null) {
-      if ((((ajnr)localObject1).b != 0) && (((ajnr)localObject1).b == 4)) {
+      if ((((akjf)localObject1).b != 0) && (((akjf)localObject1).b == 4)) {
         i = paramInt1 - 1;
       }
     }

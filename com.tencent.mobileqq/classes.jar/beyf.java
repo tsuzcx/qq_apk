@@ -1,108 +1,115 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
+import android.text.Editable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.tribe.view.TEditText;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
-import mqq.manager.Manager;
 
 public class beyf
-  implements Manager
+  implements beui
 {
-  private HashMap<Long, beyg> a = new HashMap();
+  public beyf(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public ArrayList<beyd> a(long paramLong)
+  public void a(int paramInt1, int paramInt2)
   {
-    beyg localbeyg = (beyg)this.a.get(Long.valueOf(paramLong));
-    if (localbeyg != null)
-    {
-      localbeyg.jdField_a_of_type_Long = System.currentTimeMillis();
-      return localbeyg.jdField_a_of_type_JavaUtilArrayList;
+    int m = 1;
+    int i = this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.getText().length();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.getText().length() <= 0) {
+      break label37;
     }
-    return null;
-  }
-  
-  public void a()
-  {
-    if (this.a.size() > 20)
+    label37:
+    while ((paramInt1 <= 0) && (paramInt2 <= 0)) {
+      return;
+    }
+    int j = this.a.jdField_a_of_type_Beuo.b.length();
+    int k = this.a.jdField_a_of_type_Beuo.a.length();
+    int n = this.a.jdField_a_of_type_Beuo.c.length() + (j + k);
+    if ((paramInt1 < this.a.A.length() + n) && (paramInt2 < this.a.A.length() + n))
     {
-      Object localObject1 = new ArrayList();
-      Object localObject2 = this.a.values().iterator();
-      while (((Iterator)localObject2).hasNext()) {
-        ((ArrayList)localObject1).add(Long.valueOf(((beyg)((Iterator)localObject2).next()).jdField_a_of_type_Long));
-      }
-      Collections.sort((List)localObject1, Collections.reverseOrder());
-      long l = ((Long)((ArrayList)localObject1).get(19)).longValue();
-      localObject1 = this.a.entrySet().iterator();
-      while (((Iterator)localObject1).hasNext())
+      if (TroopBarPublishActivity.a(this.a).size() > 1)
       {
-        localObject2 = (Map.Entry)((Iterator)localObject1).next();
-        if (((beyg)((Map.Entry)localObject2).getValue()).jdField_a_of_type_Long < l)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopAppShortcutMgr", 2, "eliminateAppInfoCache troopUin:" + ((Map.Entry)localObject2).getKey());
-          }
-          ((Iterator)localObject1).remove();
+        this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.clearFocus();
+        bkxz.b(this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText);
+        return;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(i);
+      return;
+    }
+    if (paramInt1 < 0) {
+      if (paramInt2 > this.a.A.length() + n)
+      {
+        paramInt1 = paramInt2;
+        label203:
+        if (paramInt1 <= i) {
+          break label439;
         }
       }
     }
-  }
-  
-  public void a(long paramLong, ArrayList<beyd> paramArrayList)
-  {
-    beyg localbeyg = (beyg)this.a.get(Long.valueOf(paramLong));
-    if (localbeyg != null)
+    for (;;)
     {
-      localbeyg.jdField_a_of_type_Long = System.currentTimeMillis();
-      localbeyg.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+      this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(i);
       return;
+      paramInt1 = this.a.A.length() + n;
+      break label203;
+      if (paramInt2 < 0) {
+        if (paramInt1 > this.a.A.length() + n) {
+          label258:
+          if (paramInt1 <= i) {
+            break label434;
+          }
+        }
+      }
+      for (;;)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(i);
+        return;
+        paramInt1 = this.a.A.length() + n;
+        break label258;
+        if (TextUtils.isEmpty(this.a.jdField_a_of_type_Beuo.b)) {
+          break;
+        }
+        k = 0;
+        j = paramInt1;
+        if (paramInt1 < this.a.A.length() + n)
+        {
+          j = n + this.a.A.length();
+          k = 1;
+        }
+        if (paramInt2 < this.a.A.length() + n)
+        {
+          paramInt1 = n + this.a.A.length();
+          k = 1;
+        }
+        for (;;)
+        {
+          paramInt2 = j;
+          if (j > i)
+          {
+            k = 1;
+            paramInt2 = i;
+          }
+          if (paramInt1 > i) {
+            k = m;
+          }
+          while (k != 0)
+          {
+            this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(paramInt2, i);
+            return;
+            i = paramInt1;
+          }
+          break;
+          paramInt1 = paramInt2;
+        }
+        label434:
+        i = paramInt1;
+      }
+      label439:
+      i = paramInt1;
     }
-    this.a.put(Long.valueOf(paramLong), new beyg(System.currentTimeMillis(), paramArrayList, null));
-  }
-  
-  public boolean a()
-  {
-    betw localbetw = (betw)apub.a().a(590);
-    if (localbetw == null) {
-      return false;
-    }
-    return localbetw.a();
-  }
-  
-  public ArrayList<beyd> b(long paramLong)
-  {
-    beyg localbeyg = (beyg)this.a.get(Long.valueOf(paramLong));
-    if (localbeyg != null)
-    {
-      localbeyg.jdField_a_of_type_Long = System.currentTimeMillis();
-      return localbeyg.b;
-    }
-    return null;
-  }
-  
-  public void b(long paramLong, ArrayList<beyd> paramArrayList)
-  {
-    beyg localbeyg = (beyg)this.a.get(Long.valueOf(paramLong));
-    if (localbeyg != null)
-    {
-      localbeyg.jdField_a_of_type_Long = System.currentTimeMillis();
-      localbeyg.b = paramArrayList;
-      return;
-    }
-    this.a.put(Long.valueOf(paramLong), new beyg(System.currentTimeMillis(), null, paramArrayList));
-  }
-  
-  public void onDestroy()
-  {
-    this.a.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beyf
  * JD-Core Version:    0.7.0.1
  */

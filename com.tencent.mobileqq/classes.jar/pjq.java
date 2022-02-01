@@ -1,20 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
-import java.util.Comparator;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
 
-class pjq
-  implements Comparator<DynamicChannelDataModel>
+public class pjq
+  extends RecyclerView.ViewHolder
 {
-  pjq(pjn parampjn) {}
+  public View a;
+  public TextView a;
+  public TextView b;
   
-  public int a(DynamicChannelDataModel paramDynamicChannelDataModel1, DynamicChannelDataModel paramDynamicChannelDataModel2)
+  public pjq(pjn parampjn, View paramView)
   {
-    if (paramDynamicChannelDataModel1.recommendSeq == paramDynamicChannelDataModel2.recommendSeq) {
-      return 0;
-    }
-    if (paramDynamicChannelDataModel1.recommendSeq < paramDynamicChannelDataModel2.recommendSeq) {
-      return -1;
-    }
-    return 1;
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379864));
+    this.b = ((TextView)paramView.findViewById(2131379865));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370108);
   }
 }
 

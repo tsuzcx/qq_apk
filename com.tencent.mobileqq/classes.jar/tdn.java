@@ -1,8 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface tdn
+public class tdn
+  implements View.OnClickListener
 {
-  public abstract void a(SelectPositionModule.PositionData paramPositionData);
+  public tdn(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  
+  public void onClick(View paramView)
+  {
+    ReadinjoyTabFrame.a(this.a, this.a.a(), (ViewGroup)ReadinjoyTabFrame.a(this.a));
+    if (BaseApplicationImpl.sProcessId != 9) {
+      bmux.a(BaseApplicationImpl.getContext());
+    }
+    pqb.a("1");
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

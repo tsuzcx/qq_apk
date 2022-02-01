@@ -1,16 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.database.DataSetObserver;
+import android.support.v4.view.PagerAdapter;
+import com.tencent.biz.qqstory.view.EmptySupportViewPager;
 
-class zft
-  implements View.OnClickListener
+public class zft
+  extends DataSetObserver
 {
-  zft(zfs paramzfs) {}
+  public zft(EmptySupportViewPager paramEmptySupportViewPager) {}
   
-  public void onClick(View paramView)
+  public void onChanged()
   {
-    zfs.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    PagerAdapter localPagerAdapter = this.a.getAdapter();
+    if ((localPagerAdapter != null) && (localPagerAdapter.getCount() > 0))
+    {
+      this.a.a(8);
+      EmptySupportViewPager.a(this.a, 0);
+      return;
+    }
+    this.a.a(0);
+    EmptySupportViewPager.b(this.a, 8);
   }
 }
 

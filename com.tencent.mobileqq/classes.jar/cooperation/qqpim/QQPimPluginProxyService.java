@@ -1,9 +1,9 @@
 package cooperation.qqpim;
 
 import android.content.Intent;
-import bkkq;
-import bkkz;
-import bksb;
+import blvy;
+import blwh;
+import bmdk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.PluginProxyService;
 import com.tencent.qphone.base.util.QLog;
@@ -18,15 +18,15 @@ public class QQPimPluginProxyService
     {
       return;
       Intent localIntent = new Intent(paramQQAppInterface.getApp(), QQPimPluginProxyService.class);
-      bkkz localbkkz = new bkkz(1);
-      localbkkz.b = "qqpim_plugin.apk";
-      localbkkz.d = "QQ同步助手插件";
-      localbkkz.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
-      localbkkz.e = bksb.k;
-      localbkkz.jdField_a_of_type_AndroidContentIntent = localIntent;
-      bkkq.c(paramQQAppInterface.getApp(), localbkkz);
+      blwh localblwh = new blwh(1);
+      localblwh.b = "qqpim_plugin.apk";
+      localblwh.d = "QQ同步助手插件";
+      localblwh.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
+      localblwh.e = bmdk.k;
+      localblwh.jdField_a_of_type_AndroidContentIntent = localIntent;
+      blvy.c(paramQQAppInterface.getApp(), localblwh);
     } while (!QLog.isColorLevel());
-    QLog.i(bksb.jdField_a_of_type_JavaLangString, 2, "QQPimPluginProxyService.preloadQQPimService() IPluginManager.SUPPORT_NETWORKING = true");
+    QLog.i(bmdk.jdField_a_of_type_JavaLangString, 2, "QQPimPluginProxyService.preloadQQPimService() IPluginManager.SUPPORT_NETWORKING = true");
   }
 }
 

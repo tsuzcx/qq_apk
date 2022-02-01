@@ -3,6 +3,7 @@ package com.tencent.mobileqq.activity.phone;
 import com.tencent.mobileqq.activity.ContactBindedActivity;
 import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 class SettingActivity2$4
   implements Runnable
@@ -16,7 +17,7 @@ class SettingActivity2$4
       this.this$0.finish();
       return;
     }
-    PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)this.this$0.app.getManager(11);
+    PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)this.this$0.app.getManager(QQManagerFactory.CONTACT_MANAGER);
     ContactBindedActivity.a(this.this$0.app, 222, localPhoneContactManagerImp.a());
   }
 }

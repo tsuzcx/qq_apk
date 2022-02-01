@@ -1,13 +1,52 @@
-import android.graphics.PointF;
+import android.text.SpannableString;
 
-final class bfzy
-  implements bgaa<PointF>
+class bfzy
 {
-  public PointF a(float paramFloat, PointF paramPointF1, PointF paramPointF2)
+  public final int a;
+  public final SpannableString a;
+  
+  public bfzy(int paramInt, SpannableString paramSpannableString)
   {
-    float f1 = paramPointF1.x;
-    float f2 = paramPointF1.y;
-    return new PointF(f1 + (paramPointF2.x - f1) * paramFloat, f2 + (paramPointF2.y - f2) * paramFloat);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidTextSpannableString = paramSpannableString;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (bfzy)paramObject;
+      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
+        return false;
+      }
+      if (this.jdField_a_of_type_AndroidTextSpannableString != null) {
+        return this.jdField_a_of_type_AndroidTextSpannableString.equals(paramObject.jdField_a_of_type_AndroidTextSpannableString);
+      }
+    } while (paramObject.jdField_a_of_type_AndroidTextSpannableString == null);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    int j = this.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_AndroidTextSpannableString != null) {}
+    for (int i = this.jdField_a_of_type_AndroidTextSpannableString.hashCode();; i = 0) {
+      return i + j * 31;
+    }
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("AtTag{");
+    localStringBuilder.append("startIndex=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", atSpan=").append(this.jdField_a_of_type_AndroidTextSpannableString);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

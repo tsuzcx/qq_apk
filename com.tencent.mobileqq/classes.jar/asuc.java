@@ -1,44 +1,31 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.forward.ForwardFileOption;
-import java.util.ArrayList;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
 
-public class asuc
-  extends asug
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "onGlobalLayout"}, k=3, mv={1, 1, 16})
+final class asuc
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
-  private boolean d;
+  asuc(LinearLayout paramLinearLayout) {}
   
-  public asuc(Context paramContext, FileManagerEntity paramFileManagerEntity)
+  public final void onGlobalLayout()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramFileManagerEntity;
-    this.d = false;
-  }
-  
-  public Intent a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
-      return null;
+    Object localObject = new int[2];
+    this.a.getLocationOnScreen((int[])localObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("CompletePersonalDataDialog", 2, "onGlobalLayout x = " + localObject[0] + ",y = " + localObject[1]);
     }
-    ForwardFileInfo localForwardFileInfo = ForwardFileOption.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    localForwardFileInfo.b(10009);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("fileinfo", localForwardFileInfo);
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-      localIntent.putStringArrayListExtra("Aio_SessionId_ImageList", this.jdField_a_of_type_JavaUtilArrayList);
+    int i = ViewUtils.dpToPx(120.0F);
+    if (localObject[1] < i)
+    {
+      int j = ViewUtils.getScreenHeight();
+      localObject = this.a.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject).height = (j - i);
+      this.a.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
-    localIntent.putExtra("_from_aio_", this.d);
-    return localIntent;
-  }
-  
-  public void a(ArrayList<String> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
 }
 

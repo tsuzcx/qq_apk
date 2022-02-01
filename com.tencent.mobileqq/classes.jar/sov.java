@@ -1,37 +1,19 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import android.webkit.URLUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import mqq.app.AppRuntime;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsUGView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class sov
-  extends ClickableSpan
+public class sov
+  implements View.OnClickListener
 {
-  sov(sou paramsou, int paramInt) {}
+  public sov(VideoFeedsUGView paramVideoFeedsUGView) {}
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(this.jdField_a_of_type_Sou.getContext(), QQBrowserActivity.class);
-    String str = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_Sou.getContext()).getString("qq_readinjoy_user_protocol_92_jump_url_" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), "https://kandian.qq.com/mqq/watchspot/extrapage.html ");
-    if (!TextUtils.isEmpty(str))
-    {
-      paramView.putExtra("url", URLUtil.guessUrl(str));
-      this.jdField_a_of_type_Sou.getContext().startActivity(paramView);
-    }
-  }
-  
-  public void updateDrawState(@NonNull TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(this.jdField_a_of_type_Int);
-    paramTextPaint.setUnderlineText(false);
+    bhhr.a("ug_prefix_ug_1get3_ug_close_time", System.currentTimeMillis());
+    this.a.setVisibility(8);
+    oqt.a(oqt.b(this.a.jdField_a_of_type_Omr.i, "101", this.a.jdField_a_of_type_JavaLangString));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

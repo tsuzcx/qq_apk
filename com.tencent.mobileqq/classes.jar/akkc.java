@@ -1,22 +1,23 @@
-import android.content.Context;
-import android.graphics.Color;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.util.DisplayUtil;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.activity.photo.PhotoCropForPortraitActivity;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class akkc
-  extends aklb
+  implements View.OnClickListener
 {
-  public View a(int paramInt, Object paramObject, aklg paramaklg, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, aknm paramaknm)
+  public akkc(PhotoCropForPortraitActivity paramPhotoCropForPortraitActivity) {}
+  
+  public void onClick(View paramView)
   {
-    paramObject = new View(paramContext);
-    paramObject.setBackgroundColor(Color.parseColor("#f2f2f2"));
-    paramObject.setMinimumHeight(DisplayUtil.dip2px(paramContext, 20.0F));
-    paramObject.setMinimumWidth((int)DeviceInfoUtil.getDispalyWidth());
-    return paramObject;
+    Intent localIntent = this.a.getIntent();
+    String str = localIntent.getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
+    int i = localIntent.getIntExtra("PhotoConst.CLIP_WIDTH", 0);
+    PhotoUtils.startPhotoListEdit(localIntent, this.a, str, i, i, 1080, 1080, aoks.a());
+    bdla.b(this.a.app, "dc00898", "", "", "0X800723F", "0X800723F", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

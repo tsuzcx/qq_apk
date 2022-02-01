@@ -1,39 +1,34 @@
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.1;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.2;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.3;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.4;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class axnh
-  implements axmt
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"setBackgroundDrawableCompat", "", "Landroid/view/View;", "background", "Landroid/graphics/drawable/Drawable;", "setOnClickListener", "listener", "Lkotlin/Function0;", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
+public final class axnh
 {
-  public axnh(ScanOcrActivity paramScanOcrActivity) {}
-  
-  public void a()
+  public static final void a(@NotNull View paramView, @Nullable Drawable paramDrawable)
   {
-    this.a.runOnUiThread(new ScanOcrActivity.6.3(this));
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.a.runOnUiThread(new ScanOcrActivity.6.1(this, paramInt1));
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.runOnUiThread(new ScanOcrActivity.6.4(this, paramString));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.runOnUiThread(new ScanOcrActivity.6.2(this));
+    Intrinsics.checkParameterIsNotNull(paramView, "$this$setBackgroundDrawableCompat");
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      paramView.setBackground(paramDrawable);
+      return;
     }
+    paramView.setBackgroundDrawable(paramDrawable);
   }
   
-  public void b(boolean paramBoolean) {}
-  
-  public void c(boolean paramBoolean) {}
+  public static final void a(@NotNull View paramView, @NotNull Function0<Unit> paramFunction0)
+  {
+    Intrinsics.checkParameterIsNotNull(paramView, "$this$setOnClickListener");
+    Intrinsics.checkParameterIsNotNull(paramFunction0, "listener");
+    paramView.setOnClickListener((View.OnClickListener)new axni(paramFunction0));
+  }
 }
 
 

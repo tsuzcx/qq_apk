@@ -3,9 +3,10 @@ package com.tencent.mobileqq.app.automator.step;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
-import avta;
+import awzb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.qphone.base.util.QLog;
@@ -40,18 +41,18 @@ public class NotifyQZoneServer
       localObject2 = ((SharedPreferences)localObject2).edit();
       ((SharedPreferences.Editor)localObject2).putLong("lastReqTime" + (String)localObject1, l2);
       if (Build.VERSION.SDK_INT < 9) {
-        break label328;
+        break label329;
       }
       ((SharedPreferences.Editor)localObject2).apply();
     }
     for (;;)
     {
-      localObject1 = (avta)this.a.app.getManager(10);
+      localObject1 = (awzb)this.a.app.getManager(QQManagerFactory.QZONE_MANAGER);
       if (localObject1 != null) {
-        ((avta)localObject1).a();
+        ((awzb)localObject1).a();
       }
       return super.a();
-      label328:
+      label329:
       ((SharedPreferences.Editor)localObject2).commit();
     }
   }

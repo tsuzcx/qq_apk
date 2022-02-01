@@ -1,8 +1,15 @@
-public abstract interface bnlu
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+
+class bnlu
+  implements Observer<Boolean>
 {
-  public abstract int a();
+  bnlu(bnln parambnln) {}
   
-  public abstract bnle a(int paramInt);
+  public void a(@Nullable Boolean paramBoolean)
+  {
+    bnjw.a().a();
+  }
 }
 
 

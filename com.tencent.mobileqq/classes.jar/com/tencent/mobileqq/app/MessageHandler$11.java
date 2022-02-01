@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import avwv;
+import axcx;
 import com.tencent.mobileqq.utils.FileUtils;
 
 class MessageHandler$11
@@ -10,7 +10,7 @@ class MessageHandler$11
   
   public void run()
   {
-    FileUtils.delete(avwv.a, true);
+    FileUtils.delete(axcx.a, true);
   }
 }
 

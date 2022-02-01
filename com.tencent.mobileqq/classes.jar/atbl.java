@@ -1,71 +1,93 @@
-import android.content.res.ColorStateList;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
 
 public class atbl
-  extends ClickableSpan
+  implements augh
 {
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private int jdField_a_of_type_Int;
   private boolean jdField_a_of_type_Boolean;
-  private ColorStateList b;
+  private int b;
   
-  public atbl(View.OnClickListener paramOnClickListener, ColorStateList paramColorStateList)
+  public atbl(QfileCloudFileTabView paramQfileCloudFileTabView) {}
+  
+  public void a(int paramInt1, int paramInt2)
   {
-    this(paramOnClickListener, paramColorStateList, null);
+    boolean bool = false;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = -2147483648;
+    this.b = 2147483647;
+    WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView.a.getChild(paramInt1, paramInt2);
+    if (localWeiYunFileInfo == null) {}
+    do
+    {
+      return;
+      if (!atpm.a(localWeiYunFileInfo)) {
+        bool = true;
+      }
+      this.jdField_a_of_type_Boolean = bool;
+    } while (!QfileCloudFileTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView, localWeiYunFileInfo, this.jdField_a_of_type_Boolean));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView.o();
   }
   
-  public atbl(View.OnClickListener paramOnClickListener, ColorStateList paramColorStateList1, ColorStateList paramColorStateList2)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList1;
-    this.b = paramColorStateList2;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    if (paramInt1 != paramInt3) {
+      return;
     }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setUnderlineText(false);
-    if (this.jdField_a_of_type_AndroidContentResColorStateList != null) {
-      if (this.jdField_a_of_type_Boolean)
+    paramInt3 = Math.min(paramInt2, paramInt4);
+    int i = Math.max(paramInt2, paramInt4);
+    if (paramInt4 < paramInt2) {
+      this.b = Math.min(paramInt4, this.b);
+    }
+    for (;;)
+    {
+      paramInt2 = paramInt3;
+      while (paramInt2 <= i)
       {
-        i = this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(new int[] { 16842919 }, 0);
-        paramTextPaint.setColor(i);
-        label46:
-        if (this.b == null) {
-          break label122;
-        }
-        if (!this.jdField_a_of_type_Boolean) {
-          break label107;
-        }
+        QfileCloudFileTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView, (WeiYunFileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView.a.getChild(paramInt1, paramInt2), this.jdField_a_of_type_Boolean);
+        paramInt2 += 1;
+      }
+      this.jdField_a_of_type_Int = Math.max(paramInt4, this.jdField_a_of_type_Int);
+    }
+    paramInt2 = this.b;
+    QfileCloudFileTabView localQfileCloudFileTabView;
+    WeiYunFileInfo localWeiYunFileInfo;
+    boolean bool;
+    if (paramInt2 < paramInt3)
+    {
+      localQfileCloudFileTabView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView;
+      localWeiYunFileInfo = (WeiYunFileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView.a.getChild(paramInt1, paramInt2);
+      if (!this.jdField_a_of_type_Boolean) {}
+      for (bool = true;; bool = false)
+      {
+        QfileCloudFileTabView.a(localQfileCloudFileTabView, localWeiYunFileInfo, bool);
+        paramInt2 += 1;
+        break;
       }
     }
-    label107:
-    for (int i = this.b.getColorForState(new int[] { 16842919 }, 0);; i = this.b.getColorForState(new int[0], 0))
+    paramInt2 = i + 1;
+    if (paramInt2 <= this.jdField_a_of_type_Int)
     {
-      paramTextPaint.bgColor = i;
-      return;
-      i = this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(new int[0], 0);
-      break;
-      paramTextPaint.setColor(-16777216);
-      break label46;
+      localQfileCloudFileTabView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView;
+      localWeiYunFileInfo = (WeiYunFileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView.a.getChild(paramInt1, paramInt2);
+      if (!this.jdField_a_of_type_Boolean) {}
+      for (bool = true;; bool = false)
+      {
+        QfileCloudFileTabView.a(localQfileCloudFileTabView, localWeiYunFileInfo, bool);
+        paramInt2 += 1;
+        break;
+      }
     }
-    label122:
-    paramTextPaint.bgColor = 0;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView.o();
   }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void b(int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atbl
  * JD-Core Version:    0.7.0.1
  */

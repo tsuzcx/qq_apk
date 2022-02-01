@@ -1,16 +1,16 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
-
-public final class bhlu
-  implements DialogInterface.OnClickListener
+public class bhlu
 {
-  public bhlu(Context paramContext) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bhlu(int paramInt1, String paramString1, int paramInt2, String paramString2)
   {
-    FloatingScreenPermission.requestPermission(this.a);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
   }
 }
 

@@ -1,22 +1,50 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.RectF;
-import java.util.ArrayList;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.content.Context;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.QIMShortVideoUtils.1;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract class bmux
+public class bmux
 {
-  protected Paint a = new Paint();
-  
-  public bmux()
+  public static void a(Context paramContext)
   {
-    this.a.setAntiAlias(true);
-    this.a.setStyle(Paint.Style.FILL_AND_STROKE);
+    a(paramContext, null);
   }
   
-  public abstract void a(Canvas paramCanvas, RectF paramRectF, int paramInt1, int paramInt2);
+  public static void a(Context paramContext, Runnable paramRunnable, String paramString)
+  {
+    ThreadManager.excute(new QIMShortVideoUtils.1(paramContext, paramString, paramRunnable), 64, null, false);
+  }
   
-  public abstract void a(Canvas paramCanvas, ArrayList<bmwp> paramArrayList, int paramInt1, int paramInt2);
+  public static void a(Context paramContext, String paramString)
+  {
+    a(paramContext, null, paramString);
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    try
+    {
+      paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses().iterator();
+      while (paramContext.hasNext())
+      {
+        boolean bool = "com.tencent.mobileqq:peak".equals(((ActivityManager.RunningAppProcessInfo)paramContext.next()).processName);
+        if (bool) {
+          return true;
+        }
+      }
+    }
+    catch (Exception paramContext)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("QIMShortVideoUtils", 2, "get process info fail.");
+      }
+    }
+    return false;
+  }
 }
 
 

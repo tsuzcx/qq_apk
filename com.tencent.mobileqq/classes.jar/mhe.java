@@ -1,33 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
 
-class mhe
-  implements DialogInterface.OnClickListener
+public class mhe
+  implements adnl
 {
-  mhe(mhc parammhc) {}
+  public mhe(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    this.a.a.c();
-    mha.a(this.a.a, false);
-    if (paramInt == 1)
-    {
-      bcef.b(null, "CliOper", "", "", "0X800A565", "0X800A565", 0, 0, "", "", "", "");
-      mha.a(this.a.a);
-    }
-    while (paramInt != 0) {
-      return;
-    }
-    mha.a(this.a.a, mha.a(this.a.a).a().w);
+    this.a.h = paramInt1;
+    this.a.i = paramInt2;
+    this.a.d(10);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mhe
  * JD-Core Version:    0.7.0.1
  */

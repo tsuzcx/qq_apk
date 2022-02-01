@@ -1,419 +1,263 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.activity.UserguideActivity;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp.2.1;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp.2.2;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp.UploadProgressGenerator;
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
-import com.tencent.mobileqq.portal.PortalManager;
+import android.os.SystemClock;
+import android.view.GestureDetector;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import com.immersion.stickersampleapp.HapticManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.AppActivity;
-import mqq.os.MqqHandler;
 
 public class aihi
-  extends aycd
+  implements Handler.Callback, GestureDetector.OnGestureListener
 {
-  public aihi(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  private static boolean jdField_a_of_type_Boolean;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private final aihj jdField_a_of_type_Aihj;
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
+  private final View jdField_a_of_type_AndroidViewView;
+  private String jdField_a_of_type_JavaLangString = "chat_item_for_sticker40";
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  private int jdField_c_of_type_Int;
+  private boolean jdField_c_of_type_Boolean;
+  private int jdField_d_of_type_Int = -1;
+  private boolean jdField_d_of_type_Boolean;
   
-  void a()
+  public aihi(aihj paramaihj, View paramView, boolean paramBoolean)
   {
-    ThreadManager.excute(new PhoneContactManagerImp.2.2(this), 16, null, false);
+    this.jdField_a_of_type_Aihj = paramaihj;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramView.getContext(), this);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    this.jdField_d_of_type_Boolean = paramBoolean;
   }
   
-  protected void a(int paramInt1, int paramInt2)
+  private void a(int paramInt)
   {
-    if (PhoneContactManagerImp.a(this.a)) {}
-    do
-    {
-      return;
-      if (PhoneContactManagerImp.a(this.a) == null) {
-        PhoneContactManagerImp.a(this.a, new PhoneContactManagerImp.UploadProgressGenerator(this.a, null));
-      }
-      PhoneContactManagerImp.a(this.a).a(paramInt1, paramInt2);
-    } while (!PhoneContactManagerImp.e(this.a));
-    PhoneContactManagerImp.a(this.a, 2, PhoneContactManagerImp.a(this.a).size(), paramInt1, paramInt2);
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (PhoneContactManagerImp.a(this.a)) {}
-    while (!paramBoolean) {
-      return;
-    }
-    PhoneContactManagerImp.a(this.a, true, true, 11L);
-    this.a.jdField_a_of_type_Int = 1;
-    PhoneContactManagerImp.b(this.a);
-    PhoneContactManagerImp.a(this.a).getPreferences().edit().putInt("system_msg_list_showcount", 0).putBoolean("contact_guide_user_close", false).putInt("new_friend_show_count_after_user_close", 0).apply();
-  }
-  
-  protected void a(boolean paramBoolean, int paramInt)
-  {
-    if (PhoneContactManagerImp.a(this.a)) {
-      return;
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact.Manager", 2, "onUploadContact, isSuc = " + paramBoolean + ", reason = " + paramInt + ", currentState=" + this.a.jdField_a_of_type_Int);
+      QLog.d("StickerBubbleGesture", 2, "finishSendingAction: " + paramInt);
     }
-    int i;
-    if (PhoneContactManagerImp.e(this.a))
-    {
-      PhoneContactManagerImp localPhoneContactManagerImp = this.a;
-      if (paramBoolean)
-      {
-        i = 3;
-        PhoneContactManagerImp.a(localPhoneContactManagerImp, i, PhoneContactManagerImp.a(this.a).size(), 100, 100);
-      }
-    }
-    else
-    {
-      if (PhoneContactManagerImp.a(this.a) != null)
-      {
-        PhoneContactManagerImp.a(this.a).b();
-        PhoneContactManagerImp.a(this.a, null);
-      }
-      if (!paramBoolean) {
-        break label194;
-      }
-      this.a.jdField_a_of_type_Int = 9;
-      PhoneContactManagerImp.a(this.a, 0L, 0L);
-      PhoneContactManagerImp.a(this.a, 15);
-    }
-    for (;;)
-    {
-      PhoneContactManagerImp.b(this.a);
-      PhoneContactManagerImp.a(this.a, true, true, 7L);
-      return;
-      i = 4;
-      break;
-      label194:
-      this.a.d = System.currentTimeMillis();
-      if (paramInt == 2)
-      {
-        this.a.jdField_a_of_type_Int = 7;
-      }
-      else if (paramInt == 3)
-      {
-        this.a.jdField_a_of_type_Int = 9;
-        this.a.g = true;
-      }
-      else if (paramInt == 1)
-      {
-        this.a.jdField_a_of_type_Int = 1;
-        this.a.d = 0L;
-      }
-    }
+    this.jdField_d_of_type_Int = -1;
+    this.jdField_a_of_type_Aihj.a(paramInt, this.jdField_c_of_type_Int);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 3000L);
+    this.jdField_c_of_type_Boolean = true;
+    jdField_a_of_type_Boolean = false;
   }
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  private void b()
   {
-    if (PhoneContactManagerImp.a(this.a)) {
-      return;
-    }
-    if ((paramBoolean1) && (paramBoolean2))
-    {
-      MqqHandler localMqqHandler = PhoneContactManagerImp.a(this.a).getHandler(Conversation.class);
-      if (localMqqHandler != null)
-      {
-        Message localMessage = Message.obtain();
-        localMessage.what = 1041;
-        localMqqHandler.sendMessage(localMessage);
-      }
-    }
-    this.a.b = false;
-    this.a.jdField_c_of_type_Long = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact.Manager", 2, String.format("onQueryBindState [%s, %s, %s, %s]", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(this.a.jdField_a_of_type_Boolean), Integer.valueOf(this.a.d()) }));
-    }
-    PhoneContactManagerImp.a(this.a, 6, paramBoolean1);
-    if (paramBoolean1)
-    {
-      this.a.a(this.a.jdField_a_of_type_Boolean, 1);
-      if (this.a.jdField_a_of_type_Boolean) {
-        ThreadManager.excute(new PhoneContactManagerImp.2.1(this), 16, null, false);
-      }
-    }
-    a();
+    int[] arrayOfInt = new int[2];
+    this.jdField_a_of_type_AndroidViewView.getLocationInWindow(arrayOfInt);
+    this.jdField_a_of_type_Int = arrayOfInt[0];
+    this.jdField_b_of_type_Int = arrayOfInt[1];
   }
   
-  public void b()
+  private boolean b(MotionEvent paramMotionEvent)
   {
-    boolean bool2 = false;
-    if (PhoneContactManagerImp.a(this.a)) {
-      return;
+    if ((paramMotionEvent.getAction() == 2) && (this.jdField_d_of_type_Int > -1) && (this.jdField_a_of_type_Aihj.a(paramMotionEvent.getX(), paramMotionEvent.getY())))
+    {
+      a(this.jdField_d_of_type_Int);
+      return true;
     }
-    int i = this.a.d();
-    boolean bool3 = LoginWelcomeManager.a(PhoneContactManagerImp.a(this.a)).jdField_a_of_type_Boolean;
-    boolean bool4 = PhoneContactManagerImp.b(this.a);
-    long l = this.a.jdField_a_of_type_AndroidContentSharedPreferences.getLong("last_pop_time_for_switchphone", 0L);
-    if ((PhoneContactManagerImp.c(this.a)) && (System.currentTimeMillis() - l > 86400000L)) {}
-    for (boolean bool1 = true;; bool1 = false)
+    return false;
+  }
+  
+  private boolean c(MotionEvent paramMotionEvent)
+  {
+    boolean bool2 = true;
+    boolean bool1 = false;
+    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("PhoneContact.Manager", 2, "onFirstRespQueryNotBindState bindState = " + i + ", needToJumpBind = " + bool4 + ", phoneSwitchBefit = " + bool1 + l + ",showNewUserGuide = " + bool3);
+        QLog.d("StickerBubbleGesture", 2, "handleActionUp: " + paramMotionEvent);
       }
-      if ((!bool4) && (!bool1)) {
-        break;
+      if (this.jdField_d_of_type_Int <= -1) {
+        break label80;
       }
-      BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder().append("topActivity is:").append(localBaseActivity).append(",isFinishing is:");
-        bool1 = bool2;
-        if (localBaseActivity != null) {
-          bool1 = localBaseActivity.isFinishing();
-        }
-        QLog.d("PhoneContact.Manager", 2, bool1);
-      }
-      if ((localBaseActivity == null) || (localBaseActivity.isFinishing()) || (localBaseActivity.getAppRuntime() != PhoneContactManagerImp.a(this.a)) || ((localBaseActivity instanceof UserguideActivity)) || (bool3) || (UserguideActivity.jdField_a_of_type_Boolean)) {
-        break;
-      }
-      PhoneContactManagerImp.a(this.a, true);
-      return;
+      a(this.jdField_d_of_type_Int);
     }
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    if (PhoneContactManagerImp.a(this.a)) {}
-    while (!paramBoolean) {
-      return;
-    }
-    PhoneContactManagerImp.a(this.a, 2);
-  }
-  
-  protected void b(boolean paramBoolean, int paramInt)
-  {
-    if (PhoneContactManagerImp.a(this.a)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact.Manager", 2, "onUpdateContact, isSuc = " + paramBoolean + ", reason = " + paramInt);
-    }
-    this.a.jdField_c_of_type_Boolean = false;
-    if (paramBoolean)
+    label80:
+    for (bool1 = bool2;; bool1 = false)
     {
-      PhoneContactManagerImp.a(this.a, 1);
-      PhoneContactManagerImp.a(this.a, 0L, 0L);
-    }
-    for (;;)
-    {
-      PhoneContactManagerImp.a(this.a, true, true, 9L);
-      return;
-      if ((paramInt == 2) || (paramInt == 3)) {
-        this.a.g = true;
-      }
-      this.a.e = System.currentTimeMillis();
+      this.jdField_a_of_type_Aihj.e();
+      return bool1;
     }
   }
   
-  public void c()
+  public void a()
   {
-    boolean bool1 = true;
-    if (PhoneContactManagerImp.f) {}
-    boolean bool2;
-    boolean bool3;
-    label176:
+    if (this.jdField_d_of_type_Int > -1) {
+      a(this.jdField_d_of_type_Int);
+    }
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    boolean bool2 = c(paramMotionEvent);
+    boolean bool1 = bool2;
+    if (!bool2) {
+      bool1 = b(paramMotionEvent);
+    }
+    bool2 = bool1;
+    if (!bool1) {
+      bool2 = this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    }
+    return bool2;
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
     do
     {
       do
       {
-        do
-        {
-          do
-          {
-            return;
-            if (PhoneContactManagerImp.a(this.a))
-            {
-              QLog.e("PhoneContact", 1, "onFirstRespQueryState app is null");
-              return;
-            }
-            if (!UserguideActivity.a(PhoneContactManagerImp.a(this.a).getApp(), PhoneContactManagerImp.a(this.a).getCurrentAccountUin())) {
-              break;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.d("PhoneContact", 2, "UserguideActivity.showUserGuideThisTime = ture");
-          return;
-        } while (aych.a().a());
-        if (!PortalManager.c()) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("PhoneContact", 2, "hongbao forbid alert");
-      return;
-      int i = this.a.d();
-      bool2 = LoginWelcomeManager.a(PhoneContactManagerImp.a(this.a)).jdField_a_of_type_Boolean;
-      bool3 = PhoneContactManagerImp.d(this.a);
-      long l = this.a.jdField_a_of_type_AndroidContentSharedPreferences.getLong("last_pop_time_for_switchphone", 0L);
-      if ((!PhoneContactManagerImp.c(this.a)) || (System.currentTimeMillis() - l <= 86400000L)) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PhoneContact.Manager", 2, "bindState = " + i + ", isFristRun = " + bool3 + ", attempPop = " + bool1 + l + ",showNewUserGuide = " + bool2);
-      }
-    } while ((!bool3) && (!bool1));
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("topActivity is:").append(localBaseActivity).append(",isFinishing is:");
-      if (localBaseActivity == null) {
-        break label376;
-      }
-    }
-    label376:
-    for (bool1 = localBaseActivity.isFinishing();; bool1 = false)
-    {
-      QLog.d("PhoneContact.Manager", 2, bool1);
-      if ((localBaseActivity == null) || (localBaseActivity.isFinishing()) || (localBaseActivity.getAppRuntime() != PhoneContactManagerImp.a(this.a)) || ((localBaseActivity instanceof UserguideActivity)) || (bool2) || (UserguideActivity.jdField_a_of_type_Boolean)) {
-        break;
-      }
-      PhoneContactManagerImp.a(this.a, false);
-      return;
-      bool1 = false;
-      break label176;
-    }
-  }
-  
-  protected void c(boolean paramBoolean)
-  {
-    if (PhoneContactManagerImp.a(this.a)) {}
-    do
-    {
-      return;
-      PhoneContactManagerImp.a(this.a, false);
-    } while (!paramBoolean);
-    PhoneContactManagerImp.a(this.a, 2);
-  }
-  
-  protected void c(boolean paramBoolean, int paramInt)
-  {
-    if (PhoneContactManagerImp.a(this.a)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact.Manager", 2, "onUploadContactNotBind, isSuc = " + paramBoolean + ", reason = " + paramInt + ", currentState=" + this.a.jdField_a_of_type_Int);
-    }
-    if (PhoneContactManagerImp.a(this.a) != null)
-    {
-      PhoneContactManagerImp.a(this.a).b();
-      PhoneContactManagerImp.a(this.a, null);
-    }
-    int i;
-    if (PhoneContactManagerImp.e(this.a))
-    {
-      PhoneContactManagerImp localPhoneContactManagerImp = this.a;
-      if (paramBoolean)
+        return true;
+      } while (this.jdField_d_of_type_Int != ((Integer)paramMessage.obj).intValue());
+      if (this.jdField_c_of_type_Int >= this.jdField_a_of_type_Aihj.a())
       {
-        i = 3;
-        PhoneContactManagerImp.a(localPhoneContactManagerImp, i, PhoneContactManagerImp.a(this.a).size(), 100, 100);
+        a(this.jdField_d_of_type_Int);
+        return true;
       }
+      this.jdField_c_of_type_Int += 1;
+      this.jdField_a_of_type_Aihj.a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_d_of_type_Int, this.jdField_c_of_type_Int);
+      if (this.jdField_d_of_type_Boolean) {
+        HapticManager.a().a(this.jdField_a_of_type_JavaLangString, 2);
+      }
+      for (;;)
+      {
+        if ((this.jdField_c_of_type_Int > 2) && (!this.jdField_b_of_type_Boolean))
+        {
+          this.jdField_a_of_type_Aihj.c();
+          this.jdField_b_of_type_Boolean = true;
+        }
+        if (this.jdField_c_of_type_Boolean)
+        {
+          this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+          this.jdField_c_of_type_Boolean = false;
+        }
+        paramMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, paramMessage.obj);
+        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 80L);
+        return true;
+        if (QLog.isColorLevel()) {
+          QLog.d("StickerBubbleGesture", 2, "handleMessage isTouchEffectSupport = " + this.jdField_d_of_type_Boolean);
+        }
+      }
+    } while (!this.jdField_c_of_type_Boolean);
+    this.jdField_a_of_type_Aihj.d();
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    return true;
+  }
+  
+  public boolean onDown(MotionEvent paramMotionEvent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerBubbleGesture", 2, "onDown: " + paramMotionEvent);
     }
-    else
+    this.jdField_a_of_type_Aihj.a(paramMotionEvent.getX(), paramMotionEvent.getY());
+    return false;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerBubbleGesture", 2, "onFling: " + paramFloat1 + " / " + paramFloat2);
+    }
+    return false;
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent)
+  {
+    int i = this.jdField_a_of_type_Aihj.a(paramMotionEvent.getX(), paramMotionEvent.getY());
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerBubbleGesture", 2, "onLongPress: " + paramMotionEvent + " on idx: " + i);
+    }
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerBubbleGesture", 2, "onScroll: " + paramFloat1 + " / " + paramFloat2);
+    }
+    return false;
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent)
+  {
+    int i = this.jdField_a_of_type_Aihj.a(paramMotionEvent.getX(), paramMotionEvent.getY());
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerBubbleGesture", 2, "onShowPress: " + paramMotionEvent + " on idx: " + i);
+    }
+    if ((i > -1) && (!jdField_a_of_type_Boolean))
     {
-      if (!paramBoolean) {
-        break label194;
+      if (this.jdField_d_of_type_Int > -1) {
+        a(this.jdField_d_of_type_Int);
       }
-      this.a.jdField_a_of_type_Int = 2;
-      PhoneContactManagerImp.a(this.a, 0L, 0L);
-      PhoneContactManagerImp.a(this.a, 15);
+      this.jdField_d_of_type_Int = i;
+      b();
+      this.jdField_a_of_type_Float = (paramMotionEvent.getX() + this.jdField_a_of_type_Int);
+      this.jdField_b_of_type_Float = (paramMotionEvent.getY() + this.jdField_b_of_type_Int);
+      this.jdField_a_of_type_Aihj.a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, i, 1);
+      if (!this.jdField_d_of_type_Boolean) {
+        break label203;
+      }
+      HapticManager.a().a(this.jdField_a_of_type_JavaLangString, 2);
     }
     for (;;)
     {
-      PhoneContactManagerImp.b(this.a);
-      PhoneContactManagerImp.a(this.a, true, true, 6L);
+      this.jdField_c_of_type_Int = 1;
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      jdField_a_of_type_Boolean = true;
+      paramMotionEvent = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, Integer.valueOf(i));
+      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMotionEvent, 80L);
       return;
-      i = 4;
-      break;
-      label194:
-      this.a.d = System.currentTimeMillis();
-      if ((paramInt != 2) && (paramInt != 3)) {
-        break label233;
-      }
-      this.a.jdField_a_of_type_Int = 0;
-      this.a.g = true;
-    }
-    label233:
-    if (paramInt == 5)
-    {
-      this.a.jdField_a_of_type_Int = 1;
-      this.a.d = 0L;
-      PhoneContactManagerImp.b(this.a);
-      PhoneContactManagerImp.a(this.a, true, true, 6L);
-      return;
-    }
-    if (paramInt == 4)
-    {
-      this.a.jdField_a_of_type_Int = 9;
-      this.a.g = true;
-      PhoneContactManagerImp.b(this.a);
-      PhoneContactManagerImp.a(this.a, true, true, 6L);
-      return;
-    }
-    this.a.jdField_a_of_type_Int = 0;
-    PhoneContactManagerImp.b(this.a);
-    PhoneContactManagerImp.a(this.a, true, true, 6L);
-  }
-  
-  protected void d(boolean paramBoolean, int paramInt)
-  {
-    if (PhoneContactManagerImp.a(this.a)) {}
-    do
-    {
-      return;
+      label203:
       if (QLog.isColorLevel()) {
-        QLog.d("PhoneContact.Manager", 2, "onUpdateContactNotBind, isSuc = " + paramBoolean + ", reason = " + paramInt);
+        QLog.d("StickerBubbleGesture", 2, "onShowPress isTouchEffectSupport = " + this.jdField_d_of_type_Boolean);
       }
-      this.a.jdField_c_of_type_Boolean = false;
-      if (paramBoolean)
-      {
-        PhoneContactManagerImp.a(this.a, 1);
-        PhoneContactManagerImp.a(this.a, 0L);
+    }
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    long l = SystemClock.uptimeMillis();
+    int i;
+    if (l - this.jdField_a_of_type_Long > 300L)
+    {
+      i = this.jdField_a_of_type_Aihj.a(paramMotionEvent.getX(), paramMotionEvent.getY());
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerBubbleGesture", 2, "onSingleTapUp: " + paramMotionEvent + " on idx: " + i);
       }
-      do
+      if (i > -1)
       {
-        for (;;)
-        {
-          PhoneContactManagerImp.a(this.a, true, true, 8L);
-          return;
-          this.a.e = System.currentTimeMillis();
-          if ((paramInt != 2) && (paramInt != 3)) {
-            break;
-          }
-          this.a.g = true;
+        b();
+        this.jdField_a_of_type_Aihj.a(paramMotionEvent.getX() + this.jdField_a_of_type_Int, paramMotionEvent.getY() + this.jdField_b_of_type_Int, i, 1);
+        if (!this.jdField_d_of_type_Boolean) {
+          break label153;
         }
-      } while ((paramInt != 5) && (paramInt != 4));
-    } while (this.a.jdField_a_of_type_Int == 8);
-    PhoneContactManagerImp.a(this.a, true, true, 8L);
-  }
-  
-  protected void e(boolean paramBoolean, int paramInt)
-  {
-    if (PhoneContactManagerImp.a(this.a)) {
-      return;
+        HapticManager.a().a(this.jdField_a_of_type_JavaLangString, 2);
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact.Manager", 2, "onQueryContactList, isSuc = " + paramBoolean + ", updateFlag = " + paramInt);
+    for (;;)
+    {
+      this.jdField_a_of_type_Aihj.a(i, 1);
+      this.jdField_a_of_type_Long = l;
+      return true;
+      label153:
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerBubbleGesture", 2, "onSingleTapUp isTouchEffectSupport = " + this.jdField_d_of_type_Boolean);
+      }
     }
-    if (paramBoolean) {
-      PhoneContactManagerImp.a(this.a, paramInt);
-    }
-    PhoneContactManagerImp.c(this.a);
-  }
-  
-  protected void f(boolean paramBoolean, int paramInt)
-  {
-    if (PhoneContactManagerImp.a(this.a)) {}
-    while ((!paramBoolean) || (paramInt != 0)) {
-      return;
-    }
-    PhoneContactManagerImp.a(this.a, true, true, 10L);
   }
 }
 

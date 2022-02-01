@@ -1,42 +1,75 @@
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+
 public class bcgd
-  extends bcgb
+  extends bcfs
 {
-  public String e = "";
-  public String f = "";
-  public String g = "";
+  public static final String a;
+  public List<bcgo> a;
+  public String b;
+  public boolean b;
+  public String j;
+  public String k;
+  public String l;
+  public String m;
   
-  public bcgd()
+  static
   {
-    this.a = "";
-    this.b = "";
-    this.c = "";
-    this.d = "";
+    jdField_a_of_type_JavaLangString = bcgc.class.getSimpleName();
   }
   
-  public String a(int paramInt)
+  public bcgd(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder(64);
-    localStringBuilder.append(this.a).append("|");
-    localStringBuilder.append(this.b).append("|");
-    localStringBuilder.append(this.c).append("|");
-    localStringBuilder.append(this.d).append("|");
-    localStringBuilder.append(this.e).append("|");
-    localStringBuilder.append(this.f).append("|");
-    localStringBuilder.append(this.g).append("|");
-    return localStringBuilder.toString();
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
   }
   
-  public String toString()
+  private List<bcgo> a(JSONArray paramJSONArray)
   {
-    StringBuffer localStringBuffer = new StringBuffer(64);
-    localStringBuffer.append(this.a).append("|");
-    localStringBuffer.append(this.b).append("|");
-    localStringBuffer.append(this.c).append("|");
-    localStringBuffer.append(this.d).append("|");
-    localStringBuffer.append(this.e).append("|");
-    localStringBuffer.append(this.f).append("|");
-    localStringBuffer.append(this.g).append("|");
-    return localStringBuffer.toString();
+    ArrayList localArrayList = new ArrayList();
+    if (paramJSONArray != null)
+    {
+      int i = 0;
+      while (i < paramJSONArray.length())
+      {
+        Object localObject = paramJSONArray.optJSONObject(i);
+        localObject = new bcgo(((JSONObject)localObject).optString("word"), ((JSONObject)localObject).optString("url"));
+        if (((bcgo)localObject).a()) {
+          localArrayList.add(localObject);
+        }
+        i += 1;
+      }
+    }
+    return localArrayList;
+  }
+  
+  public void a(String paramString)
+  {
+    this.g = false;
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.jdField_b_of_type_JavaLangString = paramString.optString("leftIconUrl");
+      this.j = paramString.optString("title");
+      this.k = paramString.optString("summary");
+      this.jdField_b_of_type_Boolean = paramString.optBoolean("isShowArrow");
+      this.l = paramString.optString("jumpUrl");
+      this.m = paramString.optString("subItemLeftIconUrl");
+      paramString = paramString.optJSONArray("itemList");
+      if (paramString != null) {
+        this.jdField_a_of_type_JavaUtilList = a(paramString);
+      }
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d(jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(paramString));
+    }
   }
 }
 

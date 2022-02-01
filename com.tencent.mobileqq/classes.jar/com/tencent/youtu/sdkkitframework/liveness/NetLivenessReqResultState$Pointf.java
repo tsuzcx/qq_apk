@@ -2,30 +2,10 @@ package com.tencent.youtu.sdkkitframework.liveness;
 
 public class NetLivenessReqResultState$Pointf
 {
-  float x;
-  float y;
+  public float x;
+  public float y;
   
   public NetLivenessReqResultState$Pointf(NetLivenessReqResultState paramNetLivenessReqResultState) {}
-  
-  public float getX()
-  {
-    return this.x;
-  }
-  
-  public float getY()
-  {
-    return this.y;
-  }
-  
-  public void setX(float paramFloat)
-  {
-    this.x = paramFloat;
-  }
-  
-  public void setY(float paramFloat)
-  {
-    this.y = paramFloat;
-  }
 }
 
 

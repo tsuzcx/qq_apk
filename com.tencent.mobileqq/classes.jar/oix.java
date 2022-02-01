@@ -1,43 +1,122 @@
+import android.graphics.Color;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.KandianUGStatisticUtils.1;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class oix
 {
-  private static ExecutorService a;
-  
-  public static String a(String paramString1, String paramString2, String paramString3)
+  public static double a(String paramString, double paramDouble)
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      return null;
+    double d = paramDouble;
+    try
+    {
+      if (!TextUtils.isEmpty(paramString)) {
+        d = Double.valueOf(paramString.trim()).doubleValue();
+      }
+      return d;
     }
-    if (paramString1.contains("?")) {
-      return paramString1 + "&acttype=" + paramString3 + "&itemid=" + paramString2;
+    catch (Exception paramString)
+    {
+      do
+      {
+        d = paramDouble;
+      } while (!QLog.isColorLevel());
+      QLog.d("ParseUtil", 2, " parseDouble error message=" + paramString.getMessage());
     }
-    return paramString1 + "?acttype=" + paramString3 + "&itemid=" + paramString2;
+    return paramDouble;
   }
   
-  public static void a(String paramString)
+  public static float a(String paramString, float paramFloat)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
+    float f = paramFloat;
+    try
+    {
+      if (!TextUtils.isEmpty(paramString)) {
+        f = Float.valueOf(paramString.trim()).floatValue();
+      }
+      return f;
     }
-    if (a == null) {
-      a = Executors.newFixedThreadPool(1);
+    catch (Exception paramString)
+    {
+      do
+      {
+        f = paramFloat;
+      } while (!QLog.isColorLevel());
+      QLog.d("ParseUtil", 2, " parseFloat error message=" + paramString.getMessage());
     }
-    a.execute(new KandianUGStatisticUtils.1(paramString));
+    return paramFloat;
   }
   
-  public static String b(String paramString1, String paramString2, String paramString3)
+  public static int a(String paramString, int paramInt)
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      return null;
+    int i = paramInt;
+    try
+    {
+      if (!TextUtils.isEmpty(paramString)) {
+        i = Integer.valueOf(paramString.trim()).intValue();
+      }
+      return i;
     }
-    if (paramString1.contains("?")) {
-      return paramString1 + "&acttype=" + paramString2 + "&subpos=" + paramString3;
+    catch (Exception paramString)
+    {
+      do
+      {
+        i = paramInt;
+      } while (!QLog.isColorLevel());
+      QLog.d("ParseUtil", 2, " parseInteger error message=" + paramString.getMessage());
     }
-    return paramString1 + "?acttype=" + paramString2 + "&subpos=" + paramString3;
+    return paramInt;
+  }
+  
+  public static int a(String paramString1, String paramString2)
+  {
+    try
+    {
+      if (!TextUtils.isEmpty(paramString1))
+      {
+        int i = Color.parseColor(paramString1.trim());
+        return i;
+      }
+    }
+    catch (Exception paramString1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ParseUtil", 2, " parseColor error message=" + paramString1.getMessage());
+      }
+    }
+    return Color.parseColor(paramString2);
+  }
+  
+  public static long a(String paramString, long paramLong)
+  {
+    long l = paramLong;
+    try
+    {
+      if (!TextUtils.isEmpty(paramString)) {
+        l = Long.valueOf(paramString.trim()).longValue();
+      }
+      return l;
+    }
+    catch (Exception paramString)
+    {
+      do
+      {
+        l = paramLong;
+      } while (!QLog.isColorLevel());
+      QLog.d("ParseUtil", 2, " parseLong error message=" + paramString.getMessage());
+    }
+    return paramLong;
+  }
+  
+  public static String a(JSONObject paramJSONObject, String paramString1, String paramString2)
+  {
+    if ((paramJSONObject == null) || (TextUtils.isEmpty(paramString1))) {}
+    do
+    {
+      return paramString2;
+      paramJSONObject = paramJSONObject.optString(paramString1);
+    } while (TextUtils.isEmpty(paramJSONObject));
+    return paramJSONObject;
   }
 }
 

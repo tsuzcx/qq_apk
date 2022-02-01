@@ -1,30 +1,40 @@
-public class bbok
+import android.view.View;
+import com.tencent.mobileqq.transfile.FileMsg;
+import java.lang.ref.WeakReference;
+
+class bbok
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public boolean c;
+  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<afsn> b;
+  WeakReference<FileMsg> c;
   
-  public bbok(bboi parambboi)
+  public bbok(bboj parambboj, View paramView, afsn paramafsn)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.b = new WeakReference(paramafsn);
   }
   
-  public String toString()
+  public afsn a()
   {
-    StringBuilder localStringBuilder = new StringBuilder(1024);
-    localStringBuilder.append("mUnread=" + this.jdField_a_of_type_Long);
-    localStringBuilder.append(",mNewMsg=" + this.jdField_a_of_type_Boolean);
-    localStringBuilder.append("mText=" + this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(",mIconPath=" + this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("mRedPoint=" + this.jdField_b_of_type_Boolean);
-    localStringBuilder.append(",mTab=" + this.c);
-    localStringBuilder.append(",mType=" + this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
+    return (afsn)this.b.get();
+  }
+  
+  public View a()
+  {
+    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  public FileMsg a()
+  {
+    if (this.c == null) {
+      return null;
+    }
+    return (FileMsg)this.c.get();
+  }
+  
+  public void a(FileMsg paramFileMsg)
+  {
+    this.c = new WeakReference(paramFileMsg);
   }
 }
 

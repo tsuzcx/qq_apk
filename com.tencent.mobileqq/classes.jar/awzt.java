@@ -1,26 +1,19 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.10.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
 
-public class awzt
-  implements View.OnClickListener
+class awzt
+  extends awzi
 {
-  awzt(awzr paramawzr) {}
+  awzt(awzs paramawzs) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    Intent localIntent = new Intent(this.a.a, QQBrowserActivity.class);
-    localIntent.putExtra("url", "https://nearby.qq.com/nearby-visitor/index.html?_proxy=1&_wwv=128");
-    this.a.a.startActivity(localIntent);
-    awzr.a(this.a, null);
-    ThreadManager.post(new NearbyProfileDisplayTribePanel.10.1(this), 5, null, false);
-    bcef.b(this.a.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_visit", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    super.a(paramBoolean, paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup.BackupAndMigrateManager", 2, "onGetQrResponse: " + paramObject + ", isSuccess: " + paramBoolean);
+    }
+    if ((paramBoolean) && ((paramObject instanceof axag))) {
+      awzs.a(this.a, (axag)paramObject);
+    }
   }
 }
 

@@ -1,55 +1,59 @@
-import android.os.Bundle;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.app.Activity;
+import android.app.PendingIntent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 class auqa
-  implements URLDrawable.URLDrawableListener
+  implements DialogInterface.OnClickListener
 {
-  auqa(aupz paramaupz, long paramLong, AtomicBoolean paramAtomicBoolean, Bundle paramBundle) {}
+  auqa(aupt paramaupt) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    System.currentTimeMillis();
-    long l = this.jdField_a_of_type_Long;
-    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    switch (paramInt)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      aupz.a(this.jdField_a_of_type_Aupz, this.jdField_a_of_type_AndroidOsBundle);
+    default: 
+    case -2: 
+      do
+      {
+        return;
+        if (this.a.c) {
+          bjgx.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", String.valueOf(this.a.jdField_a_of_type_Long), "1000", "51", "0", false, this.a.c);
+        }
+        this.a.a(true);
+        this.a.jdField_a_of_type_AndroidAppActivity.setResult(1);
+        this.a.jdField_a_of_type_AndroidAppActivity.finish();
+      } while (!QLog.isColorLevel());
+      QLog.i("ForwardOption.ForwardBaseOption", 2, "-->showQfavResultDialog--onClick--back call");
+      return;
     }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    QLog.i("DynamicNow | NowEntry", 1, "download cover pic failed!");
-    long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    this.jdField_a_of_type_Aupz.a.b("download_cover").c("1").d(paramThrowable.getMessage()).i(String.valueOf(l1 - l2)).b();
-    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      aupz.a(this.jdField_a_of_type_Aupz, this.jdField_a_of_type_AndroidOsBundle);
+    if (this.a.c) {
+      bjgx.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", String.valueOf(this.a.jdField_a_of_type_Long), "1000", "52", "0", false, this.a.c);
     }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    QLog.i("DynamicNow | NowEntry", 1, " download cover pic  success  timeconsume = " + l);
-    this.jdField_a_of_type_Aupz.a.b("download_cover").c("0").i(String.valueOf(l)).b();
-    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      aupz.a(this.jdField_a_of_type_Aupz, this.jdField_a_of_type_AndroidOsBundle);
+    if (QLog.isColorLevel()) {
+      QLog.i("ForwardOption.ForwardBaseOption", 2, "-->showQfavResultDialog--onClick--send call");
     }
+    paramDialogInterface = new Intent();
+    paramDialogInterface.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=complete&response={\"ret\":0}", new Object[] { Long.valueOf(this.a.jdField_a_of_type_Long), "shareToQQ" })));
+    paramDialogInterface.setPackage(this.a.jdField_a_of_type_AndroidAppActivity.getIntent().getStringExtra("pkg_name"));
+    paramDialogInterface = PendingIntent.getActivity(this.a.jdField_a_of_type_AndroidAppActivity, 0, paramDialogInterface, 268435456);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("is_share_flag", true);
+    if (this.a.jdField_a_of_type_Long > 0L) {
+      localIntent.putExtra("activity_finish_run_pendingIntent", paramDialogInterface);
+    }
+    bmaf.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), localIntent, -1, true);
+    bman.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 5, 0);
+    this.a.jdField_a_of_type_AndroidAppActivity.setResult(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     auqa
  * JD-Core Version:    0.7.0.1
  */

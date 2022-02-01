@@ -1,15 +1,15 @@
 package com.tencent.biz.videostory.video;
 
-import zxw;
+import aani;
 
 public class MediaCodecGLFrameFetcher$2
   implements Runnable
 {
-  public MediaCodecGLFrameFetcher$2(zxw paramzxw) {}
+  public MediaCodecGLFrameFetcher$2(aani paramaani) {}
   
   public void run()
   {
-    zxw.b(this.this$0);
+    aani.b(this.this$0);
   }
 }
 

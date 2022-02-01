@@ -1,21 +1,18 @@
-import com.tencent.biz.qqstory.takevideo.shareto.ShareToActivity;
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ykk
-  implements Comparator<RecentUser>
+class ykk
+  implements View.OnClickListener
 {
-  public ykk(ShareToActivity paramShareToActivity) {}
+  ykk(ykj paramykj, yki paramyki, zbe paramzbe) {}
   
-  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
+  public void onClick(View paramView)
   {
-    if (paramRecentUser1.lastmsgtime > paramRecentUser2.lastmsgtime) {
-      return -1;
+    if (this.jdField_a_of_type_Yki != null) {
+      this.jdField_a_of_type_Yki.a(this.jdField_a_of_type_Zbe);
     }
-    if (paramRecentUser1.lastmsgtime < paramRecentUser2.lastmsgtime) {
-      return 1;
-    }
-    return 0;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

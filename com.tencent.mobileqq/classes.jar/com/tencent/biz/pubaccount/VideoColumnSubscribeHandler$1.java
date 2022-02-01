@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount;
 
-import oej;
+import oma;
 
 public class VideoColumnSubscribeHandler$1
   implements Runnable
 {
-  public VideoColumnSubscribeHandler$1(oej paramoej, int paramInt, boolean paramBoolean, String paramString) {}
+  public VideoColumnSubscribeHandler$1(oma paramoma, int paramInt, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
-    oej.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
+    oma.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
   }
 }
 

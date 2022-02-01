@@ -1,164 +1,246 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.imcore.message.BaseMessageManager;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.face.FaceDecoder;
-import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
-import com.tencent.mobileqq.location.window.FloatMapWidget;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.mobileqq.util.DisplayUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
-import java.util.HashMap;
+import java.util.Calendar;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.locks.Lock;
+import mqq.manager.Manager;
 
 public class avhp
-  implements FaceDecoder.DecodeTaskCompletionListener
+  implements Manager
 {
-  private avcq jdField_a_of_type_Avcq;
-  private avcv jdField_a_of_type_Avcv = new avhq(this);
-  private avcw jdField_a_of_type_Avcw;
-  private avgv jdField_a_of_type_Avgv;
-  private FaceDecoder.DecodeTaskCompletionListener jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder$DecodeTaskCompletionListener;
-  private FaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder;
-  private FloatMapWidget jdField_a_of_type_ComTencentMobileqqLocationWindowFloatMapWidget;
-  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler;
-  private HashMap<String, avht> jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
+  private int jdField_a_of_type_Int;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private int b;
   
   public avhp(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Avcw = avcw.a(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Int = ((Integer)bhhr.a("gray_tips_wording_id", Integer.valueOf(0))).intValue();
+    this.jdField_a_of_type_JavaLangString = ((String)bhhr.a("add_guide_gray_tips_time", ""));
+    this.b = ((Integer)bhhr.a("add_guide_gray_tips_times", Integer.valueOf(0))).intValue();
   }
   
-  private void b()
+  private static int a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationWindowFloatMapWidget.setOnMapLoadedCallback();
-    e();
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder = new FaceDecoder((AppInterface)BaseApplicationImpl.getApplication().getRuntime());
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.setDecodeTaskCompletionListener(this);
+    switch (paramInt)
+    {
+    default: 
+      return 10;
+    case 0: 
+      return 1;
+    }
+    return 2;
   }
   
-  private void c()
+  @NonNull
+  private MessageForUniteGrayTip a(@NonNull QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new avhr(this);
-    AppNetConnInfo.registerConnectionChangeReceiver(BaseApplication.getContext(), this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
+    QLog.d("CustomizeGrayTipsManager", 1, "makeGuideCustomizeGrayTips, friendUin = " + paramString1 + ", senderUin = " + paramString2 + ", uinType = " + paramInt + ", time = " + paramLong1 + ", shMsgSeq = " + paramLong2);
+    String str = anvx.a(2131691308);
+    paramString1 = new avhz(paramString1, paramString2, str + anvx.a(2131691307), paramInt, -5020, 3, paramLong1);
+    paramString1.e = true;
+    paramString2 = new Bundle();
+    paramString2.putInt("key_action", 56);
+    paramString1.a(0, str.length(), paramString2);
+    paramString2 = new MessageForUniteGrayTip();
+    paramString2.initGrayTipMsg(paramQQAppInterface, paramString1);
+    paramString2.shmsgseq = paramLong2;
+    return paramString2;
   }
   
-  private void d()
+  @Nullable
+  private <T extends MessageRecord> MessageForUniteGrayTip a(@NonNull List<T> paramList)
+  {
+    int i = paramList.size() - 1;
+    while (i >= 0)
+    {
+      MessageRecord localMessageRecord = (MessageRecord)paramList.get(i);
+      if (((localMessageRecord instanceof MessageForUniteGrayTip)) && (a((MessageForUniteGrayTip)localMessageRecord))) {
+        return (MessageForUniteGrayTip)localMessageRecord;
+      }
+      i -= 1;
+    }
+    return null;
+  }
+  
+  private String a()
+  {
+    Object localObject = Calendar.getInstance();
+    int i = ((Calendar)localObject).get(1);
+    int j = ((Calendar)localObject).get(2);
+    int k = ((Calendar)localObject).get(5);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(i).append(j + 1).append(k);
+    return ((StringBuilder)localObject).toString();
+  }
+  
+  private void a()
+  {
+    this.b += 1;
+    this.jdField_a_of_type_JavaLangString = a();
+    bhhr.a("add_guide_gray_tips_time", this.jdField_a_of_type_JavaLangString);
+    bhhr.a("add_guide_gray_tips_times", Integer.valueOf(this.b));
+  }
+  
+  public static void a(Context paramContext, String paramString, int paramInt)
+  {
+    if ((paramContext instanceof ChatHistoryActivity)) {}
+    do
+    {
+      return;
+      if (TextUtils.equals("1", paramString))
+      {
+        paramContext.startActivity(new Intent(paramContext, QQSettingSettingActivity.class));
+        paramContext.startActivity(new Intent(paramContext, NotifyPushSettingActivity.class));
+        localIntent = new Intent(paramContext, QQBrowserActivity.class);
+        localIntent.putExtra("url", "https://zb.vip.qq.com/v2/pages/withdrawMessage?_wv=2&dwop_via=" + paramString);
+        paramContext.startActivity(localIntent);
+        c(paramInt);
+        return;
+      }
+    } while (!TextUtils.equals("2", paramString));
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://zb.vip.qq.com/v2/pages/withdrawMessage?_wv=2&dwop_via=" + paramString);
+    paramContext.startActivity(localIntent);
+    b();
+  }
+  
+  private void a(@NonNull QQAppInterface paramQQAppInterface, int paramInt, List<MessageRecord> paramList, MessageForUniteGrayTip paramMessageForUniteGrayTip)
+  {
+    a();
+    MessageForUniteGrayTip localMessageForUniteGrayTip = a(paramQQAppInterface, paramMessageForUniteGrayTip.frienduin, paramMessageForUniteGrayTip.senderuin, paramInt, paramMessageForUniteGrayTip.time, paramMessageForUniteGrayTip.shmsgseq);
+    paramQQAppInterface.getMessageFacade().getBaseMessageManager(paramInt).a(paramInt, paramMessageForUniteGrayTip.frienduin, localMessageForUniteGrayTip, paramList);
+    avia.a(paramQQAppInterface, localMessageForUniteGrayTip);
+    if (QLog.isColorLevel()) {
+      QLog.d("CustomizeGrayTipsManager", 2, "insert guide customize gray tips to aioList and db");
+    }
+  }
+  
+  private boolean a()
+  {
+    if (this.jdField_a_of_type_Int != 0) {}
+    String str;
+    do
+    {
+      do
+      {
+        return false;
+      } while (this.b >= 3);
+      str = a();
+    } while (TextUtils.equals(this.jdField_a_of_type_JavaLangString, str));
+    return true;
+  }
+  
+  private boolean a(MessageForUniteGrayTip paramMessageForUniteGrayTip)
+  {
+    return (paramMessageForUniteGrayTip.tipParam.b == 1) && (!nty.a(paramMessageForUniteGrayTip)) && (TextUtils.equals(String.valueOf(0), paramMessageForUniteGrayTip.getExtInfoFromExtStr("revoke_op_type")));
+  }
+  
+  private <T extends MessageRecord> boolean a(@NonNull List<T> paramList)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      MessageRecord localMessageRecord = (MessageRecord)paramList.next();
+      if (((localMessageRecord instanceof MessageForUniteGrayTip)) && (((MessageForUniteGrayTip)localMessageRecord).tipParam.b == 3)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  private static void b()
+  {
+    bdla.b(null, "dc00898", "", "", "0X800B25B", "0X800B25B", 0, 0, "", "", "", "");
+  }
+  
+  static void b(int paramInt)
+  {
+    bdla.b(null, "dc00898", "", "", "0X800B1FC", "0X800B1FC", a(paramInt), 0, "", "", "", "");
+  }
+  
+  private static void c(int paramInt)
+  {
+    bdla.b(null, "dc00898", "", "", "0X800B25A", "0X800B25A", a(paramInt), 0, "", "", "", "");
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    bhhr.a("gray_tips_wording_id", Integer.valueOf(paramInt));
+    if (QLog.isColorLevel()) {
+      QLog.d("CustomizeGrayTipsManager", 2, "setGrayTipsWordingId, id = " + paramInt);
+    }
+  }
+  
+  public boolean a(@NonNull QQAppInterface paramQQAppInterface, int paramInt, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("LocationShareController", 2, new Object[] { "onBadNetSituation: invoked. ", " TAG: ", "LocationShareController" });
+      QLog.d("CustomizeGrayTipsManager", 2, "insertGuideCustomizeGrayTipsIfNeed: uinType = " + paramInt + ", mGrayTipsWordingId = " + this.jdField_a_of_type_Int + ", mAddGuideGrayTipsTimes = " + this.b + ", mAddGuideGrayTipsDate = " + this.jdField_a_of_type_JavaLangString);
     }
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if (localBaseActivity != null)
+    if (paramInt == 3000) {}
+    do
     {
-      avhu localavhu = avhu.a(localBaseActivity.app);
-      if ((this.jdField_a_of_type_Avcq != null) && (this.jdField_a_of_type_Avcq.equals(localavhu.a().a())))
-      {
-        avdr.b(localBaseActivity);
-        localavhu.a = true;
+      return false;
+      if (a()) {
+        break;
       }
-    }
-  }
-  
-  private void e()
-  {
-    this.jdField_a_of_type_Avgv = new avhs(this);
-    this.jdField_a_of_type_ComTencentMobileqqLocationWindowFloatMapWidget.setListener(this.jdField_a_of_type_Avgv);
-  }
-  
-  public Bitmap a(String paramString)
-  {
-    Object localObject2 = (avht)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    long l = System.currentTimeMillis();
-    Object localObject1;
-    if (localObject2 != null)
-    {
-      if ((l - ((avht)localObject2).jdField_a_of_type_Long < 4000L) && (((avht)localObject2).jdField_a_of_type_AndroidGraphicsBitmap != null)) {
-        return ((avht)localObject2).jdField_a_of_type_AndroidGraphicsBitmap;
-      }
-      localObject1 = localObject2;
-      if (l - ((avht)localObject2).b < 2000L) {
-        return null;
-      }
-    }
-    else
-    {
-      localObject1 = new avht(null);
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localObject1);
-    }
-    ((avht)localObject1).b = l;
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.getBitmapFromCache(1, paramString);
-    if (localObject2 == null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.requestDecodeFace(paramString, 200, false, 1, true, (byte)0, 4);
-    }
-    for (;;)
-    {
-      return localObject2;
-      ((avht)localObject1).jdField_a_of_type_Long = l;
-      ((avht)localObject1).jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject2);
-    }
-  }
-  
-  public void a()
-  {
+    } while (!QLog.isColorLevel());
+    QLog.d("CustomizeGrayTipsManager", 2, "do not need to insert guide customize gray tips to aioList");
+    return false;
+    List localList = paramQQAppInterface.getMessageProxy(paramInt).g(paramString, paramInt);
+    paramString = paramQQAppInterface.getMessageProxy(paramInt).a().a(paramString, paramInt);
+    paramString.lock();
     try
     {
-      AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
-      this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = null;
-      if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.destory();
-      }
-      this.jdField_a_of_type_Avgv = null;
-      this.jdField_a_of_type_Avcw.b(this.jdField_a_of_type_Avcv);
-      this.jdField_a_of_type_ComTencentMobileqqLocationWindowFloatMapWidget = null;
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      if (bhfc.a(localList))
       {
-        QLog.e("LocationShareController", 1, "onFragmentDestroy: failed. ", localException);
+        if (QLog.isColorLevel()) {
+          QLog.d("CustomizeGrayTipsManager", 2, "aioList is empty");
+        }
+        return false;
       }
+      MessageForUniteGrayTip localMessageForUniteGrayTip = a(localList);
+      if (localMessageForUniteGrayTip == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("CustomizeGrayTipsManager", 2, "aioList do not contains revoke gray tip");
+        }
+        return false;
+      }
+      if (a(localList))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("CustomizeGrayTipsManager", 2, "aioList contains GuideCustomizeGrayTips");
+        }
+        return false;
+      }
+      a(paramQQAppInterface, paramInt, localList, localMessageForUniteGrayTip);
+      return true;
     }
-  }
-  
-  public void a(avcq paramavcq, CameraPosition paramCameraPosition, FloatMapWidget paramFloatMapWidget, ImageView paramImageView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqLocationWindowFloatMapWidget = paramFloatMapWidget;
-    this.jdField_a_of_type_Avcq = paramavcq;
-    this.jdField_a_of_type_ComTencentMobileqqLocationWindowFloatMapWidget.a(null, this.jdField_a_of_type_Avcw.a(this.jdField_a_of_type_Avcq), paramCameraPosition, DisplayUtil.dip2px(BaseApplicationImpl.context, 10.0F), null);
-    this.jdField_a_of_type_ComTencentMobileqqLocationWindowFloatMapWidget.setMapLogoVisibility(8);
-    b();
-    c();
-    this.jdField_a_of_type_Avcw.a(this.jdField_a_of_type_Avcv);
-    if (bjuk.a()) {}
-  }
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationShareController", 2, new Object[] { "[location] onDecodeTaskCompleted invoked. ", "remainingTasks = [" + paramInt1 + "], uin = [" + paramString + "], avatar = [" + paramBitmap + "]" });
-    }
-    Bitmap localBitmap = bfvo.c(paramBitmap, 16, 16);
-    avht localavht = (avht)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    long l = System.currentTimeMillis();
-    paramBitmap = localavht;
-    if (localavht == null)
+    finally
     {
-      paramBitmap = new avht(null);
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramBitmap);
-    }
-    paramBitmap.jdField_a_of_type_Long = l;
-    paramBitmap.jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
-    this.jdField_a_of_type_ComTencentMobileqqLocationWindowFloatMapWidget.a(paramString, localBitmap);
-    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder$DecodeTaskCompletionListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder$DecodeTaskCompletionListener.onDecodeTaskCompleted(paramInt1, paramInt2, paramString, localBitmap);
+      paramString.unlock();
     }
   }
+  
+  public void onDestroy() {}
 }
 
 

@@ -1,64 +1,89 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.CopyToRspBody;
-import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.RspBody;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import android.view.View;
 
-public abstract class zrz
-  extends nmf
+public abstract class zrz<T>
+  implements Handler.Callback
 {
-  public zrz()
+  protected int a;
+  protected Context a;
+  protected Handler a;
+  protected View a;
+  protected int b = -1;
+  
+  public zrz(Context paramContext, boolean paramBoolean)
   {
-    super(false);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    if (paramBoolean) {
+      a();
+    }
   }
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public int a()
   {
-    b(paramInt, paramArrayOfByte, paramBundle);
+    return this.jdField_a_of_type_Int;
   }
   
-  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle);
-  
-  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected Context a()
   {
-    int i = 102;
-    if (paramInt != 0)
-    {
-      a(false, paramInt, 102, null, null, null, paramBundle);
+    return this.jdField_a_of_type_AndroidContentContext;
+  }
+  
+  protected Resources a()
+  {
+    if (this.jdField_a_of_type_AndroidContentContext != null) {
+      return this.jdField_a_of_type_AndroidContentContext.getResources();
+    }
+    return null;
+  }
+  
+  protected abstract void a();
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  protected final void a(Runnable paramRunnable)
+  {
+    if (paramRunnable == null) {
       return;
     }
-    Object localObject = new oidb_0x6d9.RspBody();
-    try
+    this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+  }
+  
+  public abstract void b();
+  
+  public final void c()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+  }
+  
+  protected abstract void d();
+  
+  protected abstract void e();
+  
+  public void f()
+  {
+    e();
+    a(-1);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      ((oidb_0x6d9.RspBody)localObject).mergeFrom(paramArrayOfByte);
-      if (!((oidb_0x6d9.RspBody)localObject).copy_to_rsp.has())
-      {
-        a(false, paramInt, 102, null, null, null, paramBundle);
-        return;
-      }
+    default: 
+      return false;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      a(false, paramInt, 102, null, null, null, paramBundle);
-      return;
-    }
-    paramArrayOfByte = (oidb_0x6d9.CopyToRspBody)((oidb_0x6d9.RspBody)localObject).copy_to_rsp.get();
-    if (!paramArrayOfByte.int32_ret_code.has())
-    {
-      a(false, paramInt, 102, null, null, null, paramBundle);
-      return;
-    }
-    int j = paramArrayOfByte.int32_ret_code.get();
-    localObject = paramArrayOfByte.str_client_wording.get();
-    String str1 = paramArrayOfByte.str_ret_msg.get();
-    String str2 = paramArrayOfByte.str_save_file_path.get();
-    paramInt = i;
-    if (paramArrayOfByte.uint32_bus_id.has()) {
-      paramInt = paramArrayOfByte.uint32_bus_id.get();
-    }
-    a(true, j, paramInt, str2, str1, (String)localObject, paramBundle);
+    d();
+    return true;
   }
 }
 

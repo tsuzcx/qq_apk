@@ -1,38 +1,41 @@
-import android.os.AsyncTask;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import java.io.IOException;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class aphl
-  extends AsyncTask<Void, Void, String>
+class aphl
+  extends apis
 {
-  public aphl(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable, String paramString) {}
+  aphl(aphg paramaphg) {}
   
-  protected String a(Void... paramVarArgs)
+  public void a()
   {
-    try
-    {
-      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
-      if (paramVarArgs != null)
-      {
-        bfvo.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity, paramVarArgs);
-        return this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131694485) + " " + paramVarArgs;
-      }
-      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131694483);
-      return paramVarArgs;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadSuccess");
     }
-    catch (IOException paramVarArgs)
-    {
-      return this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131694483);
-    }
-    catch (OutOfMemoryError paramVarArgs) {}
-    return this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131694483);
+    Message localMessage = aphg.a(this.a).obtainMessage();
+    localMessage.what = 100;
+    localMessage.sendToTarget();
   }
   
-  protected void a(String paramString)
+  public void a(int paramInt)
   {
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getTitleBarHeight());
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadProcess process=" + paramInt);
+    }
+    Message localMessage = aphg.a(this.a).obtainMessage();
+    localMessage.what = 102;
+    localMessage.arg1 = paramInt;
+    localMessage.sendToTarget();
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadFail");
+    }
+    Message localMessage = aphg.a(this.a).obtainMessage();
+    localMessage.what = 101;
+    localMessage.sendToTarget();
   }
 }
 

@@ -1,81 +1,15 @@
-import android.text.TextUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class axyq
+  implements DialogInterface.OnClickListener
 {
-  public double a;
-  public int a;
-  public long a;
-  public String a;
-  public double b;
-  public String b;
-  public double c;
-  public String c;
+  public axyq(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public axyq(double paramDouble1, double paramDouble2, String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Double = paramDouble1;
-    this.jdField_b_of_type_Double = paramDouble2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_c_of_type_JavaLangString = paramString2;
-    if (a(this.jdField_a_of_type_Double, this.jdField_b_of_type_Double, paramString2))
-    {
-      this.jdField_a_of_type_Int = 0;
-      return;
-    }
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public static boolean a(double paramDouble1, double paramDouble2, String paramString)
-  {
-    return (Math.abs(paramDouble1) > 0.0001D) && (Math.abs(paramDouble2) > 0.0001D) && (!TextUtils.isEmpty(paramString));
-  }
-  
-  public static boolean a(axyq paramaxyq, double paramDouble1, double paramDouble2, String paramString)
-  {
-    boolean bool2 = false;
-    boolean bool1;
-    if (paramaxyq == null) {
-      bool1 = true;
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return bool1;
-            bool1 = bool2;
-          } while (paramString == null);
-          if (!paramString.equals(paramaxyq.jdField_c_of_type_JavaLangString)) {
-            return true;
-          }
-          bool1 = bool2;
-        } while (Math.abs(paramDouble1) < 0.0001D);
-        bool1 = bool2;
-      } while (Math.abs(paramDouble2) < 0.0001D);
-      if (Math.abs(paramaxyq.jdField_a_of_type_Double - paramDouble1) > 0.001D) {
-        break;
-      }
-      bool1 = bool2;
-    } while (Math.abs(paramaxyq.jdField_b_of_type_Double - paramDouble2) <= 0.001D);
-    return true;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("mLatitude:").append(this.jdField_a_of_type_Double);
-    localStringBuilder.append(" mLongitude:").append(this.jdField_b_of_type_Double);
-    localStringBuilder.append(" mDirection:").append(this.jdField_c_of_type_Double);
-    localStringBuilder.append(" mPoiName:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" mPoiAddr:").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(" adCode:").append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append(" mUpdateTime:").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" mValidFlag:").append(this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
+    paramDialogInterface.dismiss();
   }
 }
 

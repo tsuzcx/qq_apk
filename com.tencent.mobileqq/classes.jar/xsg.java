@@ -1,13 +1,21 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
 
 class xsg
-  implements xrp
+  extends wwa
 {
-  xsg(xru paramxru) {}
+  xsg(xsf paramxsf) {}
   
-  public void a(ErrorMessage paramErrorMessage)
+  public void a()
   {
-    xvv.e("Q.qqstory.home.StoryListPresenter", "step %s error occur when requestAllDataFromNet error=%s", new Object[] { paramErrorMessage.extraMsg, paramErrorMessage.getErrorMessage() });
+    super.a();
+    xsf.a(this.a).jdField_a_of_type_Wvu = null;
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    ykv.a("share_story", "day_suc", 0, paramInt, new String[] { xsf.a(this.a).jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.getReportUserType() });
   }
 }
 

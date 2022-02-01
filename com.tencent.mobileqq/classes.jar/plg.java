@@ -1,54 +1,49 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class plg
+public class plg
+  implements AladdinConfigHandler
 {
-  private List<oidb_cmd0x80a.AttributeList> jdField_a_of_type_JavaUtilList = new ArrayList();
-  
-  public plg(List<oidb_cmd0x80a.AttributeList> paramList)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    Object localObject;
-    if (localObject != null) {
-      this.jdField_a_of_type_JavaUtilList = localObject;
-    }
-  }
-  
-  public List<oidb_cmd0x80a.AttributeList> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public plg a(int paramInt, String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString2))
+    QLog.d("BiuTriggerTypeConfigHandler", 2, "[onReceiveConfig] " + paramString);
+    paramString = pku.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      QLog.d("CommonAttrBulder", 1, "attr value is Empty ! id : " + paramInt + ", name : " + paramString1);
-      return this;
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("BiuTriggerTypeConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (TextUtils.equals(str1, "on_click"))
+      {
+        if (TextUtils.equals(str2, "fast_biu")) {}
+        for (paramInt1 = 1;; paramInt1 = 0)
+        {
+          bmhv.a("sp_key_biu_button_click_behaviour", Integer.valueOf(paramInt1));
+          break;
+        }
+      }
+      if (TextUtils.equals(str1, "on_long_pressed"))
+      {
+        if (TextUtils.equals(str2, "fast_biu")) {}
+        for (paramInt1 = 1;; paramInt1 = 0)
+        {
+          bmhv.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(paramInt1));
+          break;
+        }
+      }
     }
-    oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
-    localAttributeList.att_id.set(paramInt);
-    localAttributeList.att_name.set(paramString1);
-    localAttributeList.att_value.set(paramString2);
-    this.jdField_a_of_type_JavaUtilList.add(localAttributeList);
-    return this;
+    return true;
   }
   
-  public plg a(int paramInt, String paramString, boolean paramBoolean)
+  public void onWipeConfig(int paramInt)
   {
-    return a(paramInt, paramString, plu.a(paramBoolean, "1", "0"));
-  }
-  
-  public plg a(oidb_cmd0x80a.AttributeList paramAttributeList)
-  {
-    if (paramAttributeList != null) {
-      this.jdField_a_of_type_JavaUtilList.add(paramAttributeList);
-    }
-    return this;
+    bmhv.a("sp_key_biu_button_click_behaviour", Integer.valueOf(0));
+    bmhv.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(1));
   }
 }
 

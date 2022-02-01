@@ -1,21 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasCommentFragment;
 
-class pxq
-  implements pxe<BEAN>
+public class pxq
+  implements Animation.AnimationListener
 {
-  pxq(pxp parampxp) {}
+  public pxq(ReadInJoyAtlasCommentFragment paramReadInJoyAtlasCommentFragment) {}
   
-  public void a(boolean paramBoolean, List<BEAN> paramList, int paramInt1, Boolean paramBoolean1, int paramInt2, String paramString)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramBoolean)
-    {
-      pxp.a(this.a, paramBoolean1.booleanValue(), paramInt1, paramList);
-      return;
-    }
-    QLog.i("ListPresenter", 2, "loadFirstPage error, errorCode=" + paramInt2 + ", errorMsg= " + paramString);
-    pxp.a(this.a, paramBoolean1.booleanValue(), paramList, paramInt2, paramString);
+    this.a.getView().setVisibility(8);
+    this.a.getActivity().setResult(-1);
+    this.a.getActivity().finish();
+    this.a.getActivity().overridePendingTransition(0, 0);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

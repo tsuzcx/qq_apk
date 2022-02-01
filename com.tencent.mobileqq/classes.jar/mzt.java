@@ -1,53 +1,19 @@
-import com.tencent.avgame.gamelogic.QualityReporter.1;
-import com.tencent.avgame.gamelogic.QualityReporter.2;
-import com.tencent.avgame.gamelogic.QualityReporter.3;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
 public class mzt
+  implements ahvk
 {
-  public static long a;
-  
-  public static void a()
+  public void a(ahvv paramahvv, QQAppInterface paramQQAppInterface, int paramInt, String paramString)
   {
-    long l = Math.abs(System.currentTimeMillis() - a);
-    HashMap localHashMap;
-    String str;
-    if ((a == 0L) || (l > mzy.a * 3))
+    if ((!nad.a()) && (paramahvv != null))
     {
-      localHashMap = new HashMap();
-      if (a != 0L) {
-        break label121;
-      }
-      str = "1";
-      localHashMap.put("report_key_param_is_local_heart_beat_stop", str);
+      paramahvv.b(223);
       if (QLog.isColorLevel()) {
-        if (a != 0L) {
-          break label127;
-        }
+        QLog.i("WTogether", 2, "filter aio entry. sdk[" + Build.VERSION.SDK_INT + "]");
       }
     }
-    label121:
-    label127:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.i("QualityReporter", 2, String.format("reportHeartBeatExp [isStop，duration]=[%b,%d]", new Object[] { Boolean.valueOf(bool), Long.valueOf(l) }));
-      ThreadManager.post(new QualityReporter.3(l, localHashMap), 5, null, false);
-      return;
-      str = "0";
-      break;
-    }
-  }
-  
-  public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    ThreadManager.post(new QualityReporter.2(paramInt1, paramInt2, paramInt3, paramInt4), 5, null, false);
-  }
-  
-  public static void a(boolean paramBoolean, int paramInt)
-  {
-    ThreadManager.post(new QualityReporter.1(paramBoolean, paramInt), 5, null, false);
   }
 }
 

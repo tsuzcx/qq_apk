@@ -1,66 +1,98 @@
-import android.app.Activity;
-import android.app.ProgressDialog;
-import android.os.AsyncTask;
-import android.text.TextUtils;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportProgressDialog;
+import android.annotation.SuppressLint;
+import android.net.Uri;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
+import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
+import com.tencent.smtt.export.external.interfaces.JsPromptResult;
+import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.sdk.ValueCallback;
+import com.tencent.smtt.sdk.WebView;
 
-public class bidj
-  extends AsyncTask<Void, Long, Boolean>
+class bidj
+  extends ofz
 {
-  Activity jdField_a_of_type_AndroidAppActivity;
-  ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
-  String jdField_a_of_type_JavaLangString;
+  bidj(bidf parambidf) {}
   
-  public bidj(Activity paramActivity)
+  private void a(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  public bidj(Activity paramActivity, String paramString)
-  {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  protected Boolean a(Void... paramVarArgs)
-  {
-    return Boolean.valueOf(false);
-  }
-  
-  protected void a()
-  {
-    if ((this.jdField_a_of_type_AndroidAppProgressDialog != null) && (this.jdField_a_of_type_AndroidAppProgressDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsWebView", 2, "show custom view called");
     }
+    this.a.showCustomView(paramView, paramInt, paramCustomViewCallback);
   }
   
-  protected void a(Boolean paramBoolean)
+  public View getVideoLoadingProgressView()
   {
-    super.onPostExecute(paramBoolean);
-    a();
-    if (paramBoolean.booleanValue())
-    {
-      if ((bidi.a()) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-        bias.a("311", this.jdField_a_of_type_JavaLangString, "1101070898");
-      }
-      return;
+    return this.a.getVideoLoadingProgressView();
+  }
+  
+  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsWebView", 2, "onGeolocationPermissionsShowPrompt:" + paramString);
     }
-    bhzt.a().a(amtj.a(2131716040), 1);
+    this.a.onGeolocationPermissionsShowPrompt(paramString, paramGeolocationPermissionsCallback);
   }
   
-  protected void onCancelled()
+  public void onHideCustomView()
   {
-    super.onCancelled();
-    a();
-  }
-  
-  protected void onPreExecute()
-  {
-    super.onPreExecute();
-    this.jdField_a_of_type_AndroidAppProgressDialog = new ReportProgressDialog(this.jdField_a_of_type_AndroidAppActivity);
-    if ((this.jdField_a_of_type_AndroidAppActivity != null) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())) {
-      this.jdField_a_of_type_AndroidAppProgressDialog.show();
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsWebView", 2, "hide custom view called");
     }
+    this.a.onHideCustomView();
+  }
+  
+  public boolean onJsAlert(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
+  {
+    return this.a.onJsAlert(paramWebView, paramString1, paramString2, paramJsResult);
+  }
+  
+  @Override
+  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
+  {
+    if (JsBridgeController.getInstance().shouldIntercept(paramWebView, paramString2, paramString1, paramJsPromptResult)) {
+      return true;
+    }
+    return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
+  }
+  
+  public void onProgressChanged(WebView paramWebView, int paramInt)
+  {
+    JsInjector.getInstance().onProgressChanged(paramWebView, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsWebView", 2, "onProgressChanged:" + paramInt);
+    }
+    if ((this.a.mProgressBarController != null) && (this.a.mProgressBarController.b() == 0)) {
+      this.a.mProgressBarController.a((byte)1);
+    }
+    if (paramInt == 100) {
+      this.a.showProgressBar(false);
+    }
+    this.a.onProgressChanged(paramWebView, paramInt);
+  }
+  
+  public void onReceivedTitle(WebView paramWebView, String paramString)
+  {
+    this.a.onReceivedTitle(paramWebView, paramString);
+  }
+  
+  public void onShowCustomView(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
+  {
+    a(paramView, paramInt, paramCustomViewCallback);
+  }
+  
+  @SuppressLint({"InlinedApi"})
+  public void onShowCustomView(View paramView, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
+  {
+    a(paramView, 10, paramCustomViewCallback);
+  }
+  
+  public void openFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
+  {
+    this.a.openFileChooser(paramValueCallback, paramString1, paramString2);
   }
 }
 

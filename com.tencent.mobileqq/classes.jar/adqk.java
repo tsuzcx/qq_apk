@@ -1,22 +1,27 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class adqk
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  public adqk(LoginInfoActivity paramLoginInfoActivity) {}
+  public adqk(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    LoginInfoActivity.b(this.a).setVisibility(4);
-    LoginInfoActivity.b(this.a).clearAnimation();
+    try
+    {
+      ((allt)this.a.app.getBusinessHandler(BusinessHandlerFactory.FILTER_MSG_BOX_HANDLER)).a(Long.parseLong(ChatSettingActivity.a(this.a)));
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      QLog.e(ChatSettingActivity.c(this.a), 1, "showFilterMsgNoticeDialog(): the uin is not Long");
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

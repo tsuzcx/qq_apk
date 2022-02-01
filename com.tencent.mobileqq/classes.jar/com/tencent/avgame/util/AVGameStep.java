@@ -3,12 +3,12 @@ package com.tencent.avgame.util;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import njg;
+import nqe;
 
 public class AVGameStep
   implements Parcelable
 {
-  public static final Parcelable.Creator<AVGameStep> CREATOR = new njg();
+  public static final Parcelable.Creator<AVGameStep> CREATOR = new nqe();
   public int a;
   public long a;
   public String a;

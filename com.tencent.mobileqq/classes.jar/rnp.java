@@ -1,30 +1,20 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInjoySkinAndRefreshFacade.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
 
-class rnp
-  implements INetInfoHandler
+public class rnp
+  extends rmz
 {
   rnp(rno paramrno) {}
   
-  public void onNetMobile2None() {}
-  
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString)
+  public void a(boolean paramBoolean, oidb_0x5bd.SkinInfo paramSkinInfo, oidb_0x5bd.GuideInfo paramGuideInfo1, oidb_0x5bd.GuideInfo paramGuideInfo2, oidb_0x5bd.RefreshInfo paramRefreshInfo, int paramInt)
   {
-    QLog.i("RIJUGC.RIJUgcVideoPublishManager", 1, "onNetNone2Mobile");
-    rno.a(this.a);
+    if ((paramBoolean) && (paramInt == rno.a(this.a))) {
+      ThreadManager.post(new ReadInjoySkinAndRefreshFacade.2.1(this, paramGuideInfo2, paramInt, paramRefreshInfo, paramSkinInfo, paramGuideInfo1), 5, null, true);
+    }
   }
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    QLog.i("RIJUGC.RIJUgcVideoPublishManager", 1, "onNetWifi2Mobile");
-    rno.a(this.a);
-  }
-  
-  public void onNetWifi2None() {}
 }
 
 

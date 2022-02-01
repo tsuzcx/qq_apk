@@ -1,30 +1,61 @@
 package com.tencent.qqmini.sdk.plugins;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import org.json.JSONObject;
 
 class OpenDataCommonJsPlugin$9
-  implements DialogInterface.OnClickListener
+  implements AsyncResult
 {
-  OpenDataCommonJsPlugin$9(OpenDataCommonJsPlugin paramOpenDataCommonJsPlugin, String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, Boolean paramBoolean, RequestEvent paramRequestEvent, String paramString8, String paramString9, int paramInt2) {}
+  OpenDataCommonJsPlugin$9(OpenDataCommonJsPlugin paramOpenDataCommonJsPlugin, RequestEvent paramRequestEvent, String paramString1, Boolean paramBoolean, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if (paramDialogInterface != null) {}
-    try
+    QMLog.d("OpenDataCommonJsPlugin", "modifyFriendInteractiveStorage receive isSuc= " + paramBoolean + " ret=" + String.valueOf(paramJSONObject));
+    if (paramJSONObject == null)
     {
-      paramDialogInterface.dismiss();
-      OpenDataCommonJsPlugin.access$700(this.this$0, OpenDataCommonJsPlugin.access$1200(this.this$0), "share_modifyFriendInteractiveStorage", "success", 1, null);
-      OpenDataCommonJsPlugin.access$1300(this.this$0, this.val$key, this.val$opNum, this.val$operation, this.val$toUser, this.val$nick, this.val$title, this.val$imageUrl, this.val$imageUrlId, this.val$quiet, this.val$req, this.val$action, this.val$object, this.val$ratio);
+      QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , ret == null");
+      this.val$req.fail("request ret is null.");
       return;
     }
-    catch (Throwable paramDialogInterface)
+    if (paramBoolean)
     {
-      QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + paramDialogInterface);
-      this.val$req.fail(paramDialogInterface.getMessage());
+      int i;
+      String str1;
+      try
+      {
+        i = paramJSONObject.getInt("retCode");
+        str1 = paramJSONObject.getString("errMsg");
+        paramJSONObject = new JSONObject();
+        if (i == 0)
+        {
+          this.val$req.ok();
+          if ((!TextUtils.isEmpty(this.val$title)) && (!this.val$quiet.booleanValue()))
+          {
+            str1 = this.val$object + this.val$action;
+            String str2 = "已" + this.val$action + "\n马上QQ告诉好友？";
+            OpenDataCommonJsPlugin.access$1000(this.this$0, str1, str2, "告诉他", Boolean.valueOf(true), "下次吧", new OpenDataCommonJsPlugin.9.1(this), new OpenDataCommonJsPlugin.9.2(this), new OpenDataCommonJsPlugin.9.3(this));
+          }
+          OpenDataCommonJsPlugin.access$1100(this.this$0, paramJSONObject, this.val$req, this.val$key);
+          return;
+        }
+      }
+      catch (Exception paramJSONObject)
+      {
+        QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error ", paramJSONObject);
+        this.val$req.fail();
+        return;
+      }
+      paramJSONObject.put("errMsg", str1);
+      paramJSONObject.put("errCode", i);
+      QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE " + paramJSONObject.toString());
+      this.val$req.fail(paramJSONObject, "");
+      return;
     }
+    QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , isSuc false");
+    this.val$req.fail("request failed.");
   }
 }
 

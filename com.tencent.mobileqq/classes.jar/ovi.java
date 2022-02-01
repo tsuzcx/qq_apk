@@ -1,16 +1,31 @@
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import java.util.Comparator;
 
-class ovi
-  extends owd
+public class ovi
+  implements Comparator<ovn>
 {
-  ovi(ouu paramouu, boolean paramBoolean1, List paramList, boolean paramBoolean2)
-  {
-    super(paramouu, null);
-  }
+  public ovi(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
   
-  void a(owg paramowg)
+  public int a(ovn paramovn1, ovn paramovn2)
   {
-    paramowg.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.b, 2);
+    int j = 2147483647;
+    int i;
+    if (TextUtils.isEmpty(ovn.a(paramovn1)))
+    {
+      i = 2147483647;
+      if (!TextUtils.isEmpty(ovn.a(paramovn2))) {
+        break label44;
+      }
+    }
+    for (;;)
+    {
+      return i - j;
+      i = ovn.a(paramovn1).codePointAt(0);
+      break;
+      label44:
+      j = ovn.a(paramovn2).codePointAt(0);
+    }
   }
 }
 

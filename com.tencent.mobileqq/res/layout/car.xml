@@ -2,7 +2,7 @@
 <merge
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <ImageView android:id="@id/lwt" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <com.tencent.mobileqq.widget.CircleProgress android:id="@id/lwp" android:layout_width="39.0dip" android:layout_height="39.0dip" android:layout_marginLeft="14.5dip" android:layout_centerVertical="true" />
+    <com.tencent.mobileqq.widget.SweepGradientCircleProgress android:id="@id/lwp" android:layout_width="39.0dip" android:layout_height="39.0dip" android:layout_marginLeft="14.5dip" android:layout_centerVertical="true" />
     <com.tencent.widget.ThemeImageView android:id="@id/lea" android:clickable="false" android:layout_width="31.0dip" android:layout_height="31.0dip" android:layout_marginLeft="18.5dip" android:scaleType="fitCenter" android:layout_centerVertical="true" android:contentDescription="@null" />
     <com.tencent.widget.AlphaClickableImageView android:id="@id/m9o" android:background="@drawable/hfy" android:clickable="true" android:layout_width="31.0dip" android:layout_height="31.0dip" android:layout_marginLeft="18.5dip" android:scaleType="centerInside" android:layout_centerVertical="true" android:contentDescription="@null" />
     <ImageView android:id="@id/m3b" android:clickable="true" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginRight="15.0dip" android:src="@drawable/hfx" android:scaleType="fitCenter" android:layout_alignParentRight="true" android:layout_centerVertical="true" />

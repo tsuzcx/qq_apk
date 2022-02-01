@@ -4,7 +4,7 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.View.OnClickListener;
-import bjuk;
+import blfw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Arrays;
@@ -195,7 +195,7 @@ public class ShareActionSheetBuilder$ActionSheetItem
   static
   {
     int j = 0;
-    ICON_LIST = new int[] { 2130846213, 2130846214, 2130846173, 2130846174, 2130846179, 2130846180, 2130846167, 2130846168, 2130846164, 2130846165, 2130846219, 2130846220, 2130846202, 2130846203, 2130846209, 2130846210, 2130846183, 2130846184, 2130846185, 2130846186, 2130846245, 2130846246, 2130846192, 2130846193, 2130846177, 2130846178, 2130843696, 2130843698, 2130843701, 2130843700, 2130844322, 2130844323, 2130842666, 2130846247, 2130846248, 2130839123, 2130839346, 2130839379, 2130846187, 2130846188, 2130846171, 2130846172, 2130842667, 2130842677, 2130842662, 2130842668, 2130842664, 2130846215, 2130846216, 2130846583, 2130846826, 2130839128, 2130842650, 2130846264, 2130843202, 2130846198, 2130846199, 2130846181, 2130846182, 2130846175, 2130846176, 2130846261, 2130846262, 2130846160, 2130846227, 2130846228, 2130846231, 2130846161, 2130846162, 2130846233, 2130846234, 2130846207, 2130846208, 2130844207, 2130850469, 2130850470, 2130846196, 2130846197, 2130846205, 2130846206, 2130846229, 2130846230, 2130849427, 2130846265, 2130849426, 2130846204, 2130840312, 2130849628, 2130849629, 2130840193, 2130841287, 2130841288, 2130841299, 2130846201, 2130841300, 2130841301, 2130841302, 2130841303, 2130846267, 2130846246, 2130846237, 2130846238, 2130846211, 2130846212, 2130841289, 2130841290, 2130841294, 2130841295, 2130841291, 2130841292, 2130841297, 2130841298, 2130842659, 2130847790, 2130847787, 2130847785, 2130847784, 2130847783, 2130847776, 2130847777, 2130847774, 2130847775, 2130847788, 2130847778, 2130846225, 2130846226, 2130847786, 2130847789, 2130848351, 2130847773, 2130847780, 2130848354, 2130848350, 2130846235, 2130846236, 2130842659, 2130841847, 2130841845, 2130841849, 2130841850, 2130841857, 2130841863, 2130841853, 2130841854, 2130841859, 2130841860, 2130840194, 2130844132, 2130837578, 2130837579, 2130840185, 2130844128, 2130844141, 2130844142, 2130844130, 2130844131, 2130844133, 2130844134, 2130844105, 2130844106, 2130844101, 2130844102, 2130844107, 2130844108, 2130844126, 2130844127, 2130840236, 2130840237, 2130840232, 2130840233, 2130849405, 2130849404, 2130849419, 2130849418, 2130849401, 2130849400, 2130849425, 2130849424, 2130849413, 2130849412, 2130849417, 2130849416, 2130849409, 2130849408, 2130849415, 2130849414, 2130840946, 2130840947, 2130843979, 2130843980, 2130849414, 2130849403, 2130849402, 2130849421, 2130849420, 2130849407, 2130849406, 2130849423, 2130849422, 2130849411, 2130849410, 2130849399, 2130849398, 2130846225, 2130846226, 2130843607, 2130843606, 2130843609, 2130843608, 2130843611, 2130843610, 2130843615, 2130843614, 2130843617, 2130843616, 2130843605, 2130843604, 2130843613, 2130843612, 2130849186, 2130844000, 2130843999, 2130850719, 2130850720, 2130850717, 2130850718 };
+    ICON_LIST = new int[] { 2130846309, 2130846310, 2130846269, 2130846270, 2130846275, 2130846276, 2130846263, 2130846264, 2130846260, 2130846261, 2130846315, 2130846316, 2130846298, 2130846299, 2130846305, 2130846306, 2130846279, 2130846280, 2130846281, 2130846282, 2130846341, 2130846342, 2130846288, 2130846289, 2130846273, 2130846274, 2130843734, 2130843736, 2130843739, 2130843738, 2130844389, 2130844390, 2130842696, 2130846343, 2130846344, 2130839143, 2130839367, 2130839400, 2130846283, 2130846284, 2130846267, 2130846268, 2130842697, 2130842707, 2130842692, 2130842698, 2130842694, 2130846311, 2130846312, 2130846679, 2130846922, 2130839148, 2130842680, 2130846360, 2130843238, 2130846294, 2130846295, 2130846277, 2130846278, 2130846271, 2130846272, 2130846357, 2130846358, 2130846256, 2130846323, 2130846324, 2130846327, 2130846257, 2130846258, 2130846329, 2130846330, 2130846303, 2130846304, 2130844274, 2130850575, 2130850576, 2130846292, 2130846293, 2130846301, 2130846302, 2130846325, 2130846326, 2130849519, 2130846361, 2130849518, 2130846300, 2130840348, 2130849721, 2130849722, 2130840216, 2130841296, 2130841297, 2130841306, 2130846297, 2130841307, 2130841308, 2130841309, 2130841310, 2130846363, 2130846342, 2130846333, 2130846334, 2130846307, 2130846308, 2130841298, 2130841299, 2130841302, 2130841303, 2130841300, 2130841301, 2130841304, 2130841305, 2130842689, 2130847881, 2130847878, 2130847876, 2130847875, 2130847874, 2130847867, 2130847868, 2130847865, 2130847866, 2130847879, 2130847869, 2130846321, 2130846322, 2130847877, 2130847880, 2130848442, 2130847864, 2130847871, 2130848445, 2130848441, 2130846331, 2130846332, 2130842689, 2130841860, 2130841858, 2130841862, 2130841863, 2130841870, 2130841876, 2130841866, 2130841867, 2130841872, 2130841873, 2130840217, 2130844199, 2130837578, 2130837579, 2130840208, 2130844195, 2130844208, 2130844209, 2130844197, 2130844198, 2130844200, 2130844201, 2130844172, 2130844173, 2130844168, 2130844169, 2130844174, 2130844175, 2130844193, 2130844194, 2130840271, 2130840272, 2130840267, 2130840268, 2130849497, 2130849496, 2130849511, 2130849510, 2130849493, 2130849492, 2130849517, 2130849516, 2130849505, 2130849504, 2130849509, 2130849508, 2130849501, 2130849500, 2130849507, 2130849506, 2130840985, 2130840986, 2130844019, 2130844020, 2130849506, 2130849495, 2130849494, 2130849513, 2130849512, 2130849499, 2130849498, 2130849515, 2130849514, 2130849503, 2130849502, 2130849491, 2130849490, 2130846321, 2130846322, 2130843644, 2130843643, 2130843646, 2130843645, 2130843648, 2130843647, 2130843652, 2130843651, 2130843654, 2130843653, 2130843642, 2130843641, 2130843650, 2130843649, 2130849278, 2130844052, 2130844051, 2130850861, 2130850862, 2130850859, 2130850860 };
     HashSet localHashSet = new HashSet();
     int i = 0;
     if (i < ICON_LIST.length)
@@ -211,7 +211,7 @@ public class ShareActionSheetBuilder$ActionSheetItem
       }
     }
     Arrays.sort(ICON_LIST);
-    LABEL_LIST = new int[] { 2131718326, 2131718347, 2131718348, 2131718277, 2131718278, 2131718279, 2131718317, 2131718352, 2131718377, 2131718323, 2131718374, 2131718375, 2131718376, 2131718365, 2131718276, 2131718331, 2131718346, 2131718325, 2131718327, 2131718370, 2131718285, 2131718329, 2131718358, 2131718356, 2131718357, 2131718286, 2131718349, 2131718296, 2131718353, 2131718288, 2131718287, 2131718293, 2131718291, 2131718294, 2131718292, 2131718295, 2131718307, 2131718302, 2131718303, 2131718275, 2131718290, 2131718332, 2131718355, 2131718289, 2131718359, 2131718304, 2131718280, 2131718284, 2131718283, 2131718281, 2131718369, 2131718350, 2131718330, 2131718300, 2131718301, 2131718321, 2131718322, 2131718354, 2131718334, 2131718305, 2131718306, 2131696700, 2131696703, 2131696706, 2131696705, 2131695883, 2131694808, 2131718367, 2131718319, 2131718318, 2131718320, 2131718315, 2131718368, 2131718373, 2131718335, 2131718282, 2131718311, 2131718324, 2131718310, 2131718362, 2131718363, 2131718366, 2131718361, 2131718371, 2131718351, 2131718328, 2131718297, 2131718308, 2131718372, 2131718333, 2131718299, 2131718360, 2131694808, 2131718337, 2131718336, 2131718338, 2131718339, 2131718342, 2131718345, 2131718340, 2131718341, 2131718343, 2131718344, 2131718313, 2131718312, 2131718314, 2131697619, 2131718344, 2131718335, 2131718282, 2131718344, 2131718253, 2131718274, 2131718256, 2131718262, 2131718273, 2131718255, 2131718259, 2131718254, 2131718260, 2131718259, 2131718257, 2131718263, 2131718265, 2131718258, 2131718252, 2131718264, 2131718316, 2131718266, 2131718267, 2131718269, 2131718270, 2131718272, 2131718271, 2131718268, 2131718298, 2131718309 };
+    LABEL_LIST = new int[] { 2131718712, 2131718733, 2131718734, 2131718663, 2131718664, 2131718665, 2131718703, 2131718738, 2131718763, 2131718709, 2131718760, 2131718761, 2131718762, 2131718751, 2131718662, 2131718717, 2131718732, 2131718711, 2131718713, 2131718756, 2131718671, 2131718715, 2131718744, 2131718742, 2131718743, 2131718672, 2131718735, 2131718682, 2131718739, 2131718674, 2131718673, 2131718679, 2131718677, 2131718680, 2131718678, 2131718681, 2131718693, 2131718688, 2131718689, 2131718661, 2131718676, 2131718718, 2131718741, 2131718675, 2131718745, 2131718690, 2131718666, 2131718670, 2131718669, 2131718667, 2131718755, 2131718736, 2131718716, 2131718686, 2131718687, 2131718707, 2131718708, 2131718740, 2131718720, 2131718691, 2131718692, 2131696967, 2131696970, 2131696973, 2131696972, 2131696135, 2131695016, 2131718753, 2131718705, 2131718704, 2131718706, 2131718701, 2131718754, 2131718759, 2131718721, 2131718668, 2131718697, 2131718710, 2131718696, 2131718748, 2131718749, 2131718752, 2131718747, 2131718757, 2131718737, 2131718714, 2131718683, 2131718694, 2131718758, 2131718719, 2131718685, 2131718746, 2131695016, 2131718723, 2131718722, 2131718724, 2131718725, 2131718728, 2131718731, 2131718726, 2131718727, 2131718729, 2131718730, 2131718699, 2131718698, 2131718700, 2131697899, 2131718730, 2131718721, 2131718668, 2131718730, 2131718639, 2131718660, 2131718642, 2131718648, 2131718659, 2131718641, 2131718645, 2131718640, 2131718646, 2131718645, 2131718643, 2131718649, 2131718651, 2131718644, 2131718638, 2131718650, 2131718702, 2131718652, 2131718653, 2131718655, 2131718656, 2131718658, 2131718657, 2131718654, 2131718684, 2131718695 };
     localHashSet = new HashSet();
     i = j;
     if (i < LABEL_LIST.length)
@@ -365,9 +365,9 @@ public class ShareActionSheetBuilder$ActionSheetItem
       continue;
       localActionSheetItem1 = buildLongscreenshot();
       continue;
-      localActionSheetItem1 = build(2130840312, 2131718277, "");
+      localActionSheetItem1 = build(2130840348, 2131718663, "");
       continue;
-      localActionSheetItem1 = build(2130849628, 2131718326, "");
+      localActionSheetItem1 = build(2130849721, 2131718712, "");
       continue;
       localActionSheetItem1 = buildOpenMiniAppDebug();
       continue;
@@ -405,15 +405,15 @@ public class ShareActionSheetBuilder$ActionSheetItem
       continue;
       localActionSheetItem1 = buildCreateQr();
       continue;
-      localActionSheetItem1 = build(2130843696, 2131696700, "add_troop_app");
+      localActionSheetItem1 = build(2130843734, 2131696967, "add_troop_app");
       continue;
-      localActionSheetItem1 = build(2130843698, 2131696703, "open_app_detail");
+      localActionSheetItem1 = build(2130843736, 2131696970, "open_app_detail");
       continue;
-      localActionSheetItem1 = build(2130843701, 2131696706, "share_troop_app");
+      localActionSheetItem1 = build(2130843739, 2131696973, "share_troop_app");
       continue;
-      localActionSheetItem1 = build(2130843700, 2131696705, "refresh_troop_app_view");
+      localActionSheetItem1 = build(2130843738, 2131696972, "refresh_troop_app_view");
       continue;
-      localActionSheetItem1 = build(2130842662, 2131695883, "share_diandian");
+      localActionSheetItem1 = build(2130842692, 2131696135, "share_diandian");
       continue;
       localActionSheetItem1 = buildMoreInfo();
       continue;
@@ -569,1011 +569,1011 @@ public class ShareActionSheetBuilder$ActionSheetItem
   
   private static ActionSheetItem buildAbout()
   {
-    int i = 2130841287;
-    if (bjuk.a()) {
-      i = 2130841288;
+    int i = 2130841296;
+    if (blfw.a()) {
+      i = 2130841297;
     }
-    return build(i, 2131718281, "about");
+    return build(i, 2131718667, "about");
   }
   
   private static ActionSheetItem buildAdBlock()
   {
-    int i = 2130840236;
-    if (bjuk.a()) {
-      i = 2130840237;
+    int i = 2130840271;
+    if (blfw.a()) {
+      i = 2130840272;
     }
-    return build(i, 2131718282, "ad_block");
+    return build(i, 2131718668, "ad_block");
   }
   
   private static ActionSheetItem buildAdPromotion()
   {
-    int i = 2130840232;
-    if (bjuk.a()) {
-      i = 2130840233;
+    int i = 2130840267;
+    if (blfw.a()) {
+      i = 2130840268;
     }
-    return build(i, 2131718335, "ad_promotion");
+    return build(i, 2131718721, "ad_promotion");
   }
   
   private static ActionSheetItem buildAddColorNote()
   {
-    int i = 2130846196;
-    if (bjuk.a()) {
-      i = 2130846197;
+    int i = 2130846292;
+    if (blfw.a()) {
+      i = 2130846293;
     }
-    return build(i, 2131718302, "colornote");
+    return build(i, 2131718688, "colornote");
   }
   
   private static ActionSheetItem buildAddEmoji()
   {
-    int i = 2130846198;
-    if (bjuk.a()) {
-      i = 2130846199;
+    int i = 2130846294;
+    if (blfw.a()) {
+      i = 2130846295;
     }
-    return build(i, 2131718284, "add_emotion");
+    return build(i, 2131718670, "add_emotion");
   }
   
   private static ActionSheetItem buildAddFriend()
   {
-    if (bjuk.a()) {}
-    return build(2130842668, 2131718285, "add_friend");
+    if (blfw.a()) {}
+    return build(2130842698, 2131718671, "add_friend");
   }
   
   private static ActionSheetItem buildAddGoods()
   {
-    if (bjuk.a()) {}
-    for (int i = 2130849398;; i = 2130849399) {
-      return build(i, 2131718252, "adding goods");
+    if (blfw.a()) {}
+    for (int i = 2130849490;; i = 2130849491) {
+      return build(i, 2131718638, "adding goods");
     }
   }
   
   private static ActionSheetItem buildAddShelf()
   {
-    int i = 2130841845;
-    if (bjuk.a()) {
-      i = 2130841846;
+    int i = 2130841858;
+    if (blfw.a()) {
+      i = 2130841859;
     }
-    return build(i, 2131718336, "add_shelf");
+    return build(i, 2131718722, "add_shelf");
   }
   
   private static ActionSheetItem buildAddShortCut()
   {
-    int i = 2130841299;
-    if (bjuk.a()) {
-      i = 2130846201;
+    int i = 2130841306;
+    if (blfw.a()) {
+      i = 2130846297;
     }
-    return build(i, 2131718283, "add_desktop");
+    return build(i, 2131718669, "add_desktop");
   }
   
   private static ActionSheetItem buildAddToMy()
   {
-    int i = 2130841300;
-    if (bjuk.a()) {
-      i = 2130841301;
+    int i = 2130841307;
+    if (blfw.a()) {
+      i = 2130841308;
     }
-    return build(i, 2131718286, "add_my");
+    return build(i, 2131718672, "add_my");
   }
   
   private static ActionSheetItem buildAddVideoToTopic()
   {
-    if (bjuk.a()) {}
-    for (int i = 2130849400;; i = 2130849401) {
-      return build(i, 2131718253, "addto_section");
+    if (blfw.a()) {}
+    for (int i = 2130849492;; i = 2130849493) {
+      return build(i, 2131718639, "addto_section");
     }
   }
   
   private static ActionSheetItem buildAdjustFont()
   {
-    int i = 2130846202;
-    if (bjuk.a()) {
-      i = 2130846203;
+    int i = 2130846298;
+    if (blfw.a()) {
+      i = 2130846299;
     }
-    return build(i, 2131718289, "adjust_font");
+    return build(i, 2131718675, "adjust_font");
   }
   
   private static ActionSheetItem buildAioLocation()
   {
-    int i = 2130846227;
-    if (bjuk.a()) {
-      i = 2130846228;
+    int i = 2130846323;
+    if (blfw.a()) {
+      i = 2130846324;
     }
-    return build(i, 2131718290, "aio_position");
+    return build(i, 2131718676, "aio_position");
   }
   
   private static ActionSheetItem buildBackToHome()
   {
-    int i = 2130841289;
-    if (bjuk.a()) {
-      i = 2130841290;
+    int i = 2130841298;
+    if (blfw.a()) {
+      i = 2130841299;
     }
-    return build(i, 2131718296, "backtohome");
+    return build(i, 2131718682, "backtohome");
   }
   
   private static ActionSheetItem buildBarrageSwitchClose()
   {
-    int i = 2130846237;
-    if (bjuk.a()) {
-      i = 2130846238;
+    int i = 2130846307;
+    if (blfw.a()) {
+      i = 2130846308;
     }
-    return build(i, 2131718300, "close_barrage");
+    return build(i, 2131718686, "close_barrage");
   }
   
   private static ActionSheetItem buildBarrageSwitchOpen()
   {
-    int i = 2130846211;
-    if (bjuk.a()) {
-      i = 2130846212;
+    int i = 2130846333;
+    if (blfw.a()) {
+      i = 2130846334;
     }
-    return build(i, 2131718330, "open_barrage");
+    return build(i, 2131718716, "open_barrage");
   }
   
   private static ActionSheetItem buildBookDetail()
   {
-    int i = 2130841847;
-    if (bjuk.a()) {
-      i = 2130841848;
+    int i = 2130841860;
+    if (blfw.a()) {
+      i = 2130841861;
     }
-    return build(i, 2131718337, "book_detail");
+    return build(i, 2131718723, "book_detail");
   }
   
   private static ActionSheetItem buildBookmark()
   {
-    int i = 2130841849;
-    if (bjuk.a()) {
-      i = 2130841852;
+    int i = 2130841862;
+    if (blfw.a()) {
+      i = 2130841865;
     }
-    return build(i, 2131718338, "bookmark");
+    return build(i, 2131718724, "bookmark");
   }
   
   private static ActionSheetItem buildBookmarkCancel()
   {
-    int i = 2130841850;
-    if (bjuk.a()) {
-      i = 2130841851;
+    int i = 2130841863;
+    if (blfw.a()) {
+      i = 2130841864;
     }
-    return build(i, 2131718339, "bookmark_cancel");
+    return build(i, 2131718725, "bookmark_cancel");
   }
   
   private static ActionSheetItem buildBrowser()
   {
-    int i = 2130846167;
-    if (bjuk.a()) {
-      i = 2130846168;
+    int i = 2130846263;
+    if (blfw.a()) {
+      i = 2130846264;
     }
-    return build(i, 2131718365, "browser");
+    return build(i, 2131718751, "browser");
   }
   
   private static ActionSheetItem buildCancelOnlySeeFriend()
   {
-    return build(2130847776, 2131718297, "no_only_friend");
+    return build(2130847867, 2131718683, "no_only_friend");
   }
   
   private static ActionSheetItem buildCartonDetail()
   {
-    int i = 2130850717;
-    if (bjuk.a()) {
-      i = 2130850718;
+    int i = 2130850859;
+    if (blfw.a()) {
+      i = 2130850860;
     }
-    return build(i, 2131718298, "carton_detail");
+    return build(i, 2131718684, "carton_detail");
   }
   
   private static ActionSheetItem buildCheckProfile()
   {
-    int i = 2130846209;
-    if (bjuk.a()) {
-      i = 2130846210;
+    int i = 2130846305;
+    if (blfw.a()) {
+      i = 2130846306;
     }
-    return build(i, 2131695903, "check_profile");
+    return build(i, 2131696155, "check_profile");
   }
   
   private static ActionSheetItem buildChooseFace()
   {
-    return build(2130848354, 2131718299, "rec_face");
+    return build(2130848445, 2131718685, "rec_face");
   }
   
   private static ActionSheetItem buildCloseMiniAppDebug()
   {
-    int i = 2130841291;
-    if (bjuk.a()) {
-      i = 2130841292;
+    int i = 2130841300;
+    if (blfw.a()) {
+      i = 2130841301;
     }
-    return build(i, 2131718291, "applet_closedebug");
+    return build(i, 2131718677, "applet_closedebug");
   }
   
   private static ActionSheetItem buildContinuePurchase()
   {
-    int i = 2130841853;
-    if (bjuk.a()) {
-      i = 2130841856;
+    int i = 2130841866;
+    if (blfw.a()) {
+      i = 2130841869;
     }
-    return build(i, 2131718340, "continue_purchase");
+    return build(i, 2131718726, "continue_purchase");
   }
   
   private static ActionSheetItem buildContinuePurchaseCancel()
   {
-    int i = 2130841854;
-    if (bjuk.a()) {
-      i = 2130841855;
+    int i = 2130841867;
+    if (blfw.a()) {
+      i = 2130841868;
     }
-    return build(i, 2131718341, "continue_purchase_cancel");
+    return build(i, 2131718727, "continue_purchase_cancel");
   }
   
   private static ActionSheetItem buildCopy()
   {
-    int i = 2130846213;
-    if (bjuk.a()) {
-      i = 2130846214;
+    int i = 2130846309;
+    if (blfw.a()) {
+      i = 2130846310;
     }
-    return build(i, 2131718304, "copy_link");
+    return build(i, 2131718690, "copy_link");
   }
   
   private static ActionSheetItem buildCreateLink()
   {
-    int i = 2130844130;
-    if (bjuk.a()) {
-      i = 2130844131;
+    int i = 2130844197;
+    if (blfw.a()) {
+      i = 2130844198;
     }
-    return build(i, 2131718305, "generate_link");
+    return build(i, 2131718691, "generate_link");
   }
   
   private static ActionSheetItem buildCreateQr()
   {
-    int i = 2130844133;
-    if (bjuk.a()) {
-      i = 2130844134;
+    int i = 2130844200;
+    if (blfw.a()) {
+      i = 2130844201;
     }
-    return build(i, 2131718306, "generate_QRcode");
+    return build(i, 2131718692, "generate_QRcode");
   }
   
   private static ActionSheetItem buildCreateWatchWord()
   {
-    if (bjuk.a()) {}
-    for (int i = 2130849424;; i = 2130849425) {
-      return build(i, 2131718274, "kouling_share");
+    if (blfw.a()) {}
+    for (int i = 2130849516;; i = 2130849517) {
+      return build(i, 2131718660, "kouling_share");
     }
   }
   
   private static ActionSheetItem buildDelete()
   {
-    return build(2130848351, 2131718308, "delete");
+    return build(2130848442, 2131718694, "delete");
   }
   
   private static ActionSheetItem buildDeleteFans()
   {
-    if (bjuk.a()) {}
-    for (int i = 2130849416;; i = 2130849417) {
-      return build(i, 2131718255, "delete_fans");
+    if (blfw.a()) {}
+    for (int i = 2130849508;; i = 2130849509) {
+      return build(i, 2131718641, "delete_fans");
     }
   }
   
   private static ActionSheetItem buildDeleteHasPush()
   {
-    if (bjuk.a()) {}
-    for (int i = 2130843980;; i = 2130843979) {
-      return build(i, 2131718260, "delete_launch");
+    if (blfw.a()) {}
+    for (int i = 2130844020;; i = 2130844019) {
+      return build(i, 2131718646, "delete_launch");
     }
   }
   
   private static ActionSheetItem buildDeleteTopic()
   {
-    if (bjuk.a()) {}
-    for (int i = 2130849404;; i = 2130849405) {
-      return build(i, 2131718256, "delete_from_section");
+    if (blfw.a()) {}
+    for (int i = 2130849496;; i = 2130849497) {
+      return build(i, 2131718642, "delete_from_section");
     }
   }
   
   private static ActionSheetItem buildDownload()
   {
-    int i = 2130850719;
-    if (bjuk.a()) {
-      i = 2130850720;
+    int i = 2130850861;
+    if (blfw.a()) {
+      i = 2130850862;
     }
-    return build(i, 2131718309, "download");
+    return build(i, 2131718695, "download");
   }
   
   private static ActionSheetItem buildEdit()
   {
-    return build(2130847774, 2131718310, "edit");
+    return build(2130847865, 2131718696, "edit");
   }
   
   private static ActionSheetItem buildExportTencentDocs()
   {
-    int i = 2130850469;
-    if (bjuk.a()) {
-      i = 2130850470;
+    int i = 2130850575;
+    if (blfw.a()) {
+      i = 2130850576;
     }
-    return build(i, 2131718370, "url_to_txdoc");
+    return build(i, 2131718756, "url_to_txdoc");
   }
   
   private static ActionSheetItem buildExtractWords()
   {
-    int i = 2130846261;
-    if (bjuk.a()) {
-      i = 2130846262;
+    int i = 2130846357;
+    if (blfw.a()) {
+      i = 2130846358;
     }
-    return build(i, 2131718332, "pick_words");
+    return build(i, 2131718718, "pick_words");
   }
   
   private static ActionSheetItem buildFavDetail()
   {
-    int i = 2130844101;
-    if (bjuk.a()) {
-      i = 2130844102;
+    int i = 2130844168;
+    if (blfw.a()) {
+      i = 2130844169;
     }
-    return build(i, 2131718312, "fav_detail");
+    return build(i, 2131718698, "fav_detail");
   }
   
   private static ActionSheetItem buildFavGroup()
   {
-    int i = 2130844105;
-    if (bjuk.a()) {
-      i = 2130844106;
+    int i = 2130844172;
+    if (blfw.a()) {
+      i = 2130844173;
     }
-    return build(i, 2131718313, "fav_group");
+    return build(i, 2131718699, "fav_group");
   }
   
   private static ActionSheetItem buildFavOriginalUrl()
   {
-    int i = 2130844107;
-    if (bjuk.a()) {
-      i = 2130844108;
+    int i = 2130844174;
+    if (blfw.a()) {
+      i = 2130844175;
     }
-    return build(i, 2131718314, "fav_show_originalurl");
+    return build(i, 2131718700, "fav_show_originalurl");
   }
   
   private static ActionSheetItem buildFavorite()
   {
-    int i = 2130846219;
-    if (bjuk.a()) {
-      i = 2130846220;
+    int i = 2130846315;
+    if (blfw.a()) {
+      i = 2130846316;
     }
-    return build(i, 2131718301, "collect");
+    return build(i, 2131718687, "collect");
   }
   
   private static ActionSheetItem buildFollow()
   {
-    return build(2130847786, 2131718315, "follow");
+    return build(2130847877, 2131718701, "follow");
   }
   
   private static ActionSheetItem buildFollowManage()
   {
-    if (bjuk.a()) {}
-    for (int i = 2130841298;; i = 2130841297) {
-      return build(i, 2131718316, "follow_manage");
+    if (blfw.a()) {}
+    for (int i = 2130841305;; i = 2130841304) {
+      return build(i, 2131718702, "follow_manage");
     }
   }
   
   private static ActionSheetItem buildGotoFriendAio()
   {
-    if (bjuk.a()) {}
-    return build(2130842667, 2131694756, "open_aio");
+    if (blfw.a()) {}
+    return build(2130842697, 2131694963, "open_aio");
   }
   
   private static ActionSheetItem buildGroupAlbum()
   {
-    int i = 2130846175;
-    if (bjuk.a()) {
-      i = 2130846176;
+    int i = 2130846271;
+    if (blfw.a()) {
+      i = 2130846272;
     }
-    return build(i, 2131718317, "group_album");
+    return build(i, 2131718703, "group_album");
   }
   
   private static ActionSheetItem buildGroupManager()
   {
-    if (bjuk.a()) {}
-    for (int i = 2130849406;; i = 2130849407) {
-      return build(i, 2131718257, "fan_group_manage");
+    if (blfw.a()) {}
+    for (int i = 2130849498;; i = 2130849499) {
+      return build(i, 2131718643, "fan_group_manage");
     }
   }
   
   private static ActionSheetItem buildHideFeed()
   {
-    int i = 2130846225;
-    if (bjuk.a()) {
-      i = 2130846226;
+    int i = 2130846321;
+    if (blfw.a()) {
+      i = 2130846322;
     }
-    return build(i, 2131718319, "hide_this_feed");
+    return build(i, 2131718705, "hide_this_feed");
   }
   
   private static ActionSheetItem buildHideHim()
   {
-    return build(2130847778, 2131718320, "hide_him");
+    return build(2130847869, 2131718706, "hide_him");
   }
   
   private static ActionSheetItem buildHideOpinion()
   {
-    int i = 2130841857;
-    if (bjuk.a()) {
-      i = 2130841858;
+    int i = 2130841870;
+    if (blfw.a()) {
+      i = 2130841871;
     }
-    return build(i, 2131718342, "hide_opinion");
+    return build(i, 2131718728, "hide_opinion");
   }
   
   private static ActionSheetItem buildHideThisWork()
   {
-    int i = 2130846225;
-    if (bjuk.a()) {
-      i = 2130846226;
+    int i = 2130846321;
+    if (blfw.a()) {
+      i = 2130846322;
     }
-    return build(i, 2131718318, "hide_works");
+    return build(i, 2131718704, "hide_works");
   }
   
   private static ActionSheetItem buildImportReader()
   {
-    int i = 2130840194;
-    if (bjuk.a()) {
-      i = 2130844132;
+    int i = 2130840217;
+    if (blfw.a()) {
+      i = 2130844199;
     }
-    return build(i, 2131718321, "Import_reader");
+    return build(i, 2131718707, "Import_reader");
   }
   
   private static ActionSheetItem buildImportTXdoc()
   {
     int i = 2130837578;
-    if (bjuk.a()) {
+    if (blfw.a()) {
       i = 2130837579;
     }
-    return build(i, 2131718322, "edit_online");
+    return build(i, 2131718708, "edit_online");
   }
   
   private static ActionSheetItem buildKandian()
   {
-    int i = 2130846177;
-    if (bjuk.a()) {
-      i = 2130846178;
+    int i = 2130846273;
+    if (blfw.a()) {
+      i = 2130846274;
     }
-    return build(i, 2131718323, "kandian");
+    return build(i, 2131718709, "kandian");
   }
   
   private static ActionSheetItem buildLaunchChat()
   {
-    return build(2130847783, 2131718324, "open_aio");
+    return build(2130847874, 2131718710, "open_aio");
   }
   
   private static ActionSheetItem buildLongscreenshot()
   {
-    int i = 2130846229;
-    if (bjuk.a()) {
-      i = 2130846230;
+    int i = 2130846325;
+    if (blfw.a()) {
+      i = 2130846326;
     }
-    return build(i, 2131718325, "long_screenshot");
+    return build(i, 2131718711, "long_screenshot");
   }
   
   private static ActionSheetItem buildMiniAppClosePerformance()
   {
-    int i = 2130841291;
-    if (bjuk.a()) {
-      i = 2130841292;
+    int i = 2130841300;
+    if (blfw.a()) {
+      i = 2130841301;
     }
-    return build(i, 2131718292, "applet_closeperformance");
+    return build(i, 2131718678, "applet_closeperformance");
   }
   
   private static ActionSheetItem buildMiniAppOpenPerformance()
   {
-    int i = 2130841291;
-    if (bjuk.a()) {
-      i = 2130841292;
+    int i = 2130841300;
+    if (blfw.a()) {
+      i = 2130841301;
     }
-    return build(i, 2131718294, "applet_openperformance");
+    return build(i, 2131718680, "applet_openperformance");
   }
   
   private static ActionSheetItem buildMiniAppToCurrentTroop()
   {
-    if (bjuk.a()) {}
-    for (int i = 2130840947;; i = 2130840946) {
-      return build(i, 2131718287, "add_to_group");
+    if (blfw.a()) {}
+    for (int i = 2130840986;; i = 2130840985) {
+      return build(i, 2131718673, "add_to_group");
     }
   }
   
   private static ActionSheetItem buildMiniAppToTroop()
   {
-    if (bjuk.a()) {}
-    for (int i = 2130840947;; i = 2130840946) {
-      return build(i, 2131718288, "group_app");
+    if (blfw.a()) {}
+    for (int i = 2130840986;; i = 2130840985) {
+      return build(i, 2131718674, "group_app");
     }
   }
   
   private static ActionSheetItem buildMoreInfo()
   {
-    if (bjuk.a()) {}
-    for (int i = 2130849408;; i = 2130849409) {
-      return build(i, 2131694808, "share_more");
+    if (blfw.a()) {}
+    for (int i = 2130849500;; i = 2130849501) {
+      return build(i, 2131695016, "share_more");
     }
   }
   
   private static ActionSheetItem buildMyComputer()
   {
-    int i = 2130846171;
-    if (bjuk.a()) {
-      i = 2130846172;
+    int i = 2130846267;
+    if (blfw.a()) {
+      i = 2130846268;
     }
-    return build(i, 2131718359, "sent_pc");
+    return build(i, 2131718745, "sent_pc");
   }
   
   private static ActionSheetItem buildNotCare()
   {
-    int i = 2130849426;
-    if (bjuk.a()) {
-      i = 2130846204;
+    int i = 2130849518;
+    if (blfw.a()) {
+      i = 2130846300;
     }
-    return build(i, 2131718327, "not_care");
+    return build(i, 2131718713, "not_care");
   }
   
   private static ActionSheetItem buildNotInterested()
   {
-    int i = 2130846264;
-    if (bjuk.a()) {
-      i = 2130846265;
+    int i = 2130846360;
+    if (blfw.a()) {
+      i = 2130846361;
     }
-    return build(i, 2131718369, "uninterested");
+    return build(i, 2131718755, "uninterested");
   }
   
   private static ActionSheetItem buildOnlySeeFriend()
   {
-    int i = 2130846235;
-    if (bjuk.a()) {
-      i = 2130846236;
+    int i = 2130846331;
+    if (blfw.a()) {
+      i = 2130846332;
     }
-    return build(i, 2131718328, "only_friend");
+    return build(i, 2131718714, "only_friend");
   }
   
   private static ActionSheetItem buildOpenAio()
   {
-    if (bjuk.a()) {}
-    return build(2130842667, 2131718329, "open_aio");
+    if (blfw.a()) {}
+    return build(2130842697, 2131718715, "open_aio");
   }
   
   private static ActionSheetItem buildOpenFileWithoutDefaultApp()
   {
-    int i = 2130844126;
-    if (bjuk.a()) {
-      i = 2130844127;
+    int i = 2130844193;
+    if (blfw.a()) {
+      i = 2130844194;
     }
-    return build(i, 2131697619, "other_app");
+    return build(i, 2131697899, "other_app");
   }
   
   private static ActionSheetItem buildOpenMiniAppDebug()
   {
-    int i = 2130841291;
-    if (bjuk.a()) {
-      i = 2130841292;
+    int i = 2130841300;
+    if (blfw.a()) {
+      i = 2130841301;
     }
-    return build(i, 2131718293, "applet_opendebug");
+    return build(i, 2131718679, "applet_opendebug");
   }
   
   private static ActionSheetItem buildOrderList()
   {
-    if (bjuk.a()) {}
-    for (int i = 2130849410;; i = 2130849411) {
-      return build(i, 2131718258, "orderlist");
+    if (blfw.a()) {}
+    for (int i = 2130849502;; i = 2130849503) {
+      return build(i, 2131718644, "orderlist");
     }
   }
   
   private static ActionSheetItem buildOtherApp()
   {
-    int i = 2130846233;
-    if (bjuk.a()) {
-      i = 2130846234;
+    int i = 2130846329;
+    if (blfw.a()) {
+      i = 2130846330;
     }
-    return build(i, 2131718331, "other_app");
+    return build(i, 2131718717, "other_app");
   }
   
   private static ActionSheetItem buildPitu()
   {
-    return build(2130847780, 2131718333, "psapp");
+    return build(2130847871, 2131718719, "psapp");
   }
   
   private static ActionSheetItem buildPrint()
   {
-    int i = 2130844141;
-    if (bjuk.a()) {
-      i = 2130844142;
+    int i = 2130844208;
+    if (blfw.a()) {
+      i = 2130844209;
     }
-    return build(i, 2131718334, "print");
+    return build(i, 2131718720, "print");
   }
   
   private static ActionSheetItem buildPrivacy()
   {
-    int i = 2130841859;
-    if (bjuk.a()) {
-      i = 2130841862;
+    int i = 2130841872;
+    if (blfw.a()) {
+      i = 2130841875;
     }
-    return build(i, 2131718343, "privacy");
+    return build(i, 2131718729, "privacy");
   }
   
   private static ActionSheetItem buildPrivacyCancel()
   {
-    int i = 2130841860;
-    if (bjuk.a()) {
-      i = 2130841861;
+    int i = 2130841873;
+    if (blfw.a()) {
+      i = 2130841874;
     }
-    return build(i, 2131718344, "privacy_cancel");
+    return build(i, 2131718730, "privacy_cancel");
   }
   
   private static ActionSheetItem buildPrivateMessage()
   {
-    if (bjuk.a()) {}
-    for (int i = 2130849414;; i = 2130849415) {
-      return build(i, 2131718259, "private_chat");
+    if (blfw.a()) {}
+    for (int i = 2130849506;; i = 2130849507) {
+      return build(i, 2131718645, "private_chat");
     }
   }
   
   private static ActionSheetItem buildPushSetup()
   {
-    int i = 2130841297;
-    if (bjuk.a()) {
-      i = 2130841298;
+    int i = 2130841304;
+    if (blfw.a()) {
+      i = 2130841305;
     }
-    return build(i, 2131718346, "push_setup");
+    return build(i, 2131718732, "push_setup");
   }
   
   private static ActionSheetItem buildQQBrowser()
   {
-    int i = 2130846164;
-    if (bjuk.a()) {
-      i = 2130846165;
+    int i = 2130846260;
+    if (blfw.a()) {
+      i = 2130846261;
     }
-    return build(i, 2131718276, "Qbrowser");
+    return build(i, 2131718662, "Qbrowser");
   }
   
   private static ActionSheetItem buildQRCode()
   {
-    int i = 2130846247;
-    if (bjuk.a()) {
-      i = 2130846248;
+    int i = 2130846343;
+    if (blfw.a()) {
+      i = 2130846344;
     }
-    return build(i, 2131718275, "QRcode");
+    return build(i, 2131718661, "QRcode");
   }
   
   private static ActionSheetItem buildQZoneAlbum()
   {
-    int i = 2130846181;
-    if (bjuk.a()) {
-      i = 2130846182;
+    int i = 2130846277;
+    if (blfw.a()) {
+      i = 2130846278;
     }
-    return build(i, 2131718279, "Qzone_album");
+    return build(i, 2131718665, "Qzone_album");
   }
   
   private static ActionSheetItem buildQcirclePrivateMessage()
   {
-    if (bjuk.a()) {}
-    for (int i = 2130844000;; i = 2130843999) {
-      return build(i, 2131718261, "qcircle_private_message");
+    if (blfw.a()) {}
+    for (int i = 2130844052;; i = 2130844051) {
+      return build(i, 2131718647, "qcircle_private_message");
     }
   }
   
   private static ActionSheetItem buildQidian()
   {
-    if (bjuk.a()) {}
-    return build(2130844322, 2131718347, "qidian");
+    if (blfw.a()) {}
+    return build(2130844389, 2131718733, "qidian");
   }
   
   private static ActionSheetItem buildQiyeQQ()
   {
-    if (bjuk.a()) {}
-    return build(2130844323, 2131718348, "qiyeqq");
+    if (blfw.a()) {}
+    return build(2130844390, 2131718734, "qiyeqq");
   }
   
   private static ActionSheetItem buildRemoveColorNote()
   {
-    int i = 2130846205;
-    if (bjuk.a()) {
-      i = 2130846206;
+    int i = 2130846301;
+    if (blfw.a()) {
+      i = 2130846302;
     }
-    return build(i, 2131718303, "colornote_cancel");
+    return build(i, 2131718689, "colornote_cancel");
   }
   
   private static ActionSheetItem buildRemoveFavorite()
   {
-    return build(2130847788, 2131718367, "collect_cancel");
+    return build(2130847879, 2131718753, "collect_cancel");
   }
   
   private static ActionSheetItem buildRemoveFromMy()
   {
-    int i = 2130841302;
-    if (bjuk.a()) {
-      i = 2130841303;
+    int i = 2130841309;
+    if (blfw.a()) {
+      i = 2130841310;
     }
-    return build(i, 2131718349, "remove_my");
+    return build(i, 2131718735, "remove_my");
   }
   
   private static ActionSheetItem buildRemoveVideoFromTopic()
   {
-    if (bjuk.a()) {}
-    for (int i = 2130849418;; i = 2130849419) {
-      return build(i, 2131718262, "delete_section");
+    if (blfw.a()) {}
+    for (int i = 2130849510;; i = 2130849511) {
+      return build(i, 2131718648, "delete_section");
     }
   }
   
   private static ActionSheetItem buildReport()
   {
-    int i = 2130846245;
-    if (bjuk.a()) {
-      i = 2130846246;
+    int i = 2130846341;
+    if (blfw.a()) {
+      i = 2130846342;
     }
-    return build(i, 2131718350, "report");
+    return build(i, 2131718736, "report");
   }
   
   private static ActionSheetItem buildReprintBlog()
   {
-    return build(2130847777, 2131718351, "reprint_diary");
+    return build(2130847868, 2131718737, "reprint_diary");
   }
   
   private static ActionSheetItem buildReprintPhoto()
   {
-    return build(2130847777, 2131718352, "reprint_photo");
+    return build(2130847868, 2131718738, "reprint_photo");
   }
   
   private static ActionSheetItem buildRestartMiniApp()
   {
-    int i = 2130841294;
-    if (bjuk.a()) {
-      i = 2130841295;
+    int i = 2130841302;
+    if (blfw.a()) {
+      i = 2130841303;
     }
-    return build(i, 2131718353, "restart_applet");
+    return build(i, 2131718739, "restart_applet");
   }
   
   private static ActionSheetItem buildRoomId()
   {
-    if (bjuk.a()) {}
-    for (int i = 2130849414;; i = 2130849415) {
-      return build(i, 2131718254, "copy_roomid");
+    if (blfw.a()) {}
+    for (int i = 2130849506;; i = 2130849507) {
+      return build(i, 2131718640, "copy_roomid");
     }
   }
   
   private static ActionSheetItem buildSafeForward()
   {
-    int i = 2130840185;
-    if (bjuk.a()) {
-      i = 2130844128;
+    int i = 2130840208;
+    if (blfw.a()) {
+      i = 2130844195;
     }
-    return build(i, 2131718354, "safe_share");
+    return build(i, 2131718740, "safe_share");
   }
   
   private static ActionSheetItem buildSave()
   {
-    int i = 2130846215;
-    if (bjuk.a()) {
-      i = 2130846216;
+    int i = 2130846311;
+    if (blfw.a()) {
+      i = 2130846312;
     }
-    return build(i, 2131718355, "save");
+    return build(i, 2131718741, "save");
   }
   
   private static ActionSheetItem buildScanMiniAppCode()
   {
-    int i = 2130846231;
-    if (bjuk.a()) {
-      i = 2130846232;
+    int i = 2130846327;
+    if (blfw.a()) {
+      i = 2130846328;
     }
-    return build(i, 2131718356, "scan_appletcode");
+    return build(i, 2131718742, "scan_appletcode");
   }
   
   private static ActionSheetItem buildScanQRCode()
   {
-    int i = 2130846247;
-    if (bjuk.a()) {
-      i = 2130846248;
+    int i = 2130846343;
+    if (blfw.a()) {
+      i = 2130846344;
     }
-    return build(i, 2131718357, "scan_qrcode");
+    return build(i, 2131718743, "scan_qrcode");
   }
   
   private static ActionSheetItem buildScreenshot()
   {
-    if (bjuk.a()) {}
-    return build(2130842666, 2131718280, "Screenshot_share");
+    if (blfw.a()) {}
+    return build(2130842696, 2131718666, "Screenshot_share");
   }
   
   private static ActionSheetItem buildSendToEvernote()
   {
-    return build(2130847775, 2131718311, "Evernote");
+    return build(2130847866, 2131718697, "Evernote");
   }
   
   private static ActionSheetItem buildSendToFriend()
   {
-    int i = 2130846173;
-    if (bjuk.a()) {
-      i = 2130846174;
+    int i = 2130846269;
+    if (blfw.a()) {
+      i = 2130846270;
     }
-    return build(i, 2131718277, "Qfriend");
+    return build(i, 2131718663, "Qfriend");
   }
   
   private static ActionSheetItem buildSendToQZone()
   {
-    int i = 2130846179;
-    if (bjuk.a()) {
-      i = 2130846180;
+    int i = 2130846275;
+    if (blfw.a()) {
+      i = 2130846276;
     }
-    return build(i, 2131718278, "Qzone");
+    return build(i, 2131718664, "Qzone");
   }
   
   private static ActionSheetItem buildSendToWeChat()
   {
-    int i = 2130846183;
-    if (bjuk.a()) {
-      i = 2130846184;
+    int i = 2130846279;
+    if (blfw.a()) {
+      i = 2130846280;
     }
-    return build(i, 2131718374, "wechat");
+    return build(i, 2131718760, "wechat");
   }
   
   private static ActionSheetItem buildSendToWeChatCircle()
   {
-    int i = 2130846185;
-    if (bjuk.a()) {
-      i = 2130846186;
+    int i = 2130846281;
+    if (blfw.a()) {
+      i = 2130846282;
     }
-    return build(i, 2131718375, "wechat_");
+    return build(i, 2131718761, "wechat_");
   }
   
   private static ActionSheetItem buildSendToWeiYun()
   {
-    int i = 2130846187;
-    if (bjuk.a()) {
-      i = 2130846188;
+    int i = 2130846283;
+    if (blfw.a()) {
+      i = 2130846284;
     }
-    return build(i, 2131718377, "weiyun");
+    return build(i, 2131718763, "weiyun");
   }
   
   private static ActionSheetItem buildSendToWeibo()
   {
-    int i = 2130846192;
-    if (bjuk.a()) {
-      i = 2130846193;
+    int i = 2130846288;
+    if (blfw.a()) {
+      i = 2130846289;
     }
-    return build(i, 2131718376, "weibo");
+    return build(i, 2131718762, "weibo");
   }
   
   private static ActionSheetItem buildSetBackground()
   {
-    return build(2130848350, 2131718360, "set_background");
+    return build(2130848441, 2131718746, "set_background");
   }
   
   private static ActionSheetItem buildSetDress()
   {
-    return build(2130847784, 2131718361, "set_card");
+    return build(2130847875, 2131718747, "set_card");
   }
   
   private static ActionSheetItem buildSetPrivate()
   {
-    return build(2130847785, 2131718362, "privacy");
+    return build(2130847876, 2131718748, "privacy");
   }
   
   private static ActionSheetItem buildSetTop()
   {
-    return build(2130847787, 2131718363, "stick");
+    return build(2130847878, 2131718749, "stick");
   }
   
   private static ActionSheetItem buildSharePicture()
   {
-    if (bjuk.a()) {}
-    for (int i = 2130849402;; i = 2130849403) {
-      return build(i, 2131718263, "sharepicture");
+    if (blfw.a()) {}
+    for (int i = 2130849494;; i = 2130849495) {
+      return build(i, 2131718649, "sharepicture");
     }
   }
   
   private static ActionSheetItem buildShopManager()
   {
-    if (bjuk.a()) {}
-    for (int i = 2130849420;; i = 2130849421) {
-      return build(i, 2131718264, "store_manage");
+    if (blfw.a()) {}
+    for (int i = 2130849512;; i = 2130849513) {
+      return build(i, 2131718650, "store_manage");
     }
   }
   
   private static ActionSheetItem buildShowOpinion()
   {
-    int i = 2130841863;
-    if (bjuk.a()) {
-      i = 2130841864;
+    int i = 2130841876;
+    if (blfw.a()) {
+      i = 2130841877;
     }
-    return build(i, 2131718345, "show_opinion");
+    return build(i, 2131718731, "show_opinion");
   }
   
   private static ActionSheetItem buildSyncQzone()
   {
-    if (bjuk.a()) {}
-    for (int i = 2130849422;; i = 2130849423) {
-      return build(i, 2131718265, "Sync_zone");
+    if (blfw.a()) {}
+    for (int i = 2130849514;; i = 2130849515) {
+      return build(i, 2131718651, "Sync_zone");
     }
   }
   
   private static ActionSheetItem buildTribeAddToDigest()
   {
-    if (bjuk.a()) {}
-    for (int i = 2130843604;; i = 2130843605) {
-      return build(i, 2131718266, "add_to_digest");
+    if (blfw.a()) {}
+    for (int i = 2130843641;; i = 2130843642) {
+      return build(i, 2131718652, "add_to_digest");
     }
   }
   
   private static ActionSheetItem buildTribeCancelDigest()
   {
-    if (bjuk.a()) {}
-    for (int i = 2130843612;; i = 2130843613) {
-      return build(i, 2131718267, "cancel_digest");
+    if (blfw.a()) {}
+    for (int i = 2130843649;; i = 2130843650) {
+      return build(i, 2131718653, "cancel_digest");
     }
   }
   
   private static ActionSheetItem buildTribeFeedback()
   {
-    if (bjuk.a()) {}
-    for (int i = 2130843606;; i = 2130843607) {
-      return build(i, 2131718268, "feedback");
+    if (blfw.a()) {}
+    for (int i = 2130843643;; i = 2130843644) {
+      return build(i, 2131718654, "feedback");
     }
   }
   
   private static ActionSheetItem buildTribeInterest()
   {
-    if (bjuk.a()) {}
-    for (int i = 2130843616;; i = 2130843617) {
-      return build(i, 2131718269, "interest");
+    if (blfw.a()) {}
+    for (int i = 2130843653;; i = 2130843654) {
+      return build(i, 2131718655, "interest");
     }
   }
   
   private static ActionSheetItem buildTribeLookOwner()
   {
-    if (bjuk.a()) {}
-    for (int i = 2130843608;; i = 2130843609) {
-      return build(i, 2131718270, "look_owner");
+    if (blfw.a()) {}
+    for (int i = 2130843645;; i = 2130843646) {
+      return build(i, 2131718656, "look_owner");
     }
   }
   
   private static ActionSheetItem buildTribePullBlack()
   {
-    if (bjuk.a()) {}
-    for (int i = 2130843614;; i = 2130843615) {
-      return build(i, 2131718271, "pull_black");
+    if (blfw.a()) {}
+    for (int i = 2130843651;; i = 2130843652) {
+      return build(i, 2131718657, "pull_black");
     }
   }
   
   private static ActionSheetItem buildTribePushTopic()
   {
-    if (bjuk.a()) {}
-    for (int i = 2130843610;; i = 2130843611) {
-      return build(i, 2131718272, "push_topics");
+    if (blfw.a()) {}
+    for (int i = 2130843647;; i = 2130843648) {
+      return build(i, 2131718658, "push_topics");
     }
   }
   
   private static ActionSheetItem buildUnFollow()
   {
-    return build(2130847789, 2131718368, "unfollow");
+    return build(2130847880, 2131718754, "unfollow");
   }
   
   private static ActionSheetItem buildUnSetTop()
   {
-    return build(2130847790, 2131718366, "unstick");
+    return build(2130847881, 2131718752, "unstick");
   }
   
   private static ActionSheetItem buildVideoFeedback()
   {
-    if (bjuk.a()) {}
-    for (int i = 2130849412;; i = 2130849413) {
-      return build(i, 2131718273, "play_feedback");
+    if (blfw.a()) {}
+    for (int i = 2130849504;; i = 2130849505) {
+      return build(i, 2131718659, "play_feedback");
     }
   }
   
   private static ActionSheetItem buildViewDress()
   {
-    return build(2130847784, 2131718371, "look_dress");
+    return build(2130847875, 2131718757, "look_dress");
   }
   
   private static ActionSheetItem buildViewEmoji()
   {
-    int i = 2130846207;
-    if (bjuk.a()) {
-      i = 2130846208;
+    int i = 2130846303;
+    if (blfw.a()) {
+      i = 2130846304;
     }
-    return build(i, 2131718358, "search_emotion");
+    return build(i, 2131718744, "search_emotion");
   }
   
   private static ActionSheetItem buildWatchOnTV()
   {
-    return build(2130847773, 2131718372, "watch_on_tv");
+    return build(2130847864, 2131718758, "watch_on_tv");
   }
   
   private static ActionSheetItem buildWatchOriginalVideo()
   {
-    int i = 2130849186;
-    if (bjuk.a()) {
-      i = 2130849187;
+    int i = 2130849278;
+    if (blfw.a()) {
+      i = 2130849279;
     }
-    return build(i, 2131718373, "orignal");
+    return build(i, 2131718759, "orignal");
   }
   
   public boolean isValidCreate()

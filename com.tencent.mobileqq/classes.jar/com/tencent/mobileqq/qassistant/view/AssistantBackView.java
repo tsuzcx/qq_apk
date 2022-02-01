@@ -10,8 +10,8 @@ import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import azeu;
-import azgn;
+import bakl;
+import bamv;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.LottieComposition.Factory.ListenerAdapter;
 import com.tencent.mobileqq.dinifly.LottieCompositionFactory;
@@ -54,7 +54,7 @@ public class AssistantBackView
   
   private void a()
   {
-    LottieComposition.Factory.ListenerAdapter localListenerAdapter = new LottieComposition.Factory.ListenerAdapter(new azgn(this));
+    LottieComposition.Factory.ListenerAdapter localListenerAdapter = new LottieComposition.Factory.ListenerAdapter(new bamv(this));
     LottieTask localLottieTask = LottieCompositionFactory.fromAsset(getContext(), "login_btn_lottie_anim.json");
     localLottieTask.addListener(localListenerAdapter);
     synchronized (this.jdField_a_of_type_JavaLangObject)
@@ -144,7 +144,7 @@ public class AssistantBackView
     if (bool == paramBoolean) {
       return;
     }
-    azeu.a("AssistantBackView", "setEnabled isEnabled:" + isEnabled() + "  mLottieDrawable:" + this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+    bakl.a("AssistantBackView", "setEnabled isEnabled:" + isEnabled() + "  mLottieDrawable:" + this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
     removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     post(this.jdField_a_of_type_JavaLangRunnable);
   }

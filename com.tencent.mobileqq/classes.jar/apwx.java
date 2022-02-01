@@ -1,37 +1,17 @@
-import android.support.v4.util.ArraySet;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.wordsegment.WordSegment.ILogCallback;
 
-public class apwx
+final class apwx
+  implements WordSegment.ILogCallback
 {
-  public ArraySet<String> a = new ArraySet();
-  
-  public static apwx a(String paramString)
+  public void OnLog(String paramString1, String paramString2)
   {
-    localapwx = new apwx();
-    try
-    {
-      paramString = new JSONObject(paramString).getJSONArray("white_list");
-      int i = 0;
-      while (i < paramString.length())
-      {
-        localapwx.a.add(paramString.optString(i, ""));
-        i += 1;
-      }
-      return localapwx;
-    }
-    catch (Throwable paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("BroadcastConfProcessor", 2, paramString, new Object[0]);
-      }
-    }
+    ArkAppCenter.c("ArkApp.Dict.WordSegment." + paramString1, String.format("%s", new Object[] { paramString2 }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apwx
  * JD-Core Version:    0.7.0.1
  */

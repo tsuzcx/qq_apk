@@ -1,19 +1,8 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import kotlin.Metadata;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/view/MotionEvent;", "onTouch"}, k=3, mv={1, 1, 16})
-final class sfu
-  implements View.OnTouchListener
+public abstract interface sfu
 {
-  sfu(sfq paramsfq) {}
-  
-  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    sfq.a(this.a);
-    return true;
-  }
+  public abstract void a(JSONObject paramJSONObject);
 }
 
 

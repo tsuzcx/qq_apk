@@ -1,19 +1,26 @@
-final class uwa
-  extends uvx
+import android.os.FileObserver;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+
+class uwa
+  extends FileObserver
 {
-  uwa(int paramInt)
+  uwa(uvz paramuvz, String paramString1, int paramInt, String paramString2)
   {
-    super(paramInt);
+    super(paramString1, paramInt);
   }
   
-  String a()
+  public void onEvent(int paramInt, String paramString)
   {
-    return "null";
-  }
-  
-  String b()
-  {
-    return "null";
+    if (QLog.isDevelopLevel()) {
+      QLog.d("ScreenshotContentObserver", 2, "onEvent->time:" + System.currentTimeMillis() + ", path:" + paramString);
+    }
+    if ((TextUtils.isEmpty(paramString)) || (paramInt != 256)) {}
+    while ((paramString.equalsIgnoreCase(uvz.a(this.jdField_a_of_type_Uvz))) || (paramString.contains("temp")) || (uvz.a(this.jdField_a_of_type_Uvz) == null)) {
+      return;
+    }
+    uvz.a(this.jdField_a_of_type_Uvz).a(null, this.jdField_a_of_type_JavaLangString + paramString, 1);
+    uvz.a(this.jdField_a_of_type_Uvz, paramString);
   }
 }
 

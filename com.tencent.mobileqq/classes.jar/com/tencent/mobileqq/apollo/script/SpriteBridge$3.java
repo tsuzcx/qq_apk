@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.apollo.script;
 
-import amar;
-import amau;
+import anbz;
+import ancc;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
 public class SpriteBridge$3
   implements Runnable
 {
-  public SpriteBridge$3(amar paramamar) {}
+  public SpriteBridge$3(anbz paramanbz) {}
   
   public void run()
   {
-    if ((amar.a(this.this$0) != null) && (amar.a(this.this$0).a() != null)) {
-      amar.a(this.this$0).a().addApolloBackgroundSurfaceView();
+    if ((anbz.a(this.this$0) != null) && (anbz.a(this.this$0).a() != null)) {
+      anbz.a(this.this$0).a().addApolloBackgroundSurfaceView();
     }
   }
 }

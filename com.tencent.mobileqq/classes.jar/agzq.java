@@ -1,16 +1,18 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class agzq
-  implements DialogInterface.OnClickListener
+  extends ahaa
 {
-  agzq(agzp paramagzp) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  agzq(agvm paramagvm)
   {
-    paramDialogInterface.dismiss();
-    agzo.h(this.a.a).setResult(8001);
+    super(paramagvm, null);
+  }
+  
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new QQStoryItemBuilder(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

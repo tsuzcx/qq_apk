@@ -5,11 +5,11 @@ import java.net.URL;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import syn;
-import syo;
-import veq;
-import vfh;
-import vgb;
+import tlv;
+import tlw;
+import vtj;
+import vua;
+import vuu;
 
 class PublicAccountImageCollectionListView$2
   implements Runnable
@@ -56,16 +56,16 @@ class PublicAccountImageCollectionListView$2
             }
             try
             {
-              vgb localvgb = (vgb)this.jdField_a_of_type_JavaUtilList.get(j - 1);
-              if (localvgb != null)
+              vuu localvuu = (vuu)this.jdField_a_of_type_JavaUtilList.get(j - 1);
+              if (localvuu != null)
               {
-                localObject = ((veq)this.this$0.getAdapter()).a(localvgb.a);
+                localObject = ((vtj)this.this$0.getAdapter()).a(localvuu.a);
                 if (localObject == null) {
                   break;
                 }
-                int k = ((veq)this.this$0.getAdapter()).a(localvgb)[0];
-                int m = ((veq)this.this$0.getAdapter()).a(localvgb)[1];
-                localLinkedList.add(vfh.a((URL)localObject, k, m));
+                int k = ((vtj)this.this$0.getAdapter()).a(localvuu)[0];
+                int m = ((vtj)this.this$0.getAdapter()).a(localvuu)[1];
+                localLinkedList.add(vua.a((URL)localObject, k, m));
                 if (QLog.isColorLevel()) {
                   QLog.d("PublicAccountImageCollectionListView", 2, "preloadImg index:" + j + "  reqWidth = " + k + " reqHeight = " + m);
                 }
@@ -82,14 +82,14 @@ class PublicAccountImageCollectionListView$2
       Iterator localIterator = localLinkedList.iterator();
       while (localIterator.hasNext())
       {
-        localObject = (vfh)localIterator.next();
-        if ((localObject != null) && (((vfh)localObject).jdField_a_of_type_JavaNetURL != null))
+        localObject = (vua)localIterator.next();
+        if ((localObject != null) && (((vua)localObject).jdField_a_of_type_JavaNetURL != null))
         {
-          syo localsyo = new syo();
-          localsyo.jdField_a_of_type_JavaNetURL = ((vfh)localObject).jdField_a_of_type_JavaNetURL;
-          localsyo.jdField_a_of_type_Int = ((vfh)localObject).jdField_a_of_type_Int;
-          localsyo.jdField_b_of_type_Int = ((vfh)localObject).jdField_b_of_type_Int;
-          syn.a().a(localsyo, null);
+          tlw localtlw = new tlw();
+          localtlw.jdField_a_of_type_JavaNetURL = ((vua)localObject).jdField_a_of_type_JavaNetURL;
+          localtlw.jdField_a_of_type_Int = ((vua)localObject).jdField_a_of_type_Int;
+          localtlw.jdField_b_of_type_Int = ((vua)localObject).jdField_b_of_type_Int;
+          tlv.a().a(localtlw, null);
         }
       }
     } while (!QLog.isColorLevel());
@@ -98,7 +98,7 @@ class PublicAccountImageCollectionListView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionListView.2
  * JD-Core Version:    0.7.0.1
  */

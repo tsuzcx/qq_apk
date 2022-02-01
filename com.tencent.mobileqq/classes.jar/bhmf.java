@@ -1,59 +1,25 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
+import java.util.Comparator;
 
 class bhmf
-  implements bhma
+  implements Comparator<bhmg>
 {
-  bhmf(bhme parambhme) {}
-  
-  public void a()
+  public int a(bhmg parambhmg1, bhmg parambhmg2)
   {
-    if (bhme.a(this.a) != null)
-    {
-      bhme.a(this.a).notifyVideoStop();
-      bhme.a(this.a, 1);
-    }
-    this.a.a(true, new View[] { bhme.a(this.a) });
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if ((this.a.a != null) && (this.a.a.getVisibility() != 0))
-    {
-      this.a.a(true, new View[] { this.a.a });
-      if ((paramBoolean) && (bhme.a(this.a) != null) && (bhme.a(this.a) == 0))
-      {
-        bhme.a(this.a).notifyVideoStart();
-        this.a.a(false, new View[] { bhme.a(this.a) });
+    int i = 1;
+    if (parambhmg1.a == parambhmg2.a) {
+      if (parambhmg1.b == parambhmg2.b) {
+        i = 0;
       }
     }
-    else
+    while (parambhmg1.a > parambhmg2.a)
     {
-      return;
+      do
+      {
+        return i;
+      } while (parambhmg1.b > parambhmg2.b);
+      return -1;
     }
-    if ((bhme.a(this.a) != null) && (bhme.a(this.a).getVisibility() == 0))
-    {
-      this.a.a(false, new View[] { bhme.a(this.a) });
-      return;
-    }
-    this.a.a(true, new View[] { bhme.a(this.a) });
-    bhme.a(this.a, 1);
-  }
-  
-  public void b()
-  {
-    if (bhme.a(this.a) != null) {
-      bhme.a(this.a).notifyVideoStop();
-    }
-    this.a.a(true, new View[] { bhme.a(this.a) });
-    this.a.a(false, new View[] { this.a.a });
-  }
-  
-  public void c()
-  {
-    this.a.b(5);
+    return -1;
   }
 }
 

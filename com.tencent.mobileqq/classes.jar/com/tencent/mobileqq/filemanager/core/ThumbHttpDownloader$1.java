@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import askz;
-import asla;
+import atpf;
+import atpg;
 
 public class ThumbHttpDownloader$1
   implements Runnable
 {
-  public ThumbHttpDownloader$1(askz paramaskz, asla paramasla) {}
+  public ThumbHttpDownloader$1(atpf paramatpf, atpg paramatpg) {}
   
   public void run()
   {
-    askz.a(this.this$0, this.a);
+    atpf.a(this.this$0, this.a);
   }
 }
 

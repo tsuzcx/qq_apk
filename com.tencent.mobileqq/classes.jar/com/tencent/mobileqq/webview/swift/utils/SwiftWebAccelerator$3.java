@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.webview.swift.utils;
 
 import android.os.Bundle;
-import bgxd;
-import bgxy;
-import bgya;
+import bihv;
+import biiq;
+import biis;
 import com.tencent.qphone.base.util.QLog;
 
 public class SwiftWebAccelerator$3
   implements Runnable
 {
-  public SwiftWebAccelerator$3(bgxy parambgxy, long paramLong, Bundle paramBundle) {}
+  public SwiftWebAccelerator$3(biiq parambiiq, long paramLong, Bundle paramBundle) {}
   
   public void run()
   {
-    bgya.b();
-    bgxd.X = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    QLog.i("WebLog_SwiftWebAccelerator", 1, "initX5Environment on sub thread, cost " + bgxd.X + "ms.");
+    biis.b();
+    bihv.X = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    QLog.i("WebLog_SwiftWebAccelerator", 1, "initX5Environment on sub thread, cost " + bihv.X + "ms.");
     this.this$0.a(this.jdField_a_of_type_AndroidOsBundle);
   }
 }

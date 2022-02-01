@@ -1,15 +1,10 @@
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.avgame.gameroom.GameRoomFragment;
-
-public class ncf
-  implements PopupWindow.OnDismissListener
+public abstract interface ncf
 {
-  public ncf(GameRoomFragment paramGameRoomFragment) {}
+  public abstract void receiveGatewayMsg(String paramString, int paramInt);
   
-  public void onDismiss()
-  {
-    this.a.a = null;
-  }
+  public abstract byte receiveSharpVideoAck(long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
+  
+  public abstract byte receiveSharpVideoCall(long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
 }
 
 

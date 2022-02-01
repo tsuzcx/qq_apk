@@ -1,20 +1,24 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.applets.data.AppletItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class alhn
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnTouchListener
 {
   alhn(alhm paramalhm) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = ((Integer)paramCompoundButton.getTag()).intValue();
-    AppletItem localAppletItem = (AppletItem)this.a.a.get(i);
-    alhm.a(this.a).a(paramCompoundButton, paramBoolean, localAppletItem);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 

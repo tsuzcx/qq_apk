@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import afcm;
+import aftr;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -11,20 +11,20 @@ import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import ff;
 import java.io.File;
-import xxd;
-import xxf;
-import yan;
+import ylw;
+import yly;
+import ypg;
 
 public class EditPicSave$2$1
   implements Runnable
 {
-  public EditPicSave$2$1(xxf paramxxf, String paramString) {}
+  public EditPicSave$2$1(yly paramyly, String paramString) {}
   
   public void run()
   {
     try
     {
-      String str = afcm.a();
+      String str = aftr.a();
       File localFile = new File(str);
       if (FileUtils.copyFile(new File(this.jdField_a_of_type_JavaLangString), localFile))
       {
@@ -41,8 +41,8 @@ public class EditPicSave$2$1
         localContentValues.put("orientation", Integer.valueOf(i));
         localContentValues.put("_data", str);
         localContentValues.put("_size", Long.valueOf(localFile.length()));
-        if (this.jdField_a_of_type_Xxf.a.a.getActivity().getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, localContentValues) == null) {
-          MediaStore.Images.Media.insertImage(this.jdField_a_of_type_Xxf.a.a.getActivity().getContentResolver(), str, localFile.getName(), null);
+        if (this.jdField_a_of_type_Yly.a.a.getActivity().getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, localContentValues) == null) {
+          MediaStore.Images.Media.insertImage(this.jdField_a_of_type_Yly.a.a.getActivity().getContentResolver(), str, localFile.getName(), null);
         }
       }
       return;

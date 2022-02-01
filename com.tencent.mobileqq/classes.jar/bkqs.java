@@ -1,17 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qqfav.widget.LocationDetailActivity;
+import android.app.Activity;
+import android.os.Bundle;
+import mqq.util.WeakReference;
 
-public class bkqs
-  implements View.OnClickListener
+class bkqs
+  extends aqnu
 {
-  public bkqs(LocationDetailActivity paramLocationDetailActivity) {}
+  bkqs(bkqp parambkqp) {}
   
-  public void onClick(View paramView)
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
-    this.a.b(false);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super.onAddColorNote(paramBundle, paramBoolean);
+    if (bkqp.a(this.a) == null) {}
+    do
+    {
+      return;
+      paramBundle = (Activity)bkqp.a(this.a).get();
+    } while (paramBundle == null);
+    paramBundle.moveTaskToBack(false);
   }
 }
 

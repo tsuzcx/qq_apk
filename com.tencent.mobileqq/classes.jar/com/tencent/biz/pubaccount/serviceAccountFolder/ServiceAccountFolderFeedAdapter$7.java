@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder;
 
-import uaq;
-import uar;
-import uaw;
+import uon;
+import uoo;
+import uot;
 
 public class ServiceAccountFolderFeedAdapter$7
   implements Runnable
 {
-  public ServiceAccountFolderFeedAdapter$7(uar paramuar, uaq paramuaq) {}
+  public ServiceAccountFolderFeedAdapter$7(uoo paramuoo, uon paramuon) {}
   
   public void run()
   {
-    uaw.a().a(uar.a(this.this$0), this.a, true);
+    uot.a().a(uoo.a(this.this$0), this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeedAdapter.7
  * JD-Core Version:    0.7.0.1
  */

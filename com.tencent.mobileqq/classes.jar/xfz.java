@@ -1,22 +1,25 @@
-import android.app.Activity;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class xfz
-  implements xgc
+public class xfz
+  extends QQUIEventReceiver<xfw, wrx>
 {
-  xfz(xfy paramxfy, PublishParam paramPublishParam, String paramString, int paramInt) {}
-  
-  public void a()
+  public xfz(@NonNull xfw paramxfw)
   {
-    xvv.c("QQStoryTakeVideoHelper", "generate manifest file success.start publishing.");
-    xfy.a(this.jdField_a_of_type_Xfy, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    super(paramxfw);
   }
   
-  public void b()
+  public void a(@NonNull xfw paramxfw, @NonNull wrx paramwrx)
   {
-    xvv.e("QQStoryTakeVideoHelper", "generate manifest file error. let's exit.");
-    xfy.a(this.jdField_a_of_type_Xfy).finish();
-    xfy.a(this.jdField_a_of_type_Xfy).overridePendingTransition(0, 0);
+    ykq.b("InteractWidgetPageHolder", "receive send vid rate data result event.");
+    if (paramxfw.d()) {
+      paramxfw.a(paramxfw.jdField_a_of_type_Int, paramxfw.b, paramxfw.jdField_a_of_type_Xhf, paramxfw.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wrx.class;
   }
 }
 

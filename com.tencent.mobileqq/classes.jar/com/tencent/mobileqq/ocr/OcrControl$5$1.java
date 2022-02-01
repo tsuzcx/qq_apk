@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ocr;
 
-import aohk;
-import aohl;
-import axmu;
-import axmv;
+import apkm;
+import apkn;
+import aytd;
+import ayte;
 import com.tencent.mobileqq.ocr.data.OcrRecogResult;
 
 public class OcrControl$5$1
   implements Runnable
 {
-  public OcrControl$5$1(axmv paramaxmv, OcrRecogResult paramOcrRecogResult, aohl paramaohl) {}
+  public OcrControl$5$1(ayte paramayte, OcrRecogResult paramOcrRecogResult, apkn paramapkn) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Axmv.a.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrRecogResult.filename = this.jdField_a_of_type_Aohl.a.b;
+    if (this.jdField_a_of_type_Ayte.a.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrRecogResult.filename = this.jdField_a_of_type_Apkn.a.b;
     }
   }
 }

@@ -1,38 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.Comparator;
 
-public class amoi
-  implements EIPCResultCallback
+class amoi
+  implements Comparator<ApolloActionData>
 {
-  public amoi(BaseActivity paramBaseActivity) {}
+  amoi(amog paramamog) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
   {
-    if (paramEIPCResult.data == null) {}
-    do
-    {
-      return;
-      switch (paramEIPCResult.data.getInt("param_cmd"))
-      {
-      default: 
-        return;
-      }
-    } while (paramEIPCResult.code != 0);
-    paramEIPCResult = paramEIPCResult.data;
-    if (QLog.isDevelopLevel())
-    {
-      int i = paramEIPCResult.getInt("param_proc_badge_count");
-      QLog.i("MiniMsgIPCServer", 2, "doRefreshMiniBadge COUNT = " + i);
-    }
-    this.a.doRefreshMiniBadge(paramEIPCResult);
+    return this.a.a(paramApolloActionData2) - this.a.a(paramApolloActionData1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amoi
  * JD-Core Version:    0.7.0.1
  */

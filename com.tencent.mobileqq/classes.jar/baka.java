@@ -1,6 +1,19 @@
-public abstract interface baka
+public class baka
+  implements bajr
 {
-  public abstract void a(boolean paramBoolean);
+  private bakr a;
+  
+  public baka(bakr parambakr)
+  {
+    this.a = parambakr;
+  }
+  
+  public void a(balb parambalb)
+  {
+    if (this.a != null) {
+      this.a.k(parambalb);
+    }
+  }
 }
 
 

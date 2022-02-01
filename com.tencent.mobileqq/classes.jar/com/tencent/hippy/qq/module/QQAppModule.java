@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import bbkb;
-import bfwv;
+import bcqt;
+import bhfn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -34,7 +34,7 @@ public class QQAppModule
     if (QLog.isColorLevel()) {
       QLog.d("QQAppModule", 2, "launchAppWithTokens " + paramString3);
     }
-    bbkb localbbkb = new bbkb();
+    bcqt localbcqt = new bcqt();
     QQAppInterface localQQAppInterface = null;
     if ((getActivity() instanceof BaseActivity)) {
       localQQAppInterface = ((BaseActivity)getActivity()).app;
@@ -68,7 +68,7 @@ public class QQAppModule
         Intent localIntent;
         QLog.e("QQAppModule", 1, paramString4, new Object[0]);
         continue;
-        localbbkb.a(localQQAppInterface, getActivity(), paramString1, paramString2, paramString3, i);
+        localbcqt.a(localQQAppInterface, getActivity(), paramString1, paramString2, paramString3, i);
         return;
       }
       k = 0;
@@ -90,7 +90,7 @@ public class QQAppModule
       }
       if (j != 0)
       {
-        localbbkb.a(paramString4, getActivity(), "", localQQAppInterface, paramString1, paramString3, i, paramString6);
+        localbcqt.a(paramString4, getActivity(), "", localQQAppInterface, paramString1, paramString3, i, paramString6);
         return;
       }
       label311:
@@ -101,21 +101,21 @@ public class QQAppModule
   @HippyMethod(name="getAppsVerionCodeBatch")
   public void getAppsVerionCodeBatch(String paramString, Promise paramPromise)
   {
-    paramPromise.resolve(bfwv.d(BaseApplicationImpl.getContext(), paramString));
+    paramPromise.resolve(bhfn.d(BaseApplicationImpl.getContext(), paramString));
   }
   
   @HippyMethod(name="isAppInstalled")
   public void isAppInstalled(String paramString, Promise paramPromise)
   {
     if (paramPromise != null) {
-      paramPromise.resolve(Boolean.valueOf(bfwv.a(getActivity(), paramString)));
+      paramPromise.resolve(Boolean.valueOf(bhfn.a(getActivity(), paramString)));
     }
   }
   
   @HippyMethod(name="isAppInstalledBatch")
   public void isAppInstalledBatch(String paramString, Promise paramPromise)
   {
-    paramPromise.resolve(bfwv.c(BaseApplicationImpl.getContext(), paramString));
+    paramPromise.resolve(bhfn.c(BaseApplicationImpl.getContext(), paramString));
   }
   
   @HippyMethod(name="launchAppWithTokens")

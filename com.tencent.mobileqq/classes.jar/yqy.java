@@ -1,21 +1,29 @@
-import android.media.MediaCodec.BufferInfo;
-import java.nio.ByteBuffer;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
 class yqy
+  implements Animator.AnimatorListener
 {
-  public int a;
-  public MediaCodec.BufferInfo a;
-  public ByteBuffer a;
-  public int b;
+  yqy(yqw paramyqw) {}
   
-  private yqy()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
+    this.a.a = false;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(paramInt1 * paramInt2 * 3 / 2);
+    this.a.a = false;
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    this.a.a = true;
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.a = true;
   }
 }
 

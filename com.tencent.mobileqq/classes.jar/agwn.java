@@ -1,25 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class agwn
-  implements Animation.AnimationListener
+final class agwn
+  implements ahab
 {
-  agwn(agwl paramagwl) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    if (agwl.a(this.a) != null) {
-      agwl.a(this.a).setVisibility(8);
+    if (ApolloGameUtil.a(paramChatMessage, paramQQAppInterface) == ApolloGameUtil.c) {
+      return 88;
     }
-    if (agwl.a(this.a) != null) {
-      agwl.a(this.a).c();
-    }
+    return 56;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

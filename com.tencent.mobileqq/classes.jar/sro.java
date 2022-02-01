@@ -1,27 +1,61 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class sro
-  implements std
+abstract class sro
 {
-  public sro(FastWebActivity paramFastWebActivity, BaseData paramBaseData) {}
+  protected long a;
+  private ArrayList<sro> a;
+  protected long b;
   
-  public int a()
+  sro()
   {
-    return 0;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public BaseData a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
-  }
+  abstract long a(long paramLong);
   
   public void a()
   {
-    swy.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((sro)localIterator.next()).a();
+    }
+    this.b = 0L;
   }
   
-  public void b() {}
+  public void a(long paramLong)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((sro)localIterator.next()).a(paramLong);
+    }
+    this.b = a(paramLong);
+    if (this.b < 0L) {
+      this.b = 0L;
+    }
+    if ((float)Math.abs(this.b - this.jdField_a_of_type_Long) / (float)this.jdField_a_of_type_Long < 0.2F)
+    {
+      this.jdField_a_of_type_Long = Math.max(this.b, this.jdField_a_of_type_Long);
+      return;
+    }
+    this.jdField_a_of_type_Long = this.b;
+  }
+  
+  protected void a(sro paramsro)
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramsro) < 0) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramsro);
+    }
+  }
+  
+  public void b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((sro)localIterator.next()).b();
+    }
+    this.jdField_a_of_type_Long = 0L;
+  }
 }
 
 

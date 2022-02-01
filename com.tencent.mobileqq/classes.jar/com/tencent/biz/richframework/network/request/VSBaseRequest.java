@@ -83,7 +83,7 @@ public abstract class VSBaseRequest
     }
   }
   
-  private String generateTraceId()
+  public static String generateTraceId()
   {
     String str = BaseApplicationImpl.sApplication.getRuntime().getAccount();
     StringBuilder localStringBuilder = new StringBuilder(50);

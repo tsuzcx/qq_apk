@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class ajnw
-  implements DialogInterface.OnClickListener
+  extends ajjb
 {
-  public ajnw(CameraPreviewActivity paramCameraPreviewActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a = null;
-  }
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public boolean a;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
+  public TextView c;
 }
 
 

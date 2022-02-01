@@ -1,19 +1,11 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.avgame.gameroom.stage.guesspicture.GuessPictureStageView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class net
-  implements View.OnClickListener
+  extends nez<nes>
 {
-  public net(GuessPictureStageView paramGuessPictureStageView) {}
-  
-  public void onClick(View paramView)
+  public nes a(nfa paramnfa, View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.onClick(paramView);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new nes(paramView);
   }
 }
 

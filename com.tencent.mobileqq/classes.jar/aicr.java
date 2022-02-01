@@ -1,27 +1,46 @@
-import com.tencent.mobileqq.activity.contact.addfriendverifi.NewFriendVerifyBlockedListFragment;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie.8.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class aicr
-  implements AbsListView.OnScrollListener
+  extends aslz
 {
-  public aicr(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
+  aicr(aici paramaici) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  protected void a(boolean paramBoolean, int paramInt1, int paramInt2, asne paramasne, String paramString)
   {
-    if (NewFriendVerifyBlockedListFragment.a(this.a) != null)
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.tag, 2, String.format("onGetUnLimitFriendInfo() success=%s uinType=%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2) }));
+    }
+    if ((paramBoolean) && (paramasne != null)) {
+      ThreadManager.getSubThreadHandler().post(new LimitChatPie.8.1(this, paramInt2, paramasne));
+    }
+  }
+  
+  protected void a(boolean paramBoolean, asnq paramasnq, int paramInt)
+  {
+    if ((paramBoolean) && (paramasnq != null))
     {
-      if ((paramInt != 0) && (paramInt != 1)) {
-        NewFriendVerifyBlockedListFragment.a(this.a).a();
+      VipUtils.a(this.a.app, paramasnq, this.a.mCustomTitleView, this.a.mTitleIconRight, this.a.isJubaoMode);
+      aici.a(this.a, paramasnq.mNickName);
+      this.a.mTitleText.setText(paramasnq.mNickName);
+      if ((!TextUtils.isEmpty(paramasnq.mNickName)) && (this.a.sessionInfo != null)) {
+        this.a.sessionInfo.curFriendNick = paramasnq.mNickName;
       }
     }
-    else {
-      return;
+  }
+  
+  protected void a(boolean paramBoolean, ArrayList<Long> paramArrayList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.tag, 2, String.format("onGetExtendFriendOnlineState success=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
-    NewFriendVerifyBlockedListFragment.a(this.a).b();
-    NewFriendVerifyBlockedListFragment.a(this.a).c();
+    aici.a(this.a, paramArrayList);
   }
 }
 

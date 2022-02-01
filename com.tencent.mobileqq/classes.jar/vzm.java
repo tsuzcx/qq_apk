@@ -1,35 +1,19 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.support.v4.util.LruCache;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.ConcurrentHashMap;
 
-public final class vzm
-  extends QQUIEventReceiver<vzf, vvp>
+class vzm
+  extends LruCache<KEY, VALUE>
 {
-  public vzm(@NonNull vzf paramvzf)
+  vzm(vzl paramvzl, int paramInt)
   {
-    super(paramvzf);
+    super(paramInt);
   }
   
-  public void a(@NonNull vzf paramvzf, @NonNull vvp paramvvp)
+  protected void a(boolean paramBoolean, KEY paramKEY, VALUE paramVALUE1, VALUE paramVALUE2)
   {
-    xvv.a(this.TAG, "onEvent, %s", String.valueOf(paramvvp));
-    vxd localvxd = paramvzf.a.a(3, "");
-    if ((localvxd != null) && (paramvvp.jdField_b_of_type_JavaLangString.equals(localvxd.jdField_e_of_type_JavaLangString)))
-    {
-      xvv.b(this.TAG, "onEvent, guideInfoNode read");
-      paramvzf = new vyl();
-      paramvzf.jdField_b_of_type_JavaLangString = localvxd.jdField_a_of_type_JavaLangString;
-      paramvzf.c = localvxd.jdField_a_of_type_Int;
-      paramvzf.d = 5;
-      paramvzf.jdField_b_of_type_Long = localvxd.jdField_e_of_type_Long;
-      vqn.a().a(paramvzf, null);
-      return;
-    }
-    paramvzf.a.a(paramvvp.jdField_a_of_type_JavaLangString, paramvvp.jdField_a_of_type_Long);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return vvp.class;
+    this.a.a.put(paramKEY, new WeakReference(paramVALUE1));
+    this.a.a();
   }
 }
 

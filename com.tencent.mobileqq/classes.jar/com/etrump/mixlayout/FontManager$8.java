@@ -1,24 +1,24 @@
 package com.etrump.mixlayout;
 
-import amsw;
-import bfua;
+import anvk;
+import bhcs;
 import com.tencent.qphone.base.util.QLog;
 import gb;
 
 public class FontManager$8
   implements Runnable
 {
-  public FontManager$8(gb paramgb, amsw paramamsw, String paramString) {}
+  public FontManager$8(gb paramgb, anvk paramanvk, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Amsw.a(this.jdField_a_of_type_JavaLangString) == null)
+    if (this.jdField_a_of_type_Anvk.a(this.jdField_a_of_type_JavaLangString) == null)
     {
       if (QLog.isColorLevel()) {
         QLog.i("tag.vasFont.enlarge", 2, "enableEnlargeFontEffect --> extensionInfo is null.");
       }
-      bfua.a(this.jdField_a_of_type_JavaLangString);
-      bfua.a(this.this$0.a);
+      bhcs.a(this.jdField_a_of_type_JavaLangString);
+      bhcs.a(this.this$0.a);
     }
   }
 }

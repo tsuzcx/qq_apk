@@ -1,6 +1,6 @@
 public abstract interface bnue
 {
-  public abstract void g(boolean paramBoolean);
+  public abstract int a();
 }
 
 

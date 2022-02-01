@@ -1,30 +1,20 @@
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-import com.tencent.mobileqq.ocr.view.MaskView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function0;
 
-public class axni
-  implements SurfaceHolder.Callback
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class axni
+  implements View.OnClickListener
 {
-  public axni(ScanOcrActivity paramScanOcrActivity) {}
+  axni(Function0 paramFunction0) {}
   
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  public final void onClick(View paramView)
   {
-    ScanOcrActivity.a(this.a, paramSurfaceHolder);
-    if (ScanOcrActivity.a(this.a) == null)
-    {
-      ScanOcrActivity.a(this.a, new axmo(this.a, this.a.jdField_a_of_type_Axmt, ScanOcrActivity.a(this.a)));
-      ScanOcrActivity.a(this.a).a(this.a.jdField_a_of_type_Int);
-      ScanOcrActivity.a(this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqOcrViewMaskView.a());
-      if (ScanOcrActivity.a(this.a)) {
-        ScanOcrActivity.a(this.a).a();
-      }
-    }
+    this.a.invoke();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder) {}
 }
 
 

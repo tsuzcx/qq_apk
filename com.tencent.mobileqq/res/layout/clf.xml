@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/ns9" android:paddingLeft="16.0dip" android:paddingRight="25.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/ngp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:background="@drawable/h44" android:layout_width="16.0dip" android:layout_height="16.0dip" />
-    <TextView android:background="@drawable/h45" android:layout_width="51.0dip" android:layout_height="20.0dip" android:layout_marginLeft="4.0dip" />
-    <TextView android:textSize="@dimen/aym" android:textStyle="bold" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/ns_" android:layout_width="0.0dip" android:layout_height="28.0dip" android:layout_marginLeft="7.0dip" android:singleLine="true" android:layout_weight="1.0" />
-    <TextView android:background="@drawable/h4g" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="25.0dip" />
-</LinearLayout>
+    <TextView android:textSize="16.0dip" android:textColor="@color/al3" android:ellipsize="marquee" android:id="@id/lvg" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:onClick="BtnOnClick" />
+    <ImageView android:id="@id/lvi" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:src="@drawable/gm0" android:layout_toRightOf="@id/lvg" android:layout_centerVertical="true" android:onClick="BtnOnClick" />
+</RelativeLayout>

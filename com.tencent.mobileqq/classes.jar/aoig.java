@@ -1,52 +1,58 @@
-import android.graphics.PointF;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.EcShopFirstRunMsgConfigs;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class aoig
+  extends bhyn
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public PointF[] a;
-  public int b;
-  public int c;
-  public int d = -1;
+  public aoig(EcShopFirstRunMsgConfigs paramEcShopFirstRunMsgConfigs) {}
   
-  public aoig()
+  public void onDone(bhyo parambhyo)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = new PointF[1000];
-    a();
-  }
-  
-  public aoig(int paramInt)
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = new PointF[paramInt];
-    a();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.b = 0;
-    this.c = 0;
-    this.d = -1;
-  }
-  
-  public String toString()
-  {
-    if (this.b > 0) {}
-    for (String str = "(" + (int)this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(this.b - 1)].x + "," + (int)this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(this.b - 1)].y + ")";; str = "(-1,-1)") {
-      return "ARGestureResult{, state = " + this.jdField_a_of_type_Int + ", type = " + this.jdField_a_of_type_JavaLangString + ", pointCnt = " + this.b + ", newPoint(x,y) = " + str + ", mode = " + this.d + '}';
+    super.onDone(parambhyo);
+    if ((parambhyo.a == 0) && (this.a.a.app != null))
+    {
+      str = parambhyo.a().getString("path");
+      if ((this.a.a.app != null) && (!TextUtils.isEmpty(str)))
+      {
+        if (!onq.e.equals(str)) {
+          break label143;
+        }
+        this.a.a.app.getApp().getSharedPreferences("ecshop_sp", 0).edit().putLong("last_modified_report_json", parambhyo.i).commit();
+        ((ook)this.a.a.app.getBusinessHandler(BusinessHandlerFactory.EC_SHOP_REPORT_HANDLER)).a();
+        if (QLog.isColorLevel()) {
+          QLog.i("Ecshop", 2, "download report json success.");
+        }
+      }
     }
+    label143:
+    while (!QLog.isColorLevel())
+    {
+      do
+      {
+        String str;
+        do
+        {
+          return;
+        } while (!onq.f.equals(str));
+        this.a.a.app.getApp().getSharedPreferences("ecshop_sp", 0).edit().putLong("last_modified_behaviors_json", parambhyo.i).commit();
+      } while (!QLog.isColorLevel());
+      QLog.i("Ecshop", 2, "download behaviors json success.");
+      return;
+    }
+    QLog.i("Ecshop", 2, "download json failed.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoig
  * JD-Core Version:    0.7.0.1
  */

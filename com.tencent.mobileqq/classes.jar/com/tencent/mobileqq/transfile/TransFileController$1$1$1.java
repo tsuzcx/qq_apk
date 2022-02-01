@@ -10,7 +10,7 @@ class TransFileController$1$1$1
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getApplication().getBaseContext(), 2, 2131717105, 0).a();
+    QQToast.a(BaseApplicationImpl.getApplication().getBaseContext(), 2, 2131717468, 0).a();
   }
 }
 

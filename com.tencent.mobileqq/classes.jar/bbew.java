@@ -1,34 +1,18 @@
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.HashSet;
+import rx.functions.Action1;
 
-public final class bbew
-  extends ThreadPoolExecutor
+class bbew
+  implements Action1<bbfb>
 {
-  public bbew(int paramInt1, int paramInt2, long paramLong, TimeUnit paramTimeUnit, BlockingQueue paramBlockingQueue, ThreadFactory paramThreadFactory)
-  {
-    super(paramInt1, paramInt2, paramLong, paramTimeUnit, paramBlockingQueue, paramThreadFactory);
-  }
+  bbew(bbev parambbev, HashSet paramHashSet) {}
   
-  protected void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
+  public void a(bbfb parambbfb)
   {
-    if ((paramRunnable instanceof FutureTask)) {}
-    try
-    {
-      ((FutureTask)paramRunnable).get();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ResourceGrabModel", 2, "ResourceNameOnClickListener subscribe call :" + parambbfb);
     }
-    catch (ExecutionException paramRunnable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("GroupSearchEngine", 2, "Exception happened", paramRunnable);
-      return;
-    }
-    catch (Error paramRunnable) {}catch (Exception paramRunnable) {}
+    bbev.a(this.jdField_a_of_type_Bbev, parambbfb, this.jdField_a_of_type_JavaUtilHashSet);
   }
 }
 

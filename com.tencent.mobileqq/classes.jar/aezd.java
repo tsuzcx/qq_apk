@@ -1,60 +1,23 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.data.troop.TroopMemberInfo;
-import com.tencent.mobileqq.troop.troopMemberLevel.TroopMemberNewLevelView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.activity.SubLoginActivity;
 
-public class aezd
-  implements ancx
+class aezd
+  implements DialogInterface.OnClickListener
 {
-  public BaseChatItemLayout a;
-  public TroopInfo a;
-  public String a;
+  aezd(aezc paramaezc, bdxt parambdxt) {}
   
-  private aezd(BaseBubbleBuilder paramBaseBubbleBuilder) {}
-  
-  public void a(TroopMemberInfo paramTroopMemberInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramTroopMemberInfo == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo == null)) {}
-    int j;
-    do
+    if ((paramInt == 1) && (!TextUtils.isEmpty(this.jdField_a_of_type_Bdxt.c)))
     {
-      do
-      {
-        return;
-      } while (!this.jdField_a_of_type_JavaLangString.equals(paramTroopMemberInfo.memberuin));
-      j = paramTroopMemberInfo.newRealLevel;
-      i = j;
-      if (j == 0) {
-        i = bewy.b(paramTroopMemberInfo.realLevel);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatItemBuilder", 2, "TmiCallBackForTroopMemberNewLevel: realLevel = " + paramTroopMemberInfo.realLevel + ",newRealLevel = " + paramTroopMemberInfo.newRealLevel);
-      }
-      paramTroopMemberInfo = bewy.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo, paramTroopMemberInfo.memberuin, i, paramTroopMemberInfo.level, paramTroopMemberInfo.mUniqueTitle);
-    } while (paramTroopMemberInfo == null);
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.a.curType == 1) && (nmy.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.a.curFriendUin))) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        i = nmy.e;
-        j = beda.a().a;
-        paramTroopMemberInfo.a = new int[] { j, j };
-        paramTroopMemberInfo.b = new int[] { j, j };
-        paramTroopMemberInfo.d = i;
-        paramTroopMemberInfo.c = i;
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a == null)) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.setTroopMemberNewLevel(paramTroopMemberInfo);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.setTag(Integer.valueOf(2131364480));
-      return;
+      paramDialogInterface = new Intent(this.jdField_a_of_type_Aezc.a, SubLoginActivity.class);
+      paramDialogInterface.putExtra("subuin", this.jdField_a_of_type_Bdxt.c);
+      paramDialogInterface.putExtra("fromWhere", this.jdField_a_of_type_Aezc.a.b);
+      this.jdField_a_of_type_Aezc.a.startActivity(paramDialogInterface);
     }
   }
 }

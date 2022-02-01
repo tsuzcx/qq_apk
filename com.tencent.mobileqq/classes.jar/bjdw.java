@@ -1,70 +1,31 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.agent.CreateVirtualAccountFragment;
+import com.tencent.open.agent.OpenAuthorityFragment;
+import com.tencent.open.agent.OpenCardContainer;
+import com.tencent.open.agent.PublicFragmentActivityForOpenSDK;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bjdw
-  extends SosoInterface.OnLocationListener
+public class bjdw
+  implements View.OnClickListener
 {
-  bjdw(bjdt parambjdt, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, boolean paramBoolean5, boolean paramBoolean6, AsyncResult paramAsyncResult)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public bjdw(OpenAuthorityFragment paramOpenAuthorityFragment) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null))
+    if (System.currentTimeMillis() - OpenAuthorityFragment.d(this.a) > 1000L)
     {
-      paramSosoLbsInfo = paramSosoLbsInfo.mLocation;
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        if ((this.jdField_a_of_type_Boolean) && (paramSosoLbsInfo.mLat84 != 0.0D) && (paramSosoLbsInfo.mLon84 != 0.0D))
-        {
-          localJSONObject.put("latitude", paramSosoLbsInfo.mLat84);
-          localJSONObject.put("longitude", paramSosoLbsInfo.mLon84);
-        }
-        for (;;)
-        {
-          localJSONObject.put("speed", paramSosoLbsInfo.speed);
-          localJSONObject.put("accuracy", paramSosoLbsInfo.accuracy);
-          if (this.b) {
-            localJSONObject.put("altitude", paramSosoLbsInfo.altitude);
-          }
-          localJSONObject.put("verticalAccuracy", 0.0D);
-          localJSONObject.put("horizontalAccuracy", paramSosoLbsInfo.accuracy);
-          this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(true, localJSONObject);
-          return;
-          localJSONObject.put("latitude", paramSosoLbsInfo.mLat02);
-          localJSONObject.put("longitude", paramSosoLbsInfo.mLon02);
-        }
-        paramSosoLbsInfo = new JSONObject();
-      }
-      catch (JSONException paramSosoLbsInfo)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("MiniAppProxyImpl", 2, paramSosoLbsInfo, new Object[0]);
-        }
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(false, new JSONObject());
-        return;
-      }
+      OpenAuthorityFragment.a(this.a).a.setClickable(false);
+      Intent localIntent = new Intent();
+      localIntent.putExtra("appid", OpenAuthorityFragment.a(this.a));
+      localIntent.putExtra("key_proxy_appid", OpenAuthorityFragment.c(this.a));
+      localIntent.putExtra("public_fragment_window_feature", 1);
+      aeow.a(this.a.getActivity(), localIntent, PublicFragmentActivityForOpenSDK.class, CreateVirtualAccountFragment.class, 101);
+      OpenAuthorityFragment.a(this.a).a.setClickable(true);
     }
-    try
-    {
-      paramSosoLbsInfo.put("errCode", paramInt);
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(false, paramSosoLbsInfo);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.e("MiniAppProxyImpl", 1, "getLocationJsonObject exception:", localJSONException);
-      }
-    }
+    OpenAuthorityFragment.b(this.a, System.currentTimeMillis());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

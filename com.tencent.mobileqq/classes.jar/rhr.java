@@ -1,86 +1,54 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcOriginalHeader;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class rhr
+  extends ClickableSpan
+  implements tbx
 {
-  private long[] jdField_a_of_type_ArrayOfLong = new long[9];
-  private long[] b = new long[9];
-  private long[] c = new long[9];
-  private long[] d = new long[9];
-  private long[] e = new long[9];
-  private long[] f = new long[9];
+  private int jdField_a_of_type_Int = -1;
+  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
+  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  boolean jdField_a_of_type_Boolean;
   
-  public rhr(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
-  
-  public void a(int paramInt, long paramLong)
+  public rhr(ComponentContentUgcOriginalHeader paramComponentContentUgcOriginalHeader, ArticleInfo paramArticleInfo, int paramInt)
   {
-    if (paramInt < 9) {
-      this.jdField_a_of_type_ArrayOfLong[paramInt] = paramLong;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
+      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
     }
   }
   
-  public long[] a()
+  public void onClick(View paramView)
   {
-    return this.c;
+    pqx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 2, false, 6, false);
+    pqb.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader.a.a.e());
   }
   
-  public void b(int paramInt, long paramLong)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if (paramInt < 9) {
-      this.b[paramInt] = paramLong;
+    super.updateDrawState(paramTextPaint);
+    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#285c95"));
+    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = this.jdField_a_of_type_Int;; i = Color.parseColor("#F8F8F8"))
+    {
+      paramTextPaint.bgColor = i;
+      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(AIOUtils.sp2TextSize(2, 14, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader.getResources()));
+      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
+      return;
     }
-  }
-  
-  public long[] b()
-  {
-    return this.d;
-  }
-  
-  public void c(int paramInt, long paramLong)
-  {
-    if (paramInt < 9) {
-      this.c[paramInt] = paramLong;
-    }
-  }
-  
-  public long[] c()
-  {
-    return this.b;
-  }
-  
-  public void d(int paramInt, long paramLong)
-  {
-    if (paramInt < 9) {
-      this.d[paramInt] = paramLong;
-    }
-  }
-  
-  public long[] d()
-  {
-    return this.jdField_a_of_type_ArrayOfLong;
-  }
-  
-  public void e(int paramInt, long paramLong)
-  {
-    if (paramInt < 9) {
-      this.e[paramInt] = paramLong;
-    }
-  }
-  
-  public long[] e()
-  {
-    return this.f;
-  }
-  
-  public void f(int paramInt, long paramLong)
-  {
-    if (paramInt < 9) {
-      this.f[paramInt] = paramLong;
-    }
-  }
-  
-  public long[] f()
-  {
-    return this.e;
   }
 }
 

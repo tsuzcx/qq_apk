@@ -1,19 +1,64 @@
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
-import mqq.app.QQPermissionCallback;
+import java.util.HashMap;
 
 class bdmq
-  implements QQPermissionCallback
+  implements Comparable<bdmq>
 {
-  bdmq(bdmp parambdmp) {}
+  public int a;
+  public String a;
+  public HashMap<String, bdmq> a;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public bdmq()
   {
-    TribeVideoPreviewFragment.a(this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment, false);
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public bdmq(String paramString)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.a(this.a.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public int a(bdmq parambdmq)
+  {
+    return parambdmq.jdField_a_of_type_Int - this.jdField_a_of_type_Int;
+  }
+  
+  public bdmq a(String paramString)
+  {
+    return (bdmq)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilHashMap.isEmpty();
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {
+      return true;
+    }
+    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+      return false;
+    }
+    return ((bdmq)paramObject).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public int hashCode()
+  {
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaLangString.hashCode();
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("FdNode{");
+    localStringBuilder.append("text='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuilder.append(", appearTimes=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

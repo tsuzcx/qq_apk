@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afbj;
-import aftr;
-import aftw;
+import afsv;
+import agll;
+import aglq;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -19,7 +19,7 @@ import com.tencent.widget.immersive.SystemBarCompact;
 public class IntimateInfoFragment
   extends PublicBaseFragment
 {
-  private aftr a;
+  private agll a;
   
   public void a()
   {
@@ -55,14 +55,14 @@ public class IntimateInfoFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = getActivity().getIntent().getStringExtra("FORWARD_PEER_UIN");
-    this.a = aftw.a(getActivity().app, getActivity(), getActivity(), paramLayoutInflater);
+    this.a = aglq.a(getActivity().app, getActivity(), getActivity(), paramLayoutInflater);
     if ((this.a == null) || (this.a.a() == null)) {}
     for (paramLayoutInflater = null;; paramLayoutInflater = this.a.a())
     {
       V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
       return paramLayoutInflater;
-      if ((this.a instanceof afbj)) {
-        ((afbj)this.a).a(2);
+      if ((this.a instanceof afsv)) {
+        ((afsv)this.a).a(2);
       }
     }
   }
@@ -70,14 +70,14 @@ public class IntimateInfoFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.a.j();
+    this.a.i();
   }
   
   public void onPause()
   {
     super.onPause();
-    if ((this.a instanceof afbj)) {
-      ((afbj)this.a).h();
+    if ((this.a instanceof afsv)) {
+      ((afsv)this.a).g();
     }
   }
   
@@ -85,10 +85,10 @@ public class IntimateInfoFragment
   {
     super.onResume();
     this.a.b(true);
-    this.a.d();
-    this.a.n();
-    if ((this.a instanceof afbj)) {
-      ((afbj)this.a).i();
+    this.a.c();
+    this.a.l();
+    if ((this.a instanceof afsv)) {
+      ((afsv)this.a).h();
     }
   }
   
@@ -97,12 +97,12 @@ public class IntimateInfoFragment
     super.onStart();
     this.a.a(true);
     this.a.b();
-    this.a.d();
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoFragment
  * JD-Core Version:    0.7.0.1
  */

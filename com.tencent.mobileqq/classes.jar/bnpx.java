@@ -1,14 +1,29 @@
-import android.graphics.Bitmap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 
 class bnpx
-  implements aozx
+  implements View.OnClickListener
 {
-  bnpx(bnpt parambnpt) {}
+  bnpx(bnpw parambnpw, AECaptureMode paramAECaptureMode, int paramInt) {}
   
-  public void onFaceUpdate(String paramString1, String paramString2, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    if (bnpt.a(this.a) != null) {
-      bnpt.a(this.a).a(paramString1, 101, paramString2, paramBitmap);
+    bnps.a(this.jdField_a_of_type_Bnpw.a, this.jdField_a_of_type_DovComQqImAeModeAECaptureMode);
+    if (this.jdField_a_of_type_DovComQqImAeModeAECaptureMode == AECaptureMode.GIF) {
+      bnqm.a().M();
+    }
+    for (;;)
+    {
+      bnrh.b("AEVideoStoryCaptureModePart", "【AE_CAPTURE_MODE】:" + this.jdField_a_of_type_Int);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.jdField_a_of_type_DovComQqImAeModeAECaptureMode == AECaptureMode.NORMAL) {
+        bnqm.a().L();
+      } else if (this.jdField_a_of_type_DovComQqImAeModeAECaptureMode == AECaptureMode.PLAY) {
+        bnqm.a().V();
+      }
     }
   }
 }

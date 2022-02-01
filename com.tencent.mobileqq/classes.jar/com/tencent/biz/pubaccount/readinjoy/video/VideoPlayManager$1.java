@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import sdc;
+import spg;
 
 public class VideoPlayManager$1
   implements Runnable
 {
-  public VideoPlayManager$1(sdc paramsdc) {}
+  public VideoPlayManager$1(spg paramspg) {}
   
   public void run()
   {

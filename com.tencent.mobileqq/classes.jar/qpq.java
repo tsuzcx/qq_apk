@@ -1,21 +1,13 @@
-import android.widget.PopupWindow.OnDismissListener;
-
 class qpq
-  implements PopupWindow.OnDismissListener
+  implements rgm
 {
-  qpq(qpk paramqpk, bjrb parambjrb) {}
+  qpq(qph paramqph, qfw paramqfw) {}
   
-  public void onDismiss()
+  public void a()
   {
-    this.jdField_a_of_type_Bjrb.a(1.0F);
-    if (this.jdField_a_of_type_Qpk.a.c())
-    {
-      sdc localsdc = this.jdField_a_of_type_Qpk.a.a();
-      if (localsdc != null)
-      {
-        localsdc.c();
-        this.jdField_a_of_type_Qpk.a.b(false);
-      }
+    pnw localpnw = this.jdField_a_of_type_Qfw.a().a().a();
+    if (localpnw != null) {
+      localpnw.a(null, this.jdField_a_of_type_Qfw.a(), 1);
     }
   }
 }

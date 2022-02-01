@@ -1,23 +1,46 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
-import com.tencent.mobileqq.activity.TroopRobotPickerActivity.RobotPickerData;
-import com.tencent.mobileqq.conditionsearch.CountrySelectActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class aeqe
-  implements View.OnClickListener
+  extends anyz
 {
-  public aeqe(TroopRobotPickerActivity paramTroopRobotPickerActivity) {}
+  public aeqe(QQLSActivity paramQQLSActivity) {}
   
-  public void onClick(View paramView)
+  public void onMsgRevokeNotice(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
   {
-    Intent localIntent = new Intent(this.a, CountrySelectActivity.class);
-    localIntent.putExtra("key_country_code", this.a.a.mLocationCountyCode);
-    localIntent.putExtra("key_no_limit_allow", true);
-    this.a.startActivityForResult(localIntent, 111);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("MsgRevoke", 4, "onMsgRevokeNotice isSuccess=" + paramBoolean1);
+    }
+    this.a.a.removeMessages(267387140);
+    Object localObject1 = new ArrayList();
+    Object localObject2;
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      localObject2 = paramList.iterator();
+      while (((Iterator)localObject2).hasNext()) {
+        ((List)localObject1).add((ChatMessage)((Iterator)localObject2).next());
+      }
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("MsgRevoke", 4, "onMsgRevokeNotice chatlist=" + ((List)localObject1).size());
+    }
+    if ((paramBoolean1) && (localObject1 != null) && (!((List)localObject1).isEmpty()) && (((ChatMessage)((List)localObject1).get(0) instanceof MessageForPtt)))
+    {
+      localObject1 = (MessageForPtt)((List)localObject1).get(0);
+      localObject2 = MediaPlayerManager.a(QQLSActivity.a(this.a)).a();
+      if ((localObject2 == localObject1) || (((localObject2 instanceof MessageForPtt)) && (((ChatMessage)localObject2).frienduin != null) && (((ChatMessage)localObject2).frienduin.equals(((MessageForPtt)localObject1).frienduin)) && (((ChatMessage)localObject2).uniseq == ((MessageForPtt)localObject1).uniseq))) {
+        MediaPlayerManager.a(QQLSActivity.a(this.a)).a(true);
+      }
+    }
+    super.onMsgRevokeNotice(paramBoolean1, paramList, paramBoolean2);
   }
 }
 

@@ -1,14 +1,18 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adzg
+  implements View.OnClickListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
-  TextView b;
-  TextView c;
+  public adzg(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    ForwardTroopListFragment.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

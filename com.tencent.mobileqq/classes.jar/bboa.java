@@ -1,52 +1,37 @@
-import CliLogSvc.strupbuff;
-import android.os.Bundle;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class bboa
-  extends aafe
 {
-  private static final String[] a = { "CliLogSvc" };
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  anyz jdField_a_of_type_Anyz;
+  bbod jdField_a_of_type_Bbod;
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  Runnable jdField_a_of_type_JavaLangRunnable;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  int jdField_b_of_type_Int;
+  boolean jdField_b_of_type_Boolean;
+  int c;
   
-  private boolean b(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  public boolean a()
   {
-    paramUniPacket.setServantName("QQService.CliLogSvc.MainServantObj");
-    paramUniPacket.setFuncName("UploadReq");
-    String[] arrayOfString = paramToServiceMsg.extraData.getStringArray("data");
-    strupbuff localstrupbuff = new strupbuff();
-    HashMap localHashMap = new HashMap();
-    ArrayList localArrayList = new ArrayList();
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      localArrayList.add(arrayOfString[i].getBytes());
-      i += 1;
-    }
-    if (paramToServiceMsg.extraData.containsKey("log_key")) {}
-    for (paramToServiceMsg = paramToServiceMsg.extraData.getString("log_key");; paramToServiceMsg = "PLUG_PB")
-    {
-      localHashMap.put(paramToServiceMsg, localArrayList);
-      localstrupbuff.setLogstring(localHashMap);
-      paramUniPacket.put("Data", localstrupbuff);
-      return true;
-    }
+    return (this.a != null) && (this.b == 1);
   }
   
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  public boolean b()
   {
-    if ("CliLogSvc.UploadReq".equals(paramToServiceMsg.getServiceCmd())) {
-      return b(paramToServiceMsg, paramUniPacket);
-    }
-    return false;
+    return (this.a != null) && (this.b >= 2);
   }
   
-  public String[] a()
+  public boolean c()
   {
-    return a;
+    return (this.a != null) && (this.c == 3);
+  }
+  
+  public boolean d()
+  {
+    return (this.a != null) && (this.c >= 4);
   }
 }
 

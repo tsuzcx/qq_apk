@@ -1,20 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.text.TextPaint;
+import android.text.style.CharacterStyle;
+import com.tencent.mobileqq.activity.AuthDevActivity;
 
 public class adkg
-  implements DialogInterface.OnClickListener
+  extends CharacterStyle
 {
-  public adkg(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public adkg(AuthDevActivity paramAuthDevActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    bcef.b(this.a.app, "dc00898", "", "", "0X800A0D9", "0X800A0D9", 0, 0, "", "", "", "");
-    if (NetworkUtil.isNetSupport(this.a)) {
-      FriendProfileMoreInfoActivity.b(this.a);
-    }
-    FriendProfileMoreInfoActivity.a(this.a, "https://ti.qq.com/hybrid-h5/school_relation/chooseschool?_wv=67108994");
+    paramTextPaint.setColor(-5855578);
   }
 }
 

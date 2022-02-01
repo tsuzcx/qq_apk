@@ -1,17 +1,20 @@
-import java.util.List;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
 
-class ovo
-  extends owd
+public class ovo
 {
-  ovo(ouu paramouu, boolean paramBoolean, List paramList)
-  {
-    super(paramouu, null);
-  }
+  private View jdField_a_of_type_AndroidViewView;
+  private Button jdField_a_of_type_AndroidWidgetButton;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private String jdField_a_of_type_JavaLangString;
+  private View b;
+  private View c;
   
-  void a(owg paramowg)
-  {
-    paramowg.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, ouu.c(this.jdField_a_of_type_Ouu), 6);
-  }
+  private ovo(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
 }
 
 

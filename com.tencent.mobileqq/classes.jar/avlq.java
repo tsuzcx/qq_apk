@@ -1,10 +1,10 @@
-public class avlq
+import android.view.animation.Animation;
+
+public abstract interface avlq
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
+  public abstract void a(Animation paramAnimation);
+  
+  public abstract void b(Animation paramAnimation);
 }
 
 

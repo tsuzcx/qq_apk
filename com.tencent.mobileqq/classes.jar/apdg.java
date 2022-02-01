@@ -1,113 +1,87 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.bigbrother.ServerApi.ErrorInfo;
-import com.tencent.mobileqq.bigbrother.ServerApi.ReqPreDownloadRecmd;
-import com.tencent.mobileqq.bigbrother.ServerApi.ReqUpdateDownCountRecmd;
-import com.tencent.mobileqq.bigbrother.ServerApi.RspUpdateDownCountRecmd;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import mqq.app.MSFServlet;
-import mqq.app.NewIntent;
-import mqq.app.Packet;
-import mqq.observer.BusinessObserver;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Environment;
+import android.os.StatFs;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ar.ARRecord.ARRecordUtils.1;
+import com.tencent.mobileqq.ar.ARRecord.ARRecordUtils.2;
+import java.io.File;
+import java.text.DecimalFormat;
+import mqq.os.MqqHandler;
 
-public class apdg
-  extends MSFServlet
+public final class apdg
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public static String a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RockDownloaderServlet", 2, "onReceive with code: " + paramFromServiceMsg.getResultCode());
-    }
-    Object localObject = paramIntent.getStringExtra("BUNDLE_CMD");
-    boolean bool = paramFromServiceMsg.isSuccess();
-    try
+    StringBuilder localStringBuilder = new StringBuilder(30);
+    localStringBuilder.append("录制中 (");
+    int i = paramInt / 60;
+    paramInt -= i * 60;
+    if (i < 10)
     {
-      ByteBuffer localByteBuffer = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
-      paramFromServiceMsg = new byte[localByteBuffer.getInt() - 4];
-      localByteBuffer.get(paramFromServiceMsg);
-      if ("QQApkSvc.pre_download_apk".equals(localObject))
-      {
-        localObject = new Bundle();
-        ((Bundle)localObject).putByteArray("BUNDLE_KEY_RESPONSE_BYTE", paramFromServiceMsg);
-        if ((paramIntent instanceof NewIntent))
-        {
-          paramIntent = (NewIntent)paramIntent;
-          if (paramIntent.getObserver() != null) {
-            paramIntent.getObserver().onReceive(1, bool, (Bundle)localObject);
-          }
-        }
+      localStringBuilder.append("0").append(i);
+      localStringBuilder.append(":");
+      if (paramInt >= 10) {
+        break label91;
       }
-      else if ("QQApkSvc.update_download_count".equals(localObject))
-      {
-        paramIntent = new ServerApi.RspUpdateDownCountRecmd();
-        paramIntent.mergeFrom(paramFromServiceMsg);
-        paramFromServiceMsg = (ServerApi.ErrorInfo)paramIntent.err_info.get();
-        if (paramFromServiceMsg != null)
-        {
-          if (!QLog.isColorLevel()) {
-            return;
-          }
-          QLog.d("RockDownloaderServlet", 2, new Object[] { localObject, " ", Boolean.valueOf(bool), " ", Integer.valueOf(paramIntent.download_num.get()), " ", paramFromServiceMsg.err_msg.get(), " ", Integer.valueOf(paramFromServiceMsg.err_code.get()), " ", paramFromServiceMsg.jump_url.get() });
-        }
-      }
-    }
-    catch (Exception paramIntent)
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.d("RockDownloaderServlet", 2, paramIntent, new Object[0]);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("RockDownloaderServlet", 2, new Object[] { localObject, " ", Boolean.valueOf(bool), " ", Integer.valueOf(paramIntent.download_num.get()) });
-        }
-      }
-    }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RockDownloaderServlet", 2, "onSend");
-    }
-    String str = paramIntent.getStringExtra("BUNDLE_CMD");
-    if (QLog.isColorLevel()) {
-      QLog.d("RockDownloaderServlet", 2, new Object[] { "cmd=", str });
-    }
-    Object localObject;
-    if ("QQApkSvc.pre_download_apk".equals(str))
-    {
-      localObject = new ServerApi.ReqPreDownloadRecmd();
-      ((ServerApi.ReqPreDownloadRecmd)localObject).platform.set("android");
-      ((ServerApi.ReqPreDownloadRecmd)localObject).source.set(paramIntent.getStringExtra("BUNDLE_KEY_SOURCE"));
-      ((ServerApi.ReqPreDownloadRecmd)localObject).scene.set(paramIntent.getStringExtra("BUNDLE_KEY_SCENE"));
-      ((ServerApi.ReqPreDownloadRecmd)localObject).pkg_name.set(paramIntent.getStringExtra("BUNDLE_KEY_PKG_NAME"));
-      ((ServerApi.ReqPreDownloadRecmd)localObject).uin.set(paramIntent.getLongExtra("BUNDLE_KEY_UIN", 0L));
-      paramPacket.setSSOCommand(str);
-      paramPacket.putSendData(bgau.a(((ServerApi.ReqPreDownloadRecmd)localObject).toByteArray()));
+      localStringBuilder.append("0").append(paramInt);
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("RockDownloaderServlet", 2, "onSendFinish");
-      }
-      return;
-      if ("QQApkSvc.update_download_count".equals(str))
-      {
-        localObject = new ServerApi.ReqUpdateDownCountRecmd();
-        ((ServerApi.ReqUpdateDownCountRecmd)localObject).source.set(paramIntent.getStringExtra("BUNDLE_KEY_SOURCE"));
-        ((ServerApi.ReqUpdateDownCountRecmd)localObject).scene.set(paramIntent.getStringExtra("BUNDLE_KEY_SCENE"));
-        ((ServerApi.ReqUpdateDownCountRecmd)localObject).pkg_name.set(paramIntent.getStringExtra("BUNDLE_KEY_PKG_NAME"));
-        ((ServerApi.ReqUpdateDownCountRecmd)localObject).uin.set(paramIntent.getLongExtra("BUNDLE_KEY_UIN", 0L));
-        paramPacket.setSSOCommand(str);
-        paramPacket.putSendData(bgau.a(((ServerApi.ReqUpdateDownCountRecmd)localObject).toByteArray()));
-      }
+      localStringBuilder.append(")");
+      return localStringBuilder.toString();
+      localStringBuilder.append(i);
+      break;
+      label91:
+      localStringBuilder.append(paramInt);
     }
+  }
+  
+  public static void a(File paramFile)
+  {
+    zeb.a(BaseApplicationImpl.getContext(), paramFile);
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    ThreadManager.getUIHandler().post(new ARRecordUtils.1(paramString1, paramString2));
+  }
+  
+  public static void a(String paramString, boolean paramBoolean)
+  {
+    ThreadManager.getUIHandler().post(new ARRecordUtils.2(paramBoolean, paramString));
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    bhhr.a(BaseApplicationImpl.getApplication().getSharedPreferences("ARRecordUtils_AR", 4).edit().putBoolean("ARVideoRecordPressKey12", paramBoolean));
+  }
+  
+  public static boolean a()
+  {
+    return BaseApplicationImpl.getApplication().getSharedPreferences("ARRecordUtils_AR", 4).getBoolean("ARVideoRecordPressKey12", false);
+  }
+  
+  public static boolean a(long paramLong)
+  {
+    StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath());
+    int i = localStatFs.getAvailableBlocks();
+    long l = localStatFs.getBlockSize();
+    return i * l >= paramLong;
+  }
+  
+  public static String b(int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(10);
+    DecimalFormat localDecimalFormat = new DecimalFormat(".00");
+    double d = paramInt / 1024.0F / 1024.0F;
+    if (d < 1.0D) {
+      localStringBuilder.append(0);
+    }
+    localStringBuilder.append(localDecimalFormat.format(d));
+    localStringBuilder.append("M");
+    return localStringBuilder.toString();
   }
 }
 

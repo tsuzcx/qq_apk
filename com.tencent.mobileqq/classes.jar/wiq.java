@@ -1,27 +1,132 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class wiq
-  extends whj
+public class wiq
+  implements wja
 {
-  wiq(wif paramwif, StoryVideoItem paramStoryVideoItem, wjn paramwjn)
+  protected SharedPreferences a;
+  protected AtomicBoolean a;
+  
+  public wiq()
   {
-    super(paramStoryVideoItem);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
   
-  public boolean b()
+  private void a(@Nullable String paramString1, @Nullable Object paramObject, @Nullable String paramString2)
   {
-    String str = (String)a("result");
-    yos.a(str);
-    yos.a(this.jdField_a_of_type_Wjn.d);
-    if (this.jdField_a_of_type_Wjn.d == null)
+    paramString2 = new StringBuilder().append("key=").append(paramString1).append(" expected ").append(paramString2).append(" but value was ");
+    if (paramObject == null) {}
+    for (paramString1 = "null";; paramString1 = paramObject.getClass().getName())
     {
-      this.jdField_a_of_type_Wjn.d = "";
-      xvv.c(this.b, "imageLocalPath is null", new Throwable());
+      ykq.d("ConfigManager", paramString1);
+      return;
     }
-    a("DownloadPic2FileJob_iiu", str);
-    a("DownloadPic2FileJob_isfp", this.jdField_a_of_type_Wjn.d);
-    a("DownloadPic2FileJob_IN_ROUND", Boolean.valueOf(this.jdField_a_of_type_Wjn.a));
-    return true;
+  }
+  
+  private void c()
+  {
+    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      throw new IllegalStateException("have not attachContext");
+    }
+  }
+  
+  public <V> V a(@NonNull String paramString, @NonNull V paramV)
+  {
+    c();
+    Object localObject;
+    if (paramV.getClass() == Integer.class) {
+      localObject = Integer.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getInt(paramString, ((Integer)paramV).intValue()));
+    }
+    for (;;)
+    {
+      ykq.b("ConfigManager", "get value : K : %s, V : %s", paramString, localObject);
+      if ((localObject == null) || (localObject.getClass() != paramV.getClass())) {
+        break label183;
+      }
+      return localObject;
+      if (paramV.getClass() == Long.class)
+      {
+        localObject = Long.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getLong(paramString, ((Long)paramV).longValue()));
+      }
+      else if (paramV.getClass() == String.class)
+      {
+        localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.getString(paramString, (String)paramV);
+      }
+      else
+      {
+        if (paramV.getClass() != Boolean.class) {
+          break;
+        }
+        localObject = Boolean.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(paramString, ((Boolean)paramV).booleanValue()));
+      }
+    }
+    throw new IllegalArgumentException("defValue class is not support : " + paramV.getClass());
+    label183:
+    a(paramString, localObject, paramV.getClass().getName());
+    return paramV;
+  }
+  
+  public void a()
+  {
+    ykq.b("ConfigManager", "onInit");
+  }
+  
+  public void a(Context paramContext)
+  {
+    if (paramContext == null) {
+      throw new IllegalArgumentException("Context should not be null");
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
+    {
+      ykq.b("ConfigManager", "attachContext, " + paramContext);
+      this.jdField_a_of_type_AndroidContentSharedPreferences = paramContext.getSharedPreferences("qqstory_config", 4);
+      return;
+    }
+    ykq.d("ConfigManager", "attachContext duplicate");
+  }
+  
+  public void a(String paramString)
+  {
+    c();
+    if (!this.jdField_a_of_type_AndroidContentSharedPreferences.edit().remove(paramString).commit())
+    {
+      ykq.e("ConfigManager", "remove value error : K:%s.", new Object[] { paramString });
+      return;
+    }
+    ykq.b("ConfigManager", "remove value success :  K:%s.", paramString);
+  }
+  
+  public <V> void a(String paramString, V paramV)
+  {
+    c();
+    boolean bool;
+    if (paramV.getClass() == Integer.class) {
+      bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(paramString, ((Integer)paramV).intValue()).commit();
+    }
+    while (!bool)
+    {
+      ykq.e("ConfigManager", "set value error : K:%s, V:%s .", new Object[] { paramString, paramV });
+      return;
+      if (paramV.getClass() == Long.class) {
+        bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong(paramString, ((Long)paramV).longValue()).commit();
+      } else if (paramV.getClass() == String.class) {
+        bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(paramString, (String)paramV).commit();
+      } else if (paramV.getClass() == Boolean.class) {
+        bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(paramString, ((Boolean)paramV).booleanValue()).commit();
+      } else {
+        throw new IllegalArgumentException("value class is not support : " + paramV.getClass());
+      }
+    }
+    ykq.b("ConfigManager", "set value success :  K:%s, V:%s .", paramString, paramV);
+  }
+  
+  public void b()
+  {
+    ykq.b("ConfigManager", "onDestroy");
   }
 }
 

@@ -1,344 +1,90 @@
-import android.app.Dialog;
+import android.accounts.Account;
+import android.annotation.SuppressLint;
+import android.content.AbstractThreadedSyncAdapter;
+import android.content.ContentProviderClient;
 import android.content.Context;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import android.text.style.ImageSpan;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
+import android.content.SyncResult;
+import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.face.FaceDrawable;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSignalBombDialog.1;
-import com.tencent.mobileqq.extendfriend.wiget.LabelLayout;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.contactsync.ContactSyncManager;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import mqq.app.MobileQQ;
 
 public class arqh
-  extends ReportDialog
-  implements View.OnClickListener
+  extends AbstractThreadedSyncAdapter
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private arij jdField_a_of_type_Arij;
-  private arqi jdField_a_of_type_Arqi;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private FaceDrawable jdField_a_of_type_ComTencentMobileqqAppFaceFaceDrawable;
+  private Context a;
   
-  public arqh(BaseActivity paramBaseActivity, int paramInt, arqi paramarqi, arij paramarij)
+  public arqh(Context paramContext, boolean paramBoolean)
   {
-    super(paramBaseActivity, 2131755826);
-    setCanceledOnTouchOutside(false);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Arij = paramarij;
-    this.jdField_a_of_type_Arqi = paramarqi;
-    if (paramInt == 2)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseActivity.app;
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
-      }
-    }
-    a();
-    QLog.d("ExtendFriendSignalBombDialog", 2, " init dialog signal bomb");
+    super(paramContext, paramBoolean);
+    this.a = paramContext;
   }
   
-  private arqz a(int paramInt, String paramString)
+  public void onPerformSync(Account paramAccount, Bundle paramBundle, String paramString, ContentProviderClient paramContentProviderClient, SyncResult paramSyncResult)
   {
-    Context localContext = getContext();
-    String str;
-    label48:
-    SpannableString localSpannableString;
-    int i;
-    label69:
-    int j;
-    if (paramInt == 1)
-    {
-      str = localContext.getString(2131693568);
-      if (!TextUtils.isEmpty(paramString)) {
-        break label172;
-      }
-      paramString = str + " ";
-      localSpannableString = new SpannableString(paramString);
-      if (paramInt != 1) {
-        break label200;
-      }
-      i = Color.parseColor("#3300CAFC");
-      if (paramInt != 1) {
-        break label209;
-      }
-      j = Color.parseColor("#02B2DD");
-      label81:
-      if (paramInt != 1) {
-        break label219;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.SyncAdapter", 2, "onPerformSync");
     }
-    label172:
-    label200:
-    label209:
-    label219:
-    for (paramString = localContext.getResources().getDrawable(2130845012);; paramString = localContext.getResources().getDrawable(2130845011))
-    {
-      paramInt = ViewUtils.dip2px(11.0F);
-      paramString.setBounds(0, 0, paramInt, paramInt);
-      localSpannableString.setSpan(new ImageSpan(paramString, 1), 0, str.length(), 17);
-      paramString = new arqz();
-      paramString.jdField_a_of_type_JavaLangCharSequence = localSpannableString;
-      paramString.jdField_a_of_type_Int = i;
-      paramString.jdField_b_of_type_Int = j;
-      return paramString;
-      str = localContext.getString(2131692108);
-      break;
-      paramString = str + " " + paramString;
-      break label48;
-      i = Color.parseColor("#33FF80BF");
-      break label69;
-      j = Color.parseColor("#FF80BF");
-      break label81;
-    }
-  }
-  
-  private arqz a(long paramLong)
-  {
-    int i = ViewUtils.dip2px(11.0F);
-    Object localObject1 = getContext().getResources().getDrawable(2130845013);
-    ((Drawable)localObject1).setBounds(0, 0, i, i);
-    Object localObject2 = new ImageSpan((Drawable)localObject1, 1);
-    String str = getContext().getString(2131693568);
-    localObject1 = new SpannableString(str + " " + paramLong);
-    ((SpannableString)localObject1).setSpan(localObject2, 0, str.length(), 17);
-    localObject2 = new arqz();
-    ((arqz)localObject2).jdField_a_of_type_JavaLangCharSequence = ((CharSequence)localObject1);
-    ((arqz)localObject2).jdField_a_of_type_Int = Color.parseColor("#338173FF");
-    ((arqz)localObject2).jdField_b_of_type_Int = Color.parseColor("#8173FF");
-    return localObject2;
-  }
-  
-  private void a()
-  {
-    setContentView(2131561082);
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      findViewById(2131367792).setVisibility(0);
-      findViewById(2131377492).setVisibility(8);
-      findViewById(2131377067).setOnClickListener(this);
-    }
-    Object localObject1;
-    label647:
+    if (!"Success".equals(BaseApplicationImpl.sInjectResult)) {}
     do
     {
       for (;;)
       {
-        findViewById(2131364616).setOnClickListener(this);
-        localObject1 = findViewById(2131378565);
-        if (!ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
-          break label681;
-        }
-        ((View)localObject1).setVisibility(0);
-        if ((((View)localObject1).getLayoutParams() instanceof RelativeLayout.LayoutParams))
-        {
-          localObject1 = (RelativeLayout.LayoutParams)((View)localObject1).getLayoutParams();
-          if (this.jdField_a_of_type_Int != 1) {
-            break;
-          }
-          ((RelativeLayout.LayoutParams)localObject1).addRule(6, 2131367792);
-          ((RelativeLayout.LayoutParams)localObject1).addRule(8, 2131367792);
-        }
         return;
-        if (this.jdField_a_of_type_Int == 2)
+        try
         {
-          findViewById(2131367792).setVisibility(8);
-          findViewById(2131377492).setVisibility(0);
-          findViewById(2131376776).setOnClickListener(this);
-          this.jdField_a_of_type_AndroidViewView = findViewById(2131363126);
-          this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDrawable = FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, this.jdField_a_of_type_Arij.jdField_a_of_type_JavaLangString);
-          this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDrawable);
-          this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-          Object localObject2 = (TextView)findViewById(2131371769);
-          if (this.jdField_a_of_type_Arij.jdField_b_of_type_JavaLangString == null) {}
-          Object localObject3;
-          for (localObject1 = "";; localObject1 = this.jdField_a_of_type_Arij.jdField_b_of_type_JavaLangString)
+          paramAccount = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+          if ((paramAccount == null) || (!paramAccount.isLogin()))
           {
-            ((TextView)localObject2).setText((CharSequence)localObject1);
-            localObject1 = (TextView)findViewById(2131376810);
-            if (!TextUtils.isEmpty(this.jdField_a_of_type_Arij.d)) {
-              break;
+            if (!QLog.isColorLevel()) {
+              continue;
             }
-            ((TextView)localObject1).setVisibility(8);
-            ((TextView)findViewById(2131365656)).setText(String.format(getContext().getString(2131698243), new Object[] { arno.a(this.jdField_a_of_type_Arij.jdField_a_of_type_Int) }));
-            localObject1 = getContext().getResources().getStringArray(2130968660);
-            localObject2 = getContext().getResources().getStringArray(2130968659);
-            localObject3 = new ArrayList();
-            ((ArrayList)localObject3).add(a(this.jdField_a_of_type_Arij.jdField_b_of_type_Int, this.jdField_a_of_type_Arij.e));
-            if (this.jdField_a_of_type_Arij.jdField_b_of_type_Long > 0L) {
-              ((ArrayList)localObject3).add(a(this.jdField_a_of_type_Arij.jdField_b_of_type_Long));
-            }
-            if (this.jdField_a_of_type_Arij.jdField_a_of_type_JavaUtilArrayList == null) {
-              break label647;
-            }
-            Iterator localIterator = this.jdField_a_of_type_Arij.jdField_a_of_type_JavaUtilArrayList.iterator();
-            while (localIterator.hasNext())
-            {
-              String str = (String)localIterator.next();
-              if (!TextUtils.isEmpty(str))
-              {
-                arqz localarqz = new arqz();
-                localarqz.jdField_a_of_type_JavaLangCharSequence = str;
-                i = localarqz.jdField_a_of_type_JavaLangCharSequence.charAt(0);
-                localarqz.jdField_b_of_type_Int = Color.parseColor(localObject1[(i % localObject1.length)]);
-                localarqz.jdField_a_of_type_Int = Color.parseColor(localObject2[(i % localObject2.length)]);
-                ((ArrayList)localObject3).add(localarqz);
-              }
-            }
+            QLog.d("ContactSync.SyncAdapter", 2, "onPerformSync | app is null or not login, " + paramAccount);
           }
-          ((TextView)localObject1).setVisibility(0);
-          if (this.jdField_a_of_type_Arij.a()) {}
-          for (int i = 2130845065;; i = 2130845066)
-          {
-            localObject2 = getContext().getResources().getDrawable(i);
-            i = ViewUtils.dip2px(15.0F);
-            ((Drawable)localObject2).setBounds(0, 0, i, i);
-            localObject2 = new ImageSpan((Drawable)localObject2, 0);
-            localObject3 = new SpannableString(" " + this.jdField_a_of_type_Arij.d);
-            ((SpannableString)localObject3).setSpan(localObject2, 0, " ".length(), 17);
-            ((TextView)localObject1).setText((CharSequence)localObject3);
-            break;
-          }
-          a((List)localObject3);
         }
-      }
-    } while (this.jdField_a_of_type_Int != 2);
-    ((RelativeLayout.LayoutParams)localObject1).addRule(6, 2131377492);
-    ((RelativeLayout.LayoutParams)localObject1).addRule(8, 2131377492);
-    return;
-    label681:
-    ((View)localObject1).setVisibility(8);
-  }
-  
-  public static void a(BaseActivity paramBaseActivity, arij paramarij, DialogInterface.OnDismissListener paramOnDismissListener)
-  {
-    if ((paramBaseActivity != null) && (!paramBaseActivity.isFinishing()) && (paramarij != null))
-    {
-      paramBaseActivity = new arqh(paramBaseActivity, 2, null, paramarij);
-      paramBaseActivity.setOnDismissListener(paramOnDismissListener);
-      paramBaseActivity.show();
-    }
-  }
-  
-  public static void a(BaseActivity paramBaseActivity, arqi paramarqi)
-  {
-    if ((paramBaseActivity != null) && (!paramBaseActivity.isFinishing())) {
-      new arqh(paramBaseActivity, 1, paramarqi, null).show();
-    }
-  }
-  
-  private void a(List<arqz> paramList)
-  {
-    LabelLayout localLabelLayout1 = (LabelLayout)findViewById(2131369589);
-    LabelLayout localLabelLayout2 = (LabelLayout)findViewById(2131369590);
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      int i = getContext().getResources().getDimensionPixelSize(2131298189);
-      int j = localLabelLayout1.a(i, paramList, true, 12);
-      if (j > 0)
-      {
-        localLabelLayout1.setVisibility(0);
-        if (j < paramList.size())
+        catch (Throwable paramAccount)
         {
-          if (localLabelLayout2.a(i, paramList.subList(j, paramList.size()), true, 12) > 0) {}
-          for (i = 0;; i = 8)
+          for (;;)
           {
-            localLabelLayout2.setVisibility(i);
+            QLog.e("ContactSync.SyncAdapter", 1, "onPerformSync exception", paramAccount);
+            paramAccount = null;
+          }
+          try
+          {
+            ((ContactSyncManager)paramAccount.getManager(QQManagerFactory.MGR_SYNC_CONTACT)).a(1);
             return;
           }
+          catch (Throwable paramAccount) {}
         }
-        localLabelLayout2.setVisibility(8);
-        return;
       }
-      localLabelLayout1.setVisibility(8);
-      return;
-    }
-    localLabelLayout1.setVisibility(8);
-    localLabelLayout2.setVisibility(8);
+    } while (!QLog.isColorLevel());
+    QLog.d("ContactSync.SyncAdapter", 2, "onPerformSync | syncAllContacts exception", paramAccount);
   }
   
-  private void b()
+  @SuppressLint({"NewApi"})
+  public void onSyncCanceled()
   {
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AE97", "0X800AE97", 0, 0, "", "", "", "");
-    c();
-    dismiss();
-    ThreadManager.getSubThreadHandler().post(new ExtendFriendSignalBombDialog.1(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.SyncAdapter", 2, "onSyncCanceled()");
+    }
+    super.onSyncCanceled();
   }
   
-  private void c()
+  @SuppressLint({"NewApi"})
+  public void onSyncCanceled(Thread paramThread)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDrawable != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDrawable.cancel();
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.SyncAdapter", 2, "onSyncCanceled(thread)");
     }
-  }
-  
-  public void onBackPressed()
-  {
-    c();
-    super.onBackPressed();
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AE98", "0X800AE98", 0, 0, "", "", "", "");
-      QLog.d("ExtendFriendSignalBombDialog", 2, " closeBtn signal bomb dialog ");
-      c();
-      dismiss();
-      continue;
-      QLog.d("ExtendFriendSignalBombDialog", 2, " sendBtn signal bomb dialog ");
-      c();
-      dismiss();
-      if (this.jdField_a_of_type_Arqi != null)
-      {
-        this.jdField_a_of_type_Arqi.a();
-        continue;
-        QLog.d("ExtendFriendSignalBombDialog", 2, " sayHelloBtn signal bomb dialog ");
-        b();
-        continue;
-        QLog.d("ExtendFriendSignalBombDialog", 2, " avatar signal bomb dialog ");
-        ProfileActivity.AllInOne localAllInOne = new ProfileActivity.AllInOne(this.jdField_a_of_type_Arij.jdField_a_of_type_JavaLangString, 96);
-        localAllInOne.l = 11;
-        Intent localIntent = new Intent(getContext(), FriendProfileCardActivity.class);
-        localIntent.putExtra("AllInOne", localAllInOne);
-        localIntent.putExtra("key_from_extends_friend_limit_chat", true);
-        localIntent.addFlags(536870912);
-        getContext().startActivity(localIntent);
-      }
-    }
+    super.onSyncCanceled(paramThread);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arqh
  * JD-Core Version:    0.7.0.1
  */

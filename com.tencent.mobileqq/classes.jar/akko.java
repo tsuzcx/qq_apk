@@ -1,16 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.image.URLImageView;
 
 class akko
-  implements DialogInterface.OnClickListener
 {
-  akko(akkk paramakkk) {}
+  public URLImageView a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    ((amov)this.a.a.getBusinessHandler(2)).m(false);
-  }
+  private akko(akkm paramakkm) {}
 }
 
 

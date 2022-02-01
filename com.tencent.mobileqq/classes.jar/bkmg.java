@@ -1,10 +1,16 @@
-import android.os.IInterface;
-import cooperation.qappcenter.remote.RecvMsg;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnErrorListener;
 
-public abstract interface bkmg
-  extends IInterface
+class bkmg
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  public abstract void a(RecvMsg paramRecvMsg);
+  bkmg(bkmb parambkmb, AbsVideoPlayer.OnErrorListener paramOnErrorListener) {}
+  
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  {
+    return this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnErrorListener.onError(this.jdField_a_of_type_Bkmb, paramInt1, paramInt2);
+  }
 }
 
 

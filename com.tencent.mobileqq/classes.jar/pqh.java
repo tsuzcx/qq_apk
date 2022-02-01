@@ -1,19 +1,45 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class pqh
-  implements View.OnClickListener
 {
-  public pqh(ReadInJoyViolaChannelFragment paramReadInJoyViolaChannelFragment) {}
-  
-  public void onClick(View paramView)
+  public static String a()
   {
-    ReadInJoyViolaChannelFragment.a(this.a).d();
-    ReadInJoyViolaChannelFragment.a(this.a);
-    ReadInJoyViolaChannelFragment.b(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (TextUtils.isEmpty(pkh.a))
+    {
+      Object localObject2 = pqu.b();
+      String str = pqu.c();
+      if ((!((String)localObject2).equals("null")) && (!str.equals("null")))
+      {
+        pkh.a = "0," + (String)localObject2 + "," + str;
+        return pkh.a;
+      }
+      Object localObject1 = localObject2;
+      if (((String)localObject2).equals("null")) {
+        localObject1 = "0";
+      }
+      localObject2 = str;
+      if (str.equals("null")) {
+        localObject2 = "0";
+      }
+      return "0," + (String)localObject1 + "," + (String)localObject2;
+    }
+    return pkh.a;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_uin", paramQQAppInterface.getAccount());
+    localHashMap.put("param_cpu", String.valueOf(DeviceInfoUtil.getCpuNumber()));
+    localHashMap.put("param_totalMem", String.valueOf(DeviceInfoUtil.getSystemTotalMemory()));
+    localHashMap.put("param_availableMem", String.valueOf(DeviceInfoUtil.getSystemAvaialbeMemory()));
+    localHashMap.put("param_version", "8.4.10");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actUserDeviceInfoReport", true, 100L, 0L, localHashMap, "", true);
   }
 }
 

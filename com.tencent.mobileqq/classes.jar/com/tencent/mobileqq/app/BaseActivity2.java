@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.app;
 
 import Override;
-import amom;
-import anav;
 import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -21,7 +19,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
-import bbpn;
+import anqz;
+import aodk;
+import bcwh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
@@ -47,7 +47,7 @@ public class BaseActivity2
   private static final int DEFAULT_FLING_ACTION = 2;
   protected static final String TAG = "BaseActivity2";
   public static boolean mAppForground = true;
-  private static anav shakeListener;
+  private static aodk shakeListener;
   private static boolean snapChecked;
   public static BaseActivity2 topActivity;
   private String className = getClass().getSimpleName();
@@ -149,7 +149,12 @@ public class BaseActivity2
   
   public int getTitleBarHeight()
   {
-    return getResources().getDimensionPixelSize(2131299076);
+    return getResources().getDimensionPixelSize(2131299080);
+  }
+  
+  public void initNavigationBarColor()
+  {
+    ImmersiveUtils.c(getWindow());
   }
   
   @TargetApi(24)
@@ -247,8 +252,8 @@ public class BaseActivity2
     {
       if (getIntent().getLongExtra("TIMESTAMP_START_ACTIVITY", 0L) != 0L)
       {
-        bbpn.d = System.currentTimeMillis();
-        QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_BASE_ACTIVITY_CREATE ", Long.valueOf(bbpn.d) });
+        bcwh.d = System.currentTimeMillis();
+        QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_BASE_ACTIVITY_CREATE ", Long.valueOf(bcwh.d) });
       }
     }
     catch (Exception paramBundle)
@@ -291,20 +296,21 @@ public class BaseActivity2
           {
             paramBundle = new IntentFilter();
             paramBundle.addAction("android.intent.action.SCREEN_OFF");
-            this.mScreenReceiver = new amom(this, null);
+            this.mScreenReceiver = new anqz(this, null);
             registerReceiver(this.mScreenReceiver, paramBundle);
             if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1))
             {
               getWindow().addFlags(67108864);
               if (this.mActNeedImmersive)
               {
-                this.mSystemBarComp = new SystemBarCompact(this, true, getResources().getColor(2131167070));
+                this.mSystemBarComp = new SystemBarCompact(this, true, getResources().getColor(2131167084));
                 if (!ThemeUtil.isDefaultOrDIYTheme(false)) {
                   break;
                 }
-                this.mSystemBarComp.setStatusDrawable(getResources().getDrawable(2130846068));
+                this.mSystemBarComp.setStatusDrawable(getResources().getDrawable(2130846157));
               }
             }
+            initNavigationBarColor();
             return;
             paramBundle = paramBundle;
             QLog.e("BaseActivity2", 1, "getLongExtra fail, ", paramBundle);
@@ -321,11 +327,13 @@ public class BaseActivity2
         {
           for (;;)
           {
-            if (QLog.isColorLevel()) {
+            if (QLog.isColorLevel())
+            {
               QLog.e("BaseActivity2", 2, "registerReceiver error", paramBundle);
+              continue;
+              this.mSystemBarComp.setStatusDrawable(null);
             }
           }
-          this.mSystemBarComp.setStatusDrawable(null);
         }
       }
     }
@@ -369,7 +377,10 @@ public class BaseActivity2
     cleanScreenShot();
   }
   
-  public void onPostThemeChanged() {}
+  public void onPostThemeChanged()
+  {
+    initNavigationBarColor();
+  }
   
   public void onPreThemeChanged() {}
   
@@ -379,8 +390,8 @@ public class BaseActivity2
     super.onResume();
     if (getIntent().getLongExtra("TIMESTAMP_START_ACTIVITY", 0L) != 0L)
     {
-      bbpn.f = System.currentTimeMillis();
-      QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_BASE_ACTIVITY_RESUME ", Long.valueOf(bbpn.f) });
+      bcwh.f = System.currentTimeMillis();
+      QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_BASE_ACTIVITY_RESUME ", Long.valueOf(bcwh.f) });
     }
     if (QLog.isColorLevel()) {
       QLog.d("BaseActivity2", 2, "[" + hashCode() + "]" + this.className + " onResume ");
@@ -440,8 +451,8 @@ public class BaseActivity2
     super.onStart();
     if (getIntent().getLongExtra("TIMESTAMP_START_ACTIVITY", 0L) != 0L)
     {
-      bbpn.e = System.currentTimeMillis();
-      QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_BASE_ACTIVITY_START ", Long.valueOf(bbpn.e) });
+      bcwh.e = System.currentTimeMillis();
+      QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_BASE_ACTIVITY_START ", Long.valueOf(bcwh.e) });
     }
     if (QLog.isColorLevel()) {
       QLog.d("BaseActivity2", 2, "[" + hashCode() + "]" + this.className + " onStart");

@@ -1,27 +1,27 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aley
-  implements Animation.AnimationListener
+class aley
+  implements View.OnClickListener
 {
-  public aley(SpecailCareListActivity paramSpecailCareListActivity, alfk paramalfk) {}
+  aley(aldh paramaldh) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Alfk.a.clearAnimation();
-    paramAnimation = new RelativeLayout.LayoutParams(-2, -2);
-    paramAnimation.addRule(1, 2131368236);
-    paramAnimation.setMargins(0, (int)(36.0F * SpecailCareListActivity.i(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), (int)(30.0F * SpecailCareListActivity.j(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0);
-    this.jdField_a_of_type_Alfk.a.setLayoutParams(paramAnimation);
-    this.jdField_a_of_type_Alfk.a.setVisibility(0);
+    if (aldh.a(this.a) != null) {}
+    for (QQAppInterface localQQAppInterface = aldh.a(this.a).app;; localQQAppInterface = null)
+    {
+      if (localQQAppInterface != null) {
+        apzo.a().a(aldh.a(this.a), localQQAppInterface);
+      }
+      apzo.a().a();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,114 +1,29 @@
-public abstract class aqoh<DATA, CONFIG extends aqou>
-  extends aqoa<DATA, CONFIG>
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.view.View;
+
+public class aqoh
 {
-  private float[] a;
-  private float d;
-  private float e = -1.0F;
-  private float f;
-  
-  public aqoh(aqoj paramaqoj)
+  public static void a(View paramView, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    super(paramaqoj);
+    paramView.setPivotX(paramView.getWidth());
+    paramView.setPivotY(paramView.getHeight() / 2);
+    AnimatorSet localAnimatorSet = new AnimatorSet();
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(paramView, "scaleX", new float[] { paramFloat1, paramFloat2 });
+    paramView = ObjectAnimator.ofFloat(paramView, "scaleY", new float[] { paramFloat3, paramFloat4 });
+    localAnimatorSet.setDuration(paramInt);
+    localAnimatorSet.playTogether(new Animator[] { localObjectAnimator, paramView });
+    localAnimatorSet.start();
   }
   
-  public float a()
+  public static void a(View paramView, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
   {
-    return -this.f;
-  }
-  
-  protected float a(long paramLong)
-  {
-    long l = this.jdField_a_of_type_Long;
-    return f() - (float)(paramLong - l) * this.f;
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, long paramLong1, long paramLong2)
-  {
-    if (!a(paramLong1))
-    {
-      aqqb.c("BaseDanmaku", "onLayout, Y = " + paramFloat2 + ", danmaku = " + toString());
-      this.d = a(paramLong2);
-      if (!c())
-      {
-        this.e = paramFloat2;
-        a(true);
-      }
-      return;
-    }
-    a(false);
-  }
-  
-  public void a(long paramLong)
-  {
-    this.d = a(paramLong);
-  }
-  
-  public float[] a(long paramLong)
-  {
-    if (!b()) {
-      return null;
-    }
-    float f1 = a(paramLong);
-    if (this.jdField_a_of_type_ArrayOfFloat == null) {
-      this.jdField_a_of_type_ArrayOfFloat = new float[4];
-    }
-    this.jdField_a_of_type_ArrayOfFloat[0] = (f1 - aqoj.a().b());
-    this.jdField_a_of_type_ArrayOfFloat[1] = this.e;
-    this.jdField_a_of_type_ArrayOfFloat[2] = (f1 + this.jdField_a_of_type_Float + this.c);
-    this.jdField_a_of_type_ArrayOfFloat[3] = (this.e + this.b);
-    return this.jdField_a_of_type_ArrayOfFloat;
-  }
-  
-  public float b()
-  {
-    return this.d;
-  }
-  
-  public float[] b(long paramLong)
-  {
-    if (!b()) {
-      return null;
-    }
-    float f1 = a(paramLong);
-    if (this.jdField_a_of_type_ArrayOfFloat == null) {
-      this.jdField_a_of_type_ArrayOfFloat = new float[4];
-    }
-    this.jdField_a_of_type_ArrayOfFloat[0] = f1;
-    this.jdField_a_of_type_ArrayOfFloat[1] = this.e;
-    this.jdField_a_of_type_ArrayOfFloat[2] = (f1 + this.jdField_a_of_type_Float);
-    this.jdField_a_of_type_ArrayOfFloat[3] = (this.e + this.b);
-    return this.jdField_a_of_type_ArrayOfFloat;
-  }
-  
-  public float c()
-  {
-    return this.e;
-  }
-  
-  public float d()
-  {
-    return this.d + this.jdField_a_of_type_Float;
-  }
-  
-  public float e()
-  {
-    return this.e + this.b;
-  }
-  
-  public void g()
-  {
-    super.g();
-    this.f = ((int)(f() + this.jdField_a_of_type_Float) / (float)this.jdField_a_of_type_Aqps.a());
-  }
-  
-  public void g(float paramFloat)
-  {
-    this.d = paramFloat;
-  }
-  
-  public void h(float paramFloat)
-  {
-    this.e = paramFloat;
+    AnimatorSet localAnimatorSet = new AnimatorSet();
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(paramView, "alpha", new float[] { paramFloat1, paramFloat2 });
+    localAnimatorSet.setDuration(paramInt);
+    localAnimatorSet.playTogether(new Animator[] { localObjectAnimator, ObjectAnimator.ofFloat(paramView, "scaleX", new float[] { paramFloat3, paramFloat4 }), ObjectAnimator.ofFloat(paramView, "scaleY", new float[] { paramFloat5, paramFloat6 }) });
+    localAnimatorSet.start();
   }
 }
 

@@ -1,33 +1,24 @@
-public class zam
+import java.io.File;
+import java.util.Comparator;
+
+public final class zam
+  implements Comparator<File>
 {
-  public static <T> String a(String paramString, zal<T> paramzal)
+  public int a(File paramFile1, File paramFile2)
   {
-    return zan.a().a(paramString, paramzal);
+    long l = paramFile1.lastModified() - paramFile2.lastModified();
+    if (l > 0L) {
+      return -1;
+    }
+    if (l == 0L) {
+      return 0;
+    }
+    return 1;
   }
   
-  public static void a(String paramString)
+  public boolean equals(Object paramObject)
   {
-    zan.a().a(paramString);
-  }
-  
-  public static <T> void a(String paramString, zas<T> paramzas)
-  {
-    zan.a().a(paramString, paramzas);
-  }
-  
-  public static void a(Throwable paramThrowable)
-  {
-    xvv.a("PreLoader", "", paramThrowable);
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return zan.a().a(paramString);
-  }
-  
-  public static void b(String paramString)
-  {
-    xvv.b("PreLoader", paramString);
+    return true;
   }
 }
 

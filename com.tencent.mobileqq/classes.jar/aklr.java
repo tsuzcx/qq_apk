@@ -1,174 +1,130 @@
-import android.app.Activity;
-import android.content.Context;
-import android.text.TextUtils;
+import android.graphics.Rect;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.View.OnTouchListener;
-import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemMayKnowFriendData;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.widget.HorizontalListView;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class aklr
-  extends akll
+  extends aklo
 {
-  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new akls(this);
-  protected String a;
-  private WeakReference<aljz> jdField_a_of_type_JavaLangRefWeakReference;
+  protected int a;
+  protected akls a;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  private final String jdField_a_of_type_JavaLangString = "VideoPlayControllerForAIO";
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private ImageView b;
   
-  aklr()
+  public aklr()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecentMayKnowFriendItemBuilder", 0, "RecentMayKnowFriendItemBuilder constructed");
-    }
-  }
-  
-  public View a(int paramInt, Object paramObject, aklg paramaklg, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, aknm paramaknm)
-  {
-    paramOnLongClickListener = null;
-    paramViewGroup = paramOnLongClickListener;
-    if (paramView != null)
-    {
-      paramViewGroup = paramOnLongClickListener;
-      if ((paramView.getTag() instanceof aklt)) {
-        paramViewGroup = (aklt)paramView.getTag();
-      }
-    }
-    if (paramViewGroup == null)
-    {
-      paramViewGroup = (RecentItemMayKnowFriendData)paramObject;
-      paramView = new aklt();
-      paramView.jdField_a_of_type_JavaLangString = paramViewGroup.curUin;
-      paramViewGroup = a(paramContext, 2131558979, paramView);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131376108));
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      paramView.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)paramViewGroup.findViewById(2131370637));
-      paramView.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth(AIOUtils.dp2px(9.0F, paramContext.getResources()));
-      paramOnLongClickListener = new aljz((Activity)paramContext, paramaklg.a(), paramView.jdField_a_of_type_ComTencentWidgetHorizontalListView, null, 25, 0);
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-      {
-        paramaknm = (aljz)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (paramaknm != null) {
-          paramaknm.d();
-        }
-      }
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramOnLongClickListener);
-      paramView.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(paramOnLongClickListener);
-      paramViewGroup.setTag(paramView);
-      paramOnLongClickListener = paramView;
-      paramView = paramViewGroup;
-      this.jdField_a_of_type_JavaLangString = ThemeUtil.curThemeId;
-      if (AppSetting.c) {
-        paramView.setContentDescription(null);
-      }
-      if ((paramOnLongClickListener == null) || (!(paramObject instanceof RecentBaseData))) {
-        break label379;
-      }
-      a(paramView, (RecentBaseData)paramObject, paramContext, paramaklg.a());
-    }
-    for (;;)
-    {
-      a(paramContext, paramView, paramInt, paramObject, paramOnLongClickListener, paramOnClickListener);
-      paramView.setTag(-1, Integer.valueOf(paramInt));
-      paramOnLongClickListener.jdField_a_of_type_AndroidWidgetTextView.setTag(-1, Integer.valueOf(paramInt));
-      return paramView;
-      if ((!TextUtils.equals(this.jdField_a_of_type_JavaLangString, ThemeUtil.curThemeId)) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
-      {
-        paramOnLongClickListener = (aljz)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (paramOnLongClickListener != null) {
-          paramOnLongClickListener.notifyDataSetChanged();
-        }
-      }
-      paramOnLongClickListener = paramViewGroup;
-      break;
-      label379:
-      if (paramOnLongClickListener == null) {}
-    }
+    this.jdField_a_of_type_Int = -1;
   }
   
   public void a()
   {
-    Object localObject;
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder().append("destroy : ");
-      if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
-        break label84;
-      }
-    }
-    label84:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.i("RecentMayKnowFriendItemBuilder", 0, bool);
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-      {
-        localObject = (aljz)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (localObject != null) {
-          ((aljz)localObject).d();
-        }
-        this.jdField_a_of_type_JavaLangRefWeakReference = null;
-      }
-      return;
+    this.jdField_a_of_type_AndroidWidgetImageView = null;
+    this.b = null;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(paramInt);
     }
   }
   
-  public void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext, QQAppInterface paramQQAppInterface)
+  public void a(int paramInt, String paramString)
   {
-    if ((paramView == null) || (paramRecentBaseData == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("RecentMayKnowFriendItemBuilder", 0, "updateView|param invalidate");
-      }
-      return;
+    if (paramInt == 0) {
+      b(8);
     }
-    Object localObject = paramView.getTag();
-    if ((localObject instanceof aklt)) {}
-    for (paramView = (aklt)localObject;; paramView = null)
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
     {
-      if (paramView == null)
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(paramInt);
+      if (this.jdField_a_of_type_AndroidWidgetTextView == null) {
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131366253));
+      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    }
+  }
+  
+  public void a(akls paramakls)
+  {
+    this.jdField_a_of_type_Akls = paramakls;
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131373142));
+    this.b = ((ImageView)paramView.findViewById(2131373141));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131373143));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
+    }
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    }
+    return false;
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    if (this.b == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, mCenterPlayBtn is null.");
+      }
+    }
+    do
+    {
+      do
       {
-        if (!QLog.isColorLevel()) {
+        return false;
+        if (this.b.getVisibility() != 0) {
           break;
         }
-        QLog.i("RecentMayKnowFriendItemBuilder", 0, "updateView|holder is null, tag = " + localObject);
-        return;
-      }
-      if (!(paramRecentBaseData instanceof RecentItemMayKnowFriendData)) {
-        break;
-      }
-      paramRecentBaseData = (RecentItemMayKnowFriendData)paramRecentBaseData;
-      if (QLog.isColorLevel()) {
-        QLog.i("RecentMayKnowFriendItemBuilder", 0, "updateView");
-      }
-      if ((TextUtils.isEmpty(paramRecentBaseData.curUin)) || (paramRecentBaseData.curUin.equals(paramView.jdField_a_of_type_JavaLangString))) {
-        break;
-      }
-      paramContext = new aljz((Activity)paramContext, paramQQAppInterface, paramView.jdField_a_of_type_ComTencentWidgetHorizontalListView, null, 25, 0);
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-      {
-        paramQQAppInterface = (aljz)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (paramQQAppInterface != null) {
-          paramQQAppInterface.d();
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, event.getRawX() = " + paramMotionEvent.getRawX() + " , event.getRawY() = " + paramMotionEvent.getRawY() + " , mCenterPlayBtn left = " + this.b.getLeft() + " , top = " + this.b.getTop() + " , right = " + this.b.getRight() + ", bottom = " + this.b.getBottom());
         }
+      } while (!new Rect(this.b.getLeft(), this.b.getTop(), this.b.getRight(), this.b.getBottom()).contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY()));
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, playbtn contains event");
       }
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-      paramView.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(paramContext);
-      paramView.jdField_a_of_type_JavaLangString = paramRecentBaseData.curUin;
-      if (!QLog.isColorLevel()) {
-        break;
+      return true;
+    } while (!QLog.isColorLevel());
+    QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, mCenterPlayBtn is not visible.");
+    return false;
+  }
+  
+  public void b(int paramInt)
+  {
+    if (this.b != null)
+    {
+      if ((this.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (this.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() == 0)) {
+        this.b.setVisibility(8);
       }
-      QLog.i("RecentMayKnowFriendItemBuilder", 0, "updateView1");
+    }
+    else {
       return;
     }
+    this.b.setVisibility(paramInt);
+  }
+  
+  public void e(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

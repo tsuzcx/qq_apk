@@ -1,90 +1,80 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
+import android.app.Activity;
+import android.os.Build.VERSION;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AbsListView.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ToggleButton;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
-import com.tencent.mobileqq.profile.view.ProfileLabelPanelAdapter;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.view.Window;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.util.SystemUtil;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.widget.immersive.SystemBarCompact;
 
 public class ayqu
-  extends BaseAdapter
 {
-  List<ProfileLabelInfo> jdField_a_of_type_JavaUtilList;
-  
-  private ayqu(ProfileLabelPanelAdapter paramProfileLabelPanelAdapter) {}
-  
-  public void a(List<ProfileLabelInfo> paramList)
+  public static int a(Activity paramActivity)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    return ImmersiveUtils.getStatusBarHeight(paramActivity);
   }
   
-  public int getCount()
+  public static void a(Activity paramActivity, int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    paramActivity = new SystemBarCompact(paramActivity, true, -1);
+    paramActivity.init();
+    paramActivity.setStatusBarColor(paramInt);
   }
   
-  public Object getItem(int paramInt)
+  public static void a(Activity paramActivity, boolean paramBoolean)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject1;
-    Object localObject2;
-    boolean bool;
-    if (paramView == null)
+    if (ThemeUtil.isCustomTheme(false))
     {
-      localObject1 = new ToggleButton(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_AndroidContentContext);
-      ((View)localObject1).setLayoutParams(new AbsListView.LayoutParams(-1, (int)(28.0F * this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_Float)));
-      ((View)localObject1).setBackgroundResource(2130850455);
-      paramView = (ToggleButton)localObject1;
-      paramView.setGravity(17);
-      paramView.setTextSize(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_AndroidContentContext.getResources().getInteger(2131427334));
-      paramView.setTextColor(Color.parseColor("#777777"));
-      paramView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter);
-      localObject2 = (ProfileLabelInfo)getItem(paramInt);
-      if (localObject2 == null) {
-        break label231;
-      }
-      paramView.setTag(localObject2);
-      if (((ProfileLabelInfo)localObject2).labelStatus != ProfileLabelInfo.STATUS_CHECKED) {
-        break label225;
-      }
-      bool = true;
-      label135:
-      paramView.setChecked(bool);
-      paramView.setText(((ProfileLabelInfo)localObject2).labelName);
-      paramView.setTextOn(((ProfileLabelInfo)localObject2).labelName);
-      paramView.setTextOff(((ProfileLabelInfo)localObject2).labelName);
-      if (((ProfileLabelInfo)localObject2).labelStatus == ProfileLabelInfo.STATUS_CHECKED) {
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_Ayqs.a((ProfileLabelInfo)localObject2, paramView);
+      a(paramActivity, 0);
+      return;
+    }
+    if (paramBoolean)
+    {
+      a(paramActivity, -16777216);
+      a(paramActivity, false);
+      return;
+    }
+    if (a(paramActivity, true))
+    {
+      a(paramActivity, -1);
+      return;
+    }
+    a(paramActivity, -2368549);
+  }
+  
+  public static boolean a()
+  {
+    return ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
+  }
+  
+  public static boolean a(Activity paramActivity, boolean paramBoolean)
+  {
+    int i = 9216;
+    if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.isFlyme()) && (!SystemUtil.isMIUI())) {
+      if (paramBoolean) {
+        paramActivity.getWindow().getDecorView().setSystemUiVisibility(i);
       }
     }
+    do
+    {
+      return paramBoolean;
+      i = 1280;
+      break;
+      if (!ImmersiveUtils.a()) {
+        break label101;
+      }
+      ImmersiveUtils.a(paramActivity.getWindow(), paramBoolean);
+    } while ((Build.VERSION.SDK_INT < 23) || (!SystemUtil.isMIUI()));
+    if (paramBoolean) {}
     for (;;)
     {
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
-      return localObject1;
-      localObject2 = (ToggleButton)paramView;
-      localObject1 = paramView;
-      paramView = (View)localObject2;
-      break;
-      label225:
-      bool = false;
-      break label135;
-      label231:
-      paramView.setVisibility(8);
+      paramActivity.getWindow().getDecorView().setSystemUiVisibility(i);
+      return paramBoolean;
+      i = 1280;
     }
+    label101:
+    return false;
   }
 }
 

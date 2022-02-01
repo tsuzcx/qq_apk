@@ -1,14 +1,20 @@
-import android.view.View;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aepg
-  extends aliz
+  implements aqrw
 {
-  public View a;
-  public RelativeLayout a;
-  public TextView a;
-  public TextView b;
+  public aepg(QQBrowserActivity paramQQBrowserActivity) {}
+  
+  public void a()
+  {
+    QLog.d("WebLog_QQBrowserActivity", 1, "onPageSwipeClose");
+  }
+  
+  public void b()
+  {
+    QLog.d("WebLog_QQBrowserActivity", 1, "onPageSwipeNotClose");
+  }
 }
 
 

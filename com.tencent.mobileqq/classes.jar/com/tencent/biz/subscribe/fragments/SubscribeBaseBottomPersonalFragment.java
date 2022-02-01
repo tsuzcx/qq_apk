@@ -10,8 +10,8 @@ import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.biz.subscribe.widget.StatusView;
 import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
-import yzj;
-import zhq;
+import zoo;
+import zwv;
 
 public abstract class SubscribeBaseBottomPersonalFragment
   extends ReportV4Fragment
@@ -19,7 +19,7 @@ public abstract class SubscribeBaseBottomPersonalFragment
   protected View a;
   protected BlockContainer a;
   protected StatusView a;
-  public zhq a;
+  public zwv a;
   
   abstract ExtraTypeInfo a();
   
@@ -27,13 +27,13 @@ public abstract class SubscribeBaseBottomPersonalFragment
   
   public abstract void a(int paramInt);
   
-  public abstract void a(String paramString, zhq paramzhq);
+  public abstract void a(String paramString, zwv paramzwv);
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131558786, paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer = ((BlockContainer)this.jdField_a_of_type_AndroidViewView.findViewById(2131372384));
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView = ((StatusView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377756));
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131558811, paramViewGroup, false);
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer = ((BlockContainer)this.jdField_a_of_type_AndroidViewView.findViewById(2131372578));
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView = ((StatusView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378037));
     this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.a().setNestedScrollingEnabled(true);
     this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.a().a(2);
     this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.setEnableRefresh(false);

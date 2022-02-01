@@ -1,21 +1,44 @@
+import android.util.SparseArray;
+import com.tencent.mobileqq.data.ApolloGameData;
 import java.util.Comparator;
 
 class amui
-  implements Comparator<amul>
+  implements Comparator<ApolloGameData>
 {
-  amui(amuh paramamuh) {}
+  SparseArray<Long> a;
   
-  public int a(amul paramamul1, amul paramamul2)
+  amui(SparseArray paramSparseArray)
   {
-    if ((paramamul1 == null) || (paramamul2 == null)) {}
-    do
+    this.a = paramSparseArray;
+  }
+  
+  public int a(ApolloGameData paramApolloGameData1, ApolloGameData paramApolloGameData2)
+  {
+    long l2 = 0L;
+    long l1;
+    if (this.a.get(paramApolloGameData1.gameId) == null)
     {
-      return 0;
-      if (paramamul1.a > paramamul2.a) {
-        return 1;
+      l1 = 0L;
+      if (this.a.get(paramApolloGameData2.gameId) != null) {
+        break label63;
       }
-    } while (paramamul1.a >= paramamul2.a);
-    return -1;
+    }
+    for (;;)
+    {
+      if (l1 <= l2) {
+        break label85;
+      }
+      return -1;
+      l1 = ((Long)this.a.get(paramApolloGameData1.gameId)).longValue();
+      break;
+      label63:
+      l2 = ((Long)this.a.get(paramApolloGameData2.gameId)).longValue();
+    }
+    label85:
+    if (l1 < l2) {
+      return 1;
+    }
+    return 0;
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.open.agent;
 
-import bhtw;
-import bhtx;
-import bhvs;
-import bhvv;
+import bjet;
+import bjeu;
+import bjgt;
+import bjgw;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,7 +11,7 @@ import org.json.JSONObject;
 public class OpenSdkFriendService$CheckAvatarUpdateCallback$1
   implements Runnable
 {
-  public OpenSdkFriendService$CheckAvatarUpdateCallback$1(bhtx parambhtx, int paramInt, JSONArray paramJSONArray) {}
+  public OpenSdkFriendService$CheckAvatarUpdateCallback$1(bjeu parambjeu, int paramInt, JSONArray paramJSONArray) {}
   
   public void run()
   {
@@ -22,8 +22,8 @@ public class OpenSdkFriendService$CheckAvatarUpdateCallback$1
         try
         {
           String str = this.jdField_a_of_type_OrgJsonJSONArray.getJSONObject(i).getString("openid");
-          str = bhvv.a(this.jdField_a_of_type_Bhtx.a.a, str);
-          bhvs.a().a(str);
+          str = bjgw.a(this.jdField_a_of_type_Bjeu.a.a, str);
+          bjgt.a().a(str);
           i += 1;
         }
         catch (JSONException localJSONException)

@@ -1,44 +1,19 @@
-import android.graphics.Path;
-import android.graphics.PathMeasure;
-import android.graphics.PointF;
+import com.tencent.av.core.VcControllerImpl;
 
-public abstract class llo
-  extends lle
+public class llo
 {
-  protected Path a;
-  protected PathMeasure a;
+  public int a;
+  public long a;
+  public String a;
+  public int b;
   
-  public llo()
+  public llo(VcControllerImpl paramVcControllerImpl) {}
+  
+  public String toString()
   {
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure = new PathMeasure(this.jdField_a_of_type_AndroidGraphicsPath, false);
-  }
-  
-  public abstract void a();
-  
-  public void a(float paramFloat1, float paramFloat2)
-  {
-    super.a(paramFloat1, paramFloat2);
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(paramFloat1, paramFloat2);
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure.setPath(this.jdField_a_of_type_AndroidGraphicsPath, false);
-    a();
-  }
-  
-  public void b(float paramFloat1, float paramFloat2)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPath.quadTo(this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y, (this.jdField_a_of_type_AndroidGraphicsPointF.x + paramFloat1) / 2.0F, (this.jdField_a_of_type_AndroidGraphicsPointF.y + paramFloat2) / 2.0F);
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure.setPath(this.jdField_a_of_type_AndroidGraphicsPath, false);
-    a();
-  }
-  
-  public void c(float paramFloat1, float paramFloat2)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPointF.x = paramFloat1;
-    this.jdField_a_of_type_AndroidGraphicsPointF.y = paramFloat2;
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y);
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure.setPath(this.jdField_a_of_type_AndroidGraphicsPath, false);
-    a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" uin : " + this.jdField_a_of_type_Long + " operation : " + this.jdField_a_of_type_Int + " opvalue : " + this.b + " nickname : " + this.jdField_a_of_type_JavaLangString);
+    return localStringBuilder.toString();
   }
 }
 

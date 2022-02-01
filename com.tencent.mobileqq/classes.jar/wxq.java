@@ -1,14 +1,15 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnInfoListener;
-
 class wxq
-  implements MediaPlayer.OnInfoListener
+  extends wwi
 {
-  wxq(wxj paramwxj, wxd paramwxd) {}
-  
-  public boolean onInfo(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  wxq(wxa paramwxa, String paramString1, String paramString2, boolean paramBoolean, wyg paramwyg)
   {
-    return this.jdField_a_of_type_Wxd.a_(this.jdField_a_of_type_Wxj, paramInt1, paramInt2);
+    super(paramString1, paramString2, paramBoolean);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_Wyg.h = ((String)a("EncryptUrlJob_encryptedUrl"));
+    return true;
   }
 }
 

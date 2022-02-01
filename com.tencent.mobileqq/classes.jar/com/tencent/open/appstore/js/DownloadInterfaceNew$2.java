@@ -1,8 +1,8 @@
 package com.tencent.open.appstore.js;
 
 import android.os.Build.VERSION;
-import bhza;
-import bhzm;
+import bjkc;
+import bjko;
 import com.tencent.smtt.sdk.WebView;
 
 public class DownloadInterfaceNew$2
@@ -19,12 +19,12 @@ public class DownloadInterfaceNew$2
         DownloadInterfaceNew.a(this.this$0).loadUrl(this.a);
         return;
       }
-      DownloadInterfaceNew.a(this.this$0).evaluateJavascript(this.a, new bhza(this));
+      DownloadInterfaceNew.a(this.this$0).evaluateJavascript(this.a, new bjkc(this));
       return;
     }
     catch (Exception localException)
     {
-      bhzm.a("DownloadInterfaceNew", "[jsCallBack] e>>> ", localException);
+      bjko.a("DownloadInterfaceNew", "[jsCallBack] e>>> ", localException);
     }
   }
 }

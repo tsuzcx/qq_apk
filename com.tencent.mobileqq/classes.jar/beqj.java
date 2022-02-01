@@ -1,11 +1,23 @@
+import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
 import java.util.List;
 
-public class beqj
+class beqj
+  extends beql<UserState>
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString = "";
-  List<beqk> jdField_a_of_type_JavaUtilList = null;
-  String b = "";
+  beqj(bepx parambepx, UserState paramUserState, List paramList)
+  {
+    super(paramUserState, paramList);
+  }
+  
+  public void a(UserState paramUserState)
+  {
+    bepx.a(this.a).a();
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
 }
 
 

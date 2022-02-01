@@ -1,26 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.widget.RadioButton;
+import com.tencent.av.ui.MultiMembersAudioIndicator;
 
-class mfo
-  implements View.OnClickListener
+public class mfo
+  extends RadioButton
 {
-  mfo(mfn parammfn) {}
-  
-  public void onClick(View paramView)
+  public mfo(MultiMembersAudioIndicator paramMultiMembersAudioIndicator, Context paramContext)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.j();
-    }
-    bcef.b(null, "CliOper", "", "", "0X8005DF1", "0X8005DF1", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramContext);
+  }
+  
+  public boolean performClick()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mfo
  * JD-Core Version:    0.7.0.1
  */

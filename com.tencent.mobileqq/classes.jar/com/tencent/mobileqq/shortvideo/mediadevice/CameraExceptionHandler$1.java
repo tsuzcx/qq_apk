@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.shortvideo.mediadevice;
 
-import bbui;
-import bbuj;
+import bdbd;
+import bdbe;
 
 public class CameraExceptionHandler$1
   implements Runnable
 {
-  public CameraExceptionHandler$1(bbui parambbui, RuntimeException paramRuntimeException) {}
+  public CameraExceptionHandler$1(bdbd parambdbd, RuntimeException paramRuntimeException) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class CameraExceptionHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediadevice.CameraExceptionHandler.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class qrn
-  implements View.OnClickListener
+  implements qhl
 {
-  qrn(qrl paramqrl) {}
+  qrn(qrm paramqrm, QQAppInterface paramQQAppInterface, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onLoadUserInfoFailed(String paramString1, String paramString2)
   {
-    pet localpet = this.a.jdField_a_of_type_Slt.a().a();
-    if (localpet != null) {
-      localpet.a(null, ((pvc)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    qrm.a(this.jdField_a_of_type_Qrm, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "", true);
+  }
+  
+  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
+  {
+    qrm.a(this.jdField_a_of_type_Qrm, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, paramReadInJoyUserInfo.faceUrl + "140", true);
   }
 }
 

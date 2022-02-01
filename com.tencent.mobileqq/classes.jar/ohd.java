@@ -1,90 +1,37 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.qqshop.qq_ad.QQAdGetRsp;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import java.util.ArrayList;
 
-class ohd
-  implements BusinessObserver
+public class ohd
+  implements ViewPager.OnPageChangeListener
 {
-  ohd(ohc paramohc, ohg paramohg) {}
+  public ohd(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EcshopMinusViewChatPie", 2, "isSuccess: " + paramBoolean);
+    ReadInJoyNativeAdFragment.a(this.a, Math.max(ReadInJoyNativeAdFragment.a(this.a), paramInt + 1));
+    ((ohj)ReadInJoyNativeAdFragment.a(this.a).get(paramInt)).a();
+    if (paramInt + 1 < ReadInJoyNativeAdFragment.a(this.a).size()) {
+      ((ohj)ReadInJoyNativeAdFragment.a(this.a).get(paramInt + 1)).b();
     }
-    if (paramInt != 1) {}
+    if ((ReadInJoyNativeAdFragment.a(this.a) != null) && (ReadInJoyNativeAdFragment.a(this.a).a == 1) && ((ReadInJoyNativeAdFragment.b(this.a) == 1) || (ReadInJoyNativeAdFragment.b(this.a) == 2)))
+    {
+      if (paramInt != ReadInJoyNativeAdFragment.a(this.a).size() - 1) {
+        break label155;
+      }
+      ReadInJoyNativeAdFragment.a(this.a).setVisibility(8);
+    }
     for (;;)
     {
+      ReadInJoyNativeAdFragment.a(this.a);
       return;
-      qq_ad.QQAdGetRsp localQQAdGetRsp = new qq_ad.QQAdGetRsp();
-      try
-      {
-        localQQAdGetRsp.mergeFrom(paramBundle.getByteArray("data"));
-        if (localQQAdGetRsp.qgg_msgs.has())
-        {
-          paramBundle = localQQAdGetRsp.qgg_msgs.get();
-          if ((paramBundle != null) && (!paramBundle.isEmpty()))
-          {
-            paramBundle = paramBundle.iterator();
-            paramInt = 0;
-            while (paramBundle.hasNext())
-            {
-              String str = (String)paramBundle.next();
-              MessageForArkApp localMessageForArkApp = (MessageForArkApp)bbli.a(-5008);
-              localMessageForArkApp.msgtype = -5008;
-              ArkAppMessage localArkAppMessage = new ArkAppMessage();
-              localArkAppMessage.fromAppXml(str);
-              localMessageForArkApp.msgData = localArkAppMessage.toBytes();
-              localMessageForArkApp.parse();
-              if ((!TextUtils.isEmpty(localMessageForArkApp.ark_app_message.appName)) && (!TextUtils.isEmpty(localMessageForArkApp.ark_app_message.appView)))
-              {
-                ohc.a(this.jdField_a_of_type_Ohc).add(localMessageForArkApp);
-                localMessageForArkApp.time = System.currentTimeMillis();
-                if (paramInt == 0) {
-                  localMessageForArkApp.saveExtInfoToExtStr("add_title", "minus_view_title_second");
-                }
-              }
-              ohq.a().a.put(Long.valueOf(localMessageForArkApp.uniseq), localMessageForArkApp);
-              paramInt += 1;
-            }
-          }
-        }
-        paramBundle = BaseApplicationImpl.getApplication().getRuntime();
-        if ((paramBundle instanceof QQAppInterface))
-        {
-          paramBundle = (oge)((QQAppInterface)paramBundle).getBusinessHandler(139);
-          if (paramBundle != null)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("EcshopMinusViewChatPie", 2, "-----deleteRiskAd----");
-            }
-            paramBundle.a(localQQAdGetRsp);
-          }
-        }
-        if (this.jdField_a_of_type_Ohg != null) {
-          this.jdField_a_of_type_Ohg.a(ohc.a(this.jdField_a_of_type_Ohc));
-        }
-        if ((localQQAdGetRsp.qgg_prompt.has()) && (localQQAdGetRsp.qgg_prompt_id.has()))
-        {
-          ohm.a(localQQAdGetRsp.qgg_prompt.get(), localQQAdGetRsp.qgg_prompt_id.get());
-          return;
-        }
-      }
-      catch (Throwable paramBundle)
-      {
-        paramBundle.printStackTrace();
-      }
+      label155:
+      ReadInJoyNativeAdFragment.a(this.a).setVisibility(0);
     }
   }
 }

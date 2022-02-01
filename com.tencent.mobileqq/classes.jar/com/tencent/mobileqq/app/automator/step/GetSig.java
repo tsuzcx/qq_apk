@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import amwl;
-import anaw;
 import android.os.Bundle;
-import angb;
-import bcef;
-import bknh;
+import anyz;
+import aodl;
+import aoir;
+import bdla;
+import blyp;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -15,7 +16,7 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 public class GetSig
   extends AsyncStep
 {
-  private amwl a;
+  private anyz a;
   
   private void a()
   {
@@ -29,10 +30,10 @@ public class GetSig
   
   public int a()
   {
-    if (this.jdField_a_of_type_Amwl == null)
+    if (this.jdField_a_of_type_Anyz == null)
     {
-      this.jdField_a_of_type_Amwl = new angb(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addDefaultObservers(this.jdField_a_of_type_Amwl);
+      this.jdField_a_of_type_Anyz = new aoir(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addDefaultObservers(this.jdField_a_of_type_Anyz);
     }
     a();
     return 2;
@@ -40,17 +41,17 @@ public class GetSig
   
   public void b()
   {
-    ((anaw)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getBusinessHandler(18)).a();
-    bcef.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app, true);
-    bknh.a();
+    ((aodl)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getBusinessHandler(BusinessHandlerFactory.SHIELD_LIST_HANDLER)).a();
+    bdla.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app, true);
+    blyp.a();
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Amwl != null)
+    if (this.jdField_a_of_type_Anyz != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Amwl);
-      this.jdField_a_of_type_Amwl = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Anyz);
+      this.jdField_a_of_type_Anyz = null;
     }
   }
 }

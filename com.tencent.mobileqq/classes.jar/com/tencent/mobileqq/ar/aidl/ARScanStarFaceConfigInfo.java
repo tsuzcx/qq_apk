@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.util.Xml;
-import aoev;
-import aozj;
+import aphx;
+import aqcn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayInputStream;
@@ -17,7 +17,7 @@ import org.xmlpull.v1.XmlPullParser;
 public class ARScanStarFaceConfigInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ARScanStarFaceConfigInfo> CREATOR = new aoev();
+  public static final Parcelable.Creator<ARScanStarFaceConfigInfo> CREATOR = new aphx();
   static boolean a;
   static String b;
   public String a;
@@ -656,9 +656,9 @@ public class ARScanStarFaceConfigInfo
             } else if (localNumberFormatException.equalsIgnoreCase("adImgUrl")) {
               ((ARScanStarFaceActInfo)localObject).f = localException.nextText();
             } else if (localNumberFormatException.equalsIgnoreCase("beginTime")) {
-              ((ARScanStarFaceActInfo)localObject).jdField_a_of_type_Long = aozj.a(localException.nextText());
+              ((ARScanStarFaceActInfo)localObject).jdField_a_of_type_Long = aqcn.a(localException.nextText());
             } else if (localNumberFormatException.equalsIgnoreCase("endTime")) {
-              ((ARScanStarFaceActInfo)localObject).jdField_b_of_type_Long = aozj.a(localException.nextText());
+              ((ARScanStarFaceActInfo)localObject).jdField_b_of_type_Long = aqcn.a(localException.nextText());
             }
           }
           else if ((i == 3) && (localException.getName().equalsIgnoreCase("Activity")))

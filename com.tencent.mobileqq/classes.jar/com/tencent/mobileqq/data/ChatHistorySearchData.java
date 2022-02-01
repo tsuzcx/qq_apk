@@ -10,7 +10,7 @@ public class ChatHistorySearchData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.ChatHistorySearchData
  * JD-Core Version:    0.7.0.1
  */

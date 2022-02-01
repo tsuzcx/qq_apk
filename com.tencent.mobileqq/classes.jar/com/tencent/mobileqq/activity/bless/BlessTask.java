@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.bless;
 
-import amtj;
+import anvx;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.unique;
@@ -36,7 +36,7 @@ public class BlessTask
   public boolean isNew = true;
   public String mainBanner;
   public String mainCenter;
-  public String pendantCategory = amtj.a(2131700312);
+  public String pendantCategory = anvx.a(2131700663);
   public String pendantId = "";
   public int ptvAnimationCost;
   public int ptvAnimationCount;

@@ -4,16 +4,16 @@ import android.content.Context;
 import android.media.AudioTrack;
 import android.os.Process;
 import android.text.TextUtils;
-import azcu;
-import azcv;
-import azcw;
-import azcy;
-import bfyl;
-import bgrj;
-import bgrk;
-import bgrn;
-import bgrp;
-import bgrt;
+import baii;
+import baij;
+import baik;
+import baim;
+import bhhd;
+import bibz;
+import bica;
+import bicd;
+import bicf;
+import bicj;
 import com.tencent.mobileqq.transfile.PttInfoCollector;
 import com.tencent.mobileqq.utils.AmrInputStreamWrapper;
 import com.tencent.mobileqq.utils.AudioHelper;
@@ -28,15 +28,15 @@ import java.io.IOException;
 
 public class QQVoiceChangerThread
   extends Thread
-  implements azcw
+  implements baik
 {
   int jdField_a_of_type_Int = 0;
   private Context jdField_a_of_type_AndroidContentContext;
   private AudioTrack jdField_a_of_type_AndroidMediaAudioTrack;
-  private azcy jdField_a_of_type_Azcy;
-  bgrj jdField_a_of_type_Bgrj;
-  bgrk jdField_a_of_type_Bgrk;
-  bgrp jdField_a_of_type_Bgrp;
+  private baim jdField_a_of_type_Baim;
+  bibz jdField_a_of_type_Bibz;
+  bica jdField_a_of_type_Bica;
+  bicf jdField_a_of_type_Bicf;
   private FileInputStream jdField_a_of_type_JavaIoFileInputStream;
   private FileOutputStream jdField_a_of_type_JavaIoFileOutputStream;
   public String a;
@@ -47,34 +47,34 @@ public class QQVoiceChangerThread
   private boolean jdField_b_of_type_Boolean;
   int c = 0;
   
-  public QQVoiceChangerThread(Context paramContext, bgrk parambgrk, bgrp parambgrp, String paramString, bgrj parambgrj)
+  public QQVoiceChangerThread(Context paramContext, bica parambica, bicf parambicf, String paramString, bibz parambibz)
   {
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_b_of_type_JavaLangString = parambgrk.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Bgrk = parambgrk;
-    this.jdField_a_of_type_Bgrp = parambgrp;
+    this.jdField_b_of_type_JavaLangString = parambica.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Bica = parambica;
+    this.jdField_a_of_type_Bicf = parambicf;
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bgrj = parambgrj;
+    this.jdField_a_of_type_Bibz = parambibz;
     if (QLog.isColorLevel()) {
-      QLog.d("QQVoiceChanger", 2, "new QQVoiceChangerThread filePath=" + this.jdField_b_of_type_JavaLangString + " sampleRate=" + parambgrk.jdField_b_of_type_Int + " bitRate=" + parambgrk.d + " voiceType=" + parambgrk.e + " changeType=" + parambgrk.f);
+      QLog.d("QQVoiceChanger", 2, "new QQVoiceChangerThread filePath=" + this.jdField_b_of_type_JavaLangString + " sampleRate=" + parambica.jdField_b_of_type_Int + " bitRate=" + parambica.d + " voiceType=" + parambica.e + " changeType=" + parambica.f);
     }
   }
   
   private void a(byte[] paramArrayOfByte, int paramInt)
   {
     int i = (int)AudioHelper.a(this.jdField_a_of_type_AndroidContentContext, paramArrayOfByte, paramInt, 1.0F);
-    if (this.jdField_a_of_type_Bgrj != null) {
-      this.jdField_a_of_type_Bgrj.onSlicePlayed(i, this.c * 100 / this.jdField_b_of_type_Int, this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Bibz != null) {
+      this.jdField_a_of_type_Bibz.onSlicePlayed(i, this.c * 100 / this.jdField_b_of_type_Int, this.jdField_a_of_type_Int);
     }
     this.jdField_a_of_type_AndroidMediaAudioTrack.write(paramArrayOfByte, 0, paramInt);
   }
   
   private void e()
   {
-    String str = this.jdField_a_of_type_Bgrp.jdField_a_of_type_JavaLangString;
+    String str = this.jdField_a_of_type_Bicf.jdField_a_of_type_JavaLangString;
     if (!TextUtils.isEmpty(str)) {}
-    for (this.jdField_b_of_type_JavaLangString = str;; this.jdField_b_of_type_JavaLangString = bgrt.a(this.jdField_b_of_type_JavaLangString))
+    for (this.jdField_b_of_type_JavaLangString = str;; this.jdField_b_of_type_JavaLangString = bicj.a(this.jdField_b_of_type_JavaLangString))
     {
       this.jdField_a_of_type_JavaIoFileInputStream = new FileInputStream(this.jdField_b_of_type_JavaLangString);
       if (QLog.isColorLevel()) {
@@ -89,8 +89,8 @@ public class QQVoiceChangerThread
     if (this.jdField_a_of_type_AndroidMediaAudioTrack != null) {
       this.jdField_a_of_type_AndroidMediaAudioTrack.release();
     }
-    if (this.jdField_a_of_type_Azcy != null) {
-      this.jdField_a_of_type_Azcy.a();
+    if (this.jdField_a_of_type_Baim != null) {
+      this.jdField_a_of_type_Baim.a();
     }
     if (this.jdField_a_of_type_JavaIoFileInputStream != null) {
       this.jdField_a_of_type_JavaIoFileInputStream.close();
@@ -99,7 +99,7 @@ public class QQVoiceChangerThread
       this.jdField_a_of_type_JavaIoFileOutputStream.close();
     }
     if (this.jdField_b_of_type_Boolean) {
-      bgrt.a(this.jdField_a_of_type_Bgrk.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+      bicj.a(this.jdField_a_of_type_Bica.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
     }
     if (QLog.isColorLevel()) {
       QLog.d("QQVoiceChanger", 2, "clean up requestToCancel=" + this.jdField_b_of_type_Boolean);
@@ -108,25 +108,25 @@ public class QQVoiceChangerThread
   
   protected void a()
   {
-    int i = AudioTrack.getMinBufferSize(this.jdField_a_of_type_Bgrk.jdField_b_of_type_Int, this.jdField_a_of_type_Bgrk.jdField_a_of_type_Int, this.jdField_a_of_type_Bgrk.c);
-    this.jdField_a_of_type_AndroidMediaAudioTrack = new AudioTrack(3, this.jdField_a_of_type_Bgrk.jdField_b_of_type_Int, 4, 2, i, 1);
+    int i = AudioTrack.getMinBufferSize(this.jdField_a_of_type_Bica.jdField_b_of_type_Int, this.jdField_a_of_type_Bica.jdField_a_of_type_Int, this.jdField_a_of_type_Bica.c);
+    this.jdField_a_of_type_AndroidMediaAudioTrack = new AudioTrack(3, this.jdField_a_of_type_Bica.jdField_b_of_type_Int, 4, 2, i, 1);
     this.jdField_a_of_type_AndroidMediaAudioTrack.play();
   }
   
   protected void a(int paramInt)
   {
-    File localFile = new File(bgrt.a(this.jdField_a_of_type_Bgrk.jdField_a_of_type_JavaLangString, paramInt));
+    File localFile = new File(bicj.a(this.jdField_a_of_type_Bica.jdField_a_of_type_JavaLangString, paramInt));
     localFile.createNewFile();
     this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(localFile);
   }
   
-  public void a(azcu paramazcu, azcv paramazcv)
+  public void a(baii parambaii, baij parambaij)
   {
-    if (((paramazcu instanceof SilkCodecWrapper)) || ((paramazcu instanceof AmrInputStreamWrapper)))
+    if (((parambaii instanceof SilkCodecWrapper)) || ((parambaii instanceof AmrInputStreamWrapper)))
     {
-      this.jdField_a_of_type_Int += (int)QQRecorder.a(this.jdField_a_of_type_Bgrk.jdField_b_of_type_Int, 4, 2, paramazcv.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_Bgrp.jdField_a_of_type_Boolean) {
-        a(paramazcv.jdField_a_of_type_ArrayOfByte, paramazcv.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Int += (int)QQRecorder.a(this.jdField_a_of_type_Bica.jdField_b_of_type_Int, 4, 2, parambaij.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_Bicf.jdField_a_of_type_Boolean) {
+        a(parambaij.jdField_a_of_type_ArrayOfByte, parambaij.jdField_a_of_type_Int);
       }
     }
   }
@@ -135,7 +135,7 @@ public class QQVoiceChangerThread
   {
     this.jdField_b_of_type_Int = this.jdField_a_of_type_JavaIoFileInputStream.available();
     if (QLog.isColorLevel()) {
-      QLog.d("QQVoiceChanger", 2, "start progress totalSize=" + this.jdField_b_of_type_Int + " filePath=" + this.jdField_b_of_type_JavaLangString + "pcmFilePath=" + this.jdField_a_of_type_Bgrk.jdField_a_of_type_JavaLangString);
+      QLog.d("QQVoiceChanger", 2, "start progress totalSize=" + this.jdField_b_of_type_Int + " filePath=" + this.jdField_b_of_type_JavaLangString + "pcmFilePath=" + this.jdField_a_of_type_Bica.jdField_a_of_type_JavaLangString);
     }
     int k = 0;
     int i = 0;
@@ -145,12 +145,12 @@ public class QQVoiceChangerThread
       if (this.jdField_a_of_type_Boolean)
       {
         j = k;
-        if (this.jdField_a_of_type_Bgrp.e)
+        if (this.jdField_a_of_type_Bicf.e)
         {
           j = k;
           if (k == 0)
           {
-            if (this.jdField_a_of_type_Bgrk.e != 0) {
+            if (this.jdField_a_of_type_Bica.e != 0) {
               break label260;
             }
             this.jdField_a_of_type_JavaIoFileInputStream.skip("#!AMR\n".length());
@@ -159,33 +159,33 @@ public class QQVoiceChangerThread
         }
       }
       label260:
-      azcv localazcv;
+      baij localbaij;
       try
       {
         k = this.jdField_a_of_type_JavaIoFileInputStream.read(this.jdField_a_of_type_ArrayOfByte, 0, 960);
         if (k == -1)
         {
           this.jdField_a_of_type_Boolean = false;
-          if (this.jdField_a_of_type_Bgrj != null) {
-            this.jdField_a_of_type_Bgrj.onPlayEnd();
+          if (this.jdField_a_of_type_Bibz != null) {
+            this.jdField_a_of_type_Bibz.onPlayEnd();
           }
           PttInfoCollector.reportGcAndMemoryUse(4, this.jdField_a_of_type_Int);
-          bgrn.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Bgrk.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Bgrk.f, this.jdField_a_of_type_Bgrk.e);
+          bicd.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Bica.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Bica.f, this.jdField_a_of_type_Bica.e);
           if (QLog.isColorLevel()) {
             QLog.d("QQVoiceChanger", 2, "finishedCompress playedTime=" + this.jdField_a_of_type_Int);
           }
           for (;;)
           {
-            if (this.jdField_a_of_type_Bgrj != null) {
-              this.jdField_a_of_type_Bgrj.onPlayStop();
+            if (this.jdField_a_of_type_Bibz != null) {
+              this.jdField_a_of_type_Bibz.onPlayStop();
             }
             return;
-            if (this.jdField_a_of_type_Bgrk.e == 1)
+            if (this.jdField_a_of_type_Bica.e == 1)
             {
               this.jdField_a_of_type_JavaIoFileInputStream.skip(10L);
               break;
             }
-            if (this.jdField_a_of_type_Bgrk.e != 2) {
+            if (this.jdField_a_of_type_Bica.e != 2) {
               break;
             }
             j = this.jdField_a_of_type_JavaIoFileInputStream.read(this.jdField_a_of_type_ArrayOfByte, 0, 64);
@@ -211,24 +211,24 @@ public class QQVoiceChangerThread
           }
         }
         this.c += k;
-        localazcv = this.jdField_a_of_type_Azcy.a(this.jdField_a_of_type_ArrayOfByte, 0, k);
+        localbaij = this.jdField_a_of_type_Baim.a(this.jdField_a_of_type_ArrayOfByte, 0, k);
         PttInfoCollector.noteOneFrameProcessed();
-        if ((this.jdField_a_of_type_JavaIoFileOutputStream != null) && (this.jdField_a_of_type_Bgrp.c))
+        if ((this.jdField_a_of_type_JavaIoFileOutputStream != null) && (this.jdField_a_of_type_Bicf.c))
         {
           int m = i;
           if (i == 0)
           {
-            byte[] arrayOfByte = bfyl.a(this.jdField_a_of_type_Bgrk.e, this.jdField_a_of_type_Bgrk.jdField_b_of_type_Int);
+            byte[] arrayOfByte = bhhd.a(this.jdField_a_of_type_Bica.e, this.jdField_a_of_type_Bica.jdField_b_of_type_Int);
             this.jdField_a_of_type_JavaIoFileOutputStream.write(arrayOfByte, 0, arrayOfByte.length);
             this.jdField_a_of_type_JavaIoFileOutputStream.flush();
             m = 1;
           }
           k = j;
           i = m;
-          if (localazcv == null) {
+          if (localbaij == null) {
             continue;
           }
-          this.jdField_a_of_type_JavaIoFileOutputStream.write(localazcv.jdField_a_of_type_ArrayOfByte, 0, localazcv.jdField_a_of_type_Int);
+          this.jdField_a_of_type_JavaIoFileOutputStream.write(localbaij.jdField_a_of_type_ArrayOfByte, 0, localbaij.jdField_a_of_type_Int);
           this.jdField_a_of_type_JavaIoFileOutputStream.flush();
           k = j;
           i = m;
@@ -239,9 +239,9 @@ public class QQVoiceChangerThread
       if (this.jdField_a_of_type_JavaIoFileOutputStream != null)
       {
         k = j;
-        if (localazcv != null)
+        if (localbaij != null)
         {
-          this.jdField_a_of_type_JavaIoFileOutputStream.write(localazcv.jdField_a_of_type_ArrayOfByte, 0, localazcv.jdField_a_of_type_Int);
+          this.jdField_a_of_type_JavaIoFileOutputStream.write(localbaij.jdField_a_of_type_ArrayOfByte, 0, localbaij.jdField_a_of_type_Int);
           this.jdField_a_of_type_JavaIoFileOutputStream.flush();
           k = j;
         }
@@ -249,17 +249,17 @@ public class QQVoiceChangerThread
     }
   }
   
-  public void b(azcu paramazcu, azcv paramazcv)
+  public void b(baii parambaii, baij parambaij)
   {
-    if (((paramazcu instanceof VoiceChange)) && (!this.jdField_a_of_type_Bgrp.c) && (this.jdField_a_of_type_Bgrp.jdField_a_of_type_Boolean)) {
-      a(paramazcv.jdField_a_of_type_ArrayOfByte, paramazcv.jdField_a_of_type_Int);
+    if (((parambaii instanceof VoiceChange)) && (!this.jdField_a_of_type_Bicf.c) && (this.jdField_a_of_type_Bicf.jdField_a_of_type_Boolean)) {
+      a(parambaij.jdField_a_of_type_ArrayOfByte, parambaij.jdField_a_of_type_Int);
     }
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Bgrp.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Bgrj = null;
+    this.jdField_a_of_type_Bicf.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Bibz = null;
     if (QLog.isColorLevel()) {
       QLog.d("QQVoiceChanger", 2, "requestToSend isRunning=" + this.jdField_a_of_type_Boolean);
     }
@@ -268,9 +268,9 @@ public class QQVoiceChangerThread
   public void d()
   {
     if (!this.jdField_a_of_type_Boolean) {
-      bgrt.b(this.jdField_a_of_type_Bgrk.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+      bicj.b(this.jdField_a_of_type_Bica.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
     }
-    this.jdField_a_of_type_Bgrj = null;
+    this.jdField_a_of_type_Bibz = null;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = true;
     if (QLog.isColorLevel()) {
@@ -281,36 +281,36 @@ public class QQVoiceChangerThread
   public void run()
   {
     Process.setThreadPriority(-19);
-    this.jdField_a_of_type_Azcy = new azcy();
+    this.jdField_a_of_type_Baim = new baim();
     for (;;)
     {
       try
       {
-        if (this.jdField_a_of_type_Bgrk.f == 0) {
-          this.jdField_a_of_type_Bgrp.d = false;
+        if (this.jdField_a_of_type_Bica.f == 0) {
+          this.jdField_a_of_type_Bicf.d = false;
         }
-        if (this.jdField_a_of_type_Bgrp.d) {
-          this.jdField_a_of_type_Azcy.a(new VoiceChange(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bgrk.f, this.jdField_a_of_type_JavaLangString));
+        if (this.jdField_a_of_type_Bicf.d) {
+          this.jdField_a_of_type_Baim.a(new VoiceChange(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bica.f, this.jdField_a_of_type_JavaLangString));
         }
-        if (this.jdField_a_of_type_Bgrp.jdField_b_of_type_Boolean)
+        if (this.jdField_a_of_type_Bicf.jdField_b_of_type_Boolean)
         {
           WechatNsWrapper localWechatNsWrapper = new WechatNsWrapper(this.jdField_a_of_type_AndroidContentContext);
           if (WechatNsWrapper.jdField_a_of_type_Boolean) {
-            this.jdField_a_of_type_Azcy.a(localWechatNsWrapper);
+            this.jdField_a_of_type_Baim.a(localWechatNsWrapper);
           }
         }
-        if (this.jdField_a_of_type_Bgrp.c)
+        if (this.jdField_a_of_type_Bicf.c)
         {
-          if (this.jdField_a_of_type_Bgrk.e == 0) {
-            this.jdField_a_of_type_Azcy.a(new AmrInputStreamWrapper(this.jdField_a_of_type_AndroidContentContext));
+          if (this.jdField_a_of_type_Bica.e == 0) {
+            this.jdField_a_of_type_Baim.a(new AmrInputStreamWrapper(this.jdField_a_of_type_AndroidContentContext));
           }
         }
         else
         {
           e();
-          a(this.jdField_a_of_type_Bgrk.f);
-          this.jdField_a_of_type_Azcy.a(this.jdField_a_of_type_Bgrk.jdField_b_of_type_Int, this.jdField_a_of_type_Bgrk.d, this.jdField_a_of_type_Bgrk.e);
-          this.jdField_a_of_type_Azcy.a(this);
+          a(this.jdField_a_of_type_Bica.f);
+          this.jdField_a_of_type_Baim.a(this.jdField_a_of_type_Bica.jdField_b_of_type_Int, this.jdField_a_of_type_Bica.d, this.jdField_a_of_type_Bica.e);
+          this.jdField_a_of_type_Baim.a(this);
           a();
           b();
         }
@@ -319,8 +319,8 @@ public class QQVoiceChangerThread
       {
         localIOException1 = localIOException1;
         localIOException1.printStackTrace();
-        if (this.jdField_a_of_type_Bgrj != null) {
-          this.jdField_a_of_type_Bgrj.onError();
+        if (this.jdField_a_of_type_Bibz != null) {
+          this.jdField_a_of_type_Bibz.onError();
         }
         try
         {
@@ -336,10 +336,10 @@ public class QQVoiceChangerThread
       catch (Exception localException)
       {
         localException = localException;
-        if (this.jdField_a_of_type_Bgrj == null) {
+        if (this.jdField_a_of_type_Bibz == null) {
           continue;
         }
-        this.jdField_a_of_type_Bgrj.onError();
+        this.jdField_a_of_type_Bibz.onError();
         localException.printStackTrace();
         try
         {
@@ -363,7 +363,7 @@ public class QQVoiceChangerThread
         localIOException3.printStackTrace();
         return;
       }
-      this.jdField_a_of_type_Azcy.a(new SilkCodecWrapper(this.jdField_a_of_type_AndroidContentContext));
+      this.jdField_a_of_type_Baim.a(new SilkCodecWrapper(this.jdField_a_of_type_AndroidContentContext));
     }
     try
     {

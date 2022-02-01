@@ -1,163 +1,23 @@
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
-import android.os.Build;
-import android.text.TextUtils;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Locale;
-import org.json.JSONException;
-import org.json.JSONObject;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.HashMap;
 
 public class aaai
-  extends WebViewPlugin
+  implements aada
 {
-  private static aaai jdField_a_of_type_Aaai;
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static boolean jdField_a_of_type_Boolean;
-  private static boolean b;
-  protected final byte a;
-  protected aaaj a;
-  protected SensorManager a;
-  private float[] jdField_a_of_type_ArrayOfFloat = new float[4];
+  public aaai(VideoPlayerView paramVideoPlayerView) {}
   
-  public aaai()
+  public void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed)
   {
-    this.jdField_a_of_type_Byte = 3;
-    if (QLog.isColorLevel()) {
-      QLog.d("ARTransparentWebviewPlugin", 2, "init");
-    }
-    jdField_a_of_type_Aaai = this;
-  }
-  
-  public static final void b()
-  {
-    b = true;
-    QLog.d("ARTransparentWebviewPlugin", 1, "WebViewTime startRender. isStartRender = " + b);
-    if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
-      jdField_a_of_type_Aaai.callJs(jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true) });
-    }
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARTransparentWebviewPlugin", 1, "stop motion");
-    }
-    if ((this.jdField_a_of_type_AndroidHardwareSensorManager != null) && (this.jdField_a_of_type_Aaaj != null))
+    if (VideoPlayerView.a(this.a) != null)
     {
-      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Aaaj);
-      this.jdField_a_of_type_Aaaj = null;
+      aanb.a(VideoPlayerView.a(this.a).poster.id.get(), "auth_video", "half_follow", 0, 0, new String[] { "", "", VideoPlayerView.a(this.a).id.get(), VideoPlayerView.a(this.a).title.get() });
+      VideoPlayerView.a(this.a).poster.followState.set(1);
+      VideoPlayerView.a(this.a).put(VideoPlayerView.a(this.a).poster.id.get(), Boolean.valueOf(true));
     }
-    jdField_a_of_type_Boolean = false;
-    b = false;
-  }
-  
-  public void a(String paramString)
-  {
-    jdField_a_of_type_JavaLangString = paramString;
-    QLog.d("ARTransparentWebviewPlugin", 1, "WebViewTime notifyRenderReady. callbackStartRender = " + jdField_a_of_type_JavaLangString);
-    paramString = this.mRuntime.a();
-    if ((paramString != null) && ((paramString instanceof ScanTorchActivity))) {
-      ((ScanTorchActivity)paramString).i();
-    }
-  }
-  
-  public final boolean a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARTransparentWebviewPlugin", 1, "start motion");
-    }
-    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {
-      this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)BaseApplication.getContext().getSystemService("sensor"));
-    }
-    Object localObject = this.jdField_a_of_type_AndroidHardwareSensorManager;
-    int i;
-    if (aoce.a())
-    {
-      i = 15;
-      localObject = ((SensorManager)localObject).getSensorList(i);
-      Sensor localSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(4);
-      if ((((List)localObject).size() <= 0) || (localSensor == null)) {
-        break label211;
-      }
-      localObject = (Sensor)((List)localObject).get(0);
-      if (this.jdField_a_of_type_Aaaj != null) {
-        a();
-      }
-      this.jdField_a_of_type_Aaaj = new aaaj(this, (byte)3, paramString);
-      if (!Build.MODEL.equalsIgnoreCase("Nexus 5X")) {
-        break label194;
-      }
-      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Aaaj, (Sensor)localObject, 3);
-      label141:
-      if (QLog.isColorLevel()) {
-        QLog.d("ARTransparentWebviewPlugin", 2, "support gyroscope");
-      }
-    }
-    for (;;)
-    {
-      jdField_a_of_type_Boolean = true;
-      QLog.d("ARTransparentWebviewPlugin", 1, "WebViewTime startMotion. isRenderReady = " + jdField_a_of_type_Boolean);
-      return true;
-      i = 11;
-      break;
-      label194:
-      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Aaaj, (Sensor)localObject, 1);
-      break label141;
-      label211:
-      callJs(paramString, new String[] { "false" });
-      if (QLog.isColorLevel()) {
-        QLog.d("ARTransparentWebviewPlugin", 2, "not support gyroscope");
-      }
-    }
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARTransparentWebviewPlugin", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
-    }
-    if ("sensor".equals(paramString2))
-    {
-      if ("startMotion".equals(paramString3)) {
-        try
-        {
-          paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-          QLog.d("ARTransparentWebviewPlugin", 2, "handleJsRequest jsonobject is " + paramJsBridgeListener.toString());
-          return a(paramJsBridgeListener.optString("callback"));
-        }
-        catch (JSONException paramJsBridgeListener)
-        {
-          paramJsBridgeListener.printStackTrace();
-          return false;
-        }
-      }
-      if ("stopMotion".equals(paramString3))
-      {
-        a();
-        return true;
-      }
-      if ("notifyRenderReady".equals(paramString3)) {
-        try
-        {
-          paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-          QLog.d("ARTransparentWebviewPlugin", 2, "handleJsRequest jsonobject is " + paramJsBridgeListener.toString());
-          a(paramJsBridgeListener.optString("callback"));
-          return true;
-        }
-        catch (JSONException paramJsBridgeListener)
-        {
-          paramJsBridgeListener.printStackTrace();
-          return false;
-        }
-      }
-      return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
-    }
-    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
   }
 }
 

@@ -8,7 +8,7 @@ import android.graphics.Path.FillType;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
-import uya;
+import vmp;
 
 public class RoundCornerImageView
   extends KandianUrlImageView
@@ -76,7 +76,7 @@ public class RoundCornerImageView
         Path localPath;
         RectF localRectF;
         Path.Direction localDirection;
-        uya.d("RoundCornerImageView", paramCanvas.getMessage());
+        vmp.d("RoundCornerImageView", paramCanvas.getMessage());
       }
       i /= 30;
       break;
@@ -110,7 +110,7 @@ public class RoundCornerImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.RoundCornerImageView
  * JD-Core Version:    0.7.0.1
  */

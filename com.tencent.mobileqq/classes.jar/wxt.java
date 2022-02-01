@@ -1,18 +1,17 @@
-import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public class wxt
-  extends wrx
+class wxt
+  extends wwc
 {
-  public wxt(AbsVideoInfoWidget paramAbsVideoInfoWidget) {}
-  
-  public void g()
+  wxt(wxa paramwxa, StoryVideoItem paramStoryVideoItem, wyj paramwyj)
   {
-    super.g();
-    if (this.a.jdField_b_of_type_Boolean)
-    {
-      AbsVideoInfoWidget.a(this.a);
-      xvv.b(this.a.jdField_b_of_type_JavaLangString, "destroy by activity");
-    }
+    super(paramStoryVideoItem);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_Wyj.e = ((String)a("result"));
+    return true;
   }
 }
 

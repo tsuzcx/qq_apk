@@ -2,7 +2,7 @@ package com.tencent.mobileqq.app;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bfuc;
+import bhcu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import java.io.ByteArrayInputStream;
@@ -33,7 +33,7 @@ class MemoryManager$LowMemoryReport
       if (((String)localObject).length() == 0) {
         return;
       }
-      localObject = new DataInputStream(new ByteArrayInputStream(bfuc.decode((String)localObject, 0)));
+      localObject = new DataInputStream(new ByteArrayInputStream(bhcu.decode((String)localObject, 0)));
       this.lowRemainMemory = ((DataInputStream)localObject).readLong();
       this.lowWarningMemory = ((DataInputStream)localObject).readLong();
       this.lowMemoryCount = ((DataInputStream)localObject).readInt();
@@ -82,7 +82,7 @@ class MemoryManager$LowMemoryReport
       localDataOutputStream.writeLong(this.reportTime);
       localDataOutputStream.flush();
       localObject = ((ByteArrayOutputStream)localObject).toByteArray();
-      BaseApplicationImpl.getApplication().getSharedPreferences("MemoryManagerMemoryStat", 0).edit().putString("LowMemoryStat", bfuc.encodeToString((byte[])localObject, 0)).commit();
+      BaseApplicationImpl.getApplication().getSharedPreferences("MemoryManagerMemoryStat", 0).edit().putString("LowMemoryStat", bhcu.encodeToString((byte[])localObject, 0)).commit();
       return;
     }
     catch (Exception localException) {}

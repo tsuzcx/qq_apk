@@ -1,7 +1,26 @@
-import kotlin.Metadata;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WeatherArkViewWrapper$Companion;", "", "()V", "SLIDE_DIR_HORIZONTAL", "", "SLIDE_DIR_NONE", "SLIDE_DIR_VERTICAL", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class algq {}
+class algq
+  implements View.OnTouchListener
+{
+  algq(algp paramalgp) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0) {
+      paramView.setAlpha(0.5F);
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
+        paramView.setAlpha(1.0F);
+      }
+    }
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

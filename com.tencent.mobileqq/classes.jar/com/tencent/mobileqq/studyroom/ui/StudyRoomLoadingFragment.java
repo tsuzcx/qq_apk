@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.studyroom.ui;
 
-import adxr;
-import amtj;
+import aeow;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,10 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
-import bcps;
-import bcpt;
-import bcqd;
-import bhht;
+import anvx;
+import bdwr;
+import bdws;
+import bdxc;
+import bisl;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
@@ -28,37 +28,38 @@ import java.util.concurrent.Future;
 public class StudyRoomLoadingFragment
   extends PublicBaseFragment
 {
-  private bhht jdField_a_of_type_Bhht;
+  private bisl jdField_a_of_type_Bisl;
   private Future<?> jdField_a_of_type_JavaUtilConcurrentFuture;
   
-  public static void a(Map<String, String> paramMap)
+  public static void a(String paramString, Map<String, String> paramMap)
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("public_fragment_window_feature", 1);
     if (paramMap == null) {}
     for (paramMap = new HashMap();; paramMap = new HashMap(paramMap))
     {
+      paramMap.put("action", paramString);
       localIntent.putExtra("param", paramMap);
-      adxr.a(localIntent, PublicTransFragmentActivity.class, StudyRoomLoadingFragment.class);
+      aeow.a(localIntent, PublicTransFragmentActivity.class, StudyRoomLoadingFragment.class);
       return;
     }
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_Bhht == null)
+    if (this.jdField_a_of_type_Bisl == null)
     {
-      this.jdField_a_of_type_Bhht = new bhht(getActivity(), 40);
-      this.jdField_a_of_type_Bhht.a(amtj.a(2131706934));
-      this.jdField_a_of_type_Bhht.setOnCancelListener(new bcps(this));
+      this.jdField_a_of_type_Bisl = new bisl(getActivity(), 40);
+      this.jdField_a_of_type_Bisl.a(anvx.a(2131707280));
+      this.jdField_a_of_type_Bisl.setOnCancelListener(new bdwr(this));
     }
-    this.jdField_a_of_type_Bhht.show();
+    this.jdField_a_of_type_Bisl.show();
   }
   
   private void c()
   {
-    if (this.jdField_a_of_type_Bhht != null) {
-      this.jdField_a_of_type_Bhht.dismiss();
+    if (this.jdField_a_of_type_Bisl != null) {
+      this.jdField_a_of_type_Bisl.dismiss();
     }
   }
   
@@ -135,12 +136,12 @@ public class StudyRoomLoadingFragment
         }
       }
     }
-    this.jdField_a_of_type_JavaUtilConcurrentFuture = bcqd.a(getActivity().getApplicationContext(), paramView, false, new bcpt(this));
+    this.jdField_a_of_type_JavaUtilConcurrentFuture = bdxc.a(getActivity().getApplicationContext(), paramView, false, new bdws(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.ui.StudyRoomLoadingFragment
  * JD-Core Version:    0.7.0.1
  */

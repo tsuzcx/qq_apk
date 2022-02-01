@@ -1,8 +1,18 @@
-public abstract interface aing
+public class aing
 {
-  public abstract void a(String paramString, int paramInt, float paramFloat);
+  public String a;
+  public boolean a;
   
-  public abstract void c(boolean paramBoolean);
+  public aing(String paramString, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public String toString()
+  {
+    return "ResultBean{rtext='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isFinish=" + this.jdField_a_of_type_Boolean + '}';
+  }
 }
 
 

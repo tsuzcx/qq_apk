@@ -1,13 +1,13 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.GetStaticProxy;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.widget.ListView;
 
-public final class bcbj
-  implements IMCoreProxyRoute.GetStaticProxy<AppRuntime>
+public class bcbj
+  extends bcbf
 {
-  public AppRuntime a()
+  public bcbj(ListView paramListView, FaceDecoder paramFaceDecoder, AbsListView.OnScrollListener paramOnScrollListener, int paramInt)
   {
-    return BaseApplicationImpl.getApplication().getRuntime();
+    super(paramListView, paramFaceDecoder, paramOnScrollListener, paramInt);
   }
 }
 

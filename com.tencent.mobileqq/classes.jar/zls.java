@@ -1,13 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.3;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.CompoundButton;
 
-public class zls
-  implements View.OnClickListener
+class zls
+  implements DialogInterface.OnClickListener
 {
-  public zls(SubscribeQRCodeShareHelper.3 param3) {}
+  zls(zlq paramzlq, CompoundButton paramCompoundButton) {}
   
-  public void onClick(View paramView) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_AndroidWidgetCompoundButton.setChecked(false);
+  }
 }
 
 

@@ -1,37 +1,18 @@
-import android.os.Bundle;
+import android.content.Context;
 import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-import com.tencent.hippy.qq.app.HippyQQEngine.HippyQQEngineListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
-public class tgs
-  implements HippyQQEngine.HippyQQEngineListener
+public abstract interface tgs
 {
-  public tgs(ViolaFragment paramViolaFragment, Bundle paramBundle, ViewGroup paramViewGroup) {}
+  public abstract int a(BaseData paramBaseData);
   
-  public void onError(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.mViolaUiDelegate.b();
-    if (paramInt != -11) {
-      ViolaFragment.access$000(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_AndroidViewViewGroup);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Hippy", 2, "Hippy: initHippy error statusCode=" + paramInt + ", msg=" + paramString);
-    }
-  }
+  public abstract tgr a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup);
   
-  public void onSuccess()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.mViolaUiDelegate.b();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.mViolaUiDelegate.d();
-    if (QLog.isColorLevel()) {
-      QLog.d("Hippy", 2, "Hippy: initHippy success!");
-    }
-  }
+  public abstract boolean a(BaseData paramBaseData);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tgs
  * JD-Core Version:    0.7.0.1
  */

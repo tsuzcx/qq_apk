@@ -1,31 +1,63 @@
-import android.content.Context;
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeVideoList;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 
 class wmp
-  implements View.OnClickListener
+  implements wfk<wne, wnf>
 {
-  wmp(wml paramwml) {}
+  wmp(wmo paramwmo, wly paramwly) {}
   
-  public void onClick(View paramView)
+  public void a(@NonNull wne paramwne, @Nullable wnf paramwnf, @NonNull ErrorMessage paramErrorMessage)
   {
-    Context localContext = wml.a(this.a).a();
-    if (!NetworkUtil.isNetworkAvailable(localContext)) {
-      QQToast.a(localContext, 1, 2131694062, 0).a();
-    }
-    for (;;)
+    if ((paramwnf == null) || (paramErrorMessage.isFail()))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      ykq.e("Q.qqstory.msgTab.jobPullVidList", "pull failed, err=" + paramErrorMessage.getErrorMessage() + " node:" + this.jdField_a_of_type_Wly);
+      wmo.a(this.jdField_a_of_type_Wmo, paramErrorMessage);
       return;
-      xvv.d("Q.qqstory.playernew.StoryPlayerImpl", "updateData error, retry, requestGroupData, currentInfo = %s", new Object[] { wml.a(this.a) });
-      wml.a(this.a).setVisibility(0);
-      wml.a(this.a).removeCallbacks(wml.a(this.a));
-      wml.a(this.a).postDelayed(wml.a(this.a), 500L);
+    }
+    if (paramwnf.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.video_list.size() == 0)
+    {
+      if (this.jdField_a_of_type_Wly.jdField_a_of_type_Int != 5)
+      {
+        ykq.e("Q.qqstory.msgTab.jobPullVidList", "pull failed, ERROR_NODE_VIDEOINFO_VIDLIST_IS_NULL, info=" + this.jdField_a_of_type_Wly + ", err=ERROR_NODE_VIDEOINFO_VIDLIST_IS_NULL, " + paramErrorMessage.getErrorMessage());
+        wmo.b(this.jdField_a_of_type_Wmo, new ErrorMessage(103, paramErrorMessage.getErrorMessage()));
+        return;
+      }
+      wmo.a(this.jdField_a_of_type_Wmo, wmo.a(paramwnf.jdField_a_of_type_JavaUtilList));
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.msgTab.jobPullVidList", 2, "pull succeed, info=" + this.jdField_a_of_type_Wly);
+    }
+    wmr.a(this.jdField_a_of_type_Wly, paramwnf.jdField_a_of_type_ArrayOfByte);
+    paramwne = wmo.a(paramwnf.jdField_a_of_type_JavaUtilList);
+    if (this.jdField_a_of_type_Wly.jdField_a_of_type_Int == 12) {}
+    wmo.b(this.jdField_a_of_type_Wmo, paramwne);
+    if (this.jdField_a_of_type_Wly.jdField_a_of_type_Int == 12) {
+      if (this.jdField_a_of_type_Wmo.a != null)
+      {
+        this.jdField_a_of_type_Wmo.a.c = paramwnf.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.cookie.get();
+        paramwne = this.jdField_a_of_type_Wmo.a;
+        if (paramwnf.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.is_end.get() <= 0) {
+          break label345;
+        }
+      }
+    }
+    label345:
+    for (boolean bool = true;; bool = false)
+    {
+      paramwne.a = bool;
+      this.jdField_a_of_type_Wly.i = paramwnf.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.cookie.get();
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      ykq.a("Q.qqstory.msgTab.jobPullVidList", "MsgTabNodeVidListPullSegment::runSegment() use net resp %s, %s", this.jdField_a_of_type_Wly.jdField_a_of_type_JavaLangString, paramwnf.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList);
+      return;
     }
   }
 }

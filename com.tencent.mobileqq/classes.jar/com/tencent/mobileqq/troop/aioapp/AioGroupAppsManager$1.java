@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.troop.aioapp;
 
-import bduw;
-import bdux;
-import bduy;
-import bdvc;
+import bfbz;
+import bfca;
+import bfcb;
+import bfcf;
 import com.tencent.qphone.base.util.QLog;
 
 public class AioGroupAppsManager$1
   implements Runnable
 {
-  public AioGroupAppsManager$1(bduw parambduw) {}
+  public AioGroupAppsManager$1(bfbz parambfbz) {}
   
   public void run()
   {
-    bduw.a(this.this$0).b();
-    bduw.a(this.this$0).a();
+    bfbz.a(this.this$0).b();
+    bfbz.a(this.this$0).a();
     if (QLog.isColorLevel()) {
-      QLog.i("AioGroupAppsManager", 2, "login fullList from db " + bdvc.a(this.this$0.a));
+      QLog.i("AioGroupAppsManager", 2, "login fullList from db " + bfcf.a(this.this$0.a));
     }
     this.this$0.c();
   }

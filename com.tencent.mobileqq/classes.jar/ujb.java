@@ -1,16 +1,13 @@
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.view.View;
+import kotlin.Metadata;
 
-public abstract interface ujb<V extends uiz, P extends ujc<V>>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/api/ResNetChangeInterface;", "", "on4GtoWifi", "", "onNoneTo4G", "onNoneToWifi", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface ujb
 {
-  public abstract void a();
-  
-  public abstract void a(Bundle paramBundle);
-  
-  public abstract void a(View paramView, @Nullable Bundle paramBundle);
-  
   public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

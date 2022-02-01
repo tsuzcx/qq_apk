@@ -1,17 +1,13 @@
-import android.graphics.PointF;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
-
-public class bnac
-  extends lqa
+class bnac
+  implements biyc
 {
-  public bnac(CropVideoActivity paramCropVideoActivity) {}
+  bnac(bnaa parambnaa, Runnable paramRunnable) {}
   
-  public boolean a(lpy paramlpy)
+  public void a(int paramInt)
   {
-    float f1 = paramlpy.a().x;
-    float f2 = paramlpy.a().y;
-    CropVideoActivity.a(this.a).a(f1, f2, 0.0F);
-    return true;
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
 }
 

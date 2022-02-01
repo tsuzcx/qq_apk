@@ -1,35 +1,36 @@
-import android.view.SurfaceView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.homework.recite.data.ArticleInfo;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
 
 public class bfst
+  implements DialogInterface.OnClickListener
 {
-  public static void a(SurfaceView paramSurfaceView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public bfst(ReciteFragment paramReciteFragment, QQAppInterface paramQQAppInterface) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramSurfaceView == null)
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.a(false);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.c();
+    QQAppInterface localQQAppInterface;
+    String str1;
+    String str2;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      QLog.e("SurfaceViewUtil", 2, "SurfaceViewUtil resetLayoutParams error: surfaceView==null");
+      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      str1 = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_Bfut.f;
+      str2 = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_Bfut.f;
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo == null) {
+        break label108;
+      }
+    }
+    label108:
+    for (paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.title;; paramDialogInterface = "")
+    {
+      bhbu.a(localQQAppInterface, str1, "Grp_recite", "Out_Recite_Clk", 0, 0, new String[] { str2, "", paramDialogInterface, "" });
       return;
     }
-    if ((paramInt2 <= 0) || (paramInt1 <= 0) || (paramInt3 <= 0) || (paramInt4 <= 0))
-    {
-      QLog.e("SurfaceViewUtil", 2, "SurfaceViewUtil resetLayoutParams error: width height <= 0");
-      return;
-    }
-    if (paramInt2 / paramInt1 > paramInt4 / paramInt3)
-    {
-      paramInt1 = (int)(paramInt1 * paramInt4 / paramInt3);
-      paramInt1 = (int)((paramInt2 - paramInt1) / 2.0F);
-      localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-      localLayoutParams.setMargins(0, paramInt1, 0, paramInt1);
-      paramSurfaceView.setLayoutParams(localLayoutParams);
-      return;
-    }
-    paramInt2 = (int)(paramInt2 * paramInt3 / paramInt4);
-    paramInt1 = (int)((paramInt1 - paramInt2) / 2.0F);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    localLayoutParams.setMargins(paramInt1, 0, paramInt1, 0);
-    paramSurfaceView.setLayoutParams(localLayoutParams);
   }
 }
 

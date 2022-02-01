@@ -1,51 +1,36 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.data.AutoReplyText;
+import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class azas
-  extends MqqHandler
+  implements View.OnClickListener
 {
-  public azas(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  public azas(AutoReplyEditActivity paramAutoReplyEditActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    boolean bool2 = true;
-    switch (paramMessage.what)
+    azbq.a(AutoReplyEditActivity.a(this.a), false);
+    String str2 = String.valueOf(AutoReplyEditActivity.a(this.a).getText());
+    String str1;
+    if (AutoReplyEditActivity.a(this.a) != null)
     {
-    default: 
-      QLog.d("IphoneTitleBarActivity", 2, "TEST more info message handler: " + paramMessage.what);
-    }
-    do
-    {
-      return;
-    } while (!((String)paramMessage.obj).equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a));
-    label86:
-    FormSwitchItem localFormSwitchItem;
-    if (paramMessage.arg1 == 1)
-    {
-      bool1 = true;
-      if (bool1 == this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a()) {
-        break label154;
+      str1 = AutoReplyEditActivity.a(this.a).getRawText();
+      if (str2.equals(str1)) {
+        break label75;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
-      localFormSwitchItem = this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-      if (paramMessage.arg1 != 1) {
-        break label156;
-      }
+      AutoReplyEditActivity.a(this.a);
     }
-    label154:
-    label156:
-    for (boolean bool1 = bool2;; bool1 = false)
+    for (;;)
     {
-      localFormSwitchItem.setChecked(bool1);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.a);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      bool1 = false;
-      break label86;
+      str1 = "";
       break;
+      label75:
+      AutoReplyEditActivity.a(this.a);
     }
   }
 }

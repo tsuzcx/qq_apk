@@ -1,21 +1,22 @@
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+
 public class twj
+  extends twr
 {
-  public static boolean a(int paramInt)
+  public twj(BridgeModule paramBridgeModule)
   {
-    if (!ozo.a()) {
-      return false;
-    }
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    }
-    return true;
+    super(paramBridgeModule);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    BridgeModule.access$700(this.a, paramInt2, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     twj
  * JD-Core Version:    0.7.0.1
  */

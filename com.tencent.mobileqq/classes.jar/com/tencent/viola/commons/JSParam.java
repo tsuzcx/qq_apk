@@ -1,5 +1,7 @@
 package com.tencent.viola.commons;
 
+import java.nio.charset.Charset;
+
 public class JSParam
 {
   public static final int JSON = 3;
@@ -13,6 +15,9 @@ public class JSParam
   {
     this.type = paramInt;
     this.data = paramObject;
+    if ((paramObject instanceof String)) {
+      this.data = new String(((String)paramObject).getBytes(), Charset.forName("UTF-8"));
+    }
   }
   
   public JSParam(Object paramObject)

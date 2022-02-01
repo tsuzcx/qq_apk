@@ -1,23 +1,8 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import friendlist.GetOnlineInfoResp;
-
-class ajju
-  extends amsu
+public abstract interface ajju
 {
-  ajju(ajjs paramajjs) {}
+  public abstract void a(int paramInt, boolean paramBoolean, Object paramObject);
   
-  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
-  {
-    if (TextUtils.equals(paramString, this.a.a.curFriendUin)) {
-      this.a.f();
-    }
-  }
-  
-  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
-  {
-    this.a.f();
-  }
+  public abstract void ag_();
 }
 
 

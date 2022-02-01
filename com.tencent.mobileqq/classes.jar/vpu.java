@@ -1,11 +1,18 @@
-import android.app.Activity;
-import android.os.Bundle;
+import android.view.View;
+import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
+import com.tencent.qflutter.utils.FLog;
+import java.lang.ref.WeakReference;
 
-public abstract interface vpu<T extends Activity>
+class vpu
+  implements AdExposureChecker.ExposureCallback
 {
-  public abstract void a(T paramT);
+  vpu(vpt paramvpt) {}
   
-  public abstract void a(T paramT, Bundle paramBundle);
+  public void onExposure(WeakReference<View> paramWeakReference)
+  {
+    FLog.e("AdExposureChecker", "onExposure");
+    vpk.a(vpt.a(this.a), (vpj)this.a.a());
+  }
 }
 
 

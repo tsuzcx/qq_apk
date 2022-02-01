@@ -1,45 +1,45 @@
 package com.tencent.mobileqq.structmsg.view;
 
-import ahiu;
+import aido;
 import android.text.TextUtils;
-import bcef;
-import bcgw;
-import bcit;
-import bciw;
+import bdla;
+import bdnu;
+import bdpr;
+import bdpu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import java.util.ArrayList;
 import java.util.List;
-import odq;
+import olh;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class StructMsgItemButton$3$2
   implements Runnable
 {
-  public StructMsgItemButton$3$2(bciw parambciw, bcit parambcit, StructMsgForGeneralShare paramStructMsgForGeneralShare, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
+  public StructMsgItemButton$3$2(bdpu parambdpu, bdpr parambdpr, StructMsgForGeneralShare paramStructMsgForGeneralShare, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
   
   public void run()
   {
     long l = NetConnInfoCenter.getServerTime();
     int j = -1;
     int i = j;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Bcit.aa)) {}
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Bdpr.aa)) {}
     try
     {
-      i = Integer.parseInt(this.jdField_a_of_type_Bciw.jdField_a_of_type_Bcit.aa);
-      if (ahiu.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+      i = Integer.parseInt(this.jdField_a_of_type_Bdpu.jdField_a_of_type_Bdpr.aa);
+      if (aido.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
       {
         j = 1;
-        odq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uin, "0X80055C8", "0X80055C8", i, 0, Long.toString(l), Long.toString(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.msgId), this.jdField_a_of_type_Bcit.c, Integer.toString(j), false);
+        olh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uin, "0X80055C8", "0X80055C8", i, 0, Long.toString(l), Long.toString(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.msgId), this.jdField_a_of_type_Bdpr.c, Integer.toString(j), false);
         j = 0;
         if (this.jdField_a_of_type_Boolean) {
           j = 1;
         }
-        Object localObject1 = new StringBuilder().append("MSGID=").append(Long.toString(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.msgId)).append(";TEPLATEID=").append(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.templateIDForPortal).append(";ARTICALID=").append("").append(";REFERRER=").append(bcgw.a(this.jdField_a_of_type_Bcit.b));
-        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uin, "0X8005D4A", "0X8005D4A", i, j, ((StringBuilder)localObject1).toString(), "", "", "");
+        Object localObject1 = new StringBuilder().append("MSGID=").append(Long.toString(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.msgId)).append(";TEPLATEID=").append(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.templateIDForPortal).append(";ARTICALID=").append("").append(";REFERRER=").append(bdnu.a(this.jdField_a_of_type_Bdpr.b));
+        bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uin, "0X8005D4A", "0X8005D4A", i, j, ((StringBuilder)localObject1).toString(), "", "", "");
         if (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message == null) {}
         String str;
         do
@@ -90,7 +90,7 @@ public class StructMsgItemButton$3$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemButton.3.2
  * JD-Core Version:    0.7.0.1
  */

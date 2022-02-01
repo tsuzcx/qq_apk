@@ -1,8 +1,19 @@
-public abstract interface nbj
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.wtogether.view.WatchTogetherOrdinaryControlView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class nbj
+  implements View.OnClickListener
 {
-  public abstract long a();
+  public nbj(WatchTogetherOrdinaryControlView paramWatchTogetherOrdinaryControlView) {}
   
-  public abstract long b();
+  public void onClick(View paramView)
+  {
+    WatchTogetherOrdinaryControlView.d(this.a);
+    WatchTogetherOrdinaryControlView.c(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

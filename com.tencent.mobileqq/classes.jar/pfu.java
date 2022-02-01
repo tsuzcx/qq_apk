@@ -1,17 +1,17 @@
-import android.view.View;
-import com.tencent.widget.ListView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
 class pfu
-  extends pse
+  implements ViewFactory.FoundClickableViewListener
 {
-  pfu(pey parampey, String paramString, View paramView, ListView paramListView)
-  {
-    super(paramString);
-  }
+  pfu(pfs parampfs) {}
   
-  public void a(prx paramprx)
+  public void onFound(ViewBase paramViewBase)
   {
-    paramprx.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentWidgetListView);
+    if ((paramViewBase.getNativeView() == null) || (paramViewBase.getClickEvnet() == null)) {
+      return;
+    }
+    paramViewBase.setOnClickListener(new pfv(this));
   }
 }
 

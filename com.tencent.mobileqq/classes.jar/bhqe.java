@@ -1,26 +1,8 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.open.agent.AuthorityControlFragment;
-
-public class bhqe
-  implements View.OnTouchListener
+public abstract interface bhqe
 {
-  public bhqe(AuthorityControlFragment paramAuthorityControlFragment) {}
+  public abstract void a();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
-  }
+  public abstract void b();
 }
 
 

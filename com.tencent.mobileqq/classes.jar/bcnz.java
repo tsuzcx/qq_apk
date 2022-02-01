@@ -1,15 +1,58 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.studymode.KidModeVerifyFragment;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class bcnz
-  implements Handler.Callback
+  extends bcoa
 {
-  public bcnz(KidModeVerifyFragment paramKidModeVerifyFragment) {}
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
   
-  public boolean handleMessage(Message paramMessage)
+  public bcnz(ViewGroup paramViewGroup, int paramInt)
   {
-    return false;
+    super(paramViewGroup, paramInt);
+  }
+  
+  protected void a()
+  {
+    super.a();
+    View localView = a(this.jdField_c_of_type_Int);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379001));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131370015));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368524));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131365289));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378490));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378303));
+    this.d = ((TextView)localView.findViewById(2131365538));
+    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
+    {
+      if (this.jdField_c_of_type_AndroidWidgetTextView != null) {
+        this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(this.jdField_c_of_type_AndroidWidgetTextView.getContext().getResources().getColor(2131166958));
+      }
+      if (this.d != null) {
+        this.d.setTextColor(this.d.getContext().getResources().getColor(2131166958));
+      }
+    }
+    do
+    {
+      return;
+      if (this.jdField_c_of_type_AndroidWidgetTextView != null) {
+        this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#737373"));
+      }
+    } while (this.d == null);
+    this.d.setTextColor(Color.parseColor("#737373"));
   }
 }
 

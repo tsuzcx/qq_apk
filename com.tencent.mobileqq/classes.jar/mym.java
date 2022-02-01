@@ -1,25 +1,17 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 
-class mym
-  implements DialogInterface.OnClickListener
+public abstract interface mym
+  extends myk
 {
-  mym(myl parammyl, Activity paramActivity) {}
+  public abstract void setImmersiveStatus(boolean paramBoolean);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface = BaseApplicationImpl.getContext();
-    bcef.b(null, "dc00898", "", "", "0X800B038", "0X800B038", 0, 0, "", "", "", "");
-    if (FloatingScreenPermission.requestPermission(paramDialogInterface))
-    {
-      this.jdField_a_of_type_Myl.c = true;
-      return;
-    }
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-  }
+  public abstract void setOrientationParams(int paramInt);
+  
+  public abstract void setSeekBarChangeListener(SeekBar.OnSeekBarChangeListener paramOnSeekBarChangeListener);
+  
+  public abstract void setWatchTogetherMediaPlayerProxy(myj parammyj);
+  
+  public abstract void setWatchTogetherParams(boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

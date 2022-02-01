@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.contact.connections;
 
-import aidl;
+import aiyk;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bfvh;
+import bhdz;
 import com.tencent.mobileqq.app.face.FaceDecoder;
 import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -19,7 +19,7 @@ public class OverlappingImgLayout
   extends LinearLayout
 {
   private int jdField_a_of_type_Int;
-  FaceDecoder.DecodeTaskCompletionListener jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder$DecodeTaskCompletionListener = new aidl(this);
+  FaceDecoder.DecodeTaskCompletionListener jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder$DecodeTaskCompletionListener = new aiyk(this);
   private FaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder;
   private List<ThemeImageView> jdField_a_of_type_JavaUtilList = new ArrayList();
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
@@ -82,7 +82,7 @@ public class OverlappingImgLayout
     if (i < this.jdField_a_of_type_JavaUtilList.size())
     {
       localThemeImageView = (ThemeImageView)this.jdField_a_of_type_JavaUtilList.get(i);
-      int k = (int)bfvh.a(getContext(), 1.0F);
+      int k = (int)bhdz.a(getContext(), 1.0F);
       localThemeImageView.setPadding(k, k, k, k);
       if (a()) {
         break label134;
@@ -106,8 +106,8 @@ public class OverlappingImgLayout
   
   public void a(int paramInt1, int paramInt2, int paramInt3, String[] paramArrayOfString, FaceDecoder paramFaceDecoder)
   {
-    this.jdField_a_of_type_Int = ((int)bfvh.a(getContext(), paramInt1));
-    this.b = ((int)bfvh.a(getContext(), paramInt2));
+    this.jdField_a_of_type_Int = ((int)bhdz.a(getContext(), paramInt1));
+    this.b = ((int)bhdz.a(getContext(), paramInt2));
     this.c = paramInt3;
     setOrientation(0);
     this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
@@ -121,7 +121,7 @@ public class OverlappingImgLayout
   
   public void a(int paramInt1, int paramInt2, String[] paramArrayOfString, FaceDecoder paramFaceDecoder)
   {
-    a(paramInt1, paramInt2, (int)bfvh.a(getContext(), 4.0F), paramArrayOfString, paramFaceDecoder);
+    a(paramInt1, paramInt2, (int)bhdz.a(getContext(), 4.0F), paramArrayOfString, paramFaceDecoder);
   }
   
   public void setImgs()

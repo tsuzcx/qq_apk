@@ -1,16 +1,20 @@
-import java.util.List;
-
-class pfm
-  extends pse
+public class pfm
 {
-  pfm(pey parampey, String paramString, boolean paramBoolean1, int paramInt, List paramList, boolean paramBoolean2)
+  public int a;
+  public long a;
+  public String a;
+  public pfk a;
+  public boolean a;
+  public long b;
+  
+  public pfm()
   {
-    super(paramString);
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public void a(prx paramprx)
+  public String toString()
   {
-    paramprx.b(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.b);
+    return "ResponseExtraInfo{commentCnt=" + this.jdField_a_of_type_Long + ", hideCommentCnt=" + this.b + ", showMaskPageNo=" + this.jdField_a_of_type_Int + ", jumpSchema='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isPgcAuthor=" + this.jdField_a_of_type_Boolean + ", label=" + this.jdField_a_of_type_Pfk.toString() + '}';
   }
 }
 

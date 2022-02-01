@@ -1,68 +1,29 @@
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
 
 public class axgj
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.redtouch.util", 2, "onMedalConfigChanged configOn:" + paramBoolean + " refresh parents");
-    }
-    paramQQAppInterface = (axfy)paramQQAppInterface.getManager(160);
-    RedTouchItem localRedTouchItem = paramQQAppInterface.a(10016);
-    if (paramQQAppInterface.a(localRedTouchItem))
-    {
-      localRedTouchItem.isClosed = paramBoolean;
-      paramQQAppInterface.d(10016);
-    }
-    localRedTouchItem = paramQQAppInterface.a(10015);
-    if (paramQQAppInterface.a(localRedTouchItem))
-    {
-      localRedTouchItem.isClosed = paramBoolean;
-      paramQQAppInterface.d(10015);
-    }
-  }
+  public axgj(MultiCardFragment paramMultiCardFragment, axgt paramaxgt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4) {}
   
-  public static boolean a(QQAppInterface paramQQAppInterface)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    boolean bool = BaseApplicationImpl.getApplication().getSharedPreferences("medal_wall_" + paramQQAppInterface.getCurrentAccountUin(), 4).getBoolean("medal_switch_disable", false);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.redtouch.util", 2, "card.medalSwitchDisable=" + bool);
+    float f1 = paramValueAnimator.getAnimatedFraction();
+    if (this.jdField_a_of_type_Axgt == null) {
+      return;
     }
-    if (bfyz.X(paramQQAppInterface.getApplication(), paramQQAppInterface.getCurrentAccountUin()) != 1) {}
-    for (int i = 1;; i = 0)
-    {
-      if ((i != 0) && (QLog.isColorLevel())) {
-        QLog.d("Q.redtouch.util", 2, "medal config off");
-      }
-      if ((bool) || (i != 0)) {
-        break;
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.redtouch.util", 2, "onLikeRankListConfigChanged configOn:" + paramBoolean + " refresh parents");
-    }
-    paramQQAppInterface = (axfy)paramQQAppInterface.getManager(160);
-    RedTouchItem localRedTouchItem = paramQQAppInterface.a(100601);
-    if (paramQQAppInterface.a(localRedTouchItem))
-    {
-      localRedTouchItem.isClosed = paramBoolean;
-      paramQQAppInterface.d(100601);
-    }
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface)
-  {
-    return ((amvf)paramQQAppInterface.getManager(186)).c();
+    float f2 = this.jdField_a_of_type_Float + (1.0F - this.jdField_a_of_type_Float) * f1;
+    this.jdField_a_of_type_Axgt.a.setScaleX(f2);
+    this.jdField_a_of_type_Axgt.a.setScaleY(f2);
+    this.jdField_a_of_type_Axgt.a.setTranslationX(0.0F);
+    this.jdField_a_of_type_Axgt.a.setTranslationY(this.b * (1.0F - f1));
+    paramValueAnimator = this.jdField_a_of_type_Axgt.a.getLayoutParams();
+    float f3 = this.c;
+    float f4 = this.d;
+    paramValueAnimator.height = ((int)((f1 * (1.0F - this.d) + f4) / f2 * f3));
+    this.jdField_a_of_type_Axgt.a.requestLayout();
   }
 }
 

@@ -1,25 +1,110 @@
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import common.config.service.QzoneConfig;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
 import java.util.List;
+import org.json.JSONObject;
 
 public class amwu
-  implements BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface
+  implements amxf
 {
-  private List<String> a = new ArrayList();
+  private amxv a;
   
-  public List<String> getRedPointPaths(AppInterface paramAppInterface)
+  public amwu(amxv paramamxv)
   {
-    if (this.a.isEmpty()) {
-      this.a.add("100077");
-    }
-    if (((paramAppInterface instanceof QQAppInterface)) && (QzoneConfig.getInstance().getConfig("qqminiapp", "settingMeMiniGameEnable", 1) == 1)) {
-      return this.a;
-    }
-    return null;
+    this.a = paramamxv;
   }
+  
+  public int a()
+  {
+    if (this.a == null) {
+      return 0;
+    }
+    return this.a.b;
+  }
+  
+  public int a(int paramInt)
+  {
+    return 0;
+  }
+  
+  public int a(amqs paramamqs, int paramInt1, int paramInt2, String paramString, long paramLong, int paramInt3, float paramFloat)
+  {
+    return 0;
+  }
+  
+  public int a(AppInterface paramAppInterface)
+  {
+    return 0;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmAudioManager", 2, "pause all music");
+    }
+    if (amwv.a != null) {
+      synchronized (amwv.a)
+      {
+        Iterator localIterator = amwv.a.iterator();
+        while (localIterator.hasNext())
+        {
+          amwv localamwv = (amwv)localIterator.next();
+          if ((localamwv != null) && (localamwv.b() == a())) {
+            localamwv.b(new JSONObject());
+          }
+        }
+      }
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(int paramInt, AppInterface paramAppInterface) {}
+  
+  public void a(int paramInt, String paramString) {}
+  
+  public int b(int paramInt)
+  {
+    return 0;
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmAudioManager", 2, "resume all music");
+    }
+  }
+  
+  public void b(int paramInt, String paramString) {}
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmAudioManager", 2, "destroy all music");
+    }
+    if (amwv.a != null) {
+      synchronized (amwv.a)
+      {
+        Iterator localIterator = amwv.a.iterator();
+        while (localIterator.hasNext())
+        {
+          amwv localamwv = (amwv)localIterator.next();
+          if ((localamwv != null) && (localamwv.b() == a()))
+          {
+            localamwv.a();
+            localIterator.remove();
+          }
+        }
+      }
+    }
+    if (this.a != null)
+    {
+      this.a.a();
+      this.a = null;
+    }
+  }
+  
+  public void c(int paramInt, String paramString) {}
 }
 
 

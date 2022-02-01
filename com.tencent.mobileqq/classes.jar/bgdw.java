@@ -1,33 +1,36 @@
-import android.content.res.Resources;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
-class bgdw
-  implements MediaPlayer.OnCompletionListener
+public class bgdw
+  extends ViewPager.SimpleOnPageChangeListener
 {
-  bgdw(bgdv parambgdv, AudioManager paramAudioManager) {}
+  public bgdw(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
   
-  public void onCompletion(MediaPlayer arg1)
+  public void onPageSelected(int paramInt)
   {
-    synchronized (this.jdField_a_of_type_Bgdv.jdField_a_of_type_JavaLangObject)
+    super.onPageSelected(paramInt);
+    String str1;
+    String str3;
+    if (this.a.a != null)
     {
-      ???.release();
-      this.jdField_a_of_type_Bgdv.jdField_a_of_type_AndroidMediaMediaPlayer = null;
-      this.jdField_a_of_type_Bgdv.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Bgdv.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(0);
-      this.jdField_a_of_type_Bgdv.c.setImageDrawable(this.jdField_a_of_type_Bgdv.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130846997));
-      this.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(this.jdField_a_of_type_Bgdv.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener);
+      if (!VisitorTroopCardFragment.a(this.a)) {
+        break label85;
+      }
+      str1 = "grpData_admin";
+      str3 = this.a.a.troopUin;
+      if (!VisitorTroopCardFragment.a(this.a)) {
+        break label91;
+      }
     }
-    synchronized (this.jdField_a_of_type_Bgdv.jdField_a_of_type_Bgec)
+    label85:
+    label91:
+    for (String str2 = bhbu.a(this.a.a);; str2 = "1")
     {
-      this.jdField_a_of_type_Bgdv.jdField_a_of_type_Bgec.jdField_a_of_type_Int = 6;
+      bhbu.a("Grp_set_new", str1, "slide_head", 0, 0, new String[] { str3, str2 });
       return;
-      ??? = finally;
-      throw ???;
+      str1 = "grpData_visitor";
+      break;
     }
   }
 }

@@ -1,40 +1,23 @@
-import android.os.IInterface;
-import com.tencent.biz.pubaccount.readinjoy.reward.RIJRewardTask;
+import android.view.View;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-public abstract interface qyq
-  extends IInterface
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "retData", "", "", "", "", "onEvent"}, k=3, mv={1, 1, 16})
+public final class qyq
+  implements rbx
 {
-  public abstract int a();
+  public qyq(szd paramszd) {}
   
-  public abstract RIJRewardTask a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(RIJRewardTask paramRIJRewardTask);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, int paramInt, qyt paramqyt);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(String paramString);
-  
-  public abstract int b();
-  
-  public abstract RIJRewardTask b();
-  
-  public abstract void b(RIJRewardTask paramRIJRewardTask);
-  
-  public abstract boolean b();
-  
-  public abstract int c();
-  
-  public abstract int d();
-  
-  public abstract int e();
-  
-  public abstract int f();
+  public final void a(View paramView, Map<String, Object> paramMap)
+  {
+    paramView = this.a.a();
+    Intrinsics.checkExpressionValueIsNotNull(paramView, "adapter.listenerBuilder");
+    paramView = paramView.a();
+    if (paramView != null) {
+      paramView.c();
+    }
+  }
 }
 
 

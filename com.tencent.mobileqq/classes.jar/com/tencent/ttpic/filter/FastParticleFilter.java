@@ -175,23 +175,6 @@ public class FastParticleFilter
     return localObject;
   }
   
-  public void OnDrawFrameGLSL()
-  {
-    this.shader.bind();
-    Iterator localIterator = this.mParamList.values().iterator();
-    while (localIterator.hasNext()) {
-      ((UniformParam)localIterator.next()).setParams(this.shader.getShaderProgram());
-    }
-    localIterator = this.mAttrParams.values().iterator();
-    while (localIterator.hasNext())
-    {
-      AttributeParam localAttributeParam = (AttributeParam)localIterator.next();
-      if (localAttributeParam.handle >= 0) {
-        localAttributeParam.setParams(this.shader.getShaderProgram());
-      }
-    }
-  }
-  
   public void addAttribParam(AttributeParam paramAttributeParam)
   {
     if (paramAttributeParam == null) {
@@ -306,6 +289,23 @@ public class FastParticleFilter
     }
   }
   
+  public void onDrawFrameGLSL()
+  {
+    this.shader.bind();
+    Iterator localIterator = this.mParamList.values().iterator();
+    while (localIterator.hasNext()) {
+      ((UniformParam)localIterator.next()).setParams(this.shader.getShaderProgram());
+    }
+    localIterator = this.mAttrParams.values().iterator();
+    while (localIterator.hasNext())
+    {
+      AttributeParam localAttributeParam = (AttributeParam)localIterator.next();
+      if (localAttributeParam.handle >= 0) {
+        localAttributeParam.setParams(this.shader.getShaderProgram());
+      }
+    }
+  }
+  
   public void render(List<ParticleParam> paramList, Frame paramFrame)
   {
     if (paramList.size() > 0)
@@ -318,7 +318,7 @@ public class FastParticleFilter
         {
           GLES20.glBindFramebuffer(36160, paramFrame.getFBO());
           GLES20.glViewport(0, 0, paramFrame.width, paramFrame.height);
-          OnDrawFrameGLSL();
+          onDrawFrameGLSL();
           renderTexture(paramFrame);
         }
       }

@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.Log;
-import bgve;
+import bifw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import cooperation.qzone.QZoneClickReport;

@@ -1,29 +1,23 @@
-import android.app.Activity;
-import dov.com.qq.im.capture.view.StaticStickerProviderView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.concurrent.CountDownLatch;
 
-public class bmzt
-  implements bnld
+class bmzt
+  implements View.OnClickListener
 {
-  public bmzt(StaticStickerProviderView paramStaticStickerProviderView, Activity paramActivity) {}
+  bmzt(bmzr parambmzr) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    xvv.b("StaticStickerProviderView", "用户点击重新拉取地理贴纸");
-    ((bmua)bmql.a(4)).a(true, this.jdField_a_of_type_AndroidAppActivity);
-  }
-  
-  public void a(String paramString)
-  {
-    xvv.b("StaticStickerProviderView", "用户点击下载：" + paramString);
-    xwb.b("0X80075DD");
-    if (!((bnhh)vux.a(39)).a(paramString, true)) {
-      xvv.d("StaticStickerProviderView", "用户点击下载启动失败");
+    bnrh.b("AEPhotoListLogicBase", "batchCompressDialog cancel clicked");
+    bmzr.a(this.a, true);
+    this.a.i();
+    if (bmzr.a(this.a) != null) {
+      bmzr.a(this.a).countDown();
     }
-  }
-  
-  public void b(String paramString)
-  {
-    xvv.b("StaticStickerProviderView", "用户点击下载取消：" + paramString);
+    bmzr.a(this.a).cancel();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

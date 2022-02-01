@@ -1,28 +1,48 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class bhmp
-  implements MediaPlayer.OnPreparedListener
+class bhmp
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  public bhmp(VideoTextureView paramVideoTextureView) {}
+  bhmp(bhmn parambhmn) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void onAudioFocusChange(int paramInt)
   {
-    if (VideoTextureView.a(this.a) != null)
+    if (paramInt == -2)
     {
-      VideoTextureView.a(this.a).start();
-      VideoTextureView.a(this.a, VideoTextureView.a(this.a).getDuration());
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorRingPlayer", 2, "transient focus loss.");
+      }
+      synchronized (this.a.a)
+      {
+        if (this.a.a.a == 4) {
+          this.a.a();
+        }
+        return;
+      }
     }
-    if (VideoTextureView.a() != null)
+    if (paramInt == 1)
     {
-      VideoTextureView.a().onVideoStart(VideoTextureView.a(this.a));
-      VideoTextureView.a().onVideoProgressUpdate(0);
-      VideoTextureView.a().onVideoSize(VideoTextureView.a(this.a).getVideoWidth(), VideoTextureView.a(this.a).getVideoHeight());
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorRingPlayer", 2, "gained focus");
+      }
+      if (this.a.b)
+      {
+        this.a.c();
+        this.a.b = false;
+      }
     }
-    if (VideoTextureView.a(this.a) != null) {
-      VideoTextureView.a(this.a).post(this.a.a);
+    else if (paramInt == -1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorRingPlayer", 2, "Audio focus Loss");
+      }
+      this.a.b();
+      synchronized (this.a.a)
+      {
+        this.a.a.a = 6;
+        return;
+      }
     }
   }
 }

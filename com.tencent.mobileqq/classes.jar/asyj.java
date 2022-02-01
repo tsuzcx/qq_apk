@@ -1,16 +1,25 @@
+import android.widget.ImageView;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+
 public class asyj
+  implements aukq
 {
-  public int a;
-  public long a;
-  public String a;
-  public byte[] a;
-  public long b;
-  public String b;
-  public byte[] b;
-  public long c;
-  public byte[] c;
-  public long d;
-  public byte[] d;
+  public asyj(FilePreviewActivity paramFilePreviewActivity) {}
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      FilePreviewActivity.a(this.a, beaz.a(this.a.app, FilePreviewActivity.a(this.a), this.a, "<FileAssistant>FilePreviewActivity", this.a.getString(2131719264), false));
+      return;
+    }
+    beaz.a(this.a.app, this.a, "<FileAssistant>FilePreviewActivity", FilePreviewActivity.a(this.a));
+  }
+  
+  public void a(ImageView paramImageView) {}
 }
 
 

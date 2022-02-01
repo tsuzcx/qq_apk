@@ -7,7 +7,7 @@ public class ReaderAppSetting
 {
   public static String buildNum()
   {
-    return "4810";
+    return "4875";
   }
   
   public static boolean enableTalkBack()
@@ -27,7 +27,7 @@ public class ReaderAppSetting
   
   public static String subVersion()
   {
-    return "8.4.8";
+    return "8.4.10";
   }
 }
 

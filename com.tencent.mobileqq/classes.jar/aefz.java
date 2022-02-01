@@ -1,15 +1,21 @@
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.widget.Switch;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.Leba.28.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class aefz
+  extends aozh
 {
-  public CompoundButton.OnCheckedChangeListener a;
-  public TextView a;
-  public URLImageView a;
-  public Switch a;
-  public String a;
+  public aefz(Leba paramLeba) {}
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.lebatab.leba", 2, "onReadInJoyNotifyRedTouchUpdate, isSuccess=" + paramBoolean1 + ",isUpdate=" + paramBoolean2 + ", type=" + paramInt);
+    }
+    if ((paramBoolean1) && (paramBoolean2) && ((paramInt & 0x1) != 0)) {
+      this.a.b(new Leba.28.1(this));
+    }
+  }
 }
 
 

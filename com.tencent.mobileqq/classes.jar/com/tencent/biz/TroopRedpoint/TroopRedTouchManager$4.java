@@ -1,17 +1,17 @@
 package com.tencent.biz.TroopRedpoint;
 
-import bfuc;
+import bhcu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import mqq.app.MobileQQ;
-import nmq;
+import ntq;
 
 public class TroopRedTouchManager$4
   implements Runnable
 {
-  public TroopRedTouchManager$4(nmq paramnmq, String paramString) {}
+  public TroopRedTouchManager$4(ntq paramntq, String paramString) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class TroopRedTouchManager$4
     {
       try
       {
-        FileUtils.pushData2File(str, bfuc.encode(this.a.getBytes(), 0), false);
+        FileUtils.pushData2File(str, bhcu.encode(this.a.getBytes(), 0), false);
         return;
       }
       catch (Exception localException)

@@ -1,26 +1,16 @@
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import java.util.List;
 
 class pef
-  implements AbsListView.OnScrollListener
+  extends pfe
 {
-  pef(ped paramped) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  pef(pdv parampdv, boolean paramBoolean1, List paramList, boolean paramBoolean2, int paramInt)
   {
-    switch (paramInt)
-    {
-    case 1: 
-    case 2: 
-    default: 
-      return;
-    }
-    slt localslt = this.a.a().a();
-    this.a.a().a().a(paramAbsListView.getFirstVisiblePosition(), paramAbsListView.getLastVisiblePosition(), localslt);
-    this.a.a().a().b(paramAbsListView.getFirstVisiblePosition(), paramAbsListView.getLastVisiblePosition(), localslt);
-    this.a.a().a().c(paramAbsListView.getFirstVisiblePosition(), paramAbsListView.getLastVisiblePosition(), localslt);
+    super(parampdv, null);
+  }
+  
+  void a(pfh parampfh)
+  {
+    parampfh.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
   }
 }
 

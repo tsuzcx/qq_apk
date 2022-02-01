@@ -1,27 +1,44 @@
-import org.json.JSONObject;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.qphone.base.util.QLog;
 
-public class zta
+class zta
+  extends RecyclerView.OnScrollListener
 {
-  public float a;
-  public String a;
-  public boolean a;
-  public float b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  zta(zsx paramzsx) {}
   
-  public zta(JSONObject paramJSONObject)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("title");
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("startTime");
-    this.c = paramJSONObject.optString("endTime");
-    this.d = paramJSONObject.optString("jumpUrl");
-    this.jdField_a_of_type_Float = ((float)paramJSONObject.optDouble("durationStart"));
-    this.jdField_b_of_type_Float = ((float)paramJSONObject.optDouble("durationEnd"));
-    this.e = paramJSONObject.optString("replaceImage");
-    this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("replace");
+    try
+    {
+      super.onScrollStateChanged(paramRecyclerView, paramInt);
+      if ((this.a.a instanceof StaggeredGridLayoutManager))
+      {
+        paramRecyclerView = (StaggeredGridLayoutManager)this.a.a;
+        paramRecyclerView.computeVerticalScrollExtent(new RecyclerView.State());
+        int[] arrayOfInt = new int[paramRecyclerView.getColumnCountForAccessibility(null, null)];
+        paramRecyclerView.findFirstVisibleItemPositions(arrayOfInt);
+        if ((this.a.a(arrayOfInt[0]) <= 0) && (!zsx.b(this.a)))
+        {
+          zsx.a(this.a, true);
+          paramRecyclerView.invalidateSpanAssignments();
+        }
+        if (arrayOfInt[0] > 2) {
+          zsx.a(this.a, false);
+        }
+      }
+      return;
+    }
+    catch (Exception paramRecyclerView)
+    {
+      paramRecyclerView.printStackTrace();
+      QLog.e("RelativeFeedsAdapter", 1, "onScrollStateChanged error", paramRecyclerView);
+    }
   }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
 }
 
 

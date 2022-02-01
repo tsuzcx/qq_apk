@@ -3,12 +3,12 @@ package dov.com.qq.im.setting;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bnbr;
+import borj;
 
 public class QIMSelectEffectParams
   implements Parcelable
 {
-  public static final Parcelable.Creator<QIMSelectEffectParams> CREATOR = new bnbr();
+  public static final Parcelable.Creator<QIMSelectEffectParams> CREATOR = new borj();
   public int a;
   public String a;
   public int b;

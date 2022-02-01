@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.ark;
 
-import aoue;
-import aoug;
-import aoui;
+import apxi;
+import apxk;
+import apxm;
 import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
 import java.lang.ref.WeakReference;
 
 public class ArkAiDictUpdateMgr$8$1$1
   implements Runnable
 {
-  public ArkAiDictUpdateMgr$8$1$1(aoue paramaoue, byte[] paramArrayOfByte, boolean paramBoolean) {}
+  public ArkAiDictUpdateMgr$8$1$1(apxi paramapxi, byte[] paramArrayOfByte, boolean paramBoolean) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Aoue.a.jdField_a_of_type_Aoui.jdField_a_of_type_JavaLangRefWeakReference == null)
+    if (this.jdField_a_of_type_Apxi.a.jdField_a_of_type_Apxm.jdField_a_of_type_JavaLangRefWeakReference == null)
     {
       ArkAppCenter.c("ArkApp.Dict.Update", "downloadDictFile, weakPreDownloadCtrl is null, return");
       return;
     }
-    PreDownloadController localPreDownloadController = (PreDownloadController)this.jdField_a_of_type_Aoue.a.jdField_a_of_type_Aoui.jdField_a_of_type_JavaLangRefWeakReference.get();
+    PreDownloadController localPreDownloadController = (PreDownloadController)this.jdField_a_of_type_Apxi.a.jdField_a_of_type_Apxm.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (localPreDownloadController == null)
     {
       ArkAppCenter.c("ArkApp.Dict.Update", "downloadDictFile, preDownloadController is null, return");
@@ -26,10 +26,10 @@ public class ArkAiDictUpdateMgr$8$1$1
     }
     byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
     long l;
-    if (this.jdField_a_of_type_Aoue.a.jdField_a_of_type_Aoui.jdField_a_of_type_Boolean) {
+    if (this.jdField_a_of_type_Apxi.a.jdField_a_of_type_Apxm.jdField_a_of_type_Boolean) {
       if (this.jdField_a_of_type_Boolean)
       {
-        String str = this.jdField_a_of_type_Aoue.a.jdField_a_of_type_JavaLangString;
+        String str = this.jdField_a_of_type_Apxi.a.jdField_a_of_type_JavaLangString;
         if (arrayOfByte == null)
         {
           l = 0L;
@@ -39,11 +39,11 @@ public class ArkAiDictUpdateMgr$8$1$1
     }
     for (;;)
     {
-      this.jdField_a_of_type_Aoue.a.jdField_a_of_type_Aoug.a(arrayOfByte);
+      this.jdField_a_of_type_Apxi.a.jdField_a_of_type_Apxk.a(arrayOfByte);
       return;
       l = arrayOfByte.length;
       break;
-      localPreDownloadController.preDownloadSuccess(this.jdField_a_of_type_Aoue.a.jdField_a_of_type_JavaLangString, -1L);
+      localPreDownloadController.preDownloadSuccess(this.jdField_a_of_type_Apxi.a.jdField_a_of_type_JavaLangString, -1L);
       arrayOfByte = null;
     }
   }

@@ -1,64 +1,98 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.data.IntimateInfo.DNAInfo;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.PokePanel;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneHelper;
 
-class afue
-  extends ClickableSpan
+public class afue
+  extends bhow
 {
-  afue(afud paramafud, IntimateInfo.DNAInfo paramDNAInfo) {}
+  public afue(PokePanel paramPokePanel) {}
   
-  public void onClick(View paramView)
+  protected void onPokeAuth(boolean paramBoolean, Object paramObject)
   {
-    bcef.b(null, "dc00898", "", "", "0X800A20A ", "0X800A20A ", 0, 0, "", "", "", "");
-    QLog.d("Intimate report test", 2, "REPORT_TAG_0X800A20A");
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl))
-    {
-      QLog.e("intimate_relationship", 2, "linkUrl is empty");
+    Object localObject = (Bundle)paramObject;
+    if (((Bundle)localObject).getInt("fromType") != 0) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, String.format("click scheme: %s, scheme: %s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkWording, this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl }));
-    }
-    paramView = bfwg.a(this.jdField_a_of_type_Afud.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Afud.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl);
-    if (paramView != null)
+    int j = ((Bundle)localObject).getInt("id");
+    int i = ((Bundle)localObject).getInt("feeType");
+    String str1 = "free";
+    if (i == 4)
     {
-      paramView.a();
+      str1 = "vip";
+      label47:
+      if (!paramBoolean) {
+        break label160;
+      }
+      paramObject = ((Bundle)localObject).getString("name");
+      localObject = ((Bundle)localObject).getString("minVersion");
+      admh.a(PokePanel.a(this.a), BaseApplicationImpl.getContext(), PokePanel.a(this.a), 126, j, paramObject, (String)localObject);
+      if (true == ahcw.a) {
+        ahcw.a = false;
+      }
+      label106:
+      if (!paramBoolean) {
+        break label421;
+      }
+    }
+    label160:
+    label419:
+    label421:
+    for (i = 0;; i = 1)
+    {
+      VasWebviewUtil.reportCommercialDrainage("", "poke", "send", "", 0, i, 0, "", String.valueOf(j), str1, "", "", "", "", 0, 0, 0, 0);
       return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl.toLowerCase().startsWith("mqzone://"))
-    {
-      QZoneHelper.onMQzoneSchema(this.jdField_a_of_type_Afud.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl);
-      return;
-    }
-    aftx.a(this.jdField_a_of_type_Afud.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setUnderlineText(false);
-    try
-    {
-      int j = Color.parseColor("#4D94FF");
-      paramTextPaint.setColor(j);
-      int i = j;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo != null)
+      if (i != 5) {
+        break label47;
+      }
+      str1 = "svip";
+      break label47;
+      long l = ((Bundle)localObject).getLong("result");
+      localObject = ((Bundle)localObject).getString("msg");
+      paramObject = (Bundle)paramObject;
+      this.a.a = paramObject.getInt("id", 0);
+      String str2 = anvx.a(2131707782);
+      if (l == 0L)
       {
-        i = j;
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkColor)) {
-          i = Color.parseColor(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkColor);
+        this.a.b = 1;
+        if (true != ahcw.a) {
+          break;
+        }
+        ahcw.a = false;
+        return;
+      }
+      if (l == 4002L)
+      {
+        this.a.b = 2;
+        paramObject = anvx.a(2131707785);
+        localObject = str2;
+      }
+      for (;;)
+      {
+        if (l == 0L) {
+          break label419;
+        }
+        ahcw.a(PokePanel.a(this.a), (Activity)this.a.getContext(), paramObject, (String)localObject, this.a.a, this.a.b);
+        VasWebviewUtil.reportCommercialDrainage("", "poke", "vipTip", "", 0, 0, 0, "", String.valueOf(j), str1, "", "", "", "", 0, 0, 0, 0);
+        break;
+        if (l == 5002L)
+        {
+          this.a.b = 4;
+          paramObject = anvx.a(2131707784);
+          localObject = str2;
+        }
+        else
+        {
+          this.a.b = 1;
+          str2 = anvx.a(2131707783);
+          QLog.e("Q.aio.PokePanel", 1, "vas poke auth fail, result: " + l);
+          paramObject = localObject;
+          localObject = str2;
         }
       }
-      paramTextPaint.setColor(i);
-      return;
-    }
-    catch (IllegalArgumentException paramTextPaint)
-    {
-      QLog.e("intimate_relationship", 2, " color parse err");
+      break label106;
     }
   }
 }

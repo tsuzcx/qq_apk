@@ -1,88 +1,45 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.TypeEvaluator;
+import android.annotation.TargetApi;
 
+@TargetApi(11)
 public class aqiv
-  extends aptq<aqiu>
+  implements TypeEvaluator<aqiu>
 {
-  @NonNull
-  public aqiu a(int paramInt)
+  public aqiu a(float paramFloat, aqiu paramaqiu1, aqiu paramaqiu2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("SearchHotWordConfProcessor", 2, "migrateOldOrDefaultContent ");
-    }
-    return new aqiu();
-  }
-  
-  @Nullable
-  public aqiu a(aptx[] paramArrayOfaptx)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchHotWordConfProcessor", 2, "onParsed start");
-    }
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
+    float f1;
+    float f2;
+    if (paramaqiu2.jdField_a_of_type_Int == 2)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchHotWordConfProcessor", 2, "onParsed " + paramArrayOfaptx.length);
+      f1 = 1.0F - paramFloat;
+      f2 = f1 * f1 * f1 * paramaqiu1.jdField_a_of_type_Float + 3.0F * f1 * f1 * paramFloat * paramaqiu2.e + 3.0F * f1 * paramFloat * paramFloat * paramaqiu2.g + paramFloat * paramFloat * paramFloat * paramaqiu2.jdField_a_of_type_Float;
+      float f3 = paramaqiu1.b;
+      float f4 = paramaqiu2.f;
+      f1 = f1 * 3.0F * paramFloat * paramFloat * paramaqiu2.h + (f1 * f1 * f1 * f3 + 3.0F * f1 * f1 * paramFloat * f4) + paramFloat * paramFloat * paramFloat * paramaqiu2.b;
+    }
+    for (;;)
+    {
+      aqiu localaqiu = aqiu.b(f2, f1);
+      paramaqiu1.d += (paramaqiu2.d - paramaqiu1.d) * paramFloat;
+      paramaqiu1.c += (paramaqiu2.c - paramaqiu1.c) * paramFloat;
+      return localaqiu;
+      if (paramaqiu2.jdField_a_of_type_Int == 1)
+      {
+        f1 = paramaqiu1.jdField_a_of_type_Float;
+        f2 = (paramaqiu2.jdField_a_of_type_Float - paramaqiu1.jdField_a_of_type_Float) * paramFloat + f1;
+        f1 = paramaqiu1.b + (paramaqiu2.b - paramaqiu1.b) * paramFloat;
       }
-      return aqiu.a(paramArrayOfaptx[0]);
-    }
-    return null;
-  }
-  
-  public void a(aqiu paramaqiu)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onUpdate ");
-      if (paramaqiu == null) {
-        break label43;
+      else
+      {
+        f2 = paramaqiu2.jdField_a_of_type_Float;
+        f1 = paramaqiu2.b;
       }
     }
-    label43:
-    for (paramaqiu = paramaqiu.toString();; paramaqiu = " empty")
-    {
-      QLog.d("SearchHotWordConfProcessor", 2, paramaqiu);
-      return;
-    }
-  }
-  
-  public Class clazz()
-  {
-    return aqiu.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("SearchHotWordConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public int type()
-  {
-    return 433;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqiv
  * JD-Core Version:    0.7.0.1
  */

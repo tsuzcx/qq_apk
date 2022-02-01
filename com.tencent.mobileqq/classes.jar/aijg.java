@@ -1,195 +1,41 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsgActionInfo;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aijg
-  extends bjuw
+  extends aiit
 {
-  public int a;
-  private aidq jdField_a_of_type_Aidq;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aijh(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  protected SlideDetectListView a;
-  public List<MessageRecord> a;
-  private List<MessageRecord> b = new ArrayList();
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public aijg(Context paramContext, QQAppInterface paramQQAppInterface, aidq paramaidq, int paramInt, SlideDetectListView paramSlideDetectListView)
+  public JSONObject a()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Aidq = paramaidq;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = paramSlideDetectListView;
-  }
-  
-  private boolean a(structmsg.StructMsg paramStructMsg)
-  {
-    boolean bool = false;
-    if (paramStructMsg != null)
+    JSONObject localJSONObject1 = new JSONObject();
+    try
     {
-      int i = paramStructMsg.msg_type.get();
-      long l1 = paramStructMsg.msg_seq.get();
-      long l2 = paramStructMsg.req_uin.get();
-      int j = paramStructMsg.msg.sub_type.get();
-      int k = paramStructMsg.msg.src_id.get();
-      int m = paramStructMsg.msg.sub_src_id.get();
-      int n = paramStructMsg.msg.group_msg_type.get();
-      structmsg.SystemMsgActionInfo localSystemMsgActionInfo = new structmsg.SystemMsgActionInfo();
-      localSystemMsgActionInfo.group_code.set(paramStructMsg.msg.group_code.get());
-      localSystemMsgActionInfo.sig.set(ByteStringMicro.EMPTY);
-      localSystemMsgActionInfo.type.set(15);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a().a(i, l1, l2, j, k, m, n, (structmsg.SystemMsgActionInfo)localSystemMsgActionInfo.get(), 3);
-      bool = true;
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("uin", this.a);
+      localJSONObject2.put("touin", this.b);
+      localJSONObject2.put("appid", this.e);
+      localJSONObject2.put("scene", this.c);
+      localJSONObject2.put("expose_md5s", this.f);
+      localJSONObject2.put("expose_urls", this.g);
+      localJSONObject2.put("click_md5", this.h);
+      localJSONObject2.put("click_url", this.i);
+      localJSONObject2.put("aio_type", this.d);
+      localJSONObject2.put("mobile_type", this.j);
+      localJSONObject2.put("passthough", this.k);
+      localJSONObject1.put("dcId", this.l);
+      localJSONObject1.put("data", localJSONObject2);
+      return localJSONObject1;
     }
-    return bool;
-  }
-  
-  public void a()
-  {
-    if (this.b != null) {
-      this.b.clear();
-    }
-  }
-  
-  public void a(List<MessageRecord> paramList)
-  {
-    HashSet localHashSet = new HashSet();
-    if ((paramList == null) || (this.b == null)) {}
-    for (;;)
+    catch (Exception localException)
     {
-      return;
-      this.b.clear();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        MessageRecord localMessageRecord = (MessageRecord)paramList.next();
-        if ((localMessageRecord instanceof MessageForSystemMsg))
-        {
-          structmsg.StructMsg localStructMsg = ((MessageForSystemMsg)localMessageRecord).getSystemMsg();
-          if ((localStructMsg != null) && (localStructMsg.msg_seq.has()) && (!localHashSet.contains(Long.valueOf(localStructMsg.msg_seq.get()))))
-          {
-            localHashSet.add(Long.valueOf(localStructMsg.msg_seq.get()));
-            this.b.add(localMessageRecord);
-          }
-        }
-      }
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ScenesRecReportData", 2, "convert error:" + localException);
     }
-  }
-  
-  public int getCount()
-  {
-    int i = 0;
-    if (this.b != null) {
-      i = this.b.size();
-    }
-    return i;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((this.b == null) || (paramInt > this.b.size()) || (paramInt < 0)) {
-      return null;
-    }
-    return this.b.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    aijj localaijj;
-    if (paramView == null)
-    {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559910, paramViewGroup, false);
-      localaijj = new aijj();
-      localaijj.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131373602));
-      localaijj.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131373586));
-      localaijj.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131373594));
-      localaijj.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131373606));
-      localaijj.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373592));
-      localaijj.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373603));
-      localaijj.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373605));
-      localaijj.d = ((TextView)paramView.findViewById(2131373593));
-      localaijj.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131373601));
-      localaijj.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout = ((ShaderAnimLayout)paramView.findViewById(2131379271));
-      ((Button)paramView.findViewById(2131379270)).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      paramView.setTag(localaijj);
-      localaijj.jdField_b_of_type_Int = paramInt;
-      if (paramInt >= this.jdField_a_of_type_Int) {
-        break label272;
-      }
-      aiea.a(paramView, true);
-      aiea.a(localaijj.jdField_a_of_type_AndroidWidgetLinearLayout, true);
-    }
-    MessageRecord localMessageRecord;
-    for (;;)
-    {
-      localMessageRecord = (MessageRecord)getItem(paramInt);
-      if (localMessageRecord == null) {
-        break label354;
-      }
-      if ((localMessageRecord instanceof MessageForSystemMsg)) {
-        break label289;
-      }
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      localaijj = (aijj)paramView.getTag();
-      break;
-      label272:
-      aiea.a(paramView, false);
-      aiea.a(localaijj.jdField_a_of_type_AndroidWidgetLinearLayout, false);
-    }
-    label289:
-    localaijj.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg = ((MessageForSystemMsg)localMessageRecord).getSystemMsg();
-    localaijj.jdField_c_of_type_Long = localMessageRecord.uniseq;
-    if (localMessageRecord != null) {}
-    for (int i = ((MessageForSystemMsg)localMessageRecord).getSystemMsg().msg_type.get();; i = 2)
-    {
-      if (i == 2) {
-        this.jdField_a_of_type_Aidq.a(localaijj, paramInt);
-      }
-      break;
-      label354:
-      break;
-    }
-  }
-  
-  public void notifyDataSetChanged()
-  {
-    super.notifyDataSetChanged();
+    return localJSONObject1;
   }
 }
 

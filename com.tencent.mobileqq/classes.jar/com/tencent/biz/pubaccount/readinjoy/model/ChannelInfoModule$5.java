@@ -2,12 +2,12 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
 import com.tencent.mobileqq.persistence.EntityManager;
-import puh;
+import qfb;
 
 public class ChannelInfoModule$5
   implements Runnable
 {
-  public ChannelInfoModule$5(puh parampuh, ChannelInfo paramChannelInfo) {}
+  public ChannelInfoModule$5(qfb paramqfb, ChannelInfo paramChannelInfo) {}
   
   public void run()
   {

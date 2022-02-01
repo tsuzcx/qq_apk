@@ -1,66 +1,96 @@
-import android.app.Dialog;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import android.os.Bundle;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.s2c.msgtype0x210.submsgtype0x126.submsgtype0x126.MsgBody;
 
 public class acqf
-  implements View.OnClickListener
+  implements acpi
 {
-  public acqf(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
-  
-  public void onClick(View paramView)
+  private static void a(acnk paramacnk, MsgType0x210 paramMsgType0x210)
   {
-    if (this.a.a != null)
-    {
-      this.a.getWindow().setSoftInputMode(2);
-      this.a.a.hideSoftInputFromWindow(AddFriendVerifyActivity.a(this.a).getWindowToken(), 0);
-      AddFriendVerifyActivity.a(this.a).clearFocus();
-    }
-    Object localObject = AddFriendVerifyActivity.a(this.a).getText().toString().trim();
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      if (!this.a.isFinishing())
-      {
-        localObject = new nnd(this.a);
-        ((nnd)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131699021));
-        ((nnd)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850365);
-        ((nnd)localObject).a();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.BaseMessageProcessor", 2, "onlinepush receive 0x210_0x126, push for webview");
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (((String)localObject).length() > 90)
+      int i;
+      try
       {
-        localObject = new ReportDialog(this.a, 2131755826);
-        ((Dialog)localObject).setContentView(2131562728);
-        ((TextView)((Dialog)localObject).findViewById(2131365552)).setText(this.a.getString(2131690992));
-        ((ProgressBar)((Dialog)localObject).findViewById(2131367022)).setVisibility(8);
-        ((ImageView)((Dialog)localObject).findViewById(2131380190)).setImageResource(2130839632);
-        ((Dialog)localObject).show();
+        localObject = new submsgtype0x126.MsgBody();
+        if (!paramacnk.a(paramMsgType0x210)) {
+          break label261;
+        }
+        ((submsgtype0x126.MsgBody)localObject).mergeFrom(paramMsgType0x210.vProtobuf);
+        if (!((submsgtype0x126.MsgBody)localObject).uint32_msg_type.has()) {
+          break label262;
+        }
+        i = ((submsgtype0x126.MsgBody)localObject).uint32_msg_type.get();
+        if (i != 4) {
+          continue;
+        }
+        paramacnk.a().getAVNotifyCenter().a((submsgtype0x126.MsgBody)localObject);
+        paramMsgType0x210 = "";
+      }
+      catch (Exception paramacnk)
+      {
+        try
+        {
+          boolean bool;
+          paramMsgType0x210 = ((submsgtype0x126.MsgBody)localObject).str_msg_info.get().toStringUtf8();
+          Object localObject = new Bundle();
+          ((Bundle)localObject).putInt("msgType", i);
+          ((Bundle)localObject).putString("info", paramMsgType0x210);
+          paramacnk.a().notifyObservers(aogz.class, 11, true, (Bundle)localObject);
+        }
+        catch (Throwable paramMsgType0x210)
+        {
+          if (!QLog.isColorLevel()) {
+            break label255;
+          }
+          QLog.i("Q.msg.BaseMessageProcessor", 2, "onlinepush receive 0x210_0x126 parse str_msg_info fail.", paramMsgType0x210);
+        }
+        paramacnk = paramacnk;
+        QLog.e("Q.msg.BaseMessageProcessor", 1, "webview push errInfo->" + paramacnk.getMessage());
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
+        QLog.d("Q.msg.BaseMessageProcessor", 2, new Object[] { "webpush type:", Integer.valueOf(i), " info:", paramMsgType0x210 });
+        return;
+        if (i == 2)
+        {
+          paramacnk.a().getAVNotifyCenter().a((submsgtype0x126.MsgBody)localObject);
+          paramMsgType0x210 = "";
+        }
+        else
+        {
+          bool = ((submsgtype0x126.MsgBody)localObject).str_msg_info.has();
+          if (bool) {}
+          label255:
+          paramMsgType0x210 = "";
+        }
       }
       else
       {
-        this.a.a((String)localObject, true);
-        if (NetworkUtil.isNetSupport(this.a)) {
-          AddFriendVerifyActivity.a(this.a, AddFriendVerifyActivity.a(this.a), (String)localObject, this.a.getIntent().getIntExtra("stat_option", 0), 2000);
-        } else {
-          QQToast.a(this.a, 1, 2131694064, 0).b(this.a.getTitleBarHeight());
-        }
+        label261:
+        return;
+        label262:
+        i = 0;
       }
     }
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk, paramMsgType0x210);
+    return null;
   }
 }
 

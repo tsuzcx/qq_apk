@@ -40,13 +40,13 @@ public class PhoneUnityVerifyActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561271);
-    super.setTitle(getString(2131694376));
+    super.setContentView(2131561332);
+    super.setTitle(getString(2131694577));
     this.leftView.setVisibility(8);
     this.rightViewText.setVisibility(0);
-    this.rightViewText.setText(2131692890);
+    this.rightViewText.setText(2131692996);
     this.rightViewText.setOnClickListener(this);
-    paramBundle = (Button)super.findViewById(2131372447);
+    paramBundle = (Button)super.findViewById(2131372641);
     if (paramBundle != null) {
       paramBundle.setOnClickListener(this);
     }
@@ -100,7 +100,7 @@ public class PhoneUnityVerifyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PhoneUnityVerifyActivity
  * JD-Core Version:    0.7.0.1
  */

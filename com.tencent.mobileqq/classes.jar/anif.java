@@ -1,26 +1,74 @@
-public class anif
+import com.tencent.TMG.sdk.AVAudioCtrl;
+import com.tencent.TMG.sdk.AVContext;
+import com.tencent.TMG.sdk.AVRoomMulti.AVCustomData;
+import com.tencent.TMG.sdk.AVRoomMulti.EventListener;
+import com.tencent.qphone.base.util.QLog;
+
+class anif
+  implements AVRoomMulti.EventListener
 {
-  public int a;
-  public long a;
-  public int b;
-  public int c;
-  public int d;
+  anif(anie paramanie) {}
   
-  public String toString()
+  public void onCameraSettingNotify(int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onDisableAudioIssue() {}
+  
+  public void onEndpointsUpdateInfo(int paramInt, String[] paramArrayOfString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("M_size=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(",C_size=");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(",R_size=");
-    localStringBuilder.append(this.c);
-    localStringBuilder.append(",K_len=");
-    localStringBuilder.append(this.d);
-    localStringBuilder.append(",time=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    return localStringBuilder.toString();
+    QLog.i("AVManager", 1, String.format("onEndpointsUpdateInfo|eventid=%d", new Object[] { Integer.valueOf(paramInt) }));
+    if (this.a.jdField_a_of_type_Anii != null) {
+      this.a.jdField_a_of_type_Anii.a(paramInt, paramArrayOfString);
+    }
   }
+  
+  public void onEnterRoomComplete(int paramInt, String paramString)
+  {
+    QLog.i("AVManager", 1, "mRoomEventListener.onEnterRoomComplete| result = " + paramInt + paramString);
+    if (paramInt != 0) {
+      this.a.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl().stopTRAEService();
+    }
+    if (this.a.jdField_a_of_type_Anih != null) {
+      this.a.jdField_a_of_type_Anih.a(paramInt, paramString);
+    }
+  }
+  
+  public void onExitRoomComplete()
+  {
+    QLog.i("AVManager", 1, "mRoomEventListener.onExitRoomComplete");
+    this.a.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl().stopTRAEService();
+    if (this.a.jdField_a_of_type_Anii != null) {
+      this.a.jdField_a_of_type_Anii.a();
+    }
+  }
+  
+  public void onHwStateChangeNotify(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString) {}
+  
+  public void onPrivilegeDiffNotify(int paramInt) {}
+  
+  public void onRecvCustomData(AVRoomMulti.AVCustomData paramAVCustomData, String paramString) {}
+  
+  public void onRoomDisconnect(int paramInt, String paramString)
+  {
+    if (this.a.jdField_a_of_type_Anii != null) {
+      this.a.jdField_a_of_type_Anii.a(paramInt, paramString);
+    }
+  }
+  
+  public void onRoomEvent(int paramInt1, int paramInt2, Object paramObject) {}
+  
+  public void onSemiAutoRecvCameraVideo(String[] paramArrayOfString)
+  {
+    QLog.i("AVManager", 1, String.format("onSemiAutoRecvCameraVideo", new Object[0]));
+    if (this.a.jdField_a_of_type_Anii != null) {
+      this.a.jdField_a_of_type_Anii.a(paramArrayOfString);
+    }
+  }
+  
+  public void onSemiAutoRecvMediaFileVideo(String[] paramArrayOfString) {}
+  
+  public void onSemiAutoRecvScreenVideo(String[] paramArrayOfString) {}
+  
+  public void onSwitchRoomComplete(int paramInt, String paramString) {}
 }
 
 

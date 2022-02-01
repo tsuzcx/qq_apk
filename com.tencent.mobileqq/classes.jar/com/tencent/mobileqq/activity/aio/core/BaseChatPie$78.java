@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import amsw;
 import android.os.Message;
+import anvk;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.data.NoC2CExtensionInfo;
 import mqq.os.MqqHandler;
 
 class BaseChatPie$78
   implements Runnable
 {
-  BaseChatPie$78(BaseChatPie paramBaseChatPie, amsw paramamsw) {}
+  BaseChatPie$78(BaseChatPie paramBaseChatPie, anvk paramanvk) {}
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = this.val$fm.a(this.this$0.sessionInfo.curFriendUin, true);
-    if ((localExtensionInfo != null) && (localExtensionInfo.audioPanelType != -1) && (this.this$0.mAudioPanel != null)) {
-      this.this$0.uiHandler.obtainMessage(40, localExtensionInfo.audioPanelType, this.this$0.sessionInfo.curType).sendToTarget();
+    NoC2CExtensionInfo localNoC2CExtensionInfo = this.val$fm.a(this.this$0.sessionInfo.curFriendUin, this.this$0.sessionInfo.curType, true);
+    if ((localNoC2CExtensionInfo != null) && (localNoC2CExtensionInfo.audioPanelType != -1) && (this.this$0.mAudioPanel != null)) {
+      this.this$0.uiHandler.obtainMessage(40, localNoC2CExtensionInfo.audioPanelType, this.this$0.sessionInfo.curType).sendToTarget();
     }
   }
 }

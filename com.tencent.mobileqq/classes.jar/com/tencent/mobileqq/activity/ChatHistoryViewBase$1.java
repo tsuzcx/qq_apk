@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import aczw;
+import adqi;
 
 public class ChatHistoryViewBase$1
   implements Runnable
 {
-  public ChatHistoryViewBase$1(aczw paramaczw) {}
+  public ChatHistoryViewBase$1(adqi paramadqi) {}
   
   public void run()
   {

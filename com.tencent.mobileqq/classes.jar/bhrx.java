@@ -1,65 +1,46 @@
-import android.graphics.Bitmap;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.datamodel.Friend;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-
 public class bhrx
-  extends bhvm
+  extends bhro
 {
-  public bhrx(FriendChooser paramFriendChooser) {}
+  public static bhrx a;
+  private int a;
   
-  public int getCount()
+  static
   {
-    return this.a.b.size();
+    jdField_a_of_type_Bhrx = new bhrx();
   }
   
-  public Object getItem(int paramInt)
+  public void a(bhog parambhog)
   {
-    if ((paramInt >= 0) && (paramInt < this.a.b.size())) {
-      return this.a.b.get(paramInt);
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    if (i < 2) {
+      download(null, 0, parambhog, false);
     }
-    return null;
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public long getBID()
   {
-    Friend localFriend = (Friend)getItem(paramInt);
-    Object localObject;
-    if (paramView == null)
-    {
-      localObject = new bhsd();
-      paramView = this.a.getLayoutInflater().inflate(2131559287, null);
-      ((bhsd)localObject).a = ((ImageView)paramView.findViewById(2131366241));
-      paramView.setTag(localObject);
-    }
-    while (localFriend == null)
-    {
-      QLog.e("qqBaseActivity", 1, new Object[] { "FriendChooser rr == nul pos=", Integer.valueOf(paramInt) });
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      localObject = (bhsd)paramView.getTag();
-    }
-    if ((localFriend.d == null) || ("".equals(localFriend.d))) {
-      localFriend.d = bhvv.a(this.a.a(), localFriend.a);
-    }
-    Bitmap localBitmap = bhvs.a().a(localFriend.d);
-    if (localBitmap == null)
-    {
-      ((bhsd)localObject).a.setImageResource(2130840312);
-      localObject = ((bhsd)localObject).a;
-      bhvs.a().a(localFriend.d, new bhry(this, (ImageView)localObject));
-    }
-    for (;;)
-    {
-      break;
-      ((bhsd)localObject).a.setImageBitmap(localBitmap);
-    }
+    return 3L;
+  }
+  
+  protected String getRootDir()
+  {
+    return "tintconfig";
+  }
+  
+  public String getScid(int paramInt)
+  {
+    return getScidPrefix();
+  }
+  
+  protected String getScidPrefix()
+  {
+    return "theme_mapping_config_android";
+  }
+  
+  protected boolean isZip_KeepZip()
+  {
+    return false;
   }
 }
 

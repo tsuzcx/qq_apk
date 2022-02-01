@@ -1,17 +1,25 @@
-public class ymm
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+
+class ymm
+  implements yoo
 {
-  protected int a = 48000;
-  protected int b = 1;
-  protected int c = 1;
-  protected int d = 48000;
-  protected int e = 1;
-  protected int f = 1;
+  ymm(yml paramyml) {}
   
-  public void a() {}
-  
-  public byte[] a(int paramInt1, int paramInt2)
+  public void a()
   {
-    return null;
+    ykq.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocationCancel");
+  }
+  
+  public void a(TroopBarPOI paramTroopBarPOI)
+  {
+    ykq.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocation " + paramTroopBarPOI);
+    if (paramTroopBarPOI != null)
+    {
+      this.a.a.setLocation(paramTroopBarPOI.a());
+      return;
+    }
+    this.a.a.setLocation("None for test!!");
   }
 }
 

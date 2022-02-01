@@ -4,15 +4,15 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import atfg;
-import atfh;
-import atfi;
-import atfj;
-import atfk;
-import atfl;
-import atfm;
-import atfn;
-import bcef;
+import aujn;
+import aujo;
+import aujp;
+import aujq;
+import aujr;
+import aujs;
+import aujt;
+import auju;
+import bdla;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.kwstudio.office.base.IGlobal;
 import com.tencent.kwstudio.office.base.ILog;
@@ -77,7 +77,7 @@ public final class TdsReaderGlobal
     try
     {
       if (this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix == null) {
-        this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new atfg(null);
+        this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new aujn(null);
       }
       INetEngine.IBreakDownFix localIBreakDownFix = this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix;
       return localIBreakDownFix;
@@ -91,7 +91,7 @@ public final class TdsReaderGlobal
     {
       if (this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine == null)
       {
-        localObject1 = new HttpCommunicator(new atfi(null), 128);
+        localObject1 = new HttpCommunicator(new aujp(null), 128);
         ((HttpCommunicator)localObject1).start();
         this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine = new OldHttpEngine((HttpCommunicator)localObject1, true);
       }
@@ -265,7 +265,7 @@ public final class TdsReaderGlobal
     paramArrayOfObject.mPrioty = 1;
     paramArrayOfObject.mUseByteArrayPool = true;
     paramArrayOfObject.mExcuteTimeLimit = 5000L;
-    paramArrayOfObject.mCallback = new atfl(str1, (IHostInterface.IHttpListener)localObject, null);
+    paramArrayOfObject.mCallback = new aujs(str1, (IHostInterface.IHttpListener)localObject, null);
     Object localObject = getUserId();
     String str3 = ((TicketManagerImpl)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getRuntime().getManager(2)).getSkey((String)localObject);
     localObject = "uin=" + (String)localObject + ";skey=" + str3;
@@ -305,7 +305,7 @@ public final class TdsReaderGlobal
     localHttpNetReq.mUseByteArrayPool = true;
     localHttpNetReq.mTimeoutParam = jdField_a_of_type_ComTencentMobileqqTransfileRichMediaStrategy$OldEngineDPCProfile$TimeoutParam.clone();
     localHttpNetReq.mBreakDownFix = a();
-    localHttpNetReq.mCallback = new atfk(str1, paramArrayOfObject, null);
+    localHttpNetReq.mCallback = new aujr(str1, paramArrayOfObject, null);
     a().sendReq(localHttpNetReq);
   }
   
@@ -321,12 +321,12 @@ public final class TdsReaderGlobal
   
   public IGlobal createGlobal()
   {
-    return new atfh(this, null);
+    return new aujo(this, null);
   }
   
   public ILog createLog()
   {
-    return new atfj(null);
+    return new aujq(null);
   }
   
   public Object createRecyclerView(Context paramContext)
@@ -342,12 +342,12 @@ public final class TdsReaderGlobal
       ProtectedWebView localProtectedWebView = new ProtectedWebView((Context)localObject);
       if (paramIWebClient != null)
       {
-        localProtectedWebView.setWebChromeClient(new atfm(paramIWebClient, null));
+        localProtectedWebView.setWebChromeClient(new aujt(paramIWebClient, null));
         localObject = paramContext;
         if (paramContext == null) {
           localObject = this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
         }
-        localProtectedWebView.setWebViewClient(new atfn((Context)localObject, paramIWebClient, null));
+        localProtectedWebView.setWebViewClient(new auju((Context)localObject, paramIWebClient, null));
       }
       paramContext = localProtectedWebView.getX5WebViewExtension();
       if (paramContext != null)
@@ -404,7 +404,7 @@ public final class TdsReaderGlobal
     }
     for (;;)
     {
-      bcef.b(null, "dc00898", "", "", paramString1, paramString1, paramInt, 0, "", "", paramString2, "");
+      bdla.b(null, "dc00898", "", "", paramString1, paramString1, paramInt, 0, "", "", paramString2, "");
       return;
     }
   }

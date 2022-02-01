@@ -1,32 +1,55 @@
-import android.view.View;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.comic.VipComicHelper.1;
+import java.lang.ref.WeakReference;
+import mqq.app.MobileQQ;
 
 public class blqq
-  implements zwo
+  implements nuw
 {
-  private float jdField_a_of_type_Float = 0.8F;
-  private zwi jdField_a_of_type_Zwi = zwi.a(1);
-  private float jdField_b_of_type_Float = 0.2F;
-  private zwi jdField_b_of_type_Zwi = zwi.b(1);
+  public blqq(VipComicHelper.1 param1) {}
   
-  public void a(View paramView, float paramFloat)
+  public void loaded(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Zwi.a(paramView);
-    this.jdField_b_of_type_Zwi.a(paramView);
-    float f1 = Math.abs(paramFloat);
-    float f2 = this.jdField_a_of_type_Float;
-    f1 = (1.0F - f1) * this.jdField_b_of_type_Float + f2;
-    paramView.setScaleX(f1);
-    paramView.setScaleY(f1);
-    View localView1 = paramView.findViewById(2131380685);
-    View localView2 = paramView.findViewById(2131380699);
-    if (localView1 != null) {
-      localView1.setAlpha(Math.abs(paramFloat));
+    int j = 0;
+    paramString = (QQAppInterface)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramString == null) {
+      return;
     }
-    if (localView2 != null) {
-      localView2.setAlpha(Math.abs(paramFloat));
+    if (QLog.isColorLevel()) {
+      QLog.d("ComicHelper", 2, "Finish update offline pkg. code = " + paramInt + ", entry = " + this.a.jdField_a_of_type_Int);
     }
-    bmbx.a("AECircleScaleTransformer", "position: " + paramFloat + " view: " + paramView.toString());
+    switch (paramInt)
+    {
+    }
+    for (int i = 0;; i = 1)
+    {
+      Object localObject = paramString.getApplication().getSharedPreferences("vip_comic_file", 4);
+      int k = ((SharedPreferences)localObject).getInt("totalOfflinePkgDownloadCount", 0);
+      if (i != 0) {
+        j = k + 1;
+      }
+      if (j != k) {
+        ((SharedPreferences)localObject).edit().putInt("totalOfflinePkgDownloadCount", j).apply();
+      }
+      if (i == 0) {
+        break;
+      }
+      long l = NetConnInfoCenter.getServerTime();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramInt + "|");
+      ((StringBuilder)localObject).append(j + "|");
+      ((StringBuilder)localObject).append(l + "|");
+      ((StringBuilder)localObject).append("|||||");
+      bdka.a(paramString, "sendtdbank|b_sng_qqvip_qqcomic|offlinePkgDownload", ((StringBuilder)localObject).toString(), true);
+      return;
+    }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

@@ -1,7 +1,6 @@
 package cooperation.qzone;
 
 import Override;
-import amtj;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -19,7 +18,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import bhlx;
+import anvx;
+import biwn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -110,7 +110,7 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
     if (localIntent == null)
     {
       QLog.w("QZoneLiveVideoBaseDownLoadActivty", 1, "intent is null");
-      Toast.makeText(getApplicationContext(), amtj.a(2131711058), 1).show();
+      Toast.makeText(getApplicationContext(), anvx.a(2131711405), 1).show();
       QzoneVideoBeaconReport.reportVideoEvent(this.account, "live_video_entry", "6", null);
       LpReportInfo_dc01500.reportLaunch("qzone_live_video_plugin_hack.apk", "", 0.0D, 3, "0");
       finish();
@@ -121,7 +121,7 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
     if ((3 != this.mMode) && (1 != this.mMode))
     {
       QLog.w("QZoneLiveVideoBaseDownLoadActivty", 1, "mode invalid, mMode=" + this.mMode);
-      Toast.makeText(getApplicationContext(), amtj.a(2131711060) + this.mMode, 1).show();
+      Toast.makeText(getApplicationContext(), anvx.a(2131711407) + this.mMode, 1).show();
       QzoneVideoBeaconReport.reportVideoEvent(this.account, "live_video_entry", "6", null);
       LpReportInfo_dc01500.reportLaunch("qzone_live_video_plugin_hack.apk", "", (System.currentTimeMillis() - this.mLaunchTime) / 1000.0D, 3, this.mMode + "");
       finish();
@@ -130,7 +130,7 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
     if (!NetworkUtil.isNetworkAvailable(getApplicationContext()))
     {
       QLog.w("QZoneLiveVideoBaseDownLoadActivty", 1, "onCreate, no network available");
-      QQToast.a(this, amtj.a(2131711064), 0).a();
+      QQToast.a(this, anvx.a(2131711411), 0).a();
       if (this.mMode == 1) {
         QzoneVideoBeaconReport.reportVideoEvent(this.account, "live_video_entry", "2", null);
       }
@@ -141,7 +141,7 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
     AppRuntime localAppRuntime = getAppRuntime();
     if ((localAppRuntime != null) && (((QQAppInterface)localAppRuntime).isVideoChatting()))
     {
-      QQToast.a(this, amtj.a(2131711068), 0).a();
+      QQToast.a(this, anvx.a(2131711415), 0).a();
       if (this.mMode == 1) {
         QzoneVideoBeaconReport.reportVideoEvent(this.account, "live_video_entry", "7", null);
       }
@@ -257,11 +257,11 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
   {
     this.mWaitingView.setVisibility(8);
     this.mDownloadRoot.setVisibility(0);
-    this.mTxtPluginSize = ((TextView)findViewById(2131372777));
-    this.mDownloadingBar = ((ProgressBar)findViewById(2131365754));
-    this.mBtnAction = ((TextView)findViewById(2131363742));
-    this.mBtnClose = ((ImageView)findViewById(2131363794));
-    this.mLiveVideoImgIv = ((ImageView)findViewById(2131375382));
+    this.mTxtPluginSize = ((TextView)findViewById(2131372970));
+    this.mDownloadingBar = ((ProgressBar)findViewById(2131365849));
+    this.mBtnAction = ((TextView)findViewById(2131363813));
+    this.mBtnClose = ((ImageView)findViewById(2131363866));
+    this.mLiveVideoImgIv = ((ImageView)findViewById(2131375624));
     Boolean localBoolean = Boolean.valueOf(false);
     if (getIntent() != null) {
       localBoolean = Boolean.valueOf(getIntent().getBooleanExtra("isEcLive", false));
@@ -273,7 +273,7 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
       if (paramInt != 0) {
         break label239;
       }
-      this.mBtnAction.setText(amtj.a(2131711055));
+      this.mBtnAction.setText(anvx.a(2131711402));
     }
     for (;;)
     {
@@ -298,7 +298,7 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
       }
       break;
       label239:
-      this.mBtnAction.setText(amtj.a(2131711062));
+      this.mBtnAction.setText(anvx.a(2131711409));
     }
   }
   
@@ -344,7 +344,7 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
       if (!TextUtils.isEmpty(str1)) {
         break;
       }
-      QQToast.a(this, amtj.a(2131711048), 0).a();
+      QQToast.a(this, anvx.a(2131711395), 0).a();
       LpReportInfo_dc01500.reportLaunch("qzone_live_video_plugin_hack.apk", "", (System.currentTimeMillis() - this.mLaunchTime) / 1000.0D, 6, this.mMode + "");
       doFinish();
       return;
@@ -399,10 +399,10 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
     for (str2 = "com.qzone.adapter.livevideo.ECLiveVideoActivity";; str2 = str3)
     {
       QzoneLiveVideoPluginProxyActivity.launchPluginActivityForResult(this, str1, localIntent, -1, str2);
-      bhlx.a(BaseApplicationImpl.getContext(), false, 5);
+      biwn.a(BaseApplicationImpl.getContext(), false, 5);
       return;
       label704:
-      QQToast.a(this, amtj.a(2131711046), 0).a();
+      QQToast.a(this, anvx.a(2131711393), 0).a();
       doFinish();
     }
   }
@@ -430,9 +430,9 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
     if (this.mSystemBarComp != null) {
       this.mSystemBarComp.mDrawStatus = false;
     }
-    setContentView(2131562321);
-    this.mDownloadRoot = ((ViewGroup)findViewById(2131365762));
-    this.mWaitingView = findViewById(2131380977);
+    setContentView(2131562389);
+    this.mDownloadRoot = ((ViewGroup)findViewById(2131365860));
+    this.mWaitingView = findViewById(2131381329);
   }
   
   public void onDestroy()
@@ -548,12 +548,12 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
     }
     if (paramBoolean1)
     {
-      this.mBtnAction.setText(amtj.a(2131711054));
+      this.mBtnAction.setText(anvx.a(2131711401));
       return;
     }
     if (paramBoolean2)
     {
-      this.mBtnAction.setText(amtj.a(2131711065));
+      this.mBtnAction.setText(anvx.a(2131711412));
       return;
     }
     this.progress %= 3;
@@ -564,11 +564,11 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
     {
       this.progress += 1;
       return;
-      this.mBtnAction.setText(amtj.a(2131711047));
+      this.mBtnAction.setText(anvx.a(2131711394));
       continue;
-      this.mBtnAction.setText(amtj.a(2131711056));
+      this.mBtnAction.setText(anvx.a(2131711403));
       continue;
-      this.mBtnAction.setText(amtj.a(2131711059));
+      this.mBtnAction.setText(anvx.a(2131711406));
     }
   }
   

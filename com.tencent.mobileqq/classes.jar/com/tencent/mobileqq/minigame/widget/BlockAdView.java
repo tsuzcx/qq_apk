@@ -25,6 +25,7 @@ import java.util.List;
 public class BlockAdView
   extends RelativeLayout
 {
+  public static final String AD_REF_ID = "biz_src_miniappD";
   private static final String TAG = "[minigame]BlockAdView";
   private AnimatorSet animatorSet;
   private ArrayList<BlockAdView.SingleBlockAdView> blockList = new ArrayList();
@@ -220,7 +221,7 @@ public class BlockAdView
       this.mLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
       addView(this.mLinearLayout);
       this.mAdIcon = new ImageView(paramContext);
-      this.mAdIcon.setImageDrawable(getResources().getDrawable(2130841040));
+      this.mAdIcon.setImageDrawable(getResources().getDrawable(2130841062));
       paramContext = new RelativeLayout.LayoutParams(ViewUtils.dpToPx(19.299999F), ViewUtils.dpToPx(11.3F));
       paramContext.addRule(9);
       paramContext.addRule(10);
@@ -313,10 +314,10 @@ public class BlockAdView
   {
     if (paramBoolean)
     {
-      setBackgroundDrawable(getResources().getDrawable(2130841042));
+      setBackgroundDrawable(getResources().getDrawable(2130841064));
       return;
     }
-    setBackgroundColor(getResources().getColor(2131166636));
+    setBackgroundColor(getResources().getColor(2131166650));
   }
   
   public void clearBlockAdAnimation()

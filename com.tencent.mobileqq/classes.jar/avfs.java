@@ -1,22 +1,8 @@
-import com.tencent.mobileqq.app.BaseActivity;
-
-class avfs
-  extends amsu
+public abstract interface avfs
 {
-  avfs(avfq paramavfq) {}
+  public abstract void a(int paramInt);
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    super.onUpdateDelFriend(paramBoolean, paramObject);
-    paramObject = String.valueOf(paramObject);
-    if ((paramBoolean) && (paramObject.equals(avfq.a(this.a).a())))
-    {
-      avfq.a(avfq.a(this.a), 0, String.valueOf(paramObject));
-      if (avfq.a(this.a) != null) {
-        avfq.a(this.a).finish();
-      }
-    }
-  }
+  public abstract void a(int paramInt1, float paramFloat, int paramInt2);
 }
 
 

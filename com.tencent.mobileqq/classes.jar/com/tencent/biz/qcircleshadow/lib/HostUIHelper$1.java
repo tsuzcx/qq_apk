@@ -2,9 +2,11 @@ package com.tencent.biz.qcircleshadow.lib;
 
 import android.app.Activity;
 import android.app.Application.ActivityLifecycleCallbacks;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -15,11 +17,12 @@ final class HostUIHelper$1
   {
     if (HostUIHelper.access$000(paramActivity))
     {
-      paramBundle = HostUIHelper.access$100().iterator();
+      HostUIHelper.access$102(new WeakReference(paramActivity));
+      paramBundle = HostUIHelper.access$200().iterator();
       while (paramBundle.hasNext()) {
         ((HostUIHelper.HostEnvironmentLifeCycle)paramBundle.next()).onEnvironmentCreated(paramActivity);
       }
-      HostUIHelper.access$200(paramActivity);
+      HostUIHelper.access$300(paramActivity);
     }
     QLog.d("HostUIHelper", 1, "onActivityCreated");
   }
@@ -28,13 +31,16 @@ final class HostUIHelper$1
   {
     if (HostUIHelper.access$000(paramActivity))
     {
-      Iterator localIterator = HostUIHelper.access$100().iterator();
+      Iterator localIterator = HostUIHelper.access$200().iterator();
       while (localIterator.hasNext()) {
         ((HostUIHelper.HostEnvironmentLifeCycle)localIterator.next()).onEnvironmentDestroy(paramActivity);
       }
+      if ((HostUIHelper.access$100() != null) && (HostUIHelper.access$100().get() != null) && (paramActivity.hashCode() == ((Context)HostUIHelper.access$100().get()).hashCode())) {
+        HostUIHelper.access$500();
+      }
     }
-    if (HostUIHelper.access$300() == paramActivity) {
-      HostUIHelper.access$302(null);
+    if ((HostUIHelper.isContextShadowActivity(paramActivity)) && (HostUIHelper.access$400() != null) && (HostUIHelper.access$400().get() == paramActivity)) {
+      HostUIHelper.access$402(null);
     }
     QLog.d("HostUIHelper", 1, "onActivityDestroyed");
   }
@@ -43,7 +49,7 @@ final class HostUIHelper$1
   {
     if (HostUIHelper.access$000(paramActivity))
     {
-      Iterator localIterator = HostUIHelper.access$100().iterator();
+      Iterator localIterator = HostUIHelper.access$200().iterator();
       while (localIterator.hasNext()) {
         ((HostUIHelper.HostEnvironmentLifeCycle)localIterator.next()).onEnvironmentPause(paramActivity);
       }
@@ -58,12 +64,14 @@ final class HostUIHelper$1
   {
     if (HostUIHelper.access$000(paramActivity))
     {
-      Iterator localIterator = HostUIHelper.access$100().iterator();
+      Iterator localIterator = HostUIHelper.access$200().iterator();
       while (localIterator.hasNext()) {
         ((HostUIHelper.HostEnvironmentLifeCycle)localIterator.next()).onEnvironmentResume(paramActivity);
       }
     }
-    HostUIHelper.access$302(paramActivity);
+    if (HostUIHelper.isContextShadowActivity(paramActivity)) {
+      HostUIHelper.access$402(new WeakReference(paramActivity));
+    }
     QLog.d("HostUIHelper", 1, "onActivityResumed");
   }
   
@@ -73,7 +81,7 @@ final class HostUIHelper$1
   {
     if (HostUIHelper.access$000(paramActivity))
     {
-      Iterator localIterator = HostUIHelper.access$100().iterator();
+      Iterator localIterator = HostUIHelper.access$200().iterator();
       while (localIterator.hasNext()) {
         ((HostUIHelper.HostEnvironmentLifeCycle)localIterator.next()).onEnvironmentStarted(paramActivity);
       }
@@ -85,7 +93,7 @@ final class HostUIHelper$1
   {
     if (HostUIHelper.access$000(paramActivity))
     {
-      Iterator localIterator = HostUIHelper.access$100().iterator();
+      Iterator localIterator = HostUIHelper.access$200().iterator();
       while (localIterator.hasNext()) {
         ((HostUIHelper.HostEnvironmentLifeCycle)localIterator.next()).onEnvironmentStop(paramActivity);
       }
@@ -95,7 +103,7 @@ final class HostUIHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.HostUIHelper.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,31 @@
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-public class bglt
-  implements TVK_IMediaPlayer.OnCompletionListener
+class bglt
+  extends ntf
 {
-  public bglt(HealthBusinessPlugin paramHealthBusinessPlugin) {}
+  bglt(bgls parambgls, bgma parambgma) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HealthBusinessPlugin", 2, "Completion video000");
+    paramBundle = new cmd0x934.RspBody();
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      this.jdField_a_of_type_Bgma.a(paramInt, paramBundle);
+      return;
     }
-    paramTVK_IMediaPlayer.seekTo(0);
-    if (QLog.isColorLevel()) {
-      QLog.d("HealthBusinessPlugin", 2, "Completion video");
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(paramArrayOfByte));
+        }
+      }
     }
   }
 }

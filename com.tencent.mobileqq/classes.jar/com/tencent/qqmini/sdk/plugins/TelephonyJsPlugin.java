@@ -30,171 +30,201 @@ public class TelephonyJsPlugin
   {
     try
     {
-      paramString1 = new JSONObject(paramString2);
-      Object localObject = paramString1.optString("firstName");
-      String str30 = paramString1.optString("middleName");
-      String str29 = paramString1.optString("lastName");
-      String str1 = paramString1.optString("nickName");
-      String str20 = paramString1.optString("photoFilePath");
-      String str22 = paramString1.optString("remark");
-      String str23 = paramString1.optString("mobilePhoneNumber");
-      paramString1.optString("weChatNumber");
-      String str13 = paramString1.optString("addressCountry");
-      String str14 = paramString1.optString("addressState");
-      String str15 = paramString1.optString("addressCity");
-      String str16 = paramString1.optString("addressStreet");
-      String str17 = paramString1.optString("addressPostalCode");
-      String str24 = paramString1.optString("organization");
-      String str25 = paramString1.optString("title");
-      String str18 = paramString1.optString("workFaxNumber");
-      String str26 = paramString1.optString("workPhoneNumber");
-      String str21 = paramString1.optString("hostNumber");
-      String str27 = paramString1.optString("email");
-      String str2 = paramString1.optString("url");
-      String str7 = paramString1.optString("workAddressCountry");
-      String str8 = paramString1.optString("workAddressState");
-      String str9 = paramString1.optString("workAddressCity");
-      String str10 = paramString1.optString("workAddressStreet");
-      String str11 = paramString1.optString("workAddressPostalCode");
-      String str19 = paramString1.optString("homeFaxNumber");
-      String str28 = paramString1.optString("homePhoneNumber");
-      String str3 = paramString1.optString("homeAddressCountry");
-      String str4 = paramString1.optString("homeAddressState");
-      String str5 = paramString1.optString("homeAddressCity");
-      String str6 = paramString1.optString("homeAddressStreet");
-      String str12 = paramString1.optString("homeAddressPostalCode");
+      Object localObject2 = new JSONObject(paramString2);
+      Object localObject3 = ((JSONObject)localObject2).optString("firstName");
+      String str1 = ((JSONObject)localObject2).optString("middleName");
+      String str2 = ((JSONObject)localObject2).optString("lastName");
+      paramString2 = ((JSONObject)localObject2).optString("nickName");
+      String str3 = ((JSONObject)localObject2).optString("remark");
+      String str4 = ((JSONObject)localObject2).optString("organization");
+      String str5 = ((JSONObject)localObject2).optString("title");
+      String str6 = ((JSONObject)localObject2).optString("email");
+      Object localObject1 = ((JSONObject)localObject2).optString("url");
       if (paramBoolean)
       {
-        paramString2 = new Intent("android.intent.action.INSERT");
-        paramString2.setType("vnd.android.cursor.dir/raw_contact");
+        paramString1 = new Intent("android.intent.action.INSERT");
+        paramString1.setType("vnd.android.cursor.dir/raw_contact");
       }
       for (;;)
       {
-        if ((!TextUtils.isEmpty((CharSequence)localObject)) || (!TextUtils.isEmpty(str30)) || (!TextUtils.isEmpty(str29)))
+        parseName((String)localObject3, str1, str2, paramString1);
+        parsePhoneNumber((JSONObject)localObject2, paramString1);
+        paramString1.putExtra("notes", str3);
+        paramString1.putExtra("company", str4);
+        paramString1.putExtra("job_title", str5);
+        paramString1.putExtra("email", str6);
+        localObject3 = new ArrayList();
+        parseNumber((JSONObject)localObject2, (ArrayList)localObject3);
+        processAddress((JSONObject)localObject2, (ArrayList)localObject3);
+        processWorkAddress((JSONObject)localObject2, (ArrayList)localObject3);
+        processHomeAddress((JSONObject)localObject2, (ArrayList)localObject3);
+        if (!TextUtils.isEmpty((CharSequence)localObject1))
         {
-          paramString1 = (String)localObject;
-          if (!TextUtils.isEmpty(str30)) {
-            paramString1 = (String)localObject + " " + str30;
-          }
-          localObject = paramString1;
-          if (!TextUtils.isEmpty(str29)) {
-            localObject = paramString1 + " " + str29;
-          }
-          paramString2.putExtra("name", ((String)localObject).trim());
+          localObject2 = new ContentValues();
+          ((ContentValues)localObject2).put("mimetype", "vnd.android.cursor.item/website");
+          ((ContentValues)localObject2).put("data2", Integer.valueOf(2));
+          ((ContentValues)localObject2).put("data3", "网址");
+          ((ContentValues)localObject2).put("data1", (String)localObject1);
+          ((ArrayList)localObject3).add(localObject2);
         }
-        if (!TextUtils.isEmpty(str23))
+        if (!TextUtils.isEmpty(paramString2))
         {
-          paramString2.putExtra("phone", str23);
-          paramString2.putExtra("phone_type", "手机");
+          localObject1 = new ContentValues();
+          ((ContentValues)localObject1).put("mimetype", "vnd.android.cursor.item/nickname");
+          ((ContentValues)localObject1).put("data2", Integer.valueOf(0));
+          ((ContentValues)localObject1).put("data3", "昵称");
+          ((ContentValues)localObject1).put("data1", paramString2);
+          ((ArrayList)localObject3).add(localObject1);
         }
-        if (!TextUtils.isEmpty(str28))
-        {
-          paramString2.putExtra("secondary_phone", str28);
-          paramString2.putExtra("secondary_phone_type", "住宅");
-        }
-        if (!TextUtils.isEmpty(str26))
-        {
-          paramString2.putExtra("tertiary_phone", str26);
-          paramString2.putExtra("tertiary_phone_type", "工作");
-        }
-        paramString2.putExtra("notes", str22);
-        paramString2.putExtra("company", str24);
-        paramString2.putExtra("job_title", str25);
-        paramString2.putExtra("email", str27);
-        paramString1 = new ArrayList();
-        if (!TextUtils.isEmpty(str21))
-        {
-          localObject = new ContentValues();
-          ((ContentValues)localObject).put("mimetype", "vnd.android.cursor.item/phone_v2");
-          ((ContentValues)localObject).put("data2", Integer.valueOf(0));
-          ((ContentValues)localObject).put("data3", "手机");
-          ((ContentValues)localObject).put("data1", str21);
-          paramString1.add(localObject);
-        }
-        if (!TextUtils.isEmpty(str20))
-        {
-          localObject = new ContentValues();
-          ((ContentValues)localObject).put("mimetype", "vnd.android.cursor.item/photo");
-          ((ContentValues)localObject).put("data15", str20);
-          paramString1.add(localObject);
-        }
-        if (!TextUtils.isEmpty(str19))
-        {
-          localObject = new ContentValues();
-          ((ContentValues)localObject).put("mimetype", "vnd.android.cursor.item/phone_v2");
-          ((ContentValues)localObject).put("data2", Integer.valueOf(0));
-          ((ContentValues)localObject).put("data3", "住宅传真");
-          ((ContentValues)localObject).put("data1", str19);
-          paramString1.add(localObject);
-        }
-        if (!TextUtils.isEmpty(str18))
-        {
-          localObject = new ContentValues();
-          ((ContentValues)localObject).put("mimetype", "vnd.android.cursor.item/phone_v2");
-          ((ContentValues)localObject).put("data2", Integer.valueOf(0));
-          ((ContentValues)localObject).put("data3", "单位传真");
-          ((ContentValues)localObject).put("data1", str18);
-          paramString1.add(localObject);
-        }
-        if ((!TextUtils.isEmpty(str13)) || (!TextUtils.isEmpty(str14)) || (!TextUtils.isEmpty(str15)) || (!TextUtils.isEmpty(str16)) || (!TextUtils.isEmpty(str17)))
-        {
-          localObject = new ContentValues();
-          ((ContentValues)localObject).put("mimetype", "vnd.android.cursor.item/postal-address_v2");
-          ((ContentValues)localObject).put("data2", Integer.valueOf(1));
-          ((ContentValues)localObject).put("data3", "住宅");
-          ((ContentValues)localObject).put("data1", str13 + " " + str14 + " " + str15 + " " + str16 + " " + str17);
-          paramString1.add(localObject);
-        }
-        if ((!TextUtils.isEmpty(str7)) || (!TextUtils.isEmpty(str8)) || (!TextUtils.isEmpty(str9)) || (!TextUtils.isEmpty(str10)) || (!TextUtils.isEmpty(str11)))
-        {
-          localObject = new ContentValues();
-          ((ContentValues)localObject).put("mimetype", "vnd.android.cursor.item/postal-address_v2");
-          ((ContentValues)localObject).put("data2", Integer.valueOf(2));
-          ((ContentValues)localObject).put("data3", "单位");
-          ((ContentValues)localObject).put("data1", str7 + " " + str8 + " " + str9 + " " + str10 + " " + str11);
-          paramString1.add(localObject);
-        }
-        if ((!TextUtils.isEmpty(str3)) || (!TextUtils.isEmpty(str4)) || (!TextUtils.isEmpty(str5)) || (!TextUtils.isEmpty(str6)) || (!TextUtils.isEmpty(str12)))
-        {
-          localObject = new ContentValues();
-          ((ContentValues)localObject).put("mimetype", "vnd.android.cursor.item/postal-address_v2");
-          ((ContentValues)localObject).put("data2", Integer.valueOf(1));
-          ((ContentValues)localObject).put("data3", "住宅");
-          ((ContentValues)localObject).put("data1", str3 + " " + str4 + " " + str5 + " " + str6 + " " + str12);
-          paramString1.add(localObject);
-        }
-        if (!TextUtils.isEmpty(str2))
-        {
-          localObject = new ContentValues();
-          ((ContentValues)localObject).put("mimetype", "vnd.android.cursor.item/website");
-          ((ContentValues)localObject).put("data2", Integer.valueOf(2));
-          ((ContentValues)localObject).put("data3", "网址");
-          ((ContentValues)localObject).put("data1", str2);
-          paramString1.add(localObject);
-        }
-        if (!TextUtils.isEmpty(str1))
-        {
-          localObject = new ContentValues();
-          ((ContentValues)localObject).put("mimetype", "vnd.android.cursor.item/nickname");
-          ((ContentValues)localObject).put("data2", Integer.valueOf(0));
-          ((ContentValues)localObject).put("data3", "昵称");
-          ((ContentValues)localObject).put("data1", str1);
-          paramString1.add(localObject);
-        }
-        paramString2.putParcelableArrayListExtra("data", paramString1);
+        paramString1.putParcelableArrayListExtra("data", (ArrayList)localObject3);
         if (this.mMiniAppContext.getAttachedActivity() == null) {
           break;
         }
-        this.mMiniAppContext.getAttachedActivity().startActivity(paramString2);
+        this.mMiniAppContext.getAttachedActivity().startActivity(paramString1);
         return;
-        paramString2 = new Intent("android.intent.action.INSERT_OR_EDIT");
-        paramString2.setType("vnd.android.cursor.item/contact");
+        paramString1 = new Intent("android.intent.action.INSERT_OR_EDIT");
+        paramString1.setType("vnd.android.cursor.item/contact");
       }
       return;
     }
     catch (Throwable paramString1)
     {
       QMLog.e("TelephonyJsPlugin", paramString1.getMessage(), paramString1);
+    }
+  }
+  
+  private void parseName(String paramString1, String paramString2, String paramString3, Intent paramIntent)
+  {
+    if ((!TextUtils.isEmpty(paramString1)) || (!TextUtils.isEmpty(paramString2)) || (!TextUtils.isEmpty(paramString3)))
+    {
+      String str = paramString1;
+      if (!TextUtils.isEmpty(paramString2)) {
+        str = paramString1 + " " + paramString2;
+      }
+      paramString1 = str;
+      if (!TextUtils.isEmpty(paramString3)) {
+        paramString1 = str + " " + paramString3;
+      }
+      paramIntent.putExtra("name", paramString1.trim());
+    }
+  }
+  
+  private void parseNumber(JSONObject paramJSONObject, ArrayList<ContentValues> paramArrayList)
+  {
+    Object localObject2 = paramJSONObject.optString("hostNumber");
+    Object localObject1 = paramJSONObject.optString("photoFilePath");
+    String str = paramJSONObject.optString("workFaxNumber");
+    paramJSONObject = paramJSONObject.optString("homeFaxNumber");
+    if (!TextUtils.isEmpty((CharSequence)localObject2))
+    {
+      ContentValues localContentValues = new ContentValues();
+      localContentValues.put("mimetype", "vnd.android.cursor.item/phone_v2");
+      localContentValues.put("data2", Integer.valueOf(0));
+      localContentValues.put("data3", "手机");
+      localContentValues.put("data1", (String)localObject2);
+      paramArrayList.add(localContentValues);
+    }
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      localObject2 = new ContentValues();
+      ((ContentValues)localObject2).put("mimetype", "vnd.android.cursor.item/photo");
+      ((ContentValues)localObject2).put("data15", (String)localObject1);
+      paramArrayList.add(localObject2);
+    }
+    if (!TextUtils.isEmpty(paramJSONObject))
+    {
+      localObject1 = new ContentValues();
+      ((ContentValues)localObject1).put("mimetype", "vnd.android.cursor.item/phone_v2");
+      ((ContentValues)localObject1).put("data2", Integer.valueOf(0));
+      ((ContentValues)localObject1).put("data3", "住宅传真");
+      ((ContentValues)localObject1).put("data1", paramJSONObject);
+      paramArrayList.add(localObject1);
+    }
+    if (!TextUtils.isEmpty(str))
+    {
+      paramJSONObject = new ContentValues();
+      paramJSONObject.put("mimetype", "vnd.android.cursor.item/phone_v2");
+      paramJSONObject.put("data2", Integer.valueOf(0));
+      paramJSONObject.put("data3", "单位传真");
+      paramJSONObject.put("data1", str);
+      paramArrayList.add(paramJSONObject);
+    }
+  }
+  
+  private void parsePhoneNumber(JSONObject paramJSONObject, Intent paramIntent)
+  {
+    String str1 = paramJSONObject.optString("mobilePhoneNumber");
+    String str2 = paramJSONObject.optString("workPhoneNumber");
+    paramJSONObject = paramJSONObject.optString("homePhoneNumber");
+    if (!TextUtils.isEmpty(str1))
+    {
+      paramIntent.putExtra("phone", str1);
+      paramIntent.putExtra("phone_type", "手机");
+    }
+    if (!TextUtils.isEmpty(paramJSONObject))
+    {
+      paramIntent.putExtra("secondary_phone", paramJSONObject);
+      paramIntent.putExtra("secondary_phone_type", "住宅");
+    }
+    if (!TextUtils.isEmpty(str2))
+    {
+      paramIntent.putExtra("tertiary_phone", str2);
+      paramIntent.putExtra("tertiary_phone_type", "工作");
+    }
+  }
+  
+  private void processAddress(JSONObject paramJSONObject, ArrayList<ContentValues> paramArrayList)
+  {
+    paramJSONObject.optString("weChatNumber");
+    String str1 = paramJSONObject.optString("addressCountry");
+    String str2 = paramJSONObject.optString("addressState");
+    String str3 = paramJSONObject.optString("addressCity");
+    String str4 = paramJSONObject.optString("addressStreet");
+    paramJSONObject = paramJSONObject.optString("addressPostalCode");
+    if ((!TextUtils.isEmpty(str1)) || (!TextUtils.isEmpty(str2)) || (!TextUtils.isEmpty(str3)) || (!TextUtils.isEmpty(str4)) || (!TextUtils.isEmpty(paramJSONObject)))
+    {
+      ContentValues localContentValues = new ContentValues();
+      localContentValues.put("mimetype", "vnd.android.cursor.item/postal-address_v2");
+      localContentValues.put("data2", Integer.valueOf(1));
+      localContentValues.put("data3", "住宅");
+      localContentValues.put("data1", str1 + " " + str2 + " " + str3 + " " + str4 + " " + paramJSONObject);
+      paramArrayList.add(localContentValues);
+    }
+  }
+  
+  private void processHomeAddress(JSONObject paramJSONObject, ArrayList<ContentValues> paramArrayList)
+  {
+    String str1 = paramJSONObject.optString("homeAddressCountry");
+    String str2 = paramJSONObject.optString("homeAddressState");
+    String str3 = paramJSONObject.optString("homeAddressCity");
+    String str4 = paramJSONObject.optString("homeAddressStreet");
+    paramJSONObject = paramJSONObject.optString("homeAddressPostalCode");
+    if ((!TextUtils.isEmpty(str1)) || (!TextUtils.isEmpty(str2)) || (!TextUtils.isEmpty(str3)) || (!TextUtils.isEmpty(str4)) || (!TextUtils.isEmpty(paramJSONObject)))
+    {
+      ContentValues localContentValues = new ContentValues();
+      localContentValues.put("mimetype", "vnd.android.cursor.item/postal-address_v2");
+      localContentValues.put("data2", Integer.valueOf(1));
+      localContentValues.put("data3", "住宅");
+      localContentValues.put("data1", str1 + " " + str2 + " " + str3 + " " + str4 + " " + paramJSONObject);
+      paramArrayList.add(localContentValues);
+    }
+  }
+  
+  private void processWorkAddress(JSONObject paramJSONObject, ArrayList<ContentValues> paramArrayList)
+  {
+    String str1 = paramJSONObject.optString("workAddressCountry");
+    String str2 = paramJSONObject.optString("workAddressState");
+    String str3 = paramJSONObject.optString("workAddressCity");
+    String str4 = paramJSONObject.optString("workAddressStreet");
+    paramJSONObject = paramJSONObject.optString("workAddressPostalCode");
+    if ((!TextUtils.isEmpty(str1)) || (!TextUtils.isEmpty(str2)) || (!TextUtils.isEmpty(str3)) || (!TextUtils.isEmpty(str4)) || (!TextUtils.isEmpty(paramJSONObject)))
+    {
+      ContentValues localContentValues = new ContentValues();
+      localContentValues.put("mimetype", "vnd.android.cursor.item/postal-address_v2");
+      localContentValues.put("data2", Integer.valueOf(2));
+      localContentValues.put("data3", "单位");
+      localContentValues.put("data1", str1 + " " + str2 + " " + str3 + " " + str4 + " " + paramJSONObject);
+      paramArrayList.add(localContentValues);
     }
   }
   

@@ -4,18 +4,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import bgxy;
+import biiq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.transfile.dns.InnerDns;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
 import com.tencent.qphone.base.util.QLog;
-import nko;
+import nro;
 
 public class SwiftWebAccelerator$5
   implements Runnable
 {
-  public SwiftWebAccelerator$5(bgxy parambgxy, long paramLong, Bundle paramBundle) {}
+  public SwiftWebAccelerator$5(biiq parambiiq, long paramLong, Bundle paramBundle) {}
   
   public void run()
   {
@@ -25,17 +25,17 @@ public class SwiftWebAccelerator$5
     InnerDns.getInstance();
     QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_LoadConfigs:init inner-dns cost " + (l - this.jdField_a_of_type_Long) + "ms.");
     l = System.currentTimeMillis();
-    nko localnko = nko.a(false);
-    localnko.a("https://www.qq.com/", "foo.bar");
-    localnko.a("skey");
-    localnko.a("pskey");
-    localnko.a("pt4_token");
-    localnko.a("a1");
-    localnko.a("a2");
-    localnko.b("https://www.qq.com/");
-    localnko.a();
-    localnko.b();
-    localnko.e();
+    nro localnro = nro.a(false);
+    localnro.a("https://www.qq.com/", "foo.bar");
+    localnro.a("skey");
+    localnro.a("pskey");
+    localnro.a("pt4_token");
+    localnro.a("a1");
+    localnro.a("a2");
+    localnro.b("https://www.qq.com/");
+    localnro.a();
+    localnro.b();
+    localnro.e();
     QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_LoadConfigs:load domain white list config, cost " + (System.currentTimeMillis() - l) + "ms.");
     l = System.currentTimeMillis();
     if (WebAccelerateHelper.getInstance().isPreGetKey()) {

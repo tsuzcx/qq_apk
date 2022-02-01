@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.contacts.base;
 
-import ainq;
+import ajjf;
 
 public class ContactsViewController$8
   implements Runnable
 {
-  public ContactsViewController$8(ainq paramainq) {}
+  public ContactsViewController$8(ajjf paramajjf) {}
   
   public void run()
   {
-    ainq.a(this.this$0, false, false);
+    ajjf.a(this.this$0, false, false);
   }
 }
 

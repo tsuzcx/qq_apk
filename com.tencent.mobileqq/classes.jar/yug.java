@@ -1,16 +1,39 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView;
+import android.graphics.Matrix;
+import android.graphics.Path;
+import java.util.LinkedList;
+import java.util.List;
 
 public class yug
-  implements ValueAnimator.AnimatorUpdateListener
+  extends yuc
 {
-  public yug(RotateCircleImageView paramRotateCircleImageView) {}
+  public Path a;
+  List<Integer> a;
+  public int b;
+  List<Integer> b;
+  public int c;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public yug(Path paramPath, int paramInt)
   {
-    RotateCircleImageView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.a.invalidate();
+    super(paramInt);
+    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
+    this.jdField_a_of_type_JavaUtilList = new LinkedList();
+    this.jdField_b_of_type_JavaUtilList = new LinkedList();
+  }
+  
+  public yug(yuc paramyuc, float paramFloat)
+  {
+    super(paramyuc.jdField_a_of_type_Int);
+    if ((paramyuc instanceof yug))
+    {
+      paramyuc = (yug)paramyuc;
+      Matrix localMatrix = new Matrix();
+      localMatrix.postScale(paramFloat, paramFloat);
+      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
+      this.jdField_a_of_type_AndroidGraphicsPath.addPath(paramyuc.jdField_a_of_type_AndroidGraphicsPath, localMatrix);
+      this.jdField_a_of_type_Int = paramyuc.jdField_a_of_type_Int;
+      this.jdField_b_of_type_Int = paramyuc.jdField_b_of_type_Int;
+      this.c = ((int)(paramyuc.c * paramFloat));
+    }
   }
 }
 

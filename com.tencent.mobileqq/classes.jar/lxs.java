@@ -1,21 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.share.AVSchema;
+import android.os.RemoteException;
+import com.tencent.av.service.LBSInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class lxs
-  implements DialogInterface.OnClickListener
+  extends anxj
 {
-  public lxs(AVSchema paramAVSchema, String paramString) {}
+  private List<lxb> a = new ArrayList();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a()
   {
-    mrf.d();
-    this.jdField_a_of_type_ComTencentAvShareAVSchema.b(this.jdField_a_of_type_JavaLangString);
+    return this.a.size();
+  }
+  
+  public void a(lxb paramlxb)
+  {
+    if (paramlxb != null) {
+      this.a.add(paramlxb);
+    }
+  }
+  
+  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      lxb locallxb = (lxb)localIterator.next();
+      try
+      {
+        locallxb.a(paramBoolean, paramLBSInfo);
+      }
+      catch (RemoteException localRemoteException) {}
+      if (QLog.isColorLevel()) {
+        QLog.e("QQServiceForAV", 2, "Call onGetUserLocation fail", localRemoteException);
+      }
+    }
+    this.a.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lxs
  * JD-Core Version:    0.7.0.1
  */

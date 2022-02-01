@@ -1,36 +1,17 @@
-import android.app.Activity;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
+import android.animation.ObjectAnimator;
+import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
 
-public class bdsh
+class bdsh
+  implements View.OnAttachStateChangeListener
 {
-  SharedPreferences.Editor jdField_a_of_type_AndroidContentSharedPreferences$Editor;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private String jdField_a_of_type_JavaLangString;
+  bdsh(bdsf parambdsf, ObjectAnimator paramObjectAnimator) {}
   
-  public bdsh(Activity paramActivity, int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString("uin");
-    if (this.jdField_a_of_type_JavaLangString != null) {}
-    for (paramBundle = this.jdField_a_of_type_JavaLangString;; paramBundle = "0")
-    {
-      this.jdField_a_of_type_JavaLangString = paramBundle;
-      this.jdField_a_of_type_AndroidContentSharedPreferences = paramActivity.getSharedPreferences("tribeInvokeFrom", 0);
-      return;
-    }
-  }
+  public void onViewAttachedToWindow(View paramView) {}
   
-  public Boolean a()
+  public void onViewDetachedFromWindow(View paramView)
   {
-    return Boolean.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(this.jdField_a_of_type_JavaLangString, false));
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putBoolean(this.jdField_a_of_type_JavaLangString, true);
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
   }
 }
 

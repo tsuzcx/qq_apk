@@ -1,27 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.home.MainFragment;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-final class bcqn
-  implements DialogInterface.OnClickListener
+public class bcqn
+  extends aauq
 {
-  bcqn(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
+  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "QQServiceDiscussSvc" };
+  private bcqk jdField_a_of_type_Bcqk = new bcqk();
+  private bcqm jdField_a_of_type_Bcqm = new bcqm();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    bcqj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    bcqj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    bcqj.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    bcqj.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    paramDialogInterface = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, SplashActivity.class);
-    paramDialogInterface.putExtra("tab_index", MainFragment.b);
-    paramDialogInterface.setFlags(67108864);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramDialogInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
+    return this.jdField_a_of_type_Bcqk.a(paramToServiceMsg, paramFromServiceMsg);
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg) {}
+  
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    return this.jdField_a_of_type_Bcqm.a(paramToServiceMsg, paramUniPacket);
+  }
+  
+  public String[] a()
+  {
+    return jdField_a_of_type_ArrayOfJavaLangString;
   }
 }
 

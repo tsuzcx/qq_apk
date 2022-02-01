@@ -11,11 +11,11 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.provider.Settings;
 import android.support.annotation.RequiresApi;
-import bfur;
-import bhls;
-import bhlt;
-import bhlu;
-import bhlw;
+import bhdj;
+import biwi;
+import biwj;
+import biwk;
+import biwm;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Method;
@@ -306,8 +306,8 @@ public class FloatingScreenPermission
     if (paramContext == null) {
       return;
     }
-    bhlw.b();
-    bfur.a(paramContext, 230, paramContext.getString(2131717483), paramContext.getString(2131717481), paramContext.getString(2131717480), paramContext.getString(2131717482), new bhls(paramContext), null).show();
+    biwm.b();
+    bhdj.a(paramContext, 230, paramContext.getString(2131717849), paramContext.getString(2131717847), paramContext.getString(2131717846), paramContext.getString(2131717848), new biwi(paramContext), null).show();
   }
   
   public static void enterPermissionRequestDialogCustom(Context paramContext, int paramInt1, int paramInt2)
@@ -315,15 +315,15 @@ public class FloatingScreenPermission
     if (paramContext == null) {
       return;
     }
-    bhlw.b();
-    bfur.a(paramContext, 230, paramContext.getString(paramInt1), paramContext.getString(paramInt2), paramContext.getString(2131717480), paramContext.getString(2131717482), new bhlt(paramContext), null).show();
+    biwm.b();
+    bhdj.a(paramContext, 230, paramContext.getString(paramInt1), paramContext.getString(paramInt2), paramContext.getString(2131717846), paramContext.getString(2131717848), new biwj(paramContext), null).show();
   }
   
   private static boolean handleVivoPermissionDialog(Context paramContext)
   {
     if (canUseCheckOpForVivo())
     {
-      bfur.a(paramContext, 230, paramContext.getString(2131717483), paramContext.getString(2131698778), paramContext.getString(2131717480), paramContext.getString(2131694284), new bhlu(paramContext), null).show();
+      bhdj.a(paramContext, 230, paramContext.getString(2131717849), paramContext.getString(2131699117), paramContext.getString(2131717846), paramContext.getString(2131694482), new biwk(paramContext), null).show();
       return true;
     }
     return false;

@@ -1,22 +1,32 @@
-import com.tencent.mobileqq.troop.utils.TroopUploadingThread;
-import java.net.URL;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLSession;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
 
 public class bfec
-  implements HostnameVerifier
+  implements View.OnKeyListener
 {
-  public bfec(TroopUploadingThread paramTroopUploadingThread, HttpsURLConnection paramHttpsURLConnection) {}
+  public bfec(NewTroopContactView paramNewTroopContactView) {}
   
-  public boolean verify(String paramString, SSLSession paramSSLSession)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    String str = this.jdField_a_of_type_JavaxNetSslHttpsURLConnection.getRequestProperty("Host");
-    paramString = str;
-    if (str == null) {
-      paramString = this.jdField_a_of_type_JavaxNetSslHttpsURLConnection.getURL().getHost();
+    if (paramInt == 67)
+    {
+      if (paramKeyEvent.getAction() != 0) {
+        break label35;
+      }
+      this.a.jdField_a_of_type_Boolean = TextUtils.isEmpty(this.a.jdField_a_of_type_AndroidWidgetEditText.getText());
     }
-    return HttpsURLConnection.getDefaultHostnameVerifier().verify(paramString, paramSSLSession);
+    for (;;)
+    {
+      return false;
+      label35:
+      if ((paramKeyEvent.getAction() == 1) && (this.a.jdField_a_of_type_Boolean)) {
+        this.a.jdField_a_of_type_Bfef.a();
+      }
+    }
   }
 }
 

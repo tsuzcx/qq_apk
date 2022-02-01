@@ -1,26 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
 
-class aefb
-  implements DialogInterface.OnClickListener
+public class aefb
+  extends aeer
 {
-  aefb(aeey paramaeey) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aefb(JumpActivity paramJumpActivity)
   {
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
-      this.a.b = true;
-      aeey.a(this.a);
-      this.a.b();
-    }
+    super(paramJumpActivity);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    this.b.d(paramInt1, paramInt2, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aefb
  * JD-Core Version:    0.7.0.1
  */

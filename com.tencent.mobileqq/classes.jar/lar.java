@@ -1,10 +1,35 @@
-import android.os.Bundle;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
+import tencent.gdt.qq_ad_get.QQAdGet;
 
-public abstract interface lar
+public class lar
 {
-  public abstract void a();
+  private static lar a;
   
-  public abstract void a(Bundle paramBundle);
+  public static lar a()
+  {
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new lar();
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public void a(Context paramContext, AppRuntime paramAppRuntime, qq_ad_get.QQAdGet paramQQAdGet, BusinessObserver paramBusinessObserver)
+  {
+    paramContext = new NewIntent(BaseApplicationImpl.getApplication(), las.class);
+    paramContext.setObserver(paramBusinessObserver);
+    paramContext.putExtra("GdtLoadAdServletCMD", "QqAd.getAd");
+    paramContext.putExtra("sso_GdtLoadAd_rquest_bytes", paramQQAdGet.toByteArray());
+    paramAppRuntime.startServlet(paramContext);
+  }
 }
 
 

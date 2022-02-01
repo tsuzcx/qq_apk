@@ -1,5 +1,6 @@
 package com.tencent.mtt.hippy;
 
+import android.content.Context;
 import com.tencent.mtt.hippy.bridge.bundleloader.HippyBundleLoader;
 import com.tencent.mtt.hippy.utils.ContextHolder;
 import com.tencent.mtt.hippy.utils.LogUtils;
@@ -31,14 +32,22 @@ public abstract class HippyEngine
     }
     paramEngineInitParams.check();
     LogUtils.enableDebugLog(paramEngineInitParams.enableLog);
-    ContextHolder.initAppContext(paramEngineInitParams.context);
-    switch (HippyEngine.2.$SwitchMap$com$tencent$mtt$hippy$HippyEngine$EngineMode[paramEngineInitParams.engineMode.ordinal()])
-    {
-    default: 
-      return null;
-    case 1: 
-      return new HippyNormalEngineManager(paramEngineInitParams, null);
+    if (paramEngineInitParams.appContext != null) {
+      ContextHolder.initAppContext(paramEngineInitParams.appContext);
     }
+    for (;;)
+    {
+      switch (HippyEngine.2.$SwitchMap$com$tencent$mtt$hippy$HippyEngine$EngineMode[paramEngineInitParams.engineMode.ordinal()])
+      {
+      default: 
+        return null;
+        if (paramEngineInitParams.context != null) {
+          ContextHolder.initAppContext(paramEngineInitParams.context.getApplicationContext());
+        }
+        break;
+      }
+    }
+    return new HippyNormalEngineManager(paramEngineInitParams, null);
     return new HippySingleThreadEngineManager(paramEngineInitParams, null);
   }
   

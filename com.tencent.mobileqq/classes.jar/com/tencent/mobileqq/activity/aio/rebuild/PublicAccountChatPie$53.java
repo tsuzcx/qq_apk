@@ -1,24 +1,25 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahiu;
-import ahke;
+import aido;
+import aiey;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 
 public class PublicAccountChatPie$53
   implements Runnable
 {
-  public PublicAccountChatPie$53(ahiu paramahiu) {}
+  public PublicAccountChatPie$53(aido paramaido) {}
   
   public void run()
   {
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject instanceof QQAppInterface))
     {
-      localObject = (WebProcessManager)((QQAppInterface)localObject).getManager(13);
+      localObject = (WebProcessManager)((QQAppInterface)localObject).getManager(QQManagerFactory.WEBPROCESS_MANAGER);
       if ((localObject != null) && (((WebProcessManager)localObject).e())) {
-        ((WebProcessManager)localObject).a(-1, new ahke(this));
+        ((WebProcessManager)localObject).a(-1, new aiey(this));
       }
     }
   }

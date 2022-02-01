@@ -1,22 +1,28 @@
-import com.tencent.mobileqq.data.HotChatItemData;
-import java.util.Comparator;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 class amto
-  implements Comparator<HotChatItemData>
+  extends amug
 {
-  amto(amtm paramamtm) {}
+  public QQAppInterface a;
   
-  public int a(HotChatItemData paramHotChatItemData1, HotChatItemData paramHotChatItemData2)
+  amto(QQAppInterface paramQQAppInterface)
   {
-    long l1 = Math.max(paramHotChatItemData1.mLatestMsgSec, paramHotChatItemData1.mDraftSec);
-    long l2 = Math.max(paramHotChatItemData2.mLatestMsgSec, paramHotChatItemData2.mDraftSec);
-    if (l1 < l2) {
-      return 1;
-    }
-    if (l1 == l2) {
-      return 0;
-    }
-    return -1;
+    this.a = paramQQAppInterface;
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    amtm.a(((amme)this.a.getManager(QQManagerFactory.APOLLO_MANAGER)).a(), paramInt);
+  }
+  
+  public void b(String paramString, int paramInt1, int paramInt2)
+  {
+    QLog.i("CmGameTemp_CmGameAudioManager", 0, "[onQueryAudioRoomId] friUin:" + paramString + ",roomID:" + paramInt1);
+    super.b(paramString, paramInt1, paramInt2);
+    ((amme)this.a.getManager(QQManagerFactory.APOLLO_MANAGER)).a().a(paramString, String.valueOf(paramInt1), paramInt2);
   }
 }
 

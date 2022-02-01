@@ -1,22 +1,17 @@
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.EditText;
+import com.tencent.ttpic.openapi.model.WMElement;
 
 class bnif
-  implements View.OnSystemUiVisibilityChangeListener
+  implements DialogInterface.OnClickListener
 {
-  bnif(bnhv parambnhv) {}
+  bnif(bnhy parambnhy, bnih parambnih, WMElement paramWMElement) {}
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt & 0x4) == 0)
-    {
-      xvv.b("EditTextDialog", "onStatusBarShow");
-      this.a.getWindow().getDecorView().removeCallbacks(bnhv.a(this.a));
-      this.a.getWindow().getDecorView().postDelayed(bnhv.a(this.a), 1500L);
-      return;
-    }
-    xvv.b("EditTextDialog", "onStatusBarHide");
+    this.jdField_a_of_type_Bnih.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Bnih.jdField_a_of_type_AndroidWidgetEditText.setText(this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMElement.getCheckInResetString());
   }
 }
 

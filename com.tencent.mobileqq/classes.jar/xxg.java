@@ -1,17 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
 
-class xxg
-  implements bhhk
+public class xxg
+  extends zhp
 {
-  xxg(xxd paramxxd) {}
+  public xxg(StoryDetailFragment paramStoryDetailFragment) {}
   
-  public void onProgressChanged(bhhi parambhhi, int paramInt1, int paramInt2) {}
-  
-  public void onProgressCompleted(bhhi parambhhi)
+  public boolean a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EditPicSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambhhi);
-    }
+    this.a.d();
+    return true;
   }
 }
 

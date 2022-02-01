@@ -1,49 +1,78 @@
-import android.view.Surface;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
-import javax.microedition.khronos.egl.EGLSurface;
+import KQQ.ReqItem;
+import KQQ.RespItem;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFollowListReq;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetUserFollowListRequest;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import cooperation.qzone.PlatformInfor;
+import cooperation.qzone.QUA;
 
 public class aoau
+  implements bcug
 {
-  private bafw jdField_a_of_type_Bafw;
-  private EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = (EGL10)EGLContext.getEGL();
-  private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentContext();
-  private EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentDisplay();
-  private EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentSurface(12377);
+  public aoau(PublicAccountHandler paramPublicAccountHandler) {}
   
-  public aoau(bafv parambafv, Surface paramSurface)
+  public int a()
   {
-    this.jdField_a_of_type_Bafw = new bafw(parambafv);
-    this.jdField_a_of_type_Bafw.a(paramSurface);
+    return 1;
   }
   
-  public void a()
+  public ReqItem a(int paramInt)
   {
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Bafw.a(paramLong);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Bafw.b();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Bafw.a();
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Bafw != null)
+    ReqItem localReqItem = new ReqItem();
+    localReqItem.cOperType = 0;
+    localReqItem.eServiceID = 102;
+    boolean bool = usu.c();
+    long l1 = PublicAccountHandler.a(this.a, bool);
+    long l2 = PublicAccountHandler.b(this.a, bool);
+    Object localObject2 = PublicAccountHandler.a(this.a);
+    if (bool)
     {
-      this.jdField_a_of_type_Bafw.a();
-      this.jdField_a_of_type_Bafw = null;
+      localObject1 = new CertifiedAccountRead.StGetFollowListReq();
+      ((CertifiedAccountRead.StGetFollowListReq)localObject1).seq.set(bhbx.a(l1));
+      ((CertifiedAccountRead.StGetFollowListReq)localObject1).count.set(bhbx.a(1L));
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+        ((CertifiedAccountRead.StGetFollowListReq)localObject1).attach_info.set((String)localObject2);
+      }
+      localObject2 = new PROTOCAL.StQWebReq();
+      ((PROTOCAL.StQWebReq)localObject2).Seq.set(-1L);
+      ((PROTOCAL.StQWebReq)localObject2).qua.set(QUA.getQUA3());
+      ((PROTOCAL.StQWebReq)localObject2).deviceInfo.set(PlatformInfor.g().getDeviceInfor());
+      ((PROTOCAL.StQWebReq)localObject2).busiBuff.set(ByteStringMicro.copyFrom(((CertifiedAccountRead.StGetFollowListReq)localObject1).toByteArray()));
+      localObject1 = zya.a();
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        ((PROTOCAL.StQWebReq)localObject2).traceid.set((String)localObject1);
+      }
+      localObject2 = ((PROTOCAL.StQWebReq)localObject2).toByteArray();
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = new byte[4];
+      }
+      localReqItem.vecParam = bhjl.a((byte[])localObject1);
+      return localReqItem;
+    }
+    Object localObject1 = new mobileqq_mp.GetUserFollowListRequest();
+    ((mobileqq_mp.GetUserFollowListRequest)localObject1).follow_seqno.set((int)l1);
+    ((mobileqq_mp.GetUserFollowListRequest)localObject1).public_account_seqno.set((int)l2);
+    ((mobileqq_mp.GetUserFollowListRequest)localObject1).begin.set(0);
+    ((mobileqq_mp.GetUserFollowListRequest)localObject1).limit.set(1);
+    ((mobileqq_mp.GetUserFollowListRequest)localObject1).version.set(1);
+    ((mobileqq_mp.GetUserFollowListRequest)localObject1).is_increment.set(true);
+    localReqItem.vecParam = bhjl.a(((mobileqq_mp.GetUserFollowListRequest)localObject1).toByteArray());
+    return localReqItem;
+  }
+  
+  public void a(RespItem paramRespItem)
+  {
+    if ((paramRespItem.eServiceID == 102) && (paramRespItem.cResult == 0)) {
+      this.a.b();
     }
   }
 }

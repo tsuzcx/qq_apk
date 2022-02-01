@@ -1,26 +1,20 @@
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajzq
-  implements View.OnFocusChangeListener
+  implements View.OnClickListener
 {
-  public ajzq(WordChainHbFragment paramWordChainHbFragment) {}
-  
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      this.a.jdField_a_of_type_Nmg = new nmg(this.a.jdField_a_of_type_AndroidViewView, new ajzr(this), ImmersiveUtils.getStatusBarHeight(this.a.getActivity()) + 160);
-      WordChainHbFragment.a(this.a, 8);
+    MainFragment.b(true);
+    ViewGroup localViewGroup = (ViewGroup)paramView.getParent();
+    if (!MainFragment.a()) {
+      localViewGroup.callOnClick();
     }
-    do
-    {
-      return;
-      WordChainHbFragment.a(this.a, 0);
-    } while (this.a.jdField_a_of_type_Nmg == null);
-    this.a.jdField_a_of_type_Nmg.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

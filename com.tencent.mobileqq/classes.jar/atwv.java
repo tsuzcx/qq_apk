@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.gamecenter.data.GameNoticeInfo;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class atwv
-  implements Comparator<GameNoticeInfo>
+class atwv
+  implements View.OnClickListener
 {
-  public int a(GameNoticeInfo paramGameNoticeInfo1, GameNoticeInfo paramGameNoticeInfo2)
+  atwv(atwq paramatwq, FileManagerEntity paramFileManagerEntity) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramGameNoticeInfo1.startTime == paramGameNoticeInfo2.startTime) {
-      return paramGameNoticeInfo1.bannerType - paramGameNoticeInfo2.bannerType;
-    }
-    if (paramGameNoticeInfo1.startTime < paramGameNoticeInfo2.startTime) {
-      return -1;
-    }
-    return 1;
+    bdla.b(null, "dc00898", "", "", "0X800A60E", "0X800A60E", 0, 0, "", "", "", "");
+    aufd.a(this.jdField_a_of_type_Atwq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Atwq.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

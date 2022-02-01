@@ -1,51 +1,22 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import face.qqlogin.FaceSecureCheck.SecureCheckResponse;
 
 public class adke
-  extends amsu
+  extends ayra
 {
-  public adke(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public adke(AuthDevActivity paramAuthDevActivity) {}
   
-  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
+  public void checkSecureResponse(FaceSecureCheck.SecureCheckResponse paramSecureCheckResponse)
   {
-    if ((!this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a.equals(paramString1)) || (!ProfileActivity.AllInOne.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne))) {}
-    for (;;)
-    {
-      return;
-      if (paramBoolean)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardName = paramString2;
-        return;
-      }
-      paramString1 = (amsw)this.a.app.getManager(51);
-      if (paramString1 == null) {}
-      for (paramString1 = null; (paramString1 != null) && (paramString1.remark != null) && (paramString1.isRemark == 1); paramString1 = paramString1.e(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardName = paramString1.remark;
-        return;
-      }
-    }
+    AuthDevActivity.a(this.a, paramSecureCheckResponse);
   }
   
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  public void onFailedResponse(String paramString1, int paramInt, String paramString2)
   {
-    if ((paramBoolean1) && (paramBoolean2) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a != null) && (ProfileActivity.AllInOne.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)))
-    {
-      localObject = (amsw)this.a.app.getManager(51);
-      if (localObject != null) {
-        break label90;
-      }
-    }
-    label90:
-    for (Object localObject = null;; localObject = ((amsw)localObject).e(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a))
-    {
-      if ((localObject != null) && (((Friends)localObject).remark != null) && (((Friends)localObject).isRemark == 1)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardName = ((Friends)localObject).remark;
-      }
-      return;
-    }
+    QQToast.a(this.a, paramString2, 0).a();
+    QLog.e("Q.devlock.AuthDevActivity", 1, "cmd : " + paramString1 + " request failed  code : " + paramInt + " message : " + paramString2);
   }
 }
 

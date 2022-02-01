@@ -1,101 +1,85 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import mqq.app.BaseActivity;
 
-class mkn
-  extends lff
+public class mkn
 {
-  mkn(mkl parammkl) {}
+  View a;
+  View b;
   
-  protected void a()
+  public mkn(View paramView)
   {
-    super.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoInviteFloatBarUICtr", 2, "onServiceConnected uin = " + this.a.c);
-    }
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
-    {
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.a.jdField_b_of_type_Int, this.a.c, this.a.d);
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.c(this.a.jdField_a_of_type_Lez.A, this.a.jdField_a_of_type_Lez.p);
-    }
-    this.a.a(false);
+    this.a = paramView.findViewById(2131373745);
+    this.b = paramView.getRootView().findViewById(2131373746);
   }
   
-  protected void a(long paramLong)
+  static void a(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("VideoInviteFloatBarUICtr", 1, "onConnected, seq[" + paramLong + "]");
-    }
-    this.a.jdField_a_of_type_ComTencentAvVideoController.b();
-    lyq.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(paramLong, false);
-    if (this.a.jdField_a_of_type_Mkk != null) {
-      this.a.jdField_a_of_type_Mkk.c();
-    }
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.a.jdField_b_of_type_JavaLangRunnable, 1000L);
-    if (this.a.jdField_a_of_type_Lez.d == 1) {
-      this.a.f = "DEVICE_SPEAKERPHONE;DEVICE_EARPHONE;DEVICE_BLUETOOTHHEADSET;DEVICE_WIREDHEADSET;";
-    }
-    mua.a().a(this.a.f);
-  }
-  
-  protected void a(long paramLong, int paramInt, String paramString)
-  {
-    QLog.d("VideoInviteFloatBarUICtr", 1, "onClose  reason = " + paramInt + ",peerUin =  " + paramString);
-    if (TextUtils.equals(this.a.c, paramString))
-    {
-      QLog.d("VideoInviteFloatBarUICtr", 1, "onClose  wrong uin: " + this.a.c + ", " + paramString);
-      this.a.a();
-    }
-    while ((this.a.jdField_a_of_type_ComTencentAvVideoController == null) || (this.a.jdField_a_of_type_Lez.j())) {
+    if (paramView == null) {
       return;
     }
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
+    localLayoutParams.height = paramInt;
+    paramView.setLayoutParams(localLayoutParams);
   }
   
-  protected void a(String paramString, Bitmap paramBitmap)
+  public void a(BaseActivity paramBaseActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoInviteFloatBarUICtr", 2, "onGetStrangeFace uin = " + this.a.c);
-    }
-    if ((this.a.jdField_b_of_type_Int == 25) && (this.a.jdField_a_of_type_Mkk != null)) {
-      this.a.jdField_a_of_type_Mkk.a(paramBitmap);
-    }
-    super.a(paramString, paramBitmap);
-  }
-  
-  protected void a(String paramString, boolean paramBoolean)
-  {
-    super.a(paramString, paramBoolean);
-    QLog.d("VideoInviteFloatBarUICtr", 1, "onDestroyUI  peerUin: " + this.a.c + ", isQuit : " + paramBoolean);
-    if ((this.a.c != null) && (paramString != null) && (this.a.c.equals(paramString)) && (paramBoolean)) {
-      this.a.a();
-    }
-  }
-  
-  protected void b(int paramInt) {}
-  
-  protected void c(int paramInt) {}
-  
-  protected void d(String paramString)
-  {
-    super.d(paramString);
-    if (this.a.jdField_b_of_type_Int == 25)
+    if ((paramBaseActivity == null) || (this.a == null)) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoInviteFloatBarUICtr", 2, "VideoInviteActivity onGetQCallNickName nickName:" + paramString);
-      }
-      this.a.jdField_b_of_type_JavaLangString = paramString;
-      if (this.a.jdField_a_of_type_Mkk != null) {
-        this.a.jdField_a_of_type_Mkk.d(this.a.jdField_b_of_type_JavaLangString);
+      do
+      {
+        do
+        {
+          return;
+          if (ImmersiveUtils.isSupporImmersive() == 1) {
+            break;
+          }
+          this.a.setVisibility(8);
+        } while (this.b == null);
+        this.b.setVisibility(8);
+        return;
+        int i = ImmersiveUtils.getStatusBarHeight(paramBaseActivity);
+        QLog.w("QavStatusBar", 1, "adjust, height[" + i + "]");
+        if (i > 0)
+        {
+          a(this.a, i);
+          a(this.b, i);
+        }
+      } while (AudioHelper.a(0) != 1);
+      this.a.setBackgroundColor(2140405971);
+    } while (this.b == null);
+    this.b.setBackgroundColor(2140405971);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.a != null)
+    {
+      QLog.w("QavStatusBar", 1, "setBackgroundColor, bDoubleScreen[" + paramBoolean + "]");
+      if (paramBoolean) {
+        this.a.setBackgroundColor(-16777216);
       }
     }
+    else
+    {
+      return;
+    }
+    this.a.setBackgroundColor(0);
+  }
+  
+  public boolean a()
+  {
+    return (this.a != null) && (this.a.getVisibility() == 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mkn
  * JD-Core Version:    0.7.0.1
  */

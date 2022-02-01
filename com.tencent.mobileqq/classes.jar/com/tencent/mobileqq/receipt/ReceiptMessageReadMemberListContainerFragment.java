@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.receipt;
 
-import andd;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -11,16 +10,17 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import azuf;
-import azug;
-import azuh;
-import azui;
-import azuj;
-import azuk;
-import azul;
-import azum;
-import azun;
-import bhjm;
+import aofu;
+import bban;
+import bbao;
+import bbap;
+import bbaq;
+import bbar;
+import bbas;
+import bbat;
+import bbau;
+import bbav;
+import biuc;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -39,7 +39,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
-import nmb;
+import ntb;
 import tencent.im.oidb.cmd0x985.oidb_0x985.GetReadListReq;
 import tencent.im.oidb.cmd0x985.oidb_0x985.ReqBody;
 import tencent.im.oidb.cmd0x985.oidb_0x985.UinInfo;
@@ -50,21 +50,21 @@ public class ReceiptMessageReadMemberListContainerFragment
   extends IphoneTitleBarFragment
 {
   private long jdField_a_of_type_Long;
-  private andd jdField_a_of_type_Andd = new azuf(this);
-  private ViewPager.OnPageChangeListener jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = new azuj(this);
-  private azul jdField_a_of_type_Azul;
-  private azum jdField_a_of_type_Azum;
-  private bhjm jdField_a_of_type_Bhjm = new azui(this);
+  private ViewPager.OnPageChangeListener jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = new bbar(this);
+  private aofu jdField_a_of_type_Aofu = new bban(this);
+  private bbat jdField_a_of_type_Bbat;
+  private bbau jdField_a_of_type_Bbau;
+  private biuc jdField_a_of_type_Biuc = new bbaq(this);
   private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private QQViewPager jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager;
   private TabBarView jdField_a_of_type_ComTencentMobileqqWidgetTabBarView;
   private ArrayList<ReceiptMessageReadMemberListFragment.MemberInfo> jdField_a_of_type_JavaUtilArrayList;
-  private Comparator<ReceiptMessageReadMemberListFragment.MemberInfo> jdField_a_of_type_JavaUtilComparator = new azug(this);
+  private Comparator<ReceiptMessageReadMemberListFragment.MemberInfo> jdField_a_of_type_JavaUtilComparator = new bbao(this);
   private boolean jdField_a_of_type_Boolean;
   private long jdField_b_of_type_Long;
   private ArrayList<ReceiptMessageReadMemberListFragment.MemberInfo> jdField_b_of_type_JavaUtilArrayList;
-  private Comparator<ReceiptMessageReadMemberListFragment.MemberInfo> jdField_b_of_type_JavaUtilComparator = new azuh(this);
+  private Comparator<ReceiptMessageReadMemberListFragment.MemberInfo> jdField_b_of_type_JavaUtilComparator = new bbap(this);
   private boolean jdField_b_of_type_Boolean;
   private long c;
   private long d;
@@ -114,7 +114,7 @@ public class ReceiptMessageReadMemberListContainerFragment
     localReqBody.uint32_msg_seq.set((int)this.e);
     localReqBody.uint64_start_uin.set(paramLong);
     localReqBody.uint64_from_uin.set(this.c);
-    nmb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new azun(this), localReqBody.toByteArray(), "OidbSvc.0x986_1", 2438, 1);
+    ntb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new bbav(this), localReqBody.toByteArray(), "OidbSvc.0x986_1", 2438, 1);
   }
   
   private ArrayList<ReceiptMessageReadMemberListFragment.MemberInfo> b(List<oidb_0x985.UinInfo> paramList)
@@ -141,7 +141,7 @@ public class ReceiptMessageReadMemberListContainerFragment
     localGetReadListReq.uint64_conf_uin.set(a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin));
     localGetReadListReq.uint64_from_uin.set(this.c);
     localReqBody.msg_get_read_list_req.set(localGetReadListReq);
-    nmb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new azuk(this), localReqBody.toByteArray(), "OidbSvc.0x985", 2437, 0);
+    ntb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new bbas(this), localReqBody.toByteArray(), "OidbSvc.0x985", 2437, 0);
   }
   
   private void c()
@@ -164,7 +164,7 @@ public class ReceiptMessageReadMemberListContainerFragment
       localMemberInfo = (ReceiptMessageReadMemberListFragment.MemberInfo)localIterator.next();
       localMemberInfo.b = ContactUtils.getTroopMemberName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.toString(this.jdField_a_of_type_Long), localMemberInfo.a);
     }
-    this.jdField_a_of_type_Azul.sendEmptyMessage(5);
+    this.jdField_a_of_type_Bbat.sendEmptyMessage(5);
   }
   
   private void e()
@@ -175,16 +175,16 @@ public class ReceiptMessageReadMemberListContainerFragment
   
   private void f()
   {
-    this.jdField_a_of_type_Azum = new azum(getChildFragmentManager(), null);
-    Object localObject = getString(2131697951);
-    String str = getString(2131697959);
-    this.jdField_a_of_type_Azum.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_JavaUtilArrayList, new String[] { localObject, str });
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setAdapter(this.jdField_a_of_type_Azum);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setUnselectColor(getResources().getColor(2131167106));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(String.format(getString(2131697941), new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) }));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(String.format(getString(2131697942), new Object[] { Integer.valueOf(this.jdField_b_of_type_JavaUtilArrayList.size()) }));
+    this.jdField_a_of_type_Bbau = new bbau(getChildFragmentManager(), null);
+    Object localObject = getString(2131698235);
+    String str = getString(2131698243);
+    this.jdField_a_of_type_Bbau.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_JavaUtilArrayList, new String[] { localObject, str });
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setAdapter(this.jdField_a_of_type_Bbau);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setUnselectColor(getResources().getColor(2131167120));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(String.format(getString(2131698225), new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) }));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(String.format(getString(2131698226), new Object[] { Integer.valueOf(this.jdField_b_of_type_JavaUtilArrayList.size()) }));
     this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(0, false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setOnTabChangeListener(this.jdField_a_of_type_Bhjm);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setOnTabChangeListener(this.jdField_a_of_type_Biuc);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.requestParentDisallowInterecptTouchEvent(true);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setOnPageChangeListener(this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setVisibility(0);
@@ -200,7 +200,7 @@ public class ReceiptMessageReadMemberListContainerFragment
     if (!isAdded()) {
       return;
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, 2131697940, 0).a();
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, 2131698224, 0).a();
   }
   
   private void h()
@@ -214,15 +214,15 @@ public class ReceiptMessageReadMemberListContainerFragment
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)this.mContentView.findViewById(2131380854));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)this.mContentView.findViewById(2131378112));
-    setTitle(getString(2131697943));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)this.mContentView.findViewById(2131381206));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)this.mContentView.findViewById(2131378400));
+    setTitle(getString(2131698227));
     startTitleProgress();
   }
   
   public int getContentLayoutId()
   {
-    return 2131558663;
+    return 2131558675;
   }
   
   public void onAttach(Activity paramActivity)
@@ -255,7 +255,7 @@ public class ReceiptMessageReadMemberListContainerFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_Azul = new azul(this, null);
+    this.jdField_a_of_type_Bbat = new bbat(this, null);
     a();
   }
 }

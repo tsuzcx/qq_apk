@@ -1,37 +1,21 @@
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
 
-class rrv
-  implements bbrg
+public class rrv
 {
-  rrv(rrr paramrrr) {}
+  public int a;
+  public long a;
+  public UrlJumpInfo a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
   
-  public void onDownloadFinish(String paramString1, int paramInt, String paramString2)
+  public String toString()
   {
-    if (paramString1.startsWith("new_qq_android_native_short_video_"))
-    {
-      if (paramInt == 0) {
-        break label95;
-      }
-      VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", amtj.a(2131706718) + paramInt + "]", null);
-      bbqi.a(2, paramInt);
-    }
-    for (;;)
-    {
-      VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", "onDownloadFinish name=" + paramString1 + ", result=" + paramInt + ", filePath=" + paramString2, null);
-      return;
-      label95:
-      rrr.a(this.a, true);
-      VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", amtj.a(2131706717) + paramInt + "]", null);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("id=").append(this.jdField_a_of_type_Long).append("\n").append("rowKey=").append(this.jdField_a_of_type_JavaLangString).append("\n").append("title=").append(this.jdField_b_of_type_JavaLangString).append("\n").append("picUrl=").append(this.c).append("\n").append("jumpUrl=").append(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo).append("\n").append("playCount=").append(this.jdField_a_of_type_Int).append("\n").append("duration=").append(this.jdField_b_of_type_Int);
+    return localStringBuilder.toString();
   }
-  
-  public void onNetWorkNone()
-  {
-    VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", amtj.a(2131706715), null);
-    bbqi.a(3, -1500);
-  }
-  
-  public void onUpdateProgress(String paramString, long paramLong1, long paramLong2) {}
 }
 
 

@@ -1,284 +1,312 @@
-import android.app.Dialog;
-import android.content.Context;
 import android.content.res.Resources;
-import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.AnimationSet;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
-import dov.com.qq.im.aeeditor.lyric.interaction.MoreLyricLayout;
-import dov.com.qq.im.aeeditor.module.music.AEEditorMusicHelper;
-import dov.com.qq.im.aeeditor.view.AEEditorMusicWaveView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.vip.pb.TianShuAccess.AdItem;
+import cooperation.vip.pb.TianShuAccess.AdPlacementInfo;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import cooperation.vip.pb.TianShuAccess.MapEntry;
+import cooperation.vip.pb.TianShuAccess.RspEntry;
+import cooperation.vip.tianshu.TianShuAdPosItemData;
+import cooperation.vip.tianshu.TianShuManager;
+import cooperation.vip.tianshu.TianShuReportData;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import mqq.os.MqqHandler;
 
 public class bmlf
-  extends ReportDialog
-  implements View.OnClickListener, bmny, bmoa
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bmlj jdField_a_of_type_Bmlj;
-  private MoreLyricLayout jdField_a_of_type_DovComQqImAeeditorLyricInteractionMoreLyricLayout;
-  private AEEditorMusicWaveView jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveView;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private int jdField_c_of_type_Int;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private TextView d;
-  private TextView e;
+  private Conversation a;
   
-  public bmlf(@NonNull Context paramContext)
+  public bmlf(Conversation paramConversation)
   {
-    super(paramContext, 2131755054);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131558544, null);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366795));
-    this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionMoreLyricLayout = ((MoreLyricLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131371294));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379844));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379593));
-    this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveView = ((AEEditorMusicWaveView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362293));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379504));
-    this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379543));
-    this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379872));
-    this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionMoreLyricLayout.setOnMoreLyricLayoutActionListener(new bmlg(this));
-    this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionMoreLyricLayout.setMoreBackground(paramContext.getResources().getDrawable(2131167276));
-    this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionMoreLyricLayout.setLyricBackgroundEffect(new bmlh(this));
-    this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveView.setDragIndicatorListener(this);
-    this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.d.setOnClickListener(this);
-    this.e.setOnClickListener(this);
-    zau.a(this.jdField_a_of_type_AndroidWidgetTextView, false);
-    zau.a(this.jdField_b_of_type_AndroidWidgetTextView, false);
-    setContentView(this.jdField_a_of_type_AndroidViewView);
+    this.a = paramConversation;
   }
   
-  private boolean a()
+  private static List<TianShuAdPosItemData> a()
   {
-    if (this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveView == null) {}
-    while (this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveView.a() == this.jdField_a_of_type_Int) {
-      return true;
-    }
-    return false;
+    ArrayList localArrayList = new ArrayList();
+    TianShuAdPosItemData localTianShuAdPosItemData = new TianShuAdPosItemData();
+    localTianShuAdPosItemData.mNeedCnt = 1;
+    localTianShuAdPosItemData.mPosId = 596;
+    localArrayList.add(localTianShuAdPosItemData);
+    return localArrayList;
   }
   
-  private void c(int paramInt)
+  private static void a(bbbu parambbbu, QQAppInterface paramQQAppInterface, View paramView)
   {
-    int i = this.jdField_c_of_type_Int;
-    b(paramInt);
-    if (this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionMoreLyricLayout != null) {
-      this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionMoreLyricLayout.setLyricSeek(paramInt);
-    }
-    if (this.jdField_a_of_type_Bmlj != null)
+    if ((paramQQAppInterface == null) || (paramView == null) || (parambbbu == null)) {}
+    for (;;)
     {
-      this.jdField_a_of_type_Bmlj.a(paramInt, i + paramInt);
-      this.jdField_a_of_type_Bmlj.E();
+      return;
+      URLImageView localURLImageView = (URLImageView)paramView.findViewById(2131376524);
+      paramView = (TextView)paramView.findViewById(2131376523);
+      if ((localURLImageView != null) && (paramView != null))
+      {
+        localURLImageView.setVisibility(8);
+        if (ThemeUtil.isInNightMode(paramQQAppInterface)) {
+          parambbbu = "#FDC256";
+        }
+        while (!TextUtils.isEmpty(parambbbu))
+        {
+          try
+          {
+            paramView.setTextColor(Color.parseColor(parambbbu));
+            return;
+          }
+          catch (Exception parambbbu)
+          {
+            QLog.e("TianshuRenewalsBarManager", 1, parambbbu, new Object[0]);
+            return;
+          }
+          if (!TextUtils.isEmpty(parambbbu.h))
+          {
+            paramQQAppInterface = URLDrawable.getDrawable(parambbbu.h);
+            if (paramQQAppInterface != null)
+            {
+              localURLImageView.setImageDrawable(paramQQAppInterface);
+              localURLImageView.setVisibility(0);
+            }
+          }
+          if (!TextUtils.isEmpty(parambbbu.j)) {
+            parambbbu = parambbbu.j;
+          } else {
+            parambbbu = "#4B94EA";
+          }
+        }
+      }
     }
   }
   
-  private void d()
+  private static void a(bbbu parambbbu, boolean paramBoolean, QQAppInterface paramQQAppInterface, Resources paramResources, View paramView)
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
+    if ((paramQQAppInterface == null) || (parambbbu == null) || (paramResources == null) || (paramView == null)) {}
+    TextView localTextView;
+    FrameLayout localFrameLayout;
+    do
+    {
+      return;
+      localTextView = (TextView)paramView.findViewById(2131376527);
+      localFrameLayout = (FrameLayout)paramView.findViewById(2131376521);
+      paramView = (URLImageView)paramView.findViewById(2131376522);
+    } while ((localTextView == null) || (localFrameLayout == null) || (paramView == null));
+    if (ThemeUtil.isInNightMode(paramQQAppInterface))
+    {
+      if (Build.VERSION.SDK_INT >= 16) {
+        localFrameLayout.setBackground(paramResources.getDrawable(2130839458));
+      }
+      paramView.setVisibility(8);
+      localTextView.setTextColor(paramResources.getColorStateList(2131167033));
       return;
     }
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, 0.0F);
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-    AnimationSet localAnimationSet = new AnimationSet(true);
-    localAnimationSet.addAnimation(localTranslateAnimation);
-    localAnimationSet.addAnimation(localAlphaAnimation);
-    localAnimationSet.setInterpolator(new DecelerateInterpolator());
-    localAnimationSet.setDuration(200L);
-    localAnimationSet.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(localAnimationSet);
+    if (!TextUtils.isEmpty(parambbbu.g))
+    {
+      paramQQAppInterface = URLDrawable.getDrawable(parambbbu.g);
+      if (paramQQAppInterface != null)
+      {
+        paramView.setImageDrawable(paramQQAppInterface);
+        paramView.setVisibility(0);
+      }
+      if (!TextUtils.isEmpty(parambbbu.i)) {
+        try
+        {
+          localTextView.setTextColor(Color.parseColor(parambbbu.i));
+          return;
+        }
+        catch (Exception parambbbu)
+        {
+          QLog.e("TianshuRenewalsBarManager", 1, parambbbu, new Object[0]);
+          return;
+        }
+      }
+      localTextView.setTextColor(paramResources.getColorStateList(2131167033));
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      if ((!paramBoolean) || ((!ThemeUtil.isDefaultTheme()) && (!ThemeUtil.isSimpleDayTheme(false)))) {
+        break label251;
+      }
+      localFrameLayout.setBackground(paramResources.getDrawable(2130839459));
+    }
+    for (;;)
+    {
+      paramView.setVisibility(8);
+      localTextView.setTextColor(paramResources.getColorStateList(2131167033));
+      return;
+      label251:
+      localFrameLayout.setBackground(paramResources.getDrawable(2130839458));
+    }
   }
   
-  private void e()
+  public static void a(BaseActivity paramBaseActivity, View paramView, bbbu parambbbu, MqqHandler paramMqqHandler, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
+    if ((parambbbu == null) || (paramView == null) || (paramBaseActivity == null) || (paramMqqHandler == null)) {
       return;
     }
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, 1.0F);
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    AnimationSet localAnimationSet = new AnimationSet(true);
-    localAnimationSet.addAnimation(localTranslateAnimation);
-    localAnimationSet.addAnimation(localAlphaAnimation);
-    localAnimationSet.setInterpolator(new DecelerateInterpolator());
-    localAnimationSet.setDuration(200L);
-    localAnimationSet.setFillAfter(true);
-    localAnimationSet.setAnimationListener(new bmli(this));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(localAnimationSet);
+    Object localObject1 = (TextView)paramView.findViewById(2131376527);
+    Object localObject2 = parambbbu.c;
+    if ((localObject1 != null) && (!TextUtils.isEmpty((CharSequence)localObject2))) {
+      ((TextView)localObject1).setText((CharSequence)localObject2);
+    }
+    localObject1 = (URLImageView)paramView.findViewById(2131376526);
+    if ((localObject1 != null) && (!TextUtils.isEmpty(parambbbu.e)))
+    {
+      localObject2 = URLDrawable.getDrawable(parambbbu.e);
+      if (localObject2 != null) {
+        ((URLImageView)localObject1).setImageDrawable((Drawable)localObject2);
+      }
+    }
+    localObject1 = (TextView)paramView.findViewById(2131376523);
+    if ((localObject1 != null) && (!TextUtils.isEmpty(parambbbu.f))) {
+      ((TextView)localObject1).setText(parambbbu.f);
+    }
+    paramView.setVisibility(0);
+    localObject2 = (QQAppInterface)paramBaseActivity.getAppRuntime();
+    a((QQAppInterface)localObject2, 101, parambbbu.a, parambbbu.b);
+    localObject1 = new bmlg(paramMqqHandler, (QQAppInterface)localObject2, parambbbu);
+    paramMqqHandler = new bmlh(parambbbu, paramBaseActivity, paramMqqHandler, (QQAppInterface)localObject2);
+    localObject2 = (FrameLayout)paramView.findViewById(2131376521);
+    if (localObject2 != null) {
+      ((FrameLayout)localObject2).setOnClickListener(paramMqqHandler);
+    }
+    paramMqqHandler = (Button)paramView.findViewById(2131376525);
+    if (paramMqqHandler != null) {
+      paramMqqHandler.setOnClickListener((View.OnClickListener)localObject1);
+    }
+    a(paramBaseActivity, paramView, parambbbu, paramBoolean);
+  }
+  
+  public static void a(BaseActivity paramBaseActivity, View paramView, bbbu parambbbu, boolean paramBoolean)
+  {
+    if ((paramView == null) || (parambbbu == null) || (paramBaseActivity == null)) {}
+    while (paramView.getVisibility() != 0) {
+      return;
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)paramBaseActivity.getAppRuntime();
+    a(parambbbu, paramBoolean, localQQAppInterface, paramBaseActivity.getResources(), paramView);
+    a(parambbbu, localQQAppInterface, paramView);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2)
+  {
+    if (paramQQAppInterface == null) {
+      return;
+    }
+    TianShuReportData localTianShuReportData = new TianShuReportData();
+    long l = System.currentTimeMillis() / 1000L;
+    localTianShuReportData.mTraceId = (String.valueOf(paramQQAppInterface.getCurrentAccountUin()) + '_' + l);
+    localTianShuReportData.mActionId = paramInt;
+    localTianShuReportData.mActionValue = 1;
+    localTianShuReportData.mItemId = String.valueOf(paramString1);
+    localTianShuReportData.mOperTime = l;
+    localTianShuReportData.mTraceNum = 1;
+    localTianShuReportData.mAppId = "tianshu.47";
+    localTianShuReportData.mModuleId = "";
+    localTianShuReportData.mTriggerInfo = paramString2;
+    TianShuManager.getInstance().report(localTianShuReportData);
+    QLog.d("TianshuRenewalsBarManager", 1, "report actionId :" + paramInt + ", adId :" + paramString1);
+  }
+  
+  private void a(TianShuAccess.GetAdsRsp paramGetAdsRsp, String paramString)
+  {
+    Object localObject = this.a;
+    if ((localObject == null) || (((Conversation)localObject).a == null)) {}
+    for (;;)
+    {
+      return;
+      if (((Conversation)localObject).a.a(26) == 2) {}
+      for (int i = 1; (i != 0) && ("tianshu_req_renewals_type_pull_down".equals(paramString)); i = 0)
+      {
+        aldh.a((Conversation)localObject);
+        return;
+      }
+      if (paramGetAdsRsp.mapAds.has()) {}
+      for (paramGetAdsRsp = paramGetAdsRsp.mapAds.get(); paramGetAdsRsp != null; paramGetAdsRsp = null)
+      {
+        paramString = new HashMap();
+        paramGetAdsRsp = paramGetAdsRsp.iterator();
+        while (paramGetAdsRsp.hasNext())
+        {
+          localObject = (TianShuAccess.RspEntry)paramGetAdsRsp.next();
+          if ((localObject != null) && (((TianShuAccess.RspEntry)localObject).key.has())) {
+            paramString.put(Integer.valueOf(((TianShuAccess.RspEntry)localObject).key.get()), localObject);
+          }
+        }
+      }
+    }
+    a((TianShuAccess.RspEntry)paramString.get(Integer.valueOf(596)));
+  }
+  
+  private void a(TianShuAccess.RspEntry paramRspEntry)
+  {
+    if ((paramRspEntry == null) || (paramRspEntry.value == null) || (paramRspEntry.value.lst.size() < 1)) {}
+    do
+    {
+      return;
+      paramRspEntry = (TianShuAccess.AdItem)paramRspEntry.value.lst.get(0);
+    } while (paramRspEntry == null);
+    TianShuManager.getInstance().cacheTraceInfo(paramRspEntry);
+    a(this.a, paramRspEntry);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Bmlj != null) {
-      this.jdField_a_of_type_Bmlj.D();
-    }
+    this.a = null;
   }
   
-  public void a(int paramInt)
+  public void a(Conversation paramConversation, TianShuAccess.AdItem paramAdItem)
   {
-    if ((this.jdField_a_of_type_Bmlj != null) && (this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveView != null)) {
-      this.jdField_a_of_type_Bmlj.a(this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveView.a(this.jdField_c_of_type_Int));
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_Bmlj != null) {
-      this.jdField_a_of_type_Bmlj.a(paramInt1, paramInt2);
-    }
-  }
-  
-  public void a(@Nullable bmlj parambmlj)
-  {
-    this.jdField_a_of_type_Bmlj = parambmlj;
-  }
-  
-  public void a(@NonNull bmlo parambmlo, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Int = parambmlo.a();
-    this.jdField_b_of_type_Int = parambmlo.b();
-    this.jdField_c_of_type_Int = paramInt2;
-    bmlk.a().b(paramInt1, Math.min(paramInt1 + paramInt2, this.jdField_b_of_type_Int));
-    if (this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveView != null)
+    if ((paramAdItem == null) || (paramAdItem.argList.size() < 1)) {}
+    Object localObject;
+    do
     {
-      this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveView.a(parambmlo.a(), AEEditorMusicHelper.a(parambmlo), parambmlo.b(), paramInt2, false, paramInt3, paramInt4, true, paramBoolean);
-      this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveView.setOnMusicMoveListener(this);
-      b(paramInt1);
-    }
-    c();
-    if (this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionMoreLyricLayout != null)
-    {
-      this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionMoreLyricLayout.setVisibility(0);
-      this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionMoreLyricLayout.setBackgroundResource(2131167276);
-      this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionMoreLyricLayout.a(parambmlo, paramInt1, true, false);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setAlpha(1.0F);
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Bmlj != null) {
-      this.jdField_a_of_type_Bmlj.E();
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveView != null) {
-      this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveView.a(paramInt);
-    }
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    if ((this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveView != null) && (!this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveView.c()))
-    {
-      this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveView.setIndicatorIndexByVideo(paramInt1, paramInt2);
-      this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveView.setCurrentPosition(paramInt1, paramInt2);
-    }
-    if (this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionMoreLyricLayout != null) {
-      this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionMoreLyricLayout.a((int)bmlk.a().a(false));
-    }
-  }
-  
-  public void c()
-  {
-    if (this.e == null) {
       return;
-    }
-    if (a())
-    {
-      this.e.setText(2131689711);
-      this.e.setBackgroundResource(0);
-      return;
-    }
-    this.e.setText(2131689722);
-    this.e.setBackgroundResource(2130837912);
-  }
-  
-  public void c(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(bmnt.a(bmnt.a, paramInt1));
-    }
-    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(bmnt.a(bmnt.a, Math.min(paramInt2, this.jdField_b_of_type_Int)));
-    }
-  }
-  
-  public void dismiss()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    e();
-  }
-  
-  public void onClick(View paramView)
-  {
-    int i = paramView.getId();
-    if (i == 2131379504)
-    {
-      if (this.jdField_a_of_type_Bmlj != null) {
-        this.jdField_a_of_type_Bmlj.F();
-      }
-      dismiss();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (i == 2131379543)
+      HashMap localHashMap = new HashMap();
+      localObject = paramAdItem.argList.get().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        if (this.jdField_a_of_type_Bmlj != null) {
-          this.jdField_a_of_type_Bmlj.G();
-        }
-        dismiss();
+        TianShuAccess.MapEntry localMapEntry = (TianShuAccess.MapEntry)((Iterator)localObject).next();
+        localHashMap.put(localMapEntry.key.get(), localMapEntry.value.get());
       }
-      else if ((i == 2131379872) && (!a()) && (this.jdField_a_of_type_Bmlj != null))
-      {
-        this.jdField_a_of_type_Bmlj.b(this.jdField_a_of_type_Int);
-      }
-    }
+      localObject = new bbbu();
+      ((bbbu)localObject).a = (paramAdItem.iAdId.get() + "");
+      ((bbbu)localObject).b = paramAdItem.traceinfo.get();
+      ((bbbu)localObject).c = ((String)localHashMap.get("text_content"));
+      ((bbbu)localObject).d = ((String)localHashMap.get("url"));
+      ((bbbu)localObject).e = ((String)localHashMap.get("pic_icon"));
+      ((bbbu)localObject).k = ((String)localHashMap.get("url_type"));
+      ((bbbu)localObject).f = ((String)localHashMap.get("text_button"));
+      ((bbbu)localObject).g = ((String)localHashMap.get("pic_bg"));
+      ((bbbu)localObject).h = ((String)localHashMap.get("pic_button"));
+      ((bbbu)localObject).i = ((String)localHashMap.get("color_content"));
+      ((bbbu)localObject).j = ((String)localHashMap.get("color_button"));
+    } while ((TextUtils.isEmpty(((bbbu)localObject).c)) || (TextUtils.isEmpty(((bbbu)localObject).d)) || (TextUtils.isEmpty(((bbbu)localObject).f)) || (TextUtils.isEmpty(((bbbu)localObject).e)));
+    aldh.a(paramConversation, (bbbu)localObject);
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void a(String paramString)
   {
-    super.onCreate(paramBundle);
-    if (getWindow() != null) {}
-    for (paramBundle = getWindow().getAttributes();; paramBundle = null)
-    {
-      if (paramBundle != null)
-      {
-        paramBundle.gravity = 81;
-        paramBundle.height = -1;
-        paramBundle.width = -1;
-        getWindow().setAttributes(paramBundle);
-      }
-      setCancelable(false);
-      setCanceledOnTouchOutside(false);
-      return;
-    }
-  }
-  
-  public void show()
-  {
-    super.show();
-    d();
+    TianShuManager.getInstance().requestAdv(a(), new bmli(this, paramString));
   }
 }
 

@@ -1,24 +1,26 @@
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.os.IInterface;
+import com.tencent.av.service.RecvGVideoLevelInfo;
+import com.tencent.av.service.RecvMsg;
 
-public class lwv
-  implements aziq
+public abstract interface lwv
+  extends IInterface
 {
-  public lwv(QQServiceForAV paramQQServiceForAV) {}
+  public abstract Bundle a(String paramString, int paramInt1, int paramInt2, Bundle paramBundle);
   
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQServiceForAV", 2, "onGetQCallNickName");
-    }
-    new lxk(((QQAppInterface)this.a.a()).getApp().getApplicationContext()).a(new lww(this, paramString));
-  }
+  public abstract void a(RecvMsg paramRecvMsg);
+  
+  public abstract void a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte);
+  
+  public abstract void a(String paramString, int paramInt, byte[] paramArrayOfByte);
+  
+  public abstract void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3);
+  
+  public abstract void a(RecvGVideoLevelInfo[] paramArrayOfRecvGVideoLevelInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lwv
  * JD-Core Version:    0.7.0.1
  */

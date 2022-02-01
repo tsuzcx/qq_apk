@@ -1,62 +1,81 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.io.BufferedReader;
 
-class lmf
-  extends BroadcastReceiver
+public class lmf
+  extends lmh
 {
-  lmf(lme paramlme) {}
+  private static float[] b;
+  float[] a;
+  private float[] c = { 1.0F, 1.0F, 1.0F };
   
-  public void onReceive(Context arg1, Intent paramIntent)
+  static
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    jdField_b_of_type_ArrayOfFloat = new float[4];
+  }
+  
+  public lmf()
+  {
+    this.jdField_a_of_type_ArrayOfFloat = new float[] { 0.0F };
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public void a(BufferedReader paramBufferedReader)
+  {
+    int j = 0;
+    super.a(paramBufferedReader);
+    if (!this.jdField_a_of_type_Boolean) {}
     for (;;)
     {
       return;
-      if (!"tencent.video.qavgameplaysomgr.notify".equals(paramIntent.getAction())) {
-        continue;
-      }
-      int i = paramIntent.getIntExtra("Event_Progress", 0);
-      if ((i == 100) || (i < 0))
+      this.c = new float[lme.a(paramBufferedReader, "colorsCount")];
+      int i = 0;
+      while (i < this.c.length)
       {
-        this.a.jdField_a_of_type_Lmb = lmb.a();
-        int j = this.a.jdField_a_of_type_Int;
-        this.a.jdField_a_of_type_Int = lmj.a(this.a.jdField_a_of_type_Lmb);
-        boolean bool;
-        if ((i == 100) && (this.a.jdField_a_of_type_Int != 11))
-        {
-          bool = true;
-          if (QLog.isColorLevel()) {
-            QLog.d("QavGPDownloadManager", 2, String.format("receive notify, lastStatus[%s], progress[%s], mStatusGameplay[%s], data[%s]", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.a.jdField_a_of_type_Int), this.a.jdField_a_of_type_Lmb }));
-          }
-          paramIntent = new ArrayList();
-        }
-        synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
-        {
-          paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
-          ??? = paramIntent.iterator();
-          while (???.hasNext()) {
-            ((lmd)???.next()).a(bool, this.a.b(), this.a.jdField_a_of_type_Int);
-          }
-          bool = false;
-        }
+        this.c[i] = lme.a(paramBufferedReader, "colors" + i);
+        i += 1;
       }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QavGPDownloadManager", 4, String.format("receive notify, progress[%s]", new Object[] { Integer.valueOf(i) }));
-      }
-      paramIntent = new ArrayList();
-      synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
+      this.jdField_a_of_type_ArrayOfFloat = new float[lme.a(paramBufferedReader, "timelineCount")];
+      i = j;
+      while (i < this.jdField_a_of_type_ArrayOfFloat.length)
       {
-        paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
-        ??? = paramIntent.iterator();
-        if (!???.hasNext()) {
-          continue;
-        }
-        ((lmd)???.next()).a(i);
+        this.jdField_a_of_type_ArrayOfFloat[i] = lme.a(paramBufferedReader, "timeline" + i);
+        i += 1;
       }
+    }
+  }
+  
+  public float[] a(float paramFloat)
+  {
+    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+    int k = arrayOfFloat.length;
+    int i = 1;
+    int j = 0;
+    if (i < k) {
+      if (arrayOfFloat[i] <= paramFloat) {}
+    }
+    for (;;)
+    {
+      float f4 = arrayOfFloat[j];
+      j *= 3;
+      float f1 = this.c[j];
+      float f2 = this.c[(j + 1)];
+      float f3 = this.c[(j + 2)];
+      if (i == -1)
+      {
+        jdField_b_of_type_ArrayOfFloat[0] = f1;
+        jdField_b_of_type_ArrayOfFloat[1] = f2;
+        jdField_b_of_type_ArrayOfFloat[2] = f3;
+        return jdField_b_of_type_ArrayOfFloat;
+        j = i;
+        i += 1;
+        break;
+      }
+      paramFloat = (paramFloat - f4) / (arrayOfFloat[i] - f4);
+      i *= 3;
+      jdField_b_of_type_ArrayOfFloat[0] = ((this.c[i] - f1) * paramFloat + f1);
+      jdField_b_of_type_ArrayOfFloat[1] = ((this.c[(i + 1)] - f2) * paramFloat + f2);
+      jdField_b_of_type_ArrayOfFloat[2] = ((this.c[(i + 2)] - f3) * paramFloat + f3);
+      return jdField_b_of_type_ArrayOfFloat;
+      i = -1;
     }
   }
 }

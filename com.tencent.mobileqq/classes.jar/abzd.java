@@ -1,33 +1,60 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0x101.SubMsgType0x27.MsgBody;
+import com.tencent.ad.tangram.canvas.download.AdCanvasDownloadListenerAdapter;
+import com.tencent.ad.tangram.canvas.download.IAdDownloader.Callback;
+import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppDownloadManager;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class abzd
-  implements abzb
+  implements AdCanvasDownloadListenerAdapter
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
+  private List<IAdDownloader.Callback> a = new CopyOnWriteArrayList();
+  
+  public IAdDownloader.Callback getDownloadListener(AdAppDownloadManager paramAdAppDownloadManager)
   {
-    SubMsgType0x27.MsgBody localMsgBody = new SubMsgType0x27.MsgBody();
-    try
+    if ((this.a != null) && (this.a.size() > 0))
     {
-      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-      ((avnh)paramQQAppInterface.getManager(284)).a(localMsgBody, paramMsgInfo.shMsgSeq, paramMsgInfo.lMsgUid);
-      return;
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext())
+      {
+        IAdDownloader.Callback localCallback = (IAdDownloader.Callback)localIterator.next();
+        if (((localCallback instanceof abzc)) && (((abzc)localCallback).a() == paramAdAppDownloadManager)) {
+          return localCallback;
+        }
+      }
     }
-    catch (InvalidProtocolBufferMicroException paramQQAppInterface)
+    return null;
+  }
+  
+  public void removeDownloadListener(AdAppDownloadManager paramAdAppDownloadManager)
+  {
+    if ((this.a == null) || (paramAdAppDownloadManager == null)) {}
+    for (;;)
     {
-      QLog.e("Q.msg.BaseMessageProcessor", 1, paramQQAppInterface, new Object[0]);
+      return;
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext())
+      {
+        IAdDownloader.Callback localCallback = (IAdDownloader.Callback)localIterator.next();
+        if ((localCallback instanceof abzc))
+        {
+          AdAppDownloadManager localAdAppDownloadManager = ((abzc)localCallback).a();
+          if ((localAdAppDownloadManager != null) && (localAdAppDownloadManager == paramAdAppDownloadManager)) {
+            this.a.remove(localCallback);
+          }
+        }
+      }
     }
   }
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void setDownloadListener(AdAppDownloadManager paramAdAppDownloadManager)
   {
-    a(paramabxc.a(), paramMsgInfo, paramMsgType0x210);
-    return null;
+    if ((this.a != null) && (paramAdAppDownloadManager != null))
+    {
+      abzc localabzc = new abzc();
+      localabzc.a(paramAdAppDownloadManager);
+      this.a.add(localabzc);
+    }
   }
 }
 

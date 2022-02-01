@@ -1,30 +1,13 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class ancy
+public final class ancy
+  implements EIPCResultCallback
 {
-  public static void a(Context paramContext, String paramString1, String paramString2)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", aqgn.c().a(paramString2, paramString1));
-    localIntent.putExtra("hide_operation_bar", true);
-    paramContext.startActivity(localIntent);
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return paramInt != 0;
-  }
-  
-  public static boolean b(int paramInt)
-  {
-    return (paramInt & 0x1) != 0;
-  }
-  
-  public static boolean c(int paramInt)
-  {
-    return (paramInt & 0x2) != 0;
+    QLog.i("CmShow_CmShowRenderView", 1, "openCmShowStore CmShow code:" + paramEIPCResult.code);
   }
 }
 

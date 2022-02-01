@@ -1,37 +1,28 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.hiddenchat.HiddenChatSettingFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aomg
+  extends CardObserver
 {
-  private Bundle a;
+  public aomg(HiddenChatSettingFragment paramHiddenChatSettingFragment) {}
   
-  public aomg(Bundle paramBundle)
+  public void onSetHiddenSession(boolean paramBoolean, int paramInt)
   {
-    this.a = paramBundle;
-  }
-  
-  public Bundle a()
-  {
-    return this.a;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.a.putLong("downloadItems", paramLong);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.a.putBoolean("NoLimitParams", paramBoolean);
-  }
-  
-  public void b(long paramLong)
-  {
-    this.a.putLong("recognitionMask", paramLong);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.a.putBoolean("arTransferPromotion", paramBoolean);
+    super.onSetHiddenSession(paramBoolean, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("HiddenChatSetting", 2, "onSetHiddenSession " + paramBoolean + " type=" + paramInt);
+    }
+    if (paramInt == 42318) {
+      if (!paramBoolean) {
+        HiddenChatSettingFragment.a(this.a, HiddenChatSettingFragment.a(this.a), aomh.a(HiddenChatSettingFragment.a(this.a).getCurrentUin(), this.a.getActivity()));
+      }
+    }
+    while ((paramInt != 42319) || (paramBoolean)) {
+      return;
+    }
+    HiddenChatSettingFragment.a(this.a, HiddenChatSettingFragment.b(this.a), aomh.b(HiddenChatSettingFragment.a(this.a).getCurrentUin(), this.a.getActivity()));
   }
 }
 

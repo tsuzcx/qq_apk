@@ -1,13 +1,21 @@
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.qzonevip.gift.particle.ParticleExplodeView;
+import java.util.ArrayList;
+
 public class bazu
+  extends AnimatorListenerAdapter
 {
-  public int a;
-  public CharSequence a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
+  public bazu(ParticleExplodeView paramParticleExplodeView) {}
   
-  public bazu(bazs parambazs) {}
+  public void onAnimationEnd(Animator arg1)
+  {
+    synchronized (this.a.jdField_a_of_type_JavaLangObject)
+    {
+      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+      return;
+    }
+  }
 }
 
 

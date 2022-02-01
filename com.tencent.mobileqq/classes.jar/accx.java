@@ -1,15 +1,18 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.ValueCallback;
+import kotlin.Metadata;
 
-public class accx
-  implements abzb
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "onReceiveValue"}, k=3, mv={1, 1, 16})
+public final class accx<T>
+  implements ValueCallback<String>
 {
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public static final accx a = new accx();
+  
+  public final void a(String paramString)
   {
-    ((vkz)paramabxc.a().getBusinessHandler(98)).b(paramMsgType0x210.vProtobuf);
-    return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("GdtMotiveBrowsingFragment", 2, "handleMotiveBrowsingData EVENT_CALL_BACK_JS callback " + paramString);
+    }
   }
 }
 

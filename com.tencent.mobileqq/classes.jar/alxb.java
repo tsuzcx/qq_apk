@@ -1,31 +1,24 @@
-import com.tencent.TMG.sdk.AVVideoCtrl.SwitchCameraCompleteCallback;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.9;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import mqq.app.QQPermissionCallback;
 
 public class alxb
-  extends AVVideoCtrl.SwitchCameraCompleteCallback
+  implements QQPermissionCallback
 {
-  public alxb(CmGameAvHandler.9 param9) {}
+  public alxb(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity, int paramInt) {}
   
-  public void onComplete(int paramInt1, int paramInt2)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    int i = 0;
-    if (paramInt2 == 0) {}
-    for (;;)
-    {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("ret", i);
-        localJSONObject.put("cameraPos", paramInt1);
-        localJSONObject.put("errCode", paramInt2);
-        alvx.a().callbackFromRequest(this.a.a, 0, "cs.audioRoom_camera_switch.local", localJSONObject.toString());
-        return;
-      }
-      catch (Exception localException) {}
-      i = -1;
-    }
+    paramArrayOfString = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.a.obtainMessage(2);
+    paramArrayOfString.arg1 = 1;
+    paramArrayOfString.arg2 = 2131698596;
+    paramArrayOfString.sendToTarget();
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    CreateFaceToFaceDiscussionActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity, this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,32 +1,32 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.apollo.view.pannel.ApolloPanel;
+import java.lang.ref.WeakReference;
+import java.util.Deque;
 
 public class anpc
-  extends anpp
+  implements PopupWindow.OnDismissListener
 {
-  protected anpc(QQAppInterface paramQQAppInterface, anpt paramanpt)
-  {
-    super(paramQQAppInterface, paramanpt);
-  }
+  public anpc(ApolloPanel paramApolloPanel) {}
   
-  public int a(QQMessageFacade.Message paramMessage)
+  public void onDismiss()
   {
-    return -113;
-  }
-  
-  public anpt a(QQMessageFacade.Message paramMessage)
-  {
-    Object localObject = bfsm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDrawable(2130844622));
-    this.jdField_a_of_type_Anpt.a((Bitmap)localObject);
-    localObject = a() + ": ";
-    this.jdField_a_of_type_Anpt.b((String)localObject);
-    localObject = c();
-    this.jdField_a_of_type_Anpt.d((String)localObject);
-    b(paramMessage);
-    return this.jdField_a_of_type_Anpt;
+    View.OnClickListener localOnClickListener = null;
+    this.a.a = null;
+    if ((ApolloPanel.a(this.a) != null) && (ApolloPanel.a(this.a).size() > 0))
+    {
+      anpi localanpi = (anpi)ApolloPanel.a(this.a).poll();
+      if (ApolloPanel.a(this.a).size() == 0) {
+        ApolloPanel.a(this.a, null);
+      }
+      if (localanpi != null)
+      {
+        if (localanpi.jdField_a_of_type_JavaLangRefWeakReference != null) {
+          localOnClickListener = (View.OnClickListener)localanpi.jdField_a_of_type_JavaLangRefWeakReference.get();
+        }
+        ApolloPanel.a(this.a, localanpi.jdField_a_of_type_AndroidViewView, localanpi.jdField_a_of_type_Int, localanpi.jdField_a_of_type_JavaLangString, localanpi.b, localOnClickListener);
+      }
+    }
   }
 }
 

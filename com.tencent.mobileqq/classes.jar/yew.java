@@ -1,24 +1,23 @@
-import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface yew
+public class yew
 {
-  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
+  public static void a(String paramString, Object... paramVarArgs)
+  {
+    ykq.e(paramString, yey.a(paramVarArgs));
+  }
   
-  public abstract void a(String paramString);
+  public static void b(String paramString, Object... paramVarArgs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString, 2, yey.a(paramVarArgs));
+    }
+  }
   
-  public abstract void a(ygc paramygc);
-  
-  public abstract void a(byte[] paramArrayOfByte);
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void b(int paramInt, Object paramObject);
-  
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
+  public static void c(String paramString, Object... paramVarArgs)
+  {
+    ykq.d(paramString, yey.a(paramVarArgs));
+  }
 }
 
 

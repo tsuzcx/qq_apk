@@ -1,30 +1,18 @@
-public abstract interface azfa
+import com.tencent.map.geolocation.TencentDirectionListener;
+
+class azfa
+  implements TencentDirectionListener
 {
-  public abstract void a(azfk paramazfk);
+  azfa(azey paramazey) {}
   
-  public abstract void b(azfk paramazfk);
-  
-  public abstract void c(azfk paramazfk);
-  
-  public abstract void d(azfk paramazfk);
-  
-  public abstract void e(azfk paramazfk);
-  
-  public abstract void f(azfk paramazfk);
-  
-  public abstract void g(azfk paramazfk);
-  
-  public abstract void h(azfk paramazfk);
-  
-  public abstract void i(azfk paramazfk);
-  
-  public abstract void j(azfk paramazfk);
-  
-  public abstract void k(azfk paramazfk);
-  
-  public abstract void l(azfk paramazfk);
-  
-  public abstract void m(azfk paramazfk);
+  public void onDirectionChanged(double paramDouble, int paramInt)
+  {
+    if (azey.a(this.a) != null)
+    {
+      azey.a(this.a, 180.0D + paramDouble);
+      azey.a(this.a, false);
+    }
+  }
 }
 
 

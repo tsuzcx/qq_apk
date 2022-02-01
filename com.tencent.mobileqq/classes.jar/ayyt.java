@@ -1,18 +1,16 @@
-import android.view.animation.Animation;
-import com.tencent.mobileqq.profilecard.vas.view.VasProfileSimpleView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
 
 public class ayyt
-  extends ayyv
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ayyt(VasProfileSimpleView paramVasProfileSimpleView, aymg paramaymg)
-  {
-    super(null);
-  }
+  public ayyt(ScanIconAnimateView paramScanIconAnimateView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    VasProfileSimpleView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileSimpleView, true);
-    this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileSimpleView.b(this.jdField_a_of_type_Aymg);
+    this.a.e = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
   }
 }
 

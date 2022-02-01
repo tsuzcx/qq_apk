@@ -1,13 +1,6 @@
-class wis
-  extends wht
+public abstract interface wis<DATA>
 {
-  wis(wif paramwif, wjn paramwjn) {}
-  
-  public boolean b()
-  {
-    this.jdField_a_of_type_Wjn.e = ((String)a("UploadImageJob_out_image_url"));
-    return true;
-  }
+  public abstract void a(boolean paramBoolean, DATA paramDATA);
 }
 
 

@@ -1,58 +1,71 @@
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.io.File;
 
 public class aqde
+  implements aqdf
 {
-  public aqea a;
-  public boolean a;
+  public final String a = aqdd.a + "." + getClass().getSimpleName();
   
-  public aqde()
+  public static final String b(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Aqea = new aqea();
+    return aqef.a() + File.separator + "_res/" + paramString1;
   }
   
-  public static aqde a(String paramString)
+  public String a(aqdi paramaqdi)
   {
-    if (paramString == null) {}
-    do
+    return aqef.a() + File.separator + "_res/" + paramaqdi.b + File.separator;
+  }
+  
+  public boolean a(aqdi paramaqdi)
+  {
+    String str = b(paramaqdi);
+    try
     {
-      return null;
-      try
-      {
-        aqde localaqde = new aqde();
-        paramString = new JSONObject(paramString);
-        localaqde.jdField_a_of_type_Boolean = paramString.optBoolean("showTogetherWatchInTroopSettingCard", false);
-        paramString = paramString.optJSONObject("watchTogether");
-        if (paramString != null)
-        {
-          aqea localaqea = new aqea();
-          localaqea.a(paramString.optInt("version"));
-          localaqea.b(paramString.optInt("jumpType"));
-          localaqea.a(paramString.optString("jumpUrl"));
-          localaqea.b(paramString.optString("jumpExtensionInfo"));
-          localaqde.jdField_a_of_type_Aqea = localaqea;
-        }
-        QLog.d("TogetherBusinessConfProcessor", 2, "confBean = " + localaqde.toString());
-        return localaqde;
+      boolean bool = new File(str).exists();
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a, 2, "needDownload.file exist|" + bool + "|" + paramaqdi + "|" + str);
       }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("TogetherBusinessConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
+      if (!bool) {
+        return true;
+      }
+    }
+    catch (Throwable paramaqdi)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(this.a, 2, "isNeedDownload.exception happen.e=" + paramaqdi.getMessage());
+      }
+      paramaqdi.printStackTrace();
+    }
+    return false;
   }
   
-  public String toString()
+  public boolean a(aqdi paramaqdi, boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("TogetherConfigureBean{showTogetherWatchInTroopSettingCard=").append(this.jdField_a_of_type_Boolean).append(", watchTogether=");
-    if (this.jdField_a_of_type_Aqea == null) {}
-    for (String str = "null";; str = this.jdField_a_of_type_Aqea.toString()) {
-      return str + '}';
+    return true;
+  }
+  
+  public String b(aqdi paramaqdi)
+  {
+    return b(paramaqdi.b, paramaqdi.c);
+  }
+  
+  public boolean b(aqdi paramaqdi)
+  {
+    boolean bool = true;
+    String str = aznv.a(b(paramaqdi));
+    if (!paramaqdi.b.equalsIgnoreCase(str))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(this.a, 1, "checkDownloadFile.verify failed|" + str + "|" + paramaqdi);
+      }
+      bool = false;
     }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqde
  * JD-Core Version:    0.7.0.1
  */

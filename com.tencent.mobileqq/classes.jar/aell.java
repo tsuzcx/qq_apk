@@ -1,24 +1,22 @@
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aell
-  implements nrb
+  implements View.OnClickListener
 {
-  public aell(TroopInfoActivity paramTroopInfoActivity) {}
+  public aell(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopTypeExt = 4;
-    }
-    bcef.b(this.a.app, "P_CliOper", "Grp_create", "", "edit_data", "local_suc", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.b, "", "");
-    TroopInfoActivity.a(this.a, true, 0L, "", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt);
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.l();
-    TroopInfoActivity.a(this.a, false, 0L, paramString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt);
+    Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://zb.vip.qq.com/v2/pages/nudgeMall?_wv=2");
+    this.a.startActivity(localIntent);
+    bdla.b(null, "dc00898", "", "", "0X800B3A5", "0X800B3A5", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

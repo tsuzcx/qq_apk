@@ -1,53 +1,55 @@
-import android.util.SparseArray;
-import java.util.HashMap;
+import android.os.Binder;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 
-public class bmbj
+public abstract class bmbj
+  extends Binder
+  implements bmbi
 {
-  public double a;
-  public float a;
-  public int a;
-  public long a;
-  public SparseArray<String> a;
-  public String a;
-  public HashMap<Integer, String> a;
-  public boolean a;
-  public int b;
-  public long b;
-  public SparseArray<String> b;
-  public String b;
-  public HashMap<Integer, Float> b;
-  public int c;
-  public long c;
-  public SparseArray<String> c;
-  public String c;
-  public HashMap<Integer, Integer> c;
-  public int d;
-  public String d = "none";
-  public int e;
-  public String e = "none";
-  public int f;
-  public String f = "none";
-  public int g;
-  public String g = "none";
-  public int h = -1;
-  public int i;
-  
   public bmbj()
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_c_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_JavaLangString = "none";
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_c_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_Float = -1.0F;
-    this.jdField_c_of_type_JavaLangString = "none";
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_b_of_type_Long = -1L;
-    this.jdField_a_of_type_Double = 1.0D;
+    attachInterface(this, "cooperation.qqfav.ipc.IQfavRemoteProxyInterface");
+  }
+  
+  public static bmbi a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qqfav.ipc.IQfavRemoteProxyInterface");
+    if ((localIInterface != null) && ((localIInterface instanceof bmbi))) {
+      return (bmbi)localIInterface;
+    }
+    return new bmbk(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("cooperation.qqfav.ipc.IQfavRemoteProxyInterface");
+      return true;
+    }
+    paramParcel1.enforceInterface("cooperation.qqfav.ipc.IQfavRemoteProxyInterface");
+    paramInt1 = paramParcel1.readInt();
+    if (paramParcel1.readInt() != 0) {}
+    for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    {
+      a(paramInt1, paramParcel1);
+      paramParcel2.writeNoException();
+      return true;
+    }
   }
 }
 

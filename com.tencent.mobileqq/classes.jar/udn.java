@@ -1,14 +1,10 @@
-class udn
+public abstract interface udn
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean;
-  int c;
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     udn
  * JD-Core Version:    0.7.0.1
  */

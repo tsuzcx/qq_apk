@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.music;
 
-import awei;
+import axkk;
 
 class QQPlayerService$5
   implements Runnable
 {
-  QQPlayerService$5(QQPlayerService paramQQPlayerService, awei paramawei, SongInfo paramSongInfo) {}
+  QQPlayerService$5(QQPlayerService paramQQPlayerService, axkk paramaxkk, SongInfo paramSongInfo) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Awei.onPlaySongChanged(this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo);
+    this.jdField_a_of_type_Axkk.onPlaySongChanged(this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo);
   }
 }
 

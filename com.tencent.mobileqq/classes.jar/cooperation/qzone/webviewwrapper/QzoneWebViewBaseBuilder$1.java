@@ -1,13 +1,13 @@
 package cooperation.qzone.webviewwrapper;
 
-import aabq;
-import aabz;
-import aacu;
-import aacz;
-import aadt;
-import almv;
-import autn;
-import bgzx;
+import aarc;
+import aarl;
+import aasg;
+import aasl;
+import aatf;
+import amkw;
+import avzm;
+import bikp;
 import com.tencent.biz.webviewplugin.OpenCenterPlugin;
 import com.tencent.mobileqq.mini.out.webPlugins.MiniAppPlugin;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebReport;
@@ -23,18 +23,18 @@ final class QzoneWebViewBaseBuilder$1
   public List<WebViewPlugin> getCommonJsPlugin()
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new almv());
-    localArrayList.add(new aabq());
-    localArrayList.add(new aacz());
-    localArrayList.add(new aabz());
-    localArrayList.add(new bgzx());
+    localArrayList.add(new amkw());
+    localArrayList.add(new aarc());
+    localArrayList.add(new aasl());
+    localArrayList.add(new aarl());
+    localArrayList.add(new bikp());
     localArrayList.add(new VasWebReport());
-    localArrayList.add(new autn());
+    localArrayList.add(new avzm());
     localArrayList.add(new OpenCenterPlugin());
     localArrayList.add(new MiniAppPlugin());
-    localArrayList.add(new aacu());
+    localArrayList.add(new aasg());
     localArrayList.add(new QzoneWebMusicJsPlugin());
-    localArrayList.add(new aadt());
+    localArrayList.add(new aatf());
     return localArrayList;
   }
 }

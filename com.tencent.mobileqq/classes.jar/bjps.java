@@ -1,21 +1,98 @@
-import android.view.ViewTreeObserver;
-import com.tencent.widget.DynamicGridView;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.net.Uri;
+import android.net.Uri.Builder;
+import android.webkit.MimeTypeMap;
+import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
+import java.io.File;
 
-public class bjps
-  implements bjpz
+public final class bjps
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  
-  public bjps(DynamicGridView paramDynamicGridView, int paramInt1, int paramInt2)
+  public static Intent a(Context paramContext, File paramFile)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
+    if ((paramContext == null) || (paramFile == null) || (!paramFile.isFile())) {
+      return null;
+    }
+    String str = paramFile.getName().toLowerCase().trim();
+    Intent localIntent = new Intent("android.intent.action.VIEW");
+    localIntent.addFlags(268435456);
+    if (a(str, paramContext.getResources().getStringArray(2130968627))) {
+      localIntent.setDataAndType(Uri.fromFile(paramFile), "image/*");
+    }
+    for (;;)
+    {
+      FileProvider7Helper.intentCompatForN(paramContext, localIntent);
+      return localIntent;
+      if (a(str, paramContext.getResources().getStringArray(2130968633)))
+      {
+        localIntent.setDataAndType(Uri.parse(paramFile.toString()).buildUpon().encodedAuthority("com.android.htmlfileprovider").scheme("content").encodedPath(paramFile.toString()).build(), "text/html");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968624)))
+      {
+        localIntent.addFlags(67108864);
+        localIntent.putExtra("oneshot", 0);
+        localIntent.putExtra("configchange", 0);
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "audio/*");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968632)))
+      {
+        localIntent.addFlags(67108864);
+        localIntent.putExtra("oneshot", 0);
+        localIntent.putExtra("configchange", 0);
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "video/*");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968631)))
+      {
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "text/plain");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968630)))
+      {
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/pdf");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968634)))
+      {
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/msword");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968626)))
+      {
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/vnd.ms-excel");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968628)))
+      {
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/vnd.ms-powerpoint");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968625)))
+      {
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/x-chm");
+      }
+      else
+      {
+        str = MimeTypeMap.getSingleton().getMimeTypeFromExtension(str.substring(str.lastIndexOf(".") + 1).toLowerCase().trim());
+        localIntent.setDataAndType(Uri.fromFile(paramFile), str);
+      }
+    }
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public static boolean a(String paramString, String[] paramArrayOfString)
   {
-    this.jdField_a_of_type_ComTencentWidgetDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new bjpt(this, paramInt1, paramInt2));
+    boolean bool2 = false;
+    int j = paramArrayOfString.length;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < j)
+      {
+        if (paramString.endsWith(paramArrayOfString[i])) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
+    }
   }
 }
 

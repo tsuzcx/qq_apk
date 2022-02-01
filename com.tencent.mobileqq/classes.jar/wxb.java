@@ -1,6 +1,18 @@
-public abstract interface wxb
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+
+class wxb
+  extends wwe
 {
-  public abstract void a(wwz paramwwz);
+  wxb(wxa paramwxa, StoryVideoItem paramStoryVideoItem, wyg paramwyg)
+  {
+    super(paramStoryVideoItem);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_Wyg.a = ((String)a("result"));
+    return true;
+  }
 }
 
 

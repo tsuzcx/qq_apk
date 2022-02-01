@@ -1,37 +1,40 @@
 package com.tencent.mobileqq.activity;
 
-import adbz;
-import android.app.Activity;
-import android.content.res.Resources;
-import bfur;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class ChatSettingForTroop$52
+class ChatSettingForTroop$52
   implements Runnable
 {
-  ChatSettingForTroop$52(ChatSettingForTroop paramChatSettingForTroop) {}
+  ChatSettingForTroop$52(ChatSettingForTroop paramChatSettingForTroop, Intent paramIntent) {}
   
   public void run()
   {
-    if (this.this$0.a != null) {
-      if (!this.this$0.a.isShowing()) {
-        this.this$0.a.show();
+    try
+    {
+      ArrayList localArrayList = this.a.getExtras().getStringArrayList("param_admins");
+      this.this$0.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.coverAdministrators(this.this$0.app, localArrayList);
+      this.this$0.jdField_a_of_type_AndroidOsHandler.post(new ChatSettingForTroop.52.1(this));
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.chatopttroop", 2, localException, new Object[0]);
+        }
       }
     }
-    do
-    {
-      return;
-      this.this$0.a = bfur.a(this.this$0, 230);
-      this.this$0.a.setMessage(this.this$0.getActivity().getResources().getString(2131719182));
-      adbz localadbz = new adbz(this);
-      this.this$0.a.setPositiveButton(2131690952, localadbz);
-    } while (this.this$0.a.isShowing());
-    this.this$0.a.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingForTroop.52
  * JD-Core Version:    0.7.0.1
  */

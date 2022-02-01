@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount;
 
-import amxz;
 import android.os.Bundle;
 import android.os.Looper;
 import android.support.annotation.Nullable;
@@ -9,8 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import anxn;
+import aoan;
+import apap;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
@@ -19,17 +21,17 @@ import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.Switch;
 import mqq.os.MqqHandler;
-import nsf;
-import nsg;
-import nwx;
-import nwy;
+import nzg;
+import nzh;
+import odx;
 import ody;
-import ugf;
+import olp;
+import uuc;
 
 public class AccountSettingFragment
   extends IphoneTitleBarFragment
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new nwx(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new odx(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private AccountDetail jdField_a_of_type_ComTencentMobileqqDataAccountDetail;
   private Switch jdField_a_of_type_ComTencentWidgetSwitch;
@@ -40,14 +42,14 @@ public class AccountSettingFragment
   
   private void a()
   {
-    amxz localamxz = (amxz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
-    if (localamxz != null)
+    aoan localaoan = (aoan)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER);
+    if (localaoan != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail = localamxz.b(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail = localaoan.b(this.jdField_a_of_type_JavaLangString);
       b();
     }
     if (this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) {
-      ody.a(Long.valueOf(Long.parseLong(this.jdField_a_of_type_JavaLangString)), null, new nwy(this));
+      olp.a(Long.valueOf(Long.parseLong(this.jdField_a_of_type_JavaLangString)), null, new ody(this));
     }
   }
   
@@ -67,7 +69,7 @@ public class AccountSettingFragment
     for (;;)
     {
       localEntityManager.close();
-      paramAccountDetail = (amxz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
+      paramAccountDetail = (aoan)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER);
       if (paramAccountDetail != null) {
         paramAccountDetail.a(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
       }
@@ -92,7 +94,7 @@ public class AccountSettingFragment
     if (this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) {
       return;
     }
-    this.jdField_a_of_type_JavaLangInteger = ugf.a(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
+    this.jdField_a_of_type_JavaLangInteger = uuc.a(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
     if ((this.jdField_a_of_type_JavaLangInteger != null) && (this.jdField_a_of_type_JavaLangInteger.intValue() == 1))
     {
       this.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(true);
@@ -104,12 +106,12 @@ public class AccountSettingFragment
   private void d()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) {}
-    anxn localanxn;
+    apap localapap;
     do
     {
       return;
-      localanxn = (anxn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(148);
-    } while (localanxn == null);
+      localapap = (apap)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.APPLET_PUSH_HANDLER);
+    } while (localapap == null);
     String str1;
     String str2;
     if (this.jdField_a_of_type_ComTencentWidgetSwitch.isChecked())
@@ -125,19 +127,19 @@ public class AccountSettingFragment
     label126:
     for (int i = 1;; i = 0)
     {
-      localanxn.a(str1, str2, i);
-      ugf.a(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail, this.jdField_a_of_type_JavaLangInteger.intValue());
+      localapap.a(str1, str2, i);
+      uuc.a(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail, this.jdField_a_of_type_JavaLangInteger.intValue());
       a(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
       if (this.jdField_a_of_type_JavaLangInteger.intValue() != 1) {
         break label131;
       }
-      nsf.a.i(this.jdField_a_of_type_JavaLangString);
+      nzg.a.i(this.jdField_a_of_type_JavaLangString);
       return;
       i = 3;
       break;
     }
     label131:
-    nsf.a.j(this.jdField_a_of_type_JavaLangString);
+    nzg.a.j(this.jdField_a_of_type_JavaLangString);
   }
   
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
@@ -147,7 +149,7 @@ public class AccountSettingFragment
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)getActivity().getAppRuntime());
     }
     this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(Looper.getMainLooper());
-    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)this.mContentView.findViewById(2131362858));
+    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)this.mContentView.findViewById(2131362874));
     this.jdField_a_of_type_ComTencentWidgetSwitch.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     paramLayoutInflater = getArguments();
     this.jdField_a_of_type_JavaLangString = paramLayoutInflater.getString("uin");
@@ -157,13 +159,13 @@ public class AccountSettingFragment
   
   public int getContentLayoutId()
   {
-    return 2131559652;
+    return 2131559687;
   }
   
   public View onCreateCenterView()
   {
     View localView = super.onCreateCenterView();
-    setTitle(getActivity().getString(2131694806));
+    setTitle(getActivity().getString(2131695014));
     this.vg.changeBg(true);
     return localView;
   }

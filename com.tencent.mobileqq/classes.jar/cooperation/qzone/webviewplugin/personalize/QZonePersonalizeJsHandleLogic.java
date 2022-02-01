@@ -2,7 +2,7 @@ package cooperation.qzone.webviewplugin.personalize;
 
 import android.content.Intent;
 import android.os.Bundle;
-import bgve;
+import bifw;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
 import org.json.JSONException;
@@ -12,7 +12,7 @@ public class QZonePersonalizeJsHandleLogic
 {
   public static final String TAG = "QZonePersonalizeJsHandleLogicQZonePersonalizePlugin";
   
-  public static void handleSwitchFinished(bgve parambgve, String... paramVarArgs)
+  public static void handleSwitchFinished(bifw parambifw, String... paramVarArgs)
   {
     int i = 0;
     if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
@@ -46,10 +46,10 @@ public class QZonePersonalizeJsHandleLogic
       localBundle.putInt("isAfter785", i);
       localBundle.putInt("diyHome", j);
       paramVarArgs.putExtras(localBundle);
-      QZoneHelper.forwardToQzoneTransluentActivity(parambgve.a(), QZoneHelper.UserInfo.getInstance(), paramVarArgs);
+      QZoneHelper.forwardToQzoneTransluentActivity(parambifw.a(), QZoneHelper.UserInfo.getInstance(), paramVarArgs);
       return;
     }
-    catch (JSONException parambgve) {}
+    catch (JSONException parambifw) {}
   }
 }
 

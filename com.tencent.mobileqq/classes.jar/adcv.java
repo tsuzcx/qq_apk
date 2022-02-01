@@ -1,36 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.HotChatManager.HotChatStateWrapper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
+import java.io.IOException;
 
-class adcv
-  implements DialogInterface.OnClickListener
+public class adcv
+  implements CompoundButton.OnCheckedChangeListener
 {
-  adcv(adct paramadct, HotChatInfo paramHotChatInfo, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
+  public adcv(TestAppFragment paramTestAppFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.isWifiHotChat) {}
-    for (paramInt = 1;; paramInt = 2)
+    File localFile;
+    if (paramBoolean)
     {
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004D2C", "0X8004D2C", paramInt, 0, "", "", "", "");
-      if (NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity)) {
-        break;
-      }
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getApplicationContext(), amtj.a(2131701741), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
-      return;
+      new File(this.a.a).mkdirs();
+      localFile = new File(this.a.a, this.a.b);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.addObserver(adct.a(this.jdField_a_of_type_Adct));
-    ((amtp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(35)).a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo, HotChatManager.HotChatStateWrapper.STATE_LEFT_NORMAL_ACTION_DELETE_SHELL);
-    this.jdField_a_of_type_Adct.a = new bhht(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
-    this.jdField_a_of_type_Adct.a.setContentView(2131562728);
-    this.jdField_a_of_type_Adct.a.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131691946));
-    this.jdField_a_of_type_Adct.a.setCancelable(true);
-    this.jdField_a_of_type_Adct.a.show();
+    for (;;)
+    {
+      try
+      {
+        localFile.createNewFile();
+        EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+        return;
+      }
+      catch (IOException localIOException)
+      {
+        localIOException.printStackTrace();
+        continue;
+      }
+      new File(this.a.a, this.a.b).delete();
+    }
   }
 }
 

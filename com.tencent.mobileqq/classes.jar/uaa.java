@@ -1,30 +1,38 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInjoyCutImageView;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
 
-class uaa
-  implements View.OnTouchListener
+public abstract interface uaa
+  extends uam
 {
-  uaa(tzy paramtzy) {}
+  public abstract ViewGroup a();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 1) {
-      tzy.a(this.a).performClick();
-    }
-    if (tzy.a(this.a, paramMotionEvent.getX(), paramMotionEvent.getY()).booleanValue()) {}
-    for (int i = 101;; i = 102)
-    {
-      int j = tzy.a(this.a, tzy.a(this.a));
-      tzy.a(this.a, i, j + 1);
-      return false;
-    }
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void a(VideoPlayManager paramVideoPlayManager);
+  
+  public abstract void a(ual paramual);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void setControlType(int paramInt);
+  
+  public abstract void setEndWithLastFrame(boolean paramBoolean);
+  
+  public abstract void setEventListener(uab paramuab);
+  
+  public abstract void setFullScreenDisable(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uaa
  * JD-Core Version:    0.7.0.1
  */

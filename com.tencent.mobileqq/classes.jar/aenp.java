@@ -1,43 +1,69 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
+import java.util.ArrayList;
 
-public class aenp
-  implements View.OnClickListener
+public final class aenp
+  implements Parcelable.Creator<ProfileActivity.AllInOne>
 {
-  public aenp(TroopMemberListActivity paramTroopMemberListActivity, String paramString) {}
-  
-  public void onClick(View paramView)
+  public ProfileActivity.AllInOne a(Parcel paramParcel)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.f) && (!TroopMemberListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity))) {
-      if (((this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.d == 11) && (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_Int > 0)) || (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.d == 3))
-      {
-        Intent localIntent = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.getIntent();
-        localIntent.putExtra("member_uin", "0");
-        localIntent.putExtra("member_display_name", this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.setResult(-1, localIntent);
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.finish();
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.d == 11) {
-          bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, "CliOper", "", "", "0X800621D", "0X800621D", 0, 0, "", "", "", "");
-        }
-      }
-    }
+    boolean bool = true;
+    ProfileActivity.AllInOne localAllInOne = new ProfileActivity.AllInOne(null);
+    localAllInOne.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localAllInOne.jdField_a_of_type_Int = paramParcel.readInt();
+    localAllInOne.jdField_b_of_type_Int = paramParcel.readInt();
+    localAllInOne.jdField_a_of_type_Byte = paramParcel.readByte();
+    localAllInOne.jdField_a_of_type_Short = ((short)paramParcel.readInt());
+    localAllInOne.jdField_b_of_type_Byte = paramParcel.readByte();
+    localAllInOne.jdField_c_of_type_Int = paramParcel.readInt();
+    localAllInOne.jdField_c_of_type_Byte = paramParcel.readByte();
+    localAllInOne.jdField_a_of_type_ArrayOfByte = paramParcel.createByteArray();
+    localAllInOne.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localAllInOne.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localAllInOne.jdField_d_of_type_JavaLangString = paramParcel.readString();
+    localAllInOne.jdField_e_of_type_JavaLangString = paramParcel.readString();
+    localAllInOne.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    paramParcel.readTypedList(localAllInOne.jdField_a_of_type_JavaUtilArrayList, ProfileActivity.CardContactInfo.CREATOR);
+    localAllInOne.jdField_d_of_type_Int = paramParcel.readInt();
+    if (paramParcel.readByte() == 1) {}
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, amtj.a(2131714645), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewView.getHeight());
-      continue;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.g)) {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.g, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewView.getHeight());
-      } else {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, amtj.a(2131714605), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewView.getHeight());
-      }
+      localAllInOne.jdField_a_of_type_Boolean = bool;
+      localAllInOne.jdField_f_of_type_JavaLangString = paramParcel.readString();
+      localAllInOne.jdField_e_of_type_Int = paramParcel.readInt();
+      localAllInOne.jdField_h_of_type_JavaLangString = paramParcel.readString();
+      localAllInOne.jdField_i_of_type_JavaLangString = paramParcel.readString();
+      localAllInOne.jdField_j_of_type_JavaLangString = paramParcel.readString();
+      localAllInOne.jdField_k_of_type_JavaLangString = paramParcel.readString();
+      localAllInOne.jdField_l_of_type_JavaLangString = paramParcel.readString();
+      localAllInOne.m = paramParcel.readString();
+      localAllInOne.n = paramParcel.readString();
+      localAllInOne.g = paramParcel.readInt();
+      localAllInOne.jdField_h_of_type_Int = paramParcel.readInt();
+      localAllInOne.jdField_i_of_type_Int = paramParcel.readInt();
+      localAllInOne.jdField_b_of_type_ArrayOfByte = paramParcel.createByteArray();
+      localAllInOne.jdField_j_of_type_Int = paramParcel.readInt();
+      localAllInOne.jdField_k_of_type_Int = paramParcel.readInt();
+      localAllInOne.o = paramParcel.readString();
+      localAllInOne.p = paramParcel.readString();
+      localAllInOne.jdField_a_of_type_Long = paramParcel.readLong();
+      localAllInOne.jdField_l_of_type_Int = paramParcel.readInt();
+      localAllInOne.q = paramParcel.readString();
+      localAllInOne.jdField_b_of_type_AndroidOsBundle = ((Bundle)paramParcel.readParcelable(Bundle.class.getClassLoader()));
+      localAllInOne.jdField_f_of_type_Int = paramParcel.readInt();
+      localAllInOne.jdField_a_of_type_AndroidOsBundle = ((Bundle)paramParcel.readParcelable(Bundle.class.getClassLoader()));
+      localAllInOne.jdField_c_of_type_ArrayOfByte = paramParcel.createByteArray();
+      return localAllInOne;
+      bool = false;
     }
+  }
+  
+  public ProfileActivity.AllInOne[] a(int paramInt)
+  {
+    return new ProfileActivity.AllInOne[paramInt];
   }
 }
 

@@ -1,58 +1,11 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.contact.connections.ConnectionsExplorationFragment;
-import com.tencent.qphone.base.util.QLog;
-
-public class aicy
-  extends amsu
+class aicy
+  extends aofu
 {
-  public aicy(ConnectionsExplorationFragment paramConnectionsExplorationFragment) {}
+  aicy(aict paramaict) {}
   
-  protected void onAddFriend(String paramString)
+  protected void onBatchTroopCardDefaultNick(boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectionsExplorationFragment", 2, "onAddFriend " + paramString);
-    }
-    ConnectionsExplorationFragment.a(this.a, false, true);
-  }
-  
-  protected void onAddReqStatesChanged(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectionsExplorationFragment", 2, "onAddReqStatesChanged isSuccess=" + paramBoolean + " " + paramString);
-    }
-    ConnectionsExplorationFragment.a(this.a, false, true);
-  }
-  
-  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectionsExplorationFragment", 2, "onCancelMayKnowRecommend isSuccess=" + paramBoolean + " " + paramString);
-    }
-    ConnectionsExplorationFragment.a(this.a, false, true);
-  }
-  
-  public void onGetConnectionsPerson(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectionsExplorationFragment", 2, "onCancelMayKnowRecommend isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean) {
-      ConnectionsExplorationFragment.a(this.a, false, true);
-    }
-    while (paramInt1 != 1205) {
-      return;
-    }
-    ConnectionsExplorationFragment.a(this.a, false, false);
-  }
-  
-  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectionsExplorationFragment", 2, "onGetMayKnowRecommend isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean) {
-      ConnectionsExplorationFragment.a(this.a, false, false);
-    }
+    aict.a(this.a, paramBoolean, paramObject);
   }
 }
 

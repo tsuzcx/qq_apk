@@ -1,72 +1,10 @@
-import android.os.Bundle;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.1;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.2;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.3;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.4;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.5;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.6;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import kotlin.Metadata;
 
-public class ubn
-  extends MqqHandler
-{
-  public ubn(SubscriptFeedsActivity paramSubscriptFeedsActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (this.a.isFinishing()) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          switch (paramMessage.what)
-          {
-          default: 
-            return;
-          case 1002: 
-            try
-            {
-              paramMessage = uda.a().b(this.a.app);
-              this.a.runOnUiThread(new SubscriptFeedsActivity.14.1(this, paramMessage));
-              return;
-            }
-            catch (Exception paramMessage) {}
-          }
-        } while (!QLog.isColorLevel());
-        QLog.i("SubscriptFeedsActivity", 2, paramMessage.toString());
-        return;
-        this.a.runOnUiThread(new SubscriptFeedsActivity.14.2(this));
-        return;
-        paramMessage = paramMessage.getData();
-      } while ((paramMessage == null) || (!bkwm.a()));
-      paramMessage = paramMessage.getSerializable("ReadInJoyArticleList");
-    } while ((paramMessage == null) || (!(paramMessage instanceof ArrayList)));
-    if ((!SubscriptFeedsActivity.a(this.a, (ArrayList)paramMessage)) && (QLog.isColorLevel())) {
-      QLog.d("SubscriptFeedsActivity", 2, "onGetRecommendReadInJoyArticleList data save to sp fail");
-    }
-    this.a.runOnUiThread(new SubscriptFeedsActivity.14.3(this, paramMessage));
-    return;
-    this.a.runOnUiThread(new SubscriptFeedsActivity.14.4(this));
-    return;
-    this.a.runOnUiThread(new SubscriptFeedsActivity.14.5(this));
-    return;
-    this.a.runOnUiThread(new SubscriptFeedsActivity.14.6(this));
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageTrack$Companion;", "", "()V", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ubn {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ubn
  * JD-Core Version:    0.7.0.1
  */

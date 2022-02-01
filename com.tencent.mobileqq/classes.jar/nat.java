@@ -1,35 +1,15 @@
-import androidx.annotation.NonNull;
-import trpc.qq_vgame.common.AvGameCommon.CommonQuestionInfo;
+import com.tencent.av.wtogether.view.QRecentC2CAVFileListContentView;
+import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
+import java.util.Comparator;
 
 public class nat
-  extends nap
+  implements Comparator<OfflineFileInfo>
 {
-  protected nap a()
-  {
-    return new nat();
-  }
+  public nat(QRecentC2CAVFileListContentView paramQRecentC2CAVFileListContentView) {}
   
-  public void a(nap paramnap)
+  public int a(OfflineFileInfo paramOfflineFileInfo1, OfflineFileInfo paramOfflineFileInfo2)
   {
-    super.a(paramnap);
-  }
-  
-  public void a(AvGameCommon.CommonQuestionInfo paramCommonQuestionInfo)
-  {
-    super.a(paramCommonQuestionInfo);
-  }
-  
-  public int b()
-  {
-    return 5;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(c());
-    return localStringBuilder.toString();
+    return Long.valueOf(paramOfflineFileInfo1.c).compareTo(Long.valueOf(paramOfflineFileInfo2.c));
   }
 }
 

@@ -2,7 +2,7 @@ package cooperation.qzone.util;
 
 import android.text.TextUtils;
 import android.util.Log;
-import bcdb;
+import bdjw;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
 
@@ -41,7 +41,7 @@ public class QZoneExceptionReport
     }
     addStackTag(paramThrowable);
     QLog.d("QZoneExceptionReport", 2, "", paramThrowable);
-    bcdb.a(paramThrowable, str);
+    bdjw.a(paramThrowable, str);
   }
 }
 

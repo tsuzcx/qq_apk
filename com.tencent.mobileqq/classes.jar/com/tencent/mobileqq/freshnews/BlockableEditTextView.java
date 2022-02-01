@@ -6,9 +6,9 @@ import android.text.Editable;
 import android.util.AttributeSet;
 import android.view.ContextMenu;
 import android.widget.EditText;
-import attr;
-import atts;
-import attt;
+import auyr;
+import auys;
+import auyt;
 import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
 
 public class BlockableEditTextView
@@ -41,9 +41,9 @@ public class BlockableEditTextView
   {
     setEditableFactory(TroopBarPublishUtils.a);
     if (Build.VERSION.SDK_INT >= 11) {
-      setCustomSelectionActionModeCallback(new attr(this));
+      setCustomSelectionActionModeCallback(new auyr(this));
     }
-    addTextChangedListener(new atts(this));
+    addTextChangedListener(new auys(this));
   }
   
   private boolean a()
@@ -53,11 +53,11 @@ public class BlockableEditTextView
     if (getEditableText() == null) {
       return false;
     }
-    attt[] arrayOfattt = (attt[])getEditableText().getSpans(i, j, attt.class);
-    if ((arrayOfattt != null) && (arrayOfattt.length > 0) && ((arrayOfattt[0] instanceof attt)))
+    auyt[] arrayOfauyt = (auyt[])getEditableText().getSpans(i, j, auyt.class);
+    if ((arrayOfauyt != null) && (arrayOfauyt.length > 0) && ((arrayOfauyt[0] instanceof auyt)))
     {
-      i = getEditableText().getSpanEnd(arrayOfattt[0]);
-      j = getEditableText().getSpanStart(arrayOfattt[0]);
+      i = getEditableText().getSpanEnd(arrayOfauyt[0]);
+      j = getEditableText().getSpanStart(arrayOfauyt[0]);
       if ((j >= 0) && (i > j)) {
         return false;
       }
@@ -84,14 +84,14 @@ public class BlockableEditTextView
       {
         do
         {
-          attt[] arrayOfattt;
+          auyt[] arrayOfauyt;
           do
           {
             return;
-            arrayOfattt = (attt[])getEditableText().getSpans(paramInt1, paramInt2, attt.class);
-          } while ((arrayOfattt == null) || (arrayOfattt.length <= 0));
-          i = getEditableText().getSpanEnd(arrayOfattt[0]);
-          j = getEditableText().getSpanStart(arrayOfattt[0]);
+            arrayOfauyt = (auyt[])getEditableText().getSpans(paramInt1, paramInt2, auyt.class);
+          } while ((arrayOfauyt == null) || (arrayOfauyt.length <= 0));
+          i = getEditableText().getSpanEnd(arrayOfauyt[0]);
+          j = getEditableText().getSpanStart(arrayOfauyt[0]);
         } while ((i <= j) || (j < 0));
         if ((paramInt1 == j) && (paramInt2 == j) && (this.jdField_a_of_type_Boolean))
         {

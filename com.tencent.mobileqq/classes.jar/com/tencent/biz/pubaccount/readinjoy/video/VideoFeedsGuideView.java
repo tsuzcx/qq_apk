@@ -19,9 +19,9 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import com.tencent.mobileqq.util.DisplayUtil;
-import rws;
-import rwt;
-import rwu;
+import siu;
+import siv;
+import siw;
 
 public class VideoFeedsGuideView
   extends View
@@ -32,9 +32,9 @@ public class VideoFeedsGuideView
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private rws jdField_a_of_type_Rws;
-  private rwt jdField_a_of_type_Rwt;
-  private rwu jdField_a_of_type_Rwu;
+  private siu jdField_a_of_type_Siu;
+  private siv jdField_a_of_type_Siv;
+  private siw jdField_a_of_type_Siw;
   public int b;
   private int c;
   private int d;
@@ -87,10 +87,10 @@ public class VideoFeedsGuideView
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130843136);
-    this.jdField_a_of_type_Rws = new rws(this, null);
-    this.jdField_a_of_type_Rwt = new rwt(this, null);
-    this.jdField_a_of_type_Rwu = new rwu(this, null);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130843172);
+    this.jdField_a_of_type_Siu = new siu(this, null);
+    this.jdField_a_of_type_Siv = new siv(this, null);
+    this.jdField_a_of_type_Siw = new siw(this, null);
   }
   
   private void a(Canvas paramCanvas)
@@ -110,7 +110,7 @@ public class VideoFeedsGuideView
     {
       invalidate();
       if (paramBoolean) {
-        this.jdField_a_of_type_Rws.sendEmptyMessageDelayed(0, 300L);
+        this.jdField_a_of_type_Siu.sendEmptyMessageDelayed(0, 300L);
       }
       return;
       this.h = 0;
@@ -123,7 +123,7 @@ public class VideoFeedsGuideView
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this, "alpha", new float[] { 0.0F, 1.0F });
     localObjectAnimator.setDuration(200L);
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, this.d });
-    localValueAnimator.addUpdateListener(this.jdField_a_of_type_Rwu);
+    localValueAnimator.addUpdateListener(this.jdField_a_of_type_Siw);
     localValueAnimator.setDuration(500L);
     localValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
     AnimatorSet localAnimatorSet = new AnimatorSet();
@@ -133,7 +133,7 @@ public class VideoFeedsGuideView
     localObjectAnimator.setStartDelay(400L);
     this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.play(localObjectAnimator).after(localAnimatorSet);
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(this.jdField_a_of_type_Rwt);
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(this.jdField_a_of_type_Siv);
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
   }
   

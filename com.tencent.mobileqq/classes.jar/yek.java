@@ -1,12 +1,41 @@
-import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.LruCache;
+import android.widget.ImageView;
 
-public abstract interface yek
+public class yek
+  extends zgn<yen>
 {
-  public abstract void a(int paramInt);
+  private LruCache<yen, Drawable> a = new yel(this, 5242880);
   
-  public abstract void a(Bitmap paramBitmap);
+  public LruCache<yen, Drawable> a()
+  {
+    return this.a;
+  }
   
-  public abstract void a(boolean paramBoolean);
+  public zgo a(ImageView paramImageView, yen paramyen)
+  {
+    return new yeo(paramImageView, paramyen);
+  }
+  
+  public void a()
+  {
+    super.a();
+    b();
+  }
+  
+  public void b()
+  {
+    super.b();
+    try
+    {
+      this.a.evictAll();
+      return;
+    }
+    catch (Exception localException)
+    {
+      this.a = new yem(this, 5242880);
+    }
+  }
 }
 
 

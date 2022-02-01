@@ -2,7 +2,7 @@ package cooperation.qzone.webviewplugin.personalize;
 
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
-import bgtp;
+import bieh;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class QZonePersonalizePlugin
   extends WebViewPlugin
-  implements bgtp
+  implements bieh
 {
   public static final String CARDTAG = "QZoneCardLogic";
   public static final String TAG = "QZonePersonalizePlugin";

@@ -1,0 +1,24 @@
+package com.tencent.mobileqq.apollo.player;
+
+import amvf;
+import android.os.Process;
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
+public final class CMSHelper$TF$newThread$1
+  implements Runnable
+{
+  public CMSHelper$TF$newThread$1(amvf paramamvf, Runnable paramRunnable) {}
+  
+  public final void run()
+  {
+    Process.setThreadPriority(amvf.a(this.this$0));
+    this.a.run();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+ * Qualified Name:     com.tencent.mobileqq.apollo.player.CMSHelper.TF.newThread.1
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,6 +1,17 @@
-public abstract interface bnwa
+import java.util.concurrent.CountDownLatch;
+
+final class bnwa
+  implements bnuy
 {
-  public abstract void a(String paramString);
+  bnwa(boolean[] paramArrayOfBoolean, CountDownLatch paramCountDownLatch) {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ArrayOfBoolean[0] = paramBoolean;
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+  }
 }
 
 

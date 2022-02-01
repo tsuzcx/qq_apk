@@ -1,19 +1,19 @@
 package com.tencent.mtt.abtestsdk.ABTest;
 
 import android.os.Message;
-import com.tencent.mtt.abtestsdk.utils.ABTestUtil;
+import com.tencent.mtt.abtestsdk.utils.OkHttpHelper;
+import org.json.JSONObject;
 
 class ABTestManager$1
   implements Runnable
 {
-  private int connectTimes = 1;
   Message msg = this.val$uiHandler.obtainMessage();
   
-  ABTestManager$1(ABTestManager paramABTestManager, ABTestManager.UIHandler paramUIHandler, String paramString, int paramInt) {}
+  ABTestManager$1(ABTestManager paramABTestManager, ABTestManager.UIHandler paramUIHandler, String paramString1, JSONObject paramJSONObject, int paramInt, String paramString2) {}
   
   public void run()
   {
-    ABTestUtil.getRequest(this.val$requestUrl, this.val$timeout, new ABTestManager.1.1(this), this.this$0.builder);
+    OkHttpHelper.getsInstance().postRequestWithJSONBody(this.val$requestUrl, this.val$postBodyEncrypt, this.val$timeout, new ABTestManager.1.1(this));
   }
 }
 

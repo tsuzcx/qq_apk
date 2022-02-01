@@ -1,17 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 class amlg
-  implements View.OnClickListener
 {
-  amlg(amlf paramamlf) {}
+  public int a;
+  public long a;
   
-  public void onClick(View paramView)
-  {
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  amlg(amlf paramamlf) {}
 }
 
 

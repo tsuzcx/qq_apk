@@ -1,149 +1,101 @@
-import java.util.ArrayList;
-import org.json.JSONArray;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.ad.tangram.util.AdAppDeeplinkLauncher;
+import com.tencent.ad.tangram.util.AdAppDeeplinkLauncher.Params;
+import com.tencent.ad.tangram.util.AdAppDeeplinkLauncher.Result;
+import com.tencent.ad.tangram.util.AdAppUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class acgy
+class acgy
+  implements acgx
 {
-  public int a;
-  public String a;
-  public ArrayList<Integer> a;
-  public ArrayList<String> b = new ArrayList();
-  public ArrayList<Integer> c = new ArrayList();
-  public ArrayList<Integer> d = new ArrayList();
-  
-  public acgy()
+  public boolean a(acfw paramacfw, String paramString, String... paramVarArgs)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public static ArrayList<acgy> a(String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
+    if (paramacfw != null) {}
+    for (localActivity = paramacfw.a(); (paramacfw == null) || (localActivity == null); localActivity = null)
+    {
+      acho.d("GdtXiJingLaunchAppWithDeeplinkJsCallHandler", "handleJsCallRequest error");
+      return true;
+    }
     try
     {
-      paramString = new JSONArray(achc.a(paramString));
-      int i = 0;
-      while (i < paramString.length())
-      {
-        acgp.b("KingKongSubPatch", "Parsing sub patch " + i);
-        acgy localacgy = new acgy();
-        if (localacgy.a(paramString.getJSONObject(i)))
-        {
-          localacgy.a();
-          localArrayList.add(localacgy);
-          i += 1;
-        }
-        else
-        {
-          acgp.a("KingKongSubPatch", "Parse sub patch failed, give up");
-          return null;
-        }
+      paramVarArgs = new JSONObject(paramVarArgs[0]);
+      acho.b("GdtXiJingLaunchAppWithDeeplinkJsCallHandler", paramVarArgs.toString());
+      str1 = paramVarArgs.getString("deeplink");
+      str2 = paramVarArgs.optString("packageName");
+      if ((TextUtils.isEmpty(str2)) || (AdAppUtil.isInstalled(localActivity, str2))) {
+        break label160;
       }
-      return localArrayList;
+      i = 12;
     }
-    catch (Exception paramString)
-    {
-      acgp.a("KingKongSubPatch", "Parse SubPatch List exception : " + paramString);
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    int k = 0;
-    int i = 0;
-    while (i < this.c.size())
-    {
-      acgp.b("KingKongSubPatch", "--> HookPoints : " + this.c.get(i));
-      i += 1;
-    }
-    i = 0;
-    int j;
-    for (;;)
-    {
-      j = k;
-      if (i >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
-        break;
-      }
-      acgp.b("KingKongSubPatch", "--> Parameters : " + ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i)).toString());
-      i += 1;
-    }
-    while (j < this.b.size())
-    {
-      acgp.b("KingKongSubPatch", "--> FingerPrint : " + (String)this.b.get(j) + ", " + this.d.get(j));
-      j += 1;
-    }
-  }
-  
-  public boolean a(JSONObject paramJSONObject)
-  {
-    int i;
-    for (;;)
+    catch (Throwable localJSONException)
     {
       try
       {
-        this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("patch_file").trim();
-        JSONArray localJSONArray1 = paramJSONObject.getJSONArray("parameters");
-        localJSONArray2 = paramJSONObject.getJSONArray("fingerprints");
-        localJSONArray3 = paramJSONObject.getJSONArray("hook_point");
-        localJSONArray4 = paramJSONObject.getJSONArray("fingerprints_value");
-        int m = localJSONArray1.length();
-        k = localJSONArray2.length();
-        int n = localJSONArray4.length();
-        j = localJSONArray3.length();
-        i = 0;
-        if (i < m)
+        paramVarArgs.put("error", i);
+      }
+      catch (JSONException localJSONException)
+      {
+        try
         {
-          this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(localJSONArray1.getInt(i)));
-          i += 1;
-          continue;
+          for (;;)
+          {
+            String str1;
+            String str2;
+            paramacfw.callJs(paramString, new String[] { paramVarArgs.toString() });
+            if (paramacfw == null) {
+              break;
+            }
+            paramacfw = paramacfw.a();
+            AdReporterForAnalysis.reportForJSBridgeInvoked(localActivity, false, "launchAppWithDeeplink", paramacfw);
+            return true;
+            paramVarArgs = paramVarArgs;
+            acho.d("GdtXiJingLaunchAppWithDeeplinkJsCallHandler", "handleJsCallRequest", paramVarArgs);
+            int i = 4;
+            continue;
+            Bundle localBundle = new Bundle();
+            localBundle.putString("big_brother_source_key", "biz_src_ads");
+            if (localActivity.getIntent() != null) {
+              if (!TextUtils.isEmpty(localActivity.getIntent().getStringExtra("big_brother_ref_source_key"))) {
+                break label267;
+              }
+            }
+            for (paramVarArgs = localActivity.getIntent().getStringExtra("big_brother_source_key");; paramVarArgs = localActivity.getIntent().getStringExtra("big_brother_ref_source_key"))
+            {
+              localBundle.putString("big_brother_ref_source_key", paramVarArgs);
+              paramVarArgs = new AdAppDeeplinkLauncher.Params();
+              paramVarArgs.deeplink = str1;
+              paramVarArgs.packageName = str2;
+              paramVarArgs.extrasForIntent = localBundle;
+              paramVarArgs = AdAppDeeplinkLauncher.launch(localActivity, paramVarArgs);
+              if (paramVarArgs == null) {
+                break label281;
+              }
+              i = paramVarArgs.getErrorCode();
+              break;
+            }
+            i = 1;
+            continue;
+            localJSONException = localJSONException;
+            acho.d("GdtXiJingLaunchAppWithDeeplinkJsCallHandler", "handleJsCallRequest error", localJSONException);
+          }
         }
-        if (n == k) {
-          break;
+        catch (Throwable paramString)
+        {
+          for (;;)
+          {
+            acho.d("GdtXiJingLaunchAppWithDeeplinkJsCallHandler", "handleJsCallRequest error", paramString);
+            continue;
+            paramacfw = null;
+          }
         }
-        acgp.a("KingKongSubPatch", "Fingerprint value count mismatch " + n + ", " + k);
-        return false;
-      }
-      catch (JSONException paramJSONObject)
-      {
-        JSONArray localJSONArray2;
-        JSONArray localJSONArray3;
-        JSONArray localJSONArray4;
-        int k;
-        int j;
-        acgp.a("KingKongSubPatch", "Parse SubPatch error : " + paramJSONObject);
-        return false;
-      }
-      catch (Exception paramJSONObject)
-      {
-        return false;
-      }
-      if (i >= k) {
-        break label272;
-      }
-      this.b.add(localJSONArray2.getString(i).trim());
-      this.d.add(Integer.valueOf(localJSONArray4.getInt(i)));
-      i += 1;
-    }
-    for (;;)
-    {
-      if (i < j)
-      {
-        this.c.add(Integer.valueOf(localJSONArray3.getInt(i)));
-        i += 1;
-      }
-      else
-      {
-        this.jdField_a_of_type_Int = paramJSONObject.optInt("isThumb2", 1);
-        return true;
-        i = 0;
-        break;
-        label272:
-        i = 0;
       }
     }
+    paramVarArgs = new JSONObject();
   }
 }
 

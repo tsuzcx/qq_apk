@@ -24,13 +24,13 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import lfi;
-import lfk;
-import lkr;
-import lks;
-import lns;
-import lnu;
-import mrc;
+import lfu;
+import lfw;
+import lld;
+import lle;
+import lof;
+import loh;
+import mrz;
 
 @SuppressLint({"NewApi"})
 public class AndroidCodec
@@ -315,8 +315,8 @@ public class AndroidCodec
       return paramString;
       QLog.w(paramString, 1, "checkSupportHWCodecAbility, 白名单, 不支持H264解码");
       break;
-      localObject2 = new lnu(lfi.a(paramContext));
-      AndroidCodec.HWCodecAbility localHWCodecAbility = ((lnu)localObject2).c();
+      localObject2 = new loh(lfu.a(paramContext));
+      AndroidCodec.HWCodecAbility localHWCodecAbility = ((loh)localObject2).c();
       if ((localHWCodecAbility != null) && (localHWCodecAbility.isHWCodec)) {
         if (DeviceCheck.e())
         {
@@ -328,7 +328,7 @@ public class AndroidCodec
       }
       for (;;)
       {
-        localObject2 = ((lnu)localObject2).a();
+        localObject2 = ((loh)localObject2).a();
         if ((localObject2 == null) || (!((AndroidCodec.HWCodecAbility)localObject2).isHWCodec)) {
           break label750;
         }
@@ -360,7 +360,7 @@ public class AndroidCodec
       QLog.w(paramString, 1, "checkSupportHWCodecAbility, 白名单, 不支持H264编码");
       continue;
       label778:
-      paramContext = new lnu(lfi.a(paramContext));
+      paramContext = new loh(lfu.a(paramContext));
       localObject2 = paramContext.d();
       if ((localObject2 != null) && (((AndroidCodec.HWCodecAbility)localObject2).isHWCodec)) {
         if (DeviceCheck.f())
@@ -434,19 +434,19 @@ public class AndroidCodec
   
   public static void getChipHWCodecAbility(String paramString, ArrayList<AndroidCodec.HWCodecAbility> paramArrayList)
   {
-    Object localObject = lfk.a().a();
-    if ((localObject == null) || (((lkr)localObject).a().isEmpty()) || (Build.VERSION.SDK_INT < 19)) {}
+    Object localObject = lfw.a().a();
+    if ((localObject == null) || (((lld)localObject).a().isEmpty()) || (Build.VERSION.SDK_INT < 19)) {}
     for (;;)
     {
       return;
-      localObject = ((lkr)localObject).a().iterator();
+      localObject = ((lld)localObject).a().iterator();
       while (((Iterator)localObject).hasNext())
       {
-        lks locallks = (lks)((Iterator)localObject).next();
-        if (locallks.jdField_a_of_type_Boolean)
+        lle locallle = (lle)((Iterator)localObject).next();
+        if (locallle.jdField_a_of_type_Boolean)
         {
           AndroidCodec.HWCodecAbility localHWCodecAbility = new AndroidCodec.HWCodecAbility();
-          if (locallks.jdField_a_of_type_Long == 1L) {
+          if (locallle.jdField_a_of_type_Long == 1L) {
             if (DeviceCheck.f())
             {
               localHWCodecAbility.codecType = 2;
@@ -461,8 +461,8 @@ public class AndroidCodec
             for (;;)
             {
               localHWCodecAbility.isHWCodec = true;
-              localHWCodecAbility.maxH = locallks.b;
-              localHWCodecAbility.maxW = locallks.jdField_a_of_type_Int;
+              localHWCodecAbility.maxH = locallle.b;
+              localHWCodecAbility.maxW = locallle.jdField_a_of_type_Int;
               paramArrayList.add(localHWCodecAbility);
               break;
               if (!QLog.isDevelopLevel()) {
@@ -470,7 +470,7 @@ public class AndroidCodec
               }
               QLog.w(paramString, 1, "checkSupportHWCodecAbility getChipHWCodecAbility, 不支持H264硬编");
               break;
-              if (locallks.jdField_a_of_type_Long == 4L)
+              if (locallle.jdField_a_of_type_Long == 4L)
               {
                 if (DeviceCheck.d())
                 {
@@ -487,7 +487,7 @@ public class AndroidCodec
                 QLog.w(paramString, 1, "checkSupportHWCodecAbility getChipHWCodecAbility, 不支持H265硬编");
                 break;
               }
-              if (locallks.jdField_a_of_type_Long == 2L)
+              if (locallle.jdField_a_of_type_Long == 2L)
               {
                 if (DeviceCheck.e())
                 {
@@ -504,7 +504,7 @@ public class AndroidCodec
                 QLog.w(paramString, 1, "checkSupportHWCodecAbility getChipHWCodecAbility, 不支持H264硬解");
                 break;
               }
-              if (locallks.jdField_a_of_type_Long != 8L) {
+              if (locallle.jdField_a_of_type_Long != 8L) {
                 break label331;
               }
               if (DeviceCheck.c())
@@ -519,7 +519,7 @@ public class AndroidCodec
                 QLog.w(paramString, 1, "checkSupportHWCodecAbility getChipHWCodecAbility, 不支持H265硬解");
               }
             }
-          } while (locallks.jdField_a_of_type_Long != 0L);
+          } while (locallle.jdField_a_of_type_Long != 0L);
         }
       }
     }
@@ -846,7 +846,7 @@ public class AndroidCodec
       {
         i += 1;
         break;
-        localHWCodecAbility = getHWCodecAbilityByCodecType((int)lkr.a[i], paramArrayList2);
+        localHWCodecAbility = getHWCodecAbilityByCodecType((int)lld.a[i], paramArrayList2);
         if (localHWCodecAbility != null) {
           localArrayList.add(localHWCodecAbility);
         }
@@ -919,7 +919,7 @@ public class AndroidCodec
           localBufferData.format = this.mOutputFormat;
           localObject3 = localBufferData;
           break;
-          if (NativeCodec.canLog()) {
+          if (AudioHelper.f()) {
             QLog.e(this.TAG, 1, "dequeueDecoderOutputBuffer INFO_OUTPUT_BUFFERS_CHANGED");
           }
           this.outputBuffers = this.mMediaCodec.getOutputBuffers();
@@ -938,7 +938,7 @@ public class AndroidCodec
             i = this.mOutputFormat.getInteger("color-format");
             mOutputFormatForReport = i;
             l1 = l2;
-            if (!NativeCodec.canLog()) {
+            if (!AudioHelper.f()) {
               break label100;
             }
             QLog.e(this.TAG, 1, "dequeueDecoderOutputBuffer New color format " + i + "[0x" + Integer.toHexString(i) + "]");
@@ -1013,7 +1013,7 @@ public class AndroidCodec
         switch (i)
         {
         case -3: 
-          if (NativeCodec.canLog()) {
+          if (AudioHelper.f()) {
             QLog.w(this.TAG, 1, "dequeueOutputBuffer, outIndex[" + i + "]");
           }
           localObject1 = localObject4;
@@ -1031,7 +1031,7 @@ public class AndroidCodec
           this.outputBuffers = this.mMediaCodec.getOutputBuffers();
           localBufferData.index = -3;
           localObject1 = localObject4;
-          if (!QLog.isDevelopLevel()) {
+          if (!AudioHelper.f()) {
             continue;
           }
           QLog.e(this.TAG, 1, "dequeueOutputBuffer, INFO_OUTPUT_BUFFERS_CHANGED");
@@ -1054,7 +1054,7 @@ public class AndroidCodec
           {
             i = this.mOutputFormat.getInteger("color-format");
             localObject3 = localObject4;
-            if (!NativeCodec.canLog()) {
+            if (!AudioHelper.f()) {
               continue;
             }
             QLog.w(this.TAG, 1, "dequeueOutputBuffer, INFO_OUTPUT_FORMAT_CHANGED, colorformat[" + i + "|0x" + Integer.toHexString(i).toUpperCase() + "]");
@@ -1083,12 +1083,12 @@ public class AndroidCodec
       else
       {
         localObject3 = localObject4;
-        if (QLog.isDevelopLevel())
+        if (AudioHelper.f())
         {
           QLog.e(this.TAG, 1, "dequeueOutputBuffer, INFO_OUTPUT_FORMAT_CHANGED, null");
           localObject3 = localObject4;
           continue;
-          if (NativeCodec.canLog()) {
+          if (AudioHelper.f()) {
             QLog.e(this.TAG, 1, "dequeueOutputBuffer, INFO_TRY_AGAIN_LATER");
           }
           localException.index = -1;
@@ -1156,7 +1156,7 @@ public class AndroidCodec
     //   19: getfield 584	com/tencent/av/mediacodec/AndroidCodec:mMediaCodec	Landroid/media/MediaCodec;
     //   22: getstatic 70	com/tencent/av/mediacodec/AndroidCodec:TIMEOUT_US	I
     //   25: i2l
-    //   26: invokevirtual 696	android/media/MediaCodec:dequeueInputBuffer	(J)I
+    //   26: invokevirtual 693	android/media/MediaCodec:dequeueInputBuffer	(J)I
     //   29: istore_1
     //   30: iload_1
     //   31: iflt -24 -> 7
@@ -1170,7 +1170,7 @@ public class AndroidCodec
     //   46: putfield 616	com/tencent/av/mediacodec/AndroidCodec$BufferData:index	I
     //   49: aload_2
     //   50: aload_0
-    //   51: getfield 698	com/tencent/av/mediacodec/AndroidCodec:inputBuffers	[Ljava/nio/ByteBuffer;
+    //   51: getfield 695	com/tencent/av/mediacodec/AndroidCodec:inputBuffers	[Ljava/nio/ByteBuffer;
     //   54: iload_1
     //   55: aaload
     //   56: putfield 613	com/tencent/av/mediacodec/AndroidCodec$BufferData:buffer	Ljava/nio/ByteBuffer;
@@ -1197,10 +1197,10 @@ public class AndroidCodec
     //   87: dup
     //   88: iconst_0
     //   89: iload_1
-    //   90: invokestatic 653	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   90: invokestatic 650	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   93: aastore
-    //   94: invokevirtual 659	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   97: checkcast 661	java/nio/ByteBuffer
+    //   94: invokevirtual 656	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   97: checkcast 658	java/nio/ByteBuffer
     //   100: putfield 613	com/tencent/av/mediacodec/AndroidCodec$BufferData:buffer	Ljava/nio/ByteBuffer;
     //   103: aload_0
     //   104: monitorexit
@@ -1208,10 +1208,10 @@ public class AndroidCodec
     //   106: areturn
     //   107: astore_3
     //   108: aload_3
-    //   109: invokevirtual 662	java/lang/IllegalAccessException:printStackTrace	()V
+    //   109: invokevirtual 659	java/lang/IllegalAccessException:printStackTrace	()V
     //   112: aload_2
     //   113: iconst_0
-    //   114: putfield 665	com/tencent/av/mediacodec/AndroidCodec$BufferData:success	Z
+    //   114: putfield 662	com/tencent/av/mediacodec/AndroidCodec$BufferData:success	Z
     //   117: goto -14 -> 103
     //   120: astore_2
     //   121: aload_0
@@ -1220,17 +1220,17 @@ public class AndroidCodec
     //   124: athrow
     //   125: astore_3
     //   126: aload_3
-    //   127: invokevirtual 666	java/lang/IllegalArgumentException:printStackTrace	()V
+    //   127: invokevirtual 663	java/lang/IllegalArgumentException:printStackTrace	()V
     //   130: aload_2
     //   131: iconst_0
-    //   132: putfield 665	com/tencent/av/mediacodec/AndroidCodec$BufferData:success	Z
+    //   132: putfield 662	com/tencent/av/mediacodec/AndroidCodec$BufferData:success	Z
     //   135: goto -32 -> 103
     //   138: astore_3
     //   139: aload_3
-    //   140: invokevirtual 667	java/lang/reflect/InvocationTargetException:printStackTrace	()V
+    //   140: invokevirtual 664	java/lang/reflect/InvocationTargetException:printStackTrace	()V
     //   143: aload_2
     //   144: iconst_0
-    //   145: putfield 665	com/tencent/av/mediacodec/AndroidCodec$BufferData:success	Z
+    //   145: putfield 662	com/tencent/av/mediacodec/AndroidCodec$BufferData:success	Z
     //   148: goto -45 -> 103
     // Local variable table:
     //   start	length	slot	name	signature
@@ -1307,23 +1307,23 @@ public class AndroidCodec
   }
   
   /* Error */
-  public boolean init(MediaFormat paramMediaFormat, int paramInt, lns paramlns)
+  public boolean init(MediaFormat paramMediaFormat, int paramInt, lof paramlof)
   {
     // Byte code:
     //   0: iconst_0
     //   1: istore 4
     //   3: aload_0
     //   4: aload_1
-    //   5: putfield 710	com/tencent/av/mediacodec/AndroidCodec:mFormat	Landroid/media/MediaFormat;
+    //   5: putfield 707	com/tencent/av/mediacodec/AndroidCodec:mFormat	Landroid/media/MediaFormat;
     //   8: iload_2
     //   9: getstatic 87	com/tencent/av/mediacodec/AndroidCodec:DEC_CODEC	I
     //   12: if_icmpne +88 -> 100
     //   15: aload_0
     //   16: aload_0
-    //   17: getfield 710	com/tencent/av/mediacodec/AndroidCodec:mFormat	Landroid/media/MediaFormat;
-    //   20: ldc_w 712
-    //   23: invokevirtual 716	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   26: invokestatic 720	android/media/MediaCodec:createDecoderByType	(Ljava/lang/String;)Landroid/media/MediaCodec;
+    //   17: getfield 707	com/tencent/av/mediacodec/AndroidCodec:mFormat	Landroid/media/MediaFormat;
+    //   20: ldc_w 709
+    //   23: invokevirtual 713	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   26: invokestatic 717	android/media/MediaCodec:createDecoderByType	(Ljava/lang/String;)Landroid/media/MediaCodec;
     //   29: putfield 584	com/tencent/av/mediacodec/AndroidCodec:mMediaCodec	Landroid/media/MediaCodec;
     //   32: aload_0
     //   33: iload_2
@@ -1341,16 +1341,16 @@ public class AndroidCodec
     //   55: aload_0
     //   56: getfield 584	com/tencent/av/mediacodec/AndroidCodec:mMediaCodec	Landroid/media/MediaCodec;
     //   59: aload_3
-    //   60: invokevirtual 724	com/tencent/av/mediacodec/AndroidCodec:setMediaCodecCallback	(Landroid/media/MediaCodec;Llns;)Z
-    //   63: putfield 726	com/tencent/av/mediacodec/AndroidCodec:mIsSetMediaCodecCallbackSuc	Z
+    //   60: invokevirtual 721	com/tencent/av/mediacodec/AndroidCodec:setMediaCodecCallback	(Landroid/media/MediaCodec;Llof;)Z
+    //   63: putfield 723	com/tencent/av/mediacodec/AndroidCodec:mIsSetMediaCodecCallbackSuc	Z
     //   66: aload_0
     //   67: getfield 584	com/tencent/av/mediacodec/AndroidCodec:mMediaCodec	Landroid/media/MediaCodec;
     //   70: aload_0
-    //   71: getfield 710	com/tencent/av/mediacodec/AndroidCodec:mFormat	Landroid/media/MediaFormat;
+    //   71: getfield 707	com/tencent/av/mediacodec/AndroidCodec:mFormat	Landroid/media/MediaFormat;
     //   74: aconst_null
     //   75: aconst_null
     //   76: iload_2
-    //   77: invokevirtual 730	android/media/MediaCodec:configure	(Landroid/media/MediaFormat;Landroid/view/Surface;Landroid/media/MediaCrypto;I)V
+    //   77: invokevirtual 727	android/media/MediaCodec:configure	(Landroid/media/MediaFormat;Landroid/view/Surface;Landroid/media/MediaCrypto;I)V
     //   80: aload_0
     //   81: getfield 584	com/tencent/av/mediacodec/AndroidCodec:mMediaCodec	Landroid/media/MediaCodec;
     //   84: ifnull +6 -> 90
@@ -1360,25 +1360,25 @@ public class AndroidCodec
     //   92: ireturn
     //   93: astore_1
     //   94: aload_1
-    //   95: invokevirtual 731	java/lang/Exception:printStackTrace	()V
+    //   95: invokevirtual 728	java/lang/Exception:printStackTrace	()V
     //   98: iconst_0
     //   99: ireturn
     //   100: aload_0
     //   101: aload_0
-    //   102: getfield 710	com/tencent/av/mediacodec/AndroidCodec:mFormat	Landroid/media/MediaFormat;
-    //   105: ldc_w 712
-    //   108: invokevirtual 716	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   111: invokestatic 734	android/media/MediaCodec:createEncoderByType	(Ljava/lang/String;)Landroid/media/MediaCodec;
+    //   102: getfield 707	com/tencent/av/mediacodec/AndroidCodec:mFormat	Landroid/media/MediaFormat;
+    //   105: ldc_w 709
+    //   108: invokevirtual 713	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   111: invokestatic 731	android/media/MediaCodec:createEncoderByType	(Ljava/lang/String;)Landroid/media/MediaCodec;
     //   114: putfield 584	com/tencent/av/mediacodec/AndroidCodec:mMediaCodec	Landroid/media/MediaCodec;
     //   117: goto -85 -> 32
     //   120: astore_1
     //   121: aload_1
-    //   122: invokevirtual 731	java/lang/Exception:printStackTrace	()V
+    //   122: invokevirtual 728	java/lang/Exception:printStackTrace	()V
     //   125: iconst_0
     //   126: ireturn
     //   127: astore_1
     //   128: aload_1
-    //   129: invokevirtual 731	java/lang/Exception:printStackTrace	()V
+    //   129: invokevirtual 728	java/lang/Exception:printStackTrace	()V
     //   132: iconst_0
     //   133: ireturn
     //   134: iconst_0
@@ -1389,7 +1389,7 @@ public class AndroidCodec
     //   0	139	0	this	AndroidCodec
     //   0	139	1	paramMediaFormat	MediaFormat
     //   0	139	2	paramInt	int
-    //   0	139	3	paramlns	lns
+    //   0	139	3	paramlof	lof
     //   1	90	4	bool	boolean
     // Exception table:
     //   from	to	target	type
@@ -1399,7 +1399,7 @@ public class AndroidCodec
     //   53	80	127	java/lang/Exception
   }
   
-  public boolean init(MediaFormat paramMediaFormat, String paramString, Surface paramSurface, lns paramlns)
+  public boolean init(MediaFormat paramMediaFormat, String paramString, Surface paramSurface, lof paramlof)
   {
     this.mFormat = paramMediaFormat;
     for (;;)
@@ -1421,7 +1421,7 @@ public class AndroidCodec
         {
           if (this.mMediaCodec != null)
           {
-            this.mIsSetMediaCodecCallbackSuc = setMediaCodecCallback(this.mMediaCodec, paramlns);
+            this.mIsSetMediaCodecCallbackSuc = setMediaCodecCallback(this.mMediaCodec, paramlof);
             this.mMediaCodec.configure(this.mFormat, paramSurface, null, i);
           }
           if (this.mMediaCodec == null) {
@@ -1443,7 +1443,7 @@ public class AndroidCodec
     }
   }
   
-  public boolean init(MediaFormat paramMediaFormat, String paramString, lns paramlns)
+  public boolean init(MediaFormat paramMediaFormat, String paramString, lof paramlof)
   {
     this.mFormat = paramMediaFormat;
     paramMediaFormat = getCodecInfo(paramString);
@@ -1462,7 +1462,7 @@ public class AndroidCodec
         {
           if (this.mMediaCodec != null)
           {
-            this.mIsSetMediaCodecCallbackSuc = setMediaCodecCallback(this.mMediaCodec, paramlns);
+            this.mIsSetMediaCodecCallbackSuc = setMediaCodecCallback(this.mMediaCodec, paramlof);
             this.mMediaCodec.configure(this.mFormat, null, null, i);
           }
           if (this.mMediaCodec == null) {
@@ -1503,7 +1503,7 @@ public class AndroidCodec
     //   22: iload_2
     //   23: lload_3
     //   24: iload 5
-    //   26: invokevirtual 746	android/media/MediaCodec:queueInputBuffer	(IIIJI)V
+    //   26: invokevirtual 743	android/media/MediaCodec:queueInputBuffer	(IIIJI)V
     //   29: goto -16 -> 13
     //   32: astore 6
     //   34: invokestatic 281	com/tencent/mobileqq/utils/AudioHelper:f	()Z
@@ -1514,19 +1514,19 @@ public class AndroidCodec
     //   45: new 91	java/lang/StringBuilder
     //   48: dup
     //   49: invokespecial 92	java/lang/StringBuilder:<init>	()V
-    //   52: ldc_w 748
+    //   52: ldc_w 745
     //   55: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   58: iload_1
     //   59: invokevirtual 251	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   62: ldc_w 750
+    //   62: ldc_w 747
     //   65: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   68: iload_2
     //   69: invokevirtual 251	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   72: ldc_w 752
+    //   72: ldc_w 749
     //   75: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   78: lload_3
-    //   79: invokevirtual 755	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   82: ldc_w 757
+    //   79: invokevirtual 752	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   82: ldc_w 754
     //   85: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   88: iload 5
     //   90: invokevirtual 251	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -1597,7 +1597,7 @@ public class AndroidCodec
     //   15: getfield 584	com/tencent/av/mediacodec/AndroidCodec:mMediaCodec	Landroid/media/MediaCodec;
     //   18: iload_1
     //   19: iconst_0
-    //   20: invokevirtual 763	android/media/MediaCodec:releaseOutputBuffer	(IZ)V
+    //   20: invokevirtual 760	android/media/MediaCodec:releaseOutputBuffer	(IZ)V
     //   23: goto -12 -> 11
     //   26: astore_2
     //   27: aload_0
@@ -1618,17 +1618,17 @@ public class AndroidCodec
   
   public void reset() {}
   
-  boolean setMediaCodecCallback(MediaCodec paramMediaCodec, lns paramlns)
+  boolean setMediaCodecCallback(MediaCodec paramMediaCodec, lof paramlof)
   {
-    if ((paramlns != null) && (DeviceCheck.g()))
+    if ((paramlof != null) && (DeviceCheck.g()))
     {
-      DexClassLoader localDexClassLoader = mrc.a();
-      Object localObject = mrc.a(localDexClassLoader, "com.tencent.av.mediacodec.MediaCodecWrapper");
+      DexClassLoader localDexClassLoader = mrz.a();
+      Object localObject = mrz.a(localDexClassLoader, "com.tencent.av.mediacodec.MediaCodecWrapper");
       if (localObject != null) {
         try
         {
           Object[] arrayOfObject = new Object[1];
-          boolean bool = mrc.a(localDexClassLoader, localObject, "setCallback", new Class[] { MediaCodec.class, lns.class }, new Object[] { paramMediaCodec, paramlns }, arrayOfObject);
+          boolean bool = mrz.a(localDexClassLoader, localObject, "setCallback", new Class[] { MediaCodec.class, lof.class }, new Object[] { paramMediaCodec, paramlof }, arrayOfObject);
           return bool;
         }
         catch (Exception paramMediaCodec)

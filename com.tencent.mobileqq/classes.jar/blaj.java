@@ -1,20 +1,37 @@
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.ProxyDrawable;
+import com.tencent.widget.BubblePopupWindow;
+
 public class blaj
+  extends ProxyDrawable
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public long b;
-  public int c;
+  int jdField_a_of_type_Int;
+  int b;
   
-  public blaj(long paramLong1, long paramLong2, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
+  public blaj(BubblePopupWindow paramBubblePopupWindow, Drawable paramDrawable)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt2;
-    this.jdField_a_of_type_Int = paramInt3;
+    super(paramDrawable);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    invalidateSelf();
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    Rect localRect = getBounds();
+    if (this.b > this.jdField_a_of_type_Int)
+    {
+      int i = paramCanvas.save();
+      paramCanvas.clipRect(this.jdField_a_of_type_Int, 0, this.b, localRect.height());
+      this.mCurrDrawable.draw(paramCanvas);
+      paramCanvas.restoreToCount(i);
+    }
   }
 }
 

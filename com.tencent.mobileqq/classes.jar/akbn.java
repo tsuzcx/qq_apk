@@ -1,20 +1,42 @@
-import android.os.ResultReceiver;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver.8.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-class akbn
-  implements EIPCResultCallback
+public class akbn
+  implements anzg
 {
-  akbn(akbm paramakbm, ResultReceiver paramResultReceiver) {}
+  akbn(akam paramakam) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void a(int paramInt)
   {
-    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()))
-    {
-      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramEIPCResult.data);
+    if ((this.a.a == null) || (this.a.a.app == null)) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, null);
+    QQAppInterface localQQAppInterface = this.a.a.app;
+    this.a.a(32, 16, Integer.valueOf(paramInt));
+    Intent localIntent = new Intent("com.tencent.qq.syncQQMessage");
+    localQQAppInterface.getApp().sendBroadcast(localIntent);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("fetchUnReadCount", 4, String.format("MainAssistObserver消息tab, nUnreadCount[%s]", new Object[] { Integer.valueOf(paramInt) }));
+    }
+    pwb.a().a(paramInt);
+  }
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("SplashActivity", 4, String.format("onRefresh, needReGetUnread[%s], nUnReadCount[%s]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
+    }
+    if ((!paramBoolean) && (paramInt >= 0))
+    {
+      a(paramInt);
+      return;
+    }
+    ThreadManager.executeOnSubThread(new MainAssistObserver.8.1(this));
   }
 }
 

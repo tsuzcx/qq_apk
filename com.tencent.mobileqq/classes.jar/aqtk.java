@@ -1,22 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-class aqtk
-  implements Animation.AnimationListener
+public class aqtk
+  extends Handler
 {
-  aqtk(aqtj paramaqtj) {}
+  public aqtk(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.a.setVisibility(8);
-    this.a.a.d();
+    if ((paramMessage.what == 1000) && ((this.a.j == 1) || (this.a.j == 2)))
+    {
+      this.a.a();
+      QQToast.a(this.a, 2131691030, 0).b(this.a.getTitleBarHeight());
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

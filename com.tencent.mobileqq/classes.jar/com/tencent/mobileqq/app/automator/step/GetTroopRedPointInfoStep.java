@@ -1,16 +1,17 @@
 package com.tencent.mobileqq.app.automator.step;
 
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import nmj;
+import ntj;
 
 public class GetTroopRedPointInfoStep
   extends AsyncStep
 {
   public int a()
   {
-    ((nmj)this.a.app.getBusinessHandler(43)).a();
+    ((ntj)this.a.app.getBusinessHandler(BusinessHandlerFactory.GET_RED_POINT_EX_HANDLER)).a();
     return 7;
   }
 }

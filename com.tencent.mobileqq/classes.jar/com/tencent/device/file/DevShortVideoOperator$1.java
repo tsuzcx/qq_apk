@@ -1,12 +1,13 @@
 package com.tencent.device.file;
 
-import aasg;
-import aasi;
-import aavk;
-import ayde;
-import bbrp;
+import abhs;
+import abhu;
+import abkw;
+import azjq;
+import bcyj;
 import com.tencent.device.msg.data.MessageForDevShortVideo;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -14,16 +15,16 @@ import com.tencent.mobileqq.data.MessageRecord;
 public class DevShortVideoOperator$1
   implements Runnable
 {
-  public DevShortVideoOperator$1(aasg paramaasg, bbrp parambbrp) {}
+  public DevShortVideoOperator$1(abhs paramabhs, bcyj parambcyj) {}
   
   public void run()
   {
-    bbrp localbbrp = this.a;
+    bcyj localbcyj = this.a;
     Object localObject = null;
     int i;
-    if (localbbrp.g == 0)
+    if (localbcyj.g == 0)
     {
-      localObject = this.this$0.a(localbbrp);
+      localObject = this.this$0.a(localbcyj);
       i = 1;
     }
     for (;;)
@@ -31,9 +32,9 @@ public class DevShortVideoOperator$1
       if (localObject == null)
       {
         return;
-        if (localbbrp.g == 1)
+        if (localbcyj.g == 1)
         {
-          localObject = (MessageForShortVideo)localbbrp.a;
+          localObject = (MessageForShortVideo)localbcyj.a;
           i = 0;
         }
       }
@@ -47,8 +48,8 @@ public class DevShortVideoOperator$1
         if (i != 0) {
           this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().addMessage((MessageRecord)localObject, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
         }
-        ((aavk)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(49)).a().a(aavk.e, this.a.h, Long.parseLong(this.a.c), ((MessageRecord)localObject).uniseq, ((MessageRecord)localObject).istroop, 0);
-        ayde.a(this.this$0.g, this.this$0.f, "doSendShortVideo", "cost:" + (System.currentTimeMillis() - l));
+        ((abkw)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).a().a(abkw.e, this.a.h, Long.parseLong(this.a.c), ((MessageRecord)localObject).uniseq, ((MessageRecord)localObject).istroop, 0);
+        azjq.a(this.this$0.g, this.this$0.f, "doSendShortVideo", "cost:" + (System.currentTimeMillis() - l));
         return;
       }
       i = 0;

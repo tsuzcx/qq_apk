@@ -23,7 +23,7 @@ class AttaReport$1$1
     if (paramCall != null) {}
     for (paramCall = new String(paramCall.bytes(), "utf-8").trim();; paramCall = null)
     {
-      ABTestLog.debug("res from net: " + paramCall + "  atta report finish", new Object[0]);
+      ABTestLog.debug("res from net: " + paramCall + "  atta report finished", new Object[0]);
       return;
     }
   }

@@ -1,16 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.tavcut.session.TAVCutVideoSession;
+import com.tencent.tavcut.timeline.TimelineView.SpeedChangeCallback;
+import dov.com.qq.im.aeeditor.module.clip.video.AEEditorVideoClipFragment;
 
 public class bnwv
-  implements DialogInterface.OnClickListener
+  implements TimelineView.SpeedChangeCallback
 {
-  public bnwv(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public bnwv(AEEditorVideoClipFragment paramAEEditorVideoClipFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onChangeFailed(int paramInt) {}
+  
+  public void onChangeSucc(float paramFloat)
   {
-    ShortVideoPreviewActivity.b(this.a);
-    this.a.setResult(-1);
+    this.a.jdField_a_of_type_JavaLangFloat = Float.valueOf(this.a.jdField_a_of_type_Float);
+    AEEditorVideoClipFragment.a(this.a).setSpeed(paramFloat, true);
   }
 }
 

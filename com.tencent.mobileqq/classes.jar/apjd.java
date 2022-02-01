@@ -1,10 +1,14 @@
+import java.util.List;
+
 public abstract interface apjd
 {
-  public abstract void a(int paramInt);
+  public abstract String a();
   
-  public abstract void a(apiz paramapiz);
+  public abstract List<String> a();
   
-  public abstract void b(int paramInt);
+  public abstract String b();
+  
+  public abstract String c();
 }
 
 

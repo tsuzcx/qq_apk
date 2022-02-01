@@ -1,14 +1,14 @@
 package com.tencent.common.app;
 
-import amvi;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Looper;
-import apub;
-import aqcq;
-import aycu;
+import anxv;
+import aqxe;
+import arfv;
+import azjg;
 import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
@@ -275,6 +275,11 @@ public abstract class AppInterface
     return this.defaultHanlder;
   }
   
+  public MqqHandler getHandlerWithoutDefault(Class paramClass)
+  {
+    return (MqqHandler)this.handlerMap.get(paramClass);
+  }
+  
   public HttpCommunicator getHttpCommunicatort()
   {
     if (this.comunicator == null) {}
@@ -296,12 +301,12 @@ public abstract class AppInterface
     int j;
     if (this.mHwEngine == null)
     {
-      aqcq localaqcq = (aqcq)apub.a().a(538);
+      arfv localarfv = (arfv)aqxe.a().a(538);
       localMobileQQ = getApplication();
       str = getCurrentAccountUin();
       i = getAppid();
-      j = amvi.a();
-      if ((localaqcq == null) || (!localaqcq.a)) {
+      j = anxv.a();
+      if ((localarfv == null) || (!localarfv.a)) {
         break label81;
       }
     }
@@ -418,7 +423,7 @@ public abstract class AppInterface
     }
     for (;;)
     {
-      aycu.a(paramLong, paramBoolean, bool);
+      azjg.a(paramLong, paramBoolean, bool);
       return;
       label156:
       paramBoolean = false;

@@ -1,18 +1,18 @@
 package com.tencent.open.downloadnew;
 
-import biby;
-import bicl;
+import bjna;
+import bjnn;
 
 public class DownloadManager$1
   implements Runnable
 {
-  public DownloadManager$1(biby parambiby) {}
+  public DownloadManager$1(bjna parambjna) {}
   
   public void run()
   {
     if (!this.this$0.a)
     {
-      if (!bicl.a().b()) {
+      if (!bjnn.a().b()) {
         this.this$0.a(true);
       }
       this.this$0.a = true;

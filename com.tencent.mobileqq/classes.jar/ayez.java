@@ -1,98 +1,12 @@
-import android.graphics.Bitmap;
-import android.media.ExifInterface;
-import android.text.TextUtils;
-import com.tencent.image.JpegExifReader;
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.mobileqq.utils.FileUtils;
-import java.io.IOException;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ayez
-  extends ayew
+class ayez
+  implements DialogInterface.OnClickListener
 {
-  ayez(CompressInfo paramCompressInfo)
-  {
-    super(paramCompressInfo);
-  }
+  ayez(ayek paramayek) {}
   
-  protected int a(CompressInfo paramCompressInfo)
-  {
-    switch (paramCompressInfo.jdField_g_of_type_Int)
-    {
-    default: 
-      return -1;
-    case 0: 
-    case 1: 
-      return 1;
-    }
-    return 2;
-  }
-  
-  protected boolean d()
-  {
-    boolean bool1 = true;
-    if (this.k == 1)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_g_of_type_Boolean) && (ayfc.b(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c)))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.e = this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c;
-        this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.f = (this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + amtj.a(2131707285));
-        ayde.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " compress()", amtj.a(2131707286));
-      }
-      for (;;)
-      {
-        return bool1;
-        this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.e = ayfc.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_g_of_type_Int);
-        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.e))
-        {
-          ayde.b(this.jdField_a_of_type_JavaLangString, "compress()", this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " destPath is empty");
-          return false;
-        }
-        if (FileUtils.fileExistsAndNotEmpty(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.e))
-        {
-          ayde.b(this.jdField_a_of_type_JavaLangString, "compress()", this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " destPath exist. return true");
-          return true;
-        }
-        try
-        {
-          Bitmap localBitmap = bfvo.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c, null);
-          if (localBitmap == null)
-          {
-            ayde.b(this.jdField_a_of_type_JavaLangString, "compress()", this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " bm == null, maybe is broken");
-            return false;
-          }
-        }
-        catch (OutOfMemoryError localOutOfMemoryError)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.a(true);
-          ayde.b(this.jdField_a_of_type_JavaLangString, "compress()", this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " decodeFile oom, execute commonCompress()");
-          this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.e = "";
-          return c();
-        }
-        boolean bool2 = ayfc.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.e, localOutOfMemoryError, a(), this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo);
-        if (!JpegExifReader.isCrashJpeg(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c)) {}
-        try
-        {
-          if (!bfvo.a(new ExifInterface(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c), new ExifInterface(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.e))) {
-            ayde.b(this.jdField_a_of_type_JavaLangString, "compress()", "Failed to save exif");
-          }
-          bool1 = bool2;
-          if (localOutOfMemoryError != null)
-          {
-            localOutOfMemoryError.recycle();
-            return bool2;
-          }
-        }
-        catch (IOException localIOException)
-        {
-          for (;;)
-          {
-            ayde.b(this.jdField_a_of_type_JavaLangString, "compress()", "cannot read exif, " + localIOException.getMessage());
-          }
-        }
-      }
-    }
-    return false;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

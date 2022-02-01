@@ -1,24 +1,41 @@
+import android.app.Dialog;
+import android.content.Context;
+import android.view.View;
+import android.view.Window;
+import android.widget.FrameLayout;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+
 public class mru
+  extends ReportDialog
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b;
-  public String c;
+  public mru(Context paramContext, boolean paramBoolean) {}
   
-  public mru(long paramLong, int paramInt, String paramString1, String paramString2, String paramString3)
+  void a()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    super.getWindow().setGravity(17);
+    super.setContentView(2131559827);
+  }
+  
+  public void a(View paramView, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      b();
+    }
+    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131373781);
+    localFrameLayout.setOnClickListener(new mrv(this));
+    if (paramView != null) {
+      localFrameLayout.addView(paramView);
+    }
+  }
+  
+  void b()
+  {
+    findViewById(2131373780).setOnClickListener(new mrw(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mru
  * JD-Core Version:    0.7.0.1
  */

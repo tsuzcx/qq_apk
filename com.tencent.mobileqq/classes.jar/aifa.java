@@ -1,8 +1,15 @@
-import com.tencent.mobileqq.activity.contact.connections.ThemeTabLayout;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.List;
 
-public class aifa
+class aifa
+  implements ooz
 {
-  public ThemeTabLayout a;
+  aifa(aido paramaido, CharSequence paramCharSequence, int paramInt) {}
+  
+  public void a(List<ChatMessage> paramList)
+  {
+    aido.b(this.jdField_a_of_type_Aido, paramList, this.jdField_a_of_type_JavaLangCharSequence, this.jdField_a_of_type_Int);
+  }
 }
 
 

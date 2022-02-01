@@ -1,59 +1,32 @@
-import com.tencent.biz.pubaccount.readinjoy.pts.util.PTSLiteSwitchManager.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class qny
+class qny
+  implements ViewBase.OnClickListener
 {
-  private static volatile qny jdField_a_of_type_Qny;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b = true;
+  qny(qnw paramqnw, int paramInt, qfw paramqfw, BaseArticleInfo paramBaseArticleInfo1, BaseArticleInfo paramBaseArticleInfo2) {}
   
-  public static qny a()
+  public void onClick(ViewBase paramViewBase)
   {
-    if (jdField_a_of_type_Qny == null) {}
-    try
+    boolean bool;
+    szd localszd;
+    if (this.jdField_a_of_type_Int == 1160)
     {
-      if (jdField_a_of_type_Qny == null) {
-        jdField_a_of_type_Qny = new qny();
+      bool = true;
+      localszd = this.jdField_a_of_type_Qfw.a();
+      if (!bool) {
+        break label43;
       }
-      return jdField_a_of_type_Qny;
     }
-    finally {}
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.b = true;
-    qnr.c();
-  }
-  
-  private boolean c()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  private boolean d()
-  {
-    return this.b;
-  }
-  
-  void a()
-  {
-    b();
-    PTSLiteSwitchManager.1 local1 = new PTSLiteSwitchManager.1(this);
-    ThreadManager.getFileThreadHandler().post(local1);
-  }
-  
-  public boolean a()
-  {
-    return (d()) && (qnb.a().a());
-  }
-  
-  @Deprecated
-  public boolean b()
-  {
-    return (c()) && (qnb.a().a());
+    label43:
+    for (paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;; paramViewBase = this.b)
+    {
+      localszd.a(bool, paramViewBase);
+      return;
+      bool = false;
+      break;
+    }
   }
 }
 

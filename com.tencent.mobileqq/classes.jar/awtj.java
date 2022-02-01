@@ -1,364 +1,349 @@
-import android.content.Context;
-import android.os.Handler;
-import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.transfile.dns.InnerDns;
-import com.tencent.qphone.base.util.MD5;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
-import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import java.io.File;
-
 public class awtj
+  implements awti
 {
-  public int a;
-  long jdField_a_of_type_Long = 0L;
-  protected Context a;
-  protected Handler a;
-  protected ImageView a;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  awqu jdField_a_of_type_Awqu;
-  awsc jdField_a_of_type_Awsc;
-  public awts a;
-  protected awtu a;
-  protected QQAppInterface a;
-  private VideoData jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData;
-  public String a;
-  public boolean a;
-  private final int jdField_b_of_type_Int = 1024;
-  long jdField_b_of_type_Long = 0L;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = true;
-  private final int jdField_c_of_type_Int = -2147483648;
-  long jdField_c_of_type_Long;
-  private boolean jdField_c_of_type_Boolean;
-  private final int jdField_d_of_type_Int = 2025;
-  private long jdField_d_of_type_Long = -1L;
-  private boolean jdField_d_of_type_Boolean;
-  private final int e = 2026;
-  
-  public awtj(Context paramContext, QQAppInterface paramQQAppInterface)
+  /* Error */
+  public void a(java.lang.String paramString)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Awtu = a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Awqu = new awqu(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_2
+    //   2: aconst_null
+    //   3: astore 5
+    //   5: aconst_null
+    //   6: astore 6
+    //   8: aload_1
+    //   9: ifnonnull +4 -> 13
+    //   12: return
+    //   13: new 17	com/tencent/mobileqq/data/QQEntityManagerFactory
+    //   16: dup
+    //   17: aload_1
+    //   18: invokespecial 19	com/tencent/mobileqq/data/QQEntityManagerFactory:<init>	(Ljava/lang/String;)V
+    //   21: astore 8
+    //   23: aload 8
+    //   25: aload_1
+    //   26: invokevirtual 25	com/tencent/mobileqq/persistence/EntityManagerFactory:build	(Ljava/lang/String;)Lcom/tencent/mobileqq/app/SQLiteOpenHelper;
+    //   29: invokevirtual 31	com/tencent/mobileqq/app/SQLiteOpenHelper:getWritableDatabase	()Lcom/tencent/mobileqq/app/SQLiteDatabase;
+    //   32: astore 9
+    //   34: aload 9
+    //   36: ldc 33
+    //   38: aconst_null
+    //   39: invokevirtual 39	com/tencent/mobileqq/app/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   42: astore_3
+    //   43: aload_3
+    //   44: ifnull +165 -> 209
+    //   47: aload_3
+    //   48: invokeinterface 45 1 0
+    //   53: ifeq +156 -> 209
+    //   56: aload 9
+    //   58: aload_3
+    //   59: iconst_0
+    //   60: invokeinterface 49 2 0
+    //   65: invokestatic 55	com/tencent/mobileqq/utils/SecurityUtile:encode	(Ljava/lang/String;)Ljava/lang/String;
+    //   68: invokestatic 60	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
+    //   71: invokevirtual 64	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
+    //   74: pop
+    //   75: goto -28 -> 47
+    //   78: astore_2
+    //   79: aconst_null
+    //   80: astore_2
+    //   81: aconst_null
+    //   82: astore 4
+    //   84: aload_3
+    //   85: ifnull +9 -> 94
+    //   88: aload_3
+    //   89: invokeinterface 67 1 0
+    //   94: aload 4
+    //   96: ifnull +10 -> 106
+    //   99: aload 4
+    //   101: invokeinterface 67 1 0
+    //   106: aload_2
+    //   107: ifnull +9 -> 116
+    //   110: aload_2
+    //   111: invokeinterface 67 1 0
+    //   116: new 69	azik
+    //   119: dup
+    //   120: aload_1
+    //   121: invokespecial 70	azik:<init>	(Ljava/lang/String;)V
+    //   124: aload_1
+    //   125: invokevirtual 25	com/tencent/mobileqq/persistence/EntityManagerFactory:build	(Ljava/lang/String;)Lcom/tencent/mobileqq/app/SQLiteOpenHelper;
+    //   128: invokevirtual 31	com/tencent/mobileqq/app/SQLiteOpenHelper:getWritableDatabase	()Lcom/tencent/mobileqq/app/SQLiteDatabase;
+    //   131: astore 4
+    //   133: aload 6
+    //   135: astore_1
+    //   136: aload 5
+    //   138: astore_2
+    //   139: aload 4
+    //   141: ldc 33
+    //   143: aconst_null
+    //   144: invokevirtual 39	com/tencent/mobileqq/app/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   147: astore_3
+    //   148: aload_3
+    //   149: ifnull +426 -> 575
+    //   152: aload_3
+    //   153: astore_1
+    //   154: aload_3
+    //   155: astore_2
+    //   156: aload_3
+    //   157: invokeinterface 45 1 0
+    //   162: ifeq +413 -> 575
+    //   165: aload_3
+    //   166: astore_1
+    //   167: aload_3
+    //   168: astore_2
+    //   169: aload 4
+    //   171: aload_3
+    //   172: iconst_0
+    //   173: invokeinterface 49 2 0
+    //   178: invokestatic 55	com/tencent/mobileqq/utils/SecurityUtile:encode	(Ljava/lang/String;)Ljava/lang/String;
+    //   181: invokestatic 60	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
+    //   184: invokevirtual 64	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
+    //   187: pop
+    //   188: goto -36 -> 152
+    //   191: astore_3
+    //   192: aload_1
+    //   193: astore_2
+    //   194: aload_3
+    //   195: invokevirtual 73	java/lang/Exception:printStackTrace	()V
+    //   198: aload_1
+    //   199: ifnull -187 -> 12
+    //   202: aload_1
+    //   203: invokeinterface 67 1 0
+    //   208: return
+    //   209: aload 9
+    //   211: ldc 75
+    //   213: aconst_null
+    //   214: invokevirtual 39	com/tencent/mobileqq/app/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   217: astore 4
+    //   219: aload 4
+    //   221: ifnull +36 -> 257
+    //   224: aload 4
+    //   226: invokeinterface 45 1 0
+    //   231: ifeq +26 -> 257
+    //   234: aload 9
+    //   236: aload 4
+    //   238: iconst_0
+    //   239: invokeinterface 49 2 0
+    //   244: invokestatic 55	com/tencent/mobileqq/utils/SecurityUtile:encode	(Ljava/lang/String;)Ljava/lang/String;
+    //   247: invokestatic 60	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
+    //   250: invokevirtual 64	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
+    //   253: pop
+    //   254: goto -30 -> 224
+    //   257: aload 9
+    //   259: ldc 77
+    //   261: aconst_null
+    //   262: invokevirtual 39	com/tencent/mobileqq/app/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   265: astore 7
+    //   267: aload 7
+    //   269: astore_2
+    //   270: aload_2
+    //   271: ifnull +34 -> 305
+    //   274: aload_2
+    //   275: invokeinterface 45 1 0
+    //   280: ifeq +25 -> 305
+    //   283: aload 9
+    //   285: aload_2
+    //   286: iconst_0
+    //   287: invokeinterface 49 2 0
+    //   292: invokestatic 55	com/tencent/mobileqq/utils/SecurityUtile:encode	(Ljava/lang/String;)Ljava/lang/String;
+    //   295: invokestatic 60	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
+    //   298: invokevirtual 64	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
+    //   301: pop
+    //   302: goto -28 -> 274
+    //   305: aload 9
+    //   307: new 79	com/tencent/mobileqq/data/RecentUser
+    //   310: dup
+    //   311: invokespecial 80	com/tencent/mobileqq/data/RecentUser:<init>	()V
+    //   314: invokevirtual 84	com/tencent/mobileqq/data/RecentUser:getTableName	()Ljava/lang/String;
+    //   317: invokestatic 60	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
+    //   320: invokevirtual 64	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
+    //   323: pop
+    //   324: aload 9
+    //   326: new 86	com/tencent/mobileqq/data/QCallRecent
+    //   329: dup
+    //   330: invokespecial 87	com/tencent/mobileqq/data/QCallRecent:<init>	()V
+    //   333: invokevirtual 88	com/tencent/mobileqq/data/QCallRecent:getTableName	()Ljava/lang/String;
+    //   336: invokestatic 60	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
+    //   339: invokevirtual 64	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
+    //   342: pop
+    //   343: aload 9
+    //   345: new 90	com/tencent/mobileqq/data/TroopAssistantData
+    //   348: dup
+    //   349: invokespecial 91	com/tencent/mobileqq/data/TroopAssistantData:<init>	()V
+    //   352: invokevirtual 92	com/tencent/mobileqq/data/TroopAssistantData:getTableName	()Ljava/lang/String;
+    //   355: invokestatic 60	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
+    //   358: invokevirtual 64	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
+    //   361: pop
+    //   362: aload 9
+    //   364: new 94	com/tencent/mobileqq/data/PubAccountAssistantData
+    //   367: dup
+    //   368: invokespecial 95	com/tencent/mobileqq/data/PubAccountAssistantData:<init>	()V
+    //   371: invokevirtual 96	com/tencent/mobileqq/data/PubAccountAssistantData:getTableName	()Ljava/lang/String;
+    //   374: invokestatic 60	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
+    //   377: invokevirtual 64	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
+    //   380: pop
+    //   381: aload 9
+    //   383: new 98	com/tencent/biz/pubaccount/troopbarassit/TroopBarData
+    //   386: dup
+    //   387: invokespecial 99	com/tencent/biz/pubaccount/troopbarassit/TroopBarData:<init>	()V
+    //   390: invokevirtual 100	com/tencent/biz/pubaccount/troopbarassit/TroopBarData:getTableName	()Ljava/lang/String;
+    //   393: invokestatic 60	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
+    //   396: invokevirtual 64	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
+    //   399: pop
+    //   400: aload 9
+    //   402: new 102	com/tencent/mobileqq/data/NeedHandleUserData
+    //   405: dup
+    //   406: invokespecial 103	com/tencent/mobileqq/data/NeedHandleUserData:<init>	()V
+    //   409: invokevirtual 104	com/tencent/mobileqq/data/NeedHandleUserData:getTableName	()Ljava/lang/String;
+    //   412: invokestatic 60	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
+    //   415: invokevirtual 64	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
+    //   418: pop
+    //   419: aload 9
+    //   421: new 106	com/tencent/mobileqq/data/ConversationInfo
+    //   424: dup
+    //   425: invokespecial 107	com/tencent/mobileqq/data/ConversationInfo:<init>	()V
+    //   428: invokevirtual 108	com/tencent/mobileqq/data/ConversationInfo:getTableName	()Ljava/lang/String;
+    //   431: invokestatic 60	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
+    //   434: invokevirtual 64	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
+    //   437: pop
+    //   438: aload 9
+    //   440: new 110	com/tencent/mobileqq/data/RecommendContact
+    //   443: dup
+    //   444: invokespecial 111	com/tencent/mobileqq/data/RecommendContact:<init>	()V
+    //   447: invokevirtual 112	com/tencent/mobileqq/data/RecommendContact:getTableName	()Ljava/lang/String;
+    //   450: invokestatic 60	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
+    //   453: invokevirtual 64	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
+    //   456: pop
+    //   457: aload 9
+    //   459: new 114	com/tencent/mobileqq/data/SubAccountInfo
+    //   462: dup
+    //   463: invokespecial 115	com/tencent/mobileqq/data/SubAccountInfo:<init>	()V
+    //   466: invokevirtual 116	com/tencent/mobileqq/data/SubAccountInfo:getTableName	()Ljava/lang/String;
+    //   469: invokestatic 60	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
+    //   472: invokevirtual 64	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
+    //   475: pop
+    //   476: aload 9
+    //   478: new 118	com/tencent/mobileqq/data/SubAccountMessage
+    //   481: dup
+    //   482: invokespecial 119	com/tencent/mobileqq/data/SubAccountMessage:<init>	()V
+    //   485: invokevirtual 120	com/tencent/mobileqq/data/SubAccountMessage:getTableName	()Ljava/lang/String;
+    //   488: invokestatic 60	com/tencent/mobileqq/persistence/TableBuilder:dropSQLStatement	(Ljava/lang/String;)Ljava/lang/String;
+    //   491: invokevirtual 64	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
+    //   494: pop
+    //   495: aload 8
+    //   497: invokevirtual 121	com/tencent/mobileqq/persistence/EntityManagerFactory:close	()V
+    //   500: aload_3
+    //   501: ifnull +9 -> 510
+    //   504: aload_3
+    //   505: invokeinterface 67 1 0
+    //   510: aload 4
+    //   512: ifnull +10 -> 522
+    //   515: aload 4
+    //   517: invokeinterface 67 1 0
+    //   522: aload_2
+    //   523: ifnull -407 -> 116
+    //   526: aload_2
+    //   527: invokeinterface 67 1 0
+    //   532: goto -416 -> 116
+    //   535: astore_1
+    //   536: aconst_null
+    //   537: astore 4
+    //   539: aconst_null
+    //   540: astore_3
+    //   541: aload_3
+    //   542: ifnull +9 -> 551
+    //   545: aload_3
+    //   546: invokeinterface 67 1 0
+    //   551: aload 4
+    //   553: ifnull +10 -> 563
+    //   556: aload 4
+    //   558: invokeinterface 67 1 0
+    //   563: aload_2
+    //   564: ifnull +9 -> 573
+    //   567: aload_2
+    //   568: invokeinterface 67 1 0
+    //   573: aload_1
+    //   574: athrow
+    //   575: aload_3
+    //   576: ifnull -564 -> 12
+    //   579: aload_3
+    //   580: invokeinterface 67 1 0
+    //   585: return
+    //   586: astore_1
+    //   587: aload_2
+    //   588: ifnull +9 -> 597
+    //   591: aload_2
+    //   592: invokeinterface 67 1 0
+    //   597: aload_1
+    //   598: athrow
+    //   599: astore_1
+    //   600: aconst_null
+    //   601: astore 4
+    //   603: goto -62 -> 541
+    //   606: astore_1
+    //   607: goto -66 -> 541
+    //   610: astore_1
+    //   611: goto -70 -> 541
+    //   614: astore_2
+    //   615: aconst_null
+    //   616: astore_2
+    //   617: aconst_null
+    //   618: astore 4
+    //   620: aconst_null
+    //   621: astore_3
+    //   622: goto -538 -> 84
+    //   625: astore_2
+    //   626: aconst_null
+    //   627: astore_2
+    //   628: goto -544 -> 84
+    //   631: astore 7
+    //   633: goto -549 -> 84
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	636	0	this	awtj
+    //   0	636	1	paramString	java.lang.String
+    //   1	1	2	localObject1	Object
+    //   78	1	2	localException1	java.lang.Exception
+    //   80	512	2	localObject2	Object
+    //   614	1	2	localException2	java.lang.Exception
+    //   616	1	2	localObject3	Object
+    //   625	1	2	localException3	java.lang.Exception
+    //   627	1	2	localObject4	Object
+    //   42	130	3	localCursor1	android.database.Cursor
+    //   191	314	3	localException4	java.lang.Exception
+    //   540	82	3	localObject5	Object
+    //   82	537	4	localObject6	Object
+    //   3	134	5	localObject7	Object
+    //   6	128	6	localObject8	Object
+    //   265	3	7	localCursor2	android.database.Cursor
+    //   631	1	7	localException5	java.lang.Exception
+    //   21	475	8	localQQEntityManagerFactory	com.tencent.mobileqq.data.QQEntityManagerFactory
+    //   32	445	9	localSQLiteDatabase	com.tencent.mobileqq.app.SQLiteDatabase
+    // Exception table:
+    //   from	to	target	type
+    //   47	75	78	java/lang/Exception
+    //   209	219	78	java/lang/Exception
+    //   139	148	191	java/lang/Exception
+    //   156	165	191	java/lang/Exception
+    //   169	188	191	java/lang/Exception
+    //   34	43	535	finally
+    //   139	148	586	finally
+    //   156	165	586	finally
+    //   169	188	586	finally
+    //   194	198	586	finally
+    //   47	75	599	finally
+    //   209	219	599	finally
+    //   224	254	606	finally
+    //   257	267	606	finally
+    //   274	302	610	finally
+    //   305	500	610	finally
+    //   34	43	614	java/lang/Exception
+    //   224	254	625	java/lang/Exception
+    //   257	267	625	java/lang/Exception
+    //   274	302	631	java/lang/Exception
+    //   305	500	631	java/lang/Exception
   }
   
-  public static TVK_ICacheMgr a()
-  {
-    if (!TVK_SDKMgr.isInstalled(BaseApplicationImpl.getContext())) {
-      a(BaseApplicationImpl.getContext());
-    }
-    if (TVK_SDKMgr.isInstalled(BaseApplicationImpl.getContext())) {
-      return TVK_SDKMgr.getProxyFactory().getCacheMgr(BaseApplicationImpl.getContext());
-    }
-    return null;
-  }
-  
-  public static String a(File paramFile)
-  {
-    if (paramFile.exists())
-    {
-      String str3 = paramFile.getParentFile().getAbsolutePath();
-      String str2 = paramFile.getName();
-      String str1 = str2;
-      if (str2.endsWith(".tmp")) {
-        str1 = str2.substring(0, str2.length() - ".tmp".length());
-      }
-      str1 = str3 + "/" + str1;
-      paramFile.renameTo(new File(str1));
-      return str1;
-    }
-    return "";
-  }
-  
-  public static String a(String paramString)
-  {
-    return MD5.toMD5(paramString);
-  }
-  
-  public static void a(Context paramContext)
-  {
-    TVK_SDKMgr.setOnLogListener(new awtr(null));
-    TVK_SDKMgr.initSdk(paramContext.getApplicationContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
-  }
-  
-  public static void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoPlayerView", 2, "startPreloadVideo");
-    }
-    TVK_ICacheMgr localTVK_ICacheMgr = a();
-    if (localTVK_ICacheMgr == null) {
-      QLog.w("VideoPlayerView", 1, "preloadVideo failed , cacheMgr==null!");
-    }
-    Object localObject = AppConstants.SDCARD_PATH + ".now_video/" + "vid_" + a(paramString) + ".mp4";
-    if (new File((String)localObject).exists())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("VideoPlayerView", 2, "file.exists ! use local file");
-      }
-      return;
-    }
-    localObject = awua.a(vmp.a("vid_" + a(paramString), 0), (String)localObject + ".tmp", 0L);
-    ((TVK_PlayerVideoInfo)localObject).setConfigMap("cache_duration", "5");
-    paramString = InnerDns.replaceDomainWithIp(paramString.replace("https://", "http://"), 1012);
-    localTVK_ICacheMgr.setPreloadCallback(new awtk());
-    localTVK_ICacheMgr.preLoadVideoByUrl(BaseApplicationImpl.getContext(), paramString, null, (TVK_PlayerVideoInfo)localObject);
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Awtu.a();
-  }
-  
-  public awtu a()
-  {
-    if (!TVK_SDKMgr.isInstalled(this.jdField_a_of_type_AndroidContentContext)) {
-      a(this.jdField_a_of_type_AndroidContentContext);
-    }
-    if (TVK_SDKMgr.isInstalled(this.jdField_a_of_type_AndroidContentContext)) {
-      return new awua(this.jdField_a_of_type_AndroidContentContext);
-    }
-    QLog.w("VideoPlayerView", 1, "use VideoViewTextureImpl!");
-    return new awuh(this.jdField_a_of_type_AndroidContentContext);
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoPlayerView", 2, "pause");
-    }
-    this.jdField_a_of_type_Awtu.c();
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_c_of_type_Long = a();
-  }
-  
-  public void a(RelativeLayout paramRelativeLayout)
-  {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369207));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365712));
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2025);
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2026);
-    }
-    this.jdField_a_of_type_AndroidOsHandler = new awtl(this, this.jdField_a_of_type_AndroidContentContext.getMainLooper());
-  }
-  
-  public void a(RelativeLayout paramRelativeLayout, VideoData paramVideoData, awsc paramawsc)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData = paramVideoData;
-    a(paramRelativeLayout);
-    a(paramVideoData);
-  }
-  
-  public void a(awts paramawts)
-  {
-    this.jdField_a_of_type_Awts = paramawts;
-  }
-  
-  public void a(VideoData paramVideoData)
-  {
-    String str = paramVideoData.jdField_b_of_type_JavaLangString;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    boolean bool2 = c();
-    this.jdField_a_of_type_JavaLangString = str;
-    this.jdField_b_of_type_JavaLangString = str;
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoPlayerView", 2, "play(String videoPath)! path is: " + str + "play stack is: " + Log.getStackTraceString(new Throwable()));
-    }
-    if (this.jdField_a_of_type_Awtu != null) {
-      this.jdField_a_of_type_Awtu.a();
-    }
-    if ((this.jdField_a_of_type_Awtu != null) && (this.jdField_a_of_type_Awtu.a() != null) && (this.jdField_a_of_type_Awtu.a().getParent() != null)) {
-      ((ViewGroup)this.jdField_a_of_type_Awtu.a().getParent()).removeView(this.jdField_a_of_type_Awtu.a());
-    }
-    this.jdField_a_of_type_Awtu = a();
-    Object localObject;
-    if ((this.jdField_a_of_type_Awtu instanceof awua))
-    {
-      localObject = (awua)this.jdField_a_of_type_Awtu;
-      if (paramVideoData.k >= paramVideoData.l) {
-        break label225;
-      }
-    }
-    label225:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      ((awua)localObject).a(bool1);
-      if (this.jdField_a_of_type_Awtu != null) {
-        break;
-      }
-      QLog.e("VideoPlayerView", 1, "mPlayer == null!");
-      return;
-    }
-    if ((this.jdField_a_of_type_Awtu != null) && (this.jdField_a_of_type_Awtu.a() != null) && (this.jdField_a_of_type_Awtu.a().getParent() != null)) {
-      ((ViewGroup)this.jdField_a_of_type_Awtu.a().getParent()).removeView(this.jdField_a_of_type_Awtu.a());
-    }
-    if (this.jdField_a_of_type_Awtu != null) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_Awtu.a(), 0, new RelativeLayout.LayoutParams(-1, -1));
-    }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.requestLayout();
-    this.jdField_a_of_type_Int = 1;
-    awrs.jdField_a_of_type_Int = 0;
-    awrs.jdField_a_of_type_Long = System.currentTimeMillis();
-    awrs.c = paramVideoData.jdField_a_of_type_JavaLangString;
-    awrs.d = String.valueOf(paramVideoData.jdField_a_of_type_Long);
-    if (this.jdField_a_of_type_Awts != null) {
-      this.jdField_a_of_type_Awts.d();
-    }
-    for (;;)
-    {
-      try
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-        this.jdField_a_of_type_Awtu.a(new awtm(this));
-        this.jdField_a_of_type_Awtu.a(new awtn(this));
-        this.jdField_a_of_type_Awtu.a(new awto(this));
-        this.jdField_a_of_type_Awtu.a(new awtp(this, paramVideoData));
-        localObject = AppConstants.SDCARD_PATH + ".now_video/" + "vid_" + a(str) + ".mp4";
-        localFile = new File((String)localObject);
-        if (localFile.exists())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("VideoPlayerView", 2, "file.exists ! use local file");
-          }
-          this.jdField_a_of_type_Long = localFile.length();
-          this.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
-          this.jdField_a_of_type_Awtu.a("vid_" + a(str), (String)localObject, str, paramVideoData.f);
-          this.jdField_a_of_type_Awtu.a(new awtq(this, paramVideoData, bool2));
-          if (QLog.isColorLevel()) {
-            QLog.i("VideoPlayerView", 2, "player start!");
-          }
-          this.jdField_c_of_type_Boolean = false;
-          return;
-        }
-      }
-      catch (Exception paramVideoData)
-      {
-        Log.e("VideoPlayerView", paramVideoData.toString());
-        return;
-      }
-      File localFile = new File((String)localObject + ".tmp");
-      if (QLog.isColorLevel()) {
-        QLog.i("VideoPlayerView", 2, "use remote file,tmp's exsit=" + localFile.exists());
-      }
-      this.jdField_a_of_type_Awtu.a("vid_" + a(str), (String)localObject + ".tmp", str, paramVideoData.f);
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Awtu.a();
-  }
-  
-  public long b()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_c_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("VideoPlayerView", 2, "resume");
-      }
-      this.jdField_a_of_type_Awtu.b();
-      this.jdField_a_of_type_Awtu.a(this.jdField_c_of_type_Long);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.w("VideoPlayerView", 2, "!not paused no resume!");
-  }
-  
-  public boolean b()
-  {
-    awrs.jdField_a_of_type_Int += 1;
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoPlayerView", 2, "restart");
-    }
-    String str = this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString;
-    if (c()) {}
-    for (int i = 1;; i = 2)
-    {
-      awrt.a(str, i, "0", "0");
-      awrt.a(2);
-      awrt.d();
-      this.jdField_a_of_type_Awtu.d();
-      return true;
-    }
-  }
-  
-  public long c()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null) {}
-    Object localObject;
-    do
-    {
-      return 0L;
-      localObject = AppConstants.SDCARD_PATH + ".now_video/" + "vid_" + a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_b_of_type_JavaLangString) + ".mp4";
-      if (new File((String)localObject).exists()) {
-        return ((String)localObject).length();
-      }
-      localObject = new File(AppConstants.SDCARD_PATH + ".now_video/" + "vid_" + a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_b_of_type_JavaLangString) + ".mp4.tmp");
-    } while (!((File)localObject).exists());
-    return ((File)localObject).length();
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoPlayerView", 2, "stop");
-    }
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2025);
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2026);
-    }
-    if (this.jdField_d_of_type_Boolean) {
-      this.jdField_d_of_type_Boolean = false;
-    }
-    if ((this.jdField_a_of_type_Awtu != null) && (this.jdField_a_of_type_Awtu.a() != null) && (this.jdField_a_of_type_Awtu.a().getParent() != null)) {
-      ((ViewGroup)this.jdField_a_of_type_Awtu.a().getParent()).removeView(this.jdField_a_of_type_Awtu.a());
-    }
-    this.jdField_a_of_type_Awtu.a();
-    this.jdField_a_of_type_Awsc = null;
-  }
-  
-  public boolean c()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null) {}
-    do
-    {
-      return false;
-      if (new File(AppConstants.SDCARD_PATH + ".now_video/" + "vid_" + a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_b_of_type_JavaLangString) + ".mp4").exists()) {
-        return true;
-      }
-    } while ((this.jdField_b_of_type_Long < this.jdField_a_of_type_Long) || (this.jdField_b_of_type_Long == 0L));
-    return true;
-  }
-  
-  public void d() {}
+  public void onDestroy() {}
 }
 
 

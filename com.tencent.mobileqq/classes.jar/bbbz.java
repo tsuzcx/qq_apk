@@ -1,16 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class bbbz
-  implements View.OnClickListener
+public abstract class bbbz
 {
-  bbbz(bbby parambbby) {}
+  public RegisterNewBaseActivity a;
+  public QQAppInterface a;
   
-  public void onClick(View paramView)
+  protected bbbz(RegisterNewBaseActivity paramRegisterNewBaseActivity)
   {
-    bbby.a(this.a).a(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity = paramRegisterNewBaseActivity;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.app;
   }
 }
 

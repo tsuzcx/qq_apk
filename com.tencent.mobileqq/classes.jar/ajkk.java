@@ -1,31 +1,21 @@
-import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class ajkk
-  implements View.OnClickListener
+class ajkk
+  implements Animation.AnimationListener
 {
-  public ajkk(AvatarPendantActivity paramAvatarPendantActivity, int paramInt, String paramString1, String paramString2) {}
+  ajkk(ajkj paramajkj, abgm paramabgm, View paramView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    bgge.a(null, this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, "mvip.gxh.android.faceaddon_nati_dft", this.jdField_a_of_type_Int, "1450000515", this.jdField_a_of_type_JavaLangString, this.b, "");
-    String str = "0";
-    if (!TextUtils.isEmpty(this.b)) {
-      if (!"QQ会员".equals(this.b)) {
-        break label91;
-      }
-    }
-    label91:
-    for (str = "0";; str = "1")
-    {
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "CliOper", "", "", "0X8005FD2", "0X8005FD2", 0, 0, str, "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
+    this.jdField_a_of_type_Abgm.a("");
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839458);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

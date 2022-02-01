@@ -63,16 +63,16 @@ class PlatformViewsController$1
           int j = PlatformViewsController.access$200(this.this$0, paramPlatformViewCreationRequest.logicalHeight);
           PlatformViewsController.access$300(this.this$0, i, j);
           TextureRegistry.SurfaceTextureEntry localSurfaceTextureEntry = PlatformViewsController.access$400(this.this$0).createSurfaceTexture();
-          localObject = VirtualDisplayController.create(PlatformViewsController.access$500(this.this$0), PlatformViewsController.access$600(this.this$0), localPlatformViewFactory, localSurfaceTextureEntry, i, j, paramPlatformViewCreationRequest.viewId, localObject, new _..Lambda.PlatformViewsController.1.yCLpCrkCk5PKTxnfIMt18jB15HI(this, paramPlatformViewCreationRequest));
+          localObject = VirtualDisplayController.create(PlatformViewsController.access$500(this.this$0), PlatformViewsController.access$600(this.this$0), localPlatformViewFactory, localSurfaceTextureEntry, i, j, paramPlatformViewCreationRequest.viewId, localObject, new PlatformViewsController.VirtualDisplayViewFocusListener(this.this$0, paramPlatformViewCreationRequest.viewId, PlatformViewsController.access$700(this.this$0)));
           if (localObject != null)
           {
-            if (PlatformViewsController.access$700(this.this$0) != null) {
-              ((VirtualDisplayController)localObject).onFlutterViewAttached(PlatformViewsController.access$700(this.this$0));
+            if (PlatformViewsController.access$800(this.this$0) != null) {
+              ((VirtualDisplayController)localObject).onFlutterViewAttached(PlatformViewsController.access$800(this.this$0));
             }
             this.this$0.vdControllers.put(Integer.valueOf(paramPlatformViewCreationRequest.viewId), localObject);
             localObject = ((VirtualDisplayController)localObject).getView();
             ((View)localObject).setLayoutDirection(paramPlatformViewCreationRequest.direction);
-            PlatformViewsController.access$800(this.this$0).put(((View)localObject).getContext(), localObject);
+            PlatformViewsController.access$900(this.this$0).put(((View)localObject).getContext(), localObject);
             return localSurfaceTextureEntry.id();
           }
           localObject = new StringBuilder();
@@ -107,10 +107,10 @@ class PlatformViewsController$1
     Object localObject = (VirtualDisplayController)this.this$0.vdControllers.get(Integer.valueOf(paramInt));
     if (localObject != null)
     {
-      if (PlatformViewsController.access$900(this.this$0) != null) {
-        PlatformViewsController.access$900(this.this$0).clearPlatformViewClient(paramInt);
+      if (PlatformViewsController.access$1000(this.this$0) != null) {
+        PlatformViewsController.access$1000(this.this$0).clearPlatformViewClient(paramInt);
       }
-      PlatformViewsController.access$800(this.this$0).remove(((VirtualDisplayController)localObject).getView().getContext());
+      PlatformViewsController.access$900(this.this$0).remove(((VirtualDisplayController)localObject).getView().getContext());
       ((VirtualDisplayController)localObject).dispose();
       this.this$0.vdControllers.remove(Integer.valueOf(paramInt));
       return;
@@ -125,8 +125,8 @@ class PlatformViewsController$1
   {
     ensureValidAndroidVersion();
     float f = PlatformViewsController.access$500(this.this$0).getResources().getDisplayMetrics().density;
-    Object localObject = (MotionEvent.PointerProperties[])PlatformViewsController.access$1200(paramPlatformViewTouch.rawPointerPropertiesList).toArray(new MotionEvent.PointerProperties[paramPlatformViewTouch.pointerCount]);
-    MotionEvent.PointerCoords[] arrayOfPointerCoords = (MotionEvent.PointerCoords[])PlatformViewsController.access$1300(paramPlatformViewTouch.rawPointerCoords, f).toArray(new MotionEvent.PointerCoords[paramPlatformViewTouch.pointerCount]);
+    Object localObject = (MotionEvent.PointerProperties[])PlatformViewsController.access$1300(paramPlatformViewTouch.rawPointerPropertiesList).toArray(new MotionEvent.PointerProperties[paramPlatformViewTouch.pointerCount]);
+    MotionEvent.PointerCoords[] arrayOfPointerCoords = (MotionEvent.PointerCoords[])PlatformViewsController.access$1400(paramPlatformViewTouch.rawPointerCoords, f).toArray(new MotionEvent.PointerCoords[paramPlatformViewTouch.pointerCount]);
     if (this.this$0.vdControllers.containsKey(Integer.valueOf(paramPlatformViewTouch.viewId)))
     {
       ((VirtualDisplayController)this.this$0.vdControllers.get(Integer.valueOf(paramPlatformViewTouch.viewId))).getView().dispatchTouchEvent(MotionEvent.obtain(paramPlatformViewTouch.downTime.longValue(), paramPlatformViewTouch.eventTime.longValue(), paramPlatformViewTouch.action, paramPlatformViewTouch.pointerCount, (MotionEvent.PointerProperties[])localObject, arrayOfPointerCoords, paramPlatformViewTouch.metaState, paramPlatformViewTouch.buttonState, paramPlatformViewTouch.xPrecision, paramPlatformViewTouch.yPrecision, paramPlatformViewTouch.deviceId, paramPlatformViewTouch.edgeFlags, paramPlatformViewTouch.source, paramPlatformViewTouch.flags));
@@ -147,7 +147,7 @@ class PlatformViewsController$1
       int i = PlatformViewsController.access$200(this.this$0, paramPlatformViewResizeRequest.newLogicalWidth);
       int j = PlatformViewsController.access$200(this.this$0, paramPlatformViewResizeRequest.newLogicalHeight);
       PlatformViewsController.access$300(this.this$0, i, j);
-      PlatformViewsController.access$1000(this.this$0, localVirtualDisplayController);
+      PlatformViewsController.access$1100(this.this$0, localVirtualDisplayController);
       localVirtualDisplayController.resize(i, j, new PlatformViewsController.1.1(this, localVirtualDisplayController, paramRunnable));
       return;
     }

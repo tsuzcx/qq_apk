@@ -1,15 +1,17 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-
 class wkh
-  implements wkl
+  implements wlo
 {
   wkh(wkg paramwkg) {}
   
-  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
+  public void a(boolean paramBoolean, wlk paramwlk)
   {
-    return (!StoryVideoItem.isPlayable(paramStoryVideoItem.mVid, true)) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex == 0L);
+    ykq.b("WeatherDataProvider", "WeatherLbsListener: onLbsUpdate, isSuccess=" + paramBoolean);
+    if ((paramBoolean) && (paramwlk != null))
+    {
+      this.a.a(paramwlk.b, paramwlk.a);
+      return;
+    }
+    this.a.a(false, null);
   }
 }
 

@@ -1,26 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.qapmsdk.base.reporter.ab.AbType;
 
 public class acxr
-  extends Handler
+  extends AbType
 {
-  public acxr(ChatHistory paramChatHistory) {}
-  
-  public void handleMessage(Message paramMessage)
+  public void active()
   {
-    if (paramMessage.what == 1)
-    {
-      if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
-        this.a.a.dismiss();
-      }
-      this.a.a = new bhht(this.a, this.a.getTitleBarHeight());
-      this.a.a.setCancelable(false);
-      this.a.a.c(2131691382);
-      if (!this.a.isFinishing()) {
-        this.a.a.show();
-      }
-    }
+    setPerfTimeout(1, 9223372036854775807L);
+    setPerfTimeout(4, 9223372036854775807L);
+    setPerfTimeout(2, 9223372036854775807L);
+  }
+  
+  public String getDescription()
+  {
+    return "AIO3D背景";
+  }
+  
+  public void unActive()
+  {
+    setPerfTimeout(1, 3000L);
+    setPerfTimeout(2, 2000L);
+    setPerfTimeout(4, 9223372036854775807L);
   }
 }
 

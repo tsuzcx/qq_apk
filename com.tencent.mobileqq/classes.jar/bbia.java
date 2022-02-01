@@ -1,31 +1,38 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.opengl.GLSurfaceView.EGLContextFactory;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.qphone.base.util.QLog;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
 public class bbia
-  extends bbhi
+  implements GLSurfaceView.EGLContextFactory
 {
-  public ImageView a;
-  public TextView a;
-  public URLImageView a;
-  public TextView b;
-  public TextView c;
+  private int jdField_a_of_type_Int = 12440;
   
-  public bbia(ViewGroup paramViewGroup, int paramInt)
+  public bbia(CameraCaptureView paramCameraCaptureView) {}
+  
+  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    super(paramViewGroup, paramInt);
+    int i = this.jdField_a_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraCaptureView", 1, "createContext. display = " + paramEGLDisplay + " tid = " + Thread.currentThread().getId());
+    }
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig = paramEGLConfig;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
+    return this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
   }
   
-  protected void a()
+  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
   {
-    View localView = a(this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131378752));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366729));
-    this.b = ((TextView)localView.findViewById(2131371396));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131371368));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131376984));
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.n();
+    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext)) {
+      QLog.e("CameraCaptureView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraCaptureView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
+    }
   }
 }
 

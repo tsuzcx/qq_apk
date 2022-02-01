@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.shortvideo;
 
-import ayde;
-import bbrp;
+import azjq;
+import bcyj;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForShortVideo;
@@ -12,11 +12,11 @@ import com.tencent.mobileqq.transfile.TransferRequest;
 class BaseShortVideoOprerator$SendShortVideoTask
   implements Runnable
 {
-  bbrp a;
+  bcyj a;
   
-  public BaseShortVideoOprerator$SendShortVideoTask(BaseShortVideoOprerator paramBaseShortVideoOprerator, bbrp parambbrp)
+  public BaseShortVideoOprerator$SendShortVideoTask(BaseShortVideoOprerator paramBaseShortVideoOprerator, bcyj parambcyj)
   {
-    this.a = parambbrp;
+    this.a = parambcyj;
   }
   
   public void run()
@@ -25,12 +25,12 @@ class BaseShortVideoOprerator$SendShortVideoTask
     for (;;)
     {
       return;
-      bbrp localbbrp = this.a;
+      bcyj localbcyj = this.a;
       Object localObject;
       int i;
-      if (!localbbrp.jdField_a_of_type_Boolean)
+      if (!localbcyj.jdField_a_of_type_Boolean)
       {
-        localObject = (MessageForShortVideo)localbbrp.jdField_a_of_type_JavaLangObject;
+        localObject = (MessageForShortVideo)localbcyj.jdField_a_of_type_JavaLangObject;
         i = 0;
       }
       while (localObject != null)
@@ -47,16 +47,16 @@ class BaseShortVideoOprerator$SendShortVideoTask
           label117:
           localTransferRequest.mUniseq = ((MessageRecord)localObject).uniseq;
           localTransferRequest.mIsUp = true;
-          localTransferRequest.mBusiType = localbbrp.jdField_a_of_type_Int;
-          localTransferRequest.mMd5 = localbbrp.e;
-          localTransferRequest.mLocalPath = (localbbrp.h + "QQ_&_MoblieQQ_&_QQ" + localbbrp.j + "QQ_&_MoblieQQ_&_QQ" + localbbrp.jdField_f_of_type_Int + "QQ_&_MoblieQQ_&_QQ" + localbbrp.jdField_g_of_type_JavaLangString);
+          localTransferRequest.mBusiType = localbcyj.jdField_a_of_type_Int;
+          localTransferRequest.mMd5 = localbcyj.e;
+          localTransferRequest.mLocalPath = (localbcyj.h + "QQ_&_MoblieQQ_&_QQ" + localbcyj.j + "QQ_&_MoblieQQ_&_QQ" + localbcyj.jdField_f_of_type_Int + "QQ_&_MoblieQQ_&_QQ" + localbcyj.jdField_g_of_type_JavaLangString);
           localTransferRequest.mUpCallBack = this.this$0;
           localTransferRequest.mRec = ((MessageRecord)localObject);
           localTransferRequest.mExtraObj = this.a;
           this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController().transferAsync(localTransferRequest);
-          if ((!localbbrp.d) && (!localbbrp.jdField_f_of_type_Boolean))
+          if ((!localbcyj.d) && (!localbcyj.jdField_f_of_type_Boolean))
           {
-            if (localbbrp.jdField_a_of_type_Boolean) {
+            if (localbcyj.jdField_a_of_type_Boolean) {
               break label468;
             }
             this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().setChangeAndNotify(localObject);
@@ -64,19 +64,19 @@ class BaseShortVideoOprerator$SendShortVideoTask
         }
         for (;;)
         {
-          ayde.a(this.this$0.jdField_g_of_type_JavaLangString, this.this$0.f, "doSendShortVideo", "cost:" + (System.currentTimeMillis() - l));
-          ayde.a(this.this$0.jdField_g_of_type_JavaLangString, this.this$0.f, "doSendShortVideo.start", "TransferRequest: " + localTransferRequest.toString());
+          azjq.a(this.this$0.jdField_g_of_type_JavaLangString, this.this$0.f, "doSendShortVideo", "cost:" + (System.currentTimeMillis() - l));
+          azjq.a(this.this$0.jdField_g_of_type_JavaLangString, this.this$0.f, "doSendShortVideo.start", "TransferRequest: " + localTransferRequest.toString());
           return;
-          if (localbbrp.jdField_g_of_type_Int == 0)
+          if (localbcyj.jdField_g_of_type_Int == 0)
           {
-            localObject = this.this$0.a(localbbrp);
+            localObject = this.this$0.a(localbcyj);
             i = 1;
             break;
           }
-          if (localbbrp.jdField_g_of_type_Int != 1) {
+          if (localbcyj.jdField_g_of_type_Int != 1) {
             break label484;
           }
-          localObject = (MessageForShortVideo)localbbrp.jdField_a_of_type_JavaLangObject;
+          localObject = (MessageForShortVideo)localbcyj.jdField_a_of_type_JavaLangObject;
           i = 0;
           break;
           if (((MessageRecord)localObject).istroop == 3000)

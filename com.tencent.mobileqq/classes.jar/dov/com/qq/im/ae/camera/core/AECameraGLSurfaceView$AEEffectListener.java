@@ -1,15 +1,17 @@
 package dov.com.qq.im.ae.camera.core;
 
-import blnq;
+import bnaz;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
 
 public abstract interface AECameraGLSurfaceView$AEEffectListener
 {
   public abstract void onDetectStateChange(boolean paramBoolean1, boolean paramBoolean2);
   
+  public abstract void onFilterReady();
+  
   public abstract void onSelectFaceEffect(VideoMaterial paramVideoMaterial);
   
-  public abstract void onSetFilterProcess(blnq paramblnq);
+  public abstract void onSetFilterProcess(bnaz parambnaz);
 }
 
 

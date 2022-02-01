@@ -1,38 +1,19 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import java.util.List;
+import cooperation.liveroom.LiveRoomGiftCallback;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class rkj
-  extends bjwv<rku, rkk>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "type", "", "args", "", "onCall"}, k=3, mv={1, 1, 16})
+final class rkj
+  implements LiveRoomGiftCallback
 {
-  public rkj(Context paramContext, List<rku> paramList)
-  {
-    super(paramContext, paramList);
-  }
+  rkj(rkh paramrkh) {}
   
-  public int a(int paramInt)
+  public final void onCall(int paramInt, @Nullable String paramString)
   {
-    return 0;
-  }
-  
-  public rkk a(ViewGroup paramViewGroup, int paramInt)
-  {
-    ImageView localImageView = new ImageView(this.a);
-    paramInt = paramViewGroup.getLayoutParams().height;
-    localImageView.setLayoutParams(new ViewGroup.LayoutParams(paramInt, paramInt));
-    localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    return new rkk(this, localImageView);
-  }
-  
-  public void a(rkk paramrkk, int paramInt)
-  {
-    Bitmap localBitmap = ((rku)a(paramInt)).a();
-    if (localBitmap != null) {
-      ((ImageView)paramrkk.itemView).setImageBitmap(localBitmap);
+    if (paramInt == 7)
+    {
+      rkh.a(this.a);
+      rkh.b(this.a);
     }
   }
 }

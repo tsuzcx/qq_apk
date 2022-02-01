@@ -1,17 +1,42 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import org.json.JSONObject;
 
-class agfa
-  extends aghj
+public final class agfa
 {
-  agfa(agcw paramagcw)
-  {
-    super(paramagcw, null);
-  }
+  public HashMap<String, String> a = new HashMap();
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  private void a(String paramString)
   {
-    return new aghv(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ECommerceDataReportConfigProcessor", 2, "configText : " + paramString);
+      }
+      try
+      {
+        paramString = new JSONObject(paramString);
+        Iterator localIterator = paramString.keys();
+        while (localIterator.hasNext())
+        {
+          String str1 = (String)localIterator.next();
+          if (!TextUtils.isEmpty(str1))
+          {
+            String str2 = paramString.optString(str1, "");
+            if (!TextUtils.isEmpty(str2)) {
+              this.a.put(str1, str2);
+            }
+          }
+        }
+        return;
+      }
+      catch (Throwable paramString)
+      {
+        QLog.e("ECommerceDataReportConfigProcessor", 1, paramString, new Object[0]);
+      }
+    }
   }
 }
 

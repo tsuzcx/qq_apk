@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.bless;
 
-import amtj;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import anvx;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
@@ -19,7 +19,7 @@ public class BlessPtvModule
   extends Entity
 {
   public static final String DEFAULT_MODULE_ID = "0";
-  public static final String DEFAULT_MODULE_TITLE = amtj.a(2131700308);
+  public static final String DEFAULT_MODULE_TITLE = anvx.a(2131700659);
   public static final String DEFAULT_VIP_LEVEL = "0";
   public static String path;
   public int audioLength;
@@ -66,7 +66,7 @@ public class BlessPtvModule
   public Drawable getPngDrawable(Activity paramActivity)
   {
     if ("0".equals(this.id)) {
-      return paramActivity.getResources().getDrawable(2130838911);
+      return paramActivity.getResources().getDrawable(2130838931);
     }
     String str = path + File.separator + this.id + File.separator + this.id + ".png";
     try

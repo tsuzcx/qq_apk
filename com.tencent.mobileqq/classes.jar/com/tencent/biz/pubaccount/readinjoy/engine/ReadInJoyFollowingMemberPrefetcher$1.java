@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import pkl;
+import pvi;
 
 public class ReadInJoyFollowingMemberPrefetcher$1
   implements Runnable
 {
-  public ReadInJoyFollowingMemberPrefetcher$1(pkl parampkl) {}
+  public ReadInJoyFollowingMemberPrefetcher$1(pvi parampvi) {}
   
   public void run()
   {
-    pkl.a(this.this$0);
+    pvi.a(this.this$0);
   }
 }
 

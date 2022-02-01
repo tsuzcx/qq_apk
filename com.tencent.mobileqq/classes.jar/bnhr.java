@@ -1,107 +1,116 @@
-import android.os.SystemClock;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import com.tribe.async.dispatch.Dispatcher;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
-import java.io.File;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.ViewStub;
+import com.tencent.ttpic.baseutils.string.StringUtils;
+import com.tencent.ttpic.openapi.model.WMElement;
+import com.tencent.ttpic.openapi.watermark.LogicDataManager;
+import dov.com.qq.im.ae.camera.ui.poi.AESelectLocationFragment;
+import dov.com.qq.im.ae.camera.ui.watermark.WatermarkEditView;
+import java.util.List;
 
-class bnhr
-  extends SimpleJob<DoodleEmojiItem>
-  implements vlr
+public class bnhr
+  extends bnqb
 {
-  protected long a;
-  private final DoodleEmojiItem jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem;
-  private final vmd jdField_a_of_type_Vmd;
-  private long b;
+  private static boolean jdField_a_of_type_Boolean;
+  private WatermarkEditView jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean b;
   
-  public bnhr(DoodleEmojiItem paramDoodleEmojiItem)
+  public bnhr(Activity paramActivity, View paramView, bnqc parambnqc)
   {
-    super("DownloadAndUnZipJob");
-    if (paramDoodleEmojiItem == null) {
-      throw new IllegalArgumentException("doodleEmojiItem should not be null");
-    }
-    this.jdField_a_of_type_Vmd = new vme();
-    this.jdField_a_of_type_Vmd.a(this);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem = paramDoodleEmojiItem;
+    super(paramActivity, paramView, parambnqc);
   }
   
-  protected DoodleEmojiItem a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  private void a()
   {
-    this.jdField_a_of_type_Vmd.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem.download_url, bnhh.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem.pack_id), 0L);
-    return this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem;
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    DoodleEmojiItem localDoodleEmojiItem1 = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem;
-    if (paramInt == 0)
+    Object localObject = LogicDataManager.getInstance().getEditableWMElement();
+    if ((localObject != null) && (((List)localObject).size() == 1) && (((List)localObject).get(0) != null))
     {
-      paramString = bnhh.a(localDoodleEmojiItem1.pack_id);
-      String str = bnhh.b(localDoodleEmojiItem1.pack_id);
-      xvv.b("DoodleEmojiManager", "DownloadListener onDownloadFinish zip = " + paramString);
-      xvv.b("DoodleEmojiManager", "DownloadListener onDownloadFinish folder = " + str);
-      for (;;)
+      localObject = (WMElement)((List)localObject).get(0);
+      bnrh.a("AEWaterMarkEditorPart", "only jump to poi");
+      if (("[location]".equals(((WMElement)localObject).fmtstr)) || ("[City]".equals(((WMElement)localObject).fmtstr)))
       {
-        int i;
-        try
-        {
-          ypi.d(str);
-          i = npo.a(paramString, str);
-          if (i == 0)
-          {
-            long l1 = SystemClock.uptimeMillis();
-            long l2 = this.jdField_a_of_type_Long;
-            xwa.b("edit_video", "face_download_timecost", 0, 0, new String[] { localDoodleEmojiItem1.pack_id, l1 - l2 + "" });
-            xwa.b("edit_video", "face_download_success", 0, 0, new String[] { localDoodleEmojiItem1.pack_id });
-            xvv.c("DoodleEmojiManager", "DownloadListener onDownloadFinish success, unZip success");
-            localDoodleEmojiItem1.setLocalEmojiFolderPath(str);
-            new File(str).setLastModified(System.currentTimeMillis());
-            vli.a().dispatch(new bnho(localDoodleEmojiItem1, paramInt, true, 0L, 0L));
-            return;
-          }
-        }
-        catch (Exception localException)
-        {
-          xvv.d("DoodleEmojiManager", "DownloadListener remove folderPath : %s ,error : %s ", new Object[] { str, localException });
-          continue;
-        }
-        finally
-        {
-          new File(paramString).delete();
-        }
-        xvv.d("DoodleEmojiManager", "DownloadListener onDownloadFinish unZip failed, treat it as download failed");
-        vli.a().dispatch(new bnho(localDoodleEmojiItem2, i, false, 0L, 0L));
-        xwa.b("edit_video", "face_download_success", 0, i, new String[] { localDoodleEmojiItem2.pack_id });
+        AESelectLocationFragment.a(this.mActivity, 203);
+        this.jdField_a_of_type_JavaLangString = ((WMElement)localObject).sid;
+        this.b = true;
       }
     }
-    xvv.e("DoodleEmojiManager", "DownloadListener onDownloadFinish error = " + paramInt + ", url = " + paramString);
-    vli.a().dispatch(new bnho(localDoodleEmojiItem2, paramInt, true, 0L, 0L));
-    xwa.b("edit_video", "face_download_success", 0, paramInt, new String[] { localDoodleEmojiItem2.pack_id });
+    do
+    {
+      return;
+      this.b = false;
+      if (this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView == null)
+      {
+        localObject = (ViewStub)this.mActivity.findViewById(2131364249);
+        if (localObject != null)
+        {
+          ((ViewStub)localObject).inflate();
+          this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView = ((WatermarkEditView)this.mActivity.findViewById(2131364248));
+          this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView.a(this.mActivity, this.mPartManager);
+        }
+      }
+    } while (this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView == null);
+    this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView.a();
   }
   
-  public void a(String paramString, long paramLong1, long paramLong2)
+  public Object get(int paramInt, Object... paramVarArgs)
   {
-    DoodleEmojiItem localDoodleEmojiItem = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem;
-    if (!TextUtils.equals(localDoodleEmojiItem.download_url, paramString))
+    switch (paramInt)
     {
-      xvv.d("DoodleEmojiManager", "DownloadListener onProgress error : " + localDoodleEmojiItem);
-      xvv.d("DoodleEmojiManager", "DownloadListener onProgress error : call back url = " + paramString);
+    default: 
+      return Boolean.valueOf(false);
     }
-    while (paramLong1 <= paramLong2 / 10L + this.b) {
+    return Boolean.valueOf(jdField_a_of_type_Boolean);
+  }
+  
+  protected void initView() {}
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    super.onActivityResult(paramInt1, paramInt2, paramIntent);
+    if ((paramInt1 == 203) && (paramInt2 == -1))
+    {
+      paramIntent = paramIntent.getStringExtra("key_select_poi");
+      bnrh.a("AEWaterMarkEditorPart", "onActivityResult" + paramIntent);
+      if ((this.b) || (this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView == null)) {
+        break label73;
+      }
+      this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView.setWaterMarkLocation(paramIntent);
+    }
+    label73:
+    do
+    {
+      do
+      {
+        return;
+      } while (!this.b);
+      paramIntent = StringUtils.removeUTF8Emoji(paramIntent).trim();
+      LogicDataManager.getInstance().setLocation(paramIntent);
+    } while (this.jdField_a_of_type_JavaLangString == null);
+    LogicDataManager.getInstance().recordLocationForSpecificMaterial(this.jdField_a_of_type_JavaLangString, paramIntent);
+  }
+  
+  public void send(int paramInt, Object... paramVarArgs)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 589825: 
+      a();
+      if (this.b)
+      {
+        jdField_a_of_type_Boolean = false;
+        return;
+      }
+      jdField_a_of_type_Boolean = true;
       return;
     }
-    xvv.a("DoodleEmojiManager", "DownloadListener onProgress " + paramLong1 + " / " + paramLong2);
-    vli.a().dispatch(new bnho(localDoodleEmojiItem, 0, false, paramLong2, paramLong1));
-    this.b = paramLong1;
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    xvv.b("DoodleEmojiManager", "onDownloadStart : url = " + paramString1 + ", path = " + paramString2);
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    if ((this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView != null) && (this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView.getVisibility() == 0)) {
+      this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView.setVisibility(8);
+    }
+    jdField_a_of_type_Boolean = false;
   }
 }
 

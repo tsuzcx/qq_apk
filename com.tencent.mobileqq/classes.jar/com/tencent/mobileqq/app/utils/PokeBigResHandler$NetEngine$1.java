@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app.utils;
 
-import anxe;
+import apag;
 
 public class PokeBigResHandler$NetEngine$1
   implements Runnable
 {
-  public PokeBigResHandler$NetEngine$1(anxe paramanxe, String paramString) {}
+  public PokeBigResHandler$NetEngine$1(apag paramapag, String paramString) {}
   
   public void run()
   {

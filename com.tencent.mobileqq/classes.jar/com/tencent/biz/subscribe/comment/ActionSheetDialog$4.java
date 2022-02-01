@@ -2,23 +2,23 @@ package com.tencent.biz.subscribe.comment;
 
 import android.text.TextUtils;
 import android.widget.Button;
-import zeq;
+import ztv;
 
 public class ActionSheetDialog$4
   implements Runnable
 {
-  public ActionSheetDialog$4(zeq paramzeq, String paramString) {}
+  public ActionSheetDialog$4(ztv paramztv, String paramString) {}
   
   public void run()
   {
     if (TextUtils.isEmpty(this.a))
     {
-      zeq.a(this.this$0).setText("");
-      zeq.a(this.this$0).setVisibility(8);
+      ztv.a(this.this$0).setText("");
+      ztv.a(this.this$0).setVisibility(8);
       return;
     }
-    zeq.a(this.this$0).setText(this.a);
-    zeq.a(this.this$0).setVisibility(0);
+    ztv.a(this.this$0).setText(this.a);
+    ztv.a(this.this$0).setVisibility(0);
   }
 }
 

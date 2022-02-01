@@ -1,14 +1,18 @@
-class amoc
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.apollo.ApolloResManager.ApolloDressInfo;
+
+public final class amoc
+  implements Parcelable.Creator<ApolloResManager.ApolloDressInfo>
 {
-  public int a;
-  public String a;
-  public String b;
-  
-  public amoc(amoa paramamoa, int paramInt, String paramString1, String paramString2)
+  public ApolloResManager.ApolloDressInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    return new ApolloResManager.ApolloDressInfo(paramParcel);
+  }
+  
+  public ApolloResManager.ApolloDressInfo[] a(int paramInt)
+  {
+    return new ApolloResManager.ApolloDressInfo[paramInt];
   }
 }
 

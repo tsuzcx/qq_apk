@@ -1,55 +1,11 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Message;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class akiq
-  implements View.OnClickListener
+public class akiq
 {
-  akiq(akho paramakho, Bundle paramBundle) {}
-  
-  public void onClick(View paramView)
-  {
-    if (akho.a(this.jdField_a_of_type_Akho) != null)
-    {
-      localObject1 = akho.a(this.jdField_a_of_type_Akho).obtainMessage(1134042);
-      akho.a(this.jdField_a_of_type_Akho).sendMessage((Message)localObject1);
-    }
-    Object localObject1 = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("activity");
-    if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
-    try
-    {
-      localObject1 = Class.forName((String)localObject1);
-      if (localObject1 != null)
-      {
-        localObject1 = new Intent(akho.a(this.jdField_a_of_type_Akho).getApplicationContext(), (Class)localObject1);
-        String str = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("action");
-        if (!TextUtils.isEmpty(str)) {
-          ((Intent)localObject1).setAction(str);
-        }
-        str = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("category");
-        if (!TextUtils.isEmpty(str)) {
-          ((Intent)localObject1).addCategory(str);
-        }
-        ((Intent)localObject1).setFlags(this.jdField_a_of_type_AndroidOsBundle.getInt("flags", 0));
-        akho.a(this.jdField_a_of_type_Akho).startActivity((Intent)localObject1);
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      for (;;)
-      {
-        Object localObject2 = null;
-      }
-    }
-  }
+  public ImageView a;
+  public TextView a;
+  public bhfu a;
 }
 
 

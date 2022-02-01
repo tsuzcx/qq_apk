@@ -1,24 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.pluspanel.appinfo.GroupPublicClassChatAppInfo;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public class ayfy
-  implements bjoe
+class ayfy
+  implements Handler.Callback
 {
-  public ayfy(GroupPublicClassChatAppInfo paramGroupPublicClassChatAppInfo, bjnw parambjnw, ayfu paramayfu, BaseChatPie paramBaseChatPie) {}
+  ayfy(ayfx paramayfx) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Bjnw.dismiss();
-    switch (paramInt)
+    switch (paramMessage.what)
     {
-    default: 
-      return;
-    case 0: 
-      GroupPublicClassChatAppInfo.access$000(this.jdField_a_of_type_ComTencentMobileqqPluspanelAppinfoGroupPublicClassChatAppInfo, this.jdField_a_of_type_Ayfu, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
-      return;
     }
-    GroupPublicClassChatAppInfo.access$100(this.jdField_a_of_type_ComTencentMobileqqPluspanelAppinfoGroupPublicClassChatAppInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+    for (;;)
+    {
+      return true;
+      ayfx.a(this.a);
+    }
   }
 }
 

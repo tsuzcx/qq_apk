@@ -1,33 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.aeeditor.lyric.interaction.AESlidingUpPanelLayout;
-import dov.com.qq.im.aeeditor.lyric.interaction.AESlidingUpPanelLayout.PanelState;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqpim.QQPimBridgeActivity;
 
 public class bmdj
-  implements View.OnClickListener
+  implements bmdr
 {
-  public bmdj(AESlidingUpPanelLayout paramAESlidingUpPanelLayout) {}
+  public bmdj(QQPimBridgeActivity paramQQPimBridgeActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if ((!this.a.isEnabled()) || (!this.a.a())) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((AESlidingUpPanelLayout.a(this.a) != AESlidingUpPanelLayout.PanelState.EXPANDED) && (AESlidingUpPanelLayout.a(this.a) != AESlidingUpPanelLayout.PanelState.ANCHORED))
-      {
-        if (AESlidingUpPanelLayout.a(this.a) < 1.0F) {
-          this.a.setPanelState(AESlidingUpPanelLayout.PanelState.ANCHORED);
-        } else {
-          this.a.setPanelState(AESlidingUpPanelLayout.PanelState.EXPANDED);
-        }
-      }
-      else {
-        this.a.setPanelState(AESlidingUpPanelLayout.PanelState.COLLAPSED);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i(bmdk.a, 2, "QQPimBridgeActivity.hasInstalled()");
     }
+    QQPimBridgeActivity.a(this.a).sendEmptyMessage(1);
+  }
+  
+  public void a(float paramFloat) {}
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(bmdk.a, 2, "QQPimBridgeActivity.downloadError()");
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 2;
+    localMessage.arg1 = paramInt;
+    QQPimBridgeActivity.a(this.a).sendMessage(localMessage);
+  }
+  
+  public void b()
+  {
+    QQPimBridgeActivity.a(this.a).sendEmptyMessage(0);
   }
 }
 

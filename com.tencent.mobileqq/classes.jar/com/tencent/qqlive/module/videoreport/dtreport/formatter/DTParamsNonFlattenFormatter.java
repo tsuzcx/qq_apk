@@ -16,26 +16,6 @@ import java.util.Map;
 public class DTParamsNonFlattenFormatter
   extends DefaultFormatter
 {
-  private void formatElements(@NonNull List<ReportData> paramList, Map<String, Object> paramMap)
-  {
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      ReportData localReportData = (ReportData)paramList.next();
-      if (localReportData != null)
-      {
-        localArrayList1.add(localReportData.getId());
-        Map localMap = BaseUtils.copyNonNull(localReportData.getParams());
-        localMap.put("eid", localReportData.getId());
-        localArrayList2.add(localMap);
-      }
-    }
-    paramMap.put("element_path", localArrayList1);
-    paramMap.put("element_params", localArrayList2);
-  }
-  
   private void formatPage(ReportData paramReportData, Map<String, Object> paramMap)
   {
     ArrayMap localArrayMap = new ArrayMap();
@@ -53,6 +33,26 @@ public class DTParamsNonFlattenFormatter
     formatElements(paramList, localArrayMap);
     formatPage(paramReportData, localArrayMap);
     return localArrayMap;
+  }
+  
+  protected void formatElements(@NonNull List<ReportData> paramList, Map<String, Object> paramMap)
+  {
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      ReportData localReportData = (ReportData)paramList.next();
+      if (localReportData != null)
+      {
+        localArrayList1.add(localReportData.getId());
+        Map localMap = BaseUtils.copyNonNull(localReportData.getParams());
+        localMap.put("eid", localReportData.getId());
+        localArrayList2.add(localMap);
+      }
+    }
+    paramMap.put("element_path", localArrayList1);
+    paramMap.put("element_params", localArrayList2);
   }
   
   public Map<String, Object> formatEvent(String paramString, Map<String, Object> paramMap1, Map<String, Object> paramMap2)

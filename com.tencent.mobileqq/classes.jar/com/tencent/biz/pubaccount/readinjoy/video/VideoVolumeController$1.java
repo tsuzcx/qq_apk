@@ -2,28 +2,28 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.media.AudioManager;
 import com.tencent.qphone.base.util.QLog;
-import seo;
+import sqt;
 
 public class VideoVolumeController$1
   implements Runnable
 {
-  public VideoVolumeController$1(seo paramseo) {}
+  public VideoVolumeController$1(sqt paramsqt) {}
   
   public void run()
   {
-    if (seo.a(this.this$0)) {
-      if (seo.a(this.this$0) != null) {
-        seo.a(this.this$0).requestAudioFocus(null, 3, 2);
+    if (sqt.a(this.this$0)) {
+      if (sqt.a(this.this$0) != null) {
+        sqt.a(this.this$0).requestAudioFocus(null, 3, 2);
       }
     }
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("VideoVolumeController", 2, "mRequestOrAbandonAudioFocusCallBack isFocusAudio:" + seo.a(this.this$0));
+        QLog.d("VideoVolumeController", 2, "mRequestOrAbandonAudioFocusCallBack isFocusAudio:" + sqt.a(this.this$0));
       }
       return;
-      if (seo.a(this.this$0) != null) {
-        seo.a(this.this$0).abandonAudioFocus(null);
+      if (sqt.a(this.this$0) != null) {
+        sqt.a(this.this$0).abandonAudioFocus(null);
       }
     }
   }

@@ -1,13 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiVideoEditFragment;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceStruct;
 
 public class bmka
-  implements DialogInterface.OnClickListener
 {
-  public bmka(AEEditorMultiVideoEditFragment paramAEEditorMultiVideoEditFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public static <T extends JceStruct> T a(Class<T> paramClass, byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    try
+    {
+      paramClass = (JceStruct)paramClass.newInstance();
+      paramArrayOfByte = new JceInputStream(paramArrayOfByte);
+      paramArrayOfByte.setServerEncoding("utf8");
+      paramClass.readFrom(paramArrayOfByte);
+      return paramClass;
+    }
+    catch (Exception paramClass)
+    {
+      paramClass.printStackTrace();
+    }
+    return null;
+  }
 }
 
 

@@ -1,8 +1,8 @@
 package dov.com.qq.im.ae.camera.core;
 
-import aktu;
-import akur;
-import akwr;
+import alrq;
+import alsn;
+import alun;
 import android.app.Activity;
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
@@ -15,19 +15,19 @@ import android.provider.Settings.System;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import apju;
-import babf;
-import babg;
-import bbsx;
-import bbuc;
-import bbuf;
-import bbui;
-import bbuj;
-import bbuk;
-import bbur;
-import blno;
-import bmau;
-import bmbx;
+import aqmy;
+import bbho;
+import bbhp;
+import bczs;
+import bdax;
+import bdba;
+import bdbd;
+import bdbe;
+import bdbf;
+import bdbm;
+import bnax;
+import bnqe;
+import bnrh;
 import com.tencent.mobileqq.app.PeakAppInterface;
 import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture;
 import com.tencent.qphone.base.util.QLog;
@@ -36,7 +36,7 @@ import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class AECameraManager
-  implements bbsx, bbuj, bbur
+  implements bczs, bdbe, bdbm
 {
   private static final int STATE_CLOSED = 0;
   private static final int STATE_OPENED = 2;
@@ -45,21 +45,21 @@ public class AECameraManager
   private static final int STATE_PREVIEW_REQUESTING = 3;
   private static final String TAG = "AECameraManager";
   private int activityOrientation;
-  private blno aeCaptureParam;
+  private bnax aeCaptureParam;
   private AudioCapture audioCapture;
   private final Handler cameraManagerHandler;
   private int cameraPreviewHeight;
   private int cameraPreviewWidth;
-  private final bbuk cameraProxy = new bbuk(null, null);
+  private final bdbf cameraProxy = new bdbf(null, null);
   private final AtomicInteger cameraState = new AtomicInteger(0);
-  private babf darkModeChecker;
+  private bbho darkModeChecker;
   private boolean darkModeEnable;
   private int darkModeHeight;
-  private babg darkModeListener;
+  private bbhp darkModeListener;
   private int darkModeWidth;
   private View flashMask;
   private boolean flashSwitcher;
-  private aktu focusOperator;
+  private alrq focusOperator;
   private boolean gotFirstPreviewData;
   private boolean isDynamicResolutionMode;
   private int lastBrightMode;
@@ -71,16 +71,16 @@ public class AECameraManager
   
   public AECameraManager()
   {
-    bbui localbbui = new bbui(new Handler(Looper.getMainLooper()), this);
-    if (!apju.d()) {
+    bdbd localbdbd = new bdbd(new Handler(Looper.getMainLooper()), this);
+    if (!aqmy.d()) {
       this.selectedCamera = 2;
     }
     HandlerThread localHandlerThread = new HandlerThread("AECameraManagerHandlerThread");
     localHandlerThread.start();
     this.cameraManagerHandler = new Handler(localHandlerThread.getLooper());
-    this.cameraProxy.a(localbbui);
+    this.cameraProxy.a(localbdbd);
     this.cameraProxy.e(true);
-    this.focusOperator = new aktu();
+    this.focusOperator = new alrq();
   }
   
   private boolean isCameraCreated()
@@ -93,10 +93,10 @@ public class AECameraManager
     return this.cameraState.get() >= 3;
   }
   
-  private void onCameraSizeSelected(bbuf parambbuf)
+  private void onCameraSizeSelected(bdba parambdba)
   {
-    this.cameraPreviewWidth = parambbuf.b;
-    this.cameraPreviewHeight = parambbuf.a;
+    this.cameraPreviewWidth = parambdba.b;
+    this.cameraPreviewHeight = parambdba.a;
     if (this.mListener != null) {
       this.mListener.onCameraPreviewSizeChanged(this.cameraPreviewWidth, this.cameraPreviewHeight);
     }
@@ -118,13 +118,13 @@ public class AECameraManager
     //   17: invokespecial 160	dov/com/qq/im/ae/camera/core/AECameraManager:isCameraCreated	()Z
     //   20: invokevirtual 211	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   23: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   26: invokestatic 220	bmbx:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   26: invokestatic 220	bnrh:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   29: aload_0
     //   30: invokespecial 160	dov/com/qq/im/ae/camera/core/AECameraManager:isCameraCreated	()Z
     //   33: ifeq +29 -> 62
     //   36: ldc 25
     //   38: ldc 222
-    //   40: invokestatic 224	bmbx:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   40: invokestatic 224	bnrh:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   43: aload_1
     //   44: ifnull +17 -> 61
     //   47: aload_1
@@ -135,21 +135,21 @@ public class AECameraManager
     //   56: invokeinterface 230 3 0
     //   61: return
     //   62: aload_0
-    //   63: getfield 71	dov/com/qq/im/ae/camera/core/AECameraManager:cameraProxy	Lbbuk;
+    //   63: getfield 71	dov/com/qq/im/ae/camera/core/AECameraManager:cameraProxy	Lbdbf;
     //   66: aload_0
-    //   67: invokevirtual 233	bbuk:a	(Lbbsx;)V
+    //   67: invokevirtual 233	bdbf:a	(Lbczs;)V
     //   70: aload_0
-    //   71: getfield 71	dov/com/qq/im/ae/camera/core/AECameraManager:cameraProxy	Lbbuk;
+    //   71: getfield 71	dov/com/qq/im/ae/camera/core/AECameraManager:cameraProxy	Lbdbf;
     //   74: aload_0
     //   75: getfield 73	dov/com/qq/im/ae/camera/core/AECameraManager:selectedCamera	I
-    //   78: invokevirtual 235	bbuk:b	(I)V
+    //   78: invokevirtual 235	bdbf:b	(I)V
     //   81: aload_0
     //   82: getfield 80	dov/com/qq/im/ae/camera/core/AECameraManager:cameraState	Ljava/util/concurrent/atomic/AtomicInteger;
     //   85: iconst_2
     //   86: invokevirtual 238	java/util/concurrent/atomic/AtomicInteger:set	(I)V
     //   89: ldc 25
     //   91: ldc 240
-    //   93: invokestatic 220	bmbx:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   93: invokestatic 220	bnrh:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   96: aload_0
     //   97: getfield 242	dov/com/qq/im/ae/camera/core/AECameraManager:audioCapture	Lcom/tencent/mobileqq/richmedia/capture/audio/AudioCapture;
     //   100: ifnull +10 -> 110
@@ -157,10 +157,10 @@ public class AECameraManager
     //   104: getfield 242	dov/com/qq/im/ae/camera/core/AECameraManager:audioCapture	Lcom/tencent/mobileqq/richmedia/capture/audio/AudioCapture;
     //   107: invokevirtual 247	com/tencent/mobileqq/richmedia/capture/audio/AudioCapture:f	()V
     //   110: aload_0
-    //   111: getfield 130	dov/com/qq/im/ae/camera/core/AECameraManager:focusOperator	Laktu;
+    //   111: getfield 130	dov/com/qq/im/ae/camera/core/AECameraManager:focusOperator	Lalrq;
     //   114: ifnull +21 -> 135
     //   117: aload_0
-    //   118: getfield 130	dov/com/qq/im/ae/camera/core/AECameraManager:focusOperator	Laktu;
+    //   118: getfield 130	dov/com/qq/im/ae/camera/core/AECameraManager:focusOperator	Lalrq;
     //   121: astore_3
     //   122: aload_0
     //   123: getfield 73	dov/com/qq/im/ae/camera/core/AECameraManager:selectedCamera	I
@@ -168,13 +168,13 @@ public class AECameraManager
     //   127: if_icmpne +43 -> 170
     //   130: aload_3
     //   131: iload_2
-    //   132: invokevirtual 249	aktu:a	(Z)V
+    //   132: invokevirtual 249	alrq:a	(Z)V
     //   135: aload_0
     //   136: getfield 73	dov/com/qq/im/ae/camera/core/AECameraManager:selectedCamera	I
-    //   139: putstatic 252	akrw:a	I
-    //   142: invokestatic 257	bmau:a	()Lbmau;
+    //   139: putstatic 252	alps:a	I
+    //   142: invokestatic 257	bnqe:a	()Lbnqe;
     //   145: ldc_w 259
-    //   148: invokevirtual 261	bmau:a	(Ljava/lang/String;)V
+    //   148: invokevirtual 261	bnqe:a	(Ljava/lang/String;)V
     //   151: aload_1
     //   152: ifnull -91 -> 61
     //   155: aload_1
@@ -203,7 +203,7 @@ public class AECameraManager
     //   0	196	0	this	AECameraManager
     //   0	196	1	paramCameraOpenCallback	AECameraManager.CameraOpenCallback
     //   1	171	2	bool	boolean
-    //   121	10	3	localaktu	aktu
+    //   121	10	3	localalrq	alrq
     //   175	20	3	localObject	Object
     // Exception table:
     //   from	to	target	type
@@ -214,14 +214,14 @@ public class AECameraManager
     //   135	151	175	finally
   }
   
-  private void realStartPreview(SurfaceTexture paramSurfaceTexture, akur paramakur)
+  private void realStartPreview(SurfaceTexture paramSurfaceTexture, alsn paramalsn)
   {
-    bmbx.b("AECameraManager", "realStartPreview---ENTER, previewTexture=" + paramSurfaceTexture + ", previewSize=" + paramakur);
+    bnrh.b("AECameraManager", "realStartPreview---ENTER, previewTexture=" + paramSurfaceTexture + ", previewSize=" + paramalsn);
     this.cameraState.set(3);
-    this.aeCaptureParam.i(paramakur.a);
-    this.aeCaptureParam.j(paramakur.b);
+    this.aeCaptureParam.i(paramalsn.a);
+    this.aeCaptureParam.j(paramalsn.b);
     if (this.isDynamicResolutionMode) {
-      this.cameraProxy.a(new bbuf(paramakur.b, paramakur.a), new bbuf(paramakur.a, paramakur.b), 0, 30, true);
+      this.cameraProxy.a(new bdba(paramalsn.b, paramalsn.a), new bdba(paramalsn.a, paramalsn.b), 0, 30, true);
     }
     for (;;)
     {
@@ -230,24 +230,24 @@ public class AECameraManager
       if (this.mListener != null) {
         this.mListener.onCameraPreviewStarted();
       }
-      bmbx.b("AECameraManager", "realStartPreview---EXIT");
-      bmau.a().a("startCameraPreview-end");
+      bnrh.b("AECameraManager", "realStartPreview---EXIT");
+      bnqe.a().a("startCameraPreview-end");
       return;
-      this.cameraProxy.a(new bbuf(this.aeCaptureParam.b(), this.aeCaptureParam.c()), new bbuf(this.aeCaptureParam.d(), this.aeCaptureParam.e()), 0, 30, false);
+      this.cameraProxy.a(new bdba(this.aeCaptureParam.b(), this.aeCaptureParam.c()), new bdba(this.aeCaptureParam.d(), this.aeCaptureParam.e()), 0, 30, false);
     }
   }
   
-  private void setAeCaptureParam(blno paramblno)
+  private void setAeCaptureParam(bnax parambnax)
   {
-    this.aeCaptureParam = paramblno;
+    this.aeCaptureParam = parambnax;
   }
   
   private void stopCameraInternal(boolean paramBoolean)
   {
-    bmbx.b("AECameraManager", "stopCameraInternal---ENTER, cameraCreated=" + isCameraCreated() + ", forceStop=" + paramBoolean);
+    bnrh.b("AECameraManager", "stopCameraInternal---ENTER, cameraCreated=" + isCameraCreated() + ", forceStop=" + paramBoolean);
     if ((!paramBoolean) && (!isCameraCreated()))
     {
-      bmbx.d("AECameraManager", "stopCameraInternal---EXIT, not created, do nothing");
+      bnrh.d("AECameraManager", "stopCameraInternal---EXIT, not created, do nothing");
       return;
     }
     this.cameraProxy.a(false);
@@ -258,7 +258,7 @@ public class AECameraManager
     }
     this.cameraProxy.b(this);
     this.cameraProxy.b(PeakAppInterface.a);
-    bmbx.b("AECameraManager", "stopCameraInternal---EXIT, normally");
+    bnrh.b("AECameraManager", "stopCameraInternal---EXIT, normally");
   }
   
   private void turnFrontFlash(Activity paramActivity, boolean paramBoolean)
@@ -312,9 +312,9 @@ public class AECameraManager
     this.cameraManagerHandler.post(new AECameraManager.6(this));
   }
   
-  public void capturePhoto(File paramFile, int paramInt, boolean paramBoolean, akwr paramakwr, akur paramakur)
+  public void capturePhoto(File paramFile, int paramInt, boolean paramBoolean, alun paramalun, alsn paramalsn)
   {
-    this.cameraManagerHandler.post(new AECameraManager.7(this, paramFile, paramakur, paramakwr, paramInt, paramBoolean));
+    this.cameraManagerHandler.post(new AECameraManager.7(this, paramFile, paramalsn, paramalun, paramInt, paramBoolean));
   }
   
   public void changeCamera(int paramInt, AECameraManager.CameraOpenCallback paramCameraOpenCallback)
@@ -354,12 +354,12 @@ public class AECameraManager
     return this.selectedCamera;
   }
   
-  public void init(blno paramblno)
+  public void init(bnax parambnax)
   {
-    this.darkModeChecker = new babf();
-    setAeCaptureParam(paramblno);
-    this.selectedCamera = paramblno.g();
-    if ((this.selectedCamera == 1) && (!apju.d())) {
+    this.darkModeChecker = new bbho();
+    setAeCaptureParam(parambnax);
+    this.selectedCamera = parambnax.g();
+    if ((this.selectedCamera == 1) && (!aqmy.d())) {
       this.selectedCamera = 2;
     }
   }
@@ -381,7 +381,7 @@ public class AECameraManager
   
   public void notify(Object paramObject, int paramInt, Object... paramVarArgs)
   {
-    bmau.a().a("AECameraManager", "【CameraProxy notify】eventId=" + paramInt + ", args=" + Arrays.toString(paramVarArgs));
+    bnqe.a().a("AECameraManager", "【CameraProxy notify】eventId=" + paramInt + ", args=" + Arrays.toString(paramVarArgs));
     switch (paramInt)
     {
     }
@@ -398,63 +398,63 @@ public class AECameraManager
               do
               {
                 return;
-                if (!(paramVarArgs[0] instanceof bbuf)) {
+                if (!(paramVarArgs[0] instanceof bdba)) {
                   break;
                 }
-                onCameraSizeSelected((bbuf)paramVarArgs[0]);
+                onCameraSizeSelected((bdba)paramVarArgs[0]);
               } while (this.mListener == null);
               this.mListener.onCameraStarted(true, "");
-              bmbx.b("AECameraManager", "【Camera Open Success】EVENT_SET_CAMERA_PARAM");
+              bnrh.b("AECameraManager", "【Camera Open Success】EVENT_SET_CAMERA_PARAM");
               return;
             } while ((!(paramVarArgs[0] instanceof String)) || (this.mListener == null));
             this.mListener.onCameraStarted(false, (String)paramVarArgs[0]);
-            bmbx.d("AECameraManager", "【Camera Open Error】EVENT_SET_CAMERA_PARAM:" + paramVarArgs[0]);
+            bnrh.d("AECameraManager", "【Camera Open Error】EVENT_SET_CAMERA_PARAM:" + paramVarArgs[0]);
             return;
           } while ((!(paramVarArgs[0] instanceof String)) || (this.mListener == null));
           this.mListener.onCameraStarted(false, (String)paramVarArgs[0]);
-          bmbx.d("AECameraManager", "【Camera Open Error】EVENT_CREATE_CAMERA:" + paramVarArgs[0]);
+          bnrh.d("AECameraManager", "【Camera Open Error】EVENT_CREATE_CAMERA:" + paramVarArgs[0]);
           return;
         } while ((!(paramVarArgs[0] instanceof Integer)) || (this.mListener == null));
         this.mListener.onCameraStarted(false, "[Camera2]openCamera2 error:" + paramVarArgs[0]);
-        bmbx.d("AECameraManager", "【Camera2 Open Error】EVENT_CAMERA2_ERROR:" + paramVarArgs[0]);
+        bnrh.d("AECameraManager", "【Camera2 Open Error】EVENT_CAMERA2_ERROR:" + paramVarArgs[0]);
         return;
-        if (!(paramVarArgs[0] instanceof bbuf)) {
+        if (!(paramVarArgs[0] instanceof bdba)) {
           break;
         }
-        onCameraSizeSelected((bbuf)paramVarArgs[0]);
+        onCameraSizeSelected((bdba)paramVarArgs[0]);
         if (this.mListener != null)
         {
           this.mListener.onCameraStarted(true, "");
-          bmbx.b("AECameraManager", "【Camera2 Open Success】EVENT_CAMERA2_PARAMS");
+          bnrh.b("AECameraManager", "【Camera2 Open Success】EVENT_CAMERA2_PARAMS");
         }
-      } while ((paramVarArgs.length < 2) || (!(paramVarArgs[1] instanceof bbuf)));
-      paramObject = (bbuf)paramVarArgs[1];
+      } while ((paramVarArgs.length < 2) || (!(paramVarArgs[1] instanceof bdba)));
+      paramObject = (bdba)paramVarArgs[1];
       this.darkModeWidth = paramObject.a;
       this.darkModeHeight = paramObject.b;
       return;
     } while ((!(paramVarArgs[0] instanceof String)) || (this.mListener == null));
     this.mListener.onCameraStarted(false, "[Camera2]setCamera2 Params error:" + paramVarArgs[0]);
-    bmbx.d("AECameraManager", "【Camera2 Open Error】setCamera2 Params error::" + paramVarArgs[0]);
+    bnrh.d("AECameraManager", "【Camera2 Open Error】setCamera2 Params error::" + paramVarArgs[0]);
   }
   
   public void onCameraException(Exception paramException)
   {
     if (paramException != null)
     {
-      bmbx.a("AECameraManager", "onCameraException---" + paramException.getMessage(), paramException);
+      bnrh.a("AECameraManager", "onCameraException---" + paramException.getMessage(), paramException);
       return;
     }
-    bmbx.d("AECameraManager", "onCameraException---");
+    bnrh.d("AECameraManager", "onCameraException---");
   }
   
   public void onDispatchThreadException(RuntimeException paramRuntimeException)
   {
     if (paramRuntimeException != null)
     {
-      bmbx.a("AECameraManager", "onDispatchThreadException---" + paramRuntimeException.getMessage(), paramRuntimeException);
+      bnrh.a("AECameraManager", "onDispatchThreadException---" + paramRuntimeException.getMessage(), paramRuntimeException);
       return;
     }
-    bmbx.d("AECameraManager", "onDispatchThreadException---");
+    bnrh.d("AECameraManager", "onDispatchThreadException---");
   }
   
   public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
@@ -462,9 +462,9 @@ public class AECameraManager
     if (!this.gotFirstPreviewData)
     {
       this.gotFirstPreviewData = true;
-      bmau.a().a("onCameraPreviewFrameData");
+      bnqe.a().a("onCameraPreviewFrameData");
     }
-    bbuc.a().a(true, paramArrayOfByte);
+    bdax.a().a(true, paramArrayOfByte);
     if (this.darkModeEnable)
     {
       int k = this.cameraPreviewWidth;
@@ -487,7 +487,7 @@ public class AECameraManager
   
   public void openCamera(AECameraManager.CameraOpenCallback paramCameraOpenCallback)
   {
-    bmau.a().a("openCamera-begin");
+    bnqe.a().a("openCamera-begin");
     this.cameraManagerHandler.post(new AECameraManager.1(this, paramCameraOpenCallback));
   }
   
@@ -520,13 +520,13 @@ public class AECameraManager
   
   public void setCameraManagerListener(AECameraManager.CameraManagerListener paramCameraManagerListener)
   {
-    bmbx.b("AECameraManager", "### setCameraManagerListener--- listener=" + paramCameraManagerListener);
+    bnrh.b("AECameraManager", "### setCameraManagerListener--- listener=" + paramCameraManagerListener);
     this.mListener = paramCameraManagerListener;
   }
   
-  public void setDarkModeChecker(babf parambabf)
+  public void setDarkModeChecker(bbho parambbho)
   {
-    this.darkModeChecker = parambabf;
+    this.darkModeChecker = parambbho;
   }
   
   public void setDarkModeEnable(boolean paramBoolean)
@@ -534,9 +534,9 @@ public class AECameraManager
     this.darkModeEnable = paramBoolean;
   }
   
-  public void setDarkModeListener(babg parambabg)
+  public void setDarkModeListener(bbhp parambbhp)
   {
-    this.darkModeListener = parambabg;
+    this.darkModeListener = parambbhp;
   }
   
   public void setDynamicResolutionMode(boolean paramBoolean)
@@ -547,8 +547,8 @@ public class AECameraManager
   public void setFocusModeDefault()
   {
     String str = getDefaultFocusMode();
-    if ((!bbuc.a().a(str)) && (bbuc.a().a("auto"))) {
-      bbuc.a().a(null);
+    if ((!bdax.a().a(str)) && (bdax.a().a("auto"))) {
+      bdax.a().a(null);
     }
   }
   
@@ -567,7 +567,7 @@ public class AECameraManager
   public void setSelectedCamera(int paramInt)
   {
     if ((paramInt != 2) && (paramInt != 1)) {}
-    while ((paramInt == 1) && (!apju.d())) {
+    while ((paramInt == 1) && (!aqmy.d())) {
       return;
     }
     this.cameraManagerHandler.post(new AECameraManager.12(this, paramInt));
@@ -583,14 +583,14 @@ public class AECameraManager
     this.cameraManagerHandler.post(new AECameraManager.10(this, paramInt));
   }
   
-  public void startCameraPreview(SurfaceTexture paramSurfaceTexture, akur paramakur)
+  public void startCameraPreview(SurfaceTexture paramSurfaceTexture, alsn paramalsn)
   {
-    bmbx.b("AECameraManager", "startCameraPreview ENTER---previewTexture=" + paramSurfaceTexture + ", previewSize=" + paramakur);
-    if ((paramSurfaceTexture == null) || (paramakur == null) || (Math.min(paramakur.a, paramakur.b) <= 0)) {
+    bnrh.b("AECameraManager", "startCameraPreview ENTER---previewTexture=" + paramSurfaceTexture + ", previewSize=" + paramalsn);
+    if ((paramSurfaceTexture == null) || (paramalsn == null) || (Math.min(paramalsn.a, paramalsn.b) <= 0)) {
       return;
     }
-    bmau.a().a("startCameraPreview-begin");
-    this.cameraManagerHandler.post(new AECameraManager.5(this, paramSurfaceTexture, paramakur));
+    bnqe.a().a("startCameraPreview-begin");
+    this.cameraManagerHandler.post(new AECameraManager.5(this, paramSurfaceTexture, paramalsn));
   }
   
   public void stopCamera(boolean paramBoolean)
@@ -610,9 +610,9 @@ public class AECameraManager
   
   public void toggleCamera(AECameraManager.CameraOpenCallback paramCameraOpenCallback)
   {
-    if (!apju.d())
+    if (!aqmy.d())
     {
-      bmbx.d("AECameraManager", "toggleCamera---front camera not exists, not support toggle");
+      bnrh.d("AECameraManager", "toggleCamera---front camera not exists, not support toggle");
       paramCameraOpenCallback.onOpenResult(this.selectedCamera, false);
       return;
     }

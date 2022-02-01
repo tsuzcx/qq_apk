@@ -1,74 +1,30 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
-class alnd
-  extends DefaultHandler
+public class alnd
+  implements Animator.AnimatorListener
 {
-  private int jdField_a_of_type_Int;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  public alnd(LoginView paramLoginView) {}
   
-  public int a()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    return this.jdField_a_of_type_Int;
+    LoginView.c(this.a, false);
   }
   
-  public ArrayList<String> a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    paramArrayOfChar = paramArrayOfChar.toString();
-    QLog.d("SAXForHandler", 4, "characters: " + paramArrayOfChar);
-  }
-  
-  public void endDocument()
-  {
-    QLog.d("SAXForHandler", 4, "endDocument");
-    super.endDocument();
-  }
-  
-  public void endElement(String paramString1, String paramString2, String paramString3)
-  {
-    QLog.d("SAXForHandler", 4, "endElement uri:" + paramString1 + " localName:" + paramString2 + " qName:" + paramString3);
-  }
-  
-  public void startDocument()
-  {
-    QLog.d("SAXForHandler", 4, "startDocument");
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
-  {
-    int j = 0;
-    int i = 0;
-    QLog.d("SAXForHandler", 4, "startElement: uri:" + paramString1 + " localName:" + paramString2 + " qName:" + paramString3);
-    if ("config".equals(paramString2)) {
-      while (i < paramAttributes.getLength())
-      {
-        this.jdField_a_of_type_Int = Integer.valueOf(paramAttributes.getValue(i)).intValue();
-        QLog.d("SAXForHandler", 4, "startElement: localName:" + paramString2 + " value: " + this.jdField_a_of_type_Int);
-        i += 1;
-      }
+    LoginView.a(this.a, LoginView.b(this.a), LoginView.d(this.a), LoginView.f(this.a), LoginView.h(this.a), 1.0F);
+    if (this.a.a != null) {
+      this.a.a.e();
     }
-    if ("Elem".equals(paramString2))
-    {
-      i = j;
-      while (i < paramAttributes.getLength())
-      {
-        paramString1 = paramAttributes.getValue(i);
-        paramString3 = paramAttributes.getLocalName(i);
-        QLog.d("SAXForHandler", 4, "startElement: localName:" + paramString2 + "name: " + paramString3 + " url: " + paramString1);
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramString1);
-        i += 1;
-      }
-    }
+    LoginView.c(this.a, false);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

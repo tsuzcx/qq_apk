@@ -1,21 +1,83 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
+import android.content.Context;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import java.util.HashSet;
+import java.util.Set;
 
-class wpb
-  implements wol
+public class wpb
+  extends RecyclerView.ItemDecoration
 {
-  wpb(wpa paramwpa) {}
+  static final Set<Integer> a;
+  protected int a;
+  protected int b;
+  protected int c;
+  protected int d;
+  protected int e;
   
-  public void a(ErrorMessage paramErrorMessage, List<wod> paramList)
+  static
   {
-    this.a.a.a(paramErrorMessage, paramList);
-    this.a.b();
+    jdField_a_of_type_JavaUtilSet = new HashSet();
+    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(1024));
+    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(12));
+    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(3));
   }
   
-  public void a(List<woe> paramList, boolean paramBoolean)
+  public wpb(Context paramContext)
   {
-    this.a.a.a(paramList, paramBoolean);
-    this.a.b();
+    this.jdField_a_of_type_Int = AIOUtils.dp2px(5.0F, paramContext.getResources());
+    this.b = AIOUtils.dp2px(16.0F, paramContext.getResources());
+    this.c = AIOUtils.dp2px(8.5F, paramContext.getResources());
+    this.d = AIOUtils.dp2px(3.0F, paramContext.getResources());
+    this.e = AIOUtils.dp2px(3.0F, paramContext.getResources());
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    int k = paramRecyclerView.getChildViewHolder(paramView).getAdapterPosition();
+    paramView = paramRecyclerView.getAdapter();
+    if ((k < 0) || (k >= paramView.getItemCount())) {
+      return;
+    }
+    int m = paramView.getItemViewType(k);
+    if (paramView.getItemCount() > k + 1)
+    {
+      int n = paramView.getItemViewType(k + 1);
+      int i = 0;
+      if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(m))) {
+        i = 1;
+      }
+      int j = i;
+      if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(n))) {
+        j = i + 1;
+      }
+      if (j == 1)
+      {
+        paramRect.right = this.d;
+        return;
+      }
+      if (j == 2)
+      {
+        paramRect.right = this.e;
+        return;
+      }
+    }
+    if (m == 2)
+    {
+      paramRect.right = this.b;
+      return;
+    }
+    if (k == paramState.getItemCount() - 1)
+    {
+      paramRect.right = this.c;
+      return;
+    }
+    paramRect.right = this.jdField_a_of_type_Int;
   }
 }
 

@@ -1,34 +1,47 @@
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
-import com.tencent.robolectric.ShadowParcel;
-import java.util.Arrays;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class anne
-  implements PermissionMonitor.Listener
+  implements View.OnClickListener
 {
-  static
+  anne(annc paramannc) {}
+  
+  public void onClick(View paramView)
   {
-    if (!anmw.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
+    Object localObject;
+    if ((!TextUtils.isEmpty(annc.a(this.a))) && (!annc.a(this.a).equals("0")))
     {
-      jdField_a_of_type_Boolean = bool;
+      QQAppInterface localQQAppInterface = this.a.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
+      int i = this.a.a.jdField_a_of_type_Int;
+      if (this.a.a.jdField_a_of_type_ComTencentMobileqqDataApolloGameData != null)
+      {
+        localObject = Integer.toString(this.a.a.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameId);
+        VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "clk_fuwuhao", i, 0, new String[] { localObject });
+        localObject = new Intent(this.a.a.getActivity(), AccountDetailActivity.class);
+        ((Intent)localObject).putExtra("uin", annc.a(this.a));
+        ((Intent)localObject).putExtra("uintype", 1008);
+        this.a.a.getActivity().startActivity((Intent)localObject);
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      localObject = "";
+      break;
+      QLog.e("apollo_cmGame_ApolloGameInfoFragment", 1, "[setPubAccountInfo] uin is null or = 0");
     }
-  }
-  
-  anne(anmw paramanmw) {}
-  
-  public void onMethodEntry(String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject)
-  {
-    if (anmw.a(this.jdField_a_of_type_Anmw) != Thread.currentThread()) {}
-    while ((!anmw.a(this.jdField_a_of_type_Anmw)) || (paramArrayOfObject.length != 2)) {
-      return;
-    }
-    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[0] != anmw.a(this.jdField_a_of_type_Anmw))) {
-      throw new AssertionError();
-    }
-    ShadowParcel.a((int)anmw.a(this.jdField_a_of_type_Anmw), ((Integer)paramArrayOfObject[1]).intValue());
-    QLog.i("ParcelHooker", 2, "onMethodEntry() called with: className = [" + paramString1 + "], methodName = [" + paramString2 + "], sig = [" + paramString3 + "], arguments = [" + Arrays.toString(paramArrayOfObject) + "]");
   }
 }
 

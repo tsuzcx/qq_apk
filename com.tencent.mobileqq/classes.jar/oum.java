@@ -1,11 +1,23 @@
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+
 public class oum
+  implements bkzq
 {
-  public int a;
-  public String a;
+  public oum(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public boolean a()
+  public void OnClick(View paramView, int paramInt)
   {
-    return (this.a == 5) || (this.a == 4);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      ReadInJoySettingActivity.b(this.a).cancel();
+      return;
+      ReadInJoySettingActivity.e(this.a, false);
+      ReadInJoySettingActivity.e(this.a, ReadInJoySettingActivity.d(this.a));
+    }
   }
 }
 

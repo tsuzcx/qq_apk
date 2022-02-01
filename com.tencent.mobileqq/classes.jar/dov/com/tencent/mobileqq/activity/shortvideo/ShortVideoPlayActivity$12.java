@@ -1,7 +1,7 @@
 package dov.com.tencent.mobileqq.activity.shortvideo;
 
-import bfur;
-import bnwe;
+import bhdj;
+import bplw;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class ShortVideoPlayActivity$12
@@ -11,7 +11,7 @@ public class ShortVideoPlayActivity$12
   
   public void run()
   {
-    QQCustomDialog localQQCustomDialog = bfur.a(this.this$0, 232, null, this.a, new bnwe(this), null);
+    QQCustomDialog localQQCustomDialog = bhdj.a(this.this$0, 232, null, this.a, new bplw(this), null);
     ShortVideoPlayActivity.a(this.this$0, localQQCustomDialog);
   }
 }

@@ -1,170 +1,229 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.jungle.weather.proto.WeatherReportInfo.Area;
-import com.tencent.jungle.weather.proto.WeatherReportInfo.GetWeatherByLbsReq;
-import com.tencent.jungle.weather.proto.WeatherReportInfo.GetWeatherByLbsRsp;
-import com.tencent.jungle.weather.proto.WeatherReportInfo.PbRspMsgHead;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.LbsManagerService;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Context;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.mobileqq.activity.recent.data.RecentItemAppletsFolderData;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import mqq.app.AppActivity;
-import mqq.app.MSFServlet;
-import mqq.app.NewIntent;
-import mqq.app.Packet;
+import com.tencent.widget.RecentDynamicAvatarView;
+import com.tencent.widget.SingleLineTextView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class algk
-  extends MSFServlet
+  extends alhd
 {
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, AppActivity paramAppActivity)
+  protected int a;
+  private List<String> a;
+  
+  public algk()
   {
-    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApp(), algk.class);
-    localNewIntent.putExtra("req_type", 8888);
-    localNewIntent.putExtra("latitide", paramInt1);
-    localNewIntent.putExtra("longtitude", paramInt2);
-    a(paramQQAppInterface, localNewIntent, paramAppActivity);
+    this.jdField_a_of_type_Int = 2131562765;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, AppActivity paramAppActivity)
+  public int a()
   {
-    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApp(), algk.class);
-    localNewIntent.putExtra("req_type", 6666);
-    localNewIntent.putExtra("uin", Long.parseLong(paramQQAppInterface.getCurrentAccountUin()));
-    a(paramQQAppInterface, localNewIntent, paramAppActivity);
+    return 2;
   }
   
-  private static void a(QQAppInterface paramQQAppInterface, NewIntent paramNewIntent, AppActivity paramAppActivity)
+  public View a(int paramInt, Object paramObject, algy paramalgy, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, alje paramalje)
   {
-    if (Build.VERSION.SDK_INT >= 23)
+    Object localObject1;
+    if ((paramView != null) && ((paramView.getTag() instanceof algl)))
     {
-      if (paramAppActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0)
-      {
-        SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("public_account_weather", 0);
-        long l1 = localSharedPreferences.getLong("drawer_last_location_auth_dialog_time", 0L);
-        long l2 = System.currentTimeMillis();
-        if (l2 - l1 > 86400000L)
-        {
-          localSharedPreferences.edit().putLong("drawer_last_location_auth_dialog_time", l2).apply();
-          paramAppActivity.requestPermissions(new algm(paramQQAppInterface, paramNewIntent, paramAppActivity, null), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("weatherManager", 1, "without 24 hour from last location auth dialog");
-        }
-        paramNewIntent.putExtra("adcode", 0);
-        paramQQAppInterface.startServlet(paramNewIntent);
-        return;
+      paramalje = (algl)paramView.getTag();
+      paramViewGroup = paramView;
+      paramView = paramalje;
+      localObject1 = paramContext.getResources();
+      paramalje = ((Resources)localObject1).getColorStateList(2131167110);
+      localObject1 = ((Resources)localObject1).getColorStateList(2131167111);
+      if (!ThemeUtil.isNowThemeIsDefault(null, false, null)) {
+        break label522;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("weatherManager", 1, "location permitted above android M");
-      }
-      b(paramQQAppInterface, paramNewIntent);
-      return;
+      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor((ColorStateList)localObject1, 0);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("weatherManager", 1, "direct locate in system below android M");
-    }
-    b(paramQQAppInterface, paramNewIntent);
-  }
-  
-  private static void b(QQAppInterface paramQQAppInterface, NewIntent paramNewIntent)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("weatherManager", 2, "startLocation onLocationStart");
-    }
-    LbsManagerService.startLocation(new algl("qq_weather", false, paramNewIntent, paramQQAppInterface));
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (!"QQWeatherReport.getWeatherByLbs".equals(paramFromServiceMsg.getServiceCmd())) {
-      return;
-    }
-    boolean bool2 = paramFromServiceMsg.isSuccess();
-    int i = paramIntent.getIntExtra("req_type", 0);
-    Bundle localBundle = new Bundle();
-    localBundle.putAll(paramIntent.getExtras());
-    if (QLog.isColorLevel()) {
-      QLog.d("weatherManager", 2, "WeatherServlet onReceive isSucess1:" + bool2);
-    }
-    bool1 = bool2;
-    if (bool2) {}
     for (;;)
     {
-      try
-      {
-        localObject = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
-        paramFromServiceMsg = new byte[((ByteBuffer)localObject).getInt() - 4];
-        ((ByteBuffer)localObject).get(paramFromServiceMsg);
-        localObject = new WeatherReportInfo.GetWeatherByLbsRsp();
-        ((WeatherReportInfo.GetWeatherByLbsRsp)localObject).mergeFrom(paramFromServiceMsg);
-        if (((WeatherReportInfo.GetWeatherByLbsRsp)localObject).pbRspMsgHead.uint32_result.get() != 0) {
-          continue;
-        }
-        bool1 = true;
-        if (QLog.isColorLevel()) {
-          QLog.d("weatherManager", 2, "WeatherServlet onReceive isSucess2:" + bool1);
-        }
-        if (!bool1) {
-          continue;
-        }
-        localBundle.putString("KEY_TEMPER", ((WeatherReportInfo.GetWeatherByLbsRsp)localObject).temper.get());
-        localBundle.putString("o_wea_code", ((WeatherReportInfo.GetWeatherByLbsRsp)localObject).o_wea_code.get());
-        localBundle.putString("area_info", ((WeatherReportInfo.GetWeatherByLbsRsp)localObject).area.city.get() + "-" + ((WeatherReportInfo.GetWeatherByLbsRsp)localObject).area.area_name.get());
-        localBundle.putInt("adcode", ((WeatherReportInfo.GetWeatherByLbsRsp)localObject).area.area_id.get());
-        localBundle.putInt("show_flag", ((WeatherReportInfo.GetWeatherByLbsRsp)localObject).show_flag.get());
+      paramView.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(Integer.valueOf(paramInt));
+      if (AppSetting.c) {
+        paramViewGroup.setContentDescription(null);
       }
-      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+      if ((paramObject instanceof RecentItemAppletsFolderData))
       {
-        Object localObject;
-        paramFromServiceMsg.printStackTrace();
-        bool1 = false;
-        continue;
+        paramalje = (RecentItemAppletsFolderData)paramObject;
+        if (paramalgy != null) {
+          a(paramViewGroup, paramalje, paramContext, paramalgy.a(paramalje.mUser.uin, paramView.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.getMeasuredWidth(), paramView.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.getMeasuredHeight(), paramalje.iconUrl, paramalje.iconUrlSimple));
+        }
       }
-      notifyObserver(paramIntent, i, bool1, localBundle, algi.class);
-      return;
-      bool1 = false;
-      continue;
-      localBundle.putInt("uint32_result", ((WeatherReportInfo.GetWeatherByLbsRsp)localObject).pbRspMsgHead.uint32_result.get());
-      localBundle.putString("string_err_msg", ((WeatherReportInfo.GetWeatherByLbsRsp)localObject).pbRspMsgHead.string_err_msg.get());
+      a(paramContext, paramViewGroup, paramInt, paramObject, paramView, paramOnClickListener);
+      paramViewGroup.setOnClickListener(paramOnClickListener);
+      paramViewGroup.setOnLongClickListener(paramOnLongClickListener);
+      paramViewGroup.setTag(-1, Integer.valueOf(paramInt));
+      return paramViewGroup;
+      paramView = new algl();
+      paramViewGroup = a(paramContext, this.jdField_a_of_type_Int, paramView);
+      paramView.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)paramViewGroup.findViewById(2131368381));
+      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramViewGroup.findViewById(2131379001));
+      paramView.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramViewGroup.findViewById(2131380501));
+      paramView.b = ((SingleLineTextView)paramViewGroup.findViewById(2131365538));
+      Object localObject2 = paramContext.getResources();
+      float f = DeviceInfoUtil.getDesity();
+      paramalje = ((Resources)localObject2).getColorStateList(2131167110);
+      localObject1 = ((Resources)localObject2).getColorStateList(2131167033);
+      localObject2 = ((Resources)localObject2).getColorStateList(2131167111);
+      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor((ColorStateList)localObject1);
+      if (ThemeUtil.isNowThemeIsDefault(null, false, null)) {
+        paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor((ColorStateList)localObject2, 0);
+      }
+      for (;;)
+      {
+        paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(12.0F, 0);
+        paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablePadding((int)(3.0F * f));
+        paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setIconDrawablePadding((int)(2.0F * f), (int)(1.0F * f));
+        paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextPadding((int)(5.0F * f), 2);
+        paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramalje, 2);
+        paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(17.0F, 2);
+        paramView.b.setTextColor(paramalje);
+        paramView.b.setExtendTextPadding((int)(f * 2.0F), 1);
+        paramView.b.setExtendTextSize(14.0F, 1);
+        paramViewGroup.setTag(paramView);
+        if (this.jdField_a_of_type_Algc != null) {
+          paramView.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.jdField_a_of_type_Algc.a());
+        }
+        break;
+        paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramalje, 0);
+      }
+      label522:
+      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramalje, 0);
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public List<String> a(RecentBaseData paramRecentBaseData, Context paramContext)
   {
-    int i = paramIntent.getIntExtra("req_type", 0);
-    int j = paramIntent.getIntExtra("adcode", 0);
-    Object localObject;
-    switch (i)
-    {
-    default: 
-      throw new RuntimeException("Weatherservlet unknow req_type: " + i);
-    case 6666: 
-      localObject = new WeatherReportInfo.GetWeatherByLbsReq();
-      ((WeatherReportInfo.GetWeatherByLbsReq)localObject).uin.set(paramIntent.getLongExtra("uin", 0L));
-      ((WeatherReportInfo.GetWeatherByLbsReq)localObject).adcode_from_mapsdk.set(j);
+    if ((paramRecentBaseData == null) || (paramContext == null)) {
+      return null;
     }
-    for (paramIntent = ((WeatherReportInfo.GetWeatherByLbsReq)localObject).toByteArray();; paramIntent = ((WeatherReportInfo.GetWeatherByLbsReq)localObject).toByteArray())
+    int i = paramRecentBaseData.mMenuFlag;
+    paramRecentBaseData = paramContext.getResources();
+    int j;
+    if (this.jdField_a_of_type_JavaUtilList == null)
     {
-      localObject = ByteBuffer.allocate(paramIntent.length + 4);
-      ((ByteBuffer)localObject).putInt(paramIntent.length + 4).put(paramIntent);
-      paramPacket.setSSOCommand("QQWeatherReport.getWeatherByLbs");
-      paramPacket.putSendData(((ByteBuffer)localObject).array());
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      j = i & 0xF0;
+      if (j != 32) {
+        break label115;
+      }
+      this.jdField_a_of_type_JavaUtilList.add(paramRecentBaseData.getString(jdField_a_of_type_ArrayOfInt[2]));
+    }
+    for (;;)
+    {
+      if ((i & 0xF) == 1) {
+        this.jdField_a_of_type_JavaUtilList.add(paramRecentBaseData.getString(jdField_a_of_type_ArrayOfInt[0]));
+      }
+      return this.jdField_a_of_type_JavaUtilList;
+      this.jdField_a_of_type_JavaUtilList.clear();
+      break;
+      label115:
+      if (j == 16) {
+        this.jdField_a_of_type_JavaUtilList.add(paramRecentBaseData.getString(jdField_a_of_type_ArrayOfInt[3]));
+      }
+    }
+  }
+  
+  public void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext, Drawable paramDrawable)
+  {
+    int k = 0;
+    if ((paramView == null) || (paramRecentBaseData == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "bindView|param invalidate");
+      }
       return;
-      localObject = new WeatherReportInfo.GetWeatherByLbsReq();
-      ((WeatherReportInfo.GetWeatherByLbsReq)localObject).lat.set(paramIntent.getIntExtra("latitide", 0));
-      ((WeatherReportInfo.GetWeatherByLbsReq)localObject).lng.set(paramIntent.getIntExtra("longtitude", 0));
-      ((WeatherReportInfo.GetWeatherByLbsReq)localObject).adcode_from_mapsdk.set(j);
+    }
+    if ((paramView.getTag() instanceof algl)) {}
+    for (algl localalgl = (algl)paramView.getTag();; localalgl = null) {
+      for (;;)
+      {
+        if (localalgl == null)
+        {
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.i("Q.recent", 2, "bindView|holder is null, tag = " + paramView.getTag());
+          return;
+        }
+        localalgl.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.setImageDrawable(paramDrawable);
+        a(localalgl.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView);
+        localalgl.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendText(paramRecentBaseData.mShowTime, 0);
+        localalgl.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(paramRecentBaseData.mTitleName);
+        try
+        {
+          localalgl.b.setText(paramRecentBaseData.mLastMsg);
+          j = paramRecentBaseData.mUnreadNum;
+          i = paramRecentBaseData.mUnreadFlag;
+          if (j > 0) {
+            if (i == 0)
+            {
+              localalgl.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(-1, paramView);
+              j = 0;
+              i = 0;
+              blas.a(localalgl.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, i, j, k, 99, null);
+              if ((paramRecentBaseData.mMenuFlag & 0xF0) != 32) {
+                break label340;
+              }
+            }
+          }
+        }
+        catch (Exception paramDrawable)
+        {
+          for (;;)
+          {
+            try
+            {
+              localalgl.g.setBackgroundResource(2130839459);
+              if (!AppSetting.c) {
+                break;
+              }
+              paramView.setContentDescription(paramRecentBaseData.mContentDesc);
+              return;
+              paramDrawable = paramDrawable;
+              paramDrawable.printStackTrace();
+              localalgl.b.setText(paramRecentBaseData.mLastMsg + " ");
+              continue;
+              if (i == 2)
+              {
+                i = 1;
+                localalgl.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(-1, paramView);
+                j = 0;
+                continue;
+              }
+              i = 3;
+              localalgl.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0, paramView);
+              localalgl.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTextColor(paramContext.getResources().getColor(2131167157));
+              k = 2130850431;
+              continue;
+              label340:
+              localalgl.g.setBackgroundResource(2130839458);
+              continue;
+            }
+            catch (Throwable paramContext)
+            {
+              continue;
+            }
+            int j = 0;
+            int i = 0;
+          }
+        }
+      }
     }
   }
 }

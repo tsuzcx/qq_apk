@@ -1,52 +1,39 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import android.content.Context;
+import android.view.View;
+import com.tencent.pts.core.itemview.PTSItemData;
+import com.tencent.pts.core.lite.IPTSLiteEventListener;
+import com.tencent.pts.core.lite.PTSLiteItemViewManager;
 
-public abstract class qyo
-  extends Binder
-  implements qyn
+@Deprecated
+public class qyo
 {
-  public qyo()
+  private PTSLiteItemViewManager a;
+  
+  public qyo(Context paramContext)
   {
-    attachInterface(this, "com.tencent.biz.pubaccount.readinjoy.reward.aidl.IRIJAidlInterface");
+    this.a = new PTSLiteItemViewManager(paramContext);
   }
   
-  public static qyn a(IBinder paramIBinder)
+  public View a(View paramView, PTSItemData paramPTSItemData)
   {
-    if (paramIBinder == null) {
-      return null;
+    Object localObject = paramView;
+    if (this.a != null) {
+      localObject = this.a.getView(paramView, paramPTSItemData);
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.biz.pubaccount.readinjoy.reward.aidl.IRIJAidlInterface");
-    if ((localIInterface != null) && ((localIInterface instanceof qyn))) {
-      return (qyn)localIInterface;
-    }
-    return new qyp(paramIBinder);
+    return localObject;
   }
   
-  public IBinder asBinder()
+  public void a()
   {
-    return this;
+    if (this.a != null) {
+      this.a.destroy();
+    }
   }
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public void a(IPTSLiteEventListener paramIPTSLiteEventListener)
   {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.biz.pubaccount.readinjoy.reward.aidl.IRIJAidlInterface");
-      return true;
-    }
-    paramParcel1.enforceInterface("com.tencent.biz.pubaccount.readinjoy.reward.aidl.IRIJAidlInterface");
-    paramParcel1 = a();
-    paramParcel2.writeNoException();
-    if (paramParcel1 != null) {}
-    for (paramParcel1 = paramParcel1.asBinder();; paramParcel1 = null)
-    {
-      paramParcel2.writeStrongBinder(paramParcel1);
-      return true;
+    if (this.a != null) {
+      this.a.setLiteEventListener(paramIPTSLiteEventListener);
     }
   }
 }

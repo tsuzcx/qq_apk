@@ -1,28 +1,33 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.SubCommentData;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.widget.Switch;
 
-class our
-  extends ClickableSpan
+public class our
+  implements DialogInterface.OnKeyListener
 {
-  our(ouo paramouo, SubCommentData paramSubCommentData) {}
+  public our(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    oto.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.repliedUserUin, BaseActivity.sTopActivity);
-    paramView = new osa(this.jdField_a_of_type_Ouo).a().a();
-    odq.a(null, oto.a(this.jdField_a_of_type_Ouo.a), "0X800955B", "0X800955B", 0, 0, String.valueOf(this.jdField_a_of_type_Ouo.a.mArticleID), String.valueOf(this.jdField_a_of_type_Ouo.a.mAlgorithmID), this.jdField_a_of_type_Ouo.a.innerUniqueID, paramView, false);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#4D7CAF"));
-    paramTextPaint.setUnderlineText(false);
+    boolean bool = true;
+    if (paramInt == 4)
+    {
+      ReadInJoySettingActivity.a(this.a, true);
+      paramDialogInterface = ReadInJoySettingActivity.a(this.a);
+      if (ReadInJoySettingActivity.a(this.a)) {
+        break label53;
+      }
+    }
+    for (;;)
+    {
+      paramDialogInterface.setChecked(bool);
+      ReadInJoySettingActivity.a(this.a).cancel();
+      return false;
+      label53:
+      bool = false;
+    }
   }
 }
 

@@ -3,6 +3,7 @@ package com.tencent.superplayer.api;
 public class SuperPlayerMsg
 {
   public static final int PLAYER_INFO_ALL_DOWNLOAD_FINISH = 201;
+  public static final int PLAYER_INFO_ASYNC_CALL_SELECT_PROGRAM = 125;
   public static final int PLAYER_INFO_AUDIO_DECODER_TYPE = 114;
   public static final int PLAYER_INFO_AUDIO_HW_DECODING_SLOW = 117;
   public static final int PLAYER_INFO_AUDIO_SW_DECODING_SLOW = 116;

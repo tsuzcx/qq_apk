@@ -1,6 +1,16 @@
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+
 class mzn
+  implements SurfaceTexture.OnFrameAvailableListener
 {
-  public static mzl a = new mzl(null);
+  mzn(mzm parammzm) {}
+  
+  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
+  {
+    mzm.a(this.a, true);
+    mzm.a(this.a, "onFrameAvailable");
+  }
 }
 
 

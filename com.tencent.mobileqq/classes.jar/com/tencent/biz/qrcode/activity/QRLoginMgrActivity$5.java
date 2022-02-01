@@ -1,6 +1,6 @@
 package com.tencent.biz.qrcode.activity;
 
-import bhht;
+import bisl;
 
 class QRLoginMgrActivity$5
   implements Runnable

@@ -1,81 +1,49 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.AudioDeviceInterface;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
+import android.database.Cursor;
+import android.os.Parcel;
+import com.tencent.open.component.cache.database.DbCacheData.DbCreator;
+import com.tencent.open.component.cache.database.DbCacheData.Structure;
 
-public class bjle
-  implements bjlo
+final class bjle
+  implements DbCacheData.DbCreator<bjld>
 {
-  public bjle(AudioDeviceInterface paramAudioDeviceInterface) {}
-  
-  public void a(int paramInt)
+  public bjld a(Cursor paramCursor)
   {
     try
     {
-      AudioDeviceInterface.access$000(this.a).lock();
-      AudioDeviceInterface.access$102(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, "onVoicecallPreprocessRes signalAll");
-      }
-      AudioDeviceInterface.access$200(this.a).signalAll();
-      AudioDeviceInterface.access$000(this.a).unlock();
-      return;
+      String str1 = paramCursor.getString(paramCursor.getColumnIndex("urlKey"));
+      String str2 = paramCursor.getString(paramCursor.getColumnIndex("ETag"));
+      long l1 = paramCursor.getLong(paramCursor.getColumnIndex("lastModify"));
+      long l2 = paramCursor.getLong(paramCursor.getColumnIndex("cacheTime"));
+      Object localObject = paramCursor.getBlob(paramCursor.getColumnIndex("response"));
+      paramCursor = Parcel.obtain();
+      paramCursor.unmarshall((byte[])localObject, 0, localObject.length);
+      paramCursor.setDataPosition(0);
+      localObject = paramCursor.readString();
+      paramCursor.recycle();
+      paramCursor = new bjld(str1, str2, l1, l2, (String)localObject);
+      return paramCursor;
     }
-    catch (Exception localException) {}
-  }
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (paramInt == 0) {
-      AudioDeviceInterface.access$400(this.a, paramString);
-    }
-  }
-  
-  public void a(int paramInt, String paramString, boolean paramBoolean) {}
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void a(int paramInt, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3) {}
-  
-  public void a(long paramLong, int paramInt) {}
-  
-  public void a(long paramLong, int paramInt, String paramString) {}
-  
-  public void a(long paramLong, boolean paramBoolean)
-  {
-    if (!paramBoolean) {}
-    try
+    catch (Exception paramCursor)
     {
-      AudioDeviceInterface.access$000(this.a).lock();
-      AudioDeviceInterface.access$102(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, "onVoicecallPreprocessRes signalAll");
-      }
-      AudioDeviceInterface.access$200(this.a).signalAll();
-      AudioDeviceInterface.access$000(this.a).unlock();
-      return;
+      paramCursor.printStackTrace();
     }
-    catch (Exception localException) {}
+    return null;
   }
   
-  public void a(long paramLong, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3)
+  public String sortOrder()
   {
-    if (AudioDeviceInterface.access$300(this.a)) {
-      AudioDeviceInterface.access$400(this.a, paramString1);
-    }
+    return null;
   }
   
-  public void a(String paramString) {}
+  public DbCacheData.Structure[] structure()
+  {
+    return new DbCacheData.Structure[] { new DbCacheData.Structure("urlKey", "TEXT"), new DbCacheData.Structure("ETag", "TEXT"), new DbCacheData.Structure("lastModify", "INTEGER"), new DbCacheData.Structure("cacheTime", "INTEGER"), new DbCacheData.Structure("response", "BLOB") };
+  }
   
-  public void a(String paramString, long paramLong) {}
-  
-  public void a(String paramString1, String paramString2) {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void b(int paramInt, String paramString) {}
+  public int version()
+  {
+    return 1;
+  }
 }
 
 

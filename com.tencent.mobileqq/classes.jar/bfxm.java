@@ -1,8 +1,10 @@
 public class bfxm
 {
-  long a;
-  public String a;
-  public String b;
+  String jdField_a_of_type_JavaLangString = "";
+  String b = "";
+  String c = "";
+  
+  public bfxm(bfxl parambfxl) {}
 }
 
 

@@ -9,7 +9,7 @@ import android.widget.FrameLayout;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
-import myk;
+import ndw;
 
 public class FloatWindowBaseLayout
   extends FrameLayout
@@ -18,7 +18,7 @@ public class FloatWindowBaseLayout
   public int a;
   WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
   WindowManager jdField_a_of_type_AndroidViewWindowManager;
-  myk jdField_a_of_type_Myk;
+  ndw jdField_a_of_type_Ndw;
   boolean jdField_a_of_type_Boolean = false;
   float jdField_b_of_type_Float;
   public int b;
@@ -278,16 +278,16 @@ public class FloatWindowBaseLayout
         if ((Math.abs(f1 - this.jdField_c_of_type_Float) > this.e) && (Math.abs(f2 - this.d) > this.e) && (this.jdField_c_of_type_Boolean) && (!this.jdField_b_of_type_Boolean)) {
           this.jdField_b_of_type_Boolean = true;
         }
-        if ((this.jdField_a_of_type_Myk != null) && (this.jdField_b_of_type_Boolean)) {
-          this.jdField_a_of_type_Myk.a((int)(f1 - this.jdField_a_of_type_Float), (int)(f2 - this.jdField_b_of_type_Float));
+        if ((this.jdField_a_of_type_Ndw != null) && (this.jdField_b_of_type_Boolean)) {
+          this.jdField_a_of_type_Ndw.a((int)(f1 - this.jdField_a_of_type_Float), (int)(f2 - this.jdField_b_of_type_Float));
         }
         if (!this.jdField_b_of_type_Boolean) {
           bool1 = super.dispatchTouchEvent(paramMotionEvent);
         }
       }
     }
-    if ((this.jdField_a_of_type_Myk != null) && (this.jdField_b_of_type_Boolean)) {
-      this.jdField_a_of_type_Myk.b();
+    if ((this.jdField_a_of_type_Ndw != null) && (this.jdField_b_of_type_Boolean)) {
+      this.jdField_a_of_type_Ndw.b();
     }
     if (this.jdField_b_of_type_Boolean) {}
     for (bool1 = bool2;; bool1 = super.dispatchTouchEvent(paramMotionEvent))
@@ -305,12 +305,12 @@ public class FloatWindowBaseLayout
   
   public void e()
   {
-    this.jdField_a_of_type_Myk = null;
+    this.jdField_a_of_type_Ndw = null;
   }
   
-  public void setFloatPositionChangeCallback(myk parammyk)
+  public void setFloatPositionChangeCallback(ndw paramndw)
   {
-    this.jdField_a_of_type_Myk = parammyk;
+    this.jdField_a_of_type_Ndw = paramndw;
   }
 }
 

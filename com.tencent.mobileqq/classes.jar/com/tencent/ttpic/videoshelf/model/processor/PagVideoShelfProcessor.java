@@ -181,7 +181,7 @@ public class PagVideoShelfProcessor
     }
     this.mParsedTxtID = 0;
     if (this.copyFilter != null) {
-      this.copyFilter.ClearGLSL();
+      this.copyFilter.clearGLSL();
     }
     this.mProgress = 0.0D;
     this.mLastFlushProgress = -1.0D;

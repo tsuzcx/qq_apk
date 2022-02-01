@@ -1,40 +1,19 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.oidb.articlesummary.articlesummary.KdLiveInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class rde
+class rde
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  rde(rdd paramrdd) {}
   
-  public static rde a(articlesummary.KdLiveInfo paramKdLiveInfo)
+  public void onClick(View paramView)
   {
-    rde localrde = new rde();
-    localrde.jdField_a_of_type_Int = paramKdLiveInfo.uint32_style_type.get();
-    localrde.jdField_a_of_type_JavaLangString = paramKdLiveInfo.bytes_status_bg_url.get().toStringUtf8();
-    localrde.b = paramKdLiveInfo.bytes_status_icon_url.get().toStringUtf8();
-    localrde.c = paramKdLiveInfo.bytes_status_text.get().toStringUtf8();
-    localrde.d = paramKdLiveInfo.bytes_hot_icon_url.get().toStringUtf8();
-    localrde.e = paramKdLiveInfo.bytes_hot_text.get().toStringUtf8();
-    localrde.f = paramKdLiveInfo.bytes_title_jump_url.get().toStringUtf8();
-    localrde.g = paramKdLiveInfo.bytes_report_common_data.get().toStringUtf8();
-    return localrde;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("\n").append("style=").append(this.jdField_a_of_type_Int).append("\n").append("statusBgUrl=").append(this.jdField_a_of_type_JavaLangString).append("\n").append("statusIconUrl=").append(this.b).append("\n").append("statusText=").append(this.c).append("\n").append("hotIconUrl=").append(this.d).append("\n").append("hotText=").append(this.e).append("\n").append("titleJumpUrl=").append(this.f).append("\n").append("reportCommonData=").append(this.g).append("\n");
-    return localStringBuilder.toString();
+    pnw localpnw = this.a.jdField_a_of_type_Szd.a().a();
+    if (localpnw != null) {
+      localpnw.a(null, ((qfw)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

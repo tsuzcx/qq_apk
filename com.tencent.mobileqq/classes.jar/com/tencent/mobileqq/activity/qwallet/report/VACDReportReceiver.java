@@ -2,8 +2,8 @@ package com.tencent.mobileqq.activity.qwallet.report;
 
 import VACDReport.ReportHeader;
 import VACDReport.ReportItem;
-import akfl;
-import akgd;
+import albe;
+import albw;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +13,7 @@ import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.pluginbridge.BridgeHelper;
@@ -27,7 +28,7 @@ public class VACDReportReceiver
     Object localObject1;
     if ((paramReportItem != null) && (!TextUtils.isEmpty(paramReportItem.failReason)) && (paramReportItem.step != null) && (paramReportItem.step.equals("crash")) && ((paramReportItem.result == 668814) || (paramReportItem.result == 668815)))
     {
-      localObject1 = akgd.a();
+      localObject1 = albw.a();
       if (localObject1 != null) {
         break label60;
       }
@@ -89,14 +90,14 @@ public class VACDReportReceiver
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject instanceof QQAppInterface))
     {
-      localObject = (akfl)((QQAppInterface)localObject).getManager(148);
+      localObject = (albe)((QQAppInterface)localObject).getManager(QQManagerFactory.VACD_REPORT_MANAGER);
       if (localObject == null) {
         return;
       }
       if (!"vacdReport_step:start".equals(str)) {
         break label157;
       }
-      ((akfl)localObject).a(paramIntent.getStringExtra("vacdReport_extra:sKey"), (ReportHeader)paramIntent.getSerializableExtra("vacdReport_extra:header"), localReportItem);
+      ((albe)localObject).a(paramIntent.getStringExtra("vacdReport_extra:sKey"), (ReportHeader)paramIntent.getSerializableExtra("vacdReport_extra:header"), localReportItem);
     }
     for (;;)
     {
@@ -104,11 +105,11 @@ public class VACDReportReceiver
       return;
       label157:
       if ("vacdReport_step:add".equals(str)) {
-        ((akfl)localObject).a(l, paramIntent.getStringExtra("vacdReport_extra:sKey"), localReportItem);
+        ((albe)localObject).a(l, paramIntent.getStringExtra("vacdReport_extra:sKey"), localReportItem);
       } else if ("vacdReport_step:end".equals(str)) {
-        ((akfl)localObject).a(l, localReportItem);
+        ((albe)localObject).a(l, localReportItem);
       } else if ("vacdReport_step:single".equals(str)) {
-        ((akfl)localObject).b(paramIntent.getStringExtra("vacdReport_extra:sKey"), (ReportHeader)paramIntent.getSerializableExtra("vacdReport_extra:header"), localReportItem);
+        ((albe)localObject).b(paramIntent.getStringExtra("vacdReport_extra:sKey"), (ReportHeader)paramIntent.getSerializableExtra("vacdReport_extra:header"), localReportItem);
       }
     }
   }
@@ -122,7 +123,7 @@ public class VACDReportReceiver
       do
       {
         return;
-      } while (akgd.a() == null);
+      } while (albw.a() == null);
       bool = paramBundle.getBoolean("isRealName", false);
     } while (!QLog.isColorLevel());
     QLog.i("VACDReport", 2, "onRealName isRealName:" + bool);

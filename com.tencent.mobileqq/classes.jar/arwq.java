@@ -1,20 +1,4 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-
-class arwq
-  implements aszj
-{
-  arwq(arwp paramarwp, FileManagerEntity paramFileManagerEntity) {}
-  
-  public void onNo() {}
-  
-  public void onYes()
-  {
-    QfileBaseCloudFileTabView.e(this.jdField_a_of_type_Arwp.a).getFileManagerEngine().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-  }
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arwq

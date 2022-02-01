@@ -1,6 +1,14 @@
-abstract interface upj
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+
+public class upj
+  extends anyz
 {
-  public abstract ukg a();
+  public upj(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  
+  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong)
+  {
+    this.a.b();
+  }
 }
 
 

@@ -1,10 +1,19 @@
-public abstract interface axxh
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil.1.2.1;
+
+public class axxh
+  implements axxq
 {
-  public abstract int a();
+  axxh(axxf paramaxxf) {}
   
-  public abstract void a(long paramLong1, long paramLong2);
-  
-  public abstract boolean a();
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      ThreadManagerV2.excute(new ShortVideoShareUtil.1.2.1(this, (axny)this.a.a.getManager(QQManagerFactory.NEARBY_CARD_MANAGER)), 16, null, false);
+    }
+  }
 }
 
 

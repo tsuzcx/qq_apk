@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.apollo;
 
-import alnn;
+import amma;
 
 public class ApolloGameManager$1
   implements Runnable
 {
-  public ApolloGameManager$1(alnn paramalnn) {}
+  public ApolloGameManager$1(amma paramamma) {}
   
   public void run()
   {
-    if (alnn.a(this.this$0) == null) {}
+    if (amma.a(this.this$0) == null) {}
   }
 }
 

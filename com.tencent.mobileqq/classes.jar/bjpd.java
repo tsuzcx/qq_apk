@@ -1,18 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.CirclePageIndicator.SavedState;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class bjpd
-  implements Parcelable.Creator<CirclePageIndicator.SavedState>
+final class bjpd
+  implements URLDrawable.URLDrawableListener
 {
-  public CirclePageIndicator.SavedState a(Parcel paramParcel)
+  bjpd(ImageView paramImageView) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    return new CirclePageIndicator.SavedState(paramParcel, null);
+    QLog.d("CommonUtils_", 1, "onLoadCanceled");
   }
   
-  public CirclePageIndicator.SavedState[] a(int paramInt)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    return new CirclePageIndicator.SavedState[paramInt];
+    QLog.d("CommonUtils_", 1, "onLoadFialed urldrawable load failed ");
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    QLog.d("CommonUtils_", 1, "onLoadProgressed");
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    this.a.setImageDrawable(paramURLDrawable);
+    QLog.d("CommonUtils_", 1, "onLoadSuccessed");
   }
 }
 

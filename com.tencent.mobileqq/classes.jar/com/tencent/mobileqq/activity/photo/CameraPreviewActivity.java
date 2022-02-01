@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.photo;
 
 import Override;
-import ahaj;
-import ajnt;
-import ajnu;
-import ajnv;
-import ajnw;
-import ajnx;
-import ajny;
-import ajnz;
-import ajpv;
+import ahtj;
+import akjh;
+import akji;
+import akjj;
+import akjk;
+import akjl;
+import akjm;
+import akjn;
+import aklj;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -26,7 +26,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bfur;
+import bhdj;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.transfile.chatpic.PicUploadFileSizeLimit;
@@ -44,7 +44,7 @@ public class CameraPreviewActivity
   implements View.OnClickListener
 {
   private int jdField_a_of_type_Int;
-  private ajnz jdField_a_of_type_Ajnz;
+  private akjn jdField_a_of_type_Akjn;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(0);
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   public QQCustomDialog a;
@@ -61,7 +61,7 @@ public class CameraPreviewActivity
     Intent localIntent = getIntent();
     this.jdField_b_of_type_Boolean = localIntent.getBooleanExtra("callFromFastImage", false);
     if (this.jdField_b_of_type_Boolean) {
-      ajpv.c();
+      aklj.c();
     }
     for (;;)
     {
@@ -73,7 +73,7 @@ public class CameraPreviewActivity
       this.jdField_a_of_type_Boolean = bool;
       this.jdField_a_of_type_JavaLangString = localIntent.getStringExtra("PhotoConst.CUSTOM_SENDBTN_TEXT");
       return;
-      ajpv.a();
+      aklj.a();
     }
   }
   
@@ -83,20 +83,20 @@ public class CameraPreviewActivity
     String str2;
     if (paramInt == 6)
     {
-      str1 = getString(2131717960);
-      str2 = getString(2131717959);
+      str1 = getString(2131718345);
+      str2 = getString(2131718344);
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bfur.a(this, 230, str1, str2, new ajnw(this), null);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnCancelListener(new ajnx(this));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new ajny(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bhdj.a(this, 230, str1, str2, new akjk(this), null);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnCancelListener(new akjl(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new akjm(this));
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
       return;
       if (paramInt == 7)
       {
-        str1 = getString(2131717962);
-        str2 = getString(2131717961);
+        str1 = getString(2131718347);
+        str2 = getString(2131718346);
       }
       else
       {
@@ -118,7 +118,7 @@ public class CameraPreviewActivity
       a(7);
       return true;
     }
-    if (ahaj.a() < 10L)
+    if (ahtj.a() < 10L)
     {
       a(6);
       return true;
@@ -131,7 +131,7 @@ public class CameraPreviewActivity
     boolean bool = false;
     if (new File(paramString).length() > PicUploadFileSizeLimit.getLimitC2C())
     {
-      QQToast.a(this, getResources().getString(2131694440), 0).b(getResources().getDimensionPixelSize(2131299076));
+      QQToast.a(this, getResources().getString(2131694641), 0).b(getResources().getDimensionPixelSize(2131299080));
       bool = true;
     }
     return bool;
@@ -140,10 +140,10 @@ public class CameraPreviewActivity
   private void b()
   {
     this.jdField_a_of_type_ComTencentWidgetGallery = new Gallery(this);
-    this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131297146));
+    this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131297147));
     this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentWidgetGallery, -1, -1);
-    this.jdField_a_of_type_Ajnz = new ajnz(this);
-    this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_Ajnz);
+    this.jdField_a_of_type_Akjn = new akjn(this);
+    this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_Akjn);
   }
   
   @Override
@@ -206,20 +206,20 @@ public class CameraPreviewActivity
   {
     super.onCreate(paramBundle);
     a();
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)getLayoutInflater().inflate(2131559570, null));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)getLayoutInflater().inflate(2131559603, null));
     b();
-    getLayoutInflater().inflate(2131559572, this.jdField_a_of_type_AndroidViewViewGroup);
+    getLayoutInflater().inflate(2131559605, this.jdField_a_of_type_AndroidViewViewGroup);
     this.jdField_a_of_type_Int = getResources().getDisplayMetrics().widthPixels;
     this.jdField_b_of_type_Int = getResources().getDisplayMetrics().heightPixels;
     super.setContentView(this.jdField_a_of_type_AndroidViewViewGroup);
     if (this.jdField_a_of_type_Boolean) {
-      setRightButton(2131694454, new ajnt(this));
+      setRightButton(2131694655, new akjh(this));
     }
-    setTitle(2131694565);
+    setTitle(2131694766);
     this.leftView.setVisibility(8);
-    this.leftViewNotBack = ((TextView)findViewById(2131369070));
+    this.leftViewNotBack = ((TextView)findViewById(2131369233));
     this.leftViewNotBack.setVisibility(8);
-    paramBundle = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372543);
+    paramBundle = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372737);
     QLog.d("IphoneTitleBarActivity", 2, "BUILD MODEL:" + Build.MODEL);
     RelativeLayout.LayoutParams localLayoutParams;
     if (this.jdField_a_of_type_JavaLangString != null)
@@ -233,8 +233,8 @@ public class CameraPreviewActivity
         paramBundle.setLayoutParams(localLayoutParams);
       }
     }
-    paramBundle.setOnClickListener(new ajnu(this));
-    paramBundle = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372542);
+    paramBundle.setOnClickListener(new akji(this));
+    paramBundle = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372736);
     if (Build.MODEL.equals("PAFM00"))
     {
       localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
@@ -242,7 +242,7 @@ public class CameraPreviewActivity
       localLayoutParams.setMargins(ViewUtils.dpToPx(12.0F), 0, 0, 0);
       paramBundle.setLayoutParams(localLayoutParams);
     }
-    paramBundle.setOnClickListener(new ajnv(this));
+    paramBundle.setOnClickListener(new akjj(this));
   }
 }
 

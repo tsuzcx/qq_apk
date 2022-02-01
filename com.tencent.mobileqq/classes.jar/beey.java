@@ -1,8 +1,16 @@
-public abstract interface beey
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+
+public class beey
+  implements DialogInterface.OnClickListener
 {
-  public abstract long b();
+  public beey(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
   
-  public abstract void b(String paramString);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    GroupTeamWorkListActivity.a(this.a);
+  }
 }
 
 

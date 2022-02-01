@@ -1,71 +1,53 @@
-import com.tencent.mobileqq.activity.contact.addfriendverifi.AddFriendBlockedInfo;
-import com.tencent.mobileqq.app.BusinessObserver;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
-public class aico
-  implements BusinessObserver
+class aico
+  implements Observer
 {
-  protected void a(boolean paramBoolean, Object paramObject) {}
+  aico(aici paramaici) {}
   
-  protected void a(boolean paramBoolean, String paramString) {}
-  
-  public void a(boolean paramBoolean, List<AddFriendBlockedInfo> paramList, String paramString) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString) {}
-  
-  protected void b(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendVerification.obsever", 2, " onUpdate() type =" + paramInt + " isSuccess = " + paramBoolean);
-    }
-    switch (paramInt)
+    if ((paramObject instanceof ajbi))
     {
-    default: 
       if (QLog.isColorLevel()) {
-        QLog.d("NewFriendVerification.obsever", 2, " default type =" + paramInt);
+        QLog.d(this.a.tag, 2, "new FriendSystemMessage,:");
       }
-      return;
-    case 1: 
-      b(paramBoolean, null);
-      return;
-    case 2: 
-      a(paramBoolean, null);
-      return;
-    case 3: 
-      paramObject = (Object[])paramObject;
-      boolean bool1 = ((Boolean)paramObject[0]).booleanValue();
-      boolean bool2 = ((Boolean)paramObject[1]).booleanValue();
-      paramObject = (String)paramObject[2];
-      if (QLog.isColorLevel()) {
-        QLog.d("NewFriendVerification.obsever", 2, " isShowEntrance =" + bool1 + " isShowRedPoint =" + bool2);
+      paramObservable = ((ajbi)paramObject).a.getSystemMsg();
+      if (paramObservable != null) {
+        break label42;
       }
-      a(paramBoolean, bool1, bool2, paramObject);
-      return;
-    case 4: 
-      paramObject = (Object[])paramObject;
-      List localList = (List)paramObject[0];
-      String str = (String)paramObject[1];
-      StringBuilder localStringBuilder;
-      if (QLog.isColorLevel())
+    }
+    label42:
+    do
+    {
+      do
       {
-        localStringBuilder = new StringBuilder().append(" blockedInfos =");
-        if (localList == null) {
-          break label297;
+        do
+        {
+          return;
+        } while (paramObservable.msg.sub_type.get() != 9);
+        paramObservable = String.valueOf(paramObservable.req_uin.get());
+        if (QLog.isColorLevel()) {
+          QLog.d(this.a.tag, 2, "FRIEND_ADDSUCCESS, uin:" + paramObservable + " badd:" + aici.b(this.a));
         }
-      }
-      label297:
-      for (paramObject = Integer.valueOf(localList.size());; paramObject = " is null")
+      } while ((TextUtils.isEmpty(paramObservable)) || (this.a.sessionInfo == null) || (!paramObservable.equals(this.a.sessionInfo.curFriendUin)));
+      if (!aici.b(this.a))
       {
-        QLog.d("NewFriendVerification.obsever", 2, paramObject);
-        a(paramBoolean, localList, str);
+        aici.a(this.a, true);
+        aweo.a(this.a.app, paramObservable);
         return;
       }
-    }
-    paramObject = (Object[])paramObject;
-    a(((Boolean)paramObject[0]).booleanValue(), (String)paramObject[1]);
+    } while (!QLog.isColorLevel());
+    QLog.d(this.a.tag, 2, "FRIEND_ADDSUCCESS, processed:");
   }
 }
 

@@ -1,10 +1,14 @@
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
-public abstract interface unf<T>
+public class unf
+  implements ViewBase.IBuilder
 {
-  public abstract void a(boolean paramBoolean1, List<T> paramList, boolean paramBoolean2);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, Object paramObject);
+  public ViewBase build(VafContext paramVafContext)
+  {
+    return new une(paramVafContext);
+  }
 }
 
 

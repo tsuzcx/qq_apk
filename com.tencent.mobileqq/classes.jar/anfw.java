@@ -1,24 +1,15 @@
-import com.tencent.mobileqq.app.automator.step.GetGeneralSettings;
-
 public class anfw
-  extends amsu
 {
-  private anfw(GetGeneralSettings paramGetGeneralSettings) {}
-  
-  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (paramBoolean2))
-    {
-      this.a.a.a = 3;
-      this.a.a(7);
-      return;
-    }
-    this.a.a(6);
-  }
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anfw
  * JD-Core Version:    0.7.0.1
  */

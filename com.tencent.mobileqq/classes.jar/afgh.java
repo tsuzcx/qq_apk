@@ -1,15 +1,29 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class afgh
-  implements bcrf
+class afgh
+  implements View.OnClickListener
 {
-  public afgh(FriendShipWaveView paramFriendShipWaveView) {}
+  afgh(afgg paramafgg) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    bcrn localbcrn = new bcrn(new bcre[] { new bcrm(300, 0.1F, 1.1F), new bcrm(100, 1.2F, 0.9F), new bcrm(100, 0.9F, 1.0F) });
-    this.a.c.a(new bcre[] { localbcrn });
-    this.a.b.a(new bcre[] { new bcrm(300, 0.0F, 1.0F) });
+    this.a.a.jdField_d_of_type_Boolean = false;
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131691815);
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.a.a.findViewById(2131369231));
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.b);
+    if (this.a.a.jdField_a_of_type_Afgk != null) {
+      this.a.a.jdField_a_of_type_Afgk.a();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,24 +1,117 @@
-import java.lang.ref.WeakReference;
-import java.util.Observable;
-import java.util.Observer;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
 
-class lim
-  implements Observer
+public class lim
 {
-  private WeakReference<lil> a;
+  public int a;
+  public long a;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  long[] jdField_a_of_type_ArrayOfLong = new long[41];
+  public int b;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public String d;
   
-  public lim(lil paramlil)
+  lim()
   {
-    this.a = new WeakReference(paramlil);
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_d_of_type_JavaLangString = "KilledBySystem";
   }
   
-  public void update(Observable paramObservable, Object paramObject)
+  public String a()
   {
-    lil locallil = (lil)this.a.get();
-    if (locallil == null) {
-      return;
+    String str1 = Build.MODEL;
+    String str2 = String.valueOf(Build.VERSION.SDK_INT);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Android").append('|');
+    localStringBuilder.append(str1).append('|');
+    localStringBuilder.append(str2).append('|');
+    localStringBuilder.append(str2).append('|');
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString).append('|');
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString).append('|');
+    if (this.jdField_b_of_type_Int != -1) {
+      localStringBuilder.append(this.jdField_b_of_type_Int).append('|');
     }
-    lil.a(locallil, paramObservable, paramObject);
+    for (;;)
+    {
+      localStringBuilder.append(this.jdField_a_of_type_Int).append('|');
+      return localStringBuilder.toString();
+      localStringBuilder.append(String.valueOf(this.jdField_a_of_type_ArrayOfLong[20])).append('|');
+    }
+  }
+  
+  public String a(int paramInt, long paramLong)
+  {
+    if ((paramInt >= 0) && (paramInt < 41))
+    {
+      StringBuilder localStringBuilder;
+      if (paramLong == 1L)
+      {
+        this.jdField_a_of_type_ArrayOfLong[paramInt] = 1L;
+        localStringBuilder = new StringBuilder();
+        paramInt = 0;
+        label34:
+        if (paramInt >= 41) {
+          break label242;
+        }
+        switch (paramInt)
+        {
+        default: 
+          localStringBuilder.append(String.valueOf(this.jdField_a_of_type_ArrayOfLong[paramInt])).append('|');
+        }
+      }
+      for (;;)
+      {
+        paramInt += 1;
+        break label34;
+        this.jdField_a_of_type_ArrayOfLong[paramInt] = paramLong;
+        break;
+        if (this.jdField_a_of_type_ArrayOfLong[14] == 0L)
+        {
+          this.jdField_a_of_type_JavaLangString = lik.a();
+          this.jdField_a_of_type_ArrayOfLong[14] = 1L;
+        }
+        localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append('|');
+        continue;
+        localStringBuilder.append(this.jdField_d_of_type_JavaLangString).append('|');
+        continue;
+        localStringBuilder.append(0).append('|');
+        continue;
+        if (this.jdField_b_of_type_Long > 0L) {
+          this.jdField_c_of_type_Long = ((System.currentTimeMillis() - this.jdField_b_of_type_Long) / 1000L);
+        }
+        localStringBuilder.append(this.jdField_c_of_type_Long).append('|');
+      }
+      label242:
+      return localStringBuilder.toString();
+    }
+    lbd.g("VideoNodeReporter", "buildBody report error:" + paramInt);
+    return null;
+  }
+  
+  public void a(lfe paramlfe, String paramString)
+  {
+    if (paramlfe != null)
+    {
+      if (paramlfe.k != -1) {
+        this.jdField_a_of_type_Int = paramlfe.k;
+      }
+      if (paramlfe.jdField_d_of_type_Int != 0) {
+        this.jdField_b_of_type_Int = paramlfe.jdField_d_of_type_Int;
+      }
+      if (!TextUtils.isEmpty(paramlfe.jdField_d_of_type_JavaLangString)) {
+        this.jdField_b_of_type_JavaLangString = paramlfe.jdField_d_of_type_JavaLangString;
+      }
+    }
+    if (!TextUtils.isEmpty(paramString)) {
+      this.jdField_c_of_type_JavaLangString = paramString;
+    }
   }
 }
 

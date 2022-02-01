@@ -1,53 +1,44 @@
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.QQComicStep;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 public class aoiv
+  extends anyz
 {
-  public double a;
-  public int a;
-  public aoir a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g = "";
+  public aoiv(QQComicStep paramQQComicStep) {}
   
-  public String toString()
+  public void onMessageRecordAdded(List<MessageRecord> paramList)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("result:{sclass:");
-    if (this.jdField_a_of_type_JavaLangString != null)
+    if ((paramList == null) || (paramList.isEmpty())) {}
+    for (;;)
     {
-      str = this.jdField_a_of_type_JavaLangString;
-      localStringBuilder = localStringBuilder.append(str).append(",").append("sItemId:");
-      if (this.jdField_a_of_type_Aoir == null) {
-        break label230;
+      return;
+      paramList = new ArrayList(paramList).iterator();
+      while (paramList.hasNext())
+      {
+        Object localObject = bdof.a(((MessageRecord)paramList.next()).msgData);
+        if ((localObject instanceof StructMsgForImageShare))
+        {
+          localObject = (StructMsgForImageShare)localObject;
+          if ((((StructMsgForImageShare)localObject).mMsgActionData != null) && (((StructMsgForImageShare)localObject).mMsgActionData.startsWith("comic_plugin.apk")))
+          {
+            String[] arrayOfString = ((StructMsgForImageShare)localObject).mMsgActionData.substring(((StructMsgForImageShare)localObject).mMsgActionData.indexOf("|") + 1).split("\\|");
+            if (arrayOfString.length >= 8) {
+              blrb.a(this.a.a.mApp, "3009", "1", "30014", arrayOfString[0], new String[] { arrayOfString[2], arrayOfString[4], ahsj.a(((StructMsgForImageShare)localObject).mMsgActionData) });
+            }
+          }
+        }
       }
-      str = this.jdField_a_of_type_Aoir.jdField_a_of_type_JavaLangString;
-      label56:
-      localStringBuilder = localStringBuilder.append(str).append(",").append("dProb:").append(this.jdField_a_of_type_Double).append(",").append("sTitle:").append(this.d).append(",").append("sWiki:").append(this.e).append(",").append("sJumpUrl:").append(this.f).append(",").append("sCdbRes:");
-      if (this.jdField_a_of_type_ArrayOfByte == null) {
-        break label236;
-      }
-    }
-    label230:
-    label236:
-    for (String str = new String(this.jdField_a_of_type_ArrayOfByte);; str = "")
-    {
-      return str + "," + "isAutoJump:" + this.jdField_a_of_type_Boolean + "," + "iNeedCheckLBS:" + this.c + "," + "imageId:" + this.g + "}";
-      str = "";
-      break;
-      str = "";
-      break label56;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoiv
  * JD-Core Version:    0.7.0.1
  */

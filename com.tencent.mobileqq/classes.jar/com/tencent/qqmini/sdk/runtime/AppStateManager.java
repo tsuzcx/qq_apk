@@ -53,6 +53,68 @@ public class AppStateManager
     this.mRuntimeLoader = paramBaseRuntimeLoader;
   }
   
+  private boolean canShowCleanInfo(long paramLong, int paramInt, BaseRuntime paramBaseRuntime)
+  {
+    if (this.hasShowCleanInfo)
+    {
+      QMLog.i("minisdk-start_RuntimeState", "has shown cleanInfo, not showCleanInfo 2");
+      return true;
+    }
+    if (mX5GuideShowed)
+    {
+      QMLog.i("minisdk-start_RuntimeState", "mX5GuideShowed not showCleanInfo 2");
+      return true;
+    }
+    if ((paramInt == 1) && (this.hasFirstDomReadied))
+    {
+      QMLog.i("minisdk-start_RuntimeState", "hasFirstDomReadied not showCleanInfo 2");
+      return true;
+    }
+    if (!paramBaseRuntime.isForground())
+    {
+      QMLog.e("minisdk-start_RuntimeState", "showCleanInfo failed, not is forground");
+      return true;
+    }
+    if ((this.onResumeTime > 0L) && (paramLong - this.onResumeTime < 5000L))
+    {
+      QMLog.e("minisdk-start_RuntimeState", "onResume time < 5000 not show clean info, onResumeTime: " + this.onResumeTime + "  curTime:" + paramLong);
+      return true;
+    }
+    return false;
+  }
+  
+  private boolean checkNeedShowCleanInfo(int paramInt, BaseRuntime paramBaseRuntime, MiniAppInfo paramMiniAppInfo)
+  {
+    if (this.hasShowCleanInfo) {
+      QMLog.i("minisdk-start_RuntimeState", "has shown cleanInfo, not showCleanInfo 1");
+    }
+    do
+    {
+      return true;
+      if (mX5GuideShowed)
+      {
+        QMLog.i("minisdk-start_RuntimeState", "has mX5GuideShowed not showCleanInfo 1");
+        return true;
+      }
+      if ((paramInt == 1) && (this.hasFirstDomReadied))
+      {
+        QMLog.i("minisdk-start_RuntimeState", "hasFirstDomReadied not showCleanInfo 1");
+        return true;
+      }
+      if ((paramBaseRuntime == null) || (paramBaseRuntime.getAttachedActivity() == null))
+      {
+        QMLog.e("minisdk-start_RuntimeState", "showCleanInfo failed," + paramBaseRuntime);
+        return true;
+      }
+      if (!paramBaseRuntime.isForground())
+      {
+        QMLog.e("minisdk-start_RuntimeState", "showCleanInfo failed, not is forground");
+        return true;
+      }
+    } while ((!checkRestartCountValid(paramMiniAppInfo.appId)) || (!paramMiniAppInfo.isEngineTypeMiniApp()));
+    return false;
+  }
+  
   private boolean checkRestartCountValid(String paramString)
   {
     int i = WnsConfig.getConfig("qqminiapp", "mini_app_enable_show_clean_max_count", 3);
@@ -420,37 +482,11 @@ public class AppStateManager
   
   private void showCleanInfo(int paramInt)
   {
-    if (this.hasShowCleanInfo) {
-      QMLog.i("minisdk-start_RuntimeState", "has shown cleanInfo, not showCleanInfo 1");
-    }
-    BaseRuntime localBaseRuntime;
-    MiniAppInfo localMiniAppInfo;
-    do
-    {
+    BaseRuntime localBaseRuntime = this.mRuntimeLoader.getRuntime();
+    MiniAppInfo localMiniAppInfo = this.mRuntimeLoader.getMiniAppInfo();
+    if (checkNeedShowCleanInfo(paramInt, localBaseRuntime, localMiniAppInfo)) {
       return;
-      if (mX5GuideShowed)
-      {
-        QMLog.i("minisdk-start_RuntimeState", "has mX5GuideShowed not showCleanInfo 1");
-        return;
-      }
-      if ((paramInt == 1) && (this.hasFirstDomReadied))
-      {
-        QMLog.i("minisdk-start_RuntimeState", "hasFirstDomReadied not showCleanInfo 1");
-        return;
-      }
-      localBaseRuntime = this.mRuntimeLoader.getRuntime();
-      localMiniAppInfo = this.mRuntimeLoader.getMiniAppInfo();
-      if ((localBaseRuntime == null) || (localBaseRuntime.getAttachedActivity() == null))
-      {
-        QMLog.e("minisdk-start_RuntimeState", "showCleanInfo failed," + localBaseRuntime);
-        return;
-      }
-      if (!localBaseRuntime.isForground())
-      {
-        QMLog.e("minisdk-start_RuntimeState", "showCleanInfo failed, not is forground");
-        return;
-      }
-    } while ((!checkRestartCountValid(localMiniAppInfo.appId)) || (!localMiniAppInfo.isEngineTypeMiniApp()));
+    }
     Activity localActivity = localBaseRuntime.getAttachedActivity();
     localActivity.runOnUiThread(new AppStateManager.3(this, paramInt, localBaseRuntime, localActivity, localMiniAppInfo));
   }

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app;
 
-import anac;
+import aocr;
 import com.tencent.mobileqq.data.ChatMessage;
 
 public class RelatedEmoticonSearchHandler$1
   implements Runnable
 {
-  public RelatedEmoticonSearchHandler$1(anac paramanac, ChatMessage paramChatMessage, int paramInt) {}
+  public RelatedEmoticonSearchHandler$1(aocr paramaocr, ChatMessage paramChatMessage, int paramInt) {}
   
   public void run()
   {

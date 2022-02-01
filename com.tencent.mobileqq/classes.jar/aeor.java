@@ -1,18 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import java.util.Comparator;
 
 public class aeor
-  implements View.OnClickListener
+  implements Comparator<aeon>
 {
-  public aeor(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aeor(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void onClick(View paramView)
+  public int a(aeon paramaeon1, aeon paramaeon2)
   {
-    this.a.setResult(0, this.a.getIntent());
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    long l = paramaeon1.a.certifiedGrade;
+    return (int)(paramaeon2.a.certifiedGrade - l);
   }
 }
 

@@ -2,11 +2,11 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import aqyp;
-import aqyt;
-import ardu;
-import bfyg;
-import bgve;
+import ascz;
+import asdd;
+import ashz;
+import bhgy;
+import bifw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.utils.NetworkUtil;
@@ -40,7 +40,7 @@ public class StarJsPlugin
     {
       JSONObject localJSONObject = new JSONObject();
       str = paramJSONObject.getString("nickname");
-      if (bfyg.a(this.browserApp.getApp(), new String[] { str }))
+      if (bhgy.a(this.browserApp.getApp(), new String[] { str }))
       {
         localJSONObject.put("ret", -2);
         super.callJs(paramString + "(" + localJSONObject.toString() + ");");
@@ -66,8 +66,8 @@ public class StarJsPlugin
     this.mReqBundle.putString("nickname", str);
     this.mReqBundle.putString("starhomeurl", paramJSONObject.getString("starhomeurl"));
     this.mReqBundle.putString("sid", paramJSONObject.getString("starid"));
-    paramJSONObject = aqyt.a("createShortcut", paramString, this.mOnRemoteResp.key, this.mReqBundle);
-    ardu.a().a(paramJSONObject);
+    paramJSONObject = asdd.a("createShortcut", paramString, this.mOnRemoteResp.key, this.mReqBundle);
+    ashz.a().a(paramJSONObject);
   }
   
   protected long getPluginBusiness()

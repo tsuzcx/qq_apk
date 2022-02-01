@@ -1,40 +1,28 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.biz.webviewplugin.NewerGuidePlugin;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public final class aaqs
-  implements Parcelable.Creator<DeviceInfo>
+public class aaqs
+  implements QQPermissionCallback
 {
-  public DeviceInfo a(Parcel paramParcel)
+  public aaqs(NewerGuidePlugin paramNewerGuidePlugin, BaseActivity paramBaseActivity) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    DeviceInfo localDeviceInfo = new DeviceInfo();
-    localDeviceInfo.osPlatform = paramParcel.readString();
-    localDeviceInfo.osVersion = paramParcel.readString();
-    localDeviceInfo.netType = paramParcel.readInt();
-    localDeviceInfo.netDetail = paramParcel.readString();
-    localDeviceInfo.netAddress = paramParcel.readString();
-    localDeviceInfo.netAPN = paramParcel.readString();
-    localDeviceInfo.name = paramParcel.readString();
-    localDeviceInfo.remark = paramParcel.readString();
-    localDeviceInfo.type = paramParcel.readString();
-    localDeviceInfo.serialNum = paramParcel.readString();
-    localDeviceInfo.productId = paramParcel.readInt();
-    localDeviceInfo.appSecret = paramParcel.readString();
-    localDeviceInfo.din = paramParcel.readLong();
-    localDeviceInfo.isAdmin = paramParcel.readInt();
-    localDeviceInfo.status = ((short)paramParcel.readInt());
-    localDeviceInfo.userStatus = ((short)paramParcel.readInt());
-    localDeviceInfo.productType = ((short)paramParcel.readInt());
-    localDeviceInfo.displayName = paramParcel.readString();
-    localDeviceInfo.productVer = paramParcel.readInt();
-    localDeviceInfo.SSOBid_Platform = paramParcel.readInt();
-    localDeviceInfo.SSOBid_Version = paramParcel.readString();
-    return localDeviceInfo;
+    if (QLog.isColorLevel()) {
+      QLog.d("NewerGuidePlugin", 2, "handleSetAvatar deny permissions");
+    }
+    QQCustomDialog.showPermissionSettingDialog(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, anvx.a(2131706902));
   }
   
-  public DeviceInfo[] a(int paramInt)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return new DeviceInfo[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("NewerGuidePlugin", 2, "handleSetAvatar grant permissions");
+    }
+    NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin);
   }
 }
 

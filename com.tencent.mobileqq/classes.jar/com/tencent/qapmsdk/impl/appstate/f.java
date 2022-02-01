@@ -1,78 +1,70 @@
 package com.tencent.qapmsdk.impl.appstate;
 
-import android.os.Looper;
-import com.tencent.qapmsdk.impl.instrumentation.i;
-import com.tencent.qapmsdk.impl.instrumentation.j;
+import com.tencent.qapmsdk.impl.instrumentation.g;
+import com.tencent.qapmsdk.impl.instrumentation.l.b;
 
 public class f
 {
-  protected ThreadLocal<i> a = new ThreadLocal();
-  protected ThreadLocal<j<i>> b = new ThreadLocal();
-  protected i c;
+  public QAPMMonitorThreadLocal a;
+  public j b;
+  public l.b c;
   
-  public void a()
+  protected f(g paramg, long paramLong, l.b paramb)
   {
-    this.a.remove();
-    if (this.b.get() != null) {
-      ((j)this.b.get()).pop();
-    }
-    b();
+    this.b = a(paramg, paramLong, paramb);
+    this.c = paramb;
+    this.a = QAPMMonitorThreadLocal.getInstance();
   }
   
-  public void a(i parami, Boolean paramBoolean)
+  public static f a(String paramString, long paramLong, l.b paramb)
   {
-    if (parami == null) {}
-    do
+    return a(paramString, "", paramLong, paramb);
+  }
+  
+  public static f a(String paramString1, String paramString2, long paramLong, l.b paramb)
+  {
+    g localg = new g();
+    localg.g = paramString1;
+    localg.h = paramString2;
+    paramString1 = new f(localg, paramLong, paramb);
+    paramString1.a().a(localg, Boolean.valueOf(true));
+    return paramString1;
+  }
+  
+  public static j a(g paramg, long paramLong, l.b paramb)
+  {
+    return new j(paramg, paramLong, paramb);
+  }
+  
+  public QAPMMonitorThreadLocal a()
+  {
+    return this.a;
+  }
+  
+  public void a(g paramg)
+  {
+    this.a.a(paramg, Boolean.valueOf(true));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    try
     {
-      do
-      {
+      if (this.a.c() == null) {
         return;
-      } while (e() == null);
-      this.b.set(e());
-      if ((e().isEmpty()) || (e().peek() != parami)) {
-        e().push(parami);
       }
-      this.a.set(parami);
-    } while (!paramBoolean.booleanValue());
-    this.c = parami;
-  }
-  
-  public void b()
-  {
-    if ((this.b.get() == null) || (((j)this.b.get()).isEmpty())) {
-      this.a.set(null);
-    }
-    i locali;
-    do
-    {
+      this.a.pop(paramBoolean);
       return;
-      locali = (i)((j)this.b.get()).peek();
-      this.a.set(locali);
-    } while (Looper.myLooper() != Looper.getMainLooper());
-    this.c = locali;
-  }
-  
-  public i c()
-  {
-    return (i)this.a.get();
-  }
-  
-  public void d()
-  {
-    this.a.remove();
-    if (this.b.get() != null) {
-      ((j)this.b.get()).clear();
     }
+    catch (Exception localException) {}
   }
   
-  protected j<i> e()
+  public j b()
   {
-    j localj2 = (j)this.b.get();
-    j localj1 = localj2;
-    if (localj2 == null) {
-      localj1 = new j();
+    if (this.b == null) {
+      return null;
     }
-    return localj1;
+    return this.b.a();
   }
 }
 

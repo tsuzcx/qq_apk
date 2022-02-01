@@ -1,24 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ukn
-  implements View.OnClickListener
+final class ukn
+  implements DialogInterface.OnClickListener
 {
-  public ukn(WSRecommendFragment paramWSRecommendFragment) {}
+  ukn(DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    WSRecommendFragment.a(this.a).b();
-    ((uuy)this.a.b()).a(true, true, "");
-    ((uuy)this.a.b()).a("");
-    WSRecommendFragment.a(this.a).setVisibility(8);
-    this.a.c();
-    uvi.a(136, 1, null);
-    uvr.b(true);
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramDialogInterface.dismiss();
+    this.a.onClick(paramDialogInterface, paramInt);
   }
 }
 

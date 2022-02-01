@@ -1,103 +1,67 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.os.HandlerThread;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqnp
+  extends aqwt<aqno>
 {
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private final aqpm jdField_a_of_type_Aqpm = new aqpm();
-  
-  public int a()
+  public static aqno a()
   {
-    return this.jdField_a_of_type_Aqpm.a();
+    return (aqno)aqxe.a().a(549);
   }
   
-  public Bitmap a(aqoa paramaqoa, aqoj paramaqoj)
+  @NonNull
+  public aqno a(int paramInt)
   {
-    if (paramaqoa == null) {
-      throw new RuntimeException("fetchBitmapCache NullPointException, BaseDanmaku is null");
-    }
-    try
+    return new aqno();
+  }
+  
+  @Nullable
+  public aqno a(aqxa[] paramArrayOfaqxa)
+  {
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0))
     {
-      if (paramaqoa.f())
-      {
-        Object localObject2 = paramaqoa.a();
-        Object localObject1;
-        if (localObject2 == null) {
-          localObject1 = this.jdField_a_of_type_Aqpm.a((int)paramaqoa.f(), (int)paramaqoa.g());
-        }
-        for (;;)
-        {
-          paramaqoa.a((Bitmap)localObject1);
-          if (localObject1 != null) {
-            break;
-          }
-          return null;
-          if (((Bitmap)localObject2).getWidth() >= (int)paramaqoa.f())
-          {
-            localObject1 = localObject2;
-            if (((Bitmap)localObject2).getHeight() >= (int)paramaqoa.g()) {}
-          }
-          else
-          {
-            this.jdField_a_of_type_Aqpm.a((Bitmap)localObject2);
-            localObject1 = this.jdField_a_of_type_Aqpm.a((int)paramaqoa.f(), (int)paramaqoa.g());
-          }
-        }
-        localObject2 = paramaqoa.a();
-        if (localObject2 == null)
-        {
-          localObject2 = new Canvas((Bitmap)localObject1);
-          paramaqoa.a((Canvas)localObject2);
-        }
-        for (;;)
-        {
-          ((Bitmap)localObject1).eraseColor(0);
-          paramaqoa.c(false);
-          paramaqoj.a(paramaqoa).a((Canvas)localObject2, paramaqoa, paramaqoj, aqoj.a().g(), aqoj.a().c());
-          return localObject1;
-          ((Canvas)localObject2).setBitmap((Bitmap)localObject1);
-        }
+      aqno localaqno = aqno.a(paramArrayOfaqxa[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorNoteConfigProcessor", 2, "onParsed " + paramArrayOfaqxa[0].a);
       }
-      paramaqoa = paramaqoa.a();
+      return localaqno;
     }
-    finally {}
-    return paramaqoa;
+    return null;
   }
   
-  public void a()
+  public void a(aqno paramaqno) {}
+  
+  public Class clazz()
   {
-    if ((this.jdField_a_of_type_AndroidOsHandlerThread == null) || (!this.jdField_a_of_type_AndroidOsHandlerThread.isAlive())) {
-      return;
+    return aqno.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNoteConfigProcessor", 2, "onReqFailed " + paramInt);
     }
-    if (aqqa.b())
-    {
-      this.jdField_a_of_type_AndroidOsHandlerThread.quitSafely();
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
   }
   
-  public void a(Bitmap paramBitmap)
+  public int type()
   {
-    this.jdField_a_of_type_Aqpm.a(paramBitmap);
-  }
-  
-  public void a(aqoa paramaqoa, aqoj paramaqoj) {}
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Aqpm.c();
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Aqpm.a();
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_Aqpm.b();
+    return 549;
   }
 }
 

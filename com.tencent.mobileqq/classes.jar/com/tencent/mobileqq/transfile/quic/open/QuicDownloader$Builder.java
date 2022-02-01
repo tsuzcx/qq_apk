@@ -17,13 +17,14 @@ public class QuicDownloader$Builder
   boolean mIsQuicEncryption;
   String mPath;
   int mPort;
+  String mRttHost;
   String mSavePath;
+  String mTempPath;
   int mTimeOut = 10000;
   
   public QuicDownloader$Builder(QuicDownloader paramQuicDownloader, String paramString1, int paramInt, String paramString2, String paramString3)
   {
     this.mDownloader = paramQuicDownloader;
-    this.mDownloader.mBuilder = this;
     this.mIp = paramString1;
     this.mPort = paramInt;
     this.mPath = paramString2;
@@ -95,6 +96,12 @@ public class QuicDownloader$Builder
     return this;
   }
   
+  public Builder rttHost(String paramString)
+  {
+    this.mRttHost = paramString;
+    return this;
+  }
+  
   public Builder savePath(String paramString)
   {
     this.mSavePath = paramString;
@@ -112,7 +119,13 @@ public class QuicDownloader$Builder
     if (QLog.isColorLevel()) {
       QLog.d("quic", 4, "start ip: " + this.mIp + " port: " + this.mPort);
     }
-    this.mDownloader.download(this.mIp, this.mPort, this.mPath, this.mSavePath, this.mIsQuicEncryption, this.mFec, this.mHeaders, this.mDownloadListener);
+    this.mDownloader.download(this);
+  }
+  
+  public Builder tempPath(String paramString)
+  {
+    this.mTempPath = paramString;
+    return this;
   }
   
   public Builder timeOut(int paramInt)

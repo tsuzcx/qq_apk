@@ -2,7 +2,7 @@ package com.tencent.mobileqq.profile;
 
 import android.os.Parcel;
 import android.text.TextUtils;
-import aymy;
+import azrt;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.persistence.Entity;
@@ -35,15 +35,15 @@ public class ProfileShoppingPhotoInfo
   @unique
   public String uin;
   
-  public static byte[] converPhoto2RawData(List<aymy> paramList)
+  public static byte[] converPhoto2RawData(List<azrt> paramList)
   {
     Object localObject = new ArrayList();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      aymy localaymy = (aymy)paramList.next();
-      if (localaymy != null) {
-        ((List)localObject).add(localaymy.a());
+      azrt localazrt = (azrt)paramList.next();
+      if (localazrt != null) {
+        ((List)localObject).add(localazrt.a());
       }
     }
     paramList = Parcel.obtain();
@@ -98,7 +98,7 @@ public class ProfileShoppingPhotoInfo
     }
   }
   
-  public static List<aymy> parseShoppingPhotoJson(String paramString)
+  public static List<azrt> parseShoppingPhotoJson(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
     if (TextUtils.isEmpty(paramString)) {}
@@ -124,10 +124,10 @@ public class ProfileShoppingPhotoInfo
                 int j = 0;
                 while (j < m)
                 {
-                  aymy localaymy = new aymy();
-                  localaymy.b = ((JSONArray)localObject).getJSONObject(j).getString("url");
-                  localaymy.a = ((JSONArray)localObject).getJSONObject(j).getJSONArray("pic_url").getString(0);
-                  localArrayList.add(localaymy);
+                  azrt localazrt = new azrt();
+                  localazrt.b = ((JSONArray)localObject).getJSONObject(j).getString("url");
+                  localazrt.a = ((JSONArray)localObject).getJSONObject(j).getJSONArray("pic_url").getString(0);
+                  localArrayList.add(localazrt);
                   j += 1;
                 }
               }
@@ -178,7 +178,7 @@ public class ProfileShoppingPhotoInfo
   }
   
   /* Error */
-  public List<aymy> getPhotoFromRawData()
+  public List<azrt> getPhotoFromRawData()
   {
     // Byte code:
     //   0: new 52	java/util/ArrayList
@@ -230,13 +230,13 @@ public class ProfileShoppingPhotoInfo
     //   97: invokeinterface 69 1 0
     //   102: checkcast 276	java/lang/String
     //   105: astore 5
-    //   107: new 71	aymy
+    //   107: new 71	azrt
     //   110: dup
-    //   111: invokespecial 202	aymy:<init>	()V
+    //   111: invokespecial 202	azrt:<init>	()V
     //   114: astore 6
     //   116: aload 6
     //   118: aload 5
-    //   120: invokevirtual 278	aymy:a	(Ljava/lang/String;)V
+    //   120: invokevirtual 278	azrt:a	(Ljava/lang/String;)V
     //   123: aload_3
     //   124: aload 6
     //   126: invokeinterface 79 2 0
@@ -279,7 +279,7 @@ public class ProfileShoppingPhotoInfo
     //   51	45	4	localObject2	Object
     //   135	25	4	localException	Exception
     //   105	14	5	str	String
-    //   114	11	6	localaymy	aymy
+    //   114	11	6	localazrt	azrt
     // Exception table:
     //   from	to	target	type
     //   21	53	135	java/lang/Exception

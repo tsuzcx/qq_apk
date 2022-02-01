@@ -1,20 +1,11 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 class bfxu
-  implements View.OnClickListener
+  implements bghf
 {
-  bfxu(bfxr parambfxr, DialogInterface.OnClickListener paramOnClickListener) {}
+  bfxu(bfxr parambfxr) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bfxr, 0);
-    }
-    this.jdField_a_of_type_Bfxr.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a(bghd.b(paramInt));
   }
 }
 

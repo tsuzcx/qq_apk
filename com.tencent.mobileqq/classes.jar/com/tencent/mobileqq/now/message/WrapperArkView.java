@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.now.message;
 
-import aezx;
+import afrj;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
-import axjm;
-import axjn;
+import aypr;
+import ayps;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForArkApp;
 
@@ -15,31 +15,31 @@ public class WrapperArkView
   extends FrameLayout
 {
   int jdField_a_of_type_Int;
-  aezx jdField_a_of_type_Aezx;
-  private axjm jdField_a_of_type_Axjm;
+  afrj jdField_a_of_type_Afrj;
+  private aypr jdField_a_of_type_Aypr;
   MessageForArkApp jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp;
   
-  public WrapperArkView(@NonNull Context paramContext, ViewGroup paramViewGroup, MessageForArkApp paramMessageForArkApp, aezx paramaezx, int paramInt)
+  public WrapperArkView(@NonNull Context paramContext, ViewGroup paramViewGroup, MessageForArkApp paramMessageForArkApp, afrj paramafrj, int paramInt)
   {
     super(paramContext);
     this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp = paramMessageForArkApp;
-    this.jdField_a_of_type_Aezx = paramaezx;
+    this.jdField_a_of_type_Afrj = paramafrj;
     this.jdField_a_of_type_Int = paramInt;
     setLayoutParams(paramViewGroup.getLayoutParams());
   }
   
   private View a(ChatMessage paramChatMessage)
   {
-    return this.jdField_a_of_type_Aezx.a(0, 0, paramChatMessage, null, this, this.jdField_a_of_type_Axjm);
+    return this.jdField_a_of_type_Afrj.a(0, 0, paramChatMessage, null, this, this.jdField_a_of_type_Aypr);
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.arkContainer instanceof axjn)) {
-      ((axjn)this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.arkContainer).f();
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.arkContainer instanceof ayps)) {
+      ((ayps)this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.arkContainer).f();
     }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.arkContainer = new axjn();
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.arkContainer = new ayps();
     removeAllViews();
     addView(a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp));
   }
@@ -47,14 +47,14 @@ public class WrapperArkView
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.arkContainer instanceof axjn)) {
-      ((axjn)this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.arkContainer).f();
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.arkContainer instanceof ayps)) {
+      ((ayps)this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.arkContainer).f();
     }
   }
   
-  public void setOnArkViewTouchListener(axjm paramaxjm)
+  public void setOnArkViewTouchListener(aypr paramaypr)
   {
-    this.jdField_a_of_type_Axjm = paramaxjm;
+    this.jdField_a_of_type_Aypr = paramaypr;
   }
 }
 

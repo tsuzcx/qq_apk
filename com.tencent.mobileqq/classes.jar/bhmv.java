@@ -1,23 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.qus.QUSDragFloatingScreenView;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.style.ReplacementSpan;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bhmv
-  implements View.OnClickListener
+  extends ReplacementSpan
 {
-  public bhmv(QUSDragFloatingScreenView paramQUSDragFloatingScreenView) {}
+  public int a;
+  public int b;
   
-  public void onClick(View paramView)
+  public bhmv(int paramInt1, int paramInt2)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QUSDragFloatingScreenView", 2, "on empty click");
+      QLog.d("ColorSpan", 2, "onDraw");
     }
-    if (QUSDragFloatingScreenView.a(this.a) != null) {
-      QUSDragFloatingScreenView.a(this.a).d();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public int getSize(@NonNull Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, @Nullable Paint.FontMetricsInt paramFontMetricsInt)
+  {
+    return 0;
   }
 }
 

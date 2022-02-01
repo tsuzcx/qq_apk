@@ -1,15 +1,17 @@
+import android.view.KeyEvent;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View.OnKeyListener;
 
-public class blcz
+class blcz
+  implements View.OnKeyListener
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public blcy a;
+  blcz(blcx paramblcx) {}
   
-  public blcz(blcs paramblcs) {}
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    this.a.c();
+    return true;
+  }
 }
 
 

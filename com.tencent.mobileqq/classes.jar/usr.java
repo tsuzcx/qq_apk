@@ -1,10 +1,27 @@
-import android.view.View;
+import java.io.FilterOutputStream;
+import java.io.OutputStream;
 
-public abstract interface usr
+class usr
+  extends FilterOutputStream
 {
-  public abstract View a();
+  int jdField_a_of_type_Int = 0;
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public usr(usq paramusq, OutputStream paramOutputStream)
+  {
+    super(paramOutputStream);
+  }
+  
+  public void write(int paramInt)
+  {
+    this.jdField_a_of_type_Int += 1;
+    this.out.write(paramInt);
+  }
+  
+  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int += paramInt2;
+    this.out.write(paramArrayOfByte, paramInt1, paramInt2);
+  }
 }
 
 

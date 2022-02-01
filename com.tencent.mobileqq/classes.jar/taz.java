@@ -1,15 +1,16 @@
-import android.graphics.RectF;
-import com.tencent.biz.pubaccount.readinjoy.view.ucrop.GestureCropImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.ucrop.UCropView;
+import java.util.List;
 
-public class taz
-  implements tbc
+class taz
+  extends qdb
 {
-  public taz(UCropView paramUCropView) {}
-  
-  public void a(RectF paramRectF)
+  taz(tay paramtay, String paramString, List paramList)
   {
-    UCropView.a(this.a).setCropRect(paramRectF);
+    super(paramString);
+  }
+  
+  public void a(qcu paramqcu)
+  {
+    paramqcu.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

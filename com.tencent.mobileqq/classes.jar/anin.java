@@ -1,179 +1,138 @@
-import AvatarInfo.QQHeadInfo;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.FriendListHandler.QQHeadDetails;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0xedb.oidb_0xedb.ReqBody;
-import tencent.im.oidb.cmd0xedb.oidb_0xedb.ReqUsrInfo;
-import tencent.im.oidb.cmd0xedb.oidb_0xedb.RspBody;
-import tencent.im.oidb.cmd0xedb.oidb_0xedb.RspHeadInfo;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import mqq.app.AppRuntime;
 
 public class anin
-  extends anio
 {
-  public anin(QQAppInterface paramQQAppInterface, FriendListHandler paramFriendListHandler)
+  private static anin jdField_a_of_type_Anin;
+  anim jdField_a_of_type_Anim;
+  anio jdField_a_of_type_Anio = new anio();
+  aniq jdField_a_of_type_Aniq;
+  
+  static SharedPreferences a()
   {
-    super(paramQQAppInterface, paramFriendListHandler);
+    return BaseApplication.getContext().getSharedPreferences("config_qq.android.tmg_opensdk", 4);
   }
   
-  public static oidb_0xedb.ReqBody a(ArrayList<FriendListHandler.QQHeadDetails> paramArrayList)
+  static anin a()
   {
-    if (paramArrayList != null)
-    {
-      ArrayList localArrayList = new ArrayList();
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
-      {
-        Object localObject = (FriendListHandler.QQHeadDetails)paramArrayList.next();
-        long l = Long.parseLong(((FriendListHandler.QQHeadDetails)localObject).uinOrMobile);
-        int i = (int)((FriendListHandler.QQHeadDetails)localObject).headImgTimestamp;
-        localObject = new oidb_0xedb.ReqUsrInfo();
-        ((oidb_0xedb.ReqUsrInfo)localObject).dstUin.set(l);
-        ((oidb_0xedb.ReqUsrInfo)localObject).timestamp.set(i);
-        localArrayList.add(localObject);
-      }
-      if (!localArrayList.isEmpty())
-      {
-        paramArrayList = new oidb_0xedb.ReqBody();
-        paramArrayList.dstUsrType.set(3);
-        paramArrayList.dstUsrInfos.addAll(localArrayList);
-        return paramArrayList;
-      }
+    if (jdField_a_of_type_Anin == null) {
+      jdField_a_of_type_Anin = new anin();
     }
-    return null;
+    return jdField_a_of_type_Anin;
   }
   
-  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public static String a()
   {
-    boolean bool2 = false;
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    Object localObject2 = paramToServiceMsg.extraData.getParcelableArrayList("key_request_list");
-    paramToServiceMsg = localArrayList2;
-    Object localObject1 = localArrayList1;
-    boolean bool1 = bool2;
-    if (paramFromServiceMsg != null)
+    Object localObject = BaseApplicationImpl.sApplication.getFilesDir();
+    if (localObject == null)
     {
-      paramToServiceMsg = localArrayList2;
-      localObject1 = localArrayList1;
-      bool1 = bool2;
-      if (paramFromServiceMsg.isSuccess())
-      {
-        paramToServiceMsg = localArrayList2;
-        localObject1 = localArrayList1;
-        bool1 = bool2;
-        if (localObject2 == null) {}
+      if (QLog.isColorLevel()) {
+        QLog.i("TMG_Downloader", 2, "getFilesDir is null");
       }
+      localObject = "";
     }
-    for (;;)
+    String str;
+    File localFile;
+    do
     {
-      try
-      {
-        paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
-        paramToServiceMsg.mergeFrom((byte[])paramObject);
-        if (paramToServiceMsg.uint32_result.get() != 0) {
-          break label388;
-        }
-        i = 1;
-        if (i == 0) {
-          break label524;
-        }
-        paramFromServiceMsg = new oidb_0xedb.RspBody();
-        paramFromServiceMsg.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
-        paramObject = new HashMap();
-        if (!paramFromServiceMsg.dstHeadInfos.has()) {
-          break;
-        }
-        paramToServiceMsg = paramFromServiceMsg.dstHeadInfos.get().iterator();
-        if (!paramToServiceMsg.hasNext()) {
-          break;
-        }
-        paramFromServiceMsg = (oidb_0xedb.RspHeadInfo)paramToServiceMsg.next();
-        byte b1 = (byte)paramFromServiceMsg.faceType.get();
-        byte b2 = (byte)paramFromServiceMsg.faceFlag.get();
-        localObject1 = new QQHeadInfo();
-        ((QQHeadInfo)localObject1).uin = paramFromServiceMsg.dstUin.get();
-        ((QQHeadInfo)localObject1).dwTimestamp = paramFromServiceMsg.timestamp.get();
-        ((QQHeadInfo)localObject1).cHeadType = b1;
-        ((QQHeadInfo)localObject1).dstUsrType = 116;
-        ((QQHeadInfo)localObject1).dwFaceFlgas = b2;
-        ((QQHeadInfo)localObject1).downLoadUrl = paramFromServiceMsg.url.get();
-        paramObject.put(String.valueOf(((QQHeadInfo)localObject1).uin), localObject1);
-        continue;
-        if (!QLog.isColorLevel()) {
-          break label368;
-        }
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        QLog.e("ApolloHeadReceiver", 1, "handleGetApolloHead fail.", paramToServiceMsg);
-        bool1 = bool2;
-        localObject1 = localArrayList1;
-        paramToServiceMsg = localArrayList2;
-      }
-      QLog.d("ApolloHeadReceiver", 2, String.format("handleGetApolloHead success=%s noChangeSize=%s changeSize=%s", new Object[] { Boolean.valueOf(bool1), Integer.valueOf(((ArrayList)localObject1).size()), Integer.valueOf(paramToServiceMsg.size()) }));
-      label368:
-      if (this.a != null) {
-        this.a.handleGetQQHead_Apollo(bool1, (ArrayList)localObject1, paramToServiceMsg);
-      }
-      return;
-      label388:
+      return localObject;
+      str = ((File)localObject).getParent() + "/txlib/tmg/";
+      localFile = new File(str);
+      localObject = str;
+    } while (localFile.exists());
+    localFile.mkdirs();
+    return str;
+  }
+  
+  public static String a(anim paramanim)
+  {
+    return a() + "tmg_sdk_" + paramanim.a + "_" + paramanim.b + ".zip";
+  }
+  
+  public static void a()
+  {
+    ArrayList localArrayList = FileUtils.getChildFiles(a());
+    if (localArrayList != null)
+    {
       int i = 0;
-    }
-    paramToServiceMsg = new ArrayList();
-    paramFromServiceMsg = new ArrayList();
-    localObject1 = ((ArrayList)localObject2).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (FriendListHandler.QQHeadDetails)((Iterator)localObject1).next();
-      if (!paramObject.containsKey(((FriendListHandler.QQHeadDetails)localObject2).uinOrMobile))
+      while (i < localArrayList.size())
       {
-        paramToServiceMsg.add(localObject2);
+        QLog.e("TMG_Downloader", 1, String.format("ListSoDirs file i=" + i + ", name=" + (String)localArrayList.get(i), new Object[0]));
+        i += 1;
       }
-      else
-      {
-        QQHeadInfo localQQHeadInfo = (QQHeadInfo)paramObject.get(((FriendListHandler.QQHeadDetails)localObject2).uinOrMobile);
-        localQQHeadInfo.headLevel = ((FriendListHandler.QQHeadDetails)localObject2).level;
-        localQQHeadInfo.sizeType = ((FriendListHandler.QQHeadDetails)localObject2).sizeType;
-        localQQHeadInfo.idType = 200;
-        paramFromServiceMsg.add(localQQHeadInfo);
-      }
-    }
-    for (bool1 = true;; bool1 = false)
-    {
-      localObject1 = paramToServiceMsg;
-      paramToServiceMsg = paramFromServiceMsg;
-      break;
-      label524:
-      paramFromServiceMsg = localArrayList2;
-      paramToServiceMsg = localArrayList1;
     }
   }
   
-  protected void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  static void a(String paramString)
   {
-    if ("OidbSvc.0xedb".equals(paramFromServiceMsg.getServiceCmd())) {
-      c(paramToServiceMsg, paramFromServiceMsg, paramObject);
-    }
+    SharedPreferences.Editor localEditor = a().edit();
+    localEditor.putString("tmg_opensdk_download_md5", paramString);
+    localEditor.commit();
   }
   
-  public boolean a(String paramString)
+  static String b()
   {
-    return "OidbSvc.0xedb".equals(paramString);
+    return a().getString("tmg_opensdk_download_md5", null);
+  }
+  
+  public static boolean b(anim paramanim)
+  {
+    String str1 = paramanim.b;
+    paramanim = a(paramanim);
+    String str2 = b();
+    if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1))) {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("TMG_Downloader", 4, String.format("isSoReady, sp_md5[%s], xmlMd5[%s]", new Object[] { str2, str1 }));
+      }
+    }
+    do
+    {
+      return false;
+      if (FileUtils.fileExists(paramanim)) {
+        break;
+      }
+    } while (!QLog.isDevelopLevel());
+    QLog.d("TMG_Downloader", 4, String.format("isSoReady, file no exist,  fileName[%s]", new Object[] { paramanim }));
+    return false;
+    a();
+    return true;
+  }
+  
+  boolean a(anim paramanim)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface))
+    {
+      if (((QQAppInterface)localAppRuntime).getManager(QQManagerFactory.MGR_NET_ENGINE) == null)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("TMG_Downloader", 4, "innerDownload, getNetEngine 为空");
+        }
+        return false;
+      }
+    }
+    else if (QLog.isDevelopLevel()) {
+      QLog.d("TMG_Downloader", 4, "appRuntime 不是 QQAppInterface");
+    }
+    this.jdField_a_of_type_Anim = paramanim;
+    return this.jdField_a_of_type_Anio.a(paramanim, this.jdField_a_of_type_Aniq);
+  }
+  
+  boolean a(anim paramanim, aniq paramaniq)
+  {
+    this.jdField_a_of_type_Aniq = paramaniq;
+    return a(paramanim);
   }
 }
 

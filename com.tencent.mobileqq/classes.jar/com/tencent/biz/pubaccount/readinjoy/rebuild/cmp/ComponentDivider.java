@@ -7,17 +7,17 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import pvc;
-import qpj;
-import qps;
-import qtr;
-import qxf;
+import qfw;
+import rbo;
+import rbx;
+import rfw;
+import rjl;
 
 public class ComponentDivider
   extends View
-  implements qpj
+  implements rbo
 {
-  qtr a;
+  rfw a;
   
   public ComponentDivider(Context paramContext)
   {
@@ -46,16 +46,16 @@ public class ComponentDivider
   private void a(Context paramContext, Object paramObject)
   {
     b(paramContext);
-    if ((paramObject instanceof pvc))
+    if ((paramObject instanceof qfw))
     {
-      this.a.a((pvc)paramObject);
+      this.a.a((qfw)paramObject);
       b();
     }
   }
   
   private void b(Context paramContext)
   {
-    this.a = new qtr();
+    this.a = new rfw();
     a(paramContext);
     a();
   }
@@ -64,20 +64,20 @@ public class ComponentDivider
   
   public void a(Context paramContext)
   {
-    setBackgroundColor(getContext().getResources().getColor(2131166889));
+    setBackgroundColor(getContext().getResources().getColor(2131166903));
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof pvc))
+    if ((paramObject instanceof qfw))
     {
-      this.a.a((pvc)paramObject);
-      if ((((pvc)paramObject).a() == 53) && ((getLayoutParams() instanceof LinearLayout.LayoutParams)))
+      this.a.a((qfw)paramObject);
+      if ((((qfw)paramObject).a() == 53) && ((getLayoutParams() instanceof LinearLayout.LayoutParams)))
       {
         paramObject = (LinearLayout.LayoutParams)getLayoutParams();
         paramObject.leftMargin = Utils.dp2px(6.0D);
         paramObject.rightMargin = Utils.dp2px(6.0D);
-        setBackgroundColor(getContext().getResources().getColor(2131165659));
+        setBackgroundColor(getContext().getResources().getColor(2131165668));
       }
       if (this.a.a.e()) {
         setVisibility(0);
@@ -90,16 +90,16 @@ public class ComponentDivider
     setVisibility(8);
   }
   
-  public void a(qps paramqps)
+  public void a(rbx paramrbx)
   {
-    this.a.a(paramqps);
+    this.a.a(paramrbx);
   }
   
   public void b()
   {
-    pvc localpvc = this.a.a;
+    qfw localqfw = this.a.a;
     ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -2);
-    qxf.a(getContext(), localpvc, localLayoutParams);
+    rjl.a(getContext(), localqfw, localLayoutParams);
     setLayoutParams(localLayoutParams);
   }
 }

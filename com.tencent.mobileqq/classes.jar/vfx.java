@@ -1,156 +1,80 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.SoftReference;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.Looper;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerForNetInfoHandler.1;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 public class vfx
+  implements INetInfoHandler
 {
-  public static ConcurrentHashMap<String, SoftReference<Bitmap>> a = new ConcurrentHashMap();
+  private WeakReference<WSPlayerManager> a;
   
-  public static int a(ArticleInfo paramArticleInfo)
+  public vfx(WSPlayerManager paramWSPlayerManager)
   {
-    int i = 3;
-    if (paramArticleInfo == null) {
-      return 0;
-    }
-    if (pay.a(paramArticleInfo)) {
-      if (paramArticleInfo.mVideoType == 0) {
-        i = 4;
-      }
-    }
-    for (;;)
-    {
-      return i;
-      i = 5;
-      continue;
-      if (paramArticleInfo.mShowBigPicture)
-      {
-        if (paramArticleInfo.mIsGallery == 0) {
-          i = 2;
-        } else {
-          i = 8;
-        }
-      }
-      else if ((paramArticleInfo.mPictures == null) || (paramArticleInfo.mPictures.length < 3)) {
-        if (TextUtils.isEmpty(paramArticleInfo.mFirstPagePicUrl)) {
-          i = 0;
-        } else if (paramArticleInfo.mIsGallery == 0) {
-          i = 1;
-        } else {
-          i = 7;
-        }
-      }
-    }
+    this.a = new WeakReference(paramWSPlayerManager);
   }
   
-  private static Bitmap a(Bitmap paramBitmap)
+  private void a()
   {
-    if (paramBitmap == null) {
-      return null;
-    }
-    try
+    if (Thread.currentThread() == Looper.getMainLooper().getThread())
     {
-      int i = paramBitmap.getWidth();
-      int j = paramBitmap.getHeight();
-      localBitmap = paramBitmap;
-      if (i * j > 8000)
-      {
-        double d = Math.sqrt(8000.0D / (i * j));
-        localBitmap = Bitmap.createScaledBitmap(paramBitmap, (int)(i * d), (int)(j * d), true);
-      }
+      b();
+      return;
     }
-    catch (OutOfMemoryError paramBitmap)
-    {
-      for (;;)
-      {
-        System.gc();
-        paramBitmap.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.d("PublicAccountImageCollectionUtils", 2, "scaleBitmapForWeChat ERROR OutOfMemoryError");
-        }
-        localBitmap = null;
-      }
-    }
-    catch (Exception paramBitmap)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PublicAccountImageCollectionUtils", 2, "scaleBitmapForWeChat ERROR e=" + paramBitmap.getMessage());
-        }
-        Bitmap localBitmap = null;
-      }
-    }
-    return localBitmap;
+    ThreadManager.getUIHandler().post(new WSPlayerForNetInfoHandler.1(this));
   }
   
-  public static void a(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, Bitmap paramBitmap, int paramInt)
+  private void b()
   {
-    int j = 0;
-    if (paramString1 == null) {}
-    for (paramBaseActivity = "";; paramBaseActivity = paramString1)
+    vmp.e("WSPlayerForNetInfoHandler", "[handleConnectNetWorkChange] thread:" + Thread.currentThread());
+    WSPlayerManager localWSPlayerManager = (WSPlayerManager)this.a.get();
+    if ((localWSPlayerManager != null) && (localWSPlayerManager.a() != null))
     {
-      if (paramString2 == null) {}
-      for (paramString1 = "";; paramString1 = paramString2)
-      {
-        int i;
-        if (!WXShareHelper.getInstance().isWXinstalled()) {
-          i = 2131719722;
-        }
-        for (;;)
-        {
-          if (i != -1)
-          {
-            yyi.a(0, i);
-            if (QLog.isColorLevel()) {
-              QLog.d("PublicAccountImageCollectionUtils", 2, "title=" + paramBaseActivity + ", description=" + paramString1 + ", shareUrl=" + paramString3 + ", action=" + paramInt);
-            }
-            return;
-            if (!WXShareHelper.getInstance().isWXsupportApi()) {
-              i = 2131719723;
-            }
-          }
-          else
-          {
-            paramString2 = String.valueOf(System.currentTimeMillis());
-            Object localObject = new vfy(paramString2);
-            WXShareHelper.getInstance().addObserver((WXShareHelper.WXShareListener)localObject);
-            localObject = WXShareHelper.getInstance();
-            paramBitmap = a(paramBitmap);
-            if (paramInt == 9) {}
-            for (i = j;; i = 1)
-            {
-              ((WXShareHelper)localObject).shareWebPage(paramString2, paramBaseActivity, paramBitmap, paramString1, paramString3, i);
-              break;
-            }
-          }
-          i = -1;
-        }
+      vgb localvgb = localWSPlayerManager.a();
+      if ((!localWSPlayerManager.f()) && (!localWSPlayerManager.e())) {
+        break label74;
       }
+      localWSPlayerManager.b(localvgb, false);
     }
+    label74:
+    while (!localWSPlayerManager.g()) {
+      return;
+    }
+    localWSPlayerManager.a();
   }
   
-  public static boolean a(Activity paramActivity, Intent paramIntent, String paramString)
+  public void onNetMobile2None()
   {
-    if ((paramActivity == null) || (paramIntent == null)) {
-      return false;
-    }
-    paramIntent.putExtra("articleid", paramString);
-    paramActivity.startActivity(paramIntent);
-    return true;
+    vmp.b("WSPlayerForNetInfoHandler", "[onNetMobile2None] thread:" + Thread.currentThread());
   }
   
-  public static boolean a(ArticleInfo paramArticleInfo)
+  public void onNetMobile2Wifi(String paramString)
   {
-    int i = a(paramArticleInfo);
-    return (i == 8) || (i == 7);
+    vmp.b("WSPlayerForNetInfoHandler", "[onNetMobile2Wifi] s:" + paramString + ", thread:" + Thread.currentThread());
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    vmp.b("WSPlayerForNetInfoHandler", "[onNetNone2Mobile] s:" + paramString + ", thread:" + Thread.currentThread());
+    a();
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    vmp.b("WSPlayerForNetInfoHandler", "[onNetNone2Wifi] s:" + paramString + ", thread:" + Thread.currentThread());
+    a();
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    vmp.b("WSPlayerForNetInfoHandler", "[onNetWifi2Mobile] s:" + paramString + ", thread:" + Thread.currentThread());
+  }
+  
+  public void onNetWifi2None()
+  {
+    vmp.b("WSPlayerForNetInfoHandler", "[onNetWifi2None] thread:" + Thread.currentThread());
   }
 }
 

@@ -1,16 +1,7 @@
-class asbn
-  implements ascz
-{
-  asbn(asbj paramasbj) {}
-  
-  public void a(Object[] paramArrayOfObject)
-  {
-    asbj.access$500(this.a, paramArrayOfObject);
-  }
-}
+class asbn {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asbn
  * JD-Core Version:    0.7.0.1
  */

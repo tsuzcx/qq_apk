@@ -1,8 +1,9 @@
-public abstract interface lfo
+import android.media.MediaCodec;
+
+class lfo
 {
-  public abstract lnw a();
-  
-  public abstract void a(String paramString, lnw paramlnw);
+  public int a = 1;
+  public MediaCodec a;
 }
 
 

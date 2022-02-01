@@ -1,30 +1,16 @@
-import android.app.Dialog;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aowv
-  implements View.OnClickListener
+public class aowv
+  extends aoui
 {
-  aowv(aowu paramaowu) {}
-  
-  public void onClick(View paramView)
+  public aouc a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoul paramaoul)
   {
-    if ((aowu.a(this.a) == 0) && (!TextUtils.isEmpty(aowu.a(this.a))))
-    {
-      aowu.a(this.a).put(aowu.b(this.a), Integer.valueOf(1));
-      WebViewFragment localWebViewFragment = this.a.mRuntime.a();
-      if (localWebViewFragment != null) {
-        localWebViewFragment.webView.loadUrl(aowu.a(this.a));
-      }
-      aowu.a(this.a, null);
-    }
-    aowu.a(this.a).dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramQQAppInterface = new aowu(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "now";
+    paramQQAppInterface.c = "playmedia";
+    return paramQQAppInterface;
   }
 }
 

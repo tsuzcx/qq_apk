@@ -1,20 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.os.Bundle;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
 
 class bmel
-  extends Handler
+  extends aoav
 {
-  bmel(bmej parambmej, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bmel(bmek parambmek, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onFollowPublicAccount(boolean paramBoolean, String paramString)
   {
-    if (paramMessage.what == 993323) {
-      this.a.a();
-    }
+    paramString = new Bundle();
+    paramString.putBoolean("isSuccess", paramBoolean);
+    this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener.onInvokeFinish(paramString);
   }
 }
 

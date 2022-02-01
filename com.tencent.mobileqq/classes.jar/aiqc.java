@@ -1,23 +1,57 @@
-import android.graphics.Color;
-import android.graphics.LinearGradient;
-import android.graphics.Shader;
-import android.graphics.Shader.TileMode;
-import android.graphics.drawable.ShapeDrawable.ShaderFactory;
+import com.tencent.mobileqq.activity.bless.BlessResultActivity;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
 
-class aiqc
-  extends ShapeDrawable.ShaderFactory
+public class aiqc
+  implements bfgt
 {
-  aiqc(aiqb paramaiqb, float paramFloat) {}
+  public aiqc(BlessResultActivity paramBlessResultActivity) {}
   
-  public Shader resize(int paramInt1, int paramInt2)
+  public void a()
   {
-    float f1 = paramInt1;
-    paramInt1 = Color.parseColor("#00FFFFFF");
-    paramInt2 = Color.parseColor("#FFFFFFFF");
-    int i = Color.parseColor("#FFFFFFFF");
-    float f2 = this.jdField_a_of_type_Float;
-    Shader.TileMode localTileMode = Shader.TileMode.CLAMP;
-    return new LinearGradient(0.0F, 0.0F, f1, 0.0F, new int[] { paramInt1, paramInt2, i }, new float[] { 0.0F, f2, 1.0F }, localTileMode);
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadSuccess!");
+    }
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.g = this.a.b(this.a.d);
+    if (this.a.jdField_a_of_type_Bkyc.hasMessages(1003)) {
+      this.a.jdField_a_of_type_Bkyc.removeMessages(1003);
+    }
+    this.a.jdField_a_of_type_Bkyc.sendEmptyMessage(1001);
+  }
+  
+  public void a(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadFail!");
+    }
+    if (this.a.jdField_a_of_type_Bkyc.hasMessages(1003)) {
+      this.a.jdField_a_of_type_Bkyc.removeMessages(1003);
+    }
+    this.a.jdField_a_of_type_Bkyc.sendEmptyMessage(1003);
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadStart!");
+    }
+  }
+  
+  public void b(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadStop!");
+    }
+  }
+  
+  public void c(long paramLong)
+  {
+    long l = FileUtils.getFileSizes(this.a.jdField_a_of_type_Aiqd.a);
+    int i = (int)(100L * paramLong / l);
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadProcess! rawLen = " + l + ",offset = " + paramLong + ",process = " + i);
+    }
   }
 }
 

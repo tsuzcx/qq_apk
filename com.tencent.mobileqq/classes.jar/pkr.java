@@ -1,6 +1,8 @@
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+
 public abstract interface pkr
 {
-  public abstract void a(pkt parampkt);
+  public abstract void a(BaseResp paramBaseResp);
 }
 
 

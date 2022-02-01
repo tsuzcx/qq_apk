@@ -1,72 +1,17 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import dov.com.qq.im.aeeditor.AEEditorActivity;
-
 public class bmct
 {
-  public static void a(Activity paramActivity, int paramInt1, Bundle paramBundle, int paramInt2)
-  {
-    int i;
-    Intent localIntent;
-    if (paramInt1 == 0)
-    {
-      i = 10000;
-      localIntent = new Intent(paramActivity, AEEditorActivity.class);
-      if (paramBundle == null) {
-        break label134;
-      }
-    }
-    label134:
-    for (paramBundle = new Bundle(paramBundle);; paramBundle = new Bundle())
-    {
-      paramBundle.putInt("editorType", paramInt1);
-      paramBundle.putInt("editorFrom", paramInt2);
-      if (paramActivity.getIntent() != null)
-      {
-        paramBundle.putString("editor_filter_id", paramActivity.getIntent().getStringExtra("editor_filter_id"));
-        paramActivity.getIntent().putExtra("editor_filter_id", "");
-      }
-      localIntent.putExtras(paramBundle);
-      paramActivity.startActivityForResult(localIntent, i);
-      return;
-      if (paramInt1 == 1)
-      {
-        i = 10001;
-        break;
-      }
-      if (paramInt1 == 2)
-      {
-        i = 10002;
-        break;
-      }
-      throw new IllegalArgumentException("wrong editor type");
-    }
-  }
-  
-  public static boolean a(Bundle paramBundle)
-  {
-    return a(paramBundle, 0);
-  }
-  
-  private static boolean a(Bundle paramBundle, int paramInt)
-  {
-    if (paramBundle == null) {}
-    while ((!paramBundle.containsKey("editorType")) || (paramBundle.getInt("editorType") != paramInt)) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static boolean b(Bundle paramBundle)
-  {
-    return a(paramBundle, 1);
-  }
-  
-  public static boolean c(Bundle paramBundle)
-  {
-    return a(paramBundle, 2);
-  }
+  public static String a = "noticeServiceActive";
+  public static String b = "noticeSendEmoticon";
+  public static String c = "com.qqindividuality.ipc.IpcServer";
+  public static String d = "emoticonPackageId";
+  public static String e = "imagePath";
+  public static String f = "imageName";
+  public static String g = "imageWidth";
+  public static String h = "imageHeight";
+  public static String i = "requestCode";
+  public static String j = "commDiyText";
+  public static String k = "diyText";
+  public static String l = "individuality_plugin";
 }
 
 

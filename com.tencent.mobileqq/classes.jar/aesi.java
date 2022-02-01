@@ -1,22 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.VerifyCodeActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
 
 public class aesi
-  implements View.OnClickListener
+  extends SosoInterface.OnLocationListener
 {
-  public aesi(VerifyCodeActivity paramVerifyCodeActivity) {}
-  
-  public void onClick(View paramView)
+  public aesi(QQSettingMe paramQQSettingMe, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    this.a.b();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSettingRedesign", 2, "onLocationFinish errCode:" + paramInt + ",info:" + paramSosoLbsInfo);
+    }
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
+    {
+      paramInt = (int)(paramSosoLbsInfo.mLocation.mLat02 * 1000000.0D);
+      int i = (int)(paramSosoLbsInfo.mLocation.mLon02 * 1000000.0D);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSettingRedesign", 2, "onLocationFinish latitude:" + paramInt + ",longtitude:" + i);
+      }
+      ameg.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, i, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aesi
  * JD-Core Version:    0.7.0.1
  */

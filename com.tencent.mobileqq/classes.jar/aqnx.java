@@ -1,82 +1,30 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import com.tencent.mobileqq.danmaku.core.DanmakuMeasureManager.1;
-import com.tencent.mobileqq.danmaku.core.DanmakuMeasureManager.2;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class aqnx
+class aqnx
+  extends BroadcastReceiver
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private aqoj jdField_a_of_type_Aqoj;
+  aqnx(aqnw paramaqnw) {}
   
-  public aqnx(aqoj paramaqoj)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Aqoj = paramaqoj;
-  }
-  
-  private Handler a()
-  {
-    if ((this.jdField_a_of_type_AndroidOsHandlerThread == null) || (!this.jdField_a_of_type_AndroidOsHandlerThread.isAlive())) {}
-    try
+    if (paramIntent != null)
     {
-      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("DanmakuMeasureThread");
-      this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_AndroidOsHandlerThread.setUncaughtExceptionHandler(new aqpz());
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-      return this.jdField_a_of_type_AndroidOsHandler;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+      paramContext = paramIntent.getAction();
+      if (paramContext != null)
       {
-        aqqb.d("DanmakuMeasureManager", new Object[] { localThrowable });
+        if ((!paramContext.equals("com.tencent.mobileqq.intent.logout")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) && (!paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) && (!paramContext.equals("mqq.intent.action.LOGOUT"))) {
+          break label57;
+        }
+        this.a.a();
       }
     }
-  }
-  
-  public static void a(aqoj paramaqoj, aqoa paramaqoa)
-  {
-    if (paramaqoa.b()) {
+    label57:
+    while ((!paramContext.equals("mqq.intent.action.LOGIN")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED"))) {
       return;
     }
-    paramaqoj = paramaqoj.a(paramaqoa).a(paramaqoa);
-    paramaqoa.d(paramaqoj.a() + aqoj.a().g() * 2);
-    paramaqoa.e(paramaqoj.b() + aqoj.a().c() * 2);
-    paramaqoa.g();
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_AndroidOsHandlerThread == null) || (!this.jdField_a_of_type_AndroidOsHandlerThread.isAlive())) {
-      return;
-    }
-    if (aqqa.b())
-    {
-      this.jdField_a_of_type_AndroidOsHandlerThread.quitSafely();
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
-  }
-  
-  public void a(aqoa paramaqoa, aqny paramaqny)
-  {
-    Handler localHandler = a();
-    if (localHandler != null) {
-      localHandler.post(new DanmakuMeasureManager.1(this, paramaqoa, paramaqny));
-    }
-  }
-  
-  public void a(List<aqoa> paramList, aqny paramaqny)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    Handler localHandler;
-    do
-    {
-      return;
-      localHandler = a();
-    } while (localHandler == null);
-    localHandler.post(new DanmakuMeasureManager.2(this, paramList, paramaqny));
+    this.a.b();
   }
 }
 

@@ -1,47 +1,51 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import qqcircle.QQCircleReport.SingleDcData;
-
 public class vhd
 {
-  public static String a(String paramString)
+  private static String a(int paramInt1, int paramInt2)
   {
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      str = "";
+    if (paramInt1 == 4000) {
+      return anvx.a(2131715598) + paramInt1 + "-" + paramInt2 + ")";
     }
-    return str;
+    if (paramInt2 == 1300080) {
+      return anvx.a(2131715529) + paramInt1 + "-" + paramInt2 + ")";
+    }
+    return anvx.a(2131715555) + paramInt1 + "-" + paramInt2 + ")";
   }
   
-  public static List<QQCircleReport.SingleDcData> a(List<byte[]> paramList)
+  public static String a(int paramInt1, int paramInt2, int paramInt3)
   {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if (paramInt3 == 3) {
+      return b(paramInt1, paramInt2);
+    }
+    return a(paramInt1, paramInt2);
+  }
+  
+  private static String b(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == 123)
     {
-      QQCircleReport.SingleDcData localSingleDcData = a((byte[])paramList.next());
-      if (localSingleDcData != null) {
-        localArrayList.add(localSingleDcData);
+      if (paramInt2 == 103) {
+        return anvx.a(2131715598) + paramInt1 + "-" + paramInt2 + ")";
       }
+      return anvx.a(2131715585) + paramInt1 + "-" + paramInt2 + ")";
     }
-    return localArrayList;
-  }
-  
-  public static QQCircleReport.SingleDcData a(byte[] paramArrayOfByte)
-  {
-    try
+    if (paramInt1 == 122)
     {
-      QQCircleReport.SingleDcData localSingleDcData = new QQCircleReport.SingleDcData();
-      localSingleDcData.mergeFrom(paramArrayOfByte);
-      return localSingleDcData;
+      if (paramInt2 == 204) {
+        return anvx.a(2131715562) + paramInt1 + "-" + paramInt2 + ")";
+      }
+      if (paramInt2 == 202) {
+        return anvx.a(2131715502) + paramInt1 + "-" + paramInt2 + ")";
+      }
+      return anvx.a(2131715600) + paramInt1 + "-" + paramInt2 + ")";
     }
-    catch (Exception paramArrayOfByte)
+    if (paramInt1 == 101)
     {
-      paramArrayOfByte.printStackTrace();
+      if (paramInt2 == 80) {
+        return anvx.a(2131715529) + paramInt1 + "-" + paramInt2 + ")";
+      }
+      return anvx.a(2131715531) + paramInt1 + "-" + paramInt2 + ")";
     }
-    return null;
+    return anvx.a(2131715555) + paramInt1 + "-" + paramInt2 + ")";
   }
 }
 

@@ -1,15 +1,17 @@
 package com.tencent.qqlive.module.videoreport.report;
 
+import com.tencent.qqlive.module.videoreport.ISessionChangeListener;
+import com.tencent.qqlive.module.videoreport.SessionChangeReason;
 import com.tencent.qqlive.module.videoreport.utils.ListenerMgr.INotifyCallback;
 
 class AppEventReporter$5
-  implements ListenerMgr.INotifyCallback<AppEventReporter.IAppEventListener>
+  implements ListenerMgr.INotifyCallback<ISessionChangeListener>
 {
-  AppEventReporter$5(AppEventReporter paramAppEventReporter, boolean paramBoolean) {}
+  AppEventReporter$5(AppEventReporter paramAppEventReporter, SessionChangeReason paramSessionChangeReason) {}
   
-  public void onNotify(AppEventReporter.IAppEventListener paramIAppEventListener)
+  public void onNotify(ISessionChangeListener paramISessionChangeListener)
   {
-    paramIAppEventListener.onAppOut(this.val$isMainThread);
+    paramISessionChangeListener.changeSession(this.val$reason);
   }
 }
 

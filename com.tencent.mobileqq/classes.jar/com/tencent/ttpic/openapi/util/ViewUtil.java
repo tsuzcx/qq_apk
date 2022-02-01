@@ -15,8 +15,8 @@ public class ViewUtil
   public void clear()
   {
     this.isInited = false;
-    this.mCopyFilter.ClearGLSL();
-    this.mViewFilter.ClearGLSL();
+    this.mCopyFilter.clearGLSL();
+    this.mViewFilter.clearGLSL();
     this.copyFrame.unlock();
     this.copyFrame.clear();
     this.viewFrame.unlock();

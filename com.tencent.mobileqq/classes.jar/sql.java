@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.ExtraInfo;
-
-public final class sql
-  implements Parcelable.Creator<RecommendFeedsDiandianEntranceManager.ExtraInfo>
+public abstract interface sql
 {
-  public RecommendFeedsDiandianEntranceManager.ExtraInfo a(Parcel paramParcel)
-  {
-    return new RecommendFeedsDiandianEntranceManager.ExtraInfo(paramParcel);
-  }
-  
-  public RecommendFeedsDiandianEntranceManager.ExtraInfo[] a(int paramInt)
-  {
-    return new RecommendFeedsDiandianEntranceManager.ExtraInfo[paramInt];
-  }
+  public abstract void a(spk paramspk, int paramInt1, int paramInt2);
 }
 
 

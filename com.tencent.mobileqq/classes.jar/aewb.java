@@ -1,20 +1,24 @@
-import Wallet.AcsMsg;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aewb
+  implements View.OnClickListener
 {
-  public long a;
-  public AcsMsg a;
-  public MessageRecord a;
+  public aewb(SelectedAndSearchBar paramSelectedAndSearchBar, View.OnClickListener paramOnClickListener) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    return "QQReminderOrderModel{messageRecord=" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord + ", acsMsg=" + this.jdField_a_of_type_WalletAcsMsg + ", orderTime=" + this.jdField_a_of_type_Long + '}';
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aewb
  * JD-Core Version:    0.7.0.1
  */

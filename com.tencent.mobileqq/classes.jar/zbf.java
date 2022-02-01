@@ -1,23 +1,17 @@
-class zbf
-  implements zkl
+public class zbf
 {
-  zbf(zbe paramzbe, String paramString1, String paramString2) {}
+  protected int a = 48000;
+  protected int b = 1;
+  protected int c = 1;
+  protected int d = 48000;
+  protected int e = 1;
+  protected int f = 1;
   
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  public void a() {}
+  
+  public byte[] a(int paramInt1, int paramInt2)
   {
-    if (!paramBoolean2)
-    {
-      this.jdField_a_of_type_Zbe.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":0}" });
-      if (zbe.a(this.jdField_a_of_type_Zbe) == null)
-      {
-        zbe.a(this.jdField_a_of_type_Zbe, zon.a());
-        zbe.a(this.jdField_a_of_type_Zbe).a();
-      }
-      zbe.a(this.jdField_a_of_type_Zbe).i(paramString, this.b);
-      zxp.a(paramString, "auth_follow", "clk_unfollow", 0, 0, new String[] { "", "", this.b });
-      return;
-    }
-    zxp.a(paramString, "auth_follow", "clk_cancel", 0, 0, new String[] { "", "", this.b });
+    return null;
   }
 }
 

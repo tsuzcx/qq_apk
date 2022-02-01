@@ -1,35 +1,25 @@
-import com.tencent.biz.qqstory.notification.StoryPushMsg;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 class xol
-  extends vlc
+  implements bkzq
 {
-  xol(xoi paramxoi) {}
+  xol(xoj paramxoj, StoryVideoItem paramStoryVideoItem, VideoViewVideoHolder paramVideoViewVideoHolder, AtomicBoolean paramAtomicBoolean, bkzi parambkzi) {}
   
-  public void a(StoryPushMsg paramStoryPushMsg)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramStoryPushMsg.a == 15) || (paramStoryPushMsg.a == 19))
+    switch (paramInt)
     {
-      xvv.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive new comment push: %s", new Object[] { paramStoryPushMsg });
-      this.a.a(paramStoryPushMsg.d);
     }
-    do
+    for (;;)
     {
+      this.jdField_a_of_type_Bkzi.dismiss();
       return;
-      if ((paramStoryPushMsg.a == 14) || (paramStoryPushMsg.a == 18))
-      {
-        xvv.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive new like push: %s", new Object[] { paramStoryPushMsg });
-        this.a.b(paramStoryPushMsg.d);
-        return;
-      }
-      if (paramStoryPushMsg.a == 17)
-      {
-        xvv.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive delete comment push: %s", new Object[] { paramStoryPushMsg });
-        ((vtu)vux.a(17)).a(paramStoryPushMsg.d, paramStoryPushMsg.c);
-        return;
-      }
-    } while (paramStoryPushMsg.a != 16);
-    xvv.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive delete like push: %s", new Object[] { paramStoryPushMsg });
-    this.a.b(paramStoryPushMsg.d);
+      wzk.a(this.jdField_a_of_type_Xoj.b(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, new xom(this));
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    }
   }
 }
 

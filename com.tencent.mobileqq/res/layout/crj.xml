@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:paddingBottom="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="@color/aof" android:gravity="center" android:id="@id/nvm" android:background="@drawable/ef7" android:layout_width="88.0dip" android:layout_height="29.0dip" android:shadowColor="@color/aog" android:shadowDx="1.0" android:shadowDy="3.0" android:shadowRadius="0.0" android:layout_centerInParent="true" />
+    <com.tencent.image.URLImageView android:id="@id/nii" android:layout_width="fill_parent" android:layout_height="250.0dip" android:scaleType="centerCrop" />
+    <LinearLayout android:orientation="vertical" android:paddingTop="0.0dip" android:paddingBottom="0.0dip" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="25.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <TextView android:textSize="18.0dip" android:textColor="@color/skin_black" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="14.0dip" android:text="@string/xa_" />
+        <Button android:layout_gravity="center_horizontal" android:id="@id/nig" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="30.0dip" android:text="@string/xaa" style="@style/i0" />
+    </LinearLayout>
 </RelativeLayout>

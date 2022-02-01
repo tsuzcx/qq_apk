@@ -1,16 +1,18 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.mobileqq.nearby.now.SmallVideoFragment;
-
 public class awpg
-  implements AudioManager.OnAudioFocusChangeListener
 {
-  public awpg(SmallVideoFragment paramSmallVideoFragment) {}
+  public int a;
+  public String a;
   
-  public void onAudioFocusChange(int paramInt)
+  public awpg()
   {
-    if (((paramInt == -1) || (paramInt == -2) || (paramInt == -3)) && (SmallVideoFragment.a(this.a))) {
-      this.a.a();
-    }
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CommonGuideInfo|").append("webUrl=").append(this.jdField_a_of_type_JavaLangString).append(",type=").append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 

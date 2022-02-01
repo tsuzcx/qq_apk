@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import ajvc;
-import ajve;
+import akqv;
+import akqx;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
@@ -12,7 +12,7 @@ import org.json.JSONObject;
 public class PublicQuickPayManager$1
   extends ResultReceiver
 {
-  public PublicQuickPayManager$1(ajvc paramajvc, Handler paramHandler, ajve paramajve, String paramString)
+  public PublicQuickPayManager$1(akqv paramakqv, Handler paramHandler, akqx paramakqx, String paramString)
   {
     super(paramHandler);
   }
@@ -32,9 +32,9 @@ public class PublicQuickPayManager$1
           paramInt = ((JSONObject)localObject).optInt("resultCode", -2);
         }
         if ((paramInt == -3) || (paramInt == -4) || (paramInt == -6)) {
-          this.jdField_a_of_type_Ajvc.a();
+          this.jdField_a_of_type_Akqv.a();
         }
-        ajvc.a(this.jdField_a_of_type_Ajvc, this.jdField_a_of_type_Ajve, paramInt, paramBundle.getString("retmsg"), paramBundle.getString("payTime"), this.jdField_a_of_type_JavaLangString);
+        akqv.a(this.jdField_a_of_type_Akqv, this.jdField_a_of_type_Akqx, paramInt, paramBundle.getString("retmsg"), paramBundle.getString("payTime"), this.jdField_a_of_type_JavaLangString);
         return;
       }
       catch (JSONException localJSONException)

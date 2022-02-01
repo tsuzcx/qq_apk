@@ -1,26 +1,20 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-class ajsh
-  extends ajqv
+public class ajsh
 {
-  protected ajsh(NewPhotoListActivity paramNewPhotoListActivity)
-  {
-    super(paramNewPhotoListActivity);
-  }
+  public CheckBox a;
+  public RelativeLayout a;
+  public TextView a;
+  public URLImageView a;
+  public Object a;
+  public String a;
+  public TextView b;
+  public TextView c;
   
-  public String getExceedMaxSelectNumStr(LocalMediaInfo paramLocalMediaInfo)
-  {
-    int i = this.mPhotoCommonData.maxSelectNum;
-    return ((NewPhotoListActivity)this.mActivity).getString(2131694424, new Object[] { Integer.valueOf(i) });
-  }
-  
-  public void initData(Intent paramIntent)
-  {
-    super.initData(paramIntent);
-  }
+  public ajsh(ajsd paramajsd) {}
 }
 
 

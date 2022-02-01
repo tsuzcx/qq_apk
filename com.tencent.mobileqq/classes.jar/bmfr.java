@@ -1,22 +1,11 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+import cooperation.qqreader.net.BaseCgiTask;
 
-public class bmfr
-  implements Animator.AnimatorListener
+public abstract class bmfr
+  implements bmfq
 {
-  public bmfr(AEEditorAILoadingView paramAEEditorAILoadingView) {}
+  public void a(bmfs parambmfs) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.a();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void a(BaseCgiTask paramBaseCgiTask, String paramString) {}
 }
 
 

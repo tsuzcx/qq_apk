@@ -1,26 +1,32 @@
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
+import org.json.JSONObject;
 
 public class acxd
-  implements TopGestureLayout.InterceptTouchEventListener
 {
-  public acxd(ChatFragment paramChatFragment) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent)
+  public acxd(acxc paramacxc) {}
+  
+  public boolean a(JSONObject paramJSONObject)
   {
-    if (this.a.a != null) {
-      this.a.a.onDispatchTouchEvent(paramMotionEvent);
+    try
+    {
+      this.jdField_a_of_type_Int = Integer.parseInt(paramJSONObject.getString("type"));
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("lib_name").trim();
+      this.b = paramJSONObject.getString("func_name").trim();
+      return true;
     }
+    catch (Exception paramJSONObject)
+    {
+      acwx.a("KingKongNativePatch", "Parse fingerprint error!");
+    }
+    return false;
   }
   
-  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
+  public String toString()
   {
-    if (this.a.a != null) {
-      return this.a.a.onInterceptTouchEvent(paramMotionEvent);
-    }
-    return true;
+    return this.jdField_a_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.b;
   }
 }
 

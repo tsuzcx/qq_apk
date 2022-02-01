@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.util.Pair;
 
-public class adeh
-  extends amsu
+class adeh
+  implements DialogInterface.OnClickListener
 {
-  public adeh(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  adeh(adeg paramadeg, bdxj parambdxj, Pair paramPair) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
+    this.jdField_a_of_type_Bdxj.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
   }
 }
 

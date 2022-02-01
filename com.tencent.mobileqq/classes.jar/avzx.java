@@ -1,27 +1,37 @@
-public class avzx
+import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.liveroom.LiveRoomHelper;
+import cooperation.liveroom.LiveRoomPluginInstaller;
+
+class avzx
+  implements PluginManagerHelper.OnPluginManagerLoadedListener
 {
-  public String a;
-  public String b;
+  avzx(avzw paramavzw, String paramString) {}
   
-  public avzx(String paramString1, String paramString2)
+  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
-  
-  public int a()
-  {
-    return 0;
-  }
-  
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public String b()
-  {
-    return this.b;
+    PluginBaseInfo localPluginBaseInfo = paramPluginManagerClient.queryPlugin("LiveRoomPlugin.apk");
+    if (QLog.isColorLevel()) {
+      QLog.d("LiveRoomBusinessPlugin", 2, "get plugin info by ipc");
+    }
+    if ((localPluginBaseInfo != null) && (localPluginBaseInfo.mState == 4))
+    {
+      LiveRoomHelper.setPluginInstalledInTool();
+      LiveRoomHelper.setPluginVersionInTool("" + localPluginBaseInfo.mCurVersion);
+      this.jdField_a_of_type_Avzw.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":0\"version\":\"" + localPluginBaseInfo.mCurVersion + "\"}" });
+      if (QLog.isColorLevel()) {
+        QLog.d("LiveRoomBusinessPlugin", 2, "plugin is installed: version=" + localPluginBaseInfo.mCurVersion);
+      }
+    }
+    do
+    {
+      return;
+      this.jdField_a_of_type_Avzw.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":-1}" });
+      LiveRoomPluginInstaller.getInstance().installFromTool(paramPluginManagerClient, "checkSDKInstalled");
+    } while (!QLog.isColorLevel());
+    QLog.d("LiveRoomBusinessPlugin", 2, "plugin is not installed");
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import afiw;
+import agab;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class FriendChatPie$1
   implements Runnable
 {
-  public FriendChatPie$1(afiw paramafiw) {}
+  public FriendChatPie$1(agab paramagab) {}
   
   public void run()
   {

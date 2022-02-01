@@ -8,7 +8,7 @@ class GdtInterstitialFragment$1
   public void run()
   {
     if ((GdtInterstitialFragment.a(this.this$0) == null) || (!GdtInterstitialFragment.a(this.this$0).b()) || (!GdtInterstitialFragment.a(this.this$0).e)) {
-      this.this$0.a(4, 13, -2147483648, -2147483648, -2147483648L);
+      this.this$0.a(4, 13, -2147483648, -2147483648);
     }
   }
 }

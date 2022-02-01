@@ -1,28 +1,16 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mqp.app.sec.d;
+import com.tencent.ad.tangram.thread.AdThreadManager;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import com.tencent.gdtad.api.interstitial.GdtArkPreDownloadTask.6.1;
 
 public class acbw
-  implements abzb
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  private static void a(MsgType0x210 paramMsgType0x210)
-  {
-    try
-    {
-      d.e1(2, d.x(), paramMsgType0x210.vProtobuf);
-      return;
-    }
-    catch (Throwable paramMsgType0x210)
-    {
-      paramMsgType0x210.printStackTrace();
-    }
-  }
+  acbw(acbv paramacbv) {}
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    a(paramMsgType0x210);
-    return null;
+    AdThreadManager.INSTANCE.post(new GdtArkPreDownloadTask.6.1(this, paramAppPathInfo, paramInt, paramString), 5);
   }
 }
 

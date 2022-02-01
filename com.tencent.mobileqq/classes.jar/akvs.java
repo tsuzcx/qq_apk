@@ -1,114 +1,91 @@
-import com.tencent.mobileqq.utils.FileUtils;
-import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import com.tencent.mobileqq.utils.StringUtil;
+import org.json.JSONObject;
 
 public class akvs
 {
-  akvt jdField_a_of_type_Akvt;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  ArrayList<akvt> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  
-  int a(akvt paramakvt, boolean paramBoolean)
+  public static int a(int paramInt1, int paramInt2)
   {
     int i = 1;
-    if (paramakvt == null) {}
-    int j;
-    do
+    if (paramInt1 == 1)
     {
-      do
-      {
-        return i;
-        paramakvt.jdField_a_of_type_Boolean = true;
-        j = paramakvt.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(7);
-        if ((j == 3) && (paramakvt.jdField_c_of_type_JavaLangString != null) && (paramBoolean))
-        {
-          FileUtils.deleteFile(paramakvt.jdField_c_of_type_JavaLangString);
-          paramakvt.jdField_c_of_type_JavaLangString = null;
-          return j;
-        }
-        i = j;
-      } while (j != 6);
-      i = j;
-    } while (paramakvt.jdField_b_of_type_JavaLangString == null);
-    FileUtils.deleteFile(paramakvt.jdField_b_of_type_JavaLangString);
-    paramakvt.jdField_b_of_type_JavaLangString = null;
-    return j;
-  }
-  
-  public akvt a()
-  {
-    return this.jdField_a_of_type_Akvt;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Akvt != null) {
-      this.jdField_a_of_type_Akvt.jdField_b_of_type_Boolean = false;
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_Akvt);
-      this.jdField_a_of_type_Akvt = null;
-      return;
-    }
-  }
-  
-  public void a(String paramString, float paramFloat, int paramInt)
-  {
-    a(paramString, paramFloat, paramInt, 0);
-  }
-  
-  public void a(String paramString, float paramFloat, int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_Akvt != null) {
-      this.jdField_a_of_type_Akvt.jdField_b_of_type_Boolean = true;
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_Akvt);
-      this.jdField_a_of_type_Akvt = null;
-      b(paramString, paramFloat, paramInt1, paramInt2);
-      return;
-    }
-  }
-  
-  void b()
-  {
-    akvt localakvt = null;
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-      {
-        localakvt = (akvt)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-        this.jdField_a_of_type_JavaUtilArrayList.remove(0);
+      paramInt1 = i;
+      if (paramInt2 == 1) {
+        paramInt1 = 0;
       }
-      if ((localakvt == null) || (a(localakvt, localakvt.jdField_b_of_type_Boolean) != 2)) {}
+      return paramInt1;
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.add(localakvt);
-      return;
-      localObject1 = finally;
-      throw localObject1;
-    }
+    return RedPacketManager.getEnterType(paramInt1);
   }
   
-  void b(String paramString, float paramFloat, int paramInt1, int paramInt2)
+  public static int a(String paramString)
   {
-    akvt localakvt = new akvt(this);
-    localakvt.jdField_a_of_type_Boolean = false;
-    localakvt.jdField_a_of_type_JavaLangString = paramString;
-    localakvt.jdField_a_of_type_Int = paramInt1;
-    localakvt.jdField_c_of_type_Int = paramInt2;
-    paramInt2 = (int)(localakvt.jdField_a_of_type_Int / paramFloat);
-    paramInt1 = paramInt2;
-    if (paramInt2 % 2 > 0) {
-      paramInt1 = paramInt2 - 1;
+    int i = 0;
+    if (!TextUtils.isEmpty(paramString)) {
+      i = paramString.replaceAll("[\\u4e00-\\u9fa5]", "aa").length() - paramString.length();
     }
-    localakvt.jdField_b_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Akvt = localakvt;
-    localakvt.jdField_a_of_type_Akvu.jdField_a_of_type_Akvt = localakvt;
-    localakvt.jdField_a_of_type_Akvu.execute(new Void[0]);
+    return i;
+  }
+  
+  public static String a(int paramInt, bmho parambmho, akvq paramakvq, String paramString)
+  {
+    int i = 2;
+    if (parambmho != null)
+    {
+      int j = bmhg.a(parambmho.bus_type, 2);
+      i = j;
+      if (!StringUtil.isEmpty(parambmho.biz_params)) {
+        try
+        {
+          String str = new JSONObject(parambmho.biz_params).optString("memo", "");
+          parambmho = str;
+          if (a(str) >= 18) {
+            parambmho = str.substring(0, 18) + "...";
+          }
+          boolean bool = StringUtil.isEmpty(parambmho);
+          i = j;
+          if (!bool) {
+            return parambmho;
+          }
+        }
+        catch (Exception parambmho)
+        {
+          parambmho.printStackTrace();
+          i = j;
+        }
+      }
+    }
+    return paramakvq.a(paramInt, i, paramString);
+  }
+  
+  public static String a(EditText paramEditText)
+  {
+    String str = paramEditText.getText().toString();
+    Object localObject = str;
+    if (TextUtils.isEmpty(str))
+    {
+      localObject = paramEditText.getHint();
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        localObject = paramEditText.getResources().getString(2131696541);
+      }
+    }
+    else
+    {
+      return localObject;
+    }
+    return ((CharSequence)localObject).toString();
+  }
+  
+  public static String a(String paramString)
+  {
+    String str = "";
+    if (!TextUtils.isEmpty(paramString)) {
+      str = paramString.replaceAll("[\\u4e00-\\u9fa5,，。、 ]", "");
+    }
+    return str;
   }
 }
 

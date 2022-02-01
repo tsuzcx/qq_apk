@@ -1,67 +1,44 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.text.style.ImageSpan;
 
-class agnr
-  implements bjoe
+public class agnr
+  extends ImageSpan
 {
-  agnr(agnj paramagnj, MessageForShortVideo paramMessageForShortVideo, agnu paramagnu, bjnw parambjnw) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public agnr(Drawable paramDrawable)
   {
-    switch (paramInt)
+    super(paramDrawable);
+  }
+  
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  {
+    paramCharSequence = getDrawable();
+    paramCanvas.save();
+    paramCanvas.translate(paramFloat, (paramInt5 - paramInt3 - paramCharSequence.getBounds().bottom) / 2 + paramInt3);
+    paramCharSequence.draw(paramCanvas);
+    paramCanvas.restore();
+  }
+  
+  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  {
+    paramCharSequence = getDrawable().getBounds();
+    if (paramFontMetricsInt != null)
     {
+      paramPaint = paramPaint.getFontMetricsInt();
+      paramInt2 = paramPaint.bottom - paramPaint.top;
+      int i = paramCharSequence.bottom - paramCharSequence.top;
+      paramInt1 = i / 2 - paramInt2 / 4;
+      i /= 2;
+      paramInt2 = paramInt2 / 4 + i;
+      paramFontMetricsInt.ascent = (-paramInt2);
+      paramFontMetricsInt.top = (-paramInt2);
+      paramFontMetricsInt.bottom = paramInt1;
+      paramFontMetricsInt.descent = paramInt1;
     }
-    do
-    {
-      for (;;)
-      {
-        this.jdField_a_of_type_Bjnw.dismiss();
-        return;
-        if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag != 2) {
-          break;
-        }
-        this.jdField_a_of_type_Agnj.a(this.jdField_a_of_type_Agnu, 10, false);
-        this.jdField_a_of_type_Agnj.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Agnu);
-      }
-    } while (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag != 1);
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileStatus == 1004) {
-      ShortVideoUtils.reportCancelSendVideo("0X800A375", this.jdField_a_of_type_Agnj.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType);
-    }
-    agnj.a(this.jdField_a_of_type_Agnj, this.jdField_a_of_type_Agnu, true, this.jdField_a_of_type_Agnj);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.isPause = false;
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.md5)) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileStatus == 1004) && (this.jdField_a_of_type_Agnj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController().resumeSendingShortVideo(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq)))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileStatus = 1002;
-      if (QLog.isColorLevel()) {
-        QLog.i("ShortVideoItemBuilder", 2, "onErrorIconClick resumeSending!");
-      }
-    }
-    for (;;)
-    {
-      agnj.a(this.jdField_a_of_type_Agnj);
-      break;
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.md5 == null) && ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileStatus == 1005) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileStatus == 1004)))
-      {
-        this.jdField_a_of_type_Agnu.a.setVisibility(8);
-        this.jdField_a_of_type_Agnu.d.setVisibility(8);
-        this.jdField_a_of_type_Agnu.c.setVisibility(8);
-        paramView = new bbrz(this.jdField_a_of_type_Agnj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Agnj.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, agnj.a(this.jdField_a_of_type_Agnj));
-        bbry.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq, paramView);
-      }
-      else
-      {
-        this.jdField_a_of_type_Agnj.a(this.jdField_a_of_type_Agnu, 10, false);
-        this.jdField_a_of_type_Agnj.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Agnu);
-      }
-    }
+    return paramCharSequence.right;
   }
 }
 

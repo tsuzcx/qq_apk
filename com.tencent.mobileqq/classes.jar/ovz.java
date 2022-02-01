@@ -1,27 +1,8 @@
-import java.util.ArrayList;
+import org.jetbrains.annotations.NotNull;
 
-class ovz
-  extends owd
+public abstract interface ovz
 {
-  ovz(ouu paramouu, int paramInt)
-  {
-    super(paramouu, null);
-  }
-  
-  void a(owg paramowg)
-  {
-    if (paramowg == null) {}
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        paramowg.onCommentListLoad(1, false, new ArrayList(), false, 3, 3);
-        return;
-      }
-    } while (this.jdField_a_of_type_Int != 2);
-    paramowg.onCommentLoadMore(1, false, new ArrayList(), false, 3);
-  }
+  public abstract void a(@NotNull Runnable paramRunnable);
 }
 
 

@@ -1,13 +1,49 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qqmini.proxyimpl.ShareProxyImpl.2.1;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.open.agent.AuthorityAccountView;
+import com.tencent.open.agent.CardContainer;
+import com.tencent.open.agent.QuickLoginAuthorityActivity;
 
 public class bjfs
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public bjfs(ShareProxyImpl.2.1 param1) {}
+  public bjfs(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            paramMessage = (Bitmap)paramMessage.obj;
+          } while (paramMessage == null);
+          this.a.a.a("", "", paramMessage, true);
+          return;
+          paramMessage = (Bitmap)paramMessage.obj;
+        } while (paramMessage == null);
+        this.a.a.a("", paramMessage);
+        return;
+        paramMessage = (String)paramMessage.obj;
+      } while (TextUtils.isEmpty(paramMessage));
+      this.a.a.setAppType(paramMessage);
+      return;
+    } while (this.a.a.a == null);
+    this.a.a.a.d();
+  }
 }
 
 

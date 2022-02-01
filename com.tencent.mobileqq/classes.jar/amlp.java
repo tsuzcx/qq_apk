@@ -1,25 +1,26 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder.GameListAdapter.2;
-import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder.GameListAdapter.2.1.1;
+import android.os.Bundle;
+import eipc.EIPCResult;
 
-public class amlp
-  implements Animation.AnimationListener
+class amlp
+  implements amoe
 {
-  public amlp(ApolloGameViewBinder.GameListAdapter.2.1.1 param1) {}
+  amlp(amlo paramamlo, Bundle paramBundle, int paramInt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(String paramString1, String paramString2, int paramInt)
   {
-    this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.a.a.a.jdField_a_of_type_AndroidViewViewGroup.removeView(this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    this.a.a.a.jdField_a_of_type_Amlq.a = null;
+    EIPCResult localEIPCResult = new EIPCResult();
+    if (paramString1 == null) {}
+    for (;;)
+    {
+      localEIPCResult.code = paramInt;
+      localEIPCResult.data = this.jdField_a_of_type_AndroidOsBundle;
+      localEIPCResult.data.putString("apolloRoleDir", paramString1);
+      localEIPCResult.data.putString("apolloErrMsg", paramString2);
+      this.jdField_a_of_type_Amlo.callbackResult(this.jdField_a_of_type_Int, localEIPCResult);
+      return;
+      paramInt = 0;
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

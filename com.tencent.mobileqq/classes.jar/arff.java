@@ -1,31 +1,78 @@
-import com.tencent.mobileqq.data.Emoticon;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
-class arff
-  implements avtb<Emoticon>
+public class arff
+  extends aqwt<arfe>
 {
-  arff(arfd paramarfd, int paramInt, String paramString) {}
-  
-  public void a(Emoticon paramEmoticon)
+  @NonNull
+  public arfe a(int paramInt)
   {
-    if ((paramEmoticon == null) || (!paramEmoticon.hasEncryptKey()))
+    return new arfe();
+  }
+  
+  @Nullable
+  public arfe a(aqxa[] paramArrayOfaqxa)
+  {
+    QLog.i("QuickHeartbeatConfigProcessor", 1, "[onParsed] config");
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0) && (paramArrayOfaqxa[0] != null))
     {
-      this.jdField_a_of_type_Arfd.a(Integer.toString(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, true);
-      if (QLog.isColorLevel()) {
-        QLog.d("SogouEmoji", 2, "func trySend ends, emotion has invalid key. Call func pullSingleEmojiKey");
-      }
+      arfe localarfe = arfe.a(paramArrayOfaqxa[0].a);
+      QLog.d("QuickHeartbeatConfigProcessor", 1, "onParsed " + paramArrayOfaqxa[0].a);
+      return localarfe;
     }
-    do
+    QLog.d("QuickHeartbeatConfigProcessor", 1, "onParsed is null");
+    return new arfe();
+  }
+  
+  public void a(arfe paramarfe)
+  {
+    if (paramarfe != null)
     {
-      return;
-      this.jdField_a_of_type_Arfd.a(paramEmoticon);
-    } while (!QLog.isColorLevel());
-    QLog.d("SogouEmoji", 2, "func trySend ends, everything is ok.");
+      bhhr.a(BaseApplicationImpl.getContext(), "common_sp_for_msf", "", true, "isSendQuickHBBackToForeground", Boolean.valueOf(paramarfe.a), 4);
+      QLog.d("QuickHeartbeatConfigProcessor", 1, "onUpdate, newConf: " + paramarfe.toString());
+    }
+  }
+  
+  public Class<arfe> clazz()
+  {
+    return arfe.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.i("QuickHeartbeatConfigProcessor", 1, "[onReqFailed] failCode = " + paramInt);
+  }
+  
+  public int type()
+  {
+    return 703;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arff
  * JD-Core Version:    0.7.0.1
  */

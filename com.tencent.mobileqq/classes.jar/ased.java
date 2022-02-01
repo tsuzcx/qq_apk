@@ -1,7 +1,30 @@
-public abstract class ased
-  extends asec
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.utils.StringUtil;
+
+public class ased
 {
-  protected abstract void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2);
+  public static int a = 300;
+  
+  public static String a(String paramString)
+  {
+    if (StringUtil.isEmpty(paramString)) {
+      return "";
+    }
+    paramString = paramString.split("_");
+    if (paramString.length > 2) {
+      return paramString[1];
+    }
+    return "";
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    if ((StringUtil.isEmpty(paramString1)) || (StringUtil.isEmpty(paramString2))) {
+      return "";
+    }
+    paramString2 = bjkp.a(paramString2);
+    return AppConstants.SDCARD_IMG_CAMERA_EMO + paramString2 + paramString1;
+  }
 }
 
 

@@ -1,97 +1,74 @@
-import com.tencent.mobileqq.transfile.ProtoReqManager.IProtoRespBack;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoResp;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 class asdo
-  implements ProtoReqManager.IProtoRespBack
+  implements asec
 {
-  asdo(asdm paramasdm) {}
+  asdo(asdl paramasdl, axjb paramaxjb) {}
   
-  public void onProtoResp(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
+  public void a()
   {
-    if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_RECV_LIST-100".equals(paramProtoReq.ssoCmd)) {
-      asdm.a(this.a, paramProtoReq, paramProtoResp);
+    if (this.jdField_a_of_type_Axjb.isShowing()) {
+      this.jdField_a_of_type_Axjb.dismiss();
     }
-    do
+    asdl.a(this.jdField_a_of_type_Asdl);
+    asdl.a(this.jdField_a_of_type_Asdl).a().b();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Axjb.a(paramInt);
+  }
+  
+  public void a(asdk paramasdk)
+  {
+    if ((paramasdk != null) && (!this.jdField_a_of_type_Asdl.a.isFinishing())) {
+      switch (paramasdk.a)
+      {
+      }
+    }
+    for (;;)
     {
+      if (this.jdField_a_of_type_Axjb.isShowing()) {
+        this.jdField_a_of_type_Axjb.dismiss();
+      }
+      asdl.a(this.jdField_a_of_type_Asdl);
+      asdl.a(this.jdField_a_of_type_Asdl).a().b();
       return;
-      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_SEND_LIST-200".equals(paramProtoReq.ssoCmd))
+      QQToast.a(this.jdField_a_of_type_Asdl.a.getApplicationContext(), this.jdField_a_of_type_Asdl.a.getString(2131718157), 0).a();
+      continue;
+      if (paramasdk.b == 10006)
       {
-        asdm.b(this.a, paramProtoReq, paramProtoResp);
-        return;
+        QQToast.a(this.jdField_a_of_type_Asdl.a.getApplicationContext(), this.jdField_a_of_type_Asdl.a.getString(2131718148), 0).a();
       }
-      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD-500".equals(paramProtoReq.ssoCmd))
+      else
       {
-        asdm.c(this.a, paramProtoReq, paramProtoResp);
-        return;
+        QQToast.a(this.jdField_a_of_type_Asdl.a.getApplicationContext(), this.jdField_a_of_type_Asdl.a.getString(2131718152), 0).a();
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.i("MultiEmotionSaveManager", 2, "onSaveComplete " + this.jdField_a_of_type_Asdl.a.isFinishing());
+        }
       }
-      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_UPLOAD_SUCC-800".equals(paramProtoReq.ssoCmd))
-      {
-        asdm.d(this.a, paramProtoReq, paramProtoResp);
-        return;
+    }
+  }
+  
+  public void b()
+  {
+    if (!this.jdField_a_of_type_Axjb.isShowing())
+    {
+      this.jdField_a_of_type_Axjb.a(0);
+      this.jdField_a_of_type_Axjb.a(new asdp(this));
+      if (QLog.isColorLevel()) {
+        QLog.i("MultiEmotionSaveManager", 2, "onSaveBegin");
       }
-      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_DOWNLOAD-1200".equals(paramProtoReq.ssoCmd))
-      {
-        this.a.a(paramProtoReq, paramProtoResp);
-        return;
-      }
-      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_DOWNLOAD_SUCC-1000".equals(paramProtoReq.ssoCmd))
-      {
-        this.a.b(paramProtoReq, paramProtoResp);
-        return;
-      }
-      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_FORWARD_FILE-700".equals(paramProtoReq.ssoCmd))
-      {
-        this.a.d(paramProtoReq, paramProtoResp);
-        return;
-      }
-      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_COPY_TO-60100".equals(paramProtoReq.ssoCmd))
-      {
-        this.a.e(paramProtoReq, paramProtoResp);
-        return;
-      }
-      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_DOWNLOAD_ABS-1100".equals(paramProtoReq.ssoCmd))
-      {
-        this.a.c(paramProtoReq, paramProtoResp);
-        return;
-      }
-      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_DELETE_FILE-900".equals(paramProtoReq.ssoCmd))
-      {
-        asdm.e(this.a, paramProtoReq, paramProtoResp);
-        return;
-      }
-      if ("GTalkFileAppSvr.CMD_DISCUSS_FILE".equals(paramProtoReq.ssoCmd))
-      {
-        asdm.f(this.a, paramProtoReq, paramProtoResp);
-        return;
-      }
-      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD_V2-1600".equals(paramProtoReq.ssoCmd))
-      {
-        this.a.g(paramProtoReq, paramProtoResp);
-        return;
-      }
-      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD_V3-1700".equals(paramProtoReq.ssoCmd))
-      {
-        this.a.f(paramProtoReq, paramProtoResp);
-        return;
-      }
-      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD_HIT_V2-1800".equals(paramProtoReq.ssoCmd))
-      {
-        asdm.g(this.a, paramProtoReq, paramProtoResp);
-        return;
-      }
-      if ("SafeCenterSvr.CMD_FACE2FACE_FLAG_REQ".equals(paramProtoReq.ssoCmd))
-      {
-        asdm.h(this.a, paramProtoReq, paramProtoResp);
-        return;
-      }
-    } while (!"OfflineFilleHandleSvr.pb_ftn_CMD_REQ_RECALL-400".equals(paramProtoReq.ssoCmd));
-    asdm.i(this.a, paramProtoReq, paramProtoResp);
+      this.jdField_a_of_type_Axjb.show();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asdo
  * JD-Core Version:    0.7.0.1
  */

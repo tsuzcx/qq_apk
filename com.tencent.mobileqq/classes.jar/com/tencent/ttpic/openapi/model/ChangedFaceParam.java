@@ -4,7 +4,7 @@ import android.graphics.PointF;
 import com.tencent.aekit.openrender.UniformParam;
 import com.tencent.aekit.openrender.UniformParam.Float3fParam;
 import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.faceBeauty.FaceParam;
+import com.tencent.facebeauty.FaceParam;
 import com.tencent.view.RendererUtils;
 import java.lang.reflect.Array;
 import java.util.ArrayList;

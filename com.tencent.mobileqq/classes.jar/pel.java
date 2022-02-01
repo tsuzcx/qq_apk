@@ -1,9 +1,15 @@
-import android.graphics.Color;
-
-public class pel
+class pel
+  extends pfe
 {
-  public static final int a = Color.parseColor("#999999");
-  public static final int b = Color.parseColor("#262626");
+  pel(pdv parampdv)
+  {
+    super(parampdv, null);
+  }
+  
+  void a(pfh parampfh)
+  {
+    parampfh.onCommentStateError(1001);
+  }
 }
 
 

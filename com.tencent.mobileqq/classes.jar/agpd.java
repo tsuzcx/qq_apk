@@ -1,28 +1,60 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.MessageForStarLeague;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.qphone.base.util.QLog;
 
 class agpd
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  agpd(agpc paramagpc) {}
+  agpd(agpc paramagpc, MessageForArkApp paramMessageForArkApp) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    MessageForStarLeague localMessageForStarLeague = (MessageForStarLeague)((agpe)AIOUtils.getHolder(paramView)).a;
-    if (!avsc.a((BaseActivity)paramView.getContext(), localMessageForStarLeague.actionUrl, localMessageForStarLeague))
-    {
-      Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
-      localIntent.putExtra("url", localMessageForStarLeague.actionUrl);
-      paramView.getContext().startActivity(localIntent);
+    paramDialogInterface = (MessageForArkApp)bcsa.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+    if (paramDialogInterface.msgData == null) {
+      if (paramDialogInterface.ark_app_message == null) {
+        ArkAppCenter.c("ArkApp", String.format("resendMessage, msgData and ark_app_message are null", new Object[0]));
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    Object localObject;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            paramDialogInterface.msgData = paramDialogInterface.ark_app_message.toBytes();
+          } while (this.jdField_a_of_type_Agpc.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null);
+          if ((paramDialogInterface.ark_app_message.containStructMsg == null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.containStructMsg != null)) {
+            paramDialogInterface.ark_app_message.containStructMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.containStructMsg;
+          }
+          paramInt = paramDialogInterface.getProcessState();
+          if (QLog.isColorLevel()) {
+            QLog.d("ArkAppShareMultiItemBuilder", 2, new Object[] { "AAShare.get multiItem resend msg stat=", Integer.valueOf(paramInt), ", old.uniseq=", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.uniseq), ", new uniseq=", Long.valueOf(paramDialogInterface.uniseq) });
+          }
+          this.jdField_a_of_type_Agpc.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().removeMsgByUniseq(this.jdField_a_of_type_Agpc.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_Agpc.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.uniseq);
+          if ((paramInt == 1002) || (paramInt == 0)) {
+            break;
+          }
+          localObject = BaseApplicationImpl.getApplication().getRuntime();
+        } while (!(localObject instanceof QQAppInterface));
+        localObject = (ArkAppCenter)((QQAppInterface)localObject).getManager(QQManagerFactory.ARK_APP_CENTER_MANAGER);
+      } while (localObject == null);
+      localObject = ((ArkAppCenter)localObject).a();
+    } while (localObject == null);
+    ((aqce)localObject).a(paramDialogInterface);
+    return;
+    this.jdField_a_of_type_Agpc.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().addAndSendMessage(paramDialogInterface, null, true);
   }
 }
 

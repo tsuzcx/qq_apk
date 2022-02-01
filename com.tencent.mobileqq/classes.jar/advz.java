@@ -1,21 +1,68 @@
-import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.EditActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Iterator;
+import java.util.List;
 
-class advz
-  extends aycd
+public class advz
+  implements View.OnClickListener
 {
-  advz(advy paramadvy) {}
+  public advz(EditActivity paramEditActivity) {}
   
-  protected void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    super.a(paramBoolean);
-    PhoneUnityChangeActivity.a(this.a.a.a);
-    this.a.a.a.app.unRegistObserver(this);
-    if (paramBoolean)
+    this.a.b();
+    Object localObject1;
+    if (this.a.jdField_a_of_type_Int == 105)
     {
-      ((aihp)this.a.a.a.app.getManager(102)).a(null);
-      this.a.a.a.setResult(4001);
-      this.a.a.a.finish();
+      localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText();
+      if (localObject1 != null)
+      {
+        localObject1 = localObject1.toString().trim();
+        if (((String)localObject1).length() != 0) {
+          break label78;
+        }
+        QQToast.a(this.a, this.a.getString(2131691886), 0).a();
+        break label180;
+      }
+    }
+    label180:
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label78:
+      if (EditActivity.a(this.a, (String)localObject1))
+      {
+        QQToast.a(this.a, this.a.getString(2131691887), 0).a();
+      }
+      else
+      {
+        Object localObject2 = (asfk)this.a.app.getManager(QQManagerFactory.FAVROAMING_DB_MANAGER);
+        asfl localasfl = (asfl)this.a.app.getManager(QQManagerFactory.FAV_ROAMING_MANAGER);
+        localObject2 = ((asfk)localObject2).a();
+        if ((EditActivity.a(this.a) != -1) && (localObject2 != null))
+        {
+          localObject2 = ((List)localObject2).iterator();
+          if (((Iterator)localObject2).hasNext())
+          {
+            CustomEmotionData localCustomEmotionData = (CustomEmotionData)((Iterator)localObject2).next();
+            if (EditActivity.a(this.a) != localCustomEmotionData.emoId) {
+              break;
+            }
+            EditActivity.c(this.a);
+            localasfl.a(localCustomEmotionData, (String)localObject1);
+            continue;
+            EditActivity.b(this.a);
+          }
+        }
+      }
     }
   }
 }

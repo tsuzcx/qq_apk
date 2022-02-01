@@ -1,19 +1,45 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.open.agent.AuthorityControlFragment;
+import android.os.Handler;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
-public class bhqg
-  implements DialogInterface.OnCancelListener
+class bhqg
+  implements Observer
 {
-  public bhqg(AuthorityControlFragment paramAuthorityControlFragment) {}
+  bhqg(bhqf parambhqf) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    paramDialogInterface = this.a.getActivity();
-    if (paramDialogInterface != null) {
-      paramDialogInterface.doOnBackPressed();
+    if ((paramObject instanceof ArrayList))
+    {
+      paramObservable = (ArrayList)paramObject;
+      switch (((Integer)paramObservable.get(0)).intValue())
+      {
+      default: 
+        return;
+      }
+      paramObservable = (RichStatus)paramObservable.get(1);
+      bhqf.a(this.a, paramObservable);
+      if (bhqf.a(this.a).plainText != null)
+      {
+        paramObject = bbvh.a().b;
+        if (paramObject != null)
+        {
+          paramObject.plainText = ((ArrayList)bhqf.a(this.a).plainText.clone());
+          paramObject.topics.clear();
+          paramObject.topics.addAll(bhqf.a(this.a).topics);
+        }
+      }
+      if (paramObservable != null) {
+        bhqf.b(this.a).copyFrom(paramObservable);
+      }
+      bhqf.a(this.a).a().sendEmptyMessage(10003);
+      bbvh.a().deleteObserver(bhqf.a(this.a));
+      return;
     }
+    bhqf.a(this.a).a().sendEmptyMessage(10003);
   }
 }
 

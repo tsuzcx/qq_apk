@@ -1,134 +1,94 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.content.Context;
-import android.view.View;
-import android.widget.ListView;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
-class zgc
-  implements zgz
+public class zgc
+  extends ReportDialog
 {
-  zgc(zfs paramzfs) {}
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private Button jdField_a_of_type_AndroidWidgetButton;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private String jdField_a_of_type_JavaLangString;
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener;
+  private Button jdField_b_of_type_AndroidWidgetButton;
+  private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private String jdField_b_of_type_JavaLangString;
+  private String c;
   
-  public void a(View paramView, int paramInt1, int paramInt2, Object paramObject)
+  protected void onCreate(Bundle paramBundle)
   {
-    switch (paramInt1)
+    super.onCreate(paramBundle);
+    setContentView(2131561633);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374584));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374627));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374626));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131374631));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131374632));
+    ((RelativeLayout)findViewById(2131374583)).setOnClickListener(new zgd(this));
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
     {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        do
-                        {
-                          do
-                          {
-                            return;
-                          } while ((paramObject == null) || (!(paramObject instanceof CertifiedAccountMeta.StUser)));
-                          paramView = (CertifiedAccountMeta.StUser)paramObject;
-                        } while (paramView.type.get() != 1);
-                        zbh.a(zfs.a(this.a), paramView);
-                        return;
-                      } while ((paramObject == null) || (!(paramObject instanceof CertifiedAccountMeta.StComment)));
-                      paramView = (CertifiedAccountMeta.StComment)paramObject;
-                      QLog.d(zfs.a(), 1, "click comment, feedId: " + zfs.a(this.a).id + " commentId: " + paramView.id);
-                      zfs.a(this.a, paramView, null);
-                      return;
-                    } while ((paramObject == null) || (!(paramObject instanceof Object[])));
-                    paramObject = (Object[])paramObject;
-                  } while ((paramObject.length <= 1) || (paramObject[0] == null) || (paramObject[1] == null) || (!(paramObject[0] instanceof CertifiedAccountMeta.StComment)) || (!(paramObject[1] instanceof CertifiedAccountMeta.StReply)));
-                  paramView = (CertifiedAccountMeta.StComment)paramObject[0];
-                  paramObject = (CertifiedAccountMeta.StReply)paramObject[1];
-                  QLog.d(zfs.a(), 1, "click reply, feedId: " + zfs.a(this.a).id + " commentId: " + paramView.id + " replyId: " + paramObject.id);
-                  zfs.a(this.a, paramView, paramObject);
-                  return;
-                } while ((paramObject == null) || (!(paramObject instanceof CertifiedAccountMeta.StComment)));
-                paramView = (CertifiedAccountMeta.StComment)paramObject;
-                zfs.a(this.a).b(paramView);
-                return;
-              } while ((paramObject == null) || (!(paramObject instanceof Object[])));
-              paramView = (Object[])paramObject;
-            } while ((paramView.length <= 1) || (paramView[0] == null));
-            paramObject = (CertifiedAccountMeta.StComment)paramView[0];
-            paramInt1 = zfs.a(this.a).a(paramObject);
-          } while ((paramInt1 < 0) || (paramView[1] == null));
-          int i = ((Integer)paramView[1]).intValue();
-          this.a.a.setSelectionFromTop(paramInt2, i * (paramInt1 * -1));
-          return;
-        } while ((paramObject == null) || (!(paramObject instanceof CertifiedAccountMeta.StComment)));
-        paramView = (CertifiedAccountMeta.StComment)paramObject;
-        zfs.a(this.a, zfs.a(this.a).a(zfs.a(this.a), paramView));
-        zfs.c(this.a, true);
-        return;
-      } while ((paramObject == null) || (!(paramObject instanceof Object[])));
-      paramView = (Object[])paramObject;
-    } while ((paramView.length <= 1) || (paramView[0] == null) || (paramView[1] == null));
-    paramObject = (CertifiedAccountMeta.StComment)paramView[0];
-    zfs.a(this.a).a(zfs.a(this.a), paramObject, (CertifiedAccountMeta.StReply)paramView[1]);
-    zfs.c(this.a, true);
-  }
-  
-  public void b(View paramView, int paramInt1, int paramInt2, Object paramObject)
-  {
-    switch (paramInt1)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while ((paramObject == null) || (!(paramObject instanceof CertifiedAccountMeta.StComment)));
-        paramView = (CertifiedAccountMeta.StComment)paramObject;
-        zfs.a(this.a, new zeq(zfs.a(this.a), false, true));
-        zfs.a(this.a).a(zfs.b(this.a).getString(2131691176), 0, new zgd(this, paramView));
-        if (zfs.a(this.a, paramView.postUser)) {
-          zfs.a(this.a).a(zfs.d(this.a).getString(2131691360), 1, new zge(this, paramView));
-        }
-        for (;;)
-        {
-          zfs.a(this.a).a(zfs.f(this.a).getString(2131690620));
-          zfs.a(this.a).show();
-          return;
-          zfs.a(this.a).a(zfs.e(this.a).getString(2131717685), 6, new zgf(this, paramView));
-        }
-      } while ((paramObject == null) || (!(paramObject instanceof Object[])));
-      paramObject = (Object[])paramObject;
-    } while ((paramObject.length <= 1) || (paramObject[0] == null) || (paramObject[1] == null) || (!(paramObject[0] instanceof CertifiedAccountMeta.StComment)) || (!(paramObject[1] instanceof CertifiedAccountMeta.StReply)));
-    paramView = (CertifiedAccountMeta.StComment)paramObject[0];
-    paramObject = (CertifiedAccountMeta.StReply)paramObject[1];
-    zfs.a(this.a, new zeq(zfs.g(this.a), false, true));
-    zfs.a(this.a).a(zfs.h(this.a).getString(2131691176), 0, new zgg(this, paramObject));
-    if (zfs.a(this.a, paramObject.postUser)) {
-      zfs.a(this.a).a(zfs.j(this.a).getString(2131691360), 1, new zgh(this, paramView, paramObject));
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        break label207;
+      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      if (!TextUtils.isEmpty(this.c)) {
+        break label277;
+      }
+      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+      label160:
+      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+        break label335;
+      }
+      this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
     }
     for (;;)
     {
-      zfs.a(this.a).a(zfs.l(this.a).getString(2131690620));
-      zfs.a(this.a).show();
+      this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new zgg(this));
       return;
-      zfs.a(this.a).a(zfs.k(this.a).getString(2131717685), 6, new zgi(this, paramView, paramObject));
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      break;
+      label207:
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      if (this.jdField_a_of_type_AndroidWidgetTextView.getPaint().measureText(this.jdField_a_of_type_JavaLangString) > UIUtils.dip2px(getContext(), 280.0F)) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setGravity(3);
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+        break;
+        this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
+      }
+      label277:
+      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(this.c);
+      if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null)
+      {
+        this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+        break label160;
+      }
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new zge(this));
+      break label160;
+      label335:
+      this.jdField_b_of_type_AndroidWidgetButton.setVisibility(0);
+      this.jdField_b_of_type_AndroidWidgetButton.setTag(this.jdField_b_of_type_JavaLangString);
+      if (this.jdField_b_of_type_AndroidViewView$OnClickListener != null) {
+        this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
+      } else {
+        this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new zgf(this));
+      }
     }
   }
 }

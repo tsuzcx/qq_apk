@@ -1,14 +1,26 @@
-import mqq.os.MqqHandler;
+import android.text.Editable;
+import android.text.TextWatcher;
 
 class ains
-  implements airh
+  implements TextWatcher
 {
-  ains(ainq paramainq) {}
+  ains(ainr paramainr) {}
   
-  public void a()
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a.a.sendEmptyMessageDelayed(7, 100L);
+    if (this.a.jdField_a_of_type_Aini.a().f())
+    {
+      paramEditable = paramEditable.toString();
+      this.a.jdField_a_of_type_Aini.a().a(paramEditable);
+      if (this.a.jdField_a_of_type_Ainf != null) {
+        this.a.jdField_a_of_type_Ainf.a(paramEditable);
+      }
+    }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

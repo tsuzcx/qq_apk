@@ -1,50 +1,48 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
+import com.tencent.image.AbsThirdDataSourceAdapter;
+import com.tencent.image.AbsThirdDataSourceAdapter.OnPreparedCallback;
 
-final class swv
-  implements bjrp
+public class swv
+  extends AbsThirdDataSourceAdapter
 {
-  swv(Context paramContext, BaseData paramBaseData, AdData paramAdData) {}
+  int jdField_a_of_type_Int = 2;
+  private AbsThirdDataSourceAdapter.OnPreparedCallback jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback;
+  private String jdField_a_of_type_JavaLangString = "";
+  private int b = 0;
+  private int c = 0;
   
-  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
+  public swv(int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof FastWebActivity)) {
-      ((FastWebActivity)this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int getPlayType()
+  {
+    return this.c;
+  }
+  
+  public int getStaus()
+  {
+    return this.b;
+  }
+  
+  public String getURL()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void requestPrepare(String paramString, AbsThirdDataSourceAdapter.OnPreparedCallback paramOnPreparedCallback)
+  {
+    this.jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback = paramOnPreparedCallback;
+    this.b = 1;
+    paramOnPreparedCallback = swx.a();
+    sww localsww = new sww(this);
+    if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 6)) {
+      paramOnPreparedCallback.a(paramString, localsww);
     }
-    if (((QQAppInterface)pay.a() != null) && (paramArrayList != null))
-    {
-      paramView = "";
-      paramInt = 0;
-      if (paramInt < paramArrayList.size())
-      {
-        paramObject = (DislikeInfo)paramArrayList.get(paramInt);
-        if (paramObject == null) {
-          break label223;
-        }
-        paramObject = paramView + paramObject.a;
-        paramView = paramObject;
-        if (paramInt != paramArrayList.size() - 1) {
-          paramView = paramObject + ",";
-        }
-      }
-    }
-    label223:
-    for (;;)
-    {
-      paramInt += 1;
-      break;
-      obb.a(new trn().a(this.jdField_a_of_type_AndroidContentContext).a(obb.c).b(obb.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData)).a(tws.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData)).a(paramView).d(obb.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData)).a());
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, -1, this.jdField_a_of_type_AndroidContentContext.getString(2131698823), 0).b(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getTitleBarHeight());
+    while (this.jdField_a_of_type_Int != 4) {
       return;
     }
+    paramOnPreparedCallback.a(paramString, "SQQShopAdSvr.GetUrlByVid", localsww);
   }
 }
 

@@ -1,8 +1,8 @@
-import android.view.View;
-
-public abstract interface nef
+public class nef
 {
-  public abstract void onClick(View paramView);
+  public int a;
+  public boolean a = true;
+  public int b;
 }
 
 

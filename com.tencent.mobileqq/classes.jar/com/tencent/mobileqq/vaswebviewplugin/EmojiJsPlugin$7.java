@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnKeyListener;
 import android.view.KeyEvent;
-import bgve;
+import bifw;
 import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
@@ -24,7 +24,7 @@ class EmojiJsPlugin$7
       try
       {
         paramDialogInterface.put("result", 2);
-        paramDialogInterface.put("message", this.this$0.mRuntime.a().getString(2131691789));
+        paramDialogInterface.put("message", this.this$0.mRuntime.a().getString(2131691877));
         if (QLog.isColorLevel()) {
           QLog.i(EmojiJsPlugin.TAG, 2, "startDownloadEmoji resp to js:" + paramDialogInterface.toString());
         }

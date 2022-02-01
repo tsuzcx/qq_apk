@@ -1,98 +1,65 @@
+import android.annotation.TargetApi;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatcher.Dispatchable;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.io.File;
 
+@TargetApi(14)
 public class wcl
-  implements vqp<wfi, wgt>
+  extends wcd
 {
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Queue<vxd> jdField_a_of_type_JavaUtilQueue;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private AtomicBoolean b = new AtomicBoolean(false);
-  
-  public wcl(QQAppInterface paramQQAppInterface)
+  public wcl(@NonNull String[] paramArrayOfString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    b();
+    super(paramArrayOfString);
   }
   
-  private void a(wfi paramwfi, wgt paramwgt)
+  protected void a(String[] paramArrayOfString, wce paramwce)
   {
-    vlj localvlj = (vlj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(197);
-    List localList = paramwgt.a();
-    localvlj.a(paramwgt.a());
-    if (paramwfi.a() == 3)
+    int n = paramArrayOfString.length;
+    int i = 0;
+    if (i < n)
     {
-      paramwfi = localList.iterator();
-      while (paramwfi.hasNext())
+      File localFile1 = new File(paramArrayOfString[i]);
+      double d = a(localFile1);
+      File[] arrayOfFile = localFile1.listFiles();
+      if (arrayOfFile == null) {}
+      for (;;)
       {
-        paramwgt = (vxd)paramwfi.next();
-        localvlj.b(paramwgt);
-        localvlj.c(paramwgt);
-        localvlj.d(paramwgt);
-      }
-    }
-    localvlj.a(localList);
-    localvlj.a(localList, true);
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_JavaUtilQueue = new ConcurrentLinkedQueue();
-  }
-  
-  private void c()
-  {
-    Object localObject = (vlj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(197);
-    if (!this.b.get()) {}
-    for (;;)
-    {
-      vxd localvxd = (vxd)this.jdField_a_of_type_JavaUtilQueue.poll();
-      if (localvxd == null)
-      {
-        localObject = new wcm(true);
-        vli.a().dispatch((Dispatcher.Dispatchable)localObject);
-        return;
-      }
-      ((vlj)localObject).a(localvxd);
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-  }
-  
-  public void a(@NonNull wfi paramwfi, @Nullable wgt paramwgt, @NonNull ErrorMessage paramErrorMessage)
-  {
-    if (a()) {}
-    do
-    {
-      return;
-      this.b.set(true);
-      if ((paramwgt != null) && (!paramErrorMessage.isFail())) {
+        i += 1;
         break;
+        long l = System.currentTimeMillis();
+        int i1 = arrayOfFile.length;
+        int k = 0;
+        int j = 0;
+        for (;;)
+        {
+          if (j < i1)
+          {
+            if (j % 150 == 0) {}
+            try
+            {
+              Thread.sleep(100L);
+              File localFile2 = arrayOfFile[j];
+              int m = k;
+              if (l - localFile2.lastModified() > 86400000L)
+              {
+                a(localFile2);
+                m = k + 1;
+              }
+              j += 1;
+              k = m;
+            }
+            catch (InterruptedException localInterruptedException)
+            {
+              for (;;)
+              {
+                ykq.e("Q.qqstory.cleaner:TimeCleanStep", "sleep error ,InterruptedException");
+              }
+            }
+          }
+        }
+        paramwce.jdField_b_of_type_Double = (d - a(localFile1) + paramwce.jdField_b_of_type_Double);
+        paramwce.jdField_b_of_type_Int = (k + paramwce.jdField_b_of_type_Int);
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("RecentTabHaloBatchLoader", 2, "onEvent: failed. Message: exception: " + paramErrorMessage);
-    return;
-    a(paramwfi, paramwgt);
-    this.b.set(false);
-    c();
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    }
   }
 }
 

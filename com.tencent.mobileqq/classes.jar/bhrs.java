@@ -1,17 +1,30 @@
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.content.Context;
 
 public class bhrs
-  extends aepg
+  extends bhro
 {
-  public CheckBox a;
-  public ImageView a;
-  public RelativeLayout b;
-  public String b;
-  public TextView c;
-  public TextView d;
+  public static bhrs a = new bhrs();
+  
+  public void cleanCache(Context paramContext)
+  {
+    super.cleanCache(paramContext);
+    behu.a().b();
+  }
+  
+  public long getBID()
+  {
+    return 38L;
+  }
+  
+  protected String getRootDir()
+  {
+    return "musicTheme";
+  }
+  
+  protected String getScidPrefix()
+  {
+    return "musicTheme.";
+  }
 }
 
 

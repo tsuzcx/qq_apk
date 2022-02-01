@@ -1,72 +1,131 @@
-import android.content.Intent;
+import android.content.SharedPreferences;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.httputils.PkgTools;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.util.SystemUtil;
+import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import java.io.File;
 
 public class bggd
-  extends MSFServlet
+  extends aqde
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  private static String a()
   {
-    long l = 0L;
-    if (QLog.isColorLevel())
+    if (SystemUtil.isExistSDCard()) {}
+    for (String str1 = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH);; str1 = BaseApplicationImpl.getApplication().getFilesDir().getAbsolutePath())
     {
-      l = System.currentTimeMillis();
-      QLog.d("VasExtensionServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
-    }
-    byte[] arrayOfByte;
-    if (paramFromServiceMsg.isSuccess())
-    {
-      int i = paramFromServiceMsg.getWupBuffer().length - 4;
-      arrayOfByte = new byte[i];
-      PkgTools.copyData(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-    }
-    for (;;)
-    {
-      VasExtensionHandler localVasExtensionHandler = (VasExtensionHandler)((QQAppInterface)super.getAppRuntime()).getBusinessHandler(71);
-      if (localVasExtensionHandler != null) {
-        localVasExtensionHandler.a(paramIntent, paramFromServiceMsg, arrayOfByte);
+      String str2 = str1;
+      if (str1 != null)
+      {
+        str2 = str1;
+        if (!str1.endsWith(File.separator)) {
+          str2 = str1 + File.separator;
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("VasExtensionServlet", 2, "onReceive exit|cost: " + (System.currentTimeMillis() - l));
-      }
-      return;
-      arrayOfByte = null;
+      return str2 + "troopgamecard/res" + File.separator;
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public String a(aqdi paramaqdi)
   {
-    String str = paramIntent.getStringExtra("cmd");
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    long l = paramIntent.getLongExtra("timeout", 30000L);
-    if (!TextUtils.isEmpty(str))
-    {
-      paramPacket.setSSOCommand(str);
-      paramPacket.setTimeout(l);
-      if (arrayOfByte == null) {
-        break label117;
-      }
-      paramIntent = new byte[arrayOfByte.length + 4];
-      PkgTools.DWord2Byte(paramIntent, 0, arrayOfByte.length + 4);
-      PkgTools.copyData(paramIntent, 4, arrayOfByte, arrayOfByte.length);
-      paramPacket.putSendData(paramIntent);
+    paramaqdi = a() + paramaqdi.b + File.separator;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopGameCardResHandler", 2, "getUnzipDirPath dir = " + paramaqdi);
     }
-    for (;;)
+    return paramaqdi;
+  }
+  
+  public boolean a(aqdi paramaqdi)
+  {
+    String str = b(paramaqdi);
+    if (TextUtils.isEmpty(str)) {
+      return true;
+    }
+    Object localObject1 = new File(str);
+    boolean bool = ((File)localObject1).exists();
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopGameCardResHandler", 2, "needDownload path[" + str + "], exists[" + bool + "]");
+    }
+    if (!bool)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("VasExtensionServlet", 2, "onSend exit cmd=" + str);
+        QLog.d("TroopGameCardResHandler", 2, "needDownload exists, path[" + str + "]");
       }
-      return;
-      label117:
-      paramIntent = new byte[4];
-      PkgTools.DWord2Byte(paramIntent, 0, 4L);
-      paramPacket.putSendData(paramIntent);
+      return true;
+    }
+    Object localObject2 = null;
+    try
+    {
+      localObject1 = bkvq.a((File)localObject1);
+      if (!TextUtils.equals((CharSequence)localObject1, paramaqdi.b))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopGameCardResHandler", 2, "needDownload exists, path[" + str + "], filemd5[" + (String)localObject1 + "], downloadMd5[" + paramaqdi.b + "]");
+        }
+        return true;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localObject1 = localObject2;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("TroopGameCardResHandler", 2, "needDownload Exception" + localException);
+          localObject1 = localObject2;
+        }
+      }
+    }
+    return super.a(paramaqdi);
+  }
+  
+  public boolean a(aqdi paramaqdi, boolean paramBoolean)
+  {
+    long l1 = -1L;
+    boolean bool1 = true;
+    boolean bool2 = true;
+    if (paramaqdi.a)
+    {
+      long l3 = BaseApplicationImpl.getApplication().getSharedPreferences("troop_game_card_sp", 4).getLong(paramaqdi.b, -1L);
+      paramaqdi = new File(a(paramaqdi));
+      paramBoolean = bool2;
+      if (paramaqdi.exists())
+      {
+        long l2 = paramaqdi.lastModified();
+        l1 = l2;
+        paramBoolean = bool2;
+        if (l3 > 0L)
+        {
+          l1 = l2;
+          paramBoolean = bool2;
+          if (l3 != l2)
+          {
+            paramBoolean = false;
+            l1 = l2;
+          }
+        }
+      }
+      bool1 = paramBoolean;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("TroopGameCardResHandler", 2, "verifyUnzipDir result = " + paramBoolean + ",recordedModifyTime = " + l3 + ",realModifyTime = " + l1);
+        bool1 = paramBoolean;
+      }
+    }
+    return bool1;
+  }
+  
+  public String b(aqdi paramaqdi)
+  {
+    if (paramaqdi.a) {}
+    for (paramaqdi = a() + paramaqdi.b + ".end";; paramaqdi = a() + paramaqdi.b + paramaqdi.c)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopGameCardResHandler", 2, "getDownloadPath path[" + paramaqdi + "]");
+      }
+      return paramaqdi;
     }
   }
 }

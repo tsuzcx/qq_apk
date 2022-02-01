@@ -1,26 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class bmyu
-  implements ValueAnimator.AnimatorUpdateListener
+class bmyu
+  implements View.OnClickListener
 {
-  float jdField_a_of_type_Float = 1.0F;
-  final View jdField_a_of_type_AndroidViewView;
+  bmyu(bmyq parambmyq) {}
   
-  bmyu(View paramView)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_Float = f;
-    this.jdField_a_of_type_AndroidViewView.invalidate();
-    if (QLog.isColorLevel()) {
-      QLog.d("PressScaleAnimDelegate ", 2, "do scale animtion, scale=" + f);
+    if (this.a.a.isPlaying()) {
+      this.a.a.pause();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.a.resume();
     }
   }
 }

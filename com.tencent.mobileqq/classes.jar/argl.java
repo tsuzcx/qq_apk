@@ -1,81 +1,58 @@
-import android.os.Handler;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.emotionintegrate.EmotionDownGIFCallback.1;
-import com.tencent.mobileqq.emotionintegrate.EmotionDownGIFCallback.2;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.util.WeakReference;
+import org.json.JSONObject;
 
 public class argl
-  implements aycx, ayel
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private MessageForPic jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
-  private WeakReference<argm> jdField_a_of_type_MqqUtilWeakReference;
+  public arhh a;
+  public boolean a;
   
-  public argl(MessageForPic paramMessageForPic, Handler paramHandler, argm paramargm)
+  public argl()
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic = paramMessageForPic;
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramargm);
+    this.jdField_a_of_type_Arhh = new arhh();
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, aydt paramaydt)
+  public static argl a(String paramString)
   {
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() == null) {
-      QLog.d("EmotionDownGIFCallback", 1, "onDownload fail, callback is null");
-    }
+    if (paramString == null) {}
     do
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionDownGIFCallback", 2, new Object[] { "onDownload ", Integer.valueOf(paramaydt.jdField_a_of_type_Int) });
-      }
-      if (paramaydt.jdField_a_of_type_Int == 0)
+      return null;
+      try
       {
-        ((argm)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
-        return;
+        argl localargl = new argl();
+        paramString = new JSONObject(paramString);
+        localargl.jdField_a_of_type_Boolean = paramString.optBoolean("showTogetherWatchInTroopSettingCard", false);
+        paramString = paramString.optJSONObject("watchTogether");
+        if (paramString != null)
+        {
+          arhh localarhh = new arhh();
+          localarhh.a(paramString.optInt("version"));
+          localarhh.b(paramString.optInt("jumpType"));
+          localarhh.a(paramString.optString("jumpUrl"));
+          localarhh.b(paramString.optString("jumpExtensionInfo"));
+          localargl.jdField_a_of_type_Arhh = localarhh;
+        }
+        QLog.d("TogetherBusinessConfProcessor", 2, "confBean = " + localargl.toString());
+        return localargl;
       }
-    } while (-1 != paramaydt.jdField_a_of_type_Int);
-    if (paramaydt.jdField_a_of_type_Aydp != null) {
-      QLog.d("EmotionDownGIFCallback", 1, new Object[] { "onDownloadFail errDec:", paramaydt.jdField_a_of_type_Aydp.b });
-    }
-    ((argm)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(false, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("TogetherBusinessConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
   }
   
-  public void a(int paramInt, ArrayList<aydt> paramArrayList) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
+  public String toString()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new EmotionDownGIFCallback.2(this, paramInt));
-  }
-  
-  public void a(aycy paramaycy)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new EmotionDownGIFCallback.1(this, paramaycy));
-  }
-  
-  public void a_(int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionDownGIFCallback", 2, new Object[] { "onUpdateProgress:", paramInt + " needRefresh:" + paramBoolean, " picMr:", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq) });
-    }
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() != null) {
-      ((argm)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(paramInt, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+    StringBuilder localStringBuilder = new StringBuilder().append("TogetherConfigureBean{showTogetherWatchInTroopSettingCard=").append(this.jdField_a_of_type_Boolean).append(", watchTogether=");
+    if (this.jdField_a_of_type_Arhh == null) {}
+    for (String str = "null";; str = this.jdField_a_of_type_Arhh.toString()) {
+      return str + '}';
     }
   }
-  
-  public void b(int paramInt, aydt paramaydt) {}
-  
-  public void c(int paramInt, aydt paramaydt) {}
-  
-  public void d(int paramInt, aydt paramaydt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     argl
  * JD-Core Version:    0.7.0.1
  */

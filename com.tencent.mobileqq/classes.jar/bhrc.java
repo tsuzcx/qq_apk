@@ -1,60 +1,445 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.open.agent.BindGroupFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import dalvik.system.DexClassLoader;
+import java.io.File;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import kotlin.jvm.functions.Function0;
 
 public class bhrc
-  extends andd
 {
-  public bhrc(BindGroupFragment paramBindGroupFragment) {}
+  private static bhrc jdField_a_of_type_Bhrc = new bhrc();
+  private static bhri jdField_a_of_type_Bhri = new bhri();
+  private DexClassLoader jdField_a_of_type_DalvikSystemDexClassLoader;
+  private Class<?> jdField_a_of_type_JavaLangClass;
+  private Object jdField_a_of_type_JavaLangObject;
+  private Method jdField_a_of_type_JavaLangReflectMethod;
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private Class<?> jdField_b_of_type_JavaLangClass;
+  private Method jdField_b_of_type_JavaLangReflectMethod;
+  private boolean jdField_b_of_type_Boolean = true;
+  private Class<?> jdField_c_of_type_JavaLangClass;
+  private Method jdField_c_of_type_JavaLangReflectMethod;
+  private Method d;
+  private Method e;
+  private Method f;
   
-  protected void onBindTroopForThirdApp(boolean paramBoolean, int paramInt, long paramLong)
+  public static bhrc a()
   {
-    QLog.i("TroopAbility.BindGroup.Fragment", 1, "onBindTroopForThirdApp, isSuccess: " + paramBoolean + " bindFlag: " + paramInt + "  troopUin: " + paramLong);
-    BindGroupFragment.a(this.a);
-    if (paramBoolean)
-    {
-      BindGroupFragment.c(this.a, amtj.a(2131700263));
-      BindGroupFragment.a(this.a, String.valueOf(paramLong), 1);
-      BindGroupFragment.a(this.a).finish();
-      return;
-    }
-    BindGroupFragment.b(this.a, amtj.a(2131700269));
+    return jdField_a_of_type_Bhrc;
   }
   
-  protected void onGetCreateTroopTokenForThirdApp(boolean paramBoolean, String paramString)
+  private DexClassLoader a(Context paramContext, File paramFile1, File paramFile2)
   {
-    QLog.i("TroopAbility.BindGroup.Fragment", 1, "onGetCreateTroopTokenForThirdApp isSuccess: " + paramBoolean + " url: " + paramString);
-    BindGroupFragment.a(this.a);
-    if (paramBoolean)
+    if ((!paramFile1.exists()) || (!paramFile2.exists())) {}
+    do
     {
-      Intent localIntent = new Intent(BindGroupFragment.a(this.a), QQBrowserActivity.class);
-      localIntent.putExtra("url", bjnd.a(paramString, "gname", BindGroupFragment.c(this.a)));
-      this.a.startActivity(localIntent);
-      return;
-    }
-    BindGroupFragment.b(this.a, amtj.a(2131700258));
+      return null;
+      paramContext = new File(a(paramContext), "opt");
+      if (!paramContext.exists()) {
+        paramContext.mkdirs();
+      }
+    } while ((!paramContext.exists()) || (!paramContext.isDirectory()));
+    return new DexClassLoader(paramFile1.getAbsolutePath(), paramContext.getAbsolutePath(), paramFile2.getAbsolutePath(), bhrc.class.getClassLoader());
   }
   
-  protected void onGetOnePageTroopInfo(boolean paramBoolean1, boolean paramBoolean2)
+  public static File a(Context paramContext)
   {
-    QLog.i("TroopAbility.BindGroup.Fragment", 1, "onGetOnePageTroopInfo, isSuccess: " + paramBoolean1 + " isLastPage: " + paramBoolean2);
-    if (paramBoolean1)
+    return new File(paramContext.getFilesDir(), "gldrawable");
+  }
+  
+  private Class<?> a(String paramString)
+  {
+    return this.jdField_a_of_type_DalvikSystemDexClassLoader.loadClass(paramString);
+  }
+  
+  public static void a()
+  {
+    jdField_a_of_type_Bhrc.jdField_b_of_type_Boolean = false;
+    jdField_a_of_type_Bhrc.jdField_a_of_type_Boolean = false;
+  }
+  
+  public static void a(bhri parambhri)
+  {
+    jdField_a_of_type_Bhri = parambhri;
+  }
+  
+  private void a(Class<?> paramClass)
+  {
+    try
     {
-      if (paramBoolean2)
+      paramClass.getMethod("setLogger", new Class[] { Handler.Callback.class }).invoke(null, new Object[] { new bhrf(this) });
+      return;
+    }
+    catch (Exception paramClass)
+    {
+      jdField_a_of_type_Bhri.a(paramClass);
+    }
+  }
+  
+  public static boolean a()
+  {
+    return (jdField_a_of_type_Bhrc.jdField_b_of_type_Boolean) && (jdField_a_of_type_Bhrc.jdField_a_of_type_Boolean);
+  }
+  
+  @Deprecated
+  public static boolean a(Drawable paramDrawable)
+  {
+    return (jdField_a_of_type_Bhrc.jdField_a_of_type_Boolean) && (paramDrawable != null) && (jdField_a_of_type_Bhrc.jdField_b_of_type_JavaLangClass != null) && (jdField_a_of_type_Bhrc.jdField_b_of_type_JavaLangClass.isAssignableFrom(paramDrawable.getClass()));
+  }
+  
+  public static boolean a(Object paramObject)
+  {
+    if ((paramObject instanceof bhqs)) {}
+    while ((jdField_a_of_type_Bhrc.jdField_a_of_type_Boolean) && (paramObject != null) && (jdField_a_of_type_Bhrc.jdField_a_of_type_JavaLangClass != null) && (jdField_a_of_type_Bhrc.jdField_a_of_type_JavaLangClass.isAssignableFrom(paramObject.getClass()))) {
+      return true;
+    }
+    return false;
+  }
+  
+  private boolean a(String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramString)) {
+      return false;
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+    return true;
+  }
+  
+  public static boolean b()
+  {
+    return !jdField_a_of_type_Bhrc.jdField_b_of_type_Boolean;
+  }
+  
+  @Deprecated
+  public static boolean b(Drawable paramDrawable)
+  {
+    return (jdField_a_of_type_Bhrc.jdField_a_of_type_Boolean) && (paramDrawable != null) && (jdField_a_of_type_Bhrc.jdField_c_of_type_JavaLangClass != null) && (jdField_a_of_type_Bhrc.jdField_c_of_type_JavaLangClass.isAssignableFrom(paramDrawable.getClass()));
+  }
+  
+  public Drawable a(bhrb parambhrb, Looper paramLooper, boolean paramBoolean)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return null;
+    }
+    for (;;)
+    {
+      try
       {
-        BindGroupFragment.a(this.a);
-        if (BindGroupFragment.a(this.a) != null) {
-          BindGroupFragment.a(this.a).notifyDataSetChanged();
+        if (this.f != null) {
+          break label133;
         }
+        this.f = this.jdField_a_of_type_JavaLangObject.getClass().getMethod("getGLDrawable", new Class[] { Bundle.class, Handler.class, Boolean.TYPE });
+      }
+      catch (Exception parambhrb)
+      {
+        jdField_a_of_type_Bhri.a(parambhrb);
+        jdField_a_of_type_Bhri.a("gldrawable_video_create", "error", parambhrb.getMessage(), -1L);
+        return null;
+      }
+      return (Drawable)this.f.invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { parambhrb.a(), paramLooper, Boolean.valueOf(paramBoolean) });
+      paramLooper = new Handler(paramLooper);
+      continue;
+      label133:
+      if (paramLooper == null) {
+        paramLooper = null;
+      }
+    }
+  }
+  
+  @Deprecated
+  public Drawable a(File paramFile, Looper paramLooper, boolean paramBoolean)
+  {
+    Object localObject2 = null;
+    Object localObject3 = null;
+    Object localObject1 = localObject3;
+    String str;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      localObject1 = localObject3;
+      if (paramFile.exists())
+      {
+        str = paramFile.getName();
+        if (!str.endsWith(".mp4")) {
+          break label58;
+        }
+        localObject1 = a(paramFile.getAbsolutePath(), paramBoolean);
+      }
+    }
+    label58:
+    do
+    {
+      return localObject1;
+      if ((str.endsWith(".png")) || (str.endsWith(".jpg"))) {
+        break;
+      }
+      localObject1 = localObject3;
+    } while (!str.endsWith(".jpeg"));
+    localObject1 = paramFile.getAbsolutePath();
+    if (paramLooper == null) {}
+    for (paramFile = localObject2;; paramFile = new Handler(paramLooper)) {
+      return a((String)localObject1, paramFile, paramBoolean);
+    }
+  }
+  
+  @Deprecated
+  public Drawable a(String paramString, Handler paramHandler, boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_Boolean) && (new File(paramString).exists())) {
+      try
+      {
+        if (this.d == null) {
+          this.d = this.jdField_a_of_type_JavaLangObject.getClass().getMethod("getAutoEtcDrawable", new Class[] { String.class, Handler.class, Boolean.TYPE });
+        }
+        long l = System.currentTimeMillis();
+        paramString = (Drawable)this.d.invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { paramString, paramHandler, Boolean.valueOf(paramBoolean) });
+        int i = (int)(System.currentTimeMillis() - l);
+        if (paramString != null)
+        {
+          jdField_a_of_type_Bhri.a("gldrawable_etc_create", "sucess", "", i);
+          return paramString;
+        }
+        jdField_a_of_type_Bhri.a("gldrawable_etc_create", "empty", "", i);
+        return paramString;
+      }
+      catch (Exception paramString)
+      {
+        jdField_a_of_type_Bhri.a(paramString);
+        jdField_a_of_type_Bhri.a("gldrawable_etc_create", "error", paramString.getMessage(), -1L);
+      }
+    }
+    return null;
+  }
+  
+  @Deprecated
+  public Drawable a(String paramString, boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_Boolean) && (new File(paramString).exists())) {
+      try
+      {
+        if (this.e == null) {
+          this.e = this.jdField_a_of_type_JavaLangObject.getClass().getMethod("getVideoDrawable", new Class[] { String.class, Boolean.TYPE });
+        }
+        long l = System.currentTimeMillis();
+        paramString = (Drawable)this.e.invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { paramString, Boolean.valueOf(paramBoolean) });
+        int i = (int)(System.currentTimeMillis() - l);
+        if (paramString != null)
+        {
+          jdField_a_of_type_Bhri.a("gldrawable_video_create", "sucess", "", i);
+          return paramString;
+        }
+        jdField_a_of_type_Bhri.a("gldrawable_video_create", "empty", "", i);
+        return paramString;
+      }
+      catch (Exception paramString)
+      {
+        jdField_a_of_type_Bhri.a(paramString);
+        jdField_a_of_type_Bhri.a("gldrawable_video_create", "error", paramString.getMessage(), -1L);
+      }
+    }
+    return null;
+  }
+  
+  public bhqs a(bhrb parambhrb, Looper paramLooper, boolean paramBoolean, Function0<Drawable> paramFunction0)
+  {
+    bhqs localbhqs = new bhqs();
+    localbhqs.a(paramFunction0);
+    localbhqs.b(new bhrd(this, parambhrb, paramLooper, paramBoolean));
+    localbhqs.a();
+    return localbhqs;
+  }
+  
+  @Deprecated
+  public bhqs a(File paramFile, Looper paramLooper, boolean paramBoolean, Function0<Drawable> paramFunction0)
+  {
+    bhqs localbhqs = new bhqs();
+    localbhqs.a(paramFunction0);
+    localbhqs.b(new bhre(this, paramFile, paramLooper, paramBoolean));
+    localbhqs.a();
+    return localbhqs;
+  }
+  
+  public void a(Context paramContext, File paramFile1, File paramFile2)
+  {
+    if ((!this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_Boolean) || (paramContext == null)) {
+      return;
+    }
+    try
+    {
+      if ((!this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_Boolean)) {
         return;
       }
-      BindGroupFragment.b(this.a);
-      return;
     }
-    BindGroupFragment.a(this.a);
-    BindGroupFragment.b(this.a, amtj.a(2131700272));
+    finally {}
+    for (;;)
+    {
+      try
+      {
+        l = System.currentTimeMillis();
+        this.jdField_a_of_type_DalvikSystemDexClassLoader = a(paramContext, paramFile1, paramFile2);
+        if (this.jdField_a_of_type_DalvikSystemDexClassLoader == null)
+        {
+          jdField_a_of_type_Bhri.a("gldrawable_main_init", "error", "class-loader", -1L);
+          return;
+        }
+        paramContext = a("com.tencent.android.gldrawable.GLDrawable");
+        a(paramContext);
+        paramContext.getMethod("init", new Class[0]).invoke(null, new Object[0]);
+        if (!((Boolean)paramContext.getMethod("isEnable", new Class[0]).invoke(null, new Object[0])).booleanValue())
+        {
+          jdField_a_of_type_Bhri.a("gldrawable_main_init", "disable", "sdk=" + Build.VERSION.SDK_INT, -1L);
+          a();
+          return;
+        }
+        this.jdField_a_of_type_JavaLangClass = a("com.tencent.android.gldrawable.common.BaseDrawable");
+        this.jdField_b_of_type_JavaLangClass = a("com.tencent.android.gldrawable.video.VideoDrawable");
+        this.jdField_c_of_type_JavaLangClass = a("com.tencent.android.gldrawable.etc.anim.AETCDrawable");
+      }
+      catch (Exception paramContext)
+      {
+        long l;
+        jdField_a_of_type_Bhri.a(paramContext);
+        a();
+        jdField_a_of_type_Bhri.a("gldrawable_main_init", "error", paramContext.getMessage(), -1L);
+        continue;
+      }
+      try
+      {
+        this.jdField_a_of_type_JavaLangObject = a("com.tencent.android.gldrawable.GLDrawable").getMethod("factory", new Class[0]).invoke(null, new Object[0]);
+        this.jdField_a_of_type_Boolean = true;
+        jdField_a_of_type_Bhri.a("gldrawable_main_init", "sucess", "", System.currentTimeMillis() - l);
+        return;
+      }
+      catch (Exception paramContext)
+      {
+        jdField_a_of_type_Bhri.a(paramContext);
+      }
+    }
+  }
+  
+  public void a(Drawable paramDrawable)
+  {
+    if ((paramDrawable instanceof bhqs)) {
+      ((bhqs)paramDrawable).b();
+    }
+    for (;;)
+    {
+      return;
+      if ((!this.jdField_a_of_type_Boolean) || (paramDrawable == null)) {
+        continue;
+      }
+      if ((this.jdField_a_of_type_JavaLangReflectMethod == null) && (a("recycle"))) {}
+      try
+      {
+        this.jdField_a_of_type_JavaLangReflectMethod = this.jdField_a_of_type_JavaLangClass.getMethod("recycle", new Class[0]);
+        if (this.jdField_a_of_type_JavaLangReflectMethod == null) {
+          continue;
+        }
+        try
+        {
+          this.jdField_a_of_type_JavaLangReflectMethod.invoke(paramDrawable, new Object[0]);
+          return;
+        }
+        catch (Exception paramDrawable)
+        {
+          jdField_a_of_type_Bhri.a(paramDrawable);
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          jdField_a_of_type_Bhri.a(localException);
+        }
+      }
+    }
+  }
+  
+  public boolean a(int paramInt)
+  {
+    try
+    {
+      a("com.tencent.android.gldrawable.GLDrawable").getMethod("setFpsLimit", new Class[] { Integer.TYPE }).invoke(null, new Object[] { Integer.valueOf(paramInt) });
+      return true;
+    }
+    catch (Exception localException)
+    {
+      jdField_a_of_type_Bhri.a(localException);
+    }
+    return false;
+  }
+  
+  public boolean a(Drawable paramDrawable, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    if ((paramDrawable instanceof bhqs))
+    {
+      ((bhqs)paramDrawable).a(paramFloat1, paramFloat2, paramFloat3, paramFloat4);
+      return true;
+    }
+    if ((!this.jdField_a_of_type_Boolean) || (paramDrawable == null) || ((this.jdField_c_of_type_JavaLangReflectMethod == null) && (a("setDrawArea")))) {}
+    try
+    {
+      this.jdField_c_of_type_JavaLangReflectMethod = this.jdField_a_of_type_JavaLangClass.getMethod("setDrawArea", new Class[] { Float.TYPE, Float.TYPE, Float.TYPE, Float.TYPE });
+      if (this.jdField_c_of_type_JavaLangReflectMethod != null) {
+        try
+        {
+          this.jdField_c_of_type_JavaLangReflectMethod.invoke(paramDrawable, new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Float.valueOf(paramFloat3), Float.valueOf(paramFloat4) });
+          return true;
+        }
+        catch (Exception paramDrawable)
+        {
+          jdField_a_of_type_Bhri.a(paramDrawable);
+        }
+      }
+      return false;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        jdField_a_of_type_Bhri.a(localException);
+      }
+    }
+  }
+  
+  public boolean a(Drawable paramDrawable, boolean paramBoolean)
+  {
+    if ((paramDrawable instanceof bhqs))
+    {
+      ((bhqs)paramDrawable).a(paramBoolean);
+      return true;
+    }
+    if ((!this.jdField_a_of_type_Boolean) || (paramDrawable == null) || ((this.jdField_b_of_type_JavaLangReflectMethod == null) && (a("setLockWH")))) {}
+    try
+    {
+      this.jdField_b_of_type_JavaLangReflectMethod = this.jdField_a_of_type_JavaLangClass.getMethod("setLockWH", new Class[] { Boolean.TYPE });
+      if (this.jdField_b_of_type_JavaLangReflectMethod != null) {
+        try
+        {
+          this.jdField_b_of_type_JavaLangReflectMethod.invoke(paramDrawable, new Object[] { Boolean.valueOf(paramBoolean) });
+          return true;
+        }
+        catch (Exception paramDrawable)
+        {
+          jdField_a_of_type_Bhri.a(paramDrawable);
+        }
+      }
+      return false;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        jdField_a_of_type_Bhri.a(localException);
+      }
+    }
   }
 }
 

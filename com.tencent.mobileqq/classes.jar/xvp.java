@@ -1,18 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import java.util.List;
 
-class xvp
-  implements View.OnClickListener
+public class xvp
 {
-  xvp(xvo paramxvo, xvn paramxvn, yml paramyml) {}
+  public int a;
+  public List<LikeEntry> a;
+  public boolean a;
+  public int b;
   
-  public void onClick(View paramView)
+  public xvp(boolean paramBoolean, List<LikeEntry> paramList, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Xvn != null) {
-      this.jdField_a_of_type_Xvn.a(this.jdField_a_of_type_Yml);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 

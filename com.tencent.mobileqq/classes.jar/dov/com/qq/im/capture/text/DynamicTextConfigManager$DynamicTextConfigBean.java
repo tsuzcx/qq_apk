@@ -1,7 +1,7 @@
 package dov.com.qq.im.capture.text;
 
 import android.text.TextUtils;
-import bmvl;
+import bold;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -11,7 +11,7 @@ import org.json.JSONObject;
 
 public class DynamicTextConfigManager$DynamicTextConfigBean
 {
-  public ArrayList<bmvl> fontInfos = new ArrayList();
+  public ArrayList<bold> fontInfos = new ArrayList();
   public int iconDrawableId;
   public int predownload;
   public int text_id;
@@ -44,8 +44,8 @@ public class DynamicTextConfigManager$DynamicTextConfigBean
             i = 0;
             while (i < j)
             {
-              localObject2 = bmvl.a((JSONObject)paramJSONObject.get(i));
-              ((bmvl)localObject2).jdField_a_of_type_Int = localDynamicTextConfigBean.text_id;
+              localObject2 = bold.a((JSONObject)paramJSONObject.get(i));
+              ((bold)localObject2).jdField_a_of_type_Int = localDynamicTextConfigBean.text_id;
               if (localObject2 != null) {
                 localDynamicTextConfigBean.fontInfos.add(localObject2);
               }
@@ -79,7 +79,7 @@ public class DynamicTextConfigManager$DynamicTextConfigBean
     }
     int k = this.fontInfos.size();
     Iterator localIterator = this.fontInfos.iterator();
-    for (int i = 0;; i = ((bmvl)localIterator.next()).b * 1 / k + i)
+    for (int i = 0;; i = ((bold)localIterator.next()).b * 1 / k + i)
     {
       j = i;
       if (!localIterator.hasNext()) {
@@ -96,8 +96,8 @@ public class DynamicTextConfigManager$DynamicTextConfigBean
     Iterator localIterator = this.fontInfos.iterator();
     while (localIterator.hasNext())
     {
-      bmvl localbmvl = (bmvl)localIterator.next();
-      if ((localbmvl != null) && (paramString.equals(localbmvl.jdField_a_of_type_JavaLangString))) {
+      bold localbold = (bold)localIterator.next();
+      if ((localbold != null) && (paramString.equals(localbold.jdField_a_of_type_JavaLangString))) {
         return true;
       }
     }

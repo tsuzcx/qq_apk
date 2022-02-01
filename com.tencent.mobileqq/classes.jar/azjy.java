@@ -1,72 +1,54 @@
-import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-
-class azjy
-  extends ClickableSpan
+public class azjy
+  extends azjx
 {
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference<BaseActivity> b;
-  
-  public azjy(WeakReference<QQAppInterface> paramWeakReference, WeakReference<BaseActivity> paramWeakReference1)
+  public azjx a()
   {
-    WeakReference localWeakReference;
-    if (a(paramWeakReference1, localWeakReference))
-    {
-      QLog.e("ClosePCVerifyImpl", 1, "ClosePCVerifyClickableSpan() error: params wrong");
-      return;
-    }
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference1;
-    this.b = localWeakReference;
+    return this;
   }
   
-  private boolean a()
+  public void a(int paramInt)
   {
-    return (this.b == null) || (this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.b.get() == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  private boolean a(WeakReference<QQAppInterface> paramWeakReference, WeakReference<BaseActivity> paramWeakReference1)
+  public void a(long paramLong)
   {
-    return (paramWeakReference == null) || (paramWeakReference1 == null);
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public void onClick(View paramView)
+  public void a(String paramString)
   {
-    QLog.d("ClosePCVerifyImpl", 1, "onClick");
-    bcef.b(null, "dc00898", "", "", "0X800AE03", "0X800AE03", 0, 0, "", "", "", "");
-    if (a())
-    {
-      QLog.e("ClosePCVerifyImpl", 1, "onClick error: params wrong");
-      return;
-    }
-    paramView = (BaseActivity)this.b.get();
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (!NetworkUtil.isNetSupport(paramView))
-    {
-      QQToast.a(paramView, 1, 2131698646, 1).a();
-      QLog.e("ClosePCVerifyImpl", 1, "NetworkError");
-      return;
-    }
-    azjv.a(this.jdField_a_of_type_Azjv, localQQAppInterface, paramView);
+    this.jdField_b_of_type_JavaLangString = paramString;
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void b(int paramInt)
   {
-    QLog.d("ClosePCVerifyImpl", 1, "updateDrawState");
-    if (a())
-    {
-      QLog.e("ClosePCVerifyImpl", 1, "updateDrawState error: param wrong");
-      return;
-    }
-    paramTextPaint.setColor(((BaseActivity)this.b.get()).getResources().getColor(2131165739));
-    paramTextPaint.setUnderlineText(false);
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void b(long paramLong)
+  {
+    this.jdField_c_of_type_Long = paramLong;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_c_of_type_JavaLangString = paramString;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_f_of_type_Int = paramInt;
+  }
+  
+  public void c(String paramString)
+  {
+    this.g = paramString;
+  }
+  
+  public void d(String paramString)
+  {
+    this.jdField_f_of_type_JavaLangString = paramString;
   }
 }
 

@@ -1,31 +1,31 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Method;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailActivity;
+import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailFragment;
+import com.tencent.widget.ListView;
+import java.util.List;
 
 public class bccu
+  extends bcct<bccx, bcpj>
 {
-  public static void a()
+  public bccu(FTSEntitySearchDetailFragment paramFTSEntitySearchDetailFragment, ListView paramListView, FaceDecoder paramFaceDecoder, List paramList, String paramString, FTSEntitySearchDetailActivity paramFTSEntitySearchDetailActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIPCEnvironmentInit", 2, "tryConnect");
-    }
-    try
-    {
-      Method localMethod = BaseApplicationImpl.sApplication.getClassLoader().loadClass("com.tencent.mobileqq.qipc.QIPCEnvironmentInit").getDeclaredMethod("initEnvironment", new Class[0]);
-      localMethod.setAccessible(true);
-      localMethod.invoke(null, new Object[0]);
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("QIPCEnvironmentInit", 2, "tryConnect", localException);
-    }
+    super(paramListView, paramFaceDecoder, paramList, paramString, paramFTSEntitySearchDetailActivity);
+  }
+  
+  protected bcif a(int paramInt)
+  {
+    return new bcic(FTSEntitySearchDetailFragment.a(this.a));
+  }
+  
+  protected bcnu a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new bcnp(paramViewGroup, 2131562828);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bccu
  * JD-Core Version:    0.7.0.1
  */

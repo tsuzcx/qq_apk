@@ -1,21 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
 
-class avgh
-  implements View.OnClickListener
+public class avgh
+  extends Handler
 {
-  avgh(avgg paramavgg) {}
+  public avgh(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.a.a()) {}
-    for (;;)
+    switch (paramMessage.what)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+    default: 
       return;
-      bcef.b(null, "CliOper", "", "", "0X800A966", "0X800A966", 0, 0, "0", "0", "0", "");
-      avdr.a(avfq.a(this.a.a), this.a.a);
+    case 1: 
+    case 2: 
+    case 3: 
+    case 4: 
+      this.a.a(paramMessage.what, paramMessage.arg1, paramMessage.arg2, (String)paramMessage.obj);
+      return;
+    case 100: 
+      QQGameFeedWebFragment.a(this.a).setVisibility(8);
+      return;
+    }
+    int i = paramMessage.arg1;
+    try
+    {
+      QQGameFeedWebFragment.a(this.a, i);
+      return;
+    }
+    catch (Throwable paramMessage)
+    {
+      paramMessage.printStackTrace();
     }
   }
 }

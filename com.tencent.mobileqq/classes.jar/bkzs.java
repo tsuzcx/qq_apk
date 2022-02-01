@@ -1,20 +1,6 @@
-import cooperation.qzone.util.QZLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-class bkzs
-  extends bilb
+public abstract interface bkzs
 {
-  bkzs(bkzr parambkzr) {}
-  
-  public void a()
-  {
-    QZLog.i("VipARQGThreeController", 1, "qg so load success status = " + bilc.b.get());
-  }
-  
-  public void b()
-  {
-    QZLog.i("VipARQGThreeController", 1, "qg so load fail status = " + bilc.b.get());
-  }
+  public abstract void onDismiss();
 }
 
 

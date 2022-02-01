@@ -1,11 +1,11 @@
 package com.tencent.av;
 
-import lbt;
+import lby;
 
 public class QavChannelProxy$1
   implements Runnable
 {
-  public QavChannelProxy$1(lbt paramlbt, byte[] paramArrayOfByte) {}
+  public QavChannelProxy$1(lby paramlby, byte[] paramArrayOfByte) {}
   
   public void run()
   {

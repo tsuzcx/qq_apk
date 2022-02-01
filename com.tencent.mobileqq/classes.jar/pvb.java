@@ -1,20 +1,13 @@
-public class pvb
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageRecord;
+
+public abstract interface pvb
 {
-  public int a;
-  public String a;
-  public boolean a;
+  public abstract void a(MessageRecord paramMessageRecord);
   
-  public void a()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public abstract void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle);
   
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int == 2);
-  }
+  public abstract void b(MessageRecord paramMessageRecord);
 }
 
 

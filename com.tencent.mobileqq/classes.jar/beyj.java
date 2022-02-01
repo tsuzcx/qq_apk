@@ -1,17 +1,36 @@
-class beyj
-  implements bfku
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.16;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class beyj
+  implements View.OnClickListener
 {
-  beyj(beyh parambeyh, boolean paramBoolean) {}
+  public beyj(TroopBarPublishActivity.16 param16) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Beyh.a = 1;
-    this.jdField_a_of_type_Beyh.a(this.jdField_a_of_type_Boolean);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("path", this.a.a);
+    PublicFragmentActivity.a(this.a.this$0, localIntent, TribeVideoPreviewFragment.class);
+    this.a.this$0.overridePendingTransition(2130772328, 2130772329);
+    if ((this.a.this$0.b != null) && (this.a.this$0.b.getVisibility() == 0)) {}
+    for (int i = 2;; i = 1)
+    {
+      bdla.b(null, "dc00899", "Grp_tribe", "", "post", "Clk_full_screen", i, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beyj
  * JD-Core Version:    0.7.0.1
  */

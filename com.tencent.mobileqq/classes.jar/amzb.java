@@ -1,73 +1,89 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.IntentFilter;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AccountNotMatchException;
+import org.json.JSONObject;
 
 public class amzb
+  implements INetInfoHandler
 {
-  private amuv jdField_a_of_type_Amuv = new amzd(this);
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new amzc(this);
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
   
-  public amzb(String paramString)
+  public amzb(int paramInt)
   {
-    try
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  private void a(int paramInt)
+  {
+    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {}
+    for (;;)
     {
-      this.jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(paramString));
-      paramString = new IntentFilter();
-      paramString.addAction("com.tencent.mobileqq.addLbsObserver");
-      paramString.addAction("com.tencent.mobileqq.removeLbsObserver");
-      paramString.addAction("com.tencent.mobileqq.getStreetViewUrl");
-      paramString.addAction("com.tencent.mobileqq.unregisterReceiver");
-      paramString.addAction("com.tencent.mobileqq.getLbsShareSearch");
-      paramString.addAction("com.tencent.mobileqq.getLbsShareShop");
-      paramString.addAction("com.tencent.mobileqq.getShareShopDetail");
-      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQMapActivityProxy", 2, "QQMapActivityProxy-create, registerReceiver:" + hashCode() + ", " + this.jdField_a_of_type_AndroidContentBroadcastReceiver.hashCode());
-      }
       return;
-    }
-    catch (AccountNotMatchException paramString)
-    {
-      for (;;)
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameNetInfoHandler", 2, "[notifyEngineNetChange], type:" + paramInt);
+      }
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQMapActivityProxy", 2, "AccountNotMatchException " + paramString.toString());
+        ApolloCmdChannel localApolloCmdChannel = amwn.a();
+        if (localApolloCmdChannel != null)
+        {
+          Object localObject = amwn.a(this.jdField_a_of_type_Int);
+          if (localObject != null)
+          {
+            localObject = ((amyo)localObject).a();
+            if (localObject != null)
+            {
+              JSONObject localJSONObject = new JSONObject();
+              localJSONObject.put("type", paramInt);
+              localApolloCmdChannel.callbackFromRequest(((ApolloSurfaceView)localObject).getLuaState(), 0, "sc.network_change.local", localJSONObject.toString());
+              return;
+            }
+          }
         }
+      }
+      catch (Exception localException)
+      {
+        QLog.e("cmgame_process.CmGameNetInfoHandler", 1, "errInfo->" + localException.getMessage());
       }
     }
   }
   
-  public void a()
+  public void onNetMobile2None()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQMapActivityProxy", 2, "onDestory,  hashCode=" + hashCode());
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Amuv);
-    }
-    try
-    {
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.w("QQMapActivityProxy", 2, "onDestory, mBroadcastReceiver throw an exception when receive UNREGISTER_RECEIVER : " + localException.toString());
-    }
+    a(4);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    a(3);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    a(1);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    a(2);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    a(6);
+  }
+  
+  public void onNetWifi2None()
+  {
+    a(5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amzb
  * JD-Core Version:    0.7.0.1
  */

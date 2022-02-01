@@ -1,46 +1,34 @@
-import java.util.HashMap;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.avgame.gameroom.seat.background.SurvivalMemberItemView;
 
 public class nkn
-  implements nbh
+  implements Animator.AnimatorListener
 {
-  public void a(int paramInt, String paramString1, String paramString2, naf paramnaf) {}
+  public nkn(SurvivalMemberItemView paramSurvivalMemberItemView) {}
   
-  public void a(long paramLong, String paramString1, boolean paramBoolean, String paramString2, int paramInt) {}
-  
-  public void a(long paramLong, boolean paramBoolean) {}
-  
-  public void a(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void a(String paramString, int paramInt, naf paramnaf) {}
-  
-  public void a(String paramString, naf paramnaf) {}
-  
-  public void a(HashMap<String, String> paramHashMap) {}
-  
-  public void a(naf paramnaf) {}
-  
-  public void a(naf paramnaf, int paramInt) {}
-  
-  public void a(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, String paramString) {}
-  
-  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString) {}
-  
-  public boolean a(int paramInt, String paramString, naf paramnaf)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    return false;
+    if (this.a.a != null) {
+      this.a.a.a(0);
+    }
   }
   
-  public void b(String paramString, naf paramnaf) {}
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (this.a.a != null) {
+      this.a.a.a(0);
+    }
+  }
   
-  public void b(naf paramnaf) {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void c(naf paramnaf, int paramInt) {}
-  
-  public void g() {}
-  
-  public void h() {}
-  
-  public void i() {}
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (this.a.a != null) {
+      this.a.a.a(1);
+    }
+  }
 }
 
 

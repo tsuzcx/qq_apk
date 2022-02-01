@@ -1,26 +1,28 @@
-import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
-final class ajpr
-  implements DialogInterface.OnClickListener
+class ajpr
+  implements DialogInterface.OnKeyListener
 {
-  ajpr(Activity paramActivity, String paramString1, String paramString2, QQAppInterface paramQQAppInterface) {}
+  ajpr(ajpi paramajpi, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    switch (paramInt)
+    if (paramInt == 4)
     {
-    default: 
-      return;
-    case 0: 
-      ajpl.a(this.jdField_a_of_type_AndroidAppActivity, true, this.jdField_a_of_type_JavaLangString, this.b, false);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009DFC", "0X8009DFC", 0, 0, this.b, "", "", "");
-      return;
+      if (!ajpi.a(this.jdField_a_of_type_Ajpi)) {
+        break label28;
+      }
+      ajpi.a(this.jdField_a_of_type_Ajpi, this.jdField_a_of_type_Int);
     }
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009DFD", "0X8009DFD", 0, 0, this.b, "", "", "");
+    for (;;)
+    {
+      return true;
+      label28:
+      ajpi.a(this.jdField_a_of_type_Ajpi, ajpi.a(this.jdField_a_of_type_Ajpi), Long.valueOf(ajpi.a(this.jdField_a_of_type_Ajpi)).longValue());
+      ajpi.a(this.jdField_a_of_type_Ajpi);
+    }
   }
 }
 

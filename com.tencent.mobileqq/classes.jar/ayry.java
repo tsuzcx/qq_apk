@@ -1,46 +1,31 @@
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.Card;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.ImageView;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import com.tencent.mobileqq.widget.OCRBottomTabView;
 
-class ayry
-  implements bjoe
+public class ayry
+  implements TextWatcher
 {
-  ayry(ayrt paramayrt, String paramString1, String paramString2, int paramInt, boolean paramBoolean, bjnw parambjnw) {}
+  public ayry(OCRResultActivity paramOCRResultActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if ((paramInt == 0) && (ayrt.b(this.jdField_a_of_type_Ayrt) != null))
+    if (paramEditable.toString().trim().length() == 0)
     {
-      paramView = new Intent(ayrt.c(this.jdField_a_of_type_Ayrt), EditInfoActivity.class);
-      paramView.putExtra("title", this.jdField_a_of_type_JavaLangString);
-      paramView.putExtra("default_text", this.b);
-      paramView.putExtra("uin", ((aymg)ayrt.a(this.jdField_a_of_type_Ayrt)).jdField_a_of_type_ComTencentMobileqqDataCard.uin);
-      paramView.putExtra("edit_action", this.jdField_a_of_type_Int);
-      paramView.putExtra("max_limit_mode", 1);
-      paramView.putExtra("edit_type", 2);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label169;
-      }
-      paramView.putExtra("max_num", 60);
-      paramView.putExtra("isTroopNick", true);
-      paramView.putExtra("troopUin", ((aymg)ayrt.b(this.jdField_a_of_type_Ayrt)).jdField_a_of_type_JavaLangString);
-    }
-    for (;;)
-    {
-      ayrt.d(this.jdField_a_of_type_Ayrt).startActivityForResult(paramView, 1034);
-      this.jdField_a_of_type_Bjnw.dismiss();
+      this.a.c.setEnabled(false);
+      this.a.d.setEnabled(false);
+      this.a.b.setEnabled(false);
       return;
-      label169:
-      paramInt = 36;
-      if (this.jdField_a_of_type_Int == 2) {
-        paramInt = 60;
-      }
-      paramView.putExtra("max_num", paramInt);
-      paramView.putExtra("support_emotion", true);
     }
+    this.a.c.setEnabled(true);
+    this.a.d.setEnabled(true);
+    this.a.b.setEnabled(true);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

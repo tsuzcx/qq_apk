@@ -1,8 +1,24 @@
-public abstract interface bgqn
+import com.tencent.mobileqq.remind.widget.WheelView;
+import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
+import com.tencent.widget.VerticalGallery;
+
+public class bgqn
+  implements blgf
 {
-  public abstract void a(int paramInt, String paramString);
+  private int jdField_a_of_type_Int;
   
-  public abstract void a(bgqe parambgqe);
+  public bgqn(WheelPickerLayout paramWheelPickerLayout, int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(VerticalGallery paramVerticalGallery)
+  {
+    int i = WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout)[this.jdField_a_of_type_Int].getSelectedItemPosition();
+    if (WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout) != null) {
+      WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).a(this.jdField_a_of_type_Int, i);
+    }
+  }
 }
 
 

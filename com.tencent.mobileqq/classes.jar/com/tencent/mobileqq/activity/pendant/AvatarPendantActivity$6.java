@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.activity.pendant;
 
-import azvi;
+import bbbq;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 class AvatarPendantActivity$6
   implements Runnable
@@ -10,8 +11,8 @@ class AvatarPendantActivity$6
   
   public void run()
   {
-    azvi localazvi = (azvi)this.this$0.app.getManager(36);
-    this.this$0.a = localazvi.a("100100.100125.100127");
+    bbbq localbbbq = (bbbq)this.this$0.app.getManager(QQManagerFactory.MGR_RED_TOUCH);
+    this.this$0.a = localbbbq.a("100100.100125.100127");
     this.this$0.runOnUiThread(new AvatarPendantActivity.6.1(this));
   }
 }

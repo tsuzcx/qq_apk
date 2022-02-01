@@ -1,60 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class aejf
-  extends bgod
+  implements DialogInterface.OnClickListener
 {
-  public aejf(TextPreviewActivity paramTextPreviewActivity, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  public aejf(NotificationActivity paramNotificationActivity) {}
   
-  public void onCancel(bgoe parambgoe)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onCancel| task:" + parambgoe);
-    }
-    super.onCancel(parambgoe);
-  }
-  
-  public void onDone(bgoe parambgoe)
-  {
-    super.onDone(parambgoe);
-    if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onDone| task:" + parambgoe);
-    }
-    if (parambgoe.b()) {}
-    do
-    {
-      return;
-      if (parambgoe.a() == -1)
-      {
-        parambgoe = new Message();
-        parambgoe.what = 17;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(parambgoe);
-        return;
-      }
-      parambgoe = this.a.jdField_a_of_type_Gb.a(this.a.e);
-    } while (parambgoe == null);
-    Message localMessage = new Message();
-    localMessage.what = 18;
-    localMessage.obj = parambgoe;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public boolean onStart(bgoe parambgoe)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onStart| task:" + parambgoe);
-    }
-    return super.onStart(parambgoe);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aejf
  * JD-Core Version:    0.7.0.1
  */

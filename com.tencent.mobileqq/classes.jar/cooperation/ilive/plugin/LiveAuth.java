@@ -1,10 +1,10 @@
 package cooperation.ilive.plugin;
 
-import bkju;
-import bkjv;
-import bkkd;
+import blvl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.ilive.manager.IliveAuthManager;
+import cooperation.ilive.manager.IliveAuthManager.Callback;
 
 public class LiveAuth
 {
@@ -14,7 +14,7 @@ public class LiveAuth
   private static final String TAG = "IliveAuth";
   private static final String URL_ONLINE = "https://ilive.qq.com/cgi-bin/now/web/user/live_platform_login?account_id=%s&client_type=%s&device=%s&auth_appid=%s&auth_key=%s&version_code=%s&ext_data=%s";
   private static final String VERSION_CODE = "10000";
-  private static bkjv mCallback = new LiveAuth.1();
+  private static IliveAuthManager.Callback mCallback = new LiveAuth.1();
   private static int mSource;
   
   private static String getLoginUrl(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
@@ -26,12 +26,12 @@ public class LiveAuth
   {
     mSource = paramInt;
     QLog.i("IliveAuth", 1, "start LiveAuth");
-    bkju.a().a(mCallback);
+    IliveAuthManager.getInstance().getStAuth(mCallback);
   }
   
   public static void liveToken(String paramString1, String paramString2)
   {
-    bkkd.a("liveToken");
+    blvl.a("liveToken");
     ThreadManagerV2.executeOnSubThread(new LiveAuth.2(paramString1, paramString2, System.currentTimeMillis()));
   }
   
@@ -52,75 +52,75 @@ public class LiveAuth
     //   13: aconst_null
     //   14: astore 4
     //   16: aload_0
-    //   17: invokevirtual 129	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   17: invokevirtual 130	java/net/URL:openConnection	()Ljava/net/URLConnection;
     //   20: astore_0
     //   21: aload_0
-    //   22: instanceof 131
+    //   22: instanceof 132
     //   25: ifeq +321 -> 346
     //   28: aload_0
-    //   29: checkcast 131	javax/net/ssl/HttpsURLConnection
+    //   29: checkcast 132	javax/net/ssl/HttpsURLConnection
     //   32: astore 8
     //   34: aload 8
-    //   36: ldc 133
-    //   38: invokevirtual 136	javax/net/ssl/HttpsURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   36: ldc 134
+    //   38: invokevirtual 137	javax/net/ssl/HttpsURLConnection:setRequestMethod	(Ljava/lang/String;)V
     //   41: aload 8
-    //   43: ldc 138
-    //   45: ldc 140
-    //   47: invokevirtual 143	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   43: ldc 139
+    //   45: ldc 141
+    //   47: invokevirtual 144	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   50: aload 8
     //   52: iconst_1
-    //   53: invokevirtual 147	javax/net/ssl/HttpsURLConnection:setDoOutput	(Z)V
-    //   56: new 149	java/io/DataOutputStream
+    //   53: invokevirtual 148	javax/net/ssl/HttpsURLConnection:setDoOutput	(Z)V
+    //   56: new 150	java/io/DataOutputStream
     //   59: dup
     //   60: aload 8
-    //   62: invokevirtual 153	javax/net/ssl/HttpsURLConnection:getOutputStream	()Ljava/io/OutputStream;
-    //   65: invokespecial 156	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   62: invokevirtual 154	javax/net/ssl/HttpsURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   65: invokespecial 157	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   68: astore_0
     //   69: aload_0
-    //   70: invokevirtual 159	java/io/DataOutputStream:flush	()V
+    //   70: invokevirtual 160	java/io/DataOutputStream:flush	()V
     //   73: aload_0
-    //   74: invokevirtual 162	java/io/DataOutputStream:close	()V
+    //   74: invokevirtual 163	java/io/DataOutputStream:close	()V
     //   77: aload 8
-    //   79: invokestatic 168	javax/net/ssl/SSLContext:getDefault	()Ljavax/net/ssl/SSLContext;
-    //   82: invokevirtual 172	javax/net/ssl/SSLContext:getSocketFactory	()Ljavax/net/ssl/SSLSocketFactory;
-    //   85: invokevirtual 176	javax/net/ssl/HttpsURLConnection:setSSLSocketFactory	(Ljavax/net/ssl/SSLSocketFactory;)V
+    //   79: invokestatic 169	javax/net/ssl/SSLContext:getDefault	()Ljavax/net/ssl/SSLContext;
+    //   82: invokevirtual 173	javax/net/ssl/SSLContext:getSocketFactory	()Ljavax/net/ssl/SSLSocketFactory;
+    //   85: invokevirtual 177	javax/net/ssl/HttpsURLConnection:setSSLSocketFactory	(Ljavax/net/ssl/SSLSocketFactory;)V
     //   88: aload 8
-    //   90: invokevirtual 179	javax/net/ssl/HttpsURLConnection:getResponseCode	()I
+    //   90: invokevirtual 180	javax/net/ssl/HttpsURLConnection:getResponseCode	()I
     //   93: istore_2
     //   94: iload_2
     //   95: sipush 200
     //   98: if_icmpne +148 -> 246
-    //   101: new 181	java/io/BufferedInputStream
+    //   101: new 182	java/io/BufferedInputStream
     //   104: dup
     //   105: aload 8
-    //   107: invokevirtual 185	javax/net/ssl/HttpsURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   110: invokespecial 188	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   107: invokevirtual 186	javax/net/ssl/HttpsURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   110: invokespecial 189	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   113: astore_0
     //   114: aload_1
     //   115: astore_3
     //   116: aload_0
     //   117: astore 4
-    //   119: new 190	java/io/ByteArrayOutputStream
+    //   119: new 191	java/io/ByteArrayOutputStream
     //   122: dup
     //   123: sipush 1024
-    //   126: invokespecial 192	java/io/ByteArrayOutputStream:<init>	(I)V
+    //   126: invokespecial 193	java/io/ByteArrayOutputStream:<init>	(I)V
     //   129: astore_1
     //   130: aload_0
-    //   131: invokevirtual 195	java/io/BufferedInputStream:read	()I
+    //   131: invokevirtual 196	java/io/BufferedInputStream:read	()I
     //   134: istore_2
     //   135: iload_2
     //   136: iconst_m1
     //   137: if_icmpeq +65 -> 202
     //   140: aload_1
     //   141: iload_2
-    //   142: invokevirtual 198	java/io/ByteArrayOutputStream:write	(I)V
+    //   142: invokevirtual 199	java/io/ByteArrayOutputStream:write	(I)V
     //   145: goto -15 -> 130
     //   148: astore_3
-    //   149: new 123	java/lang/Exception
+    //   149: new 124	java/lang/Exception
     //   152: dup
-    //   153: ldc 200
+    //   153: ldc 201
     //   155: aload_3
-    //   156: invokespecial 203	java/lang/Exception:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   156: invokespecial 204	java/lang/Exception:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   159: athrow
     //   160: astore 4
     //   162: aload_1
@@ -130,56 +130,56 @@ public class LiveAuth
     //   167: aload_0
     //   168: ifnull +7 -> 175
     //   171: aload_0
-    //   172: invokevirtual 204	java/io/BufferedInputStream:close	()V
+    //   172: invokevirtual 205	java/io/BufferedInputStream:close	()V
     //   175: aload_3
     //   176: ifnull +7 -> 183
     //   179: aload_3
-    //   180: invokevirtual 205	java/io/ByteArrayOutputStream:close	()V
+    //   180: invokevirtual 206	java/io/ByteArrayOutputStream:close	()V
     //   183: aload 8
-    //   185: invokevirtual 208	javax/net/ssl/HttpsURLConnection:disconnect	()V
+    //   185: invokevirtual 209	javax/net/ssl/HttpsURLConnection:disconnect	()V
     //   188: aload_1
     //   189: athrow
     //   190: astore_0
-    //   191: new 123	java/lang/Exception
+    //   191: new 124	java/lang/Exception
     //   194: dup
-    //   195: ldc 210
+    //   195: ldc 211
     //   197: aload_0
-    //   198: invokespecial 203	java/lang/Exception:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   198: invokespecial 204	java/lang/Exception:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   201: athrow
     //   202: aload_1
-    //   203: invokevirtual 214	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   203: invokevirtual 215	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   206: astore_3
     //   207: aload_0
     //   208: ifnull +7 -> 215
     //   211: aload_0
-    //   212: invokevirtual 204	java/io/BufferedInputStream:close	()V
+    //   212: invokevirtual 205	java/io/BufferedInputStream:close	()V
     //   215: aload_1
     //   216: ifnull +7 -> 223
     //   219: aload_1
-    //   220: invokevirtual 205	java/io/ByteArrayOutputStream:close	()V
+    //   220: invokevirtual 206	java/io/ByteArrayOutputStream:close	()V
     //   223: aload 8
-    //   225: invokevirtual 208	javax/net/ssl/HttpsURLConnection:disconnect	()V
+    //   225: invokevirtual 209	javax/net/ssl/HttpsURLConnection:disconnect	()V
     //   228: aload_3
     //   229: areturn
     //   230: astore_0
     //   231: aload_0
-    //   232: invokevirtual 217	java/lang/Exception:printStackTrace	()V
+    //   232: invokevirtual 218	java/lang/Exception:printStackTrace	()V
     //   235: goto -20 -> 215
     //   238: astore_0
     //   239: aload_0
-    //   240: invokevirtual 217	java/lang/Exception:printStackTrace	()V
+    //   240: invokevirtual 218	java/lang/Exception:printStackTrace	()V
     //   243: goto -20 -> 223
-    //   246: new 123	java/lang/Exception
+    //   246: new 124	java/lang/Exception
     //   249: dup
     //   250: new 52	java/lang/StringBuilder
     //   253: dup
     //   254: invokespecial 53	java/lang/StringBuilder:<init>	()V
-    //   257: ldc 219
+    //   257: ldc 220
     //   259: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   262: iload_2
-    //   263: invokevirtual 222	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   263: invokevirtual 223	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   266: invokevirtual 63	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   269: invokespecial 224	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   269: invokespecial 225	java/lang/Exception:<init>	(Ljava/lang/String;)V
     //   272: athrow
     //   273: astore_3
     //   274: aconst_null
@@ -194,40 +194,40 @@ public class LiveAuth
     //   287: astore_3
     //   288: aload_0
     //   289: astore 4
-    //   291: new 123	java/lang/Exception
+    //   291: new 124	java/lang/Exception
     //   294: dup
-    //   295: ldc 226
+    //   295: ldc 227
     //   297: aload_1
-    //   298: invokespecial 203	java/lang/Exception:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   298: invokespecial 204	java/lang/Exception:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   301: athrow
     //   302: aload_0
     //   303: astore 4
-    //   305: new 123	java/lang/Exception
+    //   305: new 124	java/lang/Exception
     //   308: dup
-    //   309: ldc 228
+    //   309: ldc 229
     //   311: aload_1
-    //   312: invokespecial 203	java/lang/Exception:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   312: invokespecial 204	java/lang/Exception:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   315: athrow
     //   316: aload_0
     //   317: astore 4
-    //   319: new 123	java/lang/Exception
+    //   319: new 124	java/lang/Exception
     //   322: dup
-    //   323: ldc 230
+    //   323: ldc 231
     //   325: aload_1
-    //   326: invokespecial 203	java/lang/Exception:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   326: invokespecial 204	java/lang/Exception:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   329: athrow
     //   330: astore_0
     //   331: aload_0
-    //   332: invokevirtual 217	java/lang/Exception:printStackTrace	()V
+    //   332: invokevirtual 218	java/lang/Exception:printStackTrace	()V
     //   335: goto -160 -> 175
     //   338: astore_0
     //   339: aload_0
-    //   340: invokevirtual 217	java/lang/Exception:printStackTrace	()V
+    //   340: invokevirtual 218	java/lang/Exception:printStackTrace	()V
     //   343: goto -160 -> 183
-    //   346: new 232	java/lang/IllegalStateException
+    //   346: new 233	java/lang/IllegalStateException
     //   349: dup
-    //   350: ldc 234
-    //   352: invokespecial 235	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
+    //   350: ldc 235
+    //   352: invokespecial 236	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
     //   355: athrow
     //   356: astore_1
     //   357: aconst_null

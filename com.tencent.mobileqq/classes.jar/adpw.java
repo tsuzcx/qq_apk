@@ -1,104 +1,66 @@
-import com.tencent.mobileqq.activity.LikeSettingActivity;
-import com.tencent.mobileqq.app.CardObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class adpw
-  extends CardObserver
+class adpw
+  implements View.OnClickListener
 {
-  public adpw(LikeSettingActivity paramLikeSettingActivity) {}
+  adpw(adpt paramadpt) {}
   
-  public void onGetCardSwitch(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LikeSettingActivity", 2, "onGetCardSwitch.isSuccess=" + paramBoolean1 + ",uin=" + paramString + ",voteAllowed=" + paramBoolean2 + ",praiseStatusAllowed=" + paramBoolean3);
+    amgh localamgh = (amgh)paramView.getTag();
+    FileManagerEntity localFileManagerEntity = (FileManagerEntity)localamgh.jdField_a_of_type_JavaLangObject;
+    if (5 != localFileManagerEntity.cloudType) {
+      auea.b(localFileManagerEntity);
     }
-    if (!this.a.app.getCurrentAccountUin().equals(paramString)) {}
-    while (!paramBoolean1) {
-      return;
-    }
-    LikeSettingActivity.a(this.a, this.a.c.a(), paramBoolean2);
-  }
-  
-  public void onGetNotifyOnLikeRankingList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("LikeSettingActivity", 2, "onGetNotifyOnLikeRankingList.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
-    }
-    if (paramBoolean1)
+    switch (localamgh.jdField_a_of_type_Int)
     {
-      LikeSettingActivity.a(this.a, this.a.b.a(), paramBoolean2);
-      this.a.a.a(paramBoolean2);
     }
-  }
-  
-  public void onGetPartakeLikeRankingList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("LikeSettingActivity", 2, "onGetPartakeLikeRankingList.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
-    }
-    if (paramBoolean1)
+    for (;;)
     {
-      LikeSettingActivity.a(this.a, this.a.d.a(), paramBoolean2);
-      this.a.a.b(paramBoolean2);
-      if (!paramBoolean2) {
-        this.a.b.setVisibility(8);
+      this.a.jdField_a_of_type_Amgg.notifyDataSetChanged();
+      for (;;)
+      {
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
+        {
+          audr.a(2131692469);
+        }
+        else
+        {
+          aucx.a(localFileManagerEntity).a(false, this.a.jdField_a_of_type_AndroidContentContext, new adpx(this, localFileManagerEntity));
+          break;
+          this.a.a(localFileManagerEntity);
+          break;
+          if (localFileManagerEntity.getCloudType() == 0)
+          {
+            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineFileSessionCenter().a(localFileManagerEntity.nSessionId);
+            break;
+          }
+          if (localFileManagerEntity.getCloudType() == 6)
+          {
+            ((ansr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(0, localFileManagerEntity.uniseq, false);
+            break;
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(localFileManagerEntity.nSessionId);
+          break;
+          if (NetworkUtil.isNetSupport(BaseApplication.getContext())) {
+            break label247;
+          }
+          audr.a(2131692469);
+        }
       }
+      label247:
+      boolean bool = localFileManagerEntity.isSend();
+      aucx.a(localFileManagerEntity).a(bool, this.a.jdField_a_of_type_AndroidContentContext, new adpy(this, localFileManagerEntity));
     }
-    else
-    {
-      return;
-    }
-    this.a.b.setVisibility(0);
-  }
-  
-  public void onSetCardSwitch(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("LikeSettingActivity", 2, "onSetCardSwitch.isSuccess=" + paramBoolean1 + ",uin=" + paramString + ",forNearPeople=" + paramBoolean2 + ",allowed=" + paramBoolean3);
-    }
-    if ((!this.a.app.getCurrentAccountUin().equals(paramString)) || (!paramBoolean2)) {}
-    while (paramBoolean1) {
-      return;
-    }
-    QQToast.a(this.a, 1, 2131718207, 0).b(this.a.getTitleBarHeight());
-    LikeSettingActivity.a(this.a, this.a.c.a(), paramBoolean3);
-  }
-  
-  public void onSetNotifyOnLikeRankingList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("LikeSettingActivity", 2, "onSetNotifyOnLikeRankingList.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
-    }
-    if (!paramBoolean1)
-    {
-      QQToast.a(this.a, 1, 2131718207, 0).b(this.a.getTitleBarHeight());
-      LikeSettingActivity.a(this.a, this.a.d.a(), this.a.a.a());
-      return;
-    }
-    this.a.a.a(paramBoolean2);
-  }
-  
-  public void onSetPartakeLikeRankingList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("LikeSettingActivity", 2, "onSetPartakeLikeRankingList.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
-    }
-    if (!paramBoolean1)
-    {
-      QQToast.a(this.a, 1, 2131718207, 0).b(this.a.getTitleBarHeight());
-      LikeSettingActivity.a(this.a, this.a.d.a(), this.a.a.c());
-      return;
-    }
-    this.a.a.b(paramBoolean2);
-    if (!paramBoolean2)
-    {
-      this.a.b.setVisibility(8);
-      return;
-    }
-    this.a.b.setVisibility(0);
   }
 }
 

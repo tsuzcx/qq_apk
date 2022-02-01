@@ -1,15 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1.1;
+import android.content.Context;
+import android.content.SharedPreferences;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class arzm
-  implements DialogInterface.OnClickListener
 {
-  public arzm(QfileLocalFileAppTabView.1.1 param1) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a(String paramString)
   {
-    paramDialogInterface.dismiss();
+    QLog.d("TencentDocUtils", 1, "WL_DEBUG reportClickEvent actionName = " + paramString);
+    bdla.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool = arzl.a(paramQQAppInterface.getApp(), paramQQAppInterface.getAccount());
+    if (!bool) {
+      ((anri)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).y();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TencentDocUtils", 1, "WL_DEBUG updateTencentDocUser isUser = " + bool);
+    }
+    return bool;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    BaseApplication localBaseApplication = paramQQAppInterface.getApp();
+    paramQQAppInterface = paramQQAppInterface.getCurrentUin();
+    paramBoolean = localBaseApplication.getSharedPreferences("call_tim_config_pre" + paramQQAppInterface, 0).getBoolean("call_tim_config_switch", false);
+    paramQQAppInterface = arot.a().a();
+    if (QLog.isColorLevel()) {
+      QLog.d("TencentDocUtils", 2, "WL_DEBUG showInQQSettingMe enable = " + paramBoolean + ", isUser = " + false + ", userConfigMeURL = " + paramQQAppInterface);
+    }
+    return (!paramBoolean) && (paramBoolean);
   }
 }
 

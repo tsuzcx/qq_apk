@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewParent;
-import bjse;
+import bldq;
 import com.tencent.widget.HorizontalListView;
 
 public class ImgsHorizontalListView

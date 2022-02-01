@@ -1,92 +1,35 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.qphone.base.util.QLog;
-
-class bgme
-  implements SensorEventListener
+public class bgme
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private float b;
-  private float c;
-  private float d;
-  
-  private void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.b = 0.0F;
-    this.c = 0.0F;
-    this.d = 0.0F;
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public void a()
-  {
-    bgma.b = 1;
-    bgma.a = true;
-  }
-  
-  public void b()
-  {
-    bgma.b = 3;
-    QLog.d("HealthStepCounterPlugin", 1, "shaking end");
-  }
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    float f1 = 0.0F;
-    float f2;
-    float f3;
-    float f4;
-    long l1;
-    long l2;
-    if (paramSensorEvent.sensor.getType() == 1)
-    {
-      f2 = paramSensorEvent.values[0];
-      f3 = paramSensorEvent.values[1];
-      f4 = paramSensorEvent.values[2];
-      l1 = System.currentTimeMillis();
-      l2 = l1 - this.jdField_a_of_type_Long;
-      if (l2 <= 5000L) {
-        break label66;
-      }
-      a(l1);
-    }
-    label66:
-    do
-    {
-      do
-      {
-        return;
-      } while (l2 <= 80L);
-      if ((this.jdField_a_of_type_Float != 0.0F) || (this.b != 0.0F) || (this.c != 0.0F)) {
-        f1 = Math.abs(f2 - this.jdField_a_of_type_Float) + Math.abs(f3 - this.b) + Math.abs(f4 - this.c);
-      }
-      this.d = (f1 + this.d);
-      if ((this.d > 180.0F) && (this.jdField_a_of_type_Int >= 3))
-      {
-        a();
-        a(l1);
-        return;
-      }
-      if (this.jdField_a_of_type_Int < 10)
-      {
-        this.jdField_a_of_type_Int += 1;
-        this.jdField_a_of_type_Float = f2;
-        this.b = f3;
-        this.c = f4;
-        this.jdField_a_of_type_Long = l1;
-        return;
-      }
-      a(l1);
-    } while (bgma.b >= 3);
-    b();
-  }
+  public static int A = -99;
+  public static int B = -98;
+  public static int C = -97;
+  public static int D = -36;
+  public static int a;
+  public static int b = 1;
+  public static int c = 2;
+  public static int d = 3;
+  public static int e = 1;
+  public static int f = 2;
+  public static int g = 3;
+  public static int h = 4;
+  public static int i = 5;
+  public static int j = 6;
+  public static int k = 7;
+  public static int l = 8;
+  public static int m = 101;
+  public static int n = 102;
+  public static int o = 103;
+  public static int p = 104;
+  public static int q = 105;
+  public static int r = 106;
+  public static int s = 107;
+  public static int t = 108;
+  public static int u = 109;
+  public static int v = 111;
+  public static int w = 112;
+  public static int x = 113;
+  public static int y = 114;
+  public static int z = 100;
 }
 
 

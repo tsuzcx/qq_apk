@@ -1,11 +1,10 @@
 package com.tencent.mobileqq.apollo.store.openbox;
 
-import amdn;
-import amip;
 import android.content.Context;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import anev;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
@@ -25,17 +24,17 @@ public class StolenCountView
   
   private void a()
   {
-    if (!new File(amip.k + "boxcard/apollo_stolen_count_1.png").exists()) {
-      amdn.a("apollo_stolen_count_1.png", null, amdn.a("apollo_stolen_count_1.png")).startDownload();
+    if (!new File("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/image_cache/boxcard/apollo_stolen_count_1.png").exists()) {
+      anev.a("apollo_stolen_count_1.png", null, anev.a("apollo_stolen_count_1.png")).startDownload();
     }
-    if (!new File(amip.k + "boxcard/apollo_stolen_count_2.png").exists()) {
-      amdn.a("apollo_stolen_count_2.png", null, amdn.a("apollo_stolen_count_2.png")).startDownload();
+    if (!new File("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/image_cache/boxcard/apollo_stolen_count_2.png").exists()) {
+      anev.a("apollo_stolen_count_2.png", null, anev.a("apollo_stolen_count_2.png")).startDownload();
     }
-    if (!new File(amip.k + "boxcard/apollo_stolen_count_3.png").exists()) {
-      amdn.a("apollo_stolen_count_3.png", null, amdn.a("apollo_stolen_count_3.png")).startDownload();
+    if (!new File("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/image_cache/boxcard/apollo_stolen_count_3.png").exists()) {
+      anev.a("apollo_stolen_count_3.png", null, anev.a("apollo_stolen_count_3.png")).startDownload();
     }
-    if (!new File(amip.k + "boxcard/apollo_stolen_count_4.png").exists()) {
-      amdn.a("apollo_stolen_count_4.png", null, amdn.a("apollo_stolen_count_4.png")).startDownload();
+    if (!new File("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/image_cache/boxcard/apollo_stolen_count_4.png").exists()) {
+      anev.a("apollo_stolen_count_4.png", null, anev.a("apollo_stolen_count_4.png")).startDownload();
     }
   }
   
@@ -47,7 +46,7 @@ public class StolenCountView
     int i = (int)((float)DeviceInfoUtil.getPortraitWidth() * 0.192F);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(j, i);
     localLayoutParams.addRule(13);
-    URLDrawable localURLDrawable = amdn.a("apollo_stolen_count_bg.png", null, amdn.a("apollo_stolen_count_bg.png"));
+    URLDrawable localURLDrawable = anev.a("apollo_stolen_count_bg.png", null, anev.a("apollo_stolen_count_bg.png"));
     localURLDrawable.startDownload();
     this.b.setImageDrawable(localURLDrawable);
     this.b.setAlpha(0);

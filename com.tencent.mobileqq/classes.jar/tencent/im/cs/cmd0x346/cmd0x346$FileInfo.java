@@ -14,6 +14,8 @@ public final class cmd0x346$FileInfo
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_10m_md5 = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBBytesField bytes_3sha = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBBytesField bytes_md5 = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_sha = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_uuid = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBStringField str_file_name = PBField.initString("");
@@ -34,7 +36,9 @@ public final class cmd0x346$FileInfo
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50, 58, 720, 802, 810, 880, 960, 968, 1040, 1122 }, new String[] { "uint64_uin", "uint32_danger_evel", "uint64_file_size", "uint32_life_time", "uint32_upload_time", "bytes_uuid", "str_file_name", "uint32_abs_file_type", "bytes_10m_md5", "bytes_sha", "uint32_client_type", "uint64_owner_uin", "uint64_peer_uin", "uint32_expire_time", "str_fileidcrc" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, "", Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), "" }, FileInfo.class);
+    ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
+    ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50, 58, 720, 802, 810, 880, 960, 968, 1040, 1122, 1130, 1138 }, new String[] { "uint64_uin", "uint32_danger_evel", "uint64_file_size", "uint32_life_time", "uint32_upload_time", "bytes_uuid", "str_file_name", "uint32_abs_file_type", "bytes_10m_md5", "bytes_sha", "uint32_client_type", "uint64_owner_uin", "uint64_peer_uin", "uint32_expire_time", "str_fileidcrc", "bytes_md5", "bytes_3sha" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, "", Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), "", localByteStringMicro4, localByteStringMicro5 }, FileInfo.class);
   }
 }
 

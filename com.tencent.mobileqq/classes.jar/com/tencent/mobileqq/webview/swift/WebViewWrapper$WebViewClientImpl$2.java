@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.webview.swift;
 
-import bgvo;
-import bgyb;
+import bigg;
+import biit;
 import com.tencent.qphone.base.util.QLog;
 
 public class WebViewWrapper$WebViewClientImpl$2
   implements Runnable
 {
-  public WebViewWrapper$WebViewClientImpl$2(bgvo parambgvo, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
+  public WebViewWrapper$WebViewClientImpl$2(bigg parambigg, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
   
   public void run()
   {
     boolean bool = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a(this.jdField_a_of_type_JavaLangString);
     if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewWrapper", 2, new Object[] { "post intercept:", Boolean.valueOf(bool), " ", bgyb.a(this.jdField_a_of_type_JavaLangString) });
+      QLog.d("WebLog_WebViewWrapper", 2, new Object[] { "post intercept:", Boolean.valueOf(bool), " ", biit.a(this.jdField_a_of_type_JavaLangString) });
     }
   }
 }

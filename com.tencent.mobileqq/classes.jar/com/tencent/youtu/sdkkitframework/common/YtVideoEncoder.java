@@ -30,7 +30,7 @@ public class YtVideoEncoder
   private boolean mAbort = false;
   private YtVideoEncoder.IYUVToVideoEncoderCallback mCallback;
   private ConcurrentLinkedQueue<YuvImage> mEncodeQueue = new ConcurrentLinkedQueue();
-  private Object mFrameSync = new Object();
+  private final Object mFrameSync = new Object();
   private int mGenerateIndex = 0;
   private boolean mNeedWork = false;
   private CountDownLatch mNewFrameLatch;
@@ -55,19 +55,16 @@ public class YtVideoEncoder
     }
     paramYuvImage = paramYuvImage.getYuvData();
     paramInt1 *= paramInt2;
-    paramInt2 = 0;
-    while (paramInt2 < paramInt1)
-    {
-      this.yuvnv12[paramInt2] = paramYuvImage[paramInt2];
-      paramInt2 += 1;
+    if (paramInt1 >= 0) {
+      System.arraycopy(paramYuvImage, 0, this.yuvnv12, 0, paramInt1);
     }
     int j = paramInt1 / 4 + paramInt1;
     paramInt2 = paramInt1;
     int i = paramInt1;
     while (i < paramInt1 * 3 / 2)
     {
-      this.yuvnv12[j] = paramYuvImage[(i + 1)];
-      this.yuvnv12[paramInt2] = paramYuvImage[i];
+      this.yuvnv12[j] = paramYuvImage[i];
+      this.yuvnv12[paramInt2] = paramYuvImage[(i + 1)];
       j += 1;
       paramInt2 += 1;
       i += 2;
@@ -82,11 +79,8 @@ public class YtVideoEncoder
     }
     paramYuvImage = paramYuvImage.getYuvData();
     paramInt2 = paramInt1 * paramInt2;
-    paramInt1 = 0;
-    while (paramInt1 < paramInt2)
-    {
-      this.yuvnv12[paramInt1] = paramYuvImage[paramInt1];
-      paramInt1 += 1;
+    if (paramInt2 >= 0) {
+      System.arraycopy(paramYuvImage, 0, this.yuvnv12, 0, paramInt2);
     }
     paramInt1 = paramInt2;
     while (paramInt1 < paramInt2 * 3 / 2)
@@ -134,38 +128,38 @@ public class YtVideoEncoder
         m = paramArrayOfInt[j];
         m = (paramArrayOfInt[j] & 0xFF0000) >> 16;
         i2 = (paramArrayOfInt[j] & 0xFF00) >> 8;
-        int i5 = (paramArrayOfInt[j] & 0xFF) >> 0;
+        int i5 = paramArrayOfInt[j] & 0xFF;
         i4 = (m * 66 + i2 * 129 + i5 * 25 + 128 >> 8) + 16;
         i3 = (m * -38 - i2 * 74 + i5 * 112 + 128 >> 8) + 128;
         i2 = (m * 112 - i2 * 94 - i5 * 18 + 128 >> 8) + 128;
         if (i4 < 0)
         {
           m = 0;
-          label171:
+          label169:
           paramArrayOfByte[i] = ((byte)m);
           if ((n % 2 != 0) || (j % 2 != 0)) {
-            break label331;
+            break label329;
           }
           i4 = k + 1;
           if (i3 >= 0) {
-            break label275;
+            break label273;
           }
           m = 0;
-          label206:
+          label204:
           paramArrayOfByte[k] = ((byte)m);
           if (i2 >= 0) {
-            break label298;
+            break label296;
           }
           k = 0;
-          label221:
+          label219:
           paramArrayOfByte[i4] = ((byte)k);
           k = i4 + 1;
         }
       }
     }
-    label275:
-    label298:
-    label331:
+    label273:
+    label296:
+    label329:
     for (;;)
     {
       i1 += 1;
@@ -174,24 +168,24 @@ public class YtVideoEncoder
       break label25;
       m = i4;
       if (i4 <= 255) {
-        break label171;
+        break label169;
       }
       m = 255;
-      break label171;
+      break label169;
       if (i3 > 255)
       {
         m = 255;
-        break label206;
+        break label204;
       }
       m = i3;
-      break label206;
+      break label204;
       if (i2 > 255)
       {
         k = 255;
-        break label221;
+        break label219;
       }
       k = i2;
-      break label221;
+      break label219;
       n += 1;
       break;
       return;
@@ -312,10 +306,10 @@ public class YtVideoEncoder
     }
     if ((this.mediaCodec == null) || (this.mediaMuxer == null))
     {
-      YtLogger.d(TAG, "Failed to abort encoding since it never started");
+      YtLogger.i(TAG, "Failed to abort encoding since it never started");
       return;
     }
-    YtLogger.d(TAG, "Aborting encoding");
+    YtLogger.i(TAG, "Aborting encoding");
     this.mNoMoreFrames = true;
     this.mAbort = true;
     this.mEncodeQueue = new ConcurrentLinkedQueue();
@@ -349,7 +343,7 @@ public class YtVideoEncoder
       try
       {
         this.mNewFrameLatch.await();
-        label85:
+        label86:
         ??? = (YuvImage)this.mEncodeQueue.poll();
         if (??? == null) {
           continue;
@@ -403,7 +397,7 @@ public class YtVideoEncoder
       }
       catch (InterruptedException localInterruptedException)
       {
-        break label85;
+        break label86;
       }
     }
   }
@@ -444,7 +438,7 @@ public class YtVideoEncoder
     }
   }
   
-  public void startEncoding(int paramInt1, int paramInt2, File paramFile)
+  public void startEncoding(int paramInt1, int paramInt2, File paramFile, int paramInt3, int paramInt4, int paramInt5)
   {
     if (!this.mNeedWork) {
       return;
@@ -483,10 +477,10 @@ public class YtVideoEncoder
         {
           this.mediaCodec = MediaCodec.createByCodecName(paramFile.getName());
           paramFile = MediaFormat.createVideoFormat("video/avc", mWidth, mHeight);
-          paramFile.setInteger("bitrate", 16000000);
-          paramFile.setInteger("frame-rate", 30);
+          paramFile.setInteger("bitrate", paramInt3);
+          paramFile.setInteger("frame-rate", paramInt4);
           paramFile.setInteger("color-format", this.colorFormat);
-          paramFile.setInteger("i-frame-interval", 1);
+          paramFile.setInteger("i-frame-interval", paramInt5);
           this.mediaCodec.configure(paramFile, null, null, 1);
           this.mediaCodec.start();
         }
@@ -498,7 +492,7 @@ public class YtVideoEncoder
         try
         {
           this.mediaMuxer = new MediaMuxer(localIOException, 0);
-          YtLogger.d(TAG, "Initialization complete. Starting encoder...");
+          YtLogger.i(TAG, "Initialization complete. Starting encoder...");
           return;
         }
         catch (IOException paramFile)
@@ -518,10 +512,10 @@ public class YtVideoEncoder
     }
     if ((this.mediaCodec == null) || (this.mediaMuxer == null))
     {
-      Log.d(TAG, "Failed to stop encoding since it never started");
+      Log.i(TAG, "Failed to stop encoding since it never started");
       return;
     }
-    YtLogger.d(TAG, "Stopping encoding");
+    YtLogger.i(TAG, "Stopping encoding");
     this.mNoMoreFrames = true;
     synchronized (this.mFrameSync)
     {

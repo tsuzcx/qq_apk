@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount;
 
-import oeg;
+import olx;
 
 public class SoftAdExpoStatManager$3
   implements Runnable
 {
-  public SoftAdExpoStatManager$3(oeg paramoeg, Runnable paramRunnable) {}
+  public SoftAdExpoStatManager$3(olx paramolx, Runnable paramRunnable) {}
   
   public void run()
   {

@@ -1,208 +1,129 @@
-import android.content.Context;
-import android.content.res.Resources;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.richmedia.capture.adapter.FilterProviderPagerAdapter;
-import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
-import com.tencent.mobileqq.richmedia.capture.view.CaptureCommonLoadingView;
-import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.AbsListView.LayoutParams;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.text.StringsKt;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class azzp
-  extends BaseAdapter
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilecard/bussiness/anonymous/jsp/AskAnonymouslyApiPlugin;", "Lcom/tencent/mobileqq/webview/swift/WebViewPlugin;", "()V", "handleJsRequest", "", "listener", "Lcom/tencent/mobileqq/webview/swift/JsBridgeListener;", "url", "", "pkgName", "method", "args", "", "(Lcom/tencent/mobileqq/webview/swift/JsBridgeListener;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)Z", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class azzp
+  extends WebViewPlugin
 {
-  int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  public String a;
-  List<FilterCategoryItem> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  boolean jdField_a_of_type_Boolean = true;
-  int b;
+  public static final azzq a = new azzq(null);
   
-  public azzp(Context paramContext, boolean paramBoolean)
+  public azzp()
   {
-    this.jdField_a_of_type_JavaLangString = "FilterProviderGridAdapter";
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.mPluginNameSpace = "askanonymously";
   }
   
-  public void a(List<FilterCategoryItem> paramList)
+  public boolean handleJsRequest(@Nullable JsBridgeListener paramJsBridgeListener, @Nullable String paramString1, @Nullable String paramString2, @Nullable String paramString3, @NotNull String... paramVarArgs)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    }
-    for (;;)
+    Object localObject3 = null;
+    paramJsBridgeListener = null;
+    Object localObject1 = null;
+    Object localObject2 = null;
+    Intrinsics.checkParameterIsNotNull(paramVarArgs, "args");
+    if (TextUtils.isEmpty((CharSequence)paramString1))
     {
-      notifyDataSetChanged();
-      if ((paramList != null) && (QLog.isColorLevel())) {
-        QLog.d("CapturePtvTemplateManager", 2, "FilterProviderGridAdapter setData size = " + paramList.size());
-      }
-      return;
-      Iterator localIterator = paramList.iterator();
-      while (localIterator.hasNext())
+      QLog.e("AskAnonymouslyApiPlugin", 1, "Call askanonymously jsapi error, url is empty");
+      return false;
+    }
+    int i;
+    if (StringsKt.equals(paramString2, "askanonymously", true))
+    {
+      if (StringsKt.equals("invite", paramString3, true))
       {
-        FilterCategoryItem localFilterCategoryItem = (FilterCategoryItem)localIterator.next();
-        if (!localFilterCategoryItem.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_JavaUtilList.add(localFilterCategoryItem);
+        if (QLog.isColorLevel()) {
+          QLog.i("AskAnonymouslyApiPlugin", 2, "Call method invite");
         }
-      }
-    }
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if (paramInt > this.jdField_a_of_type_JavaUtilList.size()) {
-      return null;
-    }
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if ((this.jdField_a_of_type_Int <= 0) && (paramViewGroup != null))
-    {
-      this.jdField_a_of_type_Int = paramViewGroup.getMeasuredWidth();
-      this.jdField_b_of_type_Int = ((int)((this.jdField_a_of_type_Int - FilterProviderPagerAdapter.jdField_b_of_type_Int * 3 - paramViewGroup.getPaddingLeft() - paramViewGroup.getPaddingRight()) / 4 + 0.5F));
-    }
-    View localView = paramView;
-    if (paramView == null) {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560994, paramViewGroup, false);
-    }
-    TextView localTextView = (TextView)localView.findViewById(2131366686);
-    ImageView localImageView3 = (ImageView)localView.findViewById(2131368631);
-    ImageView localImageView1 = (ImageView)localView.findViewById(2131368236);
-    ImageView localImageView2 = (ImageView)localView.findViewById(2131365168);
-    URLImageView localURLImageView = (URLImageView)localView.findViewById(2131362232);
-    CaptureCommonLoadingView localCaptureCommonLoadingView = (CaptureCommonLoadingView)localView.findViewById(2131366689);
-    FilterCategoryItem localFilterCategoryItem = (FilterCategoryItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    paramView = baah.a().a();
-    boolean bool = false;
-    if (paramView != null) {
-      bool = TextUtils.equals(paramView.jdField_a_of_type_JavaLangString, localFilterCategoryItem.jdField_a_of_type_JavaLangString);
-    }
-    if (!bool) {
-      if (((paramView == null) || (paramView.a())) && (localFilterCategoryItem.a())) {
-        bool = true;
-      }
-    }
-    for (;;)
-    {
-      localView.setTag(localFilterCategoryItem);
-      AbsListView.LayoutParams localLayoutParams = (AbsListView.LayoutParams)localView.getLayoutParams();
-      paramView = localLayoutParams;
-      if (localLayoutParams == null)
-      {
-        paramView = new AbsListView.LayoutParams(-1, -1);
-        localView.setLayoutParams(paramView);
-      }
-      paramView.height = this.jdField_b_of_type_Int;
-      if (localFilterCategoryItem.a())
-      {
-        localImageView1.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845846));
-        if (bool)
+        try
         {
-          localImageView3.setVisibility(0);
-          label300:
-          localImageView2.setVisibility(8);
-          localTextView.setText(amtj.a(2131703727));
-          localImageView1.setContentDescription(amtj.a(2131703730));
-          localTextView.setContentDescription(amtj.a(2131703731));
+          i = new JSONObject(paramVarArgs[0]).optInt("invite_type", 0);
+          if (i == 0)
+          {
+            paramString1 = azzv.a;
+            paramString2 = this.mRuntime;
+            paramJsBridgeListener = localObject2;
+            if (paramString2 != null) {
+              paramJsBridgeListener = paramString2.a();
+            }
+            paramString1.a(paramJsBridgeListener, false);
+          }
+          else if (i == 1)
+          {
+            paramString1 = azzv.a;
+            paramString2 = this.mRuntime;
+            paramJsBridgeListener = localObject3;
+            if (paramString2 != null) {
+              paramJsBridgeListener = paramString2.a();
+            }
+            paramString1.a(paramJsBridgeListener);
+          }
         }
-      }
-      for (;;)
-      {
-        EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-        return localView;
-        bool = false;
-        break;
-        localImageView3.setVisibility(8);
-        break label300;
-        if (bool)
+        catch (JSONException paramJsBridgeListener)
         {
-          localImageView3.setVisibility(0);
-          localTextView.setShadowLayer(0.0F, 0.0F, 0.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166961));
-          label402:
-          paramView = URLDrawable.URLDrawableOptions.obtain();
-          paramView.mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845842);
-          paramView.mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845842);
-          localCaptureCommonLoadingView.setMax(10000);
-          localCaptureCommonLoadingView.setVisibility(8);
-          paramView = URLDrawable.getDrawable(localFilterCategoryItem.d, URLDrawable.URLDrawableOptions.obtain());
-          paramView.startDownload();
-          localImageView1.setImageDrawable(paramView);
-          localTextView.setText(localFilterCategoryItem.jdField_b_of_type_JavaLangString);
-          localImageView1.setContentDescription(localFilterCategoryItem.jdField_b_of_type_JavaLangString);
-          localTextView.setContentDescription(localFilterCategoryItem.jdField_b_of_type_JavaLangString);
-          if (!localFilterCategoryItem.jdField_a_of_type_Boolean) {
-            break label678;
+          QLog.e("AskAnonymouslyApiPlugin", 2, paramJsBridgeListener.getMessage(), (Throwable)paramJsBridgeListener);
+        }
+        QLog.e("AskAnonymouslyApiPlugin", 2, "invite inviteType invalid: " + i);
+      }
+      else
+      {
+        if (StringsKt.equals("shareDetailToQZone", paramString3, true)) {
+          if (QLog.isColorLevel()) {
+            QLog.i("AskAnonymouslyApiPlugin", 2, "Call method invite");
           }
-          localImageView2.setVisibility(8);
-          if (!StringUtil.isEmpty(localFilterCategoryItem.j)) {
-            break label610;
-          }
-          localURLImageView.setVisibility(8);
         }
         for (;;)
         {
-          bcef.b(null, "dc00898", "", "", "0X800859E", "0X800859E", 2, 0, "", "", localFilterCategoryItem.jdField_a_of_type_JavaLangString, "");
-          break;
-          localImageView3.setVisibility(8);
-          localTextView.setShadowLayer(3.0F, 0.0F, 0.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166961));
-          break label402;
           try
           {
-            label610:
-            localURLImageView.setVisibility(0);
-            localURLImageView.setImageDrawable(URLDrawable.getDrawable(localFilterCategoryItem.j));
-            paramView = localURLImageView.getLayoutParams();
-            paramView.height = 42;
-            paramView.width = 42;
-            localURLImageView.setLayoutParams(paramView);
+            paramString3 = new JSONObject(paramVarArgs[0]);
+            paramString1 = paramString3.optString("jump_url");
+            paramString2 = paramString3.optString("image_url");
+            i = paramString3.optInt("share_type", 0);
+            if (i != 0) {
+              continue;
+            }
+            paramString3 = azzv.a;
+            paramVarArgs = this.mRuntime;
+            if (paramVarArgs != null) {
+              paramJsBridgeListener = paramVarArgs.a();
+            }
+            paramString3.a(paramJsBridgeListener, paramString2, paramString1);
           }
-          catch (Exception paramView)
+          catch (JSONException paramJsBridgeListener)
           {
-            QLog.e("PtvTemplateItemView", 1, "PtvTemplateItemView bindData mBadgeImg.setImageDrawable(URLDrawable.getDrawable(info.badgeurl)) catch an Exception.", paramView);
-            localURLImageView.setVisibility(8);
+            QLog.e("AskAnonymouslyApiPlugin", 2, paramJsBridgeListener.getMessage(), (Throwable)paramJsBridgeListener);
+            continue;
+            QLog.e("AskAnonymouslyApiPlugin", 2, "shareDetailToQZone shareType invalid: " + i);
+            continue;
           }
-        }
-        label678:
-        bool = baah.a().a(3, localFilterCategoryItem.jdField_b_of_type_Int, localFilterCategoryItem.jdField_a_of_type_JavaLangString);
-        if (bool)
-        {
-          localImageView2.setVisibility(0);
-          if (bool) {
-            localImageView2.setImageResource(2130845848);
+          QLog.e("AskAnonymouslyApiPlugin", 1, "Call askanonymously jsapi error, method not match");
+          return false;
+          if (i != 1) {
+            continue;
           }
-        }
-        else
-        {
-          localImageView2.setVisibility(8);
+          paramString3 = azzv.a;
+          paramVarArgs = this.mRuntime;
+          paramJsBridgeListener = localObject1;
+          if (paramVarArgs != null) {
+            paramJsBridgeListener = paramVarArgs.a();
+          }
+          paramString3.b(paramJsBridgeListener, paramString2, paramString1);
         }
       }
     }
+    else
+    {
+      QLog.e("AskAnonymouslyApiPlugin", 1, "Call askanonymously jsapi error, package not match");
+      return false;
+    }
+    return true;
   }
 }
 

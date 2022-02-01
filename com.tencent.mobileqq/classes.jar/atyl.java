@@ -1,16 +1,11 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.qphone.base.util.QLog;
-
-public class atyl
-  extends abwx
+class atyl
+  implements auey
 {
-  public atyl(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager, abww paramabww)
+  atyl(atyk paramatyk, int paramInt) {}
+  
+  public void a()
   {
-    super(paramQQAppInterface, paramProxyManager, paramabww);
-    if (QLog.isColorLevel()) {
-      QLog.d("TinyIdMsgProxy", 2, "TinyIdMsgProxy() called with: _app = [" + paramQQAppInterface + "], pm = [" + paramProxyManager + "], msgPool = [" + paramabww + "]");
-    }
+    atyk.a(this.jdField_a_of_type_Atyk, this.jdField_a_of_type_Int);
   }
 }
 

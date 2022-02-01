@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseVideoArticleInfo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
-public final class rco
-  implements Parcelable.Creator<BaseVideoArticleInfo>
+class rco
+  implements View.OnTouchListener
 {
-  public BaseVideoArticleInfo a(Parcel paramParcel)
-  {
-    return new BaseVideoArticleInfo(paramParcel);
-  }
+  rco(rck paramrck, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2) {}
   
-  public BaseVideoArticleInfo[] a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new BaseVideoArticleInfo[paramInt];
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
+      this.b.setDuplicateParentStateEnabled(true);
+    }
+    return false;
   }
 }
 

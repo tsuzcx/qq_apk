@@ -1,104 +1,50 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.sdk.CmShowRenderView.PlayActionConfig;
+import android.widget.ImageView;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
 public class ambn
+  implements SeekBar.OnSeekBarChangeListener
 {
-  private static final HashMap<String, Integer> a = new HashMap();
-  private static final HashMap<String, String> b = new HashMap();
+  public ambn(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public static int a(String paramString)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    Integer localInteger = (Integer)a.get(paramString);
-    if (localInteger != null)
+    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
+    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null) {
+      this.a.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    }
+    this.a.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "onStartTrackingTouch: progress = " + i);
+    }
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "onStopTrackingTouch: 当前位置为 = " + i);
+    }
+    if (this.a.jdField_a_of_type_Bhxu != null)
     {
-      QLog.i("CmShow_CmShowDataHelper", 1, "getCmShowModel uin:" + paramString + " model:" + localInteger);
-      return localInteger.intValue();
-    }
-    return 0;
-  }
-  
-  public static String a(CmShowRenderView.PlayActionConfig paramPlayActionConfig)
-  {
-    if (paramPlayActionConfig == null) {
-      return null;
-    }
-    Object localObject = (String)b.get(paramPlayActionConfig.a());
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      return null;
-    }
-    for (;;)
-    {
-      int i;
-      JSONObject localJSONObject;
-      String str4;
-      try
-      {
-        localObject = new JSONObject((String)localObject);
-        ((JSONObject)localObject).put("loop", paramPlayActionConfig.a);
-        ((JSONObject)localObject).put("needRestore", paramPlayActionConfig.jdField_b_of_type_Boolean);
-        ((JSONObject)localObject).put("taskId", paramPlayActionConfig.jdField_b_of_type_Int);
-        JSONArray localJSONArray = ((JSONObject)localObject).optJSONArray("sprites");
-        int j = localJSONArray.length();
-        i = 0;
-        if (i >= j) {
-          break label262;
-        }
-        localJSONObject = localJSONArray.optJSONObject(i);
-        String str1 = localJSONObject.optString("action");
-        String str2 = localJSONObject.optString("preAction");
-        String str3 = localJSONObject.optString("mainAction");
-        str4 = localJSONObject.optString("postAction");
-        if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str3)) || (TextUtils.isEmpty(str4))) {
-          break label269;
-        }
-        if (paramPlayActionConfig.c == 1) {
-          localJSONObject.put("action", str2);
-        } else if (paramPlayActionConfig.c == 2) {
-          localJSONObject.put("action", str3);
-        }
+      if (this.a.a() == 2) {
+        this.a.b();
       }
-      catch (Exception paramPlayActionConfig)
-      {
-        QLog.e("CmShow_CmShowDataHelper", 1, "getCacheActionJs e:" + paramPlayActionConfig);
-        return null;
-      }
-      if (paramPlayActionConfig.c == 3)
-      {
-        localJSONObject.put("action", str4);
-        break label271;
-        label262:
-        paramPlayActionConfig = ((JSONObject)localObject).toString();
-        return paramPlayActionConfig;
-        label269:
-        return null;
-      }
-      label271:
-      i += 1;
+      this.a.c.setImageResource(2130846111);
+      this.a.jdField_a_of_type_Bhxu.a();
+      this.a.jdField_a_of_type_Bhxu.a(i);
+      this.a.jdField_a_of_type_MqqOsMqqHandler.post(this.a.jdField_a_of_type_JavaLangRunnable);
+      this.a.b.setEnabled(false);
+      this.a.b.setTextColor(-2130706433);
     }
-  }
-  
-  public static void a()
-  {
-    b.clear();
-    a.clear();
-  }
-  
-  public static void a(CmShowRenderView.PlayActionConfig paramPlayActionConfig, String paramString)
-  {
-    if (paramPlayActionConfig == null) {
-      return;
-    }
-    b.put(paramPlayActionConfig.a(), paramString);
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    QLog.i("CmShow_CmShowDataHelper", 1, "setCmshowModel uin:" + paramString + " model:" + paramInt);
-    a.put(paramString, Integer.valueOf(paramInt));
+    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
 }
 

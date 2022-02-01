@@ -6,15 +6,15 @@ import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 import com.tencent.widget.HorizontalListView;
-import yca;
-import yfy;
-import ygn;
-import ygt;
+import yqt;
+import yur;
+import yvg;
+import yvm;
 
 @TargetApi(14)
 public class LogoIconListView
   extends HorizontalListView
-  implements ygt
+  implements yvm
 {
   private int a;
   
@@ -28,13 +28,13 @@ public class LogoIconListView
   
   public void b(int paramInt)
   {
-    ygn localygn = (ygn)super.getAdapter();
-    if ((paramInt < 0) || (paramInt >= localygn.getCount())) {
+    yvg localyvg = (yvg)super.getAdapter();
+    if ((paramInt < 0) || (paramInt >= localyvg.getCount())) {
       return;
     }
-    Object localObject = (yfy)localygn.getItem(paramInt);
+    Object localObject = (yur)localyvg.getItem(paramInt);
     int i;
-    if ((localObject != null) && ("LocationFacePackage".equals(((yfy)localObject).a())))
+    if ((localObject != null) && ("LocationFacePackage".equals(((yur)localObject).a())))
     {
       if (DoodleLayout.a)
       {
@@ -44,13 +44,13 @@ public class LogoIconListView
     }
     else
     {
-      localygn.a(paramInt);
-      i = localygn.a();
+      localyvg.a(paramInt);
+      i = localyvg.a();
       if ((this.a >= super.getFirstVisiblePosition()) && (this.a <= super.getLastVisiblePosition())) {
-        yca.a(super.getChild(this.a), 0.5F);
+        yqt.a(super.getChild(this.a), 0.5F);
       }
       if ((paramInt >= super.getFirstVisiblePosition()) && (paramInt <= super.getLastVisiblePosition())) {
-        yca.a(super.getChild(paramInt), 1.0F);
+        yqt.a(super.getChild(paramInt), 1.0F);
       }
       if (paramInt > super.getFirstVisiblePosition()) {
         break label179;

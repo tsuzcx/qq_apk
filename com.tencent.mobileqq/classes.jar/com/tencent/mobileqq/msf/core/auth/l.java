@@ -403,12 +403,13 @@ public class l
     n.a(paramToServiceMsg);
     WUserSigInfo localWUserSigInfo = n.b(paramToServiceMsg.getRequestSsoSeq());
     localWUserSigInfo._seqence = localp.f;
-    long l = paramToServiceMsg.getAppId();
+    long l1 = 16L;
+    long l2 = paramToServiceMsg.getAppId();
     Object localObject = (String)paramToServiceMsg.getAttribute("from_where", null);
     if ((localObject != null) && (((String)localObject).equalsIgnoreCase("ssoAccountAction")))
     {
       localWUserSigInfo._login_bitmap = 2;
-      l = 2L;
+      l1 = 1600001540L;
     }
     for (;;)
     {
@@ -418,7 +419,10 @@ public class l
       if (!str2.startsWith("86")) {
         localObject = "00" + str2 + str1;
       }
-      a(paramToServiceMsg, localp, e.GetStViaSMSVerifyLogin((String)localObject, 16L, l, 34869344, localWUserSigInfo), "wt_GetStViaSMSVerifyLogin");
+      if (QLog.isColorLevel()) {
+        QLog.d("MSF.C.WTLoginCenter", 2, "wt_GetStViaSMSVerifyLogin appId = " + l1 + " localappid = " + l2);
+      }
+      a(paramToServiceMsg, localp, e.GetStViaSMSVerifyLogin((String)localObject, l1, l2, 34869344, localWUserSigInfo), "wt_GetStViaSMSVerifyLogin");
       return;
       localWUserSigInfo._login_bitmap = 0;
     }
@@ -526,22 +530,21 @@ public class l
       if (paramToServiceMsg.getAttribute("resp_register_supersig") != null) {
         localWUserSigInfo._in_ksid = ((byte[])paramToServiceMsg.getAttribute("resp_register_supersig"));
       }
-      long l1 = paramToServiceMsg.getAppId();
+      long l2 = paramToServiceMsg.getAppId();
       if ((localObject2 != null) && (((String)localObject2).equalsIgnoreCase("ssoAccountAction")))
       {
         localWUserSigInfo._login_bitmap = 2;
-        l1 = 2L;
         localObject2 = paramToServiceMsg.getAttribute("to_login_uin_encrypt");
         if (localObject2 != null) {
           WtloginHelper.setExtraLoginTlvValue(localWUserSigInfo, 1346, (byte[])localObject2);
         }
-        long l2 = 16L;
+        long l1 = 16L;
         localObject2 = (String)paramToServiceMsg.getAttribute("process", null);
         if ((TextUtils.isEmpty((CharSequence)localObject2)) || (!((String)localObject2).equals("com.tencent.mobileqq:openSdk"))) {
-          break label399;
+          break label438;
         }
         m = ((Integer)paramToServiceMsg.getAttribute("puzzle_verify_code", Integer.valueOf(0))).intValue();
-        l2 = 1600001540L;
+        l1 = 1600001540L;
         QLog.d("MSF.C.WTLoginCenter", 1, "WTLoginCenter login --> CanWebVerify=" + m);
         e.SetCanWebVerify(m);
         localObject2 = new long[0];
@@ -551,7 +554,10 @@ public class l
           localObject2[0] = 1600000226L;
         }
         e.SetUinDeviceToken(true);
-        m = e.GetStWithPasswd(paramToServiceMsg.getUin(), l2, 34869344, l1, (long[])localObject2, true, (String)localObject1, localWUserSigInfo, new byte[0][]);
+        if (QLog.isColorLevel()) {
+          QLog.d("MSF.C.WTLoginCenter", 2, "login appId = " + l1 + " localappid = " + l2);
+        }
+        m = e.GetStWithPasswd(paramToServiceMsg.getUin(), l1, 34869344, l2, (long[])localObject2, true, (String)localObject1, localWUserSigInfo, new byte[0][]);
         a(paramToServiceMsg, (p)localObject3, m, "login");
         return m;
       }
@@ -566,7 +572,7 @@ public class l
         continue;
         localWUserSigInfo._login_bitmap = 0;
         continue;
-        label399:
+        label438:
         int m = 130;
       }
     }
@@ -1027,35 +1033,13 @@ public class l
     WUserSigInfo localWUserSigInfo = n.b(paramToServiceMsg.getRequestSsoSeq());
     localWUserSigInfo._seqence = localp.f;
     a(paramToServiceMsg, localWUserSigInfo);
-    String str = (String)paramToServiceMsg.getAttribute("from_where", null);
-    long l2 = paramToServiceMsg.getAppId();
-    boolean bool;
-    if ("com.tencent.mobileqq:openSdk".equals((String)paramToServiceMsg.getAttribute("process", null)))
-    {
-      bool = ((Boolean)paramToServiceMsg.getAttribute("dw_use_default_sub_appid", Boolean.valueOf(false))).booleanValue();
-      QLog.d("MSF.C.WTLoginCenter", 2, "wt_GetStWithoutPasswd forceTo537064747=" + bool);
+    long l1 = paramToServiceMsg.getAppId();
+    long l2 = ((Long)paramToServiceMsg.getAttribute("dwSrcAppid")).longValue();
+    long l3 = ((Long)paramToServiceMsg.getAttribute("dwDstAppid")).longValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("MSF.C.WTLoginCenter", 2, "wt_GetStWithoutPasswd dwSrcppid = " + l2 + " dwDstAppid = " + l3 + " localappid = " + l1);
     }
-    for (;;)
-    {
-      long l1 = l2;
-      if (!bool)
-      {
-        l1 = l2;
-        if (str != null)
-        {
-          l1 = l2;
-          if (str.equalsIgnoreCase("ssoAccountAction")) {
-            l1 = 2L;
-          }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.WTLoginCenter", 2, "wt_GetStWithoutPasswd localappid = " + l1);
-      }
-      a(paramToServiceMsg, localp, e.GetStWithoutPasswd(paramToServiceMsg.getUin(), ((Long)paramToServiceMsg.getAttribute("dwSrcAppid")).longValue(), ((Long)paramToServiceMsg.getAttribute("dwDstAppid")).longValue(), l1, 34869344, localWUserSigInfo), "wt_GetStWithoutPasswd");
-      return;
-      bool = false;
-    }
+    a(paramToServiceMsg, localp, e.GetStWithoutPasswd(paramToServiceMsg.getUin(), l2, l3, l1, 34869344, localWUserSigInfo), "wt_GetStWithoutPasswd");
   }
   
   public void r(ToServiceMsg paramToServiceMsg)
@@ -1134,7 +1118,14 @@ public class l
     n.a(paramToServiceMsg);
     WUserSigInfo localWUserSigInfo = n.b(paramToServiceMsg.getRequestSsoSeq());
     localWUserSigInfo._seqence = localp.f;
-    a(paramToServiceMsg, localp, e.GetA1WithA1(paramToServiceMsg.getUin(), ((Long)paramToServiceMsg.getAttribute("dwSrcAppid")).longValue(), ((Long)paramToServiceMsg.getAttribute("dwSubSrcAppid")).longValue(), (byte[])paramToServiceMsg.getAttribute("dstAppName"), ((Long)paramToServiceMsg.getAttribute("dwDstSsoVer")).longValue(), ((Long)paramToServiceMsg.getAttribute("dwDstAppid")).longValue(), ((Long)paramToServiceMsg.getAttribute("dwSubDstAppid")).longValue(), (byte[])paramToServiceMsg.getAttribute("dstAppVer"), (byte[])paramToServiceMsg.getAttribute("dstAppSign"), localWUserSigInfo, (WFastLoginInfo)paramToServiceMsg.getAttribute("fastLoginInfo")), "wt_GetA1WithA1");
+    long l1 = ((Long)paramToServiceMsg.getAttribute("dwSrcAppid")).longValue();
+    long l2 = ((Long)paramToServiceMsg.getAttribute("dwSubSrcAppid")).longValue();
+    long l3 = ((Long)paramToServiceMsg.getAttribute("dwDstAppid")).longValue();
+    long l4 = ((Long)paramToServiceMsg.getAttribute("dwSubDstAppid")).longValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("MSF.C.WTLoginCenter", 2, "wt_GetA1WithA1 dwSrcppid = " + l1 + " dwSubSrcAppid = " + l2 + " dwDstAppid = " + l3 + " dwSubDstAppid = " + l4);
+    }
+    a(paramToServiceMsg, localp, e.GetA1WithA1(paramToServiceMsg.getUin(), l1, l2, (byte[])paramToServiceMsg.getAttribute("dstAppName"), ((Long)paramToServiceMsg.getAttribute("dwDstSsoVer")).longValue(), l3, l4, (byte[])paramToServiceMsg.getAttribute("dstAppVer"), (byte[])paramToServiceMsg.getAttribute("dstAppSign"), localWUserSigInfo, (WFastLoginInfo)paramToServiceMsg.getAttribute("fastLoginInfo")), "wt_GetA1WithA1");
   }
   
   public void y(ToServiceMsg paramToServiceMsg)

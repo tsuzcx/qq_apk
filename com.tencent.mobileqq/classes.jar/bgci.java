@@ -1,9 +1,20 @@
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface bgci
+class bgci
+  implements View.OnClickListener
 {
-  public abstract boolean a(@ColorInt int paramInt, @NonNull float[] paramArrayOfFloat);
+  bgci(bgch parambgch) {}
+  
+  public void onClick(View paramView)
+  {
+    if (bgch.a(this.a).isShowing()) {
+      this.a.d();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

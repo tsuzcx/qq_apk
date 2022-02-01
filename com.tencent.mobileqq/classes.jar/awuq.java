@@ -1,26 +1,23 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import android.animation.ArgbEvaluator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.medalwall.MedalGuideView;
 
-class awuq
-  implements awpr
+public class awuq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  awuq(awun paramawun) {}
+  public awuq(MedalGuideView paramMedalGuideView) {}
   
-  public void a(Comments.Comment paramComment, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (awun.a(this.a) != null)
-    {
-      if (paramInt == 0)
-      {
-        awun.a(this.a).b(paramComment);
-        awun.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131695856));
-        bcef.b(null, "dc02676", "grp_lbs", "", "comment", "delete_comment", 0, 0, "", "", "", "");
-      }
+    float f = ((Float)paramValueAnimator.getAnimatedValue("alpha")).floatValue();
+    MedalGuideView.a(this.a, f);
+    int i = ((Integer)this.a.jdField_a_of_type_AndroidAnimationArgbEvaluator.evaluate(f, Integer.valueOf(0), Integer.valueOf(this.a.jdField_a_of_type_Int))).intValue();
+    this.a.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(i);
+    if (paramValueAnimator.getAnimatedFraction() >= 1.0F) {
+      paramValueAnimator.removeAllUpdateListeners();
     }
-    else {
-      return;
-    }
-    awun.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131695855));
   }
 }
 

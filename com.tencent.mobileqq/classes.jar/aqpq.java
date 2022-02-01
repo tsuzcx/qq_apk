@@ -1,28 +1,12 @@
-import android.support.v4.util.LruCache;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class aqpq
-  extends LruCache<String, T>
+  implements View.OnClickListener
 {
-  aqpq(aqpp paramaqpp, int paramInt)
-  {
-    super(paramInt);
-  }
+  aqpq(aqpp paramaqpp) {}
   
-  protected int a(String paramString, T paramT)
-  {
-    int i;
-    if (paramT == null) {
-      i = 0;
-    }
-    int j;
-    do
-    {
-      return i;
-      j = aqpp.a(this.a, paramT);
-      i = j;
-    } while (j != 0);
-    return this.a.a(paramT);
-  }
+  public void onClick(View paramView) {}
 }
 
 

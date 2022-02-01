@@ -1,102 +1,66 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
+import NS_MOBILE_EXTRA.mobile_get_urlinfo_rsp;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import tencent.im.msg.im_msg_body.RichText;
+import cooperation.qzone.util.ProtocolUtils;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class awco
-  extends bbrt
+public class awco
+  extends MSFServlet
 {
-  awco(awcm paramawcm, ArrayList paramArrayList, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, String paramString, int paramInt1, HashMap paramHashMap, int paramInt2) {}
-  
-  public void a(int paramInt, ArrayList<bbrl> paramArrayList)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    int i;
-    int k;
-    int j;
-    MessageRecord localMessageRecord;
-    if ((paramInt == 0) && (paramArrayList != null) && (paramArrayList.size() > 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiMsg_TAG", 2, "onMultiForwardVideoUploadResult success[" + paramArrayList.size() + "]");
-      }
-      i = 0;
-      k = 0;
-      paramInt = 0;
-      j = paramInt;
-      if (k >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
-        break label278;
-      }
-      localMessageRecord = (MessageRecord)this.jdField_a_of_type_JavaUtilArrayList.get(k);
-      if (!(localMessageRecord instanceof MessageForShortVideo)) {
-        break label363;
-      }
-      if (i >= paramArrayList.size())
-      {
-        QLog.e("MultiMsg_TAG", 1, "MultiForwardVideo: error index!");
-        j = i;
-        i = paramInt;
-        paramInt = j;
-      }
+    Object localObject1 = paramFromServiceMsg.getServiceCmd();
+    if (QLog.isColorLevel()) {
+      QLog.d("WebShareServlet", 2, "onReceive, cmd=" + (String)localObject1);
     }
-    for (;;)
+    if ("SQQzoneSvc.getUrlInfo".equals(localObject1))
     {
-      k += 1;
-      j = i;
-      i = paramInt;
-      paramInt = j;
-      break;
-      bbrl localbbrl = (bbrl)paramArrayList.get(i);
-      j = paramInt;
-      if (localbbrl != null)
+      Object localObject2 = paramFromServiceMsg.getWupBuffer();
+      localObject1 = new Bundle();
+      localObject2 = ProtocolUtils.decode((byte[])localObject2, "getUrlInfo");
+      if ((paramFromServiceMsg.isSuccess()) && ((localObject2 instanceof mobile_get_urlinfo_rsp)))
       {
-        if ((localbbrl.jdField_a_of_type_Int != 0) || (localbbrl.jdField_a_of_type_JavaLangObject == null) || (!(localbbrl.jdField_a_of_type_JavaLangObject instanceof im_msg_body.RichText))) {
-          break label213;
+        localObject2 = (mobile_get_urlinfo_rsp)localObject2;
+        if (QLog.isColorLevel()) {
+          QLog.d("WebShareServlet", 2, "onReceive, mobile_get_urlinfo_rsp, ret=" + ((mobile_get_urlinfo_rsp)localObject2).ret + ", title=" + ((mobile_get_urlinfo_rsp)localObject2).title + ", summary=" + ((mobile_get_urlinfo_rsp)localObject2).summary + ", images=" + ((mobile_get_urlinfo_rsp)localObject2).images);
         }
-        ((MessageForShortVideo)localMessageRecord).richText = ((im_msg_body.RichText)localbbrl.jdField_a_of_type_JavaLangObject);
-        j = paramInt;
+        ((Bundle)localObject1).putInt("extra_ret", ((mobile_get_urlinfo_rsp)localObject2).ret);
+        ((Bundle)localObject1).putString("extra_title", ((mobile_get_urlinfo_rsp)localObject2).title);
+        ((Bundle)localObject1).putString("extra_summary", ((mobile_get_urlinfo_rsp)localObject2).summary);
+        ((Bundle)localObject1).putStringArrayList("extra_images", ((mobile_get_urlinfo_rsp)localObject2).images);
       }
-      for (;;)
-      {
-        paramInt = i + 1;
-        i = j;
-        break;
-        label213:
-        j = paramInt;
-        if (localbbrl.jdField_a_of_type_Int == -1)
-        {
-          j = paramInt;
-          if (localbbrl.jdField_a_of_type_Aydp != null)
-          {
-            j = paramInt;
-            if ("cancel".equals(localbbrl.jdField_a_of_type_Aydp.b)) {
-              j = 1;
-            }
-          }
-        }
-      }
+      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), (Bundle)localObject1, null);
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    String str = paramIntent.getStringExtra("extra_cmd");
+    if (QLog.isColorLevel()) {
+      QLog.d("WebShareServlet", 2, "onSend, cmd=" + str);
+    }
+    if ("SQQzoneSvc.getUrlInfo".equals(str))
+    {
+      paramIntent = paramIntent.getStringExtra("extra_url");
       if (QLog.isColorLevel()) {
-        QLog.d("MultiMsg_TAG", 2, "onMultiForwardVideoUploadResult failed!");
+        QLog.d("WebShareServlet", 2, "onSend, CMD_GET_URL_INFO, url=" + paramIntent);
       }
-      j = 0;
-      label278:
-      if (j != 0) {
-        awcm.a(this.jdField_a_of_type_Awcm, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      if (TextUtils.isEmpty(paramIntent)) {
+        break label116;
       }
-      do
-      {
-        return;
-        awcm.a(this.jdField_a_of_type_Awcm, 2);
-      } while (awcm.c(this.jdField_a_of_type_Awcm) != 0);
-      awcm.a(this.jdField_a_of_type_Awcm, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_JavaUtilArrayList, false, this.b);
+      paramIntent = new awal(paramIntent).encode();
+      paramPacket.setSSOCommand("SQQzoneSvc.getUrlInfo");
+      paramPacket.putSendData(paramIntent);
+    }
+    label116:
+    while (!QLog.isColorLevel()) {
       return;
-      label363:
-      j = paramInt;
-      paramInt = i;
-      i = j;
     }
+    QLog.e("WebShareServlet", 2, "onSend, url is null!!!");
   }
 }
 

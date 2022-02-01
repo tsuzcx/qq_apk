@@ -14,13 +14,13 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
-import bcef;
+import bdla;
 import com.tencent.av.VideoController;
 import com.tencent.av.ui.AVActivity;
 import com.tencent.av.ui.DoubleVideoCtrlUI;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import lez;
+import lfe;
 
 public class ChildLockSign
   extends View
@@ -65,13 +65,13 @@ public class ChildLockSign
   
   private void a(AttributeSet paramAttributeSet, int paramInt)
   {
-    setId(2131373267);
+    setId(2131373480);
     paramAttributeSet = getResources();
     this.jdField_a_of_type_Boolean = true;
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130842096);
-      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130842097);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130842110);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130842111);
       if (this.jdField_a_of_type_Boolean) {}
       for (this.c = this.jdField_a_of_type_AndroidGraphicsBitmap;; this.c = this.jdField_b_of_type_AndroidGraphicsBitmap)
       {
@@ -114,7 +114,7 @@ public class ChildLockSign
       {
         paramMessage.a().y = true;
         ((DoubleVideoCtrlUI)localObject).d(true);
-        bcef.b(null, "CliOper", "", "", "0X80061F7", "0X80061F7", 0, 0, "", "", "", "");
+        bdla.b(null, "CliOper", "", "", "0X80061F7", "0X80061F7", 0, 0, "", "", "", "");
       }
       for (;;)
       {
@@ -122,7 +122,7 @@ public class ChildLockSign
         return false;
         paramMessage.a().y = false;
         ((DoubleVideoCtrlUI)localObject).s();
-        bcef.b(null, "CliOper", "", "", "0X80061F9", "0X80061F9", 0, 0, "", "", "", "");
+        bdla.b(null, "CliOper", "", "", "0X80061F9", "0X80061F9", 0, 0, "", "", "", "");
       }
     }
     catch (Exception paramMessage)

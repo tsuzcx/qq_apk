@@ -1,83 +1,75 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.support.annotation.NonNull;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.ArrayList;
+import java.util.List;
 
 public class alft
-  implements MediaPlayer.OnPreparedListener
 {
-  String jdField_a_of_type_JavaLangString;
-  JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  boolean jdField_a_of_type_Boolean;
+  public static blek a;
+  public static blek b = new blek(2131364737, BaseApplicationImpl.getContext().getString(2131719232), BaseApplicationImpl.getContext().getString(2131719232), 2130844279);
+  public static blek c = new blek(2131364734, BaseApplicationImpl.getContext().getString(2131719230), BaseApplicationImpl.getContext().getString(2131719230), 2130844278);
+  public Activity a;
+  private bleh jdField_a_of_type_Bleh;
+  private blel jdField_a_of_type_Blel;
+  private blem jdField_a_of_type_Blem;
+  RedTouch jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch = null;
+  private List<blek> jdField_a_of_type_JavaUtilList;
   
-  public alft(alfo paramalfo, JSONObject paramJSONObject, String paramString, boolean paramBoolean)
+  static
   {
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    jdField_a_of_type_Blek = new blek(2131364736, BaseApplicationImpl.getContext().getString(2131719231), BaseApplicationImpl.getContext().getString(2131719231), 2130844280);
+  }
+  
+  public alft(Activity paramActivity, List<blek> paramList, blel paramblel)
+  {
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Blel = paramblel;
+  }
+  
+  @NonNull
+  private boolean a()
+  {
+    return (this.jdField_a_of_type_Bleh != null) && (this.jdField_a_of_type_Bleh.isShowing());
+  }
+  
+  private void b()
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    {
+      int i = 0;
+      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      {
+        localArrayList.add(this.jdField_a_of_type_JavaUtilList.get(i));
+        i += 1;
+      }
+    }
+    this.jdField_a_of_type_Bleh = bleh.a(this.jdField_a_of_type_AndroidAppActivity, localArrayList, this.jdField_a_of_type_Blel, this.jdField_a_of_type_Blem);
   }
   
   public void a()
   {
-    try
-    {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("code", 2);
-      this.jdField_a_of_type_OrgJsonJSONObject.put("errorMessage", "can't play");
-      this.jdField_a_of_type_Alfo.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
-      return;
-    }
-    catch (Exception localException1)
-    {
-      alfo.a(this.jdField_a_of_type_Alfo, "-->handleJsRequest exception:" + localException1.toString());
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("code", 2);
-        localJSONObject.put("errorMessage", "exception");
-        this.jdField_a_of_type_Alfo.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-        return;
-      }
-      catch (Exception localException2)
-      {
-        localException2.printStackTrace();
-      }
+    if (a()) {
+      this.jdField_a_of_type_Bleh.dismiss();
     }
   }
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void a(View paramView, int paramInt1, int paramInt2)
   {
-    if (alfo.a(this.jdField_a_of_type_Alfo).a()) {}
-    try
-    {
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        alfo.a(this.jdField_a_of_type_Alfo, "-->play failed");
-        this.jdField_a_of_type_OrgJsonJSONObject.put("code", 2);
-        this.jdField_a_of_type_OrgJsonJSONObject.put("errorMessage", "can't play");
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_Alfo.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
-        return;
-        this.jdField_a_of_type_OrgJsonJSONObject.put("code", 0);
-      }
-      return;
+    a(paramView, paramInt1, paramInt2, -1);
+  }
+  
+  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.jdField_a_of_type_Bleh == null) {
+      b();
     }
-    catch (Exception paramMediaPlayer)
-    {
-      alfo.a(this.jdField_a_of_type_Alfo, "-->handleJsRequest exception:" + paramMediaPlayer.toString());
-      try
-      {
-        paramMediaPlayer = new JSONObject();
-        paramMediaPlayer.put("code", 2);
-        paramMediaPlayer.put("errorMessage", "exception");
-        this.jdField_a_of_type_Alfo.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramMediaPlayer.toString() });
-        return;
-      }
-      catch (Exception paramMediaPlayer)
-      {
-        paramMediaPlayer.printStackTrace();
-      }
-    }
+    this.jdField_a_of_type_Bleh.showAsDropDown(paramView, paramInt1, paramInt2);
   }
 }
 

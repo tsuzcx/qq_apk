@@ -1,16 +1,12 @@
-import android.graphics.Bitmap;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
 
 public abstract interface bnjz
 {
-  public abstract int a();
+  public abstract void a(MetaMaterial paramMetaMaterial);
   
-  public abstract void a();
+  public abstract void a(MetaMaterial paramMetaMaterial, int paramInt);
   
-  public abstract void a(Bitmap paramBitmap);
-  
-  public abstract void a(bnka parambnka);
-  
-  public abstract void a(Runnable paramRunnable);
+  public abstract void b(MetaMaterial paramMetaMaterial);
 }
 
 

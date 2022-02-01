@@ -1,107 +1,82 @@
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
+
 public class bcge
-  extends bcgb
+  extends bcfs
 {
-  public double a;
-  public int a;
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "";
-  public String k = "";
-  public String l = "";
-  public String m = "";
-  public String n = "";
-  public String o = "";
-  public String p = "";
-  public String q = "";
-  public String r = "";
-  public String s = "";
-  public String t = "";
-  public String u = "";
-  public String v = "";
-  public String w = "";
-  public String x = "";
+  public static final String a;
+  public List<bcdk> a;
+  public String b;
+  public String j;
+  public String k;
   
-  public bcge()
+  static
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.b = "";
-    this.c = "";
-    this.d = "";
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_Double = 0.0D;
+    jdField_a_of_type_JavaLangString = bcge.class.getSimpleName();
   }
   
-  public String a(int paramInt)
+  public bcge(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder(64);
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append("|");
-    localStringBuilder.append(this.b).append("|");
-    localStringBuilder.append(this.c).append("|");
-    localStringBuilder.append(this.e).append("|");
-    localStringBuilder.append(this.d).append("|");
-    localStringBuilder.append(this.f).append("|");
-    localStringBuilder.append(this.g).append("|");
-    if (paramInt == 0) {
-      localStringBuilder.append("${count_unknown}").append("|");
-    }
-    for (;;)
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public bcge(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public void a(String paramString)
+  {
+    try
     {
-      localStringBuilder.append(this.jdField_a_of_type_Double).append("|");
-      localStringBuilder.append(this.h).append("|");
-      localStringBuilder.append(this.i).append("|");
-      localStringBuilder.append(this.j).append("|");
-      localStringBuilder.append(this.k).append("|");
-      localStringBuilder.append(this.l).append("|");
-      localStringBuilder.append(this.m).append("|");
-      localStringBuilder.append(this.n).append("|");
-      localStringBuilder.append(this.o).append("|");
-      localStringBuilder.append(this.p).append("|");
-      localStringBuilder.append(this.q).append("|");
-      localStringBuilder.append(this.r).append("|");
-      localStringBuilder.append(this.s).append("|");
-      localStringBuilder.append(this.t).append("|");
-      localStringBuilder.append(this.u).append("|");
-      localStringBuilder.append(this.v).append("|");
-      localStringBuilder.append(this.w).append("|");
-      localStringBuilder.append(this.x).append("|");
-      return localStringBuilder.toString();
-      localStringBuilder.append(this.jdField_a_of_type_Int).append("|");
+      paramString = new JSONObject(paramString);
+      this.b = paramString.optString("askIcon");
+      this.j = paramString.optString("headLine");
+      this.k = paramString.optString("answerNumText");
+      paramString = paramString.optJSONArray("answers");
+      if (paramString != null)
+      {
+        this.jdField_a_of_type_JavaUtilList = new ArrayList(paramString.length());
+        int i = 0;
+        while (i < paramString.length())
+        {
+          Object localObject2 = paramString.optJSONObject(i);
+          Object localObject1 = ((JSONObject)localObject2).optString("leftIcon");
+          String str1 = ((JSONObject)localObject2).optString("userNameText");
+          String str2 = ((JSONObject)localObject2).optString("praiseText");
+          String str3 = ((JSONObject)localObject2).optString("answerText");
+          int n = ((JSONObject)localObject2).optInt("imageTotalCount");
+          localObject2 = ((JSONObject)localObject2).optJSONArray("imageList");
+          ArrayList localArrayList = new ArrayList();
+          if (localObject2 != null)
+          {
+            int m = 0;
+            while (m < ((JSONArray)localObject2).length())
+            {
+              JSONObject localJSONObject = ((JSONArray)localObject2).optJSONObject(m);
+              localArrayList.add(new bcfl(localJSONObject.optString("url"), localJSONObject.optInt("type")));
+              m += 1;
+            }
+          }
+          localObject1 = new bcdk((String)localObject1, str1, str2, str3, n, localArrayList);
+          this.jdField_a_of_type_JavaUtilList.add(localObject1);
+          i += 1;
+        }
+      }
+      return;
     }
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer(64);
-    localStringBuffer.append(this.jdField_a_of_type_JavaLangString).append("|");
-    localStringBuffer.append(this.b).append("|");
-    localStringBuffer.append(this.c).append("|");
-    localStringBuffer.append(this.e).append("|");
-    localStringBuffer.append(this.d).append("|");
-    localStringBuffer.append(this.f).append("|");
-    localStringBuffer.append(this.g).append("|");
-    localStringBuffer.append(this.jdField_a_of_type_Int).append("|");
-    localStringBuffer.append(this.jdField_a_of_type_Double).append("|");
-    localStringBuffer.append(this.h).append("|");
-    localStringBuffer.append(this.i).append("|");
-    localStringBuffer.append(this.j).append("|");
-    localStringBuffer.append(this.k).append("|");
-    localStringBuffer.append(this.l).append("|");
-    localStringBuffer.append(this.m).append("|");
-    localStringBuffer.append(this.n).append("|");
-    localStringBuffer.append(this.o).append("|");
-    localStringBuffer.append(this.p).append("|");
-    localStringBuffer.append(this.q).append("|");
-    localStringBuffer.append(this.r).append("|");
-    localStringBuffer.append(this.s).append("|");
-    localStringBuffer.append(this.t).append("|");
-    localStringBuffer.append(this.u).append("|");
-    localStringBuffer.append(this.v).append("|");
-    localStringBuffer.append(this.w).append("|");
-    localStringBuffer.append(this.x).append("|");
-    return localStringBuffer.toString();
+    catch (JSONException paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(paramString));
+      }
+    }
   }
 }
 

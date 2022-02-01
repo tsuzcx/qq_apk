@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.photo;
 
 import NS_MOBILE_OPERATION.PicInfo;
-import ajov;
-import ajow;
-import ajox;
-import ajoy;
+import akkj;
+import akkk;
+import akkl;
+import akkm;
 import android.content.Intent;
 import android.graphics.LinearGradient;
 import android.graphics.Shader.TileMode;
@@ -30,14 +30,14 @@ public class QzonePhotoPreviewActivity
   extends PublicBaseFragment
 {
   public int a;
-  protected ajoy a;
+  protected akkm a;
   protected TextView a;
   public ListView a;
   protected LocalPhotoLinearGradientView a;
   public ArrayList<String> a;
   protected HashMap<String, PicInfo> a;
   private boolean a;
-  public ArrayList<ajox> b;
+  public ArrayList<akkl> b;
   protected HashMap<String, LocalMediaInfo> b;
   
   public QzonePhotoPreviewActivity()
@@ -52,15 +52,15 @@ public class QzonePhotoPreviewActivity
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_CooperationQzoneWidgetLocalPhotoLinearGradientView = ((LocalPhotoLinearGradientView)paramView.findViewById(2131375775));
+    this.jdField_a_of_type_CooperationQzoneWidgetLocalPhotoLinearGradientView = ((LocalPhotoLinearGradientView)paramView.findViewById(2131376017));
     LinearGradient localLinearGradient = new LinearGradient(0.0F, ViewUtils.dip2px(79.0F), 0.0F, 0.0F, -14869219, 0, Shader.TileMode.CLAMP);
     this.jdField_a_of_type_CooperationQzoneWidgetLocalPhotoLinearGradientView.setShader(localLinearGradient);
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramView.findViewById(2131375776));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375774));
-    this.jdField_a_of_type_ComTencentWidgetListView.setOnItemClickListener(new ajov(this));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new ajow(this));
-    this.jdField_a_of_type_Ajoy = new ajoy(this, getActivity());
-    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Ajoy);
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramView.findViewById(2131376018));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376016));
+    this.jdField_a_of_type_ComTencentWidgetListView.setOnItemClickListener(new akkj(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new akkk(this));
+    this.jdField_a_of_type_Akkm = new akkm(this, getActivity());
+    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Akkm);
   }
   
   private void b()
@@ -84,7 +84,7 @@ public class QzonePhotoPreviewActivity
       {
         localObject = (PicInfo)this.jdField_a_of_type_JavaUtilHashMap.get(this.jdField_a_of_type_JavaUtilArrayList.get(i));
         if ((localObject != null) && (((PicInfo)localObject).picwidth > 0)) {
-          this.jdField_b_of_type_JavaUtilArrayList.add(new ajox(this, (String)this.jdField_a_of_type_JavaUtilArrayList.get(i), (float)(((PicInfo)localObject).picheight * 1.0D / ((PicInfo)localObject).picwidth)));
+          this.jdField_b_of_type_JavaUtilArrayList.add(new akkl(this, (String)this.jdField_a_of_type_JavaUtilArrayList.get(i), (float)(((PicInfo)localObject).picheight * 1.0D / ((PicInfo)localObject).picwidth)));
         }
       }
       int j;
@@ -98,7 +98,7 @@ public class QzonePhotoPreviewActivity
       }
       for (int k = ((LocalMediaInfo)localObject).mediaHeight;; k = ((LocalMediaInfo)localObject).mediaWidth)
       {
-        this.jdField_b_of_type_JavaUtilArrayList.add(new ajox(this, (String)this.jdField_a_of_type_JavaUtilArrayList.get(i), (float)(j * 1.0D / k)));
+        this.jdField_b_of_type_JavaUtilArrayList.add(new akkl(this, (String)this.jdField_a_of_type_JavaUtilArrayList.get(i), (float)(j * 1.0D / k)));
         i += 1;
         break;
         label256:
@@ -138,7 +138,7 @@ public class QzonePhotoPreviewActivity
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131562416, null);
+    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131562487, null);
     getActivity().getWindow().addFlags(1024);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;

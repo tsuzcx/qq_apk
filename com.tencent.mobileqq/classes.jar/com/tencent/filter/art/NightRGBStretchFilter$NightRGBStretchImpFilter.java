@@ -16,12 +16,6 @@ public class NightRGBStretchFilter$NightRGBStretchImpFilter
     super(BaseFilter.getFragmentShader(88));
   }
   
-  public void ClearGLSL()
-  {
-    RendererUtils.clearTexture(this.paramTEXTRUEID);
-    super.ClearGLSL();
-  }
-  
   public void applyFilterChain(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
     this.paramTEXTRUEID = RendererUtils.createTexture();
@@ -119,6 +113,12 @@ public class NightRGBStretchFilter$NightRGBStretchImpFilter
       i = 0;
       paramInt3 = paramInt1;
     }
+  }
+  
+  public void clearGLSL()
+  {
+    RendererUtils.clearTexture(this.paramTEXTRUEID);
+    super.clearGLSL();
   }
   
   public boolean renderTexture(int paramInt1, int paramInt2, int paramInt3)

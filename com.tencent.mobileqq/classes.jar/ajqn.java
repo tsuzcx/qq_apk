@@ -1,119 +1,80 @@
-import com.tencent.mobileqq.activity.photo.album.AlbumListAdapter;
-import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
-import com.tencent.mobileqq.activity.photo.album.NewAlbumListAdapter.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.QQAlbumInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.os.AsyncTask;
+import android.view.View;
+import com.tencent.mobileqq.activity.fling.ScreenCapture;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.lang.ref.WeakReference;
 
 public class ajqn
-  extends AlbumListAdapter
+  extends AsyncTask<String, Void, Boolean>
 {
-  long jdField_a_of_type_Long;
-  private QQAlbumInfo jdField_a_of_type_ComTencentMobileqqDataQQAlbumInfo;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public ajqn(AlbumListFragment paramAlbumListFragment)
+  public ajqn(View paramView)
   {
-    super(paramAlbumListFragment);
+    if (paramView != null)
+    {
+      Context localContext = paramView.getContext();
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+      paramView.setDrawingCacheEnabled(true);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramView.getDrawingCache();
+      ScreenCapture.setSnapFile(localContext, false);
+    }
   }
   
-  private static void c(ajqo paramajqo, String paramString, QQAlbumInfo paramQQAlbumInfo)
+  protected Boolean a(String... paramVarArgs)
   {
-    String str = paramQQAlbumInfo.name;
-    if (paramString.contains("/qq_collection/"))
-    {
-      paramajqo.f += paramQQAlbumInfo.mMediaFileCount;
-      return;
+    Boolean localBoolean = Boolean.FALSE;
+    if (isCancelled()) {}
+    while ((this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      return localBoolean;
     }
-    if ((str.equals("qq_images")) || (paramString.contains("/mobileqq/photo")) || (paramString.contains("/mobileqq/diskcache")))
-    {
-      paramajqo.g += paramQQAlbumInfo.mMediaFileCount;
-      return;
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    paramVarArgs = new File(paramVarArgs[0]);
+    File localFile = paramVarArgs.getParentFile();
+    if (!localFile.exists()) {
+      localFile.mkdirs();
     }
-    if (str.equals("qqfile_recv"))
+    try
     {
-      paramajqo.h += paramQQAlbumInfo.mMediaFileCount;
-      return;
+      paramVarArgs = new FileOutputStream(paramVarArgs);
+      localBitmap.compress(Bitmap.CompressFormat.JPEG, 90, paramVarArgs);
+      paramVarArgs.flush();
+      paramVarArgs.close();
+      paramVarArgs = Boolean.TRUE;
+      return paramVarArgs;
     }
-    if (str.equals("qq_favorite"))
+    catch (IOException paramVarArgs)
     {
-      paramajqo.j += paramQQAlbumInfo.mMediaFileCount;
-      return;
+      paramVarArgs.printStackTrace();
     }
-    if (paramString.contains("/zebra/cache"))
-    {
-      paramajqo.i += 1;
-      return;
-    }
-    if ((str.equals("weixin")) || (str.equals("wechat")) || (str.equals("micromsg")))
-    {
-      paramajqo.k += paramQQAlbumInfo.mMediaFileCount;
-      return;
-    }
-    if (ajpv.a(paramString))
-    {
-      paramajqo.d += paramQQAlbumInfo.mMediaFileCount;
-      return;
-    }
-    paramajqo.e += paramQQAlbumInfo.mMediaFileCount;
+    return localBoolean;
   }
   
-  private static void d(ajqo paramajqo, String paramString, QQAlbumInfo paramQQAlbumInfo)
+  protected void a(Boolean paramBoolean)
   {
-    String str = paramQQAlbumInfo.name;
-    if (str.equals("qq_screenshot"))
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      paramajqo.b += paramQQAlbumInfo.mMediaFileCount;
-      return;
+      View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localView != null)
+      {
+        if (paramBoolean.booleanValue()) {
+          ScreenCapture.setSnapFile(localView.getContext(), true);
+        }
+        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+        localView.setDrawingCacheEnabled(false);
+        localView.destroyDrawingCache();
+      }
     }
-    if ((paramString.contains("screenshot")) || (paramString.contains("截屏")) || (paramString.contains("截图")) || (paramString.equals("screen_cap")) || (paramString.equals("ScreenCapture")))
-    {
-      paramajqo.c += paramQQAlbumInfo.mMediaFileCount;
-      return;
-    }
-    if ((str.contains("camera")) || (str.equals("dcim")) || (str.equals("100MEDIA")) || (str.equals("100ANDRO")) || (str.contains("相机")) || (str.contains("照片")) || (str.contains("相片")))
-    {
-      paramajqo.a += paramQQAlbumInfo.mMediaFileCount;
-      return;
-    }
-    if (ajpv.a(paramString))
-    {
-      paramajqo.d += paramQQAlbumInfo.mMediaFileCount;
-      return;
-    }
-    paramajqo.e += paramQQAlbumInfo.mMediaFileCount;
   }
   
-  public void a(long paramLong)
-  {
-    if (paramLong == 0L) {
-      return;
-    }
-    this.jdField_a_of_type_Long = paramLong;
-    QQAlbumInfo localQQAlbumInfo = new QQAlbumInfo();
-    localQQAlbumInfo._id = "qzone_album";
-    localQQAlbumInfo.name = "空间相册";
-    localQQAlbumInfo.mMediaFileCount = ((int)this.jdField_a_of_type_Long);
-    if (QLog.isColorLevel()) {
-      QLog.d("AlbumListAdapter", 1, "setQzoneAlbumNum " + paramLong);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqDataQQAlbumInfo = localQQAlbumInfo;
-  }
-  
-  public List<QQAlbumInfo> getDefaultAlbums()
-  {
-    List localList = super.getDefaultAlbums();
-    if ((localList != null) && (this.jdField_a_of_type_ComTencentMobileqqDataQQAlbumInfo != null)) {
-      localList.add(0, this.jdField_a_of_type_ComTencentMobileqqDataQQAlbumInfo);
-    }
-    return localList;
-  }
-  
-  public void setData()
-  {
-    super.setData();
-    ThreadManager.post(new NewAlbumListAdapter.1(this), 2, null, false);
-  }
+  protected void onCancelled() {}
 }
 
 

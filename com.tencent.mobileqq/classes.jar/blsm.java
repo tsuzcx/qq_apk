@@ -1,12 +1,18 @@
-public abstract interface blsm
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.comic.utils.QQComicRedTouchManager.PluginRedTouchObserver.1;
+import java.util.Observable;
+import java.util.Observer;
+import mqq.os.MqqHandler;
+
+public abstract class blsm
+  implements Observer
 {
   public abstract void a();
   
-  public abstract void a(blvb paramblvb);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public final void update(Observable paramObservable, Object paramObject)
+  {
+    ThreadManager.getUIHandler().post(new QQComicRedTouchManager.PluginRedTouchObserver.1(this));
+  }
 }
 
 

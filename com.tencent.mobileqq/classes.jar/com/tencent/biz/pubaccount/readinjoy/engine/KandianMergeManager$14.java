@@ -4,7 +4,7 @@ import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
-import pay;
+import prp;
 
 class KandianMergeManager$14
   implements Runnable
@@ -19,7 +19,7 @@ class KandianMergeManager$14
     {
       if (localMessageRecord != null)
       {
-        pay.a(localMessageRecord);
+        prp.a(localMessageRecord);
         this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.addMessage(localMessageRecord, KandianMergeManager.a(this.this$0).getCurrentUin());
       }
       return;

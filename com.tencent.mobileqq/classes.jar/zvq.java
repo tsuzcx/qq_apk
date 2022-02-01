@@ -1,22 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-class zvq
-  implements View.OnClickListener
+public class zvq
 {
-  zvq(zvp paramzvp, zvs paramzvs) {}
-  
-  public void onClick(View paramView)
-  {
-    if (zvo.a(zvp.class.getName() + "clickFeed")) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      zvp.a(this.jdField_a_of_type_Zvp).a(this.jdField_a_of_type_Zvs);
-    }
-  }
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public LinearLayout b;
+  public TextView b;
+  public TextView c;
 }
 
 

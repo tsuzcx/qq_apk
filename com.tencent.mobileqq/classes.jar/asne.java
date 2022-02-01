@@ -1,150 +1,96 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import tencent.im.cs.cmd0x383.cmd0x383.ApplyFileSearchRspBody;
-import tencent.im.cs.cmd0x383.cmd0x383.ApplyFileSearchRspBody.Item;
-import tencent.im.cs.cmd0x383.cmd0x383.RspBody;
 
-class asne
-  extends amop
+public class asne
 {
-  asne(asnd paramasnd) {}
+  public int a;
+  public long a;
+  public asmk a;
+  public String a;
+  public byte[] a;
+  public int b;
+  public String b;
+  public String c = "";
+  public String d = "";
+  public String e = "0";
+  public String f = "";
   
-  protected void j(boolean paramBoolean, Object paramObject)
+  public asne()
   {
-    ArrayList localArrayList = new ArrayList();
-    asnd.a(this.a, true);
-    if ((paramObject == null) || (!paramBoolean)) {}
-    Object localObject;
-    int i;
-    for (;;)
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Int = 30;
+    this.jdField_b_of_type_Int = 1;
+  }
+  
+  public asne a()
+  {
+    asne localasne = new asne();
+    localasne.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localasne.jdField_a_of_type_ArrayOfByte = ((byte[])this.jdField_a_of_type_ArrayOfByte.clone());
+    localasne.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    localasne.c = this.c;
+    localasne.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+    localasne.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localasne.e = this.e;
+    return localasne;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ArrayOfByte = bhbx.a("");
+    this.jdField_b_of_type_JavaLangString = "";
+    this.c = "";
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Int = -1;
+    this.e = "0";
+    this.jdField_b_of_type_Int = 0;
+    this.f = "";
+    this.jdField_a_of_type_Asmk = null;
+  }
+  
+  public boolean a()
+  {
+    String str = bhbx.a(this.jdField_a_of_type_ArrayOfByte);
+    return (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(str));
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {}
+    do
     {
-      try
+      do
       {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("TroopFileSearchEngine<QFile>", 4, "data = " + paramObject + ", isSuccess = " + paramBoolean);
-        }
-        QLog.i("TroopFileSearchEngine<QFile>", 1, "error, can not handle search response, return a empty list.");
-        asnd.a(this.a, false, localArrayList);
-        return;
-        paramObject = (byte[])paramObject;
-        localObject = new cmd0x383.RspBody();
-        try
-        {
-          paramObject = (cmd0x383.RspBody)((cmd0x383.RspBody)localObject).mergeFrom(paramObject);
-          if (paramObject != null) {
-            continue;
-          }
-          if (!QLog.isDevelopLevel()) {
-            continue;
-          }
-          QLog.d("TroopFileSearchEngine<QFile>", 4, "bigRsp is null !!!");
-        }
-        catch (InvalidProtocolBufferMicroException paramObject) {}
-        if (!QLog.isDevelopLevel()) {
-          continue;
-        }
-        QLog.d("TroopFileSearchEngine<QFile>", 4, QLog.getStackTraceString(paramObject));
-        continue;
-      }
-      catch (Exception paramObject)
-      {
-        if (!QLog.isDevelopLevel()) {
-          continue;
-        }
-        QLog.d("TroopFileSearchEngine<QFile>", 4, QLog.getStackTraceString(paramObject));
-        continue;
-        i = paramObject.int32_ret_code.get();
-        if (i < 0)
-        {
-          if (!QLog.isDevelopLevel()) {
-            continue;
-          }
-          QLog.d("TroopFileSearchEngine<QFile>", 4, String.format("onRspTroopFileSearch - retCode: %d", new Object[] { Integer.valueOf(i) }));
-          continue;
-        }
-        paramObject = (cmd0x383.ApplyFileSearchRspBody)paramObject.msg_file_search_rsp_body.get();
-        if (paramObject == null)
-        {
-          if (!QLog.isDevelopLevel()) {
-            continue;
-          }
-          QLog.d("TroopFileSearchEngine<QFile>", 4, "rsp = " + paramObject);
-          continue;
-        }
-        localObject = paramObject.bytes_key_word.get().toStringUtf8();
-        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!((String)localObject).equals(asnd.a(this.a))))
-        {
-          QLog.i("TroopFileSearchEngine<QFile>", 1, "keyword is update, current result is old");
-          return;
-        }
-        asnd.b(this.a, paramObject.bytes_sync_cookie.get().toStringUtf8());
-        localObject = this.a;
-        if (paramObject.uint32_is_end.get() != 1) {
-          break;
-        }
-      }
-      paramBoolean = true;
-      asnd.b((asnd)localObject, paramBoolean);
-      if (QLog.isDevelopLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("onRspTroopFileSearch cookie = " + asnd.b(this.a));
-        ((StringBuilder)localObject).append(", isEnd = " + asnd.c(this.a));
-        ((StringBuilder)localObject).append(", keyWord = " + paramObject.bytes_key_word.get().toStringUtf8());
-        ((StringBuilder)localObject).append(", totalCount = " + paramObject.uint32_total_match_count.get());
-        QLog.d("TroopFileSearchEngine<QFile>", 4, ((StringBuilder)localObject).toString());
-      }
-      paramObject = paramObject.item_list.get();
-      if ((paramObject != null) && (paramObject.size() != 0)) {
-        break label747;
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("TroopFileSearchEngine<QFile>", 4, "filelist is empty--------");
-      }
+        return false;
+      } while (!(paramObject instanceof asne));
+      paramObject = (asne)paramObject;
+    } while ((!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) || (!this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString)) || (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long));
+    return true;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{uin: ").append(this.jdField_a_of_type_JavaLangString).append("}");
+    String str = bhbx.a(this.jdField_a_of_type_ArrayOfByte);
+    int i = 0;
+    if (str != null) {
+      i = str.length();
     }
-    for (;;)
-    {
-      if (i < paramObject.size())
-      {
-        localObject = new befl(asnd.a(this.a), (cmd0x383.ApplyFileSearchRspBody.Item)paramObject.get(i));
-        bfbb localbfbb;
-        bebc localbebc;
-        if (((befl)localObject).jdField_a_of_type_Bebc != null)
-        {
-          localbfbb = bfbb.a(asnd.a(this.a), ((befl)localObject).jdField_a_of_type_Long);
-          localbebc = localbfbb.a(((befl)localObject).jdField_a_of_type_Bebc.b);
-          if (localbebc == null) {
-            break label717;
-          }
-        }
-        label717:
-        for (((befl)localObject).jdField_a_of_type_Bebc.a = localbebc.a;; ((befl)localObject).jdField_a_of_type_Bebc.a = UUID.randomUUID())
-        {
-          localbfbb.a(((befl)localObject).jdField_a_of_type_Bebc.b, ((befl)localObject).jdField_a_of_type_Bebc);
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopFileSearchEngine<QFile>", 4, "fileList[" + i + "]: " + ((befl)localObject).toString());
-          }
-          localArrayList.add(localObject);
-          i += 1;
-          break;
-        }
-      }
-      asnd.a(this.a, true, localArrayList);
-      return;
-      paramBoolean = false;
-      break;
-      label747:
-      i = 0;
+    localStringBuilder.append("{sig: ").append(i).append("}");
+    localStringBuilder.append("{matchUin: ").append(this.jdField_b_of_type_JavaLangString).append("}");
+    localStringBuilder.append("{tipsWording: ").append(this.c).append("}");
+    localStringBuilder.append("{timeStamp: ").append(this.jdField_a_of_type_Long).append("}");
+    localStringBuilder.append("{nickName: ").append(this.d).append("}");
+    localStringBuilder.append("{algorithmID: ").append(this.e).append("}");
+    localStringBuilder.append("{tagId: ").append(this.jdField_b_of_type_Int).append("}");
+    localStringBuilder.append("{tagName: ").append(this.f).append("}");
+    if (this.jdField_a_of_type_Asmk != null) {
+      localStringBuilder.append(this.jdField_a_of_type_Asmk.toString());
     }
+    return localStringBuilder.toString();
   }
 }
 

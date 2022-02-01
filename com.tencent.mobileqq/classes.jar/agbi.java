@@ -1,24 +1,18 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.Context;
+import android.widget.ScrollView;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
 
-class agbi
-  implements bjoe
+public class agbi
+  extends ScrollView
 {
-  agbi(agbg paramagbg, bjnw parambjnw) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public agbi(TroopChatPie paramTroopChatPie, Context paramContext)
   {
-    this.jdField_a_of_type_Bjnw.dismiss();
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    ChatActivityUtils.a(this.jdField_a_of_type_Agbg.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Agbg.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agbg.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, this.jdField_a_of_type_Agbg.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, true, true, null, null);
-    bcef.b(this.jdField_a_of_type_Agbg.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8003F02", "0X8003F02", 0, 0, "", "", "", "");
-    bcef.b(this.jdField_a_of_type_Agbg.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005976", "0X8005976", 0, 0, "", "", "", "");
+    super(paramContext);
+  }
+  
+  public void setOverScrollMode(int paramInt)
+  {
+    super.setOverScrollMode(2);
   }
 }
 

@@ -13,6 +13,7 @@ import java.util.Set;
 public class GLBItemJava
 {
   public List<AnimationItem> animationList = new ArrayList();
+  public int arTranslateType = 0;
   public float blendShapeAdjustAlpha = 0.7F;
   public BloomParam bloom;
   public CharmRange charmRange;
@@ -38,6 +39,7 @@ public class GLBItemJava
   public float[] translate = { 0.0F, 0.0F, 0.0F };
   public TriggerConfig triggerConfig;
   public TriggerCtrlItem triggerCtrlItem;
+  public ArrayList<String> triggerState;
   
   public boolean hasSetCameraTexture()
   {

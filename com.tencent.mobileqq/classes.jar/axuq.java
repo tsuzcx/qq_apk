@@ -1,10 +1,15 @@
-import java.util.ArrayList;
+import android.os.IInterface;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
 
 public abstract interface axuq
+  extends IInterface
 {
-  public abstract ArrayList<Integer> a();
+  public abstract Message a(Message paramMessage);
   
-  public abstract void a();
+  public abstract BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel);
+  
+  public abstract void a(axuy paramaxuy);
 }
 
 

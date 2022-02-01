@@ -1,30 +1,57 @@
+import android.graphics.Canvas;
+import android.support.v4.view.ViewCompat;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+
 public class blif
+  extends blie
 {
-  public static bnbq a(int paramInt, bnbp parambnbp, bnbo parambnbo)
+  private float a(RecyclerView paramRecyclerView, View paramView)
   {
-    switch (paramInt)
+    int j = paramRecyclerView.getChildCount();
+    int i = 0;
+    float f1 = 0.0F;
+    if (i < j)
     {
-    default: 
-      return new bljy(parambnbp, parambnbo);
-    case 10026: 
-      return new blix(parambnbp, parambnbo);
-    case 10000: 
-    case 10001: 
-    case 10013: 
-    case 10017: 
-    case 10023: 
-    case 10024: 
-      return new bljy(parambnbp, parambnbo);
-    case -1000: 
-      return new bljy();
-    case 10007: 
-      return new blii(parambnbp, parambnbo);
-    case 10012: 
-      return new blih(parambnbp, parambnbo);
-    case 10021: 
-      return new blhu(parambnbp, parambnbo);
+      View localView = paramRecyclerView.getChildAt(i);
+      float f2;
+      if (localView == paramView) {
+        f2 = f1;
+      }
+      for (;;)
+      {
+        i += 1;
+        f1 = f2;
+        break;
+        float f3 = ViewCompat.getElevation(localView);
+        f2 = f1;
+        if (f3 > f1) {
+          f2 = f3;
+        }
+      }
     }
-    return new aiuw(parambnbp, parambnbo);
+    return f1;
+  }
+  
+  public void a(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (paramView.getTag(2131369183) == null))
+    {
+      float f = ViewCompat.getElevation(paramView);
+      ViewCompat.setElevation(paramView, 1.0F + a(paramRecyclerView, paramView));
+      paramView.setTag(2131369183, Float.valueOf(f));
+    }
+    super.a(paramCanvas, paramRecyclerView, paramView, paramFloat1, paramFloat2, paramInt, paramBoolean);
+  }
+  
+  public void a(View paramView)
+  {
+    Object localObject = paramView.getTag(2131369183);
+    if ((localObject != null) && ((localObject instanceof Float))) {
+      ViewCompat.setElevation(paramView, ((Float)localObject).floatValue());
+    }
+    paramView.setTag(2131369183, null);
+    super.a(paramView);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.phonecontact;
 
-import alil;
+import amgl;
 import java.util.List;
 
 class PhoneContactManagerImp$7
@@ -12,7 +12,7 @@ class PhoneContactManagerImp$7
   {
     if ((this.a != null) && (!this.a.isEmpty()))
     {
-      this.this$0.a = alil.a(this.a, null, true);
+      this.this$0.a = amgl.a(this.a, null, true);
       return;
     }
     this.this$0.a = null;

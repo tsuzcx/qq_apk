@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.webviewplugin;
 
-import bgzx;
+import bikp;
 import cooperation.qzone.mobilereport.MobileReportManager;
 
 public class WebViewJumpPlugin$4
   implements Runnable
 {
-  public WebViewJumpPlugin$4(bgzx parambgzx, String paramString1, String paramString2) {}
+  public WebViewJumpPlugin$4(bikp parambikp, String paramString1, String paramString2) {}
   
   public void run()
   {

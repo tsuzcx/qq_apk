@@ -1,71 +1,119 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.qphone.base.util.QLog;
-
-class nbs
-  extends TransProcessorHandler
+public class nbs
 {
-  nbs(nbr paramnbr, Looper paramLooper)
+  public int a;
+  public long a;
+  public int b;
+  public int c;
+  
+  public nbs()
   {
-    super(paramLooper);
+    this.jdField_a_of_type_Long = 67L;
   }
   
-  public void handleMessage(Message paramMessage)
+  public boolean a()
   {
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    if ((localFileMsg == null) || (localFileMsg.fileType != 24) || (localFileMsg.commandId != 78)) {}
-    Object localObject1;
-    do
+    return (this.jdField_a_of_type_Int != 0) && (this.b != 0) && (this.c != 0);
+  }
+  
+  public boolean a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    boolean bool2 = true;
+    boolean bool1 = false;
+    if (this.jdField_a_of_type_Int != paramInt1)
     {
-      return;
-      localObject1 = nbr.a(this.a);
-    } while (localObject1 == null);
-    TransFileController localTransFileController = ((QQAppInterface)localObject1).getTransFileController();
-    Object localObject2;
-    switch (paramMessage.what)
+      this.jdField_a_of_type_Int = paramInt1;
+      bool1 = true;
+    }
+    if (this.b != paramInt2)
     {
-    case 1004: 
-    default: 
-      return;
-    case 1003: 
-      if (QLog.isColorLevel()) {
-        QLog.d("GameResultUploadMgrForRemote_GameRC", 2, "GameResultUploadMgrForRemote send finished:" + localFileMsg.fileType);
+      this.b = paramInt2;
+      bool1 = bool2;
+    }
+    for (;;)
+    {
+      if (this.c != paramInt3)
+      {
+        this.c = paramInt3;
+        if (this.c == 0) {
+          this.c = 15;
+        }
+        this.jdField_a_of_type_Long = (1000 / this.c);
       }
-      localObject2 = new Bdh_extinfo.UploadPicExtInfo();
+      return bool1;
     }
-    try
+  }
+  
+  public boolean a(nbs paramnbs)
+  {
+    boolean bool2 = true;
+    boolean bool1 = false;
+    if ((paramnbs == null) || (!paramnbs.a()))
     {
-      ((Bdh_extinfo.UploadPicExtInfo)localObject2).mergeFrom(localFileMsg.bdhExtendInfo);
-      String str = ((Bdh_extinfo.UploadPicExtInfo)localObject2).bytes_file_resid.get().toStringUtf8();
-      paramMessage = ((Bdh_extinfo.UploadPicExtInfo)localObject2).bytes_download_url.get().toStringUtf8();
-      localObject2 = ((Bdh_extinfo.UploadPicExtInfo)localObject2).bytes_thumb_download_url.get().toStringUtf8();
-      if (QLog.isColorLevel()) {
-        QLog.i("GameResultUploadMgrForRemote_GameRC", 1, "handleMessage imageUUID[" + str + "],imageUrl[" + paramMessage + "], imageThumbUrl" + (String)localObject2 + "]");
-      }
-      localObject1 = (mxx)((QQAppInterface)localObject1).getBusinessHandler(178);
-      int i = Integer.parseInt(localFileMsg.friendUin);
-      if (localObject1 != null) {
-        ((mxx)localObject1).a(i, localFileMsg.compressUrl, paramMessage);
-      }
+      bool2 = false;
+      return bool2;
     }
-    catch (Exception paramMessage)
+    if (this.jdField_a_of_type_Int != paramnbs.jdField_a_of_type_Int)
     {
-      label273:
-      break label273;
+      this.jdField_a_of_type_Int = paramnbs.jdField_a_of_type_Int;
+      bool1 = true;
     }
-    localTransFileController.removeHandle(this);
-    return;
-    if (QLog.isColorLevel()) {
-      QLog.d("GameResultUploadMgrForRemote_GameRC", 2, "STATUS_SEND_ERROR:" + localFileMsg.errorCode);
+    if (this.b != paramnbs.b)
+    {
+      this.b = paramnbs.b;
+      bool1 = bool2;
     }
-    localTransFileController.removeHandle(this);
+    for (;;)
+    {
+      bool2 = bool1;
+      if (this.c == paramnbs.c) {
+        break;
+      }
+      this.c = paramnbs.c;
+      if (this.c == 0) {
+        this.c = 15;
+      }
+      this.jdField_a_of_type_Long = (1000 / this.c);
+      return bool1;
+    }
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    label71:
+    label74:
+    for (;;)
+    {
+      return true;
+      if (!(paramObject instanceof nbs)) {
+        break;
+      }
+      paramObject = (nbs)paramObject;
+      if (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int)
+      {
+        i = 1;
+        if ((i == 0) || (this.b != paramObject.b)) {
+          break label71;
+        }
+      }
+      for (int i = 1;; i = 0)
+      {
+        if ((i != 0) && (this.c == paramObject.c)) {
+          break label74;
+        }
+        return false;
+        i = 0;
+        break;
+      }
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RecordParam{").append("width: ").append(this.jdField_a_of_type_Int).append(", height: ").append(this.b).append(", fps: ").append(this.c).append("}");
+    return localStringBuilder.toString();
   }
 }
 

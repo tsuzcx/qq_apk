@@ -1,28 +1,38 @@
-import android.os.Bundle;
-import com.tencent.biz.videostory.video.FrameVideoHelper;
-import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
-import java.util.ArrayList;
+import android.view.ViewGroup;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.ae.camera.ui.panel.AEBeautyProviderView;
 
 public class bnfi
-  implements zxu
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public bnfi(LocalVideoSelectActivity paramLocalVideoSelectActivity, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, FrameVideoHelper paramFrameVideoHelper) {}
+  public bnfi(AEBeautyProviderView paramAEBeautyProviderView) {}
   
-  public void a(boolean paramBoolean, ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, long paramLong)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    if (!this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity.isFinishing())
+    if (AEBeautyProviderView.a(this.a) != null)
     {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity.b();
-      Bundle localBundle = new Bundle();
-      if (paramArrayList != null)
-      {
-        localBundle.putSerializable("KEY_VIDEO_STORY_CAPTYRE_FRAMES", paramArrayList);
-        localBundle.putLong("KEY_VIDEO_STORY_CAPTYRE_FRAMES_SIZE", paramLong);
-      }
-      bnsr.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity, LocalVideoSelectActivity.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity), LocalVideoSelectActivity.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity), this.jdField_a_of_type_Int, this.b, this.c, this.d, 0, "", "", false, LocalVideoSelectActivity.c(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity), this.e, localBundle);
-      this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper.a();
+      AEBeautyProviderView.a(this.a).a(paramInt);
+      this.a.a.setText("+" + String.format("%.1f", new Object[] { Float.valueOf(paramInt / 10.0F) }));
     }
+  }
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    AEBeautyProviderView.a(this.a, AEBeautyProviderView.a(this.a), AEBeautyProviderView.b(this.a));
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    if ((AEBeautyProviderView.c(this.a) != null) && ((AEBeautyProviderView.c(this.a) instanceof ViewGroup))) {
+      ((ViewGroup)AEBeautyProviderView.c(this.a)).setMotionEventSplittingEnabled(true);
+    }
+    AEBeautyProviderView.a(this.a, paramSeekBar.getProgress());
+    bnqq.a().e(paramSeekBar.getProgress());
+    AEBeautyProviderView.b(this.a, AEBeautyProviderView.a(this.a), AEBeautyProviderView.b(this.a));
+    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
 }
 

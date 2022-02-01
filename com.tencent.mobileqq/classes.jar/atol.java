@@ -1,12 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class atol
-  implements DialogInterface.OnClickListener
+  extends atnt
 {
-  atol(atoi paramatoi) {}
+  public atol(atno paramatno)
+  {
+    super(paramatno);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  protected String a()
+  {
+    return "StateRefuseByPCWhenToOffFailed";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Atno.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atno.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
+    }
+    atno.b(this.jdField_a_of_type_Atno, 11, 6);
+    atno.c(this.jdField_a_of_type_Atno, 11, 6);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atno.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atnt.a() + "->StateRefuseByPC)");
+    this.jdField_a_of_type_Atnt = new atoj(this.jdField_a_of_type_Atno);
+  }
 }
 
 

@@ -1,22 +1,22 @@
 package com.tencent.open.business.viareport;
 
-import bhzm;
-import bibf;
+import bjko;
+import bjmh;
 
 public class ReportManager$2
   implements Runnable
 {
-  public ReportManager$2(bibf parambibf, String paramString) {}
+  public ReportManager$2(bjmh parambjmh, String paramString, boolean paramBoolean) {}
   
   public void run()
   {
-    if (this.this$0.a) {
-      bhzm.b("viareport", "isUploading ---return");
+    if (this.this$0.jdField_a_of_type_Boolean) {
+      bjko.b("viareport", "isUploading ---return");
     }
-    while (!this.this$0.a(this.a)) {
+    while (!this.this$0.a(this.jdField_a_of_type_JavaLangString)) {
       return;
     }
-    this.this$0.a(this.a, null, true);
+    this.this$0.a(this.jdField_a_of_type_JavaLangString, null, true, this.jdField_a_of_type_Boolean);
   }
 }
 

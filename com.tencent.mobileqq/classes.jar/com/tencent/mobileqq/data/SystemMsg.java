@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import bblk;
+import bcsc;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
@@ -1264,7 +1264,7 @@ public class SystemMsg
     //   2700: new 117	java/lang/String
     //   2703: dup
     //   2704: aload_1
-    //   2705: invokestatic 202	bblk:a	([B)[B
+    //   2705: invokestatic 202	bcsc:a	([B)[B
     //   2708: ldc 204
     //   2710: invokespecial 207	java/lang/String:<init>	([BLjava/lang/String;)V
     //   2713: invokevirtual 157	java/lang/String:trim	()Ljava/lang/String;
@@ -1382,7 +1382,7 @@ public class SystemMsg
     //   2950: putfield 259	com/tencent/mobileqq/data/SystemMsg:strGroupUin	J
     //   2953: goto +1606 -> 4559
     //   2956: aload_1
-    //   2957: invokestatic 202	bblk:a	([B)[B
+    //   2957: invokestatic 202	bcsc:a	([B)[B
     //   2960: pop
     //   2961: aload_0
     //   2962: new 123	java/lang/StringBuilder
@@ -1542,7 +1542,7 @@ public class SystemMsg
     //   3293: new 117	java/lang/String
     //   3296: dup
     //   3297: aload_1
-    //   3298: invokestatic 202	bblk:a	([B)[B
+    //   3298: invokestatic 202	bcsc:a	([B)[B
     //   3301: invokespecial 277	java/lang/String:<init>	([B)V
     //   3304: pop
     //   3305: aload_0
@@ -1687,7 +1687,7 @@ public class SystemMsg
     //   3598: putfield 41	com/tencent/mobileqq/data/SystemMsg:strServerFromUinNickName	Ljava/lang/String;
     //   3601: goto +1017 -> 4618
     //   3604: aload_1
-    //   3605: invokestatic 202	bblk:a	([B)[B
+    //   3605: invokestatic 202	bcsc:a	([B)[B
     //   3608: pop
     //   3609: aload_0
     //   3610: new 123	java/lang/StringBuilder
@@ -1757,7 +1757,7 @@ public class SystemMsg
     //   3744: new 117	java/lang/String
     //   3747: dup
     //   3748: aload_1
-    //   3749: invokestatic 202	bblk:a	([B)[B
+    //   3749: invokestatic 202	bcsc:a	([B)[B
     //   3752: invokespecial 277	java/lang/String:<init>	([B)V
     //   3755: invokevirtual 157	java/lang/String:trim	()Ljava/lang/String;
     //   3758: astore 9
@@ -1861,7 +1861,7 @@ public class SystemMsg
     //   3965: putfield 41	com/tencent/mobileqq/data/SystemMsg:strServerFromUinNickName	Ljava/lang/String;
     //   3968: goto +672 -> 4640
     //   3971: aload_1
-    //   3972: invokestatic 202	bblk:a	([B)[B
+    //   3972: invokestatic 202	bcsc:a	([B)[B
     //   3975: pop
     //   3976: aload_0
     //   3977: new 123	java/lang/StringBuilder
@@ -2034,7 +2034,7 @@ public class SystemMsg
     //   4337: putfield 259	com/tencent/mobileqq/data/SystemMsg:strGroupUin	J
     //   4340: goto +312 -> 4652
     //   4343: aload_0
-    //   4344: invokestatic 202	bblk:a	([B)[B
+    //   4344: invokestatic 202	bcsc:a	([B)[B
     //   4347: pop
     //   4348: aload_1
     //   4349: new 123	java/lang/StringBuilder
@@ -2695,13 +2695,13 @@ public class SystemMsg
       }
       break;
     }
-    for (paramArrayOfByte = bblk.a(arrayOfByte);; paramArrayOfByte = bblk.a(arrayOfByte))
+    for (paramArrayOfByte = bcsc.a(arrayOfByte);; paramArrayOfByte = bcsc.a(arrayOfByte))
     {
       return String.valueOf(PkgTools.utf8Byte2String(paramArrayOfByte, 0, paramInt));
       paramInt = PkgTools.getUnsignedByte(paramArrayOfByte[9]);
       arrayOfByte = new byte[paramInt];
       PkgTools.copyData(arrayOfByte, 0, paramArrayOfByte, 10, paramInt);
-      return String.valueOf(PkgTools.utf8Byte2String(bblk.a(arrayOfByte), 0, paramInt));
+      return String.valueOf(PkgTools.utf8Byte2String(bcsc.a(arrayOfByte), 0, paramInt));
       paramInt = PkgTools.getUnsignedByte(paramArrayOfByte[14]);
       arrayOfByte = new byte[paramInt];
       PkgTools.copyData(arrayOfByte, 0, paramArrayOfByte, 15, paramInt);
@@ -2848,7 +2848,7 @@ public class SystemMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.SystemMsg
  * JD-Core Version:    0.7.0.1
  */

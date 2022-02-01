@@ -1,47 +1,43 @@
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import mqq.app.AppRuntime.Status;
 
-public class ayzq
-  extends ayzk
+class ayzq
+  extends azce
 {
-  public ayzq(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  ayzq(ayzg paramayzg) {}
   
-  public void a() {}
-  
-  public void a(int paramInt, ByteStringMicro paramByteStringMicro)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramInt)
-    {
+    super.a(paramBoolean, paramBundle);
+    if ((!ayzg.a(this.a)) || (paramBundle == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AccountPanel", 2, new Object[] { "receiveModOnlineStatusPermission: no needShowOnlineStatusToast needShowOnlineStatusToast=", Boolean.valueOf(ayzg.a(this.a)) });
+      }
     }
+    boolean bool;
     do
     {
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("KidModeReceiver", 2, "handler push fot theme switch");
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("KidModeReceiver", 2, "handler push fot setting change");
+      bool = paramBundle.getBoolean("param_need_switch_online_status", false);
+      if ((!paramBoolean) || (paramBundle == null)) {
+        break;
       }
-      paramByteStringMicro = (amov)this.a.getBusinessHandler(2);
-    } while (paramByteStringMicro == null);
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(Short.valueOf((short)paramInt));
-    paramByteStringMicro.a(localArrayList, null);
-  }
-  
-  public void a(long paramLong) {}
-  
-  public boolean a(int paramInt)
-  {
-    return (paramInt == 42362) || (paramInt == 42432) || (paramInt == 42285) || (paramInt == 42490) || (paramInt == 42430) || (paramInt == 42429) || (paramInt == 42428) || (paramInt == 42482);
+      i = paramBundle.getInt("StatusId", 0);
+      ayzg.a(this.a, AppRuntime.Status.online, i, false);
+    } while (bool);
+    QQToast.a(ayzg.a(this.a).getApp(), 2, 2131691302, 1).a();
+    this.a.c();
+    return;
+    if (bool) {}
+    for (int i = 2131698154;; i = 2131691303)
+    {
+      QQToast.a(ayzg.a(this.a), 1, i, 1).a();
+      this.a.c();
+      return;
+    }
   }
 }
 

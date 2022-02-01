@@ -1,25 +1,29 @@
-import dov.com.qq.im.BaseVMPeakActivity;
-import dov.com.qq.im.ae.gif.giftext.fragment.AEGIFChunkPreviewFragment.1.1;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qlink.QlAndQQInterface.WorkState;
 
-public class blyc
-  implements blzv
+class blyc
+  extends BroadcastReceiver
 {
   blyc(blyb paramblyb) {}
   
-  public void a(int paramInt, String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramInt == 0) {
-      blyb.a(this.a, paramString);
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    while ((!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_EXPIRED")) && (!paramContext.equals("mqq.intent.action.LOGOUT"))) {
+      return;
     }
-    ((blxb)blyb.a(this.a).get(paramInt)).c = paramString;
-    ((blxb)blyb.a(this.a).get(paramInt)).a = 13;
-    blyb.a(this.a).runOnUiThread(new AEGIFChunkPreviewFragment.1.1(this, paramInt));
+    QLog.w("QQProxyForQlink", 1, "receive qqAccountbroacast action=" + paramContext);
+    blyb.a(this.a, new QlAndQQInterface.WorkState(false, 1, null, null, 0, 0, false));
+    blyb.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     blyc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contact.addcontact.findtroop;
 
-import aiba;
+import aivz;
 
 public class AddContactViewPagerTroopFragment$4$1
   implements Runnable
 {
-  public AddContactViewPagerTroopFragment$4$1(aiba paramaiba) {}
+  public AddContactViewPagerTroopFragment$4$1(aivz paramaivz) {}
   
   public void run()
   {

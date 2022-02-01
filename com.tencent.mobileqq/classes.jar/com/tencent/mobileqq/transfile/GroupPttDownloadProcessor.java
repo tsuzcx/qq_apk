@@ -1,15 +1,16 @@
 package com.tencent.mobileqq.transfile;
 
-import aycx;
-import aycy;
-import azbx;
-import azby;
-import azck;
-import bcef;
-import bcmt;
+import azjj;
+import azjk;
+import bahl;
+import bahm;
+import bahy;
+import bdla;
+import bdtt;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForPtt;
 import com.tencent.mobileqq.mqsafeedit.BaseApplication;
@@ -47,7 +48,7 @@ public class GroupPttDownloadProcessor
   private long mMsgRecTime;
   private long mMsgTime;
   private MessageForPtt mPtt;
-  protected bcmt mSttManager = (bcmt)this.app.getManager(17);
+  protected bdtt mSttManager = (bdtt)this.app.getManager(QQManagerFactory.STT_MANAGER);
   String mTempPath;
   private boolean useUrlIp;
   
@@ -233,7 +234,7 @@ public class GroupPttDownloadProcessor
       this.mReportInfo.put("param_grpUin", this.mUiRequest.mPeerUin);
       this.mReportInfo.put("param_uuid", this.mUiRequest.mServerPath);
       this.mReportInfo.put("param_quickHttp", String.valueOf(this.mSendByQuickHttp));
-      this.mReportInfo.put("param_pttOpt", String.valueOf(azby.a(this.app, this.useUrlIp)));
+      this.mReportInfo.put("param_pttOpt", String.valueOf(bahm.a(this.app, this.useUrlIp)));
       localHashMap = this.mReportInfo;
       if (!this.mIsHttpsDownload) {
         break label442;
@@ -266,7 +267,7 @@ public class GroupPttDownloadProcessor
       if (this.mPtt == null) {
         break;
       }
-      azck.a(this.app).a(paramBoolean, this.errCode, this.mExtraInfo, this.mPtt);
+      bahy.a(this.app).a(paramBoolean, this.errCode, this.mExtraInfo, this.mPtt);
       return;
       i = 1;
       break label59;
@@ -321,7 +322,7 @@ public class GroupPttDownloadProcessor
         break;
       }
       localObject = (TransferRequest.PttDownExtraInfo)this.mUiRequest.mExtraObj;
-      bcef.b(this.app, "CliOper", "", "", "0X80059B3", "0X80059B3", PttInfoCollector.mergeDownloadPTTFromType(((TransferRequest.PttDownExtraInfo)localObject).mFromType, ((TransferRequest.PttDownExtraInfo)localObject).mLayer), 0, "", "", "", "8.4.8");
+      bdla.b(this.app, "CliOper", "", "", "0X80059B3", "0X80059B3", PttInfoCollector.mergeDownloadPTTFromType(((TransferRequest.PttDownExtraInfo)localObject).mFromType, ((TransferRequest.PttDownExtraInfo)localObject).mLayer), 0, "", "", "", "8.4.10");
       break;
       if (!this.errDesc.equals("H_400_-5103017")) {
         break label619;
@@ -402,9 +403,9 @@ public class GroupPttDownloadProcessor
     super.onError();
     if (this.mUiRequest.mDownCallBack != null)
     {
-      aycy localaycy = new aycy();
-      localaycy.a = -1;
-      this.mUiRequest.mDownCallBack.a(localaycy);
+      azjk localazjk = new azjk();
+      localazjk.a = -1;
+      this.mUiRequest.mDownCallBack.a(localazjk);
       return;
     }
     sendMessageToUpdate(2005);
@@ -504,9 +505,9 @@ public class GroupPttDownloadProcessor
     }
     if (this.mUiRequest.mDownCallBack != null)
     {
-      localObject = new aycy();
-      ((aycy)localObject).a = 0;
-      this.mUiRequest.mDownCallBack.a((aycy)localObject);
+      localObject = new azjk();
+      ((azjk)localObject).a = 0;
+      this.mUiRequest.mDownCallBack.a((azjk)localObject);
       return;
     }
     sendMessageToUpdate(2003);

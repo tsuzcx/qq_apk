@@ -1,26 +1,42 @@
-import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
-import com.tencent.av.ui.DoubleVideoMeetingCtrlUI.4;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.config.ConfigInfo;
 
-public class mcw
-  implements mho
+class mcw
+  extends BroadcastReceiver
 {
-  public mcw(DoubleVideoMeetingCtrlUI.4 param4) {}
+  mcw(mcv parammcv) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.this$0.j = true;
-    this.a.this$0.M();
-  }
-  
-  public void b()
-  {
-    this.a.this$0.d(this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_Int);
-    this.a.this$0.j = false;
+    paramIntent = paramIntent.getAction();
+    if (paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_WRITE_CONFIG_INFO_TO_FILE"))
+    {
+      if (!mcv.a(this.a))
+      {
+        mcv.a(this.a, true);
+        if (mcv.b(this.a)) {
+          mcv.a(this.a);
+        }
+      }
+      int i = ConfigInfo.getSharpConfigVersionFromFile(paramContext);
+      lvz.a().a("update", i);
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while ((!paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD")) || (mcv.b(this.a)));
+      mcv.b(this.a, true);
+    } while (!mcv.a(this.a));
+    mcv.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mcw
  * JD-Core Version:    0.7.0.1
  */

@@ -41,11 +41,11 @@ class EmoticonPanelHotPicSearchHelper$LabelFlowAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     if (paramView == null) {
-      paramView = View.inflate(this.mContext, 2131559136, null);
+      paramView = View.inflate(this.mContext, 2131559165, null);
     }
     for (;;)
     {
-      Button localButton = (Button)paramView.findViewById(2131363986);
+      Button localButton = (Button)paramView.findViewById(2131364060);
       localButton.setText((CharSequence)this.mDatas.get(paramInt));
       localButton.setContentDescription((CharSequence)this.mDatas.get(paramInt));
       localButton.setBackgroundDrawable(this.this$0.getShapeDrawable(12));
@@ -64,7 +64,7 @@ class EmoticonPanelHotPicSearchHelper$LabelFlowAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelHotPicSearchHelper.LabelFlowAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,72 +1,17 @@
-import android.content.Context;
-import android.net.Uri;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.MultiForwardActivity;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import java.util.List;
 
-class bclg
-  implements View.OnClickListener
+public class bclg
+  extends bclv
 {
-  String jdField_a_of_type_JavaLangString = null;
-  WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference = null;
-  String b = null;
-  
-  public bclg(bcle parambcle, Context paramContext, String paramString1, String paramString2)
+  public bclg(GroupSearchEngine paramGroupSearchEngine, bclw parambclw, String paramString, int paramInt1, int paramInt2)
   {
-    if (paramContext != null) {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    }
-    if (!TextUtils.isEmpty(paramString1)) {
-      this.jdField_a_of_type_JavaLangString = paramString1;
-    }
-    if (!TextUtils.isEmpty(paramString2)) {
-      this.b = paramString2;
-    }
+    super(paramGroupSearchEngine, parambclw, paramString, paramInt1);
   }
   
-  public void onClick(View paramView)
+  public bcfi a(List<bcfj> paramList, String paramString)
   {
-    BaseChatPie localBaseChatPie;
-    Object localObject2;
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && ((this.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof FragmentActivity)) && (!MultiForwardActivity.class.isInstance(this.jdField_a_of_type_JavaLangRefWeakReference.get())))
-    {
-      localObject1 = ((FragmentActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getChatFragment();
-      if (localObject1 != null)
-      {
-        localBaseChatPie = ((ChatFragment)localObject1).a();
-        acvv.b(localBaseChatPie.app, (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localBaseChatPie.sessionInfo, this.jdField_a_of_type_JavaLangString + " +1");
-        localObject2 = "";
-        localObject1 = localObject2;
-        if (!TextUtils.isEmpty(this.b)) {
-          localObject1 = Uri.parse(this.b);
-        }
-      }
-    }
-    try
-    {
-      localObject1 = ((Uri)localObject1).getQueryParameter("article_id");
-      localObject2 = localObject1;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
-    Object localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = "";
-    }
-    odq.a(localBaseChatPie.app, "", "0X8007239", "0X8007239", 0, 0, (String)localObject1, "", "", "");
-    odq.a("0X8007239", "", (String)localObject1, "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new bces(paramList, paramString, this.jdField_a_of_type_Int);
   }
 }
 

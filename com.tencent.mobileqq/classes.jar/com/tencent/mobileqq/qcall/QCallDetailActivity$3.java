@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.qcall;
 
-import abwz;
-import avsy;
-import azjc;
+import acnh;
+import awyz;
+import bapk;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.PhoneContact;
 
 class QCallDetailActivity$3
@@ -18,14 +19,14 @@ class QCallDetailActivity$3
       break label12;
     }
     label12:
-    label142:
-    label159:
+    label143:
+    label160:
     for (;;)
     {
       return;
       if (QCallDetailActivity.a(this.this$0, QCallDetailActivity.a(this.this$0)))
       {
-        Object localObject = abwz.q;
+        Object localObject = acnh.q;
         int m = localObject.length;
         int i = 0;
         int j = k;
@@ -41,15 +42,15 @@ class QCallDetailActivity$3
           if (j == 0) {
             break;
           }
-          localObject = (avsy)this.this$0.app.getManager(11);
+          localObject = (awyz)this.this$0.app.getManager(QQManagerFactory.CONTACT_MANAGER);
           if (localObject != null) {
-            break label142;
+            break label143;
           }
         }
-        for (localObject = null;; localObject = ((avsy)localObject).c(QCallDetailActivity.a(this.this$0)))
+        for (localObject = null;; localObject = ((awyz)localObject).c(QCallDetailActivity.a(this.this$0)))
         {
           if (localObject == null) {
-            break label159;
+            break label160;
           }
           QCallDetailActivity.a(this.this$0).a(((PhoneContact)localObject).mobileCode, 1006, QCallDetailActivity.a(this.this$0), QCallDetailActivity.a(this.this$0));
           return;

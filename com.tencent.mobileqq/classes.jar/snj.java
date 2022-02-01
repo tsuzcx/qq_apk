@@ -1,30 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.model.RIJUserLevelRequestModule.UserLevelInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
-public class snj
-  extends Handler
+class snj
+  implements qha
 {
-  private WeakReference<ReadInJoyNavigationGridview> a;
+  snj(sni paramsni, int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem) {}
   
-  public snj(ReadInJoyNavigationGridview paramReadInJoyNavigationGridview)
+  public void a(RIJUserLevelRequestModule.UserLevelInfo paramUserLevelInfo)
   {
-    this.a = new WeakReference(paramReadInJoyNavigationGridview);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    ReadInJoyNavigationGridview localReadInJoyNavigationGridview = (ReadInJoyNavigationGridview)this.a.get();
-    if ((localReadInJoyNavigationGridview == null) || (ReadInJoyNavigationGridview.a(localReadInJoyNavigationGridview))) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    ReadInJoyNavigationGridview.a(localReadInJoyNavigationGridview);
+    sni.a(this.jdField_a_of_type_Sni, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem);
   }
 }
 

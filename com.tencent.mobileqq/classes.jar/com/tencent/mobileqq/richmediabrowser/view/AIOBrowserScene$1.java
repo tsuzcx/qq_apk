@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.richmediabrowser.view;
 
-import bakk;
+import bbqz;
 
 public class AIOBrowserScene$1
   implements Runnable
 {
-  public AIOBrowserScene$1(bakk parambakk) {}
+  public AIOBrowserScene$1(bbqz parambbqz) {}
   
   public void run()
   {

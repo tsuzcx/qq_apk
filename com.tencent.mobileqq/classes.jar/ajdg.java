@@ -1,22 +1,30 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.home.Conversation;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.XListView;
 
 public class ajdg
-  implements Handler.Callback
+  extends ajdc
 {
-  public ajdg(Conversation paramConversation) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public ajdg(QQAppInterface paramQQAppInterface, Context paramContext, XListView paramXListView, ajdf paramajdf)
   {
-    avnc.a().a(paramMessage.what);
-    if (paramMessage.what == 4)
-    {
-      this.a.a(1134013, 0L, false);
-      return true;
-    }
-    this.a.d(true);
-    return true;
+    super(paramQQAppInterface, paramContext, paramXListView, paramajdf);
+  }
+  
+  protected ajcw a()
+  {
+    return new ajdb(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
+  }
+  
+  protected void d()
+  {
+    super.d();
+    bdla.b(null, "dc00899", "Grp_recom", "", "no_search_result", "exp", 0, 0, "", "", "", "");
+  }
+  
+  public void e()
+  {
+    super.e();
+    bdla.b(null, "dc00899", "Grp_recom", "", "no_search_result", "exp", 0, 0, "", "", "", "");
   }
 }
 

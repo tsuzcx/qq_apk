@@ -1,20 +1,17 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import adfx;
-import adfy;
-import adfz;
-import adga;
-import adgb;
-import adgc;
-import adgd;
-import adge;
-import adgf;
-import adgg;
-import adgh;
-import amrg;
-import amrh;
-import amtj;
+import adxd;
+import adxe;
+import adxf;
+import adxg;
+import adxh;
+import adxi;
+import adxj;
+import adxk;
+import adxl;
+import adxm;
+import adxn;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -27,19 +24,24 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import arbl;
-import arbn;
-import arbx;
-import arcb;
-import area;
-import aren;
-import areo;
-import avsq;
-import bcef;
-import bhht;
+import antu;
+import antv;
+import anvx;
+import asfv;
+import asfx;
+import asgh;
+import asgl;
+import asig;
+import asit;
+import asiu;
+import awyr;
+import bdla;
+import bisl;
 import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.data.EmoticonResp;
@@ -62,17 +64,17 @@ public class EmosmActivity
   implements View.OnClickListener
 {
   public int a;
-  amrh jdField_a_of_type_Amrh = new adfx(this);
   public View a;
   public Button a;
   public TextView a;
-  public arbl<EmoticonPackage> a;
-  arbx jdField_a_of_type_Arbx = new adga(this);
-  arcb jdField_a_of_type_Arcb = new adgb(this);
-  aren jdField_a_of_type_Aren;
-  areo jdField_a_of_type_Areo;
-  public avsq a;
-  public bhht a;
+  antv jdField_a_of_type_Antv = new adxd(this);
+  public asfv<EmoticonPackage> a;
+  asgh jdField_a_of_type_Asgh = new adxg(this);
+  asgl jdField_a_of_type_Asgl = new adxh(this);
+  asit jdField_a_of_type_Asit;
+  asiu jdField_a_of_type_Asiu;
+  public awyr a;
+  public bisl a;
   public DragSortListView a;
   private QQBlurView jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
   public Runnable a;
@@ -110,9 +112,9 @@ public class EmosmActivity
     }
     for (;;)
     {
-      if (k < this.jdField_a_of_type_Arbl.getCount())
+      if (k < this.jdField_a_of_type_Asfv.getCount())
       {
-        EmoticonPackage localEmoticonPackage = (EmoticonPackage)this.jdField_a_of_type_Arbl.getItem(k);
+        EmoticonPackage localEmoticonPackage = (EmoticonPackage)this.jdField_a_of_type_Asfv.getItem(k);
         if (!localEmoticonPackage.epId.equals(paramEmoticonResp.delEpId + "")) {
           break label88;
         }
@@ -123,7 +125,7 @@ public class EmosmActivity
       label83:
       for (k = 5;; k = 4)
       {
-        avsq.d(String.valueOf(paramEmoticonResp.resultcode), k);
+        awyr.d(String.valueOf(paramEmoticonResp.resultcode), k);
         return;
       }
       label88:
@@ -133,13 +135,13 @@ public class EmosmActivity
   
   private void g()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)findViewById(2131363630));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)findViewById(2131363630));
-    this.j = findViewById(2131377638);
-    this.j.setBackgroundColor(getResources().getColor(2131165629));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(findViewById(2131366011));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)findViewById(2131363699));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)findViewById(2131363699));
+    this.j = findViewById(2131377912);
+    this.j.setBackgroundColor(getResources().getColor(2131165635));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(findViewById(2131366112));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.b(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView);
-    Drawable localDrawable = getResources().getDrawable(2130850271);
+    Drawable localDrawable = getResources().getDrawable(2130850375);
     localDrawable.setAlpha(235);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(localDrawable);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.b(0);
@@ -148,11 +150,11 @@ public class EmosmActivity
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.d();
   }
   
-  public arbn a(DragSortListView paramDragSortListView)
+  public asfx a(DragSortListView paramDragSortListView)
   {
-    paramDragSortListView = new arbn(paramDragSortListView);
-    paramDragSortListView.d(2131365795);
-    paramDragSortListView.e(2131364601);
+    paramDragSortListView = new asfx(paramDragSortListView);
+    paramDragSortListView.d(2131365893);
+    paramDragSortListView.e(2131364684);
     paramDragSortListView.b(true);
     paramDragSortListView.a(true);
     paramDragSortListView.a(0);
@@ -164,26 +166,26 @@ public class EmosmActivity
   public void a()
   {
     QQToast localQQToast = new QQToast(this);
-    localQQToast.a(2130839590);
+    localQQToast.a(2130839611);
     localQQToast.d(1500);
-    localQQToast.a(amtj.a(2131703163));
+    localQQToast.a(anvx.a(2131703514));
     localQQToast.b(0);
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Arbl.b(true);
+    this.jdField_a_of_type_Asfv.b(true);
     int k = 0;
     for (;;)
     {
       EmoticonPackage localEmoticonPackage;
-      if (k < this.jdField_a_of_type_Arbl.getCount())
+      if (k < this.jdField_a_of_type_Asfv.getCount())
       {
-        localEmoticonPackage = (EmoticonPackage)this.jdField_a_of_type_Arbl.getItem(k);
+        localEmoticonPackage = (EmoticonPackage)this.jdField_a_of_type_Asfv.getItem(k);
         if (!localEmoticonPackage.epId.equals(paramInt + "")) {
           break label177;
         }
-        this.jdField_a_of_type_Arbl.a(localEmoticonPackage);
+        this.jdField_a_of_type_Asfv.a(localEmoticonPackage);
         if (localEmoticonPackage.type != 1) {
           break label172;
         }
@@ -191,13 +193,13 @@ public class EmosmActivity
       label172:
       for (paramInt = 5;; paramInt = 4)
       {
-        avsq.d("0", paramInt);
+        awyr.d("0", paramInt);
         String str = localEmoticonPackage.epId;
         if ((3 != localEmoticonPackage.jobType) && (1 != localEmoticonPackage.jobType) && (5 != localEmoticonPackage.jobType)) {
           ThreadManager.getFileThreadHandler().post(new EmosmActivity.2(this, str));
         }
         if (3 == localEmoticonPackage.jobType) {
-          bcef.b(this.app, "CliOper", "", "", "MbGuanli", "MbDianjiShanchu", 0, 0, "", "", "", "");
+          bdla.b(this.app, "CliOper", "", "", "MbGuanli", "MbDianjiShanchu", 0, 0, "", "", "", "");
         }
         return;
       }
@@ -305,11 +307,11 @@ public class EmosmActivity
   public void b()
   {
     if (this.jdField_b_of_type_Boolean) {
-      setTitle(String.format(getResources().getString(2131691981), new Object[] { Integer.valueOf(0) }));
+      setTitle(String.format(getResources().getString(2131692071), new Object[] { Integer.valueOf(0) }));
     }
-    this.jdField_a_of_type_Bhht.dismiss();
-    if ((this.jdField_b_of_type_Int == 2) && (this.jdField_a_of_type_Arbl.getCount() == 0)) {
-      bcef.b(this.app, "CliOper", "", "", "0X80060AA", "0X80060AA", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Bisl.dismiss();
+    if ((this.jdField_b_of_type_Int == 2) && (this.jdField_a_of_type_Asfv.getCount() == 0)) {
+      bdla.b(this.app, "CliOper", "", "", "0X80060AA", "0X80060AA", 0, 0, "", "", "", "");
     }
   }
   
@@ -330,10 +332,10 @@ public class EmosmActivity
     {
       if (TextUtils.isEmpty(str))
       {
-        this.leftView.setText(2131691782);
+        this.leftView.setText(2131691870);
         return;
       }
-      str = new JSONObject(str).optString("leftText", getString(2131691782));
+      str = new JSONObject(str).optString("leftText", getString(2131691870));
       this.leftView.setText(str);
       return;
     }
@@ -350,7 +352,7 @@ public class EmosmActivity
     if (this.jdField_c_of_type_Boolean) {
       return;
     }
-    this.jdField_a_of_type_Avsq.a(0, new adgh(this));
+    this.jdField_a_of_type_Awyr.a(0, new adxn(this));
   }
   
   @Override
@@ -366,18 +368,18 @@ public class EmosmActivity
   {
     boolean bool = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559163);
-    super.setContentBackgroundResource(2130838891);
-    super.setTitle(2131691989);
+    super.setContentView(2131559192);
+    super.setContentBackgroundResource(2130838911);
+    super.setTitle(2131692079);
     c();
     this.jdField_a_of_type_AndroidWidgetTextView = this.rightViewText;
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131691980);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new adgc(this));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364071));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692070);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new adxi(this));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364146));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131366237));
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new adgd(this));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131366341));
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new adxj(this));
     try
     {
       this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView = ((DragSortListView)super.findViewById(16908298));
@@ -386,54 +388,54 @@ public class EmosmActivity
       this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setOnTouchListener(paramBundle);
       this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setDragEnabled(false);
       this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setDelImmediately(false);
-      this.jdField_a_of_type_AndroidViewView = View.inflate(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getContext(), 2131559164, null);
-      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366000);
-      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366001);
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366002));
+      this.jdField_a_of_type_AndroidViewView = View.inflate(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getContext(), 2131559193, null);
+      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366101);
+      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366102);
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366103));
       this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(getResources().getDrawable(2130839674));
-      this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365996);
-      this.e = this.jdField_a_of_type_AndroidViewView.findViewById(2131365997);
-      this.f = this.jdField_a_of_type_AndroidViewView.findViewById(2131365998);
+      this.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(getResources().getDrawable(2130839695));
+      this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366097);
+      this.e = this.jdField_a_of_type_AndroidViewView.findViewById(2131366098);
+      this.f = this.jdField_a_of_type_AndroidViewView.findViewById(2131366099);
       this.jdField_d_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_d_of_type_AndroidViewView.setBackgroundDrawable(getResources().getDrawable(2130839674));
-      this.g = this.jdField_a_of_type_AndroidViewView.findViewById(2131366013);
-      this.h = this.jdField_a_of_type_AndroidViewView.findViewById(2131366014);
-      this.i = this.jdField_a_of_type_AndroidViewView.findViewById(2131366015);
-      this.g.setBackgroundResource(2130839674);
+      this.jdField_d_of_type_AndroidViewView.setBackgroundDrawable(getResources().getDrawable(2130839695));
+      this.g = this.jdField_a_of_type_AndroidViewView.findViewById(2131366114);
+      this.h = this.jdField_a_of_type_AndroidViewView.findViewById(2131366115);
+      this.i = this.jdField_a_of_type_AndroidViewView.findViewById(2131366116);
+      this.g.setBackgroundResource(2130839695);
       this.g.setOnClickListener(this);
       this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.addHeaderView(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_Avsq = ((avsq)this.app.getManager(14));
+      this.jdField_a_of_type_Awyr = ((awyr)this.app.getManager(QQManagerFactory.EMOTICON_MANAGER));
       paramBundle = super.getIntent();
       this.jdField_b_of_type_Int = paramBundle.getIntExtra("extra_launch_mode", 1);
       this.jdField_a_of_type_JavaLangRunnable = new EmosmActivity.5(this);
       this.jdField_a_of_type_JavaLangRunnable.run();
-      this.jdField_a_of_type_Arbl = new arbl(this, this.jdField_a_of_type_JavaUtilArrayList);
-      this.jdField_a_of_type_Arbl.jdField_a_of_type_Int = -16745986;
-      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setAdapter(this.jdField_a_of_type_Arbl);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setDropListener(this.jdField_a_of_type_Arbx);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setRemoveListener(this.jdField_a_of_type_Arcb);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setOnItemClickListener(new adge(this));
+      this.jdField_a_of_type_Asfv = new asfv(this, this.jdField_a_of_type_JavaUtilArrayList);
+      this.jdField_a_of_type_Asfv.jdField_a_of_type_Int = -16745986;
+      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setAdapter(this.jdField_a_of_type_Asfv);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setDropListener(this.jdField_a_of_type_Asgh);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setRemoveListener(this.jdField_a_of_type_Asgl);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setOnItemClickListener(new adxk(this));
       this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Aren = new adgf(this);
-      area.a().a(this.jdField_a_of_type_Aren);
-      this.jdField_a_of_type_Areo = new adgg(this);
-      area.a().a(this.jdField_a_of_type_Areo);
+      this.jdField_a_of_type_Asit = new adxl(this);
+      asig.a().a(this.jdField_a_of_type_Asit);
+      this.jdField_a_of_type_Asiu = new adxm(this);
+      asig.a().a(this.jdField_a_of_type_Asiu);
       this.jdField_a_of_type_Int = paramBundle.getIntExtra("extra_launch_source", 2);
       if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 1))
       {
         this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
         this.jdField_b_of_type_Boolean = false;
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131691980);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692070);
         this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setDragEnabled(false);
-        this.jdField_a_of_type_Arbl.a(false);
-        this.jdField_a_of_type_Arbl.notifyDataSetChanged();
+        this.jdField_a_of_type_Asfv.a(false);
+        this.jdField_a_of_type_Asfv.notifyDataSetChanged();
       }
       g();
       b(1);
-      this.jdField_a_of_type_Bhht = new bhht(this);
-      super.addObserver(this.jdField_a_of_type_Amrh);
-      bcef.b(this.app, "CliOper", "", "", "ep_mall", "View_mine", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Bisl = new bisl(this);
+      super.addObserver(this.jdField_a_of_type_Antv);
+      bdla.b(this.app, "CliOper", "", "", "ep_mall", "View_mine", 0, 0, "", "", "", "");
       bool = true;
     }
     catch (OutOfMemoryError paramBundle)
@@ -451,9 +453,9 @@ public class EmosmActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    super.removeObserver(this.jdField_a_of_type_Amrh);
-    area.a().b(this.jdField_a_of_type_Aren);
-    area.a().b(this.jdField_a_of_type_Areo);
+    super.removeObserver(this.jdField_a_of_type_Antv);
+    asig.a().b(this.jdField_a_of_type_Asit);
+    asig.a().b(this.jdField_a_of_type_Asiu);
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView != null) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.c();
     }
@@ -476,7 +478,7 @@ public class EmosmActivity
     if (QLog.isColorLevel()) {
       QLog.d("EmosmActivity", 2, "emosm activity ..............onResume");
     }
-    ((amrg)this.app.getBusinessHandler(12)).a(0, 0);
+    ((antu)this.app.getBusinessHandler(BusinessHandlerFactory.HANDLER_EMOSM)).a(0, 0);
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView != null) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a();
     }
@@ -488,21 +490,21 @@ public class EmosmActivity
     if ((this.jdField_a_of_type_AndroidWidgetButton != null) && (this.jdField_a_of_type_AndroidWidgetButton.getVisibility() == 0)) {
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
     }
-    this.jdField_a_of_type_Avsq.a(0, new adfy(this));
+    this.jdField_a_of_type_Awyr.a(0, new adxe(this));
   }
   
   public void f()
   {
     if (this.jdField_d_of_type_Boolean) {
-      this.jdField_a_of_type_Avsq.a(0, new adfz(this));
+      this.jdField_a_of_type_Awyr.a(0, new adxf(this));
     }
   }
   
   public void finish()
   {
-    area.a().b(this.jdField_a_of_type_Aren);
-    area.a().b(this.jdField_a_of_type_Areo);
-    this.jdField_a_of_type_Arbl.b();
+    asig.a().b(this.jdField_a_of_type_Asit);
+    asig.a().b(this.jdField_a_of_type_Asiu);
+    this.jdField_a_of_type_Asfv.b();
     super.finish();
   }
   
@@ -512,9 +514,9 @@ public class EmosmActivity
     {
       if (this.jdField_b_of_type_Boolean)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131691980);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692070);
         this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setDragEnabled(false);
-        this.jdField_a_of_type_Arbl.a(false);
+        this.jdField_a_of_type_Asfv.a(false);
         this.jdField_b_of_type_Boolean = false;
         this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
         a(this.jdField_b_of_type_Boolean);
@@ -538,49 +540,49 @@ public class EmosmActivity
       if (!NetworkUtil.isNetSupport(this))
       {
         localObject1 = new QQToast(this);
-        ((QQToast)localObject1).a(2130839590);
+        ((QQToast)localObject1).a(2130839611);
         ((QQToast)localObject1).d(1500);
-        ((QQToast)localObject1).a(amtj.a(2131703162));
+        ((QQToast)localObject1).a(anvx.a(2131703513));
         ((QQToast)localObject1).b(0);
       }
       else
       {
-        this.jdField_a_of_type_Bhht.a(getString(2131691794));
-        this.jdField_a_of_type_Bhht.show();
-        Object localObject2 = this.jdField_a_of_type_Arbl.a();
+        this.jdField_a_of_type_Bisl.a(getString(2131691882));
+        this.jdField_a_of_type_Bisl.show();
+        Object localObject2 = this.jdField_a_of_type_Asfv.a();
         if (((List)localObject2).size() > 0)
         {
           URLDrawable.clearMemoryCache();
-          localObject1 = (amrg)this.app.getBusinessHandler(12);
+          localObject1 = (antu)this.app.getBusinessHandler(BusinessHandlerFactory.HANDLER_EMOSM);
           ArrayList localArrayList = new ArrayList();
           localObject2 = ((List)localObject2).iterator();
           while (((Iterator)localObject2).hasNext()) {
             localArrayList.add(Integer.valueOf(Integer.parseInt(((EmoticonPackage)((Iterator)localObject2).next()).epId)));
           }
-          ((amrg)localObject1).a(localArrayList);
+          ((antu)localObject1).a(localArrayList);
           this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
           if (QLog.isColorLevel()) {
             QLog.d("EmosmActivity", 2, "delete packages:" + localArrayList.toString());
           }
-          bcef.b(this.app, "CliOper", "", "", "EmosSetting", "EpDelete", 0, 0, "", "", "", "");
+          bdla.b(this.app, "CliOper", "", "", "EmosSetting", "EpDelete", 0, 0, "", "", "", "");
           if (this.jdField_b_of_type_Int == 1)
           {
-            bcef.b(this.app, "dc00898", "", "", "0X800AB12", "0X800AB12", localArrayList.size(), 0, "", "", "", "");
+            bdla.b(this.app, "dc00898", "", "", "0X800AB12", "0X800AB12", localArrayList.size(), 0, "", "", "", "");
           }
           else
           {
-            bcef.b(this.app, "dc00898", "", "", "0X800AB19", "0X800AB19", localArrayList.size(), 0, "", "", "", "");
+            bdla.b(this.app, "dc00898", "", "", "0X800AB19", "0X800AB19", localArrayList.size(), 0, "", "", "", "");
             continue;
             startActivity(new Intent(this, FavEmosmManageActivity.class));
-            bcef.b(this.app, "dc00898", "", "", "0X800AB0B", "0X800AB0B", 0, 0, "", "", "", "");
+            bdla.b(this.app, "dc00898", "", "", "0X800AB0B", "0X800AB0B", 0, 0, "", "", "", "");
             continue;
             localObject1 = new Intent(this, FavEmosmManageActivity.class);
             ((Intent)localObject1).putExtra("camera_emo_mode", 1);
             startActivity((Intent)localObject1);
-            bcef.b(this.app, "dc00898", "", "", "0X800AB0C", "0X800AB0C", 0, 0, "", "", "", "");
+            bdla.b(this.app, "dc00898", "", "", "0X800AB0C", "0X800AB0C", 0, 0, "", "", "", "");
             continue;
             b(2);
-            bcef.b(this.app, "dc00898", "", "", "0X800AB0D", "0X800AB0D", 0, 0, "", "", "", "");
+            bdla.b(this.app, "dc00898", "", "", "0X800AB0D", "0X800AB0D", 0, 0, "", "", "", "");
           }
         }
       }
@@ -604,7 +606,7 @@ public class EmosmActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.EmosmActivity
  * JD-Core Version:    0.7.0.1
  */

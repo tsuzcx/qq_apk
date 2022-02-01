@@ -1,17 +1,13 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+import android.support.annotation.NonNull;
+import cooperation.qqreader.net.BaseCgiTask;
 
-public class bmfq
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface bmfq
 {
-  public bmfq(AEEditorAILoadingView paramAEEditorAILoadingView) {}
+  public abstract void a(@NonNull bmfs parambmfs);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    AEEditorAILoadingView.c(this.a).setAlpha(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-  }
+  public abstract void a(BaseCgiTask paramBaseCgiTask, String paramString);
+  
+  public abstract void b(@NonNull bmfs parambmfs);
 }
 
 

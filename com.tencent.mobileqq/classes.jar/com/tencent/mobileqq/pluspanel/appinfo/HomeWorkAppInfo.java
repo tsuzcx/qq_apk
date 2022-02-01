@@ -1,13 +1,14 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import agwt;
+import ahpt;
+import ahvi;
 import android.content.Intent;
 import android.text.TextUtils;
-import ayfu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.BaseApplication;
 
@@ -16,7 +17,7 @@ public class HomeWorkAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130843802;
+    return 2130843840;
   }
   
   public int getAppID()
@@ -37,18 +38,18 @@ public class HomeWorkAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131690726);
+    return BaseApplicationImpl.getContext().getString(2131690803);
   }
   
-  public void onPlusPanelAppClick(ayfu paramayfu, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    paramayfu = new Intent(paramBaseChatPie.getActivity(), QQBrowserActivity.class);
+    paramahvi = new Intent(paramBaseChatPie.getActivity(), QQBrowserActivity.class);
     if (TextUtils.isEmpty(this.url)) {
       return;
     }
-    paramayfu.putExtra("url", this.url.replace("$GCODE$", paramSessionInfo.curFriendUin));
-    paramBaseChatPie.getActivity().startActivity(paramayfu);
-    agwt.a(paramBaseChatPie.app, "0X8005CBA", paramSessionInfo.curType);
+    paramahvi.putExtra("url", this.url.replace("$GCODE$", paramSessionInfo.curFriendUin));
+    paramBaseChatPie.getActivity().startActivity(paramahvi);
+    ahpt.a(paramBaseChatPie.app, "0X8005CBA", paramSessionInfo.curType);
   }
 }
 

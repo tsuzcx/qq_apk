@@ -1,20 +1,14 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
-import com.tencent.mobileqq.dating.MsgBoxListActivity.6.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.View;
+import com.tencent.mobileqq.conditionsearch.widget.TimeSelectView;
 
 public class aqur
-  implements awrb
+  implements blgg
 {
-  public aqur(MsgBoxListActivity paramMsgBoxListActivity) {}
+  public aqur(TimeSelectView paramTimeSelectView) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MsgBoxListActivity", 2, "follow onReceive errorCode = [" + paramInt + "]");
-    }
-    this.a.b.post(new MsgBoxListActivity.6.1(this, paramInt));
+    TimeSelectView.a(this.a, paramView, 1);
   }
 }
 

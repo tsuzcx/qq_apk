@@ -1,11 +1,12 @@
 package com.tencent.hippy.qq.module;
 
+import aady;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import auun;
-import auus;
+import awam;
+import awar;
 import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -19,7 +20,6 @@ import com.tencent.mtt.hippy.modules.Promise;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
-import zon;
 
 @HippyNativeModule(name="QQUiModule")
 public class QQUiModule
@@ -27,10 +27,10 @@ public class QQUiModule
 {
   static final String CLASSNAME = "QQUiModule";
   private static final int CODE_OPEN_VIEW = 101;
-  zon mClient = null;
+  aady mClient = null;
   private Promise mOpenViewPromise;
-  private auun mShareMsgImpl;
-  auus mShareMsgImplListener = new QQUiModule.5(this);
+  private awam mShareMsgImpl;
+  awar mShareMsgImplListener = new QQUiModule.5(this);
   private Promise mShareMsgPromise;
   
   public QQUiModule(HippyEngineContext paramHippyEngineContext)
@@ -119,14 +119,14 @@ public class QQUiModule
     //   150: aload 7
     //   152: invokevirtual 111	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   155: ifeq +78 -> 233
-    //   158: new 128	bdpa
+    //   158: new 128	bewd
     //   161: dup
     //   162: aload 6
     //   164: checkcast 63	com/tencent/mobileqq/app/BaseActivity
     //   167: aload 8
-    //   169: invokespecial 131	bdpa:<init>	(Lcom/tencent/mobileqq/app/BaseActivity;Landroid/os/Bundle;)V
+    //   169: invokespecial 131	bewd:<init>	(Lcom/tencent/mobileqq/app/BaseActivity;Landroid/os/Bundle;)V
     //   172: aload 6
-    //   174: invokevirtual 135	bdpa:a	(Landroid/app/Activity;)V
+    //   174: invokevirtual 135	bewd:a	(Landroid/app/Activity;)V
     //   177: iconst_0
     //   178: istore 5
     //   180: iconst_1
@@ -161,14 +161,14 @@ public class QQUiModule
     //   235: aload 7
     //   237: invokevirtual 111	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   240: ifeq -63 -> 177
-    //   243: new 155	bdqv
+    //   243: new 155	bexy
     //   246: dup
     //   247: aload 6
     //   249: checkcast 63	com/tencent/mobileqq/app/BaseActivity
     //   252: aload 8
-    //   254: invokespecial 156	bdqv:<init>	(Lcom/tencent/mobileqq/app/BaseActivity;Landroid/os/Bundle;)V
+    //   254: invokespecial 156	bexy:<init>	(Lcom/tencent/mobileqq/app/BaseActivity;Landroid/os/Bundle;)V
     //   257: aload 6
-    //   259: invokevirtual 157	bdqv:a	(Landroid/app/Activity;)V
+    //   259: invokevirtual 157	bexy:a	(Landroid/app/Activity;)V
     //   262: goto -85 -> 177
     //   265: astore_1
     //   266: iconst_0
@@ -232,17 +232,17 @@ public class QQUiModule
     //   393: invokevirtual 111	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   396: ifeq +459 -> 855
     //   399: aload_0
-    //   400: getfield 28	com/tencent/hippy/qq/module/QQUiModule:mClient	Lzon;
+    //   400: getfield 28	com/tencent/hippy/qq/module/QQUiModule:mClient	Laady;
     //   403: ifnonnull +17 -> 420
     //   406: aload_0
-    //   407: invokestatic 220	zon:a	()Lzon;
-    //   410: putfield 28	com/tencent/hippy/qq/module/QQUiModule:mClient	Lzon;
+    //   407: invokestatic 220	aady:a	()Laady;
+    //   410: putfield 28	com/tencent/hippy/qq/module/QQUiModule:mClient	Laady;
     //   413: aload_0
-    //   414: getfield 28	com/tencent/hippy/qq/module/QQUiModule:mClient	Lzon;
-    //   417: invokevirtual 222	zon:a	()V
+    //   414: getfield 28	com/tencent/hippy/qq/module/QQUiModule:mClient	Laady;
+    //   417: invokevirtual 222	aady:a	()V
     //   420: aload_0
-    //   421: getfield 28	com/tencent/hippy/qq/module/QQUiModule:mClient	Lzon;
-    //   424: invokevirtual 225	zon:c	()V
+    //   421: getfield 28	com/tencent/hippy/qq/module/QQUiModule:mClient	Laady;
+    //   424: invokevirtual 225	aady:c	()V
     //   427: goto +428 -> 855
     //   430: ldc 227
     //   432: aload 7
@@ -267,17 +267,17 @@ public class QQUiModule
     //   473: invokevirtual 195	android/content/Intent:putExtra	(Ljava/lang/String;J)Landroid/content/Intent;
     //   476: pop
     //   477: aload 8
-    //   479: getstatic 239	bkrk:l	Ljava/lang/String;
+    //   479: getstatic 239	bmct:l	Ljava/lang/String;
     //   482: iconst_1
     //   483: invokevirtual 232	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
     //   486: pop
     //   487: aload 8
-    //   489: getstatic 241	bkrk:e	Ljava/lang/String;
+    //   489: getstatic 241	bmct:e	Ljava/lang/String;
     //   492: ldc 243
     //   494: invokevirtual 198	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   497: pop
     //   498: aload 8
-    //   500: getstatic 246	bkrk:f	Ljava/lang/String;
+    //   500: getstatic 246	bmct:f	Ljava/lang/String;
     //   503: ldc 86
     //   505: invokevirtual 198	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   508: pop
@@ -347,7 +347,7 @@ public class QQUiModule
     //   657: invokevirtual 120	org/json/JSONObject:toString	()Ljava/lang/String;
     //   660: bipush 101
     //   662: aload 7
-    //   664: invokestatic 281	bdmy:a	(Landroid/app/Activity;Lcom/tencent/common/app/AppInterface;Ljava/lang/String;BLjava/lang/String;)Landroid/content/Intent;
+    //   664: invokestatic 281	beub:a	(Landroid/app/Activity;Lcom/tencent/common/app/AppInterface;Ljava/lang/String;BLjava/lang/String;)Landroid/content/Intent;
     //   667: astore_1
     //   668: aload_1
     //   669: ifnull +193 -> 862
@@ -488,7 +488,7 @@ public class QQUiModule
   public void downloadShortVideoFilterSo()
   {
     if (this.mClient == null) {
-      this.mClient = zon.a();
+      this.mClient = aady.a();
     }
     this.mClient.e();
   }
@@ -598,7 +598,7 @@ public class QQUiModule
     }
     Object localObject = (BaseActivity)localObject;
     if (this.mShareMsgImpl == null) {
-      this.mShareMsgImpl = new auun((Context)localObject, (Activity)localObject, ((BaseActivity)localObject).getAppInterface(), this.mShareMsgImplListener);
+      this.mShareMsgImpl = new awam((Context)localObject, (Activity)localObject, ((BaseActivity)localObject).getAppInterface(), this.mShareMsgImplListener);
     }
     try
     {

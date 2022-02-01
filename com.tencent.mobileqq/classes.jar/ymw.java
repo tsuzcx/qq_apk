@@ -1,11 +1,13 @@
-import android.widget.ImageView;
-
-class ymw
+public class ymw
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ImageView b;
+  public final String a;
+  public final yoo a;
   
-  ymw(ymv paramymv) {}
+  public ymw(yoo paramyoo, String paramString)
+  {
+    this.jdField_a_of_type_Yoo = paramyoo;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
 }
 
 

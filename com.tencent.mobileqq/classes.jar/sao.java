@@ -1,74 +1,92 @@
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-class sao
-  extends sif
+public class sao
+  extends ovx
 {
-  sao(sab paramsab) {}
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString = "";
+  @Nullable
+  private rzz jdField_a_of_type_Rzz;
+  @NotNull
+  private saa jdField_a_of_type_Saa;
+  @NotNull
+  private sad jdField_a_of_type_Sad;
+  private sdn jdField_a_of_type_Sdn;
+  private volatile boolean jdField_a_of_type_Boolean;
   
-  public int a()
+  public sao(@NotNull QQAppInterface paramQQAppInterface, @NotNull saa paramsaa, @Nullable rzz paramrzz)
   {
-    return 4;
+    super(paramsaa, true, "UploadCoverTaskStep");
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Sad = ((sad)paramQQAppInterface.getManager(QQManagerFactory.RIJ_UGC_VIDEO_PUBLISH_MANAGER));
+    this.jdField_a_of_type_Saa = paramsaa;
+    this.jdField_a_of_type_Rzz = paramrzz;
   }
   
-  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public void a()
   {
-    if (!NetworkUtil.isNetworkAvailable(sab.a(this.a)))
-    {
-      QQToast.a(sab.a(this.a), 0, amtj.a(2131715212), 0).a();
-      return;
+    super.a();
+    UgcVideo localUgcVideo = this.jdField_a_of_type_Saa.a();
+    if ((this.jdField_a_of_type_Sdn != null) && (localUgcVideo.status == UgcVideo.STATUS_UPLOADING)) {
+      this.jdField_a_of_type_Sdn.b();
     }
-    rwv.a(sab.a(this.a), sab.a(this.a));
-    paramVideoInfo.e = true;
-    sab.a(this.a).b(sab.b(this.a));
-    if ((sab.a(this.a) instanceof VideoFeedsPlayActivity)) {
-      ((VideoFeedsPlayActivity)sab.a(this.a)).c(true);
-    }
-    paramString = paramVideoInfo.k;
-    paramActionSheetItem = new Bundle();
-    paramActionSheetItem.putInt("videoDuration", paramVideoInfo.jdField_d_of_type_Int);
-    long l;
-    if (TextUtils.isEmpty(paramVideoInfo.j))
+  }
+  
+  public boolean a()
+  {
+    UgcVideo localUgcVideo = this.jdField_a_of_type_Saa.a();
+    if (!TextUtils.isEmpty(localUgcVideo.coverUrl))
     {
-      l = 0L;
-      paramActionSheetItem.putLong("publishAccountUin", l);
-      paramActionSheetItem.putString("publishAccountName", paramString);
-      paramActionSheetItem.putLong("feedsId", paramVideoInfo.jdField_d_of_type_Long);
-      paramActionSheetItem.putInt("feedsType", paramVideoInfo.h);
-      if (paramVideoInfo.a != 6) {
-        break label289;
+      i = 1;
+      if (i != 0) {
+        localUgcVideo.coverProgress = 100;
       }
-      paramInt = 1;
-      label189:
-      paramActionSheetItem.putInt("videoType", paramInt);
-      if (paramVideoInfo.g != null) {
-        break label294;
+      if ((i != 0) || (localUgcVideo.status == UgcVideo.STATUS_PAUSE)) {
+        break label64;
       }
     }
-    label289:
-    label294:
-    for (paramString = "";; paramString = paramVideoInfo.g)
+    label64:
+    for (int i = 1;; i = 0)
     {
-      ptf.a().a(sab.a(this.a), sab.a(this.a).getCurrentUin(), 2, paramString, paramVideoInfo.c, paramVideoInfo.jdField_d_of_type_JavaLangString, paramVideoInfo.b, paramVideoInfo.f + "&sourcefrom=6", paramActionSheetItem);
-      paramVideoInfo.jdField_d_of_type_Boolean = true;
-      return;
-      l = Long.valueOf(paramVideoInfo.j).longValue();
+      if ((!super.a()) || (i == 0)) {
+        break label69;
+      }
+      return true;
+      i = 0;
       break;
-      paramInt = 2;
-      break label189;
     }
+    label69:
+    return false;
   }
   
-  public int b()
+  public boolean b()
   {
-    return 6;
+    Object localObject = this.jdField_a_of_type_Saa.a();
+    if (((UgcVideo)localObject).coverPath != null) {}
+    for (String str = ((UgcVideo)localObject).coverPath;; str = "")
+    {
+      if ((!this.jdField_a_of_type_Boolean) || (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, str)))
+      {
+        this.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_JavaLangString = str;
+        QLog.i("RIJUGC.UploadCoverTaskStep", 1, "onStep begin upload cover:" + str);
+        localObject = new sap(this, (UgcVideo)localObject);
+        if (this.jdField_a_of_type_Sdn != null) {
+          this.jdField_a_of_type_Sdn.b();
+        }
+        this.jdField_a_of_type_Sdn = new sdq(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str);
+        this.jdField_a_of_type_Sdn.a((sdm)localObject);
+        this.jdField_a_of_type_Sdn.a();
+      }
+      return false;
+    }
   }
 }
 

@@ -1,32 +1,15 @@
-import android.view.View;
-import android.widget.TextView;
-import androidx.recyclerview.widget.RecyclerView.ViewHolder;
-import kotlin.Metadata;
-import kotlin.TypeCastException;
-import org.jetbrains.annotations.NotNull;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.data.AutoReplyText;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$ProfileTitleHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "profileTitleItem", "Landroid/widget/TextView;", "getProfileTitleItem", "()Landroid/widget/TextView;", "setProfileTitleItem", "(Landroid/widget/TextView;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class azal
-  extends RecyclerView.ViewHolder
+public abstract interface azal
 {
-  @NotNull
-  private TextView a;
+  public abstract void a(AutoReplyText paramAutoReplyText);
   
-  public azal(@NotNull View paramView)
-  {
-    super(paramView);
-    paramView = paramView.findViewById(2131373003);
-    if (paramView == null) {
-      throw new TypeCastException("null cannot be cast to non-null type android.widget.TextView");
-    }
-    this.a = ((TextView)paramView);
-  }
+  public abstract void a(AutoReplyText paramAutoReplyText1, AutoReplyText paramAutoReplyText2);
   
-  @NotNull
-  public final TextView a()
-  {
-    return this.a;
-  }
+  public abstract void a(AutoReplyText paramAutoReplyText, boolean paramBoolean);
+  
+  public abstract void b(@Nullable AutoReplyText paramAutoReplyText, boolean paramBoolean);
 }
 
 

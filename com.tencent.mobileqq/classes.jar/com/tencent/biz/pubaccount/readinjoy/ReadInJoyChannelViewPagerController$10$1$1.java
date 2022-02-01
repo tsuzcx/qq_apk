@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
-import ojc;
-import oje;
+import oqy;
+import ora;
 
 public class ReadInJoyChannelViewPagerController$10$1$1
   implements Runnable
 {
-  public ReadInJoyChannelViewPagerController$10$1$1(oje paramoje) {}
+  public ReadInJoyChannelViewPagerController$10$1$1(ora paramora) {}
   
   public void run()
   {
-    ojc.b(this.a.a.this$0);
+    oqy.b(this.a.a.this$0);
   }
 }
 

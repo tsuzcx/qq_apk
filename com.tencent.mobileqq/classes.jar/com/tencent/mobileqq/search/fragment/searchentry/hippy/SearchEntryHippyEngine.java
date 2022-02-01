@@ -8,7 +8,7 @@ import android.content.res.Resources;
 import android.preference.PreferenceManager;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
-import bass;
+import bbzh;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
@@ -59,7 +59,7 @@ public class SearchEntryHippyEngine
     localHippyMap1.pushString("history", RequestHistoryDataMethod.getHistoryListStr());
     localHippyMap1.pushString("guid", TKDAccountModule.getCurAccountInfo().qqNum);
     localHippyMap1.pushString("type", "homePage");
-    localHippyMap1.pushString("hint", ResourceUtil.getString(2131718004));
+    localHippyMap1.pushString("hint", ResourceUtil.getString(2131718389));
     localHippyMap1.pushString("data", SearchHippyEventEmitter.mapToJsonStr(SearchHotwordHandler.getHotwordDataMap(this.hotwordHandler, null)));
     HippyMap localHippyMap2 = new HippyMap();
     localHippyMap2.pushInt("skinMode", 0);
@@ -87,7 +87,7 @@ public class SearchEntryHippyEngine
     for (bool = true;; bool = false)
     {
       if (!bool) {
-        bass.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true);
+        bbzh.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true);
       }
       return bool;
     }

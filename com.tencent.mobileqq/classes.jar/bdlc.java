@@ -1,22 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ListView;
-import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.statistics.Reporting;
 
-class bdlc
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface bdlc
 {
-  bdlc(bdlb parambdlb) {}
+  public abstract void a();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    bdlb.a(this.a).setPadding(DisplayUtil.dip2px(bdlb.a(this.a).getContext(), 8.0F), i, 0, 0);
-  }
+  public abstract void a(Reporting paramReporting);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdlc
  * JD-Core Version:    0.7.0.1
  */

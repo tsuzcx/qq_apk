@@ -3,13 +3,13 @@ package dov.com.qq.im.ae;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import blkt;
+import bmyc;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 public class SessionWrap
   implements Parcelable
 {
-  public static final Parcelable.Creator<SessionWrap> CREATOR = new blkt();
+  public static final Parcelable.Creator<SessionWrap> CREATOR = new bmyc();
   public int a;
   public String a;
   public String b;

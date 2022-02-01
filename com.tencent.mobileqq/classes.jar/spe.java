@@ -1,18 +1,9 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
+import com.tencent.biz.pubaccount.VideoInfo;
+import java.util.List;
 
-public class spe
-  extends View.AccessibilityDelegate
+public abstract interface spe
 {
-  public spe(ReadinjoySlidingIndicator paramReadinjoySlidingIndicator) {}
-  
-  public void sendAccessibilityEvent(View paramView, int paramInt)
-  {
-    if (paramInt != 4096) {
-      super.sendAccessibilityEvent(paramView, paramInt);
-    }
-  }
+  public abstract List<ses> a(List<VideoInfo> paramList);
 }
 
 

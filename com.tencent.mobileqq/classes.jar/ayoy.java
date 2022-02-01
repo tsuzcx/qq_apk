@@ -1,32 +1,47 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.Iterator;
-import java.util.List;
+import android.widget.TextView;
+import com.tencent.mobileqq.now.widget.CircleImageView;
 
-class ayoy
-  implements View.OnClickListener
+public class ayoy
+  extends ayou
 {
-  ayoy(ayox paramayox, int paramInt) {}
+  private final int jdField_a_of_type_Int = 1000;
+  private long jdField_a_of_type_Long;
+  public RecyclerView a;
+  public View a;
+  public TextView a;
+  public CircleImageView a;
+  public TextView b;
   
-  public void onClick(View paramView)
+  public ayoy(View paramView)
   {
-    if (ayox.a(this.jdField_a_of_type_Ayox) == this.jdField_a_of_type_Int) {}
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqNowWidgetCircleImageView = ((CircleImageView)paramView.findViewById(2131363164));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380038));
+    this.b = ((TextView)paramView.findViewById(2131379934));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131367076));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370292);
+    int i = -1;
+    if (paramView.getContext() != null) {
+      i = paramView.getContext().getResources().getDimensionPixelSize(2131298817);
+    }
+    if (i > 0) {}
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      ayqx localayqx = new ayqx(i);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(localayqx);
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new ayoz(this));
+      if ((paramView.getContext() instanceof Activity))
+      {
+        paramView = (Activity)paramView.getContext();
+        this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnItemTouchListener(new aypd(paramView, new aypa(this, paramView)));
+      }
       return;
-      Iterator localIterator = ayox.a(this.jdField_a_of_type_Ayox).iterator();
-      while (localIterator.hasNext()) {
-        ((aypb)localIterator.next()).a = false;
-      }
-      ((aypb)ayox.a(this.jdField_a_of_type_Ayox).get(this.jdField_a_of_type_Int)).a = true;
-      ayox.a(this.jdField_a_of_type_Ayox, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Ayox.notifyDataSetChanged();
-      if (ayox.a(this.jdField_a_of_type_Ayox) != null) {
-        ayox.a(this.jdField_a_of_type_Ayox).a((aypb)ayox.a(this.jdField_a_of_type_Ayox).get(this.jdField_a_of_type_Int));
-      }
-      bcef.b(null, "dc00898", "", "", "0X800AB2B", "0X800AB2B", 0, 0, "0", "0", "", "");
+      i = 25;
     }
   }
 }

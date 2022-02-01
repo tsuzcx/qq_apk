@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment;
 
-import xpe;
-import xss;
-import xvv;
+import ydz;
+import yhn;
+import ykq;
 
 public class FeedSegment$16
   implements Runnable
 {
-  public FeedSegment$16(xss paramxss, int paramInt, xpe paramxpe, String paramString) {}
+  public FeedSegment$16(yhn paramyhn, int paramInt, ydz paramydz, String paramString) {}
   
   public void run()
   {
-    xvv.b("Q.qqstory.home:FeedSegment", "doScrollHorizal, findViewHolder, null, waiting done");
-    xss.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Xpe, this.jdField_a_of_type_JavaLangString, true);
+    ykq.b("Q.qqstory.home:FeedSegment", "doScrollHorizal, findViewHolder, null, waiting done");
+    yhn.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Ydz, this.jdField_a_of_type_JavaLangString, true);
   }
 }
 

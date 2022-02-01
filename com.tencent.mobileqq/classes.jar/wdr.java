@@ -1,62 +1,36 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchFeedLike;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedLike;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class wdr
-  extends vqr
+public abstract class wdr
+  extends JobSegment<ErrorMessage, ErrorMessage>
 {
-  public static final String a;
-  private List<String> a;
-  private int c;
+  protected AtomicInteger a;
+  public wds a;
   
-  static
+  public wdr()
   {
-    jdField_a_of_type_JavaLangString = vpl.a("StorySvc.feed_like_list_batch_715");
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   }
   
-  public wdr(List<String> paramList, boolean paramBoolean)
+  protected abstract void a();
+  
+  protected void a(JobContext paramJobContext, ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      this.c = i;
-      return;
+    a();
+  }
+  
+  public void a(wds paramwds)
+  {
+    this.jdField_a_of_type_Wds = paramwds;
+  }
+  
+  protected void b()
+  {
+    if (this.jdField_a_of_type_Wds != null) {
+      this.jdField_a_of_type_Wds.a(this);
     }
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public vqm a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspBatchFeedLike localRspBatchFeedLike = new qqstory_service.RspBatchFeedLike();
-    try
-    {
-      localRspBatchFeedLike.mergeFrom(paramArrayOfByte);
-      return new wds(localRspBatchFeedLike);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqBatchFeedLike localReqBatchFeedLike = new qqstory_service.ReqBatchFeedLike();
-    List localList = a(this.jdField_a_of_type_JavaUtilList);
-    localReqBatchFeedLike.feed_id_list.set(localList);
-    localReqBatchFeedLike.source.set(this.c);
-    return localReqBatchFeedLike.toByteArray();
   }
 }
 

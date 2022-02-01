@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -20,12 +21,12 @@ class TroopChatPie$13
   
   public void run()
   {
-    TroopManager localTroopManager = (TroopManager)this.this$0.app.getManager(52);
+    TroopManager localTroopManager = (TroopManager)this.this$0.app.getManager(QQManagerFactory.TROOP_MANAGER);
     TroopInfo localTroopInfo = localTroopManager.b(this.this$0.sessionInfo.curFriendUin);
     if (localTroopInfo == null) {
-      break label39;
+      break label40;
     }
-    label39:
+    label40:
     while (StringUtil.isEmpty(localTroopInfo.troopowneruin)) {
       return;
     }
@@ -34,9 +35,9 @@ class TroopChatPie$13
     String str = this.this$0.app.getCurrentAccountUin();
     StringBuilder localStringBuilder = new StringBuilder();
     int k;
-    label85:
+    label86:
     int m;
-    label88:
+    label89:
     oidb_0x899.memberlist localmemberlist;
     int n;
     if (this.a == null)
@@ -44,14 +45,14 @@ class TroopChatPie$13
       k = 0;
       m = 0;
       if (m >= k) {
-        break label278;
+        break label279;
       }
       localmemberlist = (oidb_0x899.memberlist)this.a.get(m);
       if (localmemberlist == null) {
-        break label533;
+        break label534;
       }
       if (localmemberlist.uint64_member_uin.has()) {
-        break label168;
+        break label169;
       }
       n = j;
       j = i;
@@ -64,10 +65,10 @@ class TroopChatPie$13
       j = i;
       i = m;
       m = n;
-      break label88;
+      break label89;
       k = this.a.size();
-      break label85;
-      label168:
+      break label86;
+      label169:
       long l = localmemberlist.uint64_member_uin.get();
       n = localmemberlist.uint32_privilege.get();
       if (l != 0L) {
@@ -90,20 +91,20 @@ class TroopChatPie$13
             j = i;
             i = n;
             continue;
-            label278:
+            label279:
             localTroopInfo.Administrator = localStringBuilder.toString();
             if (!TextUtils.isEmpty(str))
             {
               if (i == 0) {
-                break label499;
+                break label500;
               }
               localTroopInfo.dwCmdUinUinFlag |= 1L;
-              label312:
+              label313:
               if (j == 0) {
-                break label516;
+                break label517;
               }
             }
-            label516:
+            label517:
             for (localTroopInfo.dwAdditionalFlag |= 1L;; localTroopInfo.dwAdditionalFlag &= 0xFFFFFFFE)
             {
               if (QLog.isColorLevel()) {
@@ -122,14 +123,14 @@ class TroopChatPie$13
               this.this$0.b.removeMessages(1);
               this.this$0.b.sendEmptyMessage(1);
               return;
-              label499:
+              label500:
               localTroopInfo.dwCmdUinUinFlag &= 0xFFFFFFFE;
-              break label312;
+              break label313;
             }
           }
         }
       }
-      label533:
+      label534:
       n = i;
       i = j;
       j = n;

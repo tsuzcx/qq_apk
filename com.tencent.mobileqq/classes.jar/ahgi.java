@@ -1,12 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ahgi
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  ahgi(ahgc paramahgc) {}
+  ahgi(ahfz paramahfz) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    Object localObject = paramView.getTag();
+    if ((localObject instanceof MessageForShortVideo))
+    {
+      localObject = (MessageForShortVideo)localObject;
+      bcxg.a(paramView.getContext(), this.a.a.curFriendUin, ((MessageForShortVideo)localObject).msgTailType);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

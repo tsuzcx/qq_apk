@@ -1,4 +1,26 @@
-class snf {}
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+
+class snf
+  extends suv
+{
+  snf(smg paramsmg) {}
+  
+  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  {
+    smg.a(this.a, paramVideoInfo);
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public int c()
+  {
+    return 1;
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

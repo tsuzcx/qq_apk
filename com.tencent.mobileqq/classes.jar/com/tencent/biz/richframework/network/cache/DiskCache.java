@@ -1,6 +1,6 @@
 package com.tencent.biz.richframework.network.cache;
 
-import xvv;
+import ykq;
 
 public class DiskCache
   extends LruCache
@@ -14,7 +14,7 @@ public class DiskCache
   
   protected String getCacheTag()
   {
-    xvv.b(this.TAG, "Get cache tag[Disk]: cache");
+    ykq.b(this.TAG, "Get cache tag[Disk]: cache");
     return "protocal_cache";
   }
 }

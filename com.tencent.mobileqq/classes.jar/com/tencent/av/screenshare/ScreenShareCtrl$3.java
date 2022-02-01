@@ -2,7 +2,7 @@ package com.tencent.av.screenshare;
 
 import com.tencent.av.VideoController;
 import com.tencent.qphone.base.util.QLog;
-import lez;
+import lfe;
 
 class ScreenShareCtrl$3
   implements Runnable

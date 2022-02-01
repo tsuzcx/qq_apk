@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.mini.entry.desktop;
 
-import akhg;
-import apyt;
+import alcz;
+import arbw;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 class MiniAppDesktopLayout$3
   implements Runnable
@@ -13,9 +14,9 @@ class MiniAppDesktopLayout$3
   public void run()
   {
     MiniAppDesktopAdapter localMiniAppDesktopAdapter;
-    if (apyt.h())
+    if (arbw.h())
     {
-      boolean bool = ((akhg)this.val$activity.app.getManager(315)).a();
+      boolean bool = ((alcz)this.val$activity.app.getManager(QQManagerFactory.APPLETS_ACCOUNT_MANAGER)).a();
       localMiniAppDesktopAdapter = MiniAppDesktopLayout.access$300(this.this$0);
       if (!bool) {
         break label53;

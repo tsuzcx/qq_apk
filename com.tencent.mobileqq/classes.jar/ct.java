@@ -4,7 +4,7 @@ import com.tencent.widget.ListView;
 import com.tencent.widget.XListView;
 
 public class ct
-  implements bjsd
+  implements bldp
 {
   public ct(PrinterActivity paramPrinterActivity) {}
   

@@ -1,38 +1,36 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class aejm
-  implements PopupWindow.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public aejm(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
+  public aejm(NotificationActivity paramNotificationActivity, CheckBox paramCheckBox, boolean paramBoolean, SharedPreferences paramSharedPreferences) {}
   
-  public void onDismiss()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b = null;
-    Object localObject;
-    if ((TextPreviewTranslateActivity.a(this.a) != null) && (TextPreviewTranslateActivity.a(this.a).size() > 1))
+    try
     {
-      localObject = this.a.getResources();
-      if (!TextPreviewTranslateActivity.a(this.a)) {
-        break label76;
+      boolean bool = this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked();
+      if (this.jdField_a_of_type_Boolean != bool) {
+        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("MemoryAlertAutoClear", bool).commit();
       }
-    }
-    label76:
-    for (int i = 2130845519;; i = 2130846062)
-    {
-      localObject = ((Resources)localObject).getDrawable(i);
-      TextPreviewTranslateActivity.a(this.a).setCompoundDrawablesWithIntrinsicBounds(null, null, null, (Drawable)localObject);
+      label39:
+      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
       return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      break label39;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aejm
  * JD-Core Version:    0.7.0.1
  */

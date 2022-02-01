@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahkw;
+import aifq;
 import android.os.Bundle;
 import android.os.Message;
 import mqq.os.MqqHandler;
@@ -8,15 +8,15 @@ import mqq.os.MqqHandler;
 public class RobotChatPie$3
   implements Runnable
 {
-  public RobotChatPie$3(ahkw paramahkw) {}
+  public RobotChatPie$3(aifq paramaifq) {}
   
   public void run()
   {
-    Message localMessage = ahkw.a(this.this$0).obtainMessage(42);
+    Message localMessage = aifq.a(this.this$0).obtainMessage(42);
     Bundle localBundle = new Bundle();
     localBundle.putBoolean("showRedDot", false);
     localMessage.setData(localBundle);
-    ahkw.b(this.this$0).sendMessage(localMessage);
+    aifq.b(this.this$0).sendMessage(localMessage);
   }
 }
 

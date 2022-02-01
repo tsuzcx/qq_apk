@@ -1,37 +1,37 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import anyy;
-import anzc;
-import aobd;
-import aobk;
-import aobm;
+import apca;
+import apce;
+import apef;
+import apem;
+import apeo;
 
 public class ARTransferPromotionRenderable$11
   implements Runnable
 {
-  public ARTransferPromotionRenderable$11(aobk paramaobk) {}
+  public ARTransferPromotionRenderable$11(apem paramapem) {}
   
   public void run()
   {
-    if (aobk.a(this.this$0) == 6)
+    if (apem.a(this.this$0) == 6)
     {
-      if ((aobk.a(this.this$0) != null) && (!aobk.a(this.this$0).a.booleanValue())) {
-        aobk.a(this.this$0).b(0, 1);
+      if ((apem.a(this.this$0) != null) && (!apem.a(this.this$0).a.booleanValue())) {
+        apem.a(this.this$0).b(0, 1);
       }
-      if (((aobk.a(this.this$0).a() != 0) && (aobk.c(this.this$0))) || (aobk.a(this.this$0).a.booleanValue())) {
+      if (((apem.a(this.this$0).a() != 0) && (apem.c(this.this$0))) || (apem.a(this.this$0).a.booleanValue())) {
         break label124;
       }
       this.this$0.a();
     }
     for (;;)
     {
-      if (aobk.a(this.this$0) == null) {
-        aobk.a(this.this$0, new anyy());
+      if (apem.a(this.this$0) == null) {
+        apem.a(this.this$0, new apca());
       }
       return;
       label124:
-      if (!aobk.a(this.this$0).a.booleanValue()) {
-        aobk.a(this.this$0).c(1);
+      if (!apem.a(this.this$0).a.booleanValue()) {
+        apem.a(this.this$0).c(1);
       }
     }
   }

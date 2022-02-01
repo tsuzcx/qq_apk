@@ -1,38 +1,39 @@
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
-import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingView;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class avxu
-  extends avze
+  extends Handler
 {
-  public avxu(MultiAIOFragment paramMultiAIOFragment) {}
+  WeakReference<WatchTogetherFloatingView> a;
   
-  public void a(int paramInt)
+  public avxu(WatchTogetherFloatingView paramWatchTogetherFloatingView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioFragment", 2, "onPageSelected() called with: position = [" + paramInt + "]");
-    }
+    this.a = new WeakReference(paramWatchTogetherFloatingView);
   }
   
-  public void b(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioFragment", 2, "ViewPager onPageScrollStateChanged() called with: state = [" + paramInt + "]");
-    }
-    switch (paramInt)
+    switch (paramMessage.what)
     {
-    default: 
-      return;
-    case 0: 
-      MultiAIOFragment.a(this.a, MultiAIOFragment.a(this.a).a());
-      MultiAIOFragment.a(this.a).setViewPagerBusy(false);
-      return;
-    case 1: 
-      MultiAIOFragment.c(this.a);
-      return;
     }
-    MultiAIOFragment.c(this.a);
+    do
+    {
+      return;
+      sendEmptyMessageDelayed(2, 20000L);
+      return;
+      removeMessages(2);
+      return;
+      try
+      {
+        ((WatchTogetherFloatingView)this.a.get()).a();
+        return;
+      }
+      catch (NullPointerException paramMessage) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("WatchTogetherFloatingView", 2, "MESSAGE_WAIT_LOADING END, but View missing");
   }
 }
 

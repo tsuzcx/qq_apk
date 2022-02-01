@@ -1,39 +1,29 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class akii
-  implements View.OnClickListener
+public class akii
+  implements DialogInterface.OnClickListener
 {
-  akii(akho paramakho) {}
+  public akii(DialogBaseActivity paramDialogBaseActivity, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.c != null) && ("1600000104".equals(this.a.c.trim())))
+    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_Boolean)
     {
-      if (this.a.jdField_b_of_type_Long == 77313L) {
-        this.a.jdField_b_of_type_Boolean = true;
-      }
-      this.a.d();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+      paramDialogInterface = new Intent(BaseActivity.sTopActivity, SplashActivity.class);
+      paramDialogInterface.putExtra("main_tab_id", 1);
+      paramDialogInterface.setFlags(603979776);
+      BaseActivity.sTopActivity.startActivity(paramDialogInterface);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.finish();
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.app, "dc00898", "", "", "0X8006AA6", "0X8006AA6", 0, 0, "", "", "", "");
       return;
-      Intent localIntent = new Intent(akho.a(this.a), QRLoginMgrActivity.class);
-      localIntent.putExtra("loginInfo", this.a.jdField_b_of_type_JavaLangString);
-      localIntent.putExtra("appType", this.a.jdField_b_of_type_Int);
-      localIntent.putExtra("subappid", this.a.a);
-      localIntent.putExtra("clientType", this.a.jdField_b_of_type_Long);
-      akho.a(this.a).startActivity(localIntent);
-      bcef.a(akho.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 10, 0, "", "", "", "");
-      if (this.a.jdField_b_of_type_Long == 77313L) {
-        bcef.b(akho.a(this.a).app, "dc00898", "", "", "0X8008880", "0X8008880", 0, 0, "", "", "", "");
-      }
     }
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.finish();
   }
 }
 

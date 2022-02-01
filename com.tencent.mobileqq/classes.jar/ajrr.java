@@ -1,12 +1,30 @@
-import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment.3.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajrr
-  extends ajqk
+  implements anze
 {
-  protected ajrr(AlbumListFragment paramAlbumListFragment)
+  public ajrr(ChatHistoryC2CDateFragment paramChatHistoryC2CDateFragment) {}
+  
+  public void a(anze paramanze) {}
+  
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    super(paramAlbumListFragment);
+    if (QLog.isColorLevel()) {
+      QLog.d(ChatHistoryC2CDateFragment.b(), 2, "onGetRoamMsgForDate " + paramBoolean);
+    }
+    this.a.p();
+    if (paramBoolean)
+    {
+      ThreadManagerV2.executeOnSubThread(new ChatHistoryC2CDateFragment.3.1(this));
+      return;
+    }
+    this.a.c(this.a.getString(2131690767));
   }
+  
+  public void b(int paramInt1, int paramInt2, Object paramObject) {}
 }
 
 

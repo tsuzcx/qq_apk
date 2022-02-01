@@ -1,20 +1,25 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class zxl
-  implements Downloader.DownloadListener
+public class zxl
+  implements View.OnClickListener
 {
-  zxl(zxj paramzxj, zwt paramzwt, String paramString) {}
+  public zxl(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment, zwv paramzwv) {}
   
-  public void onDownloadCanceled(String paramString) {}
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult) {}
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  public void onClick(View paramView)
   {
-    zxj.a(this.jdField_a_of_type_Zxj, this.jdField_a_of_type_Zwt, zxg.a().b(this.jdField_a_of_type_JavaLangString));
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Zwv.a.poster.registerCertifiedAccountUrl.get()))
+    {
+      zqm.a(this.jdField_a_of_type_Zwv.a.poster.registerCertifiedAccountUrl.get());
+      aanb.b(this.jdField_a_of_type_Zwv.a.poster.id.get(), "auth_person", "apply_clk", 0, 0, new String[0]);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

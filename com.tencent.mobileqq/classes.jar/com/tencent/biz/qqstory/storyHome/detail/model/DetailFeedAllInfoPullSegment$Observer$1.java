@@ -2,33 +2,33 @@ package com.tencent.biz.qqstory.storyHome.detail.model;
 
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tribe.async.async.JobContext;
-import xgs;
-import xgt;
-import xgu;
-import xgv;
-import xhh;
-import xvv;
+import xvn;
+import xvo;
+import xvp;
+import xvq;
+import xwc;
+import ykq;
 
 public class DetailFeedAllInfoPullSegment$Observer$1
   implements Runnable
 {
-  public DetailFeedAllInfoPullSegment$Observer$1(xgv paramxgv, boolean paramBoolean) {}
+  public DetailFeedAllInfoPullSegment$Observer$1(xvq paramxvq, boolean paramBoolean) {}
   
   public void run()
   {
     int i1 = 0;
-    if (xgs.a(this.jdField_a_of_type_Xgv.a).isJobCancelled())
+    if (xvn.a(this.jdField_a_of_type_Xvq.a).isJobCancelled())
     {
-      xvv.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "stream cancel on all function completed.");
+      ykq.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "stream cancel on all function completed.");
       return;
     }
     if (this.jdField_a_of_type_Boolean)
     {
-      Object localObject = (Integer)this.jdField_a_of_type_Xgv.getFunctionResult(0);
+      Object localObject = (Integer)this.jdField_a_of_type_Xvq.getFunctionResult(0);
       if (localObject != null) {
-        xgs.a(this.jdField_a_of_type_Xgv.a).a.mViewTotalTime = ((Integer)localObject).intValue();
+        xvn.a(this.jdField_a_of_type_Xvq.a).a.mViewTotalTime = ((Integer)localObject).intValue();
       }
-      if (xgs.a(this.jdField_a_of_type_Xgv.a).a()) {}
+      if (xvn.a(this.jdField_a_of_type_Xvq.a).a()) {}
       int m;
       int n;
       for (int j = 2;; j = 1)
@@ -42,12 +42,12 @@ public class DetailFeedAllInfoPullSegment$Observer$1
           if (k >= j) {
             break;
           }
-          localObject = (xgu)this.jdField_a_of_type_Xgv.getFunctionResult(i);
+          localObject = (xvp)this.jdField_a_of_type_Xvq.getFunctionResult(i);
           if (localObject != null)
           {
-            xgs.a(this.jdField_a_of_type_Xgv.a).b(((xgu)localObject).jdField_a_of_type_JavaUtilList, true, ((xgu)localObject).jdField_a_of_type_Boolean);
-            xgs.a(this.jdField_a_of_type_Xgv.a).b(((xgu)localObject).jdField_a_of_type_Boolean, ((xgu)localObject).jdField_a_of_type_Int);
-            xgs.a(this.jdField_a_of_type_Xgv.a).a.mHadLike = ((xgu)localObject).b;
+            xvn.a(this.jdField_a_of_type_Xvq.a).b(((xvp)localObject).jdField_a_of_type_JavaUtilList, true, ((xvp)localObject).jdField_a_of_type_Boolean);
+            xvn.a(this.jdField_a_of_type_Xvq.a).b(((xvp)localObject).jdField_a_of_type_Boolean, ((xvp)localObject).jdField_a_of_type_Int);
+            xvn.a(this.jdField_a_of_type_Xvq.a).a.mHadLike = ((xvp)localObject).b;
           }
           k += 1;
           i += 1;
@@ -55,21 +55,21 @@ public class DetailFeedAllInfoPullSegment$Observer$1
       }
       while (n < j)
       {
-        localObject = (xgt)this.jdField_a_of_type_Xgv.getFunctionResult(m);
+        localObject = (xvo)this.jdField_a_of_type_Xvq.getFunctionResult(m);
         if (localObject != null)
         {
-          xgs.a(this.jdField_a_of_type_Xgv.a).a(((xgt)localObject).jdField_a_of_type_JavaUtilList, true, ((xgt)localObject).jdField_a_of_type_Boolean);
-          xgs.a(this.jdField_a_of_type_Xgv.a).a(((xgt)localObject).jdField_a_of_type_Boolean, ((xgt)localObject).jdField_a_of_type_Int);
-          xgs.a(this.jdField_a_of_type_Xgv.a).a(((xgt)localObject).jdField_a_of_type_Boolean, ((xgt)localObject).b);
-          xgs.a(this.jdField_a_of_type_Xgv.a).a(((xgt)localObject).jdField_a_of_type_Boolean, ((xgt)localObject).jdField_a_of_type_JavaLangString);
+          xvn.a(this.jdField_a_of_type_Xvq.a).a(((xvo)localObject).jdField_a_of_type_JavaUtilList, true, ((xvo)localObject).jdField_a_of_type_Boolean);
+          xvn.a(this.jdField_a_of_type_Xvq.a).a(((xvo)localObject).jdField_a_of_type_Boolean, ((xvo)localObject).jdField_a_of_type_Int);
+          xvn.a(this.jdField_a_of_type_Xvq.a).a(((xvo)localObject).jdField_a_of_type_Boolean, ((xvo)localObject).b);
+          xvn.a(this.jdField_a_of_type_Xvq.a).a(((xvo)localObject).jdField_a_of_type_Boolean, ((xvo)localObject).jdField_a_of_type_JavaLangString);
         }
         n += 1;
         m += 1;
       }
-      xgs.a(this.jdField_a_of_type_Xgv.a, xgs.a(this.jdField_a_of_type_Xgv.a));
+      xvn.a(this.jdField_a_of_type_Xvq.a, xvn.a(this.jdField_a_of_type_Xvq.a));
       return;
     }
-    xgs.a(this.jdField_a_of_type_Xgv.a, new ErrorMessage(-1, "get feed interact data error."));
+    xvn.a(this.jdField_a_of_type_Xvq.a, new ErrorMessage(-1, "get feed interact data error."));
   }
 }
 

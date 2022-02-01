@@ -1,29 +1,85 @@
-import android.view.animation.Interpolator;
+import android.graphics.Canvas;
+import android.util.SparseArray;
+import android.view.View.MeasureSpec;
+import java.util.ArrayList;
+import java.util.List;
 
-class arsv
-  implements Interpolator
+public abstract class arsv
+  extends arsl<arrt>
 {
-  arsv(arsq paramarsq) {}
+  private SparseArray<List<arsw>> a = new SparseArray();
   
-  public float getInterpolation(float paramFloat)
+  public int a(Object paramObject)
   {
-    if (paramFloat == 0.0F) {
-      return 0.0F;
-    }
-    float f = paramFloat * 2.0F;
-    if (f >= 2.0F) {
-      return 1.0F;
-    }
-    paramFloat = 0.45F / 4.0F;
-    if (f < 1.0F)
+    return 0;
+  }
+  
+  public abstract arsw a(int paramInt);
+  
+  public artj a(arrt paramarrt)
+  {
+    int i = a(paramarrt.a());
+    List localList = (List)this.a.get(i);
+    Object localObject = localList;
+    if (localList == null)
     {
-      f -= 1.0F;
-      d = Math.pow(2.0D, 10.0F * f);
-      return (float)(Math.sin((f - paramFloat) * 6.283185307179586D / 0.45F) * (-0.5D * d));
+      localObject = new ArrayList();
+      this.a.put(i, localObject);
     }
-    f -= 1.0F;
-    double d = Math.pow(2.0D, -10.0F * f);
-    return (float)(Math.sin((f - paramFloat) * 6.283185307179586D / 0.45F) * (0.5D * d)) + 1.0F;
+    if (((List)localObject).isEmpty()) {
+      ((List)localObject).add(a(i));
+    }
+    localObject = (arsw)((List)localObject).remove(0);
+    a(i, (arsw)localObject, paramarrt);
+    ((arsw)localObject).a(View.MeasureSpec.makeMeasureSpec(paramarrt.f(), -2147483648), View.MeasureSpec.makeMeasureSpec(paramarrt.g(), -2147483648));
+    ((arsw)localObject).a(0, 0, ((arsw)localObject).a(), ((arsw)localObject).b());
+    paramarrt.a((arsw)localObject);
+    paramarrt.b(((arsw)localObject).a());
+    paramarrt.a(((arsw)localObject).b());
+    return new artj(((arsw)localObject).a(), ((arsw)localObject).b());
+  }
+  
+  public abstract void a(int paramInt, arsw paramarsw, arrt paramarrt);
+  
+  public void a(Canvas paramCanvas, arrt paramarrt, arru paramarru, float paramFloat1, float paramFloat2)
+  {
+    paramarru = paramarrt.a();
+    if (paramarru == null) {
+      return;
+    }
+    if (!paramarrt.i())
+    {
+      paramarru.a(View.MeasureSpec.makeMeasureSpec(paramarru.a(), 1073741824), View.MeasureSpec.makeMeasureSpec(paramarru.b(), 1073741824));
+      paramarru.a(0, 0, paramarru.a(), paramarru.b());
+      paramarrt.f(true);
+    }
+    paramCanvas.save();
+    paramCanvas.translate(paramFloat1, paramFloat2);
+    paramarru.a(paramCanvas);
+    paramCanvas.restore();
+  }
+  
+  public void a(arrt paramarrt)
+  {
+    arsw localarsw = paramarrt.a();
+    if (localarsw != null)
+    {
+      int i = a(paramarrt.a());
+      List localList = (List)this.a.get(i);
+      Object localObject = localList;
+      if (localList == null)
+      {
+        localObject = new ArrayList();
+        this.a.put(i, localObject);
+      }
+      ((List)localObject).add(localarsw);
+      paramarrt.a(null);
+    }
+  }
+  
+  public boolean a(arrl paramarrl)
+  {
+    return paramarrl instanceof arrt;
   }
 }
 

@@ -1,34 +1,19 @@
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Bitmap;
-import com.tencent.biz.pubaccount.ecshopassit.view.EcshopTabFragment;
-import com.tencent.biz.pubaccount.ecshopassit.view.EcshopWebview;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.smtt.sdk.WebView;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONObject;
 
-public class ohy
-  extends ohx
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"putData", "", "jsonObject", "Lorg/json/JSONObject;", "key", "", "value", "", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
+public final class ohy
 {
-  public ohy(EcshopTabFragment paramEcshopTabFragment, Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView, String paramString)
+  public static final void a(@NotNull JSONObject paramJSONObject, @NotNull String paramString, @Nullable Object paramObject)
   {
-    super(paramContext, paramActivity, paramAppInterface, paramTouchWebView, paramString);
-  }
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    super.onPageFinished(paramWebView, paramString);
-    EcshopTabFragment.a(this.a).setVisibility(0);
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    return super.shouldOverrideUrlLoading(paramWebView, paramString);
+    Intrinsics.checkParameterIsNotNull(paramJSONObject, "jsonObject");
+    Intrinsics.checkParameterIsNotNull(paramString, "key");
+    if (paramObject != null) {
+      paramJSONObject.put(paramString, paramObject);
+    }
   }
 }
 

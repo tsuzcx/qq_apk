@@ -1,16 +1,35 @@
-public class nna
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPCOnGetConnectionListener;
+
+class nna
+  implements EIPCOnGetConnectionListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public String c;
-  
-  public nna(nmy paramnmy, boolean paramBoolean)
+  public void onConnectBind(EIPCConnection paramEIPCConnection)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (paramEIPCConnection == null) {}
+    do
+    {
+      return;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("AVGameServerIPCModule", 4, "onConnectBind, [" + paramEIPCConnection.procName + "]");
+      }
+    } while (!TextUtils.equals(paramEIPCConnection.procName, "com.tencent.mobileqq:avgame"));
+    nmy.a(1);
+  }
+  
+  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
+  {
+    if (paramEIPCConnection == null) {}
+    do
+    {
+      return;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("AVGameServerIPCModule", 4, "onConnectUnbind, [" + paramEIPCConnection.procName + "]");
+      }
+    } while (!TextUtils.equals(paramEIPCConnection.procName, "com.tencent.mobileqq:avgame"));
+    nmy.a(2);
   }
 }
 

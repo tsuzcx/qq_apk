@@ -1,69 +1,58 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetTagList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetTagList;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.SystemClock;
+import android.preference.PreferenceManager;
+import com.tencent.mobileqq.activity.richmedia.MX3FlowNewCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.NewPreFlowCamera;
+import com.tencent.mobileqq.activity.richmedia.QQStoryFlowCallback;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.AccountDpcManager.DpcAccountNames;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 
 public class wfb
-  extends vqr<wgo>
 {
-  private static final String jdField_a_of_type_JavaLangString = vpl.a("StorySvc.get_label_list");
-  private final boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private final String jdField_b_of_type_JavaLangString;
-  private int c;
-  private final int d;
-  
-  public wfb(int paramInt1, long paramLong, String paramString, int paramInt2)
+  public static Intent a(Context paramContext, boolean paramBoolean1, Intent paramIntent, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, String paramString1, String paramString2)
   {
-    this.c = paramInt1;
-    this.jdField_b_of_type_Long = paramLong;
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.d = paramInt2;
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public wfb(String paramString, int paramInt)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.d = paramInt;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public vqm a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetTagList localRspGetTagList = new qqstory_service.RspGetTagList();
-    try
+    if (paramBoolean1)
     {
-      localRspGetTagList.mergeFrom(paramArrayOfByte);
-      return new wgo(localRspGetTagList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
+      Object localObject = NewFlowCameraActivity.class;
+      if (bdaw.d(bdaw.c)) {
+        localObject = MX3FlowNewCameraActivity.class;
       }
+      paramIntent.setComponent(new ComponentName(paramContext, (Class)localObject));
+      PreferenceManager.getDefaultSharedPreferences(paramContext).edit().putString("camera_photo_path", paramString1).commit();
+      paramIntent.putExtra("qcamera_photo_filepath", paramString1);
+      paramIntent.putExtra("support_photo_merge", true);
+      paramIntent.putExtra("activity_start_time", SystemClock.elapsedRealtime());
+      paramIntent.putExtra("video_min_frame_count", 3);
+      paramIntent.putExtra("PhotoConst.MY_UIN", paramString2);
+      paramIntent.putExtra("sv_config", DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.SV658Cfg.name(), null));
+      paramIntent.putExtra("sv_whitelist", DeviceProfileManager.a().a(DeviceProfileManager.AccountDpcManager.DpcAccountNames.picpredownload_whitelist.name()));
+      paramIntent.putExtra("flow_show_filter_red", paramBoolean2);
+      paramIntent.putExtra("flow_show_filter_red_pkg", paramBoolean3);
+      paramIntent.putExtra("edit_video_type", 10002);
+      paramIntent.putExtra("set_user_callback", QQStoryFlowCallback.class.getCanonicalName());
+      paramIntent.putExtra("enable_local_video", true);
+      paramIntent.putExtra("short_video_refer", "qqstory");
+      paramIntent.putExtra("flow_camera_video_mode", true);
+      paramIntent.putExtra("flow_camera_use_filter_function", paramBoolean4);
+      paramIntent.putExtra("flow_camera_use_3dfilter_function", bddx.a(false));
+      paramIntent.putExtra("ignore_dpc_duration", true);
+      paramIntent.putExtra("video_duration", 10);
+      return paramIntent;
     }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqGetTagList localReqGetTagList = new qqstory_service.ReqGetTagList();
-    if (this.jdField_a_of_type_Boolean)
-    {
-      localReqGetTagList.music_type.set(this.c);
-      localReqGetTagList.music_id.set(this.jdField_b_of_type_Long);
-    }
-    localReqGetTagList.start_cookie.set(this.jdField_b_of_type_JavaLangString);
-    localReqGetTagList.size.set(this.d);
-    return localReqGetTagList.toByteArray();
+    paramIntent.setComponent(new ComponentName(paramContext, NewPreFlowCamera.class));
+    paramIntent.putExtra("qcamera_photo_filepath", paramString1);
+    paramIntent.putExtra("edit_video_type", 10002);
+    paramIntent.putExtra("support_photo_merge", true);
+    paramIntent.putExtra("video_min_frame_count", 3);
+    paramIntent.putExtra("flow_show_filter_red", paramBoolean2);
+    paramIntent.putExtra("flow_show_filter_red_pkg", paramBoolean3);
+    return paramIntent;
   }
 }
 

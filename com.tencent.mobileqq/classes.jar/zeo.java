@@ -1,21 +1,25 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 
-class zeo
-  implements View.OnTouchListener
+public class zeo
+  extends zes
 {
-  zeo(zei paramzei) {}
+  public int a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public zeo(zex paramzex, View paramView, int paramInt)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      zei.a(this.a, 0);
-    }
-    if (zei.a(this.a) != null) {
-      zei.a(this.a).a(paramMotionEvent);
-    }
-    return true;
+    super(paramzex, paramView);
+    this.a = paramInt;
+  }
+  
+  public int a()
+  {
+    ykq.e("NullOptionElement", "getOptionIndex() on %d", new Object[] { Integer.valueOf(this.a) });
+    return this.a;
+  }
+  
+  public void a(CharSequence paramCharSequence)
+  {
+    ykq.e("NullOptionElement", "setText() on %d", new Object[] { Integer.valueOf(this.a) });
   }
 }
 

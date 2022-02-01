@@ -1,43 +1,14 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import java.util.Comparator;
 
-class afjc
-  extends atuh
+public class afjc
+  implements Comparator<afje>
 {
-  afjc(afiw paramafiw) {}
+  private afjc(TroopTransferActivity paramTroopTransferActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public int a(afje paramafje1, afje paramafje2)
   {
-    if ((paramBoolean) && (TextUtils.equals(paramString, this.a.sessionInfo.curFriendUin)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.tag, 2, "onBandIntimateRelationship");
-      }
-      this.a.a();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((paramBoolean) && (TextUtils.equals(paramString, this.a.sessionInfo.curFriendUin)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.tag, 2, "onUpdateIntimateRelationship");
-      }
-      this.a.a();
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (TextUtils.equals(paramString, this.a.sessionInfo.curFriendUin)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.tag, 2, "onDisbandIntimateRelationship");
-      }
-      this.a.a();
-    }
+    return paramafje1.f.compareToIgnoreCase(paramafje2.f);
   }
 }
 

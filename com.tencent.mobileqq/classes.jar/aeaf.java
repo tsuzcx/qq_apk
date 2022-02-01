@@ -1,6 +1,21 @@
-public abstract interface aeaf
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public class aeaf
+  extends BroadcastReceiver
 {
-  public abstract void a(int paramInt);
+  public aeaf(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ((this.a.jdField_a_of_type_Azrb.a.a.equals(this.a.app.getCurrentAccountUin())) && (this.a.jdField_a_of_type_Bkys != null)) {
+      this.a.jdField_a_of_type_Bkys.sendEmptyMessage(4);
+    }
+  }
 }
 
 

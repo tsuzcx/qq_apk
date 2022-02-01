@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import bfwf;
+import bhex;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -116,7 +116,7 @@ public class qfileJumpActivity
     try
     {
       super.doOnCreate(paramBundle);
-      if (!bfwf.a(this, true))
+      if (!bhex.a(this, true))
       {
         super.finish();
         return false;
@@ -188,7 +188,7 @@ public class qfileJumpActivity
   {
     try
     {
-      boolean bool = bfwf.a(this);
+      boolean bool = bhex.a(this);
       if (bool) {
         return true;
       }

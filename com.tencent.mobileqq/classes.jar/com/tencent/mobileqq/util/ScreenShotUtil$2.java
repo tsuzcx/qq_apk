@@ -3,7 +3,7 @@ package com.tencent.mobileqq.util;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.os.Handler;
-import bfsc;
+import bhat;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
@@ -12,14 +12,14 @@ import com.tencent.smtt.sdk.WebView;
 public final class ScreenShotUtil$2
   implements Runnable
 {
-  public ScreenShotUtil$2(WebView paramWebView, Canvas paramCanvas, bfsc parambfsc, Bitmap paramBitmap) {}
+  public ScreenShotUtil$2(WebView paramWebView, Canvas paramCanvas, bhat parambhat, Bitmap paramBitmap) {}
   
   public void run()
   {
     try
     {
       this.jdField_a_of_type_ComTencentSmttSdkWebView.getX5WebViewExtension().snapshotWholePage(this.jdField_a_of_type_AndroidGraphicsCanvas, false, false);
-      Object localObject = this.jdField_a_of_type_Bfsc.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      Object localObject = this.jdField_a_of_type_Bhat.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
       ThreadManagerV2.getUIHandlerV2().post(new ScreenShotUtil.2.1(this, localObject));
       return;
     }

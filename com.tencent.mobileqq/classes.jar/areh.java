@@ -1,23 +1,16 @@
-import com.tencent.mobileqq.data.CustomEmotionData;
-import java.util.List;
-
 class areh
-  extends amrn
+  implements bona
 {
-  areh(areb paramareb, Object paramObject) {}
+  areh(areg paramareg) {}
   
-  protected void onUploadReq(List<CustomEmotionData> arg1)
+  public void a(String paramString)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaLangObject.notify();
-      return;
-    }
+    ((bpqs)bogd.a(3)).a(paramString, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     areh
  * JD-Core Version:    0.7.0.1
  */

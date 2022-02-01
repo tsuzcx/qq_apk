@@ -34,7 +34,7 @@ public class LpReportServlet
     localStatistic.setValue(WnsKeys.ResultCode_i, Integer.valueOf(paramInt));
     localStatistic.setValue(WnsKeys.ToUIN, Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin()));
     localStatistic.setValue(WnsKeys.Qua, QUA.getQUA3());
-    localStatistic.setValue(WnsKeys.Build, "4810");
+    localStatistic.setValue(WnsKeys.Build, "4875");
     if ((paramInt != 0) && (!TextUtils.isEmpty(paramString)))
     {
       localStatistic.setValue(WnsKeys.Detail, paramString);

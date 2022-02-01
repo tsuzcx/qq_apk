@@ -1,17 +1,8 @@
-import android.os.Handler;
-import android.os.Message;
+import android.view.MotionEvent;
 
-class bdzg
-  extends Handler
+public abstract interface bdzg
 {
-  bdzg(bdzf parambdzf) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if ((paramMessage.what == bdzf.j) && (bdzf.e == this.a.k)) {
-      bdzf.a(this.a);
-    }
-  }
+  public abstract boolean a(MotionEvent paramMotionEvent, int paramInt1, int paramInt2);
 }
 
 

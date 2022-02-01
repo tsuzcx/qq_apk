@@ -1,11 +1,17 @@
-class affo
-  implements bcsd
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.SearchDialogDismissRunnable;
+
+public class affo
+  implements DialogInterface.OnDismissListener
 {
-  affo(affn paramaffn) {}
+  public affo(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void a(bcsi parambcsi)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.b();
+    this.a.a.postDelayed(new TroopMemberListActivity.SearchDialogDismissRunnable(this.a), 150L);
   }
 }
 

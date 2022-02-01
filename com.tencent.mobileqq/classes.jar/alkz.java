@@ -1,19 +1,50 @@
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-class alkz
-  implements AbsListView.OnScrollListener
+public class alkz
+  extends alky
 {
-  alkz(alkv paramalkv) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public alkz(Context paramContext)
   {
-    if (paramInt != 0) {
-      return;
+    this.jdField_a_of_type_JavaLangString = ("[" + anvx.a(2131697007) + "]");
+  }
+  
+  public Object a(int paramInt, bffl parambffl, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    if ((StructMsgForGeneralShare)bdof.a(paramMessageRecord.msgData) == null)
+    {
+      if (!QLog.isColorLevel()) {
+        break label136;
+      }
+      QLog.d("Navigate.UpdateMsgInfoUtil", 2, "updateMsgInfo():calendarMsg getStructMsg is null");
+      paramMessageRecord = "";
     }
-    this.a.d();
+    for (;;)
+    {
+      if ((paramObject instanceof alkz))
+      {
+        paramObject = (alkz)paramObject;
+        paramObject.jdField_a_of_type_Bffm.a(parambffl.jdField_a_of_type_Bffm);
+      }
+      for (parambffl = paramObject;; parambffl = paramObject)
+      {
+        if (!TextUtils.isEmpty(paramMessageRecord)) {
+          parambffl.jdField_a_of_type_JavaLangString = ("[" + paramMessageRecord + "]");
+        }
+        return parambffl;
+        paramMessageRecord = StructMsgForGeneralShare.remindBrief;
+        break;
+        paramObject = new alkz(BaseApplication.getContext());
+        paramObject.jdField_a_of_type_Bffm = new bffm(parambffl.jdField_a_of_type_Bffm);
+      }
+      label136:
+      paramMessageRecord = "";
+    }
   }
 }
 

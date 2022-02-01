@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/n18" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/title" android:layout_width="fill_parent" android:layout_height="@dimen/b8m" layout="@layout/ap9" />
-    <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:gravity="center_vertical" android:id="@id/nk0" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="38.0dip" android:layout_marginLeft="15.0dip" />
-    <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/njz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:gravity="center_vertical" android:id="@id/n8e" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="38.0dip" android:layout_marginLeft="15.0dip" />
-    <ListView android:id="@id/n8d" android:visibility="gone" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@android:color/transparent" android:divider="@null" android:overScrollMode="never" />
-</LinearLayout>
+    <RelativeLayout android:id="@id/mz9" android:background="@drawable/intimate_relationship_card_item" android:layout_width="fill_parent" android:layout_height="160.0dip" android:layout_marginLeft="-13.5dip" android:layout_marginTop="-5.0dip" android:layout_marginRight="-13.5dip" android:layout_marginBottom="-20.5dip">
+        <com.tencent.widget.RoundRectImageView android:id="@id/mza" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/mtp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="20.0dip">
+            <TextView android:textSize="14.0dip" android:textColor="@color/qzone_skin_feed_second_content_text_color" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/mto" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:includeFontPadding="false" />
+            <ImageView android:layout_width="7.0dip" android:layout_height="11.0dip" android:layout_marginLeft="3.0dip" android:layout_marginRight="5.0dip" android:src="@drawable/intimate_relationship_arrow" android:layout_toRightOf="@id/mto" android:layout_alignParentRight="true" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/mtm" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="17.0dip" android:layout_below="@id/mtp" />
+    </RelativeLayout>
+</RelativeLayout>

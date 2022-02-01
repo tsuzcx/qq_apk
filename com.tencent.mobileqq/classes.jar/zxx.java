@@ -1,14 +1,17 @@
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
 
 class zxx
-  implements SurfaceTexture.OnFrameAvailableListener
+  implements VSDispatchObserver.onVSRspCallBack<CertifiedAccountRead.StGetFeedDetailRsp>
 {
-  zxx(zxw paramzxw) {}
+  zxx(zxw paramzxw, zpw paramzpw) {}
   
-  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp)
   {
-    zxw.c(this.a);
+    if (this.jdField_a_of_type_Zpw != null) {
+      this.jdField_a_of_type_Zpw.a(new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), paramString, paramStGetFeedDetailRsp });
+    }
   }
 }
 

@@ -1,14 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
+import java.util.List;
 
-final class beqh
-  implements DialogInterface.OnClickListener
+class beqh
+  extends beql<UserState>
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  beqh(bepx parambepx, UserState paramUserState, List paramList)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    super(paramUserState, paramList);
+  }
+  
+  public void a(UserState paramUserState)
+  {
+    bepx.b(this.a);
+    bepx.a(this.a).a();
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

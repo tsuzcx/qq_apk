@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.nearby;
 
-import amtj;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bcji;
+import anvx;
+import bdqg;
 import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForStructing;
@@ -67,9 +67,9 @@ public class NearbyFlowerMessage
       if ((paramMessageForStructing.mMsgServiceID == 52) && (paramMessageForStructing.getItemCount() > 0))
       {
         paramMessageForStructing = paramMessageForStructing.getItemByIndex(0);
-        if ((paramMessageForStructing instanceof bcji))
+        if ((paramMessageForStructing instanceof bdqg))
         {
-          paramMessageForStructing = (bcji)paramMessageForStructing;
+          paramMessageForStructing = (bdqg)paramMessageForStructing;
           if (!paramMessageForStructing.jdField_a_of_type_Boolean) {
             paramMessageForStructing.a();
           }
@@ -107,10 +107,10 @@ public class NearbyFlowerMessage
         continue;
       }
       paramMessageForStructing = paramMessageForStructing.getItemByIndex(0);
-      if (!(paramMessageForStructing instanceof bcji)) {
+      if (!(paramMessageForStructing instanceof bdqg)) {
         continue;
       }
-      paramMessageForStructing = (bcji)paramMessageForStructing;
+      paramMessageForStructing = (bdqg)paramMessageForStructing;
       if (!paramMessageForStructing.jdField_a_of_type_Boolean)
       {
         if (QLog.isColorLevel()) {
@@ -189,7 +189,7 @@ public class NearbyFlowerMessage
           if (!this.isSend) {
             break label875;
           }
-          this.brief = (amtj.a(2131706267) + this.toName + amtj.a(2131706272));
+          this.brief = (anvx.a(2131706619) + this.toName + anvx.a(2131706624));
           if (QLog.isColorLevel()) {
             QLog.i("NearbyFlowerMessage", 2, paramMessageForStructing.jdField_a_of_type_AndroidOsBundle.toString());
           }
@@ -218,12 +218,12 @@ public class NearbyFlowerMessage
             if ((TextUtils.isEmpty(this.fromName)) || (TextUtils.equals(this.fromName, "null"))) {
               this.fromName = paramQQAppInterface.getAVNotifyCenter().a(this.sUin);
             }
-            this.brief = (this.fromName + amtj.a(2131706271) + amtj.a(2131706264));
+            this.brief = (this.fromName + anvx.a(2131706623) + anvx.a(2131706616));
             continue;
-            this.brief = (this.fromName + amtj.a(2131706263) + this.toName + amtj.a(2131706268));
+            this.brief = (this.fromName + anvx.a(2131706615) + this.toName + anvx.a(2131706620));
             continue;
             label1011:
-            this.brief = (this.sNick + amtj.a(2131706270) + this.rNick + amtj.a(2131706273));
+            this.brief = (this.sNick + anvx.a(2131706622) + this.rNick + anvx.a(2131706625));
           }
         }
       }

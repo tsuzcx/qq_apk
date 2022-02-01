@@ -1,28 +1,49 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.kingkong.UpdateManager;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
 import org.json.JSONObject;
 
-public class achb
-  extends Handler
+class achb
+  implements acgx
 {
-  public void handleMessage(Message paramMessage)
+  public boolean a(acfw paramacfw, String paramString, String... paramVarArgs)
   {
-    paramMessage = paramMessage.getData();
-    try
+    Object localObject = null;
+    if (paramacfw != null) {}
+    for (;;)
     {
-      String str = paramMessage.getString("PATCH_JSON_STRING");
-      boolean bool = paramMessage.getBoolean("PATCH_FORCE_UPDATE");
-      paramMessage = acha.a(new JSONObject(str));
-      if (paramMessage != null) {
-        UpdateManager.a(paramMessage, bool);
+      try
+      {
+        paramVarArgs = paramacfw.a();
+        paramVarArgs = achr.a(paramVarArgs);
+        localJSONObject = new JSONObject();
+        if (paramVarArgs == null) {
+          continue;
+        }
+        localJSONObject.put("lat", paramVarArgs[0]);
+        localJSONObject.put("lon", paramVarArgs[1]);
+        paramacfw.callJs(paramString, new String[] { localJSONObject.toString() });
       }
-      return;
-    }
-    catch (Exception paramMessage)
-    {
-      acgp.a("KingKongUpdateManager", "Update patch exception : " + paramMessage);
+      catch (Exception paramString)
+      {
+        JSONObject localJSONObject;
+        paramString.printStackTrace();
+        continue;
+        paramString = null;
+        continue;
+      }
+      if (paramacfw == null) {
+        continue;
+      }
+      paramString = paramacfw.a();
+      paramVarArgs = localObject;
+      if (paramacfw != null) {
+        paramVarArgs = paramacfw.a();
+      }
+      AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, false, "getLocation", paramVarArgs);
+      return true;
+      paramVarArgs = null;
+      continue;
+      localJSONObject.put("lat", JSONObject.NULL);
+      localJSONObject.put("lon", JSONObject.NULL);
     }
   }
 }

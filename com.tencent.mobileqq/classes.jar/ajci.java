@@ -1,72 +1,28 @@
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.activity.home.Conversation.43.1;
-import com.tencent.mobileqq.activity.home.Conversation.43.2;
-import com.tencent.mobileqq.activity.home.Conversation.43.3;
-import com.tencent.mobileqq.activity.home.Conversation.43.4;
-import com.tencent.mobileqq.activity.home.Conversation.43.5;
-import com.tencent.mobileqq.activity.home.Conversation.43.6;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajci
-  extends lmt
+  extends aziq
 {
-  public ajci(Conversation paramConversation) {}
+  public ajci(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
-  protected void onAudioChatting(int paramInt, String paramString1, String paramString2)
+  protected void a(boolean paramBoolean)
   {
-    this.a.a(8, paramString1, paramInt);
-    this.a.b(new Conversation.43.4(this));
-  }
-  
-  protected void onCallTimeUseUp(boolean paramBoolean, String paramString) {}
-  
-  protected void onMeetingCancel(int paramInt, long paramLong)
-  {
-    paramInt = mum.c(paramInt);
-    this.a.a(8, Long.toString(paramLong), paramInt);
-  }
-  
-  protected void onMeetingReady(int paramInt, long paramLong)
-  {
-    paramInt = mum.c(paramInt);
-    this.a.a(8, Long.toString(paramLong), paramInt);
-  }
-  
-  protected void onMemberInfo(int paramInt, long paramLong1, long paramLong2)
-  {
-    paramInt = mum.c(paramInt);
-    this.a.a(8, Long.toString(paramLong1), paramInt);
-    this.a.b(paramLong1);
-    this.a.b(new Conversation.43.1(this, paramLong1));
-  }
-  
-  protected void onMemberJoin(int paramInt, long paramLong1, long paramLong2)
-  {
-    if (paramLong2 == Long.valueOf(this.a.a.getCurrentAccountUin()).longValue()) {
-      this.a.b(new Conversation.43.2(this, paramLong1));
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContact.Manager", 2, String.format("onQueryShowBindPhonePage result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    if (paramBoolean)
+    {
+      paramBoolean = PhoneContactManagerImp.b(this.a, PhoneContactManagerImp.g(this.a));
+      PhoneContactManagerImp.c(this.a, paramBoolean);
     }
   }
   
-  protected void onMemberQuit(int paramInt, long paramLong1, long paramLong2)
+  protected void b(boolean paramBoolean)
   {
-    if (paramLong2 == Long.valueOf(this.a.a.getCurrentAccountUin()).longValue()) {
-      this.a.b(new Conversation.43.3(this, paramLong1));
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContact.Manager", 2, String.format("onSetShowBindPhonePageResult result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
-  }
-  
-  protected void onSmallScreenStateChange(String paramString)
-  {
-    super.onSmallScreenStateChange(paramString);
-    this.a.b(new Conversation.43.6(this));
-  }
-  
-  protected void onUpdateTime(String paramString1, String paramString2)
-  {
-    super.onUpdateTime(paramString1, paramString2);
-    if (!this.a.f) {
-      return;
-    }
-    this.a.b(new Conversation.43.5(this));
   }
 }
 

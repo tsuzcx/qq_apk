@@ -1,19 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-class xvm
-  implements View.OnClickListener
+public abstract interface xvm
 {
-  xvm(xvj paramxvj) {}
+  public abstract void J_();
   
-  public void onClick(View paramView)
-  {
-    if (xvj.a(this.a) != null) {
-      xvj.a(this.a).h();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void K_();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(CommentEntry paramCommentEntry, int paramInt);
+  
+  public abstract void b();
+  
+  public abstract void b(CommentEntry paramCommentEntry, int paramInt);
+  
+  public abstract void f();
 }
 
 

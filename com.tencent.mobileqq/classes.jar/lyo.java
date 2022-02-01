@@ -1,20 +1,31 @@
-import android.telephony.PhoneStateListener;
-import com.tencent.av.smallscreen.BaseSmallScreenService;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.av.ReqGroupVideo.ReqShareBackflowVerify;
+import com.tencent.av.ReqGroupVideo.RspShareBackflowVerify;
+import com.tencent.av.share.AVSchema;
+import com.tencent.av.share.AVSchema.MyMsgListener.1;
 
 public class lyo
-  extends PhoneStateListener
+  extends lgn<ReqGroupVideo.ReqShareBackflowVerify, ReqGroupVideo.RspShareBackflowVerify>
 {
-  public lyo(BaseSmallScreenService paramBaseSmallScreenService) {}
+  public lyn a;
   
-  public void onCallStateChanged(int paramInt, String paramString)
+  public lyo(AVSchema paramAVSchema, lyn paramlyn)
   {
-    super.onCallStateChanged(paramInt, paramString);
-    this.a.a(paramInt, paramString);
+    this.jdField_a_of_type_Lyn = paramlyn;
+  }
+  
+  public void a(long paramLong, boolean paramBoolean, ReqGroupVideo.ReqShareBackflowVerify paramReqShareBackflowVerify, ReqGroupVideo.RspShareBackflowVerify paramRspShareBackflowVerify, Object paramObject)
+  {
+    if (this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached()) {
+      return;
+    }
+    new Handler(Looper.getMainLooper()).post(new AVSchema.MyMsgListener.1(this, paramRspShareBackflowVerify, paramLong));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lyo
  * JD-Core Version:    0.7.0.1
  */

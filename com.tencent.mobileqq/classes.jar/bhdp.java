@@ -1,16 +1,20 @@
-import android.view.animation.Interpolator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class bhdp
-  implements Interpolator
+final class bhdp
+  implements DialogInterface.OnClickListener
 {
-  public float getInterpolation(float paramFloat)
+  bhdp(QQCustomDialog paramQQCustomDialog) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return (float)(Math.pow(paramFloat - 1.0D, 3.0D) + 1.0D);
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhdp
  * JD-Core Version:    0.7.0.1
  */

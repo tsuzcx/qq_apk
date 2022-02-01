@@ -1,18 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qqmini.proxyimpl.MediaChooseJsProxyImpl.2;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.open.agent.GroupListOpenFrame;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bjdg
-  implements DialogInterface.OnClickListener
+class bjdg
+  implements View.OnClickListener
 {
-  public bjdg(MediaChooseJsProxyImpl.2 param2) {}
+  bjdg(bjdf parambjdf, int paramInt, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    bjde.a(this.a.this$0, this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_Boolean, this.a.jdField_a_of_type_Int);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("group_index", this.jdField_a_of_type_Int);
+    localBundle.putString("group_name", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Bjdf.a.a.a(1, localBundle);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,113 +1,144 @@
+import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.graphics.BitmapFactory.Options;
+import android.os.Build.VERSION;
+import android.util.DisplayMetrics;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.data.ApolloActionPackage;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import com.tencent.mobileqq.transfile.FileDownloadFailedException;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.OutputStream;
+import org.apache.http.Header;
+
 public class ankk
-  extends ankl
+  extends AbsDownloader
 {
-  static final byte[] a = { 13, 10 };
-  private static final byte[] jdField_b_of_type_ArrayOfByte = { 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 43, 47 };
-  private static final byte[] jdField_c_of_type_ArrayOfByte = { 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 45, 95 };
-  private static final byte[] d = { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, 62, -1, 63, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1, -1, -1, -1, -1, -1, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, -1, -1, -1, -1, 63, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51 };
-  private final int jdField_b_of_type_Int;
-  private final int jdField_c_of_type_Int;
-  private final byte[] e;
-  private final byte[] f;
-  private final byte[] g;
+  private BitmapFactory.Options a;
+  protected BaseApplicationImpl a;
   
-  public ankk()
+  public ankk(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    this(0);
+    this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = paramBaseApplicationImpl;
+    this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options = new BitmapFactory.Options();
+    this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inDensity = 320;
+    this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inTargetDensity = paramBaseApplicationImpl.getResources().getDisplayMetrics().densityDpi;
+    this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inScreenDensity = paramBaseApplicationImpl.getResources().getDisplayMetrics().densityDpi;
   }
   
-  public ankk(int paramInt)
+  public File downloadImage(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    this(paramInt, a);
-  }
-  
-  public ankk(int paramInt, byte[] paramArrayOfByte)
-  {
-    this(paramInt, paramArrayOfByte, false);
-  }
-  
-  public ankk(int paramInt, byte[] paramArrayOfByte, boolean paramBoolean) {}
-  
-  public static byte[] a(String paramString)
-  {
-    return new ankk().b(paramString);
-  }
-  
-  void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, ankm paramankm)
-  {
-    if (paramankm.jdField_a_of_type_Boolean) {
-      return;
+    int j;
+    if (paramDownloadParams != null)
+    {
+      paramOutputStream = paramDownloadParams.getHeader("apollo_tasks");
+      if (paramOutputStream != null)
+      {
+        j = Integer.parseInt(paramOutputStream.getValue());
+        paramURLDrawableHandler = paramDownloadParams.getHeader("apollo_uin");
+        paramOutputStream = "";
+        if (paramURLDrawableHandler != null) {
+          paramOutputStream = paramURLDrawableHandler.getValue();
+        }
+      }
     }
-    if (paramInt2 < 0) {
-      paramankm.jdField_a_of_type_Boolean = true;
-    }
-    int i = 0;
     for (;;)
     {
-      byte[] arrayOfByte;
-      int j;
-      if (i < paramInt2)
+      try
       {
-        arrayOfByte = a(this.jdField_b_of_type_Int, paramankm);
-        j = paramArrayOfByte[paramInt1];
-        if (j == 61) {
-          paramankm.jdField_a_of_type_Boolean = true;
+        if (this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl == null) {
+          break label497;
+        }
+        paramOutputStream = (AppInterface)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getAppRuntime(paramOutputStream);
+        if (paramOutputStream != null) {
+          break label234;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloDownloader", 2, "downloadImage app is null");
+        }
+        throw new FileDownloadFailedException(9301, 0L, "qqAppInterface is null", false, false);
+      }
+      catch (Throwable paramOutputStream)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloDownloader", 2, "exception:" + paramOutputStream.getMessage());
+        }
+        paramOutputStream = BaseApplicationImpl.getContext();
+        if (Build.VERSION.SDK_INT <= 10) {
+          break label228;
         }
       }
-      else
+      int i = 4;
+      label150:
+      String str = paramOutputStream.getSharedPreferences("Last_Login", i).getString("uin", "");
+      if (this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl != null) {}
+      for (paramURLDrawableHandler = (AppInterface)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getAppRuntime(str);; paramURLDrawableHandler = null)
       {
-        if ((!paramankm.jdField_a_of_type_Boolean) || (paramankm.d == 0)) {
+        paramOutputStream = paramURLDrawableHandler;
+        if (!QLog.isColorLevel()) {
           break;
         }
-        paramArrayOfByte = a(this.jdField_b_of_type_Int, paramankm);
-      }
-      switch (paramankm.d)
-      {
-      case 1: 
-      default: 
-        throw new IllegalStateException("Impossible modulus " + paramankm.d);
-        if ((j >= 0) && (j < d.length))
+        QLog.d("ApolloDownloader", 2, "a second time: uin->" + str);
+        paramOutputStream = paramURLDrawableHandler;
+        break;
+        label228:
+        i = 0;
+        break label150;
+        label234:
+        paramOutputStream = (amme)paramOutputStream.getManager(QQManagerFactory.APOLLO_MANAGER);
+        if (paramOutputStream != null)
         {
-          j = d[j];
-          if (j >= 0)
+          if (j == 0)
           {
-            paramankm.d = ((paramankm.d + 1) % 4);
-            paramankm.jdField_a_of_type_Int = (j + (paramankm.jdField_a_of_type_Int << 6));
-            if (paramankm.d == 0)
-            {
-              j = paramankm.jdField_b_of_type_Int;
-              paramankm.jdField_b_of_type_Int = (j + 1);
-              arrayOfByte[j] = ((byte)(paramankm.jdField_a_of_type_Int >> 16 & 0xFF));
-              j = paramankm.jdField_b_of_type_Int;
-              paramankm.jdField_b_of_type_Int = (j + 1);
-              arrayOfByte[j] = ((byte)(paramankm.jdField_a_of_type_Int >> 8 & 0xFF));
-              j = paramankm.jdField_b_of_type_Int;
-              paramankm.jdField_b_of_type_Int = (j + 1);
-              arrayOfByte[j] = ((byte)(paramankm.jdField_a_of_type_Int & 0xFF));
-            }
+            paramDownloadParams = (ApolloActionPackage)paramDownloadParams.tag;
+            if (paramDownloadParams != null) {}
           }
+          do
+          {
+            return null;
+            if (paramOutputStream.b(paramDownloadParams))
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("ApolloDownloader", 2, "packageTab is exist pid=" + paramDownloadParams.packageId);
+              }
+              return paramOutputStream.a(paramDownloadParams);
+            }
+            if (paramOutputStream.a(paramDownloadParams)) {
+              return paramOutputStream.a(paramDownloadParams);
+            }
+            throw new FileDownloadFailedException(9301, 0L, "downloadImage fail", false, false);
+            paramDownloadParams = (ApolloActionData)paramDownloadParams.tag;
+          } while (paramDownloadParams == null);
+          if ((paramOutputStream.b(paramDownloadParams)) && (paramOutputStream.a(paramDownloadParams)))
+          {
+            QLog.d("ApolloDownloader", 2, "ApolloDownloader isCMSPanelPicExists, return");
+            return new File(paramOutputStream.a(paramDownloadParams));
+          }
+          if (paramOutputStream.b(paramDownloadParams, j))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ApolloDownloader", 2, "actionRes is exist aid=" + paramDownloadParams.actionId);
+            }
+            return paramOutputStream.a(paramDownloadParams, j);
+          }
+          if (paramOutputStream.a(paramDownloadParams, j)) {
+            return paramOutputStream.a(paramDownloadParams, j);
+          }
+          throw new FileDownloadFailedException(9301, 0L, "downloadImage fail", false, false);
         }
-        i += 1;
-        paramInt1 += 1;
+        return new File(AppConstants.SDCARD_PATH);
       }
+      label497:
+      paramOutputStream = null;
     }
-    paramankm.jdField_a_of_type_Int >>= 4;
-    paramInt1 = paramankm.jdField_b_of_type_Int;
-    paramankm.jdField_b_of_type_Int = (paramInt1 + 1);
-    paramArrayOfByte[paramInt1] = ((byte)(paramankm.jdField_a_of_type_Int & 0xFF));
-    return;
-    paramankm.jdField_a_of_type_Int >>= 2;
-    paramInt1 = paramankm.jdField_b_of_type_Int;
-    paramankm.jdField_b_of_type_Int = (paramInt1 + 1);
-    paramArrayOfByte[paramInt1] = ((byte)(paramankm.jdField_a_of_type_Int >> 8 & 0xFF));
-    paramInt1 = paramankm.jdField_b_of_type_Int;
-    paramankm.jdField_b_of_type_Int = (paramInt1 + 1);
-    paramArrayOfByte[paramInt1] = ((byte)(paramankm.jdField_a_of_type_Int & 0xFF));
-  }
-  
-  protected boolean a(byte paramByte)
-  {
-    return (paramByte >= 0) && (paramByte < this.f.length) && (this.f[paramByte] != -1);
   }
 }
 

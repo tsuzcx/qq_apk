@@ -1,18 +1,15 @@
 package com.tencent.mobileqq.activity.contact.recommendtroop;
 
-import adxr;
-import aihv;
-import aihw;
-import aiii;
-import aiij;
-import aiik;
-import aiil;
-import aiim;
-import aiin;
-import aiix;
-import amsw;
-import anca;
-import andd;
+import aeow;
+import ajcu;
+import ajcv;
+import ajdh;
+import ajdi;
+import ajdj;
+import ajdk;
+import ajdl;
+import ajdm;
+import ajdw;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,12 +23,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bcef;
+import anvk;
+import aoep;
+import aofu;
+import bdla;
 import com.tencent.biz.qqstory.widget.OverScrollRecyclerView;
 import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.face.FaceDrawable;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
@@ -45,10 +47,10 @@ public class TroopRecommendFriendFragment
   extends IphoneTitleBarFragment
 {
   private int jdField_a_of_type_Int = 0;
-  private aiin<aihw> jdField_a_of_type_Aiin;
-  private anca jdField_a_of_type_Anca;
-  private final andd jdField_a_of_type_Andd = new aiim(this);
+  private ajdm<ajcv> jdField_a_of_type_Ajdm;
   private View jdField_a_of_type_AndroidViewView;
+  private aoep jdField_a_of_type_Aoep;
+  private final aofu jdField_a_of_type_Aofu = new ajdl(this);
   private OverScrollRecyclerView jdField_a_of_type_ComTencentBizQqstoryWidgetOverScrollRecyclerView;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
@@ -60,75 +62,75 @@ public class TroopRecommendFriendFragment
   
   private String a(String paramString)
   {
-    amsw localamsw = (amsw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-    if (localamsw.b(paramString)) {
-      return this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131692461);
+    anvk localanvk = (anvk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    if (localanvk.b(paramString)) {
+      return this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131692563);
     }
-    if (localamsw.a(paramString, false)) {
-      return this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131698715);
+    if (localanvk.a(paramString, false)) {
+      return this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131699037);
     }
     return null;
   }
   
   private void a()
   {
-    this.jdField_a_of_type_Aiin = new aiij(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131559932);
-    this.jdField_a_of_type_Aiin.a(2131561480);
-    this.jdField_a_of_type_Aiin.a(new aiik(this));
+    this.jdField_a_of_type_Ajdm = new ajdi(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131559976);
+    this.jdField_a_of_type_Ajdm.a(2131561542);
+    this.jdField_a_of_type_Ajdm.a(new ajdj(this));
   }
   
-  private void a(aiix paramaiix, aihw paramaihw, int paramInt)
+  private void a(ajdw paramajdw, ajcv paramajcv, int paramInt)
   {
-    if ((paramaiix == null) || (paramaihw == null)) {}
+    if ((paramajdw == null) || (paramajcv == null)) {}
     Object localObject;
     do
     {
       return;
-      ((aihv)paramaiix).a = paramaihw;
-      localObject = (ImageView)paramaiix.a(2131361795);
+      ((ajcu)paramajdw).a = paramajcv;
+      localObject = (ImageView)paramajdw.a(2131361796);
       if (localObject != null) {
-        ((ImageView)localObject).setImageDrawable(FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, paramaihw.jdField_a_of_type_JavaLangString));
+        ((ImageView)localObject).setImageDrawable(FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, paramajcv.jdField_a_of_type_JavaLangString));
       }
-      localObject = (TextView)paramaiix.a(2131371791);
+      localObject = (TextView)paramajdw.a(2131371981);
       if (localObject != null) {
-        ((TextView)localObject).setText(paramaihw.jdField_b_of_type_JavaLangString);
+        ((TextView)localObject).setText(paramajcv.jdField_b_of_type_JavaLangString);
       }
-      localObject = (TextView)paramaiix.a(2131370634);
+      localObject = (TextView)paramajdw.a(2131370817);
       if (localObject != null) {
-        ((TextView)localObject).setText(paramaihw.c);
+        ((TextView)localObject).setText(paramajcv.c);
       }
-      localObject = (TroopLabelLayout)paramaiix.a(2131379217);
+      localObject = (TroopLabelLayout)paramajdw.a(2131379521);
       if (localObject != null) {
-        ((TroopLabelLayout)localObject).a(paramaihw.jdField_a_of_type_JavaUtilArrayList, paramaihw.jdField_a_of_type_Int, paramaihw.jdField_b_of_type_Int, 1);
+        ((TroopLabelLayout)localObject).a(paramajcv.jdField_a_of_type_JavaUtilArrayList, paramajcv.jdField_a_of_type_Int, paramajcv.jdField_b_of_type_Int, 1);
       }
-      localObject = (Button)paramaiix.a(2131376341);
-      paramaiix = (TextView)paramaiix.a(2131376351);
-    } while ((localObject == null) || (paramaiix == null));
-    String str = a(paramaihw.jdField_a_of_type_JavaLangString);
+      localObject = (Button)paramajdw.a(2131376596);
+      paramajdw = (TextView)paramajdw.a(2131376606);
+    } while ((localObject == null) || (paramajdw == null));
+    String str = a(paramajcv.jdField_a_of_type_JavaLangString);
     if (TextUtils.isEmpty(str))
     {
-      paramaiix.setVisibility(8);
+      paramajdw.setVisibility(8);
       ((Button)localObject).setVisibility(0);
       ((Button)localObject).setText(2131689550);
-      ((Button)localObject).setOnClickListener(new aiil(this, paramaihw));
+      ((Button)localObject).setOnClickListener(new ajdk(this, paramajcv));
       return;
     }
-    paramaiix.setVisibility(0);
-    paramaiix.setText(str);
+    paramajdw.setVisibility(0);
+    paramajdw.setText(str);
     ((Button)localObject).setVisibility(8);
   }
   
   public static void a(Context paramContext, Intent paramIntent)
   {
-    adxr.a(paramContext, paramIntent, PublicFragmentActivity.class, TroopRecommendFriendFragment.class);
+    aeow.a(paramContext, paramIntent, PublicFragmentActivity.class, TroopRecommendFriendFragment.class);
   }
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131376081);
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetOverScrollRecyclerView = ((OverScrollRecyclerView)paramView.findViewById(2131379293));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131376328);
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetOverScrollRecyclerView = ((OverScrollRecyclerView)paramView.findViewById(2131379597));
     this.jdField_a_of_type_ComTencentBizQqstoryWidgetOverScrollRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), 1, false));
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetOverScrollRecyclerView.addOnScrollListener(new aiii(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetOverScrollRecyclerView.addOnScrollListener(new ajdh(this));
   }
   
   private void a(String paramString1, String paramString2, String paramString3)
@@ -149,11 +151,11 @@ public class TroopRecommendFriendFragment
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetOverScrollRecyclerView.setAdapter(this.jdField_a_of_type_Aiin);
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetOverScrollRecyclerView.setAdapter(this.jdField_a_of_type_Ajdm);
     if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity))
     {
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 1, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131694064), 0).a();
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 1, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131694255), 0).a();
       return;
     }
     c();
@@ -161,13 +163,13 @@ public class TroopRecommendFriendFragment
   
   private void c()
   {
-    anca localanca;
+    aoep localaoep;
     String str;
     int i;
     byte[] arrayOfByte;
     if (this.jdField_a_of_type_JavaLangString != null)
     {
-      localanca = this.jdField_a_of_type_Anca;
+      localaoep = this.jdField_a_of_type_Aoep;
       str = this.jdField_a_of_type_JavaLangString;
       i = this.c;
       arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
@@ -178,7 +180,7 @@ public class TroopRecommendFriendFragment
     label55:
     for (ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;; localArrayList = null)
     {
-      localanca.a(str, 2, i, arrayOfByte, 50, localArrayList);
+      localaoep.a(str, 2, i, arrayOfByte, 50, localArrayList);
       return;
     }
   }
@@ -193,7 +195,7 @@ public class TroopRecommendFriendFragment
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Andd);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aofu);
     a(this.mContentView);
     a();
     b();
@@ -201,7 +203,7 @@ public class TroopRecommendFriendFragment
   
   public int getContentLayoutId()
   {
-    return 2131559904;
+    return 2131559948;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -209,7 +211,7 @@ public class TroopRecommendFriendFragment
     super.onCreate(paramBundle);
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = getActivity();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppInterface());
-    this.jdField_a_of_type_Anca = ((anca)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(20));
+    this.jdField_a_of_type_Aoep = ((aoep)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER));
     paramBundle = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent();
     this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("troopUin");
     this.c = paramBundle.getIntExtra("grayType", 0);
@@ -221,7 +223,7 @@ public class TroopRecommendFriendFragment
     if (QLog.isColorLevel()) {
       QLog.i("TroopRecommendFriendFragment", 2, "onCreate mSubId " + this.jdField_b_of_type_Int + " mTroopUin =" + this.jdField_a_of_type_JavaLangString + " mGrayTipType =" + this.c);
     }
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD50", "0X800AD50", 0, 0, "", "", "", "");
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD50", "0X800AD50", 0, 0, "", "", "", "");
   }
   
   public View onCreateCenterView()
@@ -234,7 +236,7 @@ public class TroopRecommendFriendFragment
   public void onDestroy()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Andd);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aofu);
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
     super.onDestroy();
@@ -243,8 +245,8 @@ public class TroopRecommendFriendFragment
   public void onStart()
   {
     super.onStart();
-    if (this.jdField_a_of_type_Aiin != null) {
-      this.jdField_a_of_type_Aiin.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Ajdm != null) {
+      this.jdField_a_of_type_Ajdm.notifyDataSetChanged();
     }
   }
   

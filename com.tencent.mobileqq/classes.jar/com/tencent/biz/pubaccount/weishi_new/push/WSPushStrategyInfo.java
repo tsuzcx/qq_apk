@@ -3,14 +3,14 @@ package com.tencent.biz.pubaccount.weishi_new.push;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import org.json.JSONObject;
-import uui;
-import uun;
+import viv;
+import vja;
 
 public class WSPushStrategyInfo
-  extends uui
+  extends viv
   implements IWSPushStrategy
 {
-  public static final Parcelable.Creator<WSPushStrategyInfo> CREATOR = new uun();
+  public static final Parcelable.Creator<WSPushStrategyInfo> CREATOR = new vja();
   public String mScheme;
   public WSPushGloryKingModel mWSPushGloryKingModel;
   public WSPushOpModel mWSPushModel;
@@ -89,7 +89,7 @@ public class WSPushStrategyInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo
  * JD-Core Version:    0.7.0.1
  */

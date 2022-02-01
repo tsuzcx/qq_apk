@@ -1,29 +1,12 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.Leba.41.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
-
-public class adpe
-  implements bcoq
+public abstract interface adpe
 {
-  public adpe(Leba paramLeba) {}
+  public abstract void a();
   
-  public void a(boolean paramBoolean)
-  {
-    QLog.i("Q.lebatab.leba", 1, "StudyModeChange onChange " + paramBoolean);
-    if (this.a.a.getLebaHelper() != null) {
-      this.a.a.getLebaHelper().c();
-    }
-    if (Looper.myLooper() != Looper.getMainLooper())
-    {
-      ThreadManagerV2.getUIHandlerV2().post(new Leba.41.1(this));
-      return;
-    }
-    this.a.X_();
-  }
+  public abstract void a(asku paramasku);
+  
+  public abstract boolean a();
+  
+  public abstract void b(asku paramasku);
 }
 
 

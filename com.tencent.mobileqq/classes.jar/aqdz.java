@@ -1,72 +1,32 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
-
-public class aqdz
-  extends aptq<aqdy>
+class aqdz
 {
-  @NonNull
-  public aqdy a(int paramInt)
-  {
-    return new aqdy();
-  }
+  static final float[] a;
   
-  @Nullable
-  public aqdy a(aptx[] paramArrayOfaptx)
+  static
   {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null))
+    int k = 0;
+    a = new float[8192];
+    int i = 0;
+    int j;
+    for (;;)
     {
-      aqdy localaqdy = aqdy.a(paramArrayOfaptx[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("WVWhiteListConfProcessor", 2, "onParsed  " + paramArrayOfaptx[0].a);
+      j = k;
+      if (i >= 8192) {
+        break;
       }
-      return localaqdy;
+      a[i] = ((float)Math.cos((i + 0.5F) / 8192.0F * 6.283186F));
+      i += 1;
     }
-    return null;
-  }
-  
-  public void a(aqdy paramaqdy)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVWhiteListConfProcessor", 2, "onUpdate " + paramaqdy.toString());
+    while (j < 360)
+    {
+      a[((int)(j * 22.755556F) & 0x1FFF)] = ((float)Math.cos(j * 0.01745329F));
+      j += 90;
     }
-  }
-  
-  public Class<aqdy> clazz()
-  {
-    return aqdy.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 207;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqdz
  * JD-Core Version:    0.7.0.1
  */

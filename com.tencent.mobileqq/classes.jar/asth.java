@@ -1,16 +1,15 @@
+import android.media.AudioManager.OnAudioFocusChangeListener;
+
 class asth
-  implements asri
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  asth(astb paramastb) {}
+  asth(astg paramastg) {}
   
-  public void a()
+  public void onAudioFocusChange(int paramInt)
   {
-    this.a.a(false, asyq.a(this.a.a.a()), this.a.c(), new asti(this));
-  }
-  
-  public void b()
-  {
-    this.a.v();
+    if ((astg.a(this.a) != null) && (paramInt == -1) && (astg.a(this.a) != null)) {
+      astg.a(this.a).c(false);
+    }
   }
 }
 

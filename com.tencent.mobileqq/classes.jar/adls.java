@@ -1,25 +1,31 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.mobileqq.statistics.StatisticCollector;
+import android.content.DialogInterface.OnClickListener;
 
-public class adls
-  implements DialogInterface.OnDismissListener
+final class adls
+  implements DialogInterface.OnClickListener
 {
-  public adls(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  adls(adnn paramadnn, int paramInt, adnm paramadnm) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!GesturePWDUnlockActivity.a(this.a))
+    if (this.jdField_a_of_type_Adnn.a)
     {
-      GesturePWDUnlockActivity.a(this.a, true);
-      return;
+      if (this.jdField_a_of_type_Int != 2) {
+        break label59;
+      }
+      bdla.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "2", "", "", "");
     }
-    this.a.e();
-    GesturePWDUtils.setGestureUnlockFailedType(this.a, 1);
-    StatisticCollector.getInstance(this.a.getBaseContext()).reportActionCount(this.a.app, this.a.app.getCurrentAccountUin(), "Gesture_pwd", "click_wrong_pwd", 0, 1, "0", null, null, null, null);
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Adnm != null) {
+        this.jdField_a_of_type_Adnm.onCancel();
+      }
+      return;
+      label59:
+      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
+        bdla.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "2", "", "", "");
+      }
+    }
   }
 }
 

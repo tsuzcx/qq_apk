@@ -1,6 +1,13 @@
-public abstract interface ajyo
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.home.Conversation;
+
+public class ajyo
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a();
+  public ajyo(Conversation paramConversation) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

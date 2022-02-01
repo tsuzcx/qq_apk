@@ -1,42 +1,36 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MainService;
-
-public class bcfk
+public abstract class bcfk
+  implements bcfj
 {
-  long a;
-  long b = 0L;
+  private int a;
+  private int b;
+  public boolean g = true;
+  public int u;
+  public int v;
   
-  public bcfk()
+  public int a()
   {
-    this.jdField_a_of_type_Long = 0L;
+    return this.a;
   }
   
-  public void a()
+  public Object a(String paramString)
   {
-    long l1 = MainService.sReceiverCpuTime;
-    long l2 = anvf.jdField_a_of_type_Long;
-    if (this.jdField_a_of_type_Long == 0L)
-    {
-      QLog.d("BatteryStats.BgCpu", 1, new Object[] { "bgPrintCpuStart msfrecv=", Long.valueOf(l1), "[", Integer.valueOf(MainService.sNativeTidOfReceiver), "], ", "  fts=", Long.valueOf(l2), "[", Integer.valueOf(anvf.jdField_a_of_type_Int), "]" });
-      this.jdField_a_of_type_Long = l1;
-      this.b = l2;
-      return;
-    }
-    c();
+    return null;
   }
   
-  public void b()
+  public void a(int paramInt1, int paramInt2)
   {
-    c();
-    this.jdField_a_of_type_Long = 0L;
-    this.b = 0L;
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
   
-  void c()
+  public int b()
   {
-    long l1 = MainService.sReceiverCpuTime;
-    long l2 = anvf.jdField_a_of_type_Long;
-    QLog.d("BatteryStats.BgCpu", 1, new Object[] { "bgPrintCpuCostSofar msfrecv=", Long.valueOf(l1 - this.jdField_a_of_type_Long), "[", Integer.valueOf(MainService.sNativeTidOfReceiver), "], ", "  fts=", Long.valueOf(l2 - this.b), "[", Integer.valueOf(anvf.jdField_a_of_type_Int), "]" });
+    return this.b;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.v = paramInt;
   }
 }
 

@@ -1,39 +1,29 @@
-import android.support.annotation.NonNull;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.view.View;
 
-public class aqia
-  extends aqgc<aqhz>
+class aqia
+  extends AnimatorListenerAdapter
 {
-  @NonNull
-  public aqhz a()
+  aqia(aqhx paramaqhx, ObjectAnimator paramObjectAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return new aqhz();
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
   }
   
-  @NonNull
-  public aqhz a(@NonNull aptx[] paramArrayOfaptx)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    return aqhz.a(paramArrayOfaptx[0].a);
-  }
-  
-  @NonNull
-  public aqhz b()
-  {
-    return new aqhz();
-  }
-  
-  public Class<aqhz> clazz()
-  {
-    return aqhz.class;
-  }
-  
-  public int type()
-  {
-    return 662;
+    if (this.jdField_a_of_type_Aqhx.c != null) {
+      this.jdField_a_of_type_Aqhx.c.setVisibility(0);
+    }
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqia
  * JD-Core Version:    0.7.0.1
  */

@@ -1,86 +1,49 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import org.json.JSONObject;
 
 public class uea
-  implements nnv
 {
-  public int a;
-  public String a;
-  private ArrayList<nph> a;
-  private int b;
-  public String b;
-  private int c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  
-  public uea(String paramString)
+  public static void a(AdData paramAdData, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((nph)localIterator.next()).a();
+    if (paramAdData == null) {
+      return;
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.b = paramInt;
-  }
-  
-  public void a(nph paramnph)
-  {
-    if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramnph)) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramnph);
+    try
+    {
+      paramJSONObject.put("visible_three", "show");
+      String str;
+      if (TextUtils.isEmpty(paramAdData.i))
+      {
+        str = paramAdData.A;
+        paramJSONObject.put("author_text", str);
+        paramJSONObject.put("title", paramAdData.b);
+        paramJSONObject.put("author_icon", paramAdData.B);
+        if (paramAdData.D != null) {
+          break label101;
+        }
+        paramJSONObject.put("dislike_text_android", "广告");
+      }
+      for (;;)
+      {
+        paramJSONObject.put("article_model", paramAdData);
+        paramJSONObject.put("seperator_visible", "show");
+        return;
+        str = paramAdData.i;
+        break;
+        label101:
+        if (!TextUtils.isEmpty(paramAdData.D)) {
+          paramJSONObject.put("dislike_text_android", paramAdData.D);
+        }
+      }
+      return;
     }
-  }
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
-  public void b(nph paramnph)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.remove(paramnph);
-  }
-  
-  public int c()
-  {
-    return this.c;
-  }
-  
-  public void loaded(String paramString, int paramInt)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((nph)localIterator.next()).loaded(paramString, paramInt);
-    }
-  }
-  
-  public void progress(int paramInt)
-  {
-    this.c = paramInt;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((nph)localIterator.next()).progress(paramInt);
-    }
+    catch (Exception paramAdData) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uea
  * JD-Core Version:    0.7.0.1
  */

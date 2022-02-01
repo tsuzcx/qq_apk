@@ -17,7 +17,7 @@ import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.S
 import com.tencent.mobileqq.widget.WebViewProgressBar;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
-import yyi;
+import znl;
 
 public class QQVasH5PayBrowserActivity$QQVasH5PayBrowserFragment
   extends WebViewFragment
@@ -64,7 +64,7 @@ public class QQVasH5PayBrowserActivity$QQVasH5PayBrowserFragment
       setRightButton(true);
       super.getWebView().setVisibility(4);
       return;
-      super.getActivity().getWindow().setBackgroundDrawableResource(2131167276);
+      super.getActivity().getWindow().setBackgroundDrawableResource(2131167296);
       break;
       label195:
       this.webView.setBackgroundColor(0);
@@ -129,13 +129,13 @@ public class QQVasH5PayBrowserActivity$QQVasH5PayBrowserFragment
   public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
     super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
-    yyi.a(1, 2131694770);
+    znl.a(1, 2131694977);
     super.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQVasH5PayBrowserActivity.QQVasH5PayBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

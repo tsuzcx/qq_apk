@@ -1,38 +1,23 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.ComicRich;
 
-public class artv
-  extends AsyncTask<Void, Void, Integer>
+public final class artv
+  implements Parcelable.Creator
 {
-  public artv(FMLocalFileActivity paramFMLocalFileActivity) {}
-  
-  protected Integer a(Void... paramVarArgs)
+  public IPSiteModel.ComicRich a(Parcel paramParcel)
   {
-    return Integer.valueOf(aszl.b(this.a));
+    IPSiteModel.ComicRich localComicRich = new IPSiteModel.ComicRich();
+    localComicRich.extCover = paramParcel.readString();
+    localComicRich.extName = paramParcel.readString();
+    localComicRich.extTitle = paramParcel.readString();
+    localComicRich.extUrl = paramParcel.readString();
+    return localComicRich;
   }
   
-  protected void a(Integer paramInteger)
+  public IPSiteModel.ComicRich[] a(int paramInt)
   {
-    super.onPostExecute(paramInteger);
-    this.a.stopTitleProgress();
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      asll localasll = (asll)localIterator.next();
-      if (localasll.e == 4)
-      {
-        localasll.d = paramInteger.intValue();
-        this.a.jdField_a_of_type_Aslj.notifyDataSetChanged();
-      }
-    }
-  }
-  
-  protected void onPreExecute()
-  {
-    super.onPreExecute();
-    this.a.startTitleProgress();
+    return new IPSiteModel.ComicRich[paramInt];
   }
 }
 

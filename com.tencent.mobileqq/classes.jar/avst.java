@@ -1,14 +1,35 @@
-import android.util.Pair;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
 
-class avst
-  implements avtc<Pair<String, Integer>, EmoticonPackage>
+public class avst
+  extends Handler
 {
-  avst(avsq paramavsq) {}
-  
-  public EmoticonPackage a(Pair<String, Integer> paramPair)
+  public avst(GroupVideoLoadingFragment paramGroupVideoLoadingFragment, Looper paramLooper)
   {
-    return this.a.c((String)paramPair.first, ((Integer)paramPair.second).intValue());
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    int i = paramMessage.arg1;
+    if (i < GroupVideoLoadingFragment.a(this.a)) {
+      return;
+    }
+    GroupVideoLoadingFragment.b(this.a, i);
+    GroupVideoLoadingFragment.a(this.a).a(GroupVideoLoadingFragment.a(this.a), 0L);
+    paramMessage = Message.obtain();
+    if (GroupVideoLoadingFragment.a(this.a) >= 90) {
+      i += 1;
+    }
+    for (;;)
+    {
+      paramMessage.arg1 = i;
+      sendMessageDelayed(paramMessage, 500L);
+      return;
+      i += 8;
+    }
   }
 }
 

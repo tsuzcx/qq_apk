@@ -140,7 +140,7 @@ public class QQPtColorFilter
       return;
     }
     if (this.internalFilter != null) {
-      this.internalFilter.ClearGLSL();
+      this.internalFilter.clearGLSL();
     }
     this.mCacheFrame.clear();
     GLES20.glDeleteTextures(this.mPtColorTextureId.length, this.mPtColorTextureId, 0);
@@ -284,7 +284,7 @@ public class QQPtColorFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQPtColorFilter
  * JD-Core Version:    0.7.0.1
  */

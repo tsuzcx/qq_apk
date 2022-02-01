@@ -1,17 +1,20 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.RecentDynamicAvatarView;
-import com.tencent.widget.SingleLineTextView;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class akle
-  extends akln
+final class akle
+  implements DialogInterface.OnClickListener
 {
-  public ImageView a;
-  public DragTextView a;
-  public RecentDynamicAvatarView a;
-  public SingleLineTextView a;
-  public ImageView b;
-  public SingleLineTextView b;
+  akle(Activity paramActivity, String paramString1, String paramString2) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      akkz.a(this.jdField_a_of_type_AndroidAppActivity, false, this.jdField_a_of_type_JavaLangString, this.b, false);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+    }
+  }
 }
 
 

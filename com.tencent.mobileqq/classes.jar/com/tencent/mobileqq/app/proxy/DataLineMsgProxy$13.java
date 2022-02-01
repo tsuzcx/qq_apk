@@ -2,8 +2,8 @@ package com.tencent.mobileqq.app.proxy;
 
 import android.os.Handler;
 import android.os.Looper;
-import anuv;
-import anuw;
+import aoxv;
+import aoxw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
@@ -13,15 +13,15 @@ import java.util.List;
 public class DataLineMsgProxy$13
   implements Runnable
 {
-  public DataLineMsgProxy$13(anuv paramanuv, long paramLong, int paramInt, anuw paramanuw) {}
+  public DataLineMsgProxy$13(aoxv paramaoxv, long paramLong, int paramInt, aoxw paramaoxw) {}
   
   public void run()
   {
     EntityManager localEntityManager = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    if (anuv.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager, this.this$0.jdField_a_of_type_JavaLangString)) {
+    if (aoxv.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager, this.this$0.jdField_a_of_type_JavaLangString)) {
       this.this$0.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.transSaveToDatabase(localEntityManager);
     }
-    List localList = localEntityManager.rawQuery(DataLineMsgRecord.class, anuv.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int), new String[] { String.valueOf(this.jdField_a_of_type_Long) });
+    List localList = localEntityManager.rawQuery(DataLineMsgRecord.class, aoxv.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int), new String[] { String.valueOf(this.jdField_a_of_type_Long) });
     localEntityManager.close();
     new Handler(Looper.getMainLooper()).post(new DataLineMsgProxy.13.1(this, localList));
   }

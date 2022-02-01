@@ -1,18 +1,8 @@
-public class ypr
+public abstract interface ypr
 {
-  public static long a(String paramString, long paramLong)
-  {
-    try
-    {
-      long l = Long.valueOf(paramString).longValue();
-      return l;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      xvv.d("NumberUtils", "Invalid num string " + paramString + ", return default number " + paramLong);
-    }
-    return paramLong;
-  }
+  public abstract void g();
+  
+  public abstract void j();
 }
 
 

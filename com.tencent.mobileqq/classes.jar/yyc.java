@@ -1,71 +1,103 @@
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.Canvas;
+import android.os.SystemClock;
+import android.view.View;
+import com.tribe.async.async.JobContext;
+import java.lang.ref.WeakReference;
+
 public class yyc
+  extends yyn<yya, yya>
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
+  public final String a;
+  public final WeakReference<ylc> a;
+  private boolean a;
   
-  public yyc(int paramInt)
+  public yyc(ylc paramylc, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_JavaLangString = "QQ";
-    this.d = 1;
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 65793: 
-      this.c = 1;
-      this.jdField_a_of_type_JavaLangString = "Windows";
-      this.jdField_a_of_type_Long = 1L;
-      this.jdField_b_of_type_Int = 1;
-      return;
-    case 66818: 
-    case 66831: 
-    case 81154: 
-      this.c = 2;
-      this.jdField_a_of_type_JavaLangString = "Mac";
-      this.jdField_b_of_type_Int = 1;
-      return;
-    case 68361: 
-    case 72194: 
-      this.c = 3;
-      this.jdField_a_of_type_JavaLangString = "iPad";
-      this.jdField_b_of_type_Int = 2;
-      this.d = 2;
-      return;
-    case 65805: 
-    case 68104: 
-      this.c = 4;
-      this.jdField_a_of_type_JavaLangString = "aPad";
-      this.jdField_b_of_type_Int = 2;
-      this.d = 2;
-      return;
-    case 75023: 
-    case 78082: 
-    case 78096: 
-      this.c = 5;
-      this.jdField_a_of_type_JavaLangString = amtj.a(2131705466);
-      this.jdField_b_of_type_Int = 3;
-      this.d = 3;
-      return;
-    }
-    this.c = 6;
-    this.jdField_a_of_type_JavaLangString = "Windows";
-    this.jdField_b_of_type_JavaLangString = "TIM";
-    this.jdField_a_of_type_Long = 1L;
-    this.jdField_b_of_type_Int = 1;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramylc);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public String toString()
+  public yyc(ylc paramylc, String paramString, boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("LoginDevItem[").append(this.jdField_b_of_type_JavaLangString).append("|").append(this.jdField_a_of_type_Int).append("|").append(this.jdField_a_of_type_Long).append("|").append(this.d).append("]");
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramylc);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  private Bitmap a(yya paramyya, Bitmap paramBitmap)
+  {
+    try
+    {
+      paramyya = paramyya.a();
+      ykq.a("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "filter view = %s", paramyya);
+      if (paramyya == null)
+      {
+        ykq.e("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "filter view has been recycled.");
+        return null;
+      }
+      paramBitmap = Bitmap.createBitmap(paramBitmap);
+      float f1 = paramBitmap.getWidth();
+      float f2 = paramBitmap.getHeight();
+      float f3 = paramyya.getWidth();
+      float f4 = paramyya.getHeight();
+      Canvas localCanvas = new Canvas(paramBitmap);
+      localCanvas.scale(f1 / f3, f2 / f4);
+      paramyya.draw(localCanvas);
+      return paramBitmap;
+    }
+    catch (OutOfMemoryError paramyya)
+    {
+      ykq.c("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "create filterBitmap error : %s", paramyya);
+    }
+    return null;
+  }
+  
+  protected void a(JobContext paramJobContext, yya paramyya)
+  {
+    long l = SystemClock.uptimeMillis();
+    paramJobContext = this.jdField_a_of_type_JavaLangString;
+    if (paramJobContext == null) {
+      paramJobContext = yyq.a(paramyya.jdField_a_of_type_Int, paramyya.b, ".png");
+    }
+    for (;;)
+    {
+      Object localObject = (ylc)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if ((localObject != null) && (!((ylc)localObject).b()))
+      {
+        localObject = ((ylc)localObject).a();
+        if (localObject != null)
+        {
+          paramyya.jdField_a_of_type_Yye.b = ((Bitmap)localObject);
+          paramyya.jdField_a_of_type_Boolean = true;
+          Bitmap localBitmap = a(paramyya, (Bitmap)localObject);
+          if (localBitmap == null) {
+            break label234;
+          }
+          ykq.a("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "generateFilterBitmap success %s", Integer.valueOf(System.identityHashCode(localBitmap)));
+          localObject = localBitmap;
+        }
+      }
+      for (;;)
+      {
+        if (this.jdField_a_of_type_Boolean)
+        {
+          boolean bool = zdr.a((Bitmap)localObject, Bitmap.CompressFormat.PNG, 60, paramJobContext);
+          paramyya.jdField_a_of_type_Boolean = bool;
+          paramyya.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath = paramJobContext;
+          if (!bool) {
+            ykq.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "Save doodle bitmap to " + paramJobContext + " failed! error code = " + bool);
+          }
+        }
+        ykq.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "GenerateEditPicDoodleSegment" + paramyya.jdField_a_of_type_Boolean + " cost " + (SystemClock.uptimeMillis() - l));
+        super.notifyResult(paramyya);
+        return;
+        label234:
+        ykq.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "generateFilterBitmap failed");
+      }
+    }
   }
 }
 

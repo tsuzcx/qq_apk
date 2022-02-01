@@ -1,99 +1,202 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
+import com.tencent.mobileqq.utils.httputils.HttpMsg;
+import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class bfmv
-  implements bibq
+  implements IHttpCommunicatorListener
 {
+  private final int jdField_a_of_type_Int;
+  private final long jdField_a_of_type_Long;
   private bfmw jdField_a_of_type_Bfmw;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private HttpMsg jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg;
   private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean = true;
+  private final int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private boolean jdField_b_of_type_Boolean;
   
-  public bfmv(String paramString, bfmw parambfmw)
+  public bfmv(QQAppInterface paramQQAppInterface, long paramLong1, int paramInt1, int paramInt2, long paramLong2, boolean paramBoolean, String paramString)
   {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_b_of_type_Boolean = paramBoolean;
     this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg != null)
+    {
+      bfmf.c("FtnDownloader", bfmf.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] cancel ftn download");
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHttpCommunicatort().cancelMsg(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg = null;
+    }
+  }
+  
+  protected void a(int paramInt, String paramString1, String paramString2, HttpMsg paramHttpMsg)
+  {
+    bfmf.a("FtnDownloader", bfmf.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] ftn download err. errCode:" + paramInt + " errMsg:" + paramString1 + " rspHeader:" + paramString2);
+    this.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Bfmw != null) {
+      this.jdField_a_of_type_Bfmw.a(paramInt, paramString1, paramString2, paramHttpMsg);
+    }
+  }
+  
+  public void a(bfmw parambfmw)
+  {
     this.jdField_a_of_type_Bfmw = parambfmw;
   }
   
-  public int a(String paramString1, int paramInt, String paramString2, Bundle paramBundle)
+  public boolean a(String paramString, long paramLong)
   {
-    int i = -20;
-    if (paramString1.equals(BaseApplicationImpl.sApplication.getPackageName()))
-    {
-      if (this.jdField_a_of_type_JavaLangString == null)
-      {
-        paramString1 = null;
-        paramInt = -1;
-      }
-      for (;;)
-      {
-        if (this.jdField_a_of_type_Bfmw != null) {
-          this.jdField_a_of_type_Bfmw.a(paramInt);
-        }
-        QLog.d("UpgradeController", 1, "writeCodeToApk:" + this.jdField_a_of_type_JavaLangString + ", forFile:" + paramString2 + " result: " + paramInt, paramString1);
-        return paramInt;
-        if (this.jdField_a_of_type_JavaLangString.length() == 0)
-        {
-          paramString1 = null;
-          paramInt = 0;
-        }
-        else
-        {
-          try
-          {
-            paramString1 = new File(paramString2);
-            paramBundle = new File(paramString2 + "~tmp");
-            if (paramBundle.exists()) {
-              paramBundle.delete();
-            }
-            paramString1.renameTo(paramBundle);
-            bjkv.a(paramBundle, this.jdField_a_of_type_JavaLangString);
-            paramBundle.renameTo(paramString1);
-            paramString1 = null;
-            paramInt = 0;
-          }
-          catch (FileNotFoundException paramString1)
-          {
-            paramInt = -30;
-          }
-          catch (IOException paramString1)
-          {
-            paramInt = i;
-            if (paramString1 != null)
-            {
-              paramInt = i;
-              if (paramString1.getMessage() != null)
-              {
-                paramInt = i;
-                if (paramString1.getMessage().contains("space")) {
-                  paramInt = -10;
-                }
-              }
-            }
-          }
-          catch (Exception paramString1)
-          {
-            paramInt = -20;
-          }
-        }
-      }
+    bfmf.c("FtnDownloader", bfmf.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] ftn download url:" + paramString + " pos:" + paramLong);
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
     }
-    return -1;
+    this.jdField_a_of_type_Boolean = false;
+    String str2 = "bytes=" + paramLong + "-";
+    HttpMsg localHttpMsg = new HttpMsg(paramString, null, this, true);
+    localHttpMsg.setInstanceFollowRedirects(false);
+    String str1 = "gprs";
+    if (NetworkUtil.getNetworkType(BaseApplication.getContext()) == 1) {
+      str1 = "wifi";
+    }
+    localHttpMsg.setRequestProperty("Net-type", str1);
+    localHttpMsg.setRequestProperty("cache-control", "no-cache");
+    if (paramLong != 0L) {
+      localHttpMsg.setRequestProperty("Range", str2);
+    }
+    localHttpMsg.setPriority(5);
+    localHttpMsg.setDataSlice(true);
+    localHttpMsg.fileType = this.jdField_b_of_type_Int;
+    localHttpMsg.busiType = this.jdField_a_of_type_Int;
+    localHttpMsg.msgId = String.valueOf(this.jdField_a_of_type_Long);
+    localHttpMsg.setRequestProperty("Accept-Encoding", "identity");
+    if (this.jdField_a_of_type_Bfmw != null) {
+      this.jdField_a_of_type_Bfmw.b(localHttpMsg);
+    }
+    str1 = "";
+    if (paramString != null) {
+      str1 = paramString.toLowerCase();
+    }
+    if ((this.jdField_b_of_type_Boolean) && (str1.startsWith("https")))
+    {
+      localHttpMsg.mIsHttps = true;
+      localHttpMsg.mIsHostIP = atmh.a(paramString);
+      localHttpMsg.mReqHost = this.jdField_a_of_type_JavaLangString;
+    }
+    localHttpMsg.timeoutParam = auea.a();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHttpCommunicatort().sendMsg(localHttpMsg);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg = localHttpMsg;
+    return true;
   }
   
-  public void a(String paramString, int paramInt, Bundle paramBundle)
+  public void decode(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
   {
-    if (BaseApplicationImpl.sApplication.getPackageName().equals(paramString))
+    if (this.jdField_a_of_type_Boolean) {}
+    long l;
+    do
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("UpgradeController", 4, "syncVersionCodeToTool:" + paramString + ", versionCode:" + paramInt);
+      do
+      {
+        return;
+        if (paramHttpMsg1 == this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg) {
+          break;
+        }
+        if ((paramHttpMsg1 != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg != null))
+        {
+          bfmf.a("FtnDownloader", bfmf.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "],Req Serial[" + String.valueOf(paramHttpMsg1.getSerial()) + "], curRequest Serial[" + String.valueOf(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.getSerial()) + "]");
+          return;
+        }
+        if (paramHttpMsg1 != null)
+        {
+          bfmf.a("FtnDownloader", bfmf.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "],Req Serial[" + String.valueOf(paramHttpMsg1.getSerial()) + "]");
+          return;
+        }
+      } while (this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg == null);
+      bfmf.a("FtnDownloader", bfmf.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "],curRequest Serial[" + String.valueOf(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.getSerial()) + "]");
+      return;
+      if ((paramHttpMsg2.getResponseCode() != 206) && (paramHttpMsg2.getResponseCode() != 200)) {
+        break;
       }
-      if ((this.jdField_a_of_type_Bfmw != null) && (!this.jdField_a_of_type_Bfmw.a(paramInt))) {
-        this.jdField_a_of_type_JavaLangString = null;
+      paramHttpMsg1 = paramHttpMsg2.getRecvData();
+      l = paramHttpMsg2.getTotalLen();
+      if (this.jdField_b_of_type_Long == 0L) {
+        this.jdField_b_of_type_Long = l;
+      }
+    } while (this.jdField_a_of_type_Bfmw == null);
+    this.jdField_a_of_type_Bfmw.a(paramHttpMsg1, l, paramHttpMsg2.rawReqHeader);
+    return;
+    bfmf.a("FtnDownloader", bfmf.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] ftn download decode resp code no 200|206");
+  }
+  
+  public void handleError(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (paramHttpMsg2 != null)
+    {
+      a(paramHttpMsg2.errCode, paramHttpMsg2.getErrorString(), paramHttpMsg2.rawRespHeader, paramHttpMsg2);
+      return;
+    }
+    a(9001, "err no response", "", null);
+  }
+  
+  public void handleRedirect(String paramString)
+  {
+    if (this.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      bfmf.a("FtnDownloader", bfmf.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] ftn download Redirect. " + paramString);
+    } while (this.jdField_a_of_type_Bfmw == null);
+    this.jdField_a_of_type_Bfmw.a(paramString);
+  }
+  
+  public void onFlowEvent(HttpMsg paramHttpMsg)
+  {
+    if (paramHttpMsg != null) {
+      if (!"POST".equals(paramHttpMsg.getRequestMethod())) {
+        break label54;
       }
     }
+    label54:
+    for (boolean bool = true;; bool = false)
+    {
+      if (this.jdField_a_of_type_Bfmw != null) {
+        this.jdField_a_of_type_Bfmw.a(paramHttpMsg.fileType, paramHttpMsg.busiType, paramHttpMsg.netType, bool, paramHttpMsg.flow);
+      }
+      return;
+    }
+  }
+  
+  public boolean statusChanged(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2, int paramInt)
+  {
+    if (5 == paramInt) {
+      if (!this.jdField_a_of_type_Boolean) {}
+    }
+    while ((3 != paramInt) || (this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Bfmw == null))
+    {
+      do
+      {
+        return true;
+        this.jdField_a_of_type_Boolean = true;
+      } while (this.jdField_a_of_type_Bfmw == null);
+      this.jdField_a_of_type_Bfmw.a();
+      return true;
+    }
+    this.jdField_a_of_type_Bfmw.a(paramHttpMsg2);
+    return true;
   }
 }
 

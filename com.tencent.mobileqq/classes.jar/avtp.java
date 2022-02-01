@@ -1,296 +1,84 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import java.util.List;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
 
-public class avtp
-  implements avtl
+class avtp
+  implements avud
 {
-  private asxg jdField_a_of_type_Asxg;
-  private asxh jdField_a_of_type_Asxh;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  avtp(avto paramavto) {}
   
-  public avtp(QQAppInterface paramQQAppInterface)
+  public void a(int paramInt, Object... paramVarArgs)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  private asxf a(int paramInt)
-  {
-    QLog.i("MsgBackupFileProcessor<QFile>", 1, "getMsgBackupHandler: chatTYpe[" + paramInt + "]");
-    Object localObject1 = null;
-    if (paramInt == 1)
+    Intent localIntent = new Intent(avts.a(avto.a(this.a)));
+    localIntent.putExtra("key_state", paramInt);
+    switch (paramInt)
     {
-      if (this.jdField_a_of_type_Asxg == null) {
-        this.jdField_a_of_type_Asxg = new asxg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      }
-      localObject1 = this.jdField_a_of_type_Asxg;
-    }
-    for (;;)
-    {
-      Object localObject2 = localObject1;
-      if (localObject1 == null)
+    case 6: 
+    case 7: 
+    case 8: 
+    case 9: 
+    default: 
+    case 0: 
+    case 1: 
+    case 2: 
+    case 3: 
+    case 4: 
+    case 5: 
+      for (;;)
       {
-        QLog.i("MsgBackupFileProcessor<QFile>", 1, "getMsgBackupHandler: target backup handle is null");
-        if (this.jdField_a_of_type_Asxg == null) {
-          this.jdField_a_of_type_Asxg = new asxg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        }
-        localObject2 = this.jdField_a_of_type_Asxg;
-      }
-      return localObject2;
-      if (paramInt == 2)
-      {
-        if (this.jdField_a_of_type_Asxg == null) {
-          this.jdField_a_of_type_Asxg = new asxg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        }
-        localObject1 = this.jdField_a_of_type_Asxg;
-      }
-      else if (paramInt == 3)
-      {
-        if (this.jdField_a_of_type_Asxh == null) {
-          this.jdField_a_of_type_Asxh = new asxh(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        }
-        localObject1 = this.jdField_a_of_type_Asxh;
-      }
-    }
-  }
-  
-  private asxf a(MessageRecord paramMessageRecord)
-  {
-    Object localObject = null;
-    if (paramMessageRecord.isMultiMsg)
-    {
-      paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileType");
-      if (!TextUtils.isEmpty(paramMessageRecord))
-      {
-        if (Integer.parseInt(paramMessageRecord) != 3) {
-          break label72;
-        }
-        if (this.jdField_a_of_type_Asxh == null) {
-          this.jdField_a_of_type_Asxh = new asxh(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        }
-        localObject = this.jdField_a_of_type_Asxh;
-      }
-    }
-    for (;;)
-    {
-      if (localObject == null) {
-        QLog.i("MsgBackupFileProcessor<QFile>", 1, "getMsgBackupHandler: target backup handle is null");
-      }
-      return localObject;
-      label72:
-      if (this.jdField_a_of_type_Asxg == null) {
-        this.jdField_a_of_type_Asxg = new asxg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      }
-      localObject = this.jdField_a_of_type_Asxg;
-      continue;
-      if ((paramMessageRecord instanceof MessageForFile))
-      {
-        if (this.jdField_a_of_type_Asxg == null) {
-          this.jdField_a_of_type_Asxg = new asxg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        }
-        localObject = this.jdField_a_of_type_Asxg;
-      }
-      else if ((paramMessageRecord instanceof MessageForTroopFile))
-      {
-        if (this.jdField_a_of_type_Asxh == null) {
-          this.jdField_a_of_type_Asxh = new asxh(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        }
-        localObject = this.jdField_a_of_type_Asxh;
-      }
-    }
-  }
-  
-  private HashMap<String, String> a(String paramString)
-  {
-    HashMap localHashMap = new HashMap();
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      return localHashMap;
-      try
-      {
-        paramString = new JSONObject(paramString);
-        String str;
-        if (paramString.has("uint64_sender_uin"))
+        avto.a(this.a).sendBroadcast(localIntent);
+        return;
+        localIntent.putExtra("key_totalSize", ((Long)paramVarArgs[0]).longValue());
+        continue;
+        paramInt = ((Integer)paramVarArgs[0]).intValue();
+        localIntent.putExtra("key_totalSize", ((Long)paramVarArgs[1]).longValue());
+        localIntent.putExtra("key_progress", paramInt);
+        continue;
+        localIntent.putExtra("key_installedplugin", (InstalledPlugin)paramVarArgs[0]);
+        if (avts.a(avto.a(this.a)))
         {
-          str = paramString.getString("uint64_sender_uin");
-          a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo senderUin[" + str + "]");
-          localHashMap.put("uint64_sender_uin", str);
+          avue.a("2691709");
         }
-        if (paramString.has("uint64_receiver_uin"))
+        else if (avts.b(avto.a(this.a)))
         {
-          str = paramString.getString("uint64_receiver_uin");
-          a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo recvUin[" + str + "]");
-          localHashMap.put("uint64_receiver_uin", str);
-        }
-        int i;
-        if (paramString.has("uint32_file_type"))
-        {
-          i = paramString.getInt("uint32_file_type");
-          a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo peerType[" + i + "]");
-          localHashMap.put("uint32_file_type", String.valueOf(i));
-        }
-        if (paramString.has("bytes_file_uuid"))
-        {
-          str = paramString.getString("bytes_file_uuid");
-          a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo fileUuid[" + str + "]");
-          localHashMap.put("bytes_file_uuid", str);
-        }
-        if (paramString.has("str_file_name"))
-        {
-          str = paramString.getString("str_file_name");
-          a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo fileName[" + str + "]");
-          localHashMap.put("str_file_name", str);
-        }
-        if (paramString.has("uint64_file_size"))
-        {
-          long l = paramString.getLong("uint64_file_size");
-          a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo fileSize[" + l + "]");
-          localHashMap.put("uint64_file_size", String.valueOf(l));
-        }
-        if (paramString.has("md5"))
-        {
-          str = paramString.getString("md5");
-          if (!TextUtils.isEmpty(str))
+          avue.a("2597857");
+          continue;
+          localIntent.putExtra("key_error_msg", (String)paramVarArgs[0]);
+          if (avts.a(avto.a(this.a)))
           {
-            a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo fileMd5[" + str + "]");
-            localHashMap.put("md5", str);
+            avue.a("2691710");
           }
-        }
-        if (paramString.has("md510"))
-        {
-          str = paramString.getString("md510");
-          if (!TextUtils.isEmpty(str))
+          else if (avts.b(avto.a(this.a)))
           {
-            a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo file10Md5[" + str + "]");
-            localHashMap.put("md510", str);
-          }
-        }
-        if (paramString.has("sha"))
-        {
-          str = paramString.getString("sha");
-          if (!TextUtils.isEmpty(str))
-          {
-            a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo sha[" + str + "]");
-            localHashMap.put("sha", str);
-          }
-        }
-        if (paramString.has("sha3"))
-        {
-          str = paramString.getString("sha3");
-          if (!TextUtils.isEmpty(str))
-          {
-            a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo sha3[" + str + "]");
-            localHashMap.put("sha3", str);
-          }
-        }
-        if (paramString.has("uint32_img_width"))
-        {
-          i = paramString.getInt("uint32_img_width");
-          if (i != 0)
-          {
-            a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo imgWidth[" + i + "]");
-            localHashMap.put("uint32_img_width", String.valueOf(i));
-          }
-        }
-        if (paramString.has("uint32_img_height"))
-        {
-          i = paramString.getInt("uint32_img_height");
-          if (i != 0)
-          {
-            a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo imgWidth[" + i + "]");
-            localHashMap.put("uint32_img_height", String.valueOf(i));
-            return localHashMap;
+            avue.a("2597858");
+            continue;
+            if ("download".equals(avto.b(this.a)))
+            {
+              InstalledPlugin localInstalledPlugin = (InstalledPlugin)paramVarArgs[0];
+              boolean bool = ((Boolean)paramVarArgs[1]).booleanValue();
+              long l = ((Long)paramVarArgs[2]).longValue();
+              avto.a(this.a, localInstalledPlugin, bool, l);
+            }
+            if (avts.a(avto.a(this.a)))
+            {
+              avue.a("2691703");
+            }
+            else if (avts.b(avto.a(this.a)))
+            {
+              avue.a("2597720");
+              continue;
+              localIntent.putExtra("key_error_msg", (String)paramVarArgs[0]);
+              if (avts.a(avto.a(this.a))) {
+                avue.a("2691704");
+              } else if (avts.b(avto.a(this.a))) {
+                avue.a("2597721");
+              }
+            }
           }
         }
       }
-      catch (Exception paramString) {}
     }
-    return localHashMap;
-  }
-  
-  private void a(String paramString1, String paramString2)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("MsgBackupFileProcessor<QFile>", 1, paramString2);
-    }
-  }
-  
-  public avty a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    avty localavty = new avty();
-    if (paramMsgBackupResEntity == null)
-    {
-      QLog.i("MsgBackupFileProcessor<QFile>", 1, "isNeedDownloadRes: res entity is null.");
-      localavty.a = false;
-      return localavty;
-    }
-    if (paramMsgBackupResEntity.msgType != 5)
-    {
-      QLog.i("MsgBackupFileProcessor<QFile>", 1, "isNeedDownloadRes: res entity is null.");
-      localavty.a = false;
-      return localavty;
-    }
-    String str = (String)a(paramMsgBackupResEntity.extraDataStr).get("uint32_file_type");
-    if (TextUtils.isEmpty(str))
-    {
-      QLog.i("MsgBackupFileProcessor<QFile>", 1, "isNeedDownloadRes: can not find chatType from extInfo. resInfo[" + paramMsgBackupResEntity.toLogString() + "]");
-      localavty.a = false;
-      return localavty;
-    }
-    localavty.a = a(Integer.parseInt(str)).a(paramMessageRecord, paramMsgBackupResEntity);
-    return localavty;
-  }
-  
-  public String a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    paramMessageRecord = new File(asxf.b);
-    if (!paramMessageRecord.exists()) {
-      paramMessageRecord.mkdirs();
-    }
-    paramMessageRecord = new File(asxf.a);
-    if (!paramMessageRecord.exists()) {
-      paramMessageRecord.mkdirs();
-    }
-    return a(Integer.parseInt((String)a(paramMsgBackupResEntity.extraDataStr).get("uint32_file_type"))).a(paramMsgBackupResEntity);
-  }
-  
-  public void a(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
-  {
-    asxf localasxf = a(paramMessageRecord);
-    if (localasxf != null) {
-      localasxf.a(paramMessageRecord, paramList);
-    }
-  }
-  
-  public boolean a(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord instanceof MessageForTroopFile)) {}
-    while ((paramMessageRecord instanceof MessageForFile)) {
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    return (paramMsgBackupResEntity != null) && (paramMsgBackupResEntity.msgType == 5);
-  }
-  
-  public void b(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
-  {
-    asxf localasxf = a(paramMessageRecord);
-    if (localasxf != null) {
-      localasxf.b(paramMessageRecord, paramList);
-    }
+    avto.a(this.a);
   }
 }
 

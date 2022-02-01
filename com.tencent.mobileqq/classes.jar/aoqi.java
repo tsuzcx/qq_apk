@@ -1,12 +1,10 @@
-class aoqi
-  implements aosb
+public abstract interface aoqi
 {
-  aoqi(aoqa paramaoqa, long paramLong) {}
+  public abstract void a(int paramInt);
   
-  public void a(String paramString)
-  {
-    aoqa.a(this.jdField_a_of_type_Aoqa, this.jdField_a_of_type_Long, paramString);
-  }
+  public abstract void a(long paramLong1, long paramLong2, long paramLong3, long paramLong4);
+  
+  public abstract void b();
 }
 
 

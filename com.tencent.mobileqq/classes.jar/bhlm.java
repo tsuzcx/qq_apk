@@ -1,18 +1,28 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class bhlm
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bhlm(FloatingScreenContainer paramFloatingScreenContainer, WindowManager.LayoutParams paramLayoutParams) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public static boolean a(Context paramContext, String paramString)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.alpha = (paramValueAnimator.floatValue() * 1.0F + 0.0F);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.a(this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+    try
+    {
+      Intent localIntent = new Intent(paramContext, QQTranslucentBrowserActivity.class);
+      localIntent.putExtra("url", paramString);
+      localIntent.setData(Uri.parse(paramString));
+      localIntent.putExtra("flag_show_loading_dialog", true);
+      localIntent.putExtra("hide_left_button", true);
+      paramContext.startActivity(localIntent);
+      return true;
+    }
+    catch (Exception paramContext)
+    {
+      QLog.e("BrowserUtils", 2, paramContext, new Object[0]);
+    }
+    return false;
   }
 }
 

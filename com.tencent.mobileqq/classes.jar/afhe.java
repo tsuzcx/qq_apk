@@ -1,42 +1,28 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.utils.QQRecorder;
+import android.content.Context;
+import android.content.res.Resources;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.DelResult;
 
 public class afhe
-  extends Handler
+  extends aoec
 {
-  public afhe(CommonRecordSoundPanel paramCommonRecordSoundPanel, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public afhe(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean, PBRepeatMessageField<oidb_0x5d4.DelResult> paramPBRepeatMessageField)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 16711687: 
-      this.a.b(102);
-      return;
-    case 16711686: 
-      if (QLog.isColorLevel()) {
-        QLog.d("QQRecorder", 2, "QQRecorder stop() is called,time is:" + System.currentTimeMillis());
-      }
-      CommonRecordSoundPanel.a(this.a).c();
-      bftt.b(2131230744, false);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(16711686);
-      bftt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, false);
+    if (this.a.isFinishing()) {
       return;
     }
-    this.a.b(1);
-    this.a.d();
-    QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131697962), 1).a();
+    if (paramBoolean)
+    {
+      QQToast.a(this.a.getApplicationContext(), 2, this.a.getApplicationContext().getResources().getString(2131718913), 0).a();
+      this.a.c.setVisibility(8);
+      return;
+    }
+    QQToast.a(this.a.getApplicationContext(), 1, this.a.getApplicationContext().getResources().getString(2131718910), 0).a();
   }
 }
 

@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment;
+import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
 
 public class bgqi
-  implements DialogInterface.OnDismissListener
+  implements bdzo
 {
-  public bgqi(LiangHaoBuyFragment paramLiangHaoBuyFragment) {}
+  public bgqi(TroopSignVideoView paramTroopSignVideoView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a()
   {
-    if (!LiangHaoBuyFragment.a(this.a)) {
-      LiangHaoBuyFragment.b(this.a);
+    if (TroopSignVideoView.a(this.a) != null) {
+      TroopSignVideoView.a(this.a).a();
     }
   }
 }

@@ -30,16 +30,16 @@ import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import ogu;
-import ohh;
-import ohi;
-import ohk;
-import ohm;
-import ohn;
-import oho;
-import ohq;
-import ohs;
-import oht;
+import oon;
+import opa;
+import opc;
+import ope;
+import opg;
+import oph;
+import opi;
+import opk;
+import opm;
+import opn;
 
 public class CustomTabView
   extends FrameLayout
@@ -72,12 +72,12 @@ public class CustomTabView
     return paramInt * paramInt + 100;
   }
   
-  private ImageView a(RelativeLayout paramRelativeLayout, ohi paramohi)
+  private ImageView a(RelativeLayout paramRelativeLayout, opc paramopc)
   {
     ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
     try
     {
-      localImageView.setId(a(paramohi.jdField_a_of_type_Int));
+      localImageView.setId(a(paramopc.jdField_a_of_type_Int));
       localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
       paramRelativeLayout.addView(localImageView);
       paramRelativeLayout = (RelativeLayout.LayoutParams)localImageView.getLayoutParams();
@@ -86,10 +86,10 @@ public class CustomTabView
       paramRelativeLayout.addRule(14);
       paramRelativeLayout.topMargin = UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 4.0F);
       paramRelativeLayout = URLDrawable.URLDrawableOptions.obtain();
-      paramRelativeLayout.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130850605);
+      paramRelativeLayout.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130850736);
       paramRelativeLayout.mRequestHeight = UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 28.0F);
       paramRelativeLayout.mRequestWidth = UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 28.0F);
-      paramRelativeLayout = URLDrawable.getDrawable(paramohi.c, paramRelativeLayout);
+      paramRelativeLayout = URLDrawable.getDrawable(paramopc.c, paramRelativeLayout);
       if (paramRelativeLayout != null) {
         localImageView.setImageDrawable(paramRelativeLayout);
       }
@@ -102,10 +102,10 @@ public class CustomTabView
     return localImageView;
   }
   
-  private ImageView a(RelativeLayout paramRelativeLayout, ohi paramohi, ImageView paramImageView)
+  private ImageView a(RelativeLayout paramRelativeLayout, opc paramopc, ImageView paramImageView)
   {
     ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    localImageView.setId(b(paramohi.jdField_a_of_type_Int));
+    localImageView.setId(b(paramopc.jdField_a_of_type_Int));
     localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
     localImageView.setVisibility(8);
     paramRelativeLayout.addView(localImageView);
@@ -118,20 +118,20 @@ public class CustomTabView
     return localImageView;
   }
   
-  private RelativeLayout a(ohi paramohi)
+  private RelativeLayout a(opc paramopc)
   {
     RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-    ImageView localImageView = a(localRelativeLayout, paramohi);
-    localRelativeLayout.setOnClickListener(new ohs(this, paramohi, a(localRelativeLayout, paramohi, localImageView), a(localRelativeLayout, paramohi, localImageView), localImageView));
+    ImageView localImageView = a(localRelativeLayout, paramopc);
+    localRelativeLayout.setOnClickListener(new opm(this, paramopc, a(localRelativeLayout, paramopc, localImageView), a(localRelativeLayout, paramopc, localImageView), localImageView));
     return localRelativeLayout;
   }
   
-  private TextView a(RelativeLayout paramRelativeLayout, ohi paramohi, ImageView paramImageView)
+  private TextView a(RelativeLayout paramRelativeLayout, opc paramopc, ImageView paramImageView)
   {
     TextView localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    localTextView.setTextColor(Color.parseColor(paramohi.e));
+    localTextView.setTextColor(Color.parseColor(paramopc.e));
     localTextView.setTextSize(1, UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 3.0F));
-    localTextView.setText(paramohi.jdField_a_of_type_JavaLangString);
+    localTextView.setText(paramopc.jdField_a_of_type_JavaLangString);
     paramRelativeLayout.addView(localTextView);
     paramRelativeLayout = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
     paramRelativeLayout.width = -2;
@@ -143,9 +143,9 @@ public class CustomTabView
     return localTextView;
   }
   
-  private ArrayList<ohi> a()
+  private ArrayList<opc> a()
   {
-    Object localObject = ohk.a();
+    Object localObject = ope.a();
     if (localObject == null)
     {
       QLog.i("EcshopCustomTabView", 2, "[CustomTabView] ecshopConfBean is null");
@@ -155,7 +155,7 @@ public class CustomTabView
     do
     {
       return localObject;
-      localArrayList = ((ohh)localObject).jdField_a_of_type_JavaUtilArrayList;
+      localArrayList = ((opa)localObject).jdField_a_of_type_JavaUtilArrayList;
       if (localArrayList == null) {
         break;
       }
@@ -165,9 +165,9 @@ public class CustomTabView
     return new ArrayList();
   }
   
-  private void a(ogu paramogu, int paramInt)
+  private void a(oon paramoon, int paramInt)
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(paramogu.jdField_b_of_type_Int);
+    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(paramoon.jdField_b_of_type_Int);
     if (localRelativeLayout != null)
     {
       int i = 0;
@@ -177,8 +177,8 @@ public class CustomTabView
         if ((localObject instanceof ImageView))
         {
           localObject = (ImageView)localObject;
-          if (((ImageView)localObject).getId() == b(paramogu.jdField_b_of_type_Int)) {
-            ((ImageView)localObject).postDelayed(new CustomTabView.4(this, paramogu, (ImageView)localObject, localRelativeLayout), paramInt);
+          if (((ImageView)localObject).getId() == b(paramoon.jdField_b_of_type_Int)) {
+            ((ImageView)localObject).postDelayed(new CustomTabView.4(this, paramoon, (ImageView)localObject, localRelativeLayout), paramInt);
           }
         }
         i += 1;
@@ -186,20 +186,20 @@ public class CustomTabView
     }
   }
   
-  private void a(ohi paramohi, TextView paramTextView, ImageView paramImageView)
+  private void a(opc paramopc, TextView paramTextView, ImageView paramImageView)
   {
-    this.jdField_a_of_type_Int = paramohi.jdField_a_of_type_Int;
-    paramTextView.setTextColor(Color.parseColor(paramohi.f));
+    this.jdField_a_of_type_Int = paramopc.jdField_a_of_type_Int;
+    paramTextView.setTextColor(Color.parseColor(paramopc.f));
     if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (!StringUtil.isEmpty(this.jdField_a_of_type_JavaLangString))) {
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(this.jdField_a_of_type_JavaLangString));
     }
     this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
-    this.jdField_a_of_type_JavaLangString = paramohi.e;
+    this.jdField_a_of_type_JavaLangString = paramopc.e;
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
     ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 28.0F);
     ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 28.0F);
-    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130850605);
-    paramTextView = URLDrawable.getDrawable(paramohi.d, (URLDrawable.URLDrawableOptions)localObject);
+    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130850736);
+    paramTextView = URLDrawable.getDrawable(paramopc.d, (URLDrawable.URLDrawableOptions)localObject);
     if (paramTextView != null)
     {
       if (paramTextView.getStatus() == 2) {
@@ -215,42 +215,42 @@ public class CustomTabView
       }
     }
     this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
-    this.jdField_b_of_type_JavaLangString = paramohi.c;
+    this.jdField_b_of_type_JavaLangString = paramopc.c;
   }
   
-  private boolean a(ohi paramohi)
+  private boolean a(opc paramopc)
   {
-    if (paramohi == null) {}
+    if (paramopc == null) {}
     do
     {
       return false;
-      if (AppSetting.a(paramohi.g) >= 0) {
+      if (AppSetting.a(paramopc.g) >= 0) {
         break;
       }
     } while (!QLog.isColorLevel());
     QLog.i("EcshopCustomTabView", 2, "current qq version not support this tab item");
     return false;
-    if ((paramohi.jdField_b_of_type_Int == 1) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramohi.jdField_a_of_type_Int))))
+    if ((paramopc.jdField_b_of_type_Int == 1) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramopc.jdField_a_of_type_Int))))
     {
       QLog.i("EcshopCustomTabView", 2, "native tab item illegal!");
       return false;
     }
-    if ((paramohi.jdField_b_of_type_Int == 0) && ((StringUtil.isEmpty(paramohi.jdField_b_of_type_JavaLangString)) || (!paramohi.jdField_b_of_type_JavaLangString.startsWith("http")) || (!paramohi.jdField_b_of_type_JavaLangString.startsWith("https"))))
+    if ((paramopc.jdField_b_of_type_Int == 0) && ((StringUtil.isEmpty(paramopc.jdField_b_of_type_JavaLangString)) || (!paramopc.jdField_b_of_type_JavaLangString.startsWith("http")) || (!paramopc.jdField_b_of_type_JavaLangString.startsWith("https"))))
     {
       QLog.i("EcshopCustomTabView", 2, "web tab item illegal!");
       return false;
     }
-    if ((paramohi.jdField_b_of_type_Int == 2) && (!MiniAppLauncher.isMiniAppUrl(paramohi.jdField_b_of_type_JavaLangString)))
+    if ((paramopc.jdField_b_of_type_Int == 2) && (!MiniAppLauncher.isMiniAppUrl(paramopc.jdField_b_of_type_JavaLangString)))
     {
       QLog.i("EcshopCustomTabView", 2, "miniapp tab item illegal!");
       return false;
     }
-    if ((!paramohi.e.startsWith("#")) || (!paramohi.f.startsWith("#")))
+    if ((!paramopc.e.startsWith("#")) || (!paramopc.f.startsWith("#")))
     {
       QLog.i("EcshopCustomTabView", 2, "tab item color hex illegal!");
       return false;
     }
-    if ((StringUtil.isEmpty(paramohi.jdField_a_of_type_JavaLangString)) || (paramohi.jdField_a_of_type_JavaLangString.trim().length() == 0))
+    if ((StringUtil.isEmpty(paramopc.jdField_a_of_type_JavaLangString)) || (paramopc.jdField_a_of_type_JavaLangString.trim().length() == 0))
     {
       QLog.i("EcshopCustomTabView", 2, "tab item name illegal!");
       return false;
@@ -267,7 +267,7 @@ public class CustomTabView
   {
     Object localObject1 = a();
     if (((ArrayList)localObject1).isEmpty()) {}
-    ohi localohi;
+    opc localopc;
     RelativeLayout localRelativeLayout;
     do
     {
@@ -275,8 +275,8 @@ public class CustomTabView
       while (!((Iterator)localObject1).hasNext()) {
         localObject1 = ((ArrayList)localObject1).iterator();
       }
-      localohi = (ohi)((Iterator)localObject1).next();
-      localRelativeLayout = (RelativeLayout)findViewById(localohi.jdField_a_of_type_Int);
+      localopc = (opc)((Iterator)localObject1).next();
+      localRelativeLayout = (RelativeLayout)findViewById(localopc.jdField_a_of_type_Int);
     } while (localRelativeLayout == null);
     int i = 0;
     label57:
@@ -287,7 +287,7 @@ public class CustomTabView
       if (!(localObject2 instanceof TextView)) {
         break label104;
       }
-      ((TextView)localObject2).setTextColor(Color.parseColor(localohi.e));
+      ((TextView)localObject2).setTextColor(Color.parseColor(localopc.e));
     }
     for (;;)
     {
@@ -298,12 +298,12 @@ public class CustomTabView
       if ((localObject2 instanceof ImageView))
       {
         localObject2 = (ImageView)localObject2;
-        if (((ImageView)localObject2).getId() == a(localohi.jdField_a_of_type_Int))
+        if (((ImageView)localObject2).getId() == a(localopc.jdField_a_of_type_Int))
         {
           Object localObject3 = URLDrawable.URLDrawableOptions.obtain();
           ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 28.0F);
           ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth = UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 28.0F);
-          localObject3 = URLDrawable.getDrawable(localohi.c, (URLDrawable.URLDrawableOptions)localObject3);
+          localObject3 = URLDrawable.getDrawable(localopc.c, (URLDrawable.URLDrawableOptions)localObject3);
           if (localObject3 != null) {
             ((ImageView)localObject2).setImageDrawable((Drawable)localObject3);
           }
@@ -312,30 +312,30 @@ public class CustomTabView
     }
   }
   
-  private void b(ohi paramohi, TextView paramTextView, ImageView paramImageView)
+  private void b(opc paramopc, TextView paramTextView, ImageView paramImageView)
   {
-    if (paramohi == null) {
+    if (paramopc == null) {
       return;
     }
-    switch (paramohi.jdField_b_of_type_Int)
+    switch (paramopc.jdField_b_of_type_Int)
     {
     default: 
       return;
     case 0: 
-      a(paramohi, paramTextView, paramImageView);
-      ohn.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, ohq.a(paramohi.jdField_b_of_type_JavaLangString, "tab"));
+      a(paramopc, paramTextView, paramImageView);
+      oph.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, opk.a(paramopc.jdField_b_of_type_JavaLangString, "tab"));
       return;
     case 1: 
-      if (paramohi.jdField_a_of_type_Int == 1)
+      if (paramopc.jdField_a_of_type_Int == 1)
       {
-        a(paramohi, paramTextView, paramImageView);
-        ohn.a(this.jdField_a_of_type_AndroidContentContext, "3046055438", this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131691722), false);
+        a(paramopc, paramTextView, paramImageView);
+        oph.a(this.jdField_a_of_type_AndroidContentContext, "3046055438", this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131691810), false);
         return;
       }
-      QLog.i("EcshopCustomTabView", 2, "can't match tabId: " + paramohi.jdField_a_of_type_Int);
+      QLog.i("EcshopCustomTabView", 2, "can't match tabId: " + paramopc.jdField_a_of_type_Int);
       return;
     }
-    MiniAppLauncher.startMiniApp(this.jdField_a_of_type_AndroidContentContext, ohq.a(paramohi.jdField_b_of_type_JavaLangString, "tab"), 1035, new oht(this));
+    MiniAppLauncher.startMiniApp(this.jdField_a_of_type_AndroidContentContext, opk.a(paramopc.jdField_b_of_type_JavaLangString, "tab"), 1035, new opn(this));
   }
   
   public void a()
@@ -346,16 +346,16 @@ public class CustomTabView
     }
     localObject = ((ArrayList)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
-      oho.b(((ohi)((Iterator)localObject).next()).jdField_a_of_type_Int);
+      opi.b(((opc)((Iterator)localObject).next()).jdField_a_of_type_Int);
     }
-    oho.a();
+    opi.a();
   }
   
   public void a(int paramInt)
   {
     b();
     this.jdField_a_of_type_Int = paramInt;
-    ohi localohi = ohk.a(this.jdField_a_of_type_Int);
+    opc localopc = ope.a(this.jdField_a_of_type_Int);
     RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(paramInt);
     if (localRelativeLayout != null)
     {
@@ -366,8 +366,8 @@ public class CustomTabView
         if ((localObject1 instanceof TextView))
         {
           localObject1 = (TextView)localObject1;
-          ((TextView)localObject1).setTextColor(Color.parseColor(localohi.f));
-          this.jdField_a_of_type_JavaLangString = localohi.e;
+          ((TextView)localObject1).setTextColor(Color.parseColor(localopc.f));
+          this.jdField_a_of_type_JavaLangString = localopc.e;
           this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject1);
         }
         for (;;)
@@ -380,11 +380,11 @@ public class CustomTabView
             if (((ImageView)localObject1).getId() == a(this.jdField_a_of_type_Int))
             {
               this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localObject1);
-              this.jdField_b_of_type_JavaLangString = localohi.c;
+              this.jdField_b_of_type_JavaLangString = localopc.c;
               Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
               ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 28.0F);
               ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 28.0F);
-              localObject2 = URLDrawable.getDrawable(localohi.d, (URLDrawable.URLDrawableOptions)localObject2);
+              localObject2 = URLDrawable.getDrawable(localopc.d, (URLDrawable.URLDrawableOptions)localObject2);
               if (localObject2 != null) {
                 ((ImageView)localObject1).setImageDrawable((Drawable)localObject2);
               }
@@ -408,7 +408,7 @@ public class CustomTabView
     a((View)paramView.getParent());
   }
   
-  public void a(ArrayList<ogu> paramArrayList)
+  public void a(ArrayList<oon> paramArrayList)
   {
     if ((paramArrayList == null) || (paramArrayList.isEmpty())) {}
     for (;;)
@@ -417,44 +417,44 @@ public class CustomTabView
       paramArrayList = paramArrayList.iterator();
       while (paramArrayList.hasNext())
       {
-        ogu localogu = (ogu)paramArrayList.next();
-        QLog.i("EcshopCustomTabView", 2, "tab_id: " + localogu.jdField_b_of_type_Int + ",red_type: " + localogu.f + ",red_url: " + localogu.jdField_a_of_type_JavaLangString + " task_id: " + localogu.jdField_a_of_type_Int);
-        ohq.a(null, "gouwu.tab.show", localogu.jdField_b_of_type_Int + "", NetConnInfoCenter.getServerTimeMillis() + "", localogu.jdField_a_of_type_Int + "");
-        ohq.b(null, "gouwu_tab_show", localogu.jdField_b_of_type_Int + "", NetConnInfoCenter.getServerTimeMillis() + "", localogu.jdField_a_of_type_Int + "");
-        int i = localogu.jdField_a_of_type_Int;
-        if ((oho.a(localogu.jdField_b_of_type_Int, i)) || (this.jdField_a_of_type_Int == localogu.jdField_b_of_type_Int) || (oho.a(this.jdField_a_of_type_Int)))
+        oon localoon = (oon)paramArrayList.next();
+        QLog.i("EcshopCustomTabView", 2, "tab_id: " + localoon.jdField_b_of_type_Int + ",red_type: " + localoon.f + ",red_url: " + localoon.jdField_a_of_type_JavaLangString + " task_id: " + localoon.jdField_a_of_type_Int);
+        opk.a(null, "gouwu.tab.show", localoon.jdField_b_of_type_Int + "", NetConnInfoCenter.getServerTimeMillis() + "", localoon.jdField_a_of_type_Int + "");
+        opk.b(null, "gouwu_tab_show", localoon.jdField_b_of_type_Int + "", NetConnInfoCenter.getServerTimeMillis() + "", localoon.jdField_a_of_type_Int + "");
+        int i = localoon.jdField_a_of_type_Int;
+        if ((opi.a(localoon.jdField_b_of_type_Int, i)) || (this.jdField_a_of_type_Int == localoon.jdField_b_of_type_Int) || (opi.a(this.jdField_a_of_type_Int)))
         {
           if (QLog.isColorLevel()) {
-            QLog.i("EcshopCustomTabView", 2, "tab_id: " + localogu.jdField_b_of_type_Int + " has clicked!!!");
+            QLog.i("EcshopCustomTabView", 2, "tab_id: " + localoon.jdField_b_of_type_Int + " has clicked!!!");
           }
         }
         else
         {
-          long l1 = localogu.c;
-          long l2 = localogu.d;
+          long l1 = localoon.c;
+          long l2 = localoon.d;
           long l3 = NetConnInfoCenter.getServerTime();
           QLog.i("EcshopCustomTabView", 2, "startTime: " + l1 + " endTime: " + l2 + " currentTime: " + l3);
-          if (oho.a(localogu.jdField_b_of_type_Int))
+          if (opi.a(localoon.jdField_b_of_type_Int))
           {
-            a(localogu, 0);
+            a(localoon, 0);
           }
           else if ((l1 <= l3) && (l2 >= l3))
           {
             l1 = NetConnInfoCenter.getServerTime();
             l2 = this.jdField_a_of_type_Long;
-            a(localogu, (int)Math.abs(localogu.e * 1000 - (l1 - l2)));
+            a(localoon, (int)Math.abs(localoon.e * 1000 - (l1 - l2)));
           }
         }
       }
     }
   }
   
-  public boolean a(ohh paramohh)
+  public boolean a(opa paramopa)
   {
-    if (paramohh == null) {
+    if (paramopa == null) {
       return false;
     }
-    ArrayList localArrayList = paramohh.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = paramopa.jdField_a_of_type_JavaUtilArrayList;
     if ((localArrayList == null) || (localArrayList.size() == 0) || (localArrayList.size() < 2))
     {
       QLog.i("EcshopCustomTabView", 2, "[initView] config is empty!");
@@ -466,31 +466,31 @@ public class CustomTabView
       int i;
       try
       {
-        localLinearLayout.setBackgroundColor(Color.parseColor(paramohh.jdField_b_of_type_JavaLangString));
+        localLinearLayout.setBackgroundColor(Color.parseColor(paramopa.jdField_b_of_type_JavaLangString));
         localLinearLayout.setOrientation(0);
         addView(localLinearLayout);
-        paramohh = (FrameLayout.LayoutParams)localLinearLayout.getLayoutParams();
-        if (paramohh == null) {
+        paramopa = (FrameLayout.LayoutParams)localLinearLayout.getLayoutParams();
+        if (paramopa == null) {
           break label408;
         }
-        paramohh.width = -1;
-        paramohh.height = -2;
+        paramopa.width = -1;
+        paramopa.height = -2;
       }
-      catch (Throwable paramohh)
+      catch (Throwable paramopa)
       {
         RelativeLayout localRelativeLayout;
-        QLog.e("EcshopCustomTabView", 1, QLog.getStackTraceString(paramohh));
+        QLog.e("EcshopCustomTabView", 1, QLog.getStackTraceString(paramopa));
         try
         {
           if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
           {
             localLinearLayout.measure(0, 0);
-            paramohh = new View(this.jdField_a_of_type_AndroidContentContext);
-            paramohh.setBackgroundColor(1996488704);
-            removeView(paramohh);
-            addView(paramohh);
-            paramohh.getLayoutParams().width = -1;
-            paramohh.getLayoutParams().height = localLinearLayout.getMeasuredHeight();
+            paramopa = new View(this.jdField_a_of_type_AndroidContentContext);
+            paramopa.setBackgroundColor(1996488704);
+            removeView(paramopa);
+            addView(paramopa);
+            paramopa.getLayoutParams().width = -1;
+            paramopa.getLayoutParams().height = localLinearLayout.getMeasuredHeight();
           }
           i = localLinearLayout.getChildCount();
           if (i >= 2)
@@ -499,27 +499,27 @@ public class CustomTabView
             return true;
           }
         }
-        catch (Throwable paramohh)
+        catch (Throwable paramopa)
         {
-          QLog.e("EcshopCustomTabView", 1, QLog.getStackTraceString(paramohh));
+          QLog.e("EcshopCustomTabView", 1, QLog.getStackTraceString(paramopa));
           continue;
         }
         return false;
       }
       if (i < localArrayList.size())
       {
-        paramohh = (ohi)localArrayList.get(i);
-        if (a(paramohh))
+        paramopa = (opc)localArrayList.get(i);
+        if (a(paramopa))
         {
-          ohm.a(paramohh.jdField_a_of_type_Int, false);
-          ohq.a(null, "gouwu.tab.show", paramohh.jdField_a_of_type_Int + "", NetConnInfoCenter.getServerTimeMillis() + "", "");
-          ohq.b(null, "gouwu_tab_show", paramohh.jdField_a_of_type_Int + "", NetConnInfoCenter.getServerTimeMillis() + "", "");
-          localRelativeLayout = a(paramohh);
+          opg.a(paramopa.jdField_a_of_type_Int, false);
+          opk.a(null, "gouwu.tab.show", paramopa.jdField_a_of_type_Int + "", NetConnInfoCenter.getServerTimeMillis() + "", "");
+          opk.b(null, "gouwu_tab_show", paramopa.jdField_a_of_type_Int + "", NetConnInfoCenter.getServerTimeMillis() + "", "");
+          localRelativeLayout = a(paramopa);
           localLinearLayout.addView(localRelativeLayout);
-          localRelativeLayout.setId(paramohh.jdField_a_of_type_Int);
-          paramohh = (LinearLayout.LayoutParams)localRelativeLayout.getLayoutParams();
-          if (paramohh != null) {
-            paramohh.weight = 1.0F;
+          localRelativeLayout.setId(paramopa.jdField_a_of_type_Int);
+          paramopa = (LinearLayout.LayoutParams)localRelativeLayout.getLayoutParams();
+          if (paramopa != null) {
+            paramopa.weight = 1.0F;
           }
         }
       }

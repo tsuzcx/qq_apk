@@ -1,49 +1,31 @@
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileInputStream;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.persistence.Entity;
 
-final class amkg
-  implements amdy
+public class amkg
 {
-  amkg(String paramString, String[] paramArrayOfString, amkd paramamkd, int paramInt) {}
+  public int a;
+  public DiscussionInfo a;
+  public TroopInfo a;
+  public int b;
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public amkg(int paramInt, DiscussionInfo paramDiscussionInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloHttpUtil", 2, "fakeResource3DUrlRequest onDownLoadFinish:" + paramInt1 + " sucess:" + paramBoolean);
-    }
-    if (paramBoolean)
-    {
-      paramArrayOfInt = new File(this.jdField_a_of_type_JavaLangString);
-      if (paramArrayOfInt.exists()) {
-        try
-        {
-          paramString = amke.a(this.jdField_a_of_type_ArrayOfJavaLangString);
-          if (amke.a(this.jdField_a_of_type_JavaLangString))
-          {
-            paramArrayOfInt = amke.a(paramArrayOfInt, paramString);
-            this.jdField_a_of_type_Amkd.a(0, paramString, paramArrayOfInt);
-          }
-          while (QLog.isColorLevel())
-          {
-            QLog.d("ApolloHttpUtil", 2, new Object[] { "fakeResource3DUrlRequest onDownLoadFinish retHeader:", paramString + " id:" + this.jdField_a_of_type_Int });
-            return;
-            this.jdField_a_of_type_Amkd.a(0, paramString, ApolloRender.readStream(new FileInputStream(paramArrayOfInt)));
-          }
-          this.jdField_a_of_type_Amkd.a(-1, null, null);
-        }
-        catch (Exception paramString)
-        {
-          QLog.e("ApolloHttpUtil", 1, paramString, new Object[0]);
-          return;
-        }
-      }
-    }
-    else
-    {
-      this.jdField_a_of_type_Amkd.a(-1, null, null);
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = paramDiscussionInfo;
+  }
+  
+  public amkg(int paramInt1, DiscussionInfo paramDiscussionInfo, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = paramDiscussionInfo;
+    this.b = paramInt2;
+  }
+  
+  public amkg(int paramInt, Entity paramEntity)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo = ((TroopInfo)paramEntity);
   }
 }
 

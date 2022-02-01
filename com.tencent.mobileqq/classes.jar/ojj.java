@@ -1,9 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import android.view.View;
+import com.tencent.biz.pubaccount.PhotoWallViewForAccountDetail;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 import java.util.List;
 
-public abstract interface ojj
+public class ojj
+  implements AdapterView.OnItemClickListener
 {
-  public abstract void a(List<TabChannelCoverInfo> paramList);
+  public ojj(PhotoWallViewForAccountDetail paramPhotoWallViewForAccountDetail) {}
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    paramAdapterView = (oji)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (this.a.jdField_a_of_type_Ojm == null) {
+      return;
+    }
+    this.a.jdField_a_of_type_Ojm.a(paramAdapterView);
+  }
 }
 
 

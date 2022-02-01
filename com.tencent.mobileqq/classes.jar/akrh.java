@@ -1,52 +1,37 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import android.os.Bundle;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import tencent.im.qqwallet.QWalletPubAdReport.ReportRsp;
 
-public class akrh
-  implements View.OnTouchListener
+class akrh
+  implements BusinessObserver
 {
-  public akrh(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  akrh(akrg paramakrg) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    int i = paramMotionEvent.getAction();
-    paramMotionEvent.getX();
-    float f = paramMotionEvent.getY();
-    if (i == 0) {
-      this.a.jdField_b_of_type_AndroidWidgetButton.setText(null);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletGdtAdManager", 2, "onReceive:type:" + paramInt + ",isSuccess:" + paramBoolean + ",bundle:" + paramBundle + ",cost:" + (NetConnInfoCenter.getServerTimeMillis() - this.a.a));
     }
-    do
+    try
     {
-      return false;
-      if (i == 2)
+      paramBundle = paramBundle.getByteArray("data");
+      if ((paramBundle != null) && (paramBoolean))
       {
-        if (f < this.a.jdField_b_of_type_Int * -1)
-        {
-          this.a.a(false, false);
-          return true;
+        QWalletPubAdReport.ReportRsp localReportRsp = new QWalletPubAdReport.ReportRsp();
+        localReportRsp.mergeFrom(paramBundle);
+        if (QLog.isColorLevel()) {
+          QLog.i("QWalletGdtAdManager", 2, "doReqAdsStatistics onReceive: retCode:" + localReportRsp.ret.get() + ",msg:" + localReportRsp.msg.get());
         }
-        this.a.a(true, false);
-        return true;
       }
-      if (i == 3)
-      {
-        this.a.a(false, true);
-        return false;
-      }
-    } while (i != 1);
-    if (f < this.a.jdField_b_of_type_Int * -1)
-    {
-      this.a.k = false;
-      this.a.a(false, true);
+      return;
     }
-    for (;;)
+    catch (Throwable paramBundle)
     {
-      this.a.jdField_b_of_type_AndroidWidgetButton.setText(2131692337);
-      return false;
-      this.a.k = true;
-      this.a.a(true, true);
+      QLog.e("QWalletGdtAdManager", 1, paramBundle, new Object[0]);
     }
   }
 }

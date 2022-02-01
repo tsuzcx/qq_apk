@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.search;
 
 import android.os.Message;
-import basa;
-import basc;
-import bjmp;
+import bbyp;
+import bbyr;
+import bkyc;
 import com.tencent.mobileqq.data.SearchHistory;
 
 public class HistorySearchEntryModel$2$1
   implements Runnable
 {
-  public HistorySearchEntryModel$2$1(basc parambasc, SearchHistory paramSearchHistory, long paramLong) {}
+  public HistorySearchEntryModel$2$1(bbyr parambbyr, SearchHistory paramSearchHistory, long paramLong) {}
   
   public void run()
   {
-    if (basa.a(this.jdField_a_of_type_Basc.a, this.jdField_a_of_type_ComTencentMobileqqDataSearchHistory))
+    if (bbyp.a(this.jdField_a_of_type_Bbyr.a, this.jdField_a_of_type_ComTencentMobileqqDataSearchHistory))
     {
-      Message localMessage = this.jdField_a_of_type_Basc.a.a.obtainMessage();
+      Message localMessage = this.jdField_a_of_type_Bbyr.a.a.obtainMessage();
       localMessage.what = 3;
       localMessage.obj = new Long(this.jdField_a_of_type_Long);
-      this.jdField_a_of_type_Basc.a.a.sendMessage(localMessage);
+      this.jdField_a_of_type_Bbyr.a.a.sendMessage(localMessage);
     }
   }
 }

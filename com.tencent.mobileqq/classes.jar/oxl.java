@@ -1,26 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.FirstCommentCreateData;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/FirstCommentCreateData$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/FirstCommentCreateData;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/FirstCommentCreateData;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class oxl
-  implements Parcelable.Creator<FirstCommentCreateData>
+public abstract interface oxl
 {
-  @NotNull
-  public FirstCommentCreateData a(@NotNull Parcel paramParcel)
-  {
-    Intrinsics.checkParameterIsNotNull(paramParcel, "parcel");
-    return new FirstCommentCreateData(paramParcel);
-  }
+  public abstract void a(PublishVideoEntry paramPublishVideoEntry, int paramInt, String paramString);
   
-  @NotNull
-  public FirstCommentCreateData[] a(int paramInt)
-  {
-    return new FirstCommentCreateData[paramInt];
-  }
+  public abstract void a(PublishVideoEntry paramPublishVideoEntry, String paramString);
 }
 
 

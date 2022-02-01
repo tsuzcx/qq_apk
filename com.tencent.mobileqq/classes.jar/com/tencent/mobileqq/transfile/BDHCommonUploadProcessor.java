@@ -3,10 +3,10 @@ package com.tencent.mobileqq.transfile;
 import android.graphics.BitmapFactory.Options;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import ayeo;
-import ayep;
-import bfvo;
-import bjyw;
+import azla;
+import azlb;
+import bheg;
+import blkh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferHostInfo;
@@ -55,6 +55,7 @@ public class BDHCommonUploadProcessor
   public static final int COMMAND_ID_C2B_PA_PIC = 10;
   public static final int COMMAND_ID_CAMERA_EMO_ROAMING = 70;
   public static final int COMMAND_ID_CMSHOW = 36;
+  public static final int COMMAND_ID_CMSHOW_3D_FACE = 79;
   public static final int COMMAND_ID_DANCE_PKSHARE = 58;
   public static final int COMMAND_ID_FACE_SNAPCHAT_PIC = 7;
   public static final int COMMAND_ID_FAV_ROAMING = 9;
@@ -192,7 +193,7 @@ public class BDHCommonUploadProcessor
       localObject = new BitmapFactory.Options();
       ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
       ((BitmapFactory.Options)localObject).inSampleSize = 1;
-      bfvo.a(this.mUiRequest.mLocalPath, (BitmapFactory.Options)localObject);
+      bheg.a(this.mUiRequest.mLocalPath, (BitmapFactory.Options)localObject);
       this.mHeight = ((BitmapFactory.Options)localObject).outHeight;
       this.mWidth = ((BitmapFactory.Options)localObject).outWidth;
     }
@@ -509,16 +510,16 @@ public class BDHCommonUploadProcessor
     if (QLog.isColorLevel()) {
       QLog.d("BDHCommonUploadProcessor", 2, "uploadCustomEmoticon resultError ---- errCode: " + this.errCode + ", errDesc:" + this.errDesc);
     }
-    ayep localayep;
+    azlb localazlb;
     String str;
     if (this.mUiRequest.mUpCallBack != null)
     {
-      localayep = new ayep();
-      localayep.jdField_a_of_type_Int = -1;
-      localayep.b = this.errCode;
-      localayep.jdField_a_of_type_JavaLangString = this.errDesc;
+      localazlb = new azlb();
+      localazlb.jdField_a_of_type_Int = -1;
+      localazlb.b = this.errCode;
+      localazlb.jdField_a_of_type_JavaLangString = this.errDesc;
       if ((this.mCommandId == 20) && (BaseTransProcessor.getUrlReason(120509L).equals(this.mReportInfo.get("param_reason")))) {
-        localayep.b = 120509;
+        localazlb.b = 120509;
       }
       if (this.mCommandId == 9)
       {
@@ -526,16 +527,16 @@ public class BDHCommonUploadProcessor
         if (!BaseTransProcessor.getUrlReason(400010L).equals(str)) {
           break label207;
         }
-        localayep.b = 400010;
+        localazlb.b = 400010;
       }
     }
     for (;;)
     {
-      this.mUiRequest.mUpCallBack.onSend(localayep);
+      this.mUiRequest.mUpCallBack.onSend(localazlb);
       return;
       label207:
       if (BaseTransProcessor.getUrlReason(400011L).equals(str)) {
-        localayep.b = 400011;
+        localazlb.b = 400011;
       }
     }
   }
@@ -557,12 +558,12 @@ public class BDHCommonUploadProcessor
     }
     if (this.mUiRequest.mUpCallBack != null)
     {
-      ayep localayep = new ayep();
-      localayep.jdField_a_of_type_Int = 0;
+      azlb localazlb = new azlb();
+      localazlb.jdField_a_of_type_Int = 0;
       if (this.mCommandId == 20) {
-        localayep.c = this.file.serverPath;
+        localazlb.c = this.file.serverPath;
       }
-      this.mUiRequest.mUpCallBack.onSend(localayep);
+      this.mUiRequest.mUpCallBack.onSend(localazlb);
     }
     if ((this.mCommandId == 9) || (this.mCommandId == 76)) {
       sendMessageToUpdate(1008);
@@ -662,7 +663,7 @@ public class BDHCommonUploadProcessor
         this.trans = new Transaction(this.app.getCurrentAccountUin(), this.mCommandId, this.mUiRequest.mLocalPath, (int)this.mStartOffset, this.mLocalMd5, local1, this.mUiRequest.mExtentionInfo, true);
       } else if (this.mCommandId == 54) {
         this.trans = new Transaction(this.app.getCurrentAccountUin(), this.mCommandId, this.mUiRequest.mLocalPath, (int)this.mStartOffset, this.mLocalMd5, local1, this.mUiRequest.mExtentionInfo, false);
-      } else if ((this.mCommandId == 51) || (this.mCommandId == 58) || (this.mCommandId == 62) || (this.mCommandId == 65) || (this.mCommandId == 70) || (this.mCommandId == 76) || (this.mCommandId == 78)) {
+      } else if ((this.mCommandId == 51) || (this.mCommandId == 58) || (this.mCommandId == 62) || (this.mCommandId == 65) || (this.mCommandId == 70) || (this.mCommandId == 76) || (this.mCommandId == 78) || (this.mCommandId == 79)) {
         this.trans = new Transaction(this.app.getCurrentAccountUin(), this.mCommandId, this.mUiRequest.mLocalPath, (int)this.mStartOffset, this.mLocalMd5, local1, this.mUiRequest.mExtentionInfo, false);
       } else {
         this.trans = new Transaction(this.app.getCurrentAccountUin(), this.mCommandId, this.mUiRequest.mLocalPath, (int)this.mStartOffset, PkgTools.hexToBytes(this.mSessionKey), this.mLocalMd5, local1);
@@ -727,6 +728,10 @@ public class BDHCommonUploadProcessor
       else if (78 == this.mCommandId)
       {
         this.file.compressUrl = ((String)this.mUiRequest.extraObject);
+        sendFile();
+      }
+      else if (79 == this.mCommandId)
+      {
         sendFile();
       }
       else

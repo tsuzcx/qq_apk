@@ -1,16 +1,13 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode;
-import java.util.List;
+import java.nio.ByteBuffer;
 
 public class xlf
-  extends vko
 {
-  public List<MomeriesYearNode> a;
-  public boolean a;
+  public long a;
+  public ByteBuffer a;
   
-  public xlf(xlc paramxlc, ErrorMessage paramErrorMessage)
+  xlf(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.a = ByteBuffer.allocate(paramInt);
   }
 }
 

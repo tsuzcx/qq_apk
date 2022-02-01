@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import rfq;
+import rrx;
 
 public class TabChannelCoverInfo
   extends ChannelCoverInfo
@@ -17,7 +17,7 @@ public class TabChannelCoverInfo
   public int onlyCover;
   public String proxy;
   public int reason;
-  public rfq redPoint;
+  public rrx redPoint;
   public String redPointJson;
   public long sectionId;
   public int seq;
@@ -27,6 +27,15 @@ public class TabChannelCoverInfo
   public String webUrl;
   
   public TabChannelCoverInfo() {}
+  
+  public TabChannelCoverInfo(int paramInt1, int paramInt2, String paramString1, int paramInt3, String paramString2)
+  {
+    this.channelConfigType = paramInt1;
+    this.mChannelCoverId = paramInt2;
+    this.mChannelCoverName = paramString1;
+    this.reason = paramInt3;
+    this.mChannelCoverIcon = paramString2;
+  }
   
   public TabChannelCoverInfo(int paramInt, String paramString)
   {
@@ -42,20 +51,12 @@ public class TabChannelCoverInfo
     this.reason = paramInt2;
   }
   
-  public TabChannelCoverInfo(int paramInt1, String paramString1, int paramInt2, String paramString2)
-  {
-    this.mChannelCoverId = paramInt1;
-    this.mChannelCoverName = paramString1;
-    this.reason = paramInt2;
-    this.mChannelCoverIcon = paramString2;
-  }
-  
   public TabChannelCoverInfo clone()
   {
     TabChannelCoverInfo localTabChannelCoverInfo = (TabChannelCoverInfo)super.clone();
     if (this.redPoint != null)
     {
-      localTabChannelCoverInfo.redPoint = new rfq();
+      localTabChannelCoverInfo.redPoint = new rrx();
       localTabChannelCoverInfo.redPoint.jdField_a_of_type_Boolean = this.redPoint.jdField_a_of_type_Boolean;
       localTabChannelCoverInfo.redPoint.jdField_b_of_type_Long = this.redPoint.jdField_b_of_type_Long;
       localTabChannelCoverInfo.redPoint.jdField_a_of_type_Long = this.redPoint.jdField_a_of_type_Long;

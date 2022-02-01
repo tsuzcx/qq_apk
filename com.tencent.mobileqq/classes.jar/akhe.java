@@ -1,37 +1,31 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.recent.AnonymousEntranceView;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class akhe
-  implements Animation.AnimationListener
+  extends azip
 {
-  public akhe(AnonymousEntranceView paramAnonymousEntranceView) {}
+  public akhe(BindNumberActivity paramBindNumberActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void a(boolean paramBoolean)
   {
-    if (AnonymousEntranceView.a(this.a) != null) {
-      AnonymousEntranceView.a(this.a).setVisibility(4);
+    super.a(paramBoolean);
+    if (paramBoolean) {
+      BindNumberActivity.a(this.a).sendEmptyMessage(3);
     }
-    if (AnonymousEntranceView.b(this.a) != null)
+    for (;;)
     {
-      AnonymousEntranceView.b(this.a).clearAnimation();
-      AnonymousEntranceView.b(this.a).startAnimation(AnonymousEntranceView.a(this.a));
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (AnonymousEntranceView.a(this.a) != null) {
-      AnonymousEntranceView.a(this.a).setVisibility(0);
+      this.a.app.unRegistObserver(this.a.b);
+      this.a.b = null;
+      return;
+      this.a.b();
+      this.a.a(2131718057);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akhe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,79 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class allc
-  implements View.OnClickListener
+public class allc
+  extends alkr
 {
-  allc(allb paramallb) {}
-  
-  public void onClick(View paramView)
+  public allc(Context paramContext)
   {
-    Object localObject = paramView.getTag();
-    if ((localObject != null) && ((localObject instanceof alli)))
+    this.jdField_a_of_type_JavaLangString = anvx.a(2131692693);
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public Object a(int paramInt, bffl parambffl, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    if ((paramObject instanceof allc))
     {
-      localObject = (alli)localObject;
-      bezm.a(allb.a(this.a), allb.a(this.a), ((alli)localObject).a);
-      bfdm localbfdm = (bfdm)allb.a(this.a).getManager(203);
-      if ((localbfdm != null) && (localbfdm.a(allb.a(this.a), ((alli)localObject).a, allb.a(this.a)))) {
-        localbfdm.a(allb.a(this.a), ((alli)localObject).a);
-      }
-      if (allb.a(this.a) != null) {
-        break label121;
-      }
+      paramObject = (allc)paramObject;
+      paramObject.jdField_a_of_type_Bffm.a(parambffl.jdField_a_of_type_Bffm);
+      return paramObject;
     }
-    for (;;)
+    paramObject = new allc(BaseApplication.getContext());
+    paramObject.jdField_a_of_type_Bffm = new bffm(parambffl.jdField_a_of_type_Bffm);
+    return paramObject;
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
+      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
+      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
+      if (this.jdField_a_of_type_Bffm == null) {
+        this.jdField_a_of_type_Bffm = new bffm();
+      }
+      this.jdField_a_of_type_Bffm.a(paramArrayOfByte.getString("messageNavInfo"));
       return;
-      label121:
-      bcef.b(allb.a(this.a).app, "dc00898", "", "", "", "0X8009F9F", 0, 0, ((alli)localObject).a, "", "", "");
+    }
+    catch (JSONException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+  }
+  
+  public byte[] a()
+  {
+    return b();
+  }
+  
+  public byte[] b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
+      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      if (this.jdField_a_of_type_Bffm != null) {
+        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bffm.a());
+      }
+      return localJSONObject.toString().getBytes();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
     }
   }
 }

@@ -1,27 +1,21 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import cooperation.qzone.util.XMPCoreUtil.XMPCoreJarLoadListener;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
+import com.tencent.mobileqq.widget.QQViewPager;
 
 class ajsp
-  implements XMPCoreUtil.XMPCoreJarLoadListener
+  extends ViewPager.SimpleOnPageChangeListener
 {
-  ajsp(ajsn paramajsn, LocalMediaInfo paramLocalMediaInfo) {}
+  ajsp(ajso paramajso) {}
   
-  public void loadState(boolean paramBoolean)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    if (paramBoolean)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.rotation == 90) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth < this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight))
-      {
-        int i = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight;
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth;
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth = i;
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.setPanoramaType();
-      }
+    if (paramInt == 1) {
+      this.a.b = this.a.a.getCurrentItem();
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.setPanoramaType();
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    ajso.a(this.a, paramInt);
   }
 }
 

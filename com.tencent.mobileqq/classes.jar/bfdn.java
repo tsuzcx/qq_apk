@@ -1,32 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bfdn
-  extends nmf
+  implements View.OnClickListener
 {
-  bfdn(bfdm parambfdm, bfdu parambfdu) {}
+  bfdn(bfdm parambfdm) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    paramBundle = new cmd0x934.RspBody();
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      this.jdField_a_of_type_Bfdu.a(paramInt, paramBundle);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(paramArrayOfByte));
-        }
-      }
-    }
+    GroupManagerActivity.a((Activity)bfdm.a(this.a));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

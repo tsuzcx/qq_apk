@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.mini.entry.search.data;
 
+import NS_COMM.COMM.StCommonExt;
 import NS_STORE_APP_SEARCH.MiniAppSearch.StGetHotSearchAppsRsp;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -10,21 +11,25 @@ class MiniAppSearchDataManager$1
 {
   MiniAppSearchDataManager$1(MiniAppSearchDataManager paramMiniAppSearchDataManager) {}
   
-  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
+  public void onCmdListener(boolean paramBoolean, JSONObject arg2)
   {
-    if ((paramBoolean) && (paramJSONObject != null))
+    if ((paramBoolean) && (??? != null))
     {
-      long l = paramJSONObject.optLong("retCode");
-      String str = paramJSONObject.optString("errMsg");
-      QLog.d("MiniAppSearchDataManager", 1, "sendHotSearchAppRequest, retCode = " + l + ", errMsg = " + str);
+      long l = ???.optLong("retCode");
+      Object localObject1 = ???.optString("errMsg");
+      QLog.d("MiniAppSearchDataManager", 1, "sendHotSearchAppRequest, retCode = " + l + ", errMsg = " + (String)localObject1);
       if (l != 0L) {
         return;
       }
-      paramJSONObject = (MiniAppSearch.StGetHotSearchAppsRsp)paramJSONObject.opt("getHotSearchAppsResponse");
-      MiniAppSearchDataManager.access$000(this.this$0, paramJSONObject);
-      return;
+      localObject1 = (MiniAppSearch.StGetHotSearchAppsRsp)???.opt("getHotSearchAppsResponse");
+      MiniAppSearchDataManager.access$000(this.this$0, (MiniAppSearch.StGetHotSearchAppsRsp)localObject1);
+      synchronized (MiniAppSearchDataManager.access$100(this.this$0))
+      {
+        MiniAppSearchDataManager.access$202(this.this$0, (COMM.StCommonExt)((MiniAppSearch.StGetHotSearchAppsRsp)localObject1).extInfo.get());
+        return;
+      }
     }
-    QLog.e("MiniAppSearchDataManager", 1, "sendHotSearchAppRequest, isSuccess = " + paramBoolean + ", ret = " + paramJSONObject);
+    QLog.e("MiniAppSearchDataManager", 1, "sendHotSearchAppRequest, isSuccess = " + paramBoolean + ", ret = " + ???);
   }
 }
 

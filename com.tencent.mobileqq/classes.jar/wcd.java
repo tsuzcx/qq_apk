@@ -1,43 +1,96 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspIconPostfix;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.Boss;
-import com.tribe.async.async.Bosses;
+import android.support.annotation.NonNull;
+import java.io.File;
 
-public class wcd
-  extends vta
+public abstract class wcd
 {
-  qqstory_service.RspIconPostfix a;
+  protected wcd a;
+  protected String[] a;
   
-  public wcd() {}
-  
-  public wcd(qqstory_service.RspIconPostfix paramRspIconPostfix)
+  public wcd(@NonNull String[] paramArrayOfString)
   {
-    super(paramRspIconPostfix.result);
-    this.a = paramRspIconPostfix;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
   }
   
-  public void a()
+  public static double a(File paramFile)
   {
-    if ((this.a.icon_info.has()) && (this.a.icon_info.size() > 0)) {
-      Bosses.get().postJob(new wce(this, "GetUserIconHandler"));
+    double d1 = 0.0D;
+    double d2;
+    if (paramFile.isDirectory())
+    {
+      paramFile = paramFile.listFiles();
+      d2 = d1;
+      if (paramFile != null)
+      {
+        int j = paramFile.length;
+        int i = 0;
+        for (;;)
+        {
+          d2 = d1;
+          if (i >= j) {
+            break;
+          }
+          d2 = a(paramFile[i]);
+          i += 1;
+          d1 = d2 + d1;
+        }
+      }
+    }
+    else
+    {
+      d2 = paramFile.length() / 1024.0D / 1024.0D;
+    }
+    return d2;
+  }
+  
+  public wcd a(wcd paramwcd)
+  {
+    this.jdField_a_of_type_Wcd = paramwcd;
+    return this.jdField_a_of_type_Wcd;
+  }
+  
+  public void a(File paramFile)
+  {
+    try
+    {
+      zeb.d(paramFile.getPath());
+      return;
+    }
+    catch (Exception paramFile)
+    {
+      ykq.d("Q.qqstory.cleaner:AbsCleanStep", "delete failed : " + paramFile);
     }
   }
   
-  public void a(int paramInt, Bundle paramBundle)
+  public void a(wce paramwce)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("GetUserIconHandler", 2, "GetUserIconListResponse onNetError errorCode " + paramInt);
-    }
+    a(this.jdField_a_of_type_ArrayOfJavaLangString, paramwce);
+    if (this.jdField_a_of_type_Wcd != null) {}
+    long l;
+    do
+    {
+      try
+      {
+        Thread.sleep(100L);
+        this.jdField_a_of_type_Wcd.a(paramwce);
+        return;
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        for (;;)
+        {
+          ykq.e("Q.qqstory.cleaner:AbsCleanStep", "sleep error ,InterruptedException");
+        }
+      }
+      l = zeb.a() / 1024L;
+      ykq.d("Q.qqstory.cleaner:AbsCleanStep", "clean cache over , spend time = %d , free size = %d", new Object[] { Long.valueOf(System.currentTimeMillis() - paramwce.jdField_a_of_type_Long), Long.valueOf(l) });
+      if (paramwce.jdField_a_of_type_Int != 0) {
+        ykv.b("story_cache", "clear_cache", 0, 0, new String[] { String.valueOf(0), String.valueOf(paramwce.jdField_a_of_type_Int), String.valueOf(paramwce.jdField_a_of_type_Double), String.valueOf(l) });
+      }
+    } while (paramwce.jdField_b_of_type_Int == 0);
+    ykv.b("story_cache", "clear_cache", 0, 0, new String[] { String.valueOf(1), String.valueOf(paramwce.jdField_b_of_type_Int), String.valueOf(paramwce.jdField_b_of_type_Double), String.valueOf(l) });
   }
   
-  public void a(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("GetUserIconHandler", 2, "GetUserIconListResponse errorCode:" + paramInt + " errorMsg:" + paramString);
-    }
-  }
+  protected abstract void a(String[] paramArrayOfString, wce paramwce);
 }
 
 

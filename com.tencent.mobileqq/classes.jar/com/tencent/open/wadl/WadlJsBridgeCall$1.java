@@ -1,6 +1,6 @@
 package com.tencent.open.wadl;
 
-import bifs;
+import bjqu;
 import java.util.Map;
 
 public final class WadlJsBridgeCall$1
@@ -10,7 +10,7 @@ public final class WadlJsBridgeCall$1
   
   public void run()
   {
-    bifs.a().put(this.a, new Boolean(false));
+    bjqu.a().put(this.a, new Boolean(false));
   }
 }
 

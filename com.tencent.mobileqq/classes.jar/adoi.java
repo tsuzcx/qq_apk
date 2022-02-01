@@ -1,20 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.LbsBaseActivity;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class adoi
-  implements DialogInterface.OnDismissListener
+  implements AbsListView.OnScrollListener
 {
-  public adoi(LbsBaseActivity paramLbsBaseActivity, Runnable paramRunnable) {}
+  public adoi(ChatHistory paramChatHistory) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (!LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity))
+    this.a.m = paramInt;
+    if (paramInt == 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity.a();
+      AbstractGifImage.resumeAll();
       return;
     }
-    LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity, this.jdField_a_of_type_JavaLangRunnable);
+    if ((this.a.a != null) && (this.a.a.jdField_a_of_type_Int == 1) && (!this.a.a.jdField_a_of_type_Boolean)) {
+      this.a.a.d();
+    }
+    AbstractGifImage.pauseAll();
   }
 }
 

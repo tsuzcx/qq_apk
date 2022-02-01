@@ -1,28 +1,40 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
+import android.app.Activity;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.os.Bundle;
 
-public class acea
-  extends acew
+class acea
+  implements Application.ActivityLifecycleCallbacks
 {
-  public int a()
+  acea(acdv paramacdv) {}
+  
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityDestroyed(Activity paramActivity)
   {
-    return super.a() + 2;
+    if (paramActivity == acdv.a(this.a)) {
+      acdv.a(this.a).j();
+    }
   }
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bdyi parambdyi, bblm parambblm, bbkm parambbkm)
+  public void onActivityPaused(Activity paramActivity)
   {
-    new bblb().a(paramList, paramList1, paramStringBuilder, paramMsg, parambdyi);
-    return true;
+    if (paramActivity == acdv.a(this.a)) {
+      acdv.a(this.a).h();
+    }
   }
   
-  public boolean a(im_msg_body.Elem paramElem)
+  public void onActivityResumed(Activity paramActivity)
   {
-    return (paramElem.common_elem.has()) && (14 == paramElem.common_elem.uint32_service_type.get());
+    if (paramActivity == acdv.a(this.a)) {
+      acdv.a(this.a).i();
+    }
   }
+  
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityStarted(Activity paramActivity) {}
+  
+  public void onActivityStopped(Activity paramActivity) {}
 }
 
 

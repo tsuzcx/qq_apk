@@ -1,68 +1,18 @@
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import java.util.List;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
-class aheg
-  extends anax
+public class aheg
+  extends afos
 {
-  aheg(ahdt paramahdt) {}
-  
-  protected void a(boolean paramBoolean, List<Long> paramList)
-  {
-    if (this.a.sessionInfo == null) {}
-    do
-    {
-      int k;
-      do
-      {
-        return;
-        String str = this.a.sessionInfo.curFriendUin;
-        if (paramList == null) {}
-        for (int i = 0;; i = paramList.size())
-        {
-          int j = 0;
-          k = 0;
-          while ((k == 0) && (j < i))
-          {
-            if (bftf.a(String.valueOf(paramList.get(j)), str)) {
-              k = 1;
-            }
-            j += 1;
-          }
-        }
-      } while (k == 0);
-      ChatActivityUtils.a(this.a.mActivity, paramBoolean, false);
-    } while (!paramBoolean);
-    this.a.c();
-  }
-  
-  protected void b(boolean paramBoolean, List<Long> paramList)
-  {
-    int k = 0;
-    if (this.a.sessionInfo == null) {}
-    do
-    {
-      do
-      {
-        return;
-        String str = this.a.sessionInfo.curFriendUin;
-        if (paramList == null) {}
-        for (int i = 0;; i = paramList.size())
-        {
-          int j = 0;
-          while ((k == 0) && (j < i))
-          {
-            if (bftf.a(String.valueOf(paramList.get(j)), str)) {
-              k = 1;
-            }
-            j += 1;
-          }
-        }
-      } while (k == 0);
-      ChatActivityUtils.a(this.a.mActivity, paramBoolean, true);
-    } while (!paramBoolean);
-    this.a.c();
-  }
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
+  TextView d;
 }
 
 

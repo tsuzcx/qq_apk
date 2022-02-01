@@ -1,100 +1,249 @@
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyLockScreenJumpDelegate;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianDailyManager;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForReplyText;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.TransferRequest;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.TypeCastException;
-import kotlin.jvm.internal.Intrinsics;
-import kotlin.text.Charsets;
-import org.jetbrains.annotations.NotNull;
+import java.util.HashMap;
+import mqq.manager.Manager;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/notification/modularize/business/KanDianJumpScheme;", "Lcom/tencent/mobileqq/notification/modularize/BaseJumpScheme;", "()V", "customJumpIntent", "Landroid/app/PendingIntent;", "pushComponent", "Lcom/tencent/mobileqq/notification/modularize/PushComponent;", "generatePendingIntent", "Landroid/content/Intent;", "app", "Lcom/tencent/mobileqq/app/QQAppInterface;", "messageRecord", "Lcom/tencent/mobileqq/data/MessageRecord;", "context", "Landroid/content/Context;", "nativeJumpIntent", "needCustomJump", "", "processMsg0x210Sub0x135ExtData", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class axii
-  extends axhx
+public class axii
+  implements Manager
 {
-  public static final axij a = new axij(null);
+  public static boolean a;
+  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  private long jdField_a_of_type_Long;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public boolean b;
+  public boolean c;
   
-  private final Intent a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, Context paramContext, axib paramaxib)
+  static
   {
-    if (pay.c(paramMessageRecord))
+    jdField_a_of_type_Boolean = true;
+  }
+  
+  public axii(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    paramMessageRecord.extraflag = 32768;
+    paramQQAppInterface.getMsgCache().a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq);
+    String str = paramMessageRecord.frienduin;
+    int i = paramMessageRecord.istroop;
+    long l = paramMessageRecord.uniseq;
+    ((MessageHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).notifyUI(MessageHandler.a(paramMessageRecord.istroop), false, new Object[] { str, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, long paramLong, String paramString2)
+  {
+    long l = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("StructLongTextMsg", 2, "requestDownloadLongTextMsg begin! touin:" + paramString1 + ",touinType:" + paramInt + ",uniseq:" + paramLong + ",fileKey:" + paramString2);
+    }
+    axio.a().a(paramQQAppInterface, paramString2, paramQQAppInterface.getCurrentAccountUin(), paramString1, paramString1, paramInt, paramLong, 1035, new axil(paramQQAppInterface, paramString1, paramInt, paramLong, l));
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    axii localaxii = (axii)paramQQAppInterface.getManager(QQManagerFactory.LONG_TEXT_MSG_MANAGER);
+    if (!localaxii.b)
     {
-      paramQQAppInterface = paramQQAppInterface.getManager(296);
-      if (paramQQAppInterface == null) {
-        throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.engine.KandianDailyManager");
+      String str = paramQQAppInterface.getAccount();
+      paramQQAppInterface = PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp());
+      if (paramQQAppInterface.contains(str + "_" + "long_text_msg_config_version")) {
+        localaxii.c = paramQQAppInterface.getBoolean(str + "_" + "long_text_msg_switch", jdField_a_of_type_Boolean);
       }
-      paramQQAppInterface = ReadInJoyLockScreenJumpDelegate.a(paramContext, 6, ((KandianDailyManager)paramQQAppInterface).b());
-      Intrinsics.checkExpressionValueIsNotNull(paramQQAppInterface, "ReadInJoyLockScreenJumpD…moveLockScreenRedDodInfo)");
     }
-    for (;;)
-    {
-      paramQQAppInterface.putExtra("is_from_push_component", true);
-      paramQQAppInterface.putExtra("push_main_business_id", paramaxib.jdField_a_of_type_Int);
-      paramQQAppInterface.putExtra("push_sub_business_id", paramaxib.b);
-      paramQQAppInterface.putExtra("push_id", paramaxib.c);
-      paramQQAppInterface.addFlags(268435456);
-      return paramQQAppInterface;
-      paramQQAppInterface = okj.a(paramContext, 6);
-      Intrinsics.checkExpressionValueIsNotNull(paramQQAppInterface, "ReadInJoyActivityHelper.…tent(context, launchFrom)");
-    }
+    localaxii.b = true;
+    return localaxii.c;
   }
   
-  private final MessageRecord a(QQAppInterface paramQQAppInterface, axib paramaxib)
+  public int a()
   {
-    paramQQAppInterface = paramQQAppInterface.getManager(162);
-    if (paramQQAppInterface == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager");
-    }
-    paramQQAppInterface = ((KandianMergeManager)paramQQAppInterface).a(paramaxib.jdField_a_of_type_ArrayOfByte, paramaxib.jdField_a_of_type_JavaLangString);
-    Intrinsics.checkExpressionValueIsNotNull(paramQQAppInterface, "km.createFakeMsgFrom0x13…ata, pushComponent.title)");
-    return paramQQAppInterface;
+    return 1;
   }
   
-  private final PendingIntent e(axib paramaxib)
+  public void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, int paramInt3)
   {
-    Object localObject = (Intent)null;
-    BaseApplication localBaseApplication = BaseApplication.context;
-    if (paramaxib.b == 1)
+    boolean bool = false;
+    if (paramInt2 == 0) {
+      bool = true;
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_resultCode", String.valueOf(paramInt2));
+    localHashMap.put("param_uin", paramQQAppInterface.getCurrentAccountUin());
+    localHashMap.put("param_isTroop", String.valueOf(paramInt1));
+    switch (paramInt3)
     {
-      QLog.d("KanDianJumpScheme", 1, "nativeJumpIntent bytesExtData: " + new String(paramaxib.jdField_a_of_type_ArrayOfByte, Charsets.UTF_8));
-      localObject = BaseApplicationImpl.getApplication();
-      Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getApplication()");
-      localObject = ((BaseApplicationImpl)localObject).getRuntime();
-      if (localObject == null) {
-        throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
+    default: 
+      return;
+    case 1: 
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(paramQQAppInterface.getCurrentAccountUin(), "ltextAutoPullResult", bool, 0L, 0L, localHashMap, "");
+      return;
+    }
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(paramQQAppInterface.getCurrentAccountUin(), "ltextManualPullResult", bool, 0L, 0L, localHashMap, "");
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, boolean paramBoolean)
+  {
+    if ((paramMessageRecord instanceof MessageForReplyText))
+    {
+      a(paramQQAppInterface, paramMessageRecord, paramBoolean, new axij(this, paramQQAppInterface, paramMessageRecord, paramBoolean));
+      return;
+    }
+    a(paramQQAppInterface, paramMessageRecord, paramBoolean, new axik(this, paramQQAppInterface, paramMessageRecord, paramBoolean));
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, boolean paramBoolean, azla paramazla)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StructLongTextMsg", 4, " sendLongTextMsg start");
+    }
+    if (paramMessageRecord == null) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("StructLongTextMsg", 2, "step1: sendLongTextMsg saveMessage start currenttime:" + System.currentTimeMillis());
       }
-      QQAppInterface localQQAppInterface = (QQAppInterface)localObject;
-      MessageRecord localMessageRecord = a(localQQAppInterface, paramaxib);
-      Intrinsics.checkExpressionValueIsNotNull(localBaseApplication, "context");
-      localObject = a(localQQAppInterface, localMessageRecord, (Context)localBaseApplication, paramaxib);
-      pay.a(localQQAppInterface.getMessageFacade(), localMessageRecord, (Intent)localObject);
+      if ((paramMessageRecord instanceof ChatMessage)) {
+        ((ChatMessage)paramMessageRecord).mPendantAnimatable = true;
+      }
+      if ((!paramBoolean) || (TextUtils.isEmpty(paramMessageRecord.extStr)))
+      {
+        paramMessageRecord.saveExtInfoToExtStr("long_text_recv_state", "0");
+        paramQQAppInterface.getMessageFacade().addSendMessage(paramMessageRecord);
+        if (QLog.isColorLevel()) {
+          QLog.d("StructLongTextMsg", 2, "saveLongTextMsg reSend:" + paramBoolean + ",extStr:" + paramMessageRecord.extStr);
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("StructLongTextMsg", 2, "step2: sendLongTextMsg saveMessage end and pack longTextMsg start currenttime:" + System.currentTimeMillis());
+      }
+      byte[] arrayOfByte = paramQQAppInterface.getProxyManager().a().a(paramMessageRecord);
+      if (arrayOfByte == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("StructLongTextMsg", 2, "step2: sendLongTextMsg pack failed! packData is null.............................");
+        }
+        paramMessageRecord.extraflag = 32768;
+        paramQQAppInterface.getMsgCache().a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq);
+        paramazla = paramMessageRecord.frienduin;
+        int i = paramMessageRecord.istroop;
+        long l = paramMessageRecord.uniseq;
+        ((MessageHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).notifyUI(MessageHandler.a(paramMessageRecord.istroop), false, new Object[] { paramazla, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
+        return;
+      }
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      paramBoolean = a(paramQQAppInterface, arrayOfByte, paramQQAppInterface.getCurrentAccountUin(), paramMessageRecord.frienduin, paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq, 1035, paramazla);
+      if (!paramBoolean) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("StructLongTextMsg", 2, "sendLongTextMsg successful, uploadLongTextMsgPkg start!");
+    return;
+    if (QLog.isColorLevel()) {
+      QLog.d("StructLongTextMsg", 2, "sendLongTextMsg failed! isSuccess:" + paramBoolean);
     }
-    for (;;)
+    a(paramQQAppInterface, paramMessageRecord);
+  }
+  
+  public void a(String paramString, int paramInt1, long paramLong1, int paramInt2, long paramLong2)
+  {
+    try
     {
-      paramaxib = PendingIntent.getActivity((Context)localBaseApplication, paramaxib.d, (Intent)localObject, 134217728);
-      Intrinsics.checkExpressionValueIsNotNull(paramaxib, "PendingIntent.getActivit…tent.FLAG_UPDATE_CURRENT)");
-      return paramaxib;
-      QLog.d("KanDianJumpScheme", 1, new Object[] { "nativeJumpIntent: called. ", "invalid subBusinessId. pushComponent: " + paramaxib });
+      MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageProxy(paramInt1).a(paramString, paramInt1, paramLong1);
+      if (localMessageRecord != null)
+      {
+        HashMap localHashMap = new HashMap();
+        localHashMap.put("param_istroop", String.valueOf(localMessageRecord.istroop));
+        localHashMap.put("param_msgtype", String.valueOf(localMessageRecord.msgtype));
+        localHashMap.put("param_replycode", String.valueOf(paramInt2));
+        localHashMap.put("param_cost", String.valueOf(paramLong2));
+        localHashMap.put("param_isAnonymous", String.valueOf(nty.a(localMessageRecord)));
+        if (localMessageRecord.msgtype == -1051) {
+          StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "ltextNewSendResult", true, 0L, 0L, localHashMap, "");
+        }
+        while (QLog.isColorLevel())
+        {
+          QLog.d("StructLongTextMsg", 2, "reportSendLongMsg  peerUin:" + paramString + " istroop=" + localMessageRecord.istroop + " issend=" + localMessageRecord.issend + " msgType=" + localMessageRecord.msgtype + " longMsgCount=" + localMessageRecord.longMsgCount + " longMsgId=" + localMessageRecord.longMsgId + " longMsgIndex=" + localMessageRecord.longMsgIndex + " replyCost=" + paramInt2 + " cost=" + paramLong2);
+          return;
+          if ((!localMessageRecord.isLongMsg()) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().b(localMessageRecord))) {
+            break;
+          }
+          localHashMap.put("param_longMsgCount", String.valueOf(localMessageRecord.longMsgCount));
+          localHashMap.put("param_longMsgId", String.valueOf(localMessageRecord.longMsgId));
+          localHashMap.put("param_longMsgIndex", String.valueOf(localMessageRecord.longMsgIndex));
+          StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "ltextOldSendResult", true, 0L, 0L, localHashMap, "");
+        }
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.d("StructLongTextMsg", 1, "longmsg send report error!", paramString);
     }
   }
   
-  @NotNull
-  protected PendingIntent a(@NotNull axib paramaxib)
+  public boolean a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, String paramString1, String paramString2, String paramString3, int paramInt1, long paramLong, int paramInt2, azla paramazla)
   {
-    Intrinsics.checkParameterIsNotNull(paramaxib, "pushComponent");
-    return e(paramaxib);
-  }
-  
-  protected boolean a()
-  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StructLongTextMsg", 2, "[sendLongTextMsg]data.length = " + paramArrayOfByte.length);
+    }
+    TransferRequest localTransferRequest = new TransferRequest();
+    localTransferRequest.mIsUp = true;
+    localTransferRequest.mFileType = 131078;
+    localTransferRequest.multiMsgType = 1;
+    localTransferRequest.toSendData = paramArrayOfByte;
+    localTransferRequest.mSelfUin = paramString1;
+    localTransferRequest.mPeerUin = paramString2;
+    localTransferRequest.mSecondId = paramString3;
+    localTransferRequest.mUinType = paramInt1;
+    localTransferRequest.mUniseq = paramLong;
+    localTransferRequest.mBusiType = paramInt2;
+    localTransferRequest.mUpCallBack = paramazla;
+    localTransferRequest.upMsgBusiType = a();
+    paramQQAppInterface.getTransFileController().transferAsync(localTransferRequest);
     return true;
   }
+  
+  public void b(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StructLongTextMsg", 2, "reportReceiveLongMsg  istroop=" + paramMessageRecord.istroop + " issend=" + paramMessageRecord.issend + " msgType=" + paramMessageRecord.msgtype + " longMsgCount=" + paramMessageRecord.longMsgCount + " longMsgId=" + paramMessageRecord.longMsgId + " longMsgIndex=" + paramMessageRecord.longMsgIndex);
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_istroop", String.valueOf(paramMessageRecord.istroop));
+    localHashMap.put("param_issend", String.valueOf(paramMessageRecord.issend));
+    localHashMap.put("param_msgtype", String.valueOf(paramMessageRecord.msgtype));
+    localHashMap.put("param_isAnonymous", String.valueOf(nty.a(paramMessageRecord)));
+    if (paramMessageRecord.msgtype == -1051) {
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(paramQQAppInterface.getCurrentAccountUin(), "ltextNewReceiveResult", true, 0L, 0L, localHashMap, "");
+    }
+    while (!paramMessageRecord.isLongMsg()) {
+      return;
+    }
+    localHashMap.put("param_longMsgCount", String.valueOf(paramMessageRecord.longMsgCount));
+    localHashMap.put("param_longMsgId", String.valueOf(paramMessageRecord.longMsgId));
+    localHashMap.put("param_longMsgIndex", String.valueOf(paramMessageRecord.longMsgIndex));
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(paramQQAppInterface.getCurrentAccountUin(), "ltextOldReceiveResult", true, 0L, 0L, localHashMap, "");
+  }
+  
+  public void onDestroy() {}
 }
 
 

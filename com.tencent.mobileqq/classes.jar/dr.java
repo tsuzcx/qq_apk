@@ -15,6 +15,7 @@ import com.dataline.util.file.DLFileInfo;
 import com.dataline.util.widget.AsyncImageView;
 import com.dataline.util.widget.WaitTextView;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.DataLineMsgSet;
@@ -97,35 +98,35 @@ public class dr
   {
     if (paramDataLineMsgRecord.strMoloKey != null)
     {
-      amqd localamqd = (amqd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(8);
+      ansr localansr = (ansr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
       if ((!paramDataLineMsgRecord.bIsApkFile) || (paramDataLineMsgRecord.nAppStatus == 1))
       {
-        int i = localamqd.a(paramDataLineMsgRecord.strMoloKey);
+        int i = localansr.a(paramDataLineMsgRecord.strMoloKey);
         if (i == 2) {
-          aszk.a(2131692520);
+          audr.a(2131692622);
         }
         while (i == 0) {
           return;
         }
-        aszk.a(2131693410);
+        audr.a(2131693591);
         return;
       }
-      localamqd.b(paramDataLineMsgRecord.strMoloKey);
+      localansr.b(paramDataLineMsgRecord.strMoloKey);
       return;
     }
     paramDataLineMsgRecord = paramDataLineMsgRecord.path;
-    aszt.a(this.jdField_a_of_type_ComDatalineActivitiesDLFilesViewerActivity, paramDataLineMsgRecord);
+    auea.a(this.jdField_a_of_type_ComDatalineActivitiesDLFilesViewerActivity, paramDataLineMsgRecord);
   }
   
   private void a(dv paramdv, DataLineMsgRecord paramDataLineMsgRecord)
   {
-    amqd localamqd = (amqd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(8);
+    ansr localansr = (ansr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
     if (paramDataLineMsgRecord.strMoloKey != null) {
-      localamqd.b(111);
+      localansr.b(111);
     }
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Long.valueOf(paramDataLineMsgRecord.sessionid));
-    if (localamqd.a(localArrayList))
+    if (localansr.a(localArrayList))
     {
       paramdv.jdField_a_of_type_ComDatalineUtilFileDLFileInfo.jdField_a_of_type_Int = 3;
       paramDataLineMsgRecord.fileMsgStatus = 0L;
@@ -134,20 +135,20 @@ public class dr
       paramDataLineMsgRecord.issuc = true;
       return;
     }
-    aszk.a(2131693467);
+    audr.a(2131693648);
   }
   
   private void b(dv paramdv, DataLineMsgRecord paramDataLineMsgRecord)
   {
-    amqd localamqd = (amqd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(8);
+    ansr localansr = (ansr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
     if (paramdv.jdField_a_of_type_Int == 0) {
-      localamqd.a(paramDataLineMsgRecord.path, paramDataLineMsgRecord.thumbPath, 1, paramDataLineMsgRecord.sessionid, paramDataLineMsgRecord.groupId, paramDataLineMsgRecord.groupSize, paramDataLineMsgRecord.groupIndex, true);
+      localansr.a(paramDataLineMsgRecord.path, paramDataLineMsgRecord.thumbPath, 1, paramDataLineMsgRecord.sessionid, paramDataLineMsgRecord.groupId, paramDataLineMsgRecord.groupSize, paramDataLineMsgRecord.groupIndex, true);
     }
     for (;;)
     {
       paramdv.jdField_a_of_type_ComDatalineUtilFileDLFileInfo.jdField_a_of_type_Int = 0;
       return;
-      localamqd.a(paramDataLineMsgRecord.path, paramDataLineMsgRecord.thumbPath, 0, paramDataLineMsgRecord.sessionid, paramDataLineMsgRecord.groupId, paramDataLineMsgRecord.groupSize, paramDataLineMsgRecord.groupIndex, true);
+      localansr.a(paramDataLineMsgRecord.path, paramDataLineMsgRecord.thumbPath, 0, paramDataLineMsgRecord.sessionid, paramDataLineMsgRecord.groupId, paramDataLineMsgRecord.groupSize, paramDataLineMsgRecord.groupIndex, true);
     }
   }
   
@@ -179,11 +180,11 @@ public class dr
         if (paramFloat < ((DataLineMsgRecord)localObject).progress) {
           f = ((DataLineMsgRecord)localObject).progress;
         }
-        localObject = (ProgressBar)paramListView.findViewById(2131366643);
+        localObject = (ProgressBar)paramListView.findViewById(2131366754);
         if (localObject != null) {
           ((ProgressBar)localObject).setProgress((int)(f * 100.0F));
         }
-        paramListView = (TextView)paramListView.findViewById(2131366672);
+        paramListView = (TextView)paramListView.findViewById(2131366784);
         if (paramListView == null) {
           break;
         }
@@ -231,12 +232,12 @@ public class dr
     {
       i = 1;
       if (i != 0) {
-        break label927;
+        break label928;
       }
     }
     label648:
     label786:
-    label927:
+    label928:
     for (Object localObject = (DataLineMsgRecord)getItem(paramInt);; localObject = null)
     {
       dv localdv;
@@ -247,9 +248,9 @@ public class dr
         localdv = new dv(this);
         if (i != 0)
         {
-          paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559047, null);
-          localdv.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366131));
-          localdv.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView = ((WaitTextView)paramView.findViewById(2131366133));
+          paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559075, null);
+          localdv.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366232));
+          localdv.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView = ((WaitTextView)paramView.findViewById(2131366234));
           paramView.setTag(localdv);
           localView = paramView;
           paramView = localdv;
@@ -270,18 +271,18 @@ public class dr
         return localView;
         i = 0;
         break;
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559046, null);
-        localdv.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131366658));
+        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559074, null);
+        localdv.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131366769));
         localdv.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.b);
         localdv.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localdv);
-        localdv.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131366632));
-        localdv.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130844114);
+        localdv.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131366743));
+        localdv.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130844181);
         localdv.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setIsDrawRound(false);
-        localdv.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366667));
-        localdv.b = ((TextView)paramView.findViewById(2131366671));
-        localdv.c = ((TextView)paramView.findViewById(2131366672));
-        localdv.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131366643));
-        localdv.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131361937));
+        localdv.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366779));
+        localdv.b = ((TextView)paramView.findViewById(2131366783));
+        localdv.c = ((TextView)paramView.findViewById(2131366784));
+        localdv.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131366754));
+        localdv.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131361939));
         localdv.jdField_a_of_type_AndroidWidgetButton.setTag(localdv);
         localdv.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
         break label89;
@@ -297,7 +298,7 @@ public class dr
           paramView.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.setVisibility(0);
           i = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getComeCount();
           j = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getTotalCount();
-          localObject = String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131693458), new Object[] { Integer.valueOf(j - i) });
+          localObject = String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131693639), new Object[] { Integer.valueOf(j - i) });
           paramView.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.setWaitText((String)localObject);
           paramView.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.a();
         }
@@ -308,7 +309,7 @@ public class dr
           paramView.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.setVisibility(0);
           i = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getComeCount();
           j = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getTotalCount();
-          localObject = String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131693456), new Object[] { Integer.valueOf(i), Integer.valueOf(j - i) });
+          localObject = String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131693637), new Object[] { Integer.valueOf(i), Integer.valueOf(j - i) });
           paramView.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.setWaitText((String)localObject);
           continue;
           label552:
@@ -326,7 +327,7 @@ public class dr
       paramView.jdField_a_of_type_Int = ((DataLineMsgRecord)localObject).msgtype;
       if ((((DataLineMsgRecord)localObject).strMoloKey != null) && (((DataLineMsgRecord)localObject).bIsApkFile))
       {
-        paramView.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130844114);
+        paramView.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130844181);
         paramView.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setAsyncImage(((DataLineMsgRecord)localObject).strMoloIconUrl);
         paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((DataLineMsgRecord)localObject).filename);
         paramView.b.setText(fd.a(((DataLineMsgRecord)localObject).filesize));
@@ -338,21 +339,21 @@ public class dr
         if ((((DataLineMsgRecord)localObject).issuc) && (((DataLineMsgRecord)localObject).fileMsgStatus != 1L) && (((DataLineMsgRecord)localObject).fileMsgStatus != 2L)) {
           break label786;
         }
-        paramView.jdField_a_of_type_AndroidWidgetButton.setText(2131693468);
+        paramView.jdField_a_of_type_AndroidWidgetButton.setText(2131693649);
       }
       for (;;)
       {
         break;
-        aszt.a(paramView.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView, (DataLineMsgRecord)localObject);
+        auea.a(paramView.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView, (DataLineMsgRecord)localObject);
         break label648;
         if (((DataLineMsgRecord)localObject).progress == 1.0F) {
           if ((((DataLineMsgRecord)localObject).strMoloKey == null) || (!((DataLineMsgRecord)localObject).bIsApkFile) || (((DataLineMsgRecord)localObject).nAppStatus == 1))
           {
-            paramView.jdField_a_of_type_AndroidWidgetButton.setText(2131693455);
+            paramView.jdField_a_of_type_AndroidWidgetButton.setText(2131693636);
           }
           else
           {
-            paramView.jdField_a_of_type_AndroidWidgetButton.setText(2131693437);
+            paramView.jdField_a_of_type_AndroidWidgetButton.setText(2131693618);
             continue;
             label847:
             paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
@@ -360,7 +361,7 @@ public class dr
             i = (int)(((DataLineMsgRecord)localObject).progress * 100.0F);
             paramView.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(i);
             paramView.c.setText(String.valueOf(i) + "%");
-            paramView.jdField_a_of_type_AndroidWidgetButton.setText(2131693459);
+            paramView.jdField_a_of_type_AndroidWidgetButton.setText(2131693640);
           }
         }
       }

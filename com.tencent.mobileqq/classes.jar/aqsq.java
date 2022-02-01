@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-
-class aqsq
-  implements DialogInterface.OnKeyListener
+public class aqsq
 {
-  aqsq(aqsk paramaqsk) {}
+  public String a = "";
+  public String b = "";
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public aqsq() {}
+  
+  public aqsq(String paramString1, String paramString2)
   {
-    return (paramInt == 84) || (paramInt == 4);
+    this.a = paramString1;
+    this.b = paramString2;
   }
 }
 

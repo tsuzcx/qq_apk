@@ -1,25 +1,55 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.s2c.msgtype0x210.submsgtype0x87.SubMsgType0x87.MsgBody;
 
 public class acrx
-  implements CompoundButton.OnCheckedChangeListener
+  implements acpi
 {
-  public acrx(AssistantSettingActivity paramAssistantSettingActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  private static void a(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler, MsgType0x210 paramMsgType0x210)
   {
-    atid.a(this.a.app).a(paramBoolean, this.a.app);
-    if (paramBoolean) {
-      bcef.b(this.a.app, "CliOper", "", "", "0X8008C75", "0X8008C75", 0, 0, "", "", "", "");
-    }
+    SubMsgType0x87.MsgBody localMsgBody = new SubMsgType0x87.MsgBody();
     for (;;)
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      bcef.b(this.a.app, "CliOper", "", "", "0X8008C74", "0X8008C74", 0, 0, "", "", "", "");
+      try
+      {
+        localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+        if (localMsgBody.uint64_friend_msg_type_flag.has())
+        {
+          if (localMsgBody.uint64_friend_msg_type_flag.get() != 1L) {
+            break label100;
+          }
+          i = 1;
+          if (i != 0) {
+            paramMessageHandler.a().a(2);
+          }
+        }
+        if (localMsgBody.rpt_msg_msg_notify.has()) {
+          aiyq.a(paramQQAppInterface, localMsgBody);
+        }
+        return;
+      }
+      catch (Throwable paramQQAppInterface)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PortalManager", 2, "", paramQQAppInterface);
+        }
+        throw new RuntimeException(paramQQAppInterface);
+      }
+      label100:
+      int i = 0;
     }
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramacnk.a().getMsgHandler(), paramMsgType0x210);
+    return null;
   }
 }
 

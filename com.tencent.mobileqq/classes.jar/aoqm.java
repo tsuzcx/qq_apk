@@ -1,36 +1,36 @@
-import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class aoqm
-  extends aoqo
+public class aoqm
 {
-  private aoqm()
+  public static boolean a(int paramInt)
   {
-    super(null);
+    return (paramInt == -2000) || (paramInt == -20000) || (paramInt == -3004) || (paramInt == -3005) || (paramInt == -3000) || (paramInt == -3001) || (paramInt == -1032);
   }
   
-  public String a()
+  public static boolean a(MessageRecord paramMessageRecord)
   {
-    return "GetSkey";
+    int i = paramMessageRecord.msgtype;
+    return (i == -2011) || (i == -2060) || (i == -2065) || (i == -5008) || (i == -5010) || (i == -2050) || (i == -1051) || (i == -2021) || (i == -2018) || (i == -4502);
   }
   
-  public void a(aopk paramaopk, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  public static boolean b(int paramInt)
   {
-    paramVariantWrapper.SetString(aori.b());
+    return paramInt == -2022;
   }
   
-  public boolean a()
+  public static boolean c(int paramInt)
   {
-    return false;
+    return (paramInt == -2005) || (paramInt == -2014) || (paramInt == -2017);
   }
   
-  public String b()
+  public static boolean d(int paramInt)
   {
-    return null;
+    return paramInt == -1035;
   }
   
-  public boolean b()
+  public static boolean e(int paramInt)
   {
-    return true;
+    return paramInt == -2011;
   }
 }
 

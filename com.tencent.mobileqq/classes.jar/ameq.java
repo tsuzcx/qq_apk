@@ -1,38 +1,7 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow;
-import com.tencent.open.base.MD5Utils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import kotlin.Metadata;
 
-public class ameq
-  extends bgod
-{
-  public ameq(ApolloCardWindow paramApolloCardWindow) {}
-  
-  public void onDoneFile(bgoe parambgoe)
-  {
-    if (parambgoe == null) {
-      return;
-    }
-    try
-    {
-      ??? = parambgoe.a().getString("path");
-      String str = parambgoe.a().getString("url");
-      parambgoe = this.a.a((String)???);
-      str = MD5Utils.toMD5(str);
-      synchronized (ApolloCardWindow.a)
-      {
-        ApolloCardWindow.a.put(str, parambgoe);
-        return;
-      }
-      return;
-    }
-    catch (Exception parambgoe)
-    {
-      QLog.e("ApolloCardWindow", 1, "onDoneFile error:", parambgoe);
-    }
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WeatherArkViewWrapper$Companion;", "", "()V", "SLIDE_DIR_HORIZONTAL", "", "SLIDE_DIR_NONE", "SLIDE_DIR_VERTICAL", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ameq {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

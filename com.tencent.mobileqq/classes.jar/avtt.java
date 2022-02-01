@@ -1,111 +1,119 @@
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class avtt
-  implements avtm
+  extends BroadcastReceiver
 {
-  avtt(avtq paramavtq) {}
+  avtt(avts paramavts) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramInt1 == paramInt2)
+    paramContext = paramIntent.getAction();
+    int i;
+    JSONObject localJSONObject;
+    if ((paramContext.equals(avts.a(this.a.b))) || (paramContext.equals(avts.d(this.a.b))))
     {
-      avwt.a("total_transport_cost", null);
-      avwt.a();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.BackupAndMigrateManager", 2, "sessionProgress!!! finishedSessions = " + paramInt1 + ", totalSession" + paramInt2);
-    }
-    avtq.a(this.a, paramInt2);
-    avtq.b(this.a, paramInt1);
-    if (paramInt1 != paramInt2) {}
-    for (int i = paramInt1 + 1;; i = paramInt1)
-    {
-      String str1;
-      String str2;
-      if (avtq.a(this.a) == 1)
+      i = paramIntent.getIntExtra("key_state", -1);
+      avts.a(this.a, i);
+      localJSONObject = avts.a(this.a, i);
+      switch (i)
       {
-        str1 = BaseApplicationImpl.getApplication().getResources().getString(2131690472);
-        str2 = i + "/" + avtq.b;
+      default: 
+        this.a.callJs(this.a.a, new String[] { localJSONObject.toString() });
       }
+    }
+    do
+    {
       for (;;)
       {
-        str1 = String.format(str1, new Object[] { str2, avwu.a(avtq.a(this.a)) + "B/s" });
-        i = avtf.a().a();
-        if (paramInt1 != paramInt2) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("MsgBackup.BackupAndMigrateManager", 2, "sessioncompleted >>>>>>>>>>>>>>>>>");
-        }
-        avtq.m();
-        this.a.a(BaseActivity.sTopActivity, i);
         return;
-        if (avtq.a(this.a) == 3)
+        l = paramIntent.getLongExtra("key_totalSize", 0L);
+        avts.a(this.a, "size:" + l);
+        try
         {
-          str1 = BaseApplicationImpl.getApplication().getResources().getString(2131690474);
-          str2 = i + "/" + avtq.b;
+          localJSONObject.putOpt("totalSize", Long.valueOf(l));
+          localJSONObject.remove("state");
         }
-        else
+        catch (JSONException paramContext)
         {
-          str1 = BaseApplicationImpl.getApplication().getResources().getString(2131690474);
-          str2 = i + "/" + avtq.b;
+          for (;;)
+          {
+            paramContext.printStackTrace();
+          }
         }
       }
-      this.a.b(i, str1);
-      return;
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.BackupAndMigrateManager", 2, "speedState!!! increment = " + paramLong);
-    }
-    avtq.a(this.a, paramLong);
-    int j = avtq.b(this.a);
-    int i = j;
-    if (j != avtq.b) {
-      i = j + 1;
-    }
-    String str1;
-    String str2;
-    if (avtq.a(this.a) == 1)
-    {
-      str1 = BaseApplicationImpl.getApplication().getResources().getString(2131690472);
-      str2 = i + "/" + avtq.b;
-    }
-    for (;;)
-    {
-      str1 = String.format(str1, new Object[] { str2, avwu.a(avtq.a(this.a)) + "B/S" });
-      this.a.b(avtf.a().a(), str1);
-      return;
-      if (avtq.a(this.a) == 3)
+      int j = paramIntent.getIntExtra("key_progress", 0);
+      long l = paramIntent.getLongExtra("key_totalSize", 0L);
+      paramIntent = this.a;
+      if (i == 1) {}
+      for (paramContext = "progress:STATE_DOWANLOADING:" + j;; paramContext = "progress:STATE_LOADING:" + j)
       {
-        str1 = BaseApplicationImpl.getApplication().getResources().getString(2131690474);
-        str2 = i + "/" + avtq.b;
+        for (;;)
+        {
+          avts.a(paramIntent, paramContext);
+          if (i == 4)
+          {
+            if (j <= 90) {
+              break;
+            }
+            avts.a(this.a).removeCallbacksAndMessages(null);
+          }
+          try
+          {
+            localJSONObject.putOpt("totalSize", Long.valueOf(l));
+            localJSONObject.putOpt("pro", Integer.valueOf(j));
+          }
+          catch (JSONException paramContext)
+          {
+            paramContext.printStackTrace();
+          }
+        }
+        break;
       }
-      else
+      avts.a(this.a, "STATE_DOWANLODAD_COMPLETE");
+      paramContext = Message.obtain();
+      if (avts.a(this.a) == 1) {}
+      for (paramContext.arg1 = 40; !TextUtils.equals(avts.a(this.a), "checkVersion"); paramContext.arg1 = 0)
       {
-        str1 = BaseApplicationImpl.getApplication().getResources().getString(2131690474);
-        str2 = i + "/" + avtq.b;
+        avts.b(this.a, 0);
+        avts.a(this.a).sendMessage(paramContext);
+        break;
       }
-    }
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void b(int paramInt1, int paramInt2) {}
-  
-  public void b(boolean paramBoolean) {}
-  
-  public void c(boolean paramBoolean)
-  {
-    avwu.b("MsgBackup.BackupAndMigrateManager", "transportStart is called! isStart = %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    avwt.b();
-    avwt.a(null, "total_transport_cost");
+      avts.a(this.a, "STATE_DOWANLODAD_FAILED");
+      break;
+      avts.a(this.a, "STATE_PRELOAD_FALIED");
+      break;
+      avts.a(this.a, "STATE_LOAD_COMPLETE");
+      break;
+      avts.a(this.a, "STATE_LOAD_FALIED");
+      break;
+      avts.a(this.a, "STATE_LAUNCHERING");
+      break;
+      avts.a(this.a, "STATE_LAUNCHER_SUCC");
+      break;
+      avts.a(this.a, "STATE_LAUNCHER_FAILED");
+      break;
+      if (avts.b(this.a.b).equals(paramContext))
+      {
+        paramContext = this.a.mRuntime.a();
+        if ((paramContext instanceof BaseActivity))
+        {
+          ((BaseActivity)paramContext).doOnBackPressed();
+          return;
+        }
+        paramContext.onBackPressed();
+        return;
+      }
+    } while (!avts.c(this.a.b).equals(paramContext));
+    avts.c(this.a, paramIntent.getIntExtra("key_isCache", -1));
   }
 }
 

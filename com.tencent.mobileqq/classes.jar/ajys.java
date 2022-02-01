@@ -1,20 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.fragment.KuaKuaHbFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.List;
 
 public class ajys
-  implements View.OnClickListener
+  extends apaq
 {
-  public ajys(KuaKuaHbFragment paramKuaKuaHbFragment) {}
+  private WeakReference<Conversation> a;
   
-  public void onClick(View paramView)
+  public ajys(Conversation paramConversation)
   {
-    if ((paramView instanceof TextView)) {
-      KuaKuaHbFragment.a(this.a).setText(((TextView)paramView).getText().toString());
+    this.a = new WeakReference(paramConversation);
+  }
+  
+  protected void onGetAppletsDetail(boolean paramBoolean, List<AppletsAccountInfo> paramList)
+  {
+    if ((paramBoolean) && (paramList != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("AppletsObserver", 2, "onGetAppletsDetail:  isSuccess: " + paramBoolean + ", data.size = " + paramList.size());
+      }
+      Conversation localConversation = (Conversation)this.a.get();
+      if (localConversation != null)
+      {
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          AppletsAccountInfo localAppletsAccountInfo = (AppletsAccountInfo)paramList.next();
+          if (localAppletsAccountInfo != null) {
+            localConversation.a(9, localAppletsAccountInfo.uin, 1038);
+          }
+        }
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

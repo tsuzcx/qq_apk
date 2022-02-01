@@ -1,29 +1,20 @@
-import android.util.Log;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
-import javax.microedition.khronos.egl.EGLSurface;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import java.util.Comparator;
 
 public class alql
-  implements alqo
+  implements Comparator<alsn>
 {
-  public EGLSurface a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, Object paramObject)
-  {
-    try
-    {
-      paramEGL10 = paramEGL10.eglCreateWindowSurface(paramEGLDisplay, paramEGLConfig, paramObject, null);
-      return paramEGL10;
-    }
-    catch (Throwable paramEGL10)
-    {
-      Log.e("GLTextureView", "eglCreateWindowSurface", paramEGL10);
-    }
-    return null;
-  }
+  public alql(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLSurface paramEGLSurface)
+  public int a(alsn paramalsn1, alsn paramalsn2)
   {
-    paramEGL10.eglDestroySurface(paramEGLDisplay, paramEGLSurface);
+    if ((paramalsn1.a < paramalsn2.a) || ((paramalsn1.a == paramalsn2.a) && (paramalsn1.b < paramalsn2.b))) {
+      return -1;
+    }
+    if ((paramalsn1.a != paramalsn2.a) || (paramalsn1.b != paramalsn2.b)) {
+      return 1;
+    }
+    return 0;
   }
 }
 

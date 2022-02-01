@@ -1,49 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.ark.ark;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
+import com.tencent.robolectric.ShadowParcel;
+import java.util.Arrays;
 
-public class aopy
-  implements aopx
+class aopy
+  implements PermissionMonitor.Listener
 {
-  public boolean notify(String paramString1, String paramString2, String paramString3)
+  static
   {
-    JSONObject localJSONObject = null;
-    try
+    if (!aopp.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramString3 = new JSONObject(paramString3).optString("gc");
-      if (TextUtils.isEmpty(paramString3)) {
-        return false;
-      }
+      jdField_a_of_type_Boolean = bool;
+      return;
     }
-    catch (Exception paramString3)
-    {
-      for (;;)
-      {
-        QLog.e("ark.ArkAppNotifyCenter", 1, "notify json error!", paramString3);
-        paramString3 = localJSONObject;
-      }
-      if (paramString2.equals("GetIsTroopOwner")) {
-        try
-        {
-          localJSONObject = new JSONObject();
-          localJSONObject.put("isOwner", TroopUtils.isTroopOwner(ArkAppNotifyCenter.getAppInterface(), paramString3, ArkAppNotifyCenter.getAppInterface().getCurrentUin()));
-          ark.arkNotify(paramString1, paramString2, localJSONObject.toString(), "json");
-          return true;
-        }
-        catch (Throwable paramString1)
-        {
-          for (;;)
-          {
-            QLog.e("ark.ArkAppNotifyCenter", 1, "ark.notify error!", paramString1);
-          }
-        }
-      }
+  }
+  
+  aopy(aopp paramaopp) {}
+  
+  public void onMethodEntry(String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject)
+  {
+    if (aopp.a(this.jdField_a_of_type_Aopp) != Thread.currentThread()) {}
+    while ((!aopp.a(this.jdField_a_of_type_Aopp)) || (paramArrayOfObject.length != 2)) {
+      return;
     }
-    return false;
+    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[0] != aopp.a(this.jdField_a_of_type_Aopp))) {
+      throw new AssertionError();
+    }
+    ShadowParcel.a((int)aopp.a(this.jdField_a_of_type_Aopp), (String)paramArrayOfObject[1]);
+    QLog.i("ParcelHooker", 2, "onMethodEntry() called with: className = [" + paramString1 + "], methodName = [" + paramString2 + "], sig = [" + paramString3 + "], arguments = [" + Arrays.toString(paramArrayOfObject) + "]");
   }
 }
 

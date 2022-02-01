@@ -1,15 +1,41 @@
-import kotlin.Metadata;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/PlayerHelper;", "", "()V", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class shg
+class shg
+  implements TVK_IMediaPlayer.OnInfoListener
 {
-  private static int a;
-  public static final shh a;
+  shg(shc paramshc) {}
   
-  static
+  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
   {
-    jdField_a_of_type_Shh = new shh(null);
-    jdField_a_of_type_Int = -1;
+    if (QLog.isColorLevel()) {
+      QLog.d(shc.a(), 2, "播放器状态回调 onInfo what = " + paramInt + ", extra = " + paramObject);
+    }
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        return false;
+      } while (shc.a(this.a) == null);
+      localshi = shc.a(this.a);
+      if ((paramObject instanceof String)) {}
+      for (paramTVK_IMediaPlayer = (String)paramObject;; paramTVK_IMediaPlayer = null)
+      {
+        localshi.a(2, paramTVK_IMediaPlayer, null, 0L);
+        break;
+      }
+    } while (shc.a(this.a) == null);
+    shi localshi = shc.a(this.a);
+    if ((paramObject instanceof String)) {}
+    for (paramTVK_IMediaPlayer = (String)paramObject;; paramTVK_IMediaPlayer = null)
+    {
+      localshi.a(5, paramTVK_IMediaPlayer, null, 0L);
+      break;
+    }
   }
 }
 

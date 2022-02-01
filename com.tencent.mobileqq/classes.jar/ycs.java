@@ -1,28 +1,49 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedVideoInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GeneralFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
+import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class ycs
-  implements ValueAnimator.AnimatorUpdateListener
+public class ycs
+  extends yeb<GeneralFeedItem>
 {
-  ycs(ycr paramycr) {}
+  public boolean a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public ycs(@NonNull GeneralFeedItem paramGeneralFeedItem)
   {
-    if (ycp.a(this.a.a) == null) {
-      return;
+    super(paramGeneralFeedItem);
+  }
+  
+  public GeneralFeedItem a()
+  {
+    return (GeneralFeedItem)super.a();
+  }
+  
+  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
+  {
+    Object localObject = (qqstory_struct.GeneralFeed)paramStoryFeed.general_feed.get();
+    ((GeneralFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), (qqstory_struct.GeneralFeed)localObject);
+    ((GeneralFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
+    ykq.a("Q.qqstory.home.data.GeneralHomeFeed", "GeneralHomeFeed convertFrom, feedSourceType:%s, feedId:%s", Integer.valueOf(((GeneralFeedItem)this.a).feedSourceTagType), ((GeneralFeedItem)this.a).feedId);
+    paramStoryFeed = new ArrayList();
+    localObject = ((qqstory_struct.GeneralFeed)localObject).feed_video_info_list.get().iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      qqstory_struct.FeedVideoInfo localFeedVideoInfo = (qqstory_struct.FeedVideoInfo)((Iterator)localObject).next();
+      StoryVideoItem localStoryVideoItem = new StoryVideoItem();
+      localStoryVideoItem.convertFrom("Q.qqstory.home.data.GeneralHomeFeed", localFeedVideoInfo);
+      paramStoryFeed.add(localStoryVideoItem);
     }
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.l = (this.a.d + this.a.f * f);
-    this.a.m = (this.a.e + this.a.g * f);
-    this.a.j = (this.a.b + this.a.h * f);
-    this.a.k = (this.a.c + this.a.i * f);
-    if (this.a.a.a != null) {
-      this.a.a.a.a(f);
-    }
-    if (f == 1.0F) {
-      ycp.a(this.a.a, null);
-    }
-    ycp.a(this.a.a);
+    c(paramStoryFeed, true);
+    return true;
   }
 }
 

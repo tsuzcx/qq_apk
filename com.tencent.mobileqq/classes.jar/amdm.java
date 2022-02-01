@@ -1,44 +1,38 @@
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
-import com.tencent.mobileqq.app.FontSettingManager;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.SoftReference;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
+import java.util.HashMap;
+import java.util.List;
 
-public class amdm
-  implements alqx
+class amdm
+  implements amcl
 {
-  private SoftReference<ApolloGuestsStateActivity> a;
+  amdm(amdk paramamdk, String paramString) {}
   
-  public amdm(ApolloGuestsStateActivity paramApolloGuestsStateActivity)
+  public void a(boolean paramBoolean)
   {
-    this.a = new SoftReference(paramApolloGuestsStateActivity);
-  }
-  
-  public void onNotifyLongTouch(String paramString) {}
-  
-  public void onNotifyStatusChanged(int paramInt, String paramString) {}
-  
-  public void onSurfaceReady(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloGuestsStateActivity", 2, "apollo view is Ready.");
-    }
-    ApolloGuestsStateActivity localApolloGuestsStateActivity = (ApolloGuestsStateActivity)this.a.get();
-    if ((localApolloGuestsStateActivity == null) || (localApolloGuestsStateActivity.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView == null) || (ApolloGuestsStateActivity.a(localApolloGuestsStateActivity) == null)) {
+    if (paramBoolean) {}
+    try
+    {
+      Object localObject = "key_special_sound_list" + this.jdField_a_of_type_Amdk.mRuntime.a().getCurrentAccountUin();
+      localObject = (List)QvipSpecialSoundManager.a.get(localObject);
+      amdk.a(this.jdField_a_of_type_Amdk, this.jdField_a_of_type_JavaLangString, (List)localObject);
       return;
     }
-    float f3 = FontSettingManager.getFontLevel() / 16.0F;
-    float f2 = localApolloGuestsStateActivity.c;
-    float f1 = f2;
-    if (0.0F != f3) {
-      f1 = f2 / f3;
+    catch (Exception localException1)
+    {
+      localException1.printStackTrace();
+      try
+      {
+        amdk.a(this.jdField_a_of_type_Amdk, this.jdField_a_of_type_JavaLangString, null);
+        return;
+      }
+      catch (Exception localException2)
+      {
+        localException2.printStackTrace();
+      }
     }
-    localApolloGuestsStateActivity.jdField_a_of_type_Float = (paramInt1 / 2 / f1);
-    if (localApolloGuestsStateActivity.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl() != null) {
-      localApolloGuestsStateActivity.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl().a();
-    }
-    ApolloGuestsStateActivity.a(localApolloGuestsStateActivity).c();
-    localApolloGuestsStateActivity.b = paramInt1;
+    amdk.a(this.jdField_a_of_type_Amdk, this.jdField_a_of_type_JavaLangString, null);
+    return;
   }
 }
 

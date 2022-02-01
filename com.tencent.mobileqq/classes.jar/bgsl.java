@@ -1,35 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
 
-public class bgsl
-  extends BroadcastReceiver
+class bgsl
+  implements bdyy
 {
-  public bgsl(WebProcessManager paramWebProcessManager) {}
+  bgsl(bgsk parambgsk) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    do
-    {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("WebProcessManager", 2, "action=" + paramContext);
-        }
-        if (!paramContext.equals("com.tencent.mobileqq.webprocess.restart_web_process")) {
-          break;
-        }
-        this.a.f();
-      } while (!paramIntent.getBooleanExtra("isPreloadWebProcess", false));
-      this.a.i();
-      return;
-    } while (!paramContext.equals("com.tencent.mobileqq.webprocess.report"));
-    this.a.i();
+    this.a.a.a.a.this$0.a();
+    if (this.a.a.a.a.jdField_a_of_type_Bdyy != null) {
+      this.a.a.a.a.jdField_a_of_type_Bdyy.a();
+    }
+    this.a.a.a.a.this$0.a(this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, this.a.a.a.a.this$0.a, true);
   }
 }
 

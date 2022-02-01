@@ -10,9 +10,9 @@ import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView;
 import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import java.util.List;
-import pvc;
-import rfe;
-import rff;
+import qfw;
+import rrl;
+import rrm;
 
 public class ComponentContentPgcShortContentGridImage
   extends ComponentContentGridImage
@@ -31,13 +31,13 @@ public class ComponentContentPgcShortContentGridImage
   {
     super.a(paramView);
     ViewGroup.LayoutParams localLayoutParams;
-    rff localrff;
+    rrm localrrm;
     if (getCount() == 1)
     {
       localLayoutParams = paramView.getLayoutParams();
-      localrff = (rff)((pvc)this.a).a().mSocialFeedInfo.a.a.get(0);
+      localrrm = (rrm)((qfw)this.a).a().mSocialFeedInfo.a.a.get(0);
       localLayoutParams.height = ((int)((DeviceInfoUtil.getWidth() - DisplayUtil.dip2px(getContext(), 54.0F)) / 2L));
-      if (localrff.b <= 1.5F * localrff.a) {
+      if (localrrm.b <= 1.5F * localrrm.a) {
         break label126;
       }
       localLayoutParams.width = ((int)((DeviceInfoUtil.getWidth() - DisplayUtil.dip2px(getContext(), 54.0F)) / 3L));
@@ -48,10 +48,10 @@ public class ComponentContentPgcShortContentGridImage
       ((SquareCornerTextImageView)paramView).a = false;
       return;
       label126:
-      if (localrff.b >= 1.0F * localrff.a) {
-        localLayoutParams.width = (localrff.a * localLayoutParams.height / localrff.b);
-      } else if (localrff.b > 0.6666667F * localrff.a) {
-        localLayoutParams.width = (localrff.a * localLayoutParams.height / localrff.b);
+      if (localrrm.b >= 1.0F * localrrm.a) {
+        localLayoutParams.width = (localrrm.a * localLayoutParams.height / localrrm.b);
+      } else if (localrrm.b > 0.6666667F * localrrm.a) {
+        localLayoutParams.width = (localrrm.a * localLayoutParams.height / localrrm.b);
       } else {
         localLayoutParams.width = ((int)((DeviceInfoUtil.getWidth() - DisplayUtil.dip2px(getContext(), 54.0F)) / 2L * 3L / 2L));
       }

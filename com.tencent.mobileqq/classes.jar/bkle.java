@@ -1,435 +1,318 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
-import com.tencent.mobileqq.transfile.predownload.HttpEngineTask;
-import com.tencent.mobileqq.transfile.predownload.HttpEngineTask.IHttpEngineTask;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.PluginInfo;
-import java.io.File;
-import java.util.HashMap;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+import com.tencent.qqmini.sdk.annotation.JsPlugin;
+import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+@JsPlugin(secondary=true)
 public class bkle
-  implements Handler.Callback, INetEngine.IBreakDownFix, INetEngine.INetEngineListener, HttpEngineTask.IHttpEngineTask
+  extends BaseJsPlugin
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private PreDownloadController jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController;
-  private HashMap<String, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private final Lock jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
-  private HashMap<String, bklg> b;
-  private HashMap<String, HttpEngineTask> c;
-  
-  public bkle(Context paramContext, QQAppInterface paramQQAppInterface)
+  private JSONObject a(RequestEvent paramRequestEvent)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
-    this.b = new HashMap();
-    this.c = new HashMap();
-    this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController = ((PreDownloadController)paramQQAppInterface.getManager(193));
-  }
-  
-  private int a(String paramString)
-  {
-    if ("qqreaderplugin.apk".equals(paramString)) {
-      return 10010;
-    }
-    if ("comic_plugin.apk".equals(paramString)) {
-      return 10011;
-    }
-    if ("qqdataline.apk".equals(paramString)) {
-      return 10013;
-    }
-    if ("qqsmartdevice.apk".equals(paramString)) {
-      return 10014;
-    }
-    if ("qlink_plugin.apk".equals(paramString)) {
-      return 10060;
-    }
-    return 10058;
-  }
-  
-  public static final File a(Context paramContext)
-  {
-    paramContext = new File(new File(new File(paramContext.getFilesDir(), "pddata"), "prd"), "plugin_download");
-    paramContext.mkdirs();
-    return paramContext;
-  }
-  
-  private void a(NetReq paramNetReq, int paramInt1, int paramInt2)
-  {
-    String str = (String)paramNetReq.getUserData();
-    if (paramInt2 > 0)
-    {
-      paramNetReq = (bklg)this.b.get(str);
-      if (paramNetReq == null) {
-        break label95;
-      }
-    }
-    label95:
-    for (paramNetReq = bklg.a(paramNetReq);; paramNetReq = null)
-    {
-      if (paramNetReq != null) {
-        paramNetReq.a(paramInt1, paramInt2, str);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("plugin_tag", 2, "doOnProgress: " + paramInt1 / paramInt2 + ", " + str);
-      }
-      return;
-    }
-  }
-  
-  private void a(NetResp paramNetResp)
-  {
-    String str = (String)paramNetResp.mReq.getUserData();
-    if (paramNetResp.mResult == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Object localObject = (PreDownloadController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(193);
-      bklg localbklg = (bklg)this.b.remove(str);
-      if (localbklg != null)
-      {
-        if (bklg.a(localbklg) != null) {
-          ((PreDownloadController)localObject).preDownloadSuccess(bklg.a(localbklg).mReqUrl, paramNetResp.mTotalFileLen);
-        }
-        localObject = bklg.a(localbklg);
-        a(str, paramNetResp);
-        a(a(this.jdField_a_of_type_AndroidContentContext), str, false);
-        if (QLog.isColorLevel())
-        {
-          QLog.d("plugin_tag", 2, "doOnResp. result,pluginid,length: " + paramNetResp.mResult + "," + str + ", " + paramNetResp.mTotalFileLen);
-          if ((!bool) && (QLog.isColorLevel())) {
-            QLog.e("plugin_tag", 2, "doOnResp. err: " + paramNetResp.mErrCode + ", " + paramNetResp.mErrDesc);
-          }
-        }
-        if (localObject != null) {
-          ((bklh)localObject).a(bool, str);
-        }
-      }
-      return;
-    }
-  }
-  
-  private void a(File paramFile, String paramString, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "doDeleteDiscardFiles: " + paramString);
-    }
-    if ((paramFile != null) && (paramFile.exists()))
-    {
-      paramFile = paramFile.listFiles();
-      if (paramFile != null)
-      {
-        int j = paramFile.length;
-        int i = 0;
-        if (i < j)
-        {
-          Object localObject = paramFile[i];
-          String str = localObject.getPath();
-          if ((str == null) || (!str.startsWith(paramString))) {}
-          for (;;)
-          {
-            i += 1;
-            break;
-            if (!str.endsWith(".cfg")) {
-              if (str.equals(paramString))
-              {
-                if (paramBoolean)
-                {
-                  localObject.delete();
-                  if (QLog.isColorLevel()) {
-                    QLog.d("plugin_tag", 2, "doDeleteDiscardFiles: " + str);
-                  }
-                }
-              }
-              else
-              {
-                localObject.delete();
-                if (QLog.isColorLevel()) {
-                  QLog.d("plugin_tag", 2, "doDeleteDiscardFiles: " + str);
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  private void a(String paramString, HttpNetReq paramHttpNetReq, bklh parambklh, AbsPreDownloadTask paramAbsPreDownloadTask)
-  {
-    if (parambklh != null) {
-      parambklh.c(paramString);
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(SystemClock.uptimeMillis()));
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
     try
     {
-      Object localObject = (HttpEngineTask)this.c.remove(paramString);
-      if (localObject != null) {
-        this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController.cancelPreDownload(((HttpEngineTask)localObject).httpReq.mReqUrl);
-      }
-      localObject = new bklg(null);
-      bklg.a((bklg)localObject, paramHttpNetReq);
-      bklg.a((bklg)localObject, parambklh);
-      bklg.a((bklg)localObject, paramAbsPreDownloadTask);
-      this.b.put(paramString, localObject);
-      return;
+      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
+      return localJSONObject;
     }
-    finally
+    catch (JSONException localJSONException)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      QLog.e("[mini] QzonePublishPlugin", 1, "Failed to parse jsonParams=" + paramRequestEvent.jsonParams);
     }
+    return null;
   }
   
-  private void a(String paramString, NetResp paramNetResp)
+  /* Error */
+  @com.tencent.qqmini.sdk.annotation.JsEvent({"checkin_qzoneUploadAndPublish"})
+  public void checkinQzoneUploadAndPublish(RequestEvent paramRequestEvent)
   {
-    HashMap localHashMap = new HashMap();
-    paramString = (Long)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if (paramString == null) {
-      paramString = Long.valueOf(0L);
-    }
-    for (;;)
-    {
-      localHashMap.put("mResult", String.valueOf(paramNetResp.mResult));
-      localHashMap.put("param_FailCode", String.valueOf(paramNetResp.mErrCode));
-      localHashMap.put("mErrDesc", paramNetResp.mErrDesc);
-      Object localObject = paramNetResp.mReq;
-      if ((paramNetResp.mResult != 0) && (localObject != null) && ((localObject instanceof HttpNetReq))) {
-        localHashMap.put("Url", ((HttpNetReq)localObject).mReqUrl);
-      }
-      localHashMap.put("mRespProperties[KeyReason]", paramNetResp.mRespProperties.get("netresp_param_reason"));
-      localHashMap.put("mRespProperties[KeyRawRespHttpHeader]", paramNetResp.mRespProperties.get("param_reqHeader"));
-      localObject = StatisticCollector.getInstance(BaseApplication.getContext());
-      String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      if (paramNetResp.mResult == 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        ((StatisticCollector)localObject).collectPerformance(str, "NetPluginsDownload", bool, paramString.longValue(), 0L, localHashMap, null);
-        return;
-      }
-    }
-  }
-  
-  private void b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "doCancelInstall: " + paramString);
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-    for (;;)
-    {
-      HttpEngineTask localHttpEngineTask;
-      try
-      {
-        localObject = (bklg)this.b.remove(paramString);
-        localHttpEngineTask = (HttpEngineTask)this.c.remove(paramString);
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-        if ((localObject != null) || (localHttpEngineTask != null))
-        {
-          if (localObject != null)
-          {
-            if (bklg.a((bklg)localObject) != null) {
-              this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController.cancelPreDownload(bklg.a((bklg)localObject).mReqUrl);
-            }
-          }
-          else
-          {
-            if (localObject != null) {
-              this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController.cancelPreDownload(bklg.a((bklg)localObject).mReqUrl);
-            }
-            if (localObject == null) {
-              break label185;
-            }
-            localObject = bklg.a((bklg)localObject);
-            if (localObject != null) {
-              ((bklh)localObject).d(paramString);
-            }
-            c(paramString);
-          }
-        }
-        else {
-          return;
-        }
-      }
-      finally
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0).cancelReq(bklg.a((bklg)localObject));
-      continue;
-      label185:
-      Object localObject = (bklh)localHttpEngineTask.userData;
-    }
-  }
-  
-  private void c(String paramString)
-  {
-    paramString = (Long)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if (paramString == null) {
-      paramString = Long.valueOf(0L);
-    }
-    for (;;)
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("param_FailCode", "0");
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "NetPluginsCancelDownload", false, paramString.longValue(), 0L, localHashMap, null);
-      return;
-    }
-  }
-  
-  public void a(PluginInfo paramPluginInfo, bklh parambklh, boolean paramBoolean)
-  {
-    QLog.d("plugin_tag", 1, "doDownloadPlugin." + paramPluginInfo.mID + ", isPreDownload " + paramBoolean);
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0);
-    if (localObject1 == null) {
-      QLog.d("plugin_tag", 1, "doDownloadPlugin nohttpabort" + paramPluginInfo.mID);
-    }
-    for (;;)
-    {
-      return;
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-      try
-      {
-        if (this.b.containsKey(paramPluginInfo.mID))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("plugin_tag", 2, "downloading already");
-          }
-          return;
-        }
-        if (this.c.containsKey(paramPluginInfo.mID))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("plugin_tag", 2, "pending downloading already exist");
-          }
-          if (paramBoolean) {
-            break label248;
-          }
-          localObject2 = (HttpEngineTask)this.c.remove(paramPluginInfo.mID);
-          if ((localObject2 != null) && (localObject2 != null)) {
-            this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController.cancelPreDownload(((HttpEngineTask)localObject2).httpReq.mReqUrl);
-          }
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-        label248:
-        if ((float)(paramPluginInfo.mLength * 1.75D) > FileUtils.getAvailableInnernalMemorySize())
-        {
-          if (parambklh == null) {
-            continue;
-          }
-          parambklh.b(paramPluginInfo.mID);
-          return;
-        }
-      }
-      finally
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-      }
-    }
-    Object localObject2 = new HttpNetReq();
-    ((HttpNetReq)localObject2).mCallback = this;
-    ((HttpNetReq)localObject2).mBreakDownFix = this;
-    ((HttpNetReq)localObject2).mReqUrl = paramPluginInfo.mURL;
-    ((HttpNetReq)localObject2).mHttpMethod = 0;
-    ((HttpNetReq)localObject2).mNeedIpConnect = true;
-    ((HttpNetReq)localObject2).bAcceptNegativeContentLength = true;
-    ((HttpNetReq)localObject2).setUserData(paramPluginInfo.mID);
-    String str = new File(a(this.jdField_a_of_type_AndroidContentContext), paramPluginInfo.mID).getPath();
-    ((HttpNetReq)localObject2).mOutPath = str;
-    if ((paramBoolean) && (this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController.isEnable())) {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-    }
-    for (;;)
-    {
-      try
-      {
-        localObject1 = new HttpEngineTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPluginInfo.mID, this, (HttpNetReq)localObject2);
-        ((HttpEngineTask)localObject1).userData = parambklh;
-        this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController.requestPreDownload(a(paramPluginInfo.mID), null, paramPluginInfo.mID + paramPluginInfo.mMD5, 0, paramPluginInfo.mURL, str, 1, 2, false, (AbsPreDownloadTask)localObject1);
-        this.c.put(paramPluginInfo.mID, localObject1);
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("plugin_tag", 2, "downloadPlugin: " + ((HttpNetReq)localObject2).mReqUrl);
-        return;
-      }
-      finally
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-      }
-      a(paramPluginInfo.mID, (HttpNetReq)localObject2, parambklh, null);
-      ((INetEngine)localObject1).sendReq((NetReq)localObject2);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.obtainMessage(65794, paramString).sendToTarget();
-  }
-  
-  public void fixReq(NetReq paramNetReq, NetResp paramNetResp)
-  {
-    if ((paramNetReq == null) || (paramNetResp == null)) {}
-    while (!(paramNetReq instanceof HttpNetReq)) {
-      return;
-    }
-    paramNetReq = (HttpNetReq)paramNetReq;
-    paramNetReq.mStartDownOffset += paramNetResp.mWrittenBlockLen;
-    paramNetResp.mWrittenBlockLen = 0L;
-    paramNetResp = "bytes=" + paramNetReq.mStartDownOffset + "-";
-    paramNetReq.mReqProperties.put("Range", paramNetResp);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      a((NetResp)paramMessage.obj);
-      continue;
-      a((NetReq)paramMessage.obj, paramMessage.arg1, paramMessage.arg2);
-      continue;
-      b((String)paramMessage.obj);
-    }
-  }
-  
-  public void onPreDownloadStart(HttpEngineTask paramHttpEngineTask)
-  {
-    this.c.remove(paramHttpEngineTask.httpReq.getUserData());
-    a((String)paramHttpEngineTask.httpReq.getUserData(), paramHttpEngineTask.httpReq, (bklh)paramHttpEngineTask.userData, paramHttpEngineTask);
-  }
-  
-  public void onResp(NetResp paramNetResp)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.obtainMessage(65792, paramNetResp).sendToTarget();
-  }
-  
-  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.obtainMessage(65793, (int)paramLong1, (int)paramLong2, paramNetReq).sendToTarget();
+    // Byte code:
+    //   0: aload_0
+    //   1: aload_1
+    //   2: invokespecial 59	bkle:a	(Lcom/tencent/qqmini/sdk/launcher/core/model/RequestEvent;)Lorg/json/JSONObject;
+    //   5: ldc 61
+    //   7: invokevirtual 65	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   10: astore 9
+    //   12: aload 9
+    //   14: ifnull +525 -> 539
+    //   17: aload 9
+    //   19: ldc 67
+    //   21: invokevirtual 71	org/json/JSONObject:opt	(Ljava/lang/String;)Ljava/lang/Object;
+    //   24: checkcast 73	java/lang/String
+    //   27: astore 13
+    //   29: aload 9
+    //   31: ldc 75
+    //   33: invokevirtual 71	org/json/JSONObject:opt	(Ljava/lang/String;)Ljava/lang/Object;
+    //   36: checkcast 73	java/lang/String
+    //   39: astore 14
+    //   41: aload 9
+    //   43: ldc 77
+    //   45: invokevirtual 71	org/json/JSONObject:opt	(Ljava/lang/String;)Ljava/lang/Object;
+    //   48: checkcast 73	java/lang/String
+    //   51: astore 8
+    //   53: aload 8
+    //   55: invokestatic 83	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   58: ifne +489 -> 547
+    //   61: aload_0
+    //   62: getfield 87	bkle:mMiniAppContext	Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
+    //   65: ldc 89
+    //   67: invokeinterface 95 2 0
+    //   72: checkcast 89	com/tencent/qqmini/sdk/launcher/shell/IMiniAppFileManager
+    //   75: aload 8
+    //   77: invokeinterface 99 2 0
+    //   82: astore 8
+    //   84: aload 9
+    //   86: ldc 101
+    //   88: invokevirtual 105	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   91: istore 7
+    //   93: aload 9
+    //   95: ldc 107
+    //   97: invokevirtual 110	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   100: astore 10
+    //   102: new 112	cooperation/qzone/LbsDataV2$PoiInfo
+    //   105: dup
+    //   106: invokespecial 113	cooperation/qzone/LbsDataV2$PoiInfo:<init>	()V
+    //   109: astore 15
+    //   111: aload 10
+    //   113: ifnull +73 -> 186
+    //   116: aload 10
+    //   118: ldc 115
+    //   120: invokevirtual 119	org/json/JSONObject:optDouble	(Ljava/lang/String;)D
+    //   123: dstore_2
+    //   124: aload 10
+    //   126: ldc 121
+    //   128: invokevirtual 119	org/json/JSONObject:optDouble	(Ljava/lang/String;)D
+    //   131: dstore 4
+    //   133: aload 10
+    //   135: ldc 123
+    //   137: invokevirtual 105	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   140: pop
+    //   141: aload 10
+    //   143: ldc 125
+    //   145: invokevirtual 128	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   148: astore 10
+    //   150: aload 15
+    //   152: getfield 132	cooperation/qzone/LbsDataV2$PoiInfo:gpsInfo	Lcooperation/qzone/LbsDataV2$GpsInfo;
+    //   155: dload_2
+    //   156: ldc2_w 133
+    //   159: dmul
+    //   160: d2i
+    //   161: putfield 140	cooperation/qzone/LbsDataV2$GpsInfo:lon	I
+    //   164: aload 15
+    //   166: getfield 132	cooperation/qzone/LbsDataV2$PoiInfo:gpsInfo	Lcooperation/qzone/LbsDataV2$GpsInfo;
+    //   169: dload 4
+    //   171: ldc2_w 133
+    //   174: dmul
+    //   175: d2i
+    //   176: putfield 143	cooperation/qzone/LbsDataV2$GpsInfo:lat	I
+    //   179: aload 15
+    //   181: aload 10
+    //   183: putfield 146	cooperation/qzone/LbsDataV2$PoiInfo:poiName	Ljava/lang/String;
+    //   186: aconst_null
+    //   187: astore 10
+    //   189: aload 9
+    //   191: ldc 148
+    //   193: invokevirtual 110	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   196: astore 11
+    //   198: aload 11
+    //   200: ifnull +12 -> 212
+    //   203: aload 11
+    //   205: ldc 150
+    //   207: invokevirtual 128	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   210: astore 10
+    //   212: new 152	java/util/HashMap
+    //   215: dup
+    //   216: invokespecial 153	java/util/HashMap:<init>	()V
+    //   219: astore 16
+    //   221: aload 9
+    //   223: ldc 155
+    //   225: invokevirtual 110	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   228: astore 11
+    //   230: aload 11
+    //   232: ifnull +87 -> 319
+    //   235: aload 11
+    //   237: invokevirtual 159	org/json/JSONObject:keys	()Ljava/util/Iterator;
+    //   240: astore 12
+    //   242: aload 12
+    //   244: invokeinterface 165 1 0
+    //   249: ifeq +70 -> 319
+    //   252: aload 12
+    //   254: invokeinterface 169 1 0
+    //   259: checkcast 73	java/lang/String
+    //   262: astore 17
+    //   264: aload 16
+    //   266: aload 17
+    //   268: aload 11
+    //   270: aload 17
+    //   272: invokevirtual 128	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   275: invokevirtual 173	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   278: pop
+    //   279: goto -37 -> 242
+    //   282: astore_1
+    //   283: invokestatic 176	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   286: ifeq +12 -> 298
+    //   289: ldc 29
+    //   291: iconst_2
+    //   292: ldc 178
+    //   294: aload_1
+    //   295: invokestatic 181	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   298: return
+    //   299: astore 8
+    //   301: ldc 29
+    //   303: iconst_1
+    //   304: aload 8
+    //   306: iconst_0
+    //   307: anewarray 183	java/lang/Object
+    //   310: invokestatic 186	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   313: aconst_null
+    //   314: astore 9
+    //   316: goto -304 -> 12
+    //   319: new 188	java/util/ArrayList
+    //   322: dup
+    //   323: invokespecial 189	java/util/ArrayList:<init>	()V
+    //   326: astore 17
+    //   328: aconst_null
+    //   329: astore 11
+    //   331: aload 9
+    //   333: ldc 191
+    //   335: invokevirtual 110	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   338: astore 18
+    //   340: aload 18
+    //   342: ifnull +72 -> 414
+    //   345: aload 18
+    //   347: ldc 193
+    //   349: invokevirtual 128	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   352: astore 12
+    //   354: aload 18
+    //   356: ldc 195
+    //   358: invokevirtual 199	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   361: astore 18
+    //   363: aload 12
+    //   365: astore 11
+    //   367: aload 18
+    //   369: ifnull +45 -> 414
+    //   372: iconst_0
+    //   373: istore 6
+    //   375: aload 12
+    //   377: astore 11
+    //   379: iload 6
+    //   381: aload 18
+    //   383: invokevirtual 205	org/json/JSONArray:length	()I
+    //   386: if_icmpge +28 -> 414
+    //   389: aload 17
+    //   391: aload 18
+    //   393: iload 6
+    //   395: invokevirtual 209	org/json/JSONArray:get	(I)Ljava/lang/Object;
+    //   398: checkcast 73	java/lang/String
+    //   401: invokevirtual 213	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   404: pop
+    //   405: iload 6
+    //   407: iconst_1
+    //   408: iadd
+    //   409: istore 6
+    //   411: goto -36 -> 375
+    //   414: new 152	java/util/HashMap
+    //   417: dup
+    //   418: invokespecial 153	java/util/HashMap:<init>	()V
+    //   421: astore 12
+    //   423: aload 9
+    //   425: ldc 215
+    //   427: invokevirtual 110	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   430: astore 9
+    //   432: aload 9
+    //   434: ifnull +50 -> 484
+    //   437: aload 9
+    //   439: invokevirtual 159	org/json/JSONObject:keys	()Ljava/util/Iterator;
+    //   442: astore 18
+    //   444: aload 18
+    //   446: invokeinterface 165 1 0
+    //   451: ifeq +33 -> 484
+    //   454: aload 18
+    //   456: invokeinterface 169 1 0
+    //   461: checkcast 73	java/lang/String
+    //   464: astore 19
+    //   466: aload 12
+    //   468: aload 19
+    //   470: aload 9
+    //   472: aload 19
+    //   474: invokevirtual 128	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   477: invokevirtual 173	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   480: pop
+    //   481: goto -37 -> 444
+    //   484: new 188	java/util/ArrayList
+    //   487: dup
+    //   488: invokespecial 189	java/util/ArrayList:<init>	()V
+    //   491: astore 9
+    //   493: aload 9
+    //   495: aload 8
+    //   497: invokevirtual 213	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   500: pop
+    //   501: invokestatic 221	cooperation/qzone/QZoneHelper$UserInfo:getInstance	()Lcooperation/qzone/QZoneHelper$UserInfo;
+    //   504: aload 13
+    //   506: putfield 224	cooperation/qzone/QZoneHelper$UserInfo:qzone_uin	Ljava/lang/String;
+    //   509: aload 14
+    //   511: aload 9
+    //   513: iload 7
+    //   515: aload 15
+    //   517: aload 10
+    //   519: aload 11
+    //   521: aload 17
+    //   523: aload 12
+    //   525: aload 16
+    //   527: ldc 226
+    //   529: iconst_2
+    //   530: invokestatic 232	cooperation/qzone/QZoneHelper:publishPictureMoodSilently	(Ljava/lang/String;Ljava/util/ArrayList;ILcooperation/qzone/LbsDataV2$PoiInfo;Ljava/lang/String;Ljava/lang/String;Ljava/util/ArrayList;Ljava/util/HashMap;Ljava/util/HashMap;Ljava/lang/String;I)V
+    //   533: aload_1
+    //   534: invokevirtual 235	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:ok	()Ljava/lang/String;
+    //   537: pop
+    //   538: return
+    //   539: aload_1
+    //   540: ldc 237
+    //   542: invokevirtual 240	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:fail	(Ljava/lang/String;)Ljava/lang/String;
+    //   545: pop
+    //   546: return
+    //   547: goto -463 -> 84
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	550	0	this	bkle
+    //   0	550	1	paramRequestEvent	RequestEvent
+    //   123	33	2	d1	double
+    //   131	39	4	d2	double
+    //   373	37	6	i	int
+    //   91	423	7	j	int
+    //   51	32	8	str1	java.lang.String
+    //   299	197	8	localThrowable	java.lang.Throwable
+    //   10	502	9	localObject1	java.lang.Object
+    //   100	418	10	localObject2	java.lang.Object
+    //   196	324	11	localObject3	java.lang.Object
+    //   240	284	12	localObject4	java.lang.Object
+    //   27	478	13	str2	java.lang.String
+    //   39	471	14	str3	java.lang.String
+    //   109	407	15	localPoiInfo	cooperation.qzone.LbsDataV2.PoiInfo
+    //   219	307	16	localHashMap	java.util.HashMap
+    //   262	260	17	localObject5	java.lang.Object
+    //   338	117	18	localObject6	java.lang.Object
+    //   464	9	19	str4	java.lang.String
+    // Exception table:
+    //   from	to	target	type
+    //   17	84	282	java/lang/Exception
+    //   84	111	282	java/lang/Exception
+    //   116	186	282	java/lang/Exception
+    //   189	198	282	java/lang/Exception
+    //   203	212	282	java/lang/Exception
+    //   212	230	282	java/lang/Exception
+    //   235	242	282	java/lang/Exception
+    //   242	279	282	java/lang/Exception
+    //   319	328	282	java/lang/Exception
+    //   331	340	282	java/lang/Exception
+    //   345	363	282	java/lang/Exception
+    //   379	405	282	java/lang/Exception
+    //   414	432	282	java/lang/Exception
+    //   437	444	282	java/lang/Exception
+    //   444	481	282	java/lang/Exception
+    //   484	538	282	java/lang/Exception
+    //   0	12	299	java/lang/Throwable
   }
 }
 

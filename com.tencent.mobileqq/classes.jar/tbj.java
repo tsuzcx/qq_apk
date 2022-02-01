@@ -1,8 +1,30 @@
-public abstract interface tbj
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySearchTipsContainer;
+
+public class tbj
+  extends Handler
 {
-  public abstract void a();
+  public tbj(ReadInJoySearchTipsContainer paramReadInJoySearchTipsContainer, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public abstract void b();
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    if (this.a.a != null)
+    {
+      if (paramMessage.obj != null) {
+        this.a.a.a((String)paramMessage.obj);
+      }
+    }
+    else {
+      return;
+    }
+    this.a.a.a(null);
+  }
 }
 
 

@@ -1,14 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.avgame.ui.AVGameRoomCenterFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class npa
-  implements DialogInterface.OnCancelListener
+public class npa
+  implements View.OnClickListener
 {
-  npa(noy paramnoy) {}
+  public npa(AVGameRoomCenterFragment paramAVGameRoomCenterFragment) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    noy.a(this.a);
+    AVGameRoomCenterFragment.a(this.a).finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

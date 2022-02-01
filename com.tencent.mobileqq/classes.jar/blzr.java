@@ -1,11 +1,7 @@
-import java.util.ArrayList;
-
 public class blzr
 {
-  public ArrayList<String> a = new ArrayList();
-  public ArrayList<String> b = new ArrayList();
-  public ArrayList<String> c = new ArrayList();
-  public ArrayList<Integer> d = new ArrayList();
+  public int a;
+  public String a;
 }
 
 

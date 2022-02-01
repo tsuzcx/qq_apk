@@ -1,36 +1,28 @@
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
-import com.tencent.mobileqq.app.CardObserver;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.GridView;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class ajol
-  extends CardObserver
 {
-  public ajol(PhotoCropActivity paramPhotoCropActivity) {}
+  private BaseActivity a;
   
-  public void onUpdateAvatar(boolean paramBoolean, String paramString, int paramInt)
+  public ajol(BaseActivity paramBaseActivity)
   {
-    if ("FROM_SDK_AVATAR_SET_IMAGE".equals(this.a.b))
-    {
-      this.a.a.removeMessages(1003);
-      this.a.c();
-      if (!paramBoolean)
-      {
-        paramString = this.a.getIntent();
-        paramString.putExtra("key_from_sdk_set_avatar_result", false);
-        this.a.setResult(-1, paramString);
-        this.a.finish();
-      }
-    }
-    else
-    {
-      return;
-    }
-    bcef.b(this.a.app, "dc00898", "", "", "0X8009B6B", "0X8009B6B", 0, 0, "", "", "", "");
-    paramString = this.a.getIntent();
-    paramString.putExtra("key_from_sdk_set_avatar_result", true);
-    this.a.setResult(-1, paramString);
-    this.a.finish();
+    this.a = paramBaseActivity;
+  }
+  
+  public bkzi a(AdapterView.OnItemClickListener paramOnItemClickListener)
+  {
+    bkzi localbkzi = (bkzi)bkzz.a(this.a, null);
+    GridView localGridView = (GridView)View.inflate(this.a, 2131563022, null);
+    localGridView.setBackgroundDrawable(this.a.getResources().getDrawable(2130837574));
+    localGridView.setAdapter(new ajon(this, null));
+    localGridView.setOnItemClickListener(paramOnItemClickListener);
+    localbkzi.a(localGridView);
+    localbkzi.c(2131690697);
+    return localbkzi;
   }
 }
 

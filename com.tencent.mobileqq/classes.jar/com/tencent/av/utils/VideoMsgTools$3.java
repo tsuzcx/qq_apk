@@ -1,10 +1,11 @@
 package com.tencent.av.utils;
 
-import ahpx;
-import anaj;
+import aikw;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bgqr;
+import aocy;
+import bibh;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -16,18 +17,18 @@ final class VideoMsgTools$3
   public void run()
   {
     if ((this.jdField_a_of_type_Int == 12) || (this.jdField_a_of_type_Int == 25) || (this.jdField_a_of_type_Int == 42) || (this.jdField_a_of_type_Int == 43) || (this.jdField_a_of_type_Int == 56)) {
-      bgqr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0);
+      bibh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0);
     }
-    int i = ((anaj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(13)).g();
+    int i = ((aocy)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).g();
     Object localObject;
     if (i == 2)
     {
-      if ((this.jdField_a_of_type_Boolean) || ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 24)) || (this.jdField_a_of_type_JavaLangString == null) || (!ahpx.a())) {
-        break label416;
+      if ((this.jdField_a_of_type_Boolean) || ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 24)) || (this.jdField_a_of_type_JavaLangString == null) || (!aikw.a())) {
+        break label417;
       }
       localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
       if (((SharedPreferences)localObject).getBoolean("lightalk_tip_" + this.b, false)) {
-        break label416;
+        break label417;
       }
       if (QLog.isColorLevel()) {
         QLog.d("LightalkBlueTipsBar", 2, "addBubbleVideoMsg() : TYPE_ON_SHOW =====>");
@@ -37,14 +38,14 @@ final class VideoMsgTools$3
       ((SharedPreferences.Editor)localObject).putString("Lightalk_tips_frdUin", this.c);
       ((SharedPreferences.Editor)localObject).commit();
     }
-    label416:
+    label417:
     for (i = 1;; i = 0)
     {
-      int j = bgqr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      int k = bgqr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 6, true, null);
+      int j = bibh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      int k = bibh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 6, true, null);
       if ((j != 0) && (j != k))
       {
-        k = bgqr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.c, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+        k = bibh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.c, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
         if (((j == 0) || (k == 0)) || ((!this.jdField_a_of_type_Boolean) && (i == 0)))
         {
           localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();

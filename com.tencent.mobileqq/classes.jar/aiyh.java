@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class aiyh
-  implements bfaz
+class aiyh
+  extends amgz
 {
-  private long jdField_a_of_type_Long;
-  
-  public aiyh(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment, long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public TextView b;
 }
 
 

@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.widget;
 
+import aako;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
@@ -9,10 +10,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bhhl;
+import bisd;
 import com.tencent.biz.ui.CustomMenuBar;
-import npm;
-import zvc;
+import nwn;
 
 public class PublicMenuBar
   extends CustomMenuBar
@@ -22,15 +22,15 @@ public class PublicMenuBar
     super(paramContext, paramAttributeSet);
   }
   
-  public View a(zvc paramzvc, int paramInt)
+  public View a(aako paramaako, int paramInt)
   {
-    String str = paramzvc.b();
-    Drawable localDrawable = paramzvc.a();
+    String str = paramaako.b();
+    Drawable localDrawable = paramaako.a();
     View localView = ((LayoutInflater)super.getContext().getSystemService("layout_inflater")).inflate(paramInt, null);
-    ImageView localImageView1 = (ImageView)localView.findViewById(2131370725);
-    ImageView localImageView2 = (ImageView)localView.findViewById(2131370716);
-    TextView localTextView = (TextView)localView.findViewById(2131370728);
-    if ((localImageView1 != null) && (paramzvc.a() > 0))
+    ImageView localImageView1 = (ImageView)localView.findViewById(2131370910);
+    ImageView localImageView2 = (ImageView)localView.findViewById(2131370901);
+    TextView localTextView = (TextView)localView.findViewById(2131370913);
+    if ((localImageView1 != null) && (paramaako.a() > 0))
     {
       localImageView1.setVisibility(0);
       if (localDrawable == null) {
@@ -41,19 +41,19 @@ public class PublicMenuBar
       if (str == null) {
         break label219;
       }
-      if (npm.a(str) <= 10) {
+      if (nwn.a(str) <= 10) {
         break label209;
       }
-      localTextView.setText(npm.a(str, 10, "..."));
+      localTextView.setText(nwn.a(str, 10, "..."));
     }
     for (;;)
     {
-      localView.setOnClickListener(new bhhl(this, paramzvc.c(), paramzvc.a()));
+      localView.setOnClickListener(new bisd(this, paramaako.c(), paramaako.a()));
       localView.setFocusable(true);
       localView.setClickable(true);
-      paramzvc = new LinearLayout.LayoutParams(-1, -1, 1.0F);
-      paramzvc.gravity = 17;
-      localView.setLayoutParams(paramzvc);
+      paramaako = new LinearLayout.LayoutParams(-1, -1, 1.0F);
+      paramaako.gravity = 17;
+      localView.setLayoutParams(paramaako);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
       return localView;
       if (localImageView1 == null) {

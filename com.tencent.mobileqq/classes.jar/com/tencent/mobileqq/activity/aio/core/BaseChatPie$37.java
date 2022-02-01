@@ -1,15 +1,20 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
 class BaseChatPie$37
   implements Runnable
 {
-  BaseChatPie$37(BaseChatPie paramBaseChatPie) {}
+  BaseChatPie$37(BaseChatPie paramBaseChatPie, long paramLong1, int paramInt1, long paramLong2, int paramInt2, Runnable paramRunnable) {}
   
   public void run()
   {
-    this.this$0.listView.showOverScrollHeader();
+    MessageRecord localMessageRecord = this.this$0.app.getMessageFacade().queryMsgItemByUniseq(this.this$0.sessionInfo.curFriendUin, this.this$0.sessionInfo.curType, this.val$valueFinal);
+    this.this$0.getActivity().runOnUiThread(new BaseChatPie.37.1(this, localMessageRecord));
   }
 }
 

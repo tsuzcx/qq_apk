@@ -1,11 +1,34 @@
+import android.os.Bundle;
+import android.text.TextUtils;
+import eipc.EIPCResult;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 class qdr
-  implements prg
+  implements twh
 {
-  qdr(qdf paramqdf) {}
+  qdr(qdq paramqdq, int paramInt, owx paramowx) {}
   
-  public boolean a()
+  public void a(String paramString, JSONObject paramJSONObject)
   {
-    return false;
+    if ((!TextUtils.isEmpty(paramString)) && (paramJSONObject != null)) {}
+    try
+    {
+      paramJSONObject.put("arg_callback", paramString);
+      paramString = new Bundle();
+      paramString.putString("action_update_biu_and_comment_request_string", paramJSONObject.toString());
+      paramString = EIPCResult.createResult(0, paramString);
+      this.jdField_a_of_type_Qdq.callbackResult(this.jdField_a_of_type_Int, paramString);
+      this.jdField_a_of_type_Owx.a();
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+    }
   }
 }
 

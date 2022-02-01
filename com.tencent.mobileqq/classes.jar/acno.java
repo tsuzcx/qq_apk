@@ -1,44 +1,39 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.activity.AddAccountActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class acno
-  implements View.OnClickListener
+class acno
 {
-  public acno(AccountManageActivity paramAccountManageActivity) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private MsgInfo jdField_a_of_type_OnlinePushPackMsgInfo;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
   
-  public void onClick(View paramView)
+  public acno(acnk paramacnk, long paramLong, MsgInfo paramMsgInfo, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Switch_Account", 2, "add account");
-    }
-    if (!aych.a().a(this.a.app, this.a)) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((this.a.a != null) && (this.a.a.size() - 1 >= 8))
-      {
-        QQToast.a(this.a, 2131693541, 0).a();
-      }
-      else
-      {
-        AccountManageActivity.a(this.a, bcqk.a(this.a.app));
-        Intent localIntent = new Intent();
-        localIntent.setPackage(this.a.getPackageName());
-        localIntent.setClass(this.a, AddAccountActivity.class);
-        this.a.startActivityForResult(localIntent, 1000);
-        this.a.overridePendingTransition(2130771997, 2130771990);
-        bcqj.c(this.a.app, this.a);
-        bcef.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_add", 0, 0, "", "", "", "");
-      }
-    }
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_OnlinePushPackMsgInfo = paramMsgInfo;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public long a()
+  {
+    return this.jdField_b_of_type_Long;
+  }
+  
+  public acno a()
+  {
+    this.jdField_a_of_type_Acnk.a.getMsgHandler().a().a(2);
+    this.jdField_b_of_type_Long = 9998L;
+    this.jdField_b_of_type_Int = (-1006 - (this.jdField_a_of_type_Int - 187));
+    this.jdField_a_of_type_Acnk.a.getMsgHandler().a().a(this.jdField_a_of_type_Long, this.jdField_a_of_type_OnlinePushPackMsgInfo.lFromUin, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_OnlinePushPackMsgInfo.uMsgTime, this.jdField_a_of_type_OnlinePushPackMsgInfo.shMsgSeq);
+    return this;
   }
 }
 

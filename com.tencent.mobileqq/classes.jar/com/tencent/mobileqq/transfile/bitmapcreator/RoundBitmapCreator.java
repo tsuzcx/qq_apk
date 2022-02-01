@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile.bitmapcreator;
 
 import android.graphics.Bitmap;
-import bfvo;
+import bheg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.transfile.AbstractImageDownloader;
 
@@ -21,7 +21,7 @@ public class RoundBitmapCreator
     if (this.isMixed) {}
     for (float f = 0.0F;; f = AbstractImageDownloader.getRoundRadius(BaseApplicationImpl.getApplication(), i))
     {
-      Bitmap localBitmap = bfvo.a(paramBitmap, f);
+      Bitmap localBitmap = bheg.a(paramBitmap, f);
       paramBitmap.recycle();
       return localBitmap;
     }

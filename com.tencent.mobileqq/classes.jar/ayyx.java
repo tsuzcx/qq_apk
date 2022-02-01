@@ -1,29 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.PointF;
-import android.view.View;
-import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
-import com.tencent.mobileqq.widget.RatioLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
 
 public class ayyx
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnClickListener
 {
-  public ayyx(VasProfileTagView paramVasProfileTagView, View paramView, PointF paramPointF) {}
+  public ayyx(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_AndroidViewView.setScaleX(paramValueAnimator.floatValue());
-    this.jdField_a_of_type_AndroidViewView.setScaleY(paramValueAnimator.floatValue());
-    float f1 = this.jdField_a_of_type_AndroidGraphicsPointF.x;
-    float f2 = VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).x;
-    float f3 = VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).getWidth();
-    float f4 = this.jdField_a_of_type_AndroidGraphicsPointF.y;
-    float f5 = VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).y;
-    float f6 = VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).getHeight();
-    this.jdField_a_of_type_AndroidViewView.setTranslationX((f1 - f2) * f3 * paramValueAnimator.floatValue());
-    this.jdField_a_of_type_AndroidViewView.setTranslationY((f4 - f5) * f6 * paramValueAnimator.floatValue());
-    this.jdField_a_of_type_AndroidViewView.setRotation(paramValueAnimator.floatValue() * 120.0F - 120.0F);
+    azcl.a("0X800AF9C", 2);
+    paramDialogInterface.dismiss();
+    AccountOnlineStateActivity.b(this.a);
   }
 }
 

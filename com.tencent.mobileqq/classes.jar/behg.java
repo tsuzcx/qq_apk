@@ -1,40 +1,33 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadMgr.FileUploadMgrObserver.1;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.Set;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class behg
-  implements Observer
+  implements BusinessObserver
 {
-  private final void a(Object paramObject)
-  {
-    paramObject = (Object[])paramObject;
-    int i = ((Integer)paramObject[0]).intValue();
-    paramObject = (Object[])paramObject[1];
-    switch (i)
-    {
-    default: 
-      return;
-    }
-    a((Set)paramObject[0]);
-  }
+  protected void a(boolean paramBoolean, List<String> paramList) {}
   
-  protected void a(Set<Long> paramSet) {}
-  
-  public void update(Observable paramObservable, Object paramObject)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramObject == null) {
-      return;
+    if (paramInt == 1) {
+      try
+      {
+        if ((paramObject instanceof List))
+        {
+          a(paramBoolean, (List)paramObject);
+          return;
+        }
+        if (!paramBoolean)
+        {
+          a(false, null);
+          return;
+        }
+      }
+      catch (Exception paramObject)
+      {
+        QLog.e("ParticipleObserver", 1, paramObject, new Object[0]);
+      }
     }
-    paramObservable = Looper.getMainLooper();
-    if (Thread.currentThread() != paramObservable.getThread())
-    {
-      new Handler(paramObservable).post(new TroopFileUploadMgr.FileUploadMgrObserver.1(this, paramObject));
-      return;
-    }
-    a(paramObject);
   }
 }
 

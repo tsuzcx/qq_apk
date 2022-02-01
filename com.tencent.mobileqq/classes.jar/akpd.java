@@ -1,42 +1,83 @@
-import android.content.Context;
-import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.Rect;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
-import com.tencent.qphone.base.util.QLog;
-import java.io.InputStream;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.activity.photo.album.preview.BasePreviewAdapter;
+import com.tencent.widget.AdapterView;
+import java.util.ArrayList;
 
 public class akpd
-  implements ImageAssetDelegate
+  extends akmu
 {
-  private Context a;
-  
-  public akpd(Context paramContext)
+  protected akpd(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    this.a = paramContext;
+    super(paramNewPhotoPreviewActivity);
   }
   
-  @Nullable
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public boolean needShowMultiPhoto()
   {
-    try
+    return (this.mPhotoCommonData.selectedPhotoList != null) && (!this.mPhotoCommonData.selectedPhotoList.isEmpty());
+  }
+  
+  public void onGalleryItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    super.onGalleryItemSelected(paramAdapterView, paramView, paramInt, paramLong);
+    paramAdapterView = ((NewPhotoPreviewActivity)this.mActivity).adapter.getItem(paramInt);
+    if (((NewPhotoPreviewActivity)this.mActivity).getMediaType(paramAdapterView) == 1)
     {
-      paramLottieImageAsset = this.a.getAssets().open("login_btn_lottie_images/" + paramLottieImageAsset.getFileName());
-      Object localObject = new BitmapFactory.Options();
-      ((BitmapFactory.Options)localObject).inScaled = false;
-      localObject = BitmapFactory.decodeStream(paramLottieImageAsset, (Rect)null, (BitmapFactory.Options)localObject);
-      paramLottieImageAsset.close();
-      return localObject;
+      paramInt = 1;
+      if (paramInt == 0) {
+        break label96;
+      }
+      ((NewPhotoPreviewActivity)this.mActivity).magicStickBtn.setVisibility(8);
+      ((NewPhotoPreviewActivity)this.mActivity).qualityCheckBox.setVisibility(8);
+      ((NewPhotoPreviewActivity)this.mActivity).qualityTv.setVisibility(8);
     }
-    catch (Throwable paramLottieImageAsset)
+    label258:
+    for (;;)
     {
-      QLog.i("LoginBtnImageAssetDelegate", 2, "fetchBitmap error " + paramLottieImageAsset.getMessage());
+      return;
+      paramInt = 0;
+      break;
+      label96:
+      if (this.a.c)
+      {
+        ((NewPhotoPreviewActivity)this.mActivity).magicStickBtn.setVisibility(0);
+        if (!this.a.b) {
+          break label227;
+        }
+        ((NewPhotoPreviewActivity)this.mActivity).qualityCheckBox.setVisibility(0);
+        ((NewPhotoPreviewActivity)this.mActivity).qualityTv.setVisibility(0);
+      }
+      for (;;)
+      {
+        if ((!this.a.g) && (!this.a.isSingleMode)) {
+          break label258;
+        }
+        ((NewPhotoPreviewActivity)this.mActivity).qualityCheckBox.setVisibility(8);
+        ((NewPhotoPreviewActivity)this.mActivity).qualityTv.setVisibility(8);
+        return;
+        ((NewPhotoPreviewActivity)this.mActivity).magicStickBtn.setVisibility(8);
+        break;
+        label227:
+        ((NewPhotoPreviewActivity)this.mActivity).qualityCheckBox.setVisibility(8);
+        ((NewPhotoPreviewActivity)this.mActivity).qualityTv.setVisibility(8);
+      }
     }
-    return null;
+  }
+  
+  public void onMagicStickClick(View paramView, int paramInt1, Bundle paramBundle, int paramInt2, Intent paramIntent)
+  {
+    if (paramBundle != null)
+    {
+      paramBundle.putBoolean("key_multi_edit_pic", true);
+      paramBundle.putBoolean("key_enable_edit_title_bar", true);
+    }
+    super.onMagicStickClick(paramView, 10000, paramBundle, paramInt2, paramIntent);
   }
 }
 

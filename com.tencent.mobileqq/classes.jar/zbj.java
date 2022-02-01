@@ -1,30 +1,19 @@
-import com.tencent.biz.subscribe.SubscribeUtils.1;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class zbj
-  implements INetEngine.INetEngineListener
+  implements AdapterView.OnItemClickListener
 {
-  public zbj(SubscribeUtils.1 param1) {}
+  public zbj(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
   
-  public void onResp(NetResp paramNetResp)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    QLog.i("DownLoadZipFile", 1, "download  onResp url:  resultcode: " + paramNetResp.mHttpCode);
-    try
-    {
-      QLog.d("DownLoadZipFile", 4, "start unzip file to folderPath:" + this.a.jdField_a_of_type_JavaLangString);
-      npo.a(this.a.jdField_a_of_type_JavaIoFile, this.a.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    catch (Exception paramNetResp)
-    {
-      QLog.i("DownLoadZipFile", 1, "unzip file failed" + paramNetResp);
-    }
+    HorizontalSelectColorLayout.a(this.a, paramInt);
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
-  
-  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

@@ -1,42 +1,26 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import java.io.File;
+import android.content.Context;
 
-class arzg
-  implements bjoe
+public class arzg
+  extends lzg
 {
-  arzg(arzf paramarzf, FileInfo paramFileInfo, bjnw parambjnw) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public static int a(Context paramContext, String paramString)
   {
-    if ((!FileUtil.isFileExists(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())) || (FileUtil.deleteFile(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())))
-    {
-      aszt.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c());
-      this.jdField_a_of_type_Arzf.a.a.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo);
-    }
-    try
-    {
-      paramView = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
-      paramView.setData(Uri.fromFile(new File(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())));
-      this.jdField_a_of_type_Arzf.a.a.a.sendBroadcast(paramView);
-      label104:
-      this.jdField_a_of_type_Arzf.a.a.f();
-      if (this.jdField_a_of_type_Bjnw.isShowing()) {
-        this.jdField_a_of_type_Bjnw.dismiss();
-      }
-      return;
-      aszk.a(2131692124);
-      return;
-    }
-    catch (Exception paramView)
-    {
-      break label104;
-    }
+    return a(paramContext, "TencentDocGrayTips_ShowTimes_" + paramString, 0);
+  }
+  
+  public static long a(Context paramContext, String paramString)
+  {
+    return a(paramContext, "TencentDocGrayTips_LastShowTime_" + paramString, 0L);
+  }
+  
+  public static void b(Context paramContext, String paramString, int paramInt)
+  {
+    a(paramContext, "TencentDocGrayTips_ShowTimes_" + paramString, paramInt);
+  }
+  
+  public static void b(Context paramContext, String paramString, long paramLong)
+  {
+    a(paramContext, "TencentDocGrayTips_LastShowTime_" + paramString, paramLong);
   }
 }
 

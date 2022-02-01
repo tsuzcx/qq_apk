@@ -1,21 +1,59 @@
-import android.app.Dialog;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class aeoe
-  implements View.OnClickListener
+  implements AdapterView.OnItemClickListener
 {
-  public aeoe(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aeoe(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.a.d == 11) {
-      bcef.b(this.a.app, "CliOper", "", "", "0X8006216", "0X8006216", 0, 0, "", "", "", "");
-    }
-    this.a.b.cancel();
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramAdapterView = null;
+    paramView = paramView.getTag();
+    if ((paramView instanceof aeop)) {}
+    String str;
+    do
+    {
+      paramAdapterView = ((aeop)paramView).a;
+      while (paramAdapterView == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("PublicAccountListActivity", 2, "onItemClick - info = null[position = " + paramInt + "]");
+        }
+        return;
+        if ((paramView instanceof aeot)) {
+          paramAdapterView = ((aeot)paramView).a;
+        }
+      }
+      paramView = new Intent(this.a, ChatActivity.class);
+      str = paramAdapterView.a.getUin();
+      paramInt = 1008;
+      if (paramAdapterView.a.extendType == 2)
+      {
+        paramView.putExtra("chat_subType", 1);
+        paramInt = 0;
+      }
+      if (!TextUtils.isEmpty(str)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.w("PublicAccountListActivity", 2, "onItemClick - uin = null");
+    return;
+    paramView.putExtra("uin", str);
+    paramView.putExtra("uintype", paramInt);
+    paramView.putExtra("uinname", paramAdapterView.a.name);
+    paramView.putExtra("selfSet_leftViewText", this.a.getString(2131694937));
+    paramView.putExtra("jump_from", 3);
+    this.a.startActivity(paramView);
+    olh.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", str, "mp_msg_sys_4", "contacts_aio", 0, 0, str, "", "", "", false);
+    olh.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573B", "0X800573B", 0, 0, str, "", "", "", false);
   }
 }
 

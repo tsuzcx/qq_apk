@@ -1,32 +1,32 @@
 package com.tencent.biz.pubaccount.AccountDetail.model;
 
-import amyh;
+import aoav;
 import com.tencent.biz.pubaccount.AccountDetail.bean.DynamicInfoEntity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import ntn;
-import ntx;
-import nty;
+import oao;
+import oay;
+import oaz;
 
 public class AccountDetailDynamicDataManager$2
   implements Runnable
 {
-  public AccountDetailDynamicDataManager$2(ntx paramntx, long paramLong, QQAppInterface paramQQAppInterface, amyh paramamyh) {}
+  public AccountDetailDynamicDataManager$2(oay paramoay, long paramLong, QQAppInterface paramQQAppInterface, aoav paramaoav) {}
   
   public void run()
   {
-    Object localObject = (DynamicInfoEntity)ntx.a(this.this$0).find(DynamicInfoEntity.class, this.jdField_a_of_type_Long);
+    Object localObject = (DynamicInfoEntity)oay.a(this.this$0).find(DynamicInfoEntity.class, this.jdField_a_of_type_Long);
     if ((localObject != null) && (this.jdField_a_of_type_Long == Long.parseLong(((DynamicInfoEntity)localObject).puin)) && (((DynamicInfoEntity)localObject).dynamicInfoData != null))
     {
       if (QLog.isColorLevel()) {
         QLog.d("AccountDetailDynamicDataManager", 2, "getDynamicListForFirstEnterFromDB null != dynamicInfoEntity");
       }
-      int i = nty.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, ((DynamicInfoEntity)localObject).dynamicInfoData, true);
-      localObject = ntx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_Long);
-      if ((i == 0) && (localObject != null) && (!((ntn)localObject).a().isEmpty())) {
-        this.jdField_a_of_type_Amyh.onDynamicListGet(true, i);
+      int i = oaz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, ((DynamicInfoEntity)localObject).dynamicInfoData, true);
+      localObject = oay.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_Long);
+      if ((i == 0) && (localObject != null) && (!((oao)localObject).a().isEmpty())) {
+        this.jdField_a_of_type_Aoav.onDynamicListGet(true, i);
       }
     }
   }

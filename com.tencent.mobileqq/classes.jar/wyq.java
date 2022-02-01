@@ -1,78 +1,107 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.DrawableContainer.DrawableContainerState;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.StateListDrawable;
-import android.view.View;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.transfile.AbsDownloader;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
+import java.util.Map;
 
-public class wyq
-  extends wrx
+public final class wyq
 {
-  public wyq(wyc paramwyc) {}
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public static <K, V, T extends V> T a(@NonNull Map<K, V> paramMap, K paramK, T paramT)
   {
-    Object localObject = this.a.a();
-    if ((localObject == null) || (!this.a.jdField_a_of_type_Wod.equals(localObject))) {}
+    Object localObject = paramMap.get(paramK);
+    if ((localObject != null) || (paramMap.containsKey(paramK))) {
+      paramT = localObject;
+    }
+    return paramT;
+  }
+  
+  public static String a(String paramString)
+  {
+    return AppConstants.SDCARD_FILE_SAVE_TMP_PATH + AbsDownloader.getFileName(paramString);
+  }
+  
+  public static String a(String paramString, boolean paramBoolean)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    String str1 = null;
+    int i = 1;
+    String[] arrayOfString = paramString.split("&");
+    int k = arrayOfString.length;
+    int j = 0;
+    paramString = str1;
+    if (j < k)
+    {
+      str1 = arrayOfString[j];
+      String str2 = str1.split("=")[0];
+      if ((str2.equals("src_type")) || (str2.equals("version")) || (str2.equals("type")) || (str2.equals("actionnamekey")) || (str2.equals("storysharefrom")) || ((paramBoolean) && (str2.equals("videoId"))) || ((paramBoolean) && (str2.equals("videoOwnerUin"))) || ((paramBoolean) && (str2.equals("unionid"))))
+      {
+        if (i != 0) {
+          i = 0;
+        }
+        for (;;)
+        {
+          localStringBuilder.append(str1);
+          j += 1;
+          break;
+          localStringBuilder.append('&');
+        }
+      }
+      str1 = paramString;
+      if (QLog.isColorLevel())
+      {
+        if (paramString != null) {
+          break label216;
+        }
+        paramString = new StringBuilder();
+      }
+      for (;;)
+      {
+        paramString.append(str2);
+        str1 = paramString;
+        paramString = str1;
+        break;
+        label216:
+        paramString.append('|');
+      }
+    }
+    if ((paramString != null) && (QLog.isColorLevel())) {
+      QLog.d("ShareUtil", 2, "remove params:" + paramString);
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public static String b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
     do
     {
-      return;
-      if (paramInt1 == this.a.hashCode())
-      {
-        xvv.b(this.a.b, "onActivityResult, onChooseFriendResult");
-        localObject = ((StoryPlayerGroupHolder)this.a.a()).a();
-        if (localObject != null) {
-          ((VideoViewVideoHolder)localObject).c(false);
-        }
-        if (paramInt2 == -1) {
-          wld.a().a(paramIntent.getExtras());
-        }
-      }
-      if ((paramInt1 == 10002) && (paramInt2 == -1))
-      {
-        vns.b(this.a.b + " onActivityResult");
-        QQToast.a(this.a.b(), this.a.b().getString(2131718406), 1).a();
-      }
-      if ((paramInt1 == 467) && (paramInt2 == -1) && (wyc.a(this.a) != null)) {
-        wyc.a(this.a).a();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.b, 2, new Object[] { "BottomVideoInfoWidget.MyActivityLifeCycle onActivityResult. hashCode=", Integer.valueOf(hashCode()) });
-      }
-    } while (this.a.jdField_a_of_type_Wgz == null);
-    this.a.jdField_a_of_type_Wgz.a(paramInt1, paramInt2, paramIntent);
-  }
-  
-  public void d()
-  {
-    super.d();
-    if ((LiuHaiUtils.a) && (!ScreenUtil.checkDeviceHasNavigationBar(this.a.jdField_a_of_type_AndroidViewView.getContext())) && (wyc.a(this.a) - UIUtils.dip2px(this.a.jdField_a_of_type_AndroidViewView.getContext(), 9.0F) > 0))
+      return paramString;
+      arrayOfString = paramString.split("\\?");
+    } while (arrayOfString.length != 2);
+    paramString = arrayOfString[0];
+    String[] arrayOfString = arrayOfString[1].split("&");
+    StringBuilder localStringBuilder = new StringBuilder("?");
+    int i = 0;
+    if (i < arrayOfString.length)
     {
-      Object localObject = wyc.a(this.a).getBackground();
-      if ((localObject instanceof StateListDrawable))
+      Object localObject = arrayOfString[i].split("=");
+      if (localObject.length != 2) {}
+      for (;;)
       {
-        localObject = (DrawableContainer.DrawableContainerState)((StateListDrawable)localObject).getConstantState();
-        if (localObject != null) {
-          ((GradientDrawable)localObject.getChildren()[0]).setColor(this.a.jdField_a_of_type_AndroidViewView.getResources().getColor(2131167342));
+        i += 1;
+        break;
+        localObject = localObject[0];
+        if ("s".equals(localObject)) {
+          arrayOfString[i] = ((String)localObject + "=" + "140");
+        }
+        localStringBuilder.append(arrayOfString[i]);
+        if (i + 1 < arrayOfString.length) {
+          localStringBuilder.append("&");
         }
       }
     }
-  }
-  
-  public void g()
-  {
-    super.g();
-    if (wyc.a(this.a) != null) {
-      wyc.a(this.a).a();
-    }
+    return paramString + localStringBuilder.toString();
   }
 }
 

@@ -1,168 +1,90 @@
-import UserGrowth.stSimpleMetaFeed;
-import UserGrowth.stSimpleMetaPerson;
-import android.content.Context;
-import android.graphics.Color;
-import android.support.annotation.UiThread;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.common.util.NetworkUtil;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
-import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.util.List;
 
-public class vbs
-  extends ukz<vaq>
-  implements View.OnClickListener
+final class vbs
+  extends vbp
 {
-  private static final int d = ScreenUtil.dip2px(2.5F);
-  private static final int e = ScreenUtil.dip2px(150.0F);
-  private static final int f = Color.parseColor("#5CFFFFFF");
-  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
-  private RoundImageView jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView;
-  private TextView b;
-  
-  public vbs(Context paramContext, vct paramvct)
+  public void installSucceed(String paramString1, String paramString2)
   {
-    super(paramContext);
-    if (paramvct != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramvct.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+    super.installSucceed(paramString1, paramString2);
+    if (!vbq.b()) {
+      return;
     }
+    vbq.a(paramString1, paramString2, true);
   }
   
-  private void b(stSimpleMetaPerson paramstSimpleMetaPerson)
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
   {
-    if (paramstSimpleMetaPerson == null)
+    vmp.c("WeishiDownloadUtil", "qzone onDownloadCancel info = " + paramDownloadInfo);
+    if (vbq.a(paramDownloadInfo))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView.setVisibility(8);
-      return;
+      vbq.a();
+      int i = vbq.b();
+      WSPublicAccReport.getInstance().reportDownload(vbq.a(), i, 3, 2, 0, vbq.c());
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView.setVisibility(0);
-    uyo.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView, paramstSimpleMetaPerson.avatar);
   }
   
-  private void c(stSimpleMetaPerson paramstSimpleMetaPerson)
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
   {
-    if (paramstSimpleMetaPerson == null)
+    vmp.d("WeishiDownloadUtil", "qzone onDownloadError info = " + paramDownloadInfo);
+    if (vbq.a(paramDownloadInfo))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      return;
+      vbq.a();
+      paramInt2 = vbq.b();
+      WSPublicAccReport.getInstance().reportDownload(vbq.a(), paramInt2, 3, 2, 0, vbq.c());
+      vmp.d("WeishiDownloadUtil", "qzone  errorCode:" + paramInt1 + ", errorMsg: " + paramString);
+      vbq.a(paramDownloadInfo, paramInt1);
     }
-    int i = this.b.getWidth();
-    int j = uyn.c();
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(j - i - e);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramstSimpleMetaPerson.nick);
   }
   
-  private void f()
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
   {
-    uyz.a("profile", this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
-  }
-  
-  private void g()
-  {
-    uyz.a("nickname", this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
-  }
-  
-  private void h()
-  {
-    if (!NetworkUtil.isNetworkAvailable(a())) {
-      bhzt.a().a(2131719692);
-    }
-    while ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment == null) || (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed == null) || (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster == null)) {
-      return;
-    }
-    this.b.setVisibility(8);
-    ung.a().b(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster.id, 1);
-    vdq.f(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(), this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
-  }
-  
-  protected void a()
-  {
-    vaq localvaq = (vaq)a();
-    if (localvaq == null) {}
-    while (!(localvaq.a() instanceof stSimpleMetaFeed)) {
-      return;
-    }
-    this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)localvaq.a());
-  }
-  
-  public void a(stSimpleMetaPerson paramstSimpleMetaPerson)
-  {
-    int i = 8;
-    if (paramstSimpleMetaPerson == null)
+    vbq.a();
+    vmp.a("WeishiDownloadUtil", "qzone onDownloadFinish~~~");
+    int i = vbq.a();
+    int j = vbq.b();
+    if (j != 3)
     {
-      this.b.setVisibility(8);
+      vmp.c("WeishiDownloadUtil", "onDownloadFinish return!qzone只有主动下载");
       return;
     }
-    if (TextUtils.equals(uyo.f(), paramstSimpleMetaPerson.id))
+    if (!vbq.b())
     {
-      this.b.setVisibility(8);
+      vmp.d("WeishiDownloadUtil", "这是Qzone的监听器，不响应qq onDownloadFinish eventId:" + i + ",eventType:" + j);
       return;
     }
-    TextView localTextView = this.b;
-    if (uxr.a(paramstSimpleMetaPerson.followStatus)) {}
-    for (;;)
-    {
-      localTextView.setVisibility(i);
-      return;
-      i = 0;
+    vbq.a(paramDownloadInfo, i, j, "Qzone");
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    super.onDownloadPause(paramDownloadInfo);
+    vmp.d("WeishiDownloadUtil", "qzone onDownloadPause info = " + paramDownloadInfo);
+    if (vbq.a(paramDownloadInfo)) {
+      vbq.a();
     }
   }
   
-  protected int b()
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
   {
-    return 2131560027;
-  }
-  
-  @UiThread
-  protected void b()
-  {
-    Object localObject = (vaq)a();
-    if (localObject == null) {}
-    while (!(((vaq)localObject).a() instanceof stSimpleMetaFeed)) {
+    super.onDownloadUpdate(paramList);
+    if (!vbq.b()) {}
+    while ((paramList == null) || (paramList.size() <= 0)) {
       return;
     }
-    localObject = ((stSimpleMetaFeed)((vaq)localObject).a()).poster;
-    a((stSimpleMetaPerson)localObject);
-    c((stSimpleMetaPerson)localObject);
-    b((stSimpleMetaPerson)localObject);
   }
   
-  protected void c() {}
-  
-  protected void e()
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView = ((RoundImageView)a(2131380406));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView.setBorderWidth(d);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView.setBorderColor(f);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380410));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.b = ((TextView)a(2131380409));
-    this.b.setOnClickListener(this);
+    super.onDownloadWait(paramDownloadInfo);
+    vmp.d("WeishiDownloadUtil", "qzone onDownloadWait info = " + paramDownloadInfo);
   }
   
-  public void onClick(View paramView)
+  public void packageReplaced(String paramString1, String paramString2)
   {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      f();
-      continue;
-      g();
-      continue;
-      h();
-    }
+    super.packageReplaced(paramString1, paramString2);
+    vmp.d("WeishiDownloadUtil", "qzone packageReplaced appid = " + paramString1 + ", packageName = " + paramString2);
   }
 }
 

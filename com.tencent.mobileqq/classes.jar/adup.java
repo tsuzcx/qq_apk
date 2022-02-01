@@ -1,19 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.OverloadTipsActivity;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
 public class adup
-  implements DialogInterface.OnKeyListener
+  implements DialogInterface.OnClickListener
 {
-  public adup(OverloadTipsActivity paramOverloadTipsActivity) {}
+  public adup(DialogActivity paramDialogActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 4) {
-      this.a.finish();
-    }
-    return false;
+    this.a.finish();
   }
 }
 

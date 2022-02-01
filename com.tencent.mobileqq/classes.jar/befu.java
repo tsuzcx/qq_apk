@@ -1,22 +1,235 @@
-public abstract interface befu
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.teamwork.PadInfo;
+import com.tencent.mobileqq.teamworkforgroup.GPadInfo;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.mobileqq.troop.widget.SingleLineHotwordTextView;
+import com.tencent.mobileqq.utils.ContactUtils;
+import java.util.ArrayList;
+import java.util.List;
+
+public class befu
+  extends beeh
 {
-  public abstract void a(befv parambefv);
+  private Context b;
   
-  public abstract int b();
+  public befu(QQAppInterface paramQQAppInterface, Context paramContext, BaseAdapter paramBaseAdapter, int paramInt)
+  {
+    super(paramQQAppInterface, paramContext, paramBaseAdapter, paramInt);
+    this.jdField_b_of_type_AndroidContentContext = paramContext;
+  }
   
-  public abstract void b();
+  private String a(String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(paramString1)) {
+      paramString1 = anvx.a(2131714150);
+    }
+    String str;
+    do
+    {
+      return paramString1;
+      str = ContactUtils.getBuddyName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, true);
+      if ((str != null) && (!str.equals(paramString1))) {
+        break;
+      }
+      paramString1 = paramString2;
+    } while (!TextUtils.isEmpty(paramString2));
+    return str;
+  }
   
-  public abstract boolean b();
+  public List<befo> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(c);
+    localArrayList.add(jdField_b_of_type_Befo);
+    return localArrayList;
+  }
   
-  public abstract int c();
+  public List<befo> a(befn parambefn)
+  {
+    ArrayList localArrayList = new ArrayList();
+    boolean bool;
+    int i;
+    if ((parambefn instanceof GPadInfo))
+    {
+      parambefn = (GPadInfo)parambefn;
+      if ((this.jdField_b_of_type_AndroidContentContext == null) || (!(this.jdField_b_of_type_AndroidContentContext instanceof GroupTeamWorkListActivity))) {
+        break label142;
+      }
+      bool = TroopUtils.IsTroopAdmin(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((GroupTeamWorkListActivity)this.jdField_b_of_type_AndroidContentContext).a, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      if (parambefn.creatorUin != this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin()) {
+        break label137;
+      }
+      i = 1;
+    }
+    for (;;)
+    {
+      if ((i != 0) && (BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getBoolean("TIMDocLimitSettingFlag", false))) {}
+      localArrayList.add(c);
+      if ((i != 0) || (bool)) {
+        localArrayList.add(jdField_b_of_type_Befo);
+      }
+      return localArrayList;
+      label137:
+      i = 0;
+      continue;
+      label142:
+      i = 0;
+      bool = false;
+    }
+  }
   
-  public abstract void c();
-  
-  public abstract int d();
-  
-  public abstract String d();
-  
-  public abstract String e();
+  public View b(int paramInt1, befn parambefn, View paramView, ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, boolean paramBoolean3, int paramInt2)
+  {
+    View localView;
+    PadInfo localPadInfo;
+    label151:
+    long l;
+    label271:
+    label295:
+    Object localObject;
+    if (paramView == null)
+    {
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562940, paramViewGroup, false);
+      paramViewGroup = new befw(this, null);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131364727));
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqTroopWidgetSingleLineHotwordTextView = ((SingleLineHotwordTextView)localView.findViewById(2131364729));
+      paramViewGroup.c = ((TextView)localView.findViewById(2131364730));
+      paramViewGroup.b = ((TextView)localView.findViewById(2131364746));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131364747));
+      paramViewGroup.jdField_a_of_type_AndroidViewView = localView.findViewById(2131364731);
+      localView.setTag(paramViewGroup);
+      localPadInfo = (PadInfo)parambefn;
+      if (localPadInfo.type != 1) {
+        break label494;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850572);
+      if (((localPadInfo instanceof GPadInfo)) && (((GPadInfo)localPadInfo).searchKeyWordList.size() > 0))
+      {
+        paramView = (ArrayList)((GPadInfo)localPadInfo).searchKeyWordList;
+        paramViewGroup.jdField_a_of_type_ComTencentMobileqqTroopWidgetSingleLineHotwordTextView.setHotwords(paramView);
+      }
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqTroopWidgetSingleLineHotwordTextView.setText(localPadInfo.title);
+      paramInt2 = localPadInfo.type_list;
+      if ((paramInt2 != 1) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals("" + localPadInfo.creatorUin))) {
+        break label531;
+      }
+      paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131719233);
+      paramViewGroup.c.setText(paramView);
+      if (!(localPadInfo instanceof GPadInfo)) {
+        break label659;
+      }
+      l = localPadInfo.lastEditTime;
+      localObject = null;
+      paramView = localObject;
+      if (l > 0L)
+      {
+        if (l != localPadInfo.lastEditTime) {
+          break label677;
+        }
+        paramView = a("" + localPadInfo.lastEditorUin, localPadInfo.lastEditorNick);
+        paramView = String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131719274), new Object[] { paramView });
+      }
+      label376:
+      if (paramView == null) {
+        break label768;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      paramViewGroup.b.setText(paramView);
+      paramView = becr.a(l);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
+      label413:
+      if (this.jdField_b_of_type_Int != 1) {
+        break label842;
+      }
+      if (localPadInfo.type_list != 4) {
+        break label812;
+      }
+      if (!localPadInfo.pinInAllList) {
+        break label801;
+      }
+      localView.setBackgroundResource(2130839566);
+    }
+    for (;;)
+    {
+      localView.setOnClickListener(paramOnClickListener);
+      localView.setOnLongClickListener(paramOnLongClickListener);
+      paramViewGroup.jdField_a_of_type_Befn = parambefn;
+      localView.setTag(-1, Integer.valueOf(paramInt1));
+      return localView;
+      paramViewGroup = (befw)paramView.getTag();
+      localView = paramView;
+      break;
+      label494:
+      if (localPadInfo.type == 3)
+      {
+        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850573);
+        break label151;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850580);
+      break label151;
+      label531:
+      if (paramInt2 == 3)
+      {
+        paramView = a("" + localPadInfo.creatorUin, localPadInfo.shardNick);
+        paramView = String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131719275), new Object[] { paramView });
+        break label271;
+      }
+      paramView = a("" + localPadInfo.creatorUin, localPadInfo.creatorNick);
+      paramView = String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131719273), new Object[] { paramView });
+      break label271;
+      label659:
+      l = Math.max(localPadInfo.lastEditTime, localPadInfo.currentUserBrowseTime);
+      break label295;
+      label677:
+      if (l == 0L)
+      {
+        paramView = anvx.a(2131714155);
+        paramView = String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131719272), new Object[] { paramView });
+        break label376;
+      }
+      paramView = localObject;
+      if (l != localPadInfo.currentUserBrowseTime) {
+        break label376;
+      }
+      paramView = anvx.a(2131714134);
+      paramView = String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131719276), new Object[] { paramView });
+      break label376;
+      label768:
+      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      paramViewGroup.b.setText("");
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText("");
+      break label413;
+      label801:
+      localView.setBackgroundResource(2130839565);
+      continue;
+      label812:
+      if (localPadInfo.pinedFlag)
+      {
+        localView.setBackgroundResource(2130839566);
+      }
+      else
+      {
+        localView.setBackgroundResource(2130839565);
+        continue;
+        label842:
+        localView.setBackgroundResource(2130839565);
+      }
+    }
+  }
 }
 
 

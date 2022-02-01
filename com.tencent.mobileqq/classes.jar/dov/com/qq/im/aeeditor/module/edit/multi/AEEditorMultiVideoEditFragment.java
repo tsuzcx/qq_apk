@@ -1,25 +1,25 @@
 package dov.com.qq.im.aeeditor.module.edit.multi;
 
-import amtj;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
-import bfur;
-import bmbc;
-import bmbx;
-import bmfh;
-import bmgf;
-import bmgg;
-import bmgl;
-import bmgp;
-import bmgr;
-import bmgw;
-import bmjz;
-import bmka;
-import bmkb;
-import bmmg;
-import bmns;
+import anvx;
+import bhdj;
+import bnqm;
+import bnrh;
+import bnuz;
+import bnvx;
+import bnvy;
+import bnwd;
+import bnwh;
+import bnwj;
+import bnwo;
+import bnzr;
+import bnzs;
+import bnzt;
+import boby;
+import bodk;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.tav.core.composition.VideoComposition.RenderLayoutMode;
@@ -91,23 +91,23 @@ public class AEEditorMultiVideoEditFragment
     return new ArrayList();
   }
   
-  public static void a(Context paramContext, TAVCutVideoSession paramTAVCutVideoSession, bmmg parambmmg, MediaModel paramMediaModel, MoviePlayer paramMoviePlayer, TAVCutVideoView paramTAVCutVideoView)
+  public static void a(Context paramContext, TAVCutVideoSession paramTAVCutVideoSession, boby paramboby, MediaModel paramMediaModel, MoviePlayer paramMoviePlayer, TAVCutVideoView paramTAVCutVideoView)
   {
     SessionConfig localSessionConfig = new SessionConfig();
     localSessionConfig.setContentMode(TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFit);
     localSessionConfig.setRenderLayoutMode(VideoComposition.RenderLayoutMode.aspectFit);
-    localSessionConfig.setMaxIntermediateRenderSize(parambmmg.a());
-    parambmmg = new StickerEditViewIconConfig();
-    parambmmg.setDeleteIconResId(2130837746);
-    parambmmg.setEditIconResId(2130837745);
-    parambmmg.setZoomIconResId(2130837747);
-    localSessionConfig.setStickerEditViewIconConfig(parambmmg);
+    localSessionConfig.setMaxIntermediateRenderSize(paramboby.a());
+    paramboby = new StickerEditViewIconConfig();
+    paramboby.setDeleteIconResId(2130837820);
+    paramboby.setEditIconResId(2130837759);
+    paramboby.setZoomIconResId(2130837833);
+    localSessionConfig.setStickerEditViewIconConfig(paramboby);
     paramTAVCutVideoSession.setSessionConfig(localSessionConfig);
-    parambmmg = paramMediaModel;
+    paramboby = paramMediaModel;
     if (paramMediaModel == null) {
-      parambmmg = new MediaModel();
+      paramboby = new MediaModel();
     }
-    paramTAVCutVideoSession.setMediaModel(parambmmg);
+    paramTAVCutVideoSession.setMediaModel(paramboby);
     if (paramMoviePlayer != null) {
       paramTAVCutVideoSession.addPlayer(paramMoviePlayer);
     }
@@ -126,20 +126,20 @@ public class AEEditorMultiVideoEditFragment
   
   public void A()
   {
-    bmgr localbmgr = new bmgr(this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession);
-    localbmgr.a(new bmjz(this));
-    bmfh.a().a(getActivity().getAppInterface(), getActivity(), localbmgr);
+    bnwj localbnwj = new bnwj(this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession);
+    localbnwj.a(new bnzr(this));
+    bnuz.a().a(getActivity().getAppInterface(), getActivity(), localbnwj);
   }
   
   public LocalMediaInfo a(String paramString1, String paramString2, String paramString3)
   {
-    return bmns.a("", a().getHeight(), a().getWidth(), paramString1, paramString2, paramString3);
+    return bodk.a("", a().getHeight(), a().getWidth(), paramString1, paramString2, paramString3);
   }
   
   public Size a()
   {
     this.jdField_b_of_type_ComTencentTavcutBeanSize = a(this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession);
-    return this.jdField_a_of_type_Bmmg.a(this.jdField_b_of_type_ComTencentTavcutBeanSize);
+    return this.jdField_a_of_type_Boby.a(this.jdField_b_of_type_ComTencentTavcutBeanSize);
   }
   
   public String a()
@@ -156,14 +156,14 @@ public class AEEditorMultiVideoEditFragment
     }
   }
   
-  public void a(@NonNull bmgw parambmgw)
+  public void a(@NonNull bnwo parambnwo)
   {
     if (this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession == null)
     {
-      bmbx.d("AEEditorMultiVideoEditFragment", "tavVideoSession is null.");
+      bnrh.d("AEEditorMultiVideoEditFragment", "tavVideoSession is null.");
       return;
     }
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.resetAEKitModelForMultiAI(parambmgw.b, 0.8F, parambmgw.jdField_a_of_type_JavaUtilHashMap, 0, 0.0F);
+    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.resetAEKitModelForMultiAI(parambnwo.b, 0.8F, parambnwo.jdField_a_of_type_JavaUtilHashMap, 0, 0.0F);
   }
   
   public void a(@NonNull MusicData paramMusicData, float paramFloat1, float paramFloat2, boolean paramBoolean)
@@ -189,7 +189,7 @@ public class AEEditorMultiVideoEditFragment
   
   public boolean a()
   {
-    bmbc.a().q();
+    bnqm.a().q();
     if (this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextControlPanel.getVisibility() == 0) {
       j();
     }
@@ -202,7 +202,7 @@ public class AEEditorMultiVideoEditFragment
         return false;
       }
       Object localObject = getActivity();
-      localObject = bfur.a((Context)localObject, 230).setTitle(amtj.a(2131689720)).setMessage(((Context)localObject).getString(2131689721)).setPositiveButton(((Context)localObject).getString(2131689720), new bmkb(this)).setNegativeButton(((Context)localObject).getString(2131689690), new bmka(this));
+      localObject = bhdj.a((Context)localObject, 230).setTitle(anvx.a(2131689728)).setMessage(((Context)localObject).getString(2131689729)).setPositiveButton(((Context)localObject).getString(2131689728), new bnzt(this)).setNegativeButton(((Context)localObject).getString(2131689698), new bnzs(this));
       if (localObject != null) {
         try
         {
@@ -234,19 +234,19 @@ public class AEEditorMultiVideoEditFragment
   public boolean f()
   {
     boolean bool2 = false;
-    Object localObject = this.jdField_a_of_type_Bmgf.a(this.jdField_d_of_type_JavaLangString);
+    Object localObject = this.jdField_a_of_type_Bnvx.a(this.jdField_d_of_type_JavaLangString);
     boolean bool1;
-    if ((localObject instanceof bmgw))
+    if ((localObject instanceof bnwo))
     {
-      bmbx.b("AEEditorMultiVideoEditFragment", "onAIFilterRequest: has cache");
-      bool1 = ((bmgw)localObject).jdField_a_of_type_Boolean;
+      bnrh.b("AEEditorMultiVideoEditFragment", "onAIFilterRequest: has cache");
+      bool1 = ((bnwo)localObject).jdField_a_of_type_Boolean;
       if (!bool1) {
         break label94;
       }
       k();
-      localObject = new bmgp(this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession);
-      ((bmgp)localObject).a(this);
-      bmfh.a().a(getActivity().getAppInterface(), getActivity(), (bmgg)localObject);
+      localObject = new bnwh(this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession);
+      ((bnwh)localObject).a(this);
+      bnuz.a().a(getActivity().getAppInterface(), getActivity(), (bnvy)localObject);
     }
     for (;;)
     {
@@ -259,15 +259,15 @@ public class AEEditorMultiVideoEditFragment
       label94:
       this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel.b(false);
       this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel.a(1);
-      this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.resetAEKitModelForMultiAI(((bmgl)localObject).b(), 0.8F, ((bmgl)localObject).a(), 0, 0.0F);
-      a(new String[] { "智能滤镜label", ((bmgl)localObject).a(), "智能滤镜errCode", "0" });
+      this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.resetAEKitModelForMultiAI(((bnwd)localObject).b(), 0.8F, ((bnwd)localObject).a(), 0, 0.0F);
+      a(new String[] { "智能滤镜label", ((bnwd)localObject).a(), "智能滤镜errCode", "0" });
     }
   }
   
   public String g()
   {
     if ((this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession != null) && (this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getMediaModel() != null) && (this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getMediaModel().toString() != null)) {
-      Util.md5(this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getMediaModel().toString());
+      return Util.md5(this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getMediaModel().toString());
     }
     return "";
   }
@@ -284,7 +284,7 @@ public class AEEditorMultiVideoEditFragment
     this.e = paramBoolean;
     if (!paramBoolean)
     {
-      bmbc.a().r();
+      bnqm.a().r();
       a(true, true);
       this.jdField_d_of_type_Boolean = true;
       if ((g()) && (getArguments() != null)) {}
@@ -333,7 +333,7 @@ public class AEEditorMultiVideoEditFragment
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession = new TAVCutVideoSession();
     MediaModel localMediaModel = new MediaModel();
     localMediaModel.setMediaResourceModel(this.jdField_b_of_type_ComTencentWeseevideoModelResourceMediaResourceModel);
-    a(getActivity(), this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession, this.jdField_a_of_type_Bmmg, localMediaModel, this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer, this.jdField_a_of_type_ComTencentTavcutViewTAVCutVideoView);
+    a(getActivity(), this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession, this.jdField_a_of_type_Boby, localMediaModel, this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer, this.jdField_a_of_type_ComTencentTavcutViewTAVCutVideoView);
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setStickerLyricCallback(this);
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setStickerOperationCallback(a());
     this.c = g();

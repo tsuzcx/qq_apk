@@ -1,19 +1,29 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
 
-public class attk
-  implements CompoundButton.OnCheckedChangeListener
+class attk
+  implements audq
 {
-  public attk(TempMsgSettingFragment paramTempMsgSettingFragment) {}
+  attk(attj paramattj) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onNo() {}
+  
+  public void onYes()
   {
-    ((avnl)this.a.a.getManager(303)).a((short)-23310, paramBoolean, true);
-    bcef.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 4, 4, "", "", "", "");
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    localQQAppInterface.getFileManagerEngine().a(this.a.jdField_a_of_type_JavaLangString, null, localQQAppInterface.getAccount(), 0, false);
+    auea.a(this.a.jdField_a_of_type_JavaLangString);
+    audr.d(BaseActivity.sTopActivity.getString(2131692595));
+    if (this.a.jdField_a_of_type_Atuw != null) {
+      this.a.jdField_a_of_type_Atuw.a(1);
+    }
+    if (this.a.jdField_a_of_type_Atuw.c())
+    {
+      long l = this.a.jdField_a_of_type_Atuw.a().b();
+      auea.a(this.a.jdField_a_of_type_Atuw.a(), l);
+    }
   }
 }
 

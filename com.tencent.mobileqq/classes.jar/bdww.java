@@ -1,14 +1,33 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.concurrent.Callable;
 
-public class bdww
-  implements bhho
+class bdww
+  implements Callable<File>
 {
-  public bdww(NewTroopContactView paramNewTroopContactView) {}
+  bdww(bdwv parambdwv) {}
   
-  public void afterDraw(Bundle paramBundle) {}
-  
-  public void beforeDraw(Bundle paramBundle) {}
+  public File a()
+  {
+    try
+    {
+      boolean bool = bdwv.a(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.i("studyroom.CdnPmUpdater", 2, "isNeedDownload:" + bool);
+      }
+      if (!bool)
+      {
+        localFile = this.a.getLatest();
+        return localFile;
+      }
+      File localFile = this.a.a();
+      return localFile;
+    }
+    finally
+    {
+      bdwv.a(this.a, false);
+    }
+  }
 }
 
 

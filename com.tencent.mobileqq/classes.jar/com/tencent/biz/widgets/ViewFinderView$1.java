@@ -1,11 +1,11 @@
 package com.tencent.biz.widgets;
 
-import aaey;
+import aauk;
 
 public class ViewFinderView$1
   implements Runnable
 {
-  public ViewFinderView$1(aaey paramaaey, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public ViewFinderView$1(aauk paramaauk, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
   public void run()
   {

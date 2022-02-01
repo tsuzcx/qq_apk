@@ -1,55 +1,26 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentHotSearch;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONObject;
 
-public class qul
-  implements View.OnClickListener
+class qul
+  implements qie
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  rdc jdField_a_of_type_Rdc;
-  TextView b;
+  qul(quh paramquh, RecommendFollowInfo paramRecommendFollowInfo) {}
   
-  protected qul(ComponentContentHotSearch paramComponentContentHotSearch) {}
-  
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    Object localObject = new Intent(this.b.getContext(), PublicAccountBrowser.class);
-    ((Intent)localObject).putExtra("url", this.jdField_a_of_type_Rdc.b);
-    this.b.getContext().startActivity((Intent)localObject);
-    localObject = pay.a(this.jdField_a_of_type_Rdc.a, ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch).innerUniqueID, ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch).hotWordInfo.a.indexOf(this.jdField_a_of_type_Rdc) + 1);
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean)
     {
-      odq.a(null, "CliOper", "", "", "0X80096DD", "0X80096DD", 0, 0, "", "", "", ((JSONObject)localObject).toString(), false);
-      pay.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch.getContext(), ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch), ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch), (int)ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch).mChannelID);
-      localObject = new ArrayList();
-      ReportInfo localReportInfo = new ReportInfo();
-      localReportInfo.mUin = pay.a();
-      localReportInfo.mOperation = 53;
-      localReportInfo.mInnerId = ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch).innerUniqueID;
-      localReportInfo.mHotWord = this.jdField_a_of_type_Rdc.a;
-      ((List)localObject).add(localReportInfo);
-      pkm.a().a((List)localObject);
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = true;
+      quh.a(this.jdField_a_of_type_Quh, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+      quh.a(this.jdField_a_of_type_Quh).notifyDataSetChanged();
       return;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e(ComponentContentHotSearch.a, 1, "onClick, e = " + localException);
-      }
-    }
+    QQToast.a(quh.b(this.jdField_a_of_type_Quh).getContext(), 1, 2131717802, 0).a();
   }
 }
 

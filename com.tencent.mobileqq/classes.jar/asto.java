@@ -1,33 +1,20 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class asto
+final class asto
   implements View.OnClickListener
 {
-  asto(astk paramastk, int paramInt) {}
+  asto(Dialog paramDialog) {}
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Astk.a != null)
-    {
-      if (this.jdField_a_of_type_Int != 1) {
-        break label86;
-      }
-      bcef.b(null, "dc00898", "", "", "0X800A745", "0X800A745", ataw.c(this.jdField_a_of_type_Astk.e()), 0, "", "", "", "");
-      if (this.jdField_a_of_type_Astk.a.d()) {
-        this.jdField_a_of_type_Astk.a.b();
-      }
+    bdla.b(null, "dc00898", "", "", "kuolie", "0X80097DF", 0, 0, "", "", "", "");
+    if ((this.a != null) && (this.a.isShowing())) {
+      this.a.dismiss();
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label86:
-      if (this.jdField_a_of_type_Int == 2) {
-        this.jdField_a_of_type_Astk.a.g();
-      }
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

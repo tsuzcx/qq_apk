@@ -1,18 +1,20 @@
-import android.accounts.AccountManagerCallback;
-import android.accounts.AccountManagerFuture;
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
-import com.tencent.qphone.base.util.QLog;
+import android.annotation.TargetApi;
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusMoveCallback;
+import android.os.Handler;
+import com.tencent.mobileqq.camera.CameraManagerImpl.AFMoveCallbackForward.1;
 
+@TargetApi(16)
 public class aqmo
-  implements AccountManagerCallback<Boolean>
+  implements Camera.AutoFocusMoveCallback
 {
-  public aqmo(ContactSyncManager paramContactSyncManager) {}
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final aqmf jdField_a_of_type_Aqmf;
+  private final aqmk jdField_a_of_type_Aqmk;
   
-  public void run(AccountManagerFuture<Boolean> paramAccountManagerFuture)
+  public void onAutoFocusMoving(boolean paramBoolean, Camera paramCamera)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Manager", 2, "removeSyncAccount | is done = " + paramAccountManagerFuture.isDone());
-    }
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.AFMoveCallbackForward.1(this, paramBoolean));
   }
 }
 

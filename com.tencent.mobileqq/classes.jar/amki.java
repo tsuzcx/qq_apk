@@ -1,100 +1,41 @@
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.widget.Switch;
 
 public class amki
+  extends amgz
 {
-  private List<WeakReference<amks>> a = new ArrayList();
+  public amkg a;
+  public View a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public Switch a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
+  public ImageView d;
+  public TextView d;
+  public TextView e;
   
-  public void a()
+  public amki(View paramView)
   {
-    if (this.a != null) {
-      this.a.clear();
-    }
-  }
-  
-  public void a(amks paramamks)
-  {
-    if (this.a != null)
-    {
-      Iterator localIterator = this.a.iterator();
-      WeakReference localWeakReference;
-      do
-      {
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localWeakReference = (WeakReference)localIterator.next();
-      } while ((localWeakReference == null) || (localWeakReference.get() != paramamks));
-    }
-    return;
-    this.a.add(new WeakReference(paramamks));
-  }
-  
-  public void a(ApolloActionData paramApolloActionData)
-  {
-    if (this.a != null)
-    {
-      int i = 0;
-      while (i < this.a.size())
-      {
-        if (this.a.get(i) != null)
-        {
-          amks localamks = (amks)((WeakReference)this.a.get(i)).get();
-          if (localamks != null) {
-            localamks.a(paramApolloActionData);
-          }
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public void a(Boolean paramBoolean)
-  {
-    if (this.a != null)
-    {
-      int i = 0;
-      while (i < this.a.size())
-      {
-        if (this.a.get(i) != null)
-        {
-          amks localamks = (amks)((WeakReference)this.a.get(i)).get();
-          if (localamks != null) {
-            localamks.a(paramBoolean);
-          }
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public void b()
-  {
-    if (this.a != null)
-    {
-      int i = 0;
-      while (i < this.a.size())
-      {
-        if (this.a.get(i) != null)
-        {
-          amks localamks = (amks)((WeakReference)this.a.get(i)).get();
-          if (localamks != null) {
-            localamks.a();
-          }
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public void b(amks paramamks)
-  {
-    if (this.a != null) {
-      this.a.remove(paramamks);
-    }
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368381));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370784));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131378013));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376910));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378659));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378661));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371646));
+    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131379425));
+    this.jdField_c_of_type_AndroidWidgetImageView.setClickable(false);
+    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)paramView.findViewById(2131374010));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131379527);
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379609));
+    this.e = ((TextView)paramView.findViewById(2131379608));
   }
 }
 

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.chat;
 
-import apka;
-import bftt;
+import aqne;
+import bhcl;
 
 public class MessageNotificationSettingManager$4
   implements Runnable
 {
-  public MessageNotificationSettingManager$4(apka paramapka, String paramString) {}
+  public MessageNotificationSettingManager$4(aqne paramaqne, String paramString) {}
   
   public void run()
   {
     try
     {
-      bftt.a(this.a, false);
+      bhcl.a(this.a, false);
       return;
     }
     catch (Throwable localThrowable) {}

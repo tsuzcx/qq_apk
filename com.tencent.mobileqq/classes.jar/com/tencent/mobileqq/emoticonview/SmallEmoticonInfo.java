@@ -5,13 +5,14 @@ import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.widget.EditText;
-import avsq;
-import bggr;
+import awyr;
+import bhpl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -43,8 +44,8 @@ public class SmallEmoticonInfo
     try
     {
       paramString = BaseApplication.getContext().getResources();
-      this.mDefault = paramString.getDrawable(2130838035);
-      this.mFailed = paramString.getDrawable(2130843781);
+      this.mDefault = paramString.getDrawable(2130838049);
+      this.mFailed = paramString.getDrawable(2130843819);
       return;
     }
     catch (Exception paramString)
@@ -232,7 +233,7 @@ public class SmallEmoticonInfo
   {
     if (this.emoticon == null)
     {
-      bggr.a("emotionType", "emotionActionSend", "1", "", "", "", "", "", "", "");
+      bhpl.a("emotionType", "emotionActionSend", "1", "", "", "", "", "", "", "");
       QLog.e(this.TAG, 1, "fail to send small_emotion.");
       return;
     }
@@ -240,19 +241,19 @@ public class SmallEmoticonInfo
     {
       int i = Integer.parseInt(this.emoticon.eId);
       int j = Integer.parseInt(this.emoticon.epId);
-      ((avsq)paramQQAppInterface.getManager(14)).a(String.valueOf(j), new SmallEmoticonInfo.1(this, j, i, paramEditText, paramQQAppInterface));
+      ((awyr)paramQQAppInterface.getManager(QQManagerFactory.EMOTICON_MANAGER)).a(String.valueOf(j), new SmallEmoticonInfo.1(this, j, i, paramEditText, paramQQAppInterface));
       return;
     }
     catch (NumberFormatException paramQQAppInterface)
     {
-      bggr.a("emotionType", "emotionActionSend", "4", "", "", "", "", "", "", "");
+      bhpl.a("emotionType", "emotionActionSend", "4", "", "", "", "", "", "", "");
       QLog.e(this.TAG, 1, "fail to send small_emotion. id is not Int.");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SmallEmoticonInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,53 +1,119 @@
-import com.tencent.biz.pubaccount.subscript.ReadInJoyArticle;
-import com.tencent.mobileqq.app.BusinessObserver;
-import java.util.ArrayList;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.open.base.http.HttpBaseUtil.HttpStatusException;
+import com.tencent.open.base.http.HttpBaseUtil.NetworkUnavailableException;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.viola.core.ViolaEnvironment;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.SocketTimeoutException;
+import org.apache.http.conn.ConnectTimeoutException;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ucc
-  implements BusinessObserver
+  implements bjlh
 {
-  protected void a(boolean paramBoolean, ArrayList<ReadInJoyArticle> paramArrayList) {}
+  public ucc(ViolaBaseView paramViolaBaseView, boolean paramBoolean) {}
   
-  protected void a(boolean paramBoolean, List<uch> paramList) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a(Exception paramException)
   {
-    switch (paramInt)
+    String str2;
+    String str1;
+    if ((paramException instanceof ConnectTimeoutException))
     {
-    default: 
-      return;
-    case 1: 
-      if (paramObject != null) {
-        try
-        {
-          a(paramBoolean, (ArrayList)paramObject);
-          return;
-        }
-        catch (Exception paramObject)
-        {
-          return;
-        }
-      }
-      a(false, new ArrayList(0));
-      return;
+      str2 = bjlp.e;
+      str1 = ViolaEnvironment.CHANGE_ERROR_CONNECT_TIMEOUT;
     }
-    if (paramObject != null) {
-      try
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(ViolaBaseView.a(), 2, "viola request cgi has error:" + str2 + ",e:" + paramException.getMessage());
+      }
+      if (this.jdField_a_of_type_Boolean) {
+        ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.KEY_CHANGE, str1);
+      }
+      ViolaBaseView.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
+      ViolaBaseView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
+      return;
+      if ((paramException instanceof SocketTimeoutException))
       {
-        a(paramBoolean, (ArrayList)paramObject);
+        str2 = bjlp.f;
+        str1 = ViolaEnvironment.CHANGE_ERROR_CONNECT_TIMEOUT;
+      }
+      else if ((paramException instanceof MalformedURLException))
+      {
+        str2 = "访问url有误!";
+        str1 = ViolaEnvironment.CHANGE_ERROR_URL;
+      }
+      else if ((paramException instanceof HttpBaseUtil.HttpStatusException))
+      {
+        str2 = "Http返回码异常!";
+        str1 = ViolaEnvironment.CHANGE_ERROR_HTTP_CODE;
+      }
+      else if ((paramException instanceof HttpBaseUtil.NetworkUnavailableException))
+      {
+        str2 = bjlp.g;
+        str1 = ViolaEnvironment.CHANGE_ERROR_CONNECT_UNAVALIABLE;
+      }
+      else if ((paramException instanceof JSONException))
+      {
+        str2 = bjlp.b;
+        str1 = ViolaEnvironment.CHANGE_ERROR_DATA;
+      }
+      else if ((paramException instanceof IOException))
+      {
+        str2 = bjlp.a;
+        str1 = ViolaEnvironment.CHANGE_ERROR_IO;
+      }
+      else
+      {
+        str2 = bjlp.d;
+        str1 = ViolaEnvironment.CHANGE_ERROR_UNKNOW;
+      }
+    }
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(ViolaBaseView.a(), 2, "change cgi result:" + paramJSONObject.toString());
+    }
+    try
+    {
+      if ((paramJSONObject.getInt("retCode") == 0) && (paramJSONObject.getString("retMsg").equals("success")) && (!TextUtils.isEmpty(paramJSONObject.getJSONObject("retObj").getString("fileUrl"))))
+      {
+        ViolaBaseView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, paramJSONObject.getJSONObject("retObj").getString("fileUrl"));
+        if (this.jdField_a_of_type_Boolean) {
+          ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.KEY_CHANGE, ViolaEnvironment.CHANGE_END);
+        }
+        ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
+        ViolaBaseView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
         return;
       }
-      catch (Exception paramObject)
-      {
-        return;
+      if (this.jdField_a_of_type_Boolean) {
+        ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.KEY_CHANGE, ViolaEnvironment.CHANGE_ERROR_DATA);
+      }
+      ViolaBaseView.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
+      ViolaBaseView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.KEY_CHANGE, ViolaEnvironment.CHANGE_ERROR_UNKNOW);
+      }
+      ViolaBaseView.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
+      ViolaBaseView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
+      if (QLog.isColorLevel()) {
+        QLog.e(ViolaBaseView.a(), 2, "change cgi exception:" + paramJSONObject.getMessage());
       }
     }
-    a(false, new ArrayList(0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ucc
  * JD-Core Version:    0.7.0.1
  */

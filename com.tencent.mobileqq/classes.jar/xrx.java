@@ -1,12 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class xrx
-  implements DialogInterface.OnDismissListener
+public class xrx
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, wqc>
 {
-  xrx(xru paramxru) {}
+  public xrx(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  {
+    super(paramQQStoryShareGroupProfileActivity);
+  }
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull wqc paramwqc)
+  {
+    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramwqc.jdField_a_of_type_JavaLangString)) {}
+    while ((paramwqc.b) && (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Boolean)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "onGetShareGroupVideos: 是否来自缓存=" + paramwqc.b + " groupId=" + paramQQStoryShareGroupProfileActivity.b + ", event=" + paramwqc.toString());
+    }
+    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramwqc);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wqc.class;
+  }
 }
 
 

@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
 public class ajcf
-  extends asbj
+  implements Comparator<PhoneContact>
 {
-  public ajcf(Conversation paramConversation) {}
+  public ajcf(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
-  protected void onFileTransferEnd(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    this.a.a(8, paramString1, -2147483648);
-  }
-  
-  protected void onFileTransferProgress(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    this.a.a(8, paramString, -2147483648);
+    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
   }
 }
 

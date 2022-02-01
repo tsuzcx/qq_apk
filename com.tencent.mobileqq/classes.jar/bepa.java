@@ -1,30 +1,18 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.EditText;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.together.writetogether.data.OpenDocParam;
 
-class bepa
-  implements View.OnFocusChangeListener
+public final class bepa
+  implements Parcelable.Creator<OpenDocParam>
 {
-  bepa(beow parambeow, benx parambenx, bepc parambepc) {}
-  
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public OpenDocParam a(Parcel paramParcel)
   {
-    QLog.i("xmediaEditor", 1, "mData.position:" + this.jdField_a_of_type_Benx.c + ", text:" + this.jdField_a_of_type_Benx.jdField_a_of_type_JavaLangString + ",onFocusChange:" + paramBoolean);
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Bepc.a.setCursorVisible(true);
-      this.jdField_a_of_type_Beow.a.c(this.jdField_a_of_type_Bepc);
-      this.jdField_a_of_type_Benx.jdField_a_of_type_Boolean = true;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bepc.a.setFocusable(paramBoolean);
-      this.jdField_a_of_type_Bepc.a.setFocusableInTouchMode(paramBoolean);
-      return;
-      this.jdField_a_of_type_Bepc.a.setCursorVisible(false);
-      this.jdField_a_of_type_Beow.a.d(this.jdField_a_of_type_Bepc);
-    }
+    return new OpenDocParam(paramParcel);
+  }
+  
+  public OpenDocParam[] a(int paramInt)
+  {
+    return new OpenDocParam[paramInt];
   }
 }
 

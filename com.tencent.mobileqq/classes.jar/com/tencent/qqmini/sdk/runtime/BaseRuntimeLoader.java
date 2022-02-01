@@ -36,6 +36,7 @@ public abstract class BaseRuntimeLoader
   protected Handler mHandler;
   protected boolean mIsRunning;
   protected MiniAppInfo mMiniAppInfo;
+  protected boolean mNeedReloadPage;
   protected BaseRuntime mRuntime;
   protected BaseRuntimeLoader.OnAppRuntimeLoadListener mRuntimeLoadListener;
   protected boolean runtimeLoadCompleted;
@@ -45,164 +46,167 @@ public abstract class BaseRuntimeLoader
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 44	com/tencent/qqmini/sdk/task/TaskFlowEngine:<init>	()V
+    //   1: invokespecial 45	com/tencent/qqmini/sdk/task/TaskFlowEngine:<init>	()V
     //   4: aload_0
-    //   5: new 46	com/tencent/qqmini/sdk/runtime/AppRuntimeEventCenter
+    //   5: new 47	com/tencent/qqmini/sdk/runtime/AppRuntimeEventCenter
     //   8: dup
-    //   9: invokespecial 47	com/tencent/qqmini/sdk/runtime/AppRuntimeEventCenter:<init>	()V
-    //   12: putfield 49	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mEventCenter	Lcom/tencent/qqmini/sdk/runtime/AppRuntimeEventCenter;
+    //   9: invokespecial 48	com/tencent/qqmini/sdk/runtime/AppRuntimeEventCenter:<init>	()V
+    //   12: putfield 50	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mEventCenter	Lcom/tencent/qqmini/sdk/runtime/AppRuntimeEventCenter;
     //   15: aload_0
-    //   16: new 51	com/tencent/qqmini/sdk/runtime/AppStateManager
+    //   16: new 52	com/tencent/qqmini/sdk/runtime/AppStateManager
     //   19: dup
     //   20: aload_0
-    //   21: invokespecial 54	com/tencent/qqmini/sdk/runtime/AppStateManager:<init>	(Lcom/tencent/qqmini/sdk/runtime/BaseRuntimeLoader;)V
-    //   24: putfield 56	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mAppStateManager	Lcom/tencent/qqmini/sdk/runtime/AppStateManager;
+    //   21: invokespecial 55	com/tencent/qqmini/sdk/runtime/AppStateManager:<init>	(Lcom/tencent/qqmini/sdk/runtime/BaseRuntimeLoader;)V
+    //   24: putfield 57	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mAppStateManager	Lcom/tencent/qqmini/sdk/runtime/AppStateManager;
     //   27: aload_0
     //   28: iconst_0
-    //   29: putfield 58	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mIsRunning	Z
+    //   29: putfield 59	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mIsRunning	Z
     //   32: aload_0
     //   33: iconst_0
-    //   34: putfield 60	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:runtimeLoadCompleted	Z
+    //   34: putfield 61	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mNeedReloadPage	Z
     //   37: aload_0
     //   38: iconst_0
-    //   39: putfield 62	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:isSucceed	Z
+    //   39: putfield 63	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:runtimeLoadCompleted	Z
     //   42: aload_0
     //   43: iconst_0
-    //   44: putfield 64	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:hasTaskFailed	Z
+    //   44: putfield 65	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:isSucceed	Z
     //   47: aload_0
-    //   48: aload_1
-    //   49: putfield 66	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mContext	Landroid/content/Context;
+    //   48: iconst_0
+    //   49: putfield 67	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:hasTaskFailed	Z
     //   52: aload_0
-    //   53: new 68	java/util/HashMap
-    //   56: dup
-    //   57: invokespecial 69	java/util/HashMap:<init>	()V
-    //   60: putfield 71	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mActivatedTasks	Ljava/util/Map;
-    //   63: aload_0
-    //   64: getfield 49	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mEventCenter	Lcom/tencent/qqmini/sdk/runtime/AppRuntimeEventCenter;
-    //   67: aload_0
-    //   68: getfield 56	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mAppStateManager	Lcom/tencent/qqmini/sdk/runtime/AppStateManager;
-    //   71: invokevirtual 75	com/tencent/qqmini/sdk/runtime/AppRuntimeEventCenter:addObserver	(Ljava/util/Observer;)V
-    //   74: aload_0
-    //   75: aload_0
-    //   76: aload_0
-    //   77: getfield 66	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mContext	Landroid/content/Context;
-    //   80: invokevirtual 79	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:createRuntime	(Landroid/content/Context;)Lcom/tencent/qqmini/sdk/launcher/core/BaseRuntime;
-    //   83: putfield 81	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mRuntime	Lcom/tencent/qqmini/sdk/launcher/core/BaseRuntime;
-    //   86: aload_0
-    //   87: getfield 81	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mRuntime	Lcom/tencent/qqmini/sdk/launcher/core/BaseRuntime;
-    //   90: aload_0
-    //   91: invokevirtual 87	com/tencent/qqmini/sdk/launcher/core/BaseRuntime:setRuntimeMsgObserver	(Lcom/tencent/qqmini/sdk/launcher/core/BaseRuntime$RuntimeMsgObserver;)V
-    //   94: new 89	android/os/HandlerThread
-    //   97: dup
-    //   98: ldc 91
-    //   100: iconst_5
-    //   101: invokespecial 94	android/os/HandlerThread:<init>	(Ljava/lang/String;I)V
-    //   104: astore_2
-    //   105: aload_2
-    //   106: astore_1
-    //   107: aload_2
-    //   108: invokevirtual 97	android/os/HandlerThread:start	()V
-    //   111: aload_2
-    //   112: ifnull +31 -> 143
-    //   115: aload_2
-    //   116: invokevirtual 101	android/os/HandlerThread:isAlive	()Z
-    //   119: ifeq +24 -> 143
-    //   122: aload_0
-    //   123: new 103	android/os/Handler
-    //   126: dup
-    //   127: aload_2
-    //   128: invokevirtual 107	android/os/HandlerThread:getLooper	()Landroid/os/Looper;
-    //   131: aload_0
-    //   132: invokespecial 110	android/os/Handler:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
-    //   135: putfield 112	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mHandler	Landroid/os/Handler;
-    //   138: aload_0
-    //   139: invokespecial 115	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:initTask	()V
-    //   142: return
+    //   53: aload_1
+    //   54: putfield 69	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mContext	Landroid/content/Context;
+    //   57: aload_0
+    //   58: new 71	java/util/HashMap
+    //   61: dup
+    //   62: invokespecial 72	java/util/HashMap:<init>	()V
+    //   65: putfield 74	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mActivatedTasks	Ljava/util/Map;
+    //   68: aload_0
+    //   69: getfield 50	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mEventCenter	Lcom/tencent/qqmini/sdk/runtime/AppRuntimeEventCenter;
+    //   72: aload_0
+    //   73: getfield 57	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mAppStateManager	Lcom/tencent/qqmini/sdk/runtime/AppStateManager;
+    //   76: invokevirtual 78	com/tencent/qqmini/sdk/runtime/AppRuntimeEventCenter:addObserver	(Ljava/util/Observer;)V
+    //   79: aload_0
+    //   80: aload_0
+    //   81: aload_0
+    //   82: getfield 69	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mContext	Landroid/content/Context;
+    //   85: invokevirtual 82	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:createRuntime	(Landroid/content/Context;)Lcom/tencent/qqmini/sdk/launcher/core/BaseRuntime;
+    //   88: putfield 84	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mRuntime	Lcom/tencent/qqmini/sdk/launcher/core/BaseRuntime;
+    //   91: aload_0
+    //   92: getfield 84	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mRuntime	Lcom/tencent/qqmini/sdk/launcher/core/BaseRuntime;
+    //   95: aload_0
+    //   96: invokevirtual 90	com/tencent/qqmini/sdk/launcher/core/BaseRuntime:setRuntimeMsgObserver	(Lcom/tencent/qqmini/sdk/launcher/core/BaseRuntime$RuntimeMsgObserver;)V
+    //   99: new 92	android/os/HandlerThread
+    //   102: dup
+    //   103: ldc 94
+    //   105: iconst_5
+    //   106: invokespecial 97	android/os/HandlerThread:<init>	(Ljava/lang/String;I)V
+    //   109: astore_2
+    //   110: aload_2
+    //   111: astore_1
+    //   112: aload_2
+    //   113: invokevirtual 100	android/os/HandlerThread:start	()V
+    //   116: aload_2
+    //   117: ifnull +31 -> 148
+    //   120: aload_2
+    //   121: invokevirtual 104	android/os/HandlerThread:isAlive	()Z
+    //   124: ifeq +24 -> 148
+    //   127: aload_0
+    //   128: new 106	android/os/Handler
+    //   131: dup
+    //   132: aload_2
+    //   133: invokevirtual 110	android/os/HandlerThread:getLooper	()Landroid/os/Looper;
+    //   136: aload_0
+    //   137: invokespecial 113	android/os/Handler:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
+    //   140: putfield 115	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mHandler	Landroid/os/Handler;
     //   143: aload_0
-    //   144: new 103	android/os/Handler
-    //   147: dup
-    //   148: invokestatic 120	android/os/Looper:getMainLooper	()Landroid/os/Looper;
-    //   151: aload_0
-    //   152: invokespecial 110	android/os/Handler:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
-    //   155: putfield 112	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mHandler	Landroid/os/Handler;
-    //   158: goto -20 -> 138
-    //   161: astore_3
-    //   162: aconst_null
-    //   163: astore_2
-    //   164: aload_2
-    //   165: astore_1
-    //   166: ldc 15
-    //   168: ldc 122
-    //   170: aload_3
-    //   171: invokestatic 128	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   174: aload_2
-    //   175: ifnull +29 -> 204
-    //   178: aload_2
-    //   179: invokevirtual 101	android/os/HandlerThread:isAlive	()Z
-    //   182: ifeq +22 -> 204
-    //   185: aload_0
-    //   186: new 103	android/os/Handler
-    //   189: dup
-    //   190: aload_2
-    //   191: invokevirtual 107	android/os/HandlerThread:getLooper	()Landroid/os/Looper;
-    //   194: aload_0
-    //   195: invokespecial 110	android/os/Handler:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
-    //   198: putfield 112	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mHandler	Landroid/os/Handler;
-    //   201: goto -63 -> 138
-    //   204: aload_0
-    //   205: new 103	android/os/Handler
-    //   208: dup
-    //   209: invokestatic 120	android/os/Looper:getMainLooper	()Landroid/os/Looper;
-    //   212: aload_0
-    //   213: invokespecial 110	android/os/Handler:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
-    //   216: putfield 112	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mHandler	Landroid/os/Handler;
-    //   219: goto -81 -> 138
-    //   222: astore_2
-    //   223: aconst_null
-    //   224: astore_1
-    //   225: aload_1
-    //   226: ifnull +28 -> 254
-    //   229: aload_1
-    //   230: invokevirtual 101	android/os/HandlerThread:isAlive	()Z
-    //   233: ifeq +21 -> 254
-    //   236: aload_0
-    //   237: new 103	android/os/Handler
-    //   240: dup
-    //   241: aload_1
-    //   242: invokevirtual 107	android/os/HandlerThread:getLooper	()Landroid/os/Looper;
-    //   245: aload_0
-    //   246: invokespecial 110	android/os/Handler:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
-    //   249: putfield 112	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mHandler	Landroid/os/Handler;
-    //   252: aload_2
-    //   253: athrow
-    //   254: aload_0
-    //   255: new 103	android/os/Handler
-    //   258: dup
-    //   259: invokestatic 120	android/os/Looper:getMainLooper	()Landroid/os/Looper;
-    //   262: aload_0
-    //   263: invokespecial 110	android/os/Handler:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
-    //   266: putfield 112	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mHandler	Landroid/os/Handler;
-    //   269: goto -17 -> 252
-    //   272: astore_2
-    //   273: goto -48 -> 225
-    //   276: astore_3
-    //   277: goto -113 -> 164
+    //   144: invokespecial 118	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:initTask	()V
+    //   147: return
+    //   148: aload_0
+    //   149: new 106	android/os/Handler
+    //   152: dup
+    //   153: invokestatic 123	android/os/Looper:getMainLooper	()Landroid/os/Looper;
+    //   156: aload_0
+    //   157: invokespecial 113	android/os/Handler:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
+    //   160: putfield 115	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mHandler	Landroid/os/Handler;
+    //   163: goto -20 -> 143
+    //   166: astore_3
+    //   167: aconst_null
+    //   168: astore_2
+    //   169: aload_2
+    //   170: astore_1
+    //   171: ldc 15
+    //   173: ldc 125
+    //   175: aload_3
+    //   176: invokestatic 131	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   179: aload_2
+    //   180: ifnull +29 -> 209
+    //   183: aload_2
+    //   184: invokevirtual 104	android/os/HandlerThread:isAlive	()Z
+    //   187: ifeq +22 -> 209
+    //   190: aload_0
+    //   191: new 106	android/os/Handler
+    //   194: dup
+    //   195: aload_2
+    //   196: invokevirtual 110	android/os/HandlerThread:getLooper	()Landroid/os/Looper;
+    //   199: aload_0
+    //   200: invokespecial 113	android/os/Handler:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
+    //   203: putfield 115	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mHandler	Landroid/os/Handler;
+    //   206: goto -63 -> 143
+    //   209: aload_0
+    //   210: new 106	android/os/Handler
+    //   213: dup
+    //   214: invokestatic 123	android/os/Looper:getMainLooper	()Landroid/os/Looper;
+    //   217: aload_0
+    //   218: invokespecial 113	android/os/Handler:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
+    //   221: putfield 115	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mHandler	Landroid/os/Handler;
+    //   224: goto -81 -> 143
+    //   227: astore_2
+    //   228: aconst_null
+    //   229: astore_1
+    //   230: aload_1
+    //   231: ifnull +28 -> 259
+    //   234: aload_1
+    //   235: invokevirtual 104	android/os/HandlerThread:isAlive	()Z
+    //   238: ifeq +21 -> 259
+    //   241: aload_0
+    //   242: new 106	android/os/Handler
+    //   245: dup
+    //   246: aload_1
+    //   247: invokevirtual 110	android/os/HandlerThread:getLooper	()Landroid/os/Looper;
+    //   250: aload_0
+    //   251: invokespecial 113	android/os/Handler:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
+    //   254: putfield 115	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mHandler	Landroid/os/Handler;
+    //   257: aload_2
+    //   258: athrow
+    //   259: aload_0
+    //   260: new 106	android/os/Handler
+    //   263: dup
+    //   264: invokestatic 123	android/os/Looper:getMainLooper	()Landroid/os/Looper;
+    //   267: aload_0
+    //   268: invokespecial 113	android/os/Handler:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
+    //   271: putfield 115	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mHandler	Landroid/os/Handler;
+    //   274: goto -17 -> 257
+    //   277: astore_2
+    //   278: goto -48 -> 230
+    //   281: astore_3
+    //   282: goto -113 -> 169
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	280	0	this	BaseRuntimeLoader
-    //   0	280	1	paramContext	Context
-    //   104	87	2	localHandlerThread	android.os.HandlerThread
-    //   222	31	2	localObject1	Object
-    //   272	1	2	localObject2	Object
-    //   161	10	3	localException1	java.lang.Exception
-    //   276	1	3	localException2	java.lang.Exception
+    //   0	285	0	this	BaseRuntimeLoader
+    //   0	285	1	paramContext	Context
+    //   109	87	2	localHandlerThread	android.os.HandlerThread
+    //   227	31	2	localObject1	Object
+    //   277	1	2	localObject2	Object
+    //   166	10	3	localException1	java.lang.Exception
+    //   281	1	3	localException2	java.lang.Exception
     // Exception table:
     //   from	to	target	type
-    //   94	105	161	java/lang/Exception
-    //   94	105	222	finally
-    //   107	111	272	finally
-    //   166	174	272	finally
-    //   107	111	276	java/lang/Exception
+    //   99	110	166	java/lang/Exception
+    //   99	110	227	finally
+    //   112	116	277	finally
+    //   171	179	277	finally
+    //   112	116	281	java/lang/Exception
   }
   
   private final void initTask()
@@ -246,7 +250,7 @@ public abstract class BaseRuntimeLoader
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 64	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:hasTaskFailed	Z
+    //   3: getfield 67	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:hasTaskFailed	Z
     //   6: istore_1
     //   7: iload_1
     //   8: ifne +6 -> 14
@@ -255,26 +259,26 @@ public abstract class BaseRuntimeLoader
     //   13: return
     //   14: aload_0
     //   15: iconst_0
-    //   16: putfield 64	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:hasTaskFailed	Z
+    //   16: putfield 67	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:hasTaskFailed	Z
     //   19: aload_0
-    //   20: getfield 174	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mAllTasks	Ljava/util/List;
-    //   23: invokeinterface 160 1 0
+    //   20: getfield 177	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:mAllTasks	Ljava/util/List;
+    //   23: invokeinterface 163 1 0
     //   28: astore_2
     //   29: aload_2
-    //   30: invokeinterface 165 1 0
+    //   30: invokeinterface 168 1 0
     //   35: ifeq -24 -> 11
     //   38: aload_2
-    //   39: invokeinterface 169 1 0
-    //   44: checkcast 146	com/tencent/qqmini/sdk/task/BaseTask
+    //   39: invokeinterface 172 1 0
+    //   44: checkcast 149	com/tencent/qqmini/sdk/task/BaseTask
     //   47: astore_3
     //   48: aload_3
-    //   49: invokevirtual 176	com/tencent/qqmini/sdk/task/BaseTask:isSucceed	()Z
+    //   49: invokevirtual 179	com/tencent/qqmini/sdk/task/BaseTask:isSucceed	()Z
     //   52: ifne -23 -> 29
     //   55: aload_3
-    //   56: invokevirtual 179	com/tencent/qqmini/sdk/task/BaseTask:reset	()V
+    //   56: invokevirtual 182	com/tencent/qqmini/sdk/task/BaseTask:reset	()V
     //   59: aload_0
     //   60: aload_3
-    //   61: invokevirtual 182	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:executeTask	(Lcom/tencent/qqmini/sdk/task/BaseTask;)V
+    //   61: invokevirtual 185	com/tencent/qqmini/sdk/runtime/BaseRuntimeLoader:executeTask	(Lcom/tencent/qqmini/sdk/task/BaseTask;)V
     //   64: goto -35 -> 29
     //   67: astore_2
     //   68: aload_0
@@ -373,6 +377,11 @@ public abstract class BaseRuntimeLoader
   protected void markHasTaskFailed(boolean paramBoolean)
   {
     this.hasTaskFailed = paramBoolean;
+  }
+  
+  public boolean needReloadPage()
+  {
+    return this.mNeedReloadPage;
   }
   
   public void notifyRuntimeEvent(int paramInt, Object... paramVarArgs)
@@ -518,6 +527,7 @@ public abstract class BaseRuntimeLoader
     this.mIsRunning = true;
     this.runtimeLoadCompleted = false;
     this.isSucceed = false;
+    this.mNeedReloadPage = false;
     super.start();
     notifyRuntimeEvent(2, new Object[0]);
   }
@@ -575,6 +585,7 @@ public abstract class BaseRuntimeLoader
     if (paramMiniAppInfo == null) {
       return;
     }
+    this.mNeedReloadPage = false;
     paramMiniAppInfo.apkgInfo = this.mMiniAppInfo.apkgInfo;
     this.mMiniAppInfo = paramMiniAppInfo;
     startLoadMiniAppContent(true);

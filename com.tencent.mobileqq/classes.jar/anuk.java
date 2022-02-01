@@ -1,54 +1,103 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.app.GuardManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
-import com.tencent.qphone.base.util.QLog;
 
 public class anuk
-  extends anrh
+  extends anvw
 {
-  public anuk(QQAppInterface paramQQAppInterface, Context paramContext)
+  protected long a;
+  private String a;
+  protected long b;
+  
+  protected void a()
   {
-    super(paramQQAppInterface, paramContext);
+    boolean bool2 = true;
+    super.a();
+    this.jdField_a_of_type_Long += 1L;
+    this.b += 1L;
+    if (this.d >= 3L)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString == null) {
+        break label203;
+      }
+      bool1 = true;
+      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(bool1, new String[] { "com.tencent.mobileqq:tool", "com.tencent.mobileqq:qzone", "com.tencent.mobileqq:mini", this.jdField_a_of_type_JavaLangString });
+      this.d = 0L;
+      if (!bool1) {
+        this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(4, null);
+      }
+    }
+    if ((this.jdField_a_of_type_Long >= 15L) && (!DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.disable_qzone_kill.name())))
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString != null)
+      {
+        bool1 = true;
+        label139:
+        this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.b(bool1, "com.tencent.mobileqq:qzone");
+        bdlr.a().d(bdlr.a());
+        this.jdField_a_of_type_Long = 0L;
+      }
+    }
+    else if (this.b >= GuardManager.d) {
+      if (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString == null) {
+        break label213;
+      }
+    }
+    label203:
+    label213:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.b(bool1, "com.tencent.mobileqq:tool");
+      this.b = 0L;
+      return;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label139;
+    }
   }
   
-  public boolean a()
+  protected void a(String paramString)
   {
-    if (!(this.a instanceof BaseActivity)) {}
-    Object localObject2;
-    do
+    if (!"com.tencent.mobileqq".equals(paramString))
     {
-      do
-      {
-        do
-        {
-          return true;
-          localObject1 = ((BaseActivity)this.a).getIntent();
-        } while (localObject1 == null);
-        localObject2 = ((Intent)localObject1).getExtras();
-      } while (localObject2 == null);
-      localObject1 = ((Bundle)localObject2).getString("localAPKPath");
-      localObject2 = ((Bundle)localObject2).getString("sourceId");
-      if (QLog.isColorLevel()) {
-        QLog.d("WadlAction", 1, "gamecenter installApk, pkgName=" + this.e + ",localAPKPath=" + (String)localObject1 + ",sourceId=" + (String)localObject2);
-      }
-    } while (TextUtils.isEmpty((CharSequence)localObject1));
-    Intent localIntent = FileProvider7Helper.openApkIntent(this.a, (String)localObject1);
-    Object localObject1 = localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = "biz_src_zf_games";
+      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(3, paramString);
+      apzg.a();
     }
-    localIntent.putExtra("big_brother_source_key", (String)localObject1);
-    this.a.startActivity(localIntent);
-    return true;
+  }
+  
+  protected void b(String paramString)
+  {
+    super.b(paramString);
+    QQAppInterface.getBatteryStats().c();
+    anue.a().a(paramString);
+    aqrl.a(true);
+    this.jdField_a_of_type_Long = 0L;
+    this.b = 0L;
+    CoreService.startCoreService(anvu.a().a);
+    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.b();
+  }
+  
+  protected void c(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  protected void d(String paramString)
+  {
+    if ("com.tencent.mobileqq".equals(paramString))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(4, null);
+      apzg.b();
+      aqrl.a(false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anuk
  * JD-Core Version:    0.7.0.1
  */

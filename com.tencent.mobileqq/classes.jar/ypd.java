@@ -1,13 +1,34 @@
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
-
-final class ypd
-  extends ThreadLocal<DateFormat>
+public class ypd
 {
-  protected DateFormat a()
+  public int a;
+  public long a;
+  public boolean a;
+  
+  public boolean equals(Object paramObject)
   {
-    return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (ypd)paramObject;
+      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
+        return false;
+      }
+    } while (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return this.jdField_a_of_type_Int * 31 + (int)(this.jdField_a_of_type_Long ^ this.jdField_a_of_type_Long >>> 32);
+  }
+  
+  public String toString()
+  {
+    return "EditBehavior{hasMusic=" + this.jdField_a_of_type_Boolean + ", musicType=" + this.jdField_a_of_type_Int + ", musicId=" + this.jdField_a_of_type_Long + '}';
   }
 }
 

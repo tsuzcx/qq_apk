@@ -1,26 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame.7.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.troop.TroopMemberInfo;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.lang.reflect.Method;
 
 public class albt
-  extends andd
 {
-  public albt(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
-  
-  protected void onUpdateTroopGetMemberList(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  public static void a(String paramString)
   {
-    if ((!TextUtils.isEmpty(this.a.b)) && (!this.a.b.equals(paramString))) {
+    try
+    {
+      ClassLoader localClassLoader = BaseApplicationImpl.sApplication.getClassLoader();
+      if (localClassLoader == null) {
+        return;
+      }
+      localClassLoader.loadClass("cooperation.qwallet.plugin.QWalletPluginProxyActivity").getMethod("handleNoCatchCrash", new Class[] { String.class }).invoke(null, new Object[] { paramString });
       return;
     }
-    ThreadManager.post(new TroopMemberListInnerFrame.7.1(this, paramList), 5, null, true);
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     albt
  * JD-Core Version:    0.7.0.1
  */

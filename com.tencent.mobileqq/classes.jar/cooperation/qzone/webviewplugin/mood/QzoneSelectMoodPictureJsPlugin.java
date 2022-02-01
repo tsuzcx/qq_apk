@@ -3,7 +3,7 @@ package cooperation.qzone.webviewplugin.mood;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import bgve;
+import bifw;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;

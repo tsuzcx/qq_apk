@@ -1,18 +1,21 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import dov.com.qq.im.ae.view.TabLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqindividuality.QQIndividualityBridgeActivity;
 
 public class bmco
-  implements ViewPager.OnPageChangeListener
+  implements DialogInterface.OnDismissListener
 {
-  public bmco(TabLayout paramTabLayout) {}
+  public bmco(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a(paramInt);
+    if (this.a.a) {
+      QQIndividualityBridgeActivity.b(this.a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQIndividuality", 2, "dialog dismiss: " + this.a.a);
+    }
   }
 }
 

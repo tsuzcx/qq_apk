@@ -1,24 +1,10 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
-import mqq.os.MqqHandler;
-
-public class aims
-  extends andd
+public abstract interface aims
 {
-  public aims(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
+  public abstract void a();
   
-  protected void onTroopManagerFailed(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 == 8) {
-      this.a.a.sendEmptyMessage(1018);
-    }
-  }
+  public abstract void a(int paramInt);
   
-  protected void onTroopManagerSuccess(int paramInt1, int paramInt2, String paramString)
-  {
-    if (paramInt1 == 8) {
-      this.a.a.sendEmptyMessage(1016);
-    }
-  }
+  public abstract void b();
 }
 
 

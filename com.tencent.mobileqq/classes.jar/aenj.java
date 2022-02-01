@@ -1,18 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ScaleGestureDetector;
+import com.tencent.mobileqq.activity.PortraitImageview;
 
 public class aenj
-  implements View.OnClickListener
+  extends aenl
 {
-  public aenj(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aenj(PortraitImageview paramPortraitImageview) {}
   
-  public void onClick(View paramView)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    this.a.g();
-    new bcek(this.a.app).a("dc00899").b("Grp_online").c("mber_list").d("clk_more").a(new String[] { this.a.b }).a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramScaleGestureDetector != null) && (paramScaleGestureDetector.isInProgress())) {
+      try
+      {
+        float f1 = this.a.a();
+        float f2 = paramScaleGestureDetector.getScaleFactor();
+        f1 = Math.min(this.a.b(), Math.max(f1 * f2, 0.1F));
+        this.a.a(f1, paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
+        this.a.invalidate();
+        return true;
+      }
+      catch (IllegalArgumentException paramScaleGestureDetector)
+      {
+        paramScaleGestureDetector.printStackTrace();
+      }
+    }
+    return false;
   }
 }
 

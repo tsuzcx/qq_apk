@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
-import baid;
-import baie;
+import bbos;
+import bbot;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Map;
@@ -9,7 +9,7 @@ import java.util.Map;
 class LightVideoUploadProcessor$5
   implements Runnable
 {
-  LightVideoUploadProcessor$5(LightVideoUploadProcessor paramLightVideoUploadProcessor, baid parambaid) {}
+  LightVideoUploadProcessor$5(LightVideoUploadProcessor paramLightVideoUploadProcessor, bbos parambbos) {}
   
   public void run()
   {

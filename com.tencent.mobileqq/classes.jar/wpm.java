@@ -1,53 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewGroup;
+import com.tencent.qphone.base.util.QLog;
 
-class wpm
-  implements View.OnClickListener
+public class wpm
 {
-  wpm(wpl paramwpl) {}
+  private static String a = wpm.class.getSimpleName();
   
-  public void onClick(View paramView)
+  public static wia a(ViewGroup paramViewGroup, int paramInt)
   {
-    String str1;
-    if ((wpl.a(this.a) != null) && (wpl.a(this.a).a()))
+    ykq.a(a, "create type=%d", Integer.valueOf(paramInt));
+    switch (paramInt)
     {
-      wpl.a(this.a).c();
-      int i;
-      if (wpl.a(this.a) != null)
-      {
-        i = xwa.a(wpl.a(this.a).a);
-        if (!this.a.a()) {
-          break label128;
-        }
+    default: 
+      if (QLog.isDevelopLevel()) {
+        QLog.e(a, 2, "发现一个野生的类型: " + paramInt);
       }
-      label128:
-      for (str1 = "1";; str1 = "2")
-      {
-        xwa.a("home_page", "cancel_reply", i, 0, new String[] { str1, xwa.a(wpl.a(this.a)), "5", wpl.a(this.a) });
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        i = 0;
-        break;
-      }
+      return new wia(paramViewGroup, 2131561732);
+    case 6: 
+      return new wpd(paramViewGroup);
+    case 5: 
+      return new wpl(paramViewGroup);
+    case 7: 
+      return new wpc(paramViewGroup);
+    case 8: 
+      return new wps(paramViewGroup, 2131561732);
+    case 9: 
+      return new wpk(paramViewGroup);
+    case 3: 
+      return new wpe(paramViewGroup);
+    case 4: 
+      return new wpi(paramViewGroup, 4);
+    case 2: 
+      return new wpq(paramViewGroup, 2131561734);
+    case 10: 
+    case 11: 
+      return new wpj(paramViewGroup);
+    case 12: 
+      return new wpn(paramViewGroup);
     }
-    this.a.a();
-    if (this.a.a())
-    {
-      str1 = "2";
-      label154:
-      if (!this.a.b()) {
-        break label199;
-      }
-    }
-    label199:
-    for (String str2 = "2";; str2 = "1")
-    {
-      xwa.a("play_video", "close_reply", 0, 3, new String[] { str1, str2 });
-      break;
-      str1 = "1";
-      break label154;
-    }
+    return new wpf(paramViewGroup);
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import afrn;
+import agiy;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
-import apfm;
+import aqiq;
 import com.tencent.mobileqq.bubble.ChatXListView;
 import com.tencent.qphone.base.util.QLog;
 
@@ -27,12 +27,12 @@ class BaseChatPie$MyOnGestureListener
   public void onLongPress(MotionEvent paramMotionEvent)
   {
     super.onLongPress(paramMotionEvent);
-    ((afrn)this.this$0.getHelper(26)).a();
+    ((agiy)this.this$0.getHelper(26)).a();
   }
   
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if ((BaseChatPie.access$1100() == 1) && (!BaseChatPie.access$1200(this.this$0).booleanValue())) {
+    if ((BaseChatPie.access$1000() == 1) && (!BaseChatPie.access$1100(this.this$0).booleanValue())) {
       if (this.this$0.listView.getCount() != 0) {}
     }
     do
@@ -43,15 +43,15 @@ class BaseChatPie$MyOnGestureListener
         paramMotionEvent1 = new int[2];
         this.this$0.listView.getChildAt(this.this$0.listView.getChildCount() - 1).getLocationOnScreen(paramMotionEvent1);
         int i = paramMotionEvent1[1];
-        if (BaseChatPie.access$3700(this.this$0) == i)
+        if (BaseChatPie.access$3600(this.this$0) == i)
         {
           this.this$0.setVivoSetting(1);
-          BaseChatPie.access$1202(this.this$0, Boolean.valueOf(true));
-          BaseChatPie.access$3702(this.this$0, -1);
+          BaseChatPie.access$1102(this.this$0, Boolean.valueOf(true));
+          BaseChatPie.access$3602(this.this$0, -1);
         }
-        BaseChatPie.access$3702(this.this$0, i);
+        BaseChatPie.access$3602(this.this$0, i);
       }
-      if (BaseChatPie.access$3800(this.this$0)) {
+      if (BaseChatPie.access$3700(this.this$0)) {
         this.this$0.hideAllPanels(true);
       }
     } while (paramFloat2 >= 0.0F);
@@ -71,7 +71,7 @@ class BaseChatPie$MyOnGestureListener
   
   public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    paramMotionEvent = (apfm)this.this$0.getHelper(50);
+    paramMotionEvent = (aqiq)this.this$0.getHelper(50);
     if (paramMotionEvent != null) {
       paramMotionEvent.a(true);
     }

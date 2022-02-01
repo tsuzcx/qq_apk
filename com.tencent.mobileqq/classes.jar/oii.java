@@ -1,25 +1,73 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.NativeAd.report.constant.ReportAction;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONObject;
 
-class oii
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/NativeAd/report/bean/NFBReportObj;", "Lcom/tencent/biz/pubaccount/NativeAd/report/IReportObj;", "()V", "nfbActionID", "", "nfbActionTxt", "nfbRemark", "getKey", "parseAdReportData", "", "adReportData", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData;", "toJsonObject", "Lorg/json/JSONObject;", "valid", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oii
+  extends ohv
 {
-  oii(oif paramoif) {}
+  private String a;
+  private String b;
+  private String c;
   
-  public void onClick(View paramView)
+  @NotNull
+  public String a()
   {
-    Context localContext = paramView.getContext();
-    Intent localIntent = new Intent(localContext, AccountDetailActivity.class);
-    localIntent.putExtra("uin", String.valueOf(3434959637L));
-    localIntent.putExtra("uintype", 1008);
-    localIntent.putExtra("source", 121);
-    localContext.startActivity(localIntent);
-    odq.a(null, "", "0X8009941", "0X8009941", 0, 0, "", "", "", "", false);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return "nfb";
+  }
+  
+  @Nullable
+  public JSONObject a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    ohy.a(localJSONObject, "nfbActionID", this.a);
+    ohy.a(localJSONObject, "nfbActionTxt", this.b);
+    ohy.a(localJSONObject, "nfbRemark", this.c);
+    return localJSONObject;
+  }
+  
+  public void a(@NotNull ufw paramufw)
+  {
+    Intrinsics.checkParameterIsNotNull(paramufw, "adReportData");
+    if (oik.a(paramufw) != ReportAction.NFB) {}
+    String str;
+    for (;;)
+    {
+      return;
+      str = paramufw.a();
+      Bundle localBundle = paramufw.a();
+      if (localBundle == null) {
+        break;
+      }
+      this.a = "101";
+      this.b = "我要吐槽";
+      this.c = localBundle.getString("ad_complain_txt", "");
+      paramufw = localBundle.getString("ad_complain_tel", "");
+      Intrinsics.checkExpressionValueIsNotNull(paramufw, "tel");
+      if (((CharSequence)paramufw).length() > 0) {}
+      for (int i = 1; i != 0; i = 0)
+      {
+        this.c = Intrinsics.stringPlus(this.c, '_' + paramufw);
+        return;
+      }
+    }
+    if (TextUtils.isEmpty((CharSequence)str))
+    {
+      this.a = ("" + paramufw.a());
+      return;
+    }
+    this.a = paramufw.a();
+    this.b = paramufw.b();
+  }
+  
+  public boolean a()
+  {
+    return this.a != null;
   }
 }
 

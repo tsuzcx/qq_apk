@@ -2,8 +2,8 @@ package cooperation.qzone.report.wmd;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import aqru;
-import bbny;
+import arvg;
+import bcus;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.data.QzoneCommonIntent;
 import com.tencent.qphone.base.util.QLog;
@@ -30,11 +30,11 @@ public class WMDReportManager
   
   public WMDReportManager()
   {
-    bbny localbbny = new bbny();
-    localbbny.a();
-    this.reportTimeInternal = (localbbny.d * 1000);
-    this.reportBatchNum = localbbny.c;
-    this.reportId = localbbny.a;
+    bcus localbcus = new bcus();
+    localbcus.a();
+    this.reportTimeInternal = (localbcus.d * 1000);
+    this.reportBatchNum = localbcus.c;
+    this.reportId = localbcus.a;
   }
   
   public static WMDReportManager getInstance()
@@ -112,7 +112,7 @@ public class WMDReportManager
       this.storedMsgs.clear();
       this.lastReportTime = System.currentTimeMillis();
       ??? = new WMDReportReq(this.reportId, (ArrayList)localObject2, null);
-      localObject2 = new QzoneCommonIntent(BaseApplicationImpl.getContext(), aqru.class);
+      localObject2 = new QzoneCommonIntent(BaseApplicationImpl.getContext(), arvg.class);
       ((QzoneCommonIntent)localObject2).setRequest((QZoneCommonRequest)???);
       ((QzoneCommonIntent)localObject2).setObserver(this);
       BaseApplicationImpl.getApplication().getRuntime().startServlet((NewIntent)localObject2);

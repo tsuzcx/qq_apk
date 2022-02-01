@@ -1,15 +1,19 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
+import android.content.DialogInterface.OnClickListener;
 
-public class adly
-  implements DialogInterface.OnDismissListener
+final class adly
+  implements DialogInterface.OnClickListener
 {
-  public adly(GroupManagerActivity paramGroupManagerActivity) {}
+  adly(adnm paramadnm) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    GroupManagerActivity.b(this.a, null);
+    if (this.a != null) {
+      this.a.onCancel();
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

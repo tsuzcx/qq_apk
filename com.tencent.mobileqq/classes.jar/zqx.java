@@ -1,33 +1,16 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
 
-class zqx
-  implements URLDrawableDownListener
+public class zqx
+  extends AnimatorListenerAdapter
 {
-  zqx(zqq paramzqq) {}
+  public zqx(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a(false, "onLoadCancelled");
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    this.a.a(false, "onLoadFailed");
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    this.a.a(false, "onLoadInterrupted");
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    this.a.a(true, "onLoadSuccessed");
-    this.a.b = true;
+    FollowedRecommendBannerView.a(this.a).notifyDataSetChanged();
+    this.a.clearAnimation();
   }
 }
 

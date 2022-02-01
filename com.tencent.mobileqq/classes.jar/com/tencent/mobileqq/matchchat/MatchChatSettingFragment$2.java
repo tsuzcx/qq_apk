@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.matchchat;
 
-import arhi;
-import arnn;
-import avod;
-import azwy;
-import bcef;
+import aslo;
+import asrt;
+import awui;
+import bbdh;
+import bdla;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
@@ -16,11 +17,11 @@ class MatchChatSettingFragment$2
   
   public void run()
   {
-    bcef.b(MatchChatSettingFragment.a(this.this$0), "dc00898", "", "", "0X800A699", "0X800A699", 0, 0, "", "", "", "");
-    avod.a(MatchChatSettingFragment.a(this.this$0));
-    arnn.b(MatchChatSettingFragment.a(this.this$0));
-    ((arhi)MatchChatSettingFragment.a(this.this$0).getManager(264)).d();
-    ((azwy)MatchChatSettingFragment.a(this.this$0).getManager(285)).a();
+    bdla.b(MatchChatSettingFragment.a(this.this$0), "dc00898", "", "", "0X800A699", "0X800A699", 0, 0, "", "", "", "");
+    awui.a(MatchChatSettingFragment.a(this.this$0));
+    asrt.b(MatchChatSettingFragment.a(this.this$0));
+    ((aslo)MatchChatSettingFragment.a(this.this$0).getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).d();
+    ((bbdh)MatchChatSettingFragment.a(this.this$0).getManager(QQManagerFactory.ICE_BREAKING_MNG)).a();
     ThreadManager.getUIHandler().post(new MatchChatSettingFragment.2.1(this));
   }
 }

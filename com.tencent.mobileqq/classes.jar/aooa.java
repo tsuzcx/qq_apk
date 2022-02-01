@@ -1,105 +1,166 @@
-import android.text.TextUtils;
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.ConversationInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class aooa
-  implements aonz
+  extends acmd
 {
-  private aooa(aonx paramaonx) {}
-  
-  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  public aooa(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade, acne paramacne)
   {
-    paramVariantWrapper = null;
-    String str = null;
-    Object localObject = null;
-    long l;
-    if ("AttachEvent".equals(paramString))
+    super(paramQQAppInterface, paramQQMessageFacade, paramacne);
+  }
+  
+  public int a(int paramInt, ConversationInfo paramConversationInfo)
+  {
+    if (acmw.a(paramConversationInfo) > 0) {
+      return 0;
+    }
+    return super.a(paramInt, paramConversationInfo);
+  }
+  
+  protected String a(String paramString1, String paramString2)
+  {
+    if (this.a.getCurrentAccountUin().equals(paramString1)) {}
+    String str;
+    for (paramString2 = anvx.a(2131704919);; paramString2 = ContactUtils.getTroopMemberName(this.a, paramString2, paramString1))
     {
-      if ((paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 2) || (!paramArrayOfVariantWrapper[0].IsString()) || (!paramArrayOfVariantWrapper[1].IsFunction())) {
-        return false;
-      }
-      str = paramArrayOfVariantWrapper[0].GetString();
-      l = this.a.a(paramArrayOfVariantWrapper[1].Copy());
-      if ("Motion".equals(str))
+      if ((paramString2 != null) && (paramString2.length() != 0))
       {
-        if (!aonw.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.SENSORS")) {
-          return false;
-        }
-        paramString = new aoob(this, l);
+        str = paramString2;
+        if (!paramString2.equals(paramString1)) {}
       }
-      while ((paramString != null) && (!"Position".equals(str)))
+      else
       {
-        this.a.jdField_a_of_type_Aopa.a(paramString, l);
-        return true;
-        if ("Orientation".equals(str))
-        {
-          if (!aonw.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.SENSORS")) {
-            return false;
-          }
-          paramString = new aooc(this, l);
-        }
-        else
-        {
-          if ("Position".equals(str))
-          {
-            if (!aonw.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.POSITION")) {
-              return false;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.i("ArkAppDeviceModule", 2, String.format("Position.app.%s", new Object[] { this.a.jdField_a_of_type_JavaLangString }));
-            }
-            paramArrayOfVariantWrapper = aorg.a();
-            paramString = paramVariantWrapper;
-            if (paramArrayOfVariantWrapper != null) {
-              paramString = paramArrayOfVariantWrapper.getCurrentAccountUin();
-            }
-            aopl.a(paramString, this.a.jdField_a_of_type_JavaLangString, "ark_authority_api_location", BaseApplicationImpl.getContext().getString(2131690115), new aood(this, l));
-            return true;
-          }
-          paramString = localObject;
-          if ("ConnectionTypeChange".equals(str))
-          {
-            if (!aonw.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.CONNECTION_TYPE")) {
-              return false;
-            }
-            paramString = new aoof(this, l);
-          }
-        }
+        str = this.a.getHotChatMng(true).a(true).a(paramString1);
       }
-      return false;
+      if (str != null) {
+        break;
+      }
+      return paramString1;
     }
-    if ("DetachEvent".equals(paramString))
+    return str;
+  }
+  
+  public void a(MessageRecord paramMessageRecord, EntityManager paramEntityManager, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, acmb paramacmb)
+  {
+    if (paramMessageRecord == null) {
+      return;
+    }
+    Map localMap2 = paramacmb.jdField_a_of_type_JavaUtilMap;
+    Map localMap1 = paramacmb.d;
+    Object localObject = paramacmb.jdField_a_of_type_Aoxz;
+    String str1 = paramMessageRecord.frienduin;
+    long l = paramMessageRecord.time;
+    if (paramMessageRecord.time == 0L) {
+      paramMessageRecord.time = bcrg.a();
+    }
+    if (paramMessageRecord.msgseq == 0L) {
+      paramMessageRecord.msgseq = ((int)paramMessageRecord.time);
+    }
+    localObject = (RecentUser)((aoxz)localObject).findRecentUserByUin(str1, 1);
+    if (localMap2.containsKey(acnh.a(((RecentUser)localObject).uin, ((RecentUser)localObject).getType()))) {
+      localObject = (RecentUser)localMap2.get(acnh.a(((RecentUser)localObject).uin, ((RecentUser)localObject).getType()));
+    }
+    for (;;)
     {
-      if ((paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1) || (!paramArrayOfVariantWrapper[0].IsString()) || (TextUtils.isEmpty(paramArrayOfVariantWrapper[0].GetString()))) {
-        return false;
+      int i;
+      String str2;
+      if (!acnh.h(paramMessageRecord.msgtype))
+      {
+        i = 1;
+        int j = i;
+        if (paramMessageRecord.isLongMsg())
+        {
+          j = i;
+          if (this.a.getMsgCache().a(paramMessageRecord))
+          {
+            i = 0;
+            j = i;
+            if (QLog.isColorLevel())
+            {
+              QLog.i("Q.msg.BaseMessageManager", 2, "addMessageRecord, long msg uncompleted");
+              j = i;
+            }
+          }
+        }
+        if (j != 0)
+        {
+          str2 = acnh.a(str1, 1);
+          ((RecentUser)localObject).uin = str1;
+          ((RecentUser)localObject).setType(1);
+          boolean bool = true;
+          if ((paramMessageRecord instanceof MessageForUniteGrayTip)) {
+            bool = ((MessageForUniteGrayTip)paramMessageRecord).tipParam.d;
+          }
+          if ((l > ((RecentUser)localObject).lastmsgtime) && (bool)) {
+            ((RecentUser)localObject).lastmsgtime = l;
+          }
+          localMap2.put(str2, localObject);
+          localObject = (MessageRecord)localMap1.get(str2);
+          if ((localObject != null) && (!paramMessageRecord.isSendFromLocal())) {
+            break label361;
+          }
+          localMap1.put(str2, paramMessageRecord);
+        }
       }
-      this.a.jdField_a_of_type_Aopa.a(paramArrayOfVariantWrapper[0].GetString());
-      return true;
+      for (;;)
+      {
+        if (paramMessageRecord.isSendFromLocal())
+        {
+          paramMessageRecord.extraflag = 32772;
+          paramMessageRecord.sendFailCode = 0;
+        }
+        super.a(paramMessageRecord, paramEntityManager, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramacmb);
+        return;
+        i = 0;
+        break;
+        label361:
+        if (a(paramMessageRecord) >= a((MessageRecord)localObject)) {
+          localMap1.put(str2, paramMessageRecord);
+        }
+      }
     }
-    if ("GetCurrentPosition".equals(paramString))
+  }
+  
+  protected String b(String paramString1, String paramString2)
+  {
+    return a(paramString1, paramString2);
+  }
+  
+  public void b(QQMessageFacade.Message paramMessage)
+  {
+    paramMessage.nickName = a(paramMessage.senderuin, paramMessage.frienduin);
+    Object localObject;
+    if ((paramMessage.nickName == null) || (paramMessage.nickName.equals(paramMessage.senderuin))) {
+      localObject = paramMessage.nickName;
+    }
+    try
     {
-      if (!aonw.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.POSITION")) {
-        return false;
-      }
-      if ((paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1) || (!paramArrayOfVariantWrapper[0].IsFunction())) {
-        return false;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("ArkAppDeviceModule", 2, String.format("GetCurrentPosition.app.%s", new Object[] { this.a.jdField_a_of_type_JavaLangString }));
-      }
-      l = this.a.a(paramArrayOfVariantWrapper[0].Copy());
-      paramArrayOfVariantWrapper = aorg.a();
-      paramString = str;
-      if (paramArrayOfVariantWrapper != null) {
-        paramString = paramArrayOfVariantWrapper.getCurrentAccountUin();
-      }
-      aopl.a(paramString, this.a.jdField_a_of_type_JavaLangString, "ark_authority_api_location", BaseApplicationImpl.getContext().getString(2131690115), new aoog(this, l));
-      return true;
+      String str = paramMessage.getExtInfoFromExtStr("hotchat_nick");
+      localObject = str;
     }
-    return false;
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
+    if ((localObject != null) && (((String)localObject).length() > 0)) {
+      paramMessage.nickName = ((String)localObject);
+    }
+    if (QLog.isDevelopLevel()) {
+      axql.a("PttShow", "processNickName", new Object[] { paramMessage.senderuin, paramMessage.nickName });
+    }
   }
 }
 

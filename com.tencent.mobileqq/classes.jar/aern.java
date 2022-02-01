@@ -1,18 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.qphone.base.util.QLog;
 
 public class aern
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public aern(TroopTransferActivity paramTroopTransferActivity) {}
+  public aern(QQSettingMe paramQQSettingMe) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a.setText("");
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSettingRedesign", 2, "UpdateVipInfoReceiver: intent=" + paramIntent.toString());
+    }
+    if ((paramIntent != null) && (paramIntent.getBooleanExtra("key_pay_action_result", false)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSettingRedesign", 2, "UpdateVipInfoReceiver: need update ");
+      }
+      this.a.w();
+    }
   }
 }
 

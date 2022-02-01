@@ -1,17 +1,6 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-
-public class axfm
-  extends axdv
+public abstract interface axfm
 {
-  public ImageView e;
-  public ImageView f;
-  public TextView g;
-  
-  public axfm(axfl paramaxfl)
-  {
-    super(paramaxfl);
-  }
+  public abstract boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
 }
 
 

@@ -65,7 +65,18 @@ public abstract class ICursor
       this.mSelector = ("bucket_id='" + paramString + "'");
     }
     init();
-    this.mCursor = createCursor(paramContext.getApplicationContext());
+    try
+    {
+      this.mCursor = createCursor(paramContext.getApplicationContext());
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("MediaQuery", 2, "createCursor error:" + paramContext.getMessage());
+      }
+      this.mCursor = null;
+    }
   }
   
   void close()

@@ -1,183 +1,127 @@
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
-import com.tencent.mobileqq.nearby.redtouch.RedTouchItemExtMsg;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
-import org.json.JSONObject;
-import tencent.im.confess.common.RedpointInfo;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.ark.open.ArkAppCacheMgr;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ark.API.ArkAppModuleBase.APIAuthority.1;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import java.util.ArrayList;
 
 public class apsm
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public String c = "";
-  private String d;
-  private String e;
-  
-  public apsm(String paramString)
+  public static int a(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.e = paramString;
+    return BaseApplicationImpl.getApplication().getSharedPreferences("sp_ark_authority", 0).getInt("key_ark_authority_info" + "_" + paramString1 + "_" + paramString2 + "_" + paramString3, 0);
   }
   
-  public void a()
+  public static ArrayList<String> a(String paramString)
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    label171:
+    int i = 0;
+    ArrayList localArrayList = new ArrayList();
+    paramString = BaseApplicationImpl.getApplication().getSharedPreferences("sp_ark_authority", 0).getString("key_ark_authority_app_list_" + paramString, "");
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = paramString.split(";");
+      if ((paramString != null) && (paramString.length > 0))
+      {
+        int j = paramString.length;
+        while (i < j)
+        {
+          CharSequence localCharSequence = paramString[i];
+          if (!TextUtils.isEmpty(localCharSequence)) {
+            localArrayList.add(localCharSequence);
+          }
+          i += 1;
+        }
+      }
+    }
+    return localArrayList;
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return;
+    }
+    ArrayList localArrayList = a(paramString2);
+    StringBuilder localStringBuilder = new StringBuilder("");
+    int j = 0;
+    int n = 0;
+    int m;
+    for (int i = 0; j < localArrayList.size(); i = m)
+    {
+      String str = (String)localArrayList.get(j);
+      int k = n;
+      m = i;
+      if (!TextUtils.isEmpty(str))
+      {
+        if (n > 0) {
+          localStringBuilder.append(";");
+        }
+        localStringBuilder.append(str);
+        n += 1;
+        k = n;
+        m = i;
+        if (str.equals(paramString1))
+        {
+          m = 1;
+          k = n;
+        }
+      }
+      j += 1;
+      n = k;
+    }
+    if (i == 0)
+    {
+      if (n > 0) {
+        localStringBuilder.append(";");
+      }
+      localStringBuilder.append(paramString1);
+    }
+    BaseApplicationImpl.getApplication().getSharedPreferences("sp_ark_authority", 0).edit().putString("key_ark_authority_app_list_" + paramString2, localStringBuilder.toString()).commit();
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    BaseApplicationImpl.getApplication().getSharedPreferences("sp_ark_authority", 0).edit().putInt("key_ark_authority_info" + "_" + paramString1 + "_" + paramString2 + "_" + paramString3, paramInt).commit();
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, apsq paramapsq)
+  {
+    Object localObject2 = ArkAppCacheMgr.getApplicationDesc(paramString2);
+    Object localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject1 = paramString2;
+    }
+    localObject2 = BaseApplicationImpl.getApplication().getSharedPreferences("sp_ark_authority", 0);
+    String str = "key_ark_authority_show_dialog" + "_" + (String)localObject1 + "_" + paramString3 + "_" + paramString1;
+    boolean bool = ((SharedPreferences)localObject2).getBoolean(str, false);
+    if (TextUtils.isEmpty(paramString1)) {
+      if (paramapsq != null) {
+        paramapsq.a();
+      }
+    }
     do
     {
-      return;
-      this.jdField_a_of_type_Boolean = true;
-      this.d = bfyz.a(this.e, "confess_config_sp").getString("key_frd_rec_confess_info", "");
-      if (!TextUtils.isEmpty(this.d)) {}
-      try
+      do
       {
-        JSONObject localJSONObject = new JSONObject(this.d);
-        if (localJSONObject.has("nUnReadCnt")) {
-          this.jdField_a_of_type_Int = localJSONObject.getInt("nUnReadCnt");
-        }
-        if (localJSONObject.has("lLastMsgTime")) {
-          this.jdField_a_of_type_Long = localJSONObject.getLong("lLastMsgTime");
-        }
-        if (localJSONObject.has("nTopicId")) {
-          this.jdField_b_of_type_Int = localJSONObject.getInt("nTopicId");
-        }
-        if (localJSONObject.has("strTopicDesc")) {
-          this.c = localJSONObject.getString("strTopicDesc");
-        }
-        if (localJSONObject.has("strFrdUin")) {
-          this.jdField_a_of_type_JavaLangString = localJSONObject.getString("strFrdUin");
-        }
-        if (localJSONObject.has("strFrdNick")) {
-          this.jdField_b_of_type_JavaLangString = localJSONObject.getString("strFrdNick");
-        }
-      }
-      catch (Exception localException)
-      {
-        break label171;
-      }
-    } while (!QLog.isDevelopLevel());
-    QLog.i("FrdConfessInfo", 4, String.format(Locale.getDefault(), "init strJsonStr: %s", new Object[] { this.d }));
-  }
-  
-  public void a(RedTouchItem paramRedTouchItem)
-  {
-    if (paramRedTouchItem == null) {
-      return;
-    }
-    int i;
-    Object localObject;
-    if (paramRedTouchItem.unReadFlag)
-    {
-      i = paramRedTouchItem.count;
-      this.jdField_a_of_type_Int = i;
-      this.jdField_a_of_type_Long = paramRedTouchItem.lastRecvTime;
-      if ((paramRedTouchItem.extMsgs == null) || (paramRedTouchItem.extMsgs.size() <= 0)) {
-        break label232;
-      }
-      localObject = null;
-      Iterator localIterator = paramRedTouchItem.extMsgs.iterator();
-      i = 0;
-      paramRedTouchItem = (RedTouchItem)localObject;
-      label67:
-      if (!localIterator.hasNext()) {
-        break label111;
-      }
-      localObject = (RedTouchItemExtMsg)localIterator.next();
-      if (((RedTouchItemExtMsg)localObject).time <= i) {
-        break label258;
-      }
-      i = ((RedTouchItemExtMsg)localObject).time;
-      paramRedTouchItem = (RedTouchItem)localObject;
-    }
-    label258:
-    for (;;)
-    {
-      break label67;
-      i = 0;
-      break;
-      try
-      {
-        label111:
-        localObject = new RedpointInfo();
-        ((RedpointInfo)localObject).mergeFrom(paramRedTouchItem.bytesData);
-        if (((RedpointInfo)localObject).data.has())
+        return;
+        if ((!bool) && (apsl.a))
         {
-          paramRedTouchItem = new JSONObject(((RedpointInfo)localObject).data.get());
-          if (paramRedTouchItem.has("topicId")) {
-            this.jdField_b_of_type_Int = paramRedTouchItem.getInt("topicId");
-          }
-          if (paramRedTouchItem.has("topicDesc")) {
-            this.c = paramRedTouchItem.getString("topicDesc");
-          }
-          if (paramRedTouchItem.has("frdUin")) {
-            this.jdField_a_of_type_JavaLangString = String.valueOf(paramRedTouchItem.getLong("frdUin"));
-          }
-          if (paramRedTouchItem.has("frdNick")) {
-            this.jdField_b_of_type_JavaLangString = paramRedTouchItem.getString("frdNick");
-          }
+          ArkAppCenter.a().postToMainThread(new ArkAppModuleBase.APIAuthority.1((String)localObject1, paramString4, paramString2, paramapsq, paramString3, paramString1));
+          ((SharedPreferences)localObject2).edit().putBoolean(str, true).apply();
+          a((String)localObject1, paramString1);
+          return;
         }
-      }
-      catch (Exception paramRedTouchItem)
-      {
-        for (;;)
-        {
-          label232:
-          if (QLog.isColorLevel()) {
-            QLog.e("FrdConfessInfo", 2, paramRedTouchItem, new Object[0]);
-          }
+        if (1 != a((String)localObject1, paramString3, paramString1)) {
+          break;
         }
-      }
-      b();
+      } while (paramapsq == null);
+      paramapsq.a();
       return;
-    }
-  }
-  
-  public boolean a()
-  {
-    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.c));
-  }
-  
-  public void b()
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("nUnReadCnt", this.jdField_a_of_type_Int);
-      localJSONObject.put("lLastMsgTime", this.jdField_a_of_type_Long);
-      localJSONObject.put("nTopicId", this.jdField_b_of_type_Int);
-      localJSONObject.put("strTopicDesc", this.c);
-      localJSONObject.put("strFrdUin", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("strFrdNick", this.jdField_b_of_type_JavaLangString);
-      this.d = localJSONObject.toString();
-      bfyz.a(this.e, "confess_config_sp").edit().putString("key_frd_rec_confess_info", this.d).apply();
-      label112:
-      if (QLog.isColorLevel()) {
-        QLog.e("FrdConfessInfo", 2, String.format(Locale.getDefault(), "updateJsonStr str: %s", new Object[] { this.d }));
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label112;
-    }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("{isInit = ").append(this.jdField_a_of_type_Boolean).append(", nUnReadCnt = ").append(this.jdField_a_of_type_Int).append(", lLastMsgTime = ").append(this.jdField_a_of_type_Long).append(", nTopicId = ").append(this.jdField_b_of_type_Int).append(", strTopicDesc = ").append(this.c).append(", strFrdUin = ").append(this.jdField_a_of_type_JavaLangString).append(", strFrdNick = ").append(this.jdField_b_of_type_JavaLangString).append("}");
-    return localStringBuilder.toString();
+    } while (paramapsq == null);
+    paramapsq.b();
   }
 }
 

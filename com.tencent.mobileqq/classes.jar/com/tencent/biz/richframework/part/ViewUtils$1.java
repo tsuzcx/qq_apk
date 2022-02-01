@@ -4,14 +4,14 @@ import android.graphics.Bitmap;
 import android.view.View;
 import com.tencent.mobileqq.utils.StackBlur;
 import com.tencent.qphone.base.util.QLog;
-import yzh;
+import zom;
 
 public final class ViewUtils$1
   implements Runnable
 {
   public void run()
   {
-    Bitmap localBitmap = yzh.a(this.jdField_a_of_type_AndroidViewView.getResources(), this.jdField_a_of_type_Int, Integer.valueOf(this.jdField_a_of_type_AndroidViewView.getWidth()), Integer.valueOf(this.jdField_a_of_type_AndroidViewView.getHeight()));
+    Bitmap localBitmap = zom.a(this.jdField_a_of_type_AndroidViewView.getResources(), this.jdField_a_of_type_Int, Integer.valueOf(this.jdField_a_of_type_AndroidViewView.getWidth()), Integer.valueOf(this.jdField_a_of_type_AndroidViewView.getHeight()));
     QLog.d("ViewUtils", 2, " qrWhiteBitmap = " + localBitmap);
     if (localBitmap != null) {}
     try

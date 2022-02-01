@@ -1,21 +1,15 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
+import java.util.Map;
 
-class qqb
-  implements View.OnTouchListener
+public class qqb
+  implements rbx
 {
-  qqb(qpw paramqpw, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2) {}
+  public qqb(ProteusItemView paramProteusItemView, pnv parampnv) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(View paramView, Map<String, Object> paramMap)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
-      this.b.setDuplicateParentStateEnabled(true);
-    }
-    return false;
+    this.jdField_a_of_type_Pnv.c();
   }
 }
 

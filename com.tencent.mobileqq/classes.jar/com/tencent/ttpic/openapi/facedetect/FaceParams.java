@@ -1,7 +1,7 @@
 package com.tencent.ttpic.openapi.facedetect;
 
 import android.graphics.PointF;
-import com.tencent.faceBeauty.FaceParam;
+import com.tencent.facebeauty.FaceParam;
 import java.util.List;
 
 public class FaceParams

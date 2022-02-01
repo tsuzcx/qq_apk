@@ -1,50 +1,95 @@
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import android.text.TextUtils;
+import javax.annotation.Nullable;
+import org.json.JSONObject;
 
 public class bfup
-  implements ThreadExcutor.IThreadListener
+  implements vzk
 {
-  private int jdField_a_of_type_Int;
-  ConcurrentLinkedQueue<Runnable> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-  private int b;
-  private int c;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
   
-  public bfup(int paramInt1, int paramInt2)
+  public bfup()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.c = paramInt2;
-    this.b = 0;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
   }
   
-  public void a()
+  @Nullable
+  public JSONObject a(int paramInt)
   {
-    if (this.b < this.jdField_a_of_type_Int)
+    int j = 1;
+    int i = 1;
+    JSONObject localJSONObject = new JSONObject();
+    switch (paramInt)
     {
-      Runnable localRunnable = (Runnable)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
-      if (localRunnable != null)
+    default: 
+      paramInt = i;
+    }
+    while (paramInt != 0)
+    {
+      return null;
+      paramInt = i;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
       {
-        this.b += 1;
-        ThreadManager.excute(localRunnable, this.c, this, false);
+        localJSONObject.put("raw_url", this.jdField_a_of_type_JavaLangString);
+        paramInt = 0;
+        continue;
+        paramInt = j;
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+        {
+          localJSONObject.put("raw_url", this.jdField_a_of_type_JavaLangString);
+          paramInt = 0;
+        }
+        if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+        {
+          localJSONObject.put("fake_url", this.jdField_b_of_type_JavaLangString);
+          paramInt = 0;
+        }
+      }
+    }
+    return localJSONObject;
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("raw_url");
+    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("fake_url");
+  }
+  
+  public void copy(Object paramObject)
+  {
+    if ((paramObject instanceof bfup))
+    {
+      paramObject = (bfup)paramObject;
+      if (!TextUtils.isEmpty(paramObject.jdField_a_of_type_JavaLangString)) {
+        this.jdField_a_of_type_JavaLangString = paramObject.jdField_a_of_type_JavaLangString;
+      }
+      if (!TextUtils.isEmpty(paramObject.jdField_b_of_type_JavaLangString)) {
+        this.jdField_b_of_type_JavaLangString = paramObject.jdField_b_of_type_JavaLangString;
+      }
+      if (paramObject.jdField_a_of_type_Int != -1) {
+        this.jdField_a_of_type_Int = paramObject.jdField_a_of_type_Int;
+      }
+      if (paramObject.jdField_b_of_type_Int != -1) {
+        this.jdField_b_of_type_Int = paramObject.jdField_b_of_type_Int;
       }
     }
   }
   
-  public void a(Runnable paramRunnable)
+  public boolean equals(Object paramObject)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.offer(paramRunnable);
-    a();
+    if ((paramObject instanceof bfup))
+    {
+      paramObject = (bfup)paramObject;
+      if ((this.jdField_b_of_type_JavaLangString != null) && (paramObject.jdField_b_of_type_JavaLangString != null)) {
+        return TextUtils.equals(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString);
+      }
+      return TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString);
+    }
+    return false;
   }
-  
-  public void onAdded() {}
-  
-  public void onPostRun()
-  {
-    this.b -= 1;
-    a();
-  }
-  
-  public void onPreRun() {}
 }
 
 

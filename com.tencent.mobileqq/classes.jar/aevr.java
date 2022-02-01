@@ -1,14 +1,20 @@
-import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
-import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment.5.1;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.SearchMightKnowFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aevr
-  implements aewj
+  implements View.OnTouchListener
 {
-  public aevr(ReminderListFragment.5.1 param1) {}
+  public aevr(SearchMightKnowFragment paramSearchMightKnowFragment) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ReminderListFragment.a(this.a.a.a, amtj.a(2131712497));
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

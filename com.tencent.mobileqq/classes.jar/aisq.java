@@ -1,28 +1,25 @@
-import com.tencent.mobileqq.activity.contacts.troop.TroopFragment;
-import java.util.Map;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
 
 public class aisq
-  extends amsu
+  implements View.OnTouchListener
 {
-  public aisq(TroopFragment paramTroopFragment) {}
+  public aisq(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramBoolean1) {
-      this.a.h();
+    paramMotionEvent = (InputMethodManager)this.a.getSystemService("input_method");
+    if (paramMotionEvent.isActive()) {
+      paramMotionEvent.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
     }
-  }
-  
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
-  {
-    this.a.h();
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.h();
-    }
+    this.a.a.clearFocus();
+    paramView = this.a.a.getText().toString();
+    this.a.a.setSelection(paramView.length());
+    return false;
   }
 }
 

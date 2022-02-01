@@ -1,47 +1,18 @@
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
 
-public class apqp
-  implements apri
+public abstract interface apqp
 {
-  public apqp(LocationSelectActivity paramLocationSelectActivity) {}
+  public abstract apov a();
   
-  public int a()
-  {
-    return this.a.jdField_a_of_type_Int;
-  }
+  public abstract apoz a();
   
-  public int a(int paramInt)
-  {
-    if (this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt] != null) {
-      return ((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt]).size();
-    }
-    return 0;
-  }
+  public abstract ayyc a();
   
-  public String a(int paramInt1, int paramInt2)
-  {
-    try
-    {
-      if (this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt1] != null)
-      {
-        if (((BaseAddress)((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt1]).get(paramInt2)).code.equals("0")) {
-          return "----";
-        }
-        String str = ((BaseAddress)((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt1]).get(paramInt2)).name;
-        return str;
-      }
-    }
-    catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("LocationSelectActivity", 2, "", localIndexOutOfBoundsException);
-      }
-    }
-    return "";
-  }
+  public abstract ARCommonConfigInfo a();
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

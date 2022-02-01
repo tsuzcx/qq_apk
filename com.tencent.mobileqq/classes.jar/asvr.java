@@ -1,19 +1,31 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.extendfriend.wiget.horseRaceLamp.HorseRaceLampVew;
+import com.tencent.mobileqq.extendfriend.wiget.horseRaceLamp.HorseRaceLampVew.1;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.app.AppRuntime;
 
-class asvr
+public class asvr
   implements View.OnClickListener
 {
-  asvr(asvn paramasvn, String paramString) {}
+  public asvr(HorseRaceLampVew.1 param1) {}
   
   public void onClick(View paramView)
   {
-    bfyi.a(this.jdField_a_of_type_JavaLangString, BaseApplicationImpl.getApplication().getRuntime().getAccount(), this.jdField_a_of_type_Asvn.a);
-    aqgi.c().c.a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (!this.a.this$0.b) {
+      QLog.e("HorseRaceLampVew + horserace", 2, "CLICK WITH TOUCH SCROLL THROW IT");
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Object localObject = paramView.getTag();
+      if ((localObject != null) && ((localObject instanceof asvu)) && (HorseRaceLampVew.a(this.a.this$0) != null))
+      {
+        localObject = (asvu)localObject;
+        HorseRaceLampVew.a(this.a.this$0).a(((asvu)localObject).a);
+      }
+    }
   }
 }
 

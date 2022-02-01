@@ -1,81 +1,57 @@
-import android.graphics.drawable.ColorDrawable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ocr.view.CommonMenuPopupView.1;
-import com.tencent.widget.BubblePopupWindow;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.nearby.NearbyJsInterface;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class axoq
+  extends BroadcastReceiver
 {
-  public static int a;
-  public static int b = 2;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  bgaz jdField_a_of_type_Bgaz;
-  private bjoy jdField_a_of_type_Bjoy;
-  private BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+  public axoq(NearbyJsInterface paramNearbyJsInterface) {}
   
-  static
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    jdField_a_of_type_Int = 1;
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b())) {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a();
-    }
-  }
-  
-  public void a(int paramInt1, String paramString, int paramInt2)
-  {
-    if (this.jdField_a_of_type_Bgaz == null) {
-      this.jdField_a_of_type_Bgaz = new bgaz();
-    }
-    this.jdField_a_of_type_Bgaz.a(paramInt1, paramString, paramInt2);
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  public void a(View paramView, int paramInt1, int paramInt2)
-  {
-    a(paramView, paramInt1, paramInt2, b, true);
-  }
-  
-  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
-  {
-    boolean bool = true;
-    if ((this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b()))
+    int i = paramIntent.getIntExtra("command_type", 0);
+    QLog.i("NearbyJsInterface", 2, "receive request" + paramIntent.getExtras());
+    switch (i)
     {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a();
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
     }
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = new BubblePopupWindow(-2, -2);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(bfue.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow, paramView.getContext(), this.jdField_a_of_type_Bgaz, this.jdField_a_of_type_AndroidViewView$OnClickListener));
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new ColorDrawable(0));
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.c(paramBoolean);
-    if (paramBoolean) {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(true);
-    }
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(false);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.c(true);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.c(1);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b(2);
-    BubblePopupWindow localBubblePopupWindow = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
-    if (paramInt3 == jdField_a_of_type_Int) {}
-    for (paramBoolean = bool;; paramBoolean = false)
+    do
     {
-      localBubblePopupWindow.d(paramBoolean);
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(this.jdField_a_of_type_Bjoy);
-      paramView.post(new CommonMenuPopupView.1(this, paramView, paramInt1, paramInt2));
+      do
+      {
+        do
+        {
+          return;
+        } while (TextUtils.isEmpty(NearbyJsInterface.a(this.a)));
+        this.a.callJs(NearbyJsInterface.a(this.a), new String[] { paramIntent.getStringExtra("data") });
+        NearbyJsInterface.a(this.a, "");
+        return;
+      } while (TextUtils.isEmpty(NearbyJsInterface.b(this.a)));
+      this.a.callJs(NearbyJsInterface.b(this.a), new String[] { paramIntent.getStringExtra("data") });
+      return;
+    } while (TextUtils.isEmpty(NearbyJsInterface.c(this.a)));
+    i = paramIntent.getIntExtra("exit_mode", 0);
+    int j = paramIntent.getIntExtra("exit_action", 0);
+    paramContext = new JSONObject();
+    try
+    {
+      paramContext.put("mode", i);
+      paramContext.put("action", j);
+      this.a.callJs(NearbyJsInterface.c(this.a), new String[] { paramContext.toString() });
+      NearbyJsInterface.b(this.a, "");
       return;
     }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b());
+    catch (JSONException paramContext)
+    {
+      for (;;)
+      {
+        QLog.e("NearbyJsInterface", 2, "onExitProfile, exp:" + paramContext.toString());
+      }
+    }
   }
 }
 

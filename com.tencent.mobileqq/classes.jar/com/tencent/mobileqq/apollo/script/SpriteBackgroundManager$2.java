@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.script;
 
-import amaq;
+import anby;
 import com.tencent.mobileqq.apollo.ApolloRender;
 import com.tencent.mobileqq.apollo.ApolloTextureView;
 import com.tencent.mobileqq.apollo.ApolloTicker;
@@ -10,11 +10,11 @@ import java.lang.ref.WeakReference;
 public class SpriteBackgroundManager$2
   implements Runnable
 {
-  public SpriteBackgroundManager$2(amaq paramamaq) {}
+  public SpriteBackgroundManager$2(anby paramanby) {}
   
   public void run()
   {
-    ApolloTextureView localApolloTextureView = (ApolloTextureView)amaq.a(this.this$0).get();
+    ApolloTextureView localApolloTextureView = (ApolloTextureView)anby.a(this.this$0).get();
     if ((localApolloTextureView != null) && (localApolloTextureView.getRender() != null) && (localApolloTextureView.getRender().mApolloTicker != null)) {
       ApolloRender.tickerResume(localApolloTextureView.getRender().mApolloTicker.ticker);
     }

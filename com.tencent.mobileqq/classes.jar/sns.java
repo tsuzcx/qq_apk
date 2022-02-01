@@ -1,26 +1,12 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup.6.1;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup.6.2;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class sns
-  implements pke
+class sns
+  implements DialogInterface.OnClickListener
 {
-  public sns(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
+  sns(snq paramsnq) {}
   
-  public void a(MessageRecord paramMessageRecord) {}
-  
-  public void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle)
-  {
-    this.a.a().runOnUiThread(new ReadInJoyProteusFamilyListViewGroup.6.2(this));
-  }
-  
-  public void b(MessageRecord paramMessageRecord)
-  {
-    this.a.a().runOnUiThread(new ReadInJoyProteusFamilyListViewGroup.6.1(this));
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

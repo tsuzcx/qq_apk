@@ -1,37 +1,9 @@
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import android.view.View;
 
-public class ztb
+public abstract interface ztb
 {
-  public int a;
-  public String a;
-  public List<zta> a;
-  public int b;
-  public String b;
-  public int c;
-  
-  public ztb(JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("width");
-    this.jdField_b_of_type_Int = paramJSONObject.optInt("height");
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("lottie");
-    this.c = paramJSONObject.optInt("interval");
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("jumpUrl");
-    if (paramJSONObject.optJSONArray("aioActivities") != null)
-    {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      paramJSONObject = paramJSONObject.optJSONArray("aioActivities");
-      int i = 0;
-      while (i < paramJSONObject.length())
-      {
-        zta localzta = new zta(paramJSONObject.optJSONObject(i));
-        this.jdField_a_of_type_JavaUtilList.add(localzta);
-        i += 1;
-      }
-    }
-  }
+  public abstract void a(View paramView, CertifiedAccountMeta.StFeed paramStFeed);
 }
 
 

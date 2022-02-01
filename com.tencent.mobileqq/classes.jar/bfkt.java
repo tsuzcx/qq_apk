@@ -1,39 +1,39 @@
-import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForTroopEffectPic;
+import android.os.Handler;
+import android.util.SparseArray;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.4.1;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
-class bfkt
-  extends ayem
+public class bfkt
+  extends VasQuickUpdateManager.CallBacker
 {
-  bfkt(bfks parambfks, aydl paramaydl, TroopChatPie paramTroopChatPie, MessageForTroopEffectPic paramMessageForTroopEffectPic, boolean paramBoolean) {}
+  bfkt(bfkl parambfkl) {}
   
-  public void a(int paramInt, aydt paramaydt)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopPicEffectsController", 2, "2g diy gif onDownload");
-    }
-    paramaydt = new File(this.jdField_a_of_type_Aydl.c());
-    beyh localbeyh = (beyh)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.app.getManager(223);
-    if ((paramaydt.exists()) && (localbeyh != null))
+    if ((paramLong == 25L) && (paramString1.startsWith("groupeffect_item_")) && (paramInt1 == 0))
     {
-      localbeyh.a = 1;
-      localbeyh.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie);
-      localbeyh.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopEffectPic, this.jdField_a_of_type_Boolean);
-      localbeyh.f();
+      paramInt1 = bfkl.a(paramString1);
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopEnterEffect.Controller", 2, "download Res callback success id = " + paramInt1);
+      }
+      if (paramInt1 > 0)
+      {
+        paramString1 = (bfku)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
+        this.a.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt1);
+        if (paramString1 == null) {
+          break label154;
+        }
+        if (bglb.a(new File(bfkl.jdField_a_of_type_JavaLangString + paramInt1))) {
+          this.a.jdField_a_of_type_AndroidOsHandler.post(new TroopEnterEffectController.4.1(this, paramInt1, paramString1));
+        }
+      }
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("TroopPicEffectsController", 2, "[EffectPic] file not exist or isplaying.");
-  }
-  
-  public void a_(int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopPicEffectsController", 2, "2g diy gif onUpdateProgress");
-    }
+    return;
+    label154:
+    QLog.e("TroopEnterEffect.Controller", 1, "mResDownloadCallback effectData = null id = " + paramInt1);
   }
 }
 

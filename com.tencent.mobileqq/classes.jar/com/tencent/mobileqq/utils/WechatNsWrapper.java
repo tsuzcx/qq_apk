@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.utils;
 
 import android.content.Context;
-import azcv;
-import azcx;
-import bfyl;
+import baij;
+import bail;
+import bhhd;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.BaseConstants;
@@ -16,7 +16,7 @@ import java.nio.ShortBuffer;
 import java.util.HashMap;
 
 public final class WechatNsWrapper
-  extends azcx
+  extends bail
 {
   public static boolean a;
   short[] a;
@@ -105,7 +105,7 @@ public final class WechatNsWrapper
         jdField_a_of_type_Boolean = false;
         continue;
       }
-      this.jdField_a_of_type_Int = bfyl.a(paramInt1);
+      this.jdField_a_of_type_Int = bhhd.a(paramInt1);
       this.jdField_a_of_type_ArrayOfShort = new short[this.jdField_a_of_type_Int / 2];
       this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
       this.jdField_b_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
@@ -114,7 +114,7 @@ public final class WechatNsWrapper
         paramInt1 = this.jdField_a_of_type_Int * 2;
       }
       this.c = new byte[paramInt1];
-      this.jdField_a_of_type_Azcv = new azcv(this.c, 0);
+      this.jdField_a_of_type_Baij = new baij(this.c, 0);
       return;
       bool = false;
     }

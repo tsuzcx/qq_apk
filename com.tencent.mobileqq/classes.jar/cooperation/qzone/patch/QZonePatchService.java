@@ -1,11 +1,11 @@
 package cooperation.qzone.patch;
 
-import amtj;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.util.Log;
+import anvx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -132,7 +132,7 @@ public class QZonePatchService
     //   34: dup
     //   35: invokespecial 160	java/lang/StringBuilder:<init>	()V
     //   38: ldc 161
-    //   40: invokestatic 167	amtj:a	(I)Ljava/lang/String;
+    //   40: invokestatic 167	anvx:a	(I)Ljava/lang/String;
     //   43: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   46: aload 7
     //   48: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -559,9 +559,9 @@ public class QZonePatchService
   
   private static void updatePatchDex(String paramString1, String paramString2)
   {
-    log(amtj.a(2131711182));
+    log(anvx.a(2131711529));
     if (TextUtils.isEmpty(paramString1)) {
-      log(amtj.a(2131711187));
+      log(anvx.a(2131711534));
     }
     while (bPatchUpdating) {
       return;
@@ -585,7 +585,7 @@ public class QZonePatchService
         if (!curPatchMd5.equals(paramString1)) {
           break;
         }
-        log(amtj.a(2131711183));
+        log(anvx.a(2131711530));
         processPatchForAboveAndroidN(BaseApplicationImpl.getContext(), getPatchPath(paramString1), paramString1);
       }
     }
@@ -626,7 +626,7 @@ public class QZonePatchService
         curPatchMd5 = null;
         deleteMergeAndOdexFiles();
       }
-      log(amtj.a(2131711180));
+      log(anvx.a(2131711527));
       deleteMergeAndOdexFiles();
       if ((paramString2 == null) || (TextUtils.isEmpty(paramString2))) {
         break;
@@ -641,7 +641,7 @@ public class QZonePatchService
   
   private static void verifyPatchFile()
   {
-    log(amtj.a(2131711184));
+    log(anvx.a(2131711531));
     curPatchMd5 = null;
     Object localObject1 = BaseApplicationImpl.getContext().getDir("patchs", 0);
     long l;
@@ -652,7 +652,7 @@ public class QZonePatchService
       Object localObject2 = QUA.getQUA3() + "p_len";
       l = LocalMultiProcConfig.getLong((String)localObject2, 0L);
       log((String)localObject2 + " = " + l);
-      log(amtj.a(2131711179) + l);
+      log(anvx.a(2131711526) + l);
       localObject2 = ((File)localObject1).listFiles();
       if ((localObject2 != null) && (localObject2.length > 0))
       {
@@ -684,7 +684,7 @@ public class QZonePatchService
               if (!TextUtils.isEmpty(curPatchMd5)) {
                 break label408;
               }
-              log(amtj.a(2131711178));
+              log(anvx.a(2131711525));
               return;
             }
           }

@@ -1,20 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-
-class bemc
-  implements DialogInterface.OnClickListener
+public abstract interface bemc
 {
-  bemc(bema parambema) {}
+  public abstract beli a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.e();
-    if (ReciteRecordLayout.a(this.a.a) != null) {
-      ReciteRecordLayout.a(this.a.a).e();
-    }
-    paramDialogInterface.dismiss();
-  }
+  public abstract bemn a(String paramString);
+  
+  public abstract void a();
+  
+  public abstract void a(belh parambelh, String paramString);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString1, String paramString2, beli parambeli);
+  
+  public abstract boolean a();
+  
+  public abstract boolean b();
 }
 
 

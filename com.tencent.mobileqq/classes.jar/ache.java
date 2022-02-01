@@ -1,25 +1,73 @@
-import com.tencent.mobileqq.utils.SecUtil;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.qphone.base.util.QLog;
 
 public class ache
+  implements acgx
 {
-  private static ConcurrentHashMap<String, String> a = new ConcurrentHashMap();
+  private static achf a;
   
-  public static String a(String paramString)
+  public static void a(achf paramachf)
   {
-    String str2 = (String)a.get(paramString);
-    String str1 = str2;
-    if (str2 == null)
+    a = paramachf;
+  }
+  
+  public static void c()
+  {
+    a = null;
+  }
+  
+  protected String a(String paramString)
+  {
+    if (a == null)
     {
-      str2 = SecUtil.getFileMd5(paramString);
-      str1 = str2;
-      if (str2 != null)
-      {
-        a.put(paramString, str2);
-        str1 = str2;
-      }
+      QLog.i("WebGdtMvWebJsCallHandler", 1, "onGetAdInfo mAction == null");
+      return "";
     }
-    return str1;
+    return a.a(paramString);
+  }
+  
+  protected void a()
+  {
+    if (a == null)
+    {
+      QLog.i("WebGdtMvWebJsCallHandler", 1, "onVideoClose mAction == null");
+      return;
+    }
+    a.a();
+  }
+  
+  protected void a(String paramString)
+  {
+    if (a == null)
+    {
+      QLog.i("WebGdtMvWebJsCallHandler", 1, "onReportAntiSpam mAction == null");
+      return;
+    }
+    a.a(paramString);
+  }
+  
+  protected void a(String paramString, boolean paramBoolean)
+  {
+    if (a == null)
+    {
+      QLog.i("WebGdtMvWebJsCallHandler", 1, "onHandleRewardVideoClick mAction == null");
+      return;
+    }
+    a.a(paramString, paramBoolean);
+  }
+  
+  public boolean a(acfw paramacfw, String paramString, String... paramVarArgs)
+  {
+    return true;
+  }
+  
+  protected void b()
+  {
+    if (a == null)
+    {
+      QLog.i("WebGdtMvWebJsCallHandler", 1, "onVideoMute mAction == null");
+      return;
+    }
+    a.b();
   }
 }
 

@@ -17,7 +17,7 @@ public final class TroopGiftMsgItemBuilder$8
     //   7: astore_1
     //   8: aload_1
     //   9: invokevirtual 30	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
-    //   12: getstatic 35	agrz:a	Ljava/util/List;
+    //   12: getstatic 35	ahkx:a	Ljava/util/List;
     //   15: invokeinterface 41 1 0
     //   20: astore_2
     //   21: aload_2
@@ -36,7 +36,7 @@ public final class TroopGiftMsgItemBuilder$8
     //   52: astore_2
     //   53: aload_1
     //   54: invokevirtual 60	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   57: getstatic 35	agrz:a	Ljava/util/List;
+    //   57: getstatic 35	ahkx:a	Ljava/util/List;
     //   60: invokeinterface 63 1 0
     //   65: return
     //   66: aload_1

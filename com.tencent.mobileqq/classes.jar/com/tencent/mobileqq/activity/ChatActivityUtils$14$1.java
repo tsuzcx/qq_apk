@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import acwi;
+import admu;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ChatActivityUtils$14$1
   implements Runnable
 {
-  public ChatActivityUtils$14$1(acwi paramacwi) {}
+  public ChatActivityUtils$14$1(admu paramadmu) {}
   
   public void run()
   {

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.mainpage;
 
-import adxr;
+import aeow;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -47,8 +47,8 @@ public class PhoneNumberManagementFragment
   {
     if ((getActivity() != null) && (!getActivity().isFinishing()))
     {
-      QQCustomDialog localQQCustomDialog = new QQCustomDialog(getActivity(), 2131755826);
-      localQQCustomDialog.setContentView(2131558996);
+      QQCustomDialog localQQCustomDialog = new QQCustomDialog(getActivity(), 2131755829);
+      localQQCustomDialog.setContentView(2131559023);
       localQQCustomDialog.setTitle("确认删除此号码？").setMessage("").setPositiveButton("确定", new PhoneNumberManagementFragment.3(this, paramInt)).setNegativeButton("取消", new PhoneNumberManagementFragment.2(this));
       localQQCustomDialog.show();
     }
@@ -143,7 +143,7 @@ public class PhoneNumberManagementFragment
         continue;
         localIntent = new Intent();
         localIntent.putExtra("appId", this.mAppId);
-        adxr.a(getActivity(), localIntent, PublicFragmentActivityForMini.class, AddPhoneNumberFragment.class, 1090);
+        aeow.a(getActivity(), localIntent, PublicFragmentActivityForMini.class, AddPhoneNumberFragment.class, 1090);
       }
     }
   }
@@ -172,7 +172,7 @@ public class PhoneNumberManagementFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131559408, null);
+    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131559448, null);
     if (Build.VERSION.SDK_INT >= 23)
     {
       getActivity().getWindow().clearFlags(67108864);
@@ -192,21 +192,21 @@ public class PhoneNumberManagementFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.mLeftBtnView = ((ImageView)paramView.findViewById(2131371076));
+    this.mLeftBtnView = ((ImageView)paramView.findViewById(2131371268));
     this.mLeftBtnView.setOnClickListener(this);
-    this.mPhoneNumberLayout1 = ((RelativeLayout)paramView.findViewById(2131371063));
-    this.mPhoneNumberText1 = ((TextView)paramView.findViewById(2131371070));
-    this.mPhoneNumberLayout2 = ((RelativeLayout)paramView.findViewById(2131371064));
-    this.mPhoneNumberText2 = ((TextView)paramView.findViewById(2131371071));
-    this.mDelPhoneNmber2 = ((TextView)paramView.findViewById(2131371066));
+    this.mPhoneNumberLayout1 = ((RelativeLayout)paramView.findViewById(2131371255));
+    this.mPhoneNumberText1 = ((TextView)paramView.findViewById(2131371262));
+    this.mPhoneNumberLayout2 = ((RelativeLayout)paramView.findViewById(2131371256));
+    this.mPhoneNumberText2 = ((TextView)paramView.findViewById(2131371263));
+    this.mDelPhoneNmber2 = ((TextView)paramView.findViewById(2131371258));
     this.mDelPhoneNmber2.setOnClickListener(this);
-    this.mPhoneNumberLayout3 = ((RelativeLayout)paramView.findViewById(2131371065));
-    this.mPhoneNumberText3 = ((TextView)paramView.findViewById(2131371072));
-    this.mDelPhoneNmber3 = ((TextView)paramView.findViewById(2131371067));
+    this.mPhoneNumberLayout3 = ((RelativeLayout)paramView.findViewById(2131371257));
+    this.mPhoneNumberText3 = ((TextView)paramView.findViewById(2131371264));
+    this.mDelPhoneNmber3 = ((TextView)paramView.findViewById(2131371259));
     this.mDelPhoneNmber3.setOnClickListener(this);
-    this.mOperatePhoneNumberLayout = ((RelativeLayout)paramView.findViewById(2131371073));
+    this.mOperatePhoneNumberLayout = ((RelativeLayout)paramView.findViewById(2131371265));
     this.mOperatePhoneNumberLayout.setOnClickListener(this);
-    this.mPhoneNumberMaxInfo = ((TextView)paramView.findViewById(2131371062));
+    this.mPhoneNumberMaxInfo = ((TextView)paramView.findViewById(2131371254));
     updateView();
   }
 }

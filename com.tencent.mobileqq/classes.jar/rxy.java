@@ -1,61 +1,51 @@
-import android.graphics.Canvas;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionCenterView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionView;
-import java.util.Random;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.SimpleAdapter;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
 
 public class rxy
+  extends SimpleAdapter
 {
-  public float a;
-  public int a;
-  public float b;
-  public int b;
-  public float c;
-  public float d;
-  public float e;
-  public float f;
-  public float g = 0.8F;
-  public float h = 0.4F;
+  private static Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#E9E9E9"));
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131368621, 2131378855, 2131378854 };
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "key_cover_url", "key_title", "key_summary" };
   
-  public rxy(VideoFeedsLikeAnimate.LikeExplosionView paramLikeExplosionView)
+  public rxy(Context paramContext, List<Map<String, CharSequence>> paramList)
   {
-    this.jdField_a_of_type_Int = 360;
-    b();
+    super(paramContext, paramList, 2131560348, jdField_a_of_type_ArrayOfJavaLangString, jdField_a_of_type_ArrayOfInt);
   }
   
-  private void b()
+  public void setViewImage(ImageView paramImageView, String paramString)
   {
-    c();
-    a();
-  }
-  
-  private void c()
-  {
-    if (this.jdField_b_of_type_Int == this.jdField_a_of_type_Int) {}
-    for (int i = this.jdField_b_of_type_Int;; i = VideoFeedsLikeAnimate.LikeExplosionView.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView).nextInt() * (this.jdField_a_of_type_Int - this.jdField_b_of_type_Int) + this.jdField_b_of_type_Int)
+    if ("create_topic".equals(paramString))
     {
-      double d1 = Math.toRadians(i);
-      this.e = ((float)(0.9F * Math.cos(d1)));
-      this.f = ((float)(0.9F * Math.sin(d1)));
+      paramImageView.setImageResource(2130849539);
       return;
     }
+    try
+    {
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      localURLDrawableOptions.mFailedDrawable = jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      localURLDrawableOptions.mRequestWidth = paramImageView.getLayoutParams().width;
+      localURLDrawableOptions.mRequestHeight = paramImageView.getLayoutParams().height;
+      paramImageView.setImageDrawable(URLDrawable.getDrawable(paramString, localURLDrawableOptions));
+      return;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      paramImageView.setImageDrawable(jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      QLog.e("ReadInJoyTopicListAdapt", 2, "setViewImage: illegal url  - " + paramString, localIllegalArgumentException);
+    }
   }
-  
-  protected void a()
-  {
-    this.jdField_a_of_type_Float = (VideoFeedsLikeAnimate.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView.a) - VideoFeedsLikeAnimate.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView.a).getWidth() / 2);
-    this.jdField_b_of_type_Float = (VideoFeedsLikeAnimate.b(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView.a) - VideoFeedsLikeAnimate.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView.a).getHeight() / 2);
-    this.c = this.jdField_a_of_type_Float;
-    this.d = this.jdField_b_of_type_Float;
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.c = (this.jdField_a_of_type_Float + this.e * (float)VideoFeedsLikeAnimate.LikeExplosionView.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView) * paramFloat);
-    this.d = (this.jdField_b_of_type_Float + this.f * (float)VideoFeedsLikeAnimate.LikeExplosionView.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView) * paramFloat);
-  }
-  
-  public void a(Canvas paramCanvas) {}
 }
 
 

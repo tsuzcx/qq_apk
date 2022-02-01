@@ -61,7 +61,7 @@ public class gf
       str1 = str4;
     case 2: 
     case 3: 
-      switch (bgae.a(bgae.a(), str2))
+      switch (bhiw.a(bhiw.a(), str2))
       {
       }
       break;

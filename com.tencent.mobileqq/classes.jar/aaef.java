@@ -1,67 +1,35 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.biz.widgets.ScannerView;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class aaef
-  extends Handler
+class aaef
+  implements aafj
 {
-  public aaef(ScannerView paramScannerView) {}
+  aaef(aaec paramaaec, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    if (paramMessage.what == 9)
+    JSONObject localJSONObject = new JSONObject();
+    if (paramBoolean) {}
+    for (;;)
     {
-      paramMessage = Toast.makeText(this.a.getContext(), this.a.getContext().getString(2131690617), 1);
-      paramMessage.setGravity(17, 0, 0);
-      paramMessage.show();
-    }
-    Object localObject;
-    do
-    {
-      return;
-      localObject = ScannerView.a(this.a);
-      if (localObject != null) {}
-      switch (paramMessage.what)
+      try
       {
-      case 3: 
-      case 4: 
-      case 5: 
-      case 6: 
-      default: 
-        localObject = ScannerView.a(this.a);
-        if (localObject != null) {}
-        switch (paramMessage.what)
-        {
-        default: 
-          localObject = ScannerView.a(this.a);
+        localJSONObject.put("retCode", 0);
+        if (!TextUtils.isEmpty(paramString2)) {
+          localJSONObject.put("errMsg", paramString2);
         }
-        break;
+        if (!TextUtils.isEmpty(paramString1)) {
+          localJSONObject.put("file", paramString1);
+        }
+        this.jdField_a_of_type_Aaec.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        return;
       }
-    } while (localObject == null);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    if (((paramMessage.obj instanceof Boolean)) && (((Boolean)paramMessage.obj).booleanValue())) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ((aaei)localObject).a(bool);
-      return;
-      ((aaej)localObject).a(String.valueOf(paramMessage.obj));
-      return;
-      ((aaej)localObject).c();
-      return;
-      ((aaej)localObject).b();
-      return;
-      ((aaej)localObject).a();
-      return;
-      ((aaeh)localObject).a(String.valueOf(paramMessage.obj), 1, 1);
-      return;
-      ((aaeh)localObject).a(1);
-      return;
+      catch (Exception paramString1)
+      {
+        QLog.e(this.jdField_a_of_type_Aaec.TAG, 1, paramString2, paramString1);
+      }
+      localJSONObject.put("retCode", 1);
     }
   }
 }

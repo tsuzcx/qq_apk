@@ -1,42 +1,63 @@
-import android.content.Context;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import org.json.JSONObject;
 
-final class bkkt
-  extends OnPluginInstallListener.Stub
+class bkkt
+  implements EIPCResultCallback
 {
-  bkkt(bkkx parambkkx, bkkz parambkkz, Context paramContext) {}
+  bkkt(bkks parambkks, RequestEvent paramRequestEvent) {}
   
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("plugin_tag", 4, "doHandleOtherProcess onInstallError");
-    }
-    if (this.jdField_a_of_type_Bkkx != null) {
-      this.jdField_a_of_type_Bkkx.a(false, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bkkz);
-    }
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("plugin_tag", 4, "doHandleOtherProcess onInstallFinish");
-    }
-    if (this.jdField_a_of_type_Bkkx != null)
+    try
     {
-      paramString = bkkq.a().queryPlugin(this.jdField_a_of_type_Bkkz.b);
-      if (paramString != null)
+      localJSONObject = new JSONObject();
+      if (paramEIPCResult == null)
       {
-        this.jdField_a_of_type_Bkkz.c = paramString.mInstalledPath;
-        this.jdField_a_of_type_Bkkz.a(paramString);
+        if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent == null) {
+          return;
+        }
+        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail("result is null");
+        return;
       }
-      this.jdField_a_of_type_Bkkx.a(true, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bkkz);
+      if (paramEIPCResult.code != 0) {
+        break label123;
+      }
+      j = paramEIPCResult.data.getInt("uin_type");
+      i = -1;
+      if (j != 10009) {
+        break label114;
+      }
+      i = 1;
+    }
+    catch (Throwable paramEIPCResult)
+    {
+      JSONObject localJSONObject;
+      int j;
+      int i;
+      while (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent != null)
+      {
+        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail("exceptions!");
+        return;
+        label114:
+        if (j == 0) {
+          i = 2;
+        }
+      }
+      label123:
+      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent == null) {
+        return;
+      }
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail("result code:" + paramEIPCResult.code);
+    }
+    localJSONObject.put("code", 0);
+    localJSONObject.put("type", i);
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent != null)
+    {
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok(localJSONObject);
+      return;
     }
   }
 }

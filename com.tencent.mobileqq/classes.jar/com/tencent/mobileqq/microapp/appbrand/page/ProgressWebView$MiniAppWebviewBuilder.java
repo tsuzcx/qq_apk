@@ -3,15 +3,15 @@ package com.tencent.mobileqq.microapp.appbrand.page;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import bgsp;
-import bgtk;
+import bidf;
+import biec;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.smtt.sdk.WebView;
 
 public class ProgressWebView$MiniAppWebviewBuilder
-  extends bgsp
-  implements bgtk
+  extends bidf
+  implements biec
 {
   public ProgressWebView$MiniAppWebviewBuilder(Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView)
   {

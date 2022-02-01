@@ -1,40 +1,13 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.utils.QQRecorder;
-import java.lang.ref.WeakReference;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
-class bkym
-  extends Handler
+public class bkym
 {
-  bkym(bkyl parambkyl) {}
-  
-  public void handleMessage(Message paramMessage)
+  public static String a(Throwable paramThrowable)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (bkyl.a(this.a) != null) {
-            bkyl.a(this.a).a(1, bkyl.a(this.a));
-          }
-        } while (!(paramMessage.obj instanceof String));
-        paramMessage = (String)paramMessage.obj;
-        this.a.d(paramMessage);
-        this.a.c(paramMessage);
-        return;
-        bkyl.a(this.a).c();
-        bftt.b(2131230744, false);
-      } while (this.a.a == null);
-      paramMessage = (Context)this.a.a.get();
-    } while (paramMessage == null);
-    bftt.a(paramMessage, false);
+    StringWriter localStringWriter = new StringWriter();
+    paramThrowable.printStackTrace(new PrintWriter(localStringWriter));
+    return localStringWriter.toString();
   }
 }
 

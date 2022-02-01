@@ -2,7 +2,7 @@ package cooperation.comic.webbundle;
 
 import android.os.Build;
 import android.os.Build.VERSION;
-import bcdf;
+import bdka;
 import com.tencent.biz.common.util.HttpUtil;
 
 public final class WebBundleReportUtils$1
@@ -53,7 +53,7 @@ public final class WebBundleReportUtils$1
       localStringBuffer.append(this.jdField_d_of_type_JavaLangString).append('|');
       localStringBuffer.append(this.e).append('|');
       localStringBuffer.append(this.f);
-      bcdf.a(null, "sendtdbank|b_sng_qqvip_sng_qq_comic|sng_mobileqq_times_statistics", localStringBuffer.toString(), true);
+      bdka.a(null, "sendtdbank|b_sng_qqvip_sng_qq_comic|sng_mobileqq_times_statistics", localStringBuffer.toString(), true);
       return;
       str2 = Build.BRAND;
       break;

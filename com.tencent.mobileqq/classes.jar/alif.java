@@ -1,177 +1,119 @@
 import android.content.Context;
-import android.graphics.Bitmap;
+import android.content.res.Resources;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.face.FaceDecoder;
-import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import com.tencent.widget.XListView;
-import java.util.Hashtable;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemRecommendTroopData;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.troop.data.RecentRecommendTroopItem;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import com.tencent.mobileqq.troop.widget.TroopActiveLayout;
+import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
+import com.tencent.mobileqq.widget.FolderTextView;
+import com.tencent.widget.SingleLineTextView;
+import com.tencent.widget.ThemeImageView;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class alif
-  extends bhgj
-  implements FaceDecoder.DecodeTaskCompletionListener, AbsListView.OnScrollListener
+public class alif
+  extends alhd
 {
-  private int jdField_a_of_type_Int = 0;
-  protected Bitmap a;
-  protected FaceDecoder a;
-  private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private Hashtable<String, Bitmap> jdField_a_of_type_JavaUtilHashtable = new Hashtable();
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private int jdField_a_of_type_Int = 2131562772;
+  private List<String> jdField_a_of_type_JavaUtilList;
   
-  public alif(Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView, boolean paramBoolean)
+  public int a()
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
-    if (this.jdField_a_of_type_ComTencentWidgetXListView != null) {
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(this);
-    }
-    this.b = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder = new FaceDecoder(paramContext, paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.setDecodeTaskCompletionListener(this);
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = bfvo.a();
-    }
+    return 1;
   }
   
-  protected Bitmap a(String paramString)
+  public View a(int paramInt, Object paramObject, algy paramalgy, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, alje paramalje)
   {
-    return a(paramString, 1, (byte)0);
-  }
-  
-  protected Bitmap a(String paramString, int paramInt)
-  {
-    return a(paramString, 1, (byte)0, paramInt);
-  }
-  
-  public Bitmap a(String paramString, int paramInt, byte paramByte)
-  {
-    return a(paramString, paramInt, paramByte, 0);
-  }
-  
-  public Bitmap a(String paramString, int paramInt1, byte paramByte, int paramInt2)
-  {
-    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.getBitmapFromCacheFrom(paramInt1, paramString, paramInt2);
-    if (localBitmap != null) {
-      return localBitmap;
-    }
-    if (this.jdField_a_of_type_Boolean)
+    if (paramView == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.cancelPendingRequests();
-      this.jdField_a_of_type_Boolean = false;
-    }
-    if (!this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.isPausing()) {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.requestDecodeFace(paramString, paramInt1, true, paramByte);
-    }
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
-  }
-  
-  protected boolean a(aliz paramaliz)
-  {
-    return (paramaliz != null) && (paramaliz.a != null) && (paramaliz.a.length() > 0);
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.destory();
-    }
-    this.jdField_a_of_type_ComTencentWidgetXListView = null;
-  }
-  
-  public int getCount()
-  {
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-    return null;
-  }
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      if (paramInt1 == 0) {
-        this.jdField_a_of_type_Boolean = false;
-      }
-    }
-    do
-    {
-      return;
-      if (paramBitmap != null) {
-        this.jdField_a_of_type_JavaUtilHashtable.put(paramString, paramBitmap);
-      }
-    } while (paramInt1 > 0);
-    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_ComTencentWidgetXListView != null))
-    {
-      paramInt2 = this.jdField_a_of_type_ComTencentWidgetXListView.getChildCount();
-      paramInt1 = 0;
-      while (paramInt1 < paramInt2)
+      paramViewGroup = new alig();
+      paramView = a(paramContext, this.jdField_a_of_type_Int, paramViewGroup);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376368));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131376356));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376366));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131376355));
+      paramViewGroup.jdField_a_of_type_ComTencentWidgetThemeImageView = ((ThemeImageView)paramView.findViewById(2131369578));
+      paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131380241));
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView = ((FolderTextView)paramView.findViewById(2131379870));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131363938));
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout = ((TroopActiveLayout)paramView.findViewById(2131363397));
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout = ((TroopLabelLayout)paramView.findViewById(2131363404));
+      paramViewGroup.jdField_a_of_type_ComTencentWidgetThemeImageView.setSupportMaskView(true);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramOnClickListener);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(paramOnClickListener);
+      paramViewGroup.b.setOnClickListener(paramOnClickListener);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setTag(paramViewGroup);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setTag(paramViewGroup);
+      paramView.setTag(paramViewGroup);
+      paramOnLongClickListener = (RecentItemRecommendTroopData)paramObject;
+      paramViewGroup.a(paramOnLongClickListener, paramalgy);
+      a(paramContext, paramView, paramInt, paramObject, paramViewGroup, paramOnClickListener);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setTag(-1, Integer.valueOf(paramInt));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setTag(-1, Integer.valueOf(paramInt));
+      paramViewGroup.b.setTag(-1, Integer.valueOf(paramInt));
+      paramalgy = null;
+      paramObject = paramalgy;
+      if (paramOnLongClickListener.mUser != null)
       {
-        paramString = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt1).getTag();
-        if ((paramString != null) && ((paramString instanceof aliz)))
-        {
-          paramString = (aliz)paramString;
-          if (a(paramString))
-          {
-            paramBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilHashtable.get(paramString.a);
-            if (paramBitmap != null) {
-              paramString.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-            }
-          }
+        paramObject = paramalgy;
+        if ((paramOnLongClickListener.mUser.extraInfo instanceof RecentRecommendTroopItem)) {
+          paramObject = (RecentRecommendTroopItem)paramOnLongClickListener.mUser.extraInfo;
         }
-        paramInt1 += 1;
+      }
+      if (paramObject != null) {
+        break label437;
+      }
+      paramalgy = "";
+      label358:
+      if (paramObject != null) {
+        break label445;
       }
     }
-    this.jdField_a_of_type_JavaUtilHashtable.clear();
+    label437:
+    label445:
+    for (paramObject = "";; paramObject = paramObject.recomAlgol)
+    {
+      bdla.b(null, "dc00899", "Grp_recom", "", "msg_tab", "exp_grp", 0, 0, paramalgy, paramObject, "", "");
+      if (anyb.e)
+      {
+        bdla.b(null, "dc00899", "Grp_recom", "", "msg_tab", "exp", 0, 0, "", "", "", "");
+        anyb.e = false;
+      }
+      return paramView;
+      paramViewGroup = (alig)paramView.getTag();
+      break;
+      paramalgy = paramObject.uin;
+      break label358;
+    }
   }
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public List<String> a(RecentBaseData paramRecentBaseData, Context paramContext)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    if (paramInt != 0)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.cancelPendingRequests();
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.pause();
+    if ((paramRecentBaseData == null) || (paramContext == null)) {
+      return null;
+    }
+    int i = paramRecentBaseData.mMenuFlag;
+    paramRecentBaseData = paramContext.getResources();
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
     }
     for (;;)
     {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.isPausing()) {
-        this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.resume();
+      if ((i & 0xF) == 1) {
+        this.jdField_a_of_type_JavaUtilList.add(paramRecentBaseData.getString(jdField_a_of_type_ArrayOfInt[0]));
       }
-      if (this.jdField_a_of_type_ComTencentWidgetXListView != null)
-      {
-        int i = this.jdField_a_of_type_ComTencentWidgetXListView.getChildCount();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          paramAbsListView = (aliz)this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt).getTag();
-          if (a(paramAbsListView)) {
-            paramAbsListView.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(a(paramAbsListView.a, paramAbsListView.jdField_c_of_type_Int, (byte)0));
-          }
-          paramInt += 1;
-        }
-      }
+      return this.jdField_a_of_type_JavaUtilList;
+      this.jdField_a_of_type_JavaUtilList.clear();
     }
   }
 }

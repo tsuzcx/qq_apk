@@ -1,8 +1,6 @@
-public class zao
+public abstract interface zao
 {
-  public static String a = "Initialed";
-  public static String b = "Loading";
-  public static String c = "Done";
+  public abstract void a(yzo paramyzo);
 }
 
 

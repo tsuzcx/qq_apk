@@ -1,57 +1,48 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 class thq
-  implements ViewPager.OnPageChangeListener
+  implements ViewBase.OnClickListener
 {
-  thq(tho paramtho) {}
+  thq(thp paramthp) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public void onClick(ViewBase paramViewBase)
   {
-    if (!TextUtils.isEmpty(tho.a(this.a)))
-    {
-      this.a.a(tho.a(this.a));
-      tho.a(this.a, null);
-      QLog.d("ViolaInitDelegate", 1, "violaViewPager onPageScrolled potition : " + paramInt1 + " , mCurrentPosition:" + tho.a(this.a));
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    int i = 0;
-    if (i < tho.a(this.a).size())
-    {
-      ViolaBaseView localViolaBaseView = (ViolaBaseView)tho.a(this.a).get(i);
-      if (localViolaBaseView != null)
+    int i;
+    if ((tho.a(this.a.jdField_a_of_type_Tho) instanceof AdData)) {
+      switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
       {
-        if (i == paramInt) {
-          break label56;
-        }
-        localViolaBaseView.a(false);
-        localViolaBaseView.onActivityPause();
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        label56:
-        localViolaBaseView.a(true);
-        localViolaBaseView.onActivityResume();
+      default: 
+        i = -1;
       }
     }
-    tho.a(this.a, paramInt);
-    tho.a(this.a).dealFlingEnableWhenSwitcher(paramInt);
+    for (;;)
+    {
+      tjk.a(this.a.jdField_a_of_type_AndroidContentContext, ukt.a((AdData)tho.a(this.a.jdField_a_of_type_Tho)), false, true, i);
+      return;
+      tkf.a(tho.a(this.a.jdField_a_of_type_Tho), paramViewBase.getNativeView(), this.a.jdField_a_of_type_AndroidContentContext);
+      return;
+      i = 4;
+      continue;
+      i = 3;
+      continue;
+      i = 5;
+      continue;
+      i = 8;
+      continue;
+      i = 1;
+      continue;
+      i = 1000;
+      continue;
+      i = 2;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     thq
  * JD-Core Version:    0.7.0.1
  */

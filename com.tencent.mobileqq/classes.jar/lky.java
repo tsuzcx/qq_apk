@@ -1,29 +1,16 @@
-import com.tencent.av.AVFunChat.AVFunChatMessage;
-
-public abstract interface lky
-  extends mwk
+class lky
 {
-  public abstract void a(long paramLong1, long paramLong2, long paramLong3);
+  byte jdField_a_of_type_Byte = 1;
+  byte b = 0;
+  byte c = 1;
+  byte d = 1;
+  byte e = 1;
+  byte f = 0;
+  byte g = 0;
+  byte h = 0;
+  byte i = 0;
   
-  public abstract void a(String paramString, int paramInt, byte[] paramArrayOfByte);
-  
-  public abstract void a(String paramString, AVFunChat.AVFunChatMessage paramAVFunChatMessage);
-  
-  public abstract void a(String paramString1, String paramString2);
-  
-  public abstract void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2);
-  
-  public abstract void a(byte[] paramArrayOfByte);
-  
-  public abstract void c(int paramInt, String paramString);
-  
-  public abstract void d(int paramInt, String paramString);
-  
-  public abstract void q(String paramString);
-  
-  public abstract void r(String paramString);
-  
-  public abstract void s(String paramString);
+  lky(lkt paramlkt) {}
 }
 
 

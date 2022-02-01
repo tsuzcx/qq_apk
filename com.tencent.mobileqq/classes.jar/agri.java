@@ -1,23 +1,23 @@
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.MessageForTofuIntimateAnniversary;
+import com.tencent.mobileqq.data.MessageForDeviceFile;
 
 class agri
-  extends aexg
+  implements bkzq
 {
-  public long a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  MessageForTofuIntimateAnniversary jdField_a_of_type_ComTencentMobileqqDataMessageForTofuIntimateAnniversary;
-  public String a;
-  View jdField_b_of_type_AndroidViewView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  View jdField_c_of_type_AndroidViewView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  TextView d;
+  agri(agrh paramagrh, MessageForDeviceFile paramMessageForDeviceFile, bkzi parambkzi) {}
   
-  agri(agrh paramagrh) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      this.jdField_a_of_type_Agrh.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    }
+  }
 }
 
 

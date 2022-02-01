@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget.ksong;
 
-import akgd;
+import albw;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
@@ -13,15 +13,15 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
-import avjs;
-import avjt;
-import avjv;
-import avkb;
-import bhky;
-import bhla;
-import bhlb;
-import bhlc;
-import bhld;
+import awpx;
+import awpy;
+import awqa;
+import awqg;
+import bivo;
+import bivq;
+import bivr;
+import bivs;
+import bivt;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qwallet.plugin.QwAdapter;
 import java.util.ArrayList;
@@ -34,13 +34,13 @@ public class KSongView
   private int jdField_a_of_type_Int = -1;
   public long a;
   private ListView jdField_a_of_type_AndroidWidgetListView;
-  private bhky jdField_a_of_type_Bhky = new bhky();
-  private bhla jdField_a_of_type_Bhla;
-  private bhlc jdField_a_of_type_Bhlc;
+  private bivo jdField_a_of_type_Bivo = new bivo();
+  private bivq jdField_a_of_type_Bivq;
+  private bivs jdField_a_of_type_Bivs;
   private KSongProsBar jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongProsBar;
   private KSongTextView jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongTextView;
   private QwAdapter jdField_a_of_type_CooperationQwalletPluginQwAdapter;
-  private List<avjv> jdField_a_of_type_JavaUtilList;
+  private List<awqa> jdField_a_of_type_JavaUtilList;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;
   private KSongTextView jdField_b_of_type_ComTencentMobileqqWidgetKsongKSongTextView;
@@ -65,29 +65,29 @@ public class KSongView
   
   private float a(int paramInt, long paramLong)
   {
-    Object localObject = (avjv)this.jdField_a_of_type_CooperationQwalletPluginQwAdapter.getItem(paramInt);
-    if ((localObject == null) || (((avjv)localObject).jdField_b_of_type_JavaUtilArrayList.size() <= 0))
+    Object localObject = (awqa)this.jdField_a_of_type_CooperationQwalletPluginQwAdapter.getItem(paramInt);
+    if ((localObject == null) || (((awqa)localObject).jdField_b_of_type_JavaUtilArrayList.size() <= 0))
     {
       QLog.i("KSongView", 2, "error, sentence = " + localObject);
       return 0.0F;
     }
-    if (paramLong >= ((avjv)localObject).jdField_a_of_type_Long + ((avjv)localObject).jdField_b_of_type_Long)
+    if (paramLong >= ((awqa)localObject).jdField_a_of_type_Long + ((awqa)localObject).jdField_b_of_type_Long)
     {
       QLog.i("KSongView", 2, "over the sentence...");
       return 1.0F;
     }
-    avjs localavjs = null;
+    awpx localawpx = null;
     paramInt = 0;
     for (;;)
     {
-      if (paramInt < ((avjv)localObject).jdField_b_of_type_JavaUtilArrayList.size())
+      if (paramInt < ((awqa)localObject).jdField_b_of_type_JavaUtilArrayList.size())
       {
-        localavjs = (avjs)((avjv)localObject).jdField_b_of_type_JavaUtilArrayList.get(paramInt);
-        if (paramLong >= localavjs.jdField_a_of_type_Long + localavjs.jdField_b_of_type_Long) {}
+        localawpx = (awpx)((awqa)localObject).jdField_b_of_type_JavaUtilArrayList.get(paramInt);
+        if (paramLong >= localawpx.jdField_a_of_type_Long + localawpx.jdField_b_of_type_Long) {}
       }
       else
       {
-        if (localavjs != null) {
+        if (localawpx != null) {
           break;
         }
         QLog.i("KSongView", 2, "error, charaxter is null...");
@@ -95,23 +95,23 @@ public class KSongView
       }
       paramInt += 1;
     }
-    localObject = (avjs)((avjv)localObject).jdField_b_of_type_JavaUtilArrayList.get(((avjv)localObject).jdField_b_of_type_JavaUtilArrayList.size() - 1);
-    float f = (float)(paramLong - localavjs.jdField_a_of_type_Long) / (float)localavjs.jdField_b_of_type_Long;
-    return (localavjs.jdField_a_of_type_Int + f) / ((avjs)localObject).jdField_b_of_type_Int;
+    localObject = (awpx)((awqa)localObject).jdField_b_of_type_JavaUtilArrayList.get(((awqa)localObject).jdField_b_of_type_JavaUtilArrayList.size() - 1);
+    float f = (float)(paramLong - localawpx.jdField_a_of_type_Long) / (float)localawpx.jdField_b_of_type_Long;
+    return (localawpx.jdField_a_of_type_Int + f) / ((awpx)localObject).jdField_b_of_type_Int;
   }
   
-  private bhky a(String paramString)
+  private bivo a(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       QLog.i("KSongView", 2, "error! config path wrong...");
     }
-    bhky localbhky;
+    bivo localbivo;
     do
     {
       return null;
       try
       {
-        paramString = akgd.b(paramString);
+        paramString = albw.b(paramString);
         QLog.i("KSongView", 2, "config_content = " + paramString);
         if (TextUtils.isEmpty(paramString))
         {
@@ -125,21 +125,21 @@ public class KSongView
         return null;
       }
       paramString = new JSONObject(paramString);
-      localbhky = new bhky();
-      localbhky.jdField_a_of_type_JavaLangString = paramString.optString("name");
-      localbhky.jdField_a_of_type_JavaLangString = paramString.optString("singer");
-      localbhky.jdField_a_of_type_Long = paramString.optLong("time");
-      localbhky.jdField_b_of_type_JavaLangString = paramString.optString("ksongId");
+      localbivo = new bivo();
+      localbivo.jdField_a_of_type_JavaLangString = paramString.optString("name");
+      localbivo.jdField_a_of_type_JavaLangString = paramString.optString("singer");
+      localbivo.jdField_a_of_type_Long = paramString.optLong("time");
+      localbivo.jdField_b_of_type_JavaLangString = paramString.optString("ksongId");
       paramString = paramString.optJSONObject("qrcConfig");
     } while (paramString == null);
-    localbhky.jdField_b_of_type_Long = paramString.optLong("start", 0L);
-    localbhky.c = paramString.optLong("end", 0L);
-    localbhky.d = paramString.optLong("pretime", 0L);
-    localbhky.e = paramString.optLong("total", 0L);
-    if ((0L < localbhky.jdField_b_of_type_Long) && (0L < localbhky.c) && (0L < localbhky.d) && (0L < localbhky.e))
+    localbivo.jdField_b_of_type_Long = paramString.optLong("start", 0L);
+    localbivo.c = paramString.optLong("end", 0L);
+    localbivo.d = paramString.optLong("pretime", 0L);
+    localbivo.e = paramString.optLong("total", 0L);
+    if ((0L < localbivo.jdField_b_of_type_Long) && (0L < localbivo.c) && (0L < localbivo.d) && (0L < localbivo.e))
     {
-      paramString = localbhky;
-      if (localbhky.jdField_b_of_type_Long < localbhky.c) {}
+      paramString = localbivo;
+      if (localbivo.jdField_b_of_type_Long < localbivo.c) {}
     }
     else
     {
@@ -170,13 +170,13 @@ public class KSongView
     addView(localLinearLayout, paramAttributeSet);
     localObject1 = new LinearLayout(paramContext);
     ((LinearLayout)localObject1).setOrientation(1);
-    ((LinearLayout)localObject1).setBackgroundResource(2130843483);
+    ((LinearLayout)localObject1).setBackgroundResource(2130843520);
     ((LinearLayout)localObject1).setClickable(true);
     addView((View)localObject1, paramAttributeSet);
     paramAttributeSet = this.jdField_a_of_type_AndroidWidgetListView;
     localObject1 = new ArrayList();
     this.jdField_a_of_type_JavaUtilList = ((List)localObject1);
-    paramContext = new QwAdapter(paramContext, (List)localObject1, 2131560509, new bhld(this));
+    paramContext = new QwAdapter(paramContext, (List)localObject1, 2131560560, new bivt(this));
     this.jdField_a_of_type_CooperationQwalletPluginQwAdapter = paramContext;
     paramAttributeSet.setAdapter(paramContext);
   }
@@ -191,16 +191,16 @@ public class KSongView
       QLog.i("KSongView", 2, "error, out of scrop...");
       return false;
     }
-    paramLong = this.jdField_a_of_type_Bhky.jdField_b_of_type_Long + paramLong - this.jdField_a_of_type_Bhky.d;
-    if (this.jdField_a_of_type_Bhla != null) {
-      this.jdField_a_of_type_Bhla.a(paramLong);
+    paramLong = this.jdField_a_of_type_Bivo.jdField_b_of_type_Long + paramLong - this.jdField_a_of_type_Bivo.d;
+    if (this.jdField_a_of_type_Bivq != null) {
+      this.jdField_a_of_type_Bivq.a(paramLong);
     }
-    Object localObject = (avjv)this.jdField_a_of_type_JavaUtilList.get(this.jdField_b_of_type_Int);
-    long l = ((avjv)localObject).jdField_a_of_type_Long + ((avjv)localObject).jdField_b_of_type_Long;
+    Object localObject = (awqa)this.jdField_a_of_type_JavaUtilList.get(this.jdField_b_of_type_Int);
+    long l = ((awqa)localObject).jdField_a_of_type_Long + ((awqa)localObject).jdField_b_of_type_Long;
     b(paramLong);
     if (paramLong > l)
     {
-      if (l >= this.jdField_a_of_type_Bhky.c)
+      if (l >= this.jdField_a_of_type_Bivo.c)
       {
         QLog.i("KSongView", 2, "play over, no scroll...");
         return false;
@@ -217,8 +217,8 @@ public class KSongView
   private boolean a(String paramString)
   {
     int k = 0;
-    Object localObject = akgd.b(paramString);
-    paramString = avkb.a((String)localObject, true);
+    Object localObject = albw.b(paramString);
+    paramString = awqg.a((String)localObject, true);
     if ((paramString == null) || (paramString.a == null))
     {
       QLog.i("KSongView", 2, "error, parse Qrc fail, qrc = " + (String)localObject);
@@ -230,11 +230,11 @@ public class KSongView
       int j = k;
       if (i < paramString.a.size())
       {
-        localObject = (avjv)paramString.a.get(i);
-        if ((((avjv)localObject).jdField_a_of_type_Long >= this.jdField_a_of_type_Bhky.jdField_b_of_type_Long) && (((avjv)localObject).jdField_a_of_type_Long + ((avjv)localObject).jdField_b_of_type_Long <= this.jdField_a_of_type_Bhky.c)) {
+        localObject = (awqa)paramString.a.get(i);
+        if ((((awqa)localObject).jdField_a_of_type_Long >= this.jdField_a_of_type_Bivo.jdField_b_of_type_Long) && (((awqa)localObject).jdField_a_of_type_Long + ((awqa)localObject).jdField_b_of_type_Long <= this.jdField_a_of_type_Bivo.c)) {
           this.jdField_a_of_type_JavaUtilList.add(localObject);
         }
-        if (((avjv)localObject).jdField_a_of_type_Long >= this.jdField_a_of_type_Bhky.c) {
+        if (((awqa)localObject).jdField_a_of_type_Long >= this.jdField_a_of_type_Bivo.c) {
           j = k;
         }
       }
@@ -242,7 +242,7 @@ public class KSongView
       {
         while (j < 5)
         {
-          this.jdField_a_of_type_JavaUtilList.add(new avjv());
+          this.jdField_a_of_type_JavaUtilList.add(new awqa());
           j += 1;
         }
       }
@@ -261,7 +261,7 @@ public class KSongView
     do
     {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongTextView = ((KSongTextView)localView.findViewById(2131374549));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongTextView = ((KSongTextView)localView.findViewById(2131374787));
       QLog.i("KSongView", 2, "index line = " + this.jdField_b_of_type_Int);
     } while (this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongTextView == null);
     float f = a(this.jdField_b_of_type_Int, paramLong);
@@ -279,9 +279,9 @@ public class KSongView
     finally {}
   }
   
-  public bhky a()
+  public bivo a()
   {
-    return this.jdField_a_of_type_Bhky;
+    return this.jdField_a_of_type_Bivo;
   }
   
   public void a()
@@ -294,7 +294,7 @@ public class KSongView
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongProsBar != null) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongProsBar.a(0L);
     }
-    this.jdField_a_of_type_Bhlc.removeMessages(0);
+    this.jdField_a_of_type_Bivs.removeMessages(0);
     if (this.jdField_a_of_type_Int > 0) {
       this.jdField_a_of_type_Int = 0;
     }
@@ -307,7 +307,7 @@ public class KSongView
     }
   }
   
-  public void a(String paramString1, String paramString2, KSongProsBar paramKSongProsBar, bhla parambhla)
+  public void a(String paramString1, String paramString2, KSongProsBar paramKSongProsBar, bivq parambivq)
   {
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
     {
@@ -315,9 +315,9 @@ public class KSongView
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongProsBar = paramKSongProsBar;
-    setKListener(parambhla);
-    this.jdField_a_of_type_Bhlc = new bhlc(this);
-    new bhlb(this).execute(new String[] { paramString1, paramString2 });
+    setKListener(parambivq);
+    this.jdField_a_of_type_Bivs = new bivs(this);
+    new bivr(this).execute(new String[] { paramString1, paramString2 });
   }
   
   public void a(boolean paramBoolean)
@@ -338,7 +338,7 @@ public class KSongView
     if (this.jdField_a_of_type_Int == 2)
     {
       this.jdField_a_of_type_Int = 1;
-      this.jdField_a_of_type_Bhlc.sendEmptyMessage(0);
+      this.jdField_a_of_type_Bivs.sendEmptyMessage(0);
       this.jdField_b_of_type_Long += System.currentTimeMillis() - this.c;
       return;
     }
@@ -353,11 +353,11 @@ public class KSongView
     for (;;)
     {
       localKSongTextView.a(i, 0);
-      this.jdField_b_of_type_ComTencentMobileqqWidgetKsongKSongTextView.a(this.jdField_a_of_type_Bhky.d, null);
+      this.jdField_b_of_type_ComTencentMobileqqWidgetKsongKSongTextView.a(this.jdField_a_of_type_Bivo.d, null);
       this.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_Bhlc.sendEmptyMessage(0);
+      this.jdField_a_of_type_Bivs.sendEmptyMessage(0);
       return;
-      i = getResources().getColor(2131166135);
+      i = getResources().getColor(2131166144);
     }
   }
   
@@ -366,24 +366,24 @@ public class KSongView
     if (this.jdField_a_of_type_Int == 1)
     {
       this.jdField_a_of_type_Int = 2;
-      this.jdField_a_of_type_Bhlc.removeMessages(0);
+      this.jdField_a_of_type_Bivs.removeMessages(0);
       this.c = System.currentTimeMillis();
     }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Bhlc != null) {
-      this.jdField_a_of_type_Bhlc.removeMessages(0);
+    if (this.jdField_a_of_type_Bivs != null) {
+      this.jdField_a_of_type_Bivs.removeMessages(0);
     }
     if (this.jdField_a_of_type_Int > 0) {
       this.jdField_a_of_type_Int = 0;
     }
   }
   
-  public void setKListener(bhla parambhla)
+  public void setKListener(bivq parambivq)
   {
-    this.jdField_a_of_type_Bhla = parambhla;
+    this.jdField_a_of_type_Bivq = parambivq;
   }
 }
 

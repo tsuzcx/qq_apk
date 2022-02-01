@@ -1,9 +1,8 @@
-public class akwx
+import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
+
+public abstract interface akwx
 {
-  public int a;
-  public boolean a;
-  public boolean b;
-  public boolean c;
+  public abstract void onDownloadResFinished(String paramString1, int paramInt, String paramString2, ResourceInfo paramResourceInfo);
 }
 
 

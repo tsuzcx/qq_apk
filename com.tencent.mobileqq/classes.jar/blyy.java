@@ -1,27 +1,21 @@
-import android.app.Dialog;
-import android.app.FragmentManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkShareJumpActivity;
 
-class blyy
-  implements bmaa
+public class blyy
+  implements DialogInterface.OnClickListener
 {
-  blyy(blys paramblys, String paramString) {}
+  public blyy(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    blys.a(this.jdField_a_of_type_Blys).dismiss();
-    this.jdField_a_of_type_Blys.getFragmentManager().popBackStack();
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_Blys.a.a(this.jdField_a_of_type_JavaLangString, paramString);
-    blys.a(this.jdField_a_of_type_Blys).dismiss();
-    this.jdField_a_of_type_Blys.getFragmentManager().popBackStack();
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     blyy
  * JD-Core Version:    0.7.0.1
  */

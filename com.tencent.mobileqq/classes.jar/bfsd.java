@@ -1,8 +1,13 @@
-import android.graphics.Bitmap;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 
-public abstract interface bfsd
+public class bfsd
 {
-  public abstract void a(Bitmap paramBitmap);
+  public ByteArrayOutputStream a;
+  public File a;
+  public FileOutputStream a;
+  public String a;
 }
 
 

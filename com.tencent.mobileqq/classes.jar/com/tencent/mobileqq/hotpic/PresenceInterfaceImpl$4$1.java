@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.hotpic;
 
-import auij;
-import auio;
+import avod;
+import avoi;
 import com.tencent.qphone.base.util.QLog;
 
 public class PresenceInterfaceImpl$4$1
   implements Runnable
 {
-  public PresenceInterfaceImpl$4$1(auio paramauio) {}
+  public PresenceInterfaceImpl$4$1(avoi paramavoi) {}
   
   public void run()
   {
-    auij.a(this.a.jdField_a_of_type_Auij, true);
-    auij.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
-    this.a.jdField_a_of_type_Auij.a.b(-11);
+    avod.a(this.a.jdField_a_of_type_Avod, true);
+    avod.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
+    this.a.jdField_a_of_type_Avod.a.b(-11);
     QLog.d("PresenceInterfaceImpl", 2, "saveUserPermission false");
   }
 }

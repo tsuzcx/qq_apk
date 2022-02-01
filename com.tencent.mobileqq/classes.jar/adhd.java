@@ -1,30 +1,29 @@
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.data.TroopMemberCardInfo;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import java.util.ArrayList;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adhd
-  extends andd
+  implements View.OnClickListener
 {
-  public adhd(ForwardRecentActivity paramForwardRecentActivity) {}
+  public adhd(AddRequestActivity paramAddRequestActivity) {}
   
-  protected void onGetTroopMemberCardInfoResult(boolean paramBoolean1, ArrayList<TroopMemberCardInfo> paramArrayList, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean1) && (paramArrayList != null) && (paramArrayList.size() > 0) && (paramBoolean2)) {
-      ForwardRecentActivity.f(this.a);
+    Intent localIntent = this.a.getIntent();
+    localIntent.putExtra("param_wzry_data", AddRequestActivity.a(this.a));
+    ajas.a(this.a.app, this.a, this.a.jdField_a_of_type_JavaLangString, AddRequestActivity.a(this.a), this.a.jdField_a_of_type_Int, AddRequestActivity.a(this.a), localIntent);
+    if (AddRequestActivity.a(this.a) != null) {
+      bdla.b(this.a.app, "CliOper", "", "", "0X800843E", "0X800843E", 0, 0, "", "", "", "");
     }
-  }
-  
-  protected void onTroopSearch(boolean paramBoolean1, byte paramByte, TroopInfo paramTroopInfo, boolean paramBoolean2)
-  {
-    if (paramBoolean1) {
-      ForwardRecentActivity.f(this.a);
-    }
+    bdla.b(this.a.app, "CliOper", "", "", "0X800AA42", "0X800AA42", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adhd
  * JD-Core Version:    0.7.0.1
  */

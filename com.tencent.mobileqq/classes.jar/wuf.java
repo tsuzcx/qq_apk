@@ -1,72 +1,60 @@
-import android.os.Bundle;
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.support.v4.view.accessibility.AccessibilityRecordCompat;
-import android.view.View;
-import android.view.accessibility.AccessibilityEvent;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqReportEvil;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspReportEvil;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class wuf
-  extends AccessibilityDelegateCompat
+  extends wfm<wvq>
 {
-  public wuf(XViewPager paramXViewPager) {}
+  public static final String a = weg.a("StorySvc.video_report_evil");
+  public long b;
+  public String b;
+  public final int c;
+  public String c;
   
-  private boolean a()
+  public String a()
   {
-    return (XViewPager.a(this.a) != null) && (XViewPager.a(this.a).getCount() > 1);
+    return a;
   }
   
-  public void onInitializeAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
+  public wvq a(byte[] paramArrayOfByte)
   {
-    super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
-    paramAccessibilityEvent.setClassName(XViewPager.class.getName());
-    paramView = AccessibilityRecordCompat.obtain();
-    paramView.setScrollable(a());
-    if ((paramAccessibilityEvent.getEventType() == 4096) && (XViewPager.a(this.a) != null))
+    qqstory_service.RspReportEvil localRspReportEvil = new qqstory_service.RspReportEvil();
+    try
     {
-      paramView.setItemCount(XViewPager.a(this.a).getCount());
-      paramView.setFromIndex(XViewPager.a(this.a));
-      paramView.setToIndex(XViewPager.a(this.a));
+      localRspReportEvil.mergeFrom(paramArrayOfByte);
+      return new wvq(localRspReportEvil);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
   }
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  protected byte[] a()
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    paramAccessibilityNodeInfoCompat.setClassName(XViewPager.class.getName());
-    paramAccessibilityNodeInfoCompat.setScrollable(a());
-    if (this.a.canScrollHorizontally(1)) {
-      paramAccessibilityNodeInfoCompat.addAction(4096);
+    qqstory_service.ReqReportEvil localReqReportEvil = new qqstory_service.ReqReportEvil();
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      localReqReportEvil.vid.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
     }
-    if (this.a.canScrollHorizontally(-1)) {
-      paramAccessibilityNodeInfoCompat.addAction(8192);
+    if (this.jdField_b_of_type_Long != 0L) {
+      localReqReportEvil.tuin.set(this.jdField_b_of_type_Long);
     }
+    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+      localReqReportEvil.union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
+    }
+    localReqReportEvil.type.set(this.jdField_c_of_type_Int);
+    return localReqReportEvil.toByteArray();
   }
   
-  public boolean performAccessibilityAction(View paramView, int paramInt, Bundle paramBundle)
+  public String toString()
   {
-    if (super.performAccessibilityAction(paramView, paramInt, paramBundle)) {
-      return true;
-    }
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    case 4096: 
-      if (this.a.canScrollHorizontally(1))
-      {
-        this.a.setCurrentItem(XViewPager.a(this.a) + 1);
-        return true;
-      }
-      return false;
-    }
-    if (this.a.canScrollHorizontally(-1))
-    {
-      this.a.setCurrentItem(XViewPager.a(this.a) - 1);
-      return true;
-    }
-    return false;
+    return "ReportEvilRequest{impeachType=" + this.jdField_c_of_type_Int + ", vid='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
   }
 }
 

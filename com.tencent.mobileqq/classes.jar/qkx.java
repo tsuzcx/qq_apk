@@ -1,30 +1,18 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyShareFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class qkx
-  implements ViewBase.OnClickListener
+  implements View.OnClickListener
 {
-  qkx(qkt paramqkt) {}
+  qkx(qkw paramqkw, String paramString, ArticleInfo paramArticleInfo) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onClick(View paramView)
   {
-    ozp.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
-    paramViewBase = qks.a(this.a.jdField_a_of_type_Qks, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.getData());
-    if (paramViewBase == null)
-    {
-      QLog.e("RecycleViewAdapterHelper", 1, "daily share info is null");
-      return;
-    }
-    Intent localIntent = new Intent();
-    localIntent.putExtra("share_info_intent", paramViewBase.toString());
-    PublicFragmentActivity.a(qks.a(this.a.jdField_a_of_type_Qks).getContext(), localIntent, ReadInJoyDailyShareFragment.class);
+    pkh.a(qkw.a(this.jdField_a_of_type_Qkw), this.jdField_a_of_type_JavaLangString);
+    qkw.a(1, pqw.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

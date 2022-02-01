@@ -1,44 +1,104 @@
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCClient;
+import org.json.JSONObject;
 
-class bbcr
-  implements View.OnClickListener
+public class bbcr
+  extends WebViewPlugin
 {
-  bbcr(bbcm parambbcm, bazm parambazm, Context paramContext) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   
-  public void onClick(View paramView)
+  public bbcr()
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Bazm.m))
+    this.mPluginNameSpace = "recallFriend";
+  }
+  
+  private Context a()
+  {
+    Activity localActivity2 = this.mRuntime.a();
+    Activity localActivity1 = localActivity2;
+    if (localActivity2 != null)
     {
-      Object localObject = bbgh.a(this.jdField_a_of_type_Bazm.a(), 0, bbda.a(this.jdField_a_of_type_Bazm.c));
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", (String)localObject);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      localObject = new StringBuilder();
-      int i = 0;
-      if (i < this.jdField_a_of_type_Bazm.a.size())
+      localActivity1 = localActivity2;
+      if ((localActivity2 instanceof BasePluginActivity)) {
+        localActivity1 = ((BasePluginActivity)localActivity2).getOutActivity();
+      }
+    }
+    return localActivity1;
+  }
+  
+  void a(String paramString)
+  {
+    paramString = new ProfileActivity.AllInOne(paramString, 1);
+    startActivityForResult(new Intent(this.jdField_a_of_type_AndroidContentContext, MoveToGroupActivity.class).putExtra("friendUin", paramString.a), (byte)0);
+  }
+  
+  void b(String paramString)
+  {
+    EIPCClient localEIPCClient = QIPCClientHelper.getInstance().getClient();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("cur_friend_uin", paramString);
+    localEIPCClient.callServer("CommonModule", "jumpToRemarkEdit", localBundle);
+  }
+  
+  void c(String paramString)
+  {
+    EIPCClient localEIPCClient = QIPCClientHelper.getInstance().getClient();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("cur_friend_uin", paramString);
+    localEIPCClient.callServer("CommonModule", "jumpToCommonGroup", localBundle);
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ("recallFriend".equals(paramString2))
+    {
+      try
       {
-        if (i != this.jdField_a_of_type_Bazm.a.size() - 1) {
-          ((StringBuilder)localObject).append(((bayz)this.jdField_a_of_type_Bazm.a.get(i)).b).append("::");
+        if (QLog.isColorLevel()) {
+          QLog.d("ClueApiPlugin", 2, String.format("handleJsRequest method=%s args=%s", new Object[] { paramString3, paramVarArgs[0] }));
         }
-        for (;;)
+        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+        paramString1 = paramJsBridgeListener.optString("opType");
+        if ("move_to_newgroup".equals(paramString1))
         {
-          i += 1;
-          break;
-          ((StringBuilder)localObject).append(((bayz)this.jdField_a_of_type_Bazm.a.get(i)).b);
+          a(paramJsBridgeListener.optString("uin"));
+          return false;
+        }
+        if ("remark_edit".equals(paramString1))
+        {
+          b(paramJsBridgeListener.optString("uin"));
+          return false;
         }
       }
-      bbda.a(null, new ReportModelDC02528().module("all_result").action("clk_web_search").obj1("2073745984").ver1(this.jdField_a_of_type_Bazm.g).ver2(bbda.a(UniteSearchActivity.d)).ver4(((StringBuilder)localObject).toString()).ver5("1").ver6("2").ver7("{experiment_id:" + bbda.b + "}"));
+      catch (Exception paramJsBridgeListener)
+      {
+        QLog.e("ClueApiPlugin", 1, "handleJsRequest fail.", paramJsBridgeListener);
+        return false;
+      }
+      if ("common_group".equals(paramString1)) {
+        c(paramJsBridgeListener.optString("uin"));
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return false;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    this.jdField_a_of_type_AndroidContentContext = a();
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = this.mRuntime.a();
   }
 }
 

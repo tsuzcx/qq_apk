@@ -1,79 +1,124 @@
+import Wallet.RedPackGrapInfo;
 import android.content.Context;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.ViewConfiguration;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.ViewGroup;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList.HbListAdapter.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aktp
-  extends GestureDetector.SimpleOnGestureListener
+  extends RecyclerView.Adapter<aktq>
 {
-  float jdField_a_of_type_Float;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<RedPackGrapInfo> jdField_a_of_type_JavaUtilList;
   
-  public aktp(NewFlowCameraActivity paramNewFlowCameraActivity, Context paramContext)
+  public aktp(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList, Context paramContext)
   {
-    this.jdField_a_of_type_Float = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 2);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public aktq a(ViewGroup paramViewGroup, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.r == 10002) {
-      xwa.a("video_shoot", "camera_clkdouble", 0, 0, new String[0]);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.i) {}
-    do
+    return new aktq(this, new aktr(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList, this.jdField_a_of_type_AndroidContentContext, new aheu(TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), this.jdField_a_of_type_AndroidContentContext, TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList))));
+  }
+  
+  public void a(aktq paramaktq, int paramInt)
+  {
+    RedPackGrapInfo localRedPackGrapInfo = (RedPackGrapInfo)this.jdField_a_of_type_JavaUtilList.get(paramaktq.getPosition());
+    if (localRedPackGrapInfo == null) {}
+    for (;;)
     {
-      do
-      {
-        return true;
-        if (NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity) != null) {
-          NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity).c();
-        }
-      } while (!bbua.c());
-      NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, -1, false);
-    } while ((akrw.a != 1) || (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a != null));
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.y();
-    return true;
-  }
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
-  {
-    return super.onDown(paramMotionEvent);
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
-      return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.t) {
-      return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    float f = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-    if (Math.abs(f) > this.jdField_a_of_type_Float)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a(f);
-      if (NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity) != null) {
-        NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity).c();
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramaktq, paramInt, getItemId(paramInt));
+      return;
+      aktr localaktr = paramaktq.a;
+      if (localaktr != null) {
+        localaktr.a(localRedPackGrapInfo);
       }
-      return true;
     }
-    return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
   }
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  void a(String paramString)
   {
-    return NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, paramMotionEvent);
+    for (;;)
+    {
+      try
+      {
+        if (this.jdField_a_of_type_JavaUtilList == null) {
+          break label233;
+        }
+        if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {
+          break label234;
+        }
+        return;
+      }
+      catch (Throwable paramString)
+      {
+        RedPackGrapInfo localRedPackGrapInfo;
+        int j;
+        if (!QLog.isColorLevel()) {
+          break label233;
+        }
+        QLog.e(TroopUnAccalimedRedPacketList.b(), 2, "removeHbList occur an exception: " + paramString);
+        return;
+        i += 1;
+        continue;
+        TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList).postDelayed(new TroopUnAccalimedRedPacketList.HbListAdapter.1(this), 300L);
+        return;
+        i = 0;
+        continue;
+      }
+      if (i < this.jdField_a_of_type_JavaUtilList.size())
+      {
+        localRedPackGrapInfo = (RedPackGrapInfo)this.jdField_a_of_type_JavaUtilList.get(i);
+        if ((localRedPackGrapInfo != null) && (localRedPackGrapInfo.sBiilNo.equals(paramString)))
+        {
+          j = i;
+          if (i == this.jdField_a_of_type_JavaUtilList.size()) {
+            j = i - 1;
+          }
+          this.jdField_a_of_type_JavaUtilList.remove(j);
+          notifyItemRemoved(j);
+          notifyItemRangeChanged(j, this.jdField_a_of_type_JavaUtilList.size());
+          if (TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList) == null) {
+            break label233;
+          }
+          if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty())) {
+            continue;
+          }
+          if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList.a == null) {
+            break label233;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList.a.dismiss();
+        }
+      }
+      label233:
+      return;
+      label234:
+      int i = 0;
+    }
   }
   
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  void a(List<RedPackGrapInfo> paramList)
   {
-    return super.onSingleTapUp(paramMotionEvent);
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public int getItemCount()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty())) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

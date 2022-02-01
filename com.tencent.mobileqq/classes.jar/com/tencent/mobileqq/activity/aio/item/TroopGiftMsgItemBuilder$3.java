@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agrz;
+import ahkx;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import com.tencent.mobileqq.widget.BubbleImageView;
@@ -8,11 +8,11 @@ import com.tencent.mobileqq.widget.BubbleImageView;
 public class TroopGiftMsgItemBuilder$3
   implements Runnable
 {
-  public TroopGiftMsgItemBuilder$3(agrz paramagrz, String paramString1, int paramInt, Bitmap paramBitmap, BubbleImageView paramBubbleImageView, String paramString2, SharedPreferences paramSharedPreferences, long paramLong) {}
+  public TroopGiftMsgItemBuilder$3(ahkx paramahkx, String paramString1, int paramInt, Bitmap paramBitmap, BubbleImageView paramBubbleImageView, String paramString2, SharedPreferences paramSharedPreferences, long paramLong) {}
   
   public void run()
   {
-    agrz.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView, this.b, this.jdField_a_of_type_AndroidContentSharedPreferences, this.jdField_a_of_type_Long);
+    ahkx.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView, this.b, this.jdField_a_of_type_AndroidContentSharedPreferences, this.jdField_a_of_type_Long);
   }
 }
 

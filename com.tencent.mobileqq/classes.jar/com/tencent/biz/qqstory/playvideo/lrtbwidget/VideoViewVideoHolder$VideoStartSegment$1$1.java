@@ -4,9 +4,9 @@ import android.os.Handler;
 import android.os.SystemClock;
 import android.view.View;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import wrb;
-import wty;
-import xvv;
+import xfw;
+import xit;
+import ykq;
 
 class VideoViewVideoHolder$VideoStartSegment$1$1
   implements Runnable
@@ -16,27 +16,27 @@ class VideoViewVideoHolder$VideoStartSegment$1$1
   public void run()
   {
     if (this.a.a.isCanceled()) {}
-    wrb localwrb;
+    xfw localxfw;
     do
     {
       return;
       if ((!this.a.a.this$0.c()) || (this.a.a.this$0.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder == null)) {
         break;
       }
-      xvv.d(this.a.a.this$0.jdField_a_of_type_JavaLangString, "VideoStartSegment, wait first not-black frame");
+      ykq.d(this.a.a.this$0.jdField_a_of_type_JavaLangString, "VideoStartSegment, wait first not-black frame");
       this.a.a.this$0.a().setVisibility(8);
       this.a.a.this$0.b().setVisibility(8);
       this.a.a.this$0.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder.a(true, true);
-      VideoViewVideoHolder.a(this.a.a.this$0).b(this.a.a.this$0, this.a.a.this$0.jdField_a_of_type_Wur);
+      VideoViewVideoHolder.a(this.a.a.this$0).b(this.a.a.this$0, this.a.a.this$0.jdField_a_of_type_Xjm);
       VideoViewVideoHolder.a(this.a.a.this$0, 12);
       this.a.a.a = SystemClock.uptimeMillis();
       VideoViewVideoHolder.a(this.a.a.this$0).removeCallbacksAndMessages(null);
       VideoViewVideoHolder.a(this.a.a.this$0).post(this.a.a);
-      localwrb = (wrb)this.a.a.this$0.a(wrb.class);
-    } while (localwrb == null);
-    localwrb.a.setVisibility(0);
+      localxfw = (xfw)this.a.a.this$0.a(xfw.class);
+    } while (localxfw == null);
+    localxfw.a.setVisibility(0);
     return;
-    xvv.e(this.a.a.this$0.jdField_a_of_type_JavaLangString, "VideoStartSegment, do not wait first not-black frame");
+    ykq.e(this.a.a.this$0.jdField_a_of_type_JavaLangString, "VideoStartSegment, do not wait first not-black frame");
     VideoViewVideoHolder.VideoStartSegment.a(this.a.a, new ErrorMessage(0, "onPrepared, is not on foreground"));
   }
 }

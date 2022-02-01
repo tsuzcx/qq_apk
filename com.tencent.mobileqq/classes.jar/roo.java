@@ -1,17 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-public class roo
-  implements View.OnClickListener
+public final class roo
+  implements Parcelable.Creator<ArticleInfo>
 {
-  public roo(ReadInJoySelectMemberFragment paramReadInJoySelectMemberFragment) {}
-  
-  public void onClick(View paramView)
+  public ArticleInfo a(Parcel paramParcel)
   {
-    this.a.e();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new ArticleInfo(paramParcel);
+  }
+  
+  public ArticleInfo[] a(int paramInt)
+  {
+    return new ArticleInfo[paramInt];
   }
 }
 

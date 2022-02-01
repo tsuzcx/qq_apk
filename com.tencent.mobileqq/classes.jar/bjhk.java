@@ -1,113 +1,83 @@
-import android.os.Build;
-import com.tencent.common.config.AppSetting;
-import com.tencent.ims.SafeReport.LogItem;
-import com.tencent.ims.SafeReport.ReqBody;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.common.QSecRptController.1;
-import com.tencent.qqprotect.common.QSecRptControllerImpl;
-import mqq.app.MobileQQ;
+import android.util.Log;
+import com.tencent.tmassistant.common.ProtocolPackage;
+import com.tencent.tmassistant.common.jce.ReqHead;
+import com.tencent.tmassistant.common.jce.Request;
+import com.tencent.tmassistant.common.jce.Response;
+import com.tencent.tmassistant.common.jce.StatItem;
+import com.tencent.tmassistant.common.jce.StatReportRequest;
+import com.tencent.tmassistant.common.jce.StatReportResponse;
+import java.util.ArrayList;
 
 public class bjhk
+  extends bjhm
 {
-  public static int a(int paramInt)
+  protected bjhl a;
+  
+  public int a(ArrayList<StatItem> paramArrayList)
   {
-    if (paramInt > 100) {
-      return 2;
-    }
-    return 1;
+    StatReportRequest localStatReportRequest = new StatReportRequest();
+    localStatReportRequest.data = paramArrayList;
+    return a(localStatReportRequest);
   }
   
-  public static String a(int paramInt)
+  public void a(bjhl parambjhl)
   {
-    try
+    this.a = parambjhl;
+  }
+  
+  public void onFinished(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt)
+  {
+    Log.i("StatReportHttpRequest", "errorCode: " + paramInt);
+    Response localResponse = ProtocolPackage.unpackPackage(paramArrayOfByte2);
+    paramArrayOfByte1 = ProtocolPackage.unpackRequestPackage(paramArrayOfByte1);
+    if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.head != null)) {}
+    for (int i = paramArrayOfByte1.head.requestId;; i = 0)
     {
-      localObject = NetConnInfoCenter.GUID;
-      String str2 = DeviceInfoUtil.getDeviceOSVersion();
-      String str3 = DeviceInfoUtil.getQQVersionWithCode(MobileQQ.sMobileQQ);
-      String str4 = bjhj.a();
-      String str5 = bjhj.b();
-      String str6 = Build.CPU_ABI;
-      String str7 = Build.MODEL;
-      String str8 = Build.MANUFACTURER;
-      bjhn localbjhn = new bjhn();
-      localbjhn.a((byte[])localObject).a(str2).a(str3).a(str4).a(str5).a(str6).a(str7).a(str8);
-      if (paramInt >= 2) {
-        localbjhn.a(bjhj.c()).a(AppSetting.a()).a(DeviceInfoUtil.getAndroidID()).a("").a("");
-      }
-      localObject = localbjhn.toString();
-    }
-    catch (Throwable localThrowable)
-    {
-      do
+      if ((paramArrayOfByte2 == null) && (this.a != null))
       {
-        Object localObject;
-        localThrowable.printStackTrace();
-        String str1 = ",,,,,,,";
-      } while (paramInt < 2);
-    }
-    return localObject;
-    return ",,,,,,," + ",,,,";
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    a(paramString, paramInt, 0, 1);
-  }
-  
-  public static void a(String paramString, int paramInt1, int paramInt2)
-  {
-    a(paramString, paramInt1, 0, paramInt2);
-  }
-  
-  public static void a(String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    QSecRptControllerImpl.a().b(paramString, paramInt1, paramInt2, paramInt3);
-  }
-  
-  public static void a(String paramString, int paramInt1, int paramInt2, QQAppInterface paramQQAppInterface)
-  {
-    SafeReport.ReqBody localReqBody = new SafeReport.ReqBody();
-    SafeReport.LogItem localLogItem = new SafeReport.LogItem();
-    localLogItem.uint32_rpt_id.set(paramInt1);
-    String str = a(a(paramInt1));
-    paramString = str + "," + paramInt2 + "," + paramString;
-    localLogItem.bytes_rpt_data.set(ByteStringMicro.copyFrom(paramString.getBytes()));
-    localReqBody.LogItem_reportdata.add(localLogItem);
-    if (QLog.isColorLevel()) {
-      QLog.d("QSRPT", 2, paramString);
-    }
-    ThreadManager.post(new QSecRptController.1(paramQQAppInterface, localReqBody), 5, null, true);
-  }
-  
-  private static void b(QQAppInterface paramQQAppInterface, SafeReport.ReqBody paramReqBody)
-  {
-    if (paramReqBody == null) {
-      return;
-    }
-    if (paramQQAppInterface == null) {
-      paramQQAppInterface = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-    }
-    for (;;)
-    {
-      nmb.a(paramQQAppInterface, new bjhl(), paramReqBody.toByteArray(), "MqqSafeDataRpt.MQDun");
-      return;
+        Log.i("StatReportHttpRequest", "response is null");
+        this.a.a(i, null, null, paramInt);
+        return;
+      }
+      if (this.a != null)
+      {
+        if ((localResponse == null) || (localResponse.body == null)) {
+          break label225;
+        }
+        paramArrayOfByte1 = ProtocolPackage.unpageageJceResponse(localResponse.body, StatReportResponse.class);
+        if (paramArrayOfByte1 == null) {
+          break label208;
+        }
+        if (paramInt != 0) {
+          break label191;
+        }
+        if ((paramArrayOfByte1 instanceof StatReportResponse))
+        {
+          paramArrayOfByte1 = (StatReportResponse)paramArrayOfByte1;
+          if (paramArrayOfByte1.ret != 0) {
+            break label171;
+          }
+          this.a.a(i, null, paramArrayOfByte1, 0);
+        }
+      }
+      for (;;)
+      {
+        Log.i("StatReportHttpRequest", "exit");
+        return;
+        label171:
+        this.a.a(i, null, paramArrayOfByte1, paramArrayOfByte1.ret);
+        continue;
+        label191:
+        this.a.a(i, null, null, paramInt);
+        continue;
+        label208:
+        this.a.a(i, null, null, paramInt);
+        continue;
+        label225:
+        this.a.a(i, null, null, paramInt);
+      }
     }
   }
-  
-  public static void b(String paramString, int paramInt)
-  {
-    a(paramString, paramInt, 0, null);
-  }
-  
-  protected void b(String paramString, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

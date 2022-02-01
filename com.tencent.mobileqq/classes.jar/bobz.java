@@ -1,195 +1,81 @@
-import android.annotation.TargetApi;
-import android.os.SystemClock;
-import com.tencent.av.opengl.filter.qqavimage.QQAVImageFilterConstants;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import com.tencent.mobileqq.shortvideo.filter.FilterBusinessOperation;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
-import com.tencent.mobileqq.shortvideo.filter.QQSpecialAVFilter;
-import com.tencent.mobileqq.shortvideo.filter.QQSpecialAVFilter.MusicWaveformSupporter;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.aeeditor.module.text.AEEditorColorSelectorView;
 import java.util.List;
 
 public class bobz
-  implements bnzz, QQSpecialAVFilter.MusicWaveformSupporter
+  extends RecyclerView.Adapter<bocb>
 {
-  private int jdField_a_of_type_Int;
-  private bocw jdField_a_of_type_Bocw;
-  private MusicItemInfo jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
-  private QQFilterRenderManager jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = blik.a();
-  public boolean a;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
-  private boolean d;
+  private int jdField_a_of_type_Int = -1;
+  private bocd jdField_a_of_type_Bocd;
+  private String jdField_a_of_type_JavaLangString = "";
+  private List<Integer> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean = true;
+  private String b = "";
   
-  public bobz(List<FilterDesc> paramList, MusicItemInfo paramMusicItemInfo, int paramInt1, int paramInt2, PublishVideoEntry paramPublishVideoEntry)
+  public bobz(String paramString, List<Integer> paramList, bocd parambocd)
   {
-    if (paramList != null)
-    {
-      paramPublishVideoEntry = new ArrayList();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        FilterDesc localFilterDesc = (FilterDesc)paramList.next();
-        if (localFilterDesc != null)
-        {
-          int i = QQAVImageFilterConstants.getFilterType(localFilterDesc.id);
-          if (i == 0)
-          {
-            this.jdField_a_of_type_Boolean = false;
-            paramPublishVideoEntry.add(localFilterDesc);
-          }
-          else if (i == 2)
-          {
-            this.jdField_a_of_type_Boolean = false;
-            paramPublishVideoEntry.add(localFilterDesc);
-          }
-          else if (i == 5)
-          {
-            this.jdField_a_of_type_Boolean = false;
-            paramPublishVideoEntry.add(localFilterDesc);
-          }
-          else if (i == 1)
-          {
-            this.jdField_a_of_type_Boolean = true;
-            paramPublishVideoEntry.clear();
-            paramPublishVideoEntry.add(localFilterDesc);
-          }
-        }
-      }
-      if (paramPublishVideoEntry.size() > 0) {
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.getBusinessOperation().setFilterEffectList(paramPublishVideoEntry);
-      }
-    }
-    paramList = this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.getQQFilters(80);
-    if ((paramMusicItemInfo != null) && (paramList.size() > 0))
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        ((QQSpecialAVFilter)paramList.next()).setMusicWaveformSupporter(this);
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = paramMusicItemInfo;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = paramInt2;
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null) {
-      b();
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Bocd = parambocd;
   }
   
-  @TargetApi(17)
-  private void b()
+  private int a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null)
-    {
-      this.jdField_a_of_type_Bocw = new bocw();
-      if (!bocy.a()) {
-        break label44;
-      }
-      this.d = true;
-      if (QLog.isColorLevel()) {
-        QLog.e("QQEncodeFilterRender", 2, "musicSoundFile create give up, is rubbish Meizu");
-      }
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
+      return ((Integer)this.jdField_a_of_type_JavaUtilList.get(paramInt)).intValue();
     }
-    for (;;)
+    return 0;
+  }
+  
+  private void b(bocb parambocb, int paramInt)
+  {
+    if (this.jdField_a_of_type_Int == paramInt)
     {
+      parambocb.jdField_a_of_type_AndroidViewView.setVisibility(0);
       return;
-      label44:
-      this.jdField_c_of_type_Boolean = true;
-      boca localboca = new boca(this);
-      try
-      {
-        long l = SystemClock.elapsedRealtimeNanos();
-        boolean bool = this.jdField_a_of_type_Bocw.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo, localboca, 0);
-        if (QLog.isColorLevel()) {
-          QLog.d("QQEncodeFilterRender", 2, "createSoundFile time: " + (SystemClock.elapsedRealtimeNanos() - l) / 1000000L + "ms");
-        }
-        if (!bool)
-        {
-          this.jdField_a_of_type_Bocw = null;
-          if (QLog.isColorLevel())
-          {
-            QLog.e("QQEncodeFilterRender", 2, "create MusicSoundFile fail");
-            return;
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.e("QQEncodeFilterRender", 2, localException.toString());
-        }
-        this.jdField_a_of_type_Bocw = null;
-      }
+    }
+    parambocb.jdField_a_of_type_AndroidViewView.setVisibility(8);
+  }
+  
+  public bocb a(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new bocb(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558552, paramViewGroup, false));
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    if (paramInt >= 0) {
+      this.jdField_a_of_type_Bocd.a(this.jdField_a_of_type_JavaLangString, a(paramInt), paramInt, this.b);
     }
   }
   
-  public int a(int paramInt1, int paramInt2, int paramInt3, long paramLong)
+  public void a(bocb parambocb, int paramInt)
   {
-    this.jdField_a_of_type_Int = ((int)(paramLong / 1000000L));
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.getBusinessOperation().SetTimeStamp(paramLong, paramLong);
-    return this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.drawFrame(paramInt3);
+    parambocb.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(AEEditorColorSelectorView.a(parambocb.jdField_a_of_type_AndroidWidgetImageView, false, a(paramInt)));
+    parambocb.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new boca(this, paramInt, parambocb));
+    b(parambocb, paramInt);
+    EventCollector.getInstance().onRecyclerBindViewHolder(parambocb, paramInt, getItemId(paramInt));
   }
   
-  public int a(int paramInt, long paramLong)
+  public void a(String paramString)
   {
-    return a(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, paramInt, paramLong);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.surfaceDestroyed();
-    this.jdField_a_of_type_Bocw = null;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.surfaceCreate(paramInt1, paramInt2, paramInt1, paramInt2);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.surfaceChange(paramInt1, paramInt2, paramInt1, paramInt2);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.surfaceCreate(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.b = paramString;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public float getCurrentMusicGain()
+  public int getItemCount()
   {
-    try
-    {
-      if (this.jdField_a_of_type_Bocw != null)
-      {
-        if (this.d) {
-          return 0.5F;
-        }
-        float f = this.jdField_a_of_type_Bocw.a(this.jdField_a_of_type_Int);
-        return f;
-      }
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("QQEncodeFilterRender", 2, "getCurrentMusicGain() error: " + localException.toString());
-      }
-    }
-    return -1.0F;
-  }
-  
-  public MusicItemInfo getMusicItemInfo()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

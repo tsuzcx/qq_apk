@@ -15,6 +15,7 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
+import android.support.v4.view.ViewCompat;
 import android.text.BoringLayout;
 import android.text.BoringLayout.Metrics;
 import android.text.Layout;
@@ -32,8 +33,8 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup.LayoutParams;
-import awfv;
-import bfvh;
+import axlx;
+import bhdz;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.text.QQText.EmoticonSpan;
 import com.tencent.qphone.base.util.QLog;
@@ -114,7 +115,7 @@ public class SingleLineTextView
     if (paramAttributeSet != null)
     {
       paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.SingleLineTextView);
-      paramInt = paramAttributeSet.getDimensionPixelSize(0, (int)bfvh.a(paramContext, 12.0F));
+      paramInt = paramAttributeSet.getDimensionPixelSize(0, (int)bhdz.a(paramContext, 12.0F));
       paramContext = paramAttributeSet.getColorStateList(1);
       localObject = paramAttributeSet.getString(3);
       this.mMaxWidth = paramAttributeSet.getDimensionPixelSize(2, 2147483647);
@@ -167,9 +168,9 @@ public class SingleLineTextView
     if (i > 0)
     {
       bool1 = bool2;
-      if (i > (int)bfvh.a(getContext(), 105.0F))
+      if (i > (int)bhdz.a(getContext(), 105.0F))
       {
-        k = Math.min(getDesiredWidth(), getResources().getDimensionPixelSize(2131296809));
+        k = Math.min(getDesiredWidth(), getResources().getDimensionPixelSize(2131296810));
         bool1 = bool2;
         if (paramInt < k)
         {
@@ -569,34 +570,34 @@ public class SingleLineTextView
   public Drawable getIconDrawableWithStatus(Context paramContext, SingleLineTextView.IconDrawableInfo paramIconDrawableInfo)
   {
     Object localObject2 = null;
-    awfv localawfv = null;
+    axlx localaxlx = null;
     Object localObject1 = localObject2;
     if (paramContext != null)
     {
       localObject1 = localObject2;
       if (paramIconDrawableInfo != null)
       {
-        if (TextUtils.isEmpty(paramIconDrawableInfo.icon_static_url)) {
+        if (TextUtils.isEmpty(paramIconDrawableInfo.iconDynamicUrl)) {
           break label92;
         }
-        localawfv = new awfv(paramContext, paramIconDrawableInfo.icon_static_url, this);
+        localaxlx = new axlx(paramContext, paramIconDrawableInfo.iconDynamicUrl, this);
       }
     }
     for (;;)
     {
-      localObject1 = localawfv;
-      if (localawfv != null)
+      localObject1 = localaxlx;
+      if (localaxlx != null)
       {
-        localObject1 = localawfv.mutate();
+        localObject1 = localaxlx.mutate();
         ((Drawable)localObject1).setAlpha((int)(paramIconDrawableInfo.icon_status_alpha * 255.0F));
         ((Drawable)localObject1).setBounds(0, 0, ((Drawable)localObject1).getIntrinsicWidth(), ((Drawable)localObject1).getIntrinsicHeight());
       }
       return localObject1;
       label92:
-      if (!TextUtils.isEmpty(paramIconDrawableInfo.iconDynamicUrl)) {
-        localawfv = new awfv(paramContext, paramIconDrawableInfo.iconDynamicUrl, this);
+      if (!TextUtils.isEmpty(paramIconDrawableInfo.icon_static_url)) {
+        localaxlx = new axlx(paramContext, paramIconDrawableInfo.icon_static_url, this);
       } else if (paramIconDrawableInfo.iconResId != 0) {
-        localawfv = new awfv(paramContext, paramIconDrawableInfo.iconResId);
+        localaxlx = new axlx(paramContext, paramIconDrawableInfo.iconResId);
       }
     }
   }
@@ -664,7 +665,7 @@ public class SingleLineTextView
       j = getScrollY();
       localObject2 = this.mDrawables;
       if (localObject2 == null) {
-        break label618;
+        break label625;
       }
       if (paramDrawable == ((SingleLineTextView.Drawables)localObject2).mDrawableLeft)
       {
@@ -677,9 +678,9 @@ public class SingleLineTextView
         j += i1 + k;
       }
     }
-    label608:
     label615:
-    label618:
+    label622:
+    label625:
     for (;;)
     {
       localObject2 = this.mIconDrawables;
@@ -691,7 +692,7 @@ public class SingleLineTextView
         localObject3 = this.mExtendTexts[0];
         k = getWidth() - getPaddingRight() - this.mIconDrawableGap;
         if ((localObject3 == null) || (((SingleLineTextView.ExtendText)localObject3).mEmpty)) {
-          break label615;
+          break label622;
         }
         n = ((SingleLineTextView.ExtendText)localObject3).getDesiredWith();
         k -= ((SingleLineTextView.ExtendText)localObject3).mPadding + n;
@@ -702,7 +703,7 @@ public class SingleLineTextView
         n = i;
         if (m < localObject2.length)
         {
-          if ((paramDrawable == localObject2[m].mDrawable) || (((localObject2[m].mDrawable instanceof awfv)) && (((awfv)localObject2[m].mDrawable).a() == paramDrawable)))
+          if ((paramDrawable == localObject2[m].mDrawable) || (((localObject2[m].mDrawable instanceof axlx)) && (((axlx)localObject2[m].mDrawable).a() == paramDrawable)))
           {
             localObject3 = localObject2[m].mCompoundRect;
             paramDrawable.copyBounds((Rect)localObject3);
@@ -736,7 +737,7 @@ public class SingleLineTextView
                   break;
                 }
                 if (paramDrawable != ((SingleLineTextView.Drawables)localObject2).mDrawableRight2) {
-                  break label618;
+                  break label625;
                 }
                 n = this.mDrawables.mDrawableRight2Position[0];
                 k = this.mDrawables.mDrawableRight2Position[1];
@@ -752,16 +753,19 @@ public class SingleLineTextView
         else
         {
           if ((n == 0) && (i1 == 0)) {
-            break label608;
+            break label615;
           }
           invalidate(((Rect)localObject1).left + n, ((Rect)localObject1).top + i1, n + ((Rect)localObject1).right, i1 + ((Rect)localObject1).bottom);
         }
         for (;;)
         {
-          localObject1 = this.mHandler.obtainMessage(2);
-          ((Message)localObject1).obj = paramDrawable;
-          this.mHandler.removeMessages(2);
-          this.mHandler.sendMessageDelayed((Message)localObject1, 100L);
+          if (ViewCompat.isAttachedToWindow(this))
+          {
+            localObject1 = this.mHandler.obtainMessage(2);
+            ((Message)localObject1).obj = paramDrawable;
+            this.mHandler.removeMessages(2);
+            this.mHandler.sendMessageDelayed((Message)localObject1, 100L);
+          }
           return;
           m += 1;
           break;

@@ -1,24 +1,30 @@
-import android.os.Build.VERSION;
-import dov.com.tencent.mobileqq.shortvideo.util.videoconverter.JBMR2VideoConverterImpl;
-import java.io.File;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
 public class boem
+  extends RecyclerView.ItemDecoration
 {
-  boep a;
+  private int a;
   
-  public boem()
+  public boem(int paramInt)
   {
-    if (Build.VERSION.SDK_INT >= 18) {
-      this.a = new JBMR2VideoConverterImpl();
-    }
+    this.a = paramInt;
   }
   
-  public boolean a(File paramFile, boen paramboen, boolean paramBoolean)
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    if (this.a != null) {
-      return this.a.a(paramFile, paramboen, paramBoolean);
+    paramRect.left = this.a;
+    int i = 0;
+    if (paramRecyclerView.getAdapter() != null) {
+      i = paramRecyclerView.getAdapter().getItemCount();
     }
-    return false;
+    if ((i != 0) && (paramRecyclerView.getChildLayoutPosition(paramView) == i - 1)) {
+      paramRect.right = this.a;
+    }
   }
 }
 

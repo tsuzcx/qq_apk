@@ -1,58 +1,26 @@
-import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
+import android.util.Pair;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class ausr
+class ausr
+  extends aofu
 {
-  private static int jdField_a_of_type_Int;
-  private static aust jdField_a_of_type_Aust = new aust(null);
+  ausr(ausq paramausq) {}
   
-  public static void a()
+  protected void onGetTroopMemberListBy0x787(String paramString, List<Pair<String, String>> paramList)
   {
-    if (Build.VERSION.SDK_INT < 17) {
-      return;
-    }
-    try
+    StringBuilder localStringBuilder = new StringBuilder().append("onGetTroopMemberListBy0x787 uin: ").append(paramString).append(" memberList size: ");
+    if (paramList == null) {}
+    for (int i = 0;; i = paramList.size())
     {
-      JavaHookBridge.findAndReplaceMethod(Class.forName("java.lang.Daemons$FinalizerWatchdogDaemon"), "finalizerTimedOut", new Object[] { Object.class, jdField_a_of_type_Aust });
-      return;
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      localClassNotFoundException.printStackTrace();
-      return;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      localNoSuchMethodException.printStackTrace();
-    }
-  }
-  
-  private static void b(boolean paramBoolean)
-  {
-    String str = null;
-    try
-    {
-      Object localObject = BaseApplicationImpl.sApplication.getRuntime();
-      if (localObject != null) {
-        str = ((AppRuntime)localObject).getAccount();
+      QLog.i("Forward.Preview.Dialog", 2, i);
+      if ((ausq.a(this.a).equals(paramString)) && (ausq.a(this.a) != null))
+      {
+        this.a.e();
+        ausq.a(this.a).a(paramList);
       }
-      long l1 = Runtime.getRuntime().totalMemory();
-      long l2 = Runtime.getRuntime().freeMemory();
-      long l3 = Runtime.getRuntime().maxMemory();
-      localObject = new HashMap();
-      ((HashMap)localObject).put("heapSize", String.valueOf(l1 - l2));
-      ((HashMap)localObject).put("maxMemory", String.valueOf(l3));
-      int i = jdField_a_of_type_Int + 1;
-      jdField_a_of_type_Int = i;
-      ((HashMap)localObject).put("count", String.valueOf(i));
-      StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(str, "TimeoutExceptionHooker", paramBoolean, 0L, 0L, (HashMap)localObject, "", true);
       return;
     }
-    catch (Throwable localThrowable) {}
   }
 }
 

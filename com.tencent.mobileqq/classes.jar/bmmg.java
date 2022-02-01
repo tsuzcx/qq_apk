@@ -1,14 +1,6 @@
-import com.tencent.tavcut.bean.Size;
-
 public abstract interface bmmg
 {
-  public abstract int a();
-  
-  public abstract Size a(Size paramSize);
-  
-  public abstract int b();
-  
-  public abstract int c();
+  public abstract void a(boolean paramBoolean);
 }
 
 

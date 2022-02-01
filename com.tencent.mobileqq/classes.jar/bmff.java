@@ -1,74 +1,137 @@
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.utils.FileUtils;
-import dov.com.qq.im.aeeditor.data.AEEditorDownloadResBean;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.redtouch.RedAppInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import cooperation.qqreader.QRBridgeUtil;
+import eipc.EIPCResult;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.json.JSONObject;
 
-class bmff
-  implements bmbs
+public class bmff
+  extends QIPCModule
 {
-  bmff(bmfc parambmfc, bmfg parambmfg, String paramString1, AEEditorDownloadResBean paramAEEditorDownloadResBean, String paramString2, String paramString3) {}
+  private static bmff a;
   
-  public void a(int paramInt)
+  public bmff(String paramString)
   {
-    if (this.jdField_a_of_type_Bmfg != null) {
-      this.jdField_a_of_type_Bmfg.a(paramInt);
-    }
+    super(paramString);
   }
   
-  public void a(NetResp paramNetResp)
+  public static bmff a()
   {
-    boolean bool3 = false;
-    if (paramNetResp == null)
+    if (a == null) {}
+    try
     {
-      if (this.jdField_a_of_type_Bmfg != null) {
-        this.jdField_a_of_type_Bmfg.a(false);
+      if (a == null) {
+        a = new bmff("ReaderIPCModule");
       }
-      this.jdField_a_of_type_Bmfc.a(this.jdField_a_of_type_JavaLangString, false);
-      return;
+      return a;
     }
-    boolean bool1;
-    boolean bool2;
-    if (paramNetResp.mResult == 0)
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    bmgm.e("ReaderIPCModule", "action = " + paramString);
+    if (paramBundle == null)
     {
-      bool1 = true;
-      bmbx.b(this.jdField_a_of_type_Bmfc.c, "downLoadOneResInternal-onDownloadFinish---isSuccess=" + bool1 + ", id=" + this.jdField_a_of_type_DovComQqImAeeditorDataAEEditorDownloadResBean.getId());
-      bool2 = bool3;
-      if (bool1)
+      bmgm.e("ReaderIPCModule", "Err params = null, action = " + paramString);
+      return null;
+    }
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (!(localObject instanceof QQAppInterface))
+    {
+      bmgm.e("ReaderIPCModule", "onRemoteInvoke cannot get QQAppInterface");
+      return null;
+    }
+    localObject = (QQAppInterface)localObject;
+    if ("getRedTouchInfo".equals(paramString))
+    {
+      paramString = (bbbq)((QQAppInterface)localObject).getManager(QQManagerFactory.MGR_RED_TOUCH);
+      localObject = paramBundle.getStringArrayList("pathList");
+      if ((paramString != null) && (localObject != null))
       {
-        String str = FileUtils.calcMd5(this.b);
-        if ((str == null) || (!str.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))) {
-          break label321;
+        paramBundle = new ArrayList();
+        localObject = ((ArrayList)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          BusinessInfoCheckUpdate.AppInfo localAppInfo = paramString.a((String)((Iterator)localObject).next());
+          if (localAppInfo != null) {
+            paramBundle.add(bbbt.a(localAppInfo));
+          }
+        }
+        paramString = new Bundle();
+        paramString.putParcelableArrayList("redTouchInfoList", paramBundle);
+        return EIPCResult.createResult(0, paramString);
+      }
+    }
+    else if ("getSingleRedTouchInfo".equals(paramString))
+    {
+      paramString = (bbbq)((QQAppInterface)localObject).getManager(QQManagerFactory.MGR_RED_TOUCH);
+      if (paramString != null)
+      {
+        paramString = paramString.a(paramBundle.getString("path"));
+        if (paramString != null)
+        {
+          paramString = bbbt.a(paramString);
+          paramBundle = new Bundle();
+          paramBundle.putParcelable("redTouchInfo", paramString);
+          if ((paramString != null) && (paramString.b() == 1)) {
+            bmgm.e("ReaderIPCModule", "path=" + paramString.b());
+          }
+          return EIPCResult.createResult(0, paramBundle);
         }
       }
     }
-    for (;;)
+    else
+    {
+      if (!"reportRedTouchClick".equals(paramString)) {
+        break label399;
+      }
+      paramString = (bbbq)((QQAppInterface)localObject).getManager(QQManagerFactory.MGR_RED_TOUCH);
+      if (paramString != null)
+      {
+        paramBundle = paramBundle.getString("path");
+        paramString.b(paramBundle);
+      }
+    }
+    label399:
+    do
     {
       try
       {
-        bool2 = this.jdField_a_of_type_Bmfc.a(this.b, this.c, this.jdField_a_of_type_DovComQqImAeeditorDataAEEditorDownloadResBean.getId(), this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Bmfc.a(bool1, paramNetResp.mErrCode, paramNetResp.reqCost, this.jdField_a_of_type_DovComQqImAeeditorDataAEEditorDownloadResBean.getId());
-        if (!bool2) {
-          FileUtils.deleteDirectory(this.c);
-        }
-        FileUtils.deleteFile(this.b);
-        bmbx.b(this.jdField_a_of_type_Bmfc.c, "downLoadOneResInternal-onDownloadFinish---REAL result=" + bool2 + ", id=" + this.jdField_a_of_type_DovComQqImAeeditorDataAEEditorDownloadResBean.getId());
-        if (this.jdField_a_of_type_Bmfg != null) {
-          this.jdField_a_of_type_Bmfg.a(bool2);
-        }
-        this.jdField_a_of_type_Bmfc.a(this.jdField_a_of_type_JavaLangString, bool2);
-        return;
-        bool1 = false;
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("service_type", 2);
+        ((JSONObject)localObject).put("act_id", 1002);
+        paramString.c(paramString.a(paramBundle), ((JSONObject)localObject).toString());
+        return null;
       }
-      catch (Exception localException)
+      catch (Exception paramString)
       {
-        bmbx.a(this.jdField_a_of_type_Bmfc.c, "downLoadOneResInternal-onDownloadFinish---unZipFile failed, id=" + this.jdField_a_of_type_DovComQqImAeeditorDataAEEditorDownloadResBean.getId(), localException);
-        localException.printStackTrace();
-        bool2 = bool3;
-        continue;
+        for (;;)
+        {
+          paramString.printStackTrace();
+        }
       }
-      label321:
-      bmbx.d(this.jdField_a_of_type_Bmfc.c, "downLoadOneResInternal-onDownloadFinish---MD5 check failed, id=" + this.jdField_a_of_type_DovComQqImAeeditorDataAEEditorDownloadResBean.getId());
-      bool2 = bool3;
-    }
+      if ("download_reader_plugin".equals(paramString))
+      {
+        bmec.a().a(((QQAppInterface)localObject).getApp());
+        return EIPCResult.createResult(0, new Bundle());
+      }
+      if ("get_skey".equals(paramString))
+      {
+        paramString = new Bundle();
+        paramString.putString("get_skey_value", QRBridgeUtil.getSKey((QQAppInterface)localObject));
+        return EIPCResult.createResult(0, paramString);
+      }
+    } while (!"action_get_account".equals(paramString));
+    paramString = new Bundle();
+    paramString.putString("key_get_account", ((QQAppInterface)localObject).getAccount());
+    return EIPCResult.createResult(0, paramString);
   }
 }
 

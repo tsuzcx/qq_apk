@@ -1,8 +1,25 @@
-import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.contact.connections.ConnectsExplorationBanner;
 
-public abstract interface ajbj
+public class ajbj
+  extends ajbn
 {
-  public abstract void a(MotionEvent paramMotionEvent);
+  public ConnectsExplorationBanner a;
+  
+  public ajbj(ConnectsExplorationBanner paramConnectsExplorationBanner)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectsExplorationBanner = paramConnectsExplorationBanner;
+    this.jdField_a_of_type_Long = paramConnectsExplorationBanner.timestamp;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectsExplorationBanner.uin;
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
 }
 
 

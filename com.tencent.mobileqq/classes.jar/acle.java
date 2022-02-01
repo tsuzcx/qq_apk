@@ -1,36 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.gdtad.web.GdtLandingPageReport.2;
+import com.tencent.smtt.sdk.ValueCallback;
 
-public final class acle
+public class acle
+  implements ValueCallback<String>
 {
-  public long a;
-  public String a;
-  public long b;
-  public String b;
+  public acle(GdtLandingPageReport.2 param2) {}
   
-  public JSONObject a()
+  public void a(String paramString)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("openid", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("access_token", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("expire_in", this.jdField_a_of_type_Long);
-      localJSONObject.put("expire_time", this.jdField_b_of_type_Long);
-      return localJSONObject;
+    acho.a("GdtLandingPageReport", " injectScript scene: " + this.a.jdField_a_of_type_Int + " 回调耗时: " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long) + " 回调. resp: " + paramString);
+    if (this.a.jdField_a_of_type_Acli != null) {
+      this.a.jdField_a_of_type_Acli.a(paramString);
     }
-    catch (JSONException localJSONException)
+    if (paramString.equals("true"))
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(aclb.jdField_a_of_type_JavaLangString, 2, localJSONException.getMessage(), localJSONException);
+      this.a.this$0.a(1501001);
+      return;
     }
-    return localJSONObject;
-  }
-  
-  public String toString()
-  {
-    return "LoginInfo{, openid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", access_token='" + this.jdField_b_of_type_JavaLangString + '\'' + ", expireIn='" + this.jdField_a_of_type_Long + '\'' + ", expireTime='" + this.jdField_b_of_type_Long + '\'' + '}';
+    this.a.this$0.a(1501002);
   }
 }
 

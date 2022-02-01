@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import aoai;
+import apdk;
 
 public class ARVideoRecordUIControllerImpl$6
   implements Runnable
 {
-  public ARVideoRecordUIControllerImpl$6(aoai paramaoai) {}
+  public ARVideoRecordUIControllerImpl$6(apdk paramapdk) {}
   
   public void run() {}
 }

@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.utils.ffmpeg;
 
-import bmxe;
-import bmxf;
+import bomw;
+import bomx;
 import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.MusicCallBack;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import xwa;
+import ykv;
 
 final class FFmpegUtils$15
   extends ExecuteBinResponseCallback
@@ -15,7 +15,7 @@ final class FFmpegUtils$15
   
   public void onFailure(String paramString)
   {
-    xwa.a("music_composite", "video_music_composite", 0, 1, new String[0]);
+    ykv.a("music_composite", "video_music_composite", 0, 1, new String[0]);
     this.val$endCallback.onFailure(paramString);
     if ((this.val$endCallback instanceof VideoCompositeHelper.MusicCallBack)) {
       ((VideoCompositeHelper.MusicCallBack)this.val$endCallback).setErrorCode(941007);
@@ -54,9 +54,9 @@ final class FFmpegUtils$15
   public void onSuccess(String paramString)
   {
     String str = String.valueOf(System.currentTimeMillis() - this.startime);
-    xwa.a("music_composite", "video_music_composite", 0, 0, new String[] { str });
-    if (bmxe.c) {
-      bmxe.g.a(1, System.currentTimeMillis() - this.val$mergeStartTime);
+    ykv.a("music_composite", "video_music_composite", 0, 0, new String[] { str });
+    if (bomw.c) {
+      bomw.g.a(1, System.currentTimeMillis() - this.val$mergeStartTime);
     }
     this.val$endCallback.onSuccess(paramString);
     QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.val$info.fakeVid + " combineVideoAndAudio end cost time：" + str);

@@ -1,39 +1,111 @@
+import android.app.NotificationManager;
+import android.content.Context;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pushnotice.PushNoticeUtil.1;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.richmediabrowser.log.IBrowserLog;
 
 public class baiw
-  implements IBrowserLog
 {
-  public void d(String paramString1, int paramInt, String paramString2)
+  public static String a = "";
+  
+  public static int a()
   {
-    if (isColorLevel()) {
-      QLog.d(paramString1, paramInt, paramString2);
+    int i = 1;
+    if (a()) {
+      i = 3;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("", 2, "HPush_Huawei Push pushType : " + i);
+    }
+    return i;
+  }
+  
+  private static String a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    }
+    for (;;)
+    {
+      return null;
+      switch (paramInt2)
+      {
+      default: 
+        switch (paramInt2)
+        {
+        }
+        break;
+      }
+    }
+    return "0X8009E09";
+    return "0X8009E06";
+    return "0X8009E07";
+    return "0X8009E08";
+    return "0X8009E0A";
+    return "0X8009E0B";
+  }
+  
+  public static void a()
+  {
+    if (a())
+    {
+      if (!TextUtils.isEmpty(a)) {
+        break label26;
+      }
+      ThreadManager.executeOnSubThread(new PushNoticeUtil.1());
+    }
+    label26:
+    do
+    {
+      return;
+      b();
+    } while (!QLog.isColorLevel());
+    QLog.d("HPush", 2, "HPush_Huawei Push Token-By not HmsInstanceId : ");
+  }
+  
+  public static void a(int paramInt1, int paramInt2)
+  {
+    String str = a(paramInt1, paramInt2);
+    if (!TextUtils.isEmpty(str)) {
+      bdla.b(null, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
     }
   }
   
-  public void e(String paramString1, int paramInt, String paramString2)
+  public static void a(Context paramContext)
   {
-    if (isColorLevel()) {
-      QLog.e(paramString1, paramInt, paramString2);
+    if (a()) {
+      ((NotificationManager)paramContext.getSystemService("notification")).cancelAll();
     }
   }
   
-  public void i(String paramString1, int paramInt, String paramString2)
+  public static boolean a()
   {
-    if (isColorLevel()) {
-      QLog.i(paramString1, paramInt, paramString2);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ("HUAWEI".equalsIgnoreCase(Build.MANUFACTURER))
+    {
+      bool1 = bool2;
+      if (Build.VERSION.SDK_INT >= 21) {
+        bool1 = true;
+      }
     }
+    return bool1;
   }
   
-  public boolean isColorLevel()
+  public static void b()
   {
-    return QLog.isColorLevel();
-  }
-  
-  public void w(String paramString1, int paramInt, String paramString2)
-  {
-    if (isColorLevel()) {
-      QLog.w(paramString1, paramInt, paramString2);
+    if (!TextUtils.isEmpty(a))
+    {
+      ((azff)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.ONLINE_STATUS_HANDLER)).a(a);
+      if (QLog.isColorLevel()) {
+        QLog.d("HPush", 2, "HPush_Huawei Push Token-By sendTokenToServer : ");
+      }
     }
   }
 }

@@ -129,15 +129,15 @@ public class i
     //   31: invokevirtual 160	com/tencent/beacon/core/strategy/StrategyQueryModule:setCurrentQueryStep	(I)V
     //   34: aload_0
     //   35: getfield 19	com/tencent/beacon/core/strategy/i:b	Landroid/content/Context;
-    //   38: invokestatic 166	com/tencent/beacon/core/info/a:f	(Landroid/content/Context;)Z
+    //   38: invokestatic 165	com/tencent/beacon/core/info/a:g	(Landroid/content/Context;)Z
     //   41: istore_1
-    //   42: ldc 168
+    //   42: ldc 167
     //   44: iconst_1
     //   45: anewarray 4	java/lang/Object
     //   48: dup
     //   49: iconst_0
     //   50: iload_1
-    //   51: invokestatic 173	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   51: invokestatic 172	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   54: aastore
     //   55: invokestatic 99	com/tencent/beacon/core/e/d:e	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   58: iload_1
@@ -145,19 +145,19 @@ public class i
     //   62: aload_0
     //   63: getfield 19	com/tencent/beacon/core/strategy/i:b	Landroid/content/Context;
     //   66: astore 5
-    //   68: ldc 175
+    //   68: ldc 174
     //   70: iconst_1
     //   71: anewarray 4	java/lang/Object
     //   74: dup
     //   75: iconst_0
     //   76: aload 5
     //   78: aload 5
-    //   80: invokestatic 180	com/tencent/beacon/core/info/g:b	(Landroid/content/Context;)Lcom/tencent/beacon/core/info/g;
-    //   83: invokevirtual 183	com/tencent/beacon/core/info/b:a	()Ljava/lang/String;
+    //   80: invokestatic 179	com/tencent/beacon/core/info/g:b	(Landroid/content/Context;)Lcom/tencent/beacon/core/info/g;
+    //   83: invokevirtual 182	com/tencent/beacon/core/info/b:a	()Ljava/lang/String;
     //   86: aconst_null
-    //   87: ldc2_w 184
-    //   90: ldc2_w 186
-    //   93: invokestatic 192	com/tencent/beacon/core/a/a/b:a	(Landroid/content/Context;Ljava/lang/String;[IJJ)I
+    //   87: ldc2_w 183
+    //   90: ldc2_w 185
+    //   93: invokestatic 191	com/tencent/beacon/core/a/a/b:a	(Landroid/content/Context;Ljava/lang/String;[IJJ)I
     //   96: invokestatic 146	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   99: aastore
     //   100: invokestatic 99	com/tencent/beacon/core/e/d:e	(Ljava/lang/String;[Ljava/lang/Object;)V
@@ -165,19 +165,19 @@ public class i
     //   105: monitorenter
     //   106: aload 4
     //   108: iconst_1
-    //   109: invokevirtual 196	com/tencent/beacon/core/strategy/StrategyQueryModule:setAppFirstRun	(Z)V
+    //   109: invokevirtual 195	com/tencent/beacon/core/strategy/StrategyQueryModule:setAppFirstRun	(Z)V
     //   112: aload 4
     //   114: monitorexit
-    //   115: getstatic 202	com/tencent/beacon/event/UserAction:beaconModules	Ljava/util/List;
-    //   118: invokeinterface 208 1 0
+    //   115: getstatic 201	com/tencent/beacon/event/UserAction:beaconModules	Ljava/util/List;
+    //   118: invokeinterface 207 1 0
     //   123: astore 5
     //   125: aload 5
-    //   127: invokeinterface 213 1 0
+    //   127: invokeinterface 212 1 0
     //   132: ifeq +65 -> 197
     //   135: aload 5
-    //   137: invokeinterface 217 1 0
-    //   142: checkcast 219	com/tencent/beacon/core/c
-    //   145: invokevirtual 222	com/tencent/beacon/core/c:onAppFirstRun	()V
+    //   137: invokeinterface 216 1 0
+    //   142: checkcast 218	com/tencent/beacon/core/c
+    //   145: invokevirtual 221	com/tencent/beacon/core/c:onAppFirstRun	()V
     //   148: goto -23 -> 125
     //   151: astore 4
     //   153: aload_0
@@ -189,25 +189,25 @@ public class i
     //   162: monitorexit
     //   163: aload 5
     //   165: athrow
-    //   166: invokestatic 224	com/tencent/beacon/core/strategy/i:a	()J
+    //   166: invokestatic 223	com/tencent/beacon/core/strategy/i:a	()J
     //   169: lstore_2
     //   170: lload_2
     //   171: lconst_0
     //   172: lcmp
     //   173: ifle +24 -> 197
-    //   176: ldc 226
+    //   176: ldc 225
     //   178: iconst_1
     //   179: anewarray 4	java/lang/Object
     //   182: dup
     //   183: iconst_0
     //   184: lload_2
-    //   185: invokestatic 231	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   185: invokestatic 230	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   188: aastore
     //   189: invokestatic 99	com/tencent/beacon/core/e/d:e	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   192: aload_0
     //   193: lload_2
-    //   194: invokevirtual 233	com/tencent/beacon/core/strategy/i:b	(J)V
-    //   197: ldc 235
+    //   194: invokevirtual 232	com/tencent/beacon/core/strategy/i:b	(J)V
+    //   197: ldc 234
     //   199: iconst_0
     //   200: anewarray 4	java/lang/Object
     //   203: invokestatic 99	com/tencent/beacon/core/e/d:e	(Ljava/lang/String;[Ljava/lang/Object;)V
@@ -216,46 +216,46 @@ public class i
     //   209: invokevirtual 160	com/tencent/beacon/core/strategy/StrategyQueryModule:setCurrentQueryStep	(I)V
     //   212: aload 4
     //   214: aload 4
-    //   216: invokevirtual 238	com/tencent/beacon/core/strategy/StrategyQueryModule:getCommonQueryTime	()I
+    //   216: invokevirtual 237	com/tencent/beacon/core/strategy/StrategyQueryModule:getCommonQueryTime	()I
     //   219: iconst_1
     //   220: iadd
-    //   221: invokevirtual 241	com/tencent/beacon/core/strategy/StrategyQueryModule:setCommonQueryTime	(I)V
-    //   224: getstatic 202	com/tencent/beacon/event/UserAction:beaconModules	Ljava/util/List;
-    //   227: invokeinterface 208 1 0
+    //   221: invokevirtual 240	com/tencent/beacon/core/strategy/StrategyQueryModule:setCommonQueryTime	(I)V
+    //   224: getstatic 201	com/tencent/beacon/event/UserAction:beaconModules	Ljava/util/List;
+    //   227: invokeinterface 207 1 0
     //   232: astore 5
     //   234: aload 5
-    //   236: invokeinterface 213 1 0
+    //   236: invokeinterface 212 1 0
     //   241: ifeq +19 -> 260
     //   244: aload 5
-    //   246: invokeinterface 217 1 0
-    //   251: checkcast 219	com/tencent/beacon/core/c
-    //   254: invokevirtual 244	com/tencent/beacon/core/c:onStrategyQueryStarted	()V
+    //   246: invokeinterface 216 1 0
+    //   251: checkcast 218	com/tencent/beacon/core/c
+    //   254: invokevirtual 243	com/tencent/beacon/core/c:onStrategyQueryStarted	()V
     //   257: goto -23 -> 234
     //   260: invokestatic 64	com/tencent/beacon/core/strategy/c:g	()Lcom/tencent/beacon/core/strategy/c;
-    //   263: invokevirtual 247	com/tencent/beacon/core/strategy/c:k	()Z
+    //   263: invokevirtual 246	com/tencent/beacon/core/strategy/c:k	()Z
     //   266: ifne +7 -> 273
     //   269: aload_0
-    //   270: invokevirtual 249	com/tencent/beacon/core/strategy/i:c	()V
-    //   273: ldc 251
+    //   270: invokevirtual 248	com/tencent/beacon/core/strategy/i:c	()V
+    //   273: ldc 250
     //   275: iconst_0
     //   276: anewarray 4	java/lang/Object
-    //   279: invokestatic 254	com/tencent/beacon/core/e/d:h	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   279: invokestatic 253	com/tencent/beacon/core/e/d:h	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   282: aload 4
     //   284: iconst_3
     //   285: invokevirtual 160	com/tencent/beacon/core/strategy/StrategyQueryModule:setCurrentQueryStep	(I)V
-    //   288: getstatic 202	com/tencent/beacon/event/UserAction:beaconModules	Ljava/util/List;
-    //   291: invokeinterface 208 1 0
+    //   288: getstatic 201	com/tencent/beacon/event/UserAction:beaconModules	Ljava/util/List;
+    //   291: invokeinterface 207 1 0
     //   296: astore 4
     //   298: aload 4
-    //   300: invokeinterface 213 1 0
+    //   300: invokeinterface 212 1 0
     //   305: ifeq +19 -> 324
     //   308: aload 4
-    //   310: invokeinterface 217 1 0
-    //   315: checkcast 219	com/tencent/beacon/core/c
-    //   318: invokevirtual 257	com/tencent/beacon/core/c:onStrategyQueryFinished	()V
+    //   310: invokeinterface 216 1 0
+    //   315: checkcast 218	com/tencent/beacon/core/c
+    //   318: invokevirtual 256	com/tencent/beacon/core/c:onStrategyQueryFinished	()V
     //   321: goto -23 -> 298
     //   324: aload_0
-    //   325: invokevirtual 259	com/tencent/beacon/core/strategy/i:b	()J
+    //   325: invokevirtual 258	com/tencent/beacon/core/strategy/i:b	()J
     //   328: pop2
     //   329: aload_0
     //   330: monitorexit

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.util;
 
-import bfsc;
+import bhat;
 
 class ScreenShotUtil$2$2
   implements Runnable

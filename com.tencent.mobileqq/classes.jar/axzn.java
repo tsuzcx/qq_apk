@@ -1,21 +1,50 @@
-import android.os.Bundle;
-import org.jetbrains.annotations.Nullable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.qphone.base.util.QLog;
 
 class axzn
-  extends axyk
+  extends Handler
 {
-  axzn(axzm paramaxzm) {}
-  
-  public void a(boolean paramBoolean, @Nullable Bundle paramBundle)
+  axzn(axzl paramaxzl, Looper paramLooper)
   {
-    super.a(paramBoolean, paramBundle);
-    if (paramBundle != null) {
-      axzm.a(this.a, paramBundle.getString("key_today_constellation_trend"));
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
     }
-    this.a.a();
-    if ((axzm.a(this.a)) && (axzm.a(this.a) != null)) {
-      axzm.b(this.a).a();
-    }
+    do
+    {
+      return;
+      if (this.a.jdField_a_of_type_Axzw != null)
+      {
+        int i = this.a.jdField_a_of_type_Axzw.a();
+        this.a.jdField_a_of_type_Axzu.a(i);
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoPlayerView", 2, "PROGRESS_MSG :" + i);
+        }
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2025, 100L);
+      return;
+      if ((this.a.jdField_a_of_type_AndroidWidgetImageView != null) && (this.a.jdField_a_of_type_AndroidWidgetImageView.getParent() != null) && (((ViewGroup)this.a.jdField_a_of_type_AndroidWidgetImageView.getParent()).getChildAt(0) != this.a.jdField_a_of_type_AndroidWidgetImageView))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("VideoPlayerView", 2, "UPDATE_COVER  mPlayer.getCurrentPosition()=" + this.a.jdField_a_of_type_Axzw.a());
+        }
+        ((ViewGroup)this.a.jdField_a_of_type_AndroidWidgetImageView.getParent()).removeView(this.a.jdField_a_of_type_AndroidWidgetImageView);
+        axzl.a(this.a).addView(this.a.jdField_a_of_type_AndroidWidgetImageView, 0, new RelativeLayout.LayoutParams(-1, -1));
+        axzl.a(this.a).requestLayout();
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("VideoPlayerView", 2, "UPDATE_COVER  2do nothing()=");
   }
 }
 

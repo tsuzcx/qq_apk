@@ -1,55 +1,26 @@
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihInput;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class admd
+final class admd
   implements DialogInterface.OnClickListener
 {
-  public admd(GroupManagerActivity paramGroupManagerActivity) {}
+  admd(QQAppInterface paramQQAppInterface, adnn paramadnn, long paramLong, Context paramContext, adnm paramadnm) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = GroupManagerActivity.a(this.a).getInputValue();
-    if (paramDialogInterface.equals("")) {
-      paramDialogInterface = this.a.getResources().getString(2131692849);
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, this.jdField_a_of_type_Adnn.jdField_a_of_type_Int, this.jdField_a_of_type_Adnn.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Adnn.jdField_c_of_type_JavaLangString, true);
+    if (this.jdField_a_of_type_Adnn.jdField_a_of_type_Boolean) {
+      bdla.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "1", "", "", "");
     }
-    for (;;)
-    {
-      if (GroupManagerActivity.a(this.a) == 0) {
-        if (this.a.a.size() > 0)
-        {
-          b = (byte)(((Groups)this.a.a.get(this.a.a.size() - 1)).seqid + 1);
-          GroupManagerActivity.a(this.a, this.a.a(b, paramDialogInterface));
-          if (QLog.isColorLevel()) {
-            QLog.d("GroupManagerActivity", 2, "AddFriendGroup needShowDialog = " + GroupManagerActivity.a(this.a));
-          }
-          if (GroupManagerActivity.a(this.a)) {
-            this.a.a(2131692883);
-          }
-          bcef.b(this.a.app, "CliOper", "", "", "category", "Add_category", 0, 0, "", "", "", "");
-        }
-      }
-      while (1 != GroupManagerActivity.a(this.a)) {
-        for (;;)
-        {
-          return;
-          byte b = 1;
-        }
-      }
-      GroupManagerActivity.a(this.a, this.a.b((byte)GroupManagerActivity.a(this.a).group_id, paramDialogInterface));
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupManagerActivity", 2, "EditeFriendGroup needShowDialog = " + GroupManagerActivity.a(this.a));
-      }
-      if (GroupManagerActivity.a(this.a)) {
-        this.a.a(2131692886);
-      }
-      bcef.b(this.a.app, "CliOper", "", "", "category", "Name_category", 0, 0, "", "", "", "");
-      return;
+    this.jdField_a_of_type_Adnn.b = false;
+    this.jdField_a_of_type_Adnn.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_Adnn.e = false;
+    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adnm, this.jdField_a_of_type_Adnn);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }

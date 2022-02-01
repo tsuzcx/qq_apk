@@ -1,29 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment;
+import java.io.File;
 
 public class avai
-  implements View.OnTouchListener
 {
-  float jdField_a_of_type_Float = 0.0F;
-  
-  public avai(ListenTogetherPlayFragment paramListenTogetherPlayFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static void a(File paramFile)
   {
-    if (paramMotionEvent.getAction() == 0)
+    if ((paramFile == null) || (paramFile.exists())) {}
+    do
     {
-      this.jdField_a_of_type_Float = paramView.getAlpha();
-      paramView.setAlpha(this.jdField_a_of_type_Float * 0.5F);
-    }
-    for (;;)
-    {
-      return false;
-      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
-        paramView.setAlpha(this.jdField_a_of_type_Float);
-      }
-    }
+      return;
+      paramFile = paramFile.getParentFile();
+    } while ((paramFile == null) || (paramFile.exists()));
+    a(paramFile);
+    paramFile.mkdirs();
   }
 }
 

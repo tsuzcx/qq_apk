@@ -1,6 +1,6 @@
 package cooperation.ilive;
 
-import bkje;
+import blur;
 
 public class IlivePluginManagerClient$2
   implements Runnable

@@ -5,14 +5,14 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.BitmapDrawable;
 import android.widget.ImageView;
-import anoh;
-import bfpx;
+import aora;
+import bgyo;
 import com.tencent.qphone.base.util.QLog;
 
 public class MsgNotifyPushDialog$4
   implements Runnable
 {
-  public MsgNotifyPushDialog$4(anoh paramanoh) {}
+  public MsgNotifyPushDialog$4(aora paramaora) {}
   
   public void run()
   {
@@ -20,22 +20,22 @@ public class MsgNotifyPushDialog$4
     AnimationDrawable localAnimationDrawable;
     if (this.this$0.isShowing())
     {
-      anoh.a(this.this$0, true);
+      aora.a(this.this$0, true);
       localAnimationDrawable = new AnimationDrawable();
     }
     try
     {
       long l1 = System.currentTimeMillis();
-      while (i < anoh.jdField_a_of_type_Int)
+      while (i < aora.jdField_a_of_type_Int)
       {
-        Bitmap localBitmap = bfpx.a(String.format(anoh.c + anoh.e, new Object[] { Integer.valueOf(i) }));
-        localAnimationDrawable.addFrame(new BitmapDrawable(anoh.a(this.this$0).getResources(), localBitmap), 1000 / anoh.jdField_a_of_type_Int);
+        Bitmap localBitmap = bgyo.a(String.format(aora.c + aora.e, new Object[] { Integer.valueOf(i) }));
+        localAnimationDrawable.addFrame(new BitmapDrawable(aora.a(this.this$0).getResources(), localBitmap), 1000 / aora.jdField_a_of_type_Int);
         i += 1;
       }
       localAnimationDrawable.setOneShot(true);
       long l2 = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
-        QLog.d(anoh.jdField_a_of_type_JavaLangString, 2, new Object[] { "Frame Animation decode cost ", Long.valueOf(l2 - l1) });
+        QLog.d(aora.jdField_a_of_type_JavaLangString, 2, new Object[] { "Frame Animation decode cost ", Long.valueOf(l2 - l1) });
       }
       this.this$0.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new MsgNotifyPushDialog.4.1(this, localAnimationDrawable), 500L);
       return;

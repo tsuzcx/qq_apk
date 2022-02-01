@@ -1,26 +1,30 @@
-import java.util.HashMap;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileGameView;
 
 public class badt
-  extends badu
+  extends badm
 {
-  public int a = -1;
-  
-  public HashMap<String, String> a(String paramString)
+  public badt(azxt paramazxt, azrb paramazrb)
   {
-    if ("ShortVideo.Preview".equals(paramString))
+    super(paramazxt, paramazrb);
+  }
+  
+  public String a()
+  {
+    return "VasProfileHeaderGameComponent";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView == null)
     {
-      paramString = new HashMap();
-      paramString.put("param_uinType", this.b + "");
-      paramString.put("param_GroupMemberCount", this.c + "");
-      paramString.put("param_age", this.d + "");
-      paramString.put("param_gender", this.e + "");
-      paramString.put("param_shortVideoType", this.f + "");
-      paramString.put("param_reportHour", this.g + "");
-      paramString.put("param_netType", this.h + "");
-      paramString.put("param_playAction", this.a + "");
-      return paramString;
+      VasProfileGameView localVasProfileGameView = new VasProfileGameView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (azrb)this.b);
+      localVasProfileGameView.setClickListener(this);
+      localVasProfileGameView.a();
+      this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView = localVasProfileGameView;
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).removeAllViews();
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).addView(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView);
     }
-    return null;
   }
 }
 

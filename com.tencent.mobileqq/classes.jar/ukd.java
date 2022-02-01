@@ -1,173 +1,154 @@
-import NS_KING_PUBLIC.stAuth;
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import cooperation.qzone.LocalMultiProcConfig;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.Map;
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONObject;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.text.TextUtils.TruncateAt;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class ukd
 {
-  private static int jdField_a_of_type_Int;
-  private static volatile ukd jdField_a_of_type_Ukd;
-  private acju jdField_a_of_type_Acju;
-  private Map<Long, ukf> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private volatile boolean jdField_a_of_type_Boolean;
-  
-  private ukd()
+  public static TextView a(Context paramContext, VideoInfo paramVideoInfo, String paramString)
   {
-    a();
-  }
-  
-  private Activity a()
-  {
-    Activity localActivity = null;
-    if (SplashActivity.a != null) {
-      localActivity = (Activity)SplashActivity.a.get();
+    if ((paramVideoInfo == null) || (paramVideoInfo.a == null)) {
+      return null;
     }
-    Object localObject = localActivity;
-    if (localActivity == null) {
-      localObject = BaseActivity.sTopActivity;
-    }
-    return localObject;
-  }
-  
-  public static ukd a()
-  {
-    if (jdField_a_of_type_Ukd == null) {}
-    try
+    int i = ukc.a(paramVideoInfo.a);
+    paramVideoInfo = new LinearLayout.LayoutParams(-2, -2);
+    paramVideoInfo.rightMargin = AIOUtils.dp2px(6.0F, paramContext.getResources());
+    paramContext = new TextView(paramContext);
+    paramContext.setIncludeFontPadding(false);
+    if (i == 3)
     {
-      if (jdField_a_of_type_Ukd == null) {
-        jdField_a_of_type_Ukd = new ukd();
-      }
-      return jdField_a_of_type_Ukd;
+      paramContext.setBackgroundResource(2130849333);
+      paramContext.setTextColor(Color.parseColor("#757575"));
+      paramContext.setTextSize(11.0F);
     }
-    finally {}
-  }
-  
-  private ukf a()
-  {
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      return (ukf)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(uyo.a()));
-    }
-    return null;
-  }
-  
-  private void a(JSONObject paramJSONObject)
-  {
-    jdField_a_of_type_Int = 0;
-    String str = paramJSONObject.optString("openid");
-    paramJSONObject = paramJSONObject.optString("access_token");
-    if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramJSONObject))) {
-      this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(uyo.a()), new ukf(str, paramJSONObject));
-    }
-    str = bjmz.a(str, uyo.a());
-    paramJSONObject = bjmz.a(paramJSONObject, uyo.a());
-    LocalMultiProcConfig.putString4Uin("key_qq_connect_open_id", str, uyo.a());
-    LocalMultiProcConfig.putString4Uin("key_qq_connect_access_token", paramJSONObject, uyo.a());
-    LocalMultiProcConfig.putLong4Uin("key_qq_connect_auth_time", System.currentTimeMillis(), uyo.a());
-  }
-  
-  private boolean a()
-  {
-    boolean bool = true;
     for (;;)
     {
-      try
+      paramContext.setMaxLines(1);
+      paramContext.setEllipsize(TextUtils.TruncateAt.END);
+      paramContext.setGravity(17);
+      paramContext.setText(paramString);
+      paramContext.setLayoutParams(paramVideoInfo);
+      return paramContext;
+      paramContext.setBackgroundResource(2130849331);
+      paramContext.setTextSize(10.0F);
+      paramContext.setTextColor(Color.parseColor("#737373"));
+    }
+  }
+  
+  public static void a(swi paramswi)
+  {
+    if ((paramswi == null) || (paramswi.c == null)) {}
+    Context localContext;
+    do
+    {
+      boolean bool1;
+      do
       {
-        long l1 = uyo.a();
-        Object localObject1 = this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(l1));
-        if (localObject1 != null) {
-          return bool;
-        }
-        long l2 = System.currentTimeMillis();
-        long l3 = LocalMultiProcConfig.getLong4Uin("key_qq_connect_auth_time", 0L, l1);
-        uya.e("WSQQConnectAuthManager", "now qq connect auth time diff (sec) = " + (l2 - l3) / 1000L);
-        if (l2 - l3 > 1728000000L)
+        return;
+        boolean bool2 = false;
+        bool1 = bool2;
+        if (paramswi.a != null)
         {
-          bool = false;
-        }
-        else
-        {
-          localObject1 = LocalMultiProcConfig.getString4Uin("key_qq_connect_open_id", "", l1);
-          String str1 = LocalMultiProcConfig.getString4Uin("key_qq_connect_access_token", "", l1);
-          String str2 = bjmz.b((String)localObject1, uyo.a());
-          String str3 = bjmz.b(str1, uyo.a());
-          uya.f("weishi-828", "use sp openId and accessToken encrypted:" + (String)localObject1 + " , " + str1 + ", decrypt:" + str2 + " , " + str3);
-          if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str3))) {
-            this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(uyo.a()), new ukf(str2, str3));
-          } else {
-            bool = false;
+          bool1 = bool2;
+          if (paramswi.a.a != null) {
+            bool1 = uks.a(paramswi.a.a);
           }
         }
-      }
-      finally {}
-    }
+      } while (!bool1);
+      localContext = paramswi.c.getContext();
+    } while (localContext == null);
+    Object localObject = (RelativeLayout.LayoutParams)paramswi.c.getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject).width = AIOUtils.dp2px(245.0F, localContext.getResources());
+    ((RelativeLayout.LayoutParams)localObject).height = AIOUtils.dp2px(48.0F, localContext.getResources());
+    ((RelativeLayout.LayoutParams)localObject).bottomMargin = AIOUtils.dp2px(65.0F, localContext.getResources());
+    paramswi.c.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localObject = new GradientDrawable();
+    ((GradientDrawable)localObject).setColor(Color.parseColor("#7F4D4D4D"));
+    ((GradientDrawable)localObject).setCornerRadius(AIOUtils.dp2px(6.0F, localContext.getResources()));
+    paramswi.c.setBackgroundDrawable((Drawable)localObject);
+    localObject = (RelativeLayout.LayoutParams)paramswi.d.getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject).width = AIOUtils.dp2px(40.0F, localContext.getResources());
+    ((RelativeLayout.LayoutParams)localObject).height = AIOUtils.dp2px(40.0F, localContext.getResources());
+    ((RelativeLayout.LayoutParams)localObject).leftMargin = AIOUtils.dp2px(4.0F, localContext.getResources());
+    paramswi.d.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    paramswi.l.setTextSize(14.0F);
+    localObject = (RelativeLayout.LayoutParams)paramswi.l.getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject).leftMargin = AIOUtils.dp2px(10.0F, localContext.getResources());
+    paramswi.l.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localObject = (RelativeLayout.LayoutParams)paramswi.m.getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject).rightMargin = AIOUtils.dp2px(25.0F, localContext.getResources());
+    paramswi.m.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localObject = (LinearLayout.LayoutParams)paramswi.jdField_b_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+    ((LinearLayout.LayoutParams)localObject).leftMargin = AIOUtils.dp2px(10.0F, localContext.getResources());
+    paramswi.jdField_b_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    paramswi.m.setTextSize(14.0F);
+    paramswi.m.setTypeface(Typeface.DEFAULT);
+    paramswi.i.setTypeface(Typeface.DEFAULT);
+    paramswi.k.setTypeface(Typeface.DEFAULT);
+    paramswi.j.setTextColor(Color.parseColor("#FFFFFF"));
+    paramswi.j.setTextSize(11.0F);
+    localObject = new GradientDrawable();
+    ((GradientDrawable)localObject).setColor(Color.parseColor("#FF6522"));
+    ((GradientDrawable)localObject).setCornerRadius(AIOUtils.dp2px(3.0F, localContext.getResources()));
+    paramswi.j.setBackgroundDrawable((Drawable)localObject);
+    localObject = (RelativeLayout.LayoutParams)paramswi.jdField_b_of_type_AndroidWidgetSeekBar.getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject).bottomMargin = AIOUtils.dp2px(50.0F, localContext.getResources());
+    paramswi.jdField_b_of_type_AndroidWidgetSeekBar.setLayoutParams((ViewGroup.LayoutParams)localObject);
   }
   
-  private void c()
+  public static void b(swi paramswi)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if ((paramswi == null) || (paramswi.c == null)) {}
+    Context localContext;
+    do
     {
-      this.jdField_a_of_type_Boolean = true;
-      acjz.a();
-      this.jdField_a_of_type_Acju = acjz.a(a(), 6, String.valueOf(1101083114));
-      if (this.jdField_a_of_type_Acju != null) {
-        this.jdField_a_of_type_Acju.a("loginSilent", null, new uke(this));
-      }
-    }
-  }
-  
-  private void d()
-  {
-    jdField_a_of_type_Int += 1;
-    uya.g("WSQQConnectAuthManager", "authRetry: " + jdField_a_of_type_Int);
-    if (jdField_a_of_type_Int >= 3)
-    {
-      jdField_a_of_type_Int = 0;
-      return;
-    }
-    c();
-  }
-  
-  @NotNull
-  public stAuth a(String paramString1, String paramString2)
-  {
-    ukf localukf = a();
-    if (localukf != null)
-    {
-      uya.f("weishi-828", "use memory openId and accessToken" + localukf.a + " , " + localukf.b);
-      return new stAuth(1, localukf.a, localukf.b);
-    }
-    if (a())
-    {
-      localukf = a();
-      if (localukf != null)
+      boolean bool1;
+      do
       {
-        uya.f("weishi-828", "use memory openId and accessToken" + localukf.a + " , " + localukf.b);
-        return new stAuth(1, localukf.a, localukf.b);
-      }
-    }
-    uya.g("weishi-828", "未获取到openId和accessToken，使用了兜底方案");
-    c();
-    return new stAuth(2, paramString1, paramString2);
-  }
-  
-  public void a()
-  {
-    if (!a()) {
-      c();
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    c();
+        return;
+        boolean bool2 = false;
+        bool1 = bool2;
+        if (paramswi.a != null)
+        {
+          bool1 = bool2;
+          if (paramswi.a.a != null) {
+            bool1 = uks.a(paramswi.a.a);
+          }
+        }
+      } while (!bool1);
+      localContext = paramswi.c.getContext();
+    } while (localContext == null);
+    Object localObject = (RelativeLayout.LayoutParams)paramswi.c.getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject).height = AIOUtils.dp2px(31.0F, localContext.getResources());
+    ((RelativeLayout.LayoutParams)localObject).bottomMargin = AIOUtils.dp2px(10.0F, localContext.getResources());
+    paramswi.c.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localObject = new GradientDrawable();
+    ((GradientDrawable)localObject).setColor(Color.parseColor("#33FFFFFF"));
+    ((GradientDrawable)localObject).setCornerRadius(AIOUtils.dp2px(6.0F, localContext.getResources()));
+    paramswi.c.setBackgroundDrawable((Drawable)localObject);
+    localObject = (RelativeLayout.LayoutParams)paramswi.d.getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject).width = AIOUtils.dp2px(31.0F, localContext.getResources());
+    ((RelativeLayout.LayoutParams)localObject).height = AIOUtils.dp2px(31.0F, localContext.getResources());
+    ((RelativeLayout.LayoutParams)localObject).leftMargin = AIOUtils.dp2px(0.0F, localContext.getResources());
+    paramswi.d.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    paramswi.l.setTextSize(16.0F);
+    paramswi.m.setTextSize(14.0F);
+    paramswi.m.setTypeface(Typeface.DEFAULT);
+    paramswi.i.setTypeface(Typeface.DEFAULT_BOLD);
+    localObject = (RelativeLayout.LayoutParams)paramswi.jdField_b_of_type_AndroidWidgetSeekBar.getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject).bottomMargin = AIOUtils.dp2px(0.0F, localContext.getResources());
+    paramswi.jdField_b_of_type_AndroidWidgetSeekBar.setLayoutParams((ViewGroup.LayoutParams)localObject);
   }
 }
 

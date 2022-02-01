@@ -11,7 +11,6 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
-import bjms;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.beacon.event.UserAction;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper;
@@ -22,6 +21,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.util.SystemUtil;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.util.QQDeviceInfo;
 import cooperation.qzone.util.NetworkState;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
 
@@ -191,7 +191,7 @@ public class PlatformInfor
   public String getIMEI()
   {
     if (TextUtils.isEmpty(this.mDeviceId)) {
-      this.mDeviceId = bjms.a("52b7f2");
+      this.mDeviceId = QQDeviceInfo.getIMEI("52b7f2");
     }
     return this.mDeviceId;
   }
@@ -199,7 +199,7 @@ public class PlatformInfor
   public String getIMSI()
   {
     if (TextUtils.isEmpty(this.mImsi)) {
-      this.mImsi = bjms.b("52b7f2");
+      this.mImsi = QQDeviceInfo.getIMSI("52b7f2");
     }
     return this.mImsi;
   }
@@ -207,7 +207,7 @@ public class PlatformInfor
   public String getLocalMacAddress()
   {
     if (TextUtils.isEmpty(this.mMacAddress)) {
-      this.mMacAddress = bjms.c("52b7f2");
+      this.mMacAddress = QQDeviceInfo.getMAC("52b7f2");
     }
     return this.mMacAddress;
   }
@@ -256,7 +256,7 @@ public class PlatformInfor
     ((StringBuilder)localObject).append("mm=").append(DeviceInfoUtil.getSystemTotalMemory() / 1048576L).append('&');
     ((StringBuilder)localObject).append("cf=").append(DeviceInfoUtil.getCpuFrequency()).append('&');
     ((StringBuilder)localObject).append("cc=").append(DeviceInfoUtil.getCpuNumber()).append('&');
-    ((StringBuilder)localObject).append("qqversion=").append("8.4.8");
+    ((StringBuilder)localObject).append("qqversion=").append("8.4.10");
     return ((StringBuilder)localObject).toString();
   }
   

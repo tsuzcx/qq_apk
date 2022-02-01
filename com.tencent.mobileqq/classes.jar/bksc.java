@@ -1,39 +1,30 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
-import cooperation.qqpim.QQPimPluginProxyService;
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import com.tencent.qqmini.sdk.launcher.shell.IActivityResultListener;
+import com.tencent.qqmini.sdk.launcher.shell.IActivityResultManager;
+import java.io.File;
 
-public class bksc
-  implements bksi
+class bksc
+  implements IActivityResultListener
 {
-  public bksc(QQPimGetTipsInfoIPC paramQQPimGetTipsInfoIPC) {}
+  bksc(bkrw parambkrw, File paramFile, IActivityResultManager paramIActivityResultManager, boolean paramBoolean) {}
   
-  public void a()
+  @SuppressLint({"NewApi"})
+  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(bksb.a, 2, "QQPimGetTipsInfoIPC.hasInstalled() ");
+    if (paramInt1 != 2) {
+      return false;
     }
-    QQPimPluginProxyService.a(QQPimGetTipsInfoIPC.a(this.a));
-  }
-  
-  public void a(float paramFloat)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(bksb.a, 2, "QQPimGetTipsInfoIPC.downloading() " + paramFloat);
+    if (paramInt2 != -1)
+    {
+      this.jdField_a_of_type_JavaIoFile.deleteOnExit();
+      bkrw.a(this.jdField_a_of_type_Bkrw, bkrw.a(this.jdField_a_of_type_Bkrw), "chooseVideo", null);
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellIActivityResultManager.removeActivityResultListener(this);
+      return true;
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(bksb.a, 2, "QQPimGetTipsInfoIPC.downloadError() " + paramInt);
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(bksb.a, 2, "QQPimGetTipsInfoIPC.downloadBegin()");
-    }
+    bkrw.a(this.jdField_a_of_type_Bkrw, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellIActivityResultManager.removeActivityResultListener(this);
+    return true;
   }
 }
 

@@ -1,20 +1,78 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.List;
 
-class qkp
-  implements qkh
+public class qkp
 {
-  qkp(qki paramqki) {}
+  public int a;
+  public ToServiceMsg a;
+  public String a;
+  public List<ArticleInfo> a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public List<ArticleInfo> b;
+  public boolean b;
   
-  public void a()
+  public qkp a()
   {
-    if (qki.a(this.a) != null)
-    {
-      qki.a(this.a).a();
-      return;
-    }
-    pay.a(qki.b(this.a).getContext(), qki.a(this.a));
-    QLog.d("RvPolymericContainer", 1, "mScrollJumpUrl : " + qki.a(this.a));
+    qkp localqkp = new qkp();
+    localqkp.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg).a(this.jdField_a_of_type_Int).b(this.jdField_b_of_type_Int).a(this.jdField_a_of_type_JavaUtilList).b(this.jdField_b_of_type_JavaUtilList).a(this.jdField_a_of_type_Boolean).b(this.jdField_b_of_type_Boolean).a(this.jdField_a_of_type_ArrayOfByte).a(this.jdField_a_of_type_JavaLangString);
+    return localqkp;
+  }
+  
+  public qkp a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public qkp a(ToServiceMsg paramToServiceMsg)
+  {
+    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
+    return this;
+  }
+  
+  public qkp a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public qkp a(List<ArticleInfo> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    return this;
+  }
+  
+  public qkp a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    return this;
+  }
+  
+  public qkp a(byte[] paramArrayOfByte)
+  {
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    return this;
+  }
+  
+  public qkp b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public qkp b(List<ArticleInfo> paramList)
+  {
+    this.jdField_b_of_type_JavaUtilList = paramList;
+    return this;
+  }
+  
+  public qkp b(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    return this;
   }
 }
 

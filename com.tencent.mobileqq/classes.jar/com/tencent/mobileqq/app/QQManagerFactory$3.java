@@ -7,12 +7,36 @@ final class QQManagerFactory$3
 {
   QQManagerFactory$3()
   {
-    add(Integer.valueOf(0));
-    add(Integer.valueOf(1));
-    add(Integer.valueOf(2));
-    add(Integer.valueOf(3));
-    add(Integer.valueOf(47));
-    add(Integer.valueOf(185));
+    add(Integer.valueOf(QQManagerFactory.VIDEO_STORY_MANAGER));
+    add(Integer.valueOf(QQManagerFactory.MGR_RED_TOUCH));
+    add(Integer.valueOf(QQManagerFactory.CHAT_BUBBLE_MANAGER));
+    add(Integer.valueOf(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER));
+    add(Integer.valueOf(QQManagerFactory.ACCOUNTDPC_MANAGER));
+    add(Integer.valueOf(QQManagerFactory.ADDCONTACT_TROOP_SEARCH_POP_MANAGE));
+    add(Integer.valueOf(QQManagerFactory.TROOP_GIFT_MANAGER));
+    add(Integer.valueOf(QQManagerFactory.READINJOY_LOGIC_MANAGER));
+    add(Integer.valueOf(QQManagerFactory.QIDIAN_MANAGER));
+    add(Integer.valueOf(QQManagerFactory.AR_RESOURCE_MANAGER));
+    add(Integer.valueOf(QQManagerFactory.PHOTO_PLUS_MANAGER));
+    add(Integer.valueOf(QQManagerFactory.FACE_MANAGER));
+    add(Integer.valueOf(QQManagerFactory.DYNAMIC_AVATAR_MANAGER));
+    add(Integer.valueOf(QQManagerFactory.QQSTORY_MANAGER));
+    add(Integer.valueOf(QQManagerFactory.ART_FILTER_MANAGER));
+    add(Integer.valueOf(QQManagerFactory.ARMAP_RES_DOWNLOAD));
+    add(Integer.valueOf(QQManagerFactory.TROOP_ROBOT_MANAGER));
+    add(Integer.valueOf(QQManagerFactory.FACE_SCORE_MANAGER));
+    add(Integer.valueOf(QQManagerFactory.COMIC_RED_TOUCH_MANAGER));
+    add(Integer.valueOf(QQManagerFactory.AIO_ANIMATION_MANAGER));
+    add(Integer.valueOf(QQManagerFactory.NEARBY_VIDEO_CHAT));
+    add(Integer.valueOf(QQManagerFactory.USING_TIME_REPORT_MANAGER));
+    add(Integer.valueOf(QQManagerFactory.ZHITU_MANAGER));
+    add(Integer.valueOf(QQManagerFactory.READ_INJOY_SKIN_MANAGER));
+    add(Integer.valueOf(QQManagerFactory.READ_INJOY_REFRESH_MANAGER));
+    add(Integer.valueOf(QQManagerFactory.READ_IN_JOY_OPERATION_MANAGER));
+    add(Integer.valueOf(QQManagerFactory.ARPROMOTION_MANAGER));
+    add(Integer.valueOf(QQManagerFactory.HCE_PLUGIN_MANAGER));
+    add(Integer.valueOf(QQManagerFactory.READINJOY_AD_MATERIAL_MANAGER));
+    add(Integer.valueOf(QQManagerFactory.QQ_NOTIFY_MANAGER));
   }
 }
 

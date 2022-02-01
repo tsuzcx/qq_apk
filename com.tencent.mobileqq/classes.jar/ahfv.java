@@ -1,39 +1,52 @@
-import android.text.TextUtils;
+import android.os.SystemClock;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
+import com.tencent.mobileqq.data.MessageForShakeWindow;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ahfv
   implements View.OnClickListener
 {
-  ahfv(ahfp paramahfp) {}
+  ahfv(ahfu paramahfu) {}
   
   public void onClick(View paramView)
   {
-    ahfp.a(this.a);
-    if ((ahfp.a(this.a) != null) && (!TextUtils.isEmpty(ahfp.a(this.a))))
-    {
-      String str = "big_brother_source_key=biz_src_zf_games&platform=qq_m&current_uin=$OPID$&user_openid=$OPID$&launchfrom=sq_gamecenter&gamedata=&platformdata=";
-      QQAppInterface localQQAppInterface = this.a.getApp();
-      if ((!TextUtils.isEmpty(ahfp.b(this.a))) && (localQQAppInterface != null))
-      {
-        if (!ahfp.b(this.a).startsWith("&")) {
-          str = "big_brother_source_key=biz_src_zf_games&platform=qq_m&current_uin=$OPID$&user_openid=$OPID$&launchfrom=sq_gamecenter&gamedata=&platformdata=" + "&";
-        }
-        str = str + ahfp.b(this.a);
-        new bbkb().a(localQQAppInterface, this.a.getActivity(), ahfp.a(this.a).c, str, ahfp.a(this.a), 536870912);
-        ((VasExtensionHandler)localQQAppInterface.getBusinessHandler(71)).a(ahfp.a(this.a).c, localQQAppInterface.getCurrentAccountUin(), 1);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.shakemsg", 2, "shake msg onClick() is called");
     }
+    AIOUtils.isUserOperatedInAIO = true;
+    if (this.a.a()) {}
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      QLog.e(ahfp.b, 1, "gameinfo is null ");
+      if (SystemClock.uptimeMillis() - ahfu.a(this.a) < 3000L)
+      {
+        QLog.d("Q.msg.shakemsg", 2, "shake return cause:too much click in a very short time!");
+      }
+      else
+      {
+        MessageForShakeWindow localMessageForShakeWindow = (MessageForShakeWindow)AIOUtils.getMessage(paramView);
+        if (((this.a.jdField_a_of_type_AndroidContentContext instanceof ChatActivity)) || ((this.a.jdField_a_of_type_AndroidContentContext instanceof SplashActivity)))
+        {
+          FragmentActivity localFragmentActivity = (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext;
+          ahfu.a(this.a, SystemClock.uptimeMillis());
+          localFragmentActivity.getChatFragment().a().startShakeAnim();
+          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.vibratorAndAudioForShake(localMessageForShakeWindow.frienduin, false);
+        }
+        else
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.vibratorAndAudioForShake(localMessageForShakeWindow.frienduin, false);
+        }
+      }
     }
   }
 }

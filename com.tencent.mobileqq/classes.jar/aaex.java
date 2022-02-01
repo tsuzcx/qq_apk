@@ -1,30 +1,45 @@
-import android.util.SparseArray;
-import android.view.View;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
 
-public class aaex
+class aaex
+  implements bcyc
 {
-  private SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray;
-  private View jdField_a_of_type_AndroidViewView;
+  aaex(aaeq paramaaeq, AppRuntime paramAppRuntime, Bundle paramBundle) {}
   
-  private aaex(View paramView)
+  public void onConfigResult(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public <T extends View> T a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
-      this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    VideoEnvironment.LogDownLoad("TroopMemberApiService", "result=" + paramInt1 + ",serverError=" + paramInt2, null);
+    if ((paramInt1 == 1) || (paramInt1 == 0))
+    {
+      if (paramInt2 != 0)
+      {
+        VideoEnvironment.LogDownLoad("TroopMemberApiService", anvx.a(2131714965) + paramInt2 + "]", null);
+        ShortVideoResourceManager.a(anvx.a(2131714935));
+        bcxc.a(1, paramInt2);
+        this.jdField_a_of_type_Aaeq.a.b = false;
+        return;
+      }
+      ArrayList localArrayList = new ArrayList(1);
+      paramInt1 = ShortVideoResourceManager.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, localArrayList);
+      if (paramInt1 == 0)
+      {
+        VideoEnvironment.LogDownLoad("TroopMemberApiService", anvx.a(2131714926), null);
+        ShortVideoResourceManager.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, localArrayList, new aaey(this));
+        return;
+      }
+      VideoEnvironment.LogDownLoad("TroopMemberApiService", anvx.a(2131714927) + paramInt1 + "]", null);
+      ShortVideoResourceManager.a(anvx.a(2131714964));
+      bcxc.a(1, paramInt1);
+      return;
     }
-    if ((this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null) && (this.jdField_a_of_type_AndroidViewView != null)) {
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, this.jdField_a_of_type_AndroidViewView.findViewById(paramInt));
-    }
-    return (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    VideoEnvironment.LogDownLoad("TroopMemberApiService", anvx.a(2131715015) + paramInt2 + "]", null);
+    ShortVideoResourceManager.a(anvx.a(2131714972));
+    bcxc.a(1, paramInt2);
+    this.jdField_a_of_type_Aaeq.a.b = false;
   }
 }
 

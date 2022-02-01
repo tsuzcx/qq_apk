@@ -1,15 +1,15 @@
 package com.tencent.ctsz;
 
-import aagy;
+import aawk;
 
 public class m$1
   extends Thread
 {
-  public m$1(aagy paramaagy) {}
+  public m$1(aawk paramaawk) {}
   
   public void run()
   {
-    aagy.a(this.this$0);
+    aawk.a(this.this$0);
   }
 }
 

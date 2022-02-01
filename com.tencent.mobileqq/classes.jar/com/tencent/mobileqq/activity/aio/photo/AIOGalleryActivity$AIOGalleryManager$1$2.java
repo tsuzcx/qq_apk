@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import agxv;
-import agxw;
-import agyh;
+import ahqw;
+import ahqx;
+import ahri;
 
 public class AIOGalleryActivity$AIOGalleryManager$1$2
   implements Runnable
 {
-  public AIOGalleryActivity$AIOGalleryManager$1$2(agxw paramagxw, long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean) {}
+  public AIOGalleryActivity$AIOGalleryManager$1$2(ahqx paramahqx, long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean) {}
   
   public void run()
   {
-    if (agxv.c(this.jdField_a_of_type_Agxw.a) != null) {
-      ((agyh)agxv.d(this.jdField_a_of_type_Agxw.a)).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.jdField_b_of_type_Long, this.jdField_a_of_type_Boolean);
+    if (ahqw.c(this.jdField_a_of_type_Ahqx.a) != null) {
+      ((ahri)ahqw.d(this.jdField_a_of_type_Ahqx.a)).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.jdField_b_of_type_Long, this.jdField_a_of_type_Boolean);
     }
   }
 }

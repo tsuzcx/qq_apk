@@ -12,7 +12,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
-import bbyp;
+import bdfk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -47,11 +47,11 @@ public class TabBarView2
     boolean bool2 = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
     int i;
     int j;
-    if (bbyp.a()) {
+    if (bdfk.a()) {
       if (bool2)
       {
-        i = 2131166471;
-        k = 2131167096;
+        i = 2131166485;
+        k = 2131167110;
         int n = 255;
         j = i;
         i = k;
@@ -76,32 +76,32 @@ public class TabBarView2
       this.t = paramContext.getDimensionPixelSize(4, this.t);
       this.u = paramContext.getDimensionPixelSize(3, this.u);
       paramContext.recycle();
-      if (("1103".equals(ThemeUtil.curThemeId)) || (bbyp.a()))
+      if (("1103".equals(ThemeUtil.curThemeId)) || (bdfk.a()))
       {
         this.r = getResources().getColor(j);
         this.s = k;
       }
       b();
       return;
-      i = 2131166470;
+      i = 2131166484;
       break;
       if (bool2)
       {
-        m = 2131165588;
-        i = 2131165587;
-        j = 2131165586;
+        m = 2131165594;
+        i = 2131165593;
+        j = 2131165592;
         k = 30;
       }
       else if (!bool1)
       {
-        i = 2131167096;
-        j = 2131167019;
+        i = 2131167110;
+        j = 2131167033;
       }
       else
       {
-        m = 2131165589;
-        i = 2131167096;
-        j = 2131165589;
+        m = 2131165595;
+        i = 2131167110;
+        j = 2131165595;
       }
     }
   }

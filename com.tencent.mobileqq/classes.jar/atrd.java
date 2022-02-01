@@ -1,17 +1,15 @@
-import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.fragment.LangSettingFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class atrd
+class atrd
   implements View.OnClickListener
 {
-  public atrd(LangSettingFragment paramLangSettingFragment) {}
+  atrd(atrc paramatrc, bcfj parambcfj) {}
   
   public void onClick(View paramView)
   {
-    LangSettingFragment.a(this.a).dismiss();
+    ((atrb)this.jdField_a_of_type_Bcfj).a(paramView);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

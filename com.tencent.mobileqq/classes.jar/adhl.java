@@ -1,25 +1,79 @@
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.widget.TipsBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
 
 public class adhl
-  implements View.OnClickListener
+  extends ClickableSpan
 {
-  public adhl(ForwardRecentActivity paramForwardRecentActivity) {}
+  public int a;
+  public Bundle a;
+  public String a;
+  
+  public adhl(AddRequestActivity paramAddRequestActivity, int paramInt, String paramString, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+  }
   
   public void onClick(View paramView)
   {
-    if ((this.a.a != null) && (this.a.a.getVisibility() == 0)) {
-      this.a.a.setVisibility(8);
+    if (paramView != null) {}
+    for (paramView = paramView.getContext(); paramView == null; paramView = null) {
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    Object localObject;
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      return;
+    case 1: 
+      TroopUtils.openTroopInfoActivity(paramView, this.jdField_a_of_type_AndroidOsBundle, 2);
+      return;
+    case 2: 
+      try
+      {
+        localObject = new Intent(paramView, DiscussionInfoCardActivity.class);
+        ((Intent)localObject).putExtras(this.jdField_a_of_type_AndroidOsBundle);
+        paramView.startActivity((Intent)localObject);
+        return;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+        return;
+      }
+    }
+    try
+    {
+      localObject = new ProfileActivity.AllInOne(this.jdField_a_of_type_AndroidOsBundle.getString("key_profile_uin"), this.jdField_a_of_type_AndroidOsBundle.getInt("key_profile_pa", 25));
+      ((ProfileActivity.AllInOne)localObject).h = 109;
+      ((ProfileActivity.AllInOne)localObject).d = this.jdField_a_of_type_AndroidOsBundle.getInt("key_profile_chatability");
+      ProfileActivity.b(paramView, (ProfileActivity.AllInOne)localObject);
+      return;
+    }
+    catch (Exception paramView)
+    {
+      paramView.printStackTrace();
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adhl
  * JD-Core Version:    0.7.0.1
  */

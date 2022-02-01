@@ -1,37 +1,77 @@
-import com.tencent.biz.common.offline.BidDownloader;
-import com.tencent.biz.common.offline.HtmlOffline.6;
-import com.tencent.biz.common.util.NetworkUtil;
+import android.os.Build;
+import android.os.SystemClock;
+import com.tencent.av.gaudio.QQGAudioCtrl;
+import com.tencent.avgame.qav.AsyncExitTask.1;
+import com.tencent.avgame.qav.AsyncExitTask.2;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class nob
-  implements nnv
 {
-  public nob(HtmlOffline.6 param6) {}
+  private static boolean jdField_a_of_type_Boolean;
+  private static boolean b;
+  private int jdField_a_of_type_Int = -1;
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
   
-  public void loaded(String paramString, int paramInt)
+  static
   {
-    long l = System.currentTimeMillis() - this.a.jdField_a_of_type_Long;
-    if (nny.a.a()) {
-      nny.a.a("HtmlCheckUpdate", 2, "js call downloadUpdate callback:" + paramInt + ", time:" + l);
-    }
-    if (paramInt == 0) {
-      if (nny.b(this.a.b)) {
-        this.a.jdField_a_of_type_Nnv.loaded(null, 0);
-      }
-    }
-    for (;;)
+    if ((Build.MODEL.equalsIgnoreCase("LYA-AL00")) || (Build.MODEL.equalsIgnoreCase("MI 9")) || (Build.MODEL.equalsIgnoreCase("EML-L29")) || (Build.MODEL.equalsIgnoreCase("vivo Y66")) || (Build.MODEL.equalsIgnoreCase("vivo Y67")) || (Build.MODEL.equalsIgnoreCase("vivo Y67A")) || (Build.MODEL.equalsIgnoreCase("vivo Y67L")) || (Build.MODEL.equalsIgnoreCase("vivo X9Plus")) || (Build.MODEL.equalsIgnoreCase("vivo X9Plus L")) || (Build.MODEL.equalsIgnoreCase("vivo X9s")) || (Build.MODEL.equalsIgnoreCase("vivo X9s L")) || (Build.MODEL.equalsIgnoreCase("vivo X9s Plus")) || (Build.MODEL.equalsIgnoreCase("vivo X9s Plus L")) || (Build.MODEL.equalsIgnoreCase("Redmi S2"))) {}
+    for (boolean bool = true;; bool = false)
     {
-      BidDownloader.b(this.a.b);
-      nny.a(this.a.b, paramInt, l, NetworkUtil.getNetworkType(this.a.jdField_a_of_type_AndroidContentContext));
+      b = bool;
       return;
-      this.a.jdField_a_of_type_Nnv.loaded(null, 6);
-      continue;
-      this.a.jdField_a_of_type_Nnv.loaded(null, 2);
     }
   }
   
-  public void progress(int paramInt)
+  public static void a()
   {
-    this.a.jdField_a_of_type_Nnv.progress(paramInt);
+    if ((!b) && (!jdField_a_of_type_Boolean)) {
+      ThreadManager.excute(new AsyncExitTask.1(), 16, null, true);
+    }
+  }
+  
+  public static boolean a()
+  {
+    if (!b)
+    {
+      long l = SystemClock.elapsedRealtime();
+      String str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.qavAsyncQuitCfg.name(), "0");
+      if ("1".equals(str)) {
+        b = true;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("AsyncExitTask", 2, "useAsync, dpcValue[" + str + "], model[" + Build.MODEL + "], cost[" + (SystemClock.elapsedRealtime() - l) + "], initDpcMng[" + jdField_a_of_type_Boolean + "]");
+      }
+    }
+    return b;
+  }
+  
+  public int a(QQGAudioCtrl arg1)
+  {
+    int i = -1;
+    this.jdField_a_of_type_Int = -1000001;
+    ThreadManager.excute(new AsyncExitTask.2(this, ???), 16, null, false);
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      try
+      {
+        this.jdField_a_of_type_JavaLangObject.wait(2000);
+        if (this.jdField_a_of_type_Int == -1000001) {
+          i = 261;
+        }
+        QLog.d("AsyncExitTask", 1, "asyncExitRoom.quitRoom end. continue. quitResult = " + this.jdField_a_of_type_Int);
+        return i;
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        for (;;)
+        {
+          localInterruptedException.printStackTrace();
+        }
+      }
+    }
   }
 }
 

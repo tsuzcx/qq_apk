@@ -1,15 +1,50 @@
-import android.widget.TextView;
+import android.support.annotation.NonNull;
 
 public class arla
+  extends arjj<arkz>
 {
-  int jdField_a_of_type_Int;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  @NonNull
+  public static arkz c()
+  {
+    arkz localarkz2 = (arkz)aqxe.a().a(651);
+    arkz localarkz1 = localarkz2;
+    if (localarkz2 == null) {
+      localarkz1 = new arkz();
+    }
+    return localarkz1;
+  }
   
-  protected arla(arkz paramarkz) {}
+  @NonNull
+  public arkz a()
+  {
+    return new arkz();
+  }
+  
+  @NonNull
+  public arkz a(@NonNull aqxa[] paramArrayOfaqxa)
+  {
+    return arkz.a(paramArrayOfaqxa[0].a);
+  }
+  
+  @NonNull
+  public arkz b()
+  {
+    return new arkz();
+  }
+  
+  public Class<arkz> clazz()
+  {
+    return arkz.class;
+  }
+  
+  public int type()
+  {
+    return 651;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arla
  * JD-Core Version:    0.7.0.1
  */

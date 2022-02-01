@@ -1,27 +1,98 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
-import com.tencent.mobileqq.widget.TabBarView;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 
 public class bhjl
-  extends AccessibilityDelegateCompat
 {
-  public bhjl(TabBarView paramTabBarView) {}
-  
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public static byte[] a(byte[] paramArrayOfByte)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if (this.a.a(paramView) == this.a.o) {}
-    for (boolean bool = true;; bool = false)
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(paramArrayOfByte.length + 4);
+    DataOutputStream localDataOutputStream = new DataOutputStream(localByteArrayOutputStream);
+    try
     {
-      paramAccessibilityNodeInfoCompat.setSelected(bool);
-      return;
+      localDataOutputStream.writeInt(paramArrayOfByte.length + 4);
+      localDataOutputStream.write(paramArrayOfByte);
+      paramArrayOfByte = localByteArrayOutputStream.toByteArray();
+      label76:
+      return paramArrayOfByte;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      paramArrayOfByte = paramArrayOfByte;
+      paramArrayOfByte.printStackTrace();
+      try
+      {
+        localByteArrayOutputStream.close();
+        localDataOutputStream.close();
+        return null;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        return null;
+      }
+    }
+    finally
+    {
+      try
+      {
+        localByteArrayOutputStream.close();
+        localDataOutputStream.close();
+        throw paramArrayOfByte;
+      }
+      catch (Exception localException1)
+      {
+        break label76;
+      }
     }
   }
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public static byte[] b(byte[] paramArrayOfByte)
   {
-    super.sendAccessibilityEvent(paramView, paramInt);
+    ByteArrayInputStream localByteArrayInputStream = new ByteArrayInputStream(paramArrayOfByte);
+    DataInputStream localDataInputStream = new DataInputStream(localByteArrayInputStream);
+    try
+    {
+      paramArrayOfByte = new byte[localDataInputStream.readInt() - 4];
+      label72:
+      return paramArrayOfByte;
+    }
+    catch (Exception localException1)
+    {
+      try
+      {
+        localByteArrayInputStream.close();
+        localDataInputStream.close();
+        return paramArrayOfByte;
+      }
+      catch (Exception localException5) {}
+      localException1 = localException1;
+      paramArrayOfByte = null;
+      localException1.printStackTrace();
+      try
+      {
+        localByteArrayInputStream.close();
+        localDataInputStream.close();
+        return paramArrayOfByte;
+      }
+      catch (Exception localException2)
+      {
+        return paramArrayOfByte;
+      }
+    }
+    finally
+    {
+      try
+      {
+        localByteArrayInputStream.close();
+        localDataInputStream.close();
+        throw paramArrayOfByte;
+      }
+      catch (Exception localException3)
+      {
+        break label72;
+      }
+    }
   }
 }
 

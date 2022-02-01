@@ -1,147 +1,127 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihForwardAvatar;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
-import java.util.ArrayList;
-import java.util.List;
 
-public class atlt
+class atlt
+  implements bmsy
 {
-  private Dialog a;
+  atlt(atll paramatll) {}
   
-  public static void a(Activity paramActivity, Intent paramIntent)
+  public void a(String paramString) {}
+  
+  public void a(String paramString, long paramLong, bmsj parambmsj, boolean paramBoolean)
   {
-    if ((paramActivity == null) || (paramActivity.isFinishing())) {
-      QLog.e("ForwardDialogMgr", 1, "-->showMultShareDialog: (null == activity) || activity.isFinishing()");
-    }
-    String str;
-    QQAppInterface localQQAppInterface;
-    int i;
-    atlu localatlu;
+    if (this.a.jdField_a_of_type_Auiw == null) {}
     do
     {
       do
       {
         return;
-      } while (!paramIntent.getBooleanExtra("sdk_mult_share", false));
-      atqa.b("KEY_STAGE_2_TOTAL");
-      paramIntent.removeExtra("sdk_mult_share");
-      str = Integer.toString(paramIntent.getIntExtra("sdk_mult_share_total_count", 0));
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (paramIntent.getBooleanExtra("sdk_mult_share_for_local", false))
-      {
-        QLog.d("ForwardDialogMgr", 1, "showMultShareDialog SDK_MULT_SHARE_FOR_LOCAL");
-        i = BaseApplication.getContext().getResources().getDimensionPixelSize(2131299076);
-        QQToast.a(localQQAppInterface.getApp(), 2, 2131692449, 0).b(i);
-        ForwardUtils.report(localQQAppInterface, "0X800A738", new String[] { str });
-        return;
+        if (!paramBoolean) {
+          break;
+        }
+        if (parambmsj.jdField_a_of_type_Int == 2)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("FileManagerRSWorker<FileAssistant>", 2, "WeiYun download is onStarted[" + this.a.c + "]");
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.a.jdField_b_of_type_Long, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 16, null, 0, null);
+          return;
+        }
+        if (parambmsj.jdField_a_of_type_Int == 5)
+        {
+          if (parambmsj.jdField_b_of_type_Int == 1810002)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("FileManagerRSWorker<FileAssistant>", 2, "WeiYun download is canceled[" + this.a.c + "],set trafficData size[" + this.a.jdField_a_of_type_Long + "]");
+            }
+            if (NetworkUtil.getNetworkType(BaseApplication.getContext()) == 1)
+            {
+              paramString = new String[3];
+              paramString[0] = "param_WIFIFileFlow";
+              paramString[1] = "param_WIFIFlow";
+              paramString[2] = "param_Flow";
+            }
+            for (;;)
+            {
+              this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendAppDataIncerment(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramString, this.a.jdField_a_of_type_Long);
+              this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.a.jdField_b_of_type_Long, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 3, null, 0, null);
+              return;
+              paramString = new String[3];
+              paramString[0] = "param_XGFileFlow";
+              paramString[1] = "param_XGFlow";
+              paramString[2] = "param_Flow";
+            }
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i("FileManagerRSWorker<FileAssistant>", 2, "WeiYun download is onFailed[" + this.a.c + "],set trafficData size[" + this.a.jdField_a_of_type_Long + "]");
+          }
+          if (NetworkUtil.getNetworkType(BaseApplication.getContext()) == 1)
+          {
+            paramString = new String[3];
+            paramString[0] = "param_WIFIFileFlow";
+            paramString[1] = "param_WIFIFlow";
+            paramString[2] = "param_Flow";
+          }
+          for (;;)
+          {
+            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendAppDataIncerment(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramString, this.a.jdField_a_of_type_Long);
+            this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
+            this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.isReaded = false;
+            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a();
+            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.a.jdField_b_of_type_Long, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 36, null, parambmsj.jdField_b_of_type_Int, parambmsj.jdField_a_of_type_JavaLangString);
+            return;
+            paramString = new String[3];
+            paramString[0] = "param_XGFileFlow";
+            paramString[1] = "param_XGFlow";
+            paramString[2] = "param_Flow";
+          }
+        }
+      } while (parambmsj.jdField_a_of_type_Int != 4);
+      if (QLog.isColorLevel()) {
+        QLog.i("FileManagerRSWorker<FileAssistant>", 2, "WeiYun download is onSucceed[" + this.a.c + "],set trafficData size[" + this.a.jdField_a_of_type_Long + "]");
       }
-      i = paramIntent.getIntExtra("sdk_mult_share_result_code", -1);
-      localatlu = new atlu(paramIntent, i, paramActivity, localQQAppInterface);
-      QLog.d("ForwardDialogMgr", 1, new Object[] { "-->showMultShareDialog--RESULT_CODE=", Integer.valueOf(i), ", count=", str });
-      if (901503 == i)
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setFilePath(parambmsj.jdField_b_of_type_JavaLangString);
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = 1.0F;
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.isReaded = false;
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setCloudType(3);
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 1;
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName = auea.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
+      this.a.h = System.currentTimeMillis();
+      if (NetworkUtil.getNetworkType(BaseApplication.getContext()) == 1)
       {
-        ForwardUtils.report(localQQAppInterface, "0X800A739", new String[] { str });
-        a(paramActivity, paramIntent.getStringExtra("sdk_mult_share_error_wording"), localatlu);
-        return;
+        paramString = new String[3];
+        paramString[0] = "param_WIFIFileFlow";
+        paramString[1] = "param_WIFIFlow";
+        paramString[2] = "param_Flow";
       }
-      if (i == 0)
+      for (;;)
       {
-        ForwardUtils.report(localQQAppInterface, "0X800A738", new String[] { str });
-        a(paramActivity, paramIntent, amtj.a(2131718244), localatlu);
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendAppDataIncerment(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramString, this.a.jdField_a_of_type_Long);
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.a.jdField_b_of_type_Long, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 35, null, 0, null);
+        paramString = new audz();
+        paramString.jdField_b_of_type_JavaLangString = "rece_file_suc";
+        paramString.jdField_a_of_type_Int = 1;
+        audy.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString);
         return;
+        paramString = new String[3];
+        paramString[0] = "param_XGFileFlow";
+        paramString[1] = "param_XGFlow";
+        paramString[2] = "param_Flow";
       }
-      if (2 == i)
-      {
-        ForwardUtils.report(localQQAppInterface, "0X800A739", new String[] { str });
-        a(paramActivity, paramIntent, amtj.a(2131718243), localatlu);
-        return;
-      }
-      if (1 == i)
-      {
-        ArrayList localArrayList = paramIntent.getParcelableArrayListExtra("sdk_mult_share_fail_record");
-        ForwardUtils.report(localQQAppInterface, "0X800A73A", new String[] { str, Integer.toString(localArrayList.size()) });
-        a(paramActivity, paramIntent, localArrayList, localatlu);
-        return;
-      }
-    } while (3 != i);
-    ForwardUtils.report(localQQAppInterface, "0X800A739", new String[] { str });
-    a(paramActivity, paramIntent.getStringExtra("sdk_mult_share_error_wording"), localatlu);
-  }
-  
-  private static void a(Activity paramActivity, Intent paramIntent, String paramString, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    paramActivity = bfur.a(paramActivity, 232, null, paramString, atpn.a(paramIntent.getStringExtra("sdk_mult_share_app_name")), amtj.a(2131718239), paramOnClickListener, paramOnClickListener);
-    try
-    {
-      paramActivity.show();
-      return;
+      paramLong = System.currentTimeMillis();
+      this.a.jdField_a_of_type_Long = parambmsj.jdField_b_of_type_Long;
+    } while (paramLong - this.a.f < 1000L);
+    this.a.f = paramLong;
+    if (QLog.isColorLevel()) {
+      QLog.i("FileManagerRSWorker<FileAssistant>", 2, "Id[" + this.a.c + "]WeiYun download is onProgressChange mtransferedSize[" + this.a.jdField_a_of_type_Long + "/" + this.a.d + "]");
     }
-    catch (Throwable paramActivity)
-    {
-      QLog.e("ForwardDialogMgr", 1, "-->showShareResultDialog: failed. ", paramActivity);
-    }
-  }
-  
-  private static void a(Activity paramActivity, Intent paramIntent, List<ResultRecord> paramList, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    QQCustomDialogWtihForwardAvatar localQQCustomDialogWtihForwardAvatar = new QQCustomDialogWtihForwardAvatar(paramActivity, 2131755826);
-    localQQCustomDialogWtihForwardAvatar.setContentView(2131559024);
-    localQQCustomDialogWtihForwardAvatar.showForwardTargetAvatar(localQQAppInterface, paramActivity, paramList, false);
-    localQQCustomDialogWtihForwardAvatar.setAvatarTitle(String.format(paramActivity.getResources().getString(2131718240), new Object[] { Integer.valueOf(paramList.size()) }));
-    localQQCustomDialogWtihForwardAvatar.adjustMultiForwardMargins();
-    localQQCustomDialogWtihForwardAvatar.setNegativeButton(atpn.a(paramIntent.getStringExtra("sdk_mult_share_app_name")), paramOnClickListener);
-    localQQCustomDialogWtihForwardAvatar.setPositiveButton(amtj.a(2131718239), paramOnClickListener);
-    localQQCustomDialogWtihForwardAvatar.findViewById(2131378725).setVisibility(8);
-    localQQCustomDialogWtihForwardAvatar.show();
-  }
-  
-  public static void a(Activity paramActivity, String paramString, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    QLog.d("ForwardDialogMgr", 1, new Object[] { "showOtherErrorDialog errorMsg=", paramString });
-    if ((paramActivity == null) || (paramActivity.isFinishing()))
-    {
-      QLog.e("ForwardDialogMgr", 1, "showOtherErrorDialog null == activity || activity.isFinishing()");
-      return;
-    }
-    paramActivity = bfur.a(paramActivity, 230);
-    paramActivity.setMessage(paramString);
-    paramActivity.setPositiveButton(2131694201, paramOnClickListener);
-    paramActivity.show();
-  }
-  
-  void a(Activity paramActivity)
-  {
-    b(paramActivity);
-    this.a = new ReportDialog(paramActivity, 2131755826);
-    this.a.setCancelable(false);
-    this.a.setContentView(2131559574);
-    paramActivity = amtj.a(2131718241);
-    ((TextView)this.a.findViewById(2131372546)).setText(paramActivity);
-    this.a.show();
-  }
-  
-  void b(Activity paramActivity)
-  {
-    if ((!paramActivity.isFinishing()) && (this.a != null) && (this.a.isShowing()))
-    {
-      this.a.dismiss();
-      this.a = null;
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = ((float)this.a.jdField_a_of_type_Long / (float)this.a.d);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.a.jdField_b_of_type_Long, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 16, null, 0, null);
   }
 }
 

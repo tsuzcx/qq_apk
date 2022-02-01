@@ -1,31 +1,19 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
 
-public class accr
-  implements abzb
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/gdtad/api/motivebrowsing/GdtMotiveBrowsingDialog$initView$3", "Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;", "onGlobalLayout", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class accr
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private static void a(abxc paramabxc, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("HotFriend_PushMessage", 2, "onLinePush receive 0x210_0xc7");
-    }
-    long l1 = paramMsgInfo.lFromUin;
-    int i = paramMsgInfo.shMsgSeq;
-    long l2 = paramMsgInfo.lMsgUid;
-    int j = paramMsgInfo.shMsgType;
-    int k = paramMsgInfo.uRealMsgTime;
-    paramMsgInfo = new anlx(l1, i, l2, j, k, true);
-    paramabxc.a(paramMsgType0x210.vProtobuf, paramMsgInfo);
-    bblf.a(paramabxc.a().getMsgHandler(), l1, i, l2, j);
-  }
+  accr(ViewGroup paramViewGroup) {}
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void onGlobalLayout()
   {
-    a(paramabxc, paramMsgInfo, paramMsgType0x210);
-    return null;
+    this.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)this);
+    QLog.i("GdtMotiveBrowsingDialog", 1, "onGlobalLayout:" + accm.a(this.jdField_a_of_type_Accm) + " l=" + this.jdField_a_of_type_AndroidViewViewGroup.getLeft() + ",t=" + this.jdField_a_of_type_AndroidViewViewGroup.getTop() + ",r=" + this.jdField_a_of_type_AndroidViewViewGroup.getRight() + ",b=" + this.jdField_a_of_type_AndroidViewViewGroup.getBottom());
   }
 }
 

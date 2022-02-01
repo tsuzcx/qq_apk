@@ -1,10 +1,10 @@
 package cooperation.qqreader.host.colornote;
 
-import apkw;
+import aqoa;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 
 class ReaderColorNoteController$2
-  implements apkw
+  implements aqoa
 {
   ReaderColorNoteController$2(ReaderColorNoteController paramReaderColorNoteController, IReaderServiceInfo paramIReaderServiceInfo) {}
   

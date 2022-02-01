@@ -1,28 +1,29 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
-import akfw;
+import albp;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import org.json.JSONObject;
-import pkg;
-import pkp;
-import pkt;
-import poo;
-import tmd;
+import pvd;
+import pvm;
+import pvq;
+import pzm;
+import tzr;
 
 public class ReadInJoySelfCenterViolaFragment
   extends ReadInJoyViolaChannelFragment
-  implements pkg
+  implements pvd
 {
-  private pkt a;
+  private pvq a;
   
   public ReadInJoySelfCenterViolaFragment()
   {
-    this.jdField_a_of_type_Pkt = new poo(this);
+    this.jdField_a_of_type_Pvq = new pzm(this);
   }
   
   public static ReadInJoySelfCenterViolaFragment a(String paramString)
@@ -37,13 +38,13 @@ public class ReadInJoySelfCenterViolaFragment
   private void a()
   {
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager == null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager = ((KandianMergeManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(162));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager = ((KandianMergeManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER));
     }
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager != null)
     {
       int i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.b(3);
       if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.b())) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(tmd.a(i).toString());
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(tzr.a(i).toString());
       }
     }
   }
@@ -55,7 +56,7 @@ public class ReadInJoySelfCenterViolaFragment
     }
   }
   
-  public void C_()
+  public void E_()
   {
     a();
   }
@@ -79,7 +80,7 @@ public class ReadInJoySelfCenterViolaFragment
     {
       paramBundle = localBundle.getString("url_key");
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager == null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager = ((KandianMergeManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(162));
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager = ((KandianMergeManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER));
       }
       int i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.b(3);
       if (i <= 0) {
@@ -95,8 +96,8 @@ public class ReadInJoySelfCenterViolaFragment
         a(paramBundle);
       }
       this.b = localBundle.getString("channel_version_key", "");
-      pkp.a().a(this.jdField_a_of_type_Pkt);
-      akfw.a(getActivity(), true);
+      pvm.a().a(this.jdField_a_of_type_Pvq);
+      albp.a(getActivity(), true);
       return;
     }
   }
@@ -104,7 +105,7 @@ public class ReadInJoySelfCenterViolaFragment
   public void onDestroy()
   {
     super.onDestroy();
-    pkp.a().b(this.jdField_a_of_type_Pkt);
+    pvm.a().b(this.jdField_a_of_type_Pvq);
   }
   
   public void onResume()

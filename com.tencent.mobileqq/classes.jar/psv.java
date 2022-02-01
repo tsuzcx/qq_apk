@@ -1,26 +1,56 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import eipc.EIPCResult;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.qphone.base.util.QLog;
 
-class psv
-  implements pwf
+public class psv
 {
-  psv(pst parampst, int paramInt) {}
-  
-  public void onLoadUserInfoFailed(String paramString1, String paramString2)
+  public static String a(BaseArticleInfo paramBaseArticleInfo)
   {
-    paramString1 = new Bundle();
-    paramString1.putString("action_get_user_info", ufd.a(paramString2));
-    paramString1 = EIPCResult.createResult(0, paramString1);
-    this.jdField_a_of_type_Pst.callbackResult(this.jdField_a_of_type_Int, paramString1);
+    if (paramBaseArticleInfo == null) {}
+    do
+    {
+      do
+      {
+        return null;
+      } while ((paramBaseArticleInfo.isCardJumpUrlAvailable != 1) || (TextUtils.isEmpty(paramBaseArticleInfo.mCardJumpUrl)));
+      paramBaseArticleInfo = tzr.d(paramBaseArticleInfo.mCardJumpUrl);
+      if (QLog.isColorLevel()) {
+        QLog.d("RIJViolaUtils", 2, "shortContentUrl: " + paramBaseArticleInfo);
+      }
+    } while (!tto.b(paramBaseArticleInfo));
+    return tto.b(paramBaseArticleInfo);
   }
   
-  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
+  public static String b(BaseArticleInfo paramBaseArticleInfo)
   {
-    paramString = new Bundle();
-    paramString.putString("action_get_user_info", ufd.a(paramReadInJoyUserInfo));
-    paramString = EIPCResult.createResult(0, paramString);
-    this.jdField_a_of_type_Pst.callbackResult(this.jdField_a_of_type_Int, paramString);
+    StringBuilder localStringBuilder = null;
+    Object localObject = localStringBuilder;
+    if (paramBaseArticleInfo != null)
+    {
+      if (!TextUtils.isEmpty(paramBaseArticleInfo.mArticleContentUrl)) {
+        break label22;
+      }
+      localObject = localStringBuilder;
+    }
+    label22:
+    do
+    {
+      do
+      {
+        return localObject;
+        paramBaseArticleInfo = tzr.d(paramBaseArticleInfo.mArticleContentUrl);
+        localObject = localStringBuilder;
+      } while (!tto.b(paramBaseArticleInfo));
+      paramBaseArticleInfo = tto.b(paramBaseArticleInfo);
+      localObject = paramBaseArticleInfo;
+    } while (!QLog.isColorLevel());
+    localStringBuilder = new StringBuilder().append("get viola url from articleContentUrl: ");
+    if (paramBaseArticleInfo != null) {}
+    for (localObject = paramBaseArticleInfo;; localObject = "null")
+    {
+      QLog.d("RIJViolaUtils", 2, (String)localObject);
+      return paramBaseArticleInfo;
+    }
   }
 }
 

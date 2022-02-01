@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.apollo.view;
 
-import bgod;
-import bgoe;
+import bhyn;
+import bhyo;
 import com.tencent.qphone.base.util.QLog;
 
 class ApolloLottieAnim$2
-  extends bgod
+  extends bhyn
 {
   ApolloLottieAnim$2(ApolloLottieAnim paramApolloLottieAnim, String paramString1, String paramString2, String paramString3) {}
   
-  public void onDone(bgoe parambgoe)
+  public void onDone(bhyo parambhyo)
   {
-    super.onDone(parambgoe);
-    if (3 == parambgoe.a()) {
+    super.onDone(parambhyo);
+    if (3 == parambhyo.a()) {
       this.this$0.onDownloadFinish(true, this.val$url, this.val$filePath, this.val$folder);
     }
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("ApolloLottieAnim", 2, "downloadZip onDone task.getStatus()->" + parambgoe.a());
+        QLog.d("ApolloLottieAnim", 2, "downloadZip onDone task.getStatus()->" + parambhyo.a());
       }
       return;
       this.this$0.mState = 2;

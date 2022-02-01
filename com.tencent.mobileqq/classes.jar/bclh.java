@@ -1,23 +1,18 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.widget.SingleLineTextView;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import java.util.List;
 
-class bclh
+public class bclh
+  extends bclv
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  SingleLineTextView jdField_a_of_type_ComTencentWidgetSingleLineTextView;
-  RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  RelativeLayout c;
+  public bclh(GroupSearchEngine paramGroupSearchEngine, bclw parambclw, String paramString, int paramInt1, int paramInt2)
+  {
+    super(paramGroupSearchEngine, parambclw, paramString, paramInt1);
+  }
   
-  bclh(bcle parambcle) {}
+  public bcfi a(List<bcfj> paramList, String paramString)
+  {
+    return new bcfa(paramList, paramString, this.jdField_a_of_type_Int);
+  }
 }
 
 

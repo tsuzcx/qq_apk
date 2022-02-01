@@ -1,69 +1,88 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.app.Activity;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Toast;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 class badq
-  extends badz
+  implements bkzq
 {
-  private long jdField_a_of_type_Long;
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
-  private long c;
+  badq(badm parambadm, bkzi parambkzi, String paramString) {}
   
-  public HashMap<String, String> a(String paramString)
+  private void a()
   {
-    paramString = null;
-    if ((this.jdField_a_of_type_Long == 0L) || (this.c == 0L)) {
-      return null;
+    if (((azrb)badm.t(this.jdField_a_of_type_Badm)).b) {
+      VasWebviewUtil.reportCommercialDrainage(badm.o(this.jdField_a_of_type_Badm).getCurrentAccountUin(), "group_card", "click_more", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
     }
-    if (QLog.isColorLevel()) {
-      paramString = new StringBuilder();
+    if ((((azrb)badm.u(this.jdField_a_of_type_Badm)).a.lCurrentStyleId == azri.j) || (((azrb)badm.v(this.jdField_a_of_type_Badm)).a.lCurrentStyleId == azri.i)) {
+      VasWebviewUtil.reportCommercialDrainage("", "card_gameking", "clk_morecard", "0", 1, 0, 0, HttpUtil.getNetWorkTypeByStr(), String.valueOf(((azrb)badm.w(this.jdField_a_of_type_Badm)).a.lCurrentBgId), String.valueOf(((azrb)badm.x(this.jdField_a_of_type_Badm)).a.lCurrentStyleId));
     }
-    HashMap localHashMap = new HashMap();
-    if (this.jdField_a_of_type_Boolean)
+    String str2 = "";
+    Object localObject = badm.a(this.jdField_a_of_type_Badm);
+    String str1 = str2;
+    if (localObject != null)
     {
-      localHashMap.put("is_progressive", "progressive");
-      localHashMap.put("view_count", "1");
-      if (this.jdField_b_of_type_Boolean)
-      {
-        localHashMap.put("failure", "1");
-        if (QLog.isColorLevel())
-        {
-          paramString.append("progressive:\n");
-          paramString.append("refresh_dp:" + String.valueOf(this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) + "\n");
-          paramString.append("refresh_large:" + String.valueOf(this.c - this.jdField_a_of_type_Long));
-          QLog.i(baea.a, 2, paramString.toString());
-        }
+      str1 = str2;
+      if (((String)localObject).equals("CustomCover")) {
+        str1 = "oldCustom=1";
       }
     }
-    label391:
+    localObject = badm.h(this.jdField_a_of_type_Badm);
+    String str3 = badm.p(this.jdField_a_of_type_Badm).getCurrentAccountUin();
+    if (this.jdField_a_of_type_JavaLangString.equals("CLICK_HEADER_BG")) {}
+    for (str2 = "inside.friendCardBackground";; str2 = "inside.blackBar")
+    {
+      bhaa.a((Activity)localObject, str3, str2, 1, 1, 1, str1, false);
+      return;
+    }
+  }
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
     for (;;)
     {
-      return localHashMap;
-      if (this.jdField_b_of_type_Long > this.jdField_a_of_type_Long) {
-        localHashMap.put("to_dp", String.valueOf(this.jdField_b_of_type_Long - this.jdField_a_of_type_Long));
+      this.jdField_a_of_type_Bkzi.e();
+      return;
+      bdla.b(badm.a(this.jdField_a_of_type_Badm), "CliOper", "", "", "card_mall", "0X8006680", 0, 0, "1", "", "", VipUtils.a(badm.b(this.jdField_a_of_type_Badm), badm.c(this.jdField_a_of_type_Badm).getCurrentAccountUin()));
+      if (((azrb)badm.a(this.jdField_a_of_type_Badm)).b) {
+        VasWebviewUtil.reportCommercialDrainage(badm.d(this.jdField_a_of_type_Badm).getCurrentAccountUin(), "group_card", "click_setresult", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
       }
-      if ((this.c <= this.jdField_a_of_type_Long) || (this.c <= this.jdField_b_of_type_Long)) {
-        break;
+      if ((((azrb)badm.b(this.jdField_a_of_type_Badm)).a.lCurrentStyleId == azri.j) || (((azrb)badm.c(this.jdField_a_of_type_Badm)).a.lCurrentStyleId == azri.i)) {
+        VasWebviewUtil.reportCommercialDrainage("", "card_gameking", "clk_setmy", "0", 1, 0, 0, HttpUtil.getNetWorkTypeByStr(), String.valueOf(((azrb)badm.d(this.jdField_a_of_type_Badm)).a.lCurrentBgId), String.valueOf(((azrb)badm.e(this.jdField_a_of_type_Badm)).a.lCurrentStyleId));
       }
-      localHashMap.put("to_large", String.valueOf(this.c - this.jdField_a_of_type_Long));
-      break;
-      localHashMap.put("is_progressive", "baseline");
-      localHashMap.put("view_count", "1");
-      if (this.jdField_b_of_type_Boolean) {
-        localHashMap.put("failure", "1");
-      }
-      for (;;)
+      if ((((azrb)badm.f(this.jdField_a_of_type_Badm)).a.lCurrentBgId == 160L) || (((azrb)badm.g(this.jdField_a_of_type_Badm)).a.lCurrentBgId == 1600L) || ((bhaa.e(((azrb)badm.h(this.jdField_a_of_type_Badm)).a.getBgTypeArray())) && (((azrb)badm.i(this.jdField_a_of_type_Badm)).a.cardType != 2) && (((azrb)badm.j(this.jdField_a_of_type_Badm)).a.dynamicCardFlag != 1)))
       {
-        if (!QLog.isColorLevel()) {
-          break label391;
+        Toast.makeText(badm.f(this.jdField_a_of_type_Badm), 2131694902, 0).show();
+      }
+      else if (azri.a(((azrb)badm.k(this.jdField_a_of_type_Badm)).a.lCurrentStyleId))
+      {
+        bhha.a(((azrb)badm.l(this.jdField_a_of_type_Badm)).a, badm.e(this.jdField_a_of_type_Badm), badm.g(this.jdField_a_of_type_Badm));
+        bdla.b(badm.f(this.jdField_a_of_type_Badm), "dc00898", "", "", "qvip", "0X8009E3A", 2, 0, "", "", "", "");
+      }
+      else if ((!TextUtils.isEmpty(((azrb)badm.m(this.jdField_a_of_type_Badm)).a.diyText)) && (((azrb)badm.n(this.jdField_a_of_type_Badm)).a.diyTextFontId != 0))
+      {
+        if ((this.jdField_a_of_type_Badm instanceof badv)) {
+          ((badv)this.jdField_a_of_type_Badm).j();
         }
-        paramString.append("baseline:\n");
-        paramString.append("refresh_large:" + String.valueOf(this.c - this.jdField_a_of_type_Long));
-        QLog.i(baea.a, 2, paramString.toString());
-        break;
-        if (this.c > this.jdField_a_of_type_Long) {
-          localHashMap.put("to_large", String.valueOf(this.c - this.jdField_a_of_type_Long));
+      }
+      else
+      {
+        badm.a(this.jdField_a_of_type_Badm, ((azrb)badm.o(this.jdField_a_of_type_Badm)).a.lCurrentStyleId, ((azrb)badm.p(this.jdField_a_of_type_Badm)).a.lCurrentBgId, ((azrb)badm.q(this.jdField_a_of_type_Badm)).a.backgroundColor, ((azrb)badm.r(this.jdField_a_of_type_Badm)).a.strExtInfo);
+        bdla.b(badm.g(this.jdField_a_of_type_Badm), "dc00898", "", "", "", "0X800A4C1", 0, 0, "", "", "", "");
+        continue;
+        bdla.b(badm.h(this.jdField_a_of_type_Badm), "CliOper", "", "", "card_mall", "0X8006680", 0, 0, "2", "", "", VipUtils.a(badm.i(this.jdField_a_of_type_Badm), badm.j(this.jdField_a_of_type_Badm).getCurrentAccountUin()));
+        a();
+        continue;
+        bdla.b(badm.k(this.jdField_a_of_type_Badm), "CliOper", "", "", "card_mall", "0X8006680", 0, 0, "3", "", "", VipUtils.a(badm.l(this.jdField_a_of_type_Badm), badm.m(this.jdField_a_of_type_Badm).getCurrentAccountUin()));
+        if (((azrb)badm.s(this.jdField_a_of_type_Badm)).b) {
+          VasWebviewUtil.reportCommercialDrainage(badm.n(this.jdField_a_of_type_Badm).getCurrentAccountUin(), "group_card", "click_cancel", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
         }
       }
     }

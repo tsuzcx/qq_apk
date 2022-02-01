@@ -1,8 +1,18 @@
-public abstract interface aueg
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+
+final class aueg
+  implements audq
 {
-  public abstract String a();
+  aueg(FileManagerEntity paramFileManagerEntity, QQAppInterface paramQQAppInterface) {}
   
-  public abstract void a(int paramInt);
+  public void onNo() {}
+  
+  public void onYes()
+  {
+    auea.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+  }
 }
 
 

@@ -1,92 +1,26 @@
-import com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter;
-import com.tencent.mobileqq.activity.contacts.troop.TroopFragment;
-import com.tencent.mobileqq.activity.contacts.troop.TroopFragment.MyTroopObserver.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import java.util.List;
 
 public class aiss
-  extends andd
+  extends Handler
 {
-  public aiss(TroopFragment paramTroopFragment) {}
+  public aiss(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  protected void onGenNewTroopName(String paramString1, String paramString2)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.a != null) {
-      this.a.a.b();
-    }
-  }
-  
-  protected void onGetMutilTroopInfoResult(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
-  {
-    if (paramBoolean) {
-      this.a.h();
-    }
-  }
-  
-  protected void onGetTroopInfoResult(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.h();
-    }
-  }
-  
-  protected void onModifyTroopInfo(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
-  {
-    if (paramBoolean) {
-      this.a.h();
-    }
-  }
-  
-  protected void onTroopBlockStatusChanged(String paramString)
-  {
-    this.a.h();
-  }
-  
-  protected void onTroopManagerSuccess(int paramInt1, int paramInt2, String paramString)
-  {
-    if (paramInt1 == 6) {
-      if (paramInt2 == 0) {
-        this.a.h();
-      }
-    }
-    do
+    switch (paramMessage.what)
     {
-      do
-      {
-        return;
-        if (paramInt1 != 2) {
-          break;
-        }
-      } while (paramInt2 != 0);
-      this.a.h();
+    default: 
       return;
-    } while ((paramInt1 != 9) || (paramInt2 != 0));
-    this.a.h();
-  }
-  
-  protected void onUpdateTroopList(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("contacts.fragment.TroopFragment", 2, "onUpdateTroopList " + paramBoolean);
+    case 1: 
+      paramMessage = (List)paramMessage.obj;
+      this.a.a(paramMessage, true);
+      return;
     }
-    if (this.a.c)
-    {
-      this.a.c = false;
-      if (TroopFragment.a(this.a) != null) {
-        TroopFragment.b(this.a).a(this.a.b(), paramBoolean, null);
-      }
-    }
-    ThreadManager.getUIHandler().postDelayed(new TroopFragment.MyTroopObserver.1(this), 500L);
-  }
-  
-  protected void onUpdateTroopNickname(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.h();
-    }
+    paramMessage = (List)paramMessage.obj;
+    this.a.a(paramMessage, false);
   }
 }
 

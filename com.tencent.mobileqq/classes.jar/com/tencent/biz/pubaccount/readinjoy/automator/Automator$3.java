@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.automator;
 
 import java.util.LinkedList;
-import onz;
+import ovw;
 
 public class Automator$3
   implements Runnable
 {
-  public Automator$3(onz paramonz) {}
+  public Automator$3(ovw paramovw) {}
   
   public void run()
   {
-    onz.a(this.this$0).clear();
-    onz.a(this.this$0).addAll(onz.a(this.this$0));
-    onz.a(this.this$0);
+    ovw.a(this.this$0).clear();
+    ovw.a(this.this$0).addAll(ovw.a(this.this$0));
+    ovw.a(this.this$0);
   }
 }
 

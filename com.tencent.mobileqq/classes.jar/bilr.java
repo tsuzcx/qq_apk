@@ -1,7 +1,15 @@
+import com.tencent.mobileqq.widget.AdaptiveLayout;
+
 public class bilr
 {
-  public volatile long a;
-  public volatile boolean a;
+  public int a;
+  public int b;
+  
+  public bilr(AdaptiveLayout paramAdaptiveLayout, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
 }
 
 

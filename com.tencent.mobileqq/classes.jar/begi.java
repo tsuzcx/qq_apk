@@ -1,21 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.UUID;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class begi
-  extends zrz
+  implements View.OnClickListener
 {
-  begi(begh parambegh) {}
+  begi(begb parambegb) {}
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (paramBundle.getLong("troopUin") != this.a.jdField_a_of_type_Long) {}
-    do
-    {
-      return;
-      paramBundle = paramBundle.getString("itemKey");
-    } while ((paramBundle == null) || (!UUID.fromString(paramBundle).equals(this.a.a())) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId != 25));
-    begh.a(this.a, paramBoolean, paramInt1, paramInt2, paramString1, paramString2, paramString3);
+    this.a.a.setText("");
+    this.a.c();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

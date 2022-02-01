@@ -1,12 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.animation.Transformation;
+import android.view.animation.TranslateAnimation;
 
-class afvu
-  implements DialogInterface.OnClickListener
+public class afvu
+  extends TranslateAnimation
 {
-  afvu(afvr paramafvr) {}
+  public int a = 0;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public afvu()
+  {
+    this(1, 0.0F, 1, -1.0F, 1, 0.0F, 1, 0.0F);
+  }
+  
+  public afvu(int paramInt1, float paramFloat1, int paramInt2, float paramFloat2, int paramInt3, float paramFloat3, int paramInt4, float paramFloat4)
+  {
+    super(paramInt1, paramFloat1, paramInt2, paramFloat2, paramInt3, paramFloat3, paramInt4, paramFloat4);
+  }
+  
+  public boolean getTransformation(long paramLong, Transformation paramTransformation)
+  {
+    if (!afuq.a) {
+      setStartTime(paramLong);
+    }
+    return super.getTransformation(paramLong, paramTransformation);
+  }
 }
 
 

@@ -1,26 +1,65 @@
-import android.os.Handler;
-import android.os.Message;
-import mqq.util.WeakReference;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.articlesummary.feeds_info.AccountProfile;
 
-class rqt
-  extends Handler
+public class rqt
 {
-  private WeakReference<rqs> a;
+  public int a;
+  public long a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public rqt(rqs paramrqs)
+  public static rqt a(feeds_info.AccountProfile paramAccountProfile)
   {
-    this.a = new WeakReference(paramrqs);
+    Object localObject;
+    if (paramAccountProfile == null) {
+      localObject = null;
+    }
+    rqt localrqt;
+    do
+    {
+      return localObject;
+      localrqt = new rqt();
+      localrqt.jdField_a_of_type_Long = paramAccountProfile.uint64_uin.get();
+      localrqt.jdField_a_of_type_Int = paramAccountProfile.uint32_account_type.get();
+      if (paramAccountProfile.bytes_desc.has()) {
+        localrqt.c = paramAccountProfile.bytes_desc.get().toStringUtf8();
+      }
+      if (paramAccountProfile.bytes_profile_photo_url.has()) {
+        localrqt.b = paramAccountProfile.bytes_profile_photo_url.get().toStringUtf8();
+      }
+      if (paramAccountProfile.bytes_nick.has()) {
+        localrqt.jdField_a_of_type_JavaLangString = paramAccountProfile.bytes_nick.get().toStringUtf8();
+      }
+      localObject = localrqt;
+    } while (!paramAccountProfile.bytes_home_page_url.has());
+    localrqt.d = paramAccountProfile.bytes_home_page_url.get().toStringUtf8();
+    return localrqt;
   }
   
-  public void handleMessage(Message paramMessage)
+  public feeds_info.AccountProfile a()
   {
-    super.handleMessage(paramMessage);
-    rqs localrqs = (rqs)this.a.get();
-    if (localrqs == null) {}
-    while (paramMessage.what != 101) {
-      return;
+    feeds_info.AccountProfile localAccountProfile = new feeds_info.AccountProfile();
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      localAccountProfile.bytes_nick.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
     }
-    rqs.a(localrqs);
+    if (!TextUtils.isEmpty(this.b)) {
+      localAccountProfile.bytes_profile_photo_url.set(ByteStringMicro.copyFromUtf8(this.b));
+    }
+    if (!TextUtils.isEmpty(this.c)) {
+      localAccountProfile.bytes_desc.set(ByteStringMicro.copyFromUtf8(this.c));
+    }
+    if (!TextUtils.isEmpty(this.d)) {
+      localAccountProfile.bytes_home_page_url.set(ByteStringMicro.copyFromUtf8(this.d));
+    }
+    localAccountProfile.uint32_account_type.set(this.jdField_a_of_type_Int);
+    localAccountProfile.uint64_uin.set(this.jdField_a_of_type_Long);
+    return localAccountProfile;
   }
 }
 

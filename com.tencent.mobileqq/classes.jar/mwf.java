@@ -1,124 +1,63 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.os.CountDownTimer;
+import com.tencent.av.widget.ChildLockCircle;
+import com.tencent.qphone.base.util.QLog;
+
 public class mwf
+  extends CountDownTimer
 {
-  public int a;
-  public long a;
-  public int b;
-  public int c;
+  int jdField_a_of_type_Int = 1;
+  Resources jdField_a_of_type_AndroidContentResResources = this.jdField_a_of_type_AndroidContentContext.getResources();
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
   
-  public mwf()
+  public mwf(ChildLockCircle paramChildLockCircle, long paramLong1, long paramLong2, Context paramContext)
   {
-    this.jdField_a_of_type_Long = 67L;
+    super(paramLong1, paramLong2);
   }
   
-  public boolean a()
+  public void onFinish()
   {
-    return (this.jdField_a_of_type_Int != 0) && (this.b != 0) && (this.c != 0);
+    ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle, ChildLockCircle.b(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle));
+    ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle, 0);
+    this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle.postInvalidate();
+    ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle);
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    }
+    if (ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle) != null)
+    {
+      ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle).cancel();
+      ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle, null);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ChildLockCircle", 2, "LockAnimation,CountDownTimer finish");
+    }
   }
   
-  public boolean a(int paramInt1, int paramInt2, int paramInt3)
+  public void onTick(long paramLong)
   {
-    boolean bool2 = true;
-    boolean bool1 = false;
-    if (this.jdField_a_of_type_Int != paramInt1)
+    if (this.jdField_a_of_type_AndroidContentContext != null)
     {
-      this.jdField_a_of_type_Int = paramInt1;
-      bool1 = true;
-    }
-    if (this.b != paramInt2)
-    {
-      this.b = paramInt2;
-      bool1 = bool2;
-    }
-    for (;;)
-    {
-      if (this.c != paramInt3)
+      this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle.a(this.jdField_a_of_type_AndroidContentResResources, this.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
       {
-        this.c = paramInt3;
-        if (this.c == 0) {
-          this.c = 15;
-        }
-        this.jdField_a_of_type_Long = (1000 / this.c);
+        ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle, this.jdField_a_of_type_AndroidGraphicsBitmap);
+        this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle.postInvalidate();
       }
-      return bool1;
-    }
-  }
-  
-  public boolean a(mwf parammwf)
-  {
-    boolean bool2 = true;
-    boolean bool1 = false;
-    if ((parammwf == null) || (!parammwf.a()))
-    {
-      bool2 = false;
-      return bool2;
-    }
-    if (this.jdField_a_of_type_Int != parammwf.jdField_a_of_type_Int)
-    {
-      this.jdField_a_of_type_Int = parammwf.jdField_a_of_type_Int;
-      bool1 = true;
-    }
-    if (this.b != parammwf.b)
-    {
-      this.b = parammwf.b;
-      bool1 = bool2;
-    }
-    for (;;)
-    {
-      bool2 = bool1;
-      if (this.c == parammwf.c) {
-        break;
-      }
-      this.c = parammwf.c;
-      if (this.c == 0) {
-        this.c = 15;
-      }
-      this.jdField_a_of_type_Long = (1000 / this.c);
-      return bool1;
-    }
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    label71:
-    label74:
-    for (;;)
-    {
-      return true;
-      if (!(paramObject instanceof mwf)) {
-        break;
-      }
-      paramObject = (mwf)paramObject;
-      if (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int)
-      {
-        i = 1;
-        if ((i == 0) || (this.b != paramObject.b)) {
-          break label71;
-        }
-      }
-      for (int i = 1;; i = 0)
-      {
-        if ((i != 0) && (this.c == paramObject.c)) {
-          break label74;
-        }
-        return false;
-        i = 0;
-        break;
+      this.jdField_a_of_type_Int += 1;
+      if (QLog.isColorLevel()) {
+        QLog.d("ChildLockCircle", 2, "LockAnimation, i[" + this.jdField_a_of_type_Int + "]");
       }
     }
-    return false;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("RecordParam{").append("width: ").append(this.jdField_a_of_type_Int).append(", height: ").append(this.b).append(", fps: ").append(this.c).append("}");
-    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mwf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.widget.qqfloatingscreen.videoview;
 
-import ajoe;
-import bhml;
-import bhmo;
+import akjs;
+import bixb;
+import bixe;
 import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
 
 public class TVKVideoController$4
   implements Runnable
 {
-  public TVKVideoController$4(bhml parambhml) {}
+  public TVKVideoController$4(bixb parambixb) {}
   
   public void run()
   {
-    if (bhml.a(this.this$0) != null)
+    if (bixb.a(this.this$0) != null)
     {
-      long l = bhml.a(this.this$0).b();
-      if (bhml.a(this.this$0) != null) {
-        bhml.a(this.this$0).onVideoProgressUpdate((int)l);
+      long l = bixb.a(this.this$0).b();
+      if (bixb.a(this.this$0) != null) {
+        bixb.a(this.this$0).onVideoProgressUpdate((int)l);
       }
     }
-    bhml.a(this.this$0).postDelayed(this.this$0.a, 100L);
+    bixb.a(this.this$0).postDelayed(this.this$0.a, 100L);
   }
 }
 

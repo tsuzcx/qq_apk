@@ -1,52 +1,119 @@
-import android.content.Context;
+import android.graphics.Color;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.aeeditor.module.text.AEEditorTextBean;
+import android.widget.TextView;
 
-class bmnc
-  implements View.OnClickListener
+public class bmnc
+  extends bmnd
 {
-  bmnc(bmnb parambmnb, int paramInt, AEEditorTextBean paramAEEditorTextBean, bmnf parambmnf) {}
+  private float a;
+  private float b;
+  private float jdField_c_of_type_Float;
+  private int jdField_c_of_type_Int;
   
-  public void onClick(View paramView)
+  public bmnc(String paramString, View paramView)
   {
-    if (this.jdField_a_of_type_Int == bmnb.a(this.jdField_a_of_type_Bmnb)) {}
-    for (;;)
+    super(paramString, paramView);
+  }
+  
+  private void a(String paramString)
+  {
+    try
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      ((TextView)this.jdField_a_of_type_AndroidViewView).setTextSize(0, a(paramString));
       return;
-      if (this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean.pagFilePath != null)
-      {
-        if ((bmnb.a(this.jdField_a_of_type_Bmnb) != -1) || (bmnb.b(this.jdField_a_of_type_Bmnb) < 10)) {
-          break;
-        }
-        Context localContext = this.jdField_a_of_type_Bmnf.a.getContext();
-        if (localContext != null) {
-          QQToast.a(localContext, localContext.getString(2131689724), 0).a();
-        }
-      }
     }
-    bmbg.a().a().g = this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean.id;
-    bmbc.a().u();
-    if (!this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean.usable)
+    catch (Exception paramString)
     {
-      bmnb.a(this.jdField_a_of_type_Bmnb, this.jdField_a_of_type_Bmnf, true);
-      this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean.isDownloading = true;
-      bmnn.a(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean, this.jdField_a_of_type_Bmnb);
+      paramString.printStackTrace();
     }
-    for (;;)
+  }
+  
+  private int b(String paramString)
+  {
+    int j = 3;
+    if (TextUtils.isEmpty(paramString)) {
+      throw new RuntimeException(getClass().getName() + " setGravity value can not be null");
+    }
+    int i;
+    if ("center".equals(paramString)) {
+      i = 17;
+    }
+    do
     {
-      bmnb.a(this.jdField_a_of_type_Bmnb, this.jdField_a_of_type_Int);
-      break;
-      if (bmnb.a(this.jdField_a_of_type_Bmnb) != null)
+      do
       {
-        bmnb.a(this.jdField_a_of_type_Bmnb).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean);
-        this.jdField_a_of_type_Bmnb.notifyDataSetChanged();
-      }
+        return i;
+        i = j;
+      } while ("left".equals(paramString));
+      i = j;
+    } while (!"right".equals(paramString));
+    return 5;
+  }
+  
+  private void b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
     }
+    ((TextView)this.jdField_a_of_type_AndroidViewView).setTextColor(Color.parseColor(paramString));
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    super.a(paramString1, paramString2);
+    if (!(this.jdField_a_of_type_AndroidViewView instanceof TextView)) {}
+    do
+    {
+      return;
+      if ("content".equals(paramString1))
+      {
+        ((TextView)this.jdField_a_of_type_AndroidViewView).setText(paramString2);
+        return;
+      }
+      if ("text_color".equals(paramString1))
+      {
+        b(paramString2);
+        return;
+      }
+      if ("text_align".equals(paramString1))
+      {
+        ((TextView)this.jdField_a_of_type_AndroidViewView).setGravity(b(paramString2));
+        return;
+      }
+      if ("max_lines".equals(paramString1))
+      {
+        ((TextView)this.jdField_a_of_type_AndroidViewView).setMaxLines(Integer.parseInt(paramString2));
+        return;
+      }
+      if ("shadow_color".equals(paramString1))
+      {
+        this.jdField_c_of_type_Int = Color.parseColor(paramString2);
+        return;
+      }
+      if ("shadow_x".equals(paramString1))
+      {
+        this.jdField_a_of_type_Float = Float.parseFloat(paramString2);
+        return;
+      }
+      if ("shadow_y".equals(paramString1))
+      {
+        this.b = Float.parseFloat(paramString2);
+        return;
+      }
+      if ("shadow_radius".equals(paramString1))
+      {
+        this.jdField_c_of_type_Float = Float.parseFloat(paramString2);
+        return;
+      }
+    } while (!"text_size".equals(paramString1));
+    a(paramString2);
+  }
+  
+  protected void b()
+  {
+    super.b();
+    ((TextView)this.jdField_a_of_type_AndroidViewView).setShadowLayer(this.jdField_c_of_type_Float, this.jdField_a_of_type_Float, this.b, this.jdField_c_of_type_Int);
   }
 }
 

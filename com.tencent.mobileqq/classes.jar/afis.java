@@ -1,30 +1,38 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.Friends;
 
-class afis
-  extends aubs
+public class afis
+  extends anvi
 {
-  afis(afim paramafim) {}
+  public afis(TroopTransferActivity paramTroopTransferActivity) {}
   
-  protected void a()
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if (((aubl)this.a.app.getManager(156)).a(this.a.sessionInfo.curType, this.a.sessionInfo.curFriendUin)) {
-      this.a.mTipsMgr.a(this.a.a, new Object[0]);
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a.a(paramString) != null)) {
+      this.a.a.notifyDataSetChanged();
     }
   }
   
-  protected void b()
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if (((aubl)this.a.app.getManager(156)).a(this.a.sessionInfo.curType, this.a.sessionInfo.curFriendUin)) {
-      this.a.a.a();
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
+    {
+      paramString = this.a.a.a(paramString);
+      if (paramString != null) {
+        break label28;
+      }
     }
-  }
-  
-  protected void c()
-  {
-    if ((((aubl)this.a.app.getManager(156)).a(this.a.sessionInfo.curType, this.a.sessionInfo.curFriendUin)) && (this.a.mTipsMgr.a() == 14)) {
-      this.a.mTipsMgr.a();
-    }
+    label28:
+    Friends localFriends;
+    do
+    {
+      return;
+      localFriends = ((anvk)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(paramString.a);
+    } while (localFriends == null);
+    this.a.a(paramString, localFriends);
   }
 }
 

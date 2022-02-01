@@ -1,47 +1,46 @@
-import QC.UniBusiSimpleItemDetail;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
-import com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import okhttp3.ConnectionPool;
+import okhttp3.Dispatcher;
+import okhttp3.OkHttpClient;
+import okhttp3.OkHttpClient.Builder;
+import okhttp3.Protocol;
 
-class aypt
-  implements View.OnClickListener
+public class aypt
 {
-  aypt(ayps paramayps, UniBusiSimpleItemDetail paramUniBusiSimpleItemDetail) {}
+  private static final ConnectionPool jdField_a_of_type_Okhttp3ConnectionPool = new ConnectionPool(10, 60L, TimeUnit.SECONDS);
+  private static final Dispatcher jdField_a_of_type_Okhttp3Dispatcher = new Dispatcher();
+  private static volatile OkHttpClient jdField_a_of_type_Okhttp3OkHttpClient;
   
-  public void onClick(View paramView)
+  static
   {
-    if ((ayps.a(this.jdField_a_of_type_Ayps) == 5) && (ayps.a(this.jdField_a_of_type_Ayps) != null) && ((ayps.a(this.jdField_a_of_type_Ayps) instanceof StickyNotePublishFragment)) && (!((StickyNotePublishFragment)ayps.a(this.jdField_a_of_type_Ayps)).a()))
-    {
-      QQToast.a(ayps.a(this.jdField_a_of_type_Ayps), amtj.a(2131714147), 0).a();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    jdField_a_of_type_Okhttp3Dispatcher.setMaxRequests(64);
+    jdField_a_of_type_Okhttp3Dispatcher.setMaxRequestsPerHost(8);
+    a(30000L);
+  }
+  
+  private static OkHttpClient.Builder a(long paramLong, boolean paramBoolean)
+  {
+    OkHttpClient.Builder localBuilder = new OkHttpClient.Builder();
+    if (paramBoolean) {}
+    for (List localList = Arrays.asList(new Protocol[] { Protocol.HTTP_2, Protocol.HTTP_1_1 });; localList = Arrays.asList(new Protocol[] { Protocol.HTTP_1_1 })) {
+      return localBuilder.protocols(localList).connectTimeout(paramLong, TimeUnit.MILLISECONDS).readTimeout(paramLong, TimeUnit.MILLISECONDS).writeTimeout(paramLong, TimeUnit.MILLISECONDS).connectionPool(jdField_a_of_type_Okhttp3ConnectionPool).dispatcher(jdField_a_of_type_Okhttp3Dispatcher);
     }
-    ayps.a(this.jdField_a_of_type_Ayps, this.jdField_a_of_type_QCUniBusiSimpleItemDetail.itemId);
-    int i = ayps.a(this.jdField_a_of_type_Ayps).a;
-    ayps.a(this.jdField_a_of_type_Ayps);
-    if (i == 2)
-    {
-      if (9 == ayps.a(this.jdField_a_of_type_Ayps)) {}
-      for (str = "1";; str = "2")
-      {
-        VasWebviewUtil.reportCommercialDrainage("strangers_makefriend", "item_click", "", 0, "", str);
-        this.jdField_a_of_type_Ayps.notifyDataSetChanged();
-        ayps.a(this.jdField_a_of_type_Ayps, this.jdField_a_of_type_QCUniBusiSimpleItemDetail);
-        ayps.a(this.jdField_a_of_type_Ayps, true);
-        this.jdField_a_of_type_Ayps.a(ayps.a(this.jdField_a_of_type_Ayps), this.jdField_a_of_type_QCUniBusiSimpleItemDetail.itemId, this.jdField_a_of_type_QCUniBusiSimpleItemDetail.feeType, this.jdField_a_of_type_Ayps.a);
-        break;
-      }
+  }
+  
+  public static OkHttpClient a()
+  {
+    if (jdField_a_of_type_Okhttp3OkHttpClient == null) {
+      a(30000L);
     }
-    if (9 == ayps.a(this.jdField_a_of_type_Ayps)) {}
-    for (String str = "1";; str = "2")
-    {
-      VasWebviewUtil.reportCommercialDrainage("friend_wall", "item_click", "", 0, "", str);
-      break;
-    }
+    return jdField_a_of_type_Okhttp3OkHttpClient;
+  }
+  
+  private static void a(long paramLong)
+  {
+    jdField_a_of_type_Okhttp3OkHttpClient = a(paramLong, GameWnsUtils.enableHttp2()).build();
   }
 }
 

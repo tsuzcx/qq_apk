@@ -1,8 +1,8 @@
-import android.graphics.Bitmap;
-
 public abstract interface bnpp
 {
-  public abstract void a(String paramString1, int paramInt, String paramString2, Bitmap paramBitmap);
+  public abstract void a();
+  
+  public abstract void a(String paramString);
 }
 
 

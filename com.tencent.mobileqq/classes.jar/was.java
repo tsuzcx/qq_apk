@@ -1,31 +1,25 @@
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 class was
-  extends wal
+  extends SimpleJob<Object>
 {
-  public was(ViewGroup paramViewGroup)
+  was(wan paramwan, String paramString1, String paramString2, waw paramwaw)
   {
-    super(paramViewGroup, 2131561663);
+    super(paramString1);
   }
   
-  public void a(String paramString)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    b(paramString);
+    wan.a(this.jdField_a_of_type_Wan, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Waw);
+    return null;
   }
   
-  public void a(vxd paramvxd)
+  public int getJobType()
   {
-    super.a(paramvxd);
-    xvv.a("Q.qqstory.msgTab.WeiShiRecommendNodeViewHolder", "bindData %s", paramvxd);
-    a(yql.b(paramvxd.g));
-    this.a.setNodeName(paramvxd.c, 2130846566);
-  }
-  
-  protected void b(vxd paramvxd)
-  {
-    this.a.setDisplayState(6);
-    this.a.a(paramvxd);
+    return 4;
   }
 }
 

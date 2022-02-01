@@ -1,35 +1,25 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class aeda
-  extends WtloginObserver
+  extends BroadcastReceiver
 {
-  public aeda(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
+  public aeda(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void onGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel())
+    if (paramIntent != null)
     {
-      QLog.d("RegisterQQNumberActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
-      if (paramErrMsg != null) {
-        QLog.d("RegisterQQNumberActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.gesturelock.unlock", 2, "GesturePWDUnlockActivity finish onReceive");
+      }
+      if ((paramIntent.getLongExtra("timeid", 0L) > this.a.a) && (!this.a.isFinishing())) {
+        this.a.finish();
       }
     }
-    if (paramInt2 == 0) {
-      return;
-    }
-    RegisterQQNumberActivity.a(this.a);
-    paramString = new Intent(this.a, LoginActivity.class);
-    paramString.putExtra("uin", RegisterQQNumberActivity.a(this.a));
-    paramString.putExtra("tab_index", MainFragment.b);
-    paramString.addFlags(131072);
-    this.a.startActivity(paramString);
-    this.a.finish();
   }
 }
 

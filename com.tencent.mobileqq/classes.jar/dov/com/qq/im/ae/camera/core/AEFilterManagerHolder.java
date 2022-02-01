@@ -1,19 +1,19 @@
 package dov.com.qq.im.ae.camera.core;
 
-import blnq;
+import bnaz;
 
 public class AEFilterManagerHolder
 {
-  private static blnq instance;
+  private static bnaz instance;
   
-  public static blnq getAEFilterManager()
+  public static bnaz getAEFilterManager()
   {
     return instance;
   }
   
-  public static void setFilterProcess(blnq paramblnq)
+  public static void setFilterProcess(bnaz parambnaz)
   {
-    instance = paramblnq;
+    instance = parambnaz;
   }
 }
 

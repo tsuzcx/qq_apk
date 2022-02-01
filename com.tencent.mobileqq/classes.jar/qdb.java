@@ -1,15 +1,19 @@
-class qdb
-  implements quh
+public abstract class qdb
 {
-  qdb(qcy paramqcy, pvc parampvc) {}
+  public Object a;
+  private String a;
   
-  public void a()
+  public qdb(String paramString)
   {
-    pet localpet = this.jdField_a_of_type_Pvc.a().a().a();
-    if (localpet != null) {
-      localpet.a(null, this.jdField_a_of_type_Pvc.a(), 1);
-    }
+    this.a = paramString;
   }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public abstract void a(qcu paramqcu);
 }
 
 

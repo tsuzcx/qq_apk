@@ -1,44 +1,43 @@
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.reactive.Stream;
 
-class wno
-  implements wof
+public class wno
 {
-  wno(wnn paramwnn) {}
+  private int jdField_a_of_type_Int = 1;
+  private boolean jdField_a_of_type_Boolean = true;
+  private boolean b = true;
   
-  public void a()
+  public void a(@NonNull wly paramwly, wns paramwns)
   {
-    wnn.a(this.a, this.a.a.a(wnn.a(this.a), 5));
-    List localList = wnn.a(this.a).a;
-    if ((wnn.a(this.a) == null) && (localList.size() > 0)) {
-      wnn.a(this.a, ((woe)localList.get(0)).a);
-    }
-    label193:
-    for (;;)
+    if (this.jdField_a_of_type_Boolean)
     {
-      wnn.a(this.a).a(wnn.a(this.a), "");
-      xvv.d("Q.qqstory.player.data.SimpleDataProvider", "current group:%s", new Object[] { wnn.a(this.a) });
-      return;
-      int i = 0;
-      for (;;)
+      if (this.b)
       {
-        if (i >= localList.size()) {
-          break label193;
+        if (QLog.isColorLevel()) {
+          QLog.i("MsgTabVideoPreloaderDataProvider", 2, "下载vidList和VideoInfo");
         }
-        if (((woe)localList.get(i)).a.equals(wnn.a(this.a)))
-        {
-          i -= 1;
-          if (i < 0) {
-            break;
-          }
-          wnn.a(this.a, ((woe)localList.get(i)).a);
-          break;
-        }
-        i += 1;
+        Stream.of(paramwly).map(new wmo("MsgTabPreloader")).map(new wml(null)).subscribe(new wnp(this, paramwns, paramwly));
       }
     }
+    else {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("MsgTabVideoPreloaderDataProvider", 2, "只加载vidList");
+    }
+    Stream.of(paramwly).map(new wmo("MsgTabPreloader")).subscribe(new wnr(this, paramwns, paramwly));
   }
   
-  public void a(wod paramwod, String paramString, boolean paramBoolean) {}
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
 }
 
 

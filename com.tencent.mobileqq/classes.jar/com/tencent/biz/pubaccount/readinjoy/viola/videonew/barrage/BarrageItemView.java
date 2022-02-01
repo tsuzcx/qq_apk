@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.videonew.barrage;
 
-import akur;
+import alsn;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -20,15 +20,15 @@ import kotlin.jvm.JvmOverloads;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import thj;
-import tnv;
-import tnx;
+import tuv;
+import ubj;
+import ubl;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageItemView;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "appearState", "Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageItemView$AppearState;", "getAppearState", "()Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageItemView$AppearState;", "setAppearState", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageItemView$AppearState;)V", "authorImageView", "Landroid/widget/ImageView;", "barrageTextView", "Landroid/widget/TextView;", "barrageType", "Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageItemView$BarrageType;", "blockDistance", "getBlockDistance", "()I", "setBlockDistance", "(I)V", "busyInLineEntry", "", "getBusyInLineEntry", "()Z", "setBusyInLineEntry", "(Z)V", "componentAdapter", "Lcom/tencent/biz/pubaccount/readinjoy/viola/adapter/ui/ComponentAdapter;", "placeLines", "", "Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageTrack$BarrageLine;", "getPlaceLines", "()Ljava/util/List;", "setPlaceLines", "(Ljava/util/List;)V", "calculateBlockDistance", "updateBarrageBg", "", "alpha", "", "updateUi", "barrageInfo", "Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageInfo;", "barrageConfig", "Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageConfig;", "AppearState", "BarrageType", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class BarrageItemView
   extends LinearLayout
 {
-  public static final tnv a;
+  public static final ubj a;
   private static final int b = DisplayUtil.dip2px((Context)BaseApplication.getContext(), 10.0F);
   private static final int c = DisplayUtil.dip2px((Context)BaseApplication.getContext(), 24.0F);
   private int jdField_a_of_type_Int;
@@ -38,13 +38,13 @@ public final class BarrageItemView
   private BarrageItemView.AppearState jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewBarrageBarrageItemView$AppearState = BarrageItemView.AppearState.NONE;
   private BarrageItemView.BarrageType jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewBarrageBarrageItemView$BarrageType = BarrageItemView.BarrageType.SHORT;
   @NotNull
-  private List<tnx> jdField_a_of_type_JavaUtilList = CollectionsKt.emptyList();
-  private final thj jdField_a_of_type_Thj = new thj();
+  private List<ubl> jdField_a_of_type_JavaUtilList = CollectionsKt.emptyList();
+  private final tuv jdField_a_of_type_Tuv = new tuv();
   private boolean jdField_a_of_type_Boolean;
   
   static
   {
-    jdField_a_of_type_Tnv = new tnv(null);
+    jdField_a_of_type_Ubj = new ubj(null);
   }
   
   @JvmOverloads
@@ -63,11 +63,11 @@ public final class BarrageItemView
   public BarrageItemView(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    LayoutInflater.from(paramContext).inflate(2131560408, (ViewGroup)this);
-    paramContext = findViewById(2131379490);
+    LayoutInflater.from(paramContext).inflate(2131560458, (ViewGroup)this);
+    paramContext = findViewById(2131379799);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.tv_barrage)");
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext);
-    paramContext = findViewById(2131369156);
+    paramContext = findViewById(2131369318);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.iv_author)");
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext);
     a(0.2F);
@@ -79,7 +79,7 @@ public final class BarrageItemView
   
   private final void a(float paramFloat)
   {
-    Drawable localDrawable = getResources().getDrawable(2130841715);
+    Drawable localDrawable = getResources().getDrawable(2130841725);
     Intrinsics.checkExpressionValueIsNotNull(localDrawable, "shapeDrawable");
     localDrawable.setAlpha((int)('ÿ' * paramFloat));
     setBackgroundDrawable(localDrawable);
@@ -89,11 +89,11 @@ public final class BarrageItemView
   {
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewBarrageBarrageItemView$BarrageType == BarrageItemView.BarrageType.DOUBLE_LINE)
     {
-      akur localakur = DisplayUtil.getScreenSize((Context)BaseApplication.getContext());
-      Intrinsics.checkExpressionValueIsNotNull(localakur, "DisplayUtil.getScreenSiz…Application.getContext())");
-      return localakur.a() / 2;
+      alsn localalsn = DisplayUtil.getScreenSize((Context)BaseApplication.getContext());
+      Intrinsics.checkExpressionValueIsNotNull(localalsn, "DisplayUtil.getScreenSiz…Application.getContext())");
+      return localalsn.a() / 2;
     }
-    return tne.a.a()[kotlin.random.Random.Default.nextInt(tne.a.a().length)].intValue();
+    return uas.a.a()[kotlin.random.Random.Default.nextInt(uas.a.a().length)].intValue();
   }
   
   public final int a()
@@ -108,7 +108,7 @@ public final class BarrageItemView
   }
   
   @NotNull
-  public final List<tnx> a()
+  public final List<ubl> a()
   {
     return this.jdField_a_of_type_JavaUtilList;
   }
@@ -132,7 +132,7 @@ public final class BarrageItemView
     }
     else
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewBarrageBarrageItemView$BarrageType = jdField_a_of_type_Tnv.a(paramBarrageInfo.b);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewBarrageBarrageItemView$BarrageType = jdField_a_of_type_Ubj.a(paramBarrageInfo.b);
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewBarrageBarrageItemView$BarrageType != BarrageItemView.BarrageType.DOUBLE_LINE) {
         break label116;
       }
@@ -170,7 +170,7 @@ public final class BarrageItemView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public final void setPlaceLines(@NotNull List<tnx> paramList)
+  public final void setPlaceLines(@NotNull List<ubl> paramList)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "<set-?>");
     this.jdField_a_of_type_JavaUtilList = paramList;
@@ -178,7 +178,7 @@ public final class BarrageItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.videonew.barrage.BarrageItemView
  * JD-Core Version:    0.7.0.1
  */

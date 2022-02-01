@@ -1,42 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class pzy
+  implements qbc
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  public pzy(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  
+  public void a()
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONObject localJSONObject2 = new JSONObject();
-    Object localObject;
-    if (paramBaseArticleInfo.mSinglePicture != null)
-    {
-      localObject = paramBaseArticleInfo.mSinglePicture.getFile();
-      localJSONObject2.put("article_large_imge_url", localObject);
-      localJSONObject1.put("id_article_large_imge", localJSONObject2);
-      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
-        break label103;
-      }
-    }
-    for (;;)
-    {
-      qai.a(paramBaseArticleInfo, localJSONObject1, true, "3");
-      qai.n(paramBaseArticleInfo, localJSONObject1);
-      qai.g(paramBaseArticleInfo, localJSONObject1);
-      twr.b(paramBaseArticleInfo, localJSONObject1);
-      twr.a(paramBaseArticleInfo, localJSONObject1);
-      localJSONObject1.put("style_ID", "ReadInjoy_ad_pk_cell");
-      qai.a(localJSONObject1, paramBaseArticleInfo);
-      return localJSONObject1;
-      localObject = null;
-      break;
-      label103:
-      localObject = (AdvertisementInfo)paramBaseArticleInfo;
-      if (((AdvertisementInfo)localObject).mAdvertisementExtInfo != null) {
-        twr.a(localJSONObject1, ((AdvertisementInfo)localObject).mAdvertisementExtInfo);
-      }
-    }
+    pkh.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), pjj.r);
+    olh.a(null, "CliOper", "", "", "0X8008E3C", "0X8008E3C", 0, 0, "", "", "", pqf.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), "8.4.10".replace("", ""), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin()), false);
   }
 }
 

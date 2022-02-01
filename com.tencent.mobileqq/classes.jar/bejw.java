@@ -1,17 +1,35 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.mobileqq.troop.homework.entry.ui.view.InputMethodGuard;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import cooperation.vip.tianshu.TianShuGetAdvCallback;
+import cooperation.vip.tianshu.TianShuManager;
+import java.util.ArrayList;
 
-public class bejw
-  implements beni
+class bejw
+  implements TianShuGetAdvCallback
 {
-  public bejw(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  bejw(bejv parambejv) {}
   
-  public void a(View paramView, boolean paramBoolean)
+  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
-    if (paramBoolean) {
-      this.a.a(this.a.a.a());
+    QLog.d("TogetherControlManager", 2, new Object[] { "ongetAdvs result:", Boolean.valueOf(paramBoolean), " rsp:", paramGetAdsRsp.toString() });
+    if (paramBoolean)
+    {
+      paramGetAdsRsp = bekc.a(paramBoolean, paramGetAdsRsp);
+      if (paramGetAdsRsp != null)
+      {
+        this.a.a.add(paramGetAdsRsp);
+        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        URLDrawable.getDrawable(paramGetAdsRsp.c, localURLDrawableOptions).startDownload();
+        TianShuManager.getInstance().cacheTraceInfo(paramGetAdsRsp.a);
+      }
     }
+    else
+    {
+      return;
+    }
+    QLog.d("TogetherControlManager", 2, "ongetAdvs banner is null");
   }
 }
 

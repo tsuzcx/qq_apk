@@ -1,28 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.av.utils.PopupDialogQQSide;
+import android.content.Context;
 
 public class mss
-  implements DialogInterface.OnDismissListener
 {
-  public mss(PopupDialogQQSide paramPopupDialogQQSide) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public static void a(Context paramContext, String paramString, int paramInt, mst parammst)
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
-    }
-    if (this.a.getActivity() != null)
-    {
-      this.a.getActivity().doOnBackPressed();
-      this.a.getActivity().overridePendingTransition(0, 0);
-    }
+    parammst.a(paramContext, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mss
  * JD-Core Version:    0.7.0.1
  */

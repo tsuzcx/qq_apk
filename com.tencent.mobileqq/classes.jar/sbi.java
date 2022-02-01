@@ -1,12 +1,20 @@
-import com.tencent.biz.pubaccount.VideoInfo;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface sbi
+class sbi
+  implements View.OnClickListener
 {
-  public abstract void a(VideoInfo paramVideoInfo);
+  sbi(sbf paramsbf) {}
   
-  public abstract void e();
-  
-  public abstract void f();
+  public void onClick(View paramView)
+  {
+    GroupManagerActivity.a((Activity)this.a.a);
+    bdla.b(sbf.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

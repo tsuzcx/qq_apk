@@ -1,41 +1,28 @@
-import android.view.Surface;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aldv
-  implements bgnn
+class aldv
+  implements View.OnClickListener
 {
-  public aldv(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  aldv(aldh paramaldh, azeo paramazeo) {}
   
-  public void a(bgnk parambgnk)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "mMediaPlayer onPrepared: mDuration=" + this.a.b);
+    if (aldh.a(this.jdField_a_of_type_Aldh).app.getExtOnlineStatus() > 40001L) {
+      azco.a(aldh.a(this.jdField_a_of_type_Aldh).app, 40001L, false, "br_close");
     }
-    SurfaceHolder localSurfaceHolder = this.a.jdField_a_of_type_AndroidViewSurfaceView.getHolder();
-    if ((localSurfaceHolder == null) || (!localSurfaceHolder.getSurface().isValid())) {
-      aszk.a(2131691190);
-    }
-    do
+    for (;;)
     {
-      do
-      {
-        return;
-        bfst.a(this.a.jdField_a_of_type_AndroidViewSurfaceView, this.a.e, this.a.f, this.a.jdField_a_of_type_Bgnk.d(), this.a.jdField_a_of_type_Bgnk.e());
-      } while (this.a.j != 10);
-      parambgnk.a(localSurfaceHolder);
-      this.a.jdField_a_of_type_Int = parambgnk.c();
-    } while (this.a.jdField_a_of_type_Int <= 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "此时的时长为" + ShortVideoUtils.stringForTime(this.a.jdField_a_of_type_Int));
+      azcl.a("0X800AF9F", (int)this.jdField_a_of_type_Azeo.a);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_Aldh.a(30, 0);
+      this.jdField_a_of_type_Aldh.a(30, null);
+      azco.c();
     }
-    this.a.d.setText(ShortVideoUtils.stringForTime(this.a.jdField_a_of_type_Int));
-    this.a.jdField_a_of_type_AndroidWidgetSeekBar.setMax(this.a.jdField_a_of_type_Int);
   }
 }
 

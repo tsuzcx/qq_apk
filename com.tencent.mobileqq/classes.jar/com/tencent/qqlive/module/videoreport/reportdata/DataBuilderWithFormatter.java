@@ -2,22 +2,54 @@ package com.tencent.qqlive.module.videoreport.reportdata;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.SparseArray;
 import com.tencent.qqlive.module.videoreport.Configuration;
 import com.tencent.qqlive.module.videoreport.data.DataEntity;
 import com.tencent.qqlive.module.videoreport.data.DataEntityOperator;
 import com.tencent.qqlive.module.videoreport.data.DataRWProxy;
+import com.tencent.qqlive.module.videoreport.data.ElementDataEntity;
 import com.tencent.qqlive.module.videoreport.data.ReportData;
 import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
 import com.tencent.qqlive.module.videoreport.page.PageUtils;
+import com.tencent.qqlive.module.videoreport.utils.BaseUtils;
 import com.tencent.qqlive.module.videoreport.utils.IFormatter;
 import com.tencent.qqlive.module.videoreport.utils.ReusablePool;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 public class DataBuilderWithFormatter
   implements IDataBuilder
 {
+  private List<ReportData> addVirtualParentParams(DataEntity paramDataEntity)
+  {
+    if (paramDataEntity == null) {}
+    do
+    {
+      return null;
+      paramDataEntity = DataEntityOperator.getVirtualElementParentParams(paramDataEntity);
+    } while ((paramDataEntity == null) || (paramDataEntity.size() == 0));
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    if (i < paramDataEntity.size())
+    {
+      ElementDataEntity localElementDataEntity = (ElementDataEntity)paramDataEntity.valueAt(i);
+      if (localElementDataEntity == null) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        ReportData localReportData = (ReportData)ReusablePool.obtain(8);
+        localReportData.setId(localElementDataEntity.elementId);
+        localReportData.setParams(localElementDataEntity.elementParams);
+        localArrayList.add(localReportData);
+      }
+    }
+    return localArrayList;
+  }
+  
   @NonNull
   private ArrayList<ReportData> getElementsData(PathData paramPathData)
   {
@@ -29,11 +61,15 @@ public class DataBuilderWithFormatter
       if (localObject != null)
       {
         String str = DataEntityOperator.getElementId((DataEntity)localObject);
-        localObject = DataEntityOperator.getElementParams((DataEntity)localObject);
+        Map localMap = DataEntityOperator.getElementParams((DataEntity)localObject);
         ReportData localReportData = (ReportData)ReusablePool.obtain(8);
         localReportData.setId(str);
-        localReportData.setParams((Map)localObject);
+        localReportData.setParams(localMap);
         localArrayList.add(localReportData);
+        localObject = addVirtualParentParams((DataEntity)localObject);
+        if (!BaseUtils.isEmpty((Collection)localObject)) {
+          localArrayList.addAll((Collection)localObject);
+        }
       }
     }
     return localArrayList;

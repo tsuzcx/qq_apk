@@ -1,13 +1,47 @@
-import java.nio.ByteBuffer;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class wwk
+  extends wxz
 {
-  public long a;
-  public ByteBuffer a;
+  protected String a;
   
-  wwk(int paramInt)
+  public void a()
   {
-    this.a = ByteBuffer.allocate(paramInt);
+    ShareGroupItem localShareGroupItem = ((xti)wjs.a(7)).a(this.a);
+    if (localShareGroupItem == null) {
+      return;
+    }
+    xrf localxrf = (xrf)wjs.a(24);
+    xqx localxqx = localxrf.a(localShareGroupItem.headerUnionIdList);
+    if (localxqx == null)
+    {
+      localxrf.a(localShareGroupItem.headerUnionIdList, new wwl(this));
+      return;
+    }
+    a(localxqx);
+  }
+  
+  protected void a(Error paramError)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ShareGroupAvatarJob", 2, paramError, new Object[0]);
+    }
+    b(false);
+  }
+  
+  protected void a(Map<String, Object> paramMap)
+  {
+    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("ShareGroupAvatarJob_sgi"))) {
+      this.a = ((String)a("ShareGroupAvatarJob_sgi"));
+    }
+  }
+  
+  protected void a(xqx paramxqx)
+  {
+    a("ShareGroupAvatarJob_sga", paramxqx.a());
+    b(true);
   }
 }
 

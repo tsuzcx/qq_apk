@@ -1,29 +1,13 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahod
+  implements ahnr
 {
-  public JSONObject a = new JSONObject();
-  
-  public static ahod a(String paramString)
+  public void a(agtf paramagtf, MessageRecord paramMessageRecord, agus paramagus, aftk paramaftk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        ahod localahod = new ahod();
-        localahod.a = paramString;
-        return localahod;
-      }
-      catch (Exception paramString)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AdEmoConfigBean", 2, paramString.getMessage());
-        }
-      }
-    }
-    return null;
+    paramagtf.a(paramagus, paramString);
   }
 }
 

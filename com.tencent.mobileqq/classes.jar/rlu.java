@@ -1,14 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.EditVideoFragment;
+import kotlin.Lazy;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
 
-public class rlu
-  implements tar
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/RIJWatchWordShareManager$Companion;", "", "()V", "CLIP_TAG", "", "TAG", "WATCH_WORD_COUNT", "", "instance", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/RIJWatchWordShareManager;", "getInstance", "()Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/RIJWatchWordShareManager;", "instance$delegate", "Lkotlin/Lazy;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rlu
 {
-  public rlu(EditVideoFragment paramEditVideoFragment) {}
-  
-  public void a(TopicInfo paramTopicInfo)
+  @NotNull
+  public final rlt a()
   {
-    odq.a("0X800B24D", new pbg().a("topic_id", Long.valueOf(paramTopicInfo.a())).a());
+    Lazy localLazy = rlt.a();
+    rlu localrlu = rlt.a;
+    return (rlt)localLazy.getValue();
   }
 }
 

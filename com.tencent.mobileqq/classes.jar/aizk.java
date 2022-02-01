@@ -1,22 +1,17 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.SysSuspiciousMsg;
+import java.util.Comparator;
 
-public class aizk
-  implements View.OnClickListener
+class aizk
+  implements Comparator<SysSuspiciousMsg>
 {
-  public aizk(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  aizk(aizi paramaizi) {}
   
-  public void onClick(View paramView)
+  public int a(SysSuspiciousMsg paramSysSuspiciousMsg1, SysSuspiciousMsg paramSysSuspiciousMsg2)
   {
-    if (this.a.jdField_d_of_type_Int == 11) {
-      bcef.b(this.a.getActivity().app, "CliOper", "", "", "0X8006216", "0X8006216", 0, 0, "", "", "", "");
+    if ((paramSysSuspiciousMsg1 != null) && (paramSysSuspiciousMsg2 != null)) {
+      return (int)(paramSysSuspiciousMsg2.time - paramSysSuspiciousMsg1.time);
     }
-    this.a.jdField_d_of_type_AndroidAppDialog.cancel();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return 0;
   }
 }
 

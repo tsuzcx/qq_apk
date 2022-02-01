@@ -1,33 +1,28 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import NS_KING_INTERFACE.stPostCommentDingRsp;
+import UserGrowth.stSimpleMetaComment;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class uzx
+class uzx
+  implements vfg
 {
-  @NonNull
-  public static uzp a(String paramString, uzq paramuzq)
+  uzx(uzs paramuzs, stSimpleMetaComment paramstSimpleMetaComment) {}
+  
+  public void a(vfr paramvfr)
   {
-    if (TextUtils.equals(paramString, "recommend_tab")) {
-      return new vdn(paramuzq);
+    if ((paramvfr.jdField_a_of_type_JavaLangObject instanceof stPostCommentDingRsp))
+    {
+      stPostCommentDingRsp localstPostCommentDingRsp = (stPostCommentDingRsp)paramvfr.jdField_a_of_type_JavaLangObject;
+      if (this.jdField_a_of_type_UserGrowthStSimpleMetaComment.isDing == 1) {
+        vmp.d(uzs.a(), "点赞成功,nothing is " + localstPostCommentDingRsp.nothing);
+      }
+      for (;;)
+      {
+        wad.a().dispatch(this.jdField_a_of_type_Uzs.a(new Object[] { Integer.valueOf(7), Integer.valueOf(paramvfr.b), paramvfr.jdField_a_of_type_JavaLangString, localstPostCommentDingRsp }));
+        return;
+        vmp.d(uzs.a(), "取消点赞成功,nothing is " + localstPostCommentDingRsp.nothing);
+      }
     }
-    if (TextUtils.equals(paramString, "follow_tab")) {
-      return new vdf(paramuzq);
-    }
-    if ((TextUtils.equals(paramString, "mini_app_personal_main")) || (TextUtils.equals(paramString, "mini_app_personal_guest"))) {
-      return new vdl(paramuzq);
-    }
-    if (TextUtils.equals(paramString, "vertical_layer_collection")) {
-      return new vde(paramuzq);
-    }
-    if (TextUtils.equals(paramString, "friend_feed")) {
-      return new vdh(paramuzq);
-    }
-    if (TextUtils.equals(paramString, "aio_home_page")) {
-      return new vdi(paramuzq);
-    }
-    if (TextUtils.equals(paramString, "qqchat")) {
-      return new vdd(paramuzq);
-    }
-    return new vdn(paramuzq);
+    vmp.d(uzs.a(), "评论点赞失败new！");
   }
 }
 

@@ -1,21 +1,19 @@
 package com.tencent.mobileqq.apollo;
 
-import alnr;
-import alpe;
-import alpf;
-import alpm;
-import alpo;
-import alpp;
-import alqu;
-import alqw;
-import alqx;
-import alrv;
-import alrx;
-import alvx;
-import amal;
-import ambc;
-import amgf;
-import amkp;
+import amme;
+import amnv;
+import amnw;
+import amom;
+import amoo;
+import amop;
+import ampv;
+import ampx;
+import ampy;
+import amqw;
+import amqy;
+import amwn;
+import anbt;
+import anck;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -29,6 +27,8 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
+import anhn;
+import anmh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
@@ -44,10 +44,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class ApolloSurfaceView
   extends GLSurfaceView
-  implements alqu, alqw
+  implements ampv, ampx
 {
-  public static final int INPUT_MARGIN = 10;
-  private static final int MSG_CODE_SURFACECHANGED = 255;
   public static final String TAG = "ApolloSurfaceView";
   public static final int TOUCH_MODE_GAME = 1;
   public static final int TOUCH_MODE_NORMAL = 0;
@@ -55,94 +53,81 @@ public class ApolloSurfaceView
   private static final int UI_STATE_SURFACECREATE = 1;
   private static final int UI_STATE_SURFACEDESTROY = 3;
   private static Field sGLThreadField;
-  private alpp events = new alpp();
-  private boolean mAddPredrawListener;
+  private amop events = new amop();
   String mApolloId;
   public ApolloRenderDriver mApolloWorker;
-  protected WeakReference<alrx> mBarrageViewRef;
-  private WeakReference<alqx> mCallbackRef;
-  private boolean mCanDraw;
+  protected WeakReference<amqy> mBarrageViewRef;
+  private WeakReference<ampy> mCallbackRef;
   private boolean mCloseGame;
   private float mDensity = super.getContext().getResources().getDisplayMetrics().density;
   private boolean mDetectTouchMoved;
   private boolean mDisableParentIntercept;
-  private final byte[] mEngineLock = new byte[0];
-  private long mEngineWaitTime;
   private int mGameId;
   private boolean mHasPerformedLongPress;
   private int mHeight;
   private int mInitHeight;
   public AtomicBoolean mIsDestroy = new AtomicBoolean(false);
   public boolean mIsGameReady;
-  private MotionEvent mLastTouchEvent;
   private int mNode = -1;
   private float mPX;
   private float mPY;
   private ApolloSurfaceView.CheckForLongPress mPendingCheckForLongPress = new ApolloSurfaceView.CheckForLongPress(this);
   public ApolloRender mRender;
-  protected alpf mRenderImpl;
+  protected amnw mRenderImpl;
   public int mRenderMode = 1;
   private long mRenderThreadId = -2147483648L;
-  private boolean mSendEventToNatived;
-  public alpo mSurfaceCallBackData;
+  public amoo mSurfaceCallBackData;
   private Runnable mSurfaceChangeRunnable = new ApolloSurfaceView.6(this);
   private float mTouchDownX;
   private float mTouchDownY;
   private int mTouchMode = 0;
   private AtomicInteger mUIState = new AtomicInteger();
-  private boolean mUpdateSurfaceDirect = true;
-  private boolean mWaitGameDrawed;
   private int mWidth;
   public int uiOptions;
   
   public ApolloSurfaceView(Context paramContext, AttributeSet paramAttributeSet, boolean paramBoolean)
   {
     super(paramContext, paramAttributeSet);
-    super.setEGLContextClientVersion(alnr.a());
+    super.setEGLContextClientVersion(amme.a());
     int i = ApolloUtil.a();
     if (QLog.isColorLevel()) {
       QLog.d("ApolloSurfaceView", 2, "ApolloSurfaceView MSAA_level:" + i);
     }
     if (i != 0) {
-      if (1 == i)
-      {
-        super.setEGLConfigChooser(new alpm(4));
-        if (paramBoolean)
-        {
-          super.setZOrderOnTop(true);
-          super.getHolder().setFormat(-2);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloSurfaceView", 2, "[ApolloSurfaceView] constructor");
-        }
-        initTouchEvent();
-        paramAttributeSet = BaseApplicationImpl.getApplication();
-        if ((paramAttributeSet != null) && ((paramContext instanceof Activity)))
-        {
-          paramAttributeSet = paramAttributeSet.getRuntime();
-          if ((paramAttributeSet instanceof QQAppInterface)) {
-            ApolloCmdChannel.getChannel((QQAppInterface)paramAttributeSet).setActivityContext((Activity)paramContext);
-          }
-        }
-        if (this.mDensity > 0.0F) {
-          break label342;
-        }
+      if (1 == i) {
+        super.setEGLConfigChooser(new amom(4));
       }
     }
-    label342:
-    for (float f = 1.2F;; f = this.mDensity)
+    for (;;)
     {
-      this.mEngineWaitTime = ((300.0F / f));
+      if (paramBoolean)
+      {
+        super.setZOrderOnTop(true);
+        super.getHolder().setFormat(-2);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloSurfaceView", 2, "[ApolloSurfaceView] constructor");
+      }
+      initTouchEvent();
+      paramAttributeSet = BaseApplicationImpl.getApplication();
+      if ((paramAttributeSet != null) && ((paramContext instanceof Activity)))
+      {
+        paramAttributeSet = paramAttributeSet.getRuntime();
+        if ((paramAttributeSet instanceof QQAppInterface)) {
+          ApolloCmdChannel.getChannel((QQAppInterface)paramAttributeSet).setActivityContext((Activity)paramContext);
+        }
+      }
       return;
       if (2 == i)
       {
-        super.setEGLConfigChooser(new alpm(2));
-        break;
+        super.setEGLConfigChooser(new amom(2));
       }
-      super.setEGLConfigChooser(8, 8, 8, 8, 16, 0);
-      break;
-      super.setEGLConfigChooser(8, 8, 8, 8, 16, 0);
-      break;
+      else
+      {
+        super.setEGLConfigChooser(8, 8, 8, 8, 16, 0);
+        continue;
+        super.setEGLConfigChooser(8, 8, 8, 8, 16, 0);
+      }
     }
   }
   
@@ -150,9 +135,11 @@ public class ApolloSurfaceView
   {
     super(paramContext, paramAttributeSet);
     super.setEGLContextClientVersion(2);
-    if (!paramBoolean2)
-    {
+    if (!paramBoolean2) {
       super.setEGLConfigChooser(8, 8, 8, 8, 16, 8);
+    }
+    for (;;)
+    {
       if (paramBoolean1) {
         super.setZOrderOnTop(true);
       }
@@ -171,28 +158,15 @@ public class ApolloSurfaceView
           ApolloCmdChannel.getChannel((QQAppInterface)paramAttributeSet).setActivityContext((Activity)paramContext);
         }
       }
-      if (this.mDensity > 0.0F) {
-        break label315;
-      }
-    }
-    label315:
-    for (float f = 1.2F;; f = this.mDensity)
-    {
-      this.mEngineWaitTime = ((300.0F / f));
       return;
-      int i = alvx.e();
-      if (1 == i)
-      {
-        super.setEGLConfigChooser(new alpm(4));
-        break;
+      int i = amwn.e();
+      if (1 == i) {
+        super.setEGLConfigChooser(new amom(4));
+      } else if (2 == i) {
+        super.setEGLConfigChooser(new amom(2));
+      } else {
+        super.setEGLConfigChooser(8, 8, 8, 8, 16, 8);
       }
-      if (2 == i)
-      {
-        super.setEGLConfigChooser(new alpm(2));
-        break;
-      }
-      super.setEGLConfigChooser(8, 8, 8, 8, 16, 8);
-      break;
     }
   }
   
@@ -214,7 +188,7 @@ public class ApolloSurfaceView
       this.events.jdField_a_of_type_ArrayOfInt[this.events.jdField_a_of_type_Int] = 2;
       this.events.jdField_b_of_type_ArrayOfInt[this.events.jdField_a_of_type_Int] = paramMotionEvent.getPointerId(i);
       Object localObject = this.events;
-      ((alpp)localObject).jdField_a_of_type_Int += 1;
+      ((amop)localObject).jdField_a_of_type_Int += 1;
       if (this.events.jdField_a_of_type_Int <= 0) {
         break;
       }
@@ -361,8 +335,8 @@ public class ApolloSurfaceView
                 this.events.jdField_b_of_type_ArrayOfInt[i] = this.events.jdField_b_of_type_ArrayOfInt[(i + 1)];
                 i += 1;
               }
-              alpp localalpp = this.events;
-              localalpp.jdField_a_of_type_Int -= 1;
+              amop localamop = this.events;
+              localamop.jdField_a_of_type_Int -= 1;
             }
           }
           else
@@ -410,9 +384,9 @@ public class ApolloSurfaceView
   {
     if ((this.mBarrageViewRef != null) && (!TextUtils.isEmpty(paramString2)))
     {
-      alrx localalrx = (alrx)this.mBarrageViewRef.get();
-      if (localalrx != null) {
-        alrv.a(localalrx, BaseApplicationImpl.getContext(), paramString1, paramString2, paramBoolean);
+      amqy localamqy = (amqy)this.mBarrageViewRef.get();
+      if (localamqy != null) {
+        amqw.a(localamqy, BaseApplicationImpl.getContext(), paramString1, paramString2, paramBoolean);
       }
     }
   }
@@ -452,7 +426,12 @@ public class ApolloSurfaceView
     return this.mRender;
   }
   
-  public alpf getRenderImpl()
+  public int getRenderHeight()
+  {
+    return super.getHeight();
+  }
+  
+  public amnw getRenderImpl()
   {
     return this.mRenderImpl;
   }
@@ -478,6 +457,11 @@ public class ApolloSurfaceView
       QLog.e("ApolloSurfaceView", 1, localException, new Object[0]);
     }
     return 0L;
+  }
+  
+  public int getRenderWidth()
+  {
+    return super.getWidth();
   }
   
   public long getRuntimeState()
@@ -506,178 +490,200 @@ public class ApolloSurfaceView
     return this.mApolloWorker;
   }
   
-  public void init(alqx paramalqx)
+  public void init(ampy paramampy)
   {
     try
     {
-      init(paramalqx, 0);
+      init(paramampy, 0);
       return;
     }
     finally
     {
-      paramalqx = finally;
-      throw paramalqx;
+      paramampy = finally;
+      throw paramampy;
     }
   }
   
-  public void init(alqx paramalqx, int paramInt)
+  public void init(ampy paramampy, int paramInt)
   {
     try
     {
-      init(paramalqx, paramInt, null);
+      init(paramampy, paramInt, null);
       return;
     }
     finally
     {
-      paramalqx = finally;
-      throw paramalqx;
+      paramampy = finally;
+      throw paramampy;
     }
+  }
+  
+  public void init(ampy paramampy, int paramInt, ApolloRender paramApolloRender)
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloSurfaceView", 2, "[init], callback:" + paramampy + ",engineType:" + paramInt);
+      }
+      init(paramampy, paramInt, paramApolloRender, false);
+      return;
+    }
+    finally {}
   }
   
   /* Error */
-  public void init(alqx paramalqx, int paramInt, ApolloRender paramApolloRender)
+  public void init(ampy paramampy, int paramInt, ApolloRender paramApolloRender, boolean paramBoolean)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: invokestatic 176	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   5: ifeq +39 -> 44
-    //   8: ldc 17
+    //   2: invokestatic 158	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   5: ifeq +50 -> 55
+    //   8: ldc 12
     //   10: iconst_2
-    //   11: new 178	java/lang/StringBuilder
+    //   11: new 160	java/lang/StringBuilder
     //   14: dup
-    //   15: invokespecial 179	java/lang/StringBuilder:<init>	()V
-    //   18: ldc_w 537
-    //   21: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15: invokespecial 161	java/lang/StringBuilder:<init>	()V
+    //   18: ldc_w 520
+    //   21: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   24: aload_1
-    //   25: invokevirtual 516	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   28: ldc_w 539
-    //   31: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   25: invokevirtual 501	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   28: ldc_w 522
+    //   31: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   34: iload_2
-    //   35: invokevirtual 188	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   38: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   41: invokestatic 196	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   44: aload_0
-    //   45: new 424	java/lang/ref/WeakReference
-    //   48: dup
-    //   49: aload_1
-    //   50: invokespecial 542	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
-    //   53: putfield 263	com/tencent/mobileqq/apollo/ApolloSurfaceView:mCallbackRef	Ljava/lang/ref/WeakReference;
-    //   56: aload_3
-    //   57: ifnull +95 -> 152
-    //   60: aload_0
-    //   61: aload_3
-    //   62: putfield 450	com/tencent/mobileqq/apollo/ApolloSurfaceView:mRender	Lcom/tencent/mobileqq/apollo/ApolloRender;
-    //   65: ldc 17
-    //   67: iconst_1
-    //   68: ldc_w 544
-    //   71: invokestatic 547	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   74: aload_0
-    //   75: new 549	alpn
-    //   78: dup
-    //   79: aload_0
-    //   80: aconst_null
-    //   81: invokespecial 552	alpn:<init>	(Lcom/tencent/mobileqq/apollo/ApolloSurfaceView;Lcom/tencent/mobileqq/apollo/ApolloSurfaceView$1;)V
-    //   84: invokespecial 556	android/opengl/GLSurfaceView:setEGLContextFactory	(Landroid/opengl/GLSurfaceView$EGLContextFactory;)V
-    //   87: aload_0
-    //   88: aload_0
-    //   89: getfield 450	com/tencent/mobileqq/apollo/ApolloSurfaceView:mRender	Lcom/tencent/mobileqq/apollo/ApolloRender;
-    //   92: invokespecial 560	android/opengl/GLSurfaceView:setRenderer	(Landroid/opengl/GLSurfaceView$Renderer;)V
-    //   95: aload_0
-    //   96: aload_0
-    //   97: getfield 91	com/tencent/mobileqq/apollo/ApolloSurfaceView:mRenderMode	I
-    //   100: invokespecial 563	android/opengl/GLSurfaceView:setRenderMode	(I)V
-    //   103: aload_0
-    //   104: new 388	com/tencent/mobileqq/apollo/ApolloRenderDriver
-    //   107: dup
-    //   108: aload_0
-    //   109: aload_0
-    //   110: getfield 450	com/tencent/mobileqq/apollo/ApolloSurfaceView:mRender	Lcom/tencent/mobileqq/apollo/ApolloRender;
-    //   113: invokevirtual 408	com/tencent/mobileqq/apollo/ApolloRender:getSavaWrapper	()Lcom/tencent/mobileqq/apollo/ApolloEngine;
-    //   116: invokespecial 566	com/tencent/mobileqq/apollo/ApolloRenderDriver:<init>	(Lalqw;Lcom/tencent/mobileqq/apollo/ApolloEngine;)V
-    //   119: putfield 386	com/tencent/mobileqq/apollo/ApolloSurfaceView:mApolloWorker	Lcom/tencent/mobileqq/apollo/ApolloRenderDriver;
-    //   122: aload_0
-    //   123: getfield 450	com/tencent/mobileqq/apollo/ApolloSurfaceView:mRender	Lcom/tencent/mobileqq/apollo/ApolloRender;
-    //   126: aload_0
-    //   127: invokevirtual 570	com/tencent/mobileqq/apollo/ApolloRender:setRenderView	(Landroid/view/View;)V
-    //   130: aload_0
-    //   131: new 572	alpf
-    //   134: dup
-    //   135: aload_0
-    //   136: getfield 386	com/tencent/mobileqq/apollo/ApolloSurfaceView:mApolloWorker	Lcom/tencent/mobileqq/apollo/ApolloRenderDriver;
-    //   139: aload_0
-    //   140: getfield 450	com/tencent/mobileqq/apollo/ApolloSurfaceView:mRender	Lcom/tencent/mobileqq/apollo/ApolloRender;
-    //   143: invokespecial 575	alpf:<init>	(Lcom/tencent/mobileqq/apollo/ApolloRenderDriver;Lcom/tencent/mobileqq/apollo/ApolloRender;)V
-    //   146: putfield 461	com/tencent/mobileqq/apollo/ApolloSurfaceView:mRenderImpl	Lalpf;
-    //   149: aload_0
-    //   150: monitorexit
-    //   151: return
-    //   152: aload_0
-    //   153: new 404	com/tencent/mobileqq/apollo/ApolloRender
-    //   156: dup
-    //   157: aload_0
-    //   158: getfield 157	com/tencent/mobileqq/apollo/ApolloSurfaceView:mDensity	F
-    //   161: aload_1
-    //   162: iload_2
-    //   163: invokespecial 578	com/tencent/mobileqq/apollo/ApolloRender:<init>	(FLalqx;I)V
-    //   166: putfield 450	com/tencent/mobileqq/apollo/ApolloSurfaceView:mRender	Lcom/tencent/mobileqq/apollo/ApolloRender;
-    //   169: goto -95 -> 74
-    //   172: astore_1
-    //   173: ldc 17
-    //   175: iconst_1
-    //   176: new 178	java/lang/StringBuilder
-    //   179: dup
-    //   180: invokespecial 179	java/lang/StringBuilder:<init>	()V
-    //   183: ldc_w 580
-    //   186: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   189: aload_1
-    //   190: invokevirtual 583	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   193: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   196: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   199: invokestatic 381	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   202: goto -53 -> 149
-    //   205: astore_1
-    //   206: aload_0
-    //   207: monitorexit
-    //   208: aload_1
-    //   209: athrow
-    //   210: astore_1
-    //   211: ldc 17
-    //   213: iconst_1
-    //   214: new 178	java/lang/StringBuilder
-    //   217: dup
-    //   218: invokespecial 179	java/lang/StringBuilder:<init>	()V
-    //   221: ldc_w 585
-    //   224: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   227: aload_1
-    //   228: invokevirtual 586	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   231: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   234: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   237: invokestatic 381	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   240: goto -91 -> 149
+    //   35: invokevirtual 170	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   38: ldc_w 529
+    //   41: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   44: iload 4
+    //   46: invokevirtual 496	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   49: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   52: invokestatic 178	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   55: aload_0
+    //   56: new 401	java/lang/ref/WeakReference
+    //   59: dup
+    //   60: aload_1
+    //   61: invokespecial 532	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
+    //   64: putfield 241	com/tencent/mobileqq/apollo/ApolloSurfaceView:mCallbackRef	Ljava/lang/ref/WeakReference;
+    //   67: aload_3
+    //   68: ifnull +104 -> 172
+    //   71: aload_0
+    //   72: aload_3
+    //   73: putfield 427	com/tencent/mobileqq/apollo/ApolloSurfaceView:mRender	Lcom/tencent/mobileqq/apollo/ApolloRender;
+    //   76: ldc 12
+    //   78: iconst_1
+    //   79: ldc_w 534
+    //   82: invokestatic 537	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   85: aload_0
+    //   86: new 539	amon
+    //   89: dup
+    //   90: aload_0
+    //   91: aconst_null
+    //   92: invokespecial 542	amon:<init>	(Lcom/tencent/mobileqq/apollo/ApolloSurfaceView;Lcom/tencent/mobileqq/apollo/ApolloSurfaceView$1;)V
+    //   95: invokespecial 546	android/opengl/GLSurfaceView:setEGLContextFactory	(Landroid/opengl/GLSurfaceView$EGLContextFactory;)V
+    //   98: aload_0
+    //   99: aload_0
+    //   100: getfield 427	com/tencent/mobileqq/apollo/ApolloSurfaceView:mRender	Lcom/tencent/mobileqq/apollo/ApolloRender;
+    //   103: invokespecial 550	android/opengl/GLSurfaceView:setRenderer	(Landroid/opengl/GLSurfaceView$Renderer;)V
+    //   106: aload_0
+    //   107: aload_0
+    //   108: getfield 77	com/tencent/mobileqq/apollo/ApolloSurfaceView:mRenderMode	I
+    //   111: invokespecial 553	android/opengl/GLSurfaceView:setRenderMode	(I)V
+    //   114: aload_0
+    //   115: new 365	com/tencent/mobileqq/apollo/ApolloRenderDriver
+    //   118: dup
+    //   119: aload_0
+    //   120: aload_0
+    //   121: getfield 427	com/tencent/mobileqq/apollo/ApolloSurfaceView:mRender	Lcom/tencent/mobileqq/apollo/ApolloRender;
+    //   124: invokevirtual 385	com/tencent/mobileqq/apollo/ApolloRender:getSavaWrapper	()Lcom/tencent/mobileqq/apollo/ApolloEngine;
+    //   127: invokespecial 556	com/tencent/mobileqq/apollo/ApolloRenderDriver:<init>	(Lampx;Lcom/tencent/mobileqq/apollo/ApolloEngine;)V
+    //   130: putfield 363	com/tencent/mobileqq/apollo/ApolloSurfaceView:mApolloWorker	Lcom/tencent/mobileqq/apollo/ApolloRenderDriver;
+    //   133: aload_0
+    //   134: getfield 427	com/tencent/mobileqq/apollo/ApolloSurfaceView:mRender	Lcom/tencent/mobileqq/apollo/ApolloRender;
+    //   137: aload_0
+    //   138: invokevirtual 560	com/tencent/mobileqq/apollo/ApolloRender:setRenderView	(Landroid/view/View;)V
+    //   141: aload_0
+    //   142: new 562	amnw
+    //   145: dup
+    //   146: aload_0
+    //   147: getfield 363	com/tencent/mobileqq/apollo/ApolloSurfaceView:mApolloWorker	Lcom/tencent/mobileqq/apollo/ApolloRenderDriver;
+    //   150: aload_0
+    //   151: getfield 427	com/tencent/mobileqq/apollo/ApolloSurfaceView:mRender	Lcom/tencent/mobileqq/apollo/ApolloRender;
+    //   154: invokespecial 565	amnw:<init>	(Lcom/tencent/mobileqq/apollo/ApolloRenderDriver;Lcom/tencent/mobileqq/apollo/ApolloRender;)V
+    //   157: putfield 442	com/tencent/mobileqq/apollo/ApolloSurfaceView:mRenderImpl	Lamnw;
+    //   160: aload_0
+    //   161: getfield 427	com/tencent/mobileqq/apollo/ApolloSurfaceView:mRender	Lcom/tencent/mobileqq/apollo/ApolloRender;
+    //   164: iload 4
+    //   166: invokevirtual 568	com/tencent/mobileqq/apollo/ApolloRender:setOffscreen	(Z)V
+    //   169: aload_0
+    //   170: monitorexit
+    //   171: return
+    //   172: aload_0
+    //   173: new 381	com/tencent/mobileqq/apollo/ApolloRender
+    //   176: dup
+    //   177: aload_0
+    //   178: getfield 139	com/tencent/mobileqq/apollo/ApolloSurfaceView:mDensity	F
+    //   181: aload_1
+    //   182: iload_2
+    //   183: invokespecial 571	com/tencent/mobileqq/apollo/ApolloRender:<init>	(FLampy;I)V
+    //   186: putfield 427	com/tencent/mobileqq/apollo/ApolloSurfaceView:mRender	Lcom/tencent/mobileqq/apollo/ApolloRender;
+    //   189: goto -104 -> 85
+    //   192: astore_1
+    //   193: ldc 12
+    //   195: iconst_1
+    //   196: new 160	java/lang/StringBuilder
+    //   199: dup
+    //   200: invokespecial 161	java/lang/StringBuilder:<init>	()V
+    //   203: ldc_w 573
+    //   206: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   209: aload_1
+    //   210: invokevirtual 576	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   213: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   216: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   219: invokestatic 358	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   222: goto -53 -> 169
+    //   225: astore_1
+    //   226: aload_0
+    //   227: monitorexit
+    //   228: aload_1
+    //   229: athrow
+    //   230: astore_1
+    //   231: ldc 12
+    //   233: iconst_1
+    //   234: new 160	java/lang/StringBuilder
+    //   237: dup
+    //   238: invokespecial 161	java/lang/StringBuilder:<init>	()V
+    //   241: ldc_w 578
+    //   244: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   247: aload_1
+    //   248: invokevirtual 579	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   251: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   254: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   257: invokestatic 358	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   260: goto -91 -> 169
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	243	0	this	ApolloSurfaceView
-    //   0	243	1	paramalqx	alqx
-    //   0	243	2	paramInt	int
-    //   0	243	3	paramApolloRender	ApolloRender
+    //   0	263	0	this	ApolloSurfaceView
+    //   0	263	1	paramampy	ampy
+    //   0	263	2	paramInt	int
+    //   0	263	3	paramApolloRender	ApolloRender
+    //   0	263	4	paramBoolean	boolean
     // Exception table:
     //   from	to	target	type
-    //   44	56	172	java/lang/OutOfMemoryError
-    //   60	74	172	java/lang/OutOfMemoryError
-    //   74	149	172	java/lang/OutOfMemoryError
-    //   152	169	172	java/lang/OutOfMemoryError
-    //   2	44	205	finally
-    //   44	56	205	finally
-    //   60	74	205	finally
-    //   74	149	205	finally
-    //   152	169	205	finally
-    //   173	202	205	finally
-    //   211	240	205	finally
-    //   44	56	210	java/lang/Throwable
-    //   60	74	210	java/lang/Throwable
-    //   74	149	210	java/lang/Throwable
-    //   152	169	210	java/lang/Throwable
+    //   55	67	192	java/lang/OutOfMemoryError
+    //   71	85	192	java/lang/OutOfMemoryError
+    //   85	169	192	java/lang/OutOfMemoryError
+    //   172	189	192	java/lang/OutOfMemoryError
+    //   2	55	225	finally
+    //   55	67	225	finally
+    //   71	85	225	finally
+    //   85	169	225	finally
+    //   172	189	225	finally
+    //   193	222	225	finally
+    //   231	260	225	finally
+    //   55	67	230	java/lang/Throwable
+    //   71	85	230	java/lang/Throwable
+    //   85	169	230	java/lang/Throwable
+    //   172	189	230	java/lang/Throwable
   }
   
   public void initTouchEvent()
@@ -704,6 +710,14 @@ public class ApolloSurfaceView
   public boolean isJsRuntime()
   {
     return (this.mGameId != 1) && (this.mGameId != 2);
+  }
+  
+  public boolean isOffscreen()
+  {
+    if (this.mRender != null) {
+      return this.mRender.isOffscreen();
+    }
+    return false;
   }
   
   public native void nativeSetSurfaceView(ApolloSurfaceView paramApolloSurfaceView);
@@ -734,7 +748,7 @@ public class ApolloSurfaceView
     do
     {
       return;
-      paramQQAppInterface = ambc.a(paramQQAppInterface);
+      paramQQAppInterface = anck.a(paramQQAppInterface);
     } while (paramQQAppInterface == null);
     int j = getWidth();
     int i = paramInt;
@@ -759,7 +773,7 @@ public class ApolloSurfaceView
     if (QLog.isColorLevel()) {
       QLog.d("ApolloSurfaceView", 2, "[onGetLittleManHeight]");
     }
-    ReentrantLock localReentrantLock = amgf.a().a();
+    ReentrantLock localReentrantLock = anhn.a().a();
     QLog.d("ApolloLock", 2, "onGetManHeight");
     localReentrantLock.lock();
     for (;;)
@@ -812,7 +826,7 @@ public class ApolloSurfaceView
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     if (this.mCallbackRef == null) {}
-    alqx localalqx;
+    ampy localampy;
     do
     {
       do
@@ -821,8 +835,8 @@ public class ApolloSurfaceView
         {
           return false;
         } while ((this.mIsDestroy != null) && (this.mIsDestroy.get()));
-        localalqx = (alqx)this.mCallbackRef.get();
-      } while (localalqx == null);
+        localampy = (ampy)this.mCallbackRef.get();
+      } while (localampy == null);
       if (!ApolloEngine.a())
       {
         QLog.i("ApolloSurfaceView", 1, "apollo lib NOT loaded, [onTouchEvent] return.");
@@ -848,15 +862,15 @@ public class ApolloSurfaceView
         QLog.e("ApolloSurfaceView", 2, "touch event err e=" + paramMotionEvent.toString());
       }
       sendDownTouchNative(MotionEvent.obtain(paramMotionEvent));
-      break label972;
+      break label975;
       sendDownTouchNative(MotionEvent.obtain(paramMotionEvent));
-      break label972;
+      break label975;
       sendUpTouchToNative(MotionEvent.obtain(paramMotionEvent));
-      break label972;
+      break label975;
       sendUpTouchToNative(MotionEvent.obtain(paramMotionEvent));
-      break label972;
+      break label975;
       sendUpTouchToNative(MotionEvent.obtain(paramMotionEvent));
-      break label972;
+      break label975;
       if (super.getParent() != null) {
         super.getParent().requestDisallowInterceptTouchEvent(true);
       }
@@ -864,7 +878,6 @@ public class ApolloSurfaceView
     }
     else
     {
-      this.mLastTouchEvent = MotionEvent.obtain(paramMotionEvent);
       switch (paramMotionEvent.getAction() & 0xFF)
       {
       }
@@ -872,7 +885,6 @@ public class ApolloSurfaceView
       {
         return super.onTouchEvent(paramMotionEvent);
         this.mDetectTouchMoved = false;
-        this.mSendEventToNatived = false;
         this.mHasPerformedLongPress = false;
         this.mDisableParentIntercept = false;
         if (this.mPendingCheckForLongPress == null) {
@@ -921,7 +933,7 @@ public class ApolloSurfaceView
           }
           for (;;)
           {
-            localalqx.onNotifyStatusChanged(i, this.mApolloId);
+            localampy.onNotifyStatusChanged(i, this.mApolloId);
             this.mApolloId = null;
             break;
             i = 7;
@@ -931,6 +943,8 @@ public class ApolloSurfaceView
             i = 10;
             continue;
             i = 11;
+            continue;
+            i = 12;
           }
           this.mPX = paramMotionEvent.getX();
           this.mPY = paramMotionEvent.getY();
@@ -952,7 +966,7 @@ public class ApolloSurfaceView
         }
       }
     }
-    label972:
+    label975:
     return true;
   }
   
@@ -983,9 +997,9 @@ public class ApolloSurfaceView
   {
     if (this.mBarrageViewRef != null)
     {
-      alrx localalrx = (alrx)this.mBarrageViewRef.get();
-      if (localalrx != null) {
-        localalrx.a(paramBoolean);
+      amqy localamqy = (amqy)this.mBarrageViewRef.get();
+      if (localamqy != null) {
+        localamqy.a(paramBoolean);
       }
     }
   }
@@ -1004,23 +1018,15 @@ public class ApolloSurfaceView
     }
   }
   
-  public void setBarrageView(alrx paramalrx)
+  public void setBarrageView(amqy paramamqy)
   {
-    this.mBarrageViewRef = new WeakReference(paramalrx);
+    this.mBarrageViewRef = new WeakReference(paramamqy);
   }
   
   public void setBubbleType(int paramInt)
   {
     if (this.mRender != null) {
       this.mRender.setBubbleType(paramInt);
-    }
-  }
-  
-  public void setCanDraw(boolean paramBoolean)
-  {
-    this.mCanDraw = paramBoolean;
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloSurfaceView", 2, new Object[] { "setCanDraw canDraw:", Boolean.valueOf(paramBoolean) });
     }
   }
   
@@ -1043,21 +1049,16 @@ public class ApolloSurfaceView
     }
   }
   
-  public void setGameStatListener(alpe paramalpe)
+  public void setGameStatListener(amnv paramamnv)
   {
     if (this.mApolloWorker != null) {
-      this.mApolloWorker.a(paramalpe);
+      this.mApolloWorker.a(paramamnv);
     }
   }
   
   public void setInitHeight(int paramInt)
   {
     this.mInitHeight = paramInt;
-  }
-  
-  public void setMainLoadingGameMode(boolean paramBoolean)
-  {
-    this.mWaitGameDrawed = paramBoolean;
   }
   
   public void setOnDestroyCloseGame(boolean paramBoolean)
@@ -1106,18 +1107,18 @@ public class ApolloSurfaceView
     if (QLog.isColorLevel()) {
       QLog.d("ApolloSurfaceView", 2, new Object[] { "surfaceChanged h:", Integer.valueOf(paramInt3) });
     }
-    if (alnr.c("surfaceChangeClose") == 0)
+    if (amme.c("surfaceChangeClose") == 0)
     {
       if ((this.mWidth != paramInt2) || (this.mHeight != paramInt3))
       {
         this.mWidth = paramInt2;
         this.mHeight = paramInt3;
-        alpo localalpo = new alpo();
-        localalpo.jdField_a_of_type_Int = paramInt1;
-        localalpo.jdField_a_of_type_AndroidViewSurfaceHolder = paramSurfaceHolder;
-        localalpo.b = paramInt2;
-        localalpo.c = paramInt3;
-        this.mSurfaceCallBackData = localalpo;
+        amoo localamoo = new amoo();
+        localamoo.jdField_a_of_type_Int = paramInt1;
+        localamoo.jdField_a_of_type_AndroidViewSurfaceHolder = paramSurfaceHolder;
+        localamoo.b = paramInt2;
+        localamoo.c = paramInt3;
+        this.mSurfaceCallBackData = localamoo;
         ThreadManagerV2.removeJobFromThreadPool(this.mSurfaceChangeRunnable, 16);
         ThreadManagerV2.excute(this.mSurfaceChangeRunnable, 16, null, false);
       }

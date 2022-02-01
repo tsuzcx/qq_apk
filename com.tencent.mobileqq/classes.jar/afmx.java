@@ -1,13 +1,24 @@
-import com.tencent.mobileqq.activity.aio.doodle.control.ColorPicker;
+import android.os.Bundle;
+import android.os.Looper;
+import com.tencent.mobileqq.activity.activateFriend.ReminderCardItemPage;
+import com.tencent.mobileqq.activity.activateFriend.ReminderCardItemPage.2.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.observer.BusinessObserver;
 
 public class afmx
-  implements afnc
+  implements BusinessObserver
 {
-  public afmx(ColorPicker paramColorPicker, afna paramafna) {}
+  public afmx(ReminderCardItemPage paramReminderCardItemPage) {}
   
-  public void a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorPicker.onClick(this.jdField_a_of_type_Afna.a);
+    paramBundle = new ReminderCardItemPage.2.1(this, paramInt, paramBoolean, paramBundle);
+    if (Looper.myLooper() == Looper.getMainLooper())
+    {
+      paramBundle.run();
+      return;
+    }
+    ReminderCardItemPage.a(this.a).runOnUiThread(paramBundle);
   }
 }
 

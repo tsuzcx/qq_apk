@@ -1,18 +1,33 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.service.lbs.BusinessBuff;
+import java.util.HashMap;
 
-public final class bbkh
-  implements Parcelable.Creator<BusinessBuff>
+public class bbkh
+  extends bbkj
 {
-  public BusinessBuff a(Parcel paramParcel)
+  public long a = 0L;
+  public long b;
+  
+  public bbkh()
   {
-    return new BusinessBuff(paramParcel);
+    this.jdField_b_of_type_Long = -1L;
   }
   
-  public BusinessBuff[] a(int paramInt)
+  public HashMap<String, String> a(String paramString)
   {
-    return new BusinessBuff[paramInt];
+    if ("ShortVideo.FullscreenPreview".equals(paramString))
+    {
+      paramString = new HashMap();
+      paramString.put("param_uinType", this.jdField_b_of_type_Int + "");
+      paramString.put("param_GroupMemberCount", this.c + "");
+      paramString.put("param_age", this.d + "");
+      paramString.put("param_gender", this.e + "");
+      paramString.put("param_shortVideoType", this.f + "");
+      paramString.put("param_duration", this.a + "");
+      paramString.put("param_reportHour", this.g + "");
+      paramString.put("param_netType", this.h + "");
+      paramString.put("param_playTimeCost", this.jdField_b_of_type_Long + "");
+      return paramString;
+    }
+    return null;
   }
 }
 

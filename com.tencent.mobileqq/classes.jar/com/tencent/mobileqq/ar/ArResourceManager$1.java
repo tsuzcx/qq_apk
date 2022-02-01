@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar;
 
-import aodg;
+import apgi;
 
 public class ArResourceManager$1
   implements Runnable
 {
-  public ArResourceManager$1(aodg paramaodg) {}
+  public ArResourceManager$1(apgi paramapgi) {}
   
   public void run()
   {

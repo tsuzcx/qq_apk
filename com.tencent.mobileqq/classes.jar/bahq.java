@@ -1,561 +1,189 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.commonsdk.soload.SoLoadCore;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class bahq
-  implements bahy
 {
-  public static String a;
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = 0L;
-  amwl jdField_a_of_type_Amwl = new bahs(this);
-  private bahk jdField_a_of_type_Bahk;
-  private baht jdField_a_of_type_Baht;
-  private bahu jdField_a_of_type_Bahu;
-  protected bahw a;
-  private bahx jdField_a_of_type_Bahx;
-  private Iterator<bahl> jdField_a_of_type_JavaUtilIterator;
-  private ConcurrentLinkedQueue<bahl> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue;
-  private String b;
+  public static boolean a;
   
-  static
+  public static String a()
   {
-    jdField_a_of_type_JavaLangString = "OrderMediaMsgSessionQueue";
-  }
-  
-  public bahq(String paramString, bahk parambahk)
-  {
-    this.jdField_a_of_type_Bahw = new bahr(this);
-    this.b = paramString;
-    this.jdField_a_of_type_Bahk = parambahk;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-    this.jdField_a_of_type_Bahu = new bahu(this.b);
-    this.jdField_a_of_type_Bahu.a(this.jdField_a_of_type_Bahw);
-    this.jdField_a_of_type_Bahx = new bahx(this);
-  }
-  
-  private MessageRecord a(long paramLong)
-  {
-    Object localObject = null;
-    MessageRecord localMessageRecord = null;
-    if (paramLong != 0L)
+    String str = SoLoadCore.getAppWorkPath(BaseApplicationImpl.sApplication);
+    if (str == null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-      localObject = localMessageRecord;
-      if (localIterator.hasNext())
-      {
-        localObject = (bahl)localIterator.next();
-        if (paramLong != ((bahl)localObject).jdField_a_of_type_Long) {
-          break label67;
-        }
-        localMessageRecord = ((bahl)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      }
-    }
-    label67:
-    for (;;)
-    {
-      break;
-      return localObject;
-    }
-  }
-  
-  private void a(bahl parambahl)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("doNextAddSend ").append(parambahl.jdField_a_of_type_Int).append(", uniseq:").append(parambahl.jdField_a_of_type_Long).append(", addStatus:").append(parambahl.jdField_b_of_type_Int).append(", sendStatus:").append(parambahl.c);
-      QLog.d(jdField_a_of_type_JavaLangString, 2, localStringBuilder.toString());
-    }
-    this.jdField_a_of_type_Bahu.b(parambahl.jdField_a_of_type_Long);
-    if (parambahl.a()) {
-      this.jdField_a_of_type_Bahk.a(parambahl.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-    }
-    if (parambahl.c()) {
-      this.jdField_a_of_type_Bahk.a(parambahl.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, parambahl.jdField_a_of_type_Amwl, parambahl.jdField_a_of_type_Baho);
-    }
-    b();
-    c();
-  }
-  
-  private void b()
-  {
-    Object localObject2;
-    try
-    {
-      localObject2 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-      do
-      {
-        for (;;)
-        {
-          if (!((Iterator)localObject2).hasNext()) {
-            break label325;
-          }
-          bahl localbahl = (bahl)((Iterator)localObject2).next();
-          if (!localbahl.a()) {
-            break;
-          }
-          localbahl.jdField_b_of_type_Int = 2;
-          this.jdField_a_of_type_Bahu.a(localbahl.jdField_a_of_type_Long);
-          this.jdField_a_of_type_Bahk.a(localbahl.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-          if (QLog.isColorLevel())
-          {
-            StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append("success in add ").append(localbahl.jdField_a_of_type_Int).append(", uniseq:").append(localbahl.jdField_a_of_type_Long).append(", path:").append(localbahl.jdField_a_of_type_JavaLangString).append(", status:").append(localbahl.jdField_b_of_type_Int);
-            QLog.d(jdField_a_of_type_JavaLangString, 2, localStringBuilder.toString());
-          }
-          if (localbahl.jdField_a_of_type_JavaLangRunnable != null)
-          {
-            this.jdField_a_of_type_Bahx.a(localbahl.jdField_a_of_type_JavaLangRunnable);
-            localbahl.jdField_a_of_type_JavaLangRunnable = null;
-            if (QLog.isColorLevel()) {
-              QLog.d(jdField_a_of_type_JavaLangString, 2, "remove mAddTimeoutRunable1 uniseq:" + localbahl.jdField_a_of_type_Long);
-            }
-          }
-          if (localbahl.jdField_b_of_type_Boolean)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d(jdField_a_of_type_JavaLangString, 2, "invalid msg:" + localbahl.jdField_a_of_type_Long);
-            }
-            a(localbahl.jdField_a_of_type_Long);
-          }
-        }
-      } while (localObject1.b());
-    }
-    finally {}
-    if (QLog.isColorLevel())
-    {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("not ready to add ").append(localObject1.jdField_a_of_type_Int).append(", path:").append(localObject1.jdField_a_of_type_JavaLangString).append(", mStatus:").append(localObject1.jdField_b_of_type_Int);
-      QLog.d(jdField_a_of_type_JavaLangString, 2, ((StringBuilder)localObject2).toString());
-    }
-    label325:
-  }
-  
-  private void c()
-  {
-    for (;;)
-    {
-      StringBuilder localStringBuilder;
-      try
-      {
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty())
-        {
-          bahp.a(this.jdField_a_of_type_Int, System.currentTimeMillis() - this.jdField_a_of_type_Long);
-          if (this.jdField_a_of_type_Baht != null) {
-            this.jdField_a_of_type_Baht.a(this.b);
-          }
-          this.jdField_a_of_type_Bahx.b();
-          this.jdField_a_of_type_Long = 0L;
-          this.jdField_a_of_type_Int = 0;
-          return;
-        }
-        bahl localbahl = (bahl)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.peek();
-        if (localbahl == null) {
-          continue;
-        }
-        if (localbahl.c())
-        {
-          localbahl.c = 4;
-          this.jdField_a_of_type_Bahx.a();
-          this.jdField_a_of_type_Bahk.a(localbahl.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Amwl, localbahl.jdField_a_of_type_Baho);
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("success in send ").append(localbahl.jdField_a_of_type_Int).append(", uniseq:").append(localbahl.jdField_a_of_type_Long).append(", dest:").append(localbahl.jdField_a_of_type_JavaLangString).append(", status:").append(localbahl.c);
-          QLog.d(jdField_a_of_type_JavaLangString, 2, localStringBuilder.toString());
-          continue;
-        }
-        if (localObject.d()) {
-          continue;
-        }
-      }
-      finally {}
-      if (this.jdField_a_of_type_Bahk.c(localObject.jdField_a_of_type_ComTencentMobileqqDataMessageRecord)) {
-        localObject.jdField_a_of_type_Boolean = true;
-      }
-      boolean bool = this.jdField_a_of_type_Bahx.a(localObject.jdField_a_of_type_Long);
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("not ready to send ").append(localObject.jdField_a_of_type_Int).append(", uniseq:").append(localObject.jdField_a_of_type_Long).append(", dest:").append(localObject.jdField_a_of_type_JavaLangString).append(", status:").append(localObject.c).append(", needCompress:").append(localObject.jdField_a_of_type_Boolean).append(", addSuccess:").append(bool);
-        QLog.d(jdField_a_of_type_JavaLangString, 2, localStringBuilder.toString());
-      }
-    }
-  }
-  
-  public bahl a(long paramLong)
-  {
-    this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-    while (this.jdField_a_of_type_JavaUtilIterator.hasNext())
-    {
-      bahl localbahl = (bahl)this.jdField_a_of_type_JavaUtilIterator.next();
-      if (paramLong == localbahl.jdField_a_of_type_Long)
-      {
-        if (QLog.isColorLevel())
-        {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("removeMediaMsgByUniseq ").append(localbahl.jdField_a_of_type_Int).append(", uniseq:").append(localbahl.jdField_a_of_type_Long);
-          QLog.d(jdField_a_of_type_JavaLangString, 2, localStringBuilder.toString());
-        }
-        this.jdField_a_of_type_JavaUtilIterator.remove();
-        a(localbahl);
-        return localbahl;
-      }
-    }
-    return null;
-  }
-  
-  public bahl a(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-    while (this.jdField_a_of_type_JavaUtilIterator.hasNext())
-    {
-      bahl localbahl = (bahl)this.jdField_a_of_type_JavaUtilIterator.next();
-      if (paramString.equals(localbahl.jdField_a_of_type_JavaLangString))
-      {
-        if (QLog.isColorLevel())
-        {
-          paramString = new StringBuilder();
-          paramString.append("removeMediaMsgByPath ").append(localbahl.jdField_a_of_type_Int).append(", uniseq:").append(localbahl.jdField_a_of_type_Long);
-          QLog.d(jdField_a_of_type_JavaLangString, 2, paramString.toString());
-        }
-        this.jdField_a_of_type_JavaUtilIterator.remove();
-        a(localbahl);
-        return localbahl;
-      }
-    }
-    return null;
-  }
-  
-  public bahu a()
-  {
-    return this.jdField_a_of_type_Bahu;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bahu != null)
-    {
-      this.jdField_a_of_type_Bahu.a();
-      this.jdField_a_of_type_Bahu = null;
-    }
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue != null)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = null;
-    }
-    if (this.jdField_a_of_type_Bahx != null)
-    {
-      this.jdField_a_of_type_Bahx.b();
-      this.jdField_a_of_type_Bahx = null;
-    }
-    this.jdField_a_of_type_Baht = null;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Bahx.a();
-    bahl localbahl = null;
-    if (paramLong != 0L) {
-      if (this.jdField_a_of_type_Bahk.a(a(paramLong))) {
-        localbahl = a(paramLong);
-      }
-    }
-    int i;
-    label53:
-    boolean bool;
-    for (;;)
-    {
-      if (localbahl != null) {
-        if (localbahl.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null)
-        {
-          i = 0;
-          bool = true;
-          label56:
-          bahp.a(i, bool);
-          if (!bool)
-          {
-            int j = this.jdField_a_of_type_Bahk.b(a(paramLong));
-            this.jdField_a_of_type_Bahx.a(paramLong, j, 3);
-          }
-          QLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "timeout!!! send msg:", Long.valueOf(paramLong), " ,invalid:", Boolean.valueOf(bool), " ,msgtype:", Integer.valueOf(i) });
-          return;
-          if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty()) {
-            continue;
-          }
-          localbahl = (bahl)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.peek();
-          if ((localbahl == null) || (!this.jdField_a_of_type_Bahk.a(localbahl.jdField_a_of_type_ComTencentMobileqqDataMessageRecord))) {
-            break label245;
-          }
-        }
-      }
-    }
-    label245:
-    for (localbahl = a(localbahl.jdField_a_of_type_Long);; localbahl = null)
-    {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "uniseq is invalid:", Long.valueOf(paramLong) });
-      break;
-      i = localbahl.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype;
-      break label53;
-      i = -1;
-      bool = false;
-      break label56;
-    }
-  }
-  
-  public void a(long paramLong, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Bahx.a(paramLong);
-    if (paramInt2 == 0)
-    {
-      a(paramLong);
-      QLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "blocking!!! count zero ", Long.valueOf(paramLong) });
-      return;
-    }
-    if (paramInt1 == -1)
-    {
-      paramInt1 = this.jdField_a_of_type_Bahk.b(a(paramLong));
-      this.jdField_a_of_type_Bahx.a(paramLong, paramInt1, paramInt2 - 1);
-      return;
-    }
-    int i = this.jdField_a_of_type_Bahk.b(a(paramLong));
-    if (i > paramInt1)
-    {
-      this.jdField_a_of_type_Bahx.a(paramLong, i, paramInt2);
-      return;
-    }
-    a(paramLong);
-    QLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "blocking!!! progress stuck ", Long.valueOf(paramLong) });
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    if ((paramLong1 == 0L) || (paramLong2 == 0L)) {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "oldSeq and newSeq should not be zero");
+        QLog.i("PttSoLoader", 2, "getFilesDir is null");
       }
+      return "";
     }
-    for (;;)
-    {
-      return;
-      int i;
-      if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty())
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-        for (;;)
-        {
-          if (localIterator.hasNext())
-          {
-            bahl localbahl = (bahl)localIterator.next();
-            if (paramLong1 == localbahl.jdField_a_of_type_Long)
-            {
-              localbahl.jdField_a_of_type_Long = paramLong2;
-              if (localbahl.jdField_a_of_type_JavaLangRunnable != null)
-              {
-                this.jdField_a_of_type_Bahx.a(localbahl.jdField_a_of_type_JavaLangRunnable);
-                localbahl.jdField_a_of_type_JavaLangRunnable = this.jdField_a_of_type_Bahx.a(paramLong2);
-              }
-              if (QLog.isColorLevel())
-              {
-                QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "updateMediaMsgByUniseq old:", Long.valueOf(paramLong1), ", new:", Long.valueOf(paramLong2) });
-                i = 1;
-              }
-            }
-          }
-        }
-      }
-      while (i == 0)
-      {
-        a(paramLong2, "");
-        return;
-        i = 1;
-        continue;
-        i = 0;
-      }
-    }
+    return str + "/UnCompressPttSoTemp/";
   }
   
-  public void a(long paramLong, String paramString)
+  /* Error */
+  public static boolean a(android.content.Context paramContext, String paramString)
   {
-    a(paramLong, paramString, false);
+    // Byte code:
+    //   0: iconst_1
+    //   1: istore 4
+    //   3: invokestatic 60	llq:f	()I
+    //   6: istore_2
+    //   7: invokestatic 63	bahq:b	()Ljava/lang/String;
+    //   10: astore 7
+    //   12: ldc 35
+    //   14: astore 6
+    //   16: iload_2
+    //   17: iconst_2
+    //   18: if_icmple +34 -> 52
+    //   21: new 37	java/lang/StringBuilder
+    //   24: dup
+    //   25: invokespecial 41	java/lang/StringBuilder:<init>	()V
+    //   28: aload 7
+    //   30: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   33: ldc 65
+    //   35: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: aload_1
+    //   39: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: ldc 67
+    //   44: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   47: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   50: astore 6
+    //   52: ldc 27
+    //   54: monitorenter
+    //   55: new 69	java/io/File
+    //   58: dup
+    //   59: aload 6
+    //   61: invokespecial 72	java/io/File:<init>	(Ljava/lang/String;)V
+    //   64: invokevirtual 75	java/io/File:exists	()Z
+    //   67: istore_3
+    //   68: invokestatic 25	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   71: ifeq +38 -> 109
+    //   74: ldc 27
+    //   76: iconst_2
+    //   77: new 37	java/lang/StringBuilder
+    //   80: dup
+    //   81: invokespecial 41	java/lang/StringBuilder:<init>	()V
+    //   84: ldc 77
+    //   86: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   89: aload 6
+    //   91: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   94: ldc 79
+    //   96: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   99: iload_3
+    //   100: invokevirtual 82	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   103: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   106: invokestatic 33	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   109: aload_1
+    //   110: ldc 84
+    //   112: invokevirtual 90	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   115: istore 5
+    //   117: iload 5
+    //   119: ifeq +5 -> 124
+    //   122: iconst_0
+    //   123: istore_3
+    //   124: iload_3
+    //   125: ifeq +116 -> 241
+    //   128: aload 6
+    //   130: invokestatic 95	java/lang/System:load	(Ljava/lang/String;)V
+    //   133: iconst_1
+    //   134: putstatic 97	bahq:a	Z
+    //   137: iload 4
+    //   139: istore_3
+    //   140: ldc 27
+    //   142: monitorexit
+    //   143: getstatic 97	bahq:a	Z
+    //   146: aload_1
+    //   147: invokestatic 103	com/tencent/mobileqq/transfile/PttInfoCollector:reportPttSoUpdate	(ZLjava/lang/String;)V
+    //   150: invokestatic 25	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   153: ifeq +40 -> 193
+    //   156: ldc 27
+    //   158: iconst_2
+    //   159: new 37	java/lang/StringBuilder
+    //   162: dup
+    //   163: invokespecial 41	java/lang/StringBuilder:<init>	()V
+    //   166: ldc 105
+    //   168: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   171: aload 6
+    //   173: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   176: ldc 107
+    //   178: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   181: getstatic 97	bahq:a	Z
+    //   184: invokevirtual 82	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   187: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   190: invokestatic 33	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   193: iload_3
+    //   194: ireturn
+    //   195: astore 7
+    //   197: invokestatic 25	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   200: ifeq +32 -> 232
+    //   203: ldc 27
+    //   205: iconst_2
+    //   206: new 37	java/lang/StringBuilder
+    //   209: dup
+    //   210: invokespecial 41	java/lang/StringBuilder:<init>	()V
+    //   213: ldc 109
+    //   215: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   218: aload 7
+    //   220: invokevirtual 112	java/lang/UnsatisfiedLinkError:getMessage	()Ljava/lang/String;
+    //   223: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   226: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   229: invokestatic 33	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   232: aload_0
+    //   233: aload_1
+    //   234: invokestatic 117	com/tencent/commonsdk/soload/SoLoadUtilNew:loadSoByName	(Landroid/content/Context;Ljava/lang/String;)Z
+    //   237: istore_3
+    //   238: goto -98 -> 140
+    //   241: invokestatic 25	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   244: ifeq +11 -> 255
+    //   247: ldc 27
+    //   249: iconst_2
+    //   250: ldc 119
+    //   252: invokestatic 33	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   255: aload_0
+    //   256: aload_1
+    //   257: invokestatic 117	com/tencent/commonsdk/soload/SoLoadUtilNew:loadSoByName	(Landroid/content/Context;Ljava/lang/String;)Z
+    //   260: istore_3
+    //   261: goto -121 -> 140
+    //   264: astore_0
+    //   265: ldc 27
+    //   267: monitorexit
+    //   268: aload_0
+    //   269: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	270	0	paramContext	android.content.Context
+    //   0	270	1	paramString	String
+    //   6	13	2	i	int
+    //   67	194	3	bool1	boolean
+    //   1	137	4	bool2	boolean
+    //   115	3	5	bool3	boolean
+    //   14	158	6	str1	String
+    //   10	19	7	str2	String
+    //   195	24	7	localUnsatisfiedLinkError	java.lang.UnsatisfiedLinkError
+    // Exception table:
+    //   from	to	target	type
+    //   128	137	195	java/lang/UnsatisfiedLinkError
+    //   55	109	264	finally
+    //   109	117	264	finally
+    //   128	137	264	finally
+    //   140	143	264	finally
+    //   197	232	264	finally
+    //   232	238	264	finally
+    //   241	255	264	finally
+    //   255	261	264	finally
+    //   265	268	264	finally
   }
   
-  public void a(long paramLong, String paramString, boolean paramBoolean)
+  public static String b()
   {
-    Object localObject = new bahl();
-    ((bahl)localObject).jdField_a_of_type_Long = paramLong;
-    ((bahl)localObject).jdField_a_of_type_JavaLangString = paramString;
-    ((bahl)localObject).jdField_b_of_type_Boolean = paramBoolean;
-    int i = this.jdField_a_of_type_Int + 1;
-    this.jdField_a_of_type_Int = i;
-    ((bahl)localObject).jdField_a_of_type_Int = i;
-    ((bahl)localObject).jdField_b_of_type_Int = 0;
-    ((bahl)localObject).c = 0;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.offer(localObject);
-    if (paramLong != 0L) {}
-    for (((bahl)localObject).jdField_a_of_type_JavaLangRunnable = this.jdField_a_of_type_Bahx.a(paramLong);; ((bahl)localObject).jdField_a_of_type_JavaLangRunnable = this.jdField_a_of_type_Bahx.a(paramString))
+    String str = SoLoadCore.getAppWorkPath(BaseApplicationImpl.sApplication);
+    if (str == null)
     {
-      if (this.jdField_a_of_type_Long == 0L) {
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
+      if (QLog.isColorLevel()) {
+        QLog.i("PttSoLoader", 2, "getFilesDir is null");
       }
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("enqueueMediaMsg msgSize:").append(this.jdField_a_of_type_Int).append(", uniseq:").append(paramLong).append(", path:").append(paramString).append(", queue:").append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
-        QLog.d(jdField_a_of_type_JavaLangString, 2, ((StringBuilder)localObject).toString());
-      }
-      return;
+      return "";
     }
-  }
-  
-  public void a(baht parambaht)
-  {
-    this.jdField_a_of_type_Baht = parambaht;
-  }
-  
-  public void a(MessageRecord paramMessageRecord, long paramLong, String paramString, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("addOrderMsgRecord").append(" uniseq:").append(paramLong).append(", path:").append(paramString).append(", realadd:").append(paramBoolean);
-      QLog.d(jdField_a_of_type_JavaLangString, 2, ((StringBuilder)localObject).toString());
-    }
-    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-    bahl localbahl;
-    if (((Iterator)localObject).hasNext())
-    {
-      localbahl = (bahl)((Iterator)localObject).next();
-      if ((localbahl.jdField_a_of_type_Long == 0L) || (paramLong != localbahl.jdField_a_of_type_Long)) {
-        break label217;
-      }
-      localbahl.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
-      if (!paramBoolean) {
-        break label145;
-      }
-      localbahl.jdField_b_of_type_Int = 1;
-    }
-    for (;;)
-    {
-      if (paramBoolean) {
-        b();
-      }
-      return;
-      label145:
-      localbahl.jdField_b_of_type_Int = 2;
-      if (localbahl.jdField_a_of_type_JavaLangRunnable != null)
-      {
-        this.jdField_a_of_type_Bahx.a(localbahl.jdField_a_of_type_JavaLangRunnable);
-        localbahl.jdField_a_of_type_JavaLangRunnable = null;
-        if (QLog.isColorLevel())
-        {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "remove mAddTimeoutRunable2 uniseq:" + localbahl.jdField_a_of_type_Long);
-          continue;
-          label217:
-          if ((localbahl.jdField_a_of_type_Long != 0L) || (TextUtils.isEmpty(paramString)) || (!paramString.equals(localbahl.jdField_a_of_type_JavaLangString))) {
-            break;
-          }
-          localbahl.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
-          localbahl.jdField_a_of_type_Long = paramLong;
-          if (paramBoolean)
-          {
-            localbahl.jdField_b_of_type_Int = 1;
-          }
-          else
-          {
-            localbahl.jdField_b_of_type_Int = 2;
-            if (localbahl.jdField_a_of_type_JavaLangRunnable != null)
-            {
-              this.jdField_a_of_type_Bahx.a(localbahl.jdField_a_of_type_JavaLangRunnable);
-              localbahl.jdField_a_of_type_JavaLangRunnable = null;
-              if (QLog.isColorLevel()) {
-                QLog.d(jdField_a_of_type_JavaLangString, 2, "remove mAddTimeoutRunable3 uniseq:" + localbahl.jdField_a_of_type_Long);
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  public void a(MessageRecord paramMessageRecord, amwl paramamwl, baho parambaho)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "sendOrderMsgRecord:" + paramMessageRecord.uniseq);
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-    while (localIterator.hasNext())
-    {
-      bahl localbahl = (bahl)localIterator.next();
-      if (paramMessageRecord.uniseq == localbahl.jdField_a_of_type_Long)
-      {
-        localbahl.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
-        localbahl.jdField_a_of_type_Amwl = paramamwl;
-        localbahl.jdField_a_of_type_Baho = parambaho;
-        localbahl.c = 3;
-        if (QLog.isColorLevel())
-        {
-          paramMessageRecord = new StringBuilder();
-          paramMessageRecord.append("ready to send ").append(localbahl.jdField_a_of_type_Int).append(", uniseq:").append(localbahl.jdField_a_of_type_Long).append(", addStatus:").append(localbahl.jdField_b_of_type_Int).append(", sendStatus:").append(localbahl.c);
-          QLog.d(jdField_a_of_type_JavaLangString, 2, paramMessageRecord.toString());
-        }
-      }
-    }
-    c();
-  }
-  
-  public void a(Object paramObject)
-  {
-    bahl localbahl = null;
-    int i;
-    if ((paramObject instanceof Long))
-    {
-      localbahl = a(((Long)paramObject).longValue());
-      i = 1;
-    }
-    for (;;)
-    {
-      if ((localbahl != null) && (localbahl.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null)) {}
-      for (int j = localbahl.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype;; j = -1)
-      {
-        bahp.a(j, i);
-        QLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "timeout!!! add msg:", paramObject, " ,msgtype:", Integer.valueOf(j) });
-        return;
-        if (!(paramObject instanceof String)) {
-          break label114;
-        }
-        localbahl = a((String)paramObject);
-        i = 2;
-        break;
-      }
-      label114:
-      i = 0;
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty();
-  }
-  
-  public boolean a(long paramLong, String paramString)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-    while (localIterator.hasNext())
-    {
-      bahl localbahl = (bahl)localIterator.next();
-      if ((localbahl.jdField_a_of_type_Long != 0L) && (paramLong == localbahl.jdField_a_of_type_Long)) {
-        return true;
-      }
-      if ((localbahl.jdField_a_of_type_Long == 0L) && (!TextUtils.isEmpty(paramString)) && (paramString.equals(localbahl.jdField_a_of_type_JavaLangString))) {
-        return true;
-      }
-    }
-    return false;
+    return str + "/txPttlib/";
   }
 }
 

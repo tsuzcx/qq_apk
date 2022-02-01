@@ -1,28 +1,54 @@
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.nearby.NearbyReportManager.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.Manager;
+
 public class axqa
+  implements Manager
 {
-  public int a = 0;
-  public String a;
+  bkyb<axqb> jdField_a_of_type_Bkyb = new bkyb();
+  NearbyAppInterface jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
   public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public boolean d;
-  public int e = 1;
   
-  public axqa()
+  public axqa(NearbyAppInterface paramNearbyAppInterface)
   {
-    this.jdField_b_of_type_Int = 3;
-    this.jdField_c_of_type_Int = 1000;
-    this.jdField_d_of_type_Int = 1;
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = paramNearbyAppInterface;
   }
   
-  public String toString()
+  public void a()
   {
-    StringBuilder localStringBuilder = new StringBuilder(256);
-    localStringBuilder.append("allUseInSimple_2=").append(this.jdField_b_of_type_Boolean).append(", bgUseInSimple_2=").append(this.jdField_c_of_type_Boolean).append(", cfgUse_argb8888=").append(this.jdField_d_of_type_Boolean).append(", networkControl=").append(this.a).append(", dailyRetryTimes=").append(this.jdField_b_of_type_Int).append(", countRetryTimes=").append(this.jdField_c_of_type_Int).append(", entranceControl=").append(this.jdField_d_of_type_Int).append(", autoPreDownload=").append(this.e);
-    return localStringBuilder.toString();
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyReportManager", 2, "report");
+    }
+    bkyb localbkyb = this.jdField_a_of_type_Bkyb.a();
+    anzr localanzr = (anzr)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(axoc.c);
+    boolean bool = this.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Bkyb.a();
+    ThreadManager.post(new NearbyReportManager.1(this, localbkyb, localanzr, bool), 5, null, false);
+  }
+  
+  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3)
+  {
+    axqb localaxqb = (axqb)this.jdField_a_of_type_Bkyb.a(paramLong);
+    if (localaxqb == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("NearbyReportManager", 2, "updateRecord ,not exist!! tinyID = " + paramLong);
+      }
+      return;
+    }
+    localaxqb.c += 1;
+    localaxqb.d += paramInt1;
+    if (paramInt2 > localaxqb.e) {
+      localaxqb.e = paramInt2;
+    }
+    localaxqb.f |= paramInt3;
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_Bkyb.a();
   }
 }
 

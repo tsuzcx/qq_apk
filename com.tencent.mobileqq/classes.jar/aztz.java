@@ -1,30 +1,40 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import java.lang.ref.WeakReference;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.publishInterface.QzonePublishMoodCallback;
 
 public class aztz
-  implements View.OnLongClickListener
+  implements QzonePublishMoodCallback
 {
-  private WeakReference<ReceiptMessageDetailFragment> a;
+  public aztz(StickyNotePublishFragment paramStickyNotePublishFragment) {}
   
-  private aztz(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
+  public void onResult(boolean paramBoolean, int paramInt, String paramString)
   {
-    this.a = new WeakReference(paramReceiptMessageDetailFragment);
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    paramView = (ReceiptMessageDetailFragment)this.a.get();
-    if ((paramView == null) || (!paramView.isAdded())) {
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("StickyNotePublishFragment", 2, String.format("publishStickyNote onResult success=%s resultCode=%s resultMsg=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), paramString }));
     }
-    bjnw localbjnw = bjnw.a(paramView.getActivity());
-    localbjnw.b(2131691176);
-    localbjnw.c(2131690620);
-    localbjnw.a(new azua(this, paramView, localbjnw));
-    localbjnw.show();
-    return true;
+    if ((StickyNotePublishFragment.a(this.a) != null) && (StickyNotePublishFragment.a(this.a).isShowing())) {
+      StickyNotePublishFragment.a(this.a).dismiss();
+    }
+    if (paramBoolean)
+    {
+      QQToast.a(BaseApplication.context, 2, 2131698754, 0).a();
+      if (this.a.getActivity() != null)
+      {
+        StickyNotePublishFragment.b(this.a, false);
+        this.a.a(this.a.getActivity().app);
+        this.a.getActivity().setResult(-1);
+        this.a.getActivity().finish();
+      }
+      return;
+    }
+    int i = 2131698752;
+    if (paramInt == aztr.b) {
+      i = 2131698753;
+    }
+    QQToast.a(BaseApplication.context, 1, i, 0).a();
   }
 }
 

@@ -1,44 +1,24 @@
-import android.app.Dialog;
-import android.os.Handler;
-import java.util.HashMap;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.MessageForTofuNicePics;
 
 class ahki
-  extends binf
+  extends afos
 {
-  ahki(ahiu paramahiu) {}
+  public long a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  MessageForTofuNicePics jdField_a_of_type_ComTencentMobileqqDataMessageForTofuNicePics;
+  public String a;
+  View jdField_b_of_type_AndroidViewView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  View jdField_c_of_type_AndroidViewView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  TextView d;
   
-  protected void f(boolean paramBoolean, HashMap<String, Object> paramHashMap)
-  {
-    if ((!paramBoolean) || (paramHashMap == null))
-    {
-      this.a.e(2);
-      this.a.a.sendEmptyMessageDelayed(10, 3000L);
-      return;
-    }
-    if (((Integer)paramHashMap.get("result")).intValue() == 0)
-    {
-      this.a.e(1);
-      this.a.a.sendEmptyMessageDelayed(10, 3000L);
-      return;
-    }
-    this.a.w = true;
-    this.a.q();
-    if ((ahiu.a(this.a) != null) && (ahiu.a(this.a).isShowing())) {
-      ahiu.a(this.a).dismiss();
-    }
-    this.a.r();
-  }
-  
-  protected void g(boolean paramBoolean, HashMap<String, Object> paramHashMap)
-  {
-    if ((!paramBoolean) || (paramHashMap == null)) {
-      return;
-    }
-    this.a.z = true;
-    this.a.y = ((Boolean)paramHashMap.get("result")).booleanValue();
-    this.a.q();
-    this.a.r();
-  }
+  ahki(ahkh paramahkh) {}
 }
 
 

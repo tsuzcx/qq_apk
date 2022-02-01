@@ -1,26 +1,26 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
+import android.graphics.Bitmap;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
+import com.tencent.webbundle.sdk.IWebBundleWebView.OnPageFinishedListener;
+import cooperation.comic.webbundle.WebBundleWebView;
 
 public class blsu
-  extends RecyclerView.ViewHolder
+  extends WebViewClient
 {
-  public ImageView a;
+  public blsu(WebBundleWebView paramWebBundleWebView, IWebBundleWebView.OnPageFinishedListener paramOnPageFinishedListener) {}
   
-  public blsu(View paramView)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    super(paramView);
-    this.a = ((ImageView)paramView.findViewById(2131378584));
+    super.onPageFinished(paramWebView, paramString);
+    this.jdField_a_of_type_ComTencentWebbundleSdkIWebBundleWebView$OnPageFinishedListener.onPageFinished(this.jdField_a_of_type_CooperationComicWebbundleWebBundleWebView, paramString);
   }
   
-  public void a()
+  @Override
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    this.a.setImageResource(2130845849);
-  }
-  
-  public void b()
-  {
-    this.a.setImageResource(2130845850);
+    JsInjector.getInstance().onPageStarted(paramWebView);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
   }
 }
 

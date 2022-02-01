@@ -8,9 +8,9 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import blyb;
-import blyk;
-import bmbx;
+import bnnl;
+import bnnu;
+import bnrh;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import dov.com.qq.im.BaseVMPeakActivity;
 import dov.com.qq.im.ae.SessionWrap;
@@ -59,7 +59,7 @@ public class AEStoryGIFPreviewActivity
   {
     this.mActNeedImmersive = false;
     super.onCreate(paramBundle);
-    setContentView(2131558574);
+    setContentView(2131558586);
     paramBundle = getIntent().getStringExtra("KEY_PREVIEW_SOURCE_PATH");
     getIntent().getIntExtra("AECAMERA_MODE", 200);
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("KEY_MATERIAL_APPLIED", false);
@@ -72,16 +72,16 @@ public class AEStoryGIFPreviewActivity
       this.b = getIntent().getStringExtra("KEY_FONT_ID");
     }
     FragmentManager localFragmentManager = getFragmentManager();
-    bmbx.a("BaseActivity2", "[onCreate], materialApplied=" + this.jdField_a_of_type_Boolean + ", materialId=" + this.jdField_a_of_type_JavaLangString);
+    bnrh.a("BaseActivity2", "[onCreate], materialApplied=" + this.jdField_a_of_type_Boolean + ", materialId=" + this.jdField_a_of_type_JavaLangString);
     if ((!this.jdField_a_of_type_Boolean) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      if (localFragmentManager.findFragmentByTag(blyb.class.getSimpleName()) == null) {
-        localFragmentManager.beginTransaction().add(2131367134, blyb.a(paramBundle, l, this.b), blyb.class.getSimpleName()).commit();
+      if (localFragmentManager.findFragmentByTag(bnnl.class.getSimpleName()) == null) {
+        localFragmentManager.beginTransaction().add(2131367252, bnnl.a(paramBundle, l, this.b), bnnl.class.getSimpleName()).commit();
       }
     }
-    while (localFragmentManager.findFragmentByTag(blyk.class.getSimpleName()) != null) {
+    while (localFragmentManager.findFragmentByTag(bnnu.class.getSimpleName()) != null) {
       return;
     }
-    localFragmentManager.beginTransaction().add(2131367134, blyk.a(paramBundle, Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_JavaLangString, this.c, this.jdField_a_of_type_DovComQqImAeSessionWrap, bool, this.b), blyk.class.getSimpleName()).commit();
+    localFragmentManager.beginTransaction().add(2131367252, bnnu.a(paramBundle, Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_JavaLangString, this.c, this.jdField_a_of_type_DovComQqImAeSessionWrap, bool, this.b), bnnu.class.getSimpleName()).commit();
   }
 }
 

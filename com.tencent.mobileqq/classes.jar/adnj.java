@@ -1,34 +1,33 @@
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.QQPermissionCallback;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class adnj
-  implements QQPermissionCallback
+public final class adnj
+  implements DialogInterface.OnClickListener
 {
-  public adnj(JumpActivity paramJumpActivity, boolean paramBoolean) {}
+  public adnj(long paramLong, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, String paramString, boolean paramBoolean1, adnm paramadnm, Bundle paramBundle, boolean paramBoolean2) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.i("JumpAction", 1, "system share.doShare denied sd grant");
-    bfur.a(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, new adnk(this));
-    paramArrayOfString = new HashMap();
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "noSDPermissionShareDeny", true, 0L, 0L, paramArrayOfString, "");
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.i("JumpAction", 1, "system share.doShare user grant");
-    JumpActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, this.jdField_a_of_type_Boolean);
-    paramArrayOfString = new HashMap();
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "noSDPermissionShareGrant", true, 0L, 0L, paramArrayOfString, "");
+    boolean bool = false;
+    paramDialogInterface = ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext);
+    if (paramInt == 1)
+    {
+      ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramDialogInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Adnm, this.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
+    if (!this.b) {
+      bool = true;
+    }
+    ChatActivityUtils.a(paramDialogInterface, bool, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adnj
  * JD-Core Version:    0.7.0.1
  */

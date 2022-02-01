@@ -1,39 +1,38 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.content.Intent;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
 
-class bevb
-  extends aiin<betu>
+public class bevb
+  extends BroadcastReceiver
 {
-  bevb(beuy parambeuy, Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-  }
+  public bevb(AbsPublishActivity paramAbsPublishActivity) {}
   
-  protected aiix a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramViewGroup = LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false);
-    paramContext = new bevh(paramContext, paramViewGroup);
-    paramContext.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131377360));
-    paramContext.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131377361));
-    paramContext.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramViewGroup.findViewById(2131377364));
-    paramContext.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131377365));
-    return paramContext;
-  }
-  
-  protected void a(aiix paramaiix, betu parambetu, int paramInt)
-  {
-    beuy.a(this.a, paramaiix, parambetu, paramInt);
+    paramContext = paramIntent.getAction();
+    if ("key_photo_delete_action".equals(paramContext))
+    {
+      int i = paramIntent.getIntExtra("key_photo_delete_position", -1);
+      this.a.a(i, 9);
+    }
+    do
+    {
+      return;
+      if ("key_audio_delete_action".equals(paramContext))
+      {
+        this.a.a(0);
+        this.a.a = null;
+        bgip.a(this.a.o, this.a.p, "del_record", this.a.q, this.a.b, "", "");
+        return;
+      }
+    } while (!"key_audio_play_action".equals(paramContext));
+    bgip.a(this.a.o, this.a.p, "preview_record", this.a.q, this.a.b, "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bevb
  * JD-Core Version:    0.7.0.1
  */

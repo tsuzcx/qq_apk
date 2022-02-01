@@ -1,15 +1,25 @@
 import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.location.ui.LocationMapWidget;
 
-final class awkm
-  implements axhl
+public class awkm
+  implements azfb
 {
-  awkm(Activity paramActivity, QQAppInterface paramQQAppInterface) {}
+  public awkm(LocationMapWidget paramLocationMapWidget) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    awkl.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1);
+    LocationMapWidget.a(this.a).finish();
+  }
+  
+  public void a(azex paramazex, Double paramDouble, boolean paramBoolean)
+  {
+    LocationMapWidget localLocationMapWidget = this.a;
+    if (paramazex == null) {}
+    for (paramazex = null;; paramazex = paramazex.a)
+    {
+      localLocationMapWidget.a(paramazex, paramDouble, paramBoolean);
+      return;
+    }
   }
 }
 

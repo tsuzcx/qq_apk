@@ -1,23 +1,40 @@
-import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.playvideo.playerwidget.StoryPlayerWebFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
-public abstract interface xpl
+public class xpl
+  extends BroadcastReceiver
 {
-  public abstract void a();
+  public xpl(StoryPlayerWebFragment paramStoryPlayerWebFragment) {}
   
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
-  
-  public abstract void a(@NonNull Activity paramActivity);
-  
-  public abstract void a(Bundle paramBundle1, Bundle paramBundle2);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    ykq.a("StoryPlayerWebFragment", "onReceive() Action: %s", paramIntent.getAction());
+    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction()))
+    {
+      paramContext = paramIntent.getStringExtra("event");
+      ykq.a("StoryPlayerWebFragment", "onReceive() Event: %s", paramContext);
+      if (!"closeMeEvent".equals(paramContext)) {
+        break label70;
+      }
+      if (this.a.a != null) {
+        this.a.a.a();
+      }
+    }
+    label70:
+    do
+    {
+      return;
+      if (!"readyEvent".equals(paramContext)) {
+        break;
+      }
+    } while (this.a.a == null);
+    this.a.a.b();
+    return;
+    QQToast.a(this.a.getActivity(), 1, "unknown event: " + paramContext, 1).a();
+  }
 }
 
 

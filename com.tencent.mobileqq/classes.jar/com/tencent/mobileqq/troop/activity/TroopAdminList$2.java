@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.troop.activity;
 
 import android.text.TextUtils;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.ContactUtils;
@@ -29,8 +30,8 @@ class TroopAdminList$2
       }
       i += 1;
     }
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler = ((FriendListHandler)this.this$0.app.getBusinessHandler(1));
-    this.this$0.addObserver(this.this$0.jdField_a_of_type_Amsu);
+    this.this$0.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler = ((FriendListHandler)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER));
+    this.this$0.addObserver(this.this$0.jdField_a_of_type_Anvi);
     this.this$0.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.getFriendsInfo(this.this$0.jdField_a_of_type_ArrayOfJavaLangString);
     this.this$0.runOnUiThread(new TroopAdminList.2.1(this));
   }

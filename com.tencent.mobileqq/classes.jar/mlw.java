@@ -1,52 +1,20 @@
-import android.os.Handler;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.av.ui.beauty.BeautySeekView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.av.ui.VideoLayerUI;
 
 public class mlw
-  implements SeekBar.OnSeekBarChangeListener
+  implements lso
 {
-  public mlw(BeautySeekView paramBeautySeekView) {}
+  public mlw(VideoLayerUI paramVideoLayerUI, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void a()
   {
-    if (BeautySeekView.a(this.a) != paramInt)
-    {
-      BeautySeekView.a(this.a, paramInt);
-      if ((paramBoolean) && (BeautySeekView.a(this.a) != null)) {
-        BeautySeekView.a(this.a).setContentDescription(paramInt + "%");
-      }
-      BeautySeekView.a(this.a, paramInt);
-      BeautySeekView.b(this.a, BeautySeekView.a(this.a));
-    }
-    if (BeautySeekView.a(this.a) != null) {
-      BeautySeekView.a(this.a).a(BeautySeekView.a(this.a), 2, paramInt);
-    }
-  }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    BeautySeekView.a(this.a).removeCallbacks(this.a.a);
-    BeautySeekView.a(this.a).setVisibility(0);
-    if (BeautySeekView.a(this.a) != null) {
-      BeautySeekView.a(this.a).a(BeautySeekView.a(this.a), 1, BeautySeekView.a(this.a));
-    }
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    BeautySeekView.a(this.a).postDelayed(this.a.a, 300L);
-    if (BeautySeekView.a(this.a) != null) {
-      BeautySeekView.a(this.a).a(BeautySeekView.a(this.a), 3, BeautySeekView.a(this.a));
-    }
-    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
+    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a[this.jdField_a_of_type_Int].c(this.b);
+    VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, 0L);
+    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.c(this.c, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mlw
  * JD-Core Version:    0.7.0.1
  */

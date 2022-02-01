@@ -1,20 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.TopayManager.5.1;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.activity.home.Conversation.15;
 
 public class ajxf
-  implements DialogInterface.OnClickListener
+  implements bdjm
 {
-  public ajxf(TopayManager.5.1 param1) {}
+  public ajxf(Conversation.15 param15) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    paramDialogInterface.dismiss();
+    this.a.this$0.o();
   }
 }
 

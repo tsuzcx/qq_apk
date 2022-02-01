@@ -14,8 +14,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
-import ohh;
-import oia;
+import opa;
+import opw;
 
 public class MinusViewBotomView
   extends FrameLayout
@@ -36,32 +36,32 @@ public class MinusViewBotomView
   
   private void a(Context paramContext)
   {
-    setBackgroundColor(paramContext.getResources().getColor(2131167337));
+    setBackgroundColor(paramContext.getResources().getColor(2131167363));
     this.a = new Button(paramContext);
     addView(this.a);
     this.a.getLayoutParams().width = -1;
     this.a.getLayoutParams().height = UIUtils.dip2px(paramContext, 45.0F);
-    this.a.setBackgroundResource(2130842692);
-    this.a.setTextColor(paramContext.getResources().getColor(2131167337));
+    this.a.setBackgroundResource(2130842722);
+    this.a.setTextColor(paramContext.getResources().getColor(2131167363));
     this.a.setTextSize(1, 17.0F);
     int i = UIUtils.dip2px(getContext(), 16.0F);
     setPadding(i, i, i, i);
   }
   
-  public void setBtnText(ohh paramohh)
+  public void setBtnText(opa paramopa)
   {
-    if ((this.a == null) || (paramohh == null) || (getContext() == null))
+    if ((this.a == null) || (paramopa == null) || (getContext() == null))
     {
       QLog.i("MinusViewBotomView", 2, "params error!!");
       return;
     }
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     MessageRecord localMessageRecord = localQQAppInterface.getMessageFacade().getLastMsgForMsgTab("3046055438", 1008);
-    if (StringUtil.isEmpty(paramohh.a)) {}
-    for (paramohh = getContext().getString(2131691723);; paramohh = paramohh.a)
+    if (StringUtil.isEmpty(paramopa.a)) {}
+    for (paramopa = getContext().getString(2131691811);; paramopa = paramopa.a)
     {
-      this.a.setText(paramohh);
-      this.a.setOnClickListener(new oia(this, localQQAppInterface, localMessageRecord));
+      this.a.setText(paramopa);
+      this.a.setOnClickListener(new opw(this, localQQAppInterface, localMessageRecord));
       return;
     }
   }

@@ -1,24 +1,24 @@
 package com.tencent.biz.webviewplugin;
 
-import aabd;
-import amtj;
-import bhht;
+import aaqp;
+import anvx;
+import bisl;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
 public class NewReportPlugin$2$1
   implements Runnable
 {
-  public NewReportPlugin$2$1(aabd paramaabd) {}
+  public NewReportPlugin$2$1(aaqp paramaaqp) {}
   
   public void run()
   {
     try
     {
-      if (this.this$0.jdField_a_of_type_Bhht.isShowing()) {
-        this.this$0.jdField_a_of_type_Bhht.dismiss();
+      if (this.this$0.jdField_a_of_type_Bisl.isShowing()) {
+        this.this$0.jdField_a_of_type_Bisl.dismiss();
       }
-      QQToast.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2, amtj.a(2131706667), 0).a();
+      QQToast.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2, anvx.a(2131707019), 0).a();
       return;
     }
     catch (Exception localException)

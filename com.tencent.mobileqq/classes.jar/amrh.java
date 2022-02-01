@@ -1,9 +1,19 @@
-import com.tencent.mobileqq.app.BusinessObserver;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.apollo.data.ApolloDress.Dress;
 
-public class amrh
-  implements BusinessObserver
+public final class amrh
+  implements Parcelable.Creator<ApolloDress.Dress>
 {
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
+  public ApolloDress.Dress a(Parcel paramParcel)
+  {
+    return new ApolloDress.Dress(paramParcel);
+  }
+  
+  public ApolloDress.Dress[] a(int paramInt)
+  {
+    return new ApolloDress.Dress[paramInt];
+  }
 }
 
 

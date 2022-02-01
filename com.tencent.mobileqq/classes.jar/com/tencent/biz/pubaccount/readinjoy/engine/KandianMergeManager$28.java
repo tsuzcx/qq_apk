@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import acvv;
+import admh;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.AppConstants;
@@ -16,7 +16,7 @@ class KandianMergeManager$28
     SessionInfo localSessionInfo = new SessionInfo();
     localSessionInfo.curFriendUin = AppConstants.NEW_KANDIAN_UIN;
     localSessionInfo.curType = 1008;
-    acvv.a(KandianMergeManager.a(this.this$0), localSessionInfo);
+    admh.a(KandianMergeManager.a(this.this$0), localSessionInfo);
     KandianMergeManager.a(this.this$0).getMessageFacade().setReaded(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, false, false);
   }
 }

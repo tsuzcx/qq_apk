@@ -1,12 +1,27 @@
-public abstract interface uxm
+import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+
+public class uxm
+  implements vtb
 {
-  public abstract void a();
+  public uxm(WSHomeFragment paramWSHomeFragment) {}
   
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void a(vta paramvta)
+  {
+    if (paramvta != null) {}
+    switch (paramvta.a)
+    {
+    default: 
+      return;
+    case 2131720137: 
+      WSPublicAccReport.getInstance().reportNotificationClick(WSHomeFragment.a, WSHomeFragment.b(this.a));
+      WSHomeFragment.b(this.a);
+      ((vic)this.a.b()).a(this.a.getActivity(), 602);
+      return;
+    }
+    WSPublicAccReport.getInstance().reportPersonHomeClick(WSHomeFragment.a, WSHomeFragment.b(this.a));
+    ((vic)this.a.b()).a(this.a.getActivity());
+  }
 }
 
 

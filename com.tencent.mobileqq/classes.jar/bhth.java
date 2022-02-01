@@ -1,32 +1,44 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-import com.tencent.open.agent.OpenCardContainer;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
 
-public class bhth
-  extends Handler
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/troopnick/shop/adapter/TroopNickAuthRequest$Companion;", "", "()V", "AUTH_CMD", "", "AUTH_SERVANT_NAME", "buy", "", "context", "Landroid/content/Context;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bhth
 {
-  public bhth(OpenCardContainer paramOpenCardContainer, Looper paramLooper)
+  @JvmStatic
+  public final void a(@NotNull Context paramContext)
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
+    Intrinsics.checkParameterIsNotNull(paramContext, "context");
+    Object localObject1 = new JSONObject();
+    ((JSONObject)localObject1).put("mode", "common");
+    ((JSONObject)localObject1).put("businessType", "100");
+    ((JSONObject)localObject1).put("itemId", "403_b53acf98");
+    ((JSONObject)localObject1).put("buyNum", 1);
+    ((JSONObject)localObject1).put("sandbox", 0);
+    ((JSONObject)localObject1).put("aid", "mvip.g.a.qnc_20rx");
+    ((JSONObject)localObject1).put("baseUrl", "https://zb.vip.qq.com/v2");
+    localObject1 = ((JSONObject)localObject1).toString();
+    if ((localObject1 != null) && (localObject1 != null)) {}
     for (;;)
     {
-      super.handleMessage(paramMessage);
+      Intrinsics.checkExpressionValueIsNotNull(localObject1, "JSONObject().let {\n     …ULT);\n            } ?: \"\"");
+      Object localObject2 = "https://h5.vip.qq.com/p/pay/vippaylogic.html?vipPayLogicParams=" + (String)localObject1;
+      localObject1 = new Intent(paramContext, QQTranslucentBrowserActivity.class);
+      ((Intent)localObject1).putExtra("url", (String)localObject2);
+      localObject2 = new Bundle();
+      ((Bundle)localObject2).putBoolean("hide_left_button", true);
+      ((Bundle)localObject2).putBoolean("hide_more_button", true);
+      ((Intent)localObject1).putExtras((Bundle)localObject2);
+      ((Intent)localObject1).setFlags(268435456);
+      paramContext.startActivity((Intent)localObject1);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("SDK_LOGIN.OpenCardContainer", 2, "-->handleMessage MSG_UPDATE");
-      }
-      OpenCardContainer.a(this.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageDrawable(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      localObject1 = "";
     }
   }
 }

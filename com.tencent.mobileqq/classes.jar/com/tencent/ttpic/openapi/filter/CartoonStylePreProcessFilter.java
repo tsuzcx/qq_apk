@@ -729,8 +729,8 @@ public class CartoonStylePreProcessFilter
       this.eyelash = paramCartoonFaceLine.eyelash;
       this.nostril = paramCartoonFaceLine.nostril;
       this.eyeBorder = paramCartoonFaceLine.eyeBorder;
-      this.eye_center_shift_l = paramCartoonFaceLine.eye_center_shift_l;
-      this.eye_center_shift_r = paramCartoonFaceLine.eye_center_shift_r;
+      this.eye_center_shift_l = paramCartoonFaceLine.eyeCenterShiftL;
+      this.eye_center_shift_r = paramCartoonFaceLine.eyeCenterShiftR;
     }
     if (paramList == null)
     {

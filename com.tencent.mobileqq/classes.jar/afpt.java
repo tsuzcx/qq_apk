@@ -1,24 +1,49 @@
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.mobileqq.activity.aio.helper.AioPaiYiPaiHelper;
-import java.lang.ref.WeakReference;
-
 public class afpt
-  implements ViewTreeObserver.OnPreDrawListener
 {
-  private WeakReference<AioPaiYiPaiHelper> a;
+  public int a;
+  bhck jdField_a_of_type_Bhck;
+  volatile boolean jdField_a_of_type_Boolean;
   
-  public afpt(AioPaiYiPaiHelper paramAioPaiYiPaiHelper)
+  public afpt(bhck parambhck, int paramInt)
   {
-    this.a = new WeakReference(paramAioPaiYiPaiHelper);
+    this(parambhck, paramInt, false);
   }
   
-  public boolean onPreDraw()
+  public afpt(bhck parambhck, int paramInt, boolean paramBoolean)
   {
-    AioPaiYiPaiHelper localAioPaiYiPaiHelper = (AioPaiYiPaiHelper)this.a.get();
-    if (localAioPaiYiPaiHelper != null) {
-      AioPaiYiPaiHelper.a(localAioPaiYiPaiHelper);
+    this.jdField_a_of_type_Bhck = parambhck;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public bhck a()
+  {
+    return this.jdField_a_of_type_Bhck;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Boolean = false;
     }
-    return true;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(afpt paramafpt)
+  {
+    if ((paramafpt == null) || (this.jdField_a_of_type_Bhck == null)) {
+      return false;
+    }
+    return this.jdField_a_of_type_Bhck.equals(paramafpt.jdField_a_of_type_Bhck);
   }
 }
 

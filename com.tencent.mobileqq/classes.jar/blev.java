@@ -1,44 +1,38 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.weiyun.WeiyunAIOUtils.WeiyunCallbackImpl.1;
-import cooperation.weiyun.WeiyunAIOUtils.WeiyunCallbackImpl.2;
-import mqq.os.MqqHandler;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 
 public class blev
-  implements atek
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public MqqHandler a;
+  public int a;
+  public Bitmap a;
+  public int b;
   
-  public blev(MqqHandler paramMqqHandler, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  public blev(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    a(paramInt1, paramInt2);
   }
   
-  public void a(int paramInt, String paramString)
+  public int a()
   {
-    if (this.jdField_a_of_type_MqqOsMqqHandler != null)
-    {
-      this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(101, paramInt, 0, paramString), 1500L);
-      return;
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+      return 0;
     }
-    ThreadManager.getUIHandler().post(new WeiyunAIOUtils.WeiyunCallbackImpl.2(this, paramString));
+    return this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
   }
   
-  public void a(Object paramObject)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_MqqOsMqqHandler != null)
-    {
-      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(100, 1500L);
-      return;
-    }
-    ThreadManager.getUIHandler().post(new WeiyunAIOUtils.WeiyunCallbackImpl.1(this));
+    int i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+    int j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+    this.jdField_a_of_type_Int = (paramInt1 - i / 2);
+    this.b = (paramInt2 - j / 2);
+  }
+  
+  public void a(Canvas paramCanvas, Paint paramPaint)
+  {
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int, this.b, paramPaint);
   }
 }
 

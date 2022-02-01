@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.text.TextParcelData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.ae.AEPituCameraUnit.17;
 
-public final class bmxd
-  implements Parcelable.Creator<TextParcelData>
+public class bmxd
+  implements View.OnClickListener
 {
-  public TextParcelData a(Parcel paramParcel)
-  {
-    return new TextParcelData(paramParcel);
-  }
+  public bmxd(AEPituCameraUnit.17 param17) {}
   
-  public TextParcelData[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new TextParcelData[paramInt];
+    if (this.a.this$0.a != null) {
+      this.a.this$0.a.e();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

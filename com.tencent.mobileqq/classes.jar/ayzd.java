@@ -1,28 +1,42 @@
-import android.content.res.Resources;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.view.VipTagView;
-import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
+import android.os.Bundle;
+import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ayzd
-  implements Animation.AnimationListener
+  extends azby
 {
-  public ayzd(VasProfileTagView paramVasProfileTagView, VipTagView paramVipTagView) {}
+  public ayzd(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountOnlineStateActivity", 2, new Object[] { "onSetOnlineStatus, isSuccess: ", Boolean.valueOf(paramBoolean), " , mIsUpdateStatus: ", Boolean.valueOf(AccountOnlineStateActivity.a(this.a)) });
+    }
+    if (AccountOnlineStateActivity.a(this.a))
+    {
+      AccountOnlineStateActivity.a(this.a, false);
+      if (paramBoolean) {
+        AccountOnlineStateActivity.a(this.a, true, 0);
+      }
+    }
+    else
+    {
+      return;
+    }
+    AccountOnlineStateActivity.a(this.a, false, -1);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation)
+  public void b(boolean paramBoolean, Bundle paramBundle)
   {
-    if (VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).a.a != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.setTagColor(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView.getResources().getColor(2131166585), this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView.getResources().getColor(2131166583));
+    super.b(paramBoolean, paramBundle);
+    int i = paramBundle.getInt("StatusId");
+    if (!paramBoolean) {
+      AccountOnlineStateActivity.a(this.a, false, -1);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountOnlineStateActivity", 2, new Object[] { "onSetExtInfo: invoked. ", " isSuccess: ", Boolean.valueOf(paramBoolean), " statusId", Integer.valueOf(i) });
     }
   }
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

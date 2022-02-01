@@ -1,18 +1,13 @@
-import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import com.tencent.open.agent.OpenAuthorityFragment;
 
-class bjdv
-  implements bjgc
+public class bjdv
+  implements bjen
 {
-  bjdv(bjdt parambjdt, AsyncResult paramAsyncResult) {}
+  public bjdv(OpenAuthorityFragment paramOpenAuthorityFragment) {}
   
-  public void a(int paramInt, String paramString)
+  public void a()
   {
-    if (paramInt == 0)
-    {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(true, null);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(false, null);
+    this.a.j();
   }
 }
 

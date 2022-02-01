@@ -10,15 +10,15 @@ import com.tencent.qphone.base.util.QLog;
 import mqq.manager.TicketManager;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
-import pay;
-import pgb;
-import rtb;
-import tcn;
+import pkh;
+import ppe;
+import sfq;
+import tpy;
 
 public final class FastWebRequestUtil$7
   implements Runnable
 {
-  public FastWebRequestUtil$7(ArticleInfo paramArticleInfo, tcn paramtcn) {}
+  public FastWebRequestUtil$7(ArticleInfo paramArticleInfo, tpy paramtpy) {}
   
   public void run()
   {
@@ -26,15 +26,15 @@ public final class FastWebRequestUtil$7
     {
       try
       {
-        localObject2 = pay.a();
-        str2 = ((TicketManager)((QQAppInterface)pay.a()).getManager(2)).getSkey((String)localObject2);
+        localObject2 = pkh.a();
+        str2 = ((TicketManager)((QQAppInterface)pkh.a()).getManager(2)).getSkey((String)localObject2);
         localBundle1 = new Bundle();
         localBundle1.putString("type", "1");
         localBundle1.putString("uin", String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.publishUin));
-        if (pgb.f(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
+        if (ppe.f(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
           break label360;
         }
-        if (!pgb.g(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
+        if (!ppe.g(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
           break label367;
         }
       }
@@ -46,7 +46,7 @@ public final class FastWebRequestUtil$7
         Object localObject1;
         Bundle localBundle2;
         int i;
-        if (this.jdField_a_of_type_Tcn == null) {
+        if (this.jdField_a_of_type_Tpy == null) {
           continue;
         }
         ThreadManager.getUIHandler().post(new FastWebRequestUtil.7.2(this, localException));
@@ -72,13 +72,13 @@ public final class FastWebRequestUtil$7
         localObject1 = new JSONObject((String)localObject1).getJSONObject("result");
         i = ((JSONObject)localObject1).getInt("retCode");
         localObject1 = ((JSONObject)localObject1).getString("retMsg");
-        if (this.jdField_a_of_type_Tcn != null) {
+        if (this.jdField_a_of_type_Tpy != null) {
           ThreadManager.getUIHandler().post(new FastWebRequestUtil.7.1(this, i, (String)localObject1));
         }
       }
       else
       {
-        localObject1 = rtb.a(str2);
+        localObject1 = sfq.a(str2);
         continue;
         label360:
         str1 = "1";
@@ -92,7 +92,7 @@ public final class FastWebRequestUtil$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRequestUtil.7
  * JD-Core Version:    0.7.0.1
  */

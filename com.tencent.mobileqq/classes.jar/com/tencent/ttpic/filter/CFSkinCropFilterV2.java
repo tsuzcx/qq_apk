@@ -9,7 +9,7 @@ import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.openapi.util.FaceDetectUtil;
 import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.util.FaceOffUtil;
-import com.tencent.ttpic.util.FaceOffUtil.FEATURE_TYPE;
+import com.tencent.ttpic.util.FaceOffUtil.FeatureType;
 import java.util.List;
 
 public class CFSkinCropFilterV2
@@ -27,7 +27,7 @@ public class CFSkinCropFilterV2
     super(" attribute vec4 position;\n attribute vec4 inputTextureCoordinate;\n attribute vec4 inputTextureCoordinate2;\n varying vec2 textureCoordinate;\n varying vec2 textureCoordinate2;\n \n void main()\n {\n     gl_Position = position;\n     textureCoordinate = inputTextureCoordinate.xy;\n     textureCoordinate2 = inputTextureCoordinate2.xy;\n }", " precision highp float;\n varying vec2 textureCoordinate;\n varying vec2 textureCoordinate2;\n uniform sampler2D inputImageTexture;\n uniform sampler2D inputImageTexture2;\n void main()\n {\n     vec4 maskColor = texture2D(inputImageTexture2 , textureCoordinate2);\n     vec4 userColor = texture2D(inputImageTexture , textureCoordinate);\n     gl_FragColor = vec4(userColor.rgb, 1.0 - maskColor.b);\n }");
     this.mMaskBitmap = FaceOffUtil.getCrazySkinMergeMask(paramString);
     if (!BitmapUtils.isLegal(this.mMaskBitmap)) {
-      this.mMaskBitmap = FaceOffUtil.getGrayBitmap(FaceOffUtil.FEATURE_TYPE.FACE_SKIN);
+      this.mMaskBitmap = FaceOffUtil.getGrayBitmap(FaceOffUtil.FeatureType.FACE_SKIN);
     }
     initParams();
     setDrawMode(AEOpenRenderConfig.DRAW_MODE.TRIANGLES);
@@ -38,7 +38,7 @@ public class CFSkinCropFilterV2
   {
     setPositions(this.positions);
     setTexCords(this.texVertices);
-    List localList = FaceOffUtil.getGrayCoords(FaceOffUtil.FEATURE_TYPE.FACE_SKIN);
+    List localList = FaceOffUtil.getGrayCoords(FaceOffUtil.FeatureType.FACE_SKIN);
     FaceDetectUtil.facePointf83to90(localList);
     addAttribParam("inputTextureCoordinate2", FaceOffUtil.initMaterialFaceTexCoordsFaceAverage(FaceOffUtil.getFullCoords(localList, 2.0F), this.mMaskBitmap.getWidth(), this.mMaskBitmap.getHeight(), this.maskVertices, 0));
   }

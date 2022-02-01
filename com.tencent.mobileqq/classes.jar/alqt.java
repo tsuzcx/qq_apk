@@ -1,9 +1,18 @@
-import com.tencent.mobileqq.apollo.GLTextureView;
+import android.graphics.PointF;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import java.util.List;
 
 public class alqt
-  extends alqj
+  implements akqy
 {
-  public alqt(GLTextureView paramGLTextureView, boolean paramBoolean) {}
+  public alqt(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, double paramDouble, List<List<PointF>> paramList)
+  {
+    if ((this.a.E) && (paramInt1 > 0)) {
+      NewFlowCameraActivity.c = true;
+    }
+  }
 }
 
 

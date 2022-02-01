@@ -1,79 +1,57 @@
-import UserGrowth.stSimpleMetaFeed;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.biz.pubaccount.weishi_new.event.WSFriendFeedExposureEvent;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import UserGrowth.stFeed;
+import UserGrowth.stSplitBlock;
+import android.text.TextUtils;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class vdh
-  extends vdc
+  extends blij<stFeed>
 {
-  private int b;
+  private TextView a;
+  private TextView b;
   
-  public vdh(uzq paramuzq)
+  private vdh(ViewGroup paramViewGroup, uxe paramuxe)
   {
-    super(paramuzq);
+    super(paramViewGroup, 2131560447);
+    b();
   }
   
-  public List<vaq> a(ArrayList paramArrayList)
+  public static vdh a(ViewGroup paramViewGroup, uxe paramuxe)
   {
-    paramArrayList = new ArrayList();
-    Iterator localIterator = ulf.a().a().iterator();
-    while (localIterator.hasNext()) {
-      paramArrayList.addAll((Collection)((uof)localIterator.next()).a());
-    }
-    paramArrayList = uzy.a(paramArrayList);
-    if (paramArrayList != null) {
-      this.b = paramArrayList.size();
-    }
-    return paramArrayList;
+    return new vdh(paramViewGroup, paramuxe);
   }
   
-  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  private void b()
   {
-    super.a(paramViewHolder, paramInt);
-    paramViewHolder = ulf.a().a();
-    uzq localuzq = a();
-    int i;
-    if (localuzq != null)
+    this.a = ((TextView)a(2131381574));
+    this.b = ((TextView)a(2131381575));
+  }
+  
+  public void a()
+  {
+    vka.a(1);
+  }
+  
+  public void a(stFeed paramstFeed)
+  {
+    if (paramstFeed == null) {}
+    do
     {
-      i = paramInt;
-      if (paramInt >= this.b) {
-        i = this.b - 1;
-      }
-      paramInt = 0;
+      return;
+      paramstFeed = paramstFeed.recommend_splitter;
+    } while (paramstFeed == null);
+    if (TextUtils.isEmpty(paramstFeed.text)) {
+      this.a.setVisibility(8);
     }
-    for (;;)
+    while (TextUtils.isEmpty(paramstFeed.tips))
     {
-      if (paramInt < paramViewHolder.size())
-      {
-        uof localuof = (uof)paramViewHolder.get(paramInt);
-        if ((localuof.b() <= i) && (localuof.b() + localuof.a() > i))
-        {
-          localuof.a(true);
-          paramViewHolder = new WSFriendFeedExposureEvent((stSimpleMetaFeed)((vaq)localuzq.a().a(i)).a(), paramInt);
-          unw.a().a(paramViewHolder);
-        }
-      }
-      else
-      {
-        return;
-      }
-      paramInt += 1;
+      this.b.setVisibility(8);
+      return;
+      this.a.setVisibility(0);
+      this.a.setText(paramstFeed.text);
     }
-  }
-  
-  public boolean a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    vah.a().a(this);
-    return true;
-  }
-  
-  public void b()
-  {
-    super.b();
-    vah.a().a();
+    this.b.setVisibility(0);
+    this.b.setText(paramstFeed.tips);
   }
 }
 

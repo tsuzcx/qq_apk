@@ -1,56 +1,40 @@
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.FlowMusic;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
-public class ywz
-  extends amsu
+class ywz
+  implements bohc
 {
-  public ywz(QRLoginMgrActivity paramQRLoginMgrActivity) {}
+  ywz(ywx paramywx) {}
   
-  protected void onKickOutDevFResult(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QRLoginMgrActivity", 2, new Object[] { "onKickOutDevFResult isSuccess:", Boolean.valueOf(paramBoolean), " appid:", Long.valueOf(paramLong), " result:", Integer.valueOf(paramInt1), " index:", Integer.valueOf(paramInt2) });
-    }
-    if (!paramBoolean)
-    {
-      if (QRLoginMgrActivity.a(this.a) == null) {
-        QRLoginMgrActivity.a(this.a, new HashSet());
-      }
-      QRLoginMgrActivity.a(this.a).add(Long.valueOf(paramLong));
-    }
-    if (QRLoginMgrActivity.a(this.a) != null) {
-      QRLoginMgrActivity.a(this.a).remove(Long.valueOf(paramLong));
-    }
-    if ((QRLoginMgrActivity.a(this.a) == null) || (QRLoginMgrActivity.a(this.a).size() == 0))
-    {
-      QRLoginMgrActivity.a(this.a);
-      this.a.finish();
-      if ((QRLoginMgrActivity.a(this.a) != null) && (QRLoginMgrActivity.a(this.a).size() > 0)) {
-        QQToast.a(this.a.getApplicationContext(), 1, 2131716166, 0).a();
-      }
-    }
-    while (paramInt2 != 100)
-    {
-      return;
-      QQToast.a(this.a.getApplicationContext(), 2, 2131716167, 0).a();
-      Intent localIntent = new Intent("com.tencent.mobileqq.action.PC_STATUS_MANAGE");
-      localIntent.putExtra("status", "logout");
-      this.a.getApplicationContext().sendBroadcast(localIntent);
-      return;
-    }
-    QRLoginMgrActivity.a(this.a);
+    String str = ywx.a(this.a).getResources().getString(2131698028);
+    Object localObject = str;
     if (paramBoolean)
     {
-      QQToast.a(this.a.getApplicationContext(), 2, 2131716192, 0).a();
-      return;
+      paramObject = (FlowMusic)paramObject;
+      if (QLog.isColorLevel()) {
+        QLog.d("MusicCache", 2, "onGetSingleMusicInfo flowMusic:" + paramObject.toString());
+      }
+      if ((paramObject.playable == 1) && (!TextUtils.isEmpty(paramObject.url)))
+      {
+        localObject = new yxk();
+        ((yxk)localObject).jdField_b_of_type_JavaLangString = paramObject.songName;
+        ((yxk)localObject).d = paramObject.url;
+        ((yxk)localObject).jdField_b_of_type_Int = 2;
+        ((yxk)localObject).a = String.valueOf(paramObject.songId);
+        this.a.a(12, localObject);
+        return;
+      }
+      localObject = str;
+      if (paramObject.playable != 1) {
+        localObject = ywx.a(this.a).getResources().getString(2131698029);
+      }
     }
-    QQToast.a(this.a.getApplicationContext(), 1, 2131716166, 0).a();
+    this.a.a(7, localObject);
   }
 }
 

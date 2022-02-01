@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import adcw;
+import adty;
 import android.app.Activity;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -23,11 +24,11 @@ import qqcircle.QQCircleCounter.RedPointInfo;
 public class ConversationQbossBannerTitleEntranceCtrl$2
   implements Runnable
 {
-  public ConversationQbossBannerTitleEntranceCtrl$2(adcw paramadcw) {}
+  public ConversationQbossBannerTitleEntranceCtrl$2(adty paramadty) {}
   
   public void run()
   {
-    Object localObject = (QCircleRedPointManager)BaseApplicationImpl.getApplication().getRuntime().getManager(376);
+    Object localObject = (QCircleRedPointManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.QCIRCLE_MGR_RED_TOUCH);
     long l = 0L;
     int j = ((Integer)QCircleChatBoxHelper.getInstance().getUnReadInfo().first).intValue();
     ArrayList localArrayList = new ArrayList();
@@ -56,7 +57,7 @@ public class ConversationQbossBannerTitleEntranceCtrl$2
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[updateQQCircleRedFlag]").append("  redDotCombineTypes = ").append(l).append("  pushUnReadNum = ").append(i).append(", chatUnReadNum = ").append(j).append(", showActiveRedDot = ").append(bool).append(", uinList = ").append(localArrayList);
       QLog.d("QCircleEeveeRedPoint_ConversationQbossBannerTitleEntranceCtrl", 2, new Object[] { localObject });
-      adcw.a(this.this$0).runOnUiThread(new ConversationQbossBannerTitleEntranceCtrl.2.1(this, i + j, bool));
+      adty.a(this.this$0).runOnUiThread(new ConversationQbossBannerTitleEntranceCtrl.2.1(this, i + j, bool));
       return;
       bool = false;
       break;
@@ -67,7 +68,7 @@ public class ConversationQbossBannerTitleEntranceCtrl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ConversationQbossBannerTitleEntranceCtrl.2
  * JD-Core Version:    0.7.0.1
  */

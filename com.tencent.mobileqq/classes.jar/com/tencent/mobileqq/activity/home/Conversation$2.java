@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.home;
 
-import akmb;
+import alht;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
 
@@ -11,7 +11,7 @@ class Conversation$2
   
   public void run()
   {
-    akmb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, 15);
+    alht.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, 15);
   }
 }
 

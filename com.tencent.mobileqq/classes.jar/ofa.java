@@ -1,203 +1,150 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.VideoPlayCountHandler.1;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.os.SystemClock;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x6a6.oidb_0x6a6.ReqBody;
-import tencent.im.oidb.cmd0x6a6.oidb_0x6a6.RspBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import java.util.HashMap;
 
 public class ofa
-  extends BusinessHandler
 {
-  static final String a = "Q.pubaccount.video." + ofb.class.getSimpleName();
+  private static ofa jdField_a_of_type_Ofa = new ofa();
+  private long jdField_a_of_type_Long;
+  private ofc jdField_a_of_type_Ofc = new ofc(null);
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public ofa(AppInterface paramAppInterface)
+  public static ofa a()
   {
-    super(paramAppInterface);
-  }
-  
-  public ofa(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
-  
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    int j = 0;
-    int k = 0;
-    boolean bool;
-    Bundle localBundle;
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
+    try
     {
-      bool = true;
-      localBundle = new Bundle();
-      paramFromServiceMsg = "";
-      if (QLog.isColorLevel()) {
-        QLog.d(a, 2, "handleGetPlayCount onReceive :" + bool);
+      if (jdField_a_of_type_Ofa == null) {
+        jdField_a_of_type_Ofa = new ofa();
       }
-      if (!bool) {
-        break label532;
-      }
+      ofa localofa = jdField_a_of_type_Ofa;
+      return localofa;
     }
-    for (;;)
-    {
-      for (;;)
-      {
-        try
-        {
-          localObject = new oidb_sso.OIDBSSOPkg();
-          ((oidb_sso.OIDBSSOPkg)localObject).mergeFrom((byte[])paramObject);
-          paramObject = ((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.get().toByteArray();
-          localObject = new oidb_0x6a6.RspBody();
-          ((oidb_0x6a6.RspBody)localObject).mergeFrom(paramObject);
-          if ((((oidb_0x6a6.RspBody)localObject).uint32_ret_code.has()) && (((oidb_0x6a6.RspBody)localObject).uint32_ret_code.get() == 0)) {
-            if (((oidb_0x6a6.RspBody)localObject).uint32_read_count.has()) {
-              i = ((oidb_0x6a6.RspBody)localObject).uint32_read_count.get();
-            }
-          }
-        }
-        catch (InvalidProtocolBufferMicroException paramObject)
-        {
-          Object localObject;
-          int i;
-          continue;
-          paramToServiceMsg = "";
-          continue;
-        }
-        try
-        {
-          if (paramToServiceMsg.getWupBuffer() == null) {
-            continue;
-          }
-          paramObject = new oidb_sso.OIDBSSOPkg();
-          paramObject.mergeFrom(paramToServiceMsg.getWupBuffer(), 4, paramToServiceMsg.getWupBuffer().length - 4);
-          if ((paramObject.bytes_bodybuffer.has()) && (paramObject.bytes_bodybuffer.get() != null))
-          {
-            paramToServiceMsg = new oidb_0x6a6.ReqBody();
-            paramToServiceMsg.mergeFrom(paramObject.bytes_bodybuffer.get().toByteArray());
-            if ((paramToServiceMsg.bytes_article_id.has()) && (paramToServiceMsg.bytes_article_id.get() != null))
-            {
-              paramToServiceMsg = paramToServiceMsg.bytes_article_id.get().toStringUtf8().substring(2);
-              if (QLog.isColorLevel()) {
-                QLog.d(a, 2, "handleGetPlayCount vid :" + paramToServiceMsg + " playCount :" + i);
-              }
-              localBundle.putInt("VALUE_VIDEO_PLAY_COUNT", i);
-              localBundle.putString("VALUE_VIDEO_VID", paramToServiceMsg);
-              super.notifyUI(1, bool, localBundle);
-              return;
-              bool = false;
-              break;
-              if (((oidb_0x6a6.RspBody)localObject).uint64_read_count.has())
-              {
-                i = (int)((oidb_0x6a6.RspBody)localObject).uint64_read_count.get();
-                continue;
-              }
-              if (QLog.isColorLevel())
-              {
-                QLog.e(a, 2, "handleGetPlayCount 获取失败, read_count 为空");
-                i = 0;
-                continue;
-                if (QLog.isColorLevel()) {
-                  QLog.e(a, 2, "handleGetPlayCount 获取失败, ret_code 为空或 ret_code == 1");
-                }
-              }
-              i = 0;
-              continue;
-            }
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.e(a, 2, "geVideoPlayCount, 请求vid空");
-            continue;
-          }
-          paramToServiceMsg = paramFromServiceMsg;
-          if (QLog.isColorLevel())
-          {
-            QLog.e(a, 2, "geVideoPlayCount, reqBody为空");
-            paramToServiceMsg = paramFromServiceMsg;
-            continue;
-            i = j;
-          }
-        }
-        catch (InvalidProtocolBufferMicroException paramObject)
-        {
-          j = i;
-        }
-      }
-      paramToServiceMsg = paramFromServiceMsg;
-      if (QLog.isColorLevel())
-      {
-        QLog.e(a, 2, "geVideoPlayCount, ERROR e=" + paramObject.getMessage());
-        i = j;
-        paramToServiceMsg = paramFromServiceMsg;
-        continue;
-        paramToServiceMsg = paramFromServiceMsg;
-        if (QLog.isColorLevel())
-        {
-          QLog.e(a, 2, "geVideoPlayCount, reqPkg为空");
-          paramToServiceMsg = paramFromServiceMsg;
-          continue;
-          label532:
-          i = k;
-          paramToServiceMsg = paramFromServiceMsg;
-          if (QLog.isColorLevel())
-          {
-            QLog.e(a, 2, "geVideoPlayCount, 返回直接出错了");
-            i = k;
-            paramToServiceMsg = paramFromServiceMsg;
-          }
-        }
-      }
+    finally {}
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("videoId", paramString2);
+    localHashMap.put("uin", paramString1);
+    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "IMAX_Ad_VIDEO_PRELOADED_RATE", true, 0L, 0L, localHashMap, "", false);
+    if (QLog.isColorLevel()) {
+      QLog.i("AdvertisementStatistics", 2, "reportImaxVideoCoverRate:" + paramString2);
     }
   }
   
-  public void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2)
+  public void a()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(a, 4, "getVideoPlayCount()  vId" + paramString1);
+    if (this.jdField_a_of_type_Ofc.jdField_c_of_type_Long == -1L) {
+      this.jdField_a_of_type_Ofc.jdField_c_of_type_Long = (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
     }
-    oidb_0x6a6.ReqBody localReqBody = new oidb_0x6a6.ReqBody();
-    paramString1 = ByteStringMicro.copyFromUtf8("5_" + paramString1);
-    localReqBody.bytes_article_id.set(paramString1);
-    localReqBody.uint32_req_type.set(paramInt1);
-    localReqBody.uint32_article_type.set(paramInt2);
-    localReqBody.uint32_platform_type.set(paramInt3);
-    if (!TextUtils.isEmpty(paramString2))
+  }
+  
+  public void a(String paramString, long paramLong, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
+    this.jdField_a_of_type_Ofc.a();
+    this.jdField_a_of_type_Long = paramLong;
+    if (QLog.isColorLevel()) {
+      QLog.i("AdvertisementStatistics", 2, "mClickTime:" + this.jdField_a_of_type_Long + " sToolShowTime:" + BaseApplicationImpl.sToolShowTime);
+    }
+    if ((BaseApplicationImpl.sToolShowTime == 0L) || (BaseApplicationImpl.sToolShowTime > paramLong)) {
+      this.jdField_a_of_type_Ofc.jdField_a_of_type_Int = 0;
+    }
+    for (this.jdField_a_of_type_Ofc.jdField_b_of_type_Long = (BaseApplicationImpl.sToolShowTime - paramLong);; this.jdField_a_of_type_Ofc.jdField_b_of_type_Long = 0L)
     {
-      paramString1 = ByteStringMicro.copyFromUtf8(paramString2);
-      localReqBody.rowkey.set(paramString1);
+      long l = SystemClock.uptimeMillis();
+      this.jdField_a_of_type_Ofc.jdField_a_of_type_Long = (l - paramLong);
+      this.jdField_a_of_type_Ofc.jdField_b_of_type_JavaLangString = paramString;
+      this.jdField_a_of_type_Ofc.jdField_a_of_type_Boolean = paramBoolean;
+      return;
+      this.jdField_a_of_type_Ofc.jdField_a_of_type_Int = 1;
     }
-    super.sendPbReq(super.makeOIDBPkg("OidbSvc.0x6a6", 1702, 0, localReqBody.toByteArray()));
   }
   
   public void a(String paramString1, String paramString2)
   {
-    ThreadManager.excute(new VideoPlayCountHandler.1(this, paramString1, paramString2), 16, null, true);
-  }
-  
-  public Class<? extends BusinessObserver> observerClass()
-  {
-    return ofb.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(a, 2, "handleGetPlayCount onReceive");
+    if (this.jdField_a_of_type_Boolean) {
+      return;
     }
-    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Ofc.jdField_a_of_type_JavaLangString = "IMAX_Ad_videoLoadErr";
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("adId", paramString1);
+    localHashMap.put("vid", paramString2);
+    long l1 = SystemClock.uptimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
+    if (QLog.isColorLevel()) {
+      QLog.i("AdvertisementStatistics", 2, this.jdField_a_of_type_Ofc.toString());
+    }
+    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "IMAX_Ad_videoLoadErr", true, l1 - l2, 0L, localHashMap, "", false);
+  }
+  
+  public void a(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    if (this.b) {
+      return;
+    }
+    this.b = true;
+    this.jdField_a_of_type_Ofc.jdField_a_of_type_JavaLangString = "IMAX_Ad_Remind_Dialog_Click";
+    this.jdField_a_of_type_Ofc.jdField_b_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Ofc.jdField_c_of_type_JavaLangString = paramString2;
+    paramString1 = this.jdField_a_of_type_Ofc.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("AdvertisementStatistics", 2, this.jdField_a_of_type_Ofc.toString() + " ok " + paramBoolean);
+    }
+    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", this.jdField_a_of_type_Ofc.jdField_a_of_type_JavaLangString, paramBoolean, this.jdField_a_of_type_Ofc.jdField_c_of_type_Long, 0L, paramString1, "", false);
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Ofc.jdField_b_of_type_Int == -1)
+    {
+      this.jdField_a_of_type_Ofc.jdField_c_of_type_JavaLangString = paramString;
+      paramString = this.jdField_a_of_type_Ofc;
+      if (!paramBoolean) {
+        break label36;
+      }
+    }
+    label36:
+    for (int i = 1;; i = 0)
+    {
+      paramString.jdField_b_of_type_Int = i;
+      return;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    HashMap localHashMap = this.jdField_a_of_type_Ofc.a();
+    if (paramBoolean) {}
+    for (this.jdField_a_of_type_Ofc.jdField_a_of_type_JavaLangString = "IMAX_Ad_StartCost_ByUsr";; this.jdField_a_of_type_Ofc.jdField_a_of_type_JavaLangString = "IMAX_Ad_StartCost")
+    {
+      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", this.jdField_a_of_type_Ofc.jdField_a_of_type_JavaLangString, true, this.jdField_a_of_type_Ofc.d, 0L, localHashMap, "", false);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("AdvertisementStatistics", 2, "remindUsr:" + paramBoolean + this.jdField_a_of_type_Ofc.toString());
+      return;
+    }
+  }
+  
+  public void b(String paramString, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Ofc.d == -1L)
+    {
+      this.jdField_a_of_type_Ofc.jdField_c_of_type_JavaLangString = paramString;
+      this.jdField_a_of_type_Ofc.d = (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
+      a(paramBoolean);
+    }
   }
 }
 

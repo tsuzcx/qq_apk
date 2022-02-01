@@ -1,27 +1,12 @@
-import java.io.File;
-
-class vnn
-  implements Comparable<vnn>
+public abstract interface vnn
 {
-  public final long a;
-  public final File a;
+  public abstract void a(String paramString, int paramInt);
   
-  public vnn(vnm paramvnm, File paramFile)
-  {
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-    this.jdField_a_of_type_Long = paramFile.lastModified();
-  }
+  public abstract void b(String paramString, int paramInt);
   
-  public int a(vnn paramvnn)
-  {
-    if (this.jdField_a_of_type_Long < paramvnn.jdField_a_of_type_Long) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_Long == paramvnn.jdField_a_of_type_Long) {
-      return 0;
-    }
-    return 1;
-  }
+  public abstract void c(String paramString, int paramInt);
+  
+  public abstract void d(String paramString, int paramInt);
 }
 
 

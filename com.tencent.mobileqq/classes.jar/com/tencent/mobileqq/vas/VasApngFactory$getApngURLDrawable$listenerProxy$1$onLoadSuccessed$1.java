@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.vas;
 
 import android.graphics.drawable.Drawable;
-import bgfu;
-import bgfv;
+import bhop;
+import bhoq;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.ApngImage;
 import com.tencent.image.URLDrawable;
@@ -18,7 +18,7 @@ public final class VasApngFactory$getApngURLDrawable$listenerProxy$1$onLoadSucce
   extends Lambda
   implements Function0<Unit>
 {
-  public VasApngFactory$getApngURLDrawable$listenerProxy$1$onLoadSuccessed$1(bgfv parambgfv, URLDrawable paramURLDrawable)
+  public VasApngFactory$getApngURLDrawable$listenerProxy$1$onLoadSuccessed$1(bhoq parambhoq, URLDrawable paramURLDrawable)
   {
     super(0);
   }

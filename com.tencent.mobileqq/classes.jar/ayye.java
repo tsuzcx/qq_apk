@@ -1,65 +1,29 @@
-import SummaryCardTaf.SSummaryCardRsp;
-import android.util.Pair;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profilecard.vas.component.header.AbsVasProfileHeaderComponent.4.1;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class ayye
-  extends CardObserver
+class ayye
+  implements bczz
 {
-  ayye(ayyb paramayyb) {}
+  ayye(ayyc paramayyc, AppInterface paramAppInterface) {}
   
-  public void onSetCardTemplateReturn(boolean paramBoolean, Object paramObject)
+  public void a(int paramInt)
   {
-    try
+    this.jdField_a_of_type_Ayyc.jdField_a_of_type_ArrayOfInt[3] = paramInt;
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    QLog.w(ayyc.jdField_a_of_type_JavaLangString, 1, "onDownloadProgress, index[3], bDownloadSuc[" + paramBoolean1 + "]");
+    int[] arrayOfInt = this.jdField_a_of_type_Ayyc.jdField_a_of_type_ArrayOfInt;
+    if (paramBoolean1) {}
+    for (paramInt = 100;; paramInt = -1)
     {
-      if (!ayyb.e(this.a).isFinishing())
-      {
-        ayyb.a(this.a).removeCallbacks(ayyb.a(this.a));
-        ayyb.a(this.a);
-        if ((paramBoolean) && (paramObject != null))
-        {
-          if ((paramObject instanceof Card))
-          {
-            ThreadManager.post(new AbsVasProfileHeaderComponent.4.1(this, (Card)paramObject), 5, null, true);
-            return;
-          }
-          if ((paramObject instanceof Pair))
-          {
-            paramObject = (Pair)paramObject;
-            if (((Integer)paramObject.first).intValue() == 101107) {
-              ayyb.a(this.a, 1);
-            }
-            for (;;)
-            {
-              ayyb.b(this.a);
-              return;
-              if (((Integer)paramObject.first).intValue() == 101108)
-              {
-                ayyb.a(this.a, 2);
-              }
-              else if (((Integer)paramObject.first).intValue() == 101111)
-              {
-                ayyb.a(this.a, 3);
-              }
-              else
-              {
-                if (((Integer)paramObject.first).intValue() != 12002) {
-                  break;
-                }
-                ayyb.a(this.a, 4);
-              }
-            }
-            ayyb.a(this.a, 5);
-            ayyb.a(this.a, (SSummaryCardRsp)paramObject.second);
-          }
-        }
+      arrayOfInt[3] = paramInt;
+      if (this.jdField_a_of_type_Ayyc.a() == 100) {
+        ayyc.a(this.jdField_a_of_type_Ayyc, "onDownloadProgress1", this.jdField_a_of_type_ComTencentCommonAppAppInterface, false);
       }
       return;
     }
-    catch (Exception paramObject) {}
   }
 }
 

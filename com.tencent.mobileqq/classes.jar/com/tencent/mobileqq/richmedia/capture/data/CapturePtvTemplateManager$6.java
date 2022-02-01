@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import azzx;
-import baad;
+import bbgg;
+import bbgm;
 
 public class CapturePtvTemplateManager$6
   implements Runnable
 {
-  public CapturePtvTemplateManager$6(azzx paramazzx) {}
+  public CapturePtvTemplateManager$6(bbgg parambbgg) {}
   
   public void run()
   {
-    azzx.a(this.this$0);
+    bbgg.a(this.this$0);
     if (this.this$0.a != null) {
       this.this$0.a.a();
     }

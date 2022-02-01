@@ -1,17 +1,17 @@
 package dov.com.tencent.mobileqq.activity.richmedia;
 
 import android.os.Bundle;
-import bntx;
-import bnxl;
+import bpjp;
+import bpnd;
 import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
 import com.tencent.mobileqq.transfile.HttpNetReq;
 import com.tencent.mobileqq.transfile.INetEngine;
-import lbc;
+import lbf;
 
 public class VideoFilterListDownloader$1
   implements Runnable
 {
-  public VideoFilterListDownloader$1(bntx parambntx, FilterDesc paramFilterDesc) {}
+  public VideoFilterListDownloader$1(bpjp parambpjp, FilterDesc paramFilterDesc) {}
   
   public void run()
   {
@@ -19,14 +19,14 @@ public class VideoFilterListDownloader$1
     localHttpNetReq.mCallback = this.this$0.a;
     localHttpNetReq.mReqUrl = this.a.resurl;
     localHttpNetReq.mHttpMethod = 0;
-    localHttpNetReq.mOutPath = (bnxl.b + this.a.name + ".zip");
+    localHttpNetReq.mOutPath = (bpnd.b + this.a.name + ".zip");
     localHttpNetReq.setUserData(this.a);
     localHttpNetReq.mFailedListener = this.this$0;
     if (this.a.bundle == null) {
       this.a.bundle = new Bundle();
     }
     this.a.bundle.putLong("requestStartTime", System.currentTimeMillis());
-    lbc.a().sendReq(localHttpNetReq);
+    lbf.a().sendReq(localHttpNetReq);
   }
 }
 

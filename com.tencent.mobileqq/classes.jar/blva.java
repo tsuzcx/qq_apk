@@ -1,27 +1,44 @@
-class blva
-  implements blvj
+import android.os.Handler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import cooperation.ilive.group.IliveGroupObserver.1;
+
+public class blva
+  implements BusinessObserver
 {
-  blva(bluy parambluy, blvj paramblvj) {}
+  public void a() {}
   
-  public void onDownloadFinish(blvb paramblvb, boolean paramBoolean)
+  public void a(String paramString, blvg paramblvg) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    blvb localblvb = bluy.a(this.jdField_a_of_type_Bluy, paramblvb);
-    if (localblvb != null) {
-      localblvb.e = bluy.a(paramblvb);
-    }
-    if (this.jdField_a_of_type_Blvj != null)
+    Object localObject2 = null;
+    switch (paramInt)
     {
-      this.jdField_a_of_type_Blvj.onDownloadFinish(paramblvb, paramBoolean);
-      if (localblvb != null) {
-        bmbx.b("AEMaterialManager", "【END】onDownloadFinish :" + localblvb.a);
-      }
     }
-  }
-  
-  public void onProgressUpdate(blvb paramblvb, int paramInt)
-  {
-    if (this.jdField_a_of_type_Blvj != null) {
-      this.jdField_a_of_type_Blvj.onProgressUpdate(paramblvb, paramInt);
+    Object[] arrayOfObject;
+    do
+    {
+      return;
+      arrayOfObject = (Object[])paramObject;
+    } while (arrayOfObject == null);
+    if ((arrayOfObject.length > 1) && (arrayOfObject[0] != null) && ((arrayOfObject[0] instanceof String))) {}
+    for (paramObject = (String)arrayOfObject[0];; paramObject = null)
+    {
+      Object localObject1 = localObject2;
+      if (arrayOfObject.length == 2)
+      {
+        localObject1 = localObject2;
+        if (arrayOfObject[1] != null)
+        {
+          localObject1 = localObject2;
+          if ((arrayOfObject[1] instanceof blvg)) {
+            localObject1 = (blvg)arrayOfObject[1];
+          }
+        }
+      }
+      ThreadManagerV2.getUIHandlerV2().post(new IliveGroupObserver.1(this, paramObject, (blvg)localObject1));
+      return;
     }
   }
 }

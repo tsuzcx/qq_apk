@@ -1,22 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
 
-class pym
-  implements pln
+public class pym
+  extends StaggeredGridLayoutManager
 {
-  pym(pyl parampyl) {}
-  
-  public void l()
+  public pym(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, int paramInt1, int paramInt2)
   {
-    if (!pyp.b())
-    {
-      QLog.d("FeedsPreloadManager", 1, "foreground, feeds preload.");
-      this.a.a(false);
-      return;
-    }
-    QLog.d("FeedsPreloadManager", 1, "lock screen enter foreground, no need to preload.");
+    super(paramInt1, paramInt2);
   }
   
-  public void m() {}
+  public boolean canScrollVertically()
+  {
+    return (this.a.a.e) && (super.canScrollVertically());
+  }
 }
 
 

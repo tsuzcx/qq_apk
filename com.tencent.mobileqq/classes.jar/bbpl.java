@@ -1,30 +1,40 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.richmediabrowser.log.IBrowserLog;
 
 public class bbpl
-  extends MSFServlet
+  implements IBrowserLog
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg) {}
-  
-  public void onSend(Intent paramIntent, Packet paramPacket) {}
-  
-  public void service(Intent paramIntent)
+  public void d(String paramString1, int paramInt, String paramString2)
   {
-    String str = paramIntent.getAction();
-    if ((str != null) && ("gif_ui_show".equals(str)))
-    {
-      int i = paramIntent.getIntExtra("gif_ui_show_bid", 0);
-      long l = paramIntent.getLongExtra("gif_ui_show_seq", 0L);
-      paramIntent = new Bundle();
-      paramIntent.putInt("gif_ui_show_bid", i);
-      paramIntent.putLong("gif_ui_show_seq", l);
-      notifyObserver(null, 0, true, paramIntent, axkx.class);
-      return;
+    if (isColorLevel()) {
+      QLog.d(paramString1, paramInt, paramString2);
     }
-    super.service(paramIntent);
+  }
+  
+  public void e(String paramString1, int paramInt, String paramString2)
+  {
+    if (isColorLevel()) {
+      QLog.e(paramString1, paramInt, paramString2);
+    }
+  }
+  
+  public void i(String paramString1, int paramInt, String paramString2)
+  {
+    if (isColorLevel()) {
+      QLog.i(paramString1, paramInt, paramString2);
+    }
+  }
+  
+  public boolean isColorLevel()
+  {
+    return QLog.isColorLevel();
+  }
+  
+  public void w(String paramString1, int paramInt, String paramString2)
+  {
+    if (isColorLevel()) {
+      QLog.w(paramString1, paramInt, paramString2);
+    }
   }
 }
 

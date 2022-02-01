@@ -1,36 +1,54 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.UpdateFriend;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
-final class aojf
-  implements INetEngine.IBreakDownFix
+public class aojf
+  extends anvi
 {
-  public void fixReq(NetReq paramNetReq, NetResp paramNetResp)
+  private aojf(UpdateFriend paramUpdateFriend) {}
+  
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((paramNetReq == null) || (paramNetResp == null)) {}
-    while (!(paramNetReq instanceof HttpNetReq)) {
+    if ((this.a.b == 7) || (this.a.b == 3))
+    {
+      if (paramBoolean1) {
+        break label37;
+      }
+      this.a.a(6);
+    }
+    label37:
+    while ((!paramBoolean1) || (!paramBoolean2)) {
       return;
     }
-    HttpNetReq localHttpNetReq = (HttpNetReq)paramNetReq;
-    localHttpNetReq.mStartDownOffset += paramNetResp.mWrittenBlockLen;
-    paramNetResp.mWrittenBlockLen = 0L;
-    paramNetResp = "bytes=" + localHttpNetReq.mStartDownOffset + "-";
-    localHttpNetReq.mReqProperties.put("Range", paramNetResp);
-    paramNetResp = localHttpNetReq.mReqUrl;
-    if (paramNetResp.contains("range="))
-    {
-      paramNetResp = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
-      localHttpNetReq.mReqUrl = (paramNetResp + "range=" + localHttpNetReq.mStartDownOffset);
+    this.a.a.a.edit().putBoolean("isFriendlistok", true).commit();
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "onUpdateFriendList put PREF_ISFRIENDLIST_OK true");
     }
-    QLog.i("AREngine_ARPreSoResourceDownload", 1, "IBreakDownFix. url = " + ((HttpNetReq)paramNetReq).mReqUrl + ", offset=" + localHttpNetReq.mStartDownOffset);
+    this.a.a.notifyUI(3, true, Integer.valueOf(1));
+    this.a.a(7);
+  }
+  
+  protected void onUpdateGatherFriendList(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if (this.a.b == 8)
+    {
+      if (paramBoolean1) {
+        break label26;
+      }
+      this.a.a(6);
+    }
+    label26:
+    while (!paramBoolean2) {
+      return;
+    }
+    this.a.a(7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aojf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,29 @@
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
 
-class rvj
-  extends RecyclerView.AdapterDataObserver
+public class rvj
+  implements View.OnTouchListener
 {
-  private rvj(ruw paramruw) {}
+  public rvj(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
   
-  public void onChanged() {}
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2) {}
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    onItemRangeChanged(paramInt1, paramInt2);
+    paramView = ReadInJoyUgcSearchTopicFragment.a(this.a).getCompoundDrawables()[2];
+    if ((paramMotionEvent.getAction() == 0) && (paramView != null))
+    {
+      float f = ReadInJoyUgcSearchTopicFragment.a(this.a).getRight() - paramView.getBounds().width();
+      if (paramMotionEvent.getRawX() >= f)
+      {
+        ReadInJoyUgcSearchTopicFragment.b(this.a);
+        return true;
+      }
+    }
+    return false;
   }
 }
 

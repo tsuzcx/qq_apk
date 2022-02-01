@@ -1,5 +1,6 @@
 package com.tencent.qqlive.module.videoreport.data;
 
+import android.support.annotation.Nullable;
 import java.util.Collections;
 import java.util.Map;
 
@@ -13,6 +14,7 @@ public class ReportData
     return this.mId;
   }
   
+  @Nullable
   public Map<String, Object> getParams()
   {
     if (this.mParams == null) {

@@ -1,18 +1,32 @@
-import android.text.Spanned;
-
-class bmuw
-  extends bnij
+public class bmuw
 {
-  bmuw(bmuu parambmuu, int paramInt)
+  public static bori a(int paramInt, borh paramborh, borg paramborg)
   {
-    super(paramInt);
-  }
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
-  {
-    String str = paramSpanned.subSequence(0, paramInt3).toString() + paramCharSequence.subSequence(paramInt1, paramInt2).toString() + paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString();
-    this.jdField_a_of_type_Int = (str.length() - bfby.b(str).length() + 20);
-    return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+    switch (paramInt)
+    {
+    default: 
+      return new bmxa(paramborh, paramborg);
+    case 10026: 
+      return new bmvv(paramborh, paramborg);
+    case 10000: 
+    case 10001: 
+    case 10013: 
+    case 10017: 
+    case 10023: 
+    case 10024: 
+      return new bmxa(paramborh, paramborg);
+    case -1000: 
+      return new bmxa();
+    case 10007: 
+      return new bmuz(paramborh, paramborg);
+    case 10012: 
+      return new bmuy(paramborh, paramborg);
+    case 10021: 
+      return new bmul(paramborh, paramborg);
+    case 10025: 
+      return new ajql(paramborh, paramborg);
+    }
+    return new bmvk(paramborh, paramborg);
   }
 }
 

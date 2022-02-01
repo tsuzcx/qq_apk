@@ -1,65 +1,62 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.os.Bundle;
+import com.tencent.biz.lebasearch.LebaSearchMoreInfoActivity;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.widget.QQToast;
 
-class nyg
-  implements INetInfoHandler
+public class nyg
+  implements BusinessObserver
 {
-  nyd a;
+  public nyg(LebaSearchMoreInfoActivity paramLebaSearchMoreInfoActivity) {}
   
-  public nyg(nyd paramnyd1, nyd paramnyd2)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a = paramnyd2;
-  }
-  
-  public void a()
-  {
-    this.a = null;
-  }
-  
-  public void onNetMobile2None()
-  {
-    nyd.c("onNetMobile2None");
-    if (this.a != null) {
-      nyd.b(this.a);
+    if (paramObject == null) {
+      return;
     }
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    nyd.c("onNetMobile2Wifi");
-    if (this.a != null) {
-      nyd.b(this.a);
+    paramObject = (Bundle)paramObject;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 17: 
+      paramBoolean = paramObject.getBoolean("result");
+      StringBuilder localStringBuilder = new StringBuilder();
+      if (paramBoolean)
+      {
+        paramObject = this.a.getString(2131695772);
+        localStringBuilder.append(paramObject);
+        localStringBuilder.append(this.a.getString(2131695770));
+        localStringBuilder.append(this.a.c);
+        if (!paramBoolean) {
+          break label233;
+        }
+        paramInt = 2;
+        label104:
+        QQToast.a(this.a, paramInt, localStringBuilder.toString(), 1).b(this.a.getTitleBarHeight());
+        paramObject = this.a;
+        if (!paramBoolean) {
+          break label238;
+        }
+      }
+      break;
     }
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    nyd.c("onNetNone2Mobile");
-    if (this.a != null) {
-      nyd.b(this.a);
-    }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    nyd.c("onNetNone2Wifi");
-    if (this.a != null) {
-      nyd.b(this.a);
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    nyd.c("onNetWifi2Mobile");
-    if (this.a != null) {
-      nyd.b(this.a);
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    nyd.c("onNetWifi2None");
-    if (this.a != null) {
-      nyd.b(this.a);
+    label233:
+    label238:
+    for (paramInt = -1;; paramInt = 0)
+    {
+      paramObject.setResult(paramInt);
+      return;
+      this.a.a = paramObject.getBoolean("isOpen");
+      this.a.c = paramObject.getString("name");
+      if (this.a.c != null) {
+        this.a.b = this.a.getString(2131695778, new Object[] { this.a.c });
+      }
+      LebaSearchMoreInfoActivity.a(this.a);
+      return;
+      paramObject = this.a.getString(2131695771);
+      break;
+      paramInt = 1;
+      break label104;
     }
   }
 }

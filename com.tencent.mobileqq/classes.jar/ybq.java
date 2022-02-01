@@ -1,29 +1,31 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.base.BitmapError;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class ybq
-  extends JobSegment<Bitmap, Bitmap>
+  extends QQUIEventReceiver<StoryMessageListActivity, wkc>
 {
-  public final float a;
-  public final boolean a;
-  
-  public ybq(float paramFloat, boolean paramBoolean)
+  public ybq(@NonNull StoryMessageListActivity paramStoryMessageListActivity)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    super(paramStoryMessageListActivity);
   }
   
-  protected void a(JobContext paramJobContext, Bitmap paramBitmap)
+  public void a(@NonNull StoryMessageListActivity paramStoryMessageListActivity, @NonNull wkc paramwkc)
   {
-    paramJobContext = yoy.a(paramBitmap, this.jdField_a_of_type_Float, this.jdField_a_of_type_Boolean);
-    if (paramJobContext == null)
+    if (paramwkc.a.isSuccess())
     {
-      super.notifyError(new BitmapError("Q.qqstory.publish:ImageAdjustJobSegment", 5));
-      return;
+      if (QLog.isDevelopLevel()) {
+        QLog.i(this.TAG, 2, "TroopNickNameUpdateEvent");
+      }
+      paramStoryMessageListActivity.g();
     }
-    super.notifyResult(paramJobContext);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wkc.class;
   }
 }
 

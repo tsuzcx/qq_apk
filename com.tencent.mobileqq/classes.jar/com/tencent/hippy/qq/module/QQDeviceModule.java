@@ -1,6 +1,6 @@
 package com.tencent.hippy.qq.module;
 
-import biam;
+import bjlo;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.biz.game.SensorAPIJavaScript;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -23,8 +23,8 @@ public class QQDeviceModule
   @HippyMethod(name="getClientInfo")
   public void getClientInfo(Promise paramPromise)
   {
-    String str = biam.a(BaseApplicationImpl.getContext());
-    paramPromise.resolve("{\"qqVersion\":\"" + str + "\",\"qqBuild\":\"" + "4810" + "\"}");
+    String str = bjlo.a(BaseApplicationImpl.getContext());
+    paramPromise.resolve("{\"qqVersion\":\"" + str + "\",\"qqBuild\":\"" + "4875" + "\"}");
   }
   
   @HippyMethod(name="getDeviceInfo")

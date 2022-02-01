@@ -1,63 +1,29 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.PointF;
+import android.view.View;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
+import com.tencent.mobileqq.widget.RatioLayout;
 
 public class baei
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  protected int a;
-  protected PublishVideoEntry a;
-  protected int b;
-  protected int c;
-  protected int d = -1;
-  protected int e = -1;
+  public baei(VasProfileTagView paramVasProfileTagView, View paramView, PointF paramPointF) {}
   
-  public baei(int paramInt, PublishVideoEntry paramPublishVideoEntry)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = new PublishVideoEntry();
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.copy(paramPublishVideoEntry);
-    a(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.saveMode);
-  }
-  
-  private int b(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 7: 
-      return 5;
-    case 8: 
-      return 6;
-    case 9: 
-      return 7;
-    }
-    return 4;
-  }
-  
-  public int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 3: 
-    case 4: 
-    default: 
-      return 0;
-    case 1: 
-      return 1;
-    case 2: 
-      return 2;
-    }
-    return 3;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.b = b(paramInt);
-    this.c = a(paramInt);
-  }
-  
-  public void b(int paramInt)
-  {
-    this.d = paramInt;
+    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
+    this.jdField_a_of_type_AndroidViewView.setScaleX(paramValueAnimator.floatValue());
+    this.jdField_a_of_type_AndroidViewView.setScaleY(paramValueAnimator.floatValue());
+    float f1 = this.jdField_a_of_type_AndroidGraphicsPointF.x;
+    float f2 = VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).x;
+    float f3 = VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).getWidth();
+    float f4 = this.jdField_a_of_type_AndroidGraphicsPointF.y;
+    float f5 = VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).y;
+    float f6 = VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).getHeight();
+    this.jdField_a_of_type_AndroidViewView.setTranslationX((f1 - f2) * f3 * paramValueAnimator.floatValue());
+    this.jdField_a_of_type_AndroidViewView.setTranslationY((f4 - f5) * f6 * paramValueAnimator.floatValue());
+    this.jdField_a_of_type_AndroidViewView.setRotation(paramValueAnimator.floatValue() * 120.0F - 120.0F);
   }
 }
 

@@ -1,13 +1,6 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-
-final class agdj
-  implements aghk
+public abstract interface agdj<T>
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
-  {
-    return asgg.a(paramQQAppInterface, paramChatMessage);
-  }
+  public abstract T a(agdg paramagdg);
 }
 
 

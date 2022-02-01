@@ -2,23 +2,23 @@ package com.tencent.avgame.qav;
 
 import com.tencent.av.gaudio.QQGAudioCtrl;
 import com.tencent.qphone.base.util.QLog;
-import nhj;
+import nob;
 
 public class AsyncExitTask$2
   implements Runnable
 {
-  public AsyncExitTask$2(nhj paramnhj, QQGAudioCtrl paramQQGAudioCtrl) {}
+  public AsyncExitTask$2(nob paramnob, QQGAudioCtrl paramQQGAudioCtrl) {}
   
   public void run()
   {
     QLog.d("AsyncExitTask", 1, "asyncExitRoom.quitRoom start.");
     if (this.a != null) {
-      nhj.a(this.this$0, this.a.quitRoom(0));
+      nob.a(this.this$0, this.a.quitRoom(0));
     }
-    QLog.d("AsyncExitTask", 1, "asyncExitRoom.quitRoom end. quitResult = " + nhj.a(this.this$0));
-    synchronized (nhj.a(this.this$0))
+    QLog.d("AsyncExitTask", 1, "asyncExitRoom.quitRoom end. quitResult = " + nob.a(this.this$0));
+    synchronized (nob.a(this.this$0))
     {
-      nhj.a(this.this$0).notify();
+      nob.a(this.this$0).notify();
       return;
     }
   }

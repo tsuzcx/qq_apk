@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.photo;
 
-import ajpw;
-import bfai;
+import aklk;
+import bgio;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 
 public class TroopAvatarController$5
   implements Runnable
 {
-  public TroopAvatarController$5(ajpw paramajpw, String paramString) {}
+  public TroopAvatarController$5(aklk paramaklk, String paramString) {}
   
   public void run()
   {
     this.this$0.mManger.a(this.this$0.mTroopInfo.troopuin);
-    ajpw.b(this.this$0, null);
+    aklk.b(this.this$0, null);
     this.this$0.notifyDataSetChanged();
     TroopPhotoController.showToast(this.a);
   }

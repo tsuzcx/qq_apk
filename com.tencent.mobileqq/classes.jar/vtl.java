@@ -1,23 +1,20 @@
-import org.json.JSONObject;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class vtl
+class vtl
+  implements View.OnTouchListener
 {
-  public int a;
-  public String a;
-  public JSONObject a;
-  public boolean a;
-  public int b;
-  public String b;
-  public JSONObject b;
-  public boolean b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  vtl(vtj paramvtj, int paramInt) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    vtj.a(this.jdField_a_of_type_Vtj, paramView);
+    this.jdField_a_of_type_Vtj.d = this.jdField_a_of_type_Int;
+    vtj.a(this.jdField_a_of_type_Vtj).onTouchEvent(paramMotionEvent);
+    return false;
+  }
 }
 
 

@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.photo;
 
-import ajpd;
+import akkr;
 import android.app.Activity;
 import com.tencent.qphone.base.util.QLog;
 
 public class SDKAvatarSettingManager$4
   implements Runnable
 {
-  public SDKAvatarSettingManager$4(ajpd paramajpd) {}
+  public SDKAvatarSettingManager$4(akkr paramakkr) {}
   
   public void run()
   {
-    if (ajpd.a(this.this$0).isFinishing()) {
+    if (akkr.a(this.this$0).isFinishing()) {
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.w("SDKAvatarSettingManager", 2, "checkApiTimeOutRunnable -->preForward--checkapi timeout");
     }
     this.this$0.b = true;
-    ajpd.a(this.this$0);
+    akkr.a(this.this$0);
   }
 }
 

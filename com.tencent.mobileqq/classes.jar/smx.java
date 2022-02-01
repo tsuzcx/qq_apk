@@ -1,18 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
-public class smx
-  extends pkt
+class smx
+  extends suv
 {
-  public smx(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  smx(smg paramsmg) {}
   
-  public void c(String paramString)
+  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    boolean bool = bcoo.a();
-    if (bool) {
-      this.a.a.b(true, 3, false);
+    smg.a(this.a).b(smg.b(this.a));
+    if ((paramVideoInfo.m != null) && (paramVideoInfo.m.contains("kandianshare.html5.qq.com")))
+    {
+      this.a.a.b(paramVideoInfo.m);
+      return;
     }
-    QLog.d("ReadInJoyListViewGroup", 1, "onRefreshArticles! isLearnModelNow=" + bool);
+    this.a.a.b(paramString + "&sourcefrom=6");
+  }
+  
+  public int c()
+  {
+    return 7;
   }
 }
 

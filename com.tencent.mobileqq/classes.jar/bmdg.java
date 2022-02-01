@@ -1,12 +1,15 @@
-public abstract interface bmdg
+import android.os.Bundle;
+
+public class bmdg
 {
-  public abstract void a(String paramString, float paramFloat);
+  public int a;
+  public Bundle a;
   
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(String paramString1, String paramString2);
-  
-  public abstract void b(String paramString);
+  bmdg(bmde parambmde, int paramInt, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+  }
 }
 
 

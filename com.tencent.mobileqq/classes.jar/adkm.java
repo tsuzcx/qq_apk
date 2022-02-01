@@ -1,10 +1,18 @@
-public abstract interface adkm
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class adkm
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public adkm(AuthDevActivity paramAuthDevActivity) {}
   
-  public abstract void a(byte[] paramArrayOfByte);
-  
-  public abstract void b(byte[] paramArrayOfByte);
+  public void onClick(View paramView)
+  {
+    AuthDevActivity.h(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

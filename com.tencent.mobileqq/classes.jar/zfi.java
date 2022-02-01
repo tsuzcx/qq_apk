@@ -1,16 +1,29 @@
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoLikeRsp;
-import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
-import com.tribe.async.dispatch.Dispatcher;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class zfi
-  implements VSDispatchObserver.onVSRspCallBack<CertifiedAccountWrite.StDoLikeRsp>
+public class zfi
 {
-  zfi(zfb paramzfb) {}
-  
-  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoLikeRsp paramStDoLikeRsp)
+  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, boolean paramBoolean)
   {
-    vli.a().dispatch(this.a.a(new Object[] { Integer.valueOf(7), Long.valueOf(paramLong), paramString, paramStDoLikeRsp }));
+    boolean bool1 = false;
+    paramQQAppInterface = bhey.a(paramQQAppInterface, paramContext, paramString);
+    if (paramQQAppInterface != null) {
+      bool1 = paramQQAppInterface.a();
+    }
+    for (boolean bool2 = true;; bool2 = false)
+    {
+      if ((!bool2) && (paramBoolean))
+      {
+        Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+        localIntent.putExtra("url", paramString);
+        localIntent.putExtra("selfSet_leftViewText", anvx.a(2131715293));
+        paramContext.startActivity(localIntent);
+      }
+      ykq.b("UrlJumpUtils", "jump %s, actionResult = %b, handled = %b", paramQQAppInterface, Boolean.valueOf(bool1), Boolean.valueOf(bool2));
+      return bool2;
+    }
   }
 }
 

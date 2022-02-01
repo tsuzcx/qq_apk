@@ -1,40 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.VideoController;
-import com.tencent.av.gaudio.GaInviteLockActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Build.VERSION;
+import com.tencent.av.gaudio.GaInviteActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
 public class lnk
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  public lnk(GaInviteLockActivity paramGaInviteLockActivity) {}
+  public lnk(GaInviteActivity paramGaInviteActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
-    {
-      paramContext = paramIntent.getStringExtra("reason");
-      if ((paramContext != null) && (paramContext.equals("homekey")))
-      {
-        bcef.b(null, "CliOper", "", "", "0X8004210", "0X8004210", 0, 0, "", "", "", "");
-        this.a.c(-1038L);
-      }
+    if (this.a.isFinishing()) {}
+    while (((Build.VERSION.SDK_INT >= 17) && (this.a.isDestroyed())) || (paramInt == 1)) {
+      return;
     }
-    boolean bool;
-    do
-    {
-      do
-      {
-        return;
-      } while (!paramContext.equals("android.intent.action.SCREEN_OFF"));
-      bool = VideoController.a(this.a);
-      if (bool) {
-        bcef.b(null, "CliOper", "", "", "0X800420C", "0X800420C", 0, 0, "", "", "", "");
-      }
-    } while (!QLog.isColorLevel());
-    QLog.w(this.a.b, 1, "ACTION_SCREEN_OFF, isScreenLocked[" + bool + "]");
+    ChatActivityUtils.a(this.a, true, new lnl(this));
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.app;
 
-import amrg;
-import avsq;
+import antu;
+import awyr;
 import com.tencent.mobileqq.data.EmoticonResp;
 
 public class EmoticonHandler$1
   implements Runnable
 {
-  public EmoticonHandler$1(amrg paramamrg, avsq paramavsq, EmoticonResp paramEmoticonResp, int paramInt) {}
+  public EmoticonHandler$1(antu paramantu, awyr paramawyr, EmoticonResp paramEmoticonResp, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Avsq.a(true, 2, this.jdField_a_of_type_ComTencentMobileqqDataEmoticonResp, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Awyr.a(true, 2, this.jdField_a_of_type_ComTencentMobileqqDataEmoticonResp, this.jdField_a_of_type_Int);
     this.this$0.notifyUI(2, true, this.jdField_a_of_type_ComTencentMobileqqDataEmoticonResp);
   }
 }

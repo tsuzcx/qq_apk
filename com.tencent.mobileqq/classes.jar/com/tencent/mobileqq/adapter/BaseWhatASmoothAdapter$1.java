@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.adapter;
 
-import alid;
-import alie;
+import amgd;
+import amge;
 import android.view.View;
 
 public class BaseWhatASmoothAdapter$1
   implements Runnable
 {
-  public BaseWhatASmoothAdapter$1(alid paramalid, View paramView, Object paramObject1, Object paramObject2, int paramInt, alie paramalie) {}
+  public BaseWhatASmoothAdapter$1(amgd paramamgd, View paramView, Object paramObject1, Object paramObject2, int paramInt, amge paramamge) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class BaseWhatASmoothAdapter$1
       this.this$0.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_JavaLangObject);
       this.jdField_a_of_type_AndroidViewView.setTag(this.this$0.a + this.jdField_a_of_type_Int);
     }
-    alie.a(this.jdField_a_of_type_Alie, null);
+    amge.a(this.jdField_a_of_type_Amge, null);
   }
 }
 

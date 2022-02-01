@@ -1,32 +1,73 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.hotpic.HotVideoData;
+import android.content.Intent;
+import android.os.AsyncTask;
+import com.tencent.mm.vfs.VFSFile;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar.7;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Set;
 
-class augz
-  implements auhs
+public class augz
+  extends AsyncTask<Object, Object, Integer>
 {
-  augz(augy paramaugy, HotVideoData paramHotVideoData, auhb paramauhb, URLDrawable paramURLDrawable) {}
+  public augz(SendBottomBar.7 param7) {}
   
-  public void a(auht paramauht)
+  protected Integer a(Object... paramVarArgs)
   {
-    if (paramauht.jdField_a_of_type_Boolean)
+    paramVarArgs = atpm.a();
+    Iterator localIterator = paramVarArgs.iterator();
+    int i = 0;
+    VFSFile localVFSFile;
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.url = paramauht.a();
-      if (this.jdField_a_of_type_Auhb.a() == this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData)
+      FileInfo localFileInfo;
+      if (localIterator.hasNext())
       {
-        this.jdField_a_of_type_Auhb.a(this.jdField_a_of_type_ComTencentImageURLDrawable);
-        this.jdField_a_of_type_ComTencentImageURLDrawable.setAutoDownload(true);
-        this.jdField_a_of_type_ComTencentImageURLDrawable.restartDownload();
+        localFileInfo = (FileInfo)localIterator.next();
+        if (!localFileInfo.b()) {}
+      }
+      else
+      {
+        SendBottomBar.a(this.a.this$0).a(paramVarArgs);
+        bdne.a().a(true);
+        return Integer.valueOf(i);
+      }
+      if (!SendBottomBar.a(this.a.this$0).getFileManagerRSCenter().a(localFileInfo.c())) {
+        try
+        {
+          localVFSFile = new VFSFile(localFileInfo.c());
+          if (!localVFSFile.exists()) {
+            QLog.e("delDownloadFiles<FileAssistant>", 1, "local file can scan, is not existed? file:" + localFileInfo.c());
+          }
+        }
+        catch (Exception localException)
+        {
+          QLog.e("delDownloadFiles<FileAssistant>", 1, "del file error:" + localException.toString());
+        }
       }
     }
-    do
+    for (;;)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("HotPicManagerHotPicPageView", 2, "onFileDownloadFailed:" + this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.picIndex + " GetUrlFailed msg:" + paramauht.jdField_a_of_type_JavaLangString);
-      }
-    } while (this.jdField_a_of_type_Auhb.a() != this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData);
-    this.jdField_a_of_type_Auhb.a(-10);
+      break;
+      localVFSFile.delete();
+      SendBottomBar.a(this.a.this$0, SendBottomBar.a(this.a.this$0) + localException.a());
+      i += 1;
+    }
+  }
+  
+  protected void a(Integer paramInteger)
+  {
+    super.onPostExecute(paramInteger);
+    this.a.this$0.d();
+    paramInteger = new Intent();
+    paramInteger.putExtra("extra_delete_total_file_size", SendBottomBar.a(this.a.this$0));
+    SendBottomBar.a(this.a.this$0).setResult(-1, paramInteger);
+    atpm.b();
+    this.a.this$0.a();
+    SendBottomBar.a(this.a.this$0).n();
   }
 }
 

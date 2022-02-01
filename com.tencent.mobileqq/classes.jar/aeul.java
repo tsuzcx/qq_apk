@@ -1,17 +1,9 @@
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.qphone.base.util.QLog;
-
 public class aeul
-  extends anep
+  implements aeun
 {
-  public aeul(ActivateFriendActivity paramActivateFriendActivity) {}
-  
-  public void a()
+  public boolean a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ActivateFriends.MainActivity", 2, "onReceiveBirthDayPushUpdate");
-    }
-    ActivateFriendActivity.b(this.a);
+    return paramInt % 4 == 3;
   }
 }
 

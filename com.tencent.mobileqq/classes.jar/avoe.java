@@ -1,42 +1,16 @@
-import com.tencent.mobileqq.matchchat.MatchChatSettingFragment;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl.10;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class avoe
-  extends arht
+  implements DialogInterface.OnClickListener
 {
-  public avoe(MatchChatSettingFragment paramMatchChatSettingFragment) {}
+  public avoe(PresenceInterfaceImpl.10 param10) {}
   
-  protected void a(boolean paramBoolean1, ArrayList<arjn> paramArrayList, boolean paramBoolean2, int paramInt, ArrayList<String> paramArrayList1, boolean paramBoolean3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MatchChatSettingFragment", 2, "onGetUnLimitBaseInfo suc:" + paramBoolean1 + " chatSwitchOpen:" + paramBoolean2);
-    }
-    if (paramBoolean1) {
-      MatchChatSettingFragment.a(this.a, paramBoolean2);
-    }
-  }
-  
-  protected void f(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MatchChatSettingFragment", 2, "onGetUnLimitBaseInfo suc:" + paramBoolean);
-    }
-    MatchChatSettingFragment localMatchChatSettingFragment;
-    if (!paramBoolean)
-    {
-      localMatchChatSettingFragment = this.a;
-      if (MatchChatSettingFragment.a(this.a).a()) {
-        break label61;
-      }
-    }
-    label61:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      MatchChatSettingFragment.a(localMatchChatSettingFragment, paramBoolean);
-      return;
-    }
+    QLog.d("PresenceInterfaceImpl", 2, "user click button");
   }
 }
 

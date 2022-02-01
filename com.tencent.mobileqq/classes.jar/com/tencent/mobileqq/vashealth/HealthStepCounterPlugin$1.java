@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.vashealth;
 
-import bgma;
+import bhwk;
 
 public class HealthStepCounterPlugin$1
   implements Runnable
 {
-  public HealthStepCounterPlugin$1(bgma parambgma, String paramString) {}
+  public HealthStepCounterPlugin$1(bhwk parambhwk, String paramString) {}
   
   public void run()
   {
-    bgma.a(this.this$0, this.a);
+    bhwk.a(this.this$0, this.a);
   }
 }
 

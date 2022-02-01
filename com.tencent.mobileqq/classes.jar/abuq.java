@@ -1,59 +1,71 @@
-import android.content.Intent;
-import android.graphics.Rect;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.aditem.GdtHandler;
-import com.tencent.gdtad.aditem.GdtHandler.Params;
-import com.tencent.gdtad.views.video.GdtVideoData;
-import com.tencent.gdtad.views.videoimax.GdtImaxData;
-import com.tencent.gdtad.views.videoimax.GdtMotiveVideoMockQzoneImaxFeedsFragment;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
-import java.util.Arrays;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DestInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.VideoInfo;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.gamecenter.media.GameCenterVideoViewController;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class abuq
-  implements View.OnClickListener
 {
-  public abuq(GdtMotiveVideoMockQzoneImaxFeedsFragment paramGdtMotiveVideoMockQzoneImaxFeedsFragment) {}
+  public int a;
+  public FrameLayout a;
+  public GameCenterVideoViewController a;
+  public String a;
+  public Map<Integer, View> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public int d;
+  public String d;
+  public boolean d;
+  public int e;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
   
-  public void onClick(View paramView)
+  public abuq(GameCenterVideoViewController paramGameCenterVideoViewController, FrameLayout paramFrameLayout, Map<Integer, View> paramMap)
   {
-    GdtHandler.Params localParams = new GdtHandler.Params();
-    localParams.c = 2;
-    localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.a.getActivity());
-    Object localObject = GdtMotiveVideoMockQzoneImaxFeedsFragment.a(this.a).getAd();
-    ((GdtAd)localObject).info.product_type.set(1000);
-    ((GdtAd)localObject).info.dest_info.dest_type.set(4);
-    ((GdtAd)localObject).info.display_info.video_info2.video_url.set(GdtMotiveVideoMockQzoneImaxFeedsFragment.a(this.a).getVideoData().getUrl());
-    localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd = ((GdtAd)localObject);
-    localParams.e = true;
-    localParams.jdField_a_of_type_Boolean = true;
-    localObject = new int[2];
-    paramView.getLocationInWindow((int[])localObject);
-    abrl.a("GdtMotiveVideoMockQzoneImaxFeedsFragment", "onClick() getLocationInWindow = [" + Arrays.toString((int[])localObject) + "]");
-    paramView.getLocationOnScreen((int[])localObject);
-    abrl.a("GdtMotiveVideoMockQzoneImaxFeedsFragment", "onClick() getLocationOnScreen = [" + Arrays.toString((int[])localObject) + "]");
-    localParams.jdField_a_of_type_AndroidGraphicsRect = new Rect(localObject[0], localObject[1], localObject[0] + paramView.getWidth(), localObject[1] + paramView.getHeight());
-    localObject = this.a.getActivity().getIntent();
-    if (TextUtils.isEmpty(((Intent)localObject).getStringExtra("big_brother_ref_source_key"))) {}
-    for (localObject = ((Intent)localObject).getStringExtra("big_brother_source_key");; localObject = ((Intent)localObject).getStringExtra("big_brother_ref_source_key"))
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController = paramGameCenterVideoViewController;
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = paramFrameLayout;
+    this.jdField_a_of_type_JavaUtilMap = paramMap;
+  }
+  
+  public String a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      localParams.jdField_a_of_type_AndroidOsBundle = new Bundle();
-      localParams.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", (String)localObject);
-      localParams.f = true;
-      GdtHandler.a(localParams);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      localJSONObject.put("id", this.jdField_a_of_type_Int);
+      localJSONObject.put("x", this.jdField_c_of_type_Int);
+      localJSONObject.put("y", this.jdField_b_of_type_Int);
+      localJSONObject.put("vid", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("url", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("streamType", this.jdField_d_of_type_Int);
+      localJSONObject.put("protocol", this.jdField_c_of_type_JavaLangString);
+      localJSONObject.put("mute", this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.getOutputMute());
+      localJSONObject.put("total", this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.getDuration());
+      localJSONObject.put("current", this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.getCurrentPostion());
+      localJSONObject.put("autoPlay", this.jdField_b_of_type_Boolean);
+      localJSONObject.put("isFullScreen", this.jdField_c_of_type_Boolean);
+      localJSONObject.put("progress", this.e);
+      localJSONObject.put("danmakuOn", this.jdField_d_of_type_Boolean);
+      return localJSONObject.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
     }
   }
 }

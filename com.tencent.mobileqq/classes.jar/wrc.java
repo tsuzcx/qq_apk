@@ -1,17 +1,6 @@
-import com.tribe.async.dispatch.Dispatcher;
-
-class wrc
-  extends wrx
+public abstract interface wrc
 {
-  wrc(wrb paramwrb) {}
-  
-  public void g()
-  {
-    super.g();
-    wrb.a(this.a, false);
-    vli.a().unRegisterSubscriber(wrb.a(this.a));
-    vli.a().unRegisterSubscriber(wrb.a(this.a));
-  }
+  public abstract void a(wrd paramwrd);
 }
 
 

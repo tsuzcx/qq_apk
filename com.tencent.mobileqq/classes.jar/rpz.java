@@ -1,18 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import kotlin.Metadata;
-
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/view/MotionEvent;", "onTouch"}, k=3, mv={1, 1, 16})
-final class rpz
-  implements View.OnTouchListener
+public class rpz
 {
-  public static final rpz a = new rpz();
-  
-  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
+  public static int a = 1;
+  public static int b = 2;
+  public static int c = 3;
+  public boolean a;
+  public boolean b;
+  public boolean c;
+  public int d;
+  public boolean d;
+  public int e;
+  public boolean e;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
 }
 
 

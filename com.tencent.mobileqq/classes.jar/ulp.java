@@ -1,28 +1,16 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class ulp
-  implements EmoticonCallback
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/VideoStateCallback;", "", "onVideoComplete", "", "url", "", "onVideoError", "onVideoPause", "onVideoStart", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface ulp
 {
-  public void delete() {}
+  public abstract void a(@Nullable String paramString);
   
-  public void emoticonMall() {}
+  public abstract void b(@Nullable String paramString);
   
-  public void onHidePopup(EmoticonInfo paramEmoticonInfo) {}
+  public abstract void c(@Nullable String paramString);
   
-  public boolean onLongClick(EmoticonInfo paramEmoticonInfo)
-  {
-    return false;
-  }
-  
-  public void onShowPopup(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
-  
-  public void send() {}
-  
-  public void send(EmoticonInfo paramEmoticonInfo) {}
-  
-  public void setting() {}
+  public abstract void d(@Nullable String paramString);
 }
 
 

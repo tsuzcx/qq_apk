@@ -1,16 +1,26 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
-public class vqk
+class vqk
+  implements Animator.AnimatorListener
 {
-  public static boolean a(StoryVideoItem paramStoryVideoItem)
+  vqk(vqj paramvqj) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    return false;
+    vqj.a(this.a).removeAnimatorListener(this);
   }
   
-  public static boolean a(String paramString)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return false;
+    vqj.a(this.a).setVisibility(8);
+    vqj.a(this.a).removeAnimatorListener(this);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -13,7 +13,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import lcp;
+import lcu;
 import mqq.os.MqqHandler;
 
 public class MutiMemberThumbList
@@ -24,10 +24,10 @@ public class MutiMemberThumbList
   private GradientDrawable jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable;
   private View jdField_a_of_type_AndroidViewView;
   private VideoController jdField_a_of_type_ComTencentAvVideoController;
-  private final String jdField_a_of_type_JavaLangString = "%d名成员被邀请";
-  private final ArrayList<lcp> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private String jdField_a_of_type_JavaLangString = "";
+  private final ArrayList<lcu> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private volatile boolean jdField_a_of_type_Boolean;
-  private final int[] jdField_a_of_type_ArrayOfInt = { 2131373416, 2131373417, 2131373418, 2131373419, 2131373420, 2131373421, 2131373422 };
+  private final int[] jdField_a_of_type_ArrayOfInt = { 2131373629, 2131373630, 2131373631, 2131373632, 2131373633, 2131373634, 2131373635 };
   private int jdField_b_of_type_Int = -1;
   private long jdField_b_of_type_Long = -1L;
   private final String jdField_b_of_type_JavaLangString = "%d+";
@@ -47,9 +47,10 @@ public class MutiMemberThumbList
   {
     super(paramContext, paramAttributeSet, paramInt);
     b();
+    this.jdField_a_of_type_JavaLangString = getContext().getString(2131695371);
   }
   
-  private void a(int paramInt, ArrayList<lcp> paramArrayList)
+  private void a(int paramInt, ArrayList<lcu> paramArrayList)
   {
     QLog.d("MutiMemberThumbList", 1, "doDisplay " + paramInt);
     ThreadManager.getSubThreadHandler().post(new MutiMemberThumbList.1(this, paramInt, paramArrayList));
@@ -57,7 +58,7 @@ public class MutiMemberThumbList
   
   private void b()
   {
-    addView(LayoutInflater.from(getContext()).inflate(2131559740, null));
+    addView(LayoutInflater.from(getContext()).inflate(2131559776, null));
     this.jdField_a_of_type_Boolean = false;
   }
   
@@ -78,7 +79,7 @@ public class MutiMemberThumbList
     this.jdField_a_of_type_ComTencentAvVideoController = paramVideoController;
   }
   
-  public void setDisPlayList(ArrayList<lcp> paramArrayList)
+  public void setDisPlayList(ArrayList<lcu> paramArrayList)
   {
     if ((paramArrayList == null) || (paramArrayList.size() == 0))
     {
@@ -92,8 +93,8 @@ public class MutiMemberThumbList
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext())
     {
-      lcp locallcp = (lcp)paramArrayList.next();
-      this.jdField_a_of_type_JavaUtilArrayList.add(locallcp);
+      lcu locallcu = (lcu)paramArrayList.next();
+      this.jdField_a_of_type_JavaUtilArrayList.add(locallcu);
     }
     a(this.jdField_a_of_type_JavaUtilArrayList.size(), (ArrayList)this.jdField_a_of_type_JavaUtilArrayList.clone());
   }

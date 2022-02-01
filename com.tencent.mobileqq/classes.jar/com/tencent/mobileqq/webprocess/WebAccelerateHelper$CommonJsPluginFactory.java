@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.webprocess;
 
-import aabq;
-import aabz;
-import aacu;
-import aacz;
-import aadt;
-import abve;
-import almv;
-import atza;
-import autn;
-import bgtd;
-import bgte;
-import bgzx;
+import aarc;
+import aarl;
+import aasg;
+import aasl;
+import aatf;
+import acll;
+import amkw;
+import avep;
+import avzm;
+import bidt;
+import bidu;
+import bikp;
 import com.tencent.biz.webviewplugin.OpenCenterPlugin;
 import com.tencent.mobileqq.jsp.UiApiPlugin;
 import com.tencent.mobileqq.mini.out.webPlugins.MiniAppPlugin;
@@ -25,22 +25,22 @@ public class WebAccelerateHelper$CommonJsPluginFactory
   public List<WebViewPlugin> getCommonJsPlugin()
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new atza());
-    localArrayList.add(new almv());
-    localArrayList.add(new bgtd());
-    localArrayList.add(new bgte());
+    localArrayList.add(new avep());
+    localArrayList.add(new amkw());
+    localArrayList.add(new bidt());
+    localArrayList.add(new bidu());
     localArrayList.add(new VasWebReport());
-    localArrayList.add(new aadt());
-    localArrayList.add(new aacz());
-    localArrayList.add(new aabq());
-    localArrayList.add(new aabz());
-    localArrayList.add(new bgzx());
-    localArrayList.add(new autn());
+    localArrayList.add(new aatf());
+    localArrayList.add(new aasl());
+    localArrayList.add(new aarc());
+    localArrayList.add(new aarl());
+    localArrayList.add(new bikp());
+    localArrayList.add(new avzm());
     localArrayList.add(new UiApiPlugin());
     localArrayList.add(new OpenCenterPlugin());
     localArrayList.add(new MiniAppPlugin());
-    localArrayList.add(new aacu());
-    localArrayList.add(new abve());
+    localArrayList.add(new aasg());
+    localArrayList.add(new acll());
     return localArrayList;
   }
 }

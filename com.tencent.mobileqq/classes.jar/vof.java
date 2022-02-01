@@ -1,65 +1,16 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadProgressManager.ProgressStatus.1;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class vof
+class vof
+  implements View.OnClickListener
 {
-  public int a;
-  private Runnable a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  private boolean b;
+  vof(vod paramvod) {}
   
-  private vof(voe paramvoe)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangRunnable = new StoryVideoUploadProgressManager.ProgressStatus.1(this);
-  }
-  
-  private void c()
-  {
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-    case 0: 
-    case 1: 
-    case 2: 
-    case 3: 
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            this.jdField_b_of_type_Int = 0;
-            return;
-            this.jdField_b_of_type_Int += 1;
-          } while (this.jdField_b_of_type_Int < 60);
-          this.jdField_b_of_type_Int = 59;
-          return;
-          this.jdField_b_of_type_Int += 1;
-        } while (this.jdField_b_of_type_Int < 95);
-        this.jdField_b_of_type_Int = 94;
-        return;
-        this.jdField_b_of_type_Int += 1;
-      } while (this.jdField_b_of_type_Int < 100);
-      this.jdField_b_of_type_Int = 99;
-      return;
-    }
-    this.jdField_b_of_type_Int = 100;
-  }
-  
-  public void a()
-  {
-    this.jdField_b_of_type_Boolean = false;
-    voe.a(this.jdField_a_of_type_Voe).postDelayed(this.jdField_a_of_type_JavaLangRunnable, 200L);
-  }
-  
-  public void b()
-  {
-    this.jdField_b_of_type_Boolean = true;
-    voe.a(this.jdField_a_of_type_Voe).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    vod.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

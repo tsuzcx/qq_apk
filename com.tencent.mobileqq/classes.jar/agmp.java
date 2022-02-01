@@ -1,38 +1,52 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.view.View.OnTouchListener;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+import com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemLoverAchievementView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.RoundRectImageView;
 
-class agmp
-  implements View.OnClickListener
+public class agmp
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener, View.OnTouchListener
 {
-  agmp(agmk paramagmk) {}
+  public RoundRectImageView a;
+  
+  public agmp(IntimateContentItemLoverAchievementView paramIntimateContentItemLoverAchievementView, @NonNull View paramView)
+  {
+    super(paramView);
+    this.jdField_a_of_type_ComTencentWidgetRoundRectImageView = ((RoundRectImageView)paramView.findViewById(2131365272));
+    paramView.setOnClickListener(this);
+    paramView.setOnTouchListener(this);
+  }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    if (IntimateContentItemLoverAchievementView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemLoverAchievementView) != null) {
+      IntimateContentItemLoverAchievementView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemLoverAchievementView).a(paramView, getLayoutPosition(), (agme)paramView.getTag());
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
     {
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      String str = (String)paramView.getTag();
-      if (!TextUtils.isEmpty(str))
+      return false;
+      if (Build.VERSION.SDK_INT >= 11)
       {
-        Intent localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-        localIntent.putExtra("hide_more_button", true);
-        localIntent.putExtra("hide_operation_bar", true);
-        localIntent.putExtra("url", str);
-        this.a.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-        ((Activity)this.a.jdField_a_of_type_AndroidContentContext).overridePendingTransition(2130771997, 0);
+        paramView.setAlpha(0.5F);
+        continue;
+        if (Build.VERSION.SDK_INT >= 11) {
+          paramView.setAlpha(1.0F);
+        }
       }
-      bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_talk", "", "obj", "link_msg", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "");
     }
   }
 }

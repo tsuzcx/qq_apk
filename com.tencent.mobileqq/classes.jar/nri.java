@@ -1,23 +1,16 @@
 import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
 
-public class nri
-  implements View.OnTouchListener
+class nri
+  extends nrn
 {
-  int jdField_a_of_type_Int = 0;
-  Handler jdField_a_of_type_AndroidOsHandler = new nrj(this);
+  nri(nrh paramnrh) {}
   
-  public nri(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean a(int paramInt, String paramString, nfv paramnfv)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 5L);
-    }
-    return false;
+    bjuc.c(this.a.a, "onRoomSelfExit " + paramInt + " " + paramString);
+    nrh.a(this.a).removeCallbacksAndMessages(null);
+    nrh.a(this.a).sendEmptyMessage(2);
+    return true;
   }
 }
 

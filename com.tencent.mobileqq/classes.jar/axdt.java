@@ -1,24 +1,21 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class axdt
-  implements axes
+public class axdt
+  implements View.OnClickListener
 {
-  axdt(axds paramaxds) {}
+  public axdt(MultiAIOFragment paramMultiAIOFragment) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      awrs localawrs = new awrs().h("data_card").i("feed_delete_suc").d("2").a(this.a.jdField_a_of_type_Axdo.a(this.a.jdField_a_of_type_Axdv)).b(paramString).c(String.valueOf(this.a.jdField_a_of_type_Axdo.a(this.a.jdField_a_of_type_Axdv)));
-      if (this.a.jdField_a_of_type_Axdo.jdField_a_of_type_Boolean) {}
-      for (paramString = "1";; paramString = "2")
-      {
-        localawrs.e(paramString).b(this.a.jdField_a_of_type_Axdo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        return;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAioFragment", 2, "indicator onClick() called with: v = [" + paramView + "]");
     }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, amtj.a(2131700183), 0).a();
+    MultiAIOFragment.b(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

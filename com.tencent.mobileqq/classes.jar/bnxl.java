@@ -1,90 +1,24 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import com.tencent.av.video.effect.lowlight.LowLightTools;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.data.CaptureRedDotConfig;
-import java.io.File;
-import java.io.FileOutputStream;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.transfile.predownload.HttpEngineTask;
+import com.tencent.mobileqq.transfile.predownload.HttpEngineTask.IHttpEngineTask;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorCommonEditFragment.8;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorCommonEditFragment.8.1.1;
 
 public class bnxl
+  implements HttpEngineTask.IHttpEngineTask
 {
-  public static int a;
-  public static Object a;
-  public static final String a;
-  private static int b;
-  public static final String b;
-  private static int c;
-  public static String c;
-  private static int d;
-  public static String d;
-  private static final String e;
-  private static final String f;
-  public CaptureRedDotConfig a;
+  public bnxl(AEEditorCommonEditFragment.8 param8) {}
   
-  static
+  public void onPreDownloadStart(HttpEngineTask paramHttpEngineTask) {}
+  
+  public void onResp(NetResp paramNetResp)
   {
-    jdField_a_of_type_JavaLangString = aktw.jdField_d_of_type_JavaLangString + "pddata/prd/dov_capture_qsvf" + File.separator;
-    jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "capture_res" + File.separator;
-    e = aktw.jdField_d_of_type_JavaLangString + "qav" + File.separator + "beauty" + File.separator;
-    f = e + "SKINCOLOR" + File.separator;
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_c_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "lowlight";
-    jdField_d_of_type_JavaLangString = jdField_c_of_type_JavaLangString + File.separator + "LowLight.png";
-    jdField_b_of_type_Int = 2;
-    jdField_c_of_type_Int = 1;
-    jdField_d_of_type_Int = -1;
+    ThreadManager.excute(new AEEditorCommonEditFragment.8.1.1(this, paramNetResp), 64, null, true);
   }
   
-  private void a()
-  {
-    File localFile = new File(jdField_d_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.delete();
-    }
-    for (;;)
-    {
-      Object localObject = LowLightTools.getLowLightImage(3.0F, 0.88F, 0.96F, 1.22F, false);
-      try
-      {
-        FileOutputStream localFileOutputStream = new FileOutputStream(localFile);
-        ((Bitmap)localObject).compress(Bitmap.CompressFormat.PNG, 100, localFileOutputStream);
-        localFileOutputStream.flush();
-        localFileOutputStream.close();
-        if (!localFile.exists())
-        {
-          jdField_a_of_type_Int = jdField_d_of_type_Int;
-          return;
-          localObject = localFile.getParentFile();
-          if (((File)localObject).exists()) {
-            continue;
-          }
-          ((File)localObject).mkdirs();
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.w("CaptureVideoFilterManager", 2, "LowLightTools saveBitmap:" + localException);
-        }
-        jdField_a_of_type_Int = jdField_b_of_type_Int;
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      if ((this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig != null) && (this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig.update))
-      {
-        this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig.update = false;
-        CaptureRedDotConfig.saveRedDotConfig(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig, jdField_a_of_type_JavaLangString, "_Filter");
-      }
-      return;
-    }
-    CaptureRedDotConfig.saveRedDotConfig(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig, jdField_a_of_type_JavaLangString, "_Filter");
-  }
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

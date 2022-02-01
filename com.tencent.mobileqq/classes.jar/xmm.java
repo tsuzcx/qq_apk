@@ -1,70 +1,23 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_message.ErrorInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_message.RspStoryMessageList;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_message.StoryMessage;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity.3.1;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity.3.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
 import java.util.List;
-import mqq.os.MqqHandler;
 
 public class xmm
-  extends nmd
+  extends xji
 {
-  public xmm(StoryMessageListActivity paramStoryMessageListActivity)
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public xmm(AbsVideoInfoWidget paramAbsVideoInfoWidget, StoryPlayerGroupHolder paramStoryPlayerGroupHolder) {}
   
-  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgList", 2, "fetch message list result, code=" + paramInt);
+    super.a(paramInt);
+    paramInt = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder.b;
+    if ((paramInt >= this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.a.size()) || (paramInt < 0))
+    {
+      ykq.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.b, "Position error , get data error, current position = %d , size = %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.a.size()) });
+      return;
     }
-    paramBundle = new qqstory_struct.ErrorInfo();
-    qqstory_710_message.RspStoryMessageList localRspStoryMessageList;
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      try
-      {
-        localRspStoryMessageList = new qqstory_710_message.RspStoryMessageList();
-        localRspStoryMessageList.mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = (qqstory_710_message.ErrorInfo)localRspStoryMessageList.errinfo.get();
-        paramBundle.error_code.set(paramArrayOfByte.error_code.get());
-        paramBundle.error_desc.set(paramArrayOfByte.error_desc.get());
-        if ((localRspStoryMessageList.errinfo.error_code.has()) && (localRspStoryMessageList.errinfo.error_code.get() == 0))
-        {
-          paramArrayOfByte = new ArrayList(localRspStoryMessageList.message_num.get());
-          Iterator localIterator = localRspStoryMessageList.message_list.get().iterator();
-          while (localIterator.hasNext())
-          {
-            xmj localxmj = new xmj((qqstory_710_message.StoryMessage)localIterator.next());
-            if (localxmj.d) {
-              paramArrayOfByte.add(localxmj);
-            }
-          }
-        }
-        ThreadManager.getUIHandler().post(new StoryMessageListActivity.3.2(this));
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.msgList", 2, "parse RspStoryMessageList error", paramArrayOfByte);
-        }
-      }
-    } else {
-      return paramBundle;
-    }
-    ThreadManager.getUIHandler().post(new StoryMessageListActivity.3.1(this, paramArrayOfByte, localRspStoryMessageList));
-    return paramBundle;
+    xhf localxhf = (xhf)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.a.get(paramInt);
+    AbsVideoInfoWidget.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget, localxhf);
   }
 }
 

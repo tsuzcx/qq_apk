@@ -1,13 +1,15 @@
 package com.tencent.qqmini.miniapp.core;
 
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+
 class EventListener$1
   implements Runnable
 {
-  EventListener$1(EventListener paramEventListener) {}
+  EventListener$1(EventListener paramEventListener, MiniAppInfo paramMiniAppInfo) {}
   
   public void run()
   {
-    this.this$0.moveAppBrandToBack();
+    EventListener.access$000(this.this$0, this.val$miniAppInfo);
   }
 }
 

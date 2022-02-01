@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar;
 
-import aocs;
+import apfu;
 
 public class ArConfigService$8$3
   implements Runnable
 {
-  public ArConfigService$8$3(aocs paramaocs) {}
+  public ArConfigService$8$3(apfu paramapfu) {}
   
   public void run()
   {

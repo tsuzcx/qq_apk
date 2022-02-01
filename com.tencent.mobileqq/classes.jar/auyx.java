@@ -1,28 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.ListenTogetherSession;
-import java.util.Map;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.freshnews.feed.NearbyImgLoader.RequestLoadedImgTask;
 
 public class auyx
-  implements DialogInterface.OnClickListener
+  implements URLDrawableHandler
 {
-  public auyx(ListenTogetherManager paramListenTogetherManager, int paramInt, String paramString) {}
+  public auyx(NearbyImgLoader.RequestLoadedImgTask paramRequestLoadedImgTask) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void doCancel() {}
+  
+  public boolean isCancelled()
   {
-    if (paramInt == 1)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.a();
-      paramDialogInterface.dismiss();
-    }
-    while (paramInt != 0) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.b();
-    paramDialogInterface.dismiss();
-    ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager, (ListenTogetherSession)ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager).get(auzn.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString)));
+    return false;
   }
+  
+  public void onFileDownloadFailed(int paramInt) {}
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong) {}
+  
+  public void publishProgress(int paramInt) {}
 }
 
 

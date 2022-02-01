@@ -1,26 +1,12 @@
-import UserGrowth.stSchema;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.widget.ImageView;
+import java.lang.ref.WeakReference;
 
-public class uqc
-  implements uqb
+class uqc
 {
-  public upq a(ups paramups)
-  {
-    if ((yqu.a(BaseApplicationImpl.getContext())) && (!TextUtils.isEmpty(paramups.a().schema))) {
-      return new upu(paramups);
-    }
-    if (!TextUtils.isEmpty(paramups.a().miniAppSchema)) {
-      return new upx(paramups);
-    }
-    if (!TextUtils.isEmpty(paramups.a().H5Url)) {
-      return new uqa(paramups);
-    }
-    if (yqu.a(BaseApplicationImpl.getContext())) {
-      return new upu(paramups);
-    }
-    return new upw(paramups);
-  }
+  WeakReference<ImageView> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<uqd> b;
+  
+  private uqc(uqa paramuqa) {}
 }
 
 

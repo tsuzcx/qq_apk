@@ -1,14 +1,19 @@
-public class bmun
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
+
+class bmun
+  implements MediaScanner.OnMediaInfoScannerListener
 {
-  public String a;
-  public String b;
-  public String c;
+  bmun(bmul parambmul) {}
   
-  public bmun(String paramString1, String paramString2, String paramString3)
+  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    if (!paramBoolean)
+    {
+      this.a.a(101);
+      return;
+    }
+    this.a.a(this.a.a, paramLocalMediaInfo);
   }
 }
 

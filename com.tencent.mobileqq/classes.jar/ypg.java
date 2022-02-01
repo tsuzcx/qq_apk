@@ -1,55 +1,28 @@
-public class ypg
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.View;
+
+public abstract interface ypg
 {
-  public static String a(int paramInt)
-  {
-    for (;;)
-    {
-      try
-      {
-        localObject = new RuntimeException("getStackTrace").getStackTrace();
-        localStringBuilder = new StringBuilder();
-        i = paramInt;
-        if (localObject.length > paramInt) {
-          break label69;
-        }
-        i = localObject.length;
-      }
-      catch (Exception localException)
-      {
-        Object localObject;
-        StringBuilder localStringBuilder;
-        int i;
-        return "";
-      }
-      if (paramInt < i)
-      {
-        localStringBuilder.append(localObject[paramInt].toString());
-        paramInt += 1;
-      }
-      else
-      {
-        localObject = localStringBuilder.toString();
-        return localObject;
-        label69:
-        paramInt = 2;
-      }
-    }
-  }
+  @NonNull
+  public abstract Context a();
   
-  public static void a(String paramString, int paramInt, long paramLong)
-  {
-    if (paramLong <= 0L)
-    {
-      yos.a("unLikeRecommendFeed failed, because recommendId=" + paramLong, new Object[0]);
-      return;
-    }
-    yph localyph = new yph();
-    localyph.jdField_b_of_type_JavaLangString = paramString;
-    localyph.c = paramInt;
-    localyph.jdField_b_of_type_Long = paramLong;
-    localyph.d = 1;
-    vqn.a().a(localyph, null);
-  }
+  public abstract Intent a(yya paramyya);
+  
+  @NonNull
+  public abstract View a();
+  
+  public abstract void a(int paramInt1, @Nullable Intent paramIntent, int paramInt2, int paramInt3);
+  
+  public abstract void a(CharSequence paramCharSequence, boolean paramBoolean, long paramLong);
+  
+  public abstract void b();
+  
+  @Nullable
+  public abstract Activity getActivity();
 }
 
 

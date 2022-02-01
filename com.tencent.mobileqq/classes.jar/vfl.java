@@ -1,20 +1,11 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import cooperation.qzone.statistic.Singleton;
 
-public class vfl
-  extends Handler
+final class vfl
+  extends Singleton<vfk, Void>
 {
-  public vfl(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
-  
-  public void handleMessage(Message paramMessage)
+  protected vfk a(Void paramVoid)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    PublicAccountImageCollectionMainActivity.b(this.a);
+    return new vfk();
   }
 }
 

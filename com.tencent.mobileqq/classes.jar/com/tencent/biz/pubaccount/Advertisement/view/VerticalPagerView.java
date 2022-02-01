@@ -7,8 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Scroller;
 import com.tencent.mobileqq.util.DisplayUtil;
-import nyp;
-import nyq;
+import ofp;
+import ofq;
 
 public class VerticalPagerView
   extends ViewGroup
@@ -16,8 +16,8 @@ public class VerticalPagerView
   protected float a;
   protected int a;
   protected Scroller a;
-  protected nyp a;
-  protected nyq a;
+  protected ofp a;
+  protected ofq a;
   protected boolean a;
   protected float b;
   protected int b;
@@ -44,8 +44,8 @@ public class VerticalPagerView
   
   public void a()
   {
-    this.jdField_a_of_type_Nyq = null;
-    this.jdField_a_of_type_Nyp = null;
+    this.jdField_a_of_type_Ofq = null;
+    this.jdField_a_of_type_Ofp = null;
   }
   
   public void a(int paramInt) {}
@@ -90,8 +90,8 @@ public class VerticalPagerView
       if ((!this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Int != this.jdField_c_of_type_Int))
       {
         a(this.jdField_c_of_type_Int);
-        if (this.jdField_a_of_type_Nyq != null) {
-          this.jdField_a_of_type_Nyq.a(this, super.getChildAt(this.jdField_c_of_type_Int), this.jdField_c_of_type_Int);
+        if (this.jdField_a_of_type_Ofq != null) {
+          this.jdField_a_of_type_Ofq.a(this, super.getChildAt(this.jdField_c_of_type_Int), this.jdField_c_of_type_Int);
         }
         this.jdField_b_of_type_Int = this.jdField_c_of_type_Int;
       }
@@ -129,14 +129,14 @@ public class VerticalPagerView
       i = (int)(paramMotionEvent.getY() - this.jdField_a_of_type_Int);
       if (i > 0)
       {
-        if (this.jdField_a_of_type_Nyp != null) {
-          return this.jdField_a_of_type_Nyp.b(this.jdField_c_of_type_Int);
+        if (this.jdField_a_of_type_Ofp != null) {
+          return this.jdField_a_of_type_Ofp.b(this.jdField_c_of_type_Int);
         }
         return b(this.jdField_c_of_type_Int);
       }
     } while (i >= 0);
-    if (this.jdField_a_of_type_Nyp != null) {
-      return this.jdField_a_of_type_Nyp.a(this.jdField_c_of_type_Int);
+    if (this.jdField_a_of_type_Ofp != null) {
+      return this.jdField_a_of_type_Ofp.a(this.jdField_c_of_type_Int);
     }
     return a(this.jdField_c_of_type_Int);
   }
@@ -195,8 +195,8 @@ public class VerticalPagerView
       if (i < 0)
       {
         this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
-        if (this.jdField_a_of_type_Nyq != null) {
-          this.jdField_a_of_type_Nyq.a(false, this.jdField_c_of_type_Int);
+        if (this.jdField_a_of_type_Ofq != null) {
+          this.jdField_a_of_type_Ofq.a(false, this.jdField_c_of_type_Int);
         }
         this.f = (this.d - this.e);
         this.e = this.d;
@@ -205,8 +205,8 @@ public class VerticalPagerView
       if (i > (super.getChildCount() - 1) * super.getHeight())
       {
         this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
-        if (this.jdField_a_of_type_Nyq != null) {
-          this.jdField_a_of_type_Nyq.a(false, this.jdField_c_of_type_Int);
+        if (this.jdField_a_of_type_Ofq != null) {
+          this.jdField_a_of_type_Ofq.a(false, this.jdField_c_of_type_Int);
         }
         this.f = (this.d - this.e);
         this.e = this.d;
@@ -215,8 +215,8 @@ public class VerticalPagerView
       this.jdField_a_of_type_AndroidWidgetScroller.startScroll(0, this.jdField_a_of_type_AndroidWidgetScroller.getFinalY(), 0, -this.jdField_a_of_type_Int, 0);
       this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
       super.invalidate();
-      if (this.jdField_a_of_type_Nyq != null) {
-        this.jdField_a_of_type_Nyq.a(true, this.jdField_c_of_type_Int);
+      if (this.jdField_a_of_type_Ofq != null) {
+        this.jdField_a_of_type_Ofq.a(true, this.jdField_c_of_type_Int);
       }
     }
     while ((i != 1) && (i != 3))
@@ -240,10 +240,10 @@ public class VerticalPagerView
       a(0, this.jdField_c_of_type_Int * super.getHeight());
       this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
       this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Nyq == null) {
+      if (this.jdField_a_of_type_Ofq == null) {
         break;
       }
-      this.jdField_a_of_type_Nyq.a(false, this.jdField_c_of_type_Int);
+      this.jdField_a_of_type_Ofq.a(false, this.jdField_c_of_type_Int);
       break;
       if ((i < -super.getHeight() / 4) || ((i < 0) && (f1 > DisplayUtil.dip2px(super.getContext(), 5.0F))))
       {
@@ -272,14 +272,14 @@ public class VerticalPagerView
     this.jdField_b_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnInterceptTouchListener(nyp paramnyp)
+  public void setOnInterceptTouchListener(ofp paramofp)
   {
-    this.jdField_a_of_type_Nyp = paramnyp;
+    this.jdField_a_of_type_Ofp = paramofp;
   }
   
-  public void setOnPagerChangedListener(nyq paramnyq)
+  public void setOnPagerChangedListener(ofq paramofq)
   {
-    this.jdField_a_of_type_Nyq = paramnyq;
+    this.jdField_a_of_type_Ofq = paramofq;
   }
 }
 

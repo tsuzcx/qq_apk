@@ -1,31 +1,25 @@
-import UserGrowth.stCallInfo;
-import android.app.Activity;
-import com.tencent.biz.pubaccount.weishi_new.util.OuterInterceptManager.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.weishi_new.WSFollowFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class uxi
+  implements View.OnClickListener
 {
-  public static void a(Activity paramActivity, uxm paramuxm)
-  {
-    stCallInfo localstCallInfo = umu.a().a();
-    if ((localstCallInfo != null) && (localstCallInfo.switch_call_live))
-    {
-      uya.e("OuterInterceptManager", "stGlobalConfig.callinfo: " + localstCallInfo);
-      if (paramuxm != null) {
-        paramuxm.b();
-      }
-      b(paramActivity, paramuxm);
-    }
-    while (paramuxm == null) {
-      return;
-    }
-    paramuxm.a();
-  }
+  public uxi(WSFollowFragment paramWSFollowFragment) {}
   
-  private static void b(Activity paramActivity, uxm paramuxm)
+  public void onClick(View paramView)
   {
-    ThreadManager.getUIHandler().post(new OuterInterceptManager.1(paramActivity, paramuxm));
+    if (WSFollowFragment.a(this.a) != null) {
+      WSFollowFragment.a(this.a).b();
+    }
+    ((via)this.a.b()).a(true, true);
+    WSFollowFragment.a(this.a).setVisibility(8);
+    this.a.c();
+    vjx.a(136, 1, null);
+    vkf.b(true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

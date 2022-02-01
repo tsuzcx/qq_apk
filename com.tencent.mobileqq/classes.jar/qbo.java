@@ -1,20 +1,41 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-class qbo
-  implements Animation.AnimationListener
+public class qbo
+  implements URLDrawable.URLDrawableListener
 {
-  qbo(qbn paramqbn, View paramView, Animation paramAnimation) {}
+  public qbo(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment, int paramInt1, int paramInt2) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyIMAXAdFragment", 2, "onLoadCanceled");
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyIMAXAdFragment", 2, "onLoadFialed");
+    }
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyIMAXAdFragment", 2, "onLoadProgressed =" + paramInt);
+    }
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (ReadInjoyIMAXAdFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment)) {
+      return;
+    }
+    ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment, this.jdField_a_of_type_Int, this.b);
+  }
 }
 
 

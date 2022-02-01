@@ -1,16 +1,12 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
-
 public class bant
-  implements View.OnTouchListener
+  implements bakv
 {
-  public bant(SignatureHistoryFragment paramSignatureHistoryFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    return SignatureHistoryFragment.a(this.a, paramView, false);
+    bakl.a("HelloQQWake", "WakeLoadCallBack,onSuccess()");
+    if (bakt.a()) {
+      banp.a().a("WakeLoadCallBack onSuccess");
+    }
   }
 }
 

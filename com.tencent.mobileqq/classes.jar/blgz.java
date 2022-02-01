@@ -1,11 +1,6 @@
-public final class blgz
+public abstract interface blgz
 {
-  public int a;
-  public long a;
-  public String a;
-  public Throwable a = null;
-  public long b;
-  public long c;
+  public abstract int a();
 }
 
 

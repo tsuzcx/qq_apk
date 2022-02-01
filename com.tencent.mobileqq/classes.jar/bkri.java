@@ -1,24 +1,15 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqindividuality.QQIndividualityBridgeActivity;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bkri
-  extends bkry
+final class bkri
+  implements DialogInterface.OnClickListener
 {
-  public bkri(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity, Context paramContext)
-  {
-    super(paramContext);
-  }
+  bkri(Activity paramActivity) {}
   
-  public void onBackPressed()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a) {
-      super.onBackPressed();
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("IphoneTitleBarActivity", 2, "tool process has started, cancel by the tool");
+    mvk.a(this.a);
   }
 }
 

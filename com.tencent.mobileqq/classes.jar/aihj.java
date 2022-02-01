@@ -1,29 +1,22 @@
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
-import com.tencent.qphone.base.util.QLog;
-
-public class aihj
-  extends ayce
+public abstract interface aihj
 {
-  public aihj(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  public abstract int a();
   
-  protected void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact.Manager", 2, String.format("onQueryShowBindPhonePage result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    if (paramBoolean)
-    {
-      paramBoolean = PhoneContactManagerImp.b(this.a, PhoneContactManagerImp.g(this.a));
-      PhoneContactManagerImp.c(this.a, paramBoolean);
-    }
-  }
+  public abstract int a(float paramFloat1, float paramFloat2);
   
-  protected void b(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact.Manager", 2, String.format("onSetShowBindPhonePageResult result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-  }
+  public abstract void a(float paramFloat1, float paramFloat2);
+  
+  public abstract void a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract boolean a(float paramFloat1, float paramFloat2);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

@@ -1,152 +1,232 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.content.res.AssetManager;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.idlefish.flutterboost.FlutterBoost;
+import com.idlefish.flutterboost.FlutterBoost.BoostLifecycleListener;
+import com.idlefish.flutterboost.FlutterBoost.ConfigBuilder;
+import com.qflutter.native_resources.QFlutterSkinEnginePlugin;
+import com.qflutter.qflutter_network_image.QFlutterNetworkImage;
+import com.qflutter.qqcircle.TencentQQCirclePlugin;
+import com.qflutter.qqface.loader.QQFaceLoader;
+import com.qflutter.resource_loader.QFlutterResourceLoader;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.flutter.launch.QFlutterLauncher.2;
+import com.tencent.mobileqq.flutter.launch.QFlutterLauncher.4;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import eipc.EIPCClient;
+import io.flutter.embedding.android.FlutterView.RenderMode;
+import io.flutter.view.FlutterMain;
+import java.io.File;
+import java.lang.reflect.Method;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+import mqq.os.MqqHandler;
 
 public class auoy
-  extends WebViewPlugin
 {
-  private int jdField_a_of_type_Int;
-  private zon jdField_a_of_type_Zon;
-  final zop jdField_a_of_type_Zop = new auoz(this);
-  private int b;
+  private static auoy jdField_a_of_type_Auoy;
+  private int jdField_a_of_type_Int = 0;
+  private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsLooper);
+  private final Looper jdField_a_of_type_AndroidOsLooper = Looper.getMainLooper();
+  private auox jdField_a_of_type_Auox = new auox();
+  private FlutterBoost.BoostLifecycleListener jdField_a_of_type_ComIdlefishFlutterboostFlutterBoost$BoostLifecycleListener = new aupa(this);
+  private final Set<auov> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private boolean jdField_a_of_type_Boolean;
   
-  public auoy()
+  public static auoy a()
   {
-    this.mPluginNameSpace = "nowlive";
-  }
-  
-  private void a(int paramInt1, int paramInt2)
-  {
-    JSONObject localJSONObject = new JSONObject();
+    if (jdField_a_of_type_Auoy == null) {}
     try
     {
-      localJSONObject.put("state", paramInt1);
-      localJSONObject.put("progress", paramInt2);
-      callJs("window.__WEBVIEW_GETPLUGININFO && window.__WEBVIEW_GETPLUGININFO(" + localJSONObject.toString() + ");");
+      if (jdField_a_of_type_Auoy == null) {
+        jdField_a_of_type_Auoy = new auoy();
+      }
+      return jdField_a_of_type_Auoy;
+    }
+    finally {}
+  }
+  
+  private void a()
+  {
+    if (Looper.myLooper() != this.jdField_a_of_type_AndroidOsLooper) {}
+  }
+  
+  private void a(int paramInt, boolean paramBoolean)
+  {
+    QLog.d("QFlutter.launcher", 1, String.format("notifyResult, errCode: %s, isFirstLaunch: %s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) }));
+    if (Looper.myLooper() == this.jdField_a_of_type_AndroidOsLooper)
+    {
+      b(paramInt, paramBoolean);
       return;
     }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
+    ThreadManager.getUIHandler().post(new QFlutterLauncher.4(this, paramInt, paramBoolean));
   }
   
-  private void a(int paramInt, String paramString)
+  private void b()
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("errcode", paramInt);
-      localJSONObject.put("desc", paramString);
-      callJs("window.__WEBVIEW_INSTALL && window.__WEBVIEW_INSTALL(" + localJSONObject.toString() + ");");
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public zon a()
-  {
-    return this.jdField_a_of_type_Zon;
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    boolean bool = false;
     if (QLog.isColorLevel()) {
-      QLog.d("NowWebViewPlugin", 2, "handleJsRequest, url=" + paramString1 + ", pkgName=" + paramString2 + ", methodName=" + paramString3);
+      QLog.d("QFlutter.launcher", 2, "start install");
     }
-    if ((this.jdField_a_of_type_Zon == null) || (paramString1 == null) || (!"nowlive".equals(paramString2)) || (paramString3 == null)) {}
-    label337:
-    do
+    this.jdField_a_of_type_Auox.a();
+    if (auot.a())
     {
-      return false;
-      if ("getPluginInfo".equals(paramString3))
-      {
-        this.jdField_a_of_type_Zon.i();
-        a(this.jdField_a_of_type_Int, this.b);
-      }
-      for (;;)
-      {
-        return true;
-        if ("openRoom".equals(paramString3))
-        {
-          if ((paramVarArgs == null) || (paramVarArgs.length == 0)) {
-            break;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("NowWebViewPlugin", 2, "handleJsRequest arg = " + paramVarArgs[0]);
-          }
-          paramJsBridgeListener = paramVarArgs[0];
-          if (TextUtils.isEmpty(paramJsBridgeListener)) {
-            break;
-          }
-          this.jdField_a_of_type_Zon.a(Long.valueOf(paramJsBridgeListener).longValue());
-          continue;
-        }
-        if ("install".equals(paramString3))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("NowWebViewPlugin", 2, "handleJsRequest install arg = " + paramVarArgs[0]);
-          }
-          if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-            paramJsBridgeListener = paramVarArgs[0];
-          }
-          for (;;)
-          {
-            try
-            {
-              i = Integer.valueOf(paramJsBridgeListener).intValue();
-              paramJsBridgeListener = this.jdField_a_of_type_Zon;
-              if (i == 1) {
-                bool = true;
-              }
-              paramJsBridgeListener.b(bool);
-            }
-            catch (NumberFormatException paramJsBridgeListener)
-            {
-              paramJsBridgeListener.printStackTrace();
-            }
-            int i = 0;
-          }
-        }
-        if ("preload".equals(paramString3))
-        {
-          this.jdField_a_of_type_Zon.g();
-        }
-        else
-        {
-          if (!"audioRoomSetting".equals(paramString3)) {
-            break label337;
-          }
-          auqo.a(this, paramVarArgs);
-        }
-      }
-    } while (!QLog.isColorLevel());
-    QLog.w("NowWebViewPlugin", 2, "NOT support method " + paramString3 + " yet!!");
-    return false;
+      this.jdField_a_of_type_Boolean = true;
+      auot.a();
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    auos.a();
+    Bundle localBundle = new Bundle();
+    if (2 == BaseApplicationImpl.sProcessId) {
+      localBundle.putString("FlutterCallerIpcProcessName", "com.tencent.mobileqq:qzone");
+    }
+    QIPCClientHelper.getInstance().getClient().callServer("FlutterMainQIPCModule", "ACTION_INSTALL_ENGINE", localBundle, new auoz(this));
   }
   
-  public void onCreate()
+  private void b(int paramInt, boolean paramBoolean)
   {
-    super.onCreate();
-    this.jdField_a_of_type_Zon = zon.a();
-    this.jdField_a_of_type_Zon.a();
-    this.jdField_a_of_type_Zon.g(this.jdField_a_of_type_Zop);
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    if (paramInt == 0) {}
+    for (this.jdField_a_of_type_Int = 2;; this.jdField_a_of_type_Int = 0)
+    {
+      auow localauow = new auow(paramInt, paramBoolean, this.jdField_a_of_type_Boolean);
+      if (paramBoolean)
+      {
+        this.jdField_a_of_type_Auox.a(paramInt, this.jdField_a_of_type_Boolean);
+        localauow.a(this.jdField_a_of_type_Auox);
+      }
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+      while (localIterator.hasNext()) {
+        ((auov)localIterator.next()).a(localauow);
+      }
+    }
   }
   
-  public void onDestroy()
+  private void b(auov paramauov)
   {
-    super.onDestroy();
-    if (this.jdField_a_of_type_Zon != null)
+    if (paramauov == null) {
+      return;
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilSet)
     {
-      this.jdField_a_of_type_Zon.b();
-      this.jdField_a_of_type_Zon.h();
+      this.jdField_a_of_type_JavaUtilSet.add(paramauov);
+      return;
+    }
+  }
+  
+  public void a(auov paramauov)
+  {
+    if (paramauov == null) {
+      return;
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilSet)
+    {
+      this.jdField_a_of_type_JavaUtilSet.remove(paramauov);
+      return;
+    }
+  }
+  
+  public void a(auov paramauov, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    a();
+    b(paramauov);
+    if (this.jdField_a_of_type_Int == 2)
+    {
+      QLog.d("QFlutter.launcher", 1, "engine is running");
+      a(0, false);
+      return;
+    }
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      QLog.d("QFlutter.launcher", 1, "engine is launching");
+      return;
+    }
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_Auox.f();
+    this.jdField_a_of_type_Auox.a(paramBoolean1, paramBoolean2);
+    b();
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_Auox.b();
+    String str = paramString + File.separator + "res.apk";
+    if (FileUtil.isFileExists(str)) {
+      try
+      {
+        AssetManager localAssetManager = BaseApplicationImpl.getContext().getAssets();
+        Method localMethod = AssetManager.class.getDeclaredMethod("addAssetPath", new Class[] { String.class });
+        localMethod.setAccessible(true);
+        localMethod.invoke(localAssetManager, new Object[] { str });
+        this.jdField_a_of_type_Auox.c();
+        if (Looper.myLooper() == this.jdField_a_of_type_AndroidOsLooper)
+        {
+          b(paramString);
+          return;
+        }
+        ThreadManager.getUIHandler().postAtFrontOfQueue(new QFlutterLauncher.2(this, paramString));
+        return;
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("QFlutter.launcher", 1, "loadAsset", paramString);
+        a(5, true);
+        return;
+      }
+    }
+    QLog.e("QFlutter.launcher", 1, String.format("assetsPath: %s not exist", new Object[] { str }));
+    a(4, true);
+  }
+  
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.launcher", 2, String.format("onInstallResult, isSuccess: %s, installDir: %s, isLocalEngineExist: %s, isLocalAppExist: %s", new Object[] { Boolean.valueOf(paramBoolean1), paramString, Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) }));
+    }
+    if ((paramBoolean1) && (FileUtil.isFileExists(paramString)))
+    {
+      this.jdField_a_of_type_Auox.b(paramBoolean2, paramBoolean3);
+      a(paramString);
+      return;
+    }
+    QLog.d("QFlutter.launcher", 1, String.format("onInstallResult, isSuccess: %s, installDir: %s, fileIsExist: %s", new Object[] { Boolean.valueOf(paramBoolean1), paramString, Boolean.valueOf(FileUtil.isFileExists(paramString)) }));
+    a(3, true);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == 1;
+  }
+  
+  public void b(String paramString)
+  {
+    a();
+    this.jdField_a_of_type_Auox.d();
+    FlutterMain.setNativeLibDir(paramString);
+    com.tencent.qflutter.utils.FLog.sLog = new auok();
+    QFlutterResourceLoader.get().init(BaseApplicationImpl.getContext(), new auoo(BaseApplicationImpl.getContext()));
+    QQFaceLoader.instance().init(new aupd());
+    auol.a(paramString + File.separator + "libqflutter-resource-loader.so");
+    QFlutterNetworkImage.g().init(new auol());
+    TencentQQCirclePlugin.setQQCircleMethod(new aumv());
+    QFlutterSkinEnginePlugin.setCurrentThemeId(ThemeUtil.getCurrentThemeId());
+    paramString = new FlutterBoost.ConfigBuilder(BaseApplicationImpl.getApplication(), auoj.a()).isDebug(false).whenEngineStart(FlutterBoost.ConfigBuilder.IMMEDIATELY).renderMode(FlutterView.RenderMode.texture).lifecycleListener(this.jdField_a_of_type_ComIdlefishFlutterboostFlutterBoost$BoostLifecycleListener).build();
+    try
+    {
+      FlutterBoost.instance().init(paramString);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.d("QFlutter.launcher", 1, "loadEngine", paramString);
+      a(6, true);
     }
   }
 }

@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import com.tencent.widget.XPanelContainer;
-
 class BaseChatPie$54
   implements Runnable
 {
@@ -9,8 +7,7 @@ class BaseChatPie$54
   
   public void run()
   {
-    this.this$0.setInputStat(0);
-    this.this$0.root.a(1);
+    this.this$0.showAudioPanel(true);
   }
 }
 

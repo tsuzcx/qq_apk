@@ -1,20 +1,68 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
+import com.tribe.async.dispatch.Subscriber;
+import java.util.Map;
 
-class xgb
-  implements xqk<Integer>
+public class xgb
+  extends AbsVideoInfoWidget
 {
-  xgb(xfy paramxfy, vuq paramvuq) {}
+  private xgd a = new xgd(this);
+  private boolean e;
   
-  public void a(ErrorMessage paramErrorMessage)
+  public xgb(ViewGroup paramViewGroup)
   {
-    xvv.e("QQStoryTakeVideoHelper", "get vip error.");
+    super(paramViewGroup);
   }
   
-  public void a(Integer paramInteger)
+  public String a()
   {
-    xvv.b("QQStoryTakeVideoHelper", "get vip competed, vip:" + paramInteger);
-    this.jdField_a_of_type_Vuq.b("qqstory_i_am_vip", paramInteger);
+    return "LoadingMoreWidget";
   }
+  
+  public xgd a()
+  {
+    return this.a;
+  }
+  
+  public void a(View paramView) {}
+  
+  public void a(@NonNull Map<Subscriber, String> paramMap)
+  {
+    paramMap.put(new xgc(this), "");
+  }
+  
+  public void a(@NonNull xhf paramxhf, @NonNull StoryVideoItem paramStoryVideoItem) {}
+  
+  public boolean a(@NonNull xhf paramxhf, @NonNull StoryVideoItem paramStoryVideoItem)
+  {
+    return this.e;
+  }
+  
+  public int b()
+  {
+    return 2131561840;
+  }
+  
+  public void d()
+  {
+    this.e = true;
+    i();
+    ykq.b("Q.qqstory.playernew.LoadingMoreWidget", "showLoadMore");
+  }
+  
+  public void e()
+  {
+    this.e = false;
+    k();
+    ykq.b("Q.qqstory.playernew.LoadingMoreWidget", "hideLoadMore");
+  }
+  
+  public void f() {}
+  
+  public void g() {}
 }
 
 

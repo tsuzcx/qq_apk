@@ -1,53 +1,34 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qidian.QidianProfileCardActivity.QidianSimpleProfileItem;
-import java.util.List;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.widget.ConfigClearableEditText;
 
 public class bimz
-  extends Handler
+  implements TextWatcher
 {
-  public bimz(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  public bimz(ConfigClearableEditText paramConfigClearableEditText) {}
   
-  public void handleMessage(Message paramMessage)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    switch (paramMessage.what)
+    paramCharSequence = this.a.getText().toString();
+    if (this.a.isFocused())
     {
+      if ((paramCharSequence == null) || (paramCharSequence.length() == 0)) {
+        this.a.setClearButtonVisible(false);
+      }
     }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
+    else {
       return;
-      try
-      {
-        BitmapDrawable localBitmapDrawable = new BitmapDrawable(this.a.getResources(), this.a.jdField_a_of_type_AndroidGraphicsBitmap);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localBitmapDrawable);
-      }
-      catch (Exception localException) {}
-      continue;
-      Object localObject = (QidianProfileCardActivity.QidianSimpleProfileItem)paramMessage.getData().getParcelable("data");
-      localObject = this.a.a((QidianProfileCardActivity.QidianSimpleProfileItem)localObject);
-      if (localObject != null)
-      {
-        this.a.b.addView((View)localObject);
-        continue;
-        localObject = paramMessage.getData().getParcelableArrayList("data");
-        localObject = this.a.a((List)localObject);
-        if (localObject != null)
-        {
-          LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-          localLayoutParams.leftMargin = this.a.d;
-          ((View)localObject).setPadding(0, this.a.e, this.a.d, this.a.e);
-          this.a.b.addView((View)localObject, localLayoutParams);
-        }
-      }
     }
+    if ((ConfigClearableEditText.b(this.a)) || (ConfigClearableEditText.c(this.a)))
+    {
+      this.a.setClearButtonVisible(true);
+      return;
+    }
+    this.a.setClearButtonVisible(false);
   }
 }
 

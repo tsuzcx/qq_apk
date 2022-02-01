@@ -1,25 +1,41 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ToggleButton;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import com.tencent.mobileqq.profile.ProfileLabelInfo;
+import java.util.List;
 
 public class aent
-  implements View.OnClickListener
+  implements azvm
 {
-  public aent(TroopMemberListActivity paramTroopMemberListActivity, int paramInt1, int paramInt2) {}
+  public aent(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
   
-  public void onClick(View paramView)
+  public void a(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton, Boolean paramBoolean)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, TroopMemberListActivity.class);
-    localIntent.putExtra("troop_uin", this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b);
-    localIntent.putExtra("param_from", 15);
-    localIntent.putExtra("param_seq_days", TroopMemberListActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity));
-    localIntent.putExtra("param_seq_name", TroopMemberListActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity));
-    localIntent.putExtra("TROOP_INFO_MEMBER_NUM", this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.startActivityForResult(localIntent, 4);
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, "dc00899", "Grp_mber", "", "mber_list", "clk_inacentry", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b, "" + this.b, "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramBoolean.booleanValue())
+    {
+      if ((this.a.a(paramProfileLabelInfo.labelId, this.a.jdField_a_of_type_JavaUtilList)) || (this.a.a(this.a.jdField_a_of_type_JavaUtilList)))
+      {
+        if (this.a.a(this.a.jdField_a_of_type_JavaUtilList)) {
+          this.a.b(2131693272);
+        }
+        return;
+      }
+      bdla.b(this.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "1", "", "", "");
+      this.a.jdField_a_of_type_JavaUtilList.add(paramProfileLabelInfo);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Azvn.c(paramProfileLabelInfo, paramToggleButton);
+      this.a.a(this.a.jdField_a_of_type_JavaUtilList.size());
+      if (this.a.jdField_a_of_type_Aenx == null) {
+        break;
+      }
+      this.a.jdField_a_of_type_Aenx.notifyDataSetChanged();
+      return;
+      if (!this.a.a(paramProfileLabelInfo.labelId, this.a.jdField_a_of_type_JavaUtilList)) {
+        break;
+      }
+      this.a.a(paramProfileLabelInfo, this.a.jdField_a_of_type_JavaUtilList);
+    }
   }
 }
 

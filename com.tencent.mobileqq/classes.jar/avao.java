@@ -1,8 +1,11 @@
-import org.json.JSONObject;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 
 public abstract interface avao
 {
-  public abstract void a(JSONObject paramJSONObject);
+  public abstract boolean a(MotionEvent paramMotionEvent);
+  
+  public abstract boolean a(ScaleGestureDetector paramScaleGestureDetector);
 }
 
 

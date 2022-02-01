@@ -1,15 +1,73 @@
 import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.ViewGroup;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.richframework.part.extendsblock.HorizontalRvInnerView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-class zpl
-  extends bgod
+public abstract class zpl
+  extends zou
 {
-  zpl(zpf paramzpf, Bundle paramBundle) {}
+  private HorizontalRvInnerView a;
   
-  public void onDone(bgoe parambgoe)
+  public zpl(Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putBoolean("down", true);
-    this.jdField_a_of_type_Zpf.a.a(86, this.jdField_a_of_type_AndroidOsBundle);
+    super(paramBundle);
+  }
+  
+  public int a()
+  {
+    return 3;
+  }
+  
+  public abstract zpm a(ViewGroup paramViewGroup, int paramInt);
+  
+  public abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
+  
+  public abstract void a(HorizontalRvInnerView paramHorizontalRvInnerView);
+  
+  public void a(ArrayList paramArrayList)
+  {
+    a().clear();
+    a().addAll(paramArrayList);
+    if (this.a != null) {
+      this.a.setData(paramArrayList);
+    }
+  }
+  
+  public abstract int c();
+  
+  protected boolean e()
+  {
+    return false;
+  }
+  
+  public int getItemCount()
+  {
+    if ((!e()) || (a().size() > 0)) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if ((paramViewHolder.itemView instanceof HorizontalRvInnerView)) {
+      this.a.setData(a());
+    }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    this.a = new HorizontalRvInnerView(paramViewGroup.getContext(), this);
+    this.a.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+    paramViewGroup = new zoy(this, this.a);
+    paramViewGroup.setIsRecyclable(false);
+    a(this.a);
+    return paramViewGroup;
   }
 }
 

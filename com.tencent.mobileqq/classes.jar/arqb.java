@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendMultiLinesTagsView;
+import android.net.Uri;
+import android.provider.ContactsContract.CommonDataKinds.Phone;
 
 public class arqb
 {
-  public int a;
-  public String a;
+  public static final Uri a;
+  public static final String[] a;
   
-  public arqb(ExtendFriendMultiLinesTagsView paramExtendFriendMultiLinesTagsView, int paramInt, String paramString)
+  static
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    jdField_a_of_type_AndroidNetUri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "data1", "display_name", "contact_id", "raw_contact_id" };
   }
 }
 

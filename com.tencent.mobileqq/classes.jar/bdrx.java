@@ -1,28 +1,247 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import java.util.ArrayList;
 
 public class bdrx
-  extends SosoInterface.OnLocationListener
+  extends bdnv
 {
-  public bdrx(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public View a(Context paramContext, View paramView, boolean paramBoolean, Bundle paramBundle)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    Resources localResources = paramContext.getResources();
+    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    int i;
+    if (paramView != null)
+    {
+      localObject1 = localObject2;
+      if ((paramView instanceof RelativeLayout))
+      {
+        paramView = (RelativeLayout)paramView;
+        if (paramView.getChildCount() == j)
+        {
+          i = 0;
+          localObject1 = paramView;
+          if (i >= j) {
+            break label1053;
+          }
+          localObject1 = (bdnu)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+          ((bdnu)localObject1).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+          localObject2 = ((bdnu)localObject1).jdField_a_of_type_JavaLangString;
+          if ("summary".equals(localObject2))
+          {
+            localObject1 = (bdsv)localObject1;
+            if (paramBoolean)
+            {
+              ((bdsv)localObject1).b("black");
+              label122:
+              localObject2 = ((bdsv)localObject1).f();
+              if ((localObject2 == null) || (!((String)localObject2).equals("1"))) {
+                break label189;
+              }
+              ((bdsv)localObject1).c("22");
+              ((bdsv)localObject1).a(true);
+              ((bdsv)localObject1).a(paramContext, paramView.findViewById(2), paramBundle);
+            }
+          }
+          for (;;)
+          {
+            i += 1;
+            break;
+            ((bdsv)localObject1).b(null);
+            break label122;
+            label189:
+            if ((localObject2 != null) && (((String)localObject2).equals("2")))
+            {
+              ((bdsv)localObject1).c("44");
+              ((bdsv)localObject1).a(true);
+              ((bdsv)localObject1).a(paramContext, paramView.findViewById(3), paramBundle);
+            }
+            else
+            {
+              ((bdsv)localObject1).c("30");
+              ((bdsv)localObject1).b(20);
+              ((bdsv)localObject1).a(paramContext, paramView.findViewById(4), paramBundle);
+              continue;
+              if ("picture".equals(localObject2))
+              {
+                localObject1 = (bdpx)localObject1;
+                if ((((bdpx)localObject1).c != null) && (!((bdpx)localObject1).c.equals("")))
+                {
+                  localObject2 = ((bdpx)localObject1).a(paramContext, paramView.findViewById(6), true, paramBundle);
+                  ((View)localObject2).setClickable(true);
+                  ((View)localObject2).setOnClickListener((View.OnClickListener)localObject1);
+                }
+                else
+                {
+                  ((bdpx)localObject1).a(paramContext, paramView.findViewById(5), true, paramBundle);
+                }
+              }
+            }
+          }
+        }
+        paramView.removeAllViews();
+        localObject1 = paramView;
+      }
+    }
+    if (localObject1 == null)
+    {
+      localObject1 = new RelativeLayout(paramContext);
+      ((RelativeLayout)localObject1).setLayoutParams(new RelativeLayout.LayoutParams(-1, -2));
+    }
+    for (;;)
+    {
+      LinearLayout localLinearLayout = new LinearLayout(paramContext);
+      localLinearLayout.setOrientation(1);
+      localLinearLayout.setGravity(3);
+      localLinearLayout.setId(1);
+      paramView = new RelativeLayout.LayoutParams(-2, -2);
+      paramView.addRule(9, -1);
+      paramView.rightMargin = AIOUtils.dp2px(20.0F, localResources);
+      ((RelativeLayout)localObject1).addView(localLinearLayout, paramView);
+      paramView = null;
+      i = 0;
+      Object localObject3;
+      if (i < j)
+      {
+        localObject2 = (bdnu)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        ((bdnu)localObject2).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+        localObject3 = ((bdnu)localObject2).jdField_a_of_type_JavaLangString;
+        if ("summary".equals(localObject3))
+        {
+          localObject2 = (bdsv)localObject2;
+          if (paramBoolean)
+          {
+            ((bdsv)localObject2).b("black");
+            label527:
+            localObject3 = ((bdsv)localObject2).f();
+            if ((localObject3 == null) || (!((String)localObject3).equals("1"))) {
+              break label621;
+            }
+            ((bdsv)localObject2).c("22");
+            ((bdsv)localObject2).a(true);
+            localObject2 = ((bdsv)localObject2).a(paramContext, null, paramBundle);
+            ((View)localObject2).setId(2);
+            ((View)localObject2).setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
+            localLinearLayout.addView((View)localObject2, 0);
+          }
+        }
+      }
+      label1053:
+      label1066:
+      for (;;)
+      {
+        i += 1;
+        break;
+        ((bdsv)localObject2).b(null);
+        break label527;
+        label621:
+        if ((localObject3 != null) && (((String)localObject3).equals("2")))
+        {
+          ((bdsv)localObject2).c("44");
+          ((bdsv)localObject2).a(true);
+          localObject2 = ((bdsv)localObject2).a(paramContext, null, paramBundle);
+          ((View)localObject2).setId(3);
+          localObject3 = new LinearLayout.LayoutParams(-2, -2);
+          ((LinearLayout.LayoutParams)localObject3).topMargin = AIOUtils.dp2px(-3.5F, localResources);
+          localLinearLayout.addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
+        }
+        else
+        {
+          ((bdsv)localObject2).c("30");
+          ((bdsv)localObject2).b(20);
+          localObject2 = ((bdsv)localObject2).a(paramContext, null, paramBundle);
+          ((View)localObject2).setId(4);
+          localObject3 = new RelativeLayout.LayoutParams(-2, -2);
+          ((RelativeLayout.LayoutParams)localObject3).addRule(1, 1);
+          ((RelativeLayout)localObject1).addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
+          continue;
+          if ("picture".equals(localObject3))
+          {
+            localObject3 = (bdpx)localObject2;
+            localObject2 = ((bdpx)localObject3).a(paramContext, null, true, paramBundle);
+            RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(AIOUtils.dp2px(40.0F, localResources), AIOUtils.dp2px(40.0F, localResources));
+            if ((((bdpx)localObject3).c != null) && (!((bdpx)localObject3).c.equals("")))
+            {
+              ((View)localObject2).setId(6);
+              localLayoutParams.addRule(11, -1);
+              ((RelativeLayout)localObject1).addView((View)localObject2, localLayoutParams);
+              ((View)localObject2).setClickable(true);
+              ((View)localObject2).setOnClickListener((View.OnClickListener)localObject3);
+            }
+            else
+            {
+              ((View)localObject2).setId(5);
+              paramView = (View)localObject2;
+              continue;
+              if (localLinearLayout.getChildCount() == 0) {
+                localLinearLayout.setVisibility(8);
+              }
+              if (paramView != null)
+              {
+                paramContext = new RelativeLayout.LayoutParams(AIOUtils.dp2px(40.0F, localResources), AIOUtils.dp2px(40.0F, localResources));
+                if (((RelativeLayout)localObject1).findViewById(6) != null)
+                {
+                  paramContext.addRule(0, 6);
+                  paramContext.rightMargin = AIOUtils.dp2px(7.5F, localResources);
+                  ((RelativeLayout)localObject1).addView(paramView, paramContext);
+                }
+              }
+              else
+              {
+                paramContext = ((RelativeLayout)localObject1).findViewById(4);
+                if (paramContext != null)
+                {
+                  paramView = (RelativeLayout.LayoutParams)paramContext.getLayoutParams();
+                  if (((RelativeLayout)localObject1).findViewById(5) == null) {
+                    break label1066;
+                  }
+                  paramView.addRule(0, 5);
+                }
+              }
+              for (;;)
+              {
+                paramContext.setLayoutParams(paramView);
+                a((View)localObject1);
+                i = AIOUtils.dp2px(22.5F, localResources);
+                j = AIOUtils.dp2px(22.5F, localResources);
+                ((RelativeLayout)localObject1).setPadding(i, AIOUtils.dp2px(10.75F, localResources), j, AIOUtils.dp2px(11.75F, localResources));
+                return localObject1;
+                paramContext.addRule(11, -1);
+                break;
+                if (((RelativeLayout)localObject1).findViewById(6) != null) {
+                  paramView.addRule(0, 6);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  protected int b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(TroopBarPublishLocationSelectActivity.a(this.a), 2, "onLocationFinish() errCode=" + paramInt);
-    }
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
-    {
-      double d1 = paramSosoLbsInfo.mLocation.mLat02;
-      double d2 = paramSosoLbsInfo.mLocation.mLon02;
-      TroopBarPublishLocationSelectActivity.a(this.a, (int)(d1 * 1000000.0D), (int)(d2 * 1000000.0D), 0, true, this.a);
-    }
+    return 9;
+  }
+  
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    return a(paramContext, paramView, false, paramBundle);
+  }
+  
+  public String b()
+  {
+    return "Layout9";
   }
 }
 

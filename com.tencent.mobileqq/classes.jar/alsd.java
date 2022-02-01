@@ -1,10 +1,23 @@
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
 
-public abstract interface alsd
+public class alsd
+  extends Handler
 {
-  public abstract void a(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  public alsd(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public abstract void b(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    if (paramMessage.what == 10) {
+      postDelayed(QzoneSlideShowPreparingFragment.a(this.a), 200L);
+    }
+  }
 }
 
 

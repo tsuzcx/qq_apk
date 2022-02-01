@@ -1,217 +1,66 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.apollo.process.chanel.GeneralEventHandler.1;
-import com.tencent.mobileqq.apollo.process.chanel.GeneralEventHandler.2;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class alxs
-  implements alxd, Handler.Callback
+  extends aofu
 {
-  private static long jdField_a_of_type_Long;
-  private int jdField_a_of_type_Int;
-  protected bjng a;
-  public WeakReference<Activity> a;
-  private WeakReference<QQAppInterface> b;
+  public alxs(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
   
-  public alxs(Activity paramActivity, QQAppInterface paramQQAppInterface, int paramInt)
+  protected void onUpdateTroopGetMemberList(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    this.jdField_a_of_type_Bjng = new bjng(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.b = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private void b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("apollochannel_GeneralEventHandler", 2, "startNewGame reqData:" + paramString);
-    }
-    long l = System.currentTimeMillis();
-    if (l - jdField_a_of_type_Long < 1000L) {
-      QLog.e("apollochannel_GeneralEventHandler", 1, "[startNewGame] current - sLastLaunchGameTime < 1000");
-    }
-    do
+    Object localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getIntent().getStringExtra("group_uin");
+    Object localObject2 = new StringBuilder().append("onUpdateTroopGetMemberList, troopUin[").append(paramString).append("], ftroopUin[").append((String)localObject1).append("], troopMemberInfoList[");
+    if (paramList != null) {}
+    for (paramInt1 = paramList.size();; paramInt1 = -1)
     {
+      QLog.w("FriendTeamListInnerFrameNew", 1, paramInt1 + "]");
+      if ((TextUtils.isEmpty((CharSequence)localObject1)) || (((String)localObject1).equals(paramString))) {
+        break;
+      }
       return;
-      jdField_a_of_type_Long = l;
-    } while (TextUtils.isEmpty(paramString));
-    ThreadManagerV2.excute(new GeneralEventHandler.2(this, paramString), 16, null, false);
-  }
-  
-  public int a()
-  {
-    return 100;
-  }
-  
-  public alrq a(String paramString)
-  {
-    alrq localalrq = new alrq();
-    String str = ApolloUtil.a(paramString, "tips");
-    int i = ApolloUtil.a(paramString, "length");
-    if (TextUtils.isEmpty(str)) {
-      return localalrq;
     }
-    paramString = this.jdField_a_of_type_Bjng.obtainMessage(255);
-    paramString.obj = str;
-    paramString.arg1 = i;
-    paramString.sendToTarget();
-    return localalrq;
-  }
-  
-  public alrq a(String paramString1, String paramString2, int paramInt1, int paramInt2)
-  {
-    if (this.b == null) {
-      return null;
-    }
-    if (this.jdField_a_of_type_Int != paramInt2)
+    paramString = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    localObject1 = new ArrayList();
+    localObject2 = (bgls)this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.app.getManager(QQManagerFactory.TROOP_ROBOT_MANAGER);
+    bjxa localbjxa = (bjxa)this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.app.getManager(QQManagerFactory.QIDIAN_MANAGER);
+    Object localObject3 = (anvk)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    if (paramList != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("apollochannel_GeneralEventHandler", 2, new Object[] { "not the same gameId, self:", Integer.valueOf(this.jdField_a_of_type_Int), "cmd gameId:", Integer.valueOf(paramInt2), ",cmd:", paramString1 });
-      }
-      return new alrq();
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
-    if (localQQAppInterface == null) {
-      return null;
-    }
-    if ("general_cmd_ui_show_toast".equals(paramString1)) {
-      return a(paramString2);
-    }
-    if ("cs.get_dress_path.local".equals(paramString1))
-    {
-      amja.a(localQQAppInterface, paramString1, paramString2, paramInt1);
-      return new alrq();
-    }
-    if ("cs.report_data_2_backstage.local".equals(paramString1))
-    {
-      amja.b(localQQAppInterface, paramString2);
-      return new alrq();
-    }
-    if ("cs.report_flow_data.local".equals(paramString1))
-    {
-      amja.c(localQQAppInterface, paramString2);
-      return new alrq();
-    }
-    if ("cs.save_recommend_ip.local".equals(paramString1))
-    {
-      amja.a(localQQAppInterface, paramString2);
-      return new alrq();
-    }
-    if ("cs.openFloatTransparentView.local".equals(paramString1))
-    {
-      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        amja.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString2);
-        return new alrq();
-      }
-    }
-    else if ("cs.openWebView.local".equals(paramString1))
-    {
-      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
-      {
-        amja.b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString2);
-        return new alrq();
-      }
-    }
-    else
-    {
-      if ("cs.script_get_nickname.local".equals(paramString1))
-      {
-        QQMessageFacade localQQMessageFacade = localQQAppInterface.getMessageFacade();
-        paramInt2 = -1;
-        String str = "";
-        paramString1 = str;
-        paramInt1 = paramInt2;
-        if (localQQMessageFacade != null)
+        localObject3 = (TroopMemberInfo)paramList.next();
+        if (localObject3 != null)
         {
-          paramString1 = str;
-          paramInt1 = paramInt2;
-          if (localQQMessageFacade.isChatting())
-          {
-            paramString1 = str;
-            paramInt1 = paramInt2;
-            if (!TextUtils.isEmpty(localQQMessageFacade.getCurrChatUin()))
+          if (QLog.isDevelopLevel()) {
+            QLog.w("FriendTeamListInnerFrameNew", 1, "onUpdateTroopGetMemberList, memberuin[" + ((TroopMemberInfo)localObject3).memberuin + "]");
+          }
+          if (!TextUtils.equals(((TroopMemberInfo)localObject3).memberuin, paramString)) {
+            if ((((bgls)localObject2).b(((TroopMemberInfo)localObject3).memberuin)) || (localbjxa.f(((TroopMemberInfo)localObject3).memberuin)))
             {
-              paramString1 = localQQMessageFacade.getCurrChatUin();
-              paramInt1 = localQQMessageFacade.getCurrChatType();
+              if (QLog.isDevelopLevel()) {
+                QLog.w("FriendTeamListInnerFrameNew", 1, "onUpdateTroopGetMemberList, isRobotUin");
+              }
+            }
+            else {
+              ((ArrayList)localObject1).add(localObject3);
             }
           }
         }
-        return ambc.a(paramString2, localQQAppInterface, paramInt1, paramString1);
-      }
-      if (!"cs.send_game_msg.local".equals(paramString1)) {
-        break label403;
-      }
-      amja.a(localQQAppInterface, paramString2, (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-    }
-    for (;;)
-    {
-      return null;
-      label403:
-      if ("cs.create_xy.local".equals(paramString1))
-      {
-        b(paramString2);
-      }
-      else if ("cs.open_cm_aio.local".equals(paramString1))
-      {
-        a(paramString2);
-      }
-      else if ("cs.show_one_more_page.local".equals(paramString1))
-      {
-        paramString1 = (alnr)localQQAppInterface.getManager(153);
-        if (paramString1 != null) {
-          paramString1.a().h(paramString2);
-        }
       }
     }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Bjng.removeCallbacksAndMessages(null);
-  }
-  
-  void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("apollochannel_GeneralEventHandler", 2, "openCmAIO reqData:" + paramString);
-    }
-    if (!TextUtils.isEmpty(paramString)) {
-      ThreadManagerV2.excute(new GeneralEventHandler.1(this, paramString), 16, null, false);
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    int i = 1;
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return false;
-    } while (!(paramMessage.obj instanceof String));
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    CharSequence localCharSequence = (CharSequence)paramMessage.obj;
-    if (paramMessage.arg1 == 1) {}
-    for (;;)
-    {
-      QQToast.a(localBaseApplication, localCharSequence, i).a();
-      return false;
-      i = 0;
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.setGroupMembers((ArrayList)localObject1);
+    FriendTeamListInnerFrame.a(this.a).a((ArrayList)localObject1);
+    FriendTeamListInnerFrame.a(this.a).notifyDataSetChanged();
   }
 }
 

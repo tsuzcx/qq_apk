@@ -1,24 +1,31 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.mobileqq.qcall.QCallDetailActivity.9.1;
 
-public abstract class bapi
-  extends ClickableSpan
-  implements View.OnClickListener
+public class bapi
+  extends bibo
 {
-  private int a;
+  public bapi(QCallDetailActivity paramQCallDetailActivity) {}
   
-  public bapi(int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a = paramInt;
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(this.a);
-    paramTextPaint.setUnderlineText(false);
-    paramTextPaint.clearShadowLayer();
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+        paramObject = (Bundle)paramObject;
+      } while ((paramObject == null) || (TextUtils.isEmpty(QCallDetailActivity.a(this.a))) || (!QCallDetailActivity.a(this.a).equals(paramObject.getString("uin"))));
+      if (this.a.app != null) {
+        this.a.app.removeObserver(this);
+      }
+    } while (!paramBoolean);
+    this.a.runOnUiThread(new QCallDetailActivity.9.1(this));
   }
 }
 

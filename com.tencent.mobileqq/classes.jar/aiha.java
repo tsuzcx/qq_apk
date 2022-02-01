@@ -1,197 +1,210 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.mobileqq.utils.ContactUtils;
-import java.util.Comparator;
-import java.util.Set;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public class aiha
-  implements Comparator<PhoneContact>
 {
-  private final amsw jdField_a_of_type_Amsw;
-  private final Set<String> jdField_a_of_type_JavaUtilSet;
-  private final int[] jdField_a_of_type_ArrayOfInt;
+  private aigz jdField_a_of_type_Aigz = new aihb(this);
+  private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
+  private StickerBubbleAnimationView jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
+  private List<WeakReference<aihd>> jdField_a_of_type_JavaUtilList = new LinkedList();
+  private boolean jdField_a_of_type_Boolean;
+  private aigz jdField_b_of_type_Aigz = new aihc(this);
+  private StickerBubbleAnimationView jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
+  private List<WeakReference<aihd>> jdField_b_of_type_JavaUtilList = new LinkedList();
+  private boolean jdField_b_of_type_Boolean;
   
-  public aiha(int[] paramArrayOfInt, Set<String> paramSet, amsw paramamsw)
+  public static aiha a()
   {
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
-    this.jdField_a_of_type_JavaUtilSet = paramSet;
-    this.jdField_a_of_type_Amsw = paramamsw;
+    return aihe.a();
   }
   
-  private int a(PhoneContact paramPhoneContact)
+  private void a(View paramView)
   {
-    int j = ContactUtils.getFriendStatus(paramPhoneContact.detalStatusFlag, paramPhoneContact.iTermType);
-    if ((j != 6) && (j != 0)) {}
-    for (int i = 65536;; i = 131072) {
-      switch (j)
+    if (paramView.getParent() == null) {
+      return;
+    }
+    ((ViewGroup)paramView.getParent()).removeView(paramView);
+  }
+  
+  private void a(ViewGroup paramViewGroup, View paramView)
+  {
+    new RelativeLayout.LayoutParams(-1, -1);
+    if (paramView.getParent() != null) {
+      if (paramView.getParent() != paramViewGroup)
       {
-      case 5: 
-      case 6: 
-      default: 
-        return i | (int)a(paramPhoneContact.unifiedCode);
+        ((ViewGroup)paramView.getParent()).removeView(paramView);
+        paramViewGroup.addView(paramView);
       }
     }
-    return i | 0x1;
-    return i | 0x2;
-    return i | 0x3;
-  }
-  
-  private int b(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
-  {
-    int j = 1;
-    if (("0".equals(paramPhoneContact1.uin)) || (TextUtils.isEmpty(paramPhoneContact1.uin))) {}
-    for (int i = 0;; i = 1)
-    {
-      if (("0".equals(paramPhoneContact2.uin)) || (TextUtils.isEmpty(paramPhoneContact2.uin))) {
-        j = 0;
-      }
-      return j - i;
-    }
-  }
-  
-  private int c(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
-  {
-    int i = 1;
-    if (this.jdField_a_of_type_Amsw == null) {
-      return 0;
-    }
-    boolean bool1 = this.jdField_a_of_type_Amsw.a(paramPhoneContact1.unifiedCode, true);
-    boolean bool2 = this.jdField_a_of_type_Amsw.a(paramPhoneContact2.unifiedCode, true);
-    if (bool1) {}
     for (;;)
     {
-      return i;
-      if (bool2) {
-        i = -1;
+      paramView.bringToFront();
+      return;
+      paramViewGroup.addView(paramView);
+    }
+  }
+  
+  private void a(List<WeakReference<aihd>> paramList)
+  {
+    try
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        aihd localaihd = (aihd)((WeakReference)paramList.next()).get();
+        if (localaihd != null) {
+          localaihd.a();
+        }
+      }
+    }
+    finally {}
+  }
+  
+  private void b(List<WeakReference<aihd>> paramList)
+  {
+    Iterator localIterator = new ArrayList(paramList).iterator();
+    while (localIterator.hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)localIterator.next();
+      aihd localaihd = (aihd)localWeakReference.get();
+      if (localaihd != null) {
+        localaihd.b();
       } else {
-        i = 0;
+        paramList.remove(localWeakReference);
       }
     }
   }
   
-  private int d(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public StickerBubbleAnimationView a(Context paramContext)
   {
-    if ((paramPhoneContact2.samFriend > 0) && (paramPhoneContact1.samFriend > 0)) {}
-    while ((paramPhoneContact2.samFriend <= 0) && (paramPhoneContact1.samFriend <= 0)) {
-      return 0;
-    }
-    return e(paramPhoneContact1, paramPhoneContact2);
-  }
-  
-  private int e(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
-  {
-    int i = 0;
-    if (paramPhoneContact2.samFriend > paramPhoneContact1.samFriend) {
-      i = 1;
-    }
-    while (paramPhoneContact2.samFriend >= paramPhoneContact1.samFriend) {
-      return i;
-    }
-    return -1;
-  }
-  
-  private int f(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
-  {
-    boolean bool1 = paramPhoneContact1.isNewRecommend;
-    boolean bool2 = paramPhoneContact2.isNewRecommend;
-    if (((bool1) || (bool2)) && ((!bool1) || (!bool2)))
+    paramContext = d(paramContext);
+    if (this.jdField_b_of_type_Boolean)
     {
-      if (bool2) {
-        return 1;
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerBubbleAnimationViewHolder", 2, "hideSendAnimationView: " + paramContext);
       }
-      return -1;
+      a(paramContext);
+      this.jdField_b_of_type_Boolean = false;
     }
-    return 0;
+    return paramContext;
   }
   
-  private int g(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public StickerBubbleAnimationView a(ViewGroup paramViewGroup, Context paramContext)
   {
-    return a(paramPhoneContact1) - a(paramPhoneContact2);
-  }
-  
-  private int h(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
-  {
-    Object localObject2 = paramPhoneContact1.pinyinFirst;
-    String str = paramPhoneContact2.pinyinFirst;
-    Object localObject1 = localObject2;
-    if (((String)localObject2).endsWith("#")) {
-      localObject1 = "Za";
-    }
-    localObject2 = str;
-    if (str.endsWith("#")) {
-      localObject2 = "Za";
-    }
-    int j = ((String)localObject1).compareTo((String)localObject2);
-    int i = j;
-    if (j == 0) {
-      i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
-    }
-    return i;
-  }
-  
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
-  {
-    int i = 0;
-    int j;
-    if ((paramPhoneContact1 == null) || (paramPhoneContact2 == null)) {
-      if (paramPhoneContact1 != null)
-      {
-        i = 1;
-        j = i;
-      }
-    }
-    int k;
-    label36:
-    do
+    paramContext = d(paramContext);
+    if (!this.jdField_b_of_type_Boolean)
     {
-      return j;
-      if (paramPhoneContact2 == null) {
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerBubbleAnimationViewHolder", 2, "showSendAnimationView: " + paramContext.getParent() + " / " + paramViewGroup);
       }
-      i = -1;
-      break;
-      k = 0;
-      i = 0;
-      j = i;
-    } while (k >= this.jdField_a_of_type_ArrayOfInt.length);
-    switch (this.jdField_a_of_type_ArrayOfInt[k])
-    {
-    default: 
-      i = 0;
+      a(paramViewGroup, paramContext);
+      this.jdField_b_of_type_Boolean = true;
     }
-    for (;;)
+    return paramContext;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerBubbleAnimationViewHolder", 2, "cleanView");
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      b(this.jdField_a_of_type_AndroidContentContext);
+    }
+    if (this.jdField_b_of_type_Boolean) {
+      a(this.jdField_a_of_type_AndroidContentContext);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView = null;
+    this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView = null;
+  }
+  
+  public void a(aihd paramaihd)
+  {
+    try
     {
-      j = i;
-      if (i != 0) {
-        break;
-      }
-      k += 1;
-      break label36;
-      i = f(paramPhoneContact1, paramPhoneContact2);
-      continue;
-      i = g(paramPhoneContact1, paramPhoneContact2);
-      continue;
-      i = e(paramPhoneContact1, paramPhoneContact2);
-      continue;
-      i = h(paramPhoneContact1, paramPhoneContact2);
-      continue;
-      i = c(paramPhoneContact1, paramPhoneContact2);
-      continue;
-      i = b(paramPhoneContact1, paramPhoneContact2);
-      continue;
-      i = d(paramPhoneContact1, paramPhoneContact2);
+      this.jdField_a_of_type_JavaUtilList.add(new WeakReference(paramaihd));
+      return;
+    }
+    finally
+    {
+      paramaihd = finally;
+      throw paramaihd;
     }
   }
   
-  public long a(String paramString)
+  public StickerBubbleAnimationView b(Context paramContext)
   {
-    if (this.jdField_a_of_type_JavaUtilSet == null) {
-      return 0L;
+    paramContext = c(paramContext);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerBubbleAnimationViewHolder", 2, "hideReceiveAnimationView: " + paramContext);
+      }
+      a(paramContext);
+      this.jdField_a_of_type_Boolean = false;
     }
-    if (this.jdField_a_of_type_JavaUtilSet.contains(paramString)) {
-      return 1L;
+    return paramContext;
+  }
+  
+  public StickerBubbleAnimationView b(ViewGroup paramViewGroup, Context paramContext)
+  {
+    paramContext = c(paramContext);
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerBubbleAnimationViewHolder", 2, "showReceiveAnimationView: " + paramContext.getParent() + " / " + paramViewGroup);
+      }
+      a(paramViewGroup, paramContext);
+      this.jdField_a_of_type_Boolean = true;
     }
-    return 10L;
+    return paramContext;
+  }
+  
+  public void b(aihd paramaihd)
+  {
+    try
+    {
+      this.jdField_b_of_type_JavaUtilList.add(new WeakReference(paramaihd));
+      return;
+    }
+    finally
+    {
+      paramaihd = finally;
+      throw paramaihd;
+    }
+  }
+  
+  public StickerBubbleAnimationView c(Context paramContext)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView = new StickerBubbleAnimationView(paramContext);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setShowText(false);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setId(2131378073);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setAnimationCallback(this.jdField_a_of_type_Aigz);
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
+  }
+  
+  public StickerBubbleAnimationView d(Context paramContext)
+  {
+    if (this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView == null)
+    {
+      this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView = new StickerBubbleAnimationView(paramContext);
+      this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setId(2131378073);
+      this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setAnimationCallback(this.jdField_b_of_type_Aigz);
+    }
+    return this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
   }
 }
 

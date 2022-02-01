@@ -1,17 +1,25 @@
-import java.util.Comparator;
+import UserGrowth.stRedDotRsp;
 
-final class vid
-  implements Comparator<vim>
+class vid
+  implements vfg
 {
-  public int a(vim paramvim1, vim paramvim2)
+  vid(vic paramvic) {}
+  
+  public void a(vfr paramvfr)
   {
-    if ((paramvim1 == paramvim2) || (paramvim1.b == paramvim2.b)) {
-      return 0;
+    if ((this.a.a() != null) && (paramvfr != null) && (paramvfr.a()) && (paramvfr.a != null) && ((paramvfr.a instanceof stRedDotRsp)))
+    {
+      paramvfr = (stRedDotRsp)paramvfr.a;
+      vic.a(this.a, paramvfr.notificationReddot);
+      vic.b(this.a, paramvfr.menu);
+      if (this.a.a() != null) {
+        ((vir)this.a.a()).a(paramvfr);
+      }
     }
-    if (paramvim1.b < paramvim2.b) {
-      return -1;
+    while (this.a.a() == null) {
+      return;
     }
-    return 1;
+    ((vir)this.a.a()).a();
   }
 }
 

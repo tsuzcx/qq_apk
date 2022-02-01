@@ -1,16 +1,6 @@
 package com.tencent.mobileqq.msf.core.net.c;
 
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.SSLSession;
-
-final class h
-  implements HostnameVerifier
-{
-  public boolean verify(String paramString, SSLSession paramSSLSession)
-  {
-    return true;
-  }
-}
+class h {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar

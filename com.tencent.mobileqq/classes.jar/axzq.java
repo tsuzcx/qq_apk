@@ -1,14 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import kotlin.Metadata;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class axzq
-  implements View.OnClickListener
+class axzq
+  implements axzy
 {
-  public static final axzq a = new axzq();
+  axzq(axzl paramaxzl) {}
   
-  public final void onClick(View paramView) {}
+  public void a(String paramString1, String paramString2, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w("VideoPlayerView", 2, "OnDownloadListener error ! vid = " + paramString1 + "  url = " + paramString2 + "  errorCode=" + paramInt);
+    }
+    if (this.a.jdField_a_of_type_Axye != null) {
+      this.a.jdField_a_of_type_Axye.a(paramString1, 199, paramInt, "use sdk download error");
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, long paramLong)
+  {
+    this.a.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(String paramString1, String paramString2, long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w("VideoPlayerView", 2, "OnDownloadListener onProgress   ! vid = " + paramString1 + "  url = " + paramString2 + "  offset=" + paramLong2);
+    }
+    this.a.jdField_a_of_type_Long = paramLong1;
+    if (paramLong2 > this.a.b) {
+      this.a.b = paramLong2;
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, File paramFile)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoPlayerView", 2, "OnDownloadListener onSuccess ! vid = " + paramString1 + "  url = " + paramString2);
+    }
+    axzl.a(paramFile);
+  }
 }
 
 

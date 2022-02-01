@@ -1,12 +1,21 @@
-class awgh
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
+
+public class awgh
+  implements DialogInterface.OnClickListener
 {
-  public awgi a;
-  public String a;
+  public awgh(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, ListenTogetherManager paramListenTogetherManager, awgx paramawgx) {}
   
-  public awgh(awgd paramawgd, String paramString, awgi paramawgi)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Awgi = paramawgi;
+    this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.a(true);
+    this.jdField_a_of_type_Awgx.b(false);
+    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
+      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
+    }
   }
 }
 

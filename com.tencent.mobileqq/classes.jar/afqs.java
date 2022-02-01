@@ -1,423 +1,287 @@
-import android.text.Editable;
-import android.text.Selection;
-import android.text.SpannableStringBuilder;
-import android.text.TextUtils;
-import android.widget.EditText;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import org.jetbrains.annotations.NotNull;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
-class afqs
+public class afqs
 {
-  private int jdField_a_of_type_Int;
-  private Editable jdField_a_of_type_AndroidTextEditable;
-  private int jdField_b_of_type_Int;
-  private Editable jdField_b_of_type_AndroidTextEditable;
-  private int jdField_c_of_type_Int;
-  private Editable jdField_c_of_type_AndroidTextEditable;
-  private int jdField_d_of_type_Int = -1;
-  private Editable jdField_d_of_type_AndroidTextEditable;
+  public static int a;
+  public static HashMap<Integer, bhjs> a;
+  public static int b;
+  public static int c;
+  public static int d;
+  public static int e;
+  public static int f;
+  public static int g;
+  public static int h;
+  public static int i;
+  public static int j;
+  public static int k;
+  public static int l;
+  public static int m;
+  public static int n;
+  public static int o;
+  public static int p;
   
-  afqs(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  static
   {
-    this.jdField_a_of_type_AndroidTextEditable = new SpannableStringBuilder(paramCharSequence);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    try
-    {
-      this.jdField_d_of_type_Int = a();
+    jdField_a_of_type_Int = 1;
+    b = 2;
+    c = 4;
+    d = 8;
+    e = 16;
+    f = 32;
+    g = 64;
+    h = 128;
+    i = 256;
+    j = 512;
+    k = 1024;
+    l = 2048;
+    m = 4096;
+    n = 4096;
+    o = 4096;
+    p = 4096;
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(jdField_a_of_type_Int), new bhjs(2131365307, localBaseApplication.getString(2131691263), 2130838983));
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(b), new bhjs(2131367213, localBaseApplication.getString(2131692550), 2130838991));
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(c), new bhjs(2131371641, localBaseApplication.getString(2131694155), 2130838999));
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(d), new bhjs(2131371684, localBaseApplication.getString(2131694187), 2130839001));
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(e), new bhjs(2131365475, localBaseApplication.getString(2131690756), 2130838986));
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(f), new bhjs(2131366254, localBaseApplication.getString(2131719547), 0));
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(g), new bhjs(2131366255, localBaseApplication.getString(2131719548), 0));
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(h), new bhjs(2131366456, localBaseApplication.getString(2131692126), 2130838990));
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), new bhjs(2131380506, localBaseApplication.getString(2131690900), 0));
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(j), new bhjs(2131376534, localBaseApplication.getString(2131697435), 2130838997));
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(k), new bhjs(2131376547, localBaseApplication.getString(2131697441), 2130838997));
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(l), new bhjs(2131362494, localBaseApplication.getString(2131689979), 2130839001));
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(o), new bhjs(2131362494, localBaseApplication.getString(2131689979), 2130839001));
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(m), new bhjs(2131376588, localBaseApplication.getString(2131717998), 2130838998));
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(n), new bhjs(2131364266, localBaseApplication.getString(2131690755), 2130838980));
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(p), new bhjs(2131367235, localBaseApplication.getString(2131692550), 2130838991));
+  }
+  
+  public static bhjs a(int paramInt)
+  {
+    return (bhjs)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+  }
+  
+  public static void a(int paramInt, bhjq parambhjq)
+  {
+    bhjs localbhjs = a(paramInt);
+    parambhjq.a(localbhjs.a(), localbhjs.a(), localbhjs.b());
+  }
+  
+  public static void a(@NonNull ChatMessage paramChatMessage, @NonNull bhjq parambhjq)
+  {
+    if ((!AppSetting.i) && (paramChatMessage.istroop == 0)) {}
+    while (acnh.a(paramChatMessage.istroop) == 1032) {
       return;
     }
-    catch (Throwable paramCharSequence)
+    a(e, parambhjq);
+  }
+  
+  public static void a(MessageRecord paramMessageRecord, bhjq parambhjq)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (BaseApplicationImpl.sProcessId == 1)
     {
-      paramCharSequence.printStackTrace();
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
+      localObject1 = localObject2;
+      if (localAppRuntime != null)
+      {
+        localObject1 = localObject2;
+        if ((localAppRuntime instanceof QQAppInterface)) {
+          localObject1 = (QQAppInterface)localAppRuntime;
+        }
+      }
+    }
+    if (localObject1 == null) {}
+    label46:
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              break label46;
+              break label46;
+              break label46;
+              do
+              {
+                return;
+              } while ((!a(paramMessageRecord, (QQAppInterface)localObject1)) || ((!paramMessageRecord.isSend()) && (!TroopUtils.isSupportRevokeMsgByTroopOwnerOrMgr((QQAppInterface)localObject1, paramMessageRecord, ((QQAppInterface)localObject1).getCurrentAccountUin()))) || ((nty.a(paramMessageRecord)) && (!argp.a().a)) || (acnh.a(paramMessageRecord.istroop) == 1032));
+              localObject2 = (anvk)((QQAppInterface)localObject1).getManager(QQManagerFactory.FRIENDS_MANAGER);
+            } while ((paramMessageRecord.istroop == 0) && (!((anvk)localObject2).b(paramMessageRecord.frienduin)));
+            if (paramMessageRecord.istroop != 1) {
+              break;
+            }
+            localObject2 = (HotChatManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.HOT_CHAT_MANAGER);
+          } while ((localObject2 != null) && (((HotChatManager)localObject2).b(paramMessageRecord.frienduin)));
+          if ((paramMessageRecord.msgtype != -5008) || (!(paramMessageRecord instanceof MessageForArkApp))) {
+            break;
+          }
+          localObject2 = (MessageForArkApp)paramMessageRecord;
+        } while ((((MessageForArkApp)localObject2).ark_app_message != null) && (((MessageForArkApp)localObject2).ark_app_message.appName.equals("com.tencent.mannounce")));
+      } while (!a(paramMessageRecord));
+      a(c, parambhjq);
+    } while (!TroopUtils.isSupportRevokeMsgByTroopOwnerOrMgr((QQAppInterface)localObject1, paramMessageRecord, ((QQAppInterface)localObject1).getCurrentAccountUin()));
+    parambhjq = new bdlf((QQAppInterface)localObject1).a("dc00899").b("Grp_manage").c("recall_msg").d("exp_recallMsg");
+    localObject2 = paramMessageRecord.frienduin;
+    if (TroopUtils.isTroopOwner((QQAppInterface)localObject1, paramMessageRecord.frienduin, ((QQAppInterface)localObject1).getCurrentAccountUin())) {}
+    for (paramMessageRecord = "1";; paramMessageRecord = "2")
+    {
+      parambhjq.a(new String[] { localObject2, paramMessageRecord }).a();
+      return;
     }
   }
   
-  int a()
+  private static boolean a(MessageRecord paramMessageRecord)
   {
-    if (this.jdField_a_of_type_AndroidTextEditable.length() <= 0) {
-      return -1;
-    }
-    Object localObject;
-    if ((this.jdField_b_of_type_Int > 0) && (this.jdField_c_of_type_Int > 0))
-    {
-      this.jdField_c_of_type_AndroidTextEditable = ((Editable)this.jdField_a_of_type_AndroidTextEditable.subSequence(0, this.jdField_a_of_type_Int));
-      this.jdField_d_of_type_AndroidTextEditable = ((Editable)this.jdField_a_of_type_AndroidTextEditable.subSequence(this.jdField_a_of_type_Int + this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidTextEditable.length()));
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder("[mix]handle replace prefix: ");
-        if (TextUtils.isEmpty(this.jdField_c_of_type_AndroidTextEditable)) {
-          break label215;
-        }
-        ((StringBuilder)localObject).append(" prefix tail: ").append(this.jdField_c_of_type_AndroidTextEditable.charAt(this.jdField_c_of_type_AndroidTextEditable.length() - 1));
-        ((StringBuilder)localObject).append(" suffix: ");
-        if (TextUtils.isEmpty(this.jdField_d_of_type_AndroidTextEditable)) {
-          break label225;
-        }
-        ((StringBuilder)localObject).append(" suffix head: ").append(this.jdField_d_of_type_AndroidTextEditable.charAt(0));
-      }
-      for (;;)
-      {
-        QLog.d("FullScreenInputHelper", 2, new Object[] { localObject });
-        if ((!TextUtils.isEmpty(this.jdField_c_of_type_AndroidTextEditable)) || (!afqj.a(this.jdField_d_of_type_AndroidTextEditable, "￼"))) {
-          break label235;
-        }
-        return 12;
-        label215:
-        ((StringBuilder)localObject).append("null");
-        break;
-        label225:
-        ((StringBuilder)localObject).append("null");
-      }
-      label235:
-      if ((TextUtils.isEmpty(this.jdField_d_of_type_AndroidTextEditable)) && (afqj.b(this.jdField_c_of_type_AndroidTextEditable, "￼"))) {
-        return 13;
-      }
-      if ((afqj.b(this.jdField_c_of_type_AndroidTextEditable, "￼")) && (afqj.a(this.jdField_d_of_type_AndroidTextEditable, "\n")))
-      {
-        if ((this.jdField_d_of_type_AndroidTextEditable.length() >= 2) && (this.jdField_d_of_type_AndroidTextEditable.charAt(1) == "￼".charAt(0))) {
-          return 14;
-        }
-        return 15;
-      }
-      if ((afqj.b(this.jdField_c_of_type_AndroidTextEditable, "\n")) && (afqj.a(this.jdField_d_of_type_AndroidTextEditable, "￼")))
-      {
-        if ((this.jdField_c_of_type_AndroidTextEditable.length() >= 2) && (this.jdField_c_of_type_AndroidTextEditable.charAt(this.jdField_c_of_type_AndroidTextEditable.length() - 2) == "￼".charAt(0))) {
-          return 16;
-        }
-        return 17;
-      }
-      return -1;
-    }
-    if (this.jdField_b_of_type_Int > 0)
-    {
-      this.jdField_c_of_type_AndroidTextEditable = ((Editable)this.jdField_a_of_type_AndroidTextEditable.subSequence(0, this.jdField_a_of_type_Int));
-      this.jdField_d_of_type_AndroidTextEditable = ((Editable)this.jdField_a_of_type_AndroidTextEditable.subSequence(this.jdField_a_of_type_Int + this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidTextEditable.length()));
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder("[mix]handle delete prefix: ");
-        if (TextUtils.isEmpty(this.jdField_c_of_type_AndroidTextEditable)) {
-          break label637;
-        }
-        ((StringBuilder)localObject).append(" prefix tail: ").append(this.jdField_c_of_type_AndroidTextEditable.charAt(this.jdField_c_of_type_AndroidTextEditable.length() - 1));
-        ((StringBuilder)localObject).append(" suffix: ");
-        if (TextUtils.isEmpty(this.jdField_d_of_type_AndroidTextEditable)) {
-          break label647;
-        }
-        ((StringBuilder)localObject).append(" suffix head: ").append(this.jdField_d_of_type_AndroidTextEditable.charAt(0));
-      }
-      for (;;)
-      {
-        QLog.d("FullScreenInputHelper", 2, new Object[] { localObject });
-        localObject = this.jdField_a_of_type_AndroidTextEditable.subSequence(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.jdField_b_of_type_Int).toString();
-        if ((((String)localObject).length() != 1) || (!((String)localObject).equals("\n"))) {
-          break label737;
-        }
-        if ((!afqj.b(this.jdField_c_of_type_AndroidTextEditable, "￼")) || (!afqj.a(this.jdField_d_of_type_AndroidTextEditable, "￼"))) {
-          break label657;
-        }
-        return 6;
-        label637:
-        ((StringBuilder)localObject).append("null");
-        break;
-        label647:
-        ((StringBuilder)localObject).append("null");
-      }
-      label657:
-      if ((!afqj.b(this.jdField_c_of_type_AndroidTextEditable, "￼")) && (!afqj.b(this.jdField_c_of_type_AndroidTextEditable, "\n")) && (afqj.a(this.jdField_d_of_type_AndroidTextEditable, "￼"))) {
-        return 8;
-      }
-      if ((afqj.b(this.jdField_c_of_type_AndroidTextEditable, "￼")) && (!afqj.a(this.jdField_d_of_type_AndroidTextEditable, "￼")) && (!afqj.a(this.jdField_d_of_type_AndroidTextEditable, "\n"))) {
-        return 7;
-      }
-      return -1;
-      label737:
-      if ((afqj.b(this.jdField_c_of_type_AndroidTextEditable, "￼")) && (afqj.a(this.jdField_d_of_type_AndroidTextEditable, "￼"))) {
-        return 9;
-      }
-      if ((!afqj.b(this.jdField_c_of_type_AndroidTextEditable, "￼")) && (!afqj.b(this.jdField_c_of_type_AndroidTextEditable, "\n")) && (afqj.a(this.jdField_d_of_type_AndroidTextEditable, "￼"))) {
-        return 10;
-      }
-      if ((afqj.b(this.jdField_c_of_type_AndroidTextEditable, "￼")) && (!afqj.a(this.jdField_d_of_type_AndroidTextEditable, "￼")) && (!afqj.a(this.jdField_d_of_type_AndroidTextEditable, "\n"))) {
-        return 11;
-      }
-      return -1;
-    }
-    if (this.jdField_c_of_type_Int > 0)
-    {
-      this.jdField_c_of_type_AndroidTextEditable = ((Editable)this.jdField_a_of_type_AndroidTextEditable.subSequence(0, this.jdField_a_of_type_Int));
-      this.jdField_d_of_type_AndroidTextEditable = ((Editable)this.jdField_a_of_type_AndroidTextEditable.subSequence(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidTextEditable.length()));
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder("[mix]handle add prefix: ");
-        if (TextUtils.isEmpty(this.jdField_c_of_type_AndroidTextEditable)) {
-          break label1032;
-        }
-        ((StringBuilder)localObject).append(" prefix tail: ").append(this.jdField_c_of_type_AndroidTextEditable.charAt(this.jdField_c_of_type_AndroidTextEditable.length() - 1));
-        ((StringBuilder)localObject).append(" suffix: ");
-        if (TextUtils.isEmpty(this.jdField_d_of_type_AndroidTextEditable)) {
-          break label1042;
-        }
-        ((StringBuilder)localObject).append(" suffix head: ").append(this.jdField_d_of_type_AndroidTextEditable.charAt(0));
-      }
-      for (;;)
-      {
-        QLog.d("FullScreenInputHelper", 2, new Object[] { localObject });
-        if ((!TextUtils.isEmpty(this.jdField_c_of_type_AndroidTextEditable)) || (!afqj.a(this.jdField_d_of_type_AndroidTextEditable, "￼"))) {
-          break label1052;
-        }
-        return 0;
-        label1032:
-        ((StringBuilder)localObject).append("null");
-        break;
-        label1042:
-        ((StringBuilder)localObject).append("null");
-      }
-      label1052:
-      if ((TextUtils.isEmpty(this.jdField_d_of_type_AndroidTextEditable)) && (afqj.b(this.jdField_c_of_type_AndroidTextEditable, "￼"))) {
-        return 1;
-      }
-      if ((afqj.b(this.jdField_c_of_type_AndroidTextEditable, "￼")) && (afqj.a(this.jdField_d_of_type_AndroidTextEditable, "\n")))
-      {
-        if ((this.jdField_d_of_type_AndroidTextEditable.length() >= 2) && (this.jdField_d_of_type_AndroidTextEditable.charAt(1) == "￼".charAt(0))) {
-          return 2;
-        }
-        return 3;
-      }
-      if ((afqj.b(this.jdField_c_of_type_AndroidTextEditable, "\n")) && (afqj.a(this.jdField_d_of_type_AndroidTextEditable, "￼")))
-      {
-        if ((this.jdField_c_of_type_AndroidTextEditable.length() >= 2) && (this.jdField_c_of_type_AndroidTextEditable.charAt(this.jdField_c_of_type_AndroidTextEditable.length() - 2) == "￼".charAt(0))) {
-          return 4;
-        }
-        return 5;
-      }
-      return -1;
-    }
-    return -1;
+    int i1 = paramMessageRecord.istroop;
+    return (i1 == 0) || (i1 == 1) || (i1 == 3000) || (i1 == 1000) || (i1 == 1004);
   }
   
-  Editable a()
+  public static boolean a(MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_c_of_type_Int <= 0) {}
-    while (this.jdField_b_of_type_AndroidTextEditable == null) {
-      return null;
+    long l1 = NetConnInfoCenter.getServerTimeMillis();
+    boolean bool = TroopUtils.isTroopOwnerOrAdmin(paramQQAppInterface, paramMessageRecord, paramQQAppInterface.getCurrentAccountUin());
+    return ((l1 - paramMessageRecord.time * 1000L < 120000L) && (!bool)) || ((bool) && (paramMessageRecord.isSend())) || (paramMessageRecord.msgtype == -2005) || (TroopUtils.isSupportRevokeMsgByTroopOwnerOrMgr(paramQQAppInterface, paramMessageRecord, paramQQAppInterface.getCurrentAccountUin()));
+  }
+  
+  public static void b(@NonNull ChatMessage paramChatMessage, @NonNull bhjq parambhjq)
+  {
+    if ((paramChatMessage.istroop == 1) || (paramChatMessage.istroop == 3000) || (paramChatMessage.istroop == 0))
+    {
+      if (BaseApplicationImpl.sProcessId != 1) {
+        break label164;
+      }
+      localObject = BaseApplicationImpl.getApplication().peekAppRuntime();
+      if ((localObject == null) || (!(localObject instanceof QQAppInterface))) {
+        break label164;
+      }
     }
-    return (Editable)this.jdField_b_of_type_AndroidTextEditable.subSequence(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.jdField_c_of_type_Int);
+    label164:
+    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
+    {
+      if (localObject == null) {}
+      do
+      {
+        return;
+        if ((!paramChatMessage.isSend()) && (paramChatMessage.isSupportReply()))
+        {
+          a(j, parambhjq);
+          MessageForReplyText.reportReplyMsg((QQAppInterface)localObject, "Msg_menu", "exp_replyMsg", paramChatMessage.frienduin, paramChatMessage);
+          return;
+        }
+      } while ((!paramChatMessage.isSend()) || (!paramChatMessage.isSupportReply()) || (paramChatMessage.extraflag == 32772) || (paramChatMessage.extraflag == 32768) || (paramChatMessage.istroop == 3000));
+      a(j, parambhjq);
+      MessageForReplyText.reportReplyMsg((QQAppInterface)localObject, "Msg_menu", "exp_replyMsg", paramChatMessage.frienduin, paramChatMessage);
+      return;
+    }
   }
   
-  void a(Editable paramEditable)
+  public static void c(ChatMessage paramChatMessage, bhjq parambhjq)
   {
-    this.jdField_b_of_type_AndroidTextEditable = paramEditable;
-  }
-  
-  void a(EditText paramEditText)
-  {
-    int k = 2;
-    if (this.jdField_b_of_type_AndroidTextEditable.length() <= 0) {}
-    Editable localEditable;
+    boolean bool;
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
+      Object localObject = BaseApplicationImpl.getApplication().peekAppRuntime();
+      if ((localObject != null) && ((localObject instanceof QQAppInterface)))
+      {
+        localObject = (QQAppInterface)localObject;
+        if (paramChatMessage.istroop == 1)
+        {
+          if ((!bghs.b((QQAppInterface)localObject, paramChatMessage.senderuin)) && (!nty.a(paramChatMessage)) && (!aqvh.a(paramChatMessage)) && (!"1000000".equals(paramChatMessage.senderuin)) && (paramChatMessage.isSupportReply())) {
+            break label173;
+          }
+          if (QLog.isColorLevel())
+          {
+            parambhjq = new StringBuilder("addReplyOnlyMenu isRobot=").append(bghs.b((QQAppInterface)localObject, paramChatMessage.senderuin)).append(" isAnonymousMsg=").append(nty.a(paramChatMessage)).append(" isConfessMsg=").append(aqvh.a(paramChatMessage)).append(" isNotSupport=");
+            if (paramChatMessage.isSupportReply()) {
+              break label168;
+            }
+            bool = true;
+            QLog.d("BaseBubbleBuilderMenuHelper", 2, bool);
+          }
+        }
+      }
+    }
+    label168:
+    label173:
     do
     {
       return;
-      localEditable = a();
-    } while (localEditable == null);
-    paramEditText = paramEditText.getText();
-    int i = Selection.getSelectionStart(paramEditText);
-    int j = i;
-    if (this.jdField_a_of_type_Int == this.jdField_a_of_type_AndroidTextEditable.length())
-    {
-      j = i;
-      if (afqj.b(localEditable, "￼"))
-      {
-        localEditable.append("\n");
-        j = i + 1;
-      }
-    }
-    switch (this.jdField_d_of_type_Int)
-    {
-    default: 
-      i = j;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("FullScreenInputHelper", 2, "[mix] handle other at position: " + this.jdField_a_of_type_Int + " prefix: " + this.jdField_c_of_type_AndroidTextEditable + " suffix: " + this.jdField_d_of_type_AndroidTextEditable);
-        i = j;
-      }
+      bool = false;
       break;
-    }
-    while (this.jdField_d_of_type_Int != -1)
-    {
-      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-      if (!TextUtils.isEmpty(this.jdField_c_of_type_AndroidTextEditable)) {
-        localSpannableStringBuilder.append(this.jdField_c_of_type_AndroidTextEditable);
-      }
-      if (!TextUtils.isEmpty(localEditable)) {
-        localSpannableStringBuilder.append(localEditable);
-      }
-      if (!TextUtils.isEmpty(this.jdField_d_of_type_AndroidTextEditable)) {
-        localSpannableStringBuilder.append(this.jdField_d_of_type_AndroidTextEditable);
-      }
-      afqj.b(false);
-      paramEditText.replace(0, paramEditText.length(), localSpannableStringBuilder);
-      Selection.setSelection(paramEditText, Math.min(i, localSpannableStringBuilder.length()));
-      afqj.b(true);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("FullScreenInputHelper", 2, "[mix] handle add '_[img]' at position: " + this.jdField_a_of_type_Int + " prefix: " + this.jdField_c_of_type_AndroidTextEditable + " suffix: " + this.jdField_d_of_type_AndroidTextEditable);
-      }
-      localEditable.append("\n");
-      i = j;
-      continue;
-      if (QLog.isColorLevel()) {
-        QLog.d("FullScreenInputHelper", 2, "[mix] handle add '[img]_' at position: " + this.jdField_a_of_type_Int + " prefix: " + this.jdField_c_of_type_AndroidTextEditable + " suffix: " + this.jdField_d_of_type_AndroidTextEditable);
-      }
-      localEditable.insert(0, "\n");
-      i = j + 1;
-      continue;
-      if (QLog.isColorLevel()) {
-        QLog.d("FullScreenInputHelper", 2, "[mix] handle add '[img]_\\n[img]' at position: " + this.jdField_a_of_type_Int + " prefix: " + this.jdField_c_of_type_AndroidTextEditable + " suffix: " + this.jdField_d_of_type_AndroidTextEditable);
-      }
-      i = j;
-      if (!afqj.a(localEditable, "\n"))
+      if (!paramChatMessage.isSend())
       {
-        localEditable.insert(0, "\n");
-        i = j + 1;
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("FullScreenInputHelper", 2, "[mix] handle add '[img]_\\n[text]' at position: " + this.jdField_a_of_type_Int + " prefix: " + this.jdField_c_of_type_AndroidTextEditable + " suffix: " + this.jdField_d_of_type_AndroidTextEditable);
-        }
-        i = j;
-        if (!afqj.a(localEditable, "\n"))
-        {
-          localEditable.insert(0, "\n");
-          if (afqj.b(localEditable, "￼")) {}
-          for (;;)
-          {
-            i = j + k;
-            break;
-            k = 1;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("FullScreenInputHelper", 2, "[mix] handle add '[img]\\n_[img]' at position: " + this.jdField_a_of_type_Int + " prefix: " + this.jdField_c_of_type_AndroidTextEditable + " suffix: " + this.jdField_d_of_type_AndroidTextEditable);
-          }
-          i = j;
-          if (!afqj.b(localEditable, "\n"))
-          {
-            localEditable.append("\n");
-            i = j;
-            continue;
-            if (QLog.isColorLevel()) {
-              QLog.d("FullScreenInputHelper", 2, "[mix] handle add '[text]\\n_[img]' at position: " + this.jdField_a_of_type_Int + " prefix: " + this.jdField_c_of_type_AndroidTextEditable + " suffix: " + this.jdField_d_of_type_AndroidTextEditable);
-            }
-            i = j;
-            if (!afqj.b(localEditable, "\n"))
-            {
-              localEditable.append("\n");
-              i = j;
-              continue;
-              if (QLog.isColorLevel()) {
-                QLog.d("FullScreenInputHelper", 2, "[mix] handle del line '[img]_\\n_[img]' at position: " + this.jdField_a_of_type_Int + " prefix: " + this.jdField_c_of_type_AndroidTextEditable + " suffix: " + this.jdField_d_of_type_AndroidTextEditable);
-              }
-              this.jdField_c_of_type_AndroidTextEditable.delete(this.jdField_c_of_type_AndroidTextEditable.length() - 1, this.jdField_c_of_type_AndroidTextEditable.length());
-              i = j - 1;
-              continue;
-              if (QLog.isColorLevel()) {
-                QLog.d("FullScreenInputHelper", 2, "[mix] handle del line '[text]_\\n_[img]' at position: " + this.jdField_a_of_type_Int + " prefix: " + this.jdField_c_of_type_AndroidTextEditable + " suffix: " + this.jdField_d_of_type_AndroidTextEditable);
-              }
-              this.jdField_c_of_type_AndroidTextEditable.delete(this.jdField_c_of_type_AndroidTextEditable.length() - 1, this.jdField_c_of_type_AndroidTextEditable.length());
-              this.jdField_c_of_type_AndroidTextEditable.append("\n");
-              i = j - 1;
-              continue;
-              if (QLog.isColorLevel()) {
-                QLog.d("FullScreenInputHelper", 2, "[mix] handle del line '[img]_\\n_[text]' at position: " + this.jdField_a_of_type_Int + " prefix: " + this.jdField_c_of_type_AndroidTextEditable + " suffix: " + this.jdField_d_of_type_AndroidTextEditable);
-              }
-              this.jdField_c_of_type_AndroidTextEditable.delete(this.jdField_c_of_type_AndroidTextEditable.length() - 1, this.jdField_c_of_type_AndroidTextEditable.length());
-              i = j - 1;
-              continue;
-              if (QLog.isColorLevel()) {
-                QLog.d("FullScreenInputHelper", 2, "[mix] handle del '[img]_[img]' at position: " + this.jdField_a_of_type_Int + " prefix: " + this.jdField_c_of_type_AndroidTextEditable + " suffix: " + this.jdField_d_of_type_AndroidTextEditable);
-              }
-              this.jdField_c_of_type_AndroidTextEditable.append("\n");
-              i = j - 1;
-              continue;
-              if (QLog.isColorLevel()) {
-                QLog.d("FullScreenInputHelper", 2, "[mix] handle del '[text]_[img]' at position: " + this.jdField_a_of_type_Int + " prefix: " + this.jdField_c_of_type_AndroidTextEditable + " suffix: " + this.jdField_d_of_type_AndroidTextEditable);
-              }
-              this.jdField_c_of_type_AndroidTextEditable.append("\n");
-              i = j;
-              continue;
-              if (QLog.isColorLevel()) {
-                QLog.d("FullScreenInputHelper", 2, "[mix] handle del '[img]_[text]' at position: " + this.jdField_a_of_type_Int + " prefix: " + this.jdField_c_of_type_AndroidTextEditable + " suffix: " + this.jdField_d_of_type_AndroidTextEditable);
-              }
-              this.jdField_c_of_type_AndroidTextEditable.append("\n");
-              i = j + 1;
-              continue;
-              if (QLog.isColorLevel()) {
-                QLog.d("FullScreenInputHelper", 2, "[mix] handle replace '_[img]' at position: " + this.jdField_a_of_type_Int + " prefix: " + this.jdField_c_of_type_AndroidTextEditable + " suffix: " + this.jdField_d_of_type_AndroidTextEditable);
-              }
-              localEditable.append("\n");
-              i = j + 1;
-              continue;
-              if (QLog.isColorLevel()) {
-                QLog.d("FullScreenInputHelper", 2, "[mix] handle replace '[img]_' at position: " + this.jdField_a_of_type_Int + " prefix: " + this.jdField_c_of_type_AndroidTextEditable + " suffix: " + this.jdField_d_of_type_AndroidTextEditable);
-              }
-              localEditable.insert(0, "\n");
-              i = j + 1;
-              continue;
-              if (QLog.isColorLevel()) {
-                QLog.d("FullScreenInputHelper", 2, "[mix] handle replace '[img]_\\n[img]' at position: " + this.jdField_a_of_type_Int + " prefix: " + this.jdField_c_of_type_AndroidTextEditable + " suffix: " + this.jdField_d_of_type_AndroidTextEditable);
-              }
-              i = j;
-              if (!afqj.a(localEditable, "\n"))
-              {
-                localEditable.insert(0, "\n");
-                i = j + 1;
-                continue;
-                if (QLog.isColorLevel()) {
-                  QLog.d("FullScreenInputHelper", 2, "[mix] handle replace '[img]_\\n[text]' at position: " + this.jdField_a_of_type_Int + " prefix: " + this.jdField_c_of_type_AndroidTextEditable + " suffix: " + this.jdField_d_of_type_AndroidTextEditable);
-                }
-                i = j;
-                if (!afqj.a(localEditable, "\n"))
-                {
-                  localEditable.insert(0, "\n");
-                  if (afqj.b(localEditable, "￼")) {}
-                  for (;;)
-                  {
-                    i = j + k;
-                    break;
-                    k = 1;
-                  }
-                  if (QLog.isColorLevel()) {
-                    QLog.d("FullScreenInputHelper", 2, "[mix] handle replace '[img]\\n_[img]' at position: " + this.jdField_a_of_type_Int + " prefix: " + this.jdField_c_of_type_AndroidTextEditable + " suffix: " + this.jdField_d_of_type_AndroidTextEditable);
-                  }
-                  i = j;
-                  if (!afqj.b(localEditable, "\n"))
-                  {
-                    localEditable.append("\n");
-                    i = j - 1;
-                    continue;
-                    if (QLog.isColorLevel()) {
-                      QLog.d("FullScreenInputHelper", 2, "[mix] handle replace '[text]\\n_[img]' at position: " + this.jdField_a_of_type_Int + " prefix: " + this.jdField_c_of_type_AndroidTextEditable + " suffix: " + this.jdField_d_of_type_AndroidTextEditable);
-                    }
-                    i = j;
-                    if (!afqj.b(localEditable, "\n"))
-                    {
-                      localEditable.append("\n");
-                      i = j - 1;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+        a(k, parambhjq);
+        return;
       }
-    }
+    } while ((!paramChatMessage.isSend()) || (paramChatMessage.extraflag == 32772) || (paramChatMessage.extraflag == 32768));
+    a(k, parambhjq);
   }
   
-  @NotNull
-  public String toString()
+  public static void d(ChatMessage paramChatMessage, bhjq parambhjq)
   {
-    return "<TextChangeInfo> {textBefore: " + this.jdField_a_of_type_AndroidTextEditable + " textAfter: " + this.jdField_b_of_type_AndroidTextEditable + " indexChange: " + this.jdField_a_of_type_Int + " countAdded: " + this.jdField_c_of_type_Int + " countDeleted: " + this.jdField_b_of_type_Int + "}";
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
+      localObject = BaseApplicationImpl.getApplication().peekAppRuntime();
+      if ((localObject == null) || (!(localObject instanceof QQAppInterface))) {}
+    }
+    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
+    {
+      if (localObject == null) {}
+      int i1;
+      do
+      {
+        do
+        {
+          return;
+        } while (paramChatMessage.istroop != 1);
+        long l1 = 0L;
+        try
+        {
+          long l2 = Long.parseLong(paramChatMessage.frienduin);
+          l1 = l2;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            localException.printStackTrace();
+          }
+        }
+        i1 = bflj.a((QQAppInterface)localObject, new bfkz(l1, paramChatMessage.shmsgseq, bcsc.b(paramChatMessage.msgUid)), paramChatMessage);
+        if (i1 == 2)
+        {
+          a(g, parambhjq);
+          return;
+        }
+      } while (i1 != 1);
+      a(f, parambhjq);
+      return;
+    }
   }
 }
 

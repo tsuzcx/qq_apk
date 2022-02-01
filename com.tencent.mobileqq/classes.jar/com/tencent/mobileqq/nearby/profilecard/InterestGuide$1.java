@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import awka;
-import awxd;
+import axqc;
+import aydf;
 import java.lang.ref.WeakReference;
 
 public final class InterestGuide$1
@@ -9,13 +9,13 @@ public final class InterestGuide$1
 {
   public void run()
   {
-    if (((Boolean)awka.a(this.jdField_a_of_type_JavaLangString, "interest_guide_key", Boolean.TRUE)).booleanValue())
+    if (((Boolean)axqc.a(this.jdField_a_of_type_JavaLangString, "interest_guide_key", Boolean.TRUE)).booleanValue())
     {
-      awxd.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(new awxd(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int));
-      awxd.jdField_a_of_type_JavaLangBoolean = Boolean.TRUE;
+      aydf.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(new aydf(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int));
+      aydf.jdField_a_of_type_JavaLangBoolean = Boolean.TRUE;
       return;
     }
-    awxd.jdField_a_of_type_JavaLangBoolean = Boolean.FALSE;
+    aydf.jdField_a_of_type_JavaLangBoolean = Boolean.FALSE;
   }
 }
 

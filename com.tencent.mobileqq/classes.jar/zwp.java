@@ -1,51 +1,46 @@
-import com.tencent.biz.videostory.config.VSConfigManager;
-import org.json.JSONObject;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
+import com.tencent.qphone.base.util.QLog;
 
-public class zwp
+class zwp
+  implements zwj
 {
-  private String a = VSConfigManager.MINE_VIDEOSTORY_ENTRANCE_DEFVALUE;
-  private String b = "1";
-  private String c = VSConfigManager.MINE_VIDEOSTORY_CHOUTI_ENTRANCE_DEFVALUE;
+  zwp(zwk paramzwk) {}
   
-  public static zwp a(String paramString)
+  public void a()
   {
-    if (paramString == null) {
-      return null;
-    }
-    try
+    QLog.d("QCircleBaseInputPopupWindow", 1, "onSoftKeyboardClosed");
+    if (zwk.a(this.a))
     {
-      zwp localzwp = new zwp();
-      paramString = new JSONObject(paramString);
-      localzwp.a = paramString.optString("mine_videostory_entrance", VSConfigManager.MINE_VIDEOSTORY_ENTRANCE_DEFVALUE);
-      localzwp.b = paramString.optString("enable_click_take_picture", "1");
-      localzwp.c = paramString.optString("mine_videostory_drawer_entrance", VSConfigManager.MINE_VIDEOSTORY_CHOUTI_ENTRANCE_DEFVALUE);
-      return localzwp;
+      zwk.b(this.a, false);
+      if (zwk.a(this.a) != null) {
+        zwk.a(this.a).setVisibility(0);
+      }
+      if (zwk.a(this.a) != null) {
+        zwk.a(this.a).setVisibility(0);
+      }
     }
-    catch (Exception paramString)
+    for (;;)
     {
-      paramString.printStackTrace();
+      zwk.a(this.a, false);
+      return;
+      this.a.dismiss();
     }
-    return null;
   }
   
-  public String a()
+  public void a(int paramInt)
   {
-    return this.a;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public String c()
-  {
-    return this.c;
-  }
-  
-  public String toString()
-  {
-    return "k = mine_videostory_entrance, value = " + this.a + "\n k = enableClickTakePicture, value = " + this.b + "\n k = mine_videostory_chouti_entrance, value = " + this.c;
+    QLog.d("QCircleBaseInputPopupWindow", 1, "onSoftKeyboardOpened");
+    if (zwk.a(this.a) != paramInt)
+    {
+      zwk.a(this.a, paramInt);
+      zwk.a(this.a);
+      zwk.a(this.a).putInt("GroupSoftKeyboardHeight", paramInt);
+      zwk.a(this.a).commit();
+    }
+    this.a.c();
+    zwk.a(this.a, true);
   }
 }
 

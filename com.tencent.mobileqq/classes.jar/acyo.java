@@ -1,78 +1,34 @@
-import android.graphics.PointF;
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.BubblePopupWindow;
+import android.net.wifi.WifiManager;
+import android.net.wifi.WifiManager.WifiLock;
+import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
+import com.tencent.qapmsdk.qqbattery.QQBatteryMonitor;
+import com.tencent.qapmsdk.qqbattery.monitor.HookMethodCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public class acyo
-  implements afce, View.OnClickListener, bjoy
+class acyo
+  extends acyk
 {
-  protected PointF a;
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
-  
-  public acyo(ChatHistory paramChatHistory)
+  public HookMethodCallback a()
   {
-    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF();
+    return QQBatteryMonitor.getInstance().getWifiHook();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
-  }
-  
-  void a(View paramView)
-  {
-    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
-    paramView.dispatchTouchEvent(localMotionEvent);
-    localMotionEvent.recycle();
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (paramView.getId() == 2131365382) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = null;
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    if ((this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b()))
+    try
     {
-      a(paramView);
-      return false;
+      JavaHookBridge.findAndHookMethod(WifiManager.class, "startScan", new Object[] { this });
+      JavaHookBridge.findAndHookMethod(WifiManager.class, "createWifiLock", new Object[] { Integer.TYPE, String.class, this });
+      JavaHookBridge.findAndHookMethod(WifiManager.class, "createWifiLock", new Object[] { String.class, this });
+      JavaHookBridge.findAndHookMethod(WifiManager.WifiLock.class, "acquire", new Object[] { this });
+      JavaHookBridge.findAndHookMethod(WifiManager.WifiLock.class, "release", new Object[] { this });
+      return;
     }
-    bgaz localbgaz = new bgaz();
-    localbgaz.a(2131365382, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131690679), 2130838966);
-    if (localbgaz.a() > 0)
+    catch (Throwable localThrowable)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((acyp)ChatHistory.a(paramView)).jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      int i = (int)this.jdField_a_of_type_AndroidGraphicsPointF.y;
-      int j = AIOUtils.dp2px(10.0F, paramView.getResources());
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bfue.a(paramView, (int)this.jdField_a_of_type_AndroidGraphicsPointF.x, i - j, localbgaz, this, null);
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(this);
-      a(paramView);
-      return true;
+      while (!QLog.isColorLevel()) {}
+      QLog.d("MagnifierSDK.QAPM.QAPMBatteryWrapper", 2, "", localThrowable);
     }
-    a(paramView);
-    return false;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_AndroidGraphicsPointF.x = paramMotionEvent.getRawX();
-      this.jdField_a_of_type_AndroidGraphicsPointF.y = paramMotionEvent.getRawY();
-    }
-    return false;
   }
 }
 

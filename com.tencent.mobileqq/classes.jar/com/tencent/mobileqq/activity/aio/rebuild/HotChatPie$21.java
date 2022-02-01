@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahgz;
-import ahho;
-import aljn;
+import aibs;
+import aich;
+import amhn;
 import android.content.Context;
 import android.os.Bundle;
 import android.widget.TextView;
-import biae;
+import bjlg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.HotChatInfo;
 import com.tencent.mobileqq.utils.NetworkUtil;
@@ -18,13 +18,13 @@ import mqq.manager.TicketManager;
 public class HotChatPie$21
   implements Runnable
 {
-  public HotChatPie$21(ahgz paramahgz, int paramInt1, int paramInt2) {}
+  public HotChatPie$21(aibs paramaibs, int paramInt1, int paramInt2) {}
   
   public void run()
   {
     int j = 1;
     if (!NetworkUtil.isNetworkAvailable(this.this$0.mContext)) {
-      QQToast.a(this.this$0.mContext, 1, this.this$0.mContext.getString(2131694065), 0).a();
+      QQToast.a(this.this$0.mContext, 1, this.this$0.mContext.getString(2131694256), 0).a();
     }
     while ((this.this$0.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo == null) || (!this.this$0.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.isBuLuoHotChat())) {
       return;
@@ -48,8 +48,8 @@ public class HotChatPie$21
         localBundle.putString("Referer", String.format("https://buluo.qq.com/mobile/barindex.html?bid=%s&scene=detail_titleNav&_wv=1027", new Object[] { localObject3 }));
         localObject1 = this.this$0.mContext;
         localObject2 = this.this$0.jdField_a_of_type_ComTencentWidgetXListView;
-        localObject3 = this.this$0.jdField_a_of_type_Aljn;
-        localObject4 = ahgz.a(this.this$0);
+        localObject3 = this.this$0.jdField_a_of_type_Amhn;
+        localObject4 = aibs.a(this.this$0);
         localTextView = this.this$0.c;
         if (this.b != 0) {
           break label357;
@@ -58,7 +58,7 @@ public class HotChatPie$21
       label357:
       for (int i = j;; i = 2)
       {
-        new biae("https://buluo.qq.com/cgi-bin/bar/post/get_post_from_reliao", "GET", new ahho((Context)localObject1, (XListView)localObject2, (aljn)localObject3, (PullRefreshHeader)localObject4, localTextView, i)).a(localBundle);
+        new bjlg("https://buluo.qq.com/cgi-bin/bar/post/get_post_from_reliao", "GET", new aich((Context)localObject1, (XListView)localObject2, (amhn)localObject3, (PullRefreshHeader)localObject4, localTextView, i)).a(localBundle);
         return;
         i = this.b;
         break;

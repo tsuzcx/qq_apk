@@ -1,135 +1,60 @@
-import android.annotation.TargetApi;
-import android.app.Dialog;
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.text.InputFilter;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.biz.troopgift.TroopGiftPanel.GiftNumInputDialog.5;
-import com.tencent.biz.troopgift.TroopGiftPanel.GiftNumInputDialog.6;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.widget.InputMethodLinearLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StLike;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoLikeRsp;
+import android.os.Bundle;
+import com.tencent.biz.richframework.eventbus.SimpleEventBus;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
+import com.tencent.biz.subscribe.event.PraisedUpdateEvents;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class zuc
-  implements View.OnClickListener, bhfa
+  implements VSDispatchObserver.onVSRspCallBack<CertifiedAccountWrite.StDoLikeRsp>
 {
-  protected Dialog a;
-  protected EditText a;
-  protected TextView a;
-  protected TextView b;
+  public zuc(CommentBottomBar paramCommentBottomBar) {}
   
-  @TargetApi(11)
-  public zuc(TroopGiftPanel paramTroopGiftPanel, Context paramContext)
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoLikeRsp paramStDoLikeRsp)
   {
-    this.jdField_a_of_type_AndroidAppDialog = new Dialog(paramContext, 2131755166);
-    Window localWindow = this.jdField_a_of_type_AndroidAppDialog.getWindow();
-    localWindow.setSoftInputMode(16);
-    View localView = localWindow.getDecorView();
-    if (localView != null) {
-      localView.setPadding(0, 0, 0, 0);
+    CommentBottomBar.a(this.a, true);
+    if ((!paramBoolean) || (paramLong != 0L) || (paramStDoLikeRsp == null)) {
+      QQToast.a(this.a.getContext(), 1, paramString, 0).a();
     }
-    localWindow.setGravity(80);
-    localWindow.setLayout(-1, -2);
-    paramContext = LayoutInflater.from(paramContext).inflate(2131560625, null);
-    this.jdField_a_of_type_AndroidAppDialog.setContentView(paramContext);
-    this.jdField_a_of_type_AndroidAppDialog.setCancelable(true);
-    paramContext = (InputMethodLinearLayout)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131367604);
-    paramContext.setOnSizeChangedListenner(this);
-    this.b = ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131364988));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131364181));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131367610));
-    if (Build.VERSION.SDK_INT >= 11) {
-      this.jdField_a_of_type_AndroidWidgetEditText.setCustomSelectionActionModeCallback(new zud(this, paramTroopGiftPanel));
-    }
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new zue(this, paramTroopGiftPanel));
-    this.b.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    paramContext.setOnClickListener(new zuf(this, paramTroopGiftPanel));
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidAppDialog.setOnShowListener(new zug(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new zub(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel, 5) });
-    this.jdField_a_of_type_AndroidAppDialog.show();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (!paramBoolean) {
-      b();
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Zuj.a();
-    }
+    label286:
+    label290:
     for (;;)
     {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
       return;
-      ((BaseChatPie)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b.get()).showGiftPanel(false);
-    }
-  }
-  
-  public void c()
-  {
-    InputMethodManager localInputMethodManager = (InputMethodManager)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getContext().getSystemService("input_method");
-    View localView = this.jdField_a_of_type_AndroidAppDialog.getWindow().peekDecorView();
-    if ((localView != null) && (localView.getWindowToken() != null)) {
-      localInputMethodManager.hideSoftInputFromWindow(localView.getWindowToken(), 0);
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    int i;
-    if (nmy.a().a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()))
-    {
-      i = 2;
-      switch (paramView.getId())
+      if (paramStDoLikeRsp.like.status.get() == 1)
       {
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      i = 1;
-      break;
-      c();
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.postDelayed(new TroopGiftPanel.GiftNumInputDialog.5(this), 100L);
-      if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.k >= 4)
-      {
-        amxb.a("gift_store", "cancel_num", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a() + "", "", "");
-      }
-      else
-      {
-        bcef.b(null, "dc00899", "Grp_flower", "", "aio_mall", "Clk_numcancel", i, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_c_of_type_JavaLangString, "" + muk.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
-        continue;
-        c();
-        String str = this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString();
-        if (!TextUtils.isEmpty(str)) {
-          this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(str);
+        i = CommentBottomBar.a(this.a).likeInfo.count.get() + 1;
+        if (CommentBottomBar.a(this.a) != null)
+        {
+          CommentBottomBar.a(this.a).likeInfo.status.set(paramStDoLikeRsp.like.status.get());
+          CommentBottomBar.a(this.a).likeInfo.count.set(i);
         }
-        this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.postDelayed(new TroopGiftPanel.GiftNumInputDialog.6(this), 100L);
-        if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.k >= 4) {
-          amxb.a("gift_store", "sure_num", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a() + "", "", "");
-        } else {
-          bcef.b(null, "dc00899", "Grp_flower", "", "aio_mall", "Clk_numok", i, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_c_of_type_JavaLangString, "" + muk.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
+        SimpleEventBus.getInstance().dispatchEvent(new PraisedUpdateEvents(CommentBottomBar.a(this.a).id.get(), paramStDoLikeRsp.like.status.get(), i));
+        if (BaseApplicationImpl.sProcessId != 1) {
+          break label286;
         }
+      }
+      for (int i = 1;; i = 0)
+      {
+        if (i != 0) {
+          break label290;
+        }
+        paramVSBaseRequest = new Bundle();
+        paramVSBaseRequest.putString("feed_id", CommentBottomBar.a(this.a).id.get());
+        paramVSBaseRequest.putInt("feed_like_status", paramStDoLikeRsp.like.status.get());
+        paramVSBaseRequest.putInt("feed_like_num", paramStDoLikeRsp.like.count.get());
+        QIPCClientHelper.getInstance().callServer(SimpleEventBus.IPC_SERVICE_MODULE_NAME, SimpleEventBus.ACTION_PRAISED_UPDATE, paramVSBaseRequest, null);
+        return;
+        i = CommentBottomBar.a(this.a).likeInfo.count.get() - 1;
+        break;
       }
     }
   }

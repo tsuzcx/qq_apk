@@ -1,17 +1,37 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.helper.AVGameHelper.1.1;
+import com.tencent.mobileqq.activity.aio.helper.AVGameHelper.1.2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class aggw
-  extends aghj
+public class aggw
+  extends ndm
 {
-  aggw(agcw paramagcw)
+  aggw(aggv paramaggv) {}
+  
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    super(paramagcw, null);
+    if ((paramString1 != null) && (aggv.a(this.a).curFriendUin.equals(paramString1)))
+    {
+      paramString1 = (ncz)aggv.a(this.a).getManager(QQManagerFactory.AV_GAME_MANAGER);
+      if (paramString1 != null) {
+        paramString1.a(aggv.a(this.a).curFriendUin, 0, 1);
+      }
+    }
   }
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void a(int paramInt, String paramString, ndn paramndn)
   {
-    return new agic(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    ThreadManager.getUIHandler().post(new AVGameHelper.1.1(this, paramndn));
+  }
+  
+  public void b(int paramInt, String paramString1, String paramString2)
+  {
+    if ((paramString2 != null) && (aggv.a(this.a).curFriendUin.equals(paramString2)) && (aggv.a(this.a) != null)) {
+      ThreadManager.getUIHandler().post(new AVGameHelper.1.2(this, paramInt));
+    }
   }
 }
 

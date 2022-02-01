@@ -1,14 +1,56 @@
-import com.tencent.mobileqq.haoliyou.JefsClass;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.qphone.base.util.QLog;
 
-public class aucj
-  extends ThreadLocal<Boolean>
+public abstract class aucj
 {
-  public aucj(JefsClass paramJefsClass) {}
+  protected auck a;
+  protected QQAppInterface a;
+  protected ChatMessage a;
   
-  protected Boolean a()
+  public aucj(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    return Boolean.valueOf(false);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
   }
+  
+  public static aucj a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  {
+    if (paramChatMessage == null)
+    {
+      QLog.e("QFileSaveModel<QFile>", 1, "buildFileSaveModel: message is null");
+      return null;
+    }
+    if ((paramChatMessage instanceof MessageForFile)) {
+      return new aucd(paramQQAppInterface, paramChatMessage);
+    }
+    if ((paramChatMessage instanceof MessageForTroopFile)) {
+      return new aucm(paramQQAppInterface, paramChatMessage);
+    }
+    QLog.e("QFileSaveModel<QFile>", 1, "buildFileSaveModel: message is not support. messageType[" + paramChatMessage.getClass().getName() + "]");
+    return null;
+  }
+  
+  public abstract long a();
+  
+  public abstract aucg a();
+  
+  public abstract String a();
+  
+  public void a(auck paramauck)
+  {
+    this.jdField_a_of_type_Auck = paramauck;
+  }
+  
+  public abstract boolean a();
+  
+  public abstract String b();
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
 }
 
 

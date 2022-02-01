@@ -1,24 +1,14 @@
-import android.view.animation.Animation;
-
-class aaga
-  extends bjmc
+public class aaga
 {
-  aaga(aafy paramaafy) {}
+  public aaga(aafb paramaafb) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.a.a().f();
-    this.a.a.a().a();
-  }
+  public void a(aafz paramaafz) {}
   
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.a.a().g();
-  }
+  public void b(aafz paramaafz) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaga
  * JD-Core Version:    0.7.0.1
  */

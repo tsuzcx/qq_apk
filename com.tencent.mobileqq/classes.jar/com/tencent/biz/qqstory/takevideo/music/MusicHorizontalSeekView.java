@@ -9,9 +9,9 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import bfvh;
+import bhdz;
 import com.tencent.qphone.base.util.QLog;
-import yip;
+import yxi;
 
 public class MusicHorizontalSeekView
   extends View
@@ -25,7 +25,7 @@ public class MusicHorizontalSeekView
   float a;
   protected Paint a;
   protected Rect a;
-  protected yip a;
+  protected yxi a;
   protected boolean a;
   protected Paint b;
   protected Paint c;
@@ -52,26 +52,26 @@ public class MusicHorizontalSeekView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Float = 0.0F;
-    this.m = ((int)bfvh.a(paramContext, 2.0F));
-    this.n = ((int)bfvh.a(paramContext, 1.0F));
-    jdField_b_of_type_Int = (int)bfvh.a(paramContext, 10.0F);
-    jdField_c_of_type_Int = (int)bfvh.a(paramContext, 21.0F);
+    this.m = ((int)bhdz.a(paramContext, 2.0F));
+    this.n = ((int)bhdz.a(paramContext, 1.0F));
+    jdField_b_of_type_Int = (int)bhdz.a(paramContext, 10.0F);
+    jdField_c_of_type_Int = (int)bhdz.a(paramContext, 21.0F);
     int i1 = 0;
     while (i1 < jdField_a_of_type_Int)
     {
-      jdField_b_of_type_ArrayOfInt[i1] = ((int)bfvh.a(paramContext, jdField_a_of_type_ArrayOfInt[i1]));
+      jdField_b_of_type_ArrayOfInt[i1] = ((int)bhdz.a(paramContext, jdField_a_of_type_ArrayOfInt[i1]));
       i1 += 1;
     }
     paramContext = paramContext.getResources();
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131165553));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131165559));
     this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131166491));
+    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131166505));
     this.jdField_c_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_c_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131166493));
+    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131166507));
     this.jdField_c_of_type_AndroidGraphicsPaint.setStrokeWidth(this.n);
     super.setOnTouchListener(this);
   }
@@ -181,8 +181,8 @@ public class MusicHorizontalSeekView
     this.j = ((this.k - this.f) / 2);
     paramInt1 = (this.l - jdField_c_of_type_Int) / 2;
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect(this.j, paramInt1, this.j + this.d * jdField_b_of_type_Int, jdField_c_of_type_Int + paramInt1);
-    if (this.jdField_a_of_type_Yip != null) {
-      this.jdField_a_of_type_Yip.a(this.j, this.f);
+    if (this.jdField_a_of_type_Yxi != null) {
+      this.jdField_a_of_type_Yxi.a(this.j, this.f);
     }
   }
   
@@ -201,10 +201,10 @@ public class MusicHorizontalSeekView
         return bool;
         this.jdField_a_of_type_Boolean = false;
         this.jdField_a_of_type_Float = paramMotionEvent.getX();
-        if (this.jdField_a_of_type_Yip == null) {
+        if (this.jdField_a_of_type_Yxi == null) {
           break;
         }
-        this.jdField_a_of_type_Yip.a(this.g, this.f, this.h);
+        this.jdField_a_of_type_Yxi.a(this.g, this.f, this.h);
         break;
         f1 = paramMotionEvent.getX();
       } while (Math.abs(f1 - this.jdField_a_of_type_Float) < 2.0F);
@@ -216,8 +216,8 @@ public class MusicHorizontalSeekView
         {
           this.h = 0;
           super.invalidate();
-          if (this.jdField_a_of_type_Yip != null) {
-            this.jdField_a_of_type_Yip.b(this.g, this.f, this.h);
+          if (this.jdField_a_of_type_Yxi != null) {
+            this.jdField_a_of_type_Yxi.b(this.g, this.f, this.h);
           }
           this.jdField_a_of_type_Float = f1;
           return false;
@@ -227,22 +227,22 @@ public class MusicHorizontalSeekView
       {
         this.h = (this.g - this.f);
         super.invalidate();
-        if (this.jdField_a_of_type_Yip != null) {
-          this.jdField_a_of_type_Yip.b(this.g, this.f, this.h);
+        if (this.jdField_a_of_type_Yxi != null) {
+          this.jdField_a_of_type_Yxi.b(this.g, this.f, this.h);
         }
         this.jdField_a_of_type_Float = f1;
         return false;
       }
       super.invalidate();
-      if (this.jdField_a_of_type_Yip != null) {
-        this.jdField_a_of_type_Yip.b(this.g, this.f, this.h);
+      if (this.jdField_a_of_type_Yxi != null) {
+        this.jdField_a_of_type_Yxi.b(this.g, this.f, this.h);
       }
       this.jdField_a_of_type_Float = f1;
       continue;
       this.jdField_a_of_type_Boolean = false;
       super.invalidate();
-      if (this.jdField_a_of_type_Yip != null) {
-        this.jdField_a_of_type_Yip.c(this.g, this.f, this.h);
+      if (this.jdField_a_of_type_Yxi != null) {
+        this.jdField_a_of_type_Yxi.c(this.g, this.f, this.h);
       }
     }
   }
@@ -255,9 +255,9 @@ public class MusicHorizontalSeekView
     this.g = (jdField_b_of_type_Int * this.e);
   }
   
-  public void setOnSeekListener(yip paramyip)
+  public void setOnSeekListener(yxi paramyxi)
   {
-    this.jdField_a_of_type_Yip = paramyip;
+    this.jdField_a_of_type_Yxi = paramyxi;
   }
   
   public void setPlayedPosition(int paramInt)

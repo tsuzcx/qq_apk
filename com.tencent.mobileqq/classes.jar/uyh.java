@@ -1,14 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
+import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
+import com.tencent.widget.pull2refresh.XRecyclerView;
 
-final class uyh
-  implements DialogInterface.OnShowListener
+public class uyh
+  implements bljk
 {
-  uyh(uwy paramuwy) {}
+  public uyh(WSRecommendFragment paramWSRecommendFragment) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void a()
   {
-    uyd.a(this.a);
+    vmp.b("WSRecommendFragment", "endOfRefresh");
+    this.a.a.d();
+  }
+  
+  public void a(XRecyclerView paramXRecyclerView, int paramInt)
+  {
+    vmp.b("WSRecommendFragment", "startLoadMore");
+    ((vjl)this.a.b()).a(false, false, "");
+  }
+  
+  public void a(XRecyclerView paramXRecyclerView, boolean paramBoolean)
+  {
+    vmp.b("WSRecommendFragment", "startTopRefresh");
+    if (WSRecommendFragment.a(this.a)) {
+      WSRecommendFragment.a(this.a, false);
+    }
+    do
+    {
+      return;
+      if (!WSRecommendFragment.b(this.a)) {
+        WSRecommendFragment.b(this.a, true);
+      }
+      WSRecommendFragment.a(this.a, System.currentTimeMillis());
+      ((vjl)this.a.b()).a(true, false, "");
+    } while (WSRecommendFragment.c(this.a));
+    ((vjl)this.a.b()).a("");
   }
 }
 

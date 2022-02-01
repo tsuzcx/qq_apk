@@ -1,27 +1,28 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.contacts.friend.FriendFragment;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajlc
-  implements Animator.AnimatorListener
+  extends CardObserver
 {
-  public ajlc(AvatarPendantActivity paramAvatarPendantActivity) {}
+  private ajlc(FriendFragment paramFriendFragment) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    this.a.e = AvatarPendantActivity.c;
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a.e = AvatarPendantActivity.a;
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.e = AvatarPendantActivity.d;
+    if (paramBoolean1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, " contacts onGetCalReactiveDays isAllow= " + paramBoolean2);
+      }
+      FriendFragment.a(this.a, 1400L, false);
+    }
   }
 }
 

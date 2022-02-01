@@ -1,110 +1,81 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class asiy
-  extends asdv
+public class asiy
 {
-  asiy(asix paramasix) {}
+  private static asiy jdField_a_of_type_Asiy;
+  ArrayList<WeakReference<asix>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, int paramInt, long paramLong3)
+  public static asiy a()
   {
-    QLog.i("OfflineSendWorker<FileAssistant>", 1, "=_= ^> [CC Replay] nSessionId[" + paramLong2 + "] SendCC [" + paramBoolean + "], retCode[" + paramLong1 + "]");
-    if (!paramBoolean)
+    if (jdField_a_of_type_Asiy == null) {}
+    try
     {
-      QLog.i("OfflineSendWorker<FileAssistant>", 1, "=_= ^! Id[" + String.valueOf(paramLong2) + "]OnSendCCReplay Faild! !");
-      asix.a(this.a, 1005);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 15, null, 5, null);
-      paramInt = 90460;
-      if (-100001L == paramLong1) {
-        paramInt = 9043;
+      if (jdField_a_of_type_Asiy == null) {
+        jdField_a_of_type_Asiy = new asiy();
       }
-      asix.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize, paramInt, "sendCCFaild");
-      asix.b(this.a, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize, paramInt, "sendCCFaild");
-      return;
+      return jdField_a_of_type_Asiy;
     }
-    if (58L == paramLong1)
-    {
-      QLog.i("OfflineSendWorker<FileAssistant>", 1, "=_= ^! Id[" + String.valueOf(paramLong2) + "]OnSendCCReplay Faild! !retCode[" + paramLong1 + "]");
-      asix.a(this.a, 1005);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 15, null, 5, null);
-      asix.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize, 58, "ServerMasking");
-      asix.b(this.a, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize, 58, "ServerMasking");
-      return;
-    }
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.a.jdField_a_of_type_Asic != null)
-    {
-      localObject1 = localObject2;
-      if (this.a.jdField_a_of_type_Asic.a() > 0) {
-        localObject1 = "ChanedUrlCount[" + this.a.jdField_a_of_type_Asic.a() + "]";
-      }
-    }
-    this.a.b((String)localObject1);
-    afoa.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLong3);
+    finally {}
   }
   
-  protected void a(boolean paramBoolean, asdr paramasdr, amwm paramamwm)
+  public void a()
   {
-    if (!paramBoolean)
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
-      QLog.i("OfflineSendWorker<FileAssistant>", 1, "Id[" + this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]wk,onUpdateSetOfflineFileState-->failed");
-      asix.a(this.a, 1005);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 15, null, paramasdr.jdField_a_of_type_Int, paramasdr.jdField_a_of_type_JavaLangString);
-      int i = 9045;
-      if (-100001 == paramasdr.jdField_a_of_type_Int) {
-        i = 9043;
-      }
-      asix.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize, i, "setSuccFaild");
-      asix.b(this.a, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize, i, "setSuccFaild");
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
       return;
     }
-    QLog.i("OfflineSendWorker<FileAssistant>", 1, "=_= ^> [SetFileStatus Step]Id[" + this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]onUpdateSetOfflineFileState success, send CC!");
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileTransferHandler().a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, asix.a(this.a));
   }
   
-  protected void a(boolean paramBoolean, asdr paramasdr, amwm paramamwm, List<String> paramList)
+  public void a(int paramInt)
   {
-    if (this.a.a())
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("OfflineSendWorker<FileAssistant>", 2, "=_= ^! Id[" + this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]onUpdateSendOfflineFile: but this work has stop");
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        asix localasix = (asix)((WeakReference)localIterator.next()).get();
+        if (localasix != null) {
+          localasix.onPayBack(paramInt);
+        }
       }
-      return;
     }
-    if (!paramBoolean)
-    {
-      asix.a(this.a, paramasdr);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("OfflineSendWorker<FileAssistant>", 2, "Id[" + this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]wk,handleSendOfflineFileResp");
-    }
-    if (asix.a(this.a, paramasdr))
-    {
-      asix.b(this.a, paramasdr);
-      return;
-    }
-    asix.a(this.a, paramasdr, paramList);
   }
   
-  protected void b(boolean paramBoolean, asdr paramasdr, amwm paramamwm, List<String> paramList)
+  public void a(asix paramasix)
   {
-    if (this.a.a()) {}
-    while (paramasdr.jdField_a_of_type_Int != 0) {
+    if (paramasix == null) {
       return;
     }
-    if ((paramasdr.jdField_a_of_type_ArrayOfByte != null) && (paramasdr.jdField_a_of_type_ArrayOfByte.length > 0))
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid = new String(paramasdr.jdField_a_of_type_ArrayOfByte);
-      this.a.b();
-      this.a.b = true;
-      asix.a(this.a);
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext()) {
+        if (((WeakReference)localIterator.next()).get() == paramasix) {
+          return;
+        }
+      }
+    }
+    paramasix = new WeakReference(paramasix);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramasix);
+  }
+  
+  public void b(asix paramasix)
+  {
+    if (paramasix == null) {
       return;
     }
-    QLog.e("OfflineSendWorker<FileAssistant>", 1, "!!!!!Server Return the UUID is null!!!!!");
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext()) {
+        if (((WeakReference)localIterator.next()).get() == paramasix) {
+          localIterator.remove();
+        }
+      }
+    }
   }
 }
 

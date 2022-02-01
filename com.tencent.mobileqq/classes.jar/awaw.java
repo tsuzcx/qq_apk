@@ -1,133 +1,148 @@
-import com.tencent.mobileqq.data.IntimateInfo;
+import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.support.annotation.Nullable;
+import android.support.v4.util.ArraySet;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import java.io.ByteArrayInputStream;
 import java.util.Iterator;
+import org.json.JSONObject;
 
-class awaw
-  extends atuh
+public class awaw
+  extends WebViewPlugin
 {
-  protected void a(boolean paramBoolean, long paramLong, ArrayList<Long> paramArrayList)
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  @Nullable
+  private ArraySet<Integer> jdField_a_of_type_AndroidSupportV4UtilArraySet;
+  
+  public awaw()
   {
-    Object localObject2;
-    if (QLog.isColorLevel())
-    {
-      localObject2 = new StringBuilder().append("onGetIntimateGroupRecommendUinList ").append(paramBoolean).append(" ").append(paramLong).append(" ");
-      if (paramArrayList == null) {
-        break label200;
-      }
-      ??? = paramArrayList.toString();
-    }
-    for (;;)
-    {
-      QLog.d("MultiCardManager", 2, (String)???);
-      if ((paramLong == awas.a(this.a)) && (awas.d(this.a) != null)) {
-        if (paramArrayList != null) {
-          synchronized (awas.a(this.a))
-          {
-            awas.a(this.a).put(Long.valueOf(paramLong), (ArrayList)paramArrayList.clone());
-          }
-        }
-      }
-      synchronized (awas.d(this.a))
-      {
-        localObject2 = (WeakReference)awas.d(this.a).get(Long.valueOf(paramLong));
-        if (localObject2 != null)
-        {
-          ??? = (awav)((WeakReference)localObject2).get();
-          if (??? != null)
-          {
-            if (paramBoolean) {
-              break;
-            }
-            awas.a(this.a, paramLong, (awav)???);
-          }
-        }
-        return;
-        label200:
-        ??? = "null";
-        continue;
-        paramArrayList = finally;
-        throw paramArrayList;
-      }
-    }
-    ((awav)???).a(paramLong, paramArrayList);
+    this.mPluginNameSpace = "Gdt";
   }
   
-  protected void a(boolean paramBoolean, HashMap<Long, IntimateInfo> paramHashMap, Object arg3)
+  private Activity a()
   {
-    if (QLog.isColorLevel())
+    for (Activity localActivity = this.mRuntime.a(); (localActivity != null) && ((localActivity instanceof BasePluginActivity)); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
+    return localActivity;
+  }
+  
+  private void a(String paramString)
+  {
+    for (;;)
     {
-      ??? = new StringBuilder().append("onGetGroupIntimateInfos ").append(paramBoolean).append(" ");
-      if (paramHashMap == null) {
-        break label284;
-      }
-    }
-    long l1;
-    label284:
-    for (paramHashMap = paramHashMap.size() + paramHashMap.toString();; paramHashMap = "null")
-    {
-      QLog.d("MultiCardManager", 2, paramHashMap);
-      paramHashMap = new ArrayList(0);
-      if (!(??? instanceof HashMap)) {
-        break label393;
-      }
-      Object localObject2 = (HashMap)???;
-      ??? = (ArrayList)((HashMap)localObject2).get("alreadyRequest");
-      ??? = (ArrayList)((HashMap)localObject2).get("notRequest");
-      localObject2 = (ArrayList)((HashMap)localObject2).get("groupUin");
-      if ((localObject2 == null) || (((ArrayList)localObject2).size() <= 0)) {
-        break label387;
-      }
-      l1 = ((Long)((ArrayList)localObject2).get(0)).longValue();
-      if (??? != null) {
-        paramHashMap.addAll((Collection)???);
-      }
-      l2 = l1;
-      if (??? == null) {
-        break label297;
-      }
-      paramHashMap.addAll(???);
-      l2 = l1;
-      if (paramBoolean) {
-        break label297;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiCardManager", 2, "onGetGroupIntimateInfos false remove sendRequest  " + ???.toString());
-      }
-      synchronized (awas.e(this.a))
+      Object localObject;
+      try
       {
-        ??? = ???.iterator();
-        if (!???.hasNext()) {
-          break;
+        localObject = new JSONObject(paramString);
+        paramString = ((JSONObject)localObject).optString("businessId");
+        String str1 = ((JSONObject)localObject).optString("openlink");
+        String str2 = ((JSONObject)localObject).optString("packageName");
+        localObject = ((JSONObject)localObject).optString("callback");
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          break label207;
         }
-        localObject2 = (Long)???.next();
-        awas.e(this.a).remove(localObject2);
-      }
-    }
-    label387:
-    label393:
-    for (long l2 = l1;; l2 = 0L)
-    {
-      label297:
-      if ((l2 == awas.a(this.a)) && (awas.f(this.a) != null)) {}
-      synchronized (awas.f(this.a))
-      {
-        ??? = (WeakReference)awas.f(this.a).get(Long.valueOf(l2));
-        if (??? != null)
+        awax localawax = new awax(this, (String)localObject);
+        i = aqgm.a().a(localawax);
+        if (this.jdField_a_of_type_AndroidSupportV4UtilArraySet == null) {
+          this.jdField_a_of_type_AndroidSupportV4UtilArraySet = new ArraySet();
+        }
+        this.jdField_a_of_type_AndroidSupportV4UtilArraySet.add(Integer.valueOf(i));
+        try
         {
-          ??? = (awat)((WeakReference)???).get();
-          if (??? != null) {
-            awas.a(this.a, l2, paramHashMap, ???);
+          if (!TextUtils.isEmpty(str1))
+          {
+            aqgr.a(this.jdField_a_of_type_AndroidAppActivity, str1, paramString, i);
+            return;
+          }
+          if (TextUtils.isEmpty(str2)) {
+            break label183;
+          }
+          bhfn.a(this.jdField_a_of_type_AndroidAppActivity, str2, null, paramString, i);
+          return;
+        }
+        catch (ActivityNotFoundException paramString)
+        {
+          if (TextUtils.isEmpty((CharSequence)localObject)) {
+            break;
           }
         }
+        callJs((String)localObject, new String[] { "{\"openresult\":-3}" });
         return;
       }
-      l1 = 0L;
-      break;
+      catch (Exception paramString)
+      {
+        QLog.e(this.TAG, 1, paramString, new Object[0]);
+        return;
+      }
+      label183:
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        break;
+      }
+      callJs((String)localObject, new String[] { "{\"openresult\":-3}" });
+      return;
+      label207:
+      int i = 0;
     }
+  }
+  
+  public Object handleEvent(String paramString, long paramLong)
+  {
+    if ((paramLong == 8L) && (paramString != null)) {
+      try
+      {
+        if (((aqgo)aqxe.a().a(416)).a(paramString))
+        {
+          QLog.d(this.TAG, 1, "doInterceptRequest");
+          WebResourceResponse localWebResourceResponse = new WebResourceResponse("text/html", "utf-8", new ByteArrayInputStream(new byte[0]));
+          return localWebResourceResponse;
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e(this.TAG, 1, localThrowable, new Object[0]);
+        return super.handleEvent(paramString, paramLong);
+      }
+    }
+    return super.handleEvent(paramString, paramLong);
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    boolean bool = false;
+    if ("Gdt".equals(paramString2))
+    {
+      addOpenApiListenerIfNeeded(paramString3, paramJsBridgeListener);
+      if (("Openlink".equals(paramString3)) && (paramVarArgs.length > 0)) {
+        a(paramVarArgs[0]);
+      }
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    this.jdField_a_of_type_AndroidAppActivity = a();
+  }
+  
+  public void onDestroy()
+  {
+    if (this.jdField_a_of_type_AndroidSupportV4UtilArraySet != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_AndroidSupportV4UtilArraySet.iterator();
+      while (localIterator.hasNext())
+      {
+        int i = ((Integer)localIterator.next()).intValue();
+        aqgm.a().a(i);
+      }
+      this.jdField_a_of_type_AndroidSupportV4UtilArraySet.clear();
+    }
+    super.onDestroy();
   }
 }
 

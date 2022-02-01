@@ -1,20 +1,14 @@
-import java.io.File;
-import java.util.Comparator;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public final class amko
-  implements Comparator<File>
+public class amko
 {
-  public int a(File paramFile1, File paramFile2)
-  {
-    if ((paramFile1.exists()) && (paramFile2.exists()))
-    {
-      if (paramFile1.lastModified() - paramFile2.lastModified() > 0L) {
-        return 1;
-      }
-      return -1;
-    }
-    return 0;
-  }
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
+  public TextView b;
+  
+  protected amko(amkn paramamkn) {}
 }
 
 

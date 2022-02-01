@@ -1,6 +1,15 @@
-public abstract interface pes
+class pes
+  extends pfe
 {
-  public abstract void c();
+  pes(pdv parampdv, int paramInt1, pdp parampdp, int paramInt2)
+  {
+    super(parampdv, null);
+  }
+  
+  void a(pfh parampfh)
+  {
+    parampfh.onCommentDelete(this.jdField_a_of_type_Int, true, this.jdField_a_of_type_Pdp, this.b);
+  }
 }
 
 

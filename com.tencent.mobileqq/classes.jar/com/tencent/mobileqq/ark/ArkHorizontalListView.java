@@ -7,8 +7,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewParent;
 import android.widget.LinearLayout;
-import aovw;
-import bjse;
+import apza;
+import bldq;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.qphone.base.util.QLog;
@@ -21,7 +21,7 @@ public class ArkHorizontalListView
 {
   private float jdField_a_of_type_Float = 0.08F;
   private int jdField_a_of_type_Int;
-  private WeakReference<aovw> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<apza> jdField_a_of_type_JavaLangRefWeakReference;
   private boolean jdField_a_of_type_Boolean;
   private int b = 3;
   
@@ -232,7 +232,7 @@ public class ArkHorizontalListView
       if (QLog.isColorLevel()) {
         QLog.d("ArkHorizontalListView", 2, "onTouchEvent updateHeadBorder action=" + (paramMotionEvent.getAction() & 0xFF));
       }
-      ((aovw)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this);
+      ((apza)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this);
     }
     return super.onTouchEvent(paramMotionEvent);
   }
@@ -242,9 +242,9 @@ public class ArkHorizontalListView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setRefreshCallback(aovw paramaovw)
+  public void setRefreshCallback(apza paramapza)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaovw);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramapza);
   }
 }
 

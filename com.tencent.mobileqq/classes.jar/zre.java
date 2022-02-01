@@ -1,15 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.troop.file.MoveFileActivity;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerFeedItemView;
+import com.tencent.mobileqq.pb.PBStringField;
 
 public class zre
-  implements DialogInterface.OnClickListener
+  implements zsd
 {
-  public zre(MoveFileActivity paramMoveFileActivity) {}
+  public zre(RecommendBannerFeedItemView paramRecommendBannerFeedItemView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface.dismiss();
+    if (RecommendBannerFeedItemView.a(this.a) == null) {
+      return;
+    }
+    aanb.a(RecommendBannerFeedItemView.a(this.a).poster.id.get(), "auth_page", "recom_follow_b", 0, 0, new String[] { "", RecommendBannerFeedItemView.a(this.a) + "", RecommendBannerFeedItemView.a(this.a).poster.nick.get(), RecommendBannerFeedItemView.a(this.a).title.get() });
   }
 }
 

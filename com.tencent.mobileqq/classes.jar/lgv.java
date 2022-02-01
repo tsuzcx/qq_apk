@@ -1,46 +1,77 @@
 import android.os.Handler;
-import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
-import java.lang.ref.WeakReference;
-import java.util.Observable;
-import java.util.Observer;
+import android.os.Message;
+import com.tencent.av.business.manager.EffectConfigBase;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.SecUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
 
 public class lgv
-  implements Observer
+  implements INetEngine.INetEngineListener
 {
-  private WeakReference<MagicFaceDataEntity> a;
+  public lgv(EffectConfigBase paramEffectConfigBase, long paramLong, lgx paramlgx) {}
   
-  public lgv(MagicFaceDataEntity paramMagicFaceDataEntity)
+  public void onResp(NetResp paramNetResp)
   {
-    this.a = new WeakReference(paramMagicFaceDataEntity);
-  }
-  
-  public void update(Observable paramObservable, Object paramObject)
-  {
-    int j;
-    if (this.a.get() != null)
+    int i = 0;
+    lgx locallgx = (lgx)paramNetResp.mReq.getUserData();
+    String str1 = "";
+    if (paramNetResp.mResult == 3)
     {
-      paramObservable = ((MagicFaceDataEntity)this.a.get()).a;
-      if (paramObject != null)
+      QLog.w(this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase.jdField_a_of_type_JavaLangString, 1, "startDownload, onResp, 重复下载, item[" + locallgx + "], seq[" + this.jdField_a_of_type_Long + "]");
+      return;
+    }
+    boolean bool;
+    if (paramNetResp.mResult != 0)
+    {
+      str1 = "fail, mErrCode[" + paramNetResp.mErrCode + "], mErrDesc[" + paramNetResp.mErrDesc + "]";
+      bool = false;
+    }
+    for (;;)
+    {
+      QLog.w(this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase.jdField_a_of_type_JavaLangString, 1, "startDownload, onResp, result[" + bool + "], resp.mResult[" + paramNetResp.mResult + "], item[" + locallgx + "], seq[" + this.jdField_a_of_type_Long + "], " + str1 + "]");
+      locallgx.isDownloading = false;
+      paramNetResp = this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase.jdField_a_of_type_AndroidOsHandler;
+      if (bool) {
+        i = 1;
+      }
+      paramNetResp.obtainMessage(1, i, (int)this.jdField_a_of_type_Long, this.jdField_a_of_type_Lgx).sendToTarget();
+      if (!bool) {
+        break;
+      }
+      this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase.a(this.jdField_a_of_type_Lgx);
+      return;
+      String str3 = SecUtil.getFileMd5(paramNetResp.mReq.mOutPath);
+      if (!locallgx.getMd5().equalsIgnoreCase(str3))
       {
-        Object[] arrayOfObject = (Object[])paramObject;
-        if ((arrayOfObject != null) && (arrayOfObject.length > 0))
+        str1 = "fail, md5不匹配, fileMD5[" + str3 + "], configMD5[" + locallgx.getMd5() + "], mOutPath[" + paramNetResp.mReq.mOutPath + "]";
+        bool = false;
+      }
+      else
+      {
+        try
         {
-          j = ((Integer)arrayOfObject[0]).intValue();
-          if ((j == 130) || (j == 131) || (j == 132)) {
-            if ((j != 131) && (j != 132)) {
-              break label152;
-            }
+          FileUtils.uncompressZip(paramNetResp.mReq.mOutPath, this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase.b(this.jdField_a_of_type_Lgx), false);
+          bool = true;
+        }
+        catch (IOException localIOException)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i(this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase.jdField_a_of_type_JavaLangString, 4, "startDownload, uncompressZip fail.", localIOException);
           }
+          String str2 = anvx.a(2131703453);
+          bool = false;
         }
       }
     }
-    label152:
-    for (int i = 500;; i = 0)
-    {
-      lba.f("MagicFaceDataEntity", "MagicFaceDataEntity update :" + j + "|" + i);
-      paramObservable.sendMessageDelayed(paramObservable.obtainMessage(1, paramObject), i);
-      return;
-    }
+  }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
+  {
+    this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase.jdField_a_of_type_AndroidOsHandler.obtainMessage(2, (int)(100L * paramLong1 / paramLong2), 0, this.jdField_a_of_type_Lgx).sendToTarget();
   }
 }
 

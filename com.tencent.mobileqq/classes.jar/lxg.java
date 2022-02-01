@@ -1,43 +1,26 @@
-import android.content.Intent;
+import android.graphics.Bitmap;
 import com.tencent.av.service.QQServiceForAV;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.download.AEResInfo;
-import java.lang.ref.WeakReference;
 
 public class lxg
-  implements blvp
+  implements FaceDecoder.DecodeTaskCompletionListener
 {
-  final WeakReference<QQServiceForAV> a;
+  public lxg(QQServiceForAV paramQQServiceForAV) {}
   
-  lxg(QQServiceForAV paramQQServiceForAV)
-  {
-    this.a = new WeakReference(paramQQServiceForAV);
-  }
-  
-  public void onAEDownloadFinish(AEResInfo paramAEResInfo, String paramString, boolean paramBoolean, int paramInt)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("QQServiceForAV", 2, "PTULibpagDownloadCallback onAEResDownloadResult, package[" + paramAEResInfo.index + ", isDownloaded[" + paramBoolean + ", errorType[" + paramInt + "]");
+      QLog.d("QQServiceForAV", 2, "onDecodeTaskCompleted");
     }
-    paramString = (QQServiceForAV)this.a.get();
-    if (paramString != null)
-    {
-      paramString = (QQAppInterface)paramString.a();
-      Intent localIntent = new Intent("tencent.video.q2v.ptuLibpagDownloadRet");
-      localIntent.putExtra("packageIdx", paramAEResInfo.index);
-      localIntent.putExtra("isDownloaded", paramBoolean);
-      localIntent.putExtra("errorType", paramInt);
-      paramString.getApp().sendBroadcast(localIntent);
-    }
+    new lxx(((QQAppInterface)this.a.a()).getApp().getApplicationContext()).a(new lxh(this, paramString, paramBitmap));
   }
-  
-  public void onAEProgressUpdate(AEResInfo paramAEResInfo, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lxg
  * JD-Core Version:    0.7.0.1
  */

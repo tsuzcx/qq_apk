@@ -1,6 +1,15 @@
-public abstract interface aiom
+import android.os.MessageQueue.IdleHandler;
+
+class aiom
+  implements MessageQueue.IdleHandler
 {
-  public abstract void a(int paramInt);
+  aiom(aioi paramaioi) {}
+  
+  public boolean queueIdle()
+  {
+    this.a.b();
+    return false;
+  }
 }
 
 

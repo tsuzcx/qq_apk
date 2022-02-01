@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.webview.swift.component;
 
 import android.app.Activity;
-import aokb;
-import bgwg;
+import apnc;
+import bigy;
 
 public class SwiftBrowserLongClickHandler$1
   implements Runnable
 {
-  public SwiftBrowserLongClickHandler$1(bgwg parambgwg, Activity paramActivity) {}
+  public SwiftBrowserLongClickHandler$1(bigy parambigy, Activity paramActivity) {}
   
   public void run()
   {
-    aokb.a().a(this.a, this.this$0.hashCode(), "SwiftBrowserLongClickHandler");
+    apnc.a().a(this.a, this.this$0.hashCode(), "SwiftBrowserLongClickHandler");
   }
 }
 

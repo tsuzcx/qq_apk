@@ -1,39 +1,36 @@
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class auwi
-  implements zop
+final class auwi
+  extends ntc
 {
-  auwi(auwh paramauwh, String paramString) {}
+  auwi(NearbyAppInterface paramNearbyAppInterface) {}
   
-  public void callback(Bundle paramBundle)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (paramBundle.getBoolean("isSuccess", false))
-    {
-      int i = paramBundle.getInt("appid");
-      Object localObject = paramBundle.getString("openId");
-      if ((i != this.jdField_a_of_type_Auwh.jdField_a_of_type_JavaLangInteger.intValue()) || (!((String)localObject).equals(this.jdField_a_of_type_Auwh.jdField_a_of_type_JavaLangString))) {
-        break label120;
-      }
-      paramBundle = paramBundle.getString("uin");
-      if (!TextUtils.isEmpty(paramBundle))
-      {
-        localObject = new Intent(this.jdField_a_of_type_Auwh.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(), FriendProfileCardActivity.class);
-        ((Intent)localObject).putExtra("troopUin", this.jdField_a_of_type_JavaLangString);
-        ((Intent)localObject).putExtra("memberUin", paramBundle);
-        this.jdField_a_of_type_Auwh.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a().startActivity((Intent)localObject);
-      }
+    boolean bool2 = false;
+    if (paramInt == 0) {
+      axqc.b(this.a.getCurrentAccountUin(), false);
     }
-    label120:
-    while (!QLog.isColorLevel()) {
+    for (boolean bool1 = false;; bool1 = axqc.b(this.a.getCurrentAccountUin()))
+    {
+      paramArrayOfByte = new HashMap();
+      paramArrayOfByte.put("param_reason", String.valueOf(paramInt));
+      paramBundle = StatisticCollector.getInstance(BaseApplicationImpl.getContext());
+      String str = this.a.getCurrentAccountUin();
+      if (paramInt == 0) {
+        bool2 = true;
+      }
+      paramBundle.collectPerformance(str, "oidb_0x91f", bool2, 0L, 0L, paramArrayOfByte, "");
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.nearby", 2, "oidb_0x91f| visible:" + bool1 + "replyCode:" + paramInt);
+      }
       return;
     }
-    QLog.d("UiApiPlugin", 2, "appId != appID || !openId.equals(openID)");
   }
 }
 

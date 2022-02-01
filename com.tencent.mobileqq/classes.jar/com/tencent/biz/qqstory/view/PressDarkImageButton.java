@@ -14,7 +14,7 @@ import android.support.v4.util.MQLruCache;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.ImageButton;
-import bfpx;
+import bgyo;
 import com.tencent.common.app.BaseApplicationImpl;
 
 @TargetApi(14)
@@ -34,7 +34,7 @@ public class PressDarkImageButton
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 16843210, 16843211, 2131034426 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 16843210, 16843211, 2131034431 };
   }
   
   public PressDarkImageButton(Context paramContext)
@@ -90,7 +90,7 @@ public class PressDarkImageButton
         {
           localObject1 = paramContext;
           localObject2 = paramContext;
-          this.jdField_a_of_type_AndroidGraphicsBitmap = bfpx.b(BaseApplicationImpl.getApplication().getResources(), 2130846403);
+          this.jdField_a_of_type_AndroidGraphicsBitmap = bgyo.b(BaseApplicationImpl.getApplication().getResources(), 2130846499);
           localObject1 = paramContext;
           localObject2 = paramContext;
           if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)

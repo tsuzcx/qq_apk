@@ -1,27 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class afrj
-  implements DialogInterface.OnClickListener
+public abstract class afrj
+  implements afrn
 {
-  afrj(afri paramafri, List paramList, BaseChatPie paramBaseChatPie) {}
+  public static final boolean e = AppSetting.c;
+  public int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-      paramDialogInterface = awct.a(afri.a(this.jdField_a_of_type_Afri), (ArrayList)this.jdField_a_of_type_JavaUtilList);
-    } while ((paramDialogInterface == null) || (paramDialogInterface.size() == 0));
-    afri.a(this.jdField_a_of_type_Afri, paramDialogInterface);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.setLeftCheckBoxVisible(false, null, false);
-  }
+  public abstract View a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, View paramView, ViewGroup paramViewGroup, aftk paramaftk);
+  
+  public abstract void a();
+  
+  public abstract void a(View paramView, ChatMessage paramChatMessage, int paramInt);
 }
 
 

@@ -1,22 +1,17 @@
-import android.net.ConnectivityManager.NetworkCallback;
-import android.net.Network;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
-class avio
-  extends ConnectivityManager.NetworkCallback
+public class avio
 {
-  avio(avin paramavin) {}
+  public List<avin> a;
+  public Set<String> a;
   
-  public void onAvailable(Network paramNetwork)
+  public avio()
   {
-    QLog.d("GateWayVerifyManager", 1, "switch network success");
-    if ((avin.a(this.a) == null) || (!avin.a(this.a).equals(paramNetwork)))
-    {
-      avin.a(this.a, paramNetwork);
-      if (avin.a(this.a) != null) {
-        avin.a(this.a).a(paramNetwork);
-      }
-    }
+    this.jdField_a_of_type_JavaUtilSet = new TreeSet();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
 }
 

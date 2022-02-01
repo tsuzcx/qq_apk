@@ -1,25 +1,15 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-
-class blwp
-  implements Animation.AnimationListener
+public abstract interface blwp
+  extends blww
 {
-  blwp(blwn paramblwn, Runnable paramRunnable) {}
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
-  }
+  public abstract void a(boolean paramBoolean, String paramString);
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public abstract void b(String paramString);
   
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    blwn.a(this.jdField_a_of_type_Blwn).setVisibility(0);
-  }
+  public abstract void c(String paramString);
+  
+  public abstract void d(String paramString);
 }
 
 

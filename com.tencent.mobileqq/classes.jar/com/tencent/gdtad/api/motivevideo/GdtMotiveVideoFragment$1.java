@@ -1,10 +1,10 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import aboh;
-import abrl;
+import acdv;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.ResultReceiver;
+import com.tencent.qphone.base.util.QLog;
 
 final class GdtMotiveVideoFragment$1
   implements Runnable
@@ -15,15 +15,16 @@ final class GdtMotiveVideoFragment$1
   {
     try
     {
-      aboh localaboh = new aboh(this.jdField_a_of_type_AndroidAppActivity);
-      localaboh.a(this.jdField_a_of_type_AndroidContentIntent);
-      localaboh.a(this.jdField_a_of_type_AndroidOsResultReceiver);
-      localaboh.show();
+      acdv localacdv = new acdv(this.jdField_a_of_type_AndroidAppActivity);
+      localacdv.a(this.jdField_a_of_type_AndroidContentIntent);
+      localacdv.a(this.jdField_a_of_type_AndroidOsResultReceiver);
+      localacdv.show();
       return;
     }
     catch (Exception localException)
     {
-      abrl.b("GdtMotiveVideoFragment", "dialog.show() err");
+      QLog.i("GdtMotiveVideoFragment", 1, "GdtMotiveVideoDialog.show()", localException);
+      GdtMotiveVideoFragment.a(this.jdField_a_of_type_AndroidOsResultReceiver);
     }
   }
 }

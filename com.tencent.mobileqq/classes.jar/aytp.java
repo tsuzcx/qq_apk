@@ -1,17 +1,27 @@
-class aytp
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class aytp
+  implements View.OnClickListener
 {
-  final String a;
-  final String b;
+  public aytp(ScanOcrActivity paramScanOcrActivity) {}
   
-  aytp(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
-  
-  public String toString()
-  {
-    return String.format("CopyItem{mMenuTitle=%s mCopyContent=%s}", new Object[] { this.a, this.b });
+    if ((ScanOcrActivity.a(this.a) == 1) && ((ScanOcrActivity.b(this.a) == 0) || (ScanOcrActivity.b(this.a) == 4)))
+    {
+      ScanOcrActivity.a(this.a).a();
+      ScanOcrActivity.a(this.a, false);
+      ScanOcrActivity.b(this.a);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.finish();
+    }
   }
 }
 

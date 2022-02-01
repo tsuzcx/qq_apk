@@ -1,250 +1,62 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.RemoteCallbackList;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.music.SongInfo;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class awed
-  extends awea
+  extends RecyclerView.ItemDecoration
 {
-  public awed(QQPlayerService paramQQPlayerService) {}
+  int jdField_a_of_type_Int = ViewUtils.dip2px(1.0F);
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  awdu jdField_a_of_type_Awdu;
   
-  public int a()
+  public awed(Context paramContext, awdu paramawdu, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : getPlayState");
-    }
-    return QQPlayerService.a();
-  }
-  
-  public Intent a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : getPlayBarIntent ");
-    }
-    return QQPlayerService.a();
-  }
-  
-  public Bundle a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : getExtras ");
-    }
-    return QQPlayerService.a();
-  }
-  
-  public SongInfo a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : getCurrentSong");
-    }
-    return QQPlayerService.b();
-  }
-  
-  public String a()
-  {
-    return QQPlayerService.a();
-  }
-  
-  public String a(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : generateToken : callerType=" + paramInt + ",id=" + paramString);
-    }
-    return QQPlayerService.a(paramInt, paramString);
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : pause");
-    }
-    QQPlayerService.a(this.a);
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : setPlayMode");
-    }
-    QQPlayerService.a(paramInt);
-  }
-  
-  public void a(Intent paramIntent)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : setPlayBarIntent: " + paramIntent.toString());
-    }
-    QQPlayerService.a(paramIntent);
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : setExtras ");
-    }
-    QQPlayerService.a(paramBundle);
-  }
-  
-  public void a(awdw paramawdw)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : registerCallback");
-    }
-    if (paramawdw == null) {
+    this.jdField_a_of_type_Awdu = paramawdu;
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramContext.getResources().getColor(2131165771));
       return;
     }
-    if (QQPlayerService.a(this.a) == null) {}
-    try
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramContext.getResources().getColor(2131165770));
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
+    if (this.jdField_a_of_type_Awdu == null) {
+      QLog.i("leba_sort_LebaTableMgrFragment", 1, "MyItemDecoration getItemOffsets mAdapter == null");
+    }
+    while (paramRecyclerView.getChildAdapterPosition(paramView) < 0) {
+      return;
+    }
+    paramRect.bottom = this.jdField_a_of_type_Int;
+    paramRect.right = this.jdField_a_of_type_Int;
+  }
+  
+  public void onDraw(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    super.onDraw(paramCanvas, paramRecyclerView, paramState);
+    int j = paramRecyclerView.getChildCount();
+    int i = 0;
+    while (i < j)
     {
-      if (QQPlayerService.a(this.a) == null) {
-        QQPlayerService.a(this.a, new RemoteCallbackList());
+      paramState = paramRecyclerView.getChildAt(i);
+      Object localObject = paramState.getTag(2131369981);
+      if ((localObject != null) && ((localObject instanceof Integer)) && (((Integer)localObject).intValue() == 2)) {
+        paramCanvas.drawRect(paramState.getLeft(), paramState.getTop(), paramState.getRight(), paramState.getBottom(), this.jdField_a_of_type_AndroidGraphicsPaint);
       }
-      QQPlayerService.a(this.a).register(paramawdw);
-      return;
+      i += 1;
     }
-    finally {}
-  }
-  
-  public void a(String paramString, SongInfo[] paramArrayOfSongInfo, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : startPlay sCallback = " + QQPlayerService.a() + ",startIndex" + paramInt);
-    }
-    if (QQPlayerService.a() != null)
-    {
-      QQPlayerService.a(QQPlayerService.a());
-      QQPlayerService.b(null);
-    }
-    QQPlayerService.a(this.a, paramString, paramArrayOfSongInfo, paramInt);
-  }
-  
-  public boolean a()
-  {
-    return QQPlayerService.a();
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : isPlayingMySong : token=" + paramString);
-    }
-    return QQPlayerService.a(paramString);
-  }
-  
-  public SongInfo[] a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : getPlayList");
-    }
-    return QQPlayerService.a();
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : getPlayMode");
-    }
-    return QQPlayerService.b();
-  }
-  
-  public SongInfo b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : getNextSong");
-    }
-    return QQPlayerService.c();
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : resume");
-    }
-    QQPlayerService.b(this.a);
-  }
-  
-  public void b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : seekTo " + paramInt);
-    }
-    QQPlayerService.b(paramInt);
-  }
-  
-  public void b(awdw paramawdw)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : unRegisterCallback");
-    }
-    if ((paramawdw != null) && (QQPlayerService.a(this.a) != null)) {
-      QQPlayerService.a(this.a).unregister(paramawdw);
-    }
-  }
-  
-  public int c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : getDuration");
-    }
-    return QQPlayerService.d();
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : stop");
-    }
-    QQPlayerService.c(this.a);
-  }
-  
-  public int d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : getCurrentSongPosition");
-    }
-    return QQPlayerService.e();
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : playNext");
-    }
-    QQPlayerService.b(this.a);
-  }
-  
-  public int e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : getCurrentSongIndex");
-    }
-    return QQPlayerService.g();
-  }
-  
-  public void e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : playPrev");
-    }
-    QQPlayerService.a(this.a);
-  }
-  
-  public int f()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : getPlayListCount");
-    }
-    return QQPlayerService.c();
-  }
-  
-  public int g()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "AIDL : getCurrentPlayPosition");
-    }
-    return QQPlayerService.f();
   }
 }
 

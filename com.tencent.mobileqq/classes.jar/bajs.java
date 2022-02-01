@@ -1,8 +1,19 @@
 public class bajs
+  implements bajr
 {
-  public int a;
-  public String a;
-  public int b;
+  private bakr a;
+  
+  public bajs(bakr parambakr)
+  {
+    this.a = parambakr;
+  }
+  
+  public void a(balb parambalb)
+  {
+    if (this.a != null) {
+      this.a.a(parambalb);
+    }
+  }
 }
 
 

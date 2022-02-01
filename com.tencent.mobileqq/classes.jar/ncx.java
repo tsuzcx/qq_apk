@@ -1,24 +1,45 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.Random;
 
-class ncx
-  implements View.OnTouchListener
+public class ncx
+  extends bcpv
 {
-  ncx(ncu paramncu) {}
+  private AVGameAppInterface jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface;
+  private nnk jdField_a_of_type_Nnk;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public ncx(AVGameAppInterface paramAVGameAppInterface)
   {
-    switch (paramMotionEvent.getActionMasked())
+    this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface = paramAVGameAppInterface;
+    jdField_a_of_type_Int = Math.abs(new Random().nextInt());
+  }
+  
+  public AppInterface a()
+  {
+    return this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface;
+  }
+  
+  protected void a()
+  {
+    try
     {
+      super.a();
+      this.jdField_a_of_type_Nnk = new nnk();
+      super.a(this.jdField_a_of_type_Nnk);
+      super.d();
+      return;
     }
-    for (;;)
+    finally
     {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
+      localObject = finally;
+      throw localObject;
     }
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg)
+  {
+    super.b(paramToServiceMsg, null, ncy.class);
   }
 }
 

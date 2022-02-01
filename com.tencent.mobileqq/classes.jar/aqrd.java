@@ -1,15 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout.6;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout.6.1.1;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqrd
-  implements DialogInterface.OnClickListener
+  implements OnCompositionLoadedListener
 {
-  public aqrd(MessageForGrayTips.HightlightClickableSpan paramHightlightClickableSpan) {}
+  public aqrd(ColorNoteSmallScreenRelativeLayout.6 param6) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    paramDialogInterface.dismiss();
+    if (paramLottieComposition == null)
+    {
+      QLog.e("ColorNoteSmallScreenRelativeLayout", 1, "getLottieDrawable onCompositionLoaded failed");
+      return;
+    }
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.setImagesAssetsFolder(this.a.b);
+    ColorNoteSmallScreenRelativeLayout.a(this.a.this$0, localLottieDrawable);
+    ThreadManagerV2.getUIHandlerV2().post(new ColorNoteSmallScreenRelativeLayout.6.1.1(this));
   }
 }
 

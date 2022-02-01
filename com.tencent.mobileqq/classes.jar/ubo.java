@@ -1,45 +1,10 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.biz.pubaccount.subscript.ReadInJoyArticle;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import kotlin.Metadata;
 
-public class ubo
-  extends ucc
-{
-  public ubo(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
-  
-  protected void a(boolean paramBoolean, ArrayList<ReadInJoyArticle> paramArrayList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SubscriptObserver", 2, "onGetRecommendReadInJoyArticleList isSuccess: " + paramBoolean + " | data: " + paramArrayList);
-    }
-    if (!paramBoolean) {}
-    do
-    {
-      do
-      {
-        return;
-        if ((paramArrayList != null) && (paramArrayList.size() == 4)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("SubscriptObserver", 2, "onGetRecommendReadInJoyArticleList data is null or small than 4");
-      return;
-    } while (this.a.a == null);
-    Message localMessage = new Message();
-    localMessage.what = 1003;
-    Bundle localBundle = new Bundle();
-    localBundle.putSerializable("ReadInJoyArticleList", paramArrayList);
-    localMessage.setData(localBundle);
-    this.a.a.removeMessages(1003);
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/VBarrage$Companion;", "", "()V", "EVENT_BARRAGE_DIDAPPEAR", "", "EVENT_BARRAGE_ONCLICK", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ubo {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ubo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,97 +1,83 @@
-import android.content.Intent;
-import android.graphics.PointF;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.FrameLayout;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profilecard.vas.view.VasProfileSimpleView;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.database.ContentObserver;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Handler;
+import android.provider.MediaStore.Images.Media;
 
 public class ayyk
-  extends ayyb
+  extends ContentObserver
 {
-  public ayyk(aysx paramaysx, aymg paramaymg)
+  private static final String jdField_a_of_type_JavaLangString = MediaStore.Images.Media.EXTERNAL_CONTENT_URI.toString();
+  static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "_data", "date_added" };
+  private ContentResolver jdField_a_of_type_AndroidContentContentResolver;
+  private ayyl jdField_a_of_type_Ayyl;
+  
+  public ayyk(Handler paramHandler, Context paramContext)
   {
-    super(paramaysx, paramaymg);
+    super(paramHandler);
+    this.jdField_a_of_type_AndroidContentContentResolver = paramContext.getContentResolver();
   }
   
-  private void a(aykg paramaykg)
+  public void a()
   {
-    if ((paramaykg.jdField_a_of_type_JavaLangObject instanceof View)) {
-      ((View)paramaykg.jdField_a_of_type_JavaLangObject).setVisibility(8);
-    }
-    j();
-    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X8008119", "", 1, 0, 0, HttpUtil.getNetWorkTypeByStr(), "", "");
+    this.jdField_a_of_type_AndroidContentContentResolver.registerContentObserver(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, true, this);
   }
   
-  public String a()
+  public void a(ayyl paramayyl)
   {
-    return "VasProfileHeaderSimpleComponent";
+    this.jdField_a_of_type_Ayyl = paramayyl;
   }
   
-  protected void a()
+  public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView == null)
+    this.jdField_a_of_type_AndroidContentContentResolver.unregisterContentObserver(this);
+  }
+  
+  public void onChange(boolean paramBoolean)
+  {
+    super.onChange(paramBoolean);
+    onChange(paramBoolean, null);
+  }
+  
+  public void onChange(boolean paramBoolean, Uri paramUri)
+  {
+    Cursor localCursor;
+    String str;
+    long l;
+    if (paramUri == null)
     {
-      VasProfileSimpleView localVasProfileSimpleView = new VasProfileSimpleView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (aymg)this.b);
-      localVasProfileSimpleView.setClickListener(this);
-      localVasProfileSimpleView.a();
-      this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView = localVasProfileSimpleView;
-      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).removeAllViews();
-      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).addView(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView);
-    }
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  void j()
-  {
-    Object localObject2 = new PointF();
-    aysw localaysw = this.jdField_a_of_type_Aysx.a(1003);
-    Object localObject1 = localObject2;
-    if (localaysw != null)
-    {
-      localObject1 = localObject2;
-      if ((localaysw instanceof ayxy)) {
-        localObject1 = ((ayxy)localaysw).a();
+      localCursor = this.jdField_a_of_type_AndroidContentContentResolver.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, jdField_a_of_type_ArrayOfJavaLangString, null, null, "date_added DESC");
+      if ((localCursor != null) && (localCursor.moveToFirst()))
+      {
+        str = localCursor.getString(localCursor.getColumnIndex("_data"));
+        l = localCursor.getLong(localCursor.getColumnIndex("date_added"));
+        if ((Math.abs(System.currentTimeMillis() / 1000L - l) <= 3L) && (str.toLowerCase().contains("screenshot")) && (this.jdField_a_of_type_Ayyl != null)) {
+          this.jdField_a_of_type_Ayyl.a(paramUri);
+        }
+      }
+      if (localCursor != null) {
+        localCursor.close();
       }
     }
-    localObject2 = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, VipProfileCardDiyActivity.class);
-    ((Intent)localObject2).putExtra("extra_from", 1);
-    ((Intent)localObject2).putExtra("extra_card_id", ((aymg)this.b).a.lCurrentBgId);
-    ((Intent)localObject2).putExtra("extra_card_url", ((aymg)this.b).a.backgroundUrl);
-    ((Intent)localObject2).putExtra("extra_card_default_text", ((aymg)this.b).a.diyDefaultText);
-    if ((!TextUtils.isEmpty(((aymg)this.b).a.diyText)) && (((aymg)this.b).a.diyTextFontId > 0))
+    do
     {
-      ((Intent)localObject2).putExtra("extra_card_text", ((aymg)this.b).a.diyText);
-      ((Intent)localObject2).putExtra("extra_card_font", ((aymg)this.b).a.diyTextFontId);
-      ((Intent)localObject2).putExtra("extra_card_x", ((PointF)localObject1).x);
-      ((Intent)localObject2).putExtra("extra_card_y", ((PointF)localObject1).y);
-      ((Intent)localObject2).putExtra("extra_card_scale", ((aymg)this.b).a.diyTextScale);
-      ((Intent)localObject2).putExtra("extra_card_rotation", ((aymg)this.b).a.diyTextDegree);
-      ((Intent)localObject2).putExtra("extra_card_transparency", ((aymg)this.b).a.diyTextTransparency);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivityForResult((Intent)localObject2, 600001);
-  }
-  
-  public void onClick(View paramView)
-  {
-    super.onClick(paramView);
-    if ((paramView.getTag() instanceof aykg))
-    {
-      aykg localaykg = (aykg)paramView.getTag();
-      if (localaykg.jdField_a_of_type_Int == 73) {
-        a(localaykg);
+      do
+      {
+        return;
+      } while (!paramUri.toString().matches(jdField_a_of_type_JavaLangString + "/\\d+"));
+      localCursor = this.jdField_a_of_type_AndroidContentContentResolver.query(paramUri, jdField_a_of_type_ArrayOfJavaLangString, null, null, null);
+      if ((localCursor != null) && (localCursor.moveToFirst()))
+      {
+        str = localCursor.getString(localCursor.getColumnIndex("_data"));
+        l = localCursor.getLong(localCursor.getColumnIndex("date_added"));
+        if ((Math.abs(System.currentTimeMillis() / 1000L - l) <= 3L) && (str.toLowerCase().contains("screenshot")) && (this.jdField_a_of_type_Ayyl != null)) {
+          this.jdField_a_of_type_Ayyl.a(paramUri);
+        }
       }
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    } while (localCursor == null);
+    localCursor.close();
   }
 }
 

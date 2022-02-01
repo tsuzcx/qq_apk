@@ -1,139 +1,33 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 
 public class awbn
-  extends awac
+  implements DialogInterface.OnClickListener
 {
-  private afud a;
+  public awbn(UiApiPlugin paramUiApiPlugin, String paramString) {}
   
-  public awbn(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, ViewGroup paramViewGroup)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramQQAppInterface, paramFragmentActivity, paramContext, paramViewGroup);
-  }
-  
-  public void a()
-  {
-    super.a();
-    if (this.jdField_a_of_type_Afud != null)
-    {
-      this.jdField_a_of_type_Afud.a(null);
-      this.jdField_a_of_type_Afud = null;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    if (this.jdField_a_of_type_Afud == null) {
-      return;
-    }
-    if (paramInt == 0)
-    {
-      this.jdField_a_of_type_Afud.c(true);
-      this.jdField_a_of_type_Afud.b(true);
-      this.jdField_a_of_type_Afud.d();
-      return;
-    }
-    this.jdField_a_of_type_Afud.b(false);
-    this.jdField_a_of_type_Afud.c(false);
-  }
-  
-  public void a(avzw paramavzw)
-  {
-    super.a(paramavzw);
-    if (this.jdField_a_of_type_Afud != null)
-    {
-      if (a() != 0) {
-        this.jdField_a_of_type_Afud.b(false);
+    if (paramInt == 0) {
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString + "({button: 1})");
       }
-      this.jdField_a_of_type_Afud.a(a(), a());
-      this.jdField_a_of_type_Afud.b();
     }
-  }
-  
-  public boolean a(Bundle paramBundle)
-  {
-    super.a(paramBundle);
-    if (this.jdField_a_of_type_Afud == null)
+    while (paramInt != 1)
     {
-      paramBundle = null;
-      Bundle localBundle = a();
-      if (localBundle != null) {
-        paramBundle = localBundle.getString("uin");
-      }
-      this.jdField_a_of_type_Afud = new afud(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_AndroidContentContext, paramBundle);
-      this.jdField_a_of_type_Afud.a(this);
-      b(1);
-      a(this.jdField_a_of_type_Afud.a());
-    }
-    b(this.jdField_a_of_type_Afud.a());
-    if (a() != null) {
-      this.jdField_a_of_type_Afud.a(a(), a());
-    }
-    return true;
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StrangerIntimateViewDelegete", 2, "doOnResume() called");
-    }
-    if (this.jdField_a_of_type_Afud == null) {
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs4OpenApiIfNeeded("showDialog", 0, "({button: 1})");
       return;
     }
-    if (a() == 0)
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      this.jdField_a_of_type_Afud.b(true);
-      this.jdField_a_of_type_Afud.d();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Afud.n();
-      return;
-      this.jdField_a_of_type_Afud.b(false);
-      this.jdField_a_of_type_Afud.e();
-    }
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StrangerIntimateViewDelegete", 2, "doOnPause() called");
-    }
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_Afud == null) {
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString + "({button: 0})");
       return;
     }
-    this.jdField_a_of_type_Afud.a(true);
-    this.jdField_a_of_type_Afud.b();
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs4OpenApiIfNeeded("showDialog", 0, "({button: 0})");
   }
-  
-  public void f() {}
-  
-  public void g()
-  {
-    super.g();
-    if (this.jdField_a_of_type_Afud == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null)
-    {
-      this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_Afud.a());
-      this.jdField_a_of_type_AndroidViewViewGroup = null;
-    }
-    this.jdField_a_of_type_Afud.j();
-  }
-  
-  public void h() {}
 }
 
 

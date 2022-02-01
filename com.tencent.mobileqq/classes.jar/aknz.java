@@ -1,78 +1,68 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.view.View;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.AbstractPhotoListActivity.PhotoListAdapter;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
 
 public class aknz
-  extends akns
+  extends akmj
 {
-  private String d;
-  
-  public aknz a(String paramString)
+  aknz(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    this.d = paramString;
-    return this;
+    super(paramNewPhotoListActivity);
   }
   
-  public Object a(int paramInt, bdyi parambdyi, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  private boolean a(LocalMediaInfo paramLocalMediaInfo)
   {
-    return null;
-  }
-  
-  public String a()
-  {
-    return this.d;
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
+    if ((paramLocalMediaInfo.mediaWidth < 320) || (paramLocalMediaInfo.mediaHeight < 320))
     {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
-      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      this.d = paramArrayOfByte.getString("senderUin");
-      if (this.jdField_a_of_type_Bdyj == null) {
-        this.jdField_a_of_type_Bdyj = new bdyj();
-      }
-      this.jdField_a_of_type_Bdyj.a(paramArrayOfByte.getString("messageNavInfo"));
-      return;
-    }
-    catch (JSONException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-  }
-  
-  public byte[] a()
-  {
-    return b();
-  }
-  
-  public byte[] b()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
-      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      localJSONObject.put("senderUin", this.d);
-      if (this.jdField_a_of_type_Bdyj != null) {
-        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bdyj.a());
-      }
-      return localJSONObject.toString().getBytes();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      paramLocalMediaInfo = bhdj.a(this.mActivity, 230, null, anvx.a(2131707547), anvx.a(2131707531), null, null, new akoa(this));
+      try
       {
-        localJSONException.printStackTrace();
+        paramLocalMediaInfo.show();
+        return false;
       }
+      catch (Exception paramLocalMediaInfo)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("PhotoListLogicNearby", 2, "showLocationFailDialog fail!", paramLocalMediaInfo);
+          }
+        }
+      }
+    }
+    return true;
+  }
+  
+  public Intent caseNoSingModeImage(View paramView, int paramInt)
+  {
+    LocalMediaInfo localLocalMediaInfo = ((NewPhotoListActivity)this.mActivity).photoListAdapter.getItem(paramInt);
+    if ((((NewPhotoListActivity)this.mActivity).photoListAdapter.getItemViewType(paramInt) == 0) && (!a(localLocalMediaInfo))) {
+      return null;
+    }
+    return super.caseNoSingModeImage(paramView, paramInt);
+  }
+  
+  public String getExceedMaxSelectNumStr(LocalMediaInfo paramLocalMediaInfo)
+  {
+    return anvx.a(2131694220);
+  }
+  
+  public void onCheckBoxClick(View paramView, int paramInt, CheckBox paramCheckBox)
+  {
+    if (a(((NewPhotoListActivity)this.mActivity).photoListAdapter.getItem(paramInt))) {
+      super.onCheckBoxClick(paramView, paramInt, paramCheckBox);
+    }
+  }
+  
+  public void startPhotoPreviewActivity(Intent paramIntent)
+  {
+    if (paramIntent != null) {
+      super.startPhotoPreviewActivity(paramIntent);
     }
   }
 }

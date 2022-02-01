@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.webprocess;
 
-import amqv;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.util.ArrayMap;
 import android.text.TextUtils;
 import android.view.View;
-import bgwn;
-import bgyb;
+import antj;
+import bihf;
+import biit;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -26,7 +26,7 @@ import com.tencent.sonic.sdk.SonicConfig.Builder;
 import com.tencent.sonic.sdk.SonicEngine;
 import java.util.Arrays;
 import java.util.List;
-import npn;
+import nwo;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -135,7 +135,7 @@ public class WebAccelerateHelper
   
   public WebViewPluginEngine createWebViewPluginEngine(AppInterface paramAppInterface, Activity paramActivity, CustomWebView paramCustomWebView, WebAccelerateHelper.CommonJsPluginFactory paramCommonJsPluginFactory, List<WebViewPlugin> paramList)
   {
-    npn.a("createWebViewPluginEngine");
+    nwo.a("createWebViewPluginEngine");
     if ((paramAppInterface != null) && (paramActivity == null) && (paramCustomWebView == null) && (paramList == null))
     {
       if (QLog.isColorLevel()) {
@@ -145,7 +145,7 @@ public class WebAccelerateHelper
     }
     for (;;)
     {
-      npn.b("createWebViewPluginEngine");
+      nwo.b("createWebViewPluginEngine");
       if (paramAppInterface != null)
       {
         if (QLog.isColorLevel()) {
@@ -256,7 +256,7 @@ public class WebAccelerateHelper
         }
         Integer[] arrayOfInteger = new Integer[15];
         Arrays.fill(arrayOfInteger, Integer.valueOf(-1));
-        DeviceProfileManager.a(str, arrayOfInteger, new amqv());
+        DeviceProfileManager.a(str, arrayOfInteger, new antj());
         sWebViewFeatureParams = arrayOfInteger;
         if (QLog.isColorLevel()) {
           QLog.d("WebAccelerateHelper", 2, "WebView feature params=" + Arrays.toString(sWebViewFeatureParams));
@@ -294,9 +294,9 @@ public class WebAccelerateHelper
   
   public void preCheckOffline(String paramString)
   {
-    bgwn localbgwn = bgwn.a(paramString);
-    if (localbgwn != null) {
-      localbgwn.a(new WebAccelerateHelper.4(this), paramString);
+    bihf localbihf = bihf.a(paramString);
+    if (localbihf != null) {
+      localbihf.a(new WebAccelerateHelper.4(this), paramString);
     }
   }
   
@@ -353,7 +353,7 @@ public class WebAccelerateHelper
   
   public void preGetKey(Intent paramIntent, AppInterface paramAppInterface)
   {
-    preGetKey(bgyb.a(paramIntent), paramIntent, paramAppInterface);
+    preGetKey(biit.a(paramIntent), paramIntent, paramAppInterface);
   }
   
   public void preGetKey(String paramString, Intent paramIntent, AppInterface paramAppInterface)

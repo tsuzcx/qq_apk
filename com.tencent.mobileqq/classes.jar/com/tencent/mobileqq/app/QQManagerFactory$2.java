@@ -7,15 +7,12 @@ final class QQManagerFactory$2
 {
   QQManagerFactory$2()
   {
-    add(Integer.valueOf(21));
-    add(Integer.valueOf(148));
-    add(Integer.valueOf(215));
-    add(Integer.valueOf(311));
-    add(Integer.valueOf(312));
-    add(Integer.valueOf(351));
-    add(Integer.valueOf(350));
-    add(Integer.valueOf(360));
-    add(Integer.valueOf(357));
+    add(Integer.valueOf(0));
+    add(Integer.valueOf(1));
+    add(Integer.valueOf(2));
+    add(Integer.valueOf(3));
+    add(Integer.valueOf(QQManagerFactory.DOWNLOADER_FACTORY));
+    add(Integer.valueOf(QQManagerFactory.THEME_MANAGER));
   }
 }
 

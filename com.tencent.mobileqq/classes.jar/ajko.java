@@ -1,19 +1,13 @@
-import com.tencent.mobileqq.activity.ProfileActivity;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.activity.contacts.device.DeviceFragment;
 
-class ajko
-  implements QQPermissionCallback
+public class ajko
+  extends aocp
 {
-  ajko(ajkm paramajkm) {}
+  public ajko(DeviceFragment paramDeviceFragment) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  protected void a(int paramInt)
   {
-    bfur.a(this.a.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.a.a = ProfileActivity.a(this.a.a, 5);
+    this.a.a.notifyDataSetChanged();
   }
 }
 

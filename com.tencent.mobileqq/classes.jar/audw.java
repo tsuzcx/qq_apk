@@ -1,17 +1,6 @@
-class audw
-  extends amwl
+public abstract interface audw
 {
-  audw(audt paramaudt) {}
-  
-  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong)
-  {
-    this.a.a(paramLong);
-  }
-  
-  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong, amwf paramamwf)
-  {
-    this.a.a(paramLong);
-  }
+  public abstract void a(String paramString1, String paramString2);
 }
 
 

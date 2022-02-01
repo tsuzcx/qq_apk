@@ -1,177 +1,191 @@
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView.Adapter;
+import android.os.Bundle;
+import android.os.Message;
+import android.text.InputFilter;
+import android.text.InputFilter.LengthFilter;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mobileqq.util.DisplayUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.history.tendoc.TenDocMessageResultAdapter;
+import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class akdn
-  extends RecyclerView.Adapter<akdm>
+  extends akbr
 {
-  private akdl jdField_a_of_type_Akdl;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private String jdField_a_of_type_JavaLangString;
-  private List<List<akdl>> jdField_a_of_type_JavaUtilList;
+  private long jdField_a_of_type_Long;
+  private View jdField_a_of_type_AndroidViewView;
+  private ImageButton jdField_a_of_type_AndroidWidgetImageButton;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private TenDocMessageResultAdapter jdField_a_of_type_ComTencentMobileqqActivityHistoryTendocTenDocMessageResultAdapter;
+  private String jdField_a_of_type_JavaLangString = "";
+  private int jdField_b_of_type_Int;
+  private EditText jdField_b_of_type_AndroidWidgetEditText;
   
-  public akdn(@NonNull List<List<akdl>> paramList, View.OnClickListener paramOnClickListener)
+  public akdn(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    super(paramContext, paramQQAppInterface, paramSessionInfo);
+    this.jdField_b_of_type_Int = paramInt;
+    e();
+    f();
+    g();
   }
   
-  private View a(Context paramContext)
+  private void a(View paramView)
   {
-    TextView localTextView = new TextView(paramContext);
-    localTextView.setTextSize(1, 13.0F);
-    localTextView.setGravity(16);
-    int i = DisplayUtil.dip2px(paramContext, 13.0F);
-    localTextView.setPadding(i, 0, i, 0);
-    localTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    akgd.a(localTextView, 0.6F);
-    localTextView.setLayoutParams(new RelativeLayout.LayoutParams(-2, DisplayUtil.dip2px(paramContext, 30.0F)));
-    RelativeLayout localRelativeLayout = new RelativeLayout(paramContext);
-    Object localObject = new LinearLayout.LayoutParams(-2, DisplayUtil.dip2px(paramContext, 30.0F));
-    ((LinearLayout.LayoutParams)localObject).leftMargin = DisplayUtil.dip2px(paramContext, 12.0F);
-    localRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localRelativeLayout.addView(localTextView);
-    localTextView.setId(2131374754);
-    localObject = new View(paramContext);
-    ((View)localObject).setBackgroundResource(2130847274);
-    ((View)localObject).setVisibility(8);
-    localRelativeLayout.addView((View)localObject);
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((View)localObject).getLayoutParams();
-    localLayoutParams.width = DisplayUtil.dip2px(paramContext, 9.2F);
-    localLayoutParams.height = DisplayUtil.dip2px(paramContext, 8.9F);
-    localLayoutParams.addRule(7, 2131374754);
-    localLayoutParams.addRule(6, 2131374754);
-    localRelativeLayout.setTag(2131374650, localTextView);
-    localRelativeLayout.setTag(2131374651, localObject);
-    return localRelativeLayout;
-  }
-  
-  private void a(View paramView, akdl paramakdl)
-  {
-    TextView localTextView = (TextView)paramView.getTag(2131374650);
-    paramView = (View)paramView.getTag(2131374651);
-    localTextView.setText(paramakdl.jdField_a_of_type_JavaLangString);
-    int i;
-    if (paramakdl.jdField_a_of_type_Boolean)
+    if (paramView == null) {}
+    InputMethodManager localInputMethodManager;
+    do
     {
-      i = 0;
-      paramView.setVisibility(i);
-      if ((!paramakdl.b) && ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!this.jdField_a_of_type_JavaLangString.equals(paramakdl.jdField_a_of_type_JavaLangString)))) {
-        break label108;
-      }
-      localTextView.setTextColor(-1);
-      localTextView.setBackgroundResource(2130847200);
-      this.jdField_a_of_type_JavaLangString = "";
-    }
-    for (;;)
-    {
-      localTextView.setTag(2131374653, paramakdl);
       return;
-      i = 4;
-      break;
-      label108:
-      localTextView.setTextColor(-16578534);
-      localTextView.setBackgroundResource(2130847199);
-    }
+      localInputMethodManager = (InputMethodManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("input_method");
+    } while (localInputMethodManager == null);
+    localInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
   }
   
-  public akdm a(ViewGroup paramViewGroup, int paramInt)
+  private void e()
   {
-    LinearLayout localLinearLayout = new LinearLayout(paramViewGroup.getContext());
-    localLinearLayout.setOrientation(0);
-    localLinearLayout.setGravity(16);
-    paramInt = DisplayUtil.dip2px(paramViewGroup.getContext(), 6.0F);
-    localLinearLayout.setPadding(0, paramInt, 0, paramInt);
-    return new akdm(localLinearLayout);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131377223));
+    View localView = getLayoutInflater().inflate(2131559392, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+    this.jdField_a_of_type_AndroidViewView = getLayoutInflater().inflate(2131561900, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131372038));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setClickable(false);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView.setClickable(false);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131376461).setVisibility(0);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131373220).setVisibility(8);
+    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371586)).setText(this.jdField_a_of_type_AndroidContentContext.getString(2131718381));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView(localView, null, false);
+    this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(this.jdField_a_of_type_AndroidViewView, null, false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryTendocTenDocMessageResultAdapter = new TenDocMessageResultAdapter(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bkyc, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryTendocTenDocMessageResultAdapter);
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131368378));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new akdo(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new akdp(this));
   }
   
-  public void a(akdm paramakdm, int paramInt)
+  private void f()
   {
-    List localList = (List)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    LinearLayout localLinearLayout = paramakdm.a;
-    while (localLinearLayout.getChildCount() < localList.size()) {
-      localLinearLayout.addView(a(localLinearLayout.getContext()));
+    this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131366280));
+    this.jdField_b_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(15) });
+    this.jdField_b_of_type_AndroidWidgetEditText.addTextChangedListener(new akdq(this));
+    this.jdField_b_of_type_AndroidWidgetEditText.setImeOptions(3);
+    akbs localakbs = new akbs(this);
+    this.jdField_b_of_type_AndroidWidgetEditText.setOnEditorActionListener(localakbs);
+    this.jdField_b_of_type_AndroidWidgetEditText.setOnKeyListener(localakbs);
+    this.jdField_b_of_type_AndroidWidgetEditText.setHint(this.jdField_a_of_type_AndroidContentContext.getString(2131690782));
+    this.jdField_b_of_type_AndroidWidgetEditText.setSelection(0);
+    this.jdField_b_of_type_AndroidWidgetEditText.requestFocus();
+  }
+  
+  private void g()
+  {
+    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new akdr(this));
+    Button localButton = (Button)findViewById(2131363845);
+    localButton.setVisibility(0);
+    localButton.setOnClickListener(new akds(this));
+  }
+  
+  protected void a()
+  {
+    String str = this.jdField_b_of_type_AndroidWidgetEditText.getText().toString().trim();
+    if (QLog.isColorLevel()) {
+      QLog.i("TenDocMessageSearchDialog", 2, "searchMessage, keyword = " + str);
     }
-    int i = 0;
-    int j;
-    for (;;)
+    if (TextUtils.isEmpty(str)) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_JavaLangString = str;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.i("TenDocMessageSearchDialog", 2, "searchMessage, keyword: " + this.jdField_a_of_type_JavaLangString + ", netState: " + AppNetConnInfo.isNetSupport());
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryTendocTenDocMessageResultAdapter.a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryTendocTenDocMessageResultAdapter.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, 1);
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A174", "0X800A174", this.jdField_b_of_type_Int, 0, "", "", "s_qq_history_tab", "");
+  }
+  
+  public void a(List<Object> paramList)
+  {
+    if (paramList == null) {
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      j = i;
-      if (i >= localList.size()) {
-        break;
+      Object localObject = paramList.next();
+      if ((localObject instanceof TencentDocItem)) {
+        localArrayList.add((TencentDocItem)localObject);
       }
-      akdl localakdl = (akdl)localList.get(i);
-      View localView = localLinearLayout.getChildAt(i);
-      a(localView, localakdl);
-      localView.setVisibility(0);
-      i += 1;
     }
-    while (j < localLinearLayout.getChildCount())
+    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryTendocTenDocMessageResultAdapter.a(localArrayList);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 2)
     {
-      localLinearLayout.getChildAt(j).setVisibility(8);
-      j += 1;
-    }
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramakdm, paramInt, getItemId(paramInt));
-  }
-  
-  public void a(View paramView)
-  {
-    if (this.jdField_a_of_type_Akdl != null) {
-      this.jdField_a_of_type_Akdl.b = false;
-    }
-    paramView = (akdl)paramView.getTag(2131374653);
-    paramView.b = true;
-    this.jdField_a_of_type_Akdl = paramView;
-    notifyDataSetChanged();
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_JavaLangString = paramString;
-    }
-  }
-  
-  public void a(@NonNull List<List<akdl>> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    if (this.jdField_a_of_type_Akdl != null)
-    {
-      paramList = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramList.hasNext())
+      if (QLog.isColorLevel()) {
+        QLog.i("TenDocMessageSearchDialog", 2, "handleMessage, catch show message");
+      }
+      Object localObject1 = paramMessage.getData();
+      long l = ((Bundle)localObject1).getLong("searchSequence", 0L);
+      Object localObject2 = ((Bundle)localObject1).getString("searchKeyword");
+      if ((!(paramMessage.obj instanceof List)) || (l != this.jdField_a_of_type_Long) || (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, (CharSequence)localObject2)))
       {
-        Iterator localIterator = ((List)paramList.next()).iterator();
-        while (localIterator.hasNext())
+        if (QLog.isColorLevel()) {
+          QLog.d("TenDocMessageSearchDialog", 2, "handleMessage : ACTION_SHOW_MESSAGE sequence or keyword not equal, no load");
+        }
+        return true;
+      }
+      localObject1 = (List)paramMessage.obj;
+      int i;
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder().append("handleMessage : ACTION_SHOW_MESSAGE searchSequence: ").append(l).append(", keyword: ").append((String)localObject2).append(", mCurrentKeyword: ").append(this.jdField_a_of_type_JavaLangString).append(", searchSequence: ").append(l).append(", mCurrentSearchSequence: ").append(this.jdField_a_of_type_Long).append(", loadType: ").append(paramMessage.arg1).append(", size: ");
+        if (localObject1 == null)
         {
-          akdl localakdl = (akdl)localIterator.next();
-          if (TextUtils.equals(localakdl.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Akdl.jdField_a_of_type_JavaLangString))
-          {
-            localakdl.b = true;
-            this.jdField_a_of_type_Akdl = localakdl;
-          }
+          i = 0;
+          QLog.d("TenDocMessageSearchDialog", 2, i);
         }
       }
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryTendocTenDocMessageResultAdapter.a((List)localObject1, paramMessage.arg1);
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryTendocTenDocMessageResultAdapter.getCount() != 0) {
+          break label275;
+        }
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      }
+      for (;;)
+      {
+        return true;
+        i = ((List)localObject1).size();
+        break;
+        label275:
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      }
     }
-    notifyDataSetChanged();
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return super.handleMessage(paramMessage);
   }
 }
 

@@ -1,36 +1,37 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0xcf.submsgtype0xcf.MsgBody;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.api.motivebrowsing.GdtMotiveBrowsingFragment;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DestInfo;
 
-public class accw
-  implements abzb
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gdtad/api/motivebrowsing/GdtMotiveBrowsingFragment$Companion;", "", "()V", "COUNT_DOWN_TOTAL_SECOND", "", "KEY_MOTIVE_BROWSING", "", "TAG", "startMotiveBrowsingActivity", "", "activity", "Landroid/app/Activity;", "data", "Lcom/tencent/gdtad/api/motivevideo/GdtMotiveVideoPageData;", "intent", "Landroid/content/Intent;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class accw
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
+  public final void a(@NotNull Activity paramActivity, @NotNull GdtMotiveVideoPageData paramGdtMotiveVideoPageData, @NotNull Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QAV.Random.push", 2, "[1v1] onLinePush receive 0x210_0xcf");
-    }
-    try
-    {
-      submsgtype0xcf.MsgBody localMsgBody = new submsgtype0xcf.MsgBody();
-      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-      paramQQAppInterface.getGAudioHandler().a(localMsgBody);
-      return;
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QAV.Random.push", 2, "[1v1] onLinePush 0x210_0xcf push exception", paramQQAppInterface);
-    }
-  }
-  
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
-  {
-    a(paramabxc.a(), paramMsgType0x210);
-    return null;
+    Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
+    Intrinsics.checkParameterIsNotNull(paramGdtMotiveVideoPageData, "data");
+    Intrinsics.checkParameterIsNotNull(paramIntent, "intent");
+    paramGdtMotiveVideoPageData = new aced(paramGdtMotiveVideoPageData);
+    paramIntent.setClass((Context)paramActivity, QQBrowserActivity.class);
+    paramIntent.putExtra("fragment_class", GdtMotiveBrowsingFragment.class.getCanonicalName());
+    paramIntent.putExtra("url", paramGdtMotiveVideoPageData.a().dest_info.landing_page.get());
+    paramIntent.putExtra("isTransparentTitle", true);
+    GdtAd localGdtAd = paramGdtMotiveVideoPageData.a();
+    Intrinsics.checkExpressionValueIsNotNull(localGdtAd, "modelData.gdtAd");
+    paramIntent.putExtra("GdtWebReportQQ_TRACE_ID", localGdtAd.getTraceId());
+    paramGdtMotiveVideoPageData = paramGdtMotiveVideoPageData.a();
+    Intrinsics.checkExpressionValueIsNotNull(paramGdtMotiveVideoPageData, "modelData.gdtAd");
+    paramIntent.putExtra("GdtWebReportQQ_ACTION_URL", paramGdtMotiveVideoPageData.getUrlForAction());
+    paramActivity.startActivity(paramIntent);
   }
 }
 

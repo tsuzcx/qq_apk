@@ -1,16 +1,19 @@
-public abstract interface bnpr
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.mode.AECaptureMode;
+
+public final class bnpr
 {
-  public abstract void cancelAnimator();
+  public final int a;
+  public final AECaptureMode a;
+  public final AECaptureMode b;
   
-  public abstract void displayPanel();
-  
-  public abstract void displayPanelFinish();
-  
-  public abstract void fadeBackground(float paramFloat);
-  
-  public abstract void hidePanel();
-  
-  public abstract void hidePanelFinish();
+  public bnpr(@Nullable AECaptureMode paramAECaptureMode1, @NonNull AECaptureMode paramAECaptureMode2, int paramInt)
+  {
+    this.jdField_a_of_type_DovComQqImAeModeAECaptureMode = paramAECaptureMode1;
+    this.b = paramAECaptureMode2;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 

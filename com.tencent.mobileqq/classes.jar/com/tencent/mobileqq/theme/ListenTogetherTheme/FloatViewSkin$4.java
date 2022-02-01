@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.theme.ListenTogetherTheme;
 
-import bday;
+import behx;
 
 public class FloatViewSkin$4
   implements Runnable
 {
-  public FloatViewSkin$4(bday parambday) {}
+  public FloatViewSkin$4(behx parambehx) {}
   
   public void run()
   {
-    this.this$0.b(bday.a(this.this$0));
+    this.this$0.b(behx.a(this.this$0));
   }
 }
 

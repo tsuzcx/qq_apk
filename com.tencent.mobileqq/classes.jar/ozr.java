@@ -1,20 +1,21 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
 
-class ozr
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class ozr
   implements ViewBase.OnClickListener
 {
-  ozr(ozq paramozq) {}
+  ozr(pcf parampcf, pdp parampdp) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public final void onClick(ViewBase paramViewBase)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getCurActivity() != null)
-    {
-      ozp.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
-      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getCurActivity().finish();
+    paramViewBase = this.jdField_a_of_type_Pcf;
+    if (paramViewBase == null) {
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListAdapter");
     }
+    ((pau)paramViewBase).a(this.jdField_a_of_type_Pdp, ozx.a(this.jdField_a_of_type_Pdp, 1), 2);
   }
 }
 

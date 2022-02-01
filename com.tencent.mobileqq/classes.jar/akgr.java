@@ -1,16 +1,16 @@
-public abstract interface akgr
+public class akgr
 {
-  public abstract void a();
-  
-  public abstract void b();
-  
-  public abstract void d();
-  
-  public abstract void e();
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g = 600;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akgr
  * JD-Core Version:    0.7.0.1
  */

@@ -19,10 +19,10 @@ import android.view.ViewParent;
 import android.view.animation.Transformation;
 import android.widget.Scroller;
 import android.widget.SpinnerAdapter;
-import bjnt;
-import bjus;
-import bjut;
-import bjuu;
+import bkzf;
+import blge;
+import blgf;
+import blgg;
 import com.tencent.mobileqq.R.styleable;
 
 public class VerticalGallery
@@ -32,9 +32,9 @@ public class VerticalGallery
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, this);
-  private bjus jdField_a_of_type_Bjus;
-  private bjut jdField_a_of_type_Bjut;
-  private bjuu jdField_a_of_type_Bjuu;
+  private blge jdField_a_of_type_Blge;
+  private blgf jdField_a_of_type_Blgf;
+  private blgg jdField_a_of_type_Blgg;
   private AdapterView.AdapterContextMenuInfo jdField_a_of_type_ComTencentWidgetAdapterView$AdapterContextMenuInfo;
   private VerticalGallery.FlingRunnable jdField_a_of_type_ComTencentWidgetVerticalGallery$FlingRunnable = new VerticalGallery.FlingRunnable(this);
   private Runnable jdField_a_of_type_JavaLangRunnable = new VerticalGallery.1(this);
@@ -69,7 +69,7 @@ public class VerticalGallery
   
   public VerticalGallery(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2131035253);
+    this(paramContext, paramAttributeSet, 2131035259);
   }
   
   public VerticalGallery(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -132,7 +132,7 @@ public class VerticalGallery
   {
     if (!this.mDataChanged)
     {
-      localView = this.jdField_a_of_type_Bjnt.a(paramInt1);
+      localView = this.jdField_a_of_type_Bkzf.a(paramInt1);
       if (localView != null)
       {
         paramInt1 = localView.getLeft();
@@ -236,7 +236,7 @@ public class VerticalGallery
           }
           return;
         }
-        this.jdField_a_of_type_Bjnt.a(i4 + i2, localView);
+        this.jdField_a_of_type_Bkzf.a(i4 + i2, localView);
         i2 += 1;
         i1 += 1;
       }
@@ -263,7 +263,7 @@ public class VerticalGallery
         i3 = i1;
         break;
       }
-      this.jdField_a_of_type_Bjnt.a(i4 + i3, localView);
+      this.jdField_a_of_type_Bkzf.a(i4 + i3, localView);
       i1 += 1;
       i2 = i3;
       i3 -= 1;
@@ -341,7 +341,7 @@ public class VerticalGallery
   {
     if (!this.mDataChanged)
     {
-      localView = this.jdField_a_of_type_Bjnt.a(paramInt1);
+      localView = this.jdField_a_of_type_Bkzf.a(paramInt1);
       if (localView != null)
       {
         paramInt1 = localView.getTop();
@@ -437,7 +437,7 @@ public class VerticalGallery
           }
           return;
         }
-        this.jdField_a_of_type_Bjnt.a(i4 + i2, localView);
+        this.jdField_a_of_type_Bkzf.a(i4 + i2, localView);
         i2 += 1;
         i1 += 1;
       }
@@ -464,7 +464,7 @@ public class VerticalGallery
         i3 = i1;
         break;
       }
-      this.jdField_a_of_type_Bjnt.a(i4 + i3, localView);
+      this.jdField_a_of_type_Bkzf.a(i4 + i3, localView);
       i1 += 1;
       i2 = i3;
       i3 -= 1;
@@ -566,8 +566,8 @@ public class VerticalGallery
       super.selectionChanged();
     }
     invalidate();
-    if (this.jdField_a_of_type_Bjut != null) {
-      this.jdField_a_of_type_Bjut.a(this);
+    if (this.jdField_a_of_type_Blgf != null) {
+      this.jdField_a_of_type_Blgf.a(this);
     }
   }
   
@@ -826,8 +826,8 @@ public class VerticalGallery
       if (hasFocus()) {
         localView2.requestFocus();
       }
-      if (this.jdField_a_of_type_Bjuu != null) {
-        this.jdField_a_of_type_Bjuu.a(localView2, i1);
+      if (this.jdField_a_of_type_Blgg != null) {
+        this.jdField_a_of_type_Blgg.a(localView2, i1);
       }
     } while ((localView1 == null) || (localView1 == this.jdField_c_of_type_AndroidViewView));
     localView1.setSelected(false);
@@ -1102,7 +1102,7 @@ public class VerticalGallery
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bjnt.a();
+      this.jdField_a_of_type_Bkzf.a();
       j();
       invalidate();
       return;
@@ -1136,7 +1136,7 @@ public class VerticalGallery
       }
       for (;;)
       {
-        this.jdField_a_of_type_Bjnt.a();
+        this.jdField_a_of_type_Bkzf.a();
         j();
         awakenScrollBars();
         invalidate();
@@ -1197,7 +1197,7 @@ public class VerticalGallery
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bjnt.a();
+      this.jdField_a_of_type_Bkzf.a();
       k();
       invalidate();
       return;
@@ -1231,7 +1231,7 @@ public class VerticalGallery
       }
       for (;;)
       {
-        this.jdField_a_of_type_Bjnt.a();
+        this.jdField_a_of_type_Bkzf.a();
         j();
         awakenScrollBars();
         invalidate();
@@ -1285,7 +1285,7 @@ public class VerticalGallery
     localView.offsetLeftAndRight(paramInt);
     n();
     l();
-    this.jdField_a_of_type_Bjnt.a();
+    this.jdField_a_of_type_Bkzf.a();
     invalidate();
     this.mDataChanged = false;
     this.mNeedSync = false;
@@ -1345,7 +1345,7 @@ public class VerticalGallery
     localView.offsetTopAndBottom(paramInt);
     o();
     m();
-    this.jdField_a_of_type_Bjnt.a();
+    this.jdField_a_of_type_Bkzf.a();
     invalidate();
     this.mDataChanged = false;
     this.mNeedSync = false;
@@ -1521,8 +1521,8 @@ public class VerticalGallery
   
   protected void g()
   {
-    if (this.jdField_a_of_type_Bjus != null) {
-      this.jdField_a_of_type_Bjus.b(this);
+    if (this.jdField_a_of_type_Blge != null) {
+      this.jdField_a_of_type_Blge.b(this);
     }
   }
   
@@ -1815,19 +1815,19 @@ public class VerticalGallery
     }
   }
   
-  public void setOnEndFlingListener(bjus parambjus)
+  public void setOnEndFlingListener(blge paramblge)
   {
-    this.jdField_a_of_type_Bjus = parambjus;
+    this.jdField_a_of_type_Blge = paramblge;
   }
   
-  public void setOnEndMovementListener(bjut parambjut)
+  public void setOnEndMovementListener(blgf paramblgf)
   {
-    this.jdField_a_of_type_Bjut = parambjut;
+    this.jdField_a_of_type_Blgf = paramblgf;
   }
   
-  public void setOnSelectViewDataUpdateListener(bjuu parambjuu)
+  public void setOnSelectViewDataUpdateListener(blgg paramblgg)
   {
-    this.jdField_a_of_type_Bjuu = parambjuu;
+    this.jdField_a_of_type_Blgg = paramblgg;
   }
   
   public void setOrientation(int paramInt)

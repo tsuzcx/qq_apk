@@ -1,31 +1,45 @@
+import android.media.ExifInterface;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
 import com.tencent.qphone.base.util.QLog;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
+import java.io.File;
+import java.lang.reflect.Field;
+import java.util.HashMap;
 
 public class alpq
-  implements alqm
+  implements alun
 {
-  private int a;
+  public alpq(FlowCameraActivity2 paramFlowCameraActivity2, File paramFile) {}
   
-  public alpq(int paramInt)
+  public void a(String paramString)
   {
-    QLog.i("ApolloTextureView", 1, "[ApolloConfigChooser], multiValue:" + paramInt);
-    this.a = paramInt;
-  }
-  
-  public EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
-  {
-    int i = this.a;
-    EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
-    int[] arrayOfInt = new int[1];
-    paramEGL10.eglChooseConfig(paramEGLDisplay, new int[] { 12329, 0, 12352, 4, 12351, 12430, 12324, 8, 12323, 8, 12322, 8, 12325, 16, 12321, 8, 12326, 0, 12338, 1, 12337, i, 12344 }, arrayOfEGLConfig, 1, arrayOfInt);
-    if (arrayOfInt[0] == 0)
-    {
-      QLog.e("ApolloTextureView", 1, "[ApolloConfigChooser], fail to set config");
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.i("FlowCameraActivity", 2, "onPictureToken path " + paramString);
     }
-    return arrayOfEGLConfig[0];
+    bheg.a(paramString, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.a, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.jdField_b_of_type_Double);
+    if (QLog.isColorLevel()) {}
+    try
+    {
+      Object localObject = Class.forName("android.media.ExifInterface").getDeclaredField("mAttributes");
+      ((Field)localObject).setAccessible(true);
+      localObject = (HashMap)((Field)localObject).get(new ExifInterface(paramString));
+      QLog.i("FlowCameraActivity", 2, "exif " + localObject);
+      if (paramString != null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.a(this.jdField_a_of_type_JavaIoFile);
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.jdField_b_of_type_AndroidWidgetButton.setClickable(true);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.jdField_b_of_type_AndroidWidgetButton.setOnLongClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.c.setEnabled(true);
+    }
   }
 }
 

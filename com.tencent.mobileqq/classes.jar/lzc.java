@@ -1,33 +1,20 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.telephony.PhoneStateListener;
+import com.tencent.av.smallscreen.BaseSmallScreenService;
 
-final class lzc
-  implements Animation.AnimationListener
+public class lzc
+  extends PhoneStateListener
 {
-  lzc(View paramView, boolean paramBoolean) {}
+  public lzc(BaseSmallScreenService paramBaseSmallScreenService) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onCallStateChanged(int paramInt, String paramString)
   {
-    paramAnimation = this.jdField_a_of_type_AndroidViewView;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 0;; i = 8)
-    {
-      paramAnimation.setVisibility(i);
-      return;
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    super.onCallStateChanged(paramInt, paramString);
+    this.a.a(paramInt, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lzc
  * JD-Core Version:    0.7.0.1
  */

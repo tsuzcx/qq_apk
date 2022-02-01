@@ -85,11 +85,6 @@ public abstract class Feature
     }
   }
   
-  private boolean copyAssetsModelsToLocalPath(List<ModelInfo> paramList)
-  {
-    return copyModelsToLocalPath(getFinalResourcesDir(), paramList);
-  }
-  
   private boolean copyModelsToLocalPath(String paramString, List<ModelInfo> paramList)
   {
     paramList = paramList.iterator();
@@ -328,6 +323,11 @@ public abstract class Feature
     return true;
   }
   
+  public boolean copyAssetsModelsToLocalPath(List<ModelInfo> paramList)
+  {
+    return copyModelsToLocalPath(getFinalResourcesDir(), paramList);
+  }
+  
   public boolean destroy()
   {
     if (!destroyImpl()) {}
@@ -513,7 +513,7 @@ public abstract class Feature
   
   protected boolean loadAllSoFiles()
   {
-    if (!checkAllSoFilesExists()) {
+    if ((FeatureManager.isEnableResourceCheck()) && (!checkAllSoFilesExists())) {
       return false;
     }
     this.isSoFilesLoaded = true;
@@ -523,7 +523,7 @@ public abstract class Feature
       SharedLibraryInfo localSharedLibraryInfo = (SharedLibraryInfo)localIterator.next();
       boolean bool = loadSoFile(localSharedLibraryInfo);
       AEOpenRenderConfig.checkStrictMode(bool, "so load failed: " + localSharedLibraryInfo);
-      if (!bool)
+      if ((!bool) && (FeatureManager.isEnableSoLoadCheck()))
       {
         LogUtils.i("AEKitFeature", "so load failed: " + localSharedLibraryInfo);
         this.isSoFilesLoaded = false;

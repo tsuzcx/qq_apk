@@ -1,104 +1,43 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.ac.ArticleComment.GetRecommendPubAccountResponse;
-import com.tencent.mobileqq.ac.ArticleComment.Record;
-import com.tencent.mobileqq.ac.ArticleComment.RetInfo;
+import android.os.AsyncTask;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
+import mqq.util.WeakReference;
 
-class ods
-  implements BusinessObserver
+public class ods
 {
-  ods(odr paramodr, NewIntent paramNewIntent, QQAppInterface paramQQAppInterface, odt paramodt) {}
+  aeaz jdField_a_of_type_Aeaz;
+  WeakReference<AccountDetailActivity> jdField_a_of_type_MqqUtilWeakReference;
+  odu jdField_a_of_type_Odu;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public ods(QQAppInterface paramQQAppInterface, AccountDetailActivity paramAccountDetailActivity)
   {
-    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-    if (!paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(odr.b(this.jdField_a_of_type_Odr), 2, "OnReceiveGetRecommendPubAccountResponse failed!");
-      }
-      odr.a(this.jdField_a_of_type_Odr, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Odt);
+    this.jdField_a_of_type_Aeaz = new aeaz(paramQQAppInterface);
+    this.jdField_a_of_type_Aeaz.b = paramAccountDetailActivity.e;
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAccountDetailActivity);
+    this.jdField_a_of_type_Odu = new odu(paramAccountDetailActivity);
+  }
+  
+  public void a()
+  {
+    aebd localaebd = new aebd();
+    localaebd.d = this.jdField_a_of_type_Aeaz.b;
+    localaebd.a = null;
+    if (this.jdField_a_of_type_MqqUtilWeakReference.get() == null) {
       return;
     }
-    Object localObject;
-    try
+    this.jdField_a_of_type_Aeaz.a((BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get(), localaebd);
+    this.jdField_a_of_type_Aeaz.a(this.jdField_a_of_type_Odu);
+    this.jdField_a_of_type_Aeaz.b((BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get());
+    new odt(this, localaebd).execute(new Void[0]);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_MqqUtilWeakReference.get() != null)
     {
-      localObject = new ArticleComment.GetRecommendPubAccountResponse();
-      ((ArticleComment.GetRecommendPubAccountResponse)localObject).mergeFrom(paramBundle.getByteArray("data"));
-      if (QLog.isColorLevel()) {
-        QLog.d(odr.b(this.jdField_a_of_type_Odr), 2, "OnReceiveGetRecommendPubAccountResponse->retCode:" + ((ArticleComment.GetRecommendPubAccountResponse)localObject).ret.ret_code.get() + ", title:" + ((ArticleComment.GetRecommendPubAccountResponse)localObject).recom_title.get() + ", listSize:" + ((ArticleComment.GetRecommendPubAccountResponse)localObject).recom_list.get().size());
-      }
-      if (!((ArticleComment.GetRecommendPubAccountResponse)localObject).ret.has())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(odr.b(this.jdField_a_of_type_Odr), 2, "OnReceiveGetRecommendPubAccountResponse failed!(no ret)");
-        }
-        odr.a(this.jdField_a_of_type_Odr, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Odt);
-        return;
-      }
-    }
-    catch (Exception paramBundle)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(odr.b(this.jdField_a_of_type_Odr), 2, "OnReceiveGetRecommendPubAccountResponse exception:" + paramBundle);
-      }
-      odr.a(this.jdField_a_of_type_Odr, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Odt);
-      return;
-    }
-    paramInt = ((ArticleComment.GetRecommendPubAccountResponse)localObject).ret.ret_code.get();
-    if (paramInt == -1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(odr.b(this.jdField_a_of_type_Odr), 2, "OnReceiveGetRecommendPubAccountResponse forbidden!");
-      }
-      odr.a(this.jdField_a_of_type_Odr, true);
-      this.jdField_a_of_type_Odt.a(new ArrayList(), null, true);
-      return;
-    }
-    odr.a(this.jdField_a_of_type_Odr, false);
-    if (((ArticleComment.GetRecommendPubAccountResponse)localObject).recom_title.has()) {}
-    for (paramBundle = ((ArticleComment.GetRecommendPubAccountResponse)localObject).recom_title.get().toStringUtf8();; paramBundle = "")
-    {
-      if ((paramInt == 0) && (!TextUtils.isEmpty(paramBundle)) && (((ArticleComment.GetRecommendPubAccountResponse)localObject).recom_list.has()) && (((ArticleComment.GetRecommendPubAccountResponse)localObject).recom_list.get().size() > 0))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(odr.b(this.jdField_a_of_type_Odr), 2, "OnReceiveGetRecommendPubAccountResponse update cache!");
-        }
-        odr.a(this.jdField_a_of_type_Odr, paramBundle);
-        odr.a(this.jdField_a_of_type_Odr).clear();
-        paramBundle = ((ArticleComment.GetRecommendPubAccountResponse)localObject).recom_list.get().iterator();
-        while (paramBundle.hasNext())
-        {
-          localObject = (ArticleComment.Record)paramBundle.next();
-          odr.a(this.jdField_a_of_type_Odr).add(new odv(this.jdField_a_of_type_Odr, ((ArticleComment.Record)localObject).puin.get().toStringUtf8(), ((ArticleComment.Record)localObject).name.get().toStringUtf8(), true));
-        }
-        odr.a(this.jdField_a_of_type_Odr, NetConnInfoCenter.getServerTimeMillis());
-        odr.a(this.jdField_a_of_type_Odr, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      }
-      odr.a(this.jdField_a_of_type_Odr, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Odt);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d(odr.b(this.jdField_a_of_type_Odr), 2, "OnReceiveGetRecommendPubAccountResponse update UI->title:" + odr.a(this.jdField_a_of_type_Odr) + ", cacheTime:" + odr.a(this.jdField_a_of_type_Odr) + ", isFobidden:" + odr.a(this.jdField_a_of_type_Odr) + ", recommendSize:" + odr.a(this.jdField_a_of_type_Odr).size());
-      paramBundle = odr.a(this.jdField_a_of_type_Odr).iterator();
-      while (paramBundle.hasNext())
-      {
-        localObject = (odv)paramBundle.next();
-        QLog.d(odr.b(this.jdField_a_of_type_Odr), 2, ((odv)localObject).toString());
-      }
-      break;
+      this.jdField_a_of_type_Aeaz.a(null);
+      this.jdField_a_of_type_Aeaz.a((BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get());
     }
   }
 }

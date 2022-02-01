@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.troop.data;
 
-import bdzw;
-import bdzx;
+import bfgz;
+import bfha;
 
 public class TroopCreateLogic$1$2
   implements Runnable
 {
-  public TroopCreateLogic$1$2(bdzx parambdzx) {}
+  public TroopCreateLogic$1$2(bfha parambfha) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_Bdzw.a(this.a.jdField_a_of_type_Beaf, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.b);
+    this.a.jdField_a_of_type_Bfgz.a(this.a.jdField_a_of_type_Bfhi, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.b);
   }
 }
 

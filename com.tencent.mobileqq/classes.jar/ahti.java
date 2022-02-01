@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituImgResponse;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
-public final class ahti
-  implements Parcelable.Creator<ZhituImgResponse>
+public class ahti
 {
-  public ZhituImgResponse a(Parcel paramParcel)
-  {
-    return new ZhituImgResponse(paramParcel);
-  }
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public ZhituImgResponse[] a(int paramInt)
-  {
-    return new ZhituImgResponse[paramInt];
-  }
+  public ahti(ahte paramahte) {}
 }
 
 

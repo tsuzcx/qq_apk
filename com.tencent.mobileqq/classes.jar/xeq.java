@@ -1,15 +1,28 @@
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
-
-public class xeq
-  implements ysz
+class xeq
+  implements xxo
 {
-  public xeq(StoryPickerFragment paramStoryPickerFragment) {}
+  xeq(xep paramxep) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.d();
+    if ((paramInt == 1) && (xep.a(this.a) != null) && (xep.a(this.a).a != null))
+    {
+      if (xep.a(this.a).a()) {
+        break label66;
+      }
+      if (xep.a(this.a).a(true)) {
+        xep.a(this.a).c();
+      }
     }
+    label66:
+    do
+    {
+      return;
+      if (xep.a(this.a).a(false)) {
+        xep.b(this.a).c();
+      }
+    } while (!xep.a(this.a).a(true));
+    xep.a(this.a).c();
   }
 }
 

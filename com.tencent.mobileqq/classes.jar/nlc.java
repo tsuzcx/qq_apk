@@ -1,18 +1,15 @@
 import android.view.View;
-import android.view.animation.Transformation;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.biz.PoiMapActivity;
+import com.tencent.avgame.gameroom.stage.StageView;
 
 public class nlc
-  implements bfzz<Integer>
+  implements nkx
 {
-  public nlc(PoiMapActivity paramPoiMapActivity) {}
+  public nlc(StageView paramStageView) {}
   
-  public void a(bfzt<Integer> parambfzt, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public void onClick(View paramView)
   {
-    parambfzt = (FrameLayout.LayoutParams)this.a.b.getLayoutParams();
-    parambfzt.bottomMargin = (this.a.o - paramInteger.intValue());
-    this.a.b.setLayoutParams(parambfzt);
+    this.a.a().a();
+    bdla.b(null, "dc00898", "", "", "0X800B04A", "0X800B04A", 1, 0, "", "", "", "");
   }
 }
 

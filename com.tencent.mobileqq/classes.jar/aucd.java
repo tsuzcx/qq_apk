@@ -1,39 +1,103 @@
-import android.text.SpannableStringBuilder;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import com.tencent.mobileqq.data.MessageForGrayTips.HighlightItem;
-import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
 
-class aucd
-  extends View.AccessibilityDelegate
+public class aucd
+  extends aucj
 {
-  aucd(auca paramauca, long paramLong1, long paramLong2, ArrayList paramArrayList, SpannableStringBuilder paramSpannableStringBuilder) {}
+  private MessageForFile jdField_a_of_type_ComTencentMobileqqDataMessageForFile = (MessageForFile)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+  private FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = auea.a(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public aucd(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    super.sendAccessibilityEvent(paramView, paramInt);
-    if (paramInt == 1)
+    super(paramQQAppInterface, paramChatMessage);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatItemBuilder", 2, new Object[] { "revoke msg grayTipItemBuilder sendAccessibilityEvent click msg uinseq=", Long.valueOf(this.jdField_a_of_type_Long), ",holder.mPosition=", Long.valueOf(this.b) });
-      }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
+      QLog.e("OfflineFileSaveModel<QFile>", 1, "init: not find the target entity.");
+      return;
+    }
+    QLog.e("OfflineFileSaveModel<QFile>", 1, "init: uniseq[" + paramChatMessage.uniseq + "] session[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]");
+  }
+  
+  public long a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
+    }
+    return 0L;
+  }
+  
+  public aucg a()
+  {
+    aucc localaucc = new aucc(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    localaucc.a(new auce(this));
+    return localaucc;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath();
+    }
+    return "";
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OfflineFileSaveModel<QFile>", 1, "download: file entity is null.");
+      return false;
+    }
+    int i = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType();
+    int j = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status;
+    String str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath();
+    QLog.e("OfflineFileSaveModel<QFile>", 1, "download: uniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq + "] session[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] cloudType[" + i + "] status[" + j + "]");
+    if ((!FileUtils.fileExistsAndNotEmpty(str)) && (i != 0))
+    {
+      if (j == 3)
       {
-        Object localObject = (MessageForGrayTips.HighlightItem)localIterator.next();
-        if (localObject != null)
-        {
-          localObject = (ClickableSpan[])this.jdField_a_of_type_AndroidTextSpannableStringBuilder.getSpans(((MessageForGrayTips.HighlightItem)localObject).start, ((MessageForGrayTips.HighlightItem)localObject).end, MessageForGrayTips.HightlightClickableSpan.class);
-          if (localObject.length > 0) {
-            localObject[0].onClick(paramView);
-          }
-        }
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+        return true;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      return true;
+    }
+    QLog.e("OfflineFileSaveModel<QFile>", 1, "download: error, file status is not right.");
+    return false;
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.frienduin + this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq;
+  }
+  
+  public boolean b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OfflineFileSaveModel<QFile>", 1, "stopDownload: file entity is null.");
+      return false;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    return true;
+  }
+  
+  public boolean c()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getStatus() == 2) {
+        bool1 = true;
       }
     }
+    return bool1;
   }
 }
 

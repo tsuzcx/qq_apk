@@ -1,17 +1,15 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 
-class agga
-  extends aghj
+public class agga
+  implements DialogInterface.OnClickListener
 {
-  agga(agcw paramagcw)
-  {
-    super(paramagcw, null);
-  }
+  public agga(AIOLongShotHelper paramAIOLongShotHelper) {}
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new agsi(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, agcw.a(this.a));
+    paramDialogInterface.dismiss();
   }
 }
 

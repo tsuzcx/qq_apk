@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import pkm;
-import pyl;
+import pvj;
+import qkq;
 
 public class ReadInJoyLogicEngine$8
   implements Runnable
 {
-  public ReadInJoyLogicEngine$8(pkm parampkm) {}
+  public ReadInJoyLogicEngine$8(pvj parampvj) {}
   
   public void run()
   {
-    pyl.a().a();
+    qkq.a().a();
   }
 }
 

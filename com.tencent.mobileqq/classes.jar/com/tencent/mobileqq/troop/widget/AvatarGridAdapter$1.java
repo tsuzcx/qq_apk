@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.troop.widget;
 
 import android.view.ViewGroup.LayoutParams;
-import bfeq;
+import bgmw;
 import com.tencent.widget.GridView;
 
 public class AvatarGridAdapter$1
   implements Runnable
 {
-  public AvatarGridAdapter$1(bfeq parambfeq, int paramInt, ViewGroup.LayoutParams paramLayoutParams) {}
+  public AvatarGridAdapter$1(bgmw parambgmw, int paramInt, ViewGroup.LayoutParams paramLayoutParams) {}
   
   public void run()
   {

@@ -1,22 +1,6 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView.7.1;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
-
-public class ailq
-  implements ThreadExcutor.IThreadListener
+public abstract interface ailq
 {
-  public ailq(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
-  
-  public void onAdded() {}
-  
-  public void onPostRun()
-  {
-    ThreadManager.getUIHandler().post(new TroopNotifyAndRecommendView.7.1(this));
-  }
-  
-  public void onPreRun() {}
+  public static final int[] a = { 4, 5, 6 };
 }
 
 

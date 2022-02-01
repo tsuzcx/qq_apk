@@ -1,158 +1,39 @@
-import android.os.Bundle;
-import android.os.Parcelable;
-import com.tencent.commonsdk.util.HexUtil;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
-import eipc.EIPCResult;
-import eipc.EIPCServer;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
 
 public class bnal
+  implements Animator.AnimatorListener
 {
-  public static Pair<Boolean, Boolean> a(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troop_uin", paramString);
-    paramString = QIPCClientHelper.getInstance().callServer("PeakIpcModuleServer", "action_get_troop_info", localBundle);
-    if ((paramString != null) && (paramString.isSuccess()) && (paramString.data != null)) {
-      return new Pair(Boolean.valueOf(paramString.data.getBoolean("troop_owner")), Boolean.valueOf(paramString.data.getBoolean("troop_code")));
-    }
-    return null;
-  }
+  public bnal(AECropperImageView paramAECropperImageView) {}
   
-  public static String a(String paramString)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("uin", paramString);
-    paramString = QIPCClientHelper.getInstance().callServer("PeakIpcModuleServer", "action_get_name", localBundle);
-    if ((paramString != null) && (paramString.isSuccess()) && (paramString.data != null))
-    {
-      paramString = paramString.data.getString("uinname");
-      if (QLog.isColorLevel()) {
-        QLog.i("PeakIpcController", 2, "getFriendName success name = " + paramString);
-      }
-      return paramString;
-    }
-    return null;
-  }
-  
-  public static void a(bnpz parambnpz)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("PeakIpcController", 2, "cancelSendVideoOrPhoto uinseq:" + parambnpz.jdField_a_of_type_Long);
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("key_uinsequence", parambnpz.jdField_a_of_type_Long);
-    localBundle.putString("uin", parambnpz.jdField_a_of_type_JavaLangString);
-    localBundle.putInt("uintype", parambnpz.jdField_a_of_type_Int);
-    QIPCClientHelper.getInstance().callServer("PeakIpcModuleServer", "action_cancel_send", localBundle, new bnan(parambnpz));
-  }
-  
-  public static void a(MessageRecord paramMessageRecord, int paramInt1, int paramInt2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("key_status", paramInt1);
-    localBundle.putInt("key_progress", paramInt2);
-    localBundle.putLong("key_uinsequence", paramMessageRecord.uniseq);
-    localBundle.putString("uin", paramMessageRecord.frienduin);
-    localBundle.putInt("uintype", paramMessageRecord.istroop);
-    if ((paramMessageRecord instanceof MessageForShortVideo)) {
-      localBundle.putString("key_file_md5", ((MessageForShortVideo)paramMessageRecord).md5);
-    }
-    for (;;)
-    {
-      paramMessageRecord = QIPCServerHelper.getInstance().getServer().callClient("com.tencent.mobileqq:peak", 1, "PeakIpcModuleClient", "action_update_status", localBundle);
-      boolean bool2 = false;
-      boolean bool1 = bool2;
-      if (paramMessageRecord != null)
-      {
-        bool1 = bool2;
-        if (paramMessageRecord.data != null) {
-          bool1 = paramMessageRecord.data.getBoolean("key_result");
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("PeakIpcController", 2, "client result:" + bool1);
-      }
-      return;
-      if ((paramMessageRecord instanceof MessageForPic)) {
-        localBundle.putString("key_file_md5", ((MessageForPic)paramMessageRecord).md5);
-      }
+    AECropperImageView.a(this.a, false);
+    if (this.a.a != null) {
+      this.a.a.onAnimationCancel(paramAnimator);
     }
   }
   
-  public static void a(String paramString1, bnpz parambnpz, String paramString2, String paramString3)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (parambnpz == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("PeakIpcController", 2, "sendPhoto editVideoInfo is null");
-      }
-      return;
+    AECropperImageView.a(this.a, false);
+    if (this.a.a != null) {
+      this.a.a.onAnimationEnd(paramAnimator);
     }
-    parambnpz.jdField_a_of_type_Long = 0L;
-    Object localObject = HexUtil.bytes2HexStr(aszt.e(paramString1));
-    if (localObject == null)
-    {
-      QLog.e("PeakIpcController", 1, "sendPic file md5 fail!");
-      return;
-    }
-    parambnpz.g = ((String)localObject);
-    localObject = new SessionInfo();
-    ((SessionInfo)localObject).curFriendUin = parambnpz.jdField_a_of_type_JavaLangString;
-    ((SessionInfo)localObject).curType = parambnpz.jdField_a_of_type_Int;
-    ((SessionInfo)localObject).troopUin = parambnpz.b;
-    parambnpz = new Bundle();
-    parambnpz.putParcelable("key_session", (Parcelable)localObject);
-    parambnpz.putString("key_file_path", paramString1);
-    parambnpz.putString("widgetinfo", paramString2);
-    parambnpz.putString("key_camera_material_name", paramString3);
-    bmbx.b("PeakIpcController", "sendPhoto---takeSameName=" + paramString3);
-    QIPCClientHelper.getInstance().callServer("PeakIpcModuleServer", "action_pic_start_send", parambnpz, new bnao());
   }
   
-  public static void a(String paramString1, String paramString2)
+  public void onAnimationRepeat(Animator paramAnimator)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troop_uin", paramString1);
-    localBundle.putString("uin", paramString2);
-    QIPCClientHelper.getInstance().callServer("PeakIpcModuleServer", "action_get_troop_member_name", localBundle, new bnaq(paramString2));
+    AECropperImageView.a(this.a, true);
   }
   
-  public static void a(String paramString1, String paramString2, bnpz parambnpz, String paramString3, String paramString4)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    bmbx.b("PeakIpcController", "sendVideo---takeSameName=" + paramString4);
-    parambnpz.jdField_a_of_type_Long = 0L;
-    paramString1 = bnfm.a(paramString1, paramString2, parambnpz, paramString3, paramString4);
-    paramString2 = new Bundle();
-    paramString2.putParcelable("key_intent", paramString1);
-    QIPCClientHelper.getInstance().callServer("PeakIpcModuleServer", "action_start_send", paramString2, new bnam());
-  }
-  
-  public static void b(bnpz parambnpz)
-  {
-    if (parambnpz == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("PeakIpcController", 2, "reSendMessage editVideoInfo is null");
-      }
-      return;
+    AECropperImageView.a(this.a, true);
+    if (this.a.a != null) {
+      this.a.a.onAnimationStart(paramAnimator);
     }
-    if (parambnpz.jdField_a_of_type_Long <= 0L)
-    {
-      QLog.e("PeakIpcController", 1, "reSendMessage error!");
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("key_uinsequence", parambnpz.jdField_a_of_type_Long);
-    localBundle.putString("uin", parambnpz.jdField_a_of_type_JavaLangString);
-    localBundle.putInt("uintype", parambnpz.jdField_a_of_type_Int);
-    QIPCClientHelper.getInstance().callServer("PeakIpcModuleServer", "action_re_send", localBundle, new bnap());
   }
 }
 

@@ -1,30 +1,20 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.content.Context;
+import android.animation.Animator;
+import android.view.View;
 
-public class zjm
+public final class zjm
 {
-  public static void a(Context paramContext, CertifiedAccountMeta.StFeed paramStFeed, zjr paramzjr, zjq paramzjq)
+  public static Animator a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
   {
-    a(paramContext, null, paramStFeed, paramzjr, paramzjq);
+    return a(paramView, paramInt1, paramInt2, paramFloat1, paramFloat2, 2);
   }
   
-  private static void a(Context paramContext, CertifiedAccountMeta.StUser paramStUser, CertifiedAccountMeta.StFeed paramStFeed, zjr paramzjr, zjq paramzjq)
+  public static Animator a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, int paramInt3)
   {
-    bjnw localbjnw = bjnw.a(paramContext);
-    localbjnw.a(paramContext.getString(2131718734));
-    localbjnw.a(2131718735, 3);
-    localbjnw.c(2131690620);
-    localbjnw.a(new zjn(localbjnw, paramzjq));
-    localbjnw.a(new zjo(paramStUser, paramStFeed, paramzjr, paramzjq, localbjnw));
-    if (!localbjnw.isShowing()) {
-      localbjnw.show();
+    zjh localzjh = zjh.a(paramView, paramInt1, paramInt2, paramFloat1, paramFloat2);
+    if (paramInt3 != paramView.getLayerType()) {
+      localzjh.addListener(new zjj(paramView, paramInt3));
     }
-  }
-  
-  public static void a(Context paramContext, CertifiedAccountMeta.StUser paramStUser, zjr paramzjr, zjq paramzjq)
-  {
-    a(paramContext, paramStUser, null, paramzjr, paramzjq);
+    return localzjh;
   }
 }
 

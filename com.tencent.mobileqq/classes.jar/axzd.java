@@ -1,18 +1,18 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mobileqq/onlinestatus/view/ConstellationView$1$1"}, k=3, mv={1, 1, 16})
-final class axzd
+public class axzd
   implements View.OnClickListener
 {
-  axzd(axzc paramaxzc) {}
+  public axzd(StuffContainerView paramStuffContainerView) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    this.a.dismiss();
-    this.a.a().a(1040);
+    if (this.a.a != null) {
+      this.a.a.a(0);
+    }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

@@ -1,29 +1,32 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
-class axrt
-  implements bbte
+public class axrt
+  implements bila<oidb_0x8e4.RspBody>
 {
-  axrt(axrr paramaxrr, AppInterface paramAppInterface) {}
+  public axrt(GameRoomInviteActivity paramGameRoomInviteActivity, axsh paramaxsh) {}
   
-  public void a(int paramInt)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    this.jdField_a_of_type_Axrr.jdField_a_of_type_ArrayOfInt[3] = paramInt;
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
-  {
-    QLog.w(axrr.jdField_a_of_type_JavaLangString, 1, "onDownloadProgress, index[3], bDownloadSuc[" + paramBoolean1 + "]");
-    int[] arrayOfInt = this.jdField_a_of_type_Axrr.jdField_a_of_type_ArrayOfInt;
-    if (paramBoolean1) {}
-    for (paramInt = 100;; paramInt = -1)
+    if ((paramInt == 0) && (paramRspBody != null))
     {
-      arrayOfInt[3] = paramInt;
-      if (this.jdField_a_of_type_Axrr.a() == 100) {
-        axrr.a(this.jdField_a_of_type_Axrr, "onDownloadProgress1", this.jdField_a_of_type_ComTencentCommonAppAppInterface, false);
+      paramRspBody = this.jdField_a_of_type_Axsh;
+      if (!this.jdField_a_of_type_Axsh.a)
+      {
+        bool = true;
+        paramRspBody.a = bool;
+        this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a();
+        this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a.notifyDataSetChanged();
       }
-      return;
     }
+    while (paramRspBody == null) {
+      for (;;)
+      {
+        return;
+        boolean bool = false;
+      }
+    }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a(paramInt, paramRspBody, anvx.a(2131704611));
   }
 }
 

@@ -1,18 +1,11 @@
-public class azdz
-  implements azeb
+class azdz
+  implements azdp
 {
-  private azfa a;
+  azdz(azdw paramazdw) {}
   
-  public azdz(azfa paramazfa)
+  public void a(boolean paramBoolean)
   {
-    this.a = paramazfa;
-  }
-  
-  public void a(azfk paramazfk)
-  {
-    if (this.a != null) {
-      this.a.l(paramazfk);
-    }
+    azdw.a(this.a, paramBoolean);
   }
 }
 

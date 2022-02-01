@@ -1,19 +1,20 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import aara;
-import afcm;
-import ahkw;
-import ayfu;
-import bbyp;
-import bcef;
-import bcoo;
+import abgm;
+import aftr;
+import ahvi;
+import aifq;
+import bdfk;
+import bdla;
+import bdvn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.device.datadef.DeviceInfo;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import nmy;
+import nty;
 
 public class ShootAppInfo
   extends PlusPanelAppInfo
@@ -27,7 +28,7 @@ public class ShootAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839177;
+    return 2130839197;
   }
   
   public int getAppID()
@@ -56,22 +57,22 @@ public class ShootAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131690715);
+    return BaseApplicationImpl.getContext().getString(2131690792);
   }
   
-  public void onPlusPanelAppClick(ayfu paramayfu, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    if ((bbyp.b()) || ((paramBaseChatPie instanceof ahkw)) || (bcoo.a()))
+    if ((bdfk.b()) || ((paramBaseChatPie instanceof aifq)) || (bdvn.a()))
     {
       paramBaseChatPie.onPanelIconClick(Integer.valueOf(6));
       if (QLog.isColorLevel()) {
         QLog.d("ShootAppInfo", 2, "pluspanel onclick called with plus from simple!");
       }
-      if (bbyp.b()) {
-        bcef.b(null, "dc00898", "", "", "0X800A114", "0X800A114", 0, 0, "", "", "", "");
+      if (bdfk.b()) {
+        bdla.b(null, "dc00898", "", "", "0X800A114", "0X800A114", 0, 0, "", "", "", "");
       }
-      if ((paramBaseChatPie instanceof ahkw)) {
-        bcef.b(null, "dc00898", "", "", "0X800A488", "0X800A488", 0, 0, "", "", "", "");
+      if ((paramBaseChatPie instanceof aifq)) {
+        bdla.b(null, "dc00898", "", "", "0X800A488", "0X800A488", 0, 0, "", "", "", "");
       }
       return;
     }
@@ -81,22 +82,22 @@ public class ShootAppInfo
     {
       try
       {
-        paramayfu = aara.a(paramBaseChatPie.app, Long.parseLong(paramSessionInfo.curFriendUin));
-        if (paramayfu != null) {
-          i = paramayfu.productId;
+        paramahvi = abgm.a(paramBaseChatPie.app, Long.parseLong(paramSessionInfo.curFriendUin));
+        if (paramahvi != null) {
+          i = paramahvi.productId;
         }
-        paramayfu = paramBaseChatPie.app;
-        afcm.a(paramayfu, paramBaseChatPie.mActivity, paramBaseChatPie.getActivity(), paramSessionInfo, i, 0);
-        bcef.b(paramayfu, "CliOper", "", "", "0X800407A", "0X800407A", 0, 0, "", "", "", "");
-        if (!nmy.a().a(paramSessionInfo.curFriendUin)) {
+        paramahvi = paramBaseChatPie.app;
+        aftr.a(paramahvi, paramBaseChatPie.mActivity, paramBaseChatPie.getActivity(), paramSessionInfo, i, 0);
+        bdla.b(paramahvi, "CliOper", "", "", "0X800407A", "0X800407A", 0, 0, "", "", "", "");
+        if (!nty.a().a(paramSessionInfo.curFriendUin)) {
           break;
         }
-        bcef.b(paramayfu, "P_CliOper", "Grp_anon", "", "anon_aio", "Clk_shoot", 0, 0, paramSessionInfo.curFriendUin, "", "", "");
+        bdla.b(paramahvi, "P_CliOper", "Grp_anon", "", "anon_aio", "Clk_shoot", 0, 0, paramSessionInfo.curFriendUin, "", "", "");
         return;
       }
-      catch (Exception paramayfu)
+      catch (Exception paramahvi)
       {
-        QLog.d("ShootAppInfo", 1, paramayfu, new Object[0]);
+        QLog.d("ShootAppInfo", 1, paramahvi, new Object[0]);
       }
       i = 0;
     }

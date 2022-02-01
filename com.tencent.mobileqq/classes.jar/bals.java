@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
-
-class bals
-  implements DialogInterface.OnClickListener
+public abstract interface bals
 {
-  bals(balk parambalk) {}
+  public abstract void c();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.play();
-  }
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
 }
 
 

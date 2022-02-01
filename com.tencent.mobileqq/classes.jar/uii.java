@@ -1,134 +1,96 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.RichMsg;
-import tencent.im.msg.im_msg_body.RichText;
-import tencent.im.msg.im_msg_body.Text;
+import org.json.JSONObject;
 
-class uii
-  implements ayeo
+public class uii
+  extends WebViewPlugin
 {
-  uii(uih paramuih, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, amwl paramamwl, boolean paramBoolean) {}
-  
-  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
+  public uii()
   {
-    return null;
+    this.mPluginNameSpace = "ReadinjoyAdJs";
   }
   
-  public void onSend(ayep paramayep)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    MessageForStructing localMessageForStructing;
-    Object localObject1;
-    Object localObject2;
-    Object localObject3;
-    for (;;)
+    if ((TextUtils.isEmpty(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length <= 0))
     {
-      try
-      {
-        if (paramayep.jdField_a_of_type_Int != 0) {
-          break label541;
-        }
-        if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForStructing))
-        {
-          localMessageForStructing = (MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-          if (localMessageForStructing.richText != null) {
-            break label306;
-          }
-          localObject1 = bblf.a(localMessageForStructing);
-          if (localObject1 == null) {
-            break label283;
-          }
-          localObject2 = ((im_msg_body.RichText)localObject1).elems.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("ShareStructLongMessageManager", 2, "current uid is" + paramayep.c);
-          }
-          localObject2 = ((List)localObject2).iterator();
-          if (!((Iterator)localObject2).hasNext()) {
-            break;
-          }
-          localObject3 = (im_msg_body.Elem)((Iterator)localObject2).next();
-          if (((im_msg_body.Elem)localObject3).rich_msg.has())
-          {
-            ((im_msg_body.Elem)localObject3).rich_msg.bytes_msg_resid.set(ByteStringMicro.copyFrom(paramayep.c.getBytes()));
-            ((im_msg_body.Elem)localObject3).rich_msg.bytes_template_1.set(ByteStringMicro.EMPTY);
-            continue;
-          }
-        }
-        else
-        {
-          return;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("PublicAccountWebviewPlugin", 2, " method null or args == null");
       }
-      catch (Exception paramayep)
+      return false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountWebviewPlugin", 2, " method:" + paramString3);
+    }
+    if ("setGameSubscribe".equals(paramString3)) {}
+    try
+    {
+      paramString1 = new JSONObject(paramVarArgs[0]);
+      paramJsBridgeListener = paramString1.optString("ret");
+      paramString1.optString("appid");
+      paramString1 = paramString1.optString("pkgname");
+      if (("1".equals(paramJsBridgeListener)) && (!TextUtils.isEmpty(paramString2)))
       {
         if (QLog.isColorLevel()) {
-          QLog.d("ShareStructLongMessageManager", 2, "upload  msg pack failed, catch exception", paramayep);
+          QLog.d("PublicAccountWebviewPlugin", 2, " method:pkgname=" + paramString1);
         }
-        this.jdField_a_of_type_Uih.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-      }
-      if ((((im_msg_body.Elem)localObject3).text.has()) && (((im_msg_body.Elem)localObject3).text.str.has()))
-      {
-        String str = ((im_msg_body.Elem)localObject3).text.str.get().toStringUtf8();
-        if (str.length() > 500)
-        {
-          str = str.substring(0, 500);
-          ((im_msg_body.Elem)localObject3).text.str.set(ByteStringMicro.copyFromUtf8(str));
-        }
+        paramJsBridgeListener = new Bundle();
+        paramJsBridgeListener.putBoolean("isSuccess", true);
+        paramJsBridgeListener.putString("pkgname", paramString1);
+        aady.a().a(132, paramJsBridgeListener);
       }
     }
-    localMessageForStructing.richText = ((im_msg_body.RichText)localObject1);
-    for (;;)
+    catch (Exception paramJsBridgeListener)
     {
-      label283:
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().sendMessage(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Amwl, this.jdField_a_of_type_Boolean);
-      return;
-      label306:
-      localObject1 = localMessageForStructing.richText.elems.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("ShareStructLongMessageManager", 2, "current uid is" + paramayep.c);
-      }
-      if ((localObject1 != null) && (uih.b(localMessageForStructing.structingMsg)))
+      for (;;)
       {
-        localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (im_msg_body.Elem)((Iterator)localObject1).next();
-          if (((im_msg_body.Elem)localObject2).rich_msg.has())
-          {
-            ((im_msg_body.Elem)localObject2).rich_msg.bytes_msg_resid.set(ByteStringMicro.copyFrom(paramayep.c.getBytes()));
-            ((im_msg_body.Elem)localObject2).rich_msg.bytes_template_1.set(ByteStringMicro.EMPTY);
-            ((im_msg_body.Elem)localObject2).rich_msg.uint32_service_id.set(localMessageForStructing.structingMsg.mMsgServiceID);
-          }
-          else if ((((im_msg_body.Elem)localObject2).text.has()) && (((im_msg_body.Elem)localObject2).text.str.has()))
-          {
-            localObject3 = ((im_msg_body.Elem)localObject2).text.str.get().toStringUtf8();
-            if (((String)localObject3).length() > 500)
-            {
-              localObject3 = ((String)localObject3).substring(0, 500);
-              ((im_msg_body.Elem)localObject2).text.str.set(ByteStringMicro.copyFromUtf8((String)localObject3));
-            }
-          }
+        if (QLog.isColorLevel()) {
+          QLog.e("PublicAccountWebviewPlugin", 2, paramJsBridgeListener.getMessage());
         }
       }
     }
-    label541:
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareStructLongMessageManager", 2, "upload  msg pack failed, result.errStr=" + paramayep.b + ",result.errStr=" + paramayep.jdField_a_of_type_JavaLangString);
+    if ("setGameLoadState".equals(paramString3)) {}
+    try
+    {
+      paramString1 = new JSONObject(paramVarArgs[0]);
+      paramJsBridgeListener = paramString1.optString("adid");
+      long l1 = oix.a(paramString1.optString("navigationStart"), 0L);
+      long l2 = oix.a(paramString1.optString("htmlLoaded"), 0L);
+      long l3 = oix.a(paramString1.optString("domComplete"), 0L);
+      if ((l1 > 0L) || (l2 > 0L) || (l3 > 0L))
+      {
+        paramString1 = new Bundle();
+        paramString1.putString("adid", paramJsBridgeListener);
+        paramString1.putLong("navigationStart", l1);
+        paramString1.putLong("htmlLoaded", l2);
+        paramString1.putLong("domComplete", l3);
+        aady.a().a(139, paramString1);
+      }
     }
-    this.jdField_a_of_type_Uih.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    catch (Exception paramJsBridgeListener)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("PublicAccountWebviewPlugin", 2, paramJsBridgeListener.getMessage());
+        }
+      }
+    }
+    return true;
   }
   
-  public void updateMsg(ayep paramayep) {}
+  public boolean handleSchemaRequest(String paramString1, String paramString2)
+  {
+    return super.handleSchemaRequest(paramString1, paramString2);
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+  }
 }
 
 

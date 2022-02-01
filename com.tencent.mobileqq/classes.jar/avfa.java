@@ -1,24 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
+import com.tencent.mobileqq.gamecenter.view.GameSessionView;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 public class avfa
-  implements View.OnClickListener
+  implements EIPCResultCallback
 {
-  public avfa(LocationPickFragment paramLocationPickFragment) {}
+  public avfa(GameSessionView paramGameSessionView, Context paramContext, GameCenterSessionInfo paramGameCenterSessionInfo) {}
   
-  public void onClick(View paramView)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (LocationPickFragment.a(this.a).b()) {
-      LocationPickFragment.a(this.a).b();
-    }
-    for (;;)
+    if (paramEIPCResult.code == 0)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      LocationPickFragment.a(this.a).a();
+      paramEIPCResult = paramEIPCResult.data;
+      if (paramEIPCResult != null)
+      {
+        paramEIPCResult = paramEIPCResult.getString("key_get_msg_list_url");
+        QLog.i(GameSessionView.a, 1, "[onCallback] url:" + paramEIPCResult);
+        avdu.a(paramEIPCResult, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameCenterSessionInfo);
+      }
     }
   }
 }

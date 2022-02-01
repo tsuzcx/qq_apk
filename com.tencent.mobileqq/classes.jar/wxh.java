@@ -1,6 +1,21 @@
-public abstract interface wxh
+import java.util.HashMap;
+
+class wxh
+  extends wwi
 {
-  public abstract void a(wwz paramwwz, int paramInt1, int paramInt2);
+  wxh(wxa paramwxa, String paramString1, String paramString2, boolean paramBoolean, wye paramwye)
+  {
+    super(paramString1, paramString2, paramBoolean);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_Wye.a = ((String)a("EncryptUrlJob_encryptedUrl"));
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(this.jdField_a_of_type_Wye.a, this.jdField_a_of_type_Wye.a);
+    a("ShortenUrlJob_shortenedUrls", localHashMap);
+    return true;
+  }
 }
 
 

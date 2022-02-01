@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity;
 
 import android.os.Handler;
 import android.text.TextUtils;
-import bfun;
+import bhdf;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.data.TroopMemberCardInfo;
 import com.tencent.mobileqq.data.troop.TroopMemberInfo;
@@ -30,10 +30,10 @@ class TroopInfoActivity$25
       }
       return;
       Object localObject2 = null;
-      Object localObject3 = bfun.a().a(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
+      Object localObject3 = bhdf.a().a(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
       if (localObject3 == null)
       {
-        localObject3 = bfun.a().a(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
+        localObject3 = bhdf.a().a(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
         localObject1 = localObject2;
         if (localObject3 != null)
         {
@@ -81,7 +81,7 @@ class TroopInfoActivity$25
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopInfoActivity.25
  * JD-Core Version:    0.7.0.1
  */

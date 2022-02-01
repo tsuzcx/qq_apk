@@ -5,18 +5,18 @@ import android.view.View;
 import com.tencent.mobileqq.app.ThreadManager;
 import kotlin.Metadata;
 import mqq.os.MqqHandler;
-import shu;
-import shv;
+import suk;
+import sul;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
 public final class ScreenCaptureHelper$captureViewLowApi$1
   implements Runnable
 {
-  public ScreenCaptureHelper$captureViewLowApi$1(shu paramshu, View paramView, float paramFloat, shv paramshv) {}
+  public ScreenCaptureHelper$captureViewLowApi$1(suk paramsuk, View paramView, float paramFloat, sul paramsul) {}
   
   public final void run()
   {
-    Bitmap localBitmap = shu.a(this.this$0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Float);
+    Bitmap localBitmap = suk.a(this.this$0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Float);
     ThreadManager.getUIHandler().post((Runnable)new ScreenCaptureHelper.captureViewLowApi.1.1(this, localBitmap));
   }
 }

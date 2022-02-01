@@ -1,177 +1,23 @@
-import android.graphics.Color;
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeMiddleBodyView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONException;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class qhz
-  extends ViewBase
+class qhz
+  extends Handler
 {
-  private int jdField_a_of_type_Int = -1;
-  private NativeMiddleBodyView jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeMiddleBodyView;
-  private int b = -1;
-  private int c = -1;
-  private int d = -1;
-  
-  public qhz(VafContext paramVafContext)
+  qhz(qhx paramqhx, Looper paramLooper)
   {
-    super(paramVafContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeMiddleBodyView = new NativeMiddleBodyView(paramVafContext.getContext());
+    super(paramLooper);
   }
   
-  public int a()
+  public void handleMessage(Message paramMessage)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(RelativeLayout.LayoutParams paramLayoutParams)
-  {
-    if (a()) {
-      paramLayoutParams.setMargins(0, 0, 0, 0);
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.mPaddingLeft > 0) || (this.mPaddingRight > 0);
-  }
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
-  public int c()
-  {
-    return this.c;
-  }
-  
-  public int d()
-  {
-    return this.d;
-  }
-  
-  public int getComMeasuredHeight()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeMiddleBodyView.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeMiddleBodyView.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeMiddleBodyView;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeMiddleBodyView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeMiddleBodyView.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeMiddleBodyView.setPadding(this.mPaddingLeft, this.mPaddingTop, this.mPaddingRight, this.mPaddingBottom);
-  }
-  
-  public boolean setAttribute(int paramInt, Object paramObject)
-  {
-    boolean bool2 = true;
-    boolean bool1;
-    switch (paramInt)
+    switch (paramMessage.what)
     {
     default: 
-      bool1 = super.setAttribute(paramInt, paramObject);
+      return;
     }
-    do
-    {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (!(paramObject instanceof JSONArray));
-      paramObject = (JSONArray)paramObject;
-      bool1 = bool2;
-    } while (paramObject.length() < 4);
-    try
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeMiddleBodyView.setRadius(paramObject.getString(0), paramObject.getString(1), paramObject.getString(2), paramObject.getString(3));
-      return true;
-    }
-    catch (JSONException paramObject)
-    {
-      QLog.d("ReadInJoyMiddleBodyView", 2, "", paramObject);
-    }
-    return true;
-  }
-  
-  public boolean setAttribute(int paramInt, String paramString)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return super.setAttribute(paramInt, paramString);
-    case 1188: 
-      try
-      {
-        this.b = Color.parseColor(String.valueOf(paramString));
-        QLog.d("ReadInJoyMiddleBodyView", 1, "setEmotionFontColor: " + this.b);
-        return true;
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("ReadInJoyMiddleBodyView", 1, paramString, new Object[0]);
-        return false;
-      }
-    case 1187: 
-      try
-      {
-        this.jdField_a_of_type_Int = Utils.dp2px(Integer.valueOf(String.valueOf(paramString)).intValue());
-        QLog.d("ReadInJoyMiddleBodyView", 1, "setEmotionFontSize: " + this.jdField_a_of_type_Int);
-        return true;
-      }
-      catch (NumberFormatException paramString)
-      {
-        QLog.e("ReadInJoyMiddleBodyView", 1, paramString, new Object[0]);
-        return false;
-      }
-    case 1189: 
-      try
-      {
-        this.c = Utils.rp2px(Float.valueOf(String.valueOf(paramString)).floatValue());
-        QLog.d("ReadInJoyMiddleBodyView", 1, "setEmotionlineSpace: " + this.c);
-        return true;
-      }
-      catch (NumberFormatException paramString)
-      {
-        QLog.e("ReadInJoyMiddleBodyView", 1, paramString, new Object[0]);
-        return false;
-      }
-    }
-    try
-    {
-      this.d = Color.parseColor(String.valueOf(paramString));
-      QLog.d("ReadInJoyMiddleBodyView", 1, "setLinkTextColor: " + this.d);
-      return true;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("ReadInJoyMiddleBodyView", 1, paramString, new Object[0]);
-    }
-    return false;
+    this.a.f();
   }
 }
 

@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.os.Build.VERSION;
 import android.view.ViewGroup;
 import android.view.ViewStub;
-import bnee;
-import bnew;
+import botw;
+import bouo;
 import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
 
 public class EditVideoSpeedFilter$1
@@ -23,16 +23,16 @@ public class EditVideoSpeedFilter$1
         do
         {
           return;
-        } while (this.this$0.jdField_a_of_type_Bnee.a() == null);
-        localObject = this.this$0.jdField_a_of_type_Bnee.a().getActivity();
+        } while (this.this$0.jdField_a_of_type_Botw.a() == null);
+        localObject = this.this$0.jdField_a_of_type_Botw.a().getActivity();
       } while ((localObject == null) || (((Activity)localObject).isFinishing()) || ((Build.VERSION.SDK_INT > 16) && (((Activity)localObject).isDestroyed())));
-      EditVideoSpeedFilter.a(this.this$0, (ViewStub)this.this$0.a(2131372643));
+      EditVideoSpeedFilter.a(this.this$0, (ViewStub)this.this$0.a(2131372837));
     } while (this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerContainer != null);
     Object localObject = EditVideoSpeedFilter.a(this.this$0).getParent();
     if ((localObject != null) && ((localObject instanceof ViewGroup))) {}
-    for (this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerContainer = ((PickerContainer)EditVideoSpeedFilter.a(this.this$0).inflate());; this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerContainer = ((PickerContainer)this.this$0.a(2131376616)))
+    for (this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerContainer = ((PickerContainer)EditVideoSpeedFilter.a(this.this$0).inflate());; this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerContainer = ((PickerContainer)this.this$0.a(2131376878)))
     {
-      this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerContainer.a(this.this$0.jdField_a_of_type_Bnee.a, this.this$0);
+      this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerContainer.a(this.this$0.jdField_a_of_type_Botw.a, this.this$0);
       this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerContainer.a(2, false);
       return;
     }

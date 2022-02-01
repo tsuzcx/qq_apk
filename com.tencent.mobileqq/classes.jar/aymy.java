@@ -1,33 +1,57 @@
-import android.text.TextUtils;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.nearby.smooth.ItemLoader;
+import com.tencent.widget.AbsListView;
 
-public class aymy
+public final class aymy
 {
-  public String a;
-  public String b;
+  int jdField_a_of_type_Int;
+  final Handler jdField_a_of_type_AndroidOsHandler;
+  aymx jdField_a_of_type_Aymx;
+  final ItemLoader<?, ?> jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader;
+  boolean jdField_a_of_type_Boolean;
+  boolean b;
   
-  public String a()
+  void a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(" ");
-    localStringBuilder.append(this.a);
-    return localStringBuilder.toString();
+    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, this);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
   
-  public void a(String paramString)
+  void a(View paramView1, View paramView2, int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    paramString = paramString.split(" ");
-    if ((paramString != null) && (paramString.length == 2))
+    this.jdField_a_of_type_Aymx.a();
+    ListAdapter localListAdapter = this.jdField_a_of_type_Aymx.a();
+    if ((this.jdField_a_of_type_Int != 2) && (!this.jdField_a_of_type_Boolean)) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.b = paramString[0];
-      this.a = paramString[1];
+      this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(paramView1, paramView2, localListAdapter, paramInt, bool);
       return;
     }
-    this.b = "";
-    this.a = "";
+  }
+  
+  void a(aymx paramaymx)
+  {
+    this.jdField_a_of_type_Aymx = paramaymx;
+    if (this.jdField_a_of_type_Aymx != null)
+    {
+      paramaymx = this.jdField_a_of_type_Aymx.a();
+      paramaymx.setOnScrollListener(new aynb(this, null));
+      paramaymx.setOnTouchListener(new ayna(this, null));
+      paramaymx.setOnItemSelectedListener(new aync(this, null));
+    }
+  }
+  
+  void b()
+  {
+    if (this.jdField_a_of_type_Aymx == null) {
+      throw new IllegalStateException("Cannot cancel requests with no managed view");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_Aymx.a());
   }
 }
 

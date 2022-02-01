@@ -17,9 +17,9 @@ import android.view.WindowManager.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bhca;
-import bhcb;
-import bhcc;
+import bims;
+import bimt;
+import bimu;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 import java.lang.reflect.Field;
@@ -31,13 +31,13 @@ public class ClickableToastView
   private Activity jdField_a_of_type_AndroidAppActivity;
   private Resources jdField_a_of_type_AndroidContentResResources;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bhca(this, Looper.getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new bims(this, Looper.getMainLooper());
   private View jdField_a_of_type_AndroidViewView;
   private WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
   private WindowManager jdField_a_of_type_AndroidViewWindowManager;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bhcc jdField_a_of_type_Bhcc;
+  private bimu jdField_a_of_type_Bimu;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;
   boolean jdField_a_of_type_Boolean = false;
   private TextView b;
@@ -47,10 +47,10 @@ public class ClickableToastView
     super(paramActivity);
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_AndroidContentResResources = paramActivity.getResources();
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramActivity).inflate(2131558901, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364098));
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378891));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378887));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramActivity).inflate(2131558928, null);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364173));
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379184));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379180));
     this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("window"));
   }
   
@@ -59,20 +59,20 @@ public class ClickableToastView
     switch (paramInt)
     {
     default: 
-      return 2130839319;
+      return 2130839340;
     case 1: 
-      return 2130847724;
+      return 2130847815;
     }
-    return 2130847725;
+    return 2130847816;
   }
   
-  public static ClickableToastView a(Activity paramActivity, int paramInt, CharSequence paramCharSequence, bhcc parambhcc)
+  public static ClickableToastView a(Activity paramActivity, int paramInt, CharSequence paramCharSequence, bimu parambimu)
   {
     paramActivity = new ClickableToastView(paramActivity);
     paramActivity.a(paramCharSequence);
     paramActivity.setType(paramInt);
     paramActivity.setToastIcon(a(paramInt));
-    paramActivity.setRightActionParams(parambhcc);
+    paramActivity.setRightActionParams(parambimu);
     return paramActivity;
   }
   
@@ -101,7 +101,7 @@ public class ClickableToastView
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.format = 1;
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.type = 2;
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.flags = 40;
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.windowAnimations = 2131755557;
+    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.windowAnimations = 2131755560;
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = -1;
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = -2;
     try
@@ -120,7 +120,7 @@ public class ClickableToastView
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Bhcc.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Bimu.jdField_a_of_type_JavaLangString);
     this.b.setText(this.jdField_a_of_type_JavaLangCharSequence);
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
     {
@@ -129,15 +129,15 @@ public class ClickableToastView
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Bhcc.jdField_a_of_type_Int == 0) {
-        this.jdField_a_of_type_Bhcc.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131165519);
+      if (this.jdField_a_of_type_Bimu.jdField_a_of_type_Int == 0) {
+        this.jdField_a_of_type_Bimu.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131165525);
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Bhcc.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_Bhcc.b == 0) {
-        this.jdField_a_of_type_Bhcc.b = 16;
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Bimu.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_Bimu.b == 0) {
+        this.jdField_a_of_type_Bimu.b = 16;
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, this.jdField_a_of_type_Bhcc.b);
-      Object localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131378884);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, this.jdField_a_of_type_Bimu.b);
+      Object localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131379177);
       if (Build.VERSION.SDK_INT >= 21) {
         ((View)localObject).setElevation(6.0F);
       }
@@ -173,7 +173,7 @@ public class ClickableToastView
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new bhcb(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new bimt(this));
   }
   
   public void a()
@@ -200,9 +200,9 @@ public class ClickableToastView
     }
   }
   
-  public void setRightActionParams(bhcc parambhcc)
+  public void setRightActionParams(bimu parambimu)
   {
-    this.jdField_a_of_type_Bhcc = parambhcc;
+    this.jdField_a_of_type_Bimu = parambimu;
   }
   
   public void setToastIcon(int paramInt)

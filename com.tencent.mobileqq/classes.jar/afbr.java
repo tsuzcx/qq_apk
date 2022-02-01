@@ -1,24 +1,53 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-class afbr
-  implements View.OnClickListener
+public class afbr
+  implements bkzq
 {
-  afbr(afbj paramafbj) {}
+  public afbr(TroopAssistantActivity paramTroopAssistantActivity, int paramInt, String paramString, bkzi parambkzi) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.isEmpty())) {}
-    for (;;)
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a = new biso(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a.b(2, 2131694255, 1500);
+    }
+    try
+    {
+      if (this.jdField_a_of_type_Bkzi != null) {
+        this.jdField_a_of_type_Bkzi.dismiss();
+      }
       return;
-      TroopWithCommonFriendsFragment.a(this.a.jdField_a_of_type_JavaLangString);
-      TroopWithCommonFriendsFragment.a(paramView.getContext(), 2);
-      bcef.b(null, "dc00898", "", "", "0X800AD22", "0X800AD22", 0, 0, "0", "0", "", "");
+      int i = -1;
+      switch (paramInt)
+      {
+      default: 
+        paramInt = i;
+      }
+      while (paramInt != this.jdField_a_of_type_Int)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.app.setTroopMsgFilterToServer(this.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt));
+        break;
+        paramInt = 1;
+        continue;
+        paramInt = 4;
+        continue;
+        paramInt = 2;
+        continue;
+        paramInt = 3;
+      }
+    }
+    catch (Exception paramView)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("TroopAssistantActivity", 2, paramView.toString());
     }
   }
 }

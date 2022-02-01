@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import bhaa;
+import biks;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 
@@ -23,7 +23,7 @@ public class WereWolvesLoadingView
   Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   View jdField_a_of_type_AndroidViewView;
   public TextView a;
-  bhaa jdField_a_of_type_Bhaa;
+  biks jdField_a_of_type_Biks;
   Runnable jdField_a_of_type_JavaLangRunnable = new WereWolvesLoadingView.1(this);
   boolean jdField_a_of_type_Boolean;
   int jdField_b_of_type_Int = 0;
@@ -46,12 +46,12 @@ public class WereWolvesLoadingView
   
   void a()
   {
-    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131559505, this);
-    this.jdField_a_of_type_Int = findViewById(2131373021).getLayoutParams().width;
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131373018);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373043));
+    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131559538, this);
+    this.jdField_a_of_type_Int = findViewById(2131373231).getLayoutParams().width;
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131373228);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373253));
     setProgress(0);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378669));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378963));
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
     ColorDrawable localColorDrawable = new ColorDrawable(Color.parseColor("#323e6f"));
     ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
@@ -71,11 +71,11 @@ public class WereWolvesLoadingView
     this.jdField_b_of_type_Boolean = true;
   }
   
-  public void setComplete(bhaa parambhaa)
+  public void setComplete(biks parambiks)
   {
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_Bhaa = parambhaa;
+    this.jdField_a_of_type_Biks = parambiks;
     this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
   }
   
@@ -101,9 +101,9 @@ public class WereWolvesLoadingView
       if (this.jdField_b_of_type_Int < 100) {
         break label141;
       }
-      if ((this.jdField_a_of_type_Bhaa != null) && (!this.jdField_a_of_type_Boolean))
+      if ((this.jdField_a_of_type_Biks != null) && (!this.jdField_a_of_type_Boolean))
       {
-        this.jdField_a_of_type_Bhaa.a();
+        this.jdField_a_of_type_Biks.a();
         this.jdField_a_of_type_Boolean = true;
       }
       return;

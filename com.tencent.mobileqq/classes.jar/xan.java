@@ -1,17 +1,18 @@
-import android.app.Activity;
-import android.content.Intent;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class xan
-  extends wrx
+  implements AbsListView.OnScrollListener
 {
-  public xan(xam paramxam) {}
+  public xan(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView) {}
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramInt1 == 20000) && (paramInt2 == -1)) {
-      this.a.b().finish();
-    }
+    this.a.a = paramInt1;
   }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 

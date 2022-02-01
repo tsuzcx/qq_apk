@@ -1,22 +1,19 @@
-import android.content.Intent;
-import com.tencent.mobileqq.jsp.IdentificationApiPlugin.2.1;
-import mqq.app.QQPermissionCallback;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.DirectForwardActivity;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
 
 public class autv
-  implements QQPermissionCallback
+  implements DialogInterface.OnDismissListener
 {
-  public autv(IdentificationApiPlugin.2.1 param1) {}
+  public autv(ForwardSdkShareOption paramForwardSdkShareOption) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    bfur.a(auts.a(this.a.jdField_a_of_type_Autu.a), paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    paramArrayOfString = new Intent();
-    paramArrayOfString.putExtra("FaceRecognition.AppConf", this.a.jdField_a_of_type_ComTencentMobileqqJspFaceDetectForThirdPartyManager$AppConf);
-    auts.a(this.a.jdField_a_of_type_Autu.a, paramArrayOfString);
+    if ((this.a.a instanceof DirectForwardActivity)) {
+      this.a.a.finish();
+    }
   }
 }
 

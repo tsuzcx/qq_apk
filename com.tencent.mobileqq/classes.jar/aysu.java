@@ -1,10 +1,13 @@
-class aysu
+import java.util.ArrayList;
+import java.util.List;
+
+public class aysu
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean;
-  int c;
+  public int a;
+  public String a;
+  public List<aysv> a = new ArrayList();
+  public String b;
+  public String c;
 }
 
 

@@ -1,18 +1,18 @@
-import android.content.Context;
-import android.widget.ScrollView;
-import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class afkf
-  extends ScrollView
+  implements DialogInterface.OnClickListener
 {
-  public afkf(TroopChatPie paramTroopChatPie, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public afkf(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  public void setOverScrollMode(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.setOverScrollMode(2);
+    this.a.n();
+    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, HttpUtil.getNetWorkTypeByStr(), "2", "0");
   }
 }
 

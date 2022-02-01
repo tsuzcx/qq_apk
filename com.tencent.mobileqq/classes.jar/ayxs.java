@@ -1,31 +1,21 @@
+import android.os.Handler.Callback;
 import android.os.Message;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profilecard.vas.VasProfileTemplateController;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.olympic.activity.OlympicToolBaseActivity;
 
 public class ayxs
-  extends VasQuickUpdateManager.CallBacker
+  implements Handler.Callback
 {
-  public ayxs(VasProfileTemplateController paramVasProfileTemplateController, aymn paramaymn, Card paramCard) {}
+  public ayxs(OlympicToolBaseActivity paramOlympicToolBaseActivity) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public boolean handleMessage(Message paramMessage)
   {
-    if ((paramLong == 15L) && ("cardWZ.zip".equals(paramString1)))
+    switch (paramMessage.what)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileTemplateCheckController", 2, String.format("onCardUpdate WZRY template download,  errorCode=%s httpCode=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-      }
-      if (VasProfileTemplateController.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasVasProfileTemplateController).b != null)
-      {
-        if (this.jdField_a_of_type_Aymn.a(VasProfileTemplateController.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasVasProfileTemplateController), this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor, this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId)) {
-          VasProfileTemplateController.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasVasProfileTemplateController).jdField_a_of_type_Aymn = this.jdField_a_of_type_Aymn;
-        }
-        VasProfileTemplateController.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasVasProfileTemplateController).b.obtainMessage(5, 0, 12, this.jdField_a_of_type_ComTencentMobileqqDataCard).sendToTarget();
-      }
-      paramVasQuickUpdateManager.removeCallBacker(this);
+    }
+    for (;;)
+    {
+      return true;
+      this.a.f();
     }
   }
 }

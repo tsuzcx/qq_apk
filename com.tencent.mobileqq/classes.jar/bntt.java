@@ -1,20 +1,20 @@
-import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
-
-class bntt
-  implements VideoCompositeHelper.VideoCompositeCallBack
+public abstract class bntt<T, P>
 {
-  bntt(bnts parambnts, PeakActivity paramPeakActivity, String paramString1, String paramString2, PublishVideoEntry paramPublishVideoEntry) {}
+  private volatile T a;
   
-  public void onVideoCompositeFinish(int paramInt, String paramString1, String paramString2)
+  protected abstract T a(P paramP);
+  
+  public final T b(P paramP)
   {
-    if (paramInt == 0)
+    if (this.a == null) {}
+    try
     {
-      bnts.a(this.jdField_a_of_type_Bnts, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakActivity, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
-      return;
+      if (this.a == null) {
+        this.a = a(paramP);
+      }
+      return this.a;
     }
-    bnts.a(this.jdField_a_of_type_Bnts, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
+    finally {}
   }
 }
 

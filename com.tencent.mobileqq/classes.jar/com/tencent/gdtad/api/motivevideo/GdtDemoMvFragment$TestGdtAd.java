@@ -1,20 +1,20 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import aboq;
+import acee;
 import com.tencent.gdtad.api.GdtAd;
 
 public final class GdtDemoMvFragment$TestGdtAd
   extends GdtAd
 {
-  private aboq params;
+  private acee params;
   
-  public GdtDemoMvFragment$TestGdtAd(GdtDemoMvFragment paramGdtDemoMvFragment, aboq paramaboq)
+  public GdtDemoMvFragment$TestGdtAd(GdtDemoMvFragment paramGdtDemoMvFragment, acee paramacee)
   {
-    super(paramaboq);
-    this.params = paramaboq;
+    super(paramacee);
+    this.params = paramacee;
   }
   
-  protected aboq getParams()
+  protected acee getParams()
   {
     return this.params;
   }

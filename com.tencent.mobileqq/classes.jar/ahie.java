@@ -1,11 +1,14 @@
-class ahie
-  extends amsu
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+
+public class ahie
+  implements PopupWindow.OnDismissListener
 {
-  ahie(ahia paramahia) {}
+  public ahie(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
+  public void onDismiss()
   {
-    ahia.a(this.a, paramBoolean, paramObject);
+    StructingMsgItemBuilder.b(this.a, false);
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.vas;
 
 import android.content.Context;
-import bgcs;
-import bgcu;
+import bhlj;
+import bhll;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -23,9 +23,9 @@ public class AvatarPendantManager
   public long a;
   protected AppInterface a;
   protected AvatarPendantManager.PendantInfoLruCache a;
-  List<bgcu> a;
+  List<bhll> a;
   public boolean a;
-  List<bgcs> b;
+  List<bhlj> b;
   
   public AvatarPendantManager(AppInterface paramAppInterface)
   {
@@ -66,7 +66,7 @@ public class AvatarPendantManager
     return localFile;
   }
   
-  public List<bgcu> a()
+  public List<bhll> a()
   {
     return this.jdField_a_of_type_JavaUtilList;
   }
@@ -83,7 +83,7 @@ public class AvatarPendantManager
     }
   }
   
-  public void a(List<bgcs> paramList)
+  public void a(List<bhlj> paramList)
   {
     this.b = paramList;
   }
@@ -102,7 +102,7 @@ public class AvatarPendantManager
     return localFile;
   }
   
-  public List<bgcs> b()
+  public List<bhlj> b()
   {
     return this.b;
   }

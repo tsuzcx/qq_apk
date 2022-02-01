@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import axsv;
-import bcqk;
+import ayzg;
+import bdxj;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.remote.SimpleAccount;
@@ -9,12 +9,12 @@ import com.tencent.qphone.base.remote.SimpleAccount;
 public class AccountPanel$9
   implements Runnable
 {
-  public AccountPanel$9(axsv paramaxsv, QQAppInterface paramQQAppInterface, SimpleAccount paramSimpleAccount) {}
+  public AccountPanel$9(ayzg paramayzg, QQAppInterface paramQQAppInterface, SimpleAccount paramSimpleAccount) {}
   
   public void run()
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().setReaded(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount.getUin(), 7000);
-    bcqk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null, this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount.getUin());
+    bdxj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null, this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount.getUin());
   }
 }
 

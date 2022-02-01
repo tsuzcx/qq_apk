@@ -1,32 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aisv
-  implements aiks
+public class aisv
+  implements View.OnClickListener
 {
-  aisv(aist paramaist) {}
+  public aisv(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopNotificationEntryController", 2, new Object[] { "onUnreadCountChanged bShowEntry" + aist.a(this.a), " count" + paramInt });
-    }
-    this.a.d();
-  }
-  
-  public void a(apus paramapus)
-  {
-    if ((paramapus == null) || (!paramapus.a(aist.a(this.a).getCurrentAccountUin()))) {
-      aist.a(this.a, false);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    if ((this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int) || (this.a.f == ClassificationSearchActivity.d)) {
+      ClassificationSearchActivity.a(this.a);
     }
     for (;;)
     {
-      if ((QLog.isColorLevel()) && (paramapus != null)) {
-        QLog.d("TroopNotificationEntryController", 2, "onTroopNotificationConfigUpdate bShowEntry" + aist.a(this.a) + " newConf" + paramapus.toString());
-      }
-      this.a.d();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      aist.a(this.a, true);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
     }
   }
 }

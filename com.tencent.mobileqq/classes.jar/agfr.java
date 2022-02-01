@@ -1,42 +1,20 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForPubAccount;
-import com.tencent.mobileqq.data.PAMessage;
-import com.tencent.mobileqq.data.PAMessage.Item;
-import java.util.ArrayList;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class agfr
-  implements aghk
+class agfr
+  implements View.OnClickListener
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  agfr(agfq paramagfq) {}
+  
+  public void onClick(View paramView)
   {
-    int j = 0;
-    paramQQAppInterface = ((MessageForPubAccount)paramChatMessage).mPAMessage;
-    int i = j;
-    if (paramQQAppInterface != null)
-    {
-      i = j;
-      if (paramQQAppInterface.items != null)
-      {
-        i = j;
-        if (paramQQAppInterface.items.size() != 0)
-        {
-          if (((PAMessage.Item)paramQQAppInterface.items.get(0)).cover == null) {
-            break label85;
-          }
-          if (paramQQAppInterface.items.size() != 1) {
-            break label74;
-          }
-          i = 6;
-        }
-      }
-    }
-    return i;
-    label74:
-    paramQQAppInterface.items.size();
-    return 7;
-    label85:
-    return 8;
+    agfq.a(this.a).dismissDialog(230);
+    aaqo.a(agfq.a(this.a), agfq.a(this.a).curType, agfq.a(this.a).curFriendUin, agfq.a(this.a).getAccount());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

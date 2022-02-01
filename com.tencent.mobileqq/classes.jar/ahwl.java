@@ -1,17 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.chathistory.TroopAIOEmotionFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
 public class ahwl
-  implements bjoe
+  extends ahvq
 {
-  public ahwl(TroopAIOEmotionFragment paramTroopAIOEmotionFragment, bjnw parambjnw) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public void b(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopAIOEmotionFragment.b();
-    if (this.jdField_a_of_type_Bjnw.isShowing()) {
-      this.jdField_a_of_type_Bjnw.dismiss();
-    }
+    a(paramBaseChatPie.sessionInfo.curType, 201);
+    a(paramBaseChatPie.sessionInfo.curType, 202);
+    a(paramBaseChatPie.sessionInfo.curType, 208);
+    a(paramBaseChatPie.sessionInfo.curType, 206);
+    a(paramBaseChatPie.sessionInfo.curType, 213);
+    a(paramBaseChatPie.sessionInfo.curType, 205);
   }
 }
 

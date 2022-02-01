@@ -1,68 +1,21 @@
-import java.net.InetAddress;
-import java.net.Socket;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLSocket;
-import javax.net.ssl.SSLSocketFactory;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import msf.msgcomm.msg_comm.MsgType0x210;
 
 public class bcto
-  extends SSLSocketFactory
+  implements bctu
 {
-  private final SSLSocketFactory a;
-  
-  public bcto()
+  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre, MessageHandler paramMessageHandler)
   {
-    this.a = HttpsURLConnection.getDefaultSSLSocketFactory();
-  }
-  
-  public bcto(SSLSocketFactory paramSSLSocketFactory)
-  {
-    this.a = paramSSLSocketFactory;
-  }
-  
-  private Socket a(Socket paramSocket)
-  {
-    if ((paramSocket instanceof SSLSocket))
-    {
-      paramSocket = new bctr(this, (SSLSocket)paramSocket, null);
-      ((bctr)paramSocket).setEnabledProtocols(new String[] { "TLSv1.1", "TLSv1.2" });
-      return paramSocket;
-    }
-    return paramSocket;
-  }
-  
-  public Socket createSocket(String paramString, int paramInt)
-  {
-    return a(this.a.createSocket(paramString, paramInt));
-  }
-  
-  public Socket createSocket(String paramString, int paramInt1, InetAddress paramInetAddress, int paramInt2)
-  {
-    return a(this.a.createSocket(paramString, paramInt1, paramInetAddress, paramInt2));
-  }
-  
-  public Socket createSocket(InetAddress paramInetAddress, int paramInt)
-  {
-    return a(this.a.createSocket(paramInetAddress, paramInt));
-  }
-  
-  public Socket createSocket(InetAddress paramInetAddress1, int paramInt1, InetAddress paramInetAddress2, int paramInt2)
-  {
-    return a(this.a.createSocket(paramInetAddress1, paramInt1, paramInetAddress2, paramInt2));
-  }
-  
-  public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
-  {
-    return a(this.a.createSocket(paramSocket, paramString, paramInt, paramBoolean));
-  }
-  
-  public String[] getDefaultCipherSuites()
-  {
-    return this.a.getDefaultCipherSuites();
-  }
-  
-  public String[] getSupportedCipherSuites()
-  {
-    return this.a.getSupportedCipherSuites();
+    ((aobc)paramMessageHandler.app.getBusinessHandler(BusinessHandlerFactory.QPAY_HANDLER)).a(true);
+    bcrx.a(paramMessageHandler, paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get());
   }
 }
 

@@ -1,57 +1,15 @@
-import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.data.MessageForWriteTogether;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class bcuf
-  implements BusinessObserver
+  implements acoa
 {
-  public void a(int paramInt) {}
-  
-  public void a(String paramString1, String paramString2) {}
-  
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4) {}
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public MessageRecord a(int paramInt)
   {
-    switch (paramInt)
-    {
+    if (paramInt == -7014) {
+      return new MessageForWriteTogether();
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    return;
-                  } while (paramObject == null);
-                  paramObject = (Object[])paramObject;
-                } while (paramObject.length != 2);
-                a((String)paramObject[0], (String)paramObject[1]);
-                return;
-              } while (paramObject == null);
-              paramObject = (Object[])paramObject;
-            } while (paramObject.length != 4);
-            a((String)paramObject[0], (String)paramObject[1], (String)paramObject[2], (String)paramObject[3]);
-            return;
-          } while (paramObject == null);
-          paramObject = (Object[])paramObject;
-        } while (paramObject.length != 2);
-        a(paramBoolean, (String)paramObject[0], (String)paramObject[1]);
-        return;
-      } while (paramObject == null);
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length != 1);
-    a(((Integer)paramObject[0]).intValue());
+    return null;
   }
 }
 

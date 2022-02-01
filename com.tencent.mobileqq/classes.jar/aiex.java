@@ -1,17 +1,28 @@
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.SysSuspiciousMsg;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 
-public class aiex
-  extends aliz
+class aiex
+  extends onv
 {
-  public Button a;
-  public TextView a;
-  public SysSuspiciousMsg a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  aiex(aido paramaido) {}
+  
+  protected void d(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramBoolean) && (aido.a(this.a).getVisibility() != 0))
+    {
+      if (mbl.a().a(this.a.app.getCurrentAccountUin()))
+      {
+        aido.b(this.a).setVisibility(0);
+        aido.c(this.a).setOnClickListener(this.a);
+        this.a.mCustomTitleView.setRight2Icon(2130847096, 2130847097);
+      }
+    }
+    else {
+      return;
+    }
+    aido.d(this.a).setVisibility(8);
+  }
 }
 
 

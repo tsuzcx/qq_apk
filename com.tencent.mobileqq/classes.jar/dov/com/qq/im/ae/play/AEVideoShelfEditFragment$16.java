@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.play;
 
-import bjne;
+import bkyq;
 import java.util.TimerTask;
 
 class AEVideoShelfEditFragment$16
@@ -10,7 +10,7 @@ class AEVideoShelfEditFragment$16
   
   public void run()
   {
-    bjne.a(new AEVideoShelfEditFragment.16.1(this));
+    bkyq.a(new AEVideoShelfEditFragment.16.1(this));
   }
 }
 

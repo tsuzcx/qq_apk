@@ -1,17 +1,6 @@
-import android.widget.CheckBox;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.activity.contacts.friend.SimpleTextView;
-import com.tencent.widget.SingleLineTextView;
-
-public class aiph
+class aiph
 {
-  public int a;
-  public CheckBox a;
-  public ProgressBar a;
-  public SimpleTextView a;
-  public SingleLineTextView a;
-  public StringBuilder a;
-  public SingleLineTextView b;
+  private static aipe a = new aipe(null);
 }
 
 

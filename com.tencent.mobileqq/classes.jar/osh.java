@@ -1,41 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.lang.ref.WeakReference;
 
-public class osh
-  implements View.OnClickListener
+final class osh
+  implements aqfy
 {
-  public osh(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
+  osh(WeakReference paramWeakReference, boolean paramBoolean, String paramString1, String paramString2) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2)
   {
-    switch (paramView.getId())
+    int i = 1;
+    if (osg.a() == paramInt1)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.a.b)
-      {
-        ReadInJoyCommentComponentFragment.a(this.a, false);
+      aqgm.a().a(paramInt1);
+      osg.a(-1);
+      if ((2 != paramInt2) && (1 != paramInt2)) {
+        break label124;
       }
-      else
+    }
+    label124:
+    for (paramInt1 = 1;; paramInt1 = 0)
+    {
+      Context localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      Object localObject = localContext;
+      if (localContext == null) {
+        localObject = BaseApplicationImpl.getContext();
+      }
+      if ((-1 == paramInt2) && (this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (localObject != null)) {
+        pqx.b((Context)localObject, this.jdField_a_of_type_JavaLangString);
+      }
+      localObject = this.b;
+      if (this.jdField_a_of_type_Boolean) {}
+      for (paramInt2 = i;; paramInt2 = 0)
       {
-        ReadInJoyCommentComponentFragment.a(this.a, true);
-        continue;
-        ReadInJoyCommentComponentFragment.c(this.a);
-        continue;
-        ReadInJoyCommentComponentFragment.b(this.a);
-        if (ReadInJoyCommentComponentFragment.a(this.a) != null)
-        {
-          if (ReadInJoyCommentComponentFragment.c(this.a) >= ReadInJoyCommentComponentFragment.a(this.a).length) {
-            ReadInJoyCommentComponentFragment.a(this.a, 0);
-          }
-          this.a.c.setText(ReadInJoyCommentComponentFragment.a(this.a)[ReadInJoyCommentComponentFragment.c(this.a)]);
-        }
+        pqb.a((String)localObject, paramInt1, paramInt2);
+        return;
       }
     }
   }

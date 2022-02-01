@@ -1,17 +1,28 @@
-import cooperation.qwallet.plugin.QWalletHelper;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 
 public class akgj
+  extends VasQuickUpdateManager.CallBacker
 {
-  public static final String a = ;
-  public static final String b = a + ".tmp/";
-  public static final String c = QWalletHelper.getQWalletInternalPath();
-  public static final String d = c + ".tmp/";
-  public static final String e = d + "topay_recommends";
-  public static final String f = d + "group_available_list_";
+  public akgj(AvatarPendantActivity paramAvatarPendantActivity) {}
+  
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  {
+    if ((paramLong == 1000L) && (paramString1.equals("pendant_market_json.android.v2"))) {
+      if (paramInt1 == 0) {
+        this.a.e();
+      }
+    }
+    while ((paramLong != 23L) || (!paramString1.equals("avatarInPendant_json")) || (paramInt1 != 0)) {
+      return;
+    }
+    this.a.f();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akgj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,55 +1,16 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
-import com.tencent.mobileqq.pb.PBInt32Field;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class vjq
+class vjq
+  implements View.OnClickListener
 {
-  private double a;
-  private double b;
+  vjq(vjo paramvjo) {}
   
-  public vjq(double paramDouble1, double paramDouble2)
+  public void onClick(View paramView)
   {
-    this.a = paramDouble1;
-    this.b = paramDouble2;
-  }
-  
-  public double a()
-  {
-    return this.a;
-  }
-  
-  public qqstory_struct.GpsMsg a()
-  {
-    qqstory_struct.GpsMsg localGpsMsg = new qqstory_struct.GpsMsg();
-    localGpsMsg.setHasFlag(true);
-    localGpsMsg.lat.set((int)(a() * 1000000.0D));
-    localGpsMsg.lng.set((int)(b() * 1000000.0D));
-    return localGpsMsg;
-  }
-  
-  public double b()
-  {
-    return this.b;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {
-      return true;
-    }
-    if (!(paramObject instanceof vjq)) {
-      return false;
-    }
-    return (((vjq)paramObject).a == this.a) && (((vjq)paramObject).b == this.b);
-  }
-  
-  public int hashCode()
-  {
-    return "Gps".hashCode() + (int)(this.a * 1000000.0D) + (int)(this.b * 1000000.0D);
-  }
-  
-  public String toString()
-  {
-    return "Gps{lat=" + this.a + ", lng=" + this.b + '}';
+    vjo.b(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

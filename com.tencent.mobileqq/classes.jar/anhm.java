@@ -1,583 +1,1227 @@
-import AvatarInfo.QQHeadInfo;
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.avatarinfo.MultiHeadUrl.MultiBusidUrlReq;
-import com.tencent.avatarinfo.MultiHeadUrl.MultiBusidUrlRsp;
-import com.tencent.avatarinfo.MultiHeadUrl.ReqUsrInfo;
-import com.tencent.avatarinfo.MultiHeadUrl.RspHeadInfo;
-import com.tencent.avatarinfo.MultiHeadUrl.RspUsrHeadInfo;
-import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.app.face.FaceInfo;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.util.SystemUtil;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.apollo.data.ApolloDress;
+import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
+import com.tencent.mobileqq.apollo.sdk.CmShowRenderView.PlayActionConfig;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.data.ApolloBaseInfo;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.ArrayList<Lcom.tencent.mobileqq.app.face.FaceInfo;>;
-import java.util.Enumeration;
-import java.util.HashSet;
-import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.StringTokenizer;
+import org.json.JSONObject;
 
 public class anhm
-  extends BusinessHandler
 {
-  NearbyAppInterface jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private Hashtable<Integer, ArrayList<FaceInfo>> jdField_a_of_type_JavaUtilHashtable = new Hashtable();
-  private boolean jdField_a_of_type_Boolean;
-  private Hashtable<String, Long> b = new Hashtable();
+  public static int a;
+  public static boolean a;
+  private static final String[] a;
+  public static int b;
   
-  public anhm(NearbyAppInterface paramNearbyAppInterface)
+  static
   {
-    super(paramNearbyAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = paramNearbyAppInterface;
+    jdField_a_of_type_Int = 1;
+    b = 2;
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "/def/role/0/sayhi/1/action/action.json", "/def/role/0/friendcard/1/action/action.json", "/def/role/0/3D/sayhi/1/action.bin", "/def/role/0/3D/3DConfig.json" };
   }
   
-  private String a(int paramInt, MultiHeadUrl.RspUsrHeadInfo paramRspUsrHeadInfo)
+  public static int a(int paramInt, String paramString)
   {
-    if (paramInt == 0) {
-      return String.valueOf(paramRspUsrHeadInfo.dstUin.get());
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloActionHelper", 2, "[getRandomActionId], roleId:" + paramInt);
     }
-    if (paramInt == 1) {
-      return String.valueOf(paramRspUsrHeadInfo.dstTid.get());
-    }
-    return paramRspUsrHeadInfo.dstOpenid.get();
-  }
-  
-  private void a()
-  {
+    paramString = new File("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/role/", paramInt + "/" + paramString + "/");
+    if (!paramString.exists()) {}
     for (;;)
     {
-      int i;
-      try
+      return -1;
+      Object localObject = paramString.list();
+      if ((localObject == null) || (localObject.length == 0))
       {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin();
-        Enumeration localEnumeration = this.jdField_a_of_type_JavaUtilHashtable.keys();
-        if (!localEnumeration.hasMoreElements()) {
-          break;
-        }
-        i = ((Integer)localEnumeration.nextElement()).intValue();
-        ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilHashtable.get(Integer.valueOf(i));
-        if ((i == 200) || (i == 202))
-        {
-          a(i, localArrayList);
-          continue;
-        }
         if (!QLog.isColorLevel()) {
           continue;
         }
+        QLog.d("ApolloActionHelper", 2, "no any action file.");
+        return -1;
       }
-      finally {}
-      QLog.d("Q.qqhead.FaceHandler", 2, "checkWaitingRequests,key =" + i);
-    }
-    this.jdField_a_of_type_JavaUtilHashtable.clear();
-  }
-  
-  private void a(int paramInt, ArrayList<FaceInfo> paramArrayList)
-  {
-    int k = 0;
-    Object localObject1;
-    Object localObject2;
-    if (QLog.isColorLevel())
-    {
-      localObject1 = new StringBuilder();
-      localObject2 = ((StringBuilder)localObject1).append("realGetStrangerFace").append(", size=");
-      if (paramArrayList != null) {}
-      for (i = paramArrayList.size();; i = 0)
-      {
-        ((StringBuilder)localObject2).append(i);
-        if (paramArrayList == null) {
-          break;
-        }
-        i = 0;
-        while (i < paramArrayList.size())
-        {
-          ((StringBuilder)localObject1).append(',').append(paramArrayList.get(i));
-          i += 1;
-        }
+      int i = awrh.a(localObject.length);
+      if ((i >= localObject.length) || (i < 0)) {
+        continue;
       }
-      QLog.i("Q.qqhead.FaceHandler", 2, ((StringBuilder)localObject1).toString());
-    }
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return;
-    }
-    if (paramInt == 202) {}
-    for (int i = 1;; i = 0)
-    {
-      localObject1 = new MultiHeadUrl.MultiBusidUrlReq();
-      ((MultiHeadUrl.MultiBusidUrlReq)localObject1).srcUidType.set(0);
-      ((MultiHeadUrl.MultiBusidUrlReq)localObject1).srcUin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin()));
-      ((MultiHeadUrl.MultiBusidUrlReq)localObject1).dstUsrType.add(Integer.valueOf(1));
-      ((MultiHeadUrl.MultiBusidUrlReq)localObject1).dstUsrType.add(Integer.valueOf(32));
-      ((MultiHeadUrl.MultiBusidUrlReq)localObject1).dstUidType.set(i);
-      int j = 0;
-      if (j < paramArrayList.size())
+      localObject = localObject[i];
+      try
       {
-        localObject2 = (FaceInfo)paramArrayList.get(j);
-        MultiHeadUrl.ReqUsrInfo localReqUsrInfo = new MultiHeadUrl.ReqUsrInfo();
-        if (i == 0) {}
+        int j = Integer.parseInt((String)localObject);
+        if (paramInt >= anka.b) {
+          if (!ApolloUtil.c(paramString.getAbsolutePath() + "/" + (String)localObject + "/action/" + "action.bin")) {
+            continue;
+          }
+        }
         for (;;)
         {
+          return j;
+          if ((!ApolloUtil.c(paramString.getAbsolutePath() + "/" + (String)localObject + "/" + "action/action.json")) || (!ApolloUtil.c(paramString.getAbsolutePath() + "/" + (String)localObject + "/" + "action/action.png")) || (!ApolloUtil.c(paramString.getAbsolutePath() + "/" + (String)localObject + "/" + "action/action.atlas"))) {
+            break;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloActionHelper", 2, "value:" + i + ",actionId:" + (String)localObject);
+          }
+        }
+        return -1;
+      }
+      catch (NumberFormatException paramString) {}
+    }
+  }
+  
+  public static int a(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloActionHelper", 2, "[getApolloFuncSwitch], uin:" + paramString);
+    }
+    paramString = ((amme)paramQQAppInterface.getManager(QQManagerFactory.APOLLO_MANAGER)).a(paramString);
+    if (paramString == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloActionHelper", 2, "apolloBaseInfo is null. ret closed status");
+      }
+      return 2;
+    }
+    return paramString.apolloStatus;
+  }
+  
+  public static String a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloActionHelper", 2, "[getTickerPauseString]");
+    }
+    return "BK.Director.tickerPause();";
+  }
+  
+  public static String a(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloActionHelper", 2, new Object[] { "[getApolloRsc],  rscType", Integer.valueOf(paramInt1), ",id:" + paramInt2 });
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    switch (paramInt1)
+    {
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloActionHelper", 2, "rsc:" + localStringBuilder);
+      }
+      return localStringBuilder.toString();
+      if (paramInt2 < 21) {
+        localStringBuilder.append("def/basic/dress/");
+      }
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append("/dress");
+      continue;
+      if (paramInt2 == 0) {
+        localStringBuilder.append("def/basic/skeleton/");
+      }
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append("/role");
+    }
+  }
+  
+  public static String a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if ((paramInt1 == 0) || (!ApolloUtil.f(paramInt1, paramInt2)))
+    {
+      localStringBuilder.append("def/role/");
+      localStringBuilder.append(0);
+    }
+    for (;;)
+    {
+      localStringBuilder.append("/");
+      localStringBuilder.append("Bubble");
+      localStringBuilder.append("/");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append("/dress");
+      return localStringBuilder.toString();
+      localStringBuilder.append("role/");
+      localStringBuilder.append(paramInt1);
+    }
+  }
+  
+  public static String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    paramString = new StringTokenizer(paramString, "@$");
+    int i = awrh.a(paramString.countTokens());
+    while (paramString.hasMoreTokens())
+    {
+      i -= 1;
+      if (i < 0) {
+        return paramString.nextToken();
+      }
+      paramString.nextToken();
+    }
+    return "";
+  }
+  
+  public static String a(String paramString, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      localObject = null;
+    }
+    do
+    {
+      return localObject;
+      localObject = paramString;
+    } while (paramString.contains("def"));
+    Object localObject = new StringBuilder();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      ((StringBuilder)localObject).append("//").append(paramString);
+      return ((StringBuilder)localObject).toString();
+      ((StringBuilder)localObject).append("ActionRes:");
+      continue;
+      ((StringBuilder)localObject).append("Dress:");
+      continue;
+      ((StringBuilder)localObject).append("Role:");
+    }
+  }
+  
+  public static String a(String paramString, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloActionHelper", 2, new Object[] { "[getRoleLuaString] apolloId=", paramString, ", roleId=", Integer.valueOf(paramInt) });
+    }
+    String str = a(0, paramInt);
+    float f = 0.0F;
+    if ("friend".equals(paramString)) {
+      f = 180.0F;
+    }
+    paramString = String.format("var %s = loadAnimation('%s', '%s', '%s', %f, %f, %f, %f, %f, '%s','%s');if(%s){%s.openAABBCallback()}", new Object[] { paramString, paramString, str, str, Float.valueOf(1.0F), Float.valueOf(paramFloat1), Float.valueOf(f), Float.valueOf(paramFloat2), Float.valueOf(paramFloat3), "null", "null", paramString, paramString });
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloActionHelper", 2, new Object[] { "[getRoleLuaString] scriptStr=", paramString });
+    }
+    return paramString;
+  }
+  
+  public static String a(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloActionHelper", 2, "[getBubbleLuaString], apolloId:" + paramString1 + ",bubbleId" + paramInt1 + ",roleId:" + paramInt2);
+    }
+    String str = b(paramInt2, paramInt1);
+    paramString1 = String.format("setAccessoryWithInfo(%s, '%s', '%s', '%s');", new Object[] { paramString1, str, str, paramString2 });
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloActionHelper", 2, paramString1);
+    }
+    return paramString1;
+  }
+  
+  public static String a(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloActionHelper", 2, "[getModelByUin], uin:" + paramString);
+    }
+    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloActionHelper", 2, "errInfo->null param.");
+      }
+      return null;
+    }
+    if (amme.a(paramQQAppInterface, paramString) == 2) {
+      return "3D";
+    }
+    return "2D";
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloActionHelper", 2, "[getRemoveBubbleLuaString], apolloId:" + paramString1 + ",bubbleName" + paramString2);
+    }
+    paramString1 = String.format("if(%s) {%s.removeAccessory('%s')};", new Object[] { paramString1, paramString1, paramString2 });
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloActionHelper", 2, paramString1);
+    }
+    return paramString1;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, SpriteTaskParam paramSpriteTaskParam, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloActionHelper", 2, "[doActionReport], isHasUsrText:" + paramBoolean1 + ",isBarrage:" + paramBoolean2);
+    }
+    if ((paramSpriteTaskParam == null) || (paramQQAppInterface == null)) {}
+    Object localObject;
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloActionHelper", 2, "taskParam:" + paramSpriteTaskParam.toString());
+      }
+      localObject = ((ankc)paramQQAppInterface.getManager(QQManagerFactory.APOOLO_DAO_MANAGER)).a(paramSpriteTaskParam.f);
+    } while (localObject == null);
+    int i = 0;
+    int j = paramSpriteTaskParam.j;
+    String str5 = Integer.toString(paramSpriteTaskParam.f);
+    if (paramBoolean1) {
+      if (!paramBoolean2) {}
+    }
+    for (String str3 = "2";; str3 = "0")
+    {
+      label141:
+      if (paramSpriteTaskParam.h == 0) {}
+      label769:
+      for (String str2 = "action_play";; str2 = "")
+      {
+        label153:
+        label171:
+        String str4;
+        if (paramSpriteTaskParam.g == 2) {
+          if (paramSpriteTaskParam.a)
+          {
+            i = 2;
+            if ((((ApolloActionData)localObject).hasSound) || (paramSpriteTaskParam.i > 0)) {
+              break label514;
+            }
+            str4 = "0";
+            label191:
+            if ((8 != paramSpriteTaskParam.c) || (TextUtils.isEmpty(paramSpriteTaskParam.d))) {
+              break label686;
+            }
+          }
+        }
+        for (;;)
+        {
+          label514:
+          String str1;
           try
           {
-            localReqUsrInfo.dstUin.set(Long.parseLong(((FaceInfo)localObject2).jdField_a_of_type_JavaLangString));
-            ((MultiHeadUrl.MultiBusidUrlReq)localObject1).dstUsrInfos.add(localReqUsrInfo);
-            ((FaceInfo)localObject2).a(FaceInfo.l);
+            localObject = new JSONObject(paramSpriteTaskParam.d).optString("subActionId", "0");
+            VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "actionnewuser_play", paramSpriteTaskParam.b, i, j, new String[] { str5, "", "", String.valueOf(System.currentTimeMillis() / 1000L) });
+            VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", str2, i, j, new String[] { str5, str3, str4, localObject });
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.d("ApolloActionHelper", 2, "actionName:" + str2 + ",entry:" + i + ",result:" + j + ",r2:" + str5 + ",r3:" + str3 + ",r4:" + str4 + ",r5:" + (String)localObject);
+            return;
+            str3 = "1";
+            break label141;
+            if (paramSpriteTaskParam.h == 1)
+            {
+              str2 = "g_action_play";
+              break label153;
+            }
+            if (paramSpriteTaskParam.h != 3000) {
+              break label769;
+            }
+            str2 = "d_action_play";
+            break label153;
+            i = 3;
+            break label171;
+            if (paramSpriteTaskParam.g == 0)
+            {
+              i = 0;
+              break label171;
+            }
+            if (paramSpriteTaskParam.g == 1)
+            {
+              i = 1;
+              break label171;
+            }
+            if (paramSpriteTaskParam.g != 4) {
+              break label171;
+            }
+            i = 4;
+            break label171;
+            if ((1 == paramQQAppInterface.getALLGeneralSettingRing()) && (((paramSpriteTaskParam.h != 1) && (paramSpriteTaskParam.h != 3000)) || (((1 == paramQQAppInterface.getTroopGeneralSettingRing()) || (paramSpriteTaskParam.h == 0)) && (!paramQQAppInterface.isRingerVibrate()) && (!paramQQAppInterface.isRingEqualsZero()) && (paramQQAppInterface.isCallIdle()) && (!MediaPlayerManager.a(paramQQAppInterface).a()) && ((paramQQAppInterface.getCheckPttListener() == null) || (!paramQQAppInterface.getCheckPttListener().isRecordingOrPlaying())) && (!paramQQAppInterface.isVideoChatting()) && ((paramQQAppInterface.getCheckPtvListener() == null) || (!paramQQAppInterface.getCheckPtvListener().isPTVRecording())))))
+            {
+              str4 = "1";
+              break label191;
+            }
+            str4 = "2";
           }
           catch (Exception localException)
           {
+            QLog.e("ApolloActionHelper", 1, "[random] the json is not right," + paramSpriteTaskParam.d);
+            str1 = "-1";
             continue;
           }
-          j += 1;
-          break;
-          if (i == 1) {
-            localReqUsrInfo.dstTid.set(Long.parseLong(((FaceInfo)localObject2).jdField_a_of_type_JavaLangString));
+          label686:
+          if (a(str1.vibrate) == null) {
+            str1 = "0";
+          } else if ((1 == paramQQAppInterface.getALLGeneralSettingVibrate()) && (((paramSpriteTaskParam.h != 1) && (paramSpriteTaskParam.h != 3000)) || (((1 == paramQQAppInterface.getTroopGeneralSettingVibrate()) || (paramSpriteTaskParam.h == 0)) && (!paramQQAppInterface.isRingEqualsZero())))) {
+            str1 = "1";
+          } else {
+            str1 = "2";
           }
         }
       }
-      if (QLog.isColorLevel())
-      {
-        localObject3 = new StringBuilder();
-        ((StringBuilder)localObject3).append("QQHead_Stranger request.srcUidType=" + ((MultiHeadUrl.MultiBusidUrlReq)localObject1).srcUidType.get()).append(";srcUin=" + this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin()).append("\n\n").append(";dstUsrType=" + ((MultiHeadUrl.MultiBusidUrlReq)localObject1).dstUsrType.get()).append(";dstUidType=" + ((MultiHeadUrl.MultiBusidUrlReq)localObject1).dstUidType.get()).append("\n\n").append(";uinset={");
-        if (paramArrayList != null)
-        {
-          i = k;
-          while (i < paramArrayList.size())
-          {
-            ((StringBuilder)localObject3).append(paramArrayList.get(i) + ",");
-            i += 1;
-          }
-        }
-        ((StringBuilder)localObject3).append("}");
-        QLog.i("Q.qqhead.FaceHandler", 2, ((StringBuilder)localObject3).toString());
-      }
-      Object localObject3 = createToServiceMsg("MultibusidURLSvr.HeadUrlReq", null);
-      ((ToServiceMsg)localObject3).extraData.putParcelableArrayList("list", paramArrayList);
-      ((ToServiceMsg)localObject3).extraData.putLong("startTime", System.currentTimeMillis());
-      ((ToServiceMsg)localObject3).extraData.putInt("idType", paramInt);
-      ((ToServiceMsg)localObject3).putWupBuffer(((MultiHeadUrl.MultiBusidUrlReq)localObject1).toByteArray());
-      sendPbReq((ToServiceMsg)localObject3);
-      return;
     }
   }
   
-  private void a(MultiHeadUrl.MultiBusidUrlRsp paramMultiBusidUrlRsp)
+  public static boolean a(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("start ====================================================================================\n\n");
-      localStringBuilder.append("QQHead_Stranger response.srcUidType=" + paramMultiBusidUrlRsp.srcUidType.get()).append(";srcUin=" + paramMultiBusidUrlRsp.srcUin.get()).append("\n\n").append(";srcTid=" + paramMultiBusidUrlRsp.srcTid.get()).append(";srcOpenid=" + paramMultiBusidUrlRsp.srcOpenid.get()).append("\n\n").append(";dstUidType=" + paramMultiBusidUrlRsp.dstUidType.get()).append(";result=" + paramMultiBusidUrlRsp.result.get()).append("\n\n");
-      paramMultiBusidUrlRsp = paramMultiBusidUrlRsp.dstUsrHeadInfos.get();
-      if (paramMultiBusidUrlRsp != null)
-      {
-        paramMultiBusidUrlRsp = paramMultiBusidUrlRsp.iterator();
-        while (paramMultiBusidUrlRsp.hasNext())
-        {
-          Object localObject = (MultiHeadUrl.RspUsrHeadInfo)paramMultiBusidUrlRsp.next();
-          localStringBuilder.append("-------------------------------------------------------------------------------------\n\n");
-          localStringBuilder.append("RspUsrHeadInfo.dstUin=" + ((MultiHeadUrl.RspUsrHeadInfo)localObject).dstUin.get()).append(";dstTid=" + ((MultiHeadUrl.RspUsrHeadInfo)localObject).dstTid.get()).append(";dstOpenid=" + ((MultiHeadUrl.RspUsrHeadInfo)localObject).dstOpenid.get()).append("\n\n");
-          localObject = ((MultiHeadUrl.RspUsrHeadInfo)localObject).dstHeadInfos.get().iterator();
-          while (((Iterator)localObject).hasNext())
-          {
-            MultiHeadUrl.RspHeadInfo localRspHeadInfo = (MultiHeadUrl.RspHeadInfo)((Iterator)localObject).next();
-            localStringBuilder.append("RspHeadInfo.usrType=" + localRspHeadInfo.usrType.get()).append("\n\n").append(";faceType=" + localRspHeadInfo.faceType.get()).append("\n\n").append(";timestamp=" + localRspHeadInfo.timestamp.get()).append("\n\n").append(";faceFlag=" + localRspHeadInfo.faceFlag.get()).append("\n\n").append(";url=" + localRspHeadInfo.url.get()).append("\n\n").append(";sysid=" + localRspHeadInfo.sysid.get()).append("\n\n");
-          }
-        }
-      }
-      localStringBuilder.append("end ====================================================================================\n\n");
-      QLog.i("Q.qqhead.FaceHandler", 2, localStringBuilder.toString());
+    if (paramQQAppInterface == null) {
+      return false;
     }
+    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject = arrayOfString[i];
+      localObject = new File(anka.jdField_a_of_type_JavaLangString + (String)localObject);
+      if (!((File)localObject).exists())
+      {
+        QLog.d("ApolloActionHelper", 1, new Object[] { "[checkBasicActionExit] rsc file not exist:", ((File)localObject).toString() });
+        anex.a(paramQQAppInterface, paramQQAppInterface.getCurrentUin(), null, 0, null, -1, -1, true);
+        return false;
+      }
+      i += 1;
+    }
+    return true;
   }
   
-  private void a(ToServiceMsg paramToServiceMsg, int paramInt)
+  public static boolean a(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    paramToServiceMsg = paramToServiceMsg.extraData.getParcelableArrayList("list");
-    StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject = localStringBuilder.append("handleGetQQHeadError, result=").append(paramInt).append(", listSize=");
-    if (paramToServiceMsg != null) {}
-    for (paramInt = paramToServiceMsg.size();; paramInt = -1)
-    {
-      ((StringBuilder)localObject).append(paramInt);
-      if ((paramToServiceMsg != null) && (paramToServiceMsg.size() != 0)) {
-        break;
-      }
-      QLog.i("Q.qqhead.FaceHandler", 1, localStringBuilder.toString());
-      return;
+    if (paramQQAppInterface == null) {
+      return false;
     }
-    paramInt = 0;
-    while (paramInt < paramToServiceMsg.size())
-    {
-      localObject = (FaceInfo)paramToServiceMsg.get(paramInt);
-      a(((FaceInfo)localObject).b(), false);
-      localStringBuilder.append("info=").append(localObject);
-      paramInt += 1;
-    }
-    QLog.i("Q.qqhead.FaceHandler", 1, localStringBuilder.toString());
+    return a(paramQQAppInterface);
   }
   
-  private void a(List<MultiHeadUrl.RspUsrHeadInfo> paramList, List<FaceInfo> paramList1, ArrayList<FaceInfo> paramArrayList, List<FaceInfo> paramList2, int paramInt1, int paramInt2, anho paramanho)
+  public static boolean a(String paramString, int paramInt, int[] paramArrayOfInt, QQAppInterface paramQQAppInterface)
   {
-    Iterator localIterator1 = paramArrayList.iterator();
-    FaceInfo localFaceInfo;
-    label44:
-    String str;
-    Object localObject2;
-    Object localObject1;
-    label110:
-    int i;
-    if (localIterator1.hasNext())
-    {
-      localFaceInfo = (FaceInfo)localIterator1.next();
-      localFaceInfo.a(FaceInfo.m);
-      Iterator localIterator2 = paramList.iterator();
-      for (;;)
-      {
-        if (localIterator2.hasNext())
-        {
-          paramArrayList = (MultiHeadUrl.RspUsrHeadInfo)localIterator2.next();
-          str = a(paramInt1, paramArrayList);
-          if (localFaceInfo.jdField_a_of_type_JavaLangString.equals(str))
-          {
-            localObject2 = paramArrayList.dstHeadInfos.get();
-            localObject1 = null;
-            paramArrayList = null;
-            Iterator localIterator3 = ((List)localObject2).iterator();
-            if (localIterator3.hasNext())
-            {
-              localObject2 = (MultiHeadUrl.RspHeadInfo)localIterator3.next();
-              i = ((MultiHeadUrl.RspHeadInfo)localObject2).usrType.get();
-              if (i == 1) {
-                localObject1 = localObject2;
-              }
-            }
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      break label110;
-      if ((i == 32) && (((MultiHeadUrl.RspHeadInfo)localObject2).faceType.get() != 0))
-      {
-        paramArrayList = (ArrayList<FaceInfo>)localObject2;
-        continue;
-        if (paramArrayList != null)
-        {
-          label183:
-          i = 0;
-          localObject1 = paramanho.a("stranger_" + String.valueOf(localFaceInfo.b) + "_" + localFaceInfo.jdField_a_of_type_JavaLangString);
-          if (paramanho.a(localFaceInfo)) {
-            break label459;
-          }
-          i = 1;
-          label247:
-          if (i == 0) {
-            break label503;
-          }
-          localObject1 = new QQHeadInfo();
-          ((QQHeadInfo)localObject1).headLevel = localFaceInfo.jdField_a_of_type_Byte;
-          ((QQHeadInfo)localObject1).idType = paramInt2;
-          ((QQHeadInfo)localObject1).phoneNum = str;
-          ((QQHeadInfo)localObject1).dwTimestamp = paramArrayList.timestamp.get();
-          ((QQHeadInfo)localObject1).cHeadType = ((byte)paramArrayList.faceType.get());
-          ((QQHeadInfo)localObject1).dstUsrType = 32;
-          ((QQHeadInfo)localObject1).dwFaceFlgas = ((byte)paramArrayList.faceFlag.get());
-          ((QQHeadInfo)localObject1).downLoadUrl = paramArrayList.url.get();
-          ((QQHeadInfo)localObject1).systemHeadID = ((short)paramArrayList.sysid.get());
-          ((QQHeadInfo)localObject1).originUsrType = paramArrayList.usrType.get();
-          if (!paramArrayList.headVerify.has()) {
-            break label505;
-          }
-        }
-        label459:
-        label503:
-        label505:
-        for (paramArrayList = paramArrayList.headVerify.get();; paramArrayList = "")
-        {
-          ((QQHeadInfo)localObject1).headVerify = paramArrayList;
-          localFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo = ((QQHeadInfo)localObject1);
-          paramList2.add(localFaceInfo);
-          break label44;
-          if (localObject1 != null)
-          {
-            paramArrayList = (ArrayList<FaceInfo>)localObject1;
-            break label183;
-          }
-          if (!QLog.isColorLevel()) {
-            break label44;
-          }
-          QLog.d("Q.qqhead.FaceHandler", 2, "there is no headinfo uin=" + str);
-          break label44;
-          break;
-          if (localObject1 != null)
-          {
-            if (((Setting)localObject1).headImgTimestamp != paramArrayList.timestamp.get())
-            {
-              i = 1;
-              break label247;
-            }
-            paramList1.add(localFaceInfo);
-            break label247;
-          }
-          i = 1;
-          break label247;
-          break label44;
-        }
-        return;
-      }
-    }
+    return a(paramString, paramInt, paramArrayOfInt, paramQQAppInterface, null);
   }
   
-  public void a(FaceInfo paramFaceInfo)
+  public static boolean a(String paramString, int paramInt, int[] paramArrayOfInt, QQAppInterface paramQQAppInterface, anfg paramanfg)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.qqhead.FaceHandler", 2, "getStrangerFaceInfo.faceInfo=" + paramFaceInfo);
+      QLog.d("ApolloActionHelper", 2, "[isRscValid], roleId:" + paramInt + ",dressId:" + paramArrayOfInt);
     }
-    Object localObject = paramFaceInfo.b();
-    if (a((String)localObject))
+    if (paramArrayOfInt == null) {
+      return false;
+    }
+    int[] arrayOfInt = null;
+    ArrayList localArrayList = new ArrayList();
+    boolean bool = true;
+    if (!ApolloUtil.d(paramInt))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("Q.qqhead.FaceHandler", 2, "getStrangerFaceInfo|repeat info=" + paramFaceInfo);
+        QLog.d("ApolloActionHelper", 2, "need download role id:" + paramInt);
       }
-      return;
+      bool = false;
     }
-    a((String)localObject, true);
-    ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilHashtable.get(Integer.valueOf(paramFaceInfo.b));
-    localObject = localArrayList;
-    if (localArrayList == null)
-    {
-      localObject = new ArrayList();
-      this.jdField_a_of_type_JavaUtilHashtable.put(Integer.valueOf(paramFaceInfo.b), localObject);
-    }
-    ((ArrayList)localObject).add(paramFaceInfo);
-    a();
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    int j = 0;
-    if (paramFromServiceMsg != null) {}
     for (;;)
     {
+      int i = 0;
+      if (i < paramArrayOfInt.length)
+      {
+        if (ApolloUtil.c(paramArrayOfInt[i])) {
+          break label328;
+        }
+        localArrayList.add(Integer.valueOf(paramArrayOfInt[i]));
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloActionHelper", 2, "need download dress id:" + paramArrayOfInt[i]);
+        }
+        bool = false;
+      }
+      label325:
+      label328:
+      for (;;)
+      {
+        i += 1;
+        break;
+        if (!bool)
+        {
+          paramArrayOfInt = arrayOfInt;
+          if (localArrayList.size() > 0)
+          {
+            arrayOfInt = new int[localArrayList.size()];
+            i = 0;
+            for (;;)
+            {
+              paramArrayOfInt = arrayOfInt;
+              if (i >= localArrayList.size()) {
+                break;
+              }
+              arrayOfInt[i] = ((Integer)localArrayList.get(i)).intValue();
+              i += 1;
+            }
+          }
+          if (paramQQAppInterface != null)
+          {
+            if (paramanfg != null) {
+              break label325;
+            }
+            paramanfg = ((amme)paramQQAppInterface.getManager(QQManagerFactory.APOLLO_MANAGER)).a();
+          }
+        }
+        for (;;)
+        {
+          anex.a(paramQQAppInterface, paramString, paramanfg, paramInt, paramArrayOfInt, -1, -1, false);
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloActionHelper", 2, "ret:" + bool);
+          }
+          return bool;
+        }
+      }
+      paramInt = -1;
+    }
+  }
+  
+  public static boolean a(String paramString1, QQAppInterface paramQQAppInterface, JSONObject paramJSONObject, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloActionHelper", 2, "[attach3DInfoToJson], uin:" + paramString1);
+    }
+    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString1)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloActionHelper", 2, "errInfo->null param.");
+      }
+      return false;
+    }
+    ApolloBaseInfo localApolloBaseInfo = ((amme)paramQQAppInterface.getManager(QQManagerFactory.APOLLO_MANAGER)).b(paramString1);
+    if (localApolloBaseInfo != null)
+    {
+      String str = paramString2;
       try
       {
-        if ((paramFromServiceMsg.getResultCode() != 1000) || (paramObject == null)) {
-          break label413;
+        if (TextUtils.isEmpty(paramString2)) {
+          str = a(paramString1, paramQQAppInterface);
         }
-        localObject = new MultiHeadUrl.MultiBusidUrlRsp();
-        ((MultiHeadUrl.MultiBusidUrlRsp)localObject).mergeFrom((byte[])paramObject);
-        paramObject = localObject;
+        paramJSONObject.put("model", str);
+        paramString1 = new JSONObject();
+        paramString2 = localApolloBaseInfo.getFaceModel(true, paramQQAppInterface);
+        if (paramString2 != null) {
+          paramString1.put("faceModel", paramString2);
+        }
+        paramString2 = localApolloBaseInfo.getDress3D(true, paramQQAppInterface);
+        int i = localApolloBaseInfo.getRole3D(true, paramQQAppInterface);
+        if ((paramString2 != null) && (i > 0))
+        {
+          paramString1.put("dress", paramString2);
+          paramString1.put("role", String.valueOf(i));
+        }
+        paramJSONObject.put("3DObject", paramString1);
+        if (QLog.isColorLevel()) {
+          QLog.d("cmshow_scripted_ApolloActionHelper", 2, "attach3DInfoToJson: obj3D:" + paramString1.toString());
+        }
       }
-      catch (Exception paramObject)
+      catch (Exception paramString1)
       {
-        if (!QLog.isColorLevel()) {
-          continue;
+        for (;;)
+        {
+          QLog.e("ApolloActionHelper", 1, "attach3DInfoToJson e=" + paramString1.toString());
         }
-        QLog.d("Q.qqhead.FaceHandler", 2, "handleStrangerFaceResp multiBusidUrlRsp mergeFrom exception..." + paramObject.getMessage());
-        paramObject.printStackTrace();
-        paramObject = null;
-        continue;
-        if (paramFromServiceMsg == null) {
-          continue;
-        }
-        int i = paramFromServiceMsg.getResultCode();
-        continue;
-        a(paramObject);
-        Object localObject = paramObject.dstUsrHeadInfos.get();
-        paramFromServiceMsg = new ArrayList();
-        ArrayList localArrayList1 = paramToServiceMsg.extraData.getParcelableArrayList("list");
-        ArrayList localArrayList2 = new ArrayList();
-        i = paramObject.dstUidType.get();
-        int k = paramToServiceMsg.extraData.getInt("idType");
-        paramToServiceMsg = (anho)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(216);
-        a((List)localObject, paramFromServiceMsg, localArrayList1, localArrayList2, i, k, paramToServiceMsg);
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  public static long[] a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    long[] arrayOfLong;
+    for (;;)
+    {
+      return null;
+      paramString = paramString.split(",");
+      if ((paramString != null) && (paramString.length != 0))
+      {
+        arrayOfLong = new long[paramString.length];
         i = 0;
-        if (i >= localArrayList2.size()) {
-          continue;
-        }
-        paramToServiceMsg.a((FaceInfo)localArrayList2.get(i));
-        i += 1;
-        continue;
-        if (paramFromServiceMsg.size() <= 0) {
-          continue;
-        }
         try
         {
-          paramObject = new ArrayList();
-          i = j;
-          if (i >= paramFromServiceMsg.size()) {
-            continue;
+          while (i < paramString.length)
+          {
+            arrayOfLong[i] = Integer.parseInt(paramString[i].trim());
+            i += 1;
           }
-          localObject = (FaceInfo)paramFromServiceMsg.get(i);
-          paramObject.add("stranger_" + String.valueOf(k) + "_" + ((FaceInfo)localObject).jdField_a_of_type_JavaLangString);
-          a(((FaceInfo)localObject).b(), false);
-          i += 1;
-          continue;
-          paramToServiceMsg.a(paramObject, System.currentTimeMillis());
-          return;
+          if (!QLog.isColorLevel()) {}
         }
-        catch (Exception paramToServiceMsg)
-        {
-          paramToServiceMsg.printStackTrace();
-          return;
-        }
+        catch (NumberFormatException paramString) {}
       }
-      if ((paramFromServiceMsg == null) || (paramFromServiceMsg.getResultCode() != 1000) || (paramObject == null) || (paramObject.result.get() != 0))
-      {
-        i = 65535;
-        if (paramObject != null)
-        {
-          i = paramObject.result.get();
-          a(paramToServiceMsg, i);
-          return;
-        }
-      }
-      label413:
-      paramObject = null;
     }
+    QLog.d("ApolloActionHelper", 2, "errInfo->NumberFormatException, e:" + paramString.getMessage());
+    return null;
+    int i = paramString.length - 2;
+    while (i >= 2)
+    {
+      arrayOfLong[i] = (arrayOfLong[i] - arrayOfLong[(i - 1)] - arrayOfLong[(i - 2)]);
+      i -= 2;
+    }
+    return arrayOfLong;
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  public static Object[] a(String paramString, int paramInt, QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
-    if (!paramBoolean) {
-      try
-      {
-        this.b.remove(paramString);
-        return;
-      }
-      finally {}
-    }
-    ArrayList localArrayList;
-    Object localObject2;
-    if (this.b.size() > 30)
+    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString)) || (paramInt != 2))
     {
-      long l = System.currentTimeMillis();
-      localArrayList = new ArrayList();
-      localObject2 = this.b.keys();
-      while (((Enumeration)localObject2).hasMoreElements())
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloActionHelper", 2, new Object[] { "get3DRoleIdByUin errInfo->null param, userStatus:", Integer.valueOf(paramInt) });
+      }
+      return new Object[] { Integer.valueOf(-1), null };
+    }
+    Object localObject = ((amme)paramQQAppInterface.getManager(QQManagerFactory.APOLLO_MANAGER)).b(paramString);
+    if (localObject != null)
+    {
+      localObject = ((ApolloBaseInfo)localObject).getApolloDress3D();
+      if (localObject != null)
       {
-        String str = (String)((Enumeration)localObject2).nextElement();
-        if (Math.abs(l - ((Long)this.b.get(str)).longValue()) > 60000L) {
-          localArrayList.add(paramString);
+        paramInt = ((ApolloDress)localObject).jdField_a_of_type_Int;
+        localObject = ((ApolloDress)localObject).a();
+        if ((paramInt > anka.b) && (localObject != null) && (localObject.length > 0) && ((!paramBoolean) || (a(paramString, paramInt, (int[])localObject, paramQQAppInterface))))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloActionHelper", 2, new Object[] { "get3DRoleDressIdByUin valid role and dress RSC, needVerify:", Boolean.valueOf(paramBoolean) });
+          }
+          paramString = (String)localObject;
         }
       }
     }
     for (;;)
     {
-      int i;
-      if (i < localArrayList.size())
+      return new Object[] { Integer.valueOf(paramInt), paramString };
+      paramString = null;
+      paramInt = 0;
+    }
+  }
+  
+  public static Object[] a(String paramString, QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloActionHelper", 2, "[getRoldIdByUin], uin:" + paramString);
+    }
+    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloActionHelper", 2, "errInfo->null param.");
+      }
+      return null;
+    }
+    Object localObject2 = anex.a(0);
+    Object localObject1;
+    int i;
+    if (("-1".equals(paramString)) || ("-2".equals(paramString)))
+    {
+      localObject1 = paramString;
+      if (!"-1".equals(localObject1)) {
+        break label252;
+      }
+      i = 1;
+      label102:
+      localObject3 = anex.a(i);
+      if ((paramBoolean) && (!a((String)localObject1, i, (int[])localObject3, paramQQAppInterface))) {
+        break label257;
+      }
+      localObject1 = localObject3;
+    }
+    for (;;)
+    {
+      localObject2 = ((amme)paramQQAppInterface.getManager(QQManagerFactory.APOLLO_MANAGER)).b(paramString);
+      if (localObject2 == null) {
+        break label719;
+      }
+      j = ((ApolloBaseInfo)localObject2).apolloStatus;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloActionHelper", 2, "uin: " + ((ApolloBaseInfo)localObject2).uin + ", funcSwitch:" + j);
+      }
+      if (amme.a((ApolloBaseInfo)localObject2)) {
+        break label305;
+      }
+      return new Object[] { Integer.valueOf(i), localObject1 };
+      if (ancd.b(paramQQAppInterface, paramString))
       {
-        localObject2 = (String)localArrayList.get(i);
-        this.b.remove(paramString);
-        i += 1;
+        localObject1 = "-2";
+        break;
+      }
+      localObject1 = "-1";
+      break;
+      label252:
+      i = 2;
+      break label102;
+      label257:
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloActionHelper", 2, new Object[] { "role and dress is not ready,uin:", paramString, ",roleId:", Integer.valueOf(0) });
+      }
+      localObject1 = localObject2;
+      i = 0;
+    }
+    label305:
+    if ((paramBoolean) && (((ApolloBaseInfo)localObject2).apolloLocalTS != ((ApolloBaseInfo)localObject2).apolloServerTS))
+    {
+      QLog.i("ApolloActionHelper", 1, "dress changed, uin:" + ApolloUtil.d(paramString));
+      amme.a(paramQQAppInterface, paramString, "getRoleDressIdByUin");
+    }
+    Object localObject3 = ((ApolloBaseInfo)localObject2).getApolloDress(false);
+    if ((localObject3 != null) && (localObject3.length > 0))
+    {
+      int k = localObject3.length;
+      j = 0;
+      if (j >= k) {
+        break label802;
+      }
+      Object localObject4 = localObject3[j];
+      localObject2 = localObject4.a();
+      if (a(paramString, localObject4.jdField_a_of_type_Int, (int[])localObject2, paramQQAppInterface))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloActionHelper", 2, "valid role and dress RSC.");
+        }
+        i = localObject4.jdField_a_of_type_Int;
+        localObject1 = localObject2;
+      }
+    }
+    label536:
+    label541:
+    label802:
+    for (int j = 1;; j = 0)
+    {
+      if (j == 0)
+      {
+        localObject2 = anex.a(localObject3[0].jdField_a_of_type_Int);
+        if (a(paramString, localObject3[0].jdField_a_of_type_Int, (int[])localObject2, paramQQAppInterface))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloActionHelper", 2, "valid basic dress.");
+          }
+          j = localObject3[0].jdField_a_of_type_Int;
+          paramString = (String)localObject2;
+          i = j;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("ApolloActionHelper", 2, "current dress NOT downloaded, check basic dress");
+            i = j;
+            paramString = (String)localObject2;
+          }
+          j = i;
+          paramQQAppInterface = paramString;
+        }
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramString = new StringBuilder();
+          paramString.append("******roleId:[");
+          paramString.append(j);
+          paramString.append("],");
+          paramString.append("dress:[");
+          i = 0;
+          for (;;)
+          {
+            if (i < paramQQAppInterface.length)
+            {
+              if (i != 0) {
+                paramString.append(",");
+              }
+              paramString.append(paramQQAppInterface[i]);
+              i += 1;
+              continue;
+              if (QLog.isColorLevel()) {
+                QLog.d("ApolloActionHelper", 2, "try to get history dress ....");
+              }
+              j += 1;
+              break;
+              anck.a(110, new Object[] { "basicDresses is not vaild" });
+              paramString = (String)localObject1;
+              break label536;
+              paramQQAppInterface = (QQAppInterface)localObject1;
+              j = i;
+              if (!QLog.isColorLevel()) {
+                break label541;
+              }
+              QLog.d("ApolloActionHelper", 2, "uin: " + paramString + " dress is null");
+              paramQQAppInterface = (QQAppInterface)localObject1;
+              j = i;
+              break label541;
+              label719:
+              paramQQAppInterface = (QQAppInterface)localObject1;
+              j = i;
+              if (!QLog.isColorLevel()) {
+                break label541;
+              }
+              QLog.d("ApolloActionHelper", 2, "warning: apolloBaseInfo or apolloBaseInfo.apolloDress is NULL, fail to get role info. apolloBaseInfo:" + localObject2);
+              paramQQAppInterface = (QQAppInterface)localObject1;
+              j = i;
+              break label541;
+            }
+          }
+          paramString.append("]****");
+          QLog.d("ApolloActionHelper", 2, paramString.toString());
+        }
+      }
+      return new Object[] { Integer.valueOf(j), paramQQAppInterface };
+    }
+  }
+  
+  public static String[] a(int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("action/");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("/action_background/action");
+    String str1 = "background__" + Integer.toString(paramInt);
+    String str2 = localStringBuilder.toString();
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloActionHelper", 2, "action rsc path:" + localStringBuilder.toString() + ",actionName:" + str1);
+    }
+    return new String[] { str2, str1 };
+  }
+  
+  public static String[] a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  {
+    return a(paramInt1, paramInt2, paramInt3, paramBoolean, 1);
+  }
+  
+  public static String[] a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, int paramInt4)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloActionHelper", 2, new Object[] { "[getActionRscPath], bid:" + paramInt1 + ",activeId:" + paramInt2 + ",roleId:" + paramInt3 + ",isActionMaker:" + paramBoolean, ",userStatus:", Integer.valueOf(paramInt4) });
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (paramInt4 == 2)
+    {
+      paramInt4 = 1;
+      switch (paramInt1)
+      {
+      case 3: 
+      case 8: 
+      case 9: 
+      default: 
+        paramInt3 = 1;
+        paramInt4 = paramInt2;
+        label177:
+        if (paramInt3 != 0) {
+          localStringBuilder.append("/");
+        }
+        localStringBuilder.append(paramInt4);
+        if ((paramBoolean) || (paramInt2 < 21)) {
+          if (localStringBuilder.indexOf("def/role/0/3D/") > -1) {
+            localStringBuilder.append("/action");
+          }
+        }
+        break;
+      }
+    }
+    for (;;)
+    {
+      String str1 = localStringBuilder.toString();
+      String str2 = Integer.toString(paramInt1) + "_" + Integer.toString(paramInt4);
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloActionHelper", 2, "action rsc path:" + localStringBuilder.toString() + ",actionId:" + paramInt4);
+      }
+      return new String[] { str1, str2 };
+      paramInt4 = 0;
+      break;
+      paramInt3 = 0;
+      paramInt4 = paramInt2;
+      break label177;
+      localStringBuilder.append("action");
+      paramInt3 = 1;
+      paramInt4 = paramInt2;
+      break label177;
+      if (paramInt4 != 0)
+      {
+        localStringBuilder.append("def/role/0/3D/");
+        paramInt3 = 1;
+        paramInt4 = paramInt2;
+        break label177;
+      }
+      localStringBuilder.append("def/basic/action");
+      paramInt3 = 1;
+      paramInt4 = paramInt2;
+      break label177;
+      if (paramInt4 != 0) {
+        localStringBuilder.append("def/role/0/3D/").append("sayhi");
+      }
+      for (;;)
+      {
+        paramInt3 = 1;
+        paramInt4 = 1;
+        break;
+        localStringBuilder.append("def/basic/").append("sayhi");
+      }
+      localStringBuilder.append("def/role/0/3D/").append("sayhi");
+      paramInt3 = 1;
+      paramInt4 = 1;
+      break label177;
+      int i = a(paramInt3, "sayhi");
+      if (-1 != i)
+      {
+        localStringBuilder.append("role/");
+        localStringBuilder.append(paramInt3).append("/").append("sayhi");
+        paramInt4 = i;
+        paramInt3 = 1;
+        break label177;
+      }
+      if (paramInt4 != 0)
+      {
+        localStringBuilder.append("def/role/0/3D/").append("sayhi");
+        paramInt3 = 1;
+        paramInt4 = 1;
+        break label177;
+      }
+      localStringBuilder.append("def/basic/").append("sayhi");
+      paramInt3 = 1;
+      paramInt4 = 1;
+      break label177;
+      localStringBuilder.append("drawer_action/");
+      paramInt3 = 1;
+      paramInt4 = paramInt2;
+      break label177;
+      if (paramInt4 != 0)
+      {
+        localStringBuilder.append("def/role/0/3D/").append("friendcard");
+        paramInt3 = 1;
+        paramInt4 = paramInt2;
+        break label177;
+      }
+      localStringBuilder.append("def/role/").append(0).append("/").append("friendcard");
+      paramInt3 = 1;
+      paramInt4 = paramInt2;
+      break label177;
+      if (paramInt4 != 0)
+      {
+        localStringBuilder.append("def/role/0/3D/").append("drawer");
+        paramInt3 = 1;
+        paramInt4 = paramInt2;
+        break label177;
+      }
+      localStringBuilder.append("def/role/").append(0).append("/").append("drawer");
+      paramInt3 = 1;
+      paramInt4 = paramInt2;
+      break label177;
+      i = a(paramInt3, "interact");
+      if (-1 != i)
+      {
+        localStringBuilder.append("role/");
+        localStringBuilder.append(paramInt3).append("/").append("interact");
+        paramInt4 = i;
+        paramInt3 = 1;
+        break label177;
+      }
+      if (paramInt4 != 0) {
+        localStringBuilder.append("def/role/0/3D/").append("sayhi");
+      }
+      for (;;)
+      {
+        paramInt3 = 1;
+        paramInt4 = 1;
+        break;
+        localStringBuilder.append("def/basic/").append("sayhi");
+      }
+      if (15 == paramInt1) {
+        localStringBuilder.append("/panelAction");
+      }
+      localStringBuilder.append("/action/action");
+      continue;
+      if (15 == paramInt1) {
+        localStringBuilder.append("/panelAction");
+      }
+      localStringBuilder.append("/action_peer/action");
+    }
+  }
+  
+  public static String[] a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, int paramInt4, CmShowRenderView.PlayActionConfig paramPlayActionConfig)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloActionHelper", 2, new Object[] { "[getActionRscPath], bid:" + paramInt1 + ",activeId:" + paramInt2 + ",roleId:" + paramInt3 + ",isActionMaker:" + paramBoolean, ",userStatus:", Integer.valueOf(paramInt4) });
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (paramInt4 == 2)
+    {
+      paramInt4 = 1;
+      switch (paramInt1)
+      {
+      case 3: 
+      case 8: 
+      case 9: 
+      default: 
+        paramInt3 = 1;
+        paramInt4 = paramInt2;
+        label177:
+        if (paramInt3 != 0) {
+          localStringBuilder.append("/");
+        }
+        localStringBuilder.append(paramInt4);
+        if ((paramBoolean) || (paramInt2 < 21)) {
+          if (localStringBuilder.indexOf("def/role/0/3D/") > -1) {
+            localStringBuilder.append("/action");
+          }
+        }
+        break;
+      }
+    }
+    for (;;)
+    {
+      paramPlayActionConfig = localStringBuilder.toString();
+      String str = Integer.toString(paramInt1) + "_" + Integer.toString(paramInt4);
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloActionHelper", 2, "action rsc path:" + localStringBuilder.toString() + ",actionId:" + paramInt4);
+      }
+      return new String[] { paramPlayActionConfig, str };
+      paramInt4 = 0;
+      break;
+      paramInt3 = 0;
+      paramInt4 = paramInt2;
+      break label177;
+      localStringBuilder.append("action");
+      paramInt3 = 1;
+      paramInt4 = paramInt2;
+      break label177;
+      if (paramInt4 != 0)
+      {
+        localStringBuilder.append("def/role/0/3D/");
+        paramInt3 = 1;
+        paramInt4 = paramInt2;
+        break label177;
+      }
+      localStringBuilder.append("def/basic/action");
+      paramInt3 = 1;
+      paramInt4 = paramInt2;
+      break label177;
+      if (paramInt4 != 0) {
+        localStringBuilder.append("def/role/0/3D/").append("sayhi");
+      }
+      for (;;)
+      {
+        paramInt3 = 1;
+        paramInt4 = 1;
+        break;
+        localStringBuilder.append("def/basic/").append("sayhi");
+      }
+      localStringBuilder.append("def/role/0/3D/").append("sayhi");
+      paramInt3 = 1;
+      paramInt4 = 1;
+      break label177;
+      int i = a(paramInt3, "sayhi");
+      if (-1 != i)
+      {
+        localStringBuilder.append("role/");
+        localStringBuilder.append(paramInt3).append("/").append("sayhi");
+        paramInt4 = i;
+        paramInt3 = 1;
+        break label177;
+      }
+      if (paramInt4 != 0)
+      {
+        localStringBuilder.append("def/role/0/3D/").append("sayhi");
+        paramInt3 = 1;
+        paramInt4 = 1;
+        break label177;
+      }
+      localStringBuilder.append("def/basic/").append("sayhi");
+      paramInt3 = 1;
+      paramInt4 = 1;
+      break label177;
+      localStringBuilder.append("drawer_action/");
+      paramInt3 = 1;
+      paramInt4 = paramInt2;
+      break label177;
+      if (paramInt4 != 0)
+      {
+        localStringBuilder.append("def/role/0/3D/").append("friendcard");
+        paramInt3 = 1;
+        paramInt4 = paramInt2;
+        break label177;
+      }
+      localStringBuilder.append("def/role/").append(0).append("/").append("friendcard");
+      paramInt3 = 1;
+      paramInt4 = paramInt2;
+      break label177;
+      if (paramInt4 != 0)
+      {
+        localStringBuilder.append("def/role/0/3D/").append("drawer");
+        paramInt3 = 1;
+        paramInt4 = paramInt2;
+        break label177;
+      }
+      localStringBuilder.append("def/role/").append(0).append("/").append("drawer");
+      paramInt3 = 1;
+      paramInt4 = paramInt2;
+      break label177;
+      i = a(paramInt3, "interact");
+      if (-1 != i)
+      {
+        localStringBuilder.append("role/");
+        localStringBuilder.append(paramInt3).append("/").append("interact");
+        paramInt4 = i;
+        paramInt3 = 1;
+        break label177;
+      }
+      if (paramInt4 != 0) {
+        localStringBuilder.append("def/role/0/3D/").append("sayhi");
+      }
+      for (;;)
+      {
+        paramInt3 = 1;
+        paramInt4 = 1;
+        break;
+        localStringBuilder.append("def/basic/").append("sayhi");
+      }
+      if ((paramPlayActionConfig == null) || (paramPlayActionConfig.c == 0))
+      {
+        localStringBuilder.append("/action/action");
+      }
+      else if (paramPlayActionConfig.c == 1)
+      {
+        localStringBuilder.append("/action/pre/action/action");
+      }
+      else if (paramPlayActionConfig.c == 2)
+      {
+        localStringBuilder.append("/action/main/action/action");
+      }
+      else if (paramPlayActionConfig.c == 3)
+      {
+        localStringBuilder.append("/action/post/action/action");
       }
       else
       {
-        this.b.put(paramString, Long.valueOf(System.currentTimeMillis()));
-        break;
-        i = 0;
+        localStringBuilder.append("/action/action");
+        continue;
+        if ((paramPlayActionConfig == null) || (paramPlayActionConfig.c == 0)) {
+          localStringBuilder.append("/action_peer/action");
+        } else if (paramPlayActionConfig.c == 1) {
+          localStringBuilder.append("/action/pre/action_peer/action");
+        } else if (paramPlayActionConfig.c == 2) {
+          localStringBuilder.append("/action/main/action_peer/action");
+        } else if (paramPlayActionConfig.c == 3) {
+          localStringBuilder.append("/action/post/action_peer/action");
+        } else {
+          localStringBuilder.append("/action_peer/action");
+        }
       }
     }
   }
   
-  public boolean a(String paramString)
+  public static String[] a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt1).append("/action");
+    if (paramBoolean2) {
+      localStringBuilder.append("/group");
+    }
+    switch (paramInt2)
+    {
+    default: 
+      if (paramBoolean1) {
+        localStringBuilder.append("/action/action");
+      }
+      break;
+    }
     for (;;)
     {
-      boolean bool1;
-      boolean bool3;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if (!this.b.containsKey(paramString)) {
-          break label212;
-        }
-        long l = ((Long)this.b.get(paramString)).longValue();
-        if (Math.abs(System.currentTimeMillis() - l) > 60000L)
-        {
-          this.b.remove(paramString);
-          bool1 = false;
-          bool2 = bool1;
-          if (!bool1)
-          {
-            bool3 = SystemUtil.isExistSDCard();
-            if (((bool3) && (SystemUtil.getSDCardAvailableSize() < 2048L)) || ((!bool3) && (SystemUtil.getSystemAvailableSize() < 102400L)))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.qqhead.FaceHandler", 2, "getQQHead|fail, storage is not enough. key=" + paramString + ", isExistSDCard=" + bool3);
-              }
-              bool2 = true;
-            }
-          }
-          else
-          {
-            return bool2;
-          }
-        }
-        else
-        {
-          bool1 = true;
-        }
-      }
-      boolean bool2 = bool1;
-      if (!bool3)
-      {
-        bool2 = bool1;
-        if (!this.jdField_a_of_type_Boolean)
-        {
-          this.jdField_a_of_type_Boolean = true;
-          bful.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getApp().getApplicationContext(), true);
-          return bool1;
-          label212:
-          bool1 = false;
-        }
-      }
-    }
-  }
-  
-  public boolean msgCmdFilter(String paramString)
-  {
-    if (this.allowCmdSet == null)
-    {
-      this.allowCmdSet = new HashSet();
-      this.allowCmdSet.add("MultibusidURLSvr.HeadUrlReq");
-    }
-    return !this.allowCmdSet.contains(paramString);
-  }
-  
-  public Class<? extends BusinessObserver> observerClass()
-  {
-    return anhs.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (msgCmdFilter(paramFromServiceMsg.getServiceCmd())) {
+      String str1 = localStringBuilder.toString();
+      String str2 = "whiteface_" + Integer.toString(paramInt2) + "_" + Integer.toString(paramInt1);
       if (QLog.isColorLevel()) {
-        QLog.d("Q.qqhead.FaceHandler", 2, "cmdfilter error=" + paramFromServiceMsg.getServiceCmd());
+        QLog.d("ApolloActionHelper", 2, "[whiteface] path:" + localStringBuilder.toString() + ",actionId:" + paramInt1);
+      }
+      return new String[] { str1, str2 };
+      localStringBuilder.append("/pre");
+      break;
+      localStringBuilder.append("/main");
+      break;
+      localStringBuilder.append("/post");
+      break;
+      localStringBuilder.append("/action_peer/action");
+    }
+  }
+  
+  public static String[] a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloActionHelper", 2, new Object[] { "[getActionLuaString] apolloId=", paramString1, ", actionId=", Integer.valueOf(paramInt1), ", taskId=", Integer.valueOf(paramInt2), ", animName=", paramString3, ", actionRscName=", paramString2 });
+    }
+    String[] arrayOfString = new String[2];
+    String str = paramString3;
+    if (paramString2.contains("_peer")) {
+      str = paramString3 + "_peer";
+    }
+    paramString3 = paramString2;
+    if (paramString2.startsWith("action")) {
+      paramString3 = paramString2.substring("action/".length());
+    }
+    arrayOfString[0] = String.format("setAccessoryAnimation(%s, '%s', '%s', '%s');", new Object[] { paramString1, paramString3, paramString3, str });
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloActionHelper", 2, arrayOfString[0]);
+    }
+    arrayOfString[1] = String.format("if(%s){%s.setAnimation(%d, '%s', false);}", new Object[] { paramString1, paramString1, Integer.valueOf(paramInt2), str });
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloActionHelper", 2, arrayOfString[1]);
+    }
+    return arrayOfString;
+  }
+  
+  public static String[] a(String paramString, int[] paramArrayOfInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloActionHelper", 2, new Object[] { "[getDressLuaString] apolloId=", paramString });
+    }
+    if (paramArrayOfInt == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloActionHelper", 2, "[getDressLuaString] no dressId, abort");
+      }
+      return null;
+    }
+    String[] arrayOfString = new String[paramArrayOfInt.length];
+    int i = 0;
+    while (i < paramArrayOfInt.length)
+    {
+      String str = a(1, paramArrayOfInt[i]);
+      arrayOfString[i] = String.format("setAccessory(%s, '%s', '%s');", new Object[] { paramString, str, str });
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloActionHelper", 2, new Object[] { "[getDressLuaString] scriptStr", Integer.valueOf(i), "=", arrayOfString[i] });
+      }
+      i += 1;
+    }
+    return arrayOfString;
+  }
+  
+  public static String b()
+  {
+    return "if(\"undefined\" != typeof addFrame){addFrame();}else{if(renderTicker.paused){if(BK.Director.root){BK.Render.clear(0,0,0,0);BK.Render.treeRender( BK.Director.root,0);BK.Render.commit();}}}";
+  }
+  
+  public static String b(int paramInt1, int paramInt2)
+  {
+    return a(paramInt1, paramInt2, 1);
+  }
+  
+  public static String b(int paramInt1, int paramInt2, int paramInt3)
+  {
+    return "if(\"undefined\" != typeof comGlobalParam) { comGlobalParam.width=" + paramInt1 + ";comGlobalParam.vWidth=" + paramInt1 + ";comGlobalParam.vHeight=" + paramInt2 + ";if(comGlobalParam.height==0){comGlobalParam.height=" + paramInt3 + ";}}";
+  }
+  
+  public static String b(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {
+      return null;
+    }
+    paramString = ((amme)paramQQAppInterface.getManager(QQManagerFactory.APOLLO_MANAGER)).b(paramString);
+    if (paramString != null)
+    {
+      paramString = paramString.getApolloDress3D();
+      if (paramString != null) {
+        return paramString.jdField_a_of_type_JavaLangString;
       }
     }
-    while (!"MultibusidURLSvr.HeadUrlReq".equals(paramFromServiceMsg.getServiceCmd())) {
-      return;
-    }
-    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    return null;
   }
 }
 

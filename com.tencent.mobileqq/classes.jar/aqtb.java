@@ -1,12 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.widget.RoundImageView;
 
 class aqtb
-  implements DialogInterface.OnClickListener
 {
-  aqtb(aqsz paramaqsz) {}
+  public arrt a;
+  public RoundImageView a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public aqtb(aqsx paramaqsx, RoundImageView paramRoundImageView, arrt paramarrt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = paramRoundImageView;
+    this.jdField_a_of_type_Arrt = paramarrt;
+  }
 }
 
 

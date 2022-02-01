@@ -1,17 +1,86 @@
-import com.tencent.ark.ark.PlayerStub;
-import com.tencent.ark.ark.PlayerStubFactory;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.util.Base64;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.QzoneAuthorizeConfig;
+import java.util.Map;
 
-final class aowd
-  implements ark.PlayerStubFactory
+public class aowd
+  extends aouc
 {
-  public ark.PlayerStub CreateStub()
+  public aowd(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    return new aowc();
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  private boolean C()
+  {
+    if (this.jdField_a_of_type_JavaLangString != null)
+    {
+      if (!QzoneAuthorizeConfig.getInstance().hasSchemeRight(this.e, this.jdField_a_of_type_JavaLangString))
+      {
+        QLog.e("QzoneAction", 1, "has no right to handle this schema");
+        return false;
+      }
+      String str;
+      if (this.jdField_a_of_type_JavaLangString.startsWith("mqqzone"))
+      {
+        str = "mqzone" + this.jdField_a_of_type_JavaLangString.substring("mqqzone".length());
+        if (TextUtils.isEmpty(str)) {
+          break label198;
+        }
+        Intent localIntent = new Intent();
+        localIntent.putExtra("cmd", "Schema");
+        localIntent.putExtra("schema", str);
+        vnd.a(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo, this.d);
+        uyt.a(this.jdField_a_of_type_AndroidContentContext, this.d, this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo, localIntent);
+      }
+      for (;;)
+      {
+        for (;;)
+        {
+          return true;
+          str = (String)bkyp.a(this.jdField_a_of_type_JavaLangString).get("schema");
+          if (!TextUtils.isEmpty(str)) {
+            try
+            {
+              str = new String(Base64.decode(str, 0), "utf-8");
+            }
+            catch (Exception localException)
+            {
+              QLog.e("QzoneAction", 1, localException, new Object[0]);
+            }
+          }
+        }
+        Object localObject = null;
+        break;
+        label198:
+        QLog.e("QzoneAction", 1, "gotoQzoneHandleSchema,schema=null");
+      }
+    }
+    return false;
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      boolean bool = C();
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QzoneAction", 1, "doAction error: " + localException.getMessage());
+      a("QzoneAction");
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aowd
  * JD-Core Version:    0.7.0.1
  */

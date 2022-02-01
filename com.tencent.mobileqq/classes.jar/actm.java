@@ -1,30 +1,66 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.data.SubAccountInfo;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.apollo_game_status.STCMGameMessage;
+import tencent.im.apollo_game_status.STCMGameMessage.STMsgComm;
+import tencent.im.s2c.msgtype0x210.submsgtype0xdf.submsgtype0xdf.MsgBody;
 
 public class actm
-  implements bjoe
+  implements acpi
 {
-  SubAccountInfo jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo;
-  
-  public actm(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  private static void a(QQAppInterface paramQQAppInterface, long paramLong, MsgType0x210 paramMsgType0x210)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameManager", 2, "onLinePush receive 0x210_0xdf, [C2C push]");
     }
-    switch (paramInt)
+    long l;
+    try
     {
-    default: 
+      Object localObject = new submsgtype0xdf.MsgBody();
+      ((submsgtype0xdf.MsgBody)localObject).mergeFrom(paramMsgType0x210.vProtobuf);
+      if (((submsgtype0xdf.MsgBody)localObject).msg_game_state.has())
+      {
+        paramMsgType0x210 = (apollo_game_status.STCMGameMessage)((submsgtype0xdf.MsgBody)localObject).msg_game_state.get();
+        localObject = (apollo_game_status.STCMGameMessage.STMsgComm)paramMsgType0x210.msg_comm.get();
+        l = bhbx.a(((apollo_game_status.STCMGameMessage.STMsgComm)localObject).uint32_session_id.get());
+        paramQQAppInterface = (amma)paramQQAppInterface.getManager(QQManagerFactory.APOLLO_GAME_MANAGER);
+        if (paramLong != l) {
+          break label194;
+        }
+        localObject = ((apollo_game_status.STCMGameMessage.STMsgComm)localObject).rpt_uint32_session_list.get();
+        if ((localObject != null) && (((List)localObject).size() > 0))
+        {
+          localObject = ((List)localObject).iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            l = bhbx.a(((Integer)((Iterator)localObject).next()).intValue());
+            if (l != paramLong) {
+              paramQQAppInterface.a(0, 0, Long.toString(l), paramMsgType0x210);
+            }
+          }
+        }
+      }
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.b(this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo);
+    catch (Exception paramQQAppInterface)
+    {
+      QLog.e("ApolloGameManager", 1, "onLinePush 0x210_0xdf push exception : ", paramQQAppInterface);
+    }
+    label194:
+    paramQQAppInterface.a(0, 0, Long.toString(l), paramMsgType0x210);
   }
   
-  public void a(SubAccountInfo paramSubAccountInfo)
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo = paramSubAccountInfo;
+    a(paramacnk.a(), paramLong, paramMsgType0x210);
+    return null;
   }
 }
 

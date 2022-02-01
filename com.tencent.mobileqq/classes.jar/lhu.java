@@ -1,174 +1,248 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.statistics.StatisticCollector;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class lhu
 {
-  public static void a()
+  public static lhu a;
+  public int a;
+  public List<lhv> a;
+  public boolean a;
+  public int b = 0;
+  
+  public lhu()
   {
-    try
-    {
-      boolean bool = a("QuaVChatNewIntent", true, null);
-      QLog.d("VideoBeaconReporter", 1, "event_QuaVChatNewIntent, isSucceed[true],  ret[" + bool + "]");
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("VideoBeaconReporter", 2, "event_QuaVChatNewIntent:", localThrowable);
-    }
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public static void a(int paramInt, long paramLong1, long paramLong2, String paramString)
+  public static int a()
   {
-    boolean bool2 = true;
-    QLog.d("VideoBeaconReporter", 1, "reportQuaOnCloseVideo_onCloseVideo :reason[" + paramInt + "], param0[" + paramLong1 + "], param1[" + paramLong2 + "], param2[" + paramString + "], ");
-    for (;;)
-    {
-      try
+    lhu locallhu = a();
+    if (locallhu != null) {
+      return locallhu.b;
+    }
+    return 3;
+  }
+  
+  public static List<lhv> a()
+  {
+    lhu locallhu = a();
+    if (locallhu != null) {
+      return locallhu.jdField_a_of_type_JavaUtilList;
+    }
+    return null;
+  }
+  
+  public static lhu a()
+  {
+    if ((jdField_a_of_type_Lhu == null) || (jdField_a_of_type_Lhu.jdField_a_of_type_Boolean)) {
+      jdField_a_of_type_Lhu = b();
+    }
+    return jdField_a_of_type_Lhu;
+  }
+  
+  public static boolean a()
+  {
+    lhu locallhu = a();
+    return (locallhu != null) && (locallhu.jdField_a_of_type_Int == 1);
+  }
+  
+  private static lhu b()
+  {
+    int i1 = 3;
+    boolean bool = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC!");
+    }
+    String str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.AVPanCfg.name());
+    QLog.i("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC dpcValue: " + str);
+    ArrayList localArrayList = new ArrayList();
+    int i;
+    int k;
+    int m;
+    int n;
+    if (!TextUtils.isEmpty(str)) {
+      for (;;)
       {
-        localHashMap = new HashMap();
-        l = paramLong1;
-        if (paramLong2 != 0L)
+        try
         {
-          i = (int)paramLong2 + 1000;
-          paramInt = i;
-          l = paramLong1;
-          if (paramString == null) {}
-        }
-      }
-      catch (Throwable paramString)
-      {
-        HashMap localHashMap;
-        long l;
-        int i;
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.d("VideoBeaconReporter", 2, "event_QuaOnCloseVideo:", paramString);
-        return;
-        boolean bool1 = false;
-        continue;
-        if (l != 0L) {
+          Object localObject1 = str.split("\\|");
+          if ((localObject1 != null) && (localObject1.length >= 3))
+          {
+            j = avnk.a(localObject1[0], 0);
+            localObject3 = localObject1[1];
+            i = j;
+          }
+          try
+          {
+            if (!TextUtils.isEmpty((CharSequence)localObject3))
+            {
+              i = j;
+              localObject3 = ((String)localObject3).split("-");
+              k = 0;
+              i = j;
+              if (k < localObject3.length)
+              {
+                Object localObject4 = localObject3[k];
+                i = j;
+                if (TextUtils.isEmpty((CharSequence)localObject4)) {
+                  break label623;
+                }
+                i = j;
+                localObject4 = ((String)localObject4).split("_");
+                i = j;
+                if (localObject4.length < 2) {
+                  break label615;
+                }
+                i = j;
+                m = avnk.a(localObject4[0], 0);
+                i = j;
+                n = avnk.a(localObject4[1], 0);
+                label204:
+                if ((m <= 0) || (n <= 0)) {
+                  break label623;
+                }
+                i = j;
+                localArrayList.add(new lhv(n, m));
+                break label623;
+              }
+            }
+            i = j;
+            k = avnk.a(localObject1[2], 3);
+            i = j;
+            label249:
+            if (localArrayList.size() == 0)
+            {
+              localArrayList.add(new lhv(215, 4));
+              localArrayList.add(new lhv(150, 8));
+            }
+            localObject1 = new lhu();
+            ((lhu)localObject1).jdField_a_of_type_Int = i;
+            ((lhu)localObject1).b = k;
+            ((lhu)localObject1).jdField_a_of_type_JavaUtilList = localArrayList;
+            if ((str == null) || (str.isEmpty())) {
+              bool = true;
+            }
+            ((lhu)localObject1).jdField_a_of_type_Boolean = bool;
+            return localObject1;
+          }
+          catch (Exception localException1)
+          {
+            j = i;
+          }
+          if ((localObject1 == null) || (localObject1.length != 1)) {
+            continue;
+          }
+          j = avnk.a(localObject1[0], 0);
+          i = j;
+          QLog.i("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC configs.length == 1");
+          k = i1;
+          i = j;
           continue;
         }
-        bool1 = bool2;
-        continue;
-      }
-      try
-      {
-        l = Long.parseLong(paramString);
-        paramInt = i;
-      }
-      catch (Exception paramString)
-      {
-        paramInt = i;
-        l = paramLong1;
-        if (!QLog.isColorLevel()) {
+        catch (Exception localException2)
+        {
+          Object localObject3;
+          Object localObject2;
+          int j = 0;
+          continue;
+          m = 0;
+          n = 0;
           continue;
         }
-        QLog.d("VideoBeaconReporter", 2, "parseLong error:", paramString);
-        paramInt = i;
-        l = paramLong1;
+        k = i1;
+        i = j;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC exception:", localException1);
+          k = i1;
+          i = j;
+          continue;
+          if ((localException1 != null) && (localException1.length == 2))
+          {
+            j = avnk.a(localException1[0], 0);
+            localObject2 = localException1[1];
+            i = j;
+            if (!TextUtils.isEmpty((CharSequence)localObject2))
+            {
+              i = j;
+              localObject2 = ((String)localObject2).split("-");
+              k = 0;
+            }
+          }
+        }
       }
     }
-    localHashMap.put("reason", "" + paramInt);
-    localHashMap.put("error_code", "" + l);
-    if (paramInt == 1)
+    for (;;)
     {
-      bool1 = bool2;
-      if (l != 1L)
+      i = j;
+      if (k < localObject2.length)
       {
-        bool1 = bool2;
-        if (l != 2L) {}
+        localObject3 = localObject2[k];
+        i = j;
+        if (TextUtils.isEmpty((CharSequence)localObject3)) {
+          break label630;
+        }
+        i = j;
+        localObject3 = ((String)localObject3).split("_");
+        i = j;
+        if (localObject3.length >= 2)
+        {
+          i = j;
+          m = avnk.a(localObject3[0], 0);
+          i = j;
+          n = avnk.a(localObject3[1], 0);
+          if ((m <= 0) || (n <= 0)) {
+            break label630;
+          }
+          i = j;
+          localArrayList.add(new lhv(n, m));
+          break label630;
+        }
       }
       else
       {
-        bool2 = a("QuaOnCloseVideo", bool1, localHashMap);
-        QLog.d("VideoBeaconReporter", 1, "event_QuaOnCloseVideo, isSucceed[" + bool1 + "], node_reason[" + (String)localHashMap.get("reason") + "], node_error_code[" + (String)localHashMap.get("error_code") + "],     ret[" + bool2 + "]");
-        return;
+        i = j;
+        QLog.i("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC configs.length == 2");
+        k = i1;
+        i = j;
+        break label249;
       }
+      i = 0;
+      k = i1;
+      break label249;
+      label615:
+      m = 0;
+      n = 0;
+      break label204;
+      label623:
+      k += 1;
+      break;
+      label630:
+      k += 1;
     }
   }
   
-  public static void a(long paramLong)
+  public String toString()
   {
-    boolean bool1 = true;
-    for (;;)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("hotVideoSwitch: ").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" mPanoramaEffectMemory: ").append(this.b);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    String str = "";
+    while (localIterator.hasNext())
     {
-      long l;
-      try
-      {
-        new HashMap();
-        l = -1L;
-        if (paramLong <= 0L) {
-          break label107;
-        }
-        l = System.currentTimeMillis() - paramLong;
-      }
-      catch (Throwable localThrowable)
-      {
-        boolean bool2;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("VideoBeaconReporter", 2, "event_QuaInviteClose:", localThrowable);
-        return;
-      }
-      bool2 = a("QuaInviteClose", bool1, null);
-      QLog.d("VideoBeaconReporter", 1, "event_QuaInviteClose, isSucceed[" + bool1 + "],  ret[" + bool2 + "]");
-      return;
-      label107:
-      while (l <= 2000L)
-      {
-        bool1 = false;
-        break;
+      lhv locallhv = (lhv)localIterator.next();
+      if (locallhv != null) {
+        str = str + locallhv.b + "_" + locallhv.jdField_a_of_type_Int + "-";
       }
     }
-  }
-  
-  public static void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    boolean bool = true;
-    for (;;)
-    {
-      try
-      {
-        localHashMap = new HashMap();
-        if (!paramBoolean1) {
-          continue;
-        }
-        localHashMap.put("broadcast_created", "1");
-        if (!paramBoolean2) {
-          continue;
-        }
-        localHashMap.put("vchat_created", "1");
-        paramBoolean1 = bool;
-      }
-      catch (Throwable localThrowable)
-      {
-        HashMap localHashMap;
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.d("VideoBeaconReporter", 2, "event_QuaProcessWakeUp:", localThrowable);
-        return;
-        localThrowable.put("vchat_created", "0");
-        paramBoolean1 = false;
-        continue;
-      }
-      paramBoolean2 = a("QuaProcessWakeUp", paramBoolean1, localHashMap);
-      QLog.d("VideoBeaconReporter", 1, "event_QuaProcessWakeUp, isSucceed[" + paramBoolean1 + "], node_broadcast_created[" + (String)localHashMap.get("broadcast_created") + "], node_vchat_created[" + (String)localHashMap.get("vchat_created") + "],     ret[" + paramBoolean2 + "]");
-      return;
-      localHashMap.put("broadcast_created", "0");
-    }
-  }
-  
-  private static boolean a(String paramString, boolean paramBoolean, HashMap<String, String> paramHashMap)
-  {
-    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(null, paramString, paramBoolean, 0L, 0L, paramHashMap, null);
-    return true;
+    localStringBuilder.append(" hotVideoBlurMemory: ").append(str);
+    return localStringBuilder.toString();
   }
 }
 

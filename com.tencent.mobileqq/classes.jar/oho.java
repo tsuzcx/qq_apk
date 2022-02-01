@@ -1,102 +1,117 @@
-import com.google.gson.Gson;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.AppRuntime;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import java.net.URL;
+import org.json.JSONObject;
 
 public class oho
+  extends ohj
 {
-  public static ArrayList<ogu> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if (localAppRuntime != null) {
-      localArrayList = (ArrayList)new Gson().fromJson(ohr.a(localAppRuntime, "redpoint_info_" + ohm.a(localAppRuntime)), new ohp().getType());
-    }
-    return localArrayList;
-  }
+  private vuw a;
+  public int d;
+  public String d;
+  public int e;
   
-  public static void a()
+  public static oho a(JSONObject paramJSONObject)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if (localAppRuntime != null) {
-      ohr.a(localAppRuntime, "redpoint_info_" + ohm.a(localAppRuntime), "");
-    }
-  }
-  
-  public static void a(int paramInt)
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if (localAppRuntime != null) {
-      ohr.a(localAppRuntime, "redpoint_show_" + paramInt + "_" + ohm.a(localAppRuntime), true);
-    }
-  }
-  
-  public static void a(int paramInt1, int paramInt2)
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    QLog.i("Ecshop_RedPointUtil", 2, "[saveRedpoingClickTag]  taksId: " + paramInt2);
-    if (localAppRuntime != null) {
-      ohr.a(localAppRuntime, "redpoint_click_" + paramInt1 + "_" + ohm.a(localAppRuntime), paramInt2);
-    }
-  }
-  
-  public static void a(ArrayList<ogu> paramArrayList)
-  {
-    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {}
-    AppRuntime localAppRuntime;
-    do
+    if (paramJSONObject == null) {}
+    for (;;)
     {
-      return;
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    } while (localAppRuntime == null);
-    ohr.a(localAppRuntime, "redpoint_info_" + ohm.a(localAppRuntime), new Gson().toJson(paramArrayList));
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    boolean bool = false;
-    try
-    {
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if (localAppRuntime != null) {
-        bool = ohr.a(localAppRuntime, "redpoint_show_" + paramInt + "_" + ohm.a(localAppRuntime));
-      }
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("Ecshop_RedPointUtil", 1, "[getRedpointClickTag] fail.", localException);
-    }
-    return false;
-  }
-  
-  public static boolean a(int paramInt1, int paramInt2)
-  {
-    try
-    {
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if (localAppRuntime != null)
+      return null;
+      try
       {
-        paramInt1 = ohr.a(localAppRuntime, "redpoint_click_" + paramInt1 + "_" + ohm.a(localAppRuntime));
-        if (QLog.isColorLevel()) {
-          QLog.i("Ecshop_RedPointUtil", 2, "[getRedpointClickTag] cachedTaskId: " + paramInt1 + " taskId: " + paramInt2);
+        oho localoho = new oho();
+        localoho.jdField_d_of_type_JavaLangString = paramJSONObject.optString("imageUrl");
+        localoho.jdField_d_of_type_Int = paramJSONObject.optInt("imageWidth");
+        localoho.e = paramJSONObject.optInt("imageHeight");
+        boolean bool = TextUtils.isEmpty(localoho.jdField_d_of_type_JavaLangString);
+        if (!bool) {
+          return localoho;
         }
-        return paramInt1 == paramInt2;
       }
+      catch (Exception paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+      }
+    }
+    return null;
+  }
+  
+  public View a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, ohb paramohb, boolean paramBoolean)
+  {
+    super.a(paramContext, paramString1, paramString2, paramString3, paramInt, paramohb, paramBoolean);
+    paramString1 = LayoutInflater.from(paramContext).inflate(2131560279, null);
+    paramString2 = (ResizeURLImageView)paramString1.findViewById(2131372811);
+    if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {}
+    try
+    {
+      paramString3 = new URL(this.jdField_d_of_type_JavaLangString);
+      paramString2.setImage(paramString3);
+      if (tlv.a().a(paramString3)) {
+        this.jdField_a_of_type_Int = 2;
+      }
+      for (;;)
+      {
+        a(paramContext, paramString1);
+        return paramString1;
+        this.jdField_a_of_type_Int = 1;
+        this.jdField_a_of_type_Vuw = new ohp(this, paramString1, paramString2);
+        paramString2.setPublicAccountImageDownListener(this.jdField_a_of_type_Vuw);
+        paramString1.findViewById(2131370450).setVisibility(0);
+      }
+    }
+    catch (Exception paramString2)
+    {
+      for (;;)
+      {
+        paramString2.printStackTrace();
+      }
+    }
+  }
+  
+  public void a()
+  {
+    super.a();
+    if (this.jdField_a_of_type_Int == 3) {
+      d();
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      oht localoht = (oht)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.KANDIAN_NATIVE_AD_PRELOAD_MANAGER);
+      if (localoht != null) {
+        localoht.a(this.jdField_d_of_type_JavaLangString);
+      }
+    }
+  }
+  
+  public void c()
+  {
+    super.c();
+    this.jdField_a_of_type_Vuw = null;
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131370450).setVisibility(0);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131366412).setVisibility(8);
+    try
+    {
+      URL localURL = new URL(this.jdField_d_of_type_JavaLangString);
+      ((ResizeURLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372811)).setImage(localURL);
+      return;
     }
     catch (Exception localException)
     {
-      QLog.e("Ecshop_RedPointUtil", 1, "[getRedpointClickTag] fail.", localException);
-    }
-    return false;
-  }
-  
-  public static void b(int paramInt)
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if (localAppRuntime != null) {
-      ohr.a(localAppRuntime, "redpoint_show_" + paramInt + "_" + ohm.a(localAppRuntime), false);
+      localException.printStackTrace();
     }
   }
 }

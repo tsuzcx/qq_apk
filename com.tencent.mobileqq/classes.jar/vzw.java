@@ -1,15 +1,20 @@
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class vzw
-  extends axku
+class vzw
+  extends SimpleJob<Object>
 {
-  vzw(vzt paramvzt) {}
-  
-  protected void a(Object paramObject)
+  vzw(vzv paramvzv, String paramString, boolean paramBoolean)
   {
-    ThreadManager.post(new MsgTabStoryNodeListManager.2.1(this, paramObject), 5, null, true);
-    xvv.b(vzt.b(), "freshRedPoint, showStoryNode");
+    super(paramString);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    this.jdField_a_of_type_Vzv.b(this.jdField_a_of_type_Boolean);
+    return null;
   }
 }
 

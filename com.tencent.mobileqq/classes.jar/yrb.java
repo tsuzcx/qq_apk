@@ -1,44 +1,28 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.qqstory.view.EmptySupportViewPager;
-import java.util.Iterator;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public class yrb
-  implements ViewPager.OnPageChangeListener
+class yrb
+  extends AnimatorListenerAdapter
 {
-  public yrb(EmptySupportViewPager paramEmptySupportViewPager) {}
+  yrb(yqz paramyqz) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (this.a.a != null)
-    {
-      Iterator localIterator = this.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
-      }
-    }
+    ykq.b("FaceLayer", "scaleAnimator cancel!");
   }
   
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.a.a != null)
-    {
-      Iterator localIterator = this.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
-      }
-    }
+    ykq.b("FaceLayer", "scaleAnimator end!");
+    this.a.p = 1.0F;
+    this.a.c = false;
+    this.a.b.g();
   }
   
-  public void onPageSelected(int paramInt)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if (this.a.a != null)
-    {
-      Iterator localIterator = this.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
-      }
-    }
+    ykq.b("FaceLayer", "scaleAnimator start!");
+    this.a.c = true;
   }
 }
 

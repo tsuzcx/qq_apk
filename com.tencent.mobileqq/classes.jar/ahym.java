@@ -1,10 +1,19 @@
-import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
 
-public abstract interface ahym
+class ahym
+  extends Handler
 {
-  public abstract void a();
+  ahym(ahyl paramahyl) {}
   
-  public abstract void a(ReadInJoySearchHistoryEntity paramReadInJoySearchHistoryEntity);
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    if (this.a.c.isShown()) {
+      this.a.c.setVisibility(8);
+    }
+  }
 }
 
 

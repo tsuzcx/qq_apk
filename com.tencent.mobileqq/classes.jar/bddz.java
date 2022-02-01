@@ -1,32 +1,26 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.qphone.base.util.QLog;
+import android.opengl.EGLContext;
 
-class bddz
-  implements Animator.AnimatorListener
+public class bddz
 {
-  bddz(bddy parambddy) {}
+  private EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
+  public bdeq a;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a()
   {
-    if (bddy.a(this.a) != null)
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("IntegralClockView", 2, "integralLottieView play end");
-      }
-      bddy.a(this.a).setVisibility(8);
+      this.jdField_a_of_type_AndroidOpenglEGLContext = null;
+      return;
     }
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public void a(EGLContext paramEGLContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IntegralClockView", 2, "integralLottieView play start");
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_AndroidOpenglEGLContext = paramEGLContext;
+      return;
     }
   }
 }

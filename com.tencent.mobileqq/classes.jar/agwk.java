@@ -1,48 +1,20 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForDeviceFile;
 
-public abstract class agwk
+final class agwk
+  implements ahab
 {
-  public int a;
-  public Context a;
-  protected SessionInfo a;
-  protected BaseChatPie a;
-  public QQAppInterface a;
-  public int b;
-  
-  public agwk(BaseChatPie paramBaseChatPie, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, int paramInt1, int paramInt2)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public long a()
-  {
-    return 0L;
-  }
-  
-  public abstract View a();
-  
-  public abstract void a();
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public String toString()
-  {
-    return "NavigateBar{id=" + this.jdField_a_of_type_Int + ", priority=" + this.b + '}';
+    paramQQAppInterface = (MessageForDeviceFile)paramChatMessage;
+    if (paramQQAppInterface.nFileMsgType == 2) {
+      return 36;
+    }
+    if (paramQQAppInterface.nFileMsgType == 1) {
+      return 37;
+    }
+    return -1;
   }
 }
 

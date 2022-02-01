@@ -1,18 +1,18 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinSlideDownView;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
 
 public class tbo
-  implements AdapterView.OnItemClickListener
+  implements bdyv
 {
-  public tbo(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
+  public tbo(ReadInJoySkinSlideDownView paramReadInJoySkinSlideDownView) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(int paramInt1, int paramInt2)
   {
-    if ((!this.a.a()) && (this.a.isEnabled()) && (ReadInJoyDynamicGridView.a(this.a) != null)) {
-      ReadInJoyDynamicGridView.a(this.a).onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-    }
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
+    localLayoutParams.width = paramInt1;
+    localLayoutParams.height = this.a.getHeight();
+    this.a.a.setLayoutParams(localLayoutParams);
   }
 }
 

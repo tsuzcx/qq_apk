@@ -1,125 +1,645 @@
-import android.util.SparseArray;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.leba.LebaMgrDataLogic.1;
+import com.tencent.mobileqq.activity.leba.LebaMgrDataLogic.2;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.LebaPluginInfo;
 import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
 import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
 
 public class ajzx
 {
-  private SparseArray<akct> a = new SparseArray();
+  public int a;
+  public long a;
+  public HashMap<Long, Integer> a;
+  public final List<awdt> a;
+  private boolean a;
+  public final List<awdt> b;
+  public final List<awdt> c;
+  public final List<awdt> d;
+  public final List<awdt> e;
+  public final List<awdt> f;
+  public final List<awdt> g;
+  public final List<awdt> h;
+  public final List<List<awdt>> i;
   
   public ajzx()
   {
-    localObject = akgd.a();
-    JSONArray localJSONArray;
-    if (localObject != null)
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.add(a());
+    this.b = new ArrayList();
+    this.c = new ArrayList();
+    this.d = new ArrayList();
+    this.e = new ArrayList();
+    this.f = new ArrayList();
+    this.g = new ArrayList();
+    this.h = new ArrayList();
+    this.i = new ArrayList();
+    this.i.add(this.jdField_a_of_type_JavaUtilList);
+    this.i.add(this.b);
+    this.i.add(this.c);
+    this.i.add(this.d);
+    this.i.add(this.e);
+    this.i.add(this.f);
+    this.i.add(this.g);
+    this.i.add(this.h);
+  }
+  
+  private void a(Context paramContext)
+  {
+    paramContext = a(paramContext);
+    if (paramContext != null) {
+      this.b.add(paramContext);
+    }
+  }
+  
+  public int a()
+  {
+    Iterator localIterator = this.i.iterator();
+    for (int j = 0; localIterator.hasNext(); j = ((List)localIterator.next()).size() + j) {}
+    return j;
+  }
+  
+  public int a(int paramInt)
+  {
+    awdt localawdt = a(paramInt);
+    if (localawdt == null) {
+      return 1;
+    }
+    return localawdt.jdField_a_of_type_Int;
+  }
+  
+  public int a(awdt paramawdt)
+  {
+    int j;
+    if (this.jdField_a_of_type_Boolean) {
+      j = this.d.size();
+    }
+    int k;
+    do
     {
-      localJSONArray = ((ajyg)((QQAppInterface)localObject).getManager(245)).a("redPackPanel", new String[] { "panelRedPkgList" });
-      if (localJSONArray != null) {
-        break label63;
+      return j;
+      ArrayList localArrayList = new ArrayList();
+      Iterator localIterator = this.d.iterator();
+      while (localIterator.hasNext()) {
+        localArrayList.add(((awdt)localIterator.next()).jdField_a_of_type_Arpq);
       }
-      QLog.i("ConfigLogic", 2, "no pkg list...");
+      localArrayList.add(paramawdt.jdField_a_of_type_Arpq);
+      anxo.b(localArrayList, a());
+      k = localArrayList.indexOf(paramawdt.jdField_a_of_type_Arpq);
+      j = k;
+    } while (k != -1);
+    QLog.i("leba_sort_LebaMgrDataLogic", 1, "findOpenInsertPosition index == -1");
+    return this.d.size();
+  }
+  
+  public int a(List<awdt> paramList)
+  {
+    Iterator localIterator = this.i.iterator();
+    List localList;
+    for (int j = 0;; j = localList.size() + j) {
+      if (localIterator.hasNext())
+      {
+        localList = (List)localIterator.next();
+        if (localList != paramList) {}
+      }
+      else
+      {
+        return j;
+      }
+    }
+  }
+  
+  public awdt a()
+  {
+    awdt localawdt = new awdt();
+    localawdt.jdField_a_of_type_Int = 1;
+    return localawdt;
+  }
+  
+  public awdt a(int paramInt)
+  {
+    if (paramInt < 0)
+    {
+      QLog.i("leba_sort_LebaMgrDataLogic", 1, "getItem" + paramInt);
+      return null;
+    }
+    Iterator localIterator = this.i.iterator();
+    List localList;
+    for (int j = 0; localIterator.hasNext(); j = localList.size() + j)
+    {
+      localList = (List)localIterator.next();
+      if (paramInt < localList.size() + j) {
+        return (awdt)localList.get(paramInt - j);
+      }
+    }
+    return null;
+  }
+  
+  public awdt a(Context paramContext)
+  {
+    if ((QzoneConfig.isQQCircleShowLebaEntrance()) && (QzoneConfig.isQQCircleShowSwitchButton()))
+    {
+      awdt localawdt = new awdt();
+      localawdt.jdField_a_of_type_Int = 3;
+      localawdt.jdField_a_of_type_JavaLangString = paramContext.getString(2131719158);
+      localawdt.b = 2130845302;
+      return localawdt;
+    }
+    return null;
+  }
+  
+  public awdt a(Context paramContext, boolean paramBoolean)
+  {
+    awdt localawdt = new awdt();
+    localawdt.jdField_a_of_type_Int = 1;
+    if (paramBoolean)
+    {
+      if (this.jdField_a_of_type_Boolean) {}
+      for (paramContext = paramContext.getString(2131693483);; paramContext = paramContext.getString(2131693482))
+      {
+        localawdt.jdField_a_of_type_JavaLangString = paramContext;
+        return localawdt;
+      }
+    }
+    localawdt.jdField_a_of_type_JavaLangString = paramContext.getString(2131693481);
+    return localawdt;
+  }
+  
+  public awdt a(arpq paramarpq)
+  {
+    awdt localawdt = new awdt();
+    localawdt.jdField_a_of_type_Int = 2;
+    localawdt.jdField_a_of_type_Arpq = paramarpq;
+    return localawdt;
+  }
+  
+  public List<Integer> a()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime == null) || (!(localAppRuntime instanceof QQAppInterface)))
+    {
+      QLog.i("leba_sort_LebaMgrDataLogic", 1, "getSortList AppRuntime error ");
+      return null;
+    }
+    return anxo.a((QQAppInterface)localAppRuntime, this.jdField_a_of_type_Int);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap == null)
+    {
+      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+      int j = 0;
+      while (j < this.d.size())
+      {
+        awdt localawdt = (awdt)this.d.get(j);
+        if ((localawdt != null) && (localawdt.jdField_a_of_type_Arpq != null)) {
+          this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(localawdt.jdField_a_of_type_Arpq.jdField_a_of_type_Long), Integer.valueOf(j));
+        }
+        j += 1;
+      }
+    }
+  }
+  
+  public void a(Context paramContext, awdu paramawdu, awdt paramawdt, awdy paramawdy)
+  {
+    try
+    {
+      if (a())
+      {
+        QLog.i("leba_sort_LebaMgrDataLogic", 1, "openPlugin isFastClick");
+        return;
+      }
+      if ((paramawdt == null) || (paramawdt.jdField_a_of_type_Arpq == null) || (paramawdt.jdField_a_of_type_Int != 2) || (!this.g.contains(paramawdt)))
+      {
+        QLog.i("leba_sort_LebaMgrDataLogic", 1, "openPlugin error ");
+        return;
+      }
+    }
+    catch (Exception paramContext)
+    {
+      QLog.i("leba_sort_LebaMgrDataLogic", 1, "closePlugin", paramContext);
+      return;
+    }
+    long l = System.currentTimeMillis();
+    int j = a(this.g) + this.g.indexOf(paramawdt);
+    paramawdt.jdField_a_of_type_Arpq.a();
+    paramawdu.a(paramawdy, paramawdt);
+    int k = a(paramawdt);
+    this.d.add(k, paramawdt);
+    this.g.remove(paramawdt);
+    paramawdu.notifyItemMoved(j, k + a(this.d));
+    if (this.c.isEmpty())
+    {
+      this.c.add(a(paramContext, true));
+      paramawdu.notifyItemInserted(a(this.c));
+    }
+    if (this.g.isEmpty())
+    {
+      this.f.clear();
+      paramawdu.notifyItemRemoved(a(this.f));
+    }
+    a(paramawdu, this.d, this.e);
+    a(paramawdu, this.g, this.h);
+    a(paramawdt.jdField_a_of_type_Arpq, true);
+    if (this.jdField_a_of_type_Boolean) {
+      b();
+    }
+    QLog.i("leba_sort_LebaMgrDataLogic", 1, "openPlugin position=" + j + ", time= " + (System.currentTimeMillis() - l));
+  }
+  
+  public void a(Context paramContext, List<arpq> paramList, List<Integer> paramList1, int paramInt, awdu paramawdu)
+  {
+    if (paramawdu == null)
+    {
+      QLog.i("leba_sort_LebaMgrDataLogic", 1, "initShowMgrData adpter == null ");
+      return;
+    }
+    this.jdField_a_of_type_Int = paramInt;
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      QLog.i("leba_sort_LebaMgrDataLogic", 1, "initShowMgrData srcList isEmpty " + this.jdField_a_of_type_Int);
+      this.b.clear();
+      this.c.clear();
+      this.d.clear();
+      this.e.clear();
+      this.f.clear();
+      this.g.clear();
+      this.h.clear();
+      paramawdu.notifyDataSetChanged();
+      a();
+      return;
+    }
+    this.b.clear();
+    this.c.clear();
+    this.d.clear();
+    this.e.clear();
+    this.f.clear();
+    this.g.clear();
+    this.h.clear();
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    a(localArrayList1, localArrayList2, paramList, paramList1);
+    a(paramContext);
+    a(paramContext, localArrayList1, true);
+    a(paramContext, localArrayList2, false);
+    paramawdu.notifyDataSetChanged();
+    a();
+    QLog.i("leba_sort_LebaMgrDataLogic", 1, "initShowMgrData " + this.jdField_a_of_type_Int);
+  }
+  
+  public void a(Context paramContext, List<arpq> paramList, boolean paramBoolean)
+  {
+    List localList1;
+    List localList2;
+    label20:
+    List localList3;
+    if (paramBoolean)
+    {
+      localList1 = this.c;
+      if (!paramBoolean) {
+        break label102;
+      }
+      localList2 = this.d;
+      if (!paramBoolean) {
+        break label111;
+      }
+      localList3 = this.e;
     }
     for (;;)
     {
-      return;
-      label63:
-      localObject = null;
-      int i = 0;
-      while (i < localJSONArray.length())
+      label30:
+      if (!paramList.isEmpty())
       {
-        try
+        localList1.add(a(paramContext, paramBoolean));
+        paramContext = paramList.iterator();
+        for (;;)
         {
-          JSONObject localJSONObject = localJSONArray.getJSONObject(i);
-          localObject = localJSONObject;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
+          if (paramContext.hasNext())
           {
-            localJSONException.printStackTrace();
+            localList2.add(a((arpq)paramContext.next()));
             continue;
-            akct localakct = new akct();
-            localakct.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("id", "");
-            localakct.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("type", -1);
-            localakct.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("name", "");
-            localakct.c = ((JSONObject)localObject).optString("icon_pic", "");
-            localakct.jdField_a_of_type_OrgJsonJSONObject = ((JSONObject)localObject).optJSONObject("params");
-            if (QLog.isColorLevel()) {
-              QLog.i("ConfigLogic", 2, "panelData = " + localakct);
-            }
-            this.a.put(localakct.jdField_a_of_type_Int, localakct);
+            localList1 = this.f;
+            break;
+            label102:
+            localList2 = this.g;
+            break label20;
+            label111:
+            localList3 = this.h;
+            break label30;
           }
         }
-        if (localObject != null) {
-          break label104;
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public akct a(int paramInt1, int paramInt2)
-  {
-    paramInt2 = ajzz.a(paramInt1, paramInt2);
-    QLog.i("ConfigLogic", 2, "channel: " + paramInt1 + ", type = " + paramInt2);
-    return (akct)this.a.get(paramInt2);
-  }
-  
-  public String a(int paramInt1, int paramInt2, String paramString)
-  {
-    Object localObject = a(paramInt1, paramInt2);
-    String str = paramString;
-    if (localObject != null)
-    {
-      str = paramString;
-      if (((akct)localObject).jdField_a_of_type_OrgJsonJSONObject != null)
-      {
-        localObject = ((akct)localObject).jdField_a_of_type_OrgJsonJSONObject.optJSONArray("hint");
-        QLog.i("ConfigLogic", 2, "channel: " + paramInt1 + ", hint array: " + localObject);
-        str = paramString;
-        if (localObject != null)
+        int k = b(localList2.size());
+        if (k > 0)
         {
-          str = paramString;
-          if (((JSONArray)localObject).length() > 0) {
-            str = ((JSONArray)localObject).optString(0, paramString);
+          int j = 0;
+          while (j < k)
+          {
+            localList3.add(a(null));
+            j += 1;
           }
         }
       }
     }
-    return str;
   }
   
-  public ArrayList<ajzv> a(int paramInt, bkwf parambkwf)
+  public void a(arpq paramarpq, boolean paramBoolean)
   {
-    int i = 2;
-    if (parambkwf != null) {
-      i = bkvx.a(parambkwf.bus_type, 2);
+    QLog.i("leba_sort_LebaMgrDataLogic", 1, "handlePluginSwitch");
+    ThreadManager.excute(new LebaMgrDataLogic.1(this, paramarpq, paramBoolean), 128, null, true);
+  }
+  
+  public void a(awdt paramawdt, long paramLong, boolean paramBoolean, StringBuilder paramStringBuilder)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+      QLog.i("leba_sort_LebaMgrDataLogic", 1, "reportItemSequence mInitPosMap == null");
     }
-    parambkwf = new ArrayList();
-    Object localObject = a(paramInt, i);
-    if ((localObject != null) && (((akct)localObject).jdField_a_of_type_OrgJsonJSONObject != null))
+    while ((paramawdt == null) || (paramawdt.jdField_a_of_type_Arpq == null)) {
+      return;
+    }
+    long l2 = paramawdt.jdField_a_of_type_Arpq.jdField_a_of_type_Long;
+    paramawdt = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(l2));
+    long l1;
+    if (paramawdt != null)
     {
-      localObject = ((akct)localObject).jdField_a_of_type_OrgJsonJSONObject.optJSONArray("labels");
-      if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+      l1 = paramawdt.intValue() + 1;
+      if (!paramBoolean) {
+        break label117;
+      }
+    }
+    label117:
+    for (paramLong = 1L + paramLong;; paramLong = 0L)
+    {
+      paramStringBuilder.append(l2).append("_").append(l1).append("_").append(paramLong).append(";");
+      return;
+      l1 = 0L;
+      break;
+    }
+  }
+  
+  public void a(awdu paramawdu)
+  {
+    if (paramawdu != null) {}
+    try
+    {
+      paramawdu.notifyDataSetChanged();
+      b();
+      return;
+    }
+    catch (Exception paramawdu)
+    {
+      for (;;)
       {
-        paramInt = 0;
-        while (paramInt < ((JSONArray)localObject).length())
-        {
-          JSONObject localJSONObject = ((JSONArray)localObject).optJSONObject(paramInt);
-          ajzv localajzv = new ajzv();
-          localajzv.jdField_a_of_type_JavaLangString = localJSONObject.optString("name");
-          localajzv.jdField_a_of_type_Int = localJSONObject.optInt("sub_channel");
-          localajzv.jdField_b_of_type_Int = localJSONObject.optInt("max_length", 0);
-          localajzv.jdField_b_of_type_JavaLangString = localJSONObject.optString("hint");
-          parambkwf.add(localajzv);
-          paramInt += 1;
+        QLog.i("leba_sort_LebaMgrDataLogic", 1, "onDargEnd", paramawdu);
+      }
+    }
+  }
+  
+  public void a(awdu paramawdu, List<awdt> paramList1, List<awdt> paramList2)
+  {
+    int j = 0;
+    int m = paramList2.size();
+    int n = b(paramList1.size());
+    int k = a(paramList2);
+    if (m > n)
+    {
+      m -= n;
+      j = 0;
+      while (j < m)
+      {
+        paramList2.remove(0);
+        j += 1;
+      }
+      paramawdu.notifyItemRangeRemoved(k, m);
+    }
+    while (m >= n) {
+      return;
+    }
+    m = n - m;
+    while (j < m)
+    {
+      paramList2.add(a(null));
+      j += 1;
+    }
+    paramawdu.notifyItemRangeInserted(paramList2.size() + k - m, m);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    int j = 0;
+    while (j < this.d.size())
+    {
+      a((awdt)this.d.get(j), j, true, localStringBuilder);
+      j += 1;
+    }
+    j = 0;
+    while (j < this.g.size())
+    {
+      a((awdt)this.g.get(j), j, false, localStringBuilder);
+      j += 1;
+    }
+    bdmn localbdmn = awds.a("plugin_sequence");
+    localbdmn.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a(paramQQAppInterface, localbdmn);
+    QLog.i("leba_sort_LebaMgrDataLogic", 1, "reportSequence " + localStringBuilder);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, bdmn parambdmn)
+  {
+    bdkb.a(paramQQAppInterface, parambdmn);
+  }
+  
+  public void a(List<arpq> paramList1, List<arpq> paramList2, List<arpq> paramList3, List<Integer> paramList)
+  {
+    paramList3 = paramList3.iterator();
+    while (paramList3.hasNext())
+    {
+      arpq localarpq = (arpq)paramList3.next();
+      if ((localarpq != null) && (localarpq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo != null) && (TextUtils.isEmpty(localarpq.jdField_a_of_type_JavaLangString)) && (localarpq.b())) {
+        if (localarpq.a()) {
+          paramList1.add(localarpq);
+        } else {
+          paramList2.add(localarpq);
         }
       }
     }
-    return parambkwf;
+    anxo.b(paramList1, paramList);
+    Collections.sort(paramList2, new anxq());
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    if (Math.abs(this.jdField_a_of_type_Long - System.currentTimeMillis()) < 500L) {
+      return true;
+    }
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    return false;
+  }
+  
+  public boolean a(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    awdt localawdt1 = a(paramInt1);
+    if ((localawdt1 == null) || (!this.d.contains(localawdt1))) {
+      QLog.i("leba_sort_LebaMgrDataLogic", 1, "onDargMove start error " + paramInt1);
+    }
+    int j;
+    do
+    {
+      awdt localawdt2;
+      do
+      {
+        return false;
+        localawdt2 = a(paramInt2);
+      } while ((localawdt2 == null) || ((!this.d.contains(localawdt2)) && (!this.e.contains(localawdt2))));
+      paramInt2 = this.d.indexOf(localawdt1);
+      if (this.e.contains(localawdt2)) {}
+      for (j = this.d.size() - 1; paramInt2 < j; j = this.d.indexOf(localawdt2))
+      {
+        k = paramInt2;
+        while (k < j)
+        {
+          Collections.swap(this.d, k, k + 1);
+          k += 1;
+        }
+      }
+    } while (paramInt2 <= j);
+    int k = paramInt2;
+    while (k > j)
+    {
+      Collections.swap(this.d, k, k - 1);
+      k -= 1;
+    }
+    if (paramRecyclerView.getAdapter() != null) {
+      paramRecyclerView.getAdapter().notifyItemMoved(paramInt1, j + paramInt1 - paramInt2);
+    }
+    return true;
+  }
+  
+  public int b(int paramInt)
+  {
+    paramInt %= 3;
+    if (paramInt == 0) {
+      return 0;
+    }
+    return 3 - paramInt;
+  }
+  
+  public int b(awdt paramawdt)
+  {
+    int j = 0;
+    int k = 0;
+    while (j < this.g.size())
+    {
+      awdt localawdt = (awdt)this.g.get(j);
+      int m = k;
+      if (localawdt != null)
+      {
+        m = k;
+        if (localawdt.jdField_a_of_type_Arpq != null)
+        {
+          if (localawdt.jdField_a_of_type_Arpq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo != null) {
+            break label75;
+          }
+          m = k;
+        }
+      }
+      j += 1;
+      k = m;
+      continue;
+      label75:
+      if (paramawdt.jdField_a_of_type_Arpq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.sPriority > localawdt.jdField_a_of_type_Arpq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.sPriority) {}
+      for (m = 1;; m = 0)
+      {
+        if (m == 0) {
+          return k;
+        }
+        m = j + 1;
+        break;
+      }
+    }
+    return k;
+  }
+  
+  public void b()
+  {
+    ArrayList localArrayList = new ArrayList(this.e.size());
+    int j = 0;
+    while (j < this.d.size())
+    {
+      awdt localawdt = (awdt)this.d.get(j);
+      if (localawdt.jdField_a_of_type_Arpq != null)
+      {
+        localArrayList.add(Integer.valueOf((int)localawdt.jdField_a_of_type_Arpq.jdField_a_of_type_Long));
+        localawdt.jdField_a_of_type_Arpq.b = j;
+      }
+      j += 1;
+    }
+    QLog.i("leba_sort_LebaMgrDataLogic", 1, "handlePluginSort list = " + localArrayList);
+    ThreadManager.excute(new LebaMgrDataLogic.2(this, localArrayList), 128, null, true);
+  }
+  
+  public void b(Context paramContext, awdu paramawdu, awdt paramawdt, awdy paramawdy)
+  {
+    try
+    {
+      if (a())
+      {
+        QLog.i("leba_sort_LebaMgrDataLogic", 1, "closePlugin isFastClick");
+        return;
+      }
+      if ((paramawdt == null) || (paramawdt.jdField_a_of_type_Int != 2) || (paramawdt.jdField_a_of_type_Arpq == null) || (!this.d.contains(paramawdt)))
+      {
+        QLog.i("leba_sort_LebaMgrDataLogic", 1, "closePlugin error");
+        return;
+      }
+    }
+    catch (Exception paramContext)
+    {
+      QLog.i("leba_sort_LebaMgrDataLogic", 1, "closePlugin", paramContext);
+      return;
+    }
+    long l = System.currentTimeMillis();
+    int j = a(this.d) + this.d.indexOf(paramawdt);
+    paramawdt.jdField_a_of_type_Arpq.b();
+    paramawdu.a(paramawdy, paramawdt);
+    int k = b(paramawdt);
+    this.g.add(k, paramawdt);
+    this.d.remove(paramawdt);
+    paramawdu.notifyItemMoved(j, k + a(this.g));
+    if (this.f.isEmpty())
+    {
+      this.f.add(a(paramContext, false));
+      paramawdu.notifyItemInserted(a(this.f));
+    }
+    if (this.d.isEmpty())
+    {
+      this.c.clear();
+      paramawdu.notifyItemRemoved(a(this.c));
+    }
+    a(paramawdu, this.d, this.e);
+    a(paramawdu, this.g, this.h);
+    a(paramawdt.jdField_a_of_type_Arpq, false);
+    if (this.jdField_a_of_type_Boolean) {
+      b();
+    }
+    QLog.i("leba_sort_LebaMgrDataLogic", 1, "closePlugin position=" + j + ", time=" + (System.currentTimeMillis() - l));
   }
 }
 

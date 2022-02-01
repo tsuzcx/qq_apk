@@ -1,84 +1,155 @@
-import android.os.Process;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mfsdk.MagnifierSDK;
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.app.MemoryManager;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.ApolloResponseManager.1.1;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.XEditTextEx;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 public class amoh
-  extends amti
+  implements View.OnClickListener
 {
-  protected void a()
+  amoh(amog paramamog) {}
+  
+  public void onClick(View paramView)
   {
-    super.a();
-    float f2 = MemoryManager.getInstance().getHeapLevel();
-    float f1;
-    if (MagnifierSDK.a().a().d > 0.0F)
+    if ((paramView == null) || (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.a.jdField_a_of_type_JavaLangRefWeakReference == null)) {}
+    for (;;)
     {
-      f1 = MagnifierSDK.a().a().d;
-      if ((f2 >= f1) && (MagnifierSDK.a().a().b) && (this.a.a == null))
-      {
-        MemoryManager.getInstance().reportMemoryLevel(2L);
-        System.exit(-1);
-      }
-      if (this.d != GuardManager.c * 50 - 1) {
-        break label236;
-      }
-      l = MemoryManager.getMemory(Process.myPid());
-      localHashMap = new HashMap();
-      localHashMap.put("qqUsedMemory", String.valueOf(l / 1024L));
-      localHashMap.put("ramSize", String.valueOf(DeviceInfoUtil.getSystemTotalMemory() / 1024L));
-      localHashMap.put("heapSize", String.valueOf(Runtime.getRuntime().totalMemory() / 1024L));
-      localHashMap.put("maxHeapSize", String.valueOf(Runtime.getRuntime().maxMemory() / 1024L));
-      this.a.a("GM_reborn", localHashMap);
-      if (QLog.isColorLevel()) {
-        QLog.d("GuardManager", 2, "suicide to free memory! suicide_factor=" + GuardManager.c);
-      }
-    }
-    label236:
-    while (((this.d != GuardManager.c * 50) && (this.d != GuardManager.c * 50 + 1)) || (this.a.a != null))
-    {
-      long l;
-      HashMap localHashMap;
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      f1 = 0.95F;
-      break;
+      BaseChatPie localBaseChatPie = (BaseChatPie)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localBaseChatPie != null)
+      {
+        Object localObject1 = paramView.getTag(2131362811);
+        Object localObject2 = paramView.getTag(2131362812);
+        if ((localObject1 != null) && (localObject2 != null))
+        {
+          int i = ((Integer)localObject1).intValue();
+          int j = ((Integer)localObject2).intValue();
+          Object localObject3 = ((ankc)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.APOOLO_DAO_MANAGER)).a(i);
+          if (localObject3 == null)
+          {
+            QLog.e("ApolloResponseManager", 1, "on click action is null!");
+          }
+          else
+          {
+            VipUtils.a(null, "cmshow", "Apollo", "quickresponseclick", String.valueOf(this.a.jdField_a_of_type_JavaLangString), ApolloUtil.b(this.a.jdField_a_of_type_Int), j, new String[] { String.valueOf(i), String.valueOf(((ApolloActionData)localObject3).feeType) });
+            if (!ApolloUtil.a(((ApolloActionData)localObject3).actionId, ((ApolloActionData)localObject3).personNum))
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("ApolloResponseManager", 2, "download action data");
+              }
+              ThreadManager.post(new ApolloResponseManager.1.1(this, (ApolloActionData)localObject3), 5, null, false);
+            }
+            localObject1 = new annm(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+            ((annl)localObject1).h = 1;
+            ((annl)localObject1).a = ((ApolloActionData)localObject3);
+            ((ApolloActionData)localObject3).atNickName = "";
+            ((ApolloActionData)localObject3).inputText = "";
+            localObject2 = localBaseChatPie.sessionInfo;
+            if (((SessionInfo)localObject2).curType == 0)
+            {
+              ((ApolloActionData)localObject3).peerUin = ((SessionInfo)localObject2).curFriendUin;
+              if ((localBaseChatPie != null) && (localBaseChatPie.input != null) && (localBaseChatPie.input.getText() != null)) {
+                ((ApolloActionData)localObject3).inputText = com.tencent.mobileqq.text.TextUtils.emoticonToText(localBaseChatPie.input.getText().toString());
+              }
+            }
+            for (;;)
+            {
+              if ((localBaseChatPie != null) && (localBaseChatPie.input != null) && (localBaseChatPie.input.getText() != null))
+              {
+                localObject3 = localBaseChatPie.input.getText().toString();
+                if ((localObject3 != null) && (((String)localObject3).length() > 99) && (localBaseChatPie.app != null))
+                {
+                  ChatActivityUtils.a(localBaseChatPie.app.getApplication(), 2131718520, 1);
+                  break;
+                  if (((((SessionInfo)localObject2).curType != 1) && (((SessionInfo)localObject2).curType != 3000)) || (localBaseChatPie == null) || (localBaseChatPie.app == null) || (localBaseChatPie.mActivity == null)) {
+                    continue;
+                  }
+                  ArrayList localArrayList = new ArrayList();
+                  if ((localBaseChatPie != null) && (localBaseChatPie.input != null)) {
+                    bgcz.a(localBaseChatPie.input.getEditableText(), localArrayList);
+                  }
+                  if (((ApolloActionData)localObject3).personNum == 1)
+                  {
+                    if ((localArrayList.size() == 1) && (0L != ((MessageForText.AtTroopMemberInfo)localArrayList.get(0)).uin) && (((MessageForText.AtTroopMemberInfo)localArrayList.get(0)).startPos == 0))
+                    {
+                      String str = com.tencent.mobileqq.text.TextUtils.emoticonToText(localBaseChatPie.input.getText().toString());
+                      try
+                      {
+                        ((ApolloActionData)localObject3).atNickName = str.substring(0, ((MessageForText.AtTroopMemberInfo)localArrayList.get(0)).textLen);
+                        if (((MessageForText.AtTroopMemberInfo)localArrayList.get(0)).textLen >= localBaseChatPie.input.getText().length() - 1) {}
+                        for (((ApolloActionData)localObject3).inputText = "";; ((ApolloActionData)localObject3).inputText = str.substring(((MessageForText.AtTroopMemberInfo)localArrayList.get(0)).textLen))
+                        {
+                          ((ApolloActionData)localObject3).peerUin = (((MessageForText.AtTroopMemberInfo)localArrayList.get(0)).uin + "");
+                          localBaseChatPie.input.getText().clear();
+                          break;
+                        }
+                      }
+                      catch (Exception localException)
+                      {
+                        for (;;)
+                        {
+                          if (QLog.isColorLevel()) {
+                            QLog.d("ApolloResponseManager", 2, "inputText err:" + localException.getMessage());
+                          }
+                          ((ApolloActionData)localObject3).inputText = "";
+                        }
+                      }
+                    }
+                    if (android.text.TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) {
+                      continue;
+                    }
+                    localObject2 = ContactUtils.getBuddyName(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, true);
+                    localObject2 = new StringBuilder("@").append((String)localObject2);
+                    ((annl)localObject1).a.peerUin = this.a.jdField_a_of_type_JavaLangString;
+                    ((annl)localObject1).a.atNickName = ((StringBuilder)localObject2).toString();
+                    ((annl)localObject1).a.inputText = com.tencent.mobileqq.text.TextUtils.emoticonToText(localBaseChatPie.input.getText().toString());
+                    localBaseChatPie.input.getText().clear();
+                    localBaseChatPie.send((annl)localObject1);
+                    localBaseChatPie.mApolloInfo = ((annl)localObject1);
+                    this.a.a();
+                    break;
+                  }
+                  if ((((ApolloActionData)localObject3).personNum != 0) || (localBaseChatPie == null) || (localBaseChatPie.input == null) || (localBaseChatPie.input.getText() == null)) {
+                    continue;
+                  }
+                  ((ApolloActionData)localObject3).inputText = com.tencent.mobileqq.text.TextUtils.emoticonToText(localBaseChatPie.input.getText().toString());
+                  localBaseChatPie.input.getText().clear();
+                  continue;
+                }
+                if ((((SessionInfo)localObject2).curType != 1) && (((SessionInfo)localObject2).curType != 3000)) {
+                  localBaseChatPie.input.getText().clear();
+                }
+              }
+            }
+            if (localBaseChatPie != null) {
+              localBaseChatPie.send((annl)localObject1);
+            }
+            this.a.a();
+          }
+        }
+      }
     }
-    System.exit(-1);
-  }
-  
-  protected void a(String paramString)
-  {
-    this.a.a(3, paramString);
-  }
-  
-  protected void b()
-  {
-    this.a.a(4, "fake_p_msg");
-  }
-  
-  protected void b(String paramString)
-  {
-    super.b(paramString);
-    this.a.b(false);
-    if (!"trick_p_msg".equals(paramString)) {
-      this.a.a(false, new String[] { paramString });
-    }
-    long l = MemoryManager.getMemory(Process.myPid());
-    if (amtg.a().a(l) != 2) {
-      this.a.c();
-    }
-    BaseApplicationImpl.sApplication.getRuntime().onGuardEvent(2, amtg.a().a, 0L);
-    CoreService.stopCoreService();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amoh
  * JD-Core Version:    0.7.0.1
  */

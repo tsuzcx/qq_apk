@@ -1,12 +1,12 @@
 package com.tencent.hippy.qq.module;
 
-import amtj;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.widget.Toast;
-import aqyp;
-import ardu;
+import anvx;
+import ascz;
+import ashz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.hippy.qq.app.HippyQQEngine;
 import com.tencent.mobileqq.emosm.Client;
@@ -17,20 +17,20 @@ public class QQBaseWebIpcModule
   extends QQBaseModule
 {
   private static final String TAG = "HippyQQBaseWebIpcModule";
-  public aqyp mOnRemoteResp = new QQBaseWebIpcModule.1(this);
+  public ascz mOnRemoteResp = new QQBaseWebIpcModule.1(this);
   
   public QQBaseWebIpcModule(HippyEngineContext paramHippyEngineContext)
   {
     super(paramHippyEngineContext);
-    if (!ardu.a().a()) {
-      ardu.a().a().doBindService(BaseApplicationImpl.getApplication().getApplicationContext());
+    if (!ashz.a().a()) {
+      ashz.a().a().doBindService(BaseApplicationImpl.getApplication().getApplicationContext());
     }
-    ardu.a().a(this.mOnRemoteResp);
+    ashz.a().a(this.mOnRemoteResp);
   }
   
   public void destroy()
   {
-    ardu.a().b(this.mOnRemoteResp);
+    ashz.a().b(this.mOnRemoteResp);
   }
   
   protected Activity getActivity()
@@ -61,20 +61,20 @@ public class QQBaseWebIpcModule
   
   public void sendRemoteReq(Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (!ardu.a().a())
+    if (!ashz.a().a())
     {
       if (paramBoolean2) {
-        Toast.makeText(BaseApplicationImpl.getApplication(), amtj.a(2131715067), 0).show();
+        Toast.makeText(BaseApplicationImpl.getApplication(), anvx.a(2131715415), 0).show();
       }
       QLog.e("", 1, "sendRemoteReq error ipc service not ready");
       return;
     }
     if (paramBoolean1)
     {
-      ardu.a().b(paramBundle);
+      ashz.a().b(paramBundle);
       return;
     }
-    ardu.a().a(paramBundle);
+    ashz.a().a(paramBundle);
   }
 }
 

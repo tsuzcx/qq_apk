@@ -1,11 +1,11 @@
 package com.tencent.av.ui;
 
-import mkk;
+import mlh;
 
 public class VideoInviteFloatBar$1
   implements Runnable
 {
-  public VideoInviteFloatBar$1(mkk parammkk) {}
+  public VideoInviteFloatBar$1(mlh parammlh) {}
   
   public void run()
   {

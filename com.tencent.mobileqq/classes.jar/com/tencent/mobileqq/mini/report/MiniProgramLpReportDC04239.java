@@ -37,7 +37,18 @@ public class MiniProgramLpReportDC04239
   public static final String APP_TYPE_MINI_GAME = "1";
   public static final String ARK_ACTION = "ark";
   public static final String ARK_SUB_ACTION_BATTLE = "ark_battle";
+  public static final String COLOR_SIGN_ACTION_CLICK = "click";
+  public static final String COLOR_SIGN_ACTION_EXPO = "expo";
+  public static final String COLOR_SIGN_ACTION_REMOVE = "remove_ColorSign";
+  public static final String COLOR_SIGN_ACTION_TYPE = "addColorSign";
+  public static final String COLOR_SIGN_SUB_ACTION_TYPE = "colorSign_enter";
   public static final String DESKTOP_ACTION = "desktop";
+  public static final String DESKTOP_COMMONLY_ACTION_TYPE = "desktop";
+  public static final String DESKTOP_COMMONLY_SUB_ACTION_TYPE = "commonly";
+  public static final String DESKTOP_RESERVES_ACTION_ADD_COMMONLY = "add_commonly";
+  public static final String DESKTOP_RESERVES_ACTION_CLICK = "click";
+  public static final String DESKTOP_RESERVES_ACTION_CLOSE = "close";
+  public static final String DESKTOP_RESERVES_ACTION_EXPO = "expo";
   public static final String DESKTOP_SEARCH_ACTION_TYPE = "desktop";
   public static final String DESKTOP_SEARCH_SUB_ACTION_BUTTON = "search_button";
   public static final String DESKTOP_SEARCH_SUB_ACTION_CLICK = "result_click";
@@ -109,6 +120,11 @@ public class MiniProgramLpReportDC04239
   public static final String PAY_WX_SUB_ACTION_LAUNCH = "launch_wechatpay";
   public static final String PROFILE_CARD_ACTION = "id_card";
   public static final String PULLDOWN_ACTION = "pulldown";
+  public static final String RECENT_COLOR_SIGN_ACTION_CLICK = "click";
+  public static final String RECENT_COLOR_SIGN_ACTION_EXPO = "expo";
+  public static final String RECENT_COLOR_SIGN_ACTION_REMOVE = "remove_ColorSign";
+  public static final String RECENT_COLOR_SIGN_ACTION_TYPE = "addRecentColorSign";
+  public static final String RECENT_COLOR_SIGN_SUB_ACTION_TYPE = "recentColorSign_enter";
   public static final String RETAIN_DIALOG_ACTION_TYPE = "minigame_popup";
   public static final String RETAIN_DIALOG_RESERVES_CLICK = "click";
   public static final String RETAIN_DIALOG_RESERVES_EXPOSE = "expo";
@@ -241,12 +257,12 @@ public class MiniProgramLpReportDC04239
         MiniProgramReporter.getInstance().flush();
       }
       if (!"show".equals(paramString4)) {
-        break label223;
+        break label227;
       }
       showMiniAppConfig = paramMiniAppConfig;
       sendRecordDurationMsg();
     }
-    label223:
+    label227:
     while ((!"unload".equals(paramString4)) && (!"hide".equals(paramString4)) && (!"close".equals(paramString4)))
     {
       return;

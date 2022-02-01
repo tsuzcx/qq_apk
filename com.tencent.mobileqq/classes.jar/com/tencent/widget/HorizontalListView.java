@@ -28,7 +28,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListAdapter;
-import bjse;
+import bldq;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -45,7 +45,7 @@ public class HorizontalListView
   protected static final int INSERT_AT_START_OF_LIST = 0;
   private static final int INVALID_POINTER = -1;
   public static final String TAG = "HorizontalListView";
-  public static final int TAG_VIEW_TYPE = 2131690081;
+  public static final int TAG_VIEW_TYPE = 2131690119;
   static final int TOUCH_MODE_DONE_WAITING = 2;
   static final int TOUCH_MODE_DOWN = 0;
   static final int TOUCH_MODE_FLING = 4;
@@ -100,7 +100,7 @@ public class HorizontalListView
   protected int mRightViewAdapterIndex;
   private HorizontalListView.RunningOutOfDataListener mRunningOutOfDataListener;
   private int mRunningOutOfDataThreshold;
-  protected bjse mScroller;
+  protected bldq mScroller;
   protected boolean mStayDisplayOffsetZero;
   private Rect mTouchFrame;
   int mTouchMode = -1;
@@ -292,7 +292,7 @@ public class HorizontalListView
     {
       paramInt = this.mAdapter.getItemViewType(paramInt);
       if ((paramView != null) && (isItemViewTypeValid(paramInt))) {
-        paramView.setTag(2131690081, Integer.valueOf(paramInt));
+        paramView.setTag(2131690119, Integer.valueOf(paramInt));
       }
       return;
     }
@@ -383,7 +383,7 @@ public class HorizontalListView
   private View obtainView(int paramInt)
   {
     View localView1 = getRecycledView(paramInt);
-    setTag(2131368163, Boolean.valueOf(true));
+    setTag(2131368306, Boolean.valueOf(true));
     View localView2 = this.mAdapter.getView(paramInt, localView1, this);
     markViewType(localView2, paramInt);
     if ((localView1 != null) && (localView2 != localView1)) {
@@ -398,7 +398,7 @@ public class HorizontalListView
   private View obtainView(int paramInt, boolean paramBoolean)
   {
     View localView1 = getRecycledView(paramInt);
-    setTag(2131368163, Boolean.valueOf(paramBoolean));
+    setTag(2131368306, Boolean.valueOf(paramBoolean));
     View localView2 = this.mAdapter.getView(paramInt, localView1, this);
     markViewType(localView2, paramInt);
     if ((localView1 != null) && (localView2 != localView1)) {
@@ -1155,7 +1155,7 @@ public class HorizontalListView
   @TargetApi(9)
   protected void initView(boolean paramBoolean)
   {
-    this.mScroller = new bjse(getContext());
+    this.mScroller = new bldq(getContext());
     this.mScroller.a(getScrollerFriction());
     ViewConfiguration localViewConfiguration = ViewConfiguration.get(getContext());
     this.mTouchSlop = localViewConfiguration.getScaledTouchSlop();
@@ -2049,7 +2049,7 @@ public class HorizontalListView
   {
     try
     {
-      Object localObject = paramView.getTag(2131690081);
+      Object localObject = paramView.getTag(2131690119);
       if ((localObject instanceof Integer))
       {
         i = ((Integer)localObject).intValue();
@@ -2411,7 +2411,7 @@ public class HorizontalListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.widget.HorizontalListView
  * JD-Core Version:    0.7.0.1
  */

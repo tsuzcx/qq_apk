@@ -1,55 +1,22 @@
-import android.content.Intent;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import java.lang.ref.WeakReference;
 
 public class ajtv
-  extends ajrg
+  extends aahh
 {
-  protected ajtv(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
+  WeakReference<aaha> jdField_a_of_type_JavaLangRefWeakReference;
+  
+  public ajtv(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment, aaha paramaaha)
   {
-    super(paramNewPhotoPreviewActivity);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaaha);
   }
   
-  public void initData(Intent paramIntent)
+  public void a(boolean paramBoolean, long paramLong1, long paramLong2, int paramInt)
   {
-    int i = ((NewPhotoPreviewActivity)this.mActivity).getIntent().getIntExtra("PhotoConst.CURRENT_SELECTED_INDEX", -1);
-    ArrayList localArrayList1 = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
-    ArrayList localArrayList2 = new ArrayList();
-    if (localArrayList1 != null) {
-      localArrayList2.addAll(localArrayList1);
+    aaha localaaha = (aaha)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localaaha != null) {
+      localaaha.a(paramBoolean, paramLong1, paramLong2, paramInt);
     }
-    super.initData(paramIntent);
-    this.a.paths.clear();
-    this.a.paths = localArrayList2;
-    this.a.totalPicCount = this.a.paths.size();
-    this.a.firstSelectedPostion = i;
-    if (this.a.firstSelectedPostion >= this.a.totalPicCount) {
-      this.a.firstSelectedPostion = -1;
-    }
-    this.mPhotoCommonData.selectedIndex.clear();
-    this.mPhotoCommonData.selectedIndex.add(Integer.valueOf(this.a.firstSelectedPostion));
-    paramIntent = paramIntent.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
-    if (this.mPhotoCommonData.selectedPhotoList == null) {
-      this.mPhotoCommonData.selectedPhotoList = new ArrayList();
-    }
-    for (;;)
-    {
-      if ((paramIntent != null) && (!paramIntent.equals(""))) {
-        this.mPhotoCommonData.selectedPhotoList.add(paramIntent);
-      }
-      QLog.d("PhotoPreviewLogicScanEntry", 1, new Object[] { "count=", Integer.valueOf(this.a.totalPicCount), " pos=", Integer.valueOf(this.a.firstSelectedPostion) });
-      return;
-      this.mPhotoCommonData.selectedPhotoList.clear();
-    }
-  }
-  
-  public void initUI()
-  {
-    super.initUI();
-    ((NewPhotoPreviewActivity)this.mActivity).cancelTv.setVisibility(8);
   }
 }
 

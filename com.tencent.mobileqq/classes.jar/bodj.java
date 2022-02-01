@@ -1,96 +1,43 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import android.graphics.Color;
+import com.microrapid.opencv.ImageMainColorData;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class bodj
+public final class bodj
 {
-  private FileOutputStream jdField_a_of_type_JavaIoFileOutputStream;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  
-  private static void a(String paramString, Throwable paramThrowable)
+  public static int a(ImageMainColorData paramImageMainColorData)
   {
-    if (QLog.isColorLevel())
-    {
-      if (paramThrowable != null) {
-        QLog.d("AudioDataCache", 2, "[@] " + paramString, paramThrowable);
-      }
-    }
-    else {
-      return;
-    }
-    QLog.d("AudioDataCache", 2, "[@] " + paramString);
+    return Color.argb(255, (int)paramImageMainColorData.r, (int)paramImageMainColorData.g, (int)paramImageMainColorData.b);
   }
   
-  public String a(RMVideoStateMgr paramRMVideoStateMgr)
+  public static List<String> a(List<ImageMainColorData> paramList, int paramInt)
   {
-    a("closeCache: path=" + this.b, null);
-    String str = this.jdField_a_of_type_JavaLangString + this.b;
-    if ((this.jdField_a_of_type_JavaIoFileOutputStream == null) || (paramRMVideoStateMgr != null)) {}
-    try
+    ArrayList localArrayList = new ArrayList();
+    int i;
+    if (paramList != null)
     {
-      paramRMVideoStateMgr.c();
-      this.jdField_a_of_type_JavaIoFileOutputStream.close();
+      paramList = paramList.iterator();
+      i = 0;
     }
-    catch (IOException paramRMVideoStateMgr)
+    for (;;)
     {
-      label74:
-      break label74;
-    }
-    this.jdField_a_of_type_JavaIoFileOutputStream = null;
-    this.b = null;
-    return str;
-  }
-  
-  public void a(RMVideoStateMgr paramRMVideoStateMgr)
-  {
-    File localFile;
-    try
-    {
-      a("initCache: oldpath=" + this.b + " mOutStream=" + this.jdField_a_of_type_JavaIoFileOutputStream, null);
-      a(paramRMVideoStateMgr);
-      this.b = boef.a();
-      paramRMVideoStateMgr = this.jdField_a_of_type_JavaLangString + this.b;
-      localFile = new File(paramRMVideoStateMgr);
-      if (localFile.exists()) {
-        throw new RuntimeException("AudioDataCache: file exists| " + paramRMVideoStateMgr);
-      }
-    }
-    finally {}
-    try
-    {
-      this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(localFile);
-      a("initCache: newPath=" + this.b, null);
-      return;
-    }
-    catch (FileNotFoundException paramRMVideoStateMgr)
-    {
-      for (;;)
+      if (paramList.hasNext())
       {
-        this.jdField_a_of_type_JavaIoFileOutputStream = null;
+        String str = String.format("#%06X", new Object[] { Integer.valueOf(a((ImageMainColorData)paramList.next()) & 0xFFFFFF) });
+        if (!localArrayList.contains(str))
+        {
+          localArrayList.add(str);
+          int j = i + 1;
+          i = j;
+          if (j < paramInt) {}
+        }
+      }
+      else
+      {
+        return localArrayList;
       }
     }
-  }
-  
-  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_JavaIoFileOutputStream != null) {}
-    try
-    {
-      this.jdField_a_of_type_JavaIoFileOutputStream.write(paramArrayOfByte, paramInt1, paramInt2);
-      bool = true;
-      return bool;
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-      a("writeData: exp=", paramArrayOfByte);
-    }
-    return false;
   }
 }
 

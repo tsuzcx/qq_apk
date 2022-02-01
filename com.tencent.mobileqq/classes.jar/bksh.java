@@ -1,95 +1,84 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qqpim.QQPimBridgeActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.proxyimpl.WebSocketProxyImpl.1;
+import com.tencent.qqmini.sdk.annotation.ProxyService;
+import com.tencent.qqmini.sdk.launcher.core.proxy.WebSocketProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.WebSocketProxy.WebSocketListener;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.os.MqqHandler;
+import okhttp3.MediaType;
+import okhttp3.WebSocket;
+import okio.ByteString;
 
+@ProxyService(proxy=WebSocketProxy.class)
 public class bksh
+  extends WebSocketProxy
 {
-  public static Intent a(Context paramContext)
-  {
-    try
-    {
-      paramContext = paramContext.getPackageManager().getLaunchIntentForPackage("com.tencent.qqpim");
-      return paramContext;
-    }
-    catch (Throwable paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return null;
-  }
+  public ConcurrentHashMap<Integer, bksi> a = new ConcurrentHashMap();
   
-  public static Intent a(Context paramContext, String paramString1, String paramString2)
+  public boolean closeSocket(int paramInt1, int paramInt2, String paramString)
   {
-    PackageManager localPackageManager = paramContext.getPackageManager();
+    bksi localbksi = (bksi)this.a.get(Integer.valueOf(paramInt1));
+    if ((localbksi != null) && (localbksi.a != null)) {}
     try
     {
-      if (localPackageManager.getPackageInfo("com.tencent.qqpim", 1).versionCode < 1171)
-      {
-        paramContext = a(paramContext);
-        paramContext.putExtra("big_brother_source_key", "biz_src_qqpim");
-        return paramContext;
-      }
-      paramContext = new Intent();
-      paramContext.setPackage("com.tencent.qqpim");
-      paramContext.setAction("com.tencent.qqpim.action_open_qqpim");
-      paramContext.putExtra("product_package", "com.tencent.mobileqq");
-      paramContext.putExtra("model_name", paramString1);
-      if (!TextUtils.isEmpty(paramString2)) {
-        paramContext.putExtra("account_name", paramString2);
-      }
-      paramContext.setFlags(67108864);
-      paramContext.setFlags(268435456);
-      paramContext.putExtra("big_brother_source_key", "biz_src_qqpim");
-      return paramContext;
+      localbksi.a.close(paramInt2, paramString);
+      ThreadManager.getSubThreadHandler().postDelayed(new WebSocketProxyImpl.1(this, localbksi, paramInt1, paramInt2, paramString), 1000L);
+      this.a.remove(Integer.valueOf(paramInt1));
+      return false;
     }
-    catch (Throwable paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    boolean bool = true;
-    paramContext = paramContext.getPackageManager();
-    try
-    {
-      paramContext = paramContext.getPackageInfo("com.tencent.qqpim", 1);
-      if (paramContext == null) {
-        bool = false;
-      }
-      return bool;
-    }
-    catch (Throwable paramContext)
+    catch (Exception paramString)
     {
       for (;;)
       {
-        paramContext.printStackTrace();
-        paramContext = null;
+        QLog.e("WebSocketProxyImpl", 1, "closeSocket error:", paramString);
       }
     }
   }
   
-  public void a(QQAppInterface paramQQAppInterface, Activity paramActivity, Bundle paramBundle)
+  public boolean connectSocket(int paramInt1, String paramString1, Map<String, String> paramMap, String paramString2, int paramInt2, WebSocketProxy.WebSocketListener paramWebSocketListener)
   {
-    if (a(paramActivity))
-    {
-      bcef.b(paramQQAppInterface, "CliOper", "", "", "0X8006711", "0X8006711", 0, 0, "", "", "", "");
-      paramActivity.startActivity(a(paramActivity, bksb.s, null));
-      return;
+    paramString1 = new bksi(this, paramInt1, paramString1, paramMap, paramInt2, paramWebSocketListener);
+    this.a.put(Integer.valueOf(paramInt1), paramString1);
+    return true;
+  }
+  
+  public boolean send(int paramInt, String paramString)
+  {
+    bksi localbksi = (bksi)this.a.get(Integer.valueOf(paramInt));
+    if ((localbksi != null) && (localbksi.a != null)) {
+      try
+      {
+        MediaType.parse("application/vnd.okhttp.websocket+text; charset=utf-8");
+        localbksi.a.send(paramString);
+        return true;
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("WebSocketProxyImpl", 1, "sendStringMessage error:", paramString);
+        return false;
+      }
     }
-    bcef.b(paramQQAppInterface, "CliOper", "", "", "0X8006712", "0X8006712", 0, 0, "", "", "", "");
-    paramQQAppInterface = new Intent();
-    paramQQAppInterface.setClass(paramActivity, QQPimBridgeActivity.class);
-    paramQQAppInterface.putExtras(paramBundle);
-    paramActivity.startActivity(paramQQAppInterface);
+    return false;
+  }
+  
+  public boolean send(int paramInt, byte[] paramArrayOfByte)
+  {
+    bksi localbksi = (bksi)this.a.get(Integer.valueOf(paramInt));
+    if ((localbksi != null) && (localbksi.a != null)) {
+      try
+      {
+        localbksi.a.send(ByteString.of(paramArrayOfByte));
+        return true;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        QLog.e("WebSocketProxyImpl", 1, "sendBinaryMessage error:", paramArrayOfByte);
+        return false;
+      }
+    }
+    return false;
   }
 }
 

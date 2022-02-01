@@ -1,39 +1,95 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.redbag.AVRedBag.2.1;
 
 public class mpv
-  extends mql
+  extends lfk
 {
-  public int a;
-  public lfm a;
-  public boolean a;
-  public boolean b;
+  mpv(mpt parammpt) {}
   
-  mpv(mpe parammpe)
+  protected void a(long paramLong)
   {
-    super(parammpe);
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Lfm = new mpw(this);
-    parammpe = lfl.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    if (parammpe != null)
+    int i = this.a.a.a().a().d;
+    if ((i == 2) || (i == 1))
     {
-      parammpe.a(11, this.jdField_a_of_type_Lfm);
+      mqw.a(this.a.a.a().c());
+      mqw.g();
+      d(3);
       return;
     }
-    QLog.w(this.i, 1, "ListenPeerMsg, mHandlerForVideo为空");
+    mqw.a(0L);
   }
   
-  void a(String paramString)
+  protected void b(long paramLong)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -1;
-    if (QLog.isDevelopLevel()) {
-      QLog.w(this.i, 1, "resetData[" + paramString + "]");
+    mqb localmqb = this.a.a();
+    if (localmqb != null) {
+      localmqb.b("onResumeVideo");
     }
+  }
+  
+  protected void b(long paramLong, String paramString, boolean paramBoolean)
+  {
+    paramString = this.a.a();
+    if (paramString != null) {
+      paramString.c(paramBoolean);
+    }
+    mqw.h();
+  }
+  
+  protected void c()
+  {
+    mqb localmqb = this.a.a();
+    if (localmqb != null) {
+      localmqb.b("onPauseVideo");
+    }
+  }
+  
+  protected void c(String paramString, boolean paramBoolean)
+  {
+    paramString = this.a.a();
+    if (paramString == null) {}
+    do
+    {
+      int i;
+      do
+      {
+        return;
+        i = this.a.a.a().a().d;
+      } while ((i != 2) && (i != 1));
+      if (paramBoolean)
+      {
+        if (paramString.a != null) {
+          paramString.a.a("onPeerSwitchTerminal");
+        }
+        paramString.b("onPeerSwitchTerminal");
+        return;
+      }
+      paramString.a("onPeerSwitchTerminal");
+    } while (paramString.a == null);
+    paramString.a(paramString.a.b);
+  }
+  
+  public void d(int paramInt)
+  {
+    if (paramInt <= 0) {
+      return;
+    }
+    mqb localmqb = this.a.a();
+    if (localmqb != null)
+    {
+      localmqb.a("onConnected:" + paramInt);
+      if (localmqb.a != null) {
+        localmqb.a(localmqb.a.b);
+      }
+    }
+    this.a.a.a().postDelayed(new AVRedBag.2.1(this, paramInt), 1100L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mpv
  * JD-Core Version:    0.7.0.1
  */

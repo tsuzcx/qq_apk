@@ -1,17 +1,11 @@
-import android.view.View;
+import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
 
-final class uxs
-  implements bjoe
+public class uxs
+  implements bgyw
 {
-  uxs(bjoe parambjoe, bjnw parambjnw) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public void onInfo(long paramLong, double paramDouble)
   {
-    uya.b("WSFeedUtils", "clickedView :" + paramView + ", which: " + paramInt);
-    if (this.jdField_a_of_type_Bjoe != null) {
-      this.jdField_a_of_type_Bjoe.OnClick(paramView, paramInt);
-    }
-    this.jdField_a_of_type_Bjnw.dismiss();
+    WSHomeFragment.a(this.a, paramDouble);
   }
 }
 

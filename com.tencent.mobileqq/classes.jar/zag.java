@@ -1,74 +1,78 @@
-import android.os.Bundle;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.richframework.part.extendsblock.HorizontalRvInnerView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.media.MediaFormat;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-public abstract class zag
-  extends yzp
+public class zag
+  extends BusinessHandler
 {
-  private HorizontalRvInnerView a;
+  private MediaFormat jdField_a_of_type_AndroidMediaMediaFormat;
+  private ConcurrentHashMap<String, LocalMediaInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public zag(Bundle paramBundle)
+  public zag(AppInterface paramAppInterface)
   {
-    super(paramBundle);
+    super(paramAppInterface);
   }
   
-  public int a()
+  public MediaFormat a()
   {
-    return 3;
+    return this.jdField_a_of_type_AndroidMediaMediaFormat;
   }
   
-  public abstract zah a(ViewGroup paramViewGroup, int paramInt);
-  
-  public abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
-  
-  public abstract void a(HorizontalRvInnerView paramHorizontalRvInnerView);
-  
-  public void a(ArrayList paramArrayList)
+  public LocalMediaInfo a(String paramString)
   {
-    a().clear();
-    a().addAll(paramArrayList);
-    if (this.a != null) {
-      this.a.setData(paramArrayList);
+    if (!TextUtils.isEmpty(paramString)) {
+      return (LocalMediaInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidMediaMediaFormat = null;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    if (QLog.isColorLevel()) {
+      QLog.d("SlideShowProcessor", 2, "clearCatcheMediaInfo");
     }
   }
   
-  public abstract int c();
-  
-  protected boolean e()
+  public void a(MediaFormat paramMediaFormat)
   {
-    return false;
+    this.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
   }
   
-  public int getItemCount()
+  public void a(String paramString)
   {
-    if ((!e()) || (a().size() > 0)) {
-      return 1;
+    if (!TextUtils.isEmpty(paramString)) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
     }
-    return 0;
   }
   
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  public void a(String paramString, LocalMediaInfo paramLocalMediaInfo)
   {
-    if ((paramViewHolder.itemView instanceof HorizontalRvInnerView)) {
-      this.a.setData(a());
+    if (QLog.isColorLevel()) {
+      QLog.d("SlideShowProcessor", 2, "setCatcheMediaInfo path : " + paramString);
     }
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramLocalMediaInfo);
   }
   
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  public boolean a(String paramString)
   {
-    this.a = new HorizontalRvInnerView(paramViewGroup.getContext(), this);
-    this.a.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-    paramViewGroup = new yzt(this, this.a);
-    paramViewGroup.setIsRecyclable(false);
-    a(this.a);
-    return paramViewGroup;
+    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
   }
+  
+  public Class<? extends BusinessObserver> observerClass()
+  {
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

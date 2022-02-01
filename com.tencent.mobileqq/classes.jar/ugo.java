@@ -1,114 +1,49 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.UnFollowResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.fragment.ReadinjoyAdHippyFragment;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.fragment.ReadinjoyAdHippyFragment.4.1;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.fragment.ReadinjoyAdHippyFragment.4.2;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
 
-final class ugo
-  implements BusinessObserver
+public class ugo
+  implements ucq
 {
-  ugo(amyh paramamyh, String paramString, boolean paramBoolean, Context paramContext, Object paramObject, QQAppInterface paramQQAppInterface) {}
+  public ugo(ReadinjoyAdHippyFragment paramReadinjoyAdHippyFragment) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a()
+  {
+    if (this.a.getActivity() != null) {
+      new Handler(this.a.getActivity().getMainLooper()).postDelayed(new ReadinjoyAdHippyFragment.4.2(this), 200L);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyAdMiniGameFragment", 2, "reloadPage success!");
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.a.getActivity() != null) {
+      new Handler(this.a.getActivity().getMainLooper()).postDelayed(new ReadinjoyAdHippyFragment.4.1(this), 1000L);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("ReadinjoyAdMiniGameFragment", 2, "reloadPage error,error code=" + paramInt);
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean) {}
+  
+  public void a(String paramString, int paramInt)
+  {
+    if ((1 == paramInt) && (pli.a())) {
+      pvm.a().l();
+    }
+  }
+  
+  public void b(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountUtil", 2, "success:" + String.valueOf(paramBoolean));
+      QLog.d("ReadinjoyAdMiniGameFragment", 2, "reloadPage process,process code=" + paramInt);
     }
-    if (!paramBoolean)
-    {
-      if (this.jdField_a_of_type_Amyh != null) {
-        this.jdField_a_of_type_Amyh.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
-      }
-      if (this.jdField_a_of_type_Boolean) {
-        ugf.a(this.jdField_a_of_type_AndroidContentContext, 2131694775);
-      }
-    }
-    label220:
-    label374:
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (!paramBoolean) {
-            break label412;
-          }
-          for (;;)
-          {
-            try
-            {
-              paramBundle = paramBundle.getByteArray("data");
-              if (paramBundle == null) {
-                break label374;
-              }
-              mobileqq_mp.UnFollowResponse localUnFollowResponse = new mobileqq_mp.UnFollowResponse();
-              localUnFollowResponse.mergeFrom(paramBundle);
-              if (((mobileqq_mp.RetInfo)localUnFollowResponse.ret_info.get()).ret_code.get() != 0) {
-                break label336;
-              }
-              if (this.jdField_a_of_type_JavaLangObject == null) {
-                break label220;
-              }
-              paramBundle = (PublicAccountHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(11);
-              if (paramBundle != null) {
-                paramBundle.a(this.jdField_a_of_type_JavaLangObject);
-              }
-              if (this.jdField_a_of_type_Amyh == null) {
-                break;
-              }
-              this.jdField_a_of_type_Amyh.onUpdate(102, true, this.jdField_a_of_type_JavaLangString);
-              return;
-            }
-            catch (Exception paramBundle)
-            {
-              if (this.jdField_a_of_type_Amyh != null) {
-                this.jdField_a_of_type_Amyh.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
-              }
-            }
-            if (!this.jdField_a_of_type_Boolean) {
-              break;
-            }
-            ugf.a(this.jdField_a_of_type_AndroidContentContext, 2131694775);
-            return;
-            paramBundle = (amxz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
-            paramBundle.b(this.jdField_a_of_type_JavaLangString);
-            paramBundle.a(this.jdField_a_of_type_JavaLangString);
-            StructLongMessageDownloadProcessor.deleteTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().clearHistory(this.jdField_a_of_type_JavaLangString, 1008);
-            uda.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle.a());
-            uaw.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-            paramBundle = (ofx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(88);
-            if (paramBundle != null) {
-              paramBundle.a(this.jdField_a_of_type_JavaLangString, "unfollow");
-            }
-          }
-          if (this.jdField_a_of_type_Amyh != null) {
-            this.jdField_a_of_type_Amyh.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
-          }
-        } while (!this.jdField_a_of_type_Boolean);
-        ugf.a(this.jdField_a_of_type_AndroidContentContext, 2131694775);
-        return;
-        if (this.jdField_a_of_type_Amyh != null) {
-          this.jdField_a_of_type_Amyh.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
-        }
-      } while (!this.jdField_a_of_type_Boolean);
-      ugf.a(this.jdField_a_of_type_AndroidContentContext, 2131694775);
-      return;
-      if (this.jdField_a_of_type_Amyh != null) {
-        this.jdField_a_of_type_Amyh.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
-      }
-    } while (!this.jdField_a_of_type_Boolean);
-    label336:
-    ugf.a(this.jdField_a_of_type_AndroidContentContext, 2131694775);
-    label412:
   }
 }
 

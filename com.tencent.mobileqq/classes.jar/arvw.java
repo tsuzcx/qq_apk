@@ -1,24 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.ExpandableListView;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-class arvw
-  implements View.OnClickListener
+public class arvw
+  implements CompoundButton.OnCheckedChangeListener
 {
-  arvw(arvv paramarvv, int paramInt) {}
+  public arvw(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (arvv.a(this.jdField_a_of_type_Arvv).c(this.jdField_a_of_type_Int)) {
-      arvv.a(this.jdField_a_of_type_Arvv).b(this.jdField_a_of_type_Int);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      arvv.a(this.jdField_a_of_type_Arvv).a(this.jdField_a_of_type_Int);
-    }
+    this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(aoqx.a, 0).edit().putBoolean(aoqx.c, paramBoolean).commit();
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

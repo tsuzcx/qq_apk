@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.troop.utils;
 
-import avtd;
+import awzf;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -19,8 +20,8 @@ public final class HWTroopUtils$3
   
   public void run()
   {
-    avtd localavtd = (avtd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(37);
-    Object localObject = localavtd.a(this.jdField_a_of_type_JavaLangString);
+    awzf localawzf = (awzf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOPINFO_MANAGER);
+    Object localObject = localawzf.a(this.jdField_a_of_type_JavaLangString);
     if (localObject != null) {
       try
       {
@@ -43,7 +44,7 @@ public final class HWTroopUtils$3
             {
               localAppInfo.push_red_point.set(0);
               localRspBody.infos.set((List)localObject);
-              localavtd.a(this.jdField_a_of_type_JavaLangString, localRspBody.toByteArray());
+              localawzf.a(this.jdField_a_of_type_JavaLangString, localRspBody.toByteArray());
               return;
             }
           }

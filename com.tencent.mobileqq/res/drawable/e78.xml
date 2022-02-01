@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:left="5.0dip" android:top="1.0dip" android:right="5.0dip" android:bottom="1.0dip">
-        <shape android:shape="rectangle" android:useLevel="false"
-          xmlns:android="http://schemas.android.com/apk/res/android">
-            <corners android:radius="3.0dip" />
-            <stroke android:width="4.0dip" android:color="#ff66d99e" />
-        </shape>
-    </item>
-</layer-list>
+    <item android:state_selected="true" android:drawable="@drawable/gv2" />
+    <item android:state_pressed="true" android:drawable="@drawable/gv2" />
+    <item android:drawable="@drawable/bh6" />
+</selector>

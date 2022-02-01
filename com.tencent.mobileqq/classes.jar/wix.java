@@ -1,17 +1,26 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-class wix
-  extends whj
+public class wix
+  extends vzj
 {
-  wix(wif paramwif, StoryVideoItem paramStoryVideoItem, wjo paramwjo)
+  public long a;
+  public final String a;
+  public final boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  public String d;
+  
+  public wix(ErrorMessage paramErrorMessage, String paramString, boolean paramBoolean)
   {
-    super(paramStoryVideoItem);
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public boolean b()
+  public String toString()
   {
-    this.jdField_a_of_type_Wjo.e = ((String)a("result"));
-    return true;
+    return "DeleteStoryVideoEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", groupId='" + this.c + '\'' + ", feedId='" + this.d + '\'' + ", videoIndex=" + this.jdField_a_of_type_Long + ", localDelete=" + this.jdField_a_of_type_Boolean + ", isRemoveMember=" + this.jdField_b_of_type_Boolean + '}';
   }
 }
 

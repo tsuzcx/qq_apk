@@ -1,18 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aldy
-  implements DialogInterface.OnClickListener
+class aldy
+  implements View.OnClickListener
 {
-  public aldy(ShortVideoPreviewActivity paramShortVideoPreviewActivity, Intent paramIntent, ArrayList paramArrayList) {}
+  aldy(aldh paramaldh) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    PhotoUtils.sendPhoto(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPreviewActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, false);
+    if (bgvx.a().a() == 4) {
+      bdla.b(aldh.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, bgvw.b(), bgvx.b(), bgvx.a(), "0");
+    }
+    for (;;)
+    {
+      this.a.a(15, 0);
+      this.a.a(-1, null);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bdla.b(aldh.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, bgvw.b(), bgvx.b(), bgvx.a(), "0");
+    }
   }
 }
 

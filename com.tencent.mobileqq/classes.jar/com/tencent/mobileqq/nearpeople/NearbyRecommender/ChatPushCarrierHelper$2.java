@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.nearpeople.NearbyRecommender;
 
 import EncounterSvc.RespEncounterInfo;
-import axhu;
+import aynz;
 import com.tencent.mobileqq.app.face.FaceDecoder;
 
 public class ChatPushCarrierHelper$2
   implements Runnable
 {
-  public ChatPushCarrierHelper$2(axhu paramaxhu, String paramString, RespEncounterInfo paramRespEncounterInfo) {}
+  public ChatPushCarrierHelper$2(aynz paramaynz, String paramString, RespEncounterInfo paramRespEncounterInfo) {}
   
   public void run()
   {

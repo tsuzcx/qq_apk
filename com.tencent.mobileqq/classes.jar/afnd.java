@@ -1,27 +1,34 @@
+import Wallet.AcsPullMsgRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
+import java.util.ArrayList;
+
 public class afnd
-  extends afng
+  implements afnw
 {
-  public int a;
-  public int b;
+  public afnd(ReminderListFragment paramReminderListFragment) {}
   
-  public afnd(int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    this.b = paramInt1;
-    this.a = paramInt2;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (paramObject == null) {}
-    do
+    if (paramBoolean)
     {
-      do
+      paramBundle = (AcsPullMsgRsp)paramBundle.getSerializable("rsp");
+      if (paramBundle != null)
       {
-        return false;
-      } while (!(paramObject instanceof afnd));
-      paramObject = (afnd)paramObject;
-    } while ((this.b != paramObject.b) || (this.a != paramObject.a));
-    return true;
+        paramBundle = paramBundle.msgs;
+        if ((paramBundle != null) && (!paramBundle.isEmpty()))
+        {
+          ArrayList localArrayList = new ArrayList(paramBundle.size());
+          ReminderListFragment.a(this.a, paramBundle, localArrayList, true);
+          return;
+        }
+        ReminderListFragment.b(this.a);
+        return;
+      }
+      ReminderListFragment.b(this.a);
+      return;
+    }
+    ReminderListFragment.a(this.a, anvx.a(2131712840));
   }
 }
 

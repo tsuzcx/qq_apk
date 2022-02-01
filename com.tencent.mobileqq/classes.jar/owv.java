@@ -1,30 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInjoyFriendsBiuComponentFragment.ViewHolder.2.1;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInjoyFriendsBiuComponentFragment.ViewHolder.2.2;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class owv
-  implements ViewBase.OnClickListener
+public class owv
+  implements qhl
 {
-  owv(owu paramowu) {}
+  owv(owt paramowt) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onLoadUserInfoFailed(String paramString1, String paramString2)
   {
-    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
+    if ((paramString1 != null) && (paramString1.equals(paramString1))) {
+      ThreadManager.getUIHandler().post(new ReadInjoyFriendsBiuComponentFragment.ViewHolder.2.2(this));
+    }
+    QLog.d("ReadInjoyFriendsBiuComponentFragment", 1, "setNickName infoFailed. uin:" + paramString1 + " errMsg:" + paramString2);
+  }
+  
+  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
+  {
+    if ((paramString != null) && (paramString.equals(paramString)) && (paramReadInJoyUserInfo != null)) {
+      ThreadManager.getUIHandler().post(new ReadInjoyFriendsBiuComponentFragment.ViewHolder.2.1(this, paramReadInJoyUserInfo));
+    }
+    if (paramReadInJoyUserInfo != null) {}
+    for (paramReadInJoyUserInfo = paramReadInJoyUserInfo.nick;; paramReadInJoyUserInfo = "null")
     {
-    default: 
-      return;
-    case 1095: 
-      pay.a(ows.a(this.a.a), ows.a(this.a.a), pcj.a(ows.a(this.a.a).innerUniqueID));
-      this.a.a.a(2);
-      this.a.a.dismiss();
-      paramViewBase = new pbg();
-      paramViewBase.i().b("wording", "" + pcj.a());
-      oto.a("0X8009FE8", ows.a(this.a.a), paramViewBase);
+      QLog.d("ReadInjoyFriendsBiuComponentFragment", 1, new Object[] { "setNickName infoSuccess nick = ", paramReadInJoyUserInfo, "  uin:" + paramString });
       return;
     }
-    this.a.a.a(1);
-    this.a.a.dismiss();
   }
 }
 

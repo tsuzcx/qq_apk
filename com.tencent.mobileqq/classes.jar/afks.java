@@ -1,22 +1,21 @@
+import android.view.animation.Transformation;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+
 public class afks
-  implements bfaz
+  implements bhir<Integer>
 {
-  public String a;
+  public afks(VisitorsActivity paramVisitorsActivity) {}
   
-  public afks(String paramString)
+  public void a(bhil<Integer> parambhil, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    this.a = paramString;
-  }
-  
-  public long a()
-  {
-    try
+    this.a.c.setText(paramInteger + "");
+    if (paramInteger.intValue() > 9999)
     {
-      long l = Long.parseLong(this.a);
-      return l;
+      this.a.c.setTextSize(36.0F);
+      return;
     }
-    catch (Exception localException) {}
-    return 0L;
+    this.a.c.setTextSize(44.0F);
   }
 }
 

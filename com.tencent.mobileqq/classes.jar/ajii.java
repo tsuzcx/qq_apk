@@ -1,17 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
+import java.util.Comparator;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 class ajii
-  implements View.OnClickListener
+  implements Comparator<MessageRecord>
 {
-  ajii(ajif paramajif) {}
+  ajii(ajih paramajih) {}
   
-  public void onClick(View paramView)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    this.a.a = null;
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramMessageRecord1 = ((MessageForSystemMsg)paramMessageRecord1).getSystemMsg();
+    paramMessageRecord2 = ((MessageForSystemMsg)paramMessageRecord2).getSystemMsg();
+    if (paramMessageRecord1.msg_seq.get() < paramMessageRecord2.msg_seq.get()) {}
+    do
+    {
+      return 1;
+      if (paramMessageRecord1.msg_seq.get() != paramMessageRecord2.msg_seq.get()) {
+        break;
+      }
+    } while ((paramMessageRecord1.msg.has()) && (paramMessageRecord1.msg.sub_type.get() != 1));
+    if ((paramMessageRecord2.msg.has()) && (paramMessageRecord2.msg.sub_type.get() != 1)) {
+      return -1;
+    }
+    return 0;
+    return -1;
   }
 }
 

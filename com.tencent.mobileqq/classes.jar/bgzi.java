@@ -1,14 +1,91 @@
-import android.app.Activity;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public abstract interface bgzi
-  extends bguj
+public class bgzi
 {
-  public abstract boolean getPayActionSucc();
+  bbvn jdField_a_of_type_Bbvn;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public abstract Activity getTopActivity();
+  public bgzi(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
   
-  public abstract int switchRequestCode(WebViewPlugin paramWebViewPlugin, byte paramByte, boolean paramBoolean);
+  public Bundle a(Bundle paramBundle)
+  {
+    paramBundle = paramBundle.getStringArrayList("key");
+    Bundle localBundle = new Bundle();
+    localBundle.putStringArrayList("key", paramBundle);
+    if ((paramBundle == null) || (paramBundle.size() == 0)) {
+      return localBundle;
+    }
+    if (this.jdField_a_of_type_Bbvn == null) {
+      this.jdField_a_of_type_Bbvn = ((bbvn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.STATUS_MANAGER));
+    }
+    if (this.jdField_a_of_type_Bbvn == null) {
+      return localBundle;
+    }
+    ArrayList localArrayList = new ArrayList(paramBundle.size());
+    Iterator localIterator = paramBundle.iterator();
+    String str1;
+    if (localIterator.hasNext())
+    {
+      String str2 = (String)localIterator.next();
+      str1 = "";
+      Object localObject;
+      if (str2 == null)
+      {
+        localObject = null;
+        label125:
+        paramBundle = str1;
+        if (localObject != null)
+        {
+          paramBundle = str1;
+          if (localObject.length != 3) {}
+        }
+      }
+      for (;;)
+      {
+        try
+        {
+          int j = Integer.parseInt(localObject[0]);
+          String str3 = localObject[1];
+          int i = Integer.parseInt(localObject[2]);
+          paramBundle = str1;
+          if (j == 1)
+          {
+            j = Integer.parseInt(str3);
+            localObject = this.jdField_a_of_type_Bbvn.a(j);
+            paramBundle = str1;
+            if (localObject != null)
+            {
+              if (i != 201) {
+                continue;
+              }
+              paramBundle = ((bbsk)localObject).a;
+            }
+          }
+        }
+        catch (Exception paramBundle)
+        {
+          paramBundle.printStackTrace();
+          paramBundle = str1;
+          continue;
+        }
+        axql.a("getIconUrl", "getIconUrl", new Object[] { str2, paramBundle });
+        localArrayList.add(paramBundle);
+        break;
+        localObject = str2.split("_s_");
+        break label125;
+        paramBundle = ((bbsk)localObject).b;
+      }
+    }
+    localBundle.putStringArrayList("path", localArrayList);
+    return localBundle;
+  }
 }
 
 

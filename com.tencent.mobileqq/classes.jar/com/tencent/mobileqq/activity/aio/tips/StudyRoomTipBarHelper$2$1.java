@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import ahqn;
+import ailm;
 
 public class StudyRoomTipBarHelper$2$1
   implements Runnable
 {
-  public StudyRoomTipBarHelper$2$1(ahqn paramahqn, int paramInt) {}
+  public StudyRoomTipBarHelper$2$1(ailm paramailm, int paramInt) {}
   
   public void run()
   {
-    ahqn.a(this.jdField_a_of_type_Ahqn, this.jdField_a_of_type_Int);
+    ailm.a(this.jdField_a_of_type_Ailm, this.jdField_a_of_type_Int);
   }
 }
 

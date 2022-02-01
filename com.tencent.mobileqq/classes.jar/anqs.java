@@ -1,16 +1,38 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.BusinessObserver;
 
 public class anqs
-  extends anri
+  implements BusinessObserver
 {
-  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
+  protected void a() {}
+  
+  protected void a(Object paramObject) {}
+  
+  protected void a(boolean paramBoolean) {}
+  
+  protected void a(boolean paramBoolean, Object paramObject) {}
+  
+  protected void b(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramQQAppInterface = new anqr(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "nearby_entry";
-    paramQQAppInterface.c = "nearby_feed";
-    return paramQQAppInterface;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, paramObject);
+      return;
+    case 2: 
+      a(paramObject);
+      return;
+    case 3: 
+      a();
+      return;
+    case 4: 
+      b(paramBoolean, paramObject);
+      return;
+    }
+    a(paramBoolean);
   }
 }
 

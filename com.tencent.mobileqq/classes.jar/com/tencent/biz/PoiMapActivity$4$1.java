@@ -4,12 +4,12 @@ import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
-import nli;
+import nsi;
 
 public class PoiMapActivity$4$1
   implements Runnable
 {
-  public PoiMapActivity$4$1(nli paramnli) {}
+  public PoiMapActivity$4$1(nsi paramnsi) {}
   
   public void run()
   {

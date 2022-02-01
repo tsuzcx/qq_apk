@@ -1,16 +1,18 @@
-import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Iterator;
+import java.util.Set;
 
 class xbn
-  extends vlc
+  extends vzx
 {
   xbn(xbm paramxbm) {}
   
-  public void c(boolean paramBoolean)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    vla localvla = (vla)this.a.a.app.getManager(181);
-    this.a.a(2, localvla.a());
-    this.a.a(3, localvla.b());
+    ykq.a("Q.qqstory.playernew.StoryPlayerImpl", "QQStoryObserver, onUpdate, type=%d, isSuccess=%s, data=%s", Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), paramObject);
+    Iterator localIterator = xbm.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((vzx)localIterator.next()).onUpdate(paramInt, paramBoolean, paramObject);
+    }
   }
 }
 

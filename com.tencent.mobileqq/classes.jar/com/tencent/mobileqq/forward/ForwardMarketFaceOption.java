@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.forward;
 
-import agif;
+import ahaw;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -10,9 +10,9 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import atky;
-import atmq;
-import bfvo;
+import aupt;
+import aurl;
+import bheg;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.SplashActivity;
@@ -24,7 +24,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Set;
 
 public class ForwardMarketFaceOption
-  extends atky
+  extends aupt
 {
   private ImageView a;
   private boolean i;
@@ -98,13 +98,13 @@ public class ForwardMarketFaceOption
       QLog.d("ForwardOption.ForwardMarketFaceOption", 2, "setPreviewImage");
     }
     if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_emotion_from_preview", false)) {}
-    for (Object localObject = AIOEmotionFragment.a; localObject == null; localObject = agif.a) {
+    for (Object localObject = AIOEmotionFragment.a; localObject == null; localObject = ahaw.a) {
       return;
     }
     localObject = ((PicEmoticonInfo)localObject).getLoadingDrawable("fromAIO", false);
-    ((URLDrawable)localObject).setBounds(bfvo.a((Drawable)localObject, 36, 100, this.jdField_a_of_type_Float));
+    ((URLDrawable)localObject).setBounds(bheg.a((Drawable)localObject, 36, 100, this.jdField_a_of_type_Float));
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-    ((URLDrawable)localObject).setURLDrawableListener(new atmq(this));
+    ((URLDrawable)localObject).setURLDrawableListener(new aurl(this));
   }
   
   public void k()

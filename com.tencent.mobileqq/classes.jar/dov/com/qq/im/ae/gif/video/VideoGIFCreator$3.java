@@ -1,18 +1,18 @@
 package dov.com.qq.im.ae.gif.video;
 
-import bmac;
-import bmad;
+import bnpm;
+import bnpn;
 import com.tencent.qphone.base.util.QLog;
 
 public class VideoGIFCreator$3
   implements Runnable
 {
-  public VideoGIFCreator$3(bmad parambmad) {}
+  public VideoGIFCreator$3(bnpn parambnpn) {}
   
   public void run()
   {
-    QLog.d(bmad.a(), 4, "start decode");
-    bmad.a(this.this$0).a();
+    QLog.d(bnpn.a(), 4, "start decode");
+    bnpn.a(this.this$0).a();
   }
 }
 

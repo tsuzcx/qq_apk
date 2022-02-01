@@ -3,12 +3,12 @@ package com.tencent.mobileqq.filemanager.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aslt;
+import atpz;
 
 public class OfflineFileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<OfflineFileInfo> CREATOR = new aslt();
+  public static final Parcelable.Creator<OfflineFileInfo> CREATOR = new atpz();
   public int a;
   public long a;
   public String a;
@@ -20,6 +20,7 @@ public class OfflineFileInfo
   public String c;
   public long d;
   public String d;
+  public String e;
   
   public OfflineFileInfo()
   {
@@ -37,6 +38,7 @@ public class OfflineFileInfo
     this.jdField_b_of_type_Long = paramParcel.readLong();
     this.jdField_c_of_type_Long = paramParcel.readLong();
     this.jdField_d_of_type_Long = paramParcel.readLong();
+    this.e = paramParcel.readString();
     this.jdField_d_of_type_JavaLangString = paramParcel.readString();
     if (this.jdField_b_of_type_Int == 2)
     {
@@ -62,6 +64,7 @@ public class OfflineFileInfo
     localStringBuilder.append("nFileSize[").append(this.jdField_b_of_type_Long).append("]");
     localStringBuilder.append("nLiftTime[").append(this.jdField_c_of_type_Long).append("]");
     localStringBuilder.append("nUploadTime[").append(this.jdField_d_of_type_Long).append("]");
+    localStringBuilder.append("md5[").append(this.jdField_d_of_type_JavaLangString).append("]");
     return localStringBuilder.toString();
   }
   
@@ -78,6 +81,7 @@ public class OfflineFileInfo
       paramParcel.writeLong(this.jdField_b_of_type_Long);
       paramParcel.writeLong(this.jdField_c_of_type_Long);
       paramParcel.writeLong(this.jdField_d_of_type_Long);
+      paramParcel.writeString(this.e);
       paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
       return;
     }
@@ -85,7 +89,7 @@ public class OfflineFileInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.OfflineFileInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,138 +1,78 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.AsyncTask;
-import android.os.SystemClock;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.statistics.UnifiedMonitor;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.manager.ServerConfigManager.ConfigType;
 
 final class bfxa
-  extends AsyncTask<Void, Void, Void>
+  implements View.OnTouchListener
 {
-  bfxa(String paramString1, int paramInt, String paramString2) {}
+  long jdField_a_of_type_Long = 0L;
   
-  protected Void a(Void... paramVarArgs)
+  bfxa(boolean paramBoolean, QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramVarArgs = bfyg.a(ServerConfigManager.ConfigType.common, bfwz.p());
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PerformanceReportUtils", 4, "reportFPS openStr ：" + paramVarArgs);
+    if ((this.jdField_a_of_type_Boolean) || (!(paramView instanceof ImageView))) {
+      return false;
     }
-    if ((paramVarArgs == null) || (!"1".equals(paramVarArgs))) {
-      return null;
-    }
-    int i;
-    for (;;)
+    int i = paramMotionEvent.getAction();
+    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof axms))) {}
+    for (paramMotionEvent = (axms)paramView.getTag();; paramMotionEvent = null)
     {
-      try
+      switch (i)
       {
-        localSharedPreferences = bfwz.a();
-        if ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_Int <= 0)) {
-          break label631;
+      }
+      for (;;)
+      {
+        return true;
+        if (paramMotionEvent != null)
+        {
+          paramView.setAlpha(paramMotionEvent.a() * 0.5F);
         }
-        if ((this.jdField_a_of_type_Int >= 60) && (QLog.isDevelopLevel())) {
-          QLog.e("PerformanceReportUtils", 4, "reportFPS  fps error fpsvalue :" + this.jdField_a_of_type_Int);
-        }
-        l2 = localSharedPreferences.getLong(this.jdField_a_of_type_JavaLangString, 0L);
-        l1 = bfwz.a();
-        paramVarArgs = bfyg.a(ServerConfigManager.ConfigType.common, bfwz.q());
-        if (paramVarArgs == null) {}
-      }
-      catch (Exception paramVarArgs)
-      {
-        SharedPreferences localSharedPreferences;
-        long l2;
-        long l1;
-        HashMap localHashMap;
-        BaseApplicationImpl localBaseApplicationImpl;
-        break label631;
-        i = 1;
-        continue;
-      }
-      try
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("PerformanceReportUtils", 4, "reportFPS  server time：" + paramVarArgs);
-        }
-        l1 = Long.valueOf(paramVarArgs).longValue();
-        l1 *= 1000L;
-      }
-      catch (Exception paramVarArgs)
-      {
-        l1 = bfwz.a();
-        continue;
-        paramVarArgs = this.jdField_a_of_type_JavaLangString + "_new";
-      }
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PerformanceReportUtils", 4, "reportFPS report_time ：" + l1 + ",lastRp" + l2 + ",reportFPS fpsvalue：" + this.jdField_a_of_type_Int);
-    }
-    if ((l2 != 0L) && (SystemClock.uptimeMillis() >= l2))
-    {
-      if (SystemClock.uptimeMillis() - l2 < l1) {
-        break label633;
-      }
-      break label626;
-      bool = UnifiedMonitor.a().whetherReportThisTime(12, false);
-      if ((i == 0) && (!bool)) {
-        break label631;
-      }
-      localHashMap = new HashMap();
-      localHashMap.put("param_FPS", String.valueOf(this.jdField_a_of_type_Int));
-      localHashMap.put("aioBusiness", this.b);
-      localHashMap.put("theme_Id", QQAppInterface.getCurrentThemeId());
-      localHashMap.put("param_threadOpId", String.valueOf(anbx.a().a()));
-      if (QLog.isDevelopLevel()) {
-        QLog.d("PerformanceReportUtils", 4, "reportFPS real report  fpsvalue：" + this.jdField_a_of_type_Int);
-      }
-      localHashMap.put("param_DeviceType", String.valueOf(ajpv.a()));
-      paramVarArgs = null;
-      localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-      if (localBaseApplicationImpl != null) {
-        paramVarArgs = localBaseApplicationImpl.getRuntime();
-      }
-      if ((paramVarArgs != null) && ((paramVarArgs instanceof QQAppInterface)))
-      {
-        if (((QQAppInterface)paramVarArgs).mAutomator.a == 0L) {
-          break label638;
-        }
-        bool = true;
-        label457:
-        localHashMap.put("param_is_logining", String.valueOf(bool));
-        if (((QQAppInterface)paramVarArgs).mAutomator.c()) {
-          break label644;
+        else
+        {
+          paramView.setAlpha(0.5F);
+          continue;
+          if (paramMotionEvent != null) {
+            paramView.setAlpha(paramMotionEvent.a());
+          }
+          while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 800L)
+          {
+            return true;
+            paramView.setAlpha(1.0F);
+          }
+          this.jdField_a_of_type_Long = System.currentTimeMillis();
+          if ((paramMotionEvent == null) || (TextUtils.isEmpty(paramMotionEvent.jdField_a_of_type_JavaLangString))) {
+            break;
+          }
+          if (paramMotionEvent.jdField_a_of_type_JavaLangString.equals(anvx.a(2131699047)))
+          {
+            bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "Grp_AIO_display", "AIO_Luckyword_clk", 0, 0, "", "", "", "");
+            paramView = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+            paramView.putExtra("url", "https://qun.qq.com/v2/luckyword/index?qunid={GROUPCODE}&_wv=67108865&_nav_txtclr=FFFFFF&_wvSb=0&source=enter".replace("{GROUPCODE}", this.jdField_a_of_type_JavaLangString));
+            this.jdField_a_of_type_AndroidAppActivity.startActivity(paramView);
+          }
+          else
+          {
+            bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800A852", "0X800A852", 0, 0, "" + paramMotionEvent.jdField_a_of_type_Long, "", "", "");
+            paramView = bgld.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+            paramMotionEvent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+            paramMotionEvent.putExtra("url", paramView);
+            this.jdField_a_of_type_AndroidAppActivity.startActivity(paramMotionEvent);
+            continue;
+            if (paramMotionEvent != null) {
+              paramView.setAlpha(paramMotionEvent.a());
+            } else {
+              paramView.setAlpha(1.0F);
+            }
+          }
         }
       }
-    }
-    label644:
-    for (boolean bool = true;; bool = false)
-    {
-      localHashMap.put("param_syncing_msg", String.valueOf(bool));
-      localHashMap.put("param_NetType", String.valueOf(NetworkUtil.getSystemNetwork(BaseApplication.getContext())));
-      if (i != 0)
-      {
-        paramVarArgs = this.jdField_a_of_type_JavaLangString;
-        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(bfyg.a(), paramVarArgs, bfwz.a(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int, 0L, localHashMap, bfwz.o());
-        if (i == 0) {
-          break label631;
-        }
-        localSharedPreferences.edit().putLong(this.jdField_a_of_type_JavaLangString, SystemClock.uptimeMillis()).commit();
-      }
-      label626:
-      label631:
-      return null;
-      label633:
-      i = 0;
-      break;
-      label638:
-      bool = false;
-      break label457;
     }
   }
 }

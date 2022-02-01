@@ -1,33 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class skg
-  implements View.OnClickListener
+public abstract interface skg
 {
-  long jdField_a_of_type_Long = 0L;
+  public abstract void a();
   
-  public skg(BaseTabbar paramBaseTabbar, int paramInt) {}
+  public abstract void a(Object paramObject);
   
-  public void onClick(View paramView)
-  {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long < 300L)
-    {
-      this.jdField_a_of_type_Long = 0L;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.a != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.a.a(this.jdField_a_of_type_Int);
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.setSelectedTab(this.jdField_a_of_type_Int, true);
-    }
-  }
+  public abstract void a(Object paramObject, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
 }
 
 

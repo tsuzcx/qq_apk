@@ -1,32 +1,24 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.PreloadWebService;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
 public class aenm
-  implements View.OnClickListener
+  extends WebViewClient
 {
-  public aenm(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aenm(PreloadWebService paramPreloadWebService) {}
   
-  public void onClick(View paramView)
+  @Override
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    yos.a(this.a.a);
-    yos.a(this.a.a.a);
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < this.a.a.a.size())
-    {
-      localArrayList.add(((aeox)this.a.a.a.get(i)).a);
-      i += 1;
-    }
-    Intent localIntent = new Intent();
-    localIntent.putStringArrayListExtra("extra_member_uin_list", localArrayList);
-    this.a.setResult(-1, localIntent);
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    JsInjector.getInstance().onPageStarted(paramWebView);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    return true;
   }
 }
 

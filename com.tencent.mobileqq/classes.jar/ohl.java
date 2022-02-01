@@ -1,132 +1,55 @@
-import android.net.Uri;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import org.json.JSONObject;
 
-public class ohl
+class ohl
+  implements INetInfoHandler
 {
-  public static String a(QQAppInterface paramQQAppInterface, String paramString)
+  ohl(ohj paramohj) {}
+  
+  public void onNetMobile2None()
   {
-    if (StringUtil.isEmpty(paramString)) {
-      paramQQAppInterface = "";
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetMobile2None");
     }
-    for (;;)
-    {
-      return paramQQAppInterface;
-      paramQQAppInterface = a(paramQQAppInterface);
-      if (paramQQAppInterface == null) {
-        return "";
-      }
-      paramString = paramQQAppInterface.optString(paramString);
-      if (StringUtil.isEmpty(paramString)) {
-        return "";
-      }
-      paramQQAppInterface = paramString;
-      try
-      {
-        if (!"qqshop".equals(Uri.parse(paramString).getScheme())) {
-          return "";
-        }
-      }
-      catch (Throwable paramQQAppInterface)
-      {
-        QLog.e("QQShopFakeUrlHelper", 1, paramQQAppInterface, new Object[0]);
-      }
-    }
-    return paramString;
+    ohj.b(this.a);
   }
   
-  public static String a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  public void onNetMobile2Wifi(String paramString)
   {
-    paramQQAppInterface = a(paramQQAppInterface);
-    if (paramQQAppInterface == null) {
-      return "";
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetMobile2Wifi");
     }
-    try
-    {
-      Iterator localIterator = paramQQAppInterface.keys();
-      while (localIterator.hasNext())
-      {
-        Uri localUri = Uri.parse(paramQQAppInterface.optString((String)localIterator.next()));
-        if ((localUri != null) && (localUri.getHost() != null) && (localUri.getHost().equals(paramString1)))
-        {
-          paramQQAppInterface = localUri.getQueryParameter(paramString2);
-          return paramQQAppInterface;
-        }
-      }
-    }
-    catch (Throwable paramQQAppInterface)
-    {
-      QLog.e("QQShopFakeUrlHelper", 1, paramQQAppInterface, new Object[0]);
-    }
-    return "";
   }
   
-  public static String a(String paramString)
+  public void onNetNone2Mobile(String paramString)
   {
-    if (StringUtil.isEmpty(paramString)) {
-      return "";
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetNone2Mobile");
     }
-    try
-    {
-      paramString = Uri.parse(paramString).getHost();
-      return paramString;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("QQShopFakeUrlHelper", 1, paramString, new Object[0]);
-    }
-    return "";
+    ohj.b(this.a);
   }
   
-  public static String a(String paramString1, String paramString2)
+  public void onNetNone2Wifi(String paramString)
   {
-    if (StringUtil.isEmpty(paramString1)) {
-      return "";
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetNone2Wifi");
     }
-    try
-    {
-      paramString1 = Uri.parse(paramString1).getQueryParameter(paramString2);
-      return paramString1;
-    }
-    catch (Throwable paramString1)
-    {
-      QLog.e("QQShopFakeUrlHelper", 1, paramString1, new Object[0]);
-    }
-    return "";
   }
   
-  private static JSONObject a(QQAppInterface paramQQAppInterface)
+  public void onNetWifi2Mobile(String paramString)
   {
-    paramQQAppInterface = (ajyg)paramQQAppInterface.getManager(245);
-    if ((paramQQAppInterface != null) && (paramQQAppInterface.a("qqshop") != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QQShopFakeUrlHelper", 2, " getQQShopConfig: " + paramQQAppInterface.a("qqshop"));
-      }
-      return paramQQAppInterface.a("qqshop");
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetWifi2Mobile");
     }
-    return null;
+    ohj.b(this.a);
   }
   
-  public static String b(QQAppInterface paramQQAppInterface, String paramString)
+  public void onNetWifi2None()
   {
-    paramQQAppInterface = a(paramQQAppInterface, paramString);
-    if (StringUtil.isEmpty(paramQQAppInterface)) {
-      return "";
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetWifi2None");
     }
-    try
-    {
-      paramQQAppInterface = Uri.parse(paramQQAppInterface).getHost();
-      return paramQQAppInterface;
-    }
-    catch (Throwable paramQQAppInterface)
-    {
-      QLog.e("QQShopFakeUrlHelper", 1, paramQQAppInterface, new Object[0]);
-    }
-    return "";
+    ohj.b(this.a);
   }
 }
 

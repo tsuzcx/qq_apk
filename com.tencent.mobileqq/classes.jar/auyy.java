@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import android.text.TextUtils;
 
 public class auyy
-  implements DialogInterface.OnDismissListener
 {
-  public auyy(ListenTogetherManager paramListenTogetherManager) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public static boolean a(String paramString)
   {
-    this.a.b();
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    return paramString.startsWith("https://ti.qq.com/friends/unidirection?_wv=2&_wwv=128&tuin=");
   }
 }
 

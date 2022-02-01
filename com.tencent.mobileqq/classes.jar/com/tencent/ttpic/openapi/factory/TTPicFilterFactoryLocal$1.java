@@ -33,7 +33,7 @@ final class TTPicFilterFactoryLocal$1
       new File(AEModule.getLutDirPath() + File.separator + this.val$filterName + ".png").delete();
       RendererUtils.clearTexture(i);
       localFrame.clear();
-      localBaseFilter.ClearGLSL();
+      localBaseFilter.clearGLSL();
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)

@@ -1,19 +1,12 @@
 package com.tencent.mfsdk;
 
-import aafp;
-import achm;
-import achn;
-import achp;
-import achq;
-import achr;
-import achx;
-import acjc;
+import aczl;
 import android.app.Application;
 import android.content.SharedPreferences;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mfsdk.config.APMConfig;
 import com.tencent.mfsdk.config.Config;
-import com.tencent.mobileqq.app.MemoryManager;
+import java.util.ArrayList;
 
 class MagnifierSDK$RunSDKRunnable
   implements Runnable
@@ -29,37 +22,32 @@ class MagnifierSDK$RunSDKRunnable
   {
     MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences = MagnifierSDK.a(this.a);
     MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor = MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    MagnifierSDK.jdField_a_of_type_Acjc = acjc.a(this.a.getApplicationContext());
+    MagnifierSDK.jdField_a_of_type_Aczl = aczl.a(this.a.getApplicationContext());
     this.this$0.jdField_a_of_type_ComTencentMfsdkConfigConfig.loadLocalConfigs();
+    ArrayList localArrayList = new ArrayList();
     if (BaseApplicationImpl.sProcessId == 1) {
-      MagnifierSDK.a().b().a();
+      localArrayList.add(MagnifierSDK.a().b());
     }
     if ((BaseApplicationImpl.sProcessId == 1) || (BaseApplicationImpl.sProcessId == 2) || (BaseApplicationImpl.sProcessId == 7)) {
-      MagnifierSDK.a().a().a();
+      localArrayList.add(MagnifierSDK.a().a());
     }
     if ((BaseApplicationImpl.sProcessId == 1) || (BaseApplicationImpl.sProcessId == 2)) {
-      MagnifierSDK.a().a().a();
+      localArrayList.add(MagnifierSDK.a().a());
     }
     if (BaseApplicationImpl.sProcessId != 4) {
-      MagnifierSDK.a().a().a();
+      localArrayList.add(MagnifierSDK.a().a());
     }
-    MagnifierSDK.a().a().a();
+    localArrayList.add(MagnifierSDK.a().a());
     if ((BaseApplicationImpl.sProcessId == 1) || (BaseApplicationImpl.sProcessId == 2) || (BaseApplicationImpl.sProcessId == 5) || (BaseApplicationImpl.sProcessId == 7) || (BaseApplicationImpl.sProcessId == 9) || (BaseApplicationImpl.sProcessId == 11) || (BaseApplicationImpl.sProcessId == 10))
     {
-      MagnifierSDK.a().a().a();
-      MagnifierSDK.a().a().a();
-      if (BaseApplicationImpl.sProcessId != 1) {
-        break label268;
-      }
-      MemoryManager.getInstance().checkReportOOMInfo();
+      localArrayList.add(MagnifierSDK.a().a());
+      localArrayList.add(MagnifierSDK.a().a());
     }
-    for (;;)
-    {
-      if ((!MagnifierSDK.a().a().runIo) && (MagnifierSDK.a().a().runDb)) {}
-      return;
-      label268:
-      aafp.a().c();
+    MagnifierSDK.a(MagnifierSDK.a(), localArrayList);
+    if (BaseApplicationImpl.sProcessId == 1) {
+      localArrayList.add(MagnifierSDK.a().c());
     }
+    if ((!MagnifierSDK.a().a().runIo) && (MagnifierSDK.a().a().runDb)) {}
   }
 }
 

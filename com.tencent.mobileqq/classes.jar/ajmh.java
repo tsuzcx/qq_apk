@@ -1,70 +1,35 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.mobileqq.forward.ForwardShareCardOption;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajmh
-  extends aycd
+class ajmh
+  implements View.OnClickListener
 {
-  private ajmh(ContactListView paramContactListView) {}
+  ajmh(ajmg paramajmg) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((!paramBoolean) || (!NetworkUtil.isNetSupport(this.a.getContext())))
+    switch (paramView.getId())
     {
-      this.a.i();
-      this.a.g();
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    int i = this.a.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp.d();
-    if (!paramBoolean1)
-    {
-      this.a.i();
-      this.a.g();
-      if (((i == 0) || (i == 7)) && ((this.a.jdField_a_of_type_Int != 2) || (!(this.a.jdField_a_of_type_Atky instanceof ForwardShareCardOption))) && (this.a.b == 0)) {
-        this.a.a(2131717686, 3000L);
-      }
-    }
-    do
-    {
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    } while (!this.a.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp.f());
-    this.a.a(2131718142, 0L, false);
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactListView", 2, "onHideContact isSuccess=" + paramBoolean);
-    }
-    if ((paramBoolean) && (this.a.jdField_a_of_type_Int == 5)) {
-      this.a.j();
-    }
-  }
-  
-  protected void e(boolean paramBoolean, int paramInt)
-  {
-    if (paramBoolean)
-    {
-      this.a.i();
-      ContactListView.a(this.a, true);
-      if ((paramInt & 0x1) == 0) {
-        this.a.g();
-      }
     }
     for (;;)
     {
-      if (this.a.jdField_a_of_type_Int == 6) {
-        this.a.f();
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      this.a.g();
+      String str1 = (String)paramView.getTag(-1);
+      String str2 = (String)paramView.getTag(-2);
+      if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("Contacts.PublicAccountFragment", 2, "onClick - uin = " + str1 + ", name = " + str2);
+        }
+      }
+      else {
+        nwu.a(PublicAccountFragment.a(this.a.a), PublicAccountFragment.b(this.a.a), str2, str1, "IvrEnterpriseDetailEngineFalse");
+      }
     }
   }
 }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ocr;
 
-import axmv;
+import ayte;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
@@ -9,7 +9,7 @@ import java.util.HashMap;
 public class OcrControl$5$3
   implements Runnable
 {
-  public OcrControl$5$3(axmv paramaxmv, int paramInt1, int paramInt2, int paramInt3) {}
+  public OcrControl$5$3(ayte paramayte, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {

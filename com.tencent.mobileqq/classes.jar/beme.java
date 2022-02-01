@@ -1,15 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import androidx.annotation.NonNull;
 
 public class beme
-  implements DialogInterface.OnClickListener
 {
-  public beme(ReciteRecordLayout paramReciteRecordLayout) {}
+  private StringBuilder a = new StringBuilder();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(bemg parambemg)
   {
-    paramDialogInterface.dismiss();
+    this.a.append(parambemg.jdField_a_of_type_JavaLangString);
+    if (parambemg.b > 0) {
+      this.a.append('|').append(belm.a(parambemg.b));
+    }
+    this.a.append(parambemg.jdField_a_of_type_Char);
+    this.a.append(belm.a(parambemg.jdField_a_of_type_Int));
+  }
+  
+  public void c()
+  {
+    this.a.delete(0, this.a.length());
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return this.a.toString();
   }
 }
 

@@ -13,23 +13,26 @@ import com.tencent.ttpic.baseutils.device.DeviceInstance;
 import com.tencent.ttpic.baseutils.device.DeviceUtils;
 import com.tencent.ttpic.baseutils.io.FileUtils;
 import com.tencent.ttpic.baseutils.log.LogUtils;
-import com.tencent.ttpic.constant.CATEGORY_TYPE;
+import com.tencent.ttpic.constant.CategoryType;
+import com.tencent.ttpic.filter.juyoujinggame.UKYOGameSetting;
 import com.tencent.ttpic.gameplaysdk.model.GameParams;
 import com.tencent.ttpic.gameplaysdk.model.StickerItem3D;
 import com.tencent.ttpic.model.Audio2Text;
 import com.tencent.ttpic.model.FaceFeatureItem;
 import com.tencent.ttpic.model.FaceMeshItem;
+import com.tencent.ttpic.model.ImagesSetting;
 import com.tencent.ttpic.model.MultiViewerItem;
 import com.tencent.ttpic.offlineset.beans.StyleFilterSettingJsonBean;
 import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.openapi.config.MediaConfig.ENCODE_SIZE;
-import com.tencent.ttpic.openapi.facedetect.FaceDetector.DETECT_TYPE;
+import com.tencent.ttpic.openapi.facedetect.FaceDetector.DetectType;
 import com.tencent.ttpic.openapi.filter.FabbyMvPart;
 import com.tencent.ttpic.openapi.filter.FabbyParts;
 import com.tencent.ttpic.openapi.model.AnimationItem;
+import com.tencent.ttpic.openapi.model.AnimojiExpressionJava;
 import com.tencent.ttpic.openapi.model.FaceItem;
 import com.tencent.ttpic.openapi.model.FaceStyleItem;
-import com.tencent.ttpic.openapi.model.FaceStyleItem.STYLE_CHANGE_TYPE;
+import com.tencent.ttpic.openapi.model.FaceStyleItem.StyleChangeType;
 import com.tencent.ttpic.openapi.model.GLBItemJava;
 import com.tencent.ttpic.openapi.model.NodeItemJava;
 import com.tencent.ttpic.openapi.model.Point3D;
@@ -255,7 +258,7 @@ public class VideoMaterialUtil
     return (paramVideoMaterial == null) || ((!paramVideoMaterial.isSegmentRequired()) && (!isParticleMaterial(paramVideoMaterial)));
   }
   
-  private static boolean checkTNNElement(VideoMaterial paramVideoMaterial, FaceStyleItem.STYLE_CHANGE_TYPE paramSTYLE_CHANGE_TYPE)
+  private static boolean checkTNNElement(VideoMaterial paramVideoMaterial, FaceStyleItem.StyleChangeType paramStyleChangeType)
   {
     if (paramVideoMaterial == null) {
       return false;
@@ -267,7 +270,7 @@ public class VideoMaterialUtil
       while (paramVideoMaterial.hasNext())
       {
         FaceStyleItem localFaceStyleItem = (FaceStyleItem)paramVideoMaterial.next();
-        if ((!TextUtils.isEmpty(localFaceStyleItem.modelName)) && (localFaceStyleItem.styleChangeType == paramSTYLE_CHANGE_TYPE.value)) {
+        if ((!TextUtils.isEmpty(localFaceStyleItem.modelName)) && (localFaceStyleItem.styleChangeType == paramStyleChangeType.value)) {
           return true;
         }
       }
@@ -655,6 +658,29 @@ public class VideoMaterialUtil
     return paramInt * paramFloat2 + paramFloat1;
   }
   
+  public static int getDepthMaskType(VideoMaterial paramVideoMaterial)
+  {
+    if (paramVideoMaterial != null)
+    {
+      if (paramVideoMaterial.needDepthMask()) {
+        return paramVideoMaterial.getDepthMaskType();
+      }
+      paramVideoMaterial = paramVideoMaterial.getMultiViewerItemList();
+      if (paramVideoMaterial == null) {
+        return -1;
+      }
+      paramVideoMaterial = paramVideoMaterial.iterator();
+      while (paramVideoMaterial.hasNext())
+      {
+        MultiViewerItem localMultiViewerItem = (MultiViewerItem)paramVideoMaterial.next();
+        if ((localMultiViewerItem != null) && (localMultiViewerItem.videoMaterial != null) && (localMultiViewerItem.videoMaterial.needDepthMask())) {
+          return localMultiViewerItem.videoMaterial.getDepthMaskType();
+        }
+      }
+    }
+    return -1;
+  }
+  
   public static VideoMaterialUtil.ITEM_SOURCE_TYPE getItemSourceType(int paramInt)
   {
     if (paramInt == 1) {
@@ -848,18 +874,18 @@ public class VideoMaterialUtil
     //   2: iconst_0
     //   3: newarray int
     //   5: astore 7
-    //   7: new 695	java/io/RandomAccessFile
+    //   7: new 710	java/io/RandomAccessFile
     //   10: dup
     //   11: aload_0
-    //   12: ldc_w 697
-    //   15: invokespecial 700	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   12: ldc_w 712
+    //   15: invokespecial 715	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   18: astore 9
     //   20: aload 9
     //   22: astore_0
     //   23: aload 7
     //   25: astore 8
     //   27: aload 9
-    //   29: invokevirtual 704	java/io/RandomAccessFile:length	()J
+    //   29: invokevirtual 719	java/io/RandomAccessFile:length	()J
     //   32: lstore_3
     //   33: aload 9
     //   35: astore_0
@@ -867,9 +893,9 @@ public class VideoMaterialUtil
     //   38: astore 8
     //   40: aload 9
     //   42: lload_3
-    //   43: ldc2_w 705
+    //   43: ldc2_w 720
     //   46: lsub
-    //   47: invokevirtual 710	java/io/RandomAccessFile:seek	(J)V
+    //   47: invokevirtual 725	java/io/RandomAccessFile:seek	(J)V
     //   50: aload 9
     //   52: astore_0
     //   53: aload 7
@@ -883,14 +909,14 @@ public class VideoMaterialUtil
     //   67: astore 8
     //   69: aload 9
     //   71: aload 10
-    //   73: invokevirtual 714	java/io/RandomAccessFile:read	([B)I
+    //   73: invokevirtual 729	java/io/RandomAccessFile:read	([B)I
     //   76: pop
     //   77: aload 9
     //   79: astore_0
     //   80: aload 7
     //   82: astore 8
     //   84: aload 10
-    //   86: invokestatic 719	com/tencent/ttpic/util/ByteUtil:readInt	([B)I
+    //   86: invokestatic 734	com/tencent/ttpic/util/ByteUtil:readInt	([B)I
     //   89: istore_2
     //   90: iload_2
     //   91: bipush 12
@@ -903,13 +929,13 @@ public class VideoMaterialUtil
     //   106: aload 7
     //   108: astore 8
     //   110: aload 9
-    //   112: invokevirtual 722	java/io/RandomAccessFile:close	()V
+    //   112: invokevirtual 737	java/io/RandomAccessFile:close	()V
     //   115: aload 7
     //   117: astore_0
     //   118: aload 9
     //   120: ifnull +11 -> 131
     //   123: aload 9
-    //   125: invokevirtual 722	java/io/RandomAccessFile:close	()V
+    //   125: invokevirtual 737	java/io/RandomAccessFile:close	()V
     //   128: aload 7
     //   130: astore_0
     //   131: aload_0
@@ -930,9 +956,9 @@ public class VideoMaterialUtil
     //   154: lload_3
     //   155: lload 5
     //   157: lsub
-    //   158: ldc2_w 723
+    //   158: ldc2_w 738
     //   161: ladd
-    //   162: invokevirtual 710	java/io/RandomAccessFile:seek	(J)V
+    //   162: invokevirtual 725	java/io/RandomAccessFile:seek	(J)V
     //   165: aload 9
     //   167: astore_0
     //   168: aload 7
@@ -958,7 +984,7 @@ public class VideoMaterialUtil
     //   201: astore 8
     //   203: aload 9
     //   205: aload 10
-    //   207: invokevirtual 714	java/io/RandomAccessFile:read	([B)I
+    //   207: invokevirtual 729	java/io/RandomAccessFile:read	([B)I
     //   210: pop
     //   211: aload 9
     //   213: astore_0
@@ -967,7 +993,7 @@ public class VideoMaterialUtil
     //   218: aload 7
     //   220: iload_1
     //   221: aload 10
-    //   223: invokestatic 719	com/tencent/ttpic/util/ByteUtil:readInt	([B)I
+    //   223: invokestatic 734	com/tencent/ttpic/util/ByteUtil:readInt	([B)I
     //   226: iastore
     //   227: iload_1
     //   228: iconst_1
@@ -979,7 +1005,7 @@ public class VideoMaterialUtil
     //   237: aload 9
     //   239: ifnull -108 -> 131
     //   242: aload 9
-    //   244: invokevirtual 722	java/io/RandomAccessFile:close	()V
+    //   244: invokevirtual 737	java/io/RandomAccessFile:close	()V
     //   247: aload 7
     //   249: areturn
     //   250: astore_0
@@ -993,13 +1019,13 @@ public class VideoMaterialUtil
     //   263: aload 8
     //   265: astore_0
     //   266: aload 10
-    //   268: invokevirtual 725	java/lang/Exception:printStackTrace	()V
+    //   268: invokevirtual 740	java/lang/Exception:printStackTrace	()V
     //   271: aload 7
     //   273: astore_0
     //   274: aload 8
     //   276: ifnull -145 -> 131
     //   279: aload 8
-    //   281: invokevirtual 722	java/io/RandomAccessFile:close	()V
+    //   281: invokevirtual 737	java/io/RandomAccessFile:close	()V
     //   284: aload 7
     //   286: areturn
     //   287: astore_0
@@ -1013,7 +1039,7 @@ public class VideoMaterialUtil
     //   299: aload_0
     //   300: ifnull +7 -> 307
     //   303: aload_0
-    //   304: invokevirtual 722	java/io/RandomAccessFile:close	()V
+    //   304: invokevirtual 737	java/io/RandomAccessFile:close	()V
     //   307: aload 7
     //   309: athrow
     //   310: astore_0
@@ -1077,6 +1103,23 @@ public class VideoMaterialUtil
     //   218	227	323	java/lang/Exception
   }
   
+  public static boolean hasGlbList(VideoMaterial paramVideoMaterial)
+  {
+    if ((paramVideoMaterial == null) || (paramVideoMaterial.getGlbList() == null)) {
+      return false;
+    }
+    if (paramVideoMaterial.getGlbList() != null)
+    {
+      paramVideoMaterial = paramVideoMaterial.getGlbList().iterator();
+      while (paramVideoMaterial.hasNext()) {
+        if (!TextUtils.isEmpty(((GLBItemJava)paramVideoMaterial.next()).path)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  
   public static boolean hasValidFaceOffItem(VideoMaterial paramVideoMaterial)
   {
     if ((paramVideoMaterial != null) && (paramVideoMaterial.getFaceOffItemList() != null))
@@ -1101,7 +1144,7 @@ public class VideoMaterialUtil
     }
     paramVideoMaterial = paramVideoMaterial.getFaceOffItemList().iterator();
     while (paramVideoMaterial.hasNext()) {
-      if (((FaceItem)paramVideoMaterial.next()).is3DCos) {
+      if (((FaceItem)paramVideoMaterial.next()).is3DCos > 0) {
         return true;
       }
     }
@@ -1153,6 +1196,34 @@ public class VideoMaterialUtil
   public static boolean isAnimojiMaterial(VideoMaterial paramVideoMaterial)
   {
     return (isOldAnimojiMaterial(paramVideoMaterial)) || (isFilamentAnimojiMaterial(paramVideoMaterial));
+  }
+  
+  public static boolean isAnimojiTongueMaterial(VideoMaterial paramVideoMaterial)
+  {
+    if ((paramVideoMaterial == null) || (paramVideoMaterial.getGlbList() == null)) {
+      return false;
+    }
+    paramVideoMaterial = paramVideoMaterial.getGlbList().iterator();
+    label23:
+    if (paramVideoMaterial.hasNext())
+    {
+      Iterator localIterator2;
+      label77:
+      do
+      {
+        Iterator localIterator1 = ((GLBItemJava)paramVideoMaterial.next()).nodeList.iterator();
+        break label77;
+        if (!localIterator1.hasNext()) {
+          break label23;
+        }
+        localIterator2 = ((NodeItemJava)localIterator1.next()).expressionConfigList.iterator();
+        if (!localIterator2.hasNext()) {
+          break;
+        }
+      } while (!((AnimojiExpressionJava)localIterator2.next()).shapeName.contains("tongue"));
+      return true;
+    }
+    return false;
   }
   
   public static boolean isAudio2textMaterial(VideoMaterial paramVideoMaterial)
@@ -1290,7 +1361,7 @@ public class VideoMaterialUtil
       return false;
       paramVideoMaterial = paramVideoMaterial.getFaceStyleItemList();
     } while ((paramVideoMaterial == null) || (paramVideoMaterial.size() <= 0));
-    if (((FaceStyleItem)paramVideoMaterial.get(0)).styleChangeType == FaceStyleItem.STYLE_CHANGE_TYPE.CARTOON_STYLE.value) {}
+    if (((FaceStyleItem)paramVideoMaterial.get(0)).styleChangeType == FaceStyleItem.StyleChangeType.CARTOON_STYLE.value) {}
     for (boolean bool = true;; bool = false) {
       return bool;
     }
@@ -1416,7 +1487,7 @@ public class VideoMaterialUtil
         while (paramVideoMaterial.hasNext())
         {
           StickerItem localStickerItem = (StickerItem)paramVideoMaterial.next();
-          if ((localStickerItem.markMode == FaceDetector.DETECT_TYPE.DETECT_TYPE_CP.value) || (localStickerItem.cpRange != null)) {
+          if ((localStickerItem.markMode == FaceDetector.DetectType.DETECT_TYPE_CP.value) || (localStickerItem.cpRange != null)) {
             return true;
           }
         }
@@ -1484,7 +1555,7 @@ public class VideoMaterialUtil
   public static boolean isEmojiMaterial(VideoMaterial paramVideoMaterial)
   {
     if (paramVideoMaterial == null) {}
-    while (paramVideoMaterial.getCategoryFlag() != CATEGORY_TYPE.EMOJI.value) {
+    while (paramVideoMaterial.getCategoryFlag() != CategoryType.EMOJI.value) {
       return false;
     }
     return true;
@@ -1649,19 +1720,31 @@ public class VideoMaterialUtil
       return false;
     }
     Iterator localIterator;
+    Object localObject;
     do
     {
-      paramVideoMaterial = paramVideoMaterial.getGlbList().iterator();
-      while (!localIterator.hasNext())
+      localIterator = paramVideoMaterial.getGlbList().iterator();
+      while (!((Iterator)localObject).hasNext())
       {
-        if (!paramVideoMaterial.hasNext()) {
+        if (!localIterator.hasNext()) {
           break;
         }
-        localIterator = ((GLBItemJava)paramVideoMaterial.next()).nodeList.iterator();
+        localObject = ((GLBItemJava)localIterator.next()).nodeList.iterator();
       }
-    } while (((NodeItemJava)localIterator.next()).expressionConfigList.isEmpty());
+    } while (((NodeItemJava)((Iterator)localObject).next()).expressionConfigList.isEmpty());
     return true;
-    return false;
+    if (paramVideoMaterial.getMultiViewerItemList() != null)
+    {
+      localIterator = paramVideoMaterial.getMultiViewerItemList().iterator();
+      while (localIterator.hasNext())
+      {
+        localObject = (MultiViewerItem)localIterator.next();
+        if ((isFilamentAnimojiMaterial(((MultiViewerItem)localObject).videoMaterial)) || ((((MultiViewerItem)localObject).videoMaterial != null) && (((MultiViewerItem)localObject).videoMaterial.isKapuMaterial()))) {
+          return true;
+        }
+      }
+    }
+    return paramVideoMaterial.isKapuMaterial();
   }
   
   public static boolean isFilamentBloomMaterial(VideoMaterial paramVideoMaterial)
@@ -1683,10 +1766,22 @@ public class VideoMaterialUtil
     if ((paramVideoMaterial == null) || (paramVideoMaterial.getGlbList() == null)) {
       return false;
     }
-    paramVideoMaterial = paramVideoMaterial.getGlbList().iterator();
-    while (paramVideoMaterial.hasNext()) {
-      if (!TextUtils.isEmpty(((GLBItemJava)paramVideoMaterial.next()).path)) {
-        return true;
+    if (paramVideoMaterial.getGlbList() != null)
+    {
+      Iterator localIterator = paramVideoMaterial.getGlbList().iterator();
+      while (localIterator.hasNext()) {
+        if (!TextUtils.isEmpty(((GLBItemJava)localIterator.next()).path)) {
+          return true;
+        }
+      }
+    }
+    if (paramVideoMaterial.getMultiViewerItemList() != null)
+    {
+      paramVideoMaterial = paramVideoMaterial.getMultiViewerItemList().iterator();
+      while (paramVideoMaterial.hasNext()) {
+        if (isFilamentMaterial(((MultiViewerItem)paramVideoMaterial.next()).videoMaterial)) {
+          return true;
+        }
       }
     }
     return false;
@@ -2146,6 +2241,29 @@ public class VideoMaterialUtil
     return (paramVideoMaterial != null) && (!paramVideoMaterial.isEmpty());
   }
   
+  public static boolean isNeedDepthMask(VideoMaterial paramVideoMaterial)
+  {
+    if (paramVideoMaterial != null)
+    {
+      if (paramVideoMaterial.needDepthMask()) {
+        return true;
+      }
+      paramVideoMaterial = paramVideoMaterial.getMultiViewerItemList();
+      if (paramVideoMaterial == null) {
+        return false;
+      }
+      paramVideoMaterial = paramVideoMaterial.iterator();
+      while (paramVideoMaterial.hasNext())
+      {
+        MultiViewerItem localMultiViewerItem = (MultiViewerItem)paramVideoMaterial.next();
+        if ((localMultiViewerItem != null) && (localMultiViewerItem.videoMaterial != null) && (localMultiViewerItem.videoMaterial.needDepthMask())) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  
   public static boolean isNeedHandBonePoint(VideoMaterial paramVideoMaterial)
   {
     if (paramVideoMaterial != null)
@@ -2376,17 +2494,17 @@ public class VideoMaterialUtil
     return needRenderStar(paramVideoMaterial.getStarParam());
   }
   
-  public static boolean isTNNMaterial(VideoMaterial paramVideoMaterial, FaceStyleItem.STYLE_CHANGE_TYPE paramSTYLE_CHANGE_TYPE)
+  public static boolean isTNNMaterial(VideoMaterial paramVideoMaterial, FaceStyleItem.StyleChangeType paramStyleChangeType)
   {
     if (paramVideoMaterial == null) {
       return false;
     }
     if (!isMultiViewerMaterial(paramVideoMaterial)) {
-      return checkTNNElement(paramVideoMaterial, paramSTYLE_CHANGE_TYPE);
+      return checkTNNElement(paramVideoMaterial, paramStyleChangeType);
     }
     paramVideoMaterial = paramVideoMaterial.getMultiViewerItemList().iterator();
     while (paramVideoMaterial.hasNext()) {
-      if (checkTNNElement(((MultiViewerItem)paramVideoMaterial.next()).videoMaterial, paramSTYLE_CHANGE_TYPE)) {
+      if (checkTNNElement(((MultiViewerItem)paramVideoMaterial.next()).videoMaterial, paramStyleChangeType)) {
         return true;
       }
     }
@@ -2978,6 +3096,12 @@ public class VideoMaterialUtil
       }
       if (paramVideoMaterial.getHeadCropItemList() != null) {
         ((List)localObject1).addAll(paramVideoMaterial.getHeadCropItemList());
+      }
+      if (paramVideoMaterial.getUkyoGameSetting() != null) {
+        ((List)localObject1).addAll(paramVideoMaterial.getUkyoGameSetting().getItems());
+      }
+      if ((paramVideoMaterial.getImageSetting() != null) && (paramVideoMaterial.getImageSetting().getStickerItems() != null)) {
+        ((List)localObject1).addAll(paramVideoMaterial.getImageSetting().getStickerItems());
       }
       if (paramVideoMaterial.getFabbyParts() != null)
       {

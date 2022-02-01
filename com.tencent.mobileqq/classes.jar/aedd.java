@@ -1,32 +1,27 @@
-import android.os.Looper;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 public class aedd
-  implements bgql
+  extends Handler
 {
-  private final WeakReference<RegisterQQNumberActivity> a;
+  public aedd(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public aedd(RegisterQQNumberActivity paramRegisterQQNumberActivity)
+  public void handleMessage(Message paramMessage)
   {
-    this.a = new WeakReference(paramRegisterQQNumberActivity);
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
-      if (QLog.isColorLevel()) {
-        QLog.i("RegisterQQNumberActivity", 2, "CheckRegisterLiangHao.RequestCallBack not called in main thread !!!");
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupManagerActivity", 2, "mWaitingDialogControlHandler operationFinished = " + GroupManagerActivity.b(this.a));
     }
-    RegisterQQNumberActivity localRegisterQQNumberActivity;
-    do
+    GroupManagerActivity.b(this.a, true);
+    if (GroupManagerActivity.b(this.a))
     {
+      this.a.a(true);
       return;
-      localRegisterQQNumberActivity = (RegisterQQNumberActivity)this.a.get();
-    } while (localRegisterQQNumberActivity == null);
-    localRegisterQQNumberActivity.a(paramString, paramBoolean);
+    }
+    paramMessage = GroupManagerActivity.a(this.a).obtainMessage(0);
+    GroupManagerActivity.a(this.a).sendMessageDelayed(paramMessage, 60000L);
+    GroupManagerActivity.c(this.a, true);
   }
 }
 

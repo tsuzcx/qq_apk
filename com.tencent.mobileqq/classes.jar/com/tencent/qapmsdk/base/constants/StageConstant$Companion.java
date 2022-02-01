@@ -2,7 +2,7 @@ package com.tencent.qapmsdk.base.constants;
 
 import kotlin.Metadata;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/base/constants/StageConstant$Companion;", "", "()V", "QAPM_APPLAUNCH", "", "RESOURCE_MONITOR", "qapmbase_release"}, k=1, mv={1, 1, 15})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/base/constants/StageConstant$Companion;", "", "()V", "QAPM_APPLAUNCH", "", "QAPM_APPLAUNCH_END", "RESOURCE_MONITOR", "qapmbase_release"}, k=1, mv={1, 1, 15})
 public final class StageConstant$Companion {}
 
 

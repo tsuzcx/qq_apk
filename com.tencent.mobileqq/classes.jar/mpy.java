@@ -1,100 +1,53 @@
-import android.view.View;
-import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.AVActivity;
+import com.tencent.av.service.AVRedPacketConfig;
+import com.tencent.qphone.base.util.QLog;
 
 class mpy
-  extends mcc
+  extends lwn
 {
-  String jdField_a_of_type_JavaLangString = "AVRedbag_GameMode";
-  
   mpy(mpx parammpx) {}
   
-  protected void a(mce parammce)
+  public void a(boolean paramBoolean, AVRedPacketConfig paramAVRedPacketConfig)
   {
-    AVActivity localAVActivity = this.jdField_a_of_type_Mpx.a();
-    if ((!this.jdField_a_of_type_Mpx.a()) || (localAVActivity == null)) {
-      return;
+    this.a.jdField_a_of_type_Mqa = new mqa();
+    this.a.jdField_a_of_type_Mqa.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig = paramAVRedPacketConfig;
+    if ((paramBoolean) && (paramAVRedPacketConfig != null) && (paramAVRedPacketConfig.mainSwitch)) {
+      this.a.jdField_a_of_type_Mqa.jdField_a_of_type_Boolean = true;
     }
-    if (parammce.jdField_a_of_type_Int == 1) {
-      mak.a(this.jdField_a_of_type_Mpx.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131695341);
+    if (QLog.isColorLevel()) {
+      QLog.w(this.a.i, 1, "onGetAVRedPacketConfig红包配置获取结果, isSuccess[" + paramBoolean + "], config[" + paramAVRedPacketConfig + "], mMainSwitch[" + this.a.jdField_a_of_type_Mqa.jdField_a_of_type_Boolean + "], mNeedDownloadRes[" + this.a.jdField_a_of_type_Mqa.jdField_b_of_type_Boolean + "], Thread[" + Thread.currentThread().getId() + "]");
     }
-    for (;;)
+    this.a.a(this.a.jdField_a_of_type_Mqa);
+    if ((this.a.jdField_a_of_type_Mqa.jdField_b_of_type_Boolean) && (paramAVRedPacketConfig != null))
     {
-      parammce.jdField_b_of_type_Boolean = true;
-      parammce.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      return;
-      if (parammce.jdField_a_of_type_Int == 2) {
-        mak.a(this.jdField_a_of_type_Mpx.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131695340);
-      }
-    }
-  }
-  
-  protected void a(mcf parammcf)
-  {
-    mpe localmpe = this.jdField_a_of_type_Mpx.a();
-    if (localmpe == null) {}
-    int i;
-    do
-    {
-      do
+      if (!this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.a.jdField_a_of_type_Lwm))
       {
+        QLog.w(this.a.i, 1, "startDownloadAVRedPacketRes, 调用失败");
         return;
-      } while (!localmpe.a());
-      i = parammcf.a().getId();
-    } while ((i != 2131694869) && (i != 2131694870));
-    if (i == 2131694869) {
-      this.jdField_a_of_type_Mpx.jdField_a_of_type_Int = parammcf.jdField_a_of_type_Int;
-    }
-    parammcf.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    parammcf.jdField_a_of_type_Boolean = false;
-  }
-  
-  protected void c(mcg parammcg)
-  {
-    AVActivity localAVActivity = this.jdField_a_of_type_Mpx.a();
-    if ((!this.jdField_a_of_type_Mpx.a()) || (localAVActivity == null)) {
+      }
+      this.a.b(this.a.jdField_a_of_type_Mqa);
       return;
     }
-    mak.a(this.jdField_a_of_type_Mpx.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131695336);
-    parammcg.jdField_b_of_type_Boolean = true;
-    parammcg.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    this.a.b(this.a.jdField_a_of_type_Mqa);
   }
   
-  protected void d(mcg parammcg)
+  public void a(boolean paramBoolean, String paramString1, String paramString2)
   {
-    AVActivity localAVActivity = this.jdField_a_of_type_Mpx.a();
-    if ((!this.jdField_a_of_type_Mpx.a()) || (localAVActivity == null)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.w(this.a.i, 1, "红包资源下载结果, isSuccess[" + paramBoolean + "], resPath[" + paramString1 + "], bgMusicPath[" + paramString2 + "]");
     }
-    mak.a(this.jdField_a_of_type_Mpx.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131695338);
-    parammcg.jdField_b_of_type_Boolean = true;
-    parammcg.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-  }
-  
-  protected void e(mcg parammcg)
-  {
-    mpe localmpe = this.jdField_a_of_type_Mpx.a();
-    if (localmpe == null) {}
-    while ((localmpe.a == null) || (localmpe.a.a == null) || (localmpe.a.a.jdField_b_of_type_Boolean) || (!this.jdField_a_of_type_Mpx.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().j) || (this.jdField_a_of_type_Mpx.a() == null) || (!this.jdField_a_of_type_Mpx.a())) {
-      return;
+    this.a.jdField_a_of_type_Mqa.jdField_a_of_type_JavaLangString = paramString1;
+    this.a.jdField_a_of_type_Mqa.jdField_b_of_type_JavaLangString = paramString2;
+    this.a.jdField_a_of_type_Mqa.c = paramBoolean;
+    if (paramBoolean) {
+      mqx.a(paramString1);
     }
-    mak.a(this.jdField_a_of_type_Mpx.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131695337);
-    parammcg.jdField_b_of_type_Boolean = true;
-    parammcg.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-  }
-  
-  protected void f(mcg parammcg)
-  {
-    parammcg = this.jdField_a_of_type_Mpx.a();
-    if ((parammcg != null) && (parammcg.a())) {
-      mpz.d();
-    }
+    this.a.b(this.a.jdField_a_of_type_Mqa);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mpy
  * JD-Core Version:    0.7.0.1
  */

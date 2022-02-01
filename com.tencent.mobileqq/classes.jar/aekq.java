@@ -1,18 +1,15 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
 
 public class aekq
-  extends TransProcessorHandler
+  implements DialogInterface.OnClickListener
 {
-  public aekq(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public aekq(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = paramMessage.what;
-    if ((i == 1003) || (i == 2003)) {
-      this.a.c();
-    }
+    this.a.finish();
   }
 }
 

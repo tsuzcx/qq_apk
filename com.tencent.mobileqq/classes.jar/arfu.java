@@ -1,35 +1,88 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import com.tencent.qphone.base.util.QLog;
 
 public class arfu
-  implements View.OnTouchListener
+  extends aqwt<arfv>
 {
-  public arfu(AIOEmotionFragment paramAIOEmotionFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  @NonNull
+  public arfv a(int paramInt)
   {
-    if (paramMotionEvent.getAction() == 1)
+    return new arfv();
+  }
+  
+  @Nullable
+  public arfv a(aqxa[] paramArrayOfaqxa)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichmediaIpv6ConifgProcessor", 2, "onParsed");
+    }
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0))
     {
-      this.a.b.setBackgroundColor(Color.parseColor("#F7F7F7"));
-      EmojiHomeUiPlugin.openEmojiDetailPage(this.a.getActivity(), this.a.a().getAccount(), 8, this.a.a.epId, false, false);
-      this.a.a("0X800997F");
+      paramArrayOfaqxa = paramArrayOfaqxa[0].a;
+      if (QLog.isColorLevel()) {
+        QLog.d("RichmediaIpv6ConifgProcessor", 2, "onParsed, content:" + paramArrayOfaqxa);
+      }
+      return arfv.a(paramArrayOfaqxa);
     }
-    while (paramMotionEvent.getAction() != 0) {
-      return false;
+    return new arfv();
+  }
+  
+  public void a(arfv paramarfv)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichmediaIpv6ConifgProcessor", 2, "onUpdate");
     }
-    this.a.b.setBackgroundColor(Color.parseColor("#DEDEDE"));
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if (localQQAppInterface != null)
+    {
+      localQQAppInterface.getTransFileController().mRichmediaIpv6ConifgBean = paramarfv;
+      localQQAppInterface.getHwEngine().ipv6Switch = paramarfv.a;
+    }
+  }
+  
+  public Class clazz()
+  {
+    return arfv.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
     return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichmediaIpv6ConifgProcessor", 2, "onReqFailed");
+    }
+  }
+  
+  public int type()
+  {
+    return 538;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arfu
  * JD-Core Version:    0.7.0.1
  */

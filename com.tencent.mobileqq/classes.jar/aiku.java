@@ -1,206 +1,90 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.face.FaceDecoder;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.app.Activity;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aiku
+  implements ailp, View.OnClickListener
 {
-  protected static HashMap<String, structmsg.StructMsg> a;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  View jdField_a_of_type_AndroidViewView;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private String jdField_a_of_type_JavaLangString;
   
-  public static int a(int paramInt)
+  public aiku(Activity paramActivity, SessionInfo paramSessionInfo, String paramString)
   {
-    switch (paramInt)
-    {
-    case 82: 
-    case 91: 
-    default: 
-      return 0;
-    case 1: 
-    case 13: 
-    case 22: 
-    case 60: 
-      return 2;
-    }
-    return 1;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public static int a(QQAppInterface paramQQAppInterface)
+  public int a()
   {
-    apus localapus = (apus)apub.a().a(691);
-    int j;
-    if ((localapus == null) || (!localapus.a(paramQQAppInterface.getCurrentAccountUin())))
-    {
-      i = bcsz.a().a(paramQQAppInterface) + 0;
-      if (QLog.isDevelopLevel()) {
-        QLog.d("TroopNotificationUtils", 4, "getTroopNotificationUnreadNum notification count:" + i);
-      }
-      j = i + amzp.b(paramQQAppInterface);
-      i = j;
-      if (QLog.isDevelopLevel()) {
-        QLog.d("TroopNotificationUtils", 4, "getTroopNotificationUnreadNum recommend count:" + j);
-      }
-    }
-    for (int i = j;; i = 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopNotificationUtils", 2, "getTroopNotificationUnreadNum return count =" + i);
-      }
-      return i;
-    }
+    return 58;
   }
   
-  public static Drawable a(FaceDecoder paramFaceDecoder, String paramString, int paramInt)
+  public View a(Object... paramVarArgs)
   {
-    if ((paramFaceDecoder == null) || (paramString == null) || (paramInt == -1)) {
-      return null;
-    }
-    if (paramFaceDecoder.isPausing()) {
-      paramFaceDecoder.resume();
-    }
-    Bitmap localBitmap2 = paramFaceDecoder.getBitmapFromCache(paramInt, paramString);
-    Bitmap localBitmap1 = localBitmap2;
-    if (localBitmap2 == null)
+    if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      paramFaceDecoder.requestDecodeFace(paramString, paramInt, true);
-      if (paramInt != 4) {
-        break label68;
-      }
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131560700, null);
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     }
-    label68:
-    for (localBitmap1 = bfvo.f();; localBitmap1 = bfvo.a()) {
-      return new BitmapDrawable(localBitmap1);
-    }
+    return this.jdField_a_of_type_AndroidViewView;
   }
   
-  public static final structmsg.StructMsg a(String paramString)
+  public void a(int paramInt, Object... paramVarArgs) {}
+  
+  public void a(@NonNull ailr paramailr, boolean paramBoolean)
   {
-    if ((a != null) && (a.containsKey(paramString))) {
-      return (structmsg.StructMsg)a.get(paramString);
+    boolean bool = a(paramailr);
+    if (QLog.isColorLevel()) {
+      QLog.d("HomeworkTroopTipsBar", 2, new Object[] { "show() isShowing=", Boolean.valueOf(bool), ", show=", Boolean.valueOf(paramBoolean) });
     }
+    if (paramBoolean) {
+      if (!bool)
+      {
+        paramailr.a(this, new Object[0]);
+        bhbu.a("Grp_edu", "Grp_AIO", "mberinfotopGuidebar_Show", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin });
+      }
+    }
+    while (!bool) {
+      return;
+    }
+    paramailr.a();
+  }
+  
+  public boolean a(@NonNull ailr paramailr)
+  {
+    int i = paramailr.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("HomeworkTroopTipsBar", 2, new Object[] { "show cur type=", Integer.valueOf(i) });
+    }
+    return i == b();
+  }
+  
+  public int[] a()
+  {
     return null;
   }
   
-  public static void a()
+  public int b()
+  {
+    return 19;
+  }
+  
+  public void onClick(View paramView)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("TroopNotificationUtils", 2, "clearAccountLoginInfoSp");
+      QLog.d("HomeworkTroopTipsBar", 2, "click tips, jump to web");
     }
-    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("troop_notification_sp", 0);
-    if (localSharedPreferences == null) {
-      return;
-    }
-    localSharedPreferences.edit().clear().commit();
-  }
-  
-  public static final void a(Context paramContext, String paramString1, String paramString2)
-  {
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    String str = String.format("https://qun.qq.com/qunpay/qunfee/pay.html?gc=%s&source=joingroup&_wv=1031", new Object[] { paramString1 });
-    paramString1 = str;
-    if (!TextUtils.isEmpty(paramString2)) {
-      paramString1 = str + "&source_id=" + paramString2;
-    }
-    localIntent.putExtra("url", paramString1);
-    paramContext.startActivity(localIntent);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0);
-    int i = paramQQAppInterface.getInt("share_key_pay2joinTroop_request_num", 0);
-    paramQQAppInterface = paramQQAppInterface.edit();
-    paramQQAppInterface.putInt("share_key_pay2joinTroop_request_num", i + 1);
-    paramQQAppInterface.commit();
-  }
-  
-  public static final void a(String paramString, structmsg.StructMsg paramStructMsg)
-  {
-    if (a == null) {
-      a = new HashMap(3);
-    }
-    a.put(paramString, paramStructMsg);
-  }
-  
-  public static void a(String paramString, boolean paramBoolean)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      SharedPreferences localSharedPreferences;
-      do
-      {
-        return;
-        localSharedPreferences = BaseApplication.getContext().getSharedPreferences("troop_notification_sp", 0);
-      } while (localSharedPreferences == null);
-      localSharedPreferences.edit().putBoolean("isFirstLogin" + paramString, paramBoolean).commit();
-    } while (!QLog.isColorLevel());
-    QLog.d("TroopNotificationUtils", 2, "setIsAccountFirstLogin uin=" + paramString + " firstLogin=" + paramBoolean);
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    apus localapus = (apus)apub.a().a(691);
-    if ((localapus != null) && (localapus.a(paramQQAppInterface.getCurrentAccountUin())))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopNotificationUtils", 2, "isTroopNotificationShowNewEntry return true");
-      }
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopNotificationUtils", 2, "isTroopNotificationShowNewEntry return false");
-    }
-    return false;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    boolean bool1 = false;
-    if (TextUtils.isEmpty(paramString)) {}
-    boolean bool2;
-    do
-    {
-      SharedPreferences localSharedPreferences;
-      do
-      {
-        return bool1;
-        localSharedPreferences = BaseApplication.getContext().getSharedPreferences("troop_notification_sp", 0);
-      } while (localSharedPreferences == null);
-      bool2 = localSharedPreferences.getBoolean("isFirstLogin" + paramString, true);
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.d("TroopNotificationUtils", 2, "isAccountFirstLogin uin=" + paramString + " result=" + bool2);
-    return bool2;
-  }
-  
-  public static int b(QQAppInterface paramQQAppInterface)
-  {
-    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).getInt("share_key_pay2joinTroop_request_num", 0);
-  }
-  
-  public static final void b()
-  {
-    if (a != null) {
-      a.clear();
-    }
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).edit();
-    paramQQAppInterface.putInt("share_key_pay2joinTroop_request_num", 0);
-    paramQQAppInterface.commit();
+    bghd.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "aioTip");
+    bhbu.a("Grp_edu", "Grp_AIO", "mberinfotopGuidebar_Clk", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin });
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

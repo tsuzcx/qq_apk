@@ -2,7 +2,7 @@ package com.tencent.qapmsdk.impl.a.a;
 
 import com.tencent.qapmsdk.impl.b.b;
 import com.tencent.qapmsdk.impl.b.d;
-import com.tencent.qapmsdk.impl.instrumentation.k.d;
+import com.tencent.qapmsdk.impl.instrumentation.l.d;
 
 public class a
 {
@@ -32,7 +32,7 @@ public class a
   private int w;
   private String x;
   private String y = "";
-  private k.d z;
+  private l.d z;
   
   public a(String paramString1, String paramString2, long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, long paramLong3, String paramString3, String paramString4, String paramString5, d paramd, b paramb, int paramInt4, String paramString6, int paramInt5, int paramInt6, int paramInt7, String paramString7, String paramString8, int paramInt8, String paramString9, String paramString10, int paramInt9)
   {

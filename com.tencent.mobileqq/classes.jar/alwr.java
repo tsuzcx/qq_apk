@@ -1,21 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.os.Message;
+import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
+import mqq.os.MqqHandler;
 
-class alwr
-  extends amsu
+public class alwr
+  extends MqqHandler
 {
-  alwr(alwq paramalwq) {}
+  public alwr(ContactsInnerFrame paramContactsInnerFrame) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("qwe", 2, "onUpdateFriendInfo:" + paramString);
-    }
-    if ((alwq.a(this.a) != null) && (alwq.a(this.a).get(paramString + "nick") != null))
+    switch (paramMessage.what)
     {
-      int i = ((Integer)alwq.a(this.a).remove(paramString + "nick")).intValue();
-      this.a.a(i, paramString, 1);
+    case 1: 
+    case 2: 
+    default: 
+      return;
     }
+    ContactsInnerFrame.a(this.a);
   }
 }
 

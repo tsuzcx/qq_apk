@@ -2,7 +2,6 @@ package cooperation.qzone.contentbox;
 
 import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
 import Override;
-import amtj;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -18,8 +17,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import anvr;
-import bhle;
+import anvx;
+import aoyr;
+import bivu;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -38,16 +38,16 @@ import cooperation.qzone.remote.logic.RemoteRequestSender;
 import cooperation.qzone.remote.logic.WebEventListener;
 import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import cooperation.qzone.util.QZLog;
-import ugf;
+import uuc;
 
 public class QZoneMsgActivity
   extends IphoneTitleBarActivity
-  implements bhle, WebEventListener
+  implements bivu, WebEventListener
 {
   public static final String SP_LAST_UPDATE_TIME_READ = "SP_LAST_UPDATE_TIME_READ";
   private static final String TAG = "QZoneMsgActivity";
   private static final String TAG2 = "[PhotoAlbum]QZoneMsgActivity";
-  anvr arkCollector;
+  aoyr arkCollector;
   private Fragment mCurFragment;
   PlusMenuContainer plusMenuContainer;
   
@@ -137,26 +137,26 @@ public class QZoneMsgActivity
   
   public boolean doOnCreate(Bundle paramBundle)
   {
-    int i = 2130850056;
+    int i = 2130850149;
     super.doOnCreate(paramBundle);
-    setContentView(2131562346);
+    setContentView(2131562414);
     setTitle(QZoneApiProxy.getSubFeedTitle(this));
-    NavBarCommon localNavBarCommon = (NavBarCommon)findViewById(2131376501);
+    NavBarCommon localNavBarCommon = (NavBarCommon)findViewById(2131376760);
     if (Build.VERSION.SDK_INT >= 21)
     {
       if (ThemeUtil.isDefaultOrDIYTheme(false)) {
-        i = 2130850057;
+        i = 2130850150;
       }
       paramBundle = getDrawable(i);
       localNavBarCommon.setRightImage(paramBundle);
-      localNavBarCommon.setRightImageDesc(getString(2131695903));
+      localNavBarCommon.setRightImageDesc(getString(2131696155));
       localNavBarCommon.setOnItemSelectListener(this);
       this.mCurFragment = getSupportFragmentManager().findFragmentByTag("QZoneMsgFragment");
       if (this.mCurFragment != null) {
         break label231;
       }
       this.mCurFragment = new QZoneMsgFragment();
-      getSupportFragmentManager().beginTransaction().add(2131367134, this.mCurFragment, "QZoneMsgFragment").commit();
+      getSupportFragmentManager().beginTransaction().add(2131367252, this.mCurFragment, "QZoneMsgFragment").commit();
     }
     for (;;)
     {
@@ -164,12 +164,12 @@ public class QZoneMsgActivity
       long l = LocalMultiProcConfig.getLong("SP_LAST_UPDATE_TIME_READ", 0L);
       QLog.d("[PhotoAlbum]QZoneMsgActivity", 1, new Object[] { "getTravelGroup SP_LAST_UPDATE_TIME_READ lastUpdateTime:", Long.valueOf(l) });
       RemoteHandleManager.getInstance().getSender().getTravelGroup(l);
-      this.arkCollector = new anvr();
+      this.arkCollector = new aoyr();
       getWindow().setFlags(16777216, 16777216);
       return true;
       paramBundle = getResources();
       if (ThemeUtil.isDefaultOrDIYTheme(false)) {
-        i = 2130850057;
+        i = 2130850150;
       }
       paramBundle = paramBundle.getDrawable(i);
       break;
@@ -241,9 +241,9 @@ public class QZoneMsgActivity
       paramView = new Intent();
       paramView.putExtra("need_finish", true);
       paramView.putExtra("uin", "2290230341");
-      paramView.putExtra("uinname", amtj.a(2131718769));
+      paramView.putExtra("uinname", anvx.a(2131719159));
       paramView.putExtra("uintype", 1008);
-      ugf.a(paramView, this.app, this, "2290230341", -1, 2000, 1, false);
+      uuc.a(paramView, this.app, this, "2290230341", -1, 2000, 1, false);
       return;
     case 4: 
       initMoreOperation();

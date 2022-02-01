@@ -1,132 +1,36 @@
-import android.graphics.Matrix;
-import android.graphics.RectF;
+import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
 
-public class bnht
+class bnht
+  extends LbsManagerService.OnLocationChangeListener
 {
-  private static final Matrix a = new Matrix();
-  
-  public static bnip a(RectF paramRectF1, RectF paramRectF2)
+  bnht(bnhs parambnhs, String paramString, boolean paramBoolean)
   {
-    bnip localbnip = new bnip(0.0F, 0.0F, 1.0F, 0.0F);
-    if (paramRectF1.equals(paramRectF2)) {
-      return localbnip;
-    }
-    localbnip.c = Math.max(paramRectF1.width() / paramRectF2.width(), paramRectF1.height() / paramRectF2.height());
-    RectF localRectF = new RectF();
-    a.setScale(localbnip.c, localbnip.c, paramRectF2.centerX(), paramRectF2.centerY());
-    a.mapRect(localRectF, paramRectF2);
-    localbnip.a += paramRectF1.centerX() - localRectF.centerX();
-    float f = localbnip.b;
-    localbnip.b = (paramRectF1.centerY() - localRectF.centerY() + f);
-    return localbnip;
+    super(paramString, paramBoolean);
   }
   
-  public static bnip a(RectF paramRectF1, RectF paramRectF2, float paramFloat1, float paramFloat2)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    bnip localbnip = new bnip(0.0F, 0.0F, 1.0F, 0.0F);
-    if (paramRectF2.contains(paramRectF1)) {}
-    RectF localRectF;
-    do
+    if (paramInt == 0)
     {
-      return localbnip;
-      if ((paramRectF2.width() < paramRectF1.width()) && (paramRectF2.height() < paramRectF1.height())) {
-        localbnip.c = Math.min(paramRectF1.width() / paramRectF2.width(), paramRectF1.height() / paramRectF2.height());
-      }
-      localRectF = new RectF();
-      a.setScale(localbnip.c, localbnip.c, paramFloat1, paramFloat2);
-      a.mapRect(localRectF, paramRectF2);
-      if (localRectF.width() < paramRectF1.width()) {
-        localbnip.a += paramRectF1.centerX() - localRectF.centerX();
-      }
-      while (localRectF.height() < paramRectF1.height())
+      if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
       {
-        paramFloat1 = localbnip.b;
-        localbnip.b = (paramRectF1.centerY() - localRectF.centerY() + paramFloat1);
-        return localbnip;
-        if (localRectF.left > paramRectF1.left) {
-          localbnip.a += paramRectF1.left - localRectF.left;
-        } else if (localRectF.right < paramRectF1.right) {
-          localbnip.a += paramRectF1.right - localRectF.right;
-        }
+        SosoInterface.SosoLocation localSosoLocation = paramSosoLbsInfo.mLocation;
+        bnhs.a(this.a, paramSosoLbsInfo.mLocation);
+        double d1 = localSosoLocation.mLat02;
+        double d2 = localSosoLocation.mLon02;
+        bnrh.b(bnhs.a(), "LbsManagerService.startLocation: success");
+        bnhs.a(this.a, d1, d2);
+        return;
       }
-      if (localRectF.top > paramRectF1.top)
-      {
-        paramFloat1 = localbnip.b;
-        localbnip.b = (paramRectF1.top - localRectF.top + paramFloat1);
-        return localbnip;
-      }
-    } while (localRectF.bottom >= paramRectF1.bottom);
-    paramFloat1 = localbnip.b;
-    localbnip.b = (paramRectF1.bottom - localRectF.bottom + paramFloat1);
-    return localbnip;
-  }
-  
-  public static void a(RectF paramRectF1, RectF paramRectF2)
-  {
-    paramRectF2.offset(paramRectF1.centerX() - paramRectF2.centerX(), paramRectF1.centerY() - paramRectF2.centerY());
-  }
-  
-  public static void a(RectF paramRectF1, RectF paramRectF2, float paramFloat)
-  {
-    a(paramRectF1, paramRectF2, paramFloat, paramFloat, paramFloat, paramFloat);
-  }
-  
-  public static void a(RectF paramRectF1, RectF paramRectF2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    if ((paramRectF1.isEmpty()) || (paramRectF2.isEmpty())) {
+      bnrh.b(bnhs.a(), "LbsManagerService.startLocation: location is null");
+      QLog.i("Q.videostory.capture", 2, "LbsManagerService.startLocation: location is null");
       return;
     }
-    float f2 = paramFloat1;
-    float f1 = paramFloat3;
-    if (paramRectF1.width() < paramFloat1 + paramFloat3)
-    {
-      f1 = 0.0F;
-      f2 = 0.0F;
-    }
-    paramFloat3 = paramFloat2;
-    paramFloat1 = paramFloat4;
-    if (paramRectF1.height() < paramFloat2 + paramFloat4)
-    {
-      paramFloat1 = 0.0F;
-      paramFloat3 = 0.0F;
-    }
-    paramFloat2 = paramRectF1.width();
-    paramFloat4 = paramRectF1.height();
-    paramFloat2 = Math.min((paramFloat2 - f2 - f1) / paramRectF2.width(), (paramFloat4 - paramFloat3 - paramFloat1) / paramRectF2.height());
-    paramRectF2.set(0.0F, 0.0F, paramRectF2.width() * paramFloat2, paramFloat2 * paramRectF2.height());
-    paramRectF2.offset(paramRectF1.centerX() + (f2 - f1) / 2.0F - paramRectF2.centerX(), paramRectF1.centerY() + (paramFloat3 - paramFloat1) / 2.0F - paramRectF2.centerY());
-  }
-  
-  public static bnip b(RectF paramRectF1, RectF paramRectF2, float paramFloat1, float paramFloat2)
-  {
-    bnip localbnip = new bnip(0.0F, 0.0F, 1.0F, 0.0F);
-    if (paramRectF2.contains(paramRectF1)) {}
-    RectF localRectF;
-    do
-    {
-      return localbnip;
-      if ((paramRectF2.width() < paramRectF1.width()) || (paramRectF2.height() < paramRectF1.height())) {
-        localbnip.c = Math.max(paramRectF1.width() / paramRectF2.width(), paramRectF1.height() / paramRectF2.height());
-      }
-      localRectF = new RectF();
-      a.setScale(localbnip.c, localbnip.c, paramFloat1, paramFloat2);
-      a.mapRect(localRectF, paramRectF2);
-      if (localRectF.left > paramRectF1.left) {
-        localbnip.a += paramRectF1.left - localRectF.left;
-      }
-      while (localRectF.top > paramRectF1.top)
-      {
-        paramFloat1 = localbnip.b;
-        localbnip.b = (paramRectF1.top - localRectF.top + paramFloat1);
-        return localbnip;
-        if (localRectF.right < paramRectF1.right) {
-          localbnip.a += paramRectF1.right - localRectF.right;
-        }
-      }
-    } while (localRectF.bottom >= paramRectF1.bottom);
-    paramFloat1 = localbnip.b;
-    localbnip.b = (paramRectF1.bottom - localRectF.bottom + paramFloat1);
-    return localbnip;
+    bnrh.b(bnhs.a(), "LbsManagerService.startLocation: failed");
+    bnhs.a(this.a, 0);
   }
 }
 

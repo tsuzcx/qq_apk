@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.phone;
 
-import ajms;
+import akig;
 import android.content.Context;
 import android.content.Intent;
 import android.os.SystemClock;
@@ -12,7 +12,7 @@ public class DenyRunnable
 {
   private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long;
-  private ajms jdField_a_of_type_Ajms;
+  private akig jdField_a_of_type_Akig;
   private final WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
   
   public DenyRunnable(Context paramContext, int paramInt)
@@ -21,10 +21,10 @@ public class DenyRunnable
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public DenyRunnable(Context paramContext, ajms paramajms)
+  public DenyRunnable(Context paramContext, akig paramakig)
   {
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_Ajms = paramajms;
+    this.jdField_a_of_type_Akig = paramakig;
   }
   
   public void a()
@@ -59,9 +59,9 @@ public class DenyRunnable
       if (QLog.isColorLevel()) {
         QLog.i("DenyRunnable", 2, String.format("run [%s, %s, %s]", new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Long.valueOf(l), Boolean.valueOf(bool) }));
       }
-      if (this.jdField_a_of_type_Ajms != null)
+      if (this.jdField_a_of_type_Akig != null)
       {
-        this.jdField_a_of_type_Ajms.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), bool);
+        this.jdField_a_of_type_Akig.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), bool);
         return;
       }
       a(bool);

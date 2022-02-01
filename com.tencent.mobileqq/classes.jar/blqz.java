@@ -1,19 +1,33 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.ttpic.openapi.filter.GLGestureProxy;
+import android.support.annotation.NonNull;
+import java.util.ArrayList;
 
-class blqz
-  implements View.OnTouchListener
+public class blqz
+  implements Comparable<blqz>
 {
-  blqz(blqw paramblqw) {}
+  int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public int a(@NonNull blqz paramblqz)
   {
-    if ((blqw.a(this.a) != null) && (blqw.c(this.a) != null)) {
-      GLGestureProxy.getInstance().onTouchEvent(paramMotionEvent, false, blqw.c(this.a), blqw.a(this.a));
+    if (this.jdField_a_of_type_Int < paramblqz.jdField_a_of_type_Int) {}
+    int i;
+    int j;
+    do
+    {
+      return -1;
+      if (this.jdField_a_of_type_Int > paramblqz.jdField_a_of_type_Int) {
+        return 1;
+      }
+      i = blqy.a().indexOf(this.jdField_a_of_type_JavaLangString);
+      j = blqy.a().indexOf(paramblqz.jdField_a_of_type_JavaLangString);
+    } while (i < j);
+    if (i > j) {
+      return 1;
     }
-    return true;
+    return 0;
   }
 }
 

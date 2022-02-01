@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import afiw;
+import agab;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.imcore.message.QQMessageFacade;
@@ -11,11 +11,11 @@ import com.tencent.mobileqq.utils.VipUtils;
 public class FriendChatPie$2
   implements Runnable
 {
-  public FriendChatPie$2(afiw paramafiw) {}
+  public FriendChatPie$2(agab paramagab) {}
   
   public void run()
   {
-    if (this.this$0.app.getMessageFacade().getLastMessage(this.this$0.mActivity.getIntent().getStringExtra("uin"), this.this$0.mActivity.getIntent().getIntExtra("uintype", 0)).time < afiw.a(this.this$0)) {
+    if (this.this$0.app.getMessageFacade().getLastMessage(this.this$0.mActivity.getIntent().getStringExtra("uin"), this.this$0.mActivity.getIntent().getIntExtra("uintype", 0)).time < agab.a(this.this$0)) {
       VipUtils.a(this.this$0.app, "chat_history", "FriendAIO", "SilentCare", 0, 0, new String[] { this.this$0.mActivity.getIntent().getStringExtra("uin") });
     }
   }

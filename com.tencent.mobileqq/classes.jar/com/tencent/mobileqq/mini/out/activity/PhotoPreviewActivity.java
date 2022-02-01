@@ -64,7 +64,7 @@ public class PhotoPreviewActivity
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    setContentView(2131561930);
+    setContentView(2131561995);
     this.reqWidth = getResources().getDisplayMetrics().widthPixels;
     this.reqHeight = getResources().getDisplayMetrics().heightPixels;
     initData();
@@ -143,18 +143,18 @@ public class PhotoPreviewActivity
   
   void initUI()
   {
-    this.topBar = findViewById(2131378924);
-    this.backBtn = ((TextView)findViewById(2131363271));
+    this.topBar = findViewById(2131379218);
+    this.backBtn = ((TextView)findViewById(2131363336));
     this.backBtn.setOnClickListener(new PhotoPreviewActivity.1(this));
     if (this.showBar) {
       this.topBar.setVisibility(0);
     }
-    this.titleView = ((TextView)findViewById(2131378707));
-    this.gallery = ((ProGallery)findViewById(2131367366));
+    this.titleView = ((TextView)findViewById(2131379001));
+    this.gallery = ((ProGallery)findViewById(2131367490));
     this.adapter = new PhotoPreviewActivity.ImageAdapter(this);
     this.gallery.setAdapter(this.adapter);
     this.gallery.setOnNoBlankListener(this.adapter);
-    this.gallery.setSpacing(getResources().getDimensionPixelSize(2131297146));
+    this.gallery.setSpacing(getResources().getDimensionPixelSize(2131297147));
     this.gallery.setSelection(this.currentSelectedPostion);
     this.gallery.setOnItemClickListener(new PhotoPreviewActivity.2(this));
   }

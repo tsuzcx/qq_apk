@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.ECommerceEntranceInfo;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class oeo
-  implements Parcelable.Creator<VideoInfo.ECommerceEntranceInfo>
+public class oeo
+  implements View.OnClickListener
 {
-  public VideoInfo.ECommerceEntranceInfo a(Parcel paramParcel)
-  {
-    return new VideoInfo.ECommerceEntranceInfo(paramParcel);
-  }
+  public oeo(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity, Dialog paramDialog) {}
   
-  public VideoInfo.ECommerceEntranceInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new VideoInfo.ECommerceEntranceInfo[paramInt];
+    PublicAccountAdvertisementActivity.h(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementActivityPublicAccountAdvertisementActivity);
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

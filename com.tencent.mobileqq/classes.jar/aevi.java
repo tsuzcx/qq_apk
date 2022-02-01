@@ -1,20 +1,28 @@
-import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.2.1;
-import cooperation.qwallet.plugin.FakeUrl.FakeInfo;
-import cooperation.qwallet.plugin.FakeUrl.FakeListener;
+import android.view.View;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.ScoreQAVFragment;
+import java.util.ArrayList;
 
 public class aevi
-  implements FakeUrl.FakeListener
+  implements aevk
 {
-  public aevi(QQNotifySettingBaseFragment.2.1 param1) {}
+  public aevi(ScoreQAVFragment paramScoreQAVFragment) {}
   
-  public boolean onBlHandleFakeurl(FakeUrl.FakeInfo paramFakeInfo, int paramInt)
+  public void a(View paramView, int paramInt)
   {
-    return false;
-  }
-  
-  public boolean onClickUrl(String paramString)
-  {
-    return false;
+    paramView = (Button)paramView.findViewById(2131374844);
+    if (paramView.isSelected())
+    {
+      paramView.setSelected(false);
+      this.a.a(paramInt);
+      if (this.a.a.size() != 0) {}
+    }
+    do
+    {
+      return;
+      paramView.setSelected(true);
+      this.a.a.add(Integer.valueOf(paramInt));
+    } while (this.a.a.size() <= 0);
   }
 }
 

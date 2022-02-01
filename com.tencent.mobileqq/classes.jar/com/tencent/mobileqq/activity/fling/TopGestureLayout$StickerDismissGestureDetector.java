@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.fling;
 
-import afii;
-import afim;
-import afiw;
-import agkp;
-import agkq;
+import afzn;
+import afzr;
+import agab;
+import ahdf;
+import ahdg;
 import android.content.Context;
 import android.graphics.Rect;
 import android.support.v4.app.FragmentActivity;
@@ -146,13 +146,17 @@ public class TopGestureLayout$StickerDismissGestureDetector
       int i = paramChatXListView.getChildCount() - 1;
       while (i >= 0)
       {
-        View localView = paramChatXListView.getChildAt(i);
-        if ((localView.getTag() != null) && ((localView.getTag() instanceof agkp)) && (((agkp)localView.getTag()).a()))
+        Object localObject = paramChatXListView.getChildAt(i);
+        if ((((View)localObject).getTag() != null) && ((((View)localObject).getTag() instanceof ahdf)))
         {
-          Rect localRect = new Rect();
-          localView.getGlobalVisibleRect(localRect);
-          if (localRect.contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY())) {
-            return true;
+          localObject = (ahdf)((View)localObject).getTag();
+          if (((ahdf)localObject).a())
+          {
+            Rect localRect = new Rect();
+            ((ahdf)localObject).a(localRect);
+            if (localRect.contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY())) {
+              return true;
+            }
           }
         }
         i -= 1;
@@ -167,14 +171,14 @@ public class TopGestureLayout$StickerDismissGestureDetector
     Object localObject1;
     if (EmojiStickerManager.d)
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131374005);
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131374234);
       if (localObject1 != null) {
         return ((View)localObject1).onTouchEvent(paramMotionEvent);
       }
     }
     if (EmojiStickerManager.c)
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131374002);
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131374231);
       if (localObject1 != null) {
         return ((View)localObject1).onTouchEvent(paramMotionEvent);
       }
@@ -189,7 +193,7 @@ public class TopGestureLayout$StickerDismissGestureDetector
         if (((FragmentActivity)localObject1).getChatFragment() != null)
         {
           localObject1 = ((FragmentActivity)localObject1).getChatFragment().a();
-          if ((((localObject1 instanceof afii)) || ((localObject1 instanceof afiw)) || ((localObject1 instanceof afim))) && (EmojiStickerManager.a().jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 0))
+          if ((((localObject1 instanceof afzn)) || ((localObject1 instanceof agab)) || ((localObject1 instanceof afzr))) && (EmojiStickerManager.a().jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 0))
           {
             this.isInTowFingerMode = true;
             switch (paramMotionEvent.getAction() & paramMotionEvent.getActionMasked())
@@ -198,13 +202,13 @@ public class TopGestureLayout$StickerDismissGestureDetector
             for (;;)
             {
               return true;
-              localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131370017);
+              localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131370188);
               if ((localObject1 instanceof ChatXListView)) {
                 this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = ((ChatXListView)localObject1);
               }
               this.jdField_a_of_type_Float = paramMotionEvent.getX(0);
               continue;
-              localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131370017);
+              localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131370188);
               if ((localObject1 instanceof ChatXListView)) {
                 this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = ((ChatXListView)localObject1);
               }
@@ -224,7 +228,7 @@ public class TopGestureLayout$StickerDismissGestureDetector
                 continue;
                 if (this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView == null)
                 {
-                  localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131370017);
+                  localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131370188);
                   if ((localObject1 != null) && ((localObject1 instanceof ChatXListView))) {
                     this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = ((ChatXListView)localObject1);
                   }
@@ -245,10 +249,10 @@ public class TopGestureLayout$StickerDismissGestureDetector
       if (paramMotionEvent.getAction() != 1) {
         break label777;
       }
-      agkq.a = false;
+      ahdg.a = false;
       if (this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView == null)
       {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131370017);
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131370188);
         if ((localObject1 != null) && ((localObject1 instanceof ChatXListView))) {
           this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = ((ChatXListView)localObject1);
         }
@@ -340,10 +344,10 @@ public class TopGestureLayout$StickerDismissGestureDetector
         if (paramMotionEvent.getAction() == 0)
         {
           this.isInTowFingerMode = false;
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131370017);
+          localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131370188);
           localObject1 = localObject2;
           if (localObject2 == null) {
-            localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131370018);
+            localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131370189);
           }
           if ((localObject1 != null) && ((localObject1 instanceof ChatXListView))) {
             this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = ((ChatXListView)localObject1);
@@ -351,15 +355,15 @@ public class TopGestureLayout$StickerDismissGestureDetector
         }
         else if (paramMotionEvent.getAction() == 2)
         {
-          if ((agkq.a) || (agkq.b)) {
+          if ((ahdg.a) || (ahdg.b)) {
             return false;
           }
           if (this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView == null)
           {
-            localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131370017);
+            localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131370188);
             localObject1 = localObject2;
             if (localObject2 == null) {
-              localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131370018);
+              localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131370189);
             }
             if ((localObject1 != null) && ((localObject1 instanceof ChatXListView))) {
               this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = ((ChatXListView)localObject1);
@@ -367,18 +371,18 @@ public class TopGestureLayout$StickerDismissGestureDetector
           }
           if (checkPttSlide(paramMotionEvent, this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView))
           {
-            agkq.a = true;
+            ahdg.a = true;
             return false;
           }
         }
         else if (paramMotionEvent.getAction() == 3)
         {
-          agkq.a = false;
+          ahdg.a = false;
           this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = null;
         }
         else
         {
-          agkq.a = false;
+          ahdg.a = false;
         }
       }
     }

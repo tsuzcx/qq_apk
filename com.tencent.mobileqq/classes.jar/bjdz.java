@@ -1,40 +1,84 @@
-import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Message;
+import android.widget.Button;
+import com.tencent.open.agent.OpenAuthorityFragment;
+import com.tencent.open.model.GetVirtualListResult;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy.IAppUpdateListener;
-import com.tencent.qqmini.sdk.launcher.shell.IActivityResultListener;
-import com.tencent.qqmini.sdk.launcher.shell.IActivityResultManager;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import cooperation.qqfav.util.HandlerPlus;
 
-class bjdz
-  implements IActivityResultListener
+public class bjdz
+  implements bjqj
 {
-  bjdz(bjdt parambjdt, IActivityResultManager paramIActivityResultManager, MiniAppProxy.IAppUpdateListener paramIAppUpdateListener) {}
+  public bjdz(OpenAuthorityFragment paramOpenAuthorityFragment) {}
   
-  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellIActivityResultManager.removeActivityResultListener(this);
-    boolean bool;
-    if (paramInt1 == 1003)
+    if (!OpenAuthorityFragment.b(this.a))
     {
-      if ((paramInt2 != -1) || (paramIntent == null)) {
-        break label89;
+      QLog.e("SDK_LOGIN.OpenAuthorityFragment", 1, "updatePreAuthFromServer onSuccess for activity is finished");
+      return;
+    }
+    Object localObject1 = OpenAuthorityFragment.a(this.a).a().a(OpenAuthorityFragment.a(this.a));
+    QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, new Object[] { "updatePreAuthFromServer use cached realAppid=", OpenAuthorityFragment.a(this.a), ", appInfo=", localObject1 });
+    Object localObject2 = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
+    ((Message)localObject2).what = 3;
+    ((Message)localObject2).obj = localObject1;
+    this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject2);
+    localObject1 = OpenAuthorityFragment.a(this.a).a().a(OpenAuthorityFragment.a(this.a));
+    boolean bool;
+    if (localObject1 != null)
+    {
+      QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, "updatePreAuthFromServer onSuccess null != virtualResult");
+      localObject2 = this.a.jdField_a_of_type_Bjgg;
+      if (((GetVirtualListResult)localObject1).a == 0)
+      {
+        bool = true;
+        ((bjgg)localObject2).a(bool, (GetVirtualListResult)localObject1);
       }
-      bool = paramIntent.getBooleanExtra("getUpgradeInfo", true);
-      if (!bool) {
-        break label57;
-      }
-      paramIntent = "最新版本无需更新";
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyMiniAppProxy$IAppUpdateListener.onGetAppUpdateResult(bool, paramIntent);
-      return true;
-      label57:
-      paramIntent = "获取版本信息失败";
-      QLog.d("MiniAppProxyImpl", 1, "getUpgradeInfo: " + bool);
+      if (!OpenAuthorityFragment.c(this.a)) {
+        OpenAuthorityFragment.a(this.a).setEnabled(true);
+      }
+      localObject1 = OpenAuthorityFragment.a(this.a).a().a(OpenAuthorityFragment.a(this.a));
+      localObject2 = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
+      ((Message)localObject2).what = 0;
+      ((Message)localObject2).obj = localObject1;
+      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject2);
+      return;
+      bool = false;
+      break;
+      QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, "updatePreAuthFromServer onSuccess null == virtualResult");
+      this.a.jdField_a_of_type_Bjgg.a(false, null);
     }
-    label89:
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyMiniAppProxy$IAppUpdateListener.onGetAppUpdateResult(true, "版本过低需要更新");
-    return true;
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, new Object[] { "updatePreAuthFromServer | onFail: | uin : *" + bjhh.a(OpenAuthorityFragment.a(this.a).a), ", errorCode=", Integer.valueOf(paramInt), ", errorMsg=", paramString });
+    if (!OpenAuthorityFragment.b(this.a))
+    {
+      QLog.e("SDK_LOGIN.OpenAuthorityFragment", 1, "updatePreAuthFromServer onFail for activity is finished");
+      return;
+    }
+    if (OpenAuthorityFragment.a(this.a, paramInt, false))
+    {
+      QLog.e("SDK_LOGIN.OpenAuthorityFragment", 1, "updatePreAuthFromServer handle110537");
+      return;
+    }
+    if (OpenAuthorityFragment.a(this.a, paramInt, 3))
+    {
+      QLog.e("SDK_LOGIN.OpenAuthorityFragment", 1, "updatePreAuthFromServer handle110509");
+      return;
+    }
+    this.a.jdField_a_of_type_Bjgg.a(false, null);
+    paramString = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
+    paramString.what = 6;
+    paramString.arg1 = 3001;
+    paramString.obj = this.a.getResources().getString(2131694453);
+    this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(paramString);
   }
 }
 

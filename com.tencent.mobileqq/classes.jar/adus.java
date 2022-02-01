@@ -1,28 +1,44 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.qphone.base.util.QLog;
 
 public class adus
-  extends BroadcastReceiver
+  extends anvi
 {
-  WeakReference<PayBridgeActivity> a;
+  public adus(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public adus(PayBridgeActivity paramPayBridgeActivity)
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
   {
-    this.a = new WeakReference(paramPayBridgeActivity);
+    if (paramBoolean)
+    {
+      this.a.a();
+      DiscussionInfoCardActivity.a(this.a, DiscussionInfoCardActivity.b(this.a));
+      DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
+    }
+    while ((this.a.jdField_a_of_type_Bisl == null) || (!this.a.jdField_a_of_type_Bisl.isShowing()) || (this.a.isFinishing())) {
+      return;
+    }
+    this.a.jdField_a_of_type_Bisl.dismiss();
   }
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if ((paramIntent != null) && ("action_launch_completed".equals(paramIntent.getAction())) && ("qwallet_plugin.apk".equals(paramIntent.getStringExtra("plugin_apk"))) && (this.a != null))
-    {
-      paramContext = (PayBridgeActivity)this.a.get();
-      if (paramContext != null) {
-        paramContext.b = true;
+    if (paramBoolean) {
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.ownerUin != null))
+      {
+        paramString = ((anvk)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.ownerUin + "");
+        if (paramString != null) {
+          this.a.d = paramString.name;
+        }
       }
     }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("DiscussionInfoCardActivity", 2, "onUpdateFriendInfo get owner name failed");
   }
 }
 

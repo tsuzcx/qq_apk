@@ -1,36 +1,30 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.LinkedHashMap;
+import android.os.Bundle;
 
-class apvz
-  extends apvy
+public abstract class apvz
+  implements apvj
 {
-  private String a;
+  private final String a;
   
   public apvz(String paramString)
   {
     this.a = paramString;
   }
   
-  public Object a(Object paramObject)
+  public Bundle a()
   {
-    if (paramObject == null) {}
-    do
-    {
-      return null;
-      paramObject = (LinkedHashMap)paramObject;
-      if (!(paramObject instanceof LinkedHashMap))
-      {
-        QLog.e("ArkMsgReplyConfigMgr", 1, "getElement instance wrong");
-        return null;
-      }
-    } while (TextUtils.isEmpty(this.a));
-    return paramObject.get(this.a);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("url", this.a);
+    return localBundle;
+  }
+  
+  public String a()
+  {
+    return "QQ.LaunchMiniappHandler";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apvz
  * JD-Core Version:    0.7.0.1
  */

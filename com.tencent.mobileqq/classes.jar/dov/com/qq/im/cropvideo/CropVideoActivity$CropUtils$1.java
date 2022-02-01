@@ -1,8 +1,8 @@
 package dov.com.qq.im.cropvideo;
 
-import bnai;
+import boqa;
 import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
-import xvv;
+import ykq;
 
 public final class CropVideoActivity$CropUtils$1
   implements Runnable
@@ -15,7 +15,7 @@ public final class CropVideoActivity$CropUtils$1
     {
       try
       {
-        int i = bnai.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.d, this.e, this.f, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long);
+        int i = boqa.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.d, this.e, this.f, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long);
         if (this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack != null) {
           this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack.onVideoCompositeFinish(i, "", this.jdField_b_of_type_JavaLangString);
         }
@@ -26,7 +26,7 @@ public final class CropVideoActivity$CropUtils$1
     }
     catch (Exception localException)
     {
-      xvv.c("CropVideoActivity", "do composite exception", localException);
+      ykq.c("CropVideoActivity", "do composite exception", localException);
       if (this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack != null) {
         this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack.onVideoCompositeFinish(940001, localException.getMessage(), "");
       }

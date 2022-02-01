@@ -1,29 +1,13 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public final class acwx
-  implements DialogInterface.OnClickListener
+public class acwx
 {
-  public acwx(long paramLong, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, String paramString, boolean paramBoolean1, acxa paramacxa, Bundle paramBundle, boolean paramBoolean2) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a(String paramString1, String paramString2)
   {
-    boolean bool = false;
-    paramDialogInterface = ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext);
-    if (paramInt == 1)
-    {
-      ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramDialogInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Acxa, this.jdField_a_of_type_AndroidOsBundle);
-      return;
-    }
-    if (!this.b) {
-      bool = true;
-    }
-    ChatActivityUtils.a(paramDialogInterface, bool, null);
+    QLog.d(paramString1, 1, paramString2);
   }
+  
+  public static void b(String paramString1, String paramString2) {}
 }
 
 

@@ -1,36 +1,88 @@
+import android.content.Context;
+import android.graphics.Color;
+import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
 import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class bdqs
-  implements bjoe
+  extends bdnv
 {
-  public bdqs(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, bjnw parambjnw, URLDrawable paramURLDrawable, String paramString1, String paramString2) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  private LinearLayout a(Context paramContext)
   {
-    paramView = this.jdField_a_of_type_Bjnw.a(paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131693023).equals(paramView))
+    LinearLayout localLinearLayout = new LinearLayout(paramContext);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    int i = AIOUtils.dp2px(12.0F, paramContext.getResources());
+    localLinearLayout.setPadding(i, i, i, i);
+    localLinearLayout.setLayoutParams(localLayoutParams);
+    return localLinearLayout;
+  }
+  
+  protected int b()
+  {
+    return 22;
+  }
+  
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    Iterator localIterator;
+    if ((paramView != null) && ((paramView instanceof LinearLayout)))
     {
-      TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      bfrj.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, Long.parseLong(this.jdField_a_of_type_JavaLangString), "0", null, 20006);
+      paramView = (LinearLayout)paramView;
+      paramView.removeAllViews();
+      localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     }
     for (;;)
     {
-      bcef.b(null, "dc00899", "grp_lbs", this.jdField_a_of_type_JavaLangString, "video", "clk_rep", 0, 0, "", "", "", "");
-      break;
-      if ((TextUtils.isEmpty(this.b)) || ("0".equals(this.b))) {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, 2, amtj.a(2131714227), 0).a();
-      } else {
-        bfrj.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, 0L, this.b, null, 20006);
+      if (!localIterator.hasNext()) {
+        return paramView;
+      }
+      Object localObject1 = (bdnu)localIterator.next();
+      Object localObject2 = ((bdnu)localObject1).jdField_a_of_type_JavaLangString;
+      ((bdnu)localObject1).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+      if ("title".equals(localObject2))
+      {
+        localObject2 = (StructMsgItemTitle)localObject1;
+        ((StructMsgItemTitle)localObject2).a(a(), this.p);
+        localObject1 = (TextView)((bdnu)localObject1).a(paramContext, null, paramBundle);
+        ((TextView)localObject1).setEllipsize(TextUtils.TruncateAt.END);
+        ((TextView)localObject1).setMaxLines(2);
+        if (TextUtils.isEmpty(((StructMsgItemTitle)localObject2).c())) {
+          ((TextView)localObject1).setTextSize(18.0F);
+        }
+        if (TextUtils.isEmpty(((StructMsgItemTitle)localObject2).d())) {
+          ((TextView)localObject1).setTextColor(Color.parseColor("#000000"));
+        }
+        localObject2 = new LinearLayout.LayoutParams(-1, -2);
+        ((LinearLayout.LayoutParams)localObject2).gravity = 16;
+        ((LinearLayout.LayoutParams)localObject2).weight = 1.0F;
+        ((LinearLayout.LayoutParams)localObject2).rightMargin = AIOUtils.dp2px(12.0F, paramContext.getResources());
+        paramView.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+        continue;
+        paramView = a(paramContext);
+        break;
+      }
+      if ("picture".equals(localObject2))
+      {
+        localObject1 = ((bdnu)localObject1).a(paramContext, null, paramBundle);
+        int i = AIOUtils.dp2px(50.0F, paramContext.getResources());
+        paramView.addView((View)localObject1, new LinearLayout.LayoutParams(i, i));
       }
     }
+    return paramView;
+  }
+  
+  public String b()
+  {
+    return "layout22";
   }
 }
 

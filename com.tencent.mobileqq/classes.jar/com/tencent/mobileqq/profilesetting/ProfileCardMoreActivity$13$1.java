@@ -15,11 +15,11 @@ class ProfileCardMoreActivity$13$1
       return;
       if (this.jdField_a_of_type_Int == 1)
       {
-        this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity$13.this$0.b(2131690587, 2);
+        this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity$13.this$0.b(2131690662, 2);
         return;
       }
     } while (this.jdField_a_of_type_Int != -1);
-    this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity$13.this$0.b(2131690586, 1);
+    this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity$13.this$0.b(2131690661, 1);
   }
 }
 

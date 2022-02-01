@@ -1,61 +1,54 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
 
 public class arjp
+  extends arjj<arjm>
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<arjk> a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public int c;
-  
-  public arjp()
+  @NonNull
+  public static arjm c()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramObject != null)
-    {
-      bool1 = bool2;
-      if ((paramObject instanceof arjp))
-      {
-        paramObject = (arjp)paramObject;
-        bool1 = bool2;
-        if (paramObject.jdField_a_of_type_JavaLangString != null)
-        {
-          bool1 = bool2;
-          if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) {
-            bool1 = true;
-          }
-        }
-      }
+    arjm localarjm2 = (arjm)aqxe.a().a(541);
+    arjm localarjm1 = localarjm2;
+    if (localarjm2 == null) {
+      localarjm1 = arjm.a();
     }
-    return bool1;
+    return localarjm1;
   }
   
-  public String toString()
+  @NonNull
+  public arjm a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mUpdateTime").append("=").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" ").append("mUpdateTime").append("=").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" ").append("mSearchKey").append("=").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" ").append("mLoadOver").append("=").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(" ").append("mCurPos").append("=").append(this.b);
-    localStringBuilder.append(" ").append("mOffset").append("=").append(this.c);
-    localStringBuilder.append(" ").append("size").append("=").append(this.jdField_a_of_type_JavaUtilList.size());
-    return localStringBuilder.toString();
+    return arjm.a();
+  }
+  
+  @NonNull
+  public arjm a(@NonNull aqxa[] paramArrayOfaqxa)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("KC.ConfigProcessor", 1, paramArrayOfaqxa[0].a);
+    }
+    return arjm.a(paramArrayOfaqxa[0].a);
+  }
+  
+  @NonNull
+  public arjm b()
+  {
+    return arjm.a();
+  }
+  
+  public Class<arjm> clazz()
+  {
+    return arjm.class;
+  }
+  
+  public int type()
+  {
+    return 541;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arjp
  * JD-Core Version:    0.7.0.1
  */

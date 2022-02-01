@@ -1,9 +1,30 @@
-final class bder
-  implements bdei
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+
+public class bder
 {
-  public boolean a(String paramString)
+  private static boolean a;
+  
+  public static boolean a()
   {
-    return false;
+    boolean bool = false;
+    if (a) {
+      return true;
+    }
+    String str = bdee.c();
+    if (str == null) {
+      return false;
+    }
+    if (!FileUtils.fileExists(str + "libObjectTracker.so")) {}
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("TrackerSoLoader", 2, " isTrackingSoExist =" + bool);
+      }
+      a = bool;
+      return a;
+      bool = true;
+    }
   }
 }
 

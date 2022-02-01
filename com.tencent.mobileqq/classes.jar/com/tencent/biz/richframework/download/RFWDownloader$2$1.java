@@ -7,7 +7,7 @@ import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Set;
-import npo;
+import nwp;
 
 class RFWDownloader$2$1
   implements INetEngine.INetEngineListener
@@ -25,7 +25,7 @@ class RFWDownloader$2$1
         paramNetResp = this.this$1.this$0.getUnZipPath(this.this$1.val$downloadUrl);
         File localFile = new File(this.this$1.val$downloadSavePath);
         QLog.d("RFWDownloader", 4, "start unzip file to folderPath:" + paramNetResp);
-        npo.a(localFile, paramNetResp);
+        nwp.a(localFile, paramNetResp);
         FileUtils.deleteFile(localFile);
         QLog.i("RFWDownloader", 1, "unzip success");
         RFWDownloader.access$400(this.this$1.this$0, this.this$1.val$downloadUrl, this.this$1.val$fileMd5);

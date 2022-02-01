@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import afes;
+import afvx;
 
 class SigTlpAnimation$2$1
   implements Runnable
@@ -14,7 +14,7 @@ class SigTlpAnimation$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.SigTlpAnimation.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,159 +1,269 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.HandlerThread;
+import android.os.Message;
+import android.text.TextUtils;
+import android.view.View;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.aditem.GdtAd;
+import java.lang.ref.WeakReference;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class achy
+  implements Handler.Callback
 {
-  public static boolean a;
+  private static achy jdField_a_of_type_Achy = new achy();
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private ConcurrentHashMap<String, WeakReference<View>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public static int a()
+  private achy()
   {
-    int i = 0;
-    if (BaseApplicationImpl.sProcessId == 2) {
-      i = 14;
-    }
-    while (BaseApplicationImpl.sProcessId != 7) {
-      return i;
-    }
-    return 19;
+    HandlerThread localHandlerThread = new HandlerThread("GdtImpressionPolicy");
+    localHandlerThread.start();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper(), this);
   }
   
-  /* Error */
-  public static void a()
+  public static achy a()
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 19	achy:a	Z
-    //   6: istore_1
-    //   7: iload_1
-    //   8: ifeq +7 -> 15
-    //   11: ldc 2
-    //   13: monitorexit
-    //   14: return
-    //   15: getstatic 13	com/tencent/common/app/BaseApplicationImpl:sProcessId	I
-    //   18: iconst_1
-    //   19: if_icmpne +9 -> 28
-    //   22: getstatic 24	achk:a	[Ljava/lang/Class;
-    //   25: invokestatic 30	com/tencent/qapmsdk/QAPM:setAbTypes	([Ljava/lang/Class;)V
-    //   28: iconst_1
-    //   29: putstatic 19	achy:a	Z
-    //   32: getstatic 33	com/tencent/qapmsdk/QAPM:LevelInfo	I
-    //   35: istore_0
-    //   36: invokestatic 39	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   39: ifeq +192 -> 231
-    //   42: getstatic 42	com/tencent/qapmsdk/QAPM:LevelDebug	I
-    //   45: istore_0
-    //   46: iconst_2
-    //   47: getstatic 13	com/tencent/common/app/BaseApplicationImpl:sProcessId	I
-    //   50: if_icmpeq +184 -> 234
-    //   53: bipush 8
-    //   55: getstatic 13	com/tencent/common/app/BaseApplicationImpl:sProcessId	I
-    //   58: if_icmpne +167 -> 225
-    //   61: goto +173 -> 234
-    //   64: invokestatic 47	com/tencent/mfsdk/MagnifierSDK:a	()Ljava/lang/String;
-    //   67: astore 4
-    //   69: invokestatic 51	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   72: invokevirtual 55	com/tencent/common/app/BaseApplicationImpl:getPackageManager	()Landroid/content/pm/PackageManager;
-    //   75: invokestatic 51	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   78: invokevirtual 58	com/tencent/common/app/BaseApplicationImpl:getPackageName	()Ljava/lang/String;
-    //   81: sipush 128
-    //   84: invokevirtual 64	android/content/pm/PackageManager:getApplicationInfo	(Ljava/lang/String;I)Landroid/content/pm/ApplicationInfo;
-    //   87: getfield 70	android/content/pm/ApplicationInfo:metaData	Landroid/os/Bundle;
-    //   90: ldc 72
-    //   92: invokevirtual 78	android/os/Bundle:get	(Ljava/lang/String;)Ljava/lang/Object;
-    //   95: invokevirtual 81	java/lang/Object:toString	()Ljava/lang/String;
-    //   98: astore_3
-    //   99: sipush 201
-    //   102: getstatic 85	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   105: invokestatic 89	com/tencent/qapmsdk/QAPM:setProperty	(ILjava/lang/Object;)Lcom/tencent/qapmsdk/QAPM;
-    //   108: pop
-    //   109: bipush 101
-    //   111: aload_2
-    //   112: invokestatic 92	com/tencent/qapmsdk/QAPM:setProperty	(ILjava/lang/String;)Lcom/tencent/qapmsdk/QAPM;
-    //   115: pop
-    //   116: bipush 103
-    //   118: aload 4
-    //   120: invokestatic 92	com/tencent/qapmsdk/QAPM:setProperty	(ILjava/lang/String;)Lcom/tencent/qapmsdk/QAPM;
-    //   123: pop
-    //   124: bipush 104
-    //   126: aload_3
-    //   127: invokestatic 92	com/tencent/qapmsdk/QAPM:setProperty	(ILjava/lang/String;)Lcom/tencent/qapmsdk/QAPM;
-    //   130: pop
-    //   131: bipush 105
-    //   133: iload_0
-    //   134: invokestatic 98	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   137: invokestatic 89	com/tencent/qapmsdk/QAPM:setProperty	(ILjava/lang/Object;)Lcom/tencent/qapmsdk/QAPM;
-    //   140: pop
-    //   141: bipush 106
-    //   143: ldc 100
-    //   145: invokestatic 92	com/tencent/qapmsdk/QAPM:setProperty	(ILjava/lang/String;)Lcom/tencent/qapmsdk/QAPM;
-    //   148: pop
-    //   149: bipush 111
-    //   151: ldc 102
-    //   153: invokestatic 92	com/tencent/qapmsdk/QAPM:setProperty	(ILjava/lang/String;)Lcom/tencent/qapmsdk/QAPM;
-    //   156: pop
-    //   157: iconst_0
-    //   158: putstatic 107	com/tencent/qapmsdk/base/reporter/authorization/Authorization:isAuthorize	Z
-    //   161: getstatic 113	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
-    //   164: new 115	achz
-    //   167: dup
-    //   168: iload_0
-    //   169: invokespecial 119	achz:<init>	(I)V
-    //   172: invokevirtual 123	com/tencent/qapmsdk/common/logger/Logger:setLogProxy	(Lcom/tencent/qapmsdk/common/logger/ILogProxy;)V
-    //   175: ldc 125
-    //   177: iconst_1
-    //   178: new 127	java/lang/StringBuilder
-    //   181: dup
-    //   182: invokespecial 129	java/lang/StringBuilder:<init>	()V
-    //   185: ldc 131
-    //   187: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   190: iload_0
-    //   191: invokevirtual 138	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   194: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   197: invokestatic 143	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   200: goto -189 -> 11
-    //   203: astore_2
-    //   204: ldc 2
-    //   206: monitorexit
-    //   207: aload_2
-    //   208: athrow
-    //   209: astore_3
-    //   210: ldc 125
-    //   212: iconst_1
-    //   213: ldc 145
-    //   215: aload_3
-    //   216: invokestatic 149	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   219: ldc 151
-    //   221: astore_3
-    //   222: goto -123 -> 99
-    //   225: ldc 153
-    //   227: astore_2
-    //   228: goto -164 -> 64
-    //   231: goto -185 -> 46
-    //   234: ldc 155
-    //   236: astore_2
-    //   237: goto -173 -> 64
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   35	156	0	i	int
-    //   6	2	1	bool	boolean
-    //   111	1	2	str1	java.lang.String
-    //   203	5	2	localObject	Object
-    //   227	10	2	str2	java.lang.String
-    //   98	29	3	str3	java.lang.String
-    //   209	7	3	localThrowable	java.lang.Throwable
-    //   221	1	3	str4	java.lang.String
-    //   67	52	4	str5	java.lang.String
-    // Exception table:
-    //   from	to	target	type
-    //   3	7	203	finally
-    //   15	28	203	finally
-    //   28	46	203	finally
-    //   46	61	203	finally
-    //   64	69	203	finally
-    //   69	99	203	finally
-    //   99	200	203	finally
-    //   210	219	203	finally
-    //   69	99	209	java/lang/Throwable
+    try
+    {
+      achy localachy = jdField_a_of_type_Achy;
+      return localachy;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  private GdtAd a(View paramView)
+  {
+    if (paramView == null) {
+      paramView = null;
+    }
+    GdtAd localGdtAd;
+    do
+    {
+      return paramView;
+      paramView = paramView.getTag(2131381181);
+      if (paramView == null) {
+        return null;
+      }
+      if (!(paramView instanceof GdtAd)) {
+        return null;
+      }
+      localGdtAd = (GdtAd)paramView;
+      if (TextUtils.isEmpty(localGdtAd.getTraceId())) {
+        return null;
+      }
+      paramView = localGdtAd;
+    } while (!TextUtils.isEmpty(localGdtAd.getUrlForImpression()));
+    return null;
+  }
+  
+  private void a(SharedPreferences paramSharedPreferences, SharedPreferences.Editor paramEditor, int paramInt)
+  {
+    int i = 0;
+    paramSharedPreferences = paramSharedPreferences.getAll();
+    if (paramSharedPreferences != null)
+    {
+      Object localObject = paramSharedPreferences.keySet();
+      if (((Set)localObject).size() - paramInt > 0)
+      {
+        int k = Math.abs((int)(((Set)localObject).size() - paramInt * 0.5F));
+        paramSharedPreferences = new String[k];
+        localObject = ((Set)localObject).iterator();
+        int j;
+        for (paramInt = 0;; paramInt = j) {
+          if (((Iterator)localObject).hasNext())
+          {
+            String str = (String)((Iterator)localObject).next();
+            j = paramInt + 1;
+            paramSharedPreferences[paramInt] = str;
+            if (j < k) {}
+          }
+          else
+          {
+            j = paramSharedPreferences.length;
+            paramInt = i;
+            while (paramInt < j)
+            {
+              paramEditor.remove(paramSharedPreferences[paramInt]);
+              paramInt += 1;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  private void a(View paramView, GdtAd paramGdtAd)
+  {
+    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet();
+    if (localObject != null)
+    {
+      localObject = ((Set)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str = (String)((Iterator)localObject).next();
+        WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+        if ((localWeakReference != null) && (localWeakReference.get() != null) && (paramView == localWeakReference.get())) {
+          if ((paramGdtAd.getTraceId() != null) && (!paramGdtAd.getTraceId().equals(str))) {
+            a(str);
+          }
+        }
+      }
+    }
+  }
+  
+  private void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+  }
+  
+  private void a(String paramString, WeakReference<View> paramWeakReference)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramWeakReference);
+  }
+  
+  private void a(String paramString, boolean paramBoolean)
+  {
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("GdtImpressionPolicyReported", 0);
+    SharedPreferences.Editor localEditor = localSharedPreferences.edit();
+    a(localSharedPreferences, localEditor, 8192);
+    localEditor.putBoolean(paramString, paramBoolean);
+    localEditor.apply();
+  }
+  
+  public static boolean a(View paramView)
+  {
+    return aciv.a(paramView) > 0.5D;
+  }
+  
+  private boolean a(String paramString)
+  {
+    return BaseApplicationImpl.getApplication().getSharedPreferences("GdtImpressionPolicyReported", 0).getBoolean(paramString, false);
+  }
+  
+  private boolean b(View paramView)
+  {
+    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values();
+    if (localObject != null)
+    {
+      localObject = ((Collection)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
+        if ((paramView != null) && (localWeakReference != null) && (localWeakReference.get() != null) && (paramView == localWeakReference.get())) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+  }
+  
+  public void a(View paramView)
+  {
+    acho.a("GdtImpressionPolicy", "report view: " + paramView.hashCode());
+    GdtAd localGdtAd = a(paramView);
+    if (localGdtAd == null)
+    {
+      acho.a("GdtImpressionPolicy", "break: statistics == null");
+      return;
+    }
+    if (localGdtAd.reportState == 2)
+    {
+      acho.a("GdtImpressionPolicy", "break: already report " + localGdtAd.getTraceId());
+      return;
+    }
+    if (!a(paramView))
+    {
+      acho.a("GdtImpressionPolicy", "break: isVisibleAreaSatisfied not");
+      return;
+    }
+    a(paramView, localGdtAd);
+    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+    WeakReference localWeakReference = new WeakReference(paramView);
+    localMessage.obj = localWeakReference;
+    if (!b(paramView))
+    {
+      acho.a("GdtImpressionPolicy", "inCountingMap not " + localGdtAd.getTraceId());
+      a(localGdtAd.getTraceId(), localWeakReference);
+    }
+    localGdtAd.reportState = 1;
+    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 1000L);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    acho.a("GdtImpressionPolicy", "handleMessage : ");
+    if ((paramMessage == null) || (paramMessage.obj == null)) {}
+    GdtAd localGdtAd;
+    Object localObject;
+    for (;;)
+    {
+      return false;
+      paramMessage = (WeakReference)paramMessage.obj;
+      if (paramMessage.get() != null)
+      {
+        paramMessage = (View)paramMessage.get();
+        localGdtAd = a(paramMessage);
+        if (localGdtAd == null)
+        {
+          acho.a("GdtImpressionPolicy", "break: statistics == null");
+        }
+        else if (localGdtAd.reportState != 1)
+        {
+          acho.a("GdtImpressionPolicy", "break: statistics.reportState != 1 " + localGdtAd.getTraceId());
+        }
+        else if (!a(paramMessage))
+        {
+          acho.a("GdtImpressionPolicy", "break: isVisibleAreaSatisfied not " + localGdtAd.getTraceId());
+          localGdtAd.reportState = -1;
+        }
+        else if (!b(paramMessage))
+        {
+          acho.a("GdtImpressionPolicy", "break: inCountingMap not " + localGdtAd.getTraceId());
+        }
+        else
+        {
+          localObject = paramMessage.getTag(2131381180);
+          if (localObject == null)
+          {
+            acho.a("GdtImpressionPolicy", "break: o2 == null " + localGdtAd.getTraceId());
+          }
+          else if (!(localObject instanceof achz))
+          {
+            acho.a("GdtImpressionPolicy", "break: o2 instanceof ReportListener not " + localGdtAd.getTraceId());
+          }
+          else
+          {
+            if (!a(localGdtAd.getTraceId())) {
+              break;
+            }
+            acho.a("GdtImpressionPolicy", "break: already reported " + localGdtAd.getTraceId());
+          }
+        }
+      }
+    }
+    ((achz)localObject).reportImpression(paramMessage);
+    localGdtAd.reportState = 2;
+    a(localGdtAd.getTraceId(), true);
+    acho.a("GdtImpressionPolicy", "report " + localGdtAd.getTraceId());
+    a(localGdtAd.getTraceId());
+    return true;
   }
 }
 

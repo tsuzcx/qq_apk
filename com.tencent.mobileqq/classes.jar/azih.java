@@ -1,84 +1,71 @@
+import android.content.ContentValues;
+import android.database.Cursor;
+import com.tencent.mobileqq.data.TroopAssistantData;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.NoColumnError;
+import com.tencent.mobileqq.persistence.NoColumnErrorHandler;
+import com.tencent.mobileqq.persistence.OGAbstractDao;
+
 public class azih
+  extends OGAbstractDao
 {
-  public int a;
-  public String a;
-  private boolean a;
-  private int jdField_b_of_type_Int = -1;
-  private String jdField_b_of_type_JavaLangString = "";
-  private boolean jdField_b_of_type_Boolean = true;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString = "";
-  private int jdField_d_of_type_Int;
-  private String jdField_d_of_type_JavaLangString = "";
-  
   public azih()
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    this.columnLen = 3;
   }
   
-  public azig a()
+  public Entity cursor2Entity(Entity paramEntity, Cursor paramCursor, boolean paramBoolean, NoColumnErrorHandler paramNoColumnErrorHandler)
   {
-    return new azig(this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_Int, this.jdField_d_of_type_JavaLangString, this.jdField_d_of_type_Int, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    paramEntity = (TroopAssistantData)paramEntity;
+    if (paramNoColumnErrorHandler == null)
+    {
+      paramEntity.troopUin = paramCursor.getString(paramCursor.getColumnIndex("troopUin"));
+      paramEntity.lastmsgtime = paramCursor.getLong(paramCursor.getColumnIndex("lastmsgtime"));
+      paramEntity.lastdrafttime = paramCursor.getLong(paramCursor.getColumnIndex("lastdrafttime"));
+      return paramEntity;
+    }
+    int i = paramCursor.getColumnIndex("troopUin");
+    if (i == -1)
+    {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("troopUin", String.class));
+      i = paramCursor.getColumnIndex("lastmsgtime");
+      if (i != -1) {
+        break label187;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("lastmsgtime", Long.TYPE));
+    }
+    for (;;)
+    {
+      i = paramCursor.getColumnIndex("lastdrafttime");
+      if (i != -1) {
+        break label202;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("lastdrafttime", Long.TYPE));
+      return paramEntity;
+      paramEntity.troopUin = paramCursor.getString(i);
+      break;
+      label187:
+      paramEntity.lastmsgtime = paramCursor.getLong(i);
+    }
+    label202:
+    paramEntity.lastdrafttime = paramCursor.getLong(i);
+    return paramEntity;
   }
   
-  public azih a(int paramInt)
+  public void entity2ContentValues(Entity paramEntity, ContentValues paramContentValues)
   {
-    this.jdField_b_of_type_Int = paramInt;
-    return this;
+    paramEntity = (TroopAssistantData)paramEntity;
+    paramContentValues.put("troopUin", paramEntity.troopUin);
+    paramContentValues.put("lastmsgtime", Long.valueOf(paramEntity.lastmsgtime));
+    paramContentValues.put("lastdrafttime", Long.valueOf(paramEntity.lastdrafttime));
   }
   
-  public azih a(String paramString)
+  public String getCreateTableSql(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public azih a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public azih b(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public azih b(String paramString)
-  {
-    this.jdField_d_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public azih b(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public azih c(int paramInt)
-  {
-    this.jdField_d_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public azih c(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public azih d(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public azih d(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
+    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,troopUin TEXT UNIQUE ,lastmsgtime INTEGER ,lastdrafttime INTEGER)");
+    return localStringBuilder.toString();
   }
 }
 

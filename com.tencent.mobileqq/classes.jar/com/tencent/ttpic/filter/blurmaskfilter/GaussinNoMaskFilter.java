@@ -143,7 +143,7 @@ public class GaussinNoMaskFilter
   
   public void clear()
   {
-    ClearGLSL();
+    clearGLSL();
   }
   
   public void setMaskTextureId(int paramInt) {}

@@ -1,42 +1,42 @@
+import android.content.Context;
+import android.text.TextUtils;
+import android.widget.TextView;
+import dov.com.qq.im.ae.cmshow.AECMShowLoadingView;
+import org.libpag.PAGView;
+import org.libpag.PAGView.PAGViewListener;
+
 public class bnip
+  implements PAGView.PAGViewListener
 {
-  public float a;
-  public float b;
-  public float c;
-  public float d;
+  public bnip(AECMShowLoadingView paramAECMShowLoadingView) {}
   
-  public bnip(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  private String a()
   {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.d = paramFloat4;
+    if (!TextUtils.isEmpty(AECMShowLoadingView.a(this.a))) {
+      return AECMShowLoadingView.a(this.a);
+    }
+    return this.a.getContext().getString(2131690863);
   }
   
-  public static boolean a(bnip parambnip1, bnip parambnip2)
+  public void onAnimationCancel(PAGView paramPAGView)
   {
-    return Float.compare(parambnip1.d, parambnip2.d) != 0;
+    if (AECMShowLoadingView.a(this.a) != null) {
+      AECMShowLoadingView.a(this.a).setText(a());
+    }
+    AECMShowLoadingView.a(this.a).removeListener(this);
   }
   
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public void onAnimationEnd(PAGView paramPAGView)
   {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.d = paramFloat4;
+    if (AECMShowLoadingView.a(this.a) != null) {
+      AECMShowLoadingView.a(this.a).setText(a());
+    }
+    AECMShowLoadingView.a(this.a).removeListener(this);
   }
   
-  public void a(bnip parambnip)
-  {
-    this.c *= parambnip.c;
-    this.a -= parambnip.a;
-    this.b -= parambnip.b;
-  }
+  public void onAnimationRepeat(PAGView paramPAGView) {}
   
-  public String toString()
-  {
-    return "CropHomeing{x=" + this.a + ", y=" + this.b + ", scale=" + this.c + ", rotate=" + this.d + '}';
-  }
+  public void onAnimationStart(PAGView paramPAGView) {}
 }
 
 

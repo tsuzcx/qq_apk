@@ -1,21 +1,17 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class bnae
-  implements View.OnTouchListener
+class bnae
+  implements DialogInterface.OnClickListener
 {
-  public bnae(CropVideoActivity paramCropVideoActivity) {}
+  bnae(bnaa parambnaa) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    CropVideoActivity.a(this.a).onTouchEvent(paramMotionEvent);
-    CropVideoActivity.a(this.a).a(paramMotionEvent);
-    CropVideoActivity.a(this.a).onTouchEvent(paramMotionEvent);
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
+    }
   }
 }
 

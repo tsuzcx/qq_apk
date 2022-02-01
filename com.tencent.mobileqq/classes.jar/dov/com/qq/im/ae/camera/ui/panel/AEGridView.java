@@ -7,7 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import blsg;
+import bnfp;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class AEGridView
@@ -46,7 +46,7 @@ public class AEGridView
     setPadding((m - this.jdField_a_of_type_Int * i) / (this.jdField_a_of_type_Int + 1), 0, 0, j * 4);
     setClipToPadding(false);
     setLayoutManager(new GridLayoutManager(getContext(), this.jdField_a_of_type_Int));
-    addItemDecoration(new blsg(this, this.jdField_a_of_type_Int, k));
+    addItemDecoration(new bnfp(this, this.jdField_a_of_type_Int, k));
     this.b = i;
   }
   

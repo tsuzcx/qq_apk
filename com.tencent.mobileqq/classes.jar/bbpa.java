@@ -1,33 +1,123 @@
-import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import cooperation.qzone.LbsDataV2;
-import cooperation.qzone.report.QzoneLbsReporter;
-import cooperation.qzone.util.QZLog;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.view.KeyEvent;
+import android.view.ViewGroup;
+import com.tencent.richmediabrowser.core.IBrowserBuilder;
 
-final class bbpa
-  extends LbsManagerService.OnLocationChangeListener
+public class bbpa
+  implements IBrowserBuilder
 {
-  bbpa(String paramString, boolean paramBoolean)
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private bbps jdField_a_of_type_Bbps;
+  private bbqa jdField_a_of_type_Bbqa;
+  private bbqz jdField_a_of_type_Bbqz;
+  
+  public bbpa(Activity paramActivity)
   {
-    super(paramString, paramBoolean);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public bbqa a()
   {
-    QZLog.i("Q.lebatab.UndealCount.QZoneNotifyServlet.NewLbsInterface", 1, "[QZ_LBS_MODULE]----locate");
-    long l1 = System.currentTimeMillis();
-    long l2 = bboz.a();
-    QzoneLbsReporter.reportLocationResult(paramInt, this.businessId, l1 - l2);
-    if ((paramInt == 0) && (paramSosoLbsInfo != null))
-    {
-      bboz.a(LbsDataV2.convertFromSoso(paramSosoLbsInfo.mLocation));
-      QZLog.i("Q.lebatab.UndealCount.QZoneNotifyServlet", 1, "[QZ_LBS_MODULE]onLocationFinish succeed! gps=" + bboz.a());
+    return this.jdField_a_of_type_Bbqa;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bbqa != null) {
+      this.jdField_a_of_type_Bbqa.onWindowFocusChanged();
     }
-    for (;;)
-    {
-      bboz.a(paramInt);
-      return;
-      QZLog.e("Q.lebatab.UndealCount.QZoneNotifyServlet", "[QZ_LBS_MODULE]onLocationFinish failed: error in force gps info update..");
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if (this.jdField_a_of_type_Bbqa != null) {
+      this.jdField_a_of_type_Bbqa.onActivityResult(paramInt1, paramInt2, paramIntent);
+    }
+  }
+  
+  public void a(Configuration paramConfiguration)
+  {
+    if (this.jdField_a_of_type_Bbqa != null) {
+      this.jdField_a_of_type_Bbqa.onConfigurationChanged(paramConfiguration);
+    }
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_Bbqa != null) {
+      return this.jdField_a_of_type_Bbqa.onBackEvent();
+    }
+    return false;
+  }
+  
+  public boolean a(int paramInt, KeyEvent paramKeyEvent)
+  {
+    if (this.jdField_a_of_type_Bbqa != null) {
+      return this.jdField_a_of_type_Bbqa.onKeyDown(paramInt, paramKeyEvent);
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Bbqa != null) {
+      this.jdField_a_of_type_Bbqa.onStart();
+    }
+  }
+  
+  public void buildComplete()
+  {
+    this.jdField_a_of_type_Bbqa.buildComplete();
+    this.jdField_a_of_type_Bbqz.buildComplete();
+    this.jdField_a_of_type_Bbps.buildComplete();
+  }
+  
+  public void buildModel()
+  {
+    this.jdField_a_of_type_Bbps.buildModel();
+  }
+  
+  public void buildParams(Intent paramIntent)
+  {
+    this.jdField_a_of_type_Bbqa.buildParams(paramIntent);
+    this.jdField_a_of_type_Bbqz.buildParams(paramIntent);
+    this.jdField_a_of_type_Bbps.buildParams(paramIntent);
+  }
+  
+  public void buildPresenter()
+  {
+    this.jdField_a_of_type_Bbqa = new bbqa();
+    this.jdField_a_of_type_Bbqz = new bbqz(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Bbqa);
+    this.jdField_a_of_type_Bbqa.a(this.jdField_a_of_type_Bbqz);
+    this.jdField_a_of_type_Bbps = new bbps(this.jdField_a_of_type_Bbqa);
+    this.jdField_a_of_type_Bbqa.a(this.jdField_a_of_type_Bbps);
+  }
+  
+  public void buildView(ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_Bbqz.buildView(paramViewGroup);
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Bbqa != null) {
+      this.jdField_a_of_type_Bbqa.onResume();
+    }
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_Bbqa != null) {
+      this.jdField_a_of_type_Bbqa.onPause();
+    }
+  }
+  
+  public void e()
+  {
+    if (this.jdField_a_of_type_Bbqa != null) {
+      this.jdField_a_of_type_Bbqa.onDestroy();
     }
   }
 }

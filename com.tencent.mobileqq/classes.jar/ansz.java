@@ -1,41 +1,56 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.qwallet.WXMiniProgramHelper;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class ansz
-  extends anrh
+  extends MSFServlet
 {
-  public ansz(QQAppInterface paramQQAppInterface, Context paramContext)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    super(paramQQAppInterface, paramContext);
-  }
-  
-  private boolean C()
-  {
-    WXMiniProgramHelper.a().a(this.a);
-    return true;
-  }
-  
-  public boolean a()
-  {
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("DataLineServlet", 2, "onReceive called");
+    }
+    if (paramIntent == null)
     {
-      if ((this.a.containsKey("user_name")) && (!StringUtil.isEmpty((String)this.a.get("user_name"))))
-      {
-        boolean bool = C();
-        return bool;
+      QLog.e("DataLineServlet", 1, "onReceive : req is null");
+      return;
+    }
+    paramIntent.getExtras().putParcelable("response", paramFromServiceMsg);
+    QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
+    paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+    paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
+    ((ansr)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(paramIntent, paramFromServiceMsg);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DataLineServlet", 2, "onSend called");
+    }
+    if (paramIntent == null) {
+      QLog.e("DataLineServlet", 1, "onSend : req is null");
+    }
+    do
+    {
+      return;
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (paramIntent == null) {
+        break;
       }
-      return false;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("QwalletToLaunchWXMiniAppAction", 1, "doAction error: " + localException.getMessage());
-      a("QwalletToLaunchWXMiniAppAction");
-    }
-    return false;
+      paramPacket.setSSOCommand(paramIntent.getServiceCmd());
+      paramPacket.putSendData(paramIntent.getWupBuffer());
+      paramPacket.setTimeout(paramIntent.getTimeout());
+    } while (paramIntent.isNeedCallback());
+    paramPacket.setNoResponse();
+    return;
+    QLog.e("DataLineServlet", 1, "onSend : toMsg is null");
   }
 }
 

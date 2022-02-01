@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.teamwork;
 
-import amtj;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import bhht;
+import anvx;
+import bisl;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.widget.share.ShareActionSheet;
 import com.tencent.mobileqq.widget.share.ShareActionSheetFactory;
@@ -22,7 +22,7 @@ class TeamWorkForceShare$1
     if ((this.a == null) || (this.a.isRecycled()))
     {
       QLog.d(TeamWorkForceShare.a(), 1, "decode image failed, url = " + TeamWorkForceShare.a(this.this$0));
-      QQToast.a(TeamWorkForceShare.a(this.this$0), amtj.a(2131713831), 0).a();
+      QQToast.a(TeamWorkForceShare.a(this.this$0), anvx.a(2131714178), 0).a();
       return;
     }
     if (TeamWorkForceShare.a(this.this$0) == null)
@@ -46,7 +46,7 @@ class TeamWorkForceShare$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkForceShare.1
  * JD-Core Version:    0.7.0.1
  */

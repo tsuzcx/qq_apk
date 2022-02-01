@@ -1,14 +1,56 @@
-class ovs
-  extends owd
+import com.tencent.common.app.BaseApplicationImpl;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class ovs
 {
-  ovs(ouu paramouu, boolean paramBoolean, String paramString, int paramInt1, int paramInt2)
+  private JSONObject a = new JSONObject();
+  
+  public String a()
   {
-    super(paramouu, null);
+    return this.a.toString();
   }
   
-  void a(owg paramowg)
+  public ovs a()
   {
-    paramowg.onCommentLikeOrDislike(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
+    try
+    {
+      this.a.put("network", pih.a(BaseApplicationImpl.getApplication().getApplicationContext()));
+      this.a.put("version", omx.a);
+      this.a.put("os", "1");
+      this.a.put("uin", pkh.a());
+      this.a.put("city", pih.b());
+      return this;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return this;
+  }
+  
+  public ovs a(int paramInt)
+  {
+    int i = 0;
+    if (paramInt == 41516) {
+      i = 3;
+    }
+    for (;;)
+    {
+      try
+      {
+        this.a.put("source", i);
+        return this;
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
+      if (paramInt == 41522) {
+        i = 16;
+      }
+    }
+    return this;
   }
 }
 

@@ -1,57 +1,95 @@
-import com.tencent.biz.pubaccount.readinjoy.share.watchword.mvp.RIJWriteWatchWordPresenter.fetchTopicWatchWord.1;
-import com.tencent.biz.pubaccount.readinjoy.share.watchword.mvp.RIJWriteWatchWordPresenter.fetchVideoWatchWord.1;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function3;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJWriteWatchWordPresenter;", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJWriteWatchWordShareContract$IPresenter;", "model", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJWriteWatchWordShareContract$IModel;", "(Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJWriteWatchWordShareContract$IModel;)V", "view", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJWriteWatchWordShareContract$IView;", "attachView", "", "detachView", "fetchTopicWatchWord", "topicId", "", "url", "title", "fetchVideoWatchWord", "rowkey", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rah
+public class rah
 {
-  private final qzu jdField_a_of_type_Qzu;
-  private qzv jdField_a_of_type_Qzv;
+  private JSONObject a;
   
-  public rah(@NotNull qzu paramqzu)
+  public rah()
   {
-    this.jdField_a_of_type_Qzu = paramqzu;
+    this.a = new JSONObject();
+    a();
   }
   
-  public void a()
+  public rah(String paramString)
   {
-    this.jdField_a_of_type_Qzv = ((qzv)null);
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        this.a = new JSONObject(paramString);
+        a();
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("PTSReport", 1, "e = " + paramString);
+        this.a = new JSONObject();
+        a();
+        return;
+      }
+    }
+    this.a = new JSONObject();
+    a();
   }
   
-  public void a(@NotNull String paramString1, @NotNull String paramString2, @Nullable String paramString3)
+  private void a()
   {
-    Intrinsics.checkParameterIsNotNull(paramString1, "topicId");
-    Intrinsics.checkParameterIsNotNull(paramString2, "url");
-    qzu localqzu = this.jdField_a_of_type_Qzu;
-    if (paramString3 != null) {}
-    for (String str = paramString3;; str = "")
+    for (;;)
     {
-      localqzu.a(paramString1, paramString2, str, (Function3)new RIJWriteWatchWordPresenter.fetchTopicWatchWord.1(this, paramString3, paramString2));
-      return;
+      try
+      {
+        this.a.put("os", "1");
+        this.a.put("version", "8.4.10");
+        this.a.put("pts_engine_version", qza.a().a());
+        this.a.put("pts_app_version", qyy.a().a());
+        this.a.put("sdk_version", String.valueOf(Build.VERSION.SDK_INT));
+        JSONObject localJSONObject = this.a;
+        if (!TextUtils.isEmpty(Build.BRAND))
+        {
+          String str1 = Build.BRAND;
+          localJSONObject.put("device_brand", str1);
+          localJSONObject = this.a;
+          if (!TextUtils.isEmpty(Build.MODEL))
+          {
+            str1 = Build.MODEL;
+            localJSONObject.put("device_model", str1);
+            this.a.put("is_debug", "0");
+            return;
+          }
+          str1 = "";
+          continue;
+        }
+        String str2 = "";
+      }
+      catch (JSONException localJSONException)
+      {
+        QLog.e("PTSReport", 1, "[initCommonField], e = " + localJSONException);
+        return;
+      }
     }
   }
   
-  public void a(@NotNull String paramString1, @NotNull String paramString2, @Nullable String paramString3, @Nullable String paramString4)
+  public String a()
   {
-    Intrinsics.checkParameterIsNotNull(paramString1, "rowkey");
-    Intrinsics.checkParameterIsNotNull(paramString2, "url");
-    qzu localqzu = this.jdField_a_of_type_Qzu;
-    if (paramString4 != null) {}
-    for (String str = paramString4;; str = "")
-    {
-      localqzu.a(paramString1, paramString2, paramString3, str, (Function3)new RIJWriteWatchWordPresenter.fetchVideoWatchWord.1(this, paramString4, paramString2));
-      return;
-    }
+    return this.a.toString();
   }
   
-  public void a(@NotNull qzv paramqzv)
+  public rah a(String paramString1, String paramString2)
   {
-    Intrinsics.checkParameterIsNotNull(paramqzv, "view");
-    this.jdField_a_of_type_Qzv = paramqzv;
+    try
+    {
+      this.a.put(paramString1, paramString2);
+      return this;
+    }
+    catch (JSONException paramString1)
+    {
+      QLog.e("PTSReport", 1, "[addString], e = " + paramString1);
+    }
+    return this;
   }
 }
 

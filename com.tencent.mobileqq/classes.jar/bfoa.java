@@ -1,17 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
-
-public class bfoa
-  implements DialogInterface.OnClickListener
+public abstract interface bfoa
 {
-  public bfoa(UpgradeActivity paramUpgradeActivity) {}
+  public abstract void a(long paramLong);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    bcef.b(this.a.app, "CliOper", "", "", "0X8004DA2", "0X8004DA2", 0, 0, bfnf.b(), String.valueOf(0), bfng.a(), "0");
-    this.a.a();
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2);
+  
+  public abstract void a(boolean paramBoolean, long paramLong, String paramString1, String paramString2);
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
 }
 
 

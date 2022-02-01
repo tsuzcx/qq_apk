@@ -1,10 +1,23 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public class aesm
-  extends Handler
+class aesm
+  implements QQPermissionCallback
 {
-  public aesm(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
+  aesm(aesl paramaesl, QQSettingMe paramQQSettingMe) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.d("QQSettingRedesign", 1, "User requestPermissions denied...");
+    bhdj.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.d("QQSettingRedesign", 1, "User requestPermissions grant...");
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.g();
+  }
 }
 
 

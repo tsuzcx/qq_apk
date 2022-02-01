@@ -1,16 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.customviews.VideoProgressView;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class agnk
-  implements bhfe
+public class agnk
+  implements View.OnClickListener
 {
-  agnk(agnj paramagnj, agnu paramagnu) {}
+  public agnk(ApolloItemBuilder paramApolloItemBuilder) {}
   
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Agnu.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Agnu.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
-      this.jdField_a_of_type_Agnu.jdField_a_of_type_ComTencentMobileqqCustomviewsVideoProgressView.setDrawStatus(2);
+    if (amme.a(this.a.a.getApplication()))
+    {
+      ApolloUtil.a(paramView.getContext(), null, "aio", anka.u, null);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    if (!amme.c(this.a.a.getApplication())) {}
+    for (String str = anka.h;; str = anka.i + blqp.b)
+    {
+      Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
+      localIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
+      VasWebviewUtil.openQQBrowserActivity(paramView.getContext(), str, -1L, localIntent, false, -1);
+      break;
     }
   }
 }

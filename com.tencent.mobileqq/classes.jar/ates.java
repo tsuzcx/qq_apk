@@ -1,304 +1,373 @@
-import com.qq.taf.jce.HexUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.TypedValue;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.CheckBox;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.widget.CircleFileStateView;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class ates
-  implements atew
+  extends atab
 {
-  long jdField_a_of_type_Long;
-  atev jdField_a_of_type_Atev = null;
-  String jdField_a_of_type_JavaLangString;
-  String b;
-  final String c = "DiscFileUploader<FileAssistant>";
+  private Context jdField_a_of_type_AndroidContentContext;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener;
+  private BaseFileAssistantActivity jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity;
+  private HashMap<Integer, ArrayList<atet>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private View.OnClickListener b;
+  private View.OnClickListener c;
   
-  /* Error */
-  public long a(com.tencent.mobileqq.transfile.NetResp paramNetResp, ateu paramateu)
+  public ates(Context paramContext, LinkedHashMap<String, List<FileManagerEntity>> paramLinkedHashMap, BaseFileAssistantActivity paramBaseFileAssistantActivity, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2, View.OnLongClickListener paramOnLongClickListener, View.OnClickListener paramOnClickListener3)
   {
-    // Byte code:
-    //   0: new 30	java/io/ByteArrayInputStream
-    //   3: dup
-    //   4: aload_1
-    //   5: getfield 36	com/tencent/mobileqq/transfile/NetResp:mRespData	[B
-    //   8: invokespecial 39	java/io/ByteArrayInputStream:<init>	([B)V
-    //   11: astore_1
-    //   12: new 41	java/io/DataInputStream
-    //   15: dup
-    //   16: aload_1
-    //   17: invokespecial 44	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
-    //   20: astore 6
-    //   22: aload 6
-    //   24: ldc2_w 45
-    //   27: invokevirtual 50	java/io/DataInputStream:skip	(J)J
-    //   30: pop2
-    //   31: aload 6
-    //   33: invokevirtual 54	java/io/DataInputStream:readInt	()I
-    //   36: ifeq +32 -> 68
-    //   39: aload_2
-    //   40: ldc2_w 55
-    //   43: putfield 60	ateu:jdField_a_of_type_Long	J
-    //   46: aload_2
-    //   47: ldc 62
-    //   49: putfield 63	ateu:c	Ljava/lang/String;
-    //   52: aload_0
-    //   53: aload_2
-    //   54: invokevirtual 66	ates:a	(Lateu;)V
-    //   57: aload_1
-    //   58: invokevirtual 69	java/io/ByteArrayInputStream:close	()V
-    //   61: aload 6
-    //   63: invokevirtual 70	java/io/DataInputStream:close	()V
-    //   66: lconst_0
-    //   67: lreturn
-    //   68: aload 6
-    //   70: ldc2_w 71
-    //   73: invokevirtual 50	java/io/DataInputStream:skip	(J)J
-    //   76: pop2
-    //   77: aload 6
-    //   79: invokevirtual 76	java/io/DataInputStream:readByte	()B
-    //   82: istore_3
-    //   83: iload_3
-    //   84: ifne +65 -> 149
-    //   87: aload 6
-    //   89: invokevirtual 54	java/io/DataInputStream:readInt	()I
-    //   92: istore_3
-    //   93: aload 6
-    //   95: invokevirtual 54	java/io/DataInputStream:readInt	()I
-    //   98: i2l
-    //   99: lstore 4
-    //   101: iload_3
-    //   102: i2l
-    //   103: lload 4
-    //   105: bipush 32
-    //   107: lshl
-    //   108: lor
-    //   109: lstore 4
-    //   111: aload_2
-    //   112: getfield 79	ateu:h	J
-    //   115: lconst_0
-    //   116: lcmp
-    //   117: ifne +9 -> 126
-    //   120: aload_2
-    //   121: lload 4
-    //   123: putfield 79	ateu:h	J
-    //   126: aload_2
-    //   127: lload 4
-    //   129: aload_2
-    //   130: getfield 79	ateu:h	J
-    //   133: lsub
-    //   134: putfield 82	ateu:i	J
-    //   137: aload_1
-    //   138: invokevirtual 69	java/io/ByteArrayInputStream:close	()V
-    //   141: aload 6
-    //   143: invokevirtual 70	java/io/DataInputStream:close	()V
-    //   146: lload 4
-    //   148: lreturn
-    //   149: iload_3
-    //   150: iconst_1
-    //   151: if_icmpne +37 -> 188
-    //   154: aload_2
-    //   155: lconst_0
-    //   156: putfield 60	ateu:jdField_a_of_type_Long	J
-    //   159: aload_2
-    //   160: aload_2
-    //   161: getfield 85	ateu:e	J
-    //   164: lconst_1
-    //   165: ladd
-    //   166: putfield 88	ateu:f	J
-    //   169: aload_0
-    //   170: aload_2
-    //   171: invokevirtual 90	ates:b	(Lateu;)V
-    //   174: aload_1
-    //   175: invokevirtual 69	java/io/ByteArrayInputStream:close	()V
-    //   178: aload 6
-    //   180: invokevirtual 70	java/io/DataInputStream:close	()V
-    //   183: lconst_0
-    //   184: lreturn
-    //   185: astore_1
-    //   186: lconst_0
-    //   187: lreturn
-    //   188: aload_2
-    //   189: ldc2_w 55
-    //   192: putfield 60	ateu:jdField_a_of_type_Long	J
-    //   195: aload_2
-    //   196: ldc 92
-    //   198: putfield 63	ateu:c	Ljava/lang/String;
-    //   201: aload_0
-    //   202: aload_2
-    //   203: invokevirtual 66	ates:a	(Lateu;)V
-    //   206: aload_1
-    //   207: invokevirtual 69	java/io/ByteArrayInputStream:close	()V
-    //   210: aload 6
-    //   212: invokevirtual 70	java/io/DataInputStream:close	()V
-    //   215: lconst_0
-    //   216: lreturn
-    //   217: astore_1
-    //   218: lconst_0
-    //   219: lreturn
-    //   220: astore_2
-    //   221: aload_2
-    //   222: invokevirtual 95	java/io/IOException:printStackTrace	()V
-    //   225: aload_1
-    //   226: invokevirtual 69	java/io/ByteArrayInputStream:close	()V
-    //   229: aload 6
-    //   231: invokevirtual 70	java/io/DataInputStream:close	()V
-    //   234: ldc2_w 96
-    //   237: lreturn
-    //   238: astore_2
-    //   239: aload_1
-    //   240: invokevirtual 69	java/io/ByteArrayInputStream:close	()V
-    //   243: aload 6
-    //   245: invokevirtual 70	java/io/DataInputStream:close	()V
-    //   248: aload_2
-    //   249: athrow
-    //   250: astore_1
-    //   251: goto -3 -> 248
-    //   254: astore_1
-    //   255: goto -21 -> 234
-    //   258: astore_1
-    //   259: goto -113 -> 146
-    //   262: astore_1
-    //   263: lconst_0
-    //   264: lreturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	265	0	this	ates
-    //   0	265	1	paramNetResp	com.tencent.mobileqq.transfile.NetResp
-    //   0	265	2	paramateu	ateu
-    //   82	70	3	i	int
-    //   99	48	4	l	long
-    //   20	224	6	localDataInputStream	java.io.DataInputStream
-    // Exception table:
-    //   from	to	target	type
-    //   174	183	185	java/lang/Exception
-    //   206	215	217	java/lang/Exception
-    //   22	57	220	java/io/IOException
-    //   68	83	220	java/io/IOException
-    //   87	101	220	java/io/IOException
-    //   111	126	220	java/io/IOException
-    //   126	137	220	java/io/IOException
-    //   154	174	220	java/io/IOException
-    //   188	206	220	java/io/IOException
-    //   22	57	238	finally
-    //   68	83	238	finally
-    //   87	101	238	finally
-    //   111	126	238	finally
-    //   126	137	238	finally
-    //   154	174	238	finally
-    //   188	206	238	finally
-    //   221	225	238	finally
-    //   239	248	250	java/lang/Exception
-    //   225	234	254	java/lang/Exception
-    //   137	146	258	java/lang/Exception
-    //   57	66	262	java/lang/Exception
+    super(paramContext, paramLinkedHashMap);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener1;
+    this.b = paramOnClickListener2;
+    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = paramOnLongClickListener;
+    this.c = paramOnClickListener3;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity = paramBaseFileAssistantActivity;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
   }
   
-  public void a(long paramLong1, long paramLong2)
+  private void a(FileManagerEntity paramFileManagerEntity, ateu paramateu)
   {
-    this.jdField_a_of_type_Atev.a(paramLong1, paramLong2);
-  }
-  
-  public void a(ateu paramateu)
-  {
-    QLog.i("DiscFileUploader<FileAssistant>", 1, "=_= ^! [Upload Step] Send Error!:" + paramateu.c);
-    paramateu.c();
-    this.jdField_a_of_type_Atev.a(null, 0);
-  }
-  
-  public void a(String paramString1, String paramString2, long paramLong, atev paramatev)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Atev = paramatev;
-  }
-  
-  public void a(boolean paramBoolean, ateu paramateu) {}
-  
-  public byte[] a(byte[] paramArrayOfByte, long paramLong, ateu paramateu)
-  {
-    if ((this.jdField_a_of_type_JavaLangString == null) || (this.b == null) || (this.jdField_a_of_type_JavaLangString.length() == 0) || (this.b.length() == 0))
+    switch (paramFileManagerEntity.status)
     {
-      if (QLog.isDevelopLevel()) {
-        throw new NullPointerException();
+    case 17: 
+    default: 
+      paramateu.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(4);
+      return;
+    case 2: 
+    case 18: 
+      paramateu.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
+      paramateu.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(1);
+      paramateu.jdField_a_of_type_Int = 2;
+      return;
+    case 3: 
+      a(paramFileManagerEntity, paramateu, FileUtil.isFileExists(paramFileManagerEntity.getFilePath()));
+      return;
+    case 1: 
+      b(paramFileManagerEntity, paramateu, FileUtil.isFileExists(paramFileManagerEntity.getFilePath()));
+      return;
+    case 0: 
+      paramateu.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
+      paramateu.jdField_a_of_type_Int = 3;
+      boolean bool = FileUtil.isFileExists(paramFileManagerEntity.getFilePath());
+      if ((paramFileManagerEntity.bSend) && (bool))
+      {
+        paramateu.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(3);
+        return;
       }
-      paramateu.jdField_a_of_type_Long = 9005L;
-      a(paramateu);
-      return null;
+      paramateu.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
+      return;
+    case 5: 
+    case 6: 
+    case 7: 
+    case 8: 
+      paramateu.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(4);
+      return;
+    case 4: 
+      paramateu.jdField_a_of_type_Int = 1;
+      paramateu.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
+      paramateu.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
+      return;
+    case 9: 
+    case 12: 
+      paramateu.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(4);
+      return;
+    case 10: 
+    case 11: 
+      paramateu.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(4);
+      return;
+    case 13: 
+      paramateu.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
+      paramateu.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
+      paramateu.jdField_a_of_type_Int = 1;
+      return;
+    case 14: 
+    case 15: 
+      paramateu.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(4);
+      return;
+    case -1: 
+      paramateu.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
+      paramateu.jdField_a_of_type_Int = 1;
+      paramateu.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
+      return;
     }
-    byte[] arrayOfByte1 = HexUtil.hexStr2Bytes(this.b);
-    byte[] arrayOfByte2 = HexUtil.hexStr2Bytes(this.jdField_a_of_type_JavaLangString);
-    int i = arrayOfByte2.length + 2 + 2 + arrayOfByte1.length + 20 + paramArrayOfByte.length;
-    localByteArrayOutputStream = new ByteArrayOutputStream(i + 16);
-    localDataOutputStream = new DataOutputStream(localByteArrayOutputStream);
-    try
+    paramateu.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(4);
+  }
+  
+  private void a(FileManagerEntity paramFileManagerEntity, ateu paramateu, boolean paramBoolean)
+  {
+    if ((paramFileManagerEntity.bSend) && (paramBoolean)) {
+      paramateu.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(3);
+    }
+    for (;;)
     {
-      localDataOutputStream.writeInt(-1412589450);
-      localDataOutputStream.writeInt(1007);
-      localDataOutputStream.writeInt(0);
-      localDataOutputStream.writeInt(i);
-      localDataOutputStream.writeShort(arrayOfByte2.length);
-      localDataOutputStream.write(arrayOfByte2);
-      localDataOutputStream.writeShort(arrayOfByte1.length);
-      localDataOutputStream.write(arrayOfByte1);
-      localDataOutputStream.writeInt((int)(this.jdField_a_of_type_Long & 0xFFFFFFFF));
-      localDataOutputStream.writeInt((int)(paramLong & 0xFFFFFFFF));
-      localDataOutputStream.writeInt(paramArrayOfByte.length);
-      localDataOutputStream.writeInt((int)(this.jdField_a_of_type_Long >> 32));
-      localDataOutputStream.writeInt((int)(paramLong >> 32));
-      localDataOutputStream.write(paramArrayOfByte, 0, paramArrayOfByte.length);
-      paramArrayOfByte = localByteArrayOutputStream.toByteArray();
-      try
+      paramateu.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
+      paramateu.jdField_a_of_type_Int = 3;
+      return;
+      paramateu.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
+    }
+  }
+  
+  private void b(FileManagerEntity paramFileManagerEntity, ateu paramateu, boolean paramBoolean)
+  {
+    if ((paramFileManagerEntity.getCloudType() == 3) || (paramFileManagerEntity.getCloudType() == 5) || (paramBoolean))
+    {
+      paramateu.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(4);
+      return;
+    }
+    paramateu.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
+    paramateu.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
+    paramateu.jdField_a_of_type_Int = 1;
+  }
+  
+  public View getChildView(int paramInt1, int paramInt2, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject2 = null;
+    Object localObject1 = null;
+    Object localObject3;
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.f())
+    {
+      localObject3 = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
+      if (localObject3 != null)
       {
-        localByteArrayOutputStream.close();
-        localDataOutputStream.close();
-        return paramArrayOfByte;
-      }
-      catch (Exception paramateu)
-      {
-        return paramArrayOfByte;
-      }
-      try
-      {
-        localByteArrayOutputStream.close();
-        localDataOutputStream.close();
-        throw paramArrayOfByte;
-      }
-      catch (Exception paramateu)
-      {
-        break label319;
+        localObject3 = ((ArrayList)localObject3).iterator();
+        localObject2 = localObject1;
+        if (((Iterator)localObject3).hasNext())
+        {
+          localObject2 = (atet)((Iterator)localObject3).next();
+          if (((atet)localObject2).jdField_a_of_type_Int != paramInt2) {
+            break label951;
+          }
+          localObject1 = (FileManagerEntity)getChild(paramInt1, ((atet)localObject2).jdField_b_of_type_Int);
+        }
       }
     }
-    catch (IOException paramArrayOfByte)
+    label951:
+    for (;;)
     {
-      paramArrayOfByte = paramArrayOfByte;
-      paramateu.jdField_a_of_type_Long = 9003L;
-      paramateu.c = aszt.a();
-      a(paramateu);
-      try
-      {
-        localByteArrayOutputStream.close();
-        localDataOutputStream.close();
-        return null;
+      break;
+      for (localObject1 = localObject2; localObject1 == null; localObject1 = (FileManagerEntity)getChild(paramInt1, paramInt2)) {
+        return paramView;
       }
-      catch (Exception paramArrayOfByte)
+      if (paramView == null) {}
+      for (;;)
       {
-        return null;
+        try
+        {
+          localObject2 = new ateu(this);
+          paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560813, paramViewGroup, false);
+          paramView = paramViewGroup;
+          paramViewGroup = paramView;
+        }
+        catch (Exception paramViewGroup)
+        {
+          continue;
+        }
+        try
+        {
+          ((ateu)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376268));
+          paramViewGroup = paramView;
+          ((ateu)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout.setOnLongClickListener(this.jdField_a_of_type_AndroidViewView$OnLongClickListener);
+          paramViewGroup = paramView;
+          ((ateu)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localObject2);
+          paramViewGroup = paramView;
+          ((ateu)localObject2).jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370786);
+          paramViewGroup = paramView;
+          ((ateu)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView = ((CircleFileStateView)paramView.findViewById(2131361943));
+          paramViewGroup = paramView;
+          ((ateu)localObject2).jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131366755));
+          paramViewGroup = paramView;
+          ((ateu)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131366742));
+          paramViewGroup = paramView;
+          ((ateu)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setTag(localObject2);
+          paramViewGroup = paramView;
+          ((ateu)localObject2).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366753));
+          paramViewGroup = paramView;
+          ((ateu)localObject2).jdField_a_of_type_AndroidWidgetTextView.setGravity(48);
+          paramViewGroup = paramView;
+          ((ateu)localObject2).jdField_a_of_type_AndroidWidgetTextView.setMaxLines(2);
+          paramViewGroup = paramView;
+          ((ateu)localObject2).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366740));
+          paramViewGroup = paramView;
+          ((ateu)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setAsyncClipSize(AIOUtils.dp2px(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+          paramViewGroup = paramView;
+          paramView.setTag(localObject2);
+          paramViewGroup = paramView;
+          auea.a(((ateu)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, (FileManagerEntity)localObject1);
+          paramViewGroup = paramView;
+          ((ateu)localObject2).jdField_b_of_type_Int = paramInt1;
+          paramViewGroup = paramView;
+          ((ateu)localObject2).c = paramInt2;
+          paramViewGroup = paramView;
+          ((ateu)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+          paramViewGroup = paramView;
+          if (!auea.a(this.jdField_a_of_type_AndroidContentContext, (FileManagerEntity)localObject1)) {
+            continue;
+          }
+          paramViewGroup = paramView;
+          ((ateu)localObject2).jdField_a_of_type_AndroidViewView.setVisibility(0);
+          paramViewGroup = paramView;
+          ((ateu)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(null);
+          paramViewGroup = paramView;
+          ((ateu)localObject2).jdField_a_of_type_JavaLangObject = localObject1;
+          paramViewGroup = paramView;
+          ((ateu)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setOnClickListener(this.c);
+          paramViewGroup = paramView;
+          ((ateu)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setTag(localObject2);
+          paramViewGroup = paramView;
+          ((ateu)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setProgressRingWidth(3.0F);
+          paramViewGroup = paramView;
+          ((ateu)localObject2).jdField_a_of_type_AndroidWidgetTextView.setText(((FileManagerEntity)localObject1).fileName);
+          paramViewGroup = paramView;
+          ((ateu)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setProgress((int)(((FileManagerEntity)localObject1).fProgress * 100.0F));
+          paramViewGroup = paramView;
+          if (5 != ((FileManagerEntity)localObject1).cloudType)
+          {
+            paramViewGroup = paramView;
+            auea.b((FileManagerEntity)localObject1);
+          }
+          paramViewGroup = paramView;
+          ((ateu)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setEnabled(true);
+          paramViewGroup = paramView;
+          a((FileManagerEntity)localObject1, (ateu)localObject2);
+          paramViewGroup = paramView;
+          if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.f()) {
+            continue;
+          }
+          paramViewGroup = paramView;
+          ((ateu)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
+          paramViewGroup = paramView;
+          ((ateu)localObject2).jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
+          paramViewGroup = paramView;
+          ((ateu)localObject2).jdField_a_of_type_AndroidWidgetCheckBox.setChecked(atpm.a((FileManagerEntity)localObject1));
+        }
+        catch (Exception localException)
+        {
+          paramView = paramViewGroup;
+          paramViewGroup = localException;
+          paramViewGroup.printStackTrace();
+          continue;
+          paramViewGroup = paramView;
+          ((ateu)localObject2).jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
+          continue;
+        }
+        paramViewGroup = paramView;
+        if (((FileManagerEntity)localObject1).nFileType == 13)
+        {
+          paramViewGroup = paramView;
+          ((ateu)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
+        }
+        paramViewGroup = paramView;
+        localObject3 = (LinearLayout.LayoutParams)((ateu)localObject2).jdField_b_of_type_AndroidWidgetTextView.getLayoutParams();
+        paramViewGroup = paramView;
+        ((LinearLayout.LayoutParams)localObject3).topMargin = AIOUtils.dp2px(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        paramViewGroup = paramView;
+        ((ateu)localObject2).jdField_b_of_type_AndroidWidgetTextView.setLineSpacing(TypedValue.applyDimension(1, 0.8F, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()), 1.0F);
+        paramViewGroup = paramView;
+        ((ateu)localObject2).jdField_b_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject3);
+        paramViewGroup = paramView;
+        ((ateu)localObject2).jdField_a_of_type_AndroidWidgetTextView.setLineSpacing(TypedValue.applyDimension(1, 0.25F, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()), 1.0F);
+        paramViewGroup = paramView;
+        auea.a(((ateu)localObject2).jdField_b_of_type_AndroidWidgetTextView, (FileManagerEntity)localObject1);
+        return paramView;
+        localObject2 = (ateu)paramView.getTag();
+        continue;
+        paramViewGroup = paramView;
+        ((ateu)localObject2).jdField_a_of_type_AndroidViewView.setVisibility(8);
+        paramViewGroup = paramView;
+        ((ateu)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.b);
+        paramViewGroup = paramView;
+        ((ateu)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setOnClickListener(this.b);
       }
     }
-    finally {}
   }
   
-  public void b(ateu paramateu)
+  public int getChildrenCount(int paramInt)
   {
-    QLog.i("DiscFileUploader<FileAssistant>", 1, "=_= ^> [Upload Step] Send Success!Go [Disc Feed]");
-    paramateu.b();
-    this.jdField_a_of_type_Atev.a();
+    int i = 0;
+    Object localObject1 = a(paramInt);
+    if (localObject1 != null)
+    {
+      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
+        this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), new ArrayList());
+      }
+      localObject1 = (ArrayList)localObject1;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.f())
+      {
+        ArrayList localArrayList = new ArrayList();
+        Iterator localIterator = ((ArrayList)localObject1).iterator();
+        int j = 0;
+        i = 0;
+        if (localIterator.hasNext())
+        {
+          Object localObject2 = (FileManagerEntity)localIterator.next();
+          int k;
+          if ((((FileManagerEntity)localObject2).getCloudType() == 0) || ((((FileManagerEntity)localObject2).getCloudType() == 5) && (!((FileManagerEntity)localObject2).bSend) && (((FileManagerEntity)localObject2).status != 1)))
+          {
+            k = j + 1;
+            j = i;
+            i = k;
+          }
+          for (;;)
+          {
+            k = j;
+            j = i;
+            i = k;
+            break;
+            if (((FileManagerEntity)localObject2).sendCloudUnsuccessful())
+            {
+              k = j + 1;
+              j = i;
+              i = k;
+            }
+            else
+            {
+              localObject2 = new atet(this);
+              ((atet)localObject2).jdField_a_of_type_Int = i;
+              ((atet)localObject2).jdField_b_of_type_Int = (i + j);
+              localArrayList.add(localObject2);
+              k = i + 1;
+              i = j;
+              j = k;
+            }
+          }
+        }
+        this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localArrayList);
+        i = ((ArrayList)localObject1).size() - j;
+      }
+    }
+    else
+    {
+      return i;
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    return ((ArrayList)localObject1).size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ates
  * JD-Core Version:    0.7.0.1
  */

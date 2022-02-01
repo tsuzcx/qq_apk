@@ -62,10 +62,10 @@ public class BeautyFaceList
       this.mWrinklesRemoveFilter2.clearGLSLSelf();
     }
     if (this.mBlurFilter1 != null) {
-      this.mBlurFilter1.ClearGLSL();
+      this.mBlurFilter1.clearGLSL();
     }
-    this.mCopyFilter.ClearGLSL();
-    this.mContrastFilter.ClearGLSL();
+    this.mCopyFilter.clearGLSL();
+    this.mContrastFilter.clearGLSL();
     this.mBlurFrame1.clear();
   }
   

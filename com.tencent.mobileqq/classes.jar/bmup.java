@@ -1,6 +1,17 @@
-public abstract interface bmup
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+
+class bmup
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(boolean paramBoolean, bmuo parambmuo);
+  bmup(bmul parambmul) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    this.a.s();
+    this.a.t();
+  }
 }
 
 

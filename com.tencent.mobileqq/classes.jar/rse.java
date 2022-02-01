@@ -1,78 +1,130 @@
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.thumbplayer.api.TPPlayerMsg.TPMediaCodecInfo;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.json.JSONObject;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerItem;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.VideoBannerItem;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/CodecReuseHelper;", "", "()V", "cacheDebugText", "", "codecJson", "getDebugText", "setCodecJson", "", "setMediaCodecInfo", "mediaCodecInfo", "Lcom/tencent/thumbplayer/api/TPPlayerMsg$TPMediaCodecInfo;", "Companion", "OnCodecReuseInfoUpdateCallback", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rse
+public class rse
+  extends rsa
 {
-  private static int jdField_a_of_type_Int;
-  private static long jdField_a_of_type_Long;
-  public static final rsf a;
-  private static boolean jdField_a_of_type_Boolean;
-  private static int jdField_b_of_type_Int = -1;
-  private static boolean jdField_b_of_type_Boolean;
-  private static String c = "https://sqimg.qq.com/qq_product_operations/kan/superplayer_codecreuse_config.json";
-  private String jdField_a_of_type_JavaLangString = "";
-  private String jdField_b_of_type_JavaLangString = "";
+  public int b;
+  public long b;
+  public int c;
+  public long c;
+  public int d;
+  public int e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
+  public String h = "";
+  public String i = "";
   
-  static
+  public rse()
   {
-    jdField_a_of_type_Rsf = new rsf(null);
+    super(2);
+    this.jdField_f_of_type_JavaLangString = "";
+    this.jdField_g_of_type_JavaLangString = "";
   }
   
-  @NotNull
-  public final String a()
+  public static rsa b(oidb_cmd0xbc9.BannerItem paramBannerItem)
   {
-    if (TextUtils.isEmpty((CharSequence)this.jdField_b_of_type_JavaLangString)) {}
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(this.jdField_a_of_type_JavaLangString);
-      if (localJSONObject.optBoolean("isVideo", false))
-      {
-        boolean bool1 = localJSONObject.optBoolean("isReuse", false);
-        boolean bool2 = localJSONObject.optBoolean("reuseEnable", false);
-        int i = localJSONObject.optInt("totalCodec", -1);
-        this.jdField_b_of_type_JavaLangString = ("isReuse:" + bool1 + " reuseEnable:" + bool2 + "\ntotalCodec:" + i);
-      }
-      return this.jdField_b_of_type_JavaLangString;
+    if (!paramBannerItem.msg_video_banner_item.has()) {
+      return null;
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        QLog.w("CodecReuseHelper", 1, "getDebugText error for parse Json:" + this.jdField_a_of_type_JavaLangString);
-      }
+    oidb_cmd0xbc9.VideoBannerItem localVideoBannerItem = (oidb_cmd0xbc9.VideoBannerItem)paramBannerItem.msg_video_banner_item.get();
+    rse localrse = new rse();
+    if (localVideoBannerItem.bytes_share_url.has()) {
+      localrse.jdField_f_of_type_JavaLangString = localVideoBannerItem.bytes_share_url.get().toStringUtf8();
     }
+    if (localVideoBannerItem.uint32_video_duration.has()) {
+      localrse.jdField_b_of_type_Int = localVideoBannerItem.uint32_video_duration.get();
+    }
+    if (localVideoBannerItem.uint32_video_width.has()) {
+      localrse.jdField_c_of_type_Int = localVideoBannerItem.uint32_video_width.get();
+    }
+    if (localVideoBannerItem.uint32_video_height.has()) {
+      localrse.d = localVideoBannerItem.uint32_video_height.get();
+    }
+    if (localVideoBannerItem.bytes_video_vid.has()) {
+      localrse.jdField_g_of_type_JavaLangString = localVideoBannerItem.bytes_video_vid.get().toStringUtf8();
+    }
+    if (localVideoBannerItem.bytes_video_cover.has()) {
+      localrse.jdField_c_of_type_JavaLangString = localVideoBannerItem.bytes_video_cover.get().toStringUtf8();
+    }
+    if (localVideoBannerItem.bytes_inner_uinque_id.has()) {
+      localrse.jdField_e_of_type_JavaLangString = localVideoBannerItem.bytes_inner_uinque_id.get().toStringUtf8();
+    }
+    if (localVideoBannerItem.uint32_busi_type.has()) {
+      localrse.jdField_e_of_type_Int = localVideoBannerItem.uint32_busi_type.get();
+    }
+    if (localVideoBannerItem.bytes_title.has()) {
+      localrse.i = localVideoBannerItem.bytes_title.get().toStringUtf8();
+    }
+    if (localVideoBannerItem.bytes_account_name.has()) {
+      localrse.h = localVideoBannerItem.bytes_account_name.get().toStringUtf8();
+    }
+    if (localVideoBannerItem.uint64_account_uin.has()) {
+      localrse.jdField_b_of_type_Long = localVideoBannerItem.uint64_account_uin.get();
+    }
+    if (localVideoBannerItem.uint32_is_ugc.has()) {
+      localrse.jdField_f_of_type_Int = localVideoBannerItem.uint32_is_ugc.get();
+    }
+    if (localVideoBannerItem.uint64_feeds_id.has()) {
+      localrse.jdField_c_of_type_Long = localVideoBannerItem.uint64_feeds_id.get();
+    }
+    if (localVideoBannerItem.uint32_feeds_type.has()) {
+      localrse.jdField_g_of_type_Int = localVideoBannerItem.uint32_feeds_type.get();
+    }
+    a(localrse, paramBannerItem);
+    a(paramBannerItem, localrse);
+    return localrse;
   }
   
-  public final void a(@Nullable TPPlayerMsg.TPMediaCodecInfo paramTPMediaCodecInfo)
+  public oidb_cmd0xbc9.BannerItem a()
   {
-    if (paramTPMediaCodecInfo == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("CodecReuseHelper", 2, "parseAndSetMediaCodecInfo failed for mediaCodecInfo is null.");
-      }
+    oidb_cmd0xbc9.BannerItem localBannerItem = super.a();
+    oidb_cmd0xbc9.VideoBannerItem localVideoBannerItem = new oidb_cmd0xbc9.VideoBannerItem();
+    if (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString)) {
+      localVideoBannerItem.bytes_share_url.set(ByteStringMicro.copyFromUtf8(this.jdField_f_of_type_JavaLangString));
     }
-    while ((paramTPMediaCodecInfo.infoType != TPPlayerMsg.TPMediaCodecInfo.TP_INFO_MEDIA_CODEC_READY) || (paramTPMediaCodecInfo.mediaType != TPPlayerMsg.TPMediaCodecInfo.TP_DEC_MEDIA_TYPE_VIDEO)) {
-      return;
+    localVideoBannerItem.uint32_video_duration.set(this.jdField_b_of_type_Int);
+    localVideoBannerItem.uint32_video_width.set(this.jdField_c_of_type_Int);
+    localVideoBannerItem.uint32_video_height.set(this.d);
+    if (!TextUtils.isEmpty(this.jdField_g_of_type_JavaLangString)) {
+      localVideoBannerItem.bytes_video_vid.set(ByteStringMicro.copyFromUtf8(this.jdField_g_of_type_JavaLangString));
     }
-    paramTPMediaCodecInfo = paramTPMediaCodecInfo.msg;
-    Intrinsics.checkExpressionValueIsNotNull(paramTPMediaCodecInfo, "mediaCodecInfo.msg");
-    a(paramTPMediaCodecInfo);
+    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+      localVideoBannerItem.bytes_video_cover.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
+    }
+    if (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) {
+      localVideoBannerItem.bytes_inner_uinque_id.set(ByteStringMicro.copyFromUtf8(this.jdField_e_of_type_JavaLangString));
+    }
+    localVideoBannerItem.uint32_busi_type.set(this.jdField_e_of_type_Int);
+    if (!TextUtils.isEmpty(this.i)) {
+      localVideoBannerItem.bytes_title.set(ByteStringMicro.copyFromUtf8(this.i));
+    }
+    if (!TextUtils.isEmpty(this.h)) {
+      localVideoBannerItem.bytes_account_name.set(ByteStringMicro.copyFromUtf8(this.h));
+    }
+    localVideoBannerItem.uint64_account_uin.set(this.jdField_b_of_type_Long);
+    localVideoBannerItem.uint32_is_ugc.set(this.jdField_f_of_type_Int);
+    localVideoBannerItem.uint64_feeds_id.set(this.jdField_c_of_type_Long);
+    localVideoBannerItem.uint32_feeds_type.set(this.jdField_g_of_type_Int);
+    localBannerItem.msg_video_banner_item.set(localVideoBannerItem);
+    return localBannerItem;
   }
   
-  public final void a(@NotNull String paramString)
+  public boolean a()
   {
-    Intrinsics.checkParameterIsNotNull(paramString, "codecJson");
-    if (TextUtils.equals((CharSequence)this.jdField_a_of_type_JavaLangString, (CharSequence)paramString)) {
-      return;
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_JavaLangString = "";
+    return this.jdField_f_of_type_Int == 1;
+  }
+  
+  public String toString()
+  {
+    return super.toString() + " vid: " + this.jdField_g_of_type_JavaLangString + " puin : " + this.jdField_b_of_type_Long + " busitype " + this.jdField_e_of_type_Int + " accountName : " + this.h + "  shareUrl : " + this.jdField_f_of_type_JavaLangString + " isUgc " + this.jdField_f_of_type_Int + " feedsId " + this.jdField_c_of_type_Long + " feedsType " + this.jdField_g_of_type_Int + " videoTitle: " + this.i;
   }
 }
 

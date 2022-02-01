@@ -1,14 +1,12 @@
-final class bfub
-  implements bgso
+import com.tencent.mobileqq.troop.homework.recite.data.WordInfo;
+
+public abstract interface bfub
 {
-  bfub(aufo paramaufo) {}
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
   
-  public void onResult(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (this.a != null)) {
-      this.a.a();
-    }
-  }
+  public abstract void a(WordInfo paramWordInfo);
+  
+  public abstract void g();
 }
 
 

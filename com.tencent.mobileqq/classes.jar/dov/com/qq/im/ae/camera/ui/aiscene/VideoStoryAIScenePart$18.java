@@ -1,18 +1,32 @@
 package dov.com.qq.im.ae.camera.ui.aiscene;
 
-import android.view.View;
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.AnimatorSet.Builder;
+import android.animation.ObjectAnimator;
 import android.widget.TextView;
-import blpb;
+import bncm;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
 
 public class VideoStoryAIScenePart$18
   implements Runnable
 {
-  public VideoStoryAIScenePart$18(blpb paramblpb) {}
+  public VideoStoryAIScenePart$18(bncm parambncm, AEMaterialPanel paramAEMaterialPanel, int paramInt) {}
   
   public void run()
   {
-    blpb.a(this.this$0).setVisibility(8);
-    blpb.b(this.this$0).setVisibility(8);
+    int i = this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel.getHeight();
+    int j = this.jdField_a_of_type_Int;
+    int k = bncm.a(this.this$0).getMeasuredHeight();
+    Object localObject = new int[2];
+    bncm.a(this.this$0).getLocationInWindow((int[])localObject);
+    i = j - i - k - 10 - localObject[1];
+    localObject = ObjectAnimator.ofFloat(bncm.a(this.this$0), "translationY", new float[] { 0.0F, i });
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(bncm.b(this.this$0), "translationY", new float[] { 0.0F, i });
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(bncm.b(this.this$0), "translationY", new float[] { 0.0F, i });
+    AnimatorSet localAnimatorSet = new AnimatorSet();
+    localAnimatorSet.play((Animator)localObject).with(localObjectAnimator1).with(localObjectAnimator2);
+    localAnimatorSet.setDuration(300L).start();
   }
 }
 

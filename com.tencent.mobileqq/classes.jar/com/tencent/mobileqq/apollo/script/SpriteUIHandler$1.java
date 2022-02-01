@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.script;
 
-import aezn;
-import agcw;
+import afqz;
+import agvm;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
@@ -32,10 +32,10 @@ class SpriteUIHandler$1
       if (i >= 0)
       {
         XListView localXListView = this.this$0.a();
-        Object localObject2 = (ChatMessage)((aezn)localObject1).getItem(i);
+        Object localObject2 = (ChatMessage)((afqz)localObject1).getItem(i);
         if ((localXListView != null) && (localObject2 != null) && ((localObject2 instanceof MessageForApollo)))
         {
-          localObject1 = ((aezn)localObject1).a.a((ChatMessage)localObject2, (BaseAdapter)localObject1);
+          localObject1 = ((afqz)localObject1).a.a((ChatMessage)localObject2, (BaseAdapter)localObject1);
           if ((localObject1 instanceof ApolloItemBuilder))
           {
             localObject1 = (ApolloItemBuilder)localObject1;

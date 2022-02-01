@@ -1,17 +1,24 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.app.BusinessObserver;
 
 public class aoci
+  implements BusinessObserver
 {
-  public ArCloudConfigInfo a;
+  public void a(boolean paramBoolean, Object paramObject) {}
   
-  public aoci(ArCloudConfigInfo paramArCloudConfigInfo)
-  {
-    this.a = paramArCloudConfigInfo;
-  }
+  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public String toString()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return "ARTarget{arResourceInfo=" + this.a + '}';
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, paramObject);
+      return;
+    }
+    a(paramBoolean, ((Boolean)paramObject).booleanValue());
   }
 }
 

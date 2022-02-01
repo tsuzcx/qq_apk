@@ -1,69 +1,45 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.now.ilive_feeds_write.DelFeedRsp;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
 
-class ayle
-  extends RecyclerView.OnScrollListener
+final class ayle
+  implements axwu
 {
-  ayle(ayld paramayld, PersonalityLabelInfo paramPersonalityLabelInfo) {}
+  ayle(aylh paramaylh, String paramString) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PersonalityLabelGalleryActivity", 2, "onScrollStateChanged newState:" + paramInt);
-    }
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("PersonalityLabelGalleryActivity", 2, "onScrolled dx:" + paramInt1 + " dy:" + paramInt2);
-    }
-    int i;
-    int j;
-    if (paramInt1 > 0)
-    {
-      paramRecyclerView = (StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager();
-      paramInt2 = paramRecyclerView.getChildCount();
-      i = paramRecyclerView.getItemCount();
-      j = paramRecyclerView.findLastVisibleItemPositions(null)[0];
-      paramRecyclerView = PersonalityLabelGalleryActivity.c(this.jdField_a_of_type_Ayld.a).get(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id));
-      if (paramRecyclerView == null) {
-        break label271;
-      }
-      if (((Integer)paramRecyclerView).intValue() != 1) {
-        break label252;
-      }
-      paramInt1 = 1;
+    boolean bool = true;
+    if (paramInt == 0) {
+      paramBundle = new ilive_feeds_write.DelFeedRsp();
     }
     for (;;)
     {
-      ayll localayll;
-      if ((!PersonalityLabelGalleryActivity.b(this.jdField_a_of_type_Ayld.a)) && (paramInt1 == 0) && (paramInt2 > 0) && (j >= i - 1))
+      try
       {
-        PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Ayld.a, true);
-        QLog.i("PersonalityLabelGalleryActivity", 2, "load more photos");
-        localayll = (ayll)this.jdField_a_of_type_Ayld.a.app.getBusinessHandler(112);
-        if (!PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Ayld.a)) {
-          break label257;
+        paramBundle.mergeFrom(paramArrayOfByte);
+        paramInt = paramBundle.ret.get();
+        if (paramInt == 0)
+        {
+          if (this.jdField_a_of_type_Aylh != null) {
+            this.jdField_a_of_type_Aylh.a(bool, this.jdField_a_of_type_JavaLangString);
+          }
+          return;
         }
+        QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, ret=" + paramInt + ",msg=" + paramBundle.err_msg.get().toStringUtf8());
       }
-      label257:
-      for (paramRecyclerView = this.jdField_a_of_type_Ayld.a.app.getCurrentAccountUin();; paramRecyclerView = PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Ayld.a))
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
-        localayll.a(paramRecyclerView, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id, 20, (byte[])PersonalityLabelGalleryActivity.b(this.jdField_a_of_type_Ayld.a).get(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id)));
-        return;
-        label252:
-        paramInt1 = 0;
-        break;
+        QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, e=" + paramArrayOfByte.toString());
+        continue;
       }
-      label271:
-      paramInt1 = 0;
+      bool = false;
+      continue;
+      QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, errorCode =" + paramInt);
     }
   }
 }

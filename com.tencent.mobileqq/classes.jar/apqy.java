@@ -1,124 +1,208 @@
-import SummaryCard.CondFitUser;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
-import com.tencent.mobileqq.widget.InterestLabelTextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.text.TextUtils;
+import com.tencent.ark.ark.Application;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Locale;
 
 public class apqy
-  extends BaseAdapter
+  extends apsl
 {
-  private apqy(SearchResultActivity paramSearchResultActivity) {}
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  private apqz jdField_a_of_type_Apqz = new apqz(this, null);
+  private aprb jdField_a_of_type_Aprb = new aprb(this, null);
+  private aprj jdField_a_of_type_Aprj = new aprj(this, null);
+  private aprl jdField_a_of_type_Aprl = new aprl(this, null);
+  public apsb a;
+  private HashMap<String, apra> jdField_a_of_type_JavaUtilHashMap = new ArkAppDeviceModule.1(this);
   
-  public int getCount()
+  public apqy(ark.Application paramApplication, long paramLong)
   {
-    int j = this.a.jdField_a_of_type_JavaUtilList.size();
-    if (this.a.b != 0) {}
-    for (int i = 1;; i = 0) {
-      return i + j;
+    super(paramApplication, paramLong);
+    this.jdField_a_of_type_Apsb = new apsb(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  private void a(long paramLong, String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppDeviceModule", 2, "doScanCodeCallback cbId=" + paramLong + ", scanResult=" + paramString1 + ", scanType=" + paramString2);
     }
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (paramInt < this.a.jdField_a_of_type_JavaUtilList.size()) {
-      return 0;
+    ark.VariantWrapper localVariantWrapper1 = a(paramLong);
+    if (localVariantWrapper1 == null) {
+      return;
     }
-    return 1;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    if (getItemViewType(paramInt) == 0)
+    int i;
+    ark.VariantWrapper localVariantWrapper2;
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      localView = paramView;
-      if (paramView == null)
-      {
-        localView = this.a.getLayoutInflater().inflate(2131561000, null);
-        localView.setOnClickListener(this.a);
-        paramView = new apqz();
-        paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367958));
-        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371790));
-        paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377484));
-        paramView.jdField_b_of_type_ComTencentMobileqqWidgetInterestLabelTextView = ((InterestLabelTextView)localView.findViewById(2131367495));
-        paramView.c = ((InterestLabelTextView)localView.findViewById(2131381262));
-        paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView = ((InterestLabelTextView)localView.findViewById(2131364278));
-        paramView.d = ((InterestLabelTextView)localView.findViewById(2131370317));
-        localView.setTag(paramView);
+      i = 1;
+      localVariantWrapper2 = localVariantWrapper1.Create();
+      if (i == 0) {
+        break label186;
       }
-      paramView = (apqz)localView.getTag();
-      CondFitUser localCondFitUser = (CondFitUser)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-      paramView = this.a.a(paramView, localCondFitUser);
-      if (SearchResultActivity.jdField_a_of_type_Boolean) {
-        localView.setContentDescription(paramView);
+      if (!"QR_CODE".equalsIgnoreCase(paramString2)) {
+        break label179;
       }
-      paramView = localView;
+      paramString2 = "QRCode";
+      label104:
+      localVariantWrapper2.SetTableAsJsonString(String.format(Locale.CHINA, "{\"result\":\"%s\",\"type\":\"%s\",\"charset\":\"%s\"}", new Object[] { paramString1, paramString2, "utf-8" }));
     }
     for (;;)
     {
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      localView = paramView;
-      if (paramView == null)
-      {
-        localView = this.a.getLayoutInflater().inflate(2131559487, null);
-        localView.setOnClickListener(this.a);
-        paramView = new apra();
-        localView.setTag(paramView);
-        paramView.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)localView.findViewById(2131376213));
-        localView.findViewById(2131370261).setVisibility(8);
-        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371401));
-      }
-      if (this.a.b == 1)
-      {
-        this.a.b = 2;
-        SearchResultActivity.d(this.a);
-      }
-      paramView = (apra)localView.getTag();
-      if (this.a.b == 3)
-      {
-        paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131712766));
-        paramView = localView;
-      }
-      else if (this.a.b == 2)
-      {
-        paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131712757));
-        paramView = localView;
-      }
-      else
-      {
-        if (this.a.b == 4)
-        {
-          paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-          paramView.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131712756));
-        }
-        paramView = localView;
-      }
+      paramString1 = localVariantWrapper1.Create();
+      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, paramString1);
+      paramString1.Reset();
+      localVariantWrapper2.Reset();
+      localVariantWrapper1.Reset();
+      return;
+      i = 0;
+      break;
+      label179:
+      paramString2 = "BarCode";
+      break label104;
+      label186:
+      localVariantWrapper2.SetNull();
     }
   }
   
-  public int getViewTypeCount()
+  private void a(long paramLong, boolean paramBoolean, double paramDouble1, double paramDouble2)
   {
-    return 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppDeviceModule", 2, "doPositionCallback cbId=" + paramLong + ", success=" + paramBoolean + ", lat=" + paramDouble1 + ", lng=" + paramDouble2);
+    }
+    ark.VariantWrapper localVariantWrapper1 = b(paramLong);
+    if (localVariantWrapper1 == null) {
+      return;
+    }
+    ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
+    if (paramBoolean) {
+      localVariantWrapper2.SetTableAsJsonString(String.format(Locale.CHINA, "{\"latitude\":%.6f,\"longitude\":%.6f}", new Object[] { Double.valueOf(paramDouble1), Double.valueOf(paramDouble2) }));
+    }
+    for (;;)
+    {
+      ark.VariantWrapper localVariantWrapper3 = localVariantWrapper1.Create();
+      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, localVariantWrapper3);
+      localVariantWrapper3.Reset();
+      localVariantWrapper2.Reset();
+      return;
+      localVariantWrapper2.SetNull();
+    }
+  }
+  
+  private void a(long paramLong, boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppDeviceModule", 2, "doConnectionCallback cbId=" + paramLong + ", success=" + paramBoolean + ", netType=" + paramString);
+    }
+    ark.VariantWrapper localVariantWrapper1 = b(paramLong);
+    if (localVariantWrapper1 == null) {
+      return;
+    }
+    ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
+    if (paramBoolean) {
+      localVariantWrapper2.SetString(paramString);
+    }
+    for (;;)
+    {
+      paramString = localVariantWrapper1.Create();
+      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, paramString);
+      paramString.Reset();
+      localVariantWrapper2.Reset();
+      return;
+      localVariantWrapper2.SetNull();
+    }
+  }
+  
+  private void a(long paramLong, boolean paramBoolean, String paramString, float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppDeviceModule", 2, "doSensorCallback cbId=" + paramLong + ", success=" + paramBoolean + ", sensorEventType=" + paramString + ", argA=" + paramFloat1 + ", argB=" + paramFloat2 + ", argC=" + paramFloat3);
+    }
+    ark.VariantWrapper localVariantWrapper1 = b(paramLong);
+    if (localVariantWrapper1 == null) {
+      return;
+    }
+    ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
+    String str = null;
+    if ("Motion".equals(paramString))
+    {
+      str = "{\"x\":%.6f,\"y\":%.6f,\"z\":%.6f}";
+      if ((!paramBoolean) || (TextUtils.isEmpty(str))) {
+        break label220;
+      }
+      localVariantWrapper2.SetTableAsJsonString(String.format(Locale.CHINA, str, new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Float.valueOf(paramFloat3) }));
+    }
+    for (;;)
+    {
+      paramString = localVariantWrapper1.Create();
+      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, paramString);
+      paramString.Reset();
+      localVariantWrapper2.Reset();
+      return;
+      if (!"Orientation".equals(paramString)) {
+        break;
+      }
+      str = "{\"alpha\":%.6f,\"beta\":%.6f,\"gamma\":%.6f}";
+      break;
+      label220:
+      localVariantWrapper2.SetNull();
+    }
+  }
+  
+  public void Destruct()
+  {
+    if (this.jdField_a_of_type_Apsb != null) {
+      this.jdField_a_of_type_Apsb.a();
+    }
+    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) {}
+    try
+    {
+      BaseApplicationImpl.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      label31:
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+      super.Destruct();
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label31;
+    }
+  }
+  
+  public String GetTypeName()
+  {
+    return "Device";
+  }
+  
+  public boolean HasMenthod(String paramString)
+  {
+    return (this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)) && (this.jdField_a_of_type_JavaUtilHashMap.get(paramString) != null);
+  }
+  
+  public boolean Invoke(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppDeviceModule", 2, "invokeFunc=" + paramString);
+    }
+    if (!a(paramString)) {
+      return false;
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    {
+      apra localapra = (apra)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      if (localapra != null) {
+        return localapra.a(paramString, paramArrayOfVariantWrapper, paramVariantWrapper);
+      }
+    }
+    return false;
+  }
+  
+  protected apsr[] a()
+  {
+    return null;
   }
 }
 

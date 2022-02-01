@@ -1,8 +1,17 @@
-public abstract interface afpa
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+
+final class afpa
+  implements afpm
 {
-  public abstract void a();
-  
-  public abstract void b();
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
+  {
+    paramQQAppInterface = new ProfileActivity.AllInOne(paramSessionInfo.curFriendUin, 72);
+    paramQQAppInterface.h = paramSessionInfo.curFriendNick;
+    return paramQQAppInterface;
+  }
 }
 
 

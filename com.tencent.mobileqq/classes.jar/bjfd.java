@@ -1,17 +1,15 @@
-import com.tencent.qqmini.sdk.launcher.core.widget.ReliableVideoPlayer.OnSeekCompleteListener;
-import tv.danmaku.ijk.media.player.IMediaPlayer;
-import tv.danmaku.ijk.media.player.IMediaPlayer.OnSeekCompleteListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.OpenSelectPermissionFragment.4.1;
 
-class bjfd
-  implements IMediaPlayer.OnSeekCompleteListener
+public class bjfd
+  implements DialogInterface.OnClickListener
 {
-  bjfd(bjey parambjey, ReliableVideoPlayer.OnSeekCompleteListener paramOnSeekCompleteListener) {}
+  public bjfd(OpenSelectPermissionFragment.4.1 param1) {}
   
-  public void onSeekComplete(IMediaPlayer paramIMediaPlayer)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnSeekCompleteListener != null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnSeekCompleteListener.onSeekComplete(this.jdField_a_of_type_Bjey);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

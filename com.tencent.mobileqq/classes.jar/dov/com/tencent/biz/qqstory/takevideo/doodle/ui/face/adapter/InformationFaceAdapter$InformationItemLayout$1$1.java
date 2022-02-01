@@ -3,8 +3,8 @@ package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageView;
-import bnma;
-import bnmb;
+import bpbs;
+import bpbt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
@@ -15,33 +15,33 @@ import java.lang.ref.WeakReference;
 public class InformationFaceAdapter$InformationItemLayout$1$1
   implements Runnable
 {
-  public InformationFaceAdapter$InformationItemLayout$1$1(bnma parambnma, boolean paramBoolean) {}
+  public InformationFaceAdapter$InformationItemLayout$1$1(bpbs parambpbs, boolean paramBoolean) {}
   
   public void run()
   {
-    ((QIMCommonLoadingView)this.jdField_a_of_type_Bnma.jdField_a_of_type_JavaLangRefWeakReference.get()).setVisibility(8);
-    ((ImageView)this.jdField_a_of_type_Bnma.b.get()).setVisibility(0);
+    ((QIMCommonLoadingView)this.jdField_a_of_type_Bpbs.jdField_a_of_type_JavaLangRefWeakReference.get()).setVisibility(8);
+    ((ImageView)this.jdField_a_of_type_Bpbs.b.get()).setVisibility(0);
     if (this.jdField_a_of_type_Boolean)
     {
-      URLDrawable localURLDrawable = VasApngUtil.getApngDrawable(BaseApplicationImpl.sApplication.getRuntime(), this.jdField_a_of_type_Bnma.jdField_a_of_type_JavaLangString, "-Dynamic-", null, new int[] { 13 }, "-Dynamic-", null);
+      URLDrawable localURLDrawable = VasApngUtil.getApngDrawable(BaseApplicationImpl.sApplication.getRuntime(), this.jdField_a_of_type_Bpbs.jdField_a_of_type_JavaLangString, "-Dynamic-", null, new int[] { 13 }, "-Dynamic-", null);
       Object localObject;
       if (localURLDrawable != null)
       {
-        ImageView localImageView = (ImageView)this.jdField_a_of_type_Bnma.b.get();
-        if (!this.jdField_a_of_type_Bnma.jdField_a_of_type_Boolean) {
+        ImageView localImageView = (ImageView)this.jdField_a_of_type_Bpbs.b.get();
+        if (!this.jdField_a_of_type_Bpbs.jdField_a_of_type_Boolean) {
           break label204;
         }
         localObject = localURLDrawable;
         localImageView.setImageDrawable((Drawable)localObject);
-        ((ImageView)this.jdField_a_of_type_Bnma.b.get()).setTag(2131378172, Boolean.valueOf(true));
+        ((ImageView)this.jdField_a_of_type_Bpbs.b.get()).setTag(2131378460, Boolean.valueOf(true));
         if (localURLDrawable.getStatus() != 1) {
           localURLDrawable.restartDownload();
         }
         if (localURLDrawable.getStatus() == 1) {
-          this.jdField_a_of_type_Bnma.jdField_a_of_type_Bnmb.onLoadSuccessed((View)this.jdField_a_of_type_Bnma.b.get(), localURLDrawable);
+          this.jdField_a_of_type_Bpbs.jdField_a_of_type_Bpbt.onLoadSuccessed((View)this.jdField_a_of_type_Bpbs.b.get(), localURLDrawable);
         }
-        localObject = (ImageView)this.jdField_a_of_type_Bnma.b.get();
-        if (!this.jdField_a_of_type_Bnma.jdField_a_of_type_Boolean) {
+        localObject = (ImageView)this.jdField_a_of_type_Bpbs.b.get();
+        if (!this.jdField_a_of_type_Bpbs.jdField_a_of_type_Boolean) {
           break label209;
         }
       }
@@ -56,7 +56,7 @@ public class InformationFaceAdapter$InformationItemLayout$1$1
         localURLDrawable = null;
       }
     }
-    ((ImageView)this.jdField_a_of_type_Bnma.b.get()).setImageDrawable(URLDrawableHelper.TRANSPARENT);
+    ((ImageView)this.jdField_a_of_type_Bpbs.b.get()).setImageDrawable(URLDrawableHelper.TRANSPARENT);
   }
 }
 

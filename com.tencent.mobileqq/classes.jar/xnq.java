@@ -1,40 +1,30 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.FeedManager.3;
-import com.tribe.async.dispatch.Dispatcher;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class xnq
-  implements vqp<wdu, vqm>
+  extends wag<xnp, wqr>
 {
-  public xnq(FeedManager.3 param3) {}
-  
-  public void a(@NonNull wdu paramwdu, @Nullable vqm paramvqm, @NonNull ErrorMessage paramErrorMessage)
+  public xnq(xnp paramxnp)
   {
-    paramwdu = (wdv)paramvqm;
-    paramvqm = new xnu();
-    paramvqm.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    if ((paramErrorMessage.isFail()) || (paramwdu == null)) {
-      xnp.a().remove(this.a.a);
-    }
-    for (;;)
+    super(paramxnp);
+  }
+  
+  public void a(@NonNull xnp paramxnp, @NonNull wqr paramwqr)
+  {
+    if ((xnp.a(paramxnp) != null) && (paramwqr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwqr.jdField_a_of_type_JavaUtilList.contains(xnp.a(paramxnp).a)))
     {
-      xvv.a("Q.qqstory.home.data.FeedManager", "request feed item, net rec , feed id: %s , err :%d", this.a.a, Integer.valueOf(paramErrorMessage.errorCode));
-      vli.a().dispatch(paramvqm);
-      return;
-      if (!paramwdu.a.isEmpty())
-      {
-        paramvqm.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem = this.a.this$0.a(((xpe)paramwdu.a.get(0)).a());
-      }
-      else
-      {
-        xvv.e("Q.qqstory.home.data.FeedManager", "request feed item, no data return for feedId:%s", new Object[] { this.a.a });
-        xnp.a().remove(this.a.a);
-      }
+      ykq.a("CaptureTogetherBannerVideoInfoController", "GetStoryTagInfoReceiver receive tag info change event. %s", paramwqr.b.toString());
+      paramxnp.a.i();
     }
   }
+  
+  public Class acceptEventClass()
+  {
+    return wqr.class;
+  }
+  
+  public void b(@NonNull xnp paramxnp, @NonNull wqr paramwqr) {}
 }
 
 

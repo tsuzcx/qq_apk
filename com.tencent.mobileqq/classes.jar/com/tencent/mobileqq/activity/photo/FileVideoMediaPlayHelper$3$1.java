@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.photo;
 
-import ajob;
-import ajoc;
+import akjp;
+import akjq;
 
 class FileVideoMediaPlayHelper$3$1
   implements Runnable
@@ -10,8 +10,8 @@ class FileVideoMediaPlayHelper$3$1
   
   public void run()
   {
-    if (ajob.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoFileVideoMediaPlayHelper$3.this$0) != null) {
-      ajob.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoFileVideoMediaPlayHelper$3.this$0).a(true, this.jdField_a_of_type_JavaLangString);
+    if (akjp.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoFileVideoMediaPlayHelper$3.this$0) != null) {
+      akjp.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoFileVideoMediaPlayHelper$3.this$0).a(true, this.jdField_a_of_type_JavaLangString);
     }
   }
 }

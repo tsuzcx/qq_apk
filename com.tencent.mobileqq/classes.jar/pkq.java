@@ -1,11 +1,21 @@
-class pkq
-  implements pkr
+import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+
+public class pkq
+  implements biyn
 {
-  pkq(pkp parampkp, String paramString) {}
+  public pkq(WxShareHelperFromReadInjoy paramWxShareHelperFromReadInjoy) {}
   
-  public void a(pkt parampkt)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    parampkt.b(this.jdField_a_of_type_JavaLangString);
+    if (paramBaseResp.errCode == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      WXShareHelper.a().b(this);
+      uva.a.a(bool);
+      return;
+    }
   }
 }
 

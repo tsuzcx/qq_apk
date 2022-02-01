@@ -1,23 +1,16 @@
-import android.graphics.Bitmap;
-import com.qflutter.qqface.data.QQFaceNativeData;
-import com.qflutter.qqface.loader.QQFaceLoader;
-
 class atkk
-  implements atko
+  implements biyc
 {
-  atkk(atkj paramatkj) {}
+  atkk(atki paramatki) {}
   
-  public void a(atkh paramatkh, Bitmap paramBitmap, String paramString)
+  public void a(int paramInt)
   {
-    QQFaceNativeData localQQFaceNativeData = new QQFaceNativeData();
-    localQQFaceNativeData.setBitmap(paramBitmap);
-    localQQFaceNativeData.setPath(paramString);
-    QQFaceLoader.instance().onUpdate(paramatkh.d, localQQFaceNativeData);
+    auea.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, atki.a(this.a), this.a.jdField_a_of_type_AndroidContentContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atkk
  * JD-Core Version:    0.7.0.1
  */

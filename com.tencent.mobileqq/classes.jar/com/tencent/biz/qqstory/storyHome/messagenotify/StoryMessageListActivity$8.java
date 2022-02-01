@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.storyHome.messagenotify;
 
-import xmt;
+import ybo;
 
 class StoryMessageListActivity$8
   implements Runnable

@@ -1,11 +1,12 @@
 package cooperation.ilive.share;
 
-import amtj;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bhht;
+import anvx;
+import bisl;
+import biyn;
 import com.tencent.biz.subscribe.beans.SerializableMap;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
@@ -18,7 +19,6 @@ import com.tencent.mobileqq.widget.share.ShareActionSheet;
 import com.tencent.mobileqq.widget.share.ShareActionSheetFactory;
 import com.tencent.mobileqq.widget.share.ShareActionSheetV2.Param;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneShareManager;
 import cooperation.qzone.mobilereport.MobileReportManager;
@@ -33,7 +33,7 @@ import mqq.app.AppRuntime;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
-import yyi;
+import znl;
 
 public class IliveShareHelper
 {
@@ -48,9 +48,9 @@ public class IliveShareHelper
   private String mCurrentNickName;
   private Bundle mDataBundle;
   public Activity mHostActivity;
-  private bhht mLoadingDialog;
+  private bisl mLoadingDialog;
   private String mWXTransaction;
-  private WXShareHelper.WXShareListener wxShareListener;
+  private biyn wxShareListener;
   
   public IliveShareHelper(Activity paramActivity, Bundle paramBundle)
   {
@@ -222,7 +222,7 @@ public class IliveShareHelper
   private void initLoadingDialog(Activity paramActivity)
   {
     if (this.mLoadingDialog == null) {
-      this.mLoadingDialog = new bhht(paramActivity);
+      this.mLoadingDialog = new bisl(paramActivity);
     }
   }
   
@@ -232,61 +232,77 @@ public class IliveShareHelper
       return;
     }
     this.wxShareListener = new IliveShareHelper.6(this);
-    WXShareHelper.getInstance().addObserver(this.wxShareListener);
+    WXShareHelper.a().a(this.wxShareListener);
   }
   
   private String replaceArkData()
   {
-    String str2 = "{\n    \"appName\":\"com.tencent.subscription\",\n    \"appView\":\"baseView\",\n    \"appConfig\":{\n        \"forward\":1,\n        \"autosize\":0,\n        \"type\":\"normal\"\n    },\n \"ver\":\"1.0.0.45\",\n    \"appDesc\":\"QQ直播\",\n    \"promptText\":\"来自QQ直播的分享\",\n    \"metaData\":{\n        \"data\":{\n            \"avatarJumpUrl\":\"{avatar_jump_url}\",\n            \"contentJumpUrl\":\"{h5_jump_url}\",\n            \"iconJumpUrl\":\"{icon_jump_url}\",\n            \"jumpUrl\":{\n                \"8.3.9\":{\n                    \"contentJumpUrl\":\"{content_jump_url}\"\n                },\n                \"pc\":{\n                    \"contentJumpUrl\":\"https://qzs.qzone.qq.com/qzone/hybrid/page/jumpQQ.html?url=https%3A%2F%2Fh5.qzone.qq.comhttps%3A%2F%2Fh5.qzone.qq.com%2Fv2%2Fvip%2Flive%2Froom%3Froomid%3D110008711\"\n                }\n            },\n            \"media\":[\n                {\n                    \"isVideo\":false,\n                    \"height\":2339,\n                    \"width\":1080,\n                    \"url\":\"{cover_url}\"\n                }\n            ],\n            \"title\":\"{title}\",\n            \"nick\":\"{nick_name}\",\n            \"common\":{\n                \"appIcon\":\"https://qzonestyle.gtimg.cn/qzone/qzact/act/external/live/live-icon-new.png\",\n                \"appName\":\"开播啦鹅\",\n                \"meta\":\"\",\n                \"avatar\":\"{avatar_url}\"\n            }\n        }\n    }\n}";
-    String str1 = str2;
+    Object localObject2 = "{\n    \"appName\":\"com.tencent.subscription\",\n    \"appView\":\"baseView\",\n    \"appConfig\":{\n        \"forward\":1,\n        \"autosize\":0,\n        \"type\":\"normal\"\n    },\n \"ver\":\"1.0.0.45\",\n    \"appDesc\":\"QQ直播\",\n    \"promptText\":\"来自QQ直播的分享\",\n    \"metaData\":{\n        \"data\":{\n            \"avatarJumpUrl\":\"{avatar_jump_url}\",\n            \"contentJumpUrl\":\"{h5_jump_url}\",\n            \"iconJumpUrl\":\"{icon_jump_url}\",\n            \"jumpUrl\":{\n                \"8.3.9\":{\n                    \"contentJumpUrl\":\"{content_jump_url}\"\n                },\n                \"pc\":{\n                    \"contentJumpUrl\":\"https://qzs.qzone.qq.com/qzone/hybrid/page/jumpQQ.html?url=https%3A%2F%2Fh5.qzone.qq.comhttps%3A%2F%2Fh5.qzone.qq.com%2Fv2%2Fvip%2Flive%2Froom%3Froomid%3D110008711\"\n                }\n            },\n            \"media\":[\n                {\n                    \"isVideo\":false,\n                    \"height\":2339,\n                    \"width\":1080,\n                    \"url\":\"{cover_url}\"\n                }\n            ],\n            \"title\":\"{title}\",\n            \"nick\":\"{nick_name}\",\n            \"common\":{\n                \"appIcon\":\"https://qzonestyle.gtimg.cn/qzone/qzact/act/external/live/live-icon-new.png\",\n                \"appName\":\"开播啦鹅\",\n                \"meta\":\"\",\n                \"avatar\":\"{avatar_url}\"\n            }\n        }\n    }\n}";
+    Object localObject1 = localObject2;
     for (;;)
     {
       try
       {
         long l1 = this.mDataBundle.getLong("share_uin");
-        str1 = str2;
+        localObject1 = localObject2;
         long l2 = this.mDataBundle.getLong("share_room_id", -1L);
-        str1 = str2;
-        String str4 = "mqqapi://vaslive/watch?roomid={roomid}".replace("{roomid}", String.valueOf(l2));
-        str1 = str2;
-        String str3 = "https://h5.qzone.qq.com/v2/vip/live/room?roomid={roomid}".replace("{roomid}", String.valueOf(l2));
-        str1 = str2;
-        str3 = str3 + "&_proxy=1";
-        str1 = str2;
-        str4 = addShareParams(str4, "source", "qqhy");
-        str1 = str2;
-        str2 = "{\n    \"appName\":\"com.tencent.subscription\",\n    \"appView\":\"baseView\",\n    \"appConfig\":{\n        \"forward\":1,\n        \"autosize\":0,\n        \"type\":\"normal\"\n    },\n \"ver\":\"1.0.0.45\",\n    \"appDesc\":\"QQ直播\",\n    \"promptText\":\"来自QQ直播的分享\",\n    \"metaData\":{\n        \"data\":{\n            \"avatarJumpUrl\":\"{avatar_jump_url}\",\n            \"contentJumpUrl\":\"{h5_jump_url}\",\n            \"iconJumpUrl\":\"{icon_jump_url}\",\n            \"jumpUrl\":{\n                \"8.3.9\":{\n                    \"contentJumpUrl\":\"{content_jump_url}\"\n                },\n                \"pc\":{\n                    \"contentJumpUrl\":\"https://qzs.qzone.qq.com/qzone/hybrid/page/jumpQQ.html?url=https%3A%2F%2Fh5.qzone.qq.comhttps%3A%2F%2Fh5.qzone.qq.com%2Fv2%2Fvip%2Flive%2Froom%3Froomid%3D110008711\"\n                }\n            },\n            \"media\":[\n                {\n                    \"isVideo\":false,\n                    \"height\":2339,\n                    \"width\":1080,\n                    \"url\":\"{cover_url}\"\n                }\n            ],\n            \"title\":\"{title}\",\n            \"nick\":\"{nick_name}\",\n            \"common\":{\n                \"appIcon\":\"https://qzonestyle.gtimg.cn/qzone/qzact/act/external/live/live-icon-new.png\",\n                \"appName\":\"开播啦鹅\",\n                \"meta\":\"\",\n                \"avatar\":\"{avatar_url}\"\n            }\n        }\n    }\n}".replace("{avatar_jump_url}", "mqqapi://qsubscribe/openhomepage?src_type=ilive&uid={uid}".replace("{uid}", String.valueOf(l1)));
-        str1 = str2;
-        str2 = str2.replace("{content_jump_url}", str4);
-        str1 = str2;
-        str2 = str2.replace("{icon_jump_url}", "mqqapi://qsubscribe/opendiscoverpage?src_type=ilive");
-        str1 = str2;
-        str2 = str2.replace("{h5_jump_url}", str3);
-        str1 = str2;
-        String str5 = this.mDataBundle.getString("share_cover_url");
-        str1 = str2;
-        str4 = this.mDataBundle.getString("share_title");
-        str1 = str2;
-        str3 = this.mDataBundle.getString("share_head_url");
-        str1 = str2;
-        str2 = str2.replace("{nick_name}", this.mDataBundle.getString("share_nick_name"));
-        str1 = str2;
-        str2 = str2.replace("{cover_url}", str5);
-        str1 = str2;
-        str2 = str2.replace("{title}", str4);
-        str1 = str2;
-        str2 = str2.replace("{avatar_url}", str3);
-        str1 = str2;
-        if (QLog.isColorLevel()) {
-          QLog.i("IliveShareHelper", 2, " share QQ replaceArkData = \n " + str1);
+        localObject1 = localObject2;
+        String str2 = "mqqapi://vaslive/watch?roomid={roomid}".replace("{roomid}", String.valueOf(l2));
+        localObject1 = localObject2;
+        String str1 = "https://h5.qzone.qq.com/v2/vip/live/room?roomid={roomid}".replace("{roomid}", String.valueOf(l2));
+        localObject1 = localObject2;
+        str1 = str1 + "&_proxy=1";
+        localObject1 = localObject2;
+        str2 = addShareParams(str2, "source", "qqhy");
+        localObject1 = localObject2;
+        localObject2 = "{\n    \"appName\":\"com.tencent.subscription\",\n    \"appView\":\"baseView\",\n    \"appConfig\":{\n        \"forward\":1,\n        \"autosize\":0,\n        \"type\":\"normal\"\n    },\n \"ver\":\"1.0.0.45\",\n    \"appDesc\":\"QQ直播\",\n    \"promptText\":\"来自QQ直播的分享\",\n    \"metaData\":{\n        \"data\":{\n            \"avatarJumpUrl\":\"{avatar_jump_url}\",\n            \"contentJumpUrl\":\"{h5_jump_url}\",\n            \"iconJumpUrl\":\"{icon_jump_url}\",\n            \"jumpUrl\":{\n                \"8.3.9\":{\n                    \"contentJumpUrl\":\"{content_jump_url}\"\n                },\n                \"pc\":{\n                    \"contentJumpUrl\":\"https://qzs.qzone.qq.com/qzone/hybrid/page/jumpQQ.html?url=https%3A%2F%2Fh5.qzone.qq.comhttps%3A%2F%2Fh5.qzone.qq.com%2Fv2%2Fvip%2Flive%2Froom%3Froomid%3D110008711\"\n                }\n            },\n            \"media\":[\n                {\n                    \"isVideo\":false,\n                    \"height\":2339,\n                    \"width\":1080,\n                    \"url\":\"{cover_url}\"\n                }\n            ],\n            \"title\":\"{title}\",\n            \"nick\":\"{nick_name}\",\n            \"common\":{\n                \"appIcon\":\"https://qzonestyle.gtimg.cn/qzone/qzact/act/external/live/live-icon-new.png\",\n                \"appName\":\"开播啦鹅\",\n                \"meta\":\"\",\n                \"avatar\":\"{avatar_url}\"\n            }\n        }\n    }\n}".replace("{avatar_jump_url}", "mqqapi://qsubscribe/openhomepage?src_type=ilive&uid={uid}".replace("{uid}", String.valueOf(l1)));
+        localObject1 = localObject2;
+        localObject2 = ((String)localObject2).replace("{content_jump_url}", str2);
+        localObject1 = localObject2;
+        localObject2 = ((String)localObject2).replace("{icon_jump_url}", "mqqapi://qsubscribe/opendiscoverpage?src_type=ilive");
+        localObject1 = localObject2;
+        str1 = ((String)localObject2).replace("{h5_jump_url}", str1);
+        localObject1 = str1;
+        String str4 = this.mDataBundle.getString("share_cover_url");
+        localObject1 = str1;
+        localObject2 = this.mDataBundle.getString("share_title");
+        localObject1 = str1;
+        String str3 = this.mDataBundle.getString("share_head_url");
+        localObject1 = str1;
+        String str5 = this.mDataBundle.getString("share_nick_name");
+        localObject1 = str1;
+        str2 = this.mDataBundle.getString("share_content");
+        localObject1 = str1;
+        localObject2 = toJsonsString((String)localObject2);
+        localObject1 = str1;
+        str5 = toJsonsString(str5);
+        localObject1 = str1;
+        str2 = toJsonsString(str2);
+        localObject1 = str1;
+        str1 = str1.replace("{nick_name}", str5);
+        localObject1 = str1;
+        str1 = str1.replace("{cover_url}", str4);
+        localObject1 = str1;
+        if (TextUtils.isEmpty(str2))
+        {
+          localObject1 = str1;
+          localObject2 = str1.replace("{title}", (CharSequence)localObject2);
+          localObject1 = localObject2;
+          localObject2 = ((String)localObject2).replace("{avatar_url}", str3);
+          localObject1 = localObject2;
+          if (QLog.isColorLevel()) {
+            QLog.i("IliveShareHelper", 2, " share QQ replaceArkData = \n " + localObject1);
+          }
+          return localObject1;
         }
-        return str1;
+        localObject2 = str2;
+        continue;
       }
       catch (Throwable localThrowable)
       {
         continue;
       }
-      str2.printStackTrace();
+      ((Throwable)localObject2).printStackTrace();
     }
   }
   
@@ -307,7 +323,7 @@ public class IliveShareHelper
     reportAction("qq_live", "room_page", "", "share_platform", "", 102, getFollowInfo("3", "", "", "", ""));
     if (localIntent == null) {
       if (this.mHostActivity != null) {
-        QQToast.a(this.mHostActivity, amtj.a(2131713677), 0).a();
+        QQToast.a(this.mHostActivity, anvx.a(2131714024), 0).a();
       }
     }
     while ((localIntent == null) || (this.mHostActivity == null)) {
@@ -326,27 +342,31 @@ public class IliveShareHelper
       Bundle localBundle = new Bundle();
       SerializableMap localSerializableMap = new SerializableMap();
       HashMap localHashMap = new HashMap();
-      Object localObject1 = this.mDataBundle.getString("share_cover_url");
-      Object localObject2 = this.mDataBundle.getString("share_title");
-      String str1 = this.mDataBundle.getString("share_nick_name");
-      str1 = str1 + "当前正在直播，快来围观";
-      String str2 = addShareParams("https://h5.qzone.qq.com/v2/vip/live/room?roomid={roomid}".replace("{roomid}", String.valueOf(this.mDataBundle.getLong("share_room_id", -1L))), "source", "qqkj");
-      str2 = str2 + "&_proxy=1";
-      if (QLog.isColorLevel()) {
-        QLog.i("IliveShareHelper", 2, " shareToQZone url = " + str2);
+      String str2 = this.mDataBundle.getString("share_cover_url");
+      String str3 = this.mDataBundle.getString("share_title");
+      String str1 = this.mDataBundle.getString("share_content");
+      String str4 = this.mDataBundle.getString("share_nick_name");
+      Object localObject = str1;
+      if (TextUtils.isEmpty(str1)) {
+        localObject = str4 + "当前正在直播，快来围观";
       }
-      localBundle.putString("title", (String)localObject2);
-      localBundle.putString("desc", str1);
-      localBundle.putString("detail_url", str2);
-      localObject2 = new ArrayList(1);
-      ((ArrayList)localObject2).add(localObject1);
-      localBundle.putStringArrayList("image_url", (ArrayList)localObject2);
+      str1 = addShareParams("https://h5.qzone.qq.com/v2/vip/live/room?roomid={roomid}".replace("{roomid}", String.valueOf(this.mDataBundle.getLong("share_room_id", -1L))), "source", "qqkj");
+      str1 = str1 + "&_proxy=1";
+      if (QLog.isColorLevel()) {
+        QLog.i("IliveShareHelper", 2, " shareToQZone url = " + str1);
+      }
+      localBundle.putString("title", str3);
+      localBundle.putString("desc", (String)localObject);
+      localBundle.putString("detail_url", str1);
+      localObject = new ArrayList(1);
+      ((ArrayList)localObject).add(str2);
+      localBundle.putStringArrayList("image_url", (ArrayList)localObject);
       localBundle.putLong("req_share_id", 0L);
-      localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("appname", "[em]e10031[/em]来自购物直播");
-      ((JSONObject)localObject1).put("actiontype", 2);
-      ((JSONObject)localObject1).put("actionurl", "mqqapi://qsubscribe/opendiscoverpage?src_type=ilive");
-      localHashMap.put("cell_refer", ((JSONObject)localObject1).toString());
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("appname", "[em]e10031[/em]来自购物直播");
+      ((JSONObject)localObject).put("actiontype", 2);
+      ((JSONObject)localObject).put("actionurl", "mqqapi://qsubscribe/opendiscoverpage?src_type=ilive");
+      localHashMap.put("cell_refer", ((JSONObject)localObject).toString());
       localSerializableMap.setMap(localHashMap);
       localBundle.putSerializable("share_qzone_info", localSerializableMap);
       QZoneShareManager.jumpToQzoneShare(BaseApplicationImpl.getApplication().getRuntime().getAccount(), this.mHostActivity, localBundle, null, -1);
@@ -359,74 +379,120 @@ public class IliveShareHelper
     if ((this.mHostActivity == null) || (this.mDataBundle == null)) {
       return;
     }
-    String str1;
-    label90:
     Object localObject2;
+    label90:
+    String str1;
+    String str2;
     if (paramInt == 9)
     {
       reportAction("qq_live", "room_page", "", "share_platform", "", 102, getFollowInfo("1", "", "", "", ""));
-      str1 = "https://h5.qzone.qq.com/v2/vip/live/room?roomid={roomid}".replace("{roomid}", String.valueOf(this.mDataBundle.getLong("share_room_id", -1L)));
+      localObject2 = "https://h5.qzone.qq.com/v2/vip/live/room?roomid={roomid}".replace("{roomid}", String.valueOf(this.mDataBundle.getLong("share_room_id", -1L)));
       if (paramInt != 9) {
-        break label346;
+        break label369;
       }
       localObject1 = "wxhy";
-      localObject1 = addShareParams(str1, "source", (String)localObject1);
+      localObject1 = addShareParams((String)localObject2, "source", (String)localObject1);
       str1 = (String)localObject1 + "&_proxy=1";
-      localObject2 = this.mDataBundle.getString("share_nick_name");
+      str2 = this.mDataBundle.getString("share_nick_name");
       localObject1 = this.mDataBundle.getString("share_title");
+      localObject2 = this.mDataBundle.getString("share_content");
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label353;
+        break label376;
       }
     }
-    String str2;
+    String str3;
     int i;
-    label346:
-    label353:
-    for (Object localObject1 = (String)localObject2 + "这个直播太有趣啦，快来一起看吧";; localObject1 = (String)localObject2 + "：" + (String)localObject1)
+    label369:
+    label376:
+    for (Object localObject1 = str2 + "这个直播太有趣啦，快来一起看吧";; localObject1 = str2 + "：" + (String)localObject1)
     {
-      localObject1 = cutString((String)localObject1);
+      str3 = cutString((String)localObject1);
       if (TextUtils.isEmpty(this.mCurrentNickName)) {
-        this.mCurrentNickName = ((String)localObject2);
+        this.mCurrentNickName = str2;
       }
-      str2 = cutString("这个直播太有趣啦，快来和{nick_name}一起看吧".replace("{nick_name}", this.mCurrentNickName));
+      localObject1 = localObject2;
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {
+        localObject1 = cutString("这个直播太有趣啦，快来和{nick_name}一起看吧".replace("{nick_name}", this.mCurrentNickName));
+      }
       if (QLog.isColorLevel()) {
-        QLog.i("IliveShareHelper", 2, "shareWeChat , shareUrl = " + str1 + " , title = " + (String)localObject1 + " , desc = " + str2);
+        QLog.i("IliveShareHelper", 2, "shareWeChat , shareUrl = " + str1 + " , title = " + str3 + " , desc = " + (String)localObject1);
       }
       localObject2 = new HashMap(1);
       i = -1;
       if ((str1 != null) && (!str1.isEmpty())) {
-        break label382;
+        break label405;
       }
-      QQToast.a(this.mHostActivity, 1, amtj.a(2131713674), 0).a();
+      QQToast.a(this.mHostActivity, 1, anvx.a(2131714021), 0).a();
       return;
       reportAction("qq_live", "room_page", "", "share_platform", "", 102, getFollowInfo("4", "", "", "", ""));
       break;
       localObject1 = "wxpyq";
       break label90;
     }
-    label382:
-    if (!WXShareHelper.getInstance().isWXinstalled()) {
-      i = 2131719722;
+    label405:
+    if (!WXShareHelper.a().a()) {
+      i = 2131720175;
     }
     while (i != -1)
     {
-      yyi.a(0, i);
+      znl.a(0, i);
       return;
-      if (!WXShareHelper.getInstance().isWXsupportApi()) {
-        i = 2131719723;
+      if (!WXShareHelper.a().b()) {
+        i = 2131720176;
       }
     }
     initWXShareListenenr();
-    localObject1 = new IliveShareHelper.4(this, (Map)localObject2, (String)localObject1, str2, str1, paramInt);
+    localObject1 = new IliveShareHelper.4(this, (Map)localObject2, str3, (String)localObject1, str1, paramInt);
     if (TextUtils.isEmpty(getShareCoverUrl()))
     {
       ((Runnable)localObject1).run();
       return;
     }
     initLoadingDialog(this.mHostActivity);
-    this.mLoadingDialog.c(2131693585);
+    this.mLoadingDialog.c(2131693769);
     this.mLoadingDialog.show();
     ThreadManager.post(new IliveShareHelper.5(this, (Map)localObject2, (Runnable)localObject1), 8, null, false);
+  }
+  
+  public static String toJsonsString(String paramString)
+  {
+    if (paramString == null) {
+      return "null";
+    }
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    int j = paramString.length();
+    int i = 0;
+    if (i < j)
+    {
+      char c = paramString.charAt(i);
+      switch (c)
+      {
+      default: 
+        if (c <= '\037') {
+          localStringBuilder.append(String.format("\\u%04x", new Object[] { Integer.valueOf(c) }));
+        }
+        break;
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        localStringBuilder.append('\\').append(c);
+        continue;
+        localStringBuilder.append("\\t");
+        continue;
+        localStringBuilder.append("\\b");
+        continue;
+        localStringBuilder.append("\\n");
+        continue;
+        localStringBuilder.append("\\r");
+        continue;
+        localStringBuilder.append("\\f");
+        continue;
+        localStringBuilder.append(c);
+      }
+    }
+    return localStringBuilder.toString();
   }
   
   public void dismiss()
@@ -455,7 +521,7 @@ public class IliveShareHelper
     if ((this.mActionSheet != null) && (this.mActionSheet.isShowing())) {
       this.mActionSheet.dismiss();
     }
-    WXShareHelper.getInstance().removeObserver(this.wxShareListener);
+    WXShareHelper.a().b(this.wxShareListener);
   }
   
   public void setIsFullScreen(boolean paramBoolean)

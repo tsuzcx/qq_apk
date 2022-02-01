@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import aftg;
-import akoi;
-import anuz;
-import avnu;
-import bfdf;
-import bfdg;
+import agla;
+import allh;
+import aoxz;
+import awtz;
+import bgll;
+import bglm;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.home.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -17,12 +17,12 @@ import mqq.os.MqqHandler;
 public class TroopNotificationAIOHelper$2
   implements Runnable
 {
-  public TroopNotificationAIOHelper$2(aftg paramaftg) {}
+  public TroopNotificationAIOHelper$2(agla paramagla) {}
   
   public void run()
   {
     int i = 1;
-    if (aftg.a(this.this$0) == null) {}
+    if (agla.a(this.this$0) == null) {}
     label12:
     Object localObject;
     label210:
@@ -33,28 +33,28 @@ public class TroopNotificationAIOHelper$2
       do
       {
         return;
-      } while (aftg.a(this.this$0).app == null);
-      anuz localanuz = aftg.a(this.this$0).app.getProxyManager().a();
-      RecentUser localRecentUser = (RecentUser)localanuz.findRecentUserByUin(aftg.a(this.this$0).getCurFriendUin(), 1);
-      localObject = bfdg.a(aftg.a(this.this$0).app, aftg.a(this.this$0).getCurFriendUin());
-      if ((localObject != null) && (!((bfdf)localObject).a.isEmpty())) {}
+      } while (agla.a(this.this$0).app == null);
+      aoxz localaoxz = agla.a(this.this$0).app.getProxyManager().a();
+      RecentUser localRecentUser = (RecentUser)localaoxz.findRecentUserByUin(agla.a(this.this$0).getCurFriendUin(), 1);
+      localObject = bglm.a(agla.a(this.this$0).app, agla.a(this.this$0).getCurFriendUin());
+      if ((localObject != null) && (!((bgll)localObject).a.isEmpty())) {}
       for (;;)
       {
-        localObject = aftg.a(this.this$0).app.getHandler(Conversation.class);
+        localObject = agla.a(this.this$0).app.getHandler(Conversation.class);
         if (i != 0) {
           break;
         }
-        if (avnu.a().a(aftg.a(this.this$0).app, aftg.a(this.this$0).getCurFriendUin())) {
+        if (awtz.a().a(agla.a(this.this$0).app, agla.a(this.this$0).getCurFriendUin())) {
           break label210;
         }
-        if (!(localRecentUser.msg instanceof akoi)) {
+        if (!(localRecentUser.msg instanceof allh)) {
           break;
         }
         if (QLog.isColorLevel()) {
           QLog.d("TroopNotificationAIOHelper", 2, "doOnStop. clear recent user of TroopNotificationMsg.");
         }
         localRecentUser.cleanMsgAndMsgData(localRecentUser.msgType);
-        localanuz.saveRecentUser(localRecentUser);
+        localaoxz.saveRecentUser(localRecentUser);
         if (localObject == null) {
           break;
         }
@@ -65,7 +65,7 @@ public class TroopNotificationAIOHelper$2
       if (QLog.isColorLevel()) {
         QLog.d("TroopNotificationAIOHelper", 2, "remove recent user on stop.");
       }
-      localanuz.delRecentUser(localRecentUser, false);
+      localaoxz.c(localRecentUser, false);
     } while (localObject == null);
     ((MqqHandler)localObject).sendEmptyMessage(1009);
   }

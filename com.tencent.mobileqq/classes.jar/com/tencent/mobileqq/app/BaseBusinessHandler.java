@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app;
 
-import amwl;
 import android.os.Bundle;
 import android.os.Looper;
+import anyz;
 import com.qq.jce.wup.UniPacket;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -209,7 +209,7 @@ public abstract class BaseBusinessHandler
   
   public abstract void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject);
   
-  public amwl removeMessageObserver(ToServiceMsg paramToServiceMsg)
+  public anyz removeMessageObserver(ToServiceMsg paramToServiceMsg)
   {
     if ((paramToServiceMsg == null) || (!paramToServiceMsg.extraData.containsKey(SEQ_KEY))) {
       return null;
@@ -217,9 +217,9 @@ public abstract class BaseBusinessHandler
     synchronized (this.uiObserverMap)
     {
       long l = paramToServiceMsg.extraData.getLong(SEQ_KEY);
-      if (amwl.class.isInstance((BusinessObserver)this.uiObserverMap.get(Long.valueOf(l))))
+      if (anyz.class.isInstance((BusinessObserver)this.uiObserverMap.get(Long.valueOf(l))))
       {
-        paramToServiceMsg = (amwl)this.uiObserverMap.remove(Long.valueOf(l));
+        paramToServiceMsg = (anyz)this.uiObserverMap.remove(Long.valueOf(l));
         return paramToServiceMsg;
       }
     }

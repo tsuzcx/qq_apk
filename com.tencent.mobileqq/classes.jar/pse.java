@@ -1,19 +1,34 @@
-public abstract class pse
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/decoupling/uilayer/video/RIJVideoViewInterceptor$preloadAvatarByImageManager$1", "Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/IBitmapCallback;", "onFail", "", "request", "Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/ImageRequest;", "exception", "", "onProgress", "progress", "", "onSuccess", "bitmap", "Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/CloseableBitmap;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pse
+  implements tlu
 {
-  public Object a;
-  private String a;
+  pse(String paramString) {}
   
-  public pse(String paramString)
+  public void a(@NotNull tlw paramtlw, int paramInt)
   {
-    this.a = paramString;
+    Intrinsics.checkParameterIsNotNull(paramtlw, "request");
   }
   
-  public String a()
+  public void a(@NotNull tlw paramtlw, @NotNull Throwable paramThrowable)
   {
-    return this.a;
+    Intrinsics.checkParameterIsNotNull(paramtlw, "request");
+    Intrinsics.checkParameterIsNotNull(paramThrowable, "exception");
+    QLog.e("RIJVideoViewInterceptor", 1, "preloadAvatarByImageManager ImageManager onFail");
   }
   
-  public abstract void a(prx paramprx);
+  public void a(@NotNull tlw paramtlw, @NotNull tls paramtls)
+  {
+    Intrinsics.checkParameterIsNotNull(paramtlw, "request");
+    Intrinsics.checkParameterIsNotNull(paramtls, "bitmap");
+    if (QLog.isColorLevel()) {
+      QLog.d("RIJVideoViewInterceptor", 2, "preloadAvatarByImageManager ImageManager onSuccess, url:" + this.a);
+    }
+  }
 }
 
 

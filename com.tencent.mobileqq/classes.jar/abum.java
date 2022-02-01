@@ -1,8 +1,20 @@
-import android.view.View;
+import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
+import java.util.Map;
 
-public abstract interface abum
+public class abum
+  implements avdn
 {
-  public abstract void a(View paramView);
+  public abum(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    abuq localabuq = (abuq)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
+    if (localabuq != null)
+    {
+      localabuq.e = (paramInt1 / 1000);
+      this.a.callJs(localabuq.j + "(" + localabuq.a() + ");");
+    }
+  }
 }
 
 

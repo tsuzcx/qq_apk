@@ -1,33 +1,27 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-class xib
+public class xib
+  extends xif<StoryVideoItem>
 {
-  public int a;
-  public CommentEntry a;
-  private int b = -1;
-  
-  xib(xhw paramxhw)
+  public xib(VideoViewVideoHolder paramVideoViewVideoHolder)
   {
-    this.jdField_a_of_type_Int = -1;
+    super(paramVideoViewVideoHolder, null);
   }
   
-  private void a()
+  public void a(StoryVideoItem paramStoryVideoItem)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = null;
-    this.jdField_a_of_type_Int = -1;
-    this.b = -1;
+    super.onNext(paramStoryVideoItem);
+    VideoViewVideoHolder.a(this.a);
   }
   
-  public void a(CommentEntry paramCommentEntry, int paramInt)
+  public void onError(@NonNull Error paramError)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = paramCommentEntry;
-    this.b = paramCommentEntry.commentId;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean a(CommentEntry paramCommentEntry)
-  {
-    return paramCommentEntry.commentId != this.b;
+    super.onError(paramError);
+    ykq.d(this.a.a, "VideoStartSegment, error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
+    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
   }
 }
 

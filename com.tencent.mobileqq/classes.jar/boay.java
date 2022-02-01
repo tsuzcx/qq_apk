@@ -1,10 +1,12 @@
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-
-public abstract interface boay
+class boay
+  implements bnth
 {
-  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt);
+  boay(boax paramboax) {}
   
-  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean);
+  public void a(int paramInt)
+  {
+    boax.a(this.a, paramInt);
+  }
 }
 
 

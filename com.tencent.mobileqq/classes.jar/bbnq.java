@@ -1,96 +1,112 @@
-import MessageSvcPack.RequestPushStatus;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
+import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class bbnq
-  extends aafe
+  extends GPUBaseFilter
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "Push" };
-  private appy jdField_a_of_type_Appy;
+  private int jdField_a_of_type_Int = -1;
+  private List<GPUBaseFilter> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private List<RenderBuffer> b;
   
-  private Object b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  private void a()
   {
-    paramToServiceMsg = paramFromServiceMsg;
-    if (paramFromServiceMsg.getWupBuffer() == null) {
-      paramToServiceMsg = null;
-    }
-    return paramToServiceMsg;
-  }
-  
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramFromServiceMsg.getServiceCmd().equals("MessageSvc.PushNotify")) {
-      return b(paramToServiceMsg, paramFromServiceMsg);
-    }
-    return null;
-  }
-  
-  public void a() {}
-  
-  public void a(appy paramappy)
-  {
-    this.jdField_a_of_type_Appy = paramappy;
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    paramToServiceMsg = paramFromServiceMsg.getServiceCmd();
-    if (paramToServiceMsg.equals("MessageSvc.RequestPushStatus"))
+    if (this.b != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("StatusPush", 2, "decodeRespMsg MessageSvc.RequestPushStatus uin:" + paramFromServiceMsg.getUin() + " at " + System.currentTimeMillis());
+      Iterator localIterator = this.b.iterator();
+      while (localIterator.hasNext()) {
+        ((RenderBuffer)localIterator.next()).destroy();
       }
-      paramToServiceMsg = paramFromServiceMsg.getWupBuffer();
-      if (paramToServiceMsg != null) {}
+      this.b = null;
     }
-    do
+  }
+  
+  public RenderBuffer a()
+  {
+    if ((this.b != null) && (this.b.size() > 0)) {
+      return (RenderBuffer)this.b.get(this.b.size() - 1);
+    }
+    throw new RuntimeException("please check your state");
+  }
+  
+  public void a(@NonNull GPUBaseFilter paramGPUBaseFilter)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(paramGPUBaseFilter);
+  }
+  
+  public void destroy()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((GPUBaseFilter)localIterator.next()).destroy();
+    }
+    a();
+  }
+  
+  public void drawTexture(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    paramInt = 0;
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
     {
-      do
+      if (paramInt != this.jdField_a_of_type_JavaUtilList.size() - 1)
       {
-        return;
-        paramFromServiceMsg = new UniPacket();
-        paramFromServiceMsg.decode(paramToServiceMsg);
-        paramToServiceMsg = (RequestPushStatus)paramFromServiceMsg.getByClass("req_PushStatus", new RequestPushStatus());
-        paramFromServiceMsg = BaseApplication.getContext().getSharedPreferences("share", 0);
-        if (paramToServiceMsg.cStatus == 1)
+        ((RenderBuffer)this.b.get(paramInt)).bind();
+        ((GPUBaseFilter)this.jdField_a_of_type_JavaUtilList.get(paramInt)).drawTexture(this.jdField_a_of_type_Int, null, null);
+        ((RenderBuffer)this.b.get(paramInt)).unbind();
+        this.jdField_a_of_type_Int = ((RenderBuffer)this.b.get(paramInt)).getTexId();
+      }
+      for (;;)
+      {
+        paramInt += 1;
+        break;
+        if (this.jdField_a_of_type_Boolean)
         {
-          paramFromServiceMsg.edit().putBoolean("is_pc_online" + paramToServiceMsg.lUin, true).commit();
-          return;
+          ((GPUBaseFilter)this.jdField_a_of_type_JavaUtilList.get(paramInt)).drawTexture(this.jdField_a_of_type_Int, paramArrayOfFloat1, paramArrayOfFloat2);
         }
-        paramFromServiceMsg.edit().putBoolean("is_pc_online" + paramToServiceMsg.lUin, false).commit();
-        return;
-        if (!"CliNotifySvc.register".equals(paramToServiceMsg)) {
-          break;
+        else
+        {
+          ((RenderBuffer)this.b.get(paramInt)).bind();
+          ((GPUBaseFilter)this.jdField_a_of_type_JavaUtilList.get(paramInt)).drawTexture(this.jdField_a_of_type_Int, paramArrayOfFloat1, paramArrayOfFloat2);
+          ((RenderBuffer)this.b.get(paramInt)).unbind();
+          this.jdField_a_of_type_Int = ((RenderBuffer)this.b.get(paramInt)).getTexId();
         }
-      } while ((!paramFromServiceMsg.isSuccess()) || (paramFromServiceMsg.extraData.getLong("pushId") != 128L));
-      return;
-      if ("baseSdk.Msf.NotifyResp".equals(paramToServiceMsg))
-      {
-        paramToServiceMsg = new Intent("tencent.notify.album");
-        paramToServiceMsg.putExtra("resp", paramFromServiceMsg);
-        BaseApplication.getContext().sendBroadcast(paramToServiceMsg, "com.tencent.msg.permission.pushnotify");
-        return;
       }
-      paramToServiceMsg = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
-    } while (this.jdField_a_of_type_Appy == null);
-    this.jdField_a_of_type_Appy.a(paramToServiceMsg, paramFromServiceMsg);
+    }
   }
   
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  public void init()
   {
-    return false;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((GPUBaseFilter)localIterator.next()).init();
+    }
   }
   
-  public String[] a()
+  public void onOutputSizeChanged(int paramInt1, int paramInt2)
   {
-    return jdField_a_of_type_ArrayOfJavaLangString;
+    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((GPUBaseFilter)((Iterator)localObject).next()).onOutputSizeChanged(paramInt1, paramInt2);
+    }
+    a();
+    this.b = new ArrayList();
+    int j = this.jdField_a_of_type_JavaUtilList.size();
+    int i = j;
+    if (this.jdField_a_of_type_Boolean) {
+      i = j - 1;
+    }
+    j = 0;
+    while (j < i)
+    {
+      localObject = new RenderBuffer(paramInt1, paramInt2, 33984);
+      this.b.add(localObject);
+      j += 1;
+    }
   }
 }
 

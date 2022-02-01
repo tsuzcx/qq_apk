@@ -1,20 +1,52 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
+import android.app.Dialog;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.biz.qqstory.view.AnimationPoint;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
-class zgh
-  implements View.OnClickListener
+public class zgh
+  extends ReportDialog
 {
-  zgh(zgc paramzgc, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
+  protected TextView a;
+  protected AnimationPoint a;
   
-  public void onClick(View paramView)
+  public zgh(Context paramContext)
   {
-    zfs.b(this.jdField_a_of_type_Zgc.a, zfs.a(this.jdField_a_of_type_Zgc.a).a(zfs.a(this.jdField_a_of_type_Zgc.a), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply));
-    zfs.c(this.jdField_a_of_type_Zgc.a, true);
-    zfs.a(this.jdField_a_of_type_Zgc.a).dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramContext, 2131755016);
+    View localView = LayoutInflater.from(paramContext).inflate(2131561738, null);
+    localView.setOnTouchListener(new zgi(this));
+    super.setContentView(localView);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint = ((AnimationPoint)super.findViewById(2131362712));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131367968));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setRadius(UIUtils.dip2px(paramContext, 25.0F));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setLoopTime(2000L);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setDuration(4000L);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setOnAnimationListener(new zgj(this, paramContext));
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setIsVertical(paramBoolean);
+  }
+  
+  public void dismiss()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.b();
+    super.dismiss();
+  }
+  
+  public void show()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.a();
+    super.show();
   }
 }
 

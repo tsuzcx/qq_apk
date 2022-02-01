@@ -1,35 +1,25 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
-import com.tencent.widget.XListView;
+import android.text.TextUtils;
+import com.tencent.ark.ark.Application;
+import com.tencent.qphone.base.util.QLog;
 
 public class apqx
-  implements bamo
 {
-  public apqx(SearchResultActivity paramSearchResultActivity) {}
-  
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public static boolean a(String paramString1, long paramLong, ark.Application paramApplication, String paramString2)
   {
-    if ((paramBitmap == null) || (paramInt2 == 201)) {}
+    boolean bool;
+    if (paramLong == 0L) {
+      bool = true;
+    }
     for (;;)
     {
-      return;
-      if (this.a.jdField_a_of_type_Int == 0)
-      {
-        int i = this.a.jdField_a_of_type_ComTencentWidgetXListView.getChildCount();
-        paramInt2 = 0;
-        while (paramInt2 < i)
-        {
-          paramBitmap = this.a.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt2).getTag();
-          if ((paramBitmap != null) && ((paramBitmap instanceof apqz)))
-          {
-            paramBitmap = (apqz)paramBitmap;
-            if (paramBitmap.jdField_a_of_type_Int == paramInt1) {
-              SearchResultActivity.a(this.a, paramBitmap, paramBitmap.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
-            }
-          }
-          paramInt2 += 1;
-        }
+      if (!bool) {
+        QLog.i("ArkApp.ArkAPIPermission", 1, String.format("ModuleCheckPermission.denied:Name:%s,Permission:%s.", new Object[] { paramString1, paramString2 }));
+      }
+      return bool;
+      if ((paramApplication != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
+        bool = paramApplication.CheckPermissions(paramString2);
+      } else {
+        bool = false;
       }
     }
   }

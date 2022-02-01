@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app;
 
-import amvb;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.TextView;
+import anxo;
 import com.tencent.image.ApngImage;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.os.MqqHandler;
@@ -22,7 +22,7 @@ public final class LebaUtil$2
       this.jdField_b_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
       this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
       if (this.jdField_a_of_type_Boolean) {
-        amvb.a(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_b_of_type_AndroidWidgetTextView, this.jdField_c_of_type_AndroidWidgetTextView, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
+        anxo.a(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_b_of_type_AndroidWidgetTextView, this.jdField_c_of_type_AndroidWidgetTextView, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
       }
       AtomicBoolean localAtomicBoolean = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
       if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {

@@ -1,59 +1,36 @@
 import android.os.Handler;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.mobileqq.ar.ArConfigService.4.1;
-import com.tencent.mobileqq.ar.ArConfigService.4.2;
-import com.tencent.mobileqq.ar.ArConfigService.4.3;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
 
-public class aoco
-  implements aqxf
+class aoco
+  extends Handler
 {
-  public aoco(ArConfigService paramArConfigService) {}
-  
-  public void a(XmlData paramXmlData)
+  aoco(aocn paramaocn, Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, "EarlyDownLoadListener");
-    }
+    super(paramLooper);
   }
   
-  public void a(XmlData paramXmlData, long paramLong1, long paramLong2)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("onDownloadProgress data=%s curOffset=%s totalLen=%s", new Object[] { paramXmlData, Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
-    }
-    if ("qq.android.ar.native.so_v8.3.6".equals(paramXmlData.strResName)) {
-      ArConfigService.a(this.a, (int)(100L * paramLong1 / paramLong2));
-    }
-    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a) + ArConfigService.d(this.a) + ArConfigService.e(this.a)) / 5;
-    if (!ArConfigService.e(this.a)) {
-      ArConfigService.a(this.a).post(new ArConfigService.4.1(this, i));
-    }
-  }
-  
-  public void a(XmlData paramXmlData, boolean paramBoolean1, int paramInt, boolean paramBoolean2, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("onDownloadFinish data=%s result=%s", new Object[] { paramXmlData, Boolean.valueOf(paramBoolean1) }));
-    }
-    if (paramBoolean1)
+    switch (paramMessage.what)
     {
-      if ("qq.android.ar.native.so_v8.3.6".equals(paramXmlData.strResName)) {
-        ArConfigService.b(this.a, true);
-      }
-      if ((ArConfigService.f(this.a)) && (ArConfigService.g(this.a)) && (ArConfigService.h(this.a)) && (ArConfigService.i(this.a)) && (ArConfigService.j(this.a))) {
-        ArConfigService.a(this.a).post(new ArConfigService.4.2(this));
-      }
     }
-    while (ArConfigService.e(this.a)) {
+    do
+    {
       return;
+      this.a.b();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("RegisterProxySvcPack", 2, new Object[] { "real notify pcStatus:", Integer.valueOf(aocn.a(this.a)), " ,devStatus:", Integer.valueOf(aocn.b(this.a)), " ,clientType:", Long.valueOf(aocn.a(this.a)), " ,appid:", Long.valueOf(aocn.b(this.a)) });
+      }
+      this.a.notifyUI(2, true, new Object[] { Integer.valueOf(aocn.b(this.a)) });
+    } while (aocn.b(this.a) != 0);
+    if (!this.a.a.hasMessages(101)) {
+      this.a.a.sendEmptyMessageDelayed(101, 3000L);
     }
-    ArConfigService.a(this.a).post(new ArConfigService.4.3(this));
-    ArConfigService.a(this.a, true);
+    bgzw.a(false);
   }
-  
-  public void b(XmlData paramXmlData) {}
 }
 
 

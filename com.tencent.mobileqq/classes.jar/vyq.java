@@ -1,36 +1,64 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
-class vyq
-  implements vyx
+public class vyq
+  extends vyr<vxh>
 {
-  vyq(vyn paramvyn) {}
+  private int a = 200;
   
-  public void a(@Nullable vxd paramvxd, Error paramError)
+  protected double a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("MsgTabStoryVideoPreloader", 2, "MsgTabVideoPreloaderDataProvider load video info error", paramError);
-    }
-    this.a.b();
+    return 0.3D;
   }
   
-  public void a(@Nullable vxd paramvxd, @NonNull List<StoryVideoItem> paramList)
+  protected int a()
   {
-    if (!paramList.isEmpty())
+    return this.a;
+  }
+  
+  protected long a(vxh paramvxh1, vxh paramvxh2)
+  {
+    if ((paramvxh1 != paramvxh2) && (paramvxh1.b == paramvxh2.b)) {
+      return 1L;
+    }
+    return Math.abs(paramvxh1.b - paramvxh2.b);
+  }
+  
+  protected vxh a(List<vxh> paramList)
+  {
+    long l = 0L;
+    int i = 0;
+    while (i < paramList.size())
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("MsgTabStoryVideoPreloader", 2, "start download video list, list = " + paramList.size() + "\n" + paramList);
-      }
-      vyn.a(this.a, paramList);
-      return;
+      l += ((vxh)paramList.get(i)).b;
+      i += 1;
     }
-    if (QLog.isColorLevel()) {
-      QLog.w("MsgTabStoryVideoPreloader", 2, "can not find first unread video");
+    vxh localvxh = new vxh();
+    localvxh.b = (l / paramList.size());
+    return localvxh;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a = paramInt;
+  }
+  
+  protected boolean a(long paramLong)
+  {
+    int i = b();
+    if (i > 0) {
+      if (paramLong / i >= 1500L) {}
     }
-    this.a.b();
+    while (paramLong < 200L)
+    {
+      return true;
+      return false;
+    }
+    return false;
+  }
+  
+  protected boolean a(vxh paramvxh1, vxh paramvxh2)
+  {
+    return paramvxh1.b == paramvxh2.b;
   }
 }
 

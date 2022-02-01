@@ -1,8 +1,24 @@
-import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
 
-public abstract interface akbe
+class akbe
+  implements DialogInterface.OnClickListener
 {
-  public abstract void onDownloadResFinished(String paramString1, int paramInt, String paramString2, ResourceInfo paramResourceInfo);
+  akbe(akam paramakam, String paramString) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new Intent(this.jdField_a_of_type_Akam.a, SearchContactsActivity.class);
+    paramDialogInterface.putExtra("from_key", 0);
+    paramDialogInterface.putExtra("fromType", 13);
+    paramDialogInterface.putExtra("start_search_key", this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface.putExtra("auto_add_and_prohibit_auto_search", true);
+    this.jdField_a_of_type_Akam.a.startActivity(paramDialogInterface);
+  }
 }
 
 

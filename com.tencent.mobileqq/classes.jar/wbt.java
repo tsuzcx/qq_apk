@@ -1,6 +1,12 @@
+import com.tencent.biz.qqstory.base.ErrorMessage;
+
 public abstract interface wbt
 {
-  public abstract void a(wbs paramwbs);
+  public abstract void a(String paramString1, String paramString2, int paramInt);
+  
+  public abstract void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt);
+  
+  public abstract void b(String paramString1, String paramString2, int paramInt);
 }
 
 

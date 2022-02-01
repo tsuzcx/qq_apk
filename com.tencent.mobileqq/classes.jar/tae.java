@@ -1,16 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView;
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView.1;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
 public class tae
-  implements OnCompositionLoadedListener
+  implements View.OnLongClickListener
 {
-  public tae(RefreshAnimView.1 param1) {}
+  public tae(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew, FastWebActivity paramFastWebActivity, FastWebArticleInfo paramFastWebArticleInfo) {}
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public boolean onLongClick(View paramView)
   {
-    RefreshAnimView.a(this.a.this$0, paramLottieComposition);
+    ReadInJoyFastWebBottomSocialViewNew.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo);
+    return false;
   }
 }
 

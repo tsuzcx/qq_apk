@@ -10,28 +10,28 @@ import com.tencent.qphone.base.util.QLog;
 import mqq.manager.TicketManager;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
-import pay;
-import rtb;
-import tcn;
+import pkh;
+import sfq;
+import tpy;
 
 public final class FastWebRequestUtil$6
   implements Runnable
 {
-  public FastWebRequestUtil$6(ArticleInfo paramArticleInfo, tcn paramtcn) {}
+  public FastWebRequestUtil$6(ArticleInfo paramArticleInfo, tpy paramtpy) {}
   
   public void run()
   {
     try
     {
       Object localObject2 = new Bundle();
-      Object localObject1 = (QQAppInterface)pay.a();
-      String str1 = pay.a();
+      Object localObject1 = (QQAppInterface)pkh.a();
+      String str1 = pkh.a();
       String str2 = ((TicketManager)((QQAppInterface)localObject1).getManager(2)).getSkey(str1);
       ((Bundle)localObject2).putString("feeds_id", String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId));
       ((Bundle)localObject2).putString("uin", String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.publishUin));
       ((Bundle)localObject2).putString("feedsType", String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedType));
       if (str2 == null) {}
-      for (localObject1 = "";; localObject1 = rtb.a(str2))
+      for (localObject1 = "";; localObject1 = sfq.a(str2))
       {
         ((Bundle)localObject2).putString("g_tk", (String)localObject1);
         if (QLog.isColorLevel()) {
@@ -48,7 +48,7 @@ public final class FastWebRequestUtil$6
         localObject1 = new JSONObject((String)localObject1).getJSONObject("result");
         int i = ((JSONObject)localObject1).getInt("retCode");
         localObject1 = ((JSONObject)localObject1).getString("retMsg");
-        if (this.jdField_a_of_type_Tcn == null) {
+        if (this.jdField_a_of_type_Tpy == null) {
           break;
         }
         ThreadManager.getUIHandler().post(new FastWebRequestUtil.6.1(this, i, (String)localObject1));
@@ -58,7 +58,7 @@ public final class FastWebRequestUtil$6
     }
     catch (Exception localException)
     {
-      if (this.jdField_a_of_type_Tcn != null) {
+      if (this.jdField_a_of_type_Tpy != null) {
         ThreadManager.getUIHandler().post(new FastWebRequestUtil.6.2(this, localException));
       }
       QLog.d("FastWebRequestUtil", 2, "deleteFeeds exception. ", localException);
@@ -67,7 +67,7 @@ public final class FastWebRequestUtil$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRequestUtil.6
  * JD-Core Version:    0.7.0.1
  */

@@ -190,7 +190,7 @@ public class FastAnimationDrawable
     //   147: aload 8
     //   149: astore 6
     //   151: aload_1
-    //   152: invokestatic 252	bfvo:b	(Ljava/lang/String;)I
+    //   152: invokestatic 252	bheg:b	(Ljava/lang/String;)I
     //   155: istore_3
     //   156: aload 8
     //   158: astore 7

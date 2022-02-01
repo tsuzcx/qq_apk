@@ -1,47 +1,13 @@
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class que
+  implements ViewBase.IBuilder
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<URL> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private String jdField_b_of_type_JavaLangString = "";
-  private List<sqw> jdField_b_of_type_JavaUtilList = new ArrayList();
-  
-  private que(quf paramquf)
+  public ViewBase build(VafContext paramVafContext)
   {
-    this.jdField_a_of_type_JavaUtilList = quf.a(paramquf);
-    this.jdField_a_of_type_JavaLangString = quf.a(paramquf);
-    this.jdField_b_of_type_JavaLangString = quf.b(paramquf);
-    this.jdField_b_of_type_JavaUtilList = quf.b(paramquf);
-    this.jdField_a_of_type_Int = quf.a(paramquf);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<sqw> a()
-  {
-    return this.jdField_b_of_type_JavaUtilList;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public List<URL> b()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    return new qud(paramVafContext);
   }
 }
 

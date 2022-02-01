@@ -5,7 +5,7 @@ import android.content.res.AssetManager;
 import android.opengl.Matrix;
 import android.os.Handler;
 import android.os.Looper;
-import android.text.TextUtils;
+import android.util.Log;
 import com.google.android.filament.Engine;
 import com.google.android.filament.FilamentJNI;
 import com.google.android.filament.Material;
@@ -24,7 +24,6 @@ import com.tencent.ttpic.openapi.model.NodeItemJava;
 import com.tencent.ttpic.openapi.util.MatrixUtil;
 import com.tencent.ttpic.openapi.util.VideoTemplateParser;
 import com.tencent.ttpic.util.DecryptListener;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
@@ -41,13 +40,12 @@ public class FilamentUtil
   public static final int COUNT_SKIP_FRAMES = 1;
   private static final boolean DEBUG = false;
   public static final String INDEX_FILE = "index.txt";
-  private static final String POSTFIX_DAT = "dat";
-  private static final String POSTFIX_GLB = "glb";
   private static final String TAG;
   public static final String TEST_FRAG_SHADER = "#version 300 es\nprecision highp float;\nlayout(location = 0) out vec4 fragColor;\n\n void main(void) {\n     const vec3 _347[2] = vec3[](vec3(1, 1, 1), vec3(1, 1, 1));\n\n     float _1025 = 0.0;\n     for (uint _1149 = 0u; _1149 < 2u; _1149++){\n         _1025 += _347[_1149].z;\n     }\n     fragColor = vec4(_1025 / 2.0);\n }";
   private static Set<String> debugExpression;
   private static Map<String, Range> defaultExpressionList;
   private static Map<String, Integer> expName2Index;
+  private static String[] kapuOrderExpress;
   private static Set<String> smoothExpression;
   private static final Handler uiHandler = new Handler(Looper.getMainLooper());
   private static final Map<String, Float> valueMap = new HashMap();
@@ -59,6 +57,7 @@ public class FilamentUtil
     debugExpression = new HashSet();
     smoothExpression = new HashSet();
     defaultExpressionList = new HashMap();
+    kapuOrderExpress = new String[] { "eyeBlinkLeft", "eyeBlinkRight", "eyeSquintLeft", "eyeSquintRight", "eyeLookDownLeft", "eyeLookDownRight", "eyeLookInLeft", "eyeLookInRight", "eyeWideLeft", "eyeWideRight", "eyeLookOutLeft", "eyeLookOutRight", "eyeLookUpLeft", "eyeLookUpRight", "browDownLeft", "browDownRight", "browInnerUp", "browOuterUpLeft", "browOuterUpRight", "jawForward", "jawLeft", "jawOpen", "jawRight", "mouthLeft", "mouthRight", "mouthFrownLeft", "mouthFrownRight", "mouthSmileLeft", "mouthSmileRight", "mouthPressLeft", "mouthPressRight", "mouthDimpleLeft", "mouthDimpleRight", "mouthRollLower", "mouthRollUpper", "mouthUpperUp", "mouthLowerDown", "mouthClose", "mouthFunnel", "mouthPucker", "mouthShrugLower", "mouthShrugUpper", "noseSneer", "cheekPuff", "cheekSquintLeft", "cheekSquintRight" };
     expName2Index.put("browDownLeft", Integer.valueOf(0));
     expName2Index.put("browDownRight", Integer.valueOf(1));
     expName2Index.put("browInnerUp", Integer.valueOf(2));
@@ -205,6 +204,20 @@ public class FilamentUtil
     }
   }
   
+  private static float adjustValue(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5)
+  {
+    if (paramFloat1 <= paramFloat2) {
+      return paramFloat4;
+    }
+    if (paramFloat1 >= paramFloat3) {
+      return paramFloat5;
+    }
+    if (paramFloat3 > paramFloat2) {
+      return paramFloat4 + (paramFloat1 - paramFloat2) / (paramFloat3 - paramFloat2) * (paramFloat5 - paramFloat4);
+    }
+    return 0.0F;
+  }
+  
   private static void adjustValue(float[] paramArrayOfFloat, int paramInt, float paramFloat1, float paramFloat2)
   {
     if (paramArrayOfFloat[paramInt] <= paramFloat1) {
@@ -344,74 +357,21 @@ public class FilamentUtil
     paramArrayOfFloat3[3] = ((float)(paramArrayOfFloat3[3] / d));
   }
   
-  public static byte[] decryptGlb(String paramString)
+  private static InputStream fetchInputStream(String paramString)
   {
-    int i = 1;
-    byte[] arrayOfByte = new byte[0];
-    if (TextUtils.isEmpty(paramString)) {
-      return arrayOfByte;
-    }
-    for (;;)
+    try
     {
-      try
-      {
-        str1 = FileUtils.getRealPath(paramString.substring(0, paramString.lastIndexOf(File.separator)));
-        String str2 = paramString.substring(paramString.lastIndexOf(File.separator) + 1, paramString.lastIndexOf('.'));
-        paramString = str1 + "/" + str2 + "." + "glb";
-        str1 = str1 + "/" + str2 + "." + "dat";
-        if (!FileUtils.exists(str1)) {
-          break label185;
-        }
+      if (FileUtils.exists(paramString)) {
+        return new FileInputStream(paramString);
       }
-      catch (Exception paramString)
-      {
-        try
-        {
-          if (FileUtils.exists(paramString))
-          {
-            paramString = new FileInputStream(paramString);
-            if (i == 0) {
-              break;
-            }
-          }
-        }
-        catch (Exception paramString)
-        {
-          String str1;
-          paramString.printStackTrace();
-          return arrayOfByte;
-        }
-        try
-        {
-          arrayOfByte = FileUtils.loadByteArray(paramString);
-          return arrayOfByte;
-        }
-        finally
-        {
-          IOUtils.closeQuietly(paramString);
-        }
-        paramString = paramString;
-        paramString.printStackTrace();
-        return arrayOfByte;
-      }
-      paramString = new FileInputStream(str1);
-      i = 0;
-      continue;
-      try
-      {
-        label185:
-        paramString = AEModule.getContext().getAssets().open(paramString);
-      }
-      catch (Exception paramString)
-      {
-        paramString = AEModule.getContext().getAssets().open(str1);
-        i = 0;
-      }
+      InputStream localInputStream = AEModule.getContext().getAssets().open(paramString);
+      return localInputStream;
     }
-    arrayOfByte = getEncryptBytes(paramString, getEncryptLength(paramString));
-    arrayOfByte = mergeBytes(VideoTemplateParser.decryptListener.decrypt(arrayOfByte), getRemainedBytes(paramString));
-    IOUtils.closeQuietly(paramString);
-    return arrayOfByte;
+    catch (Exception localException)
+    {
+      Log.d(TAG, "tryFetchInputStream: Fail to load " + paramString);
+    }
+    return null;
   }
   
   public static void flattenEars(float[] paramArrayOfFloat)
@@ -723,6 +683,14 @@ public class FilamentUtil
     return ByteBuffer.wrap(FileUtils.readBytes(paramInputStream, 4)).getInt();
   }
   
+  public static String getKapuExpNameByIndex(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < kapuOrderExpress.length)) {
+      return kapuOrderExpress[paramInt];
+    }
+    return null;
+  }
+  
   public static int getProcessWidth()
   {
     valueMap.clear();
@@ -888,6 +856,57 @@ public class FilamentUtil
     return new float[] { Math.round(f1 * paramFloat2 * 100.0F) / 100.0F, Math.round(f2 * 100.0F) / 100.0F, Math.round(paramFloat1 * paramFloat2 * 100.0F) / 100.0F };
   }
   
+  public static byte[] loadAndTryDecryptGlb(String paramString1, String paramString2, String paramString3)
+  {
+    int i = 0;
+    byte[] arrayOfByte = new byte[0];
+    if ((paramString1 == null) || (paramString1.isEmpty())) {
+      return arrayOfByte;
+    }
+    for (;;)
+    {
+      try
+      {
+        String str1 = FileUtils.getRealDirPath(paramString1);
+        String str2 = FileUtils.getFileName(paramString1);
+        paramString2 = str1 + "/" + str2 + paramString2;
+        str1 = str1 + "/" + str2 + paramString3;
+        paramString3 = fetchInputStream(paramString2);
+        paramString2 = paramString3;
+        if (paramString3 == null)
+        {
+          paramString2 = fetchInputStream(str1);
+          i = 1;
+        }
+        if (paramString2 == null) {
+          break;
+        }
+        if (i != 0) {}
+        paramString3 = FileUtils.loadByteArray(paramString2);
+      }
+      catch (Exception paramString1)
+      {
+        try
+        {
+          paramString3 = getEncryptBytes(paramString2, getEncryptLength(paramString2));
+          paramString3 = mergeBytes(VideoTemplateParser.decryptListener.decrypt(paramString3), getRemainedBytes(paramString2));
+          Log.d(TAG, "loadAndTryDecryptGlb: output decrypted bytes" + paramString1);
+          paramString1 = paramString3;
+          return paramString1;
+        }
+        finally
+        {
+          IOUtils.closeQuietly(paramString2);
+        }
+        paramString1 = paramString1;
+        paramString1.printStackTrace();
+        return arrayOfByte;
+      }
+      Log.d(TAG, "loadAndTryDecryptGlb: output raw bytes" + paramString1);
+      paramString1 = paramString3;
+    }
+  }
+  
   public static Material loadMaterial(Context paramContext, Engine paramEngine, String paramString)
   {
     paramContext = ByteBuffer.wrap(FileUtils.loadByteArray(paramContext, paramString));
@@ -991,6 +1010,57 @@ public class FilamentUtil
       }
     }
     paramFilamentAsset.setMorphWeights(paramNodeItemJava.name, arrayOfFloat);
+  }
+  
+  public static void setMorphWeightsKapu(FilamentJNI paramFilamentJNI, float[] paramArrayOfFloat, int paramInt, List<AnimojiExpressionJava> paramList)
+  {
+    if ((paramArrayOfFloat == null) || (paramList == null))
+    {
+      paramFilamentJNI.setKapuWeights(paramInt, new String[0], new float[0]);
+      return;
+    }
+    HashMap localHashMap = new HashMap();
+    Object localObject1 = kapuOrderExpress;
+    int j = localObject1.length;
+    int i = 0;
+    Object localObject2;
+    while (i < j)
+    {
+      localObject2 = localObject1[i];
+      if (expName2Index.containsKey(localObject2)) {
+        localHashMap.put(localObject2, Float.valueOf(paramArrayOfFloat[((Integer)expName2Index.get(localObject2)).intValue()]));
+      }
+      i += 1;
+    }
+    paramArrayOfFloat = paramList.iterator();
+    float f;
+    while (paramArrayOfFloat.hasNext())
+    {
+      paramList = (AnimojiExpressionJava)paramArrayOfFloat.next();
+      if (localHashMap.containsKey(paramList.controlledName))
+      {
+        f = adjustValue(((Float)localHashMap.get(paramList.controlledName)).floatValue(), paramList.shapeRange.min, paramList.shapeRange.max, paramList.controlledRange.min, paramList.controlledRange.max);
+        localHashMap.put(paramList.controlledName, Float.valueOf(f));
+      }
+    }
+    paramArrayOfFloat = new String[localHashMap.size()];
+    paramList = new float[localHashMap.size()];
+    localObject1 = localHashMap.keySet().iterator();
+    i = 0;
+    if (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (String)((Iterator)localObject1).next();
+      paramArrayOfFloat[i] = localObject2;
+      localObject2 = (Float)localHashMap.get(localObject2);
+      if (localObject2 != null) {}
+      for (f = ((Float)localObject2).floatValue();; f = 0.0F)
+      {
+        paramList[i] = f;
+        i += 1;
+        break;
+      }
+    }
+    paramFilamentJNI.setKapuWeights(paramInt, paramArrayOfFloat, paramList);
   }
   
   private static void threeaxisrot(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float[] paramArrayOfFloat)

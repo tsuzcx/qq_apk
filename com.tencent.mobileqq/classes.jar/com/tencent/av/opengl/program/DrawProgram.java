@@ -1,15 +1,15 @@
 package com.tencent.av.opengl.program;
 
-import lrb;
-import lrc;
-import lrd;
+import lro;
+import lrp;
+import lrq;
 
 public class DrawProgram
   extends TextureProgram
 {
   public DrawProgram()
   {
-    super("uniform mat4 uMatrix;attribute vec2 aPosition;void main() {vec4 pos = vec4 (aPosition, 0.0, 1.0);gl_Position  = uMatrix * pos;}", "precision mediump float;uniform vec4 uColor;void main() {gl_FragColor = uColor;}", new lrc[] { new lrb("aPosition"), new lrd("uMatrix"), new lrd("uColor") }, false);
+    super("uniform mat4 uMatrix;attribute vec2 aPosition;void main() {vec4 pos = vec4 (aPosition, 0.0, 1.0);gl_Position  = uMatrix * pos;}", "precision mediump float;uniform vec4 uColor;void main() {gl_FragColor = uColor;}", new lrp[] { new lro("aPosition"), new lrq("uMatrix"), new lrq("uColor") }, false);
   }
 }
 

@@ -1,28 +1,42 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBatchFeedFeature;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedFeature;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDelFeedComment;
 
 public class wgd
-  extends vqm
+  extends whv
 {
-  public List<vwa> a = new ArrayList();
+  qqstory_service.RspDelFeedComment jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment;
+  whw jdField_a_of_type_Whw;
   
-  public wgd(qqstory_service.RspGetBatchFeedFeature paramRspGetBatchFeedFeature)
+  public wgd(qqstory_service.RspDelFeedComment paramRspDelFeedComment, whw paramwhw)
   {
-    if ((paramRspGetBatchFeedFeature.feed_feature_list.has()) && (!paramRspGetBatchFeedFeature.feed_feature_list.isEmpty()))
-    {
-      paramRspGetBatchFeedFeature = paramRspGetBatchFeedFeature.feed_feature_list.get().iterator();
-      while (paramRspGetBatchFeedFeature.hasNext())
-      {
-        qqstory_struct.FeedFeature localFeedFeature = (qqstory_struct.FeedFeature)paramRspGetBatchFeedFeature.next();
-        vwa localvwa = new vwa();
-        localvwa.a(localFeedFeature);
-        this.a.add(localvwa);
-      }
-    }
+    super(paramRspDelFeedComment.result);
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment = paramRspDelFeedComment;
+    this.jdField_a_of_type_Whw = paramwhw;
+  }
+  
+  public wgd(whw paramwhw)
+  {
+    this.jdField_a_of_type_Whw = paramwhw;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Whw.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment);
+  }
+  
+  public void a(int paramInt, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Whw.a(paramInt, paramBundle);
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Whw.a(paramInt, paramString);
+  }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Whw.a(paramBoolean, paramBundle);
   }
 }
 

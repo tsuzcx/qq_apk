@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search;
 
-import basg;
+import bbyv;
 
 class HotWordSearchEntryModel$5$1
   implements Runnable

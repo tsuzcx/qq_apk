@@ -1,26 +1,21 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import tencent.im.msg.im_msg_body.RichText;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
-class auwz
-  implements ayeo
+public class auwz
+  implements View.OnTouchListener
 {
-  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
-  {
-    return null;
-  }
+  public auwz(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public void onSend(ayep paramayep)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramayep.a == 0)
-    {
-      paramayep = paramayep.c;
-      auwx.a().a(paramayep);
-      return;
+    if ((paramMotionEvent.getAction() == 1) && (QSecFramework.a().a(1001).booleanValue())) {
+      QSecFramework.a().a(5, 0, 2, new Object[] { Integer.valueOf(83), Integer.valueOf(1), Integer.valueOf(6), "clickWeb", null }, null);
     }
-    auwx.a().a();
+    return false;
   }
-  
-  public void updateMsg(ayep paramayep) {}
 }
 
 

@@ -1,6 +1,50 @@
-public abstract interface zyg
+public class zyg
 {
-  public abstract void a(long paramLong);
+  private volatile int jdField_a_of_type_Int = 0;
+  private zyq jdField_a_of_type_Zyq;
+  
+  public void a()
+  {
+    a(-1);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    if (this.jdField_a_of_type_Zyq != null) {}
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
+    case -1: 
+      this.jdField_a_of_type_Zyq.p();
+      return;
+    case 1: 
+      this.jdField_a_of_type_Zyq.n();
+      return;
+    case 2: 
+      this.jdField_a_of_type_Zyq.m();
+      return;
+    }
+    this.jdField_a_of_type_Zyq.o();
+  }
+  
+  public void a(zyq paramzyq)
+  {
+    this.jdField_a_of_type_Zyq = paramzyq;
+    a(this.jdField_a_of_type_Int);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == -1;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Int == 1;
+  }
 }
 
 

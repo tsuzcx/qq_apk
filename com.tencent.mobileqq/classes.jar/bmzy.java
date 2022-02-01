@@ -1,24 +1,30 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.capture.view.VideoCoverPickerProviderView;
-import java.lang.ref.WeakReference;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.widget.NumberCheckBox;
+import java.util.ArrayList;
+import mqq.util.WeakReference;
 
-public class bmzy
-  implements View.OnClickListener
+class bmzy
+  implements View.OnTouchListener
 {
-  public bmzy(VideoCoverPickerProviderView paramVideoCoverPickerProviderView) {}
+  bmzy(bmzr parambmzr, bmyx parambmyx, int paramInt) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (VideoCoverPickerProviderView.a(this.a) != null)
+    if (this.jdField_a_of_type_Bmyx.a.isChecked())
     {
-      bmzz localbmzz = (bmzz)VideoCoverPickerProviderView.a(this.a).get();
-      if (localbmzz != null) {
-        localbmzz.a(VideoCoverPickerProviderView.b(this.a), false);
+      paramView = (LocalMediaInfo)bmzr.a(this.jdField_a_of_type_Bmzr).get(this.jdField_a_of_type_Int);
+      bmzr.a(this.jdField_a_of_type_Bmzr, paramView, this.jdField_a_of_type_Bmyx);
+      bmzr.a(this.jdField_a_of_type_Bmzr, this.jdField_a_of_type_Bmyx);
+      bmzr.a(this.jdField_a_of_type_Bmzr);
+      if (bmzr.b(this.jdField_a_of_type_Bmzr).isEmpty()) {
+        ((bmyq)this.jdField_a_of_type_Bmzr.a.get()).a.notifyDataSetChanged();
       }
+      return true;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return false;
   }
 }
 

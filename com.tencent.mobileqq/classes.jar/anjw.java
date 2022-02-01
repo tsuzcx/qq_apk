@@ -1,17 +1,19 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.apollo.utils.ApolloConfigDataReport.1;
 import com.tencent.qphone.base.util.QLog;
 
-class anjw
-  implements DialogInterface.OnCancelListener
+public class anjw
+  implements ammv
 {
-  anjw(anjr paramanjr, Activity paramActivity) {}
+  public anjw(ApolloConfigDataReport.1 param1) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void a(int paramInt1, int paramInt2)
   {
-    QLog.d("AccountIdentityManager", 1, "dialog cancel");
-    anjr.a(this.jdField_a_of_type_Anjr, this.jdField_a_of_type_AndroidAppActivity);
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloConfigDataReport", 2, new Object[] { "checkReportConfigJson errorCode:", Integer.valueOf(paramInt1), ", httpCode:", Integer.valueOf(paramInt2) });
+    }
+    if ((paramInt1 == 0) && (paramInt2 == 200)) {
+      anjv.b();
+    }
   }
 }
 

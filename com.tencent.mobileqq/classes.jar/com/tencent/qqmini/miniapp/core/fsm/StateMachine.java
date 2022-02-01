@@ -204,7 +204,7 @@ public class StateMachine<T, E>
     if ((paramState == null) || (paramState == this.mCurrState)) {
       return;
     }
-    StringBuilder localStringBuilder = new StringBuilder().append(getClass().getSimpleName()).append(" change state from ");
+    StringBuilder localStringBuilder = new StringBuilder().append(getClass().getSimpleName()).append("(").append(this).append(") change state from ");
     if (this.mCurrState != null) {}
     for (Object localObject = this.mCurrState.id;; localObject = "N/A")
     {

@@ -1,36 +1,67 @@
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import java.util.HashMap;
-import org.json.JSONObject;
-
-public class bgpc
-  extends blas
+class bgpc
+  extends bgoh
 {
-  private HashMap<String, blas> a;
-  
-  public bgpc(String paramString, View paramView, HashMap<String, blas> paramHashMap)
+  bgpc(bgpb parambgpb, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    super(paramString, paramView);
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
   }
   
-  protected ViewGroup.LayoutParams a(ViewGroup.LayoutParams paramLayoutParams, JSONObject paramJSONObject)
+  public void a(int paramInt, Object paramObject, blfm[] paramArrayOfblfm)
   {
-    int i = UIUtils.getScreenWidth(this.jdField_a_of_type_AndroidViewView.getContext());
-    paramLayoutParams.width = Math.max((int)(i * 108.0F / 360.0F), UIUtils.dip2px(this.jdField_a_of_type_AndroidViewView.getContext(), 108.0F));
-    paramLayoutParams.height = Math.max((int)(i * 126.0F / 360.0F), UIUtils.dip2px(this.jdField_a_of_type_AndroidViewView.getContext(), 126.0F));
-    return paramLayoutParams;
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    if ("border".equals(paramString1))
+    if ((paramObject instanceof Object[]))
     {
-      if ((blas)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1) != null) {}
-      return;
+      paramObject = (Object[])paramObject;
+      if (paramObject.length == 2) {
+        break label22;
+      }
     }
-    super.a(paramString1, paramString2);
+    label22:
+    do
+    {
+      do
+      {
+        return;
+        paramObject = paramObject[0];
+      } while (!(paramObject instanceof boolean[]));
+      paramObject = (boolean[])paramObject;
+    } while ((paramArrayOfblfm == null) || (paramArrayOfblfm.length <= 0) || (paramObject.length != 3));
+    if ((paramArrayOfblfm.length < 0) && (paramObject[0] != 0))
+    {
+      paramArrayOfblfm[0].b = 0;
+      paramArrayOfblfm[0].a = 0;
+    }
+    for (int i = 1;; i = 0)
+    {
+      paramInt = i;
+      if (i < paramArrayOfblfm.length)
+      {
+        paramInt = i;
+        if (paramObject[1] != 0)
+        {
+          paramArrayOfblfm[i].b = 1;
+          paramArrayOfblfm[i].a = 1;
+          paramInt = i + 1;
+        }
+      }
+      i = paramInt;
+      if (paramInt < paramArrayOfblfm.length)
+      {
+        i = paramInt;
+        if (paramObject[2] != 0)
+        {
+          paramArrayOfblfm[paramInt].b = 2;
+          paramArrayOfblfm[paramInt].a = 0;
+          i = paramInt + 1;
+        }
+      }
+      while (i < paramArrayOfblfm.length)
+      {
+        paramArrayOfblfm[i].b = -1;
+        paramArrayOfblfm[i].a = -1;
+        i += 1;
+      }
+      break;
+    }
   }
 }
 

@@ -1,19 +1,13 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.emosm.web.IPCConstants.1;
+import java.util.HashMap;
 
-public class asgs
-  extends asgm
+public abstract interface asgs
 {
-  int a;
-  int b;
-  
-  public asgs(FileManagerEntity paramFileManagerEntity)
-  {
-    super(paramFileManagerEntity);
-  }
+  public static final HashMap<String, Integer> a = new IPCConstants.1();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asgs
  * JD-Core Version:    0.7.0.1
  */

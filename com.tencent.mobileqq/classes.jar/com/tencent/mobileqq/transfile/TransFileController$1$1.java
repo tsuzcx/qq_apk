@@ -1,13 +1,15 @@
 package com.tencent.mobileqq.transfile;
 
-import amov;
-import ampl;
 import android.content.Intent;
-import awka;
-import ayeo;
-import ayep;
-import bfrj;
-import bfyz;
+import anri;
+import anry;
+import aoks;
+import axqc;
+import azla;
+import azlb;
+import bhaa;
+import bhhr;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -17,7 +19,7 @@ import mqq.os.MqqHandler;
 import tencent.im.msg.im_msg_body.RichText;
 
 class TransFileController$1$1
-  implements ayeo
+  implements azla
 {
   TransFileController$1$1(TransFileController.1 param1, boolean paramBoolean, String paramString) {}
   
@@ -26,7 +28,7 @@ class TransFileController$1$1
     return null;
   }
   
-  public void onSend(ayep paramayep)
+  public void onSend(azlb paramazlb)
   {
     int j = 0;
     Object localObject;
@@ -34,21 +36,21 @@ class TransFileController$1$1
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder().append(" onSend result is null ? ");
-      if (paramayep != null) {
+      if (paramazlb != null) {
         break label70;
       }
       bool = true;
       localObject = ((StringBuilder)localObject).append(bool).append(" result is: ");
-      if (paramayep != null) {
+      if (paramazlb != null) {
         break label76;
       }
     }
     label70:
     label76:
-    for (int i = -99;; i = paramayep.a)
+    for (int i = -99;; i = paramazlb.a)
     {
       QLog.i("NearbyPeoplePhotoUploadProcessor", 2, i);
-      if (paramayep != null) {
+      if (paramazlb != null) {
         break label84;
       }
       return;
@@ -56,66 +58,66 @@ class TransFileController$1$1
       break;
     }
     label84:
-    if (paramayep.a == 0)
+    if (paramazlb.a == 0)
     {
       bool = true;
       label94:
-      localObject = (amov)this.this$1.val$app.getBusinessHandler(2);
+      localObject = (anri)this.this$1.val$app.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
       if (localObject == null) {
-        break label229;
+        break label231;
       }
-      ((amov)localObject).a(bool, this.this$1.val$app.getCurrentAccountUin(), paramayep.b);
+      ((anri)localObject).a(bool, this.this$1.val$app.getCurrentAccountUin(), paramazlb.b);
       if (bool) {
-        break label236;
+        break label238;
       }
-      bfrj.a("TransferRequest.onSend", paramayep.b, paramayep.toString());
+      bhaa.a("TransferRequest.onSend", paramazlb.b, paramazlb.toString());
       if (!"FROM_MINI_APP".equals(this.val$tempfrom)) {
-        break label397;
+        break label401;
       }
       if (!bool) {
-        break label399;
+        break label403;
       }
       i = j;
       if (!bool) {
-        break label406;
+        break label410;
       }
     }
-    label136:
-    label154:
-    label173:
-    for (paramayep = "ok";; paramayep = "upload failed")
+    label138:
+    label156:
+    label175:
+    for (paramazlb = "ok";; paramazlb = "upload failed")
     {
       this.this$1.val$intent.putExtra("param_result_code", i);
-      this.this$1.val$intent.putExtra("param_result_desc", paramayep);
-      ampl.a().a(this.this$1.val$intent);
+      this.this$1.val$intent.putExtra("param_result_desc", paramazlb);
+      anry.a().a(this.this$1.val$intent);
       return;
       bool = false;
       break label94;
-      label229:
-      bfrj.a(null);
-      break label136;
-      label236:
-      if (((Integer)awka.a(this.this$1.val$app.getAccount(), "qq_avatar_type", Integer.valueOf(-1))).intValue() != 1) {
-        awka.a(this.this$1.val$app.getAccount(), "qq_avatar_type", Integer.valueOf(1));
+      label231:
+      aoks.a(null);
+      break label138;
+      label238:
+      if (((Integer)axqc.a(this.this$1.val$app.getAccount(), "qq_avatar_type", Integer.valueOf(-1))).intValue() != 1) {
+        axqc.a(this.this$1.val$app.getAccount(), "qq_avatar_type", Integer.valueOf(1));
       }
       if (this.val$tempisSyncQZone) {
         ThreadManager.getUIHandler().post(new TransFileController.1.1.1(this));
       }
-      if (bfyz.ag(this.this$1.val$app.getApp(), this.this$1.val$app.getCurrentAccountUin()) == 2) {
-        break label154;
+      if (bhhr.ag(this.this$1.val$app.getApp(), this.this$1.val$app.getCurrentAccountUin()) == 2) {
+        break label156;
       }
-      paramayep = (amov)this.this$1.val$app.getBusinessHandler(2);
+      paramazlb = (anri)this.this$1.val$app.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
       localObject = new ArrayList();
       ((ArrayList)localObject).add(Integer.valueOf(42104));
-      paramayep.a(this.this$1.val$app.getCurrentAccountUin(), this.this$1.val$app.getCurrentAccountUin(), 0, (ArrayList)localObject);
-      break label154;
+      paramazlb.a(this.this$1.val$app.getCurrentAccountUin(), this.this$1.val$app.getCurrentAccountUin(), 0, (ArrayList)localObject);
+      break label156;
       break;
       i = -10002;
-      break label173;
+      break label175;
     }
   }
   
-  public void updateMsg(ayep paramayep) {}
+  public void updateMsg(azlb paramazlb) {}
 }
 
 

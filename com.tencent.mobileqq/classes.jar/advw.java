@@ -1,21 +1,30 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class advw
-  implements bjoe
+  extends anub
 {
-  public advw(PhoneUnityChangeActivity paramPhoneUnityChangeActivity) {}
+  public advw(EditActivity paramEditActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void onModifyFavData(boolean paramBoolean, Object paramObject)
   {
-    this.a.jdField_a_of_type_Bjnw.cancel();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bfur.a(this.a, 230, amtj.a(2131707152), amtj.a(2131707142), amtj.a(2131707130), amtj.a(2131707133), new advx(this), new advy(this));
+    EditActivity.a(this.a);
+    if (paramBoolean)
+    {
+      paramObject = (CustomEmotionData)paramObject;
+      if (paramObject != null)
+      {
+        ((asfl)this.a.app.getManager(QQManagerFactory.FAV_ROAMING_MANAGER)).c(paramObject);
+        EditActivity.b(this.a);
+      }
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (!this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) && (!this.a.isFinishing())) {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+    while (!(paramObject instanceof String)) {
+      return;
     }
+    QQToast.a(this.a, 1, (String)paramObject, 1).a();
   }
 }
 

@@ -1,69 +1,29 @@
-import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 
 public class bfxy
+  implements Comparable<bfxy>
 {
-  private float jdField_a_of_type_Float;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Sensor jdField_a_of_type_AndroidHardwareSensor;
-  public SensorEventListener a;
-  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bfya(this, Looper.getMainLooper());
-  private bfyb jdField_a_of_type_Bfyb;
-  public boolean a;
-  private boolean b;
+  public int a;
+  public TroopInfo a;
+  public String a;
+  public int b;
   
-  public bfxy(Context paramContext, bfyb parambfyb)
+  public int a(@NonNull bfxy parambfxy)
   {
-    this.jdField_a_of_type_AndroidHardwareSensorEventListener = new bfxz(this);
-    this.jdField_a_of_type_Bfyb = parambfyb;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQLSSensor", 2, "LSSensor open=====");
+    if (this.b != parambfxy.b) {
+      return this.b - parambfxy.b;
     }
-    this.b = false;
-    this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("sensor"));
-    this.jdField_a_of_type_AndroidHardwareSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(8);
-    if (this.jdField_a_of_type_AndroidHardwareSensor != null)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidHardwareSensor.getMaximumRange();
-      if (this.jdField_a_of_type_Float > 10.0F) {
-        this.jdField_a_of_type_Float = 10.0F;
-      }
-      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_AndroidHardwareSensorEventListener, this.jdField_a_of_type_AndroidHardwareSensor, 2);
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.lastMsgTime != parambfxy.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.lastMsgTime) {
+      return (int)(parambfxy.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.lastMsgTime - this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.lastMsgTime);
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Bfyb.a(this.b);
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQLSSensor", 2, "LSSensor shutdown=====");
+    if (parambfxy.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopCreateTime != this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopCreateTime) {
+      return (int)(parambfxy.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopCreateTime - this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopCreateTime);
     }
-    if (this.jdField_a_of_type_AndroidHardwareSensorManager != null)
-    {
-      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_AndroidHardwareSensorEventListener);
-      this.jdField_a_of_type_AndroidHardwareSensorManager = null;
+    if (this.jdField_a_of_type_Int != parambfxy.jdField_a_of_type_Int) {
+      return this.jdField_a_of_type_Int - parambfxy.jdField_a_of_type_Int;
     }
-    try
-    {
-      this.jdField_a_of_type_Bfyb = null;
-      this.jdField_a_of_type_AndroidHardwareSensor = null;
-      return;
-    }
-    finally {}
+    return this.jdField_a_of_type_JavaLangString.compareTo(parambfxy.jdField_a_of_type_JavaLangString);
   }
 }
 

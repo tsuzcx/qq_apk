@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.automator;
 
-import onz;
-import ooa;
-import ooe;
+import ovw;
+import ovx;
+import owb;
 
 public class SyncSteps$1
   implements Runnable
 {
-  public SyncSteps$1(ooe paramooe, ooa paramooa) {}
+  public SyncSteps$1(owb paramowb, ovx paramovx) {}
   
   public void run()
   {

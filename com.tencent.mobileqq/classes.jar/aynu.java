@@ -1,9 +1,9 @@
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.vfs.VFSAssistantUtils;
+import android.app.Dialog;
+import android.view.View;
 
-public class aynu
+public abstract interface aynu
 {
-  public static final String a = VFSAssistantUtils.getSDKPrivatePath(new StringBuilder().append(AppConstants.SDCARD_PATH).append(".profilecard/").toString()) + "diyCardFonts/";
+  public abstract void a(Dialog paramDialog, View paramView, aynt paramaynt);
 }
 
 

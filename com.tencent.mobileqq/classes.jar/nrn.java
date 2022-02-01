@@ -1,133 +1,62 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.biz.lebasearch.SearchProtocol;
-import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
-import com.tencent.mobileqq.dynamic_search.mobileqq_dynamic_search.ResponseBody;
-import com.tencent.mobileqq.dynamic_search.mobileqq_dynamic_search.ResultItem;
-import com.tencent.mobileqq.dynamic_search.mobileqq_dynamic_search.ResultItemGroup;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.observer.BusinessObserver;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.avgame.gamelogic.data.RoomInfo;
+import com.tencent.avgame.gamelogic.data.SurvivalPkResultInfo;
+import java.util.HashMap;
 
-public final class nrn
-  implements BusinessObserver
+public class nrn
+  implements ngx
 {
-  public nrn(Handler paramHandler) {}
+  public void a(int paramInt, String paramString1, String paramString2, nfv paramnfv) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(long paramLong, String paramString1, boolean paramBoolean, String paramString2, int paramInt) {}
+  
+  public void a(long paramLong, boolean paramBoolean) {}
+  
+  public void a(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void a(String paramString, int paramInt, nfv paramnfv) {}
+  
+  public void a(String paramString, nfv paramnfv) {}
+  
+  public void a(HashMap<String, String> paramHashMap) {}
+  
+  public void a(nfv paramnfv) {}
+  
+  public void a(nfv paramnfv, int paramInt) {}
+  
+  public void a(boolean paramBoolean, int paramInt, String paramString) {}
+  
+  public void a(boolean paramBoolean, int paramInt, String paramString, RoomInfo paramRoomInfo, byte[] paramArrayOfByte, long paramLong) {}
+  
+  public void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2, SurvivalPkResultInfo paramSurvivalPkResultInfo) {}
+  
+  public void a(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, String paramString) {}
+  
+  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString) {}
+  
+  public boolean a(int paramInt, String paramString, nfv paramnfv)
   {
-    if (paramBoolean)
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
-      {
-        Object localObject = new mobileqq_dynamic_search.ResponseBody();
-        for (;;)
-        {
-          try
-          {
-            ((mobileqq_dynamic_search.ResponseBody)localObject).mergeFrom(paramBundle);
-            paramInt = ((mobileqq_dynamic_search.ResponseBody)localObject).retcode.get();
-            if (paramInt != 0)
-            {
-              if (!QLog.isColorLevel()) {
-                break label472;
-              }
-              QLog.d("lebasearch.SearchProtocol", 2, "retcode:" + paramInt);
-              return;
-            }
-            if ((!((mobileqq_dynamic_search.ResponseBody)localObject).item_groups.has()) || (!((mobileqq_dynamic_search.ResultItemGroup)((mobileqq_dynamic_search.ResponseBody)localObject).item_groups.get(0)).result_items.has())) {
-              break label472;
-            }
-            paramBundle = ((mobileqq_dynamic_search.ResultItemGroup)((mobileqq_dynamic_search.ResponseBody)localObject).item_groups.get(0)).result_items.get();
-            localArrayList = new ArrayList();
-            Iterator localIterator = paramBundle.iterator();
-            if (!localIterator.hasNext()) {
-              continue;
-            }
-            localResultItem = (mobileqq_dynamic_search.ResultItem)localIterator.next();
-            localWordItem = new SearchProtocol.WordItem();
-            if (!localResultItem.word.has()) {
-              continue;
-            }
-            localWordItem.word = localResultItem.word.get().toStringUtf8();
-            localWordItem.id = localResultItem.result_id.get().toStringUtf8();
-            if (localResultItem.extension.has())
-            {
-              localObject = localResultItem.extension.get().toStringUtf8();
-              if (QLog.isColorLevel()) {
-                QLog.d("lebasearch.SearchProtocol", 2, "extension info:" + (String)localObject);
-              }
-              paramBoolean = TextUtils.isEmpty((CharSequence)localObject);
-              if (!paramBoolean) {
-                paramBundle = null;
-              }
-            }
-          }
-          catch (InvalidProtocolBufferMicroException paramBundle)
-          {
-            ArrayList localArrayList;
-            mobileqq_dynamic_search.ResultItem localResultItem;
-            SearchProtocol.WordItem localWordItem;
-            if (!QLog.isColorLevel()) {
-              break label472;
-            }
-            QLog.d("lebasearch.SearchProtocol", 2, paramBundle.getMessage());
-            return;
-            paramBundle = this.a.obtainMessage();
-            paramBundle.arg1 = 0;
-            paramBundle.obj = localArrayList;
-            this.a.sendMessage(paramBundle);
-          }
-          try
-          {
-            localObject = new JSONObject((String)localObject);
-            paramBundle = (Bundle)localObject;
-          }
-          catch (JSONException localJSONException)
-          {
-            localJSONException.printStackTrace();
-            continue;
-            paramInt = paramBundle.optInt("type");
-          }
-        }
-        if (paramBundle == null)
-        {
-          paramInt = 0;
-          if ((paramInt == 2) && (localResultItem.jmp_url.has()) && (!TextUtils.isEmpty(localResultItem.jmp_url.get().toStringUtf8())))
-          {
-            localWordItem.type = paramInt;
-            localWordItem.jumpUrl = localResultItem.jmp_url.get().toStringUtf8();
-            paramInt = SearchProtocol.a(paramBundle.optString("color"));
-            if (paramInt == 0) {
-              break label473;
-            }
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      localWordItem.textColor = paramInt;
-      localWordItem.frameColor = SearchProtocol.a(paramBundle.optString("framecolor"));
-      localArrayList.add(localWordItem);
-      break;
-      label472:
-      return;
-      label473:
-      paramInt = -16734752;
-    }
+    return false;
   }
+  
+  public void b(String paramString, nfv paramnfv) {}
+  
+  public void b(nfv paramnfv) {}
+  
+  public void b(boolean paramBoolean) {}
+  
+  public void b(boolean paramBoolean, int paramInt, String paramString, RoomInfo paramRoomInfo, byte[] paramArrayOfByte, long paramLong) {}
+  
+  public void c(String paramString, nfv paramnfv) {}
+  
+  public void c(nfv paramnfv, int paramInt) {}
+  
+  public void g() {}
+  
+  public void h() {}
+  
+  public void i() {}
+  
+  public void j() {}
 }
 
 

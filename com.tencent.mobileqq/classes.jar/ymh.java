@@ -1,11 +1,12 @@
-import java.util.List;
-import javax.annotation.Nonnull;
+import android.view.View;
+import android.widget.ImageView;
 
-public abstract interface ymh
+class ymh
 {
-  public abstract void a(int paramInt, @Nonnull List<ymk> paramList, boolean paramBoolean);
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
   
-  public abstract void b(int paramInt, @Nonnull List<ymk> paramList, boolean paramBoolean);
+  ymh(ymg paramymg) {}
 }
 
 

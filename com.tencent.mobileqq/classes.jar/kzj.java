@@ -1,107 +1,139 @@
-import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import java.io.IOException;
-import java.io.InterruptedIOException;
-import java.net.SocketException;
-import java.net.UnknownHostException;
-import java.util.HashSet;
-import java.util.Iterator;
-import javax.net.ssl.SSLException;
-import org.apache.http.NoHttpResponseException;
-import org.apache.http.client.HttpRequestRetryHandler;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.protocol.HttpContext;
+import org.apache.http.Header;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.apache.http.client.HttpResponseException;
+import org.apache.http.entity.BufferedHttpEntity;
+import org.apache.http.util.EntityUtils;
 
-class kzj
-  implements HttpRequestRetryHandler
+public class kzj
 {
-  private static HashSet<Class<?>> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private static HashSet<Class<?>> b = new HashSet();
-  private final int jdField_a_of_type_Int;
+  private Handler a;
   
-  static
+  public kzj()
   {
-    jdField_a_of_type_JavaUtilHashSet.add(NoHttpResponseException.class);
-    jdField_a_of_type_JavaUtilHashSet.add(UnknownHostException.class);
-    jdField_a_of_type_JavaUtilHashSet.add(SocketException.class);
-    b.add(InterruptedIOException.class);
-    b.add(SSLException.class);
-  }
-  
-  public kzj(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  protected boolean a(HashSet<Class<?>> paramHashSet, Throwable paramThrowable)
-  {
-    paramHashSet = paramHashSet.iterator();
-    while (paramHashSet.hasNext()) {
-      if (((Class)paramHashSet.next()).isInstance(paramThrowable)) {
-        return true;
-      }
+    if (Looper.myLooper() != null) {
+      this.a = new kzk(this);
     }
-    return false;
   }
   
-  public boolean retryRequest(IOException paramIOException, int paramInt, HttpContext paramHttpContext)
+  protected Message a(int paramInt, Object paramObject)
   {
-    boolean bool2 = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("Translator", 2, "[retryRequest] exception:" + paramIOException + "executionCount:" + paramInt);
+    if (this.a != null) {
+      return this.a.obtainMessage(paramInt, paramObject);
     }
-    Boolean localBoolean = (Boolean)paramHttpContext.getAttribute("http.request_sent");
-    int i;
-    boolean bool1;
-    if ((localBoolean != null) && (localBoolean.booleanValue()))
+    Message localMessage = Message.obtain();
+    localMessage.what = paramInt;
+    localMessage.obj = paramObject;
+    return localMessage;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt, Header[] paramArrayOfHeader, String paramString) {}
+  
+  protected void a(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      i = 1;
-      if (paramInt <= this.jdField_a_of_type_Int) {
-        break label136;
-      }
-      bool1 = false;
+    default: 
+      return;
+    case 0: 
+      paramMessage = (Object[])paramMessage.obj;
+      c(((Integer)paramMessage[0]).intValue(), (Header[])paramMessage[1], (String)paramMessage[2]);
+      return;
+    case 1: 
+      paramMessage = (Object[])paramMessage.obj;
+      c((Throwable)paramMessage[0], (String)paramMessage[1]);
+      return;
+    case 2: 
+      a();
+      return;
     }
-    for (;;)
+    b();
+  }
+  
+  public void a(Throwable paramThrowable, String paramString) {}
+  
+  public void a(Throwable paramThrowable, byte[] paramArrayOfByte)
+  {
+    b(a(1, new Object[] { paramThrowable, paramArrayOfByte }));
+  }
+  
+  public void a(HttpResponse paramHttpResponse)
+  {
+    StatusLine localStatusLine = paramHttpResponse.getStatusLine();
+    try
     {
-      label83:
-      if (bool1) {
-        if (!((HttpUriRequest)paramHttpContext.getAttribute("http.request")).getMethod().equals("POST")) {
-          bool1 = bool2;
-        }
+      localObject = paramHttpResponse.getEntity();
+      if (localObject == null) {
+        break label79;
       }
+      localObject = EntityUtils.toString(new BufferedHttpEntity((HttpEntity)localObject), "UTF-8");
+    }
+    catch (IOException localIOException)
+    {
+      label79:
+      String str;
       for (;;)
       {
-        if (bool1)
-        {
-          SystemClock.sleep(1500L);
-          return bool1;
-          i = 0;
-          break;
-          label136:
-          if (a(b, paramIOException))
-          {
-            bool1 = false;
-            break label83;
-          }
-          if (a(jdField_a_of_type_JavaUtilHashSet, paramIOException))
-          {
-            bool1 = true;
-            break label83;
-          }
-          if (i != 0) {
-            break label197;
-          }
-          bool1 = true;
-          break label83;
-          bool1 = false;
-          continue;
-        }
-        paramIOException.printStackTrace();
-        return bool1;
+        Object localObject;
+        b(localIOException, (String)null);
+        str = "";
       }
-      label197:
-      bool1 = true;
+      b(localStatusLine.getStatusCode(), paramHttpResponse.getAllHeaders(), str);
     }
+    if (localStatusLine.getStatusCode() >= 300)
+    {
+      b(new HttpResponseException(localStatusLine.getStatusCode(), localStatusLine.getReasonPhrase()), (String)localObject);
+      return;
+    }
+  }
+  
+  public void b() {}
+  
+  protected void b(int paramInt, Header[] paramArrayOfHeader, String paramString)
+  {
+    b(a(0, new Object[] { new Integer(paramInt), paramArrayOfHeader, paramString }));
+  }
+  
+  protected void b(Message paramMessage)
+  {
+    if (this.a != null)
+    {
+      this.a.sendMessage(paramMessage);
+      return;
+    }
+    a(paramMessage);
+  }
+  
+  public void b(Throwable paramThrowable, String paramString)
+  {
+    b(a(1, new Object[] { paramThrowable, paramString }));
+  }
+  
+  public void c()
+  {
+    b(a(2, null));
+  }
+  
+  protected void c(int paramInt, Header[] paramArrayOfHeader, String paramString)
+  {
+    a(paramInt, paramArrayOfHeader, paramString);
+  }
+  
+  protected void c(Throwable paramThrowable, String paramString)
+  {
+    a(paramThrowable, paramString);
+  }
+  
+  public void d()
+  {
+    b(a(3, null));
   }
 }
 

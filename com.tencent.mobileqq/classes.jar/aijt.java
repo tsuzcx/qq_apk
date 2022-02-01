@@ -1,18 +1,17 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aijt
   implements View.OnClickListener
 {
-  aijt(aijs paramaijs, View paramView) {}
+  aijt(aijr paramaijr) {}
   
   public void onClick(View paramView)
   {
-    bcef.b(aijs.a(this.jdField_a_of_type_Aijs), "dc00899", "Grp_contacts_news", "", "notice", "verify_clk", 0, 0, "", "", "", "");
-    aijs.a(this.jdField_a_of_type_Aijs, true);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_Aijs.notifyDataSetChanged();
+    aijr.b(this.a);
+    bdla.b(null, "dc00898", "", "", "0X800B032", "0X800B032", 0, 0, "", "", aijr.a(this.a).curFriendUin, "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

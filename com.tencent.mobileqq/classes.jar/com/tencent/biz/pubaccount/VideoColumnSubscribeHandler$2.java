@@ -1,23 +1,23 @@
 package com.tencent.biz.pubaccount;
 
-import oej;
-import qoj;
-import qok;
+import oma;
+import rao;
+import rap;
 
 public class VideoColumnSubscribeHandler$2
   implements Runnable
 {
-  public VideoColumnSubscribeHandler$2(oej paramoej, int paramInt1, boolean paramBoolean, String paramString, int paramInt2) {}
+  public VideoColumnSubscribeHandler$2(oma paramoma, int paramInt1, boolean paramBoolean, String paramString, int paramInt2) {}
   
   public void run()
   {
     if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Boolean)) {
-      qoj.a.a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, String.valueOf(this.b), 1);
+      rao.a.a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, String.valueOf(this.b), 1);
     }
     while (this.jdField_a_of_type_Boolean) {
       return;
     }
-    qoj.a.a().a(true, "MATCH_ALL_UIN");
+    rao.a.a().a(true, "MATCH_ALL_UIN");
   }
 }
 

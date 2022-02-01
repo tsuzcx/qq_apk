@@ -1,13 +1,15 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
 
-public class agup
-  implements agut
+class agup
+  implements aueo
 {
-  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  agup(agtf paramagtf) {}
+  
+  public void onClick(View paramView)
   {
-    paramagap.f(paramafce, paramagcc, paramString);
+    paramView = atpj.a();
+    auea.c(this.a.a, paramView);
+    audy.a("0X8007FA2");
   }
 }
 

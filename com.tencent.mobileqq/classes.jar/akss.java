@@ -1,25 +1,27 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 
 public class akss
-  implements aktt
+  implements DialogInterface.OnClickListener
 {
-  public akss(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public akss(SendHbActivity paramSendHbActivity) {}
   
-  public void a(boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.r == 10011)
-    {
-      NewFlowCameraActivity.a(this.a, paramString1);
-      return;
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("hb_id", SendHbActivity.a(this.a));
+    paramDialogInterface.putExtra("send_uin", SendHbActivity.b(this.a));
+    paramDialogInterface.putExtra("hb_type", "1");
+    paramDialogInterface.putExtra("forward_text", this.a.getString(2131696773));
+    if (SendHbActivity.a(this.a)) {
+      paramDialogInterface.putExtra("item", 1);
     }
-    if (paramBoolean)
-    {
-      NewFlowCameraActivity.b(this.a, paramString1);
-      return;
-    }
-    this.a.i(true);
-    QQToast.a(this.a, amtj.a(2131706600), 0).a();
+    paramDialogInterface.putExtra("forward_type", 17);
+    paramDialogInterface.putExtra("invoke_from", "qwallet");
+    aupt.a(this.a, paramDialogInterface);
+    this.a.a(SendHbActivity.b(this.a), this.a.a(), "hongbao.wrapped.send", "", "");
   }
 }
 

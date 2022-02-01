@@ -1,9 +1,7 @@
 package com.tencent.mobileqq.emoticonview;
 
-import acvv;
-import agzi;
-import amsz;
-import amtj;
+import admh;
+import ahsj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -11,10 +9,12 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.EditText;
-import awhn;
-import bcef;
-import bchh;
-import bkfq;
+import anvn;
+import anvx;
+import axnp;
+import bdla;
+import bdof;
+import blrb;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
@@ -62,13 +62,13 @@ public class FavoriteEmoticonInfo
     localBundle.putInt("forward_type", -3);
     localBundle.putString("pkg_name", "com.tencent.mobileqq");
     localBundle.putInt("req_type", 5);
-    localBundle.putString("brief_key", amtj.a(2131703507));
+    localBundle.putString("brief_key", anvx.a(2131703858));
     localBundle.putString("app_name", "QQ动漫");
     localBundle.putString("struct_share_key_content_action_DATA", this.actionData);
-    StructMsgForImageShare.sendAndUploadImageShare(paramQQAppInterface, (StructMsgForImageShare)bchh.a(localBundle), paramSessionInfo.curFriendUin, paramSessionInfo.curType, paramSessionInfo.troopUin, 0);
-    paramSessionInfo = agzi.a(this.actionData);
+    StructMsgForImageShare.sendAndUploadImageShare(paramQQAppInterface, (StructMsgForImageShare)bdof.a(localBundle), paramSessionInfo.curFriendUin, paramSessionInfo.curType, paramSessionInfo.troopUin, 0);
+    paramSessionInfo = ahsj.a(this.actionData);
     if ((paramSessionInfo != null) && (paramSessionInfo.length >= 8)) {
-      bkfq.a(paramQQAppInterface, "100007", "2", "40051", paramSessionInfo[0], new String[] { paramSessionInfo[2], paramSessionInfo[4], agzi.a(this.actionData) });
+      blrb.a(paramQQAppInterface, "100007", "2", "40051", paramSessionInfo[0], new String[] { paramSessionInfo[2], paramSessionInfo[4], ahsj.a(this.actionData) });
     }
   }
   
@@ -80,7 +80,7 @@ public class FavoriteEmoticonInfo
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mRequestHeight = ((int)(100.0F * paramFloat));
       localURLDrawableOptions.mRequestWidth = ((int)(100.0F * paramFloat));
-      localURLDrawableOptions.mFailedDrawable = paramContext.getResources().getDrawable(2130843781);
+      localURLDrawableOptions.mFailedDrawable = paramContext.getResources().getDrawable(2130843819);
       localURLDrawableOptions.mLoadingDrawable = this.mEmptyDrawable;
       localURLDrawableOptions.mPlayGifImage = true;
       paramContext = URLDrawable.getDrawable(localURL, localURLDrawableOptions);
@@ -104,7 +104,7 @@ public class FavoriteEmoticonInfo
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mRequestHeight = paramInt1;
       localURLDrawableOptions.mRequestWidth = paramInt2;
-      localURLDrawableOptions.mFailedDrawable = paramContext.getResources().getDrawable(2130843781);
+      localURLDrawableOptions.mFailedDrawable = paramContext.getResources().getDrawable(2130843819);
       localURLDrawableOptions.mLoadingDrawable = this.mEmptyDrawable;
       localURLDrawableOptions.mPlayGifImage = true;
       paramContext = URLDrawable.getDrawable(localURL, localURLDrawableOptions);
@@ -453,38 +453,44 @@ public class FavoriteEmoticonInfo
   
   public void send(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo)
   {
-    long l = System.currentTimeMillis();
-    if (l - lastTime < 1000L)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FavoriteEmoticonInfo", 2, "send to offen,please try it later");
-      }
-      return;
+    if (paramQQAppInterface == null) {
+      QLog.e("FavoriteEmoticonInfo", 2, "app is null.");
     }
+    long l;
+    do
+    {
+      return;
+      l = System.currentTimeMillis();
+      if (l - lastTime >= 1000L) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("FavoriteEmoticonInfo", 2, "send to offen,please try it later");
+    return;
     lastTime = l;
-    if (agzi.a(this.actionData))
+    if (ahsj.a(this.actionData))
     {
       sendStructMsgForImage(paramQQAppInterface, paramSessionInfo);
       return;
     }
-    if (((paramContext instanceof BaseActivity)) && (awhn.a(paramSessionInfo.curType, paramSessionInfo.curFriendUin)))
+    if (((paramContext instanceof BaseActivity)) && (axnp.a(paramSessionInfo.curType, paramSessionInfo.curFriendUin)))
     {
       paramContext = (BaseActivity)paramContext;
-      QQToast.a(paramQQAppInterface.getApp(), amtj.a(2131703509), 0).b(paramContext.getTitleBarHeight());
+      QQToast.a(paramQQAppInterface.getApp(), anvx.a(2131703860), 0).b(paramContext.getTitleBarHeight());
       return;
     }
     paramEditText = this.path;
     if (!TextUtils.isEmpty(this.eId)) {}
     for (boolean bool = true;; bool = false)
     {
-      acvv.a(paramQQAppInterface, paramContext, paramSessionInfo, paramEditText, true, bool, this.eId, null);
+      admh.a(paramQQAppInterface, paramContext, paramSessionInfo, paramEditText, true, bool, this.eId, null);
       if ((TextUtils.isEmpty(this.path)) || (!this.path.contains("qto_"))) {
         break;
       }
-      bcef.b(((BaseActivity)paramContext).app, "CliOper", "", "", "0X8005C74", "0X8005C74", 0, 0, String.valueOf(amsz.a(this.eId)), "", amsz.a(this.path), "");
+      bdla.b(((BaseActivity)paramContext).app, "CliOper", "", "", "0X8005C74", "0X8005C74", 0, 0, String.valueOf(anvn.a(this.eId)), "", anvn.a(this.path), "");
       return;
     }
-    bcef.b(((BaseActivity)paramContext).app, "CliOper", "", "", "ep_mall", "0X800579F", 0, 0, "", "", "1", "");
+    bdla.b(((BaseActivity)paramContext).app, "CliOper", "", "", "ep_mall", "0X800579F", 0, 0, "", "", "1", "");
   }
   
   public void setIsChecked(boolean paramBoolean)
@@ -499,7 +505,7 @@ public class FavoriteEmoticonInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.FavoriteEmoticonInfo
  * JD-Core Version:    0.7.0.1
  */

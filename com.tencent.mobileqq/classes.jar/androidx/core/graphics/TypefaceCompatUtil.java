@@ -276,43 +276,43 @@ public class TypefaceCompatUtil
     //   127: dup
     //   128: invokespecial 158	java/lang/NullPointerException:<init>	()V
     //   131: athrow
-    //   132: astore_0
-    //   133: aload_0
+    //   132: astore_1
+    //   133: aload_1
     //   134: athrow
-    //   135: astore_1
+    //   135: astore_0
     //   136: aload_2
     //   137: ifnull +11 -> 148
-    //   140: aload_0
+    //   140: aload_1
     //   141: ifnull +77 -> 218
     //   144: aload_2
     //   145: invokevirtual 155	android/os/ParcelFileDescriptor:close	()V
-    //   148: aload_1
+    //   148: aload_0
     //   149: athrow
     //   150: aload 5
     //   152: invokevirtual 188	java/io/FileInputStream:close	()V
     //   155: goto -57 -> 98
-    //   158: astore_1
+    //   158: astore_0
     //   159: aconst_null
-    //   160: astore_0
+    //   160: astore_1
     //   161: goto -25 -> 136
     //   164: aload_2
     //   165: invokevirtual 155	android/os/ParcelFileDescriptor:close	()V
     //   168: aload_0
     //   169: areturn
-    //   170: astore_1
-    //   171: aload_1
+    //   170: astore_0
+    //   171: aload_0
     //   172: athrow
-    //   173: astore_0
+    //   173: astore_1
     //   174: aload 5
     //   176: ifnull +12 -> 188
-    //   179: aload_1
+    //   179: aload_0
     //   180: ifnull +21 -> 201
     //   183: aload 5
     //   185: invokevirtual 188	java/io/FileInputStream:close	()V
-    //   188: aload_0
+    //   188: aload_1
     //   189: athrow
     //   190: astore 5
-    //   192: aload_1
+    //   192: aload_0
     //   193: aload 5
     //   195: invokevirtual 192	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   198: goto -10 -> 188
@@ -320,16 +320,16 @@ public class TypefaceCompatUtil
     //   203: invokevirtual 188	java/io/FileInputStream:close	()V
     //   206: goto -18 -> 188
     //   209: astore_2
-    //   210: aload_0
+    //   210: aload_1
     //   211: aload_2
     //   212: invokevirtual 192	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   215: goto -67 -> 148
     //   218: aload_2
     //   219: invokevirtual 155	android/os/ParcelFileDescriptor:close	()V
     //   222: goto -74 -> 148
-    //   225: astore_0
+    //   225: astore_1
     //   226: aconst_null
-    //   227: astore_1
+    //   227: astore_0
     //   228: goto -54 -> 174
     //   231: astore_0
     //   232: aconst_null

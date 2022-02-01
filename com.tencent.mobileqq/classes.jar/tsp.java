@@ -1,202 +1,130 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView.LayoutParams;
+import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.EntranceDownloadInfo;
+import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.UrlJumpInfo;
 
 public class tsp
-  implements psk
+  implements tso
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new qle();
-  private volatile boolean jdField_a_of_type_Boolean;
+  public static int b;
+  public static int c;
+  public static String f = "bytes_entrance_cookie_column";
+  public static String g = "https://qqpublic.qpic.cn/qq_public/0/0-2283487770-A0052D97C9C360192F1BE92BCD8ADD16/0";
+  public static String h = "https://qqpublic.qpic.cn/qq_public/0/0-2261262125-4438F0FD2808B0A8EA5C1AA0FD97295A/0";
+  public int a;
+  public UrlJumpInfo a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public tsp(tsm paramtsm) {}
-  
-  private View a(View paramView, ArticleInfo paramArticleInfo, int paramInt1, int paramInt2)
+  static
   {
-    pwe localpwe = new pwe(this.jdField_a_of_type_Tsm.a(), paramArticleInfo, paramInt1, this.jdField_a_of_type_Tsm.b(), this.jdField_a_of_type_Tsm.c(), paramInt2, this.jdField_a_of_type_Tsm.a(), this.jdField_a_of_type_Tsm.d(), null, this.jdField_a_of_type_Tsm.a());
-    long l;
-    if ((paramView != null) && ((paramView instanceof ProteusItemView)))
-    {
-      l = System.currentTimeMillis();
-      ozp.a((ProteusItemView)paramView, paramInt1, paramArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, this.jdField_a_of_type_Tsm.a(), this.jdField_a_of_type_Tsm.a(), localpwe, paramInt2, "default_feeds");
-      paramView = (ProteusItemView)paramView;
-      tpl.a("AdHandler", String.valueOf(paramInt1), "getProteusNormalView.convertview#bindData", System.currentTimeMillis() - l);
-    }
-    for (;;)
-    {
-      if ((paramView != null) && (paramView.a() != null))
-      {
-        paramArticleInfo = this.jdField_a_of_type_Tsm.a();
-        paramView.a().setTag(2131369487, paramArticleInfo);
-        paramView.setTag(2131380831, localpwe);
-        paramView.setTag(this);
-      }
-      this.jdField_a_of_type_AndroidViewView = paramView;
-      this.jdField_a_of_type_Int = paramInt2;
-      return paramView;
-      l = System.currentTimeMillis();
-      paramView = ozp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramInt1, paramArticleInfo);
-      tpl.a("AdHandler", String.valueOf(paramInt1), "getProteusNormalView.getView", System.currentTimeMillis() - l);
-      l = System.currentTimeMillis();
-      ozp.a(paramView, paramInt1, paramArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, this.jdField_a_of_type_Tsm.a(), this.jdField_a_of_type_Tsm.a(), localpwe, paramInt2, "default_feeds");
-      tpl.a("AdHandler", String.valueOf(paramInt1), "getProteusNormalView.newview#bindData", System.currentTimeMillis() - l);
-    }
+    jdField_b_of_type_Int = 1;
+    jdField_c_of_type_Int = 2;
   }
   
-  private void a()
+  private String a(PBBytesField paramPBBytesField)
   {
-    try
-    {
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(this.jdField_a_of_type_Tsm.a());
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setCurActivity(this.jdField_a_of_type_Tsm.a());
-        ozp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "default_feeds");
-        this.jdField_a_of_type_Boolean = true;
-      }
-      return;
+    if ((paramPBBytesField.has()) && (paramPBBytesField.get() != null)) {
+      return paramPBBytesField.get().toStringUtf8();
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return null;
   }
   
-  private View b(View paramView, ArticleInfo paramArticleInfo, int paramInt1, int paramInt2)
+  public UrlJumpInfo a(oidb_0x6cf.UrlJumpInfo paramUrlJumpInfo)
   {
-    Object localObject = new pwe(this.jdField_a_of_type_Tsm.a(), paramArticleInfo, paramInt1, this.jdField_a_of_type_Tsm.b(), this.jdField_a_of_type_Tsm.c(), paramInt2, this.jdField_a_of_type_Tsm.a(), this.jdField_a_of_type_Tsm.d(), null, this.jdField_a_of_type_Tsm.a());
-    View localView = qph.a(paramInt2, localObject, paramInt1, paramView, this.jdField_a_of_type_Tsm.a(), this.jdField_a_of_type_Tsm.a(), this.jdField_a_of_type_Tsm.a());
-    if (localView != null)
+    if ((paramUrlJumpInfo != null) && (paramUrlJumpInfo.has()) && (paramUrlJumpInfo.get() != null))
     {
-      localView.setTag(2131380831, localObject);
-      if (QLog.isColorLevel()) {
-        QLog.d("AdHandler", 2, "CellFactory.getView = " + localView.getTag().getClass().getSimpleName());
-      }
-      localView.setTag(2131369487, this.jdField_a_of_type_Tsm.a());
-      if (paramArticleInfo == null)
+      UrlJumpInfo localUrlJumpInfo = new UrlJumpInfo();
+      if (paramUrlJumpInfo.uint32_jump_type.has()) {}
+      for (int i = paramUrlJumpInfo.uint32_jump_type.get();; i = 0)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("AdHandler", 2, "getView() article is null, set view gone, position: " + paramInt2);
-        }
-        if (localView.getVisibility() != 8) {
-          localView.setVisibility(8);
-        }
-        if ((localView.getLayoutParams() instanceof AbsListView.LayoutParams))
-        {
-          paramView = (AbsListView.LayoutParams)localView.getLayoutParams();
-          if (paramView.height != 1)
-          {
-            paramView.height = 1;
-            localView.setLayoutParams(paramView);
-          }
-        }
-        if (localView != null) {
-          break label410;
-        }
-        paramInt1 = 0;
-        label256:
-        localObject = this.jdField_a_of_type_Tsm.c() + "";
-        if (paramArticleInfo == null) {
-          break label415;
-        }
-      }
-    }
-    label410:
-    label415:
-    for (paramView = String.valueOf(paramArticleInfo.mArticleID);; paramView = "")
-    {
-      odq.a(null, "", "0X80095B4", "0X80095B4", 0, paramInt1, (String)localObject, paramView, this.jdField_a_of_type_Tsm.b() + "", "", false);
-      return localView;
-      if (localView.getVisibility() != 0) {
-        localView.setVisibility(0);
-      }
-      if (!(localView.getLayoutParams() instanceof AbsListView.LayoutParams)) {
-        break;
-      }
-      paramView = (AbsListView.LayoutParams)localView.getLayoutParams();
-      if (paramView.height == -2) {
-        break;
-      }
-      paramView.height = -2;
-      localView.setLayoutParams(paramView);
-      break;
-      QLog.w("AdHandler", 1, "CellFactory.getView = null");
-      break;
-      paramInt1 = 1;
-      break label256;
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public sdg a()
-  {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView instanceof ProteusItemView)))
-    {
-      pwe localpwe = (pwe)this.jdField_a_of_type_AndroidViewView.getTag(2131380831);
-      if (localpwe != null)
-      {
-        Object localObject = localpwe.a();
-        if ((AdvertisementInfo.isAdvertisementInfo((BaseArticleInfo)localObject)) && ((localpwe.a() == 6) || (localpwe.a() == 66) || (localpwe.a() == 115)))
-        {
-          localObject = (AdvertisementInfo)localObject;
-          slt localslt = this.jdField_a_of_type_Tsm.a();
-          if ((localslt != null) && (localslt.a() != null) && (localslt.a() != null)) {
-            return localslt.a().a((AdvertisementInfo)localObject, this.jdField_a_of_type_AndroidViewView, localpwe);
-          }
-        }
+        localUrlJumpInfo.jdField_a_of_type_Int = i;
+        localUrlJumpInfo.jdField_c_of_type_JavaLangString = a(paramUrlJumpInfo.bytes_jump_schema);
+        localUrlJumpInfo.jdField_b_of_type_JavaLangString = a(paramUrlJumpInfo.bytes_jump_bundle);
+        localUrlJumpInfo.jdField_a_of_type_JavaLangString = a(paramUrlJumpInfo.bytes_jump_url);
+        localUrlJumpInfo.d = a(paramUrlJumpInfo.bytes_clipboard_info);
+        localUrlJumpInfo.e = a(paramUrlJumpInfo.bytes_common_data);
+        return localUrlJumpInfo;
       }
     }
     return null;
   }
   
-  public boolean a(View paramView)
+  public void a(oidb_0x6cf.EntranceDownloadInfo paramEntranceDownloadInfo)
   {
-    Object localObject;
-    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView instanceof ProteusItemView)))
-    {
-      paramView = (pwe)this.jdField_a_of_type_AndroidViewView.getTag(2131380831);
-      if (paramView != null)
-      {
-        localObject = paramView.a();
-        if ((AdvertisementInfo.isAdvertisementInfo((BaseArticleInfo)localObject)) && ((paramView.a() == 6) || (paramView.a() == 66) || (paramView.a() == 115)))
-        {
-          localObject = (AdvertisementInfo)localObject;
-          if (!TextUtils.isEmpty(uhs.a((ArticleInfo)localObject, "AdsIconText"))) {
-            break label93;
-          }
-        }
-      }
+    if (paramEntranceDownloadInfo == null) {
+      return;
     }
-    label93:
-    slt localslt;
-    do
-    {
-      return false;
-      localslt = this.jdField_a_of_type_Tsm.a();
-    } while ((localslt == null) || (localslt.a() == null) || (localslt.a() == null));
-    paramView = localslt.a().a((AdvertisementInfo)localObject, this.jdField_a_of_type_AndroidViewView, paramView);
-    if ((twq.a((AdvertisementInfo)localObject, null, localslt.a(), 1)) && (localslt.a().a(paramView))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    if (paramEntranceDownloadInfo.bytes_column_name.has()) {
+      this.jdField_a_of_type_JavaLangString = paramEntranceDownloadInfo.bytes_column_name.get().toStringUtf8();
     }
+    if (paramEntranceDownloadInfo.bytes_sub_text.has()) {
+      this.jdField_b_of_type_JavaLangString = paramEntranceDownloadInfo.bytes_sub_text.get().toStringUtf8();
+    }
+    if (paramEntranceDownloadInfo.bytes_icon_url.has()) {
+      this.jdField_c_of_type_JavaLangString = paramEntranceDownloadInfo.bytes_icon_url.get().toStringUtf8();
+    }
+    if (paramEntranceDownloadInfo.msg_url_jump_info.has()) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo = a(paramEntranceDownloadInfo.msg_url_jump_info);
+    }
+    if (paramEntranceDownloadInfo.uint32_column_id.has()) {
+      this.jdField_a_of_type_Int = paramEntranceDownloadInfo.uint32_column_id.get();
+    }
+    if (paramEntranceDownloadInfo.bytes_entrance_cookie.has()) {
+      bmhv.a(f, paramEntranceDownloadInfo.bytes_entrance_cookie.get().toStringUtf8());
+    }
+    if (paramEntranceDownloadInfo.bytes_rowkey.has()) {
+      this.d = paramEntranceDownloadInfo.bytes_rowkey.get().toStringUtf8();
+    }
+    QLog.d("RIJColumnDataSource", 1, "parseRsp data=" + toString());
+  }
+  
+  public void b(String paramString) {}
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public String c()
+  {
+    return "";
+  }
+  
+  public boolean c()
+  {
+    return true;
+  }
+  
+  public String d()
+  {
+    return this.jdField_c_of_type_JavaLangString;
+  }
+  
+  public boolean d()
+  {
+    return false;
+  }
+  
+  public String e()
+  {
+    return null;
+  }
+  
+  public String toString()
+  {
+    return "RIJColumnDataSource{title='" + this.jdField_a_of_type_JavaLangString + '\'' + ", subTitle='" + this.jdField_b_of_type_JavaLangString + '\'' + ", coverURL='" + this.jdField_c_of_type_JavaLangString + '\'' + ", jumpInfo=" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo + ", columnID=" + this.jdField_a_of_type_Int + ", rowkey='" + this.d + '\'' + ", reportInfo='" + this.e + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tsp
  * JD-Core Version:    0.7.0.1
  */

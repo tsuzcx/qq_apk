@@ -1,13 +1,19 @@
-import cooperation.qqfav.widget.LocationDetailActivity;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class bkqt
-  implements apom
+class bkqt
+  implements DialogInterface.OnClickListener
 {
-  public bkqt(LocationDetailActivity paramLocationDetailActivity) {}
+  bkqt(bkqp parambkqp, Activity paramActivity) {}
   
-  public void onColorNoteAnimFinish()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.superFinish();
+    if (bkqp.a(this.jdField_a_of_type_Bkqp).isShowing()) {
+      bkqp.a(this.jdField_a_of_type_Bkqp).dismiss();
+    }
+    aqrl.a(this.jdField_a_of_type_AndroidAppActivity, true);
   }
 }
 

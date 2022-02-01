@@ -1,20 +1,6 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
-import com.tencent.mobileqq.vas.qvip.view.ImgHeaderView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class bgjo
-  implements View.OnClickListener
+public abstract interface bgjo
 {
-  public bgjo(ImgHeaderView paramImgHeaderView, Activity paramActivity, QQVipMsgInfo paramQQVipMsgInfo, int paramInt) {}
-  
-  public void onClick(View paramView)
-  {
-    ImgHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqVasQvipViewImgHeaderView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo.paMsgid, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo.gameAppId, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract boolean a(bfif parambfif);
 }
 
 

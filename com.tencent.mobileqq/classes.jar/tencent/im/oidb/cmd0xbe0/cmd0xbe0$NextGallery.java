@@ -15,7 +15,7 @@ public final class cmd0xbe0$NextGallery
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tencent.im.oidb.cmd0xbe0.cmd0xbe0.NextGallery
  * JD-Core Version:    0.7.0.1
  */

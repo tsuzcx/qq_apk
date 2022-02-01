@@ -1,71 +1,61 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.extendfriend.pulltorefresh.LoadingLayoutBase;
-import java.util.HashSet;
-import java.util.Iterator;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class arnw
-  implements arnv
+  extends aqwt<arnv>
 {
-  private final HashSet<LoadingLayoutBase> a = new HashSet();
-  
-  public void a(LoadingLayoutBase paramLoadingLayoutBase)
+  public static arnv a()
   {
-    if (paramLoadingLayoutBase != null) {
-      this.a.add(paramLoadingLayoutBase);
-    }
+    return (arnv)aqxe.a().a(377);
   }
   
-  public void setLastUpdatedLabel(CharSequence paramCharSequence)
+  @NonNull
+  public arnv a(int paramInt)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((LoadingLayoutBase)localIterator.next()).setLastUpdatedLabel(paramCharSequence);
-    }
+    return new arnv();
   }
   
-  public void setLoadingDrawable(Drawable paramDrawable)
+  @Nullable
+  public arnv a(aqxa[] paramArrayOfaqxa)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((LoadingLayoutBase)localIterator.next()).setLoadingDrawable(paramDrawable);
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0)) {
+      return arnv.a(paramArrayOfaqxa);
     }
+    return null;
   }
   
-  public void setPullLabel(CharSequence paramCharSequence)
+  public void a(arnv paramarnv) {}
+  
+  public Class<arnv> clazz()
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((LoadingLayoutBase)localIterator.next()).setPullLabel(paramCharSequence);
-    }
+    return arnv.class;
   }
   
-  public void setRefreshResultLabel(CharSequence paramCharSequence)
+  public boolean isNeedCompressed()
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((LoadingLayoutBase)localIterator.next()).setRefreshResultLabel(paramCharSequence);
-    }
+    return true;
   }
   
-  public void setRefreshingLabel(CharSequence paramCharSequence)
+  public boolean isNeedStoreLargeFile()
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((LoadingLayoutBase)localIterator.next()).setRefreshingLabel(paramCharSequence);
-    }
+    return false;
   }
   
-  public void setReleaseLabel(CharSequence paramCharSequence)
+  public int migrateOldVersion()
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((LoadingLayoutBase)localIterator.next()).setReleaseLabel(paramCharSequence);
-    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 377;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arnw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,19 @@
-import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.QQStoryVideoPlayerErrorView;
+import com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class axvq
-  extends axvs
+  implements View.OnClickListener
 {
   axvq(axvp paramaxvp) {}
   
-  public void b(boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    super.b(paramBoolean, paramBundle);
-    if (paramBoolean) {
-      axvp.a(this.a);
-    }
+    this.a.jdField_a_of_type_Axzk.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(8);
+    this.a.jdField_a_of_type_Axzk.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

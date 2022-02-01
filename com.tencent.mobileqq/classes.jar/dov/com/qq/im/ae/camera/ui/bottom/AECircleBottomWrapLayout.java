@@ -6,8 +6,8 @@ import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
 import android.widget.RelativeLayout;
-import bmbq;
-import bmbx;
+import bnra;
+import bnrh;
 
 public class AECircleBottomWrapLayout
   extends RelativeLayout
@@ -43,7 +43,7 @@ public class AECircleBottomWrapLayout
       this.b = false;
       this.jdField_a_of_type_AndroidViewVelocityTracker.clear();
     }
-    if ((Math.abs(this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity()) > 100.0F) && (paramMotionEvent.getEventTime() - paramMotionEvent.getDownTime() < 100L) && (bmbq.a(this.jdField_a_of_type_AndroidViewView, paramMotionEvent)) && (!this.jdField_a_of_type_Boolean))
+    if ((Math.abs(this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity()) > 100.0F) && (paramMotionEvent.getEventTime() - paramMotionEvent.getDownTime() < 100L) && (bnra.a(this.jdField_a_of_type_AndroidViewView, paramMotionEvent)) && (!this.jdField_a_of_type_Boolean))
     {
       this.jdField_a_of_type_Boolean = true;
       this.b = true;
@@ -55,8 +55,8 @@ public class AECircleBottomWrapLayout
   {
     super.onAttachedToWindow();
     this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131366845);
-    this.jdField_a_of_type_DovComQqImAeCameraUiBottomAEBottomListScrollView = ((AEBottomListScrollView)findViewById(2131376742));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131366963);
+    this.jdField_a_of_type_DovComQqImAeCameraUiBottomAEBottomListScrollView = ((AEBottomListScrollView)findViewById(2131377010));
   }
   
   protected void onDetachedFromWindow()
@@ -69,7 +69,7 @@ public class AECircleBottomWrapLayout
   {
     if (this.b)
     {
-      bmbx.a("AECircleBottomLayout", "in onInterceptTouchEvent true.");
+      bnrh.a("AECircleBottomLayout", "in onInterceptTouchEvent true.");
       paramMotionEvent.setAction(0);
       this.jdField_a_of_type_DovComQqImAeCameraUiBottomAEBottomListScrollView.dispatchTouchEvent(paramMotionEvent);
       this.b = false;

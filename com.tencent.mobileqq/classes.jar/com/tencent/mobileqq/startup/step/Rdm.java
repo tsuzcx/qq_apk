@@ -3,8 +3,8 @@ package com.tencent.mobileqq.startup.step;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.util.Log;
-import avif;
-import bcdu;
+import awoi;
+import bdkp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -14,6 +14,7 @@ import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneCrashHandler;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Rdm
@@ -27,12 +28,12 @@ public class Rdm
       return;
     }
     long l = SystemClock.uptimeMillis();
-    bcdu localbcdu = bcdu.a(BaseApplicationImpl.sApplication);
-    localbcdu.a(false);
-    localbcdu.initMtaConfig(AppSetting.c(), "AGU36HSC29K4");
-    localbcdu.b("MTA_" + paramString1.replace(':', '_'));
+    bdkp localbdkp = bdkp.a(BaseApplicationImpl.sApplication);
+    localbdkp.a(false);
+    localbdkp.initMtaConfig(AppSetting.c(), "AGU36HSC29K4");
+    localbdkp.b("MTA_" + paramString1.replace(':', '_'));
     if (!paramString1.endsWith(":openSdk")) {
-      localbcdu.a(paramString2);
+      localbdkp.a(paramString2);
     }
     QLog.d("AutoMonitor", 1, "MTA, cost=" + (SystemClock.uptimeMillis() - l) + " results: true");
   }
@@ -68,7 +69,7 @@ public class Rdm
       {
         if ((BaseApplicationImpl.sProcessId == 1) || (BaseApplicationImpl.sProcessId == 7))
         {
-          Thread.setDefaultUncaughtExceptionHandler(new avif());
+          Thread.setDefaultUncaughtExceptionHandler(new awoi());
           StatisticCollector.getInstance(BaseApplicationImpl.sApplication).setEnableCrashRecord((String)localObject1);
           Object localObject2 = localObject1;
           if (!str2.endsWith(":openSdk"))
@@ -87,7 +88,7 @@ public class Rdm
       catch (Exception localException1) {}
       try
       {
-        if (BaseApplicationImpl.sProcessId != 9) {
+        if ((BaseApplicationImpl.sProcessId != 9) && (!LogcatHook.a.get()) && (LogcatHook.b)) {
           LogcatHook.a();
         }
         return true;
@@ -114,7 +115,7 @@ public class Rdm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.Rdm
  * JD-Core Version:    0.7.0.1
  */

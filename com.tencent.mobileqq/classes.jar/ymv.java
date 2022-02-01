@@ -1,79 +1,56 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
-public class ymv
-  extends BaseAdapter
+class ymv
+  extends yvc
 {
-  int jdField_a_of_type_Int = -1;
-  Context jdField_a_of_type_AndroidContentContext;
-  ArrayList<yna> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private final List<yur> a = new ArrayList();
   
-  public ymv(HorizontalSelectColorLayout paramHorizontalSelectColorLayout, Context paramContext)
+  public int a()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    return this.a.size();
   }
   
-  public void a(int paramInt)
+  public yur a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    notifyDataSetChanged();
-  }
-  
-  public void a(ArrayList<yna> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    yna localyna = (yna)getItem(paramInt);
-    View localView;
-    if (paramView == null)
-    {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561590, paramViewGroup, false);
-      paramView = new ymw(this);
-      paramView.a = ((ImageView)localView.findViewById(2131368884));
-      paramView.b = ((ImageView)localView.findViewById(2131369011));
-      localView.setTag(paramView);
-      paramView.a.setImageDrawable(localyna.a);
-      if (paramInt != this.jdField_a_of_type_Int) {
-        break label137;
-      }
-      paramView.b.setVisibility(0);
+    if ((paramInt >= 0) && (paramInt < this.a.size())) {
+      return (yur)this.a.get(paramInt);
     }
-    for (;;)
+    return null;
+  }
+  
+  public yur a(String paramString)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
     {
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      ymw localymw = (ymw)paramView.getTag();
-      localView = paramView;
-      paramView = localymw;
-      break;
-      label137:
-      paramView.b.setVisibility(8);
+      yur localyur = (yur)localIterator.next();
+      if (TextUtils.equals(paramString, localyur.a)) {
+        return localyur;
+      }
+    }
+    return null;
+  }
+  
+  public void a(Collection<yur> paramCollection)
+  {
+    ykq.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackages size = " + paramCollection.size());
+    this.a.clear();
+    this.a.addAll(paramCollection);
+    a();
+  }
+  
+  public void a(yur paramyur)
+  {
+    ykq.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackage " + paramyur);
+    int i = this.a.indexOf(paramyur);
+    if (i >= 0)
+    {
+      this.a.set(i, paramyur);
+      a(i);
     }
   }
 }

@@ -1,33 +1,55 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.widget.QfavJumpActivity;
-import java.io.InputStream;
 
 public class bkqx
-  implements DialogInterface.OnClickListener
 {
-  public bkqx(QfavJumpActivity paramQfavJumpActivity, String paramString, InputStream paramInputStream, long paramLong) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static GdtMotiveVideoPageData a(GdtAd paramGdtAd, String paramString, int paramInt)
   {
-    try
+    Object localObject = null;
+    GdtMotiveVideoPageData localGdtMotiveVideoPageData;
+    if (paramGdtAd != null)
     {
-      QfavJumpActivity.a(this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoInputStream, this.jdField_a_of_type_Long);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("qqfav|QfavJumpActivity", 2, "copy file error", paramDialogInterface);
+      localGdtMotiveVideoPageData = new GdtMotiveVideoPageData();
+      localGdtMotiveVideoPageData.productType = paramGdtAd.getProductType();
+      localGdtMotiveVideoPageData.vSize = paramGdtAd.getCreativeSize();
+      localGdtMotiveVideoPageData.screenOrientation = paramInt;
+      localGdtMotiveVideoPageData.adId = paramGdtAd.getAdvertiserId();
+      localGdtMotiveVideoPageData.vid = paramGdtAd.getTencent_video_id();
+      localGdtMotiveVideoPageData.url = paramGdtAd.getVideoUrl();
+      if ((!TextUtils.isEmpty(localGdtMotiveVideoPageData.url)) && (localGdtMotiveVideoPageData.url.startsWith("https://"))) {
+        localGdtMotiveVideoPageData.url = localGdtMotiveVideoPageData.url.replaceFirst("https://", "http://");
       }
-      QfavJumpActivity.a(this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity, this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity.a());
+      if (paramGdtAd.getImageData() != null) {
+        break label402;
+      }
+    }
+    label402:
+    for (localObject = "";; localObject = paramGdtAd.getImageData().a)
+    {
+      localGdtMotiveVideoPageData.previewImgUrl = ((String)localObject);
+      localGdtMotiveVideoPageData.bannerImgName = paramGdtAd.getAdvertiser_corporate_image_name();
+      localGdtMotiveVideoPageData.bannerBaseInfoText = paramGdtAd.getText();
+      localGdtMotiveVideoPageData.bannerLogo = paramGdtAd.getAdvertiser_corporate_logo();
+      localGdtMotiveVideoPageData.exposureUrl = paramGdtAd.getUrlForImpression();
+      localGdtMotiveVideoPageData.appScore = Double.valueOf(paramGdtAd.getAppScore()).doubleValue();
+      localGdtMotiveVideoPageData.downloadNum = paramGdtAd.getAppDownloadNum();
+      localGdtMotiveVideoPageData.style = paramGdtAd.getStyle();
+      localGdtMotiveVideoPageData.endcardUrl = paramGdtAd.getEndcardUrl();
+      localGdtMotiveVideoPageData.endcardLoadTime = paramGdtAd.getEndcardLoadTime();
+      localGdtMotiveVideoPageData.adsContent = paramString;
+      localGdtMotiveVideoPageData.processId = BaseApplicationImpl.sProcessId;
+      QLog.d("[minigame] RewardedVideoAdPlugin", 2, "mockMVPageData productType= " + localGdtMotiveVideoPageData.productType + " vSize=" + localGdtMotiveVideoPageData.vSize + " adId=" + localGdtMotiveVideoPageData.adId + " vid=" + localGdtMotiveVideoPageData.vid + " url=" + localGdtMotiveVideoPageData.url + " previewImgUrl=" + localGdtMotiveVideoPageData.previewImgUrl + " bannerImgName=" + localGdtMotiveVideoPageData.bannerImgName + " bannerBaseInfoText=" + localGdtMotiveVideoPageData.bannerBaseInfoText + " bannerLogo=" + localGdtMotiveVideoPageData.bannerLogo + " exposureUrl=" + localGdtMotiveVideoPageData.exposureUrl + " appScore=" + localGdtMotiveVideoPageData.appScore + " downloadNum=" + localGdtMotiveVideoPageData.downloadNum);
+      localObject = localGdtMotiveVideoPageData;
+      return localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkqx
  * JD-Core Version:    0.7.0.1
  */

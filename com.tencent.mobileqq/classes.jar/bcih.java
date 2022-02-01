@@ -1,70 +1,151 @@
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.util.DisplayUtil;
 
-class bcih
-  implements View.OnClickListener
+public class bcih
+  extends bcjc
 {
-  bcih(bcif parambcif) {}
+  protected bcij a;
   
-  public void onClick(View paramView)
+  public bcih(FaceDecoder paramFaceDecoder)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if ((!TextUtils.isEmpty(this.a.a.mMsgActionData)) && (this.a.a.mMsgActionData.startsWith("story:"))) {
-      localObject1 = this.a.a.mMsgActionData.substring("story:".length(), this.a.a.mMsgActionData.length() - 1);
-    }
-    for (int i = 1;; i = 2)
+    super(paramFaceDecoder);
+  }
+  
+  public void a(bcfj parambcfj, bcnt parambcnt, Bitmap paramBitmap)
+  {
+    if (parambcfj.c() == 103)
     {
-      bfwg.a(localQQAppInterface, paramView.getContext(), (String)localObject1).a();
-      if (QLog.isColorLevel()) {
-        QLog.d("StructMsgQ.qqstory.TAG_NOW_ENTRANCE_ACTION_CONFIG", 2, "actionType:" + i + "|uri:" + (String)localObject1);
+      if (parambcnt.b() != null) {
+        parambcnt.b().setImageDrawable(bcnc.a(paramBitmap));
       }
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      localObject1 = "0";
-      localObject2 = "-1";
-      String[] arrayOfString1 = this.a.ae.substring(this.a.ae.indexOf("?") + 1).split("&");
-      i = 0;
-      while (i < arrayOfString1.length)
+    }
+    super.a(parambcfj, parambcnt, paramBitmap);
+  }
+  
+  public void b(bcfj parambcfj, bcnt parambcnt)
+  {
+    if ((parambcfj instanceof bcfo)) {}
+    for (Object localObject1 = (bcfo)parambcfj;; localObject1 = null)
+    {
+      if ((parambcnt instanceof bcnw)) {}
+      for (bcnw localbcnw = (bcnw)parambcnt;; localbcnw = null)
       {
-        String[] arrayOfString2 = arrayOfString1[i].split("=");
-        localObject5 = localObject2;
-        Object localObject3 = localObject1;
-        if (arrayOfString2.length == 2)
+        Object localObject2;
+        ColorDrawable localColorDrawable;
+        if (parambcfj.c() == null)
         {
-          if ("roomid".equals(arrayOfString2[0])) {
-            localObject1 = arrayOfString2[1];
+          if (localbcnw.c() != null) {
+            localbcnw.c().setVisibility(8);
           }
-          localObject5 = localObject2;
-          localObject3 = localObject1;
-        }
-        try
-        {
-          if ("from".equals(arrayOfString2[0]))
+          if (localbcnw.a() != null) {
+            localbcnw.a().setVisibility(8);
+          }
+          localObject2 = localbcnw.a();
+          if (localObject2 != null) {
+            ((URLImageView)localObject2).setVisibility(8);
+          }
+          localObject2 = localbcnw.e();
+          if (localObject2 != null)
           {
-            localObject5 = arrayOfString2[1];
-            localObject3 = localObject1;
+            ((TextView)localObject2).setVisibility(0);
+            if (!TextUtils.isEmpty(((bcfo)localObject1).a())) {
+              ((TextView)localObject2).setText(((bcfo)localObject1).a());
+            }
+          }
+          if ((parambcnt.b() != null) && (!TextUtils.isEmpty(((bcfo)localObject1).g())))
+          {
+            localObject2 = ((bcfo)localObject1).g();
+            localColorDrawable = new ColorDrawable(Color.parseColor("#e7e7e7"));
+            URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+            localURLDrawableOptions.mRequestWidth = DisplayUtil.dip2px(parambcnt.a().getContext(), 50.0F);
+            localURLDrawableOptions.mRequestHeight = DisplayUtil.dip2px(parambcnt.a().getContext(), 50.0F);
+            localURLDrawableOptions.mFailedDrawable = localColorDrawable;
+            localURLDrawableOptions.mLoadingDrawable = localColorDrawable;
+            if (!bkyp.a((String)localObject2)) {
+              break label625;
+            }
+            localObject2 = URLDrawable.getDrawable((String)localObject2, localURLDrawableOptions);
+            ((URLDrawable)localObject2).setTag(bgxc.b(DisplayUtil.dip2px(parambcnt.a().getContext(), 50.0F), DisplayUtil.dip2px(parambcnt.a().getContext(), 50.0F), DisplayUtil.dip2px(parambcnt.a().getContext(), 3.0F)));
+            ((URLDrawable)localObject2).setDecodeHandler(bgxc.j);
+            parambcnt.b().setImageDrawable((Drawable)localObject2);
+            if ((((URLDrawable)localObject2).getStatus() != 1) && (((URLDrawable)localObject2).getStatus() != 0)) {
+              ((URLDrawable)localObject2).restartDownload();
+            }
           }
         }
-        catch (NumberFormatException localNumberFormatException)
+        for (;;)
         {
+          c(parambcfj, parambcnt);
+          if ((localbcnw.a() != null) && (((bcfo)localObject1).c()))
+          {
+            parambcfj = ((bcfo)localObject1).h();
+            localObject1 = new ColorDrawable(Color.parseColor("#e7e7e7"));
+            localObject2 = URLDrawable.URLDrawableOptions.obtain();
+            ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = DisplayUtil.dip2px(parambcnt.a().getContext(), 40.0F);
+            ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = DisplayUtil.dip2px(parambcnt.a().getContext(), 12.0F);
+            ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
+            ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((Drawable)localObject1);
+            parambcfj = URLDrawable.getDrawable(parambcfj, (URLDrawable.URLDrawableOptions)localObject2);
+            parambcfj.setTag(bgxc.b(DisplayUtil.dip2px(parambcnt.a().getContext(), 38.0F), DisplayUtil.dip2px(parambcnt.a().getContext(), 12.0F), 0));
+            parambcfj.setDecodeHandler(bgxc.j);
+            localbcnw.a().setImageDrawable(parambcfj);
+            if ((parambcfj.getStatus() != 1) && (parambcfj.getStatus() != 0)) {
+              parambcfj.restartDownload();
+            }
+          }
+          return;
+          if ((localbcnw.c() != null) && (!TextUtils.isEmpty(parambcfj.c())))
+          {
+            localbcnw.c().setVisibility(0);
+            localbcnw.c().setText(parambcfj.c());
+          }
           for (;;)
           {
-            localObject5 = localObject2;
-            Object localObject4 = localObject1;
+            if (localbcnw.a() != null) {
+              localbcnw.a().setVisibility(0);
+            }
+            localObject2 = localbcnw.e();
+            if (localObject2 != null) {
+              ((TextView)localObject2).setVisibility(8);
+            }
+            if (TextUtils.isEmpty(parambcfj.a())) {
+              break;
+            }
+            localbcnw.a().setText(((bcfo)localObject1).a());
+            break;
+            if (parambcnt.c() != null) {
+              localbcnw.c().setVisibility(8);
+            }
           }
+          label625:
+          parambcnt.b().setImageDrawable(localColorDrawable);
         }
-        i += 1;
-        localObject2 = localObject5;
-        localObject1 = localObject3;
       }
-      localObject1 = String.format("nowmqqapi://now/openroom?src_type=app&version=1&roomid=%s&fromid=%s", new Object[] { localObject1, localObject2 });
     }
+  }
+  
+  protected void c(bcfj parambcfj, bcnt parambcnt)
+  {
+    if (this.a != null)
+    {
+      if (parambcnt.a() != null) {
+        parambcnt.a().setOnClickListener(new bcii(this));
+      }
+      return;
+    }
+    super.c(parambcfj, parambcnt);
   }
 }
 

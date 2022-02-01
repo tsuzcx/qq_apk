@@ -1,34 +1,21 @@
-import android.content.Context;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.AnimationTextView;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController.4.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ted
-  extends QQCustomDialog
+  implements View.OnClickListener
 {
-  AnimationTextView a;
+  public ted(SlideActiveAnimController paramSlideActiveAnimController) {}
   
-  public ted(Context paramContext, int paramInt)
+  public void onClick(View paramView)
   {
-    super(paramContext, paramInt);
-    a();
-  }
-  
-  private void a()
-  {
-    this.a = ((AnimationTextView)findViewById(2131376977));
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.a != null) {
-      this.a.setText(paramString);
-    }
-  }
-  
-  public void setContentView(int paramInt)
-  {
-    super.setContentView(paramInt);
-    a();
+    this.a.d = true;
+    SlideActiveAnimController.a(this.a, new SlideActiveAnimController.4.1(this));
+    SlideActiveAnimController.a(this.a).postDelayed(SlideActiveAnimController.a(this.a), 5000L);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

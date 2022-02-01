@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agkm;
+import ahdc;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -9,7 +9,7 @@ import java.util.HashMap;
 public class PttItemBuilder$4
   implements Runnable
 {
-  public PttItemBuilder$4(agkm paramagkm, String paramString1, String paramString2) {}
+  public PttItemBuilder$4(ahdc paramahdc, String paramString1, String paramString2) {}
   
   public void run()
   {
@@ -20,6 +20,10 @@ public class PttItemBuilder$4
     localHashMap.put("sttErrorCode", this.a);
     localHashMap.put("sttSubErrorCode", this.b);
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "PttSttResultError", true, 0L, 0L, localHashMap, null);
+    localHashMap = new HashMap();
+    localHashMap.put("resultCode", this.a);
+    localHashMap.put("subCode", this.b);
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "PttSttResultMonitor", false, 0L, 0L, localHashMap, null);
   }
 }
 

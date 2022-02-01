@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.faceunlock;
 
-import aiuw;
+import ajql;
 import android.os.Handler;
 
 public class QFaceUnlockCameraCaptureUnit$1
   implements Runnable
 {
-  public QFaceUnlockCameraCaptureUnit$1(aiuw paramaiuw) {}
+  public QFaceUnlockCameraCaptureUnit$1(ajql paramajql) {}
   
   public void run()
   {
-    if (aiuw.a(this.this$0) != 1) {
+    if (ajql.a(this.this$0) != 1) {
       return;
     }
-    aiuw.b(this.this$0);
-    aiuw.a(this.this$0).postDelayed(this, 1000L);
+    ajql.b(this.this$0);
+    ajql.a(this.this$0).postDelayed(this, 1000L);
   }
 }
 

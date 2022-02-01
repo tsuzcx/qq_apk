@@ -1,18 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FavEmosmManageActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class adgi
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  public adgi(FavEmosmManageActivity paramFavEmosmManageActivity) {}
+  public adgi(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (FavEmosmManageActivity.a(this.a) != null) {
-      FavEmosmManageActivity.a(this.a).a(paramContext, paramIntent);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

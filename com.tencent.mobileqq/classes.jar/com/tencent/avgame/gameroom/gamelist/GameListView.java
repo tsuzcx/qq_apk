@@ -19,41 +19,41 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import apub;
-import bcef;
+import aqxe;
+import bdla;
 import com.tencent.avgame.gamelogic.data.RoomInfo;
 import com.tencent.avgame.ui.AVGameActivity;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
-import mzl;
-import mzo;
-import naf;
-import nak;
-import ncp;
-import ncq;
-import nct;
-import ncu;
-import ncy;
-import ncz;
-import ndf;
-import ndg;
-import ndh;
-import ndi;
-import ndj;
-import ndk;
-import ndl;
-import ndm;
-import ndn;
-import ngc;
+import nfc;
+import nff;
+import nfv;
+import nga;
+import nin;
+import nio;
+import nir;
+import nis;
+import niw;
+import nix;
+import njd;
 import nje;
+import njf;
+import njg;
 import njh;
 import nji;
+import njj;
+import njk;
+import njl;
+import nmu;
+import nqc;
+import nqf;
+import nqg;
 
 public class GameListView
   extends RelativeLayout
-  implements Handler.Callback, View.OnClickListener, nct, ndm
+  implements Handler.Callback, View.OnClickListener, nir, njk
 {
   private int jdField_a_of_type_Int;
   protected long a;
@@ -65,10 +65,10 @@ public class GameListView
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   protected TextView a;
   private Runnable jdField_a_of_type_JavaLangRunnable = new GameListView.1(this);
-  public ncq a;
-  private ncz jdField_a_of_type_Ncz;
-  protected ndl a;
-  public ngc a;
+  public nio a;
+  private nix jdField_a_of_type_Nix;
+  protected njj a;
+  public nmu a;
   protected boolean a;
   public View.OnTouchListener b;
   private TextView b;
@@ -92,105 +92,105 @@ public class GameListView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new ndf(this);
-    this.jdField_b_of_type_AndroidViewView$OnTouchListener = new ndg(this);
-    this.jdField_c_of_type_AndroidViewView$OnTouchListener = new ndh(this);
-    this.jdField_d_of_type_AndroidViewView$OnTouchListener = new ndi(this);
-    this.jdField_a_of_type_Ndl = new ncy(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new njd(this);
+    this.jdField_b_of_type_AndroidViewView$OnTouchListener = new nje(this);
+    this.jdField_c_of_type_AndroidViewView$OnTouchListener = new njf(this);
+    this.jdField_d_of_type_AndroidViewView$OnTouchListener = new njg(this);
+    this.jdField_a_of_type_Njj = new niw(this);
   }
   
   private void a(String paramString, int paramInt)
   {
     int[] arrayOfInt = new int[2];
-    this.jdField_a_of_type_Ngc.a().getLocationInWindow(arrayOfInt);
+    this.jdField_a_of_type_Nmu.a().getLocationInWindow(arrayOfInt);
     RectF localRectF = new RectF();
     localRectF.left = arrayOfInt[0];
-    localRectF.right = (localRectF.left + this.jdField_a_of_type_Ngc.a().getMeasuredWidth());
+    localRectF.right = (localRectF.left + this.jdField_a_of_type_Nmu.a().getMeasuredWidth());
     localRectF.top = (arrayOfInt[1] - ViewUtils.dip2px(5.0F));
-    localRectF.bottom = (localRectF.top + this.jdField_a_of_type_Ngc.a().getMeasuredHeight());
-    this.jdField_a_of_type_Ncq.a().a(paramString, localRectF, paramInt);
+    localRectF.bottom = (localRectF.top + this.jdField_a_of_type_Nmu.a().getMeasuredHeight());
+    this.jdField_a_of_type_Nio.a().a(paramString, localRectF, paramInt);
   }
   
-  private void a(nak paramnak)
+  private void a(nga paramnga)
   {
-    if (paramnak == null) {
+    if (paramnga == null) {
       return;
     }
-    Object localObject = mzl.a();
+    Object localObject = nfc.a();
     boolean bool;
-    if (((mzl)localObject).a()) {
-      if (((mzl)localObject).a(paramnak))
+    if (((nfc)localObject).a()) {
+      if (((nfc)localObject).a(paramnga))
       {
-        this.jdField_a_of_type_Ngc.a().setVisibility(0);
-        localObject = njh.a("avgame_start_game_owner_normal@3x.png");
+        this.jdField_a_of_type_Nmu.a().setVisibility(0);
+        localObject = nqf.a("avgame_start_game_owner_normal@3x.png");
         if (localObject != null) {
-          this.jdField_a_of_type_Ngc.a().setImageBitmap((Bitmap)localObject);
+          this.jdField_a_of_type_Nmu.a().setImageBitmap((Bitmap)localObject);
         }
-        this.jdField_a_of_type_Ngc.a().setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
+        this.jdField_a_of_type_Nmu.a().setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
         bool = a(0);
-        this.jdField_a_of_type_Ngc.a().setTag(Integer.valueOf(0));
-        nje.a().a("param_StepGameCanStart", 0);
+        this.jdField_a_of_type_Nmu.a().setTag(Integer.valueOf(0));
+        nqc.a().a("param_StepGameCanStart", 0);
         a(false, "");
         if (a(bool)) {
-          a(getContext().getString(2131690305), 174);
+          a(getContext().getString(2131690344), 174);
         }
       }
     }
     for (;;)
     {
-      b(paramnak);
+      b(paramnga);
       return;
-      if (mzo.b(paramnak))
+      if (nff.b(paramnga))
       {
-        this.jdField_a_of_type_Ngc.a().setVisibility(4);
+        this.jdField_a_of_type_Nmu.a().setVisibility(4);
       }
       else
       {
-        this.jdField_a_of_type_Ngc.a().setVisibility(0);
-        this.jdField_a_of_type_Ngc.a().setOnTouchListener(null);
-        Bitmap localBitmap = njh.a("avgame_start_game_owner_disabled@3x.png");
+        this.jdField_a_of_type_Nmu.a().setVisibility(0);
+        this.jdField_a_of_type_Nmu.a().setOnTouchListener(null);
+        Bitmap localBitmap = nqf.a("avgame_start_game_owner_disabled@3x.png");
         if (localBitmap != null) {
-          this.jdField_a_of_type_Ngc.a().setImageBitmap(localBitmap);
+          this.jdField_a_of_type_Nmu.a().setImageBitmap(localBitmap);
         }
         bool = a(1);
-        this.jdField_a_of_type_Ngc.a().setTag(Integer.valueOf(1));
-        a(true, getContext().getString(2131690305));
-        if ((a(bool)) && (((mzl)localObject).a() > 1))
+        this.jdField_a_of_type_Nmu.a().setTag(Integer.valueOf(1));
+        a(true, getContext().getString(2131690344));
+        if ((a(bool)) && (((nfc)localObject).a() > 1))
         {
-          this.jdField_a_of_type_Ncq.a(getContext().getString(2131690309));
+          this.jdField_a_of_type_Nio.a(getContext().getString(2131690348));
           continue;
-          if (!mzo.b(paramnak))
+          if (!nff.b(paramnga))
           {
-            this.jdField_a_of_type_Ngc.a().setVisibility(0);
-            this.jdField_a_of_type_Ngc.a().setOnTouchListener(null);
+            this.jdField_a_of_type_Nmu.a().setVisibility(0);
+            this.jdField_a_of_type_Nmu.a().setOnTouchListener(null);
             if (QLog.isColorLevel()) {
-              QLog.i("GameListView", 2, "update() selfStatus:" + ((mzl)localObject).a().b());
+              QLog.i("GameListView", 2, "update() selfStatus:" + ((nfc)localObject).a().b());
             }
-            if (((mzl)localObject).a().b() == 0)
+            if (((nfc)localObject).a().b() == 0)
             {
               setPrepareNorImage();
-              this.jdField_a_of_type_Ngc.a().setOnTouchListener(this.jdField_b_of_type_AndroidViewView$OnTouchListener);
+              this.jdField_a_of_type_Nmu.a().setOnTouchListener(this.jdField_b_of_type_AndroidViewView$OnTouchListener);
               bool = a(2);
               a(false, "");
               if (a(bool)) {
-                a(getContext().getString(2131690306), 174);
+                a(getContext().getString(2131690345), 174);
               }
-              this.jdField_a_of_type_Ngc.a().setTag(Integer.valueOf(2));
+              this.jdField_a_of_type_Nmu.a().setTag(Integer.valueOf(2));
             }
             else
             {
               setCancelPrepareNorImage();
-              this.jdField_a_of_type_Ngc.a().setOnTouchListener(this.jdField_c_of_type_AndroidViewView$OnTouchListener);
+              this.jdField_a_of_type_Nmu.a().setOnTouchListener(this.jdField_c_of_type_AndroidViewView$OnTouchListener);
               bool = a(3);
-              a(true, getContext().getString(2131690306));
-              if ((a(bool)) && (((mzl)localObject).b(paramnak))) {
-                this.jdField_a_of_type_Ncq.a(getContext().getString(2131690311));
+              a(true, getContext().getString(2131690345));
+              if ((a(bool)) && (((nfc)localObject).b(paramnga))) {
+                this.jdField_a_of_type_Nio.a(getContext().getString(2131690350));
               }
               for (;;)
               {
-                this.jdField_a_of_type_Ngc.a().setTag(Integer.valueOf(3));
+                this.jdField_a_of_type_Nmu.a().setTag(Integer.valueOf(3));
                 break;
-                if (!((mzl)localObject).b(paramnak)) {
+                if (!((nfc)localObject).b(paramnga)) {
                   a(false, "");
                 }
               }
@@ -198,14 +198,14 @@ public class GameListView
           }
           else
           {
-            this.jdField_a_of_type_Ngc.a().setVisibility(4);
+            this.jdField_a_of_type_Nmu.a().setVisibility(4);
           }
         }
       }
     }
   }
   
-  private void a(nak paramnak, int paramInt)
+  private void a(nga paramnga, int paramInt)
   {
     if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1000L) {
       return;
@@ -217,7 +217,7 @@ public class GameListView
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
       localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
       localMessage.what = 1;
-      localMessage.obj = paramnak;
+      localMessage.obj = paramnga;
       localMessage.arg1 = paramInt;
       this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
       i = 128;
@@ -225,7 +225,7 @@ public class GameListView
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
     Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
     localMessage.what = 2;
-    localMessage.obj = paramnak;
+    localMessage.obj = paramnga;
     localMessage.arg1 = paramInt;
     this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, i);
   }
@@ -237,15 +237,15 @@ public class GameListView
     }
     if (paramBoolean)
     {
-      this.jdField_a_of_type_Ncq.a().b(paramString);
+      this.jdField_a_of_type_Nio.a().b(paramString);
       return;
     }
-    this.jdField_a_of_type_Ncq.d();
+    this.jdField_a_of_type_Nio.d();
   }
   
   private boolean a(int paramInt)
   {
-    return (!(this.jdField_a_of_type_Ngc.a().getTag() instanceof Integer)) || (((Integer)this.jdField_a_of_type_Ngc.a().getTag()).intValue() != paramInt);
+    return (!(this.jdField_a_of_type_Nmu.a().getTag() instanceof Integer)) || (((Integer)this.jdField_a_of_type_Nmu.a().getTag()).intValue() != paramInt);
   }
   
   private boolean a(boolean paramBoolean)
@@ -254,24 +254,24 @@ public class GameListView
       return paramBoolean;
     }
     this.jdField_a_of_type_Boolean = false;
-    Activity localActivity = this.jdField_a_of_type_Ncq.a();
+    Activity localActivity = this.jdField_a_of_type_Nio.a();
     if ((localActivity instanceof AVGameActivity)) {
       return ((AVGameActivity)localActivity).b();
     }
     return false;
   }
   
-  private void b(nak paramnak)
+  private void b(nga paramnga)
   {
-    if (paramnak == null) {
+    if (paramnga == null) {
       return;
     }
-    if (mzl.a().a()) {}
-    for (String str1 = getResources().getString(2131690267);; str1 = getResources().getString(2131690268))
+    if (nfc.a().a()) {}
+    for (String str1 = getResources().getString(2131690305);; str1 = getResources().getString(2131690306))
     {
       String str2 = str1;
-      if (paramnak.a != null) {
-        str2 = String.format(str1, new Object[] { paramnak.a });
+      if (paramnga.a != null) {
+        str2 = String.format(str1, new Object[] { paramnga.a });
       }
       this.jdField_a_of_type_AndroidWidgetTextView.setText(str2);
       return;
@@ -280,24 +280,29 @@ public class GameListView
   
   private void d()
   {
-    Object localObject = mzl.a();
-    boolean bool = ((mzl)localObject).e();
-    if (((mzl)localObject).a()) {
+    Object localObject = nfc.a();
+    boolean bool = ((nfc)localObject).e();
+    if (((nfc)localObject).a()) {
       if (!this.jdField_d_of_type_Boolean)
       {
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131690339);
         if (!bool) {
           removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
         }
-        label55:
+        label45:
+        if (!bool) {
+          break label138;
+        }
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131690381);
+        label59:
         localObject = this.jdField_a_of_type_AndroidViewView;
         if (!bool) {
-          break label161;
+          break label151;
         }
       }
     }
-    label161:
+    label138:
+    label151:
     for (int i = 0;; i = 8)
     {
       ((View)localObject).setVisibility(i);
@@ -306,19 +311,15 @@ public class GameListView
       if (bool) {}
       for (localObject = "avgame_match_stop_normal@2x.png";; localObject = "avgame_match_start_normal@2x.png")
       {
-        localObject = njh.a((String)localObject);
+        localObject = nqf.a((String)localObject);
         this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
         this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(this.jdField_d_of_type_AndroidViewView$OnTouchListener);
         break;
       }
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      if (bool)
-      {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131690341);
-        break label55;
-      }
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131690339);
-      break label55;
+      break label45;
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131690379);
+      break label59;
     }
   }
   
@@ -333,21 +334,21 @@ public class GameListView
     default: 
       return;
     case 0: 
-      if (mzl.a().a()) {
+      if (nfc.a().a()) {
         break;
       }
     }
     for (paramInt = 2;; paramInt = 1)
     {
-      int i = this.jdField_a_of_type_Ndl.a();
-      a(this.jdField_a_of_type_Ncz.a(i), i);
-      bcef.b(null, "dc00898", "", "", "0X800B0F7", "0X800B0F7", mzl.a().a().d(), 0, "" + paramInt, "" + mzl.a().a().a().players.size(), "", "");
+      int i = this.jdField_a_of_type_Njj.a();
+      a(this.jdField_a_of_type_Nix.a(i), i);
+      bdla.b(null, "dc00898", "", "", "0X800B0F7", "0X800B0F7", nfc.a().a().d(), 0, "" + paramInt, "" + nfc.a().a().a().players.size(), "", "");
       return;
       e();
-      bcef.b(null, "dc00898", "", "", "0X800B029", "0X800B029", 0, 0, "", "" + mzl.a().a().a(), "", "");
+      bdla.b(null, "dc00898", "", "", "0X800B029", "0X800B029", 0, 0, "", "" + nfc.a().a().a(), "", "");
       return;
       f();
-      bcef.b(null, "dc00898", "", "", "0X800B028", "0X800B028", 0, 0, "", "" + mzl.a().a().a(), "", "");
+      bdla.b(null, "dc00898", "", "", "0X800B028", "0X800B028", 0, 0, "", "" + nfc.a().a().a(), "", "");
       return;
     }
   }
@@ -358,7 +359,7 @@ public class GameListView
       return;
     }
     this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_Ndl.b();
+    this.jdField_a_of_type_Njj.b();
   }
   
   private void f()
@@ -367,7 +368,7 @@ public class GameListView
       return;
     }
     this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_Ndl.a();
+    this.jdField_a_of_type_Njj.a();
   }
   
   public Context a()
@@ -375,9 +376,9 @@ public class GameListView
     return getContext();
   }
   
-  public ndl a()
+  public njj a()
   {
-    return this.jdField_a_of_type_Ndl;
+    return this.jdField_a_of_type_Njj;
   }
   
   public void a()
@@ -387,83 +388,88 @@ public class GameListView
   
   public void a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_Ncz.a(paramInt);
+    Object localObject = this.jdField_a_of_type_Nix.a(paramInt);
     if (localObject != null) {
-      this.jdField_a_of_type_AndroidAppDialog = ncu.a(getContext(), (nak)localObject);
+      this.jdField_a_of_type_AndroidAppDialog = nis.a(getContext(), (nga)localObject);
     }
     this.jdField_c_of_type_Boolean = true;
-    if (mzl.a().a()) {}
+    if (nfc.a().a()) {}
     for (localObject = "0X800B352";; localObject = "0X800B353")
     {
-      bcef.b(null, "dc00898", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
+      bdla.b(null, "dc00898", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
       return;
     }
   }
   
-  public void a(naf paramnaf)
+  public void a(nfv paramnfv)
   {
-    int i = paramnaf.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("GameListView", 2, "refreshUI  gameStatus:" + i + " currentItem: currentGameIndex:" + this.jdField_a_of_type_Ndl.a() + " showMatch:" + this.jdField_d_of_type_Boolean);
+    if (paramnfv.e()) {
+      setVisibility(8);
     }
-    if (i == 0)
+    do
     {
-      this.jdField_a_of_type_Ncz.a(this.jdField_a_of_type_Ndl.a(), this.jdField_a_of_type_Ndl.a(), this.jdField_a_of_type_Ndl.a());
-      if (getVisibility() == 8) {
-        a();
-      }
-      a(this.jdField_a_of_type_Ncz.a(this.jdField_a_of_type_Ndl.a()));
-      d();
-    }
-    while (getVisibility() != 0) {
       return;
-    }
+      int i = paramnfv.a();
+      if (QLog.isColorLevel()) {
+        QLog.i("GameListView", 2, "refreshUI  gameStatus:" + i + " currentItem: currentGameIndex:" + this.jdField_a_of_type_Njj.a() + " showMatch:" + this.jdField_d_of_type_Boolean);
+      }
+      if (i == 0)
+      {
+        this.jdField_a_of_type_Nix.a(this.jdField_a_of_type_Njj.a(), this.jdField_a_of_type_Njj.a(), this.jdField_a_of_type_Njj.a());
+        if (getVisibility() == 8) {
+          a();
+        }
+        a(this.jdField_a_of_type_Nix.a(this.jdField_a_of_type_Njj.a()));
+        d();
+        return;
+      }
+    } while (getVisibility() != 0);
     b();
     this.jdField_b_of_type_Boolean = false;
     removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
   }
   
-  public void a(ncq paramncq, ngc paramngc)
+  public void a(nio paramnio, nmu paramnmu)
   {
-    this.jdField_a_of_type_Ncq = paramncq;
-    this.jdField_a_of_type_Ngc = paramngc;
+    this.jdField_a_of_type_Nio = paramnio;
+    this.jdField_a_of_type_Nmu = paramnmu;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
-    this.jdField_a_of_type_Ndl.a(paramncq);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367409));
+    this.jdField_a_of_type_Njj.a(paramnio);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367538));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367389));
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131690339);
-    this.jdField_a_of_type_Ngc.a().setOnClickListener(this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131367407));
-    this.jdField_a_of_type_Ncz = new ncz(getContext(), this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, this, paramncq);
-    this.jdField_a_of_type_Ncz.a(3);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOnScrollListener(new ndj(this));
-    findViewById(2131363610).setOnClickListener(new ndk(this));
-    paramncq = (ImageView)findViewById(2131367379);
-    paramngc = njh.a("avgame_room_bg@2x.png");
-    if (paramngc != null)
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367513));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131690379);
+    this.jdField_a_of_type_Nmu.a().setOnClickListener(this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131367536));
+    this.jdField_a_of_type_Nix = new nix(getContext(), this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, this, paramnio);
+    this.jdField_a_of_type_Nix.a(3);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOnScrollListener(new njh(this));
+    findViewById(2131363679).setOnClickListener(new nji(this));
+    paramnio = (ImageView)findViewById(2131367503);
+    paramnmu = nqf.a("avgame_room_bg@2x.png");
+    if (paramnmu != null)
     {
-      int i = paramngc.getWidth();
+      int i = paramnmu.getWidth();
       Matrix localMatrix = new Matrix();
-      float f = ncp.d / i;
+      float f = nin.d / i;
       localMatrix.setScale(f, f);
-      paramncq.setImageMatrix(localMatrix);
-      paramncq.setImageBitmap(paramngc);
+      paramnio.setImageMatrix(localMatrix);
+      paramnio.setImageBitmap(paramnmu);
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367399));
-      ((RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams()).topMargin = ncp.b;
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131370615);
-      paramncq = (nji)apub.a().a(642);
-      this.jdField_d_of_type_Boolean = paramncq.b();
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367525));
+      ((RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams()).topMargin = nin.b;
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131370798);
+      paramnio = (nqg)aqxe.a().a(642);
+      this.jdField_d_of_type_Boolean = paramnio.b();
       if (QLog.isColorLevel()) {
-        QLog.d("GameListView", 2, "avGameConfBean:" + paramncq.toString() + "  avGameConfBean.isStrangerMatchShow：" + paramncq.b());
+        QLog.d("GameListView", 2, "avGameConfBean:" + paramnio.toString() + "  avGameConfBean.isStrangerMatchShow：" + paramnio.b());
       }
-      a(mzl.a().a());
+      a(nfc.a().a());
       postDelayed(new GameListView.8(this), 2000L);
       return;
-      paramncq.setBackgroundColor(getResources().getColor(2131165341));
+      paramnio.setBackgroundColor(getResources().getColor(2131165344));
     }
   }
   
@@ -485,54 +491,54 @@ public class GameListView
   
   public void b(int paramInt)
   {
-    if (mzl.a().a()) {
-      if (paramInt != mzl.a().a().jdField_a_of_type_Int)
+    if (nfc.a().a()) {
+      if (paramInt != nfc.a().a().jdField_a_of_type_Int)
       {
         c(paramInt);
-        a(this.jdField_a_of_type_Ncz.a(paramInt));
-        if ((!this.jdField_b_of_type_Boolean) && (mzl.a().a() == 1) && (!mzl.a().e()))
+        a(this.jdField_a_of_type_Nix.a(paramInt));
+        if ((!this.jdField_b_of_type_Boolean) && (nfc.a().a() == 1) && (!nfc.a().e()))
         {
           this.jdField_b_of_type_Boolean = true;
-          RectF localRectF = this.jdField_a_of_type_Ncq.a();
+          RectF localRectF = this.jdField_a_of_type_Nio.a();
           if (localRectF == null) {
             return;
           }
-          this.jdField_a_of_type_Ncq.a().a(getContext().getString(2131690307), localRectF, 146);
-          bcef.b(null, "dc00898", "", "", "0X800B350", "0X800B350", 2, 0, "", "", "", "");
+          this.jdField_a_of_type_Nio.a().a(getContext().getString(2131690346), localRectF, 146);
+          bdla.b(null, "dc00898", "", "", "0X800B350", "0X800B350", 2, 0, "", "", "", "");
         }
-        bcef.b(null, "dc00898", "", "", "0X800B351", "0X800B351", 0, 0, "", "", "", "");
+        bdla.b(null, "dc00898", "", "", "0X800B351", "0X800B351", 0, 0, "", "", "", "");
       }
     }
     for (;;)
     {
       this.jdField_c_of_type_Boolean = true;
       return;
-      this.jdField_a_of_type_Ncq.a(getContext().getResources().getString(2131690266));
+      this.jdField_a_of_type_Nio.a(getContext().getResources().getString(2131690304));
     }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Ncz != null) {
-      this.jdField_a_of_type_Ncz.a();
+    if (this.jdField_a_of_type_Nix != null) {
+      this.jdField_a_of_type_Nix.a();
     }
   }
   
   public void c(int paramInt)
   {
     if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1000L) {}
-    while (mzl.a().a().a() != 0) {
+    while (nfc.a().a().a() != 0) {
       return;
     }
-    mzl.a().a().jdField_a_of_type_Int = paramInt;
+    nfc.a().a().jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
     Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
     localMessage.what = 1;
-    localMessage.obj = this.jdField_a_of_type_Ncz.a(paramInt);
+    localMessage.obj = this.jdField_a_of_type_Nix.a(paramInt);
     localMessage.arg1 = paramInt;
     this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 1000L);
-    b(this.jdField_a_of_type_Ncz.a(paramInt));
-    this.jdField_a_of_type_Ncz.a(mzl.a().a(), paramInt, true);
+    b(this.jdField_a_of_type_Nix.a(paramInt));
+    this.jdField_a_of_type_Nix.a(nfc.a().a(), paramInt, true);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -543,15 +549,15 @@ public class GameListView
     for (;;)
     {
       return true;
-      this.jdField_a_of_type_Ndl.a((nak)paramMessage.obj, paramMessage.arg1);
+      this.jdField_a_of_type_Njj.a((nga)paramMessage.obj, paramMessage.arg1);
       continue;
-      this.jdField_a_of_type_Ndl.b((nak)paramMessage.obj, paramMessage.arg1);
+      this.jdField_a_of_type_Njj.b((nga)paramMessage.obj, paramMessage.arg1);
     }
   }
   
   public void onClick(View paramView)
   {
-    if (paramView == this.jdField_a_of_type_Ngc.a()) {
+    if (paramView == this.jdField_a_of_type_Nmu.a()) {
       if ((paramView.getTag() instanceof Integer)) {
         d(((Integer)paramView.getTag()).intValue());
       }
@@ -563,66 +569,66 @@ public class GameListView
       return;
       if (paramView == this.jdField_a_of_type_AndroidWidgetImageView)
       {
-        if (!mzl.a().e()) {
+        if (!nfc.a().e()) {
           break;
         }
         if (QLog.isColorLevel()) {
           QLog.i("GameListView", 2, "stopMatch");
         }
         removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-        this.jdField_a_of_type_Ndl.d();
+        this.jdField_a_of_type_Njj.d();
         str = "0X800B498";
-        bcef.b(null, "dc00898", "", "", str, str, mzl.a().a().a().players.size(), 0, "", "", mzl.a().a().a() + "", "");
+        bdla.b(null, "dc00898", "", "", str, str, nfc.a().a().a().players.size(), 0, "", "", nfc.a().a().a() + "", "");
       }
     }
     if (QLog.isColorLevel()) {
       QLog.i("GameListView", 2, "startMatch");
     }
-    if (mzl.a().a().d()) {
-      this.jdField_a_of_type_Ncq.a(getContext().getString(2131690340));
+    if (nfc.a().a().d()) {
+      this.jdField_a_of_type_Nio.a(getContext().getString(2131690380));
     }
     for (;;)
     {
       str = "0X800B497";
       break;
-      this.jdField_a_of_type_Int = mzl.a().a();
+      this.jdField_a_of_type_Int = nfc.a().a();
       if (QLog.isColorLevel()) {
         QLog.i("GameListView", 2, "startMatch currentPlayNum:" + this.jdField_a_of_type_Int);
       }
       postDelayed(this.jdField_a_of_type_JavaLangRunnable, 10000L);
-      this.jdField_a_of_type_Ndl.c();
+      this.jdField_a_of_type_Njj.c();
     }
   }
   
   public void setCancelPrepareNorImage()
   {
-    Bitmap localBitmap = njh.a("avgame_cancel_button_nor@2x.png");
-    if ((localBitmap != null) && (this.jdField_a_of_type_Ngc.a() != null)) {
-      this.jdField_a_of_type_Ngc.a().setImageBitmap(localBitmap);
+    Bitmap localBitmap = nqf.a("avgame_cancel_button_nor@2x.png");
+    if ((localBitmap != null) && (this.jdField_a_of_type_Nmu.a() != null)) {
+      this.jdField_a_of_type_Nmu.a().setImageBitmap(localBitmap);
     }
   }
   
   public void setCancelPreparePressImage()
   {
-    Bitmap localBitmap = njh.a("avgame_cancel_button_press@2x.png");
-    if ((localBitmap != null) && (this.jdField_a_of_type_Ngc.a() != null)) {
-      this.jdField_a_of_type_Ngc.a().setImageBitmap(localBitmap);
+    Bitmap localBitmap = nqf.a("avgame_cancel_button_press@2x.png");
+    if ((localBitmap != null) && (this.jdField_a_of_type_Nmu.a() != null)) {
+      this.jdField_a_of_type_Nmu.a().setImageBitmap(localBitmap);
     }
   }
   
   public void setPrepareNorImage()
   {
-    Bitmap localBitmap = njh.a("avgame_ready_button_nor@2x.png");
-    if ((localBitmap != null) && (this.jdField_a_of_type_Ngc.a() != null)) {
-      this.jdField_a_of_type_Ngc.a().setImageBitmap(localBitmap);
+    Bitmap localBitmap = nqf.a("avgame_ready_button_nor@2x.png");
+    if ((localBitmap != null) && (this.jdField_a_of_type_Nmu.a() != null)) {
+      this.jdField_a_of_type_Nmu.a().setImageBitmap(localBitmap);
     }
   }
   
   public void setPreparePressImage()
   {
-    Bitmap localBitmap = njh.a("avgame_ready_button_press@2x.png");
-    if ((localBitmap != null) && (this.jdField_a_of_type_Ngc.a() != null)) {
-      this.jdField_a_of_type_Ngc.a().setImageBitmap(localBitmap);
+    Bitmap localBitmap = nqf.a("avgame_ready_button_press@2x.png");
+    if ((localBitmap != null) && (this.jdField_a_of_type_Nmu.a() != null)) {
+      this.jdField_a_of_type_Nmu.a().setImageBitmap(localBitmap);
     }
   }
 }

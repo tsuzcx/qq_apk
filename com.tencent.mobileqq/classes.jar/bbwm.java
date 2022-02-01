@@ -1,135 +1,124 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.LinearLayout;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.comment.widget.CommentsView;
+import com.tencent.mobileqq.richstatus.comment.widget.LikesView;
 
 public class bbwm
+  extends bbwj
 {
-  private static volatile bbwm a;
+  public int a;
+  public CheckBox a;
+  QQAppInterface a;
+  public CommentsView a;
+  public LikesView a;
+  public RichStatus b;
   
-  public static bbwm a()
+  public bbwm(Context paramContext, AppInterface paramAppInterface, View paramView, String paramString)
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new bbwm();
-      }
-      return a;
-    }
-    finally {}
+    super(paramContext, paramAppInterface, paramView, paramString);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramAppInterface);
+    this.e = 1;
   }
   
-  public Bundle a(String paramString, Bundle paramBundle)
+  public View a(RichStatus paramRichStatus)
   {
-    Object localObject2 = null;
-    Object localObject1;
-    if ("CMD_GET_NICK_NAME_BY_UIN".equals(paramString))
+    return super.a(paramRichStatus);
+  }
+  
+  protected void a()
+  {
+    super.a();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setMinimumHeight(0);
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    super.a(paramBoolean);
+    int i;
+    label49:
+    label77:
+    label98:
+    LikesView localLikesView;
+    if (this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView != null)
     {
-      paramString = QIPCClientHelper.getInstance().getClient().callServer("Module_VideoPlayIPCServer", "CMD_GET_NICK_NAME_BY_UIN", paramBundle);
-      localObject1 = localObject2;
-      if (paramString != null)
+      localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView;
+      if (paramBoolean)
       {
-        localObject1 = localObject2;
-        if (paramString.isSuccess()) {
-          localObject1 = paramString.data;
+        i = jdField_a_of_type_ArrayOfInt[14];
+        ((CommentsView)localObject).setNormalTextColor(i);
+        localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView;
+        if (!paramBoolean) {
+          break label162;
+        }
+        i = jdField_a_of_type_ArrayOfInt[13];
+        ((CommentsView)localObject).setItemColor(i);
+      }
+    }
+    else if (this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView != null)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView;
+      if (!paramBoolean) {
+        break label172;
+      }
+      i = jdField_a_of_type_ArrayOfInt[14];
+      ((LikesView)localObject).setNormalTextColor(i);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView;
+      if (!paramBoolean) {
+        break label182;
+      }
+      i = jdField_a_of_type_ArrayOfInt[13];
+      ((LikesView)localObject).setItemColor(i);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView.a();
+      if ((this.jdField_a_of_type_AndroidContentContext != null) && (localObject != null))
+      {
+        localLikesView = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView;
+        if (!paramBoolean) {
+          break label192;
         }
       }
     }
-    do
+    label162:
+    label172:
+    label182:
+    label192:
+    for (Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847448);; localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847449))
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        do
-                        {
-                          do
-                          {
-                            do
-                            {
-                              do
-                              {
-                                do
-                                {
-                                  return localObject1;
-                                  if (!"CMD_GET_CURRENT_NICK_NAME".equals(paramString)) {
-                                    break;
-                                  }
-                                  paramString = QIPCClientHelper.getInstance().getClient().callServer("Module_VideoPlayIPCServer", "CMD_GET_CURRENT_NICK_NAME", paramBundle);
-                                  localObject1 = localObject2;
-                                } while (paramString == null);
-                                localObject1 = localObject2;
-                              } while (!paramString.isSuccess());
-                              return paramString.data;
-                              if (!"CMD_UPDATE_MSG_FOR_VIDEO_REDBAG_STAT".equals(paramString)) {
-                                break;
-                              }
-                              paramString = QIPCClientHelper.getInstance().getClient().callServer("Module_VideoPlayIPCServer", "CMD_UPDATE_MSG_FOR_VIDEO_REDBAG_STAT", paramBundle);
-                              localObject1 = localObject2;
-                            } while (paramString == null);
-                            localObject1 = localObject2;
-                          } while (!paramString.isSuccess());
-                          return paramString.data;
-                          if (!"CMD_QUERY_VIDEO_REDBAG_STAT".equals(paramString)) {
-                            break;
-                          }
-                          paramString = QIPCClientHelper.getInstance().getClient().callServer("Module_VideoPlayIPCServer", "CMD_QUERY_VIDEO_REDBAG_STAT", paramBundle);
-                          localObject1 = localObject2;
-                        } while (paramString == null);
-                        localObject1 = localObject2;
-                      } while (!paramString.isSuccess());
-                      return paramString.data;
-                      if (!"CMD_GET_CURRENT_USER_HEAD".equals(paramString)) {
-                        break;
-                      }
-                      paramString = QIPCClientHelper.getInstance().getClient().callServer("Module_VideoPlayIPCServer", "CMD_GET_CURRENT_USER_HEAD", paramBundle);
-                      localObject1 = localObject2;
-                    } while (paramString == null);
-                    localObject1 = localObject2;
-                  } while (!paramString.isSuccess());
-                  return paramString.data;
-                  if (!"CMD_DOWNLOAD_PTU_ADDITIONAL_RES".equals(paramString)) {
-                    break;
-                  }
-                  paramString = QIPCClientHelper.getInstance().getClient().callServer("Module_VideoPlayIPCServer", "CMD_DOWNLOAD_PTU_ADDITIONAL_RES", paramBundle);
-                  localObject1 = localObject2;
-                } while (paramString == null);
-                localObject1 = localObject2;
-              } while (!paramString.isSuccess());
-              return paramString.data;
-              if (!"CMD_DOWNLOAD_PTU_BASE_RES".equals(paramString)) {
-                break;
-              }
-              paramString = QIPCClientHelper.getInstance().getClient().callServer("Module_VideoPlayIPCServer", "CMD_DOWNLOAD_PTU_BASE_RES", paramBundle);
-              localObject1 = localObject2;
-            } while (paramString == null);
-            localObject1 = localObject2;
-          } while (!paramString.isSuccess());
-          return paramString.data;
-          localObject1 = localObject2;
-        } while (!"CMD_QUERY_STATUS_PTU_RES".equals(paramString));
-        paramString = QIPCClientHelper.getInstance().getClient().callServer("Module_VideoPlayIPCServer", "CMD_QUERY_STATUS_PTU_RES", paramBundle);
-        localObject1 = localObject2;
-      } while (paramString == null);
-      localObject1 = localObject2;
-    } while (!paramString.isSuccess());
-    return paramString.data;
+      localLikesView.setLikSpanDrawable((Drawable)localObject);
+      return;
+      i = jdField_a_of_type_ArrayOfInt[16];
+      break;
+      i = jdField_a_of_type_ArrayOfInt[15];
+      break label49;
+      i = jdField_a_of_type_ArrayOfInt[15];
+      break label77;
+      i = jdField_a_of_type_ArrayOfInt[15];
+      break label98;
+    }
   }
+  
+  protected int b()
+  {
+    return jdField_a_of_type_ArrayOfInt[12];
+  }
+  
+  protected boolean d()
+  {
+    return true;
+  }
+  
+  protected boolean e()
+  {
+    return false;
+  }
+  
+  protected void i() {}
 }
 
 

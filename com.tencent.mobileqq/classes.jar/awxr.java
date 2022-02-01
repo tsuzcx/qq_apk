@@ -1,12 +1,19 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.os.Bundle;
+import android.text.TextUtils;
 
-public class awxr
-  implements axhl
+public abstract class awxr
 {
-  public awxr(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public static int a(String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("ak:"))) {
+      return 1;
+    }
+    return 0;
+  }
   
-  public void onClick(View paramView) {}
+  public abstract void a(String paramString1, String paramString2, Object paramObject);
+  
+  protected abstract boolean a(Bundle paramBundle);
 }
 
 

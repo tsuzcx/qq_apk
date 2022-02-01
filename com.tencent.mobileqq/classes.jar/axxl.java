@@ -1,16 +1,29 @@
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-class axxl
-  implements axwq
+final class axxl
+  implements biyn
 {
-  axxl(axxk paramaxxk) {}
+  axxl(String paramString, axxq paramaxxq) {}
   
-  public void a(axyl paramaxyl)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("VehicleMovementDetector", 2, "[status][vehicle] onLocationChanged: " + paramaxyl);
+    if ((paramBaseResp != null) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
+    {
+      WXShareHelper.a().b(this);
+      if (paramBaseResp.errCode != 0) {
+        break label50;
+      }
+      if (this.jdField_a_of_type_Axxq != null) {
+        this.jdField_a_of_type_Axxq.a(true);
+      }
     }
-    this.a.a(paramaxyl);
+    label50:
+    while (this.jdField_a_of_type_Axxq == null) {
+      return;
+    }
+    this.jdField_a_of_type_Axxq.a(false);
   }
 }
 

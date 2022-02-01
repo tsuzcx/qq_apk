@@ -1,10 +1,12 @@
-public abstract interface bhol
+public class bhol
 {
-  public abstract bhom getCodec(String paramString);
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
   
-  public abstract int send(Object paramObject);
-  
-  public abstract void setNetTransportEventListener(String paramString, bhon parambhon);
+  public bhol(bhoj parambhoj) {}
 }
 
 

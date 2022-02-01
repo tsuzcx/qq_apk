@@ -1,35 +1,32 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
 public class ahdo
-  extends ahdi
+  extends afos
 {
-  public afad a;
-  public Bitmap a;
-  public boolean a;
-  public Drawable[] a;
+  public long a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
+  public String a;
+  View jdField_b_of_type_AndroidViewView;
+  LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  CornerImageView jdField_b_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
+  public String b;
+  public View c;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  CornerImageView jdField_c_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
+  View jdField_d_of_type_AndroidViewView;
+  TextView jdField_d_of_type_AndroidWidgetTextView;
+  CornerImageView jdField_d_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
+  View jdField_e_of_type_AndroidViewView;
+  TextView jdField_e_of_type_AndroidWidgetTextView;
   
-  public ahdo(String paramString)
-  {
-    super(paramString);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    if (paramRedPacketInfo != null)
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramRedPacketInfo.jdField_a_of_type_AndroidGraphicsBitmap;
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = paramRedPacketInfo.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
-      this.jdField_a_of_type_Afad = paramRedPacketInfo.jdField_a_of_type_Afad;
-      this.jdField_a_of_type_Boolean = paramRedPacketInfo.b;
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_AndroidGraphicsBitmap != null) || (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable != null);
-  }
+  ahdo(ahdl paramahdl) {}
 }
 
 

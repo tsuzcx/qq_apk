@@ -1,50 +1,64 @@
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class aqgn
-  extends aqgc<aqhm>
+  extends aqwt<aqgo>
 {
   @NonNull
-  public static aqhm c()
+  public aqgo a(int paramInt)
   {
-    aqhm localaqhm2 = (aqhm)apub.a().a(527);
-    aqhm localaqhm1 = localaqhm2;
-    if (localaqhm2 == null) {
-      localaqhm1 = new aqhm();
+    return new aqgo();
+  }
+  
+  @Nullable
+  public aqgo a(aqxa[] paramArrayOfaqxa)
+  {
+    aqgo localaqgo = new aqgo();
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0) && (paramArrayOfaqxa[0] != null)) {
+      aqgo.a(localaqgo, paramArrayOfaqxa[0].a);
     }
-    return localaqhm1;
+    return localaqgo;
   }
   
-  @NonNull
-  public aqhm a()
+  public void a(aqgo paramaqgo) {}
+  
+  public Class<aqgo> clazz()
   {
-    return new aqhm();
+    return aqgo.class;
   }
   
-  @NonNull
-  public aqhm a(@NonNull aptx[] paramArrayOfaptx)
+  public boolean isAccountRelated()
   {
-    return aqhm.a(paramArrayOfaptx[0].a);
+    return false;
   }
   
-  @NonNull
-  public aqhm b()
+  public boolean isNeedCompressed()
   {
-    return new aqhm();
+    return true;
   }
   
-  public Class<aqhm> clazz()
+  public boolean isNeedStoreLargeFile()
   {
-    return aqhm.class;
+    return false;
   }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public void onReqNoReceive() {}
   
   public int type()
   {
-    return 527;
+    return 416;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqgn
  * JD-Core Version:    0.7.0.1
  */

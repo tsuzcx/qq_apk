@@ -1,19 +1,20 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import aghq;
-import aghs;
-import arhi;
+import ahah;
+import ahaj;
+import aslo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 public class LimitChatTopicItemBuilder$1
   implements Runnable
 {
-  public LimitChatTopicItemBuilder$1(aghq paramaghq, aghs paramaghs) {}
+  public LimitChatTopicItemBuilder$1(ahah paramahah, ahaj paramahaj) {}
   
   public void run()
   {
     if ((this.this$0.a != null) && (this.a != null)) {
-      ((arhi)this.this$0.a.getManager(264)).a(this.a.a);
+      ((aslo)this.this$0.a.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).a(this.a.a);
     }
   }
 }

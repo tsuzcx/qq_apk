@@ -1,35 +1,29 @@
-import com.tencent.mobileqq.activity.SettingUncommUsedContactsActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.qphone.base.util.QLog;
 
 public class aefw
-  extends amsu
+  extends ayrb
 {
-  public aefw(SettingUncommUsedContactsActivity paramSettingUncommUsedContactsActivity) {}
+  public aefw(Leba paramLeba) {}
   
-  protected void onGetBothDongtaiPermissions(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  protected void onGetQZoneFeedCountFin(boolean paramBoolean1, boolean paramBoolean2, long paramLong)
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("UndealCount.Q.lebatab.leba", 2, "on Get QZone Count:" + paramBoolean1 + ",HasNew:" + paramBoolean2);
+    }
+    if (QLog.isColorLevel())
+    {
+      if ((paramLong >>> 17 & 1L) != 0L) {
+        QLog.d("UndealCount.ZebraAlbum.", 2, "Leba onGetQZoneFeedCountFin Zebra album and then call Leba freshEntryItemUI");
+      }
+      QLog.d("UndealCount.", 2, "Leba onGetQZoneFeedCountFin type: " + paramLong + " and then call Leba freshEntryItemUI");
+    }
     if (paramBoolean1)
     {
-      SettingUncommUsedContactsActivity.a(this.a, this.a.a.a(), paramBoolean2);
-      SettingUncommUsedContactsActivity.a(this.a, this.a.b.a(), paramBoolean3);
-    }
-  }
-  
-  protected void onSetNotAllowedSeeMyDongtai(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (!paramBoolean1)
-    {
-      this.a.a(2131718207, 1);
-      SettingUncommUsedContactsActivity.a(this.a, this.a.a.a(), paramBoolean2);
-    }
-  }
-  
-  protected void onSetShieldHisDongtai(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (!paramBoolean1)
-    {
-      this.a.a(2131718207, 1);
-      SettingUncommUsedContactsActivity.a(this.a, this.a.b.a(), paramBoolean2);
+      Leba.c(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.lebatab.leba", 2, "onGetQZoneFeedCountFin. notifyData.");
+      }
     }
   }
 }

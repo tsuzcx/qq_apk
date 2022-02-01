@@ -1,16 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView.1;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView.1.1.1;
-import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
+import android.widget.LinearLayout;
 
-public class soa
-  implements bcrx
+class soa
+  implements sob
 {
-  public soa(ReadInJoySkinGuideView.1 param1) {}
+  soa(snz paramsnz, swu paramswu) {}
   
-  public void a(bcra parambcra)
+  public void a()
   {
-    this.a.this$0.a.post(new ReadInJoySkinGuideView.1.1.1(this, parambcra));
+    if ((snz.a(this.jdField_a_of_type_Snz) instanceof uiy)) {
+      ((uiy)snz.a(this.jdField_a_of_type_Snz)).a = true;
+    }
+    this.jdField_a_of_type_Swu.e.setVisibility(8);
   }
 }
 

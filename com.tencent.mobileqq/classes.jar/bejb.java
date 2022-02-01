@@ -1,23 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
 
-class bejb
-  implements View.OnClickListener
+public class bejb
+  implements ImageAssetDelegate
 {
-  bejb(beiz parambeiz, CheckBox paramCheckBox) {}
-  
-  public void onClick(View paramView)
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    CheckBox localCheckBox = this.jdField_a_of_type_AndroidWidgetCheckBox;
-    if (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localCheckBox.setChecked(bool);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    if (BaseApplicationImpl.sImageCache != null) {
+      return (Bitmap)BaseApplicationImpl.sImageCache.get(paramLottieImageAsset.getKey());
     }
+    return null;
   }
 }
 

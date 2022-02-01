@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <View android:id="@id/enp" android:background="#7f000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout android:id="@id/bk4" android:background="#ffffffff" android:layout_width="296.0dip" android:layout_height="wrap_content" app:round_rect_radius="6.0dip">
-            <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/nuk" android:layout_width="fill_parent" android:layout_height="270.0dip">
-                <com.tencent.mobileqq.widget.presseffect.PressEffectImageView android:id="@id/nuj" android:layout_width="fill_parent" android:layout_height="270.0dip" android:scaleType="centerCrop" />
-                <View android:id="@id/ks9" android:background="@drawable/eba" android:layout_width="fill_parent" android:layout_height="135.0dip" android:layout_alignParentBottom="true" />
-                <com.tencent.mobileqq.widget.presseffect.PressEffectImageView android:id="@id/myj" android:layout_width="82.0dip" android:layout_height="20.0dip" android:layout_marginLeft="30.0dip" android:layout_marginTop="25.0dip" android:src="@drawable/h0o" />
-                <com.tencent.mobileqq.widget.presseffect.PressEffectImageView android:id="@id/lzl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/h0p" android:layout_centerInParent="true" />
-                <com.tencent.mobileqq.widget.presseffect.PressEffectTextView android:textSize="16.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/jq_" android:layout_width="236.0dip" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginRight="30.0dip" android:layout_marginBottom="10.0dip" android:maxLines="2" android:includeFontPadding="false" android:layout_alignParentBottom="true" android:lineSpacingExtra="2.0dip" />
-            </RelativeLayout>
-            <com.tencent.mobileqq.activity.aio.RightLinearLayout android:orientation="horizontal" android:id="@id/npp" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginLeft="30.0dip" android:layout_marginTop="14.0dip" android:layout_marginRight="30.0dip" android:layout_below="@id/nuk" android:layout_centerHorizontal="true">
-                <TextView android:textSize="14.0dip" android:textColor="#ff4e525e" android:gravity="center" android:id="@id/nwm" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginLeft="1.0dip" android:text="@string/xeh" android:includeFontPadding="false" />
-                <TextView android:textSize="14.0dip" android:textColor="#ff4e525e" android:ellipsize="end" android:gravity="center" android:id="@id/nrr" android:layout_width="wrap_content" android:layout_height="20.0dip" android:text="" android:lines="1" android:includeFontPadding="false" />
-            </com.tencent.mobileqq.activity.aio.RightLinearLayout>
-            <com.tencent.mobileqq.widget.presseffect.PressEffectTextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="#ffffffff" android:gravity="center" android:id="@id/ezz" android:background="@drawable/eb9" android:layout_width="236.0dip" android:layout_height="41.0dip" android:layout_marginTop="20.0dip" android:layout_marginBottom="25.0dip" android:text="@string/xdw" android:layout_below="@id/npp" android:layout_centerHorizontal="true" />
-        </com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout>
-        <com.tencent.mobileqq.widget.presseffect.PressEffectImageView android:layout_gravity="center_horizontal" android:id="@id/azb" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="40.0dip" android:src="@drawable/h0m" android:scaleType="centerCrop" />
-    </LinearLayout>
-</RelativeLayout>
+<com.tencent.mobileqq.troop.quickat.ui.AtPanelTouchController android:gravity="bottom" android:orientation="vertical" android:id="@id/content" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/lyp" android:background="@drawable/gxc" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center" android:id="@id/mb7" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+            <ImageView android:id="@id/jv2" android:background="@drawable/hzl" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <TextView android:textSize="30.0dip" android:textColor="@color/skin_aio_listen_together_black" android:id="@id/fi4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_below="@id/mb7" />
+        <TextView android:textSize="10.0dip" android:textColor="@color/skin_aio_listen_together_black" android:id="@id/ne6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_below="@id/fi4" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/o2b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="4.0dip" android:layout_below="@id/ne6">
+            <com.tencent.mobileqq.widget.ClearableEditText android:textSize="@dimen/az6" android:textColor="@color/skin_dark_gray" android:textColorHint="@color/skin_gray2" android:gravity="center_vertical" android:id="@id/fcb" android:background="@null" android:padding="6.0dip" android:longClickable="false" android:layout_width="0.0dip" android:layout_height="fill_parent" android:hint="@string/fz6" android:singleLine="true" android:maxLength="8" android:layout_weight="2.0" android:inputType="number" />
+            <TextView android:textSize="@dimen/az6" android:textColor="@color/skin_color_button_white" android:ellipsize="middle" android:gravity="center" android:id="@id/aji" android:background="@drawable/oq" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:singleLine="true" android:layout_weight="1.0" />
+        </LinearLayout>
+        <com.tencent.mobileqq.activity.aio.item.RoundRectUrlImageView android:id="@id/l_u" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="150.0dip" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="16.0dip" android:scaleType="fitXY" android:layout_below="@id/fi4" />
+    </RelativeLayout>
+</com.tencent.mobileqq.troop.quickat.ui.AtPanelTouchController>

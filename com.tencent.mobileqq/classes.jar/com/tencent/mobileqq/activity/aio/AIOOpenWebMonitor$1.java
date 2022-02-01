@@ -2,6 +2,7 @@ package com.tencent.mobileqq.activity.aio;
 
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.troop.TroopInfo;
@@ -27,7 +28,7 @@ public final class AIOOpenWebMonitor$1
         if (this.jdField_a_of_type_Int != 1) {
           break;
         }
-        localObject = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(this.jdField_a_of_type_JavaLangString);
+        localObject = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.jdField_a_of_type_JavaLangString);
       } while (localObject == null);
       HashMap localHashMap = new HashMap(3);
       localHashMap.put("m_num", ((TroopInfo)localObject).wMemberNum + "");
@@ -52,7 +53,7 @@ public final class AIOOpenWebMonitor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AIOOpenWebMonitor.1
  * JD-Core Version:    0.7.0.1
  */

@@ -3,16 +3,16 @@ package com.tencent.av.opengl.effects;
 import android.os.Build.VERSION;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
-import babd;
+import bbhm;
+import bnky;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.download.AEResUtil;
-import lld;
-import loe;
-import lof;
-import lou;
-import msu;
+import llq;
+import lor;
+import los;
+import lph;
+import mtr;
 
 public class AEFilterSupport
 {
@@ -20,10 +20,10 @@ public class AEFilterSupport
   private static long jdField_a_of_type_Long;
   private static final Object jdField_a_of_type_JavaLangObject;
   private static Runnable jdField_a_of_type_JavaLangRunnable;
-  private static loe jdField_a_of_type_Loe;
-  private static final lof jdField_a_of_type_Lof = new lof(21, 4, 1.1F, 2.7F);
+  private static lor jdField_a_of_type_Lor;
+  private static final los jdField_a_of_type_Los = new los(21, 4, 1.1F, 2.7F);
   private static int jdField_b_of_type_Int;
-  private static final lof jdField_b_of_type_Lof = new lof(27, 8, 1.8F, 5.0F);
+  private static final los jdField_b_of_type_Los = new los(27, 8, 1.8F, 5.0F);
   
   static
   {
@@ -35,21 +35,21 @@ public class AEFilterSupport
     if (jdField_b_of_type_Int != 0) {
       return jdField_b_of_type_Int;
     }
-    String str1 = msu.a("machineMiddleLine");
-    String str2 = msu.a("machineHighLine");
-    jdField_a_of_type_Lof.a(str1);
-    jdField_b_of_type_Lof.a(str2);
-    loe localloe = a();
-    if (jdField_b_of_type_Lof.a(localloe)) {
+    String str1 = mtr.a("machineMiddleLine");
+    String str2 = mtr.a("machineHighLine");
+    jdField_a_of_type_Los.a(str1);
+    jdField_b_of_type_Los.a(str2);
+    lor locallor = a();
+    if (jdField_b_of_type_Los.a(locallor)) {
       jdField_b_of_type_Int = 7;
     }
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("AEFilterSupport", 2, String.format("getCurMachineLevel, level: %s, middle[%s], high[%s], cur[%s], config[%s, %s]", new Object[] { Integer.valueOf(jdField_b_of_type_Int), jdField_a_of_type_Lof, jdField_b_of_type_Lof, localloe, str1, str2 }));
+        QLog.i("AEFilterSupport", 2, String.format("getCurMachineLevel, level: %s, middle[%s], high[%s], cur[%s], config[%s, %s]", new Object[] { Integer.valueOf(jdField_b_of_type_Int), jdField_a_of_type_Los, jdField_b_of_type_Los, locallor, str1, str2 }));
       }
       return jdField_b_of_type_Int;
-      if (jdField_a_of_type_Lof.a(localloe)) {
+      if (jdField_a_of_type_Los.a(locallor)) {
         jdField_b_of_type_Int = 4;
       } else {
         jdField_b_of_type_Int = 3;
@@ -58,24 +58,24 @@ public class AEFilterSupport
   }
   
   @NonNull
-  public static loe a()
+  public static lor a()
   {
-    if (jdField_a_of_type_Loe == null)
+    if (jdField_a_of_type_Lor == null)
     {
-      loe localloe = new loe();
-      localloe.jdField_a_of_type_Int = Build.VERSION.SDK_INT;
-      localloe.jdField_b_of_type_Float = ((float)DeviceInfoUtil.getSystemTotalMemory() / 1.073742E+009F);
-      localloe.jdField_b_of_type_Int = DeviceInfoUtil.getCpuNumber();
-      localloe.jdField_a_of_type_Float = ((float)lld.d() / 1048576.0F);
-      jdField_a_of_type_Loe = localloe;
+      lor locallor = new lor();
+      locallor.jdField_a_of_type_Int = Build.VERSION.SDK_INT;
+      locallor.jdField_b_of_type_Float = ((float)DeviceInfoUtil.getSystemTotalMemory() / 1.073742E+009F);
+      locallor.jdField_b_of_type_Int = DeviceInfoUtil.getCpuNumber();
+      locallor.jdField_a_of_type_Float = ((float)llq.d() / 1048576.0F);
+      jdField_a_of_type_Lor = locallor;
     }
-    return jdField_a_of_type_Loe;
+    return jdField_a_of_type_Lor;
   }
   
   public static boolean a(int paramInt)
   {
     boolean bool = true;
-    if (!lou.b())
+    if (!lph.b())
     {
       if (QLog.isColorLevel()) {
         QLog.i("AEFilterSupport", 2, "isAEKitSoReady, not support AEKit.");
@@ -87,7 +87,7 @@ public class AEFilterSupport
       return bool;
       if (jdField_a_of_type_Int != 1)
       {
-        if (AEResUtil.isAEBaseSoReady())
+        if (bnky.a())
         {
           jdField_a_of_type_Int = 1;
           return true;
@@ -114,7 +114,7 @@ public class AEFilterSupport
   
   private static void b()
   {
-    if (!lou.b())
+    if (!lph.b())
     {
       if (QLog.isColorLevel()) {
         QLog.i("AEFilterSupport", 2, "checkAndLoadAEKitSo, not support AEKit.");
@@ -125,9 +125,9 @@ public class AEFilterSupport
     if (QLog.isColorLevel()) {
       l1 = SystemClock.elapsedRealtime();
     }
-    boolean bool = AEResUtil.isAEBaseSoReady();
+    boolean bool = bnky.a();
     if (!bool) {
-      bool = babd.a(false);
+      bool = bbhm.a(false);
     }
     for (;;)
     {

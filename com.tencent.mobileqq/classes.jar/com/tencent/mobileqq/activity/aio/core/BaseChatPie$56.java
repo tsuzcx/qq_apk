@@ -1,6 +1,9 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import bbpn;
+import admh;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonInfo;
 import com.tencent.qphone.base.util.QLog;
 
 class BaseChatPie$56
@@ -10,12 +13,24 @@ class BaseChatPie$56
   
   public void run()
   {
-    if (!BaseChatPie.preloaded)
+    admh.c(this.this$0.app, this.this$0.sessionInfo, false);
+    try
     {
-      bbpn.b = System.currentTimeMillis();
-      QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_CLICK_CAMERA ", Long.valueOf(bbpn.b) });
-      this.this$0.doShowPtv();
-      BaseChatPie.preloaded = true;
+      this.this$0.mContext.getResources().getDrawable(2130847121);
+      this.this$0.mContext.getResources().getDrawable(2130847122);
+      this.this$0.mContext.getResources().getDrawable(2130838057);
+      SystemAndEmojiEmoticonInfo.preload(this.this$0.app);
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d(this.this$0.tag, 2, "emo qvip_emoji_aio_face_new_default_fail, e=" + localException.getMessage());
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      QLog.e(this.this$0.tag, 1, "emo qvip_emoji_aio_face oom, e= " + localOutOfMemoryError);
     }
   }
 }

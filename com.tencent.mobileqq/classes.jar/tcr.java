@@ -1,24 +1,31 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.annotation.SuppressLint;
+import android.os.Build.VERSION;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
 
 public class tcr
-  extends AnimatorListenerAdapter
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public tcr(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView, View paramView) {}
+  public tcr(ReadinjoySlidingIndicator paramReadinjoySlidingIndicator) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  @SuppressLint({"NewApi"})
+  public void onGlobalLayout()
   {
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView, false);
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView);
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView, this.jdField_a_of_type_AndroidViewView);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView, true);
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView);
+    if (Build.VERSION.SDK_INT < 16) {
+      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
+    for (;;)
+    {
+      ReadinjoySlidingIndicator.a(this.a, ReadinjoySlidingIndicator.a(this.a));
+      View localView = ReadinjoySlidingIndicator.a(this.a).getChildAt(ReadinjoySlidingIndicator.a(this.a));
+      ReadinjoySlidingIndicator.a(this.a, localView.getLeft());
+      this.a.invalidate();
+      return;
+      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
   }
 }
 

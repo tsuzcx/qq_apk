@@ -1,97 +1,133 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import com.tencent.mobileqq.utils.HexUtil;
+import android.content.Context;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.mini.ui.dialog.DialogFromBottom;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.UUID;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
+import java.util.Arrays;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.jvm.internal.StringCompanionObject;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-class astu
-  extends zsa
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/extendfriend/wiget/CompletePersonalDataDialog;", "Lcom/tencent/mobileqq/mini/ui/dialog/DialogFromBottom;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "getRecyclerView", "()Landroid/support/v7/widget/RecyclerView;", "setRecyclerView", "(Landroid/support/v7/widget/RecyclerView;)V", "subTitleView", "Landroid/widget/TextView;", "getSubTitleView", "()Landroid/widget/TextView;", "setSubTitleView", "(Landroid/widget/TextView;)V", "taskAdapter", "Lcom/tencent/mobileqq/extendfriend/wiget/CompletePersonalDataDialog$TaskAdapter;", "init", "", "refresh", "maxMatchCount", "", "leftMatchCount", "tasks", "", "Lcom/tencent/mobileqq/extendfriend/limitchat/CompletePesonalDataTask;", "showDialog", "updateTasks", "Companion", "SpacesItemDecoration", "TaskAdapter", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class astu
+  extends DialogFromBottom
 {
-  astu(astk paramastk) {}
+  public static final astv a;
+  @Nullable
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  @Nullable
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private astx jdField_a_of_type_Astx;
   
-  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
+  static
   {
-    if (astk.a(this.a) == null) {}
-    Object localObject;
-    label546:
-    do
+    jdField_a_of_type_Astv = new astv(null);
+  }
+  
+  public astu(@NotNull Context paramContext)
+  {
+    super(paramContext);
+    a(paramContext);
+  }
+  
+  private final void a(Context paramContext)
+  {
+    Object localObject1 = LayoutInflater.from(paramContext).inflate(2131561116, null);
+    if (localObject1 == null) {
+      throw new TypeCastException("null cannot be cast to non-null type android.widget.LinearLayout");
+    }
+    localObject1 = (LinearLayout)localObject1;
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)((LinearLayout)localObject1).findViewById(2131376425));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((LinearLayout)localObject1).findViewById(2131379089));
+    Object localObject2 = new LinearLayoutManager(paramContext);
+    ((LinearLayoutManager)localObject2).setOrientation(1);
+    RecyclerView localRecyclerView = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+    if (localRecyclerView != null) {
+      localRecyclerView.setLayoutManager((RecyclerView.LayoutManager)localObject2);
+    }
+    int i = ViewUtils.dpToPx(8.0F);
+    int j = ViewUtils.dpToPx(0.0F);
+    localObject2 = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+    if (localObject2 != null) {
+      ((RecyclerView)localObject2).addItemDecoration((RecyclerView.ItemDecoration)new astw(i, j));
+    }
+    this.jdField_a_of_type_Astx = new astx(paramContext);
+    paramContext = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+    if (paramContext != null) {
+      paramContext.setAdapter((RecyclerView.Adapter)this.jdField_a_of_type_Astx);
+    }
+    ((ImageView)((LinearLayout)localObject1).findViewById(2131362985)).setOnClickListener((View.OnClickListener)new asua(this));
+    setOnCancelListener((DialogInterface.OnCancelListener)asub.a);
+    ((LinearLayout)localObject1).getViewTreeObserver().addOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)new asuc((LinearLayout)localObject1));
+    setContentView((View)localObject1);
+  }
+  
+  private final void a(List<? extends asqs> paramList)
+  {
+    astx localastx = this.jdField_a_of_type_Astx;
+    if (localastx == null) {
+      Intrinsics.throwNpe();
+    }
+    localastx.a(paramList);
+    paramList = this.jdField_a_of_type_Astx;
+    if (paramList == null) {
+      Intrinsics.throwNpe();
+    }
+    paramList.notifyDataSetChanged();
+  }
+  
+  public final void a(int paramInt1, int paramInt2, @Nullable List<? extends asqs> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CompletePersonalDataDialog", 2, "showDialog maxMatchCount = " + paramInt1 + ",leftMatchCount = " + paramInt2);
+    }
+    if ((paramList == null) || (paramList.isEmpty()))
     {
-      do
-      {
-        return;
-        if (paramDownloadFileRspBody == null)
-        {
-          QLog.i("TroopFileModel<FileAssistant>", 1, "requestOnlinePreviewDownloadUrl: error DownloadFileRspBody is null!");
-          astk.a(this.a).c();
-          return;
-        }
-        long l = paramBundle.getLong("troopUin");
-        localObject = TroopFileTransferManager.a(l);
-        if (localObject == null)
-        {
-          QLog.i("TroopFileModel<FileAssistant>", 1, "requestOnlinePreviewDownloadUrl: error bad troopUin[" + l + "]");
-          astk.a(this.a).c();
-          return;
-        }
-        paramBundle = paramBundle.getString("itemKey");
-        if (paramBundle == null)
-        {
-          astk.a(this.a).c();
-          return;
-        }
-        localObject = ((TroopFileTransferManager)localObject).a(UUID.fromString(paramBundle));
-        if (localObject == null)
-        {
-          QLog.i("TroopFileModel<FileAssistant>", 1, "requestOnlinePreviewDownloadUrl: error bad item key" + paramBundle + "]");
-          astk.a(this.a).c();
-          return;
-        }
-        paramInt = paramDownloadFileRspBody.int32_ret_code.get();
-        if (QLog.isColorLevel()) {
-          QLog.i("TroopFileModel<FileAssistant>", 2, "requestOnlinePreviewDownloadUrl: onRspDownload - retCode[" + paramInt + "]");
-        }
-      } while (astk.a(this.a, paramInt, astk.a(this.a)));
-      ((TroopFileTransferManager.Item)localObject).cookieValue = HexUtil.bytes2HexStr(paramDownloadFileRspBody.bytes_cookie_val.get().toByteArray());
-      if (((TroopFileTransferManager.Item)localObject).cookieValue != null) {
-        ((TroopFileTransferManager.Item)localObject).cookieValue = ((TroopFileTransferManager.Item)localObject).cookieValue.toLowerCase();
+      if (QLog.isColorLevel()) {
+        QLog.d("CompletePersonalDataDialog", 2, "showDialog return for empty tasks");
       }
-      ((TroopFileTransferManager.Item)localObject).DownloadIp = paramDownloadFileRspBody.str_download_ip.get();
-      ((TroopFileTransferManager.Item)localObject).DownloadUrl = HexUtil.bytes2HexStr(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
-      ((TroopFileTransferManager.Item)localObject).Md5 = paramDownloadFileRspBody.bytes_md5.get().toByteArray();
-      ((TroopFileTransferManager.Item)localObject).NameForSave = paramDownloadFileRspBody.str_save_file_name.get();
-      paramDownloadFileRspBody = asqa.a(((TroopFileTransferManager.Item)localObject).DownloadIp, ((TroopFileTransferManager.Item)localObject).DownloadUrl, ((TroopFileTransferManager.Item)localObject).FilePath, ((TroopFileTransferManager.Item)localObject).cookieValue, "");
-      if (!TextUtils.isEmpty(paramDownloadFileRspBody))
-      {
-        astk.a(this.a).a(paramDownloadFileRspBody, ((TroopFileTransferManager.Item)localObject).cookieValue);
-        if (QLog.isColorLevel()) {
-          QLog.i("TroopFileModel<FileAssistant>", 2, "requestOnlinePreviewDownloadUrl: url[" + paramDownloadFileRspBody + "], cookies [" + ((TroopFileTransferManager.Item)localObject).cookieValue + "]");
-        }
-        if (this.a.a.a() != null)
-        {
-          paramDownloadFileRspBody = String.valueOf(this.a.a.a().TroopUin);
-          if (this.a.a.a() == null) {
-            break label546;
-          }
-        }
-        for (paramBundle = aszt.b(this.a.a.a().nFileType);; paramBundle = "unknow")
-        {
-          bcef.b(null, "dc00899", "Grp_files", "", "oper", "Clk_pre_video", 0, 0, paramDownloadFileRspBody, "", paramBundle, "1");
-          return;
-          paramDownloadFileRspBody = "";
-          break;
-        }
-      }
-      astk.a(this.a).c();
-    } while (!QLog.isColorLevel());
-    QLog.i("TroopFileModel<FileAssistant>", 2, "requestOnlinePreviewDownloadUrl: url[" + paramDownloadFileRspBody + "], cookies [" + ((TroopFileTransferManager.Item)localObject).cookieValue + "]");
+      return;
+    }
+    b(paramInt1, paramInt2, paramList);
+    show();
+  }
+  
+  public final void b(int paramInt1, int paramInt2, @Nullable List<? extends asqs> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CompletePersonalDataDialog", 2, "refresh maxMatchCount = " + paramInt1 + ",leftMatchCount = " + paramInt2);
+    }
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localTextView != null)
+    {
+      Object localObject = StringCompanionObject.INSTANCE;
+      localObject = getContext().getString(2131698448);
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "context.getString(R.stri…_personal_data_sub_title)");
+      Object[] arrayOfObject = new Object[2];
+      arrayOfObject[0] = Integer.valueOf(paramInt1);
+      arrayOfObject[1] = Integer.valueOf(paramInt2);
+      localObject = String.format((String)localObject, Arrays.copyOf(arrayOfObject, arrayOfObject.length));
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "java.lang.String.format(format, *args)");
+      localTextView.setText((CharSequence)localObject);
+    }
+    a(paramList);
   }
 }
 

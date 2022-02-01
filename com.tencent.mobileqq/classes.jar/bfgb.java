@@ -1,18 +1,26 @@
-import com.tencent.mobileqq.troop.widget.TroopAIORobotLayout;
-import com.tencent.mobileqq.widget.QQToast;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar.4;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class bfgb
-  implements bfdu
+class bfgb
+  extends bfgh
 {
-  public bfgb(TroopAIORobotLayout paramTroopAIORobotLayout, bffv parambffv) {}
+  bfgb(bfga parambfga) {}
   
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo)
   {
-    if (paramInt == 0) {
+    if (!this.a.a.this$0.a) {}
+    do
+    {
       return;
-    }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.getContext(), 1, amtj.a(2131714186) + "", 0).a();
+      if ((paramMessageRecord != null) && (paramTroopAioKeywordTipInfo != null)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("TroopAioKeywordTipBar", 2, "mCheckKeywordRunnable, messageRecord == null || keywordTipInfo == null");
+    return;
+    bffw.a(this.a.a.this$0, paramMessageRecord, paramTroopAioKeywordTipInfo);
   }
 }
 

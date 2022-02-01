@@ -1,74 +1,22 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.ark.open.ArkAppCacheMgr;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.utils.QQCustomArkDialog;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bftq
+  implements View.OnClickListener
 {
-  public static MessageForArkApp a(Bundle paramBundle, QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2)
-  {
-    ArkAppMessage localArkAppMessage = new ArkAppMessage();
-    localArkAppMessage.appMinVersion = "0.0.0.1";
-    localArkAppMessage.appName = "com.tencent.structmsg";
-    localArkAppMessage.appView = a(paramBundle.getInt("req_type"));
-    Object localObject = ArkAppCacheMgr.getApplicationFromManifest(localArkAppMessage.appName, localArkAppMessage.appMinVersion);
-    if (localObject != null)
-    {
-      localArkAppMessage.appDesc = ((String)((Map)localObject).get("desc"));
-      localArkAppMessage.appMinVersion = ((String)((Map)localObject).get("version"));
-    }
-    if (TextUtils.isEmpty(localArkAppMessage.appDesc)) {
-      localArkAppMessage.appDesc = localArkAppMessage.appName;
-    }
-    String str = paramBundle.getString("title");
-    localObject = str;
-    if (TextUtils.isEmpty(str)) {
-      localObject = localArkAppMessage.appDesc;
-    }
-    localArkAppMessage.promptText = String.format(amtj.a(2131699809), new Object[] { localObject });
-    localArkAppMessage.metaList = QQCustomArkDialog.getMetaData(paramBundle, localArkAppMessage.appName);
-    localArkAppMessage.config = a();
-    paramBundle = bbli.a(paramQQAppInterface, paramString1, paramString2, paramInt, localArkAppMessage);
-    paramBundle.msgData = localArkAppMessage.toBytes();
-    paramBundle.parse();
-    return paramBundle;
-  }
+  int jdField_a_of_type_Int;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public static String a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("forward", 1);
-      localJSONObject.put("autosize", 1);
-      localJSONObject.put("type", "normal");
-      return localJSONObject.toString();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.e("ArkMessageBuilder", 1, "getConfigValue", localJSONException);
-      }
-    }
-  }
+  protected bftq(bfto parambfto) {}
   
-  public static String a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 2) {
-      return "music";
+    if (this.jdField_a_of_type_Bfto.a != null) {
+      this.jdField_a_of_type_Bfto.a.a(paramView, this.jdField_a_of_type_Int);
     }
-    if (paramInt == 4) {
-      return "video";
-    }
-    return "news";
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

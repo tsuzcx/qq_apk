@@ -1,47 +1,50 @@
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import javax.net.ssl.SSLSocket;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import msf.msgcomm.msg_comm.MsgType0x210;
+import tencent.im.s2c.msgtype0x210.submsgtype0x7c.submsgtype0x7c.MsgBody;
 
-class bctr
-  extends bctq
+public class bctr
+  implements bctu
 {
-  private bctr(bcto parambcto, SSLSocket paramSSLSocket)
+  public static void a(int paramInt1, int paramInt2, QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte)
   {
-    super(parambcto, paramSSLSocket);
-  }
-  
-  public void setEnabledProtocols(String[] paramArrayOfString)
-  {
-    String[] arrayOfString = paramArrayOfString;
-    if (paramArrayOfString != null)
-    {
-      arrayOfString = paramArrayOfString;
-      if (paramArrayOfString.length == 1)
-      {
-        arrayOfString = paramArrayOfString;
-        if ("SSLv3".equals(paramArrayOfString[0]))
-        {
-          paramArrayOfString = new ArrayList(Arrays.asList(this.a.getEnabledProtocols()));
-          if (paramArrayOfString.size() <= 1) {
-            break label101;
-          }
-          paramArrayOfString.remove("SSLv3");
-          QLog.i("setEnabledProtocols", 1, "Removed SSLv3 from enabled protocols");
-        }
-      }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("SecSpyFileDecoder", 4, "OnLinePushMessageProcessor receive 0x7c push message, seq = " + paramInt1 + "submsgtype:" + paramInt2);
     }
-    for (;;)
+    submsgtype0x7c.MsgBody localMsgBody = new submsgtype0x7c.MsgBody();
+    try
     {
-      arrayOfString = (String[])paramArrayOfString.toArray(new String[paramArrayOfString.size()]);
-      if (arrayOfString != null) {
-        super.setEnabledProtocols(arrayOfString);
+      localMsgBody.mergeFrom(paramArrayOfByte);
+      long l = localMsgBody.uint64_uin.get();
+      if (paramQQAppInterface.getCurrentAccountUin().equals(String.valueOf(l))) {
+        ((bcpl)paramQQAppInterface.getManager(QQManagerFactory.SEC_SPY_FILEMANAGER)).a(localMsgBody, 3);
       }
       return;
-      label101:
-      QLog.i("setEnabledProtocols", 1, "SSL stuck with protocol available for " + String.valueOf(paramArrayOfString));
     }
+    catch (InvalidProtocolBufferMicroException paramQQAppInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("SecSpyFileDecoder", 2, "parse 0x7c push msg error", paramQQAppInterface);
+    }
+  }
+  
+  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre, MessageHandler paramMessageHandler)
+  {
+    int i = paramMsg.msg_head.msg_seq.get();
+    int j = paramMsg.msg_head.msg_type.get();
+    paramMsgType0x210 = paramMsgType0x210.msg_content.get().toByteArray();
+    a(i, j, paramMessageHandler.app, paramMsgType0x210);
   }
 }
 

@@ -1,33 +1,15 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.mobileqq.dinifly.LottieListener;
 
-class ver
-  implements vfg
+final class ver
+  implements LottieListener<Throwable>
 {
-  ver(veq paramveq) {}
+  ver(vew paramvew) {}
   
-  public void a(Object paramObject)
+  public void a(Throwable paramThrowable)
   {
-    if ((paramObject instanceof vex))
-    {
-      if (!this.a.b) {
-        ((PublicAccountImageCollectionMainActivity)veq.a(this.a)).h();
-      }
-      this.a.b = true;
+    if (this.a != null) {
+      this.a.a();
     }
-    while ((paramObject instanceof vey)) {
-      if (veq.a(this.a))
-      {
-        this.a.d(true);
-        return;
-        ((PublicAccountImageCollectionMainActivity)veq.a(this.a)).g();
-      }
-      else
-      {
-        this.a.d(false);
-        return;
-      }
-    }
-    this.a.d(true);
   }
 }
 

@@ -1,134 +1,59 @@
-public abstract interface atau
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class atau
+  implements View.OnClickListener
 {
-  public abstract void A();
+  public atau(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public abstract void B();
-  
-  public abstract void C();
-  
-  public abstract void D();
-  
-  public abstract void E();
-  
-  public abstract void F();
-  
-  public abstract void G();
-  
-  public abstract void H();
-  
-  public abstract void I();
-  
-  public abstract void J();
-  
-  public abstract void K();
-  
-  public abstract void L();
-  
-  public abstract void M();
-  
-  public abstract void N();
-  
-  public abstract void O();
-  
-  public abstract void P();
-  
-  public abstract void Q();
-  
-  public abstract void R();
-  
-  public abstract void S();
-  
-  public abstract void T();
-  
-  public abstract void U();
-  
-  public abstract void V();
-  
-  public abstract void W();
-  
-  public abstract void X();
-  
-  public abstract void Y();
-  
-  public abstract void Z();
-  
-  public abstract void a();
-  
-  public abstract void aa();
-  
-  public abstract void ab();
-  
-  public abstract void ac();
-  
-  public abstract void ad();
-  
-  public abstract void ae();
-  
-  public abstract void af();
-  
-  public abstract void ag();
-  
-  public abstract void ah();
-  
-  public abstract void ai();
-  
-  public abstract void aj();
-  
-  public abstract void ak();
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
-  
-  public abstract void j();
-  
-  public abstract void k();
-  
-  public abstract void l();
-  
-  public abstract void m();
-  
-  public abstract void n();
-  
-  public abstract void o();
-  
-  public abstract void p();
-  
-  public abstract void q();
-  
-  public abstract void r();
-  
-  public abstract void s();
-  
-  public abstract void t();
-  
-  public abstract void u();
-  
-  public abstract void v();
-  
-  public abstract void w();
-  
-  public abstract void x();
-  
-  public abstract void y();
-  
-  public abstract void z();
+  public void onClick(View paramView)
+  {
+    Object localObject = paramView.getTag();
+    int i;
+    if ((localObject instanceof atbg))
+    {
+      localObject = (atbg)paramView.getTag();
+      i = ((atbg)localObject).c;
+      localObject = (WeiYunFileInfo)((atbg)localObject).a;
+    }
+    for (;;)
+    {
+      QfileBaseCloudFileTabView localQfileBaseCloudFileTabView;
+      if (localObject != null)
+      {
+        if ((paramView.getId() == 2131366742) && (QfileBaseCloudFileTabView.c(this.a))) {
+          bdla.b(QfileBaseCloudFileTabView.c(this.a), "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
+        }
+        localQfileBaseCloudFileTabView = this.a;
+        if (paramView.getId() != 2131366742) {
+          break label155;
+        }
+      }
+      label155:
+      for (boolean bool = true;; bool = false)
+      {
+        localQfileBaseCloudFileTabView.a((WeiYunFileInfo)localObject, i, bool);
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        if (!(localObject instanceof ataa)) {
+          break label160;
+        }
+        localObject = (WeiYunFileInfo)((ataa)paramView.getTag()).a;
+        i = -1;
+        break;
+      }
+      label160:
+      i = 0;
+      localObject = null;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atau
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.view;
 
-import amtj;
 import android.widget.CheckBox;
+import anvx;
 import com.tencent.mobileqq.widget.QQToast;
 
 class QRScanEntryView$8
@@ -12,7 +12,7 @@ class QRScanEntryView$8
   public void run()
   {
     QRScanEntryView.a(this.this$0).setChecked(false);
-    QQToast.a(this.this$0.getContext(), amtj.a(2131710324), 1).a();
+    QQToast.a(this.this$0.getContext(), anvx.a(2131710671), 1).a();
   }
 }
 

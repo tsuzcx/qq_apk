@@ -1,97 +1,84 @@
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.view.ViewParent;
-import android.widget.EditText;
-import android.widget.RelativeLayout;
-import com.tencent.biz.qqstory.storyHome.atvideo.view.StoryAtVideoFragment;
-import com.tencent.biz.qqstory.view.widget.bubble.BubbleTextView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.content.res.Resources;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.PlayerGestureGroupHolder.OnViewPagerGestureListener.1;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class xgj
-  implements TextWatcher
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public int a;
-  public Context a;
-  public BubbleTextView a;
-  public String a;
-  public xnp a;
-  public boolean a;
-  private int b;
-  public String b;
-  private int c;
+  private xgj(xgh paramxgh) {}
   
-  public xgj(Context paramContext, String paramString1, String paramString2, int paramInt, boolean paramBoolean)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if ((!"1_".equals(paramString2)) && (!"2_".equals(paramString2))) {
-      throw new IllegalArgumentException("illegal textWatcher source");
+    int i = 0;
+    Object localObject = (StoryPlayerGroupHolder)this.a.a();
+    if (((StoryPlayerGroupHolder)localObject).a() == null) {
+      return super.onDoubleTap(paramMotionEvent);
     }
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Xnp = ((xnp)vux.a(11));
-  }
-  
-  public static void a(EditText paramEditText, Intent paramIntent)
-  {
-    if (paramIntent == null) {}
-    do
+    localObject = (xmx)((StoryPlayerGroupHolder)localObject).b(xmx.class);
+    if ((localObject != null) && (((xmx)localObject).d()))
     {
-      return;
-      paramIntent = paramIntent.getStringExtra("at_video_text");
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.atvideo.AtVideoTextWatcher", 2, "on activity result, at video text=" + paramIntent);
-      }
-    } while ((paramEditText == null) || (TextUtils.isEmpty(paramIntent)));
-    paramEditText.getText().insert(paramEditText.getSelectionStart(), paramIntent);
-  }
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    if (this.c > 0)
-    {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView != null)
+      try
       {
-        ViewParent localViewParent2 = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView.getParent();
-        ViewParent localViewParent1 = localViewParent2;
-        if (localViewParent2 != null)
+        localObject = (AnimationDrawable)this.a.a().getResources().getDrawable(2130846940);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        ((AnimationDrawable)localObject).start();
+        int j = 0;
+        while (i < ((AnimationDrawable)localObject).getNumberOfFrames())
         {
-          localViewParent1 = localViewParent2;
-          if (!(localViewParent2 instanceof RelativeLayout)) {
-            localViewParent1 = localViewParent2.getParent();
-          }
+          j += ((AnimationDrawable)localObject).getDuration(i);
+          i += 1;
         }
-        if ((localViewParent1 != null) && ((localViewParent1 instanceof RelativeLayout))) {
-          ((RelativeLayout)localViewParent1).removeView(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView);
-        }
-        this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = null;
+        ThreadManager.getUIHandler().postDelayed(new PlayerGestureGroupHolder.OnViewPagerGestureListener.1(this, (AnimationDrawable)localObject), j);
       }
-      if (('@' == paramEditable.charAt(this.jdField_b_of_type_Int + this.c - 1)) || (65312 == paramEditable.charAt(this.jdField_b_of_type_Int + this.c - 1)))
+      catch (OutOfMemoryError paramMotionEvent)
       {
-        xwa.a("home_page", "send_at", 0, 0, new String[0]);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.atvideo.AtVideoTextWatcher", 2, "trigger at video process");
-        }
-        if (((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (this.jdField_a_of_type_Boolean)) {
-          StoryAtVideoFragment.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_JavaLangString, (String)this.jdField_a_of_type_Xnp.a.get(this.jdField_a_of_type_JavaLangString + this.jdField_b_of_type_JavaLangString), this.jdField_a_of_type_Int);
-        }
+        bdjw.a(paramMotionEvent);
+        return false;
       }
+      ykq.c(this.a.jdField_a_of_type_JavaLangString, "onDoubleTap handle");
+    }
+    for (;;)
+    {
+      return super.onDoubleTap(paramMotionEvent);
+      ykq.c(this.a.jdField_a_of_type_JavaLangString, "onDoubleTap not handle");
     }
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onLongPress(MotionEvent paramMotionEvent)
   {
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt3;
+    super.onLongPress(paramMotionEvent);
   }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    paramMotionEvent = (StoryPlayerGroupHolder)this.a.a();
+    VideoViewVideoHolder localVideoViewVideoHolder = paramMotionEvent.a();
+    if (localVideoViewVideoHolder != null) {
+      switch (localVideoViewVideoHolder.a())
+      {
+      }
+    }
+    for (;;)
+    {
+      ykq.c(this.a.jdField_a_of_type_JavaLangString, "onSingleTapConfirmed");
+      return true;
+      paramMotionEvent.a(true, true);
+      ykv.a("play_video", "clk_video", 0, 0, new String[] { "", "2", "", "" });
+      continue;
+      paramMotionEvent.a(false, true);
+      ykv.a("play_video", "clk_video", 0, 0, new String[] { "", "1", "", "" });
+    }
+  }
 }
 
 

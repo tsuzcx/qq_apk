@@ -1,11 +1,29 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.vas.qvip.fragment.QQVipFeedWedFragment;
 
 public class bhsd
+  implements bivu
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  public bhsd(QQVipFeedWedFragment paramQQVipFeedWedFragment) {}
+  
+  public void onItemSelect(View paramView, int paramInt)
+  {
+    if (paramInt == 5)
+    {
+      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
+      paramView.putExtra("uin", AppConstants.QQ_VIP_UIN);
+      paramView.putExtra("fromQGamePub", true);
+      this.a.startActivity(paramView);
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    this.a.getActivity().finish();
+  }
 }
 
 

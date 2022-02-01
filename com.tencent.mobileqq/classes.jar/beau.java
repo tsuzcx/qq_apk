@@ -1,36 +1,22 @@
-import com.tencent.mobileqq.data.TroopFeedItem;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class beau
-  extends beaq
 {
-  public TroopFeedItem a(JSONObject paramJSONObject)
-  {
-    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
-    if (localTroopFeedItem == null) {
-      return null;
-    }
-    localTroopFeedItem.type = 10;
-    try
-    {
-      paramJSONObject = paramJSONObject.getJSONArray("content");
-      if (paramJSONObject.length() > 0)
-      {
-        paramJSONObject = paramJSONObject.getJSONObject(0);
-        localTroopFeedItem.linkUrl = paramJSONObject.getString("videourl");
-        localTroopFeedItem.title = paramJSONObject.getString("videointro");
-        localTroopFeedItem.picPath = paramJSONObject.getString("videoid");
-      }
-      return localTroopFeedItem;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-    }
-    return null;
-  }
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
 }
 
 

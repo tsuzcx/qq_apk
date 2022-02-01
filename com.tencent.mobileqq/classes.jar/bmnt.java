@@ -1,73 +1,79 @@
-import android.support.annotation.NonNull;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
+import SWEET_NEW_COMM_SVR.sweet_comm_cfg_get_rsp;
+import SWEET_NEW_COMM_SVR.sweet_comm_cfg_item;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import cooperation.qzone.QzoneExternalRequest;
+import cooperation.qzone.util.ProtocolUtils;
+import java.util.Map;
 
 public class bmnt
+  extends bmnh
 {
-  public static final DateFormat a = new SimpleDateFormat("mm:ss", Locale.CHINA);
-  
-  public static long a(long paramLong)
+  private void a(boolean paramBoolean, Object paramObject)
   {
-    return Math.max(paramLong, 0L);
-  }
-  
-  public static String a(long paramLong)
-  {
-    int m = 0;
-    paramLong = a(paramLong);
-    String str4 = "";
-    int j = Math.round((float)(paramLong % 3600000L % 60000L) / 1000.0F);
-    int i = (int)(paramLong % 3600000L) / 60000;
-    int k = (int)(paramLong / 3600000L);
-    if (j == 60)
+    if ((paramBoolean) && ((paramObject instanceof sweet_comm_cfg_item)))
     {
-      i += 1;
-      j = 0;
-    }
-    for (;;)
-    {
-      if (i == 60)
+      paramObject = (sweet_comm_cfg_item)paramObject;
+      if (a() != null)
       {
-        k += 1;
-        i = m;
-      }
-      for (;;)
-      {
-        String str1;
-        String str2;
-        if (j < 10)
-        {
-          str1 = "0" + j;
-          if (i >= 10) {
-            break label239;
-          }
-          str2 = "0" + i;
-          label128:
-          if (k >= 10) {
-            break label263;
-          }
-        }
-        label263:
-        for (String str3 = "0" + k;; str3 = "" + k)
-        {
-          if (k > 0) {
-            str4 = str3 + ":";
-          }
-          return str4 + str2 + ":" + str1;
-          str1 = "" + j;
-          break;
-          label239:
-          str2 = "" + i;
-          break label128;
+        auzb localauzb = (auzb)a().getBusinessHandler(BusinessHandlerFactory.INTIMATE_INFO_HANDLER);
+        if (localauzb != null) {
+          localauzb.a(true, paramObject.wording, paramObject.dynamic_value, paramObject.url);
         }
       }
     }
+    do
+    {
+      do
+      {
+        return;
+      } while (a() == null);
+      paramObject = (auzb)a().getBusinessHandler(BusinessHandlerFactory.INTIMATE_INFO_HANDLER);
+    } while (paramObject == null);
+    paramObject.a(false, null, null, null);
   }
   
-  public static String a(@NonNull DateFormat paramDateFormat, long paramLong)
+  public QQAppInterface a()
   {
-    return paramDateFormat.format(Long.valueOf(a(paramLong)));
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    }
+    return null;
+  }
+  
+  public QzoneExternalRequest a(Intent paramIntent)
+  {
+    return new bmnu(this, paramIntent);
+  }
+  
+  public void a(long paramLong)
+  {
+    Intent localIntent = new Intent();
+    localIntent.putExtra("currentUin", paramLong);
+    a(localIntent);
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    boolean bool = false;
+    if (paramFromServiceMsg != null) {}
+    for (int i = paramFromServiceMsg.getResultCode(); i == 1000; i = -1)
+    {
+      paramIntent = (sweet_comm_cfg_get_rsp)ProtocolUtils.decode(paramFromServiceMsg.getWupBuffer(), "GetCommCfg");
+      if ((paramIntent != null) && (paramIntent.m_cfg_res != null))
+      {
+        paramIntent = (sweet_comm_cfg_item)paramIntent.m_cfg_res.get(new Long(1L));
+        if (paramIntent != null) {
+          bool = true;
+        }
+        a(bool, paramIntent);
+      }
+      return;
+    }
+    a(false, null);
   }
 }
 

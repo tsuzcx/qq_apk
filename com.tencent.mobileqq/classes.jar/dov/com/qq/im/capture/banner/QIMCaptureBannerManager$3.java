@@ -1,7 +1,7 @@
 package dov.com.qq.im.capture.banner;
 
-import bmre;
-import bmrf;
+import bogw;
+import bogx;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.transfile.HttpNetReq;
 import com.tencent.mobileqq.transfile.INetEngine;
@@ -20,10 +20,10 @@ public class QIMCaptureBannerManager$3
     {
       return;
       HttpNetReq localHttpNetReq = new HttpNetReq();
-      localHttpNetReq.mCallback = new bmrf(this);
+      localHttpNetReq.mCallback = new bogx(this);
       localHttpNetReq.mReqUrl = this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig$BannerItem.imgUrl;
       localHttpNetReq.mHttpMethod = 0;
-      localHttpNetReq.mOutPath = new File(bmre.a, this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig$BannerItem.imgMd5).getPath();
+      localHttpNetReq.mOutPath = new File(bogw.a, this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig$BannerItem.imgMd5).getPath();
       localHttpNetReq.mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
       this.jdField_a_of_type_ComTencentCommonAppAppInterface.getNetEngine(0).sendReq(localHttpNetReq);
     } while (!QLog.isColorLevel());

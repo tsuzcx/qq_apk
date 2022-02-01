@@ -1,37 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageButton;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.camera.ui.capture.VideoStoryCapturePart.8.1;
+import mqq.os.MqqHandler;
 
-class bnen
-  implements View.OnClickListener
+public class bnen
+  implements aaln
 {
-  bnen(bnem parambnem) {}
+  bnen(bnef parambnef) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (bnem.a(this.a) != null)
-    {
-      if ((bnem.a(this.a).a() != 1) || (bnem.a(this.a) != 1)) {
-        break label71;
-      }
-      bnem.a(this.a);
-      bnem.a(this.a).setImageResource(2130847604);
-      bnem.a(this.a, 2);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label71:
-      if ((bnem.a(this.a).a() == 2) && (bnem.a(this.a) == 2))
-      {
-        bnem.b(this.a);
-        bnem.a(this.a).setImageResource(2130847605);
-        bnem.a(this.a, 1);
-      }
-    }
+    ThreadManager.getUIHandler().postDelayed(new VideoStoryCapturePart.8.1(this), 500L);
   }
 }
 

@@ -1,25 +1,27 @@
-import android.os.Handler;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.23.1;
+import android.os.FileObserver;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.superplayer.api.ISuperPlayer;
-import com.tencent.superplayer.api.ISuperPlayer.OnErrorListener;
 
-public class bdlw
-  implements ISuperPlayer.OnErrorListener
+class bdlw
+  extends FileObserver
 {
-  public bdlw(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
-  
-  public boolean onError(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString)
+  public bdlw(String paramString, int paramInt)
   {
-    QLog.e("TribeVideoListPlayerFragment", 2, "ISuperPlayer.OnErrorListener module = " + paramInt1 + " errorType = " + paramInt2 + " errorCode = " + paramInt3 + " extraInfo = " + paramString);
-    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.23.1(this));
-    return false;
+    super(paramString, paramInt);
+  }
+  
+  public void onEvent(int paramInt, String arg2)
+  {
+    QLog.e("UnifiedMonitor.Trace", 1, "dumpTraces onEvent " + ???);
+    synchronized (bdlv.a())
+    {
+      notifyAll();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdlw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adww
-  extends amsu
+  implements View.OnClickListener
 {
-  public adww(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public adww(EditInfoActivity paramEditInfoActivity) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {
-      this.a.c();
-    }
+    EditInfoActivity.d(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

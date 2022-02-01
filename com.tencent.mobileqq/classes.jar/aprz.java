@@ -1,12 +1,9 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+import cooperation.wadl.ipc.WadlResult;
+import java.util.ArrayList;
 
-class aprz
+abstract interface aprz
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public abstract void a(ArrayList<WadlResult> paramArrayList);
 }
 
 

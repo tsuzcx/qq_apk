@@ -1,16 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aelp
-  implements DialogInterface.OnDismissListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aelp(TroopInfoActivity paramTroopInfoActivity) {}
+  public aelp(NotifyPushSettingActivity paramNotifyPushSettingActivity, BubbleManager paramBubbleManager) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
+    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramBoolean);
+    String str2 = this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app.getCurrentAccountUin();
+    if (paramBoolean) {}
+    for (String str1 = "1";; str1 = "0")
+    {
+      VasWebviewUtil.reportCommercialDrainage(str2, "bubble_new", "change", "0", 0, 0, 0, "", "", str1, "", "", "", "", 0, 0, 0, 0);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
     }
   }
 }

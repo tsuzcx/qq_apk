@@ -1,66 +1,66 @@
-import android.app.Activity;
-import android.os.Build.VERSION;
-import mqq.app.AppActivity;
-import mqq.app.BaseActivity;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 
 public class babh
-  implements QQPermissionCallback
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private babi jdField_a_of_type_Babi;
-  
-  public babh(Activity paramActivity, babi parambabi)
+  public static babe a(QQAppInterface paramQQAppInterface, azrb paramazrb)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Babi = parambabi;
-  }
-  
-  public void a()
-  {
-    if (Build.VERSION.SDK_INT < 23) {
-      if (this.jdField_a_of_type_Babi != null) {
-        this.jdField_a_of_type_Babi.onGetLocation();
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramQQAppInterface != null)
+    {
+      localObject1 = localObject2;
+      if (paramazrb != null)
+      {
+        localObject1 = new babe();
+        ((babe)localObject1).jdField_a_of_type_Boolean = a(paramQQAppInterface, paramazrb);
+        if (paramazrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 0) {
+          break label84;
+        }
+        i = 1;
       }
     }
-    label119:
-    do
+    while ((i != 0) && (paramazrb.jdField_a_of_type_ComTencentMobileqqDataCard != null))
     {
-      do
+      paramazrb = paramazrb.jdField_a_of_type_ComTencentMobileqqDataCard;
+      if (paramazrb.iNewCount > 0)
       {
-        do
-        {
-          return;
-        } while (this.jdField_a_of_type_AndroidAppActivity == null);
-        if (this.jdField_a_of_type_AndroidAppActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") == 0) {}
-        for (int i = 1;; i = 0)
-        {
-          if (i != 0) {
-            break label119;
-          }
-          if (!(this.jdField_a_of_type_AndroidAppActivity instanceof AppActivity)) {
-            break;
-          }
-          ((AppActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(this, 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
-          return;
+        ((babe)localObject1).b = true;
+        ((babe)localObject1).jdField_a_of_type_Int = paramazrb.iNewCount;
+        return localObject1;
+        label84:
+        i = 0;
+      }
+      else
+      {
+        paramQQAppInterface = (aymd)paramQQAppInterface.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
+        if (!paramQQAppInterface.a(paramQQAppInterface.a(10016), false)) {
+          break label140;
         }
-      } while (!(this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity));
-      ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(this, 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
-      return;
-    } while (this.jdField_a_of_type_Babi == null);
-    this.jdField_a_of_type_Babi.onGetLocation();
-  }
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bfur.a(this.jdField_a_of_type_AndroidAppActivity, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (this.jdField_a_of_type_Babi != null) {
-      this.jdField_a_of_type_Babi.onGetLocation();
+      }
     }
+    label140:
+    for (int i = 1;; i = 0)
+    {
+      if ((paramazrb.iUpgradeCount > 0) || (i != 0))
+      {
+        ((babe)localObject1).b = true;
+        ((babe)localObject1).jdField_a_of_type_Int = 0;
+      }
+      return localObject1;
+    }
+  }
+  
+  private static boolean a(QQAppInterface paramQQAppInterface, azrb paramazrb)
+  {
+    if ((paramQQAppInterface == null) || (paramazrb == null) || (paramazrb.jdField_a_of_type_ComTencentMobileqqDataCard == null) || ((paramazrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 0) && (!ProfileActivity.AllInOne.b(paramazrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)))) {}
+    while (((paramazrb.b) && (TroopInfo.isQidianPrivateTroop(paramQQAppInterface, paramazrb.jdField_a_of_type_JavaLangString))) || (bhhr.X(paramQQAppInterface.getApplication(), paramQQAppInterface.getCurrentAccountUin()) != 1) || (paramazrb.jdField_a_of_type_ComTencentMobileqqDataCard.medalSwitchDisable) || (bhbx.b(paramazrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))) {
+      return false;
+    }
+    return true;
   }
 }
 

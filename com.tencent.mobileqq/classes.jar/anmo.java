@@ -1,21 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import tencent.mobileim.structmsg.structmsg.ReqSystemMsgRead;
+import android.content.Context;
+import com.tencent.mobileqq.apollo.utils.task.AsyncTask.1;
+import com.tencent.mobileqq.mini.appbrand.utils.ThreadPools;
+import java.util.concurrent.ExecutorService;
 
-class anmo
-  implements abvz
+public abstract class anmo
+  extends anmp
 {
-  anmo(anmf paramanmf, long paramLong, structmsg.ReqSystemMsgRead paramReqSystemMsgRead) {}
-  
-  public ToServiceMsg a()
+  public anmo(Context paramContext)
   {
-    ToServiceMsg localToServiceMsg = anmf.b(this.jdField_a_of_type_Anmf).createToServiceMsg("ProfileService.Pb.ReqSystemMsgRead");
-    localToServiceMsg.extraData.putLong("latestGroupSeq", this.jdField_a_of_type_Long);
-    localToServiceMsg.extraData.putLong("type", 1L);
-    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$ReqSystemMsgRead.toByteArray());
-    localToServiceMsg.setEnableFastResend(true);
-    return localToServiceMsg;
+    super(paramContext, 2);
+  }
+  
+  public abstract void a();
+  
+  public final void b()
+  {
+    ThreadPools.getComputationThreadPool().execute(new AsyncTask.1(this));
   }
 }
 

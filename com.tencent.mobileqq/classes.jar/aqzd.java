@@ -1,22 +1,49 @@
-import android.view.View;
+import android.text.TextUtils;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 class aqzd
-  implements bjoe
 {
-  aqzd(aqzb paramaqzb, bjnw parambjnw) {}
+  private static volatile aqzd a;
   
-  public void OnClick(View paramView, int paramInt)
+  public static aqzd a()
   {
-    this.jdField_a_of_type_Aqzb.f();
-    if (this.jdField_a_of_type_Bjnw.isShowing()) {
-      this.jdField_a_of_type_Bjnw.dismiss();
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new aqzd();
+      }
+      return a;
     }
-    bcef.b(aqzb.a(this.jdField_a_of_type_Aqzb), "CliOper", "", "", "ep_mall", "0X80057D7", 0, 0, "", "", "", "");
+    finally {}
+  }
+  
+  public String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return null;
+      paramString = Pattern.compile("^\\[(\\d+)\\]$").matcher(paramString);
+    } while (!paramString.find());
+    return paramString.group(1);
+  }
+  
+  public String b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return null;
+      paramString = Pattern.compile("^\\[('|\")(.+)('|\")\\]$").matcher(paramString);
+    } while (!paramString.find());
+    return paramString.group(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqzd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,68 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
 
-public class ozw
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class ozw
+  implements ViewBase.OnClickListener
 {
-  public static JSONObject a(JSONObject paramJSONObject, String paramString, Object paramObject)
-  {
-    JSONObject localJSONObject = paramJSONObject;
-    if (paramJSONObject == null) {
-      localJSONObject = new JSONObject();
-    }
-    try
-    {
-      localJSONObject.put(paramString, paramObject);
-      return localJSONObject;
-    }
-    catch (Exception paramJSONObject)
-    {
-      QLog.d("RIJJsonUtils", 1, "addInfo2Json error!  msg=" + paramJSONObject);
-    }
-    return localJSONObject;
-  }
+  ozw(pcf parampcf, pdp parampdp) {}
   
-  public static void a(JSONObject paramJSONObject, String paramString1, String paramString2)
+  public final void onClick(ViewBase paramViewBase)
   {
-    if (paramJSONObject == null)
-    {
-      QLog.d("RIJJsonUtils", 2, "addDataString2Json | jsonObject is null");
-      return;
-    }
-    if (TextUtils.isEmpty(paramString1))
-    {
-      QLog.d("RIJJsonUtils", 2, "addDataString2Json | jsonObject key null");
-      return;
-    }
-    if (TextUtils.isEmpty(paramString2))
-    {
-      QLog.d("RIJJsonUtils", 2, "addDataString2Json | jsonObject value null");
-      return;
-    }
-    paramJSONObject.put(paramString1, paramString2);
-  }
-  
-  public static void a(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
-  {
-    if ((paramJSONObject1 == null) || (paramJSONObject2 == null)) {}
-    for (;;)
-    {
-      return;
-      Iterator localIterator = paramJSONObject2.keys();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        try
-        {
-          paramJSONObject1.put(str, paramJSONObject2.get(str));
-        }
-        catch (Exception localException)
-        {
-          QLog.d("RIJJsonUtils", 1, "mergeJSONData error!  msg=" + localException);
-        }
-      }
-    }
+    this.jdField_a_of_type_Pcf.b(this.jdField_a_of_type_Pdp);
   }
 }
 

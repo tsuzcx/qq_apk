@@ -1,7 +1,7 @@
 package com.tencent.av.app;
 
 import com.tencent.qphone.base.util.QLog;
-import ljo;
+import lka;
 
 class VideoAppInterface$CameraUsageRunnable
   implements Runnable
@@ -11,7 +11,7 @@ class VideoAppInterface$CameraUsageRunnable
   public void run()
   {
     QLog.w(VideoAppInterface.c(), 1, "CameraUsageRunnable");
-    ljo.b(this.this$0.getApplication(), "CameraUsageRunnable");
+    lka.b(this.this$0.getApplication(), "CameraUsageRunnable");
   }
 }
 

@@ -14,8 +14,8 @@ class QQCustomDialogWtihEmoticonInput$2
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.this$0.mViewEmoBtn.setImageResource(2130840169);
-    this.this$0.mViewEmoBtn.setTag(Integer.valueOf(2130840169));
+    this.this$0.mViewEmoBtn.setImageResource(2130840191);
+    this.this$0.mViewEmoBtn.setTag(Integer.valueOf(2130840191));
     if (this.this$0.mIsWindowAdded)
     {
       QQCustomDialogWtihEmoticonInput.access$100(this.this$0);

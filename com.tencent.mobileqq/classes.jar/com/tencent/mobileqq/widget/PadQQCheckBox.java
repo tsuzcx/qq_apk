@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.widget;
 
-import amtj;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -13,6 +12,7 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import anvx;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -36,9 +36,9 @@ public class PadQQCheckBox
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.PadQQCheckBox);
     this.jdField_a_of_type_Boolean = paramAttributeSet.getBoolean(0, true);
     this.jdField_a_of_type_JavaLangCharSequence = paramAttributeSet.getString(1);
-    LayoutInflater.from(paramContext).inflate(2131559547, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364517));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364527));
+    LayoutInflater.from(paramContext).inflate(2131559580, this, true);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364599));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364609));
     setChecked(this.jdField_a_of_type_Boolean);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
     paramAttributeSet.recycle();
@@ -66,7 +66,7 @@ public class PadQQCheckBox
   {
     super.onInitializeAccessibilityNodeInfo(paramAccessibilityNodeInfo);
     if (this.jdField_a_of_type_Boolean) {}
-    for (String str = amtj.a(2131706976);; str = amtj.a(2131706975))
+    for (String str = anvx.a(2131707323);; str = anvx.a(2131707322))
     {
       paramAccessibilityNodeInfo.setContentDescription(this.jdField_a_of_type_JavaLangCharSequence + str);
       return;
@@ -77,13 +77,13 @@ public class PadQQCheckBox
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840621);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840660);
     }
     for (;;)
     {
       refreshDrawableState();
       return;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840619);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840658);
     }
   }
   

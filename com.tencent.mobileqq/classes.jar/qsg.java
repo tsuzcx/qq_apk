@@ -1,19 +1,10 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
+import com.tencent.qphone.base.util.QLog;
 
-class qsg
-  implements View.OnTouchListener
+public class qsg
 {
-  qsg(qse paramqse, RelativeLayout paramRelativeLayout) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static void a(String paramString1, String paramString2)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(false);
-    }
-    return false;
+    QLog.d("FluencyLogUtil", 1, "Class : " + paramString1 + " Scene : " + paramString2);
   }
 }
 

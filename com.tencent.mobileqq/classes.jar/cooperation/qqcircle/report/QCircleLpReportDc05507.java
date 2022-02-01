@@ -71,10 +71,10 @@ public class QCircleLpReportDc05507
       QLog.e("QCircleReportBean_QCircleLpReportDc05507", 1, "report invalid builder is null!");
       return;
     }
-    if (paramDataBuilder.pageId <= 0)
+    if (QCircleLpReportDc05507.DataBuilder.access$000(paramDataBuilder) <= 0)
     {
-      QLog.e("QCircleReportBean_QCircleLpReportDc05507", 1, "report invalid pageId," + paramDataBuilder.pageId + ",actionType:" + paramDataBuilder.actionType + ",subActionType:" + paramDataBuilder.subActionType);
-      showErrorToast(paramDataBuilder.actionType, paramDataBuilder.subActionType);
+      QLog.e("QCircleReportBean_QCircleLpReportDc05507", 1, "report invalid pageId," + QCircleLpReportDc05507.DataBuilder.access$000(paramDataBuilder) + ",actionType:" + QCircleLpReportDc05507.DataBuilder.access$100(paramDataBuilder) + ",subActionType:" + QCircleLpReportDc05507.DataBuilder.access$200(paramDataBuilder));
+      showErrorToast(QCircleLpReportDc05507.DataBuilder.access$100(paramDataBuilder), QCircleLpReportDc05507.DataBuilder.access$200(paramDataBuilder));
     }
     QCircleReporter.getInstance().getReportHandler().post(new QCircleLpReportDc05507.1(paramDataBuilder));
   }

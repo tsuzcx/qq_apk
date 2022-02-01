@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.app;
 
-import amsu;
-import amsw;
-import anbd;
-import anbe;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bamu;
-import bapf;
-import bapg;
+import anvi;
+import anvk;
+import aods;
+import aodt;
+import bbtj;
+import bbvu;
+import bbvv;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -104,7 +104,7 @@ public class SignatureHandler
     ((oidb_sso.OIDBSSOPkg)localObject).uint32_command.set(1945);
     ((oidb_sso.OIDBSSOPkg)localObject).uint32_service_type.set(0);
     ((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramArrayOfString.toByteArray()));
-    paramArrayOfString = new NewIntent(this.app.getApp(), anbe.class);
+    paramArrayOfString = new NewIntent(this.app.getApp(), aodt.class);
     if (paramArrayOfByte != null) {
       paramArrayOfString.putExtra("reqData", paramArrayOfByte);
     }
@@ -138,9 +138,9 @@ public class SignatureHandler
       {
         paramOIDBSSOPkg = paramIntent.getStringExtra("uin");
         str = paramIntent.getStringExtra("feedsid");
-        paramIntent = ((amsw)this.app.getManager(51)).a(paramOIDBSSOPkg);
+        paramIntent = ((anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(paramOIDBSSOPkg);
         if (paramIntent == null) {
-          break label438;
+          break label439;
         }
         paramIntent = paramIntent.getRichStatus();
         if (paramIntent != null) {}
@@ -159,14 +159,14 @@ public class SignatureHandler
       i = 0;
       while (i < localList.size())
       {
-        bamu localbamu = new bamu();
+        bbtj localbbtj = new bbtj();
         oidb_0x798.Info localInfo = (oidb_0x798.Info)localList.get(i);
-        localbamu.jdField_a_of_type_JavaLangString = str;
-        localbamu.b = localInfo.uint32_count.get();
-        localbamu.jdField_a_of_type_Int = localInfo.uint32_type.get();
-        localbamu.c = localInfo.uint32_flag.get();
+        localbbtj.jdField_a_of_type_JavaLangString = str;
+        localbbtj.b = localInfo.uint32_count.get();
+        localbbtj.jdField_a_of_type_Int = localInfo.uint32_type.get();
+        localbbtj.c = localInfo.uint32_flag.get();
         if (paramIntent != null) {
-          paramIntent.sigZanInfo.put(Integer.valueOf(localbamu.jdField_a_of_type_Int), localbamu);
+          paramIntent.sigZanInfo.put(Integer.valueOf(localbbtj.jdField_a_of_type_Int), localbbtj);
         }
         i += 1;
       }
@@ -184,7 +184,7 @@ public class SignatureHandler
       }
       QLog.d("SignatureHandler", 2, "handleGetSigZanInfo fail ret=" + i);
       return;
-      label438:
+      label439:
       paramIntent = null;
     }
   }
@@ -198,7 +198,7 @@ public class SignatureHandler
     String str2 = paramIntent.getStringExtra("uin");
     int j = paramIntent.getIntExtra("action", 0);
     int k = paramIntent.getIntExtra("type", 0);
-    ExtensionInfo localExtensionInfo = ((amsw)this.app.getManager(51)).a(str2);
+    ExtensionInfo localExtensionInfo = ((anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(str2);
     paramOIDBSSOPkg = null;
     this.jdField_a_of_type_Int = 94;
     paramIntent = paramOIDBSSOPkg;
@@ -210,12 +210,12 @@ public class SignatureHandler
         paramIntent = paramOIDBSSOPkg;
         if (localExtensionInfo.getRichStatus().sigZanInfo != null)
         {
-          paramOIDBSSOPkg = (bamu)localExtensionInfo.getRichStatus().sigZanInfo.get(Integer.valueOf(255));
+          paramOIDBSSOPkg = (bbtj)localExtensionInfo.getRichStatus().sigZanInfo.get(Integer.valueOf(255));
           paramIntent = paramOIDBSSOPkg;
           if (localRspBody.uint32_result.get() == 0)
           {
             if (1 != j) {
-              break label267;
+              break label268;
             }
             paramOIDBSSOPkg.b += 1;
             paramOIDBSSOPkg.c = 1;
@@ -233,7 +233,7 @@ public class SignatureHandler
     }
     notifyUI(i, bool, paramIntent);
     return;
-    label267:
+    label268:
     i = paramOIDBSSOPkg.b - 1;
     paramOIDBSSOPkg.b = i;
     if (i > 0) {}
@@ -342,7 +342,7 @@ public class SignatureHandler
           if (localRspBody.uint32_result.get() != 0) {
             break;
           }
-          SignatureManager localSignatureManager = (SignatureManager)this.app.getManager(58);
+          SignatureManager localSignatureManager = (SignatureManager)this.app.getManager(QQManagerFactory.SIGNATURE_MANAGER);
           paramIntent = null;
           localArrayList = new ArrayList();
           paramOIDBSSOPkg = new ArrayList();
@@ -362,7 +362,7 @@ public class SignatureHandler
               {
                 paramIntent.rs = ((RichStatus)localObject);
                 paramOIDBSSOPkg.add(paramIntent);
-                break label574;
+                break label575;
               }
             }
             localArrayList.add(paramIntent.feedsid);
@@ -390,13 +390,13 @@ public class SignatureHandler
         {
           paramIntent = new SignatureManager.SigComments();
           if (i != 1) {
-            break label577;
+            break label578;
           }
         }
       }
     }
-    label574:
-    label577:
+    label575:
+    label578:
     for (boolean bool = true;; bool = false)
     {
       paramIntent.isOver = bool;
@@ -437,7 +437,7 @@ public class SignatureHandler
           ((RichStatus)localObject2).feedsId = ((String)localObject3);
           ((List)localObject1).add(localObject2);
         }
-        paramOIDBSSOPkg = (SignatureManager)this.app.getManager(58);
+        paramOIDBSSOPkg = (SignatureManager)this.app.getManager(QQManagerFactory.SIGNATURE_MANAGER);
         if (paramOIDBSSOPkg != null) {
           paramOIDBSSOPkg.a((List)localObject1);
         }
@@ -566,7 +566,7 @@ public class SignatureHandler
   
   public String a(long paramLong)
   {
-    Friends localFriends = ((amsw)this.app.getManager(51)).e(String.valueOf(paramLong));
+    Friends localFriends = ((anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(String.valueOf(paramLong));
     if (localFriends != null) {
       return localFriends.getFriendNickWithAlias();
     }
@@ -621,11 +621,11 @@ public class SignatureHandler
       localCommentItem1.timeStamp = localCommentItem.uint64_time.get();
       localCommentItem1.content = localCommentItem.str_comment.get();
       long l = localCommentItem.uint64_comment_uin.get();
-      localCommentItem1.user = new bapg(String.valueOf(l), a(l));
+      localCommentItem1.user = new bbvv(String.valueOf(l), a(l));
       if (localCommentItem1.targetId != 0L) {
         l = localCommentItem.uint64_target_uin.get();
       }
-      for (localCommentItem1.toReplyUser = new bapg(String.valueOf(l), a(l));; localCommentItem1.toReplyUser = null)
+      for (localCommentItem1.toReplyUser = new bbvv(String.valueOf(l), a(l));; localCommentItem1.toReplyUser = null)
       {
         localArrayList.add(localCommentItem1);
         break;
@@ -650,7 +650,7 @@ public class SignatureHandler
     localOIDBSSOPkg.uint32_command.set(1938);
     localOIDBSSOPkg.uint32_service_type.set(0);
     localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x792.ReqBody)localObject).toByteArray()));
-    localObject = new NewIntent(this.app.getApp(), anbe.class);
+    localObject = new NewIntent(this.app.getApp(), aodt.class);
     ((NewIntent)localObject).putExtra("cmd", "OidbSvc.0x792_0");
     ((NewIntent)localObject).putExtra("data", localOIDBSSOPkg.toByteArray());
     ((NewIntent)localObject).putExtra("timeout", 30000L);
@@ -667,7 +667,7 @@ public class SignatureHandler
     localOIDBSSOPkg.uint32_command.set(3542);
     localOIDBSSOPkg.uint32_service_type.set(1);
     localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0xdd6.ReqBody)localObject).toByteArray()));
-    localObject = new NewIntent(this.app.getApp(), anbe.class);
+    localObject = new NewIntent(this.app.getApp(), aodt.class);
     ((NewIntent)localObject).putExtra("cmd", "OidbSvc.0xdd6_1");
     ((NewIntent)localObject).putExtra("data", localOIDBSSOPkg.toByteArray());
     ((NewIntent)localObject).putExtra("timeout", 10000L);
@@ -689,7 +689,7 @@ public class SignatureHandler
     localOIDBSSOPkg.uint32_command.set(3560);
     localOIDBSSOPkg.uint32_service_type.set(1);
     localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0xde8.ReqBody)localObject).toByteArray()));
-    localObject = new NewIntent(this.app.getApp(), anbe.class);
+    localObject = new NewIntent(this.app.getApp(), aodt.class);
     ((NewIntent)localObject).putExtra("cmd", "OidbSvc.0xde8_1");
     ((NewIntent)localObject).putExtra("data", localOIDBSSOPkg.toByteArray());
     ((NewIntent)localObject).putExtra("timeout", 10000L);
@@ -707,7 +707,7 @@ public class SignatureHandler
     paramString.uint32_command.set(3559);
     paramString.uint32_service_type.set(1);
     paramString.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0xde7.ReqBody)localObject).toByteArray()));
-    localObject = new NewIntent(this.app.getApp(), anbe.class);
+    localObject = new NewIntent(this.app.getApp(), aodt.class);
     ((NewIntent)localObject).putExtra("cmd", "OidbSvc.0xde7_1");
     ((NewIntent)localObject).putExtra("data", paramString.toByteArray());
     ((NewIntent)localObject).putExtra("timeout", 10000L);
@@ -726,7 +726,7 @@ public class SignatureHandler
     paramString1.uint32_command.set(3557);
     paramString1.uint32_service_type.set(1);
     paramString1.bytes_bodybuffer.set(ByteStringMicro.copyFrom(localReqBody.toByteArray()));
-    paramString2 = new NewIntent(this.app.getApp(), anbe.class);
+    paramString2 = new NewIntent(this.app.getApp(), aodt.class);
     paramString2.putExtra("cmd", "OidbSvc.0xde5_1");
     paramString2.putExtra("data", paramString1.toByteArray());
     paramString2.putExtra("timeout", 10000L);
@@ -860,7 +860,7 @@ public class SignatureHandler
     localOIDBSSOPkg.uint32_command.set(3494);
     localOIDBSSOPkg.uint32_service_type.set(4);
     localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0xda6.ReqBody)localObject).toByteArray()));
-    localObject = new NewIntent(this.app.getApp(), anbe.class);
+    localObject = new NewIntent(this.app.getApp(), aodt.class);
     ((NewIntent)localObject).putExtra("cmd", "OidbSvc.0xda6_4");
     ((NewIntent)localObject).putExtra("data", localOIDBSSOPkg.toByteArray());
     ((NewIntent)localObject).putExtra("timeout", 10000L);
@@ -894,7 +894,7 @@ public class SignatureHandler
     localOIDBSSOPkg.uint32_command.set(1944);
     localOIDBSSOPkg.uint32_service_type.set(0);
     localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x798.ReqBody)localObject).toByteArray()));
-    localObject = new NewIntent(this.app.getApp(), anbe.class);
+    localObject = new NewIntent(this.app.getApp(), aodt.class);
     ((NewIntent)localObject).putExtra("uin", paramString1);
     ((NewIntent)localObject).putExtra("feedsid", paramString2);
     ((NewIntent)localObject).putExtra("cmd", "OidbSvc.0x798_0");
@@ -912,7 +912,7 @@ public class SignatureHandler
     do
     {
       return;
-      localObject1 = ((amsw)this.app.getManager(51)).a(paramString1);
+      localObject1 = ((anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(paramString1);
     } while (localObject1 == null);
     Object localObject2 = ((ExtensionInfo)localObject1).getRichStatus();
     Object localObject1 = new oidb_0x795.ReqBody();
@@ -925,7 +925,7 @@ public class SignatureHandler
     ((oidb_sso.OIDBSSOPkg)localObject2).uint32_command.set(1941);
     ((oidb_sso.OIDBSSOPkg)localObject2).uint32_service_type.set(0);
     ((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x795.ReqBody)localObject1).toByteArray()));
-    localObject1 = new NewIntent(this.app.getApp(), anbe.class);
+    localObject1 = new NewIntent(this.app.getApp(), aodt.class);
     ((NewIntent)localObject1).putExtra("uin", paramString1);
     ((NewIntent)localObject1).putExtra("feedid", paramString2);
     ((NewIntent)localObject1).putExtra("type", paramInt1);
@@ -942,7 +942,7 @@ public class SignatureHandler
     do
     {
       return;
-      localObject1 = ((amsw)this.app.getManager(51)).a(paramString1);
+      localObject1 = ((anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(paramString1);
     } while (localObject1 == null);
     Object localObject1 = ((ExtensionInfo)localObject1).getRichStatus();
     oidb_0x796.ReqBody localReqBody = new oidb_0x796.ReqBody();
@@ -967,7 +967,7 @@ public class SignatureHandler
     ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command.set(1942);
     ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(0);
     ((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.set(ByteStringMicro.copyFrom(localReqBody.toByteArray()));
-    localObject2 = new NewIntent(this.app.getApp(), anbe.class);
+    localObject2 = new NewIntent(this.app.getApp(), aodt.class);
     ((NewIntent)localObject2).putExtra("uin", paramString1);
     ((NewIntent)localObject2).putExtra("feedid", paramString2);
     ((NewIntent)localObject2).putExtra("firstFlag", paramBoolean);
@@ -998,7 +998,7 @@ public class SignatureHandler
     ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command.set(1939);
     ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(0);
     ((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.set(ByteStringMicro.copyFrom(localReqBody.toByteArray()));
-    localObject2 = new NewIntent(this.app.getApp(), anbe.class);
+    localObject2 = new NewIntent(this.app.getApp(), aodt.class);
     ((NewIntent)localObject2).putExtra("feedsId", "OidbSvc.0x793_0");
     ((NewIntent)localObject2).putExtra("cmd", "OidbSvc.0x793_0");
     ((NewIntent)localObject2).putExtra("data", ((oidb_sso.OIDBSSOPkg)localObject1).toByteArray());
@@ -1006,7 +1006,7 @@ public class SignatureHandler
     this.app.startServlet((NewIntent)localObject2);
   }
   
-  public List<bapf> b(List<oidb_0xde8.lightCommentItem> paramList)
+  public List<bbvu> b(List<oidb_0xde8.lightCommentItem> paramList)
   {
     if ((paramList == null) || (paramList.size() <= 0)) {
       return new ArrayList();
@@ -1016,11 +1016,11 @@ public class SignatureHandler
     while (paramList.hasNext())
     {
       oidb_0xde8.lightCommentItem locallightCommentItem = (oidb_0xde8.lightCommentItem)paramList.next();
-      bapf localbapf = new bapf();
-      localbapf.jdField_a_of_type_Long = locallightCommentItem.uint64_time.get();
+      bbvu localbbvu = new bbvu();
+      localbbvu.jdField_a_of_type_Long = locallightCommentItem.uint64_time.get();
       long l = locallightCommentItem.uint64_uin.get();
-      localbapf.jdField_a_of_type_Bapg = new bapg(String.valueOf(l), a(l));
-      localArrayList.add(localbapf);
+      localbbvu.jdField_a_of_type_Bbvv = new bbvv(String.valueOf(l), a(l));
+      localArrayList.add(localbbvu);
     }
     return localArrayList;
   }
@@ -1032,7 +1032,7 @@ public class SignatureHandler
     localOIDBSSOPkg.uint32_command.set(3486);
     localOIDBSSOPkg.uint32_service_type.set(3);
     localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0xd9e.ReqBody)localObject).toByteArray()));
-    localObject = new NewIntent(this.app.getApp(), anbe.class);
+    localObject = new NewIntent(this.app.getApp(), aodt.class);
     ((NewIntent)localObject).putExtra("cmd", "OidbSvc.0xd9e_3");
     ((NewIntent)localObject).putExtra("data", localOIDBSSOPkg.toByteArray());
     ((NewIntent)localObject).putExtra("timeout", 10000L);
@@ -1054,9 +1054,9 @@ public class SignatureHandler
   protected Class<? extends BusinessObserver> observerClass()
   {
     if (this.jdField_a_of_type_Int == 94) {
-      return amsu.class;
+      return anvi.class;
     }
-    return anbd.class;
+    return aods.class;
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}

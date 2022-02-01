@@ -1,13 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardFileOption;
+import android.os.Bundle;
 
-public class atly
-  implements DialogInterface.OnClickListener
+public abstract interface atly
 {
-  public atly(ForwardFileOption paramForwardFileOption) {}
+  public abstract void a(long paramLong);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2);
+  
+  public abstract void a(boolean paramBoolean, long paramLong, String paramString1, String paramString2);
+  
+  public abstract byte[] a(Bundle paramBundle);
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
 }
 
 

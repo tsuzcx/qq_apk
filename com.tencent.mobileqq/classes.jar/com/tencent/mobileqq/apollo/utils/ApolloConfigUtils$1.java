@@ -1,19 +1,14 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import amir;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
 
 public final class ApolloConfigUtils$1
-  implements Runnable
+  extends ArrayList<Integer>
 {
-  public ApolloConfigUtils$1(QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
+  public ApolloConfigUtils$1()
   {
-    amir localamir = (amir)this.a.getManager(155);
-    if (localamir.a) {
-      localamir.a(false);
-    }
+    add(Integer.valueOf(126));
+    add(Integer.valueOf(134));
   }
 }
 

@@ -4,7 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bkwm;
+import bmhv;
+import com.tencent.biz.pubaccount.NativeAd.report.constant.AdClickPos;
 import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdDislikeInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -24,16 +25,17 @@ import java.util.Iterator;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import rcf;
-import rdj;
+import rol;
+import rpp;
 import tencent.im.oidb.articlesummary.articlesummary.AdInfo;
 import tencent.im.oidb.articlesummary.articlesummary.NegFeedback;
 import tencent.im.oidb.cmd0x886.oidb_cmd0x886.AdInfo;
-import tro;
-import trp;
-import trq;
-import trw;
-import twq;
+import ufc;
+import ufz;
+import uga;
+import ugb;
+import ugh;
+import ukr;
 
 public class AdvertisementInfo
   extends ArticleInfo
@@ -46,13 +48,14 @@ public class AdvertisementInfo
   public static final int AD_STYLE_3 = 3;
   public static final int APP_STATE_DOWNLOAD = 0;
   public static final int APP_STATE_OPEN = 1;
-  public static final Parcelable.Creator<AdvertisementInfo> CREATOR = new rcf();
+  public static final Parcelable.Creator<AdvertisementInfo> CREATOR = new rol();
   public static final int IMAX_IMG_TYPE = 1002;
   public static final int IMAX_VIDEO_TYPE = 1001;
   public static final int PRODUCT_TYPE_APP = 12;
   public static final String TABLE_NAME = AdvertisementInfo.class.getSimpleName();
+  public AdClickPos adClickPos;
   @notColumn
-  public trw adExperimentData = new trw();
+  public ugh adExperimentData = new ugh();
   @notColumn
   public int adStrategyType;
   @notColumn
@@ -61,6 +64,7 @@ public class AdvertisementInfo
   public int adpa;
   @notColumn
   public int adpb;
+  public String amsNfbUrl;
   public int clickPos = -1;
   public int clickType;
   @notColumn
@@ -69,7 +73,10 @@ public class AdvertisementInfo
   public VideoInfo.GameAdComData gameAdComData;
   @notColumn
   public boolean hasAddExposure;
+  @notColumn
+  public boolean isBottomAd;
   public boolean isClickFromPkFragment;
+  public boolean isClickReplay;
   @notColumn
   public boolean isHideForAnimate;
   @notColumn
@@ -78,6 +85,7 @@ public class AdvertisementInfo
   public boolean isShowBrandAnimate;
   @notColumn
   public boolean isShowingGuide;
+  public String liujinReportUrl;
   public long mADVideoAutoPlay;
   public long mAdAdvertiseId;
   public long mAdAid;
@@ -133,9 +141,9 @@ public class AdvertisementInfo
   public String mAdVideoUrl;
   public String mAdViewId;
   @notColumn
-  public tro mAdvertisementExtInfo;
+  public ufz mAdvertisementExtInfo;
   @notColumn
-  public trp mAdvertisementSoftInfo;
+  public uga mAdvertisementSoftInfo;
   @notColumn
   public JSONObject mBusiJson;
   @notColumn
@@ -148,7 +156,7 @@ public class AdvertisementInfo
   @notColumn
   public ArrayList<String> mC2SVideoPlayUrl;
   @notColumn
-  public trq mCommentAdParams;
+  public ugb mCommentAdParams;
   @notColumn
   public String mImaxImg;
   @notColumn
@@ -166,7 +174,7 @@ public class AdvertisementInfo
   public int mInteractEffectType;
   public String mInteractImageList = "";
   public int mInteractType;
-  public rdj mLocalInfo;
+  public rpp mLocalInfo;
   @notColumn
   public int mOrigin;
   public int mPhoneComponetId;
@@ -182,10 +190,13 @@ public class AdvertisementInfo
   public String mSubordinateProductId;
   public int materialGroup;
   public int miniProgramType;
+  public String packageName;
   @notColumn
   public int progress;
   @notColumn
   public int replay;
+  public String ticket;
+  public int videoReplayCount;
   
   public AdvertisementInfo() {}
   
@@ -249,7 +260,7 @@ public class AdvertisementInfo
     this.mSoftAdType = paramParcel.readInt();
     this.mSoftAdData = paramParcel.readString();
     this.mRevisionVideoType = paramParcel.readInt();
-    this.mAdvertisementExtInfo = new tro(this.mAdExtInfo);
+    this.mAdvertisementExtInfo = new ufz(this.mAdExtInfo);
     processAdExtraDataInfo(this.mAdExtInfo);
   }
   
@@ -303,6 +314,7 @@ public class AdvertisementInfo
     if (TextUtils.isEmpty(this.mAdExtInfo)) {
       this.mAdExtInfo = new JSONObject().toString();
     }
+    processAdExtInfo(this.mAdExtInfo);
     this.mAdAppDownLoadSchema = paramAdInfo.bytes_app_download_schema.get().toStringUtf8();
     this.mAdCanvasJson = paramAdInfo.string_canvas_json.get();
     this.mAdLandingPageReportUrl = paramAdInfo.bytes_landing_page_report_url.get().toStringUtf8();
@@ -331,20 +343,20 @@ public class AdvertisementInfo
     }
     this.mAdVideoFileSize = paramAdInfo.uint64_video_file_size.get();
     processAdExtraDataInfo(this.mAdExtInfo);
-    this.mLocalInfo = new rdj(paramAdInfo.local_info);
+    this.mLocalInfo = new rpp(paramAdInfo.local_info);
     this.mInteractEffectType = paramAdInfo.uint32_interact_effect_type.get();
     if (paramAdInfo.string_interact_image_list.has()) {
       this.mInteractImageList = paramAdInfo.string_interact_image_list.get();
     }
     this.mInteractType = paramAdInfo.uint32_interact_type.get();
-    this.mAdvertisementExtInfo = new tro(this.mAdExtInfo);
+    this.mAdvertisementExtInfo = new ufz(this.mAdExtInfo);
     processAdExt(this.mAdExt);
   }
   
   public static int getAdStyle(AdvertisementInfo paramAdvertisementInfo)
   {
     if (isAdvertisementInfo(paramAdvertisementInfo)) {
-      return twq.c(paramAdvertisementInfo);
+      return ukr.c(paramAdvertisementInfo);
     }
     return 0;
   }
@@ -352,7 +364,7 @@ public class AdvertisementInfo
   public static int getBigAppAdStyle(AdvertisementInfo paramAdvertisementInfo)
   {
     if (isAppAdvertisementInfo(paramAdvertisementInfo)) {
-      return twq.c(paramAdvertisementInfo);
+      return ukr.c(paramAdvertisementInfo);
     }
     return 0;
   }
@@ -364,16 +376,150 @@ public class AdvertisementInfo
   
   public static boolean isAppAdvertisementInfo(BaseArticleInfo paramBaseArticleInfo)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
     if (isAdvertisementInfo(paramBaseArticleInfo))
     {
-      bool1 = bool2;
-      if (((AdvertisementInfo)paramBaseArticleInfo).mAdProductType == 12) {
-        bool1 = true;
+      paramBaseArticleInfo = (AdvertisementInfo)paramBaseArticleInfo;
+      if ((paramBaseArticleInfo.mAdvertisementSoftInfo != null) && (paramBaseArticleInfo.mAdvertisementSoftInfo.e == 1)) {}
+      while ((ufc.e(paramBaseArticleInfo)) || (ufc.g(paramBaseArticleInfo)) || (paramBaseArticleInfo.mAdProductType == 12)) {
+        return true;
+      }
+      return false;
+    }
+    return false;
+  }
+  
+  private void parseC2SClickUrl(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject.has("c2s_click_url"))
+    {
+      paramJSONObject = paramJSONObject.optJSONArray("c2s_click_url");
+      if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
+      {
+        int j = paramJSONObject.length();
+        ArrayList localArrayList = new ArrayList();
+        int i = 0;
+        while (i < j)
+        {
+          String str = (String)paramJSONObject.opt(i);
+          if (QLog.isColorLevel()) {
+            QLog.d("processAdExtraDataInfo", 2, " processAdExtraDataInfo clickUrl = " + str);
+          }
+          localArrayList.add(str);
+          i += 1;
+        }
+        this.mC2SClickUrl = localArrayList;
       }
     }
-    return bool1;
+  }
+  
+  private void parseC2SExposureUrl(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject.has("c2s_exposure_url"))
+    {
+      paramJSONObject = paramJSONObject.optJSONArray("c2s_exposure_url");
+      if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
+      {
+        int j = paramJSONObject.length();
+        ArrayList localArrayList = new ArrayList();
+        int i = 0;
+        while (i < j)
+        {
+          String str = (String)paramJSONObject.opt(i);
+          if (QLog.isColorLevel()) {
+            QLog.d("processAdExtraDataInfo", 2, " processAdExtraDataInfo exposureUrl = " + str);
+          }
+          localArrayList.add(str);
+          i += 1;
+        }
+        this.mC2SExposureUrl = localArrayList;
+      }
+    }
+  }
+  
+  private void parseC2SVideoPlayUrl(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject.has("c2s_video_play_url"))
+    {
+      paramJSONObject = paramJSONObject.optJSONArray("c2s_video_play_url");
+      if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
+      {
+        int j = paramJSONObject.length();
+        ArrayList localArrayList = new ArrayList();
+        int i = 0;
+        while (i < j)
+        {
+          String str = (String)paramJSONObject.opt(i);
+          if (QLog.isColorLevel()) {
+            QLog.d("processAdExtraDataInfo", 2, " processAdExtraDataInfo videoPlayUrl = " + str);
+          }
+          localArrayList.add(str);
+          i += 1;
+        }
+        this.mC2SVideoPlayUrl = localArrayList;
+      }
+    }
+  }
+  
+  private void parsePopFormH5Url(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject.has("pop_sheet"))
+    {
+      paramJSONObject = new JSONObject(paramJSONObject.optString("pop_sheet")).getString("h5Url");
+      if (QLog.isColorLevel()) {
+        QLog.d("processAdExtraDataInfo", 2, "h5Url = " + paramJSONObject);
+      }
+      this.mPopFormH5Url = paramJSONObject;
+    }
+  }
+  
+  private void parseShowAdButton(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject.has("button_flag"))
+    {
+      paramJSONObject = paramJSONObject.optString("button_flag", "1");
+      if (QLog.isColorLevel()) {
+        QLog.d("processAdExtraDataInfo", 2, "buttonFlag = " + paramJSONObject);
+      }
+      if (paramJSONObject.equals("0")) {
+        break label71;
+      }
+    }
+    label71:
+    for (boolean bool = true;; bool = false)
+    {
+      this.mShowAdButton = bool;
+      return;
+    }
+  }
+  
+  private void processAdExtInfo(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString);
+      if (TextUtils.isEmpty(this.packageName))
+      {
+        this.packageName = paramString.optString("game_pkg_name");
+        if (TextUtils.isEmpty(this.packageName)) {
+          this.packageName = paramString.optString("pkg_name");
+        }
+      }
+      if (TextUtils.isEmpty(this.liujinReportUrl)) {
+        this.liujinReportUrl = paramString.optString("liujinReportUrl");
+      }
+      if (TextUtils.isEmpty(this.ticket))
+      {
+        this.ticket = paramString.optString("ticket");
+        if (TextUtils.isEmpty(this.ticket)) {
+          this.ticket = paramString.optString("ad_encrypted_ticket");
+        }
+      }
+      if (TextUtils.isEmpty(this.amsNfbUrl)) {
+        this.amsNfbUrl = paramString.optString("amsNfbUrl");
+      }
+      return;
+    }
+    catch (Throwable paramString) {}
   }
   
   public int getAdbf()
@@ -382,6 +528,25 @@ public class AdvertisementInfo
       return 1;
     }
     return 0;
+  }
+  
+  public String getAmsNfbUrl()
+  {
+    processAdExtInfo(this.mAdExtInfo);
+    if (!TextUtils.isEmpty(this.amsNfbUrl)) {
+      return this.amsNfbUrl;
+    }
+    if ((this.mAdvertisementSoftInfo != null) && (!TextUtils.isEmpty(this.mAdvertisementSoftInfo.N)))
+    {
+      this.amsNfbUrl = this.mAdvertisementSoftInfo.N;
+      return this.amsNfbUrl;
+    }
+    if ((this.gameAdComData != null) && (!TextUtils.isEmpty(this.gameAdComData.E)))
+    {
+      this.amsNfbUrl = this.gameAdComData.E;
+      return this.amsNfbUrl;
+    }
+    return null;
   }
   
   public int getClickPos()
@@ -403,6 +568,25 @@ public class AdvertisementInfo
     return "";
   }
   
+  public String getLiujinReportUrl()
+  {
+    processAdExtInfo(this.mAdExtInfo);
+    if (!TextUtils.isEmpty(this.liujinReportUrl)) {
+      return this.liujinReportUrl;
+    }
+    if ((this.mAdvertisementSoftInfo != null) && (!TextUtils.isEmpty(this.mAdvertisementSoftInfo.L)))
+    {
+      this.liujinReportUrl = this.mAdvertisementSoftInfo.L;
+      return this.liujinReportUrl;
+    }
+    if ((this.gameAdComData != null) && (!TextUtils.isEmpty(this.gameAdComData.C)))
+    {
+      this.liujinReportUrl = this.gameAdComData.C;
+      return this.liujinReportUrl;
+    }
+    return null;
+  }
+  
   public int getNextAdPosition()
   {
     if (this.mAdExtInfo != null) {
@@ -419,6 +603,44 @@ public class AdvertisementInfo
     return 0;
   }
   
+  public String getPackageName()
+  {
+    processAdExtInfo(this.mAdExtInfo);
+    if (!TextUtils.isEmpty(this.packageName)) {
+      return this.packageName;
+    }
+    if ((this.mAdvertisementSoftInfo != null) && (!TextUtils.isEmpty(this.mAdvertisementSoftInfo.o)))
+    {
+      this.packageName = this.mAdvertisementSoftInfo.o;
+      return this.packageName;
+    }
+    if ((this.gameAdComData != null) && (!TextUtils.isEmpty(this.gameAdComData.d)))
+    {
+      this.packageName = this.gameAdComData.d;
+      return this.packageName;
+    }
+    return null;
+  }
+  
+  public String getTicket()
+  {
+    processAdExtInfo(this.mAdExtInfo);
+    if (!TextUtils.isEmpty(this.ticket)) {
+      return this.ticket;
+    }
+    if ((this.mAdvertisementSoftInfo != null) && (!TextUtils.isEmpty(this.mAdvertisementSoftInfo.M)))
+    {
+      this.ticket = this.mAdvertisementSoftInfo.M;
+      return this.ticket;
+    }
+    if ((this.gameAdComData != null) && (!TextUtils.isEmpty(this.gameAdComData.D)))
+    {
+      this.ticket = this.gameAdComData.D;
+      return this.ticket;
+    }
+    return null;
+  }
+  
   public boolean isCommentAd()
   {
     if (this.mCommentAdParams != null) {
@@ -427,9 +649,14 @@ public class AdvertisementInfo
     return false;
   }
   
-  public boolean isGameAdSource()
+  public boolean isGameAd()
   {
-    return (this.mAdvertisementExtInfo != null) && (this.mAdvertisementExtInfo.j == 32768);
+    return (this.gameAdComData != null) && (this.mSoftAdType == 1);
+  }
+  
+  public boolean isGameDownload()
+  {
+    return (isGameAd()) && (this.gameAdComData.s != null) && (this.gameAdComData.s.equals("2"));
   }
   
   public boolean isKolSoftAd()
@@ -520,171 +747,85 @@ public class AdvertisementInfo
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    for (;;)
+    try
     {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        if (paramString.has("mini_program_type")) {
-          this.miniProgramType = paramString.optInt("mini_program_type");
-        }
-        if (paramString.has("c2s_switch")) {
-          this.mC2SSwitch = paramString.optInt("c2s_switch");
-        }
-        Object localObject;
-        int j;
-        ArrayList localArrayList;
-        int i;
-        String str;
-        if (paramString.has("c2s_click_url"))
-        {
-          localObject = paramString.optJSONArray("c2s_click_url");
-          if ((localObject != null) && (((JSONArray)localObject).length() > 0))
-          {
-            j = ((JSONArray)localObject).length();
-            localArrayList = new ArrayList();
-            i = 0;
-            if (i < j)
-            {
-              str = (String)((JSONArray)localObject).opt(i);
-              if (QLog.isColorLevel()) {
-                QLog.d("processAdExtraDataInfo", 2, " processAdExtraDataInfo clickUrl = " + str);
-              }
-              localArrayList.add(str);
-              i += 1;
-              continue;
-            }
-            this.mC2SClickUrl = localArrayList;
-          }
-        }
-        if (paramString.has("c2s_exposure_url"))
-        {
-          localObject = paramString.optJSONArray("c2s_exposure_url");
-          if ((localObject != null) && (((JSONArray)localObject).length() > 0))
-          {
-            j = ((JSONArray)localObject).length();
-            localArrayList = new ArrayList();
-            i = 0;
-            if (i < j)
-            {
-              str = (String)((JSONArray)localObject).opt(i);
-              if (QLog.isColorLevel()) {
-                QLog.d("processAdExtraDataInfo", 2, " processAdExtraDataInfo exposureUrl = " + str);
-              }
-              localArrayList.add(str);
-              i += 1;
-              continue;
-            }
-            this.mC2SExposureUrl = localArrayList;
-          }
-        }
-        if (paramString.has("c2s_video_play_url"))
-        {
-          localObject = paramString.optJSONArray("c2s_video_play_url");
-          if ((localObject != null) && (((JSONArray)localObject).length() > 0))
-          {
-            j = ((JSONArray)localObject).length();
-            localArrayList = new ArrayList();
-            i = 0;
-            if (i < j)
-            {
-              str = (String)((JSONArray)localObject).opt(i);
-              if (QLog.isColorLevel()) {
-                QLog.d("processAdExtraDataInfo", 2, " processAdExtraDataInfo videoPlayUrl = " + str);
-              }
-              localArrayList.add(str);
-              i += 1;
-              continue;
-            }
-            this.mC2SVideoPlayUrl = localArrayList;
-          }
-        }
-        if (paramString.has("video_play_duration")) {
-          this.mC2SReportTriggerTime = paramString.optInt("video_play_duration");
-        }
-        if (paramString.has("pop_sheet"))
-        {
-          localObject = new JSONObject(paramString.optString("pop_sheet")).getString("h5Url");
-          if (QLog.isColorLevel()) {
-            QLog.d("processAdExtraDataInfo", 2, "h5Url = " + (String)localObject);
-          }
-          this.mPopFormH5Url = ((String)localObject);
-        }
-        if (paramString.has("button_flag"))
-        {
-          localObject = paramString.optString("button_flag", "1");
-          if (QLog.isColorLevel()) {
-            QLog.d("processAdExtraDataInfo", 2, "buttonFlag = " + (String)localObject);
-          }
-          if (!((String)localObject).equals("0"))
-          {
-            bool = true;
-            this.mShowAdButton = bool;
-          }
-        }
-        else
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("processAdExtraDataInfo", 2, " processAdExtraDataInfo mAdCorporateImageName = " + this.mAdCorporateImageName + " mAdTraceId = " + this.mAdTraceId + "c2s_switch = " + this.mC2SSwitch);
-          }
-          if (paramString.has("phone_component_id")) {
-            this.mPhoneComponetId = paramString.optInt("phone_component_id");
-          }
-          if (paramString.has("showAdType")) {
-            this.mImaxShowAdType = paramString.optInt("showAdType");
-          }
-          if (paramString.has("imaxVideoUrl")) {
-            this.mImaxVideoUrl = paramString.optString("imaxVideoUrl");
-          }
-          if (paramString.has("imaxImg")) {
-            this.mImaxImg = paramString.optString("imaxImg");
-          }
-          if (paramString.has("imaxImgDisplayMs")) {
-            this.mImaxImgDisplayMs = paramString.optInt("imaxImgDisplayMs", 5000);
-          }
-          if (paramString.has("imaxJumpLandingPage")) {
-            this.mImaxJumpLandingPage = paramString.optInt("imaxJumpLandingPage", 1);
-          }
-          if (paramString.has("imaxShowSlipAllowMs")) {
-            this.mImaxShowSlipAllowMs = paramString.optInt("imaxShowSlipAllowMs", 3000);
-          }
-          this.mImaxStyle = bkwm.a("sp_key_ad_imax_style");
-          if ((this.mImaxShowAdType == 1001) && ("1".equals(this.mImaxStyle))) {
-            this.isIMaxAndNewStyle = true;
-          }
-          this.mCommentAdParams = new trq();
-          this.mCommentAdParams.jdField_a_of_type_Boolean = paramString.optBoolean("comment_get_ads");
-          this.mCommentAdParams.jdField_b_of_type_Boolean = paramString.optBoolean("comment_show_comment");
-          this.mCommentAdParams.jdField_c_of_type_Boolean = paramString.optBoolean("comment_button_flag");
-          this.mCommentAdParams.jdField_a_of_type_Int = paramString.optInt("comment_card_style");
-          this.mCommentAdParams.jdField_b_of_type_Int = paramString.optInt("comment_exposure_time_limit");
-          this.mCommentAdParams.jdField_c_of_type_Int = paramString.optInt("comment_exposure_count_limit");
-          this.mCommentAdParams.jdField_a_of_type_Long = paramString.optInt("ad_start_time");
-          return;
-        }
+      paramString = new JSONObject(paramString);
+      if (paramString.has("mini_program_type")) {
+        this.miniProgramType = paramString.optInt("mini_program_type");
       }
-      catch (Exception paramString)
-      {
-        QLog.e("processAdExtraDataInfo", 1, "processAdExtraDataInfo exception " + paramString.toString());
-        return;
+      if (paramString.has("c2s_switch")) {
+        this.mC2SSwitch = paramString.optInt("c2s_switch");
       }
-      boolean bool = false;
+      parseC2SClickUrl(paramString);
+      parseC2SExposureUrl(paramString);
+      parseC2SVideoPlayUrl(paramString);
+      if (paramString.has("video_play_duration")) {
+        this.mC2SReportTriggerTime = paramString.optInt("video_play_duration");
+      }
+      parsePopFormH5Url(paramString);
+      parseShowAdButton(paramString);
+      if (QLog.isColorLevel()) {
+        QLog.d("processAdExtraDataInfo", 2, " processAdExtraDataInfo mAdCorporateImageName = " + this.mAdCorporateImageName + " mAdTraceId = " + this.mAdTraceId + "c2s_switch = " + this.mC2SSwitch);
+      }
+      if (paramString.has("phone_component_id")) {
+        this.mPhoneComponetId = paramString.optInt("phone_component_id");
+      }
+      if (paramString.has("showAdType")) {
+        this.mImaxShowAdType = paramString.optInt("showAdType");
+      }
+      if (paramString.has("imaxVideoUrl")) {
+        this.mImaxVideoUrl = paramString.optString("imaxVideoUrl");
+      }
+      if (paramString.has("imaxImg")) {
+        this.mImaxImg = paramString.optString("imaxImg");
+      }
+      if (paramString.has("imaxImgDisplayMs")) {
+        this.mImaxImgDisplayMs = paramString.optInt("imaxImgDisplayMs", 5000);
+      }
+      if (paramString.has("imaxJumpLandingPage")) {
+        this.mImaxJumpLandingPage = paramString.optInt("imaxJumpLandingPage", 1);
+      }
+      if (paramString.has("imaxShowSlipAllowMs")) {
+        this.mImaxShowSlipAllowMs = paramString.optInt("imaxShowSlipAllowMs", 3000);
+      }
+      this.mImaxStyle = bmhv.a("sp_key_ad_imax_style");
+      if ((this.mImaxShowAdType == 1001) && ("1".equals(this.mImaxStyle))) {
+        this.isIMaxAndNewStyle = true;
+      }
+      this.mCommentAdParams = new ugb();
+      this.mCommentAdParams.jdField_a_of_type_Boolean = paramString.optBoolean("comment_get_ads");
+      this.mCommentAdParams.jdField_b_of_type_Boolean = paramString.optBoolean("comment_show_comment");
+      this.mCommentAdParams.jdField_c_of_type_Boolean = paramString.optBoolean("comment_button_flag");
+      this.mCommentAdParams.jdField_a_of_type_Int = paramString.optInt("comment_card_style");
+      this.mCommentAdParams.jdField_b_of_type_Int = paramString.optInt("comment_exposure_time_limit");
+      this.mCommentAdParams.jdField_c_of_type_Int = paramString.optInt("comment_exposure_count_limit");
+      this.mCommentAdParams.jdField_a_of_type_Long = paramString.optInt("ad_start_time");
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("processAdExtraDataInfo", 1, "processAdExtraDataInfo exception " + paramString.toString());
     }
   }
   
   public void processSoftDataInfo(String paramString)
   {
-    this.mAdvertisementSoftInfo = new trp(paramString);
+    this.mAdvertisementSoftInfo = new uga(paramString);
   }
   
   public void processSoftDataInfo(JSONObject paramJSONObject)
   {
-    this.mAdvertisementSoftInfo = new trp(paramJSONObject);
+    this.mAdvertisementSoftInfo = new uga(paramJSONObject);
   }
   
   public void resetClickPos()
   {
     this.clickPos = -1;
+  }
+  
+  public void setAdClickPos(AdClickPos paramAdClickPos)
+  {
+    this.adClickPos = paramAdClickPos;
   }
   
   public void setClickPos(int paramInt)

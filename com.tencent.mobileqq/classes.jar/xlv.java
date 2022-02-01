@@ -1,17 +1,6 @@
-import com.tencent.biz.qqstory.storyHome.memory.view.MemoriesInnerListView;
-import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
-
-public class xlv
-  implements HorizontalListView.OnScrollStateChangedListener
+public abstract interface xlv
 {
-  public xlv(MemoriesInnerListView paramMemoriesInnerListView) {}
-  
-  public void onScrollStateChanged(int paramInt)
-  {
-    if ((paramInt == 4097) && (this.a.a != null)) {
-      this.a.a.a(MemoriesInnerListView.a(this.a).a);
-    }
-  }
+  public abstract void a(xlu paramxlu, int paramInt);
 }
 
 

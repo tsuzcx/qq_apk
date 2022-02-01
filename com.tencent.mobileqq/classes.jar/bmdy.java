@@ -1,19 +1,30 @@
-import android.os.Handler;
-import dov.com.qq.im.aeeditor.lyric.common.TimerTaskManager;
+import android.os.Handler.Callback;
+import android.os.Message;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class bmdy
+public final class bmdy
+  extends WtloginObserver
 {
-  private static final bmeb<Handler, Void> a = new bmdz();
-  private static bmeb<TimerTaskManager, Void> b = new bmea();
+  public bmdy(Handler.Callback paramCallback) {}
   
-  public static Handler a()
+  public void onException(String paramString, int paramInt)
   {
-    return (Handler)a.b(null);
+    paramString = Message.obtain();
+    paramString.what = 1001;
+    if (this.a != null) {
+      this.a.handleMessage(paramString);
+    }
   }
   
-  public static TimerTaskManager a()
+  public void onGetStWithoutPasswd(String paramString, long paramLong1, long paramLong2, int paramInt1, long paramLong3, WUserSigInfo paramWUserSigInfo, int paramInt2, ErrMsg paramErrMsg)
   {
-    return (TimerTaskManager)b.b(null);
+    paramString = Message.obtain();
+    paramString.what = 1000;
+    if (this.a != null) {
+      this.a.handleMessage(paramString);
+    }
   }
 }
 

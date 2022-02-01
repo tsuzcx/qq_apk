@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.confess;
 
-import apsa;
-import apsc;
+import aqvd;
+import aqvf;
 
 public class ConfessManager$5
   implements Runnable
 {
-  public ConfessManager$5(apsa paramapsa, String paramString, apsc paramapsc) {}
+  public ConfessManager$5(aqvd paramaqvd, String paramString, aqvf paramaqvf) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Apsc);
+    this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aqvf);
   }
 }
 

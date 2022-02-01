@@ -1,61 +1,44 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
-import com.tencent.av.utils.PopupDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.redpacket.ui.RedPacketRollTextView;
+import java.lang.ref.WeakReference;
 
 public class lvs
+  extends Handler
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static long jdField_a_of_type_Long = -1L;
-  private static String jdField_a_of_type_JavaLangString = "";
-  public static boolean a;
+  WeakReference<RedPacketRollTextView> a;
   
-  public static int a()
+  public lvs(RedPacketRollTextView paramRedPacketRollTextView)
   {
-    return jdField_a_of_type_Int;
+    this.a = new WeakReference(paramRedPacketRollTextView);
   }
   
-  public static String a()
+  public void handleMessage(Message paramMessage)
   {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public static void a(int paramInt, String paramString)
-  {
-    jdField_a_of_type_Int = paramInt;
-    jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public static void a(Context paramContext)
-  {
-    if (!a(paramContext))
+    RedPacketRollTextView localRedPacketRollTextView = (RedPacketRollTextView)this.a.get();
+    if (localRedPacketRollTextView == null) {}
+    do
     {
-      b(paramContext);
-      PopupDialog.a(paramContext, 230, null, paramContext.getResources().getString(2131690177), 2131690620, 2131695151, new lvt(), null);
-      bcef.b(null, "dc00898", "", "", "0X800B490", "0X800B490", 0, 0, "", "", "", "");
-    }
-  }
-  
-  private static boolean a(Context paramContext)
-  {
-    jdField_a_of_type_Long = bfyz.a(paramContext).getLong("screenshare_tips_show_before", -1L);
-    return jdField_a_of_type_Long != -1L;
-  }
-  
-  private static void b(Context paramContext)
-  {
-    jdField_a_of_type_Long = System.currentTimeMillis();
-    paramContext = bfyz.a(paramContext).edit();
-    paramContext.putLong("screenshare_tips_show_before", jdField_a_of_type_Long);
-    paramContext.apply();
-    QLog.w("ScreenShareTipsHelper", 1, "screenShareShowTipsTime save time[" + jdField_a_of_type_Long + "]");
+      Bundle localBundle;
+      do
+      {
+        return;
+        localBundle = paramMessage.getData();
+      } while (localBundle == null);
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      }
+      localRedPacketRollTextView.setText(localBundle.getString("content"));
+    } while (RedPacketRollTextView.a(localRedPacketRollTextView) == null);
+    RedPacketRollTextView.a(localRedPacketRollTextView).a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lvs
  * JD-Core Version:    0.7.0.1
  */

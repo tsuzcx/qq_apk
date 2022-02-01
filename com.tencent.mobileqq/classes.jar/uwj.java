@@ -1,20 +1,21 @@
-import NS_KING_INTERFACE.stGetFeedCommentListV2Req;
-import UserGrowth.stQQGetFeedCommentListV2Req;
-import UserGrowth.stQQGetFeedCommentListV2Rsp;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class uwj
-  extends urg<stQQGetFeedCommentListV2Rsp>
+final class uwj
+  implements biyn
 {
-  public uwj()
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    super("QQGetFeedCommentListV2");
-    this.a = new stGetFeedCommentListV2Req("", "76C9BjPDT1HaN4nHs", "", 0, "", 0);
-  }
-  
-  public uwj(String paramString1, String paramString2, int paramInt)
-  {
-    super("QQGetFeedCommentListV2", 10003);
-    this.a = new stQQGetFeedCommentListV2Req(new stGetFeedCommentListV2Req(paramString1, paramString2, "", 0, "", paramInt));
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      QQToast.a(BaseApplicationImpl.getContext(), 2, 2131718766, 1).a();
+    case -2: 
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), 2, 2131718784, 1).a();
   }
 }
 

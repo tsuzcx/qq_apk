@@ -1,27 +1,27 @@
 package dov.com.tencent.mobileqq.shortvideo.musicwavesupport;
 
 import android.os.SystemClock;
-import bocw;
-import bocy;
+import bpso;
+import bpsq;
 import com.tencent.qphone.base.util.QLog;
 
 public class MusicWaveformManager$2
   implements Runnable
 {
-  public MusicWaveformManager$2(bocy parambocy) {}
+  public MusicWaveformManager$2(bpsq parambpsq) {}
   
   public void run()
   {
     try
     {
       long l = SystemClock.elapsedRealtimeNanos();
-      boolean bool = bocy.a(this.this$0).a(bocy.a(this.this$0), bocy.a(this.this$0), bocy.a(this.this$0));
+      boolean bool = bpsq.a(this.this$0).a(bpsq.a(this.this$0), bpsq.a(this.this$0), bpsq.a(this.this$0));
       if (QLog.isColorLevel()) {
         QLog.d("MusicWaveformManager", 2, "createSoundFile time: " + (SystemClock.elapsedRealtimeNanos() - l) / 1000000L + "ms");
       }
       if (!bool)
       {
-        bocy.a(this.this$0, false);
+        bpsq.a(this.this$0, false);
         if (QLog.isColorLevel()) {
           QLog.e("MusicWaveformManager", 2, "create musicSoundFile fail");
         }
@@ -32,7 +32,7 @@ public class MusicWaveformManager$2
     {
       do
       {
-        bocy.a(this.this$0, false);
+        bpsq.a(this.this$0, false);
         localException.printStackTrace();
       } while (!QLog.isColorLevel());
       QLog.e("MusicWaveformManager", 2, localException.toString());

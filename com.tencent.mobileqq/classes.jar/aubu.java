@@ -1,14 +1,41 @@
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.utils.FileUtils;
+import java.util.Iterator;
 import java.util.List;
 
-public abstract interface aubu
+class aubu
+  implements audq
 {
-  public abstract void a();
+  aubu(aubq paramaubq, List paramList, athn paramathn, aubv paramaubv) {}
   
-  public abstract void a(List<aubt> paramList);
+  public void onNo()
+  {
+    if (this.jdField_a_of_type_Aubv != null) {
+      this.jdField_a_of_type_Aubv.a(4, 1);
+    }
+  }
   
-  public abstract void b();
-  
-  public abstract void b(List<aubt> paramList);
+  public void onYes()
+  {
+    audr.d(aubq.a(this.jdField_a_of_type_Aubq).getString(2131692595));
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+        if (FileUtils.fileExistsAndNotEmpty(localFileManagerEntity.getFilePath())) {
+          this.jdField_a_of_type_Athn.a(localFileManagerEntity.getFilePath(), "", aubq.a(this.jdField_a_of_type_Aubq).getCurrentAccountUin(), 0, false);
+        } else {
+          this.jdField_a_of_type_Athn.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
+        }
+      }
+    }
+    if (this.jdField_a_of_type_Aubv != null) {
+      this.jdField_a_of_type_Aubv.a(4, 0);
+    }
+  }
 }
 
 

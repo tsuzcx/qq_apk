@@ -26,6 +26,8 @@ import com.tencent.tavsticker.model.TAVStickerTextItem;
 import com.tencent.tavsticker.utils.CollectionUtil;
 import com.tencent.weseevideo.composition.VideoRenderChainManager.IStickerContextInterface;
 import com.tencent.weseevideo.composition.effectnode.VideoEffectType;
+import com.tencent.weseevideo.composition.effectnode.WSOverLayBlurManager;
+import com.tencent.weseevideo.composition.effectnode.WSOverLayBlurManager.SourceImageObserver;
 import com.tencent.weseevideo.editor.sticker.dispatcher.IStickerEventListener;
 import com.tencent.weseevideo.editor.sticker.dispatcher.StickerEventDispatcher;
 import com.tencent.weseevideo.editor.sticker.model.TAVStickerExKt;
@@ -220,6 +222,9 @@ public class StickerController
     if (this.stickerStateCallback != null) {
       this.stickerStateCallback.onStickerActive();
     }
+    if ((paramTAVStickerEditView instanceof WSOverLayBlurManager.SourceImageObserver)) {
+      WSOverLayBlurManager.getInstance().registerSourceImageObserver(paramTAVStickerEditView.getSticker().getUniqueId(), (WSOverLayBlurManager.SourceImageObserver)paramTAVStickerEditView);
+    }
   }
   
   public void onStickerAdd(TAVStickerContext paramTAVStickerContext, TAVStickerEditView paramTAVStickerEditView)
@@ -249,11 +254,13 @@ public class StickerController
   public void onStickerRemove(TAVStickerContext paramTAVStickerContext, TAVStickerEditView paramTAVStickerEditView)
   {
     TLog.d(TAG, "onStickerRemove");
+    WSOverLayBlurManager.getInstance().unregisterSourceImageObserver(paramTAVStickerEditView.getSticker().getUniqueId());
   }
   
   public void onStickerResign(TAVStickerContext paramTAVStickerContext, TAVStickerEditView paramTAVStickerEditView)
   {
     TLog.d(TAG, "onStickerResign");
+    WSOverLayBlurManager.getInstance().unregisterSourceImageObserver(paramTAVStickerEditView.getSticker().getUniqueId());
   }
   
   public void onStickerStatusChanged(TAVSticker paramTAVSticker, boolean paramBoolean1, boolean paramBoolean2)
@@ -455,7 +462,7 @@ public class StickerController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.StickerController
  * JD-Core Version:    0.7.0.1
  */

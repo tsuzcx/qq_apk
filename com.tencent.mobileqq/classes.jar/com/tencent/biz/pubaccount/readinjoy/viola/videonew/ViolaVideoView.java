@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.videonew;
 
-import amtj;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -24,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import anvx;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGestureLayout;
 import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaLazyFragment;
 import com.tencent.image.URLDrawable;
@@ -35,28 +35,28 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.viola.core.ViolaInstance;
 import java.util.HashMap;
-import rtt;
-import rwl;
-import rwv;
-import shf;
-import tmm;
-import tmn;
-import tmt;
-import tmx;
-import tmy;
-import tna;
-import tnb;
-import tnc;
+import sgi;
+import sin;
+import six;
+import stv;
+import uaa;
+import uab;
+import uah;
+import ual;
+import uam;
+import uao;
+import uap;
+import uaq;
 
 public class ViolaVideoView
   extends FrameLayout
-  implements View.OnClickListener, rwl, tmm, tmy
+  implements View.OnClickListener, sin, uaa, uam
 {
   private static HashMap<Integer, Drawable> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-  private Handler jdField_a_of_type_AndroidOsHandler = new tnc(this, null);
+  private Handler jdField_a_of_type_AndroidOsHandler = new uaq(this, null);
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -65,8 +65,8 @@ public class ViolaVideoView
   private VideoFeedsGestureLayout jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout;
   private VideoPlayManager jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager;
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private rtt jdField_a_of_type_Rtt;
-  private tmn jdField_a_of_type_Tmn;
+  private sgi jdField_a_of_type_Sgi;
+  private uab jdField_a_of_type_Uab;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private View jdField_b_of_type_AndroidViewView;
@@ -95,10 +95,10 @@ public class ViolaVideoView
     this.jdField_a_of_type_ComTencentImageURLImageView = new URLImageView(paramActivity);
     this.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
     addView(this.jdField_a_of_type_ComTencentImageURLImageView, -1, -1);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramActivity).inflate(2131560358, this, false);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramActivity).inflate(2131560408, this, false);
     addView(this.jdField_a_of_type_AndroidViewView);
     a(this.jdField_a_of_type_AndroidViewView, paramActivity);
-    this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(paramActivity.getResources().getColor(2131165351));
+    this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(paramActivity.getResources().getColor(2131165357));
     this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable);
     paramActivity.getWindow().setFlags(16777216, 16777216);
   }
@@ -158,22 +158,22 @@ public class ViolaVideoView
   
   private void a(View paramView, Activity paramActivity)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout = ((VideoFeedsGestureLayout)paramView.findViewById(2131367518));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372727));
-    this.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131380515));
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)paramView.findViewById(2131377002));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365260));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379015));
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131372728));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366144));
-    this.jdField_d_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131363644));
-    this.jdField_e_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131367342));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367343));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372085));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366663));
-    this.jdField_f_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131367341));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131364627);
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367344));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout = ((VideoFeedsGestureLayout)paramView.findViewById(2131367650));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372920));
+    this.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131380855));
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)paramView.findViewById(2131377275));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365354));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379311));
+    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131372921));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366245));
+    this.jdField_d_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131363713));
+    this.jdField_e_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131367466));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367467));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372278));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366775));
+    this.jdField_f_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131367465));
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131364711);
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367468));
     this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(this);
@@ -181,11 +181,11 @@ public class ViolaVideoView
     this.jdField_e_of_type_AndroidViewViewGroup.setOnClickListener(this);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
     this.jdField_d_of_type_AndroidWidgetTextView.getPaint().setFakeBoldText(true);
-    this.jdField_a_of_type_Rtt = new rtt(paramActivity);
+    this.jdField_a_of_type_Sgi = new sgi(paramActivity);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout.setOnCustomClickListener(this);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout.setContext(paramActivity);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout.setVideoBrightnessController(this.jdField_a_of_type_Rtt);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout.setVideoPlayManager(new tna(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout.setVideoBrightnessController(this.jdField_a_of_type_Sgi);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout.setVideoPlayManager(new uao(this));
   }
   
   private void a(boolean paramBoolean)
@@ -209,10 +209,10 @@ public class ViolaVideoView
     return (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a() != null) && (paramView.getTag() == this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a());
   }
   
-  private boolean a(tmx paramtmx)
+  private boolean a(ual paramual)
   {
     if (!NetworkUtil.isMobileNetWork(getContext())) {}
-    while ((paramtmx == null) || (paramtmx.jdField_a_of_type_Tmt == null)) {
+    while ((paramual == null) || (paramual.jdField_a_of_type_Uah == null)) {
       return false;
     }
     return true;
@@ -229,7 +229,7 @@ public class ViolaVideoView
     if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a()) {
       return;
     }
-    rwv.a(this.jdField_a_of_type_ComTencentImageURLImageView, paramInt1, paramInt2);
+    six.a(this.jdField_a_of_type_ComTencentImageURLImageView, paramInt1, paramInt2);
   }
   
   private void b(int paramInt, String paramString)
@@ -250,44 +250,44 @@ public class ViolaVideoView
     {
       if (this.jdField_c_of_type_AndroidViewViewGroup.getVisibility() == 8)
       {
-        if (this.jdField_a_of_type_Tmn != null) {
-          this.jdField_a_of_type_Tmn.a(paramBoolean);
+        if (this.jdField_a_of_type_Uab != null) {
+          this.jdField_a_of_type_Uab.a(paramBoolean);
         }
-        rwv.a(this.jdField_c_of_type_AndroidViewViewGroup, 0);
+        six.a(this.jdField_c_of_type_AndroidViewViewGroup, 0);
       }
       if (this.jdField_b_of_type_AndroidViewViewGroup.getVisibility() == 8) {
-        rwv.a(this.jdField_b_of_type_AndroidViewViewGroup, 0);
+        six.a(this.jdField_b_of_type_AndroidViewViewGroup, 0);
       }
       return;
     }
     if (this.jdField_c_of_type_AndroidViewViewGroup.getVisibility() == 0)
     {
-      if (this.jdField_a_of_type_Tmn != null) {
-        this.jdField_a_of_type_Tmn.a(paramBoolean);
+      if (this.jdField_a_of_type_Uab != null) {
+        this.jdField_a_of_type_Uab.a(paramBoolean);
       }
-      rwv.a(this.jdField_c_of_type_AndroidViewViewGroup, 8);
+      six.a(this.jdField_c_of_type_AndroidViewViewGroup, 8);
     }
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.d()) && (this.jdField_b_of_type_AndroidViewViewGroup.getVisibility() == 0)) {
-      rwv.a(this.jdField_b_of_type_AndroidViewViewGroup, 8);
+      six.a(this.jdField_b_of_type_AndroidViewViewGroup, 8);
     }
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
   }
   
-  private boolean b(tmx paramtmx)
+  private boolean b(ual paramual)
   {
-    return (paramtmx != null) && (paramtmx.jdField_a_of_type_Tmt != null) && (!paramtmx.jdField_b_of_type_Boolean) && (NetworkUtil.isMobileNetWork(getContext())) && (paramtmx.jdField_a_of_type_Tmt.jdField_a_of_type_Long >= 0L);
+    return (paramual != null) && (paramual.jdField_a_of_type_Uah != null) && (!paramual.jdField_b_of_type_Boolean) && (NetworkUtil.isMobileNetWork(getContext())) && (paramual.jdField_a_of_type_Uah.jdField_a_of_type_Long >= 0L);
   }
   
-  private void c(tmt paramtmt)
+  private void c(uah paramuah)
   {
-    String str = amtj.a(2131715483) + rwv.b(paramtmt.jdField_a_of_type_Long);
-    if (paramtmt.jdField_a_of_type_Long <= 0L) {
-      str = amtj.a(2131715484);
+    String str = anvx.a(2131715831) + six.b(paramuah.jdField_a_of_type_Long);
+    if (paramuah.jdField_a_of_type_Long <= 0L) {
+      str = anvx.a(2131715832);
     }
-    paramtmt = this.jdField_f_of_type_AndroidWidgetTextView;
-    paramtmt.setText(str);
-    rwv.a(paramtmt, 0);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ViolaVideoView.11(this, paramtmt), 1000L);
+    paramuah = this.jdField_f_of_type_AndroidWidgetTextView;
+    paramuah.setText(str);
+    six.a(paramuah, 0);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ViolaVideoView.11(this, paramuah), 1000L);
   }
   
   private void f()
@@ -328,7 +328,7 @@ public class ViolaVideoView
   
   private void h()
   {
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new tnb(this));
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new uap(this));
   }
   
   public ViewGroup a()
@@ -338,8 +338,8 @@ public class ViolaVideoView
   
   public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a() != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a().jdField_a_of_type_Shf != null)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a().jdField_a_of_type_Shf.a();
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a() != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a().jdField_a_of_type_Stv != null)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a().jdField_a_of_type_Stv.a();
     }
   }
   
@@ -372,12 +372,12 @@ public class ViolaVideoView
         }
         localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a();
         ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
-        localLayoutParams.height = ((tmx)localObject).c;
-        localLayoutParams.width = ((tmx)localObject).jdField_b_of_type_Int;
+        localLayoutParams.height = ((ual)localObject).c;
+        localLayoutParams.width = ((ual)localObject).jdField_b_of_type_Int;
       }
       this.jdField_f_of_type_AndroidViewViewGroup.setPadding(0, 0, 0, 0);
-      if (this.jdField_a_of_type_Tmn != null) {
-        this.jdField_a_of_type_Tmn.b(false);
+      if (this.jdField_a_of_type_Uab != null) {
+        this.jdField_a_of_type_Uab.b(false);
       }
       return;
       ((Activity)getContext()).setRequestedOrientation(9);
@@ -417,7 +417,7 @@ public class ViolaVideoView
         Object localObject = (VVideoView)getParent();
         Activity localActivity = (Activity)getContext();
         this.jdField_b_of_type_Int = localActivity.getWindow().getDecorView().getSystemUiVisibility();
-        rwv.a(localActivity);
+        six.b(localActivity);
         if ((((VVideoView)localObject).a() != null) && (((VVideoView)localObject).a().getInstance() != null) && (((VVideoView)localObject).a().getInstance().getFragment() != null))
         {
           localObject = (ViolaLazyFragment)((VVideoView)localObject).a().getInstance().getFragment();
@@ -434,8 +434,8 @@ public class ViolaVideoView
       if (paramBoolean) {
         this.jdField_f_of_type_AndroidViewViewGroup.setPadding(0, 40, 0, 0);
       }
-      if (this.jdField_a_of_type_Tmn != null) {
-        this.jdField_a_of_type_Tmn.b(true);
+      if (this.jdField_a_of_type_Uab != null) {
+        this.jdField_a_of_type_Uab.b(true);
       }
       return;
       label204:
@@ -479,10 +479,10 @@ public class ViolaVideoView
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager = paramVideoPlayManager;
   }
   
-  public void a(tmt paramtmt)
+  public void a(uah paramuah)
   {
     int j = 0;
-    if (!TextUtils.isEmpty(paramtmt.b))
+    if (!TextUtils.isEmpty(paramuah.b))
     {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
@@ -498,49 +498,49 @@ public class ViolaVideoView
         localURLDrawableOptions.mPlayGifImage = true;
         localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
         localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-        paramtmt = URLDrawable.getDrawable(paramtmt.b, localURLDrawableOptions);
-        this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramtmt);
+        paramuah = URLDrawable.getDrawable(paramuah.b, localURLDrawableOptions);
+        this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramuah);
         return;
       }
     }
     this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(null);
   }
   
-  public void a(tmx paramtmx)
+  public void a(ual paramual)
   {
-    a(paramtmx.jdField_b_of_type_Int, paramtmx.c);
-    a(paramtmx.jdField_a_of_type_Tmt);
-    if (b(paramtmx)) {
-      b(paramtmx.jdField_a_of_type_Tmt);
+    a(paramual.jdField_b_of_type_Int, paramual.c);
+    a(paramual.jdField_a_of_type_Uah);
+    if (b(paramual)) {
+      b(paramual.jdField_a_of_type_Uah);
     }
     b(false);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.e(paramtmx.jdField_d_of_type_Int);
-    if (paramtmx.jdField_e_of_type_Int != -1) {
-      b(paramtmx.jdField_e_of_type_Int);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.e(paramual.jdField_d_of_type_Int);
+    if (paramual.jdField_e_of_type_Int != -1) {
+      b(paramual.jdField_e_of_type_Int);
     }
-    setFullScreenDisable(paramtmx.jdField_d_of_type_Boolean);
-    a(paramtmx.jdField_e_of_type_Boolean);
+    setFullScreenDisable(paramual.jdField_d_of_type_Boolean);
+    a(paramual.jdField_e_of_type_Boolean);
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 3000L);
-    this.jdField_a_of_type_AndroidWidgetImageView.setTag(paramtmx);
-    this.jdField_e_of_type_AndroidViewViewGroup.setTag(paramtmx);
-    this.jdField_b_of_type_AndroidViewView.setTag(paramtmx);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout.setTag(paramtmx);
-    this.jdField_e_of_type_AndroidWidgetTextView.setTag(paramtmx);
-    setFullScreenTitle(paramtmx.jdField_a_of_type_Tmt.c);
+    this.jdField_a_of_type_AndroidWidgetImageView.setTag(paramual);
+    this.jdField_e_of_type_AndroidViewViewGroup.setTag(paramual);
+    this.jdField_b_of_type_AndroidViewView.setTag(paramual);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout.setTag(paramual);
+    this.jdField_e_of_type_AndroidWidgetTextView.setTag(paramual);
+    setFullScreenTitle(paramual.jdField_a_of_type_Uah.c);
   }
   
-  public void a(tmx paramtmx, int paramInt)
+  public void a(ual paramual, int paramInt)
   {
     a(2, null);
   }
   
-  public void a(tmx paramtmx, int paramInt1, int paramInt2, String paramString)
+  public void a(ual paramual, int paramInt1, int paramInt2, String paramString)
   {
     this.jdField_a_of_type_AndroidOsHandler.post(new ViolaVideoView.9(this, paramString));
   }
   
-  public void a(tmx paramtmx, long paramLong)
+  public void a(ual paramual, long paramLong)
   {
     float f1 = 100.0F;
     long l = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a();
@@ -555,7 +555,7 @@ public class ViolaVideoView
     while (paramLong == 0L)
     {
       if (l > 0L) {
-        rwv.a(this.jdField_b_of_type_AndroidWidgetTextView, l);
+        six.a(this.jdField_b_of_type_AndroidWidgetTextView, l);
       }
       return;
     }
@@ -565,13 +565,13 @@ public class ViolaVideoView
     for (;;)
     {
       this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress((int)f1);
-      rwv.a(this.jdField_a_of_type_AndroidWidgetTextView, paramLong);
+      six.a(this.jdField_a_of_type_AndroidWidgetTextView, paramLong);
       break;
       f1 = i + f2;
     }
   }
   
-  public void a(tmx paramtmx, boolean paramBoolean)
+  public void a(ual paramual, boolean paramBoolean)
   {
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
     if (paramBoolean)
@@ -590,37 +590,37 @@ public class ViolaVideoView
   
   public void b()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a() != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a().jdField_a_of_type_Shf != null)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a().jdField_a_of_type_Shf.b();
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a() != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a().jdField_a_of_type_Stv != null)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a().jdField_a_of_type_Stv.b();
     }
   }
   
   public void b(View paramView) {}
   
-  protected void b(tmt paramtmt)
+  protected void b(uah paramuah)
   {
-    paramtmt = rwv.c(paramtmt.jdField_a_of_type_Long);
+    paramuah = six.c(paramuah.jdField_a_of_type_Long);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    Drawable localDrawable = getContext().getResources().getDrawable(2130843190);
-    this.jdField_e_of_type_AndroidWidgetTextView.setText(paramtmt);
+    Drawable localDrawable = getContext().getResources().getDrawable(2130843226);
+    this.jdField_e_of_type_AndroidWidgetTextView.setText(paramuah);
     this.jdField_e_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(localDrawable, null, null, null);
     this.jdField_e_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(DisplayUtil.dip2px(getContext(), 6.0F));
     this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
   }
   
-  public void b(tmx paramtmx) {}
+  public void b(ual paramual) {}
   
-  public void b(tmx paramtmx, int paramInt)
+  public void b(ual paramual, int paramInt)
   {
     this.jdField_a_of_type_AndroidOsHandler.post(new ViolaVideoView.4(this));
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Rtt != null)
+    if (this.jdField_a_of_type_Sgi != null)
     {
-      this.jdField_a_of_type_Rtt.b();
-      this.jdField_a_of_type_Rtt = null;
+      this.jdField_a_of_type_Sgi.b();
+      this.jdField_a_of_type_Sgi = null;
     }
     if (this.jdField_a_of_type_AndroidOsHandler != null)
     {
@@ -629,9 +629,9 @@ public class ViolaVideoView
     }
   }
   
-  public void c(tmx paramtmx)
+  public void c(ual paramual)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new ViolaVideoView.2(this, paramtmx));
+    this.jdField_a_of_type_AndroidOsHandler.post(new ViolaVideoView.2(this, paramual));
   }
   
   public void d()
@@ -643,18 +643,18 @@ public class ViolaVideoView
     if (QLog.isColorLevel()) {
       QLog.d("ViolaVideoView", 2, "handlePlayButtonClick() status()=" + i);
     }
-    tmx localtmx = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a();
+    ual localual = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a();
     switch (i)
     {
     default: 
       return;
     case 0: 
     case 7: 
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.b(localtmx);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.b(localual);
       return;
     case 6: 
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.c(localtmx);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.b(localtmx);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.c(localual);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.b(localual);
       return;
     case 3: 
     case 4: 
@@ -670,7 +670,7 @@ public class ViolaVideoView
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a();
   }
   
-  public void d(tmx paramtmx)
+  public void d(ual paramual)
   {
     this.jdField_a_of_type_AndroidOsHandler.post(new ViolaVideoView.3(this));
   }
@@ -688,22 +688,22 @@ public class ViolaVideoView
     g();
   }
   
-  public void e(tmx paramtmx)
+  public void e(ual paramual)
   {
     this.jdField_a_of_type_AndroidOsHandler.post(new ViolaVideoView.5(this));
   }
   
-  public void f(tmx paramtmx)
+  public void f(ual paramual)
   {
     this.jdField_a_of_type_AndroidOsHandler.post(new ViolaVideoView.6(this));
   }
   
-  public void g(tmx paramtmx)
+  public void g(ual paramual)
   {
     this.jdField_a_of_type_AndroidOsHandler.post(new ViolaVideoView.7(this));
   }
   
-  public void h(tmx paramtmx)
+  public void h(ual paramual)
   {
     this.jdField_a_of_type_AndroidOsHandler.post(new ViolaVideoView.8(this));
   }
@@ -719,19 +719,19 @@ public class ViolaVideoView
       {
       default: 
         break;
-      case 2131364627: 
+      case 2131364711: 
         e();
         break;
-      case 2131372727: 
+      case 2131372920: 
         d();
         break;
-      case 2131372085: 
+      case 2131372278: 
         if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.c()) {
-          rwv.a(this.jdField_c_of_type_AndroidViewViewGroup, 8, 200);
+          six.a(this.jdField_c_of_type_AndroidViewViewGroup, 8, 200);
         }
         d();
         break;
-      case 2131367342: 
+      case 2131367466: 
         e();
       }
     }
@@ -770,7 +770,7 @@ public class ViolaVideoView
         break;
       }
     }
-    for (Object localObject = a(getContext(), 2130841806);; localObject = a(getContext(), 2130841807))
+    for (Object localObject = a(getContext(), 2130841816);; localObject = a(getContext(), 2130841817))
     {
       localImageView.setBackgroundDrawable((Drawable)localObject);
       return;
@@ -795,7 +795,7 @@ public class ViolaVideoView
       }
       label191:
       label197:
-      for (localObject = a(getContext(), 2130841806);; localObject = a(getContext(), 2130841807))
+      for (localObject = a(getContext(), 2130841816);; localObject = a(getContext(), 2130841817))
       {
         localImageView.setBackgroundDrawable((Drawable)localObject);
         return;
@@ -812,9 +812,9 @@ public class ViolaVideoView
     this.jdField_d_of_type_Boolean = paramBoolean;
   }
   
-  public void setEventListener(tmn paramtmn)
+  public void setEventListener(uab paramuab)
   {
-    this.jdField_a_of_type_Tmn = paramtmn;
+    this.jdField_a_of_type_Uab = paramuab;
   }
   
   public void setFullScreenDisable(boolean paramBoolean)
@@ -840,7 +840,7 @@ public class ViolaVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.videonew.ViolaVideoView
  * JD-Core Version:    0.7.0.1
  */

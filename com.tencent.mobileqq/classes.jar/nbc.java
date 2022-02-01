@@ -1,6 +1,19 @@
-class nbc
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.wtogether.view.WatchTogetherAdminControlView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class nbc
+  implements View.OnClickListener
 {
-  public static nba a = new nba(null);
+  public nbc(WatchTogetherAdminControlView paramWatchTogetherAdminControlView) {}
+  
+  public void onClick(View paramView)
+  {
+    WatchTogetherAdminControlView.e(this.a);
+    WatchTogetherAdminControlView.c(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

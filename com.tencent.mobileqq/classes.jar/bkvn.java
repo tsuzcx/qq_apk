@@ -1,10 +1,9 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-public class bkvn
+public abstract interface bkvn
 {
-  public ImageView a;
-  public TextView a;
+  public abstract void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject);
 }
 
 

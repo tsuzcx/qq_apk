@@ -1,16 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
 public class adwy
-  extends axkt
+  implements bhtv
 {
-  public adwy(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public adwy(EditInfoActivity paramEditInfoActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a()
   {
-    if (PublicAccountListActivity.a(this.a)) {
-      PublicAccountListActivity.a(this.a);
+    if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {}
+    while ((this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() != 0) && (!EditInfoActivity.b(this.a))) {
+      return;
     }
+    this.a.b();
+    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
   }
 }
 

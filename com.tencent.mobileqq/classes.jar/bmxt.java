@@ -1,25 +1,20 @@
-import android.annotation.TargetApi;
-import android.view.View;
-import android.view.animation.Transformation;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Build;
+import dov.com.qq.im.ae.camera.core.AECameraManager;
 
-final class bmxt
-  implements bfzz<Float>
+class bmxt
+  implements bbhi
 {
-  bmxt(View paramView) {}
+  bmxt(bmxa parambmxa) {}
   
-  @TargetApi(11)
-  public void a(bfzt<Float> parambfzt, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("QIMAnimationUtils", 2, "alphaAnimation value = " + paramFloat1);
-    }
-    paramFloat = paramFloat1.floatValue();
-    if (this.a != null)
+    if ("Google Pixel 4 XL".equals(Build.MANUFACTURER + " " + Build.MODEL))
     {
-      this.a.setAlpha(paramFloat);
-      this.a.invalidate();
+      bnrh.d(this.a.jdField_a_of_type_JavaLangString, "Incompatible machine");
+      return;
     }
+    bnrh.a(this.a.jdField_a_of_type_JavaLangString, "onRequestZoom: " + paramInt);
+    this.a.jdField_a_of_type_DovComQqImAeCameraCoreAECameraManager.setZoom(paramInt);
   }
 }
 

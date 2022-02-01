@@ -3,17 +3,18 @@ package com.tencent.biz.pubaccount.ecshopassit;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.MobileQQ;
-import ofx;
-import ogr;
+import onq;
+import ook;
 
 public class EcShopAssistantManager$1
   implements Runnable
 {
-  public EcShopAssistantManager$1(ofx paramofx) {}
+  public EcShopAssistantManager$1(onq paramonq) {}
   
   public void run()
   {
@@ -29,11 +30,11 @@ public class EcShopAssistantManager$1
     try
     {
       BaseApplicationImpl.getContext().registerReceiver(this.this$0.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
-      ((ogr)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(88)).a();
-      localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("ecshop_sp" + ofx.a(this.this$0), 0);
+      ((ook)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.EC_SHOP_REPORT_HANDLER)).a();
+      localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("ecshop_sp" + onq.a(this.this$0), 0);
       this.this$0.b = ((SharedPreferences)localObject).getBoolean("folder_tab_show", false);
       this.this$0.c = ((SharedPreferences)localObject).getBoolean("preload_web", false);
-      ofx.g = String.valueOf(((SharedPreferences)localObject).getLong("ad_puin", 0L));
+      onq.g = String.valueOf(((SharedPreferences)localObject).getLong("ad_puin", 0L));
       this.this$0.jdField_a_of_type_Long = ((SharedPreferences)localObject).getLong("stayTime", 5000L);
       this.this$0.d = ((SharedPreferences)localObject).getInt("dayLimit", 3);
       this.this$0.b();

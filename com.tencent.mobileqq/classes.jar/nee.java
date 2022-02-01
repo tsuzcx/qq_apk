@@ -1,14 +1,6 @@
-import android.widget.ImageView;
-
-public abstract interface nee
+class nee
 {
-  public abstract ImageView a();
-  
-  public abstract void a(mzq parammzq);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  public static ndx a = new ndx(null);
 }
 
 

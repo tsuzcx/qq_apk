@@ -1,44 +1,14 @@
-import android.app.Activity;
-import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
-import com.tencent.mobileqq.vas.qvip.view.ImgHeaderView;
-import com.tencent.mobileqq.vas.qvip.view.MoreMsgHeaderView;
-import com.tencent.mobileqq.vas.qvip.view.QQVipArkHeaderView;
-import com.tencent.mobileqq.vas.qvip.view.TextHeaderView;
-import com.tencent.qphone.base.util.QLog;
-
 public class bgjq
+  implements bgjo
 {
-  public static bgjm a(QQVipMsgInfo paramQQVipMsgInfo, Activity paramActivity)
+  public boolean a(bfif parambfif)
   {
-    if ((paramActivity != null) && (!paramActivity.isFinishing()))
+    switch (parambfif.e)
     {
-      if (paramQQVipMsgInfo == null) {
-        return new MoreMsgHeaderView(paramActivity);
-      }
-      try
-      {
-        if (paramQQVipMsgInfo.msgType == 1)
-        {
-          paramQQVipMsgInfo = new QQVipArkHeaderView(paramActivity, null);
-          return paramQQVipMsgInfo;
-        }
-      }
-      catch (Throwable paramQQVipMsgInfo)
-      {
-        QLog.d("QQVipPubHeaderFactory", 4, "decode header(web) faile:" + paramQQVipMsgInfo.getMessage());
-        return null;
-      }
-      if (paramQQVipMsgInfo.msgType == 2) {
-        return new ImgHeaderView(paramActivity);
-      }
-      if (paramQQVipMsgInfo.msgType == 3) {
-        return new TextHeaderView(paramActivity);
-      }
-      paramQQVipMsgInfo = new MoreMsgHeaderView(paramActivity);
-      return paramQQVipMsgInfo;
+    default: 
+      return false;
     }
-    QLog.d("QQVipPubHeaderFactory", 4, "createHeader fail activity is null");
-    return null;
+    return true;
   }
 }
 

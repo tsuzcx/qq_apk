@@ -1,6 +1,6 @@
 package com.tencent.biz.richframework.download;
 
-import bfys;
+import bhhk;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -15,7 +15,7 @@ class RFWDownloader$1
   {
     String str = this.this$0.getUnZipPath(this.val$downloadUrl);
     File localFile = new File(str);
-    if (bfys.a() == null)
+    if (bhhk.a() == null)
     {
       QLog.i("RFWDownloader", 1, "getFile error, SdCardUtil.getSdCardDirectory() == null");
       if (this.val$downloadListener != null) {

@@ -1,32 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.mobilereport.MobileReportManager;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import com.tencent.mobileqq.activity.LebaListMgrActivity.4.1;
+import com.tencent.qphone.base.util.QLog;
 
-class aegq
-  implements View.OnClickListener
+public class aegq
+  extends aoci
 {
-  aegq(aegn paramaegn, int paramInt) {}
+  public aegq(LebaListMgrActivity paramLebaListMgrActivity) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    if (!aegj.a(this.jdField_a_of_type_Aegn.a)) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      Object localObject = this.jdField_a_of_type_Aegn.a(this.jdField_a_of_type_Int);
-      if (localObject != null)
-      {
-        localObject = bbyp.a(((aegm)localObject).jdField_a_of_type_Int);
-        if (!bdai.a(aegj.a(this.jdField_a_of_type_Aegn.a), (String)localObject, new aegr(this))) {
-          aegn.a(this.jdField_a_of_type_Aegn, this.jdField_a_of_type_Int);
-        }
-        MobileReportManager.getInstance().reportAction((String)localObject, "4", "platform898", "4", "1", 102, 1, System.currentTimeMillis());
-        bcef.b(aegj.a(this.jdField_a_of_type_Aegn.a).app, "dc00898", "", "", "qq_vip", "0X800B15C", Integer.decode((String)localObject).intValue(), 0, "", "", "", "");
-      }
+    if (QLog.isDevelopLevel()) {
+      QLog.i("Q.lebatab.mgr", 4, "notifyLebaViewItemsReloaded");
     }
+    if ((LebaListMgrActivity.a(this.a) == null) || (!this.a.isResume())) {
+      return;
+    }
+    paramObject = ajzy.a().a();
+    this.a.runOnUiThread(new LebaListMgrActivity.4.1(this, paramObject));
   }
 }
 

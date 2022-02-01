@@ -1,28 +1,28 @@
-import android.support.v4.util.ArraySet;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.pb.troop.bindgame.GCBindGroup.GCBindGroupSsoServerRsp;
+import com.tencent.qphone.base.util.QLog;
 
 public class afdh
+  extends ntf
 {
-  private static ArraySet<Long> a = new ArraySet();
+  public afdh(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public static void a()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    a.clear();
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
-  {
-    if (!a.contains(Long.valueOf(paramMessageRecord.uniseq)))
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
     {
-      a.add(Long.valueOf(paramMessageRecord.uniseq));
-      bcef.b(paramQQAppInterface, "dc00898", "", "", "0X800A52B", "0X800A52B", 0, 0, "", "", "", "");
+      paramBundle = new GCBindGroup.GCBindGroupSsoServerRsp();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      this.a.a(paramBundle);
+      return;
     }
-  }
-  
-  public static void a(MessageRecord paramMessageRecord)
-  {
-    a.add(Long.valueOf(paramMessageRecord.uniseq));
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      QLog.e("Q.troopinfo", 1, "parse game bind status failed");
+    }
   }
 }
 

@@ -1,37 +1,25 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import android.widget.ImageView;
 
 class asva
-  implements SeekBar.OnSeekBarChangeListener
+  implements Animation.AnimationListener
 {
   asva(asuz paramasuz) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramBoolean) && (this.a.a != null))
-    {
-      this.a.a.a(paramInt);
-      this.a.b(paramInt);
-    }
+    paramAnimation = new ScaleAnimation(1.2F, 1.0F, 1.2F, 1.0F, 1, 0.5F, 1, 0.5F);
+    paramAnimation.setDuration(500);
+    paramAnimation.setFillAfter(true);
+    paramAnimation.setAnimationListener(new asvb(this));
+    this.a.c.startAnimation(paramAnimation);
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    asuz.a(this.a, false);
-    if ((this.a.a != null) && (!this.a.a.b(asuz.a(this.a)))) {
-      this.a.a.d();
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    asuz.a(this.a, true);
-    if (this.a.a != null) {
-      this.a.a.e();
-    }
-    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

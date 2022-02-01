@@ -4,7 +4,7 @@ import NS_COMM.COMM.StCommonExt;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bgau;
+import bhjl;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -39,7 +39,7 @@ public class MiniAppGetSwitchListServlet
           continue;
         }
         localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(bgau.b(paramFromServiceMsg.getWupBuffer()));
+        localStQWebRsp.mergeFrom(bhjl.b(paramFromServiceMsg.getWupBuffer()));
         localBundle.putInt("key_index", (int)localStQWebRsp.Seq.get());
         if (!paramFromServiceMsg.isSuccess()) {
           continue;
@@ -89,7 +89,7 @@ public class MiniAppGetSwitchListServlet
         localObject = new byte[4];
       }
       paramPacket.setSSOCommand("LightAppSvc.mini_user_info.GetSwitchList");
-      paramPacket.putSendData(bgau.a((byte[])localObject));
+      paramPacket.putSendData(bhjl.a((byte[])localObject));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
       super.onSend(paramIntent, paramPacket);
       return;

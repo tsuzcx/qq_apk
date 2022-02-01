@@ -1,61 +1,15 @@
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.view.View;
+import kotlin.Metadata;
 
-public class ujn<V extends uiz, P extends ujc<V>>
-  implements ujb
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/LearnModeCheckStep;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/api/SuperMaskStep;", "()V", "doStep", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ujn
+  extends ujc
 {
-  private uja<V, P> a;
-  
-  public ujn(uja<V, P> paramuja)
+  public boolean a()
   {
-    if (paramuja == null) {
-      throw new NullPointerException("IWSDelegateCallback is null!");
+    if (!bdvn.a()) {}
+    for (boolean bool = true;; bool = false) {
+      return ujt.a.a(bool, (ujc)this);
     }
-    this.a = paramuja;
-  }
-  
-  private V a()
-  {
-    uiz localuiz = this.a.a();
-    if (localuiz == null) {
-      throw new NullPointerException("View returned from getMvpView() is null");
-    }
-    return localuiz;
-  }
-  
-  private P a()
-  {
-    ujc localujc = this.a.b();
-    if (localujc == null) {
-      throw new NullPointerException("Presenter returned from getPresenter() is null");
-    }
-    return localujc;
-  }
-  
-  public void a()
-  {
-    a().a();
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    ujc localujc = this.a.b();
-    paramBundle = localujc;
-    if (localujc == null) {
-      paramBundle = this.a.a();
-    }
-    this.a.a(paramBundle);
-  }
-  
-  public void a(View paramView, @Nullable Bundle paramBundle)
-  {
-    a().a(a());
-  }
-  
-  public void b()
-  {
-    a().b();
   }
 }
 

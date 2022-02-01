@@ -1,23 +1,23 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.multicard.MultiCardItemFragment;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.jsp.MediaApiPlugin;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.BaseActivity;
+import mqq.app.QQPermissionCallback;
+import org.json.JSONObject;
 
-class awad
-  implements View.OnLongClickListener
+public class awad
+  implements QQPermissionCallback
 {
-  awad(awac paramawac) {}
+  public awad(MediaApiPlugin paramMediaApiPlugin, JSONObject paramJSONObject, boolean paramBoolean, BaseActivity paramBaseActivity) {}
   
-  public boolean onLongClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (this.a.a != null)
-    {
-      paramView = (MultiCardItemFragment)this.a.a.get();
-      if (paramView != null) {
-        paramView.a(this.a);
-      }
-    }
-    return true;
+    QLog.d(MediaApiPlugin.a, 1, "User requestPermissions WRITE_EXTERNAL_STORAGE denied");
+    bhdj.a(this.jdField_a_of_type_MqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Boolean);
   }
 }
 

@@ -15,15 +15,15 @@ class DoubleVideoCtrlUI$StartTimerRunnable
   {
     this.a = paramLong;
     this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.this$0.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$StartTimerRunnable, 5000L);
-    this.this$0.c = true;
+    this.this$0.jdField_d_of_type_Boolean = true;
   }
   
   void b(long paramLong)
   {
     if (QLog.isColorLevel()) {
-      QLog.w(this.this$0.d, 1, "StartTimerRunnable.remove, mNeedRemoveAudioCallback[" + this.this$0.c + "], seq[" + paramLong + "], lastseq[" + this.a + "]");
+      QLog.w(this.this$0.jdField_d_of_type_JavaLangString, 1, "StartTimerRunnable.remove, mNeedRemoveAudioCallback[" + this.this$0.jdField_d_of_type_Boolean + "], seq[" + paramLong + "], lastseq[" + this.a + "]");
     }
-    if (this.this$0.c) {
+    if (this.this$0.jdField_d_of_type_Boolean) {
       this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.this$0.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$StartTimerRunnable);
     }
   }
@@ -31,9 +31,9 @@ class DoubleVideoCtrlUI$StartTimerRunnable
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.w(this.this$0.d, 1, "StartTimerRunnable.Run, seq[" + this.a + "]");
+      QLog.w(this.this$0.jdField_d_of_type_JavaLangString, 1, "StartTimerRunnable.Run, seq[" + this.a + "]");
     }
-    this.this$0.A(this.a);
+    this.this$0.B(this.a);
   }
 }
 

@@ -1,41 +1,19 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiVideoEditFragment;
+
 public class bnzt
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public bbwq a;
-  public String a;
-  public boolean a;
-  public long b;
-  public bbwq b;
-  public String b;
-  public boolean b;
-  public long c;
+  public bnzt(AEEditorMultiVideoEditFragment paramAEEditorMultiVideoEditFragment) {}
   
-  public bnzt()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public void a(bnzt parambnzt)
-  {
-    if (parambnzt == null) {
-      throw new NullPointerException();
-    }
-    this.jdField_a_of_type_JavaLangString = parambnzt.jdField_a_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaLangString = parambnzt.jdField_b_of_type_JavaLangString;
-    this.jdField_a_of_type_Bbwq = parambnzt.jdField_a_of_type_Bbwq;
-    this.jdField_a_of_type_Boolean = parambnzt.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_Int = parambnzt.jdField_a_of_type_Int;
-    this.jdField_b_of_type_Boolean = parambnzt.jdField_b_of_type_Boolean;
-    this.jdField_a_of_type_Long = parambnzt.jdField_a_of_type_Long;
-    this.jdField_b_of_type_Long = parambnzt.jdField_b_of_type_Long;
-    this.c = parambnzt.c;
-  }
-  
-  public String toString()
-  {
-    return "AudioDecodeConfig=[audioFilePath:" + this.jdField_a_of_type_JavaLangString + " repeat:" + this.jdField_a_of_type_Boolean + " speedType:" + this.jdField_a_of_type_Int + " mMuteAudio:" + this.jdField_b_of_type_Boolean + " startTimeMs:" + this.jdField_a_of_type_Long + " endTimeMs:" + this.jdField_b_of_type_Long + " videoDuration:" + this.c + "]";
+    bnqm.a().p();
+    this.a.getArguments().putSerializable("resource_model", null);
+    this.a.getArguments().putSerializable("resource_model", AEEditorMultiVideoEditFragment.a(this.a));
+    this.a.a().a(this.a.getActivity());
   }
 }
 

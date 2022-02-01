@@ -1,13 +1,27 @@
-import com.tencent.open.agent.OpenAuthorityFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.vas.updatesystem.business.TroopNickNameBusiness;
+import com.tencent.mobileqq.vas.updatesystem.business.TroopNickNameBusiness.Config;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class bhsy
-  implements bhtq
+class bhsy
+  implements EIPCResultCallback
 {
-  public bhsy(OpenAuthorityFragment paramOpenAuthorityFragment) {}
+  bhsy(bhsx parambhsx) {}
   
-  public void a()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.a.j();
+    if ((paramEIPCResult != null) && (paramEIPCResult.data != null) && (paramEIPCResult.data.getBoolean("status")))
+    {
+      bhsx.a(this.a, paramEIPCResult.data.getString("filepath"));
+      paramEIPCResult = TroopNickNameBusiness.a(bhsx.a(this.a));
+      if (paramEIPCResult != null)
+      {
+        this.a.a = paramEIPCResult.fontId;
+        this.a.b = paramEIPCResult.fontType;
+        this.a.a(bhsx.a(this.a), paramEIPCResult.delay, paramEIPCResult.repeatCount);
+      }
+    }
   }
 }
 

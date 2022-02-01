@@ -1,17 +1,57 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoFilter;
-import com.tencent.biz.qqstory.view.UnHandleTouchEventViewPager;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import java.util.List;
 
 public class xye
-  implements View.OnTouchListener
+  extends yev
 {
-  public xye(EditVideoFilter paramEditVideoFilter) {}
+  public xye(xyb paramxyb) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt, View paramView, Object paramObject, yhc paramyhc)
   {
-    return this.a.a.a(paramMotionEvent);
+    if ((paramInt < 0) || (paramInt > this.a.a.a(xyb.a(this.a)).size())) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          paramObject = (CommentEntry)this.a.a.a(xyb.a(this.a)).get(paramInt);
+          switch (paramView.getId())
+          {
+          default: 
+            return;
+          }
+        } while ((paramObject.authorRole == 1002) || (paramObject.authorRole == 1003));
+        weg.a(paramView.getContext(), 12, paramObject.authorUnionId);
+        return;
+      } while (xyb.a(this.a) == null);
+      xyb.a(this.a).a(paramObject, paramInt);
+      return;
+    } while (xyb.a(this.a) == null);
+    xyb.a(this.a).J_();
+  }
+  
+  public void b(int paramInt, View paramView, Object paramObject, yhc paramyhc)
+  {
+    if ((paramInt < 0) || (paramInt > this.a.a.a(xyb.a(this.a)).size())) {}
+    do
+    {
+      do
+      {
+        return;
+        paramObject = (CommentEntry)this.a.a.a(xyb.a(this.a)).get(paramInt);
+        switch (paramView.getId())
+        {
+        default: 
+          return;
+        }
+      } while (xyb.a(this.a) == null);
+      xyb.a(this.a).b(paramObject, paramInt);
+      return;
+    } while (xyb.a(this.a) == null);
+    xyb.a(this.a).J_();
   }
 }
 

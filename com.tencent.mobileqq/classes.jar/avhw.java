@@ -1,14 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class avhw
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  avhw(avhv paramavhv) {}
+  avhw(avhu paramavhu, avhy paramavhy) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.a = false;
+    avhu.a(this.jdField_a_of_type_Avhu, this.jdField_a_of_type_Avhy.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,18 +1,17 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.7.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.FutureListener.SimpleFutureListener;
+import com.tribe.async.async.JobController.DoneEvent;
+import com.tribe.async.async.Worker;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class waa
-  extends DataSetObserver
+class waa
+  extends FutureListener.SimpleFutureListener<Progress, Result>
 {
-  waa(vzt paramvzt) {}
+  waa(vzz paramvzz, Worker paramWorker) {}
   
-  public void onChanged()
+  public void onFutureDone(@Nullable Result paramResult)
   {
-    if (this.a.a == 0) {
-      ThreadManager.getUIHandler().post(new MsgTabStoryNodeListManager.7.1(this));
-    }
+    wad.a().dispatch(new JobController.DoneEvent(this.jdField_a_of_type_ComTribeAsyncAsyncWorker));
   }
 }
 

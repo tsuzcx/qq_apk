@@ -1,8 +1,31 @@
-import android.graphics.Bitmap;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
 
-public abstract interface bnvn
+public class bnvn
+  implements Animator.AnimatorListener
 {
-  public abstract void a(Bitmap paramBitmap);
+  public bnvn(AEEditorAILoadingView paramAEEditorAILoadingView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    AEEditorAILoadingView.a(this.a, 0);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    AEEditorAILoadingView.a(this.a, 0);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    AEEditorAILoadingView.a(this.a, AEEditorAILoadingView.a(this.a) + 1);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    AEEditorAILoadingView.a(this.a, 1);
+  }
 }
 
 

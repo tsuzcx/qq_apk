@@ -1,20 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class akpz
-  implements DialogInterface.OnClickListener
+class akpz
+  extends AsyncTask<String, Void, AnimationView.AnimationInfo>
 {
-  public akpz(LoginView paramLoginView) {}
+  private akpz(akpx paramakpx) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected AnimationView.AnimationInfo a(String... paramVarArgs)
   {
-    try
-    {
-      paramDialogInterface.dismiss();
-      return;
+    if ("1".equals(paramVarArgs[1])) {
+      return AnimationView.AnimationInfo.loadFromZip(paramVarArgs[0]);
     }
-    catch (Exception paramDialogInterface) {}
+    return AnimationView.AnimationInfo.loadFromFolder(paramVarArgs[0]);
+  }
+  
+  protected void a(AnimationView.AnimationInfo paramAnimationInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FrameAnimHelper", 2, "task over info = " + paramAnimationInfo);
+    }
+    this.a.a(paramAnimationInfo);
   }
 }
 

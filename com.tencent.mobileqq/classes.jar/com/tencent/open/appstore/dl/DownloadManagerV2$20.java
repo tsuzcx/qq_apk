@@ -3,9 +3,9 @@ package com.tencent.open.appstore.dl;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bhpc;
-import bhyo;
-import bhzm;
+import bizw;
+import bjjq;
+import bjko;
 import com.tencent.open.downloadnew.DownloadInfo;
 import java.util.Collection;
 import java.util.Iterator;
@@ -14,16 +14,16 @@ import java.util.concurrent.ConcurrentHashMap;
 public class DownloadManagerV2$20
   implements Runnable
 {
-  public DownloadManagerV2$20(bhyo parambhyo) {}
+  public DownloadManagerV2$20(bjjq parambjjq) {}
   
   public void run()
   {
     DownloadInfo localDownloadInfo;
     try
     {
-      if (!bhpc.a().a().getSharedPreferences("opensdk_config_DownloadManagerV2", 0).getBoolean("download_clear_unuse", false))
+      if (!bizw.a().a().getSharedPreferences("opensdk_config_DownloadManagerV2", 0).getBoolean("download_clear_unuse", false))
       {
-        Iterator localIterator = bhyo.a(this.this$0).values().iterator();
+        Iterator localIterator = bjjq.a(this.this$0).values().iterator();
         for (;;)
         {
           if (!localIterator.hasNext()) {
@@ -39,7 +39,7 @@ public class DownloadManagerV2$20
           String str = localDownloadInfo.d;
           label77:
           if (this.this$0.a(str) == null) {
-            bhyo.a(this.this$0, localDownloadInfo);
+            bjjq.a(this.this$0, localDownloadInfo);
           }
         }
       }
@@ -47,7 +47,7 @@ public class DownloadManagerV2$20
     }
     catch (Exception localException)
     {
-      bhzm.c("DownloadManagerV2", "checkDownloadList>>>", localException);
+      bjko.c("DownloadManagerV2", "checkDownloadList>>>", localException);
     }
     label117:
     do
@@ -57,11 +57,11 @@ public class DownloadManagerV2$20
       if (this.this$0.a(localDownloadInfo) != null) {
         break;
       }
-      bhyo.a(this.this$0, localDownloadInfo);
+      bjjq.a(this.this$0, localDownloadInfo);
       break;
-    } while (bhyo.a(this.this$0).size() <= 200);
+    } while (bjjq.a(this.this$0).size() <= 200);
     label139:
-    Object localObject = bhpc.a().a().getSharedPreferences("opensdk_config_DownloadManagerV2", 0).edit();
+    Object localObject = bizw.a().a().getSharedPreferences("opensdk_config_DownloadManagerV2", 0).edit();
     ((SharedPreferences.Editor)localObject).putBoolean("download_clear_unuse", true);
     ((SharedPreferences.Editor)localObject).apply();
   }

@@ -1,5 +1,6 @@
 import android.os.AsyncTask;
 import android.text.TextUtils;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.DataLineMsgSet;
@@ -11,14 +12,14 @@ class dd
 {
   dd(dc paramdc, ArrayList paramArrayList, int paramInt) {}
   
-  DataLineMsgRecord a(amqd paramamqd, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  DataLineMsgRecord a(ansr paramansr, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
     int i = paramInt1;
     if (paramInt1 == 0) {
-      switch (aszt.a(paramString))
+      switch (auea.a(paramString))
       {
       default: 
         i = 0;
@@ -27,8 +28,8 @@ class dd
     for (;;)
     {
       DataLineMsgRecord localDataLineMsgRecord = new DataLineMsgRecord();
-      localDataLineMsgRecord.msgtype = amqd.a(i);
-      localDataLineMsgRecord.sessionid = paramamqd.a(0, this.jdField_a_of_type_Int).longValue();
+      localDataLineMsgRecord.msgtype = ansr.a(i);
+      localDataLineMsgRecord.sessionid = paramansr.a(0, this.jdField_a_of_type_Int).longValue();
       localDataLineMsgRecord.path = paramString;
       localDataLineMsgRecord.thumbPath = null;
       localDataLineMsgRecord.groupId = paramInt2;
@@ -51,14 +52,14 @@ class dd
   void a(List<String> paramList, int paramInt)
   {
     if (paramList == null) {}
-    amqd localamqd;
+    ansr localansr;
     int j;
     int i;
     Object localObject;
     for (;;)
     {
       return;
-      localamqd = (amqd)this.jdField_a_of_type_Dc.a.getBusinessHandler(8);
+      localansr = (ansr)this.jdField_a_of_type_Dc.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
       j = paramList.size();
       if (j > 3) {
         break;
@@ -66,28 +67,28 @@ class dd
       i = 0;
       while (i < j)
       {
-        localObject = a(localamqd, (String)paramList.get(i), paramInt, 0, 0, 0);
+        localObject = a(localansr, (String)paramList.get(i), paramInt, 0, 0, 0);
         if (localObject != null) {
-          localamqd.a((DataLineMsgRecord)localObject, false);
+          localansr.a((DataLineMsgRecord)localObject, false);
         }
         i += 1;
       }
     }
-    label117:
+    label118:
     DataLineMsgRecord localDataLineMsgRecord;
     if ((j > 3) && (j < 50))
     {
       localObject = new ArrayList();
-      int k = localamqd.a();
+      int k = localansr.a();
       i = 0;
       if (i < j)
       {
-        localDataLineMsgRecord = a(localamqd, (String)paramList.get(i), paramInt, k, j, i);
+        localDataLineMsgRecord = a(localansr, (String)paramList.get(i), paramInt, k, j, i);
         if (localDataLineMsgRecord != null) {
           ((ArrayList)localObject).add(localDataLineMsgRecord);
         }
         if (!DataLineMsgSet.isSingle(paramInt, k)) {
-          break label408;
+          break label409;
         }
         if (localDataLineMsgRecord != null)
         {
@@ -96,34 +97,34 @@ class dd
           localDataLineMsgRecord.groupSize = 0;
         }
         if (((ArrayList)localObject).size() > 0) {
-          localamqd.a((ArrayList)localObject, false);
+          localansr.a((ArrayList)localObject, false);
         }
         localObject = new ArrayList();
       }
     }
-    label259:
-    label405:
-    label408:
+    label260:
+    label406:
+    label409:
     for (;;)
     {
       i += 1;
-      break label117;
+      break label118;
       if (((ArrayList)localObject).size() <= 0) {
         break;
       }
-      localamqd.a((ArrayList)localObject, false);
+      localansr.a((ArrayList)localObject, false);
       return;
       localObject = new ArrayList();
-      j = localamqd.a();
+      j = localansr.a();
       i = 0;
       if (i < 50)
       {
-        localDataLineMsgRecord = a(localamqd, (String)paramList.get(i), paramInt, j, 50, i);
+        localDataLineMsgRecord = a(localansr, (String)paramList.get(i), paramInt, j, 50, i);
         if (localDataLineMsgRecord != null) {
           ((ArrayList)localObject).add(localDataLineMsgRecord);
         }
         if (!DataLineMsgSet.isSingle(paramInt, j)) {
-          break label405;
+          break label406;
         }
         if (localDataLineMsgRecord != null)
         {
@@ -132,16 +133,16 @@ class dd
           localDataLineMsgRecord.groupSize = 0;
         }
         if (((ArrayList)localObject).size() > 0) {
-          localamqd.a((ArrayList)localObject, false);
+          localansr.a((ArrayList)localObject, false);
         }
         localObject = new ArrayList();
       }
       for (;;)
       {
         i += 1;
-        break label259;
+        break label260;
         if (((ArrayList)localObject).size() > 0) {
-          localamqd.a((ArrayList)localObject, false);
+          localansr.a((ArrayList)localObject, false);
         }
         i = 0;
         while (i < 50)

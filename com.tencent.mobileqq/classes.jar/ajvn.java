@@ -1,28 +1,19 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
-import tencent.im.qqwallet.QWalletPubAdReport.ReportReq;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ajvn
-  implements bkvz
+public class ajvn
+  implements View.OnClickListener
 {
-  ajvn(ajvj paramajvj, int paramInt, Context paramContext, QQAppInterface paramQQAppInterface, long paramLong) {}
+  public ajvn(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void a(int paramInt, String... paramVarArgs)
+  public void onClick(View paramView)
   {
-    if ((paramVarArgs.length <= 0) || (paramVarArgs[0] == null)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("QWalletGdtAdManager", 2, "get getPskeyAsync success");
-    }
-    paramVarArgs = ajvj.a(this.jdField_a_of_type_Ajvj, paramVarArgs[0], this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentContext);
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), ajuh.class);
-    localNewIntent.putExtra("cmd", "ReportSvc.Statistics");
-    localNewIntent.putExtra("data", bgau.a(paramVarArgs.toByteArray()));
-    localNewIntent.setObserver(new ajvo(this));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
+    this.a.getActivity().setResult(0, this.a.getActivity().getIntent());
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,17 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.mobileqq.fragment.PublicBaseFragment;
 
-class asqj
-  extends BroadcastReceiver
+public abstract class asqj
+  extends PublicBaseFragment
 {
-  asqj(asqh paramasqh) {}
+  protected aspe a;
+  protected int j = -1;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(aspe paramaspe)
   {
-    if (paramIntent.getAction().equals("android.media.AUDIO_BECOMING_NOISY")) {
-      this.a.a();
-    }
+    this.a = paramaspe;
+  }
+  
+  public void i() {}
+  
+  public void i(int paramInt)
+  {
+    this.j = paramInt;
   }
 }
 

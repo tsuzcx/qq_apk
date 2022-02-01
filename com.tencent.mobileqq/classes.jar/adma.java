@@ -1,23 +1,30 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import java.util.List;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class adma
-  implements AdapterView.OnItemClickListener
+final class adma
+  implements DialogInterface.OnClickListener
 {
-  public adma(GroupManagerActivity paramGroupManagerActivity) {}
+  adma(QQAppInterface paramQQAppInterface, adnn paramadnn, long paramLong, Context paramContext, adnm paramadnm) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt - 1 < 0) || (this.a.a.size() <= paramInt - 1)) {
-      return;
+    axpy localaxpy = (axpy)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.NEARBY_RELEVANT_HANDLER);
+    if (localaxpy != null) {
+      localaxpy.a((byte)0);
     }
-    GroupManagerActivity.a(this.a, (Groups)this.a.a.get(paramInt - 1));
-    GroupManagerActivity.a(this.a, bfur.a(this.a, 2131692878, 2131692882, GroupManagerActivity.a(this.a).group_name, GroupManagerActivity.a(this.a), GroupManagerActivity.b(this.a)));
-    GroupManagerActivity.a(this.a, 1);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNearbyProxy().a(true);
+    if (this.jdField_a_of_type_Adnn.a) {
+      bdla.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "1", "", "", "");
+    }
+    this.jdField_a_of_type_Adnn.e = false;
+    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adnm, this.jdField_a_of_type_Adnn);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

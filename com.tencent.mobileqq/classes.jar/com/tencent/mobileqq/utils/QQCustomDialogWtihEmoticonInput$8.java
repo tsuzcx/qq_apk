@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import bjmm;
+import bkxz;
 
 class QQCustomDialogWtihEmoticonInput$8
   implements Runnable
@@ -9,7 +9,7 @@ class QQCustomDialogWtihEmoticonInput$8
   
   public void run()
   {
-    bjmm.a(this.this$0.inputView);
+    bkxz.a(this.this$0.inputView);
   }
 }
 

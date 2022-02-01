@@ -1,21 +1,7 @@
-import android.os.Handler;
-import android.os.Message;
+import kotlin.Metadata;
 
-class ufe
-  extends Handler
-{
-  ufe(ufd paramufd) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.a = false;
-  }
-}
+@Metadata(bv={1, 0, 3}, k=3, mv={1, 1, 16})
+public final class ufe {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

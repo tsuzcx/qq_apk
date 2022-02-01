@@ -1,66 +1,35 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 
-public class bhlv
-  extends WebViewPlugin
+public abstract class bhlv
+  extends RecyclerView.OnScrollListener
 {
-  public bhlv()
-  {
-    this.mPluginNameSpace = "floatingWindow";
-  }
+  private boolean a;
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public abstract void a();
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatingScreenPlugin", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
-    }
-    if ("floatingWindow".equals(paramString2))
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    GridLayoutManager localGridLayoutManager = (GridLayoutManager)paramRecyclerView.getLayoutManager();
+    if (paramInt == 0)
     {
-      if ("show".equals(paramString3))
-      {
-        bhlx.a(BaseApplication.getContext(), true, 16);
-        return true;
+      paramInt = localGridLayoutManager.findLastCompletelyVisibleItemPosition();
+      if ((((bhls)paramRecyclerView.getAdapter()).a(paramInt).a == 4) && (this.a)) {
+        a();
       }
-      if ("hide".equals(paramString3))
-      {
-        bhlx.a(BaseApplication.getContext(), false, 16);
-        return true;
-      }
-      if ("close".equals(paramString3))
-      {
-        bhlx.a(BaseApplicationImpl.getContext(), 16);
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
-  {
-    super.onActivityResult(paramIntent, paramByte, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatingScreenPlugin", 2, "onActivityResult requestCode=" + paramByte + "  resultCode=" + paramInt);
     }
   }
   
-  public void onCreate()
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    super.onCreate();
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatingScreenPlugin", 2, "onCreate");
-    }
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatingScreenPlugin", 2, "onDestroy");
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    if (paramInt2 > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.a = bool;
+      return;
     }
   }
 }

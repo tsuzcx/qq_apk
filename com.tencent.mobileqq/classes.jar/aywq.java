@@ -1,24 +1,68 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.olympic.OlympicManager;
+import com.tencent.mobileqq.olympic.ShuayishuaConfig;
+import com.tencent.mobileqq.olympic.TorchInfo;
 import com.tencent.qphone.base.util.QLog;
 
-class aywq
-  extends ayln
+public class aywq
+  extends aywr
 {
-  aywq(aywp paramaywp) {}
+  public aywq(OlympicManager paramOlympicManager) {}
   
-  public void a(boolean paramBoolean, String paramString, PersonalityLabel paramPersonalityLabel, byte[] paramArrayOfByte, int paramInt)
+  public void a(boolean paramBoolean, int paramInt1, TorchInfo paramTorchInfo, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfilePersonalityLabelComponent", 2, String.format("onGetPersonalityLabel isSuccess=%s uin=%s flag=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString, Integer.valueOf(paramInt) }));
-    }
-    if ((((aymg)aywp.a(this.a)).jdField_a_of_type_ComTencentMobileqqDataCard != null) && (TextUtils.equals(paramString, ((aymg)aywp.b(this.a)).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)) && (paramInt == 0))
+    if (QLog.isColorLevel())
     {
-      ((aymg)aywp.c(this.a)).jdField_a_of_type_ComTencentMobileqqDataCard.personalityLabel = paramPersonalityLabel;
-      ((aymg)aywp.d(this.a)).jdField_a_of_type_ComTencentMobileqqDataCard.vPersonalityLabelV2 = paramArrayOfByte;
-      aywp.a(this.a, ((aymg)aywp.e(this.a)).jdField_a_of_type_ComTencentMobileqqDataCard, true);
+      OlympicManager localOlympicManager = this.a;
+      QLog.i("OlympicManager", 2, "onGetMyTorchInfo.isSuccess=" + paramBoolean + ",errCode=" + paramInt1 + ",errStr=,info=" + paramTorchInfo);
     }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, String paramString, byte[] paramArrayOfByte, TorchInfo paramTorchInfo)
+  {
+    if (QLog.isColorLevel())
+    {
+      OlympicManager localOlympicManager = this.a;
+      QLog.i("OlympicManager", 2, "onCollectTorch.isSuccess=" + paramBoolean + ",errCode=" + paramInt + ",errStr=" + paramString + ",sig=" + paramArrayOfByte + ",info=" + paramTorchInfo);
+    }
+    OlympicManager.a(this.a, false);
+    if (paramBoolean)
+    {
+      OlympicManager.a(this.a, paramArrayOfByte);
+      if (paramInt == 0)
+      {
+        bdla.b(this.a.a, "CliOper", "", "", "0X80069C8", "0X80069C8", 0, 0, "", "", "", "");
+        this.a.a(1);
+        this.a.a(paramTorchInfo);
+        OlympicManager.b(this.a).obtainMessage(6).sendToTarget();
+        OlympicManager.b(this.a).obtainMessage(5).sendToTarget();
+        paramArrayOfByte = Long.valueOf(-1L);
+        paramString = paramArrayOfByte;
+        if (OlympicManager.a(this.a) != null)
+        {
+          paramString = paramArrayOfByte;
+          if (OlympicManager.a(this.a).type == 2) {
+            paramString = Long.valueOf(OlympicManager.a(this.a).uiBegin);
+          }
+        }
+        OlympicManager.a(this.a).obtainMessage(7, paramString).sendToTarget();
+      }
+    }
+    else
+    {
+      return;
+    }
+    if (paramInt == 1)
+    {
+      this.a.a(1);
+      OlympicManager.b(this.a).obtainMessage(6).sendToTarget();
+      OlympicManager.b(this.a).obtainMessage(5).sendToTarget();
+      return;
+    }
+    OlympicManager.b(this.a, false);
+    OlympicManager.b(this.a, null);
+    OlympicManager.a(this.a, 0);
   }
 }
 

@@ -1,20 +1,42 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetCollectListEventReceiver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class xzi
-  extends SimpleJob<Object>
+public class xzi
+  extends QQUIEventReceiver<xzg, wqc>
 {
-  xzi(xzd paramxzd, String paramString1, String paramString2, int paramInt1, int paramInt2, String[] paramArrayOfString)
+  public xzi(@NonNull xzg paramxzg)
   {
-    super(paramString1);
+    super(paramxzg);
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(@NonNull xzg paramxzg, @NonNull wqc paramwqc)
   {
-    xwa.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
-    return null;
+    if (paramwqc.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      ykq.b("Q.qqstory.memories.MemoriesProfilePresenter", "update video total count. %d.", Integer.valueOf(paramwqc.jdField_a_of_type_Int));
+      if ((TextUtils.isEmpty(paramwqc.b)) || (paramwqc.b.equals(paramxzg.jdField_a_of_type_JavaLangString))) {
+        break label49;
+      }
+    }
+    label49:
+    do
+    {
+      return;
+      if (paramwqc.jdField_a_of_type_Int != -1) {
+        xzg.a(paramxzg, paramwqc.jdField_a_of_type_Int);
+      }
+    } while (paramxzg.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem == null);
+    paramxzg.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.videoCount = xzg.a(paramxzg);
+    ThreadManager.post(new MemoriesProfilePresenter.GetCollectListEventReceiver.1(this, paramxzg), 5, null, false);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wqc.class;
   }
 }
 

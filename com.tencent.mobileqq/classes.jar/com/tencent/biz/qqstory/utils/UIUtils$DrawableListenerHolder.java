@@ -5,8 +5,8 @@ import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.DownloadListener;
 import com.tencent.image.URLDrawable.URLDrawableListener;
 import java.net.URL;
-import xvv;
-import xwa;
+import ykq;
+import ykv;
 
 class UIUtils$DrawableListenerHolder
   implements URLDrawable.DownloadListener, URLDrawable.URLDrawableListener
@@ -49,33 +49,33 @@ class UIUtils$DrawableListenerHolder
   {
     long l1 = SystemClock.uptimeMillis();
     long l2 = this.startTime;
-    xwa.b(OP_TYPE, this.op_name, 0, this.result, new String[] { String.valueOf(this.fileSize), String.valueOf(l1 - l2), String.valueOf(this.errorCode), this.url });
+    ykv.b(OP_TYPE, this.op_name, 0, this.result, new String[] { String.valueOf(this.fileSize), String.valueOf(l1 - l2), String.valueOf(this.errorCode), this.url });
   }
   
   public void onFileDownloadFailed(int paramInt)
   {
     this.result |= DOWNLOAD_FAIL;
     this.errorCode = paramInt;
-    xvv.a("Q.qqstory.UIUtils", "onFileDownloadFailed() %s, error(%d), %s, %d", this.url, Integer.valueOf(paramInt), this.drawable, Integer.valueOf(System.identityHashCode(this)));
+    ykq.a("Q.qqstory.UIUtils", "onFileDownloadFailed() %s, error(%d), %s, %d", this.url, Integer.valueOf(paramInt), this.drawable, Integer.valueOf(System.identityHashCode(this)));
   }
   
   public void onFileDownloadStarted()
   {
     this.startTime = SystemClock.uptimeMillis();
-    xvv.a("Q.qqstory.UIUtils", "onFileDownloadStarted() %s, %s, %d", this.url, this.drawable, Integer.valueOf(System.identityHashCode(this)));
+    ykq.a("Q.qqstory.UIUtils", "onFileDownloadStarted() %s, %s, %d", this.url, this.drawable, Integer.valueOf(System.identityHashCode(this)));
   }
   
   public void onFileDownloadSucceed(long paramLong)
   {
     this.result |= DOWNLOAD_SUCCESS;
     this.fileSize = paramLong;
-    xvv.a("Q.qqstory.UIUtils", "onFileDownloadSucceed() %s, %d, %s, %d", this.url, Long.valueOf(paramLong), this.drawable, Integer.valueOf(System.identityHashCode(this)));
+    ykq.a("Q.qqstory.UIUtils", "onFileDownloadSucceed() %s, %d, %s, %d", this.url, Long.valueOf(paramLong), this.drawable, Integer.valueOf(System.identityHashCode(this)));
   }
   
   public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
     this.result |= LOAD_CANCEL;
-    xvv.a("Q.qqstory.UIUtils", "onLoadCanceled() %s, %s, %d", this.url, this.drawable, Integer.valueOf(System.identityHashCode(this)));
+    ykq.a("Q.qqstory.UIUtils", "onLoadCanceled() %s, %s, %d", this.url, this.drawable, Integer.valueOf(System.identityHashCode(this)));
     doReport();
     this.loadCancelTime += 1;
     this.monitor.remove(this);
@@ -84,7 +84,7 @@ class UIUtils$DrawableListenerHolder
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
     this.result |= LOAD_FAIL;
-    xvv.a("Q.qqstory.UIUtils", "onLoadFialed() %s, %s, %d", this.url, this.drawable, Integer.valueOf(System.identityHashCode(this)));
+    ykq.a("Q.qqstory.UIUtils", "onLoadFialed() %s, %s, %d", this.url, this.drawable, Integer.valueOf(System.identityHashCode(this)));
     doReport();
     this.loadFailTime += 1;
     this.monitor.remove(this);
@@ -92,13 +92,13 @@ class UIUtils$DrawableListenerHolder
   
   public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
   {
-    xvv.a("Q.qqstory.UIUtils", "onLoadProgressed(%d/10000%%) %s, %s, %d", Integer.valueOf(paramInt), this.url, this.drawable, Integer.valueOf(System.identityHashCode(this)));
+    ykq.a("Q.qqstory.UIUtils", "onLoadProgressed(%d/10000%%) %s, %s, %d", Integer.valueOf(paramInt), this.url, this.drawable, Integer.valueOf(System.identityHashCode(this)));
   }
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
     this.result |= LOAD_SUCCESS;
-    xvv.a("Q.qqstory.UIUtils", "onLoadSuccessed() %s, %s, %d", this.url, this.drawable, Integer.valueOf(System.identityHashCode(this)));
+    ykq.a("Q.qqstory.UIUtils", "onLoadSuccessed() %s, %s, %d", this.url, this.drawable, Integer.valueOf(System.identityHashCode(this)));
     doReport();
     this.loadSuccessTime += 1;
     this.monitor.remove(this);

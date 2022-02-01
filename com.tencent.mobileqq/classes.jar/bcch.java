@@ -1,21 +1,29 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.startup.step.SetSplash;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.fragment.GroupSearchFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class bcch
-  extends AnimatorListenerAdapter
+public class bcch
+  implements View.OnClickListener
 {
-  public bcch(bccr parambccr) {}
+  public bcch(GroupSearchFragment paramGroupSearchFragment) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    super.onAnimationEnd(paramAnimator);
-    SetSplash.a(this.a);
+    this.a.c = 1;
+    if (UniteSearchActivity.a(GroupSearchFragment.b(this.a), GroupSearchFragment.a(this.a))) {
+      this.a.c = 1;
+    }
+    this.a.h();
+    this.a.b.setVisibility(8);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcch
  * JD-Core Version:    0.7.0.1
  */

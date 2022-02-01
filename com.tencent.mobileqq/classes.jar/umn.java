@@ -1,14 +1,19 @@
-import UserGrowth.stSimpleMetaComment;
-import UserGrowth.stSimpleMetaReply;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.liveroom.LiveRoomGiftCallback;
 
 class umn
-  implements zfa
+  implements LiveRoomGiftCallback
 {
-  umn(umj paramumj, stSimpleMetaComment paramstSimpleMetaComment, boolean paramBoolean, stSimpleMetaReply paramstSimpleMetaReply) {}
+  umn(umk paramumk) {}
   
-  public void a()
+  public void onCall(int paramInt, String paramString)
   {
-    umj.a(this.jdField_a_of_type_Umj, this.jdField_a_of_type_UserGrowthStSimpleMetaComment, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_UserGrowthStSimpleMetaReply);
+    if (paramInt == 7)
+    {
+      QLog.d("ReadInJoySuperMaskAd", 2, "Vpng play completion!");
+      umk.a(this.a).sendEmptyMessage(2);
+    }
   }
 }
 

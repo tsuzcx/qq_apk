@@ -1,175 +1,83 @@
-import android.text.TextUtils;
+import android.animation.Animator;
+import android.animation.ValueAnimator;
+import android.view.View;
+import android.view.ViewPropertyAnimator;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.video.player.ReadInjoyPlayer.2;
-import com.tencent.biz.pubaccount.readinjoy.video.player.ReadInjoyPlayer.4;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class sgs
-  extends sgn
-  implements sgr, sgv
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/VideoColumnBannerManager$performAnim$1$2", "Lcom/tencent/mobileqq/activity/richmedia/AnimatorAdapter;", "onAnimationEnd", "", "animator", "Landroid/animation/Animator;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class sgs
+  extends alob
 {
-  private int jdField_a_of_type_Int;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private final String jdField_a_of_type_JavaLangString = "ReadInjoyPlayer<" + Integer.toHexString(hashCode()) + ">";
-  public sgu a;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
-  private String d;
+  sgs(swr paramswr, ValueAnimator paramValueAnimator) {}
   
-  public sgs(int paramInt)
+  public void onAnimationEnd(@Nullable Animator paramAnimator)
   {
-    this(paramInt, null, false);
-  }
-  
-  public sgs(int paramInt, String paramString, boolean paramBoolean)
-  {
-    super(BaseApplicationImpl.getContext(), paramString, paramBoolean);
-    this.jdField_a_of_type_Sgu = new sgu(paramInt, this);
-    a(this.jdField_a_of_type_Sgu);
-    a(this);
-  }
-  
-  private void a(String paramString, long paramLong)
-  {
-    if (paramString == null) {
-      return;
+    paramAnimator = this.jdField_a_of_type_Swr.b();
+    if (paramAnimator != null) {
+      paramAnimator.setTextColor(-16578534);
     }
-    a(paramString, 1, paramLong);
-  }
-  
-  private void a(String paramString, long paramLong, int paramInt)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
+    paramAnimator = this.jdField_a_of_type_Swr.c();
+    if (paramAnimator != null) {
+      paramAnimator.setTextColor(-16578534);
     }
-    a(paramString, 101, paramLong, paramInt);
-  }
-  
-  private boolean a(String paramString1, String paramString2)
-  {
-    boolean bool1 = TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString);
-    boolean bool2 = TextUtils.isEmpty(this.c);
-    int i;
-    int j;
-    if ((!bool1) || (!bool2))
+    paramAnimator = this.jdField_a_of_type_Swr.a;
+    if (paramAnimator != null)
     {
-      i = 1;
-      if ((!bool1) && (!this.jdField_b_of_type_JavaLangString.equals(paramString1))) {
-        break label89;
-      }
-      j = 1;
-      label49:
-      if ((!bool2) && (!this.c.equals(paramString2))) {
-        break label95;
+      paramAnimator = paramAnimator.a;
+      if (paramAnimator != null)
+      {
+        paramAnimator = paramAnimator.a;
+        if ((paramAnimator != null) && (paramAnimator.a == true)) {
+          six.a((View)this.jdField_a_of_type_Swr.c(), 0, (int)200L);
+        }
       }
     }
-    label89:
-    label95:
-    for (int k = 1;; k = 0)
+    for (;;)
     {
-      if ((i == 0) || (j == 0) || (k == 0)) {
-        break label101;
+      six.a((View)this.jdField_a_of_type_Swr.b(), 8, (int)200L);
+      six.a((View)this.jdField_a_of_type_Swr.c(), 0, (int)200L);
+      six.a((View)this.jdField_a_of_type_Swr.d(), 0, (int)200L);
+      six.a((View)this.jdField_a_of_type_Swr.e(), 0, (int)200L);
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+      return;
+      paramAnimator = this.jdField_a_of_type_Swr.f();
+      if (paramAnimator != null) {
+        paramAnimator.setVisibility(0);
       }
-      return true;
-      i = 0;
-      break;
-      j = 0;
-      break label49;
-    }
-    label101:
-    return false;
-  }
-  
-  private void b(String paramString, long paramLong, int paramInt)
-  {
-    if (paramString == null) {
-      return;
-    }
-    sjo.a().a(paramString, new sgt(this, paramString, paramLong, paramInt));
-  }
-  
-  private void c(String paramString, long paramLong, int paramInt)
-  {
-    if (paramString == null) {
-      return;
-    }
-    a(paramString, paramString, 101, paramLong, paramInt);
-  }
-  
-  private void n() {}
-  
-  public void a(int paramInt1, String paramString1, String paramString2, long paramLong, int paramInt2)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.c = paramString2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "openByBusiType: vid=" + paramString1 + ", url=" + paramString2 + ", busiType=" + paramInt1);
-    }
-    if (sgk.a(paramInt1))
-    {
-      a(paramString1, paramLong);
-      return;
-    }
-    if ((paramInt1 == 2) || ((paramInt1 == 6) && (!TextUtils.isEmpty(paramString1))))
-    {
-      b(paramString1, paramLong, paramInt2);
-      return;
-    }
-    if (paramInt1 == 5)
-    {
-      c(paramString1, paramLong, paramInt2);
-      return;
-    }
-    a(paramString2, paramLong, paramInt2);
-  }
-  
-  public void a(String paramString)
-  {
-    this.d = paramString;
-    if (h()) {
-      rwv.a(new ReadInjoyPlayer.2(this));
+      paramAnimator = this.jdField_a_of_type_Swr.f();
+      if (paramAnimator != null) {
+        paramAnimator.setScaleX(0.0F);
+      }
+      paramAnimator = this.jdField_a_of_type_Swr.f();
+      if (paramAnimator != null) {
+        paramAnimator.setScaleY(0.0F);
+      }
+      paramAnimator = this.jdField_a_of_type_Swr.f();
+      if (paramAnimator != null)
+      {
+        paramAnimator = paramAnimator.animate();
+        if (paramAnimator != null)
+        {
+          paramAnimator = paramAnimator.scaleX(1.0F);
+          if (paramAnimator != null)
+          {
+            paramAnimator = paramAnimator.scaleY(1.0F);
+            if (paramAnimator != null)
+            {
+              paramAnimator = paramAnimator.setDuration(200L);
+              if (paramAnimator != null) {
+                paramAnimator.start();
+              }
+            }
+          }
+        }
+      }
     }
   }
-  
-  public void a(rdt paramrdt)
-  {
-    paramrdt.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    paramrdt.j = b();
-    paramrdt.k = c();
-  }
-  
-  public void onBufferEnd() {}
-  
-  public void onBufferStart() {}
-  
-  public void onCompletion() {}
-  
-  public void onFirstFrameRendered() {}
-  
-  public void onProgressChanged(long paramLong)
-  {
-    rwv.a(new ReadInjoyPlayer.4(this));
-  }
-  
-  public void onVideoEnd(int paramInt) {}
-  
-  public void onVideoError(int paramInt1, int paramInt2, String paramString) {}
-  
-  public void onVideoOpen() {}
-  
-  public void onVideoPause() {}
-  
-  public void onVideoPrepared() {}
-  
-  public void onVideoRestart() {}
-  
-  public void onVideoStart() {}
-  
-  public void onVideoStop() {}
 }
 
 

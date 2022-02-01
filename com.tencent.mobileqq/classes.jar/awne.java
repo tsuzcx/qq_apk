@@ -1,8 +1,38 @@
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
 
-public abstract interface awne
+public class awne
+  implements Animator.AnimatorListener
 {
-  public abstract void a(List<awnf> paramList, boolean paramBoolean);
+  public awne(PoiSlideBottomPanel paramPoiSlideBottomPanel) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    PoiSlideBottomPanel.h(this.a, false);
+    PoiSlideBottomPanel.i(this.a, false);
+    PoiSlideBottomPanel.j(this.a, false);
+    if (PoiSlideBottomPanel.k(this.a) != null) {
+      PoiSlideBottomPanel.l(this.a).hidePanelFinish();
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    PoiSlideBottomPanel.e(this.a, false);
+    PoiSlideBottomPanel.f(this.a, false);
+    PoiSlideBottomPanel.g(this.a, false);
+    if (PoiSlideBottomPanel.i(this.a) != null) {
+      PoiSlideBottomPanel.j(this.a).hidePanelFinish();
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    PoiSlideBottomPanel.d(this.a, true);
+  }
 }
 
 

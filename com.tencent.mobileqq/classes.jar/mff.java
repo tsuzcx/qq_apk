@@ -1,47 +1,65 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class mff
-  implements mho
+  extends lee
 {
-  public mff(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion, long paramLong) {}
+  public mff(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  public void a()
+  protected void a(long paramLong, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.j = true;
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.M();
+    long l = AudioHelper.b();
+    QLog.w(this.a.jdField_b_of_type_JavaLangString, 1, "onDestroyInviteUI, groupId[" + paramLong + "], reason[" + paramInt + "], mIsDoubleVideoMeeting[" + this.a.jdField_a_of_type_Boolean + "], mPeerUin[" + this.a.c + "], mGroupId[" + this.a.jdField_a_of_type_Long + "], seq[" + l + "]");
+    if (this.a.jdField_a_of_type_Boolean) {
+      if (TextUtils.equals(this.a.c, String.valueOf(paramLong)))
+      {
+        this.a.b("onDestroyInviteUI_DoubleVideoMeeting");
+        this.a.a(l, paramInt);
+      }
+    }
+    while ((this.a.jdField_a_of_type_Long != paramLong) && (0L != paramLong)) {
+      return;
+    }
+    this.a.b("onDestroyInviteUI");
   }
   
-  public void b()
+  protected void a(long paramLong, String paramString)
   {
-    lez locallez = this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.a();
-    if (locallez != null)
-    {
-      lba.g(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.d, " TYPE_NOTIFY_CAMERA_CLOSE 2: " + locallez.j + "|" + locallez.d);
-      if (locallez.j) {
-        this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.b.update(null, new Object[] { Integer.valueOf(106), Long.valueOf(this.jdField_a_of_type_Long) });
-      }
+    if ((this.a.jdField_a_of_type_Long == paramLong) && (this.a.e.equals(paramString))) {
+      this.a.finish();
     }
-    MultiVideoCtrlLayerUI4Discussion.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion, this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.d(true);
-    bcef.b(null, "CliOper", "", "", "0X8004CF2", "0X8004CF2", 0, 0, "", "", "", "");
-    if (((this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.f == 90) || (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.f == 270)) && (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.a().b() != -1) && (((lno)this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.a().c.get(0)).a == 1)) {
-      bcef.b(null, "CliOper", "", "", "0X8004CFB", "0X8004CFB", 0, 0, "", "", "", "");
+  }
+  
+  protected void b(long paramLong1, long paramLong2, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_b_of_type_JavaLangString + ".troopgroup_vedio.invite", 2, "groupId:" + paramLong1 + ", memUin:" + paramLong2 + ",invitedId:" + paramString + ", mInviterUin:" + this.a.jdField_b_of_type_Long + ", mGroupId:" + this.a.jdField_a_of_type_Long);
     }
-    for (;;)
+    if ((paramLong2 == this.a.jdField_b_of_type_Long) && (paramLong1 == this.a.jdField_a_of_type_Long)) {
+      this.a.finish();
+    }
+  }
+  
+  protected void d(long paramLong)
+  {
+    this.a.b("notifyCloseAllGroupVideoInviteMsgBox");
+    this.a.finish();
+  }
+  
+  protected void e(long paramLong)
+  {
+    if (this.a.jdField_a_of_type_Long == paramLong)
     {
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.j = false;
-      return;
-      if (((this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.f == 90) || (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.f == 270)) && (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.a().b() != -1) && (((lno)this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.a().c.get(0)).a == 2)) {
-        bcef.b(null, "CliOper", "", "", "0X8004CFC", "0X8004CFC", 0, 0, "", "", "", "");
-      }
+      this.a.b("notifyCloseGroupVideoInviteMsgBox");
+      this.a.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mff
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,46 @@
-import java.nio.ByteBuffer;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.TransferRequest;
+import java.util.Map;
 
 public class wwo
+  extends wxz
 {
-  int jdField_a_of_type_Int;
-  public long a;
-  ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
-  public boolean a;
-  public boolean b;
+  private String a;
   
   public wwo()
   {
-    a();
+    a(false, true);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaNioByteBuffer = null;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
+    QQStoryContext.a();
+    QQAppInterface localQQAppInterface = QQStoryContext.a();
+    TransFileController localTransFileController = localQQAppInterface.getTransFileController();
+    TransferRequest localTransferRequest = new TransferRequest();
+    localTransferRequest.mUpCallBack = new wwp(this);
+    localTransferRequest.mLocalPath = this.a;
+    localTransferRequest.mIsUp = true;
+    localTransferRequest.mFileType = 196610;
+    localTransferRequest.mSelfUin = localQQAppInterface.getCurrentUin();
+    localTransferRequest.mPeerUin = "";
+    localTransferRequest.mUniseq = (System.currentTimeMillis() + (Math.random() * 10000.0D));
+    localTransFileController.transferAsync(localTransferRequest);
   }
   
-  public String toString()
+  protected void a(Map<String, Object> paramMap)
   {
-    return "FrameInfo{buffer=" + this.jdField_a_of_type_Int + ", data=" + this.jdField_a_of_type_JavaNioByteBuffer + ", presentationTimeUs=" + this.jdField_a_of_type_Long + ", endOfStream=" + this.jdField_a_of_type_Boolean + ", representationChanged=" + this.b + '}';
+    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("UploadImageJob_in_image_file_path"))) {
+      this.a = ((String)a("UploadImageJob_in_image_file_path"));
+    }
+  }
+  
+  public boolean a()
+  {
+    return !TextUtils.isEmpty(this.a);
   }
 }
 

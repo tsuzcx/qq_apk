@@ -1,56 +1,73 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.ThreadPoolParams;
-import java.util.concurrent.Executor;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
 
-public class avwj
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/intervideo/now/webplugin/AudioRoomSettingHandler;", "", "()V", "ACT_GET_TMP_MSG_PUSH_SETTING", "", "ACT_SET_TMP_MSG_PUSH_SETTING", "TAG", "", "handleGetTmpMsgPushSetting", "", "plugin", "Lcom/tencent/mobileqq/intervideo/now/NowWebViewPlugin;", "reqJson", "Lorg/json/JSONObject;", "callback", "handleRequest", "args", "", "(Lcom/tencent/mobileqq/intervideo/now/NowWebViewPlugin;[Ljava/lang/String;)V", "handleSetTmpMsgPushSetting", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class avwj
 {
-  private static avwj jdField_a_of_type_Avwj;
-  private Executor jdField_a_of_type_JavaUtilConcurrentExecutor;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  public static final avwj a = new avwj();
   
-  private avwj()
+  private final void a(avut paramavut, JSONObject paramJSONObject, String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentExecutor == null)
-    {
-      int i = Runtime.getRuntime().availableProcessors();
-      ThreadPoolParams localThreadPoolParams = new ThreadPoolParams();
-      localThreadPoolParams.corePoolsize = i;
-      localThreadPoolParams.maxPooolSize = i;
-      localThreadPoolParams.priority = 5;
-      localThreadPoolParams.poolThreadName = "msgbackup_Tranport_Executor";
-      this.jdField_a_of_type_JavaUtilConcurrentExecutor = ThreadManager.newFreeThreadPool(localThreadPoolParams);
-    }
+    paramavut.a().a((short)-23161, (aaea)new avwk(paramavut, paramString));
   }
   
-  public static avwj a()
+  @JvmStatic
+  public static final void a(@NotNull avut paramavut, @NotNull String[] paramArrayOfString)
   {
-    try
+    Intrinsics.checkParameterIsNotNull(paramavut, "plugin");
+    Intrinsics.checkParameterIsNotNull(paramArrayOfString, "args");
+    for (;;)
     {
-      if (jdField_a_of_type_Avwj == null) {
-        jdField_a_of_type_Avwj = new avwj();
+      String str;
+      try
+      {
+        paramArrayOfString = new JSONObject(paramArrayOfString[0]);
+        str = paramArrayOfString.optString("callback");
+        int i = paramArrayOfString.optInt("act", -1);
+        switch (i)
+        {
+        case 1: 
+          QLog.w("AudioRoomSettingHandler", 1, "unknown action: " + i);
+          return;
+        }
       }
-      avwj localavwj = jdField_a_of_type_Avwj;
-      return localavwj;
-    }
-    finally {}
-  }
-  
-  public void a()
-  {
-    avwu.a("MsgBackupMsgBackupTransportExecutor", "msgbackup destroy-------------> destroyed = " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get(), new Object[0]);
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      catch (Exception paramavut)
+      {
+        QLog.w("AudioRoomSettingHandler", 1, "handleRequest catch: " + paramavut);
+        return;
+      }
+      avwj localavwj = a;
+      Intrinsics.checkExpressionValueIsNotNull(str, "callback");
+      localavwj.a(paramavut, paramArrayOfString, str);
+      return;
+      localavwj = a;
+      Intrinsics.checkExpressionValueIsNotNull(str, "callback");
+      localavwj.b(paramavut, paramArrayOfString, str);
       return;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
   }
   
-  public void a(Runnable paramRunnable)
+  private final void b(avut paramavut, JSONObject paramJSONObject, String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentExecutor == null) {
-      avwu.a("MsgBackupMsgBackupTransportExecutor", "thread pool is destroyed!", new Object[0]);
+    boolean bool = false;
+    int i = paramJSONObject.optInt("pushSwitch", -1);
+    QLog.i("AudioRoomSettingHandler", 1, "handleSetTmpMsgPushSetting request: toStatus=" + i);
+    if ((i != 0) && (i != 1))
+    {
+      paramJSONObject = new JSONObject();
+      paramJSONObject.put("result", "fail");
+      paramavut.callJs(paramString, new String[] { paramJSONObject.toString() });
+      return;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(paramRunnable);
+    paramJSONObject = paramavut.a();
+    if (i == 1) {
+      bool = true;
+    }
+    paramJSONObject.a((short)-23161, bool, (aaea)new avwl(i, paramavut, paramString));
   }
 }
 

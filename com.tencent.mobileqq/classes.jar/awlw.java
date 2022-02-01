@@ -1,17 +1,35 @@
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.21.1.1;
-import java.util.List;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public class awlw
-  implements awne
+class awlw
+  extends aofu
 {
-  awlw(awlv paramawlv) {}
+  awlw(awlt paramawlt) {}
   
-  public void a(List<awnf> paramList, boolean paramBoolean)
+  protected void onPassiveExit(String paramString, int paramInt)
   {
-    this.a.a.b = paramList;
-    this.a.a.g = paramBoolean;
-    this.a.a.runOnUiThread(new GameRoomInviteActivity.21.1.1(this, paramList, paramBoolean));
+    super.onPassiveExit(paramString, paramInt);
+    if ((awlt.a(this.a).a() == 1) && (awlt.a(this.a).a().equals(paramString)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationShareController", 2, new Object[] { "onPassiveExit: invoked. ", " troopUin: ", paramString });
+      }
+      if (awlt.a(this.a) != null)
+      {
+        awlt.a(this.a).finish();
+        QQToast.a(awlt.a(this.a), 2131693012, 1).a();
+      }
+      awlt.a(awlt.a(this.a), 1, paramString);
+    }
+  }
+  
+  protected void onTroopManagerSuccess(int paramInt1, int paramInt2, String paramString)
+  {
+    super.onTroopManagerSuccess(paramInt1, paramInt2, paramString);
+    if (((paramInt1 == 2) || (paramInt1 == 9)) && (paramInt2 == 0)) {
+      awlt.a(awlt.a(this.a), 1, paramString);
+    }
   }
 }
 

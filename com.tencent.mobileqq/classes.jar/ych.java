@@ -1,16 +1,11 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import java.util.ArrayList;
+import java.util.List;
 
-class ych
-  implements ValueAnimator.AnimatorUpdateListener
+public class ych
 {
-  ych(ycg paramycg) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.p = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.b.g();
-  }
+  public List<ycc> a = new ArrayList(0);
+  public boolean a;
+  public boolean b;
 }
 
 

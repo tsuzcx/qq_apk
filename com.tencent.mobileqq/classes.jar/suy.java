@@ -1,23 +1,14 @@
-import android.content.Context;
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AuthorData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
 class suy
-  implements svf
+  implements DialogInterface.OnCancelListener
 {
-  suy(sup paramsup) {}
+  suy(suw paramsuw) {}
   
-  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((paramProteusItemData instanceof AuthorData))
-    {
-      ((AuthorData)paramProteusItemData).b(false);
-      if (suo.a(this.a.a) != null) {
-        suo.a(this.a.a).notifyDataSetChanged();
-      }
-    }
+    suw.a(this.a, -1, -1, true);
   }
 }
 

@@ -1,12 +1,35 @@
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.view.View;
+
+@TargetApi(14)
 public class yqt
 {
-  public long a;
-  public long b;
-  
-  public yqt(long paramLong1, long paramLong2)
+  public static float a(View paramView)
   {
-    this.a = paramLong1;
-    this.b = paramLong2;
+    if (paramView == null) {}
+    while (Build.VERSION.SDK_INT < 11) {
+      return 0.0F;
+    }
+    return paramView.getX();
+  }
+  
+  public static void a(View paramView, float paramFloat)
+  {
+    if (paramView == null) {}
+    while (Build.VERSION.SDK_INT < 11) {
+      return;
+    }
+    paramView.setAlpha(paramFloat);
+  }
+  
+  public static float b(View paramView)
+  {
+    if (paramView == null) {}
+    while (Build.VERSION.SDK_INT < 11) {
+      return 0.0F;
+    }
+    return paramView.getY();
   }
 }
 

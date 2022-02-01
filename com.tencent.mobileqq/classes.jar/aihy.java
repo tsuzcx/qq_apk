@@ -1,20 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 class aihy
-  implements View.OnClickListener
+  implements URLDrawable.URLDrawableListener
 {
-  aihy(aihx paramaihx) {}
+  aihy(aihw paramaihw) {}
   
-  public void onClick(View paramView)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    RecommendTroopItem localRecommendTroopItem = (RecommendTroopItem)paramView.getTag(-1);
-    TroopUtils.joinRecommendTroop(aihx.a(this.a), localRecommendTroopItem, this.a.a());
-    this.a.b(localRecommendTroopItem);
-    EventCollector.getInstance().onViewClicked(paramView);
+    aihw.a(this.a).remove(paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerRecBarAdapter", 2, "firstDrawableListener onLoadCanceled");
+    }
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    aihw.a(this.a, paramURLDrawable);
+    aihw.a(this.a).remove(paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerRecBarAdapter", 2, "firstDrawableListener onLoadFialed");
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    long l1 = System.currentTimeMillis();
+    long l2 = aihw.a(this.a);
+    aihw.a(this.a, paramURLDrawable, l1 - l2);
+    aihw.a(this.a, true);
+    aihw.a(this.a).remove(paramURLDrawable);
+    this.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerRecBarAdapter", 2, "firstDrawableListener downloadSuccess");
+    }
   }
 }
 

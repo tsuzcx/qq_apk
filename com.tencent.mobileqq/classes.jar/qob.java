@@ -1,21 +1,36 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class qob
+class qob
+  implements ViewBase.OnClickListener
 {
-  public static void a(String paramString1, String paramString2)
-  {
-    a("0X800A833", "", "", "", new qoc().a("type", paramString2).a("msg", paramString1).a());
-  }
+  qob(qnw paramqnw, qfw paramqfw, int paramInt, BaseArticleInfo paramBaseArticleInfo) {}
   
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public void onClick(ViewBase paramViewBase)
   {
-    QLog.i("PTSReport", 1, "[reportData], actionName = " + paramString1 + ", r2 = " + paramString2 + ", r3 = " + paramString3 + ", r4 = " + paramString4 + ", r5 = " + paramString5);
-    odq.a(null, "", paramString1, paramString1, 0, 0, paramString2, paramString3, paramString4, paramString5, false);
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    a("0X800A832", "", "", "", new qoc().a("type", paramString2).a("msg", paramString1).a());
+    EventCollector.getInstance().onViewClicked(paramViewBase.getNativeView());
+    TemplateBean localTemplateBean2 = this.jdField_a_of_type_Qfw.a().mProteusTemplateBean;
+    TemplateBean localTemplateBean1 = localTemplateBean2;
+    if (localTemplateBean2 == null) {
+      localTemplateBean1 = piv.a(this.jdField_a_of_type_Qfw.a(), this.jdField_a_of_type_Int, this.jdField_a_of_type_Qfw.a());
+    }
+    if (localTemplateBean1 != null)
+    {
+      paramViewBase = qnw.a(this.jdField_a_of_type_Qnw, localTemplateBean1, paramViewBase);
+      if (uks.j(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo)) {
+        uks.a((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_Qfw.a().getContext(), this.jdField_a_of_type_Qfw.g());
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.jdField_a_of_type_Qfw.a().a(true, (ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, (ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.innerUniqueID, paramViewBase);
   }
 }
 

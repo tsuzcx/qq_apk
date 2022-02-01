@@ -1,27 +1,20 @@
-import android.graphics.Point;
-import com.tencent.weseevideo.camera.mvauto.redo.CutModelKt;
-import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment;
-import dov.com.qq.im.aeeditor.view.timeline.ScaleScrollLayout;
-import java.util.List;
-import org.jetbrains.annotations.Nullable;
+import android.app.Activity;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import mqq.app.QQPermissionCallback;
 
 public class bmjm
-  implements bmog
+  implements QQPermissionCallback
 {
-  public bmjm(AEEditorMultiCutEditFragment paramAEEditorMultiCutEditFragment) {}
+  public bmjm(TroopHWJsPlugin paramTroopHWJsPlugin, int paramInt, Activity paramActivity) {}
   
-  public void a(@Nullable CutModelKt paramCutModelKt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (AEEditorMultiCutEditFragment.a(this.a) != null) {}
-    for (Point localPoint = AEEditorMultiCutEditFragment.a(this.a).a();; localPoint = null)
-    {
-      if ((localPoint != null) && (paramCutModelKt != null) && (AEEditorMultiCutEditFragment.a(this.a).size() > 1))
-      {
-        AEEditorMultiCutEditFragment.a(this.a).b();
-        AEEditorMultiCutEditFragment.a(this.a).a(paramCutModelKt.getUuid(), localPoint);
-      }
-      return;
-    }
+    bhdj.a(this.jdField_a_of_type_AndroidAppActivity);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.b(this.jdField_a_of_type_Int);
   }
 }
 

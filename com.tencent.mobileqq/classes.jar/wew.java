@@ -1,55 +1,65 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqSimpleInfoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspSimpleInfoList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.util.SparseArray;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 
 public class wew
-  extends vqr
 {
-  public List<String> a = new ArrayList();
+  public static SparseArray<Class<? extends zgz>> a = new SparseArray();
+  public static SparseArray<Boolean> b = new SparseArray();
   
-  public String a()
+  static
   {
-    return vpl.a("StorySvc.get_date_video_list");
+    a.put(1, yis.class);
+    b.put(1, Boolean.valueOf(true));
+    a.put(5, yiz.class);
+    b.put(5, Boolean.valueOf(true));
   }
   
-  public vqm a(byte[] paramArrayOfByte)
+  public static zgz a(Context paramContext, int paramInt)
   {
-    qqstory_service.RspSimpleInfoList localRspSimpleInfoList = new qqstory_service.RspSimpleInfoList();
-    try
-    {
-      localRspSimpleInfoList.mergeFrom(paramArrayOfByte);
-      return new wgm(localRspSimpleInfoList);
+    Object localObject = (Class)a.get(paramInt, null);
+    Boolean localBoolean = (Boolean)b.get(paramInt, Boolean.valueOf(true));
+    if (localObject == null) {
+      throw new IllegalArgumentException(anvx.a(2131713158));
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      xvv.b("Q.qqstory.net:GetSimpleInfoListResponse", a(), paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqSimpleInfoList localReqSimpleInfoList = new qqstory_service.ReqSimpleInfoList();
-    ArrayList localArrayList = new ArrayList();
-    if (this.a != null)
-    {
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext()) {
-        localArrayList.add(ByteStringMicro.copyFromUtf8((String)localIterator.next()));
+    if (localBoolean.booleanValue()) {
+      try
+      {
+        paramContext = (zgz)((Class)localObject).getConstructor(new Class[] { Context.class }).newInstance(new Object[] { paramContext });
+        return paramContext;
+      }
+      catch (NoSuchMethodException paramContext)
+      {
+        throw new IllegalStateException(anvx.a(2131713154), paramContext);
+      }
+      catch (IllegalAccessException paramContext)
+      {
+        throw new IllegalStateException(anvx.a(2131713157), paramContext);
+      }
+      catch (InstantiationException paramContext)
+      {
+        throw new IllegalStateException(anvx.a(2131713160), paramContext);
+      }
+      catch (InvocationTargetException paramContext)
+      {
+        throw new IllegalArgumentException(anvx.a(2131713156), paramContext);
       }
     }
-    localReqSimpleInfoList.vid_list.addAll(localArrayList);
-    return localReqSimpleInfoList.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "GetSimpleInfoListResponse{vidList='" + this.a + '\'' + '}';
+    try
+    {
+      localObject = (String)((Class)localObject).getDeclaredField("KEY").get(null);
+      return new yju(paramContext, (String)localObject);
+    }
+    catch (NoSuchFieldException paramContext)
+    {
+      throw new IllegalStateException(anvx.a(2131713161), paramContext);
+    }
+    catch (IllegalAccessException paramContext)
+    {
+      throw new IllegalStateException(anvx.a(2131713155), paramContext);
+    }
   }
 }
 

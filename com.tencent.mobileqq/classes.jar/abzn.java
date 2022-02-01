@@ -1,72 +1,30 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.s2c.msgtype0x210.submsgtype0x117.submsgtype0x117.MsgBody;
+import android.content.Context;
+import android.view.View;
+import com.tencent.ad.tangram.image.AdImageViewAdapter;
+import com.tencent.ad.tangram.image.AdImageViewAdapter.Params;
+import com.tencent.gdtad.views.image.GdtGifImageView;
+import java.lang.ref.WeakReference;
 
 public class abzn
-  implements abzb
+  implements AdImageViewAdapter
 {
-  private static void a(byte[] paramArrayOfByte)
+  public View buildImageView(AdImageViewAdapter.Params paramParams)
   {
-    if (paramArrayOfByte == null) {}
-    Object localObject;
-    do
+    if ((paramParams != null) && (paramParams.isValid()))
     {
-      for (;;)
-      {
-        return;
-        localObject = new submsgtype0x117.MsgBody();
-        try
-        {
-          ((submsgtype0x117.MsgBody)localObject).mergeFrom(paramArrayOfByte);
-          paramArrayOfByte = ((submsgtype0x117.MsgBody)localObject).rpt_uint32_moudle_id.get();
-          l = ((submsgtype0x117.MsgBody)localObject).uint64_uin.get();
-          if ((paramArrayOfByte == null) || (paramArrayOfByte.size() == 0))
-          {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SuMsgType0x117 音视频测试环境push,moudleIds==null || moudleIds.size()== 0");
-          }
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-        {
-          long l;
-          for (;;)
-          {
-            paramArrayOfByte.printStackTrace();
-          }
-          localObject = new StringBuilder(amtj.a(2131706948));
-          ((StringBuilder)localObject).append(l);
-          paramArrayOfByte = paramArrayOfByte.iterator();
-          while (paramArrayOfByte.hasNext())
-          {
-            int i = ((Integer)paramArrayOfByte.next()).intValue();
-            if (i == 92) {
-              ((StringBuilder)localObject).append("|音视频");
-            } else if (i == 93) {
-              ((StringBuilder)localObject).append("|双人");
-            } else if (i == 94) {
-              ((StringBuilder)localObject).append("|多人");
-            }
-          }
-          ((StringBuilder)localObject).append("】");
-        }
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SuMsgType0x117 音视频测试环境push" + ((StringBuilder)localObject).toString());
+      WeakReference localWeakReference = new WeakReference(new abzo(this, paramParams));
+      return new GdtGifImageView((Context)paramParams.context.get(), paramParams.url, paramParams.gaussianUrl, localWeakReference, paramParams.isOnlyLoadGaussianUrl);
+    }
+    return null;
   }
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void buildImageView(AdImageViewAdapter.Params paramParams, View paramView)
   {
-    a(paramMsgType0x210.vProtobuf);
-    return null;
+    if ((paramView != null) && (paramParams != null) && (paramParams.isValid()))
+    {
+      WeakReference localWeakReference = new WeakReference(new abzp(this, paramParams));
+      ((GdtGifImageView)paramView).a(paramParams.url, localWeakReference);
+    }
   }
 }
 

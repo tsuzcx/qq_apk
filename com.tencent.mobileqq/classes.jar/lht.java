@@ -1,73 +1,77 @@
-import android.text.TextUtils;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.aekit.api.standard.ai.AIManager;
+import com.tencent.mobileqq.shortvideo.resource.PtuFilterResource;
+import com.tencent.mobileqq.shortvideo.resource.Resources;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.sveffects.SdkContext;
+import com.tencent.ttpic.openapi.ttpicmodule.module_human_segment.PTHumanSegmenter;
+import java.util.Iterator;
+import java.util.List;
 
 public class lht
-  extends lhm
 {
-  public static final String[] b = { "params.dat" };
-  
-  public lht(VideoAppInterface paramVideoAppInterface)
+  public static boolean a()
   {
-    super(paramVideoAppInterface);
-    this.c = b;
-  }
-  
-  public int a()
-  {
-    return 623;
-  }
-  
-  public lho a(int paramInt1, int paramInt2)
-  {
-    lho locallho = super.a(paramInt1, paramInt2);
-    if ((locallho != null) && (locallho.a != null) && (!locallho.a.needHMirror)) {
-      locallho.a.needHMirror = true;
-    }
-    return locallho;
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i(this.jdField_a_of_type_JavaLangString, 4, "MuteByOthers, fromMuteKey[" + paramInt + "], data[" + paramString + "]");
-    }
-    if (paramInt == b()) {
-      return;
-    }
-    a(0L, null);
-  }
-  
-  protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
-  {
-    switch (paramInt)
+    boolean bool3 = true;
+    Object localObject1 = SdkContext.getInstance().getResources().getPtuFilterResource().getSoPathDir();
+    Object localObject2 = SdkContext.getInstance().getResources().getPtuFilterResource().getPortraitPathDir();
+    boolean bool1;
+    label132:
+    long l;
+    if ((!bdee.e()) || (AIManager.installDetector(PTHumanSegmenter.class, (String)localObject2, (String)localObject1)))
     {
+      bool1 = true;
+      bool2 = lhw.a().a();
+      boolean bool4 = lhu.a();
+      if (QLog.isColorLevel()) {
+        QLog.d("PanoramaAccessManager", 2, "checkPanoramaAccessEnable portraitSo = " + bool1 + "| sensorEnable = " + bool2 + " |DPCEntry = " + bool4);
+      }
+      if ((!bool1) || (!bool2) || (!bool4)) {
+        break label279;
+      }
+      bool2 = true;
+      if (!bool2) {
+        return bool2;
+      }
+      localObject1 = lhu.a();
+      if (localObject1 == null) {
+        break label337;
+      }
+      l = lhu.a();
+      localObject1 = ((List)localObject1).iterator();
+      bool1 = false;
     }
-    do
+    label163:
+    while (((Iterator)localObject1).hasNext())
     {
-      return;
-      paramString1 = (PendantItem)a();
-    } while ((paramString1 == null) || (TextUtils.isEmpty(paramString1.getId())));
-    a(paramLong, null);
-  }
-  
-  public boolean a(long paramLong, PendantItem paramPendantItem)
-  {
-    boolean bool = super.a(paramLong, paramPendantItem);
-    if ((bool) && (paramPendantItem != null) && (!TextUtils.isEmpty(paramPendantItem.getId())) && (!TextUtils.equals("0", paramPendantItem.getId())))
-    {
-      lgn locallgn = (lgn)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(12);
-      if (locallgn != null) {
-        locallgn.a(3005, paramPendantItem.getId());
+      localObject2 = (lhv)((Iterator)localObject1).next();
+      if (localObject2 != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PanoramaAccessManager", 2, "checkPanoramaAccessEnable CPUinfo = " + ((lhv)localObject2).b + "|" + ((lhv)localObject2).a);
+        }
+        if ((bool1) || (lph.a(((lhv)localObject2).b, ((lhv)localObject2).a * 10000, l * 100000000L))) {}
+        for (bool1 = true;; bool1 = false)
+        {
+          break label163;
+          bool1 = false;
+          break;
+          bool2 = false;
+          break label132;
+        }
       }
     }
-    return bool;
-  }
-  
-  public int b()
-  {
-    return 3005;
+    label279:
+    if ((bool2) && (bool1)) {}
+    for (boolean bool2 = bool3;; bool2 = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PanoramaAccessManager", 2, "checkPanoramaAccessEnable isDeviceSupport = " + bool1);
+      }
+      return bool2;
+    }
+    label337:
+    return false;
+    return bool2;
   }
 }
 

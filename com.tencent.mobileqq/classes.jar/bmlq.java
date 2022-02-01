@@ -1,8 +1,18 @@
-import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bmlq
+class bmlq
+  implements bmmg
 {
-  public abstract void a(@Nullable bmlo parambmlo, int paramInt1, boolean paramBoolean, int paramInt2);
+  bmlq(bmlo parambmlo) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    QLog.d("VipARCameraController", 2, "loadState " + paramBoolean);
+    bmlo.b(this.a, paramBoolean);
+    if (paramBoolean) {
+      bmmb.a().a(bmlo.a(this.a));
+    }
+  }
 }
 
 

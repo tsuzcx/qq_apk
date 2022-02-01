@@ -1,38 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
+import android.text.TextPaint;
+import android.widget.Button;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 public class rir
-  extends pkt
+  implements qie
 {
-  public rir(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
+  public rir(ComponentHeaderUgc paramComponentHeaderUgc, ArticleInfo paramArticleInfo) {}
   
-  public void a(int paramInt, long paramLong, String paramString)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    if ((0L != paramLong) && (!TextUtils.isEmpty(paramString))) {
-      if ((ReadInJoyUgcSearchTopicFragment.a(this.a) != null) && (ReadInJoyUgcSearchTopicFragment.a(this.a).size() == 1))
-      {
-        TopicInfo localTopicInfo = (TopicInfo)ReadInJoyUgcSearchTopicFragment.a(this.a).get(0);
-        long l = localTopicInfo.a();
-        String str1 = localTopicInfo.a();
-        String str2 = localTopicInfo.b();
-        String str3 = localTopicInfo.c();
-        localTopicInfo.d();
-        localTopicInfo = TopicInfo.a().a(l).a("#" + str1).b(str2).c(str3).d(paramString).a();
-        ReadInJoyUgcSearchTopicFragment.a(this.a, localTopicInfo);
-        pay.a("0X800980A", ReadInJoyUgcSearchTopicFragment.a(this.a), paramLong, "1");
-        rgz.a(String.valueOf(paramLong), "1");
-      }
-    }
-    for (;;)
+    QLog.d("ComponentHeaderUgc", 2, "978 resp, result : " + paramBoolean + ", data : " + paramInt + ", distUin : " + paramString);
+    if ((paramBoolean) && (paramInt == 2))
     {
-      ReadInJoyUgcSearchTopicFragment.a(this.a, false);
-      QLog.d("ReadInJoyUgcSearchTopicFragment", 1, "handle0xc16CreateTopic, topicID:" + paramLong + "  topicUrl:" + paramString + " result:" + paramInt);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.h = paramInt;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.setEnabled(false);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.setText(anvx.a(2131701766));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.getPaint().setFakeBoldText(false);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.h = 2;
+      pvj.a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      pvj.a().c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.a, paramInt);
+      pvm.a().b();
       return;
-      this.a.a(1, this.a.getString(2131717304));
     }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.setEnabled(true);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.setText(anvx.a(2131701763));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.getPaint().setFakeBoldText(true);
+    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.getContext(), anvx.a(2131701796), 0).a();
   }
 }
 

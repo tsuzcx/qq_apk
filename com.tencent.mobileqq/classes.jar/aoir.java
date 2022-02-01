@@ -1,15 +1,24 @@
+import com.tencent.mobileqq.app.automator.step.GetSig;
+
 public class aoir
+  extends anyz
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  private aoir(GetSig paramGetSig) {}
+  
+  protected void onUpdateSendGetSig(boolean paramBoolean)
+  {
+    GetSig localGetSig = this.a;
+    if (paramBoolean) {}
+    for (int i = 7;; i = 6)
+    {
+      localGetSig.a(i);
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoir
  * JD-Core Version:    0.7.0.1
  */

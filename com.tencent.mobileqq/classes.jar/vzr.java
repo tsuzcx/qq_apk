@@ -1,23 +1,94 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgNodeShotView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class vzr
-  extends QQUIEventReceiver<vzf, vyc>
+public class vzr<T>
+  implements vzq<T>
 {
-  public vzr(@NonNull vzf paramvzf)
+  private List<T> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private final vzp<T> jdField_a_of_type_Vzp;
+  
+  public vzr(vzp<T> paramvzp)
   {
-    super(paramvzf);
+    this.jdField_a_of_type_Vzp = paramvzp;
+    this.jdField_a_of_type_Vzp.a(this);
   }
   
-  public void a(@NonNull vzf paramvzf, @NonNull vyc paramvyc)
+  /* Error */
+  public T a()
   {
-    paramvzf.a.a.d();
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 30	vzr:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   6: invokevirtual 45	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   9: ifne +17 -> 26
+    //   12: aload_0
+    //   13: getfield 23	vzr:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   16: invokeinterface 51 1 0
+    //   21: istore_1
+    //   22: iload_1
+    //   23: ifne +9 -> 32
+    //   26: aconst_null
+    //   27: astore_2
+    //   28: aload_0
+    //   29: monitorexit
+    //   30: aload_2
+    //   31: areturn
+    //   32: aload_0
+    //   33: getfield 23	vzr:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   36: iconst_0
+    //   37: invokeinterface 55 2 0
+    //   42: astore_2
+    //   43: goto -15 -> 28
+    //   46: astore_2
+    //   47: aload_0
+    //   48: monitorexit
+    //   49: aload_2
+    //   50: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	51	0	this	vzr
+    //   21	2	1	i	int
+    //   27	16	2	localObject1	Object
+    //   46	4	2	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	22	46	finally
+    //   32	43	46	finally
   }
   
-  public Class acceptEventClass()
+  public void a()
   {
-    return vyc.class;
+    try
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      this.jdField_a_of_type_Vzp.c();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(List<T> paramList)
+  {
+    if (paramList != null) {}
+    try
+    {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.jdField_a_of_type_Vzp.a();
+      return;
+    }
+    finally
+    {
+      paramList = finally;
+      throw paramList;
+    }
   }
 }
 

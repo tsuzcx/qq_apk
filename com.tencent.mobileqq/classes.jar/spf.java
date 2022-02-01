@@ -1,16 +1,24 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Queue;
 
-public class spf
-  implements ValueAnimator.AnimatorUpdateListener
+class spf
+  extends omw
 {
-  public spf(ReadinjoySlidingIndicator paramReadinjoySlidingIndicator) {}
+  private spf(spa paramspa) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    ReadinjoySlidingIndicator.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    this.a.invalidate();
+    super.a(paramBoolean, paramBundle);
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoFullPlayController", 2, "onGetRecommend:" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      paramBundle = paramBundle.getParcelableArrayList("VIDEO_RECOMMEND_LIST");
+      spa.a(this.a).addAll(spa.a(this.a).a(paramBundle));
+      this.a.f();
+    }
   }
 }
 

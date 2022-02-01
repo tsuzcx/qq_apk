@@ -1,19 +1,23 @@
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+
 public class akfr
+  extends akfg
 {
-  public String a;
-  public String b;
-  public String c;
-  
-  public akfr(akfp paramakfp, String paramString1, String paramString2, String paramString3)
+  public akfr(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    super(paramContext, paramSessionInfo, paramQQAppInterface);
+  }
+  
+  protected void y()
+  {
+    this.a = "MiniPieForNearby";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akfr
  * JD-Core Version:    0.7.0.1
  */

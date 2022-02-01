@@ -3,15 +3,11 @@ package com.tencent.av.ui;
 class DoubleVideoCtrlUI$18
   implements Runnable
 {
-  DoubleVideoCtrlUI$18(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, long paramLong) {}
+  DoubleVideoCtrlUI$18(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
   public void run()
   {
-    if (!this.this$0.h)
-    {
-      this.this$0.e(0);
-      this.this$0.C(this.a);
-    }
+    this.this$0.d(true);
   }
 }
 

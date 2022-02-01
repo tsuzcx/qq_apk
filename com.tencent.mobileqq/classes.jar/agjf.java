@@ -1,11 +1,20 @@
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import mqq.app.QQPermissionCallback;
 
 class agjf
-  extends aexg
+  implements QQPermissionCallback
 {
-  TextView b;
-  
   agjf(agje paramagje) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bhdj.a(agje.a(this.a).mActivity);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.b();
+  }
 }
 
 

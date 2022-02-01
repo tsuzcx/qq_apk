@@ -1,49 +1,31 @@
-import android.os.Bundle;
-import org.json.JSONException;
+import android.text.TextUtils;
 import org.json.JSONObject;
 
-class ufq
-  implements zop
+public class ufq
 {
-  ufq(ufd paramufd, String paramString, boolean paramBoolean) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public void callback(Bundle paramBundle)
+  public void a(JSONObject paramJSONObject)
   {
-    if (paramBundle != null)
+    if (paramJSONObject != null)
     {
-      if (this.jdField_a_of_type_Ufd.a != null) {
-        this.jdField_a_of_type_Ufd.l();
-      }
-      String str = paramBundle.getString("pic_server_id");
-      this.jdField_a_of_type_Ufd.a(paramBundle);
-      if ("-1".equals(str)) {
-        paramBundle = new JSONObject();
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("adDownloadApiUrl");
+      this.b = paramJSONObject.optString("pkg_name");
+      this.c = paramJSONObject.optString("appid");
+      this.d = paramJSONObject.optString("appname");
+      this.e = paramJSONObject.optString("pkgurl");
+      this.jdField_a_of_type_Int = paramJSONObject.optInt("business_type", 0);
+      paramJSONObject = paramJSONObject.optString("apk_url");
+      if (!TextUtils.isEmpty(paramJSONObject)) {
+        this.e = paramJSONObject;
       }
     }
-    else
-    {
-      try
-      {
-        paramBundle.put("retCode", -1);
-        paramBundle.put("msg", "fail");
-        this.jdField_a_of_type_Ufd.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
-        if (this.jdField_a_of_type_Boolean)
-        {
-          odq.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D27", "0X8005D27", 0, -1, "1", "", "", "", false);
-          return;
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
-        bcef.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D30", "0X8005D30", 0, -1, "1", "", "", "");
-        return;
-      }
-    }
-    this.jdField_a_of_type_Ufd.a(localJSONException, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
   }
 }
 

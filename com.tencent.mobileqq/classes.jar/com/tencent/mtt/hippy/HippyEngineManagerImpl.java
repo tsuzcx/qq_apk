@@ -239,32 +239,34 @@ public abstract class HippyEngineManagerImpl
     //   104: aload_0
     //   105: aload_0
     //   106: getfield 121	com/tencent/mtt/hippy/HippyEngineManagerImpl:mDebugMode	Z
-    //   109: invokespecial 399	com/tencent/mtt/hippy/HippyEngineManagerImpl$HippyEngineContextImpl:<init>	(Lcom/tencent/mtt/hippy/HippyEngineManagerImpl;Z)V
-    //   112: putfield 204	com/tencent/mtt/hippy/HippyEngineManagerImpl:mEngineContext	Lcom/tencent/mtt/hippy/HippyEngineManagerImpl$HippyEngineContextImpl;
-    //   115: aload_0
-    //   116: getfield 204	com/tencent/mtt/hippy/HippyEngineManagerImpl:mEngineContext	Lcom/tencent/mtt/hippy/HippyEngineManagerImpl$HippyEngineContextImpl;
-    //   119: invokevirtual 297	com/tencent/mtt/hippy/HippyEngineManagerImpl$HippyEngineContextImpl:getBridgeManager	()Lcom/tencent/mtt/hippy/bridge/a;
-    //   122: new 401	com/tencent/mtt/hippy/HippyEngineManagerImpl$5
-    //   125: dup
-    //   126: aload_0
-    //   127: invokespecial 404	com/tencent/mtt/hippy/HippyEngineManagerImpl$5:<init>	(Lcom/tencent/mtt/hippy/HippyEngineManagerImpl;)V
-    //   130: invokeinterface 407 2 0
-    //   135: goto -77 -> 58
-    //   138: astore_1
-    //   139: aload_0
-    //   140: monitorexit
-    //   141: aload_1
-    //   142: athrow
+    //   109: aload_0
+    //   110: getfield 141	com/tencent/mtt/hippy/HippyEngineManagerImpl:mServerHost	Ljava/lang/String;
+    //   113: invokespecial 399	com/tencent/mtt/hippy/HippyEngineManagerImpl$HippyEngineContextImpl:<init>	(Lcom/tencent/mtt/hippy/HippyEngineManagerImpl;ZLjava/lang/String;)V
+    //   116: putfield 204	com/tencent/mtt/hippy/HippyEngineManagerImpl:mEngineContext	Lcom/tencent/mtt/hippy/HippyEngineManagerImpl$HippyEngineContextImpl;
+    //   119: aload_0
+    //   120: getfield 204	com/tencent/mtt/hippy/HippyEngineManagerImpl:mEngineContext	Lcom/tencent/mtt/hippy/HippyEngineManagerImpl$HippyEngineContextImpl;
+    //   123: invokevirtual 297	com/tencent/mtt/hippy/HippyEngineManagerImpl$HippyEngineContextImpl:getBridgeManager	()Lcom/tencent/mtt/hippy/bridge/a;
+    //   126: new 401	com/tencent/mtt/hippy/HippyEngineManagerImpl$5
+    //   129: dup
+    //   130: aload_0
+    //   131: invokespecial 404	com/tencent/mtt/hippy/HippyEngineManagerImpl$5:<init>	(Lcom/tencent/mtt/hippy/HippyEngineManagerImpl;)V
+    //   134: invokeinterface 407 2 0
+    //   139: goto -81 -> 58
+    //   142: astore_1
+    //   143: aload_0
+    //   144: monitorexit
+    //   145: aload_1
+    //   146: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	143	0	this	HippyEngineManagerImpl
+    //   0	147	0	this	HippyEngineManagerImpl
     //   35	17	1	str	String
-    //   138	4	1	localObject	Object
+    //   142	4	1	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   2	58	138	finally
-    //   61	95	138	finally
-    //   95	135	138	finally
+    //   2	58	142	finally
+    //   61	95	142	finally
+    //   95	139	142	finally
   }
   
   public void destroyEngine()

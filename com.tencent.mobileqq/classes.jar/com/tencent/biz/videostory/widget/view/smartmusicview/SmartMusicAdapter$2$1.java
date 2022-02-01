@@ -1,22 +1,22 @@
 package com.tencent.biz.videostory.widget.view.smartmusicview;
 
+import aaop;
+import aaoz;
+import aapa;
+import aapc;
 import java.util.List;
-import zzd;
-import zzn;
-import zzo;
-import zzq;
 
 public class SmartMusicAdapter$2$1
   implements Runnable
 {
-  public SmartMusicAdapter$2$1(zzq paramzzq) {}
+  public SmartMusicAdapter$2$1(aapc paramaapc) {}
   
   public void run()
   {
-    if ((zzo.a(this.a.jdField_a_of_type_Zzo) != null) && (zzo.a(this.a.jdField_a_of_type_Zzo) != null))
+    if ((aapa.a(this.a.jdField_a_of_type_Aapa) != null) && (aapa.a(this.a.jdField_a_of_type_Aapa) != null))
     {
-      int i = zzo.a(this.a.jdField_a_of_type_Zzo).a() % this.a.jdField_a_of_type_Zzo.a();
-      zzo.a(this.a.jdField_a_of_type_Zzo).a((VsMusicItemInfo)zzo.a(this.a.jdField_a_of_type_Zzo).get(i), i, this.a.jdField_a_of_type_Boolean);
+      int i = aapa.a(this.a.jdField_a_of_type_Aapa).a() % this.a.jdField_a_of_type_Aapa.a();
+      aapa.a(this.a.jdField_a_of_type_Aapa).a((VsMusicItemInfo)aapa.a(this.a.jdField_a_of_type_Aapa).get(i), i, this.a.jdField_a_of_type_Boolean);
     }
   }
 }

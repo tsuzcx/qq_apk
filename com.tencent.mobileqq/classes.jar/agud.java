@@ -1,19 +1,23 @@
 import android.app.Activity;
 import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class agud
-  extends agqm
+class agud
+  implements bkzq
 {
-  agud(agua paramagua, QQAppInterface paramQQAppInterface, Activity paramActivity)
-  {
-    super(paramagua, paramQQAppInterface, paramActivity);
-  }
+  agud(agtz paramagtz, bkzi parambkzi) {}
   
-  public void a(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    super.a(paramView);
-    agua.a(this.a, true);
+    this.jdField_a_of_type_Bkzi.dismiss();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    ChatActivityUtils.a(this.jdField_a_of_type_Agtz.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Agtz.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agtz.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, this.jdField_a_of_type_Agtz.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, true, true, null, null);
+    bdla.b(this.jdField_a_of_type_Agtz.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005976", "0X8005976", 0, 0, "", "", "", "");
   }
 }
 

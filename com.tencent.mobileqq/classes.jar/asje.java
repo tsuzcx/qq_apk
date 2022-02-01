@@ -1,73 +1,111 @@
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emoticon.QQSysAndEmojiResReloader.1;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+import mqq.os.MqqHandler;
 
-class asje
-  extends asbj
+public class asje
+  implements Handler.Callback
 {
-  asje(asjc paramasjc) {}
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+  private asjf jdField_a_of_type_Asjf;
+  protected ArrayList<Integer> a;
+  private final Lock jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
   
-  protected void onOnlineFileProgressDirectDone(long paramLong)
+  public asje(asjf paramasjf)
   {
-    if (0L == paramLong) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileProgressDirectDone sessionid error.return");
-    }
-    asji localasji;
-    do
-    {
-      return;
-      localasji = this.a.a(paramLong);
-      if (localasji == null)
-      {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileProgressDirectDone");
-        return;
-      }
-      localasji.h();
-    } while (!localasji.c());
-    this.a.c(paramLong);
+    this.jdField_a_of_type_Asjf = paramasjf;
   }
   
-  protected void onOnlineFileQueryUpProgressTimeOut(long paramLong)
+  public void a()
   {
-    if (0L == paramLong) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileQueryUpProgressTimeOut sessionid error.return");
-    }
-    asji localasji;
-    do
-    {
-      return;
-      localasji = this.a.a(paramLong);
-      if (localasji == null)
-      {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileQueryUpProgressTimeOut");
-        return;
-      }
-      localasji.l();
-    } while (!localasji.c());
-    this.a.c(paramLong);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(10001);
   }
   
-  protected void onOnlineFileRecvButSenderReplayTimeOut(long paramLong)
+  public void a(int paramInt)
   {
-    if (0L == paramLong) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileRecvButSenderReplayTimeOut sessionid error.return");
+    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    try
+    {
+      if (this.jdField_a_of_type_JavaUtilArrayList == null)
+      {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        b();
+      }
+      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt)))
+      {
+        this.jdField_a_of_type_JavaUtilArrayList.add(0, Integer.valueOf(paramInt));
+        if (QLog.isColorLevel()) {
+          QLog.d("QQSysAndEmojiResReloader", 2, new Object[] { "addReloadDrawable idx:", Integer.valueOf(paramInt), " ,size:", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) });
+        }
+      }
+      return;
     }
-    asji localasji;
+    finally
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+    }
+  }
+  
+  protected void b()
+  {
+    ThreadManager.getSubThreadHandler().post(new QQSysAndEmojiResReloader.1(this));
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
     do
     {
-      return;
-      localasji = this.a.a(paramLong);
-      if (localasji == null)
+      return false;
+    } while ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0));
+    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    for (;;)
+    {
+      try
       {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileRecvButSenderReplayTimeOut");
-        return;
+        if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
+          break label162;
+        }
+        i = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.remove(0)).intValue();
+        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+        if (i <= -1) {
+          break;
+        }
+        if (this.jdField_a_of_type_Asjf != null) {
+          this.jdField_a_of_type_Asjf.a(i);
+        }
+        if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+        {
+          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(10001, 300L);
+          return false;
+        }
       }
-      localasji.j();
-    } while (!localasji.c());
-    this.a.c(paramLong);
+      finally
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("QQSysAndEmojiResReloader", 2, "finish reloading");
+      return false;
+      label162:
+      int i = -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asje
  * JD-Core Version:    0.7.0.1
  */

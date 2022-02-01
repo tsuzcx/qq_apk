@@ -1,19 +1,80 @@
-import java.io.File;
-import java.util.Comparator;
+import android.text.TextUtils;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.annotation.JsEvent;
+import com.tencent.qqmini.sdk.annotation.JsPlugin;
+import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import org.json.JSONObject;
 
-public final class bkkn
-  implements Comparator<File>
+@JsPlugin(secondary=true)
+public class bkkn
+  extends BaseJsPlugin
 {
-  public int a(File paramFile1, File paramFile2)
+  @JsEvent({"getCMShowInfo"})
+  public void getCMShowInfo(RequestEvent paramRequestEvent)
   {
-    long l = paramFile1.length() - paramFile2.length();
-    if (l > 0L) {
-      return 1;
+    if (paramRequestEvent == null)
+    {
+      QLog.e("CMShowJsPlugin", 1, "[getCMShowInfo] error! req is null!");
+      return;
     }
-    if (l == 0L) {
-      return 0;
+    String str2;
+    try
+    {
+      String str1 = getMiniAppInfo().appId;
+      localObject = new JSONObject(paramRequestEvent.jsonParams);
+      str2 = ((JSONObject)localObject).getString("openid");
+      if (TextUtils.isEmpty(str2))
+      {
+        paramRequestEvent.fail("invalid params!");
+        return;
+      }
     }
-    return -1;
+    catch (Throwable localThrowable)
+    {
+      QLog.e("CMShowJsPlugin", 1, new Object[] { Integer.valueOf(1), "[getCMShowInfo] error! ", localThrowable });
+      paramRequestEvent.fail("invalid params!");
+      return;
+    }
+    String str3 = ((JSONObject)localObject).getString("engineType");
+    if ((!"laya".equals(str3)) && (!"egret".equals(str3)) && (!"cocos".equals(str3)))
+    {
+      paramRequestEvent.fail("invalid params!");
+      return;
+    }
+    String str4 = ((JSONObject)localObject).getString("engineVersion");
+    Object localObject = ((JSONObject)localObject).optString("avatarType", "3D");
+    if ((!"2D".equals(localObject)) && (!"3D".equals(localObject)))
+    {
+      paramRequestEvent.fail("invalid params!");
+      return;
+    }
+    MiniAppCmdUtil.getInstance().getCMShowInfo(str2, localThrowable, str3, str4, (String)localObject, new bkkp(this, paramRequestEvent));
+  }
+  
+  @JsEvent({"setCMShowPetStatus"})
+  public void setCMShowPetStatus(RequestEvent paramRequestEvent)
+  {
+    if (paramRequestEvent == null)
+    {
+      QLog.e("CMShowJsPlugin", 1, "[setCMShowPetStatus] error! req is null!");
+      return;
+    }
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams).optJSONObject("data");
+      int i = localJSONObject.optInt("roleId");
+      int j = localJSONObject.optInt("petStatus");
+      MiniAppCmdUtil.getInstance().setCMShowPetStatus(i, j, new bkko(this, paramRequestEvent));
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("CMShowJsPlugin", 1, new Object[] { Integer.valueOf(1), "[setCMShowPetStatus] error! ", localThrowable });
+      paramRequestEvent.fail("invalid params!");
+    }
   }
 }
 

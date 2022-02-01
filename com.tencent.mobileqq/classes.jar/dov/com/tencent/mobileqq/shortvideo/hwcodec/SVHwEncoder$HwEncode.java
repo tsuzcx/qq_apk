@@ -7,18 +7,18 @@ import android.media.MediaCodecInfo.CodecCapabilities;
 import android.media.MediaCodecInfo.CodecProfileLevel;
 import android.media.MediaFormat;
 import android.media.MediaMuxer;
-import bocd;
-import boce;
-import bocf;
-import bocg;
-import boch;
-import boci;
-import bocj;
-import bock;
-import bocl;
-import bocm;
-import bocn;
-import bocr;
+import bprv;
+import bprw;
+import bprx;
+import bpry;
+import bprz;
+import bpsa;
+import bpsb;
+import bpsc;
+import bpsd;
+import bpse;
+import bpsf;
+import bpsj;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.mobileqq.shortvideo.util.SVMp4Merge;
@@ -27,29 +27,29 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
-import mqv;
+import mrs;
 
 public class SVHwEncoder$HwEncode
-  implements bocf, bocl, Runnable
+  implements bprx, bpsd, Runnable
 {
   private int jdField_a_of_type_Int = 0;
   private MediaFormat jdField_a_of_type_AndroidMediaMediaFormat;
   private MediaMuxer jdField_a_of_type_AndroidMediaMediaMuxer;
-  private bocd jdField_a_of_type_Bocd = new bocd();
-  private bocf jdField_a_of_type_Bocf;
-  private boch jdField_a_of_type_Boch = new boch(this);
-  boci jdField_a_of_type_Boci = new boci(this);
-  private bocj jdField_a_of_type_Bocj = new bocj(this);
-  private bocl jdField_a_of_type_Bocl;
-  public bocm a;
-  private bocn jdField_a_of_type_Bocn = new bocn();
+  private bprv jdField_a_of_type_Bprv = new bprv();
+  private bprx jdField_a_of_type_Bprx;
+  private bprz jdField_a_of_type_Bprz = new bprz(this);
+  bpsa jdField_a_of_type_Bpsa = new bpsa(this);
+  private bpsb jdField_a_of_type_Bpsb = new bpsb(this);
+  private bpsd jdField_a_of_type_Bpsd;
+  public bpse a;
+  private bpsf jdField_a_of_type_Bpsf = new bpsf();
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private String jdField_a_of_type_JavaLangString;
   private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = -1;
   private MediaFormat jdField_b_of_type_AndroidMediaMediaFormat;
-  private bocd jdField_b_of_type_Bocd = new bocd();
+  private bprv jdField_b_of_type_Bprv = new bprv();
   private String jdField_b_of_type_JavaLangString;
   private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int = -1;
@@ -85,15 +85,15 @@ public class SVHwEncoder$HwEncode
   private boolean o;
   private volatile boolean p;
   
-  SVHwEncoder$HwEncode(SVHwEncoder paramSVHwEncoder, String paramString, bocl parambocl, bocf parambocf, boolean paramBoolean, int paramInt)
+  SVHwEncoder$HwEncode(SVHwEncoder paramSVHwEncoder, String paramString, bpsd parambpsd, bprx parambprx, boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_Bocm = new bocm();
+    this.jdField_a_of_type_Bpse = new bpse();
     this.jdField_d_of_type_JavaLangString = paramString;
     this.jdField_e_of_type_JavaLangString = a(paramString);
     this.jdField_g_of_type_Boolean = paramBoolean;
     this.jdField_f_of_type_Boolean = true;
-    this.jdField_a_of_type_Bocl = parambocl;
-    this.jdField_a_of_type_Bocf = parambocf;
+    this.jdField_a_of_type_Bpsd = parambpsd;
+    this.jdField_a_of_type_Bprx = parambprx;
     c();
     if (!this.jdField_g_of_type_Boolean)
     {
@@ -120,9 +120,9 @@ public class SVHwEncoder$HwEncode
   
   int a()
   {
-    this.jdField_a_of_type_Boch.a();
-    boolean bool = this.jdField_a_of_type_Bocd.a(this.jdField_c_of_type_AndroidMediaMediaFormat, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Boch.c = this.jdField_a_of_type_Boch.a();
+    this.jdField_a_of_type_Bprz.a();
+    boolean bool = this.jdField_a_of_type_Bprv.a(this.jdField_c_of_type_AndroidMediaMediaFormat, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Bprz.c = this.jdField_a_of_type_Bprz.a();
     if (!bool) {
       return -2;
     }
@@ -133,8 +133,8 @@ public class SVHwEncoder$HwEncode
   {
     Object localObject1 = null;
     int i4 = 2;
-    Object localObject3 = bocd.a("audio/mp4a-latm");
-    Object localObject2 = bocd.a("audio/mp4a-latm", true);
+    Object localObject3 = bprv.a("audio/mp4a-latm");
+    Object localObject2 = bprv.a("audio/mp4a-latm", true);
     if ((((List)localObject3).size() <= 0) && (((List)localObject2).size() <= 0)) {
       return -7;
     }
@@ -216,7 +216,7 @@ public class SVHwEncoder$HwEncode
   {
     int i4 = 0;
     int i5 = -1;
-    List localList = bocd.a(paramString, true);
+    List localList = bprv.a(paramString, true);
     if (localList.size() <= 0) {
       return -6;
     }
@@ -235,7 +235,7 @@ public class SVHwEncoder$HwEncode
       i1 = i4;
       if (i2 < localList.size())
       {
-        localObject = bocd.a((MediaCodecInfo)localList.get(i2), paramString);
+        localObject = bprv.a((MediaCodecInfo)localList.get(i2), paramString);
         if (localObject == null) {
           return -26;
         }
@@ -246,7 +246,7 @@ public class SVHwEncoder$HwEncode
           this.this$0.a("encodeVideoInit", " colorformat=0x" + Integer.toHexString(localObject[i1]));
           i1 += 1;
         }
-        if (mqv.a((int[])localObject, 21))
+        if (mrs.a((int[])localObject, 21))
         {
           i1 = 21;
           i3 = i2;
@@ -261,7 +261,7 @@ public class SVHwEncoder$HwEncode
         if (i2 >= localList.size()) {
           break label419;
         }
-        localObject = bocd.a((MediaCodecInfo)localList.get(i2), paramString);
+        localObject = bprv.a((MediaCodecInfo)localList.get(i2), paramString);
         if (localObject != null) {
           break;
         }
@@ -269,7 +269,7 @@ public class SVHwEncoder$HwEncode
       }
       i2 += 1;
     }
-    if (mqv.a(((MediaCodecInfo.CodecCapabilities)localObject).colorFormats, 19)) {
+    if (mrs.a(((MediaCodecInfo.CodecCapabilities)localObject).colorFormats, 19)) {
       i1 = 19;
     }
     for (;;)
@@ -303,13 +303,13 @@ public class SVHwEncoder$HwEncode
   int a(boolean paramBoolean)
   {
     int i1 = 0;
-    this.jdField_a_of_type_Boch.a();
+    this.jdField_a_of_type_Bprz.a();
     try
     {
       bool = a(paramBoolean).a();
       if (paramBoolean)
       {
-        this.jdField_a_of_type_Boch.d = this.jdField_a_of_type_Boch.a();
+        this.jdField_a_of_type_Bprz.d = this.jdField_a_of_type_Bprz.a();
         if (!bool) {
           i1 = -3;
         }
@@ -326,7 +326,7 @@ public class SVHwEncoder$HwEncode
         }
         boolean bool = false;
         continue;
-        this.jdField_a_of_type_Boch.i = this.jdField_a_of_type_Boch.a();
+        this.jdField_a_of_type_Bprz.i = this.jdField_a_of_type_Bprz.a();
       }
     }
   }
@@ -341,28 +341,28 @@ public class SVHwEncoder$HwEncode
     do
     {
       return l1;
-      l2 = this.jdField_a_of_type_Boch.b();
+      l2 = this.jdField_a_of_type_Bprz.b();
       l1 = l2;
     } while (l2 <= this.jdField_n_of_type_Int);
     return this.jdField_n_of_type_Int;
   }
   
-  bocd a(boolean paramBoolean)
+  bprv a(boolean paramBoolean)
   {
     if (paramBoolean) {
-      return this.jdField_a_of_type_Bocd;
+      return this.jdField_a_of_type_Bprv;
     }
-    return this.jdField_b_of_type_Bocd;
+    return this.jdField_b_of_type_Bprv;
   }
   
-  public bock a()
+  public bpsc a()
   {
-    return this.jdField_a_of_type_Bocf.a();
+    return this.jdField_a_of_type_Bprx.a();
   }
   
-  public bock a(int paramInt)
+  public bpsc a(int paramInt)
   {
-    return this.jdField_a_of_type_Bocf.a(paramInt);
+    return this.jdField_a_of_type_Bprx.a(paramInt);
   }
   
   String a()
@@ -382,24 +382,24 @@ public class SVHwEncoder$HwEncode
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Bocl != null) && (!SVHwEncoder.a(this.this$0))) {
-      this.jdField_a_of_type_Bocl.a();
+    if ((this.jdField_a_of_type_Bpsd != null) && (!SVHwEncoder.a(this.this$0))) {
+      this.jdField_a_of_type_Bpsd.a();
     }
     this.this$0.a("hw_video_callback_msg", "svEncodeBegin mCacellVideoEncode=" + SVHwEncoder.a(this.this$0));
   }
   
   public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Bocl != null) && (!SVHwEncoder.a(this.this$0))) {
-      this.jdField_a_of_type_Bocl.a(paramInt);
+    if ((this.jdField_a_of_type_Bpsd != null) && (!SVHwEncoder.a(this.this$0))) {
+      this.jdField_a_of_type_Bpsd.a(paramInt);
     }
     this.this$0.a("hw_video_callback_msg", "svEncodeProgress: progress=" + paramInt + " mCacellVideoEncode=" + SVHwEncoder.a(this.this$0));
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_Bocl != null) && (!SVHwEncoder.a(this.this$0))) {
-      this.jdField_a_of_type_Bocl.a(paramInt1, paramInt2);
+    if ((this.jdField_a_of_type_Bpsd != null) && (!SVHwEncoder.a(this.this$0))) {
+      this.jdField_a_of_type_Bpsd.a(paramInt1, paramInt2);
     }
     this.this$0.a("hw_video_callback_msg", "svErrorOcured:error=" + paramInt1 + " subcode=" + paramInt2 + " mCacellVideoEncode=" + SVHwEncoder.a(this.this$0));
   }
@@ -412,24 +412,24 @@ public class SVHwEncoder$HwEncode
   
   public void a(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((this.jdField_a_of_type_Bocl != null) && (!SVHwEncoder.a(this.this$0))) {
-      this.jdField_a_of_type_Bocl.a(paramString, paramInt1, paramInt2, paramInt3);
+    if ((this.jdField_a_of_type_Bpsd != null) && (!SVHwEncoder.a(this.this$0))) {
+      this.jdField_a_of_type_Bpsd.a(paramString, paramInt1, paramInt2, paramInt3);
     }
     this.this$0.a("hw_video_callback_msg", "svSegmentOK:path=" + paramString + " index=" + paramInt1 + "width=" + paramInt2 + " height=" + paramInt3 + " mCacellVideoEncode=" + SVHwEncoder.a(this.this$0));
   }
   
   public void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    if ((this.jdField_a_of_type_Bocl != null) && (!SVHwEncoder.a(this.this$0))) {
-      this.jdField_a_of_type_Bocl.a(paramString1, paramInt1, paramInt2, paramString2);
+    if ((this.jdField_a_of_type_Bpsd != null) && (!SVHwEncoder.a(this.this$0))) {
+      this.jdField_a_of_type_Bpsd.a(paramString1, paramInt1, paramInt2, paramString2);
     }
     this.this$0.a("hw_video_callback_msg", "svThumbOK:path=" + paramString1 + " md5=" + paramString2 + "width=" + paramInt1 + " height=" + paramInt2 + " mCacellVideoEncode=" + SVHwEncoder.a(this.this$0));
   }
   
   public void a(String paramString, int paramInt, long paramLong)
   {
-    if ((this.jdField_a_of_type_Bocl != null) && (!SVHwEncoder.a(this.this$0))) {
-      this.jdField_a_of_type_Bocl.a(paramString, paramInt, paramLong);
+    if ((this.jdField_a_of_type_Bpsd != null) && (!SVHwEncoder.a(this.this$0))) {
+      this.jdField_a_of_type_Bpsd.a(paramString, paramInt, paramLong);
     }
     this.this$0.a("hw_video_callback_msg", "svMergeOK:path=" + paramString + " totalTime=" + paramInt + " mergeTime=" + paramLong + " mCacellVideoEncode=" + SVHwEncoder.a(this.this$0));
   }
@@ -438,24 +438,24 @@ public class SVHwEncoder$HwEncode
   {
     try
     {
-      bocd localbocd = a(paramBoolean);
-      this.jdField_a_of_type_Boch.a();
-      localbocd.b();
+      bprv localbprv = a(paramBoolean);
+      this.jdField_a_of_type_Bprz.a();
+      localbprv.b();
       if (paramBoolean) {
-        this.jdField_a_of_type_Boch.d = this.jdField_a_of_type_Boch.a();
+        this.jdField_a_of_type_Bprz.d = this.jdField_a_of_type_Bprz.a();
       }
       for (;;)
       {
-        this.jdField_a_of_type_Boch.a();
-        localbocd.c();
+        this.jdField_a_of_type_Bprz.a();
+        localbprv.c();
         if (!paramBoolean) {
           break;
         }
-        this.jdField_a_of_type_Boch.f = this.jdField_a_of_type_Boch.a();
+        this.jdField_a_of_type_Bprz.f = this.jdField_a_of_type_Bprz.a();
         return;
-        this.jdField_a_of_type_Boch.i = this.jdField_a_of_type_Boch.a();
+        this.jdField_a_of_type_Bprz.i = this.jdField_a_of_type_Bprz.a();
       }
-      this.jdField_a_of_type_Boch.k = this.jdField_a_of_type_Boch.a();
+      this.jdField_a_of_type_Bprz.k = this.jdField_a_of_type_Bprz.a();
     }
     catch (Exception localException)
     {
@@ -484,17 +484,17 @@ public class SVHwEncoder$HwEncode
     return false;
   }
   
-  boolean a(ArrayList<bock> paramArrayList)
+  boolean a(ArrayList<bpsc> paramArrayList)
   {
     boolean bool2 = false;
     for (;;)
     {
-      bock localbock = this.this$0.a(paramArrayList);
+      bpsc localbpsc = this.this$0.a(paramArrayList);
       bool1 = bool2;
-      if (localbock == null) {
+      if (localbpsc == null) {
         return bool1;
       }
-      if (!localbock.jdField_a_of_type_Boolean) {
+      if (!localbpsc.jdField_a_of_type_Boolean) {
         break;
       }
       this.this$0.a(paramArrayList);
@@ -617,11 +617,11 @@ public class SVHwEncoder$HwEncode
   
   int b()
   {
-    this.jdField_a_of_type_Boch.a();
+    this.jdField_a_of_type_Bprz.a();
     if (this.jdField_c_of_type_JavaLangString != null) {
       this.jdField_d_of_type_AndroidMediaMediaFormat.setInteger("aac-profile", this.jdField_e_of_type_Int);
     }
-    for (boolean bool1 = this.jdField_b_of_type_Bocd.a(this.jdField_d_of_type_AndroidMediaMediaFormat, this.jdField_c_of_type_JavaLangString);; bool1 = false)
+    for (boolean bool1 = this.jdField_b_of_type_Bprv.a(this.jdField_d_of_type_AndroidMediaMediaFormat, this.jdField_c_of_type_JavaLangString);; bool1 = false)
     {
       boolean bool2 = bool1;
       if (!bool1)
@@ -633,10 +633,10 @@ public class SVHwEncoder$HwEncode
         if (this.jdField_b_of_type_JavaLangString != null)
         {
           this.jdField_d_of_type_AndroidMediaMediaFormat.setInteger("aac-profile", this.jdField_d_of_type_Int);
-          bool2 = this.jdField_b_of_type_Bocd.a(this.jdField_d_of_type_AndroidMediaMediaFormat, this.jdField_b_of_type_JavaLangString);
+          bool2 = this.jdField_b_of_type_Bprv.a(this.jdField_d_of_type_AndroidMediaMediaFormat, this.jdField_b_of_type_JavaLangString);
         }
       }
-      this.jdField_a_of_type_Boch.h = this.jdField_a_of_type_Boch.a();
+      this.jdField_a_of_type_Bprz.h = this.jdField_a_of_type_Bprz.a();
       if (!bool2) {
         return -8;
       }
@@ -654,7 +654,7 @@ public class SVHwEncoder$HwEncode
     do
     {
       return l1;
-      l2 = this.jdField_a_of_type_Boch.c();
+      l2 = this.jdField_a_of_type_Bprz.c();
       l1 = l2;
     } while (l2 <= this.jdField_n_of_type_Int);
     return this.jdField_n_of_type_Int;
@@ -662,19 +662,19 @@ public class SVHwEncoder$HwEncode
   
   public void b()
   {
-    if ((this.jdField_a_of_type_Bocl != null) && (!SVHwEncoder.a(this.this$0))) {
-      this.jdField_a_of_type_Bocl.b();
+    if ((this.jdField_a_of_type_Bpsd != null) && (!SVHwEncoder.a(this.this$0))) {
+      this.jdField_a_of_type_Bpsd.b();
     }
     this.this$0.a("hw_video_callback_msg", "svEncodeEnd mCacellVideoEncode=" + SVHwEncoder.a(this.this$0));
   }
   
   int c()
   {
-    String str = bocd.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Boch.a();
+    String str = bprv.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Bprz.a();
     this.jdField_c_of_type_AndroidMediaMediaFormat = MediaFormat.createVideoFormat(str, SVHwEncoder.c(this.this$0), SVHwEncoder.d(this.this$0));
     int i1 = a(this.jdField_c_of_type_AndroidMediaMediaFormat, str, (int)SVHwEncoder.a(this.this$0), SVHwEncoder.k(this.this$0));
-    this.jdField_a_of_type_Boch.b = this.jdField_a_of_type_Boch.a();
+    this.jdField_a_of_type_Bprz.b = this.jdField_a_of_type_Bprz.a();
     if (i1 != 0) {}
     int i2;
     do
@@ -683,9 +683,9 @@ public class SVHwEncoder$HwEncode
       {
         return i1;
       } while (!this.jdField_g_of_type_Boolean);
-      this.jdField_a_of_type_Boch.a();
+      this.jdField_a_of_type_Bprz.a();
       i2 = a(SVHwEncoder.h(this.this$0), SVHwEncoder.i(this.this$0), SVHwEncoder.l(this.this$0));
-      this.jdField_a_of_type_Boch.g = this.jdField_a_of_type_Boch.a();
+      this.jdField_a_of_type_Bprz.g = this.jdField_a_of_type_Bprz.a();
       i1 = i2;
     } while (i2 == 0);
     return i2;
@@ -726,15 +726,15 @@ public class SVHwEncoder$HwEncode
   {
     if ((this.jdField_f_of_type_Int == 1) && (!SVHwEncoder.b(this.this$0)) && (!this.jdField_m_of_type_Boolean) && (this.jdField_h_of_type_Int >= 1))
     {
-      this.jdField_a_of_type_Boch.a();
+      this.jdField_a_of_type_Bprz.a();
       this.jdField_n_of_type_Boolean = false;
-      this.jdField_a_of_type_Bocm.jdField_b_of_type_JavaLangString = null;
-      this.jdField_a_of_type_Bocm.jdField_a_of_type_JavaLangString = null;
-      this.jdField_a_of_type_Bocm.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Bocm.jdField_a_of_type_Long = 0L;
-      new bocg(this).execute(new Void[0]);
+      this.jdField_a_of_type_Bpse.jdField_b_of_type_JavaLangString = null;
+      this.jdField_a_of_type_Bpse.jdField_a_of_type_JavaLangString = null;
+      this.jdField_a_of_type_Bpse.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_Bpse.jdField_a_of_type_Long = 0L;
+      new bpry(this).execute(new Void[0]);
       this.jdField_m_of_type_Boolean = true;
-      this.jdField_a_of_type_Boch.m = this.jdField_a_of_type_Boch.a();
+      this.jdField_a_of_type_Bprz.m = this.jdField_a_of_type_Bprz.a();
     }
   }
   
@@ -753,7 +753,7 @@ public class SVHwEncoder$HwEncode
       i1 = i2;
     } while (i2 == 0);
     this.this$0.a("VideoEncodeExit", "err=" + this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bocd.c();
+    this.jdField_a_of_type_Bprv.c();
     return i2;
   }
   
@@ -762,21 +762,21 @@ public class SVHwEncoder$HwEncode
     this.jdField_a_of_type_Int = 0;
     if ((this.jdField_n_of_type_Boolean) && (!this.o))
     {
-      if (this.jdField_a_of_type_Bocm.jdField_a_of_type_Int == 0) {
+      if (this.jdField_a_of_type_Bpse.jdField_a_of_type_Int == 0) {
         break label163;
       }
       this.jdField_a_of_type_Int = -9;
-      a(-9, this.jdField_a_of_type_Bocm.jdField_a_of_type_Int);
-      this.this$0.a("hw_av_merge_segment", "genThumbFile mLastErrCode=" + this.jdField_a_of_type_Int + " subcode=" + this.jdField_a_of_type_Bocm.jdField_a_of_type_Int);
+      a(-9, this.jdField_a_of_type_Bpse.jdField_a_of_type_Int);
+      this.this$0.a("hw_av_merge_segment", "genThumbFile mLastErrCode=" + this.jdField_a_of_type_Int + " subcode=" + this.jdField_a_of_type_Bpse.jdField_a_of_type_Int);
     }
     for (;;)
     {
       this.this$0.a("hw_video_segment_notify_msg", "svThumbOK:mCallSegmentIndex=" + this.jdField_g_of_type_Int + " mLastErrCode=" + this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Boch.l = this.jdField_a_of_type_Bocm.jdField_a_of_type_Long;
+      this.jdField_a_of_type_Bprz.l = this.jdField_a_of_type_Bpse.jdField_a_of_type_Long;
       this.o = true;
       return;
       label163:
-      a(this.jdField_a_of_type_Bocm.jdField_b_of_type_JavaLangString, SVHwEncoder.f(this.this$0), SVHwEncoder.g(this.this$0), this.jdField_a_of_type_Bocm.jdField_a_of_type_JavaLangString);
+      a(this.jdField_a_of_type_Bpse.jdField_b_of_type_JavaLangString, SVHwEncoder.f(this.this$0), SVHwEncoder.g(this.this$0), this.jdField_a_of_type_Bpse.jdField_a_of_type_JavaLangString);
     }
   }
   
@@ -799,7 +799,7 @@ public class SVHwEncoder$HwEncode
         i1 = i2;
       } while (i2 == 0);
       this.this$0.a("audioEncodeInit", "err=" + this.jdField_a_of_type_Int);
-      this.jdField_b_of_type_Bocd.c();
+      this.jdField_b_of_type_Bprv.c();
       return i2;
     }
     catch (InterruptedException localInterruptedException)
@@ -918,18 +918,18 @@ public class SVHwEncoder$HwEncode
       this.jdField_d_of_type_AndroidMediaMediaFormat = null;
       return;
     }
-    if ((!SVHwEncoder.b(this.this$0)) && (!bocr.jdField_a_of_type_Boolean)) {}
+    if ((!SVHwEncoder.b(this.this$0)) && (!bpsj.jdField_a_of_type_Boolean)) {}
     for (;;)
     {
       boolean bool1;
-      synchronized (bocr.jdField_a_of_type_JavaLangObject)
+      synchronized (bpsj.jdField_a_of_type_JavaLangObject)
       {
-        bool1 = bocr.jdField_a_of_type_Boolean;
+        bool1 = bpsj.jdField_a_of_type_Boolean;
         if (bool1) {}
       }
       try
       {
-        bocr.jdField_a_of_type_JavaLangObject.wait(1000L);
+        bpsj.jdField_a_of_type_JavaLangObject.wait(1000L);
         if (!SVHwEncoder.c(this.this$0)) {
           continue;
         }
@@ -952,8 +952,8 @@ public class SVHwEncoder$HwEncode
         {
           this.jdField_i_of_type_Boolean = true;
           SVHwEncoder.a(this.this$0, SVHwEncoder.a(this.this$0) * 1000 / SVHwEncoder.b(this.this$0));
-          this.jdField_a_of_type_Bocn.a();
-          this.jdField_a_of_type_Bocn.a(SVHwEncoder.a(this.this$0));
+          this.jdField_a_of_type_Bpsf.a();
+          this.jdField_a_of_type_Bpsf.a(SVHwEncoder.a(this.this$0));
           this.this$0.a("HwEncodeHelper:mOnlyGenOneMp4", "mTotalFrames=" + SVHwEncoder.a(this.this$0) + " mTotalTimes=" + SVHwEncoder.b(this.this$0) + " mVideoFps=" + SVHwEncoder.a(this.this$0));
         }
         if (SVHwEncoder.a(this.this$0))
@@ -962,7 +962,7 @@ public class SVHwEncoder$HwEncode
           a(true);
           a(false);
           j();
-          this.this$0.a("hw_video_time_used_msg", "HwTimeUsed_End=" + this.jdField_a_of_type_Boch.toString());
+          this.this$0.a("hw_video_time_used_msg", "HwTimeUsed_End=" + this.jdField_a_of_type_Bprz.toString());
           this.this$0.a("hw_av_merge_segment", "release resource ok......");
           if (this.jdField_a_of_type_Int == 0) {
             break label5226;
@@ -981,15 +981,15 @@ public class SVHwEncoder$HwEncode
         {
           for (;;)
           {
-            this.jdField_a_of_type_Bocl = null;
-            this.jdField_a_of_type_Bocf = null;
+            this.jdField_a_of_type_Bpsd = null;
+            this.jdField_a_of_type_Bprx = null;
             SVHwEncoder.c(this.this$0).clear();
             SVHwEncoder.a(this.this$0).clear();
             SVHwEncoder.b(this.this$0).clear();
             SVHwEncoder.a(this.this$0, null);
             SVHwEncoder.b(this.this$0, null);
             SVHwEncoder.c(this.this$0, null);
-            this.jdField_a_of_type_Bocn.a();
+            this.jdField_a_of_type_Bpsf.a();
             this.jdField_g_of_type_Int = 0;
             return;
             Object localObject3 = null;
@@ -1001,7 +1001,7 @@ public class SVHwEncoder$HwEncode
                 ??? = this.this$0.a(SVHwEncoder.a(this.this$0));
               }
             }
-            this.this$0.a("hw_video_write_frame", "mVideoSourceDone=" + this.jdField_b_of_type_Boolean + " mDataSource=" + this.jdField_a_of_type_Bocf);
+            this.this$0.a("hw_video_write_frame", "mVideoSourceDone=" + this.jdField_b_of_type_Boolean + " mDataSource=" + this.jdField_a_of_type_Bprx);
             this.this$0.a("hw_video_write_frame", "mMuxerCreated=" + this.jdField_a_of_type_Boolean + " encoderOutputVideoFormat=" + this.jdField_a_of_type_AndroidMediaMediaFormat);
             if (((??? != null) || ((SVHwEncoder.b(this.this$0)) && (!this.jdField_b_of_type_Boolean))) && ((this.jdField_a_of_type_AndroidMediaMediaFormat == null) || (this.jdField_a_of_type_Boolean))) {}
             label865:
@@ -1015,8 +1015,8 @@ public class SVHwEncoder$HwEncode
               {
                 l1 = a();
                 this.this$0.a("hw_video_timestamp", "videotimeout=" + l1);
-                localboce = this.jdField_a_of_type_Bocd.a(l1);
-                if ((localboce != null) && (localboce.jdField_a_of_type_Int != -1)) {
+                localbprw = this.jdField_a_of_type_Bprv.a(l1);
+                if ((localbprw != null) && (localbprw.jdField_a_of_type_Int != -1)) {
                   break label1506;
                 }
                 this.this$0.a("hw_video_write_frame", "INFO_TRY_AGAIN_LATER");
@@ -1041,13 +1041,13 @@ public class SVHwEncoder$HwEncode
               {
                 for (;;)
                 {
-                  boce localboce;
+                  bprw localbprw;
                   try
                   {
                     l1 = b();
                     this.this$0.a("hw_audio_timestamp", "audiotimeout=" + l1);
-                    localboce = this.jdField_b_of_type_Bocd.a(l1);
-                    if ((localboce == null) || (localboce.jdField_a_of_type_Int == -1))
+                    localbprw = this.jdField_b_of_type_Bprv.a(l1);
+                    if ((localbprw == null) || (localbprw.jdField_a_of_type_Int == -1))
                     {
                       this.this$0.a("hw_audio_write_frame", "INFO_TRY_AGAIN_LATER");
                       if ((this.jdField_b_of_type_Boolean) && (this.jdField_c_of_type_Boolean) && (this.jdField_j_of_type_Boolean) && (!SVHwEncoder.b(this.this$0)))
@@ -1055,8 +1055,8 @@ public class SVHwEncoder$HwEncode
                         this.this$0.a("hw_smooth_time_stamp", "mUpdateVideoFps=" + this.jdField_j_of_type_Boolean + " mVideoFps=" + SVHwEncoder.a(this.this$0));
                         this.jdField_j_of_type_Boolean = false;
                         this.jdField_i_of_type_Boolean = true;
-                        this.jdField_a_of_type_Bocn.a();
-                        this.jdField_a_of_type_Bocn.a(SVHwEncoder.a(this.this$0));
+                        this.jdField_a_of_type_Bpsf.a();
+                        this.jdField_a_of_type_Bpsf.a(SVHwEncoder.a(this.this$0));
                       }
                       if ((this.jdField_l_of_type_Boolean) && (!this.jdField_d_of_type_Boolean)) {
                         if (this.jdField_a_of_type_AndroidMediaMediaFormat != null) {
@@ -1069,7 +1069,7 @@ public class SVHwEncoder$HwEncode
                   }
                   catch (IllegalStateException localIllegalStateException3)
                   {
-                    boci localboci1;
+                    bpsa localbpsa1;
                     localIllegalStateException3.printStackTrace();
                     this.jdField_a_of_type_Int = -18;
                     a(this.jdField_a_of_type_Int, 0);
@@ -1078,7 +1078,7 @@ public class SVHwEncoder$HwEncode
                   {
                     l1 = a();
                     this.this$0.a("hw_video_encode_frame", "videoOutTime=" + l1);
-                    ??? = this.jdField_a_of_type_Bocd.b(l1);
+                    ??? = this.jdField_a_of_type_Bprv.b(l1);
                     if (??? == null)
                     {
                       this.this$0.a("hw_video_encode_frame", "encoderOutputBuffer=null");
@@ -1093,7 +1093,7 @@ public class SVHwEncoder$HwEncode
                   }
                   catch (IllegalStateException localIllegalStateException5)
                   {
-                    boci localboci2;
+                    bpsa localbpsa2;
                     int i3;
                     float f1;
                     localIllegalStateException5.printStackTrace();
@@ -1104,7 +1104,7 @@ public class SVHwEncoder$HwEncode
                   {
                     l1 = b();
                     this.this$0.a("hw_audio_encode_frame", "audioOutTime=" + l1);
-                    ??? = this.jdField_b_of_type_Bocd.b(l1);
+                    ??? = this.jdField_b_of_type_Bprv.b(l1);
                     if (??? != null) {
                       break label3496;
                     }
@@ -1128,8 +1128,8 @@ public class SVHwEncoder$HwEncode
                     if ((!this.jdField_d_of_type_Boolean) || (!this.jdField_e_of_type_Boolean)) {
                       break label4407;
                     }
-                    bool1 = this.jdField_a_of_type_Bocj.c();
-                    this.jdField_a_of_type_Bocj.a();
+                    bool1 = this.jdField_a_of_type_Bpsb.c();
+                    this.jdField_a_of_type_Bpsb.a();
                     if (bool1) {
                       break label3920;
                     }
@@ -1150,41 +1150,41 @@ public class SVHwEncoder$HwEncode
                 a(this.jdField_a_of_type_Int, 0);
               }
               break;
-              if (localboce.jdField_a_of_type_JavaNioByteBuffer == null)
+              if (localbprw.jdField_a_of_type_JavaNioByteBuffer == null)
               {
-                localboci1 = this.jdField_a_of_type_Boci;
-                localboci1.jdField_a_of_type_Int += 1;
-                this.this$0.a("hw_intel_x86__err_msg", "INFO_TRY_AGAIN_LATER: buffer = null mVideoBuferErrCount=" + this.jdField_a_of_type_Boci.jdField_a_of_type_Int);
-                if (this.jdField_a_of_type_Boci.jdField_a_of_type_Int < 3) {
+                localbpsa1 = this.jdField_a_of_type_Bpsa;
+                localbpsa1.jdField_a_of_type_Int += 1;
+                this.this$0.a("hw_intel_x86__err_msg", "INFO_TRY_AGAIN_LATER: buffer = null mVideoBuferErrCount=" + this.jdField_a_of_type_Bpsa.jdField_a_of_type_Int);
+                if (this.jdField_a_of_type_Bpsa.jdField_a_of_type_Int < 3) {
                   continue;
                 }
                 this.jdField_a_of_type_Int = -21;
                 a(this.jdField_a_of_type_Int, 0);
                 break;
               }
-              this.jdField_a_of_type_Boci.jdField_a_of_type_Int = 0;
-              localObject3 = localboci1;
+              this.jdField_a_of_type_Bpsa.jdField_a_of_type_Int = 0;
+              localObject3 = localbpsa1;
               if (SVHwEncoder.b(this.this$0))
               {
-                localObject3 = localboci1;
-                if (this.jdField_a_of_type_Bocf != null) {
+                localObject3 = localbpsa1;
+                if (this.jdField_a_of_type_Bprx != null) {
                   localObject3 = a(this.this$0.jdField_a_of_type_Int);
                 }
               }
-              if (!((bock)localObject3).jdField_a_of_type_Boolean)
+              if (!((bpsc)localObject3).jdField_a_of_type_Boolean)
               {
-                localboce.jdField_a_of_type_JavaNioByteBuffer.clear();
-                i1 = localboce.jdField_a_of_type_JavaNioByteBuffer.capacity();
-                i2 = ((bock)localObject3).jdField_b_of_type_Int - ((bock)localObject3).jdField_a_of_type_Int;
+                localbprw.jdField_a_of_type_JavaNioByteBuffer.clear();
+                i1 = localbprw.jdField_a_of_type_JavaNioByteBuffer.capacity();
+                i2 = ((bpsc)localObject3).jdField_b_of_type_Int - ((bpsc)localObject3).jdField_a_of_type_Int;
                 if (i1 >= i2)
                 {
-                  localboce.jdField_a_of_type_JavaNioByteBuffer.put(((bock)localObject3).jdField_a_of_type_ArrayOfByte, ((bock)localObject3).jdField_a_of_type_Int, i2);
-                  ((bock)localObject3).jdField_a_of_type_Int += i2;
-                  l2 = 1000L * ((bock)localObject3).jdField_a_of_type_Long;
+                  localbprw.jdField_a_of_type_JavaNioByteBuffer.put(((bpsc)localObject3).jdField_a_of_type_ArrayOfByte, ((bpsc)localObject3).jdField_a_of_type_Int, i2);
+                  ((bpsc)localObject3).jdField_a_of_type_Int += i2;
+                  l2 = 1000L * ((bpsc)localObject3).jdField_a_of_type_Long;
                   if (!this.jdField_i_of_type_Boolean) {
                     break label5265;
                   }
-                  l1 = this.jdField_a_of_type_Bocn.a(((bock)localObject3).jdField_a_of_type_Long);
+                  l1 = this.jdField_a_of_type_Bpsf.a(((bpsc)localObject3).jdField_a_of_type_Long);
                   this.this$0.a("hw_video_timestamp", "oldTime=" + l2 + " frameTime=" + l1);
                 }
               }
@@ -1193,18 +1193,18 @@ public class SVHwEncoder$HwEncode
               {
                 try
                 {
-                  this.jdField_a_of_type_Bocd.a(localboce, ((bock)localObject3).jdField_b_of_type_Int, l1, 0);
+                  this.jdField_a_of_type_Bprv.a(localbprw, ((bpsc)localObject3).jdField_b_of_type_Int, l1, 0);
                   this.jdField_h_of_type_Int += 1;
                   this.this$0.a("hw_video_write_frame", "mVideoWritedFrameCount=" + this.jdField_h_of_type_Int);
-                  this.jdField_a_of_type_Boch.a(true);
-                  if ((this.jdField_a_of_type_Bocf != null) || (((bock)localObject3).jdField_a_of_type_Int != ((bock)localObject3).jdField_b_of_type_Int)) {
+                  this.jdField_a_of_type_Bprz.a(true);
+                  if ((this.jdField_a_of_type_Bprx != null) || (((bpsc)localObject3).jdField_a_of_type_Int != ((bpsc)localObject3).jdField_b_of_type_Int)) {
                     break label865;
                   }
                   this.this$0.a(SVHwEncoder.a(this.this$0));
-                  if (this.this$0.a((bock)localObject3)) {
+                  if (this.this$0.a((bpsc)localObject3)) {
                     break label865;
                   }
-                  ((bock)localObject3).jdField_a_of_type_ArrayOfByte = null;
+                  ((bpsc)localObject3).jdField_a_of_type_ArrayOfByte = null;
                 }
                 catch (IllegalStateException localIllegalStateException2)
                 {
@@ -1216,23 +1216,23 @@ public class SVHwEncoder$HwEncode
                 a(this.jdField_a_of_type_Int, 0);
                 break;
                 break;
-                this.jdField_a_of_type_Bocd.a(localboce, 0, 0L, 4);
+                this.jdField_a_of_type_Bprv.a(localbprw, 0, 0L, 4);
                 this.jdField_b_of_type_Boolean = true;
-                this.this$0.a("hw_video_write_frame", "[end-of-stream] fps=" + ((bock)localObject3).jdField_a_of_type_Float + " bitrate" + ((bock)localObject3).jdField_c_of_type_Int);
-                if ((((bock)localObject3).jdField_a_of_type_Float > 0.0F) && (!SVHwEncoder.b(this.this$0)))
+                this.this$0.a("hw_video_write_frame", "[end-of-stream] fps=" + ((bpsc)localObject3).jdField_a_of_type_Float + " bitrate" + ((bpsc)localObject3).jdField_c_of_type_Int);
+                if ((((bpsc)localObject3).jdField_a_of_type_Float > 0.0F) && (!SVHwEncoder.b(this.this$0)))
                 {
                   this.this$0.a("hw_smooth_time_stamp", "mNeedDoSmooth=" + this.jdField_i_of_type_Boolean + " mUpdateVideoFps=" + this.jdField_j_of_type_Boolean + " mVideoFps=" + SVHwEncoder.a(this.this$0));
-                  SVHwEncoder.a(this.this$0, ((bock)localObject3).jdField_a_of_type_Float);
+                  SVHwEncoder.a(this.this$0, ((bpsc)localObject3).jdField_a_of_type_Float);
                   if (!this.jdField_i_of_type_Boolean) {
                     break label2149;
                   }
                 }
                 for (;;)
                 {
-                  if (((bock)localObject3).jdField_c_of_type_Int <= 0) {
+                  if (((bpsc)localObject3).jdField_c_of_type_Int <= 0) {
                     break label2217;
                   }
-                  SVHwEncoder.a(this.this$0, ((bock)localObject3).jdField_c_of_type_Int);
+                  SVHwEncoder.a(this.this$0, ((bpsc)localObject3).jdField_c_of_type_Int);
                   break;
                   label2149:
                   this.jdField_j_of_type_Boolean = true;
@@ -1240,46 +1240,46 @@ public class SVHwEncoder$HwEncode
                 }
               }
               break;
-              if (localboce.jdField_a_of_type_JavaNioByteBuffer == null)
+              if (localbprw.jdField_a_of_type_JavaNioByteBuffer == null)
               {
-                localboci2 = this.jdField_a_of_type_Boci;
-                localboci2.jdField_b_of_type_Int += 1;
-                this.this$0.a("hw_intel_x86__err_msg", "INFO_TRY_AGAIN_LATER: buffer=null mAudioBuferErrCount=" + this.jdField_a_of_type_Boci.jdField_b_of_type_Int);
-                if (this.jdField_a_of_type_Boci.jdField_b_of_type_Int < 3) {
+                localbpsa2 = this.jdField_a_of_type_Bpsa;
+                localbpsa2.jdField_b_of_type_Int += 1;
+                this.this$0.a("hw_intel_x86__err_msg", "INFO_TRY_AGAIN_LATER: buffer=null mAudioBuferErrCount=" + this.jdField_a_of_type_Bpsa.jdField_b_of_type_Int);
+                if (this.jdField_a_of_type_Bpsa.jdField_b_of_type_Int < 3) {
                   continue;
                 }
                 this.jdField_a_of_type_Int = -20;
                 a(this.jdField_a_of_type_Int, 0);
                 break;
               }
-              this.jdField_a_of_type_Boci.jdField_b_of_type_Int = 0;
-              localObject3 = localboci2;
+              this.jdField_a_of_type_Bpsa.jdField_b_of_type_Int = 0;
+              localObject3 = localbpsa2;
               if (SVHwEncoder.b(this.this$0))
               {
-                localObject3 = localboci2;
-                if (this.jdField_a_of_type_Bocf != null) {
+                localObject3 = localbpsa2;
+                if (this.jdField_a_of_type_Bprx != null) {
                   localObject3 = a();
                 }
               }
-              if (!((bock)localObject3).jdField_a_of_type_Boolean)
+              if (!((bpsc)localObject3).jdField_a_of_type_Boolean)
               {
-                localboce.jdField_a_of_type_JavaNioByteBuffer.clear();
-                i2 = localboce.jdField_a_of_type_JavaNioByteBuffer.capacity();
-                i3 = ((bock)localObject3).jdField_b_of_type_Int - ((bock)localObject3).jdField_a_of_type_Int;
+                localbprw.jdField_a_of_type_JavaNioByteBuffer.clear();
+                i2 = localbprw.jdField_a_of_type_JavaNioByteBuffer.capacity();
+                i3 = ((bpsc)localObject3).jdField_b_of_type_Int - ((bpsc)localObject3).jdField_a_of_type_Int;
                 if (i2 >= i3)
                 {
-                  localboce.jdField_a_of_type_JavaNioByteBuffer.put(((bock)localObject3).jdField_a_of_type_ArrayOfByte, ((bock)localObject3).jdField_a_of_type_Int, i3);
-                  ((bock)localObject3).jdField_a_of_type_Int += i3;
+                  localbprw.jdField_a_of_type_JavaNioByteBuffer.put(((bpsc)localObject3).jdField_a_of_type_ArrayOfByte, ((bpsc)localObject3).jdField_a_of_type_Int, i3);
+                  ((bpsc)localObject3).jdField_a_of_type_Int += i3;
                   i1 = i3;
                   label2456:
-                  this.this$0.a("hw_audio_write_frame", "offset=" + ((bock)localObject3).jdField_a_of_type_Int + " size=" + ((bock)localObject3).jdField_b_of_type_Int + " audiovalidSize=" + i3);
+                  this.this$0.a("hw_audio_write_frame", "offset=" + ((bpsc)localObject3).jdField_a_of_type_Int + " size=" + ((bpsc)localObject3).jdField_b_of_type_Int + " audiovalidSize=" + i3);
                   this.this$0.a("hw_audio_write_frame", "audiocapacity=" + i2 + " writedByte=" + i1);
-                  l2 = 1000L * ((bock)localObject3).jdField_a_of_type_Long;
+                  l2 = 1000L * ((bpsc)localObject3).jdField_a_of_type_Long;
                   if (!this.jdField_i_of_type_Boolean) {
                     break label5258;
                   }
                   f1 = a(i1);
-                  l1 = this.jdField_a_of_type_Bocn.a(f1);
+                  l1 = this.jdField_a_of_type_Bpsf.a(f1);
                   this.this$0.a("hw_audio_timestamp", "oldTime=" + l2 + " frameTime=" + l1);
                 }
               }
@@ -1287,30 +1287,30 @@ public class SVHwEncoder$HwEncode
               {
                 try
                 {
-                  this.jdField_b_of_type_Bocd.a(localboce, i1, l1, 0);
+                  this.jdField_b_of_type_Bprv.a(localbprw, i1, l1, 0);
                   this.jdField_k_of_type_Int += 1;
                   this.this$0.a("hw_audio_write_frame", "mWritedFrameCount=" + this.jdField_k_of_type_Int);
-                  this.jdField_a_of_type_Boch.a(false);
-                  if ((this.jdField_a_of_type_Bocf != null) || (((bock)localObject3).jdField_a_of_type_Int != ((bock)localObject3).jdField_b_of_type_Int)) {
+                  this.jdField_a_of_type_Bprz.a(false);
+                  if ((this.jdField_a_of_type_Bprx != null) || (((bpsc)localObject3).jdField_a_of_type_Int != ((bpsc)localObject3).jdField_b_of_type_Int)) {
                     break label1020;
                   }
                   this.this$0.a(SVHwEncoder.b(this.this$0));
-                  ((bock)localObject3).jdField_a_of_type_ArrayOfByte = null;
+                  ((bpsc)localObject3).jdField_a_of_type_ArrayOfByte = null;
                 }
                 catch (IllegalStateException localIllegalStateException4)
                 {
-                  this.this$0.a("hw_audio_timestamp", "offset=" + ((bock)localObject3).jdField_a_of_type_Int + " size=" + ((bock)localObject3).jdField_b_of_type_Int + " audiovalidSize=" + i3);
+                  this.this$0.a("hw_audio_timestamp", "offset=" + ((bpsc)localObject3).jdField_a_of_type_Int + " size=" + ((bpsc)localObject3).jdField_b_of_type_Int + " audiovalidSize=" + i3);
                   this.this$0.a("hw_audio_timestamp", "audiocapacity=" + i2 + " writedByte=" + i1);
                   localIllegalStateException4.printStackTrace();
                   this.jdField_a_of_type_Int = -16;
                   a(this.jdField_a_of_type_Int, 0);
                 }
-                localboce.jdField_a_of_type_JavaNioByteBuffer.put(((bock)localObject3).jdField_a_of_type_ArrayOfByte, ((bock)localObject3).jdField_a_of_type_Int, i2);
-                ((bock)localObject3).jdField_a_of_type_Int += i2;
+                localbprw.jdField_a_of_type_JavaNioByteBuffer.put(((bpsc)localObject3).jdField_a_of_type_ArrayOfByte, ((bpsc)localObject3).jdField_a_of_type_Int, i2);
+                ((bpsc)localObject3).jdField_a_of_type_Int += i2;
                 i1 = i2;
                 break label2456;
                 break;
-                this.jdField_b_of_type_Bocd.a(localboce, 0, 0L, 4);
+                this.jdField_b_of_type_Bprv.a(localbprw, 0, 0L, 4);
                 this.jdField_c_of_type_Boolean = true;
                 this.this$0.a("hw_audio_write_frame", "mWritedFrameCount=" + this.jdField_k_of_type_Int + " [Finish]...");
               }
@@ -1327,31 +1327,31 @@ public class SVHwEncoder$HwEncode
               }
               else if (i1 == -2)
               {
-                this.jdField_a_of_type_AndroidMediaMediaFormat = this.jdField_a_of_type_Bocd.a().getOutputFormat();
-                this.jdField_a_of_type_Bocj.a(this.jdField_a_of_type_AndroidMediaMediaFormat);
+                this.jdField_a_of_type_AndroidMediaMediaFormat = this.jdField_a_of_type_Bprv.a().getOutputFormat();
+                this.jdField_a_of_type_Bpsb.a(this.jdField_a_of_type_AndroidMediaMediaFormat);
                 this.this$0.a("hw_video_encode_frame", "out format changed");
               }
               else if ((((MediaCodec.BufferInfo)localObject3).flags & 0x2) != 0)
               {
                 this.this$0.a("hw_video_encode_frame", "get Config data...");
                 this.this$0.a(localIllegalStateException5.jdField_a_of_type_JavaNioByteBuffer, (MediaCodec.BufferInfo)localObject3, "mVideoEncoder_dequeueOutputBuffer", 30);
-                this.jdField_a_of_type_Bocd.a(localIllegalStateException5);
+                this.jdField_a_of_type_Bprv.a(localIllegalStateException5);
               }
               else
               {
                 this.this$0.a("hw_video_encode_frame", "writedata size=" + ((MediaCodec.BufferInfo)localObject3).size);
                 if (((MediaCodec.BufferInfo)localObject3).size != 0)
                 {
-                  this.jdField_a_of_type_Boch.b(true);
+                  this.jdField_a_of_type_Bprz.b(true);
                   this.jdField_i_of_type_Int += 1;
                   if (this.jdField_a_of_type_AndroidMediaMediaMuxer == null) {
                     break label3455;
                   }
                   if ((((MediaCodec.BufferInfo)localObject3).flags & 0x1) != 0)
                   {
-                    this.jdField_a_of_type_Bocj.jdField_a_of_type_Boolean = true;
+                    this.jdField_a_of_type_Bpsb.jdField_a_of_type_Boolean = true;
                     if (this.jdField_j_of_type_Int == 0) {
-                      this.jdField_a_of_type_Bocj.jdField_c_of_type_Boolean = true;
+                      this.jdField_a_of_type_Bpsb.jdField_c_of_type_Boolean = true;
                     }
                   }
                   if (this.jdField_j_of_type_Int == 0)
@@ -1359,26 +1359,26 @@ public class SVHwEncoder$HwEncode
                     if (this.jdField_m_of_type_Int != 0) {
                       break label3406;
                     }
-                    this.jdField_a_of_type_Bocj.jdField_b_of_type_Boolean = true;
+                    this.jdField_a_of_type_Bpsb.jdField_b_of_type_Boolean = true;
                   }
                   label3262:
                   this.jdField_j_of_type_Int += 1;
                   this.this$0.a("hw_video_writesample", "track=" + this.jdField_b_of_type_Int + " pts=" + ((MediaCodec.BufferInfo)localObject3).presentationTimeUs);
-                  this.jdField_a_of_type_Bocj.a(((MediaCodec.BufferInfo)localObject3).presentationTimeUs, true);
-                  this.jdField_a_of_type_Boch.a();
+                  this.jdField_a_of_type_Bpsb.a(((MediaCodec.BufferInfo)localObject3).presentationTimeUs, true);
+                  this.jdField_a_of_type_Bprz.a();
                 }
                 for (;;)
                 {
                   try
                   {
                     this.jdField_a_of_type_AndroidMediaMediaMuxer.writeSampleData(this.jdField_b_of_type_Int, localIllegalStateException5.jdField_a_of_type_JavaNioByteBuffer, (MediaCodec.BufferInfo)localObject3);
-                    this.jdField_a_of_type_Boch.c(true);
+                    this.jdField_a_of_type_Bprz.c(true);
                     if ((((MediaCodec.BufferInfo)localObject3).flags & 0x4) != 0)
                     {
                       this.jdField_d_of_type_Boolean = true;
                       this.this$0.a("hw_video_encode_frame", "end of stream");
                     }
-                    this.jdField_a_of_type_Bocd.a(localIllegalStateException5);
+                    this.jdField_a_of_type_Bprv.a(localIllegalStateException5);
                   }
                   catch (Throwable localThrowable1)
                   {
@@ -1390,7 +1390,7 @@ public class SVHwEncoder$HwEncode
                     this.jdField_a_of_type_Int = -25;
                     a(this.jdField_a_of_type_Int, 0);
                   }
-                  this.jdField_a_of_type_Bocj.jdField_b_of_type_Boolean = false;
+                  this.jdField_a_of_type_Bpsb.jdField_b_of_type_Boolean = false;
                   break label3262;
                   break;
                   label3455:
@@ -1410,8 +1410,8 @@ public class SVHwEncoder$HwEncode
                 }
                 else if (i1 == -2)
                 {
-                  this.jdField_b_of_type_AndroidMediaMediaFormat = this.jdField_b_of_type_Bocd.a().getOutputFormat();
-                  this.jdField_a_of_type_Bocj.b(this.jdField_b_of_type_AndroidMediaMediaFormat);
+                  this.jdField_b_of_type_AndroidMediaMediaFormat = this.jdField_b_of_type_Bprv.a().getOutputFormat();
+                  this.jdField_a_of_type_Bpsb.b(this.jdField_b_of_type_AndroidMediaMediaFormat);
                   this.this$0.a("hw_audio_encode_frame", "out format change");
                 }
                 else
@@ -1421,7 +1421,7 @@ public class SVHwEncoder$HwEncode
                   }
                   this.this$0.a("hw_audio_encode_frame", "get config......");
                   this.this$0.a(localIllegalStateException6.jdField_a_of_type_JavaNioByteBuffer, (MediaCodec.BufferInfo)localObject3, "mAudioEncoder_dequeueOutputBuffer", 10);
-                  this.jdField_b_of_type_Bocd.a(localIllegalStateException6);
+                  this.jdField_b_of_type_Bprv.a(localIllegalStateException6);
                 }
               }
             }
@@ -1429,15 +1429,15 @@ public class SVHwEncoder$HwEncode
             this.this$0.a("hw_audio_encode_frame", "writedata size=" + ((MediaCodec.BufferInfo)localObject3).size);
             if (((MediaCodec.BufferInfo)localObject3).size != 0)
             {
-              this.jdField_a_of_type_Boch.b(false);
+              this.jdField_a_of_type_Bprz.b(false);
               this.jdField_l_of_type_Int += 1;
               if (this.jdField_a_of_type_AndroidMediaMediaMuxer == null) {
                 break label3904;
               }
               this.jdField_m_of_type_Int += 1;
               this.this$0.a("hw_audio_writesample", "track=" + this.jdField_c_of_type_Int + " pts=" + ((MediaCodec.BufferInfo)localObject3).presentationTimeUs);
-              if (!this.jdField_a_of_type_Bocj.a(((MediaCodec.BufferInfo)localObject3).presentationTimeUs, false)) {
-                this.jdField_a_of_type_Boch.a();
+              if (!this.jdField_a_of_type_Bpsb.a(((MediaCodec.BufferInfo)localObject3).presentationTimeUs, false)) {
+                this.jdField_a_of_type_Bprz.a();
               }
             }
             for (;;)
@@ -1445,13 +1445,13 @@ public class SVHwEncoder$HwEncode
               try
               {
                 this.jdField_a_of_type_AndroidMediaMediaMuxer.writeSampleData(this.jdField_c_of_type_Int, localIllegalStateException6.jdField_a_of_type_JavaNioByteBuffer, (MediaCodec.BufferInfo)localObject3);
-                this.jdField_a_of_type_Boch.c(false);
+                this.jdField_a_of_type_Bprz.c(false);
                 if ((((MediaCodec.BufferInfo)localObject3).flags & 0x4) != 0)
                 {
                   this.jdField_e_of_type_Boolean = true;
                   this.this$0.a("hw_audio_encode_frame", "end of stream");
                 }
-                this.jdField_b_of_type_Bocd.a(localIllegalStateException6);
+                this.jdField_b_of_type_Bprv.a(localIllegalStateException6);
               }
               catch (Throwable localThrowable2)
               {
@@ -1503,7 +1503,7 @@ public class SVHwEncoder$HwEncode
               }
               a(true);
               a(false);
-              this.this$0.a("hw_video_time_used_msg", "HwTimeUsed=" + this.jdField_a_of_type_Boch.toString());
+              this.this$0.a("hw_video_time_used_msg", "HwTimeUsed=" + this.jdField_a_of_type_Bprz.toString());
               c();
               this.jdField_a_of_type_Int = e();
               if (this.jdField_a_of_type_Int == 0) {
@@ -1575,7 +1575,7 @@ public class SVHwEncoder$HwEncode
                 this.jdField_c_of_type_Boolean = false;
                 this.jdField_l_of_type_Boolean = true;
                 this.jdField_k_of_type_Boolean = false;
-                this.jdField_a_of_type_Bocj.a("releaseMuxer[mEnableEncode=true]");
+                this.jdField_a_of_type_Bpsb.a("releaseMuxer[mEnableEncode=true]");
                 this.this$0.a("hw_video_writesample", "track=" + this.jdField_b_of_type_Int);
                 this.this$0.a("hw_audio_writesample", "track=" + this.jdField_c_of_type_Int);
                 this.this$0.a("hw_video_timestamp", "new segment");
@@ -1584,14 +1584,14 @@ public class SVHwEncoder$HwEncode
                 if ((this.jdField_a_of_type_Boolean) || ((this.jdField_a_of_type_AndroidMediaMediaFormat == null) && (this.jdField_f_of_type_Boolean)) || ((this.jdField_b_of_type_AndroidMediaMediaFormat == null) && (this.jdField_g_of_type_Boolean))) {
                   break;
                 }
-                this.jdField_a_of_type_Boch.a();
+                this.jdField_a_of_type_Bprz.a();
               }
             }
             try
             {
               this.jdField_a_of_type_AndroidMediaMediaMuxer = new MediaMuxer(this.jdField_f_of_type_JavaLangString, 0);
               this.jdField_a_of_type_AndroidMediaMediaMuxer.setOrientationHint(SVHwEncoder.e(this.this$0));
-              this.jdField_a_of_type_Boch.n = this.jdField_a_of_type_Boch.a();
+              this.jdField_a_of_type_Bprz.n = this.jdField_a_of_type_Bprz.a();
               if (this.jdField_a_of_type_Int != 0)
               {
                 a(this.jdField_a_of_type_Int, 0);
@@ -1628,7 +1628,7 @@ public class SVHwEncoder$HwEncode
                 this.jdField_a_of_type_Boolean = false;
                 this.jdField_a_of_type_Int = -11;
               }
-              this.jdField_a_of_type_Boch.a();
+              this.jdField_a_of_type_Bprz.a();
               if (this.jdField_a_of_type_AndroidMediaMediaFormat != null)
               {
                 this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack(this.jdField_a_of_type_AndroidMediaMediaFormat);
@@ -1639,11 +1639,11 @@ public class SVHwEncoder$HwEncode
                 this.jdField_c_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack(this.jdField_b_of_type_AndroidMediaMediaFormat);
                 this.this$0.a("hw_media_muxer_seg", " adding audio track:outputAudioTrack=" + this.jdField_c_of_type_Int);
               }
-              this.jdField_a_of_type_Boch.o = this.jdField_a_of_type_Boch.a();
+              this.jdField_a_of_type_Bprz.o = this.jdField_a_of_type_Bprz.a();
               this.this$0.a("hw_media_muxer_seg", "starting......");
-              this.jdField_a_of_type_Boch.a();
+              this.jdField_a_of_type_Bprz.a();
               this.jdField_a_of_type_AndroidMediaMediaMuxer.start();
-              this.jdField_a_of_type_Boch.p = this.jdField_a_of_type_Boch.a();
+              this.jdField_a_of_type_Bprz.p = this.jdField_a_of_type_Bprz.a();
               this.jdField_a_of_type_Boolean = true;
             }
           }

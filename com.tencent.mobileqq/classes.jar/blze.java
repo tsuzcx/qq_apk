@@ -1,6 +1,16 @@
-public abstract interface blze
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qlink.QlinkStandardDialogActivity;
+
+public class blze
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  public blze(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.finish();
+  }
 }
 
 

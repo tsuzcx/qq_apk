@@ -1,18 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.5;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
-class bcwp
-  implements DialogInterface.OnClickListener
+public class bcwp
+  implements INetEngine.INetEngineListener
 {
-  bcwp(bcwn parambcwn) {}
+  public bcwp(PtvTemplateManager.5 param5) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onResp(NetResp paramNetResp)
   {
-    if (this.a.a.b == 1) {
-      bcef.b(TeamWorkAuthorizeSettingFragment.a(this.a.a), "dc00898", "", "", "0x8007CFE", "0x8007CFE", 0, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.i("PtvTemplateManager", 2, "onResp url: " + this.a.a.resurl + " resultcode: " + paramNetResp.mHttpCode);
+    }
+    this.a.a.usable = this.a.this$0.a(this.a.a);
+    if (this.a.a.usable) {}
+    try
+    {
+      nwp.a(new File(PtvTemplateManager.jdField_a_of_type_JavaIoFile, this.a.a.name), PtvTemplateManager.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    catch (IOException paramNetResp)
+    {
+      while (!QLog.isColorLevel()) {}
+      paramNetResp.printStackTrace();
     }
   }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

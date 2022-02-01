@@ -1,27 +1,25 @@
-import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wrh
-  extends QQUIEventReceiver<wrg, wrl>
+  extends vzj
 {
-  public wrh(@NonNull wrg paramwrg)
+  private wvo a;
+  public boolean a;
+  
+  public wrh(ErrorMessage paramErrorMessage)
   {
-    super(paramwrg);
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
   }
   
-  public void a(@NonNull wrg paramwrg, @NonNull wrl paramwrl)
+  public wrh(boolean paramBoolean)
   {
-    if (paramwrl.a.isSuccess())
-    {
-      xvv.a("Q.qqstory.playernew.LoadingMoreWidget", "PlayVideoChangeReceiver. %s.", paramwrl.toString());
-      paramwrg.e();
-    }
+    this(new ErrorMessage());
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public Class acceptEventClass()
+  public wvo a()
   {
-    return wrl.class;
+    return this.jdField_a_of_type_Wvo;
   }
 }
 

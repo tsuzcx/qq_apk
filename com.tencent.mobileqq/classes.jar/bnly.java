@@ -1,40 +1,20 @@
-import android.widget.ImageView;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.QIMCommonLoadingView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.InformationFaceAdapter.DownloadProgressCallback.1;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.InformationFaceAdapter.DownloadProgressCallback.2;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class bnly
-  implements bmuj
+class bnly
+  implements Animation.AnimationListener
 {
-  private QIMCommonLoadingView jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView;
-  private Boolean jdField_a_of_type_JavaLangBoolean;
+  bnly(bnlx parambnlx) {}
   
-  bnly(bnlw parambnlw, QIMCommonLoadingView paramQIMCommonLoadingView, ImageView paramImageView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView = paramQIMCommonLoadingView;
-    this.jdField_a_of_type_JavaLangBoolean = ((Boolean)paramImageView.getTag(2131378172));
+    bnlx.a(this.a).setVisibility(4);
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView = null;
-    this.jdField_a_of_type_JavaLangBoolean = null;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void a(float paramFloat, String paramString, int paramInt)
-  {
-    paramInt = (int)paramFloat;
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.post(new InformationFaceAdapter.DownloadProgressCallback.1(this, paramInt));
-  }
-  
-  public void a(boolean paramBoolean, String paramString, bnli parambnli)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("InformationFaceAdapter", 2, "isSuccess:" + paramBoolean);
-    }
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.post(new InformationFaceAdapter.DownloadProgressCallback.2(this, paramBoolean, parambnli));
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

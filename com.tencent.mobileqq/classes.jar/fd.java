@@ -10,13 +10,13 @@ public class fd
 {
   public static String a(long paramLong)
   {
-    return bfvi.a(paramLong);
+    return bhea.a(paramLong);
   }
   
   public static String a(Context paramContext, String paramString)
   {
     Bitmap localBitmap;
-    if (aszt.a(paramString) == 0) {
+    if (auea.a(paramString) == 0) {
       localBitmap = ff.a(paramString, 150, 150);
     }
     for (;;)
@@ -24,7 +24,7 @@ public class fd
       if (localBitmap == null)
       {
         return null;
-        if (aszt.a(paramString) == 2) {
+        if (auea.a(paramString) == 2) {
           localBitmap = ff.c(paramString, 150, 150);
         }
       }
@@ -81,11 +81,11 @@ public class fd
   
   public static String a(Context paramContext, String paramString1, String paramString2)
   {
-    paramContext = new VFSFile(bftf.a(paramContext) + "thumbnails/");
+    paramContext = new VFSFile(bhbx.a(paramContext) + "thumbnails/");
     if (!paramContext.exists()) {
       paramContext.mkdirs();
     }
-    return paramContext.getAbsolutePath() + "/" + aszt.a(paramString1) + "." + paramString2 + ".JPG";
+    return paramContext.getAbsolutePath() + "/" + auea.a(paramString1) + "." + paramString2 + ".JPG";
   }
   
   public static void a(VFSFile paramVFSFile)
@@ -249,7 +249,7 @@ public class fd
     //   23: invokevirtual 91	com/tencent/mm/vfs/VFSFile:getAbsolutePath	()Ljava/lang/String;
     //   26: aload_1
     //   27: invokevirtual 91	com/tencent/mm/vfs/VFSFile:getAbsolutePath	()Ljava/lang/String;
-    //   30: invokestatic 153	bajv:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   30: invokestatic 153	bbqk:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   33: aload_1
     //   34: invokevirtual 113	com/tencent/mm/vfs/VFSFile:delete	()Z
     //   37: pop
@@ -465,11 +465,11 @@ public class fd
   
   public static String b(Context paramContext, String paramString)
   {
-    paramContext = new VFSFile(bftf.a(paramContext) + "thumbnails/");
+    paramContext = new VFSFile(bhbx.a(paramContext) + "thumbnails/");
     if (!paramContext.exists()) {
       paramContext.mkdirs();
     }
-    return paramContext.getAbsolutePath() + "/" + aszt.a(paramString) + ".JPG";
+    return paramContext.getAbsolutePath() + "/" + auea.a(paramString) + ".JPG";
   }
 }
 

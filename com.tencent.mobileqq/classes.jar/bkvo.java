@@ -1,407 +1,562 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.LightingColorFilter;
-import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.biz.ui.RefreshView;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.util.DisplayUtil;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.mobileqq.utils.DeviceInfoUtil.NetInfo;
-import com.tencent.mobileqq.webview.WebViewTitleStyle;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import cooperation.qqreader.ui.ReaderHomeTabFragment;
+import java.util.Map;
+import java.util.jar.Attributes;
 
 public class bkvo
-  extends bgtw
 {
-  private int jdField_a_of_type_Int = -1;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Intent jdField_a_of_type_AndroidContentIntent;
-  private View jdField_a_of_type_AndroidViewView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private RadioGroup jdField_a_of_type_AndroidWidgetRadioGroup;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
-  private String d;
-  
-  public bkvo(SwiftBrowserUIStyleHandler paramSwiftBrowserUIStyleHandler)
+  /* Error */
+  public static int a(String paramString1, String paramString2, byte[] paramArrayOfByte)
   {
-    super(paramSwiftBrowserUIStyleHandler);
-    this.jdField_a_of_type_AndroidAppActivity = paramSwiftBrowserUIStyleHandler.mHostActivity;
-    this.jdField_a_of_type_AndroidContentIntent = this.jdField_a_of_type_AndroidAppActivity.getIntent();
-    int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("key_subtab", 0);
-    this.jdField_a_of_type_AndroidContentIntent.removeExtra("key_subtab");
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("key_title_bar_left_tab_url");
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("key_title_bar_right_tab_url");
-    if (this.mUIStyle.mSubIndex != i) {
-      setTopTabSelection(i);
-    }
-    this.c = DeviceInfoUtil.getNetInfo(this.jdField_a_of_type_AndroidAppActivity).networkType;
-    this.d = bkvi.a(this.jdField_a_of_type_AndroidAppActivity);
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 7
+    //   3: aconst_null
+    //   4: astore 8
+    //   6: aconst_null
+    //   7: astore 9
+    //   9: aconst_null
+    //   10: astore 14
+    //   12: aconst_null
+    //   13: astore 11
+    //   15: aconst_null
+    //   16: astore 10
+    //   18: aconst_null
+    //   19: astore 13
+    //   21: aconst_null
+    //   22: astore 12
+    //   24: iconst_0
+    //   25: istore_3
+    //   26: new 14	java/util/jar/JarFile
+    //   29: dup
+    //   30: aload_0
+    //   31: invokespecial 18	java/util/jar/JarFile:<init>	(Ljava/lang/String;)V
+    //   34: astore 6
+    //   36: aload 12
+    //   38: astore 7
+    //   40: aload 11
+    //   42: astore_0
+    //   43: aload 6
+    //   45: astore 5
+    //   47: aload 10
+    //   49: astore 9
+    //   51: aload 13
+    //   53: astore 8
+    //   55: aload 6
+    //   57: aload_1
+    //   58: invokevirtual 22	java/util/jar/JarFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
+    //   61: astore_1
+    //   62: aload_1
+    //   63: ifnonnull +36 -> 99
+    //   66: iconst_2
+    //   67: istore 4
+    //   69: iconst_0
+    //   70: ifeq +11 -> 81
+    //   73: new 24	java/lang/NullPointerException
+    //   76: dup
+    //   77: invokespecial 27	java/lang/NullPointerException:<init>	()V
+    //   80: athrow
+    //   81: iload 4
+    //   83: istore_3
+    //   84: aload 6
+    //   86: ifnull +11 -> 97
+    //   89: aload 6
+    //   91: invokevirtual 30	java/util/jar/JarFile:close	()V
+    //   94: iload 4
+    //   96: istore_3
+    //   97: iload_3
+    //   98: ireturn
+    //   99: aload 12
+    //   101: astore 7
+    //   103: aload 11
+    //   105: astore_0
+    //   106: aload 6
+    //   108: astore 5
+    //   110: aload 10
+    //   112: astore 9
+    //   114: aload 13
+    //   116: astore 8
+    //   118: aload 6
+    //   120: aload_1
+    //   121: invokevirtual 34	java/util/jar/JarFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   124: astore_1
+    //   125: aload_1
+    //   126: astore 7
+    //   128: aload_1
+    //   129: astore_0
+    //   130: aload 6
+    //   132: astore 5
+    //   134: aload_1
+    //   135: astore 9
+    //   137: aload_1
+    //   138: astore 8
+    //   140: ldc 36
+    //   142: invokestatic 42	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   145: astore 10
+    //   147: aload_1
+    //   148: astore 7
+    //   150: aload_1
+    //   151: astore_0
+    //   152: aload 6
+    //   154: astore 5
+    //   156: aload_1
+    //   157: astore 9
+    //   159: aload_1
+    //   160: astore 8
+    //   162: sipush 8192
+    //   165: newarray byte
+    //   167: astore 11
+    //   169: aload_1
+    //   170: astore 7
+    //   172: aload_1
+    //   173: astore_0
+    //   174: aload 6
+    //   176: astore 5
+    //   178: aload_1
+    //   179: astore 9
+    //   181: aload_1
+    //   182: astore 8
+    //   184: aload_1
+    //   185: aload 11
+    //   187: invokevirtual 48	java/io/InputStream:read	([B)I
+    //   190: istore 4
+    //   192: iload 4
+    //   194: iconst_m1
+    //   195: if_icmpeq +70 -> 265
+    //   198: aload_1
+    //   199: astore 7
+    //   201: aload_1
+    //   202: astore_0
+    //   203: aload 6
+    //   205: astore 5
+    //   207: aload_1
+    //   208: astore 9
+    //   210: aload_1
+    //   211: astore 8
+    //   213: aload 10
+    //   215: aload 11
+    //   217: iconst_0
+    //   218: iload 4
+    //   220: invokevirtual 52	java/security/MessageDigest:update	([BII)V
+    //   223: goto -54 -> 169
+    //   226: astore_1
+    //   227: aload 7
+    //   229: astore_0
+    //   230: aload 6
+    //   232: astore 5
+    //   234: aload_1
+    //   235: invokevirtual 55	java/io/IOException:printStackTrace	()V
+    //   238: iconst_3
+    //   239: istore_3
+    //   240: aload 7
+    //   242: ifnull +8 -> 250
+    //   245: aload 7
+    //   247: invokevirtual 56	java/io/InputStream:close	()V
+    //   250: aload 6
+    //   252: ifnull -155 -> 97
+    //   255: aload 6
+    //   257: invokevirtual 30	java/util/jar/JarFile:close	()V
+    //   260: iconst_3
+    //   261: ireturn
+    //   262: astore_0
+    //   263: iconst_3
+    //   264: ireturn
+    //   265: aload_1
+    //   266: astore 7
+    //   268: aload_1
+    //   269: astore_0
+    //   270: aload 6
+    //   272: astore 5
+    //   274: aload_1
+    //   275: astore 9
+    //   277: aload_1
+    //   278: astore 8
+    //   280: aload 10
+    //   282: invokevirtual 60	java/security/MessageDigest:digest	()[B
+    //   285: astore 10
+    //   287: aload_1
+    //   288: astore 7
+    //   290: aload_1
+    //   291: astore_0
+    //   292: aload 6
+    //   294: astore 5
+    //   296: aload_1
+    //   297: astore 9
+    //   299: aload_1
+    //   300: astore 8
+    //   302: aload 10
+    //   304: iconst_0
+    //   305: aload_2
+    //   306: iconst_0
+    //   307: aload 10
+    //   309: arraylength
+    //   310: invokestatic 66	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   313: aload_1
+    //   314: ifnull +7 -> 321
+    //   317: aload_1
+    //   318: invokevirtual 56	java/io/InputStream:close	()V
+    //   321: aload 6
+    //   323: ifnull -226 -> 97
+    //   326: aload 6
+    //   328: invokevirtual 30	java/util/jar/JarFile:close	()V
+    //   331: iconst_0
+    //   332: ireturn
+    //   333: astore_0
+    //   334: iconst_0
+    //   335: ireturn
+    //   336: astore_1
+    //   337: aconst_null
+    //   338: astore 6
+    //   340: aload 8
+    //   342: astore_0
+    //   343: aload 6
+    //   345: astore 5
+    //   347: aload_1
+    //   348: invokevirtual 67	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   351: sipush 144
+    //   354: istore_3
+    //   355: aload 8
+    //   357: ifnull +8 -> 365
+    //   360: aload 8
+    //   362: invokevirtual 56	java/io/InputStream:close	()V
+    //   365: aload 6
+    //   367: ifnull -270 -> 97
+    //   370: aload 6
+    //   372: invokevirtual 30	java/util/jar/JarFile:close	()V
+    //   375: sipush 144
+    //   378: ireturn
+    //   379: astore_0
+    //   380: sipush 144
+    //   383: ireturn
+    //   384: astore_1
+    //   385: aconst_null
+    //   386: astore 6
+    //   388: aload 9
+    //   390: astore_0
+    //   391: aload 6
+    //   393: astore 5
+    //   395: aload_1
+    //   396: invokevirtual 68	java/security/NoSuchAlgorithmException:printStackTrace	()V
+    //   399: sipush 139
+    //   402: istore_3
+    //   403: aload 9
+    //   405: ifnull +8 -> 413
+    //   408: aload 9
+    //   410: invokevirtual 56	java/io/InputStream:close	()V
+    //   413: aload 6
+    //   415: ifnull -318 -> 97
+    //   418: aload 6
+    //   420: invokevirtual 30	java/util/jar/JarFile:close	()V
+    //   423: sipush 139
+    //   426: ireturn
+    //   427: astore_0
+    //   428: sipush 139
+    //   431: ireturn
+    //   432: astore_1
+    //   433: aconst_null
+    //   434: astore 5
+    //   436: aload 14
+    //   438: astore_0
+    //   439: aload_0
+    //   440: ifnull +7 -> 447
+    //   443: aload_0
+    //   444: invokevirtual 56	java/io/InputStream:close	()V
+    //   447: aload 5
+    //   449: ifnull +8 -> 457
+    //   452: aload 5
+    //   454: invokevirtual 30	java/util/jar/JarFile:close	()V
+    //   457: aload_1
+    //   458: athrow
+    //   459: astore_0
+    //   460: goto -379 -> 81
+    //   463: astore_0
+    //   464: iconst_2
+    //   465: ireturn
+    //   466: astore_0
+    //   467: goto -146 -> 321
+    //   470: astore_0
+    //   471: goto -221 -> 250
+    //   474: astore_0
+    //   475: goto -110 -> 365
+    //   478: astore_0
+    //   479: goto -66 -> 413
+    //   482: astore_0
+    //   483: goto -36 -> 447
+    //   486: astore_0
+    //   487: goto -30 -> 457
+    //   490: astore_1
+    //   491: goto -52 -> 439
+    //   494: astore_1
+    //   495: goto -107 -> 388
+    //   498: astore_1
+    //   499: goto -159 -> 340
+    //   502: astore_1
+    //   503: aconst_null
+    //   504: astore 6
+    //   506: goto -279 -> 227
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	509	0	paramString1	String
+    //   0	509	1	paramString2	String
+    //   0	509	2	paramArrayOfByte	byte[]
+    //   25	378	3	i	int
+    //   67	152	4	j	int
+    //   45	408	5	localJarFile1	java.util.jar.JarFile
+    //   34	471	6	localJarFile2	java.util.jar.JarFile
+    //   1	288	7	localObject1	Object
+    //   4	357	8	localObject2	Object
+    //   7	402	9	localObject3	Object
+    //   16	292	10	localObject4	Object
+    //   13	203	11	arrayOfByte	byte[]
+    //   22	78	12	localObject5	Object
+    //   19	96	13	localObject6	Object
+    //   10	427	14	localObject7	Object
+    // Exception table:
+    //   from	to	target	type
+    //   55	62	226	java/io/IOException
+    //   118	125	226	java/io/IOException
+    //   140	147	226	java/io/IOException
+    //   162	169	226	java/io/IOException
+    //   184	192	226	java/io/IOException
+    //   213	223	226	java/io/IOException
+    //   280	287	226	java/io/IOException
+    //   302	313	226	java/io/IOException
+    //   255	260	262	java/io/IOException
+    //   326	331	333	java/io/IOException
+    //   26	36	336	java/lang/OutOfMemoryError
+    //   370	375	379	java/io/IOException
+    //   26	36	384	java/security/NoSuchAlgorithmException
+    //   418	423	427	java/io/IOException
+    //   26	36	432	finally
+    //   73	81	459	java/io/IOException
+    //   89	94	463	java/io/IOException
+    //   317	321	466	java/io/IOException
+    //   245	250	470	java/io/IOException
+    //   360	365	474	java/io/IOException
+    //   408	413	478	java/io/IOException
+    //   443	447	482	java/io/IOException
+    //   452	457	486	java/io/IOException
+    //   55	62	490	finally
+    //   118	125	490	finally
+    //   140	147	490	finally
+    //   162	169	490	finally
+    //   184	192	490	finally
+    //   213	223	490	finally
+    //   234	238	490	finally
+    //   280	287	490	finally
+    //   302	313	490	finally
+    //   347	351	490	finally
+    //   395	399	490	finally
+    //   55	62	494	java/security/NoSuchAlgorithmException
+    //   118	125	494	java/security/NoSuchAlgorithmException
+    //   140	147	494	java/security/NoSuchAlgorithmException
+    //   162	169	494	java/security/NoSuchAlgorithmException
+    //   184	192	494	java/security/NoSuchAlgorithmException
+    //   213	223	494	java/security/NoSuchAlgorithmException
+    //   280	287	494	java/security/NoSuchAlgorithmException
+    //   302	313	494	java/security/NoSuchAlgorithmException
+    //   55	62	498	java/lang/OutOfMemoryError
+    //   118	125	498	java/lang/OutOfMemoryError
+    //   140	147	498	java/lang/OutOfMemoryError
+    //   162	169	498	java/lang/OutOfMemoryError
+    //   184	192	498	java/lang/OutOfMemoryError
+    //   213	223	498	java/lang/OutOfMemoryError
+    //   280	287	498	java/lang/OutOfMemoryError
+    //   302	313	498	java/lang/OutOfMemoryError
+    //   26	36	502	java/io/IOException
   }
   
-  private ImageView a(int paramInt, String paramString, View.OnClickListener paramOnClickListener)
+  public static int a(Map<String, Attributes> paramMap, String paramString1, String paramString2)
   {
-    if ((this.rightViewImg != null) && (this.rightViewImg.getVisibility() == 0))
-    {
-      ViewGroup localViewGroup = (ViewGroup)this.rightViewImg.getParent();
-      Object localObject = (RelativeLayout.LayoutParams)this.rightViewImg.getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject).leftMargin = (((RelativeLayout.LayoutParams)localObject).width + DisplayUtil.dip2px(this.jdField_a_of_type_AndroidAppActivity, 13.0F));
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(((RelativeLayout.LayoutParams)localObject).width, ((RelativeLayout.LayoutParams)localObject).height);
-      localLayoutParams.topMargin = ((RelativeLayout.LayoutParams)localObject).topMargin;
-      localObject = new ImageView(this.jdField_a_of_type_AndroidAppActivity);
-      ((ImageView)localObject).setContentDescription(paramString);
-      ((ImageView)localObject).setOnClickListener(paramOnClickListener);
-      ((ImageView)localObject).setImageResource(paramInt);
-      ((ImageView)localObject).setScaleType(ImageView.ScaleType.CENTER);
-      localViewGroup.addView((View)localObject, localViewGroup.indexOfChild(this.rightViewImg), localLayoutParams);
-      return localObject;
+    if (paramMap == null) {
+      return 17;
     }
-    return null;
+    paramMap = (Attributes)paramMap.get(paramString1);
+    if (paramMap == null) {
+      return 7;
+    }
+    if (true == paramString2.equals(paramMap.getValue("SHA-256-Digest"))) {
+      return 0;
+    }
+    return 143;
   }
   
-  private void a()
+  public static String a(byte[] paramArrayOfByte)
   {
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout == null)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setGravity(17);
-      this.jdField_a_of_type_AndroidWidgetRadioGroup = new RadioGroup(this.jdField_a_of_type_AndroidAppActivity);
-      ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-2, -2);
-      this.jdField_a_of_type_AndroidWidgetRadioGroup.setGravity(17);
-      this.jdField_a_of_type_AndroidWidgetRadioGroup.setOrientation(0);
-      this.jdField_a_of_type_AndroidWidgetRadioGroup.setDividerDrawable(null);
-      this.jdField_a_of_type_AndroidWidgetRadioGroup.setDividerPadding(0);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetRadioGroup, localLayoutParams);
-      RadioButton localRadioButton = new RadioButton(this.jdField_a_of_type_AndroidAppActivity);
-      localRadioButton.setId(2131374544);
-      localLayoutParams = new ViewGroup.LayoutParams(DisplayUtil.dip2px(this.jdField_a_of_type_AndroidAppActivity, 68.0F), DisplayUtil.dip2px(this.jdField_a_of_type_AndroidAppActivity, 34.0F));
-      a(localRadioButton, true);
-      localRadioButton.setText(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131716139));
-      this.jdField_a_of_type_AndroidWidgetRadioGroup.addView(localRadioButton, localLayoutParams);
-      localRadioButton = new RadioButton(this.jdField_a_of_type_AndroidAppActivity);
-      localRadioButton.setId(2131374545);
-      a(localRadioButton, false);
-      localRadioButton.setText(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131716141));
-      this.jdField_a_of_type_AndroidWidgetRadioGroup.addView(localRadioButton, localLayoutParams);
-    }
-    this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(new bkvq(this));
-    this.centerContainer.removeAllViews();
-    this.centerContainer.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, new ViewGroup.LayoutParams(DisplayUtil.dip2px(this.jdField_a_of_type_AndroidAppActivity, 186.0F), DisplayUtil.dip2px(this.jdField_a_of_type_AndroidAppActivity, 44.0F)));
-  }
-  
-  private void a(RadioButton paramRadioButton, boolean paramBoolean)
-  {
-    paramRadioButton.setBackgroundDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130846895));
-    paramRadioButton.setButtonDrawable(null);
-    paramRadioButton.setGravity(17);
-    paramRadioButton.setTextColor(-16777216);
-    paramRadioButton.setTextSize(2, 18.0F);
-    paramRadioButton.setTypeface(Typeface.DEFAULT_BOLD);
-    paramRadioButton.setChecked(paramBoolean);
-  }
-  
-  private boolean a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("isBookStore=");
-    if (100 == this.jdField_a_of_type_Int) {}
-    for (boolean bool = true;; bool = false)
-    {
-      bkvd.e("ReaderTitleBarView", bool);
-      if (100 != this.jdField_a_of_type_Int) {
-        break;
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  private void b(int paramInt)
-  {
-    if (this.leftView == null) {
-      bkvd.a("ReaderTitleBarView", "leftView is null");
-    }
-    Drawable localDrawable;
-    do
-    {
-      do
-      {
-        return;
-        localDrawable = this.leftView.getBackground();
-      } while (localDrawable == null);
-      localDrawable = bfvo.a(localDrawable, paramInt);
-    } while (localDrawable == null);
-    this.leftView.setBackgroundDrawable(localDrawable);
-  }
-  
-  private void c(int paramInt)
-  {
-    String str;
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {
-      switch (paramInt)
-      {
-      default: 
-        str = "";
-        paramInt = 0;
-        i = paramInt;
-        if (this.mUIStyleHandler.mHostFragment != null) {
-          this.mUIStyleHandler.mHostFragment.webView.loadUrl(str);
-        }
-        break;
-      }
-    }
-    for (int i = paramInt;; i = 0)
-    {
-      d(i);
-      return;
-      bkvg.a(this.c, this.d, "5", "502", "", "3", "", "", "");
-      str = this.jdField_a_of_type_JavaLangString;
-      paramInt = 0;
-      break;
-      bkvg.a(this.c, this.d, "5", "2206", "", "3", "", "", "");
-      paramInt = 1;
-      str = this.jdField_b_of_type_JavaLangString;
-      break;
-    }
-  }
-  
-  private void d(int paramInt)
-  {
-    int j = this.jdField_a_of_type_AndroidWidgetRadioGroup.getChildCount();
-    if ((paramInt < 0) || (paramInt >= j)) {
-      return;
-    }
+    char[] arrayOfChar1 = new char[16];
+    char[] tmp6_5 = arrayOfChar1;
+    tmp6_5[0] = 48;
+    char[] tmp11_6 = tmp6_5;
+    tmp11_6[1] = 49;
+    char[] tmp16_11 = tmp11_6;
+    tmp16_11[2] = 50;
+    char[] tmp21_16 = tmp16_11;
+    tmp21_16[3] = 51;
+    char[] tmp26_21 = tmp21_16;
+    tmp26_21[4] = 52;
+    char[] tmp31_26 = tmp26_21;
+    tmp31_26[5] = 53;
+    char[] tmp36_31 = tmp31_26;
+    tmp36_31[6] = 54;
+    char[] tmp42_36 = tmp36_31;
+    tmp42_36[7] = 55;
+    char[] tmp48_42 = tmp42_36;
+    tmp48_42[8] = 56;
+    char[] tmp54_48 = tmp48_42;
+    tmp54_48[9] = 57;
+    char[] tmp60_54 = tmp54_48;
+    tmp60_54[10] = 97;
+    char[] tmp66_60 = tmp60_54;
+    tmp66_60[11] = 98;
+    char[] tmp72_66 = tmp66_60;
+    tmp72_66[12] = 99;
+    char[] tmp78_72 = tmp72_66;
+    tmp78_72[13] = 100;
+    char[] tmp84_78 = tmp78_72;
+    tmp84_78[14] = 101;
+    char[] tmp90_84 = tmp84_78;
+    tmp90_84[15] = 102;
+    tmp90_84;
+    char[] arrayOfChar2 = new char[paramArrayOfByte.length * 2];
     int i = 0;
-    label20:
-    RadioButton localRadioButton;
-    if (i < j)
+    while (i < paramArrayOfByte.length)
     {
-      localRadioButton = (RadioButton)this.jdField_a_of_type_AndroidWidgetRadioGroup.getChildAt(i);
-      if (i != paramInt) {
-        break label60;
-      }
-    }
-    label60:
-    for (boolean bool = true;; bool = false)
-    {
-      localRadioButton.setSelected(bool);
+      int j = paramArrayOfByte[i];
+      arrayOfChar2[(i * 2)] = arrayOfChar1[(j >>> 4 & 0xF)];
+      arrayOfChar2[(i * 2 + 1)] = arrayOfChar1[(j & 0xF)];
       i += 1;
-      break label20;
-      break;
     }
+    return new String(arrayOfChar2);
   }
   
-  public void a(int paramInt)
+  /* Error */
+  public static Map<String, Attributes> a(String paramString)
   {
-    if (paramInt > 0)
-    {
-      this.jdField_a_of_type_Int = paramInt;
-      Window localWindow = this.mUIStyleHandler.mHostFragment.getHostActivity().getWindow();
-      a(a(), localWindow);
-    }
-  }
-  
-  public void a(boolean paramBoolean, Window paramWindow)
-  {
-    if (paramBoolean)
-    {
-      ImmersiveUtils.a(false, paramWindow);
-      b(-1);
-      return;
-    }
-    ImmersiveUtils.a(true, paramWindow);
-    b(-16777216);
-  }
-  
-  public void initTitleBar(Intent paramIntent, String paramString)
-  {
-    if (paramIntent != null)
-    {
-      this.jdField_a_of_type_Int = paramIntent.getIntExtra("key_tab_id", -1);
-      this.jdField_b_of_type_Int = paramIntent.getIntExtra("item_type", -1);
-    }
-    this.mUIStyle.mControlParam = null;
-    super.initTitleBar(paramIntent, paramString);
-    if (a())
-    {
-      doTransparent(this.mUIStyle.transparentTitlebarConfig, false);
-      if ((this.mUIStyleHandler.getWebView() != null) && (!this.mUIStyle.isFullScreen))
-      {
-        this.mUIStyle.isGrandualChangeTitlebarBg = true;
-        enableTitlebarBgGrandualChange(this.mUIStyleHandler.getWebView());
-      }
-    }
-  }
-  
-  public void initTitleContainer()
-  {
-    super.initTitleContainer();
-    if ((this.mUIStyleHandler.webviewWrapper instanceof RefreshView)) {
-      ((RefreshView)this.mUIStyleHandler.webviewWrapper).a(false);
-    }
-    if (this.mUIStyleHandler.mBrowserTips != null) {
-      this.mUIStyleHandler.mBrowserTips.setVisibility(8);
-    }
-    this.mUIStyle.needHideBottomBar = true;
-    this.centerView.setTypeface(Typeface.DEFAULT_BOLD);
-    this.leftView.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
-    this.centerView.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
-    this.rightViewText.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
-    this.leftView.setBackgroundDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130850595));
-    int i;
-    int j;
-    int k;
-    int m;
-    Object localObject;
-    label292:
-    label314:
-    label364:
-    boolean bool;
-    label429:
-    label454:
-    Drawable localDrawable;
-    if (a())
-    {
-      setTitleBarButtonColor(-1);
-      setTitleBarTextColor(-1);
-      i = this.titleContainer.getPaddingTop();
-      j = this.titleContainer.getPaddingBottom();
-      k = this.titleContainer.getPaddingLeft();
-      m = this.titleContainer.getPaddingRight();
-      if ((this.jdField_a_of_type_AndroidContentIntent == null) || (this.jdField_a_of_type_AndroidContentIntent.getBundleExtra("theme") == null)) {
-        break label644;
-      }
-      localObject = this.jdField_a_of_type_AndroidContentIntent.getBundleExtra("theme");
-      this.titleContainer.setBackgroundColor(((Bundle)localObject).getInt("readerBgColor", -1));
-      this.leftView.getBackground().setColorFilter(new LightingColorFilter(Color.rgb(0, 0, 0), ((Bundle)localObject).getInt("readerTextColor", -16777216)));
-      this.centerView.setTextColor(((Bundle)localObject).getInt("readerTextColor", -16777216));
-      this.rightViewText.setTextColor(((Bundle)localObject).getInt("readerTextColor", -16777216));
-      if (!a()) {
-        break label655;
-      }
-      bkvi.a(this.titleContainer, ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidAppActivity));
-      if (this.mUIStyleHandler.mHostFragment != null)
-      {
-        j = this.mUIStyleHandler.mHostFragment.getResources().getDimensionPixelSize(2131299076);
-        if (!a()) {
-          break label670;
-        }
-        bkvi.a(this.mUIStyleHandler.mHostFragment.contentView, -i);
-        this.mUIStyleHandler.mHostFragment.mNeedStatusTrans = true;
-        this.mUIStyleHandler.mHostFragment.mActNeedImmersive = true;
-        if (this.mUIStyleHandler.mHostFragment.mSystemBarComp != null)
-        {
-          if (!ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
-            break label710;
-          }
-          this.mUIStyleHandler.mHostFragment.mSystemBarComp.setBackgroundColor(-6710887);
-          localObject = this.mUIStyleHandler.mHostFragment.getHostActivity().getWindow();
-          if (a()) {
-            break label788;
-          }
-          bool = true;
-          ImmersiveUtils.a(bool, (Window)localObject);
-          this.mUIStyle.mUsingCustomTitleBarColor = true;
-        }
-      }
-      if ((this.jdField_b_of_type_Int != 1) || (104 == this.jdField_a_of_type_Int)) {
-        break label828;
-      }
-      this.rightViewImg.setVisibility(0);
-      localDrawable = this.rightViewImg.getResources().getDrawable(2130846873);
-      if (!a()) {
-        break label794;
-      }
-      localObject = bfvo.a(localDrawable, -1);
-      label525:
-      this.rightViewImg.setImageDrawable((Drawable)localObject);
-      this.rightViewImg.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131693708));
-      label554:
-      if (102 == this.jdField_a_of_type_Int)
-      {
-        if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {
-          break label840;
-        }
-        a();
-      }
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_AndroidViewView == null) {
-        this.jdField_a_of_type_AndroidViewView = a(2130846874, this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131716140), new bkvp(this));
-      }
-      return;
-      setTitleBarButtonColor(-16777216);
-      setTitleBarTextColor(-16777216);
-      break;
-      label644:
-      this.titleContainer.setBackgroundColor(-1);
-      break label292;
-      label655:
-      this.titleContainer.setPadding(k, i, m, j);
-      break label314;
-      label670:
-      if (!(this.mUIStyleHandler.mHostFragment instanceof ReaderHomeTabFragment)) {
-        break label364;
-      }
-      bkvi.a(this.mUIStyleHandler.mHostFragment.webView, -j - ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidAppActivity));
-      break label364;
-      label710:
-      this.mUIStyleHandler.mHostFragment.mSystemBarComp.setBackgroundColor(-1);
-      if (Build.VERSION.SDK_INT <= 23) {
-        break label429;
-      }
-      localObject = this.mUIStyleHandler.mHostFragment.getHostActivity().getWindow();
-      if (localObject == null) {
-        break label429;
-      }
-      ((Window)localObject).clearFlags(67108864);
-      ((Window)localObject).getDecorView().setSystemUiVisibility(1280);
-      ((Window)localObject).addFlags(-2147483648);
-      ((Window)localObject).setStatusBarColor(0);
-      break label429;
-      label788:
-      bool = false;
-      break label454;
-      label794:
-      localObject = localDrawable;
-      if (this.mUIStyle.mTitleStyle == null) {
-        break label525;
-      }
-      localObject = bfvo.a(localDrawable, this.mUIStyle.mTitleStyle.leftAndRightBtnColor);
-      break label525;
-      label828:
-      this.rightViewImg.setVisibility(8);
-      break label554;
-      label840:
-      bkvd.a("ReaderTitleBarView", "mTitleBarLeftTabUrl=" + this.jdField_a_of_type_JavaLangString + ",mTitleBarRightTabUrl=" + this.jdField_b_of_type_JavaLangString);
-    }
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_3
+    //   2: new 14	java/util/jar/JarFile
+    //   5: dup
+    //   6: aload_0
+    //   7: invokespecial 18	java/util/jar/JarFile:<init>	(Ljava/lang/String;)V
+    //   10: astore_1
+    //   11: aload_1
+    //   12: astore_0
+    //   13: aload_1
+    //   14: invokevirtual 117	java/util/jar/JarFile:getManifest	()Ljava/util/jar/Manifest;
+    //   17: astore_2
+    //   18: aload_2
+    //   19: ifnonnull +17 -> 36
+    //   22: aload_3
+    //   23: astore_0
+    //   24: aload_1
+    //   25: ifnull +9 -> 34
+    //   28: aload_1
+    //   29: invokevirtual 30	java/util/jar/JarFile:close	()V
+    //   32: aload_3
+    //   33: astore_0
+    //   34: aload_0
+    //   35: areturn
+    //   36: aload_1
+    //   37: astore_0
+    //   38: aload_2
+    //   39: invokevirtual 123	java/util/jar/Manifest:getEntries	()Ljava/util/Map;
+    //   42: astore_2
+    //   43: aload_2
+    //   44: astore_0
+    //   45: aload_1
+    //   46: ifnull -12 -> 34
+    //   49: aload_1
+    //   50: invokevirtual 30	java/util/jar/JarFile:close	()V
+    //   53: aload_2
+    //   54: areturn
+    //   55: astore_0
+    //   56: aload_2
+    //   57: areturn
+    //   58: astore_2
+    //   59: aconst_null
+    //   60: astore_1
+    //   61: aload_1
+    //   62: astore_0
+    //   63: aload_2
+    //   64: invokevirtual 67	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   67: aload_3
+    //   68: astore_0
+    //   69: aload_1
+    //   70: ifnull -36 -> 34
+    //   73: aload_1
+    //   74: invokevirtual 30	java/util/jar/JarFile:close	()V
+    //   77: aconst_null
+    //   78: areturn
+    //   79: astore_0
+    //   80: aconst_null
+    //   81: areturn
+    //   82: astore_2
+    //   83: aconst_null
+    //   84: astore_1
+    //   85: aload_1
+    //   86: astore_0
+    //   87: aload_2
+    //   88: invokevirtual 55	java/io/IOException:printStackTrace	()V
+    //   91: aload_3
+    //   92: astore_0
+    //   93: aload_1
+    //   94: ifnull -60 -> 34
+    //   97: aload_1
+    //   98: invokevirtual 30	java/util/jar/JarFile:close	()V
+    //   101: aconst_null
+    //   102: areturn
+    //   103: astore_0
+    //   104: aconst_null
+    //   105: areturn
+    //   106: astore_1
+    //   107: aconst_null
+    //   108: astore_0
+    //   109: aload_0
+    //   110: ifnull +7 -> 117
+    //   113: aload_0
+    //   114: invokevirtual 30	java/util/jar/JarFile:close	()V
+    //   117: aload_1
+    //   118: athrow
+    //   119: astore_0
+    //   120: aconst_null
+    //   121: areturn
+    //   122: astore_0
+    //   123: goto -6 -> 117
+    //   126: astore_1
+    //   127: goto -18 -> 109
+    //   130: astore_2
+    //   131: goto -46 -> 85
+    //   134: astore_2
+    //   135: goto -74 -> 61
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	138	0	paramString	String
+    //   10	88	1	localJarFile	java.util.jar.JarFile
+    //   106	12	1	localObject1	Object
+    //   126	1	1	localObject2	Object
+    //   17	40	2	localObject3	Object
+    //   58	6	2	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   82	6	2	localIOException1	java.io.IOException
+    //   130	1	2	localIOException2	java.io.IOException
+    //   134	1	2	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   1	91	3	localObject4	Object
+    // Exception table:
+    //   from	to	target	type
+    //   49	53	55	java/io/IOException
+    //   2	11	58	java/lang/OutOfMemoryError
+    //   73	77	79	java/io/IOException
+    //   2	11	82	java/io/IOException
+    //   97	101	103	java/io/IOException
+    //   2	11	106	finally
+    //   28	32	119	java/io/IOException
+    //   113	117	122	java/io/IOException
+    //   13	18	126	finally
+    //   38	43	126	finally
+    //   63	67	126	finally
+    //   87	91	126	finally
+    //   13	18	130	java/io/IOException
+    //   38	43	130	java/io/IOException
+    //   13	18	134	java/lang/OutOfMemoryError
+    //   38	43	134	java/lang/OutOfMemoryError
   }
 }
 

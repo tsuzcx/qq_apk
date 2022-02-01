@@ -1,12 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
 
 class awyw
-  implements DialogInterface.OnClickListener
+  implements awzc<PicEmoticonInfo>
 {
-  awyw(awyf paramawyf) {}
+  awyw(awyr paramawyr, boolean paramBoolean, SessionInfo paramSessionInfo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(PicEmoticonInfo paramPicEmoticonInfo)
+  {
+    if ((paramPicEmoticonInfo != null) && (paramPicEmoticonInfo.emoticon != null))
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        awyr.a(this.jdField_a_of_type_Awyr.a, "0X800A937", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, paramPicEmoticonInfo.emoticon.epId);
+      }
+    }
+    else {
+      return;
+    }
+    awyr.a(this.jdField_a_of_type_Awyr.a, "0X800A936", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, paramPicEmoticonInfo.emoticon.epId);
+  }
 }
 
 

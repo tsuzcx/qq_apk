@@ -18,7 +18,7 @@ class PageWebviewContainer$2
       }
       localNativeViewContainer.scrollTo(0, paramInt);
     }
-    while (!PageWebviewContainer.access$100(this.this$0).isTextAreaFocused())
+    while ((PageWebviewContainer.access$100(this.this$0) == null) || (!PageWebviewContainer.access$100(this.this$0).isTextAreaFocused()))
     {
       NativeViewContainer localNativeViewContainer;
       return;

@@ -1,31 +1,85 @@
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
-import org.json.JSONObject;
+import java.util.UUID;
 
 public class bfjs
-  implements bcrz
 {
-  public bfjs(TroopInteractGiftAnimationController.1.1 param1, int paramInt1, String paramString, JSONObject paramJSONObject1, int paramInt2, JSONObject paramJSONObject2) {}
+  public int a;
+  public long a;
+  public String a;
+  public UUID a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public long c;
+  public String c;
+  public boolean c;
+  public int d;
+  public long d;
+  public String d;
+  public int e;
+  public long e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
+  public int h;
+  public String h;
+  public int i;
+  public String i;
+  public int j;
+  public String j;
+  public String k;
+  public String l;
+  public String m;
+  public String n;
+  public String o;
   
-  public void a()
+  public bfjs()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.playTotalMicroseconds / 1000L > this.jdField_a_of_type_Int)
+    this.jdField_b_of_type_Int = 7;
+  }
+  
+  public bfjs(bfjs parambfjs)
+  {
+    a(parambfjs);
+  }
+  
+  public void a(bfjs parambfjs)
+  {
+    this.jdField_b_of_type_Int = 7;
+    if (parambfjs != null)
     {
-      String str = this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_OrgJsonJSONObject.optString("videoPath", "2.mp4");
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView.a(str, new bfjt(this));
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.jdField_b_of_type_Int - 300);
-      return;
+      this.jdField_a_of_type_JavaUtilUUID = parambfjs.jdField_a_of_type_JavaUtilUUID;
+      this.jdField_a_of_type_Int = parambfjs.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Long = parambfjs.jdField_a_of_type_Long;
+      this.jdField_b_of_type_Long = parambfjs.jdField_b_of_type_Long;
+      this.jdField_b_of_type_Int = parambfjs.jdField_b_of_type_Int;
+      this.jdField_c_of_type_Int = parambfjs.jdField_c_of_type_Int;
+      this.jdField_c_of_type_Long = parambfjs.jdField_c_of_type_Long;
+      this.jdField_d_of_type_Long = parambfjs.jdField_d_of_type_Long;
+      this.jdField_a_of_type_JavaLangString = parambfjs.jdField_a_of_type_JavaLangString;
+      this.jdField_b_of_type_JavaLangString = parambfjs.jdField_b_of_type_JavaLangString;
+      this.jdField_c_of_type_JavaLangString = parambfjs.jdField_c_of_type_JavaLangString;
+      this.jdField_d_of_type_JavaLangString = parambfjs.jdField_d_of_type_JavaLangString;
+      this.jdField_e_of_type_Int = parambfjs.jdField_e_of_type_Int;
+      this.f = parambfjs.f;
+      this.jdField_g_of_type_Int = parambfjs.jdField_g_of_type_Int;
+      this.jdField_e_of_type_JavaLangString = parambfjs.jdField_e_of_type_JavaLangString;
+      this.jdField_g_of_type_JavaLangString = parambfjs.jdField_g_of_type_JavaLangString;
+      this.jdField_h_of_type_Int = parambfjs.jdField_h_of_type_Int;
+      this.jdField_h_of_type_JavaLangString = parambfjs.jdField_h_of_type_JavaLangString;
+      this.jdField_i_of_type_JavaLangString = parambfjs.jdField_i_of_type_JavaLangString;
+      this.jdField_b_of_type_Boolean = parambfjs.jdField_b_of_type_Boolean;
+      this.jdField_j_of_type_JavaLangString = parambfjs.jdField_j_of_type_JavaLangString;
+      this.jdField_j_of_type_Int = parambfjs.jdField_j_of_type_Int;
+      this.jdField_c_of_type_Boolean = parambfjs.jdField_c_of_type_Boolean;
+      this.jdField_i_of_type_Int = parambfjs.jdField_i_of_type_Int;
+      this.n = parambfjs.n;
+      this.o = parambfjs.o;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_Bcrz != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_Bcrz.a();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.jdField_a_of_type_Int, true);
   }
 }
 

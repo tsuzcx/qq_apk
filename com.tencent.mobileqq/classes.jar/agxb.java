@@ -1,10 +1,16 @@
-import android.view.MotionEvent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public abstract interface agxb
+final class agxb
+  implements ahab
 {
-  public abstract boolean handleTouchEvent(MotionEvent paramMotionEvent);
-  
-  public abstract boolean interceptTouchEvent(MotionEvent paramMotionEvent);
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  {
+    if (paramChatMessage.msgtype == -3016) {
+      return 93;
+    }
+    return 15;
+  }
 }
 
 

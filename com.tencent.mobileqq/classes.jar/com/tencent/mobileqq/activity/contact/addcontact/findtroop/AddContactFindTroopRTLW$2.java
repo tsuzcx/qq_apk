@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.contact.addcontact.findtroop;
 
-import aiam;
+import aivl;
 import android.widget.TextView;
 
 public class AddContactFindTroopRTLW$2
   implements Runnable
 {
-  public AddContactFindTroopRTLW$2(aiam paramaiam) {}
+  public AddContactFindTroopRTLW$2(aivl paramaivl) {}
   
   public void run()
   {
-    aiam.a(this.this$0).setVisibility(0);
+    aivl.a(this.this$0).setVisibility(0);
   }
 }
 

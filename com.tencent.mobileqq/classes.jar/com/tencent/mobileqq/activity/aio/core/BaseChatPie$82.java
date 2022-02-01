@@ -1,25 +1,21 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import android.provider.Settings.System;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import bhdj;
+import mqq.app.QQPermissionCallback;
 
 class BaseChatPie$82
-  implements Runnable
+  implements QQPermissionCallback
 {
-  BaseChatPie$82(BaseChatPie paramBaseChatPie, int paramInt) {}
+  BaseChatPie$82(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    try
-    {
-      Settings.System.putInt(this.this$0.app.getApp().getContentResolver(), "listview_oversroll", this.val$isButtom);
-      return;
-    }
-    catch (SecurityException localSecurityException)
-    {
-      localSecurityException.printStackTrace();
-    }
+    bhdj.a(this.this$0.getActivity(), paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.this$0.grantForCamera();
   }
 }
 

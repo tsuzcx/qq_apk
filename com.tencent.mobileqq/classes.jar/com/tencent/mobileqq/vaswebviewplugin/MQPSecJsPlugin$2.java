@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.app.Activity;
-import bguj;
-import bgve;
-import bgzt;
-import bhht;
+import bifb;
+import bifw;
+import bikl;
+import bisl;
 
 class MQPSecJsPlugin$2
   implements Runnable
@@ -17,12 +17,12 @@ class MQPSecJsPlugin$2
     {
       if ((MQPSecJsPlugin.access$100(this.this$0) == null) && (!this.this$0.activity.isFinishing()))
       {
-        bguj localbguj = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
-        if ((localbguj != null) && ((localbguj instanceof bgzt)))
+        bifb localbifb = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
+        if ((localbifb != null) && ((localbifb instanceof bikl)))
         {
-          MQPSecJsPlugin.access$102(this.this$0, new bhht(this.this$0.activity, ((bgzt)localbguj).getTitleBarHeight()));
+          MQPSecJsPlugin.access$102(this.this$0, new bisl(this.this$0.activity, ((bikl)localbifb).getTitleBarHeight()));
           MQPSecJsPlugin.access$100(this.this$0).setCancelable(false);
-          MQPSecJsPlugin.access$100(this.this$0).c(2131694279);
+          MQPSecJsPlugin.access$100(this.this$0).c(2131694477);
         }
       }
     }

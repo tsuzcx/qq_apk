@@ -1,32 +1,17 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class asxk
-  implements aszj
+public class asxk
+  implements View.OnClickListener
 {
-  asxk(asxj paramasxj, List paramList, asdg paramasdg, asxo paramasxo) {}
+  public asxk(Face2FaceFriendDetailView paramFace2FaceFriendDetailView) {}
   
-  public void onNo()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Asxo != null) {
-      this.jdField_a_of_type_Asxo.a(1, 1);
-    }
-  }
-  
-  public void onYes()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
-      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
-        this.jdField_a_of_type_Asdg.b(localFileManagerEntity);
-      }
-    }
-    if (this.jdField_a_of_type_Asxo != null) {
-      this.jdField_a_of_type_Asxo.a(1, 0);
-    }
+    this.a.d();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

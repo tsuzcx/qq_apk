@@ -1,19 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.ark.ark.VariantWrapper;
 
-public class aprc
-  implements View.OnClickListener
+class aprc
+  implements apsh
 {
-  public aprc(IphonePickerView paramIphonePickerView) {}
+  aprc(aprb paramaprb, long paramLong) {}
   
-  public void onClick(View paramView)
+  public void a(long paramLong)
   {
-    if (IphonePickerView.a(this.a) != null) {
-      IphonePickerView.a(this.a).a();
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Aprb.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    apqy.a(this.jdField_a_of_type_Aprb.a, this.jdField_a_of_type_Long, paramBoolean, "Motion", paramFloat1, paramFloat2, paramFloat3);
   }
 }
 

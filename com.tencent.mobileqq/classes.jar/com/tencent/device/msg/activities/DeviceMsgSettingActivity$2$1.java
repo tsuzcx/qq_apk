@@ -1,11 +1,11 @@
 package com.tencent.device.msg.activities;
 
-import aauu;
+import abkg;
 
 public class DeviceMsgSettingActivity$2$1
   implements Runnable
 {
-  public DeviceMsgSettingActivity$2$1(aauu paramaauu) {}
+  public DeviceMsgSettingActivity$2$1(abkg paramabkg) {}
   
   public void run()
   {

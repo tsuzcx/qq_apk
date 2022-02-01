@@ -16,7 +16,7 @@ public class CartoonFilter
   
   public void applyFilterChain(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
-    ClearGLSL();
+    clearGLSL();
     if (paramBoolean)
     {
       this.glslProgramShader = "precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n";

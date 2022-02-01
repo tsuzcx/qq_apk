@@ -1,6 +1,6 @@
 package cooperation.qzone.webviewplugin;
 
-import amtj;
+import anvx;
 
 public class QZoneJsConstants
 {
@@ -15,14 +15,14 @@ public class QZoneJsConstants
   public static final String DEFAULT_DYNAMIC_ALBUM_NAME = "Default Dynamic Album";
   public static final String DEFAULT_DYNAMIC_ALBUM_TEMPLT_ID = "qixi-2017";
   public static final String DEFAULT_DYNAMIC_ALBUM_TEMPLT_ID_FOR_SHARE = "mv";
-  public static final String DYNAMIC_ALBUM_BUTTON = amtj.a(2131711038);
+  public static final String DYNAMIC_ALBUM_BUTTON = anvx.a(2131711385);
   public static final String DYNAMIC_ALBUM_CLIMAX_ENDURE = "climax_endure";
   public static final String DYNAMIC_ALBUM_CLIMAX_START = "climax_start";
   public static final String DYNAMIC_ALBUM_COVER_AID = "cover_aid";
   public static final String DYNAMIC_ALBUM_COVER_PIC = "cover_pic";
   public static final String DYNAMIC_ALBUM_COVER_URL = "cover_url";
   public static final String DYNAMIC_ALBUM_DESC = "mgz_desc";
-  public static final String DYNAMIC_ALBUM_DESC_TEXT = amtj.a(2131711037);
+  public static final String DYNAMIC_ALBUM_DESC_TEXT = anvx.a(2131711384);
   public static final String DYNAMIC_ALBUM_ID = "DYNAMIC_ALBUM_ID";
   public static final String DYNAMIC_ALBUM_IMAGE_QUALITY = "image_quality";
   public static final String DYNAMIC_ALBUM_INVISIBLE = "invisible";

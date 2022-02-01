@@ -1,6 +1,8 @@
 public abstract interface zho
 {
   public abstract void a();
+  
+  public abstract boolean a(boolean paramBoolean);
 }
 
 

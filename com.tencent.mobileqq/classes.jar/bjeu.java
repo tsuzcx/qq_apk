@@ -1,20 +1,51 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.agent.OpenSdkFriendService.CheckAvatarUpdateCallback.1;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bjeu
-  implements MiniAppLauncher.MiniAppLaunchListener
+public class bjeu
+  implements bjlh
 {
-  bjeu(bjet parambjet, RequestEvent paramRequestEvent) {}
+  protected bjeu(bjet parambjet) {}
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  public void a(Exception paramException)
   {
-    if (paramBoolean)
+    bjko.c("OpenSdkFriendService", "CheckAvatarUpdate Exception. " + paramException.getMessage(), paramException);
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    try
     {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok();
-      return;
+      int i = paramJSONObject.getInt("ret");
+      Object localObject = paramJSONObject.getString("msg");
+      if (i == 0)
+      {
+        localObject = paramJSONObject.getJSONArray("update_list");
+        i = ((JSONArray)localObject).length();
+        if (i > 0) {
+          ThreadManager.executeOnSubThread(new OpenSdkFriendService.CheckAvatarUpdateCallback.1(this, i, (JSONArray)localObject));
+        }
+        localObject = bjpy.a(bizw.a().a(), "prefer_last_avatar_update_time").edit();
+        ((SharedPreferences.Editor)localObject).putString(this.a.b, paramJSONObject.getString("time"));
+        ((SharedPreferences.Editor)localObject).commit();
+        if (this.a.a != null) {
+          this.a.a.a();
+        }
+      }
+      else
+      {
+        bjko.e("OpenSdkFriendService", "CheckAvatarUpdateCallback error. ret=" + i + ", msg=" + (String)localObject);
+        return;
+      }
     }
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail();
+    catch (JSONException paramJSONObject)
+    {
+      bjko.c("OpenSdkFriendService", "CheckAvatarUpdate Exception. " + paramJSONObject.getMessage(), paramJSONObject);
+    }
   }
 }
 

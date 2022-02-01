@@ -1,7 +1,34 @@
-import kotlin.Metadata;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/channelbanner/RIJChannelBannerReport$Companion;", "", "()V", "ACTION_NAME_HORIZONTAL_AVATAR_CARD_CLICK", "", "ACTION_NAME_HORIZONTAL_AVATAR_CARD_EXPOSURE", "ACTION_NAME_HORIZONTAL_AVATAR_ITEM_CLICK", "ACTION_NAME_HORIZONTAL_AVATAR_ITEM_EXPOSURE", "KEY_CHANNEL_ID", "KEY_IS_LIVE", "KEY_IS_UPDATE", "KEY_PUIN", "TAG", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class oqg {}
+class oqg
+  implements View.OnClickListener
+{
+  oqg(oqb paramoqb) {}
+  
+  public void onClick(View paramView)
+  {
+    QLog.i("DailyHeaderViewController", 1, "[onClick] clickToGrantPermission");
+    BaseActivity localBaseActivity = (BaseActivity)paramView.getContext();
+    if (Build.VERSION.SDK_INT >= 23) {
+      if (localBaseActivity.shouldShowRequestPermissionRationale("android.permission.ACCESS_FINE_LOCATION")) {
+        oqb.a(this.a, true);
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localBaseActivity.requestPermissions(new oqh(this, localBaseActivity), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+      continue;
+      oqb.a(this.a, 5);
+    }
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

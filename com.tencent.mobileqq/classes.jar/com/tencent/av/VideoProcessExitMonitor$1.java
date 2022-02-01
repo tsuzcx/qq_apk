@@ -1,15 +1,15 @@
 package com.tencent.av;
 
-import lcu;
+import lcz;
 
 public class VideoProcessExitMonitor$1
   implements Runnable
 {
-  public VideoProcessExitMonitor$1(lcu paramlcu) {}
+  public VideoProcessExitMonitor$1(lcz paramlcz) {}
   
   public void run()
   {
-    lcu.a(this.this$0);
+    lcz.a(this.this$0);
   }
 }
 

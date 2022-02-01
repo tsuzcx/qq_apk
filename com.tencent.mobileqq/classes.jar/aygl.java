@@ -1,12 +1,12 @@
-public class aygl
-  extends aygn
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class aygl
+  implements DialogInterface.OnClickListener
 {
-  private final int[] a = { 1200000007, 1106658188, 1107930043, 1104864062, 1104864068, 1104864066, 1104639410, 1106114157, 1200000010, 1104788679, 1106189400, 1200000008, 1200000002 };
+  aygl(ayfx paramayfx) {}
   
-  protected int[] a()
-  {
-    return this.a;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

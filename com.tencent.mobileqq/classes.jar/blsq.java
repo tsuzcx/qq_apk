@@ -1,19 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
+import java.io.File;
+import java.io.FilenameFilter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class blsq
-  implements Animation.AnimationListener
+class blsq
+  implements FilenameFilter
 {
-  public blsq(AEProviderContainerView paramAEProviderContainerView) {}
+  blsq(blsp paramblsp) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public boolean accept(File paramFile, String paramString)
   {
-    this.a.setVisibility(0);
+    return (paramFile != null) && (paramFile.isDirectory()) && (blsp.a(this.a).matcher(paramString).matches());
   }
 }
 

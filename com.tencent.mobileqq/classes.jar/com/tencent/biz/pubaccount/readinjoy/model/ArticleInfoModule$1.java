@@ -1,61 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.HashMap;
-import java.util.List;
-import odq;
-import org.json.JSONObject;
-import ptv;
-import qln;
-import tpn;
+import pvm;
+import qep;
 
 public class ArticleInfoModule$1
   implements Runnable
 {
-  public ArticleInfoModule$1(ptv paramptv, qln paramqln, long paramLong1, long paramLong2) {}
+  public ArticleInfoModule$1(qep paramqep, int paramInt) {}
   
   public void run()
   {
-    ToServiceMsg localToServiceMsg = ptv.a(this.this$0, this.jdField_a_of_type_Qln);
-    if (localToServiceMsg != null)
-    {
-      localToServiceMsg.getAttributes().put("feedsRequestBeginTime", Long.valueOf(this.jdField_a_of_type_Long));
-      localToServiceMsg.getAttributes().put("feedsRequestVersion", Long.valueOf(this.b));
-      if (this.jdField_a_of_type_Qln.jdField_a_of_type_AndroidOsBundle != null) {
-        localToServiceMsg.getAttributes().put("request_extra_data_key", this.jdField_a_of_type_Qln.jdField_a_of_type_AndroidOsBundle);
-      }
-      localToServiceMsg.getAttributes().put("auto_refresh_src", Integer.valueOf(this.jdField_a_of_type_Qln.h));
-      if ((this.jdField_a_of_type_Qln.i & 0x40) != 0) {
-        localToServiceMsg.getAttributes().put("recommendFlag", Integer.valueOf(this.jdField_a_of_type_Qln.i));
-      }
-    }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      long l2 = -1L;
-      long l1 = l2;
-      if (this.jdField_a_of_type_Qln.jdField_b_of_type_JavaUtilList != null)
-      {
-        l1 = l2;
-        if (this.jdField_a_of_type_Qln.jdField_b_of_type_JavaUtilList.size() >= 1) {
-          l1 = ((Long)this.jdField_a_of_type_Qln.jdField_b_of_type_JavaUtilList.get(0)).longValue();
-        }
-      }
-      localJSONObject.put("preload_red_pnt_push_articleID", l1);
-      odq.a(null, "", "0X8009482", "0X8009482", 0, 0, localJSONObject.toString(), "", "", "", false);
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
-    if ((this.jdField_a_of_type_Qln.jdField_b_of_type_Int == 0) && (this.jdField_a_of_type_Qln.jdField_a_of_type_Long == -1L)) {
-      this.this$0.a("-1", 1, 0);
-    }
-    this.this$0.a(localToServiceMsg);
-    tpn.a().a(localToServiceMsg);
+    pvm.a().c(this.a);
   }
 }
 

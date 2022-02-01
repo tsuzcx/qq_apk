@@ -1,23 +1,35 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadReqInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import java.util.List;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class asob
-  extends asdv
+public class asob
+  implements astf
 {
-  asob(asoa paramasoa, ExcitingTransferDownloadReqInfo paramExcitingTransferDownloadReqInfo) {}
+  public asob(ExtendFriendBaseFragment paramExtendFriendBaseFragment) {}
   
-  protected void a(boolean paramBoolean1, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, boolean paramBoolean2, String paramString3, short paramShort, String paramString4, List<String> paramList, int paramInt, String paramString5, String paramString6, String paramString7, long paramLong2, Bundle paramBundle)
+  public void enterAio(String paramString1, String paramString2)
   {
-    if (paramBoolean2) {
-      paramString4 = paramString4 + "&isthumb=0";
-    }
-    for (;;)
+    assy.a(this.a.a, paramString1, paramString2);
+  }
+  
+  public void showCampusVerifyDialog(boolean paramBoolean, int paramInt, String paramString1, String paramString2)
+  {
+    assy.a(this.a.a, paramBoolean, paramInt, paramString1, paramString2);
+  }
+  
+  public void showMatchCountDialog()
+  {
+    assy.a(this.a.a);
+  }
+  
+  public void showToast(int paramInt)
+  {
+    if (this.a.a == null)
     {
-      this.jdField_a_of_type_Asoa.a(paramBoolean1, paramLong1, paramString1, paramString2, paramByteStringMicro, paramBoolean2, paramString3, paramShort, paramString4, paramList, paramString5, paramBundle, this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo);
+      QLog.d("ExtendFriendBaseFragment", 1, "sendMsgDirectly()-> showToast() mActivity is null just return");
       return;
     }
+    assy.a(this.a.a, this.a.a.getString(paramInt));
   }
 }
 

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/ce1" android:layout_width="fill_parent" android:layout_height="@dimen/b_b" android:layout_alignParentBottom="true"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/b_d">
-        <dov.com.qq.im.ae.view.AECompoundButton android:id="@id/lau" android:background="@drawable/yb" android:visibility="invisible" android:layout_width="@dimen/b_c" android:layout_height="@dimen/b_c" android:layout_marginRight="1.0dip" android:layout_marginBottom="-5.5dip" android:layout_alignParentRight="true" app:foregroundHeight="30.0dip" app:foregroundResource="@drawable/egw" app:foregroundWidth="30.0dip" />
-        <RelativeLayout android:id="@id/nfm" android:layout_width="fill_parent" android:layout_height="@dimen/b_c" android:layout_below="@id/lau">
-            <TextView android:textColor="@color/al3" android:gravity="center" android:id="@id/no7" android:background="@drawable/bi5" android:paddingLeft="18.0dip" android:paddingRight="15.0dip" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginLeft="13.0dip" android:text="@string/jk6" android:includeFontPadding="false" android:drawableRight="@drawable/eny" android:drawablePadding="2.0dip" android:layout_centerVertical="true" />
-            <dov.com.qq.im.ae.view.AECompoundButton android:id="@id/lb8" android:background="@drawable/tm" android:visibility="gone" android:layout_width="@dimen/b_c" android:layout_height="@dimen/b_c" android:layout_marginRight="1.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:foregroundHeight="30.0dip" app:foregroundResource="@drawable/enx" app:foregroundWidth="30.0dip" />
-        </RelativeLayout>
-    </RelativeLayout>
-    <com.tencent.biz.videostory.capture.widgets.SquareRoundImageView android:id="@id/eg5" android:visibility="gone" android:layout_width="38.0dip" android:layout_height="38.0dip" android:layout_marginLeft="34.0dip" android:layout_marginBottom="39.0dip" android:layout_alignParentBottom="true" app:roundImageSelectWidth="1.0dip" />
-    <dov.com.qq.im.ae.view.AEPituCameraCaptureButtonLayout android:id="@id/apc" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" app:captureCircleStyle="true" />
-</RelativeLayout>
+<FrameLayout android:orientation="vertical" android:background="#fff9f9fb" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/mfo" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/gf4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+            <ProgressBar android:layout_gravity="center" android:id="@id/gf5" android:layout_width="19.0dip" android:layout_height="19.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" />
+            <TextView android:textSize="16.0dip" android:textColor="@color/skin_gray3" android:gravity="center" android:layout_gravity="center" android:id="@id/hzb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/j2n" />
+        </LinearLayout>
+        <ViewStub android:id="@id/ky_" android:visibility="gone" android:layout="@layout/a8o" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+    <RelativeLayout android:id="@id/mx_" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

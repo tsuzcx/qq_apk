@@ -1,25 +1,21 @@
-import android.view.MotionEvent;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
+import com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemLoverAchievementView;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 
-class agml
-  implements afce
+public class agml
+  implements agmn
 {
-  agml(agmk paramagmk) {}
+  public agml(IntimateContentItemLoverAchievementView paramIntimateContentItemLoverAchievementView) {}
   
-  public boolean onLongClick(View paramView)
+  public void a(View paramView, int paramInt, agme paramagme)
   {
-    paramView = (agmu)((View)paramView.getParent().getParent().getParent()).getTag();
-    if (paramView != null) {
-      paramView.a.performLongClick();
+    paramView = arav.a().T;
+    if (!TextUtils.isEmpty(paramView))
+    {
+      IntimateContentItemLoverAchievementView.a(this.a);
+      MiniAppLauncher.startMiniApp(this.a.a, paramView, 2064, null);
     }
-    return true;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return false;
   }
 }
 

@@ -1,21 +1,23 @@
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.ViewStub;
-import android.view.ViewStub.OnInflateListener;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaLazyFragment;
 
-class ucs
-  implements ViewStub.OnInflateListener
+public class ucs
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  ucs(ucp paramucp) {}
+  public ucs(ViolaLazyFragment paramViolaLazyFragment) {}
   
-  public void onInflate(ViewStub paramViewStub, View paramView)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    this.a.a = paramView;
-    this.a.e();
+    paramInt = this.a.getActivity().getWindow().getDecorView().getSystemUiVisibility();
+    this.a.getActivity().getWindow().getDecorView().setSystemUiVisibility(paramInt | 0x2 | 0x400);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ucs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.widget.stageview.StageEffectView.5.1;
-import com.tencent.av.widget.stageview.StageMemberView;
+import com.tencent.av.app.VideoAppInterface;
 
 public class mvv
-  implements Animation.AnimationListener
+  extends mvw
 {
-  public mvv(StageEffectView.5.1 param1) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public mvv(VideoAppInterface paramVideoAppInterface, long paramLong)
   {
-    this.a.a.a.a(true);
+    super(paramVideoAppInterface, 64, paramLong);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(String paramString, mvy parammvy)
+  {
+    super.a(paramString, parammvy);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mvv
  * JD-Core Version:    0.7.0.1
  */

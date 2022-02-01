@@ -1,16 +1,12 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import java.util.concurrent.atomic.AtomicBoolean;
-
 class wzd
-  implements bjog
+  implements wpv
 {
-  wzd(wyy paramwyy, AtomicBoolean paramAtomicBoolean, VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  wzd(wzb paramwzb, wpu paramwpu) {}
   
-  public void onDismiss()
+  public void a(boolean paramBoolean)
   {
-    if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null)) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
-    }
+    this.jdField_a_of_type_Wpu.a();
+    this.jdField_a_of_type_Wzb.c();
   }
 }
 

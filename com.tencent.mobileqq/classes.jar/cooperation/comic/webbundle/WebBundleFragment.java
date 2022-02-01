@@ -3,14 +3,14 @@ package cooperation.comic.webbundle;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bcef;
-import bgxd;
-import bkhg;
+import bdla;
+import bihv;
+import blss;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.webbundle.sdk.IWebBundleWebView;
 import com.tencent.webbundle.sdk.WebBundleClient;
 import cooperation.comic.ui.QQComicFragment;
-import npn;
+import nwo;
 
 public class WebBundleFragment
   extends QQComicFragment
@@ -26,10 +26,10 @@ public class WebBundleFragment
       IWebBundleWebView localIWebBundleWebView = this.jdField_a_of_type_ComTencentWebbundleSdkWebBundleClient.getValidWebView(super.getActivity(), this.b);
       if ((localIWebBundleWebView instanceof TouchWebView))
       {
-        bkhg.a(this.jdField_a_of_type_JavaLangString, true, bkhg.jdField_a_of_type_JavaLangString);
+        blss.a(this.jdField_a_of_type_JavaLangString, true, blss.jdField_a_of_type_JavaLangString);
         return (TouchWebView)localIWebBundleWebView;
       }
-      bkhg.a(this.jdField_a_of_type_JavaLangString, false, bkhg.d);
+      blss.a(this.jdField_a_of_type_JavaLangString, false, blss.d);
     }
     return super.createCustomWebView();
   }
@@ -47,14 +47,14 @@ public class WebBundleFragment
   
   public void startLoadUrl()
   {
-    npn.a("Web_readyToLoadUrl");
+    nwo.a("Web_readyToLoadUrl");
     if (this.webView == null) {
       return;
     }
     initFinish();
     if ((this.mStatistics.i) && (this.mStatistics.k > 0L))
     {
-      bcef.b(null, "P_CliOper", "BizTechReport", "", "web", "plugin_start_time", 0, 1, (int)((System.nanoTime() - this.mStatistics.k) / 1000000L), "", "", "", "" + this.mStatistics.c);
+      bdla.b(null, "P_CliOper", "BizTechReport", "", "web", "plugin_start_time", 0, 1, (int)((System.nanoTime() - this.mStatistics.k) / 1000000L), "", "", "", "" + this.mStatistics.c);
       this.mStatistics.k = 0L;
     }
     this.mStatistics.q = System.currentTimeMillis();
@@ -63,7 +63,7 @@ public class WebBundleFragment
     if (((this.jdField_a_of_type_ComTencentWebbundleSdkWebBundleClient == null) || (!this.jdField_a_of_type_ComTencentWebbundleSdkWebBundleClient.interceptLoadUrl(this.intent))) && (!TextUtils.isEmpty(this.mUrl))) {
       this.webView.loadUrl(this.mUrl);
     }
-    npn.b("Web_readyToLoadUrl");
+    nwo.b("Web_readyToLoadUrl");
     this.mStatistics.a(this.webView, this.mUrl, 0, 0, 0, 0, 0, null);
   }
 }

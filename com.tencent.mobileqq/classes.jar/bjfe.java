@@ -1,17 +1,36 @@
-import com.tencent.qqmini.sdk.launcher.core.widget.ReliableVideoPlayer.OnVideoSizeChangedListener;
-import tv.danmaku.ijk.media.player.IMediaPlayer;
-import tv.danmaku.ijk.media.player.IMediaPlayer.OnVideoSizeChangedListener;
+import android.os.Bundle;
+import com.tencent.open.agent.OpenSelectPermissionFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
 
-class bjfe
-  implements IMediaPlayer.OnVideoSizeChangedListener
+public class bjfe
+  implements bjqi
 {
-  bjfe(bjey parambjey, ReliableVideoPlayer.OnVideoSizeChangedListener paramOnVideoSizeChangedListener) {}
+  public bjfe(OpenSelectPermissionFragment paramOpenSelectPermissionFragment) {}
   
-  public void onVideoSizeChanged(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  public void a(bjpl parambjpl)
   {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnVideoSizeChangedListener != null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnVideoSizeChangedListener.onVideoSizeChanged(this.jdField_a_of_type_Bjey, paramInt1, paramInt2);
+    OpenSelectPermissionFragment.a(this.a, null);
+    QLog.d("SDK_LOGIN.OpenSelectPermissionFragment", 1, "refreshTicket success info.uin=" + bjhh.a(parambjpl.a));
+    if (OpenSelectPermissionFragment.b(this.a))
+    {
+      QLog.d("SDK_LOGIN.OpenSelectPermissionFragment", 1, "refreshTicket success Activity Finishing");
+      return;
     }
+    OpenSelectPermissionFragment.a(this.a).a().a(OpenSelectPermissionFragment.a(this.a), parambjpl);
+    OpenSelectPermissionFragment.b(this.a);
+  }
+  
+  public void a(String paramString, Bundle paramBundle)
+  {
+    OpenSelectPermissionFragment.a(this.a, null);
+    QLog.e("SDK_LOGIN.OpenSelectPermissionFragment", 1, "refreshTicket onFail");
+    if (OpenSelectPermissionFragment.b(this.a))
+    {
+      QLog.d("SDK_LOGIN.OpenSelectPermissionFragment", 1, "refreshTicket onFail Activity Finishing");
+      return;
+    }
+    OpenSelectPermissionFragment.a(this.a);
   }
 }
 

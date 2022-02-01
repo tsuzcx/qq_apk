@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/nsp" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/nsq" android:padding="10.0dip" android:layout_width="50.0dip" android:layout_height="50.0dip" android:src="@drawable/dpm" android:layout_alignParentRight="true" />
-    <ImageView android:id="@id/nss" android:layout_width="50.0dip" android:layout_height="50.0dip" android:src="@drawable/fcu" android:scaleType="centerInside" android:layout_toLeftOf="@id/nsq" android:layout_alignWithParentIfMissing="true" />
-    <ImageView android:id="@id/mwu" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/dmy" android:layout_toLeftOf="@id/nsq" android:layout_alignWithParentIfMissing="true" />
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="255.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="9.0dip" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/n7x" android:background="@drawable/dhr" android:paddingLeft="5.5dip" android:paddingRight="5.5dip" android:layout_width="wrap_content" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginBottom="@dimen/mp" android:layout_centerHorizontal="true" />
+    <com.tencent.mobileqq.now.widget.DecoratorViewPager android:id="@id/kwk" android:layout_width="fill_parent" android:layout_height="245.0dip" android:layout_marginTop="@dimen/mu" />
+    <com.tencent.mobileqq.now.widget.SimpleCircleIndicator android:layout_gravity="center_horizontal" android:id="@id/mml" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/mp" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" app:dot_interval="10.0dip" app:selected_color="#ff42adfb" app:selected_radius="3.0dip" app:unselected_color="#ffcccccc" app:unselected_radius="3.0dip" />
 </RelativeLayout>

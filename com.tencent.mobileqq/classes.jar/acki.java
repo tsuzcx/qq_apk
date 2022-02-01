@@ -1,15 +1,10 @@
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-
-class acki
-  extends JobSegment<avro, avro>
+public abstract interface acki
 {
-  acki(ackg paramackg, String paramString, int paramInt) {}
+  public abstract void a(int paramInt);
   
-  protected void a(JobContext paramJobContext, avro paramavro)
-  {
-    avrt.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1, true, new ackj(this, this));
-  }
+  public abstract void b(int paramInt);
+  
+  public abstract void c(int paramInt);
 }
 
 

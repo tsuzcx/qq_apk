@@ -1,11 +1,13 @@
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
-
-public class axnk
+class axnk
 {
   public int a;
-  public long a;
-  public OcrRecogResult a;
   public String a;
+  
+  public axnk()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
+  }
 }
 
 

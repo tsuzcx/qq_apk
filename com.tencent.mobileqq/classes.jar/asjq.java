@@ -1,15 +1,8 @@
 class asjq
-  extends asjv
 {
-  public asjq(asji paramasji)
-  {
-    super(paramasji);
-  }
-  
-  protected String a()
-  {
-    return "StateCancelUploadWhenRecv";
-  }
+  public int a;
+  public String a;
+  public String b;
 }
 
 

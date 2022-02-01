@@ -1,57 +1,61 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.ApngSoLoader;
+import com.tencent.image.ProtocolDownloader;
+import com.tencent.image.URLDrawableParams;
+import com.tencent.mobileqq.transfile.DiskCache;
+import com.tencent.mobileqq.transfile.HttpDownloader;
+import com.tencent.mobileqq.vas.VasApngIPCModule;
+import java.io.File;
 
-class acky
-  extends ackw
+public class acky
+  extends URLDrawableParams
 {
-  public acky(acjr paramacjr, long paramLong)
+  Context a;
+  
+  public acky(Context paramContext, File paramFile)
   {
-    super(paramacjr, 0, paramLong);
+    super(paramContext);
+    this.a = paramContext;
+    com.tencent.mobileqq.transfile.URLDrawableHelper.diskCachePath = paramFile;
+    com.tencent.mobileqq.startup.step.InitUrlDrawable.a = new DiskCache(paramFile);
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DoraemonOpenAPI.sensor.location", 2, "onLocationFinish: errCode=" + paramInt + ", info=" + paramSosoLbsInfo + ", isActive=" + this.jdField_a_of_type_Boolean);
-    }
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    if (paramInt == 0)
+    boolean bool = true;
+    if (("http".equals(paramString)) || ("https".equals(paramString)))
     {
-      double d1 = paramSosoLbsInfo.mLocation.mLat02;
-      double d2 = paramSosoLbsInfo.mLocation.mLon02;
-      double d3 = paramSosoLbsInfo.mLocation.speed;
-      double d4 = paramSosoLbsInfo.mLocation.accuracy;
-      double d5 = paramSosoLbsInfo.mLocation.altitude;
-      paramSosoLbsInfo = new JSONObject();
-      try
+      if (BaseApplicationImpl.sProcessId == 1) {}
+      for (;;)
       {
-        paramSosoLbsInfo.put("latitude", d1);
-        paramSosoLbsInfo.put("longitude", d2);
-        paramSosoLbsInfo.put("speed", d3);
-        paramSosoLbsInfo.put("accuracy", d4);
-        paramSosoLbsInfo.put("altitude", d5);
-        paramSosoLbsInfo.put("verticalAccuracy", 0.0D);
-        paramSosoLbsInfo.put("horizontalAccuracy", d4);
-        acmy.a(this.jdField_a_of_type_Acjr, paramSosoLbsInfo);
-        return;
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("DoraemonOpenAPI.sensor", 2, localJSONException.getMessage(), localJSONException);
-          }
-        }
+        return new HttpDownloader(bool, paramObject);
+        bool = false;
       }
     }
-    acmy.a(this.jdField_a_of_type_Acjr, paramInt, "error " + paramInt);
+    return null;
+  }
+  
+  public String doGetLocalFilePath(String paramString)
+  {
+    return null;
+  }
+  
+  public ApngSoLoader getApngSoLoader()
+  {
+    return VasApngIPCModule.getInstance();
+  }
+  
+  public Drawable getDefaultLoadingDrawable()
+  {
+    return this.a.getResources().getDrawable(2130847846);
+  }
+  
+  public Drawable getDefualtFailedDrawable()
+  {
+    return this.a.getResources().getDrawable(2130847846);
   }
 }
 

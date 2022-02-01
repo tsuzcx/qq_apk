@@ -1,53 +1,18 @@
-import com.tencent.mobileqq.persistence.Entity;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-public class bbgd
+public abstract interface bbgd
 {
-  static bbgd jdField_a_of_type_Bbgd;
-  public String a;
-  ArrayList<Entity> jdField_a_of_type_JavaUtilArrayList = null;
-  HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  public boolean a;
-  public boolean b = true;
-  public boolean c = false;
+  public abstract void onAudioCaptured(String paramString);
   
-  bbgd()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = "0";
-  }
+  public abstract void onAudioChangeCaptured(String paramString);
   
-  public static bbgd a()
-  {
-    try
-    {
-      if (jdField_a_of_type_Bbgd == null) {
-        jdField_a_of_type_Bbgd = new bbgd();
-      }
-      bbgd localbbgd = jdField_a_of_type_Bbgd;
-      return localbbgd;
-    }
-    finally {}
-  }
+  public abstract void onAudioError(int paramInt);
   
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
+  public abstract void onAudioFrames(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
   
-  public boolean a(String paramString)
-  {
-    if (paramString == null) {
-      return false;
-    }
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    }
-    return this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
-  }
+  public abstract void onAudioInit();
+  
+  public abstract void onAudioUnInit();
+  
+  public abstract void onEncodeAudioCaptured(String paramString);
 }
 
 

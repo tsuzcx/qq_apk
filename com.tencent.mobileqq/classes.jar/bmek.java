@@ -1,20 +1,49 @@
-import android.util.Log;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import cooperation.qwallet.plugin.QWalletHelper;
+import mqq.app.AppRuntime;
 
-class bmek
-  implements bmer
+public class bmek
+  extends RemoteCommand
 {
-  bmek(bmej parambmej) {}
-  
-  public void a(int paramInt)
+  public bmek()
   {
-    Log.d("ModuleController", "onScrolling() top => " + paramInt);
-    this.a.d(paramInt);
+    super("qqreader_plugin_asyn_cmd");
   }
   
-  public void b(int paramInt)
+  private QQAppInterface a()
   {
-    Log.d("ModuleController", "onScrollStop -> top:" + paramInt);
-    this.a.c(paramInt);
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
+      return (QQAppInterface)localAppRuntime;
+    }
+    return null;
+  }
+  
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  {
+    switch (paramBundle.getInt("CommondType"))
+    {
+    }
+    for (;;)
+    {
+      return null;
+      if (a() != null)
+      {
+        paramBundle = paramBundle.getString("publicaccount_uin");
+        uuc.a(a(), a().getApp(), paramBundle, new bmel(this, paramOnInvokeFinishLinstener));
+        continue;
+        QWalletHelper.preloadQWallet(a());
+      }
+    }
+  }
+  
+  public boolean isSynchronized()
+  {
+    return false;
   }
 }
 

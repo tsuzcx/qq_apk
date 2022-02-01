@@ -1,18 +1,8 @@
-import com.tencent.biz.troop.VideoCombineHelper.4;
-import com.tencent.qphone.base.util.QLog;
-
 public class zpt
-  extends zqp
 {
-  public zpt(VideoCombineHelper.4 param4)
-  {
-    super(param4.this$0);
-  }
-  
-  public void b(zqo paramzqo)
-  {
-    QLog.d(".troop.VideoCombineHelper", 2, "");
-  }
+  public static String a = "Initialed";
+  public static String b = "Loading";
+  public static String c = "Done";
 }
 
 

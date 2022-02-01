@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.utils;
 
 import android.text.TextUtils;
-import bfvp;
+import bheh;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 
 public class JumpAction$2
   implements Runnable
 {
-  public JumpAction$2(bfvp parambfvp) {}
+  public JumpAction$2(bheh parambheh) {}
   
   public void run()
   {

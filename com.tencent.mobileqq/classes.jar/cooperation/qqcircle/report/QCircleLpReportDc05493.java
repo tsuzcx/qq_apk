@@ -6,8 +6,10 @@ import com.tencent.qphone.base.util.QLog;
 
 public class QCircleLpReportDc05493
 {
+  public static final int ENTRANCE_FROM_INVITE = 10;
   public static final int ENTRANCE_FROM_QQ_AIO = 6;
   public static final int ENTRANCE_FROM_QQ_DYNAMIC_PAGE = 3;
+  public static final int ENTRANCE_FROM_QQ_MAIN_TAB = 11;
   public static final int ENTRANCE_FROM_QQ_MESSAGE_PAGE = 4;
   public static final int ENTRANCE_FROM_QQ_PROFILE_CARD = 5;
   public static final int ENTRANCE_FROM_QQ_PUSH = 7;

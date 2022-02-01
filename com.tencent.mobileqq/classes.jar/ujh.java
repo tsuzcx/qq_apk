@@ -1,278 +1,170 @@
-import UserGrowth.stFeed;
-import UserGrowth.stSimpleMetaFeed;
-import UserGrowth.stSplitBlock;
-import android.app.Activity;
+import android.os.Looper;
 import android.text.TextUtils;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.weishi_new.WSFollowFragment;
-import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
-import com.tencent.biz.pubaccount.weishi_new.player.WSVideoPreDownloadManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.HashSet;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload.MaterialData;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.mgr.SuperMaskResMgr.initLocalRes.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class ujh
-  extends bjwv<stFeed, bjwy<stFeed>>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/mgr/SuperMaskResMgr;", "", "()V", "TAG", "", "hasInit", "", "getHasInit", "()Z", "setHasInit", "(Z)V", "lock", "getLock", "()Ljava/lang/Object;", "reqResList", "Ljava/util/concurrent/ConcurrentHashMap;", "getReqResList", "()Ljava/util/concurrent/ConcurrentHashMap;", "setReqResList", "(Ljava/util/concurrent/ConcurrentHashMap;)V", "addNewRes", "", "data", "doInit", "findResDataFromLocal", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/mgr/SuperMaskResMgr$SuperMaskJson;", "adId", "adSource", "getLocalResList", "initLocalRes", "removeInvalidRes", "SuperMaskJson", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ujh
 {
-  public WSFollowFragment a;
-  private WSPlayerManager jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager;
-  private HashSet<bjwy> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  public upp a;
-  private boolean jdField_a_of_type_Boolean;
-  private upp b;
-  private upp c;
+  @NotNull
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  @NotNull
+  private static ConcurrentHashMap<String, ConcurrentHashMap<String, Object>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  public static final ujh a;
+  private static volatile boolean jdField_a_of_type_Boolean;
   
-  public ujh(WSFollowFragment paramWSFollowFragment)
+  static
   {
-    super(paramWSFollowFragment.getActivity());
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowFragment = paramWSFollowFragment;
-    this.jdField_a_of_type_Boolean = paramWSFollowFragment.c();
+    jdField_a_of_type_Ujh = new ujh();
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
   
-  private String a(upp paramupp)
+  private final void b()
   {
-    if (paramupp == null) {
-      return "WSPlayableHolder is null.";
-    }
-    if (paramupp.jdField_a_of_type_Urt == null) {
-      return "WSPlayableHolder.mPlayerParam is null.";
-    }
-    if (paramupp.jdField_a_of_type_Urt.jdField_a_of_type_Urx == null) {
-      return "WSPlayableHolder.mPlayerParam.mVideoInfo is null.";
-    }
-    return paramupp.jdField_a_of_type_Urt.jdField_a_of_type_Urx.d;
-  }
-  
-  private void a(uou paramuou)
-  {
-    if ((this.c == null) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowFragment.b()) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager != null))
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      this.c = paramuou;
-      b(this.c);
-      uya.e("WSFollowAdapter", "[WSFollowAdapter.java][onPrePlayFirstVideo] playerParam:" + this.c.jdField_a_of_type_Urt + ", mFistPlayableHolder:" + this.c + ", mFistPlayableHolder.mVideoInfo:" + this.c.jdField_a_of_type_Urx);
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.a(this.c.jdField_a_of_type_Urt);
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowFragment.b(false);
+      boolean bool = jdField_a_of_type_Boolean;
+      if (bool) {
+        return;
+      }
+      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = jdField_a_of_type_Ujh.b();
+      jdField_a_of_type_Boolean = true;
+      QLog.d("ReadInJoySuperMaskAd", 1, "SuperMaskResMgr init finish");
+      Unit localUnit = Unit.INSTANCE;
+      return;
     }
   }
   
-  private void c()
+  @NotNull
+  public final ConcurrentHashMap<String, ConcurrentHashMap<String, Object>> a()
   {
-    WSVideoPreDownloadManager localWSVideoPreDownloadManager = new WSVideoPreDownloadManager(BaseApplicationImpl.getApplication().getApplicationContext());
-    localWSVideoPreDownloadManager.a(new uji(this));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.a(localWSVideoPreDownloadManager);
+    return jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
   }
   
-  public int a(int paramInt)
+  @Nullable
+  public final uji a(@Nullable String paramString1, @Nullable String paramString2)
   {
-    Object localObject = a();
-    if ((localObject != null) && (((List)localObject).size() > 0))
+    if ((paramString1 == null) || (paramString2 == null)) {}
+    do
     {
-      localObject = (stFeed)((List)localObject).get(paramInt);
-      if (localObject == null) {
-        return 2;
-      }
-      stSplitBlock localstSplitBlock = ((stFeed)localObject).recommend_splitter;
-      if ((localstSplitBlock != null) && (((stFeed)localObject).feed_type == 3)) {}
-      switch (localstSplitBlock.style)
-      {
-      default: 
-        return ((stFeed)localObject).feed_type;
-      case 1: 
-        return 101;
-      }
-      return 102;
-    }
-    return 2;
-  }
-  
-  public stSimpleMetaFeed a()
-  {
-    Object localObject = a();
-    if ((localObject == null) || (((List)localObject).size() == 0)) {
       return null;
-    }
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      stFeed localstFeed = (stFeed)((Iterator)localObject).next();
-      if ((localstFeed.feed != null) && (!TextUtils.isEmpty(localstFeed.feed.id))) {
-        return localstFeed.feed;
+      paramString1 = uic.a(pnn.a()).a(paramString2 + "_" + paramString1);
+      if (uja.c(paramString1)) {
+        uja.a(paramString1);
       }
-    }
-    return null;
+    } while (paramString1 == null);
+    return new uji(paramString1.toJson());
   }
   
-  public Activity a()
+  public final void a()
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowFragment.getActivity();
-  }
-  
-  public bjwy<stFeed> a(ViewGroup paramViewGroup, int paramInt)
-  {
-    paramViewGroup = upe.a(paramInt, paramViewGroup, this);
-    this.jdField_a_of_type_JavaUtilHashSet.add(paramViewGroup);
-    uya.a("WSFollowContinuePlayLog", "===> WSFollowAdapter onCreateCustomViewHolder viewHolder:" + paramViewGroup);
-    return paramViewGroup;
-  }
-  
-  public WSFollowFragment a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowFragment;
-  }
-  
-  public WSPlayerManager a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager;
-  }
-  
-  public HashSet<bjwy> a()
-  {
-    return this.jdField_a_of_type_JavaUtilHashSet;
-  }
-  
-  public void a()
-  {
-    upp localupp = this.b;
-    if ((localupp == null) || (localupp == this.jdField_a_of_type_Upp)) {
-      uya.d("WS_VIDEO_PRE_PLAY", "[WSFollowAdapter.java][tryPrePlayVideo] prePlayVideoHolder:" + localupp);
-    }
-    int i;
-    do
-    {
-      do
-      {
-        return;
-      } while ((this.jdField_a_of_type_Upp == null) || (this.jdField_a_of_type_Upp.jdField_a_of_type_Urt == null) || (this.jdField_a_of_type_Upp.jdField_a_of_type_Urt.jdField_a_of_type_Urw == null));
-      i = this.jdField_a_of_type_Upp.jdField_a_of_type_Urt.jdField_a_of_type_Urw.e();
-      uya.e("WS_VIDEO_PRE_PLAY", "[WSFollowAdapter.java][tryPrePlayVideo] playingPlayerState:" + i + ", prePlayVideoHolder:" + localupp);
-    } while ((i == 0) || (i == 1) || (i == 2));
-    uya.a("WS_VIDEO_PRE_PLAY", "[WSFollowAdapter.java][tryPrePlayVideo] goto prePlayVideo prePlayVideoHolder:" + localupp);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.a(localupp.jdField_a_of_type_Urt);
-  }
-  
-  public void a(bjwy<stFeed> parambjwy)
-  {
-    uya.b("WSFollowAdapter", "[WSFollowAdapter.java][onViewAttachedToWindow] holder: " + parambjwy);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowFragment.getUserVisibleHint())
-    {
-      if (!(parambjwy instanceof uou)) {
-        break label49;
-      }
-      ((uou)parambjwy).h();
-    }
-    label49:
-    do
-    {
+    if (jdField_a_of_type_Boolean) {
       return;
-      if ((parambjwy instanceof upg))
-      {
-        ((upg)parambjwy).a();
-        return;
-      }
-      if ((parambjwy instanceof uph))
-      {
-        ((uph)parambjwy).a();
-        return;
-      }
-    } while (!(parambjwy instanceof upc));
-    ((upc)parambjwy).a();
-  }
-  
-  public void a(bjwy<stFeed> parambjwy, int paramInt)
-  {
-    stFeed localstFeed = (stFeed)a(paramInt);
-    if (localstFeed == null) {}
-    do
-    {
-      return;
-      if ((parambjwy instanceof uou))
-      {
-        parambjwy.a(localstFeed);
-        parambjwy = (uou)parambjwy;
-        parambjwy.jdField_a_of_type_Urx = urv.a(localstFeed.feed);
-        unc.a().a(parambjwy);
-        parambjwy.jdField_a_of_type_Urk = unc.a().a(parambjwy);
-        parambjwy.jdField_a_of_type_Urt = unc.a().a(parambjwy, 0L, paramInt);
-        uya.a("WSFollowAdapter", "===> WSFollowAdapter onBindCustomViewHolder position:" + paramInt + ", title: " + parambjwy.jdField_a_of_type_Urx.d + ", feedHolder:" + parambjwy + ", feedHolder.mVideoInfo:" + parambjwy.jdField_a_of_type_Urx);
-        a(parambjwy);
-        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowFragment.a(parambjwy);
-        return;
-      }
-      if ((parambjwy instanceof upf))
-      {
-        ((upf)parambjwy).a(localstFeed);
-        return;
-      }
-      if ((parambjwy instanceof upg))
-      {
-        ((upg)parambjwy).a(localstFeed);
-        return;
-      }
-      if ((parambjwy instanceof uph))
-      {
-        ((uph)parambjwy).a(localstFeed);
-        return;
-      }
-    } while (!(parambjwy instanceof upc));
-    ((upc)parambjwy).a(localstFeed);
-  }
-  
-  public void a(WSPlayerManager paramWSPlayerManager)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager = paramWSPlayerManager;
-    paramWSPlayerManager = new uto(this);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.a(paramWSPlayerManager);
-    c();
-  }
-  
-  public void a(upp paramupp)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.d();
-    this.jdField_a_of_type_Upp = paramupp;
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.b(paramupp.jdField_a_of_type_Urt, false);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.b(true);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.c(this.jdField_a_of_type_Boolean);
-    unc.a().a(paramupp.jdField_a_of_type_Urt);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    url localurl;
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager != null) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowFragment.jdField_a_of_type_Boolean))
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.c(paramBoolean);
-      localurl = url.a();
-      if (paramBoolean) {
-        break label46;
-      }
     }
-    label46:
-    for (paramBoolean = true;; paramBoolean = false)
+    if (Intrinsics.areEqual(Looper.getMainLooper(), Looper.myLooper()))
     {
-      localurl.a(paramBoolean);
+      ThreadManagerV2.post((Runnable)SuperMaskResMgr.initLocalRes.1.a, 10, null, true);
+      return;
+    }
+    b();
+  }
+  
+  public final void a(@Nullable Object paramObject)
+  {
+    if (!(paramObject instanceof MaterialData)) {
+      paramObject = null;
+    }
+    for (;;)
+    {
+      Object localObject = (MaterialData)paramObject;
+      if ((localObject != null) && (uja.a((MaterialData)localObject)))
+      {
+        paramObject = new ConcurrentHashMap();
+        uja.a((MaterialData)localObject, paramObject);
+        if (!TextUtils.isEmpty((CharSequence)((MaterialData)localObject).adid))
+        {
+          Map localMap = (Map)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+          localObject = ((MaterialData)localObject).adid;
+          Intrinsics.checkExpressionValueIsNotNull(localObject, "it.adid");
+          localMap.put(localObject, paramObject);
+        }
+      }
       return;
     }
   }
   
-  public boolean a()
+  public final boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return jdField_a_of_type_Boolean;
   }
   
-  public void b(bjwy<stFeed> parambjwy)
+  @NotNull
+  public final ConcurrentHashMap<String, ConcurrentHashMap<String, Object>> b()
   {
-    super.onViewDetachedFromWindow(parambjwy);
-    if ((parambjwy instanceof uou)) {
-      ((uou)parambjwy).g();
+    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
+    long l1 = System.currentTimeMillis();
+    Object localObject1 = uic.a(pnn.a());
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "AdMaterialResManager.get…InterfaceUtil.getQQApp())");
+    localObject1 = ((uic)localObject1).a();
+    if (((HashMap)localObject1).size() <= 0)
+    {
+      l2 = System.currentTimeMillis();
+      ukq.a("ReadInJoySuperMaskAd", "getLocalResList time cost : " + (l2 - l1));
+      return localConcurrentHashMap;
     }
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "allDBData");
+    localObject1 = ((Map)localObject1).entrySet().iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
+      Object localObject3 = ((Map.Entry)localObject2).getValue();
+      Intrinsics.checkExpressionValueIsNotNull(localObject3, "it.value");
+      if (uja.a((MaterialData)localObject3))
+      {
+        localObject3 = new ConcurrentHashMap();
+        Object localObject4 = ((Map.Entry)localObject2).getValue();
+        Intrinsics.checkExpressionValueIsNotNull(localObject4, "it.value");
+        uja.a((MaterialData)localObject4, (ConcurrentHashMap)localObject3);
+        if (!TextUtils.isEmpty((CharSequence)((MaterialData)((Map.Entry)localObject2).getValue()).adid))
+        {
+          localObject4 = (Map)localConcurrentHashMap;
+          localObject2 = ((MaterialData)((Map.Entry)localObject2).getValue()).adid;
+          Intrinsics.checkExpressionValueIsNotNull(localObject2, "it.value.adid");
+          ((Map)localObject4).put(localObject2, localObject3);
+        }
+      }
+    }
+    long l2 = System.currentTimeMillis();
+    ukq.a("ReadInJoySuperMaskAd", "getLocalResList time cost : " + (l2 - l1));
+    return localConcurrentHashMap;
   }
   
-  public void b(upp paramupp)
+  public final void b(@Nullable Object paramObject)
   {
-    this.b = paramupp;
-    uya.e("WS_VIDEO_PRE_PLAY", "[WSFollowAdapter.java][setPrePlayingHolder]\nplayingTitle:" + a(this.jdField_a_of_type_Upp) + "\nprePlayTitle:" + a(this.b) + "\nPlayingHolder:" + this.jdField_a_of_type_Upp + "\nPrePlayHolder:" + this.b);
+    if (!(paramObject instanceof MaterialData)) {
+      paramObject = null;
+    }
+    for (;;)
+    {
+      paramObject = (MaterialData)paramObject;
+      if ((paramObject != null) && (!TextUtils.isEmpty((CharSequence)paramObject.adid))) {
+        jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramObject.adid);
+      }
+      return;
+    }
   }
 }
 

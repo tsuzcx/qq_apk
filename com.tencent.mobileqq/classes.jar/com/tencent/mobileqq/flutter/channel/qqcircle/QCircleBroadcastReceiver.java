@@ -4,9 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import atig;
-import atii;
-import atio;
+import com.qflutter.qqcircle.TencentQQCirclePlugin;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,14 +27,7 @@ public class QCircleBroadcastReceiver
     paramIntent = new HashMap();
     paramIntent.put("userId", paramContext);
     paramIntent.put("followState", Integer.valueOf(i));
-    atig localatig = atii.a().a("tencent_qqcircle");
-    if (!(localatig instanceof atio))
-    {
-      QLog.e("QCircleBroadcastReceiver", 1, "[onReceive] channel=" + localatig);
-      return;
-    }
-    QLog.d("QCircleBroadcastReceiver", 1, "[onReceive] userId=" + paramContext + ", state=" + i);
-    ((atio)localatig).a("tencent_qqcircle/follow", paramIntent);
+    TencentQQCirclePlugin.sendEvent("tencent_qqcircle/follow", paramIntent);
   }
 }
 

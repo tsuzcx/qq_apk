@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity;
 
 import android.text.Editable;
 import android.widget.EditText;
-import bftf;
+import bhbx;
 
 class RegisterVerifyCodeActivity$4
   implements Runnable
@@ -12,7 +12,7 @@ class RegisterVerifyCodeActivity$4
   public void run()
   {
     int j = 0;
-    String str = bftf.a(this.a, this.b);
+    String str = bhbx.a(this.a, this.b);
     if ((str != null) && (str.length() == 6) && (RegisterVerifyCodeActivity.a(this.this$0) != null) && (!str.equals(RegisterVerifyCodeActivity.a(this.this$0))))
     {
       RegisterVerifyCodeActivity.e(this.this$0, str);
@@ -48,7 +48,7 @@ class RegisterVerifyCodeActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterVerifyCodeActivity.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
 package com.tencent.gdtad.util;
 
-import abss;
-import abst;
-import absv;
+import acir;
+import acis;
+import aciu;
 
 public class GdtUserInfoAuthorizationHelper$1$1
   implements Runnable
 {
-  public GdtUserInfoAuthorizationHelper$1$1(abst paramabst, boolean paramBoolean, absv paramabsv) {}
+  public GdtUserInfoAuthorizationHelper$1$1(acis paramacis, boolean paramBoolean, aciu paramaciu) {}
   
   public void run()
   {
-    abss.a(this.jdField_a_of_type_Abst.jdField_a_of_type_Abss, this.jdField_a_of_type_Abst.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Absv, this.jdField_a_of_type_Abst.jdField_a_of_type_Absu, this.jdField_a_of_type_Abst.jdField_a_of_type_JavaUtilList);
+    acir.a(this.jdField_a_of_type_Acis.jdField_a_of_type_Acir, this.jdField_a_of_type_Acis.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Aciu, this.jdField_a_of_type_Acis.jdField_a_of_type_Acit, this.jdField_a_of_type_Acis.jdField_a_of_type_JavaUtilList);
   }
 }
 

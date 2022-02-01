@@ -1,7 +1,49 @@
-import kotlin.Metadata;
+import com.tencent.pts.utils.PTSLogger;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJWriteWatchWordModel$Companion;", "", "()V", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rae {}
+public class rae
+  implements PTSLogger
+{
+  public void d(String paramString1, String paramString2)
+  {
+    QLog.d(paramString1, 2, paramString2);
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    QLog.e(paramString1, 1, paramString2);
+  }
+  
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.e(paramString1, 1, paramString2 + ", t = " + paramThrowable);
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 1, paramString2);
+  }
+  
+  public boolean isColorLevel()
+  {
+    return QLog.isColorLevel();
+  }
+  
+  public boolean isDebug()
+  {
+    return false;
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    QLog.w(paramString1, 1, paramString2);
+  }
+  
+  public void w(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.w(paramString1, 1, paramString2 + ", t = " + paramThrowable);
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

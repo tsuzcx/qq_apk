@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.util;
 
-import bfre;
+import bgzv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.NearbyPeopleCard;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
@@ -38,7 +38,7 @@ public final class NearbyProfileUtil$1
     }
     for (;;)
     {
-      bfre.a(this.jdField_a_of_type_Awkr, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, (byte[])localObject1, l, false, 0L, false, 0L, 0);
+      bgzv.a(this.jdField_a_of_type_Axqt, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, (byte[])localObject1, l, false, 0L, false, 0L, 0);
       return;
       localObject1 = null;
       l = 0L;

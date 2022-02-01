@@ -1,19 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-
 class ahcb
-  implements Animation.AnimationListener
+  extends afos
 {
-  ahcb(ahbz paramahbz, ahbu paramahbu) {}
+  public long a;
+  public Object a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_Ahbz.b();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  ahcb(ahbz paramahbz) {}
 }
 
 

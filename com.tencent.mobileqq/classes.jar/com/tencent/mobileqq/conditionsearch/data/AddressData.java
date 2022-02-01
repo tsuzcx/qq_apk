@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.conditionsearch.data;
 
-import amtj;
 import android.text.TextUtils;
+import anvx;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.utils.StringUtil;
 import java.util.HashMap;
@@ -14,7 +14,7 @@ public class AddressData
   
   static
   {
-    jdField_a_of_type_JavaLangString = amtj.a(2131699028);
+    jdField_a_of_type_JavaLangString = anvx.a(2131699379);
   }
   
   public AddressData()

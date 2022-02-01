@@ -1,15 +1,6 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
-
-public class akzh
+public abstract interface akzh
 {
-  public ImageView a;
-  public TextView a;
-  public String a;
-  boolean jdField_a_of_type_Boolean;
-  
-  akzh(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  public abstract void a(int paramInt);
 }
 
 

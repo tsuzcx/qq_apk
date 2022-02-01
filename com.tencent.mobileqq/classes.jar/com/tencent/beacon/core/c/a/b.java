@@ -29,7 +29,7 @@ public class b
       return d;
     }
     if (paramBoolean) {
-      return b;
+      return paramString;
     }
     return b(paramString);
   }
@@ -52,7 +52,7 @@ public class b
       return c;
     }
     if (paramBoolean1) {
-      return a;
+      return paramString;
     }
     return b(paramString);
   }

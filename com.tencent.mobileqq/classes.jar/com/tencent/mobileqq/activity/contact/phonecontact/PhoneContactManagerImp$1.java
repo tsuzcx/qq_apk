@@ -2,6 +2,7 @@ package com.tencent.mobileqq.activity.contact.phonecontact;
 
 import android.content.SharedPreferences;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.contactsync.ContactSyncManager;
 
 public class PhoneContactManagerImp$1
@@ -15,7 +16,7 @@ public class PhoneContactManagerImp$1
     PhoneContactManagerImp.a(this.this$0);
     this.this$0.f = this.this$0.a.getLong("key_contacts_switches", 0L);
     if (PhoneContactManagerImp.a(this.this$0) != null) {
-      ContactSyncManager localContactSyncManager = (ContactSyncManager)PhoneContactManagerImp.a(this.this$0).getManager(41);
+      ContactSyncManager localContactSyncManager = (ContactSyncManager)PhoneContactManagerImp.a(this.this$0).getManager(QQManagerFactory.MGR_SYNC_CONTACT);
     }
     this.this$0.m();
   }

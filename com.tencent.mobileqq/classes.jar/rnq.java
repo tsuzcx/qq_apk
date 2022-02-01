@@ -1,26 +1,8 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
 
-class rnq
-  implements rhe
+public abstract interface rnq
 {
-  rnq(rno paramrno, List paramList) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        UgcVideo localUgcVideo = (UgcVideo)localIterator.next();
-        this.jdField_a_of_type_Rno.a(localUgcVideo, true);
-      }
-    }
-    QLog.i("RIJUGC.RIJUgcVideoPublishManager", 1, "showMobileNetworkDialog, isContinue=" + paramBoolean);
-  }
+  public abstract void a(int paramInt, String paramString, BaseResData paramBaseResData);
 }
 
 

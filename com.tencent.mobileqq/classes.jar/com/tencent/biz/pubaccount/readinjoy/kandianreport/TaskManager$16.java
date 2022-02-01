@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext.Callback;
-import odq;
+import olh;
 import org.json.JSONObject;
 
 class TaskManager$16
@@ -17,7 +17,7 @@ class TaskManager$16
     JSONObject localJSONObject = new JSONObject();
     localJSONObject.put("version", TaskManager.scriptVersion + "");
     localJSONObject.put("info", paramArrayOfObject);
-    odq.a(null, "", paramJSContext, paramJSContext, 0, 0, "", "", "", localJSONObject.toString(), false);
+    olh.a(null, "", paramJSContext, paramJSContext, 0, 0, "", "", "", localJSONObject.toString(), false);
     return Integer.valueOf(0);
   }
 }

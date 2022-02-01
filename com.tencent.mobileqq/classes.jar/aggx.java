@@ -1,17 +1,24 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.mobileqq.activity.aio.helper.AioPaiYiPaiHelper;
+import java.lang.ref.WeakReference;
 
-class aggx
-  extends aghj
+public class aggx
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  aggx(agcw paramagcw)
+  private WeakReference<AioPaiYiPaiHelper> a;
+  
+  public aggx(AioPaiYiPaiHelper paramAioPaiYiPaiHelper)
   {
-    super(paramagcw, null);
+    this.a = new WeakReference(paramAioPaiYiPaiHelper);
   }
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public boolean onPreDraw()
   {
-    return new auca(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    AioPaiYiPaiHelper localAioPaiYiPaiHelper = (AioPaiYiPaiHelper)this.a.get();
+    if (localAioPaiYiPaiHelper != null) {
+      AioPaiYiPaiHelper.a(localAioPaiYiPaiHelper);
+    }
+    return true;
   }
 }
 

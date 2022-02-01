@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
-import ajog;
-import ajpb;
+import akju;
+import akkp;
 import android.app.Application;
 import android.graphics.Bitmap;
 import com.tencent.image.DownloadParams;
@@ -62,15 +62,20 @@ public class RegionalThumbDownloader
     paramURLDrawableHandler = LocalMediaInfo.parseUrl(paramDownloadParams.url);
     if (paramURLDrawableHandler != null) {
       if (!paramURLDrawableHandler.isRegionThumbUseNewDecoder) {
-        break label58;
+        break label66;
       }
     }
-    label58:
-    for (paramFile = new ajog();; paramFile = new ajpb())
+    label66:
+    for (paramFile = new akju();; paramFile = new akkp())
     {
-      paramFile = paramFile.getBitmap(paramDownloadParams.url);
-      paramDownloadParams.outWidth = paramFile.getWidth();
-      paramDownloadParams.outHeight = paramFile.getHeight();
+      paramURLDrawableHandler = paramFile.getBitmap(paramDownloadParams.url);
+      paramFile = paramURLDrawableHandler;
+      if (paramURLDrawableHandler != null)
+      {
+        paramDownloadParams.outWidth = paramURLDrawableHandler.getWidth();
+        paramDownloadParams.outHeight = paramURLDrawableHandler.getHeight();
+        paramFile = paramURLDrawableHandler;
+      }
       return paramFile;
     }
   }

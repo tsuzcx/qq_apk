@@ -1,131 +1,52 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import android.util.Base64;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import mqq.app.AppRuntime;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.support.annotation.Nullable;
+import android.support.v4.util.LruCache;
+import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.3;
+import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.3.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class ptd
+  implements ImageAssetDelegate
 {
-  private long a(String paramString)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if (localObject == null) {}
-    do
-    {
-      return -1L;
-      localObject = bkwm.a((AppRuntime)localObject, true, true);
-    } while (localObject == null);
-    return ((SharedPreferences)localObject).getLong("event_simple_g_info_" + pte.a(paramString), -1L);
-  }
+  public ptd(ReadInJoyLottieDrawable.3 param3) {}
   
-  private String a(String paramString)
+  @Nullable
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    if (paramString == null) {
-      return "";
-    }
-    return bjkz.a(paramString);
-  }
-  
-  private void a(String paramString, long paramLong)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if (localObject == null) {}
-    do
-    {
-      return;
-      localObject = bkwm.a((AppRuntime)localObject, true, true);
-    } while (localObject == null);
-    localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).putLong("event_simple_g_info_" + pte.a(paramString), paramLong);
-    bkwm.a((SharedPreferences.Editor)localObject, true);
-  }
-  
-  private void a(String paramString, TroopInfo paramTroopInfo)
-  {
-    if (paramTroopInfo == null) {}
-    while ((paramTroopInfo.timeSec == a(paramTroopInfo.troopuin)) && (!ptc.a().a)) {
-      return;
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(b("g_ui"), b(a(paramTroopInfo.troopuin)));
-    localHashMap.put(b("g_code"), b(a(paramTroopInfo.troopcode)));
-    localHashMap.put(b("g_oui"), b(a(paramTroopInfo.troopowneruin)));
-    localHashMap.put(b("g_name"), b(paramTroopInfo.troopname));
-    localHashMap.put(b("g_mem"), b(paramTroopInfo.troopmemo));
-    localHashMap.put(b("g_ind"), b(paramTroopInfo.fingertroopmemo));
-    localHashMap.put(b("g_create_time"), b(paramTroopInfo.troopCreateTime + ""));
-    localHashMap.put(b("g_mem_num"), b(paramTroopInfo.wMemberNum + ""));
-    localHashMap.put(b("g_adm"), b(c(paramTroopInfo.Administrator)));
-    localHashMap.put(b("g_class"), b(paramTroopInfo.mGroupClassExtText));
-    localHashMap.put(b("g_grade"), b(paramTroopInfo.nTroopGrade + ""));
-    localHashMap.put(b("g_type"), b(paramTroopInfo.troopTypeExt + ""));
-    StatisticCollector.getInstance(null).collectPerformance(paramString, "event_simple_g_info", false, 1000L, 1000L, localHashMap, null);
-    a(paramTroopInfo.troopuin, paramTroopInfo.timeSec);
-  }
-  
-  private String b(String paramString)
-  {
-    if (paramString == null) {
-      return "";
-    }
-    return Base64.encodeToString(paramString.getBytes(), 3);
-  }
-  
-  private String c(String paramString)
-  {
-    if (paramString == null) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    paramString = paramString.split("\\|");
-    int i = 0;
-    while (i < paramString.length)
-    {
-      if (!TextUtils.isEmpty(paramString[i])) {
-        localStringBuilder.append(a(paramString[i])).append('^');
-      }
-      i += 1;
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {}
+    Object localObject = paramLottieImageAsset.getFileName();
+    paramLottieImageAsset = pta.a(this.a.this$0, this.a.a, "images");
+    if (paramLottieImageAsset != null) {}
     for (;;)
     {
-      return;
-      Object localObject = (TroopManager)paramQQAppInterface.getManager(52);
-      if (localObject != null)
-      {
-        localObject = ((TroopManager)localObject).b();
-        if (localObject != null)
-        {
-          paramQQAppInterface = paramQQAppInterface.getCurrentUin();
-          localObject = ((ArrayList)localObject).iterator();
-          while (((Iterator)localObject).hasNext())
-          {
-            a(paramQQAppInterface, (TroopInfo)((Iterator)localObject).next());
-            try
-            {
-              Thread.sleep(1000L);
-            }
-            catch (Exception localException)
-            {
-              localException.printStackTrace();
-            }
-          }
-        }
+      paramLottieImageAsset = paramLottieImageAsset.getAbsolutePath() + "/" + (String)localObject;
+      localObject = (Bitmap)pta.b().get(paramLottieImageAsset);
+      if (localObject == null) {
+        break;
       }
+      return localObject;
+      paramLottieImageAsset = this.a.a[0];
     }
+    ThreadManager.excute(new ReadInJoyLottieDrawable.3.1.1(this, paramLottieImageAsset), 64, null, true);
+    try
+    {
+      localObject = BitmapFactory.decodeFile(paramLottieImageAsset);
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("ReadInJoyLottieDrawable", 2, "loadLottieAnimation path: " + paramLottieImageAsset);
+      return null;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      QLog.e("ReadInJoyLottieDrawable", 2, "loadLottieAnimation oom: " + paramLottieImageAsset);
+    }
+    return null;
   }
 }
 

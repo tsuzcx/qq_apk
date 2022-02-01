@@ -2,6 +2,7 @@ package com.tencent.superplayer.player;
 
 import android.graphics.Bitmap;
 import android.text.TextUtils;
+import com.tencent.qqlive.module.videoreport.dtreport.video.playback.ReportThumbPlayer;
 import com.tencent.superplayer.api.SuperPlayerVideoInfo;
 import com.tencent.superplayer.api.TVideoNetInfo;
 import com.tencent.superplayer.utils.LogUtil;
@@ -43,6 +44,7 @@ class SuperPlayerWrapper$TPPlayerListenerAdapter
   
   public void onCompletion(ITPPlayer paramITPPlayer)
   {
+    ReportThumbPlayer.getInstance().onCompletion(paramITPPlayer);
     LogUtil.i(SuperPlayerWrapper.access$100(this.this$0), "inner listener called : onCompletion");
     SuperPlayerWrapper.access$400(this.this$0).changeStateAndNotify(7);
     this.mWrapperCallback.onCompletion(this.this$0);
@@ -50,6 +52,7 @@ class SuperPlayerWrapper$TPPlayerListenerAdapter
   
   public void onError(ITPPlayer paramITPPlayer, int paramInt1, int paramInt2, long paramLong1, long paramLong2)
   {
+    ReportThumbPlayer.getInstance().onError(paramITPPlayer, paramInt1, paramInt2);
     LogUtil.e(SuperPlayerWrapper.access$100(this.this$0), "inner listener called : onError, errorType:" + paramInt1 + ", errorCode:" + paramInt2 + ", arg1:" + paramLong1 + ", arg2:" + paramLong2);
     SuperPlayerWrapper.access$400(this.this$0).changeStateAndNotify(9);
     this.mWrapperCallback.onError(this.this$0, 1, paramInt1, paramInt2, paramLong1 + ":" + paramLong2);
@@ -96,6 +99,7 @@ class SuperPlayerWrapper$TPPlayerListenerAdapter
   
   public void onInfo(ITPPlayer paramITPPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
   {
+    ReportThumbPlayer.getInstance().onInfo(paramITPPlayer, paramInt, paramLong1, paramLong2);
     if (SuperPlayerWrapper.access$700(this.this$0, paramInt, paramLong1, paramLong2, paramObject)) {
       return;
     }
@@ -106,6 +110,7 @@ class SuperPlayerWrapper$TPPlayerListenerAdapter
   
   public void onPrepared(ITPPlayer paramITPPlayer)
   {
+    ReportThumbPlayer.getInstance().onPrepared(paramITPPlayer);
     LogUtil.i(SuperPlayerWrapper.access$100(this.this$0), "inner listener called : onPrepared");
     SuperPlayerWrapper.access$400(this.this$0).changeStateAndNotify(4);
     this.mWrapperCallback.onVideoPrepared(this.this$0);

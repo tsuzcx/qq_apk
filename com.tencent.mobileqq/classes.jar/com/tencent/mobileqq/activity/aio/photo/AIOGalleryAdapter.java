@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aagc;
-import aagp;
-import agnj;
-import agxy;
-import agxz;
-import agya;
-import agyb;
-import agyc;
-import agyh;
-import agzn;
-import aham;
-import ahap;
-import ahay;
-import ahbb;
-import ajou;
-import ajqa;
-import ajqi;
-import amtj;
+import aady;
+import aavo;
+import aawb;
+import ahfz;
+import ahqz;
+import ahra;
+import ahrb;
+import ahrc;
+import ahrd;
+import ahri;
+import ahsn;
+import ahtm;
+import ahtp;
+import ahty;
+import ahub;
+import akki;
+import aklo;
+import aklw;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
@@ -38,15 +38,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import aqww;
-import asld;
-import badl;
-import bado;
-import badr;
-import bcef;
-import bfth;
-import bkkh;
-import bmqh;
+import anvx;
+import asbg;
+import atpj;
+import bbka;
+import bbkd;
+import bbkg;
+import bdla;
+import bhbz;
+import blvp;
+import bofz;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.galleryactivity.AbstractImageAdapter;
@@ -79,21 +80,20 @@ import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import org.json.JSONObject;
-import xwa;
-import ypp;
-import zon;
+import ykv;
+import zei;
 
 public class AIOGalleryAdapter
   extends AbstractImageAdapter
-  implements ajou, QQLiveDrawable.OnDownloadListener, QQLiveDrawable.OnLoopBackListener, QQLiveDrawable.OnStateListener
+  implements akki, QQLiveDrawable.OnDownloadListener, QQLiveDrawable.OnLoopBackListener, QQLiveDrawable.OnStateListener
 {
   int jdField_a_of_type_Int;
   long jdField_a_of_type_Long = -1L;
-  public agyb a;
-  private agyc jdField_a_of_type_Agyc;
-  agzn jdField_a_of_type_Agzn;
-  ahap jdField_a_of_type_Ahap;
-  ajqa jdField_a_of_type_Ajqa;
+  public ahrc a;
+  private ahrd jdField_a_of_type_Ahrd;
+  ahsn jdField_a_of_type_Ahsn;
+  ahtp jdField_a_of_type_Ahtp;
+  aklo jdField_a_of_type_Aklo;
   private SparseArray<URLDrawable> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
   public AIOGalleryActivity a;
@@ -116,11 +116,11 @@ public class AIOGalleryAdapter
   private int f;
   private int g;
   
-  public AIOGalleryAdapter(Context paramContext, ahap paramahap, boolean paramBoolean, int paramInt)
+  public AIOGalleryAdapter(Context paramContext, ahtp paramahtp, boolean paramBoolean, int paramInt)
   {
     this.jdField_g_of_type_Int = -1;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity = ((AIOGalleryActivity)paramContext);
-    this.jdField_a_of_type_Ahap = paramahap;
+    this.jdField_a_of_type_Ahtp = paramahtp;
     this.e = paramContext.getResources().getDisplayMetrics().widthPixels;
     this.jdField_f_of_type_Int = paramContext.getResources().getDisplayMetrics().heightPixels;
     this.jdField_b_of_type_Boolean = paramBoolean;
@@ -135,11 +135,11 @@ public class AIOGalleryAdapter
   
   public static Drawable a(String paramString, int paramInt1, int paramInt2)
   {
-    aqww localaqww = new aqww(Color.rgb(214, 214, 214), paramInt1, paramInt2);
+    asbg localasbg = new asbg(Color.rgb(214, 214, 214), paramInt1, paramInt2);
     if (!TextUtils.isEmpty(paramString)) {
       try
       {
-        URLDrawable localURLDrawable = URLDrawable.getDrawable(paramString, localaqww, localaqww);
+        URLDrawable localURLDrawable = URLDrawable.getDrawable(paramString, localasbg, localasbg);
         if (localURLDrawable.getStatus() != 1) {
           localURLDrawable.downloadImediatly();
         }
@@ -152,20 +152,20 @@ public class AIOGalleryAdapter
         }
       }
     }
-    return localaqww;
+    return localasbg;
   }
   
-  private View a(int paramInt, aham paramaham)
+  private View a(int paramInt, ahtm paramahtm)
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_d_of_type_Boolean = true;
-    AIOShortVideoData localAIOShortVideoData = (AIOShortVideoData)paramaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
+    AIOShortVideoData localAIOShortVideoData = (AIOShortVideoData)paramahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
     if (localAIOShortVideoData.jdField_b_of_type_Int != 0)
     {
       localObject = new AIOGalleryAdapter.GalleryImageStruct(this, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity, 1);
       ((AIOGalleryAdapter.GalleryImageStruct)localObject).setAdjustViewBounds(true);
       localURLDrawable = (URLDrawable)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
       ((AIOGalleryAdapter.GalleryImageStruct)localObject).setPosition(paramInt);
-      ((AIOGalleryAdapter.GalleryImageStruct)localObject).setImageInfo(paramaham);
+      ((AIOGalleryAdapter.GalleryImageStruct)localObject).setImageInfo(paramahtm);
       ((AIOGalleryAdapter.GalleryImageStruct)localObject).a();
       if (localURLDrawable != null)
       {
@@ -179,8 +179,8 @@ public class AIOGalleryAdapter
         if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_b_of_type_Int != 1) {
           break label340;
         }
-        paramaham = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity;
-        paramaham.jdField_b_of_type_Int -= 1;
+        paramahtm = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity;
+        paramahtm.jdField_b_of_type_Int -= 1;
         if (this.jdField_b_of_type_Boolean)
         {
           ((AIOGalleryAdapter.GalleryImageStruct)localObject).b(paramInt);
@@ -192,7 +192,7 @@ public class AIOGalleryAdapter
       {
         if ((!this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean))
         {
-          this.jdField_a_of_type_Ahap.a(this.jdField_a_of_type_Int);
+          this.jdField_a_of_type_Ahtp.a(this.jdField_a_of_type_Int);
           this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Boolean = true;
         }
         return localObject;
@@ -206,25 +206,25 @@ public class AIOGalleryAdapter
           break;
         }
         ((AIOGalleryAdapter.GalleryImageStruct)localObject).jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.jdField_a_of_type_Ahap.a(localAIOShortVideoData.jdField_f_of_type_Long, localAIOShortVideoData.jdField_f_of_type_Int, 0);
+        this.jdField_a_of_type_Ahtp.a(localAIOShortVideoData.jdField_f_of_type_Long, localAIOShortVideoData.jdField_f_of_type_Int, 0);
         QLog.i(" AIOGalleryAdapter", 2, "getView(): load thumb download THUMB, position is " + paramInt);
         break;
         label340:
         if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_b_of_type_Int == 0)
         {
           ((AIOGalleryAdapter.GalleryImageStruct)localObject).b(paramInt);
-          bcef.b(null, "dc00898", "", "", "0X8009EF1", "0X8009EF1", 1, 0, "", "", "", "");
+          bdla.b(null, "dc00898", "", "", "0X8009EF1", "0X8009EF1", 1, 0, "", "", "", "");
           this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_c_of_type_Boolean = false;
           continue;
-          bcef.b(null, "dc00898", "", "", "0X8009EF1", "0X8009EF1", 2, 0, "", "", "", "");
+          bdla.b(null, "dc00898", "", "", "0X8009EF1", "0X8009EF1", 2, 0, "", "", "", "");
         }
       }
     }
-    paramaham = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.getLayoutInflater().inflate(2131561280, null);
-    paramaham.setTag(2131296400, Boolean.valueOf(true));
-    paramaham.setTag(2131296433, Boolean.valueOf(true));
-    paramaham.setLayoutParams(new Gallery.LayoutParams(-1, -1));
-    Object localObject = (URLImageView)paramaham.findViewById(2131372932);
+    paramahtm = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.getLayoutInflater().inflate(2131561341, null);
+    paramahtm.setTag(2131296400, Boolean.valueOf(true));
+    paramahtm.setTag(2131296433, Boolean.valueOf(true));
+    paramahtm.setLayoutParams(new Gallery.LayoutParams(-1, -1));
+    Object localObject = (URLImageView)paramahtm.findViewById(2131373142);
     URLDrawable localURLDrawable = (URLDrawable)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
     if (localURLDrawable != null)
     {
@@ -235,46 +235,46 @@ public class AIOGalleryAdapter
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Long != localAIOShortVideoData.jdField_f_of_type_Long) {
         break label703;
       }
-      if (a(localAIOShortVideoData, paramaham))
+      if (a(localAIOShortVideoData, paramahtm))
       {
-        ((ImageView)paramaham.findViewById(2131372931)).setVisibility(8);
-        this.jdField_a_of_type_Ajqa.f();
+        ((ImageView)paramahtm.findViewById(2131373141)).setVisibility(8);
+        this.jdField_a_of_type_Aklo.f();
       }
       this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_c_of_type_Boolean = false;
-      bcef.b(null, "dc00898", "", "", "0X8009EF2", "0X8009EF2", 1, 0, "", "", "", "");
+      bdla.b(null, "dc00898", "", "", "0X8009EF2", "0X8009EF2", 1, 0, "", "", "", "");
     }
     for (;;)
     {
       if ((!this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean))
       {
-        this.jdField_a_of_type_Ahap.a(this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_Ahtp.a(this.jdField_a_of_type_Int);
         this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Boolean = true;
       }
-      return paramaham;
+      return paramahtm;
       if (localAIOShortVideoData.a(0) == null) {
         break;
       }
       a(localAIOShortVideoData.jdField_a_of_type_JavaLangString, localAIOShortVideoData.jdField_c_of_type_Int, localAIOShortVideoData.jdField_d_of_type_Int, (ImageView)localObject, paramInt);
       break;
       label703:
-      bcef.b(null, "dc00898", "", "", "0X8009EF2", "0X8009EF2", 2, 0, "", "", "", "");
+      bdla.b(null, "dc00898", "", "", "0X8009EF2", "0X8009EF2", 2, 0, "", "", "", "");
     }
   }
   
-  private View a(aham paramaham, int paramInt, AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct)
+  private View a(ahtm paramahtm, int paramInt, AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct)
   {
     AIOFileVideoData localAIOFileVideoData;
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_c_of_type_Boolean)
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_c_of_type_Boolean = false;
-      bcef.b(null, "dc00898", "", "", "0X8009EF3", "0X8009EF3", 1, 0, "", "", "", "");
-      localAIOFileVideoData = (AIOFileVideoData)paramaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
+      bdla.b(null, "dc00898", "", "", "0X8009EF3", "0X8009EF3", 1, 0, "", "", "", "");
+      localAIOFileVideoData = (AIOFileVideoData)paramahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
       paramGalleryImageStruct.setPosition(paramInt);
-      paramGalleryImageStruct.setImageInfo(paramaham);
+      paramGalleryImageStruct.setImageInfo(paramahtm);
       paramGalleryImageStruct.setIgnoreLayout(false);
       if ((!this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean))
       {
-        this.jdField_a_of_type_Ahap.a(this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_Ahtp.a(this.jdField_a_of_type_Int);
         this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Boolean = true;
       }
       paramGalleryImageStruct = (Drawable)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
@@ -286,17 +286,17 @@ public class AIOGalleryAdapter
     label580:
     for (;;)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.getLayoutInflater().inflate(2131561280, null);
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.getLayoutInflater().inflate(2131561341, null);
       ((View)localObject).setTag(2131296400, Boolean.valueOf(true));
       ((View)localObject).setTag(2131296433, Boolean.valueOf(true));
       ((View)localObject).setLayoutParams(new Gallery.LayoutParams(-1, -1));
-      URLImageView localURLImageView = (URLImageView)((View)localObject).findViewById(2131372932);
+      URLImageView localURLImageView = (URLImageView)((View)localObject).findViewById(2131373142);
       localURLImageView.setImageDrawable(paramGalleryImageStruct);
       if (localAIOFileVideoData.b())
       {
         localURLImageView.setImageDrawable(null);
         return localObject;
-        bcef.b(null, "dc00898", "", "", "0X8009EF3", "0X8009EF3", 2, 0, "", "", "", "");
+        bdla.b(null, "dc00898", "", "", "0X8009EF3", "0X8009EF3", 2, 0, "", "", "", "");
         break;
         if ((paramGalleryImageStruct != null) && (((URLDrawable)paramGalleryImageStruct).getStatus() == 1))
         {
@@ -320,14 +320,14 @@ public class AIOGalleryAdapter
           this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, (URLDrawable)paramGalleryImageStruct);
           continue;
         }
-        paramGalleryImageStruct = BaseApplicationImpl.getApplication().getResources().getDrawable(2130838097);
+        paramGalleryImageStruct = BaseApplicationImpl.getApplication().getResources().getDrawable(2130838111);
         continue;
       }
-      if ((paramaham.jdField_c_of_type_Boolean) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_d_of_type_Boolean)) {
+      if ((paramahtm.jdField_c_of_type_Boolean) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_d_of_type_Boolean)) {
         if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_b_of_type_Int == 1)
         {
-          paramaham = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity;
-          paramaham.jdField_b_of_type_Int -= 1;
+          paramahtm = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity;
+          paramahtm.jdField_b_of_type_Int -= 1;
           this.jdField_d_of_type_Long = -1L;
           if (QLog.isColorLevel()) {
             QLog.i(" AIOGalleryAdapter", 1, "FileVideo_AP set hasDoneItemSelectUid = -1");
@@ -355,7 +355,7 @@ public class AIOGalleryAdapter
     }
   }
   
-  private URLDrawable a(AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct, aham paramaham, AIOImageData paramAIOImageData, boolean paramBoolean, int paramInt, File paramFile)
+  private URLDrawable a(AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct, ahtm paramahtm, AIOImageData paramAIOImageData, boolean paramBoolean, int paramInt, File paramFile)
   {
     Object localObject1 = null;
     Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
@@ -400,36 +400,36 @@ public class AIOGalleryAdapter
             localObject1 = localObject2;
             localObject1.setTag(Integer.valueOf(1));
             this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject1);
-            a(localObject1, paramGalleryImageStruct, paramaham, paramInt, paramFile, paramBoolean);
+            a(localObject1, paramGalleryImageStruct, paramahtm, paramInt, paramFile, paramBoolean);
             if (!paramBoolean) {
               break label443;
             }
-            paramaham = paramAIOImageData.jdField_c_of_type_JavaLangString;
-            paramaham = FileUtils.estimateFileType(paramaham);
+            paramahtm = paramAIOImageData.jdField_c_of_type_JavaLangString;
+            paramahtm = FileUtils.estimateFileType(paramahtm);
             if (QLog.isColorLevel()) {
-              QLog.i(" AIOGalleryAdapter", 2, "getview url is " + localObject1.getURL().toString() + ", file type is " + paramAIOImageData.a(localObject1.getURL().toString()) + ",extName = " + paramaham);
+              QLog.i(" AIOGalleryAdapter", 2, "getview url is " + localObject1.getURL().toString() + ", file type is " + paramAIOImageData.a(localObject1.getURL().toString()) + ",extName = " + paramahtm);
             }
             if ((paramBoolean) || (!paramAIOImageData.jdField_d_of_type_Boolean) || (paramAIOImageData.jdField_b_of_type_Boolean)) {
               break label451;
             }
-            this.jdField_a_of_type_Ahap.a(paramAIOImageData.jdField_f_of_type_Long, paramAIOImageData.jdField_f_of_type_Int, 2);
-            paramaham = localObject1;
+            this.jdField_a_of_type_Ahtp.a(paramAIOImageData.jdField_f_of_type_Long, paramAIOImageData.jdField_f_of_type_Int, 2);
+            paramahtm = localObject1;
             if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Boolean)
             {
               this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct = paramGalleryImageStruct;
-              paramaham = localObject1;
+              paramahtm = localObject1;
             }
           }
           catch (Throwable paramGalleryImageStruct)
           {
-            paramaham = localObject1;
+            paramahtm = localObject1;
             if (!QLog.isColorLevel()) {
               continue;
             }
             QLog.e(" AIOGalleryAdapter", 2, "[getView] URLDrawable.getDrawable failed.");
             return null;
           }
-          return paramaham;
+          return paramahtm;
           if ((paramAIOImageData.a(1) == null) || (BaseApplicationImpl.sImageCache.get(paramAIOImageData.a(1)) == null) || (paramAIOImageData.a(1) == null)) {
             break;
           }
@@ -438,13 +438,13 @@ public class AIOGalleryAdapter
           localObject2 = URLDrawable.getDrawable(paramFile, (URLDrawable.URLDrawableOptions)localObject2);
           localObject1 = localObject2;
           continue;
-          paramaham = paramAIOImageData.jdField_b_of_type_JavaLangString;
+          paramahtm = paramAIOImageData.jdField_b_of_type_JavaLangString;
         }
-        paramaham = localObject1;
+        paramahtm = localObject1;
       } while (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Boolean);
-      paramaham = localObject1;
+      paramahtm = localObject1;
     } while (this.jdField_b_of_type_Boolean);
-    this.jdField_a_of_type_Ahap.a(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Ahtp.a(this.jdField_a_of_type_Int);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Boolean = true;
     return localObject1;
   }
@@ -465,7 +465,7 @@ public class AIOGalleryAdapter
     return localStringBuilder.toString();
   }
   
-  private void a(int paramInt, aham paramaham, AdapterView<?> paramAdapterView, View paramView)
+  private void a(int paramInt, ahtm paramahtm, AdapterView<?> paramAdapterView, View paramView)
   {
     this.jdField_d_of_type_Long = -1L;
     if ((this.jdField_d_of_type_Int != paramInt) && (this.jdField_b_of_type_ComTencentImageURLDrawable != null))
@@ -477,9 +477,9 @@ public class AIOGalleryAdapter
         if (localQQLiveDrawable.getCurrentPosition() > 0L)
         {
           Object localObject = a(this.jdField_d_of_type_Int);
-          if ((localObject != null) && (((aham)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData != null) && ((((aham)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData instanceof AIOShortVideoData)))
+          if ((localObject != null) && (((ahtm)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData != null) && ((((ahtm)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData instanceof AIOShortVideoData)))
           {
-            localObject = (AIOShortVideoData)((aham)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
+            localObject = (AIOShortVideoData)((ahtm)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
             a(((AIOShortVideoData)localObject).jdField_a_of_type_Long, ((AIOShortVideoData)localObject).jdField_a_of_type_Int * 1000, localQQLiveDrawable.getCurrentPosition());
           }
         }
@@ -490,19 +490,19 @@ public class AIOGalleryAdapter
         this.jdField_b_of_type_ComTencentImageURLDrawable = null;
       }
     }
-    if ((paramaham != null) && (AIOShortVideoData.class.isInstance(paramaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData))) {
-      a(paramAdapterView, (AIOShortVideoData)paramaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData, paramView, paramInt);
+    if ((paramahtm != null) && (AIOShortVideoData.class.isInstance(paramahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData))) {
+      a(paramAdapterView, (AIOShortVideoData)paramahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData, paramView, paramInt);
     }
     do
     {
       do
       {
         return;
-        if ((paramaham == null) || (!AIOImageData.class.isInstance(paramaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData))) {
+        if ((paramahtm == null) || (!AIOImageData.class.isInstance(paramahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData))) {
           break;
         }
-        paramaham = (AIOImageData)paramaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
-      } while ((paramaham.jdField_b_of_type_Int != 3) || (paramaham.a(1) != null) || (paramaham.a(2) != null) || (paramaham.a(4) != null) || (paramaham.jdField_h_of_type_Long >= asld.c()));
+        paramahtm = (AIOImageData)paramahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
+      } while ((paramahtm.jdField_b_of_type_Int != 3) || (paramahtm.a(1) != null) || (paramahtm.a(2) != null) || (paramahtm.a(4) != null) || (paramahtm.jdField_h_of_type_Long >= atpj.c()));
       a(paramInt, -1);
       return;
       this.jdField_d_of_type_Int = -1;
@@ -531,7 +531,7 @@ public class AIOGalleryAdapter
           {
             i = paramURLDrawable.getIntExtra("forward_source_uin_type", -1);
             str = paramURLDrawable.getStringExtra("uin");
-            new badr(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.getApplication().getBaseContext()).a(bmqh.a(), 2001, 0, i, str, this.jdField_a_of_type_Long / 1000L);
+            new bbkg(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.getApplication().getBaseContext()).a(bofz.a(), 2001, 0, i, str, this.jdField_a_of_type_Long / 1000L);
             if (this.jdField_b_of_type_Int != 1) {}
           }
         }
@@ -547,14 +547,14 @@ public class AIOGalleryAdapter
             paramURLDrawable.put("play_time", this.jdField_a_of_type_Long);
             paramURLDrawable.put("content_type", 2);
             paramURLDrawable.put("mobile_type", Build.MODEL);
-            paramURLDrawable.put("wifi_ssid", ypp.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.getApplicationContext()));
-            paramURLDrawable.put("wifi_mac", ypp.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.getApplicationContext()));
-            str = xwa.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.getApplicationContext());
+            paramURLDrawable.put("wifi_ssid", zei.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.getApplicationContext()));
+            paramURLDrawable.put("wifi_mac", zei.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.getApplicationContext()));
+            str = ykv.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.getApplicationContext());
             if (!paramBoolean) {
               continue;
             }
             i = 2;
-            xwa.a("story_grp", "play_video_js", 1003, i, new String[] { paramURLDrawable.toString(), "", str, "" });
+            ykv.a("story_grp", "play_video_js", 1003, i, new String[] { paramURLDrawable.toString(), "", str, "" });
           }
           catch (Exception paramURLDrawable)
           {
@@ -592,12 +592,12 @@ public class AIOGalleryAdapter
         paramURLDrawable.put("video_time", this.jdField_c_of_type_Long + "");
         paramURLDrawable.put("play_time", this.jdField_a_of_type_Long);
         paramURLDrawable.put("content_type", 2);
-        str = xwa.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.getApplicationContext());
+        str = ykv.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.getApplicationContext());
         if (!paramBoolean) {
           continue;
         }
         paramInt = 2;
-        xwa.a("story_grp", "play_video_js", 1003, paramInt, new String[] { paramURLDrawable.toString(), "", str, "" });
+        ykv.a("story_grp", "play_video_js", 1003, paramInt, new String[] { paramURLDrawable.toString(), "", str, "" });
       }
       catch (Exception paramURLDrawable)
       {
@@ -647,7 +647,7 @@ public class AIOGalleryAdapter
     for (paramFile.mLoadingDrawable = ((URLDrawable)localObject).getCurrDrawable();; paramFile.mLoadingDrawable = ((Drawable)localObject))
     {
       paramFile.mExtraInfo = localQQLiveDrawableParams;
-      paramFile = URLDrawable.getDrawable(agnj.a(paramAIOShortVideoData.jdField_a_of_type_Long), paramFile);
+      paramFile = URLDrawable.getDrawable(ahfz.a(paramAIOShortVideoData.jdField_a_of_type_Long), paramFile);
       paramGalleryImageStruct.setImageDrawable(paramFile);
       a(paramInt, true);
       this.jdField_b_of_type_ComTencentImageURLDrawable = paramFile;
@@ -660,14 +660,14 @@ public class AIOGalleryAdapter
   
   private void a(long paramLong1, long paramLong2, long paramLong3)
   {
-    if (!bfth.a().a(paramLong1, "0X8009AA6"))
+    if (!bhbz.a().a(paramLong1, "0X8009AA6"))
     {
-      bfth.a().a(paramLong1, "0X8009AA6");
+      bhbz.a().a(paramLong1, "0X8009AA6");
       ShortVideoUtils.reportVideoPlayEvent(null, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString, 2, 2, paramLong2, paramLong3);
     }
   }
   
-  private void a(aham paramaham, View paramView)
+  private void a(ahtm paramahtm, View paramView)
   {
     this.jdField_g_of_type_Int = 1;
     a(this.jdField_d_of_type_Int, this.jdField_b_of_type_ComTencentImageURLDrawable, false);
@@ -677,9 +677,9 @@ public class AIOGalleryAdapter
       if (localQQLiveDrawable.getCurrentPosition() > 0L)
       {
         Object localObject = a(this.jdField_d_of_type_Int);
-        if ((localObject != null) && (((aham)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData != null) && ((((aham)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData instanceof AIOShortVideoData)))
+        if ((localObject != null) && (((ahtm)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData != null) && ((((ahtm)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData instanceof AIOShortVideoData)))
         {
-          localObject = (AIOShortVideoData)((aham)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
+          localObject = (AIOShortVideoData)((ahtm)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
           a(((AIOShortVideoData)localObject).jdField_a_of_type_Long, ((AIOShortVideoData)localObject).jdField_a_of_type_Int * 1000, localQQLiveDrawable.getCurrentPosition());
         }
       }
@@ -689,27 +689,27 @@ public class AIOGalleryAdapter
       }
       this.jdField_b_of_type_ComTencentImageURLDrawable = null;
     }
-    if ((paramaham != null) && (AIOShortVideoData.class.isInstance(paramaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData))) {
-      b(paramaham, paramView);
+    if ((paramahtm != null) && (AIOShortVideoData.class.isInstance(paramahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData))) {
+      b(paramahtm, paramView);
     }
     do
     {
       return;
-      if ((paramaham != null) && (AIOFileVideoData.class.isInstance(paramaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData)))
+      if ((paramahtm != null) && (AIOFileVideoData.class.isInstance(paramahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData)))
       {
-        c(paramaham, paramView);
+        c(paramahtm, paramView);
         return;
       }
     } while (!QLog.isColorLevel());
-    if (paramaham != null)
+    if (paramahtm != null)
     {
-      QLog.i(" AIOGalleryAdapter", 1, "FileVideo_AP unsupport type :" + paramaham.getClass().getSimpleName());
+      QLog.i(" AIOGalleryAdapter", 1, "FileVideo_AP unsupport type :" + paramahtm.getClass().getSimpleName());
       return;
     }
     QLog.i(" AIOGalleryAdapter", 1, "FileVideo_AP unsupport type, image null!");
   }
   
-  private void a(URLDrawable paramURLDrawable, AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct, aham paramaham, int paramInt, File paramFile, boolean paramBoolean)
+  private void a(URLDrawable paramURLDrawable, AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct, ahtm paramahtm, int paramInt, File paramFile, boolean paramBoolean)
   {
     boolean bool = true;
     switch (paramURLDrawable.getStatus())
@@ -729,11 +729,11 @@ public class AIOGalleryAdapter
       {
         paramURLDrawable.printStackTrace();
       }
-      if (paramaham.jdField_b_of_type_Int == -2) {}
+      if (paramahtm.jdField_b_of_type_Int == -2) {}
       try
       {
-        paramaham.jdField_b_of_type_Int = JpegExifReader.readOrientation(paramFile.getAbsolutePath());
-        a(paramGalleryImageStruct, paramURLDrawable, paramaham.jdField_b_of_type_Int);
+        paramahtm.jdField_b_of_type_Int = JpegExifReader.readOrientation(paramFile.getAbsolutePath());
+        a(paramGalleryImageStruct, paramURLDrawable, paramahtm.jdField_b_of_type_Int);
         if (paramURLDrawable.getStatus() == 1) {
           a(paramInt, bool);
         }
@@ -745,7 +745,7 @@ public class AIOGalleryAdapter
           if (QLog.isColorLevel()) {
             QLog.e(" AIOGalleryAdapter", 2, "read exif error", paramFile);
           }
-          paramaham.jdField_b_of_type_Int = 1;
+          paramahtm.jdField_b_of_type_Int = 1;
           continue;
           bool = false;
         }
@@ -789,16 +789,16 @@ public class AIOGalleryAdapter
           ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
           ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = URLDrawableHelper.TRANSPARENT;
           URLDrawable.getDrawable((File)localObject1, (URLDrawable.URLDrawableOptions)localObject2).startDownload();
-        } while ((!NetworkUtil.isWifiConnected(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity)) || (paramAIOFilePicData.jdField_a_of_type_Long > asld.c()));
-        this.jdField_a_of_type_Ahap.a(paramAIOFilePicData.jdField_f_of_type_Long, paramAIOFilePicData.jdField_f_of_type_Int, 18);
+        } while ((!NetworkUtil.isWifiConnected(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity)) || (paramAIOFilePicData.jdField_a_of_type_Long > atpj.c()));
+        this.jdField_a_of_type_Ahtp.a(paramAIOFilePicData.jdField_f_of_type_Long, paramAIOFilePicData.jdField_f_of_type_Int, 18);
         return;
-      } while ((!NetworkUtil.isWifiConnected(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity)) || (paramAIOFilePicData.jdField_a_of_type_Long > asld.c()));
-      this.jdField_a_of_type_Ahap.a(paramAIOFilePicData.jdField_f_of_type_Long, paramAIOFilePicData.jdField_f_of_type_Int, 18);
+      } while ((!NetworkUtil.isWifiConnected(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity)) || (paramAIOFilePicData.jdField_a_of_type_Long > atpj.c()));
+      this.jdField_a_of_type_Ahtp.a(paramAIOFilePicData.jdField_f_of_type_Long, paramAIOFilePicData.jdField_f_of_type_Int, 18);
     } while (!QLog.isDevelopLevel());
     QLog.d(" AIOGalleryAdapter", 4, "onCreateView():Thumb and large pic is not exist, download it. Gallery position is " + paramInt);
   }
   
-  private void a(AIOFilePicData paramAIOFilePicData, int paramInt, AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct, aham paramaham, boolean paramBoolean)
+  private void a(AIOFilePicData paramAIOFilePicData, int paramInt, AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct, ahtm paramahtm, boolean paramBoolean)
   {
     Object localObject = null;
     if (paramAIOFilePicData.jdField_a_of_type_Boolean)
@@ -812,12 +812,12 @@ public class AIOGalleryAdapter
     }
     for (;;)
     {
-      if ((paramAIOFilePicData == null) && (FileUtil.fileExistsAndNotEmpty(((AIOFilePicData)paramaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData).jdField_b_of_type_JavaLangString)))
+      if ((paramAIOFilePicData == null) && (FileUtil.fileExistsAndNotEmpty(((AIOFilePicData)paramahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData).jdField_b_of_type_JavaLangString)))
       {
         paramAIOFilePicData = URLDrawable.URLDrawableOptions.obtain();
         paramAIOFilePicData.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
         paramAIOFilePicData.mFailedDrawable = URLDrawableHelper.TRANSPARENT;
-        paramAIOFilePicData = URLDrawable.getDrawable(new File(((AIOFilePicData)paramaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData).jdField_b_of_type_JavaLangString), paramAIOFilePicData);
+        paramAIOFilePicData = URLDrawable.getDrawable(new File(((AIOFilePicData)paramahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData).jdField_b_of_type_JavaLangString), paramAIOFilePicData);
         if (paramAIOFilePicData != null)
         {
           paramGalleryImageStruct.setImageDrawable(paramAIOFilePicData);
@@ -832,18 +832,18 @@ public class AIOGalleryAdapter
           {
             return;
           } while ((localObject != null) && (paramAIOFilePicData != null) && (("PART".equals(paramAIOFilePicData)) || ("DISPLAY".equals(paramAIOFilePicData))));
-          paramGalleryImageStruct.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130838097));
+          paramGalleryImageStruct.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130838111));
           a(paramInt, false);
           this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.a().d();
-        } while (((AIOFilePicData)paramaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData).jdField_a_of_type_Long < asld.c());
+        } while (((AIOFilePicData)paramahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData).jdField_a_of_type_Long < atpj.c());
         paramGalleryImageStruct.b();
         return;
         localFile = paramAIOFilePicData.a(18);
       } while (localFile == null);
       localObject = paramAIOFilePicData.a(18);
-      paramaham = (aham)localObject;
+      paramahtm = (ahtm)localObject;
       if (paramBoolean) {
-        paramaham = (String)localObject + "#PART";
+        paramahtm = (String)localObject + "#PART";
       }
       localObject = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject).mUseExifOrientation = false;
@@ -858,7 +858,7 @@ public class AIOGalleryAdapter
       {
         paramAIOFilePicData = FileUtils.estimateFileType(paramAIOFilePicData.jdField_c_of_type_JavaLangString);
         if (QLog.isColorLevel()) {
-          QLog.i(" AIOGalleryAdapter", 2, "AIOGalleryAdapter.updateView(): Update large image, position=" + paramInt + "url = " + paramaham + ",extName = " + paramAIOFilePicData);
+          QLog.i(" AIOGalleryAdapter", 2, "AIOGalleryAdapter.updateView(): Update large image, position=" + paramInt + "url = " + paramahtm + ",extName = " + paramAIOFilePicData);
         }
         this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.a().c();
         return;
@@ -896,7 +896,7 @@ public class AIOGalleryAdapter
         paramGalleryImageStruct.setDecodingDrawble(paramAIOFileVideoData);
       }
     }
-    paramGalleryImageStruct.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130838097));
+    paramGalleryImageStruct.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130838111));
     a(paramInt, true);
   }
   
@@ -917,12 +917,12 @@ public class AIOGalleryAdapter
         QLog.i(" AIOGalleryAdapter", 2, "getView(): IMAGE_FILE_ERROR");
       }
       return;
-      paramGalleryImageStruct.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130838097));
+      paramGalleryImageStruct.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130838111));
       a(paramInt, false);
     }
   }
   
-  private void a(AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct, int paramInt, aham paramaham)
+  private void a(AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct, int paramInt, ahtm paramahtm)
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_d_of_type_Boolean = true;
     AIOFilePicData localAIOFilePicData;
@@ -930,11 +930,11 @@ public class AIOGalleryAdapter
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_c_of_type_Boolean)
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_c_of_type_Boolean = false;
-      bcef.b(null, "dc00898", "", "", "0X8009EF0", "0X8009EF0", 1, 0, "", "", "", "");
+      bdla.b(null, "dc00898", "", "", "0X8009EF0", "0X8009EF0", 1, 0, "", "", "", "");
       paramGalleryImageStruct.setCenterBtnVisiable(8);
-      localAIOFilePicData = (AIOFilePicData)paramaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
+      localAIOFilePicData = (AIOFilePicData)paramahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
       paramGalleryImageStruct.setPosition(paramInt);
-      paramGalleryImageStruct.setImageInfo(paramaham);
+      paramGalleryImageStruct.setImageInfo(paramahtm);
       paramGalleryImageStruct.setIgnoreLayout(false);
       localObject1 = (URLDrawable)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
       if ((localObject1 == null) || (((URLDrawable)localObject1).getStatus() != 1)) {
@@ -947,10 +947,10 @@ public class AIOGalleryAdapter
       if (((String)localObject2).equals(str)) {
         paramGalleryImageStruct.setOriginalImage(true);
       }
-      if (paramaham.jdField_b_of_type_Int == -2) {
-        paramaham.jdField_b_of_type_Int = JpegExifReader.readOrientation(((URLDrawable)localObject1).getURL().getFile());
+      if (paramahtm.jdField_b_of_type_Int == -2) {
+        paramahtm.jdField_b_of_type_Int = JpegExifReader.readOrientation(((URLDrawable)localObject1).getURL().getFile());
       }
-      a(paramGalleryImageStruct, (URLDrawable)localObject1, paramaham.jdField_b_of_type_Int);
+      a(paramGalleryImageStruct, (URLDrawable)localObject1, paramahtm.jdField_b_of_type_Int);
       if (!paramGalleryImageStruct.a()) {
         break label316;
       }
@@ -963,7 +963,7 @@ public class AIOGalleryAdapter
         QLog.i(" AIOGalleryAdapter", 2, "getView(): cache url is " + (String)localObject2 + ", cache type is " + localAIOFilePicData.a(((URLDrawable)localObject1).getURL().getFile()) + ",extName = + " + paramGalleryImageStruct);
       }
       return;
-      bcef.b(null, "dc00898", "", "", "0X8009EF0", "0X8009EF0", 2, 0, "", "", "", "");
+      bdla.b(null, "dc00898", "", "", "0X8009EF0", "0X8009EF0", 2, 0, "", "", "", "");
       break;
     }
     label325:
@@ -978,19 +978,19 @@ public class AIOGalleryAdapter
       if (localObject2 != null) {}
       for (boolean bool = true;; bool = false)
       {
-        a(paramGalleryImageStruct, paramInt, paramaham, localAIOFilePicData, bool, (File)localObject1);
+        a(paramGalleryImageStruct, paramInt, paramahtm, localAIOFilePicData, bool, (File)localObject1);
         return;
       }
       localObject1 = localAIOFilePicData.a(16);
       if (localObject1 != null)
       {
-        a(paramGalleryImageStruct, paramInt, paramaham, localAIOFilePicData, (File)localObject1);
+        a(paramGalleryImageStruct, paramInt, paramahtm, localAIOFilePicData, (File)localObject1);
         return;
       }
-      if (localAIOFilePicData.jdField_a_of_type_Long <= asld.c())
+      if (localAIOFilePicData.jdField_a_of_type_Long <= atpj.c())
       {
         if (localAIOFilePicData.jdField_a_of_type_Boolean) {
-          paramGalleryImageStruct.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130838097));
+          paramGalleryImageStruct.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130838111));
         }
         for (;;)
         {
@@ -1002,15 +1002,15 @@ public class AIOGalleryAdapter
           }
           return;
           paramGalleryImageStruct.setImageDrawable(URLDrawableHelper.TRANSPARENT);
-          this.jdField_a_of_type_Ahap.a(localAIOFilePicData.jdField_f_of_type_Long, localAIOFilePicData.jdField_f_of_type_Int, 18);
+          this.jdField_a_of_type_Ahtp.a(localAIOFilePicData.jdField_f_of_type_Long, localAIOFilePicData.jdField_f_of_type_Int, 18);
         }
       }
       if ((!this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean))
       {
-        this.jdField_a_of_type_Ahap.a(this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_Ahtp.a(this.jdField_a_of_type_Int);
         this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Boolean = true;
       }
-      paramGalleryImageStruct.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130838097));
+      paramGalleryImageStruct.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130838111));
       paramGalleryImageStruct.b();
       paramGalleryImageStruct.setTag(2131296386, Float.valueOf(1.5F));
       return;
@@ -1018,7 +1018,7 @@ public class AIOGalleryAdapter
     }
   }
   
-  private void a(AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct, int paramInt, aham paramaham, AIOFilePicData paramAIOFilePicData, File paramFile)
+  private void a(AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct, int paramInt, ahtm paramahtm, AIOFilePicData paramAIOFilePicData, File paramFile)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
@@ -1026,11 +1026,11 @@ public class AIOGalleryAdapter
     paramFile = URLDrawable.getDrawable(paramFile, localURLDrawableOptions);
     paramGalleryImageStruct.setImageDrawable(paramFile);
     if (!paramAIOFilePicData.jdField_d_of_type_Boolean) {
-      if (paramAIOFilePicData.jdField_a_of_type_Long <= asld.c())
+      if (paramAIOFilePicData.jdField_a_of_type_Long <= atpj.c())
       {
         paramFile.downloadImediatly();
-        a(paramInt, paramaham.jdField_a_of_type_Int / 100);
-        this.jdField_a_of_type_Ahap.a(paramAIOFilePicData.jdField_f_of_type_Long, paramAIOFilePicData.jdField_f_of_type_Int, 18);
+        a(paramInt, paramahtm.jdField_a_of_type_Int / 100);
+        this.jdField_a_of_type_Ahtp.a(paramAIOFilePicData.jdField_f_of_type_Long, paramAIOFilePicData.jdField_f_of_type_Int, 18);
       }
     }
     for (;;)
@@ -1044,19 +1044,19 @@ public class AIOGalleryAdapter
       return;
       if ((!this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean))
       {
-        this.jdField_a_of_type_Ahap.a(this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_Ahtp.a(this.jdField_a_of_type_Int);
         this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Boolean = true;
         continue;
         if ((!this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean))
         {
-          this.jdField_a_of_type_Ahap.a(this.jdField_a_of_type_Int);
+          this.jdField_a_of_type_Ahtp.a(this.jdField_a_of_type_Int);
           this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Boolean = true;
         }
       }
     }
   }
   
-  private void a(AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct, int paramInt, aham paramaham, AIOFilePicData paramAIOFilePicData, boolean paramBoolean, File paramFile)
+  private void a(AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct, int paramInt, ahtm paramahtm, AIOFilePicData paramAIOFilePicData, boolean paramBoolean, File paramFile)
   {
     boolean bool2 = false;
     boolean bool1 = false;
@@ -1106,15 +1106,15 @@ public class AIOGalleryAdapter
       FileUtils.estimateFileType(paramGalleryImageStruct);
       if ((!this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean))
       {
-        this.jdField_a_of_type_Ahap.a(this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_Ahtp.a(this.jdField_a_of_type_Int);
         this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Boolean = true;
       }
       return;
-      if (paramaham.jdField_b_of_type_Int == -2) {
-        paramaham.jdField_b_of_type_Int = JpegExifReader.readOrientation(paramFile.getAbsolutePath());
+      if (paramahtm.jdField_b_of_type_Int == -2) {
+        paramahtm.jdField_b_of_type_Int = JpegExifReader.readOrientation(paramFile.getAbsolutePath());
       }
       paramGalleryImageStruct.setImageDrawable((Drawable)localObject);
-      a(paramGalleryImageStruct, (URLDrawable)localObject, paramaham.jdField_b_of_type_Int);
+      a(paramGalleryImageStruct, (URLDrawable)localObject, paramahtm.jdField_b_of_type_Int);
       if (((URLDrawable)localObject).getStatus() == 1) {
         bool1 = true;
       }
@@ -1129,7 +1129,7 @@ public class AIOGalleryAdapter
     }
   }
   
-  private void a(AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct, aham paramaham, int paramInt, AIOImageData paramAIOImageData)
+  private void a(AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct, ahtm paramahtm, int paramInt, AIOImageData paramAIOImageData)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
@@ -1139,12 +1139,12 @@ public class AIOGalleryAdapter
       localURLDrawableOptions.mUseAutoScaleParams = false;
     }
     paramGalleryImageStruct.setImageDrawable(URLDrawable.getDrawable(paramAIOImageData.a(8), localURLDrawableOptions));
-    a(paramInt, paramaham.jdField_a_of_type_Int / 100);
+    a(paramInt, paramahtm.jdField_a_of_type_Int / 100);
     if (QLog.isColorLevel()) {
       QLog.i(" AIOGalleryAdapter", 2, "getView(): url is " + paramAIOImageData.a(8) + ", file type is " + 8);
     }
     if (!paramAIOImageData.jdField_b_of_type_Boolean) {
-      this.jdField_a_of_type_Ahap.a(paramAIOImageData.jdField_f_of_type_Long, paramAIOImageData.jdField_f_of_type_Int, 2);
+      this.jdField_a_of_type_Ahtp.a(paramAIOImageData.jdField_f_of_type_Long, paramAIOImageData.jdField_f_of_type_Int, 2);
     }
     for (;;)
     {
@@ -1159,13 +1159,13 @@ public class AIOGalleryAdapter
       return;
       if ((!this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean))
       {
-        this.jdField_a_of_type_Ahap.a(this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_Ahtp.a(this.jdField_a_of_type_Int);
         this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Boolean = true;
       }
     }
   }
   
-  private void a(AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct, aham paramaham, int paramInt, AIOImageData paramAIOImageData, File paramFile)
+  private void a(AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct, ahtm paramahtm, int paramInt, AIOImageData paramAIOImageData, File paramFile)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
@@ -1178,8 +1178,8 @@ public class AIOGalleryAdapter
     if (!paramAIOImageData.jdField_g_of_type_Boolean)
     {
       paramFile.downloadImediatly();
-      a(paramInt, paramaham.jdField_a_of_type_Int / 100);
-      this.jdField_a_of_type_Ahap.a(paramAIOImageData.jdField_f_of_type_Long, paramAIOImageData.jdField_f_of_type_Int, 2);
+      a(paramInt, paramahtm.jdField_a_of_type_Int / 100);
+      this.jdField_a_of_type_Ahtp.a(paramAIOImageData.jdField_f_of_type_Long, paramAIOImageData.jdField_f_of_type_Int, 2);
       if (QLog.isColorLevel()) {
         QLog.i(" AIOGalleryAdapter", 2, "getView(): url is " + paramAIOImageData.a(1) + ", file type is " + 1);
       }
@@ -1190,12 +1190,12 @@ public class AIOGalleryAdapter
       }
       return;
     }
-    paramaham = zon.a();
-    paramaham.a();
-    paramaham.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_JavaLangString, paramAIOImageData, 640, new agxy(this, paramInt, paramGalleryImageStruct, paramAIOImageData));
+    paramahtm = aady.a();
+    paramahtm.a();
+    paramahtm.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_JavaLangString, paramAIOImageData, 640, new ahqz(this, paramInt, paramGalleryImageStruct, paramAIOImageData));
   }
   
-  private void a(AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct, aham paramaham, URLDrawable paramURLDrawable, AIOImageData paramAIOImageData)
+  private void a(AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct, ahtm paramahtm, URLDrawable paramURLDrawable, AIOImageData paramAIOImageData)
   {
     paramGalleryImageStruct.setImageDrawable(paramURLDrawable);
     String str2 = paramAIOImageData.a(4);
@@ -1203,11 +1203,11 @@ public class AIOGalleryAdapter
     if (str1.equals(str2)) {
       paramGalleryImageStruct.setOriginalImage(true);
     }
-    if (paramaham.jdField_b_of_type_Int == -2) {}
+    if (paramahtm.jdField_b_of_type_Int == -2) {}
     try
     {
-      paramaham.jdField_b_of_type_Int = JpegExifReader.readOrientation(paramURLDrawable.getURL().getFile());
-      a(paramGalleryImageStruct, paramURLDrawable, paramaham.jdField_b_of_type_Int);
+      paramahtm.jdField_b_of_type_Int = JpegExifReader.readOrientation(paramURLDrawable.getURL().getFile());
+      a(paramGalleryImageStruct, paramURLDrawable, paramahtm.jdField_b_of_type_Int);
       if (paramGalleryImageStruct.a())
       {
         paramGalleryImageStruct = paramAIOImageData.jdField_c_of_type_JavaLangString;
@@ -1216,7 +1216,7 @@ public class AIOGalleryAdapter
           QLog.i(" AIOGalleryAdapter", 2, "getView(): cache url is " + str1 + ", cache type is " + paramAIOImageData.a(paramURLDrawable.getURL().getFile()) + ",extName = + " + paramGalleryImageStruct);
         }
         if (paramAIOImageData.jdField_d_of_type_Boolean) {
-          this.jdField_a_of_type_Ahap.a(paramAIOImageData.jdField_f_of_type_Long, paramAIOImageData.jdField_f_of_type_Int, 2);
+          this.jdField_a_of_type_Ahtp.a(paramAIOImageData.jdField_f_of_type_Long, paramAIOImageData.jdField_f_of_type_Int, 2);
         }
         return;
       }
@@ -1228,7 +1228,7 @@ public class AIOGalleryAdapter
         if (QLog.isColorLevel()) {
           QLog.e(" AIOGalleryAdapter", 2, "read exif error", localException);
         }
-        paramaham.jdField_b_of_type_Int = 1;
+        paramahtm.jdField_b_of_type_Int = 1;
         continue;
         paramGalleryImageStruct = paramAIOImageData.jdField_b_of_type_JavaLangString;
       }
@@ -1242,18 +1242,18 @@ public class AIOGalleryAdapter
       this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_c_of_type_Boolean = false;
       if ((paramAIOImageData.jdField_g_of_type_Int == 1) && (paramAIOImageData.jdField_h_of_type_Boolean))
       {
-        bcef.b(null, "dc00898", "", "", "0X8009EF0", "0X8009EF0", 1, 0, "", "", "", "");
+        bdla.b(null, "dc00898", "", "", "0X8009EF0", "0X8009EF0", 1, 0, "", "", "", "");
         return;
       }
-      bcef.b(null, "dc00898", "", "", "0X8009EEF", "0X8009EEF", 1, 0, "", "", "", "");
+      bdla.b(null, "dc00898", "", "", "0X8009EEF", "0X8009EEF", 1, 0, "", "", "", "");
       return;
     }
     if ((paramAIOImageData.jdField_g_of_type_Int == 1) && (paramAIOImageData.jdField_h_of_type_Boolean))
     {
-      bcef.b(null, "dc00898", "", "", "0X8009EF0", "0X8009EF0", 2, 0, "", "", "", "");
+      bdla.b(null, "dc00898", "", "", "0X8009EF0", "0X8009EF0", 2, 0, "", "", "", "");
       return;
     }
-    bcef.b(null, "dc00898", "", "", "0X8009EEF", "0X8009EEF", 2, 0, "", "", "", "");
+    bdla.b(null, "dc00898", "", "", "0X8009EEF", "0X8009EEF", 2, 0, "", "", "", "");
   }
   
   private void a(AIOImageData paramAIOImageData, int paramInt)
@@ -1314,11 +1314,11 @@ public class AIOGalleryAdapter
               ((URLDrawable.URLDrawableOptions)localObject1).mUseAutoScaleParams = false;
             }
             URLDrawable.getDrawable(paramAIOImageData.a(1), (URLDrawable.URLDrawableOptions)localObject1).startDownload();
-          } while ((!NetworkUtil.isWifiConnected(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity)) || (bkkh.a(paramAIOImageData.jdField_a_of_type_Int)));
-          this.jdField_a_of_type_Ahap.a(paramAIOImageData.jdField_f_of_type_Long, paramAIOImageData.jdField_f_of_type_Int, 2);
+          } while ((!NetworkUtil.isWifiConnected(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity)) || (blvp.a(paramAIOImageData.jdField_a_of_type_Int)));
+          this.jdField_a_of_type_Ahtp.a(paramAIOImageData.jdField_f_of_type_Long, paramAIOImageData.jdField_f_of_type_Int, 2);
           return;
-        } while ((!NetworkUtil.isWifiConnected(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity)) || (bkkh.a(paramAIOImageData.jdField_a_of_type_Int)));
-        this.jdField_a_of_type_Ahap.a(paramAIOImageData.jdField_f_of_type_Long, paramAIOImageData.jdField_f_of_type_Int, 2);
+        } while ((!NetworkUtil.isWifiConnected(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity)) || (blvp.a(paramAIOImageData.jdField_a_of_type_Int)));
+        this.jdField_a_of_type_Ahtp.a(paramAIOImageData.jdField_f_of_type_Long, paramAIOImageData.jdField_f_of_type_Int, 2);
       } while (!QLog.isDevelopLevel());
       QLog.d(" AIOGalleryAdapter", 4, "onCreateView():Thumb and large pic is not exist, download it. Gallery position is " + paramInt);
       return;
@@ -1326,7 +1326,7 @@ public class AIOGalleryAdapter
     }
   }
   
-  private void a(AIOImageData paramAIOImageData, String paramString1, String paramString2, AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct, int paramInt, aham paramaham, boolean paramBoolean)
+  private void a(AIOImageData paramAIOImageData, String paramString1, String paramString2, AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct, int paramInt, ahtm paramahtm, boolean paramBoolean)
   {
     if (paramString1 != null) {
       paramAIOImageData.jdField_b_of_type_JavaLangString = paramString1;
@@ -1347,7 +1347,7 @@ public class AIOGalleryAdapter
     {
       if ((paramString1 == null) || (paramString2 == null) || ((!"PART".equals(paramString2)) && (!"DISPLAY".equals(paramString2))))
       {
-        paramGalleryImageStruct.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130838097));
+        paramGalleryImageStruct.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130838111));
         a(paramInt, false);
         this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.a().d();
       }
@@ -1372,21 +1372,21 @@ public class AIOGalleryAdapter
       {
         try
         {
-          paramaham.jdField_b_of_type_Int = JpegExifReader.readOrientation(paramString2.getAbsolutePath());
+          paramahtm.jdField_b_of_type_Int = JpegExifReader.readOrientation(paramString2.getAbsolutePath());
           if (QLog.isColorLevel()) {
-            QLog.i(" AIOGalleryAdapter", 2, "AIOGalleryAdapter.updateView(): read orientation:" + paramaham.jdField_b_of_type_Int);
+            QLog.i(" AIOGalleryAdapter", 2, "AIOGalleryAdapter.updateView(): read orientation:" + paramahtm.jdField_b_of_type_Int);
           }
           paramString2 = URLDrawable.URLDrawableOptions.obtain();
           if (paramAIOImageData.jdField_b_of_type_Int == 3)
           {
-            paramaham = paramAIOImageData.a(1);
-            if (paramaham != null)
+            paramahtm = paramAIOImageData.a(1);
+            if (paramahtm != null)
             {
-              paramaham = URLDrawable.getDrawable(paramaham, null);
-              if (paramaham.getStatus() == 1)
+              paramahtm = URLDrawable.getDrawable(paramahtm, null);
+              if (paramahtm.getStatus() == 1)
               {
-                paramString2.mLoadingDrawable = paramaham;
-                paramString2.mFailedDrawable = paramaham;
+                paramString2.mLoadingDrawable = paramahtm;
+                paramString2.mFailedDrawable = paramahtm;
               }
             }
           }
@@ -1464,13 +1464,13 @@ public class AIOGalleryAdapter
             break;
           }
           if (paramAIOShortVideoData.jdField_b_of_type_Int != 0) {
-            this.jdField_a_of_type_Ahap.a(paramAIOShortVideoData.jdField_f_of_type_Long, paramAIOShortVideoData.jdField_f_of_type_Int, 0);
+            this.jdField_a_of_type_Ahtp.a(paramAIOShortVideoData.jdField_f_of_type_Long, paramAIOShortVideoData.jdField_f_of_type_Int, 0);
           }
         } while (!QLog.isColorLevel());
         QLog.i(" AIOGalleryAdapter", 2, "AIOGalleryAdapter.onCreateView(): Video exist and download thumb, position=" + paramInt);
         return;
       } while (paramAIOShortVideoData.jdField_b_of_type_Int == 0);
-      this.jdField_a_of_type_Ahap.a(paramAIOShortVideoData.jdField_f_of_type_Long, paramAIOShortVideoData.jdField_f_of_type_Int, 1);
+      this.jdField_a_of_type_Ahtp.a(paramAIOShortVideoData.jdField_f_of_type_Long, paramAIOShortVideoData.jdField_f_of_type_Int, 1);
     } while (!QLog.isDevelopLevel());
     QLog.d(" AIOGalleryAdapter", 4, "onCreateView():Thumb and video is not exist, download video only. Gallery position is " + paramInt);
   }
@@ -1482,7 +1482,7 @@ public class AIOGalleryAdapter
       if (!paramAIOShortVideoData.jdField_b_of_type_Boolean) {
         break label69;
       }
-      paramGalleryImageStruct.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130838097));
+      paramGalleryImageStruct.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130838111));
       a(paramInt, false);
       if (QLog.isColorLevel()) {
         QLog.i(" AIOGalleryAdapter", 2, "AIOGalleryAdapter.updateView(): IMAGE_FILE_ERROR, position=" + paramInt);
@@ -1525,10 +1525,10 @@ public class AIOGalleryAdapter
   
   private void a(AIOShortVideoData paramAIOShortVideoData, View paramView)
   {
-    this.jdField_a_of_type_Ahap.a(paramAIOShortVideoData.jdField_f_of_type_Long, paramAIOShortVideoData.jdField_f_of_type_Int, 1);
-    ((ImageView)paramView.findViewById(2131372931)).setVisibility(8);
-    if (this.jdField_a_of_type_Ajqa != null) {
-      this.jdField_a_of_type_Ajqa.a(paramAIOShortVideoData, true, false);
+    this.jdField_a_of_type_Ahtp.a(paramAIOShortVideoData.jdField_f_of_type_Long, paramAIOShortVideoData.jdField_f_of_type_Int, 1);
+    ((ImageView)paramView.findViewById(2131373141)).setVisibility(8);
+    if (this.jdField_a_of_type_Aklo != null) {
+      this.jdField_a_of_type_Aklo.a(paramAIOShortVideoData, true, false);
     }
   }
   
@@ -1537,7 +1537,7 @@ public class AIOGalleryAdapter
     this.jdField_b_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct = ((AIOGalleryAdapter.GalleryImageStruct)paramView);
     this.jdField_g_of_type_Int = 0;
     if (this.jdField_d_of_type_Int == -1) {
-      bcef.b(null, "dc00898", "", "", "0X8007424", "0X8007424", 0, 0, "", "", "", "");
+      bdla.b(null, "dc00898", "", "", "0X8007424", "0X8007424", 0, 0, "", "", "", "");
     }
     int i;
     if ((paramAdapterView != null) && (paramAdapterView.getVisibility() == 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.getIntent() != null))
@@ -1552,7 +1552,7 @@ public class AIOGalleryAdapter
       if (paramView == null) {
         break label276;
       }
-      if (!paramView.equals(amtj.a(2131699220))) {
+      if (!paramView.equals(anvx.a(2131699571))) {
         break label240;
       }
       paramAdapterView = "2";
@@ -1560,8 +1560,8 @@ public class AIOGalleryAdapter
     label276:
     for (;;)
     {
-      ShortVideoUtils.reportVideoPlay(bmqh.a().getAccount(), this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.getIntent().getStringExtra("uin"), String.valueOf(paramAIOShortVideoData.jdField_a_of_type_Int * 1000), i, "2", paramAdapterView);
-      paramAdapterView = (agyh)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Aagp.a();
+      ShortVideoUtils.reportVideoPlay(bofz.a().getAccount(), this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.getIntent().getStringExtra("uin"), String.valueOf(paramAIOShortVideoData.jdField_a_of_type_Int * 1000), i, "2", paramAdapterView);
+      paramAdapterView = (ahri)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Aawb.a();
       if ((paramAdapterView != null) && (paramAdapterView.s))
       {
         paramAdapterView.s = false;
@@ -1574,7 +1574,7 @@ public class AIOGalleryAdapter
       paramAdapterView = "3";
       break;
       label240:
-      if ((i == 1) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Aagp != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Aagp.a != null)) {
+      if ((i == 1) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Aawb != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Aawb.a != null)) {
         paramAdapterView = "3";
       }
     }
@@ -1601,39 +1601,39 @@ public class AIOGalleryAdapter
     QLog.d(" AIOGalleryAdapter", 2, "url  is null ");
   }
   
-  private void a(boolean paramBoolean1, aham paramaham, AIOImageData paramAIOImageData, boolean paramBoolean2, String paramString)
+  private void a(boolean paramBoolean1, ahtm paramahtm, AIOImageData paramAIOImageData, boolean paramBoolean2, String paramString)
   {
     if (paramBoolean1)
     {
-      int i = paramaham.hashCode();
+      int i = paramahtm.hashCode();
       this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Int = i;
-      paramaham = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.a();
-      paramaham.a(i);
-      paramaham.a(i, paramAIOImageData.jdField_a_of_type_Long, paramAIOImageData.jdField_b_of_type_Long);
-      paramaham.b(i, bkkh.a(paramAIOImageData.jdField_a_of_type_Int));
+      paramahtm = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.a();
+      paramahtm.a(i);
+      paramahtm.a(i, paramAIOImageData.jdField_a_of_type_Long, paramAIOImageData.jdField_b_of_type_Long);
+      paramahtm.b(i, blvp.a(paramAIOImageData.jdField_a_of_type_Int));
       if (paramAIOImageData.e) {
-        paramaham.d(i);
+        paramahtm.d(i);
       }
       if (paramString != null)
       {
-        paramaham.a(i, paramString);
-        paramaham.a(i, paramBoolean2);
+        paramahtm.a(i, paramString);
+        paramahtm.a(i, paramBoolean2);
       }
     }
   }
   
-  private void b(aham paramaham, View paramView)
+  private void b(ahtm paramahtm, View paramView)
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_d_of_type_Boolean = true;
-    paramaham = (AIOShortVideoData)paramaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
-    ajqi localajqi;
-    if ((paramaham != null) && (paramaham.jdField_b_of_type_Int == 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Long != paramaham.jdField_f_of_type_Long))
+    paramahtm = (AIOShortVideoData)paramahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
+    aklw localaklw;
+    if ((paramahtm != null) && (paramahtm.jdField_b_of_type_Int == 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Long != paramahtm.jdField_f_of_type_Long))
     {
-      localajqi = a(paramaham);
-      if (localajqi != null) {
+      localaklw = a(paramahtm);
+      if (localaklw != null) {
         break label74;
       }
-      a(paramaham, paramView);
+      a(paramahtm, paramView);
       if (QLog.isColorLevel()) {
         QLog.i(" AIOGalleryAdapter", 2, "onItemSelect undownload notequal");
       }
@@ -1644,25 +1644,25 @@ public class AIOGalleryAdapter
       do
       {
         return;
-      } while (this.jdField_a_of_type_Ajqa == null);
-      this.jdField_a_of_type_Ajqa.a(paramView, localajqi);
-      paramaham = (agyh)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Aagp.a();
-    } while ((paramaham == null) || (!paramaham.s));
+      } while (this.jdField_a_of_type_Aklo == null);
+      this.jdField_a_of_type_Aklo.a(paramView, localaklw);
+      paramahtm = (ahri)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Aawb.a();
+    } while ((paramahtm == null) || (!paramahtm.s));
     if (QLog.isColorLevel()) {
       QLog.i(" AIOGalleryAdapter", 2, "onItemSelect from nine");
     }
-    paramaham.s = false;
-    this.jdField_a_of_type_Ajqa.f();
+    paramahtm.s = false;
+    this.jdField_a_of_type_Aklo.f();
     this.jdField_d_of_type_Long = -1L;
   }
   
-  private void b(AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct, aham paramaham, int paramInt, AIOImageData paramAIOImageData)
+  private void b(AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct, ahtm paramahtm, int paramInt, AIOImageData paramAIOImageData)
   {
     if (!paramAIOImageData.jdField_g_of_type_Boolean)
     {
-      a(paramInt, paramaham.jdField_a_of_type_Int / 100);
+      a(paramInt, paramahtm.jdField_a_of_type_Int / 100);
       paramGalleryImageStruct.setImageDrawable(URLDrawableHelper.TRANSPARENT);
-      this.jdField_a_of_type_Ahap.a(paramAIOImageData.jdField_f_of_type_Long, paramAIOImageData.jdField_f_of_type_Int, 2);
+      this.jdField_a_of_type_Ahtp.a(paramAIOImageData.jdField_f_of_type_Long, paramAIOImageData.jdField_f_of_type_Int, 2);
       if (QLog.isColorLevel()) {
         QLog.i(" AIOGalleryAdapter", 2, "getView(): No pic");
       }
@@ -1673,38 +1673,38 @@ public class AIOGalleryAdapter
         this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.a().a(paramAIOImageData.jdField_f_of_type_Boolean);
       }
       return;
-      if (paramAIOImageData.jdField_h_of_type_Long <= asld.c())
+      if (paramAIOImageData.jdField_h_of_type_Long <= atpj.c())
       {
-        a(paramInt, paramaham.jdField_a_of_type_Int / 100);
+        a(paramInt, paramahtm.jdField_a_of_type_Int / 100);
         paramGalleryImageStruct.setImageDrawable(URLDrawableHelper.TRANSPARENT);
-        paramaham = zon.a();
-        paramaham.a();
-        paramaham.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_JavaLangString, paramAIOImageData, 383, new agxz(this));
+        paramahtm = aady.a();
+        paramahtm.a();
+        paramahtm.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_JavaLangString, paramAIOImageData, 383, new ahra(this));
         a(paramInt, 0);
-        paramaham.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_JavaLangString, paramAIOImageData, 640, new agya(this, paramInt, paramGalleryImageStruct, paramAIOImageData));
+        paramahtm.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_JavaLangString, paramAIOImageData, 640, new ahrb(this, paramInt, paramGalleryImageStruct, paramAIOImageData));
       }
       else
       {
         if ((!this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean)) {
           this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Boolean = true;
         }
-        paramGalleryImageStruct.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130838097));
+        paramGalleryImageStruct.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130838111));
         paramGalleryImageStruct.b();
         paramGalleryImageStruct.setTag(2131296386, Float.valueOf(1.5F));
       }
     }
   }
   
-  private void c(aham paramaham, View paramView)
+  private void c(ahtm paramahtm, View paramView)
   {
     if (QLog.isColorLevel()) {
       QLog.i(" AIOGalleryAdapter", 1, "FileVideo_AP onItemSelected is FileVideodata ");
     }
-    AIOFileVideoData localAIOFileVideoData = (AIOFileVideoData)paramaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
-    if (paramaham.jdField_c_of_type_Boolean) {
+    AIOFileVideoData localAIOFileVideoData = (AIOFileVideoData)paramahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
+    if (paramahtm.jdField_c_of_type_Boolean) {
       localAIOFileVideoData.e = true;
     }
-    if (localAIOFileVideoData.a(this.jdField_a_of_type_Ahap))
+    if (localAIOFileVideoData.a(this.jdField_a_of_type_Ahtp))
     {
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_d_of_type_Boolean) {
         this.jdField_d_of_type_Long = -1L;
@@ -1720,11 +1720,11 @@ public class AIOGalleryAdapter
       do
       {
         return;
-        agyh localagyh = (agyh)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Aagp.a();
-        if ((localagyh != null) && (localagyh.k == 3)) {}
+        ahri localahri = (ahri)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Aawb.a();
+        if ((localahri != null) && (localahri.k == 3)) {}
         for (i = 1;; i = 0)
         {
-          if ((!paramaham.jdField_c_of_type_Boolean) || ((this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_d_of_type_Boolean) && (i == 0))) {
+          if ((!paramahtm.jdField_c_of_type_Boolean) || ((this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_d_of_type_Boolean) && (i == 0))) {
             break label283;
           }
           if ((i == 0) && ((this.jdField_d_of_type_Long == -1L) || (this.jdField_d_of_type_Long != localAIOFileVideoData.jdField_f_of_type_Long))) {
@@ -1733,25 +1733,25 @@ public class AIOGalleryAdapter
           this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_d_of_type_Boolean = true;
           this.jdField_d_of_type_Long = -1L;
           localAIOFileVideoData.e = true;
-          paramaham = localAIOFileVideoData.a(this.jdField_a_of_type_Boolean);
-          this.jdField_a_of_type_Ajqa.a(paramView, paramaham);
-          this.jdField_a_of_type_Ajqa.b();
-          this.jdField_a_of_type_Ajqa.f();
-          this.jdField_a_of_type_Ajqa.b(8);
-          if (localagyh != null)
+          paramahtm = localAIOFileVideoData.a(this.jdField_a_of_type_Boolean);
+          this.jdField_a_of_type_Aklo.a(paramView, paramahtm);
+          this.jdField_a_of_type_Aklo.b();
+          this.jdField_a_of_type_Aklo.f();
+          this.jdField_a_of_type_Aklo.b(8);
+          if (localahri != null)
           {
             if (QLog.isColorLevel()) {
-              QLog.d(" AIOGalleryAdapter", 2, "FileVideo_AP onItemSelected, aioGalleryScene.mIsMute =  " + localagyh.q);
+              QLog.d(" AIOGalleryAdapter", 2, "FileVideo_AP onItemSelected, aioGalleryScene.mIsMute =  " + localahri.q);
             }
-            localagyh.q = false;
+            localahri.q = false;
           }
           this.jdField_a_of_type_Boolean = false;
           return;
         }
       } while ((!this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_d_of_type_Boolean) || ((i == 0) && ((this.jdField_d_of_type_Long == -1L) || (this.jdField_d_of_type_Long != localAIOFileVideoData.jdField_f_of_type_Long))));
       this.jdField_d_of_type_Long = -1L;
-      paramaham = localAIOFileVideoData.a(this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_Ajqa.a(paramView, paramaham);
+      paramahtm = localAIOFileVideoData.a(this.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_Aklo.a(paramView, paramahtm);
     } while (!QLog.isColorLevel());
     QLog.i(" AIOGalleryAdapter", 1, "FileVideo_AP onItemSelected need user click ");
   }
@@ -1761,15 +1761,15 @@ public class AIOGalleryAdapter
     new Handler(Looper.getMainLooper()).post(new AIOGalleryAdapter.3(this));
   }
   
-  public aham a(int paramInt)
+  public ahtm a(int paramInt)
   {
-    if (this.jdField_a_of_type_Agzn == null) {
+    if (this.jdField_a_of_type_Ahsn == null) {
       return null;
     }
-    return this.jdField_a_of_type_Agzn.a(paramInt);
+    return this.jdField_a_of_type_Ahsn.a(paramInt);
   }
   
-  public ajqi a(AIOShortVideoData paramAIOShortVideoData)
+  public aklw a(AIOShortVideoData paramAIOShortVideoData)
   {
     Object localObject = new File(paramAIOShortVideoData.jdField_b_of_type_JavaLangString);
     long l = 0L;
@@ -1789,26 +1789,26 @@ public class AIOGalleryAdapter
       }
       if (bool)
       {
-        ahbb localahbb = ahay.a().a(paramAIOShortVideoData.jdField_f_of_type_Long);
-        if ((localahbb == null) || (!localahbb.a())) {
+        ahub localahub = ahty.a().a(paramAIOShortVideoData.jdField_f_of_type_Long);
+        if ((localahub == null) || (!localahub.a())) {
           break label345;
         }
         if (QLog.isColorLevel()) {
           QLog.d(" AIOGalleryAdapter", 2, "carverW getVideoPlayMedioInfo  hit cache");
         }
-        localObject = new ajqi();
-        ((ajqi)localObject).jdField_a_of_type_Boolean = true;
-        ((ajqi)localObject).jdField_a_of_type_ArrayOfJavaLangString = localahbb.jdField_a_of_type_ArrayOfJavaLangString;
-        ((ajqi)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = localahbb.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
-        ((ajqi)localObject).jdField_a_of_type_Int = localahbb.jdField_a_of_type_Int;
-        ((ajqi)localObject).jdField_a_of_type_Long = paramAIOShortVideoData.jdField_f_of_type_Long;
-        ((ajqi)localObject).jdField_b_of_type_Int = paramAIOShortVideoData.jdField_f_of_type_Int;
+        localObject = new aklw();
+        ((aklw)localObject).jdField_a_of_type_Boolean = true;
+        ((aklw)localObject).jdField_a_of_type_ArrayOfJavaLangString = localahub.jdField_a_of_type_ArrayOfJavaLangString;
+        ((aklw)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = localahub.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
+        ((aklw)localObject).jdField_a_of_type_Int = localahub.jdField_a_of_type_Int;
+        ((aklw)localObject).jdField_a_of_type_Long = paramAIOShortVideoData.jdField_f_of_type_Long;
+        ((aklw)localObject).jdField_b_of_type_Int = paramAIOShortVideoData.jdField_f_of_type_Int;
       }
       for (;;)
       {
         if ((localObject != null) && (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.jdField_f_of_type_Long == paramAIOShortVideoData.jdField_f_of_type_Long))
         {
-          ((ajqi)localObject).e = true;
+          ((aklw)localObject).e = true;
           if (QLog.isColorLevel()) {
             QLog.d(" AIOGalleryAdapter", 2, new Object[] { "set playMedioInfo.isMute = ", Boolean.valueOf(this.jdField_a_of_type_Boolean), " data.id = ", Long.valueOf(paramAIOShortVideoData.jdField_f_of_type_Long) });
           }
@@ -1819,12 +1819,12 @@ public class AIOGalleryAdapter
         }
         bool = true;
         break;
-        localObject = new ajqi();
-        ((ajqi)localObject).jdField_a_of_type_Boolean = false;
-        ((ajqi)localObject).jdField_a_of_type_Long = paramAIOShortVideoData.jdField_f_of_type_Long;
-        ((ajqi)localObject).jdField_b_of_type_Int = paramAIOShortVideoData.jdField_f_of_type_Int;
-        ((ajqi)localObject).jdField_a_of_type_JavaLangString = paramAIOShortVideoData.jdField_b_of_type_JavaLangString;
-        ((ajqi)localObject).jdField_d_of_type_Long = l;
+        localObject = new aklw();
+        ((aklw)localObject).jdField_a_of_type_Boolean = false;
+        ((aklw)localObject).jdField_a_of_type_Long = paramAIOShortVideoData.jdField_f_of_type_Long;
+        ((aklw)localObject).jdField_b_of_type_Int = paramAIOShortVideoData.jdField_f_of_type_Int;
+        ((aklw)localObject).jdField_a_of_type_JavaLangString = paramAIOShortVideoData.jdField_b_of_type_JavaLangString;
+        ((aklw)localObject).jdField_d_of_type_Long = l;
         continue;
         label345:
         localObject = null;
@@ -1874,10 +1874,10 @@ public class AIOGalleryAdapter
       do
       {
         return;
-        if (!AIOImageData.class.isInstance(((aham)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData)) {
+        if (!AIOImageData.class.isInstance(((ahtm)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData)) {
           break;
         }
-        localObject2 = (AIOImageData)((aham)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
+        localObject2 = (AIOImageData)((ahtm)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
       } while ((!paramBoolean) || (((AIOImageData)localObject2).a(8) == null));
       localObject1 = paramView.getDrawable();
       Object localObject2 = ((AIOImageData)localObject2).a(8);
@@ -1895,7 +1895,7 @@ public class AIOGalleryAdapter
       }
       this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.a().b();
       return;
-    } while (!AIOShortVideoData.class.isInstance(((aham)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData));
+    } while (!AIOShortVideoData.class.isInstance(((ahtm)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData));
   }
   
   public void a(int paramInt, AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct)
@@ -1908,8 +1908,8 @@ public class AIOGalleryAdapter
   
   public void a(int paramInt, String paramString1, String paramString2, View paramView, boolean paramBoolean)
   {
-    aham localaham = a(paramInt);
-    if (localaham == null) {}
+    ahtm localahtm = a(paramInt);
+    if (localahtm == null) {}
     do
     {
       do
@@ -1921,48 +1921,48 @@ public class AIOGalleryAdapter
             break;
           }
           paramView = (AIOGalleryAdapter.GalleryImageStruct)paramView;
-          if (AIOImageData.class.isInstance(localaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData)) {
-            a((AIOImageData)localaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData, paramString1, paramString2, paramView, paramInt, localaham, paramBoolean);
+          if (AIOImageData.class.isInstance(localahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData)) {
+            a((AIOImageData)localahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData, paramString1, paramString2, paramView, paramInt, localahtm, paramBoolean);
           }
           while (!this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Boolean)
           {
-            this.jdField_a_of_type_Ahap.a(this.jdField_a_of_type_Int);
+            this.jdField_a_of_type_Ahtp.a(this.jdField_a_of_type_Int);
             this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Boolean = true;
             return;
-            if (AIOShortVideoData.class.isInstance(localaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData)) {
-              a((AIOShortVideoData)localaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData, paramInt, paramView);
-            } else if (AIOFilePicData.class.isInstance(localaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData)) {
-              a((AIOFilePicData)localaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData, paramInt, paramView, localaham, paramBoolean);
-            } else if (AIOFileVideoData.class.isInstance(localaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData)) {
-              a((AIOFileVideoData)localaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData, paramInt, paramView);
+            if (AIOShortVideoData.class.isInstance(localahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData)) {
+              a((AIOShortVideoData)localahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData, paramInt, paramView);
+            } else if (AIOFilePicData.class.isInstance(localahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData)) {
+              a((AIOFilePicData)localahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData, paramInt, paramView, localahtm, paramBoolean);
+            } else if (AIOFileVideoData.class.isInstance(localahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData)) {
+              a((AIOFileVideoData)localahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData, paramInt, paramView);
             }
           }
         }
-      } while ((!(paramView instanceof RelativeLayout)) || (!AIOShortVideoData.class.isInstance(localaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData)));
-      paramString1 = (AIOShortVideoData)localaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
+      } while ((!(paramView instanceof RelativeLayout)) || (!AIOShortVideoData.class.isInstance(localahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData)));
+      paramString1 = (AIOShortVideoData)localahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
     } while (paramString1.jdField_b_of_type_Int != 0);
     if (QLog.isColorLevel()) {
       QLog.d(" AIOGalleryAdapter", 2, " updateView loadShortVideoCover");
     }
-    paramString2 = (URLImageView)paramView.findViewById(2131372932);
+    paramString2 = (URLImageView)paramView.findViewById(2131373142);
     a(paramString1.jdField_a_of_type_JavaLangString, paramString1.jdField_c_of_type_Int, paramString1.jdField_d_of_type_Int, paramString2, paramInt);
   }
   
-  public void a(aagc paramaagc)
+  public void a(aavo paramaavo)
   {
-    super.a(paramaagc);
-    this.jdField_a_of_type_Agzn = ((agzn)paramaagc);
+    super.a(paramaavo);
+    this.jdField_a_of_type_Ahsn = ((ahsn)paramaavo);
     b();
   }
   
-  public void a(agyc paramagyc)
+  public void a(ahrd paramahrd)
   {
-    this.jdField_a_of_type_Agyc = paramagyc;
+    this.jdField_a_of_type_Ahrd = paramahrd;
   }
   
-  public void a(ajqa paramajqa)
+  public void a(aklo paramaklo)
   {
-    this.jdField_a_of_type_Ajqa = paramajqa;
+    this.jdField_a_of_type_Aklo = paramaklo;
   }
   
   public void a(Configuration paramConfiguration)
@@ -1996,35 +1996,35 @@ public class AIOGalleryAdapter
   
   public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    aham localaham = a(paramInt);
+    ahtm localahtm = a(paramInt);
     if (QLog.isColorLevel())
     {
       QLog.d(" AIOGalleryAdapter", 2, "onItemSelected isShortVideoAutoPlay=" + this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_c_of_type_Boolean + " hasDoneItemSelectUid=" + this.jdField_d_of_type_Long + " mContext.entryId=" + this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Long);
       QLog.i(" AIOGalleryAdapter", 1, "FileVideo_AP call onItemSelected ");
     }
-    if ((localaham != null) && (localaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData != null) && (localaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.jdField_f_of_type_Long != this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Long))
+    if ((localahtm != null) && (localahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData != null) && (localahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.jdField_f_of_type_Long != this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Long))
     {
-      QLog.d(" AIOGalleryAdapter", 2, "onItemSelected not first image.mData.id=" + localaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.jdField_f_of_type_Long + " entryId=" + this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Long);
+      QLog.d(" AIOGalleryAdapter", 2, "onItemSelected not first image.mData.id=" + localahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.jdField_f_of_type_Long + " entryId=" + this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Long);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Long = -1L;
     }
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData != null) && (localaham != null) && (localaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.jdField_f_of_type_Long != localaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.jdField_f_of_type_Long))
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData != null) && (localahtm != null) && (localahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.jdField_f_of_type_Long != localahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.jdField_f_of_type_Long))
     {
       this.jdField_a_of_type_Boolean = false;
-      agyh localagyh = (agyh)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Aagp.a();
-      if (localagyh != null) {
-        localagyh.q = false;
+      ahri localahri = (ahri)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Aawb.a();
+      if (localahri != null) {
+        localahri.q = false;
       }
       if (QLog.isColorLevel()) {
-        QLog.d(" AIOGalleryAdapter", 2, "onItemSelected, set mIsmute false,  mDataOfBubble.id = " + this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.jdField_f_of_type_Long + ", image.mData.id + " + localaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.jdField_f_of_type_Long);
+        QLog.d(" AIOGalleryAdapter", 2, "onItemSelected, set mIsmute false,  mDataOfBubble.id = " + this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.jdField_f_of_type_Long + ", image.mData.id + " + localahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.jdField_f_of_type_Long);
       }
     }
-    if ((localaham != null) && ((AIOShortVideoData.class.isInstance(localaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData)) || (AIOFileVideoData.class.isInstance(localaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData))))
+    if ((localahtm != null) && ((AIOShortVideoData.class.isInstance(localahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData)) || (AIOFileVideoData.class.isInstance(localahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData))))
     {
       ((AudioManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.getSystemService("audio")).requestAudioFocus(null, 3, 2);
       if ((paramView == null) || (!AIOGalleryAdapter.GalleryImageStruct.class.isInstance(paramView))) {
         break label402;
       }
-      a(paramInt, localaham, paramAdapterView, paramView);
+      a(paramInt, localahtm, paramAdapterView, paramView);
     }
     label402:
     while ((paramView == null) || (!(paramView instanceof RelativeLayout)))
@@ -2033,7 +2033,7 @@ public class AIOGalleryAdapter
       ((AudioManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.getSystemService("audio")).abandonAudioFocus(null);
       break;
     }
-    a(localaham, paramView);
+    a(localahtm, paramView);
   }
   
   public void a(boolean paramBoolean)
@@ -2062,15 +2062,15 @@ public class AIOGalleryAdapter
   
   public boolean a(AIOShortVideoData paramAIOShortVideoData, View paramView)
   {
-    ajqi localajqi = a(paramAIOShortVideoData);
+    aklw localaklw = a(paramAIOShortVideoData);
     this.jdField_d_of_type_Long = paramAIOShortVideoData.jdField_a_of_type_Long;
-    if (localajqi == null)
+    if (localaklw == null)
     {
       a(paramAIOShortVideoData, paramView);
       return false;
     }
-    if (this.jdField_a_of_type_Ajqa != null) {
-      this.jdField_a_of_type_Ajqa.a(paramView, localajqi);
+    if (this.jdField_a_of_type_Aklo != null) {
+      this.jdField_a_of_type_Aklo.a(paramView, localaklw);
     }
     return true;
   }
@@ -2100,28 +2100,28 @@ public class AIOGalleryAdapter
           do
           {
             return;
-            if (!AIOImageData.class.isInstance(((aham)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData)) {
+            if (!AIOImageData.class.isInstance(((ahtm)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData)) {
               break;
             }
-          } while (((AIOImageData)((aham)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData).jdField_d_of_type_Boolean);
+          } while (((AIOImageData)((ahtm)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData).jdField_d_of_type_Boolean);
           super.b(paramInt1, paramInt2);
           return;
-        } while (AIOShortVideoData.class.isInstance(((aham)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData));
-        if (AIOFilePicData.class.isInstance(((aham)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData))
+        } while (AIOShortVideoData.class.isInstance(((ahtm)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData));
+        if (AIOFilePicData.class.isInstance(((ahtm)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData))
         {
           super.b(paramInt1, paramInt2);
           return;
         }
-      } while (!AIOFileVideoData.class.isInstance(((aham)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData));
-      localAIOFileVideoData = (AIOFileVideoData)((aham)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
+      } while (!AIOFileVideoData.class.isInstance(((ahtm)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData));
+      localAIOFileVideoData = (AIOFileVideoData)((ahtm)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
     } while (!localAIOFileVideoData.jdField_d_of_type_Boolean);
     localAIOFileVideoData.jdField_c_of_type_Long = paramInt2;
-    agyh localagyh = (agyh)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Aagp.a();
+    ahri localahri = (ahri)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Aawb.a();
     float f1 = (float)(paramInt2 * 100) / 10000.0F;
     if (localAIOFileVideoData.jdField_d_of_type_Boolean) {}
-    for (localObject = amtj.a(2131699221) + FileUtil.filesizeToString(((float)localAIOFileVideoData.jdField_h_of_type_Long * f1)) + "/" + FileUtil.filesizeToString(localAIOFileVideoData.jdField_h_of_type_Long) + ")";; localObject = amtj.a(2131699179) + FileUtil.filesizeToString(((float)localAIOFileVideoData.jdField_h_of_type_Long * f1)) + "/" + FileUtil.filesizeToString(localAIOFileVideoData.jdField_h_of_type_Long) + ")")
+    for (localObject = anvx.a(2131699572) + FileUtil.filesizeToString(((float)localAIOFileVideoData.jdField_h_of_type_Long * f1)) + "/" + FileUtil.filesizeToString(localAIOFileVideoData.jdField_h_of_type_Long) + ")";; localObject = anvx.a(2131699530) + FileUtil.filesizeToString(((float)localAIOFileVideoData.jdField_h_of_type_Long * f1)) + "/" + FileUtil.filesizeToString(localAIOFileVideoData.jdField_h_of_type_Long) + ")")
     {
-      localagyh.a(localAIOFileVideoData.jdField_f_of_type_Long, f1, (String)localObject);
+      localahri.a(localAIOFileVideoData.jdField_f_of_type_Long, f1, (String)localObject);
       return;
     }
   }
@@ -2142,14 +2142,14 @@ public class AIOGalleryAdapter
       if (localQQLiveDrawable.getCurrentPosition() > 0L)
       {
         Object localObject = a(this.jdField_d_of_type_Int);
-        if ((localObject != null) && (((aham)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData != null) && ((((aham)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData instanceof AIOShortVideoData)))
+        if ((localObject != null) && (((ahtm)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData != null) && ((((ahtm)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData instanceof AIOShortVideoData)))
         {
-          localObject = (AIOShortVideoData)((aham)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
+          localObject = (AIOShortVideoData)((ahtm)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
           a(((AIOShortVideoData)localObject).jdField_a_of_type_Long, ((AIOShortVideoData)localObject).jdField_a_of_type_Int * 1000, localQQLiveDrawable.getCurrentPosition());
         }
       }
     }
-    bfth.a().a();
+    bhbz.a().a();
     b();
     a();
   }
@@ -2161,10 +2161,10 @@ public class AIOGalleryAdapter
         this.jdField_b_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct.a();
       }
     }
-    while ((this.jdField_g_of_type_Int != 1) || (this.jdField_a_of_type_Ajqa == null) || (!this.jdField_a_of_type_Ajqa.c())) {
+    while ((this.jdField_g_of_type_Int != 1) || (this.jdField_a_of_type_Aklo == null) || (!this.jdField_a_of_type_Aklo.c())) {
       return;
     }
-    this.jdField_a_of_type_Ajqa.h();
+    this.jdField_a_of_type_Aklo.h();
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -2178,19 +2178,19 @@ public class AIOGalleryAdapter
     }
     AIOGalleryAdapter.GalleryImageStruct localGalleryImageStruct = new AIOGalleryAdapter.GalleryImageStruct(this, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity, 0);
     localGalleryImageStruct.setAdjustViewBounds(true);
-    aham localaham = a(paramInt);
-    if ((localaham == null) || (localaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData == null)) {
+    ahtm localahtm = a(paramInt);
+    if ((localahtm == null) || (localahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData == null)) {
       QLog.e(" AIOGalleryAdapter", 2, " getView(): position=" + paramInt + " data is null");
     }
     for (;;)
     {
-      if ((localaham != null) && (localaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData != null)) {
+      if ((localahtm != null) && (localahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData != null)) {
         break label217;
       }
       localObject = localGalleryImageStruct;
       break;
       if (QLog.isColorLevel()) {
-        QLog.i(" AIOGalleryAdapter", 2, " getView(): position=" + paramInt + " uid=" + localaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.jdField_f_of_type_Long + " isShortVideoAutoPlay=" + this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_c_of_type_Boolean + " mDataLoaded=" + this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Boolean + " entryid=" + this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Long);
+        QLog.i(" AIOGalleryAdapter", 2, " getView(): position=" + paramInt + " uid=" + localahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.jdField_f_of_type_Long + " isShortVideoAutoPlay=" + this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_c_of_type_Boolean + " mDataLoaded=" + this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Boolean + " entryid=" + this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Long);
       }
     }
     label217:
@@ -2199,32 +2199,32 @@ public class AIOGalleryAdapter
     boolean bool1;
     label362:
     File localFile;
-    if (AIOImageData.class.isInstance(localaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData))
+    if (AIOImageData.class.isInstance(localahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData))
     {
-      localObject = (AIOImageData)localaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
+      localObject = (AIOImageData)localahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
       this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_d_of_type_Boolean = true;
       a((AIOImageData)localObject);
       localGalleryImageStruct.setCenterBtnVisiable(8);
-      localAIOImageData = (AIOImageData)localaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
+      localAIOImageData = (AIOImageData)localahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
       localGalleryImageStruct.setPosition(paramInt);
-      localGalleryImageStruct.setImageInfo(localaham);
+      localGalleryImageStruct.setImageInfo(localahtm);
       localGalleryImageStruct.setIgnoreLayout(false);
       localGalleryImageStruct.a(localAIOImageData.i);
       bool2 = false;
       localObject = (URLDrawable)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
       if ((localObject != null) && (((URLDrawable)localObject).getStatus() == 1))
       {
-        a(localGalleryImageStruct, localaham, (URLDrawable)localObject, localAIOImageData);
+        a(localGalleryImageStruct, localahtm, (URLDrawable)localObject, localAIOImageData);
         bool2 = true;
         if (localGalleryImageStruct.a()) {}
         for (localObject = "original";; localObject = "large")
         {
           bool1 = true;
-          a(bool2, localaham, localAIOImageData, bool1, (String)localObject);
+          a(bool2, localahtm, localAIOImageData, bool1, (String)localObject);
           localObject = localAIOImageData.jdField_f_of_type_Long + "_" + localAIOImageData.jdField_f_of_type_Int;
           if (!this.jdField_a_of_type_JavaUtilArrayList.contains(localObject))
           {
-            this.jdField_a_of_type_Ahap.a(localAIOImageData.jdField_f_of_type_Long, localAIOImageData.jdField_f_of_type_Int);
+            this.jdField_a_of_type_Ahtp.a(localAIOImageData.jdField_f_of_type_Long, localAIOImageData.jdField_f_of_type_Int);
             this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
           }
           label451:
@@ -2245,7 +2245,7 @@ public class AIOGalleryAdapter
       {
         bool2 = true;
         label500:
-        localObject = a(localGalleryImageStruct, localaham, localAIOImageData, bool2, paramInt, (File)localObject);
+        localObject = a(localGalleryImageStruct, localahtm, localAIOImageData, bool2, paramInt, (File)localObject);
         if (!((URLDrawable)localObject).isDownloadStarted()) {
           break label791;
         }
@@ -2273,7 +2273,7 @@ public class AIOGalleryAdapter
         continue;
         if (localAIOImageData.a(8) != null)
         {
-          a(localGalleryImageStruct, localaham, paramInt, localAIOImageData);
+          a(localGalleryImageStruct, localahtm, paramInt, localAIOImageData);
           bool2 = true;
           localObject = null;
           bool1 = false;
@@ -2289,30 +2289,30 @@ public class AIOGalleryAdapter
         localObject = localAIOImageData.a(1);
         if (localObject != null)
         {
-          a(localGalleryImageStruct, localaham, paramInt, localAIOImageData, (File)localObject);
+          a(localGalleryImageStruct, localahtm, paramInt, localAIOImageData, (File)localObject);
           bool2 = true;
           localObject = null;
           bool1 = false;
           break label362;
         }
-        b(localGalleryImageStruct, localaham, paramInt, localAIOImageData);
+        b(localGalleryImageStruct, localahtm, paramInt, localAIOImageData);
         localObject = null;
         bool1 = false;
         break label362;
-        if (AIOShortVideoData.class.isInstance(localaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData))
+        if (AIOShortVideoData.class.isInstance(localahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData))
         {
-          localObject = a(paramInt, localaham);
+          localObject = a(paramInt, localahtm);
           break;
         }
-        if (AIOFilePicData.class.isInstance(localaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData))
+        if (AIOFilePicData.class.isInstance(localahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData))
         {
-          a(localGalleryImageStruct, paramInt, localaham);
+          a(localGalleryImageStruct, paramInt, localahtm);
           break label451;
         }
-        if (!AIOFileVideoData.class.isInstance(localaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData)) {
+        if (!AIOFileVideoData.class.isInstance(localahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData)) {
           break label451;
         }
-        localObject = a(localaham, paramInt, localGalleryImageStruct);
+        localObject = a(localahtm, paramInt, localGalleryImageStruct);
         break;
         label791:
         localObject = null;
@@ -2454,12 +2454,12 @@ public class AIOGalleryAdapter
         QLog.d(" AIOGalleryAdapter", 2, "destory rawDrawable, position: " + paramInt);
       }
     }
-    aham localaham;
+    ahtm localahtm;
     if (AIOGalleryAdapter.GalleryImageStruct.class.isInstance(paramView))
     {
       paramViewGroup = (AIOGalleryAdapter.GalleryImageStruct)paramView;
-      localaham = a(paramInt);
-      if (localaham != null) {
+      localahtm = a(paramInt);
+      if (localahtm != null) {
         break label102;
       }
     }
@@ -2472,11 +2472,11 @@ public class AIOGalleryAdapter
         do
         {
           return;
-          localAIORichMediaData = localaham.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
+          localAIORichMediaData = localahtm.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
           if (AIOImageData.class.isInstance(localAIORichMediaData))
           {
             if (URLDrawable.class.isInstance(((AIOGalleryAdapter.GalleryImageStruct)paramView).a())) {
-              this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.a().b(localaham.hashCode());
+              this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.a().b(localahtm.hashCode());
             }
             this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.a().a();
             return;

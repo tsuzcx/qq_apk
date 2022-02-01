@@ -1,47 +1,35 @@
-import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.notification.struct.ProcessorFactory.1;
-import com.tencent.mobileqq.app.notification.struct.ProcessorFactory.2;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Constructor;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class anpv
+class anpv
+  implements View.OnClickListener
 {
-  private static final List<Integer> jdField_a_of_type_JavaUtilList = new ProcessorFactory.1();
-  private static final Map<Integer, Class<? extends anpr>> jdField_a_of_type_JavaUtilMap = new ProcessorFactory.2();
+  anpv(anpu paramanpu) {}
   
-  @Nullable
-  public static anpr a(QQAppInterface paramQQAppInterface, int paramInt, anpt paramanpt)
+  public void onClick(View paramView)
   {
-    Class localClass = (Class)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-    Object localObject = localClass;
-    if (localClass == null) {
-      localObject = anpd.class;
-    }
-    try
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      localObject = ((Class)localObject).getDeclaredConstructor(new Class[] { QQAppInterface.class, anpt.class });
-      ((Constructor)localObject).setAccessible(true);
-      paramQQAppInterface = (anpr)((Constructor)localObject).newInstance(new Object[] { paramQQAppInterface, paramanpt });
-      QLog.d("[NotificationRebuild] ProcessorFactory", 1, new Object[] { "[processor] create: invoked. ", " processor: ", paramQQAppInterface });
-      return paramQQAppInterface;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType != 1036) {
+        break label69;
+      }
+      ((amme)anpu.a(this.a).app.getManager(QQManagerFactory.APOLLO_MANAGER)).a().c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
     }
-    catch (Throwable paramQQAppInterface) {}
-    return a(paramQQAppInterface);
-  }
-  
-  private static anpr a(Throwable paramThrowable)
-  {
-    QLog.e("[NotificationRebuild] ProcessorFactory", 1, "nullProcessorWithException: failed. ", paramThrowable);
-    return null;
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    boolean bool = jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(paramInt));
-    return (paramInt == 0) || (paramInt == 1) || (paramInt == 3000) || (bool);
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label69:
+      amma localamma = (amma)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.APOLLO_GAME_MANAGER);
+      if (localamma != null) {
+        localamma.e();
+      }
+    }
   }
 }
 

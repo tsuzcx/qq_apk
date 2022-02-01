@@ -1,25 +1,48 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.List;
 
-final class aspq
-  implements View.OnClickListener
+public class aspq
 {
-  aspq(Activity paramActivity, String paramString) {}
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList(20);
   
-  public void onClick(View paramView)
+  public aspq(QQAppInterface paramQQAppInterface)
   {
-    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BasePluginActivity)) {
-      aszt.a(((BasePluginActivity)this.jdField_a_of_type_AndroidAppActivity).getOutActivity(), this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
+      b();
     }
-    for (;;)
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(paramString);
+    if (this.jdField_a_of_type_JavaUtilList.size() >= 20) {
+      b();
+    }
+  }
+  
+  void b()
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      aszt.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
+      if (i != 0) {
+        localStringBuffer.append("|");
+      }
+      localStringBuffer.append((String)this.jdField_a_of_type_JavaUtilList.get(i));
+      i += 1;
     }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009324", "0X8009324", 0, 0, "", "", localStringBuffer.toString(), "");
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
   }
 }
 

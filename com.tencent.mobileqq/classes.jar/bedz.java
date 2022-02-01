@@ -1,368 +1,232 @@
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
+import android.util.SparseArray;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgItem;
-import com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgManager.10;
-import com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgManager.3;
-import com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgManager.4;
-import com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgManager.6;
-import com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgManager.9;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.teamwork.spread.ConfigSetting.1;
+import com.tencent.mobileqq.teamwork.spread.ConfigSetting.2;
+import com.tencent.mobileqq.teamwork.spread.ConfigSetting.3;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import mqq.manager.Manager;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.cmd0x857.TroopTips0x857.QQGroupDigestMsg;
-import tencent.im.oidb.cmd0xeac.oidb_0xeac.RspBody;
+import java.util.Map;
+import java.util.Set;
+import mqq.app.AppRuntime;
+import mqq.manager.TicketManager;
 
 public class bedz
-  implements Manager
 {
-  protected anca a;
-  protected andd a;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  public ArrayList<bedy> a;
-  public HashMap<Long, HashMap<bedw, bedx>> a;
-  public HashMap<Long, ArrayList<beef>> b = new HashMap();
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private arom jdField_a_of_type_Arom;
+  public QQAppInterface a;
   
   public bedz(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    this.jdField_a_of_type_Andd = new beea(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Andd);
-    this.jdField_a_of_type_Anca = ((anca)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(20));
+    a();
   }
   
-  private BaseChatPie a(long paramLong)
+  private arom a()
   {
-    if ((BaseActivity.sTopActivity instanceof FragmentActivity))
+    if (this.jdField_a_of_type_Arom == null) {
+      this.jdField_a_of_type_Arom = arop.a();
+    }
+    return this.jdField_a_of_type_Arom;
+  }
+  
+  private void a()
+  {
+    ThreadManager.executeOnSubThread(new ConfigSetting.1(this));
+  }
+  
+  private void b(arom paramarom)
+  {
+    if (paramarom == null) {
+      return;
+    }
+    try
     {
-      Object localObject = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
-      if (localObject != null)
-      {
-        localObject = ((ChatFragment)localObject).a();
-        if ((localObject != null) && ((localObject instanceof afii)) && (((BaseChatPie)localObject).getCurrentAIOState() >= 2))
-        {
-          String str = ((BaseChatPie)localObject).getCurFriendUin();
-          if ((!TextUtils.isEmpty(str)) && (str.equals(String.valueOf(paramLong)))) {
-            return localObject;
-          }
-        }
+      paramarom.a(((becb)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_HANDLER)).a());
+      return;
+    }
+    catch (Exception paramarom)
+    {
+      QLog.e("ConfigSetting", 2, " getTemplateListFromCgi failed :" + paramarom.toString());
+      paramarom.printStackTrace();
+    }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public aroo a(String paramString)
+  {
+    Iterator localIterator = a().a().iterator();
+    while (localIterator.hasNext())
+    {
+      aroo localaroo = (aroo)localIterator.next();
+      if (localaroo.jdField_a_of_type_JavaLangString.contains(paramString)) {
+        return localaroo;
       }
     }
     return null;
   }
   
-  private void a(long paramLong)
+  public String a(bedt parambedt)
   {
-    BaseChatPie localBaseChatPie = a(paramLong);
-    if (localBaseChatPie != null) {}
-    try
+    Object localObject1;
+    Object localObject2;
+    if (((parambedt instanceof bedx)) || ((parambedt instanceof beef)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopEssenceMsgManager", 2, "refreshAio");
-      }
-      localBaseChatPie.refresh(131072);
-      return;
+      localObject1 = a().a();
+      parambedt = FileUtil.getExtension(parambedt.a());
+      localObject2 = ((Map)localObject1).keySet().iterator();
     }
-    catch (Throwable localThrowable)
+    while (((Iterator)localObject2).hasNext())
     {
-      localThrowable.printStackTrace();
-    }
-  }
-  
-  private void a(long paramLong, int paramInt, String paramString)
-  {
-    if (a(paramLong) == null) {}
-    while (paramInt == 0) {
-      return;
-    }
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      str = BaseApplicationImpl.getContext().getResources().getString(2131719138);
-    }
-    if ((paramInt == 11002) || (paramInt == 11007))
-    {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), str, 0).a();
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, str, 0).a();
-  }
-  
-  private void a(long paramLong1, long paramLong2)
-  {
-    QLog.i("TroopEssenceMsgManager", 2, "delEssenceMsgGrayTip troopUin:" + paramLong1 + " graytipuniseq:" + paramLong2);
-    ThreadManager.excute(new TroopEssenceMsgManager.6(this, paramLong1, paramLong2), 32, null, true);
-  }
-  
-  private void a(bedy parambedy)
-  {
-    if ((parambedy == null) || (parambedy.a == null)) {
-      return;
-    }
-    a(parambedy.a.troopUin, new beec(this, parambedy));
-  }
-  
-  private void a(boolean paramBoolean, Object paramObject1, Object paramObject2, int paramInt)
-  {
-    if ((paramObject1 == null) || (paramObject2 == null) || (!(paramObject2 instanceof oidb_0xeac.RspBody)) || (!(paramObject1 instanceof TroopEssenceMsgItem))) {}
-    do
-    {
-      return;
-      paramObject2 = (oidb_0xeac.RspBody)paramObject2;
-      paramObject1 = (TroopEssenceMsgItem)paramObject1;
-      int i = paramObject2.error_code.get();
-      String str = paramObject2.wording.get();
-      QLog.i("TroopEssenceMsgManager", 1, "handlerSetTroopEssenceMsg isSuccess:" + paramBoolean + " oidbErrCode:" + paramInt + " errCode:" + i + " wording:" + str);
-      paramInt = i;
-      if (i == 0)
+      Object localObject3 = (aron)((Map)localObject1).get((String)((Iterator)localObject2).next());
+      String[] arrayOfString = ((aron)localObject3).jdField_b_of_type_ArrayOfJavaLangString;
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
       {
-        paramInt = i;
-        if (!paramBoolean) {
-          paramInt = -1;
+        if (arrayOfString[i].equalsIgnoreCase(parambedt)) {
+          return ((aron)localObject3).jdField_a_of_type_JavaLangString;
+        }
+        i += 1;
+      }
+      continue;
+      if ((parambedt instanceof beee))
+      {
+        localObject2 = a().a();
+        localObject1 = a().a();
+        parambedt = parambedt.a();
+        localObject2 = ((List)localObject2).iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          localObject3 = (aroo)((Iterator)localObject2).next();
+          if ((parambedt.contains(((aroo)localObject3).jdField_a_of_type_JavaLangString)) && (((SparseArray)localObject1).valueAt(((aroo)localObject3).b) != null)) {
+            return ((aron)((SparseArray)localObject1).valueAt(((aroo)localObject3).b)).jdField_a_of_type_JavaLangString;
+          }
         }
       }
-      a(paramObject1.troopUin, paramInt, str);
-    } while ((paramInt != 0) && (paramInt != 11002) && (paramInt != 11007));
-    paramObject1.opTime = 0L;
-    if ((paramInt == 11002) || (paramInt == 11007))
-    {
-      if (paramObject2.digest_uin.has()) {
-        paramObject1.opUin = String.valueOf(paramObject2.digest_uin.get());
-      }
-      if (paramObject2.digest_time.has()) {
-        paramObject1.opTime = paramObject2.digest_time.get();
-      }
     }
-    c(paramObject1);
+    return "";
   }
   
-  private boolean a(bedy parambedy)
+  public void a(arom paramarom)
   {
-    if ((parambedy == null) || (parambedy.a == null)) {
-      return false;
-    }
-    Object localObject = new bedw(parambedy.a.troopUin, parambedy.a.msgSeq, parambedy.a.msgRandom);
-    HashMap localHashMap = (HashMap)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(((bedw)localObject).jdField_a_of_type_Long));
-    if (localHashMap != null)
-    {
-      localObject = (bedx)localHashMap.get(localObject);
-      return (localObject == null) || (((bedx)localObject).jdField_a_of_type_Long < parambedy.a.opTime);
-    }
-    return false;
-  }
-  
-  private boolean a(Entity paramEntity)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())
-    {
-      if (paramEntity.getStatus() != 1000) {
-        break label48;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramEntity);
-      bool1 = bool2;
-      if (paramEntity.getStatus() == 1001) {
-        bool1 = true;
-      }
-    }
-    label48:
-    do
-    {
-      return bool1;
-      if (paramEntity.getStatus() == 1001) {
-        break;
-      }
-      bool1 = bool2;
-    } while (paramEntity.getStatus() != 1002);
-    return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramEntity);
-  }
-  
-  private void b(bedy parambedy)
-  {
-    if ((parambedy == null) || (parambedy.a == null)) {}
-    Object localObject;
-    do
-    {
-      do
-      {
-        return;
-        parambedy = new bedw(parambedy.a.troopUin, parambedy.a.msgSeq, parambedy.a.msgRandom);
-        localObject = (HashMap)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(parambedy.jdField_a_of_type_Long));
-      } while (localObject == null);
-      localObject = (bedx)((HashMap)localObject).get(parambedy);
-    } while ((localObject == null) || (((bedx)localObject).b == 0L));
-    a(parambedy.jdField_a_of_type_Long, ((bedx)localObject).b);
-  }
-  
-  private void b(TroopEssenceMsgItem paramTroopEssenceMsgItem)
-  {
-    a(paramTroopEssenceMsgItem.troopUin, new beed(this, paramTroopEssenceMsgItem));
-  }
-  
-  private void b(TroopTips0x857.QQGroupDigestMsg paramQQGroupDigestMsg, boolean paramBoolean)
-  {
-    paramQQGroupDigestMsg = beeg.a(paramQQGroupDigestMsg);
-    if (paramBoolean)
-    {
-      QLog.i("TroopEssenceMsgManager", 1, "handleEssenceMsgGroupPushMain holdMsg:" + paramQQGroupDigestMsg.toString());
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
-      {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramQQGroupDigestMsg);
-        ThreadManager.getUIHandler().postDelayed(new TroopEssenceMsgManager.4(this), 5000L);
-        return;
-      }
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramQQGroupDigestMsg);
+    if (paramarom == null) {
       return;
     }
-    QLog.i("TroopEssenceMsgManager", 1, "handleEssenceMsgGroupPushMain msgItem:" + paramQQGroupDigestMsg.toString());
-    a(paramQQGroupDigestMsg);
-  }
-  
-  private void c(TroopEssenceMsgItem paramTroopEssenceMsgItem)
-  {
-    a(paramTroopEssenceMsgItem.troopUin, new beee(this, paramTroopEssenceMsgItem));
-  }
-  
-  public bedx a(bedw parambedw)
-  {
-    if (parambedw == null) {
-      return null;
-    }
-    HashMap localHashMap = (HashMap)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(parambedw.jdField_a_of_type_Long));
-    if (localHashMap == null) {
-      return null;
-    }
-    return (bedx)localHashMap.get(parambedw);
-  }
-  
-  public HashMap<bedw, bedx> a(long paramLong)
-  {
-    localHashMap = new HashMap();
-    try
+    this.jdField_a_of_type_Arom = paramarom;
+    TicketManager localTicketManager = (TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2);
+    if (TextUtils.isEmpty(localTicketManager.getPskey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "docs.qq.com")))
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(TroopEssenceMsgItem.class, false, "troopUin=?", new String[] { String.valueOf(paramLong) }, null, null, null, null);
-      if (localObject != null)
+      String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      paramarom = new beea(this, paramarom);
+      localTicketManager.getPskey(str, 16L, new String[] { "docs.qq.com" }, paramarom);
+      return;
+    }
+    ThreadManager.excute(new ConfigSetting.2(this, paramarom), 128, null, false);
+  }
+  
+  public void a(ChatMessage paramChatMessage)
+  {
+    if (!(paramChatMessage instanceof MessageForText)) {
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+    }
+    this.jdField_a_of_type_Int += 1;
+    ThreadManager.executeOnSubThread(new ConfigSetting.3(this));
+  }
+  
+  public boolean a()
+  {
+    return System.currentTimeMillis() - this.jdField_a_of_type_Long > a().b() * 1000;
+  }
+  
+  public String[] a(bedt parambedt)
+  {
+    int i = 0;
+    Map localMap = a().a();
+    Object localObject = a().a();
+    if (((parambedt instanceof bedx)) || ((parambedt instanceof beef)))
+    {
+      parambedt = FileUtil.getExtension(parambedt.a());
+      localObject = localMap.keySet().iterator();
+    }
+    while (((Iterator)localObject).hasNext())
+    {
+      aron localaron = (aron)localMap.get((String)((Iterator)localObject).next());
+      String[] arrayOfString = localaron.jdField_b_of_type_ArrayOfJavaLangString;
+      int j = arrayOfString.length;
+      i = 0;
+      while (i < j)
       {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
+        if (arrayOfString[i].equalsIgnoreCase(parambedt)) {
+          return localaron.jdField_a_of_type_ArrayOfJavaLangString;
+        }
+        i += 1;
+      }
+      continue;
+      parambedt = new String[((List)localObject).size()];
+      while (i < ((List)localObject).size())
+      {
+        parambedt[i] = ((aroo)((List)localObject).get(i)).jdField_a_of_type_JavaLangString;
+        i += 1;
+      }
+      return parambedt;
+    }
+    return new String[0];
+  }
+  
+  public String b(bedt parambedt)
+  {
+    Object localObject1;
+    Object localObject2;
+    if (((parambedt instanceof bedx)) || ((parambedt instanceof beef)))
+    {
+      localObject1 = a().a();
+      parambedt = FileUtil.getExtension(parambedt.a());
+      localObject2 = ((Map)localObject1).keySet().iterator();
+    }
+    while (((Iterator)localObject2).hasNext())
+    {
+      Object localObject3 = (aron)((Map)localObject1).get((String)((Iterator)localObject2).next());
+      String[] arrayOfString = ((aron)localObject3).jdField_b_of_type_ArrayOfJavaLangString;
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
+      {
+        if (arrayOfString[i].equalsIgnoreCase(parambedt)) {
+          return ((aron)localObject3).jdField_b_of_type_JavaLangString;
+        }
+        i += 1;
+      }
+      continue;
+      if ((parambedt instanceof beee))
+      {
+        localObject2 = a().a();
+        localObject1 = a().a();
+        parambedt = parambedt.a();
+        localObject2 = ((List)localObject2).iterator();
+        while (((Iterator)localObject2).hasNext())
         {
-          TroopEssenceMsgItem localTroopEssenceMsgItem = (TroopEssenceMsgItem)((Iterator)localObject).next();
-          localHashMap.put(new bedw(localTroopEssenceMsgItem.troopUin, localTroopEssenceMsgItem.msgSeq, localTroopEssenceMsgItem.msgRandom), new bedx(localTroopEssenceMsgItem.opType, localTroopEssenceMsgItem.msgSenderUin, localTroopEssenceMsgItem.opUin, localTroopEssenceMsgItem.opTime, localTroopEssenceMsgItem.graytipuniseq));
+          localObject3 = (aroo)((Iterator)localObject2).next();
+          if ((parambedt.contains(((aroo)localObject3).jdField_a_of_type_JavaLangString)) && (((SparseArray)localObject1).valueAt(((aroo)localObject3).b) != null)) {
+            return ((aron)((SparseArray)localObject1).valueAt(((aroo)localObject3).b)).jdField_b_of_type_JavaLangString;
+          }
         }
       }
-      return localHashMap;
     }
-    catch (Exception localException)
-    {
-      QLog.e("TroopEssenceMsgManager", 1, "readEntity exception + " + localException.getMessage(), localException);
-    }
-  }
-  
-  public void a(long paramLong, beef parambeef)
-  {
-    if (parambeef == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramLong)))
-    {
-      parambeef.a(paramLong, (HashMap)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong)));
-      return;
-    }
-    if (!this.b.containsKey(Long.valueOf(paramLong)))
-    {
-      this.b.put(Long.valueOf(paramLong), new ArrayList(Arrays.asList(new beef[] { parambeef })));
-      ThreadManager.excute(new TroopEssenceMsgManager.9(this, paramLong), 32, null, true);
-      return;
-    }
-    ((ArrayList)this.b.get(Long.valueOf(paramLong))).add(parambeef);
-  }
-  
-  protected void a(Entity paramEntity)
-  {
-    ThreadManager.excute(new TroopEssenceMsgManager.10(this, paramEntity), 32, null, true);
-  }
-  
-  public void a(TroopEssenceMsgItem paramTroopEssenceMsgItem)
-  {
-    if (paramTroopEssenceMsgItem == null) {
-      return;
-    }
-    this.jdField_a_of_type_Anca.a(paramTroopEssenceMsgItem);
-    QLog.i("TroopEssenceMsgManager", 1, "reqSetTroopEssenceMsg:" + paramTroopEssenceMsgItem.toString());
-  }
-  
-  public void a(TroopTips0x857.QQGroupDigestMsg paramQQGroupDigestMsg, boolean paramBoolean)
-  {
-    if (paramQQGroupDigestMsg == null) {
-      return;
-    }
-    ThreadManager.getUIHandler().post(new TroopEssenceMsgManager.3(this, paramQQGroupDigestMsg, paramBoolean));
-  }
-  
-  public boolean a(bedw parambedw)
-  {
-    if (parambedw == null) {}
-    do
-    {
-      HashMap localHashMap;
-      do
-      {
-        do
-        {
-          return false;
-        } while (b(parambedw));
-        localHashMap = (HashMap)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(parambedw.jdField_a_of_type_Long));
-      } while (localHashMap == null);
-      parambedw = (bedx)localHashMap.get(parambedw);
-    } while (parambedw == null);
-    if (parambedw.jdField_a_of_type_Int == 1) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
-  }
-  
-  public boolean b(bedw parambedw)
-  {
-    if ((HashMap)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(parambedw.jdField_a_of_type_Long)) == null)
-    {
-      a(parambedw.jdField_a_of_type_Long, new beeb(this, parambedw));
-      return true;
-    }
-    return false;
-  }
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Andd);
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    this.b.clear();
-    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
-    }
+    return "";
   }
 }
 

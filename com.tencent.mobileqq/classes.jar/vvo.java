@@ -1,12 +1,17 @@
-public class vvo
+import java.io.File;
+import java.util.concurrent.Callable;
+
+class vvo
+  implements Callable<Boolean>
 {
-  public final int a;
-  public final String a;
+  vvo(vvm paramvvm, File paramFile) {}
   
-  public vvo(int paramInt, String paramString)
+  public Boolean a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if ((vvm.a(this.jdField_a_of_type_Vvm) != null) && (vvm.a(this.jdField_a_of_type_Vvm).exists()) && (vvm.a(this.jdField_a_of_type_Vvm) == this.jdField_a_of_type_JavaIoFile)) {}
+    for (boolean bool = true;; bool = false) {
+      return Boolean.valueOf(bool);
+    }
   }
 }
 

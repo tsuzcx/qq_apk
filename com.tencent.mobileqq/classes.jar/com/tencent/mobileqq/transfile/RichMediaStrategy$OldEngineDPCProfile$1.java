@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
-import amqq;
+import ante;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 
 class RichMediaStrategy$OldEngineDPCProfile$1
-  implements amqq
+  implements ante
 {
   RichMediaStrategy$OldEngineDPCProfile$1(RichMediaStrategy.OldEngineDPCProfile paramOldEngineDPCProfile) {}
   

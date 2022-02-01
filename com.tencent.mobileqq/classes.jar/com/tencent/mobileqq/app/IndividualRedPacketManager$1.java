@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.app;
 
-import amuo;
-import bgek;
-import bgeq;
+import anxc;
+import bhne;
+import bhnk;
 import com.tencent.qphone.base.util.QLog;
 
 public class IndividualRedPacketManager$1
   implements Runnable
 {
-  public IndividualRedPacketManager$1(amuo paramamuo) {}
+  public IndividualRedPacketManager$1(anxc paramanxc) {}
   
   public void run()
   {
     this.this$0.a(true);
     if (QLog.isColorLevel()) {
-      QLog.d(amuo.b(), 2, "AIO_BG_WIDTH:" + this.this$0.b);
+      QLog.d(anxc.b(), 2, "AIO_BG_WIDTH:" + this.this$0.b);
     }
     this.this$0.a().d();
     this.this$0.a().c();
     this.this$0.a();
     if (this.this$0.j > 0)
     {
-      bgeq localbgeq = this.this$0.a().a(String.valueOf(this.this$0.j), true);
-      if ((localbgeq == null) || (localbgeq.a == null) || (localbgeq.b == null) || (localbgeq.c == null)) {
+      bhnk localbhnk = this.this$0.a().a(String.valueOf(this.this$0.j), true);
+      if ((localbhnk == null) || (localbhnk.a == null) || (localbhnk.b == null) || (localbhnk.c == null)) {
         this.this$0.a().a(16L, String.valueOf(this.this$0.j), null);
       }
     }

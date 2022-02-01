@@ -1,20 +1,17 @@
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.widget.XPanelContainer;
-import mqq.app.QQPermissionCallback;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class agxk
-  implements QQPermissionCallback
+  extends ahaa
 {
-  agxk(agxg paramagxg, XPanelContainer paramXPanelContainer) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  agxk(agvm paramagvm)
   {
-    bfur.a(agxg.a(this.jdField_a_of_type_Agxg).getActivity());
+    super(paramagvm, null);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    agxg.a(this.jdField_a_of_type_Agxg, this.jdField_a_of_type_ComTencentWidgetXPanelContainer);
+    return new ahfn(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

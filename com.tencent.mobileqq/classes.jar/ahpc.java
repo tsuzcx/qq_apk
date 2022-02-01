@@ -1,32 +1,13 @@
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ahpc
-  implements View.OnClickListener
+public class ahpc
+  implements ahnr
 {
-  ahpc(ahpb paramahpb) {}
-  
-  public void onClick(View paramView)
+  public void a(agtf paramagtf, MessageRecord paramMessageRecord, agus paramagus, aftk paramaftk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    if ((BaseActivity.sTopActivity instanceof FragmentActivity))
-    {
-      Object localObject = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
-      if (localObject != null)
-      {
-        localObject = ((ChatFragment)localObject).a();
-        if (localObject != null) {
-          ((BaseChatPie)localObject).scrollToMsgByID(ahpb.a(this.a));
-        }
-      }
-      aowk.a().a();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramagtf.d(paramMessageRecord, paramagus, paramString);
   }
 }
 

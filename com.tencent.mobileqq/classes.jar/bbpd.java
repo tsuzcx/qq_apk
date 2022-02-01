@@ -1,64 +1,41 @@
-import NS_MOBILE_QBOSS_PROTO.MobileQbossReportExceptionRsp;
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.qboss.QbossErrorReportRequest;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity;
+import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity.2.1;
+import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity.2.2;
+import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity.2.3;
+import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity.2.4;
+import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity.2.5;
 
 public class bbpd
-  extends MSFServlet
+  extends ahtt
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public bbpd(AIOGalleryActivity paramAIOGalleryActivity) {}
+  
+  public void a()
   {
-    int i;
-    if (paramFromServiceMsg != null)
-    {
-      i = paramFromServiceMsg.getResultCode();
-      if (i != 1000) {
-        break label83;
-      }
-      paramIntent = QbossErrorReportRequest.onResponse(paramFromServiceMsg.getWupBuffer());
-      if (paramIntent == null) {
-        break label68;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QbossErrorReportServlet", 2, "report qboss success state = " + paramIntent.iRet);
-      }
-    }
-    label68:
-    label83:
-    while (!QLog.isColorLevel())
-    {
-      do
-      {
-        return;
-        i = -1;
-        break;
-      } while (!QLog.isColorLevel());
-      QLog.d("QbossErrorReportServlet", 2, "report qboss exception fail, decode result is null");
-      return;
-    }
-    QLog.d("QbossErrorReportServlet", 2, "QZONE_GET_QBOSS_DATA fail, resultCode=" + i);
+    this.a.runOnUiThread(new AIOGalleryActivity.2.4(this));
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean)
   {
-    long l = paramIntent.getLongExtra("uin", 0L);
-    int i = paramIntent.getIntExtra("appId", 0);
-    int j = paramIntent.getIntExtra("taskId", 0);
-    Object localObject = paramIntent.getStringExtra("message");
-    QbossErrorReportRequest localQbossErrorReportRequest = new QbossErrorReportRequest(l, i, j, paramIntent.getIntExtra("code", 0), (String)localObject);
-    localObject = localQbossErrorReportRequest.encode();
-    paramIntent = (Intent)localObject;
-    if (localObject == null)
-    {
-      QLog.e("QbossErrorReportServlet", 1, "onSend request encode result is null.cmd=" + localQbossErrorReportRequest.uniKey());
-      paramIntent = new byte[4];
-    }
-    paramPacket.setTimeout(60000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + localQbossErrorReportRequest.uniKey());
-    paramPacket.putSendData(paramIntent);
+    this.a.runOnUiThread(new AIOGalleryActivity.2.2(this, paramLong1, paramInt1, paramInt2, paramInt3, paramLong2, paramBoolean));
+  }
+  
+  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
+  {
+    this.a.runOnUiThread(new AIOGalleryActivity.2.1(this, paramBoolean, paramLong, paramInt1, paramInt2, paramInt3, paramString));
+  }
+  
+  public void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3, Bundle paramBundle)
+  {
+    this.a.runOnUiThread(new AIOGalleryActivity.2.5(this, paramLong, paramInt1, paramInt2, paramString1, paramArrayOfString, paramString2, paramMessageForShortVideo, paramInt3, paramBundle));
+  }
+  
+  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
+  {
+    this.a.runOnUiThread(new AIOGalleryActivity.2.3(this, paramArrayOfAIORichMediaData, paramInt));
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.widget.share;
 
 import android.graphics.Bitmap;
-import aozx;
+import aqdb;
 
 class ShareActionSheetV2$2
-  implements aozx
+  implements aqdb
 {
   ShareActionSheetV2$2(ShareActionSheetV2 paramShareActionSheetV2) {}
   

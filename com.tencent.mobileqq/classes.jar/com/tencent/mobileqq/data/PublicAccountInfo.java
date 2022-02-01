@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
-import ampx;
 import android.content.Context;
 import android.os.SystemClock;
+import ansk;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigGroupInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.EqqAccountInfo;
@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import npt;
+import nwu;
 import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.ConfigGroupInfo;
 import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.ConfigInfo;
 import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.PublicAccountInfo;
@@ -167,7 +167,7 @@ public class PublicAccountInfo
     localPublicAccountInfo.mIsAgreeSyncLbs = paramAccountDetail.isAgreeSyncLbs;
     localPublicAccountInfo.mIsSyncLbsSelected = paramAccountDetail.isSyncLbsSelected;
     localPublicAccountInfo.dateTime = paramLong;
-    ampx.a(localPublicAccountInfo);
+    ansk.a(localPublicAccountInfo);
     return localPublicAccountInfo;
   }
   
@@ -721,7 +721,7 @@ public class PublicAccountInfo
   {
     if (2 == this.extendType)
     {
-      if (npt.a) {
+      if (nwu.a) {
         break label31;
       }
       if (QLog.isDevelopLevel()) {
@@ -747,7 +747,7 @@ public class PublicAccountInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.PublicAccountInfo
  * JD-Core Version:    0.7.0.1
  */

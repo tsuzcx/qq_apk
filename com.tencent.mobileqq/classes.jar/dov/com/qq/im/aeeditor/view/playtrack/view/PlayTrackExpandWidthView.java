@@ -10,7 +10,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import bmoz;
+import boer;
 import com.tencent.weishi.module.edit.widget.playtrack.provider.IPlayTrackViewBitmapProvider;
 
 public class PlayTrackExpandWidthView
@@ -19,7 +19,7 @@ public class PlayTrackExpandWidthView
   private int jdField_a_of_type_Int;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);
-  private bmoz jdField_a_of_type_Bmoz;
+  private boer jdField_a_of_type_Boer;
   private IPlayTrackViewBitmapProvider jdField_a_of_type_ComTencentWeishiModuleEditWidgetPlaytrackProviderIPlayTrackViewBitmapProvider;
   private int[] jdField_a_of_type_ArrayOfInt = new int[2];
   private int jdField_b_of_type_Int;
@@ -97,7 +97,7 @@ public class PlayTrackExpandWidthView
         i = a(m, k);
         while ((i < j + k) && (i < this.jdField_b_of_type_Int + k - m))
         {
-          long l = this.jdField_a_of_type_Bmoz.a(i);
+          long l = this.jdField_a_of_type_Boer.a(i);
           Bitmap localBitmap = this.jdField_a_of_type_ComTencentWeishiModuleEditWidgetPlaytrackProviderIPlayTrackViewBitmapProvider.getBitmap(l);
           int n = localBitmap.getHeight();
           int i1 = localBitmap.getWidth();
@@ -123,9 +123,9 @@ public class PlayTrackExpandWidthView
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void setScaleAdapter(bmoz parambmoz)
+  public void setScaleAdapter(boer paramboer)
   {
-    this.jdField_a_of_type_Bmoz = parambmoz;
+    this.jdField_a_of_type_Boer = paramboer;
   }
   
   public void setVideoThumbProvider(IPlayTrackViewBitmapProvider paramIPlayTrackViewBitmapProvider)

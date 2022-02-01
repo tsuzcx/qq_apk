@@ -1,51 +1,17 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.mobileqq.hotpic.HotPicRecyclerView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class auhh
-  extends RecyclerView.OnScrollListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public auhh(HotPicRecyclerView paramHotPicRecyclerView) {}
+  public auhh(QFileDebugSettingFragment paramQFileDebugSettingFragment) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramInt == 0)
-    {
-      AbstractGifImage.resumeAll();
-      auhp.c();
-      this.a.b();
-      if (paramInt != 2) {
-        break label128;
-      }
-      this.a.jdField_a_of_type_Auiv.a(true);
-    }
-    for (;;)
-    {
-      if ((paramInt == 0) && (this.a.jdField_a_of_type_Int == 2))
-      {
-        ((StaggeredGridLayoutManager)this.a.getLayoutManager()).findFirstCompletelyVisibleItemPositions(this.a.jdField_a_of_type_ArrayOfInt);
-        if ((this.a.jdField_a_of_type_ArrayOfInt[0] == 0) && (this.a.jdField_a_of_type_Auhi != null)) {
-          this.a.jdField_a_of_type_Auhi.d();
-        }
-      }
-      this.a.jdField_a_of_type_Int = paramInt;
-      return;
-      this.a.c();
-      AbstractGifImage.pauseAll();
-      auhp.b();
-      break;
-      label128:
-      this.a.jdField_a_of_type_Auiv.a(false);
-    }
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    if (paramInt2 > 0) {
-      this.a.jdField_a_of_type_Auiv.a(paramInt2);
-    }
+    atlb.a().b(paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import abwp;
+import acmw;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.common.config.AppSetting;

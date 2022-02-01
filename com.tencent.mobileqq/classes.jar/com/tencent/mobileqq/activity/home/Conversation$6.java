@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.home;
 
-import bcef;
-import uaw;
+import bdla;
+import uot;
 
 class Conversation$6
   implements Runnable
@@ -10,8 +10,8 @@ class Conversation$6
   
   public void run()
   {
-    long l = uaw.a().a();
-    bcef.b(this.this$0.a, "dc00899", "Pb_account_lifeservice", "", "0X8006E12", "0X8006E12", 0, 0, String.valueOf(this.a), String.valueOf(this.b), String.valueOf(this.c), String.valueOf(l));
+    long l = uot.a().a();
+    bdla.b(this.this$0.a, "dc00899", "Pb_account_lifeservice", "", "0X8006E12", "0X8006E12", 0, 0, String.valueOf(this.a), String.valueOf(this.b), String.valueOf(this.c), String.valueOf(l));
   }
 }
 

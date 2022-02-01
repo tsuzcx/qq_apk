@@ -1,9 +1,12 @@
 package dov.com.qq.im.ae.camera.core;
 
 import android.graphics.SurfaceTexture;
+import com.tencent.aekit.api.standard.filter.AEFilterManager;
 
 public abstract interface AECameraGLSurfaceView$AEGLSurfaceListener
 {
+  public abstract void onDrawFrameWithEffect(int paramInt, AEFilterManager paramAEFilterManager);
+  
   public abstract void onFirstFrameDone();
   
   public abstract void onOrientionChanged(int paramInt);

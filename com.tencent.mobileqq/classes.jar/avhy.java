@@ -1,12 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.AutoBgImageView;
 
-class avhy
-  implements View.OnClickListener
+public class avhy
+  extends afos
 {
-  avhy(avhu paramavhu) {}
+  public AutoBgImageView a;
+  public TextView b;
   
-  public void onClick(View paramView) {}
+  public avhy(avhu paramavhu) {}
 }
 
 

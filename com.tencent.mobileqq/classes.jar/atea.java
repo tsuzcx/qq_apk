@@ -1,35 +1,26 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.channel.pb.WeiyunPB.WeiyunShareAddFromMobileQQMsgRsp;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Comparator;
 
-class atea
-  implements blfl<WeiyunPB.WeiyunShareAddFromMobileQQMsgRsp>
+public class atea
+  implements Comparator<FileManagerEntity>
 {
-  atea(atdx paramatdx, atek paramatek) {}
+  public atea(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void a(int paramInt, String paramString, WeiyunPB.WeiyunShareAddFromMobileQQMsgRsp paramWeiyunShareAddFromMobileQQMsgRsp)
+  public int a(FileManagerEntity paramFileManagerEntity1, FileManagerEntity paramFileManagerEntity2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getShareLink onFailed: errorCode[" + paramInt + "], errorMsg[" + paramString + "]");
+    if (paramFileManagerEntity2.srvTime > paramFileManagerEntity1.srvTime) {
+      return 1;
     }
-    if (this.jdField_a_of_type_Atek != null) {
-      this.jdField_a_of_type_Atek.a(paramInt, paramString);
+    if (paramFileManagerEntity2.srvTime < paramFileManagerEntity1.srvTime) {
+      return -1;
     }
-  }
-  
-  public void a(WeiyunPB.WeiyunShareAddFromMobileQQMsgRsp paramWeiyunShareAddFromMobileQQMsgRsp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getShareLink succeed");
-    }
-    if (this.jdField_a_of_type_Atek != null) {
-      this.jdField_a_of_type_Atek.a(paramWeiyunShareAddFromMobileQQMsgRsp.raw_url.get());
-    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atea
  * JD-Core Version:    0.7.0.1
  */

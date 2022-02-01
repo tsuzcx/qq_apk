@@ -1,21 +1,17 @@
-import android.graphics.Rect;
-import android.hardware.Camera.Size;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richstatus.SignatureEditFragment;
 
 public class bbug
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public akwr a;
-  public Rect a;
-  public Camera.Size a;
-  public File a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public int c;
-  public int d;
+  public bbug(SignatureEditFragment paramSignatureEditFragment) {}
   
-  private bbug(bbuc parambbuc) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    SignatureEditFragment.a(this.a, 8589934618L, null);
+    paramDialogInterface.dismiss();
+  }
 }
 
 

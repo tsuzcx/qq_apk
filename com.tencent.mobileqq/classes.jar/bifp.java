@@ -1,260 +1,67 @@
+import android.content.Intent;
+import android.net.Uri;
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.richstatus.SignatureEditFragment;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
+import cooperation.comic.ui.QQComicFragment;
+import cooperation.qqreader.ui.ReaderCommentPageFragment;
+import cooperation.qqreader.ui.ReaderContentPageFragment;
+import cooperation.qqreader.ui.ReaderHomeTabFragment;
+import cooperation.qzone.QzoneTranslucentBrowserFragment;
 
 public class bifp
-  extends bifo
 {
-  public int a;
-  private HashMap<String, bifl> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private List<bifm> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private HashMap<Integer, String> b = new HashMap();
-  public String c = "https://speed.gamecenter.qq.com/pushgame/v1/downloadadmin";
-  
-  public bifp()
+  public static WebViewFragment a(biex parambiex, WebViewTabBarData paramWebViewTabBarData, Intent paramIntent)
   {
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  private bifl a(String paramString1, String paramString2, bifm parambifm)
-  {
-    if ((TextUtils.isEmpty(paramString2)) || (parambifm == null)) {}
-    String[] arrayOfString;
-    do
-    {
-      int i;
-      do
-      {
-        return null;
-        i = paramString2.lastIndexOf("/") + 1;
-      } while (i < 2);
-      str1 = paramString2.substring(i);
-      paramString2 = paramString2.substring(0, i).split("/");
-      arrayOfString = str1.split(parambifm.jdField_b_of_type_JavaLangString);
-      if ((paramString2.length >= parambifm.jdField_a_of_type_Int) && (arrayOfString.length >= parambifm.d)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("WadlCommConfig", 1, "interrupt url fail, pathInfo.length=" + paramString2.length + ",fileInfo.length=" + arrayOfString.length);
-    return null;
-    String str2 = paramString2[parambifm.jdField_b_of_type_Int];
-    if (parambifm.c > -1)
-    {
-      paramString2 = paramString2[parambifm.c];
-      if (parambifm.e <= -1) {
-        break label192;
-      }
+    paramIntent.putExtra("url", paramWebViewTabBarData.url);
+    int i = paramIntent.getIntExtra("fragmentStyle", 0);
+    if (i == 2) {
+      return QzoneTranslucentBrowserFragment.newInstance(paramIntent);
     }
-    label192:
-    for (String str1 = arrayOfString[parambifm.e];; str1 = "")
-    {
-      return new bifl(str2, paramString2, str1, arrayOfString[parambifm.f], paramString1);
-      paramString2 = "";
-      break;
+    if (i == 1) {
+      return QQComicFragment.a(paramIntent);
     }
-  }
-  
-  public bifl a(String paramString)
-  {
-    Object localObject1;
-    for (;;)
+    if (i == 3)
     {
-      try
-      {
-        localObject1 = (bifl)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-        localObject2 = localObject1;
-        if (localObject1 != null) {}
+      if (paramWebViewTabBarData.url.contains("signatureEdit=1")) {
+        return SignatureEditFragment.a(paramIntent);
       }
-      catch (Exception paramString)
-      {
-        Object localObject2;
-        Iterator localIterator;
-        Matcher localMatcher;
-        localObject1 = null;
-        paramString.printStackTrace();
-        return localObject1;
+      paramIntent.removeExtra("isTransparentTitle");
+      if (parambiex != null) {
+        return parambiex.a(paramIntent);
       }
-      try
-      {
-        localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      }
-      catch (Exception paramString)
-      {
-        continue;
-      }
-      try
-      {
-        if (!localIterator.hasNext()) {
-          return localObject1;
-        }
-        localObject2 = (bifm)localIterator.next();
-        localMatcher = Pattern.compile(((bifm)localObject2).jdField_a_of_type_JavaLangString).matcher(paramString);
-        if (!localMatcher.find()) {
-          break label113;
-        }
-        localObject2 = a(paramString, localMatcher.group(), (bifm)localObject2);
-        localObject1 = localObject2;
-      }
-      catch (Exception paramString)
-      {
-        continue;
-        continue;
-      }
-      if (localObject1 != null)
-      {
-        localObject2 = localObject1;
-        return localObject2;
-      }
+      return WebViewFragment.newInstance(paramIntent);
     }
-    label113:
-    return localObject1;
-  }
-  
-  public String a(int paramInt)
-  {
-    return (String)this.b.get(Integer.valueOf(paramInt));
-  }
-  
-  public HashSet<String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilHashSet;
-  }
-  
-  public void a(String paramString)
-  {
-    super.a(paramString);
-    int j;
-    int i;
-    Object localObject2;
-    Object localObject3;
-    try
+    if (i == 4)
     {
-      paramString = new JSONObject(new JSONObject(paramString).optString(this.jdField_a_of_type_JavaLangString));
-      this.c = paramString.optString("download_mgr_url", "https://speed.gamecenter.qq.com/pushgame/v1/downloadadmin");
-      this.jdField_a_of_type_Int = paramString.optInt("x5_log_seed", -1);
-      ??? = paramString.optJSONArray("tips_pre_info");
-      if (??? != null)
+      i = paramIntent.getIntExtra("item_type", 1);
+      if ((i == 1) && (TextUtils.isDigitsOnly(paramWebViewTabBarData.tag)))
       {
-        j = ((JSONArray)???).length();
-        i = 0;
-        if (i < j)
-        {
-          localObject2 = ((JSONArray)???).optJSONObject(i);
-          if (localObject2 == null) {
-            break label602;
-          }
-          localObject3 = ((JSONObject)localObject2).optString("content");
-          int k = ((JSONObject)localObject2).optInt("type", -1);
-          if ((k <= -1) || (TextUtils.isEmpty((CharSequence)localObject3))) {
-            break label602;
-          }
-          this.b.put(Integer.valueOf(k), localObject3);
-          break label602;
-        }
+        paramIntent.putExtra("key_tab_id", Integer.valueOf(paramWebViewTabBarData.tag));
+        bmgm.d("WebViewFragmentBuilder", "tab_id =" + paramWebViewTabBarData.tag);
+        return ReaderHomeTabFragment.a(paramIntent);
       }
-      localObject2 = paramString.optJSONArray("websso_cmds");
-      if (localObject2 != null)
-      {
-        j = ((JSONArray)localObject2).length();
-        if (j > 0)
-        {
-          synchronized (this.jdField_a_of_type_JavaUtilHashSet)
-          {
-            this.jdField_a_of_type_JavaUtilHashSet.clear();
-            i = 0;
-            label182:
-            if (i >= j) {
-              break label231;
-            }
-            localObject3 = ((JSONArray)localObject2).optString(i);
-            if (TextUtils.isEmpty((CharSequence)localObject3)) {
-              break label609;
-            }
-            this.jdField_a_of_type_JavaUtilHashSet.add(localObject3);
-          }
-          return;
-        }
+      if (i == 4) {
+        return ReaderCommentPageFragment.a(paramIntent);
       }
+      return ReaderContentPageFragment.a(paramIntent);
     }
-    catch (JSONException paramString)
+    paramWebViewTabBarData = Uri.parse(paramWebViewTabBarData.url);
+    if ((paramWebViewTabBarData.isHierarchical()) && ("4".equals(paramWebViewTabBarData.getQueryParameter("_webviewtype"))))
     {
-      paramString.printStackTrace();
+      paramIntent.putExtra("fragmentStyle", 1);
+      paramIntent.putExtra("tabBarStyle", 1);
+      paramIntent.putExtra("titleBarStyle", 1);
+      paramIntent.putExtra("hide_operation_bar", true);
+      paramIntent.putExtra("hide_more_button", true);
+      paramIntent.putExtra("isScreenOrientationPortrait", true);
+      return QQComicFragment.a(paramIntent);
     }
-    label230:
-    label231:
-    do
-    {
-      paramString = paramString.optJSONObject("url_match_rule");
-    } while (paramString == null);
-    ??? = paramString.optJSONArray("reg_list");
-    if (??? != null)
-    {
-      j = ((JSONArray)???).length();
-      if (j > 0) {
-        i = 0;
-      }
+    if (parambiex != null) {
+      return parambiex.a(paramIntent);
     }
-    for (;;)
-    {
-      if (i < j)
-      {
-        localObject2 = ((JSONArray)???).getJSONObject(i);
-        localObject3 = new bifm();
-        ((bifm)localObject3).jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).getString("pattern");
-        ((bifm)localObject3).jdField_a_of_type_Int = ((JSONObject)localObject2).getInt("path_node_num");
-        ((bifm)localObject3).jdField_b_of_type_Int = ((JSONObject)localObject2).getInt("appid_index");
-        ((bifm)localObject3).c = ((JSONObject)localObject2).optInt("app_name_index", -1);
-        ((bifm)localObject3).jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).getString("split_name_char");
-        ((bifm)localObject3).d = ((JSONObject)localObject2).getInt("name_node_num");
-        ((bifm)localObject3).e = ((JSONObject)localObject2).optInt("channel_index", -1);
-        ((bifm)localObject3).f = ((JSONObject)localObject2).getInt("pkg_name_index");
-        if ((((bifm)localObject3).jdField_b_of_type_Int < ((bifm)localObject3).jdField_a_of_type_Int) && (((bifm)localObject3).c < ((bifm)localObject3).jdField_a_of_type_Int) && (((bifm)localObject3).e < ((bifm)localObject3).d) && (((bifm)localObject3).f < ((bifm)localObject3).d)) {
-          this.jdField_a_of_type_JavaUtilList.add(localObject3);
-        }
-      }
-      else
-      {
-        paramString = paramString.optJSONArray("replace_list");
-        if (paramString == null) {
-          break label230;
-        }
-        j = paramString.length();
-        if (j <= 0) {
-          break label230;
-        }
-        i = 0;
-        while (i < j)
-        {
-          Object localObject4 = paramString.getJSONObject(i);
-          ??? = ((JSONObject)localObject4).getString("url");
-          localObject2 = ((JSONObject)localObject4).getString("appid");
-          localObject3 = ((JSONObject)localObject4).optString("app_name", "");
-          String str1 = ((JSONObject)localObject4).optString("channel", "");
-          String str2 = ((JSONObject)localObject4).getString("pkg_name");
-          localObject4 = ((JSONObject)localObject4).optString("replace_url", "");
-          this.jdField_a_of_type_JavaUtilHashMap.put(???, new bifl((String)localObject2, (String)localObject3, str1, str2, (String)localObject4));
-          i += 1;
-        }
-        break label230;
-        label602:
-        i += 1;
-        break;
-        label609:
-        i += 1;
-        break label182;
-      }
-      i += 1;
-    }
+    return WebViewFragment.newInstance(paramIntent);
   }
 }
 

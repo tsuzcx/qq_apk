@@ -1,30 +1,98 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.videostory.capture.widgets.SquareRoundImageView;
-import java.lang.ref.WeakReference;
+import android.graphics.drawable.Drawable;
+import android.text.Editable;
+import com.tencent.biz.subscribe.comment.CommentEditText;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonInfo;
+import com.tencent.mobileqq.emoticonview.SystemEmoticonInfo;
 
-public class zwn
-  extends Handler
+class zwn
+  implements EmoticonCallback
 {
-  private WeakReference<SquareRoundImageView> a;
+  zwn(zwk paramzwk) {}
   
-  private zwn(Looper paramLooper, SquareRoundImageView paramSquareRoundImageView)
+  public void delete()
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramSquareRoundImageView);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 1)
+    if (this.a.a.getSelectionStart() == 0) {}
+    for (;;)
     {
-      paramMessage = (SquareRoundImageView)this.a.get();
-      if (paramMessage != null) {
-        SquareRoundImageView.a(paramMessage);
+      return;
+      try
+      {
+        Editable localEditable = this.a.a.getText();
+        int i = this.a.a.getSelectionStart();
+        int j = android.text.TextUtils.getOffsetBefore(this.a.a.getText(), i);
+        if (i != j)
+        {
+          localEditable.delete(Math.min(i, j), Math.max(i, j));
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
       }
     }
   }
+  
+  public void emoticonMall() {}
+  
+  public void onHidePopup(EmoticonInfo paramEmoticonInfo) {}
+  
+  public boolean onLongClick(EmoticonInfo paramEmoticonInfo)
+  {
+    return true;
+  }
+  
+  public void onShowPopup(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
+  
+  public void send() {}
+  
+  public void send(EmoticonInfo paramEmoticonInfo)
+  {
+    int i;
+    int j;
+    if ((paramEmoticonInfo instanceof SystemEmoticonInfo))
+    {
+      i = this.a.a.getSelectionStart();
+      j = this.a.a.getSelectionEnd();
+      if ((i < 0) || (j < 0) || (j < i)) {}
+    }
+    SystemAndEmojiEmoticonInfo localSystemAndEmojiEmoticonInfo;
+    int k;
+    int m;
+    do
+    {
+      this.a.a.getEditableText().replace(i, j, com.tencent.mobileqq.text.TextUtils.getSysEmotcationString(((SystemEmoticonInfo)paramEmoticonInfo).code));
+      do
+      {
+        return;
+      } while (!(paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo));
+      localSystemAndEmojiEmoticonInfo = (SystemAndEmojiEmoticonInfo)paramEmoticonInfo;
+      i = this.a.a.getSelectionStart();
+      j = this.a.a.getSelectionEnd();
+      k = localSystemAndEmojiEmoticonInfo.emotionType;
+      m = localSystemAndEmojiEmoticonInfo.code;
+      if ((i < 0) || (j < 0) || (j < i)) {
+        break;
+      }
+    } while ((k == 2) && (m == -1));
+    if (k == 1) {}
+    for (paramEmoticonInfo = com.tencent.mobileqq.text.TextUtils.getSysEmotcationString(m);; paramEmoticonInfo = com.tencent.mobileqq.text.TextUtils.getEmojiString(m))
+    {
+      this.a.a.getEditableText().replace(i, j, paramEmoticonInfo);
+      this.a.a.requestFocus();
+      if (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+        break;
+      }
+      localSystemAndEmojiEmoticonInfo.addToCommonUsed((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), null);
+      return;
+    }
+  }
+  
+  public void setting() {}
 }
 
 

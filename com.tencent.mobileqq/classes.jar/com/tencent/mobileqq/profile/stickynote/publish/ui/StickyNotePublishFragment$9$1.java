@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.profile.stickynote.publish.ui;
 
-import aypo;
+import azuj;
 import com.tencent.widget.XEditTextEx;
 
 public class StickyNotePublishFragment$9$1
   implements Runnable
 {
-  public StickyNotePublishFragment$9$1(aypo paramaypo) {}
+  public StickyNotePublishFragment$9$1(azuj paramazuj) {}
   
   public void run()
   {

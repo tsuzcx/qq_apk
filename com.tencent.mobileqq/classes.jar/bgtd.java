@@ -1,64 +1,28 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
 
-public class bgtd
-  extends WebViewPlugin
+class bgtd
+  implements aofo
 {
-  public bgtd()
-  {
-    this.mPluginNameSpace = "forceHttps";
-  }
+  public bgte a;
   
-  private boolean a(String paramString)
-  {
-    boolean bool2 = false;
-    nko localnko = nko.a();
-    boolean bool1 = bool2;
-    if (localnko.e(paramString))
-    {
-      bool1 = bool2;
-      if (!localnko.f(paramString)) {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
+  private bgtd(bgtb parambgtb) {}
   
-  public boolean handleSchemaRequest(String paramString1, String paramString2)
+  public void a(TroopMemberInfo paramTroopMemberInfo)
   {
-    if (!nko.a().d()) {
-      return false;
-    }
-    if (("http".equals(paramString2)) && (a(paramString1)))
+    if ((this.jdField_a_of_type_Bgte != null) && (paramTroopMemberInfo != null) && (TextUtils.equals(this.jdField_a_of_type_Bgte.jdField_a_of_type_JavaLangString, paramTroopMemberInfo.memberuin)))
     {
-      paramString2 = this.mRuntime.a();
-      if ((paramString2 != null) && (paramString2.mStatistics != null)) {
-        paramString2.mStatistics.C = true;
-      }
-      paramString2 = "https" + paramString1.substring("http".length());
-      CustomWebView localCustomWebView = this.mRuntime.a();
-      StringBuilder localStringBuilder;
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append("need switch url=").append(npn.b(paramString1, new String[0]));
-        if (localCustomWebView != null) {
-          break label155;
-        }
-      }
-      label155:
-      for (paramString1 = ", view==null";; paramString1 = "")
-      {
-        QLog.i("forceHttps", 2, paramString1);
-        if (localCustomWebView == null) {
-          break;
-        }
-        localCustomWebView.loadUrl(paramString2);
-        return true;
+      paramTroopMemberInfo = new begq(((TroopManager)this.jdField_a_of_type_Bgtb.a.getManager(QQManagerFactory.TROOP_MANAGER)).a(paramTroopMemberInfo.troopuin, paramTroopMemberInfo.memberuin), 13).a();
+      this.jdField_a_of_type_Bgte.jdField_a_of_type_AndroidWidgetTextView.setText(paramTroopMemberInfo);
+      if (AppSetting.c) {
+        bgtb.a(this.jdField_a_of_type_Bgtb, this.jdField_a_of_type_Bgte);
       }
     }
-    return false;
   }
 }
 

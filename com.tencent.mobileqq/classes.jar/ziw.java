@@ -1,46 +1,83 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StModifyFeedReq;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StModifyFeedRsp;
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 public class ziw
-  extends zja
+  implements View.OnTouchListener
 {
-  private CertifiedAccountWrite.StModifyFeedReq a = new CertifiedAccountWrite.StModifyFeedReq();
+  protected float a;
+  protected final RecyclerView a;
+  protected zip a;
+  protected ziq a;
+  protected zir a;
+  protected zis a;
+  protected final ziv a;
+  public zix a;
   
-  public ziw(COMM.StCommonExt paramStCommonExt, CertifiedAccountMeta.StFeed paramStFeed)
+  public ziw(RecyclerView paramRecyclerView)
   {
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
-    if (paramStFeed != null) {
-      this.a.feed.set(paramStFeed);
-    }
-    this.a.mBitmap.set(1L);
+    this.jdField_a_of_type_Zir = new zit();
+    this.jdField_a_of_type_Ziv = new ziv();
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
   }
   
-  public static CertifiedAccountWrite.StModifyFeedRsp a(byte[] paramArrayOfByte)
+  public View a()
   {
-    CertifiedAccountWrite.StModifyFeedRsp localStModifyFeedRsp = new CertifiedAccountWrite.StModifyFeedRsp();
-    try
-    {
-      paramArrayOfByte = (CertifiedAccountWrite.StModifyFeedRsp)localStModifyFeedRsp.mergeFrom(paramArrayOfByte);
-      return paramArrayOfByte;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CertifiedAccountModifyFeedRequest", 2, "onResponse fail." + paramArrayOfByte);
-      }
-    }
-    return null;
+    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   }
   
-  public byte[] a()
+  public void a()
   {
-    return this.a.toByteArray();
+    this.jdField_a_of_type_Zip = new zip(this, -2.0F);
+    this.jdField_a_of_type_Zix = new zix(this, 3.0F, 1.0F);
+    this.jdField_a_of_type_Zis = new zis(this);
+    this.jdField_a_of_type_Ziq = this.jdField_a_of_type_Zis;
+    b();
+  }
+  
+  public void a(RecyclerView.LayoutManager paramLayoutManager)
+  {
+    if ((paramLayoutManager instanceof LinearLayoutManager))
+    {
+      paramLayoutManager = (LinearLayoutManager)paramLayoutManager;
+      this.jdField_a_of_type_Zir.a(paramLayoutManager.getOrientation());
+      return;
+    }
+    this.jdField_a_of_type_Zir.a(1);
+  }
+  
+  protected void a(ziq paramziq)
+  {
+    ziq localziq = this.jdField_a_of_type_Ziq;
+    this.jdField_a_of_type_Ziq = paramziq;
+    this.jdField_a_of_type_Ziq.a(localziq);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOnTouchListener(this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOverScrollMode(2);
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOnTouchListener(null);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOverScrollMode(0);
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    default: 
+      return false;
+    case 2: 
+      return this.jdField_a_of_type_Ziq.a(paramMotionEvent);
+    }
+    return this.jdField_a_of_type_Ziq.b(paramMotionEvent);
   }
 }
 

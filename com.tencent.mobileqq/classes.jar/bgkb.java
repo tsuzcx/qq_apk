@@ -1,51 +1,66 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.vas.update.business.BaseUpdateBusiness;
-import com.tencent.vas.update.callback.IVasUpdateFactory;
-import com.tencent.vas.update.callback.VasBusinessManager;
-import mqq.manager.Manager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Task;
+import java.util.LinkedList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class bgkb
-  extends VasBusinessManager
-  implements Manager
 {
-  private bgko a;
+  public int a;
+  public LinkedList<TroopFileTransferManager.Task> a;
+  public AtomicInteger a;
   
-  public bgkb(QQAppInterface paramQQAppInterface)
+  public bgkb(int paramInt)
   {
-    QLog.e("VasUpdate_QQVasUpdateManager", 1, "QQVasUpdateManager onCreate");
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
+    this.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public static boolean a()
+  /* Error */
+  public void a(TroopFileTransferManager.Task paramTask)
   {
-    return true;
-  }
-  
-  public bgko a()
-  {
-    return this.a;
-  }
-  
-  public IVasUpdateFactory createVasUpdateFactory()
-  {
-    this.a = new bgko();
-    return this.a;
-  }
-  
-  public void onDestroy()
-  {
-    QLog.e("VasUpdate_QQVasUpdateManager", 1, "onDestroy");
-    super.onDestory();
-  }
-  
-  public BaseUpdateBusiness[] registerBusinessCallback()
-  {
-    return new BaseUpdateBusiness[] { new bgkf() };
-  }
-  
-  public BaseUpdateBusiness registerCommonBusinessCallback()
-  {
-    return new bgke();
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 24	bgkb:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
+    //   6: aload_1
+    //   7: invokevirtual 32	java/util/LinkedList:add	(Ljava/lang/Object;)Z
+    //   10: pop
+    //   11: aload_0
+    //   12: getfield 19	bgkb:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   15: invokevirtual 36	java/util/concurrent/atomic/AtomicInteger:incrementAndGet	()I
+    //   18: aload_0
+    //   19: getfield 26	bgkb:jdField_a_of_type_Int	I
+    //   22: if_icmple +14 -> 36
+    //   25: aload_0
+    //   26: getfield 19	bgkb:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   29: invokevirtual 39	java/util/concurrent/atomic/AtomicInteger:decrementAndGet	()I
+    //   32: pop
+    //   33: aload_0
+    //   34: monitorexit
+    //   35: return
+    //   36: new 41	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskPool$1
+    //   39: dup
+    //   40: aload_0
+    //   41: invokespecial 44	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskPool$1:<init>	(Lbgkb;)V
+    //   44: iconst_5
+    //   45: aconst_null
+    //   46: iconst_1
+    //   47: invokestatic 50	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   50: goto -17 -> 33
+    //   53: astore_1
+    //   54: aload_0
+    //   55: monitorexit
+    //   56: aload_1
+    //   57: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	58	0	this	bgkb
+    //   0	58	1	paramTask	TroopFileTransferManager.Task
+    // Exception table:
+    //   from	to	target	type
+    //   2	33	53	finally
+    //   36	50	53	finally
   }
 }
 

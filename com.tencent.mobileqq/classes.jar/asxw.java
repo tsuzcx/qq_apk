@@ -1,103 +1,105 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.MobileQQ;
 
 public class asxw
-  extends asyc
+  implements RadioGroup.OnCheckedChangeListener
 {
-  private MessageForFile jdField_a_of_type_ComTencentMobileqqDataMessageForFile = (MessageForFile)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-  private FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = aszt.a(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
+  public asxw(FMActivity paramFMActivity) {}
   
-  public asxw(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    super(paramQQAppInterface, paramChatMessage);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    int i = 1;
+    if (this.a.jdField_b_of_type_AndroidWidgetTextView != null) {
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+    this.a.g();
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar.setVisibility(0);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView != null)
     {
-      QLog.e("OfflineFileSaveModel<QFile>", 1, "init: not find the target entity.");
+      this.a.jdField_c_of_type_AndroidWidgetRelativeLayout.removeAllViews();
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView.setVisibility(8);
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView.a();
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView = null;
+      this.a.jdField_c_of_type_AndroidWidgetRelativeLayout.addView(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView);
+    }
+    if ((paramInt == 2131376274) && (this.a.jdField_b_of_type_AndroidWidgetRadioButton.isChecked()))
+    {
+      this.a.a().f();
+      FMActivity.b(this.a);
+      this.a.jdField_a_of_type_AndroidWidgetRadioButton.setSelected(false);
+      this.a.jdField_c_of_type_AndroidWidgetRadioButton.setSelected(false);
+      if (FMActivity.a(this.a)) {
+        this.a.d.setSelected(false);
+      }
+      this.a.i(false);
+      FMActivity.a(this.a, 1);
+      i = 0;
+    }
+    for (;;)
+    {
+      SharedPreferences.Editor localEditor = this.a.app.getApplication().getSharedPreferences("aio_last_select_file", 0).edit();
+      localEditor.putInt("last_select_tab_type", i);
+      localEditor.commit();
+      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
       return;
-    }
-    QLog.e("OfflineFileSaveModel<QFile>", 1, "init: uniseq[" + paramChatMessage.uniseq + "] session[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]");
-  }
-  
-  public long a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
-    }
-    return 0L;
-  }
-  
-  public asxz a()
-  {
-    asxv localasxv = new asxv(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    localasxv.a(new asxx(this));
-    return localasxv;
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath();
-    }
-    return "";
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OfflineFileSaveModel<QFile>", 1, "download: file entity is null.");
-      return false;
-    }
-    int i = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType();
-    int j = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status;
-    String str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath();
-    QLog.e("OfflineFileSaveModel<QFile>", 1, "download: uniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq + "] session[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] cloudType[" + i + "] status[" + j + "]");
-    if ((!FileUtils.fileExistsAndNotEmpty(str)) && (i != 0))
-    {
-      if (j == 3)
+      if ((paramInt == 2131370486) && (this.a.jdField_a_of_type_AndroidWidgetRadioButton.isChecked()))
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-        return true;
+        this.a.a().e();
+        FMActivity.c(this.a);
+        if ((this.a.i == 0) && (this.a.f)) {
+          this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        }
+        this.a.jdField_b_of_type_AndroidWidgetRadioButton.setSelected(false);
+        this.a.jdField_c_of_type_AndroidWidgetRadioButton.setSelected(false);
+        if (FMActivity.a(this.a)) {
+          this.a.d.setSelected(false);
+        }
+        this.a.i(false);
+        FMActivity.a(this.a, 2);
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      return true;
-    }
-    QLog.e("OfflineFileSaveModel<QFile>", 1, "download: error, file status is not right.");
-    return false;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.frienduin + this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq;
-  }
-  
-  public boolean b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OfflineFileSaveModel<QFile>", 1, "stopDownload: file entity is null.");
-      return false;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    return true;
-  }
-  
-  public boolean c()
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null)
-    {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getStatus() == 2) {
-        bool1 = true;
+      else if ((paramInt == 2131364745) && (this.a.jdField_c_of_type_AndroidWidgetRadioButton.isChecked()))
+      {
+        this.a.a().d();
+        FMActivity.b(this.a, 2);
+        this.a.jdField_a_of_type_AndroidWidgetRadioButton.setSelected(false);
+        this.a.jdField_b_of_type_AndroidWidgetRadioButton.setSelected(false);
+        if (FMActivity.a(this.a)) {
+          this.a.d.setSelected(false);
+        }
+        this.a.i(false);
+        FMActivity.a(this.a, 0);
+        i = 2;
+      }
+      else if ((paramInt == 2131366447) && (this.a.d.isChecked()))
+      {
+        this.a.a().g();
+        FMActivity.d(this.a);
+        this.a.jdField_a_of_type_AndroidWidgetRadioButton.setSelected(false);
+        this.a.jdField_b_of_type_AndroidWidgetRadioButton.setSelected(false);
+        this.a.jdField_c_of_type_AndroidWidgetRadioButton.setSelected(false);
+        this.a.i(false);
+        FMActivity.a(this.a, 5);
+        bdla.b(this.a.app, "dc00898", "", "", "0X800AFA6", "0X800AFA6", 0, 0, "", "", "", "");
+        i = 1408041718;
+      }
+      else
+      {
+        i = -1;
       }
     }
-    return bool1;
   }
 }
 

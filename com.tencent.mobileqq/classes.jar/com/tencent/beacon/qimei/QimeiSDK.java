@@ -308,7 +308,7 @@ public class QimeiSDK
       if (!isInit())
       {
         this.mContext = paramContext;
-        e.a(this.mContext).d();
+        e.a(this.mContext).c();
         paramContext = this.mListener;
         if (paramContext != null) {
           getQimei(paramContext);

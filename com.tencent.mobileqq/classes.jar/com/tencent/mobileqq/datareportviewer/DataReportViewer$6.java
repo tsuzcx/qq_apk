@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.datareportviewer;
 
 import android.widget.TextView;
-import aqts;
-import aqtu;
+import arxg;
+import arxi;
 import java.util.ArrayList;
 
 class DataReportViewer$6
@@ -16,18 +16,18 @@ class DataReportViewer$6
     {
       this.this$0.jdField_a_of_type_JavaUtilArrayList.remove(0);
       this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.this$0.jdField_a_of_type_JavaUtilArrayList.size()));
-      this.this$0.jdField_a_of_type_Aqts.notifyDataSetChanged();
+      this.this$0.jdField_a_of_type_Arxg.notifyDataSetChanged();
       this.this$0.a();
     }
-    while (!aqtu.a) {
+    while (!arxi.a) {
       return;
     }
-    aqtu.a().b();
+    arxi.a().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.datareportviewer.DataReportViewer.6
  * JD-Core Version:    0.7.0.1
  */

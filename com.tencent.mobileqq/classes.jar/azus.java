@@ -1,18 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
+import QC.UniBusiGetOneItemWithCheckRsp;
+import com.tencent.mobileqq.app.BusinessObserver;
 
-public final class azus
-  implements Parcelable.Creator<ReceiptMessageReadMemberListFragment.MemberInfo>
+class azus
+  implements BusinessObserver
 {
-  public ReceiptMessageReadMemberListFragment.MemberInfo a(Parcel paramParcel)
-  {
-    return new ReceiptMessageReadMemberListFragment.MemberInfo(paramParcel);
-  }
+  azus(azun paramazun, azuu paramazuu) {}
   
-  public ReceiptMessageReadMemberListFragment.MemberInfo[] a(int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return new ReceiptMessageReadMemberListFragment.MemberInfo[paramInt];
+    azuu localazuu;
+    if (this.jdField_a_of_type_Azuu != null)
+    {
+      if (!(paramObject instanceof UniBusiGetOneItemWithCheckRsp)) {
+        break label50;
+      }
+      localazuu = this.jdField_a_of_type_Azuu;
+      if (((UniBusiGetOneItemWithCheckRsp)paramObject).ret != 0) {
+        break label45;
+      }
+    }
+    label45:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      localazuu.a(paramBoolean, (UniBusiGetOneItemWithCheckRsp)paramObject);
+      return;
+    }
+    label50:
+    this.jdField_a_of_type_Azuu.a(false, null);
   }
 }
 

@@ -1,33 +1,32 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.view.CameraCover;
-import com.tencent.mobileqq.app.BaseActivity2;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
-import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
 import com.tencent.qphone.base.util.QLog;
 
-public class apbq
-  extends BroadcastReceiver
+class apbq
+  implements SoundPool.OnLoadCompleteListener
 {
-  public apbq(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
+  apbq(apbp paramapbp) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
+    if (paramInt2 != 0) {}
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("DynamicAvatarRecordActivity", 2, "receive ACTION_START_VIDEO_CHAT.");
-      }
-      paramContext = BaseActivity2.findViewById(this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover, 2131366841);
-      if (paramContext != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover.removeView(paramContext);
-      }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.e();
-      }
-      this.a.finish();
+      QLog.e("ARMusicController", 2, "load fire music failed. " + apbp.a(this.a));
+      return;
+    }
+    catch (Exception paramSoundPool)
+    {
+      paramSoundPool.printStackTrace();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ARMusicController", 2, "load fire music success. : " + apbp.a(this.a));
+    }
+    apbp.a(this.a, true);
+    if (apbp.a(this.a))
+    {
+      paramSoundPool.play(paramInt1, 1.0F, 1.0F, 1, 0, 1.0F);
+      return;
     }
   }
 }

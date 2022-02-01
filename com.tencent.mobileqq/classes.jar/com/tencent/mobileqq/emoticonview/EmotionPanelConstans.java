@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.emoticonview;
 
-import anaj;
+import aocy;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.qphone.base.util.QLog;
@@ -115,7 +116,7 @@ public class EmotionPanelConstans
     if ((paramEmoticonPackage == null) || (paramQQAppInterface == null)) {
       return false;
     }
-    int i = ((anaj)paramQQAppInterface.getBusinessHandler(13)).g();
+    int i = ((aocy)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).g();
     if (paramEmoticonPackage.mobileFeetype == 4) {
       return (i == 1) || (i == 3);
     }
@@ -127,7 +128,7 @@ public class EmotionPanelConstans
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionPanelConstans
  * JD-Core Version:    0.7.0.1
  */

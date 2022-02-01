@@ -1,10 +1,14 @@
-public class atyz
+import android.view.View;
+
+class atyz
+  implements aueo
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
+  atyz(atyy paramatyy) {}
+  
+  public void onClick(View paramView)
+  {
+    auea.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Atxa.d());
+  }
 }
 
 

@@ -1,9 +1,10 @@
-public class yff
+import com.tencent.biz.qqstory.base.ErrorMessage;
+
+public abstract interface yff<T>
 {
-  public static boolean a(int paramInt)
-  {
-    return (paramInt == 0) || (paramInt == 1) || (paramInt == 2) || (paramInt == 3) || (paramInt == 4) || (paramInt == 5) || (paramInt == 6);
-  }
+  public abstract void a(ErrorMessage paramErrorMessage);
+  
+  public abstract void a(T paramT);
 }
 
 

@@ -1,9 +1,9 @@
 package dov.com.qq.im;
 
 import android.media.MediaFormat;
-import blhu;
-import blhx;
-import boef;
+import bmul;
+import bmuo;
+import bptx;
 import com.tencent.biz.qqstory.utils.ffmpeg.QimSegmentMergeUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
@@ -21,7 +21,7 @@ import java.util.List;
 public class QIMCameraCaptureUnit$11
   implements Runnable
 {
-  public QIMCameraCaptureUnit$11(blhu paramblhu, List paramList) {}
+  public QIMCameraCaptureUnit$11(bmul parambmul, List paramList) {}
   
   public void run()
   {
@@ -48,15 +48,15 @@ public class QIMCameraCaptureUnit$11
       if (localArrayList2.size() != this.a.size()) {
         break label509;
       }
-      localObject1 = this.this$0.a() + File.separator + "audio_data_cache" + File.separator + boef.a();
+      localObject1 = this.this$0.a() + File.separator + "audio_data_cache" + File.separator + bptx.a();
       localQimSegmentMergeUtil.mergeAudioCache(localArrayList2, (String)localObject1);
       this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.audioDataFilePath = ((String)localObject1);
       this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.videoMp4FilePath = ((String)localObject2);
       this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.type = ((CameraCaptureView.VideoCaptureResult)this.a.get(0)).type;
       this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.orientation = ((CameraCaptureView.VideoCaptureResult)this.a.get(0)).orientation;
-      blhu.a(this.this$0, new LocalMediaInfo());
-      blhu.a(this.this$0).path = this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.videoMp4FilePath;
-      blhu.a(this.this$0).mMimeType = "video";
+      bmul.a(this.this$0, new LocalMediaInfo());
+      bmul.a(this.this$0).path = this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.videoMp4FilePath;
+      bmul.a(this.this$0).mMimeType = "video";
       localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.a();
       if (localObject1 == null) {
         break label562;
@@ -65,11 +65,11 @@ public class QIMCameraCaptureUnit$11
       if (!AudioHelper.g()) {
         break label542;
       }
-      blhu.a(this.this$0).mTransferPosList = localQimSegmentMergeUtil.getMergeVideoPositionsForFFmpeg(localArrayList1, (String)localObject2);
+      bmul.a(this.this$0).mTransferPosList = localQimSegmentMergeUtil.getMergeVideoPositionsForFFmpeg(localArrayList1, (String)localObject2);
       if (QLog.isColorLevel()) {
         QLog.d("QIMCameraCaptureUnit", 2, "[segmentCapture] onSegmentVideoCaptured segment video merge result: " + bool);
       }
-      MediaScanner.getInstance(BaseApplicationImpl.getContext()).queryMediaInfoAsync(new blhx(this), blhu.a(this.this$0));
+      MediaScanner.getInstance(BaseApplicationImpl.getContext()).queryMediaInfoAsync(new bmuo(this), bmul.a(this.this$0));
     }
     label509:
     while (!QLog.isColorLevel()) {
@@ -80,7 +80,7 @@ public class QIMCameraCaptureUnit$11
         localObject1 = this.this$0.a() + "/noaudio";
         FileUtils.createFileIfNotExits((String)localObject1);
         break;
-        blhu.a(this.this$0).mTransferPosList = localQimSegmentMergeUtil.getMergeVideoPositions(localArrayList1);
+        bmul.a(this.this$0).mTransferPosList = localQimSegmentMergeUtil.getMergeVideoPositions(localArrayList1);
       }
     }
     label542:

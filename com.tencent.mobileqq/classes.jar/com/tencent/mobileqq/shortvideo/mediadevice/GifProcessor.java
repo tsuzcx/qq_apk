@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.shortvideo.mediadevice;
 
-import akwa;
+import altw;
 import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.media.MediaMetadataRetriever;
 import android.text.TextUtils;
-import bfvo;
+import bheg;
 import com.tencent.maxvideo.common.GlobalInit;
 import com.tencent.maxvideo.trim.TrimNative;
 import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
@@ -308,7 +308,7 @@ public class GifProcessor
     }
     for (;;)
     {
-      akwa.a(paramString1, paramInt2, i, 0, 0, paramInt2, i);
+      altw.a(paramString1, paramInt2, i, 0, 0, paramInt2, i);
       long l1;
       long l3;
       long l2;
@@ -363,12 +363,12 @@ public class GifProcessor
           ((File)localObject2).delete();
           break label362;
         }
-        Bitmap localBitmap = akwa.b(l3, l5);
+        Bitmap localBitmap = altw.b(l3, l5);
         long l5 = System.currentTimeMillis();
         if (localBitmap != null) {}
         try
         {
-          bfvo.a(localBitmap, new File((String)localObject1 + File.separator + l3 + ".jpg"));
+          bheg.a(localBitmap, new File((String)localObject1 + File.separator + l3 + ".jpg"));
           ((ArrayList)localObject2).add((String)localObject1 + File.separator + l3 + ".jpg");
           long l6 = System.currentTimeMillis();
           if (QLog.isColorLevel()) {
@@ -578,7 +578,7 @@ public class GifProcessor
               paramString1 = localMediaMetadataRetriever.getFrameAtTime(1000L * l3, 3);
               long l5 = System.currentTimeMillis();
               if (paramString1 != null) {
-                bfvo.a(paramString1.copy(Bitmap.Config.ARGB_8888, true), new File(paramString2 + File.separator + l3 + ".jpg"));
+                bheg.a(paramString1.copy(Bitmap.Config.ARGB_8888, true), new File(paramString2 + File.separator + l3 + ".jpg"));
               }
               long l6 = System.currentTimeMillis();
               if (QLog.isColorLevel()) {
@@ -658,7 +658,7 @@ public class GifProcessor
     }
     for (;;)
     {
-      if (akwa.a(paramString1, paramInt2, i, 0, 0, paramInt2, i) != 0) {
+      if (altw.a(paramString1, paramInt2, i, 0, 0, paramInt2, i) != 0) {
         return -112;
       }
       long l1;
@@ -694,13 +694,13 @@ public class GifProcessor
           if (l5 >= l1) {
             l4 = l1;
           }
-          paramString1 = akwa.b(l3, l4);
+          paramString1 = altw.b(l3, l4);
           l4 = System.currentTimeMillis();
           if (paramString1 == null) {}
         }
         try
         {
-          bfvo.a(paramString1, new File(paramString2 + File.separator + l3 + ".jpg"));
+          bheg.a(paramString1, new File(paramString2 + File.separator + l3 + ".jpg"));
           l5 = System.currentTimeMillis();
           if (QLog.isColorLevel()) {
             QLog.d("GifProcessor", 2, "getFramesFromVideo currentTime=" + l3 + " duration=" + paramLong + " retrieve frame cost=" + (l4 - l6) + " encode frame cost=" + (l5 - l4));
@@ -785,7 +785,7 @@ public class GifProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediadevice.GifProcessor
  * JD-Core Version:    0.7.0.1
  */

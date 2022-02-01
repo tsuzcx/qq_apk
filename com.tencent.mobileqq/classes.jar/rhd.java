@@ -1,14 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowGroup;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class rhd
-  implements DialogInterface.OnDismissListener
+public class rhd
+  implements View.OnClickListener
 {
-  rhd(DialogInterface.OnDismissListener paramOnDismissListener) {}
+  public rhd(ComponentContentRecommendFollowGroup paramComponentContentRecommendFollowGroup) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.onDismiss(paramDialogInterface);
+    this.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

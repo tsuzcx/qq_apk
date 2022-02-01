@@ -1,12 +1,8 @@
 public abstract interface amkt
 {
-  public abstract void a();
+  public abstract Object a();
   
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public abstract void invalidateSelf();
 }
 
 

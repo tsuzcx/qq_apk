@@ -1,71 +1,51 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.SystemClock;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pic.CompressInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.widget.XPanelContainer;
+import java.lang.ref.WeakReference;
 
-public class aiaf
+class aiaf
+  extends ahtw
 {
-  public static void a(long paramLong, List<aiag> paramList)
+  static final String jdField_a_of_type_JavaLangString = ahzx.class.getSimpleName();
+  WeakReference<ahzx> jdField_a_of_type_JavaLangRefWeakReference;
+  
+  public aiaf(ahzx paramahzx)
   {
-    int j = (int)(SystemClock.elapsedRealtime() - paramLong) / 1000;
-    paramList = paramList.iterator();
-    int i = 0;
-    if (paramList.hasNext())
-    {
-      if (!((aiag)paramList.next()).a()) {
-        break label99;
-      }
-      i += 1;
-    }
-    label99:
-    for (;;)
-    {
-      break;
-      a("0X800AB63", i + "", j + "", "");
-      return;
-    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramahzx);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface) {}
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  public void a(CompressInfo paramCompressInfo)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Face2FaceAddContactUtils", 2, " face2faceReport tValue = " + paramString1 + " r2 = " + paramString2 + " r3 = " + paramString3 + " r4 =" + paramString4);
-    }
-    bcef.b(null, "dc00898", "", "", paramString1, paramString1, 0, 0, paramString2, paramString3, paramString4, "");
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    return false;
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface != null)
-    {
-      paramQQAppInterface = paramQQAppInterface.getPreferences().edit();
-      paramQQAppInterface.putBoolean("face2face_add_contact_guide_dialog", true);
-      paramQQAppInterface.commit();
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress success, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
     }
   }
   
-  public static boolean b(QQAppInterface paramQQAppInterface)
+  public void b(CompressInfo paramCompressInfo)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramQQAppInterface != null)
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress fail, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void c(CompressInfo paramCompressInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress complete, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
+    }
+    ahzx localahzx = (ahzx)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localahzx == null)
     {
-      bool1 = bool2;
-      if (!paramQQAppInterface.getPreferences().getBoolean("face2face_add_contact_guide_dialog", false)) {
-        bool1 = true;
+      if (QLog.isColorLevel()) {
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "onCompressComplete, error: activity is null");
       }
+      return;
     }
-    return bool1;
+    if (QLog.isColorLevel()) {
+      QLog.e(jdField_a_of_type_JavaLangString, 2, "onCompressComplete, new path:" + paramCompressInfo.e);
+    }
+    localahzx.a(paramCompressInfo.e);
+    ahzx.a(localahzx).a();
   }
 }
 

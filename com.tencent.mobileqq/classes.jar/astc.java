@@ -1,22 +1,12 @@
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class astc
-  implements INetEventHandler
+final class astc
+  implements DialogInterface.OnClickListener
 {
-  astc(astb paramastb) {}
-  
-  public void onNetChangeEvent(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (AppNetConnInfo.isWifiConn())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MPcFileModel<FileAssistant>[MPFile]", 2, "网络切换到Wifi网络");
-      }
-      QQToast.a(this.a.a, 2131693878, 0).a();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

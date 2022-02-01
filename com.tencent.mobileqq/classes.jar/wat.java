@@ -1,56 +1,36 @@
-import android.graphics.Color;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView.BorderStyle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Iterator;
 import java.util.List;
 
-public class wat
-  extends vtf<vxd>
+class wat
+  implements wfk<wtz, wvk>
 {
-  protected ImageView a;
-  protected TextView a;
-  protected RotateCircleImageView a;
-  protected ImageView b;
-  protected TextView b;
-  protected ImageView c = (ImageView)a(2131376134);
+  wat(wan paramwan, waw paramwaw, String paramString) {}
   
-  public wat(ViewGroup paramViewGroup, int paramInt)
+  public void a(@NonNull wtz paramwtz, @Nullable wvk paramwvk, @NonNull ErrorMessage paramErrorMessage)
   {
-    super(paramViewGroup, paramInt);
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView = ((RotateCircleImageView)a(2131364555));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131367935));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(2131378075));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131378707));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131376135));
-  }
-  
-  protected void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView.setBorderStyle(RotateCircleImageView.BorderStyle.STILL);
-    int[] arrayOfInt = new int[paramInt1];
-    int i = 0;
-    if (i < paramInt1)
+    ykq.d("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url response " + paramwvk);
+    if ((paramErrorMessage.isFail()) || (paramwvk == null))
     {
-      if (i < paramInt1 - paramInt2) {
-        arrayOfInt[i] = Color.parseColor("#DEDFE0");
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        arrayOfInt[i] = Color.parseColor("#19D7FD");
+      ykq.e("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url response error!");
+      this.jdField_a_of_type_Waw.a(true);
+      return;
+    }
+    paramwtz = (wjp)wjs.a(5);
+    if (paramwvk.a != null)
+    {
+      paramErrorMessage = paramwvk.a.iterator();
+      while (paramErrorMessage.hasNext()) {
+        ((StoryVideoItem)paramErrorMessage.next()).mBasicInfoState = 1;
       }
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView.setBorderColors(arrayOfInt);
-  }
-  
-  public void a(vxd paramvxd)
-  {
-    if ((paramvxd.a != null) && (!paramvxd.a.isEmpty())) {
-      a(paramvxd.a.size(), paramvxd.b);
-    }
+    paramwvk.a = paramwtz.a(paramwvk.a);
+    ((wan)wjs.a(28)).a(paramwvk.b);
+    this.jdField_a_of_type_Wan.c(this.jdField_a_of_type_JavaLangString, 0);
+    this.jdField_a_of_type_Waw.a(true);
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.app.automator;
 
-import aney;
+import aoho;
 
 public class ParallGroup
   extends StepGroup
-  implements aney
+  implements aoho
 {
   protected int d;
   

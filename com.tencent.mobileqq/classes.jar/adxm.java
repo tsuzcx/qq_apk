@@ -1,17 +1,23 @@
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
 public class adxm
-  implements Comparator<adxi>
+  extends asiu
 {
-  public adxm(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public adxm(EmosmActivity paramEmosmActivity) {}
   
-  public int a(adxi paramadxi1, adxi paramadxi2)
+  public void onCoverComplete(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
   {
-    long l = paramadxi1.a.certifiedGrade;
-    return (int)(paramadxi2.a.certifiedGrade - l);
+    if ((paramEmoticonPackage == null) || (paramInt1 != 2) || (paramInt2 != 0)) {}
+    while (this.a.jdField_a_of_type_JavaUtilArrayList == null) {
+      return;
+    }
+    this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
   }
+  
+  public void onPackageEnd(EmoticonPackage paramEmoticonPackage, int paramInt) {}
+  
+  public void onPackageProgress(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
 }
 
 

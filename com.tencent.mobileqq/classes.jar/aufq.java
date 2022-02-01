@@ -1,17 +1,20 @@
-import android.support.v4.util.LruCache;
-
-class aufq
-  extends LruCache<String, aufr>
+public abstract interface aufq
 {
-  aufq(aufp paramaufp, int paramInt)
-  {
-    super(paramInt);
-  }
+  public abstract void a();
   
-  protected int a(String paramString, aufr paramaufr)
-  {
-    return 1;
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
 }
 
 

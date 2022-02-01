@@ -1,20 +1,36 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class allg
-  extends andd
+public class allg
+  extends alky
 {
-  allg(allb paramallb) {}
+  public int c;
   
-  protected void onAddRobot(boolean paramBoolean, int paramInt, long paramLong1, long paramLong2)
+  public allg(Context paramContext, int paramInt)
   {
-    String str = String.valueOf(paramLong1);
-    if ((str != null) && (str.equals(allb.a(this.a))))
-    {
-      allb.a(this.a, String.valueOf(paramLong2), paramBoolean, paramInt);
-      QLog.d("RobotAdapter", 2, "onAddRobot  success" + paramBoolean + " resultCode " + paramInt);
+    this.c = paramInt;
+    if (paramInt == 0) {
+      this.jdField_a_of_type_JavaLangString = "";
+    }
+    while (paramInt != 1) {
       return;
     }
-    QLog.i("RobotAdapter", 2, "onAddRobot  troop" + paramLong1 + " cur " + allb.a(this.a));
+    this.jdField_a_of_type_JavaLangString = anvx.a(2131715046);
+  }
+  
+  public Object a(int paramInt, bffl parambffl, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    if (((paramObject instanceof allg)) && (((allg)paramObject).c == 0))
+    {
+      paramObject = (allg)paramObject;
+      paramObject.jdField_a_of_type_Bffm.a(parambffl.jdField_a_of_type_Bffm);
+      return paramObject;
+    }
+    paramObject = new allg(BaseApplication.getContext(), 0);
+    paramObject.jdField_a_of_type_Bffm = new bffm(parambffl.jdField_a_of_type_Bffm);
+    return paramObject;
   }
 }
 

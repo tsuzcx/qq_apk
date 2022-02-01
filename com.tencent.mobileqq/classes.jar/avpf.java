@@ -1,181 +1,80 @@
-import android.os.Handler;
-import com.tencent.mobileqq.mediafocus.MediaFocusController;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class avpf
-  implements avpa
+class avpf
+  extends BroadcastReceiver
 {
-  private final avpg jdField_a_of_type_Avpg = new avpg(this);
-  private MediaFocusController jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private final HashMap<String, avpj> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private final HashMap<String, Integer> b = new HashMap();
+  private final String jdField_a_of_type_JavaLangString = "reason";
+  private final String b = "homekey";
   
-  public static final avpf a()
-  {
-    return avpi.a();
-  }
+  avpf(avpd paramavpd) {}
   
-  private avpj a(String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return (avpj)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-  }
-  
-  private String a(avpj paramavpj)
-  {
-    if (paramavpj == null) {
-      return new String(toString());
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoItemEventManager", 2, "onReceive ===>" + paramContext);
     }
-    return new String(toString() + paramavpj.toString());
-  }
-  
-  private void a(avpj paramavpj)
-  {
-    String str;
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController == null) {
-        this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController = new MediaFocusController(this);
-      }
-      str = a(paramavpj);
-      if (this.b.containsKey(str))
-      {
-        int i = ((Integer)this.b.get(str)).intValue();
-        this.b.put(str, Integer.valueOf(i + 1));
-        if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(str)) {}
-      }
-      else
-      {
-        this.b.put(str, Integer.valueOf(1));
+      paramContext = avpd.a(this.jdField_a_of_type_Avpd).iterator();
+      while (paramContext.hasNext()) {
+        ((avpg)paramContext.next()).b(false);
       }
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put(str, paramavpj);
-  }
-  
-  private boolean a(avpj paramavpj, boolean paramBoolean)
-  {
-    boolean bool = true;
-    label130:
-    label145:
+    if ("android.intent.action.SCREEN_ON".equals(paramContext))
+    {
+      paramContext = avpd.a(this.jdField_a_of_type_Avpd).iterator();
+      while (paramContext.hasNext()) {
+        ((avpg)paramContext.next()).b(true);
+      }
+    }
+    if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
+    {
+      paramContext = avpd.a(this.jdField_a_of_type_Avpd).iterator();
+      while (paramContext.hasNext()) {
+        ((avpg)paramContext.next()).c(true);
+      }
+    }
+    if ("tencent.av.v2q.StopVideoChat".equals(paramContext))
+    {
+      paramContext = avpd.a(this.jdField_a_of_type_Avpd).iterator();
+      while (paramContext.hasNext()) {
+        ((avpg)paramContext.next()).c(false);
+      }
+    }
+    if ("VolumeBtnDown".equals(paramIntent.getAction()))
+    {
+      paramContext = avpd.a(this.jdField_a_of_type_Avpd).iterator();
+      while (paramContext.hasNext()) {
+        ((avpg)paramContext.next()).i();
+      }
+    }
+    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
+    {
+      paramContext = paramIntent.getStringExtra("reason");
+      if (paramContext != null) {
+        break label294;
+      }
+    }
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      return;
+      label294:
+      if (paramContext.equals("homekey"))
       {
-        paramavpj = a(paramavpj);
-        if (!paramBoolean)
+        paramContext = avpd.a(this.jdField_a_of_type_Avpd).iterator();
+        while (paramContext.hasNext())
         {
-          this.b.remove(paramavpj);
-          this.jdField_a_of_type_JavaUtilHashMap.remove(paramavpj);
-          return true;
-        }
-        if (!this.b.containsKey(paramavpj)) {
-          break label130;
-        }
-        int i = ((Integer)this.b.get(paramavpj)).intValue();
-        if (i > 1)
-        {
-          this.b.put(paramavpj, Integer.valueOf(i - 1));
-          paramBoolean = false;
-          break label145;
-          return paramBoolean;
+          ((avpg)paramContext.next()).h();
+          QLog.d("VideoItemEventManager", 2, "onReceive ===>homekey press");
         }
       }
-      this.b.remove(paramavpj);
-      this.jdField_a_of_type_JavaUtilHashMap.remove(paramavpj);
-      paramBoolean = true;
-      break label145;
-      this.jdField_a_of_type_JavaUtilHashMap.remove(paramavpj);
-      paramBoolean = bool;
     }
-  }
-  
-  public int a(int paramInt, avpj paramavpj)
-  {
-    if ((paramInt < 1) || (paramInt > 3))
-    {
-      QLog.e("MediaFocusManager", 1, new Object[] { "requestMediaFocus denied, Invalid type:", Integer.valueOf(paramInt) });
-      return 1;
-    }
-    if (QLog.isColorLevel()) {
-      if (paramavpj != null) {
-        break label97;
-      }
-    }
-    label97:
-    for (String str = "null";; str = paramavpj.toString())
-    {
-      QLog.d("MediaFocusManager", 2, new Object[] { "requestMediaFocus focusType:", Integer.valueOf(paramInt), " ,listener:", str });
-      a(paramavpj);
-      return this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController.a(paramInt, a(paramavpj));
-    }
-  }
-  
-  public int a(avpj paramavpj)
-  {
-    if (QLog.isColorLevel()) {
-      if (paramavpj != null) {
-        break label61;
-      }
-    }
-    label61:
-    for (String str = "null";; str = paramavpj.toString())
-    {
-      QLog.d("MediaFocusManager", 2, new Object[] { "abandonMediaFocus! listener:", str });
-      if ((!a(paramavpj, true)) || (this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController == null)) {
-        break;
-      }
-      return this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController.a(a(paramavpj));
-    }
-    return 1;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MediaFocusManager", 2, new Object[] { "onClear map:", Integer.valueOf(this.jdField_a_of_type_JavaUtilHashMap.size()) });
-    }
-    if ((this.jdField_a_of_type_JavaUtilHashMap.isEmpty()) && (this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController != null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController.a();
-      this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController = null;
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MediaFocusManager", 2, new Object[] { "onDispatch focus:", Integer.valueOf(paramInt), " ,id:", paramString });
-    }
-    paramString = this.jdField_a_of_type_Avpg.a().obtainMessage(paramInt, paramString);
-    this.jdField_a_of_type_Avpg.a().sendMessage(paramString);
-  }
-  
-  protected boolean a(String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController.a(paramString1, paramString2);
-    }
-    return false;
-  }
-  
-  public int b(avpj paramavpj)
-  {
-    if (QLog.isColorLevel()) {
-      if (paramavpj != null) {
-        break label61;
-      }
-    }
-    label61:
-    for (String str = "null";; str = paramavpj.toString())
-    {
-      QLog.d("MediaFocusManager", 2, new Object[] { "abandonMediaFocusForce! listener:", str });
-      if ((!a(paramavpj, false)) || (this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController == null)) {
-        break;
-      }
-      return this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController.a(a(paramavpj));
-    }
-    return 1;
   }
 }
 

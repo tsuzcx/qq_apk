@@ -1,8 +1,10 @@
-public class bjlq
+import com.tencent.smtt.sdk.WebView;
+
+public abstract interface bjlq
 {
-  public long a;
+  public abstract String getJsCallbackMethod();
   
-  public bjlq(bjlp parambjlp) {}
+  public abstract WebView getWebview();
 }
 
 

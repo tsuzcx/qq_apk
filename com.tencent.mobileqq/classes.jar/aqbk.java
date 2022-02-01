@@ -1,68 +1,34 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.config.business.QQComicConfBean;
+import com.tencent.ark.ArkEnvironmentManager.Log;
 import com.tencent.qphone.base.util.QLog;
 
-public class aqbk
-  extends aptq<QQComicConfBean>
+final class aqbk
+  implements ArkEnvironmentManager.Log
 {
-  @NonNull
-  public QQComicConfBean a(int paramInt)
-  {
-    return new QQComicConfBean();
-  }
-  
-  @Nullable
-  public QQComicConfBean a(aptx[] paramArrayOfaptx)
+  public void d(String paramString1, String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QQComicConfProcessor", 2, "onParsed");
-    }
-    return QQComicConfBean.a(paramArrayOfaptx);
-  }
-  
-  public void a(QQComicConfBean paramQQComicConfBean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQComicConfProcessor", 2, "onUpdate " + paramQQComicConfBean.toString());
+      QLog.d(paramString1, 2, paramString2);
     }
   }
   
-  public Class<QQComicConfBean> clazz()
+  public void e(String paramString1, String paramString2)
   {
-    return QQComicConfBean.class;
+    QLog.e(paramString1, 1, paramString2);
   }
   
-  public boolean isAccountRelated()
+  public void i(String paramString1, String paramString2)
   {
-    return false;
+    QLog.i(paramString1, 1, paramString2);
   }
   
-  public boolean isNeedCompressed()
+  public void w(String paramString1, String paramString2)
   {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 534;
+    QLog.w(paramString1, 1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqbk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.open.agent;
 
-import adxr;
-import amtj;
+import aeow;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
+import anvx;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import java.util.Set;
 
@@ -24,11 +24,11 @@ public class BindTroopPreVerificationFragment
     {
       Intent localIntent = new Intent();
       localIntent.putExtra("key_params", this.jdField_a_of_type_AndroidOsBundle);
-      adxr.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, localIntent, PublicFragmentActivity.class, BindGroupFragment.class);
+      aeow.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, localIntent, PublicFragmentActivity.class, BindGroupFragment.class);
       this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
       return;
     }
-    a(amtj.a(2131700288));
+    a(anvx.a(2131700639));
     this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
   }
   

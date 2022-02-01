@@ -1,196 +1,287 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.json.JSONObject;
 
 public class qtr
+  extends ViewBase
 {
-  public pvc a;
-  public qps a;
+  public static String a;
+  private double jdField_a_of_type_Double = 0.18D;
+  private int jdField_a_of_type_Int = 22;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private int b = 115;
+  private int c;
+  private int d;
+  private int e = 351;
+  private int f = 1;
+  private int g = 11;
+  private int h = 3;
+  private int i;
+  private int j = 6;
   
-  public static boolean a(ArticleInfo paramArticleInfo)
+  static
   {
-    return qxf.a(paramArticleInfo);
+    jdField_a_of_type_JavaLangString = "ReadInJoyFriendsBiu";
   }
   
-  public static boolean a(pvc parampvc)
+  public qtr(VafContext paramVafContext)
   {
-    return (parampvc.a() == 49) || (parampvc.a() == 62) || (parampvc.a() == 63);
+    super(paramVafContext);
+    this.jdField_a_of_type_AndroidContentContext = paramVafContext.getContext();
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
+    this.c = Utils.rp2px(this.jdField_a_of_type_Int);
+    this.d = Utils.rp2px(this.b);
+    this.e = Utils.rp2px(this.e);
+    this.g = Utils.rp2px(this.g);
+    this.f = Utils.rp2px(this.f);
+    this.j = Utils.rp2px(this.j);
   }
   
-  public static boolean b(ArticleInfo paramArticleInfo)
+  private int a()
   {
-    return qxf.b(paramArticleInfo);
+    return (int)((this.e - this.c) / (this.c * (1.0D - this.jdField_a_of_type_Double)) + 1.0D);
   }
   
-  public static boolean b(pvc parampvc)
+  private void a()
   {
-    return (parampvc.a() == 39) || (parampvc.a() == 116) || (parampvc.a() == 66) || (parampvc.a() == 115) || (parampvc.a() == 122);
-  }
-  
-  public static boolean c(ArticleInfo paramArticleInfo)
-  {
-    int i = pgb.a(paramArticleInfo);
-    return (i == 23) || (i == 26) || (i == 56) || (i == 59);
-  }
-  
-  public static boolean c(pvc parampvc)
-  {
-    switch (parampvc.a())
+    int i1 = a();
+    int i2 = (int)Math.ceil(this.jdField_a_of_type_JavaUtilArrayList.size() / i1);
+    int m = 1;
+    if (m <= i2)
     {
-    default: 
-      return false;
-    }
-    return true;
-  }
-  
-  public static boolean d(pvc parampvc)
-  {
-    return parampvc.c() == 3;
-  }
-  
-  public static boolean e(pvc parampvc)
-  {
-    return parampvc.a() == 10;
-  }
-  
-  public static boolean f(pvc parampvc)
-  {
-    return parampvc.a() == 11;
-  }
-  
-  public static boolean g(pvc parampvc)
-  {
-    return parampvc.a() == 12;
-  }
-  
-  public static boolean h(pvc parampvc)
-  {
-    return parampvc.a() == 27;
-  }
-  
-  public static boolean i(pvc parampvc)
-  {
-    return parampvc.a() == 28;
-  }
-  
-  public static boolean j(pvc parampvc)
-  {
-    return qxf.b(parampvc.a());
-  }
-  
-  public static boolean k(pvc parampvc)
-  {
-    return qxf.a(parampvc.a());
-  }
-  
-  public int a()
-  {
-    if ((m()) && ((this.jdField_a_of_type_Pvc.a() instanceof AdvertisementInfo))) {
-      return AdvertisementInfo.getBigAppAdStyle((AdvertisementInfo)this.jdField_a_of_type_Pvc.a());
-    }
-    return 0;
-  }
-  
-  public long a()
-  {
-    if ((this.jdField_a_of_type_Pvc != null) && (this.jdField_a_of_type_Pvc.a() != null) && (this.jdField_a_of_type_Pvc.a().mSocialFeedInfo != null) && (this.jdField_a_of_type_Pvc.a().mSocialFeedInfo.a != null)) {}
-    try
-    {
-      long l = this.jdField_a_of_type_Pvc.a().mSocialFeedInfo.a.a;
-      return l;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      localNumberFormatException.printStackTrace();
-      return 0L;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      int i3 = (m - 1) * i1;
+      if (i3 + i1 <= this.jdField_a_of_type_JavaUtilArrayList.size()) {}
+      for (int k = i3 + i1;; k = i3 + this.jdField_a_of_type_JavaUtilArrayList.size() % i1)
       {
-        localException.printStackTrace();
+        int n = k;
+        if (k > this.h) {
+          n = this.h;
+        }
+        a(i3 + 1, n, (m - 1) * this.c + this.g);
+        m += 1;
+        break;
+      }
+    }
+    a(i2);
+  }
+  
+  private void a(int paramInt)
+  {
+    int k;
+    Object localObject;
+    if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+    {
+      k = this.jdField_a_of_type_JavaUtilArrayList.size();
+      localObject = k + "人也Biu了";
+      long l = pkh.a();
+      if ((this.jdField_a_of_type_JavaUtilArrayList.size() != 1) || (l != ((Long)this.jdField_a_of_type_JavaUtilArrayList.get(0)).longValue())) {
+        break label281;
+      }
+      localObject = "还Biu了" + this.i + anvx.a(2131712437);
+    }
+    label132:
+    label183:
+    label332:
+    label347:
+    label359:
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+      k = a();
+      int m;
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() > k)
+      {
+        m = k;
+        if (k > this.h) {
+          m = this.h;
+        }
+        if (m <= 1) {
+          break label332;
+        }
+        k = (int)((m - 1) * (1.0D - this.jdField_a_of_type_Double) * this.c + this.c + this.d);
+        if (k <= this.e) {
+          break label347;
+        }
+      }
+      for (paramInt = this.c * paramInt;; paramInt = (paramInt - 1) * this.c)
+      {
+        m = this.d;
+        localObject = new FrameLayout.LayoutParams(this.d, -2);
+        ((FrameLayout.LayoutParams)localObject).setMargins(k - m, paramInt + this.g, 0, 0);
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165438));
+        this.jdField_a_of_type_AndroidWidgetTextView.setPadding(this.j, 0, 0, 0);
+        this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
+        return;
+        if (k <= this.h) {
+          break label359;
+        }
+        localObject = anvx.a(2131712571) + k + "人也Biu了";
+        break;
+        k = this.jdField_a_of_type_JavaUtilArrayList.size();
+        break label132;
+        k = m * this.c + this.d;
+        break label183;
       }
     }
   }
   
-  public pvc a()
+  private void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    return this.jdField_a_of_type_Pvc;
+    int k = paramInt2 - 1;
+    ReadInJoyHeadImageView localReadInJoyHeadImageView;
+    FrameLayout.LayoutParams localLayoutParams1;
+    int n;
+    if (k >= paramInt1 - 1)
+    {
+      localReadInJoyHeadImageView = new ReadInJoyHeadImageView(this.jdField_a_of_type_AndroidContentContext);
+      localLayoutParams1 = new FrameLayout.LayoutParams(this.c, this.c);
+      n = (int)((k - paramInt1 + 1) * (1.0D - this.jdField_a_of_type_Double) * this.c);
+      if (paramInt2 != this.jdField_a_of_type_JavaUtilArrayList.size()) {
+        break label216;
+      }
+    }
+    label216:
+    for (int m = 20;; m = 0)
+    {
+      localLayoutParams1.setMargins(n, paramInt3, 0, m);
+      localReadInJoyHeadImageView.setHeadImgByUin(((Long)this.jdField_a_of_type_JavaUtilArrayList.get(k)).longValue());
+      FrameLayout.LayoutParams localLayoutParams2 = new FrameLayout.LayoutParams(this.c + this.f * 2, this.c + this.f * 2);
+      ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+      localLayoutParams2.setMargins(n - this.f, paramInt3 - this.f, 0, m);
+      localImageView.setBackgroundResource(2130849432);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localImageView, localLayoutParams2);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localReadInJoyHeadImageView, localLayoutParams1);
+      k -= 1;
+      break;
+      return;
+    }
   }
   
-  public void a(pvc parampvc)
+  private void a(Object paramObject)
   {
-    this.jdField_a_of_type_Pvc = parampvc;
+    do
+    {
+      try
+      {
+        if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null) {
+          this.jdField_a_of_type_AndroidWidgetFrameLayout.removeAllViews();
+        }
+        this.i = 0;
+        this.jdField_a_of_type_JavaUtilArrayList.clear();
+        paramObject = (JSONObject)paramObject;
+        Iterator localIterator = paramObject.keys();
+        while (localIterator.hasNext())
+        {
+          long l = Long.parseLong(paramObject.get((String)localIterator.next()).toString());
+          this.i += 1;
+          if (!this.jdField_a_of_type_JavaUtilArrayList.contains(Long.valueOf(l))) {
+            this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(l));
+          }
+        }
+        a();
+      }
+      catch (Exception paramObject)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "parseUinList error:" + paramObject.toString());
+        }
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d(jdField_a_of_type_JavaLangString, 2, "parseUinList :" + this.jdField_a_of_type_JavaUtilArrayList.size());
   }
   
-  public void a(qps paramqps)
+  private void b(Object paramObject)
   {
-    this.jdField_a_of_type_Qps = paramqps;
+    int k = Utils.parseColor(paramObject.toString());
+    if (k != 0) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(k);
+    }
   }
   
-  public boolean a()
+  private void c(Object paramObject)
   {
-    return d(this.jdField_a_of_type_Pvc);
+    Double localDouble = Utils.toDouble(paramObject);
+    if (localDouble != null)
+    {
+      int k = Utils.dp2px(localDouble.doubleValue());
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(k);
+      return;
+    }
+    QLog.d(jdField_a_of_type_JavaLangString, 2, "setTextSize: fail to parse - " + paramObject);
   }
   
-  public boolean b()
+  public int getComMeasuredHeight()
   {
-    return e(this.jdField_a_of_type_Pvc);
+    return this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredHeight();
   }
   
-  public boolean c()
+  public int getComMeasuredWidth()
   {
-    return f(this.jdField_a_of_type_Pvc);
+    return this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredWidth();
   }
   
-  public boolean d()
+  public View getNativeView()
   {
-    return g(this.jdField_a_of_type_Pvc);
+    return this.jdField_a_of_type_AndroidWidgetFrameLayout;
   }
   
-  public boolean e()
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return h(this.jdField_a_of_type_Pvc);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.layout(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
-  public boolean f()
+  public void onComMeasure(int paramInt1, int paramInt2)
   {
-    return (this.jdField_a_of_type_Pvc.a() == 50) || (this.jdField_a_of_type_Pvc.a() == 51) || (this.jdField_a_of_type_Pvc.a() == 52);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.measure(paramInt1, paramInt2);
   }
   
-  public boolean g()
+  public void onParseValueFinished()
   {
-    return i(this.jdField_a_of_type_Pvc);
+    super.onParseValueFinished();
   }
   
-  public boolean h()
+  public boolean setAttribute(int paramInt, Object paramObject)
   {
-    return a(this.jdField_a_of_type_Pvc);
-  }
-  
-  public boolean i()
-  {
-    return j(this.jdField_a_of_type_Pvc);
-  }
-  
-  public boolean j()
-  {
-    return k(this.jdField_a_of_type_Pvc);
-  }
-  
-  public boolean k()
-  {
-    return c(this.jdField_a_of_type_Pvc);
-  }
-  
-  public boolean l()
-  {
-    return this.jdField_a_of_type_Pvc.a() == 16;
-  }
-  
-  public boolean m()
-  {
-    return b(this.jdField_a_of_type_Pvc);
+    boolean bool = super.setAttribute(paramInt, paramObject);
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return bool;
+      a(paramObject);
+      return bool;
+      c(paramObject);
+      return bool;
+      b(paramObject);
+      return bool;
+      try
+      {
+        this.d = Utils.rp2px(Integer.valueOf(paramObject.toString()).intValue());
+        return bool;
+      }
+      catch (Exception paramObject) {}
+    } while (!QLog.isColorLevel());
+    QLog.d(jdField_a_of_type_JavaLangString, 2, "parse STR_ID_BORDER_WIDTH error:" + paramObject.toString());
+    return bool;
   }
 }
 

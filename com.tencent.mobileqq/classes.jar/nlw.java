@@ -1,87 +1,127 @@
+import android.annotation.TargetApi;
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.opengl.GLES20;
+import android.os.Handler;
+import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.avgame.gameroom.video.AVGameBusinessVideoLayer.1;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
+@TargetApi(18)
 public class nlw
-  extends BaseAdapter
+  extends nmq
 {
-  protected LayoutInflater a;
+  private nra a = new nra(paramContext, this);
   
-  public nlw(PoiMapActivity paramPoiMapActivity, Context paramContext)
+  public nlw(Context paramContext, AVGameAppInterface paramAVGameAppInterface)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    super(paramContext, paramAVGameAppInterface);
   }
   
-  public int getCount()
+  private boolean a(long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentBizPoiMapActivity.a == null) {
-      return 0;
-    }
-    if (this.jdField_a_of_type_ComTencentBizPoiMapActivity.d) {
-      return this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.size() + 1;
-    }
-    return this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentBizPoiMapActivity.a == null) {
-      return null;
-    }
-    return this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    if (paramView == null)
+    Iterator localIterator = this.b.iterator();
+    boolean bool = false;
+    if (localIterator.hasNext())
     {
-      paramView = new nlr(this.jdField_a_of_type_ComTencentBizPoiMapActivity);
-      localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizPoiMapActivity).inflate(2131559969, null);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371627));
-      paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131362208));
-      paramView.c = localView.findViewById(2131377028);
-      paramView.c.setVisibility(4);
-      paramView.d = localView.findViewById(2131371377);
-      paramView.jdField_a_of_type_AndroidViewView = localView.findViewById(2131365469);
-      paramView.jdField_b_of_type_AndroidViewView = localView.findViewById(2131377251);
-      localView.setTag(paramView);
-      paramView.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      if (paramInt != this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.size()) {
-        break label195;
+      niq localniq = (niq)localIterator.next();
+      if ((localniq.jdField_a_of_type_Long != paramLong) || (localniq.jdField_a_of_type_Boolean)) {
+        break label60;
       }
-      paramView.d.setVisibility(0);
-      paramView.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      bool = true;
     }
+    label60:
     for (;;)
     {
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      Object localObject = (nlr)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
       break;
-      label195:
-      paramView.d.setVisibility(8);
-      paramView.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      localObject = (nlp)getItem(paramInt);
-      if (localObject != null)
-      {
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((nlp)localObject).a);
-        paramView.jdField_b_of_type_AndroidWidgetTextView.setText(((nlp)localObject).b);
-      }
+      return bool;
     }
+  }
+  
+  public nkz a()
+  {
+    return this.a;
+  }
+  
+  public void a(String paramString)
+  {
+    super.a(paramString);
+    if (this.c) {
+      return;
+    }
+    bdla.b(null, "dc00898", "", "", "0X800B0F6", "0X800B0F6", 0, 0, "", "", "", "");
+    this.a.a(paramString);
+  }
+  
+  public void a(List<niq> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return;
+    }
+    synchronized (this.b)
+    {
+      this.b.clear();
+      this.b.addAll(paramList);
+      bjuc.d("AVGameBusinessVideoLayer", "onMemberVideoDisplayInfoUpdate infoList:=" + Arrays.toString(paramList.toArray()));
+      nom.a().b().post(new AVGameBusinessVideoLayer.1(this));
+      return;
+    }
+  }
+  
+  public void a(nky paramnky)
+  {
+    this.a.a(paramnky);
+  }
+  
+  public void b(String paramString)
+  {
+    super.b(paramString);
+    if (this.c) {
+      return;
+    }
+    this.a.b(paramString);
+  }
+  
+  protected void f(lqo paramlqo)
+  {
+    if (this.a.a())
+    {
+      this.a.a(paramlqo);
+      return;
+    }
+    GLES20.glBindFramebuffer(36160, 0);
+    GLES20.glViewport(0, 0, paramlqo.a(), paramlqo.b());
+    super.f(paramlqo);
+    this.a.g();
+  }
+  
+  public void g(lqo paramlqo)
+  {
+    super.f(paramlqo);
+  }
+  
+  public void l()
+  {
+    super.l();
+  }
+  
+  public void m()
+  {
+    super.m();
+    this.a.c();
+  }
+  
+  public void n()
+  {
+    super.n();
+    this.a.d();
+  }
+  
+  public void o()
+  {
+    super.o();
+    this.a.h();
   }
 }
 

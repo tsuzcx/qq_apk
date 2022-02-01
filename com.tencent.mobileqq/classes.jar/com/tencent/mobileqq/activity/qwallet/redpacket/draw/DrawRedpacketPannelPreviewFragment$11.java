@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import akes;
+import alal;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
@@ -21,13 +21,13 @@ class DrawRedpacketPannelPreviewFragment$11
       }
       String str = DrawRedpacketPannelPreviewFragment.a(DrawRedpacketPannelPreviewFragment.a(this.this$0), File.separator + System.currentTimeMillis() + ".png", DrawRedpacketPannelPreviewFragment.a(this.this$0));
       Message localMessage = Message.obtain();
-      akes localakes = new akes(null);
-      localakes.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      localakes.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      localakes.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-      localakes.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-      localakes.c = str;
-      localMessage.obj = localakes;
+      alal localalal = new alal(null);
+      localalal.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      localalal.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      localalal.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+      localalal.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+      localalal.c = str;
+      localMessage.obj = localalal;
       localMessage.what = 1001;
       DrawRedpacketPannelPreviewFragment.a(this.this$0).sendMessage(localMessage);
       return;

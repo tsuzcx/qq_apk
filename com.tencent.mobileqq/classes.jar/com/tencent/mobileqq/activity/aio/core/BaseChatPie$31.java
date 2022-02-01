@@ -1,17 +1,24 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class BaseChatPie$31
   implements Runnable
 {
-  BaseChatPie$31(BaseChatPie paramBaseChatPie, int paramInt) {}
+  BaseChatPie$31(BaseChatPie paramBaseChatPie) {}
   
   public void run()
   {
-    int i = this.this$0.listView.getHeaderViewsCount();
-    this.this$0.listView.setSelectionFromTop(i + this.val$aioIndex, this.this$0.mActivity.getTitleBarHeight());
+    this.this$0.mTitleText.setText(this.this$0.sessionInfo.curFriendNick);
+    if (AppSetting.c)
+    {
+      String str = this.this$0.mTitleText.getText().toString();
+      this.this$0.mTitleText.setContentDescription(str);
+      this.this$0.getActivity().setTitle(this.this$0.mTitleText.getText());
+    }
   }
 }
 

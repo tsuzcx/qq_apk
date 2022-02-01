@@ -1,14 +1,14 @@
-import dov.com.qq.im.ae.camera.core.AECameraManager;
+import com.tencent.mobileqq.utils.httputils.HttpMsg;
 
-class blki
-  implements baat
+public class blki
 {
-  blki(bljy parambljy) {}
-  
-  public void a()
-  {
-    this.a.a.refreshDarkModeTimer();
-  }
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private blkj jdField_a_of_type_Blkj;
+  private HttpMsg jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
+  private int c;
 }
 
 

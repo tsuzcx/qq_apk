@@ -1,17 +1,15 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-public class bdsy
-  implements bdtc
+class bdsy
 {
-  public bdsy(TroopCreateLogicActivity paramTroopCreateLogicActivity, String paramString1, String paramString2, String paramString3) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView = null;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
+  TextView jdField_a_of_type_AndroidWidgetTextView = null;
+  ImageView b = null;
   
-  public void a(Bitmap paramBitmap)
-  {
-    WXShareHelper.getInstance().addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
-    WXShareHelper.getInstance().shareTroopToWXFriend(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, paramBitmap, this.b, this.c);
-  }
+  bdsy(bdsx parambdsx) {}
 }
 
 

@@ -1,12 +1,6 @@
-class asue
-  implements atar
+public abstract interface asue
 {
-  asue(asud paramasud) {}
-  
-  public void a()
-  {
-    asud.a(this.a);
-  }
+  public abstract void a(String paramString, int paramInt);
 }
 
 

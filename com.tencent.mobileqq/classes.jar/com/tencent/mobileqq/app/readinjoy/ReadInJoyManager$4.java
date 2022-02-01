@@ -2,7 +2,7 @@ package com.tencent.mobileqq.app.readinjoy;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bkwm;
+import bmhv;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.utils.StringUtil;
 
@@ -21,7 +21,7 @@ class ReadInJoyManager$4
     localEditor.putString("readinjoy_push_channel_article_content_channel_name", this.jdField_a_of_type_JavaLangString);
     localEditor.putString("readinjoy_push_channel_article_content_wording", this.b);
     localEditor.putString("readinjoy_push_channel_article_content_article_id_list", StringUtil.listToString(this.jdField_a_of_type_JavaUtilList, ","));
-    bkwm.a(localEditor, true);
+    bmhv.a(localEditor, true);
     ReadInJoyManager.b(this.this$0);
   }
 }

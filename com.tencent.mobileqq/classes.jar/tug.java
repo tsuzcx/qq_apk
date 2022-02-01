@@ -1,41 +1,64 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class tug
-  implements qdy
+  implements ucq
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
+  public tug(ViolaFragment paramViolaFragment) {}
+  
+  public void a()
   {
-    return null;
+    this.a.mViolaUiDelegate.b();
+    this.a.mViolaUiDelegate.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaFragment", 2, "initViola success!");
+    }
   }
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  public void a(int paramInt)
   {
-    return pzw.a(paramBaseArticleInfo);
+    this.a.mViolaUiDelegate.b();
+    this.a.mViolaUiDelegate.c();
+    if (QLog.isColorLevel()) {
+      QLog.e("ViolaFragment", 2, "initViola error,error code=" + paramInt);
+    }
   }
   
-  public void a(int paramInt1, Container paramContainer, pvc parampvc, int paramInt2)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
   {
-    if (parampvc.a() == null) {}
-    do
+    if ((this.a.mViolaUiDelegate.b()) && (paramBoolean))
     {
+      if (Math.abs(paramInt1) < this.a.mViolaUiDelegate.a() / 2) {
+        break label79;
+      }
+      if (!ViolaFragment.access$100(this.a))
+      {
+        this.a.setStatusBarFontColor(Boolean.valueOf(false));
+        albp.a(this.a.getActivity(), true);
+        ViolaFragment.access$102(this.a, true);
+      }
+    }
+    label79:
+    while (!ViolaFragment.access$100(this.a)) {
       return;
-      paramContainer = (qki)paramContainer.getVirtualView().findViewBaseByName("id_small_game_proteus_collection_view");
-    } while (paramContainer == null);
-    paramContainer.a(parampvc);
+    }
+    this.a.setStatusBarFontColor(Boolean.valueOf(true));
+    albp.a(this.a.getActivity(), false);
+    ViolaFragment.access$102(this.a, false);
   }
   
-  public boolean a(int paramInt, Container paramContainer, pvc parampvc, ViewBase paramViewBase)
+  public void a(String paramString, int paramInt) {}
+  
+  public void b(int paramInt)
   {
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaFragment", 2, "initViola process,process code=" + paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tug
  * JD-Core Version:    0.7.0.1
  */

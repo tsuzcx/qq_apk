@@ -1,21 +1,11 @@
-import com.tencent.mobileqq.activity.contact.addcontact.publicaccount.PublicView;
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
-
-public class aicf
-  implements QQPermissionCallback
+class aicf
+  implements nux
 {
-  public aicf(PublicView paramPublicView, AppActivity paramAppActivity) {}
+  aicf(aibs paramaibs) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void loaded(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactPublicaccountPublicView.denied();
-    bfur.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactPublicaccountPublicView.grant();
+    aibs.a(this.a, 0, 10);
   }
 }
 

@@ -1,30 +1,68 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
 
-public class bmou
-  extends RecyclerView.ItemDecoration
+final class bmou
+  extends Drawable.ConstantState
 {
-  private int a;
+  int jdField_a_of_type_Int;
+  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+  Drawable b = null;
+  Drawable c = null;
+  Drawable d = null;
+  Drawable e = null;
+  Drawable f = null;
+  Drawable g = null;
   
-  public bmou(int paramInt)
+  bmou() {}
+  
+  bmou(bmou parambmou)
   {
-    this.a = paramInt;
+    if ((parambmou.b != null) && (parambmou.b.getConstantState() != null))
+    {
+      this.b = parambmou.b.getConstantState().newDrawable();
+      this.b.setBounds(parambmou.b.getBounds());
+    }
+    if ((parambmou.c != null) && (parambmou.c.getConstantState() != null))
+    {
+      this.c = parambmou.c.getConstantState().newDrawable();
+      this.c.setBounds(parambmou.c.getBounds());
+    }
+    if ((parambmou.d != null) && (parambmou.d.getConstantState() != null))
+    {
+      this.d = parambmou.d.getConstantState().newDrawable();
+      this.d.setBounds(parambmou.d.getBounds());
+    }
+    if ((parambmou.e != null) && (parambmou.e.getConstantState() != null))
+    {
+      this.e = parambmou.e.getConstantState().newDrawable();
+      this.e.setBounds(parambmou.e.getBounds());
+    }
+    if ((parambmou.f != null) && (parambmou.f.getConstantState() != null))
+    {
+      this.f = parambmou.f.getConstantState().newDrawable();
+      this.f.setBounds(parambmou.f.getBounds());
+    }
+    if ((parambmou.g != null) && (parambmou.g.getConstantState() != null))
+    {
+      this.g = parambmou.g.getConstantState().newDrawable();
+      this.g.setBounds(parambmou.g.getBounds());
+    }
+    if ((parambmou.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (parambmou.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState() != null))
+    {
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = parambmou.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState().newDrawable();
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(parambmou.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getBounds());
+    }
+    this.jdField_a_of_type_Int = parambmou.jdField_a_of_type_Int;
   }
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public int getChangingConfigurations()
   {
-    paramRect.left = this.a;
-    int i = 0;
-    if (paramRecyclerView.getAdapter() != null) {
-      i = paramRecyclerView.getAdapter().getItemCount();
-    }
-    if ((i != 0) && (paramRecyclerView.getChildLayoutPosition(paramView) == i - 1)) {
-      paramRect.right = this.a;
-    }
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Drawable newDrawable()
+  {
+    return new bmot(new bmou(this));
   }
 }
 

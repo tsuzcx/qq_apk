@@ -1,153 +1,178 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
-import android.net.Uri;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.HandlerThread;
+import android.os.Message;
+import android.view.Surface;
+import com.tencent.mobileqq.ar.ARRecord.VideoEncoderCore;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import mqq.app.AppRuntime;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"TAG", "", "downloadBrowser", "", "context", "Landroid/content/Context;", "downloadUrl", "targetUrl", "getCurrentUinIfExists", "loadValidBrowserList", "", "Lcom/tencent/mobileqq/browser/BrowserItem;", "browserOpenBean", "Lcom/tencent/mobileqq/config/business/BrowserOpenBean;", "openUrlWithBrowser", "activity", "Landroid/app/Activity;", "url", "packageName", "systemLocalBrowsers", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
-public final class apds
+public class apds
+  implements Handler.Callback
 {
-  @NotNull
-  public static final String a()
-  {
-    Object localObject = BaseApplicationImpl.getApplication();
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getApplication()");
-    localObject = ((BaseApplicationImpl)localObject).getRuntime();
-    if (localObject != null)
-    {
-      localObject = ((AppRuntime)localObject).getAccount();
-      if (localObject != null) {
-        return localObject;
-      }
-      return "";
-    }
-    return "";
-  }
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  private apdt jdField_a_of_type_Apdt;
+  private VideoEncoderCore jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore;
   
-  private static final List<String> a(Context paramContext)
+  private void b()
   {
-    localList = (List)new ArrayList();
+    QLog.d("VideoEncoder", 2, "handleStopRecording");
+    if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore != null) {}
     try
     {
-      paramContext = paramContext.getPackageManager().queryIntentActivities(new Intent("android.intent.action.VIEW", Uri.parse("https://www.qq.com")), 65536);
-      Intrinsics.checkExpressionValueIsNotNull(paramContext, "queryIntentActivities");
-      Iterator localIterator = ((Iterable)paramContext).iterator();
-      if (localIterator.hasNext())
+      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore.a();
+      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore = null;
+      if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
       {
-        ResolveInfo localResolveInfo = (ResolveInfo)localIterator.next();
-        if (localResolveInfo != null) {}
-        for (paramContext = localResolveInfo.activityInfo;; paramContext = null)
-        {
-          if (paramContext != null)
-          {
-            paramContext = localResolveInfo.activityInfo.processName;
-            if (!TextUtils.isEmpty((CharSequence)paramContext))
-            {
-              Intrinsics.checkExpressionValueIsNotNull(paramContext, "pkgName");
-              localList.add(paramContext);
-            }
-            QLog.d("[BrowserOpt] BrowserUtil", 2, new Object[] { "systemLocalBrowsers: called. ", "pkgName: " + paramContext });
-          }
-          break;
-        }
+        this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+        this.jdField_a_of_type_AndroidOsHandlerThread = null;
       }
-      return localList;
-    }
-    catch (Exception paramContext)
-    {
-      QLog.e("[BrowserOpt] BrowserUtil", 1, "systemLocalBrowsers failed", (Throwable)paramContext);
-    }
-  }
-  
-  @NotNull
-  public static final List<apdr> a(@NotNull Context paramContext, @Nullable apwy paramapwy)
-  {
-    Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    List localList = (List)new ArrayList();
-    Set localSet = (Set)new LinkedHashSet();
-    if (paramapwy != null)
-    {
-      Object localObject1 = ((Iterable)paramapwy.a()).iterator();
-      Object localObject2;
-      while (((Iterator)localObject1).hasNext())
+      if (this.jdField_a_of_type_AndroidOsHandler != null)
       {
-        localObject2 = (apdr)((Iterator)localObject1).next();
-        localList.add(localObject2);
-        localSet.add(((apdr)localObject2).e());
+        this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+        this.jdField_a_of_type_AndroidOsHandler = null;
       }
-      paramContext = ((Iterable)a(paramContext)).iterator();
+      if (this.jdField_a_of_type_Apdt != null)
+      {
+        this.jdField_a_of_type_Apdt.c();
+        this.jdField_a_of_type_Apdt = null;
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
       for (;;)
       {
-        if (paramContext.hasNext())
-        {
-          localObject1 = (String)paramContext.next();
-          try
-          {
-            bool1 = bjnn.a((Context)BaseApplication.context, (String)localObject1);
-            boolean bool2 = localSet.contains(localObject1);
-            boolean bool3 = paramapwy.b().contains(localObject1);
-            if ((bool1) && (!bool3) && (!bool2))
-            {
-              localObject2 = bjnn.a((Context)BaseApplication.context, (String)localObject1);
-              if (localObject2 != null) {
-                localList.add(new apdr((String)localObject2, "", "", "", (String)localObject1, true));
-              }
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("[BrowserOpt] BrowserUtil", 2, new Object[] { "loadValidBrowserList: called. ", "topBrowsers: " + paramapwy.a() + "  " + "packageInstalled: " + bool1 + "  inBlackList: " + bool3 + " inTopBrowserList: " + bool2 });
-            }
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              QLog.e("[BrowserOpt] BrowserUtil", 1, new Object[] { "convertToTopBrowserList: called. ", "topBrowsers: " + paramapwy.a(), localException });
-              boolean bool1 = false;
-            }
-          }
+        QLog.e("VideoEncoder", 1, "handleStopRecording stop encoder fail.", localException);
+        if (this.jdField_a_of_type_Apdt != null) {
+          this.jdField_a_of_type_Apdt.a(2);
         }
       }
     }
-    return localList;
   }
   
-  public static final void a(@NotNull Activity paramActivity, @NotNull String paramString1, @NotNull String paramString2)
+  private void b(long paramLong)
   {
-    Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
-    Intrinsics.checkParameterIsNotNull(paramString1, "url");
-    Intrinsics.checkParameterIsNotNull(paramString2, "packageName");
-    paramString1 = new Intent("android.intent.action.VIEW", Uri.parse(paramString1));
-    paramString1.setPackage(paramString2);
-    paramString1.addFlags(268435456);
-    paramActivity.startActivity(paramString1);
+    if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore != null) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore.a(paramLong);
+      return;
+    }
+    catch (Exception localException)
+    {
+      do
+      {
+        QLog.e("VideoEncoder", 1, "handleVideoFrameAvailable encode video fail.", localException);
+      } while (this.jdField_a_of_type_Apdt == null);
+      this.jdField_a_of_type_Apdt.a(4);
+    }
   }
   
-  public static final void a(@NotNull Context paramContext, @NotNull String paramString1, @NotNull String paramString2)
+  private void b(byte[] paramArrayOfByte, long paramLong)
   {
-    Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    Intrinsics.checkParameterIsNotNull(paramString1, "downloadUrl");
-    Intrinsics.checkParameterIsNotNull(paramString2, "targetUrl");
-    Bundle localBundle = new Bundle();
-    localBundle.putString("_open_with_qq_browser_", paramString2);
-    localBundle.putInt("_download_qqbrowser_business_", 1);
-    aszt.a(paramContext, paramString1, localBundle);
+    if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore != null) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore.a(paramArrayOfByte, paramLong);
+      return;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      do
+      {
+        QLog.e("VideoEncoder", 1, "handleAudioFrameAvailable encode audio fail.", paramArrayOfByte);
+      } while (this.jdField_a_of_type_Apdt == null);
+      this.jdField_a_of_type_Apdt.a(3);
+    }
+  }
+  
+  public Surface a()
+  {
+    Surface localSurface = null;
+    if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore != null) {
+      localSurface = this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore.a();
+    }
+    return localSurface;
+  }
+  
+  public void a()
+  {
+    QLog.d("VideoEncoder", 2, "stopRecording");
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      QLog.d("VideoEncoder", 2, String.format("videoFrameAvailable timestampNanos=%s", new Object[] { Long.valueOf(paramLong) }));
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(4);
+      this.jdField_a_of_type_AndroidOsHandler.obtainMessage(4, Long.valueOf(paramLong)).sendToTarget();
+    }
+  }
+  
+  public void a(bbmm parambbmm, apdt paramapdt)
+  {
+    QLog.d("VideoEncoder", 2, "startRecording");
+    this.jdField_a_of_type_Apdt = paramapdt;
+    if (this.jdField_a_of_type_AndroidOsHandlerThread == null)
+    {
+      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("EncodeThread");
+      this.jdField_a_of_type_AndroidOsHandlerThread.start();
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
+    }
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore = new VideoEncoderCore();
+      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore.a(parambbmm, paramapdt);
+      if (this.jdField_a_of_type_Apdt != null) {
+        this.jdField_a_of_type_Apdt.a();
+      }
+      return;
+    }
+    catch (Exception parambbmm)
+    {
+      for (;;)
+      {
+        QLog.e("VideoEncoder", 1, "startRecording start encoder fail.", parambbmm);
+        if (this.jdField_a_of_type_Apdt != null) {
+          this.jdField_a_of_type_Apdt.a(1);
+        }
+      }
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte, long paramLong)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      QLog.d("VideoEncoder", 2, String.format("audioFrameAvailable timestampNanos=%s", new Object[] { Long.valueOf(paramLong) }));
+      this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3, new Object[] { paramArrayOfByte, Long.valueOf(paramLong) }).sendToTarget();
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return true;
+    case 2: 
+      b();
+      return true;
+    case 3: 
+      paramMessage = (Object[])paramMessage.obj;
+      b((byte[])paramMessage[0], ((Long)paramMessage[1]).longValue());
+      return true;
+    }
+    b(((Long)paramMessage.obj).longValue());
+    return true;
   }
 }
 

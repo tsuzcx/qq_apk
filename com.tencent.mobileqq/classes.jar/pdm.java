@@ -1,46 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.AnchorData;
 
-public class pdm
-  extends SimpleConfigHandler
-  implements AladdinConfigHandler
+public final class pdm
+  implements Parcelable.Creator<AnchorData>
 {
-  public static String a = "ViolaPicDetailConfigHandler";
-  
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  public AnchorData a(Parcel paramParcel)
   {
-    super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    QLog.d(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
-    Map localMap = pbt.a(paramString);
-    Object localObject = localMap.keySet();
-    try
+    boolean bool2 = true;
+    AnchorData localAnchorData = new AnchorData();
+    localAnchorData.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localAnchorData.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    if (paramParcel.readByte() != 0)
     {
-      localObject = ((Set)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        String str1 = (String)((Iterator)localObject).next();
-        String str2 = (String)localMap.get(str1);
-        if (TextUtils.equals(str1, "viola_pic_detail_switch")) {
-          bkwm.c(Integer.parseInt(str2));
-        }
+      bool1 = true;
+      localAnchorData.jdField_a_of_type_Boolean = bool1;
+      if (paramParcel.readByte() == 0) {
+        break label67;
       }
-      return true;
     }
-    catch (Throwable localThrowable)
+    label67:
+    for (boolean bool1 = bool2;; bool1 = false)
     {
-      QLog.e(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString + " , error= " + localThrowable.getMessage());
+      localAnchorData.jdField_b_of_type_Boolean = bool1;
+      return localAnchorData;
+      bool1 = false;
+      break;
     }
   }
   
-  public void onWipeConfig(int paramInt)
+  public AnchorData[] a(int paramInt)
   {
-    super.onWipeConfig(paramInt);
-    bkwm.c(0);
+    return new AnchorData[paramInt];
   }
 }
 

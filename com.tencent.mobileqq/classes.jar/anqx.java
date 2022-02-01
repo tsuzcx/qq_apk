@@ -1,45 +1,75 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
 public class anqx
-  extends anrh
+  extends BroadcastReceiver
 {
-  public anqx(QQAppInterface paramQQAppInterface, Context paramContext)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramQQAppInterface, paramContext);
-  }
-  
-  public boolean a()
-  {
+    int j = 0;
+    int i = 0;
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    if (localBaseActivity == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("qqBaseActivity", 2, paramIntent.getAction());
+      }
+    }
     for (;;)
     {
-      try
+      return;
+      if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
       {
-        if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey("mini_appid")) && (!this.jdField_a_of_type_JavaUtilHashMap.containsKey("fakeUrl")))
+        if ((localBaseActivity.mStopFlag == 0) && (localBaseActivity.mCanLock) && (GesturePWDUtils.getGesturePWDState(localBaseActivity, localBaseActivity.getCurrentAccountUin()) == 2) && (GesturePWDUtils.getGesturePWDMode(localBaseActivity, localBaseActivity.getCurrentAccountUin()) == 21) && (!(localBaseActivity instanceof GesturePWDUnlockActivity)) && (!(localBaseActivity instanceof LoginActivity)) && (!GesturePWDUtils.getGestureLocking(localBaseActivity)))
         {
-          i = 1;
-          if (i != 0) {
-            return com.tencent.mobileqq.microapp.sdk.MiniAppLauncher.launchMiniAppByScheme(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap);
+          BaseActivity.mAppForground = false;
+          GesturePWDUtils.setAppForground(paramContext, BaseActivity.mAppForground);
+          BaseActivity.isUnLockSuccess = false;
+          if (BaseActivity.access$300() == null) {
+            continue;
           }
-          boolean bool = com.tencent.mobileqq.mini.sdk.MiniAppLauncher.launchMiniAppByScheme(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap, 2016, null, null);
-          return bool;
+          if (SettingCloneUtil.readValue(paramContext, null, paramContext.getString(2131694747), "qqsetting_screenshot_key", false)) {
+            break label169;
+          }
+        }
+        for (;;)
+        {
+          if (i == 0) {
+            break label172;
+          }
+          localBaseActivity.turnOffShake();
+          return;
+          localBaseActivity.receiveScreenOff();
+          break;
+          label169:
+          i = 1;
         }
       }
-      catch (Exception localException)
+      else
       {
-        QLog.e("HttpOpenMicroAppAction", 1, "doAction error: " + localException.getMessage());
-        a("HttpOpenMicroAppAction");
-        return false;
+        label172:
+        if ((paramIntent.getAction().equals("android.intent.action.SCREEN_ON")) && (BaseActivity.access$300() == null))
+        {
+          if (!SettingCloneUtil.readValue(paramContext, null, paramContext.getString(2131694747), "qqsetting_screenshot_key", false)) {}
+          for (i = j; i != 0; i = 1)
+          {
+            localBaseActivity.turnOnShake();
+            return;
+          }
+        }
       }
-      int i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anqx
  * JD-Core Version:    0.7.0.1
  */

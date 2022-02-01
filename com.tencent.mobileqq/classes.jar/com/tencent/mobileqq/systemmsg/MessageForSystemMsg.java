@@ -62,7 +62,7 @@ public class MessageForSystemMsg
       break label87;
       paramResources = paramResources.getString(2131689497);
       break label87;
-      paramResources = paramResources.getString(2131717653);
+      paramResources = paramResources.getString(2131718020);
       break label87;
       if (i == 2)
       {
@@ -134,7 +134,7 @@ public class MessageForSystemMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.systemmsg.MessageForSystemMsg
  * JD-Core Version:    0.7.0.1
  */

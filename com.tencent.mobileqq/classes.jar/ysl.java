@@ -1,19 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.widget.InnerListView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ysl
-  implements View.OnClickListener
+  extends vzj
 {
-  public ysl(InnerListView paramInnerListView, int paramInt) {}
+  public final int a;
+  @NonNull
+  public final List<wkx> a;
   
-  public void onClick(View paramView)
+  public ysl(int paramInt, @NonNull List<wkx> paramList)
   {
-    if ((InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null) && (InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null)) {
-      InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView).a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView, paramView, this.jdField_a_of_type_Int);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList(paramList);
   }
 }
 

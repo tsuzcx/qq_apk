@@ -1,7 +1,7 @@
 package dov.com.qq.im.aeeditor.manage;
 
-import bmew;
-import bmex;
+import bnuo;
+import bnup;
 
 class AEEditorEffectConfigManager$2$1
   implements Runnable
@@ -10,7 +10,7 @@ class AEEditorEffectConfigManager$2$1
   
   public void run()
   {
-    bmew.a(this.a.this$0).a(null);
+    bnuo.a(this.a.this$0).a(null);
   }
 }
 

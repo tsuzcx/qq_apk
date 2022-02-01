@@ -14,7 +14,10 @@ import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tav.decoder.logger.Logger;
+import com.tencent.tavkit.composition.TAVClip;
 import com.tencent.tavkit.composition.TAVComposition;
+import com.tencent.tavkit.composition.model.TAVAudioConfiguration;
+import com.tencent.tavkit.composition.model.TAVTransitionableAudio;
 import com.tencent.tavmovie.TAVMovie;
 import com.tencent.tavmovie.base.TAVMovieAudioConfiguration;
 import com.tencent.tavmovie.base.TAVMovieClip;
@@ -26,6 +29,7 @@ import com.tencent.tavmovie.resource.TAVMovieTrackResource;
 import com.tencent.weseevideo.composition.VideoRenderChainConfigure;
 import com.tencent.weseevideo.composition.VideoRenderChainManager;
 import com.tencent.weseevideo.composition.VideoRenderChainManager.IStickerContextInterface;
+import com.tencent.weseevideo.composition.builder.MediaBuilder;
 import com.tencent.weseevideo.composition.builder.MediaBuilderListener;
 import com.tencent.weseevideo.composition.builder.MediaBuilderOutput;
 import com.tencent.weseevideo.composition.interfaces.ITAVCompositionBuilderInterface;
@@ -153,105 +157,123 @@ public class AutoTemplateMediaBuilder
       Logger.e(TAG, "this MediaResourceModel is empty.");
       return null;
     }
-    paramMediaModel = paramMediaModel.getMediaResourceModel().getVideos();
-    if ((paramMediaModel == null) || (paramMediaModel.size() == 0))
+    Object localObject2 = paramMediaModel.getMediaResourceModel().getVideos();
+    if ((localObject2 == null) || (((List)localObject2).size() == 0))
     {
       Logger.e(TAG, "this MediaResourceModel's videos is empty.");
       return null;
     }
     if (paramITAVCompositionBuilderInterface != null) {
-      return paramITAVCompositionBuilderInterface.buildComposition(paramMediaModel);
+      return paramITAVCompositionBuilderInterface.buildComposition((List)localObject2);
     }
     long l = 0L;
     boolean bool = paramTAVAutomaticTemplate.isRhythmTemplate();
-    paramITAVCompositionBuilderInterface = new ArrayList();
-    Iterator localIterator = paramMediaModel.iterator();
-    label273:
-    label684:
-    label689:
-    label690:
+    Object localObject1 = new ArrayList();
+    localObject2 = ((List)localObject2).iterator();
+    label279:
+    label825:
+    label830:
+    label831:
     for (;;)
     {
       MediaClipModel localMediaClipModel;
-      Object localObject;
-      if (localIterator.hasNext())
+      Object localObject3;
+      if (((Iterator)localObject2).hasNext())
       {
-        localMediaClipModel = (MediaClipModel)localIterator.next();
+        localMediaClipModel = (MediaClipModel)((Iterator)localObject2).next();
         if ((localMediaClipModel.getResource().getSelectTimeDuration() == 0L) || (localMediaClipModel == null) || (localMediaClipModel.getResource() == null)) {
           continue;
         }
         if ((localMediaClipModel.getResource().getType() == 1) || (localMediaClipModel.getResource().getType() == 3))
         {
-          paramMediaModel = new TAVMovieTrackResource(localMediaClipModel.getResource().getPath());
-          paramMediaModel.setTimeRange(new CMTimeRange(new CMTime((float)(localMediaClipModel.getResource().getSourceTimeStart() + localMediaClipModel.getResource().getSelectTimeStart()) / 1000.0F), new CMTime((float)localMediaClipModel.getResource().getSelectTimeDuration() / 1000.0F)));
-          paramMediaModel.setSourceTimeRange(paramMediaModel.getTimeRange());
-          paramMediaModel.setDuration(paramMediaModel.getTimeRange().getDuration());
+          paramITAVCompositionBuilderInterface = new TAVMovieTrackResource(localMediaClipModel.getResource().getPath());
+          paramITAVCompositionBuilderInterface.setTimeRange(new CMTimeRange(new CMTime((float)(localMediaClipModel.getResource().getSourceTimeStart() + localMediaClipModel.getResource().getSelectTimeStart()) / 1000.0F), new CMTime((float)localMediaClipModel.getResource().getSelectTimeDuration() / 1000.0F)));
+          paramITAVCompositionBuilderInterface.setSourceTimeRange(paramITAVCompositionBuilderInterface.getTimeRange());
+          paramITAVCompositionBuilderInterface.setDuration(paramITAVCompositionBuilderInterface.getTimeRange().getDuration());
           if (localMediaClipModel.getResource().getType() == 1)
           {
-            paramMediaModel.setType(TAVMovieResource.TAVResourceType.TAVResourceTypeVideo);
+            paramITAVCompositionBuilderInterface.setType(TAVMovieResource.TAVResourceType.TAVResourceTypeVideo);
             if (bool) {
-              break label689;
+              break label830;
             }
-            localObject = new TAVMovieTimeEffect();
-            ((TAVMovieTimeEffect)localObject).setTimeRange(paramMediaModel.getTimeRange());
-            ((TAVMovieTimeEffect)localObject).setSpeed((float)localMediaClipModel.getResource().getSelectTimeDuration() * 1.0F / (float)localMediaClipModel.getResource().getScaleDuration());
-            paramMediaModel.setTimeEffect((TAVMovieTimeEffect)localObject);
+            localObject3 = new TAVMovieTimeEffect();
+            ((TAVMovieTimeEffect)localObject3).setTimeRange(paramITAVCompositionBuilderInterface.getTimeRange());
+            ((TAVMovieTimeEffect)localObject3).setSpeed((float)localMediaClipModel.getResource().getSelectTimeDuration() * 1.0F / (float)localMediaClipModel.getResource().getScaleDuration());
+            paramITAVCompositionBuilderInterface.setTimeEffect((TAVMovieTimeEffect)localObject3);
           }
         }
       }
       for (;;)
       {
-        if (paramMediaModel == null) {
-          break label690;
+        if (paramITAVCompositionBuilderInterface == null) {
+          break label831;
         }
-        localObject = new TAVMovieClip();
-        ((TAVMovieClip)localObject).setResource(paramMediaModel);
+        localObject3 = new TAVMovieClip();
+        ((TAVMovieClip)localObject3).setResource(paramITAVCompositionBuilderInterface);
         if (localMediaClipModel.getVideoConfigurationModel() != null) {
-          ((TAVMovieClip)localObject).setVideoConfiguration(ModelAdaptUtils.transformToTAVVideoConfiguration(localMediaClipModel.getVideoConfigurationModel()));
+          ((TAVMovieClip)localObject3).setVideoConfiguration(ModelAdaptUtils.transformToTAVVideoConfiguration(localMediaClipModel.getVideoConfigurationModel()));
         }
         if (localMediaClipModel.getAudioConfigurationModel() != null) {
-          ((TAVMovieClip)localObject).setAudioConfiguration(ModelAdaptUtils.transformToTAVAudioConfiguration(localMediaClipModel.getAudioConfigurationModel()));
+          ((TAVMovieClip)localObject3).setAudioConfiguration(ModelAdaptUtils.transformToTAVAudioConfiguration(localMediaClipModel.getAudioConfigurationModel()));
         }
         if (0 != 0)
         {
-          l = multiClipsAdjustTimeRange(paramITAVCompositionBuilderInterface, localMediaClipModel.getResource(), (TAVMovieClip)localObject, 1.0F, l, 0L, 0L);
+          l = multiClipsAdjustTimeRange((List)localObject1, localMediaClipModel.getResource(), (TAVMovieClip)localObject3, 1.0F, l, 0L, 0L);
           break;
           if (localMediaClipModel.getResource().getType() != 3) {
-            break label273;
+            break label279;
           }
-          paramMediaModel.setType(TAVMovieResource.TAVResourceType.TAVResourceTypeAudio);
-          break label273;
+          paramITAVCompositionBuilderInterface.setType(TAVMovieResource.TAVResourceType.TAVResourceTypeAudio);
+          break label279;
           if ((localMediaClipModel.getResource().getType() != 2) && (localMediaClipModel.getResource().getType() != 4)) {
-            break label684;
+            break label825;
           }
-          paramMediaModel = new TAVMovieImageResource(localMediaClipModel.getResource().getPath());
-          paramMediaModel.setTimeRange(new CMTimeRange(new CMTime((float)(localMediaClipModel.getResource().getSourceTimeStart() + localMediaClipModel.getResource().getSelectTimeStart()) / 1000.0F), new CMTime((float)localMediaClipModel.getResource().getSelectTimeDuration() / 1000.0F)));
-          paramMediaModel.setSourceTimeRange(paramMediaModel.getTimeRange());
-          paramMediaModel.setDuration(paramMediaModel.getTimeRange().getDuration());
-          paramMediaModel.setType(TAVMovieResource.TAVResourceType.TAVResourceTypePhoto);
+          paramITAVCompositionBuilderInterface = new TAVMovieImageResource(localMediaClipModel.getResource().getPath());
+          paramITAVCompositionBuilderInterface.setTimeRange(new CMTimeRange(new CMTime((float)(localMediaClipModel.getResource().getSourceTimeStart() + localMediaClipModel.getResource().getSelectTimeStart()) / 1000.0F), new CMTime((float)localMediaClipModel.getResource().getSelectTimeDuration() / 1000.0F)));
+          paramITAVCompositionBuilderInterface.setSourceTimeRange(paramITAVCompositionBuilderInterface.getTimeRange());
+          paramITAVCompositionBuilderInterface.setDuration(paramITAVCompositionBuilderInterface.getTimeRange().getDuration());
+          paramITAVCompositionBuilderInterface.setType(TAVMovieResource.TAVResourceType.TAVResourceTypePhoto);
           if (!bool)
           {
-            localObject = new TAVMovieTimeEffect();
-            ((TAVMovieTimeEffect)localObject).setTimeRange(paramMediaModel.getTimeRange());
-            ((TAVMovieTimeEffect)localObject).setSpeed((float)localMediaClipModel.getResource().getSelectTimeDuration() * 1.0F / (float)localMediaClipModel.getResource().getScaleDuration());
-            paramMediaModel.setTimeEffect((TAVMovieTimeEffect)localObject);
+            localObject3 = new TAVMovieTimeEffect();
+            ((TAVMovieTimeEffect)localObject3).setTimeRange(paramITAVCompositionBuilderInterface.getTimeRange());
+            ((TAVMovieTimeEffect)localObject3).setSpeed((float)localMediaClipModel.getResource().getSelectTimeDuration() * 1.0F / (float)localMediaClipModel.getResource().getScaleDuration());
+            paramITAVCompositionBuilderInterface.setTimeEffect((TAVMovieTimeEffect)localObject3);
           }
           continue;
         }
-        paramITAVCompositionBuilderInterface.add(localObject);
+        ((List)localObject1).add(localObject3);
         break;
-        if (paramITAVCompositionBuilderInterface.size() == 0)
+        if (((List)localObject1).size() == 0)
         {
           Logger.e(TAG, "this TAVMovieClip list is empty.");
           return null;
         }
-        paramMediaModel = new TAVMovie();
-        paramMediaModel.setClips(paramITAVCompositionBuilderInterface);
+        paramITAVCompositionBuilderInterface = new TAVMovie();
+        paramITAVCompositionBuilderInterface.setClips((List)localObject1);
         if (0 != 0) {
-          paramMediaModel.setTimeEffects(getSpeedTimeEffect(1.0F, null));
+          paramITAVCompositionBuilderInterface.setTimeEffects(getSpeedTimeEffect(1.0F, null));
         }
-        return paramTAVAutomaticTemplate.buildBaseComposition(paramMediaModel);
-        paramMediaModel = null;
+        paramITAVCompositionBuilderInterface = paramTAVAutomaticTemplate.buildBaseComposition(paramITAVCompositionBuilderInterface);
+        if (paramTAVAutomaticTemplate.getMusicResource() != null)
+        {
+          if ((paramITAVCompositionBuilderInterface.getAudioChannels() != null) && (((List)paramITAVCompositionBuilderInterface.getAudioChannels().get(0)).size() > 0))
+          {
+            paramTAVAutomaticTemplate = ((List)paramITAVCompositionBuilderInterface.getAudioChannels().get(0)).iterator();
+            while (paramTAVAutomaticTemplate.hasNext())
+            {
+              localObject1 = (TAVTransitionableAudio)paramTAVAutomaticTemplate.next();
+              if ((localObject1 instanceof TAVClip)) {
+                ((TAVTransitionableAudio)localObject1).getAudioConfiguration().setVolume(Utils.getPlayVolume(paramMediaModel.getMediaEffectModel().getMusicModel()));
+              }
+            }
+          }
+          if (paramMediaModel.getMediaEffectModel().getMusicModel().getBgmVolume() >= 0.0F) {
+            paramITAVCompositionBuilderInterface.setAudios(MediaBuilder.getAudioClips(paramITAVCompositionBuilderInterface, paramMediaModel));
+          }
+        }
+        return paramITAVCompositionBuilderInterface;
+        paramITAVCompositionBuilderInterface = null;
       }
     }
   }
@@ -480,7 +502,7 @@ public class AutoTemplateMediaBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.weseevideo.model.template.auto.AutoTemplateMediaBuilder
  * JD-Core Version:    0.7.0.1
  */

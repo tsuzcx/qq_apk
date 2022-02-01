@@ -1,44 +1,40 @@
-import android.util.Base64;
-import java.security.Key;
-import java.security.KeyFactory;
-import java.security.spec.X509EncodedKeySpec;
-import javax.crypto.Cipher;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.DESKeySpec;
-import javax.crypto.spec.IvParameterSpec;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
+import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class acgs
+  implements View.OnClickListener
 {
-  public static String a = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQD3ywzb5M1Acw/gPd4869if4PlW\rhH8ekZvuoW3JYzxzeI1Rb5ENlEErZFUFvQrdTtapycinwjtQUHpgJBkAYxe8fI8k\ralWhJxQAOJZxIVPiZcPzGl4kaPkGHonKhT1md+FwoFGfosNbccQ4RcvUT/iSuqPh\rFd9e4fbNnLf9pPf5LQIDAQAB";
+  public acgs(GdtInterstitialFragmentForJS paramGdtInterstitialFragmentForJS) {}
   
-  public static String a(String paramString)
+  public void onClick(View paramView)
   {
-    Object localObject = Base64.decode(a, 0);
-    localObject = KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec((byte[])localObject));
-    Cipher localCipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
-    localCipher.init(1, (Key)localObject);
-    return Base64.encodeToString(localCipher.doFinal(paramString.getBytes()), 2);
-  }
-  
-  public static String a(String paramString, int paramInt)
-  {
-    int j = paramString.length();
-    int i = 0;
-    while (i < paramInt - j % paramInt)
+    GdtInterstitialFragmentForJS.a(this.a).a = 0;
+    GdtInterstitialFragmentForJS.a(this.a).b = GdtInterstitialFragmentForJS.a(this.a.getActivity());
+    String str;
+    if (GdtInterstitialFragmentForJS.a(this.a) == null)
     {
-      paramString = paramString + " ";
-      i += 1;
+      str = "ad is not loaded";
+      Toast.makeText(this.a.getActivity().getApplicationContext(), "ad is not loaded", 0).show();
     }
-    return paramString;
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    paramString1 = new DESKeySpec(paramString1.getBytes());
-    paramString1 = SecretKeyFactory.getInstance("DES").generateSecret(paramString1);
-    Cipher localCipher = Cipher.getInstance("DES/CBC/NoPadding");
-    localCipher.init(1, paramString1, new IvParameterSpec("12345678".getBytes()));
-    return Base64.encodeToString(localCipher.doFinal(a(paramString2, localCipher.getBlockSize()).getBytes()), 2);
+    for (;;)
+    {
+      Toast.makeText(this.a.getActivity().getApplicationContext(), str, 0).show();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (GdtInterstitialFragmentForJS.a(this.a) == null) {
+        str = "ad is loading";
+      } else if (GdtInterstitialFragmentForJS.a(this.a).a() != 0) {
+        str = GdtInterstitialFragmentForJS.a(this.a).a();
+      } else if (GdtInterstitialFragmentForJS.a(this.a).a(this.a.getActivity())) {
+        str = "正在打开插屏";
+      } else {
+        str = "打开插屏错误";
+      }
+    }
   }
 }
 

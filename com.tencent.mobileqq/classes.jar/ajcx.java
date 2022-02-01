@@ -1,22 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajcx
-  extends axvm
+class ajcx
+  implements View.OnClickListener
 {
-  public ajcx(Conversation paramConversation) {}
+  ajcx(ajcw paramajcw) {}
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (this.a.a != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent", 2, new Object[] { "onSetOnlineStatus, isSuccess", Boolean.valueOf(paramBoolean) });
-      }
-      this.a.a.a("OnlineStatusObserver.onSetOnlineStatus");
-    }
+    RecommendTroopItem localRecommendTroopItem = (RecommendTroopItem)paramView.getTag(-1);
+    TroopUtils.joinRecommendTroop(ajcw.a(this.a), localRecommendTroopItem, this.a.a());
+    this.a.b(localRecommendTroopItem);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

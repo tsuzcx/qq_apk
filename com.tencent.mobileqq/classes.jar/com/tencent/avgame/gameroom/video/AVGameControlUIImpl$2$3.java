@@ -1,15 +1,15 @@
 package com.tencent.avgame.gameroom.video;
 
-import nfj;
+import nmb;
 
 public class AVGameControlUIImpl$2$3
   implements Runnable
 {
-  public AVGameControlUIImpl$2$3(nfj paramnfj, int paramInt) {}
+  public AVGameControlUIImpl$2$3(nmb paramnmb, int paramInt) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Nfj.a.a()) {
+    if (this.jdField_a_of_type_Nmb.a.a()) {
       return;
     }
     int i;
@@ -18,7 +18,7 @@ public class AVGameControlUIImpl$2$3
     }
     for (;;)
     {
-      AVGameControlUIImpl.a(this.jdField_a_of_type_Nfj.a, i);
+      AVGameControlUIImpl.a(this.jdField_a_of_type_Nmb.a, i);
       return;
       if (this.jdField_a_of_type_Int == 100) {
         i = 9642;

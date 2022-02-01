@@ -1,23 +1,31 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.ocr.TranslateFragment;
-import java.util.List;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import com.tencent.mobileqq.mvvm.LifeCycleFragment;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class axnd
-  implements PopupWindow.OnDismissListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"LIFE_CYCLE_FRAGMENT_TAG", "", "checkAndAddLifeCycleFragment", "Lcom/tencent/mobileqq/mvvm/LifeCycleFragment;", "Landroid/support/v4/app/FragmentActivity;", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
+public final class axnd
 {
-  public axnd(TranslateFragment paramTranslateFragment, axll paramaxll) {}
-  
-  public void onDismiss()
+  @NotNull
+  public static final LifeCycleFragment a(@NotNull FragmentActivity paramFragmentActivity)
   {
-    TranslateFragment.b(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, null);
-    if ((this.jdField_a_of_type_Axll.c != null) && (this.jdField_a_of_type_Axll.c.size() > 1))
-    {
-      Drawable localDrawable = this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment.getResources().getDrawable(2130846062);
-      TranslateFragment.b(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment).setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
+    Intrinsics.checkParameterIsNotNull(paramFragmentActivity, "$this$checkAndAddLifeCycleFragment");
+    Object localObject = paramFragmentActivity.getSupportFragmentManager().findFragmentByTag("fragment_tag_life_cycle_fragment");
+    if ((localObject instanceof LifeCycleFragment)) {
+      return (LifeCycleFragment)localObject;
     }
+    paramFragmentActivity = paramFragmentActivity.getSupportFragmentManager().beginTransaction();
+    if (localObject != null) {
+      paramFragmentActivity.remove((Fragment)localObject);
+    }
+    localObject = new LifeCycleFragment();
+    paramFragmentActivity.add((Fragment)localObject, "fragment_tag_life_cycle_fragment");
+    paramFragmentActivity.commitAllowingStateLoss();
+    return localObject;
   }
 }
 

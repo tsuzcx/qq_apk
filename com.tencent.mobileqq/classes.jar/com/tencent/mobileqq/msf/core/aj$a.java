@@ -262,7 +262,7 @@ class aj$a
       }
     }
     label1539:
-    if (aj.s().get()) {
+    if (aj.t().get()) {
       QLog.e(tag, 1, "invalidSign, " + paramFromServiceMsg + " is droped.");
     }
     for (;;)
@@ -290,7 +290,7 @@ class aj$a
   
   private void a(ByteBuffer paramByteBuffer)
   {
-    if (!aj.t()) {
+    if (!aj.u()) {
       return;
     }
     if (paramByteBuffer.remaining() < 16)
@@ -317,7 +317,7 @@ class aj$a
           break label226;
         }
         paramByteBuffer = f.a(localStringBuilder.toString().toLowerCase());
-        aj.d(paramByteBuffer);
+        aj.e(paramByteBuffer);
         if (!QLog.isDevelopLevel()) {
           break label170;
         }
@@ -380,7 +380,7 @@ class aj$a
     localFromServiceMsg.setMsfCommand(MsfCommand.onInvalidSign);
     MsfSdkUtils.addFromMsgProcessName("*", localFromServiceMsg);
     this.a.D.addRespToQuque(null, localFromServiceMsg);
-    aj.s().set(true);
+    aj.t().set(true);
   }
   
   public void onResponse(int paramInt1, Object paramObject, int paramInt2)

@@ -1,15 +1,59 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.utils.StringUtil;
 
 public class bnkf
-  implements View.OnLayoutChangeListener
 {
-  public bnkf(GLTextureView paramGLTextureView) {}
+  private String a;
+  private String b;
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public bnkf(@Nullable String paramString1, @Nullable String paramString2)
   {
-    this.a.a(this.a.getSurfaceTexture(), 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
+    this.a = paramString1;
+    this.b = paramString2;
+  }
+  
+  @Nullable
+  public String a()
+  {
+    return this.a;
+  }
+  
+  @Nullable
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if ((paramObject != null) && (!(paramObject instanceof bnkf))) {}
+    do
+    {
+      return false;
+      paramObject = (bnkf)paramObject;
+    } while ((StringUtil.isEmpty(this.a)) || (StringUtil.isEmpty(this.b)) || (paramObject == null) || (!this.a.equals(paramObject.a())) || (!this.b.equals(paramObject.b())));
+    return true;
+  }
+  
+  public int hashCode()
+  {
+    int j = 0;
+    int i;
+    if (this.b == null)
+    {
+      i = 0;
+      if (this.a != null) {
+        break label40;
+      }
+    }
+    for (;;)
+    {
+      return (i + 527) * 31 + j;
+      i = this.b.hashCode();
+      break;
+      label40:
+      j = this.a.hashCode();
+    }
   }
 }
 

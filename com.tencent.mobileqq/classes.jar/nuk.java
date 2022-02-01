@@ -1,24 +1,19 @@
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
+import mqq.app.AppRuntime;
 
-class nuk
-  implements AdapterView.OnItemClickListener
+public class nuk
 {
-  nuk(nui paramnui) {}
+  TroopMemberApiService a;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public nuk(TroopMemberApiService paramTroopMemberApiService)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailCustomModuleBaseWrapper", 2, "onItemClick!");
-    }
-    paramAdapterView = (obr)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    if (this.a.jdField_a_of_type_Nts != null) {
-      this.a.jdField_a_of_type_Nts.a(paramAdapterView);
-    }
-    this.a.a(paramAdapterView);
+    this.a = paramTroopMemberApiService;
+  }
+  
+  public void a(AppRuntime paramAppRuntime, Bundle paramBundle)
+  {
+    if (paramBundle == null) {}
   }
 }
 

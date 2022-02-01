@@ -1,55 +1,24 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFollowRcmd;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.subscribe.widget.relativevideo.BlankRecommendItemView;
 
-public class zsi
-  extends nnt
+class zsi
+  extends RecyclerView.ViewHolder
 {
-  public boolean a;
-  
-  public zsi(Context paramContext, String paramString)
+  public zsi(zsg paramzsg, View paramView)
   {
-    super(paramContext, paramString);
+    super(paramView);
   }
   
-  public String a()
+  public void a(CertifiedAccountMeta.StFollowRcmd paramStFollowRcmd, int paramInt)
   {
-    return "key_for_troop_config_for_all_cfg";
-  }
-  
-  public void a(String paramString)
-  {
-    boolean bool = true;
-    this.a = true;
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    for (;;)
+    if ((this.itemView instanceof BlankRecommendItemView))
     {
-      try
-      {
-        if (new JSONObject(paramString).optInt("isShow3kTroopTips") != 1) {
-          break label56;
-        }
-        this.a = bool;
-        return;
-      }
-      catch (JSONException paramString) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("TroopConfigForAllUser", 2, paramString.getMessage());
-      return;
-      label56:
-      bool = false;
+      ((BlankRecommendItemView)this.itemView).setData(paramStFollowRcmd);
+      ((BlankRecommendItemView)this.itemView).setExtraTypeInfo(this.a.a());
+      ((BlankRecommendItemView)this.itemView).setPos(paramInt);
     }
-  }
-  
-  public String b()
-  {
-    return "key_for_troop_config_for_all_cfg_version";
   }
 }
 

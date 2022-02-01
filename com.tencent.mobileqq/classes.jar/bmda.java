@@ -1,13 +1,15 @@
-import java.io.File;
+import android.os.Bundle;
+import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
 
-public class bmda
+class bmda
+  extends aogf
 {
-  public static final String a = bljv.a + File.separator + "ae_editor";
-  public static final String b = a + File.separator + "resources";
-  public static final String c = a + File.separator + "generated_images";
-  public static final String d = a + File.separator + "generated_videos";
-  public static final String e = a + File.separator + "generated_videos" + File.separator + "cover";
-  public static final String f = a + File.separator + "effect";
+  bmda(bmcz parambmcz) {}
+  
+  public void a()
+  {
+    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 2, new Bundle());
+  }
 }
 
 

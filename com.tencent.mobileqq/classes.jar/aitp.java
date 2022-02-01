@@ -1,16 +1,22 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aitp
-  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  TextView a;
+  public aitp(SearchBaseActivity paramSearchBaseActivity) {}
   
-  aitp(View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.a = ((TextView)paramView.findViewById(2131379996));
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    if (this.a.h != 1) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

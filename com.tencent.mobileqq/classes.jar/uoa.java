@@ -1,60 +1,44 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class uoa
-  extends ukz
+class uoa
+  implements URLDrawable.URLDrawableListener
 {
-  private DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
-  private uou jdField_a_of_type_Uou;
+  uoa(unz paramunz, String paramString) {}
   
-  public uoa(Context paramContext, uou paramuou)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    super(paramContext);
-    this.jdField_a_of_type_Uou = paramuou;
-  }
-  
-  private void g()
-  {
-    f();
-    WSPlayerManager localWSPlayerManager = this.jdField_a_of_type_Uou.a();
-    if ((localWSPlayerManager != null) && (localWSPlayerManager.i())) {
-      this.jdField_a_of_type_Uou.a(localWSPlayerManager);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyDoubleImageView", 2, "onLoadCanceled:" + this.jdField_a_of_type_JavaLangString);
     }
   }
   
-  private void h()
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.addAnimatorListener(new uoc(this));
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyDoubleImageView", 2, "onLoadFialed:" + this.jdField_a_of_type_JavaLangString);
+    }
   }
   
-  protected void a() {}
-  
-  protected int b()
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
   {
-    return 2131560395;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyDoubleImageView", 2, "onLoadProgressed");
+    }
   }
   
-  protected void b() {}
-  
-  protected void c() {}
-  
-  protected void e()
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)a(2131368924));
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setAnimation("wsfollow/muteguide/muteguide.json");
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageAssetsFolder("wsfollow/muteguide/images");
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setOnClickListener(new uob(this));
-  }
-  
-  public void f()
-  {
-    if (this.jdField_a_of_type_Uou.a())
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyDoubleImageView", 2, "onLoadSuccessed:" + this.jdField_a_of_type_JavaLangString);
+    }
+    if (paramURLDrawable != null)
     {
-      h();
-      this.jdField_a_of_type_Uou.d();
-      uya.e("WSFollowTabMuteGuideController", "[WSFollowTabMuteGuideController.java][playAnimationForMuteGuide] doPlay!");
+      unz.a(this.jdField_a_of_type_Unz, new uny(paramURLDrawable.getCurrDrawable(), unz.a(this.jdField_a_of_type_Unz), unz.b(this.jdField_a_of_type_Unz) - (unz.c(this.jdField_a_of_type_Unz) + unz.d(this.jdField_a_of_type_Unz))));
+      unz.a(this.jdField_a_of_type_Unz).setImageDrawable(unz.a(this.jdField_a_of_type_Unz));
+      unz.a(this.jdField_a_of_type_Unz, this.jdField_a_of_type_JavaLangString);
     }
   }
 }

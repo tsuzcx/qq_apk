@@ -1,31 +1,26 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.List;
 
 public class xsk
-  extends QQUIEventReceiver<MystoryListView, vnz>
+  extends xzr
 {
-  public xsk(@NonNull MystoryListView paramMystoryListView)
+  protected final int a;
+  protected final String a;
+  
+  public xsk(String paramString1, int paramInt, String paramString2)
   {
-    super(paramMystoryListView);
+    super(paramString1, paramString2);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(@NonNull MystoryListView paramMystoryListView, @NonNull vnz paramvnz)
+  protected wpw a(String paramString, List<String> paramList)
   {
-    paramMystoryListView.q();
-    paramvnz = (xss)paramMystoryListView.a("FeedSegment");
-    if (paramvnz != null) {
-      paramvnz.j();
-    }
-    paramMystoryListView = (xuh)paramMystoryListView.a("NewMyStorySegment");
-    if (paramMystoryListView != null) {
-      paramMystoryListView.a(false);
-    }
+    return new wsc(paramString, paramList);
   }
   
-  public Class acceptEventClass()
+  protected wpx a()
   {
-    return vnz.class;
+    return new xsl(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.c);
   }
 }
 

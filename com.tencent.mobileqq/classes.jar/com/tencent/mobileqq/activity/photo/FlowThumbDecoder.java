@@ -44,9 +44,9 @@ public class FlowThumbDecoder
   {
     Resources localResources = paramContext.getResources();
     this.mDensity = localResources.getDisplayMetrics().density;
-    sFlowItemHeight = localResources.getDimension(2131297098);
-    sFlowItemMaxWidth = localResources.getDimension(2131297096);
-    sFlowItemMinWidth = localResources.getDimension(2131297097);
+    sFlowItemHeight = localResources.getDimension(2131297099);
+    sFlowItemMaxWidth = localResources.getDimension(2131297097);
+    sFlowItemMinWidth = localResources.getDimension(2131297098);
     sRatioMax = sFlowItemMaxWidth / sFlowItemHeight;
     sRatioMin = sFlowItemMinWidth / sFlowItemHeight;
     if (sFlowItemHeight == 0.0F) {

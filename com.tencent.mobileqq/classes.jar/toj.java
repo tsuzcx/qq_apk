@@ -1,25 +1,14 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
-import com.tencent.viola.core.ViolaInstance;
+import org.jetbrains.annotations.NotNull;
 
-public class toj
-  extends tmz
-  implements tms
+public abstract interface toj
 {
-  public toj(Activity paramActivity, tmm paramtmm, VVideoView paramVVideoView, ViolaInstance paramViolaInstance)
-  {
-    super(paramActivity, paramtmm, paramVVideoView, paramViolaInstance);
-  }
+  public abstract void a();
   
-  public void D_() {}
-  
-  public void E_() {}
-  
-  public void F_() {}
+  public abstract void a(@NotNull String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     toj
  * JD-Core Version:    0.7.0.1
  */

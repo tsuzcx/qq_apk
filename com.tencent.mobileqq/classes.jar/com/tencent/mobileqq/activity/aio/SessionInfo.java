@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aezp;
+import afrb;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -11,7 +11,7 @@ public class SessionInfo
 {
   public static final Parcelable.Creator<SessionInfo> CREATOR = new SessionInfo.1();
   public int addFriendSourceId = 3999;
-  public aezp chatBg;
+  public afrb chatBg;
   public String contactUin;
   public String curFriendNick;
   public String curFriendUin;
@@ -139,7 +139,7 @@ public class SessionInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.SessionInfo
  * JD-Core Version:    0.7.0.1
  */

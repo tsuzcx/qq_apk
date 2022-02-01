@@ -1,31 +1,20 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.biz.qcircleshadow.local.widgets.QCircleAvatarView;
+import com.tencent.biz.qcircleshadow.local.widgets.QCircleFollowView;
 
-public class ahdk
-  extends ahdi
+class ahdk
+  extends afos
 {
-  public Bitmap a;
-  public String b;
-  
-  public ahdk(String paramString)
-  {
-    super(paramString);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    if (paramRedPacketInfo != null)
-    {
-      this.a = paramRedPacketInfo.icon;
-      this.b = paramRedPacketInfo.resPath;
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.a != null) && (!TextUtils.isEmpty(this.b));
-  }
+  public FrameLayout a;
+  public LinearLayout a;
+  public QCircleAvatarView a;
+  public QCircleFollowView a;
+  public View b;
+  public LinearLayout b;
+  public TextView b;
 }
 
 

@@ -1,19 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
 
-class amqe
-  extends BroadcastReceiver
+public class amqe
+  extends anyz
 {
-  amqe(amqd paramamqd) {}
+  public amqe(HotChatCenterFragment paramHotChatCenterFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong)
   {
-    paramContext = paramIntent.getAction();
-    if ((paramContext.equalsIgnoreCase("android.intent.action.MEDIA_UNMOUNTED")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_UNMOUNTABLE")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_EJECT")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_REMOVED"))) {
-      this.a.d(8);
-    }
+    this.a.b();
   }
+  
+  protected void onUpdateRecentList() {}
 }
 
 

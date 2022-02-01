@@ -11,7 +11,7 @@ class NetLivenessReqResultState$2
   
   public void onNetworkResponseEvent(HashMap<String, String> paramHashMap, Exception paramException)
   {
-    YtLogger.d(NetLivenessReqResultState.access$000(), "Parse silent response");
+    YtLogger.i(NetLivenessReqResultState.access$000(), "Parse silent response");
     NetLivenessReqResultState.access$100(this.this$0, paramHashMap, paramException);
     NetLivenessReqResultState.access$200(this.this$0);
   }

@@ -1,30 +1,83 @@
-import android.os.AsyncTask;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.SubAccountInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class adji
-  implements Animation.AnimationListener
+  extends aoef
 {
-  public adji(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public adji(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void a(boolean paramBoolean, bdxt parambdxt)
   {
-    this.a.a.execute(new Void[0]);
-    this.a.f = false;
-    if (this.a.d) {
-      this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+    int j = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("AssociatedAccountActivity", 2, "onGetBindSubAccount() isSuccess=" + paramBoolean);
     }
-    while (this.a.jdField_c_of_type_Boolean) {
-      return;
+    if ((parambdxt == null) || (!TextUtils.equals(parambdxt.b, this.a.app.getCurrentUin()))) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!paramBoolean);
+      parambdxt = parambdxt.c();
+    } while ((parambdxt == null) || (this.a.a == null));
+    Iterator localIterator = this.a.a.iterator();
+    do
+    {
+      if (!localIterator.hasNext()) {
+        break;
+      }
+    } while (parambdxt.contains(((SubAccountInfo)localIterator.next()).subuin));
+    for (int i = 1;; i = 0)
+    {
+      if (parambdxt.size() != this.a.a.size()) {
+        i = j;
+      }
+      while (i != 0)
+      {
+        AssociatedAccountActivity.b(this.a, false);
+        return;
+      }
+      break;
     }
-    this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  protected void b(boolean paramBoolean, bdxt parambdxt)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d("AssociatedAccountActivity", 2, "onBindSubAccount() isSuccess=" + paramBoolean);
+      if (parambdxt != null) {
+        QLog.d("AssociatedAccountActivity", 2, "onBindSubAccount() mainAccount=" + parambdxt.b + " subAccount=" + parambdxt.c + " errType=" + parambdxt.jdField_a_of_type_Int + " errMsg=" + parambdxt.jdField_a_of_type_JavaLangString);
+      }
+    }
+    if ((parambdxt == null) || (!TextUtils.equals(parambdxt.b, this.a.app.getCurrentUin()))) {}
+    while (!paramBoolean) {
+      return;
+    }
+    AssociatedAccountActivity.b(this.a, false);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  protected void c(boolean paramBoolean, bdxt parambdxt)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d("AssociatedAccountActivity", 2, "onUnBindSubAccount() isSuccess=" + paramBoolean);
+      if (parambdxt != null) {
+        QLog.d("AssociatedAccountActivity", 2, "onUnBindSubAccount() mainAccount=" + parambdxt.b + " subAccount=" + parambdxt.c + " errType=" + parambdxt.jdField_a_of_type_Int + " errMsg=" + parambdxt.jdField_a_of_type_JavaLangString);
+      }
+    }
+    if ((parambdxt == null) || (!TextUtils.equals(parambdxt.b, this.a.app.getCurrentUin()))) {}
+    while (!paramBoolean) {
+      return;
+    }
+    AssociatedAccountActivity.b(this.a, false);
+  }
 }
 
 

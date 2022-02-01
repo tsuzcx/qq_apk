@@ -1,86 +1,315 @@
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.ValueCallback;
+import com.tencent.smtt.sdk.WebChromeClient.FileChooserParams;
+import java.io.File;
+import java.util.List;
 
 public class nvz
-  extends amyh
 {
-  public nvz(AccountDetailActivity paramAccountDetailActivity) {}
+  private int jdField_a_of_type_Int;
+  private Uri jdField_a_of_type_AndroidNetUri;
+  private ValueCallback<Uri> jdField_a_of_type_ComTencentSmttSdkValueCallback;
+  private ValueCallback<Uri[]> b;
   
-  void a()
+  private void a()
   {
-    if (this.a.jdField_j_of_type_Boolean) {
-      this.a.G();
+    if (this.jdField_a_of_type_ComTencentSmttSdkValueCallback != null)
+    {
+      this.jdField_a_of_type_ComTencentSmttSdkValueCallback.onReceiveValue(Uri.EMPTY);
+      this.jdField_a_of_type_Int = -2147483648;
+      this.jdField_a_of_type_ComTencentSmttSdkValueCallback = null;
+      this.jdField_a_of_type_AndroidNetUri = null;
     }
-    this.a.jdField_j_of_type_Boolean = true;
+    if (this.b != null)
+    {
+      this.b.onReceiveValue(null);
+      this.b = null;
+      this.jdField_a_of_type_AndroidNetUri = null;
+      this.jdField_a_of_type_Int = -2147483648;
+    }
   }
   
-  public void onDynamicListGet(boolean paramBoolean, int paramInt)
+  private void a(Activity paramActivity)
   {
-    boolean bool2 = false;
-    boolean bool1 = false;
-    super.onDynamicListGet(paramBoolean, paramInt);
-    if (this.a.jdField_a_of_type_Nst == null) {
+    File localFile = new File(AppConstants.SDCARD_PATH + "photo/");
+    if ((!localFile.exists()) && (!localFile.mkdirs()))
+    {
+      a();
+      QQToast.a(paramActivity, 1, paramActivity.getString(2131690706), 0).a();
       return;
     }
-    this.a.q = true;
-    if (paramInt == 0)
+    Intent localIntent = new Intent();
+    this.jdField_a_of_type_AndroidNetUri = FileProvider7Helper.setSystemCapture(paramActivity, new File(localFile, "IMG_" + System.currentTimeMillis() + ".jpg"), localIntent);
+    a(paramActivity, localIntent, 2131690693);
+  }
+  
+  private void a(Activity paramActivity, Intent paramIntent, int paramInt)
+  {
+    if ((paramActivity != null) && (paramIntent != null) && (paramInt > 0))
     {
-      ntn localntn = ntx.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.a.e);
-      if (localntn != null)
-      {
-        this.a.jdField_a_of_type_Nst.a(localntn.b(), localntn.a);
-        this.a.jdField_a_of_type_Nst.a(localntn.b());
-      }
+      List localList = paramActivity.getPackageManager().queryIntentActivities(paramIntent, 0);
+      if ((localList == null) || (localList.isEmpty())) {}
     }
-    if (paramBoolean) {
-      if (this.a.jdField_a_of_type_Nst.a() == 0)
+    else
+    {
+      try
       {
-        paramBoolean = bool1;
-        if (paramBoolean) {
-          this.a.v();
-        }
-        this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.b(paramBoolean);
-        bool1 = paramBoolean;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "onDynamicListGet: --hasMoreData=" + paramBoolean);
-          bool1 = paramBoolean;
-        }
-        label172:
-        if (paramInt != 1) {
-          break label246;
-        }
-      }
-    }
-    for (this.a.l = AccountDetailActivity.jdField_j_of_type_Int;; this.a.l = AccountDetailActivity.k) {
-      label246:
-      do
-      {
-        this.a.jdField_a_of_type_Nst.b(this.a.l);
-        this.a.jdField_a_of_type_Nst.notifyDataSetChanged();
+        paramActivity.startActivityForResult(paramIntent, this.jdField_a_of_type_Int);
         return;
-        paramBoolean = true;
-        break;
-        this.a.jdField_a_of_type_Nst.notifyDataSetChanged();
-        this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.b();
-        bool1 = bool2;
-        break label172;
-      } while ((paramInt != 4) && ((paramInt != 0) || (bool1)));
+      }
+      catch (Exception paramIntent)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("FileChooserHelper", 2, "Caution: activity for intent was queried but can't started because " + paramIntent.getMessage());
+        }
+      }
+    }
+    a();
+    QQToast.a(paramActivity, 1, paramInt, 0).a();
+  }
+  
+  private void a(Activity paramActivity, String paramString)
+  {
+    Intent localIntent = new Intent("android.intent.action.GET_CONTENT");
+    localIntent.addCategory("android.intent.category.OPENABLE");
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = "*/*";
+    }
+    localIntent.setType(str);
+    a(paramActivity, localIntent, 2131690707);
+  }
+  
+  private void b(Activity paramActivity)
+  {
+    Object localObject = new File(AppConstants.SDCARD_PATH + "photo/");
+    if ((!((File)localObject).exists()) && (!((File)localObject).mkdirs()))
+    {
+      a();
+      QQToast.a(paramActivity, 1, paramActivity.getString(2131690706), 0).a();
+      return;
+    }
+    this.jdField_a_of_type_AndroidNetUri = Uri.fromFile(new File((File)localObject, "VID_" + System.currentTimeMillis() + ".mp4"));
+    localObject = new Intent("android.media.action.VIDEO_CAPTURE");
+    ((Intent)localObject).putExtra("output", this.jdField_a_of_type_AndroidNetUri);
+    ((Intent)localObject).putExtra("android.intent.extra.videoQuality", 1);
+    a(paramActivity, (Intent)localObject, 2131690693);
+  }
+  
+  private void c(Activity paramActivity)
+  {
+    a(paramActivity, new Intent("android.provider.MediaStore.RECORD_SOUND"), 2131690708);
+  }
+  
+  public void a(Activity paramActivity, int paramInt, ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
+  {
+    if ((paramActivity == null) || ((paramValueCallback == null) && (this.b == null))) {
+      return;
+    }
+    if ((QLog.isColorLevel()) && (this.jdField_a_of_type_ComTencentSmttSdkValueCallback != null)) {
+      QLog.w("FileChooserHelper", 2, "Caution: mFilePathCallback not null, Plz call doOnActivityResult in the onActivityResult method of caller");
+    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentSmttSdkValueCallback = paramValueCallback;
+    this.jdField_a_of_type_AndroidNetUri = null;
+    if (paramString1 != null)
+    {
+      paramString1 = paramString1.toLowerCase();
+      if (paramString2 == null) {
+        break label97;
+      }
+    }
+    label97:
+    for (paramValueCallback = paramString2.toLowerCase();; paramValueCallback = "")
+    {
+      if (!TextUtils.isEmpty(paramValueCallback)) {
+        break label103;
+      }
+      a(paramActivity, paramString1);
+      return;
+      paramString1 = "";
+      break;
+    }
+    label103:
+    if (("camera".equals(paramValueCallback)) || ("camcorder".equals(paramValueCallback)) || ("microphone".equals(paramValueCallback)))
+    {
+      paramInt = 1;
+      if (paramInt != 0) {
+        break label409;
+      }
+      if (!paramString1.contains("image/")) {
+        break label251;
+      }
+      paramValueCallback = "camera";
+      paramInt = 1;
+    }
+    label151:
+    label409:
+    for (;;)
+    {
+      if (paramInt != 0)
+      {
+        paramString2 = bkzi.a(paramActivity);
+        paramString2.a(new nwa(this));
+        paramString2.setOnCancelListener(new nwb(this));
+        if (paramValueCallback.equals("camera"))
+        {
+          paramString2.a(paramActivity.getString(2131719173), 0);
+          paramString2.a(paramActivity.getString(2131692323), 0);
+          paramString2.a(new nwc(this, paramActivity, paramString1, paramString2));
+        }
+        for (;;)
+        {
+          paramString2.show();
+          return;
+          paramInt = 0;
+          break;
+          label251:
+          if (paramString1.contains("video/"))
+          {
+            paramValueCallback = "camcorder";
+            paramInt = 1;
+            break label151;
+          }
+          if (!paramString1.contains("audio/")) {
+            break label409;
+          }
+          paramValueCallback = "microphone";
+          paramInt = 1;
+          break label151;
+          if (paramValueCallback.equals("camcorder"))
+          {
+            paramString2.a(paramActivity.getString(2131718524), 0);
+            paramString2.a(paramActivity.getString(2131692323), 0);
+            paramString2.a(new nwd(this, paramActivity, paramString1, paramString2));
+          }
+          else if (paramValueCallback.equals("microphone"))
+          {
+            paramString2.a(paramActivity.getString(2131717999), 0);
+            paramString2.a(paramActivity.getString(2131692323), 0);
+            paramString2.a(new nwe(this, paramActivity, paramString1, paramString2));
+          }
+        }
+      }
+      a(paramActivity, paramString1);
+      return;
     }
   }
   
-  public void onFollowPublicAccount(boolean paramBoolean, String paramString)
+  public boolean a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    super.onFollowPublicAccount(paramBoolean, paramString);
-    a();
+    Object localObject2;
+    Object localObject1;
+    if (this.jdField_a_of_type_Int == paramInt1) {
+      if (this.jdField_a_of_type_ComTencentSmttSdkValueCallback != null)
+      {
+        if (-1 != paramInt2) {
+          break label193;
+        }
+        localObject2 = this.jdField_a_of_type_AndroidNetUri;
+        localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          if (paramIntent == null) {
+            break label79;
+          }
+          localObject1 = paramIntent.getData();
+        }
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentSmttSdkValueCallback.onReceiveValue(localObject1);
+      this.jdField_a_of_type_Int = -2147483648;
+      this.jdField_a_of_type_ComTencentSmttSdkValueCallback = null;
+      this.jdField_a_of_type_AndroidNetUri = null;
+      this.b = null;
+      return true;
+      label79:
+      localObject1 = Uri.EMPTY;
+      continue;
+      if (this.b != null)
+      {
+        if (-1 != paramInt2) {
+          break label187;
+        }
+        localObject2 = this.jdField_a_of_type_AndroidNetUri;
+        localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          if (paramIntent == null) {
+            break label156;
+          }
+          localObject1 = paramIntent.getData();
+        }
+      }
+      for (;;)
+      {
+        label124:
+        localObject2 = this.b;
+        if (localObject1 != null) {}
+        for (paramIntent = new Uri[] { localObject1 };; paramIntent = null)
+        {
+          ((ValueCallback)localObject2).onReceiveValue(paramIntent);
+          break;
+          label156:
+          localObject1 = null;
+          break label124;
+        }
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.w("FileChooserHelper", 2, "Caution: mFilePathCallback should not be null!");
+        break;
+        return false;
+        label187:
+        localObject1 = null;
+      }
+      label193:
+      localObject1 = null;
+    }
   }
   
-  public void onUnfollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  @TargetApi(21)
+  public boolean a(Activity paramActivity, int paramInt, ValueCallback<Uri[]> paramValueCallback, WebChromeClient.FileChooserParams paramFileChooserParams)
   {
-    super.onUnfollowPublicAccount(paramInt, paramPublicAccountInfo);
-    a();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramActivity != null)
+    {
+      bool1 = bool2;
+      if (paramValueCallback != null)
+      {
+        this.b = paramValueCallback;
+        paramValueCallback = paramFileChooserParams.getAcceptTypes();
+        if (paramValueCallback == null) {
+          break label67;
+        }
+        paramValueCallback = paramValueCallback[0];
+        if (!paramFileChooserParams.isCaptureEnabled()) {
+          break label73;
+        }
+      }
+    }
+    label67:
+    label73:
+    for (paramFileChooserParams = "*";; paramFileChooserParams = "")
+    {
+      a(paramActivity, paramInt, null, paramValueCallback, paramFileChooserParams);
+      bool1 = true;
+      return bool1;
+      paramValueCallback = "";
+      break;
+    }
   }
 }
 

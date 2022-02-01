@@ -1,19 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionActivity;
 
-class vth
-  implements View.OnClickListener
+public class vth
+  extends Handler
 {
-  vth(vtg paramvtg, vtf paramvtf) {}
+  public vth(PublicAccountImageCollectionActivity paramPublicAccountImageCollectionActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    int i = this.jdField_a_of_type_Vtf.getPosition();
-    if (i >= 0) {
-      this.jdField_a_of_type_Vtg.a.a(this.jdField_a_of_type_Vtf.itemView, i);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    PublicAccountImageCollectionActivity.a(this.a);
   }
 }
 

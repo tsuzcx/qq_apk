@@ -1,19 +1,29 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-class vur
-  implements vqp<wdz, wfx>
+final class vur
+  implements biyn
 {
-  vur(vuq paramvuq, long paramLong) {}
+  vur(String paramString) {}
   
-  public void a(@NonNull wdz paramwdz, @Nullable wfx paramwfx, @NonNull ErrorMessage paramErrorMessage)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    if (paramwfx != null)
+    if ((this.a == null) || (!this.a.equals(paramBaseResp.transaction))) {
+      return;
+    }
+    BaseApplicationImpl.getContext();
+    switch (paramBaseResp.errCode)
     {
-      this.jdField_a_of_type_Vuq.b("qqstory_black_status", Integer.valueOf(paramwfx.b));
-      this.jdField_a_of_type_Vuq.b("qqstory_black_status_update_interval", Integer.valueOf(paramwfx.c));
-      this.jdField_a_of_type_Vuq.b("qqstory_black_status_last_update_time", Integer.valueOf((int)this.jdField_a_of_type_Long));
+    case -1: 
+    default: 
+      znl.a(1, 2131718766);
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      return;
+      znl.a(2, 2131718784);
     }
   }
 }

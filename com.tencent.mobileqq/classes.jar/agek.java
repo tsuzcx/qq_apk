@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-
-final class agek
-  implements aghk
+public abstract class agek
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  private boolean a;
+  
+  public void a(boolean paramBoolean)
   {
-    if (paramChatMessage.msgtype == -3016) {
-      return 93;
-    }
-    return 15;
+    this.a = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.a;
   }
 }
 

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import awhl;
-import awhm;
-import awzr;
-import awzx;
+import axnn;
+import axno;
+import ayfx;
+import aygd;
 
 public class NearbyProfileDisplayTribePanel$14$1
   implements Runnable
 {
-  public NearbyProfileDisplayTribePanel$14$1(awzx paramawzx, awhl paramawhl) {}
+  public NearbyProfileDisplayTribePanel$14$1(aygd paramaygd, axnn paramaxnn) {}
   
   public void run()
   {
-    awhm.a(this.jdField_a_of_type_Awzx.a.a.getAppInterface(), this.jdField_a_of_type_Awhl);
+    axno.a(this.jdField_a_of_type_Aygd.a.a.getAppInterface(), this.jdField_a_of_type_Axnn);
   }
 }
 

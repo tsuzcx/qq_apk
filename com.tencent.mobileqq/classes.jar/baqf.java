@@ -1,16 +1,18 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import com.tencent.mobileqq.text.QQTextBuilder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public final class baqf
-  extends Editable.Factory
+class baqf
+  implements DialogInterface.OnClickListener
 {
-  public Editable newEditable(CharSequence paramCharSequence)
+  baqf(baqd parambaqd, QQAppInterface paramQQAppInterface, QQCustomDialog paramQQCustomDialog) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramCharSequence instanceof QQTextBuilder)) {
-      return (Editable)paramCharSequence;
-    }
-    return new QQTextBuilder(paramCharSequence, 1, 20);
+    bdla.b(null, "dc00898", "", "", "0X800AE05", "0X800AE05", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Baqd.a(false, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
   }
 }
 

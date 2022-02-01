@@ -28,9 +28,9 @@ public class SelectTouchBarView
     super(paramContext);
     this.jdField_b_of_type_Int = -1;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    LayoutInflater.from(paramContext).inflate(2131558641, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362485));
-    a((RelativeLayout)findViewById(2131362484));
+    LayoutInflater.from(paramContext).inflate(2131558653, this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362498));
+    a((RelativeLayout)findViewById(2131362497));
   }
   
   private void a(RelativeLayout paramRelativeLayout)
@@ -89,7 +89,7 @@ public class SelectTouchBarView
   
   public void a()
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131362484);
+    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131362497);
     localRelativeLayout.removeView(this.jdField_a_of_type_ComTencentMobileqqWidgetMutliSeletedBottomLine);
     localRelativeLayout.removeView(this.jdField_b_of_type_ComTencentMobileqqWidgetMutliSeletedBottomLine);
     a(localRelativeLayout);

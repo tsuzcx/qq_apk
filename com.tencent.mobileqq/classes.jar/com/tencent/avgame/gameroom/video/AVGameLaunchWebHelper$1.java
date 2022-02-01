@@ -1,15 +1,15 @@
 package com.tencent.avgame.gameroom.video;
 
-import nfn;
+import nmf;
 
 public class AVGameLaunchWebHelper$1
   implements Runnable
 {
-  public AVGameLaunchWebHelper$1(nfn paramnfn) {}
+  public AVGameLaunchWebHelper$1(nmf paramnmf) {}
   
   public void run()
   {
-    nfn.a(this.this$0);
+    nmf.a(this.this$0);
   }
 }
 

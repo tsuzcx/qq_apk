@@ -1,25 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.PoiMapActivity;
 
-class nsz
-  implements View.OnClickListener
+public class nsz
+  extends nsy
 {
-  nsz(nst paramnst) {}
+  public String a;
+  public String b;
+  public String c;
+  public int d;
   
-  public void onClick(View paramView)
+  public nsz(PoiMapActivity paramPoiMapActivity)
   {
-    ((AccountDetailActivity)this.a.jdField_a_of_type_AndroidAppActivity).E();
-    String str2 = this.a.jdField_a_of_type_JavaLangString;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType == 1) {}
-    for (String str1 = "02";; str1 = "01")
-    {
-      odq.a(null, str2, "0X8007CA4", "0X8007CA4", 0, 0, str1, String.valueOf(nst.a(this.a)), "", "", false);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
+    super(paramPoiMapActivity);
   }
 }
 

@@ -1,61 +1,54 @@
-import android.os.Bundle;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_bhd_upload_pic.RspStoryVideo;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import java.util.HashMap;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
 
 class sei
-  extends TransProcessorHandler
+  implements seb
 {
-  sei(seh paramseh) {}
+  sei(seg paramseg) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    Object localObject = (FileMsg)paramMessage.obj;
-    if ((localObject == null) || ((((FileMsg)localObject).fileType != 24) && (((FileMsg)localObject).fileType != 32))) {}
-    while ((((FileMsg)localObject).fileType == 24) && (((FileMsg)localObject).commandId != 54)) {
-      return;
-    }
-    switch (paramMessage.what)
+    seg.a(this.a, NetConnInfoCenter.getServerTimeMillis());
+  }
+  
+  public void a(float paramFloat)
+  {
+    seg.a(this.a, paramFloat);
+  }
+  
+  public void a(int paramInt, String paramString1, String paramString2, String paramString3)
+  {
+    switch (paramInt)
     {
-    case 1001: 
-    case 1002: 
-    case 1004: 
-    case 1005: 
-    case 2001: 
-    case 2003: 
     default: 
       return;
-    }
-    paramMessage = (Bundle)this.a.b.remove(Long.valueOf(((FileMsg)localObject).uniseq));
-    paramMessage.putLong("uniseq", ((FileMsg)localObject).uniseq);
-    paramMessage.putString("pic_server_id", ((FileMsg)localObject).fileUrl);
-    qqstory_bhd_upload_pic.RspStoryVideo localRspStoryVideo = new qqstory_bhd_upload_pic.RspStoryVideo();
-    try
-    {
-      localRspStoryVideo.mergeFrom(((FileMsg)localObject).bdhExtendInfo);
-      if (localRspStoryVideo.retcode.get() == 0)
-      {
-        localObject = localRspStoryVideo.cdn_url.get().toStringUtf8();
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          paramMessage.putString("cdn_url", (String)localObject);
-        }
+    case 0: 
+      seg.a(this.a, 4);
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoDeliverController", 2, "mVideoTransProcessorHandler mVideoMd5=" + paramString2 + ", mVideoUuid=" + paramString3 + ", mVideoUrl=" + paramString1);
       }
-      label214:
-      this.a.a.a(83, paramMessage);
+      seg.b(this.a, NetConnInfoCenter.getServerTimeMillis());
+      olh.a(seg.a(this.a), "", "0X8008181", "0X8008181", 0, 0, String.valueOf(seg.a(this.a)), String.valueOf(seg.b(this.a)), String.valueOf(seg.c(this.a) - seg.d(this.a)), String.valueOf(seg.e(this.a) - seg.f(this.a)));
+      seg.a(this.a, 0, seg.a(this.a), seg.b(this.a), paramString1, paramString2, paramString3);
+      paramString1 = sdx.a().a(seg.a(this.a)).b(seg.b(this.a)).d(paramString2).c(paramString1).e(paramString3).a(seg.b(this.a)).b(seg.g(this.a)).a();
+      seg.a(this.a, paramString1);
+      return;
+    case 1001: 
+      seg.b(this.a, 6);
+      return;
+    case 1002: 
+      seg.b(this.a, 5);
+      return;
+    case 1003: 
+      seg.b(this.a, 7);
+      return;
+    case 1004: 
+      seg.b(this.a, 7);
+      seg.c(this.a, 1004);
+      olh.a(seg.a(this.a), "", "0X8008181", "0X8008181", 0, 1, String.valueOf(seg.a(this.a)), String.valueOf(seg.b(this.a)), String.valueOf(seg.c(this.a) - seg.d(this.a)), String.valueOf(seg.e(this.a) - seg.f(this.a)));
       return;
     }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      break label214;
-    }
+    seg.b(this.a, 12);
   }
 }
 

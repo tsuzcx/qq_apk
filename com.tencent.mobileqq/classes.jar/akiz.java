@@ -1,64 +1,34 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.recent.BannerManager.40.1;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.ADView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.LinkedList;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import com.tencent.mobileqq.activity.phone.RebindActivity;
 
 public class akiz
-  implements View.OnClickListener
+  extends azip
 {
-  akiz(akho paramakho) {}
+  public akiz(RebindActivity paramRebindActivity) {}
   
-  public void onClick(View paramView)
+  protected void b(boolean paramBoolean, Bundle paramBundle)
   {
-    akho.a(this.a).getSharedPreferences("mobileQQ", 0).edit().putBoolean("push_banner_display" + akho.a(this.a).app.getAccount(), false).commit();
-    Object localObject = akho.a(this.a)[24];
-    ADView localADView;
-    if ((localObject != null) && (((akhk)localObject).a != null))
+    this.a.b();
+    if (paramBoolean)
     {
-      localADView = (ADView)((akhk)localObject).a.findViewById(2131362234);
-      if (localADView == null) {
-        break label307;
-      }
-    }
-    label307:
-    for (localObject = localADView.a(0);; localObject = null)
-    {
-      if (localObject != null)
-      {
-        int j = ((ViewGroup)localObject).getChildCount();
-        LinkedList localLinkedList = new LinkedList();
-        int i = 0;
-        while (i < j)
-        {
-          View localView = ((ViewGroup)localObject).getChildAt(i);
-          if (localView != null) {
-            localLinkedList.add((bcgq)localView.getTag());
-          }
-          i += 1;
-        }
-        ThreadManager.getFileThreadHandler().post(new BannerManager.40.1(this, j, localLinkedList));
-        if (localADView != null) {
-          localADView.h();
-        }
-      }
-      this.a.a(24, 0);
-      this.a.a(-1, null);
-      this.a.e = false;
-      bcef.b(akho.a(this.a).app, "dc00898", "", "", "0X80087C3", "0X80087C3", 0, 0, "", "", "", "");
-      bcef.a(akho.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 12, 0, "", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
+      paramBundle = new Intent(this.a, BindVerifyActivity.class);
+      paramBundle.putExtra("kSrouce", this.a.jdField_a_of_type_Int);
+      paramBundle.putExtra("k_number", this.a.jdField_a_of_type_JavaLangString);
+      paramBundle.putExtra("kBindType", RebindActivity.a(this.a));
+      paramBundle.putExtra("keyReqBindMode", 1);
+      paramBundle.putExtra("k_country_code", RebindActivity.a(this.a));
+      paramBundle.putExtra("cmd_param_is_from_uni", RebindActivity.a(this.a));
+      paramBundle.putExtra("cmd_param_is_from_change_bind", RebindActivity.b(this.a));
+      paramBundle.addFlags(67108864);
+      paramBundle.putExtra("k_is_block", this.a.getIntent().getBooleanExtra("k_is_block", false));
+      paramBundle.putExtra("key_is_from_qqhotspot", this.a.getIntent().getBooleanExtra("key_is_from_qqhotspot", false));
+      paramBundle.putExtra("key_is_from_qav_multi_call", this.a.getIntent().getBooleanExtra("key_is_from_qav_multi_call", false));
+      this.a.startActivityForResult(paramBundle, 1);
       return;
     }
+    this.a.a(2131718057);
   }
 }
 

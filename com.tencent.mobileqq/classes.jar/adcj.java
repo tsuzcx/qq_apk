@@ -1,22 +1,88 @@
-import android.view.animation.ScaleAnimation;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.activity.ContactBindedActivity;
+import android.app.Activity;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class adcj
-  extends ScaleAnimation
+  extends adcg
 {
-  public adcj(ContactBindedActivity paramContactBindedActivity, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt1, float paramFloat5, int paramInt2, float paramFloat6)
+  private boolean a(adaa paramadaa)
   {
-    super(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramInt1, paramFloat5, paramInt2, paramFloat6);
+    Object localObject = null;
+    if ((this.jdField_a_of_type_Adch.a() instanceof biki)) {
+      localObject = (biki)this.jdField_a_of_type_Adch.a();
+    }
+    if (localObject == null) {
+      return false;
+    }
+    localObject = ((biki)localObject).getShare();
+    if (localObject == null) {
+      return false;
+    }
+    ((aasr)localObject).a(paramadaa);
+    return true;
   }
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  private boolean a(JSONObject paramJSONObject)
   {
-    if (paramTransformation == null) {
-      return;
+    biki localbiki = null;
+    if ((this.jdField_a_of_type_Adch.a() instanceof biki)) {
+      localbiki = (biki)this.jdField_a_of_type_Adch.a();
     }
-    super.applyTransformation(paramFloat, paramTransformation);
-    paramTransformation.setAlpha(0.0F + 1.0F * paramFloat);
+    if (localbiki == null) {
+      return false;
+    }
+    Bundle localBundle = new Bundle();
+    String str1 = paramJSONObject.optString("title");
+    String str2 = paramJSONObject.optString("desc");
+    String str3 = paramJSONObject.optString("shareUrl");
+    paramJSONObject = paramJSONObject.optString("imageUrl");
+    String str4 = this.jdField_a_of_type_Adad.a().b;
+    if (!TextUtils.isEmpty(str4))
+    {
+      localBundle.putString("source_name", str4);
+      localBundle.putString("source_icon", this.jdField_a_of_type_Adad.a().e);
+    }
+    localBundle.putInt("extra_url_info_from", 1);
+    return localbiki.setSummary(str1, str2, str3, paramJSONObject, localBundle);
+  }
+  
+  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull adaa paramadaa)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    case 25: 
+      if (a(paramJSONObject)) {
+        addh.a(paramadaa, adac.a);
+      }
+      break;
+    }
+    for (;;)
+    {
+      return true;
+      addh.a(paramadaa, -1, "");
+      continue;
+      addh.a(paramadaa, adac.a);
+      paramString = this.jdField_a_of_type_Adad.a();
+      if ((paramString == null) || (paramString.isFinishing()))
+      {
+        QLog.e("WVUIModule", 1, "execute activity is null or finish");
+        return false;
+      }
+      paramString.finish();
+      continue;
+      addh.a(paramadaa, adac.a);
+      continue;
+      if (a(paramadaa)) {
+        addh.a(paramadaa, adac.a);
+      } else {
+        addh.a(paramadaa, -1, "");
+      }
+    }
   }
 }
 

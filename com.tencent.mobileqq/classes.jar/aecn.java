@@ -1,26 +1,26 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterBaseActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aecn
-  extends Handler
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aecn(RegisterBaseActivity paramRegisterBaseActivity) {}
+  public aecn(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    switch (paramMessage.what)
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
     {
-    default: 
+      bdla.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Enter_sendmsg", 0, i, "", "", "", "");
+      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131694743), "qqsetting_enter_sendmsg_key", paramBoolean);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
     }
-    this.a.c();
-    String str = paramMessage.obj.toString();
-    paramMessage = str;
-    if (str == null) {
-      paramMessage = this.a.getString(2131719378);
-    }
-    this.a.a(paramMessage, 1);
   }
 }
 

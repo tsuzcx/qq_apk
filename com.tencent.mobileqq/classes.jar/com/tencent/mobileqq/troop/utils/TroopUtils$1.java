@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.utils;
 
 import android.text.TextUtils;
-import bflq;
-import bftc;
+import bguh;
+import bhbu;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 final class TroopUtils$1
-  implements bflq
+  implements bguh
 {
   TroopUtils$1(TroopInfoData paramTroopInfoData) {}
   
@@ -32,11 +32,11 @@ final class TroopUtils$1
       str1 = "share_wechat";
     }
     String str3 = this.val$mTroopInfoData.troopUin;
-    String str4 = bftc.a(this.val$mTroopInfoData);
+    String str4 = bhbu.a(this.val$mTroopInfoData);
     if (paramBoolean) {}
     for (String str2 = "0";; str2 = "1")
     {
-      bftc.a("Grp_share", "grpData_admin", str1, 0, 0, new String[] { str3, str4, str2 });
+      bhbu.a("Grp_share", "grpData_admin", str1, 0, 0, new String[] { str3, str4, str2 });
       return;
     }
   }

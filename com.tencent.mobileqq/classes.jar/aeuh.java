@@ -1,35 +1,56 @@
-import Wallet.AcsMsg;
-import android.os.Bundle;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePageArkView;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity.4.1;
+import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
+import mqq.observer.AccountObserver;
 
 public class aeuh
-  implements Handler.Callback
+  extends AccountObserver
 {
-  public aeuh(ActivateFriendActivity paramActivateFriendActivity) {}
+  public aeuh(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2, String paramString4)
   {
-    switch (paramMessage.what)
-    {
+    super.onLoginFailed(paramString1, paramString2, paramString3, paramInt1, paramArrayOfByte1, paramInt2, paramArrayOfByte2, paramString4);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("RegisterQQNumberActivity", 4, String.format(Locale.getDefault(), "onLoginFailed, ret: %s, uin: %s, msg: %s, alias: %s", new Object[] { Integer.valueOf(paramInt1), RegisterQQNumberActivity.a(this.a), paramString2, paramString1 }));
     }
-    for (;;)
-    {
-      return false;
-      if (ActivateFriendActivity.a(this.a) != null)
-      {
-        ActivateFriendActivity.a(this.a).e();
-        continue;
-        paramMessage = (Bundle)paramMessage.obj;
-        ActivateFriendActivity.a(this.a, (ArrayList)paramMessage.getSerializable("models"), (List)paramMessage.getSerializable("list"), paramMessage.getInt("count"));
-        continue;
-        paramMessage = (Bundle)paramMessage.obj;
-        this.a.a((AcsMsg)paramMessage.getSerializable("acsMsg"));
-      }
+    RegisterQQNumberActivity.a(this.a);
+    paramString1 = new Intent(this.a, LoginActivity.class);
+    paramString1.putExtra("uin", RegisterQQNumberActivity.a(this.a));
+    paramString1.putExtra("tab_index", MainFragment.b);
+    paramString1.addFlags(131072);
+    this.a.startActivity(paramString1);
+    this.a.finish();
+  }
+  
+  public void onLoginSuccess(String paramString1, String paramString2)
+  {
+    super.onLoginSuccess(paramString1, paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.d("RegisterQQNumberActivity", 2, "AccountObserver ,onLoginSuccess ");
+    }
+  }
+  
+  public void onLoginTimeout(String paramString)
+  {
+    super.onLoginTimeout(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("RegisterQQNumberActivity", 2, "AccountObserver ,onLoginTimeout ");
+    }
+    RegisterQQNumberActivity.a(this.a);
+    this.a.a.post(new RegisterQQNumberActivity.4.1(this));
+  }
+  
+  public void onUserCancel(String paramString)
+  {
+    super.onUserCancel(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("RegisterQQNumberActivity", 2, "AccountObserver ,onUserCancel ");
     }
   }
 }

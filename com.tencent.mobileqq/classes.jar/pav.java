@@ -1,15 +1,6 @@
-import java.util.List;
-
-public class pav
+public abstract interface pav
 {
-  public int a;
-  public String a;
-  public List<Integer> a;
-  public String b;
-  public List<Integer> b;
-  public String c;
-  
-  public pav(pau parampau) {}
+  public abstract void a(long paramLong);
 }
 
 

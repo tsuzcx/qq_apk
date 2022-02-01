@@ -1,12 +1,6 @@
-class ayxm
-  implements zzc
+public abstract interface ayxm
 {
-  ayxm(ayxl paramayxl) {}
-  
-  public void a()
-  {
-    aytl.m(ayxl.a(this.a), (aymg)ayxl.a(this.a));
-  }
+  public abstract void a();
 }
 
 

@@ -1,20 +1,20 @@
 package com.tencent.device.msg.activities;
 
-import aaur;
-import bbqf;
-import bbqx;
+import abkd;
+import bcwz;
+import bcxr;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 
 public class DevShortVideoItemBuilder$2
   implements Runnable
 {
-  public DevShortVideoItemBuilder$2(aaur paramaaur, MessageForShortVideo paramMessageForShortVideo) {}
+  public DevShortVideoItemBuilder$2(abkd paramabkd, MessageForShortVideo paramMessageForShortVideo) {}
   
   public void run()
   {
-    bbqx localbbqx = bbqf.a(1, this.this$0.c);
-    localbbqx.a(bbqf.a(this.this$0.c, this.a, localbbqx));
-    bbqf.a(localbbqx, this.this$0.a);
+    bcxr localbcxr = bcwz.a(1, this.this$0.c);
+    localbcxr.a(bcwz.a(this.this$0.c, this.a, localbcxr));
+    bcwz.a(localbcxr, this.this$0.a);
   }
 }
 

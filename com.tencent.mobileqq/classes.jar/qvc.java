@@ -1,64 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowGroup;
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
-public class qvc
-  implements View.OnClickListener
+class qvc
+  extends NativeTextImp
 {
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  rda jdField_a_of_type_Rda;
-  ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView;
-  RelativeLayout[] jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout;
-  TextView[] jdField_a_of_type_ArrayOfAndroidWidgetTextView;
-  LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView[] jdField_b_of_type_ArrayOfAndroidWidgetImageView;
-  ImageView[] c;
-  
-  private qvc(ComponentContentRecommendFollowGroup paramComponentContentRecommendFollowGroup) {}
-  
-  public void onClick(View paramView)
+  qvc(qvb paramqvb, Context paramContext)
   {
-    boolean bool = true;
-    switch (paramView.getId())
+    super(paramContext);
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    if (!TextUtils.isEmpty(getText()))
     {
-    default: 
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    case 2131366980: 
-      i = 0;
-      label50:
-      if (i < this.jdField_a_of_type_Rda.a.size()) {
-        if (((RecommendFollowInfo)this.jdField_a_of_type_Rda.a.get(i)).isFollowed) {
-          break;
-        }
-      }
-      break;
+      this.a.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, getWidth(), getHeight());
+      this.a.b.set(0.0F, 0.0F, getWidth() * qvb.a(this.a) / 100.0F, getHeight());
+      this.a.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor(qvb.a(this.a)));
+      paramCanvas.drawRoundRect(this.a.jdField_a_of_type_AndroidGraphicsRectF, AIOUtils.dp2px(2.0F, getResources()), AIOUtils.dp2px(2.0F, getResources()), this.a.jdField_a_of_type_AndroidGraphicsPaint);
+      this.a.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor(qvb.b(this.a)));
+      paramCanvas.drawRoundRect(this.a.b, AIOUtils.dp2px(2.0F, getResources()), AIOUtils.dp2px(2.0F, getResources()), this.a.jdField_a_of_type_AndroidGraphicsPaint);
     }
-    for (int i = 0;; i = 1)
-    {
-      ComponentContentRecommendFollowGroup localComponentContentRecommendFollowGroup = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowGroup;
-      List localList = this.jdField_a_of_type_Rda.a;
-      if (i == 0) {}
-      for (;;)
-      {
-        localComponentContentRecommendFollowGroup.a(localList, bool);
-        break;
-        i += 1;
-        break label50;
-        bool = false;
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowGroup.a((RecommendFollowInfo)paramView.getTag());
-      break;
-    }
+    super.draw(paramCanvas);
   }
 }
 

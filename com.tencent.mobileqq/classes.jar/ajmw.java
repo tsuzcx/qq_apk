@@ -1,19 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
-
-public class ajmw
-  implements DialogInterface.OnDismissListener
+public abstract interface ajmw
 {
-  public ajmw(DialogBaseActivity paramDialogBaseActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (this.a.a != null) {
-      this.a.a.setOnDismissListener(null);
-    }
-    this.a.a = null;
-  }
+  public abstract void a();
 }
 
 

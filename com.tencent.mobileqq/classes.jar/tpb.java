@@ -1,18 +1,20 @@
-public abstract interface tpb
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+
+public class tpb
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a();
+  public tpb(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void b(int paramInt);
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.invalidate();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tpb
  * JD-Core Version:    0.7.0.1
  */

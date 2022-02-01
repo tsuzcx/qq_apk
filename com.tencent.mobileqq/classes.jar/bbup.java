@@ -1,6 +1,19 @@
-public abstract interface bbup
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class bbup
+  implements View.OnClickListener
 {
-  public abstract void onAutoFocusCallback(boolean paramBoolean1, boolean paramBoolean2);
+  public bbup(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    bdla.b(null, "dc00898", "", "", "0X800A98A", "0X800A98A", 2, 0, "0", "0", "", "");
+    SignatureHistoryFragment.a(this.a, true);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

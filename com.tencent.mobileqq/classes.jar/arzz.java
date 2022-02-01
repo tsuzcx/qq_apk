@@ -1,42 +1,48 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
 
 public class arzz
-  implements View.OnClickListener
 {
-  public arzz(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  public int a;
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onClick(View paramView)
+  public arzz() {}
+  
+  public arzz(long paramLong, int paramInt)
   {
-    if (paramView == null) {
-      if (QLog.isColorLevel()) {
-        QLog.e(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 2, "qfilebaserecenttabview del error, tag is null");
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.getTag();
-      if (localFileManagerEntity != null)
-      {
-        if (this.a.jdField_a_of_type_Arvv != null) {
-          this.a.jdField_a_of_type_Arvv.a(null);
-        }
-        this.a.jdField_a_of_type_Long = localFileManagerEntity.nSessionId;
-        if (QfileBaseRecentFileTabView.m(this.a).getFileManagerEngine().b(this.a.jdField_a_of_type_Long)) {
-          this.a.a(localFileManagerEntity);
-        }
-      }
-      this.a.jdField_a_of_type_Arvv.a(Integer.valueOf(-1));
-      paramView.setVisibility(4);
-      this.a.g();
-    }
+    this.jdField_b_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public arzz(String paramString1, String paramString2, long paramLong, String paramString3, String paramString4)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Long = paramLong;
+    this.c = paramString3;
+    this.d = paramString4;
+  }
+  
+  public boolean a()
+  {
+    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString));
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DoutuItem uuid:").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", md5").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", fileId").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", url").append(this.c);
+    localStringBuilder.append(",key:").append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(",count:").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",picUin:").append(this.d);
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,23 +1,19 @@
 import android.view.View;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class awnp
-  implements bjoe
+class awnp
+  implements View.OnClickListener
 {
-  public awnp(NearbyGuideActivity paramNearbyGuideActivity, bjnw parambjnw) {}
+  awnp(awnm paramawnm, View.OnClickListener paramOnClickListener) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bjnw.cancel();
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.a);
-      return;
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.f();
+    this.jdField_a_of_type_Awnm.b();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

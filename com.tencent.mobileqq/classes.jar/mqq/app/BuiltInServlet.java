@@ -66,6 +66,49 @@ public class BuiltInServlet
     }
   }
   
+  private void bundlePutErrorUrl(FromServiceMsg paramFromServiceMsg, Bundle paramBundle)
+  {
+    if ((paramFromServiceMsg == null) || (paramBundle == null)) {
+      return;
+    }
+    paramFromServiceMsg = paramFromServiceMsg.getAttribute("resp_login_url");
+    if ((paramFromServiceMsg instanceof String)) {}
+    for (paramFromServiceMsg = (String)paramFromServiceMsg;; paramFromServiceMsg = "")
+    {
+      paramBundle.putString("errorUrl", paramFromServiceMsg);
+      return;
+    }
+  }
+  
+  private void bundlePutTlv543(FromServiceMsg paramFromServiceMsg, Bundle paramBundle)
+  {
+    if ((paramFromServiceMsg == null) || (paramBundle == null)) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          WUserSigInfo localWUserSigInfo1;
+          do
+          {
+            return;
+            WUserSigInfo localWUserSigInfo2 = (WUserSigInfo)paramFromServiceMsg.getAttribute("userSigInfo");
+            localWUserSigInfo1 = localWUserSigInfo2;
+            if (localWUserSigInfo2 != null) {
+              break;
+            }
+            localWUserSigInfo1 = (WUserSigInfo)paramFromServiceMsg.getAttribute("sigInfo");
+          } while (localWUserSigInfo1 == null);
+          paramFromServiceMsg = localWUserSigInfo1.loginResultTLVMap;
+        } while (paramFromServiceMsg == null);
+        paramFromServiceMsg = (tlv_t)paramFromServiceMsg.get(Integer.valueOf(1347));
+      } while (paramFromServiceMsg == null);
+      paramFromServiceMsg = paramFromServiceMsg.get_data();
+    } while (paramFromServiceMsg == null);
+    paramBundle.putByteArray("tlverror", paramFromServiceMsg);
+  }
+  
   private boolean dispatchOnReceiveForRegister(int paramInt, Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
     switch (paramInt)
@@ -386,26 +429,27 @@ public class BuiltInServlet
     localBundle.putString("uin", paramFromServiceMsg.getUin());
     localBundle.putString("alias", paramIntent.getStringExtra("account"));
     localBundle.putString("error", paramFromServiceMsg.getBusinessFailMsg());
-    Object localObject2 = paramFromServiceMsg.getAttribute("resp_login_url");
-    Object localObject1 = "";
-    if ((localObject2 instanceof String)) {
-      localObject1 = (String)localObject2;
+    Object localObject1 = paramFromServiceMsg.getAttribute("resp_login_url");
+    String str = "";
+    if ((localObject1 instanceof String)) {
+      str = (String)localObject1;
     }
-    localObject2 = paramFromServiceMsg.getAttribute("resp_logini_ret");
-    if ((localObject2 instanceof Integer)) {}
-    label565:
-    for (int i = ((Integer)localObject2).intValue();; i = 0)
+    localObject1 = paramFromServiceMsg.getAttribute("resp_logini_ret");
+    if ((localObject1 instanceof Integer)) {}
+    for (int i = ((Integer)localObject1).intValue();; i = 0)
     {
-      Object localObject3 = paramFromServiceMsg.getAttribute("resp_login_lhsig");
-      localObject2 = null;
-      if ((localObject3 instanceof byte[])) {
-        localObject2 = (byte[])localObject3;
+      Object localObject2 = paramFromServiceMsg.getAttribute("resp_login_lhsig");
+      localObject1 = null;
+      if ((localObject2 instanceof byte[])) {
+        localObject1 = (byte[])localObject2;
       }
       try
       {
-        localObject3 = (ErrMsg)paramFromServiceMsg.getAttribute("lastError");
-        if (localObject3 != null) {
-          localBundle.putInt("errorver", ((ErrMsg)localObject3).getVersion());
+        localObject2 = (ErrMsg)paramFromServiceMsg.getAttribute("lastError");
+        if (localObject2 != null)
+        {
+          localBundle.putInt("errorver", ((ErrMsg)localObject2).getVersion());
+          localBundle.putString("title", ((ErrMsg)localObject2).getTitle());
         }
       }
       catch (Exception localException2)
@@ -414,38 +458,28 @@ public class BuiltInServlet
         {
           QLog.e("mqq", 1, "getAttribute error:" + localException2.getMessage());
           continue;
-          getAppRuntime().getApplication().setProperty(Constants.PropertiesKey.uinDisplayName.toString() + paramFromServiceMsg.getUin(), (String)localObject1);
+          getAppRuntime().getApplication().setProperty(Constants.PropertiesKey.uinDisplayName.toString() + paramFromServiceMsg.getUin(), str);
           continue;
           MsfSdkUtils.updateSimpleAccountNotCreate(paramFromServiceMsg.getUin(), false);
           try
           {
-            localObject1 = (WUserSigInfo)paramFromServiceMsg.getAttribute("userSigInfo");
-            if ((localObject1 != null) && (((WUserSigInfo)localObject1).loginResultTLVMap != null) && (((WUserSigInfo)localObject1).loginResultTLVMap.get(Integer.valueOf(1347)) != null))
-            {
-              localObject1 = ((tlv_t)((WUserSigInfo)localObject1).loginResultTLVMap.get(Integer.valueOf(1347))).get_data();
-              if (localObject1 != null) {
-                break label565;
-              }
-            }
-            QLog.d("ACTION_LOGIN", 1, "ignore tlv543Bytes");
+            bundlePutTlv543(paramFromServiceMsg, localBundle);
           }
           catch (Exception localException1)
           {
             QLog.e("ACTION_LOGIN", 1, "getAttribute userSignInfo error:" + localException1.getMessage());
           }
-          continue;
-          localBundle.putByteArray("tlverror", localException1);
         }
       }
-      localBundle.putString("errorurl", (String)localObject1);
+      localBundle.putString("errorurl", str);
       localBundle.putInt("loginret", i);
       localBundle.putInt("code", paramFromServiceMsg.getResultCode());
-      localBundle.putByteArray("lhsig", (byte[])localObject2);
+      localBundle.putByteArray("lhsig", (byte[])localObject1);
       if (paramFromServiceMsg.isSuccess())
       {
         MsfSdkUtils.addLoginSimpleAccount(paramFromServiceMsg.getUin(), true);
-        localObject1 = paramIntent.getStringExtra("account");
-        if (!TextUtils.isEmpty((CharSequence)localObject1))
+        str = paramIntent.getStringExtra("account");
+        if (!TextUtils.isEmpty(str))
         {
           if (paramIntent.getByteArrayExtra("to_login_uin_encrypt") != null) {
             getAppRuntime().getApplication().setProperty(Constants.PropertiesKey.uinDisplayName.toString() + paramFromServiceMsg.getUin(), paramFromServiceMsg.getUin());
@@ -915,8 +949,14 @@ public class BuiltInServlet
       localBundle.putByteArray("st_temp_key", (byte[])paramFromServiceMsg.getAttribute("st_temp_key"));
     }
     Object localObject = paramFromServiceMsg.getAttribute("ret");
-    if ((localObject instanceof Integer)) {
+    if ((localObject instanceof Integer))
+    {
       localBundle.putInt("ret", ((Integer)localObject).intValue());
+      if (((Integer)localObject).intValue() == 40)
+      {
+        bundlePutTlv543(paramFromServiceMsg, localBundle);
+        bundlePutErrorUrl(paramFromServiceMsg, localBundle);
+      }
     }
     for (;;)
     {
@@ -1025,19 +1065,19 @@ public class BuiltInServlet
     localBundle.putString("alias", paramIntent.getStringExtra("subaccount"));
     localBundle.putString("error", paramFromServiceMsg.getBusinessFailMsg());
     localBundle.putInt("code", paramFromServiceMsg.getResultCode());
-    String str;
+    Object localObject;
     if (paramFromServiceMsg.isSuccess())
     {
       MsfSdkUtils.addLoginSimpleAccount(paramFromServiceMsg.getUin(), true);
-      str = paramIntent.getStringExtra("subaccount");
-      if (!TextUtils.isEmpty(str)) {
-        getAppRuntime().getApplication().setProperty(Constants.PropertiesKey.uinDisplayName.toString() + paramFromServiceMsg.getUin(), str);
+      localObject = paramIntent.getStringExtra("subaccount");
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        getAppRuntime().getApplication().setProperty(Constants.PropertiesKey.uinDisplayName.toString() + paramFromServiceMsg.getUin(), (String)localObject);
       }
     }
     for (;;)
     {
-      str = (String)paramFromServiceMsg.getAttribute("mainaccount");
-      localBundle.putString("submainaccount", str);
+      localObject = (String)paramFromServiceMsg.getAttribute("mainaccount");
+      localBundle.putString("submainaccount", (String)localObject);
       SimpleAccount localSimpleAccount = getAppRuntime().getApplication().getFirstSimpleAccount();
       long l3 = System.currentTimeMillis();
       l1 = l3;
@@ -1072,8 +1112,8 @@ public class BuiltInServlet
       if (paramFromServiceMsg.getUin() != null) {
         getAppRuntime().getApplication().setProperty(paramFromServiceMsg.getUin() + Constants.Key._logintime, String.valueOf(l1));
       }
-      if (str != null) {
-        getAppRuntime().getApplication().setProperty(str + Constants.Key._logintime, String.valueOf(l1 + 1L));
+      if (localObject != null) {
+        getAppRuntime().getApplication().setProperty((String)localObject + Constants.Key._logintime, String.valueOf(l1 + 1L));
       }
       getAppRuntime().getApplication().setSortAccountList(MsfSdkUtils.getLoginedAccountList());
       if (QLog.isColorLevel()) {
@@ -1082,6 +1122,17 @@ public class BuiltInServlet
       notifyObserver(paramIntent, 1035, paramFromServiceMsg.isSuccess(), localBundle, SubAccountObserver.class);
       return;
       MsfSdkUtils.updateSimpleAccountNotCreate(paramFromServiceMsg.getUin(), false);
+      localBundle.putParcelable("lastError", (Parcelable)paramFromServiceMsg.getAttribute("lastError"));
+      localObject = paramFromServiceMsg.getAttribute("ret");
+      if ((localObject instanceof Integer))
+      {
+        localBundle.putInt("ret", ((Integer)localObject).intValue());
+        if (((Integer)localObject).intValue() == 40)
+        {
+          bundlePutTlv543(paramFromServiceMsg, localBundle);
+          bundlePutErrorUrl(paramFromServiceMsg, localBundle);
+        }
+      }
     }
   }
   
@@ -1369,16 +1420,17 @@ public class BuiltInServlet
   
   private void serviceForActionRegistMessagePush(Intent paramIntent)
   {
-    byte b = 1;
     if (!this.isRegist)
     {
       serviceForActionRegistCommandPush(paramIntent);
       this.isRegist = true;
     }
     PushRegisterInfo localPushRegisterInfo = new PushRegisterInfo();
+    byte b;
     Object localObject;
     if (paramIntent.getBooleanExtra("kick", false))
     {
+      b = 1;
       localPushRegisterInfo.bKikPC = b;
       localPushRegisterInfo.bKikWeak = 0;
       AppRuntime.Status localStatus = (AppRuntime.Status)paramIntent.getSerializableExtra("onlineStatus");
@@ -1400,28 +1452,33 @@ public class BuiltInServlet
       localPushRegisterInfo.iLargeSeq = paramIntent.getLongExtra("K_SEQ", 0L);
       localPushRegisterInfo.uin = getAppRuntime().getAccount();
       if (localStatus != AppRuntime.Status.offline) {
-        break label372;
+        break label433;
       }
       localObject = getAppRuntime().getService().msfSub.getUnRegisterPushMsg(localPushRegisterInfo);
-      label268:
+      label269:
       if (QLog.isColorLevel()) {
         QLog.d("Q.contacts.", 2, "BuiltInServlet.ACTION_REGIST_MESSAGE_PUSH " + localStatus + ", " + localPushRegisterInfo.timeStamp + ", " + localPushRegisterInfo.iLargeSeq + ", isUserSet: " + bool);
       }
       if (!bool) {
-        break label392;
+        break label453;
       }
       ((ToServiceMsg)localObject).getAttributes().put("regPushReason", RegPushReason.setOnlineStatus);
     }
     for (;;)
     {
+      int i = paramIntent.getIntExtra("vendor_push_type", 1);
+      ((ToServiceMsg)localObject).getAttributes().put("vendor_push_type", Integer.valueOf(i));
+      if (QLog.isColorLevel()) {
+        QLog.d("Mqq", 2, "mqq-BuiltInServlet.vendor_push_type:" + i);
+      }
       sendToMSF(paramIntent, (ToServiceMsg)localObject);
       return;
       b = 0;
       break;
-      label372:
+      label433:
       localObject = getAppRuntime().getService().msfSub.getRegisterPushMsg(localPushRegisterInfo);
-      break label268;
-      label392:
+      break label269;
+      label453:
       ((ToServiceMsg)localObject).getAttributes().put("regPushReason", RegPushReason.appRegister);
     }
   }
@@ -1475,19 +1532,19 @@ public class BuiltInServlet
       ((HashMap)localObject4).put("wifi_mac", localObject1);
       localObject4 = ((ToServiceMsg)localObject3).getAttributes();
       if (localObject2 != null) {
-        break label293;
+        break label289;
       }
       localObject1 = "";
-      label227:
+      label224:
       ((HashMap)localObject4).put("os_language", localObject1);
       ((ToServiceMsg)localObject3).getAttributes().put("qq_language", Integer.valueOf(i));
       localObject2 = ((ToServiceMsg)localObject3).getAttributes();
       if (str1 != null) {
-        break label300;
+        break label296;
       }
     }
-    label293:
-    label300:
+    label289:
+    label296:
     for (localObject1 = "";; localObject1 = str1)
     {
       ((HashMap)localObject2).put("gps_location", localObject1);
@@ -1495,7 +1552,7 @@ public class BuiltInServlet
       return;
       break;
       localObject1 = localObject2;
-      break label227;
+      break label224;
     }
   }
   

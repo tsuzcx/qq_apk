@@ -1,41 +1,50 @@
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import eipc.EIPCResult;
 
 public class apux
+  implements apvl
 {
-  private boolean a;
-  
-  public static apux a(String paramString)
+  private int a()
   {
-    if (paramString == null) {}
-    for (;;)
-    {
-      return null;
-      try
-      {
-        apux localapux = new apux();
-        if (new JSONObject(paramString).optInt("showTakeSameEntrance", 0) == 1) {}
-        for (boolean bool = true;; bool = false)
-        {
-          localapux.a = bool;
-          return localapux;
-        }
-        if (!QLog.isColorLevel()) {}
-      }
-      catch (Exception paramString) {}
+    int i = -1;
+    if (lfl.a(BaseApplicationImpl.getContext())) {
+      i = 1;
     }
-    QLog.e("PttAutoChangeProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      return i;
+      if (AudioHelper.a(BaseApplicationImpl.getContext())) {
+        return 2;
+      }
+      localQQAppInterface = apuj.a();
+    } while (localQQAppInterface == null);
+    if (localQQAppInterface.getLoudSpeakerState()) {
+      return 4;
+    }
+    return 3;
   }
   
-  public boolean a()
+  public EIPCResult a(Bundle paramBundle)
   {
-    return this.a;
+    if (apuj.a() == null)
+    {
+      QLog.e("ArkApp.GetAudioOutputModeHandler", 1, "GetAudioOutputModeHandler.onCall, qq app is null");
+      return EIPCResult.createResult(-102, new Bundle());
+    }
+    int i = a();
+    paramBundle = new Bundle();
+    paramBundle.putInt("mode", i);
+    return EIPCResult.createResult(0, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apux
  * JD-Core Version:    0.7.0.1
  */

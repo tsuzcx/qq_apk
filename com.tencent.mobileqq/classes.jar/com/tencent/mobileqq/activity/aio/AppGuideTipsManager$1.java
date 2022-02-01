@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aeyb;
+import afpn;
 import android.text.TextUtils;
 import com.tencent.mobileqq.data.AppGuideTipsConfig;
 import com.tencent.mobileqq.persistence.EntityManager;
@@ -11,14 +11,14 @@ import java.util.Map;
 public class AppGuideTipsManager$1
   implements Runnable
 {
-  public AppGuideTipsManager$1(aeyb paramaeyb) {}
+  public AppGuideTipsManager$1(afpn paramafpn) {}
   
   public void run()
   {
-    aeyb.a(this.this$0);
+    afpn.a(this.this$0);
     this.this$0.c();
-    aeyb.a(this.this$0).clear();
-    ArrayList localArrayList = (ArrayList)aeyb.a(this.this$0).query(AppGuideTipsConfig.class, AppGuideTipsConfig.class.getSimpleName(), false, null, null, null, null, null, null);
+    afpn.a(this.this$0).clear();
+    ArrayList localArrayList = (ArrayList)afpn.a(this.this$0).query(AppGuideTipsConfig.class, AppGuideTipsConfig.class.getSimpleName(), false, null, null, null, null, null, null);
     if ((localArrayList == null) || (localArrayList.size() <= 0)) {}
     for (;;)
     {
@@ -51,15 +51,15 @@ public class AppGuideTipsManager$1
         label174:
         j += 1;
         break label137;
-        aeyb.a(this.this$0).put(localAppGuideTipsConfig.tipsType, localAppGuideTipsConfig);
+        afpn.a(this.this$0).put(localAppGuideTipsConfig.tipsType, localAppGuideTipsConfig);
         i += 1;
         break label71;
-        aeyb.a(this.this$0, true);
+        afpn.a(this.this$0, true);
         this.this$0.b();
         if (!QLog.isColorLevel()) {
           continue;
         }
-        QLog.d(aeyb.a, 2, "loadConfig, mTipsMap size=" + aeyb.a(this.this$0).size());
+        QLog.d(afpn.a, 2, "loadConfig, mTipsMap size=" + afpn.a(this.this$0).size());
         return;
       }
       catch (Exception localException)
@@ -71,7 +71,7 @@ public class AppGuideTipsManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AppGuideTipsManager.1
  * JD-Core Version:    0.7.0.1
  */

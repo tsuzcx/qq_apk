@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.activity.history;
 
-import aiva;
-import amtj;
+import ajqp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,11 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import anxa;
-import bhht;
-import bjmp;
+import anvx;
+import apac;
+import bisl;
+import bkyc;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.utils.VipUtils;
@@ -28,27 +29,27 @@ public class ChatHistoryAuthDevForRoamMsgFragment
   implements View.OnClickListener
 {
   Handler.Callback a;
-  public bhht a;
+  public bisl a;
   
   public ChatHistoryAuthDevForRoamMsgFragment()
   {
-    this.jdField_a_of_type_AndroidOsHandler$Callback = new aiva(this);
+    this.jdField_a_of_type_AndroidOsHandler$Callback = new ajqp(this);
   }
   
   private void a()
   {
-    anxa localanxa = (anxa)getActivity().app.getBusinessHandler(59);
-    if (localanxa != null)
+    apac localapac = (apac)getActivity().app.getBusinessHandler(BusinessHandlerFactory.GET_ROAMMESSAGE_HANDLER);
+    if (localapac != null)
     {
-      localanxa.a((short)1);
+      localapac.a((short)1);
       if (QLog.isColorLevel()) {
         QLog.d("ChatHistoryAuthDevForRoamMsgFragment", 2, "set_roam_message_auth_mode: 1");
       }
-      this.jdField_a_of_type_Bhht = new bhht(getActivity(), getActivity().getTitleBarHeight());
-      this.jdField_a_of_type_Bhht.setCancelable(false);
-      this.jdField_a_of_type_Bhht.a(amtj.a(2131700785));
+      this.jdField_a_of_type_Bisl = new bisl(getActivity(), getActivity().getTitleBarHeight());
+      this.jdField_a_of_type_Bisl.setCancelable(false);
+      this.jdField_a_of_type_Bisl.a(anvx.a(2131701136));
       if (!getActivity().isFinishing()) {
-        this.jdField_a_of_type_Bhht.show();
+        this.jdField_a_of_type_Bisl.show();
       }
     }
   }
@@ -61,17 +62,17 @@ public class ChatHistoryAuthDevForRoamMsgFragment
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    setTitle(getString(2131695842));
-    this.mContentView.findViewById(2131380242).setOnClickListener(this);
-    this.mContentView.findViewById(2131380245).setOnClickListener(this);
-    paramLayoutInflater = new bjmp(this.jdField_a_of_type_AndroidOsHandler$Callback);
+    setTitle(getString(2131696094));
+    this.mContentView.findViewById(2131380577).setOnClickListener(this);
+    this.mContentView.findViewById(2131380580).setOnClickListener(this);
+    paramLayoutInflater = new bkyc(this.jdField_a_of_type_AndroidOsHandler$Callback);
     getActivity().app.setHandler(getClass(), paramLayoutInflater);
     VipUtils.a(getActivity().app, "chat_history", "LockSet", "switch_devlock", 1, 0, new String[0]);
   }
   
   public int getContentLayoutId()
   {
-    return 2131561831;
+    return 2131561899;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -107,9 +108,9 @@ public class ChatHistoryAuthDevForRoamMsgFragment
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131380242)
+    if (paramView.getId() == 2131380577)
     {
-      this.mContentView.findViewById(2131380242).setEnabled(false);
+      this.mContentView.findViewById(2131380577).setEnabled(false);
       Intent localIntent = new Intent(getActivity(), QQBrowserActivity.class);
       localIntent.putExtra("url", "https://mapp.3g.qq.com/touch/psw/verify.jsp?_wv=5123&type=history&from=[from]".replace("[from]", "switch_devlock"));
       VipUtils.a(getActivity().app, "chat_history", "LockSet", "Clk_usedevlock", 1, 0, new String[0]);
@@ -119,7 +120,7 @@ public class ChatHistoryAuthDevForRoamMsgFragment
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (paramView.getId() == 2131380245)
+      if (paramView.getId() == 2131380580)
       {
         VipUtils.a(getActivity().app, "chat_history", "LockSet", "Clk_PswUse", 2, 0, new String[0]);
         getActivity().setResult(0);

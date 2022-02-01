@@ -2,7 +2,7 @@ package com.tencent.biz.qqstory.utils.ffmpeg;
 
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.qphone.base.util.QLog;
-import xwa;
+import ykv;
 
 final class FFmpegUtils$13
   extends ExecuteBinResponseCallback
@@ -13,7 +13,7 @@ final class FFmpegUtils$13
   {
     QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 1, paramString);
     this.val$endCallback.onFailure(paramString);
-    xwa.a("music_composite", "music_clip", 0, 1, new String[0]);
+    ykv.a("music_composite", "music_clip", 0, 1, new String[0]);
     QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.val$info.fakeVid + " clip audio failed  msg：" + paramString);
   }
   
@@ -26,7 +26,7 @@ final class FFmpegUtils$13
   public void onSuccess(String paramString)
   {
     paramString = String.valueOf(System.currentTimeMillis() - this.startime);
-    xwa.a("music_composite", "music_clip", 0, 0, new String[] { paramString });
+    ykv.a("music_composite", "music_clip", 0, 0, new String[] { paramString });
     QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.val$info.fakeVid + " clip audio end cost：" + paramString);
   }
 }

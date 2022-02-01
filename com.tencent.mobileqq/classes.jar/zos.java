@@ -1,23 +1,17 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-
-class zos
-  implements zop
+public class zos
 {
-  zos(zor paramzor, String paramString) {}
+  public Object a;
+  public boolean a;
   
-  public void callback(Bundle paramBundle)
+  public zos(Object paramObject)
   {
-    boolean bool = paramBundle.getBoolean("isSuccess", false);
-    if (bool)
-    {
-      paramBundle = paramBundle.getString("data");
-      this.jdField_a_of_type_Zor.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d(this.jdField_a_of_type_Zor.TAG, 2, "getTroopBarPublishInfo() in callback isSuccess=" + bool);
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
+  
+  public zos(Object paramObject, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

@@ -1,17 +1,18 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agiu;
+import ahbl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.medalwall.MedalWallMng;
 
 public class MedalNewsItemBuilder$3
   implements Runnable
 {
-  public MedalNewsItemBuilder$3(agiu paramagiu) {}
+  public MedalNewsItemBuilder$3(ahbl paramahbl) {}
   
   public void run()
   {
-    ((MedalWallMng)this.this$0.a.getManager(250)).a(2, null);
+    ((MedalWallMng)this.this$0.a.getManager(QQManagerFactory.MEDAL_WALL_MNG)).a(2, null);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mtt.abtestsdk.report;
 
-import com.tencent.mtt.abtestsdk.utils.ABTestUtil;
+import com.tencent.mtt.abtestsdk.utils.OkHttpHelper;
 import java.util.Map;
 
 class AttaReport$1
@@ -10,7 +10,7 @@ class AttaReport$1
   
   public void run()
   {
-    ABTestUtil.postRequestWithFormBody("https://h.trace.qq.com/kv", this.val$params, 0, new AttaReport.1.1(this), AttaReport.access$200(this.this$0));
+    OkHttpHelper.getsInstance().postRequestWithFormBody("https://h.trace.qq.com/kv", this.val$params, 0, new AttaReport.1.1(this));
   }
 }
 

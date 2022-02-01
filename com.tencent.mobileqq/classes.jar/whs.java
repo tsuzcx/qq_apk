@@ -1,55 +1,38 @@
-import android.os.Bundle;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.manager.TicketManager;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.common.app.AppInterface;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
 public class whs
-  extends wje
 {
-  private HashMap<String, String> a;
-  private boolean c;
+  public static whs a;
   
-  public whs()
+  public static whs a()
   {
-    this(null, false);
-  }
-  
-  public whs(HashMap<String, String> paramHashMap, boolean paramBoolean)
-  {
-    a(false, true);
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-    this.c = paramBoolean;
-  }
-  
-  public void a()
-  {
-    Object localObject2 = wkp.a();
-    Object localObject1 = ((QQAppInterface)localObject2).getCurrentAccountUin();
-    String str = ((TicketManager)((QQAppInterface)localObject2).getManager(2)).getSkey((String)localObject1);
-    localObject2 = new Bundle();
-    localObject1 = HttpUtil.batchUrlExchange(BaseApplication.getContext(), (String)localObject1, str, 1, this.jdField_a_of_type_JavaUtilHashMap, (Bundle)localObject2);
-    if ((!((Bundle)localObject2).getBoolean("isSuccess", false)) && (this.c))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w(this.b, 2, "shortenUrl failed size:" + ((HashMap)localObject1).size());
-      }
-      b(false);
-      return;
+    if (a == null) {
+      a = new whs();
     }
-    a("ShortenUrlJob_shortenedUrls", localObject1);
-    b(true);
+    return a;
   }
   
-  protected void a(Map<String, Object> paramMap)
+  private void a(String paramString, byte[] paramArrayOfByte, BusinessObserver paramBusinessObserver)
   {
-    if ((paramMap != null) && (!paramMap.isEmpty()) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()) && (paramMap.containsKey("ShortenUrlJob_shortenedUrls"))) {
-      this.jdField_a_of_type_JavaUtilHashMap = ((HashMap)wjv.a(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap, "ShortenUrlJob_shortenedUrls", this.jdField_a_of_type_JavaUtilHashMap));
-    }
+    QQStoryContext.a();
+    AppInterface localAppInterface = QQStoryContext.a();
+    NewIntent localNewIntent = new NewIntent(localAppInterface.getApp(), nta.class);
+    localNewIntent.putExtra("cmd", paramString);
+    localNewIntent.putExtra("data", paramArrayOfByte);
+    localNewIntent.putExtra("isResend", false);
+    localNewIntent.setObserver(paramBusinessObserver);
+    localAppInterface.startServlet(localNewIntent);
+  }
+  
+  public void a(whu paramwhu, whv paramwhv)
+  {
+    byte[] arrayOfByte = paramwhu.a();
+    String str = paramwhu.a();
+    long l = System.currentTimeMillis();
+    a(paramwhu.a(), arrayOfByte, new wht(this, l, paramwhu, str, paramwhv));
   }
 }
 

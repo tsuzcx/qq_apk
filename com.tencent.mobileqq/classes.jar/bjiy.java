@@ -1,236 +1,60 @@
-import java.util.regex.Pattern;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
 
 public class bjiy
 {
-  private String a = "";
-  private String b = "";
-  private String c = "";
-  private String d = "inc";
+  protected static bjiy a;
+  protected ArrayList<bjlq> a;
   
-  public bjiy(JSONObject paramJSONObject)
+  public static bjiy a()
   {
-    if (paramJSONObject != null) {}
     try
     {
-      this.a = paramJSONObject.getString("name");
-      this.b = paramJSONObject.getString("op");
-      this.c = paramJSONObject.getString("val");
-      this.d = paramJSONObject.getString("act");
-      return;
+      if (jdField_a_of_type_Bjiy == null)
+      {
+        jdField_a_of_type_Bjiy = new bjiy();
+        jdField_a_of_type_Bjiy.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+      bjiy localbjiy = jdField_a_of_type_Bjiy;
+      return localbjiy;
     }
-    catch (JSONException paramJSONObject)
+    finally {}
+  }
+  
+  public ArrayList<bjlq> a()
+  {
+    return jdField_a_of_type_Bjiy.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a(bjlq parambjlq)
+  {
+    int j = jdField_a_of_type_Bjiy.jdField_a_of_type_JavaUtilArrayList.size();
+    int i = 0;
+    while (i < j)
     {
-      paramJSONObject.printStackTrace();
+      if ((bjlq)jdField_a_of_type_Bjiy.jdField_a_of_type_JavaUtilArrayList.get(i) == parambjlq) {
+        return;
+      }
+      i += 1;
     }
+    jdField_a_of_type_Bjiy.jdField_a_of_type_JavaUtilArrayList.add(parambjlq);
   }
   
-  public boolean a()
+  public void b(bjlq parambjlq)
   {
-    return (!this.a.isEmpty()) && (!this.b.isEmpty()) && (!this.c.isEmpty());
-  }
-  
-  public boolean a(Object paramObject)
-  {
-    boolean bool2 = true;
+    int j = jdField_a_of_type_Bjiy.jdField_a_of_type_JavaUtilArrayList.size();
+    int i = 0;
     for (;;)
     {
-      try
+      if (i < j)
       {
-        paramObject = bjii.b(paramObject, this.a);
-        if (paramObject == null) {
-          break label668;
+        if ((bjlq)jdField_a_of_type_Bjiy.jdField_a_of_type_JavaUtilArrayList.get(i) == parambjlq) {
+          jdField_a_of_type_Bjiy.jdField_a_of_type_JavaUtilArrayList.remove(i);
         }
-        if ((paramObject.getClass() == Integer.TYPE) || (paramObject.getClass() == Integer.class) || (paramObject.getClass() == Long.TYPE) || (paramObject.getClass() == Long.class))
-        {
-          paramObject = (Integer)paramObject;
-          if (this.b.equalsIgnoreCase("less"))
-          {
-            if (paramObject.intValue() >= Integer.parseInt(this.c)) {
-              break label672;
-            }
-            bool1 = true;
-            if (!this.d.equalsIgnoreCase("exc")) {
-              break label660;
-            }
-            if (!bool1)
-            {
-              bool1 = bool2;
-              break label670;
-            }
-          }
-          else
-          {
-            if (this.b.equalsIgnoreCase("more"))
-            {
-              if (paramObject.intValue() <= Integer.parseInt(this.c)) {
-                break label677;
-              }
-              bool1 = true;
-              continue;
-            }
-            if (this.b.equalsIgnoreCase("is"))
-            {
-              if (paramObject.intValue() != Integer.parseInt(this.c)) {
-                break label682;
-              }
-              bool1 = true;
-              continue;
-            }
-            if (this.b.equalsIgnoreCase("not"))
-            {
-              if (paramObject.intValue() == Integer.parseInt(this.c)) {
-                break label687;
-              }
-              bool1 = true;
-              continue;
-            }
-            if (this.b.equalsIgnoreCase("and"))
-            {
-              if ((paramObject.intValue() & Integer.parseInt(this.c)) == 0) {
-                break label692;
-              }
-              bool1 = true;
-              continue;
-            }
-            if (this.b.equalsIgnoreCase("or"))
-            {
-              if ((paramObject.intValue() | Integer.parseInt(this.c)) == 0) {
-                break label697;
-              }
-              bool1 = true;
-              continue;
-            }
-            if (this.b.equalsIgnoreCase("xor"))
-            {
-              if ((paramObject.intValue() ^ Integer.parseInt(this.c)) == 0) {
-                break label702;
-              }
-              bool1 = true;
-              continue;
-            }
-            if (this.b.equalsIgnoreCase("begins"))
-            {
-              bool1 = String.format("%d", new Object[] { Integer.valueOf(paramObject.intValue()) }).startsWith(this.c);
-              continue;
-            }
-            if (this.b.equalsIgnoreCase("ends"))
-            {
-              bool1 = String.format("%d", new Object[] { Integer.valueOf(paramObject.intValue()) }).endsWith(this.c);
-              continue;
-            }
-            if (!this.b.equalsIgnoreCase("rem")) {
-              break label663;
-            }
-            bool1 = Pattern.matches(this.c, String.format("%d", new Object[] { Integer.valueOf(paramObject.intValue()) }));
-            continue;
-          }
-        }
-        else
-        {
-          if ((paramObject.getClass() != String.class) && (paramObject.getClass() != CharSequence.class)) {
-            break label663;
-          }
-          paramObject = (String)paramObject;
-          if (this.b.equalsIgnoreCase("less"))
-          {
-            if (paramObject.compareToIgnoreCase(this.c) >= 0) {
-              break label707;
-            }
-            bool1 = true;
-            continue;
-          }
-          if (this.b.equalsIgnoreCase("more"))
-          {
-            if (paramObject.compareToIgnoreCase(this.c) <= 0) {
-              break label712;
-            }
-            bool1 = true;
-            continue;
-          }
-          if (this.b.equalsIgnoreCase("is"))
-          {
-            bool1 = paramObject.equalsIgnoreCase(this.c);
-            continue;
-          }
-          if (this.b.equalsIgnoreCase("not"))
-          {
-            if (paramObject.equalsIgnoreCase(this.c)) {
-              break label717;
-            }
-            bool1 = true;
-            continue;
-          }
-          if (this.b.equalsIgnoreCase("has"))
-          {
-            bool1 = paramObject.contains(this.c);
-            continue;
-          }
-          if (this.b.equalsIgnoreCase("begins"))
-          {
-            bool1 = paramObject.startsWith(this.c);
-            continue;
-          }
-          if (this.b.equalsIgnoreCase("ends"))
-          {
-            bool1 = paramObject.endsWith(this.c);
-            continue;
-          }
-          if (!this.b.equalsIgnoreCase("rem")) {
-            break label663;
-          }
-          bool1 = Pattern.matches(this.c, paramObject);
-          continue;
-        }
-        bool1 = false;
       }
-      catch (Exception paramObject)
-      {
-        return false;
+      else {
+        return;
       }
-      catch (IllegalArgumentException paramObject)
-      {
-        return false;
-      }
-      label660:
-      break label670;
-      label663:
-      boolean bool1 = false;
-      continue;
-      label668:
-      bool1 = false;
-      label670:
-      return bool1;
-      label672:
-      bool1 = false;
-      continue;
-      label677:
-      bool1 = false;
-      continue;
-      label682:
-      bool1 = false;
-      continue;
-      label687:
-      bool1 = false;
-      continue;
-      label692:
-      bool1 = false;
-      continue;
-      label697:
-      bool1 = false;
-      continue;
-      label702:
-      bool1 = false;
-      continue;
-      label707:
-      bool1 = false;
-      continue;
-      label712:
-      bool1 = false;
-      continue;
-      label717:
-      bool1 = false;
+      i += 1;
     }
   }
 }

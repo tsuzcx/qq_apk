@@ -1,9 +1,16 @@
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public final class xnu
-  extends vko
+class xnu
+  implements DialogInterface.OnDismissListener
 {
-  public FeedItem a;
+  xnu(xnt paramxnt, VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+  }
 }
 
 

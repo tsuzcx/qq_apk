@@ -1,69 +1,51 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.open.agent.AgentActivity;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
-class bhpf
-  implements bifh
+public class bhpf
+  extends QIPCModule
 {
-  bhpf(bhpe parambhpe) {}
+  private static bhpf a;
   
-  public void a()
+  public bhpf(String paramString)
   {
-    QLog.d("SDK_LOGIN.AgentActivity", 1, "preAuthWithRetry onSuccess");
-    AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity);
-    AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle, this.a.b, true);
+    super(paramString);
   }
   
-  public void a(int paramInt, String paramString)
+  public static bhpf a()
   {
-    QLog.d("SDK_LOGIN.AgentActivity", 1, new Object[] { "preAuthWithRetry onFail errorCode=", Integer.valueOf(paramInt), ", msg=", paramString });
-    AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity);
-    if ((paramInt == 110530) || (paramInt == 1002))
+    if (a == null) {}
+    try
     {
-      AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle, this.a.b, false);
-      return;
-    }
-    if (paramInt == 110509)
-    {
-      if (this.a.jdField_a_of_type_Int == 1)
-      {
-        AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle, this.a.b, 3);
-        return;
+      if (a == null) {
+        a = new bhpf("VasMonitorIPCModule");
       }
-      AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle, this.a.b, true, true);
-      return;
+      return a;
     }
-    if (paramInt == 110513)
-    {
-      AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, 0, "", "");
-      return;
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VasMonitorIPCModule", 2, "action = " + paramString);
     }
-    if ((paramInt == 110537) || (paramInt == -10005))
-    {
-      AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle, this.a.b, false, true);
-      return;
+    if (paramBundle == null) {
+      QLog.d("VasMonitorIPCModule", 2, "vasreport Err params=null, action=" + paramString);
     }
-    String str;
-    if (paramInt == -1) {
-      str = this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity.getResources().getString(2131694263);
+    while ((!"action_vas_monitor".equals(paramString)) || (BaseApplicationImpl.getApplication() == null) || (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) || ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime() == null)) {
+      return null;
     }
-    for (;;)
-    {
-      ForwardUtils.showDialog(str, this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, new bhpg(this, paramInt, paramString));
-      return;
-      if (TextUtils.isEmpty(paramString)) {
-        str = String.format(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity.getResources().getString(2131694252), new Object[] { Integer.valueOf(paramInt) });
-      } else {
-        str = String.format(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity.getResources().getString(2131695971), new Object[] { paramString, Integer.valueOf(paramInt) });
-      }
-    }
+    bhpe.a(null, paramBundle.getString("key_appid"), paramBundle.getString("key_err_code"), paramBundle.getString("key_log"), paramBundle.getString("key_key4"), paramBundle.getString("key_key5"), paramBundle.getString("key_key6"), paramBundle.getFloat("key_value2"), paramBundle.getFloat("key_value3"));
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhpf
  * JD-Core Version:    0.7.0.1
  */

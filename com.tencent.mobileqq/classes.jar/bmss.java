@@ -1,46 +1,25 @@
-import android.graphics.Canvas;
-import android.view.MotionEvent;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
+import java.util.HashMap;
 
-public class bmss
-  extends bngv
+class bmss
+  implements ThreadPool.Job<Void>
 {
-  public bmss(DoodleView paramDoodleView)
+  bmss(bmsl parambmsl, Long paramLong, NetReq paramNetReq) {}
+  
+  public Void a(ThreadPool.JobContext paramJobContext)
   {
-    super(paramDoodleView);
-  }
-  
-  public String a()
-  {
-    return "PickLayer";
-  }
-  
-  public void a() {}
-  
-  protected void a(Canvas paramCanvas) {}
-  
-  public void a(Canvas paramCanvas, float paramFloat) {}
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public boolean a(long paramLong)
-  {
-    return true;
-  }
-  
-  protected boolean a(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public void b(Canvas paramCanvas) {}
-  
-  public boolean b(MotionEvent paramMotionEvent)
-  {
-    return false;
+    paramJobContext = (bmsi)bmsl.a(this.jdField_a_of_type_Bmsl).get(this.jdField_a_of_type_JavaLangLong);
+    if ((paramJobContext == null) || (paramJobContext.d())) {
+      bmsl.a(this.jdField_a_of_type_Bmsl, this.jdField_a_of_type_JavaLangLong.longValue());
+    }
+    for (;;)
+    {
+      return null;
+      bmsl.b(this.jdField_a_of_type_Bmsl).sendReq(this.jdField_a_of_type_ComTencentMobileqqTransfileNetReq);
+    }
   }
 }
 

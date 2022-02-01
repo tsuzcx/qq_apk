@@ -1,22 +1,41 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.activity.ChatHistoryViewBase.1;
 
-public class adqi
-  implements Animation.AnimationListener
+public abstract class adqi
 {
-  public adqi(LoginInfoActivity paramLoginInfoActivity) {}
+  public ChatHistoryFileActivity a;
+  public boolean i = true;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public abstract View a();
+  
+  public void a(long paramLong) {}
+  
+  public void b() {}
+  
+  public abstract boolean b();
+  
+  public void c() {}
+  
+  protected boolean c()
   {
-    LoginInfoActivity.a(this.a).setVisibility(4);
-    LoginInfoActivity.a(this.a).clearAnimation();
+    return this.i;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void d() {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public void j_(int paramInt) {}
+  
+  protected void l()
+  {
+    this.i = false;
+    new Handler().postDelayed(new ChatHistoryViewBase.1(this), 1500L);
+  }
 }
 
 

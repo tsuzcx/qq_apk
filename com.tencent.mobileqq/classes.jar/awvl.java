@@ -1,22 +1,28 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.os.Handler;
+import android.os.Looper;
 
 class awvl
-  implements View.OnTouchListener
 {
-  awvl(awur paramawur) {}
+  private final Handler jdField_a_of_type_AndroidOsHandler;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  awvl(awvk paramawvk)
   {
-    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      this.a.a.findViewById(2131371359).setAlpha(0.5F);
+    Looper localLooper2 = Looper.myLooper();
+    Looper localLooper1 = localLooper2;
+    if (localLooper2 == null) {
+      localLooper1 = Looper.getMainLooper();
     }
-    for (;;)
+    if (localLooper1 != null)
     {
-      return false;
-      this.a.a.findViewById(2131371359).setAlpha(1.0F);
+      this.jdField_a_of_type_AndroidOsHandler = new awvm(this, localLooper1, paramawvk);
+      return;
     }
+    this.jdField_a_of_type_AndroidOsHandler = null;
+  }
+  
+  Handler a()
+  {
+    return this.jdField_a_of_type_AndroidOsHandler;
   }
 }
 

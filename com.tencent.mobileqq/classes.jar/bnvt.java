@@ -1,34 +1,18 @@
-import dov.com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
-import java.nio.ByteBuffer;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.TextView;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorApplyAllLoadingView;
 
 public class bnvt
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public static ByteBuffer a(int paramInt1, int paramInt2)
+  public bnvt(AEEditorApplyAllLoadingView paramAEEditorApplyAllLoadingView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    try
-    {
-      if (bnvs.c)
-      {
-        ByteBuffer localByteBuffer1 = CameraGLSurfaceView.allocate(paramInt1, paramInt2);
-        bnvs.b = true;
-        ByteBuffer localByteBuffer2 = localByteBuffer1;
-        if (localByteBuffer1 == null)
-        {
-          localByteBuffer2 = ByteBuffer.allocateDirect(paramInt2);
-          bnvs.b = false;
-        }
-        return localByteBuffer2;
-      }
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
-      {
-        Object localObject = null;
-        continue;
-        localObject = null;
-      }
-    }
+    int i = (int)(AEEditorAILoadingView.a(1000.0F, paramValueAnimator.getAnimatedFraction(), 0.0F, 1.0F) * -90.0F + 90.0F);
+    AEEditorApplyAllLoadingView.a(this.a).setPadding(0, i, 0, 0);
   }
 }
 

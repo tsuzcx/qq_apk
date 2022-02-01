@@ -1,24 +1,24 @@
 package cooperation.gmersdk_warper;
 
-import biyn;
-import bkhk;
-import bkhm;
-import bkhr;
+import bkjp;
+import blsw;
+import blsy;
+import bltd;
 
 public class GMEAVEngineWalper$2$1
   implements Runnable
 {
-  public GMEAVEngineWalper$2$1(bkhm parambkhm) {}
+  public GMEAVEngineWalper$2$1(blsy paramblsy) {}
   
   public void run()
   {
-    boolean bool = bkhr.a(this.a.a.jdField_a_of_type_AndroidContentContext).a();
-    if (this.a.a.jdField_a_of_type_Biyn != null) {
-      this.a.a.jdField_a_of_type_Biyn.a(bool, 0);
+    boolean bool = bltd.a(this.a.a.jdField_a_of_type_AndroidContentContext).a();
+    if (this.a.a.jdField_a_of_type_Bkjp != null) {
+      this.a.a.jdField_a_of_type_Bkjp.a(bool, 0);
     }
-    bool = bkhr.a(this.a.a.jdField_a_of_type_AndroidContentContext).b();
-    if (this.a.a.jdField_a_of_type_Biyn != null) {
-      this.a.a.jdField_a_of_type_Biyn.b(bool, 0);
+    bool = bltd.a(this.a.a.jdField_a_of_type_AndroidContentContext).b();
+    if (this.a.a.jdField_a_of_type_Bkjp != null) {
+      this.a.a.jdField_a_of_type_Bkjp.b(bool, 0);
     }
   }
 }

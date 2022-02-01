@@ -1,80 +1,19 @@
-import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchFragment;
 
 public class atrm
-  extends avtg
+  extends bcbc<bcfj, bcnt>
 {
-  public atrm(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
+  public atrm(TroopFileSearchFragment paramTroopFileSearchFragment) {}
   
-  public void a(boolean paramBoolean)
+  protected bcif<bcfj, bcnt> a(int paramInt)
   {
-    if (paramBoolean) {
-      QLog.d("MsgBackup", 1, "onConfirmTokenRepsponse called! is success");
-    }
-    for (;;)
-    {
-      super.a(paramBoolean);
-      return;
-      QLog.d("MsgBackup", 1, "onConfirmTokenRepsponse called! confirm token is failed!");
-    }
+    return new atro();
   }
   
-  public void a(boolean paramBoolean, avuk paramavuk)
+  protected bcnu a(int paramInt, ViewGroup paramViewGroup)
   {
-    if (paramBoolean)
-    {
-      MsgBackupSettingFragment.a(this.a, paramavuk);
-      QLog.d("MsgBackup", 1, "onQueryStateResponse called! qrStateResponse = " + MsgBackupSettingFragment.a(this.a));
-    }
-    for (;;)
-    {
-      super.a(paramBoolean, paramavuk);
-      return;
-      QLog.d("MsgBackup", 1, "onQueryStateResponse called! query qr state is failed!");
-    }
-  }
-  
-  public void a(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && ((paramObject instanceof avue)))
-    {
-      MsgBackupSettingFragment.a = (avue)paramObject;
-      QLog.d("MsgBackup", 1, "onGetQrResponse called! qrResponse = " + MsgBackupSettingFragment.a);
-    }
-    for (;;)
-    {
-      super.a(paramBoolean, paramObject);
-      return;
-      QLog.d("MsgBackup", 1, "onGetQrResponse called! request qrCode is failed!");
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      QLog.d("MsgBackup", 1, "onRejectQRResponse called! is success");
-    }
-    for (;;)
-    {
-      super.b(paramBoolean);
-      return;
-      QLog.d("MsgBackup", 1, "onRejectQRResponse called! reject qr is failed!");
-    }
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean)
-    {
-      MsgBackupSettingFragment.a(this.a, (avua)paramObject);
-      QLog.d("MsgBackup", 1, "onConfirmQrResponse called! qrConfirmReponse = " + MsgBackupSettingFragment.a(this.a));
-    }
-    for (;;)
-    {
-      super.b(paramBoolean, paramObject);
-      return;
-      QLog.d("MsgBackup", 1, "onConfirmQrResponse called! confirm qrCode is failed!");
-    }
+    return new atrq(paramViewGroup);
   }
 }
 

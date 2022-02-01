@@ -1,14 +1,27 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
 class wxp
-  implements MediaPlayer.OnErrorListener
+  extends wwc
 {
-  wxp(wxj paramwxj, wxc paramwxc) {}
-  
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  wxp(wxa paramwxa, StoryVideoItem paramStoryVideoItem, wyi paramwyi)
   {
-    return this.jdField_a_of_type_Wxc.a(this.jdField_a_of_type_Wxj, paramInt1, paramInt2);
+    super(paramStoryVideoItem);
+  }
+  
+  public boolean b()
+  {
+    String str = (String)a("result");
+    zdl.a(str);
+    zdl.a(this.jdField_a_of_type_Wyi.d);
+    if (this.jdField_a_of_type_Wyi.d == null)
+    {
+      this.jdField_a_of_type_Wyi.d = "";
+      ykq.c(this.b, "imageLocalPath is null", new Throwable());
+    }
+    a("DownloadPic2FileJob_iiu", str);
+    a("DownloadPic2FileJob_isfp", this.jdField_a_of_type_Wyi.d);
+    a("DownloadPic2FileJob_IN_ROUND", Boolean.valueOf(this.jdField_a_of_type_Wyi.a));
+    return true;
   }
 }
 

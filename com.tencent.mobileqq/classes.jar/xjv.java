@@ -1,21 +1,28 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
-
 class xjv
-  implements ValueAnimator.AnimatorUpdateListener
+  implements xjq
 {
-  xjv(xjt paramxjt, StoryHomeHorizontalListView paramStoryHomeHorizontalListView) {}
+  public xjq a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  private xjv(xjs paramxjs) {}
+  
+  public boolean a(xjm paramxjm, int paramInt, Object paramObject)
   {
-    try
+    if (xjs.a(this.jdField_a_of_type_Xjs) != null)
     {
-      float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.scrollTo((int)(300.0F - f * 300.0F), 0);
-      return;
+      if (paramInt != 2) {
+        break label54;
+      }
+      xjs.a(this.jdField_a_of_type_Xjs).c(xjs.a(this.jdField_a_of_type_Xjs));
     }
-    catch (Exception paramValueAnimator) {}
+    while (this.jdField_a_of_type_Xjq != null)
+    {
+      return this.jdField_a_of_type_Xjq.a(paramxjm, paramInt, paramObject);
+      label54:
+      if (paramInt == 3) {
+        xjs.a(this.jdField_a_of_type_Xjs).b(xjs.a(this.jdField_a_of_type_Xjs));
+      }
+    }
+    return false;
   }
 }
 

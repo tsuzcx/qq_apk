@@ -1,33 +1,53 @@
-import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.ecshopassit.view.CustomTabView;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class opm
-  implements VideoCompositeHelper.VideoCompositeCallBack
+public class opm
+  implements View.OnClickListener
 {
-  opm(opl paramopl, long paramLong, PublishVideoEntry paramPublishVideoEntry) {}
+  public opm(CustomTabView paramCustomTabView, opc paramopc, ImageView paramImageView1, TextView paramTextView, ImageView paramImageView2) {}
   
-  public void onVideoCompositeFinish(int paramInt, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    long l1 = System.currentTimeMillis();
-    if (QLog.isColorLevel())
+    for (;;)
     {
-      long l2 = (l1 - this.jdField_a_of_type_Long) / 1000L;
-      l1 = this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoDuration;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.isLocalPublish) {
-        l1 = this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoRangeEnd - this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoRangeStart;
+      try
+      {
+        opk.a(null, "gouwu.tab.click", this.jdField_a_of_type_Opc.a + "", NetConnInfoCenter.getServerTimeMillis() + "", "");
+        opk.b(null, "gouwu_tab_click", this.jdField_a_of_type_Opc.a + "", NetConnInfoCenter.getServerTimeMillis() + "", "");
+        if (this.jdField_a_of_type_AndroidWidgetImageView.getTag() != null) {
+          continue;
+        }
+        i = 0;
+        Integer localInteger = Integer.valueOf(i);
+        if (localInteger.intValue() != 0)
+        {
+          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+          opi.a(this.jdField_a_of_type_Opc.a, localInteger.intValue());
+        }
+        i = this.jdField_a_of_type_Opc.a;
+        int j = this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView.a;
+        if (i != j) {
+          continue;
+        }
       }
-      QLog.d("Q.readinjoy.videocapture.ReadInJoyVideoCompositeManager", 2, "CameraCaptureMerge: duration: " + l1 + ", time cost: " + l2 + "s");
-    }
-    if (paramInt == 0)
-    {
-      opl.a(this.jdField_a_of_type_Opl, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, paramString2);
+      catch (Throwable localThrowable)
+      {
+        int i;
+        QLog.e("EcshopCustomTabView", 1, QLog.getStackTraceString(localThrowable));
+        continue;
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      i = ((Integer)this.jdField_a_of_type_AndroidWidgetImageView.getTag()).intValue();
+      continue;
+      CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView, this.jdField_a_of_type_Opc, this.jdField_a_of_type_AndroidWidgetTextView, this.b);
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.readinjoy.videocapture.ReadInJoyVideoCompositeManager", 2, new Object[] { "doCompositeCameraCaptureVideo: errorcode=%s, errorMsg=%s", Integer.valueOf(paramInt), paramString1 });
-    }
-    opl.a(this.jdField_a_of_type_Opl, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, paramInt, paramString1);
   }
 }
 

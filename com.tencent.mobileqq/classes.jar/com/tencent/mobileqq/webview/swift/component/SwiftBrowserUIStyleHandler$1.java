@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import amtj;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.widget.TextView;
+import anvx;
 import com.tencent.biz.ui.RefreshView;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.biz.ui.TouchWebView.OnOverScrollHandler;
@@ -33,7 +33,7 @@ class SwiftBrowserUIStyleHandler$1
     {
       localObject = Uri.parse((String)localObject);
       if ((localObject != null) && (((Uri)localObject).isHierarchical())) {
-        this.this$0.urlText.setText(amtj.a(2131713729) + ((Uri)localObject).getHost() + amtj.a(2131713722));
+        this.this$0.urlText.setText(anvx.a(2131714076) + ((Uri)localObject).getHost() + anvx.a(2131714069));
       }
       this.this$0.urlText.setVisibility(0);
     }

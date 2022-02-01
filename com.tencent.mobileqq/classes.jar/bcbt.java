@@ -1,12 +1,20 @@
-import com.tencent.mobileqq.app.ThreadRegulator;
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.ThreadRegulator.Proxy;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class bcbt
-  implements IMCoreProxyRoute.ThreadRegulator.Proxy
+public class bcbt
+  implements View.OnTouchListener
 {
-  public void checkInNextBusiness()
+  public bcbt(ActiveEntitySearchFragment paramActiveEntitySearchFragment) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ThreadRegulator.a().b();
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

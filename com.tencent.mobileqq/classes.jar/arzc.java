@@ -1,48 +1,26 @@
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.debug.VasAdvDebugFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-public class arzc
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mobileqq/debug/VasAdvDebugFragment$initView$1$2"}, k=3, mv={1, 1, 16})
+public final class arzc
   implements View.OnClickListener
 {
-  public arzc(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  public arzc(VasAdvDebugFragment paramVasAdvDebugFragment) {}
   
-  public void onClick(View paramView)
+  public final void onClick(View paramView)
   {
-    if (paramView == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e(QfileBaseLocalFileTabView.jdField_a_of_type_JavaLangString, 2, "qfilebaserecenttabview del error, tag is null");
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    FileInfo localFileInfo = (FileInfo)paramView.getTag();
-    if (localFileInfo != null)
-    {
-      if (this.a.jdField_a_of_type_Arvv != null) {
-        this.a.jdField_a_of_type_Arvv.a(null);
-      }
-      if (!FileUtil.deleteFile(localFileInfo.c())) {
-        break label108;
-      }
-      this.a.a(localFileInfo);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Arvv.a(Integer.valueOf(-1));
-      paramView.setVisibility(4);
-      this.a.f();
-      break;
-      label108:
-      String str = QfileBaseLocalFileTabView.a(this.a).getString(2131692126);
-      aszk.a(aszt.d(localFileInfo.d()) + str);
-    }
+    Intent localIntent = new Intent((Context)this.a.getActivity(), QQBrowserActivity.class);
+    localIntent.putExtra("url", "http://imgcache.qq.com/club/mTools/webview.html");
+    localIntent.putExtra("big_brother_source_key", "biz_src_gzh_weather");
+    this.a.getActivity().startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

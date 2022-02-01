@@ -2,7 +2,7 @@ package com.tencent.mobileqq.intervideo.groupvideo.pluginimpl;
 
 import android.content.Context;
 import android.view.View;
-import avpj;
+import awvo;
 import com.tencent.mobileqq.intervideo.groupvideo.plugininterface.IVFloatingScreenManagerInterface;
 import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IFullScreenEnterListener;
 import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
@@ -11,9 +11,9 @@ import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusLi
 public class IVFloatingScreenManager
   implements IVFloatingScreenManagerInterface
 {
-  public int abandonMediaFocus(avpj paramavpj)
+  public int abandonMediaFocus(awvo paramawvo)
   {
-    return IVFloatingScreenManagerInterfaceImpl.getInstance().abandonMediaFocus(paramavpj);
+    return IVFloatingScreenManagerInterfaceImpl.getInstance().abandonMediaFocus(paramawvo);
   }
   
   public int enterFloatingScreen(Context paramContext, View paramView)
@@ -26,9 +26,9 @@ public class IVFloatingScreenManager
     IVFloatingScreenManagerInterfaceImpl.getInstance().quitFloatingScreen();
   }
   
-  public int requestMediaFocus(int paramInt, avpj paramavpj)
+  public int requestMediaFocus(int paramInt, awvo paramawvo)
   {
-    return IVFloatingScreenManagerInterfaceImpl.getInstance().requestMediaFocus(paramInt, paramavpj);
+    return IVFloatingScreenManagerInterfaceImpl.getInstance().requestMediaFocus(paramInt, paramawvo);
   }
   
   public IVideoOuterStatusListener setFloatingVideoListener(IVideoInnerStatusListener paramIVideoInnerStatusListener)

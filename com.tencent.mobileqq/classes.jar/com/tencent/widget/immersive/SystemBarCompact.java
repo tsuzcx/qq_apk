@@ -6,7 +6,7 @@ import android.app.Dialog;
 import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
 import android.view.Window;
-import bjvx;
+import blhi;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 
@@ -18,7 +18,7 @@ public class SystemBarCompact
   private int mPendingStatusBarColor;
   public int mStatusBarColor = 0;
   public Drawable mStatusBarDarwable;
-  private bjvx mTintManager;
+  private blhi mTintManager;
   private Window mWindow;
   
   public SystemBarCompact(Activity paramActivity, boolean paramBoolean, int paramInt)
@@ -38,7 +38,7 @@ public class SystemBarCompact
   private void ensureTintManager()
   {
     if (this.mTintManager == null) {
-      this.mTintManager = new bjvx(this.mWindow, this.mDrawStatus);
+      this.mTintManager = new blhi(this.mWindow, this.mDrawStatus);
     }
   }
   

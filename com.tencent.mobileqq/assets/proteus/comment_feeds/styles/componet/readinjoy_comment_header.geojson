@@ -182,9 +182,26 @@
                     }
                 },
                 {
+                    "view_type": "ReadInjoyAsynImageView",
+                    "view_id": "id_header_activity_level_icon",
+                    "align_parent_center_vertical": "YES",
+                    "margin_left": "6",
+                    "height": {
+                        "type": "absolutely",
+                        "value": "15"
+                    },
+                    "width": {
+                        "type": "absolutely",
+                        "value": "26"
+                    },
+                    "attributes": {
+                        "setImageWithURLString:lineup:": ["$activity_level_icon_url", "1"]
+                    }
+                },
+                {
                     "view_type": "UILabel",
                     "view_id": "id_comment_header_flag_one",
-                    "margin_left": "8",
+                    "margin_left": "6",
                     "align_parent_center_vertical": "YES",
                     "height": {
                         "type": "absolutely",
@@ -207,7 +224,7 @@
                 {
                     "view_type": "UILabel",
                     "view_id": "id_comment_header_follow_flag",
-                    "margin_left": "8",
+                    "margin_left": "6",
                     "align_parent_center_vertical": "YES",
                     "height": {
                         "type": "absolutely",
@@ -232,7 +249,7 @@
                     "view_id": "id_header_medal",
                     "event_type": "cmd_header_medal_click",
                     "align_parent_center_vertical": "YES",
-                    "margin_left": "4.5",
+                    "margin_left": "6",
                     "height": {
                         "type": "absolutely",
                         "value": "18"
@@ -252,7 +269,7 @@
                     "view_id": "id_header_family_lord",
                     "event_type": "cmd_header_family_lord_click",
                     "align_parent_center_vertical": "YES",
-                    "margin_left": "9",
+                    "margin_left": "6",
                     "height": {
                         "type": "absolutely",
                         "value": "20"

@@ -1,46 +1,36 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.soload.LoadExtResult;
+import com.tencent.mobileqq.soload.LoadParam;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 class bdgi
-  implements ActionMode.Callback
+  implements bdgc
 {
-  bdgi(bdgh parambdgh) {}
+  bdgi(bdgh parambdgh, LoadParam paramLoadParam) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
   {
-    String str = "";
-    Object localObject = bdgh.a(this.a).input;
-    paramMenuItem = str;
-    if (localObject != null)
+    synchronized (bdgh.a(this.jdField_a_of_type_Bdgh))
     {
-      localObject = ((EditText)localObject).getText();
-      paramMenuItem = str;
-      if (localObject != null) {
-        paramMenuItem = localObject.toString();
+      Object localObject2 = (List)bdgh.a(this.jdField_a_of_type_Bdgh).get(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam);
+      bdgh.a(this.jdField_a_of_type_Bdgh).remove(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam);
+      if (QLog.isColorLevel()) {
+        QLog.i("SoLoadWidget.SoLoadManager", 2, "load resCode=" + paramInt + ", loadExtResult=" + paramLoadExtResult + ",loadParam=" + this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam + ",ls=" + localObject2);
+      }
+      if (localObject2 != null)
+      {
+        ??? = ((List)localObject2).iterator();
+        while (((Iterator)???).hasNext())
+        {
+          localObject2 = (bdgc)((Iterator)???).next();
+          if (localObject2 != null) {
+            ((bdgc)localObject2).onLoadResult(paramInt, paramLoadExtResult);
+          }
+        }
       }
     }
-    this.a.b(paramMenuItem, 1);
-    paramActionMode.finish();
-    return true;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    if ((this.a.a()) && (bdgh.a(this.a))) {
-      paramMenu.add(0, 3, 196608, amtj.a(2131719695));
-    }
-    return this.a.a();
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
   }
 }
 

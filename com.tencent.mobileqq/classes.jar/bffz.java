@@ -1,95 +1,35 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.widget.SimpleTextView;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public abstract class bffz
-  extends bjty
+class bffz
+  implements Animation.AnimationListener
 {
-  protected final int a;
-  protected final int[] a;
-  protected final int[] b;
-  protected final int[] c;
-  protected final int[] d;
+  bffz(bffw parambffw, boolean paramBoolean) {}
   
-  public bffz(int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramInt1, paramInt2);
-    this.d = paramArrayOfInt1;
-    this.jdField_a_of_type_Int = paramInt3;
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt2;
-    this.b = paramArrayOfInt3;
-    this.c = paramArrayOfInt4;
-  }
-  
-  public View a(int paramInt, Object paramObject, bjua parambjua, View.OnClickListener paramOnClickListener)
-  {
-    Object localObject3 = null;
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if ((paramObject instanceof Object[]))
+    if (bffw.a(this.jdField_a_of_type_Bffw) != null)
     {
-      paramObject = (Object[])paramObject;
-      if ((paramObject.length != 2) || (!(paramObject[1] instanceof bebc))) {
-        break label229;
-      }
+      bffw.a(this.jdField_a_of_type_Bffw).a.clearAnimation();
+      bffw.a(this.jdField_a_of_type_Bffw).a.setVisibility(8);
     }
-    label90:
-    label229:
-    for (bebc localbebc = (bebc)paramObject[1];; localbebc = null)
+    bffw.a(this.jdField_a_of_type_Bffw, false);
+    bffw.a(this.jdField_a_of_type_Bffw, null);
+    bffw.a(this.jdField_a_of_type_Bffw, null);
+    bffw.a(this.jdField_a_of_type_Bffw, -1);
+    if ((!this.jdField_a_of_type_Boolean) && (!bffw.b(this.jdField_a_of_type_Bffw)))
     {
-      localObject1 = localObject2;
-      if (parambjua != null)
-      {
-        localObject1 = localObject2;
-        if (parambjua.jdField_a_of_type_Int >= 0)
-        {
-          localObject1 = localObject2;
-          if (parambjua.b >= 0)
-          {
-            if (localbebc != null) {
-              break label90;
-            }
-            localObject1 = localObject2;
-          }
-        }
-      }
-      do
-      {
-        return localObject1;
-        paramObject = localObject3;
-        if ((parambjua.jdField_a_of_type_AndroidViewView instanceof SimpleTextView)) {
-          paramObject = (SimpleTextView)parambjua.jdField_a_of_type_AndroidViewView;
-        }
-        localObject1 = paramObject;
-      } while (paramObject == null);
-      paramInt = this.b[parambjua.b];
-      int i = this.c[parambjua.b];
-      int j = this.jdField_a_of_type_ArrayOfInt[parambjua.b];
-      paramObject.setVisibility(0);
-      paramObject.setText(paramObject.getContext().getResources().getString(paramInt));
-      paramObject.setBackgroundResource(i);
-      paramObject.setId(j);
-      paramObject.setTag(localbebc);
-      paramObject.setContentDescription(paramObject.getResources().getString(paramInt));
-      paramObject.setOnClickListener(paramOnClickListener);
-      parambjua.c = this.d[parambjua.jdField_a_of_type_Int];
-      parambjua.d = this.jdField_a_of_type_Int;
-      return paramObject;
+      ThreadManager.getUIHandler().post(bffw.a(this.jdField_a_of_type_Bffw));
+      bffw.b(this.jdField_a_of_type_Bffw, true);
     }
   }
   
-  public View a(Context paramContext, int paramInt)
-  {
-    paramContext = new SimpleTextView(paramContext);
-    paramContext.setLayoutParams(new LinearLayout.LayoutParams(this.d[paramInt], this.jdField_a_of_type_Int));
-    paramContext.setGravity(17);
-    paramContext.setTextSize(16.0F);
-    paramContext.setTextColor(-1);
-    return paramContext;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

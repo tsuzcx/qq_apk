@@ -1,7 +1,7 @@
 package cooperation.qzone.share;
 
 import android.content.res.Resources;
-import bhht;
+import bisl;
 import com.tencent.qphone.base.util.QLog;
 
 class QZoneShareActivity$20
@@ -12,7 +12,7 @@ class QZoneShareActivity$20
   public void run()
   {
     if (QZoneShareActivity.access$1800(this.this$0) == null) {
-      QZoneShareActivity.access$1802(this.this$0, new bhht(this.this$0, this.this$0.getResources().getDimensionPixelSize(2131299076)));
+      QZoneShareActivity.access$1802(this.this$0, new bisl(this.this$0, this.this$0.getResources().getDimensionPixelSize(2131299080)));
     }
     QZoneShareActivity.access$1800(this.this$0).c(this.val$resId);
     try

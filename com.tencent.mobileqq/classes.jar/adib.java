@@ -1,40 +1,56 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adib
-  extends amop
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adib(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  public adib(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramInt2 == 0)
+    int i;
+    label43:
+    QQAppInterface localQQAppInterface;
+    String str1;
+    if (paramBoolean)
     {
-      this.a.a();
-      if (this.a.isResumed()) {
-        if (paramInt1 != 0) {
-          break label47;
-        }
+      i = 1;
+      bmhv.d(i);
+      bmhv.a(paramBoolean);
+      bmhv.a(true);
+      if (!paramBoolean) {
+        break label108;
+      }
+      QQToast.a(this.a.getBaseContext(), 2, 2131717895, 2000).a();
+      localQQAppInterface = this.a.app;
+      if (!paramBoolean) {
+        break label131;
+      }
+      str1 = "0X8008236";
+      label60:
+      if (!paramBoolean) {
+        break label138;
       }
     }
-    label47:
-    while (!this.a.isResumed())
+    label131:
+    label138:
+    for (String str2 = "0X8008236";; str2 = "0X8008235")
     {
-      QQToast.a(this.a.getActivity(), 2, amtj.a(2131703966), 0).a();
-      do
-      {
-        return;
-      } while (paramInt1 != 1);
-      QQToast.a(this.a.getActivity(), 2, amtj.a(2131703965), 0).a();
+      olh.a(localQQAppInterface, "CliOper", "", "", str1, str2, 0, 1, "", "", "", "", false);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
+      i = 0;
+      break;
+      label108:
+      QQToast.a(this.a.getBaseContext(), 2, 2131717893, 2000).a();
+      break label43;
+      str1 = "0X8008235";
+      break label60;
     }
-    paramString1 = paramString2;
-    if (TextUtils.isEmpty(paramString2)) {
-      paramString1 = this.a.getResources().getString(2131694277);
-    }
-    QQToast.a(this.a.getActivity(), 1, paramString1, 0).a();
   }
 }
 

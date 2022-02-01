@@ -1,18 +1,69 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchGetPOIList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetPOIList;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class vxk
-  implements vqp<vyy, vyz>
+public class vxk
+  extends wfm<vxl>
 {
-  vxk(vxi paramvxi) {}
+  private static final String jdField_a_of_type_JavaLangString = weg.a("StorySvc.batch_get_poi_list");
+  private List<vyl> jdField_a_of_type_JavaUtilList;
   
-  public void a(@NonNull vyy paramvyy, @Nullable vyz paramvyz, @NonNull ErrorMessage paramErrorMessage)
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, "requestQQStoryGuide onCmdRespond = " + paramvyz + " ,errorMsg = " + paramErrorMessage);
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
     }
+    return 0;
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public vxl a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspBatchGetPOIList localRspBatchGetPOIList = new qqstory_service.RspBatchGetPOIList();
+    try
+    {
+      localRspBatchGetPOIList.mergeFrom(paramArrayOfByte);
+      return new vxl(localRspBatchGetPOIList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
+  
+  public void a(@NonNull List<vyl> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  protected byte[] a()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty())) {
+      throw new QQStoryCmdHandler.IllegalUinException("req gps list is null");
+    }
+    if ((QLog.isDebugVersion()) && (this.jdField_a_of_type_JavaUtilList.size() > 100)) {
+      throw new QQStoryCmdHandler.IllegalUinException("over LIMIT_MX data to send LIMIT_MX=100");
+    }
+    qqstory_service.ReqBatchGetPOIList localReqBatchGetPOIList = new qqstory_service.ReqBatchGetPOIList();
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(((vyl)localIterator.next()).a());
+    }
+    localReqBatchGetPOIList.gps.addAll(localArrayList);
+    return localReqBatchGetPOIList.toByteArray();
   }
 }
 

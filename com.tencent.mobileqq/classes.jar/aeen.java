@@ -1,33 +1,32 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.SearchMightKnowFragment;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import java.util.List;
+import com.tencent.mobileqq.activity.JumpActivity;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class aeen
-  implements alki
+  extends WtloginObserver
 {
-  public aeen(SearchMightKnowFragment paramSearchMightKnowFragment) {}
+  public aeen(JumpActivity paramJumpActivity) {}
   
-  public void a()
+  public void onCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    SearchMightKnowFragment.a(this.a).setVisibility(0);
-    SearchMightKnowFragment.a(this.a).setVisibility(8);
-  }
-  
-  public void a(String paramString) {}
-  
-  public void a(List<MayKnowRecommend> paramList) {}
-  
-  public void b()
-  {
-    SearchMightKnowFragment.a(this.a).setVisibility(8);
-    SearchMightKnowFragment.a(this.a).setVisibility(0);
+    if (paramDevlockInfo != null) {
+      aslf.a().a(paramDevlockInfo.TransferInfo);
+    }
+    paramWUserSigInfo = this.a;
+    if (paramInt == 0) {}
+    for (;;)
+    {
+      aoud.a(paramWUserSigInfo, paramDevlockInfo);
+      return;
+      paramDevlockInfo = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aeen
  * JD-Core Version:    0.7.0.1
  */

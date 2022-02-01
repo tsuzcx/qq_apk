@@ -1,12 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class amlc
-  implements View.OnClickListener
+public class amlc
 {
-  amlc(amlb paramamlb) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d = -1;
   
-  public void onClick(View paramView) {}
+  public amlc()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_ArrayOfByte = null;
+    this.jdField_a_of_type_Boolean = false;
+  }
 }
 
 

@@ -1,26 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.viola.core.ViolaInstance;
-import java.util.List;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-public class tie
-  implements sdr
+class tie
+  implements tir
 {
-  public tie(BridgeModule paramBridgeModule, List paramList) {}
+  tie(tia paramtia) {}
   
-  public List<sds> a(int paramInt, boolean paramBoolean)
+  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
   {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public boolean a()
-  {
-    return NetworkUtil.isWifiConnected(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance().getActivity());
+    tji.a(paramProteusItemData.b, paramProteusItemData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo, paramProteusItemData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
+    paramViewBase = paramViewBase.getEventAttachedData();
+    if (!TextUtils.isEmpty(paramViewBase)) {
+      pqx.a(paramContext, paramViewBase);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tie
  * JD-Core Version:    0.7.0.1
  */

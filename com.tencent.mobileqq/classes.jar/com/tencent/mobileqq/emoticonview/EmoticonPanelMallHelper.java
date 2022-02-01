@@ -3,12 +3,13 @@ package com.tencent.mobileqq.emoticonview;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.widget.AdapterView.OnItemClickListener;
-import area;
-import aren;
-import areo;
-import avsq;
-import bcef;
+import asig;
+import asit;
+import asiu;
+import awyr;
+import bdla;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.data.EmoticonPackage;
@@ -18,11 +19,11 @@ import mqq.os.MqqHandler;
 
 public class EmoticonPanelMallHelper
   extends AbstractEmoticonPanelHelper
-  implements aren
+  implements asit
 {
   private static final String LOG_TAG = "EmoticonPanelMallHelper";
   private static final long MARKET_OPEN_INTERVAL = 2592000000L;
-  areo downloadListener = new EmoticonPanelMallHelper.4(this);
+  asiu downloadListener = new EmoticonPanelMallHelper.4(this);
   private boolean mAutoOpenPage;
   private int mFromType;
   private boolean mOnItemClicked;
@@ -42,14 +43,14 @@ public class EmoticonPanelMallHelper
   int findTabIndexByEpId(QQAppInterface paramQQAppInterface, String paramString, List<EmotionPanelInfo> paramList)
   {
     if ((TextUtils.isEmpty(paramString)) || (paramQQAppInterface == null)) {}
-    label154:
-    label158:
+    label155:
+    label159:
     for (;;)
     {
       return 0;
       if (paramList != null)
       {
-        paramQQAppInterface = ((avsq)paramQQAppInterface.getManager(14)).a(paramString);
+        paramQQAppInterface = ((awyr)paramQQAppInterface.getManager(QQManagerFactory.EMOTICON_MANAGER)).a(paramString);
         int j;
         int i;
         if ((paramQQAppInterface != null) && ((paramQQAppInterface.jobType == 3) || (paramQQAppInterface.jobType == 5)))
@@ -57,28 +58,28 @@ public class EmoticonPanelMallHelper
           j = 1;
           int k = paramList.size();
           i = 0;
-          label65:
+          label66:
           if (i >= k) {
-            break label154;
+            break label155;
           }
           paramQQAppInterface = (EmotionPanelInfo)paramList.get(i);
           if ((paramQQAppInterface == null) || (paramQQAppInterface.emotionPkg == null) || (!paramString.equals(paramQQAppInterface.emotionPkg.epId))) {
-            break label124;
+            break label125;
           }
         }
         for (;;)
         {
           if (i == -1) {
-            break label158;
+            break label159;
           }
           return i;
           j = 0;
           break;
-          label124:
+          label125:
           if ((j == 0) || (paramQQAppInterface == null) || (paramQQAppInterface.type != 9))
           {
             i += 1;
-            break label65;
+            break label66;
             i = -1;
           }
         }
@@ -124,8 +125,8 @@ public class EmoticonPanelMallHelper
   
   public void initBefore()
   {
-    area.a().a(this);
-    area.a().a(this.downloadListener);
+    asig.a().a(this);
+    asig.a().a(this.downloadListener);
   }
   
   public int[] interestedIn()
@@ -135,8 +136,8 @@ public class EmoticonPanelMallHelper
   
   public void onDestory()
   {
-    area.a().b(this);
-    area.a().b(this.downloadListener);
+    asig.a().b(this);
+    asig.a().b(this.downloadListener);
   }
   
   public void onPackageAdded(EmoticonPackage paramEmoticonPackage)
@@ -242,12 +243,12 @@ public class EmoticonPanelMallHelper
   
   public void onPause()
   {
-    area.a().b(this.downloadListener);
+    asig.a().b(this.downloadListener);
   }
   
   public void onResume()
   {
-    area.a().a(this.downloadListener);
+    asig.a().a(this.downloadListener);
   }
   
   public void preloadWebProcess()
@@ -283,7 +284,7 @@ public class EmoticonPanelMallHelper
       label238:
       for (str = "3";; str = "2")
       {
-        bcef.b(localQQAppInterface, "dc00898", "", "", paramEmotionPanelInfo, paramEmotionPanelInfo, i, 0, str, "", "", "");
+        bdla.b(localQQAppInterface, "dc00898", "", "", paramEmotionPanelInfo, paramEmotionPanelInfo, i, 0, str, "", "", "");
         if (paramBoolean)
         {
           this.mAutoOpenPage = true;
@@ -348,7 +349,7 @@ public class EmoticonPanelMallHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelMallHelper
  * JD-Core Version:    0.7.0.1
  */

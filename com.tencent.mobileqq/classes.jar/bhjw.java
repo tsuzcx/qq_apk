@@ -1,33 +1,36 @@
 import android.view.View;
-import android.widget.FrameLayout;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuNoIconLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bhjw
+  implements View.OnClickListener
 {
-  private static long jdField_a_of_type_Long = 400L;
-  private static boolean jdField_a_of_type_Boolean;
+  public bhjw(QQCustomMenuNoIconLayout paramQQCustomMenuNoIconLayout, boolean paramBoolean) {}
   
-  public static void a()
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  public static void a(FrameLayout paramFrameLayout)
-  {
-    if (jdField_a_of_type_Boolean) {
-      return;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenuNoIconLayout;
+    QQCustomMenuNoIconLayout localQQCustomMenuNoIconLayout = this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenuNoIconLayout;
+    int i;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      i = QQCustomMenuNoIconLayout.a(this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenuNoIconLayout);
+      QQCustomMenuNoIconLayout.a((QQCustomMenuNoIconLayout)localObject, localQQCustomMenuNoIconLayout.a(i), true);
+      localQQCustomMenuNoIconLayout = this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenuNoIconLayout;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label78;
+      }
     }
-    jdField_a_of_type_Boolean = true;
-    paramFrameLayout.invalidate();
-    View localView = paramFrameLayout.getChildAt(1);
-    paramFrameLayout = paramFrameLayout.getChildAt(0);
-    bhcr localbhcr = new bhcr(localView);
-    localbhcr.setDuration(jdField_a_of_type_Long);
-    localbhcr.setFillAfter(true);
-    bhcs localbhcs = new bhcs(paramFrameLayout);
-    localbhcs.setDuration(jdField_a_of_type_Long);
-    localbhcs.setFillAfter(true);
-    localView.startAnimation(localbhcr);
-    paramFrameLayout.startAnimation(localbhcs);
+    label78:
+    for (localObject = "0X800B3C1";; localObject = "0X800B3C3")
+    {
+      QQCustomMenuNoIconLayout.a(localQQCustomMenuNoIconLayout, (String)localObject);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      i = QQCustomMenuNoIconLayout.b(this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenuNoIconLayout);
+      break;
+    }
   }
 }
 

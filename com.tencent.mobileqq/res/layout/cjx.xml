@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:paddingTop="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:paddingLeft="8.0dip" android:paddingTop="4.0dip" android:paddingRight="8.0dip" android:paddingBottom="4.0dip" android:layout_width="65.0dip" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/wh" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="56.0dip" android:minHeight="@dimen/j2">
-        <TextView android:textSize="@dimen/j1" android:textColor="@color/skin_black" android:gravity="center_vertical" android:id="@id/wc" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:maxWidth="184.0dip" android:text="@string/wau" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-        <com.tencent.widget.Switch android:id="@id/wb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="49.0dip" android:layout_height="49.0dip">
+        <ImageView android:id="@id/na1" android:layout_width="49.0dip" android:layout_height="49.0dip" android:foreground="@drawable/av4" />
+        <ImageView android:id="@id/na0" android:layout_width="29.0dip" android:layout_height="17.0dip" android:src="@drawable/g5s" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
     </RelativeLayout>
-    <TextView android:textSize="12.0sp" android:textColor="@color/skin_gray3" android:id="@id/wa" android:padding="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/wat" />
+    <TextView android:textSize="12.0dip" android:textColor="@color/ano" android:ellipsize="end" android:gravity="center" android:layout_gravity="center" android:id="@id/na2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
 </LinearLayout>

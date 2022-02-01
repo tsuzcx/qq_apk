@@ -1,50 +1,26 @@
-import java.util.Calendar;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.Elem;
+import tencent.im.msg.im_msg_body.RichMsg;
 
-class acvb
-  implements apri
+public class acvb
+  extends acve
 {
-  final int jdField_a_of_type_Int;
-  
-  public acvb(acuy paramacuy, int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
   public int a()
   {
-    return 3;
+    return super.a() + 6;
   }
   
-  public int a(int paramInt)
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bffl parambffl, bcse parambcse, bcre parambcre)
   {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 0: 
-      return this.jdField_a_of_type_Int;
-    case 1: 
-      return 12;
-    }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(1, acuy.a(this.jdField_a_of_type_Acuy) + acuy.d(this.jdField_a_of_type_Acuy));
-    localCalendar.set(2, acuy.b(this.jdField_a_of_type_Acuy));
-    localCalendar.set(5, 1);
-    return localCalendar.getActualMaximum(5);
+    new bcrt().f(paramList, paramList1, paramStringBuilder, paramMsg, parambffl);
+    return true;
   }
   
-  public String a(int paramInt1, int paramInt2)
+  public boolean a(im_msg_body.Elem paramElem)
   {
-    switch (paramInt1)
-    {
-    default: 
-      return "";
-    case 0: 
-      return acuy.d(this.jdField_a_of_type_Acuy, paramInt2) + amtj.a(2131699171);
-    case 1: 
-      return acuy.e(this.jdField_a_of_type_Acuy, paramInt2) + amtj.a(2131699168);
-    }
-    return acuy.f(this.jdField_a_of_type_Acuy, paramInt2) + amtj.a(2131699169);
+    return paramElem.rich_msg.has();
   }
 }
 

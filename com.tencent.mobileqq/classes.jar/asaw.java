@@ -1,40 +1,6 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentTencentDocFileTabView;
-
-public class asaw
-  extends ataq
+class asaw
 {
-  public asaw(QfileRecentTencentDocFileTabView paramQfileRecentTencentDocFileTabView) {}
-  
-  public void a()
-  {
-    this.a.a.a().b();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().o();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().p();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().q();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().r();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().E();
-  }
+  private static final asau a = new asau(null);
 }
 
 

@@ -1,18 +1,25 @@
-import android.widget.PopupWindow.OnDismissListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.SubCommentCreateData;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-class pgs
-  implements PopupWindow.OnDismissListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SubCommentCreateData$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SubCommentCreateData;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SubCommentCreateData;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pgs
+  implements Parcelable.Creator<SubCommentCreateData>
 {
-  pgs(pgn parampgn, ped paramped) {}
-  
-  public void onDismiss()
+  @NotNull
+  public SubCommentCreateData a(@NotNull Parcel paramParcel)
   {
-    pgn.a(this.jdField_a_of_type_Pgn).a(1.0F);
-    if (this.jdField_a_of_type_Ped.a().b())
-    {
-      this.jdField_a_of_type_Ped.a().a().c();
-      this.jdField_a_of_type_Ped.a().f(false);
-    }
+    Intrinsics.checkParameterIsNotNull(paramParcel, "parcel");
+    return new SubCommentCreateData(paramParcel);
+  }
+  
+  @NotNull
+  public SubCommentCreateData[] a(int paramInt)
+  {
+    return new SubCommentCreateData[paramInt];
   }
 }
 

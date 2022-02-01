@@ -1,19 +1,6 @@
-import android.view.animation.Animation;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
-import com.tencent.qphone.base.util.QLog;
-
-public class azbl
-  extends azbj
+final class azbl
 {
-  public azbl(LSRecordPanel paramLSRecordPanel) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS startRecordingBarAnimation onAnimationEnd");
-    }
-    this.a.c = null;
-  }
+  private static final azbj a = new azbj(null);
 }
 
 

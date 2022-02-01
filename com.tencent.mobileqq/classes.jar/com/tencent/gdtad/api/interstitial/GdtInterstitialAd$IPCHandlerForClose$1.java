@@ -1,23 +1,23 @@
 package com.tencent.gdtad.api.interstitial;
 
-import abml;
-import abmm;
-import abrl;
+import accb;
+import accc;
+import acho;
 import java.lang.ref.WeakReference;
 
 public class GdtInterstitialAd$IPCHandlerForClose$1
   implements Runnable
 {
-  public GdtInterstitialAd$IPCHandlerForClose$1(abml paramabml, String paramString) {}
+  public GdtInterstitialAd$IPCHandlerForClose$1(accb paramaccb, String paramString) {}
   
   public void run()
   {
-    WeakReference localWeakReference = abmm.a().a(this.a);
+    WeakReference localWeakReference = accc.a().a(this.a);
     if ((localWeakReference == null) || (localWeakReference.get() == null)) {
       return;
     }
-    abrl.d("GdtInterstitialAd", "IPCHandlerForClose.handle timeout");
-    ((GdtInterstitialFragment)localWeakReference.get()).a(4, 13, -2147483648, -2147483648, -2147483648L);
+    acho.d("GdtInterstitialAd", "IPCHandlerForClose.handle timeout");
+    ((GdtInterstitialFragment)localWeakReference.get()).a(4, 13, -2147483648, -2147483648);
   }
 }
 

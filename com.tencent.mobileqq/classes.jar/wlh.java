@@ -1,147 +1,141 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
-import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import android.webkit.URLUtil;
+import com.tencent.biz.qqstory.utils.JsonORM;
+import com.tencent.biz.qqstory.utils.JsonORM.JsonParseException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class wlh
-  extends ReportDialog
-  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
-  MyVideoVisiblePersonPageView jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisiblePersonPageView;
-  MyVideoVisibleTroopPageView jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisibleTroopPageView;
-  LeftTabBarView jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  TroopManager jdField_a_of_type_ComTencentMobileqqAppTroopManager;
-  String jdField_a_of_type_JavaLangString;
-  vwo jdField_a_of_type_Vwo;
-  boolean jdField_a_of_type_Boolean;
+  @zef(a="type")
+  public int a;
+  @zef(a="linkUrl")
+  public String a;
+  @zef(a="capture")
+  public wld a;
+  @zef(a="comp")
+  public wle a;
+  @zef(a="gameinfo")
+  public wlf a;
+  @zef(a="game")
+  public wlg a;
+  @zef(a="videoShare")
+  public wli a;
+  @zef(a="parseState")
+  public int b;
+  @zef(a="title")
+  public String b;
+  @zef(a="body")
+  public String c;
+  @zef(a="picUrl")
+  public String d;
+  @zef(a="app")
+  public String e;
   
-  public wlh(@NonNull Context paramContext, String paramString, int paramInt, vwo paramvwo, boolean paramBoolean)
+  @Nullable
+  public static wlh a(String paramString)
   {
-    super(paramContext, 16973841);
-    super.requestWindowFeature(1);
-    super.setContentView(LayoutInflater.from(paramContext).inflate(2131561796, null));
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = wkp.a();
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Vwo = paramvwo;
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)wkp.a().getManager(52));
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    try
+    {
+      paramString = (wlh)JsonORM.a(new JSONObject(paramString), wlh.class);
+      return paramString;
+    }
+    catch (JsonORM.JsonParseException paramString)
+    {
+      paramString.printStackTrace();
+      return null;
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+    }
   }
   
-  void a()
+  public String a()
   {
-    ((ElasticImageView)findViewById(2131364630)).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131380800));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView = ((LeftTabBarView)findViewById(2131378110));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setUnselectColor(-1);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setSelectColor(-1);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setBackgroundDrawable(null);
-    ArrayList localArrayList1 = new ArrayList();
-    int i;
-    if ((this.jdField_a_of_type_Vwo != null) && (this.jdField_a_of_type_Boolean))
+    String str3 = this.jdField_a_of_type_JavaLangString;
+    String str2 = str3;
+    if (bhfp.d.matcher(str3).find())
     {
-      if ((this.jdField_a_of_type_Vwo.a != null) && (!this.jdField_a_of_type_Vwo.a.isEmpty()))
-      {
-        ArrayList localArrayList2 = new ArrayList(this.jdField_a_of_type_Vwo.a.size());
-        Iterator localIterator = this.jdField_a_of_type_Vwo.a.iterator();
-        while (localIterator.hasNext())
-        {
-          Object localObject = (String)localIterator.next();
-          localObject = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b((String)localObject);
-          if (localObject != null) {
-            localArrayList2.add(localObject);
-          }
-        }
-        Collections.sort(localArrayList2, ampx.a);
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisibleTroopPageView = new MyVideoVisibleTroopPageView(this, this.jdField_a_of_type_AndroidContentContext, localArrayList2, this.jdField_a_of_type_ComTencentMobileqqAppTroopManager);
+      String str1 = null;
+      int i = str3.lastIndexOf("#");
+      if (i > 0) {
+        str1 = str3.substring(i);
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisiblePersonPageView = new MyVideoVisiblePersonPageView(this, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisiblePersonPageView != null)
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisiblePersonPageView.a());
-        localArrayList1.add(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisiblePersonPageView);
+      str3 = URLUtil.guessUrl(str3);
+      str2 = str3;
+      if (str1 != null) {
+        return str3 + str1;
       }
-      if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisibleTroopPageView != null)
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisibleTroopPageView.a());
-        localArrayList1.add(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisibleTroopPageView);
-      }
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setSelectedTab(0, false);
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setOnTabChangeListener(new wli(this));
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(new wlk(this, localArrayList1));
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new wlj(this));
-      if (this.jdField_a_of_type_Int != 2) {
-        break label438;
-      }
-      i = 1;
     }
-    for (;;)
+    return str2;
+  }
+  
+  public String a(boolean paramBoolean)
+  {
+    try
     {
-      xwa.a("pub_control", "exp_list", 0, 0, new String[] { String.valueOf(i), "", "", this.jdField_a_of_type_JavaLangString });
-      return;
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisiblePersonPageView = new MyVideoVisiblePersonPageView(this, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      Object localObject = JsonORM.a(this);
+      if (paramBoolean) {
+        ((JSONObject)localObject).remove("parseState");
+      }
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
+    }
+    catch (JsonORM.JsonParseException localJsonParseException)
+    {
+      ykq.b("Q.qqstory.tag", "VideoLinkInfo", localJsonParseException);
+    }
+    return "";
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Int == 5) && (this.jdField_a_of_type_Wli != null);
+  }
+  
+  public String b()
+  {
+    String str1;
+    String str2;
+    label30:
+    String str3;
+    if (this.b != null)
+    {
+      str1 = this.b.trim();
+      if (this.c == null) {
+        break label57;
+      }
+      str2 = this.c.trim();
+      if ((!TextUtils.isEmpty(str1)) || (!TextUtils.isEmpty(str2))) {
+        break label63;
+      }
+      str3 = this.jdField_a_of_type_JavaLangString;
+    }
+    label57:
+    label63:
+    do
+    {
+      return str3;
+      str1 = "";
       break;
-      label438:
-      if (this.jdField_a_of_type_Int == 3) {
-        i = 2;
-      } else if (this.jdField_a_of_type_Int == 1) {
-        i = 3;
-      } else {
-        i = 0;
+      str2 = "";
+      break label30;
+      if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2))) {
+        return String.format("%s-%s", new Object[] { str1, str2 });
       }
-    }
-  }
-  
-  public void dismiss()
-  {
-    super.dismiss();
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisiblePersonPageView != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisiblePersonPageView.b();
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      dismiss();
-    }
-  }
-  
-  protected void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    paramBundle = super.getWindow();
-    paramBundle.setGravity(80);
-    paramBundle.setWindowAnimations(2131755168);
-    a();
+      str3 = str1;
+    } while (!TextUtils.isEmpty(str1));
+    return str2;
   }
 }
 

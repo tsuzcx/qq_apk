@@ -1,16 +1,14 @@
-import android.content.Context;
+import android.graphics.Rect;
 
 public class aqvs
-  extends lyp
 {
-  public static boolean a(Context paramContext, String paramString)
-  {
-    return a(paramContext, "TencentDoc_USER_" + paramString, false);
-  }
+  public Rect a;
+  public String a;
   
-  public static void b(Context paramContext, String paramString, boolean paramBoolean)
+  public aqvs(Rect paramRect, String paramString)
   {
-    a(paramContext, "TencentDoc_USER_" + paramString, paramBoolean);
+    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

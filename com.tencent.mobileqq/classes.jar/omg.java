@@ -1,14 +1,18 @@
-import android.view.View;
-import android.view.animation.Animation;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.EntranceDownloadInfo;
 
-class omg
-  extends bjmc
+public final class omg
+  implements Parcelable.Creator<VideoInfo.EntranceDownloadInfo>
 {
-  omg(omf paramomf, View paramView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public VideoInfo.EntranceDownloadInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    return new VideoInfo.EntranceDownloadInfo(paramParcel);
+  }
+  
+  public VideoInfo.EntranceDownloadInfo[] a(int paramInt)
+  {
+    return new VideoInfo.EntranceDownloadInfo[paramInt];
   }
 }
 

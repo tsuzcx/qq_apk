@@ -1,29 +1,36 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.SystemClock;
+import android.animation.Animator;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import java.util.List;
 
 class blhs
-  extends Handler
+  extends blhy
 {
-  public blhs(Looper paramLooper)
+  blhs(blhq paramblhq, RecyclerView.ViewHolder paramViewHolder1, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt3, RecyclerView.ViewHolder paramViewHolder2)
   {
-    super(paramLooper);
+    super(paramblhq, paramViewHolder1, paramInt1, paramInt2, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    switch (paramMessage.what)
+    super.onAnimationEnd(paramAnimator);
+    if (this.b) {}
+    for (;;)
     {
-    default: 
       return;
-    case 3000: 
-      blho.c((Activity)paramMessage.obj, paramMessage.arg1);
-      return;
+      if (this.jdField_a_of_type_Int <= 0) {
+        this.jdField_a_of_type_Blhq.mCallback.clearView(this.jdField_a_of_type_Blhq.mRecyclerView, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+      }
+      while (this.jdField_a_of_type_Blhq.mOverdrawChild == this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView)
+      {
+        this.jdField_a_of_type_Blhq.removeChildDrawingOrderCallbackIfNecessary(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView);
+        return;
+        this.jdField_a_of_type_Blhq.mPendingCleanup.add(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView);
+        this.jdField_a_of_type_Boolean = true;
+        if (this.jdField_a_of_type_Int > 0) {
+          this.jdField_a_of_type_Blhq.postDispatchSwipe(this, this.jdField_a_of_type_Int);
+        }
+      }
     }
-    blho.a(null);
-    blho.a(SystemClock.uptimeMillis());
   }
 }
 

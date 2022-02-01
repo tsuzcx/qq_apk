@@ -1,204 +1,99 @@
-import android.text.TextUtils;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.widget.RelativeLayout;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.GeneralRecommendFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
 import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
-class xtd
-  extends xqa
+public class xtd
+  extends xsq
 {
-  xtd(xss paramxss) {}
+  public Context a;
+  public View a;
+  public TextView a;
+  protected final xsw a;
+  public TextView b;
+  public TextView c;
   
-  public void a(int paramInt, View paramView, Object paramObject, xsh paramxsh)
+  public xtd(View paramView, xsw paramxsw)
   {
-    if (UIUtils.isFastDoubleClick()) {}
-    Object localObject;
-    label548:
-    label554:
-    do
+    this.jdField_a_of_type_Xsw = paramxsw;
+    this.jdField_a_of_type_AndroidContentContext = paramView.getContext();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131381639));
+    this.b = ((TextView)paramView.findViewById(2131380859));
+    this.c = ((TextView)paramView.findViewById(2131381034));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370116);
+    QQStoryContext.a();
+    if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null))
     {
-      int i;
-      do
-      {
-        do
-        {
-          return;
-          switch (paramView.getId())
-          {
-          default: 
-            return;
-          case 2131362134: 
-          case 2131374351: 
-            for (;;)
-            {
-              paramObject = (xpe)this.a.jdField_a_of_type_Xoi.a().get(paramInt);
-              if (paramObject == xss.a(this.a))
-              {
-                xss.a(this.a, null);
-                xss.a(this.a, false);
-                this.a.c(true);
-              }
-              if (!(paramObject instanceof xnx)) {
-                break;
-              }
-              paramView = (xnx)paramObject;
-              paramView.a = false;
-              paramView.a();
-              return;
-              if ((this.a.jdField_a_of_type_Xoi.a().get(paramInt) instanceof xnx)) {
-                xwa.a("share_story", "clk_guide", 1, 0, new String[0]);
-              } else if ((this.a.jdField_a_of_type_Xoi.a().get(paramInt) instanceof xpd)) {
-                xwa.a("share_story", "clk_guide", 2, 0, new String[0]);
-              }
-            }
-            if ((paramObject instanceof xpd))
-            {
-              paramView = ((ShareGroupFeedItem)((xpd)paramObject).a()).getOwner();
-              xss.a(this.a, paramObject, paramView);
-              return;
-            }
-            break;
-          }
-        } while (!(paramObject instanceof xny));
-        if (!ypp.a(xss.a(this.a)))
-        {
-          QQToast.a(xss.a(this.a), 1, amtj.a(2131703588), 0).a();
-          return;
-        }
-        paramObject = (xny)paramObject;
-        localObject = paramObject.a().getOwner();
-        ((vkz)wkp.a().getBusinessHandler(98)).a(1, ((QQUserUIItem)localObject).getUnionId(), 0, 10);
-        paramView.setVisibility(8);
-        ((RelativeLayout)paramxsh.a(2131374377)).setVisibility(8);
-        xwa.a("home_page", "follow_recom", 0, 0, new String[] { "1", "1", ((QQUserUIItem)localObject).getUnionId(), paramObject.a().feedId });
-        return;
-        paramxsh = ((xpe)this.a.jdField_a_of_type_Xoi.a().get(paramInt)).a();
-        localObject = paramxsh.getOwner();
-        paramInt = xwa.a(paramxsh);
-        i = xwa.b(paramxsh);
-        if (this.a.jdField_a_of_type_Int == 11)
-        {
-          paramView = "3";
-          if (!(localObject instanceof ShareGroupItem)) {
-            break label548;
-          }
-        }
-        for (paramObject = ((vwb)localObject).getUnionId();; paramObject = "")
-        {
-          xwa.a("home_page", "clk_head_nick", paramInt, 0, new String[] { String.valueOf(i), paramView, paramxsh.feedId, paramObject });
-          if (!((vwb)localObject).isMe()) {
-            break label554;
-          }
-          vpl.a(xss.a(this.a), 4, paramxsh.getOwner().getUnionId());
-          return;
-          paramView = "1";
-          break;
-        }
-        switch (((vwb)localObject).getRelationType())
-        {
-        default: 
-          return;
-        case 0: 
-        case 1: 
-          if (((paramxsh instanceof GeneralFeedItem)) || ((paramxsh instanceof GeneralRecommendFeedItem)))
-          {
-            vpl.a(xss.a(this.a), 4, ((vwb)localObject).getUnionId());
-            return;
-          }
-          break;
-        }
-      } while (!(paramxsh instanceof ShareGroupFeedItem));
-      paramView = ((vwb)localObject).getUnionId();
-      if (TextUtils.isEmpty(paramView))
-      {
-        xvv.e("Q.qqstory.home:FeedSegment", "click the avatar when group id is null");
-        return;
+      if (this.b != null) {
+        this.b.setTextColor(Color.parseColor("#44608a"));
       }
-      if (paramxsh.type == 2) {}
-      for (paramInt = 1;; paramInt = 2)
-      {
-        QQStoryShareGroupProfileActivity.a(xss.a(this.a), 2, paramView, null, paramInt, 74);
-        return;
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#6991b8"));
+      this.c.setTextColor(Color.parseColor("#6991b8"));
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#0c284e"));
       }
-      for (;;)
-      {
-        try
-        {
-          if (!(localObject instanceof ShareGroupItem)) {
-            break;
-          }
-          if (this.a.jdField_a_of_type_Int != 10) {
-            break label776;
-          }
-          paramInt = 1;
-          if (this.a.jdField_a_of_type_Int != 10) {
-            break label782;
-          }
-          i = 88;
-          QQStoryShareGroupProfileActivity.a(xss.a(this.a), 1, ((vwb)localObject).getUnionId(), String.valueOf(((ShareGroupItem)localObject).groupUin), paramInt, i);
-          return;
-        }
-        catch (NumberFormatException paramView) {}
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.w("Q.qqstory.home:FeedSegment", 2, "troopId error ", paramView);
-        return;
-        paramInt = 9;
-        continue;
-        i = 76;
-      }
-      if ((this.a.jdField_a_of_type_Xoi.a() == null) || (this.a.jdField_a_of_type_Xoi.a().size() <= paramInt) || (this.a.jdField_a_of_type_Xoi.a().get(paramInt) == null)) {
-        break;
-      }
-    } while (!(this.a.jdField_a_of_type_Xoi.a().get(paramInt) instanceof xpg));
-    label776:
-    label782:
-    paramView = (xpg)this.a.jdField_a_of_type_Xoi.a().get(paramInt);
-    paramObject = new ArrayList();
-    paramxsh = paramView.a().iterator();
-    paramInt = 0;
-    label903:
-    if (paramxsh.hasNext())
-    {
-      localObject = (StoryVideoItem)paramxsh.next();
-      if (!((StoryVideoItem)localObject).isUploadFail()) {
-        break label1061;
-      }
-      paramObject.add(localObject);
-      paramInt += 1;
     }
-    label1061:
+    this.c.setOnClickListener(new xte(this));
+  }
+  
+  public void a(VideoCollectionItem paramVideoCollectionItem, View paramView, int paramInt)
+  {
+    int i = 0;
+    if (this.jdField_a_of_type_Xsw.a)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131713391));
+      this.jdField_a_of_type_AndroidWidgetTextView.setPadding(UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 3.0F), 0, 0, 0);
+      this.b.setText("");
+      if (paramInt != 1) {
+        break label174;
+      }
+      this.c.setVisibility(0);
+      a(this.jdField_a_of_type_Xsw.a);
+    }
     for (;;)
     {
-      break label903;
-      if (paramObject.size() > 0) {
-        vns.a(paramObject, xss.a(this.a));
+      paramVideoCollectionItem = this.jdField_a_of_type_AndroidViewView;
+      if (paramInt == 1) {
+        i = 4;
       }
-      if (this.a.jdField_a_of_type_Xoi.a().size() <= 0) {
+      paramVideoCollectionItem.setVisibility(i);
+      return;
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(zdu.c(paramVideoCollectionItem.collectionTime));
+      this.jdField_a_of_type_AndroidWidgetTextView.setPadding(0, 0, 0, 0);
+      if (paramVideoCollectionItem.collectionCount <= 0)
+      {
+        this.b.setText("");
         break;
       }
-      xwa.a("home_page", "clk_retry", xwa.a(paramView.a()), 0, new String[] { "1", xwa.a(this.a.jdField_a_of_type_Int), String.valueOf(paramInt), paramView.a().feedId });
-      return;
-      xvv.e("Q.qqstory.home:FeedSegment", "feed upload retry failed!!");
-      return;
-      xss.a(this.a, paramInt);
+      this.b.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131698929, new Object[] { Integer.valueOf(paramVideoCollectionItem.collectionCount) }));
+      break;
+      label174:
+      this.c.setVisibility(8);
+    }
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    int i = UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 17.0F);
+    if (paramBoolean)
+    {
+      this.c.setText(anvx.a(2131713370));
+      localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846905);
+      localDrawable.setBounds(0, 0, i, i);
+      this.c.setCompoundDrawables(localDrawable, null, null, null);
       return;
     }
+    this.c.setText(anvx.a(2131713381));
+    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846904);
+    localDrawable.setBounds(0, 0, i, i);
+    this.c.setCompoundDrawables(localDrawable, null, null, null);
   }
 }
 

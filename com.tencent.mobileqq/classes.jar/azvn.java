@@ -1,135 +1,58 @@
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.redtouch.VipBannerInfo.2;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.widget.ToggleButton;
+import com.tencent.mobileqq.profile.ProfileLabelInfo;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import mqq.os.MqqHandler;
-import mqq.util.WeakReference;
-import org.json.JSONObject;
 
 public class azvn
 {
-  public int a;
-  public long a;
-  public BusinessInfoCheckUpdate.AppInfo a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  private Map<ProfileLabelInfo, ToggleButton> a = new HashMap();
   
-  public static List<azvn> a(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  public ToggleButton a(ProfileLabelInfo paramProfileLabelInfo)
   {
-    Object localObject1 = azvm.a(paramAppInfo);
-    ArrayList localArrayList;
-    if ((localObject1 != null) && (((Map)localObject1).size() > 0))
-    {
-      localArrayList = new ArrayList();
-      try
-      {
-        localObject1 = ((Map)localObject1).entrySet().iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
-          String str = (String)((Map.Entry)localObject2).getKey();
-          localObject2 = (JSONObject)((Map.Entry)localObject2).getValue();
-          if ((str != null) && (localObject2 != null) && (((JSONObject)localObject2).has("blue_bar_stat")))
-          {
-            azvn localazvn = new azvn();
-            localazvn.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo = paramAppInfo;
-            localazvn.jdField_b_of_type_Int = ((JSONObject)localObject2).getInt("blue_bar_stat");
-            localazvn.jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).getString("blue_content");
-            localazvn.jdField_a_of_type_Int = ((JSONObject)localObject2).getInt("blue_type");
-            localazvn.jdField_a_of_type_JavaLangString = str;
-            localazvn.jdField_a_of_type_Long = (((JSONObject)localObject2).getLong("duration") * 1000L);
-            localazvn.c = ((JSONObject)localObject2).getString("blue_aid");
-            localazvn.d = ((JSONObject)localObject2).getString("link");
-            localazvn.e = ((JSONObject)localObject2).getString("blue_icon_url");
-            localazvn.f = ((JSONObject)localObject2).getString("blue_button_text");
-            localArrayList.add(localazvn);
-            continue;
-            return null;
-          }
-        }
-      }
-      catch (Exception paramAppInfo)
-      {
-        paramAppInfo.printStackTrace();
-      }
+    return (ToggleButton)this.a.get(paramProfileLabelInfo);
+  }
+  
+  public Map<ProfileLabelInfo, ToggleButton> a()
+  {
+    return this.a;
+  }
+  
+  public void a()
+  {
+    this.a.clear();
+  }
+  
+  public void a(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton)
+  {
+    if (!a(paramProfileLabelInfo)) {
+      this.a.put(paramProfileLabelInfo, paramToggleButton);
     }
-    return localArrayList;
   }
   
-  public static void a(Conversation paramConversation)
+  public boolean a(ProfileLabelInfo paramProfileLabelInfo)
   {
-    if ((paramConversation == null) || (paramConversation.jdField_a_of_type_Akho.a(26) != 0)) {}
-    SharedPreferences localSharedPreferences;
-    MqqHandler localMqqHandler;
-    do
-    {
-      return;
-      localSharedPreferences = paramConversation.a().getSharedPreferences("mobileQQ", 0);
-      localMqqHandler = paramConversation.jdField_a_of_type_Akho.a();
-    } while ((localMqqHandler == null) || ((azvi)paramConversation.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(36) == null));
-    paramConversation = new WeakReference(paramConversation.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    ThreadManager.getFileThreadHandler().post(new VipBannerInfo.2(paramConversation, localSharedPreferences, localMqqHandler));
+    return this.a.get(paramProfileLabelInfo) != null;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, azvk paramazvk)
+  public void b(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton)
   {
-    if (paramazvk == null) {
-      label4:
-      return;
-    } else {
-      do
-      {
-        do
-        {
-          paramQQAppInterface = (azvi)paramQQAppInterface.getManager(36);
-        } while (paramQQAppInterface == null);
-        paramQQAppInterface = paramQQAppInterface.b(3);
-      } while (paramQQAppInterface == null);
+    if (a(paramProfileLabelInfo)) {
+      this.a.remove(paramProfileLabelInfo);
     }
-    Object localObject;
-    label78:
-    do
-    {
-      paramQQAppInterface = paramQQAppInterface.iterator();
-      break label78;
-      if (!paramQQAppInterface.hasNext()) {
-        break label4;
-      }
-      localObject = a((BusinessInfoCheckUpdate.AppInfo)paramQQAppInterface.next());
-      if ((localObject == null) || (((List)localObject).size() <= 0)) {
-        break;
-      }
-      localObject = ((List)localObject).iterator();
-      if (!((Iterator)localObject).hasNext()) {
-        break;
-      }
-    } while (!paramazvk.a((azvn)((Iterator)localObject).next()));
   }
   
-  public static void b(Conversation paramConversation)
+  public void c(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton)
   {
-    if ((paramConversation != null) && (paramConversation.jdField_a_of_type_Akho.a(26) != 0))
+    if (paramProfileLabelInfo.labelStatus == ProfileLabelInfo.STATUS_NORMAL) {
+      a(paramProfileLabelInfo, paramToggleButton);
+    }
+    for (;;)
     {
-      paramConversation = paramConversation.jdField_a_of_type_Akho.a();
-      if (paramConversation != null)
-      {
-        paramConversation.removeMessages(9);
-        paramConversation.sendEmptyMessage(9);
+      paramProfileLabelInfo.toggleStatus();
+      paramToggleButton.toggle();
+      return;
+      if (paramProfileLabelInfo.labelStatus == ProfileLabelInfo.STATUS_CHECKED) {
+        b(paramProfileLabelInfo, paramToggleButton);
       }
     }
   }

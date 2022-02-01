@@ -1,19 +1,17 @@
-import android.util.Pair;
-import com.tencent.mobileqq.activity.aio.PanelAdapter;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-import com.tencent.mobileqq.widget.QQViewPager;
-import java.util.List;
-import kotlin.jvm.functions.Function0;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class afci
-  implements Function0<Pair<List<ayfo>, Integer>>
+  implements DialogInterface.OnClickListener
 {
-  afci(afch paramafch) {}
+  afci(afcg paramafcg, QQCustomDialog paramQQCustomDialog) {}
   
-  public Pair<List<ayfo>, Integer> a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = PlusPanel.a(this.a.a).getCurrentItem();
-    return new Pair(this.a.a.a.a(i), Integer.valueOf(i));
+    bdla.b(this.jdField_a_of_type_Afcg.a.app, "P_CliOper", "Grp_manage", "", "del_grp", "Clk_know", 0, 0, this.jdField_a_of_type_Afcg.a.a, "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
   }
 }
 

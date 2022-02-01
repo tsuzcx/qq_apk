@@ -1,21 +1,4 @@
-public class vxb
-{
-  public final long a;
-  public final vwz a;
-  public final long b;
-  
-  public vxb(vwz paramvwz, long paramLong1, long paramLong2)
-  {
-    this.jdField_a_of_type_Vwz = paramvwz;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-  }
-  
-  public String toString()
-  {
-    return "Progress{intput=" + this.jdField_a_of_type_Vwz + ", downloadBytes=" + this.jdField_a_of_type_Long + ", totalBytes=" + this.b + '}';
-  }
-}
+public abstract interface vxb {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

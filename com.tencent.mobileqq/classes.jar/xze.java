@@ -1,12 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.List;
 
 class xze
-  implements DialogInterface.OnClickListener
+  extends JobSegment<Integer, ych>
 {
-  xze(xzd paramxzd) {}
+  private ycg a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public xze(@NonNull ycg paramycg)
+  {
+    this.a = paramycg;
+  }
+  
+  protected void a(JobContext paramJobContext, Integer paramInteger)
+  {
+    Object localObject = this.a.a(paramInteger.intValue(), 5);
+    if ((((ych)localObject).a.size() > 0) || (((ych)localObject).b))
+    {
+      ykq.b("Q.qqstory.home.data.FeedListPageLoaderBase", "hit feed id cache");
+      notifyResult(localObject);
+      return;
+    }
+    localObject = new wtj();
+    ((wtj)localObject).a = this.a.a();
+    ((wtj)localObject).b = QQStoryContext.a().b();
+    wfi.a().a((wfm)localObject, new xzf(this, paramJobContext, paramInteger));
+  }
 }
 
 

@@ -1,15 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.OpenAuthorityFragment;
+import QC.GetItemWatchWordReq;
+import QC.GetItemWatchWordRsp;
+import QC.UniBusinessItem;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import eipc.EIPCModule;
+import eipc.EIPCResultCallback;
 
 public class bhss
-  implements DialogInterface.OnClickListener
+  implements bhsr
 {
-  public bhss(OpenAuthorityFragment paramOpenAuthorityFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString1, String paramString2, EIPCModule paramEIPCModule, int paramInt, EIPCResultCallback paramEIPCResultCallback)
   {
-    paramDialogInterface.dismiss();
+    paramEIPCResultCallback = new bhyv("QC.UniBusinessLoginServer.UniBusinessLoginObj", "QCUniBusinessLogin.watchword", "stReq", "stRsp");
+    UniBusinessItem localUniBusinessItem = new UniBusinessItem();
+    localUniBusinessItem.appid = Integer.parseInt(paramString1);
+    localUniBusinessItem.itemid = Integer.parseInt(paramString2);
+    paramEIPCResultCallback.a("GetItemWatchWord", new GetItemWatchWordReq(aocy.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()), localUniBusinessItem), new GetItemWatchWordRsp(), new bhst(this, paramEIPCModule, paramInt), true);
   }
 }
 

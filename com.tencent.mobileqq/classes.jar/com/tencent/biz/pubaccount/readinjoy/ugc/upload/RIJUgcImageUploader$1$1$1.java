@@ -1,25 +1,25 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.upload;
 
 import com.tencent.qphone.base.util.QLog;
-import rqx;
-import rrb;
-import rrc;
+import sdm;
+import sdq;
+import sdr;
 
 public class RIJUgcImageUploader$1$1$1
   implements Runnable
 {
-  public RIJUgcImageUploader$1$1$1(rrc paramrrc, int paramInt, String paramString) {}
+  public RIJUgcImageUploader$1$1$1(sdr paramsdr, int paramInt, String paramString) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Int == 0)
     {
-      QLog.i(rrb.jdField_a_of_type_JavaLangString, 1, "uploadImage success");
-      rrb.a(this.jdField_a_of_type_Rrc.a.this$0).a(this.jdField_a_of_type_JavaLangString);
+      QLog.i(sdq.jdField_a_of_type_JavaLangString, 1, "uploadImage success");
+      sdq.a(this.jdField_a_of_type_Sdr.a.this$0).a(this.jdField_a_of_type_JavaLangString);
       return;
     }
-    QLog.i(rrb.jdField_a_of_type_JavaLangString, 1, "uploadImage failed, errCode=" + this.jdField_a_of_type_Int);
-    rrb.a(this.jdField_a_of_type_Rrc.a.this$0).a(this.jdField_a_of_type_Int, "");
+    QLog.i(sdq.jdField_a_of_type_JavaLangString, 1, "uploadImage failed, errCode=" + this.jdField_a_of_type_Int);
+    sdq.a(this.jdField_a_of_type_Sdr.a.this$0).a(this.jdField_a_of_type_Int, "");
   }
 }
 

@@ -1,26 +1,15 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import java.lang.ref.WeakReference;
 
-public class awxw
-  implements atqo
+public abstract class awxw<T>
 {
-  public awxw(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public WeakReference<T> a;
   
-  public void b()
+  public awxw(T paramT)
   {
-    bjmr localbjmr = bjmr.a;
-    if ((localbjmr != null) && (localbjmr.a()))
-    {
-      if (!localbjmr.a(1)) {
-        localbjmr.b(1);
-      }
-      if ((!localbjmr.a(8)) && (localbjmr.a(5))) {
-        localbjmr.b(8);
-      }
-      if ((!localbjmr.a(9)) && (localbjmr.a(6))) {
-        localbjmr.b(9);
-      }
-    }
+    this.a = new WeakReference(paramT);
   }
+  
+  public abstract void a(T paramT, boolean paramBoolean, awxt paramawxt);
 }
 
 

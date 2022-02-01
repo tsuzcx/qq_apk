@@ -1,18 +1,16 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
 
 class ahla
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  ahla(ahkz paramahkz) {}
+  ahla(ahkx paramahkx, aftk paramaftk) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!this.a.hasDestory) {
-      acvv.a(this.a.sessionInfo, this.a.app, this.a.getActivity());
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Aftk.onTouch(paramView, paramMotionEvent);
+    return false;
   }
 }
 

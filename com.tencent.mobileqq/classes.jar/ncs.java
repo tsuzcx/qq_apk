@@ -1,22 +1,88 @@
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.LayoutParams;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
+
 public class ncs
+  extends RecyclerView.Adapter<nct>
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public int e = 1;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  List<ndu> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public String toString()
+  public ncs(Context paramContext, int paramInt)
   {
-    return "MemberVideoDisplayInfo{uin=" + this.jdField_a_of_type_Long + ", x=" + this.jdField_a_of_type_Int + ", y=" + this.jdField_b_of_type_Int + ", width=" + this.jdField_c_of_type_Int + ", height=" + this.d + ", showCameraVideo=" + this.jdField_a_of_type_Boolean + ", isCameraBigger=" + this.jdField_b_of_type_Boolean + ", [showStarVideo=" + this.jdField_c_of_type_Boolean + ", starX=" + this.f + ", starY=" + this.g + ", starWidth=" + this.h + ", starHeight=" + this.i + "]}";
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public nct a(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new nct(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558728, paramViewGroup, false));
+  }
+  
+  public ndu a(int paramInt)
+  {
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
+      return (ndu)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public void a(List<ndu> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+  }
+  
+  public void a(nct paramnct, int paramInt)
+  {
+    ndu localndu = a(paramInt);
+    RecyclerView.LayoutParams localLayoutParams;
+    if ((paramInt == 3) || (paramInt == 6))
+    {
+      localLayoutParams = (RecyclerView.LayoutParams)paramnct.itemView.getLayoutParams();
+      localLayoutParams.leftMargin = AIOUtils.dp2px(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      paramnct.itemView.setLayoutParams(localLayoutParams);
+      if ((localndu == null) || (!localndu.a())) {
+        break label163;
+      }
+      nct.a(paramnct).setText("" + localndu.a());
+      nct.a(paramnct).setVisibility(0);
+      paramnct.itemView.setTag(localndu);
+      nct.a(paramnct).setVisibility(4);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramnct, paramInt, getItemId(paramInt));
+      return;
+      localLayoutParams = (RecyclerView.LayoutParams)paramnct.itemView.getLayoutParams();
+      localLayoutParams.leftMargin = 0;
+      paramnct.itemView.setLayoutParams(localLayoutParams);
+      break;
+      label163:
+      nct.a(paramnct).setVisibility(8);
+      nct.a(paramnct).setImageResource(2130845207);
+      nct.a(paramnct).setVisibility(0);
+    }
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
   }
 }
 

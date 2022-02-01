@@ -1,16 +1,8 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.model.BannerFeedItem;
+import android.view.View;
 
-public class why
-  extends wjd
+public abstract interface why
 {
-  public why(@NonNull BannerFeedItem paramBannerFeedItem)
-  {
-    this.a = paramBannerFeedItem.shareInfo.a;
-    this.b = paramBannerFeedItem.shareInfo.b;
-    this.c = paramBannerFeedItem.shareInfo.d;
-    this.d = paramBannerFeedItem.shareInfo.c;
-  }
+  public abstract void a(View paramView, int paramInt);
 }
 
 

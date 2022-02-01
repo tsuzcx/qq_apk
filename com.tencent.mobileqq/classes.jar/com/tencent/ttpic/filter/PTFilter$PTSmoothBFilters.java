@@ -36,15 +36,15 @@ public class PTFilter$PTSmoothBFilters
   
   public void destroy()
   {
-    this.mClarityFilter.ClearGLSL();
-    this.mBigBlurFilter.ClearGLSL();
-    this.mVarianceFilter.ClearGLSL();
-    this.mVarianceFilter2.ClearGLSL();
-    this.mBoxFilter.ClearGLSL();
-    this.mProcessVarianceFilter.ClearGLSL();
-    this.mProcessVarianceFilter2.ClearGLSL();
-    this.mHighPassFilter.ClearGLSL();
-    this.mCopyFilter.ClearGLSL();
+    this.mClarityFilter.clearGLSL();
+    this.mBigBlurFilter.clearGLSL();
+    this.mVarianceFilter.clearGLSL();
+    this.mVarianceFilter2.clearGLSL();
+    this.mBoxFilter.clearGLSL();
+    this.mProcessVarianceFilter.clearGLSL();
+    this.mProcessVarianceFilter2.clearGLSL();
+    this.mHighPassFilter.clearGLSL();
+    this.mCopyFilter.clearGLSL();
     this.mBoxFrame1.clear();
     this.mBoxFrame1_1.clear();
     this.mVarianceFrame1.clear();

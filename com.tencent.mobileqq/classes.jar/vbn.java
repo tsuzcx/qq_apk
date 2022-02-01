@@ -1,31 +1,27 @@
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.util.Log;
+import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
 
-public abstract class vbn<T>
-  extends bjwy<T>
+final class vbn
+  implements DialogInterface.OnClickListener
 {
-  public WSVerticalPageFragment a;
-  public T a;
-  public ula<T> a;
+  vbn(Activity paramActivity, WSDownloadParams paramWSDownloadParams) {}
   
-  public vbn(ViewGroup paramViewGroup, int paramInt1, int paramInt2, WSVerticalPageFragment paramWSVerticalPageFragment)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramViewGroup, paramInt1);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramWSVerticalPageFragment;
-    this.jdField_a_of_type_Ula = a(paramInt2);
-  }
-  
-  public abstract FrameLayout a();
-  
-  public abstract ula<T> a(int paramInt);
-  
-  public abstract void a(int paramInt);
-  
-  public void a(T paramT)
-  {
-    super.a(paramT);
-    this.jdField_a_of_type_JavaLangObject = paramT;
+    if ((paramDialogInterface instanceof vbj)) {
+      vbj.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams);
+    }
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      vbj.a(125, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams);
+      vkf.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mScene, false, true);
+      return;
+      Log.e("weishi-808", "dialog type is error");
+    }
   }
 }
 

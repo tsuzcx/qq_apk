@@ -1,97 +1,27 @@
-import android.arch.lifecycle.MutableLiveData;
-import android.os.Bundle;
-import com.tencent.ttpic.util.GsonUtils;
-import dov.com.qq.im.aeeditor.manage.AEEditorEffectGroupListBean;
-import dov.com.qq.im.aeeditor.manage.AEEditorEffectGroupListBean.AEEditorEffectGroupItem;
-import dov.com.qq.im.aeeditor.manage.AEEditorEffectGroupListBean.AEEditorEffectItem;
-import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterBean;
-import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterBean.FilterID;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import kotlin.Metadata;
+import kotlin.text.Charsets;
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONObject;
 
-class bmko
-  implements EIPCResultCallback
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"cooperation/vip/VasAdvWebPlugin$handleRewardVideo$rewardCallback$1", "Lcooperation/vip/reward/VasRewardAdCallback;", "onReward", "", "retCode", "", "requestBizBuff", "", "reportBizBuff", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bmko
+  implements bmoj
 {
-  bmko(bmkn parambmkn) {}
+  bmko(String paramString) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onReward(int paramInt, @Nullable byte[] paramArrayOfByte1, @Nullable byte[] paramArrayOfByte2)
   {
-    bmbx.a(bmkn.a(this.a), "ipc result.");
-    paramEIPCResult = paramEIPCResult.data.getString("effect_group_json_path");
-    Object localObject1;
-    ArrayList localArrayList;
-    label239:
-    Object localObject2;
-    try
-    {
-      paramEIPCResult = (AEEditorEffectGroupListBean)bmfb.a(paramEIPCResult);
-      if ((paramEIPCResult != null) && (paramEIPCResult.effectGroups != null))
-      {
-        localObject1 = paramEIPCResult;
-        if (paramEIPCResult.effectGroups.size() >= 1) {}
-      }
-      else
-      {
-        bmbx.b(bmkn.c(this.a), "use local effect data.");
-        localObject1 = (AEEditorEffectGroupListBean)GsonUtils.json2Obj(bmkn.a(this.a, "camera/ae_camera_editor_display_effects.json"), new bmkp(this).getType());
-      }
-      if ((localObject1 == null) || (((AEEditorEffectGroupListBean)localObject1).effectGroups == null) || (((AEEditorEffectGroupListBean)localObject1).effectGroups.size() <= 0))
-      {
-        bmbx.d(bmkn.d(this.a), "effect list is empty.");
-        return;
-      }
+    JSONObject localJSONObject1 = new JSONObject();
+    localJSONObject1.put("returnCode", paramInt);
+    JSONObject localJSONObject2 = new JSONObject();
+    if (paramArrayOfByte1 != null) {
+      localJSONObject2.put("request_busi_buff", new String(paramArrayOfByte1, Charsets.UTF_8));
     }
-    catch (Exception paramEIPCResult)
-    {
-      for (;;)
-      {
-        bmbx.d(bmkn.b(this.a), "parse online config error e: " + paramEIPCResult.toString());
-        paramEIPCResult = null;
-      }
-      localArrayList = new ArrayList();
-      paramEIPCResult = ((AEEditorEffectGroupListBean)localObject1).effectGroups.iterator();
-      while (paramEIPCResult.hasNext())
-      {
-        localObject1 = (AEEditorEffectGroupListBean.AEEditorEffectGroupItem)paramEIPCResult.next();
-        if ((localObject1 != null) && (((AEEditorEffectGroupListBean.AEEditorEffectGroupItem)localObject1).effects != null) && (((AEEditorEffectGroupListBean.AEEditorEffectGroupItem)localObject1).effects.size() > 0))
-        {
-          localObject1 = ((AEEditorEffectGroupListBean.AEEditorEffectGroupItem)localObject1).effects.iterator();
-          AEEditorFilterBean localAEEditorFilterBean;
-          if (((Iterator)localObject1).hasNext())
-          {
-            localObject2 = (AEEditorEffectGroupListBean.AEEditorEffectItem)((Iterator)localObject1).next();
-            localAEEditorFilterBean = new AEEditorFilterBean();
-            localAEEditorFilterBean.setEffectId(((AEEditorEffectGroupListBean.AEEditorEffectItem)localObject2).getEffectID());
-            localAEEditorFilterBean.setName(((AEEditorEffectGroupListBean.AEEditorEffectItem)localObject2).getEffectName());
-            localAEEditorFilterBean.setPicUrl(((AEEditorEffectGroupListBean.AEEditorEffectItem)localObject2).getThumbURL());
-            localAEEditorFilterBean.setEditorEffectItem((AEEditorEffectGroupListBean.AEEditorEffectItem)localObject2);
-            if (!"network".equals(((AEEditorEffectGroupListBean.AEEditorEffectItem)localObject2).getEffectType())) {
-              break label348;
-            }
-          }
-          label348:
-          for (localAEEditorFilterBean.type = AEEditorFilterBean.FilterID.NETWORK;; localAEEditorFilterBean.type = AEEditorFilterBean.FilterID.CLIENT)
-          {
-            localAEEditorFilterBean.setUploadMaxSize(((AEEditorEffectGroupListBean.AEEditorEffectItem)localObject2).getUploadMaxSize());
-            localArrayList.add(localAEEditorFilterBean);
-            break label239;
-            break;
-          }
-        }
-      }
-      localObject1 = bmkn.e(this.a);
-      localObject2 = new StringBuilder().append("setupDisplayFilterList---filters size = ");
-      if (!localArrayList.isEmpty()) {}
+    if (paramArrayOfByte2 != null) {
+      localJSONObject2.put("report_busi_buff", new String(paramArrayOfByte2, Charsets.UTF_8));
     }
-    for (paramEIPCResult = "null";; paramEIPCResult = Integer.valueOf(localArrayList.size()))
-    {
-      bmbx.b((String)localObject1, paramEIPCResult);
-      this.a.a().postValue(localArrayList);
-      return;
-    }
+    localJSONObject1.put("data", localJSONObject2);
+    this.jdField_a_of_type_Bmkm.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject1.toString(0) });
   }
 }
 

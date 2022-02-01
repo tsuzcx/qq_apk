@@ -1,27 +1,28 @@
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
 
-class avge
-  implements View.OnClickListener
+public class avge
+  implements bivu
 {
-  avge(avga paramavga, avfq paramavfq) {}
+  public avge(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  public void onClick(View paramView)
+  public void onItemSelect(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_Avga.jdField_a_of_type_Avfq.a()) {}
-    for (;;)
+    if (paramInt == 5)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (!paramView.isSelected())
-      {
-        this.jdField_a_of_type_Avga.a(paramView);
-        this.jdField_a_of_type_Avga.jdField_a_of_type_Int = 2;
-        avfq.a(this.jdField_a_of_type_Avga.jdField_a_of_type_Avfq, Integer.valueOf(2));
-        bcef.b(null, "CliOper", "", "", "0X800A96E", "0X800A96E", 3, 0, "0", "0", "0", "");
-      }
+      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
+      paramView.putExtra("uin", "2747277822");
+      paramView.putExtra("fromQGamePub", true);
+      this.a.startActivity(paramView);
     }
+    while (paramInt != 1) {
+      return;
+    }
+    QQGameFeedWebFragment.a(this.a, this.a.a);
+    this.a.getActivity().finish();
   }
 }
 

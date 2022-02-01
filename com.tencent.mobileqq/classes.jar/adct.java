@@ -1,87 +1,57 @@
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import mqq.app.Constants.LogoutReason;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.Doraemon.monitor.DoraemonAPIReporterProxy.1.1;
+import com.tencent.mobileqq.Doraemon.monitor.DoraemonAPIReporterProxy.1.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
 
 public class adct
+  extends BroadcastReceiver
 {
-  private amua jdField_a_of_type_Amua;
-  public bhht a;
-  private Conversation jdField_a_of_type_ComTencentMobileqqActivityHomeConversation;
-  public QQCustomDialog a;
+  adct(adcs paramadcs) {}
   
-  public adct(Conversation paramConversation)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation = paramConversation;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
+    paramContext = this.a.a;
+    if (paramContext == null) {}
+    do
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
-    }
-    if (this.jdField_a_of_type_Bhht != null)
-    {
-      this.jdField_a_of_type_Bhht.dismiss();
-      this.jdField_a_of_type_Bhht = null;
-    }
-    if (this.jdField_a_of_type_Amua != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a.removeObserver(this.jdField_a_of_type_Amua);
-    }
-  }
-  
-  public void a(RecentUser paramRecentUser)
-  {
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a;
-    BaseActivity localBaseActivity = this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a();
-    HotChatManager localHotChatManager = localQQAppInterface.getHotChatMng(false);
-    HotChatInfo localHotChatInfo;
-    if ((localHotChatManager != null) && (localHotChatManager.b(paramRecentUser.uin)))
-    {
-      localHotChatManager.a(paramRecentUser.uin);
-      localHotChatInfo = localHotChatManager.a(paramRecentUser.uin);
-      if (localHotChatInfo != null)
+      return;
+      str1 = paramIntent.getAction();
+      if ("com.tencent.mobileqq.Doraemon.monitor.update".equals(str1))
       {
-        if (localHotChatInfo.state == 0) {
-          break label114;
+        str1 = paramIntent.getStringExtra("key");
+        int i = paramIntent.getIntExtra("type", 0);
+        String str2 = paramIntent.getStringExtra("appid");
+        String str3 = paramIntent.getStringExtra("api");
+        long l1 = paramIntent.getLongExtra("remain", 0L);
+        long l2 = paramIntent.getLongExtra("time", 0L);
+        if (QLog.isColorLevel()) {
+          QLog.d("DoraemonOpenAPI.report", 2, "receive update key=" + str1 + ", api=" + str3 + ", remain=" + l1 + ", exp=" + l2);
         }
-        if (!localHotChatInfo.isWifiHotChat) {
-          break label109;
-        }
-        i = 1;
-        bcef.b(localQQAppInterface, "CliOper", "", "", "0X8004D2A", "0X8004D2A", i, 0, "", "", "", "");
-      }
-    }
-    label109:
-    label114:
-    while ((localHotChatInfo.adminLevel != 0) || ((localHotChatInfo.ownerUin != null) && (localHotChatInfo.ownerUin.equals(localQQAppInterface.getCurrentAccountUin())))) {
-      for (;;)
-      {
+        ThreadManager.getUIHandler().post(new DoraemonAPIReporterProxy.1.1(this, paramContext, str1, i, str2, str3, l1, l2));
         return;
-        i = 2;
       }
-    }
-    if (localHotChatInfo.isWifiHotChat) {}
-    for (int i = 1;; i = 2)
+    } while (!"com.tencent.mobileqq.Doraemon.monitor.update_batch".equals(str1));
+    String str1 = paramIntent.getStringExtra("key");
+    paramIntent.getIntExtra("type", 0);
+    paramIntent.getStringExtra("appid");
+    try
     {
-      bcef.b(localQQAppInterface, "CliOper", "", "", "0X8004D29", "0X8004D29", i, 0, "", "", "", "");
-      if (this.jdField_a_of_type_Amua == null) {
-        this.jdField_a_of_type_Amua = new adcu(this, localBaseActivity);
+      paramIntent = (HashMap)paramIntent.getSerializableExtra("map");
+      if (QLog.isColorLevel()) {
+        QLog.d("DoraemonOpenAPI.report", 2, "receive update all key=" + str1);
       }
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = amtr.a(localHotChatManager.a(paramRecentUser.uin), new adcv(this, localHotChatInfo, localQQAppInterface, localBaseActivity));
+      ThreadManager.getUIHandler().post(new DoraemonAPIReporterProxy.1.2(this, paramContext, str1, paramIntent));
       return;
     }
-  }
-  
-  public void a(Constants.LogoutReason paramLogoutReason)
-  {
-    a();
+    catch (ClassCastException paramContext)
+    {
+      QLog.e("DoraemonOpenAPI.report", 1, "illegal data");
+    }
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.mobileqq.transfile.predownload;
 
 import android.os.Handler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 
 public abstract class AbsPreDownloadTask
@@ -17,7 +18,7 @@ public abstract class AbsPreDownloadTask
   {
     this.key = paramString;
     this.app = paramQQAppInterface;
-    this.ctrl = ((PreDownloadController)paramQQAppInterface.getManager(193));
+    this.ctrl = ((PreDownloadController)paramQQAppInterface.getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2));
     this.subHandler = new Handler(ThreadManager.getSubThreadLooper());
   }
   

@@ -1,22 +1,17 @@
-import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class akcg
-  implements akbj
+  implements View.OnClickListener
 {
-  akcg(akbx paramakbx, ResultReceiver paramResultReceiver) {}
+  akcg(akce paramakce) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCModule", 2, "QWalletIPC downloadUrls" + paramPathResult);
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("result_code", paramInt);
-    localBundle.putSerializable("path_result", paramPathResult);
-    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
+    this.a.a.setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

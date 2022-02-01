@@ -1,21 +1,31 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.profile.CustomCoverFragment;
-import mqq.app.QQPermissionCallback;
+import android.app.Activity;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 
 public class ayka
-  implements QQPermissionCallback
 {
-  public ayka(CustomCoverFragment paramCustomCoverFragment, FragmentActivity paramFragmentActivity) {}
+  public Activity a;
+  public View a;
+  public ImageView a;
+  public ListView a;
+  public TextView a;
+  public aykd a;
+  public aylx a;
+  public View b;
+  public ImageView b;
+  public TextView b;
+  public View c;
+  public ImageView c;
+  public TextView c;
+  public View d;
+  public ImageView d;
+  public TextView d;
+  public TextView e;
+  public TextView f;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bfur.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    CustomCoverFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileCustomCoverFragment, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-  }
+  public ayka(ayjt paramayjt) {}
 }
 
 

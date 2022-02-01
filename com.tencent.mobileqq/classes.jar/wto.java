@@ -1,91 +1,51 @@
-import android.os.SystemClock;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetShareGroupInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetShareGroupInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.Iterator;
+import java.util.List;
 
 public class wto
-  extends JobSegment<StoryVideoItem, StoryVideoItem>
-  implements vng
+  extends wfm<wve>
 {
-  private StoryVideoItem jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
-  private wtn jdField_a_of_type_Wtn;
-  private boolean jdField_a_of_type_Boolean;
+  private final String a;
+  public List<String> a;
   
-  public wto(VideoViewVideoHolder paramVideoViewVideoHolder, wtn paramwtn, boolean paramBoolean)
+  public wto()
   {
-    this.jdField_a_of_type_Wtn = paramwtn;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = weg.a("StorySvc.get_share_group_info");
   }
   
-  protected void a(StoryVideoItem paramStoryVideoItem)
+  public String a()
   {
-    VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 6);
-    super.notifyResult(paramStoryVideoItem);
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  protected void a(JobContext paramJobContext, StoryVideoItem paramStoryVideoItem)
+  public wfh a(byte[] paramArrayOfByte)
   {
-    VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 5);
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
-    if (this.jdField_a_of_type_Boolean)
+    qqstory_service.RspGetShareGroupInfo localRspGetShareGroupInfo = new qqstory_service.RspGetShareGroupInfo();
+    try
     {
-      a(paramStoryVideoItem);
-      return;
+      localRspGetShareGroupInfo.mergeFrom(paramArrayOfByte);
+      return new wve(localRspGetShareGroupInfo);
     }
-    xvv.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, "showVideo, start download video fully");
-    VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 5);
-    this.jdField_a_of_type_Wtn.a().a(paramStoryVideoItem.mVid, 0, true, this);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (!isCanceled())
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      xvv.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, "showVideo, start download video fully, onSuccess");
-      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, "VD", SystemClock.uptimeMillis());
-      a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-      return;
+      ykq.b("Q.qqstory.shareGroup:GetShareGroupInfoRequest", a(), paramArrayOfByte);
     }
-    xvv.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, "showVideo, start download video fully, onSuccess. stream canceled");
+    return null;
   }
   
-  public void a(String paramString, int paramInt, ErrorMessage paramErrorMessage)
+  protected byte[] a()
   {
-    if (!isCanceled())
+    qqstory_service.ReqGetShareGroupInfo localReqGetShareGroupInfo = new qqstory_service.ReqGetShareGroupInfo();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      xvv.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, paramErrorMessage, "showVideo, start download video fully, onError", new Object[0]);
-      VideoViewVideoHolder.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 3);
-      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, false);
-      VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, paramErrorMessage.errorCode);
-      notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder), paramErrorMessage.getErrorMessage()));
-      return;
+      String str = (String)localIterator.next();
+      localReqGetShareGroupInfo.share_group_id_list.add(str);
     }
-    xvv.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, paramErrorMessage, "showVideo, start download video fully, onError. stream canceled", new Object[0]);
-  }
-  
-  public void b(String paramString, int paramInt)
-  {
-    if (!isCanceled())
-    {
-      xvv.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, "showVideo, start download video fully, onCancel");
-      VideoViewVideoHolder.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 3);
-      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, false);
-      VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 1234);
-      notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder), "Download video cancel"));
-      return;
-    }
-    xvv.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, "showVideo, start download video fully, onCancel. stream canceled");
-  }
-  
-  public void onCancel()
-  {
-    super.onCancel();
-    xvv.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, "VideoFileSegment onCancel");
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null) {
-      this.jdField_a_of_type_Wtn.a().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, 0);
-    }
+    return localReqGetShareGroupInfo.toByteArray();
   }
 }
 

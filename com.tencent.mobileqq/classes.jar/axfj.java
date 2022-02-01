@@ -1,15 +1,19 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
 
 public class axfj
-  extends axdv
+  implements axfc
 {
-  public ImageView e;
-  public TextView g;
+  public axfj(MultiAIOViewPager paramMultiAIOViewPager) {}
   
-  public axfj(axfi paramaxfi)
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void b(int paramInt)
   {
-    super(paramaxfi);
+    if (MultiAIOViewPager.a(this.a) != null) {
+      MultiAIOViewPager.a(this.a).a(paramInt);
+    }
   }
 }
 

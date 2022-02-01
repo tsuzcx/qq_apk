@@ -1,101 +1,76 @@
+import android.graphics.Color;
+import android.text.SpannableString;
+import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.widget.PAHighLightImageView;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-import java.util.HashMap;
+import android.widget.TextView;
 
-class bcja
-  extends URLDrawableDownListener.Adapter
+public class bcja
+  implements bcif<bcfh, bcns>
 {
-  bcja(bciz parambciz) {}
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void a(bcfh parambcfh, bcns parambcns)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsgItemCover", 2, "onLoadCancelled");
-    }
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsgItemCover", 2, "onLoadFailed ,cause = " + paramThrowable);
-    }
-    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null))
+    bcpg localbcpg = (bcpg)parambcns;
+    bceq localbceq;
+    Object localObject;
+    if ((parambcfh instanceof bceq))
     {
-      paramThrowable = paramURLDrawable.getURL().toString();
-      if (paramThrowable.startsWith("http://url.cn"))
+      localbceq = (bceq)parambcfh;
+      localObject = localbceq.a();
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        break label342;
+      }
+      localObject = "";
+    }
+    label203:
+    label337:
+    label342:
+    for (;;)
+    {
+      if (((bceq)parambcfh).b())
       {
-        paramThrowable = paramThrowable.replace("http://", "https://");
-        try
+        String str = localbceq.b();
+        if (!TextUtils.isEmpty(str))
         {
-          paramThrowable = URLDrawable.getDrawable(new URL(paramThrowable), (URLDrawable.URLDrawableOptions)paramURLDrawable.getTag());
-          paramThrowable.setAutoDownload(true);
-          ((PAHighLightImageView)paramView).setImageDrawable(paramThrowable);
+          str = bcnc.a(localbcpg.a(), 10.0F * bcnc.a(localbcpg.a(), anvx.a(2131713109)), 1, str, str, false, false, true).toString();
+          localObject = new SpannableString(str + "-" + (String)localObject);
+          ((SpannableString)localObject).setSpan(new ForegroundColorSpan(Color.parseColor("#12B7F5")), 0, str.length(), 34);
+          localbcpg.a().setText((CharSequence)localObject);
+          if (!localbceq.a()) {
+            break label312;
+          }
+          parambcns.b().setText(localbceq.c());
+          parambcns.b().setVisibility(0);
+          parambcns.b().setTag(2131381184, Integer.valueOf(-1));
+          if ((parambcfh instanceof bcfi))
+          {
+            parambcfh = (bcfi)parambcfh;
+            parambcns.b().setOnClickListener(new bcjb(this, parambcfh));
+          }
+          parambcfh = parambcns.a().getTag(2131381184);
+          if (!(parambcfh instanceof Integer)) {
+            break label337;
+          }
+        }
+      }
+      for (int i = ((Integer)parambcfh).intValue();; i = -1)
+      {
+        if (i > 0) {
+          localbcpg.a(true);
+        }
+        while (i != 0)
+        {
           return;
+          localbcpg.a().setText((CharSequence)localObject);
+          break;
+          localbcpg.a().setText((CharSequence)localObject);
+          break;
+          parambcns.b().setVisibility(8);
+          break label203;
         }
-        catch (Exception paramThrowable)
-        {
-          paramThrowable.printStackTrace();
-        }
+        localbcpg.a(false);
+        return;
       }
-    }
-    try
-    {
-      paramThrowable = new HashMap();
-      paramThrowable.put("param_Url", paramURLDrawable.getURL().toString());
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "StructMsgPicShow", false, 0L, 0L, paramThrowable, null);
-      label152:
-      this.a.a(paramView, 0, 1001);
-      return;
-    }
-    catch (Exception paramURLDrawable)
-    {
-      break label152;
-    }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsgItemCover", 2, "onLoadInterrupted");
-    }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (paramView == null) {
-      return;
-    }
-    paramView.setBackgroundDrawable(null);
-    if ((paramView instanceof ImageView)) {
-      ((ImageView)paramView).setScaleType(ImageView.ScaleType.CENTER_CROP);
-    }
-    try
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("param_Url", paramURLDrawable.getURL().toString());
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "StructMsgPicShow", true, 0L, 0L, localHashMap, null);
-      label66:
-      if (QLog.isColorLevel()) {
-        QLog.d("StructMsgItemCover", 2, "onLoadSuccessed");
-      }
-      this.a.a(paramView, 1, 1001);
-      return;
-    }
-    catch (Exception paramURLDrawable)
-    {
-      break label66;
     }
   }
 }

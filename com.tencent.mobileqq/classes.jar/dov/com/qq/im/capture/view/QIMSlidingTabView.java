@@ -20,13 +20,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bmbx;
-import bmzm;
-import bmzn;
-import bmzo;
-import bmzp;
-import bmzq;
-import bodx;
+import bnrh;
+import bope;
+import bopf;
+import bopg;
+import boph;
+import bopi;
+import bptp;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.widget.RedDotTextView;
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ public class QIMSlidingTabView
   private int mIndicatorPadding;
   private int mIndicatorStartX;
   private LinearLayout.LayoutParams mLayoutParam;
-  private bmzp mListener;
+  private boph mListener;
   private Paint mPaint;
   private int mPrevIndex;
   private LinearLayout mRootLayout;
@@ -79,7 +79,7 @@ public class QIMSlidingTabView
     if (paramInt < 0) {
       return -1;
     }
-    paramView.setOnClickListener(new bmzn(this, paramInt));
+    paramView.setOnClickListener(new bopf(this, paramInt));
     this.mTabItemList.add(paramInt, paramView);
     this.mRootLayout.addView(paramView, paramInt);
     return 0;
@@ -109,7 +109,7 @@ public class QIMSlidingTabView
       this.mCheckX = false;
       localObject = ValueAnimator.ofInt(new int[] { i, j });
       ((ValueAnimator)localObject).setDuration(100L);
-      ((ValueAnimator)localObject).addUpdateListener(new bmzo(this));
+      ((ValueAnimator)localObject).addUpdateListener(new bopg(this));
       ((ValueAnimator)localObject).start();
       return;
     }
@@ -153,7 +153,7 @@ public class QIMSlidingTabView
     setFillViewport(true);
     setWillNotDraw(false);
     setHorizontalScrollBarEnabled(false);
-    this.roundedSize = bodx.a(this.roundedSizeDP);
+    this.roundedSize = bptp.a(this.roundedSizeDP);
   }
   
   private void resetTabItemLayoutParams()
@@ -221,7 +221,7 @@ public class QIMSlidingTabView
         }
         localObject = (Bundle)localView.getTag();
         if (localObject != null) {
-          ((ImageView)localView).setImageResource(((Bundle)localObject).getInt("checked_image_bg_id", 2130846570));
+          ((ImageView)localView).setImageResource(((Bundle)localObject).getInt("checked_image_bg_id", 2130846666));
         }
       }
       label188:
@@ -247,7 +247,7 @@ public class QIMSlidingTabView
           {
             localObject = (Bundle)localView.getTag();
             if (localObject != null) {
-              ((ImageView)localView).setImageResource(((Bundle)localObject).getInt("normal_image_bg_id", 2130846569));
+              ((ImageView)localView).setImageResource(((Bundle)localObject).getInt("normal_image_bg_id", 2130846665));
             }
           }
           else if ((localView instanceof RedDotTextView))
@@ -277,17 +277,17 @@ public class QIMSlidingTabView
     return this.mTabItemList;
   }
   
-  public void initTabItemsWithIconString(ArrayList<bmzm> paramArrayList)
+  public void initTabItemsWithIconString(ArrayList<bope> paramArrayList)
   {
     this.mRootLayout.removeAllViews();
     int i = 0;
     if (i < paramArrayList.size())
     {
       Object localObject;
-      if (((bmzm)paramArrayList.get(i)).jdField_a_of_type_Int == 0)
+      if (((bope)paramArrayList.get(i)).jdField_a_of_type_Int == 0)
       {
         localObject = new TextView(getContext());
-        ((TextView)localObject).setText(((bmzm)paramArrayList.get(i)).jdField_a_of_type_JavaLangString);
+        ((TextView)localObject).setText(((bope)paramArrayList.get(i)).jdField_a_of_type_JavaLangString);
         ((TextView)localObject).setGravity(17);
         ((TextView)localObject).setSingleLine();
         ((TextView)localObject).setTextSize(0, this.mTabTextSize);
@@ -300,7 +300,7 @@ public class QIMSlidingTabView
         break;
         localObject = new QIMSlidingItemView(getContext());
         ((QIMSlidingItemView)localObject).a(this.mTabTextSize, this.mTabPadding);
-        ((QIMSlidingItemView)localObject).setData((bmzm)paramArrayList.get(i));
+        ((QIMSlidingItemView)localObject).setData((bope)paramArrayList.get(i));
         addTabItem(i, (View)localObject);
       }
     }
@@ -308,7 +308,7 @@ public class QIMSlidingTabView
     onTabChecked(0);
   }
   
-  public void initTabItemsWithRedDot(ArrayList<bmzq> paramArrayList)
+  public void initTabItemsWithRedDot(ArrayList<bopi> paramArrayList)
   {
     if ((paramArrayList == null) || (paramArrayList.size() == 0))
     {
@@ -321,13 +321,13 @@ public class QIMSlidingTabView
     while (i < paramArrayList.size())
     {
       RedDotTextView localRedDotTextView = new RedDotTextView(getContext());
-      localRedDotTextView.setText(((bmzq)paramArrayList.get(i)).jdField_a_of_type_JavaLangString);
+      localRedDotTextView.setText(((bopi)paramArrayList.get(i)).jdField_a_of_type_JavaLangString);
       localRedDotTextView.setGravity(17);
       localRedDotTextView.setSingleLine();
       localRedDotTextView.setTextSize(0, this.mTabTextSize);
       localRedDotTextView.setPadding(this.mTabPadding, 0, this.mTabPadding, 0);
-      localRedDotTextView.a(((bmzq)paramArrayList.get(i)).jdField_a_of_type_Boolean);
-      String str = ((bmzq)paramArrayList.get(i)).b;
+      localRedDotTextView.a(((bopi)paramArrayList.get(i)).jdField_a_of_type_Boolean);
+      String str = ((bopi)paramArrayList.get(i)).b;
       if (!TextUtils.isEmpty(str)) {
         localRedDotTextView.setContentDescription(str);
       }
@@ -382,7 +382,7 @@ public class QIMSlidingTabView
   
   public void onTabChecked(int paramInt)
   {
-    bmbx.a("SlidingTabView", "selected index: " + paramInt);
+    bnrh.a("SlidingTabView", "selected index: " + paramInt);
     if ((paramInt < 0) || (paramInt >= this.mTabItemList.size())) {
       return;
     }
@@ -403,9 +403,9 @@ public class QIMSlidingTabView
     invalidate();
   }
   
-  public void setTabCheckListener(bmzp parambmzp)
+  public void setTabCheckListener(boph paramboph)
   {
-    this.mListener = parambmzp;
+    this.mListener = paramboph;
   }
 }
 

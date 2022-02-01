@@ -163,31 +163,15 @@ public class VideoEmbeddedWidgetClient
         this.renderer.pauseRender();
       }
       this.mMediaPlayer.pause();
-      JSONObject localJSONObject;
-      return;
     }
-    catch (Throwable localThrowable1)
+    catch (Throwable localThrowable)
     {
       for (;;)
       {
-        try
-        {
-          localJSONObject = new JSONObject();
-          localJSONObject.put("data", this.data);
-          localJSONObject.put("videoPlayerId", paramInt);
-          localJSONObject.put("timeStamp", System.currentTimeMillis());
-          evaluateSubscribeJS("onXWebVideoPause", localJSONObject.toString(), this.curPageWebviewId);
-          QMLog.d("miniapp-embedded", "evaluateSubcribeJS onXWebVideoPlay = " + localJSONObject.toString());
-          return;
-        }
-        catch (Throwable localThrowable2)
-        {
-          QMLog.e("miniapp-embedded", "VIDEO_EVENT_PAUSE error.", localThrowable2);
-        }
-        localThrowable1 = localThrowable1;
-        QMLog.e("miniapp-embedded", "pause error.", localThrowable1);
+        QMLog.e("miniapp-embedded", "pause error.", localThrowable);
       }
     }
+    sendPauseToJs(paramInt);
   }
   
   private void handlePlayBackRateEvent(JSONObject paramJSONObject)
@@ -425,6 +409,24 @@ public class VideoEmbeddedWidgetClient
     catch (Throwable localThrowable)
     {
       QMLog.e("miniapp-embedded", "VIDEO_EVENT_LOADED_METADATA error.", localThrowable);
+    }
+  }
+  
+  private void sendPauseToJs(int paramInt)
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("data", this.data);
+      localJSONObject.put("videoPlayerId", paramInt);
+      localJSONObject.put("timeStamp", System.currentTimeMillis());
+      evaluateSubscribeJS("onXWebVideoPause", localJSONObject.toString(), this.curPageWebviewId);
+      QMLog.d("miniapp-embedded", "evaluateSubcribeJS onXWebVideoPause = " + localJSONObject.toString());
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QMLog.e("miniapp-embedded", "VIDEO_EVENT_PAUSE error.", localThrowable);
     }
   }
   
@@ -744,7 +746,7 @@ public class VideoEmbeddedWidgetClient
   {
     QMLog.i("miniapp-embedded", "VideoEmbeddedWidgetClient.nativePause " + this);
     this.isOnPageBackGrond = true;
-    if ((this.mMediaPlayer != null) && (this.autoPauseIfOpenNative)) {
+    if ((this.mMediaPlayer != null) && (this.mMediaPlayer.isPlaying()) && (!this.isPaused) && (this.autoPauseIfOpenNative)) {
       this.pauseByOpenNative = true;
     }
     try
@@ -754,6 +756,7 @@ public class VideoEmbeddedWidgetClient
       }
       this.mMediaPlayer.pause();
       this.isPaused = true;
+      sendPauseToJs(this.viewId);
       return;
     }
     catch (Throwable localThrowable)
@@ -779,6 +782,7 @@ public class VideoEmbeddedWidgetClient
         {
           this.isPaused = false;
           this.mMediaPlayer.start();
+          sendPauseToJs(this.viewId);
           sendTimingMsg(250L);
           return;
         }
@@ -917,6 +921,7 @@ public class VideoEmbeddedWidgetClient
   public void onSurfaceDestroyed(Surface paramSurface)
   {
     QMLog.i("miniapp-embedded", "VideoEmbeddedWidgetClient.onSurfaceDestroyed");
+    onDestroy();
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)

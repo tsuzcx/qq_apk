@@ -1,17 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aiql
-  implements View.OnClickListener
+public final class aiql
+  implements DialogInterface.OnClickListener
 {
-  public aiql(PublicAccountFragment paramPublicAccountFragment) {}
+  public aiql(boolean paramBoolean, Context paramContext) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    adxp.a(PublicAccountFragment.a(this.a), null);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.jdField_a_of_type_Boolean) {
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
+    }
   }
 }
 

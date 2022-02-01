@@ -1,128 +1,422 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
+import Wallet.PfaFriend;
+import Wallet.PfaFriendRqt;
+import Wallet.PfaFriendRsp;
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import android.os.ResultReceiver;
 import android.text.TextUtils;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.22.1;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.view.CameraCover;
-import com.tencent.mobileqq.activity.richmedia.view.GLVideoClipUtil;
-import com.tencent.mobileqq.app.BaseActivity2;
-import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.text.TextUtils.TruncateAt;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.mobileqq.activity.qwallet.TopayManager.1;
+import com.tencent.mobileqq.activity.qwallet.TopayManager.2;
+import com.tencent.mobileqq.activity.qwallet.TopayManager.5;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose;
+import com.tencent.mobileqq.widget.QQToast;
+import cooperation.qwallet.plugin.QWalletPayProgressDialog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import mqq.manager.TicketManager;
+import mqq.os.MqqHandler;
 
 public class aksv
-  extends BroadcastReceiver
 {
-  public aksv(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public static int a;
+  public static PfaFriendRsp a;
+  public static Handler a;
+  protected static aobw a;
+  public static String a;
+  public static WeakReference<aktb> a;
+  public static int b;
+  public static String b;
+  protected static WeakReference<QWalletPayProgressDialog> b;
+  public static int c;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  static
   {
-    if ((NewFlowCameraActivity.b(this.a)) && ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))) {
-      return;
-    }
-    paramContext = paramIntent.getAction();
-    if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
+    jdField_a_of_type_Int = -1;
+    jdField_a_of_type_JavaLangString = "recommend";
+    jdField_b_of_type_JavaLangString = "tips";
+    jdField_a_of_type_AndroidOsHandler = new aksw(Looper.myLooper());
+    jdField_a_of_type_Aobw = new aobw(jdField_a_of_type_AndroidOsHandler);
+  }
+  
+  public static ArrayList<PfaFriend> a()
+  {
+    QQAppInterface localQQAppInterface = albw.a();
+    if (localQQAppInterface == null) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PTV.NewFlowCameraActivity", 2, "receive ACTION_START_VIDEO_CHAT.");
-      }
-      paramContext = BaseActivity2.findViewById(this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover, 2131366841);
-      if (paramContext != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover.removeView(paramContext);
-      }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.e();
-      }
-      this.a.h();
-      return;
-    }
-    String str;
-    int i;
-    if ("tencent.video.q2v.startUploadPTV".equals(paramContext))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PTV.NewFlowCameraActivity", 2, "receive ACTION_BLESS_UPLOAD_PTV.");
-      }
-      switch (paramIntent.getIntExtra("broadcastType", 1))
+      do
       {
-      default: 
-        return;
-      case 1: 
-        if (!TextUtils.isEmpty(NewFlowCameraActivity.a(this.a)))
-        {
-          str = "";
-          if (this.a.jdField_a_of_type_Aktx != null) {
-            str = this.a.jdField_a_of_type_Aktx.a();
-          }
-          i = paramIntent.getIntExtra("recordType", 0);
-          if (i != 3) {
-            break label315;
-          }
-          paramContext = "0X8008382";
-        }
+        return null;
+        localObject1 = localQQAppInterface.getProxyManager().a();
+      } while (localObject1 == null);
+      localObject2 = ((aoxz)localObject1).getRecentList(true);
+    } while (localObject2 == null);
+    Object localObject1 = new ArrayList();
+    Object localObject2 = ((List)localObject2).iterator();
+    while (((Iterator)localObject2).hasNext())
+    {
+      RecentUser localRecentUser = (RecentUser)((Iterator)localObject2).next();
+      if ((localRecentUser != null) && (!bhbx.a(localRecentUser.uin)) && (localRecentUser.getType() != 1020) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1005) && (localRecentUser.getType() != 1006) && (localRecentUser.getType() != 1009) && (localRecentUser.getType() != 1021) && (localRecentUser.getType() != 1001) && (localRecentUser.getType() != 10002) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 1022) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 9501) && (localRecentUser.getType() != 1) && ((localRecentUser.getType() != 0) || (!nwu.b(localQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && (localRecentUser.getType() != 1004) && (localRecentUser.getType() != 1000))
+      {
+        PfaFriend localPfaFriend = new PfaFriend();
+        localPfaFriend.uin = localRecentUser.uin;
+        ((ArrayList)localObject1).add(localPfaFriend);
+      }
+    }
+    return localObject1;
+  }
+  
+  public static HashMap<String, Object> a(aktb paramaktb, boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaktb);
+    if ((paramInt1 != jdField_b_of_type_Int) || (paramInt2 != c))
+    {
+      jdField_a_of_type_WalletPfaFriendRsp = null;
+      jdField_a_of_type_Int = -1;
+      jdField_b_of_type_Int = paramInt1;
+      c = paramInt2;
+    }
+    paramaktb = new HashMap();
+    if (jdField_a_of_type_WalletPfaFriendRsp == null)
+    {
+      paramaktb.put(jdField_a_of_type_JavaLangString, a());
+      if (jdField_a_of_type_Int == -1)
+      {
+        jdField_a_of_type_Int = 1;
+        ThreadManager.getFileThreadHandler().post(new TopayManager.1(paramInt1, paramInt2, paramBoolean));
+        return paramaktb;
+      }
+    }
+    else
+    {
+      if (jdField_a_of_type_WalletPfaFriendRsp.use_default != 1) {
+        break label142;
+      }
+      paramaktb.put(jdField_a_of_type_JavaLangString, a());
+    }
+    for (;;)
+    {
+      paramaktb.put(jdField_b_of_type_JavaLangString, jdField_a_of_type_WalletPfaFriendRsp.vecPfaMsg);
+      if (!paramBoolean) {
         break;
+      }
+      a(paramInt1, paramInt2);
+      return paramaktb;
+      label142:
+      paramaktb.put(jdField_a_of_type_JavaLangString, jdField_a_of_type_WalletPfaFriendRsp.vecRec);
+    }
+  }
+  
+  public static void a(int paramInt1, int paramInt2)
+  {
+    QQAppInterface localQQAppInterface = albw.a();
+    if (localQQAppInterface == null) {
+      return;
+    }
+    localQQAppInterface.addObserver(jdField_a_of_type_Aobw);
+    PfaFriendRqt localPfaFriendRqt = new PfaFriendRqt();
+    localPfaFriendRqt.mqq_version = DeviceInfoUtil.getQQVersionWithCode(BaseApplicationImpl.getContext());
+    if (jdField_a_of_type_WalletPfaFriendRsp != null)
+    {
+      localPfaFriendRqt.pfa_msg_edition = jdField_a_of_type_WalletPfaFriendRsp.pfa_msg_edition;
+      TicketManager localTicketManager = (TicketManager)localQQAppInterface.getManager(2);
+      if (localTicketManager != null) {
+        localPfaFriendRqt.skey = localTicketManager.getSkey(localQQAppInterface.getCurrentAccountUin());
+      }
+      localPfaFriendRqt.pfa_sub_type = 0;
+      if (paramInt1 == 1)
+      {
+        if (paramInt2 != 1) {
+          break label124;
+        }
+        localPfaFriendRqt.pfa_sub_type = 1;
       }
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(paramContext))
-      {
-        akrx.a("", paramContext, str, "", NewFlowCameraActivity.a(this.a), "");
-        if (QLog.isColorLevel()) {
-          QLog.d("PTV.NewFlowCameraActivity", 2, String.format("subAction[%s], activityId[%s], templateId[%s]", new Object[] { paramContext, NewFlowCameraActivity.a(this.a), str }));
-        }
-      }
-      NewFlowCameraActivity.a(this.a, null);
-      this.a.finish();
+      ((aobv)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QWALLET_AUTH_HANDLER)).a(localPfaFriendRqt);
       return;
-      label315:
-      if (i == 2)
+      localPfaFriendRqt.pfa_msg_edition = "0";
+      break;
+      label124:
+      if (paramInt2 == 2) {
+        localPfaFriendRqt.pfa_sub_type = 2;
+      }
+    }
+  }
+  
+  public static void a(SelectMemberActivity paramSelectMemberActivity, ArrayList<ResultRecord> paramArrayList)
+  {
+    if ((paramSelectMemberActivity == null) || (paramSelectMemberActivity.isFinishing()) || (paramSelectMemberActivity.getIntent() == null) || (paramSelectMemberActivity.getIntent().getExtras() == null)) {
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    Object localObject2 = anvx.a(2131714401);
+    Object localObject1 = localObject2;
+    int i;
+    label58:
+    ResultRecord localResultRecord;
+    if (paramArrayList != null)
+    {
+      localObject1 = localObject2;
+      i = 0;
+      if (i < paramArrayList.size())
       {
-        paramContext = "0X8008383";
-        continue;
-        this.a.onPause();
-        return;
-        if (!"tencent.video.q2v.nightMode".equals(paramContext)) {
-          break;
-        }
-        boolean bool = paramIntent.getBooleanExtra("dark_mode_value", true);
-        if (QLog.isColorLevel()) {
-          QLog.d("PTV.NewFlowCameraActivity", 2, "receive ACTION_NIGHT_MODE." + bool);
-        }
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.b.get() == 3) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.b.get() == 4))
+        localResultRecord = (ResultRecord)paramArrayList.get(i);
+        localObject2 = localObject1;
+        if (localResultRecord != null)
         {
-          GLVideoClipUtil.c();
-          return;
-        }
-        if (bool)
-        {
-          NewFlowCameraActivity.c(this.a, true);
-          NewFlowCameraActivity.a(this.a).setVisibility(0);
-          NewFlowCameraActivity.d(this.a, true);
-          GLVideoClipUtil.a(true);
-          NewFlowCameraActivity.c(this.a);
-          bcef.b(null, "dc00898", "", "", "0X8007BB6", "0X8007BB6", 0, 0, "", "", "", "");
-          if (!NewFlowCameraActivity.c(this.a)) {
-            break;
+          localObject2 = localObject1;
+          if (localResultRecord.type == 0)
+          {
+            localObject2 = localObject1;
+            if (localResultRecord.uin != null)
+            {
+              localArrayList.add(localResultRecord);
+              if (TextUtils.isEmpty(localResultRecord.name)) {
+                break label190;
+              }
+              localObject1 = (String)localObject1 + localResultRecord.name;
+              label148:
+              if (i >= paramArrayList.size() - 1) {
+                break label372;
+              }
+            }
           }
-          NewFlowCameraActivity.e(this.a, false);
-          NewFlowCameraActivity.a(this.a).setVisibility(0);
-          this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new NewFlowCameraActivity.22.1(this), 3000L);
-          return;
         }
-        NewFlowCameraActivity.a(this.a).setVisibility(8);
-        NewFlowCameraActivity.c(this.a, false);
-        NewFlowCameraActivity.d(this.a, false);
-        GLVideoClipUtil.b();
+      }
+    }
+    label190:
+    label372:
+    for (localObject2 = (String)localObject1 + "、";; localObject2 = localObject1)
+    {
+      i += 1;
+      localObject1 = localObject2;
+      break label58;
+      localObject1 = (String)localObject1 + localResultRecord.uin;
+      break label148;
+      if ((localArrayList == null) || (localArrayList.size() <= 0))
+      {
+        QQToast.a(paramSelectMemberActivity, paramSelectMemberActivity.getString(2131719429), 0).a();
         return;
       }
-      paramContext = null;
+      paramArrayList = new aksx(new WeakReference(paramSelectMemberActivity), localArrayList);
+      localObject2 = paramSelectMemberActivity.getIntent().getExtras();
+      paramSelectMemberActivity = bhdj.a(paramSelectMemberActivity, (String)localObject1, ((Bundle)localObject2).getString("choose_friend_content"), ((Bundle)localObject2).getString("choose_friend_subcontent"), paramSelectMemberActivity.mTopayTips, null, paramArrayList, paramArrayList, 36, false);
+      bdla.b(albw.a(), "P_CliOper", "Vip_pay_mywallet", "", "wallet", "friendpay.selectpage.windowshow", 0, 0, "", "", "", "");
+      paramSelectMemberActivity = paramSelectMemberActivity.getTitleTextView();
+      if (paramSelectMemberActivity == null) {
+        break;
+      }
+      paramSelectMemberActivity.setSingleLine(false);
+      paramSelectMemberActivity.setMaxLines(2);
+      paramSelectMemberActivity.setEllipsize(TextUtils.TruncateAt.END);
+      paramSelectMemberActivity.setGravity(3);
+      return;
     }
+  }
+  
+  public static void a(SelectMemberActivity paramSelectMemberActivity, ArrayList<ResultRecord> paramArrayList, QQCustomDialogWtihInputAndChoose paramQQCustomDialogWtihInputAndChoose)
+  {
+    if ((paramSelectMemberActivity == null) || (paramSelectMemberActivity.isFinishing()) || (paramSelectMemberActivity.getIntent() == null) || (paramSelectMemberActivity.getIntent().getExtras() == null)) {}
+    ResultReceiver localResultReceiver;
+    ArrayList localArrayList1;
+    ArrayList localArrayList2;
+    ArrayList localArrayList3;
+    label136:
+    label174:
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while ((paramArrayList == null) || (paramArrayList.size() <= 0));
+        localResultReceiver = (ResultReceiver)paramSelectMemberActivity.getIntent().getParcelableExtra("aapay_result_recevier");
+      } while (localResultReceiver == null);
+      localArrayList1 = new ArrayList();
+      localArrayList2 = new ArrayList();
+      localArrayList3 = new ArrayList();
+      Iterator localIterator = paramArrayList.iterator();
+      if (localIterator.hasNext())
+      {
+        ResultRecord localResultRecord = (ResultRecord)localIterator.next();
+        localArrayList1.add(localResultRecord.uin);
+        if (localResultRecord.phone == null)
+        {
+          paramArrayList = "";
+          localArrayList2.add(paramArrayList);
+          if (localResultRecord.name != null) {
+            break label174;
+          }
+        }
+        for (paramArrayList = "";; paramArrayList = localResultRecord.name)
+        {
+          localArrayList3.add(paramArrayList);
+          break;
+          paramArrayList = localResultRecord.phone;
+          break label136;
+        }
+      }
+    } while (localArrayList1.size() <= 0);
+    paramArrayList = new Bundle();
+    paramArrayList.putStringArrayList("choose_friend_uins", localArrayList1);
+    paramArrayList.putStringArrayList("choose_friend_phones", localArrayList2);
+    paramArrayList.putStringArrayList("choose_friend_names", localArrayList3);
+    if (paramQQCustomDialogWtihInputAndChoose != null) {
+      paramArrayList.putString("choose_friend_feedback", paramQQCustomDialogWtihInputAndChoose.getInputValue());
+    }
+    paramQQCustomDialogWtihInputAndChoose = new TopayManager.5(null, new WeakReference(paramSelectMemberActivity), localResultReceiver, localArrayList1, localArrayList3);
+    b(paramSelectMemberActivity, true);
+    paramSelectMemberActivity = Parcel.obtain();
+    paramQQCustomDialogWtihInputAndChoose.writeToParcel(paramSelectMemberActivity, 0);
+    paramSelectMemberActivity.setDataPosition(0);
+    paramQQCustomDialogWtihInputAndChoose = (ResultReceiver)ResultReceiver.CREATOR.createFromParcel(paramSelectMemberActivity);
+    paramSelectMemberActivity.recycle();
+    paramArrayList.putParcelable("callback", paramQQCustomDialogWtihInputAndChoose);
+    localResultReceiver.send(0, paramArrayList);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    jdField_a_of_type_Int = -1;
+    jdField_a_of_type_WalletPfaFriendRsp = null;
+    if (jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      jdField_a_of_type_JavaLangRefWeakReference.clear();
+      jdField_a_of_type_JavaLangRefWeakReference = null;
+    }
+    if (jdField_b_of_type_JavaLangRefWeakReference != null)
+    {
+      jdField_b_of_type_JavaLangRefWeakReference.clear();
+      jdField_b_of_type_JavaLangRefWeakReference = null;
+    }
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.removeObserver(jdField_a_of_type_Aobw);
+    }
+  }
+  
+  protected static void a(boolean paramBoolean)
+  {
+    if (jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      aktb localaktb = (aktb)jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localaktb != null) {
+        localaktb.b(paramBoolean);
+      }
+    }
+  }
+  
+  public static void a(boolean paramBoolean1, PfaFriendRsp paramPfaFriendRsp, boolean paramBoolean2)
+  {
+    if ((!paramBoolean2) && ((!paramBoolean1) || (paramPfaFriendRsp == null) || ((paramPfaFriendRsp != null) && (paramPfaFriendRsp.ret != 0)))) {
+      return;
+    }
+    if ((!paramBoolean2) && (jdField_a_of_type_WalletPfaFriendRsp != null) && (paramPfaFriendRsp != null) && ((paramPfaFriendRsp.vecPfaMsg == null) || (paramPfaFriendRsp.vecPfaMsg.size() <= 0)))
+    {
+      jdField_a_of_type_WalletPfaFriendRsp.vecRec = paramPfaFriendRsp.vecRec;
+      jdField_a_of_type_WalletPfaFriendRsp.use_default = paramPfaFriendRsp.use_default;
+      jdField_a_of_type_WalletPfaFriendRsp.vecSpfaRec = paramPfaFriendRsp.vecSpfaRec;
+      label85:
+      if (paramBoolean2) {
+        break label127;
+      }
+    }
+    label127:
+    for (paramBoolean1 = true;; paramBoolean1 = false)
+    {
+      a(paramBoolean1);
+      if ((paramBoolean2) || (jdField_a_of_type_WalletPfaFriendRsp == null)) {
+        break;
+      }
+      ThreadManager.getFileThreadHandler().post(new TopayManager.2());
+      return;
+      jdField_a_of_type_WalletPfaFriendRsp = paramPfaFriendRsp;
+      break label85;
+    }
+  }
+  
+  private static void b(BaseActivity paramBaseActivity, boolean paramBoolean)
+  {
+    if ((paramBaseActivity == null) || (paramBaseActivity.isFinishing())) {}
+    do
+    {
+      return;
+      Object localObject = null;
+      if (paramBoolean)
+      {
+        paramBaseActivity = new QWalletPayProgressDialog(paramBaseActivity);
+        jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseActivity);
+        paramBaseActivity.show();
+        return;
+      }
+      paramBaseActivity = localObject;
+      if (jdField_b_of_type_JavaLangRefWeakReference != null) {
+        paramBaseActivity = (QWalletPayProgressDialog)jdField_b_of_type_JavaLangRefWeakReference.get();
+      }
+    } while ((paramBaseActivity == null) || (!paramBaseActivity.isShowing()));
+    paramBaseActivity.dismiss();
+  }
+  
+  private static void c(Activity paramActivity, List<String> paramList1, List<String> paramList2)
+  {
+    if (paramList1.size() == 1)
+    {
+      Intent localIntent = AIOUtils.setOpenAIOIntent(new Intent(paramActivity, SplashActivity.class), null);
+      localIntent.putExtra("uin", (String)paramList1.get(0));
+      localIntent.putExtra("uintype", 0);
+      localIntent.putExtra("uinname", (String)paramList2.get(0));
+      localIntent.setFlags(335544320);
+      paramActivity.startActivity(localIntent);
+    }
+    for (;;)
+    {
+      paramActivity.setResult(-1);
+      paramActivity.finish();
+      return;
+      if (paramList1.size() > 1)
+      {
+        paramList1 = new Intent(paramActivity, SplashActivity.class);
+        paramList1.putExtra("tab_index", MainFragment.jdField_b_of_type_Int);
+        paramList1.setFlags(67108864);
+        paramActivity.startActivity(paramList1);
+      }
+    }
+  }
+  
+  private static void d(Activity paramActivity, List<String> paramList1, List<String> paramList2)
+  {
+    aksz localaksz = new aksz(paramActivity);
+    paramList1 = new akta(paramActivity, paramList1, paramList2);
+    paramActivity = bhdj.a(paramActivity, 230, null, anvx.a(2131714402), anvx.a(2131714400), "留在QQ", paramList1, localaksz);
+    paramActivity.setCancelable(false);
+    paramActivity.setCanceledOnTouchOutside(false);
+    paramActivity.show();
   }
 }
 

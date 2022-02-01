@@ -1,36 +1,141 @@
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.Mp4FlowReEncoder;
+import com.tencent.qphone.base.util.QLog;
+
 public class bbkv
 {
-  public static String A = "service_msg_remind_type";
-  public static String B = "service_msg_name";
-  public static String C = "key_send_raw_video";
-  public static String D = "key_troop_important_msg_type";
-  public static String E = "key_troop_important_msg_enum";
-  public static String a = "key_recv_queue_wait_length";
-  public static String b = "key_add_queue_time";
-  public static String c = "holiday_active_flag";
-  public static String d = "ark_at_babyq_flag";
-  public static String e = "ark_show_as_sdk_flag";
-  public static String f = "ark_babyq_gray_tip_flag";
-  public static String g = "ark_babyq_report_recv_flag";
-  public static String h = "is_redbag_video";
-  public static String i = "troop_at_info_list";
-  public static String j = "disc_at_info_list";
-  public static String k = "at_info";
-  public static String l = "is_troop";
-  public static String m = "pic_sync_story";
-  public static String n = "video_sync_story";
-  public static String o = "is_sync_qzone";
-  public static String p = "batch_id_qzone";
-  public static String q = "album_id_qzone";
-  public static String r = "aio_send_qzone_pic_flag";
-  public static String s = "aio_send_qzone_pic_url";
-  public static String t = "aio_send_qzone_pic_size";
-  public static String u = "aio_light_video_read_flag";
-  public static String v = "ark_msg_process_state";
-  public static String w = "ark_msg_open_sdk_share_error_code";
-  public static String x = "ark_msg_open_sdk_share_wording";
-  public static String y = "ark_msg_open_sdk_share_info";
-  public static String z = "service_msg_type";
+  private volatile int jdField_a_of_type_Int = 0;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private volatile boolean jdField_a_of_type_Boolean;
+  
+  private void a(bbkx parambbkx, bbmm parambbmm)
+  {
+    int i = 1;
+    boolean bool1 = parambbkx.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.isLocalPublish;
+    if (parambbkx.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.businessId == 1)
+    {
+      boolean bool2 = parambbkx.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.getBooleanExtra("is_hw_encode", false);
+      if ((!bool1) && (bool2)) {
+        break label50;
+      }
+    }
+    label50:
+    do
+    {
+      return;
+      i = 0;
+      break;
+      if ((i != 0) || (parambbkx.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.businessId == 9))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MergeEditVideo", 2, "adjust encode config orientation:" + parambbmm.toString());
+        }
+        parambbmm.g = 0;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("MergeEditVideo", 2, "adjust encodeConfig result:" + parambbmm.toString());
+  }
+  
+  public int a(String arg1, String paramString2, bbkx parambbkx)
+  {
+    if ((parambbkx == null) || (parambbkx.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry == null)) {
+      i = -1;
+    }
+    String str;
+    Object localObject;
+    do
+    {
+      return i;
+      str = parambbkx.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.getStringExtra("subtitleData", "");
+      localObject = new bddw();
+      j = bddv.a(???, (bddw)localObject);
+      i = j;
+    } while (j != 0);
+    int k = localObject.a[0];
+    int m = localObject.a[1];
+    int n = localObject.a[2];
+    int i = localObject.a[4];
+    int i1 = parambbkx.jdField_a_of_type_Int;
+    int j = 0;
+    i = j;
+    if (!parambbkx.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.isLocalPublish)
+    {
+      i = j;
+      if (parambbkx.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.getBooleanExtra("is_hw_encode", false))
+      {
+        i = j;
+        if (parambbkx.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.businessId == 1)
+        {
+          i = j;
+          if (n != 0) {
+            i = 1;
+          }
+        }
+      }
+    }
+    if ((parambbkx.c == 0) && (parambbkx.b == 0) && (parambbkx.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath == null) && (parambbkx.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.mosaicPath == null) && (parambbkx.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.businessId != 9) && (TextUtils.isEmpty(str)) && (!parambbkx.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.hasFragments) && (TextUtils.isEmpty(parambbkx.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fragments)) && (i == 0)) {
+      return -1;
+    }
+    boolean bool = parambbkx.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.getBooleanExtra("enable_flow_decode", true);
+    QLog.d("MergeEditVideo", 2, "mergeVideo. enableFlowDecode = " + bool + ", speedMode = " + parambbkx.c);
+    j = parambbkx.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoRangeStart;
+    i = parambbkx.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoRangeEnd;
+    if ((!bool) && (parambbkx.c == 3))
+    {
+      ??? = parambbkx.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.mIFrameVideoPath;
+      i = 0;
+      j = 0;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = 0;
+      int[] arrayOfInt = new int[1];
+      arrayOfInt[0] = 0;
+      if ((bool) && (parambbkx.c == 3))
+      {
+        localObject = new Mp4FlowReEncoder();
+        arrayOfInt[0] = 1;
+      }
+      for (;;)
+      {
+        bbky localbbky = new bbky(???, parambbkx.c, false, true, j, i);
+        if (((parambbkx.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.businessId == 10) && ((n == 270) || (n == 90))) || ((parambbkx.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.businessId == 12) && ((n == 270) || (n == 90))))
+        {
+          ??? = new bbmm(paramString2, m, k, i1, 1, 30, parambbkx.b, false, 0, parambbkx.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath, parambbkx.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.mosaicPath, str, false);
+          ???.i = n;
+          localbbky.c = true;
+          a(parambbkx, ???);
+          localbbky.b = n;
+          ???.j = parambbkx.d;
+          ???.k = parambbkx.e;
+          ((bblw)localObject).a(localbbky, ???, new bbkw(this, arrayOfInt), null);
+          if (this.jdField_a_of_type_Boolean) {}
+        }
+        synchronized (this.jdField_a_of_type_JavaLangObject)
+        {
+          bool = this.jdField_a_of_type_Boolean;
+          if (!bool) {}
+          try
+          {
+            this.jdField_a_of_type_JavaLangObject.wait();
+            return this.jdField_a_of_type_Int;
+            localObject = new bbmq();
+            arrayOfInt[0] = 2;
+            continue;
+            ??? = new bbmm(paramString2, k, m, i1, 1, 30, parambbkx.b, false, n, parambbkx.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath, parambbkx.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.mosaicPath, str, false);
+          }
+          catch (InterruptedException paramString2)
+          {
+            for (;;)
+            {
+              paramString2.printStackTrace();
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 

@@ -1,30 +1,14 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.forward.ForwardFileOption;
-
-public class atmg
-  implements View.OnTouchListener
+public abstract interface atmg
 {
-  public atmg(ForwardFileOption paramForwardFileOption, ImageButton paramImageButton) {}
+  public abstract void a(String paramString);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetImageButton.setBackgroundColor(Color.argb(25, 0, 0, 0));
-    }
-    while (paramMotionEvent.getAction() != 1) {
-      return false;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageButton.setBackgroundColor(Color.argb(0, 0, 0, 0));
-    return false;
-  }
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(String paramString1, boolean paramBoolean, int paramInt, String paramString2, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atmg
  * JD-Core Version:    0.7.0.1
  */

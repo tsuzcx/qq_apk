@@ -1,18 +1,10 @@
-import android.view.View;
-import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
-import cooperation.qzone.util.QZLog;
-import java.lang.ref.WeakReference;
+import java.util.List;
 
-class vbf
-  implements AdExposureChecker.ExposureCallback
+public abstract interface vbf<T>
 {
-  vbf(vbc paramvbc) {}
+  public abstract void a(boolean paramBoolean1, List<T> paramList, boolean paramBoolean2);
   
-  public void onExposure(WeakReference<View> paramWeakReference)
-  {
-    QZLog.w("AdExposureChecker", "onExposure");
-    var.a(this.a.a, vbc.a(this.a));
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, Object paramObject);
 }
 
 

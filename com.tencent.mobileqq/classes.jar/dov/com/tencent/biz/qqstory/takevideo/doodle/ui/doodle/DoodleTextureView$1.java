@@ -1,7 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle;
 
-import bnkb;
-import bnky;
+import bozt;
+import bpaq;
 
 class DoodleTextureView$1
   implements Runnable
@@ -10,12 +10,12 @@ class DoodleTextureView$1
   
   public void run()
   {
-    bnky localbnky = (bnky)this.this$0.jdField_a_of_type_Bnkb.a(102);
-    if (localbnky != null)
+    bpaq localbpaq = (bpaq)this.this$0.jdField_a_of_type_Bozt.a(102);
+    if (localbpaq != null)
     {
-      localbnky.a();
-      localbnky.a(this.this$0.jdField_a_of_type_Int, this.this$0.b);
-      this.this$0.jdField_a_of_type_Bnkb.h();
+      localbpaq.a();
+      localbpaq.a(this.this$0.jdField_a_of_type_Int, this.this$0.b);
+      this.this$0.jdField_a_of_type_Bozt.h();
       this.this$0.a();
     }
   }

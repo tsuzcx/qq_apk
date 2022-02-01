@@ -1,34 +1,59 @@
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tencent.biz.qqstory.storyHome.model.HotRecommendFeedItem;
+import java.util.Comparator;
 
-class yed
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class yed
+  implements Comparator<ydz>
 {
-  private yed(ydv paramydv) {}
-  
-  public void onGlobalLayout()
+  public int a(ydz paramydz1, ydz paramydz2)
   {
-    int i = this.a.jdField_a_of_type_AndroidWidgetEditText.getBottom();
-    if (this.a.c < 0)
+    int k = 1;
+    int i;
+    int j;
+    if (((paramydz1 instanceof ydv)) && (((HotRecommendFeedItem)((ydv)paramydz1).a()).mIsTopLocation))
     {
-      this.a.c = i;
-      this.a.jdField_a_of_type_Yec.a();
+      i = 1;
+      if ((!(paramydz2 instanceof ydv)) || (!((HotRecommendFeedItem)((ydv)paramydz2).a()).mIsTopLocation)) {
+        break label80;
+      }
+      j = 1;
+      label54:
+      if ((j ^ i) == 0) {
+        break label86;
+      }
+      j = k;
+      if (i != 0) {
+        j = -1;
+      }
     }
+    label80:
+    label86:
     do
     {
       do
       {
-        return;
-      } while (this.a.c - i <= this.a.b);
-      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(this.a.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
-      this.a.c = i;
-      this.a.jdField_a_of_type_AndroidViewViewGroup.requestLayout();
-    } while (this.a.jdField_a_of_type_Yec == null);
-    this.a.jdField_a_of_type_Yec.a(true, null);
-    this.a.jdField_a_of_type_Yec.a(this.a.a());
+        return j;
+        i = 0;
+        break;
+        j = 0;
+        break label54;
+        if (paramydz1.a.dateTimeMillis != paramydz2.a.dateTimeMillis) {
+          break label146;
+        }
+        if (((paramydz1 instanceof yeb)) && (yeb.a((yeb)paramydz1))) {
+          return -1;
+        }
+        if (!(paramydz2 instanceof yeb)) {
+          break label144;
+        }
+        j = k;
+      } while (yeb.a((yeb)paramydz2));
+      return 0;
+      j = k;
+    } while (paramydz1.a.dateTimeMillis <= paramydz2.a.dateTimeMillis);
+    label144:
+    label146:
+    return -1;
   }
 }
 

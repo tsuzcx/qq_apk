@@ -1,54 +1,23 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnItemTouchListener;
-import android.view.MotionEvent;
-import android.view.ViewParent;
-import com.tencent.mobileqq.profilecard.bussiness.anonymous.views.AnonymousView;
+import android.graphics.Point;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ayvb
-  implements RecyclerView.OnItemTouchListener
 {
-  private float jdField_a_of_type_Float;
-  private boolean jdField_a_of_type_Boolean;
-  private float b;
+  public int a;
+  public List<Point> a;
+  public boolean a;
+  public int b = -2147483648;
+  public int c = -2147483648;
+  public int d = 2147483647;
+  public int e = 2147483647;
   
-  public ayvb(AnonymousView paramAnonymousView) {}
-  
-  private boolean a(MotionEvent paramMotionEvent)
+  public ayvb()
   {
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    return Math.abs(this.jdField_a_of_type_Float - f1) > Math.abs(this.b - f2);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = 0;
   }
-  
-  public boolean onInterceptTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-          this.jdField_a_of_type_Float = paramMotionEvent.getX();
-          this.b = paramMotionEvent.getY();
-          this.jdField_a_of_type_Boolean = false;
-          return false;
-        } while (this.jdField_a_of_type_Boolean);
-        this.jdField_a_of_type_Boolean = true;
-      } while ((!a(paramMotionEvent)) || (paramRecyclerView.getParent() == null));
-      paramRecyclerView.getParent().requestDisallowInterceptTouchEvent(true);
-      return false;
-    } while (paramRecyclerView.getParent() == null);
-    paramRecyclerView.getParent().requestDisallowInterceptTouchEvent(false);
-    return false;
-  }
-  
-  public void onRequestDisallowInterceptTouchEvent(boolean paramBoolean) {}
-  
-  public void onTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent) {}
 }
 
 

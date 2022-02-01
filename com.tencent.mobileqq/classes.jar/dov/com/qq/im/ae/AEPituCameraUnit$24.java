@@ -1,20 +1,16 @@
 package dov.com.qq.im.ae;
 
-import bljy;
-import bluy;
-import bmas;
-import com.tencent.ttpic.openapi.model.VideoMaterial;
+import bmxa;
+import bnbg;
 
 public class AEPituCameraUnit$24
   implements Runnable
 {
-  public AEPituCameraUnit$24(bljy parambljy, VideoMaterial paramVideoMaterial) {}
+  public AEPituCameraUnit$24(bmxa parambmxa) {}
   
   public void run()
   {
-    if ((this.this$0.a != null) && (this.this$0.a.a(131072) != null)) {
-      this.this$0.a.a(131072).a(115, this.a);
-    }
+    this.this$0.a.f();
   }
 }
 

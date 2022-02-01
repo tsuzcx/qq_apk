@@ -1,124 +1,21 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.util.concurrent.ConcurrentHashMap;
-import javax.annotation.Nullable;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class bfzq
+class bfzq
+  implements View.OnClickListener
 {
-  private static ConcurrentHashMap<String, Boolean> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(4);
-  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "KEY_DELAY_LOAD_PROXY", "KEY_ENABLE_MEMORY_LEAK" };
+  bfzq(bfzp parambfzp) {}
   
-  public static void a(Context paramContext, boolean paramBoolean, @Nullable String paramString, @Nullable Throwable paramThrowable)
+  public void onClick(View paramView)
   {
-    int i = 0;
-    try
-    {
-      paramContext = paramContext.getSharedPreferences("BootOptimize", 0).edit();
-      if (paramBoolean)
-      {
-        paramContext.putLong("_last_crash_time_", System.currentTimeMillis());
-        paramString = jdField_a_of_type_ArrayOfJavaLangString;
-        int j = paramString.length;
-        while (i < j)
-        {
-          paramThrowable = paramString[i];
-          paramContext.putBoolean("8.4.8" + paramThrowable, true);
-          i += 1;
-        }
-      }
-      if (TextUtils.isEmpty(paramString))
-      {
-        paramContext.putBoolean("8.4.8" + paramString, true);
-        if (paramThrowable != null)
-        {
-          while (paramThrowable.getCause() != null) {
-            paramThrowable = paramThrowable.getCause();
-          }
-          StringWriter localStringWriter = new StringWriter();
-          paramThrowable.printStackTrace(new PrintWriter(localStringWriter));
-          paramContext.putString("8.4.8_crash_because_" + paramString, localStringWriter.getBuffer().toString());
-        }
-      }
-      paramContext.apply();
-      return;
-    }
-    catch (Throwable paramContext) {}
-  }
-  
-  private static boolean a(Context paramContext, String paramString)
-  {
-    if (paramContext == null) {}
-    long l;
-    do
-    {
-      return true;
-      paramContext = paramContext.getSharedPreferences("BootOptimize", 0);
-      if ((!TextUtils.isEmpty(paramString)) && (paramContext.getBoolean("8.4.8" + paramString, false))) {
-        return false;
-      }
-      l = paramContext.getLong("_last_crash_time_", 0L);
-    } while (System.currentTimeMillis() - l > 1800000L);
-    return false;
-  }
-  
-  public static boolean a(Context paramContext, String paramString, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      if (paramContext == null) {
-        break label69;
-      }
-    }
-    label69:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("TripleGraySwitchUtil", 2, new Object[] { "call setSwitch, Context=", Boolean.valueOf(bool), " ,key=", paramString, " ,value=", Boolean.valueOf(paramBoolean) });
-      if ((paramContext != null) && (!TextUtils.isEmpty(paramString))) {
-        break;
-      }
-      return false;
-    }
-    paramContext.getSharedPreferences("BootOptimize", 0).edit().putBoolean(paramString, paramBoolean).apply();
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(paramBoolean));
-    return true;
-  }
-  
-  public static boolean b(Context paramContext, String paramString, boolean paramBoolean)
-  {
-    boolean bool;
-    if (QLog.isColorLevel())
-    {
-      if (paramContext != null)
-      {
-        bool = true;
-        QLog.d("TripleGraySwitchUtil", 2, new Object[] { "call getSwitch, Context=", Boolean.valueOf(bool), " ,key=", paramString, " judgeSafeMode=", Boolean.valueOf(paramBoolean) });
-      }
-    }
-    else {
-      if ((paramContext != null) && (!TextUtils.isEmpty(paramString))) {
-        break label74;
-      }
-    }
-    label74:
-    do
-    {
-      return false;
-      bool = false;
-      break;
-      if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
-        return ((Boolean)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).booleanValue();
-      }
-    } while ((paramBoolean) && (!a(paramContext, paramString)));
-    paramBoolean = paramContext.getSharedPreferences("BootOptimize", 0).getBoolean(paramString, false);
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(paramBoolean));
-    if (QLog.isColorLevel()) {
-      QLog.d("TripleGraySwitchUtil", 2, new Object[] { "key=", paramString, " value=", Boolean.valueOf(paramBoolean) });
-    }
-    return paramBoolean;
+    Intent localIntent = new Intent(bfzp.a(this.a), QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
+    bfzp.a(this.a).startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

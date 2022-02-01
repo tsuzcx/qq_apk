@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahiu;
+import aido;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
@@ -13,7 +13,7 @@ import com.tencent.qphone.base.util.QLog;
 public class PublicAccountChatPie$34
   implements Runnable
 {
-  public PublicAccountChatPie$34(ahiu paramahiu, SharedPreferences paramSharedPreferences, String paramString) {}
+  public PublicAccountChatPie$34(aido paramaido, SharedPreferences paramSharedPreferences, String paramString) {}
   
   public void run()
   {

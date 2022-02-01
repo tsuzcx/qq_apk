@@ -1,12 +1,23 @@
-public abstract interface vdy
+import UserGrowth.stSchema;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+
+public class vdy
+  extends vdr
 {
-  public abstract void a();
+  public vdy(vdt paramvdt)
+  {
+    super(paramvdt);
+  }
   
-  public abstract void a(float paramFloat);
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(boolean paramBoolean);
+  public boolean a(vdt paramvdt)
+  {
+    MiniAppLauncher.MiniAppLaunchListener localMiniAppLaunchListener = paramvdt.a();
+    uyt.a(paramvdt.a(), paramvdt.a().miniAppSchema, new vdz(this, localMiniAppLaunchListener));
+    if (paramvdt.a() != null) {
+      paramvdt.a().b();
+    }
+    return true;
+  }
 }
 
 

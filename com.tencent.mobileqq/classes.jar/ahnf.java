@@ -1,33 +1,13 @@
-import com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecBarAdapter.ImgUpdateListener.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahnf
-  implements ahnv
+  implements ahnr
 {
-  public ahnc a;
-  
-  public ahnf(ahnc paramahnc)
+  public void a(agtf paramagtf, MessageRecord paramMessageRecord, agus paramagus, aftk paramaftk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    this.a = paramahnc;
-  }
-  
-  public void a(List<ahmw> paramList, String paramString1, String paramString2, int paramInt, String paramString3)
-  {
-    if (this.a != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerRecBarAdapter", 2, "data=" + paramList.size());
-      }
-      ahnc.a(this.a);
-      ThreadManager.getUIHandler().post(new StickerRecBarAdapter.ImgUpdateListener.1(this, paramInt, paramString3, paramString1, paramList, paramString2));
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("StickerRecBarAdapter", 2, "mAdapter is null");
+    paramagtf.c(paramMessageRecord, paramagus, paramString);
   }
 }
 

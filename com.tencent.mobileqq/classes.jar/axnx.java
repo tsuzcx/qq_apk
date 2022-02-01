@@ -1,38 +1,52 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
-import com.tencent.mobileqq.ocr.ui.SearchResultFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.highway.HwEngine;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
 
 public class axnx
-  extends axld
+  implements INetInfoHandler
 {
-  public axnx(OCRTextSearchActivity paramOCRTextSearchActivity) {}
+  private axnx(NearbyAppInterface paramNearbyAppInterface) {}
   
-  public void a(int paramInt, String paramString, axmn paramaxmn)
+  public void onNetMobile2None()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.ocr.OCRTextSearchActivity", 2, "onGetTextSearchResult, errorCode=" + paramInt + ", sessionID=" + paramString + ", mSessionId=" + this.a.c);
+    if (NearbyAppInterface.i(this.a) != null) {
+      NearbyAppInterface.j(this.a).onNetMobile2None();
     }
-    if ((paramString == null) || (this.a.c == null) || (!this.a.c.equals(paramString)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.ocr.OCRTextSearchActivity", 2, "onGetTextSearchResult, session error");
-      }
-      return;
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if (NearbyAppInterface.g(this.a) != null) {
+      NearbyAppInterface.h(this.a).onNetMobile2Wifi(paramString);
     }
-    this.a.a(false);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment == null) {
-      this.a.b(1);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (NearbyAppInterface.a(this.a) != null) {
+      NearbyAppInterface.b(this.a).onNetNone2Mobile(paramString);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment.a(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), paramInt, paramaxmn);
-    this.a.a(1);
-    if ((paramInt == 0) && (paramaxmn.a != null) && (paramaxmn.a.size() > 0))
-    {
-      bcef.b(null, "dc00898", "", "", "0X80082E8", "0X80082E8", 0, 0, "", "", "", "");
-      return;
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (NearbyAppInterface.e(this.a) != null) {
+      NearbyAppInterface.f(this.a).onNetNone2Wifi(paramString);
     }
-    bcef.b(null, "dc00898", "", "", "0X80082E7", "0X80082E7", 0, 0, "", "", "", "");
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (NearbyAppInterface.c(this.a) != null) {
+      NearbyAppInterface.d(this.a).onNetWifi2Mobile(paramString);
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (NearbyAppInterface.k(this.a) != null) {
+      NearbyAppInterface.l(this.a).onNetWifi2None();
+    }
   }
 }
 

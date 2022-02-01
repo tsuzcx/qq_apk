@@ -1,25 +1,51 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import java.util.UUID;
+import android.util.SparseIntArray;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import java.util.ArrayList;
 
-class asgj
-  implements DialogInterface.OnClickListener
+public class asgj
 {
-  asgj(asgi paramasgi, long paramLong, UUID paramUUID, Activity paramActivity) {}
+  private int jdField_a_of_type_Int;
+  private SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray;
+  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public asgj(DragSortListView paramDragSortListView, int paramInt)
   {
-    switch (paramInt)
+    this.jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray(paramInt);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramInt);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt, -1);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.clear();
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    int i = this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt1, -1);
+    if (i != paramInt2)
     {
-    default: 
-      return;
-    case 0: 
-      TroopFileTransferManager.a(this.jdField_a_of_type_Asgi.a, this.jdField_a_of_type_Long).a(this.jdField_a_of_type_JavaUtilUUID);
-      return;
+      if (i != -1) {
+        break label77;
+      }
+      if (this.jdField_a_of_type_AndroidUtilSparseIntArray.size() == this.jdField_a_of_type_Int) {
+        this.jdField_a_of_type_AndroidUtilSparseIntArray.delete(((Integer)this.jdField_a_of_type_JavaUtilArrayList.remove(0)).intValue());
+      }
     }
-    new bebp(this.jdField_a_of_type_Long, this.jdField_a_of_type_Asgi.a, this.jdField_a_of_type_AndroidAppActivity).b(this.jdField_a_of_type_JavaUtilUUID);
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidUtilSparseIntArray.put(paramInt1, paramInt2);
+      this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(paramInt1));
+      return;
+      label77:
+      this.jdField_a_of_type_JavaUtilArrayList.remove(Integer.valueOf(paramInt1));
+    }
   }
 }
 

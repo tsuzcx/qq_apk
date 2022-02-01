@@ -1,16 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.util.Pair;
-
-class acny
-  implements DialogInterface.OnClickListener
+public abstract interface acny<K, V>
 {
-  acny(acnx paramacnx, bcqk parambcqk, Pair paramPair) {}
+  public abstract V a(K paramK);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Bcqk.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
-  }
+  public abstract void a(K paramK, Class<? extends V> paramClass);
 }
 
 

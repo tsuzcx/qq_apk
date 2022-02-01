@@ -10,6 +10,8 @@ public final class StageConstant
   @NotNull
   public static final String QAPM_APPLAUNCH = "QAPM_APPLAUNCH";
   @NotNull
+  public static final String QAPM_APPLAUNCH_END = "QAPM_APPLAUNCH_END";
+  @NotNull
   public static final String RESOURCE_MONITOR = "RESOURCEMONITOR";
 }
 

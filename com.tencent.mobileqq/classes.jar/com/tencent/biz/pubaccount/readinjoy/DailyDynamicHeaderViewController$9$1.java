@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
 import com.tencent.mobileqq.app.soso.LbsManagerService;
-import oif;
+import oqb;
 
 class DailyDynamicHeaderViewController$9$1
   implements Runnable
@@ -10,7 +10,7 @@ class DailyDynamicHeaderViewController$9$1
   
   public void run()
   {
-    LbsManagerService.startLocation(oif.a(this.a.this$0));
+    LbsManagerService.startLocation(oqb.a(this.a.this$0));
   }
 }
 

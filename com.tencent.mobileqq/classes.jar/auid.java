@@ -1,26 +1,39 @@
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.hotpic.HotVideoData;
-import java.io.File;
+import android.content.Context;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
 
 class auid
-  implements auhs
 {
-  auid(auic paramauic, HotVideoData paramHotVideoData, File paramFile, URLDrawableHandler paramURLDrawableHandler) {}
+  float jdField_a_of_type_Float = 14.0F;
+  int jdField_a_of_type_Int = 0;
+  DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics = new DisplayMetrics();
+  Integer jdField_a_of_type_JavaLangInteger = null;
+  final String jdField_a_of_type_JavaLangString = "SearchForText";
+  float jdField_b_of_type_Float = 16.0F;
+  Integer jdField_b_of_type_JavaLangInteger = null;
+  final String jdField_b_of_type_JavaLangString = "SearchForTitle";
   
-  public void a(auht paramauht)
+  auid(auib paramauib, Context paramContext)
   {
-    if (paramauht.a)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.url = paramauht.a();
-      auic.a(this.jdField_a_of_type_Auic, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData, this.jdField_a_of_type_ComTencentImageURLDrawableHandler);
+    if (paramContext != null) {
+      ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(this.jdField_a_of_type_AndroidUtilDisplayMetrics);
     }
-    do
-    {
-      return;
-      this.jdField_a_of_type_JavaIoFile.delete();
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.onFileDownloadFailed(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.picIndex);
-    } while (this.jdField_a_of_type_ComTencentImageURLDrawableHandler == null);
-    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadFailed(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.picIndex);
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public Integer a()
+  {
+    return this.jdField_b_of_type_JavaLangInteger;
+  }
+  
+  public float b()
+  {
+    return this.jdField_b_of_type_Float;
   }
 }
 

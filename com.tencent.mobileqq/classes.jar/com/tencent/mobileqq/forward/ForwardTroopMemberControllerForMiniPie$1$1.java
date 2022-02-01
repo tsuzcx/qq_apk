@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.forward;
 
-import atqf;
-import atqj;
+import auva;
+import auve;
 import java.util.List;
 
 class ForwardTroopMemberControllerForMiniPie$1$1
@@ -11,10 +11,10 @@ class ForwardTroopMemberControllerForMiniPie$1$1
   
   public void run()
   {
-    if (atqf.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardTroopMemberControllerForMiniPie$1.this$0) != null)
+    if (auva.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardTroopMemberControllerForMiniPie$1.this$0) != null)
     {
-      atqf.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardTroopMemberControllerForMiniPie$1.this$0);
-      atqf.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardTroopMemberControllerForMiniPie$1.this$0).a(this.jdField_a_of_type_JavaUtilList);
+      auva.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardTroopMemberControllerForMiniPie$1.this$0);
+      auva.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardTroopMemberControllerForMiniPie$1.this$0).a(this.jdField_a_of_type_JavaUtilList);
     }
   }
 }

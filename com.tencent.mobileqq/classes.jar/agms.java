@@ -1,15 +1,24 @@
-import android.graphics.Rect;
-import java.net.URL;
+import android.content.Context;
+import androidx.recyclerview.widget.GridLayoutManager;
+import com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemNewDnaView;
 
 public class agms
+  extends GridLayoutManager
 {
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  Rect jdField_a_of_type_AndroidGraphicsRect;
-  URL jdField_a_of_type_JavaNetURL;
-  boolean jdField_a_of_type_Boolean;
-  float jdField_b_of_type_Float;
-  int jdField_b_of_type_Int;
+  public agms(IntimateContentItemNewDnaView paramIntimateContentItemNewDnaView, Context paramContext, int paramInt)
+  {
+    super(paramContext, paramInt);
+  }
+  
+  public boolean canScrollHorizontally()
+  {
+    return false;
+  }
+  
+  public boolean canScrollVertically()
+  {
+    return false;
+  }
 }
 
 

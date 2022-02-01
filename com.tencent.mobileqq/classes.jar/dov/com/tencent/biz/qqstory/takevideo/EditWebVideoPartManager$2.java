@@ -1,7 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.app.Activity;
-import bney;
+import bouq;
 import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask;
 import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
 import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
@@ -9,37 +9,37 @@ import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
 public class EditWebVideoPartManager$2
   implements Runnable
 {
-  public EditWebVideoPartManager$2(bney parambney, EditVideoParams.EditSource paramEditSource, PublishParam paramPublishParam, Activity paramActivity) {}
+  public EditWebVideoPartManager$2(bouq parambouq, EditVideoParams.EditSource paramEditSource, PublishParam paramPublishParam, Activity paramActivity) {}
   
   public void run()
   {
-    bney.a(this.this$0, null);
+    bouq.a(this.this$0, null);
     this.this$0.c = 0;
-    bney.a(this.this$0, this.this$0.a.a("extra_bless_latitude", 0.0D));
-    bney.b(this.this$0, this.this$0.a.a("extra_bless_longitude", 0.0D));
+    bouq.a(this.this$0, this.this$0.a.a("extra_bless_latitude", 0.0D));
+    bouq.b(this.this$0, this.this$0.a.a("extra_bless_longitude", 0.0D));
     boolean bool;
     if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditRecordVideoSource))
     {
-      bney.a(this.this$0);
+      bouq.a(this.this$0);
       bool = false;
     }
     for (;;)
     {
-      EncodeVideoTask localEncodeVideoTask = new EncodeVideoTask(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPublishPublishParam.b, bool, bney.a(this.this$0), true);
-      localEncodeVideoTask.setResultListener(bney.a(this.this$0));
+      EncodeVideoTask localEncodeVideoTask = new EncodeVideoTask(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPublishPublishParam.b, bool, bouq.a(this.this$0), true);
+      localEncodeVideoTask.setResultListener(bouq.a(this.this$0));
       localEncodeVideoTask.execute(new Void[0]);
       return;
       if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource))
       {
-        int i = bney.a(this.this$0, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPublishPublishParam);
+        int i = bouq.a(this.this$0, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPublishPublishParam);
         if (i != 0) {
-          bney.a(this.this$0).onError(i);
+          bouq.a(this.this$0).onError(i);
         }
         bool = true;
       }
       else
       {
-        bney.a(this.this$0).onError(-13);
+        bouq.a(this.this$0).onError(-13);
         bool = false;
       }
     }

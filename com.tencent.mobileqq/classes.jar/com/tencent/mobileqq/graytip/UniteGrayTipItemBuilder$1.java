@@ -2,7 +2,7 @@ package com.tencent.mobileqq.graytip;
 
 import android.os.Handler;
 import android.os.Looper;
-import auca;
+import avhu;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.transfile.AbsDownloader;
@@ -13,7 +13,7 @@ import java.net.URL;
 public class UniteGrayTipItemBuilder$1
   implements Runnable
 {
-  public UniteGrayTipItemBuilder$1(auca paramauca, MessageRecord paramMessageRecord) {}
+  public UniteGrayTipItemBuilder$1(avhu paramavhu, MessageRecord paramMessageRecord) {}
   
   public void run()
   {

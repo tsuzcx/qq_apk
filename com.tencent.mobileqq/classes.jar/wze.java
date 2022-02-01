@@ -1,29 +1,13 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-
-public class wze
-  extends vll<wyy, vsd>
+class wze
+  implements wpv
 {
-  public wze(wyy paramwyy)
-  {
-    super(paramwyy);
-  }
+  wze(wzb paramwzb, wpu paramwpu) {}
   
-  public void a(@NonNull wyy paramwyy, @NonNull vsd paramvsd)
+  public void a(boolean paramBoolean)
   {
-    if ((paramwyy.a != null) && (TextUtils.equals(paramwyy.a.b, paramvsd.a)))
-    {
-      xvv.a(this.TAG, "receive feed info change event. %s.", paramvsd.toString());
-      paramwyy.i();
-    }
+    this.jdField_a_of_type_Wpu.a();
+    this.jdField_a_of_type_Wzb.d();
   }
-  
-  public Class acceptEventClass()
-  {
-    return vsd.class;
-  }
-  
-  public void b(@NonNull wyy paramwyy, @NonNull vsd paramvsd) {}
 }
 
 

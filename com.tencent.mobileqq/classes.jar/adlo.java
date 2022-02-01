@@ -1,22 +1,42 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
-import com.tencent.mobileqq.activity.GesturePWDGuideActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
 
-public class adlo
-  implements View.OnClickListener
+class adlo
+  implements aquk
 {
-  public adlo(GesturePWDGuideActivity paramGesturePWDGuideActivity) {}
+  private adlo(adlk paramadlk) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    Intent localIntent = new Intent(this.a, GesturePWDCreateActivity.class);
-    this.a.startActivityForResult(localIntent, 999);
-    this.a.overridePendingTransition(2130771997, 2130771990);
-    bcef.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_Gesture_password", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    }
+    for (;;)
+    {
+      adlk.a(this.a);
+      if ((adlk.a(this.a) != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
+        adlk.a(this.a).a(2);
+      }
+      if (this.a.a != null)
+      {
+        paramInt1 = adlk.d(this.a, adlk.a(this.a));
+        paramInt2 = adlk.e(this.a, adlk.b(this.a));
+        int i = adlk.f(this.a, adlk.c(this.a));
+        this.a.a.a(paramInt1, paramInt2, i);
+      }
+      return;
+      adlk.a(this.a, paramInt2);
+      continue;
+      adlk.b(this.a, paramInt2);
+      continue;
+      adlk.c(this.a, paramInt2);
+    }
   }
 }
 

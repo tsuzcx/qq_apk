@@ -6,6 +6,7 @@ import com.tencent.biz.qcircleshadow.local.requests.QCircleRedPointEvent;
 import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 import com.tencent.biz.richframework.eventbus.SimpleEventBus;
 import com.tencent.biz.richframework.eventbus.SimpleEventReceiver;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
@@ -169,32 +170,38 @@ public class EeveeRedPointManagerDelegate
   
   public void asyncGetNumRedPointInfoByAppid(String paramString, QCircleRedPointManager.OnGetQQCircleNumRedMsgListener paramOnGetQQCircleNumRedMsgListener, boolean paramBoolean)
   {
+    Object localObject2 = null;
     if (paramOnGetQQCircleNumRedMsgListener == null) {
       return;
     }
-    Object localObject = getNumRedPointInfotByAppid(paramString);
+    Object localObject1 = getNumRedPointInfotByAppid(paramString);
     int i = 0;
-    Iterator localIterator = null;
-    paramString = localIterator;
-    if (localObject != null)
-    {
-      i = ((QQCircleCounter.RedPointInfo)localObject).redTotalNum.get();
-      localObject = ((QQCircleCounter.RedPointInfo)localObject).rptRedInfo.get();
-      if (localObject == null) {
-        break label114;
-      }
-      paramString = new ArrayList();
-      localIterator = ((List)localObject).iterator();
-      while (localIterator.hasNext()) {
-        paramString.add(((QQCircleCounter.RedDisplayInfo)localIterator.next()).headImg.get());
-      }
+    if (!EeveeRedpointUtil.isValidRedPointInfo(paramString, (QQCircleCounter.RedPointInfo)localObject1)) {
+      QLog.d("QCircleEeveeRedPointManagerDelegate", 1, "asyncGetNumRedPointInfoByAppid invalid red point info! ignore it.");
     }
-    for (;;)
+    for (paramString = null;; paramString = (String)localObject1)
     {
-      paramOnGetQQCircleNumRedMsgListener.onGet(paramString, i);
-      return;
-      label114:
-      paramString = localIterator;
+      localObject1 = localObject2;
+      if (paramString != null)
+      {
+        i = paramString.redTotalNum.get();
+        paramString = paramString.rptRedInfo.get();
+        if (paramString == null) {
+          break label128;
+        }
+        localObject1 = new ArrayList();
+        paramString = paramString.iterator();
+        while (paramString.hasNext()) {
+          ((List)localObject1).add(((QQCircleCounter.RedDisplayInfo)paramString.next()).headImg.get());
+        }
+      }
+      for (;;)
+      {
+        paramOnGetQQCircleNumRedMsgListener.onGet((List)localObject1, i);
+        return;
+        label128:
+        localObject1 = localObject2;
+      }
     }
   }
   
@@ -205,7 +212,7 @@ public class EeveeRedPointManagerDelegate
     this.mCacheOuterEntranceRedPointInfo = new QQCircleCounter.RedPointInfo();
     QQAppInterface localQQAppInterface = this.mApp;
     if (localQQAppInterface != null) {
-      ((QCircleHandler)localQQAppInterface.getBusinessHandler(183)).updateRedPoint();
+      ((QCircleHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QCIRCLE_HANDLER)).updateRedPoint();
     }
   }
   
@@ -350,7 +357,7 @@ public class EeveeRedPointManagerDelegate
       {
         paramSimpleBaseEvent = this.mApp;
         if (paramSimpleBaseEvent != null) {
-          ((QCircleHandler)paramSimpleBaseEvent.getBusinessHandler(183)).updateRedPoint();
+          ((QCircleHandler)paramSimpleBaseEvent.getBusinessHandler(BusinessHandlerFactory.QCIRCLE_HANDLER)).updateRedPoint();
         }
       }
       return;

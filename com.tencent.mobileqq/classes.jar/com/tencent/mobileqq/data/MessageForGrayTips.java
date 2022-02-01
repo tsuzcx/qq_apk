@@ -7,10 +7,11 @@ import android.graphics.drawable.Drawable.Callback;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import aqrg;
-import awfy;
-import awgb;
+import arur;
+import axma;
+import axmd;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -36,7 +37,7 @@ public class MessageForGrayTips
     if ((str.startsWith("http://")) || (str.startsWith("https://"))) {
       if (paramBoolean)
       {
-        paramContext = new aqrg(paramContext, 0, str, 32);
+        paramContext = new arur(paramContext, 0, str, 32);
         paramContext.a(paramCallback);
         paramSpannableStringBuilder.setSpan(paramContext, paramHighlightItem.start, paramHighlightItem.end, 33);
         if (QLog.isColorLevel()) {
@@ -49,18 +50,18 @@ public class MessageForGrayTips
     for (;;)
     {
       return;
-      paramContext = new aqrg(paramContext, 0, str);
+      paramContext = new arur(paramContext, 0, str);
       paramContext.a(paramCallback);
       paramContext.a(paramMessageRecord);
       paramSpannableStringBuilder.setSpan(paramContext, paramHighlightItem.start, paramHighlightItem.end, 33);
       break;
-      if (awfy.a(str))
+      if (axma.a(str))
       {
-        paramMessageRecord = awfy.b(str);
+        paramMessageRecord = axma.b(str);
         if (!TextUtils.isEmpty(paramMessageRecord))
         {
           if (paramBoolean) {}
-          for (paramContext = new awgb(paramContext, 0, paramMessageRecord, ViewUtils.dpToPx(16.0F), paramCallback);; paramContext = new awgb(paramContext, 0, paramMessageRecord, paramCallback))
+          for (paramContext = new axmd(paramContext, 0, paramMessageRecord, ViewUtils.dpToPx(16.0F), paramCallback);; paramContext = new axmd(paramContext, 0, paramMessageRecord, paramCallback))
           {
             paramSpannableStringBuilder.setSpan(paramContext, paramHighlightItem.start, paramHighlightItem.end, 33);
             if (!QLog.isColorLevel()) {
@@ -77,10 +78,10 @@ public class MessageForGrayTips
         if (i != -1)
         {
           paramCallback = str.substring(0, i);
-          if (!awfy.b.containsKey(paramCallback)) {
+          if (!axma.b.containsKey(paramCallback)) {
             break label390;
           }
-          i = ((Integer)awfy.b.get(paramCallback)).intValue();
+          i = ((Integer)axma.b.get(paramCallback)).intValue();
           if (i != 0)
           {
             if (!paramBoolean) {
@@ -390,7 +391,7 @@ public class MessageForGrayTips
                 localObject5 = "";
                 k = n;
                 if (TextUtils.isEmpty((CharSequence)localObject5)) {
-                  break label2867;
+                  break label2868;
                 }
               }
               break;
@@ -407,13 +408,13 @@ public class MessageForGrayTips
           l = Long.parseLong((String)localObject5);
           n = ((String)localObject1).indexOf(',');
           if ((n == -1) || (!"icon".equals(((String)localObject1).substring(0, n)))) {
-            break label2861;
+            break label2862;
           }
           localObject1 = ((String)localObject1).substring(n + 1, ((String)localObject1).length());
           n = 1;
           if (!checkAbillity(1)) {
             if (n == 0) {
-              break label2850;
+              break label2851;
             }
           }
         }
@@ -444,11 +445,11 @@ public class MessageForGrayTips
             localObject1 = ((String)localObject1).substring(n + 1, ((String)localObject1).length());
             n = Integer.parseInt((String)localObject5);
             if (n == 0) {
-              break label2968;
+              break label2969;
             }
             n = ((String)localObject1).indexOf(',');
             if (n == -1) {
-              break label2953;
+              break label2954;
             }
             localObject5 = ((String)localObject1).substring(0, n);
             localObject8 = ((String)localObject1).substring(n + 1, ((String)localObject1).length());
@@ -475,13 +476,13 @@ public class MessageForGrayTips
             localObject1 = localObject11;
             n = ((String)localObject1).indexOf(',');
             if ((n == -1) || (!"color".equals(((String)localObject1).substring(0, n)))) {
-              break label2844;
+              break label2845;
             }
             localObject1 = ((String)localObject1).substring(n + 1, ((String)localObject1).length());
             n = 1;
             if (!checkAbillity(2)) {
               if (n == 0) {
-                break label2836;
+                break label2837;
               }
             }
           }
@@ -510,7 +511,7 @@ public class MessageForGrayTips
           localObject1 = ((String)localObject1).substring(n + 1, ((String)localObject1).length());
           n = Integer.parseInt((String)localObject11);
           if (n == 0) {
-            break label2828;
+            break label2829;
           }
           n = ((String)localObject1).indexOf(',');
           if (n == -1) {
@@ -540,12 +541,12 @@ public class MessageForGrayTips
           i += 1;
           break label1159;
           localObject6 = "";
-          localObject8 = (TroopManager)paramQQAppInterface.getManager(52);
+          localObject8 = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
           localObject9 = localArrayList.iterator();
           i = 0;
           localObject4 = str2;
           if (!((Iterator)localObject9).hasNext()) {
-            break label2662;
+            break label2663;
           }
           localObject10 = (MessageForGrayTips.HighlightItem)((Iterator)localObject9).next();
           localObject11 = (String)localObject6 + ((String)localObject4).substring(0, ((MessageForGrayTips.HighlightItem)localObject10).start - i);
@@ -554,7 +555,7 @@ public class MessageForGrayTips
           i = ((MessageForGrayTips.HighlightItem)localObject10).end;
           ((MessageForGrayTips.HighlightItem)localObject10).start = ((String)localObject11).length();
           if (!((MessageForGrayTips.HighlightItem)localObject10).needUpdateNick) {
-            break label2637;
+            break label2638;
           }
           localObject4 = ((TroopManager)localObject8).b(this.frienduin, "" + ((MessageForGrayTips.HighlightItem)localObject10).uin);
           if ((localObject4 == null) || (!((String)localObject4).equals(((MessageForGrayTips.HighlightItem)localObject10).uin + "")) || (TextUtils.isEmpty((CharSequence)localObject6))) {
@@ -582,7 +583,7 @@ public class MessageForGrayTips
             }
           }
           if (!QLog.isColorLevel()) {
-            break label2822;
+            break label2823;
           }
           QLog.i(".troop.send_gift", 2, "revoke msg MessageForGrayTips.getHightlightMsgText:" + localObject4);
           return localObject4;
@@ -627,7 +628,7 @@ public class MessageForGrayTips
               m = Integer.parseInt((String)localObject8);
               k = ((String)localObject2).indexOf(',');
               if (k == -1) {
-                break label2896;
+                break label2897;
               }
               localObject5 = ((String)localObject2).substring(0, k);
               localObject2 = ((String)localObject2).substring(k + 1, ((String)localObject2).length());
@@ -640,7 +641,7 @@ public class MessageForGrayTips
           }
           m = ((String)localObject5).indexOf(',');
           if (m == -1) {
-            break label2906;
+            break label2907;
           }
           localObject8 = ((String)localObject5).substring(0, m);
           localObject2 = ((String)localObject5).substring(m + 1, ((String)localObject5).length());
@@ -659,7 +660,7 @@ public class MessageForGrayTips
           }
           m = ((String)localObject2).indexOf(',');
           if (m == -1) {
-            break label2924;
+            break label2925;
           }
           localObject9 = ((String)localObject2).substring(0, m);
           localObject2 = ((String)localObject2).substring(m + 1, ((String)localObject2).length());
@@ -677,7 +678,7 @@ public class MessageForGrayTips
           break;
           m = ((String)localObject5).indexOf(',');
           if (m == -1) {
-            break label2873;
+            break label2874;
           }
           localObject10 = ((String)localObject5).substring(0, m);
           localObject2 = ((String)localObject5).substring(m + 1, ((String)localObject5).length());
@@ -688,7 +689,7 @@ public class MessageForGrayTips
           break;
           m = ((String)localObject5).indexOf(',');
           if (m == -1) {
-            break label2873;
+            break label2874;
           }
           localObject8 = ((String)localObject5).substring(0, m);
           localObject2 = ((String)localObject5).substring(m + 1, ((String)localObject5).length());
@@ -707,11 +708,11 @@ public class MessageForGrayTips
         catch (NumberFormatException localNumberFormatException6)
         {
           if (!QLog.isColorLevel()) {
-            break label2947;
+            break label2948;
           }
         }
         QLog.e("MessageForGrayTips", 2, "parse group id ==>NumberFormatException");
-        break label2947;
+        break label2948;
         m = localNumberFormatException6.indexOf(',');
         if (m != -1)
         {
@@ -772,64 +773,64 @@ public class MessageForGrayTips
             label2224:
             Object localObject3;
             label2347:
-            label2637:
-            label2662:
+            label2638:
+            label2663:
             for (;;) {}
-            label2822:
-            label2828:
+            label2823:
+            label2829:
             n = -12541697;
             break label1061;
-            label2836:
+            label2837:
             n = -12541697;
             break label1061;
-            label2844:
+            label2845:
             n = 0;
             break label947;
-            label2850:
+            label2851:
             localObject8 = null;
             localObject6 = "";
             break label896;
-            label2861:
+            label2862:
             n = 0;
             break label675;
-            label2867:
+            label2868:
             l = 0L;
             break label624;
           }
         }
-        label2873:
+        label2874:
         n = -1;
         localObject4 = localObject6;
         localObject6 = "";
         m = k;
         k = n;
         break;
-        label2896:
+        label2897:
         k = -1;
         localObject6 = localObject4;
         break;
-        label2906:
+        label2907:
         n = -1;
         localObject4 = localObject6;
         m = k;
         k = n;
         break;
-        label2924:
+        label2925:
         n = -1;
         localObject9 = localObject4;
         localObject6 = "";
         m = k;
         k = n;
         break;
-        label2947:
+        label2948:
         m = -1;
       }
-      label2953:
+      label2954:
       localObject8 = localObject4;
       Object localObject6 = localObject4;
       Object localObject4 = localObject8;
       continue;
-      label2968:
+      label2969:
       localObject8 = null;
       localObject6 = localObject4;
       localObject4 = localObject8;
@@ -872,7 +873,7 @@ public class MessageForGrayTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForGrayTips
  * JD-Core Version:    0.7.0.1
  */

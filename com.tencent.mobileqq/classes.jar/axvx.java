@@ -1,124 +1,114 @@
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticonview.EmoticonPagerRadioGroup;
-import com.tencent.mobileqq.onlinestatus.OnlineStatusListLayout;
-import com.tencent.mobileqq.onlinestatus.OnlineStatusPagerAdapter;
-import com.tencent.mobileqq.onlinestatus.OnlineStatusPanel;
-import com.tencent.mobileqq.widget.QQViewPager;
+import android.os.Bundle;
+import com.tencent.mobileqq.nearby.now.model.Comments;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.now.NowNearbyVideoCommentProto.Comment;
+import com.tencent.pb.now.NowNearbyVideoCommentProto.CommentMsg;
+import com.tencent.pb.now.NowNearbyVideoCommentProto.CommentMsgBody;
+import com.tencent.pb.now.NowNearbyVideoCommentProto.GetCommentListResp;
+import com.tencent.pb.now.NowNearbyVideoCommentProto.UserInfo;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import mqq.app.AppRuntime.Status;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
-public class axvx
+class axvx
+  extends nte
 {
-  EmoticonPagerRadioGroup jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup;
-  private OnlineStatusPanel jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel;
+  axvx(axvw paramaxvw, axvu paramaxvu) {}
   
-  @SuppressLint({"UseSparseArrays"})
-  public axvx(@NonNull Context paramContext, @NonNull ViewGroup paramViewGroup, axvn paramaxvn, int paramInt1, int paramInt2)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this(paramContext, paramViewGroup, paramaxvn, paramInt1, paramInt2, null, false);
-  }
-  
-  public axvx(@NonNull Context paramContext, @NonNull ViewGroup paramViewGroup, axvn paramaxvn, int paramInt1, int paramInt2, axvo paramaxvo, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel = ((OnlineStatusPanel)View.inflate(paramContext, 2131558938, null));
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel.findViewById(2131368259));
-    c();
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel.setListener(paramaxvo);
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel.a(paramInt1, paramInt2, paramBoolean);
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.a(paramaxvn);
-    paramViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel);
-  }
-  
-  public axvj a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.a.size() <= 0) {
-      return null;
-    }
-    return (axvj)this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.a.get(0);
-  }
-  
-  public ArrayList<axvj> a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.a;
-  }
-  
-  public void a()
-  {
-    boolean bool = true;
-    QQViewPager localQQViewPager = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager;
-    if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.getCount() > 1) {}
-    for (;;)
+    boolean bool = false;
+    QLog.i("CommentsDataSource", 1, "errorCode:" + paramInt);
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      localQQViewPager.disableGesture(bool);
-      return;
-      bool = false;
-    }
-  }
-  
-  public void a(ArrayList<axvj> paramArrayList)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.a.clear();
-    if ((paramArrayList != null) && (paramArrayList.size() > 0)) {
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.a.addAll(paramArrayList);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.a();
-  }
-  
-  public void a(AppRuntime.Status paramStatus, long paramLong)
-  {
-    a(paramStatus, paramLong, null);
-  }
-  
-  public void a(AppRuntime.Status paramStatus, long paramLong, axvy paramaxvy)
-  {
-    axvj localaxvj = axuy.a().a(paramStatus, paramLong);
-    if ((!this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.a.isEmpty()) && (OnlineStatusListLayout.a(localaxvj, (axvj)this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.a.get(0)))) {}
-    do
-    {
-      do
+      paramBundle = new oidb_0xada.RspBody();
+      try
       {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        QLog.i("CommentsDataSource", 1, "err_msg:" + paramBundle.err_msg.get());
+        if (!paramBundle.busi_buf.has())
+        {
+          QLog.i("CommentsDataSource", 1, "rspBody.busi_buf is null");
+          this.jdField_a_of_type_Axvu.a();
+          return;
+        }
+        paramArrayOfByte = new NowNearbyVideoCommentProto.GetCommentListResp();
+        paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
+        if (paramArrayOfByte.result.get() != 0L)
+        {
+          QLog.i("CommentsDataSource", 1, "error code :" + paramArrayOfByte.result.get());
+          this.jdField_a_of_type_Axvu.a();
+          return;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        QLog.i("CommentsDataSource", 1, "merge data error " + paramArrayOfByte);
+        this.jdField_a_of_type_Axvu.a();
         return;
-      } while (localaxvj == null);
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.a.clear();
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.a.add(localaxvj);
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.a();
-    } while (paramaxvy == null);
-    paramStatus = new axvj(paramStatus);
-    paramStatus.a = paramLong;
-    paramaxvy.a(paramStatus);
-  }
-  
-  public void a(boolean paramBoolean, QQAppInterface paramQQAppInterface)
-  {
-    AppRuntime.Status localStatus = paramQQAppInterface.getOnlineStatus();
-    long l = axuy.a().a(paramQQAppInterface);
-    paramQQAppInterface = axuy.a().a(localStatus, l);
-    if (paramQQAppInterface != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.a.clear();
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.a.add(paramQQAppInterface);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel.a(paramBoolean);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel.a();
-  }
-  
-  public void c()
-  {
-    if (bjuk.a())
-    {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.setIndicatorDrawable(2130841497);
+      }
+      paramBundle = new Comments();
+      paramBundle.jdField_a_of_type_Long = paramArrayOfByte.total_num.get();
+      QLog.i("CommentsDataSource", 1, "all comments count is: " + paramBundle.jdField_a_of_type_Long);
+      if (paramArrayOfByte.end_flag.get() == 1L) {
+        bool = true;
+      }
+      paramBundle.jdField_a_of_type_Boolean = bool;
+      paramBundle.jdField_a_of_type_JavaUtilList = new ArrayList();
+      if (paramArrayOfByte.lists.has())
+      {
+        Iterator localIterator = paramArrayOfByte.lists.get().iterator();
+        while (localIterator.hasNext())
+        {
+          NowNearbyVideoCommentProto.Comment localComment = (NowNearbyVideoCommentProto.Comment)localIterator.next();
+          Comments.Comment localComment1 = new Comments.Comment();
+          localComment1.jdField_a_of_type_Long = localComment.comment_id.get();
+          localComment1.jdField_b_of_type_Long = localComment.create_time.get();
+          localComment1.jdField_a_of_type_Int = localComment.type.get();
+          if (localComment.publish_info.has())
+          {
+            localComment1.jdField_c_of_type_Long = localComment.publish_info.uid.get();
+            localComment1.jdField_b_of_type_JavaLangString = localComment.publish_info.anchor_name.get().toStringUtf8();
+            localComment1.jdField_c_of_type_JavaLangString = localComment.publish_info.head_img_url.get().toStringUtf8();
+            localComment1.jdField_b_of_type_Int = localComment.publish_info.user_type.get();
+            localComment1.jdField_d_of_type_Long = localComment.publish_info.now_id.get();
+            if (localComment.reply_info.has())
+            {
+              localComment1.jdField_e_of_type_Long = localComment.reply_info.uid.get();
+              localComment1.jdField_d_of_type_JavaLangString = localComment.reply_info.anchor_name.get().toStringUtf8();
+              localComment1.jdField_e_of_type_JavaLangString = localComment.reply_info.head_img_url.get().toStringUtf8();
+              localComment1.jdField_c_of_type_Int = localComment.reply_info.user_type.get();
+              localComment1.f = localComment.reply_info.now_id.get();
+            }
+          }
+          if ((localComment.content.has()) && (localComment.content.msgs.has())) {
+            localComment1.jdField_a_of_type_JavaLangString = ((NowNearbyVideoCommentProto.CommentMsg)localComment.content.msgs.get(0)).msg.get().toStringUtf8();
+          }
+          if (!axvw.a(this.jdField_a_of_type_Axvw).contains(Long.valueOf(localComment.comment_id.get()))) {
+            axvw.a(this.jdField_a_of_type_Axvw).add(Long.valueOf(localComment.comment_id.get()));
+          }
+          if (localComment1.jdField_a_of_type_Int == 2) {
+            paramBundle.b.add(localComment1);
+          }
+          paramBundle.jdField_a_of_type_JavaUtilList.add(localComment1);
+        }
+      }
+      QLog.i("CommentsDataSource", 1, "total:" + paramArrayOfByte.total_num.get() + ", ret:" + paramArrayOfByte.result.get());
+      this.jdField_a_of_type_Axvu.a(paramBundle);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.setIndicatorDrawable(2130841496);
+    QLog.i("CommentsDataSource", 1, "getComments failed");
+    this.jdField_a_of_type_Axvu.a();
   }
 }
 

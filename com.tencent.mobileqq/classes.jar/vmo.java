@@ -1,10 +1,6 @@
-public abstract interface vmo
+class vmo
 {
-  public abstract void a(vmp paramvmp);
-  
-  public abstract boolean a();
-  
-  public abstract void b(vmp paramvmp);
+  private static final vmm a = new vmm(null);
 }
 
 

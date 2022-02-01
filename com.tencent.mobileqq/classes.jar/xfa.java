@@ -1,19 +1,78 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import java.util.List;
 
-class xfa
-  implements View.OnClickListener
+public class xfa
+  extends zgz
 {
-  xfa(xez paramxez) {}
+  public static final String KEY = "PlayerCommentEmptySegment";
+  private View jdField_a_of_type_AndroidViewView;
+  private xep jdField_a_of_type_Xep;
+  public xwc a;
+  private boolean b = true;
   
-  public void onClick(View paramView)
+  public xfa(Context paramContext)
   {
-    int i = ((Integer)paramView.getTag()).intValue();
-    if (this.a.a.a != null) {
-      this.a.a.a.a(paramView, this.a.a.a(i));
+    super(paramContext);
+  }
+  
+  private boolean b()
+  {
+    return (this.jdField_a_of_type_Xep == null) || (this.jdField_a_of_type_Xep.a());
+  }
+  
+  public int a()
+  {
+    if ((this.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_Xwc == null) || (this.jdField_a_of_type_Xwc.a(b()).size() == 0))) {
+      return 1;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return 0;
+  }
+  
+  public View a(int paramInt, yhc paramyhc, ViewGroup paramViewGroup)
+  {
+    if (this.b) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
+    for (;;)
+    {
+      return paramyhc.a();
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+  }
+  
+  public String a()
+  {
+    return "PlayerCommentEmptySegment";
+  }
+  
+  public yhc a(int paramInt, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561757, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131370478);
+    if (QQStoryContext.a()) {
+      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166509));
+    }
+    return new yhc(paramViewGroup);
+  }
+  
+  public void a(xep paramxep)
+  {
+    this.jdField_a_of_type_Xep = paramxep;
+  }
+  
+  public void a(xwc paramxwc)
+  {
+    this.jdField_a_of_type_Xwc = paramxwc;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
   }
 }
 

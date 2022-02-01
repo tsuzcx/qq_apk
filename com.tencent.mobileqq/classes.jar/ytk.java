@@ -1,24 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView;
-import com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import friendlist.GetOnlineInfoResp;
-import mqq.os.MqqHandler;
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
 public class ytk
-  extends amsu
+  implements yrf
 {
-  public ytk(StoryQIMBadgeView paramStoryQIMBadgeView) {}
+  public ytk(DoodleLayout paramDoodleLayout) {}
   
-  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
+  public void a(Bitmap paramBitmap, boolean paramBoolean)
   {
-    super.onGetOnlineInfoByUinOrMobile(paramBoolean, paramLong, paramString, paramGetOnlineInfoResp);
-    if ((StoryQIMBadgeView.a(this.a) == null) || (paramGetOnlineInfoResp == null) || (TextUtils.isEmpty(StoryQIMBadgeView.a(this.a).qq))) {}
-    while ((!paramBoolean) || (!bftf.a(StoryQIMBadgeView.a(this.a).qq, paramString))) {
-      return;
+    if (this.a.a != null) {
+      this.a.a.a(paramBitmap, paramBoolean);
     }
-    ThreadManager.getUIHandler().post(new StoryQIMBadgeView.1.1(this, paramGetOnlineInfoResp, paramString));
+  }
+  
+  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    if (this.a.a != null)
+    {
+      ykq.b("DoodleLayout", "notify outside onDrawMosaic. width:" + paramInt1 + ",height:" + paramInt2);
+      this.a.a.a(paramArrayOfByte);
+    }
   }
 }
 

@@ -1,96 +1,85 @@
-import android.graphics.Color;
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
-import com.tencent.mobileqq.vas.qvip.fragment.QQVipFeedWedFragment;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import java.util.Map;
 
-public class bgjj
-  extends PagerAdapter
+class bgjj
+  extends anrc
 {
-  private bgjj(QQVipFeedWedFragment paramQQVipFeedWedFragment) {}
-  
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  static
   {
-    paramViewGroup.removeView((View)paramObject);
-  }
-  
-  public int getCount()
-  {
-    return QQVipFeedWedFragment.a(this.a).size() + 1;
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    Object localObject;
-    if ((QQVipFeedWedFragment.a(this.a) == null) || (QQVipFeedWedFragment.a(this.a).size() == 0))
+    if (!bgjh.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
     {
-      localObject = this.a.a();
-      paramViewGroup.addView((View)localObject);
-      return localObject;
-    }
-    if (paramInt < QQVipFeedWedFragment.a(this.a).size()) {}
-    for (QQVipMsgInfo localQQVipMsgInfo = (QQVipMsgInfo)QQVipFeedWedFragment.a(this.a).get(paramInt);; localQQVipMsgInfo = null)
-    {
-      bgjm localbgjm = bgjq.a(localQQVipMsgInfo, this.a.getActivity());
-      if (localbgjm == null) {
-        return null;
-      }
-      this.a.a.add(localbgjm);
-      RelativeLayout localRelativeLayout = new RelativeLayout(paramViewGroup.getContext());
-      if (((View)localbgjm).getParent() != null) {
-        ((ViewGroup)((View)localbgjm).getParent()).removeView((View)localbgjm);
-      }
-      RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(-1, -2);
-      localLayoutParams2.addRule(13, ((View)localbgjm).getId());
-      TextView localTextView;
-      if (localQQVipMsgInfo != null)
-      {
-        localTextView = new TextView(this.a.getActivity());
-        localTextView.setTextColor(-1);
-        localTextView.setTextSize(1, 10.0F);
-        localTextView.setBackgroundColor(Color.parseColor("#FFD69D5A"));
-        localTextView.setText(bfzl.a(this.a.getActivity(), 3, localQQVipMsgInfo.msgTime * 1000L));
-        localTextView.setPadding(12, 0, 12, 0);
-        localTextView.setId(2131378618);
-        RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
-        localObject = localLayoutParams1;
-        if (localLayoutParams1 == null) {
-          localObject = new RelativeLayout.LayoutParams(-2, AIOUtils.dp2px(14.0F, this.a.getResources()));
-        }
-        localTextView.setGravity(17);
-        ((RelativeLayout.LayoutParams)localObject).topMargin = 25;
-        ((RelativeLayout.LayoutParams)localObject).addRule(14);
-        ((RelativeLayout.LayoutParams)localObject).addRule(10);
-        localTextView.bringToFront();
-      }
-      for (;;)
-      {
-        localRelativeLayout.addView((View)localbgjm, localLayoutParams2);
-        if ((localTextView != null) && (localObject != null)) {
-          localRelativeLayout.addView(localTextView, (ViewGroup.LayoutParams)localObject);
-        }
-        paramViewGroup.addView(localRelativeLayout, localLayoutParams2);
-        if ((localbgjm != null) && (localQQVipMsgInfo != null)) {
-          localbgjm.a(localQQVipMsgInfo, this.a.getActivity(), paramInt);
-        }
-        return localRelativeLayout;
-        localTextView = null;
-        localObject = null;
-      }
+      jdField_a_of_type_Boolean = bool;
+      return;
     }
   }
   
-  public boolean isViewFromObject(View paramView, Object paramObject)
+  bgjj(bgjh parambgjh) {}
+  
+  protected void a(Object arg1)
   {
-    return paramView == paramObject;
+    boolean bool = true;
+    if ((??? == null) || (!(??? instanceof bfjs))) {
+      return;
+    }
+    Object localObject2 = (bfjs)???;
+    synchronized (this.jdField_a_of_type_Bgjh)
+    {
+      if (((bfjs)localObject2).jdField_b_of_type_Long != this.jdField_a_of_type_Bgjh.jdField_a_of_type_Long) {
+        return;
+      }
+    }
+    bfif localbfif1 = (bfif)this.jdField_a_of_type_Bgjh.b.get(((bfjs)localObject2).a);
+    if ((!jdField_a_of_type_Boolean) && (localbfif1 == null)) {
+      throw new AssertionError();
+    }
+    if (localbfif1 == null) {
+      return;
+    }
+    int i = localbfif1.e;
+    if ((localbfif1.b == null) && (((bfjs)localObject2).e != null)) {
+      this.jdField_a_of_type_Bgjh.c.put(((bfjs)localObject2).e, localbfif1);
+    }
+    localbfif1.a((bfjs)localObject2, this.jdField_a_of_type_Bgjh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if (((bfjs)localObject2).jdField_b_of_type_Int == 12)
+    {
+      localObject2 = (bfif)this.jdField_a_of_type_Bgjh.c.get(localbfif1.g);
+      if (localObject2 != null) {
+        ((bfif)localObject2).a(localbfif1);
+      }
+      this.jdField_a_of_type_Bgjh.d(localbfif1);
+      return;
+    }
+    if (localbfif1.jdField_a_of_type_Boolean) {
+      if (((bfjs)localObject2).jdField_b_of_type_Int != 11) {
+        break label399;
+      }
+    }
+    for (;;)
+    {
+      for (localbfif1.jdField_a_of_type_Boolean = bool;; localbfif1.jdField_a_of_type_Boolean = true) {
+        do
+        {
+          if (!"/".equals(localbfif1.g))
+          {
+            bfif localbfif2 = (bfif)this.jdField_a_of_type_Bgjh.c.get(localbfif1.g);
+            if ((localbfif2 != null) && ((localbfif1.e == 9) || (localbfif1.e == 10) || (localbfif1.e == 11))) {
+              localbfif2.a(localbfif1);
+            }
+          }
+          if ((((bfjs)localObject2).jdField_b_of_type_Int == 6) && (i != 6))
+          {
+            localbfif1.a((int)NetConnInfoCenter.getServerTime());
+            localbfif1.b((int)NetConnInfoCenter.getServerTime());
+            this.jdField_a_of_type_Bgjh.e(localbfif1);
+          }
+          this.jdField_a_of_type_Bgjh.d(localbfif1);
+          return;
+        } while ((((bfjs)localObject2).jdField_b_of_type_Int != 11) || (localbfif1.e == 11));
+      }
+      label399:
+      bool = false;
+    }
   }
 }
 

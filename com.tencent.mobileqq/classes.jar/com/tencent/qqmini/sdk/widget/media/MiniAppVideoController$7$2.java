@@ -11,34 +11,34 @@ class MiniAppVideoController$7$2
   
   public void run()
   {
-    MiniAppVideoController.access$100(this.this$1.this$0).hideVideoPosterImg();
-    MiniAppVideoController.access$100(this.this$1.this$0).showPopCtrViewThenAutoHide(MiniAppVideoController.access$800(this.this$1.this$0));
-    MiniAppVideoController.access$100(this.this$1.this$0).hideLoadingView();
+    MiniAppVideoController.access$300(this.this$1.this$0).hideVideoPosterImg();
+    MiniAppVideoController.access$300(this.this$1.this$0).showPopCtrViewThenAutoHide(MiniAppVideoController.access$000(this.this$1.this$0));
+    MiniAppVideoController.access$300(this.this$1.this$0).hideLoadingView();
     long l1 = this.val$player.getDuration();
-    MiniAppVideoController.access$100(this.this$1.this$0).updatePlayingTime(MiniAppVideoController.access$1300(this.val$player.getCurrentPostion()));
-    MiniAppVideoController.access$100(this.this$1.this$0).setProgressByPlayingTime(l1, this.val$player.getCurrentPostion());
+    MiniAppVideoController.access$300(this.this$1.this$0).updatePlayingTime(MiniAppVideoController.access$1300(this.val$player.getCurrentPostion()));
+    MiniAppVideoController.access$300(this.this$1.this$0).setProgressByPlayingTime(l1, this.val$player.getCurrentPostion());
     long l2 = ImmersiveUtils.getScreenWidth() * 2 / 3;
-    if ((l1 < 0L) || (!MiniAppVideoController.access$800(this.this$1.this$0).showProgress)) {
-      MiniAppVideoController.access$100(this.this$1.this$0).setSeekBarInvisible();
+    if ((l1 < 0L) || (!MiniAppVideoController.access$000(this.this$1.this$0).showProgress)) {
+      MiniAppVideoController.access$300(this.this$1.this$0).setSeekBarInvisible();
     }
     for (;;)
     {
-      MiniAppVideoController.access$100(this.this$1.this$0).resetControlIvDrawable(true);
-      MiniAppVideoController.access$800(this.this$1.this$0).isBarrageOpen = MiniAppVideoController.access$100(this.this$1.this$0).getIsBarrageOn();
-      MiniAppVideoController.access$100(this.this$1.this$0).resetWindowIvDrawable(MiniAppVideoController.access$800(this.this$1.this$0));
-      MiniAppVideoController.access$100(this.this$1.this$0).resetBarrageDrawable(MiniAppVideoController.access$800(this.this$1.this$0));
+      MiniAppVideoController.access$300(this.this$1.this$0).resetControlIvDrawable(true);
+      MiniAppVideoController.access$000(this.this$1.this$0).isBarrageOpen = MiniAppVideoController.access$300(this.this$1.this$0).getIsBarrageOn();
+      MiniAppVideoController.access$300(this.this$1.this$0).resetWindowIvDrawable(MiniAppVideoController.access$000(this.this$1.this$0));
+      MiniAppVideoController.access$300(this.this$1.this$0).resetBarrageDrawable(MiniAppVideoController.access$000(this.this$1.this$0));
       MiniAppVideoController.access$2302(this.this$1.this$0, false);
       return;
-      if ((DisplayUtil.dip2px(MiniAppVideoController.access$1200(this.this$1.this$0), MiniAppVideoController.access$800(this.this$1.this$0).videoWidth) < l2) && (!MiniAppVideoController.access$800(this.this$1.this$0).isFullScreen))
+      if ((DisplayUtil.dip2px(MiniAppVideoController.access$1200(this.this$1.this$0), MiniAppVideoController.access$000(this.this$1.this$0).videoWidth) < l2) && (!MiniAppVideoController.access$000(this.this$1.this$0).isFullScreen))
       {
-        MiniAppVideoController.access$800(this.this$1.this$0).hideTimeDesc = true;
-        MiniAppVideoController.access$100(this.this$1.this$0).setSeekBarGone();
+        MiniAppVideoController.access$000(this.this$1.this$0).hideTimeDesc = true;
+        MiniAppVideoController.access$300(this.this$1.this$0).setSeekBarGone();
       }
       else
       {
-        MiniAppVideoController.access$800(this.this$1.this$0).hideTimeDesc = false;
-        MiniAppVideoController.access$100(this.this$1.this$0).setSeekBarVisible();
-        MiniAppVideoController.access$100(this.this$1.this$0).updateTotalTimeText(MiniAppVideoController.access$1300(l1));
+        MiniAppVideoController.access$000(this.this$1.this$0).hideTimeDesc = false;
+        MiniAppVideoController.access$300(this.this$1.this$0).setSeekBarVisible();
+        MiniAppVideoController.access$300(this.this$1.this$0).updateTotalTimeText(MiniAppVideoController.access$1300(l1));
       }
     }
   }

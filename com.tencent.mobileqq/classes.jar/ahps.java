@@ -1,94 +1,112 @@
-import android.app.Activity;
-import android.support.annotation.NonNull;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.navigate.TroopDNANavBar.1;
+import com.tencent.mobileqq.activity.aio.navigate.TroopDNANavBar.2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ahps
-  implements ahqq, View.OnClickListener
+  extends ahpk
+  implements Animation.AnimationListener
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  View jdField_a_of_type_AndroidViewView;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
   
-  public ahps(Activity paramActivity, SessionInfo paramSessionInfo)
+  public ahps(BaseChatPie paramBaseChatPie, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    super(paramBaseChatPie, paramQQAppInterface, paramContext, paramSessionInfo, paramInt1, paramInt2);
   }
   
-  public int a()
+  public static String a(QQAppInterface paramQQAppInterface)
   {
-    return 59;
-  }
-  
-  public View a(Object... paramVarArgs)
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    Object localObject = paramQQAppInterface;
+    if (paramQQAppInterface == null)
     {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131560647, null);
-      paramVarArgs = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368231);
-      if (paramVarArgs != null) {
-        paramVarArgs.setText(2131693000);
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject instanceof QQAppInterface)) {
+        paramQQAppInterface = (QQAppInterface)localObject;
       }
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    }
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs) {}
-  
-  public void a(@NonNull ahqs paramahqs, boolean paramBoolean)
-  {
-    boolean bool = a(paramahqs);
-    if (QLog.isColorLevel()) {
-      QLog.d("HomeworkTroopClassInfoTipsBar", 2, new Object[] { "show() isShowing=", Boolean.valueOf(bool), ", show=", Boolean.valueOf(paramBoolean) });
-    }
-    if (paramBoolean) {
-      if (!bool)
-      {
-        paramahqs.a(this, new Object[0]);
-        bftc.a("Grp_edu", "Grp_AIO", "classinfotopGuidebar_Show", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin });
+      localObject = paramQQAppInterface;
+      if (paramQQAppInterface == null) {
+        return "troop_dna_aio_guide_counts";
       }
     }
-    while (!bool) {
-      return;
+    return "troop_dna_aio_guide_counts" + ((QQAppInterface)localObject).getCurrentAccountUin();
+  }
+  
+  public long a()
+  {
+    return 15000L;
+  }
+  
+  public View a()
+  {
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561001, null);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362992));
+    return localView;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mChatDrawer != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mChatDrawer.b(true);
     }
-    paramahqs.a();
+    bdla.b(null, "dc00898", "", "", "0X800A469", "0X800A469", 0, 0, "", "", "", "");
   }
   
-  public boolean a(@NonNull ahqs paramahqs)
+  public boolean a()
   {
-    int i = paramahqs.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("HomeworkTroopClassInfoTipsBar", 2, new Object[] { "show cur type=", Integer.valueOf(i) });
+    boolean bool1 = true;
+    boolean bool2 = axia.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.troopUin);
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mChatDrawer == null))
+    {
+      QLog.d("NavigateBarManager.TroopDNANavBar", 1, "mChatPie == null || mChatPie.mChatDrawer == null");
+      bool1 = false;
     }
-    return i == b();
+    int i;
+    do
+    {
+      return bool1;
+      i = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).getInt(a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), 0);
+      if (QLog.isColorLevel()) {
+        QLog.d("NavigateBarManager.TroopDNANavBar", 2, String.format("needShow guide count: %s", new Object[] { Integer.valueOf(i) }));
+      }
+    } while ((bool2) && (i < 3));
+    return false;
   }
   
-  public int[] a()
+  public void b()
   {
-    return null;
+    this.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new TroopDNANavBar.1(this), 500L);
+    ThreadManager.postImmediately(new TroopDNANavBar.2(this), null, false);
   }
   
-  public int b()
+  public void c() {}
+  
+  public void d()
   {
-    return 27;
+    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
   }
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HomeworkTroopClassInfoTipsBar", 2, "click tips, jump to web");
-    }
-    beyy.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, beyy.c);
-    bcef.b(null, "dc00898", "", "", "0X800B280", "0X800B280", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

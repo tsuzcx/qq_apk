@@ -1,36 +1,23 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 
-public final class amss
-  implements axtp
+public class amss
+  implements amze
 {
-  private WeakReference<FrameHelperActivity> a;
+  public amss(ApolloGameInterfaceProxy paramApolloGameInterfaceProxy, int paramInt, String paramString) {}
   
-  public amss(FrameHelperActivity paramFrameHelperActivity)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    this.a = new WeakReference(paramFrameHelperActivity);
-  }
-  
-  public void a()
-  {
-    FrameHelperActivity localFrameHelperActivity = (FrameHelperActivity)this.a.get();
-    if (localFrameHelperActivity == null) {}
-    FragmentActivity localFragmentActivity;
-    QQAppInterface localQQAppInterface;
-    do
+    if (!TextUtils.isEmpty(paramString2))
     {
-      do
-      {
-        return;
-        localFragmentActivity = localFrameHelperActivity.getActivity();
-      } while ((localFragmentActivity == null) || (localFragmentActivity.getAppInterface() == null));
-      localQQAppInterface = localFragmentActivity.app;
-    } while ((!aych.a().a(localQQAppInterface, localFragmentActivity)) || ((FrameHelperActivity.a(localFrameHelperActivity) != null) && (FrameHelperActivity.a(localFrameHelperActivity).isShowing())));
-    FrameHelperActivity.a(localFrameHelperActivity, localQQAppInterface, localFragmentActivity);
-    bcef.b(localQQAppInterface, "dc00898", "", "", "0X800A00D", "0X800A00D", 0, 0, "", "", "", "");
+      paramString1 = new Bundle();
+      paramString1.putInt("type", this.jdField_a_of_type_Int);
+      paramString1.putString("uin", paramString2);
+      paramString2 = new amst(this);
+      QIPCClientHelper.getInstance().callServer("cm_game_module", "action_get_accountInfo", paramString1, paramString2);
+    }
   }
 }
 

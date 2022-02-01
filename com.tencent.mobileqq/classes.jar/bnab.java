@@ -1,18 +1,16 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
+import com.tencent.tavcut.TAVCut.Callback;
+import java.util.List;
 
-public class bnab
-  extends GestureDetector.SimpleOnGestureListener
+class bnab
+  implements TAVCut.Callback
 {
-  public bnab(CropVideoActivity paramCropVideoActivity) {}
+  bnab(bnaa parambnaa) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void onDone(int paramInt)
   {
-    paramMotionEvent.getX();
-    paramMotionEvent.getY();
-    CropVideoActivity.a(this.a).b(2.0F, 2.0F, 1.0F);
-    return true;
+    if (paramInt != 0) {
+      bnaa.a(this.a).add(new bnah(this.a, -8));
+    }
   }
 }
 

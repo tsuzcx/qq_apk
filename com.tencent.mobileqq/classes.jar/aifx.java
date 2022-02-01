@@ -1,31 +1,53 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.utils.SendMessageHandler;
 
-public class aifx
-  extends Handler
+class aifx
+  extends anyz
 {
-  public aifx(SystemMsgListView paramSystemMsgListView) {}
+  aifx(aift paramaift) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void onInsertIntoBlackList(boolean paramBoolean, String paramString)
   {
-    switch (paramMessage.what)
+    if ((paramString != null) && (this.a.sessionInfo.curFriendUin != null) && (this.a.sessionInfo.curFriendUin.equals(paramString)))
     {
-    default: 
-    case 1012: 
-      do
-      {
-        return;
-      } while (SystemMsgListView.a(this.a) == null);
-      this.a.i();
-      SystemMsgListView.a(this.a).notifyDataSetChanged();
+      ChatActivityUtils.b();
+      if (paramBoolean) {
+        this.a.updateAddFriendAndShieldView();
+      }
+    }
+  }
+  
+  protected void onRemoveFromBlackList(boolean paramBoolean, String paramString)
+  {
+    if ((paramString != null) && (this.a.sessionInfo.curFriendUin != null) && (this.a.sessionInfo.curFriendUin.equals(paramString)))
+    {
+      ChatActivityUtils.b();
+      if (paramBoolean) {
+        this.a.updateAddFriendAndShieldView();
+      }
+    }
+  }
+  
+  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong)
+  {
+    this.a.a(paramBoolean, paramString, paramLong);
+    if ((paramString == null) || (paramString.length() == 0)) {}
+    while (!paramString.equals(this.a.sessionInfo.curFriendUin)) {
       return;
     }
-    paramMessage = SystemMsgListView.a(this.a).getResources().getString(2131718756);
-    QQToast.a(SystemMsgListView.a(this.a), 1, paramMessage, 0).b(this.a.a());
+    this.a.hasSentRecvMsg = true;
+    this.a.refresh(262144, null, paramLong);
+  }
+  
+  protected void onUpdateMsgContent(boolean paramBoolean, String paramString)
+  {
+    this.a.refresh(65536);
+  }
+  
+  protected void onUpdateSendMsgError(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  {
+    aift.a(this.a, paramString1, paramInt1, paramInt2, paramLong2, paramString2);
   }
 }
 

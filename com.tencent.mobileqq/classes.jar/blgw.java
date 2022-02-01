@@ -1,39 +1,6 @@
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import org.apache.http.entity.ByteArrayEntity;
-
-public class blgw
-  extends ByteArrayEntity
+public abstract interface blgw
 {
-  protected final int a;
-  protected final int b;
-  
-  public blgw(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    super(paramArrayOfByte);
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public InputStream getContent()
-  {
-    return new ByteArrayInputStream(this.content, this.a, this.b);
-  }
-  
-  public long getContentLength()
-  {
-    return this.b;
-  }
-  
-  public void writeTo(OutputStream paramOutputStream)
-  {
-    if (paramOutputStream == null) {
-      throw new IllegalArgumentException("Output stream may not be null");
-    }
-    paramOutputStream.write(this.content, this.a, this.b);
-    paramOutputStream.flush();
-  }
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 

@@ -1,19 +1,15 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 
-public class alfv
-  implements aozx
+public abstract interface alfv
 {
-  public alfv(SessionClearFragment paramSessionClearFragment) {}
+  public abstract void a(View paramView, RecentBaseData paramRecentBaseData, String paramString, boolean paramBoolean);
   
-  public void onFaceUpdate(String paramString1, String paramString2, Bitmap paramBitmap)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("SessionClearFragment", 4, "mHeaderLoaderForUser onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
-    }
-    SessionClearFragment.a(this.a).a(paramString1, paramBitmap, paramString2);
-  }
+  public abstract void a(View paramView, Object paramObject);
+  
+  public abstract void a(RecentBaseData paramRecentBaseData, String paramString);
+  
+  public abstract void a(String paramString1, RecentBaseData paramRecentBaseData, String paramString2);
 }
 
 

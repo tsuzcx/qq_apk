@@ -1,13 +1,13 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import bobd;
+import bpqv;
 
 public final class QQStoryFollowCaptureResManager$1
   implements Runnable
 {
   public void run()
   {
-    bobd.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaLangString);
+    bpqv.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaLangString);
   }
 }
 

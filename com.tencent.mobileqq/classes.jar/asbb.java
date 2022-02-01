@@ -1,200 +1,37 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.CircleFileStateView;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.download.unite.DownloadDialogFragment;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.lang.ref.WeakReference;
+import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
 
-public abstract class asbb
+public class asbb
 {
-  protected Context a;
-  protected View.OnClickListener a;
-  protected asbd a;
-  protected QQAppInterface a;
+  private static Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new asbc());
+  private static ConcurrentHashMap<Long, WeakReference<asbd>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public asbb(QQAppInterface paramQQAppInterface, Context paramContext)
+  public static Handler a()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new asbc(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    return jdField_a_of_type_AndroidOsHandler;
   }
   
-  private void a(aezf paramaezf, boolean paramBoolean)
+  public static void a(DownloadInfo paramDownloadInfo, asbd paramasbd)
   {
-    paramaezf = a(paramaezf);
-    if (paramBoolean) {
-      if (paramaezf != null)
-      {
-        paramaezf.setVisibility(0);
-        paramaezf.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      }
-    }
-    while (paramaezf == null) {
-      return;
-    }
-    paramaezf.setVisibility(8);
-    paramaezf.setOnClickListener(null);
+    Random localRandom = new Random();
+    for (Long localLong = Long.valueOf(localRandom.nextLong()); jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(localLong); localLong = Long.valueOf(localRandom.nextLong())) {}
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localLong, new WeakReference(paramasbd));
+    DownloadDialogFragment.a(paramDownloadInfo, localLong.longValue());
   }
   
-  protected abstract CircleFileStateView a(aezf paramaezf);
-  
-  public void a(aezf paramaezf, View paramView, ChatMessage paramChatMessage)
+  public static void a(String paramString)
   {
-    a(paramaezf, false);
-    CircleFileStateView localCircleFileStateView;
-    int i;
-    RelativeLayout.LayoutParams localLayoutParams;
-    if (a(paramChatMessage))
-    {
-      localObject = a(paramaezf);
-      if (localObject == null)
-      {
-        localObject = this.jdField_a_of_type_AndroidContentContext.getResources();
-        localCircleFileStateView = new CircleFileStateView(this.jdField_a_of_type_AndroidContentContext);
-        localCircleFileStateView.setState(2);
-        localCircleFileStateView.setId(2131364445);
-        localCircleFileStateView.setProgressRingWidth(0.0F);
-        localCircleFileStateView.setCenterBgColor(-1);
-        a(paramaezf, localCircleFileStateView);
-        i = AIOUtils.dp2px(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-        localLayoutParams = new RelativeLayout.LayoutParams(i, i);
-        localLayoutParams.bottomMargin = ((Resources)localObject).getDimensionPixelSize(2131296386);
-        localLayoutParams.addRule(8, 2131364441);
-        if (paramChatMessage.isSend())
-        {
-          localLayoutParams.addRule(0, 2131364441);
-          localLayoutParams.addRule(1, 0);
-          if ((paramView instanceof ViewGroup)) {
-            ((ViewGroup)paramView).addView(localCircleFileStateView, localLayoutParams);
-          }
-          a(paramaezf, true);
-        }
-      }
-    }
-    while (!b(paramChatMessage))
-    {
-      for (;;)
-      {
-        return;
-        localLayoutParams.addRule(1, 2131364441);
-        localLayoutParams.addRule(0, 0);
-      }
-      ((CircleFileStateView)localObject).setState(2);
-      paramView = (RelativeLayout.LayoutParams)((CircleFileStateView)localObject).getLayoutParams();
-      if (paramView == null)
-      {
-        i = AIOUtils.dp2px(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-        paramView = new RelativeLayout.LayoutParams(i, i);
-        if (paramChatMessage.isSend())
-        {
-          paramView.addRule(0, 2131364441);
-          paramView.addRule(1, 0);
-        }
-        for (;;)
-        {
-          ((CircleFileStateView)localObject).setLayoutParams(paramView);
-          break;
-          paramView.addRule(1, 2131364441);
-          paramView.addRule(0, 0);
-        }
-      }
-      if (paramChatMessage.isSend())
-      {
-        paramView.addRule(0, 2131364441);
-        paramView.addRule(1, 0);
-      }
-      for (;;)
-      {
-        ((CircleFileStateView)localObject).setLayoutParams(paramView);
-        break;
-        paramView.addRule(1, 2131364441);
-        paramView.addRule(0, 0);
-      }
-    }
-    Object localObject = a(paramaezf);
-    if (localObject == null)
-    {
-      localObject = this.jdField_a_of_type_AndroidContentContext.getResources();
-      localCircleFileStateView = new CircleFileStateView(this.jdField_a_of_type_AndroidContentContext);
-      localCircleFileStateView.setState(1);
-      localCircleFileStateView.setId(2131364445);
-      localCircleFileStateView.setCenterBgColor(-1);
-      a(paramaezf, localCircleFileStateView);
-      localCircleFileStateView.setProgressRingWidth(0.0F);
-      i = AIOUtils.dp2px(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      localLayoutParams = new RelativeLayout.LayoutParams(i, i);
-      localLayoutParams.bottomMargin = ((Resources)localObject).getDimensionPixelSize(2131296386);
-      localLayoutParams.addRule(8, 2131364441);
-      if (paramChatMessage.isSend())
-      {
-        localLayoutParams.addRule(0, 2131364441);
-        localLayoutParams.addRule(1, 0);
-      }
-      for (;;)
-      {
-        if ((paramView instanceof ViewGroup)) {
-          ((ViewGroup)paramView).addView(localCircleFileStateView, localLayoutParams);
-        }
-        a(paramaezf, true);
-        return;
-        localLayoutParams.addRule(1, 2131364441);
-        localLayoutParams.addRule(0, 0);
-      }
-    }
-    ((CircleFileStateView)localObject).setState(1);
-    paramView = (RelativeLayout.LayoutParams)((CircleFileStateView)localObject).getLayoutParams();
-    if (paramView == null)
-    {
-      i = AIOUtils.dp2px(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      paramView = new RelativeLayout.LayoutParams(i, i);
-      if (paramChatMessage.isSend())
-      {
-        paramView.addRule(0, 2131364441);
-        paramView.addRule(1, 0);
-      }
-      for (;;)
-      {
-        ((CircleFileStateView)localObject).setLayoutParams(paramView);
-        break;
-        paramView.addRule(1, 2131364441);
-        paramView.addRule(0, 0);
-      }
-    }
-    if (paramChatMessage.isSend())
-    {
-      paramView.addRule(0, 2131364441);
-      paramView.addRule(1, 0);
-    }
-    for (;;)
-    {
-      ((CircleFileStateView)localObject).setLayoutParams(paramView);
-      break;
-      paramView.addRule(1, 2131364441);
-      paramView.addRule(0, 0);
-    }
+    azcl.a("0X800B538", 0, "", paramString);
   }
   
-  protected abstract void a(aezf paramaezf, CircleFileStateView paramCircleFileStateView);
-  
-  protected void a(View paramView, aezf paramaezf, ChatMessage paramChatMessage, int paramInt) {}
-  
-  public void a(asbd paramasbd)
+  public static void b(String paramString)
   {
-    this.jdField_a_of_type_Asbd = paramasbd;
-  }
-  
-  protected boolean a(ChatMessage paramChatMessage)
-  {
-    return false;
-  }
-  
-  protected boolean b(ChatMessage paramChatMessage)
-  {
-    return false;
+    azcl.a("0X800B539", 0, "", paramString);
   }
 }
 

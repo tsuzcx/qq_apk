@@ -1,40 +1,17 @@
-import android.content.Intent;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class auhk
-  extends MSFServlet
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    AppRuntime localAppRuntime = getAppRuntime();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof AppInterface)))
-    {
-      if (paramIntent.getBooleanExtra("isFrom_EmoSearch", false)) {
-        arae.a((QQAppInterface)localAppRuntime).a(paramIntent, paramFromServiceMsg);
-      }
-    }
-    else {
-      return;
-    }
-    augn.a((QQAppInterface)localAppRuntime).a(paramIntent, paramFromServiceMsg);
-  }
+  public auhk(QFileDebugSettingFragment paramQFileDebugSettingFragment) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramIntent == null)
-    {
-      QLog.e("HotPicServlet", 1, "onSend : req is null");
-      return;
-    }
-    paramPacket.setSSOCommand(paramIntent.getStringExtra("key_cmd"));
-    paramPacket.putSendData(paramIntent.getByteArrayExtra("key_body"));
-    paramPacket.setTimeout(paramIntent.getLongExtra("key_timeout", 6000L));
+    atlb.a().e(paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

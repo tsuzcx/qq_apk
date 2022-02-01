@@ -1,17 +1,22 @@
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.mobileqq.widget.QQViewPager;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class azui
-  implements bhjm
+  implements View.OnClickListener
 {
-  public azui(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  public azui(StickyNotePublishFragment paramStickyNotePublishFragment) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    if (paramInt1 == paramInt2) {
-      return;
-    }
-    ReceiptMessageReadMemberListContainerFragment.a(this.a).setCurrentItem(paramInt2);
+    this.a.a(1);
+    StickyNotePublishFragment.a(this.a).setImageResource(2130837535);
+    StickyNotePublishFragment.a(this.a).setContentDescription(this.a.getActivity().getString(2131690261));
+    bdla.b(null, "dc00898", "", "", "0X800AB2D", "0X800AB2D", 0, 0, "0", "0", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

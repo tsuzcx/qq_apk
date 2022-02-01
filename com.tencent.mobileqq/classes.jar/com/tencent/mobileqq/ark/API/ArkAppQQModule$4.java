@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import aopk;
-import aoqa;
-import atky;
+import apsl;
+import aptb;
+import aupt;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.ark.ArkAppCenterUtil;
 import com.tencent.mobileqq.data.ArkAppMessage;
@@ -16,11 +16,11 @@ import com.tencent.qphone.base.util.QLog;
 public class ArkAppQQModule$4
   implements Runnable
 {
-  public ArkAppQQModule$4(aoqa paramaoqa, ArkAppMessage paramArkAppMessage) {}
+  public ArkAppQQModule$4(aptb paramaptb, ArkAppMessage paramArkAppMessage) {}
   
   public void run()
   {
-    Activity localActivity = aopk.a();
+    Activity localActivity = apsl.a();
     if ((localActivity instanceof FragmentActivity))
     {
       Bundle localBundle = QQCustomArkDialog.AppInfo.zipArgs(this.a.appName, this.a.appView, this.a.appMinVersion, this.a.metaList, ArkAppCenterUtil.getDensity(), null, null);
@@ -40,7 +40,7 @@ public class ArkAppQQModule$4
       if (QLog.isColorLevel()) {
         QLog.i("ArkApp.ArkAppQQModule", 2, "multiAio.buildForwardIntent: " + localBundle);
       }
-      atky.a(localActivity, localIntent);
+      aupt.a(localActivity, localIntent);
     }
   }
 }

@@ -1,16 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import java.util.Map;
 
-class aclj
-  implements DialogInterface.OnCancelListener
+public abstract interface aclj
 {
-  aclj(aclf paramaclf) {}
+  public abstract void a();
   
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    this.a.jdField_a_of_type_Acju.d();
-    acmy.a(this.a.jdField_a_of_type_Acjr, 4);
-  }
+  public abstract void a(CustomWebView paramCustomWebView);
+  
+  public abstract boolean a(String paramString, long paramLong, Map<String, Object> paramMap);
+  
+  public abstract void b();
 }
 
 

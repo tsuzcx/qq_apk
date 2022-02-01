@@ -1,6 +1,14 @@
-public abstract interface aspa
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
+
+public class aspa
+  implements aspe
 {
-  public abstract asst a();
+  public aspa(ExtendFriendFragment paramExtendFriendFragment) {}
+  
+  public void a()
+  {
+    ExtendFriendFragment.b(this.a);
+  }
 }
 
 

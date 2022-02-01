@@ -1,10 +1,8 @@
-public class lba
-  extends mwv
+import org.json.JSONObject;
+
+public abstract interface lba
 {
-  static
-  {
-    a(new lbb());
-  }
+  public abstract void a(String paramString, JSONObject paramJSONObject);
 }
 
 

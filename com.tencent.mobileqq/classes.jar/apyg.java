@@ -1,47 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.io.File;
+import java.io.FileFilter;
 
-public class apyg
+public final class apyg
+  implements FileFilter
 {
-  public boolean a;
-  
-  public static apyg a(aptx[] paramArrayOfaptx)
+  public boolean accept(File paramFile)
   {
-    boolean bool = false;
-    apyg localapyg = new apyg();
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramArrayOfaptx != null) {
-      localObject1 = localObject2;
-    }
-    try
-    {
-      if (paramArrayOfaptx.length > 0) {
-        localObject1 = paramArrayOfaptx[0].a;
-      }
-      if (TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        QLog.i("LebaRedTouchSwitchBean", 1, "content is empty");
-        return localapyg;
-      }
-      if (new JSONObject((String)localObject1).optInt("red_touch_all_tianshu", 0) == 1) {
-        bool = true;
-      }
-      localapyg.a = bool;
-      QLog.i("LebaRedTouchSwitchBean", 1, "parse config=" + (String)localObject1 + ",mRedTouchAllTianshu=" + localapyg.a);
-      return localapyg;
-    }
-    catch (Exception paramArrayOfaptx)
-    {
-      QLog.i("LebaRedTouchSwitchBean", 1, "handleLebaConfig parse", paramArrayOfaptx);
-    }
-    return localapyg;
+    return (paramFile.getName().startsWith("hc_")) || (paramFile.getName().startsWith(".hc_"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apyg
  * JD-Core Version:    0.7.0.1
  */

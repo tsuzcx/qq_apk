@@ -1,17 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-class avho
-  implements View.OnClickListener
+public abstract interface avho
 {
-  avho(avhj paramavhj, View.OnClickListener paramOnClickListener) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(List<avhn> paramList);
+  
+  public abstract void b();
+  
+  public abstract void b(List<avhn> paramList);
 }
 
 

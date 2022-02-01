@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
+import ahvi;
 import android.content.Context;
 import android.text.TextUtils;
-import ayfu;
-import bcef;
+import bdla;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -108,7 +109,7 @@ public class TroopCollectFormAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130844135;
+    return 2130844202;
   }
   
   public int getAppID()
@@ -129,16 +130,16 @@ public class TroopCollectFormAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131690720);
+    return BaseApplicationImpl.getContext().getString(2131690797);
   }
   
-  public void onPlusPanelAppClick(ayfu paramayfu, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     if (TextUtils.isEmpty(this.url)) {
       return;
     }
     a(paramBaseChatPie.getActivity(), this.url, paramSessionInfo.troopUin, paramSessionInfo.curFriendNick);
-    bcef.b(paramBaseChatPie.app, "dc00898", "", paramSessionInfo.curFriendUin, "0X8009FCD", "0X8009FCD", 0, 0, "", "", "", "");
+    bdla.b(paramBaseChatPie.app, "dc00898", "", paramSessionInfo.curFriendUin, "0X8009FCD", "0X8009FCD", 0, 0, "", "", "", "");
   }
 }
 

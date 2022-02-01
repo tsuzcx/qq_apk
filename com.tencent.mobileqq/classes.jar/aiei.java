@@ -1,13 +1,17 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aiei
+class aiei
+  implements View.OnClickListener
 {
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public TextView b;
+  aiei(aido paramaido) {}
+  
+  public void onClick(View paramView)
+  {
+    paramView.setVisibility(8);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

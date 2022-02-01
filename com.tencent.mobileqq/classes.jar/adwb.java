@@ -1,14 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class adwb
-  implements DialogInterface.OnClickListener
+public class adwb
+  implements View.OnClickListener
 {
-  adwb(adwa paramadwa) {}
+  public adwb(EditActivity paramEditActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    if ((EditActivity.a(this.a) != null) && (EditActivity.a(this.a).isShowing()) && (EditActivity.a(this.a).getWindow() != null)) {
+      EditActivity.a(this.a).dismiss();
+    }
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,26 +1,17 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.app.face.FaceDecoder;
-import com.tencent.mobileqq.troop.widget.AddedRobotView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.widget.SingleLineTextView;
 
-public class bfel
-  extends RecyclerView.OnScrollListener
+class bfel
 {
-  public bfel(AddedRobotView paramAddedRobotView) {}
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  SingleLineTextView jdField_a_of_type_ComTencentWidgetSingleLineTextView;
+  String jdField_a_of_type_JavaLangString;
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
-  {
-    QLog.i("AddedRobotView", 1, "onScrollStateChanged state: " + paramInt);
-    if (paramInt != 0) {
-      AddedRobotView.a(this.a).pause();
-    }
-    while (!AddedRobotView.a(this.a).isPausing()) {
-      return;
-    }
-    AddedRobotView.a(this.a).resume();
-    AddedRobotView.a(this.a).notifyDataSetChanged();
-  }
+  bfel(bfej parambfej) {}
 }
 
 

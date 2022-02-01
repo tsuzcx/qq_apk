@@ -1,29 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.util.VersionUtils;
+import java.lang.ref.WeakReference;
 
-class akif
-  implements View.OnClickListener
+public class akif
+  implements akig
 {
-  akif(akho paramakho) {}
+  private int jdField_a_of_type_Int = 2;
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onClick(View paramView)
+  public akif(QQAppInterface paramQQAppInterface)
   {
-    this.a.a(-1, null);
-    if (bfng.a().a() == 4)
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+  }
+  
+  public void a(Context paramContext, boolean paramBoolean)
+  {
+    if (!paramBoolean)
     {
-      bcef.b(akho.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, bfnf.b(), bfng.b(), bfng.a(), "1");
-      bfng.a().a(akho.a(this.a));
+      if (VersionUtils.isM())
+      {
+        QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if (localQQAppInterface != null) {
+          ((PhoneContactManagerImp)localQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER)).b(true);
+        }
+        paramContext = new azis(paramContext, paramContext.getPackageName());
+      }
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      bcef.b(akho.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, bfnf.b(), bfng.b(), bfng.a(), "1");
-      UpgradeDetailActivity.a(akho.a(this.a), bfng.a().a(), true, true, true);
+    else {
+      try
+      {
+        paramContext.a();
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+        paramContext.b();
+        return;
+      }
     }
+    Intent localIntent = new Intent(paramContext, GuideBindPhoneActivity.class);
+    localIntent.putExtra("fromKeyForContactBind", this.jdField_a_of_type_Int);
+    paramContext.startActivity(localIntent);
   }
 }
 

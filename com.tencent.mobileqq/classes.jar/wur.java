@@ -1,44 +1,12 @@
-import android.view.View;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDeleteVideo;
 
-public abstract interface wur
+public class wur
+  extends wfh
 {
-  public abstract int a();
-  
-  public abstract long a();
-  
-  public abstract View a();
-  
-  public abstract wve a();
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, int paramInt2);
-  
-  public abstract void a(wus paramwus);
-  
-  public abstract void a(wut paramwut);
-  
-  public abstract void a(wuu paramwuu);
-  
-  public abstract void a(wuv paramwuv);
-  
-  public abstract void a(wuw paramwuw);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract long b();
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
+  public wur(qqstory_service.RspDeleteVideo paramRspDeleteVideo)
+  {
+    super(paramRspDeleteVideo.result);
+  }
 }
 
 

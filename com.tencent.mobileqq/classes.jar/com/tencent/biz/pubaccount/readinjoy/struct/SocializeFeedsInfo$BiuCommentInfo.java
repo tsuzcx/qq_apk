@@ -3,64 +3,63 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import reo;
+import java.io.Serializable;
+import rqv;
 
 public class SocializeFeedsInfo$BiuCommentInfo
-  implements Parcelable, Cloneable
+  implements Parcelable, Serializable, Cloneable
 {
-  public static final Parcelable.Creator<BiuCommentInfo> CREATOR = new reo();
-  public int a;
-  public SocializeFeedsInfo.JumpInfo a;
-  public SocializeFeedsInfo.UGCVoiceInfo a;
-  public Long a;
-  public String a;
-  public int b;
-  public Long b;
-  public String b;
-  public int c = 0;
+  public static final Parcelable.Creator<BiuCommentInfo> CREATOR = new rqv();
+  public static final int OP_TYPE_AT = 1;
+  public static final int OP_TYPE_BIU = 0;
+  public static final int OP_TYPE_TOPIC = 2;
+  public static final int OP_TYPE_URL = 3;
+  public SocializeFeedsInfo.JumpInfo jumpInfo;
+  public String mBiuComment;
+  public int mBiuTime;
+  public Long mFeedId;
+  public int mFeedsType = 1;
+  public int mOpType = 0;
+  public String mOrigBiuComment;
+  public Long mUin;
+  public SocializeFeedsInfo.UGCVoiceInfo ugcVoiceInfo;
   
-  public SocializeFeedsInfo$BiuCommentInfo()
-  {
-    this.jdField_b_of_type_Int = 1;
-  }
+  public SocializeFeedsInfo$BiuCommentInfo() {}
   
   public SocializeFeedsInfo$BiuCommentInfo(Parcel paramParcel)
   {
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaLangLong = ((Long)paramParcel.readValue(Long.class.getClassLoader()));
-    this.jdField_b_of_type_JavaLangLong = ((Long)paramParcel.readValue(Long.class.getClassLoader()));
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$JumpInfo = ((SocializeFeedsInfo.JumpInfo)paramParcel.readParcelable(SocializeFeedsInfo.JumpInfo.class.getClassLoader()));
-    this.c = paramParcel.readInt();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCVoiceInfo = ((SocializeFeedsInfo.UGCVoiceInfo)paramParcel.readParcelable(SocializeFeedsInfo.UGCVoiceInfo.class.getClassLoader()));
+    this.mBiuTime = paramParcel.readInt();
+    this.mUin = ((Long)paramParcel.readValue(Long.class.getClassLoader()));
+    this.mFeedId = ((Long)paramParcel.readValue(Long.class.getClassLoader()));
+    this.mBiuComment = paramParcel.readString();
+    this.mOrigBiuComment = paramParcel.readString();
+    this.mFeedsType = paramParcel.readInt();
+    this.jumpInfo = ((SocializeFeedsInfo.JumpInfo)paramParcel.readParcelable(SocializeFeedsInfo.JumpInfo.class.getClassLoader()));
+    this.mOpType = paramParcel.readInt();
+    this.ugcVoiceInfo = ((SocializeFeedsInfo.UGCVoiceInfo)paramParcel.readParcelable(SocializeFeedsInfo.UGCVoiceInfo.class.getClassLoader()));
   }
   
   public SocializeFeedsInfo$BiuCommentInfo(Long paramLong1, Long paramLong2, String paramString)
   {
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_a_of_type_JavaLangLong = paramLong1;
-    this.jdField_b_of_type_JavaLangLong = paramLong2;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.mUin = paramLong1;
+    this.mFeedId = paramLong2;
+    this.mBiuComment = paramString;
   }
   
   public SocializeFeedsInfo$BiuCommentInfo(String paramString1, Long paramLong, String paramString2)
   {
-    this.jdField_b_of_type_Int = 1;
     try
     {
-      this.jdField_a_of_type_JavaLangLong = Long.valueOf(paramString1);
-      this.jdField_b_of_type_JavaLangLong = paramLong;
-      this.jdField_a_of_type_JavaLangString = paramString2;
+      this.mUin = Long.valueOf(paramString1);
+      this.mFeedId = paramLong;
+      this.mBiuComment = paramString2;
       return;
     }
     catch (Exception paramString1)
     {
       for (;;)
       {
-        this.jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
+        this.mUin = Long.valueOf(0L);
       }
     }
   }
@@ -68,16 +67,22 @@ public class SocializeFeedsInfo$BiuCommentInfo
   public SocializeFeedsInfo$BiuCommentInfo(String paramString1, Long paramLong, String paramString2, int paramInt)
   {
     this(paramString1, paramLong, paramString2);
-    this.c = paramInt;
+    this.mOpType = paramInt;
   }
   
   public SocializeFeedsInfo$BiuCommentInfo(String paramString1, Long paramLong, String paramString2, int paramInt, SocializeFeedsInfo.JumpInfo paramJumpInfo)
   {
     this(paramString1, paramLong, paramString2, paramInt);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$JumpInfo = paramJumpInfo;
+    this.jumpInfo = paramJumpInfo;
   }
   
-  public BiuCommentInfo a()
+  public SocializeFeedsInfo$BiuCommentInfo(String paramString1, Long paramLong, String paramString2, int paramInt, SocializeFeedsInfo.JumpInfo paramJumpInfo, SocializeFeedsInfo.UGCVoiceInfo paramUGCVoiceInfo)
+  {
+    this(paramString1, paramLong, paramString2, paramInt, paramJumpInfo);
+    this.ugcVoiceInfo = paramUGCVoiceInfo;
+  }
+  
+  public BiuCommentInfo clone()
   {
     try
     {
@@ -95,20 +100,20 @@ public class SocializeFeedsInfo$BiuCommentInfo
   
   public String toString()
   {
-    return "biuTime=" + this.jdField_a_of_type_Int + "uin=" + this.jdField_a_of_type_JavaLangLong + "feedId=" + this.jdField_b_of_type_JavaLangLong + "comment=" + this.jdField_a_of_type_JavaLangString + "feedsType=" + this.jdField_b_of_type_Int;
+    return "biuTime=" + this.mBiuTime + "uin=" + this.mUin + "feedId=" + this.mFeedId + "comment=" + this.mBiuComment + "feedsType=" + this.mFeedsType;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeValue(this.jdField_a_of_type_JavaLangLong);
-    paramParcel.writeValue(this.jdField_b_of_type_JavaLangLong);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$JumpInfo, paramInt);
-    paramParcel.writeInt(this.c);
-    paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCVoiceInfo, paramInt);
+    paramParcel.writeInt(this.mBiuTime);
+    paramParcel.writeValue(this.mUin);
+    paramParcel.writeValue(this.mFeedId);
+    paramParcel.writeString(this.mBiuComment);
+    paramParcel.writeString(this.mOrigBiuComment);
+    paramParcel.writeInt(this.mFeedsType);
+    paramParcel.writeParcelable(this.jumpInfo, paramInt);
+    paramParcel.writeInt(this.mOpType);
+    paramParcel.writeParcelable(this.ugcVoiceInfo, paramInt);
   }
 }
 

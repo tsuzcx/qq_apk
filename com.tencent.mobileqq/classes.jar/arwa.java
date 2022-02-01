@@ -1,11 +1,19 @@
-import android.widget.CheckBox;
-import com.tencent.widget.SingleLineTextView;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 
-public class arwa
+class arwa
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public CheckBox a;
-  public SingleLineTextView a;
+  arwa(arvy paramarvy) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.cancel();
+    paramDialogInterface = new Intent("android.settings.INTERNAL_STORAGE_SETTINGS");
+    this.a.a.startActivity(paramDialogInterface);
+  }
 }
 
 

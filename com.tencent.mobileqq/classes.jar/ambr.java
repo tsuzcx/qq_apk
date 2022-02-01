@@ -1,33 +1,41 @@
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import android.view.Surface;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
 
-public final class ambr
-  implements EIPCResultCallback
+public class ambr
+  implements bhxx
 {
-  public ambr(ambt paramambt) {}
+  public ambr(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void a(bhxu parambhxu)
   {
-    boolean bool = true;
-    QLog.i("CmShow_CmShowRenderView", 1, "changeApolloStatus ipc code:" + paramEIPCResult.code);
-    ApolloUtil.b("changeApolloStatus code:" + paramEIPCResult.code);
-    ambt localambt;
-    if (this.a != null)
-    {
-      localambt = this.a;
-      if (paramEIPCResult.code != 0) {
-        break label82;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "mMediaPlayer onPrepared: mDuration=" + this.a.b);
     }
-    for (;;)
-    {
-      localambt.a(bool);
-      return;
-      label82:
-      bool = false;
+    SurfaceHolder localSurfaceHolder = this.a.jdField_a_of_type_AndroidViewSurfaceView.getHolder();
+    if ((localSurfaceHolder == null) || (!localSurfaceHolder.getSurface().isValid())) {
+      audr.a(2131691275);
     }
+    do
+    {
+      do
+      {
+        return;
+        bhbk.a(this.a.jdField_a_of_type_AndroidViewSurfaceView, this.a.e, this.a.f, this.a.jdField_a_of_type_Bhxu.d(), this.a.jdField_a_of_type_Bhxu.e());
+      } while (this.a.j != 10);
+      parambhxu.a(localSurfaceHolder);
+      this.a.jdField_a_of_type_Int = parambhxu.c();
+    } while (this.a.jdField_a_of_type_Int <= 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "此时的时长为" + ShortVideoUtils.stringForTime(this.a.jdField_a_of_type_Int));
+    }
+    this.a.d.setText(ShortVideoUtils.stringForTime(this.a.jdField_a_of_type_Int));
+    this.a.jdField_a_of_type_AndroidWidgetSeekBar.setMax(this.a.jdField_a_of_type_Int);
   }
 }
 

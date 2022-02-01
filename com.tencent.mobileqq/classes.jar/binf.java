@@ -1,107 +1,66 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.qidian.data.PubAccountNavigationMenu;
-import java.util.HashMap;
+import android.graphics.Rect;
+import android.text.Layout;
+import android.text.Selection;
+import android.text.Spannable;
+import android.text.method.LinkMovementMethod;
+import android.text.method.MovementMethod;
+import android.text.method.Touch;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
+import android.widget.TextView;
 
 public class binf
-  implements BusinessObserver
+  extends LinkMovementMethod
 {
-  private static final String a;
-  public int a;
+  private static binf a;
   
-  static
+  public static MovementMethod a()
   {
-    jdField_a_of_type_JavaLangString = binf.class.getName();
-  }
-  
-  public binf()
-  {
-    this.jdField_a_of_type_Int = hashCode();
-  }
-  
-  protected void a(boolean paramBoolean) {}
-  
-  protected void a(boolean paramBoolean, binh parambinh) {}
-  
-  protected void a(boolean paramBoolean, PubAccountNavigationMenu paramPubAccountNavigationMenu) {}
-  
-  protected void a(boolean paramBoolean, HashMap<String, Object> paramHashMap) {}
-  
-  protected void b(boolean paramBoolean, HashMap<String, Object> paramHashMap) {}
-  
-  protected void c(boolean paramBoolean, HashMap<String, Object> paramHashMap) {}
-  
-  protected void d(boolean paramBoolean, HashMap<String, Object> paramHashMap) {}
-  
-  protected void e(boolean paramBoolean, HashMap<String, Object> paramHashMap) {}
-  
-  protected void f(boolean paramBoolean, HashMap<String, Object> paramHashMap) {}
-  
-  protected void g(boolean paramBoolean, HashMap<String, Object> paramHashMap) {}
-  
-  protected void h(boolean paramBoolean, HashMap<String, Object> paramHashMap) {}
-  
-  protected void i(boolean paramBoolean, HashMap<String, Object> paramHashMap) {}
-  
-  protected void j(boolean paramBoolean, HashMap<String, Object> paramHashMap) {}
-  
-  protected void k(boolean paramBoolean, HashMap<String, Object> paramHashMap) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1001: 
-      d(paramBoolean, (HashMap)paramObject);
-      return;
-    case 1002: 
-      f(paramBoolean, (HashMap)paramObject);
-      return;
-    case 1003: 
-      g(paramBoolean, (HashMap)paramObject);
-      return;
-    case 1004: 
-      i(paramBoolean, (HashMap)paramObject);
-      return;
-    case 1005: 
-      c(paramBoolean, (HashMap)paramObject);
-      return;
-    case 1006: 
-      if (paramObject != null)
-      {
-        a(paramBoolean, (binh)paramObject);
-        return;
-      }
-      a(paramBoolean, null);
-      return;
-    case 2001: 
-      a(paramBoolean);
-      return;
-    case 3001: 
-      a(paramBoolean, (PubAccountNavigationMenu)paramObject);
-      return;
-    case 1007: 
-      j(paramBoolean, (HashMap)paramObject);
-      return;
-    case 1008: 
-      e(paramBoolean, (HashMap)paramObject);
-      return;
-    case 1009: 
-      b(paramBoolean, (HashMap)paramObject);
-      return;
-    case 1010: 
-      h(paramBoolean, (HashMap)paramObject);
-      return;
-    case 1018: 
-      a(paramBoolean, (HashMap)paramObject);
+    if (a == null) {
+      a = new binf();
     }
-    k(paramBoolean, (HashMap)paramObject);
+    return a;
+  }
+  
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  {
+    int i = paramMotionEvent.getAction();
+    if ((i == 1) || (i == 0))
+    {
+      int j = (int)paramMotionEvent.getX();
+      int k = (int)paramMotionEvent.getY();
+      int m = paramTextView.getTotalPaddingLeft();
+      int n = paramTextView.getTotalPaddingTop();
+      int i1 = paramTextView.getScrollX();
+      int i2 = paramTextView.getScrollY();
+      Object localObject = paramTextView.getLayout();
+      j = ((Layout)localObject).getOffsetForHorizontal(((Layout)localObject).getLineForVertical(k - n + i2), j - m + i1);
+      localObject = (ClickableSpan[])paramSpannable.getSpans(j, j, ClickableSpan.class);
+      if (localObject.length != 0)
+      {
+        if (i == 1) {
+          localObject[0].onClick(paramTextView);
+        }
+        for (;;)
+        {
+          return true;
+          if (i == 0)
+          {
+            Rect localRect = new Rect();
+            paramTextView.getGlobalVisibleRect(localRect);
+            if (localRect.contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY())) {
+              Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]));
+            }
+          }
+        }
+      }
+    }
+    return Touch.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     binf
  * JD-Core Version:    0.7.0.1
  */

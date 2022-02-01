@@ -1,72 +1,63 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.emosm.web.MessengerService.8.1;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.TipsInfo;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arcs
-  implements bamr
 {
-  public arcs(MessengerService paramMessengerService) {}
+  private boolean a = true;
   
-  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject)
+  public static arcs a(aqxa[] paramArrayOfaqxa)
   {
-    if (this.a.b != null)
+    arcs localarcs = new arcs();
+    StringBuilder localStringBuilder = new StringBuilder();
+    for (;;)
     {
-      this.a.b.putString("cmd", "ipc_signature_setordelete");
-      paramRichStatus = new Bundle();
-      paramRichStatus.putInt("result", paramInt);
-      paramRichStatus.putBoolean("hasTipsInfo", false);
-      if ((paramObject instanceof TipsInfo))
+      try
       {
-        paramObject = (TipsInfo)paramObject;
-        if (paramObject.type > 0)
+        int j = paramArrayOfaqxa.length;
+        int i = 0;
+        if (i < j)
         {
-          paramRichStatus.putInt("result", paramObject.ret);
-          paramRichStatus.putBoolean("hasTipsInfo", true);
-          paramRichStatus.putInt("tips_type", paramObject.type);
-          paramRichStatus.putString("tips_titleWording", paramObject.titleWording);
-          paramRichStatus.putString("tips_wording", paramObject.wording);
-          paramRichStatus.putString("tips_rightBtnWording", paramObject.rightBtnWording);
-          paramRichStatus.putString("tips_leftBtnWording", paramObject.leftBtnWording);
-          paramRichStatus.putString("tips_vipType", paramObject.vipType);
-          paramRichStatus.putInt("tips_vipMonth", paramObject.vipMonth);
-          paramRichStatus.putString("tips_url", paramObject.url);
+          String str = paramArrayOfaqxa[i].a;
+          QLog.d("OpenSdkD55Processor", 1, new Object[] { "content=", str });
+          JSONObject localJSONObject = new JSONObject(str);
+          if (localJSONObject.has("enableIframe"))
+          {
+            if (localJSONObject.optInt("enableIframe", 1) != 0)
+            {
+              bool = true;
+              localarcs.a = bool;
+            }
+          }
+          else
+          {
+            localStringBuilder.append("config: ").append(str).append(",");
+            i += 1;
+          }
+        }
+        else
+        {
+          QLog.d("OpenSdkIFrameProcessor", 1, "parse, content:" + localStringBuilder.toString());
+          return localarcs;
         }
       }
-      this.a.b.putBundle("response", paramRichStatus);
-      this.a.a(this.a.b);
-      this.a.b = null;
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (paramInt == -1) {
-      if (this.a.a != null) {
-        this.a.a.post(new MessengerService.8.1(this));
+      catch (JSONException paramArrayOfaqxa)
+      {
+        QLog.e("OpenSdkIFrameProcessor", 1, "JSONException", paramArrayOfaqxa);
+        return null;
       }
+      boolean bool = false;
     }
-    while (this.a.c == null) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SigImg2Zone", 4, "isSync: " + paramBoolean);
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("isSync", paramBoolean);
-    this.a.c.putBundle("response", localBundle);
-    this.a.a(this.a.c);
-    this.a.c = null;
   }
   
-  public void b(int paramInt, boolean paramBoolean) {}
+  public boolean a()
+  {
+    return this.a;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arcs
  * JD-Core Version:    0.7.0.1
  */

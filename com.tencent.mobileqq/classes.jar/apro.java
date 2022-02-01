@@ -1,14 +1,39 @@
-import android.view.View;
-import com.tencent.mobileqq.conditionsearch.widget.TimeSelectView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.10;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.wadl.ipc.WadlParams;
 
 public class apro
-  implements bjuu
+  implements DialogInterface.OnClickListener
 {
-  public apro(TimeSelectView paramTimeSelectView) {}
+  public apro(ArkAppDownloadModule.10 param10) {}
   
-  public void a(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    TimeSelectView.a(this.a, paramView, 1);
+    boolean bool = false;
+    bmqk.a().a(this.a.jdField_a_of_type_CooperationWadlIpcWadlParams);
+    aprm.a(this.a.this$0, true);
+    bdla.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "7", "", this.a.jdField_a_of_type_CooperationWadlIpcWadlParams.a, "");
+    if ((paramDialogInterface instanceof QQCustomDialog))
+    {
+      if (!((QQCustomDialog)paramDialogInterface).getCheckBoxState()) {
+        bool = true;
+      }
+      if (this.a.jdField_a_of_type_AndroidContentSharedPreferences == null) {}
+    }
+    try
+    {
+      this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.a.b, bool).apply();
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      QLog.e("ark.download.module", 1, "start download sp error : ", paramDialogInterface);
+    }
   }
 }
 

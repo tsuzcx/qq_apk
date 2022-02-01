@@ -1,11 +1,11 @@
 package cooperation.ilive.plugin;
 
 import android.text.TextUtils;
-import bjmz;
-import bkju;
-import bkkd;
+import bkyl;
+import blvl;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
+import cooperation.ilive.manager.IliveAuthManager;
 import cooperation.qzone.LocalMultiProcConfig;
 
 public class IlivePluginManager
@@ -59,7 +59,7 @@ public class IlivePluginManager
       return "";
     }
     if (TextUtils.isEmpty(this.mTempToken)) {
-      this.mTempToken = bjmz.b(LocalMultiProcConfig.getString4Uin("key_ilive_plugin_token", "", bkju.a()), bkju.a());
+      this.mTempToken = bkyl.b(LocalMultiProcConfig.getString4Uin("key_ilive_plugin_token", "", IliveAuthManager.getLongUin()), IliveAuthManager.getStringUin());
     }
     return this.mTempToken;
   }
@@ -71,7 +71,7 @@ public class IlivePluginManager
   
   public long getPluginTokenValidTime(long paramLong)
   {
-    return LocalMultiProcConfig.getLong4Uin("key_ilive_plugin_token_valid_time", paramLong, bkju.a());
+    return LocalMultiProcConfig.getLong4Uin("key_ilive_plugin_token_valid_time", paramLong, IliveAuthManager.getLongUin());
   }
   
   public void onDestory()
@@ -81,7 +81,7 @@ public class IlivePluginManager
   
   public void refreshToken(int paramInt)
   {
-    bkkd.a("refreshToken");
+    blvl.a("refreshToken");
     if (isPluginIliveTokenExpireOut())
     {
       LiveAuth.getStAuth(paramInt);
@@ -96,7 +96,7 @@ public class IlivePluginManager
       QLog.i("IliveAuthPluginManager", 2, "savePluginToken openId = " + paramString);
     }
     this.mTempToken = paramString;
-    LocalMultiProcConfig.putString4Uin("key_ilive_plugin_token", bjmz.a(paramString, bkju.a()), bkju.a());
+    LocalMultiProcConfig.putString4Uin("key_ilive_plugin_token", bkyl.a(paramString, IliveAuthManager.getStringUin()), IliveAuthManager.getLongUin());
   }
   
   public void savePluginTokenValidTime(long paramLong)
@@ -104,7 +104,7 @@ public class IlivePluginManager
     if (QLog.isColorLevel()) {
       QLog.i("IliveAuthPluginManager", 2, "savePluginTokenValidTime expireTime = " + paramLong / 1000L);
     }
-    LocalMultiProcConfig.putLong4Uin("key_ilive_plugin_token_valid_time", paramLong / 1000L, bkju.a());
+    LocalMultiProcConfig.putLong4Uin("key_ilive_plugin_token_valid_time", paramLong / 1000L, IliveAuthManager.getLongUin());
   }
   
   public void setIlivePluginCallback(IlivePluginCallback paramIlivePluginCallback)

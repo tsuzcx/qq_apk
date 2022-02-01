@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import agwg;
-import ajiy;
-import ajjs;
+import ahpg;
+import akem;
+import akfg;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
@@ -10,16 +10,16 @@ import mqq.os.MqqHandler;
 public class MiniECommerceExposeDataReportHelper$1
   implements Runnable
 {
-  public MiniECommerceExposeDataReportHelper$1(ajiy paramajiy) {}
+  public MiniECommerceExposeDataReportHelper$1(akem paramakem) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ECommerceExposeDataReportHelper", 2, "mRunOnShow 800");
     }
-    ajiy.a(this.this$0, true);
-    ThreadManager.getUIHandler().removeCallbacks(ajiy.a(this.this$0));
-    ajiy.a(this.this$0).a(ajiy.a(this.this$0).a, ajiy.a(this.this$0));
+    akem.a(this.this$0, true);
+    ThreadManager.getUIHandler().removeCallbacks(akem.a(this.this$0));
+    akem.a(this.this$0).a(akem.a(this.this$0).a, akem.a(this.this$0));
   }
 }
 

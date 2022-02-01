@@ -1,21 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ProgressBar;
 
-class ajqg
-  implements ajqe
+final class ajqg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ajqg(ajqf paramajqf) {}
+  ajqg(ProgressBar paramProgressBar) {}
   
-  public void a(long paramLong, float paramFloat, String paramString)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    ajqf.a(this.a).put(Long.valueOf(paramLong), Float.valueOf(paramFloat));
-    ajqf.a(this.a).a(paramLong, paramFloat, paramString);
-  }
-  
-  public void b(long paramLong)
-  {
-    QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "onDownloadSuccess:" + paramLong);
-    ajqf.a(this.a).b(paramLong);
+    if (this.a != null) {
+      this.a.setProgress(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    }
   }
 }
 

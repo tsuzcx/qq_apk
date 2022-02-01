@@ -1,23 +1,18 @@
 package cooperation.qzone.stickynote;
 
-import android.app.Activity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
-import com.tencent.widget.ListView;
-import cooperation.qzone.api.QZoneApiProxy.QZoneLoadCallback;
-import cooperation.qzone.thread.QzoneBaseThread;
-import cooperation.qzone.thread.QzoneHandlerThreadFactory;
+import cooperation.qzone.api.QZoneApiProxy;
+import java.lang.ref.WeakReference;
 
 class QzoneStickyNoteManager$1
-  implements QZoneApiProxy.QZoneLoadCallback
+  implements Runnable
 {
-  QzoneStickyNoteManager$1(QzoneStickyNoteManager paramQzoneStickyNoteManager, Activity paramActivity, QQAppInterface paramQQAppInterface, ListView paramListView, Card paramCard) {}
+  QzoneStickyNoteManager$1(QzoneStickyNoteManager paramQzoneStickyNoteManager, QQAppInterface paramQQAppInterface, WeakReference paramWeakReference1, WeakReference paramWeakReference2, Card paramCard) {}
   
-  public void onLoadOver(boolean paramBoolean)
+  public void run()
   {
-    if (paramBoolean) {
-      QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new QzoneStickyNoteManager.1.1(this));
-    }
+    QZoneApiProxy.needLoadQZoneEnv(new QzoneStickyNoteManager.1.1(this));
   }
 }
 

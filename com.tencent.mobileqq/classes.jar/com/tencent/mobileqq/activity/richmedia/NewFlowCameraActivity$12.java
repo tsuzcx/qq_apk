@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import amtj;
+import anvx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -11,7 +11,7 @@ class NewFlowCameraActivity$12
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getApplication(), amtj.a(2131706575), 1).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), anvx.a(2131706927), 1).a();
     this.this$0.finish();
   }
 }

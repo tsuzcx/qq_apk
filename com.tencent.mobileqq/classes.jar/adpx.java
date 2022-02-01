@@ -1,35 +1,36 @@
-import com.tencent.mobileqq.activity.LikeSettingActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.ArrayList;
+import java.util.List;
 
-public class adpx
-  extends awjx
+class adpx
+  implements audq
 {
-  public adpx(LikeSettingActivity paramLikeSettingActivity) {}
+  adpx(adpw paramadpw, FileManagerEntity paramFileManagerEntity) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("LikeSettingActivity", 2, "onGetNotifyOnLikeSwitch.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
-    }
-    if (paramBoolean1) {
-      LikeSettingActivity.a(this.a, this.a.a.a(), paramBoolean2);
-    }
-  }
+  public void onNo() {}
   
-  public void b(boolean paramBoolean1, boolean paramBoolean2)
+  public void onYes()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LikeSettingActivity", 2, "onSetNotifyOnLikeSwitch.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
+      this.jdField_a_of_type_Adpw.a.a.getOnlineFileSessionCenter().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
     }
-    if (!paramBoolean1)
+    ansr localansr;
+    ArrayList localArrayList;
+    do
     {
-      QQToast.a(this.a, 1, 2131718207, 0).b(this.a.getTitleBarHeight());
-      paramBoolean1 = ((awhr)this.a.app.getManager(161)).a();
-      LikeSettingActivity.a(this.a, this.a.a.a(), paramBoolean1);
-    }
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
+        break;
+      }
+      localansr = (ansr)this.jdField_a_of_type_Adpw.a.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+      localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
+    } while (localansr.a(localArrayList));
+    audr.a(2131692468);
+    return;
+    this.jdField_a_of_type_Adpw.a.a.getFileManagerEngine().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
 }
 

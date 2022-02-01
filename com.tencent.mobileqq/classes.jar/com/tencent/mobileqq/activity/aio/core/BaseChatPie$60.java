@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import agkg;
+import aigs;
 import com.tencent.qphone.base.util.QLog;
 
 class BaseChatPie$60
@@ -13,7 +13,7 @@ class BaseChatPie$60
     if (QLog.isColorLevel()) {
       QLog.d(this.this$0.tag, 2, "checkPESourceDowned onShow First");
     }
-    agkg.d(this.this$0.app);
+    aigs.a();
   }
 }
 

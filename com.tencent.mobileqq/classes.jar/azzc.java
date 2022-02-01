@@ -1,37 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.revokemsg.RevokeMsgInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.qphone.base.util.QLog;
 
-public final class azzc
-  implements Parcelable.Creator<RevokeMsgInfo>
+class azzc
+  extends CardObserver
 {
-  public RevokeMsgInfo a(Parcel paramParcel)
-  {
-    boolean bool = true;
-    RevokeMsgInfo localRevokeMsgInfo = new RevokeMsgInfo();
-    localRevokeMsgInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localRevokeMsgInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    localRevokeMsgInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localRevokeMsgInfo.d = paramParcel.readString();
-    localRevokeMsgInfo.b = paramParcel.readLong();
-    localRevokeMsgInfo.c = paramParcel.readLong();
-    localRevokeMsgInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    localRevokeMsgInfo.jdField_e_of_type_Int = paramParcel.readInt();
-    localRevokeMsgInfo.jdField_f_of_type_Int = paramParcel.readInt();
-    if (paramParcel.readInt() == 1) {}
-    for (;;)
-    {
-      localRevokeMsgInfo.jdField_a_of_type_Boolean = bool;
-      localRevokeMsgInfo.g = paramParcel.readInt();
-      localRevokeMsgInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
-      return localRevokeMsgInfo;
-      bool = false;
-    }
-  }
+  azzc(azzb paramazzb) {}
   
-  public RevokeMsgInfo[] a(int paramInt)
+  public void onGetAllowSeeLoginDays(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    return new RevokeMsgInfo[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileAccountLevelComponent", 2, String.format("onGetAllowSeeLoginDays isSuccess=%s isAllow=%s uin=%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), paramString }));
+    }
+    if ((paramBoolean1) && (TextUtils.equals(paramString, ((azrb)azzb.a(this.a)).a.a)))
+    {
+      azzb.a(this.a, paramBoolean2);
+      this.a.a();
+    }
   }
 }
 

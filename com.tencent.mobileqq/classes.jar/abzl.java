@@ -1,54 +1,85 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0x115.SubMsgType0x115.MsgBody;
-import tencent.im.s2c.msgtype0x210.submsgtype0x115.SubMsgType0x115.NotifyItem;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.ipc.AdIPCManager;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Handler;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
+import com.tencent.ad.tangram.process.AdProcessManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
 
-public class abzl
-  implements abzb
+public final class abzl
+  extends QIPCModule
 {
-  private static void a(abxc paramabxc, MsgType0x210 paramMsgType0x210)
+  private static volatile abzl a;
+  
+  private abzl(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x115, [S2C push for input status]");
-    }
-    try
-    {
-      SubMsgType0x115.MsgBody localMsgBody = new SubMsgType0x115.MsgBody();
-      if (paramabxc.a(paramMsgType0x210))
-      {
-        localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-        long l1 = localMsgBody.uint64_from_uin.get();
-        long l2 = localMsgBody.uint64_to_uin.get();
-        paramMsgType0x210 = (SubMsgType0x115.NotifyItem)localMsgBody.msg_notify_item.get();
-        int i = paramMsgType0x210.uint32_timeout_s.get();
-        int j = paramMsgType0x210.uint32_event_type.get();
-        int k = paramMsgType0x210.uint32_interval.get();
-        long l3 = paramMsgType0x210.uint64_timestamp.get();
-        paramMsgType0x210 = paramMsgType0x210.bytes_wording.get().toStringUtf8();
-        paramabxc = paramabxc.a().getManager(316);
-        if ((paramabxc instanceof aulp)) {
-          ((aulp)paramabxc).a(l1, l2, l3, k, i, j, paramMsgType0x210);
-        }
-      }
-      return;
-    }
-    catch (Exception paramabxc)
-    {
-      QLog.e("Q.msg.BaseMessageProcessor", 1, "[msg0x210.uSubMsgType == 0x115], errInfo->" + paramabxc.getMessage());
-    }
+    super(paramString);
   }
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public static abzl a()
   {
-    a(paramabxc, paramMsgType0x210);
-    return null;
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new abzl("gdt_ipc_sync_module_client_to_server");
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    Object localObject2 = null;
+    AdIPCManager.Params localParams = new AdIPCManager.Params(paramBundle);
+    if (localParams != null)
+    {
+      paramBundle = localParams.getAction();
+      if (localParams == null) {
+        break label73;
+      }
+      localObject1 = localParams.getToProcessName();
+      label36:
+      acho.b("GdtIPCAdapter", String.format("ClientToServerIPCSyncModule.onCall action:%s to:%s", new Object[] { paramBundle, localObject1 }));
+      if (!TextUtils.isEmpty(paramString)) {
+        break label79;
+      }
+    }
+    label73:
+    label79:
+    do
+    {
+      do
+      {
+        do
+        {
+          return null;
+          paramBundle = null;
+          break;
+          localObject1 = null;
+          break label36;
+        } while ((!localParams.isValid()) || (!TextUtils.equals(localParams.getAction(), paramString)));
+        paramBundle = AdProcessManager.INSTANCE.isOnMainProcess();
+      } while ((paramBundle == null) || (!paramBundle.booleanValue()) || (!TextUtils.equals(AdProcessManager.INSTANCE.getCurrentProcessName(BaseApplicationImpl.getContext()), localParams.getToProcessName())));
+      paramString = AdIPCManager.INSTANCE.getHandler(paramString);
+    } while (paramString == null);
+    Object localObject1 = paramString.handle(localParams);
+    paramBundle = new EIPCResult();
+    if ((localObject1 != null) && (((AdIPCManager.Result)localObject1).success)) {}
+    for (paramInt = 0;; paramInt = -102)
+    {
+      paramBundle.code = paramInt;
+      paramString = localObject2;
+      if (localObject1 != null) {
+        paramString = ((AdIPCManager.Result)localObject1).bundle;
+      }
+      paramBundle.data = paramString;
+      return paramBundle;
+    }
   }
 }
 

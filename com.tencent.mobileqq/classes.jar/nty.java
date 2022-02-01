@@ -1,196 +1,271 @@
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.graphics.Color;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.mp.account_detail_dynamic_list.AccountDetailDynamicListRequest;
-import com.tencent.mobileqq.mp.account_detail_dynamic_list.AccountDetailDynamicListResponse;
-import com.tencent.mobileqq.mp.account_detail_dynamic_list.RetInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.app.NewIntent;
+import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class nty
 {
-  static long a = -1L;
+  public static final int a;
+  public static long a;
+  public static nty a;
+  public static final int b;
+  public static final int c;
+  public static final int d;
+  public static final int e;
+  public HashMap<String, nua> a;
+  public nub a;
+  public nuc a;
+  public boolean a;
   
-  public static int a(QQAppInterface paramQQAppInterface, boolean paramBoolean1, byte[] paramArrayOfByte, boolean paramBoolean2)
+  static
   {
-    int j = 0;
-    Object localObject;
-    label235:
+    jdField_a_of_type_Int = Color.rgb(64, 64, 65);
+    jdField_b_of_type_Int = Color.rgb(166, 166, 166);
+    jdField_c_of_type_Int = Color.argb(205, 255, 255, 255);
+    d = Color.argb(154, 255, 255, 255);
+    e = Color.rgb(19, 19, 19);
+    jdField_a_of_type_Long = -1L;
+  }
+  
+  public nty()
+  {
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  }
+  
+  public static String a(int paramInt)
+  {
+    return "https://pub.idqqimg.com/pc/group/anony/portrait/img/" + paramInt + ".png";
+  }
+  
+  public static String a(int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3)
+  {
+    JSONObject localJSONObject = new JSONObject();
     try
     {
-      localObject = new account_detail_dynamic_list.AccountDetailDynamicListResponse();
-      try
-      {
-        ((account_detail_dynamic_list.AccountDetailDynamicListResponse)localObject).mergeFrom(paramArrayOfByte);
-        i = j;
-        if (((account_detail_dynamic_list.AccountDetailDynamicListResponse)localObject).ret_info.has())
-        {
-          i = j;
-          if (((account_detail_dynamic_list.AccountDetailDynamicListResponse)localObject).ret_info.ret_code.get() == 0)
-          {
-            if ((!((account_detail_dynamic_list.AccountDetailDynamicListResponse)localObject).puin.has()) || (!((account_detail_dynamic_list.AccountDetailDynamicListResponse)localObject).last_msg_id.has()) || (!((account_detail_dynamic_list.AccountDetailDynamicListResponse)localObject).msg_cnt.has())) {
-              break label396;
-            }
-            l1 = ((account_detail_dynamic_list.AccountDetailDynamicListResponse)localObject).puin.get();
-            l2 = ((account_detail_dynamic_list.AccountDetailDynamicListResponse)localObject).last_msg_id.get();
-            l3 = ((account_detail_dynamic_list.AccountDetailDynamicListResponse)localObject).msg_cnt.get();
-            if (QLog.isColorLevel()) {
-              QLog.d("AccountDetailDynamicListModel", 2, "updateAccountDetailDynamicInfo puin:" + l1 + " last_msg_id:" + l2 + " msg_cnt:" + l3 + " isFirstEnter:" + paramBoolean1 + " isFromDB:" + paramBoolean2);
-            }
-            localArrayList = ntx.a(paramQQAppInterface).a(l1);
-            if ((!paramBoolean1) || (!paramBoolean2) || (localArrayList == null)) {
-              break label235;
-            }
-            boolean bool = localArrayList.isEmpty();
-            if (bool) {
-              break label235;
-            }
-            i = 6;
-          }
-        }
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        for (;;)
-        {
-          long l1;
-          long l2;
-          long l3;
-          ArrayList localArrayList;
-          int i = 2;
-        }
-      }
-      return i;
+      localJSONObject.put("flags", paramInt1);
+      localJSONObject.put("an_id", paramString1);
+      localJSONObject.put("an_nick", paramString2);
+      localJSONObject.put("head_protrait", paramInt2);
+      localJSONObject.put("expire_time", paramInt3);
+      localJSONObject.put("rankColor", paramString3);
+      paramString1 = localJSONObject.toString();
+      return paramString1;
     }
-    finally {}
-    localArrayList = new ArrayList();
-    if (((account_detail_dynamic_list.AccountDetailDynamicListResponse)localObject).msg_infos.has())
+    catch (JSONException paramString1)
     {
-      localObject = ((account_detail_dynamic_list.AccountDetailDynamicListResponse)localObject).msg_infos.get();
-      if (localObject == null)
-      {
-        i = 0;
-        break label415;
+      if (QLog.isColorLevel()) {
+        QLog.d("AnonymousChatHelper", 2, "getJsonStr JSONException:" + paramString1.toString());
       }
+      paramString1.printStackTrace();
     }
-    for (;;)
+    return "";
+  }
+  
+  public static nty a()
+  {
+    if (jdField_a_of_type_Nty == null) {
+      jdField_a_of_type_Nty = new nty();
+    }
+    return jdField_a_of_type_Nty;
+  }
+  
+  public static ntz a(MessageRecord paramMessageRecord)
+  {
+    Object localObject = paramMessageRecord.getExtInfoFromExtStr("anonymous");
+    paramMessageRecord = new ntz();
+    try
     {
-      if (j < i)
-      {
-        String str = ((ByteStringMicro)((List)localObject).get(j)).toStringUtf8();
-        localArrayList.add(str);
-        if (!QLog.isColorLevel()) {
-          break label421;
-        }
-        QLog.d("AccountDetailDynamicListModel", 2, "updateAccountDetailDynamicInfo jsonBody" + str);
-        break label421;
-        i = ((List)localObject).size();
+      localObject = new JSONObject((String)localObject);
+      if (((JSONObject)localObject).has("flags")) {
+        paramMessageRecord.jdField_a_of_type_Int = ((JSONObject)localObject).getInt("flags");
       }
-      else
-      {
-        if (l3 == localArrayList.size())
-        {
-          i = ntx.a(paramQQAppInterface).a(paramArrayOfByte, paramBoolean1, l1, l2, l3, localArrayList, paramBoolean2);
-          break;
-        }
-        i = 5;
-        break;
-        label396:
-        i = 4;
-        break;
+      if (((JSONObject)localObject).has("an_id")) {
+        paramMessageRecord.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).getString("an_id");
       }
-      label415:
-      j = 0;
-      continue;
-      label421:
-      j += 1;
+      if (((JSONObject)localObject).has("an_nick")) {
+        paramMessageRecord.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).getString("an_nick");
+      }
+      if (((JSONObject)localObject).has("head_protrait")) {
+        paramMessageRecord.jdField_b_of_type_Int = ((JSONObject)localObject).getInt("head_protrait");
+      }
+      if (((JSONObject)localObject).has("expire_time")) {
+        paramMessageRecord.jdField_c_of_type_Int = ((JSONObject)localObject).getInt("expire_time");
+      }
+      if (((JSONObject)localObject).has("rankColor")) {
+        paramMessageRecord.jdField_c_of_type_JavaLangString = ((JSONObject)localObject).optString("rankColor");
+      }
+      return paramMessageRecord;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return paramMessageRecord;
+  }
+  
+  public static boolean a(Context paramContext, QQAppInterface paramQQAppInterface)
+  {
+    paramContext = paramContext.getSharedPreferences("anonymous_chat", 0);
+    if (paramContext.getBoolean("first_enter_anonymous" + paramQQAppInterface.getCurrentAccountUin(), true))
+    {
+      paramContext.edit().putBoolean("first_enter_anonymous" + paramQQAppInterface.getCurrentAccountUin(), false).commit();
+      return true;
+    }
+    return false;
+  }
+  
+  public static boolean a(MessageRecord paramMessageRecord)
+  {
+    return (paramMessageRecord.extLong & 0x3) == 3;
+  }
+  
+  public static boolean b(MessageRecord paramMessageRecord)
+  {
+    if (((paramMessageRecord instanceof ChatMessage)) && (((ChatMessage)paramMessageRecord).fakeSenderType == 2)) {}
+    for (int i = 1;; i = 0) {
+      return (i == 0) && (!paramMessageRecord.isMultiMsg) && (a(paramMessageRecord).jdField_a_of_type_Int == 2);
     }
   }
   
-  private static void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, int paramInt, amyh paramamyh)
+  public static void c(MessageRecord paramMessageRecord)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList last_msg_id:" + paramLong2 + "  msg_cnt:" + paramInt + "  mLastMSgID: " + a);
-    }
-    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApp(), odw.class);
-    localNewIntent.putExtra("cmd", "pull_account_detail_dynamic_list");
-    Object localObject = new account_detail_dynamic_list.AccountDetailDynamicListRequest();
-    ((account_detail_dynamic_list.AccountDetailDynamicListRequest)localObject).versionInfo.set("8.4.8,3,4810");
-    ((account_detail_dynamic_list.AccountDetailDynamicListRequest)localObject).puin.set(paramLong1);
-    ((account_detail_dynamic_list.AccountDetailDynamicListRequest)localObject).last_msg_id.set(paramLong2);
-    ((account_detail_dynamic_list.AccountDetailDynamicListRequest)localObject).msg_cnt.set(paramInt);
-    localNewIntent.putExtra("data", ((account_detail_dynamic_list.AccountDetailDynamicListRequest)localObject).toByteArray());
-    boolean bool;
-    label204:
-    int i;
-    if (paramLong2 == 0L)
-    {
-      bool = true;
-      localNewIntent.putExtra("isFirstEnter", bool);
-      a = paramLong2;
-      localObject = (amxz)paramQQAppInterface.getManager(56);
-      if (localObject == null) {
-        break label350;
-      }
-      localObject = ((amxz)localObject).a(String.valueOf(paramLong1));
-      if (localObject == null) {
-        break label350;
-      }
-      if (((AccountDetail)localObject).followType != 1) {
-        break label344;
-      }
-      paramInt = 1;
-      i = odq.a(paramQQAppInterface, String.valueOf(paramLong1), (AccountDetail)localObject);
-    }
-    for (;;)
-    {
-      String str1 = paramLong1 + "";
-      String str2 = paramLong2 + "";
-      if (paramInt != 0) {}
-      for (localObject = "02";; localObject = "01")
-      {
-        odq.a(null, str1, "0X80077FF", "0X80077FF", 0, 0, "1", str2, (String)localObject, String.valueOf(i), false);
-        localNewIntent.setObserver(new ntz(paramQQAppInterface, bool, paramamyh));
-        paramQQAppInterface.startServlet(localNewIntent);
-        if (QLog.isColorLevel()) {
-          QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList exit");
-        }
-        return;
-        bool = false;
-        break;
-      }
-      label344:
-      paramInt = 0;
-      break label204;
-      label350:
-      i = 1;
-      paramInt = 0;
-    }
+    paramMessageRecord.extLong |= 0x3;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, amyh paramamyh)
+  public String a(String paramString1, String paramString2)
   {
-    ntx.a(paramQQAppInterface).a(paramQQAppInterface, paramLong, paramamyh);
-    a(paramQQAppInterface, paramLong, 0L, 25, paramamyh);
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
+    while (this.jdField_a_of_type_Nub == null) {
+      return null;
+    }
+    return this.jdField_a_of_type_Nub.jdField_c_of_type_JavaLangString;
   }
   
-  public static void b(QQAppInterface paramQQAppInterface, long paramLong, amyh paramamyh)
+  public nua a(String paramString)
   {
-    ntn localntn = ntx.a(paramQQAppInterface).a(paramLong);
-    if ((localntn != null) && (localntn.b > 0L))
-    {
-      if (a != localntn.b) {
-        a(paramQQAppInterface, paramLong, localntn.b, 25, paramamyh);
+    return (nua)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+  }
+  
+  public void a(MessageRecord paramMessageRecord)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      if ((paramMessageRecord.longMsgCount == paramMessageRecord.longMsgIndex + 1) || (paramMessageRecord.longMsgCount == 0)) {
+        this.jdField_a_of_type_Boolean = false;
       }
+    }
+    while (!a(paramMessageRecord.frienduin)) {
       return;
     }
-    a(paramQQAppInterface, paramLong, paramamyh);
+    nua localnua = a(paramMessageRecord.frienduin);
+    paramMessageRecord.vipBubbleID = localnua.jdField_a_of_type_Long;
+    paramMessageRecord.extLong |= 0x3;
+    paramMessageRecord.saveExtInfoToExtStr("anonymous", a(2, localnua.jdField_b_of_type_JavaLangString, localnua.jdField_a_of_type_JavaLangString, localnua.jdField_a_of_type_Int, localnua.jdField_b_of_type_Int, localnua.jdField_c_of_type_JavaLangString));
+  }
+  
+  public void a(String paramString1, long paramLong, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AnonymousUpdate", 2, "nickName=" + paramString2 + ", vipBubbleId=" + paramLong + ", headId=" + paramInt1);
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString1))
+    {
+      localnua = (nua)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
+      localnua.jdField_a_of_type_Int = paramInt1;
+      if ((paramString2 != null) && (!paramString2.equals(localnua.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Nuc != null)) {
+        this.jdField_a_of_type_Nuc.a(paramString1, paramString2);
+      }
+      localnua.jdField_a_of_type_JavaLangString = paramString2;
+      localnua.jdField_a_of_type_Long = paramLong;
+      localnua.jdField_b_of_type_Int = paramInt2;
+      localnua.jdField_b_of_type_JavaLangString = paramString3;
+      localnua.jdField_c_of_type_JavaLangString = paramString4;
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, localnua);
+      return;
+    }
+    nua localnua = new nua(this, false);
+    localnua.jdField_a_of_type_Int = paramInt1;
+    localnua.jdField_a_of_type_JavaLangString = paramString2;
+    localnua.jdField_a_of_type_Long = paramLong;
+    localnua.jdField_b_of_type_Int = paramInt2;
+    localnua.jdField_b_of_type_JavaLangString = paramString3;
+    localnua.jdField_c_of_type_JavaLangString = paramString4;
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, localnua);
+  }
+  
+  public void a(String paramString1, String paramString2, MessageRecord paramMessageRecord)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (paramMessageRecord == null)) {}
+    do
+    {
+      return;
+      paramMessageRecord = aasl.a(paramMessageRecord);
+    } while (TextUtils.isEmpty(paramMessageRecord));
+    if (this.jdField_a_of_type_Nub == null) {
+      this.jdField_a_of_type_Nub = new nub(this);
+    }
+    this.jdField_a_of_type_Nub.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Nub.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Nub.jdField_c_of_type_JavaLangString = paramMessageRecord;
+  }
+  
+  public void a(nuc paramnuc)
+  {
+    this.jdField_a_of_type_Nuc = paramnuc;
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
+    {
+      ((nua)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).jdField_a_of_type_Boolean = paramBoolean;
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, new nua(this, paramBoolean));
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)) {
+      return ((nua)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).jdField_a_of_type_Boolean;
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Nuc = null;
+  }
+  
+  public void b(MessageRecord paramMessageRecord)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      if ((paramMessageRecord.longMsgCount == paramMessageRecord.longMsgIndex + 1) || (paramMessageRecord.longMsgCount == 0)) {
+        this.jdField_a_of_type_Boolean = false;
+      }
+    }
+    while (!a(paramMessageRecord.frienduin)) {
+      return;
+    }
+    nua localnua = a(paramMessageRecord.frienduin);
+    paramMessageRecord.vipBubbleID = localnua.jdField_a_of_type_Long;
+    paramMessageRecord.extLong |= 0x3;
+    paramMessageRecord.saveExtInfoToExtStr("anonymous", a(2, null, localnua.jdField_a_of_type_JavaLangString, localnua.jdField_a_of_type_Int, localnua.jdField_b_of_type_Int, localnua.jdField_c_of_type_JavaLangString));
   }
 }
 

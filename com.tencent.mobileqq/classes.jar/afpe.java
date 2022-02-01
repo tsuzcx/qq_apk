@@ -1,26 +1,16 @@
-import android.view.View;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class afpe
-  implements bjoe
+final class afpe
+  implements afpm
 {
-  afpe(afpd paramafpd, boolean paramBoolean, bjnw parambjnw) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-      if (afpd.a(this.jdField_a_of_type_Afpd) != null) {
-        afpd.a(this.jdField_a_of_type_Afpd, afpd.a(this.jdField_a_of_type_Afpd));
-      }
-      afpd.a(this.jdField_a_of_type_Afpd, "0X800A7F5", this.jdField_a_of_type_Boolean);
-      continue;
-      afpd.a(this.jdField_a_of_type_Afpd, "0X800A7F6", this.jdField_a_of_type_Boolean);
-    }
+    paramQQAppInterface = new ProfileActivity.AllInOne(paramString, 42);
+    paramQQAppInterface.h = paramSessionInfo.curFriendNick;
+    return paramQQAppInterface;
   }
 }
 

@@ -1,6 +1,18 @@
-class aszd
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class aszd
+  implements View.OnClickListener
 {
-  private static asyy a = new asyy(null);
+  public aszd(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    LocalFileBrowserActivity.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

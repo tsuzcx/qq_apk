@@ -1,18 +1,28 @@
-public abstract interface axrw
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.component.network.utils.NetworkUtils;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class axrw
+  implements View.OnClickListener
 {
-  public abstract void a(anzl paramanzl);
+  public axrw(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public abstract void a(anzl paramanzl, boolean paramBoolean);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract boolean a();
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
+  public void onClick(View paramView)
+  {
+    if (!NetworkUtils.isNetworkAvailable(this.a)) {
+      QQToast.a(this.a, 1, 2131694255, 1).a();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.d();
+      this.a.a("invite_page", "clk_exit");
+    }
+  }
 }
 
 

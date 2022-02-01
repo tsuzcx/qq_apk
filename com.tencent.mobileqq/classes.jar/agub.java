@@ -1,44 +1,23 @@
-import android.os.Handler;
+import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.item.WriteTogetherItemBuilder.1.1;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class agub
-  implements View.OnClickListener
+class agub
+  implements bkzq
 {
-  agub(agua paramagua) {}
+  agub(agtz paramagtz, bkzi parambkzi) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    Object localObject = AIOUtils.getMessage(paramView);
-    if (!(localObject instanceof MessageForText)) {
-      if (QLog.isColorLevel()) {
-        QLog.w("WriteTogetherItemBuilder", 2, "TextItemBuilder onClickListener: AIOUtils.getMessage(v) is not MessageForText");
-      }
-    }
-    for (;;)
+    this.jdField_a_of_type_Bkzi.dismiss();
+    switch (paramInt)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+    default: 
       return;
-      localObject = (MessageForText)localObject;
-      if (!this.a.a())
-      {
-        if ((paramView instanceof ETTextView)) {
-          ((ETTextView)paramView).startAnimation(true, false);
-        }
-        if (!agua.a(this.a))
-        {
-          agua.b(this.a, true);
-          ThreadManagerV2.getUIHandlerV2().postDelayed(new WriteTogetherItemBuilder.1.1(this, (MessageForText)localObject), 500L);
-        }
-      }
     }
+    ChatActivityUtils.a(this.jdField_a_of_type_Agtz.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Agtz.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agtz.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, this.jdField_a_of_type_Agtz.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_Agtz.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendNick, null, true, this.jdField_a_of_type_Agtz.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.troopUin, true, true, null, "from_internal");
+    bdla.b(this.jdField_a_of_type_Agtz.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005974", "0X8005974", 0, 0, "", "", "", "");
   }
 }
 

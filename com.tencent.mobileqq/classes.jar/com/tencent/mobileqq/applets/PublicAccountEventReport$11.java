@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.applets;
 
-import bcef;
+import bdla;
 
 public final class PublicAccountEventReport$11
   implements Runnable
@@ -9,7 +9,7 @@ public final class PublicAccountEventReport$11
   
   public void run()
   {
-    bcef.b(null, "dc00898", "", this.a, "0X8009EB7", "0X8009EB7", 0, 0, "", "", "", "-1");
+    bdla.b(null, "dc00898", "", this.a, "0X8009EB7", "0X8009EB7", 0, 0, "", "", "", "-1");
   }
 }
 

@@ -1,19 +1,24 @@
-import android.util.Pair;
-import com.tencent.biz.pubaccount.readinjoy.struct.LebaKDCellInfo;
-import java.util.List;
+import org.jetbrains.annotations.Nullable;
 
 class pec
+  implements pgx
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  Pair<Object, String> jdField_a_of_type_AndroidUtilPair = null;
-  LebaKDCellInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructLebaKDCellInfo = null;
-  String jdField_a_of_type_JavaLangString = null;
-  List<Long> jdField_a_of_type_JavaUtilList = null;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = -1;
-  long jdField_b_of_type_Long = 0L;
-  boolean jdField_b_of_type_Boolean = false;
+  pec(pdv parampdv) {}
+  
+  public void a(long paramLong, boolean paramBoolean1, int paramInt1, int paramInt2, @Nullable String paramString1, @Nullable String paramString2, int paramInt3, boolean paramBoolean2)
+  {
+    if (paramBoolean2) {
+      this.a.a(paramLong, paramBoolean1, paramInt2, paramString1, paramString2, paramInt3);
+    }
+    for (;;)
+    {
+      if (!paramBoolean1) {
+        pgv.a(paramInt1);
+      }
+      return;
+      this.a.a(paramLong, paramBoolean1, paramInt2, paramString1, paramInt3);
+    }
+  }
 }
 
 

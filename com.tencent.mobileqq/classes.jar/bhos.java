@@ -1,6 +1,17 @@
-public abstract interface bhos
+import android.os.Bundle;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+
+public class bhos<T extends VasQuickUpdateManager.CallBacker>
 {
-  public abstract void exec(String paramString, bhop parambhop);
+  public int a;
+  public long a;
+  public Bundle a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public String c;
 }
 
 

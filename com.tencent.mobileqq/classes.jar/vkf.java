@@ -1,480 +1,582 @@
-import android.app.Activity;
-import android.content.res.ColorStateList;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.os.SystemClock;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.album.view.AlbumGalleryCapturePart.11;
-import com.tencent.biz.qqstory.album.view.AlbumGalleryCapturePart.8;
-import com.tencent.biz.qqstory.album.view.RoundCornerLayout;
-import com.tencent.biz.qqstory.album.view.StoryFormSwitchItem;
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideProgressNotifier;
+import UserGrowth.stSimpleMetaFeed;
+import UserGrowth.stWaterFallCardStyle;
+import android.text.TextUtils;
+import com.google.gson.Gson;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
+import com.tencent.biz.pubaccount.weishi_new.push.IWSPushBaseStrategy;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushOpModel;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
+import com.tencent.biz.pubaccount.weishi_new.report.WSReportDc00898.1;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tribe.async.async.Boss;
-import com.tribe.async.async.Bosses;
-import dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView;
-import java.util.List;
+import com.tencent.ttpic.baseutils.device.DeviceUtils;
+import java.util.HashMap;
+import java.util.Map;
 import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
 public class vkf
-  implements Handler.Callback, View.OnClickListener, vkl
 {
-  public static float a;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private RecyclerView.LayoutManager jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bmyf jdField_a_of_type_Bmyf;
-  private StoryFormSwitchItem jdField_a_of_type_ComTencentBizQqstoryAlbumViewStoryFormSwitchItem;
-  private SlideProgressNotifier jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier;
-  private SpeedFlexibleRecyclerView jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private via jdField_a_of_type_Via;
-  private vjx jdField_a_of_type_Vjx;
-  private vkj jdField_a_of_type_Vkj;
-  private vkk jdField_a_of_type_Vkk;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private Runnable jdField_b_of_type_JavaLangRunnable;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private long jdField_c_of_type_Long;
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean;
-  private int jdField_e_of_type_Int;
-  private boolean jdField_e_of_type_Boolean;
-  private int jdField_f_of_type_Int;
-  private boolean jdField_f_of_type_Boolean;
-  private int jdField_g_of_type_Int;
-  private boolean jdField_g_of_type_Boolean;
-  private int jdField_h_of_type_Int;
-  private boolean jdField_h_of_type_Boolean;
-  private int jdField_i_of_type_Int;
-  private boolean jdField_i_of_type_Boolean;
-  private boolean j;
-  private boolean k;
+  private static final String[] a = { "frdvideoplay_clk", "frdvideoplay_clk_ws", "frdvideoplay_dl_ws", "frdvideoplay_dl_fin", "frdvideoplay_install" };
+  private static final String[] b = { "qzonevideo_exp_ws", "qzonevideo_clk_ws", "qzonevideo_dl_ws", "qzonevideo_dl_fin", "qzonevideo_install" };
   
-  static
+  public static String a()
   {
-    jdField_a_of_type_Float = 0.85F;
+    String str = "Other";
+    int i = NetworkUtil.getSystemNetwork(BaseApplicationImpl.getApplication());
+    if (i == 1) {
+      str = "WiFi";
+    }
+    do
+    {
+      return str;
+      if (i == 2) {
+        return "2G";
+      }
+      if (i == 3) {
+        return "3G";
+      }
+    } while (i != 4);
+    return "4G";
   }
   
-  private static float a(int paramInt1, int paramInt2, float paramFloat)
+  private static String a(int paramInt)
   {
-    return 1.0F - (paramInt1 - paramInt2) * paramFloat / paramInt1;
+    if (paramInt == 1) {
+      return "weishi_share_officialacc";
+    }
+    if (paramInt == 2) {
+      return "weishi_share_trendstab";
+    }
+    return "";
   }
   
-  public static float a(vjx paramvjx, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat, int paramInt5)
+  public static String a(int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramvjx.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-    localLayoutParams.width = ((int)(paramvjx.jdField_a_of_type_AndroidViewView.getWidth() * 0.95F));
-    paramvjx.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
-    paramvjx.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramvjx.jdField_a_of_type_AndroidWidgetTextView.getTextColors().withAlpha((int)(255.0F * paramFloat)));
-    paramvjx.c.setTextColor(paramvjx.c.getTextColors().withAlpha((int)(178.5F * paramFloat)));
-    paramvjx.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramvjx.jdField_b_of_type_AndroidWidgetTextView.getTextColors().withAlpha((int)(153.0F * paramFloat)));
-    float f1 = 0.2F * paramFloat + 0.8F;
-    paramvjx.jdField_a_of_type_AndroidWidgetLinearLayout.setScaleX(f1);
-    paramvjx.jdField_a_of_type_AndroidWidgetLinearLayout.setScaleY(f1);
-    paramvjx.jdField_a_of_type_ComTencentBizQqstoryAlbumViewRoundCornerLayout.setAlpha(jdField_a_of_type_Float);
-    f1 = a(paramInt2, paramInt1, 1.0F - paramFloat);
-    float f2 = a(paramInt4, paramInt3, 1.0F - paramFloat);
-    paramvjx.jdField_a_of_type_ComTencentBizQqstoryAlbumViewRoundCornerLayout.setScaleX(f1);
-    paramvjx.jdField_a_of_type_ComTencentBizQqstoryAlbumViewRoundCornerLayout.setScaleY(f2);
-    f1 = jdField_a_of_type_Float;
-    f2 = jdField_a_of_type_Float;
-    paramvjx.jdField_a_of_type_ComTencentBizQqstoryAlbumViewRoundCornerLayout.setAlpha(f1 * paramFloat + f2);
-    QLog.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", 4, " setVideoItemScale i=" + paramInt5 + " percent=" + paramFloat);
-    return paramFloat;
+    boolean bool = true;
+    if (paramstSimpleMetaFeed == null) {
+      return "";
+    }
+    stWaterFallCardStyle localstWaterFallCardStyle = paramstSimpleMetaFeed.waterFallCardStyle;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("position", Integer.valueOf(paramInt + 1));
+    if (localstWaterFallCardStyle != null)
+    {
+      paramInt = localstWaterFallCardStyle.cardType;
+      localHashMap.put("cardtype", Integer.valueOf(paramInt));
+      localHashMap.put("feedid", paramstSimpleMetaFeed.id);
+      localHashMap.put("poolType", Integer.valueOf(paramstSimpleMetaFeed.videoPoolType));
+      if (localstWaterFallCardStyle == null) {
+        break label192;
+      }
+      paramInt = localstWaterFallCardStyle.ratioW;
+      label94:
+      localHashMap.put("ratioW", Integer.valueOf(paramInt));
+      if (localstWaterFallCardStyle == null) {
+        break label197;
+      }
+      paramInt = localstWaterFallCardStyle.ratioH;
+      label115:
+      localHashMap.put("ratioH", Integer.valueOf(paramInt));
+      if ((localstWaterFallCardStyle == null) || (!localstWaterFallCardStyle.isFullSpan)) {
+        break label202;
+      }
+    }
+    for (;;)
+    {
+      localHashMap.put("isFullSpan", Boolean.valueOf(bool));
+      localHashMap.put("dynamic_cover", Integer.valueOf(0));
+      localHashMap.put("cover_type", vnd.a(paramstSimpleMetaFeed));
+      return new JSONObject(localHashMap).toString();
+      paramInt = 1;
+      break;
+      label192:
+      paramInt = 0;
+      break label94;
+      label197:
+      paramInt = 0;
+      break label115;
+      label202:
+      bool = false;
+    }
   }
   
-  private void a(long paramLong)
+  public static String a(int paramInt, boolean paramBoolean)
   {
-    ThreadManager.getUIHandler().postDelayed(new AlbumGalleryCapturePart.8(this), paramLong);
+    String str1 = "";
+    String str2 = "";
+    switch (paramInt)
+    {
+    }
+    while (paramBoolean)
+    {
+      return str1;
+      str1 = "videolay_prof_dl_fin";
+      str2 = "videolay_prof_install";
+      continue;
+      str1 = "videoplay_title_dl_fin";
+      str2 = "videoplay_title_install";
+      continue;
+      str1 = "popup_dl_fin";
+      str2 = "popup_install";
+      continue;
+      str1 = "popup_dl_ws_fin";
+      str2 = "popup_ws_install";
+      continue;
+      str1 = "follow_dl_fin";
+      str2 = "follow_install";
+      continue;
+      str1 = "videolay_tag_dl_fin";
+      str2 = "videolay_tag_install";
+      continue;
+      str1 = "msg_dl_fin";
+      str2 = "msg_install";
+      continue;
+      str1 = "feeds_dl_ws_fin";
+      str2 = "feeds_dl_ws_install";
+      continue;
+      str1 = "dtest_dl_fin";
+      str2 = "dtest_dl_install";
+      continue;
+      str1 = "lens_dl_ws_fin";
+      str2 = "lens_install";
+      continue;
+      str1 = "feeds_popup_dl_fin";
+      str2 = "feeds_popup_install";
+      continue;
+      str1 = "popup_dl_fin";
+      str2 = "popup_install";
+      continue;
+      str1 = "feeds_opcard_dl_ws_fin";
+      str2 = "feeds_opcard_install_ws";
+      continue;
+      str1 = "ftest_dl_ws_fin";
+      str2 = "ftest_dl_ws_install";
+      continue;
+      str1 = "home_msg_bubble_dl_fin";
+      str2 = "home_msg_bubble_install";
+      continue;
+      str1 = "home_msg_menu_dl_fin";
+      str2 = "home_msg_menu_install";
+      continue;
+      str1 = "home_ps_menu_dl_fin";
+      str2 = "home_ps_menu_install";
+    }
+    return str2;
   }
   
-  private void a(boolean paramBoolean)
+  public static String a(WSRedDotPushMsg paramWSRedDotPushMsg)
+  {
+    int i = 0;
+    HashMap localHashMap = new HashMap();
+    String str1;
+    boolean bool;
+    if (paramWSRedDotPushMsg != null)
+    {
+      str1 = paramWSRedDotPushMsg.mFeedIds;
+      String str2 = paramWSRedDotPushMsg.mPushId;
+      bool = vnd.a(paramWSRedDotPushMsg);
+      paramWSRedDotPushMsg = str2;
+    }
+    for (;;)
+    {
+      localHashMap.put("feed_id", str1);
+      localHashMap.put("push_id", paramWSRedDotPushMsg);
+      if (bool) {
+        i = 1;
+      }
+      localHashMap.put("preload_status", Integer.valueOf(i));
+      localHashMap.put("networkType", a());
+      localHashMap.put("ipAddress", DeviceUtils.getLocalIpAddress());
+      return new JSONObject(localHashMap).toString();
+      str1 = "0";
+      paramWSRedDotPushMsg = "0";
+      bool = false;
+    }
+  }
+  
+  public static String a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3)
+  {
+    HashMap localHashMap = new HashMap();
+    String str = paramString2;
+    if (TextUtils.isEmpty(paramString2)) {
+      str = "0";
+    }
+    paramString2 = paramString1;
+    if (TextUtils.isEmpty(paramString1)) {
+      paramString2 = "0";
+    }
+    localHashMap.put("feed_id", str);
+    localHashMap.put("push_id", paramString2);
+    localHashMap.put("preload_status", Integer.valueOf(paramInt2));
+    localHashMap.put("feeds_list_type", Integer.valueOf(paramInt3));
+    localHashMap.put("preload_count", Integer.valueOf(paramInt1));
+    localHashMap.put("networkType", a());
+    localHashMap.put("ipAddress", DeviceUtils.getLocalIpAddress());
+    return new JSONObject(localHashMap).toString();
+  }
+  
+  public static void a()
+  {
+    a("officialacc_weishi", "feeds_clk", 0, 0, -1L, 0L, "", b());
+    a("weishi_share_officialacc", "feeds_clk_ws", 0, 0, -1L, 0L, "", b());
+  }
+  
+  public static void a(int paramInt)
+  {
+    a("weishi_share_officialacc", "start_dl_ws_fin", paramInt, 0, vau.a().b(), 0L, "", "");
+  }
+  
+  public static void a(int paramInt1, int paramInt2)
+  {
+    a("weishi_share_officialacc", "start_install_ws", paramInt2, 0, paramInt1, 0L, "", "");
+  }
+  
+  public static void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    vmp.c("898", "optionId:" + paramInt3);
+    String str1 = vnd.a(4);
+    String str2 = String.valueOf(paramInt3);
+    switch (paramInt1)
+    {
+    default: 
+      return;
+    case 6: 
+      a("weishi_share_officialacc", "msg_entry_exp", paramInt2, 0, 0L, 0L, str2, str1);
+      return;
+    case 115: 
+      a("weishi_share_officialacc", "msg_dl_ws", paramInt2, 0, 0L, 0L, str2, str1);
+      return;
+    case 114: 
+      a("weishi_share_officialacc", "msg_clk_ws", paramInt2, 0, 0L, 0L, str2, str1);
+      return;
+    case 140: 
+      a("weishi_share_officialacc", "msg_clk_h5", paramInt2, 0, 0L, 0L, str2, str1);
+      return;
+    }
+    a("weishi_share_officialacc", "msg_clk", paramInt2, 0, 0L, 0L, str2, str1);
+  }
+  
+  public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    paramInt3 += 1;
+    vmp.d("898", "optionId:" + paramInt4);
+    String str = String.valueOf(paramInt4);
+    switch (paramInt1)
+    {
+    default: 
+      return;
+    case 6: 
+      a("weishi_share_officialacc", "feeds_op_card_exp", paramInt2, 0, paramInt3, 0L, str, b());
+      return;
+    case 112: 
+      a("weishi_share_officialacc", "feeds_op_card_clk", paramInt2, 0, paramInt3, 0L, str, b());
+      return;
+    case 115: 
+      a("weishi_share_officialacc", "feeds_opcard_dl_ws", paramInt2, 0, paramInt3, 0L, str, b());
+      return;
+    case 114: 
+      a("weishi_share_officialacc", "feeds_opcard_clk_ws", paramInt2, 0, paramInt3, 0L, str, b());
+      return;
+    }
+    a("weishi_share_officialacc", "feeds_opcard_clk_h5", paramInt2, 0, paramInt3, 0L, str, b());
+  }
+  
+  public static void a(int paramInt1, int paramInt2, String paramString)
+  {
+    a("officialacc_weishi", "gzh_clk_H5", paramInt1, 0, paramInt2, 0L, paramString, "");
+  }
+  
+  public static void a(int paramInt, Object paramObject)
+  {
+    ThreadManager.getSubThreadHandler().post(new WSReportDc00898.1(paramInt, paramObject));
+  }
+  
+  public static void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramInt == 1) {
+      a("officialacc_weishi", "weishi_share_officialacc", paramBoolean1, paramBoolean2);
+    }
+    while (paramInt != 2) {
+      return;
+    }
+    a("trandstab_weishi", "weishi_share_trendstab", paramBoolean1, paramBoolean2);
+  }
+  
+  public static void a(WSDownloadParams paramWSDownloadParams, int paramInt)
+  {
+    if (paramWSDownloadParams == null) {
+      return;
+    }
+    a("weishi_share_officialacc", "start_dl_ws", paramInt, 0, vau.a().b(), 0L, "", paramWSDownloadParams.mTestId);
+  }
+  
+  public static void a(WSRedDotPushMsg paramWSRedDotPushMsg)
+  {
+    IWSPushBaseStrategy localIWSPushBaseStrategy;
+    Object localObject;
+    int i;
+    int k;
+    int j;
+    if (paramWSRedDotPushMsg != null)
+    {
+      localIWSPushBaseStrategy = paramWSRedDotPushMsg.mStrategyInfo;
+      if (!(localIWSPushBaseStrategy instanceof WSPushStrategyInfo)) {
+        break label134;
+      }
+      localObject = (WSPushStrategyInfo)localIWSPushBaseStrategy;
+      if (((WSPushStrategyInfo)localObject).mWSPushModel == null) {
+        break label129;
+      }
+      i = ((WSPushStrategyInfo)localObject).mWSPushModel.a;
+      k = ((WSPushStrategyInfo)localObject).getType();
+      j = i;
+      i = k;
+    }
+    for (;;)
+    {
+      k = i;
+      if (i == 3) {
+        k = 1;
+      }
+      long l1;
+      long l2;
+      if (zfn.a(BaseApplicationImpl.getApplication().getApplicationContext()))
+      {
+        l1 = 1L;
+        l2 = j;
+        localObject = paramWSRedDotPushMsg.mPushId;
+        if (localIWSPushBaseStrategy == null) {
+          break label123;
+        }
+      }
+      label123:
+      for (paramWSRedDotPushMsg = localIWSPushBaseStrategy.getAbTest();; paramWSRedDotPushMsg = "")
+      {
+        a("officialacc_weishi", "push_text_clk", k, 0, l1, l2, (String)localObject, paramWSRedDotPushMsg);
+        return;
+        l1 = 0L;
+        break;
+      }
+      label129:
+      i = 0;
+      break;
+      label134:
+      i = 0;
+      j = 0;
+    }
+  }
+  
+  public static void a(WSRedDotPushMsg paramWSRedDotPushMsg, boolean paramBoolean)
+  {
+    int i;
+    if ((paramWSRedDotPushMsg != null) && (paramWSRedDotPushMsg.mStrategyInfo != null))
+    {
+      i = paramWSRedDotPushMsg.mStrategyInfo.getType();
+      if (!paramBoolean) {
+        break label51;
+      }
+    }
+    label51:
+    for (paramWSRedDotPushMsg = "1";; paramWSRedDotPushMsg = "2")
+    {
+      a("trandstab_weishi", "trandstab_clk", i, 0, 0L, 0L, paramWSRedDotPushMsg, "");
+      return;
+      i = 0;
+      break;
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString3, String paramString4)
+  {
+    bdla.b(null, "dc00898", "", "", paramString1, paramString2, paramInt1, paramInt2, String.valueOf(paramLong1), String.valueOf(paramLong2), paramString3, paramString4);
+  }
+  
+  private static void a(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
+    {
+      a(paramString1, "network_popup_exp", 0, 0, 0L, 0L, "", "");
+      return;
+    }
+    if (paramBoolean2)
+    {
+      a(paramString2, "network_dl_confirm", 0, 0, 0L, 0L, "", "");
+      return;
+    }
+    a(paramString1, "network_dl_cancel", 0, 0, 0L, 0L, "", "");
+  }
+  
+  public static void a(Map<String, String> paramMap)
+  {
+    a("officialacc_weishi", "recommend_report_fail", 0, 0, 0L, 0L, new JSONObject(paramMap).toString(), "");
+  }
+  
+  public static void a(vgb paramvgb, boolean paramBoolean)
+  {
+    if ((paramvgb == null) || (paramvgb.a == null)) {
+      return;
+    }
+    paramvgb = vkq.a(paramvgb, paramBoolean);
+    a("officialacc_weishi", "focus_video_play", 0, 0, 0L, 0L, new Gson().toJson(paramvgb), vnd.a(9));
+  }
+  
+  public static void a(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(amtj.a(2131699308));
+      a("weishi_share_zhibo", "zhibo_feeds_clk", 0, 0, 0L, 0L, "", b());
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(amtj.a(2131699330));
+    a("weishi_share_zhibo", "zhibo_feeds_exp", 0, 0, 0L, 0L, "", b());
   }
   
-  private void b(vil paramvil)
+  public static void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, String paramString)
   {
-    xvv.a("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "preload album :%s", paramvil);
-    if ((this.jdField_b_of_type_Long == -1L) || (System.currentTimeMillis() - this.jdField_b_of_type_Long >= 30000L))
+    if ((paramInt1 < 0) || (paramInt1 >= a.length))
     {
-      ylg.a().a(paramvil);
-      ylg.a().h();
-    }
-  }
-  
-  private void c()
-  {
-    if (!this.jdField_a_of_type_Via.a())
-    {
-      xvv.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "load data error ,detect user close scan!");
+      QLog.w("WSReportDc00898", 1, "reportSummon: wrong type " + paramInt1);
       return;
     }
-    Bosses.get().postJob(new vki(this));
-  }
-  
-  private void c(vil paramvil)
-  {
-    if (paramvil.jdField_d_of_type_Int == 1)
-    {
-      this.jdField_a_of_type_Vkj.b();
-      xwa.a("video_shoot_slides", "clk_selectbutton", 0, 0, new String[0]);
+    if (paramInt2 == 0) {
+      paramBoolean1 = true;
     }
-    do
+    QLog.d("WSReportDc00898", 4, "reportSummon: " + paramBoolean1 + " " + paramInt1 + " " + paramInt2 + " " + paramBoolean2 + "" + paramString);
+    String str1;
+    String str2;
+    long l2;
+    if (paramBoolean1)
     {
-      return;
-      if (paramvil.jdField_d_of_type_Int == 4)
-      {
-        this.jdField_a_of_type_Vkj.b();
-        xwa.a("video_shoot_slides", "clk_noalbum", 0, 0, new String[0]);
-        return;
-      }
-      if (paramvil.jdField_d_of_type_Int == 5)
-      {
-        xwa.a("video_shoot_slides", "clk_research", 0, 0, new String[0]);
-        if (!ypp.a(this.jdField_a_of_type_AndroidAppActivity))
-        {
-          QQToast.a(this.jdField_a_of_type_AndroidAppActivity, amtj.a(2131699339), 0).a();
-          return;
-        }
-        c();
-        return;
-      }
-    } while (paramvil.jdField_d_of_type_Int != 3);
-    d();
-    xwa.a("video_shoot_slides", "clk_onalbum", 0, 0, new String[0]);
-  }
-  
-  private void d()
-  {
-    xvv.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "open album");
-    this.jdField_a_of_type_Via.a(true);
-    c();
-    a();
-  }
-  
-  private void d(vil paramvil)
-  {
-    if (this.k)
-    {
-      xvv.e("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "you have clicked album when handling");
-      return;
-    }
-    this.k = true;
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
-    xwa.a("video_shoot_slides", "clk_makebutton", 0, 0, new String[] { String.valueOf(paramvil.d()) });
-    Bosses.get().postJob(new vkg(this, paramvil));
-  }
-  
-  private void e()
-  {
-    boolean bool = this.jdField_a_of_type_Via.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryAlbumViewStoryFormSwitchItem.setChecked(bool);
-    a(bool);
-  }
-  
-  private void f()
-  {
-    vil localvil = this.jdField_a_of_type_Vkk.a();
-    if (localvil != null)
-    {
-      if (!localvil.a()) {
+      str1 = "frdvideoplay_weishi";
+      str2 = a[paramInt1];
+      l2 = paramInt2;
+      if (!paramBoolean2) {
         break label173;
       }
-      if ((localvil.jdField_d_of_type_Int == 1) || (localvil.jdField_d_of_type_Int == 4))
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131699340));
-        this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-      }
     }
-    else
-    {
-      return;
-    }
-    if (localvil.jdField_d_of_type_Int == 3)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131699315));
-      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-      return;
-    }
-    if (localvil.jdField_d_of_type_Int == 5)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131699320));
-      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-      return;
-    }
-    if (localvil.jdField_d_of_type_Int == 2)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131699309));
-      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131699311));
-    this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
-    return;
     label173:
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131699316));
-    this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-  }
-  
-  private void g() {}
-  
-  public float a(View paramView)
-  {
-    int m = Math.min(paramView.getLeft(), this.jdField_a_of_type_Int - paramView.getRight());
-    float f1 = this.jdField_c_of_type_Int / 2.0F;
-    f1 = (m + f1) / (this.jdField_a_of_type_Int / 2.0F);
-    if (f1 < 0.0F) {
-      return 0.0F;
-    }
-    if (f1 > 1.0F) {
-      return 1.0F;
-    }
-    return f1;
-  }
-  
-  public void a()
-  {
-    int n = this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.getChildCount();
-    int m = 0;
-    for (;;)
+    for (long l1 = 1L;; l1 = 0L)
     {
-      if (m < n)
-      {
-        Object localObject = this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.getChildAt(m);
-        float f1 = a((View)localObject);
-        localObject = (vjx)this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.getChildViewHolder((View)localObject);
-        if (localObject != null) {
-          a((vjx)localObject, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, this.jdField_e_of_type_Int, this.jdField_f_of_type_Int, f1, m);
-        }
-        if (f1 <= 0.8F) {
-          break label134;
-        }
-        if (this.jdField_i_of_type_Int == m) {
-          break label107;
-        }
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1003);
-      }
-      for (;;)
-      {
-        this.jdField_i_of_type_Int = m;
-        return;
-        label107:
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1003);
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1003, 300L);
-      }
-      label134:
-      m += 1;
-    }
-  }
-  
-  public void a(vil paramvil)
-  {
-    if (this.j) {
-      xvv.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "album scrolling , select ignore :%s", new Object[] { paramvil });
-    }
-    while (paramvil == null) {
+      a(str1, str2, 0, 0, l2, l1, paramString, "");
       return;
+      str1 = "qzonevideo_weishi";
+      str2 = b[paramInt1];
+      break;
     }
-    xvv.a("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "on album select :%s", paramvil);
-    if (paramvil.a())
-    {
-      c(paramvil);
-      return;
-    }
-    d(paramvil);
   }
   
-  public void a(vil paramvil, int paramInt)
+  public static void a(boolean paramBoolean, WSDownloadParams paramWSDownloadParams)
   {
-    a(300L);
-  }
-  
-  public void b()
-  {
-    f();
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    int m = 0;
-    boolean bool2 = false;
-    switch (paramMessage.what)
-    {
-    }
-    label215:
-    label353:
+    if (paramWSDownloadParams == null) {}
+    String str;
     do
     {
-      do
-      {
-        return true;
-        paramMessage = this.jdField_a_of_type_Bmyf.a(this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.getLayoutManager());
-        if (paramMessage == null)
-        {
-          xvv.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "on handle find snap msg , not found snap view !");
-          return true;
-        }
-        vjx localvjx = (vjx)this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.getChildViewHolder(paramMessage);
-        if ((this.jdField_a_of_type_Vjx != null) && (this.jdField_a_of_type_Vjx != localvjx)) {
-          this.jdField_a_of_type_Vjx.c();
-        }
-        if ((localvjx != null) && (this.jdField_a_of_type_Vjx != localvjx))
-        {
-          localvjx.jdField_a_of_type_ComTencentBizQqstoryAlbumViewRoundCornerLayout.setAlpha(1.0F);
-          xvv.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "SNAP, startPlay");
-          localvjx.b();
-          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager.getPosition(paramMessage) == 0) && (!this.jdField_a_of_type_Boolean)) {
-            this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.postDelayed(new AlbumGalleryCapturePart.11(this), 3500L);
-          }
-        }
-        this.jdField_a_of_type_Vjx = localvjx;
-        int n = this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.getChildAdapterPosition(paramMessage);
-        if (n != this.jdField_a_of_type_Vkk.a())
-        {
-          m = 1;
-          this.jdField_a_of_type_Vkk.a(this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView, n);
-          boolean bool1 = bool2;
-          if (this.jdField_d_of_type_Boolean)
-          {
-            bool1 = bool2;
-            if (m != 0) {
-              bool1 = true;
-            }
-          }
-          this.jdField_d_of_type_Boolean = bool1;
-          f();
-          this.jdField_h_of_type_Int = Math.max(this.jdField_a_of_type_Vkk.a(), this.jdField_h_of_type_Int);
-          paramMessage = this.jdField_a_of_type_Vkk.a();
-          if ((paramMessage != null) && (!paramMessage.a()) && (m != 0)) {
-            b(this.jdField_a_of_type_Vkk.a());
-          }
-          if ((paramMessage != null) && (paramMessage.a()))
-          {
-            if (paramMessage.jdField_d_of_type_Int != 1) {
-              break label353;
-            }
-            this.jdField_e_of_type_Boolean = true;
-          }
-        }
-        while (this.jdField_c_of_type_Boolean)
-        {
-          g();
-          return true;
-          m = 0;
-          break label215;
-          if (paramMessage.jdField_d_of_type_Int == 4) {
-            this.jdField_f_of_type_Boolean = true;
-          } else if (paramMessage.jdField_d_of_type_Int == 3) {
-            this.jdField_h_of_type_Boolean = true;
-          } else if (paramMessage.jdField_d_of_type_Int == 5) {
-            this.jdField_g_of_type_Boolean = true;
-          } else if (paramMessage.jdField_d_of_type_Int != 2) {}
-        }
-        paramMessage = this.jdField_a_of_type_Vkk.a();
-        if (this.jdField_a_of_type_Long != -1L) {
-          while (m < paramMessage.size())
-          {
-            if (((vil)paramMessage.get(m)).a() == this.jdField_a_of_type_Long)
-            {
-              this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager.scrollToPosition(m);
-              a(200L);
-              this.jdField_a_of_type_Long = -1L;
-              xvv.a("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "start ,scroll to position %d automatically", Integer.valueOf(m));
-              return true;
-            }
-            m += 1;
-          }
-        }
-      } while ((this.jdField_g_of_type_Int < 0) || (this.jdField_g_of_type_Int >= paramMessage.size()));
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager.scrollToPosition(this.jdField_g_of_type_Int);
-      a(200L);
-      this.jdField_g_of_type_Int = -1;
-      xvv.a("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "start ,scroll to position %d automatically", Integer.valueOf(this.jdField_g_of_type_Int));
-      return true;
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, amtj.a(2131699326), 0).a();
-      this.jdField_a_of_type_Vkk.b();
-      return true;
-      xvv.a("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "handle msg ,showAfterLoadingTip : %s", Boolean.valueOf(this.jdField_d_of_type_Boolean));
-    } while (!this.jdField_d_of_type_Boolean);
-    m = this.jdField_a_of_type_Vkk.a();
-    this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.smoothScrollToPosition(m + 1);
-    a(200L);
-    this.jdField_d_of_type_Boolean = false;
-    return true;
+      return;
+      str = a(paramWSDownloadParams.mScene);
+    } while (TextUtils.isEmpty(str));
+    if (paramBoolean)
+    {
+      a(str, "dl_clk_QQdownloader", 0, 0, 0L, 0L, "", paramWSDownloadParams.mTestId);
+      return;
+    }
+    a(str, "dl_clk_officialdownloader", vau.a().b(), 0, 0L, 0L, "", paramWSDownloadParams.mTestId);
   }
   
-  public void onClick(View paramView)
+  public static String b()
   {
-    switch (paramView.getId())
+    return vnd.a(1);
+  }
+  
+  public static void b()
+  {
+    a("trandstab_weishi", "push_clk", 0, 0, 0L, 0L, "", "");
+  }
+  
+  public static void b(int paramInt)
+  {
+    a("weishi_share_officialacc", "start_install_ws_fin", paramInt, 0, 0L, 0L, "", "");
+  }
+  
+  public static void b(int paramInt1, int paramInt2, int paramInt3)
+  {
+    vmp.c("898", "optionId:" + paramInt3);
+    String str = String.valueOf(paramInt3);
+    switch (paramInt1)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+    default: 
       return;
-      vil localvil = this.jdField_a_of_type_Vkk.a();
-      if (localvil != null)
-      {
-        long l = SystemClock.uptimeMillis();
-        if (l - this.jdField_c_of_type_Long > 500L) {
-          a(localvil);
-        }
-        for (;;)
-        {
-          this.jdField_c_of_type_Long = l;
-          break;
-          xvv.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "you click too fast, wait...");
-        }
-        if (this.jdField_a_of_type_Vkj != null)
-        {
-          this.jdField_a_of_type_Vkj.a();
-          continue;
-          if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0)
-          {
-            this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-            this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846342);
-          }
-          for (;;)
-          {
-            xwa.a("video_shoot_slides", "clk_setting", 0, 0, new String[0]);
-            break;
-            this.jdField_i_of_type_Boolean = true;
-            e();
-            this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-            this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846343);
-          }
-          this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846342);
-        }
-      }
+    case 6: 
+      a("officialacc_weishi", "comment_popup_exp", 0, 0, 0L, 0L, str, "");
+      return;
     }
+    a("weishi_share_officialacc", "comment_popup_clk", paramInt2, 0, 0L, 0L, str, "");
+  }
+  
+  public static void b(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      a("officialacc_weishi", "blanktips_clk", 0, 0, 0L, 0L, "", "");
+      return;
+    }
+    a("officialacc_weishi", "blanktips_exp", 0, 0, 0L, 0L, "", "");
+  }
+  
+  public static void c()
+  {
+    a("officialacc_weishi", "focus_exp", 0, 0, 0L, 0L, UserAction.getQIMEI(), vnd.a(9));
+  }
+  
+  public static void c(int paramInt)
+  {
+    if (paramInt == 2) {
+      a("officialacc_weishi", "videoplay_update_exp", 0, 0, 0L, 0L, "", "");
+    }
+    while (paramInt != 6) {
+      return;
+    }
+    a("trandstab_weishi", "videoplay_update_exp", 0, 0, 0L, 0L, "", "");
+  }
+  
+  public static void c(int paramInt1, int paramInt2, int paramInt3)
+  {
+    vmp.d("898", "optionId:" + paramInt3);
+    String str = String.valueOf(paramInt3);
+    switch (paramInt1)
+    {
+    default: 
+      return;
+    case 6: 
+      a("weishi_share_officialacc", "feeds_popup_exp", paramInt2, 0, 0L, 0L, str, b());
+      return;
+    case 112: 
+      a("weishi_share_officialacc", "feeds_popup_clk", paramInt2, 0, 0L, 0L, str, b());
+      return;
+    case 115: 
+      a("weishi_share_officialacc", "feeds_popup_dl_ws", paramInt2, 0, 0L, 0L, str, b());
+      return;
+    case 114: 
+      a("weishi_share_officialacc", "feeds_popup_clk_ws", paramInt2, 0, 0L, 0L, str, b());
+      return;
+    }
+    a("officialacc_weishi", "feeds_popup_close", paramInt2, 0, 0L, 0L, str, b());
+  }
+  
+  private static String d()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("networkType", a());
+    localHashMap.put("ipAddress", DeviceUtils.getLocalIpAddress());
+    return new JSONObject(localHashMap).toString();
+  }
+  
+  public static void d(int paramInt)
+  {
+    a("trandstab_weishi", "trandstab_clk_H5", paramInt, 0, 0L, 0L, "", "");
   }
 }
 

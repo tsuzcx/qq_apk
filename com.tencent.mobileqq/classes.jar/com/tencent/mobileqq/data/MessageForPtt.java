@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
-import afcb;
-import amtj;
+import afth;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import avws;
-import bcmx;
-import bftf;
-import bfxf;
-import bjkf;
+import anvx;
+import axcu;
+import bdtx;
+import bhbx;
+import bhfx;
+import bkvq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -41,7 +41,7 @@ import tencent.im.msg.im_msg_body.RichText;
 
 public class MessageForPtt
   extends MessageForRichText
-  implements afcb, avws
+  implements afth, axcu
 {
   public static final int PTT_SIZE_ANIM_START = -2;
   public static final int PTT_SIZE_RECV_ERROR = -4;
@@ -89,7 +89,7 @@ public class MessageForPtt
   public String storageSource;
   public int sttAbility = 0;
   @notColumn
-  private volatile bcmx sttResult;
+  private volatile bdtx sttResult;
   public String sttText;
   public int subVersion = 5;
   public String timeStr;
@@ -567,7 +567,7 @@ public class MessageForPtt
     //   908: aload_0
     //   909: aload_0
     //   910: getfield 367	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
-    //   913: invokestatic 438	bfti:a	(Ljava/lang/String;)LActionMsg/MsgBody;
+    //   913: invokestatic 438	bhca:a	(Ljava/lang/String;)LActionMsg/MsgBody;
     //   916: getfield 441	ActionMsg/MsgBody:msg	Ljava/lang/String;
     //   919: putfield 367	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
     //   922: iconst_1
@@ -692,7 +692,7 @@ public class MessageForPtt
     //   1161: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1164: aload_0
     //   1165: getfield 367	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
-    //   1168: invokestatic 477	bftf:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   1168: invokestatic 477	bhbx:a	(Ljava/lang/String;)Ljava/lang/String;
     //   1171: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1174: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1177: invokestatic 163	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -717,7 +717,7 @@ public class MessageForPtt
     //   1222: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1225: aload_0
     //   1226: getfield 367	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
-    //   1229: invokestatic 477	bftf:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   1229: invokestatic 477	bhbx:a	(Ljava/lang/String;)Ljava/lang/String;
     //   1232: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1235: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1238: invokestatic 163	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -857,7 +857,7 @@ public class MessageForPtt
     if (TextUtils.isEmpty(this.md5)) {}
     try
     {
-      this.md5 = bjkf.a(new File(getLocalFilePath()));
+      this.md5 = bkvq.a(new File(getLocalFilePath()));
       serial();
       if ((this.istroop == 1) || (this.istroop == 3000))
       {
@@ -881,7 +881,7 @@ public class MessageForPtt
           localResvAttr = new generalflags.ResvAttr();
           if (this.waveformArray != null)
           {
-            localResvAttr.bytes_pb_ptt_waveform.set(ByteStringMicro.copyFrom(bfxf.a(this.waveformArray).toByteArray()));
+            localResvAttr.bytes_pb_ptt_waveform.set(ByteStringMicro.copyFrom(bhfx.a(this.waveformArray).toByteArray()));
             ((im_msg_body.GeneralFlags)localObject1).bytes_pb_reserve.set(ByteStringMicro.copyFrom(localResvAttr.toByteArray()));
           }
           localElem.general_flags.set((MessageMicro)localObject1);
@@ -913,7 +913,7 @@ public class MessageForPtt
         generalflags.ResvAttr localResvAttr = new generalflags.ResvAttr();
         if (this.waveformArray != null)
         {
-          localResvAttr.bytes_pb_ptt_waveform.set(ByteStringMicro.copyFrom(bfxf.a(this.waveformArray).toByteArray()));
+          localResvAttr.bytes_pb_ptt_waveform.set(ByteStringMicro.copyFrom(bhfx.a(this.waveformArray).toByteArray()));
           ((im_msg_body.GeneralFlags)localObject2).bytes_pb_reserve.set(ByteStringMicro.copyFrom(localResvAttr.toByteArray()));
         }
         localElem.general_flags.set((MessageMicro)localObject2);
@@ -921,15 +921,15 @@ public class MessageForPtt
     }
   }
   
-  public bcmx getSttResult()
+  public bdtx getSttResult()
   {
     try
     {
       if (this.sttResult == null) {
-        this.sttResult = new bcmx();
+        this.sttResult = new bdtx();
       }
-      bcmx localbcmx = this.sttResult;
-      return localbcmx;
+      bdtx localbdtx = this.sttResult;
+      return localbdtx;
     }
     finally {}
   }
@@ -937,14 +937,14 @@ public class MessageForPtt
   public String getSummaryMsg()
   {
     if (hasSttTxt()) {
-      return BaseApplicationImpl.sApplication.getResources().getString(2131691173) + this.sttText;
+      return BaseApplicationImpl.sApplication.getResources().getString(2131691258) + this.sttText;
     }
-    return amtj.a(2131705725);
+    return anvx.a(2131706076);
   }
   
   public boolean hasSttTxt()
   {
-    return (!StringUtil.isEmpty(this.sttText)) && (!BaseApplicationImpl.sApplication.getResources().getString(2131718622).equals(this.sttText)) && (this.sttAbility != 3);
+    return (!StringUtil.isEmpty(this.sttText)) && (!BaseApplicationImpl.sApplication.getResources().getString(2131719011).equals(this.sttText)) && (this.sttAbility != 3);
   }
   
   public boolean isReady()
@@ -1022,7 +1022,7 @@ public class MessageForPtt
         ((RichMsg.PttRec)localObject2).msgTime.set(this.msgTime);
         ((RichMsg.PttRec)localObject2).msgRecTime.set(this.msgRecTime);
         ((RichMsg.PttRec)localObject2).voiceType.set(this.voiceType);
-        ((RichMsg.PttRec)localObject2).voiceLength.set(bftf.a(this.voiceLength));
+        ((RichMsg.PttRec)localObject2).voiceLength.set(bhbx.a(this.voiceLength));
         ((RichMsg.PttRec)localObject2).voiceChangeFlag.set(this.voiceChangeFlag);
         ((RichMsg.PttRec)localObject2).busiType.set(this.busiType);
         ((RichMsg.PttRec)localObject2).directUrl.set(this.directUrl);
@@ -1080,7 +1080,7 @@ public class MessageForPtt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForPtt
  * JD-Core Version:    0.7.0.1
  */

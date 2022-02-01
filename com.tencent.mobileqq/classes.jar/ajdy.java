@@ -1,30 +1,10 @@
-import android.util.Pair;
-import android.view.View;
-import com.tencent.mobileqq.activity.home.MainFragment;
-import java.util.List;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 
 public class ajdy
-  implements bjoe
 {
-  public ajdy(MainFragment paramMainFragment, List paramList, bjnw parambjnw) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityHomeMainFragment.f();
-    if ((paramInt < 0) && (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
-      return;
-    }
-    try
-    {
-      MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHomeMainFragment, ((Integer)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).first).intValue(), (ajee)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).second);
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-    }
-    catch (Throwable paramView)
-    {
-      paramView.printStackTrace();
-    }
-  }
+  public int a;
+  public TroopInfo a;
+  public String a;
 }
 
 

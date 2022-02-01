@@ -1,29 +1,17 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class akds
-  implements akdv
+class akds
+  implements View.OnClickListener
 {
-  public akds(DoodleLayout paramDoodleLayout) {}
+  akds(akdn paramakdn) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a(paramInt1, paramInt2);
-    }
-  }
-  
-  public void b()
-  {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a(this.a.a(true, false));
-    }
+    akdn.a(this.a, paramView);
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

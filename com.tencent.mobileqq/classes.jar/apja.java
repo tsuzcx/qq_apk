@@ -1,6 +1,16 @@
-public abstract interface apja
+import android.os.Build;
+import com.tencent.mobileqq.utils.StringUtil;
+
+public class apja
 {
-  public abstract void a(boolean paramBoolean, apjg paramapjg);
+  public static boolean a(String paramString)
+  {
+    if (StringUtil.isEmpty(paramString)) {}
+    while (!("" + Build.MANUFACTURER).equalsIgnoreCase(paramString)) {
+      return false;
+    }
+    return true;
+  }
 }
 
 

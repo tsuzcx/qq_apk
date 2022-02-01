@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import agxo;
-import ayfu;
+import ahqp;
+import ahvi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class MiniAppInfo
@@ -19,7 +20,7 @@ public class MiniAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839191;
+    return 2130839211;
   }
   
   public int getAppID()
@@ -48,13 +49,13 @@ public class MiniAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131697917);
+    return BaseApplicationImpl.getContext().getString(2131698200);
   }
   
-  public void onPlusPanelAppClick(ayfu paramayfu, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    agxo.a(paramBaseChatPie.app).a(paramBaseChatPie.mActivity, paramBaseChatPie);
-    paramayfu.b(paramBaseChatPie);
+    ahqp.a(paramBaseChatPie.app).a(paramBaseChatPie.mActivity, paramBaseChatPie);
+    paramahvi.b(paramBaseChatPie);
   }
 }
 

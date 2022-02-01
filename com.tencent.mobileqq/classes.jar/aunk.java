@@ -1,54 +1,27 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import io.flutter.plugin.common.MethodCall;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodChannel.Result;
+import io.flutter.plugin.common.MethodCodec;
+import io.flutter.plugin.common.StandardMethodCodec;
 
-class aunk
-  extends BroadcastReceiver
+public abstract class aunk
+  implements MethodChannel.MethodCallHandler
 {
-  aunk(aunj paramaunj) {}
+  public static final MethodCodec a = StandardMethodCodec.INSTANCE;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected abstract void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, Integer paramInteger1, Integer paramInteger2, Integer paramInteger3, String paramString5, String paramString6, Boolean paramBoolean, MethodChannel.Result paramResult);
+  
+  public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
   {
-    paramContext = paramIntent.getAction();
-    int j = paramIntent.getIntExtra("key_state", -1);
-    if (aunj.a(this.a)) {
-      aunj.a(this.a, j);
-    }
-    if (paramContext.equals(aunx.a(aunj.a(this.a))))
+    String str = paramMethodCall.method;
+    QLog.d("flutter.ReporterChannel", 1, String.format("onMethodCall methodName=%s", new Object[] { str }));
+    if ("report".equals(str))
     {
-      paramContext = (aunl)aunj.a(this.a).get();
-      if (paramContext != null) {
-        paramContext.a(j, paramIntent.getExtras());
-      }
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("GroupVideoManager.IVPluginLoader", 2, "state:" + j);
-        }
-        paramContext = aunj.jdField_a_of_type_ArrayOfInt;
-        int k = paramContext.length;
-        int i = 0;
-        while (i < k)
-        {
-          if ((j == paramContext[i]) && (aunj.b(this.a)))
-          {
-            aunj.a().unregisterReceiver(this.a.jdField_a_of_type_AndroidContentBroadcastReceiver);
-            aunj.a(this.a, false);
-          }
-          i += 1;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("GroupVideoManager.IVPluginLoader", 2, "loadListener null");
-        }
-      }
-      if ((aunj.c(this.a)) && (j == 4))
-      {
-        aunj.a().unregisterReceiver(this.a.jdField_a_of_type_AndroidContentBroadcastReceiver);
-        aunj.a(this.a, false);
-      }
+      a(((Integer)paramMethodCall.argument("tableTarget")).intValue(), (String)paramMethodCall.argument("opUin"), (String)paramMethodCall.argument("targetUin"), (String)paramMethodCall.argument("opType"), (String)paramMethodCall.argument("opName"), (Integer)paramMethodCall.argument("entry"), (Integer)paramMethodCall.argument("reserved1"), (Integer)paramMethodCall.argument("reserved2"), (String)paramMethodCall.argument("reserved3"), (String)paramMethodCall.argument("reserved4"), (Boolean)paramMethodCall.argument("immediate"), paramResult);
+      return;
     }
+    paramResult.notImplemented();
   }
 }
 

@@ -1,54 +1,73 @@
-import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import java.io.File;
+import java.util.Map;
 
-public class yiq
+class yiq
+  extends wbz
 {
-  public static final String a(int paramInt, boolean paramBoolean)
+  public yiq(yin paramyin)
   {
-    if (paramInt >= 86400000) {
-      return "unknow";
-    }
-    int i = (int)Math.floor(paramInt / 3600000);
-    int j = (int)Math.floor(paramInt % 3600000) / 60000;
-    if (paramBoolean) {}
-    for (paramInt = Math.round(paramInt % 60000 / 1000.0F); i > 0; paramInt = (int)Math.floor(paramInt % 60000 / 1000)) {
-      return String.format("%02d:%02d:%02d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramInt) });
-    }
-    return String.format("%02d:%02d", new Object[] { Integer.valueOf(j), Integer.valueOf(paramInt) });
+    super("Q.qqstory.download.preload.FeedVideoPreloader");
   }
   
-  public static final String a(String paramString)
+  public void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, wbk paramwbk)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      throw new NullPointerException("MusicComposeDialog.createMusicFilePath() musicUrl is null");
-    }
-    File localFile = new File(vkm.f);
-    if ((!localFile.exists()) || (!localFile.isDirectory())) {
-      localFile.mkdirs();
-    }
-    paramString = vkm.f + bjkz.a(paramString) + "." + ypi.c(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("zivonchen", 2, "createMusicFilePath destPath = " + paramString);
-    }
-    return paramString;
+    super.a(paramString, paramInt1, paramErrorMessage, paramInt2, paramwbk);
+    a(paramString, paramInt1, paramErrorMessage, paramwbk);
   }
   
-  public static void a(BaseActivity paramBaseActivity, int paramInt)
+  protected void a(String paramString, int paramInt, ErrorMessage paramErrorMessage, wbk paramwbk)
   {
-    paramInt = MusicProviderView.a(paramInt);
-    Intent localIntent = new Intent(paramBaseActivity, QQBrowserActivity.class);
-    localIntent.putExtra("url", String.format("https://ti.qq.com/music/index.html?_wv=5&_bid=2831&device_id=%s&client_ip=%s&bustype=%s", new Object[] { DeviceInfoUtil.getIMEI(), "", Integer.valueOf(paramInt) }));
-    localIntent.putExtra("finish_animation_up_down", true);
-    paramBaseActivity.startActivityForResult(localIntent, 1000);
-    paramBaseActivity.overridePendingTransition(2130771979, 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("MusicUtils", 1, new Object[] { "music busType:", Integer.valueOf(paramInt) });
+    yip localyip = this.a.jdField_a_of_type_Yip;
+    if (localyip == null) {}
+    label14:
+    label168:
+    do
+    {
+      break label14;
+      do
+      {
+        return;
+      } while (!TextUtils.equals(paramString, localyip.jdField_a_of_type_JavaLangString));
+      if (paramErrorMessage.isFail()) {
+        if (!TextUtils.isEmpty(localyip.b)) {
+          break label135;
+        }
+      }
+      for (paramErrorMessage = paramErrorMessage.errorMsg;; paramErrorMessage = paramErrorMessage.errorMsg + " | " + paramErrorMessage.errorMsg)
+      {
+        localyip.b = paramErrorMessage;
+        localyip.jdField_a_of_type_Int = (paramInt + 1000);
+        if ((!paramwbk.a.containsKey("handleCallback")) || (localyip.jdField_a_of_type_Boolean)) {
+          break;
+        }
+        localyip.jdField_a_of_type_Boolean = true;
+        if (!this.a.a(paramString)) {
+          break label168;
+        }
+        if (this.a.jdField_a_of_type_Yir == null) {
+          break;
+        }
+        this.a.jdField_a_of_type_Yir.a(paramString, paramwbk.d);
+        return;
+      }
+    } while (this.a.jdField_a_of_type_Yir == null);
+    label135:
+    this.a.jdField_a_of_type_Yir.a(paramString, paramwbk.d, localyip.a());
+  }
+  
+  public void b(String paramString, int paramInt1, File paramFile, int paramInt2, wbk paramwbk)
+  {
+    super.b(paramString, paramInt1, paramFile, paramInt2, paramwbk);
+    a(paramString, paramInt1, new ErrorMessage(), paramwbk);
+  }
+  
+  public void b(String paramString, int paramInt, wbk paramwbk)
+  {
+    super.b(paramString, paramInt, paramwbk);
+    if ((this.a.jdField_a_of_type_Yir != null) && ((paramInt == 0) || (paramInt == 1))) {
+      this.a.jdField_a_of_type_Yir.b(paramString, paramwbk.d);
     }
   }
 }

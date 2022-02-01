@@ -1,53 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqprotect.qsec.IRuntimeInterface;
-import com.tencent.qqprotect.qsec.QSecFramework;
-import mqq.app.MobileQQ;
-
 public class bjhp
-  implements bjip, IRuntimeInterface
 {
-  private static volatile bjhp a;
-  
-  private bjhp()
+  public static String a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    QSecFramework.a(4L, new bjhq(this));
-  }
-  
-  public static bjhp a()
-  {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new bjhp();
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  public void a(String paramString, byte[] paramArrayOfByte, bjiq parambjiq)
-  {
-    try
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-      if (parambjiq != null)
-      {
-        nmb.a(localQQAppInterface, new bjhs(paramArrayOfByte, parambjiq), paramArrayOfByte, paramString);
-        return;
-      }
-      nmb.a(localQQAppInterface, new bjhr(this), paramArrayOfByte, paramString);
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public String getInterfaceName()
-  {
-    return "CSP";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("||||||||||");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramInt3);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramInt4);
+    localStringBuilder.append("|");
+    return localStringBuilder.toString();
   }
 }
 

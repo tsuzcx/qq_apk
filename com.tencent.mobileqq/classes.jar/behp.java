@@ -1,37 +1,60 @@
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.IBinder;
+import android.os.Parcel;
 
 class behp
+  implements behn
 {
-  private bjyw jdField_a_of_type_Bjyw = new bjyw();
+  private IBinder a;
   
-  public behp(beho parambeho)
+  behp(IBinder paramIBinder)
   {
-    this.jdField_a_of_type_Bjyw.a();
+    this.a = paramIBinder;
   }
   
-  public int a(long paramLong1, long paramLong2)
+  public IBinder asBinder()
   {
-    int j = this.jdField_a_of_type_Bjyw.a(BaseApplication.getContext(), paramLong2, paramLong1, 1048576);
-    int k = bjyz.a(BaseApplication.getContext());
-    int i;
-    if (k != 1)
-    {
-      i = j;
-      if (k != 2) {}
-    }
-    else
-    {
-      i = j;
-      if (j > 16384) {
-        i = 16384;
-      }
-    }
-    return i;
+    return this.a;
   }
   
-  public void a()
+  public void onComplete(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Bjyw.b();
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.theme.IDownloadListener");
+      localParcel1.writeString(paramString);
+      localParcel1.writeInt(paramInt);
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void onProgress(String paramString, long paramLong1, long paramLong2)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.theme.IDownloadListener");
+      localParcel1.writeString(paramString);
+      localParcel1.writeLong(paramLong1);
+      localParcel1.writeLong(paramLong2);
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
 }
 

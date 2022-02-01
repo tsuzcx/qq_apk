@@ -1,22 +1,30 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
 
 public class ants
-  extends anrh
 {
-  public ants(QQAppInterface paramQQAppInterface, Context paramContext)
+  public static String a(String paramString)
   {
-    super(paramQQAppInterface, paramContext);
-  }
-  
-  private boolean C()
-  {
-    return true;
-  }
-  
-  public boolean a()
-  {
-    return C();
+    String str2 = "";
+    String str1 = str2;
+    int i;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      i = paramString.lastIndexOf("diydoutu@");
+      str1 = str2;
+      if (i >= 0) {
+        str1 = paramString.substring(i, paramString.length());
+      }
+    }
+    paramString = str1;
+    if (!TextUtils.isEmpty(str1))
+    {
+      i = str1.lastIndexOf(".");
+      paramString = str1;
+      if (i >= 0) {
+        paramString = str1.substring(0, i);
+      }
+    }
+    return paramString;
   }
 }
 

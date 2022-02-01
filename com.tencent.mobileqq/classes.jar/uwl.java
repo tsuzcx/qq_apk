@@ -1,16 +1,28 @@
-import UserGrowth.stPublisherReq;
-import UserGrowth.stPublisherRsp;
+import java.util.List;
+import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.IdlePushWakeParam;
 
 public class uwl
-  extends urg<stPublisherRsp>
+  implements pwk
 {
-  public uwl()
+  private static uwl a = new uwl();
+  
+  public static void a()
   {
-    super("Publisher", 10004);
-    stPublisherReq localstPublisherReq = new stPublisherReq();
-    this.a = localstPublisherReq;
-    uya.b("GetPublisherRequest", "stSimpleGetFeedDetailReq = " + localstPublisherReq.toString());
+    pwf.a(a);
   }
+  
+  public static void a(int paramInt) {}
+  
+  public static void a(List<oidb_cmd0x80a.IdlePushWakeParam> paramList) {}
+  
+  public static void b()
+  {
+    pwf.b(a);
+  }
+  
+  public void l() {}
+  
+  public void m() {}
 }
 
 

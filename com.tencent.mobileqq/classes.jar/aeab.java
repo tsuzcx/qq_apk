@@ -1,82 +1,194 @@
-import android.os.AsyncTask;
-import android.widget.TextView;
-import com.tencent.map.lib.basemap.data.GeoPoint;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.ContactCard;
+import com.tencent.mobileqq.data.Friends;
 import com.tencent.qphone.base.util.QLog;
-import org.apache.http.client.HttpClient;
+import java.util.ArrayList;
 
 public class aeab
-  extends AsyncTask<GeoPoint, Void, String>
+  extends CardObserver
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  protected GeoPoint a;
-  protected HttpClient a;
+  public aeab(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public aeab(QQMapActivity paramQQMapActivity, GeoPoint paramGeoPoint, TextView paramTextView)
+  public void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint = paramGeoPoint;
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
-    this.jdField_a_of_type_AndroidWidgetTextView.setTag(this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint);
-  }
-  
-  protected String a(GeoPoint... paramVarArgs)
-  {
-    int i = 0;
-    if (i < 3)
+    Object localObject2 = null;
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.profilecard.FrdProfileCard", 2, "onCardDownload() isSuccess = " + paramBoolean);
+    }
+    if ((this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null) || (TextUtils.isEmpty(this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))) {
+      return;
+    }
+    if ((nwu.c(this.a.app, this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)) || (bjxa.b(this.a.app, this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)))
     {
-      if (isCancelled())
+      nwu.a(this.a, null, this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, false, -1, true, -1);
+      this.a.finish();
+    }
+    boolean bool2 = ProfileActivity.AllInOne.g(this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
+    boolean bool1 = bool2;
+    if (this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 41) {
+      if (!TextUtils.isEmpty(this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))
       {
-        localObject = "";
-        label17:
-        return localObject;
+        bool1 = bool2;
+        if (!this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString.equals("0")) {}
       }
-      paramVarArgs = bfyn.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.getApplicationContext(), this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLatitudeE6() / 1000000.0D, this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6() / 1000000.0D, 3, this.jdField_a_of_type_OrgApacheHttpClientHttpClient);
-      StringBuilder localStringBuilder;
-      if (QLog.isColorLevel())
+      else
       {
-        localStringBuilder = new StringBuilder().append(i).append(" time: ReverseGeocode.getFromLocation, address: ");
-        if (paramVarArgs != null) {
-          break label125;
-        }
+        bool1 = false;
       }
-      label125:
-      for (Object localObject = "";; localObject = paramVarArgs)
+    }
+    Object localObject1;
+    if (((paramObject instanceof Card)) && (bool1))
+    {
+      Card localCard = (Card)paramObject;
+      bool2 = bhbx.a(this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, localCard.uin);
+      bool1 = bool2;
+      localObject1 = localObject2;
+      paramObject = localCard;
+      if ((localCard.lUserFlag & 1L) != 0L)
       {
-        QLog.i("fetch_address", 2, (String)localObject);
-        if (paramVarArgs != null)
-        {
-          localObject = paramVarArgs;
-          if (paramVarArgs.length() > 0) {
-            break label17;
+        aslc.a(this.a.app).a(this.a.app, localCard.uin, false);
+        paramObject = localCard;
+        localObject1 = localObject2;
+        bool1 = bool2;
+      }
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Bhie.a("initCardBySSOEnd", "initCardBySSOStart", false);
+      if ((bool1) && (paramObject != null) && (paramBoolean))
+      {
+        localObject1 = (FriendListHandler)this.a.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
+        if ((this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.e == null) && (localObject1 != null)) {
+          if (ProfileActivity.AllInOne.g(this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)) {
+            ((FriendListHandler)localObject1).getCustomHead(this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
           }
         }
-        i += 1;
+        for (;;)
+        {
+          if (this.a.jdField_a_of_type_Bkys == null) {
+            break label757;
+          }
+          localObject1 = this.a.jdField_a_of_type_Bkys.obtainMessage();
+          ((Message)localObject1).what = 8;
+          ((Message)localObject1).obj = paramObject;
+          this.a.jdField_a_of_type_Bkys.sendMessage((Message)localObject1);
+          return;
+          if (((paramObject instanceof ContactCard)) && (!bool1))
+          {
+            localObject1 = (ContactCard)paramObject;
+            bool1 = bhbx.a(((ContactCard)localObject1).mobileNo, this.a.a(FriendProfileCardActivity.a(this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)));
+            this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString = ((ContactCard)localObject1).mobileNo;
+            paramObject = this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne;
+            if ((paramObject != null) && (paramObject.jdField_a_of_type_JavaUtilArrayList != null) && (paramObject.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
+              ((ProfileActivity.CardContactInfo)paramObject.jdField_a_of_type_JavaUtilArrayList.get(0)).c = ((ContactCard)localObject1).mobileNo;
+            }
+            paramObject = null;
+            break;
+          }
+          if ((paramObject instanceof String))
+          {
+            paramObject = (String)paramObject;
+            if (bool1) {}
+            for (bool1 = bhbx.a(paramObject, this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);; bool1 = bhbx.a(paramObject, FriendProfileCardActivity.a(this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)))
+            {
+              paramObject = null;
+              localObject1 = localObject2;
+              break;
+            }
+          }
+          if ((!(paramObject instanceof Card)) || (bool1)) {
+            break label1213;
+          }
+          paramObject = (Card)paramObject;
+          bool1 = bhbx.a(this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.o, paramObject.encId);
+          this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString = paramObject.uin;
+          this.a.c = true;
+          localObject1 = localObject2;
+          break;
+          if (localObject1 != null) {
+            ((FriendListHandler)localObject1).getCustomHead(this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+          }
+        }
+        label757:
         break;
       }
+      if ((bool1) && (localObject1 != null) && (paramBoolean))
+      {
+        paramObject = (FriendListHandler)this.a.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
+        if ((paramObject != null) && (!TextUtils.isEmpty(((ContactCard)localObject1).mobileNo))) {
+          paramObject.getMobileQQHead(((ContactCard)localObject1).mobileNo);
+        }
+        this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.b = ((ContactCard)localObject1).bindQQ;
+        if (TextUtils.isEmpty(this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.k)) {
+          this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.k = this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h;
+        }
+        if (!TextUtils.isEmpty(((ContactCard)localObject1).nickName)) {
+          this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h = ((ContactCard)localObject1).nickName;
+        }
+        paramObject = (anvk)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+        if (!TextUtils.isEmpty(((ContactCard)localObject1).uin))
+        {
+          paramObject = paramObject.a(((ContactCard)localObject1).uin);
+          if (paramObject != null) {
+            this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.i = paramObject.remark;
+          }
+        }
+        this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqDataContactCard = ((ContactCard)localObject1);
+        if (QLog.isColorLevel()) {
+          QLog.d("ContactCard", 2, "contactCard .bindQQ = " + ((ContactCard)localObject1).bindQQ + " contactCard.uin  = " + ((ContactCard)localObject1).uin);
+        }
+        paramObject = Message.obtain();
+        paramObject.what = 4;
+        paramObject.obj = localObject1;
+        paramObject.arg1 = 1;
+        this.a.b.sendMessage(paramObject);
+        return;
+      }
+      if ((paramBoolean) || (this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqDataCard == null) || (this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId != -1L)) {
+        break;
+      }
+      QLog.e("Q.profilecard.FrdProfileCard", 1, "onCardDownload isSuccess = " + paramBoolean + ",lCurrentStyleId=-1");
+      this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId = azri.a;
+      this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqDataCard.templateRet = 0;
+      if (this.a.jdField_a_of_type_Bkys == null) {
+        break;
+      }
+      paramObject = this.a.jdField_a_of_type_Bkys.obtainMessage();
+      paramObject.what = 8;
+      paramObject.obj = this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqDataCard;
+      this.a.jdField_a_of_type_Bkys.sendMessage(paramObject);
+      return;
+      label1213:
+      bool1 = false;
+      paramObject = null;
+      localObject1 = localObject2;
     }
-    return "";
   }
   
-  protected void a(String paramString)
+  public void onGetDetailInfo(boolean paramBoolean, String paramString, Card paramCard)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("fetch_address", 2, "get address finish, onPostExecute, result:" + paramString);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    simpleUpdate(paramBoolean, paramString, paramCard);
+  }
+  
+  public void onGetLocationDescription(boolean paramBoolean, String paramString, Card paramCard)
+  {
+    if ((paramBoolean) && (paramCard != null) && (this.a.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString.equals(paramCard.uin)) && (this.a.jdField_a_of_type_Bkys != null))
     {
-      GeoPoint localGeoPoint = (GeoPoint)this.jdField_a_of_type_AndroidWidgetTextView.getTag();
-      if ((localGeoPoint.getLatitudeE6() == this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLatitudeE6()) && (localGeoPoint.getLongitudeE6() == this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6()) && (paramString != null) && (paramString.length() > 0))
-      {
-        if (!this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.k) {
-          break label115;
-        }
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      }
+      paramString = this.a.jdField_a_of_type_Bkys.obtainMessage();
+      paramString.what = 8;
+      paramString.obj = paramCard;
+      this.a.jdField_a_of_type_Bkys.sendMessage(paramString);
     }
-    return;
-    label115:
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.g = paramString;
   }
 }
 

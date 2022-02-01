@@ -1,9 +1,8 @@
-import android.view.View;
-import com.tencent.biz.qqstory.view.widget.InnerListView;
+import java.util.List;
 
 public abstract interface ysn
 {
-  public abstract void a(InnerListView paramInnerListView, View paramView, int paramInt);
+  public abstract void a(int paramInt, List<wkx> paramList);
 }
 
 

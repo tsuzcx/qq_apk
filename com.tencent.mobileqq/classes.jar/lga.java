@@ -1,17 +1,8 @@
-import android.util.Log;
-
-class lga
+public abstract interface lga
 {
-  Class<?> jdField_a_of_type_JavaLangClass;
-  String jdField_a_of_type_JavaLangString;
-  Class<?> b;
+  public abstract loj a();
   
-  void a(String paramString, long paramLong)
-  {
-    if ((this.b == null) || (this.jdField_a_of_type_JavaLangClass == null)) {
-      Log.d(paramString, "check ClassInfo, seq[" + paramLong + "], " + this.jdField_a_of_type_JavaLangString);
-    }
-  }
+  public abstract void a(String paramString, loj paramloj);
 }
 
 

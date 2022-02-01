@@ -1,21 +1,6 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionActivity;
-
-public class veo
-  extends Handler
+class veo
 {
-  public veo(PublicAccountImageCollectionActivity paramPublicAccountImageCollectionActivity) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    PublicAccountImageCollectionActivity.a(this.a);
-  }
+  private static final vem a = new vem();
 }
 
 

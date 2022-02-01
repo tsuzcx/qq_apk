@@ -63,12 +63,12 @@ public class QUAUtil
     if (!TextUtils.isEmpty(str)) {
       return str;
     }
-    return "1.8.0";
+    return "1.9.0";
   }
   
   public static String getQUA()
   {
-    return "V1_AND_MINISDK_1.8.0_0_RELEASE_B";
+    return "V1_AND_MINISDK_1.9.0_0_RELEASE_B";
   }
   
   public static String getRequestUA()

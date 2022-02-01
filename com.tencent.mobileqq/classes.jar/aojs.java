@@ -1,99 +1,24 @@
+import android.app.Activity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 class aojs
-  implements nnv
+  implements aojw
 {
-  aojs(aojq paramaojq, aojt paramaojt, ArrayList paramArrayList, aojp paramaojp) {}
+  aojs(aojq paramaojq, Activity paramActivity, long paramLong1, long paramLong2, int paramInt, String paramString1, String paramString2) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void a(boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3) {}
+  
+  public void a(boolean paramBoolean, String paramString)
   {
-    QLog.d("AREngine_ARResourceManagerTools", 2, "Load offline package finish, code = " + paramInt + "param1" + paramString);
-    if (paramInt == 0) {
-      if (paramString == null) {
-        if (this.jdField_a_of_type_Aojt != null)
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_Aojp);
-          if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
-          {
-            this.jdField_a_of_type_Aojt.a(true);
-            this.jdField_a_of_type_Aojt.a(4, true);
-            this.jdField_a_of_type_Aojq.a();
-          }
-        }
-      }
-    }
-    label244:
-    do
+    QLog.d("AVGameShareUtil", 1, "getShareLinkCallback isSuccess: " + paramBoolean + " shareUrl: " + paramString);
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              for (;;)
-              {
-                return;
-                try
-                {
-                  paramString = new JSONObject(paramString);
-                  if (!paramString.has("data")) {
-                    break label244;
-                  }
-                  paramString = paramString.getJSONArray("data");
-                  if (((paramString.length() == 0) || (!paramString.getJSONObject(0).has("bid"))) || (this.jdField_a_of_type_Aojt != null))
-                  {
-                    this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_Aojp);
-                    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
-                    {
-                      this.jdField_a_of_type_Aojt.a(true);
-                      this.jdField_a_of_type_Aojt.a(4, true);
-                      this.jdField_a_of_type_Aojq.a();
-                      return;
-                    }
-                  }
-                }
-                catch (JSONException paramString)
-                {
-                  paramString.printStackTrace();
-                }
-              }
-            } while (this.jdField_a_of_type_Aojt == null);
-            this.jdField_a_of_type_Aojt.a(false);
-            this.jdField_a_of_type_Aojt.a(4, false);
-            this.jdField_a_of_type_Aojq.a();
-            return;
-            paramString = this.jdField_a_of_type_Aojt;
-          } while (paramString == null);
-          return;
-          if (paramInt != 7) {
-            break;
-          }
-        } while (this.jdField_a_of_type_Aojt == null);
-        this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_Aojp);
-      } while (this.jdField_a_of_type_JavaUtilArrayList.size() != 0);
-      this.jdField_a_of_type_Aojt.a(true);
-      this.jdField_a_of_type_Aojt.a(4, true);
-      this.jdField_a_of_type_Aojq.a();
+      new aojn(this.jdField_a_of_type_AndroidAppActivity, String.valueOf(this.jdField_a_of_type_Long), paramString, this.jdField_b_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString).c();
       return;
-    } while (this.jdField_a_of_type_Aojt == null);
-    this.jdField_a_of_type_Aojt.a(false);
-    this.jdField_a_of_type_Aojt.a(4, false);
-    this.jdField_a_of_type_Aojq.a();
-  }
-  
-  public void progress(int paramInt)
-  {
-    QLog.d("AREngine_ARResourceManagerTools", 2, "Load offline progress  = " + paramInt);
-    if (this.jdField_a_of_type_Aojt != null) {
-      this.jdField_a_of_type_Aojt.a(aojq.a(this.jdField_a_of_type_Aojq, 0L, paramInt));
     }
+    QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 1, 2131690497, 0).a();
   }
 }
 

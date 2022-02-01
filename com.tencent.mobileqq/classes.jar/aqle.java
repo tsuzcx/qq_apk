@@ -1,69 +1,70 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class aqle
-  extends aptq<aqlb>
+class aqle
+  extends aqlq
 {
-  public static aqlb a()
+  aqle(aqlc paramaqlc) {}
+  
+  public void a(boolean paramBoolean, long paramLong)
   {
-    return (aqlb)apub.a().a(346);
+    if (aqlc.a(this.a) != paramLong) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("C2CShortcutBarObserver", 2, "onRecieveNewC2CShortcutAppListPush");
+      }
+    } while (!paramBoolean);
+    aqlc.a(this.a);
   }
   
-  @NonNull
-  public aqlb a(int paramInt)
+  protected void a(boolean paramBoolean, long paramLong, List<aqla> paramList)
   {
-    return new aqlb();
+    if (aqlc.a(this.a) != paramLong) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("C2CShortcutBarObserver", 2, "C2CShortcutBarAIOHelper onRequestC2cShortcutAppList");
+      }
+    } while (!paramBoolean);
+    paramList = aqlp.a(aqlc.a(this.a).app).a(Long.valueOf(paramLong));
+    aqlc.a(this.a).a(paramList);
+    this.a.h();
   }
   
-  @Nullable
-  public aqlb a(aptx[] paramArrayOfaptx)
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return aqlb.a(paramArrayOfaptx);
+    if ((aqlc.b(this.a) == null) || (aqlc.c(this.a).sessionInfo == null) || (TextUtils.isEmpty(aqlc.d(this.a).sessionInfo.curFriendUin))) {}
+    while ((!paramBoolean1) || (!aqlc.e(this.a).sessionInfo.curFriendUin.equals(paramString))) {
+      return;
     }
-    return null;
-  }
-  
-  public void a(aqlb paramaqlb)
-  {
-    if ((paramaqlb != null) && (!TextUtils.isEmpty(paramaqlb.d()))) {
-      ((bcws)BaseApplicationImpl.getApplication().getRuntime().getManager(272)).a(paramaqlb);
+    if (paramBoolean2)
+    {
+      this.a.h();
+      aqlc.a(this.a);
+      return;
     }
+    this.a.i();
   }
   
-  public Class<aqlb> clazz()
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    return aqlb.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 346;
+    if (QLog.isColorLevel()) {
+      QLog.d("C2CShortcutBarObserver", 2, "onSetGlobalSwitcherStatus isSuccess = " + paramBoolean1 + ",isGlobalOpen = " + paramBoolean2);
+    }
+    if ((paramBoolean1) && (!paramBoolean2)) {
+      this.a.i();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqle
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,12 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import amrg;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import antu;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.emoticonview.CommonUsedSystemEmojiManager;
@@ -19,32 +21,32 @@ public class GetCommonUsedSystemEmojiStep
   {
     SharedPreferences localSharedPreferences = this.a.app.getApp().getSharedPreferences("commonUsedSystemEmoji_sp", 0);
     long l = localSharedPreferences.getLong("lastRequestTime", 0L);
-    amrg localamrg = (amrg)this.a.app.getBusinessHandler(12);
+    antu localantu = (antu)this.a.app.getBusinessHandler(BusinessHandlerFactory.HANDLER_EMOSM);
     File localFile1 = new File(BaseApplicationImpl.sApplication.getFilesDir(), "commonusedSystemEmojiInfoFile_v2_" + this.a.app.getCurrentAccountUin());
     File localFile2 = new File(BaseApplicationImpl.sApplication.getFilesDir(), "commonusedSystemEmojiInfoFile_v3_" + this.a.app.getCurrentAccountUin());
     if ((!localFile1.exists()) && (!localFile2.exists()))
     {
       QLog.d("QQInitHandler", 1, "GetCommonUsedSystemEmojiStep file and fileV2  not exsist");
-      localamrg.b();
+      localantu.b();
       localSharedPreferences.edit().putLong("lastRequestTime", System.currentTimeMillis()).commit();
       return 7;
     }
     if ((localFile1.exists()) && (!localFile2.exists())) {
-      ((CommonUsedSystemEmojiManager)this.a.app.getManager(172)).copySystemEmojiFileToFileV2(localFile1, localFile2);
+      ((CommonUsedSystemEmojiManager)this.a.app.getManager(QQManagerFactory.COMMONUSED_SYSTEM_EMOJI_MANAGERT)).copySystemEmojiFileToFileV2(localFile1, localFile2);
     }
     if ((System.currentTimeMillis() - l > 43200000L) || (System.currentTimeMillis() - l < 0L))
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 2, "GetCommonUsedSystemEmojiStep send req");
       }
-      localamrg.b();
+      localantu.b();
       localSharedPreferences.edit().putLong("lastRequestTime", System.currentTimeMillis()).commit();
       return 7;
     }
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "GetCommonUsedSystemEmojiStep updateCacheFromFile");
     }
-    ((CommonUsedSystemEmojiManager)this.a.app.getManager(172)).getLocalSystemEmojiInfoFromFile();
+    ((CommonUsedSystemEmojiManager)this.a.app.getManager(QQManagerFactory.COMMONUSED_SYSTEM_EMOJI_MANAGERT)).getLocalSystemEmojiInfoFromFile();
     return 7;
   }
 }

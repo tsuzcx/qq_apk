@@ -1,33 +1,36 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.now.message.MessageReceivingAdapter;
+import com.tencent.mobileqq.now.widget.DecoratorViewPager;
 
-public class aypq
-  extends RecyclerView.OnScrollListener
+class aypq
+  implements ViewPager.OnPageChangeListener
 {
-  public aypq(StickyNoteShopLayout paramStickyNoteShopLayout) {}
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  aypq(aypp paramaypp) {}
+  
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    if (paramInt == 0)
+    if ((paramInt1 == 2) && (paramFloat > 0.4F))
     {
-      paramRecyclerView = StickyNoteShopLayout.a(this.a).getLayoutManager();
-      int i = 0;
-      if ((paramRecyclerView instanceof StaggeredGridLayoutManager))
+      if (this.jdField_a_of_type_Boolean)
       {
-        int[] arrayOfInt = new int[((StaggeredGridLayoutManager)paramRecyclerView).getSpanCount()];
-        arrayOfInt = ((StaggeredGridLayoutManager)paramRecyclerView).findLastVisibleItemPositions(arrayOfInt);
-        i = StickyNoteShopLayout.a(this.a, arrayOfInt);
+        this.jdField_a_of_type_Boolean = false;
+        aypp.a(this.jdField_a_of_type_Aypp);
       }
-      if ((paramRecyclerView.getChildCount() > 0) && (i >= paramRecyclerView.getItemCount() - 1))
-      {
-        this.a.a(true);
-        QLog.d("StickyNoteShopLayout", 2, " load more shop data newState:" + paramInt + " lastVisiblePosition:" + i);
-      }
+      aypp.a(this.jdField_a_of_type_Aypp).setCurrentItem(2);
     }
+    if (paramFloat == 0.0F) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    aypp.a(this.jdField_a_of_type_Aypp, paramInt);
+    aypp.a(this.jdField_a_of_type_Aypp, aypp.a(this.jdField_a_of_type_Aypp).a(paramInt));
   }
 }
 

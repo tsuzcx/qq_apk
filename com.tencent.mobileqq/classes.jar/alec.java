@@ -1,55 +1,44 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.content.ComponentName;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class alec
-  extends Handler
+class alec
+  implements View.OnClickListener
 {
-  public alec(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
+  alec(aldh paramaldh) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
+    Object localObject = QQPlayerService.a();
+    int i;
+    if (localObject != null)
     {
-    default: 
-    case 8193: 
-    case 8194: 
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            if (QQSpecialCareSettingActivity.a(this.a) == null)
-            {
-              QQSpecialCareSettingActivity.a(this.a, new bhht(this.a, this.a.getTitleBarHeight()));
-              if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String))) {
-                QQSpecialCareSettingActivity.a(this.a).a((String)paramMessage.obj);
-              }
-            }
-          } while ((this.a.isFinishing()) || (QQSpecialCareSettingActivity.a(this.a).isShowing()));
-          try
-          {
-            QQSpecialCareSettingActivity.a(this.a).show();
-            return;
-          }
-          catch (Exception paramMessage) {}
-        } while (!QLog.isColorLevel());
-        QLog.e("QQSpecialCareSettingActivity", 2, "QQProgressDialog show exception.", paramMessage);
-        return;
-      } while ((QQSpecialCareSettingActivity.a(this.a) == null) || (!QQSpecialCareSettingActivity.a(this.a).isShowing()));
-      QQSpecialCareSettingActivity.a(this.a).dismiss();
-      QQSpecialCareSettingActivity.a(this.a, null);
+      aldh.a(this.a).startActivity((Intent)localObject);
+      localObject = ((Intent)localObject).getComponent().getClassName();
+      if (!((String)localObject).equals(MusicPlayerActivity.class.getName())) {
+        break label132;
+      }
+      i = 0;
+    }
+    for (;;)
+    {
+      bdla.a(aldh.a(this.a).app, "dc00898", "", "", "0X8009EE4", "0X8009EE4", 1, 0, "", "", "", "");
+      bdla.b(aldh.a(this.a).app, "CliOper", "", "", "Msg_tab", "Mt_music_tips", 0, 0, "" + i, "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      label132:
+      if (((String)localObject).equals(MusicGeneQQBrowserActivity.class.getName())) {
+        i = 1;
+      } else {
+        i = -1;
+      }
     }
-    if (QQSpecialCareSettingActivity.a(this.a) != null) {
-      QQSpecialCareSettingActivity.a(this.a).cancel();
-    }
-    QQSpecialCareSettingActivity.a(this.a, QQToast.a(this.a, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight()));
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.richmedia;
 
 import android.content.Intent;
-import azzd;
-import azzj;
-import azzo;
+import bbfm;
+import bbfs;
+import bbfx;
 
 class FlowCameraActivity2$6
   implements Runnable
@@ -12,9 +12,9 @@ class FlowCameraActivity2$6
   
   public void run()
   {
-    Object localObject = azzj.a().a().a(this.this$0.a);
+    Object localObject = bbfs.a().a().a(this.this$0.a);
     if (localObject != null) {
-      ((azzd)localObject).a(103);
+      ((bbfm)localObject).a(103);
     }
     for (;;)
     {

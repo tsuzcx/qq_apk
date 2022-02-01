@@ -1,27 +1,34 @@
-import com.tencent.av.ui.RedbagToolbar;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.QavOperationMenuView;
 
 public class miq
-  implements mpu
+  implements mmu
 {
-  public miq(RedbagToolbar paramRedbagToolbar, mpe parammpe) {}
+  public miq(QavOperationMenuView paramQavOperationMenuView) {}
   
-  public void a(boolean paramBoolean)
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    if (paramBoolean) {}
-    for (paramBoolean = this.jdField_a_of_type_ComTencentAvUiRedbagToolbar.startActivity_SendRedBag(true);; paramBoolean = false)
+    switch (paramInt1)
     {
-      if (!paramBoolean)
+    case 1: 
+    default: 
+    case 2: 
+      do
       {
-        this.jdField_a_of_type_Mpe.a(false);
-        this.jdField_a_of_type_ComTencentAvUiRedbagToolbar.exitCurrentToolbar();
-      }
+        return;
+      } while (this.a.a == null);
+      this.a.a.a(paramString, paramInt2, false);
       return;
     }
+    if (this.a.a != null) {
+      this.a.a.a(paramString, paramInt2, true);
+    }
+    msa.c(2131373640);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     miq
  * JD-Core Version:    0.7.0.1
  */

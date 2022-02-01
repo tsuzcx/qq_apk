@@ -1,29 +1,54 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import tencent.im.s2c.msgtype0x210.submsgtype0x128.submsgtype0x128.MsgBody;
 
 public class acqh
-  implements View.OnClickListener
+  implements acpi
 {
-  public acqh(AddFriendVerifyActivity paramAddFriendVerifyActivity, int paramInt1, int paramInt2) {}
-  
-  public void onClick(View paramView)
+  private static void a(acnk paramacnk, MsgType0x210 paramMsgType0x210)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a("", null, "");
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X80077B4", "0X80077B4", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.b), "", "");
     if (QLog.isColorLevel()) {
-      QLog.d("AddFriendVerifyActivity", 2, "reportClickEvent action: 0X80077B4  sourceId = " + this.jdField_a_of_type_Int + " subSourceId = " + this.b);
+      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive submsgtype0x128,or 0x137" + paramMsgType0x210.uSubMsgType);
     }
-    if (bftf.b(AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity))) {
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X8008275", "0X8008275", 0, 0, "", "", "", "");
+    for (;;)
+    {
+      try
+      {
+        submsgtype0x128.MsgBody localMsgBody = new submsgtype0x128.MsgBody();
+        if (paramacnk.a(paramMsgType0x210))
+        {
+          localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+          paramacnk = (aslm)paramacnk.a().getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER);
+          if (paramMsgType0x210.uSubMsgType == 296L)
+          {
+            bool = true;
+            paramacnk.a(localMsgBody, bool);
+            QLog.d("Q.msg.BaseMessageProcessorExtendFriendLimitChat", 2, "SubMsgType0x27.ChatMatchInfo");
+          }
+        }
+        else
+        {
+          QLog.e("Q.msg.BaseMessageProcessor", 2, "submsgtype0x128 or 0x137 onLinePush vProto null   " + paramMsgType0x210.uSubMsgType);
+          return;
+        }
+      }
+      catch (Exception paramacnk)
+      {
+        QLog.e("Q.msg.BaseMessageProcessor", 1, "troopFormLog onLinePush receive submsgtype match chat0x128 decodeC2CMsgPkg_MsgType0x210 receive 0x128 push message, errInfo->" + paramacnk.getMessage());
+        return;
+      }
+      boolean bool = false;
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.c)) {
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00899", "Qidian", "", "0X8008802", "ClickAddFriendButton", 0, 0, "1", "", "", "");
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk, paramMsgType0x210);
+    return null;
   }
 }
 

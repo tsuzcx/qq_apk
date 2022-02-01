@@ -1,32 +1,28 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import aicl;
-import aico;
-import aicz;
-import aidk;
-import aidp;
-import aiea;
-import aied;
-import aief;
-import aiej;
-import aiez;
-import aifa;
-import aifb;
-import aifd;
-import aifl;
-import aifw;
-import aifx;
-import aify;
-import aifz;
-import aiga;
-import aigb;
-import aigc;
-import aigd;
-import aige;
-import amrc;
-import amsu;
-import amvo;
-import amwl;
+import aixk;
+import aixn;
+import aixy;
+import aiyj;
+import aiyo;
+import aiyz;
+import aizc;
+import aize;
+import aizi;
+import aizy;
+import aizz;
+import ajaa;
+import ajac;
+import ajak;
+import ajav;
+import ajaw;
+import ajax;
+import ajay;
+import ajaz;
+import ajba;
+import ajbb;
+import ajbc;
+import ajbd;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -41,11 +37,15 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import avsy;
-import avsz;
-import bcef;
-import bcsy;
-import bhht;
+import antq;
+import anvi;
+import anyb;
+import anyz;
+import awyz;
+import awza;
+import bdla;
+import bdzx;
+import bisl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.ContactBindedActivity;
 import com.tencent.mobileqq.activity.contact.connections.ThemeTabLayout;
@@ -53,6 +53,7 @@ import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp
 import com.tencent.mobileqq.activity.fling.FlingHandler;
 import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -61,36 +62,36 @@ import com.tencent.widget.SwipListView;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
-import tdu;
+import trf;
 
 public class SystemMsgListView
   extends BaseNewFriendView
-  implements View.OnClickListener, avsz, Observer
+  implements View.OnClickListener, awza, Observer
 {
   float jdField_a_of_type_Float = 0.0F;
   int jdField_a_of_type_Int = -1;
-  private aico jdField_a_of_type_Aico = new aigb(this);
-  private aidk jdField_a_of_type_Aidk;
-  private aiej jdField_a_of_type_Aiej;
-  private aifw jdField_a_of_type_Aifw;
-  amrc jdField_a_of_type_Amrc = new aiga(this);
-  amsu jdField_a_of_type_Amsu = new aifz(this);
-  private amvo jdField_a_of_type_Amvo;
-  amwl jdField_a_of_type_Amwl = new aige(this);
+  private aixn jdField_a_of_type_Aixn = new ajba(this);
+  private aiyj jdField_a_of_type_Aiyj;
+  private aizi jdField_a_of_type_Aizi;
+  private ajav jdField_a_of_type_Ajav;
   private Context jdField_a_of_type_AndroidContentContext;
   public Handler a;
-  private SparseArray<aidk> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private SparseArray<aiyj> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bhht jdField_a_of_type_Bhht;
+  antq jdField_a_of_type_Antq = new ajaz(this);
+  anvi jdField_a_of_type_Anvi = new ajay(this);
+  private anyb jdField_a_of_type_Anyb;
+  anyz jdField_a_of_type_Anyz = new ajbd(this);
+  private bisl jdField_a_of_type_Bisl;
   private ThemeTabLayout jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout;
   private FlingHandler jdField_a_of_type_ComTencentMobileqqActivityFlingFlingHandler;
-  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new aigc(this);
-  private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = new aigd(this);
+  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new ajbb(this);
+  private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = new ajbc(this);
   private SwipListView jdField_a_of_type_ComTencentWidgetSwipListView;
-  private tdu jdField_a_of_type_Tdu = new aify(this);
+  private trf jdField_a_of_type_Trf = new ajax(this);
   private int jdField_b_of_type_Int;
   private SparseArray<Boolean> jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
   private ViewGroup jdField_b_of_type_AndroidViewViewGroup;
@@ -101,7 +102,7 @@ public class SystemMsgListView
   public SystemMsgListView(Context paramContext, FlingHandler paramFlingHandler)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidOsHandler = new aifx(this);
+    this.jdField_a_of_type_AndroidOsHandler = new ajaw(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqActivityFlingFlingHandler = paramFlingHandler;
   }
@@ -109,10 +110,10 @@ public class SystemMsgListView
   private void a(Intent paramIntent)
   {
     int i = paramIntent.getIntExtra("EntranceId", 0);
-    this.jdField_a_of_type_Aifw = new aifw(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetSwipListView, this, i, this.jdField_a_of_type_ComTencentMobileqqActivityFlingFlingHandler);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_Aifw);
+    this.jdField_a_of_type_Ajav = new ajav(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetSwipListView, this, i, this.jdField_a_of_type_ComTencentMobileqqActivityFlingFlingHandler);
+    this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_Ajav);
     i();
-    this.jdField_a_of_type_Aidk = new aidk(23, 0, 0);
+    this.jdField_a_of_type_Aiyj = new aiyj(23, 0, 0);
   }
   
   private boolean a(int paramInt1, int paramInt2)
@@ -130,37 +131,37 @@ public class SystemMsgListView
   
   private void e(int paramInt)
   {
-    if ((((NewFriendActivity)this.jdField_a_of_type_AndroidContentContext).getActivity() == null) || (this.jdField_a_of_type_Aifw == null)) {}
+    if ((((NewFriendActivity)this.jdField_a_of_type_AndroidContentContext).getActivity() == null) || (this.jdField_a_of_type_Ajav == null)) {}
     do
     {
       return;
-      if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_Aifw.getCount()))
+      if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_Ajav.getCount()))
       {
         this.jdField_c_of_type_AndroidViewViewGroup.setVisibility(4);
         return;
       }
-      Object localObject = this.jdField_a_of_type_Aifw.getItem(paramInt);
-      if ((paramInt == 0) && (((localObject instanceof aied)) || ((localObject instanceof aief))))
+      Object localObject = this.jdField_a_of_type_Ajav.getItem(paramInt);
+      if ((paramInt == 0) && (((localObject instanceof aizc)) || ((localObject instanceof aize))))
       {
         this.jdField_c_of_type_AndroidViewViewGroup.setVisibility(4);
         return;
       }
-      if ((localObject instanceof aifl))
+      if ((localObject instanceof ajak))
       {
         this.jdField_c_of_type_AndroidViewViewGroup.setVisibility(4);
         return;
       }
-      if ((localObject instanceof aifd))
+      if ((localObject instanceof ajac))
       {
         this.jdField_c_of_type_AndroidViewViewGroup.setVisibility(4);
         return;
       }
-      if ((localObject instanceof aifb))
+      if ((localObject instanceof ajaa))
       {
         this.jdField_c_of_type_AndroidViewViewGroup.setVisibility(4);
         return;
       }
-    } while (paramInt + 1 >= this.jdField_a_of_type_Aifw.getCount());
+    } while (paramInt + 1 >= this.jdField_a_of_type_Ajav.getCount());
     f(paramInt);
   }
   
@@ -168,7 +169,7 @@ public class SystemMsgListView
   {
     int i = 0;
     Object localObject1;
-    if (((aiea)this.jdField_a_of_type_Aifw.getItem(paramInt) instanceof aiez))
+    if (((aiyz)this.jdField_a_of_type_Ajav.getItem(paramInt) instanceof aizy))
     {
       this.jdField_a_of_type_Int = paramInt;
       localObject1 = this.jdField_a_of_type_ComTencentWidgetSwipListView.getChildAt(0);
@@ -176,12 +177,12 @@ public class SystemMsgListView
       {
         this.jdField_c_of_type_AndroidViewViewGroup.setVisibility(0);
         Object localObject2 = ((View)localObject1).getTag();
-        if ((localObject2 instanceof aifa))
+        if ((localObject2 instanceof aizz))
         {
-          localObject2 = (aifa)localObject2;
-          if ((((aifa)localObject2).jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout != null))
+          localObject2 = (aizz)localObject2;
+          if ((((aizz)localObject2).jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout != null))
           {
-            float f = ((aifa)localObject2).jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout.a();
+            float f = ((aizz)localObject2).jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout.a();
             if (QLog.isColorLevel()) {
               QLog.d("Q.newfriendSystemMsgListView", 2, "visable position: scrollposOffset = " + f);
             }
@@ -189,17 +190,17 @@ public class SystemMsgListView
             this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout.setScrollPosition(f);
           }
         }
-        this.jdField_a_of_type_Aidk.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentWidgetSwipListView.getFirstVisiblePosition();
-        this.jdField_a_of_type_Aidk.jdField_c_of_type_Int = ((View)localObject1).getTop();
+        this.jdField_a_of_type_Aiyj.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentWidgetSwipListView.getFirstVisiblePosition();
+        this.jdField_a_of_type_Aiyj.jdField_c_of_type_Int = ((View)localObject1).getTop();
         int j = this.jdField_a_of_type_AndroidUtilSparseArray.size();
         paramInt = i;
         while (paramInt < j)
         {
-          localObject2 = (aidk)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(paramInt);
+          localObject2 = (aiyj)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(paramInt);
           if (localObject2 != null)
           {
-            ((aidk)localObject2).jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentWidgetSwipListView.getFirstVisiblePosition();
-            ((aidk)localObject2).jdField_c_of_type_Int = ((View)localObject1).getTop();
+            ((aiyj)localObject2).jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentWidgetSwipListView.getFirstVisiblePosition();
+            ((aiyj)localObject2).jdField_c_of_type_Int = ((View)localObject1).getTop();
           }
           paramInt += 1;
         }
@@ -231,51 +232,51 @@ public class SystemMsgListView
               }
             } while (!this.jdField_c_of_type_AndroidViewViewGroup.isShown());
             this.jdField_c_of_type_AndroidViewViewGroup.setVisibility(4);
-          } while (!((aiea)this.jdField_a_of_type_Aifw.getItem(paramInt + 1) instanceof aiez));
+          } while (!((aiyz)this.jdField_a_of_type_Ajav.getItem(paramInt + 1) instanceof aizy));
           localObject1 = this.jdField_a_of_type_ComTencentWidgetSwipListView.getChildAt(1);
         } while (localObject1 == null);
         localObject1 = ((View)localObject1).getTag();
-      } while (!(localObject1 instanceof aifa));
-      localObject1 = (aifa)localObject1;
+      } while (!(localObject1 instanceof aizz));
+      localObject1 = (aizz)localObject1;
       if (QLog.isColorLevel()) {
         QLog.d("Q.newfriendSystemMsgListView", 2, "invisable position: scrollposOffset = " + this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout.a());
       }
-    } while ((((aifa)localObject1).jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout == null));
-    ((aifa)localObject1).jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout.setScrollPosition(this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout.a());
+    } while ((((aizz)localObject1).jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout == null));
+    ((aizz)localObject1).jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout.setScrollPosition(this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout.a());
   }
   
   private void l()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Amrc, true);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Amsu);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Amwl);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aico);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Antq, true);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anvi);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anyz);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aixn);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().addObserver(this);
   }
   
   private void m()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Amrc);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Amsu);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Amwl);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aico);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Antq);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anvi);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anyz);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aixn);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().deleteObserver(this);
   }
   
   private void n()
   {
-    super.d(2131561484);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131370037));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131377139));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378707));
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131366123));
-    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)findViewById(2131378095));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131371813);
-    this.jdField_b_of_type_Int = getResources().getDimensionPixelSize(2131297428);
-    this.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131377138));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout = ((ThemeTabLayout)findViewById(2131378130));
+    super.d(2131561546);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131370209));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131377414));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379001));
+    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131366224));
+    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)findViewById(2131378383));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131372003);
+    this.jdField_b_of_type_Int = getResources().getDimensionPixelSize(2131297429);
+    this.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131377413));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout = ((ThemeTabLayout)findViewById(2131378418));
     a(this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout);
     this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(4);
     this.jdField_c_of_type_AndroidViewViewGroup.setVisibility(4);
@@ -283,7 +284,7 @@ public class SystemMsgListView
   
   public int a()
   {
-    return getResources().getDimensionPixelSize(2131299076);
+    return getResources().getDimensionPixelSize(2131299080);
   }
   
   public void a(int paramInt)
@@ -292,7 +293,7 @@ public class SystemMsgListView
       QLog.i("Q.newfriendSystemMsgListView", 2, "onBindStateChanged state: " + paramInt);
     }
     h();
-    this.jdField_a_of_type_Aifw.c();
+    this.jdField_a_of_type_Ajav.c();
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
@@ -300,28 +301,28 @@ public class SystemMsgListView
     switch (paramInt1)
     {
     }
-    label265:
+    label266:
     for (;;)
     {
       super.a(paramInt1, paramInt2, paramIntent);
       return;
-      this.jdField_a_of_type_Aifw.c();
+      this.jdField_a_of_type_Ajav.c();
       continue;
       if (QLog.isColorLevel()) {
         QLog.i("BindMsgConstant", 2, "REQ_CODE_BIND_NUMBER resultCode: " + paramInt1 + ", src: " + 15);
       }
       if (paramInt2 == -1)
       {
-        this.jdField_a_of_type_Aifw.c();
+        this.jdField_a_of_type_Ajav.c();
         continue;
         if (QLog.isColorLevel()) {
           QLog.i("BindMsgConstant", 2, "REQ_FOR_SETTING");
         }
-        if (this.jdField_a_of_type_Aifw.getCount() > 0) {}
-        for (Object localObject = this.jdField_a_of_type_Aifw.getItem(0);; localObject = null)
+        if (this.jdField_a_of_type_Ajav.getCount() > 0) {}
+        for (Object localObject = this.jdField_a_of_type_Ajav.getItem(0);; localObject = null)
         {
-          if ((!(localObject instanceof aief)) || (!((PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11)).a(true))) {
-            break label265;
+          if ((!(localObject instanceof aize)) || (!((PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER)).a(true))) {
+            break label266;
           }
           ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, -1, 2, null);
           break;
@@ -332,18 +333,18 @@ public class SystemMsgListView
   
   public void a(long paramLong) {}
   
-  protected void a(Intent paramIntent, aidp paramaidp)
+  protected void a(Intent paramIntent, aiyo paramaiyo)
   {
-    super.a(paramIntent, paramaidp);
-    this.jdField_a_of_type_Aiej = ((aiej)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34));
-    ((avsy)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11)).a(this);
+    super.a(paramIntent, paramaiyo);
+    this.jdField_a_of_type_Aizi = ((aizi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NEW_FRIEND_MANAGER));
+    ((awyz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER)).a(this);
     n();
     h();
     a(paramIntent);
     l();
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setDragEnable(true);
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setOnScrollListener(this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener);
-    this.jdField_a_of_type_Amvo = ((amvo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(159));
+    this.jdField_a_of_type_Anyb = ((anyb)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER));
   }
   
   public void a(View paramView)
@@ -353,24 +354,24 @@ public class SystemMsgListView
     }
     if (ThemeUtil.isDefaultTheme())
     {
-      paramView.setBackgroundResource(2130839437);
+      paramView.setBackgroundResource(2130839458);
       return;
     }
-    paramView.setBackgroundResource(2130850152);
+    paramView.setBackgroundResource(2130850254);
   }
   
   public void a(String paramString)
   {
     int k = 0;
     String str;
-    if (!((avsy)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11)).i())
+    if (!((awyz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER)).i())
     {
       str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getString("systemmsg_addFriendCount", "");
       if (!TextUtils.isEmpty(str)) {
-        break label65;
+        break label66;
       }
     }
-    label65:
+    label66:
     for (String[] arrayOfString = new String[0]; arrayOfString.length >= 3; arrayOfString = str.split(":")) {
       return;
     }
@@ -408,14 +409,14 @@ public class SystemMsgListView
     }
   }
   
-  public void a(ArrayList<aicz> paramArrayList, int paramInt)
+  public void a(ArrayList<aixy> paramArrayList, int paramInt)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout.b();
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout.a(this.jdField_a_of_type_Tdu);
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout.a(this.jdField_a_of_type_Trf);
       this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout.a(paramArrayList, paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout.setOnTabSelectedListener(this.jdField_a_of_type_Tdu);
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsThemeTabLayout.setOnTabSelectedListener(this.jdField_a_of_type_Trf);
     }
   }
   
@@ -438,11 +439,11 @@ public class SystemMsgListView
     if (QLog.isColorLevel()) {
       QLog.i("Q.newfriendSystemMsgListView", 2, "onResume");
     }
-    this.jdField_a_of_type_Aifw.g();
-    if (this.jdField_a_of_type_Aifw.b() == 23) {
-      this.jdField_a_of_type_Aifw.j();
+    this.jdField_a_of_type_Ajav.f();
+    if (this.jdField_a_of_type_Ajav.b() == 23) {
+      this.jdField_a_of_type_Ajav.j();
     }
-    this.jdField_a_of_type_Aifw.a(0L);
+    this.jdField_a_of_type_Ajav.a(0L);
   }
   
   public void c(int paramInt) {}
@@ -450,8 +451,8 @@ public class SystemMsgListView
   protected void d()
   {
     super.d();
-    if (this.jdField_a_of_type_Aifw.b() == 23) {
-      this.jdField_a_of_type_Aifw.i();
+    if (this.jdField_a_of_type_Ajav.b() == 23) {
+      this.jdField_a_of_type_Ajav.i();
     }
     if (QLog.isColorLevel()) {
       QLog.i("Q.newfriendSystemMsgListView", 2, "onPause");
@@ -461,8 +462,8 @@ public class SystemMsgListView
   protected void e()
   {
     super.e();
-    this.jdField_a_of_type_Aifw.e();
-    aicl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a();
+    this.jdField_a_of_type_Ajav.e();
+    aixk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a();
     if (QLog.isColorLevel()) {
       QLog.i("Q.newfriendSystemMsgListView", 2, "onStop");
     }
@@ -472,23 +473,23 @@ public class SystemMsgListView
   {
     super.f();
     m();
-    this.jdField_a_of_type_Aiej.f();
+    this.jdField_a_of_type_Aizi.f();
     this.jdField_a_of_type_AndroidUtilSparseArray.clear();
     this.jdField_b_of_type_AndroidUtilSparseArray.clear();
-    if (this.jdField_a_of_type_Aifw != null) {
-      this.jdField_a_of_type_Aifw.h();
+    if (this.jdField_a_of_type_Ajav != null) {
+      this.jdField_a_of_type_Ajav.h();
     }
-    bcsy.a().b();
-    ((avsy)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11)).b(this);
+    bdzx.a().b();
+    ((awyz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER)).b(this);
   }
   
   public void h()
   {
-    this.jdField_a_of_type_Aiej.j();
-    if (this.jdField_a_of_type_Aiej.a)
+    this.jdField_a_of_type_Aizi.j();
+    if (this.jdField_a_of_type_Aizi.a)
     {
-      this.jdField_a_of_type_ComTencentWidgetSwipListView.setOverscrollHeader(getResources().getDrawable(2130850016));
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80077C6", "0X80077C6", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_ComTencentWidgetSwipListView.setOverscrollHeader(getResources().getDrawable(2130850109));
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80077C6", "0X80077C6", 0, 0, "", "", "", "");
       return;
     }
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setOverscrollHeader(null);
@@ -498,7 +499,7 @@ public class SystemMsgListView
   {
     try
     {
-      if (this.jdField_a_of_type_Aifw.getCount() > 0)
+      if (this.jdField_a_of_type_Ajav.getCount() > 0)
       {
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
         this.jdField_a_of_type_AndroidViewView.setVisibility(8);
@@ -513,19 +514,19 @@ public class SystemMsgListView
   
   public void j()
   {
-    if (this.jdField_a_of_type_Bhht == null) {
-      this.jdField_a_of_type_Bhht = new bhht(this.jdField_a_of_type_AndroidContentContext, a());
+    if (this.jdField_a_of_type_Bisl == null) {
+      this.jdField_a_of_type_Bisl = new bisl(this.jdField_a_of_type_AndroidContentContext, a());
     }
-    this.jdField_a_of_type_Bhht.a(this.jdField_a_of_type_AndroidContentContext.getString(2131718142));
-    this.jdField_a_of_type_Bhht.show();
+    this.jdField_a_of_type_Bisl.a(this.jdField_a_of_type_AndroidContentContext.getString(2131718527));
+    this.jdField_a_of_type_Bisl.show();
   }
   
   public void k()
   {
-    if ((this.jdField_a_of_type_Bhht != null) && (this.jdField_a_of_type_Bhht.isShowing())) {
-      this.jdField_a_of_type_Bhht.dismiss();
+    if ((this.jdField_a_of_type_Bisl != null) && (this.jdField_a_of_type_Bisl.isShowing())) {
+      this.jdField_a_of_type_Bisl.dismiss();
     }
-    this.jdField_a_of_type_Bhht = null;
+    this.jdField_a_of_type_Bisl = null;
   }
   
   public void onClick(View paramView)
@@ -537,14 +538,14 @@ public class SystemMsgListView
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      aicl.a((Activity)this.jdField_a_of_type_AndroidContentContext);
-      bcef.b(null, "dc00898", "", "", "0X800A3A5", "0X800A3A5", 0, 0, "", "", "", "");
+      aixk.a((Activity)this.jdField_a_of_type_AndroidContentContext);
+      bdla.b(null, "dc00898", "", "", "0X800A3A5", "0X800A3A5", 0, 0, "", "", "", "");
     }
   }
   
   public void setSelection(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_Aifw.getCount())) {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_Ajav.getCount())) {
       this.jdField_a_of_type_ComTencentWidgetSwipListView.setSelection(paramInt);
     }
   }

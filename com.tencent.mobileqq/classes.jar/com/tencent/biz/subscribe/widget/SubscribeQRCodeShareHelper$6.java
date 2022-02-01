@@ -1,21 +1,21 @@
 package com.tencent.biz.subscribe.widget;
 
+import aaau;
 import android.content.Intent;
-import atky;
+import aupt;
 import java.io.File;
 import java.net.URI;
-import zlp;
 
 public class SubscribeQRCodeShareHelper$6
   implements Runnable
 {
-  public SubscribeQRCodeShareHelper$6(zlp paramzlp) {}
+  public SubscribeQRCodeShareHelper$6(aaau paramaaau) {}
   
   public void run()
   {
-    if (zlp.a(this.this$0))
+    if (aaau.a(this.this$0))
     {
-      String str = zlp.a(this.this$0, zlp.a(this.this$0));
+      String str = aaau.a(this.this$0, aaau.a(this.this$0));
       File localFile = new File(str);
       Intent localIntent = new Intent();
       localIntent.putExtra("forward_type", 1);
@@ -30,7 +30,7 @@ public class SubscribeQRCodeShareHelper$6
       localIntent.putExtra("filePath", str);
       localIntent.putExtra("shareQQType", 13);
       localIntent.putExtra("reqType", 1);
-      atky.a(zlp.a(this.this$0), localIntent, 21);
+      aupt.a(aaau.a(this.this$0), localIntent, 21);
     }
   }
 }

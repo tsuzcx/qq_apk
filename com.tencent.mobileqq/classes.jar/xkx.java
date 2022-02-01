@@ -1,77 +1,14 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.MemoryInfoEntry;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.List;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoOutputFrameListener;
 
 class xkx
-  extends SimpleJob<Object>
+  implements TVK_IMediaPlayer.OnVideoOutputFrameListener
 {
-  xkx(xkw paramxkw, String paramString)
-  {
-    super(paramString);
-  }
+  xkx(xkq paramxkq) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void OnVideoOutputFrame(TVK_IMediaPlayer paramTVK_IMediaPlayer, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    long l = System.currentTimeMillis();
-    paramJobContext = (vuk)vux.a(19);
-    paramVarArgs = paramJobContext.a(wbd.a(this.a.jdField_b_of_type_JavaLangString));
-    boolean bool;
-    wbh localwbh;
-    if ((paramVarArgs != null) && (paramVarArgs.isEnd == 1))
-    {
-      bool = true;
-      List localList = paramJobContext.a(this.a.jdField_b_of_type_JavaLangString, null, 10L);
-      localwbh = new wbh(this.a.c, new ErrorMessage());
-      localwbh.jdField_b_of_type_JavaLangString = this.a.jdField_b_of_type_JavaLangString;
-      localwbh.jdField_b_of_type_Boolean = true;
-      localwbh.c = true;
-      localwbh.e = true;
-      localwbh.jdField_a_of_type_Boolean = false;
-      localwbh.jdField_a_of_type_JavaUtilList = localList;
-      if (localList.size() <= 0) {
-        break label246;
-      }
-      paramJobContext = (VideoCollectionItem)localList.get(localList.size() - 1);
-      label156:
-      if (paramJobContext != null) {
-        break label251;
-      }
-      localwbh.jdField_a_of_type_Boolean = true;
-      this.a.jdField_b_of_type_Boolean = true;
-      label174:
-      vli.a().dispatch(localwbh);
-      this.a.a(localList, false);
-      if (!localwbh.jdField_a_of_type_Boolean) {
-        break label294;
-      }
-    }
-    label294:
-    for (paramJobContext = "true";; paramJobContext = "false")
-    {
-      xvv.d("Q.qqstory.memories:MemoryDataPuller", "Req first page local data ,isEnd = %s ,spend time = %d", new Object[] { paramJobContext, Long.valueOf(System.currentTimeMillis() - l) });
-      this.a.d();
-      return null;
-      bool = false;
-      break;
-      label246:
-      paramJobContext = null;
-      break label156;
-      label251:
-      if ((paramVarArgs != null) && (paramJobContext.dbIndex >= paramVarArgs.maxCollectionIndex))
-      {
-        localwbh.jdField_a_of_type_Boolean = bool;
-        this.a.jdField_b_of_type_Boolean = true;
-        break label174;
-      }
-      localwbh.jdField_a_of_type_Boolean = false;
-      break label174;
-    }
+    ykq.a(this.a.a, "OnVideoOutputFrame width=%d height=%d rotation=%d %d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4));
   }
 }
 

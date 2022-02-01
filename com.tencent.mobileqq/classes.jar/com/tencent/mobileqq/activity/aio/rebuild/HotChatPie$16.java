@@ -1,29 +1,30 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahgz;
-import amtp;
-import bequ;
+import aibs;
+import anwd;
+import bfxw;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.HotChatInfo;
 
 public class HotChatPie$16
   implements Runnable
 {
-  public HotChatPie$16(ahgz paramahgz, HotChatInfo paramHotChatInfo) {}
+  public HotChatPie$16(aibs paramaibs, HotChatInfo paramHotChatInfo) {}
   
   public void run()
   {
-    if (ahgz.e(this.this$0) == null) {
-      ahgz.b(this.this$0, new bequ(this.this$0.app, this.this$0.mActivity, this.this$0.sessionInfo, ahgz.b(this.this$0), ahgz.b(this.this$0), this.this$0.mTroopTips, ahgz.b(this.this$0), null));
+    if (aibs.e(this.this$0) == null) {
+      aibs.b(this.this$0, new bfxw(this.this$0.app, this.this$0.mActivity, this.this$0.sessionInfo, aibs.b(this.this$0), aibs.b(this.this$0), this.this$0.mTroopTips, aibs.b(this.this$0), null));
     }
-    amtp localamtp = (amtp)this.this$0.app.getBusinessHandler(35);
+    anwd localanwd = (anwd)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.HOT_CHAT_HANDLER);
     if (this.a.userCreate == 1) {
-      localamtp.a(this.a.troopUin);
+      localanwd.a(this.a.troopUin);
     }
     while (this.a.uuid == null) {
       return;
     }
-    localamtp.a(this.a.uuid.getBytes(), this.a.troopUin);
+    localanwd.a(this.a.uuid.getBytes(), this.a.troopUin);
   }
 }
 

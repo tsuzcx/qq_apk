@@ -1,11 +1,9 @@
-import java.util.HashMap;
+import android.view.View;
+import java.util.Map;
 
-class rbx
+public abstract interface rbx
 {
-  int jdField_a_of_type_Int = 0;
-  HashMap<String, rbu> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  
-  rbx(rbt paramrbt) {}
+  public abstract void a(View paramView, Map<String, Object> paramMap);
 }
 
 

@@ -1,42 +1,44 @@
-import android.view.View;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.res.Resources;
 
-public final class aloz
-  implements acjr
+class aloz
+  implements alpa
 {
-  public aloz(View paramView, acju paramacju, long paramLong, int paramInt) {}
+  aloz(alow paramalow, alpa paramalpa) {}
   
-  public void onComplete() {}
-  
-  public void onFailure(int paramInt, String paramString)
+  public void a()
   {
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Acju, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location failed," + paramString);
-  }
-  
-  public void onPermission(int paramInt)
-  {
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Acju, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location permision code");
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    double d1 = paramJSONObject.optDouble("altitude", 0.0D);
-    double d2 = paramJSONObject.optDouble("latitude", 0.0D);
-    double d3 = paramJSONObject.optDouble("longitude", 0.0D);
-    double d4 = paramJSONObject.optDouble("horizontalAccuracy", 0.0D);
-    paramJSONObject.optDouble("verticalAccuracy", 0.0D);
-    paramJSONObject.optDouble("accuracy", 0.0D);
-    double d5 = paramJSONObject.optDouble("speed", 0.0D);
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      ApolloRender.getLocationCity(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Acju, this.jdField_a_of_type_Long, d4, d2, d3, d5, d1, 0.0D);
-      return;
+    alow.a(this.jdField_a_of_type_Alow, new bisl(alow.a(this.jdField_a_of_type_Alow), alow.a(this.jdField_a_of_type_Alow).getResources().getDimensionPixelSize(2131299080)));
+    alow.a(this.jdField_a_of_type_Alow).c(2131717253);
+    alow.a(this.jdField_a_of_type_Alow).setCancelable(false);
+    alow.a(this.jdField_a_of_type_Alow).show();
+    if (this.jdField_a_of_type_Alpa != null) {
+      this.jdField_a_of_type_Alpa.a();
     }
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Acju, this.jdField_a_of_type_Long, d4, d2, d3, d5, d1, 0.0D, "", 0, "location success");
   }
   
-  public void onTrigger(JSONObject paramJSONObject) {}
+  public void a(String paramString)
+  {
+    if (alow.a(this.jdField_a_of_type_Alow) != null) {
+      alow.a(this.jdField_a_of_type_Alow).dismiss();
+    }
+    this.jdField_a_of_type_Alow.a(true);
+    alow.a(this.jdField_a_of_type_Alow, false);
+    if (this.jdField_a_of_type_Alpa != null) {
+      this.jdField_a_of_type_Alpa.a(paramString);
+    }
+  }
+  
+  public void b()
+  {
+    if (alow.a(this.jdField_a_of_type_Alow) != null) {
+      alow.a(this.jdField_a_of_type_Alow).dismiss();
+    }
+    alow.a(this.jdField_a_of_type_Alow, false);
+    if (this.jdField_a_of_type_Alpa != null) {
+      this.jdField_a_of_type_Alpa.b();
+    }
+  }
 }
 
 

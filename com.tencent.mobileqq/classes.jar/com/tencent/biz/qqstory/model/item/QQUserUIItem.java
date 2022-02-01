@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.model.item;
 
-import amsw;
 import android.text.TextUtils;
+import anvk;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.database.OfficialRecommendEntry;
 import com.tencent.biz.qqstory.database.UserEntry;
@@ -10,6 +10,7 @@ import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserInfo;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.UsrIcon;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.WatcherExt;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -17,18 +18,18 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import vkp;
-import vux;
-import vvj;
-import vwb;
-import wcb;
-import xqd;
-import xvv;
-import ypg;
+import vzk;
+import wjs;
+import wke;
+import wkw;
+import wqw;
+import yey;
+import ykq;
+import zdz;
 
 public class QQUserUIItem
   extends BaseUIItem
-  implements vkp, vwb
+  implements vzk, wkw
 {
   public static final int RELATION_TYPE_FOLLOWER = 1;
   public static final int RELATION_TYPE_QQ_FRIEND = 0;
@@ -161,7 +162,7 @@ public class QQUserUIItem
     int i = 1;
     this.uid = paramUserInfo.union_id.get().toStringUtf8();
     this.qq = String.valueOf(paramUserInfo.uid.get());
-    ((vvj)vux.a(2)).a(this.uid, this.qq);
+    ((wke)wjs.a(2)).a(this.uid, this.qq);
     this.nickName = paramUserInfo.nick.get().toStringUtf8();
     this.headUrl = paramUserInfo.head_url.get().toStringUtf8();
     boolean bool;
@@ -239,7 +240,7 @@ public class QQUserUIItem
     for (this.sourceTagType = paramUserInfo.video_source_tag_type.get();; this.sourceTagType = 0)
     {
       if (QLog.isColorLevel()) {
-        xvv.a("UserManager", "convert %s", this.uid);
+        ykq.a("UserManager", "convert %s", this.uid);
       }
       return;
       bool = false;
@@ -266,7 +267,7 @@ public class QQUserUIItem
       if (!TextUtils.isEmpty(paramObject.headUrl))
       {
         if ((isMe()) && (!TextUtils.isEmpty(this.headUrl)) && (!TextUtils.equals(this.headUrl, paramObject.headUrl))) {
-          xvv.b("UserManager", "urlchange: %s -> %s  hashCode = %d -> %d %s", new Object[] { this.headUrl, paramObject.headUrl, Integer.valueOf(hashCode()), Integer.valueOf(paramObject.hashCode()), ypg.a(8) });
+          ykq.b("UserManager", "urlchange: %s -> %s  hashCode = %d -> %d %s", new Object[] { this.headUrl, paramObject.headUrl, Integer.valueOf(hashCode()), Integer.valueOf(paramObject.hashCode()), zdz.a(8) });
         }
         this.headUrl = paramObject.headUrl;
       }
@@ -399,8 +400,8 @@ public class QQUserUIItem
     }
     if ((this.iconUrlCacheTime == -1L) || (l - this.iconUrlCacheTime > 3600000L))
     {
-      new wcb();
-      wcb.a(this.uid);
+      new wqw();
+      wqw.a(this.uid);
     }
     return this.iconUrl;
   }
@@ -437,7 +438,7 @@ public class QQUserUIItem
       bool2 = bool1;
     } while (bool1);
     QQStoryContext.a();
-    return ((amsw)QQStoryContext.a().getManager(51)).b(this.qq);
+    return ((anvk)QQStoryContext.a().getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.qq);
   }
   
   public boolean isMe()
@@ -497,12 +498,12 @@ public class QQUserUIItem
   
   public String toString()
   {
-    return xqd.a(new Object[] { "QQUserUIItem{nickName=", this.nickName, ", uid=", this.uid, ", isVip=", Boolean.valueOf(this.isVip), ",qq=", this.qq, ",isSubscribe=", Integer.valueOf(this.isSubscribe), ", headUrl=", this.headUrl, ", sourceTagType=", Integer.valueOf(this.sourceTagType) });
+    return yey.a(new Object[] { "QQUserUIItem{nickName=", this.nickName, ", uid=", this.uid, ", isVip=", Boolean.valueOf(this.isVip), ",qq=", this.qq, ",isSubscribe=", Integer.valueOf(this.isSubscribe), ", headUrl=", this.headUrl, ", sourceTagType=", Integer.valueOf(this.sourceTagType) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.item.QQUserUIItem
  * JD-Core Version:    0.7.0.1
  */

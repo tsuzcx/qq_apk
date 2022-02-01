@@ -1,12 +1,29 @@
-public abstract interface atek
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
+import java.util.List;
+
+public class atek
+  extends atib
 {
-  public abstract void a(int paramInt, String paramString);
+  public atek(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public abstract void a(Object paramObject);
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, List<OfflineFileInfo> paramList)
+  {
+    if (paramBoolean1) {
+      QfileBaseRecentFileTabView.a(this.a, Boolean.valueOf(paramBoolean2), paramList);
+    }
+  }
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2, List<OfflineFileInfo> paramList)
+  {
+    if (paramBoolean1) {
+      QfileBaseRecentFileTabView.a(this.a, Boolean.valueOf(paramBoolean2), paramList);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atek
  * JD-Core Version:    0.7.0.1
  */

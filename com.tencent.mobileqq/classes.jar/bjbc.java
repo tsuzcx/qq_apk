@@ -1,21 +1,46 @@
-import android.graphics.Bitmap;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCaptureImageListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnCaptureImageListener;
+import android.view.View;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.open.agent.AuthorityControlFragment;
+import com.tencent.widget.ListView;
 
-class bjbc
-  implements TVK_IMediaPlayer.OnCaptureImageListener
+public class bjbc
+  implements bldp
 {
-  bjbc(bjau parambjau, AbsVideoPlayer.OnCaptureImageListener paramOnCaptureImageListener) {}
+  public bjbc(AuthorityControlFragment paramAuthorityControlFragment) {}
   
-  public void onCaptureImageFailed(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2)
+  public void onNotCompleteVisable(int paramInt, View paramView, ListView paramListView)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnCaptureImageListener.onCaptureImageFailed();
+    if (paramInt == 0) {
+      AuthorityControlFragment.a(this.a).c(0L);
+    }
   }
   
-  public void onCaptureImageSucceed(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap)
+  public void onViewCompleteVisable(int paramInt, View paramView, ListView paramListView)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnCaptureImageListener.onCaptureImageSucceed(paramBitmap);
+    if (paramInt == 0) {
+      AuthorityControlFragment.a(this.a).b(0L);
+    }
+  }
+  
+  public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
+  {
+    if (paramInt == 0)
+    {
+      AuthorityControlFragment.a(this.a).a(0L);
+      AuthorityControlFragment.a(this.a, (bjpj)AuthorityControlFragment.a(this.a).getBusinessHandler(BusinessHandlerFactory.OPEN_AGENT_HANDLER));
+      AuthorityControlFragment.a(this.a).a();
+      AuthorityControlFragment.a(this.a).notifyDataSetChanged();
+    }
+    return true;
+  }
+  
+  public void onViewNotCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
+  {
+    if (paramInt == 0) {
+      AuthorityControlFragment.a(this.a).c(0L);
+    }
   }
 }
 

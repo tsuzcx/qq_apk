@@ -2,6 +2,7 @@ package cooperation.qzone;
 
 import NS_MOBILE_COMM.combine_diamond_info;
 import NS_MOBILE_COMM.star_info;
+import amme;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,18 +12,21 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.webkit.URLUtil;
-import bcef;
-import bfvp;
-import bfwg;
+import bdla;
+import bheh;
+import bhey;
+import blrb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import mqq.app.AppRuntime;
+import org.json.JSONObject;
 
 public class QZoneVipInfoManager
 {
@@ -225,7 +229,7 @@ public class QZoneVipInfoManager
       if (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
         break;
       }
-      paramActivity = bfwg.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramActivity, str);
+      paramActivity = bhey.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramActivity, str);
       if (paramActivity != null)
       {
         paramActivity.a();
@@ -242,7 +246,7 @@ public class QZoneVipInfoManager
       return;
     }
     Intent localIntent = new Intent();
-    String str = paramActivity.getResources().getString(2131717172);
+    String str = paramActivity.getResources().getString(2131717535);
     QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity");
     localIntent.putExtra("aid", paramString2);
     localIntent.putExtra("source", paramString3);
@@ -277,44 +281,204 @@ public class QZoneVipInfoManager
   
   public static boolean onPetBrandClick(Activity paramActivity, int paramInt, String paramString)
   {
-    int i = 1;
     QLog.d("QZoneVipInfoManager", 1, new Object[] { "onPetBrandClick petId = ", Integer.valueOf(paramInt) });
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    String str3;
-    String str1;
-    label73:
-    String str2;
-    if (paramString.equals(BaseApplicationImpl.getApplication().getRuntime().getAccount()))
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    QQAppInterface localQQAppInterface;
+    Object localObject1;
+    int i;
+    if ((localAppRuntime instanceof QQAppInterface))
     {
-      str3 = "0";
-      str1 = QzoneConfig.getInstance().getConfig("H5Url", "aioCMShowPetNameplateHostUrl", "https://cmshow.qq.com/apollo/html/pet/pet_hall.html?_wv=16777218&_cwv=9&_wwv=1&thunder_id=8&_bid=3094&pet={pet_id}&open=1&adtag=aiozhu");
+      localQQAppInterface = (QQAppInterface)localAppRuntime;
+      localObject1 = (amme)localQQAppInterface.getManager(QQManagerFactory.APOLLO_MANAGER);
+      localObject2 = ((amme)localObject1).a(paramInt);
+      i = ((amme)localObject1).a((JSONObject)localObject2);
+    }
+    for (Object localObject2 = ((amme)localObject1).b((JSONObject)localObject2);; localObject2 = null)
+    {
+      int k;
+      String str2;
+      int j;
+      String str1;
+      if (paramString.equals(BaseApplicationImpl.getApplication().getRuntime().getAccount()))
+      {
+        k = 0;
+        str2 = "0";
+        localObject1 = localObject2;
+        j = k;
+        str1 = str2;
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          switch (i)
+          {
+          default: 
+            localObject1 = QzoneConfig.getInstance().getConfig("H5Url", "aioCMShowPetNameplateHostUrl", "https://cmshow.qq.com/apollo/html/pet/pet_hall.html?_wv=16777218&_cwv=9&_wwv=1&thunder_id=8&_bid=3094&pet={pet_id}&open=1&adtag=aiozhu");
+            str1 = str2;
+            j = k;
+          }
+        }
+      }
+      while (TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        return false;
+        localObject1 = QzoneConfig.getInstance().getConfig("CMShow", "CMShowAIOMiniGamePetNameplateHostUrl", "mqqapi://miniapp/open?_atype=1&_mappid=1110761090&_mvid=&_vt=3&referer=2200&via=2016_70&_sig=3078374443&roleId=%7BroleId%7D");
+        j = k;
+        str1 = str2;
+        continue;
+        k = 1;
+        str2 = "1";
+        localObject1 = localObject2;
+        j = k;
+        str1 = str2;
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          switch (i)
+          {
+          default: 
+            localObject1 = QzoneConfig.getInstance().getConfig("H5Url", "aioCMShowPetNameplateGuestUrl", "https://cmshow.qq.com/apollo/html/pet/pet_hall.html?_wv=16777218&_cwv=9&_wwv=1&thunder_id=8&_bid=3094&pet={pet_id}&open=1&adtag=aioke");
+            j = k;
+            str1 = str2;
+            break;
+          case 1: 
+            localObject1 = QzoneConfig.getInstance().getConfig("CMShow", "CMShowAIOMiniGamePetNameplateGuestUrl", "mqqapi://miniapp/open?_atype=1&_mappid=1110761090&_mvid=&_vt=3&referer=2200&via=2016_70&_sig=3078374443&roleId=%7BroleId%7D");
+            j = k;
+            str1 = str2;
+          }
+        }
+      }
+      localObject2 = localObject1;
+      if (((String)localObject1).contains("{pet_id}")) {
+        localObject2 = ((String)localObject1).replace("{pet_id}", String.valueOf(paramInt));
+      }
+      localObject1 = localObject2;
+      if (((String)localObject2).contains("%7BroleId%7D")) {
+        localObject1 = ((String)localObject2).replace("%7BroleId%7D", String.valueOf(paramInt));
+      }
+      localObject2 = localObject1;
+      if (((String)localObject1).contains("{uin}")) {
+        localObject2 = ((String)localObject1).replace("{uin}", paramString);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("QZoneVipInfoManager", 2, "onPetBrandClick petId = " + paramInt + " petCategory = " + i + " from = " + j + " reserve = " + str1 + " jumpUrl = " + (String)localObject2);
+      }
+      if (localQQAppInterface != null) {}
+      for (paramString = bhey.a((QQAppInterface)localAppRuntime, paramActivity, (String)localObject2);; paramString = null)
+      {
+        boolean bool;
+        if (paramString != null)
+        {
+          bool = paramString.a();
+          bdla.b(null, "dc00898", "", "", "", "", j, 0, str1, "", "", "");
+          if (!bool) {
+            break label593;
+          }
+        }
+        label593:
+        for (paramActivity = "0";; paramActivity = "1")
+        {
+          blrb.a(localQQAppInterface, "3006", "aiopetpaiClick", String.valueOf(i), String.valueOf(paramInt), paramActivity, new String[] { String.valueOf(j) });
+          return bool;
+          bool = jumpToH5(paramActivity, (String)localObject2);
+          break;
+        }
+      }
+      localQQAppInterface = null;
       i = 0;
-      if (TextUtils.isEmpty(str1)) {
-        break label254;
+    }
+  }
+  
+  public static boolean onPetClick(Activity paramActivity, QQAppInterface paramQQAppInterface, int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneVipInfoManager", 1, new Object[] { "onPetClick petId = ", Integer.valueOf(paramInt) });
+    }
+    if ((paramActivity == null) || (paramQQAppInterface == null) || (TextUtils.isEmpty(paramString)))
+    {
+      QLog.e("QZoneVipInfoManager", 1, "onPetClick error! activity = " + paramActivity + ", app = " + paramQQAppInterface + ", uin = " + paramString);
+      return false;
+    }
+    Object localObject1 = (amme)paramQQAppInterface.getManager(QQManagerFactory.APOLLO_MANAGER);
+    Object localObject2 = ((amme)localObject1).a(paramInt);
+    int j = ((amme)localObject1).a((JSONObject)localObject2);
+    localObject1 = ((amme)localObject1).a((JSONObject)localObject2);
+    String str;
+    int i;
+    if (paramString.equals(paramQQAppInterface.getAccount()))
+    {
+      str = "0";
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        break label564;
       }
-      str2 = str1;
-      if (str1.contains("{pet_id}")) {
-        str2 = str1.replace("{pet_id}", String.valueOf(paramInt));
-      }
-      if (!str2.contains("{uin}")) {
-        break label256;
+      switch (j)
+      {
+      default: 
+        localObject1 = QzoneConfig.getInstance().getConfig("CMShow", "CMShowAIODefaultPetHostUrl", "https://cmshow.qq.com/apollo/html/pet/pet_hall.html?_wv=16777218&_cwv=9&_wwv=1&thunder_id=8&_bid=3094&pet={pet_id}&open=1&adtag=aiozhu");
+        i = 0;
       }
     }
-    label256:
-    for (paramString = str2.replace("{uin}", paramString);; paramString = str2)
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("QZoneVipInfoManager", 2, "onPetBrandClick petId = " + paramInt + " from = " + i + " reserve = " + str3 + " jumpUrl = " + paramString);
+      if (TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        QLog.e("QZoneVipInfoManager", 1, "onPetClick error! jumpUrl is null!");
+        return false;
+        localObject1 = QzoneConfig.getInstance().getConfig("CMShow", "CMShowAIOMiniGamePetHostUrl", "mqqapi://miniapp/open?_atype=1&_mappid=1110761090&_mvid=&_vt=3&referer=2200&via=2016_70&_sig=3078374443&roleId=%7BroleId%7D");
+        i = 0;
+        continue;
+        str = "1";
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          switch (j)
+          {
+          default: 
+            localObject1 = QzoneConfig.getInstance().getConfig("CMShow", "CMShowAIODefaultPetGuestUrl", "https://cmshow.qq.com/apollo/html/pet/pet_hall.html?_wv=16777218&_cwv=9&_wwv=1&thunder_id=8&_bid=3094&pet={pet_id}&open=1&adtag=aioke");
+            i = 1;
+            break;
+          case 1: 
+            localObject1 = QzoneConfig.getInstance().getConfig("CMShow", "CMShowAIOMiniGamePetGuestUrl", "mqqapi://miniapp/open?_atype=1&_mappid=1110761090&_mvid=&_vt=3&referer=2200&via=2016_70&_sig=3078374443&roleId=%7BroleId%7D");
+            i = 1;
+            break;
+          }
+        }
       }
-      bcef.b(null, "dc00898", "", "", "", "", i, 0, str3, "", "", "");
-      return jumpToH5(paramActivity, paramString);
-      str3 = "1";
-      str1 = QzoneConfig.getInstance().getConfig("H5Url", "aioCMShowPetNameplateGuestUrl", "https://cmshow.qq.com/apollo/html/pet/pet_hall.html?_wv=16777218&_cwv=9&_wwv=1&thunder_id=8&_bid=3094&pet={pet_id}&open=1&adtag=aioke");
-      break label73;
-      label254:
-      break;
+      else
+      {
+        localObject2 = localObject1;
+        if (((String)localObject1).contains("{pet_id}")) {
+          localObject2 = ((String)localObject1).replace("{pet_id}", String.valueOf(paramInt));
+        }
+        localObject1 = localObject2;
+        if (((String)localObject2).contains("%7BroleId%7D")) {
+          localObject1 = ((String)localObject2).replace("%7BroleId%7D", String.valueOf(paramInt));
+        }
+        localObject2 = localObject1;
+        if (((String)localObject1).contains("{uin}")) {
+          localObject2 = ((String)localObject1).replace("{uin}", paramString);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("QZoneVipInfoManager", 2, "onPetClick petId = " + paramInt + " petCategory = " + j + " from = " + i + " reserve = " + str + " jumpUrl = " + (String)localObject2);
+        }
+        paramString = bhey.a(paramQQAppInterface, paramActivity, (String)localObject2);
+        boolean bool;
+        if (paramString != null)
+        {
+          bool = paramString.a();
+          if (!bool) {
+            break label551;
+          }
+        }
+        label551:
+        for (paramActivity = "0";; paramActivity = "1")
+        {
+          blrb.a(paramQQAppInterface, "3006", "aiopetClick", String.valueOf(j), String.valueOf(paramInt), paramActivity, new String[] { String.valueOf(i) });
+          return bool;
+          bool = jumpToH5(paramActivity, (String)localObject2);
+          break;
+        }
+      }
+      i = 1;
+      continue;
+      label564:
+      i = 0;
     }
   }
   
@@ -346,7 +510,7 @@ public class QZoneVipInfoManager
       if (QLog.isColorLevel()) {
         QLog.i("QZoneVipInfoManager", 2, "onSuperYellowBrandClick from = " + i + " reserve = " + str2 + " jumpUrl = " + paramString);
       }
-      bcef.b(null, "dc00898", "", "", "", "", i, 0, str2, "", "", "");
+      bdla.b(null, "dc00898", "", "", "", "", i, 0, str2, "", "", "");
       return jumpToH5(paramActivity, paramString);
       str2 = "1";
       str1 = QzoneConfig.getInstance().getConfig("H5Url", "aioCMShowQZSVIPNameplateGuestUrl", "https://h5.qzone.qq.com/limishow/mall?_wv=131072&_fv=0&_wwv=128&_wvx=10&traceDetail=base64-eyJhcHBpZCI6Im91dHNpZGUiLCJwYWdlX2lkIjoiMjEifQ%3D%3D");

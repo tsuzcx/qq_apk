@@ -1,18 +1,18 @@
 package dov.com.qq.im.ae.data;
 
-import bluy;
-import blvb;
-import blvj;
+import bnkb;
+import bnke;
+import bnkq;
 import com.tencent.common.app.AppInterface;
 
 public class AEMaterialManager$3
   implements Runnable
 {
-  public AEMaterialManager$3(bluy parambluy, AppInterface paramAppInterface, String paramString, blvb paramblvb, blvj paramblvj) {}
+  public AEMaterialManager$3(bnkb parambnkb, AppInterface paramAppInterface, String paramString, bnke parambnke, bnkq parambnkq) {}
   
   public void run()
   {
-    bluy.a(this.this$0, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Blvb, this.jdField_a_of_type_Blvj);
+    bnkb.a(this.this$0, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bnke, this.jdField_a_of_type_Bnkq);
   }
 }
 

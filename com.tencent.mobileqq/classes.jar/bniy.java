@@ -1,17 +1,35 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import dov.com.qq.im.ae.cmshow.AECMShowRequestController;
+import mqq.os.MqqHandler;
 
 public class bniy
-  implements ValueAnimator.AnimatorUpdateListener
+  implements INetEngine.INetEngineListener
 {
-  public bniy(DoodleEditView paramDoodleEditView, bnno parambnno) {}
+  public bniy(AECMShowRequestController paramAECMShowRequestController) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onResp(NetResp paramNetResp)
   {
-    this.jdField_a_of_type_Bnno.n = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.invalidate();
+    AECMShowRequestController.a(this.a, null);
+    if ((paramNetResp != null) && (paramNetResp.mRespData != null))
+    {
+      bnrh.a("AECMShowRequestController", "[onResp] succeeded");
+      AECMShowRequestController.a(this.a, paramNetResp);
+      return;
+    }
+    bnrh.a("AECMShowRequestController", "[onResp] failed");
+    if (AECMShowRequestController.a(this.a) != null) {
+      ThreadManager.getUIHandler().removeCallbacks(AECMShowRequestController.a(this.a));
+    }
+    if (AECMShowRequestController.a(this.a) != null) {
+      AECMShowRequestController.a(this.a).a(2, null);
+    }
+    bnqm.a().a(paramNetResp.mErrCode, String.valueOf(paramNetResp.reqCost), "CartoonPta", -2);
   }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

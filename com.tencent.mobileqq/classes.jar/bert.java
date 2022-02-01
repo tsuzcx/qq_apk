@@ -1,95 +1,47 @@
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.annotation.Nullable;
-import android.text.TextPaint;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AioPushData;
-import com.tencent.mobileqq.data.HotChatItemData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.together.writetogether.data.OpenDocParam;
+import com.tencent.mobileqq.togetherui.writetogether.WriteTogetherEditorFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class bert
-  extends beqz
+  extends benp
 {
-  public bert(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  public bert(WriteTogetherEditorFragment paramWriteTogetherEditorFragment) {}
+  
+  public void a(int paramInt, boolean paramBoolean, beoo parambeoo)
   {
-    super(paramQQAppInterface, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_Int = 24;
+    super.a(paramInt, paramBoolean, parambeoo);
+    WriteTogetherEditorFragment.a(this.a, paramBoolean, parambeoo);
   }
   
-  public int a(int paramInt)
+  public void a(int paramInt, boolean paramBoolean, OpenDocParam paramOpenDocParam)
   {
-    return 2130838558;
+    super.a(paramInt, paramBoolean, paramOpenDocParam);
+    WriteTogetherEditorFragment.a(this.a, paramBoolean, paramOpenDocParam);
   }
   
-  @Nullable
-  public bera a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
+  public void a(int paramInt, boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    paramObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin;
-    Object localObject = (amtm)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(255);
-    paramList = "";
-    if (localObject != null)
-    {
-      localObject = ((amtm)localObject).a(paramObject);
-      if ((localObject != null) && (((HotChatItemData)localObject).mGameId > 0))
-      {
-        paramObject = HotChatCenterFragment.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((HotChatItemData)localObject).mHotChatCode, ((HotChatItemData)localObject).mGameId);
-        if (paramObject != null)
-        {
-          paramList = paramObject.wording;
-          paramInt1 = 1;
-          if (QLog.isColorLevel()) {
-            QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[showNavigateBarIfNeeded] for " + ((HotChatItemData)localObject).mHotChatCode + " " + ((HotChatItemData)localObject).mGameId);
-          }
-        }
-      }
+    super.a(paramInt, paramBoolean, paramArrayOfObject);
+    WriteTogetherEditorFragment.a(this.a, false);
+    WriteTogetherEditorFragment.b(this.a, paramBoolean);
+    WriteTogetherEditorFragment.a(this.a);
+    if (!paramBoolean) {
+      QQToast.a(WriteTogetherEditorFragment.a(this.a), WriteTogetherEditorFragment.a(this.a).getResources().getString(2131720171), 0).a();
     }
-    for (;;)
+    if (paramBoolean)
     {
-      if (paramInt1 != 0)
-      {
-        return new bera(true, paramList, null, null, paramObject);
-        paramInt1 = 0;
-        paramObject = null;
-        break;
-      }
-      return null;
-      paramObject = null;
-      paramInt1 = 0;
-    }
-  }
-  
-  public void a(int paramInt, TextView paramTextView1, TextView paramTextView2, ImageView paramImageView, String paramString)
-  {
-    paramString = amtj.a(2131714176);
-    paramTextView2.setMaxWidth((int)paramTextView2.getPaint().measureText(paramString));
-    paramTextView2.requestLayout();
-    paramTextView1.setVisibility(8);
-    paramTextView2.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166245));
-    paramImageView.setBackgroundResource(2130838559);
-  }
-  
-  public void a(int paramInt, Object paramObject, String paramString) {}
-  
-  public boolean a(int paramInt)
-  {
-    return false;
-  }
-  
-  public void b(int paramInt, Object paramObject, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[onClick] into page");
+      this.a.getActivity().setResult(15);
+      this.a.getActivity().finish();
+      WriteTogetherEditorFragment.b(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bert
  * JD-Core Version:    0.7.0.1
  */

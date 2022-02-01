@@ -1,17 +1,146 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.troop.troopapps.TroopAppShortcutContainer;
+import com.tencent.qphone.base.util.QLog;
 
-class agex
-  extends aghj
+public class agex
+  extends ager
 {
-  agex(agcw paramagcw)
+  private TroopAppShortcutContainer jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public agex(BaseChatPie paramBaseChatPie)
   {
-    super(paramagcw, null);
+    super(paramBaseChatPie);
   }
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  private void a(String paramString)
   {
-    return new afun(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    if (TroopInfo.isQidianPrivateTroop(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString)) {
+      c(false);
+    }
+  }
+  
+  private void m()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    agkp localagkp = (agkp)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getHelper(55);
+    if (localagkp != null) {
+      localagkp.e();
+    }
+    ahpr.e();
+  }
+  
+  protected View a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer = new agey(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getCurFriendUin(), 1);
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer.a() == null) {}
+    return this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer.a();
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer != null) && (a())) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer.a(paramInt1, paramInt2, paramIntent);
+    }
+  }
+  
+  public void b()
+  {
+    a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getCurFriendUin());
+  }
+  
+  public boolean b()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer != null) && (a()))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer.a();
+      return true;
+    }
+    return false;
+  }
+  
+  public void c(int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer.a(paramInt);
+    }
+  }
+  
+  public void f()
+  {
+    super.f();
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, String.format("onDrawerStartOpen", new Object[0]));
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer.a();
+    }
+    m();
+  }
+  
+  public void h()
+  {
+    super.h();
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, String.format("onDrawerOpened", new Object[0]));
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer.b();
+    }
+  }
+  
+  public void i()
+  {
+    super.i();
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, String.format("onDrawerClosed", new Object[0]));
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer.c();
+    }
+    try
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo != null) && (bgil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin))))
+      {
+        bgbe localbgbe = (bgbe)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_SHORTCUTBAR_HANDLE);
+        Object localObject = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+        if (localObject == null) {
+          return;
+        }
+        localObject = ((TroopManager)localObject).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin);
+        if ((localObject != null) && (localbgbe != null))
+        {
+          localbgbe.a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin), (int)((TroopInfo)localObject).dwGroupClassExt, null);
+          return;
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("intimate_relationship", 2, String.format("parseLong Exception", new Object[0]));
+      }
+    }
+  }
+  
+  public void k()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer.g();
+      this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer = null;
+    }
   }
 }
 

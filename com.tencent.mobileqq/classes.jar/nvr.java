@@ -1,56 +1,71 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.AccountDetail.jce.SetRecvMsgStateRsp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import java.util.HashMap;
 
 class nvr
-  extends amyh
+  implements ITMAssistantDownloadClientListener
 {
-  private num b;
+  nvr(nvq paramnvq) {}
   
-  public nvr(num paramnum1, num paramnum2)
+  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
   {
-    this.b = paramnum2;
+    if (paramTMAssistantDownloadClient == null) {}
+    do
+    {
+      return;
+      paramTMAssistantDownloadClient = (nvl)nvq.a().get(paramString);
+    } while ((paramTMAssistantDownloadClient == null) || (paramTMAssistantDownloadClient.a == null));
+    int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
+    paramTMAssistantDownloadClient.a.progress(i);
   }
   
-  public void a()
-  {
-    this.b = null;
-  }
-  
-  public void onSetRecvMsgState(boolean paramBoolean, SetRecvMsgStateRsp paramSetRecvMsgStateRsp)
+  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailGroupListContainer", 2, "onGetRecvMsgState isSuccess = " + paramBoolean);
+      QLog.d("OfflineDownload", 2, "task onDownloadSDKTaskStateChanged + url = " + paramString1 + ", state = " + paramInt1 + ", errorCode = " + paramInt2);
     }
-    if ((paramBoolean) && (paramSetRecvMsgStateRsp.result == 0))
+    if (paramTMAssistantDownloadClient == null) {
+      this.a.a(null, paramString1, null, -1, "client is null, " + paramString2);
+    }
+    do
     {
-      num.b(this.a, this.a.jdField_a_of_type_Int);
-      if (this.a.jdField_a_of_type_AndroidContentSharedPreferences != null) {
-        this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("setting_status_" + this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin + "_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_Int).commit();
-      }
-    }
+      do
+      {
+        do
+        {
+          return;
+          paramString2 = (nvl)nvq.a().get(paramString1);
+          if ((paramString2 == null) || (paramString2.a == null))
+          {
+            this.a.a(null, paramString1, null, -1, "download info is null or callback is null");
+            return;
+          }
+          switch (paramInt1)
+          {
+          default: 
+            return;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("OfflineDownload", 2, "task downloading + url = " + paramString1);
+        return;
+        this.a.a(paramTMAssistantDownloadClient, paramString2, paramString1);
+        return;
+        this.a.a(paramString2.a, paramString1, paramString2.c, paramInt2, "offline zip download fail");
+        try
+        {
+          this.a.a.cancelDownloadTask(paramString1);
+          return;
+        }
+        catch (Exception paramTMAssistantDownloadClient) {}
+      } while (!QLog.isDevelopLevel());
+      QLog.d("OfflineDownload", 4, paramTMAssistantDownloadClient.toString());
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.d("OfflineDownload", 2, "task paused + url = " + paramString1);
   }
   
-  public void onUpdateFunctionFlag(boolean paramBoolean, obr paramobr)
-  {
-    if ((paramBoolean) && (paramobr != null)) {
-      if (paramobr.e != 3) {}
-    }
-    while (this.b == null) {
-      for (;;)
-      {
-        ugf.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.a.jdField_a_of_type_JavaLangString);
-        return;
-        if ((paramobr.e == 6) && (this.b != null)) {
-          num.a(this.b, paramobr);
-        }
-      }
-    }
-    num.a(this.b, 2131694775);
-  }
+  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient) {}
 }
 
 

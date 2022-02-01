@@ -14,7 +14,7 @@ import android.view.animation.LinearInterpolator;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
-import bnaa;
+import bops;
 import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
 import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
@@ -24,13 +24,13 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import pit;
-import rfu;
-import slt;
-import ten;
-import teo;
-import tep;
-import uhv;
+import ptq;
+import rsb;
+import szd;
+import try;
+import trz;
+import tsa;
+import uvs;
 
 public class ChannelTopBanner
   extends RelativeLayout
@@ -45,7 +45,7 @@ public class ChannelTopBanner
   protected LinearLayout a;
   public BannerAdapter a;
   public RollViewPager a;
-  private tep jdField_a_of_type_Tep;
+  private tsa jdField_a_of_type_Tsa;
   protected boolean a;
   protected View[] a;
   protected Drawable b;
@@ -57,7 +57,7 @@ public class ChannelTopBanner
   {
     super(paramActivity);
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler = new ten(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new try(this, Looper.getMainLooper());
     this.jdField_a_of_type_AndroidContentContext = paramActivity;
     a(paramActivity);
   }
@@ -75,11 +75,11 @@ public class ChannelTopBanner
     View localView1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerBannerAdapter.a(paramInt);
     View localView2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerBannerAdapter.a(paramInt - 1);
     View localView3 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerBannerAdapter.a(paramInt + 1);
-    if ((this.jdField_a_of_type_Tep != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerBannerAdapter.getCount() > 1))
+    if ((this.jdField_a_of_type_Tsa != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerBannerAdapter.getCount() > 1))
     {
-      this.jdField_a_of_type_Tep.transformPage(localView1, 0.0F);
-      this.jdField_a_of_type_Tep.transformPage(localView2, -1.0F);
-      this.jdField_a_of_type_Tep.transformPage(localView3, 1.0F);
+      this.jdField_a_of_type_Tsa.transformPage(localView1, 0.0F);
+      this.jdField_a_of_type_Tsa.transformPage(localView2, -1.0F);
+      this.jdField_a_of_type_Tsa.transformPage(localView3, 1.0F);
     }
   }
   
@@ -90,7 +90,7 @@ public class ChannelTopBanner
   
   private void a(TemplateBean paramTemplateBean)
   {
-    uhv.a(paramTemplateBean, null, "expose_T");
+    uvs.a(paramTemplateBean, null, "expose_T");
   }
   
   protected View a()
@@ -100,8 +100,8 @@ public class ChannelTopBanner
     {
       this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 11.0F), UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 2.0F));
       this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 6.0F);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849256);
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849257);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849348);
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849349);
     }
     localView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
     localView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
@@ -146,25 +146,25 @@ public class ChannelTopBanner
   
   protected void a(Activity paramActivity)
   {
-    LayoutInflater.from(paramActivity).inflate(2131559978, this, true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager = ((RollViewPager)findViewById(2131380854));
+    LayoutInflater.from(paramActivity).inflate(2131560022, this, true);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager = ((RollViewPager)findViewById(2131381206));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager.setOffscreenPageLimit(5);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager.setPageMargin(ViewUtils.dip2px(-10.0F));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370111));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370283));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager.setOnPageChangeListener(new ChannelTopBanner.RollerChangeListener(this));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager.setOnTouchStateChangeListener(new teo(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager.setOnTouchStateChangeListener(new trz(this));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerBannerAdapter = new BannerAdapter(paramActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager, BannerAdapter.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Tep = new tep(this, null);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager.setPageTransformer(true, this.jdField_a_of_type_Tep);
+    this.jdField_a_of_type_Tsa = new tsa(this, null);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager.setPageTransformer(true, this.jdField_a_of_type_Tsa);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager.setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerBannerAdapter);
-    paramActivity = new bnaa(this.jdField_a_of_type_AndroidContentContext, new LinearInterpolator());
+    paramActivity = new bops(this.jdField_a_of_type_AndroidContentContext, new LinearInterpolator());
     paramActivity.a(400);
     paramActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager);
     setClipChildren(false);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370107));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370279));
   }
   
-  public void a(slt paramslt, TopBannerInfo paramTopBannerInfo)
+  public void a(szd paramszd, TopBannerInfo paramTopBannerInfo)
   {
     int i;
     label73:
@@ -194,16 +194,16 @@ public class ChannelTopBanner
       if (j >= paramTopBannerInfo.dynamicItems.size()) {
         return;
       }
-      rfu localrfu = (rfu)paramTopBannerInfo.dynamicItems.get(j);
-      if ((localrfu == null) || (TextUtils.isEmpty(localrfu.a))) {
+      rsb localrsb = (rsb)paramTopBannerInfo.dynamicItems.get(j);
+      if ((localrsb == null) || (TextUtils.isEmpty(localrsb.a))) {
         break label255;
       }
-      QLog.d("ChannelTopBanner", 2, new Object[] { "json = ", localrfu.a });
-      ProteusItemView localProteusItemView = pit.a(paramslt.a(), "default_feeds", pit.a(localrfu.a));
+      QLog.d("ChannelTopBanner", 2, new Object[] { "json = ", localrsb.a });
+      ProteusItemView localProteusItemView = ptq.a(paramszd.a(), "default_feeds", ptq.a(localrsb.a));
       if (localProteusItemView == null) {
         break label243;
       }
-      pit.a(localProteusItemView, paramslt.a(), "default_feeds", localrfu.a);
+      ptq.a(localProteusItemView, paramszd.a(), "default_feeds", localrsb.a);
       a(localProteusItemView);
       if (i != 0) {
         a(localProteusItemView.a());
@@ -294,7 +294,7 @@ public class ChannelTopBanner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.widget.banner.ChannelTopBanner
  * JD-Core Version:    0.7.0.1
  */

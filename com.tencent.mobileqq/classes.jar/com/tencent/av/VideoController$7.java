@@ -1,7 +1,7 @@
 package com.tencent.av;
 
 import com.tencent.av.core.VcControllerImpl;
-import lez;
+import lfe;
 
 class VideoController$7
   implements Runnable
@@ -10,11 +10,11 @@ class VideoController$7
   
   public void run()
   {
-    lez locallez = this.this$0.a();
-    if ((locallez.e) && (locallez.n) && (locallez.jdField_d_of_type_Int == 2))
+    lfe locallfe = this.this$0.a();
+    if ((locallfe.e) && (locallfe.n) && (locallfe.jdField_d_of_type_Int == 2))
     {
-      locallez.a(this.a, false);
-      this.this$0.a.pauseVideo(locallez.jdField_d_of_type_JavaLangString);
+      locallfe.a(this.a, false);
+      this.this$0.a.pauseVideo(locallfe.jdField_d_of_type_JavaLangString);
     }
   }
 }

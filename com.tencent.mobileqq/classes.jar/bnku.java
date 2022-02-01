@@ -1,294 +1,620 @@
-import android.annotation.TargetApi;
-import android.graphics.Point;
-import android.graphics.PointF;
-import android.opengl.GLES20;
-import com.tencent.aekit.api.standard.AEModule;
-import com.tencent.aekit.openrender.AttributeParam;
-import com.tencent.aekit.openrender.UniformParam.Float2fParam;
-import com.tencent.aekit.openrender.UniformParam.Float3fParam;
-import com.tencent.aekit.openrender.UniformParam.FloatParam;
-import com.tencent.aekit.openrender.UniformParam.IntParam;
-import com.tencent.aekit.openrender.UniformParam.Mat4Param;
-import com.tencent.aekit.openrender.UniformParam.TextureParam;
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.aekit.openrender.internal.VideoFilterBase;
-import com.tencent.mobileqq.shortvideo.ptvfilter.DoodleMagicAlgoHandler;
-import com.tencent.mobileqq.shortvideo.ptvfilter.DoodleMagicAlgoHandler.RenderPoint;
-import com.tencent.ttpic.baseutils.io.FileUtils;
-import com.tencent.ttpic.openapi.util.MatrixUtil;
-import com.tencent.ttpic.util.AlgoUtils;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment64BitUtils;
+import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.ttpic.baseutils.collection.CollectionUtils;
+import dov.com.qq.im.ae.download.AEResManager.1;
+import dov.com.qq.im.ae.download.AEResManager.2;
+import dov.com.qq.im.ae.download.AEResManager.3;
+import dov.com.qq.im.ae.download.AEResManager.4;
+import dov.com.qq.im.ae.download.AEResManager.6;
+import dov.com.qq.im.ae.download.AEResManager.7;
+import dov.com.qq.im.ae.download.AEResManager.8;
+import dov.com.qq.im.ae.download.AEResManager.9;
+import java.util.ArrayDeque;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Queue;
-import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-@TargetApi(9)
 public class bnku
-  extends VideoFilterBase
+  implements bcya, bcyd
 {
-  public static final String a;
-  public static final float[] a;
-  public static final String b;
-  float jdField_a_of_type_Float = 0.35F;
-  int jdField_a_of_type_Int;
-  Point jdField_a_of_type_AndroidGraphicsPoint;
-  Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-  Queue<DoodleMagicAlgoHandler.RenderPoint> jdField_a_of_type_JavaUtilQueue = new LinkedBlockingDeque();
-  boolean jdField_a_of_type_Boolean;
-  int[] jdField_a_of_type_ArrayOfInt = new int[1];
-  float jdField_b_of_type_Float;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean = false;
-  float jdField_c_of_type_Float;
-  int jdField_c_of_type_Int = -1;
-  private boolean jdField_c_of_type_Boolean;
-  int d = 0;
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "DOWNLOAD_STATUS_IDLE", "DOWNLOAD_STATUS_WAIT", "DOWNLOAD_STATUS_PREDOWNLOAD_WAIT", "DOWNLOAD_STATUS_DOWNLOADING", "DOWNLOAD_STATUS_READY" };
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("AEResManagerHandlerThread", 0);
+  private List<ShortVideoResourceManager.SVConfigItem> jdField_a_of_type_JavaUtilList = new LinkedList();
+  private Map<bnkt, Integer> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private Queue<bnkt> jdField_a_of_type_JavaUtilQueue = new ArrayDeque();
+  private List<bnkw> jdField_b_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  private Map<bnkt, Long> jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap();
   
-  static
+  private bnku()
   {
-    jdField_a_of_type_JavaLangString = FileUtils.loadAssetsString(AEModule.getContext(), "camera/camera_video/shader/DoodleFireworksAndLighterVertexShader.dat");
-    jdField_b_of_type_JavaLangString = FileUtils.loadAssetsString(AEModule.getContext(), "camera/camera_video/shader/DoodleFireworksFragmentShader.dat");
-    jdField_a_of_type_ArrayOfFloat = new float[] { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F };
+    this.jdField_a_of_type_AndroidOsHandlerThread.start();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
   }
   
-  public bnku()
+  public static bnku a()
   {
-    super(jdField_a_of_type_JavaLangString, jdField_b_of_type_JavaLangString);
-    initParams();
+    return bnkx.a;
   }
   
-  private void a(DoodleMagicAlgoHandler.RenderPoint paramRenderPoint, int paramInt)
+  private void a(@NonNull bnkt parambnkt, @Nullable bnkw parambnkw, boolean paramBoolean1, boolean paramBoolean2)
   {
-    int i1 = 0;
-    super.addParam(new UniformParam.IntParam("drawType", paramInt));
-    int i2 = paramRenderPoint.xList.length;
-    float[] arrayOfFloat1 = new float[i2 * 2];
-    float[] arrayOfFloat2 = new float[i2];
-    int m = 0;
-    paramInt = 0;
-    int i = 0;
-    int k = i;
-    int j = paramInt;
-    int n = i1;
-    if (m < i2)
-    {
-      if (paramRenderPoint.aList[m] <= 0.8F) {
-        break label305;
-      }
-      k = i + 1;
-      arrayOfFloat1[i] = paramRenderPoint.xList[m];
-      arrayOfFloat1[k] = paramRenderPoint.yList[m];
-      j = paramInt + 1;
-      arrayOfFloat2[paramInt] = paramRenderPoint.aList[m];
-      i = k + 1;
-      paramInt = j;
+    bnrh.b("AEResManager", "[requestDownloadInternal] - BEGIN -, packageIndex=" + parambnkt.jdField_a_of_type_Int);
+    if (!this.jdField_a_of_type_JavaUtilMap.containsKey(parambnkt)) {
+      this.jdField_a_of_type_JavaUtilMap.put(parambnkt, Integer.valueOf(0));
     }
-    label296:
-    label305:
-    for (;;)
+    int i = ((Integer)this.jdField_a_of_type_JavaUtilMap.get(parambnkt)).intValue();
+    bnrh.b("AEResManager", "[requestDownloadInternal], status=" + jdField_a_of_type_ArrayOfJavaLangString[i]);
+    if (i == 4)
     {
-      m += 1;
-      break;
-      if (n < i2)
+      i = bnky.a(parambnkt.jdField_a_of_type_Int);
+      if (i == 0) {
+        break label682;
+      }
+    }
+    label682:
+    for (String str = bnky.a(parambnkt.jdField_b_of_type_JavaLangString + i);; str = null)
+    {
+      if (parambnkw != null) {
+        parambnkw.onAEDownloadFinish(parambnkt, str, true, 0);
+      }
+      bnky.a(parambnkt, str);
+      bnrh.b("AEResManager", "[requestDownloadInternal], packageIndex=" + parambnkt.jdField_a_of_type_Int + ", downloadStatus=DOWNLOAD_STATUS_READY");
+      bnrh.b("AEResManager", "[requestDownloadInternal] - END -, packageIndex=" + parambnkt.jdField_a_of_type_Int);
+      return;
+      if (i == 3)
       {
-        if (paramRenderPoint.aList[n] > 0.8F) {
-          break label296;
+        b(parambnkw);
+        bnrh.b("AEResManager", "[requestDownloadInternal], packageIndex=" + parambnkt.jdField_a_of_type_Int + ", downloadStatus=DOWNLOAD_STATUS_DOWNLOADING");
+        bnrh.b("AEResManager", "[requestDownloadInternal] - END -, packageIndex=" + parambnkt.jdField_a_of_type_Int);
+        return;
+      }
+      if ((NetworkUtil.isNetworkAvailable(null)) && ((!paramBoolean1) || (NetworkUtil.isWifiConnected(null)))) {}
+      for (i = 1; i == 0; i = 0)
+      {
+        if (parambnkw != null) {
+          parambnkw.onAEDownloadFinish(parambnkt, null, false, -6);
         }
-        i = k + 1;
-        arrayOfFloat1[k] = paramRenderPoint.xList[n];
-        arrayOfFloat1[i] = paramRenderPoint.yList[n];
-        paramInt = j + 1;
-        arrayOfFloat2[j] = paramRenderPoint.aList[n];
-        i += 1;
+        bnrh.d("AEResManager", "[requestDownloadInternal], packageIndex=" + parambnkt.jdField_a_of_type_Int + ", networkStatus=UNUSABLE");
+        bnrh.b("AEResManager", "[requestDownloadInternal] - END -, packageIndex=" + parambnkt.jdField_a_of_type_Int);
+        return;
+      }
+      bnrh.b("AEResManager", "[requestDownloadInternal], packageIndex=" + parambnkt.jdField_a_of_type_Int + ", networkStatus=USABLE");
+      b(parambnkw);
+      if (!this.jdField_a_of_type_JavaUtilQueue.contains(parambnkt))
+      {
+        this.jdField_a_of_type_JavaUtilQueue.add(parambnkt);
+        this.jdField_a_of_type_JavaUtilMap.put(parambnkt, Integer.valueOf(1));
+      }
+      if ((parambnkt.jdField_b_of_type_Boolean) && (paramBoolean2))
+      {
+        paramBoolean1 = true;
+        parambnkt.jdField_b_of_type_Boolean = paramBoolean1;
+        if (this.jdField_a_of_type_JavaUtilMap.containsKey(bnkt.jdField_a_of_type_Bnkt)) {
+          break label609;
+        }
+        bnrh.b("AEResManager", "[requestDownloadInternal] 强制拉取配置列表" + parambnkt.jdField_a_of_type_Int);
+        this.jdField_a_of_type_JavaUtilMap.put(bnkt.jdField_a_of_type_Bnkt, Integer.valueOf(3));
+        ShortVideoResourceManager.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), this);
       }
       for (;;)
       {
-        n += 1;
-        k = i;
-        j = paramInt;
-        break;
-        super.setPositions(arrayOfFloat1);
-        super.setTexCords(arrayOfFloat1);
-        super.addAttribParam(new AttributeParam("inputBlendAlpha", arrayOfFloat2, 1));
-        super.addParam(new UniformParam.Float2fParam("texAnchor", 0.0F, 0.0F));
-        super.addParam(new UniformParam.FloatParam("texScale", 1.0F));
-        super.addParam(new UniformParam.Float3fParam("texRotate", 0.0F, 0.0F, 0.0F));
+        bnrh.b("AEResManager", "[requestDownloadInternal] - END -, packageIndex=" + parambnkt.jdField_a_of_type_Int);
         return;
-        i = k;
-        paramInt = j;
+        paramBoolean1 = false;
+        break;
+        label609:
+        if ((this.jdField_a_of_type_JavaUtilMap.get(bnkt.jdField_a_of_type_Bnkt) != null) && (((Integer)this.jdField_a_of_type_JavaUtilMap.get(bnkt.jdField_a_of_type_Bnkt)).intValue() == 4))
+        {
+          bnrh.b("AEResManager", "[requestDownloadInternal] 配置列表已经存在, packageIndex = " + parambnkt.jdField_a_of_type_Int);
+          onConfigResult(1, 0);
+        }
       }
     }
   }
   
-  private void b()
+  private void a(String paramString1, int paramInt, String paramString2)
   {
-    super.addParam(new UniformParam.IntParam("drawType", 0));
-    super.setTexCords(new float[] { 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F });
-    super.addAttribParam(new AttributeParam("inputBlendAlpha", jdField_a_of_type_ArrayOfFloat, 1));
-  }
-  
-  public void ApplyGLSLFilter()
-  {
-    if (!this.jdField_c_of_type_Boolean)
+    boolean bool2 = false;
+    bnrh.b("AEResManager", "[onDownloadFinishInternal] - BEGIN -, result=" + paramInt + ", name=" + paramString1 + ", filePath=" + paramString2);
+    Object localObject1 = paramString1;
+    if (paramString1 == null) {
+      localObject1 = "";
+    }
+    int i;
+    Object localObject2;
+    int k;
+    int j;
+    if ((paramInt == 0) || (paramInt == 1))
     {
-      this.jdField_c_of_type_Boolean = true;
-      super.ApplyGLSLFilter();
+      i = 0;
+      localObject2 = bnkt.jdField_b_of_type_ArrayOfBnkt;
+      k = localObject2.length;
+      j = 0;
+    }
+    for (;;)
+    {
+      if (j < k)
+      {
+        paramString1 = localObject2[j];
+        if (((String)localObject1).startsWith(paramString1.jdField_b_of_type_JavaLangString))
+        {
+          bnrh.b("AEResManager", "[onDownloadFinishInternal], matched aeResInfo=" + paramString1);
+          if (i == 0)
+          {
+            this.jdField_a_of_type_JavaUtilMap.put(paramString1, Integer.valueOf(4));
+            this.jdField_a_of_type_JavaUtilQueue.remove(paramString1);
+            bnky.a(paramString1, paramString2);
+            j = Integer.valueOf(((String)localObject1).substring(paramString1.jdField_b_of_type_JavaLangString.length())).intValue();
+            bnky.a(paramString1.jdField_a_of_type_Int, j);
+            label200:
+            localObject1 = this.jdField_b_of_type_JavaUtilList.iterator();
+            label211:
+            if (!((Iterator)localObject1).hasNext()) {
+              break label298;
+            }
+            localObject2 = (bnkw)((Iterator)localObject1).next();
+            if (i != 0) {
+              break label292;
+            }
+          }
+          label292:
+          for (boolean bool1 = true;; bool1 = false)
+          {
+            ((bnkw)localObject2).onAEDownloadFinish(paramString1, paramString2, bool1, i);
+            break label211;
+            i = paramInt;
+            break;
+            this.jdField_a_of_type_JavaUtilMap.put(paramString1, Integer.valueOf(0));
+            this.jdField_a_of_type_JavaUtilQueue.remove(paramString1);
+            break label200;
+          }
+          label298:
+          if (paramInt != 1)
+          {
+            long l = -1L;
+            if (this.jdField_b_of_type_JavaUtilMap.get(paramString1) != null) {
+              l = System.currentTimeMillis() - ((Long)this.jdField_b_of_type_JavaUtilMap.get(paramString1)).longValue();
+            }
+            paramString2 = bnqm.a();
+            bool1 = bool2;
+            if (paramInt == 0) {
+              bool1 = true;
+            }
+            paramString2.a(bool1, paramString1.jdField_a_of_type_Int, "", "", paramInt, l);
+          }
+          bnrh.b("AEResManager", "[onDownloadFinishInternal], start download next package");
+          paramString1 = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+          a(new LinkedList(this.jdField_a_of_type_JavaUtilList), paramString1, true);
+        }
+      }
+      else
+      {
+        bnrh.b("AEResManager", "[onDownloadFinishInternal] - END -");
+        return;
+      }
+      j += 1;
     }
   }
   
-  public void a()
+  private void a(String paramString, long paramLong1, long paramLong2)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    paramString = bnkt.jdField_b_of_type_ArrayOfBnkt;
+    int j = paramString.length;
+    int i = 0;
+    while (i < j)
     {
-      GLES20.glGenTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
-      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.bindFrame(this.jdField_a_of_type_ArrayOfInt[0], this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1.0D);
-      this.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getTextureId();
-      this.jdField_a_of_type_Boolean = true;
+      Object localObject = paramString[i];
+      if (str.startsWith(localObject.jdField_b_of_type_JavaLangString))
+      {
+        this.jdField_a_of_type_JavaUtilMap.put(localObject, Integer.valueOf(3));
+        Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+        while (localIterator.hasNext()) {
+          ((bnkw)localIterator.next()).onAEProgressUpdate(localObject, paramLong1, paramLong2);
+        }
+      }
+      i += 1;
     }
   }
   
-  public void a(int paramInt)
+  private void a(@NonNull List<ShortVideoResourceManager.SVConfigItem> paramList, @NonNull QQAppInterface paramQQAppInterface, @NonNull bnkt parambnkt)
   {
-    UniformParam.TextureParam localTextureParam = new UniformParam.TextureParam("inputImageTexture2", this.jdField_c_of_type_Int, 33986);
-    localTextureParam.initialParams(super.getProgramIds());
-    super.addParam(localTextureParam);
-    super.addParam(new UniformParam.IntParam("drawType", 0));
-    a(paramInt, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    super.setPositions(AlgoUtils.calPositions(0.0F, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int + 0.0F, 0.0F, paramInt2, paramInt3));
-    super.addParam(new UniformParam.Float2fParam("texAnchor", this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y));
-    super.addParam(new UniformParam.FloatParam("texScale", 1.0F));
-    super.addParam(new UniformParam.Float3fParam("texRotate", 0.0F, 0.0F, 0.0F));
-    GLES20.glFlush();
-    super.OnDrawFrameGLSL();
-    super.renderTexture(paramInt1, paramInt2, paramInt3);
-  }
-  
-  public void a(DoodleMagicAlgoHandler.RenderPoint paramRenderPoint)
-  {
-    if (paramRenderPoint.xList.length != 0) {
-      this.jdField_a_of_type_JavaUtilQueue.add(paramRenderPoint);
+    bnrh.b("AEResManager", "[cancelPreDownLoad] - BEGIN -, aeResInfo=" + parambnkt);
+    paramQQAppInterface = (PreDownloadController)paramQQAppInterface.getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2);
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
+    {
+      paramList = (ShortVideoResourceManager.SVConfigItem)localIterator.next();
+      if (paramList.name.startsWith(parambnkt.jdField_b_of_type_JavaLangString)) {
+        bnrh.b("AEResManager", "[cancelPreDownLoad], chosenConfigItem matched");
+      }
+    }
+    for (;;)
+    {
+      if ((paramQQAppInterface != null) && (paramQQAppInterface.isEnable()) && (paramList != null))
+      {
+        if ((!VideoEnvironment64BitUtils.checkIs64bit()) || (!paramList.check64BitReady())) {
+          break label178;
+        }
+        paramQQAppInterface.cancelPreDownload(paramList.arm64v8a_url);
+      }
+      for (;;)
+      {
+        bnrh.b("AEResManager", "[cancelPreDownLoad], preDownloadController.isEnable() == " + paramQQAppInterface.isEnable());
+        bnrh.b("AEResManager", "[cancelPreDownLoad] - END -, aeResInfo=" + parambnkt);
+        return;
+        label178:
+        paramQQAppInterface.cancelPreDownload(paramList.armv7a_url);
+      }
+      paramList = null;
     }
   }
   
-  public boolean a(List<PointF> paramList, boolean paramBoolean, bnkx parambnkx)
+  private void a(@NonNull List<ShortVideoResourceManager.SVConfigItem> paramList, @NonNull QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    GLES20.glBlendFuncSeparate(1, 771, 1, 1);
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.bindFrame(this.jdField_a_of_type_ArrayOfInt[0], this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1.0D);
-    GLES20.glBindFramebuffer(36160, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getFBO());
-    GLES20.glViewport(0, 0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    if ((this.d == 0) && (this.jdField_a_of_type_Boolean))
+    bnrh.b("AEResManager", "[startDownLoad] + BEGIN");
+    if (CollectionUtils.isEmpty(this.jdField_a_of_type_JavaUtilQueue))
     {
-      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.bindFrame(this.jdField_a_of_type_ArrayOfInt[0], this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1.0D);
-      GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
-      GLES20.glClear(16640);
-      GLES20.glFlush();
+      bnrh.d("AEResManager", "[startDownLoad], mDownLoadTaskQueue is empty");
+      bnrh.b("AEResManager", "[startDownLoad] - END -");
+      return;
     }
-    int i = this.d;
-    PointF localPointF;
-    if (i < paramList.size())
+    bnkt localbnkt = (bnkt)this.jdField_a_of_type_JavaUtilQueue.peek();
+    if (localbnkt == null)
     {
-      localPointF = (PointF)paramList.get(i);
-      localPointF = new PointF(localPointF.x + this.jdField_a_of_type_AndroidGraphicsPoint.x, localPointF.y + this.jdField_a_of_type_AndroidGraphicsPoint.y);
+      bnrh.d("AEResManager", "[startDownLoad], mDownLoadTaskQueue top element is null");
+      bnrh.b("AEResManager", "[startDownLoad] + END");
+      return;
+    }
+    int i;
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(localbnkt))
+    {
+      i = ((Integer)this.jdField_a_of_type_JavaUtilMap.get(localbnkt)).intValue();
+      bnrh.a("AEResManager", "[startDownLoad], resNeedDownload=" + localbnkt);
+      bnrh.a("AEResManager", "[startDownLoad], status=" + jdField_a_of_type_ArrayOfJavaLangString[i]);
+      if ((!paramBoolean) && (localbnkt.jdField_b_of_type_Boolean)) {
+        break label275;
+      }
+      bnrh.b("AEResManager", "[startDownLoad], isDownLoadImmediately=true");
+      if (i != 3)
+      {
+        this.jdField_a_of_type_JavaUtilMap.put(localbnkt, Integer.valueOf(3));
+        if (i == 2) {
+          a(paramList, paramQQAppInterface, localbnkt);
+        }
+        this.jdField_b_of_type_JavaUtilMap.put(localbnkt, Long.valueOf(System.currentTimeMillis()));
+        bnrh.b("AEResManager", "[startDownLoad], realDownloadResource()");
+        bnkr.a(localbnkt, paramList, this);
+      }
+    }
+    for (;;)
+    {
+      bnrh.b("AEResManager", "[startDownLoad] + END");
+      return;
+      bnrh.d("AEResManager", "[startDownLoad], cannot find resNeedDownload in mStatusMap");
+      bnrh.b("AEResManager", "[startDownLoad] + END");
+      return;
+      label275:
+      bnrh.b("AEResManager", "[startDownLoad], isDownLoadImmediately=false");
+      if ((i == 3) || (i == 2)) {
+        break;
+      }
+      if (!a(paramList, this, paramQQAppInterface, localbnkt))
+      {
+        a(paramList, paramQQAppInterface, localbnkt);
+        localbnkt.jdField_b_of_type_Boolean = false;
+        this.jdField_b_of_type_JavaUtilMap.put(localbnkt, Long.valueOf(System.currentTimeMillis()));
+        bnrh.b("AEResManager", "[startDownLoad], realDownloadResource()");
+        this.jdField_a_of_type_JavaUtilMap.put(localbnkt, Integer.valueOf(3));
+        bnkr.a(localbnkt, paramList, this);
+      }
+      else
+      {
+        this.jdField_a_of_type_JavaUtilMap.put(localbnkt, Integer.valueOf(2));
+      }
+    }
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    boolean bool = true;
+    bnrh.b("AEResManager", "[onConfigResultInternal] ++++++ BEGIN");
+    int i;
+    if (this.jdField_a_of_type_JavaUtilList.size() < 1)
+    {
+      bnrh.b("AEResManager", "[onConfigResultInternal] 内存中'还没有'列表信息，开始生成配置列表");
+      i = ShortVideoResourceManager.a(null, this.jdField_a_of_type_JavaUtilList);
+      bnrh.b("AEResManager", "[onConfigResultInternal] 生成配置列表结果 errCode = " + i);
+      bnrh.b("AEResManager", "[onConfigResultInternal] 内存中'当前的'配置列表信息，size = " + this.jdField_a_of_type_JavaUtilList.size());
+      if (i != 0) {
+        break label523;
+      }
+      i = bnky.a(this.jdField_a_of_type_JavaUtilList);
+    }
+    label523:
+    for (;;)
+    {
+      Object localObject1 = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+      Object localObject2;
       if (i == 0)
       {
-        this.jdField_b_of_type_Float = localPointF.x;
-        this.jdField_c_of_type_Float = localPointF.y;
-        DoodleMagicAlgoHandler.onTouchEvent(0, localPointF.x, localPointF.y);
+        this.jdField_a_of_type_JavaUtilMap.put(bnkt.jdField_a_of_type_Bnkt, Integer.valueOf(4));
+        bnrh.b("AEResManager", "[onConfigResultInternal] 配置列表拉取成功，开始进行ZIP包下载");
+        localObject2 = new LinkedList(this.jdField_a_of_type_JavaUtilList);
+        if (!paramBoolean)
+        {
+          paramBoolean = true;
+          label170:
+          a((List)localObject2, (QQAppInterface)localObject1, paramBoolean);
+        }
       }
       for (;;)
       {
-        i += 1;
+        bnrh.b("AEResManager", "[onConfigResultInternal] ++++++ END");
+        return;
+        bnrh.b("AEResManager", "[onConfigResultInternal] 内存中'已经有'列表信息，执行检查刷新列表");
+        localObject1 = new LinkedList();
+        int j = ShortVideoResourceManager.a(null, (List)localObject1);
+        bnrh.b("AEResManager", "[onConfigResultInternal] 内存中'已经有'列表信息，刷新后列表为 = " + localObject1);
+        i = j;
+        if (j != 0) {
+          break;
+        }
+        i = j;
+        if (((List)localObject1).size() <= 0) {
+          break;
+        }
+        this.jdField_a_of_type_JavaUtilList.clear();
+        this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject1);
+        i = j;
         break;
-        DoodleMagicAlgoHandler.onTouchEvent(1, localPointF.x, localPointF.y);
+        paramBoolean = false;
+        break label170;
+        bnrh.b("AEResManager", "[onConfigResultInternal] 配置列表拉取失败，尝试构造内置列表进行下载");
+        localObject2 = new LinkedList();
+        i = ShortVideoResourceManager.a("[\n    {\n        \"name\": \"new_qq_android_native_short_filter_841033\",\n        \"arm_url\": \"https://downv6.qq.com/shadow_qqcamera/Android/new_qq_android_native_short_filter_841033.zip\",\n        \"armv7a_url\": \"https://downv6.qq.com/shadow_qqcamera/Android/new_qq_android_native_short_filter_841033.zip\",\n        \"x86_url\": \"https://downv6.qq.com/shadow_qqcamera/Android/new_qq_android_native_short_filter_841033.zip\",\n        \"arm64v8a_url\": \"https://downv6.qq.com/shadow_qqcamera/Android/new_qq_android_native_short_filter_841033_64bit.zip\",\n        \"arm_md5\": \"a504ba7ae2878bb1e3b746d92ef1ef9e\",\n        \"armv7a_md5\": \"a504ba7ae2878bb1e3b746d92ef1ef9e\",\n        \"x86_md5\": \"a504ba7ae2878bb1e3b746d92ef1ef9e\",\n        \"arm64v8a_md5\": \"b07d180ecabc6a0a2f6cb156f573f6c5\",\n        \"versionCode\": \"8410\",\n        \"predownload\": false\n    },\n    {\n        \"name\": \"new_qq_android_native_ptu_res_841033\",\n        \"arm_url\": \"https://downv6.qq.com/shadow_qqcamera/Android/new_qq_android_native_ptu_res_841033.zip\",\n        \"armv7a_url\": \"https://downv6.qq.com/shadow_qqcamera/Android/new_qq_android_native_ptu_res_841033.zip\",\n        \"x86_url\": \"https://downv6.qq.com/shadow_qqcamera/Android/new_qq_android_native_ptu_res_841033.zip\",\n        \"arm64v8a_url\": \"https://downv6.qq.com/shadow_qqcamera/Android/new_qq_android_native_ptu_res_841033_64bit.zip\",\n        \"arm_md5\": \"e0f968903ca7a8ba63af8f970246afe3\",\n        \"armv7a_md5\": \"e0f968903ca7a8ba63af8f970246afe3\",\n        \"x86_md5\": \"e0f968903ca7a8ba63af8f970246afe3\",\n        \"arm64v8a_md5\": \"ed0c00ee498a5f911698d4caa75e5ce6\",\n        \"versionCode\": \"8410\",\n        \"predownload\": false\n    }\n]", (List)localObject2);
+        if ((i == 0) && (((List)localObject2).size() > 0))
+        {
+          this.jdField_a_of_type_JavaUtilList.clear();
+          this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject2);
+        }
+        if (i == 0)
+        {
+          this.jdField_a_of_type_JavaUtilMap.put(bnkt.jdField_a_of_type_Bnkt, Integer.valueOf(4));
+          bnrh.b("AEResManager", "[onConfigResultInternal] 构造内置列表成功，开始下载");
+          localObject2 = new LinkedList(this.jdField_a_of_type_JavaUtilList);
+          if (!paramBoolean) {}
+          for (paramBoolean = bool;; paramBoolean = false)
+          {
+            a((List)localObject2, (QQAppInterface)localObject1, paramBoolean);
+            break;
+          }
+        }
+        this.jdField_a_of_type_JavaUtilMap.remove(bnkt.jdField_a_of_type_Bnkt);
+        bnrh.b("AEResManager", "[onConfigResultInternal] 构造内置列表失败，返回信息");
+        if ((this.jdField_b_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList.size() > 0))
+        {
+          i = 0;
+          while (i < bnkt.jdField_b_of_type_ArrayOfBnkt.length)
+          {
+            localObject1 = bnkt.jdField_a_of_type_ArrayOfBnkt[i];
+            localObject2 = this.jdField_b_of_type_JavaUtilList.iterator();
+            while (((Iterator)localObject2).hasNext()) {
+              ((bnkw)((Iterator)localObject2).next()).onAEDownloadFinish((bnkt)localObject1, null, false, -102);
+            }
+            i += 1;
+          }
+        }
       }
     }
-    if (paramBoolean)
+  }
+  
+  private boolean a(@NonNull List<ShortVideoResourceManager.SVConfigItem> paramList, @NonNull bcya parambcya, @NonNull QQAppInterface paramQQAppInterface, @NonNull bnkt parambnkt)
+  {
+    bnrh.b("AEResManager", "[startPreDownLoad] - BEGIN -, aeResInfo=" + parambnkt);
+    PreDownloadController localPreDownloadController = (PreDownloadController)paramQQAppInterface.getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2);
+    Iterator localIterator = paramList.iterator();
+    ShortVideoResourceManager.SVConfigItem localSVConfigItem;
+    while (localIterator.hasNext())
     {
-      paramList = (PointF)paramList.get(paramList.size() - 1);
-      localPointF = new PointF(this.jdField_a_of_type_Int / 2, this.jdField_b_of_type_Int / 2);
-      paramList = new PointF(paramList.x + localPointF.x, paramList.y + localPointF.y);
-      if ((paramList.x == this.jdField_b_of_type_Float) && (paramList.y == this.jdField_c_of_type_Float))
-      {
-        paramList.x += 1.0F;
-        paramList.y += 1.0F;
+      localSVConfigItem = (ShortVideoResourceManager.SVConfigItem)localIterator.next();
+      if (localSVConfigItem.name.startsWith(parambnkt.jdField_b_of_type_JavaLangString)) {
+        bnrh.b("AEResManager", "[startPreDownLoad], chosenConfigItem matched");
       }
-      DoodleMagicAlgoHandler.onTouchEvent(2, paramList.x, paramList.y);
-      this.d = 0;
-      this.jdField_b_of_type_Float = -1.0F;
-      this.jdField_b_of_type_Float = -1.0F;
     }
     for (;;)
     {
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      while (!this.jdField_a_of_type_JavaUtilQueue.isEmpty())
+      if ((localPreDownloadController != null) && (localPreDownloadController.isEnable()))
       {
-        paramList = (DoodleMagicAlgoHandler.RenderPoint)this.jdField_a_of_type_JavaUtilQueue.poll();
-        if (paramList != null)
+        parambcya = new bnkv(this, paramQQAppInterface, "ae_camera_res", new AEResManager.4(this, parambnkt, paramList, parambcya), 4000L);
+        if (localSVConfigItem != null)
         {
-          parambnkx.a.add(paramList);
-          b(paramList);
+          if ((VideoEnvironment64BitUtils.checkIs64bit()) && (localSVConfigItem.check64BitReady())) {}
+          for (paramList = localSVConfigItem.arm64v8a_url;; paramList = localSVConfigItem.armv7a_url)
+          {
+            boolean bool = localPreDownloadController.requestPreDownload(10091, null, localSVConfigItem.name, 0, paramList, bnky.a(localSVConfigItem.name), 4, 0, true, parambcya);
+            bnrh.b("AEResManager", "[startPreDownLoad], preDownloadController.requestPreDownload(), succeeded=" + bool);
+            bnrh.b("AEResManager", "[startPreDownLoad] - END -, aeResInfo=" + parambnkt);
+            return bool;
+          }
+        }
+        bnrh.b("AEResManager", "[startPreDownLoad], chosenConfigItem == nul");
+        bnrh.b("AEResManager", "[startPreDownLoad] - END -, aeResInfo=" + parambnkt);
+        return false;
+      }
+      bnrh.b("AEResManager", "[startPreDownLoad], preDownloadController.isEnable() == false");
+      bnrh.b("AEResManager", "[startPreDownLoad] - END -, aeResInfo=" + parambnkt);
+      return false;
+      localSVConfigItem = null;
+    }
+  }
+  
+  private void b(@NonNull bnkt parambnkt, @Nullable bnkw parambnkw)
+  {
+    bnrh.b("AEResManager", "[requestDownloadWithoutLoginInternal] - BEGIN -, packageIndex=" + parambnkt.jdField_a_of_type_Int);
+    if (!this.jdField_a_of_type_JavaUtilMap.containsKey(parambnkt)) {
+      this.jdField_a_of_type_JavaUtilMap.put(parambnkt, Integer.valueOf(0));
+    }
+    int i = ((Integer)this.jdField_a_of_type_JavaUtilMap.get(parambnkt)).intValue();
+    bnrh.b("AEResManager", "[requestDownloadWithoutLoginInternal], status=" + jdField_a_of_type_ArrayOfJavaLangString[i]);
+    if (i == 4)
+    {
+      i = bnky.a(parambnkt.jdField_a_of_type_Int);
+      if (i == 0) {
+        break label575;
+      }
+    }
+    label575:
+    for (String str = bnky.a(parambnkt.jdField_b_of_type_JavaLangString + i);; str = null)
+    {
+      if (parambnkw != null) {
+        parambnkw.onAEDownloadFinish(parambnkt, str, true, 0);
+      }
+      bnrh.b("AEResManager", "[requestDownloadWithoutLoginInternal], packageIndex=" + parambnkt.jdField_a_of_type_Int + ", downloadStatus=DOWNLOAD_STATUS_READY");
+      bnrh.b("AEResManager", "[requestDownloadWithoutLoginInternal] - END -, packageIndex=" + parambnkt.jdField_a_of_type_Int);
+      return;
+      if (i == 3)
+      {
+        b(parambnkw);
+        bnrh.b("AEResManager", "[requestDownloadWithoutLoginInternal], packageIndex=" + parambnkt.jdField_a_of_type_Int + ", downloadStatus=DOWNLOAD_STATUS_DOWNLOADING");
+        bnrh.b("AEResManager", "[requestDownloadWithoutLoginInternal] - END -, packageIndex=" + parambnkt.jdField_a_of_type_Int);
+        return;
+      }
+      if (!NetworkUtil.isNetworkAvailable(null))
+      {
+        if (parambnkw != null) {
+          parambnkw.onAEDownloadFinish(parambnkt, null, false, -6);
+        }
+        bnrh.b("AEResManager", "[requestDownloadWithoutLoginInternal], packageIndex=" + parambnkt.jdField_a_of_type_Int + ", networkStatus=UNUSABLE");
+        bnrh.b("AEResManager", "[requestDownloadWithoutLoginInternal] - END -, packageIndex=" + parambnkt.jdField_a_of_type_Int);
+        return;
+      }
+      bnrh.b("AEResManager", "[requestDownloadWithoutLoginInternal], packageIndex=" + parambnkt.jdField_a_of_type_Int + ", networkStatus=USABLE");
+      b(parambnkw);
+      if (!this.jdField_a_of_type_JavaUtilQueue.contains(parambnkt))
+      {
+        this.jdField_a_of_type_JavaUtilQueue.add(parambnkt);
+        this.jdField_a_of_type_JavaUtilMap.put(parambnkt, Integer.valueOf(1));
+      }
+      if (!this.jdField_a_of_type_JavaUtilMap.containsKey(bnkt.jdField_a_of_type_Bnkt))
+      {
+        this.jdField_a_of_type_JavaUtilMap.put(bnkt.jdField_a_of_type_Bnkt, Integer.valueOf(3));
+        bcxs.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), this);
+      }
+      for (;;)
+      {
+        bnrh.b("AEResManager", "[requestDownloadWithoutLoginInternal] - END -, packageIndex=" + parambnkt.jdField_a_of_type_Int);
+        return;
+        if ((this.jdField_a_of_type_JavaUtilMap.get(bnkt.jdField_a_of_type_Bnkt) != null) && (((Integer)this.jdField_a_of_type_JavaUtilMap.get(bnkt.jdField_a_of_type_Bnkt)).intValue() == 4)) {
+          a(1, 0);
         }
       }
-      this.d = (paramList.size() - 1);
     }
-    return true;
   }
   
-  public void b(DoodleMagicAlgoHandler.RenderPoint paramRenderPoint)
+  private void b(@Nullable bnkw parambnkw)
   {
-    a(paramRenderPoint, 4);
-    super.OnDrawFrameGLSL();
-    GLES20.glActiveTexture(33984);
-    GLES20.glBindTexture(3553, this.jdField_c_of_type_Int);
-    GLES20.glDrawArrays(5, 0, paramRenderPoint.xList.length);
-    GLES20.glFlush();
-    b();
+    if (parambnkw == null) {}
+    while ((this.jdField_b_of_type_JavaUtilList == null) || (this.jdField_b_of_type_JavaUtilList.contains(parambnkw))) {
+      return;
+    }
+    this.jdField_b_of_type_JavaUtilList.add(parambnkw);
   }
   
-  public void initAttribParams()
+  @Deprecated
+  public int a(@NonNull bnkt parambnkt)
   {
-    super.initAttribParams();
-    super.addAttribParam(new AttributeParam("inputBlendAlpha", jdField_a_of_type_ArrayOfFloat, 1));
+    if (this.jdField_a_of_type_JavaUtilMap != null)
+    {
+      parambnkt = (Integer)this.jdField_a_of_type_JavaUtilMap.get(parambnkt);
+      if (parambnkt != null) {
+        return parambnkt.intValue();
+      }
+      return 0;
+    }
+    return 0;
   }
   
-  public void initParams()
+  public void a(int paramInt1, int paramInt2)
   {
-    super.addParam(new UniformParam.IntParam("texNeedTransform", 1));
-    super.addParam(new UniformParam.Float2fParam("canvasSize", 0.0F, 0.0F));
-    super.addParam(new UniformParam.Float2fParam("texAnchor", 0.0F, 0.0F));
-    super.addParam(new UniformParam.FloatParam("texScale", 1.0F));
-    super.addParam(new UniformParam.Float3fParam("texRotate", 0.0F, 0.0F, 0.0F));
-    super.addParam(new UniformParam.FloatParam("positionRotate", 0.0F));
-    super.addParam(new UniformParam.IntParam("blendMode", -1));
-    super.addParam(new UniformParam.IntParam("drawType", 0));
-    super.addParam(new UniformParam.Mat4Param("u_MVPMatrix", MatrixUtil.getMVPMatrix(6.0F, 4.0F, 10.0F)));
+    bnrh.b("AEResManager", "[onConfigResultWithoutLogin] - BEGIN -, result=" + paramInt1 + ", serverError=" + paramInt2);
+    this.jdField_a_of_type_AndroidOsHandler.post(new AEResManager.9(this));
+    bnrh.b("AEResManager", "[onConfigResultWithoutLogin] - END -, result=" + paramInt1 + ", serverError=" + paramInt2);
   }
   
-  public boolean renderTexture(int paramInt1, int paramInt2, int paramInt3)
+  public void a(@NonNull bnkt parambnkt, @Nullable bnkw parambnkw)
   {
-    GLES20.glBlendFuncSeparate(770, 771, 1, 1);
-    UniformParam.TextureParam localTextureParam = new UniformParam.TextureParam("inputImageTexture2", this.jdField_c_of_type_Int, 33986);
-    localTextureParam.initialParams(super.getProgramIds());
-    super.addParam(localTextureParam);
-    a(paramInt1, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    return true;
+    bnrh.b("AEResManager", "[requestDownloadWithoutLogin] - BEGIN -, aeResInfo=" + parambnkt);
+    this.jdField_a_of_type_AndroidOsHandler.post(new AEResManager.3(this, parambnkt, parambnkw));
+    bnrh.b("AEResManager", "[requestDownloadWithoutLogin] - END -, aeResInfo=" + parambnkt);
   }
   
-  public void updatePreview(Object paramObject) {}
-  
-  public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)
+  public void a(@NonNull bnkt parambnkt, @Nullable bnkw parambnkw, boolean paramBoolean)
   {
-    super.updateVideoSize(paramInt1, paramInt2, paramDouble);
-    this.jdField_a_of_type_AndroidGraphicsPoint = new Point(paramInt1 / 2, paramInt2 / 2);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    super.addParam(new UniformParam.Float2fParam("canvasSize", paramInt1, paramInt2));
-    DoodleMagicAlgoHandler.OnUpdateSize(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Float);
-    DoodleMagicAlgoHandler.setFilter(this);
+    bnrh.b("AEResManager", "[requestDownload] - BEGIN -, aeResInfo=" + parambnkt);
+    this.jdField_a_of_type_AndroidOsHandler.post(new AEResManager.1(this, parambnkt, parambnkw, paramBoolean));
+    bnrh.b("AEResManager", "[requestDownload] - END -, aeResInfo=" + parambnkt);
+  }
+  
+  public void a(@Nullable bnkw parambnkw)
+  {
+    if (parambnkw == null) {}
+    while (this.jdField_b_of_type_JavaUtilList == null) {
+      return;
+    }
+    this.jdField_b_of_type_JavaUtilList.remove(parambnkw);
+  }
+  
+  public void b(@NonNull bnkt parambnkt, @Nullable bnkw parambnkw, boolean paramBoolean)
+  {
+    bnrh.b("AEResManager", "[requestDownload] - BEGIN -, aeResInfo=" + parambnkt);
+    this.jdField_a_of_type_AndroidOsHandler.post(new AEResManager.2(this, parambnkt, parambnkw, paramBoolean));
+    bnrh.b("AEResManager", "[requestDownload] - END -, aeResInfo=" + parambnkt);
+  }
+  
+  public void onConfigResult(int paramInt1, int paramInt2)
+  {
+    bnrh.b("AEResManager", "[onConfigResult] - BEGIN -, result=" + paramInt1 + ", serverError=" + paramInt2);
+    this.jdField_a_of_type_AndroidOsHandler.post(new AEResManager.6(this));
+    bnrh.b("AEResManager", "[onConfigResult] - END -, result=" + paramInt1 + ", serverError=" + paramInt2);
+  }
+  
+  public void onDownloadFinish(String paramString1, int paramInt, String paramString2)
+  {
+    bnrh.b("AEResManager", "[onDownloadFinish] - BEGIN -, result=" + paramInt + ", name=" + paramString1 + ", filePath=" + paramString2);
+    this.jdField_a_of_type_AndroidOsHandler.post(new AEResManager.7(this, paramString1, paramInt, paramString2));
+    bnrh.b("AEResManager", "[onDownloadFinish] - END -");
+  }
+  
+  public void onNetWorkNone()
+  {
+    bnrh.d("AEResManager", anvx.a(2131699506));
+    bcxc.a(3, -1500);
+  }
+  
+  public void onUpdateProgress(String paramString, long paramLong1, long paramLong2)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new AEResManager.8(this, paramString, paramLong1, paramLong2));
   }
 }
 

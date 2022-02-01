@@ -1,19 +1,37 @@
-import android.support.annotation.UiThread;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.util.ProfileParams;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public abstract interface uuf<M>
-  extends uiz
+final class uuf
+  implements DialogInterface.OnClickListener
 {
-  @UiThread
-  public abstract void a(int paramInt, String paramString);
+  uuf(Activity paramActivity, ProfileParams paramProfileParams, QQAppInterface paramQQAppInterface) {}
   
-  @UiThread
-  public abstract void a(M paramM);
-  
-  @UiThread
-  public abstract void c();
-  
-  @UiThread
-  public abstract void e();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+        ForwardSdkShareOption.a(this.jdField_a_of_type_AndroidAppActivity, false, "shareToQzone", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams.a()).longValue());
+      } while ((this.jdField_a_of_type_AndroidAppActivity == null) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing()));
+      this.jdField_a_of_type_AndroidAppActivity.setResult(0);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+      return;
+    } while (uuc.a == null);
+    uuc.a.dismiss();
+    uuc.a = null;
+    this.jdField_a_of_type_AndroidAppActivity.finish();
+    uuc.d(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams);
+  }
 }
 
 

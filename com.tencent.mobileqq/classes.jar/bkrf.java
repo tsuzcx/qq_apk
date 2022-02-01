@@ -1,21 +1,16 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqindividuality.QQIndividualityBridgeActivity;
+import com.tencent.qqmini.proxyimpl.ShareProxyImpl.5.2;
 
 public class bkrf
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public bkrf(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity) {}
+  public bkrf(ShareProxyImpl.5.2 param2) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a) {
-      QQIndividualityBridgeActivity.b(this.a);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQIndividuality", 2, "dialog dismiss: " + this.a.a);
-    }
+    QLog.e("ShareProxyImpl", 1, "dialog click ");
   }
 }
 

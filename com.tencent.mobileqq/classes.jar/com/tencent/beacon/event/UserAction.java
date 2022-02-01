@@ -9,6 +9,7 @@ import com.tencent.beacon.core.b.f;
 import com.tencent.beacon.core.event.TunnelModule;
 import com.tencent.beacon.core.event.UserEventModule;
 import com.tencent.beacon.core.info.BeaconPubParams;
+import com.tencent.beacon.core.info.a;
 import com.tencent.beacon.core.info.e;
 import com.tencent.beacon.core.info.g;
 import com.tencent.beacon.qimei.IAsyncQimeiListener;
@@ -103,7 +104,26 @@ public class UserAction
   @Deprecated
   public static String getRtQIMEI(Context paramContext)
   {
-    return getQIMEI();
+    try
+    {
+      paramContext = com.tencent.beacon.qimei.i.c(paramContext);
+      StringBuilder localStringBuilder = new StringBuilder();
+      com.tencent.beacon.core.e.d.a("[userAction] load qimeiJson: " + paramContext, new Object[0]);
+      paramContext = com.tencent.beacon.qimei.i.a(paramContext);
+      if (paramContext != null)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder = localStringBuilder.append("[userAction] get A3: ");
+        com.tencent.beacon.core.e.d.a((String)paramContext.get("A3"), new Object[0]);
+        paramContext = (String)paramContext.get("A3");
+        return paramContext;
+      }
+    }
+    catch (Exception paramContext)
+    {
+      com.tencent.beacon.core.e.d.b("load qimei error ", new Object[] { paramContext.getMessage() });
+    }
+    return "";
   }
   
   public static String getSDKVersion()
@@ -161,6 +181,7 @@ public class UserAction
         {
           a = true;
           com.tencent.beacon.core.e.b.b(mContext);
+          a.f(mContext);
           if (Integer.valueOf(Build.VERSION.SDK).intValue() >= 14)
           {
             localObject = new com.tencent.beacon.core.a.j();

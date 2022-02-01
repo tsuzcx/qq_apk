@@ -10,7 +10,7 @@ public final class SpriteUtil$1
 {
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131690068), 1).a();
+    QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131690104), 1).a();
   }
 }
 

@@ -1,8 +1,6 @@
-import android.support.v7.widget.RecyclerView;
-
-public abstract interface yzv
+abstract interface yzv
 {
-  public abstract boolean a(RecyclerView paramRecyclerView);
+  public abstract void a(int paramInt);
 }
 
 

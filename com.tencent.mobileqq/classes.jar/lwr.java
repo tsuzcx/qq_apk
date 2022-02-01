@@ -1,23 +1,42 @@
+import android.os.IBinder;
 import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.LBSInfo;
 
-public final class lwr
-  implements Parcelable.Creator<LBSInfo>
+class lwr
+  implements lwp
 {
-  public LBSInfo a(Parcel paramParcel)
+  private IBinder a;
+  
+  lwr(IBinder paramIBinder)
   {
-    return new LBSInfo(paramParcel);
+    this.a = paramIBinder;
   }
   
-  public LBSInfo[] a(int paramInt)
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    return new LBSInfo[paramInt];
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.av.service.IAVServiceCallback");
+      localParcel.writeInt(paramInt1);
+      localParcel.writeInt(paramInt2);
+      localParcel.writeInt(paramInt3);
+      this.a.transact(1, localParcel, null, 1);
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lwr
  * JD-Core Version:    0.7.0.1
  */

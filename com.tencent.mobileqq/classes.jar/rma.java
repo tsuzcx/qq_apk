@@ -1,21 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function3;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class rma
-  extends rnf
-  implements rlo
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJWriteWatchWordShareContract$IModel;", "", "failedToast", "", "getFailedToast", "()Ljava/lang/String;", "successToast", "getSuccessToast", "copyToClipboard", "", "watchWord", "url", "title", "isOpen", "", "type", "", "fetchTopicWatchWord", "topicId", "callback", "Lkotlin/Function3;", "Lkotlin/ParameterName;", "name", "fetchVideoWatchWord", "rowkey", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface rma
 {
-  private QQAppInterface a;
+  @NotNull
+  public abstract String a();
   
-  public rma(QQAppInterface paramQQAppInterface)
-  {
-    this.a = paramQQAppInterface;
-  }
+  public abstract void a(@NotNull String paramString1, @NotNull String paramString2, @Nullable String paramString3, @NotNull String paramString4, @Nullable Function3<? super String, ? super String, ? super Boolean, Unit> paramFunction3);
   
-  public void a(UgcVideo paramUgcVideo, rln paramrln)
-  {
-    ((rno)this.a.getManager(356)).a(paramUgcVideo, false);
-  }
+  public abstract void a(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, @Nullable Function3<? super String, ? super String, ? super Boolean, Unit> paramFunction3);
+  
+  public abstract void a(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, boolean paramBoolean, int paramInt);
+  
+  @NotNull
+  public abstract String b();
 }
 
 

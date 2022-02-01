@@ -1,17 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import com.tencent.qphone.base.util.QLog;
 
-class xaj
-  implements DialogInterface.OnDismissListener
+public class xaj
+  extends vzx
 {
-  xaj(xah paramxah) {}
+  public xaj(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(boolean paramBoolean, vzs paramvzs)
   {
-    if (xah.a(this.a) != null) {
-      xah.a(this.a).c(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("MyVideoVisiblePersonPageView", 2, "onGetVideoReaderConfig: isSuccess " + paramBoolean + ", QQStoryBanInfo = " + paramvzs);
     }
+    if (paramBoolean)
+    {
+      if (paramvzs != null) {
+        this.a.a(paramvzs.a);
+      }
+      return;
+    }
+    this.a.e();
   }
 }
 

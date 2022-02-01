@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.core;
 
 import android.content.Context;
-import bfcz;
+import bglf;
 import mqq.util.WeakReference;
 
 public class TroopChatPie$CheckGlamourPicturesRunnable
@@ -20,7 +20,7 @@ public class TroopChatPie$CheckGlamourPicturesRunnable
     if (localContext == null) {
       return;
     }
-    bfcz.a(localContext);
+    bglf.a(localContext);
   }
 }
 

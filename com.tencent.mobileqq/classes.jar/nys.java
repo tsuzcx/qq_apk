@@ -1,17 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
 
-public class nys
-  implements View.OnClickListener
+public final class nys
+  implements DialogInterface.OnClickListener
 {
-  public nys(VideoCoverView paramVideoCoverView) {}
+  public nys(Handler paramHandler) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    VideoCoverView.a(this.a, true);
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramDialogInterface.dismiss();
+    this.a.sendEmptyMessage(-1);
   }
 }
 

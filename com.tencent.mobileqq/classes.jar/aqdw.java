@@ -1,107 +1,92 @@
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
+import android.os.Build;
+import android.os.Build.VERSION;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.List;
 
 public class aqdw
+  extends aqdt
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public String d = "";
+  private float[] d = new float[4];
   
-  public aqdw()
+  public aqdw(Context paramContext, int paramInt, SensorManager paramSensorManager, aqdl paramaqdl)
   {
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = "0";
-    this.jdField_b_of_type_JavaLangString = "0";
-    this.jdField_c_of_type_JavaLangString = "0";
-  }
-  
-  public static aqdw a(String paramString)
-  {
-    if (paramString == null) {}
+    super(paramContext, paramInt, paramSensorManager, paramaqdl);
+    Sensor localSensor;
+    if (paramInt == 5)
+    {
+      paramInt = 15;
+      paramContext = paramSensorManager.getDefaultSensor(paramInt);
+      localSensor = paramSensorManager.getDefaultSensor(1);
+      paramSensorManager = paramSensorManager.getDefaultSensor(4);
+      if ((paramSensorManager == null) || (paramContext == null) || (Build.VERSION.SDK_INT < 9)) {
+        break label150;
+      }
+      paramaqdl.onSensorSupport(4, true);
+      this.jdField_a_of_type_JavaUtilList.add(paramContext);
+      QLog.i("OrientationProvider2", 2, "Gyroscope support,model:" + Build.MODEL + ", manufacture:" + Build.MANUFACTURER);
+    }
     for (;;)
     {
-      return null;
-      try
-      {
-        aqdw localaqdw = new aqdw();
-        paramString = new JSONObject(paramString);
-        if (paramString.has("wvShouldReportPerf"))
-        {
-          if (paramString.optInt("wvShouldReportPerf") == 1)
-          {
-            bool = true;
-            localaqdw.jdField_a_of_type_Boolean = bool;
-          }
-        }
-        else
-        {
-          if (paramString.has("wvShouldReportJsapiCall"))
-          {
-            if (paramString.optInt("wvShouldReportJsapiCall") != 1) {
-              break label212;
-            }
-            bool = true;
-            label70:
-            localaqdw.jdField_b_of_type_Boolean = bool;
-          }
-          if (paramString.has("wvShouldReportOpenapiCall")) {
-            if (paramString.optInt("wvShouldReportOpenapiCall") != 1) {
-              break label217;
-            }
-          }
-        }
-        label212:
-        label217:
-        for (boolean bool = true;; bool = false)
-        {
-          localaqdw.jdField_c_of_type_Boolean = bool;
-          if (paramString.has("wvPerformanceRate")) {
-            localaqdw.jdField_a_of_type_JavaLangString = paramString.optString("wvPerformanceRate");
-          }
-          if (paramString.has("wvJsapiCallRate")) {
-            localaqdw.jdField_b_of_type_JavaLangString = paramString.optString("wvJsapiCallRate");
-          }
-          if (paramString.has("wvSchemeRate")) {
-            localaqdw.jdField_c_of_type_JavaLangString = paramString.optString("wvSchemeRate");
-          }
-          if (paramString.has("recogniseText")) {
-            localaqdw.d = paramString.optString("recogniseText");
-          }
-          QLog.d("ConfBean", 2, "confBean = " + localaqdw.toString());
-          return localaqdw;
-          bool = false;
-          break;
-          bool = false;
-          break label70;
-        }
-        if (!QLog.isColorLevel()) {}
+      if (localSensor == null) {
+        break label298;
       }
-      catch (Exception paramString) {}
+      paramaqdl.onSensorSupport(1, true);
+      this.jdField_a_of_type_JavaUtilList.add(localSensor);
+      return;
+      paramInt = 11;
+      break;
+      label150:
+      paramaqdl.onSensorSupport(4, false);
+      if (paramSensorManager == null) {
+        QLog.i("OrientationProvider2", 2, "Gyroscope not support,model:" + Build.MODEL + ", manufacture:" + Build.MANUFACTURER);
+      } else if (paramContext == null) {
+        if (Build.VERSION.SDK_INT >= 9) {
+          QLog.i("OrientationProvider2", 2, "Gyroscope not support(rotationVectorSensor),model:" + Build.MODEL + ", manufacture:" + Build.MANUFACTURER);
+        } else {
+          QLog.i("OrientationProvider2", 2, "Gyroscope not support(sdk < 9),model:" + Build.MODEL + ", manufacture:" + Build.MANUFACTURER);
+        }
+      }
     }
-    QLog.e("ConfBean", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
+    label298:
+    paramaqdl.onSensorSupport(1, false);
   }
   
-  public String toString()
+  private void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
   {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("reportPerformance:").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(" reportJsapi:").append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append(" reportOpenapi:").append(this.jdField_c_of_type_Boolean);
-    localStringBuilder.append(" performanceRate:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" jsapiRate:").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(" schemeRate:").append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append(" recogniseText:").append(this.d);
-    return localStringBuilder.toString();
+    if (this.jdField_a_of_type_Aqdl == null) {
+      return;
+    }
+    this.jdField_a_of_type_Aqdl.updateAccelerometer(paramFloat1, paramFloat2, paramFloat3, paramLong);
+  }
+  
+  @TargetApi(9)
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    if ((paramSensorEvent.sensor.getType() == 11) || (paramSensorEvent.sensor.getType() == 15)) {}
+    while (paramSensorEvent.sensor.getType() != 1) {
+      try
+      {
+        SensorManager.getQuaternionFromVector(this.d, paramSensorEvent.values);
+        this.jdField_a_of_type_Aqdl.onRotationUpdateQuaternion(this.d);
+        return;
+      }
+      catch (Exception paramSensorEvent)
+      {
+        paramSensorEvent.printStackTrace();
+        return;
+      }
+    }
+    a(paramSensorEvent.values[0], paramSensorEvent.values[1], paramSensorEvent.values[2], paramSensorEvent.timestamp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqdw
  * JD-Core Version:    0.7.0.1
  */

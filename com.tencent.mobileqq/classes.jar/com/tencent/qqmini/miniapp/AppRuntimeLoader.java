@@ -1,6 +1,7 @@
 package com.tencent.qqmini.miniapp;
 
 import android.content.Context;
+import android.text.TextUtils;
 import com.tencent.qqmini.miniapp.core.AppBrandRuntime;
 import com.tencent.qqmini.miniapp.task.ApkgLoadAsyncTask;
 import com.tencent.qqmini.miniapp.task.BaselibLoadAsyncTask;
@@ -18,6 +19,7 @@ import com.tencent.qqmini.sdk.core.BaseRuntimeImpl.BaselibProvider;
 import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.ApkgBaseInfo;
+import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppBaseInfo;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.runtime.AppStateManager;
@@ -38,7 +40,7 @@ public class AppRuntimeLoader
   private ApkgLoadAsyncTask apkgLoadTask;
   private BaselibLoadAsyncTask baselibLoadTask;
   private BaselibVersionCheckTask baselibVersionCheckTask;
-  private boolean fromUpdate = false;
+  private volatile boolean fromUpdate = false;
   private MiniAppInfoLoadTask miniAppInfoLoadTask;
   private PageCreateTask pageCreateTask;
   private PageInitTask pageInitTask;
@@ -169,20 +171,23 @@ public class AppRuntimeLoader
         }
         else
         {
+          this.fromUpdate = false;
           MiniAppInfo localMiniAppInfo = this.miniAppInfoLoadTask.getMiniAppInfo();
           boolean bool = MiniAppBaseInfo.isSameVersion(localMiniAppInfo, this.mMiniAppInfo);
           ApkgBaseInfo localApkgBaseInfo = this.mMiniAppInfo.apkgInfo;
           this.mMiniAppInfo = localMiniAppInfo;
           this.mMiniAppInfo.apkgInfo = localApkgBaseInfo;
-          if (bool) {
+          if (bool)
+          {
+            if (!TextUtils.isEmpty(this.mMiniAppInfo.launchParam.entryPath)) {
+              this.mNeedReloadPage = true;
+            }
             if (this.mRuntimeLoadListener != null) {
               this.mRuntimeLoadListener.onResult(0, "", this);
             }
           }
-          for (;;)
+          else
           {
-            this.fromUpdate = false;
-            break;
             onMiniAppVersionUpdate();
           }
         }

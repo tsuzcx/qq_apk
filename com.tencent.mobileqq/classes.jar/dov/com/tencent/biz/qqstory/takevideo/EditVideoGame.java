@@ -1,18 +1,18 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.support.annotation.NonNull;
-import bnec;
-import bnee;
-import bnot;
+import botu;
+import botw;
+import bpel;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import vuu;
-import vux;
-import xnp;
+import wjp;
+import wjs;
+import yck;
 
 public class EditVideoGame
-  extends bnec
+  extends botu
 {
   private StoryVideoItem jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
   private CommentLikeFeedItem jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
@@ -22,7 +22,7 @@ public class EditVideoGame
   {
     if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem == null) || (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mDenyComment == 1))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = ((CommentLikeFeedItem)((xnp)vux.a(11)).a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoGame$GameResultItem.c));
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = ((CommentLikeFeedItem)((yck)wjs.a(11)).a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoGame$GameResultItem.c));
       if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mDenyComment != 1)) {}
     }
     do
@@ -31,13 +31,13 @@ public class EditVideoGame
       {
         return;
       } while (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null);
-      this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((vuu)vux.a(5)).a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoGame$GameResultItem.d);
+      this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((wjp)wjs.a(5)).a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoGame$GameResultItem.d);
     } while (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null);
   }
   
   private boolean b()
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoGame$GameResultItem = ((EditVideoGame.GameResultItem)this.jdField_a_of_type_Bnee.a.a("story_game_result"));
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoGame$GameResultItem = ((EditVideoGame.GameResultItem)this.jdField_a_of_type_Botw.a.a("story_game_result"));
     return this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoGame$GameResultItem != null;
   }
   
@@ -50,7 +50,7 @@ public class EditVideoGame
     ThreadManagerV2.excute(new EditVideoGame.1(this), 32, null, true);
   }
   
-  public void a(int paramInt, @NonNull bnot parambnot) {}
+  public void a(int paramInt, @NonNull bpel parambpel) {}
 }
 
 

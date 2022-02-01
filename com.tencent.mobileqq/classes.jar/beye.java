@@ -1,26 +1,30 @@
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.troopapps.TroopAppShortcutContainer;
-import com.tencent.mobileqq.troop.troopapps.TroopAppShortcutFragment;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
 public class beye
-  extends TroopAppShortcutContainer
+  implements TextWatcher
 {
-  public beye(TroopAppShortcutFragment paramTroopAppShortcutFragment, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, SessionInfo paramSessionInfo, String paramString, int paramInt)
-  {
-    super(paramQQAppInterface, paramFragmentActivity, paramContext, paramSessionInfo, paramString, paramInt);
-  }
+  public beye(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
+    if ((!TextUtils.isEmpty(this.a.a.b)) && (paramInt1 > 0) && (paramInt1 < this.a.a.b.length() + this.a.a.c.length() + this.a.a.a.length() + this.a.A.length()) && (paramInt2 > paramInt3))
+    {
+      this.a.e(false);
+      return;
+    }
+    TroopBarPublishActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beye
  * JD-Core Version:    0.7.0.1
  */

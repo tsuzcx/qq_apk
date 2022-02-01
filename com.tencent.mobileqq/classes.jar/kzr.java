@@ -1,22 +1,11 @@
-public abstract class kzr
+import android.content.Context;
+
+public class kzr
+  extends kzu
 {
-  private static kyz a;
-  
-  public static kyz a()
+  public static void a(Context paramContext, kzj paramkzj)
   {
-    try
-    {
-      if (a == null) {
-        a = new kyz();
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  public static boolean a()
-  {
-    return a != null;
+    a().a(paramContext, "https://passport.imqq.com/App/MobileQQ/ChangeTrans.html", null, null, new kzs(paramkzj));
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
 import android.os.SystemClock;
-import bcef;
+import bdla;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPtt;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -15,7 +15,7 @@ import java.lang.ref.ReferenceQueue;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
-import lld;
+import llq;
 
 public class PttInfoCollector
 {
@@ -125,7 +125,7 @@ public class PttInfoCollector
   
   private static void innerReportPttItemBuilderType(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    bcef.b(paramQQAppInterface, "CliOper", "", "", "0X80059B1", "0X80059B1", paramInt, 0, "", "", "", "8.4.8");
+    bdla.b(paramQQAppInterface, "CliOper", "", "", "0X80059B1", "0X80059B1", paramInt, 0, "", "", "", "8.4.10");
   }
   
   public static final int mergeDownloadPTTFromType(int paramInt1, int paramInt2)
@@ -196,9 +196,9 @@ public class PttInfoCollector
   
   public static void reportMyCpuArch()
   {
-    int i = lld.f();
-    int j = lld.e();
-    long l1 = lld.d();
+    int i = llq.f();
+    int j = llq.e();
+    long l1 = llq.d();
     long l2 = DeviceInfoUtil.getSystemTotalMemory() / 1048576L;
     HashMap localHashMap = new HashMap();
     localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
@@ -222,7 +222,7 @@ public class PttInfoCollector
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
-      bcef.b(paramQQAppInterface, "CliOper", "", "", "0X8005C1C", "0X8005C1C", i * 10 + paramInt1 * 100 + paramInt2, 0, "", "", "", "8.4.8");
+      bdla.b(paramQQAppInterface, "CliOper", "", "", "0X8005C1C", "0X8005C1C", i * 10 + paramInt1 * 100 + paramInt2, 0, "", "", "", "8.4.10");
       return;
     }
   }
@@ -277,7 +277,7 @@ public class PttInfoCollector
     }
     for (;;)
     {
-      bcef.b(paramQQAppInterface, "CliOper", "", "", "0X8005C1D", "0X8005C1D", paramInt1, paramInt2, "", "", "", "8.4.8");
+      bdla.b(paramQQAppInterface, "CliOper", "", "", "0X8005C1D", "0X8005C1D", paramInt1, paramInt2, "", "", "", "8.4.10");
       return;
     }
   }
@@ -389,9 +389,9 @@ public class PttInfoCollector
     HashMap localHashMap;
     if (Math.abs(random.nextInt() % 100) < 10)
     {
-      int i = lld.f();
-      int j = lld.e();
-      long l1 = lld.d();
+      int i = llq.f();
+      int j = llq.e();
+      long l1 = llq.d();
       long l2 = DeviceInfoUtil.getSystemTotalMemory() / 1048576L;
       localHashMap = new HashMap();
       localHashMap.put("cpuArch", String.valueOf(i));

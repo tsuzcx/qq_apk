@@ -3,7 +3,7 @@ package com.tencent.mobileqq.theme.diy;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bdbx;
+import beix;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -44,7 +44,7 @@ public class ThemeDiyStyleLogic
   QQAppInterface app;
   Context mContext;
   public HashMap<Integer, String> reportMap = new HashMap();
-  public bdbx saveDealCallBack;
+  public beix saveDealCallBack;
   public int styleState;
   
   public ThemeDiyStyleLogic(QQAppInterface paramQQAppInterface, Context paramContext)

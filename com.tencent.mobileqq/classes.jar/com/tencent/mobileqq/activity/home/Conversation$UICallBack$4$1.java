@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.home;
 
-import ajdm;
+import ajza;
 
 class Conversation$UICallBack$4$1
   implements Runnable

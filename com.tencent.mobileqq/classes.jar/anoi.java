@@ -1,29 +1,27 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.ApolloActionData;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class anoi
   implements View.OnClickListener
 {
-  anoi(anoh paramanoh) {}
+  anoi(anob paramanob, ApolloActionData paramApolloActionData, int paramInt1, int paramInt2, String paramString1, String paramString2) {}
   
   public void onClick(View paramView)
   {
-    if (anoh.a != null) {
-      anoh.a(this.a).startActivity(anoh.a);
+    if (anob.a(this.jdField_a_of_type_Anob) != null)
+    {
+      annl localannl = new annl();
+      localannl.jdField_a_of_type_ComTencentMobileqqDataApolloActionData = this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData;
+      anob.a(this.jdField_a_of_type_Anob).c(anob.a(this.jdField_a_of_type_Anob), localannl);
     }
-    bcef.b(null, "CliOper", "", "", "0X8006B15", "0X8006B15", 0, 0, "", "", "", "");
-    bcef.b(null, "dc00898", "", "", "0X8009AC8", "0X8009AC8", 0, 0, "", "", "", "");
-    Object localObject = PreferenceManager.getDefaultSharedPreferences(anoh.a(this.a));
-    int i = ((SharedPreferences)localObject).getInt("push_msg_notify_open", 0);
-    localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).putInt("push_msg_notify_open", i + 1);
-    ((SharedPreferences.Editor)localObject).commit();
-    this.a.dismiss();
+    if (this.jdField_a_of_type_Int == anob.a()) {
+      anme.a(124, String.valueOf(this.jdField_b_of_type_Int), this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+    }
+    if (this.jdField_a_of_type_Int == anob.b()) {
+      anob.a(this.jdField_a_of_type_Anob, this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData, "unlockedpreview");
+    }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

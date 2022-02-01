@@ -1,77 +1,78 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.content.Context;
+import android.provider.ContactsContract.CommonDataKinds.Phone;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-class baou
-  implements EIPCResultCallback
+public class baou
+  extends BaseAdapter
 {
-  baou(baos parambaos) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<PhoneContact> jdField_a_of_type_JavaUtilList;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public baou(Context paramContext, List<PhoneContact> paramList)
   {
-    Object localObject = paramEIPCResult.data;
-    if (localObject == null) {}
-    do
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  private View a(int paramInt, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561050, null);
+    baow localbaow = new baow(null);
+    localbaow.a = ((TextView)paramViewGroup.findViewById(2131374339));
+    localbaow.b = ((TextView)paramViewGroup.findViewById(2131374338));
+    paramViewGroup.setTag(localbaow);
+    return paramViewGroup;
+  }
+  
+  private void a(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = (baow)paramView.getTag();
+    PhoneContact localPhoneContact = (PhoneContact)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    paramInt = localPhoneContact.type;
+    paramView = null;
+    if (paramInt == 0) {
+      paramView = localPhoneContact.label;
+    }
+    paramView = (String)ContactsContract.CommonDataKinds.Phone.getTypeLabel(this.jdField_a_of_type_AndroidContentContext.getResources(), paramInt, paramView);
+    paramViewGroup.a.setText(paramView);
+    paramViewGroup.b.setText(localPhoneContact.mobileNo);
+  }
+  
+  public int getCount()
+  {
+    int i = this.jdField_a_of_type_JavaUtilList.size();
+    if (i > 20) {
+      return 20;
+    }
+    return i;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null) {}
+    for (View localView = a(paramInt, paramViewGroup);; localView = paramView)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            switch (((Bundle)localObject).getInt("notify_type"))
-            {
-            case 6: 
-            case 7: 
-            default: 
-              return;
-            case 4: 
-              paramEIPCResult = ((Bundle)localObject).getSerializable("my_signature");
-            }
-          } while (!(paramEIPCResult instanceof RichStatus));
-          baos.c(this.a);
-          localObject = new ArrayList();
-          ((ArrayList)localObject).add(Integer.valueOf(5));
-          ((ArrayList)localObject).add(paramEIPCResult);
-          this.a.notifyObservers(localObject);
-          return;
-          localObject = new HashMap();
-          ((HashMap)localObject).put("change_status_callback_data", paramEIPCResult.data);
-          i = paramEIPCResult.data.getInt("result");
-          int j = paramEIPCResult.data.getInt("type");
-          baos.d(this.a);
-          paramEIPCResult = new ArrayList();
-          paramEIPCResult.add(Integer.valueOf(6));
-          paramEIPCResult.add(Integer.valueOf(i));
-          paramEIPCResult.add(localObject);
-          paramEIPCResult.add(Integer.valueOf(j));
-          this.a.notifyObservers(paramEIPCResult);
-          return;
-          ((Bundle)localObject).getLong("bid");
-          paramEIPCResult = ((Bundle)localObject).getString("scid");
-        } while (TextUtils.isEmpty(paramEIPCResult));
-        i = ((Bundle)localObject).getInt("download_result");
-      } while ((!paramEIPCResult.startsWith("signature.sticker.")) || (i != 0));
-      paramEIPCResult = paramEIPCResult.substring("signature.sticker.".length(), paramEIPCResult.length() - 4);
-    } while (!TextUtils.isDigitsOnly(paramEIPCResult));
-    int i = Integer.parseInt(paramEIPCResult);
-    baos.e(this.a);
-    paramEIPCResult = new ArrayList();
-    paramEIPCResult.add(Integer.valueOf(7));
-    paramEIPCResult.add(Integer.valueOf(i));
-    this.a.notifyObservers(paramEIPCResult);
-    return;
-    i = ((Bundle)localObject).getInt("key_history_signature_num");
-    baos.f(this.a);
-    paramEIPCResult = new ArrayList();
-    paramEIPCResult.add(Integer.valueOf(8));
-    paramEIPCResult.add(Integer.valueOf(i));
-    this.a.notifyObservers(paramEIPCResult);
+      a(paramInt, localView, paramViewGroup);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localView;
+    }
   }
 }
 

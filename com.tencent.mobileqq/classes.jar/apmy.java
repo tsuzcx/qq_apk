@@ -1,39 +1,14 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.colornote.settings.HistoryFormItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
-
-class apmy
-  implements View.OnClickListener
+public class apmy
 {
-  apmy(apmx paramapmx, HistoryFormItem paramHistoryFormItem) {}
+  public int a;
+  public long a;
+  public String a;
+  public String b;
+  public String c;
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    ColorNote localColorNote = (ColorNote)apmx.a(this.jdField_a_of_type_Apmx).get(this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a());
-    Bundle localBundle = new Bundle();
-    if (apmx.a(this.jdField_a_of_type_Apmx) == 17104896) {
-      if ((localColorNote.getServiceType() == 16908288) || (localColorNote.getServiceType() == 16908290)) {
-        localBundle.putBoolean("isFromFavourite", true);
-      }
-    }
-    for (;;)
-    {
-      apkn.a(paramView.getContext(), localColorNote, localBundle);
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseSectionAdapter", 0, "getAllViews#onClick: index: " + this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a());
-      }
-      bcef.b(null, "dc00898", "", "", "0X800AA7F", "0X800AA7F", aplm.b(apmx.a(this.jdField_a_of_type_Apmx)), 0, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a() + 1), "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (apmx.a(this.jdField_a_of_type_Apmx) == 16908289) {
-        localBundle.putBoolean("history_note", true);
-      }
-    }
+    return "SearchQuestionResult{errCode=" + this.jdField_a_of_type_Int + ", errMsg='" + this.jdField_a_of_type_JavaLangString + '\'' + ", questionId=" + this.jdField_a_of_type_Long + ", questionText='" + this.b + '\'' + ", questionUrl='" + this.c + '\'' + '}';
   }
 }
 

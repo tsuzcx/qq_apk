@@ -1,22 +1,4 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
-import com.tencent.mobileqq.app.face.FaceDecoder;
-
-public class qsa
-  extends qry
-{
-  public qsa(Context paramContext, FaceDecoder paramFaceDecoder, slt paramslt)
-  {
-    super(paramContext, paramFaceDecoder, paramslt);
-  }
-  
-  public qpk g()
-  {
-    this.jdField_a_of_type_Qpj = new ComponentContentBigImageVideo(this.jdField_a_of_type_AndroidContentContext);
-    return this;
-  }
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qsa

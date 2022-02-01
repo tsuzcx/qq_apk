@@ -1,72 +1,28 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import tencent.im.oidb.cmd0x79a.oidb_0x79a.RspBody;
-import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.PayBridgeActivity;
+import java.lang.ref.WeakReference;
 
 public class aelx
-  implements nra
+  extends BroadcastReceiver
 {
-  public aelx(TroopInfoActivity paramTroopInfoActivity) {}
+  WeakReference<PayBridgeActivity> a;
   
-  public void a()
+  public aelx(PayBridgeActivity paramPayBridgeActivity)
   {
-    this.a.stopTitleProgress();
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.dwAppPrivilegeFlag & 0x4000) != 0L) {
-      TroopInfoActivity.h(this.a);
-    }
+    this.a = new WeakReference(paramPayBridgeActivity);
   }
   
-  public void a(oidb_0x79a.RspBody paramRspBody)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    oidb_0x88d.GroupInfo localGroupInfo = paramRspBody.info;
-    this.a.stopTitleProgress();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeStatus = paramRspBody.uint32_tribe_status.get();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.modifyCount = paramRspBody.uint32_modify_countdown.get();
-    int j = 0;
-    int i;
-    if (4 != this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTypeExt)
+    if ((paramIntent != null) && ("action_launch_completed".equals(paramIntent.getAction())) && ("qwallet_plugin.apk".equals(paramIntent.getStringExtra("plugin_apk"))) && (this.a != null))
     {
-      i = j;
-      if (3 != this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTypeExt) {}
-    }
-    else
-    {
-      i = j;
-      if (localGroupInfo != null) {
-        if (4 != localGroupInfo.uint32_group_type_flag.get())
-        {
-          i = j;
-          if (3 != localGroupInfo.uint32_group_type_flag.get()) {}
-        }
-        else
-        {
-          this.a.a(localGroupInfo);
-          i = 1;
-        }
+      paramContext = (PayBridgeActivity)this.a.get();
+      if (paramContext != null) {
+        paramContext.b = true;
       }
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeStatus == 1) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeStatus == 2) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeStatus == 3))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId = paramRspBody.uint64_tribe_id.get();
-      this.a.c = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId;
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeName = paramRspBody.str_tribe_name.get();
-      if (i == 0) {
-        this.a.a(localGroupInfo);
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(7);
-      return;
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.dwAppPrivilegeFlag & 0x4000) != 0L)
-    {
-      TroopInfoActivity.h(this.a);
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
   }
 }
 

@@ -1,25 +1,9 @@
-import com.immersion.stickersampleapp.HapticManager;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-
 class agtq
-  implements afym
+  implements bkzs
 {
   agtq(agtp paramagtp) {}
   
-  public void a()
-  {
-    UnlimitedBladeWorks.a(this.a.a).b = true;
-    UnlimitedBladeWorks.a(this.a.a).a = false;
-    if (UnlimitedBladeWorks.a(this.a.a) != null)
-    {
-      UnlimitedBladeWorks.a(this.a.a).a();
-      if (UnlimitedBladeWorks.b(this.a.a))
-      {
-        HapticManager.a().c(UnlimitedBladeWorks.a(this.a.a));
-        UnlimitedBladeWorks.a(this.a.a, 0);
-      }
-    }
-  }
+  public void onDismiss() {}
 }
 
 

@@ -13,10 +13,10 @@ import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
-import obw;
-import ofa;
-import ofc;
-import rzz;
+import ojn;
+import omt;
+import omv;
+import sme;
 
 public class VideoFeedsAppInterface
   extends AppInterface
@@ -24,7 +24,7 @@ public class VideoFeedsAppInterface
   public static String a;
   private HashMap<Integer, BusinessHandler> jdField_a_of_type_JavaUtilHashMap = new HashMap(20);
   private List<BusinessObserver> jdField_a_of_type_JavaUtilList = new Vector();
-  private rzz jdField_a_of_type_Rzz;
+  private sme jdField_a_of_type_Sme;
   private List<BusinessObserver> b = new Vector();
   private List<BusinessObserver> c = new Vector();
   
@@ -56,11 +56,11 @@ public class VideoFeedsAppInterface
         }
         return localBusinessHandler;
       }
-      Object localObject2 = new ofc(this);
+      Object localObject2 = new omv(this);
       continue;
-      localObject2 = new ofa(this);
+      localObject2 = new omt(this);
       continue;
-      localObject2 = new obw(this);
+      localObject2 = new ojn(this);
       continue;
       return localObject2;
       label113:
@@ -72,7 +72,7 @@ public class VideoFeedsAppInterface
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_Rzz.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
+    this.jdField_a_of_type_Sme.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
   }
   
   public void addObserver(BusinessObserver paramBusinessObserver)
@@ -145,7 +145,7 @@ public class VideoFeedsAppInterface
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Rzz = new rzz(this);
+    this.jdField_a_of_type_Sme = new sme(this);
   }
   
   public void removeObserver(BusinessObserver paramBusinessObserver)
@@ -171,7 +171,7 @@ public class VideoFeedsAppInterface
   
   public void sendToService(ToServiceMsg paramToServiceMsg)
   {
-    this.jdField_a_of_type_Rzz.a(paramToServiceMsg);
+    this.jdField_a_of_type_Sme.a(paramToServiceMsg);
   }
 }
 

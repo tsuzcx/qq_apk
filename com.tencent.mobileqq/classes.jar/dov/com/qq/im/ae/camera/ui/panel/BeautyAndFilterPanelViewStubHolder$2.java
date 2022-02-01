@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.camera.ui.panel;
 
-import blnv;
-import blst;
-import bmas;
+import bnbg;
+import bngm;
+import bnqc;
 
 public class BeautyAndFilterPanelViewStubHolder$2
   implements Runnable
 {
-  public BeautyAndFilterPanelViewStubHolder$2(blst paramblst, blnv paramblnv, bmas parambmas) {}
+  public BeautyAndFilterPanelViewStubHolder$2(bngm parambngm, bnbg parambnbg, bnqc parambnqc) {}
   
   public void run()
   {
-    blst.a(this.this$0).setControllerAndManager(this.jdField_a_of_type_Blnv, this.jdField_a_of_type_Bmas);
+    bngm.a(this.this$0).setControllerAndManager(this.jdField_a_of_type_Bnbg, this.jdField_a_of_type_Bnqc);
   }
 }
 

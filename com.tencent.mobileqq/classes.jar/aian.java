@@ -1,24 +1,41 @@
-import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aian
-  extends LbsManagerService.OnLocationChangeListener
+  implements View.OnClickListener
 {
-  aian(aiam paramaiam, String paramString, anca paramanca, boolean paramBoolean)
-  {
-    super(paramString);
-  }
+  aian(aiah paramaiah) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ac_ft.AddContactFindTroopRTLW", 2, "getRecommendTroopList onLocationFinish info = " + paramSosoLbsInfo);
+    aiah.a(this.a);
+    if ((aiah.a(this.a) != null) && (!TextUtils.isEmpty(aiah.a(this.a))))
+    {
+      String str = "big_brother_source_key=biz_src_zf_games&platform=qq_m&current_uin=$OPID$&user_openid=$OPID$&launchfrom=sq_gamecenter&gamedata=&platformdata=";
+      QQAppInterface localQQAppInterface = this.a.getApp();
+      if ((!TextUtils.isEmpty(aiah.b(this.a))) && (localQQAppInterface != null))
+      {
+        if (!aiah.b(this.a).startsWith("&")) {
+          str = "big_brother_source_key=biz_src_zf_games&platform=qq_m&current_uin=$OPID$&user_openid=$OPID$&launchfrom=sq_gamecenter&gamedata=&platformdata=" + "&";
+        }
+        str = str + aiah.b(this.a);
+        new bcqt().a(localQQAppInterface, this.a.getActivity(), aiah.a(this.a).c, str, aiah.a(this.a), 536870912);
+        ((VasExtensionHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.VAS_EXTENSION_HANDLER)).a(aiah.a(this.a).c, localQQAppInterface.getCurrentAccountUin(), 1);
+      }
     }
-    if (paramInt != 0) {
-      QLog.i("ac_ft.AddContactFindTroopRTLW", 1, "getRecommendTroopList onLocationFinish, errorCode=" + paramInt);
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      QLog.e(aiah.b, 1, "gameinfo is null ");
     }
-    this.jdField_a_of_type_Anca.a(1, this.jdField_a_of_type_Aiam.b, 25, this.jdField_a_of_type_Boolean, aiam.a(this.jdField_a_of_type_Aiam));
   }
 }
 

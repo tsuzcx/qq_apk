@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Process;
 import android.text.TextUtils;
-import atim;
+import aumt;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -48,7 +48,7 @@ public class QCircleFlutterAppInterface
       return null;
     }
     if (this.a == null) {
-      this.a = new atim(paramString);
+      this.a = new aumt(paramString);
     }
     if (QLog.isColorLevel()) {
       QLog.d("QCircleFlutterAppInterface", 2, "[getEntityManagerFactory] account=" + paramString + ", factory=" + this.a + ", tid=" + Process.myTid());

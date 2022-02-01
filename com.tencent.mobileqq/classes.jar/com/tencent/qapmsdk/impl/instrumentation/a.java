@@ -1,14 +1,34 @@
 package com.tencent.qapmsdk.impl.instrumentation;
 
-public abstract interface a
+import android.text.TextUtils;
+
+public class a
 {
-  public abstract void a(f paramf);
+  private String a;
+  private String b;
+  private String c;
   
-  public abstract void a(String paramString);
+  private boolean b(String paramString1, String paramString2)
+  {
+    return (!TextUtils.isEmpty(paramString1)) && (paramString1.equals(paramString2));
+  }
   
-  public abstract void b(f paramf);
+  void a(String paramString1, String paramString2)
+  {
+    this.b = paramString1;
+    this.c = paramString2;
+    if (b(paramString1, paramString2)) {
+      this.a = paramString1;
+    }
+  }
   
-  public abstract void c();
+  public boolean a()
+  {
+    if (b(this.b, this.c)) {
+      return true;
+    }
+    return TextUtils.isEmpty(this.a);
+  }
 }
 
 

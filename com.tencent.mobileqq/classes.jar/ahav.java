@@ -1,14 +1,13 @@
-import android.os.IInterface;
-import com.tencent.mobileqq.pic.CompressInfo;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public abstract interface ahav
-  extends IInterface
+public class ahav
+  extends afos
 {
-  public abstract void a(CompressInfo paramCompressInfo);
+  public ImageView a;
+  public TextView b;
   
-  public abstract void b(CompressInfo paramCompressInfo);
-  
-  public abstract void c(CompressInfo paramCompressInfo);
+  public ahav(ahau paramahau) {}
 }
 
 

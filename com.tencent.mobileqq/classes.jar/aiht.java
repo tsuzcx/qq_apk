@@ -1,6 +1,15 @@
-public abstract interface aiht
+import java.util.Comparator;
+
+final class aiht
+  implements Comparator<aihp>
 {
-  public abstract void a(boolean paramBoolean, aihu paramaihu);
+  public int a(aihp paramaihp1, aihp paramaihp2)
+  {
+    if ((paramaihp1 == null) || (paramaihp2 == null)) {
+      return 0;
+    }
+    return Float.compare(paramaihp1.a(), paramaihp2.a());
+  }
 }
 
 

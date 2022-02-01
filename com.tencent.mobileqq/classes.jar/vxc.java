@@ -1,12 +1,8 @@
-public class vxc
-  extends vko
+import java.util.List;
+
+public abstract interface vxc
 {
-  public final String a;
-  
-  public vxc(String paramString)
-  {
-    this.a = paramString;
-  }
+  public abstract void a(List<vxg> paramList, List<vxh> paramList1);
 }
 
 

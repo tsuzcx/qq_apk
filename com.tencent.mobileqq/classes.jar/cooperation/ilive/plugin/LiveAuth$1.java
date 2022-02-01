@@ -1,12 +1,12 @@
 package cooperation.ilive.plugin;
 
 import NS_KING_PUBLIC.stAuth;
-import bkjv;
-import bkkd;
+import blvl;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.ilive.manager.IliveAuthManager.Callback;
 
 final class LiveAuth$1
-  implements bkjv
+  implements IliveAuthManager.Callback
 {
   public void onGetAuthInfo(boolean paramBoolean, stAuth paramstAuth)
   {
@@ -20,7 +20,7 @@ final class LiveAuth$1
       return;
     }
     LiveAuth.liveToken(paramstAuth.sUid, paramstAuth.sSessionKey);
-    bkkd.b("refreshToken");
+    blvl.b("refreshToken");
   }
 }
 

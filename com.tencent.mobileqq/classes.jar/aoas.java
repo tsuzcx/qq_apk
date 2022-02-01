@@ -1,48 +1,52 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.ar.ARRecord.VideoEncoderCore;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 public class aoas
-  extends Handler
+  extends LbsManagerService.OnLocationChangeListener
 {
-  private WeakReference<VideoEncoderCore> a;
-  
-  public aoas(Looper paramLooper, VideoEncoderCore paramVideoEncoderCore)
+  public aoas(PublicAccountHandler paramPublicAccountHandler, String paramString, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramVideoEncoderCore);
+    super(paramString, paramBoolean);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    if (this.a != null) {}
-    for (VideoEncoderCore localVideoEncoderCore = (VideoEncoderCore)this.a.get();; localVideoEncoderCore = null)
+    Object localObject;
+    boolean bool;
+    int i;
+    int j;
+    int k;
+    int m;
+    if (QLog.isColorLevel())
     {
-      switch (paramMessage.what)
+      localObject = new StringBuilder().append("errCode ：").append(paramInt).append(" info is null ---> ");
+      if (paramSosoLbsInfo == null)
       {
+        bool = true;
+        QLog.d("PublicAccountHandler", 2, bool);
       }
-      do
-      {
-        do
-        {
-          return;
-        } while (localVideoEncoderCore == null);
-        paramMessage = (Object[])paramMessage.obj;
-        try
-        {
-          VideoEncoderCore.a(localVideoEncoderCore, (byte[])paramMessage[0], ((Long)paramMessage[1]).longValue(), false);
-          return;
-        }
-        catch (Exception paramMessage)
-        {
-          QLog.e("VideoEncoderCore", 1, "AudioEncodeHandler encode audio fail.", paramMessage);
-        }
-      } while (VideoEncoderCore.a(localVideoEncoderCore) == null);
-      VideoEncoderCore.a(localVideoEncoderCore).a(3);
+    }
+    else
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler;
+      i = this.jdField_a_of_type_Int;
+      j = this.b;
+      k = this.c;
+      m = this.d;
+      if (paramInt != 0) {
+        break label105;
+      }
+    }
+    for (;;)
+    {
+      PublicAccountHandler.a((PublicAccountHandler)localObject, i, j, k, m, paramSosoLbsInfo);
       return;
+      bool = false;
+      break;
+      label105:
+      paramSosoLbsInfo = null;
     }
   }
 }

@@ -1,14 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class bdcx
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  bdcx(bdct parambdct) {}
+  bdcx(bdcw parambdcw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramDialogInterface.dismiss();
+    if (paramIntent == null) {}
+    for (;;)
+    {
+      return;
+      paramContext = paramIntent.getStringExtra("event");
+      if (paramContext != null)
+      {
+        paramIntent = paramIntent.getStringExtra("data");
+        if ((paramIntent != null) && (paramContext.equals("ShortVideoHongbaoInfoUpdate"))) {
+          try
+          {
+            paramContext = new JSONObject(paramIntent);
+            paramIntent = paramContext.optString("shortVideoId");
+            boolean bool = paramContext.optBoolean("isPaid");
+            if ((bdcw.a(this.a) != null) && (bdcw.a(this.a).h != 1) && (bool) && (bdcw.a(this.a).c.equals(paramIntent)))
+            {
+              new bddf(this.a).execute(new String[0]);
+              return;
+            }
+          }
+          catch (JSONException paramContext) {}
+        }
+      }
+    }
   }
 }
 

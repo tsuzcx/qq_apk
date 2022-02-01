@@ -1,19 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok;
 
 import android.util.Pair;
-import ped;
-import peg;
-import pgd;
-import pkm;
+import oha;
+import pne;
+import pnh;
+import ppg;
+import pvj;
 
 public class RIJOnScrollListener$3
   implements Runnable
 {
-  public RIJOnScrollListener$3(pgd parampgd, Pair paramPair) {}
+  public RIJOnScrollListener$3(ppg paramppg, Pair paramPair) {}
   
   public void run()
   {
-    pkm.a().a(this.this$0.a.a().b(), 3, ((Integer)this.a.first).intValue(), ((Integer)this.a.second).intValue(), null);
+    oha localoha = new oha();
+    localoha.a = true;
+    pvj.a().a(this.this$0.a.a().b(), 3, ((Integer)this.a.first).intValue(), ((Integer)this.a.second).intValue(), localoha);
   }
 }
 

@@ -1,31 +1,22 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
 public class tfv
-  implements Animation.AnimationListener
+  extends uux
 {
-  public tfv(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout) {}
+  public tfv(FastWebActivity paramFastWebActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean a(int paramInt, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    CommonSuspensionGestureLayout.c(this.a).setLayerType(0, null);
-    CommonSuspensionGestureLayout.a(this.a).c();
-    CommonSuspensionGestureLayout.a(this.a).a();
-    CommonSuspensionGestureLayout.b(this.a);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    CommonSuspensionGestureLayout.a(this.a).b();
+    FastWebActivity.c(this.a, true);
+    FastWebActivity.a(this.a, paramInt);
+    this.a.a(paramInt, paramActionSheetItem);
+    return super.a(paramInt, paramActionSheetItem);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tfv
  * JD-Core Version:    0.7.0.1
  */

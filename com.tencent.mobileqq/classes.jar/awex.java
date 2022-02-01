@@ -1,28 +1,7 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
 
-public class awex
-{
-  public static String a = "";
-  
-  public static String a()
-  {
-    if (TextUtils.isEmpty(a)) {}
-    try
-    {
-      a = QQPlayerService.a(6, "MusicPendantUtil");
-      return a;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("MusicPendantUtil", 1, "MusicPendantManager() exception", localException);
-      }
-    }
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/listentogether/ListenTogetherHeartBeatController$Companion;", "", "()V", "MAX_ERROR_COUNT", "", "MSG_KEEP_HEART_BEAT", "ONE_MINUTE_MILLSEC", "TAG", "", "TIMEOUT_REQ", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class awex {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

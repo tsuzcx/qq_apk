@@ -1,12 +1,36 @@
-class asys
-  implements bhnm
+import android.view.View;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.ArrayList;
+
+public class asys
+  implements AdapterView.OnItemClickListener
 {
-  asys(asyq paramasyq, aszj paramaszj) {}
+  public asys(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void a(int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_Aszj.onYes();
+    paramAdapterView = (FileInfo)this.a.b.get(paramInt);
+    if (paramAdapterView.c()) {
+      LocalFileBrowserActivity.a(this.a, paramAdapterView.c(), true);
+    }
+    while (!this.a.f()) {
+      return;
+    }
+    if (atpm.a(paramAdapterView)) {
+      atpm.b(paramAdapterView);
+    }
+    for (;;)
+    {
+      this.a.l();
+      LocalFileBrowserActivity.a(this.a);
+      return;
+      if (this.a.h) {
+        atpm.b();
+      }
+      atpm.a(paramAdapterView);
     }
   }
 }

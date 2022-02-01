@@ -1,19 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.Window;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGuideView;
 
-class siv
-  implements DialogInterface.OnShowListener
+public class siv
+  extends AnimatorListenerAdapter
 {
-  siv(sir paramsir) {}
+  private siv(VideoFeedsGuideView paramVideoFeedsGuideView) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "mDisLikeActionSheet onShow() on VideoChannel");
-    }
-    sig.a(this.a.a).getWindow().clearFlags(8);
+    super.onAnimationCancel(paramAnimator);
+    VideoFeedsGuideView.a(this.a, false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    VideoFeedsGuideView.a(this.a, true);
   }
 }
 

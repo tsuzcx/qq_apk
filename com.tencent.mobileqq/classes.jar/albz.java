@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.activity.shopping.ShoppingFragment;
+import Wallet.ReportHBGameRsp;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class albz
-  implements yzr<zds>
+final class albz
+  implements BusinessObserver
 {
-  public albz(ShoppingFragment paramShoppingFragment) {}
-  
-  public void a(yzu paramyzu, zds paramzds)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramyzu.e()) {
-      ShoppingFragment.a(this.a, paramzds);
+    paramBundle = (ReportHBGameRsp)paramBundle.getSerializable("rsp");
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletTools", 2, "ReportHBGameRsp reportObserver:" + paramBoolean + "|" + paramBundle);
     }
-    while ((!paramyzu.d()) && (!paramyzu.c())) {
-      return;
-    }
-    ShoppingFragment.b(this.a, paramzds);
+    if ((paramBoolean) && (paramBundle != null) && (paramBundle.result == 0)) {}
   }
 }
 

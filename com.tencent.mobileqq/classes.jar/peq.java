@@ -1,9 +1,22 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.List;
 
-public abstract interface peq
+class peq
+  extends pfe
 {
-  public abstract void a(Context paramContext, ArticleInfo paramArticleInfo, int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4);
+  peq(pdv parampdv, boolean paramBoolean1, boolean paramBoolean2, List paramList)
+  {
+    super(parampdv, null);
+  }
+  
+  void a(pfh parampfh)
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      parampfh.onCommentLoadMore(2, this.b, this.jdField_a_of_type_JavaUtilList, pdv.e(this.jdField_a_of_type_Pdv), 4);
+      return;
+    }
+    parampfh.onCommentListLoad(2, this.b, this.jdField_a_of_type_JavaUtilList, pdv.e(this.jdField_a_of_type_Pdv), 4, 4);
+  }
 }
 
 

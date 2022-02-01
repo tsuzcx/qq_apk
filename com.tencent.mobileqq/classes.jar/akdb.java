@@ -1,21 +1,31 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import mqq.observer.BusinessObserver;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.EditText;
 
-public class akdb
-  implements BusinessObserver
+class akdb
+  implements TextWatcher
 {
-  public akdb(RedPacketManager paramRedPacketManager) {}
+  akdb(akda paramakda) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void afterTextChanged(Editable paramEditable)
   {
-    switch (paramInt)
+    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
+    if (this.a.b) {
+      this.a.jdField_a_of_type_Akdk.a(paramEditable);
+    }
+    this.a.b = true;
+    if (paramEditable.length() == 0)
     {
-    default: 
+      this.a.findViewById(2131368378).setVisibility(8);
       return;
     }
-    this.a.a(paramBoolean, paramBundle);
+    this.a.findViewById(2131368378).setVisibility(0);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

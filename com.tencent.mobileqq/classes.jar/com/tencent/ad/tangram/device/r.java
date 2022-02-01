@@ -3,7 +3,7 @@ package com.tencent.ad.tangram.device;
 import android.content.Context;
 import android.os.Environment;
 import android.text.TextUtils;
-import com.tencent.ad.tangram.file.a;
+import com.tencent.ad.tangram.file.AdFile;
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.protocol.gdt_settings.Settings;
 import com.tencent.ad.tangram.protocol.gdt_settings.Settings.SettingsForUUID;
@@ -39,8 +39,8 @@ final class r
     }
     Object localObject;
     q.a locala1;
-    a locala2;
-    a locala3;
+    AdFile localAdFile1;
+    AdFile localAdFile2;
     for (;;)
     {
       AdLog.i("AdUUIDUtil", String.format("getUUID %d", new Object[] { Integer.valueOf(locala.error) }));
@@ -68,21 +68,21 @@ final class r
         }
         else
         {
-          locala2 = new a(getDirectoryAbsolutePath("Tencent/ams/cache"), "meta.dat", "UTF-8", true);
-          locala3 = new a(getDirectoryAbsolutePath("Android/data/com.tencent.ams/cache"), "meta.dat", "UTF-8", true);
-          if ((locala2.open()) && (locala3.open())) {
+          localAdFile1 = new AdFile(getDirectoryAbsolutePath("Tencent/ams/cache"), "meta.dat", "UTF-8", true);
+          localAdFile2 = new AdFile(getDirectoryAbsolutePath("Android/data/com.tencent.ams/cache"), "meta.dat", "UTF-8", true);
+          if ((localAdFile1.open()) && (localAdFile2.open())) {
             break;
           }
-          locala2.close();
-          locala3.close();
+          localAdFile1.close();
+          localAdFile2.close();
           locala.error = 18;
         }
       }
     }
     int i = ((gdt_settings.Settings)localObject).settingsForUUID.maxLength;
-    String str1 = locala2.readFully(i);
+    String str1 = localAdFile1.readFully(i);
     q localq2 = q.fromString(str1);
-    String str2 = locala3.readFully(i);
+    String str2 = localAdFile2.readFully(i);
     q localq3 = q.fromString(str2);
     q localq1 = q.create(locala1);
     if (localq1 != null)
@@ -97,14 +97,14 @@ final class r
     }
     for (;;)
     {
-      if ((locala2.writeFully((String)localObject)) && (locala3.writeFully((String)localObject)))
+      if ((localAdFile1.writeFully((String)localObject)) && (localAdFile2.writeFully((String)localObject)))
       {
         uuidInfo = localq1;
         locala.uuidInfo = uuidInfo;
         locala.error = 0;
       }
-      locala2.close();
-      locala3.close();
+      localAdFile1.close();
+      localAdFile2.close();
       AdReporterForAnalysis.reportForUUID(paramContext, localq2, localq3, locala1);
       break;
       localObject = null;

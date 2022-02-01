@@ -1,24 +1,24 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
 import java.util.Map;
-import ojc;
-import pns;
+import oqy;
+import pyq;
 
 public class ReadInJoyPicWaterFallFragment$6$1
   implements Runnable
 {
-  public ReadInJoyPicWaterFallFragment$6$1(pns parampns, boolean paramBoolean1, Map paramMap1, boolean paramBoolean2, Map paramMap2, String paramString) {}
+  public ReadInJoyPicWaterFallFragment$6$1(pyq parampyq, boolean paramBoolean1, Map paramMap1, boolean paramBoolean2, Map paramMap2, String paramString) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      if (ojc.b(this.jdField_a_of_type_Pns.a.a())) {
-        this.jdField_a_of_type_Pns.a(this.jdField_a_of_type_JavaUtilMap, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_JavaUtilMap, this.jdField_a_of_type_JavaLangString);
+      if (oqy.b(this.jdField_a_of_type_Pyq.a.a())) {
+        this.jdField_a_of_type_Pyq.a(this.jdField_a_of_type_JavaUtilMap, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_JavaUtilMap, this.jdField_a_of_type_JavaLangString);
       }
       return;
     }
-    this.jdField_a_of_type_Pns.a(this.jdField_a_of_type_JavaUtilMap, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_JavaUtilMap, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Pyq.a(this.jdField_a_of_type_JavaUtilMap, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_JavaUtilMap, this.jdField_a_of_type_JavaLangString);
   }
 }
 

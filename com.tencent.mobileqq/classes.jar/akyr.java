@@ -1,23 +1,20 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import java.lang.ref.WeakReference;
+import Wallet.SetSelectedSkinRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public class akyr
-  implements DialogInterface.OnCancelListener
+  implements BusinessObserver
 {
-  private final WeakReference<Activity> a;
+  public akyr(RedPacketManager paramRedPacketManager, BusinessObserver paramBusinessObserver) {}
   
-  public akyr(Activity paramActivity)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a = new WeakReference(paramActivity);
-  }
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    Activity localActivity = (Activity)this.a.get();
-    if ((localActivity != null) && (!localActivity.isFinishing())) {
-      paramDialogInterface.dismiss();
+    SetSelectedSkinRsp localSetSelectedSkinRsp = (SetSelectedSkinRsp)paramBundle.getSerializable("rsp");
+    this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(paramInt, paramBoolean, paramBundle);
+    if (QLog.isColorLevel()) {
+      QLog.d("RedPacketManager", 2, "setSelectedSkin2ServerIfChanged onReceive isSuccess:" + paramBoolean);
     }
   }
 }

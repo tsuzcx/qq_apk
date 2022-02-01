@@ -1,38 +1,61 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ValueAnimator;
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqConvertGroupId;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertGroupId;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupId;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.Iterator;
+import java.util.List;
 
-final class wqu
-  extends AnimatorListenerAdapter
+public class wqu
+  extends wfm<wqv>
 {
-  wqu(Animator.AnimatorListener paramAnimatorListener, ViewGroup paramViewGroup, ImageView paramImageView) {}
+  public static final String a;
+  public List<String> a;
+  public int c;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  static
   {
-    super.onAnimationCancel(paramAnimator);
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationCancel(paramAnimator);
+    jdField_a_of_type_JavaLangString = weg.a("StoryGroupSvc.convert_group_id");
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public String a()
   {
-    xvv.b("Q.qqstory.playernew.AnimationUtils", "doEnterAnimation, onAnimationEnd");
-    this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_AndroidWidgetImageView);
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationEnd(paramAnimator);
-    paramAnimator = ValueAnimator.ofInt(new int[] { 255, 0 });
-    paramAnimator.setStartDelay(400L);
-    paramAnimator.setDuration(400L);
-    paramAnimator.addUpdateListener(new wqv(this));
-    paramAnimator.addListener(new wqw(this));
-    paramAnimator.start();
+    return jdField_a_of_type_JavaLangString;
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public wfh a(byte[] paramArrayOfByte)
   {
-    super.onAnimationStart(paramAnimator);
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationStart(paramAnimator);
+    qqstory_service.RspConvertGroupId localRspConvertGroupId = new qqstory_service.RspConvertGroupId();
+    try
+    {
+      localRspConvertGroupId.mergeFrom(paramArrayOfByte);
+      return new wqv(localRspConvertGroupId);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      ykq.b("Q.qqstory.net:BatchNetHandler", a(), paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqConvertGroupId localReqConvertGroupId = new qqstory_service.ReqConvertGroupId();
+    localReqConvertGroupId.convert_from.set(this.c);
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        qqstory_struct.GroupId localGroupId = new qqstory_struct.GroupId();
+        localGroupId.group_uin.set(Long.valueOf(str).longValue());
+        localReqConvertGroupId.group_req_list.add(localGroupId);
+      }
+    }
+    return localReqConvertGroupId.toByteArray();
   }
 }
 

@@ -1,13 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-public class awmb
-  implements DialogInterface.OnClickListener
+class awmb
+  implements INetInfoHandler
 {
-  public awmb(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  awmb(awlt paramawlt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onNetMobile2None()
+  {
+    awlt.c(this.a);
+  }
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None()
+  {
+    awlt.c(this.a);
+  }
 }
 
 

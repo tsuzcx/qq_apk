@@ -1,14 +1,13 @@
-import androidx.annotation.Nullable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.wtogether.fragment.AVGroupFileSelectFragment;
 
-public abstract interface myz
+public class myz
+  implements DialogInterface.OnClickListener
 {
-  public abstract int a();
+  public myz(AVGroupFileSelectFragment paramAVGroupFileSelectFragment) {}
   
-  @Nullable
-  public abstract String a(int paramInt);
-  
-  @Nullable
-  public abstract myy b(int paramInt);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

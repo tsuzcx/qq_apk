@@ -1,19 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class xrz
-  implements View.OnClickListener
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, wse>
 {
-  public xrz(StoryListPresenter.4.1 param1) {}
-  
-  public void onClick(View paramView)
+  public xrz(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    xwa.a("home_page", "clk_up_know", 0, 0, new String[0]);
-    this.a.a.this$0.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramQQStoryShareGroupProfileActivity);
+  }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull wse paramwse)
+  {
+    if (paramwse.a.isSuccess()) {
+      paramQQStoryShareGroupProfileActivity.a.a(paramwse);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wse.class;
   }
 }
 

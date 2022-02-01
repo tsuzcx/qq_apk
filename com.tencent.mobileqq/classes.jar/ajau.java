@@ -1,8 +1,10 @@
-public abstract interface ajau
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+
+public class ajau
+  extends aizb
 {
-  public abstract void a();
-  
-  public abstract void b();
+  public long a;
+  public structmsg.StructMsg a;
 }
 
 

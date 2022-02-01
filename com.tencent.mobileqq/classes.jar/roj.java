@@ -1,47 +1,52 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.CheckBox;
-import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.ExpandableListView;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import java.net.MalformedURLException;
+import java.net.URL;
+import kotlin.Metadata;
 
-public class roj
-  extends roq
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdaterVideoBigPic;", "Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdater;", "()V", "process", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class roj
+  extends roe
 {
-  private rpa a;
-  
-  public roj(Context paramContext, QQAppInterface paramQQAppInterface, ExpandableListView paramExpandableListView, boolean paramBoolean, rpa paramrpa)
-  {
-    super(paramContext, paramQQAppInterface, paramExpandableListView, paramBoolean);
-    this.jdField_a_of_type_Rpa = paramrpa;
-  }
-  
   protected void a()
   {
-    if ((this.jdField_a_of_type_Rpa != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.size() >= this.jdField_a_of_type_Rpa.b()))
+    Object localObject = a();
+    if (localObject != null) {
+      ((SocializeFeedsInfo)localObject).a = 6;
+    }
+    localObject = a();
+    if (localObject != null) {
+      ((rrl)localObject).a = true;
+    }
+    localObject = a();
+    if (localObject != null)
     {
-      String str = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131717498, new Object[] { String.valueOf(this.jdField_a_of_type_Rpa.c()) });
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, str, 0).a();
-      return;
+      localObject = ((rre)localObject).a;
+      if (localObject != null)
+      {
+        a().mTitle = ((rrn)localObject).g;
+        a().mVideoVid = ((rrn)localObject).e;
+      }
     }
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131717492), 0).a();
-  }
-  
-  protected void a(roy paramroy, Friends paramFriends)
-  {
-    if ((paramFriends == null) || (this.jdField_a_of_type_Rpa == null) || (this.jdField_a_of_type_Rpa.a() == null) || (this.jdField_a_of_type_Rpa.a().isEmpty())) {
-      return;
-    }
-    paramroy.a.setBackgroundResource(2130849321);
-    if (this.jdField_a_of_type_Rpa.a().contains(paramFriends.uin))
+    try
     {
-      paramroy.a.setEnabled(false);
+      localObject = a();
+      if (localObject != null)
+      {
+        localObject = ((rre)localObject).a;
+        if (localObject != null)
+        {
+          localObject = ((rrn)localObject).d;
+          if (localObject != null) {
+            a().mVideoCoverUrl = new URL((String)localObject);
+          }
+        }
+      }
       return;
     }
-    paramroy.a.setEnabled(true);
+    catch (MalformedURLException localMalformedURLException)
+    {
+      localMalformedURLException.printStackTrace();
+    }
   }
 }
 

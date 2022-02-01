@@ -35,10 +35,10 @@ public class AEDenoiseFilter
   public void clear()
   {
     if (this.mDenoiseFilter != null) {
-      this.mDenoiseFilter.ClearGLSL();
+      this.mDenoiseFilter.clearGLSL();
     }
     if (this.mCopyFilter != null) {
-      this.mCopyFilter.ClearGLSL();
+      this.mCopyFilter.clearGLSL();
     }
     Frame[] arrayOfFrame = this.mBeforeDenoiseFrame;
     int j = arrayOfFrame.length;

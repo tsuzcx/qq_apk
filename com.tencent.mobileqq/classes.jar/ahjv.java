@@ -1,16 +1,14 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.face.FaceDrawable;
+import com.tencent.qphone.base.util.QLog;
 
 class ahjv
-  extends amsu
+  extends azzo
 {
-  ahjv(ahiu paramahiu, ImageView paramImageView) {}
+  ahjv(ahjq paramahjq) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void a(boolean paramBoolean)
   {
-    if ((paramBoolean) && (paramString.equals(this.jdField_a_of_type_Ahiu.getSessionInfo().curFriendUin))) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(FaceDrawable.getUserFaceDrawable(this.jdField_a_of_type_Ahiu.app, paramString, (byte)3));
+    if (QLog.isColorLevel()) {
+      QLog.i("TofuAioMiniProfileItemBuilder", 2, "onBrowseAskAnonymouslyReport() success = " + paramBoolean);
     }
   }
 }

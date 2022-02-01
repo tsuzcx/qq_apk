@@ -1,6 +1,18 @@
-public abstract interface szx
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView;
+
+public class szx
+  implements pfw
 {
-  public abstract void a(boolean paramBoolean);
+  public szx(ReadInJoyFastWebBottomSocialView paramReadInJoyFastWebBottomSocialView, pfw parampfw) {}
+  
+  public void a(int paramInt)
+  {
+    ReadInJoyFastWebBottomSocialView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialView).setVisibility(8);
+    if (this.jdField_a_of_type_Pfw != null) {
+      this.jdField_a_of_type_Pfw.a(paramInt);
+    }
+  }
 }
 
 

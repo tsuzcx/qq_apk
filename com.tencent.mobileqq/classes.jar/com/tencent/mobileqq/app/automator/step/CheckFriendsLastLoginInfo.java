@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import amsu;
-import anff;
+import anvi;
+import aohv;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
@@ -10,16 +11,16 @@ import com.tencent.mobileqq.app.automator.Automator;
 public class CheckFriendsLastLoginInfo
   extends AsyncStep
 {
-  private amsu a;
+  private anvi a;
   
   public int a()
   {
-    if (((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getBusinessHandler(1)).getLastLoginInfo())
+    if (((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getLastLoginInfo())
     {
-      if (this.jdField_a_of_type_Amsu == null)
+      if (this.jdField_a_of_type_Anvi == null)
       {
-        this.jdField_a_of_type_Amsu = new anff(this, null);
-        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Amsu);
+        this.jdField_a_of_type_Anvi = new aohv(this, null);
+        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Anvi);
       }
       return 2;
     }
@@ -28,10 +29,10 @@ public class CheckFriendsLastLoginInfo
   
   public void c()
   {
-    if (this.jdField_a_of_type_Amsu != null)
+    if (this.jdField_a_of_type_Anvi != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Amsu);
-      this.jdField_a_of_type_Amsu = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Anvi);
+      this.jdField_a_of_type_Anvi = null;
     }
   }
 }

@@ -1,21 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
+import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.weiyun.channel.pb.WeiyunPB.DiskDirFileBatchDeleteExMsgRsp;
 
 class auiq
-  implements DialogInterface.OnClickListener
+  implements bmsc<WeiyunPB.DiskDirFileBatchDeleteExMsgRsp>
 {
-  auiq(auij paramauij) {}
+  auiq(auie paramauie, WeiYunFileInfo paramWeiYunFileInfo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, String paramString, WeiyunPB.DiskDirFileBatchDeleteExMsgRsp paramDiskDirFileBatchDeleteExMsgRsp)
   {
-    auij.jdField_a_of_type_Boolean = false;
-    auij.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), false);
-    this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.b(-11);
-    QLog.d("PresenceInterfaceImpl", 2, "User disallowed downd");
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "deleteWeiYunFile, onFailed  strFileId[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.a + "]strFileName[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.c + "]errorCode[" + paramInt + "],errorMsg[" + paramString + "]");
+    }
+    auie.a(this.jdField_a_of_type_Auie).getFileManagerNotifyCenter().a(false, 20, new Object[] { Integer.valueOf(paramInt), paramString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.c, Boolean.valueOf(false) });
+  }
+  
+  public void a(WeiyunPB.DiskDirFileBatchDeleteExMsgRsp paramDiskDirFileBatchDeleteExMsgRsp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "deleteWeiYunFile, onSucceed  strFileId[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.a + "]strFileName[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.c + "]");
+    }
+    auie.a(this.jdField_a_of_type_Auie).getFileManagerNotifyCenter().a(true, 20, new Object[] { Integer.valueOf(0), null, this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.c, Boolean.valueOf(false) });
   }
 }
 

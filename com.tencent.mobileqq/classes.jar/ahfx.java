@@ -4,7 +4,7 @@ import android.content.DialogInterface.OnClickListener;
 class ahfx
   implements DialogInterface.OnClickListener
 {
-  ahfx(ahfp paramahfp) {}
+  ahfx(ahfu paramahfu) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }

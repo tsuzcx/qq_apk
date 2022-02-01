@@ -1,50 +1,57 @@
+import android.text.TextUtils;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import org.json.JSONObject;
+
 public class bija
 {
-  private static bijb a = new bijb();
+  private final SwiftBrowserUIStyleHandler a;
+  public String a;
   
-  public static void a(bijb parambijb)
+  public bija(SwiftBrowserUIStyleHandler paramSwiftBrowserUIStyleHandler)
   {
-    if (parambijb != null)
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler = paramSwiftBrowserUIStyleHandler;
+  }
+  
+  public void a(int paramInt)
+  {
+    TouchWebView localTouchWebView = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.getWebView();
+    JSONObject localJSONObject1;
+    JSONObject localJSONObject2;
+    if ((localTouchWebView != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
     {
-      a = parambijb;
+      localJSONObject1 = new JSONObject();
+      localJSONObject2 = new JSONObject();
+    }
+    try
+    {
+      localJSONObject1.put("code", 0);
+      localJSONObject1.put("message", "ok");
+      localJSONObject2.put("subIndex", paramInt);
+      localJSONObject1.put("data", localJSONObject2);
+      localTouchWebView.callJs(WebViewPlugin.toJsScript(this.jdField_a_of_type_JavaLangString, localJSONObject1, null));
       return;
     }
-    a = new bijb();
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
   }
   
-  public static void a(String paramString1, String paramString2)
+  public void a(String paramString, boolean paramBoolean)
   {
-    a.a(paramString1, paramString2);
-  }
-  
-  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    a.a(paramString1, paramString2, paramThrowable);
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    a.b(paramString1, paramString2);
-  }
-  
-  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    a.b(paramString1, paramString2, paramThrowable);
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    a.c(paramString1, paramString2);
-  }
-  
-  public static void c(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    a.c(paramString1, paramString2, paramThrowable);
-  }
-  
-  public static void d(String paramString1, String paramString2)
-  {
-    a.d(paramString1, paramString2);
+    if (paramBoolean)
+    {
+      if (!TextUtils.isEmpty(paramString)) {
+        this.jdField_a_of_type_JavaLangString = paramString;
+      }
+      return;
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

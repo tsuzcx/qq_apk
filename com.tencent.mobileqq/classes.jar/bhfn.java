@@ -1,228 +1,225 @@
 import android.content.Context;
-import android.os.Build.VERSION;
-import android.util.AttributeSet;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.AutoCompleteTextView;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ListAdapter;
-import android.widget.ListPopupWindow;
-import android.widget.ListView;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginPopupMaskView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginPopupRightMaskView;
-import com.tencent.mobileqq.widget.NewStyleDropdownView;
+import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.Signature;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 
 public class bhfn
-  extends AutoCompleteTextView
 {
-  private boolean jdField_a_of_type_Boolean;
+  private static String a = "PackageUtil";
   
-  public bhfn(NewStyleDropdownView paramNewStyleDropdownView, Context paramContext)
+  public static String a(Context paramContext, String paramString)
   {
-    super(paramContext);
-    setId(526);
-    this.jdField_a_of_type_Boolean = true;
+    try
+    {
+      paramContext = paramContext.getPackageManager().getPackageInfo(paramString.trim(), 0);
+      if (paramContext == null) {
+        return "0";
+      }
+      paramContext = paramContext.versionName;
+      return paramContext;
+    }
+    catch (Exception paramContext) {}
+    return "0";
   }
   
-  public bhfn(NewStyleDropdownView paramNewStyleDropdownView, Context paramContext, AttributeSet paramAttributeSet)
+  public static boolean a(Context paramContext, String paramString)
   {
-    super(paramContext, paramAttributeSet);
-    setId(526);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public bhfn(NewStyleDropdownView paramNewStyleDropdownView, Context paramContext, AttributeSet paramAttributeSet, int paramInt)
-  {
-    super(paramContext, paramAttributeSet, paramInt);
-    setId(526);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public boolean enoughToFilter()
-  {
-    return true;
-  }
-  
-  public boolean isPopupShowing()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return super.isPopupShowing();
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return false;
+      try
+      {
+        paramContext = paramContext.getPackageManager().getPackageInfo(paramString.trim(), 0);
+        if (paramContext != null) {
+          return true;
+        }
+      }
+      catch (Exception paramContext) {}
     }
     return false;
   }
   
-  public void onEditorAction(int paramInt)
+  public static boolean a(Context paramContext, String paramString1, String paramString2)
   {
-    if (paramInt == 5)
-    {
-      View localView = focusSearch(130);
-      if ((localView != null) && (!localView.requestFocus(130))) {
-        throw new IllegalStateException("focus search returned a view that wasn't able to take focus!");
-      }
-    }
-    else
-    {
-      super.onEditorAction(paramInt);
-    }
+    return a(paramContext, paramString1, paramString2, null, 0);
   }
   
-  protected void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public static boolean a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    super.onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
     try
     {
-      if (isPopupShowing()) {
-        dismissDropDown();
+      if (QLog.isColorLevel()) {
+        QLog.d(a, 2, "<--startAppWithPkgName pkgName=" + paramString1 + ",openid=" + paramString2);
       }
-      return;
+      paramString1 = paramContext.getPackageManager().getLaunchIntentForPackage(paramString1.trim());
+      paramString1.setFlags(268435456);
+      if ((paramString2 != null) && (paramString2.length() > 4)) {
+        paramString1.putExtra("current_uin", paramString2);
+      }
+      paramString1.putExtra("platformId", "qq_m");
+      paramString1.putExtra("big_brother_source_key", paramString3);
+      paramString1.putExtra("key_callback_id", paramInt);
+      paramContext.startActivity(paramString1);
+      return true;
     }
-    catch (Exception paramCharSequence) {}
+    catch (Exception paramContext) {}
+    return false;
   }
   
-  protected void performFiltering(CharSequence paramCharSequence, int paramInt) {}
-  
-  public void showDropDown()
+  public static String b(Context paramContext, String paramString)
   {
-    try
-    {
-      super.showDropDown();
-      if (Build.VERSION.SDK_INT <= 8) {
-        return;
-      }
+    if (paramString == null) {
+      return "0";
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      localOutOfMemoryError.printStackTrace();
-      return;
-    }
-    try
-    {
-      Object localObject1 = getClass().getSuperclass().getDeclaredField("mDropDownList");
-      ((Field)localObject1).setAccessible(true);
-      localObject1 = ((Field)localObject1).get(this);
-      localObject1.getClass().getSuperclass().getMethod("setDividerHeight", new Class[] { Integer.TYPE }).invoke(localObject1, new Object[] { Integer.valueOf(0) });
-      localObject1.getClass().getSuperclass().getMethod("setVerticalScrollBarEnabled", new Class[] { Boolean.TYPE }).invoke(localObject1, new Object[] { Boolean.valueOf(false) });
-      return;
-    }
-    catch (Exception localException1) {}
+    paramContext = paramContext.getPackageManager();
+    paramString = paramString.split("\\|");
+    StringBuffer localStringBuffer = new StringBuffer();
+    int i = 0;
     for (;;)
     {
-      int k;
-      int j;
-      int i;
-      boolean bool;
-      try
+      if (i < paramString.length)
+      {
+        if (i != 0) {
+          localStringBuffer.append("|");
+        }
+        try
+        {
+          PackageInfo localPackageInfo = paramContext.getPackageInfo(paramString[i].trim(), 0);
+          if (localPackageInfo == null) {
+            localStringBuffer.append(0);
+          } else {
+            localStringBuffer.append(localPackageInfo.versionName);
+          }
+        }
+        catch (Exception localException)
+        {
+          localStringBuffer.append(0);
+        }
+      }
+      else
+      {
+        return localStringBuffer.toString();
+      }
+      i += 1;
+    }
+  }
+  
+  public static boolean b(Context paramContext, String paramString1, String paramString2)
+  {
+    PackageManager localPackageManager = paramContext.getPackageManager();
+    paramContext = null;
+    try
+    {
+      paramString1 = localPackageManager.getPackageInfo(paramString1, 64);
+      paramContext = paramString1;
+    }
+    catch (PackageManager.NameNotFoundException paramString1)
+    {
+      do
       {
         for (;;)
         {
-          Object localObject2 = getClass().getSuperclass().getDeclaredField("mPopup");
-          ((Field)localObject2).setAccessible(true);
-          localObject2 = ((Field)localObject2).get(this);
-          Object localObject3 = localObject2.getClass().getDeclaredField("mDropDownList");
-          ((Field)localObject3).setAccessible(true);
-          localObject3 = ((Field)localObject3).get(localObject2);
-          localObject3.getClass().getSuperclass().getMethod("setDividerHeight", new Class[] { Integer.TYPE }).invoke(localObject3, new Object[] { Integer.valueOf(0) });
-          localObject3.getClass().getSuperclass().getMethod("setVerticalScrollBarEnabled", new Class[] { Boolean.TYPE }).invoke(localObject3, new Object[] { Boolean.valueOf(false) });
-          if ((localObject2 instanceof PopupWindow)) {
-            ((PopupWindow)localObject2).setAnimationStyle(2130772301);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("NewStyleDropdownView", 2, " showDropDown popupWindow:" + localObject2);
-          }
-          if (!(localObject2 instanceof ListPopupWindow)) {
-            break;
-          }
-          localObject2 = (ListPopupWindow)localObject2;
-          if (((ListPopupWindow)localObject2).getListView() == null) {
-            break;
-          }
-          localObject2 = ((ListPopupWindow)localObject2).getListView();
-          try
-          {
-            ((ListView)localObject2).setPadding(AIOUtils.dp2px(13.0F, getResources()), 0, AIOUtils.dp2px(13.0F, getResources()), 0);
-            ((ListView)localObject2).setOverScrollMode(2);
-            ((ListView)localObject2).setVerticalScrollBarEnabled(false);
-            ((ListView)localObject2).setDivider(null);
-            ((ListView)localObject2).setDividerHeight(0);
-            localObject2 = ((ListView)localObject2).getParent();
-            if (!(localObject2 instanceof FrameLayout)) {
-              break;
-            }
-            localObject3 = (FrameLayout)localObject2;
-            k = getAdapter().getCount();
-            j = 0;
-            i = 0;
-            bool = false;
-            localObject2 = null;
-            if (j >= ((FrameLayout)localObject3).getChildCount()) {
-              break label594;
-            }
-            if ((((FrameLayout)localObject3).getChildAt(j) == null) || (!(((FrameLayout)localObject3).getChildAt(j) instanceof LoginPopupMaskView))) {
-              break label557;
-            }
-            localObject2 = (LoginPopupMaskView)((FrameLayout)localObject3).getChildAt(j);
-            bool = true;
-          }
-          catch (Throwable localThrowable)
-          {
-            for (;;)
-            {
-              QLog.e("NewStyleDropdownView", 1, " showDropDown error:" + localThrowable.getMessage());
-            }
-          }
+          paramString1.printStackTrace();
         }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-      }
-      catch (Exception localException2) {}
-      QLog.d("NewStyleDropdownView", 2, " showDropDown error::" + localException2.getMessage());
-      return;
-      label557:
-      if ((localThrowable.getChildAt(j) != null) && ((localThrowable.getChildAt(j) instanceof LoginPopupRightMaskView)))
+      } while ((paramContext.signatures == null) || (paramContext.signatures.length <= 0));
+      paramContext = paramContext.signatures;
+      j = paramContext.length;
+      i = 0;
+    }
+    if (paramContext == null) {}
+    for (;;)
+    {
+      return false;
+      int j;
+      int i;
+      while (i < j)
       {
-        Object localObject4 = (LoginPopupRightMaskView)localThrowable.getChildAt(j);
-        i = 1;
-        break label780;
-        label594:
-        if (QLog.isColorLevel()) {
-          QLog.d("NewStyleDropdownView", 2, " showDropDown find: " + bool + " count: " + k);
+        if (paramString2.equals(MD5.toMD5(paramContext[i].toByteArray()))) {
+          return true;
         }
-        if (i == 0)
-        {
-          localObject4 = new LoginPopupRightMaskView(localThrowable.getContext());
-          FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(AIOUtils.dp2px(20.0F, getResources()), -1);
-          localLayoutParams.gravity = 5;
-          localThrowable.addView((View)localObject4, localLayoutParams);
-        }
-        if (localException2 != null)
-        {
-          if (k > 4)
-          {
-            localException2.setVisibility(0);
-            return;
-          }
-          localException2.setVisibility(8);
-          return;
-        }
-        if ((bool) || (k <= 4)) {
-          break;
-        }
-        LoginPopupMaskView localLoginPopupMaskView = new LoginPopupMaskView(localThrowable.getContext());
-        localObject4 = new FrameLayout.LayoutParams(-1, AIOUtils.dp2px(14.0F, getResources()));
-        ((FrameLayout.LayoutParams)localObject4).bottomMargin = 0;
-        ((FrameLayout.LayoutParams)localObject4).gravity = 80;
-        localThrowable.addView(localLoginPopupMaskView, (ViewGroup.LayoutParams)localObject4);
-        return;
+        i += 1;
       }
-      label780:
-      j += 1;
+    }
+  }
+  
+  public static String c(Context paramContext, String paramString)
+  {
+    if (paramString == null) {
+      return "0";
+    }
+    paramContext = paramContext.getPackageManager();
+    paramString = paramString.split("\\|");
+    StringBuffer localStringBuffer = new StringBuffer();
+    int i = 0;
+    for (;;)
+    {
+      if (i < paramString.length)
+      {
+        if (i != 0) {
+          localStringBuffer.append("|");
+        }
+        try
+        {
+          if (paramContext.getPackageInfo(paramString[i].trim(), 0) == null) {
+            localStringBuffer.append(0);
+          } else {
+            localStringBuffer.append(1);
+          }
+        }
+        catch (Exception localException)
+        {
+          localStringBuffer.append(0);
+        }
+      }
+      else
+      {
+        return localStringBuffer.toString();
+      }
+      i += 1;
+    }
+  }
+  
+  public static String d(Context paramContext, String paramString)
+  {
+    if (paramString == null) {
+      return "0";
+    }
+    paramContext = paramContext.getPackageManager();
+    paramString = paramString.split("\\|");
+    StringBuffer localStringBuffer = new StringBuffer();
+    int i = 0;
+    for (;;)
+    {
+      if (i < paramString.length)
+      {
+        if (i != 0) {
+          localStringBuffer.append("|");
+        }
+        try
+        {
+          PackageInfo localPackageInfo = paramContext.getPackageInfo(paramString[i].trim(), 0);
+          if (localPackageInfo == null) {
+            localStringBuffer.append(0);
+          } else {
+            localStringBuffer.append(localPackageInfo.versionCode);
+          }
+        }
+        catch (Exception localException)
+        {
+          localStringBuffer.append(0);
+        }
+      }
+      else
+      {
+        return localStringBuffer.toString();
+      }
+      i += 1;
     }
   }
 }

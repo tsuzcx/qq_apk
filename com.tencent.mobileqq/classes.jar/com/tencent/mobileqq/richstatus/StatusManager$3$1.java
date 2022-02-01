@@ -1,13 +1,14 @@
 package com.tencent.mobileqq.richstatus;
 
-import amsw;
-import amtj;
 import android.os.Bundle;
 import android.text.TextUtils;
-import baoy;
-import bapb;
-import bcef;
+import anvk;
+import anvx;
+import bbvn;
+import bbvq;
+import bdla;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import gk;
@@ -18,23 +19,23 @@ import mqq.os.MqqHandler;
 public class StatusManager$3$1
   implements Runnable
 {
-  public StatusManager$3$1(bapb parambapb, boolean paramBoolean, Bundle paramBundle) {}
+  public StatusManager$3$1(bbvq parambbvq, boolean paramBoolean, Bundle paramBundle) {}
   
   public void run()
   {
-    Object localObject3 = (amsw)baoy.a(this.jdField_a_of_type_Bapb.a).getManager(51);
+    Object localObject3 = (anvk)bbvn.a(this.jdField_a_of_type_Bbvq.a).getManager(QQManagerFactory.FRIENDS_MANAGER);
     Object localObject2;
     int i;
     int j;
     Object localObject4;
     if (localObject3 != null)
     {
-      localObject2 = ((amsw)localObject3).a(baoy.a(this.jdField_a_of_type_Bapb.a).getAccount());
+      localObject2 = ((anvk)localObject3).a(bbvn.a(this.jdField_a_of_type_Bbvq.a).getAccount());
       localObject1 = localObject2;
       if (localObject2 == null)
       {
         localObject1 = new ExtensionInfo();
-        ((ExtensionInfo)localObject1).uin = baoy.a(this.jdField_a_of_type_Bapb.a).getAccount();
+        ((ExtensionInfo)localObject1).uin = bbvn.a(this.jdField_a_of_type_Bbvq.a).getAccount();
       }
       if (this.jdField_a_of_type_Boolean)
       {
@@ -52,11 +53,11 @@ public class StatusManager$3$1
             ((ExtensionInfo)localObject1).setRichBuffer((byte[])localObject4, j);
             localObject2 = ((ExtensionInfo)localObject1).getRichStatus();
             if ((i != 1) || (this.jdField_a_of_type_AndroidOsBundle.getInt("ret", 0) != 65535)) {
-              break label659;
+              break label663;
             }
             ((RichStatus)localObject2).fontId = 0;
             ((RichStatus)localObject2).fontType = 0;
-            ((amsw)localObject3).a((ExtensionInfo)localObject1);
+            ((anvk)localObject3).a((ExtensionInfo)localObject1);
           }
         }
       }
@@ -64,11 +65,11 @@ public class StatusManager$3$1
       if (this.jdField_a_of_type_Boolean)
       {
         if (((RichStatus)localObject2).tplId != 0) {
-          break label771;
+          break label775;
         }
         localObject1 = "1";
-        label243:
-        bcef.b(null, "CliOper", "", "", "signiture", "set_clk_save_succ", 0, 0, (String)localObject1, "", "", "");
+        label244:
+        bdla.b(null, "CliOper", "", "", "signiture", "set_clk_save_succ", 0, 0, (String)localObject1, "", "", "");
       }
     }
     for (Object localObject1 = localObject2;; localObject1 = null)
@@ -80,7 +81,7 @@ public class StatusManager$3$1
       }
       j = i;
       int k;
-      label366:
+      label367:
       String str1;
       String str2;
       if (!this.jdField_a_of_type_Boolean)
@@ -91,7 +92,7 @@ public class StatusManager$3$1
           j = this.jdField_a_of_type_AndroidOsBundle.getInt("k_auth_code", -1);
           k = this.jdField_a_of_type_AndroidOsBundle.getInt("cRet", 0);
           if (k != 2) {
-            break label778;
+            break label782;
           }
           i = 103;
           if ((TextUtils.isEmpty(((TipsInfo)localObject2).errorDesc)) && (this.jdField_a_of_type_AndroidOsBundle.containsKey("errorDesc"))) {
@@ -129,53 +130,53 @@ public class StatusManager$3$1
       }
       for (;;)
       {
-        baoy.a(this.jdField_a_of_type_Bapb.a, null);
+        bbvn.a(this.jdField_a_of_type_Bbvq.a, null);
         ThreadManager.getUIHandler().post(new StatusManager.3.1.1(this, j, (RichStatus)localObject1, (TipsInfo)localObject2));
         gk.a().a(j, (RichStatus)localObject1, (TipsInfo)localObject2, 0);
         return;
-        label659:
-        if (baoy.a(this.jdField_a_of_type_Bapb.a) == null) {
+        label663:
+        if (bbvn.a(this.jdField_a_of_type_Bbvq.a) == null) {
           break;
         }
-        ((RichStatus)localObject2).fontId = baoy.a(this.jdField_a_of_type_Bapb.a).fontId;
-        ((RichStatus)localObject2).fontType = baoy.a(this.jdField_a_of_type_Bapb.a).fontType;
-        if ((baoy.a(this.jdField_a_of_type_Bapb.a).mStickerInfos == null) || (baoy.a(this.jdField_a_of_type_Bapb.a).mStickerInfos.size() <= 0)) {
+        ((RichStatus)localObject2).fontId = bbvn.a(this.jdField_a_of_type_Bbvq.a).fontId;
+        ((RichStatus)localObject2).fontType = bbvn.a(this.jdField_a_of_type_Bbvq.a).fontType;
+        if ((bbvn.a(this.jdField_a_of_type_Bbvq.a).mStickerInfos == null) || (bbvn.a(this.jdField_a_of_type_Bbvq.a).mStickerInfos.size() <= 0)) {
           break;
         }
-        ((RichStatus)localObject2).mStickerInfos = new ArrayList(baoy.a(this.jdField_a_of_type_Bapb.a).mStickerInfos);
+        ((RichStatus)localObject2).mStickerInfos = new ArrayList(bbvn.a(this.jdField_a_of_type_Bbvq.a).mStickerInfos);
         break;
-        label771:
+        label775:
         localObject1 = "0";
-        break label243;
-        label778:
+        break label244;
+        label782:
         i = k;
         if (k != 0) {
-          break label366;
+          break label367;
         }
         i = j;
-        break label366;
+        break label367;
         if (TextUtils.isEmpty((CharSequence)localObject3)) {
-          ((TipsInfo)localObject2).titleWording = amtj.a(2131713399);
+          ((TipsInfo)localObject2).titleWording = anvx.a(2131713746);
         }
         if (TextUtils.isEmpty(str2)) {
-          ((TipsInfo)localObject2).leftBtnWording = amtj.a(2131713397);
+          ((TipsInfo)localObject2).leftBtnWording = anvx.a(2131713744);
         }
         j = i;
         if (TextUtils.isEmpty(str1))
         {
-          ((TipsInfo)localObject2).rightBtnWording = amtj.a(2131713401);
+          ((TipsInfo)localObject2).rightBtnWording = anvx.a(2131713748);
           j = i;
           continue;
           if (TextUtils.isEmpty((CharSequence)localObject3)) {
-            ((TipsInfo)localObject2).titleWording = amtj.a(2131713398);
+            ((TipsInfo)localObject2).titleWording = anvx.a(2131713745);
           }
           if (TextUtils.isEmpty(str2)) {
-            ((TipsInfo)localObject2).leftBtnWording = amtj.a(2131713400);
+            ((TipsInfo)localObject2).leftBtnWording = anvx.a(2131713747);
           }
           j = i;
           if (TextUtils.isEmpty(str1))
           {
-            ((TipsInfo)localObject2).rightBtnWording = amtj.a(2131713402);
+            ((TipsInfo)localObject2).rightBtnWording = anvx.a(2131713749);
             j = i;
           }
         }

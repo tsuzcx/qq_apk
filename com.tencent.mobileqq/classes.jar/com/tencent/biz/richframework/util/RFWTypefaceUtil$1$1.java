@@ -2,12 +2,12 @@ package com.tencent.biz.richframework.util;
 
 import android.graphics.Typeface;
 import android.widget.TextView;
-import zav;
+import zqa;
 
 public class RFWTypefaceUtil$1$1
   implements Runnable
 {
-  public RFWTypefaceUtil$1$1(zav paramzav, Typeface paramTypeface) {}
+  public RFWTypefaceUtil$1$1(zqa paramzqa, Typeface paramTypeface) {}
   
   public void run()
   {

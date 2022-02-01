@@ -1,15 +1,12 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class arwv
-  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public arwv(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  arws jdField_a_of_type_Arws;
+  FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   
-  public void onGlobalLayout()
-  {
-    this.a.am_();
-  }
+  protected arwv(DataReportSettingFragment paramDataReportSettingFragment) {}
 }
 
 

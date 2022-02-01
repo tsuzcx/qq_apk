@@ -1,28 +1,13 @@
-import android.os.Handler;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin.7;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-public class bglw
-  implements TVK_SDKMgr.InstallListener
+class bglw
+  implements bgma
 {
-  public bglw(HealthBusinessPlugin.7 param7) {}
+  bglw(bgls parambgls, String paramString) {}
   
-  public void onInstallProgress(float paramFloat)
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
   {
-    this.a.this$0.c = ((int)(100.0F * paramFloat));
-    this.a.this$0.b.sendEmptyMessage(2);
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    this.a.this$0.d = paramInt;
-    this.a.this$0.b.sendEmptyMessage(1);
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    this.a.this$0.b.sendEmptyMessage(0);
+    if (paramInt == 0) {}
   }
 }
 

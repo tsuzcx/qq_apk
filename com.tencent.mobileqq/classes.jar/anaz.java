@@ -1,28 +1,44 @@
-import com.tencent.mobileqq.app.BusinessObserver;
+import android.content.Context;
+import android.view.View;
+import com.tencent.common.app.AppInterface;
 
-public class anaz
-  implements BusinessObserver
+public abstract interface anaz
 {
-  public static final int OBSERVER_TYPE_CHECK_REALNAME = 1;
+  public abstract int a();
   
-  public void onCheckRealNameRsp(boolean paramBoolean, int paramInt) {}
+  public abstract long a();
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if ((paramObject != null) && ((paramObject instanceof Object[]))) {}
-    for (paramObject = (Object[])paramObject;; paramObject = null)
-    {
-      switch (paramInt)
-      {
-      }
-      do
-      {
-        return;
-      } while (paramObject == null);
-      onCheckRealNameRsp(paramBoolean, ((Integer)paramObject[0]).intValue());
-      return;
-    }
-  }
+  public abstract View a();
+  
+  public abstract void a();
+  
+  public abstract void a(anay paramanay);
+  
+  public abstract void a(anay paramanay, long paramLong);
+  
+  public abstract void a(Context paramContext, AppInterface paramAppInterface);
+  
+  public abstract void a(String paramString1, String paramString2, int paramInt);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract long b();
+  
+  public abstract void b();
+  
+  public abstract void b(anay paramanay);
+  
+  public abstract boolean b();
+  
+  public abstract int c();
+  
+  public abstract boolean c();
+  
+  public abstract boolean d();
 }
 
 

@@ -1,18 +1,15 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
 public class aerp
-  implements View.OnClickListener
+  implements behm
 {
-  public aerp(TroopTransferActivity paramTroopTransferActivity) {}
+  public aerp(QQSettingMe paramQQSettingMe) {}
   
-  public void onClick(View paramView)
+  public void onCancel() {}
+  
+  public void onConfirm()
   {
-    this.a.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    QQSettingMe.d(this.a);
   }
 }
 

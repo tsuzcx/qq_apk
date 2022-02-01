@@ -1,12 +1,12 @@
 package com.tencent.biz.subscribe.bizdapters;
 
 import com.tencent.biz.subscribe.comment.CommentBottomBar;
-import zdg;
+import zsl;
 
 public class DetailBaseBlock$6
   implements Runnable
 {
-  public DetailBaseBlock$6(zdg paramzdg) {}
+  public DetailBaseBlock$6(zsl paramzsl) {}
   
   public void run()
   {

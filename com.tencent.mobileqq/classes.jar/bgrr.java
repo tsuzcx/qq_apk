@@ -1,13 +1,6 @@
-import com.tencent.mobileqq.voicechange.QQVoiceChangerThread;
-
-public class bgrr
+public abstract interface bgrr
 {
-  int jdField_a_of_type_Int;
-  bgrk jdField_a_of_type_Bgrk;
-  bgrp jdField_a_of_type_Bgrp;
-  bgrs jdField_a_of_type_Bgrs;
-  QQVoiceChangerThread jdField_a_of_type_ComTencentMobileqqVoicechangeQQVoiceChangerThread;
-  boolean jdField_a_of_type_Boolean;
+  public abstract void a();
 }
 
 

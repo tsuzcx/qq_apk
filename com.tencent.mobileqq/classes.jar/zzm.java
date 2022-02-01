@@ -1,20 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class zzm
-  extends BroadcastReceiver
+final class zzm
+  implements View.OnClickListener
 {
-  zzm(zzf paramzzf) {}
+  zzm(zzq paramzzq, String paramString, bkzi parambkzi) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction()))
-    {
-      zzf.a(this.a, paramIntent);
-      zzf.d(this.a);
-      zzf.c(this.a);
-    }
+    this.jdField_a_of_type_Zzq.a(false, this.jdField_a_of_type_JavaLangString, true);
+    this.jdField_a_of_type_Bkzi.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

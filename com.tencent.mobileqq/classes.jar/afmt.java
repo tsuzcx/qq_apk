@@ -1,12 +1,21 @@
-import android.graphics.Path;
-import java.util.List;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.2.1;
+import cooperation.qwallet.plugin.FakeUrl.FakeInfo;
+import cooperation.qwallet.plugin.FakeUrl.FakeListener;
 
 public class afmt
+  implements FakeUrl.FakeListener
 {
-  public int a;
-  public Path a;
-  public List<afmn> a;
-  public boolean a;
+  public afmt(QQNotifySettingBaseFragment.2.1 param1) {}
+  
+  public boolean onBlHandleFakeurl(FakeUrl.FakeInfo paramFakeInfo, int paramInt)
+  {
+    return false;
+  }
+  
+  public boolean onClickUrl(String paramString)
+  {
+    return false;
+  }
 }
 
 

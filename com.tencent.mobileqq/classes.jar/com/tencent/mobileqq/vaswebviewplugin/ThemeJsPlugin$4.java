@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import bgoc;
+import bhym;
 
 class ThemeJsPlugin$4
-  implements bgoc
+  implements bhym
 {
   ThemeJsPlugin$4(ThemeJsPlugin paramThemeJsPlugin, String paramString1, String paramString2, boolean paramBoolean, String paramString3) {}
   

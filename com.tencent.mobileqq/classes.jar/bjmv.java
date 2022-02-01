@@ -1,175 +1,20 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.activity.home.MainFragment;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.LebaPluginInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
 
-public class bjmv
+final class bjmv
+  implements DialogInterface.OnClickListener
 {
-  private static int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 0: 
-      return 2;
-    case 1: 
-      return 3;
-    case 2: 
-      return 1;
-    case 3: 
-      return 6;
-    }
-    return 7;
-  }
+  bjmv(Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 7220) {}
-    try
-    {
-      a(paramQQAppInterface, "0X80098E4", "" + paramLong, "", "", "");
-      return;
-    }
-    catch (Throwable paramQQAppInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, aqmf paramaqmf, int paramInt1, int paramInt2)
-  {
-    try
-    {
-      if (paramaqmf.a.strPkgName.equals("com.android.ReadInJoy")) {
-        a(paramQQAppInterface, "0X80098E6", "" + a(paramInt1), "" + paramInt2, "", "");
-      }
-      return;
-    }
-    catch (Throwable paramQQAppInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, MainFragment paramMainFragment, amrz paramamrz, int paramInt)
-  {
-    try
-    {
-      if ((((paramamrz instanceof ReadinjoyTabFrame)) || (paramInt == MainFragment.h)) && ((ReadinjoyTabFrame)paramMainFragment.a(ReadinjoyTabFrame.class) != null) && (paramInt == MainFragment.h) && (paramMainFragment.getActivity().getIntent().getIntExtra("launch_from", 5) == 6)) {
-        a(paramQQAppInterface, "0X80098E2", "", "", "", "");
-      }
-      return;
-    }
-    catch (Throwable paramQQAppInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
-  {
-    try
-    {
-      if (((paramBaseActivity instanceof ReadInJoyNewFeedsActivity)) && (paramBaseActivity.getIntent().getIntExtra("launch_from", 5) == 6)) {
-        a(paramQQAppInterface, "0X80098E2", "", "", "", "");
-      }
-      return;
-    }
-    catch (Throwable paramQQAppInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
-  {
-    try
-    {
-      if ((paramMessageRecord.istroop == 7220) || ((paramMessageRecord.istroop == 1008) && (AppConstants.NEW_KANDIAN_UIN.equals(paramMessageRecord.frienduin))))
-      {
-        a(paramQQAppInterface, "0X80098E5", "" + paramMessageRecord.msgUid, "", "", "");
-        return;
-      }
-      if (paramMessageRecord.istroop == 10007)
-      {
-        atyf.a(paramQQAppInterface, paramMessageRecord.frienduin, 10006, 1);
-        return;
-      }
-    }
-    catch (Throwable paramQQAppInterface)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
-      }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser)
-  {
-    if (paramRecentUser != null) {}
-    try
-    {
-      if (paramRecentUser.getType() == 7220) {
-        a(paramQQAppInterface, "0X80098E3", "", "", "", "");
-      }
-      return;
-    }
-    catch (Throwable paramQQAppInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser, RecentBaseData paramRecentBaseData)
-  {
-    if (paramRecentUser != null) {
-      try
-      {
-        if (paramRecentUser.getType() == 1008)
-        {
-          if (!"2173223560".equals(paramRecentBaseData.getRecentUserUin())) {
-            break label145;
-          }
-          a(paramQQAppInterface, "0X80098E0", "" + paramRecentBaseData.mUnreadFlag, "" + paramRecentBaseData.mUnreadNum, "", "");
-        }
-        while (paramRecentUser.getType() == 7220)
-        {
-          a(paramQQAppInterface, "0X80098DF", "" + paramRecentBaseData.mUnreadFlag, "" + paramRecentBaseData.mUnreadNum, "", "");
-          return;
-          label145:
-          if (AppConstants.KANDIAN_DAILY_UIN.equals(paramRecentBaseData.getRecentUserUin())) {
-            a(paramQQAppInterface, "0X80098F2", "" + paramRecentBaseData.mUnreadFlag, "" + paramRecentBaseData.mUnreadNum, "", "");
-          }
-        }
-        return;
-      }
-      catch (Throwable paramQQAppInterface)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
-        }
-      }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
-  {
-    bcef.b(paramQQAppInterface, "dc00898", "", "", paramString1, paramString1, 0, 0, paramString2, paramString3, paramString4, paramString5);
+    bjmu.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
+    bdla.b(null, "dc00898", "", "", "0X8008F7C", "0X8008F7C", 0, 0, "", "", "", "");
+    paramDialogInterface = this.jdField_a_of_type_AndroidOsBundle.getString(bjmy.f) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bjmy.c) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bjmy.d);
+    paramDialogInterface = System.currentTimeMillis() / 1000L + "|" + 101 + "|" + paramDialogInterface;
+    bjhn.a().a(25, paramDialogInterface);
   }
 }
 

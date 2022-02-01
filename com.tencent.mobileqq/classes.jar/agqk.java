@@ -1,30 +1,48 @@
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder.9.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import androidx.annotation.NonNull;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
 public class agqk
-  extends fy
 {
-  agqk(agqd paramagqd) {}
+  public URL a;
+  public boolean a;
+  public boolean b;
   
-  public void a(ChatMessage paramChatMessage, int paramInt) {}
-  
-  public void a(ChatMessage paramChatMessage, boolean paramBoolean, int paramInt)
+  public agqk(MessageForPic paramMessageForPic)
   {
-    if ((!paramBoolean) && (paramChatMessage != null))
+    paramMessageForPic.checkType();
+    if (((paramMessageForPic.imageType == 3) || (paramMessageForPic.imageType == 2000)) && (agqg.h))
     {
-      paramChatMessage.saveExtInfoToExtStr("font_animation_played", "1");
-      ThreadManager.excute(new TextItemBuilder.9.1(this, paramChatMessage), 128, null, true);
+      this.jdField_a_of_type_Boolean = true;
+      URL localURL = URLDrawableHelper.getURL(paramMessageForPic, 1, null);
+      if (AbsDownloader.getFile(localURL.toString()) != null)
+      {
+        this.jdField_a_of_type_JavaNetURL = localURL;
+        this.b = true;
+        if (QLog.isColorLevel()) {
+          QLog.d("PicItemBuilder", 2, "getThumbDrawable,using GIF_BIG,uniseq:" + paramMessageForPic.uniseq + " url:" + this.jdField_a_of_type_JavaNetURL);
+        }
+      }
     }
-    String str = this.a.a.getCurrentUin();
-    if (paramBoolean) {}
-    for (paramChatMessage = "1";; paramChatMessage = "0")
+    if (this.jdField_a_of_type_JavaNetURL == null)
     {
-      VasWebviewUtil.reportCommercialDrainage(str, "Font_Mall", "0X800813C", "0", 0, 1, 1, null, paramChatMessage, "" + paramInt);
-      return;
+      this.jdField_a_of_type_JavaNetURL = URLDrawableHelper.getURL(paramMessageForPic, 65537, null);
+      if (QLog.isColorLevel()) {
+        QLog.d("PicItemBuilder", 2, "getThumbDrawable,using thumb,uniseq:" + paramMessageForPic.uniseq + " url:" + this.jdField_a_of_type_JavaNetURL);
+      }
     }
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    if (this.jdField_a_of_type_JavaNetURL != null) {
+      return this.jdField_a_of_type_JavaNetURL.toString();
+    }
+    return super.toString();
   }
 }
 

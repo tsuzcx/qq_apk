@@ -1,37 +1,24 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.data.GiftServiceBean;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.view.GiftPackageGialog.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.List;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.json.JSONObject;
 
 public class tyb
-  implements tyh
+  extends txt
 {
-  tyb(txz paramtxz) {}
-  
-  public void a(GiftServiceBean paramGiftServiceBean)
+  tyb(txq paramtxq1, Activity paramActivity, txq paramtxq2, JSONObject paramJSONObject)
   {
-    String str = txz.b(this.a).getText().toString();
-    if ((!TextUtils.isEmpty(paramGiftServiceBean.t)) && (!str.equals(paramGiftServiceBean.t)))
-    {
-      txz.b(this.a, paramGiftServiceBean);
-      txz.b(this.a).setText(paramGiftServiceBean.t);
-      if (txz.a(this.a)) {
-        txz.c(this.a, null);
-      }
-      txz.c(this.a).setText("");
-      if (txz.c(this.a) != null) {
-        txz.c(this.a).clear();
-      }
-      txz.a(this.a);
-      ThreadManager.executeOnNetWorkThread(new GiftPackageGialog.2.1(this));
-    }
+    super(paramtxq1, paramActivity, paramtxq2, paramJSONObject);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
+  {
+    txq.a(this.a).mShareHelper.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tyb
  * JD-Core Version:    0.7.0.1
  */

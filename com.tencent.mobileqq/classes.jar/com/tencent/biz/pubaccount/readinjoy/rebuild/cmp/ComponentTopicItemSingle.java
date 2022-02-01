@@ -9,29 +9,29 @@ import android.view.View;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bkwm;
+import bmhv;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import pai;
-import pvc;
-import qpi;
-import qps;
-import qtr;
-import qxd;
-import qxe;
-import rga;
-import rgc;
+import pjr;
+import qfw;
+import rbn;
+import rbx;
+import rfw;
+import rjj;
+import rjk;
+import rsh;
+import rsj;
 
 public class ComponentTopicItemSingle
   extends RelativeLayout
-  implements qpi
+  implements rbn
 {
   TextView jdField_a_of_type_AndroidWidgetTextView;
   KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
-  public qtr a;
+  public rfw a;
   TextView b;
   
   public ComponentTopicItemSingle(Context paramContext)
@@ -54,14 +54,14 @@ public class ComponentTopicItemSingle
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_Qtr = new qtr();
+    this.jdField_a_of_type_Rfw = new rfw();
     a(paramContext);
     a();
   }
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131560146, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131560193, this, true);
   }
   
   public void a() {}
@@ -73,17 +73,17 @@ public class ComponentTopicItemSingle
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131365187));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378707));
-    this.b = ((TextView)findViewById(2131365420));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131365278));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379001));
+    this.b = ((TextView)findViewById(2131365513));
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof pvc))
+    if ((paramObject instanceof qfw))
     {
-      paramObject = (pvc)paramObject;
-      this.jdField_a_of_type_Qtr.a(paramObject);
+      paramObject = (qfw)paramObject;
+      this.jdField_a_of_type_Rfw.a(paramObject);
       b();
       paramObject = paramObject.a();
       if ((paramObject != null) && (paramObject.mTopicRecommendFeedsInfo != null) && (paramObject.mTopicRecommendFeedsInfo.a != null) && (paramObject.mTopicRecommendFeedsInfo.a.size() != 0)) {}
@@ -92,17 +92,17 @@ public class ComponentTopicItemSingle
     {
       return;
     }
-    paramObject = (rgc)paramObject.mTopicRecommendFeedsInfo.a.get(0);
+    paramObject = (rsj)paramObject.mTopicRecommendFeedsInfo.a.get(0);
     try
     {
       Object localObject = new URL(paramObject.d);
-      pai.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, (URL)localObject, getContext());
+      pjr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, (URL)localObject, getContext());
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramObject.c + paramObject.a);
-      localObject = String.format(getResources().getString(2131717542), new Object[] { bkwm.a(paramObject.jdField_b_of_type_Int) });
+      localObject = String.format(getResources().getString(2131717908), new Object[] { bmhv.a(paramObject.jdField_b_of_type_Int) });
       this.b.setText((CharSequence)localObject);
       if (!TextUtils.isEmpty(paramObject.jdField_b_of_type_JavaLangString))
       {
-        setOnClickListener(new qxd(this, paramObject));
+        setOnClickListener(new rjj(this, paramObject));
         return;
       }
     }
@@ -110,14 +110,14 @@ public class ComponentTopicItemSingle
     {
       for (;;)
       {
-        pai.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, null, getContext());
+        pjr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, null, getContext());
         localMalformedURLException.printStackTrace();
       }
-      setOnClickListener(new qxe(this));
+      setOnClickListener(new rjk(this));
     }
   }
   
-  public void a(qps paramqps) {}
+  public void a(rbx paramrbx) {}
   
   public void b()
   {

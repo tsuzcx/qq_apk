@@ -1,25 +1,53 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function0;
-import org.jetbrains.annotations.Nullable;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/SlidingUpDialog$sliding$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class rqb
-  implements Animator.AnimatorListener
+  implements Parcelable.Creator<RecommendFollowInfo>
 {
-  rqb(Function0 paramFunction0) {}
-  
-  public void onAnimationCancel(@Nullable Animator paramAnimator) {}
-  
-  public void onAnimationEnd(@Nullable Animator paramAnimator)
+  public RecommendFollowInfo a(Parcel paramParcel)
   {
-    this.a.invoke();
+    boolean bool2 = true;
+    RecommendFollowInfo localRecommendFollowInfo = new RecommendFollowInfo();
+    localRecommendFollowInfo.uin = paramParcel.readLong();
+    localRecommendFollowInfo.type = paramParcel.readInt();
+    localRecommendFollowInfo.recommendReason = paramParcel.readString();
+    localRecommendFollowInfo.nickName = paramParcel.readString();
+    localRecommendFollowInfo.headUrl = paramParcel.readString();
+    if (paramParcel.readInt() == 1)
+    {
+      bool1 = true;
+      localRecommendFollowInfo.isVip = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label139;
+      }
+      bool1 = true;
+      label82:
+      localRecommendFollowInfo.isStar = bool1;
+      localRecommendFollowInfo.algorithmId = paramParcel.readLong();
+      localRecommendFollowInfo.strategyId = paramParcel.readInt();
+      if (paramParcel.readInt() != 1) {
+        break label144;
+      }
+    }
+    label139:
+    label144:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localRecommendFollowInfo.isFollowed = bool1;
+      localRecommendFollowInfo.className = paramParcel.readString();
+      return localRecommendFollowInfo;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label82;
+    }
   }
   
-  public void onAnimationRepeat(@Nullable Animator paramAnimator) {}
-  
-  public void onAnimationStart(@Nullable Animator paramAnimator) {}
+  public RecommendFollowInfo[] a(int paramInt)
+  {
+    return new RecommendFollowInfo[paramInt];
+  }
 }
 
 

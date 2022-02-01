@@ -1,53 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
-import com.tencent.weiyun.transmission.utils.ErrorCodeUtil;
-import com.tencent.weiyun.utils.NetworkUtils;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.TCWDatePicker.SavedState;
 
 public final class blfq
+  implements Parcelable.Creator<TCWDatePicker.SavedState>
 {
-  public static String a(int paramInt, String paramString)
+  public TCWDatePicker.SavedState a(Parcel paramParcel)
   {
-    String str = paramString;
-    if (paramInt != 0)
-    {
-      str = paramString;
-      if (TextUtils.isEmpty(paramString))
-      {
-        str = ErrorCodeUtil.getErrorMsg(paramInt);
-        paramString = str;
-        if (TextUtils.isEmpty(str)) {
-          if (!ErrorCodeUtil.isHttpError(paramInt)) {
-            break label101;
-          }
-        }
-      }
-    }
-    label101:
-    for (paramString = ErrorCodeUtil.getErrorMsg(1810023);; paramString = ErrorCodeUtil.getErrorMsg(1810014))
-    {
-      str = paramString;
-      if (1810008 == paramInt) {
-        str = paramString + "\n请尝试下载到其他路径";
-      }
-      str = "(" + paramInt + ")" + str;
-      return str;
-    }
+    return new TCWDatePicker.SavedState(paramParcel, null);
   }
   
-  public static String a(String paramString)
+  public TCWDatePicker.SavedState[] a(int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return paramString;
-    }
-    paramString = new StringBuilder(paramString);
-    int i = NetworkUtils.getNetworkType(WeiyunTransmissionGlobal.getInstance().getContext());
-    paramString.append("&nettype=").append(i);
-    return paramString.toString();
-  }
-  
-  static boolean a(int paramInt)
-  {
-    return (-29150 == paramInt) || (-29151 == paramInt) || (-29152 == paramInt);
+    return new TCWDatePicker.SavedState[paramInt];
   }
 }
 

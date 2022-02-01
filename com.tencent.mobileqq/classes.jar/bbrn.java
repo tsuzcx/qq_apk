@@ -1,61 +1,27 @@
-public class bbrn
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richmediabrowser.model.AIOPictureData;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
+
+class bbrn
+  implements DialogInterface.OnClickListener
 {
-  private String jdField_a_of_type_JavaLangString;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  bbrn(bbrl parambbrl, int paramInt, Object paramObject) {}
   
-  bbrn(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int a()
-  {
-    if ((this.jdField_a_of_type_JavaLangString == null) || ("".equals(this.jdField_a_of_type_JavaLangString))) {
-      return -3;
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      BrowserLogHelper.getInstance().getGalleryLog().d("AIOPictureView", 4, "showSaveFileTips type = " + this.jdField_a_of_type_Int);
     }
-    this.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_JavaLangString.split("\\_");
-    if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_ArrayOfJavaLangString.length < 2) {
-      return -2;
-    }
-    return 0;
-  }
-  
-  int a(char paramChar)
-  {
-    if ((this.jdField_a_of_type_JavaLangString == null) || ("".equals(this.jdField_a_of_type_JavaLangString))) {
-      return -3;
-    }
-    this.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_JavaLangString.split("\\" + paramChar);
-    if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_ArrayOfJavaLangString.length < 2) {
-      return -2;
-    }
-    return 0;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString[0].trim();
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString[1].trim();
-  }
-  
-  String c()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString[0].trim();
-  }
-  
-  String d()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString[1].trim();
+    do
+    {
+      return;
+    } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOPictureData));
+    bbrl.a(this.jdField_a_of_type_Bbrl).a((AIOPictureData)this.jdField_a_of_type_JavaLangObject);
+    this.jdField_a_of_type_Bbrl.updateUI();
   }
 }
 

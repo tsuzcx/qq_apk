@@ -1,9 +1,15 @@
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.open.appstore.js.DownloadInterfaceNew.2;
+import com.tencent.smtt.sdk.ValueCallback;
 
-public abstract interface bjkc
+public class bjkc
+  implements ValueCallback<String>
 {
-  public abstract void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject);
+  public bjkc(DownloadInterfaceNew.2 param2) {}
+  
+  public void a(String paramString)
+  {
+    bjko.b("DownloadInterfaceNew", "[jsCallBack]:" + paramString);
+  }
 }
 
 

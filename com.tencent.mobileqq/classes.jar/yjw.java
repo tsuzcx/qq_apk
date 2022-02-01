@@ -1,155 +1,244 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.app.Dialog;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.text.TextPaint;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity;
-import com.tribe.async.async.JobContext;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.VideoView;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import java.io.File;
-import java.io.IOException;
 
 public class yjw
-  extends yju<yjh, yjh>
+  extends ReportDialog
 {
-  private final String a;
+  private int jdField_a_of_type_Int = -1;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private Button jdField_a_of_type_AndroidWidgetButton;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private VideoView jdField_a_of_type_AndroidWidgetVideoView;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener;
+  private Button jdField_b_of_type_AndroidWidgetButton;
+  private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  private View.OnClickListener jdField_c_of_type_AndroidViewView$OnClickListener;
+  private String jdField_c_of_type_JavaLangString;
+  private String d;
+  private String e;
   
-  public yjw()
+  public yjw(Context paramContext, int paramInt)
   {
-    this(null);
+    super(paramContext, paramInt);
   }
   
-  public yjw(String paramString)
+  private void a()
+  {
+    if (!TextUtils.isEmpty(this.e))
+    {
+      this.jdField_a_of_type_AndroidWidgetVideoView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetVideoView.setVideoPath(this.e);
+      this.jdField_a_of_type_AndroidWidgetVideoView.setZOrderOnTop(true);
+      this.jdField_a_of_type_AndroidWidgetVideoView.start();
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetVideoView.setVisibility(8);
+  }
+  
+  private void b()
+  {
+    if ((this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      Object localObject = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "story_rename_guide";
+      ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
+      ((URLDrawable.URLDrawableOptions)localObject).mGifRoundCorner = UIUtils.dip2px(getContext(), 3.0F);
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = UIUtils.dip2px(getContext(), 155.0F);
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = UIUtils.dip2px(getContext(), 307.0F);
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = URLDrawableHelper.TRANSPARENT;
+      if (this.jdField_b_of_type_Boolean)
+      {
+        localObject = URLDrawable.getDrawable(new File(this.jdField_a_of_type_JavaLangString), (URLDrawable.URLDrawableOptions)localObject);
+        if (((URLDrawable)localObject).getStatus() != 1) {
+          ((URLDrawable)localObject).restartDownload();
+        }
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+        return;
+      }
+      localObject = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
+      if (((URLDrawable)localObject).getStatus() != 1) {
+        ((URLDrawable)localObject).restartDownload();
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      return;
+    }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      UIUtils.setImageWithAnim(this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_JavaLangString, UIUtils.dip2px(getContext(), 307.0F), UIUtils.dip2px(getContext(), 155.0F), new yei(UIUtils.dip2px(getContext(), 4.0F), 0, 0.504886F, null, null));
+      return;
+    }
+    if (this.jdField_a_of_type_Int != -1)
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(this.jdField_a_of_type_Int);
+      return;
+    }
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+  }
+  
+  public yjw a(View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    return this;
+  }
+  
+  public yjw a(String paramString)
+  {
+    this.e = paramString;
+    return this;
+  }
+  
+  public yjw a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    return this;
+  }
+  
+  public yjw b(View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    return this;
+  }
+  
+  public yjw b(String paramString)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
   }
   
-  protected void a(JobContext paramJobContext, yjh paramyjh)
+  public yjw b(boolean paramBoolean)
   {
-    paramJobContext = null;
-    int i = 0;
-    Object localObject3 = paramyjh.jdField_a_of_type_JavaLangString;
-    if (TextUtils.isEmpty((CharSequence)localObject3))
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    return this;
+  }
+  
+  public yjw c(View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_c_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    return this;
+  }
+  
+  public yjw c(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public yjw d(String paramString)
+  {
+    this.jdField_c_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public void dismiss()
+  {
+    if ((this.jdField_a_of_type_AndroidWidgetVideoView != null) && (this.jdField_a_of_type_AndroidWidgetVideoView.isPlaying())) {
+      this.jdField_a_of_type_AndroidWidgetVideoView.stopPlayback();
+    }
+    super.dismiss();
+  }
+  
+  public yjw e(String paramString)
+  {
+    this.d = paramString;
+    return this;
+  }
+  
+  protected void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    setContentView(2131561691);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131374628));
+    this.jdField_a_of_type_AndroidWidgetVideoView = ((VideoView)findViewById(2131381089));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374629));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374627));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374626));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131374631));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131374632));
+    a();
+    b();
+    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
     {
-      super.notifyError(new ErrorMessage(-1, "should generate video thumb first !"));
-      return;
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      if (!TextUtils.isEmpty(this.d)) {
+        break label256;
+      }
+      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+      label148:
+      if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+        break label314;
+      }
+      this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
     }
-    Object localObject2 = this.jdField_a_of_type_JavaLangString;
-    Object localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = yjx.a(paramyjh.jdField_a_of_type_Int, paramyjh.b, ".jpg");
-    }
-    String str2 = paramyjh.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodleRawPath;
-    String str1 = paramyjh.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath;
-    if ((str2 != null) || (str1 != null))
-    {
-      try
-      {
-        localObject3 = BitmapFactory.decodeFile((String)localObject3);
-        if (localObject3 != null) {
-          break label184;
-        }
-        super.notifyError(new ErrorMessage(-1, amtj.a(2131705678)));
-        return;
-      }
-      catch (OutOfMemoryError paramJobContext)
-      {
-        xvv.e("Q.qqstory.publish.edit.MergeThumbSegment", "merge doodle and thumb image failed : " + paramJobContext);
-      }
-      if (i == 0) {
-        break label466;
-      }
-      ypi.a(new File(paramyjh.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath), new File(QQStoryTakeVideoCloseAnimationActivity.jdField_a_of_type_JavaLangString));
-      super.notifyResult(paramyjh);
-      return;
-      label184:
-      if (str2 == null) {
-        break label484;
-      }
-      try
-      {
-        localObject2 = yoy.a(str2, null);
-        paramJobContext = (JobContext)localObject2;
-        xvv.d("Q.qqstory.publish.edit.MergeThumbSegment", "unSerializeBitmapFromFile success %s", new Object[] { str2 });
-        paramJobContext = (JobContext)localObject2;
-      }
-      catch (IOException localIOException)
-      {
-        for (;;)
-        {
-          try
-          {
-            label219:
-            localObject2 = BitmapFactory.decodeFile(str1);
-            paramJobContext = (JobContext)localObject2;
-            if (paramJobContext == null) {
-              break label501;
-            }
-            localObject2 = yoy.b((Bitmap)localObject3, paramJobContext);
-            paramJobContext.recycle();
-            ((Bitmap)localObject3).recycle();
-            paramJobContext = (JobContext)localObject2;
-          }
-          catch (OutOfMemoryError localOutOfMemoryError)
-          {
-            xvv.c("Q.qqstory.publish.edit.MergeThumbSegment", "decode " + str1 + " failed", localOutOfMemoryError);
-            break label498;
-          }
-          localIOException = localIOException;
-          xvv.c("Q.qqstory.publish.edit.MergeThumbSegment", "unSerializeBitmapFromFile failed", localIOException);
-        }
-      }
-      if ((paramJobContext != null) || (str1 == null)) {
-        break label498;
-      }
-    }
-    label238:
-    label495:
-    label498:
-    label501:
-    label505:
     for (;;)
     {
-      ypi.a(vkm.e);
-      boolean bool = yoy.a(paramJobContext, (String)localObject1);
-      if (paramJobContext != null) {
-        paramJobContext.recycle();
+      if (this.jdField_c_of_type_AndroidViewView$OnClickListener == null) {
+        break label372;
       }
-      if (bool)
-      {
-        paramyjh.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = ((String)localObject1);
-        xvv.b("Q.qqstory.publish.edit.MergeThumbSegment", "merge doodle and thumb image success : " + (String)localObject1);
-        i = 1;
-      }
-      else
-      {
-        xvv.d("Q.qqstory.publish.edit.MergeThumbSegment", "merge doodle and thumb image failed");
-        i = 0;
-        break label495;
-        xvv.a("Q.qqstory.publish.edit.MergeThumbSegment", "use thumb image as merged image, copy to target destination = %s", localObject1);
-        if (ypi.a(new File((String)localObject3), new File((String)localObject1)))
-        {
-          paramyjh.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = ((String)localObject1);
-          i = 1;
-          break;
-        }
-        xvv.d("Q.qqstory.publish.edit.MergeThumbSegment", "copy failed, original = %s, target = %s", new Object[] { localObject3, localObject1 });
-        break;
-        super.notifyError(new ErrorMessage(-1, amtj.a(2131705677)));
-        return;
-        paramJobContext = null;
-        break label219;
+      this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_c_of_type_AndroidViewView$OnClickListener);
+      return;
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      if (this.jdField_a_of_type_AndroidWidgetTextView.getPaint().measureText(this.jdField_b_of_type_JavaLangString) > UIUtils.dip2px(getContext(), 280.0F)) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setGravity(3);
       }
       for (;;)
       {
-        if (paramJobContext != null) {
-          break label505;
-        }
-        i = 0;
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
         break;
-        break label238;
-        paramJobContext = (JobContext)localObject3;
+        this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
+      }
+      label256:
+      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(this.d);
+      if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null)
+      {
+        this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+        break label148;
+      }
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new yjx(this));
+      break label148;
+      label314:
+      this.jdField_b_of_type_AndroidWidgetButton.setVisibility(0);
+      this.jdField_b_of_type_AndroidWidgetButton.setTag(this.jdField_c_of_type_JavaLangString);
+      if (this.jdField_b_of_type_AndroidViewView$OnClickListener != null) {
+        this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
+      } else {
+        this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new yjy(this));
       }
     }
+    label372:
+    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new yjz(this));
   }
 }
 

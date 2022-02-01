@@ -1,16 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQSettingMe;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class aeas
-  extends axkt
+  implements AdapterView.OnItemClickListener
 {
-  public aeas(QQSettingMe paramQQSettingMe) {}
+  public aeas(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.a.c) {
-      this.a.b(true);
-    }
+    this.a.b();
   }
 }
 

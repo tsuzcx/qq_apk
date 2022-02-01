@@ -10,7 +10,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bbub;
+import bdaw;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLDrawableDownListener;
@@ -23,7 +23,7 @@ import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Arrays;
-import ypi;
+import zeb;
 
 public class ImageViewVideoPlayer
   extends LinearLayout
@@ -86,7 +86,7 @@ public class ImageViewVideoPlayer
       {
         this.mVideoDrawable = ((VideoDrawable)this.mUrlDrawable.getCurrDrawable());
         boolean bool2 = this.mVideoDrawable.isAudioPlaying();
-        if ((!bbub.d(bbub.c)) && (!bbub.a(bbub.d))) {
+        if ((!bdaw.d(bdaw.c)) && (!bdaw.a(bdaw.d))) {
           break label141;
         }
         bool1 = true;
@@ -191,7 +191,7 @@ public class ImageViewVideoPlayer
       if (localFile.endsWith(".af")) {
         this.mAFile = (str + localFile);
       }
-      if ((localFile.endsWith(".vf")) && (ypi.a(str + localFile) > 0L)) {
+      if ((localFile.endsWith(".vf")) && (zeb.a(str + localFile) > 0L)) {
         this.mVFile = (str + localFile);
       }
       i += 1;
@@ -203,7 +203,7 @@ public class ImageViewVideoPlayer
       return -2;
     }
     this.mNeedPlayAudio = false;
-    if (ypi.a(this.mAFile) > 0L)
+    if (zeb.a(this.mAFile) > 0L)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ImageViewVideoPlayer", 2, "getVFileAndAFile(), mNeedPlayAudio = " + this.mNeedPlayAudio);
@@ -464,7 +464,7 @@ public class ImageViewVideoPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer
  * JD-Core Version:    0.7.0.1
  */

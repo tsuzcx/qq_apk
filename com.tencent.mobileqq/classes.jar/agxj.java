@@ -1,16 +1,17 @@
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class agxj
-  implements ahbo
+  extends ahaa
 {
-  agxj(agxg paramagxg) {}
-  
-  public void a()
+  agxj(agvm paramagvm)
   {
-    if (agxg.a(this.a).receiptMode) {
-      agxg.a(this.a).switchReceiptMode();
-    }
-    agxg.a(this.a).b(agxg.a(this.a).hashCode());
+    super(paramagvm, null);
+  }
+  
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new agpy(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

@@ -1,83 +1,70 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_feeds_like.FeedsLikeRsp;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
+import android.view.accessibility.AccessibilityEvent;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
 
-final class axfa
-  implements awrb
+public class axfa
+  extends AccessibilityDelegateCompat
 {
-  axfa(axfe paramaxfe) {}
+  public axfa(MultiAIOBaseViewPager paramMultiAIOBaseViewPager) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  private boolean a()
   {
-    bool3 = true;
-    boolean bool2 = true;
-    int j = 0;
-    int k = 0;
-    i = 0;
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      paramBundle = new oidb_0xada.RspBody();
-    }
-    for (;;)
+    return (this.a.a != null) && (this.a.a.getCount() > 1);
+  }
+  
+  public void onInitializeAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
+  {
+    super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
+    paramAccessibilityEvent.setClassName(MultiAIOBaseViewPager.class.getName());
+    paramAccessibilityEvent.setScrollable(a());
+    if ((paramAccessibilityEvent.getEventType() == 4096) && (this.a.a != null))
     {
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (paramBundle.busi_buf.has())
-        {
-          paramArrayOfByte = new ilive_feeds_like.FeedsLikeRsp();
-          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-          if (paramArrayOfByte.ret.has())
-          {
-            paramInt = paramArrayOfByte.ret.get();
-            if (paramInt == 0) {
-              i = k;
-            }
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        bool1 = false;
-        paramInt = j;
-      }
-      try
-      {
-        j = paramArrayOfByte.total.get();
-        paramInt = j;
-        bool1 = bool2;
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          i = j;
-          QLog.i("NearbyMomentProtocol", 2, "like success, total:   " + j);
-          bool1 = bool2;
-          paramInt = j;
-        }
-        if (this.a != null) {
-          this.a.a(bool1, paramInt);
-        }
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        for (;;)
-        {
-          paramInt = i;
-          bool1 = bool3;
-        }
-      }
-      QLog.i("NearbyMomentProtocol", 1, "like error, ret=" + paramArrayOfByte.ret.get() + ",err_msg=" + paramBundle.err_msg.get());
-      bool1 = false;
-      paramInt = i;
-      continue;
-      paramArrayOfByte.printStackTrace();
+      paramAccessibilityEvent.setItemCount(this.a.a.getCount());
+      paramAccessibilityEvent.setFromIndex(this.a.b);
+      paramAccessibilityEvent.setToIndex(this.a.b);
     }
+  }
+  
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  {
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    paramAccessibilityNodeInfoCompat.setClassName(MultiAIOBaseViewPager.class.getName());
+    paramAccessibilityNodeInfoCompat.setScrollable(a());
+    if (this.a.canScrollHorizontally(1)) {
+      paramAccessibilityNodeInfoCompat.addAction(4096);
+    }
+    if (this.a.canScrollHorizontally(-1)) {
+      paramAccessibilityNodeInfoCompat.addAction(8192);
+    }
+  }
+  
+  public boolean performAccessibilityAction(View paramView, int paramInt, Bundle paramBundle)
+  {
+    if (super.performAccessibilityAction(paramView, paramInt, paramBundle)) {
+      return true;
+    }
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    case 4096: 
+      if (this.a.canScrollHorizontally(1))
+      {
+        this.a.setCurrentItem(this.a.b + 1);
+        return true;
+      }
+      return false;
+    }
+    if (this.a.canScrollHorizontally(-1))
+    {
+      this.a.setCurrentItem(this.a.b - 1);
+      return true;
+    }
+    return false;
   }
 }
 

@@ -1,48 +1,36 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.open.agent.AuthorityAccountView;
-import com.tencent.open.agent.CardContainer;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
+import com.tencent.vas.update.callback.ICmdManager;
+import com.tencent.vas.update.callback.listener.ICmdListener;
+import java.lang.ref.WeakReference;
 
 public class bhur
-  extends Handler
+  implements ICmdManager
 {
-  public bhur(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity, Looper paramLooper)
+  private ICmdListener jdField_a_of_type_ComTencentVasUpdateCallbackListenerICmdListener;
+  WeakReference<VasExtensionHandler> jdField_a_of_type_JavaLangRefWeakReference;
+  
+  public ICmdListener a()
   {
-    super(paramLooper);
+    return this.jdField_a_of_type_ComTencentVasUpdateCallbackListenerICmdListener;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(WeakReference<VasExtensionHandler> paramWeakReference)
   {
-    switch (paramMessage.what)
+    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
+  }
+  
+  public boolean sendPbRequest(String paramString1, String paramString2, ICmdListener paramICmdListener)
+  {
+    this.jdField_a_of_type_ComTencentVasUpdateCallbackListenerICmdListener = paramICmdListener;
+    paramICmdListener = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (paramICmdListener != null)
     {
+      paramICmdListener = (VasExtensionHandler)paramICmdListener.get();
+      if (paramICmdListener != null) {
+        return paramICmdListener.a(paramString1, paramString2);
+      }
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            paramMessage = (Bitmap)paramMessage.obj;
-          } while (paramMessage == null);
-          this.a.a.a("", "", paramMessage, true);
-          return;
-          paramMessage = (Bitmap)paramMessage.obj;
-        } while (paramMessage == null);
-        this.a.a.a("", paramMessage);
-        return;
-        paramMessage = (String)paramMessage.obj;
-      } while (TextUtils.isEmpty(paramMessage));
-      this.a.a.setAppType(paramMessage);
-      return;
-    } while (this.a.a.a == null);
-    this.a.a.a.d();
+    return false;
   }
 }
 

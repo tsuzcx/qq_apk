@@ -49,7 +49,7 @@ public class AESmoothPrev3
     }
     if (this.mCopyFilter != null)
     {
-      this.mCopyFilter.ClearGLSL();
+      this.mCopyFilter.clearGLSL();
       this.mCopyFilter = null;
     }
     Frame[] arrayOfFrame = this.mBeforeDenoiseFrame;

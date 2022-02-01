@@ -1,67 +1,74 @@
-import com.tencent.mobileqq.data.IntimateInfo;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.liveroom.LiveRoomHelper;
+import cooperation.liveroom.LiveRoomProxyActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class avzw
+  extends WebViewPlugin
 {
-  public int a;
-  private long a;
-  public IntimateInfo a;
-  public String a;
-  
-  public avzw(IntimateInfo paramIntimateInfo)
+  public avzw()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo = paramIntimateInfo;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo != null) {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.isFriend) {
-        break label44;
+    this.mPluginNameSpace = "gflivesdk";
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ("openView".equals(paramString3)) {
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("LiveRoomBusinessPlugin", 2, "openView");
+        }
+        paramString1 = new JSONObject(paramVarArgs[0]);
+        paramString2 = paramString1.optString("viewType");
+        paramJsBridgeListener = paramString1.optString("callback");
+        if ("activity".equals(paramString2))
+        {
+          paramString1 = paramString1.optString("url");
+          paramString2 = this.mRuntime.a();
+          if ((paramString2 != null) && (paramString1 != null) && (!paramString1.isEmpty()))
+          {
+            LiveRoomProxyActivity.open(paramString2, paramString1, "BusinessPlugin openView");
+            callJs(paramJsBridgeListener, new String[] { "{\"result\":0}" });
+          }
+        }
+        return true;
+      }
+      catch (JSONException paramJsBridgeListener)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("LiveRoomBusinessPlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
+        }
       }
     }
-    label44:
-    for (this.jdField_a_of_type_Int = 1;; this.jdField_a_of_type_Int = 0)
-    {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      return;
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo == null) {
-      return null;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.friendUin;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo == null) {}
-    int i;
-    do
+    for (;;)
     {
       return false;
-      i = this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.maskType;
-    } while ((i != 3) && (i != 2) && (i != 26) && (i != 1));
+      if ("checkSDKInstalled".equals(paramString3))
+      {
+        try
+        {
+          paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
+          if ((!LiveRoomHelper.getPluginInstalledInTool()) || (TextUtils.isEmpty(LiveRoomHelper.getPluginVersionInTool()))) {
+            break;
+          }
+          callJs(paramJsBridgeListener, new String[] { "{\"result\":0,\"version\":\"" + LiveRoomHelper.getPluginVersionInTool() + "\"}" });
+          return true;
+        }
+        catch (JSONException paramJsBridgeListener) {}
+        if (QLog.isColorLevel()) {
+          QLog.d("LiveRoomBusinessPlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
+        }
+      }
+    }
+    PluginManagerHelper.getPluginInterface(BaseApplicationImpl.getContext(), new avzx(this, paramJsBridgeListener));
     return true;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

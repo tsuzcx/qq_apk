@@ -1,39 +1,59 @@
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import UserGrowth.stSimpleMetaFeed;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class vse
-  extends vsv
+  extends vrx
 {
-  public static final String a;
-  public static final String b = vpl.a("StorySvc.like_feed");
-  protected vsj a;
-  private boolean a;
-  protected String c;
+  private String a;
   
-  static
+  public vse(voi paramvoi)
   {
-    jdField_a_of_type_JavaLangString = vpl.a("StorySvc.feed_like_list_715");
+    super(paramvoi);
   }
   
-  public vse(vsj paramvsj, boolean paramBoolean)
+  public List<vpj> a(ArrayList paramArrayList)
   {
-    this.jdField_a_of_type_Vsj = paramvsj;
-    this.c = this.jdField_a_of_type_Vsj.a.feedId;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if ((paramArrayList != null) && (paramArrayList.size() > 0))
+    {
+      if ((paramArrayList.get(0) instanceof stSimpleMetaFeed))
+      {
+        stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)paramArrayList.get(0);
+        localstSimpleMetaFeed.isLoop = true;
+        this.a = localstSimpleMetaFeed.id;
+      }
+      return WSVerticalDataManager.a().a(paramArrayList);
+    }
+    return Collections.emptyList();
   }
   
-  public static void a(CommentLikeFeedItem paramCommentLikeFeedItem, boolean paramBoolean, int paramInt1, int paramInt2)
+  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    vsx.a().a(new vsh(paramCommentLikeFeedItem.feedId, paramBoolean, paramInt1, paramInt2), new vsi());
+    super.a(paramViewHolder, paramInt);
+    vmp.d("WSVerticalForMiniAppPresenter", "WSVerticalForMiniAppPresenter onPageSelected: " + paramInt);
+    if ((paramViewHolder instanceof vrn))
+    {
+      paramViewHolder = (vrn)paramViewHolder;
+      com.tencent.biz.pubaccount.weishi_new.WSHomeFragment.a = 1;
+      paramViewHolder = new vbv(4, new Object[] { Integer.valueOf(paramInt), paramViewHolder.a });
+      wad.a().dispatch(paramViewHolder);
+    }
   }
   
-  public void a()
+  public void a(String paramString, vos paramvos, long paramLong)
   {
-    a(this.c, this.jdField_a_of_type_Boolean);
+    paramString = new vfr(new vkz(paramString), null, new vsf(this, paramLong, paramvos), 4002);
+    vfk.a().a(paramString);
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  public boolean a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    vsx.a().a(new vsf(this, paramString, paramBoolean), new vsg(this));
+    a(this.a, this, System.currentTimeMillis());
+    return true;
   }
 }
 

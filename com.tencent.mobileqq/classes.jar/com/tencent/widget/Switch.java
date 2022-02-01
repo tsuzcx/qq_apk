@@ -20,8 +20,8 @@ import android.view.VelocityTracker;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
 import android.widget.CompoundButton;
-import bjoo;
-import bjuo;
+import blaa;
+import blga;
 import com.tencent.mobileqq.R.styleable;
 
 public class Switch
@@ -44,7 +44,7 @@ public class Switch
   private int mSwitchPadding;
   private int mSwitchRight;
   private int mSwitchTop;
-  private bjuo mSwitchTransformationMethod;
+  private blga mSwitchTransformationMethod;
   private int mSwitchWidth;
   private final Rect mTempRect = new Rect();
   private ColorStateList mTextColors;
@@ -69,7 +69,7 @@ public class Switch
   
   public Switch(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2131035075);
+    this(paramContext, paramAttributeSet, 2131035080);
   }
   
   public Switch(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -77,7 +77,7 @@ public class Switch
     super(paramContext, paramAttributeSet, paramInt);
     Resources localResources = getResources();
     this.mTextPaint.density = localResources.getDisplayMetrics().density;
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.Switch, paramInt, 2131755962);
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.Switch, paramInt, 2131755966);
     this.mThumbDrawable = paramAttributeSet.getDrawable(5);
     this.mTrackDrawable = paramAttributeSet.getDrawable(7);
     this.mTextOn = paramAttributeSet.getText(4);
@@ -472,7 +472,7 @@ public class Switch
       if (!paramContext.getBoolean(0, false)) {
         break label129;
       }
-      this.mSwitchTransformationMethod = new bjoo(getContext());
+      this.mSwitchTransformationMethod = new blaa(getContext());
       this.mSwitchTransformationMethod.a(true);
     }
     for (;;)

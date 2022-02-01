@@ -1,16 +1,35 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.PopupWindow;
+import android.widget.PopupWindow.OnDismissListener;
 
-class awuv
-  implements View.OnClickListener
+public class awuv
+  extends PopupWindow
 {
-  awuv(awur paramawur) {}
+  private PopupWindow.OnDismissListener a;
   
-  public void onClick(View paramView)
+  public awuv(View paramView, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    this.a.b(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramView, paramInt1, paramInt2, paramBoolean);
+  }
+  
+  public void a()
+  {
+    super.dismiss();
+  }
+  
+  public void a(PopupWindow.OnDismissListener paramOnDismissListener)
+  {
+    this.a = paramOnDismissListener;
+  }
+  
+  public void dismiss()
+  {
+    if (this.a != null)
+    {
+      this.a.onDismiss();
+      return;
+    }
+    super.dismiss();
   }
 }
 

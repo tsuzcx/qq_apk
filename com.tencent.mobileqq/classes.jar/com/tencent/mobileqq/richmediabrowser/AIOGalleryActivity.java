@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.richmediabrowser;
 
 import Override;
-import ahap;
-import ahaq;
-import ahas;
+import aady;
+import ahtp;
+import ahtq;
+import ahts;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -17,19 +18,19 @@ import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.Window;
-import apoh;
-import baij;
-import bail;
-import baim;
-import bain;
-import baio;
-import baip;
-import bais;
-import baiv;
-import baiw;
-import bajl;
-import bhlx;
-import bmqh;
+import aqrl;
+import bboy;
+import bbpa;
+import bbpb;
+import bbpc;
+import bbpd;
+import bbpe;
+import bbph;
+import bbpk;
+import bbpl;
+import bbqa;
+import biwn;
+import bofz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.ApngImage;
@@ -42,47 +43,47 @@ import com.tencent.richmediabrowser.log.BrowserLogHelper;
 import com.tencent.richmediabrowser.log.IBrowserLog;
 import com.tencent.richmediabrowser.presenter.IProvider;
 import com.tencent.util.BinderWarpper;
+import com.tencent.widget.immersive.ImmersiveUtils;
 import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
-import lzb;
-import zon;
+import lzr;
 
 public class AIOGalleryActivity
   extends PeakActivity
 {
-  ahap jdField_a_of_type_Ahap;
-  ahas jdField_a_of_type_Ahas = new baio(this);
+  private aady jdField_a_of_type_Aady;
+  ahtp jdField_a_of_type_Ahtp;
+  ahts jdField_a_of_type_Ahts = new bbpd(this);
   BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-  private bail jdField_a_of_type_Bail;
-  private bajl jdField_a_of_type_Bajl;
+  private bbpa jdField_a_of_type_Bbpa;
+  private bbqa jdField_a_of_type_Bbqa;
   public String a;
-  private zon jdField_a_of_type_Zon;
   private volatile boolean jdField_a_of_type_Boolean;
   BroadcastReceiver b = null;
   
   private void a()
   {
-    if (this.jdField_a_of_type_Ahap == null)
+    if (this.jdField_a_of_type_Ahtp == null)
     {
       Object localObject = (BinderWarpper)getIntent().getParcelableExtra("extra.IMAGE_PROVIDER");
       if (localObject == null) {
         break label157;
       }
-      this.jdField_a_of_type_Ahap = ahaq.a(((BinderWarpper)localObject).a);
-      if ((this.jdField_a_of_type_Ahap != null) && (this.jdField_a_of_type_Bajl != null))
+      this.jdField_a_of_type_Ahtp = ahtq.a(((BinderWarpper)localObject).a);
+      if ((this.jdField_a_of_type_Ahtp != null) && (this.jdField_a_of_type_Bbqa != null))
       {
-        this.jdField_a_of_type_Ahap.a(this.jdField_a_of_type_Ahas);
-        this.jdField_a_of_type_Bajl.a(this.jdField_a_of_type_Ahap);
-        localObject = new baiv();
-        ((baiv)localObject).a(this.jdField_a_of_type_Ahap);
+        this.jdField_a_of_type_Ahtp.a(this.jdField_a_of_type_Ahts);
+        this.jdField_a_of_type_Bbqa.a(this.jdField_a_of_type_Ahtp);
+        localObject = new bbpk();
+        ((bbpk)localObject).a(this.jdField_a_of_type_Ahtp);
         RichMediaBrowserManager.getInstance().setProvider((IProvider)localObject);
-        if (!bais.a().e()) {
-          this.jdField_a_of_type_Ahap.a(bais.a().b());
+        if (!bbph.a().e()) {
+          this.jdField_a_of_type_Ahtp.a(bbph.a().b());
         }
       }
     }
     for (;;)
     {
-      BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryActivity", 4, "IAIOImageProvider is " + this.jdField_a_of_type_Ahap);
+      BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryActivity", 4, "IAIOImageProvider is " + this.jdField_a_of_type_Ahtp);
       return;
       label157:
       BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryActivity", 4, "binder is null!");
@@ -98,7 +99,7 @@ public class AIOGalleryActivity
   
   private void b()
   {
-    this.b = new bain(this);
+    this.b = new bbpc(this);
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("tencent.av.v2q.StartVideoChat");
     try
@@ -131,6 +132,11 @@ public class AIOGalleryActivity
     overridePendingTransition(0, 0);
   }
   
+  public void initNavigationBarColor()
+  {
+    ImmersiveUtils.a(getWindow(), -16777216);
+  }
+  
   public boolean isWrapContent()
   {
     return false;
@@ -138,12 +144,12 @@ public class AIOGalleryActivity
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_Bail.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_Bbpa.a(paramInt1, paramInt2, paramIntent);
   }
   
   public void onBackPressed()
   {
-    if (!this.jdField_a_of_type_Bail.a()) {
+    if (!this.jdField_a_of_type_Bbpa.a()) {
       super.onBackPressed();
     }
   }
@@ -151,7 +157,7 @@ public class AIOGalleryActivity
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    this.jdField_a_of_type_Bail.a(paramConfiguration);
+    this.jdField_a_of_type_Bbpa.a(paramConfiguration);
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
@@ -163,10 +169,10 @@ public class AIOGalleryActivity
     LiuHaiUtils.enableNotch(this);
     getWindow().setFlags(1024, 1024);
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Zon = zon.a();
-    this.jdField_a_of_type_Zon.a();
-    agxr.a = getResources().getDisplayMetrics().density;
-    ShortVideoUtils.loadShortVideoSo(bmqh.a());
+    this.jdField_a_of_type_Aady = aady.a();
+    this.jdField_a_of_type_Aady.a();
+    ahqs.a = getResources().getDisplayMetrics().density;
+    ShortVideoUtils.loadShortVideoSo(bofz.a());
     paramBundle = getIntent();
     Bundle localBundle = paramBundle.getExtras();
     if (localBundle != null) {
@@ -174,20 +180,20 @@ public class AIOGalleryActivity
     }
     try
     {
-      RichMediaBrowserManager.getInstance().setLogProxy(new baiw());
-      RichMediaBrowserManager.getInstance().setMvpFactory(new baim());
-      baij localbaij = new baij();
+      RichMediaBrowserManager.getInstance().setLogProxy(new bbpl());
+      RichMediaBrowserManager.getInstance().setMvpFactory(new bbpb());
+      bboy localbboy = new bboy();
       if (localBundle != null)
       {
         Rect localRect = (Rect)localBundle.getParcelable("KEY_THUMBNAL_BOUND");
-        bais.a().a(localRect);
-        localbaij.a = localRect;
+        bbph.a().a(localRect);
+        localbboy.a = localRect;
       }
-      RichMediaBrowserManager.getInstance().setAnimationListener(localbaij);
-      bais.a().a(paramBundle);
-      this.jdField_a_of_type_Bail = new bail(this);
-      new BrowserDirector().construct(this.jdField_a_of_type_Bail, paramBundle);
-      this.jdField_a_of_type_Bajl = this.jdField_a_of_type_Bail.a();
+      RichMediaBrowserManager.getInstance().setAnimationListener(localbboy);
+      bbph.a().a(paramBundle);
+      this.jdField_a_of_type_Bbpa = new bbpa(this);
+      new BrowserDirector().construct(this.jdField_a_of_type_Bbpa, paramBundle);
+      this.jdField_a_of_type_Bbqa = this.jdField_a_of_type_Bbpa.a();
       a(localBundle);
       return;
     }
@@ -202,17 +208,17 @@ public class AIOGalleryActivity
   {
     BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryActivity", 4, "onDestroy()");
     super.onDestroy();
-    if (this.jdField_a_of_type_Bail != null) {
-      this.jdField_a_of_type_Bail.e();
+    if (this.jdField_a_of_type_Bbpa != null) {
+      this.jdField_a_of_type_Bbpa.e();
     }
-    if (this.jdField_a_of_type_Ahap != null) {}
+    if (this.jdField_a_of_type_Ahtp != null) {}
     try
     {
       if ((!getIntent().getBooleanExtra("extra.IS_FROM_CHAT_FILE_HISTORY", false)) && (!getIntent().getBooleanExtra("extra.IS_STARTING_CHAT_FILE_HISTORY", false)))
       {
-        this.jdField_a_of_type_Ahap.c();
-        this.jdField_a_of_type_Ahap.a();
-        this.jdField_a_of_type_Ahas = null;
+        this.jdField_a_of_type_Ahtp.c();
+        this.jdField_a_of_type_Ahtp.a();
+        this.jdField_a_of_type_Ahts = null;
       }
       for (;;)
       {
@@ -221,9 +227,9 @@ public class AIOGalleryActivity
           unregisterReceiver(this.b);
           this.b = null;
         }
-        this.jdField_a_of_type_Zon.b();
+        this.jdField_a_of_type_Aady.b();
         return;
-        this.jdField_a_of_type_Ahap.c();
+        this.jdField_a_of_type_Ahtp.c();
       }
     }
     catch (Exception localException)
@@ -237,7 +243,7 @@ public class AIOGalleryActivity
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if (!this.jdField_a_of_type_Bail.a(paramInt, paramKeyEvent)) {
+    if (!this.jdField_a_of_type_Bbpa.a(paramInt, paramKeyEvent)) {
       return super.onKeyDown(paramInt, paramKeyEvent);
     }
     return true;
@@ -245,9 +251,9 @@ public class AIOGalleryActivity
   
   public void onPause()
   {
-    lzb.a(BaseApplicationImpl.getContext(), false);
-    bhlx.a(BaseApplicationImpl.getContext(), true, 52);
-    apoh.a(BaseApplicationImpl.getContext(), 2, true);
+    lzr.a(BaseApplicationImpl.getContext(), false);
+    biwn.a(BaseApplicationImpl.getContext(), true, 52);
+    aqrl.a(BaseApplicationImpl.getContext(), 2, true);
     AbstractGifImage.pauseAll();
     ApngImage.pauseAll();
     super.onPause();
@@ -255,7 +261,7 @@ public class AIOGalleryActivity
     try
     {
       unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_Bail.d();
+      this.jdField_a_of_type_Bbpa.d();
       return;
     }
     catch (Exception localException)
@@ -270,28 +276,28 @@ public class AIOGalleryActivity
   public void onResume()
   {
     super.onResume();
-    lzb.a(BaseApplicationImpl.getContext(), true);
-    bhlx.a(BaseApplicationImpl.getContext(), false, 52);
-    apoh.a(BaseApplicationImpl.getContext(), 2, false);
+    lzr.a(BaseApplicationImpl.getContext(), true);
+    biwn.a(BaseApplicationImpl.getContext(), false, 52);
+    aqrl.a(BaseApplicationImpl.getContext(), 2, false);
     com.tencent.image.AbstractGifImage.DoAccumulativeRunnable.DELAY = 0;
     AbstractGifImage.resumeAll();
     ApngImage.playByTag(0);
     if (Build.MODEL.equals("Coolpad 5930"))
     {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new baip(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new bbpe(this);
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
       localIntentFilter.addAction("android.intent.action.SCREEN_ON");
       localIntentFilter.addAction("android.intent.action.USER_PRESENT");
       registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
     }
-    this.jdField_a_of_type_Bail.c();
+    this.jdField_a_of_type_Bbpa.c();
   }
   
   public void onStart()
   {
     super.onStart();
-    this.jdField_a_of_type_Bail.b();
+    this.jdField_a_of_type_Bbpa.b();
   }
   
   public void onStop()
@@ -305,7 +311,7 @@ public class AIOGalleryActivity
   {
     super.onWindowFocusChanged(paramBoolean);
     if (paramBoolean) {
-      this.jdField_a_of_type_Bail.a();
+      this.jdField_a_of_type_Bbpa.a();
     }
   }
 }

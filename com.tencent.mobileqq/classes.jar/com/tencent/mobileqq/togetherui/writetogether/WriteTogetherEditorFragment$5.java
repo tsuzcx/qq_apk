@@ -13,7 +13,7 @@ class WriteTogetherEditorFragment$5
   {
     WriteTogetherEditorFragment.c(this.this$0, true);
     if (WriteTogetherEditorFragment.a(this.this$0).getVisibility() == 0) {
-      ((TextView)WriteTogetherEditorFragment.a(this.this$0).findViewById(2131381227)).setText(2131719716);
+      ((TextView)WriteTogetherEditorFragment.a(this.this$0).findViewById(2131381590)).setText(2131720169);
     }
     if (QLog.isColorLevel()) {
       QLog.d("WriteTogetherEditorFragment", 2, "[processOnCreateView#run] open timeout");

@@ -1,16 +1,11 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.richmedia.capture.view.QQSlidingTabView;
-
-public class bacx
-  implements ValueAnimator.AnimatorUpdateListener
+class bacx
+  implements aaoo
 {
-  public bacx(QQSlidingTabView paramQQSlidingTabView) {}
+  bacx(bacw parambacw) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a()
   {
-    QQSlidingTabView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    this.a.invalidate();
+    azyh.m(bacw.a(this.a), (azrb)bacw.a(this.a));
   }
 }
 

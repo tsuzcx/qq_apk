@@ -1,68 +1,32 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class anax
-  implements BusinessObserver
+class anax
+  implements View.OnClickListener
 {
-  protected void a() {}
+  anax(anat paramanat) {}
   
-  protected void a(boolean paramBoolean) {}
-  
-  protected void a(boolean paramBoolean, List<Long> paramList) {}
-  
-  protected void a(boolean paramBoolean, List<Long> paramList, int paramInt) {}
-  
-  protected void b(boolean paramBoolean, List<Long> paramList) {}
-  
-  protected void b(boolean paramBoolean, List<Long> paramList, int paramInt) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    int j = 0;
-    int i;
-    if (paramObject != null)
+    if ((anat.a(this.a).d()) || (anat.b(this.a)))
     {
-      ArrayList localArrayList = new ArrayList();
-      if ((paramObject instanceof long[])) {
-        paramObject = (long[])paramObject;
-      }
-      Object[] arrayOfObject;
-      for (i = 0;; i = ((Integer)arrayOfObject[1]).intValue())
-      {
-        int k = paramObject.length;
-        while (j < k)
-        {
-          localArrayList.add(Long.valueOf(paramObject[j]));
-          j += 1;
-        }
-        arrayOfObject = (Object[])paramObject;
-        paramObject = (long[])arrayOfObject[0];
-      }
-      paramObject = localArrayList;
+      anat.b(this.a, false);
+      anat.a(this.a).a();
+      anat.c(this.a).setVisibility(8);
+      anat.b(this.a).setVisibility(8);
     }
     for (;;)
     {
-      switch (paramInt)
-      {
-      default: 
-        return;
-      case 1: 
-        a(paramBoolean);
-        return;
-      case 2: 
-        a(paramBoolean, paramObject);
-        a(paramBoolean, paramObject, i);
-        return;
-      case 3: 
-        b(paramBoolean, paramObject);
-        b(paramBoolean, paramObject, i);
-        return;
-      }
-      a();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      paramObject = null;
-      i = 0;
+      if (anat.a(this.a).c())
+      {
+        anat.b(this.a, true);
+        anat.a(this.a).b();
+        anat.b(this.a).setVisibility(0);
+      }
     }
   }
 }

@@ -1,37 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.download_action.AdDownloadUtil.1;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.animation.TypeEvaluator;
+import android.graphics.Rect;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
 
 public class tqa
+  implements TypeEvaluator<Rect>
 {
-  public static void a(txh paramtxh, tqb paramtqb)
+  public tqa(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView) {}
+  
+  public int a(int paramInt1, int paramInt2, float paramFloat)
   {
-    if (paramtxh == null)
-    {
-      paramtqb.a(false);
-      return;
-    }
-    ThreadManager.getSubThreadHandler().post(new AdDownloadUtil.1(paramtxh, paramtqb));
+    return (int)(paramInt1 + (paramInt2 - paramInt1) * paramFloat);
   }
   
-  public static boolean a(String paramString)
+  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
   {
-    return obb.a(BaseApplicationImpl.getContext(), paramString);
-  }
-  
-  public static boolean a(txh paramtxh)
-  {
-    if ((paramtxh == null) || (TextUtils.isEmpty(paramtxh.d))) {
-      return false;
-    }
-    return a(paramtxh.d);
+    return new Rect(a(paramRect1.left, paramRect2.left, paramFloat), a(paramRect1.top, paramRect2.top, paramFloat), a(paramRect1.right, paramRect2.right, paramFloat), a(paramRect1.bottom, paramRect2.bottom, paramFloat));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tqa
  * JD-Core Version:    0.7.0.1
  */

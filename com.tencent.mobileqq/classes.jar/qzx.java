@@ -1,7 +1,13 @@
-import kotlin.Metadata;
+import com.tencent.pts.utils.PTSReportUtil.DefaultPTSReport;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJReadWatchWordModel$Companion;", "", "()V", "EXPIRED_OR_DELETED", "", "TAG", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qzx {}
+final class qzx
+  extends PTSReportUtil.DefaultPTSReport
+{
+  public void reportEvent(String paramString1, String paramString2, int paramInt)
+  {
+    rag.a("0X800B241", "", "", "", new rah().a("tag", paramString1).a("msg", paramString2).a("reportType", "" + paramInt).a());
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

@@ -1,35 +1,22 @@
-import android.util.Pair;
-import java.util.ArrayList;
-import java.util.Arrays;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bfsn
+  implements View.OnClickListener
 {
-  public static ArrayList<Pair<String, Long>> a(ArrayList<Pair<String, Long>> paramArrayList)
+  public bfsn(ReciteFragment paramReciteFragment) {}
+  
+  public void onClick(View paramView)
   {
-    Object[] arrayOfObject = new Object[paramArrayList.size()];
-    int i = 0;
-    Object localObject;
-    while (i < paramArrayList.size())
-    {
-      localObject = (Pair)paramArrayList.get(i);
-      arrayOfObject[i] = { (String)((Pair)localObject).first, String.valueOf(((Pair)localObject).second) };
-      i += 1;
-    }
-    Arrays.sort(arrayOfObject, new bfso());
-    paramArrayList.clear();
-    i = 0;
-    while (i < arrayOfObject.length)
-    {
-      localObject = (String[])arrayOfObject[i];
-      paramArrayList.add(Pair.create(localObject[0], Long.valueOf(Long.parseLong(localObject[1]))));
-      i += 1;
-    }
-    return paramArrayList;
+    this.a.m();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfsn
  * JD-Core Version:    0.7.0.1
  */

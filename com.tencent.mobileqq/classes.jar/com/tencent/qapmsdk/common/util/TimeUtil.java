@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 public final class TimeUtil
 {
   public static final TimeUtil.Companion Companion = new TimeUtil.Companion(null);
-  private static final String DEFAULT_DATE_FORMAT = "yyyyMMddHH";
+  private static final String DEFAULT_DATE_FORMAT = "yyyyMMddHHmm";
   private static final String DEFAULT_TIMESTAMP_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
   private static final String TAG = "QAPM_common_TimeUtil";
   
@@ -42,6 +42,13 @@ public final class TimeUtil
   public static final String getForwardHour(int paramInt)
   {
     return Companion.getForwardHour(paramInt);
+  }
+  
+  @JvmStatic
+  @NotNull
+  public static final String getForwardMinute(int paramInt)
+  {
+    return Companion.getForwardMinute(paramInt);
   }
   
   @JvmStatic

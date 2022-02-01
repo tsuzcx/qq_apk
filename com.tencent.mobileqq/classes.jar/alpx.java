@@ -1,76 +1,80 @@
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import com.tencent.mobileqq.activity.richmedia.FlowActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.ArrayList;
+import java.util.Collection;
 
-final class alpx
-  extends bgod
+public class alpx
+  extends alpv
+  implements ahqc
 {
-  alpx(String paramString1, File paramFile, AtomicInteger paramAtomicInteger1, int paramInt1, int paramInt2, AtomicInteger paramAtomicInteger2, AtomicInteger paramAtomicInteger3, alpy paramalpy, alpv paramalpv, String paramString2, List paramList) {}
+  int jdField_a_of_type_Int = -1;
+  private View jdField_a_of_type_AndroidViewView;
   
-  public void onDone(bgoe parambgoe)
+  public alpx(FlowActivity paramFlowActivity)
   {
-    boolean bool = true;
-    super.onDone(parambgoe);
-    if (QLog.isColorLevel()) {
-      QLog.d("rscContent_CmShowRscDownloader", 1, "download url:" + this.jdField_a_of_type_JavaLangString + " task.getStatus()->" + parambgoe.a());
-    }
-    if (3 == parambgoe.a()) {
-      if (!this.jdField_a_of_type_JavaIoFile.exists()) {}
-    }
-    do
+    super(paramFlowActivity);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+  }
+  
+  public void a(ViewGroup paramViewGroup)
+  {
+    PanelIconLinearLayout localPanelIconLinearLayout = new PanelIconLinearLayout(paramViewGroup.getContext(), null);
+    localPanelIconLinearLayout.setPanelIconListener(this);
+    int i = (int)(40.0F * paramViewGroup.getResources().getDisplayMetrics().density + 0.5F);
+    Object localObject = new RelativeLayout.LayoutParams(-1, -2);
+    ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131367062);
+    paramViewGroup.addView(localPanelIconLinearLayout, (ViewGroup.LayoutParams)localObject);
+    localPanelIconLinearLayout.setCustomHeight(i);
+    paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowActivity.getIntent().getExtras();
+    if ((paramViewGroup != null) && (paramViewGroup.containsKey("selected_item")))
     {
-      for (;;)
+      this.jdField_a_of_type_Int = paramViewGroup.getInt("selected_item");
+      if (paramViewGroup.containsKey("selected_data"))
       {
-        try
-        {
-          npo.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
-          this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-          if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != this.c.get()) {
-            break;
-          }
-          if (this.jdField_a_of_type_Alpy != null)
-          {
-            parambgoe = "";
-            if (this.jdField_a_of_type_Alpv != null) {
-              parambgoe = this.jdField_a_of_type_Alpv.c();
-            }
-            alpy localalpy = this.jdField_a_of_type_Alpy;
-            if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0) {
-              bool = false;
-            }
-            localalpy.a(bool, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, parambgoe);
-            if (QLog.isColorLevel()) {
-              QLog.d("rscContent_CmShowRscDownloader", 2, "downloadApolloRes download all done uin: " + this.jdField_b_of_type_JavaLangString + "all cnt: " + this.c.get() + ", err cnt: " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
-            }
-          }
-          return;
-        }
-        catch (Exception parambgoe)
-        {
-          this.jdField_a_of_type_JavaIoFile.delete();
-          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("rscContent_CmShowRscDownloader", 2, "unZipFile file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " error->" + parambgoe.getMessage());
-          continue;
-        }
-        catch (OutOfMemoryError parambgoe)
-        {
-          this.jdField_a_of_type_JavaIoFile.delete();
-          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("rscContent_CmShowRscDownloader", 2, "unZipFile file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " error->" + parambgoe.getMessage());
-          continue;
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-        QLog.d("rscContent_CmShowRscDownloader", 1, "download file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " task.getStatus()->" + parambgoe.a());
+        localObject = (ArrayList)paramViewGroup.getSerializable("selected_data");
+        localPanelIconLinearLayout.a.clear();
+        localPanelIconLinearLayout.a.addAll((Collection)localObject);
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("rscContent_CmShowRscDownloader", 2, "downloadApolloRes download uin:" + this.jdField_b_of_type_JavaLangString + ", cb cnt: " + this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", all cnt: " + this.c.get());
+      localPanelIconLinearLayout.b();
+      localPanelIconLinearLayout.setSelected(this.jdField_a_of_type_Int);
+      if (paramViewGroup.containsKey("flow_key_need_poke_red")) {
+        localPanelIconLinearLayout.setShowRed(23, paramViewGroup.getBoolean("flow_key_need_poke_red"));
+      }
+      this.jdField_a_of_type_AndroidViewView = localPanelIconLinearLayout;
+      return;
+    }
+    throw new RuntimeException("No pass args SELECTED_ITEM");
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+  }
+  
+  public void onPanelIconClick(Object paramObject)
+  {
+    Intent localIntent = ((FlowActivity)a()).getIntent();
+    if ((paramObject == null) || (!(paramObject instanceof Integer))) {
+      return;
+    }
+    int i = ((Integer)paramObject).intValue();
+    QLog.d("XPanel", 2, " FlowPlusPanel  onPanelIconClick  i==" + i + "panelType===" + this.jdField_a_of_type_Int);
+    localIntent.putExtra("click_item", i);
+    ((FlowActivity)a()).setResult(1000, localIntent);
+    ((FlowActivity)a()).finish();
   }
 }
 

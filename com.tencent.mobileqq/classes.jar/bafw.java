@@ -1,59 +1,15 @@
-import android.annotation.TargetApi;
-import android.opengl.EGL14;
-import android.opengl.EGLSurface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
 
-@TargetApi(17)
-public class bafw
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$ProfileBlankHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bafw
+  extends RecyclerView.ViewHolder
 {
-  private EGLSurface a;
-  protected bafv a;
-  
-  public bafw(bafv parambafv)
+  public bafw(@NotNull View paramView)
   {
-    this.jdField_a_of_type_AndroidOpenglEGLSurface = EGL14.EGL_NO_SURFACE;
-    this.jdField_a_of_type_Bafv = parambafv;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Bafv.a(this.jdField_a_of_type_AndroidOpenglEGLSurface);
-    this.jdField_a_of_type_AndroidOpenglEGLSurface = EGL14.EGL_NO_SURFACE;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_AndroidOpenglEGLSurface != EGL14.EGL_NO_SURFACE) {
-      throw new IllegalStateException("surface already created");
-    }
-    this.jdField_a_of_type_AndroidOpenglEGLSurface = this.jdField_a_of_type_Bafv.a(paramInt1, paramInt2);
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Bafv.a(this.jdField_a_of_type_AndroidOpenglEGLSurface, paramLong);
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (this.jdField_a_of_type_AndroidOpenglEGLSurface != EGL14.EGL_NO_SURFACE) {
-      throw new IllegalStateException("surface already created");
-    }
-    this.jdField_a_of_type_AndroidOpenglEGLSurface = this.jdField_a_of_type_Bafv.a(paramObject);
-  }
-  
-  public boolean a()
-  {
-    boolean bool = this.jdField_a_of_type_Bafv.a(this.jdField_a_of_type_AndroidOpenglEGLSurface);
-    if ((!bool) && (QLog.isColorLevel())) {
-      QLog.d("EglSurfaceBase", 2, "WARNING: swapBuffers() failed");
-    }
-    return bool;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Bafv.b(this.jdField_a_of_type_AndroidOpenglEGLSurface);
+    super(paramView);
   }
 }
 

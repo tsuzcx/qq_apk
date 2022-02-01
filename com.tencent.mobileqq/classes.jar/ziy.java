@@ -1,44 +1,14 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StPublishFeedReq;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StPublishFeedRsp;
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.qphone.base.util.QLog;
+import android.util.SparseArray;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView.BorderStyle;
 
-public class ziy
-  extends zja
+public final class ziy
+  extends SparseArray<RotateCircleImageView.BorderStyle>
 {
-  private CertifiedAccountWrite.StPublishFeedReq a = new CertifiedAccountWrite.StPublishFeedReq();
-  
-  public ziy(COMM.StCommonExt paramStCommonExt, CertifiedAccountMeta.StFeed paramStFeed)
+  public ziy(int paramInt)
   {
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
-    if (paramStFeed != null) {
-      this.a.feed.set(paramStFeed);
-    }
-  }
-  
-  public static CertifiedAccountWrite.StPublishFeedRsp a(byte[] paramArrayOfByte)
-  {
-    CertifiedAccountWrite.StPublishFeedRsp localStPublishFeedRsp = new CertifiedAccountWrite.StPublishFeedRsp();
-    try
-    {
-      paramArrayOfByte = (CertifiedAccountWrite.StPublishFeedRsp)localStPublishFeedRsp.mergeFrom(paramArrayOfByte);
-      return paramArrayOfByte;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CertifiedAccountGetMsgTopRequest", 2, "onResponse fail." + paramArrayOfByte);
-      }
-    }
-    return null;
-  }
-  
-  public byte[] a()
-  {
-    return this.a.toByteArray();
+    super(paramInt);
+    append(0, RotateCircleImageView.BorderStyle.STILL);
+    append(1, RotateCircleImageView.BorderStyle.ROTATE);
   }
 }
 

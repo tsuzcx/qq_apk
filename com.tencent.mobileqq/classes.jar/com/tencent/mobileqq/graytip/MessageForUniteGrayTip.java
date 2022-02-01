@@ -5,14 +5,15 @@ import android.graphics.drawable.Drawable.Callback;
 import android.support.annotation.NonNull;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import aubw;
-import aubx;
-import aubz;
-import aucf;
-import aucg;
-import bczs;
+import avhq;
+import avhr;
+import avht;
+import avhz;
+import avia;
+import begq;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForGrayTips;
@@ -42,11 +43,12 @@ public class MessageForUniteGrayTip
   public static final String KEY_UINT64_BUSI_ID = "uint64_busi_id";
   public static final String KEY_UINT64_BUSI_TYPE = "uint64_busi_type";
   public static final String KEY_UINT64_TEMPL_ID = "uint64_templ_id";
+  public static final String KEY_UINT64_TIPS_SEQ_ID = "uint64_tips_seq_id";
   private static final String TAG = "MessageForUniteGrayTip";
   public String appGuideTipsOpKey;
   public String caidanAnimUrl;
   public String caidanAnimUrlMd5;
-  public aubz callback;
+  public avht callback;
   public String contentDescription;
   public boolean dkTipHasReport;
   public boolean docTipHasReport;
@@ -54,13 +56,14 @@ public class MessageForUniteGrayTip
   public int editState;
   public long editTime;
   @notColumn
-  public aubx entity;
+  public avhr entity;
   public String extUin;
   public int hasRead;
   public String masterUin;
   public int subType;
   public String taskId;
-  public aucf tipParam;
+  public avhz tipParam;
+  public boolean troopLuckyCharacterTipsHasReport;
   public boolean troopMemberLevelTipHasReport;
   
   private void encode()
@@ -68,7 +71,7 @@ public class MessageForUniteGrayTip
     int j = 1;
     if (this.tipParam == null)
     {
-      QLog.e(aucg.jdField_a_of_type_JavaLangString, 1, "MessageForUniteGrayTip, encode failed, tipParam == null");
+      QLog.e(avia.jdField_a_of_type_JavaLangString, 1, "MessageForUniteGrayTip, encode failed, tipParam == null");
       return;
     }
     UniteGrayTip.UniteGrayTipMsg localUniteGrayTipMsg = new UniteGrayTip.UniteGrayTipMsg();
@@ -209,7 +212,7 @@ public class MessageForUniteGrayTip
   {
     if (this.msgData == null)
     {
-      QLog.e(aucg.jdField_a_of_type_JavaLangString, 1, "doParse failed for msgData == null");
+      QLog.e(avia.jdField_a_of_type_JavaLangString, 1, "doParse failed for msgData == null");
       return;
     }
     UniteGrayTip.UniteGrayTipMsg localUniteGrayTipMsg = new UniteGrayTip.UniteGrayTipMsg();
@@ -267,12 +270,12 @@ public class MessageForUniteGrayTip
             }
           }
         }
-        this.tipParam = new aucf(this.frienduin, this.senderuin, str1, this.istroop, this.msgtype, j, this.time);
+        this.tipParam = new avhz(this.frienduin, this.senderuin, str1, this.istroop, this.msgtype, j, this.time);
       }
       catch (Exception localException)
       {
         localException.printStackTrace();
-        QLog.e(aucg.jdField_a_of_type_JavaLangString, 1, "MessageForUniteGrayTip, doParese failed, " + localException.getMessage());
+        QLog.e(avia.jdField_a_of_type_JavaLangString, 1, "MessageForUniteGrayTip, doParese failed, " + localException.getMessage());
         return;
       }
       this.tipParam.jdField_d_of_type_JavaLangString = str2;
@@ -283,7 +286,7 @@ public class MessageForUniteGrayTip
       if (m == 1) {}
       for (boolean bool = true;; bool = false)
       {
-        ((aucf)localObject1).f = bool;
+        ((avhz)localObject1).f = bool;
         this.msg = str1;
         localObject1 = (UniteGrayTip.BusinessData)localUniteGrayTipMsg.business_data.get();
         if (localObject1 == null) {
@@ -330,7 +333,7 @@ public class MessageForUniteGrayTip
       localObject2 = new SpannableStringBuilder(this.msg);
       return localObject2;
     }
-    Collections.sort(this.tipParam.jdField_a_of_type_JavaUtilArrayList, new aubw(this));
+    Collections.sort(this.tipParam.jdField_a_of_type_JavaUtilArrayList, new avhq(this));
     StringBuilder localStringBuilder = new StringBuilder(256);
     localStringBuilder.append("revoke msg GrayTips -> msg=").append(this.msg);
     Object localObject3 = "";
@@ -342,7 +345,7 @@ public class MessageForUniteGrayTip
     }
     for (int k = 1;; k = 0)
     {
-      TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(52);
+      TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
       Iterator localIterator = this.tipParam.jdField_a_of_type_JavaUtilArrayList.iterator();
       if (localIterator.hasNext())
       {
@@ -350,15 +353,15 @@ public class MessageForUniteGrayTip
         int j = ((MessageForGrayTips.HighlightItem)localObject4).start - n;
         int i1 = ((MessageForGrayTips.HighlightItem)localObject4).end - n;
         int i;
-        label210:
-        label227:
+        label211:
+        label228:
         String str2;
         String str3;
         if (j > ((String)localObject1).length())
         {
           i = ((String)localObject1).length();
           if (i1 <= ((String)localObject1).length()) {
-            break label504;
+            break label505;
           }
           j = ((String)localObject1).length();
           localStringBuilder.append(" ;item.start=").append(((MessageForGrayTips.HighlightItem)localObject4).start).append(",end=").append(((MessageForGrayTips.HighlightItem)localObject4).end);
@@ -377,7 +380,7 @@ public class MessageForUniteGrayTip
           n = ((MessageForGrayTips.HighlightItem)localObject4).end;
           ((MessageForGrayTips.HighlightItem)localObject4).start = str2.length();
           if (!((MessageForGrayTips.HighlightItem)localObject4).needUpdateNick) {
-            break label519;
+            break label520;
           }
           localObject1 = str2 + localTroopManager.a(this.frienduin, new StringBuilder().append("").append(((MessageForGrayTips.HighlightItem)localObject4).uin).toString());
           m = 1;
@@ -391,18 +394,18 @@ public class MessageForUniteGrayTip
           break;
           i = j;
           if (j >= 0) {
-            break label210;
+            break label211;
           }
           i = 0;
-          break label210;
-          label504:
+          break label211;
+          label505:
           j = i1;
           if (i1 >= 0) {
-            break label227;
+            break label228;
           }
           j = 0;
-          break label227;
-          label519:
+          break label228;
+          label520:
           localObject1 = str2 + str3;
         }
       }
@@ -424,7 +427,7 @@ public class MessageForUniteGrayTip
       if (this.tipParam.jdField_b_of_type_Int == 2)
       {
         localObject1 = new SpannableStringBuilder(new QQText((CharSequence)localObject1, 3));
-        label667:
+        label668:
         localObject3 = this.tipParam.jdField_a_of_type_JavaUtilArrayList.iterator();
       }
       for (;;)
@@ -440,8 +443,8 @@ public class MessageForUniteGrayTip
           {
             ((SpannableStringBuilder)localObject1).setSpan(new MessageForGrayTips.HightlightClickableSpan(paramQQAppInterface, ((MessageForGrayTips.HighlightItem)localObject2).textColor, paramContext, (MessageForGrayTips.HighlightItem)localObject2, this), ((MessageForGrayTips.HighlightItem)localObject2).start, ((MessageForGrayTips.HighlightItem)localObject2).end, 33);
             continue;
-            localObject1 = new SpannableStringBuilder(new bczs((CharSequence)localObject1, 16));
-            break label667;
+            localObject1 = new SpannableStringBuilder(new begq((CharSequence)localObject1, 16));
+            break label668;
           }
           MessageForGrayTips.decodeImageSpan(paramContext, (SpannableStringBuilder)localObject1, (MessageForGrayTips.HighlightItem)localObject2, paramBoolean, paramCallback, this);
           if (((MessageForGrayTips.HighlightItem)localObject2).actionType == 1) {
@@ -462,26 +465,26 @@ public class MessageForUniteGrayTip
     return super.getSummaryMsg();
   }
   
-  public void initGrayTipMsg(QQAppInterface paramQQAppInterface, aucf paramaucf)
+  public void initGrayTipMsg(QQAppInterface paramQQAppInterface, avhz paramavhz)
   {
-    if ((paramaucf == null) || (!paramaucf.a()))
+    if ((paramavhz == null) || (!paramavhz.a()))
     {
       if (QLog.isColorLevel()) {
-        if (paramaucf != null) {
+        if (paramavhz != null) {
           break label53;
         }
       }
       label53:
-      for (paramQQAppInterface = "null tipParam";; paramQQAppInterface = "msgtype: " + paramaucf.jdField_c_of_type_Int + " id: " + paramaucf.jdField_b_of_type_Int)
+      for (paramQQAppInterface = "null tipParam";; paramQQAppInterface = "msgtype: " + paramavhz.jdField_c_of_type_Int + " id: " + paramavhz.jdField_b_of_type_Int)
       {
-        QLog.e(aucg.jdField_a_of_type_JavaLangString, 2, "revoke msg createGrayTipMsg failed, error: " + paramQQAppInterface);
+        QLog.e(avia.jdField_a_of_type_JavaLangString, 2, "revoke msg createGrayTipMsg failed, error: " + paramQQAppInterface);
         return;
       }
     }
-    init(paramQQAppInterface.getCurrentAccountUin(), paramaucf.jdField_a_of_type_JavaLangString, paramaucf.jdField_b_of_type_JavaLangString, paramaucf.jdField_c_of_type_JavaLangString, paramaucf.jdField_a_of_type_Long, paramaucf.jdField_c_of_type_Int, paramaucf.jdField_a_of_type_Int, paramaucf.jdField_a_of_type_Long);
+    init(paramQQAppInterface.getCurrentAccountUin(), paramavhz.jdField_a_of_type_JavaLangString, paramavhz.jdField_b_of_type_JavaLangString, paramavhz.jdField_c_of_type_JavaLangString, paramavhz.jdField_a_of_type_Long, paramavhz.jdField_c_of_type_Int, paramavhz.jdField_a_of_type_Int, paramavhz.jdField_a_of_type_Long);
     this.mIsParsed = true;
     this.isread = true;
-    this.tipParam = paramaucf;
+    this.tipParam = paramavhz;
     this.msgData = null;
   }
   
@@ -508,14 +511,14 @@ public class MessageForUniteGrayTip
     }
     catch (Exception localException)
     {
-      QLog.e(aucg.jdField_a_of_type_JavaLangString, 1, "MessageForUniteGrayTip, prewrite failed, " + localException.getMessage());
+      QLog.e(avia.jdField_a_of_type_JavaLangString, 1, "MessageForUniteGrayTip, prewrite failed, " + localException.getMessage());
     }
   }
   
   public void updateUniteGrayTipMsg(QQAppInterface paramQQAppInterface, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(aucg.jdField_a_of_type_JavaLangString, 2, "updateUniteGrayTipMsg");
+      QLog.d(avia.jdField_a_of_type_JavaLangString, 2, "updateUniteGrayTipMsg");
     }
     this.msg = paramString;
     if (this.tipParam != null)

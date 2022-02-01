@@ -1,33 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import io.flutter.plugin.common.BinaryMessenger;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodCodec;
 
-class aumq
-  extends BroadcastReceiver
+public class aumq
+  extends aumo
 {
-  aumq(aumo paramaumo) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public aumq(String paramString, BinaryMessenger paramBinaryMessenger)
   {
-    int i = paramIntent.getIntExtra("command_type", 0);
-    QLog.i("GroupVideoManager|Communicate", 2, "get message from plugin: " + paramIntent.getExtras());
-    switch (i)
-    {
-    case 4: 
-    default: 
-      return;
-    case 1: 
-      aumo.a(this.a, paramIntent, aumo.a(this.a));
-      return;
-    case 2: 
-      aumo.a(this.a, paramIntent, aumo.b(this.a));
-      return;
-    case 3: 
-      aumo.a(this.a, paramIntent);
-      return;
-    }
-    aumo.a(this.a);
+    super(paramString, paramBinaryMessenger);
+  }
+  
+  public MethodChannel.MethodCallHandler a()
+  {
+    return new aumr(this);
+  }
+  
+  public MethodCodec a()
+  {
+    return aums.a;
   }
 }
 

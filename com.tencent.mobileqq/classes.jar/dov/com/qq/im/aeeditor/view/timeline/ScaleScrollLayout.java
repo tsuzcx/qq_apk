@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
-import bmbx;
+import bnrh;
 import dov.com.qq.im.aeeditor.view.timebar.ScaleTimeBar;
 
 public class ScaleScrollLayout
@@ -50,7 +50,7 @@ public class ScaleScrollLayout
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    bmbx.a("MvCutFragment", paramMotionEvent.getAction() + "");
+    bnrh.a("MvCutFragment", paramMotionEvent.getAction() + "");
     this.jdField_a_of_type_AndroidGraphicsPoint = new Point((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY());
     if ((paramMotionEvent.getActionMasked() == 1) || (paramMotionEvent.getActionMasked() == 3)) {}
     for (boolean bool = true;; bool = false)

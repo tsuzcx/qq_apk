@@ -1,38 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.uidelegate.GoodsSoftAdAppDelegate.2.1;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.uidelegate.GoodsSoftAdAppDelegate.2.2;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.uidelegate.GoodsSoftAdAppDelegate.2.3;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.uidelegate.GoodsSoftAdAppDelegate.2.4;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class trb
-  implements tqo
+class trb
+  implements View.OnClickListener
 {
   trb(tqz paramtqz) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    ThreadManager.getUIHandler().post(new GoodsSoftAdAppDelegate.2.1(this));
-  }
-  
-  public void a(int paramInt)
-  {
-    ThreadManager.getUIHandler().post(new GoodsSoftAdAppDelegate.2.3(this, paramInt));
-  }
-  
-  public void a(txh paramtxh, int paramInt1, int paramInt2)
-  {
-    ThreadManager.getUIHandler().post(new GoodsSoftAdAppDelegate.2.4(this, paramInt1, paramInt2));
-  }
-  
-  public void b()
-  {
-    ThreadManager.getUIHandler().post(new GoodsSoftAdAppDelegate.2.2(this));
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     trb
  * JD-Core Version:    0.7.0.1
  */

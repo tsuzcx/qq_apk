@@ -1,11 +1,11 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bbuk;
-import bbup;
+import bdbf;
+import bdbk;
 import com.tencent.qphone.base.util.QLog;
 
 class AECameraManager$8$1
-  implements bbup
+  implements bdbk
 {
   AECameraManager$8$1(AECameraManager.8 param8) {}
   

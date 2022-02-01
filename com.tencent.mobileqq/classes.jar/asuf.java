@@ -1,15 +1,14 @@
-class asuf
-  implements aszj
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendHorizontalTagsView;
+
+public class asuf
 {
-  asuf(asud paramasud) {}
+  public int a;
+  public String a;
   
-  public void onNo() {}
-  
-  public void onYes()
+  public asuf(ExtendFriendHorizontalTagsView paramExtendFriendHorizontalTagsView, int paramInt, String paramString)
   {
-    if (asud.a(this.a) != null) {
-      asud.a(this.a);
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

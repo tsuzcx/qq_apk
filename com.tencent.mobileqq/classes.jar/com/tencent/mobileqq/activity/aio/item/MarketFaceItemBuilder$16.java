@@ -11,7 +11,7 @@ public final class MarketFaceItemBuilder$16
   
   public void run()
   {
-    QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131689607), 0).b(this.a.getResources().getDimensionPixelSize(2131299076));
+    QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131689607), 0).b(this.a.getResources().getDimensionPixelSize(2131299080));
   }
 }
 

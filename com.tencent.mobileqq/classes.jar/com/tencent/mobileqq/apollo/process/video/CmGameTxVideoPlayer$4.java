@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.apollo.process.video;
 
-import amaa;
+import anaq;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class CmGameTxVideoPlayer$4
   implements Runnable
 {
-  public CmGameTxVideoPlayer$4(amaa paramamaa) {}
+  public CmGameTxVideoPlayer$4(anaq paramanaq) {}
   
   public void run()
   {
-    if (amaa.a(this.this$0) != null)
+    if (anaq.a(this.this$0) != null)
     {
-      amaa.a(this.this$0).stop();
-      amaa.a(this.this$0).release();
-      amaa.a(this.this$0, null);
-      amaa.a(this.this$0, 6);
+      anaq.a(this.this$0).stop();
+      anaq.a(this.this$0).release();
+      anaq.a(this.this$0, null);
+      anaq.a(this.this$0, 6);
     }
   }
 }

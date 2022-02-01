@@ -1,43 +1,35 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment;
+import java.util.Arrays;
 
-public class bemk
-  implements bjoe
+class bemk
 {
-  public bemk(SearchReciteArticleFragment paramSearchReciteArticleFragment, bjnw parambjnw, bemo parambemo, int paramInt) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  int b;
   
-  public void OnClick(View paramView, int paramInt)
+  public bemk(int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_Bjnw.dismiss();
-    int i = paramInt;
-    if (this.jdField_a_of_type_Bemo.jdField_a_of_type_Int == 2) {
-      i = paramInt + 1;
-    }
-    switch (i)
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
     {
-    default: 
-      return;
-    case 0: 
-      SelectReciteParagraphFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bemo.c, SearchReciteArticleFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment));
-      bftc.a("Grp_edu", "Grp_recite", "Search_Content_Clk", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment.jdField_a_of_type_JavaLangString, "0", String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.jdField_a_of_type_Bemo.jdField_a_of_type_Int) });
-      return;
-    }
-    bftc.a("Grp_edu", "Grp_recite", "Search_Content_Clk", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment.jdField_a_of_type_JavaLangString, "1", String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.jdField_a_of_type_Bemo.jdField_a_of_type_Int) });
-    bftc.a("Grp_edu", "Grp_recite", "Clk_Success", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Bemo.jdField_a_of_type_Int) });
-    try
-    {
-      SearchReciteArticleFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment, benq.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bemo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bemo.c, null));
-      SearchReciteArticleFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment);
-      return;
-    }
-    catch (Exception paramView)
-    {
-      for (;;)
-      {
-        paramView.printStackTrace();
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
       }
-    }
+      paramObject = (bemk)paramObject;
+    } while ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.b == paramObject.b) && (bemq.a(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)));
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return Arrays.hashCode(new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_JavaLangString });
   }
 }
 

@@ -13,13 +13,13 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import vux;
-import vvj;
-import xny;
-import yos;
+import wjs;
+import wke;
+import yct;
+import zdl;
 
 public class GeneralRecommendFeedItem
-  extends VideoListFeedItem<xny, QQUserUIItem>
+  extends VideoListFeedItem<yct, QQUserUIItem>
 {
   public String blurb;
   public QQUserUIItem mUserUIItem = new QQUserUIItem();
@@ -40,7 +40,7 @@ public class GeneralRecommendFeedItem
     if (paramObject.mUserUIItem != null)
     {
       this.mUserUIItem = paramObject.mUserUIItem;
-      yos.a(this.mUserUIItem);
+      zdl.a(this.mUserUIItem);
     }
     if (paramObject.blurb != null) {
       this.blurb = paramObject.blurb;
@@ -79,8 +79,8 @@ public class GeneralRecommendFeedItem
       }
       paramString = new QQUserUIItem();
       paramString.convertFrom(paramGeneralFeed.user);
-      this.mUserUIItem = ((vvj)vux.a(2)).a(paramString);
-      yos.a(this.mUserUIItem);
+      this.mUserUIItem = ((wke)wjs.a(2)).a(paramString);
+      zdl.a(this.mUserUIItem);
       this.ownerId = this.mUserUIItem.getUnionId();
       return true;
       bool = false;
@@ -113,9 +113,9 @@ public class GeneralRecommendFeedItem
   }
   
   @NonNull
-  public xny generateHomeFeed()
+  public yct generateHomeFeed()
   {
-    return new xny(this);
+    return new yct(this);
   }
   
   public int getCommentLikeType()
@@ -143,7 +143,7 @@ public class GeneralRecommendFeedItem
   protected void onCovertFromEntry()
   {
     super.onCovertFromEntry();
-    this.mUserUIItem = ((vvj)vux.a(2)).a(this.ownerId);
+    this.mUserUIItem = ((wke)wjs.a(2)).a(this.ownerId);
   }
   
   public void readFromLocalByte(byte[] paramArrayOfByte)

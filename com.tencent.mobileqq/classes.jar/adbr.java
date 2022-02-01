@@ -1,14 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class adbr
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  adbr(adbq paramadbq) {}
+  adbr(adbo paramadbo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    this.a.jdField_a_of_type_Adad.d();
+    addh.a(this.a.jdField_a_of_type_Adaa, 4);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,47 +1,36 @@
-import java.util.List;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
 public class vji
+  extends vjd<WSRedDotPushMsg, WSPushStrategyInfo>
 {
-  public int a;
-  public String a;
-  public List<String> a;
-  public int b;
-  public String b;
-  public int c;
+  private int jdField_a_of_type_Int;
+  private Intent jdField_a_of_type_AndroidContentIntent;
   
-  public vji() {}
-  
-  public vji(vhw paramvhw)
+  public vji(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt, Intent paramIntent)
   {
-    this.jdField_a_of_type_Int = paramvhw.jdField_e_of_type_Int;
-    if (paramvhw.g > 0) {}
-    for (int i = paramvhw.g;; i = vjh.a(this.jdField_a_of_type_Int))
-    {
-      this.jdField_b_of_type_Int = i;
-      this.jdField_a_of_type_JavaLangString = paramvhw.jdField_e_of_type_JavaLangString;
-      this.jdField_b_of_type_JavaLangString = paramvhw.d;
-      this.c = paramvhw.f;
-      this.jdField_a_of_type_JavaUtilList = paramvhw.jdField_a_of_type_JavaUtilList;
-      return;
-    }
+    super(paramWSRedDotPushMsg);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
   }
   
-  public String toString()
+  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
   {
-    StringBuilder localStringBuilder1 = new StringBuilder("BaseSplitConfig =[");
-    localStringBuilder1.append(" type=").append(this.jdField_a_of_type_Int);
-    localStringBuilder1.append(" mTransId=").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder1.append(" mTextId=").append(this.c);
-    localStringBuilder1.append(" mAlbumMinPicCount=").append(this.jdField_b_of_type_Int);
-    localStringBuilder1.append(" mAlbumDesc=").append(this.jdField_a_of_type_JavaLangString);
-    StringBuilder localStringBuilder2 = localStringBuilder1.append(" mTransList=");
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (String str = "";; str = this.jdField_a_of_type_JavaUtilList.toString())
+    boolean bool = false;
+    if (this.jdField_a_of_type_Int == 2)
     {
-      localStringBuilder2.append(str);
-      localStringBuilder1.append("]");
-      return localStringBuilder1.toString();
+      WSVerticalPageFragment.a(paramContext, "aio_new_msg", "direct", null, 0);
+      bool = true;
     }
+    while (this.jdField_a_of_type_Int != 6) {
+      return bool;
+    }
+    uyt.a((Activity)paramContext, this.jdField_a_of_type_AndroidContentIntent, (WSRedDotPushMsg)this.jdField_a_of_type_Viu);
+    return true;
   }
 }
 

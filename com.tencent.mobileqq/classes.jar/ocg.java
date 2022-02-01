@@ -1,17 +1,15 @@
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.net.Uri;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.widget.Switch;
 
 class ocg
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  ocg(ocd paramocd, Context paramContext, Uri paramUri, String paramString1, String paramString2) {}
+  ocg(obm paramobm, oji paramoji, Switch paramSwitch) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Ocd.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Ocd.a(paramDialogInterface, true, this.b);
+    this.jdField_a_of_type_Obm.a(this.jdField_a_of_type_Oji, this.jdField_a_of_type_ComTencentWidgetSwitch);
   }
 }
 

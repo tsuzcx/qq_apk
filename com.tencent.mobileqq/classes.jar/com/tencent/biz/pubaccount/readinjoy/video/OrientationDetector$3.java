@@ -2,21 +2,21 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.view.OrientationEventListener;
 import com.tencent.qphone.base.util.QLog;
-import rsv;
+import sfk;
 
 public class OrientationDetector$3
   implements Runnable
 {
-  public OrientationDetector$3(rsv paramrsv, boolean paramBoolean1, boolean paramBoolean2) {}
+  public OrientationDetector$3(sfk paramsfk, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
-    synchronized (rsv.a(this.this$0))
+    synchronized (sfk.a(this.this$0))
     {
       if (QLog.isColorLevel()) {
-        QLog.d(rsv.a, 2, "run: innerEnable: enable=" + this.a + ", mEventListener=" + rsv.a(this.this$0));
+        QLog.d(sfk.a, 2, "run: innerEnable: enable=" + this.a + ", mEventListener=" + sfk.a(this.this$0));
       }
-      if (rsv.a(this.this$0) == null) {
+      if (sfk.a(this.this$0) == null) {
         return;
       }
     }
@@ -24,23 +24,23 @@ public class OrientationDetector$3
     {
       if (this.a)
       {
-        if (rsv.a(this.this$0).canDetectOrientation()) {
-          rsv.a(this.this$0).enable();
+        if (sfk.a(this.this$0).canDetectOrientation()) {
+          sfk.a(this.this$0).enable();
         }
         if (!this.b) {}
       }
     }
     catch (Throwable localThrowable)
     {
-      synchronized (rsv.a(this.this$0))
+      synchronized (sfk.a(this.this$0))
       {
         for (;;)
         {
-          rsv.a(this.this$0, null);
+          sfk.a(this.this$0, null);
           return;
           localObject3 = finally;
           throw localObject3;
-          rsv.a(this.this$0).disable();
+          sfk.a(this.this$0).disable();
         }
         localThrowable = localThrowable;
       }

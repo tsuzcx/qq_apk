@@ -1,67 +1,27 @@
 package com.tencent.mobileqq.mini.utils;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import bgyr;
+import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qqmini.sdk.launcher.shell.IActivityResultListener;
+import com.tencent.qqmini.sdk.launcher.shell.IActivityResultManager;
 
 final class TroopApplicationListUtil$5
-  extends Handler
+  implements IActivityResultListener
 {
-  TroopApplicationListUtil$5(Looper paramLooper, AsyncResult paramAsyncResult, String paramString1, String paramString2)
-  {
-    super(paramLooper);
-  }
+  TroopApplicationListUtil$5(IActivityResultManager paramIActivityResultManager, String paramString, AsyncResult paramAsyncResult) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if ((paramMessage.obj instanceof bgyr))
+    if ((paramInt1 == 1048576) && (paramInt2 == -1))
     {
-      paramMessage = (bgyr)paramMessage.obj;
-      if (paramMessage.c == 0)
-      {
-        try
-        {
-          if (paramMessage.d != null)
-          {
-            QLog.d("TroopApplicationListUtil", 1, new Object[] { "handleMessage cgiState.htmlBody: ", paramMessage.d });
-            int i = new JSONObject(paramMessage.d).optInt("ec", -1);
-            TroopApplicationListUtil.showToast(i);
-            paramMessage = new JSONObject();
-            if ((i == 0) || (i == 41012))
-            {
-              paramMessage.put("errorCode", i);
-              this.val$listener.onReceiveResult(true, paramMessage);
-            }
-            for (;;)
-            {
-              TroopApplicationListUtil.access$000(i, this.val$groupUin, this.val$appId);
-              return;
-              paramMessage.put("errorCode", i);
-              this.val$listener.onReceiveResult(false, paramMessage);
-            }
-          }
-          new JSONObject().put("errMsg", "htmlBody is null");
-        }
-        catch (JSONException paramMessage)
-        {
-          QLog.e("TroopApplicationListUtil", 1, "handleMessage addMiniAppToTroopApplicationList exception ", paramMessage);
-          this.val$listener.onReceiveResult(false, null);
-          return;
-        }
-        this.val$listener.onReceiveResult(false, null);
-        return;
-      }
-      QLog.e("TroopApplicationListUtil", 1, "handleMessage addMiniAppToTroopApplicationList ,resultCode : " + paramMessage.c);
-      this.val$listener.onReceiveResult(false, null);
-      return;
+      this.val$arm.removeActivityResultListener(this);
+      String str = paramIntent.getStringExtra("uin");
+      paramIntent = paramIntent.getStringExtra("uinname");
+      TroopApplicationListUtil.addMiniAppToTroopApplicationList(str, this.val$appId, null, this.val$result);
+      QLog.d("TroopApplicationListUtil", 1, "group uin: " + str + ", group name: " + paramIntent);
     }
-    QLog.e("TroopApplicationListUtil", 1, new Object[] { "handleMessage addMiniAppToTroopApplicationList ", " invalid msg.obj" });
-    this.val$listener.onReceiveResult(false, null);
+    return true;
   }
 }
 

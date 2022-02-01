@@ -1,60 +1,30 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import cooperation.qzone.util.QZLog;
-import java.util.Map;
+import android.database.DataSetObserver;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
+import com.tencent.biz.qqstory.view.EmptySupportViewPager;
+import com.tencent.biz.qqstory.view.PagerIndicator;
+import com.tencent.biz.qqstory.view.PagerIndicator.IndicatorAdapter;
 
 public class zfz
-  extends QQUIEventReceiver<zfs, zfo>
+  extends DataSetObserver
+  implements ViewPager.OnPageChangeListener
 {
-  public zfz(@NonNull zfs paramzfs)
+  private zfz(PagerIndicator paramPagerIndicator) {}
+  
+  public void onChanged()
   {
-    super(paramzfs);
+    Log.d("PagerIndicator", "onChanged");
+    this.a.a(this.a.a.getCurrentItem(), (PagerIndicator.IndicatorAdapter)this.a.a.getAdapter());
   }
   
-  public void a(@NonNull zfs paramzfs, @NonNull zfo paramzfo)
-  {
-    switch (paramzfo.jdField_a_of_type_Int)
-    {
-    case 4: 
-    case 5: 
-    default: 
-    case 1: 
-    case 2: 
-    case 3: 
-      CertifiedAccountMeta.StFeed localStFeed;
-      int i;
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            paramzfs.i();
-            return;
-            paramzfs.j();
-            return;
-            zfs.a(paramzfs, false);
-            zfs.a(paramzfs, null);
-            zfs.a(paramzfs, null);
-          } while (!(paramzfo.jdField_a_of_type_JavaLangObject instanceof Object[]));
-          paramzfo = (Object[])paramzfo.jdField_a_of_type_JavaLangObject;
-        } while ((paramzfo.length < 2) || (!(paramzfo[0] instanceof CertifiedAccountMeta.StFeed)) || (!(paramzfo[1] instanceof Integer)));
-        localStFeed = (CertifiedAccountMeta.StFeed)paramzfo[0];
-        i = ((Integer)paramzfo[1]).intValue();
-      } while (!paramzfs.a(localStFeed));
-      zfs.c(paramzfs).put(Integer.valueOf(i), localStFeed);
-      QZLog.i(this.TAG, 1, "EVENT_SET_COMMENT_DATA, position:" + i + ", cellId:" + localStFeed.id.get());
-      return;
-    }
-    zfs.a(paramzfs, (Object[])paramzfo.jdField_a_of_type_JavaLangObject);
-  }
+  public void onPageScrollStateChanged(int paramInt) {}
   
-  public Class acceptEventClass()
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    return zfo.class;
+    Log.d("PagerIndicator", "onPageSelected : " + paramInt);
+    this.a.a(this.a.a.getCurrentItem(), (PagerIndicator.IndicatorAdapter)this.a.a.getAdapter());
   }
 }
 

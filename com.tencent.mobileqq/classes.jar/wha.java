@@ -1,35 +1,50 @@
-class wha
-  implements whg
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFeedLikeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedLikeList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+
+public class wha
+  extends whu
 {
-  wha(wgz paramwgz) {}
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
   
-  public void a(wjk paramwjk)
+  public wha(wgz paramwgz, String paramString, boolean paramBoolean)
   {
-    if (wgz.a(this.a) != null) {
-      wgz.a(this.a).a(paramwjk.a);
-    }
-    if (wgz.a(this.a) != null) {
-      wgz.a(this.a).a();
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void b(wjk paramwjk)
+  public String a()
   {
-    if (wgz.a(this.a) != null) {
-      wgz.a(this.a).c(paramwjk.a);
-    }
-    if (wgz.a(this.a) != null) {
-      wgz.a(this.a).a();
-    }
+    return wgz.jdField_a_of_type_JavaLangString;
   }
   
-  public void c(wjk paramwjk)
+  public whv a(byte[] paramArrayOfByte)
   {
-    if (wgz.a(this.a) != null) {
-      wgz.a(this.a).d(paramwjk.a);
+    qqstory_service.RspFeedLikeList localRspFeedLikeList = new qqstory_service.RspFeedLikeList();
+    try
+    {
+      localRspFeedLikeList.mergeFrom(paramArrayOfByte);
+      return new whb(this.jdField_a_of_type_Wgz, localRspFeedLikeList, this.jdField_a_of_type_Boolean);
     }
-    if (wgz.a(this.a) != null) {
-      wgz.a(this.a).a();
+    catch (Exception paramArrayOfByte)
+    {
+      ykq.d("Q.qqstory:FeedLikeDataProvider", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqFeedLikeList localReqFeedLikeList = new qqstory_service.ReqFeedLikeList();
+    localReqFeedLikeList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 2;; i = 1)
+    {
+      localReqFeedLikeList.source.set(i);
+      return localReqFeedLikeList.toByteArray();
     }
   }
 }

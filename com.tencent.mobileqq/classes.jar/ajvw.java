@@ -1,22 +1,14 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
-import com.tencent.mobileqq.transfile.URLDrawableHelper.Adapter;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import java.util.Comparator;
 
 public class ajvw
-  extends URLDrawableHelper.Adapter
+  implements Comparator<ajvr>
 {
-  public ajvw(RedPacketEmojiFragment paramRedPacketEmojiFragment) {}
+  public ajvw(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public int a(ajvr paramajvr1, ajvr paramajvr2)
   {
-    super.onLoadFialed(paramURLDrawable, paramThrowable);
-    this.a.b();
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    super.onLoadSuccessed(paramURLDrawable);
-    this.a.d();
+    return paramajvr1.f.compareToIgnoreCase(paramajvr2.f);
   }
 }
 

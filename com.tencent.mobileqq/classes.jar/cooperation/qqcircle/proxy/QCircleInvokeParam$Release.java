@@ -6,6 +6,7 @@ public class QCircleInvokeParam$Release
   public static final int METHOD_RELEASE_IN_QCIRCLEPLUGINENTER = 3;
   public static final int METHOD_RELEASE_IN_QQAPPINTERFACE = 2;
   public static final int METHOD_RELEASE_IN_VSNETWORK_HELPER = 1;
+  public static final int METHOD_RELEASE_OPEN_REWARDAD = 4;
 }
 
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.emoticonview;
 
-import amtj;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.widget.EditText;
-import augf;
-import awhn;
-import bcef;
+import anvx;
+import avlz;
+import axnp;
+import bdla;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
@@ -57,7 +57,7 @@ public class HotPicSearchEmoticonInfo
     paramContext.mFailedDrawable = HotPicPageView.a;
     paramContext.mPlayGifImage = true;
     paramContext.mExtraInfo = this.mSearchItem;
-    URL localURL = augf.a(this.mSearchItem.url);
+    URL localURL = avlz.a(this.mSearchItem.url);
     if (localURL == null) {
       return null;
     }
@@ -69,12 +69,12 @@ public class HotPicSearchEmoticonInfo
     if (this.mPageType == 1)
     {
       if (!StringUtil.isEmpty(this.mSearchWord)) {
-        bcef.b(paramQQAppInterface, "dc00898", "", "", "0X800AE2E", "0X800AE2E", 0, 0, this.mReportPosition + "", "", this.mSearchItem.getEmoMd5(), "");
+        bdla.b(paramQQAppInterface, "dc00898", "", "", "0X800AE2E", "0X800AE2E", 0, 0, this.mReportPosition + "", "", this.mSearchItem.getEmoMd5(), "");
       }
       if (StringUtil.isEmpty(this.mSearchWord))
       {
         i = 1;
-        bcef.b(paramQQAppInterface, "dc00898", "", "", "0X800AE20", "0X800AE20", i, 0, this.mReportPosition + "", "", this.mSearchItem.getEmoMd5(), "");
+        bdla.b(paramQQAppInterface, "dc00898", "", "", "0X800AE20", "0X800AE20", i, 0, this.mReportPosition + "", "", this.mSearchItem.getEmoMd5(), "");
       }
     }
     while (this.mPageType != 2) {
@@ -84,7 +84,7 @@ public class HotPicSearchEmoticonInfo
         int i = 2;
       }
     }
-    bcef.b(paramQQAppInterface, "dc00898", "", "", "0X800AE36", "0X800AE36", 0, 0, this.mReportPosition + "", "", this.mSearchItem.getEmoMd5(), "");
+    bdla.b(paramQQAppInterface, "dc00898", "", "", "0X800AE36", "0X800AE36", 0, 0, this.mReportPosition + "", "", this.mSearchItem.getEmoMd5(), "");
   }
   
   public void send(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo)
@@ -99,16 +99,16 @@ public class HotPicSearchEmoticonInfo
     {
       return;
       lastTime = l;
-      if (((paramContext instanceof BaseActivity)) && (awhn.a(paramSessionInfo.curType, paramSessionInfo.curFriendUin)))
+      if (((paramContext instanceof BaseActivity)) && (axnp.a(paramSessionInfo.curType, paramSessionInfo.curFriendUin)))
       {
         paramContext = (BaseActivity)paramContext;
-        QQToast.a(paramQQAppInterface.getApp(), amtj.a(2131700455), 0).b(paramContext.getTitleBarHeight());
+        QQToast.a(paramQQAppInterface.getApp(), anvx.a(2131700806), 0).b(paramContext.getTitleBarHeight());
         return;
       }
     } while (!(paramContext instanceof BaseActivity));
     int j = 0;
     paramEditText = null;
-    Object localObject = augf.a(this.mSearchItem.originalUrl);
+    Object localObject = avlz.a(this.mSearchItem.originalUrl);
     int i;
     if ((localObject != null) && (FileUtils.fileExistsAndNotEmpty(((File)localObject).getAbsolutePath())))
     {
@@ -125,12 +125,12 @@ public class HotPicSearchEmoticonInfo
     }
     while ((paramEditText == null) && (paramSessionInfo.curType != 1008))
     {
-      QQToast.a(paramContext, 2131698294, 0).a();
+      QQToast.a(paramContext, 2131698586, 0).a();
       return;
       i = j;
       if (HotPicPageView.a(this.mSearchItem) == 0)
       {
-        localObject = augf.a(this.mSearchItem.url).getAbsolutePath();
+        localObject = avlz.a(this.mSearchItem.url).getAbsolutePath();
         paramEditText = (EditText)localObject;
         i = j;
         if (QLog.isColorLevel())
@@ -177,7 +177,7 @@ public class HotPicSearchEmoticonInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.HotPicSearchEmoticonInfo
  * JD-Core Version:    0.7.0.1
  */

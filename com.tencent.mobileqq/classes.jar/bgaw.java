@@ -1,19 +1,12 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.utils.confighandler.NormalConfigHandler.GetConfigListen;
-import com.tencent.mobileqq.utils.confighandler.QAVFunCallConfig;
-import com.tencent.mobileqq.utils.confighandler.QAVFunCallHandler;
-
-public class bgaw
-  implements NormalConfigHandler.GetConfigListen<QAVFunCallConfig>
+public abstract interface bgaw
 {
-  public bgaw(QAVFunCallHandler paramQAVFunCallHandler) {}
+  public abstract void a();
   
-  public void a(AppInterface paramAppInterface, QAVFunCallConfig paramQAVFunCallConfig)
-  {
-    this.a.setConfig(paramQAVFunCallConfig);
-    this.a.onGetConfig(paramAppInterface);
-    QAVFunCallHandler.access$000(this.a, "onGetConfig", paramAppInterface);
-  }
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

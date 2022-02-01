@@ -1,37 +1,37 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.ThemeCustomizeStrategy.1;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
+import com.tencent.mobileqq.widget.ParticipleView;
+import java.lang.ref.WeakReference;
 
-public class afao
-  implements afae
+public final class afao
+  extends FlingGestureHandler
 {
-  private PreloadManager jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private WeakReference<TextPreviewActivity> b;
   
-  public afao(QQAppInterface paramQQAppInterface)
+  private afao(TextPreviewActivity paramTextPreviewActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(151));
-    }
+    super(paramTextPreviewActivity);
+    this.b = new WeakReference(paramTextPreviewActivity);
   }
   
-  public void a() {}
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  public void flingLToR()
   {
-    if (paramRedPacketInfo == null) {
+    TextPreviewActivity localTextPreviewActivity = (TextPreviewActivity)this.b.get();
+    int i;
+    if (localTextPreviewActivity != null) {
+      if ((localTextPreviewActivity.a != null) && (localTextPreviewActivity.a.getVisibility() == 0)) {
+        i = 1;
+      }
+    }
+    for (;;)
+    {
+      if (i == 0) {
+        super.flingLToR();
+      }
       return;
-    }
-    ThreadManager.post(new CustomizeStrategyFactory.ThemeCustomizeStrategy.1(this, paramRedPacketInfo), 5, null, true);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, ahdi paramahdi)
-  {
-    if ((paramRedPacketInfo != null) && ((paramahdi instanceof ahdn))) {
-      paramRedPacketInfo.background = ((ahdn)paramahdi).b;
+      i = 0;
+      continue;
+      i = 0;
     }
   }
 }

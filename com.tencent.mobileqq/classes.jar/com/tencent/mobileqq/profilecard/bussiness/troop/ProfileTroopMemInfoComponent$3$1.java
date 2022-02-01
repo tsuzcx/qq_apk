@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.profilecard.bussiness.troop;
 
-import ayxi;
+import bacf;
 import com.tencent.mobileqq.app.BaseActivity;
 
 class ProfileTroopMemInfoComponent$3$1
@@ -10,11 +10,11 @@ class ProfileTroopMemInfoComponent$3$1
   
   public void run()
   {
-    if (ayxi.j(this.a.this$0) == null) {}
-    while ((!ayxi.k(this.a.this$0).isResume()) || (!this.a.this$0.a) || (ayxi.a(this.a.this$0) == null)) {
+    if (bacf.j(this.a.this$0) == null) {}
+    while ((!bacf.k(this.a.this$0).isResume()) || (!this.a.this$0.a) || (bacf.a(this.a.this$0) == null)) {
       return;
     }
-    ayxi.a(ayxi.a(this.a.this$0), this.a.a, this.a.this$0);
+    bacf.a(bacf.a(this.a.this$0), this.a.a, this.a.this$0);
   }
 }
 

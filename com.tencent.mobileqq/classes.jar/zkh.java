@@ -1,17 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
-final class zkh
-  implements View.OnClickListener
+public class zkh
+  implements DialogInterface.OnDismissListener
 {
-  zkh(zkl paramzkl, String paramString, bjnw parambjnw) {}
+  public zkh(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Zkl.a(false, this.jdField_a_of_type_JavaLangString, true);
-    this.jdField_a_of_type_Bjnw.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.h = false;
   }
 }
 

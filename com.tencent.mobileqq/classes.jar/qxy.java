@@ -1,40 +1,69 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTaskRemoteRepo$reportTaskCompleted$1", "Lcom/tencent/biz/ProtoUtils$TroopProtocolObserver;", "onError", "", "errorCode", "", "errorMsg", "", "bundle", "Landroid/os/Bundle;", "onResult", "", "data", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qxy
-  extends nmf
+public class qxy
 {
-  qxy(qxx paramqxx) {}
+  private static qxy jdField_a_of_type_Qxy;
+  private final List<qxz> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void a(int paramInt, @Nullable byte[] paramArrayOfByte, @Nullable Bundle paramBundle)
+  public static qxy a()
   {
-    QLog.i("RIJRewardTaskRemoteRepo", 1, "report task completed onResult() <-- errorCode: " + paramInt);
-    if ((paramInt == 0) && (paramArrayOfByte != null))
+    if (jdField_a_of_type_Qxy == null) {}
+    try
     {
-      paramArrayOfByte = this.a;
-      if (paramArrayOfByte != null) {
-        paramArrayOfByte.a();
+      if (jdField_a_of_type_Qxy == null) {
+        jdField_a_of_type_Qxy = new qxy();
       }
+      return jdField_a_of_type_Qxy;
     }
-    do
-    {
-      return;
-      paramArrayOfByte = this.a;
-    } while (paramArrayOfByte == null);
-    paramArrayOfByte.a(paramInt, "");
+    finally {}
   }
   
-  public boolean a(int paramInt, @Nullable String paramString, @Nullable Bundle paramBundle)
+  public void a()
   {
-    QLog.e("RIJRewardTaskRemoteRepo", 1, "report task completed onError() <-- errorCode: " + paramInt + ", errorMsg: " + paramString);
-    paramBundle = this.a;
-    if (paramBundle != null) {
-      paramBundle.a(paramInt, paramString);
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      return;
     }
-    return true;
+  }
+  
+  public void a(int paramInt, List<Long> paramList, long paramLong)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      if (localIterator.hasNext()) {
+        ((qxz)localIterator.next()).a(paramInt, paramList, paramLong);
+      }
+    }
+  }
+  
+  public void a(int paramInt, List<Long> paramList, boolean paramBoolean1, boolean paramBoolean2, ToServiceMsg paramToServiceMsg)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      if (localIterator.hasNext()) {
+        ((qxz)localIterator.next()).a(paramInt, paramList, paramBoolean1, paramBoolean2, paramToServiceMsg);
+      }
+    }
+  }
+  
+  public void a(qxz paramqxz)
+  {
+    if (paramqxz == null) {
+      return;
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      if (!this.jdField_a_of_type_JavaUtilList.contains(paramqxz)) {
+        this.jdField_a_of_type_JavaUtilList.add(paramqxz);
+      }
+      return;
+    }
   }
 }
 

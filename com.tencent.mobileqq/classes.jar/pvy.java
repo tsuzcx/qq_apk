@@ -1,13 +1,51 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDianDianEntranceModule.1;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
 
 public class pvy
-  implements pkr
+  implements Handler.Callback
 {
-  public pvy(ReadInJoyDianDianEntranceModule.1 param1) {}
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final pvz jdField_a_of_type_Pvz;
+  private boolean jdField_a_of_type_Boolean = true;
+  private boolean b;
   
-  public void a(pkt parampkt)
+  public pvy(pvz parampvz)
   {
-    parampkt.a(this.a.a);
+    this.jdField_a_of_type_Pvz = parampvz;
+    this.jdField_a_of_type_AndroidOsHandler = new bkys(Looper.getMainLooper(), this);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    this.b = false;
+    do
+    {
+      while (!this.b) {
+        switch (this.jdField_a_of_type_Pvz.a(paramBundle))
+        {
+        }
+      }
+      return;
+    } while (!this.jdField_a_of_type_Boolean);
+    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+    localMessage.setData(paramBundle);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    }
+    if (!this.b) {
+      a(paramMessage.getData());
+    }
+    return true;
   }
 }
 

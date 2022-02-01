@@ -1,59 +1,26 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
 
-public abstract class adjv
+public class adjv
+  extends aoef
 {
-  protected adjw a;
-  protected adjx a;
-  public QQAppInterface a;
-  protected int b = -1;
-  public String b;
+  public adjv(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public adjv(QQAppInterface paramQQAppInterface)
+  protected void a(boolean paramBoolean, bdxt parambdxt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a.e();
+    AssociatedAccountManageActivity.b(this.a);
   }
   
-  public abstract int a();
-  
-  public adjx a()
+  protected void b(boolean paramBoolean, bdxt parambdxt)
   {
-    return this.jdField_a_of_type_Adjx;
+    this.a.e();
+    AssociatedAccountManageActivity.b(this.a);
   }
   
-  public abstract adjx a(int paramInt);
-  
-  public Drawable a()
+  protected void c(boolean paramBoolean, bdxt parambdxt)
   {
-    return null;
-  }
-  
-  public abstract void a(int paramInt);
-  
-  public void a(adjw paramadjw)
-  {
-    this.jdField_a_of_type_Adjw = paramadjw;
-  }
-  
-  public abstract void a(adjx paramadjx);
-  
-  public abstract void a(BaseActivity paramBaseActivity);
-  
-  public abstract void a(BaseActivity paramBaseActivity, adjx paramadjx);
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
-  public abstract void b(BaseActivity paramBaseActivity);
-  
-  public void c(adjx paramadjx)
-  {
-    if ((paramadjx == this.jdField_a_of_type_Adjx) && (this.jdField_a_of_type_Adjw != null)) {
-      this.jdField_a_of_type_Adjw.a(paramadjx);
-    }
+    this.a.e();
+    AssociatedAccountManageActivity.b(this.a);
   }
 }
 

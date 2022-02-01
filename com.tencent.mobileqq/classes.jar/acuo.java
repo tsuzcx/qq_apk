@@ -1,202 +1,168 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.ViewConfiguration;
-import android.view.animation.AnimationUtils;
-import android.view.animation.Interpolator;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.transfile.TransfileUtile;
+import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
+import java.util.Iterator;
+import java.util.List;
+import java.util.List<Ltencent.im.msg.im_msg_body.Elem;>;
+import msf.msgcomm.msg_comm.DiscussInfo;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import tencent.im.msg.im_msg_body.Attr;
+import tencent.im.msg.im_msg_body.Elem;
+import tencent.im.msg.im_msg_body.GroupFile;
+import tencent.im.msg.im_msg_body.MsgBody;
+import tencent.im.msg.im_msg_body.RichText;
+import tencent.im.msg.resv21.hummer_resv_21.FileImgInfo;
+import tencent.im.msg.resv21.hummer_resv_21.ResvAttr;
 
 public class acuo
+  extends acve
 {
-  public final float a;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
-  private boolean jdField_a_of_type_Boolean = true;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private float jdField_d_of_type_Float;
-  private int jdField_d_of_type_Int;
-  private float jdField_e_of_type_Float;
-  private int jdField_e_of_type_Int;
-  private float jdField_f_of_type_Float;
-  private int jdField_f_of_type_Int;
-  private float jdField_g_of_type_Float = 0.0F;
-  private int jdField_g_of_type_Int;
-  private float jdField_h_of_type_Float = 1.0F;
-  private int jdField_h_of_type_Int;
-  private float jdField_i_of_type_Float;
-  private int jdField_i_of_type_Int;
-  private int j;
-  private int k;
-  private int l;
-  
-  public acuo(Context paramContext)
+  private void a(List<im_msg_body.Elem> paramList, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, msg_comm.Msg paramMsg)
   {
-    this(paramContext, null);
-  }
-  
-  public acuo(Context paramContext, Interpolator paramInterpolator)
-  {
-    this.jdField_a_of_type_AndroidViewAnimationInterpolator = paramInterpolator;
-    this.jdField_a_of_type_Float = (paramContext.getResources().getDisplayMetrics().density * 800.0F * 386.0878F * ViewConfiguration.getScrollFriction());
-  }
-  
-  private float a(float paramFloat)
-  {
-    paramFloat = this.jdField_e_of_type_Float * paramFloat;
-    if (paramFloat < 1.0F) {}
-    for (paramFloat -= 1.0F - (float)Math.exp(-paramFloat);; paramFloat = (1.0F - (float)Math.exp(1.0F - paramFloat)) * (1.0F - 0.3678795F) + 0.3678795F) {
-      return paramFloat * this.jdField_f_of_type_Float;
-    }
-  }
-  
-  public final int a()
-  {
-    return this.j;
-  }
-  
-  public int a(int paramInt)
-  {
-    return (int)(paramInt * paramInt / (2.0F * this.jdField_a_of_type_Float));
-  }
-  
-  public int a(boolean paramBoolean, int paramInt)
-  {
-    int m = (int)Math.sqrt(paramInt * 2 * this.jdField_a_of_type_Float);
-    paramInt = m;
-    if (paramBoolean) {
-      paramInt = -m;
-    }
-    return paramInt;
-  }
-  
-  public void a()
-  {
-    this.j = this.jdField_d_of_type_Int;
-    this.k = this.jdField_e_of_type_Int;
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    a(paramInt1, paramInt2, paramInt3, paramInt4, 250);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.l = paramInt5;
-    this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = paramInt2;
-    this.jdField_d_of_type_Int = (paramInt1 + paramInt3);
-    this.jdField_e_of_type_Int = (paramInt2 + paramInt4);
-    this.jdField_c_of_type_Float = paramInt3;
-    this.jdField_d_of_type_Float = paramInt4;
-    this.jdField_b_of_type_Float = (1.0F / this.l);
-    this.jdField_e_of_type_Float = 8.0F;
-    this.jdField_f_of_type_Float = 1.0F;
-    this.jdField_f_of_type_Float = (1.0F / a(1.0F));
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
-  {
-    float f2 = 1.0F;
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_Boolean = false;
-    float f3 = (float)Math.hypot(paramInt3, paramInt4);
-    this.jdField_i_of_type_Float = f3;
-    this.l = ((int)(1000.0F * f3 / this.jdField_a_of_type_Float));
-    this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = paramInt2;
-    if (f3 == 0.0F)
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    MessageHandler localMessageHandler = localQQAppInterface.getMsgHandler();
+    Object localObject = null;
+    Iterator localIterator = paramList.iterator();
+    do
     {
-      f1 = 1.0F;
-      this.jdField_g_of_type_Float = f1;
-      if (f3 != 0.0F) {
-        break label236;
-      }
-    }
-    label236:
-    for (float f1 = f2;; f1 = paramInt4 / f3)
-    {
-      this.jdField_h_of_type_Float = f1;
-      paramInt3 = (int)(f3 * f3 / (2.0F * this.jdField_a_of_type_Float));
-      this.jdField_f_of_type_Int = paramInt5;
-      this.jdField_g_of_type_Int = paramInt6;
-      this.jdField_h_of_type_Int = paramInt7;
-      this.jdField_i_of_type_Int = paramInt8;
-      this.jdField_d_of_type_Int = (Math.round(paramInt3 * this.jdField_g_of_type_Float) + paramInt1);
-      this.jdField_d_of_type_Int = Math.min(this.jdField_d_of_type_Int, this.jdField_g_of_type_Int);
-      this.jdField_d_of_type_Int = Math.max(this.jdField_d_of_type_Int, this.jdField_f_of_type_Int);
-      this.jdField_e_of_type_Int = (Math.round(paramInt3 * this.jdField_h_of_type_Float) + paramInt2);
-      this.jdField_e_of_type_Int = Math.min(this.jdField_e_of_type_Int, this.jdField_i_of_type_Int);
-      this.jdField_e_of_type_Int = Math.max(this.jdField_e_of_type_Int, this.jdField_h_of_type_Int);
-      return;
-      f1 = paramInt3 / f3;
-      break;
-    }
-  }
-  
-  public final boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public final int b()
-  {
-    return this.k;
-  }
-  
-  public boolean b()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return false;
-    }
-    int m = (int)(AnimationUtils.currentAnimationTimeMillis() - this.jdField_a_of_type_Long);
-    if (m < this.l) {
-      switch (this.jdField_a_of_type_Int)
-      {
-      }
-    }
-    for (;;)
-    {
-      return true;
-      float f1 = m * this.jdField_b_of_type_Float;
-      if (this.jdField_a_of_type_AndroidViewAnimationInterpolator == null) {}
-      for (f1 = a(f1);; f1 = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(f1))
-      {
-        this.j = (this.jdField_b_of_type_Int + Math.round(this.jdField_c_of_type_Float * f1));
-        m = this.jdField_c_of_type_Int;
-        this.k = (Math.round(f1 * this.jdField_d_of_type_Float) + m);
-        if ((this.j != this.jdField_d_of_type_Int) || (this.k != this.jdField_e_of_type_Int)) {
-          break;
-        }
-        this.jdField_a_of_type_Boolean = true;
+      paramList = (List<im_msg_body.Elem>)localObject;
+      if (!localIterator.hasNext()) {
         break;
       }
-      f1 = m / 1000.0F;
-      f1 = this.jdField_i_of_type_Float * f1 - f1 * (this.jdField_a_of_type_Float * f1) / 2.0F;
-      this.j = (this.jdField_b_of_type_Int + Math.round(this.jdField_g_of_type_Float * f1));
-      this.j = Math.min(this.j, this.jdField_g_of_type_Int);
-      this.j = Math.max(this.j, this.jdField_f_of_type_Int);
-      m = this.jdField_c_of_type_Int;
-      this.k = (Math.round(f1 * this.jdField_h_of_type_Float) + m);
-      this.k = Math.min(this.k, this.jdField_i_of_type_Int);
-      this.k = Math.max(this.k, this.jdField_h_of_type_Int);
-      if ((this.j == this.jdField_d_of_type_Int) && (this.k == this.jdField_e_of_type_Int))
-      {
-        this.jdField_a_of_type_Boolean = true;
+      paramList = (im_msg_body.Elem)localIterator.next();
+    } while (!paramList.group_file.has());
+    paramList = (im_msg_body.GroupFile)paramList.group_file.get();
+    if (paramList == null) {}
+    for (;;)
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        paramStringBuilder.append("elemType:GroupFile;\n");
+      }
+      long l1 = 0L;
+      paramStringBuilder = (msg_comm.MsgHead)paramMsg.msg_head.get();
+      if (paramStringBuilder.discuss_info.has()) {
+        l1 = ((msg_comm.DiscussInfo)paramStringBuilder.discuss_info.get()).discuss_uin.get();
+      }
+      long l4 = paramStringBuilder.from_uin.get();
+      long l6 = paramStringBuilder.msg_time.get();
+      long l7 = paramStringBuilder.msg_seq.get();
+      long l5 = localMessageHandler.app.getLongAccountUin();
+      if (anyv.a(localMessageHandler.app, 3000, String.valueOf(l1), String.valueOf(l4), l6, l7)) {
         continue;
-        this.j = this.jdField_d_of_type_Int;
-        this.k = this.jdField_e_of_type_Int;
-        this.jdField_a_of_type_Boolean = true;
+      }
+      paramStringBuilder = "";
+      try
+      {
+        localObject = new String(paramList.bytes_filename.get().toByteArray(), "UTF-8");
+        paramStringBuilder = (StringBuilder)localObject;
+        long l3 = 0L;
+        l2 = l3;
+        if (paramMsg.msg_body.has())
+        {
+          paramMsg = (im_msg_body.MsgBody)paramMsg.msg_body.get();
+          l2 = l3;
+          if (paramMsg.rich_text.attr.has()) {
+            l2 = bcsc.a(((im_msg_body.Attr)paramMsg.rich_text.attr.get()).random.get());
+          }
+        }
+        paramMsg = (MessageForFile)bcsa.a(-2005);
+        paramMsg.msgtype = -2005;
+        k = 0;
+        m = 0;
+        j = m;
+        i = k;
+        if (paramList.bytes_pb_reserve.has()) {
+          localObject = new hummer_resv_21.ResvAttr();
+        }
+      }
+      catch (UnsupportedEncodingException localInvalidProtocolBufferMicroException)
+      {
+        try
+        {
+          long l2;
+          int k;
+          int m;
+          ((hummer_resv_21.ResvAttr)localObject).mergeFrom(paramList.bytes_pb_reserve.get().toByteArray());
+          int j = m;
+          int i = k;
+          if (((hummer_resv_21.ResvAttr)localObject).file_image_info.has())
+          {
+            i = ((hummer_resv_21.ResvAttr)localObject).file_image_info.uint32_file_height.get();
+            j = ((hummer_resv_21.ResvAttr)localObject).file_image_info.uint32_file_width.get();
+            paramMsg.saveExtInfoToExtStr("file_pic_width", String.valueOf(j));
+            paramMsg.saveExtInfoToExtStr("file_pic_heigth", String.valueOf(i));
+          }
+          paramMsg.uniseq = localMessageHandler.app.getFileTransferHandler().a(paramMsg.uniseq, l1, l4, l7, l2, l6, paramList, j, i);
+          l1 = paramList.uint64_file_size.get();
+          if (l4 == l5)
+          {
+            bool = true;
+            paramMsg.msg = TransfileUtile.makeTransFileProtocolData(paramStringBuilder, l1, 0, bool);
+            paramMsg.doParse();
+          }
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+        {
+          try
+          {
+            for (;;)
+            {
+              paramMsg.fileName = auea.a(new String(paramList.bytes_filename.get().toByteArray(), "UTF-8"));
+              paramList1.add(paramMsg);
+              ((bedr)localQQAppInterface.getManager(QQManagerFactory.TEAMWORK_SPREAD_MANAGER)).a(paramMsg);
+              if (!QLog.isColorLevel()) {
+                break;
+              }
+              QLog.d("GroupFileElemDecoder", 2, "GroupDiscFile.msg: " + paramList.bytes_filename.get() + ";");
+              return;
+              localUnsupportedEncodingException = localUnsupportedEncodingException;
+              localUnsupportedEncodingException.printStackTrace();
+              continue;
+              localInvalidProtocolBufferMicroException = localInvalidProtocolBufferMicroException;
+              localInvalidProtocolBufferMicroException.printStackTrace();
+            }
+            boolean bool = false;
+          }
+          catch (UnsupportedEncodingException paramStringBuilder)
+          {
+            for (;;)
+            {
+              paramStringBuilder.printStackTrace();
+              QLog.e("GroupFileElemDecoder", 1, "internalDiscOfflineFile: Exception is " + paramStringBuilder.toString());
+            }
+          }
+        }
       }
     }
+  }
+  
+  public int a()
+  {
+    return 1000;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bffl parambffl, bcse parambcse, bcre parambcre)
+  {
+    a(paramList, paramList1, paramStringBuilder, paramMsg);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return paramElem.group_file.has();
   }
 }
 

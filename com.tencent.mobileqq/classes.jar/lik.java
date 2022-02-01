@@ -1,135 +1,267 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Typeface;
-import android.text.TextUtils;
+import android.app.ActivityManager;
+import android.app.ActivityManager.MemoryInfo;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.HandlerThread;
+import android.os.Process;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.report.VideoNodeReporter.2;
+import com.tencent.av.business.manager.report.VideoNodeReporter.3;
+import com.tencent.av.business.manager.report.VideoNodeReporter.4;
+import com.tencent.av.business.manager.report.VideoNodeReporter.5;
+import com.tencent.av.business.manager.report.VideoNodeReporter.6;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import mqq.app.MobileQQ;
 
-public abstract class lik
-  implements moa
+public class lik
+  extends lgp
 {
-  protected int a;
-  protected Bitmap a;
-  protected Canvas a;
-  protected Paint a;
-  protected lgc a;
-  protected mob a;
-  protected boolean a;
-  protected int b;
-  protected boolean b;
+  static String b;
+  int jdField_a_of_type_Int;
+  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new lil(this);
+  Handler jdField_a_of_type_AndroidOsHandler;
+  HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("VideoNodeReportThread");
+  public List<lim> a;
   
-  public lik(lgc paramlgc, boolean paramBoolean)
+  public lik(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_Int = 32;
-    this.jdField_b_of_type_Int = 255;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Lgc = paramlgc;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public abstract int a();
-  
-  public int a(long paramLong)
-  {
-    return 0;
-  }
-  
-  Bitmap a()
-  {
-    Object localObject3 = null;
-    Object localObject4 = null;
-    Object localObject1 = null;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_Lgc.a))
+    super(paramVideoAppInterface);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidOsHandlerThread.start();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
+    String[] arrayOfString = BaseApplicationImpl.processName.split(":");
+    Object localObject = null;
+    paramVideoAppInterface = localObject;
+    if (arrayOfString != null)
     {
-      lba.f("ARZimuItemTask", "TextUtils.isEmpty(mSentenceInfo.src_text) == null");
-      localObject3 = localObject1;
+      paramVideoAppInterface = localObject;
+      if (arrayOfString.length == 2) {
+        paramVideoAppInterface = arrayOfString[1];
+      }
     }
-    do
+    b = "avideo_node_report_" + paramVideoAppInterface;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoNodeReporter", 2, "construct VideoNodeReporter  sSPName = " + b);
+    }
+  }
+  
+  static String a()
+  {
+    return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(System.currentTimeMillis()));
+  }
+  
+  private String a(long paramLong)
+  {
+    String str = BaseApplicationImpl.getApplication().getSystemSharedPreferences(b, 0).getString(String.valueOf(paramLong), "");
+    QLog.d("VideoNodeReporter", 1, "getSpSessionRecord roomId = " + paramLong + ",result = " + str);
+    return str;
+  }
+  
+  private void a(long paramLong, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoNodeReporter", 2, "writeSpSessionRecord,roomId = " + paramLong + ",detail = " + paramString);
+    }
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSystemSharedPreferences(b, 0).edit();
+    localEditor.putString(String.valueOf(paramLong), paramString);
+    localEditor.commit();
+  }
+  
+  private void b(long paramLong1, int paramInt, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoNodeReporter", 2, " reportNode ,node = " + paramInt + ",value = " + paramLong2 + ",roomId = " + paramLong1);
+    }
+    Object localObject2 = a(paramLong1);
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      for (;;)
+      localObject1 = new lim();
+      ((lim)localObject1).a = paramLong1;
+      this.jdField_a_of_type_JavaUtilList.add(localObject1);
+    }
+    localObject2 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
+    lfe locallfe = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a();
+    if (((lim)localObject1).a == locallfe.b()) {
+      ((lim)localObject1).a(locallfe, (String)localObject2);
+    }
+    localObject2 = ((lim)localObject1).a();
+    localObject1 = ((lim)localObject1).a(paramInt, paramLong2);
+    a(paramLong1, (String)localObject2 + (String)localObject1);
+  }
+  
+  private void c()
+  {
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSystemSharedPreferences(b, 0);
+    Map localMap = localSharedPreferences.getAll();
+    if ((localMap != null) && (localMap.size() > 0))
+    {
+      QLog.d("VideoNodeReporter", 1, "checkAndReportCrashRecord, allContent.size() = " + localMap.size());
+      Iterator localIterator = localMap.entrySet().iterator();
+      while (localIterator.hasNext())
       {
-        return localObject3;
-        lba.f("ARZimuItemTask", "build:" + toString());
-        localObject1 = localObject3;
-        Object localObject2 = localObject4;
+        Map.Entry localEntry = (Map.Entry)localIterator.next();
         try
         {
-          int i = a();
-          localObject1 = localObject3;
-          localObject2 = localObject4;
-          int j = b();
-          localObject1 = localObject3;
-          localObject2 = localObject4;
-          localObject3 = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-          localObject1 = localObject3;
-          localObject2 = localObject3;
-          this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap((Bitmap)localObject3);
-          localObject1 = localObject3;
-          localObject2 = localObject3;
-          a(this.jdField_a_of_type_AndroidGraphicsCanvas, i, j);
-          return localObject3;
-        }
-        catch (OutOfMemoryError localOutOfMemoryError)
-        {
-          localObject3 = localObject1;
-          if (QLog.isColorLevel())
-          {
-            QLog.e("ARZimuItemTask", 2, localOutOfMemoryError.getMessage());
-            return localObject1;
-          }
+          b(Long.decode((String)localEntry.getKey()).longValue());
         }
         catch (Exception localException)
         {
-          localObject3 = localOutOfMemoryError;
+          QLog.d("VideoNodeReporter", 1, "checkAndReportCrashRecord Exception ", localException);
+          localSharedPreferences.edit().remove((String)localEntry.getKey()).commit();
         }
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("ARZimuItemTask", 2, localException.getMessage());
-    return localOutOfMemoryError;
-  }
-  
-  protected abstract void a(Canvas paramCanvas, int paramInt1, int paramInt2);
-  
-  public void a(Typeface paramTypeface, int paramInt, mob parammob)
-  {
-    if (paramTypeface != null) {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(paramTypeface);
     }
-    this.jdField_a_of_type_Mob = parammob;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(paramInt);
+    QLog.d("VideoNodeReporter", 1, "checkAndReportCrashRecord allContent = " + localMap);
   }
   
-  public void a(lgc paramlgc)
+  private void c(long paramLong)
   {
-    this.jdField_a_of_type_Lgc = paramlgc;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_b_of_type_Boolean = true;
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSystemSharedPreferences(b, 0).edit();
+    localEditor.remove(String.valueOf(paramLong));
+    localEditor.commit();
+    lbd.g("VideoNodeReporter", "removeSpSessionRecord,roomId = " + paramLong);
   }
   
-  public void a(boolean paramBoolean) {}
-  
-  public boolean a()
+  lim a(long paramLong)
   {
-    return false;
-  }
-  
-  public abstract int b();
-  
-  public Bitmap b()
-  {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = a();
+    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        lim locallim = (lim)localIterator.next();
+        if (paramLong == locallim.a) {
+          return locallim;
+        }
+      }
     }
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+    return null;
   }
   
-  public boolean b()
+  protected void a()
   {
-    return this.jdField_b_of_type_Boolean;
+    lbd.g("VideoNodeReporter", "onCreate ");
+    c();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(int paramInt, long paramLong)
+  {
+    QLog.d("VideoNodeReporter", 1, " report ,node = " + paramInt + ",value = " + paramLong);
+    if ((this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) || (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a() == null) || (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a() == null))
+    {
+      lbd.g("VideoNodeReporter", " report error 0: " + paramInt + "|" + this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.e)
+    {
+      lbd.g("VideoNodeReporter", " report error 1 ,exit has been called,node = " + paramInt);
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.post(new VideoNodeReporter.3(this, paramInt, paramLong));
+  }
+  
+  public void a(long paramLong)
+  {
+    QLog.d("VideoNodeReporter", 1, "updateCallerRoomId roomId = " + paramLong);
+    this.jdField_a_of_type_AndroidOsHandler.post(new VideoNodeReporter.2(this, paramLong));
+  }
+  
+  public void a(long paramLong1, int paramInt, long paramLong2)
+  {
+    QLog.d("VideoNodeReporter", 1, " reportByRoomId ,node = " + paramInt + ",value = " + paramLong2);
+    if ((this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) || (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a() == null) || (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a() == null))
+    {
+      lbd.g("VideoNodeReporter", " reportByRoomId error 0: " + paramInt + "|" + this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.e)
+    {
+      lbd.g("VideoNodeReporter", " reportByRoomId error 1 ,exit has been called,node = " + paramInt);
+      return;
+    }
+    if (paramLong1 == 0L)
+    {
+      QLog.d("VideoNodeReporter", 1, "reportByRoomId rooid is 0", new Throwable("test"));
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.post(new VideoNodeReporter.4(this, paramLong1, paramInt, paramLong2));
+  }
+  
+  protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
+  {
+    lbd.g("VideoNodeReporter", " onSessionStatusChanged :" + paramInt + ",para = " + paramString2);
+    switch (paramInt)
+    {
+    case 2: 
+    case 3: 
+    default: 
+      return;
+    }
+    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+    {
+      paramString1 = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramString1.hasNext()) {
+        ((lim)paramString1.next()).b = System.currentTimeMillis();
+      }
+    }
+    a(38, this.jdField_a_of_type_Int);
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new VideoNodeReporter.5(this, paramString));
+  }
+  
+  protected boolean a(String paramString)
+  {
+    return true;
+  }
+  
+  public void b()
+  {
+    try
+    {
+      ActivityManager localActivityManager = (ActivityManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getSystemService("activity");
+      ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
+      localActivityManager.getMemoryInfo(localMemoryInfo);
+      long l1 = DeviceInfoUtil.getApplicationMemory(Process.myPid()) / 1024L / 1024L;
+      long l2 = localMemoryInfo.availMem / 1024L / 1024L;
+      long l3 = localMemoryInfo.threshold / 1024L / 1024L;
+      boolean bool = localMemoryInfo.lowMemory;
+      QLog.d("VideoNodeReporter", 1, "reportMemoryStatus,availMem = " + l2 + ",threshold = " + l3 + ",isLowMemory = " + bool + ",pss = " + l1);
+      a(21, l3);
+      a(15, l2);
+      a(22, l1);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("VideoNodeReporter", 1, "reportMemoryStatus,Exception ", localException);
+    }
+  }
+  
+  public void b(long paramLong)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new VideoNodeReporter.6(this, paramLong));
   }
 }
 

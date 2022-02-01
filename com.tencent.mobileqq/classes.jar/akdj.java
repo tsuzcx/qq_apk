@@ -1,26 +1,13 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.Collections;
-import java.util.List;
 
-public class akdj
-  implements View.OnClickListener
+class akdj
+  implements blak
 {
-  public akdj(ChooseItemView paramChooseItemView) {}
+  akdj(akdi paramakdi, View paramView) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if ((ChooseItemView.a(this.a) != null) && (ChooseItemView.a(this.a).size() > 1))
-    {
-      Collections.shuffle(ChooseItemView.a(this.a));
-      this.a.a.a(ChooseItemView.b(this.a));
-    }
-    if (ChooseItemView.a(this.a) != null) {
-      ChooseItemView.a(this.a).onClick(paramView);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

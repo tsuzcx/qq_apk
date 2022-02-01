@@ -1,16 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.fragment.QQSettingMsgClearFragment;
 
-class auxy
-  implements View.OnClickListener
+public class auxy
+  extends Handler
 {
-  auxy(auxv paramauxv, auxu paramauxu, auxz paramauxz) {}
+  public auxy(QQSettingMsgClearFragment paramQQSettingMsgClearFragment) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    auxv.a(this.jdField_a_of_type_Auxv).a(auxv.a(this.jdField_a_of_type_Auxv), this.jdField_a_of_type_Auxv, this.jdField_a_of_type_Auxu, this.jdField_a_of_type_Auxz);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      paramMessage = this.a.getActivity();
+      if ((paramMessage != null) && (!paramMessage.isFinishing()))
+      {
+        this.a.jdField_a_of_type_Bisl.a(this.a.getString(2131690826));
+        this.a.jdField_a_of_type_Bisl.d(2130849687);
+        this.a.jdField_a_of_type_Bisl.b(false);
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
+      return;
+    } while ((this.a.jdField_a_of_type_Bisl == null) || (!this.a.jdField_a_of_type_Bisl.isShowing()));
+    this.a.jdField_a_of_type_Bisl.cancel();
+    this.a.jdField_a_of_type_Bisl.a(this.a.getString(2131690828));
+    this.a.jdField_a_of_type_Bisl.c(true);
+    this.a.jdField_a_of_type_Bisl.a(false);
+    this.a.jdField_a_of_type_Bisl.b(true);
   }
 }
 

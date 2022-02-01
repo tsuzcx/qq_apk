@@ -1,84 +1,34 @@
-import android.content.SharedPreferences;
+import android.content.Intent;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.transfile.dns.InnerDns;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bcvg
-  implements Manager
+  extends MSFServlet
 {
-  private static String jdField_a_of_type_JavaLangString = "https://pub.idqqimg.com/pc/misc/files/20180403/29c998e16c094b10a96b3e0d1589c2f6.png";
-  private static String b = "https://pub.idqqimg.com/pc/misc/files/20180403/da40f07bd79e4796b712b44023911be0.png";
-  private static String c = "https://pub.idqqimg.com/pc/misc/files/20180410/1fce078ca2434b18bfec613961d526ff.png";
-  private static String d = "https://pub.idqqimg.com/pc/misc/files/20180410/5349bc325950481ebde04c38208d9028.png";
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  
-  public bcvg(QQAppInterface paramQQAppInterface)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public static String a()
-  {
-    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("tencentdoc_url_config", 4);
-    if (localSharedPreferences != null) {
-      jdField_a_of_type_JavaLangString = localSharedPreferences.getString("tencentdoc_pre_img_url_doc", "https://pub.idqqimg.com/pc/misc/files/20180403/29c998e16c094b10a96b3e0d1589c2f6.png");
-    }
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public static String b()
-  {
-    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("tencentdoc_url_config", 4);
-    if (localSharedPreferences != null) {
-      b = localSharedPreferences.getString("tencentdoc_pre_img_url_sheet", "https://pub.idqqimg.com/pc/misc/files/20180403/da40f07bd79e4796b712b44023911be0.png");
-    }
-    return b;
-  }
-  
-  public static String c()
-  {
-    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("tencentdoc_url_config", 4);
-    if (localSharedPreferences != null) {
-      c = localSharedPreferences.getString("tencentdoc_pre_img_url_miniproj_doc", "https://pub.idqqimg.com/pc/misc/files/20180410/1fce078ca2434b18bfec613961d526ff.png");
-    }
-    return c;
-  }
-  
-  public static String d()
-  {
-    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("tencentdoc_url_config", 4);
-    if (localSharedPreferences != null) {
-      d = localSharedPreferences.getString("tencentdoc_pre_img_url_miniproj_sheet", "https://pub.idqqimg.com/pc/misc/files/20180410/5349bc325950481ebde04c38208d9028.png");
-    }
-    return d;
-  }
-  
-  public Boolean a()
-  {
-    boolean bool2 = false;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin();
-    boolean bool3 = aqjp.a().a();
-    boolean bool1 = aqvt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    String str = aqjp.a().a();
-    if ((bool1) && (str != null)) {}
-    for (bool1 = true;; bool1 = false)
+    paramIntent = (QQAppInterface)getAppRuntime();
+    if ("ConfigPushSvc.GetIpDirect".equals(paramFromServiceMsg.getServiceCmd()))
     {
+      InnerDns.getInstance().onReceivePush(paramFromServiceMsg);
       if (QLog.isColorLevel()) {
-        QLog.d("TeamWorkManager", 2, "WL_DEBUG isShowTencentDocEntry isShowTencentDocEntry = " + bool3 + ", isUser = " + bool1 + ", userConfigPlusURL = " + str);
+        QLog.i("IPDomainGet", 2, "onReceive response resultCode:" + paramFromServiceMsg.getResultCode() + " log:" + paramFromServiceMsg.getStringForLog());
       }
-      if ((bool3) || (bool1)) {
-        bool2 = true;
-      }
-      if ((!bool3) && (bool1)) {
-        aqvt.a("0X80094DF");
-      }
-      return Boolean.valueOf(bool2);
     }
   }
   
-  public void onDestroy() {}
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("IPDomainGet", 2, "IPDomainGet onSend() ");
+    }
+    paramPacket.setSSOCommand("ConfigPushSvc.GetIpDirect");
+    paramPacket.setTimeout(15000L);
+  }
 }
 
 

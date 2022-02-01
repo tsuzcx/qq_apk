@@ -11,8 +11,8 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import ybn;
-import ybp;
+import yqg;
+import yqi;
 
 class ArtFilterUploadProcessor$2
   implements IRequestCallback

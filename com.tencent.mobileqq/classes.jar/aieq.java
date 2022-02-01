@@ -1,75 +1,31 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgActivity;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NewFriendMoreInfo;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManager;
 
-public class aieq
-  extends aiea
-  implements View.OnClickListener
+class aieq
+  implements old
 {
-  public aieq(Context paramContext, QQAppInterface paramQQAppInterface, aifw paramaifw, aigo paramaigo)
-  {
-    super(paramContext, paramQQAppInterface, paramaifw, paramaigo);
-  }
+  aieq(aido paramaido) {}
   
-  public View a(int paramInt, View paramView)
+  public void a(boolean paramBoolean)
   {
-    aier localaier;
-    if ((paramView == null) || (!(paramView.getTag() instanceof aier)))
+    this.a.b();
+    if (!paramBoolean)
     {
-      localaier = new aier();
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561247, null);
-      localaier.a = ((TextView)paramView.findViewById(2131371370));
-      if (ThemeUtil.isDefaultTheme())
-      {
-        paramView.setBackgroundResource(2130839490);
-        paramView.setTag(localaier);
-      }
-    }
-    for (;;)
-    {
-      NewFriendMoreInfo localNewFriendMoreInfo = ((aigp)this.jdField_a_of_type_Aigo).a;
-      localaier.a.setText(localNewFriendMoreInfo.moreInfo);
-      paramView.setOnClickListener(this);
-      return paramView;
-      paramView.setBackgroundResource(2130839434);
-      break;
-      localaier = (aier)paramView.getTag();
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    Object localObject = paramView.getTag();
-    if ((localObject != null) && ((localObject instanceof aier))) {
-      switch (((aigp)this.jdField_a_of_type_Aigo).a.type)
-      {
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.a.b(2131694983);
       return;
-      int i = this.jdField_a_of_type_Aifw.a();
-      NewFriendMoreSysMsgActivity.a((NewFriendActivity)this.jdField_a_of_type_AndroidContentContext, 225, i);
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007704", "0X8007704", 0, 0, "", "", "", "");
-      continue;
-      localObject = (aiej)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34);
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, AddContactsActivity.class);
-      localIntent.putExtra("entrence_data_report", 4);
-      localIntent.putExtra("EntranceId", 6);
-      ((NewFriendActivity)this.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 226);
-      ((aiej)localObject).f();
     }
+    EntityManager localEntityManager = this.a.app.getEntityManagerFactory().createEntityManager();
+    AccountDetail localAccountDetail = (AccountDetail)localEntityManager.find(AccountDetail.class, this.a.sessionInfo.curFriendUin);
+    if (localAccountDetail != null) {
+      localEntityManager.remove(localAccountDetail);
+    }
+    localEntityManager.close();
+    this.a.app.getMessageFacade().clearHistory(this.a.sessionInfo.curFriendUin, 1008);
+    this.a.finish();
   }
 }
 

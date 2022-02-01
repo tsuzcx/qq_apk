@@ -1,105 +1,31 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import java.lang.ref.WeakReference;
 
-public abstract class tbv<T>
-  extends tbu<T>
+public class tbv
+  implements Handler.Callback
 {
-  protected Context a;
-  protected List<T> a;
-  protected int b;
+  private WeakReference<ReadInJoyXListView> a;
   
-  protected tbv(Context paramContext, int paramInt)
+  public tbv(ReadInJoyXListView paramReadInJoyXListView)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.b = paramInt;
+    this.a = new WeakReference(paramReadInJoyXListView);
   }
   
-  private void c(List<T> paramList)
+  public boolean handleMessage(Message paramMessage)
   {
-    a(paramList);
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-  }
-  
-  public int a()
-  {
-    return this.b;
-  }
-  
-  protected Context a()
-  {
-    return this.jdField_a_of_type_AndroidContentContext;
-  }
-  
-  public List<T> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(int paramInt, T paramT)
-  {
-    a(paramT);
-    this.jdField_a_of_type_JavaUtilList.add(paramInt, paramT);
-    notifyDataSetChanged();
-  }
-  
-  public boolean a(int paramInt)
-  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    }
+    if ((this.a != null) && (this.a.get() != null))
+    {
+      ((ReadInJoyXListView)this.a.get()).i();
+      return true;
+    }
     return true;
-  }
-  
-  public void b(int paramInt)
-  {
-    if (paramInt < getCount())
-    {
-      this.jdField_a_of_type_JavaUtilList.remove(paramInt);
-      notifyDataSetChanged();
-    }
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 < getCount())
-    {
-      ReadInJoyDynamicGridView.a(this.jdField_a_of_type_JavaUtilList, paramInt1, paramInt2);
-      notifyDataSetChanged();
-    }
-  }
-  
-  public void b(T paramT)
-  {
-    a(paramT);
-    this.jdField_a_of_type_JavaUtilList.add(paramT);
-    notifyDataSetChanged();
-  }
-  
-  public void b(List<T> paramList)
-  {
-    c();
-    c(paramList);
-    notifyDataSetChanged();
-  }
-  
-  public void c()
-  {
-    b();
-    this.jdField_a_of_type_JavaUtilList.clear();
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public T getItem(int paramInt)
-  {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
-      return null;
-    }
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
 }
 

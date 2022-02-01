@@ -1,25 +1,15 @@
-import com.tencent.biz.qqstory.model.filter.FilterItem;
-import com.tencent.biz.qqstory.model.filter.FilterItem.FilterItemIllegalException;
+import android.content.Context;
+import com.tencent.biz.qcircleshadow.lib.delegate.IApplicationDelegate;
+import com.tencent.qphone.base.util.QLog;
 
-public class vvr
+class vvr
+  implements IApplicationDelegate
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b;
-  public String c;
+  vvr(vvq paramvvq) {}
   
-  public FilterItem a()
+  public void onCreate(Context paramContext)
   {
-    try
-    {
-      FilterItem localFilterItem = new FilterItem(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c, null);
-      return localFilterItem;
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      throw new FilterItem.FilterItemIllegalException("create FilterItem instance failed", localIllegalArgumentException);
-    }
+    QLog.i("QCIRCLE_PLUGIN", 1, "QCirclePluginShadowService init plugin success");
   }
 }
 

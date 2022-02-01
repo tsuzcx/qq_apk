@@ -1,24 +1,25 @@
 package com.tencent.mobileqq.activity.phone;
 
 import Override;
-import ajmt;
-import ajmu;
-import ajmv;
-import ajmw;
-import ajmx;
-import amtj;
+import akih;
+import akii;
+import akij;
+import akik;
+import akil;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.MotionEvent;
 import android.view.View;
-import bcef;
-import bfur;
-import bhht;
+import anvx;
+import bdla;
+import bhdj;
+import bisl;
 import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -26,9 +27,9 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class DialogBaseActivity
   extends IphoneTitleBarActivity
 {
-  private ajmx jdField_a_of_type_Ajmx;
+  private akil jdField_a_of_type_Akil;
   private View jdField_a_of_type_AndroidViewView;
-  public bhht a;
+  public bisl a;
   public PhoneContactManagerImp a;
   
   public void a(int paramInt)
@@ -38,12 +39,12 @@ public class DialogBaseActivity
   
   public void a(int paramInt, long paramLong, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_Ajmx;
+    Object localObject = this.jdField_a_of_type_Akil;
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
-      localObject = ((ajmx)localObject).obtainMessage(1, paramInt, i);
-      this.jdField_a_of_type_Ajmx.sendMessageDelayed((Message)localObject, paramLong);
+      localObject = ((akil)localObject).obtainMessage(1, paramInt, i);
+      this.jdField_a_of_type_Akil.sendMessageDelayed((Message)localObject, paramLong);
       return;
     }
   }
@@ -57,14 +58,14 @@ public class DialogBaseActivity
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if ((!isFinishing()) && (this.jdField_a_of_type_Bhht == null))
+    if ((!isFinishing()) && (this.jdField_a_of_type_Bisl == null))
     {
-      this.jdField_a_of_type_Bhht = new bhht(this, getTitleBarHeight());
-      this.jdField_a_of_type_Bhht.setOnDismissListener(new ajmw(this));
-      this.jdField_a_of_type_Bhht.c(paramInt);
-      this.jdField_a_of_type_Bhht.setCancelable(paramBoolean);
-      this.jdField_a_of_type_Bhht.setCanceledOnTouchOutside(false);
-      this.jdField_a_of_type_Bhht.show();
+      this.jdField_a_of_type_Bisl = new bisl(this, getTitleBarHeight());
+      this.jdField_a_of_type_Bisl.setOnDismissListener(new akik(this));
+      this.jdField_a_of_type_Bisl.c(paramInt);
+      this.jdField_a_of_type_Bisl.setCancelable(paramBoolean);
+      this.jdField_a_of_type_Bisl.setCanceledOnTouchOutside(false);
+      this.jdField_a_of_type_Bisl.show();
     }
   }
   
@@ -76,23 +77,23 @@ public class DialogBaseActivity
   public void a(String paramString1, String paramString2)
   {
     if (!isFinishing()) {
-      bfur.a(this, 231, paramString1, paramString2, new ajmt(this), null).show();
+      bhdj.a(this, 231, paramString1, paramString2, new akih(this), null).show();
     }
   }
   
   public boolean b()
   {
     boolean bool = false;
-    if (this.jdField_a_of_type_Ajmx.hasMessages(1))
+    if (this.jdField_a_of_type_Akil.hasMessages(1))
     {
-      this.jdField_a_of_type_Ajmx.removeMessages(1);
+      this.jdField_a_of_type_Akil.removeMessages(1);
       bool = true;
     }
-    if (this.jdField_a_of_type_Bhht != null)
+    if (this.jdField_a_of_type_Bisl != null)
     {
-      this.jdField_a_of_type_Bhht.cancel();
-      this.jdField_a_of_type_Bhht.setOnDismissListener(null);
-      this.jdField_a_of_type_Bhht = null;
+      this.jdField_a_of_type_Bisl.cancel();
+      this.jdField_a_of_type_Bisl.setOnDismissListener(null);
+      this.jdField_a_of_type_Bisl = null;
       return true;
     }
     return bool;
@@ -104,23 +105,23 @@ public class DialogBaseActivity
     String str1;
     if (!isFinishing())
     {
-      bcef.b(this.app, "dc00898", "", "", "0X8006AA4", "0X8006AA4", 0, 0, "", "", "", "");
-      str3 = getResources().getString(2131694343);
+      bdla.b(this.app, "dc00898", "", "", "0X8006AA4", "0X8006AA4", 0, 0, "", "", "", "");
+      str3 = getResources().getString(2131694544);
       if (!paramBoolean) {
         break label103;
       }
-      str1 = amtj.a(2131702377);
+      str1 = anvx.a(2131702728);
       if (!paramBoolean) {
         break label112;
       }
     }
     label103:
     label112:
-    for (String str2 = amtj.a(2131702380);; str2 = amtj.a(2131702378))
+    for (String str2 = anvx.a(2131702731);; str2 = anvx.a(2131702729))
     {
-      bfur.a(this, 230, str1, str3, amtj.a(2131702379), str2, new ajmu(this, paramBoolean), new ajmv(this, paramBoolean)).show();
+      bhdj.a(this, 230, str1, str3, anvx.a(2131702730), str2, new akii(this, paramBoolean), new akij(this, paramBoolean)).show();
       return;
-      str1 = amtj.a(2131702376);
+      str1 = anvx.a(2131702727);
       break;
     }
   }
@@ -137,8 +138,8 @@ public class DialogBaseActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Ajmx = new ajmx(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp = ((PhoneContactManagerImp)this.app.getManager(11));
+    this.jdField_a_of_type_Akil = new akil(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp = ((PhoneContactManagerImp)this.app.getManager(QQManagerFactory.CONTACT_MANAGER));
     return true;
   }
   

@@ -1,22 +1,121 @@
-import java.util.Comparator;
+import android.graphics.drawable.Drawable;
+import android.view.View.OnClickListener;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-class mbf
-  implements Comparator<lno>
+public abstract class mbf
 {
-  mbf(mbd parammbd) {}
-  
-  public int a(lno paramlno1, lno paramlno2)
+  public static void a(long paramLong, VideoAppInterface paramVideoAppInterface)
   {
-    if (paramlno1.a) {}
-    while (paramlno2.a) {
-      return -1;
+    if (paramVideoAppInterface == null) {
+      return;
     }
-    return 0;
+    QLog.w("NewTipsManager", 1, "hideAllTips, seq[" + paramLong + "]");
+    ((lit)paramVideoAppInterface.a(11)).b();
   }
+  
+  public static void a(VideoAppInterface paramVideoAppInterface)
+  {
+    if (paramVideoAppInterface == null) {
+      return;
+    }
+    ((lit)paramVideoAppInterface.a(11)).c();
+  }
+  
+  public static void a(VideoAppInterface paramVideoAppInterface, int paramInt)
+  {
+    if (paramVideoAppInterface == null) {
+      return;
+    }
+    ((lit)paramVideoAppInterface.a(11)).a(paramInt);
+  }
+  
+  public static void a(VideoAppInterface paramVideoAppInterface, boolean paramBoolean)
+  {
+    if (paramVideoAppInterface == null) {
+      return;
+    }
+    ((lit)paramVideoAppInterface.a(11)).a(paramBoolean);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return ((lit)paramVideoAppInterface.a(11)).a(paramInt);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt1, int paramInt2)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return a(paramVideoAppInterface, paramInt1, paramVideoAppInterface.getApp().getString(paramInt2));
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, long paramLong)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return ((lit)paramVideoAppInterface.a(11)).a(paramInt, paramLong);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, long paramLong, boolean paramBoolean)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return ((lit)paramVideoAppInterface.a(11)).a(paramInt, paramLong, paramBoolean);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, String paramString)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return ((lit)paramVideoAppInterface.a(11)).a(paramInt, paramString);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt1, String paramString, Drawable paramDrawable, int paramInt2, View.OnClickListener paramOnClickListener)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return ((lit)paramVideoAppInterface.a(11)).a(paramInt1, paramString, paramDrawable, paramInt2, paramOnClickListener);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, String paramString, View.OnClickListener paramOnClickListener)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return ((lit)paramVideoAppInterface.a(11)).a(paramInt, paramString, null, -1, paramOnClickListener);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, String paramString, long paramLong, boolean paramBoolean)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return ((lit)paramVideoAppInterface.a(11)).a(paramString, paramLong, paramBoolean);
+  }
+  
+  public static void b(VideoAppInterface paramVideoAppInterface)
+  {
+    if (paramVideoAppInterface == null) {
+      return;
+    }
+    ((lit)paramVideoAppInterface.a(11)).d();
+  }
+  
+  public static void b(VideoAppInterface paramVideoAppInterface, boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mbf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,23 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
-
 public class yrx
-  implements Handler.Callback
 {
-  public yrx(SegmentList paramSegmentList) {}
+  public int a;
+  public String a;
+  public int b;
+  public int c;
+  public int d;
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(yrx paramyrx)
   {
-    return SegmentList.a(this.a, paramMessage);
+    this.jdField_a_of_type_JavaLangString = paramyrx.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Int = paramyrx.jdField_a_of_type_Int;
+    this.b = paramyrx.b;
+    this.c = paramyrx.c;
+    this.d = paramyrx.d;
+  }
+  
+  public String toString()
+  {
+    return "TextInfo{text='" + this.jdField_a_of_type_JavaLangString + '\'' + ", textColor=" + this.jdField_a_of_type_Int + ", size=" + this.b + ", state=" + this.c + '}';
   }
 }
 

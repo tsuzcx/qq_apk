@@ -1,61 +1,22 @@
-import android.view.MotionEvent;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import com.tencent.ttpic.baseutils.device.DeviceUtils;
 
-public class bnnp
+class bnnp
+  extends RecyclerView.ItemDecoration
 {
-  public static float a(float paramFloat1, float paramFloat2)
-  {
-    paramFloat1 = (float)Math.sqrt(paramFloat1 * paramFloat1 + paramFloat2 * paramFloat2);
-    if (!Float.isNaN(paramFloat1)) {
-      return paramFloat1;
-    }
-    return 1.0F;
-  }
+  bnnp(bnnl parambnnl) {}
   
-  public static float a(MotionEvent paramMotionEvent)
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    if (paramMotionEvent.getPointerCount() > 1) {
-      return a(paramMotionEvent.getX(0) - paramMotionEvent.getX(1), paramMotionEvent.getY(0) - paramMotionEvent.getY(1));
-    }
-    return 1.0F;
-  }
-  
-  public static float[] a(MotionEvent paramMotionEvent)
-  {
-    float[] arrayOfFloat = new float[2];
-    if (paramMotionEvent.getPointerCount() > 1)
-    {
-      arrayOfFloat[0] = ((paramMotionEvent.getX(0) + paramMotionEvent.getX(1)) / 2.0F);
-      arrayOfFloat[1] = ((paramMotionEvent.getY(0) + paramMotionEvent.getY(1)) / 2.0F);
-    }
-    return arrayOfFloat;
-  }
-  
-  public static float b(float paramFloat1, float paramFloat2)
-  {
-    float f = (float)Math.toDegrees(Math.asin(paramFloat2 / a(paramFloat1, paramFloat2)));
-    if (!Float.isNaN(f))
-    {
-      if ((paramFloat2 >= 0.0F) && (paramFloat1 >= 0.0F)) {}
-      do
-      {
-        return f;
-        if ((paramFloat2 >= 0.0F) && (paramFloat1 <= 0.0F)) {
-          return 180.0F - f;
-        }
-      } while ((paramFloat2 <= 0.0F) && (paramFloat1 >= 0.0F));
-      if ((paramFloat2 <= 0.0F) && (paramFloat1 <= 0.0F)) {
-        return -180.0F - f;
-      }
-    }
-    return 0.0F;
-  }
-  
-  public static float b(MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getPointerCount() > 1) {
-      return b(paramMotionEvent.getX(1) - paramMotionEvent.getX(0), paramMotionEvent.getY(1) - paramMotionEvent.getY(0));
-    }
-    return 0.0F;
+    int i = paramRecyclerView.getChildAdapterPosition(paramView) % 2;
+    int j = (int)(DeviceUtils.getScreenWidth(bnnl.a(this.a)) * 0.04F);
+    paramRect.left = (j - i * j / 2);
+    paramRect.right = ((i + 1) * j / 2);
+    paramRect.bottom = j;
   }
 }
 

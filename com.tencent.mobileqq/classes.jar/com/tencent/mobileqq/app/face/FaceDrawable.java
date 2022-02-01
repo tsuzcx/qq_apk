@@ -9,10 +9,10 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import anho;
-import anhx;
-import bfvo;
-import bjuk;
+import aoke;
+import aokn;
+import bheg;
+import blfw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -48,11 +48,11 @@ public abstract class FaceDrawable
     if ((paramInt1 == 101) || (paramInt1 == 1001)) {
       paramInt3 = 3;
     }
-    this.mFaceInfo = new FaceInfo(paramInt1, paramString, false, paramByte, anho.a((byte)paramInt3), paramBoolean1, paramInt2, paramBoolean2, paramInt4);
+    this.mFaceInfo = new FaceInfo(paramInt1, paramString, false, paramByte, aoke.a((byte)paramInt3), paramBoolean1, paramInt2, paramBoolean2, paramInt4);
     if ((paramInt1 == 4) && (!TroopUtils.hasSetTroopHead(paramString))) {
       this.mFaceInfo.a = 113;
     }
-    if ((this instanceof anhx))
+    if ((this instanceof aokn))
     {
       paramAppInterface = getBitmapFromCache();
       if (paramAppInterface == null) {
@@ -87,18 +87,18 @@ public abstract class FaceDrawable
   public static Drawable getDefaultDrawable(int paramInt1, int paramInt2)
   {
     if (paramInt1 == 4) {
-      return bfvo.c();
+      return bheg.c();
     }
     if ((paramInt1 == 113) || (paramInt1 == 101) || (paramInt1 == 1001)) {
-      return bfvo.e();
+      return bheg.e();
     }
     if (paramInt1 == 115) {
-      return bfvo.a(true);
+      return bheg.a(true);
     }
     if (paramInt2 == 1) {
       return new ColorDrawable(Color.parseColor("#ebe9e9"));
     }
-    return bfvo.b();
+    return bheg.b();
   }
   
   public static FaceDrawable getFaceDrawable(AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString)
@@ -138,7 +138,7 @@ public abstract class FaceDrawable
         return new FaceDrawableImpl(paramAppInterface, paramInt1, 200, paramString, (byte)0, paramInt2, 100, false, paramDrawable1, paramDrawable2, paramOnLoadingStateChangeListener, paramBoolean);
       }
     } while (!(paramAppInterface instanceof NearbyAppInterface));
-    return new anhx(paramAppInterface, paramInt1, 200, paramString, (byte)1, paramInt2, false, paramDrawable1, paramDrawable2, paramOnLoadingStateChangeListener, paramBoolean);
+    return new aokn(paramAppInterface, paramInt1, 200, paramString, (byte)1, paramInt2, false, paramDrawable1, paramDrawable2, paramOnLoadingStateChangeListener, paramBoolean);
   }
   
   public static FaceDrawable getFaceDrawableFrom(AppInterface paramAppInterface, int paramInt1, String paramString, int paramInt2)
@@ -199,7 +199,7 @@ public abstract class FaceDrawable
         return new FaceDrawableImpl(paramAppInterface, 32, paramInt1, paramString, (byte)1, paramInt2, 100, true, localDrawable, localDrawable, paramOnLoadingStateChangeListener, paramBoolean);
       }
     } while (!(paramAppInterface instanceof NearbyAppInterface));
-    return new anhx(paramAppInterface, 32, paramInt1, paramString, (byte)1, paramInt2, true, localDrawable, localDrawable, paramOnLoadingStateChangeListener, paramBoolean);
+    return new aokn(paramAppInterface, 32, paramInt1, paramString, (byte)1, paramInt2, true, localDrawable, localDrawable, paramOnLoadingStateChangeListener, paramBoolean);
   }
   
   public static FaceDrawable getStrangerFaceDrawable(AppInterface paramAppInterface, int paramInt1, String paramString, int paramInt2, boolean paramBoolean)
@@ -218,7 +218,7 @@ public abstract class FaceDrawable
         return new FaceDrawableImpl(paramAppInterface, 32, paramInt1, paramString, (byte)1, paramInt2, 100, true, localDrawable, localDrawable, null, paramBoolean);
       }
     } while (!(paramAppInterface instanceof NearbyAppInterface));
-    return new anhx(paramAppInterface, 32, paramInt1, paramString, (byte)1, paramInt2, true, localDrawable, localDrawable, null, paramBoolean);
+    return new aokn(paramAppInterface, 32, paramInt1, paramString, (byte)1, paramInt2, true, localDrawable, localDrawable, null, paramBoolean);
   }
   
   public static FaceDrawable getStrangerFaceDrawable(AppInterface paramAppInterface, int paramInt, String paramString, boolean paramBoolean)
@@ -242,7 +242,7 @@ public abstract class FaceDrawable
         return new FaceDrawableImpl(paramAppInterface, 32, paramInt, paramString, (byte)1, 3, 100, paramBoolean1, localDrawable, localDrawable, null, paramBoolean2);
       }
     } while (!(paramAppInterface instanceof NearbyAppInterface));
-    return new anhx(paramAppInterface, 32, paramInt, paramString, (byte)1, 3, paramBoolean1, localDrawable, localDrawable, null, paramBoolean2);
+    return new aokn(paramAppInterface, 32, paramInt, paramString, (byte)1, 3, paramBoolean1, localDrawable, localDrawable, null, paramBoolean2);
   }
   
   public static FaceDrawable getUserFaceDrawable(AppInterface paramAppInterface, String paramString, byte paramByte)
@@ -269,7 +269,7 @@ public abstract class FaceDrawable
   
   public void draw(Canvas paramCanvas)
   {
-    if ((this.isSupportMaskView) && (bjuk.a()))
+    if ((this.isSupportMaskView) && (blfw.a()))
     {
       this.tempRectF.set(getBounds());
       if ((this.mFaceInfo != null) && (this.mFaceInfo.c == 1))

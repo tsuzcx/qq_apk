@@ -1,17 +1,9 @@
-import java.util.Comparator;
-
-final class bbef
-  implements Comparator<bayp>
+class bbef
+  implements bbem
 {
-  public int a(bayp parambayp1, bayp parambayp2)
-  {
-    int j = Long.signum(parambayp2.b() - parambayp1.b());
-    int i = j;
-    if (j == 0) {
-      i = bbee.a(parambayp1, parambayp2);
-    }
-    return i;
-  }
+  bbef(bbee parambbee) {}
+  
+  public void a(long paramLong) {}
 }
 
 

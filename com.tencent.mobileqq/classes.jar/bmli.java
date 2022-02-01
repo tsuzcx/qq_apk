@@ -1,24 +1,24 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.aeeditor.module.music.AEEditorLyricPanelDialog.3.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.vip.ad.TianshuRenewalsBarManager.TianshuGetRenewalsBarCallback.1;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import cooperation.vip.tianshu.TianShuGetAdvCallback;
+import mqq.os.MqqHandler;
 
 public class bmli
-  implements Animation.AnimationListener
+  implements TianShuGetAdvCallback
 {
-  bmli(bmlf parambmlf) {}
+  public String a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public bmli(bmlf parambmlf, String paramString)
   {
-    bmlf.a(this.a, false);
-    bmlf.a(this.a).post(new AEEditorLyricPanelDialog.3.1(this));
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
-    bmlf.a(this.a, true);
+    if ((paramBoolean) && (paramGetAdsRsp != null)) {
+      ThreadManager.getUIHandler().postDelayed(new TianshuRenewalsBarManager.TianshuGetRenewalsBarCallback.1(this, paramGetAdsRsp), 500L);
+    }
   }
 }
 

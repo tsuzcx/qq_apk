@@ -1,22 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.GAudioMembersCtrlActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
 
 public class mdt
-  implements View.OnClickListener
+  implements mik
 {
-  public mdt(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
+  public mdt(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI, long paramLong, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.j = true;
+    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.M();
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.d(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.j = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mdt
  * JD-Core Version:    0.7.0.1
  */

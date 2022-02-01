@@ -1,21 +1,15 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import android.os.Bundle;
+import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
 
-class avwy
-  implements awdb
+public abstract interface avwy
 {
-  avwy(avwx paramavwx) {}
+  public abstract avxb a();
   
-  public void a()
-  {
-    if ((avwv.a(this.a.jdField_a_of_type_Avwv) != null) && (avwv.a(this.a.jdField_a_of_type_Avwv).sessionInfo != null)) {
-      this.a.jdField_a_of_type_Awdi.a(this.a.jdField_a_of_type_JavaUtilList, 2, avwv.a(this.a.jdField_a_of_type_Avwv).sessionInfo.curType);
-    }
-    this.a.jdField_a_of_type_Awdi.a();
-    if (avwv.a(this.a.jdField_a_of_type_Avwv) != null) {
-      avwv.a(this.a.jdField_a_of_type_Avwv).setLeftCheckBoxVisible(false, null, false);
-    }
-  }
+  public abstract void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData);
+  
+  public abstract void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData, Bundle paramBundle, avxa paramavxa);
+  
+  public abstract void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData, Bundle paramBundle, avxa paramavxa);
 }
 
 

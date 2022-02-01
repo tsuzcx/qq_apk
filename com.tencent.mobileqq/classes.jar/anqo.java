@@ -1,30 +1,26 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
 
-public class anqo
-  extends anri
+final class anqo
+  implements Animation.AnimationListener
 {
-  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
+  anqo(View paramView) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramQQAppInterface = new anqn(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "ftssearch";
-    paramQQAppInterface.c = "openmixweb";
-    paramContext = paramString.replace("mqqapi://ftssearch/openmixweb?", "").replace("^?", "").split("&");
-    if (paramContext != null)
+    if ((this.a != null) && (this.a.getVisibility() == 0))
     {
-      int i = 0;
-      while (i < paramContext.length)
-      {
-        paramString = paramContext[i].split("=");
-        if ((paramString != null) && (paramString.length == 2)) {
-          paramQQAppInterface.a(paramString[0], paramString[1]);
-        }
-        i += 1;
-      }
+      paramAnimation = AnimationUtils.loadAnimation(this.a.getContext(), 2130772231);
+      paramAnimation.setAnimationListener(this);
+      this.a.startAnimation(paramAnimation);
     }
-    return paramQQAppInterface;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

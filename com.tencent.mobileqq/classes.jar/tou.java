@@ -1,64 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-
 public class tou
-  implements tgj
 {
-  public tou(ViolaBaseView paramViolaBaseView, String paramString1, String paramString2, tox paramtox) {}
-  
-  public void a()
-  {
-    String str1 = noe.a(this.jdField_a_of_type_JavaLangString);
-    str1 = str1 + this.jdField_a_of_type_JavaLangString + File.separator;
-    String str2 = nny.d(this.b);
-    if (new File(str1 + str2).exists()) {
-      if (QLog.isColorLevel()) {
-        QLog.e(ViolaBaseView.a(), 2, "downloadOfflineSuccess js exists [url:" + this.b + "]");
-      }
-    }
-    do
-    {
-      for (;;)
-      {
-        str1 = tgc.a(this.b);
-        if (TextUtils.isEmpty(str1)) {
-          break;
-        }
-        if (this.jdField_a_of_type_Tox != null) {
-          this.jdField_a_of_type_Tox.a(str1);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e(ViolaBaseView.a(), 2, "downloadOfflineSuccess and jsSource succ [url:" + this.b + "]");
-        }
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.e(ViolaBaseView.a(), 2, "downloadOfflineSuccess js no exists [url:" + this.b + "]");
-        }
-      }
-      if (this.jdField_a_of_type_Tox != null) {
-        this.jdField_a_of_type_Tox.a();
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e(ViolaBaseView.a(), 2, "downloadOfflineSuccess but js null [url:" + this.b + "]");
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Tox != null) {
-      this.jdField_a_of_type_Tox.a();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e(ViolaBaseView.a(), 2, "downloadOfflineFailed [url:" + this.b + "]");
-    }
-  }
+  public String a;
+  public tot a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tou
  * JD-Core Version:    0.7.0.1
  */

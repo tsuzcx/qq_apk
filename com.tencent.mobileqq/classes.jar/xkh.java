@@ -1,18 +1,22 @@
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.widget.MediaController;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
 public class xkh
-  implements AbsListView.OnScrollListener
+  implements xlw
 {
-  public xkh(StoryMemoriesFragment paramStoryMemoriesFragment, yqm paramyqm) {}
+  public xkh(TextureVideoView paramTextureVideoView) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(xlu paramxlu)
   {
-    this.jdField_a_of_type_Yqm.a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    this.a.jdField_a_of_type_Int = 5;
+    this.a.b = 5;
+    if (this.a.jdField_a_of_type_AndroidWidgetMediaController != null) {
+      this.a.jdField_a_of_type_AndroidWidgetMediaController.hide();
+    }
+    if (this.a.jdField_a_of_type_Xlw != null) {
+      this.a.jdField_a_of_type_Xlw.a(this.a.jdField_a_of_type_Xlu);
+    }
   }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 

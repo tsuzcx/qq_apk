@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.preload;
 
 import com.tencent.qphone.base.util.QLog;
-import pyj;
-import pyk;
-import pyl;
-import pyp;
+import qko;
+import qkp;
+import qkq;
+import qku;
 
 public class FeedsPreloadManager$4
   implements Runnable
 {
-  public FeedsPreloadManager$4(pyl parampyl, pyk parampyk, long paramLong) {}
+  public FeedsPreloadManager$4(qkq paramqkq, qkp paramqkp, long paramLong) {}
   
   public void run()
   {
-    pyj localpyj = pyj.a();
-    if (localpyj != null)
+    qko localqko = qko.a();
+    if (localqko != null)
     {
-      if (!pyp.b(this.jdField_a_of_type_Pyk.a)) {
+      if (!qku.b(this.jdField_a_of_type_Qkp.a)) {
         QLog.d("FeedsPreloadManager", 1, "is not latest request, do not update preload cache.");
       }
     }
@@ -30,7 +30,7 @@ public class FeedsPreloadManager$4
       return;
     }
     QLog.d("FeedsPreloadManager", 1, "update preload cache.");
-    localpyj.a(this.jdField_a_of_type_Pyk);
+    localqko.a(this.jdField_a_of_type_Qkp);
   }
 }
 

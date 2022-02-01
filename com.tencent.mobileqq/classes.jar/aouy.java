@@ -1,9 +1,28 @@
-class aouy
-  extends aoux
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
+public class aouy
+  extends aouc
 {
-  private aouy()
+  public aouy(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    super(null);
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      vvh.a(this.jdField_a_of_type_AndroidContentContext, this.c, this.jdField_a_of_type_JavaUtilHashMap);
+      return true;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QCircleAction", 1, "doAction error: " + localException.getMessage());
+      a("QCircleAction");
+    }
+    return false;
   }
 }
 

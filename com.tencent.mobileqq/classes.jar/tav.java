@@ -1,25 +1,6 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.pubaccount.readinjoy.view.ucrop.GestureCropImageView;
-
-public class tav
-  extends GestureDetector.SimpleOnGestureListener
+public abstract interface tav
 {
-  private tav(GestureCropImageView paramGestureCropImageView) {}
-  
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
-  {
-    if (GestureCropImageView.a(this.a)) {
-      this.a.a(this.a.c(), paramMotionEvent.getX(), paramMotionEvent.getY(), 200L);
-    }
-    return super.onDoubleTap(paramMotionEvent);
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    this.a.a(-paramFloat1, -paramFloat2);
-    return true;
-  }
+  public abstract void a();
 }
 
 

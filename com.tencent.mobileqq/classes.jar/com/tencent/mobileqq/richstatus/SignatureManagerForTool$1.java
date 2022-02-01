@@ -2,9 +2,9 @@ package com.tencent.mobileqq.richstatus;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import baos;
-import bgfm;
-import bgfo;
+import bbvh;
+import bhoh;
+import bhoj;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.utils.FileUtils;
@@ -17,17 +17,17 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class SignatureManagerForTool$1
   implements Runnable
 {
-  public SignatureManagerForTool$1(baos parambaos, int paramInt) {}
+  public SignatureManagerForTool$1(bbvh parambbvh, int paramInt) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.e("Signature.TOOL", 2, "in getTemplateInfo info" + this.a);
     }
-    Object localObject1 = (bgfo)baos.a(this.this$0).get(Integer.valueOf(this.a));
+    Object localObject1 = (bhoj)bbvh.a(this.this$0).get(Integer.valueOf(this.a));
     Object localObject2;
     boolean bool;
-    if ((localObject1 == null) || (!((bgfo)localObject1).a.get())) {
+    if ((localObject1 == null) || (!((bhoj)localObject1).a.get())) {
       if (QLog.isColorLevel())
       {
         localObject2 = new StringBuilder().append("getTemplateInfo info == null: ");
@@ -50,16 +50,16 @@ public class SignatureManagerForTool$1
       }
       localObject2 = FileUtils.readFileToStringEx((File)localObject2, -1);
     } while (TextUtils.isEmpty((CharSequence)localObject2));
-    bgfm.a((String)localObject2, (bgfo)localObject1);
-    ((bgfo)localObject1).a.set(false);
-    baos.a(this.this$0);
+    bhoh.a((String)localObject2, (bhoj)localObject1);
+    ((bhoj)localObject1).a.set(false);
+    bbvh.a(this.this$0);
     this.this$0.notifyObservers(Integer.valueOf(3));
     return;
     label208:
     this.this$0.notifyObservers(Integer.valueOf(9));
     localObject1 = new Bundle();
     ((Bundle)localObject1).putInt("id", this.a);
-    QIPCClientHelper.getInstance().callServer("VasFontIPCModule", gk.d, (Bundle)localObject1, baos.a(this.this$0));
+    QIPCClientHelper.getInstance().callServer("VasFontIPCModule", gk.d, (Bundle)localObject1, bbvh.a(this.this$0));
   }
 }
 

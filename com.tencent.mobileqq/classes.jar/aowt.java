@@ -1,18 +1,33 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.ark.browser.ArkBrowserFragment;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aowt
-  implements bgxc
+  extends aoui
 {
-  public aowt(ArkBrowserFragment paramArkBrowserFragment) {}
-  
-  public void a(String paramString)
+  public aouc a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoul paramaoul)
   {
-    this.a.a = paramString;
-    paramString = this.a.getWebView();
-    if (paramString != null) {
-      paramString.callJs("NativeApi.lightappGetShareData();");
+    paramQQAppInterface = new aows(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "schedule";
+    paramQQAppInterface.c = "showDetail";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
     }
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
+    {
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
+    }
+    return paramQQAppInterface;
   }
 }
 

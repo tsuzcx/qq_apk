@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import apbm;
-import bbqy;
+import aqeq;
+import bcxs;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class DynamicAvatarManager$1$1
@@ -11,7 +11,7 @@ class DynamicAvatarManager$1$1
   
   public void run()
   {
-    bbqy.a((QQAppInterface)apbm.a(this.a.this$0), false);
+    bcxs.a((QQAppInterface)aqeq.a(this.a.this$0), false);
   }
 }
 

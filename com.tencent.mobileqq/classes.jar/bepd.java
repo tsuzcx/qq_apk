@@ -1,15 +1,19 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.together.writetogether.statemachine.CreatingState;
+import java.util.List;
 
-public abstract class bepd<VH extends RecyclerView.ViewHolder, D extends beno>
-  extends beok<VH, D>
+class bepd
+  extends beql<CreatingState>
 {
-  public bepd(XMediaEditor paramXMediaEditor)
+  bepd(bepc parambepc, CreatingState paramCreatingState, List paramList)
   {
-    super(paramXMediaEditor);
+    super(paramCreatingState, paramList);
   }
   
-  public abstract void a(D paramD);
+  public void a(CreatingState paramCreatingState)
+  {
+    super.a(paramCreatingState);
+    bepc.a(this.a).e();
+  }
 }
 
 

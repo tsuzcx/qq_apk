@@ -1,33 +1,27 @@
-import android.content.Context;
-import android.text.Layout;
-import android.widget.TextView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity;
 
 public class ypt
+  implements Animator.AnimatorListener
 {
-  public static String a(TextView paramTextView, int paramInt)
+  public ypt(QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    Layout localLayout = paramTextView.getLayout();
-    String str = paramTextView.getText().toString();
-    paramTextView = str;
-    if (localLayout != null)
-    {
-      paramTextView = str;
-      if (localLayout.getLineCount() > paramInt) {
-        paramTextView = str.substring(0, localLayout.getLineStart(paramInt));
-      }
-    }
-    return paramTextView;
+    this.a.finish();
+    this.a.overridePendingTransition(0, 2130772041);
   }
   
-  public static ypu a(Context paramContext, int paramInt1, int paramInt2, String paramString)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return new yqe(paramContext);
+    this.a.finish();
+    this.a.overridePendingTransition(0, 2130772041);
   }
   
-  public static float[] a(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    return new float[] { (float)(paramFloat1 * Math.cos(paramFloat3 * 3.141592653589793D / 180.0D)) - (float)(paramFloat2 * Math.sin(paramFloat3 * 3.141592653589793D / 180.0D)), (float)(paramFloat1 * Math.sin(paramFloat3 * 3.141592653589793D / 180.0D)) + (float)(paramFloat2 * Math.cos(paramFloat3 * 3.141592653589793D / 180.0D)) };
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

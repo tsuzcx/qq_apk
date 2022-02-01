@@ -1,31 +1,54 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import android.content.Intent;
+import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class aywy
-  implements bamo
+public class aywy
+  extends MSFServlet
 {
-  private WeakReference<ayws> a;
-  
-  public aywy(ayws paramayws)
+  public String[] getPreferSSOCommands()
   {
-    this.a = new WeakReference(paramayws);
+    return null;
   }
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileContentSignComponent", 2, String.format("onGetIcon actionId=%s size=%s icon=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramBitmap }));
-    }
-    if (paramBitmap != null)
+    if (paramIntent != null)
     {
-      paramBitmap = (ayws)this.a.get();
-      if ((paramBitmap != null) && (ayws.f(paramBitmap) != null))
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
+    }
+    for (;;)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("OlympicToolServlet", 4, "onReceive: " + paramFromServiceMsg.getServiceCmd());
+      }
+      ((OlympicToolAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
+      return;
+      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (paramIntent != null)
+    {
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (paramIntent != null)
       {
-        RichStatus localRichStatus = ((aymg)ayws.g(paramBitmap)).jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus;
-        if ((localRichStatus != null) && (localRichStatus.actionId == paramInt1)) {
-          ayws.a(paramBitmap, ((aymg)ayws.h(paramBitmap)).jdField_a_of_type_ComTencentMobileqqDataCard, false);
+        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
+        paramPacket.putSendData(paramIntent.getWupBuffer());
+        paramPacket.setTimeout(paramIntent.getTimeout());
+        paramPacket.setAttributes(paramIntent.getAttributes());
+        if (!paramIntent.isNeedCallback()) {
+          paramPacket.setNoResponse();
+        }
+        if (QLog.isDevelopLevel()) {
+          QLog.i("OlympicToolServlet", 4, "send: " + paramIntent.getServiceCmd());
         }
       }
     }

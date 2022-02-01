@@ -1,45 +1,62 @@
 import android.text.TextUtils;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.util.Map;
+import mqq.manager.TicketManager;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class pjx
-  extends azvc
+final class pjx
+  implements WtTicketPromise
 {
-  public pjx(KandianMergeManager paramKandianMergeManager) {}
+  pjx(TicketManager paramTicketManager, QQAppInterface paramQQAppInterface) {}
   
-  public void a(String paramString, List<NumRedMsg.NumMsgBusi> paramList)
+  public void Done(Ticket paramTicket)
   {
-    if (!"kandian_num_red_pnt_buffer".equals(paramString)) {}
-    while ((paramList == null) || (paramList.isEmpty())) {
-      return;
-    }
-    paramString = ((NumRedMsg.NumMsgBusi)paramList.get(paramList.size() - 1)).str_ext.get();
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramList = KandianMsgBoxRedPntInfo.createFromJSON(paramString);
-      if ((paramList == null) || (paramList.mMsgCnt <= 0) || ((KandianMergeManager.a(this.a) != null) && (paramList.mSeq <= KandianMergeManager.a(this.a).mSeq)))
-      {
-        QLog.d("KandianMergeManager", 2, new Object[] { "[redpnt_center]new msgbox red info has error, local : ", KandianMergeManager.a(this.a), "new : ", paramList });
-        return;
-      }
-      if (Aladdin.getConfig(215).getIntegerFromString("message_reddot_style", 1) == 2) {
-        break label183;
-      }
-      this.a.a(paramList);
+    int j = 0;
+    int i;
+    if (paramTicket == null) {
+      i = 1;
     }
     for (;;)
     {
-      QLog.d("KandianMergeManager", 1, "handlerRedPntCenterNotify | num red pnt buffer : " + paramString);
+      QLog.i(pju.a(), 1, "getPskeyFromServerAndRetry get pskey from server : Done, result: " + i);
+      pju.a(this.jdField_a_of_type_MqqManagerTicketManager.getPskey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "m.tencent.com"));
+      if ((!TextUtils.isEmpty(pju.b())) && (pju.b().length() > 0)) {
+        QLog.i(pju.a(), 1, "getPskeyFromServerAndRetry get pskey from server success!");
+      }
       return;
-      label183:
-      pkm.a().j(1);
+      if ((paramTicket != null) && (paramTicket._pskey_map == null))
+      {
+        i = 2;
+      }
+      else
+      {
+        i = j;
+        if (paramTicket != null)
+        {
+          i = j;
+          if (paramTicket._pskey_map != null)
+          {
+            i = j;
+            if (paramTicket._pskey_map.get("m.tencent.com") == null) {
+              i = 3;
+            }
+          }
+        }
+      }
     }
+  }
+  
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    QLog.i(pju.a(), 1, "getPskeyFromServerAndRetry get pskey from server : Failed, " + paramErrMsg);
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    QLog.i(pju.a(), 1, "getPskeyFromServerAndRetry get pskey from server : Timeout, " + paramErrMsg);
   }
 }
 

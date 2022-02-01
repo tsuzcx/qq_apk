@@ -1,6 +1,6 @@
 package dov.com.qq.im.capture.music;
 
-import bjkz;
+import bkwk;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.transfile.INetEngine;
@@ -35,9 +35,9 @@ abstract class QIMMusicConfigManager$LoadMusicStepTask
   String a(long paramLong)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("OpitrtqeGzopIlwxs").append("_").append("2000000025").append("_").append("SApgehUTVGxZKBQZTt").append("_").append("QmnkKmaTHNDozKdIUA").append("_").append(paramLong);
+    ((StringBuilder)localObject).append("OpitrtqeGzopIlwxs").append("_").append("2000000228").append("_").append("TCOHANTCNlddnsTY").append("_").append("uZliVvhTJzkDPlHX").append("_").append(paramLong);
     localObject = ((StringBuilder)localObject).toString();
-    String str = bjkz.a((String)localObject).toLowerCase();
+    String str = bkwk.a((String)localObject).toLowerCase();
     if (QLog.isColorLevel()) {
       QLog.d("QIMMusicConfigManager", 2, "generate the sign string, pre=" + (String)localObject + ", md5=" + str);
     }

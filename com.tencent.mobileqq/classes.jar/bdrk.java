@@ -1,112 +1,256 @@
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
-import android.text.TextUtils;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.os.Bundle;
+import android.text.TextPaint;
+import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mobileqq.troop.activity.ExtendGridView;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.Pic_list;
-import com.tencent.mobileqq.troop.data.TroopBarMyBar;
-import com.tencent.mobileqq.troop.widget.PublishItemContainer;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.ad.tangram.util.AdExposureChecker;
+import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Hashtable;
+import cooperation.qwallet.plugin.QWalletPicHelper;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import org.jetbrains.annotations.NotNull;
 
 public class bdrk
-  extends Handler
+  extends bdnv
 {
-  public bdrk(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public static AdExposureChecker.ExposureCallback a;
+  public static ArrayList<AdExposureChecker> b = new ArrayList();
+  private static final int s = Color.parseColor("#C7C7C7");
+  private int t;
+  private int u;
   
-  public void handleMessage(Message paramMessage)
+  @NotNull
+  private GradientDrawable a()
   {
-    if (this.a.isFinishing()) {
-      return;
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setCornerRadius(ViewUtils.dip2px(2.0F));
+    localGradientDrawable.setStroke(ViewUtils.dpToPx(0.25F), s);
+    return localGradientDrawable;
+  }
+  
+  @NotNull
+  private ImageView a(Context paramContext, RelativeLayout paramRelativeLayout)
+  {
+    ImageView localImageView = new ImageView(paramContext);
+    localImageView.setId(2131374964);
+    int i = ViewUtils.dpToPx(50.0F);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(i * 16 / 9, i);
+    localLayoutParams.addRule(15);
+    localImageView.setImageDrawable(paramContext.getResources().getDrawable(2130847357));
+    localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    paramRelativeLayout.addView(localImageView, localLayoutParams);
+    return localImageView;
+  }
+  
+  @NotNull
+  private LinearLayout a(Context paramContext, RelativeLayout paramRelativeLayout)
+  {
+    paramContext = new LinearLayout(paramContext);
+    paramContext.setId(2131374965);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+    localLayoutParams.addRule(11);
+    localLayoutParams.addRule(8, 2131374964);
+    paramRelativeLayout.addView(paramContext, localLayoutParams);
+    return paramContext;
+  }
+  
+  private RelativeLayout a(Context paramContext)
+  {
+    paramContext = new RelativeLayout(paramContext);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, ViewUtils.dpToPx(74.0F));
+    paramContext.setPadding(this.t, 0, this.u, 0);
+    paramContext.setLayoutParams(localLayoutParams);
+    if (QLog.isColorLevel()) {
+      QLog.i("QWalletGdtAdManager_StructMsgItemLayout31", 2, "getItemRootView...left:" + this.t + ",right:" + this.u + ",top:" + 0 + ",bottom:" + 0);
     }
-    long l1;
-    label254:
-    long l2;
-    label418:
-    long l3;
-    switch (paramMessage.what)
+    return paramContext;
+  }
+  
+  @NotNull
+  private TextView a(Context paramContext, RelativeLayout paramRelativeLayout)
+  {
+    TextView localTextView = new TextView(paramContext);
+    localTextView.setId(2131374962);
+    localTextView.setText(paramContext.getResources().getText(2131716808));
+    localTextView.setSingleLine(false);
+    localTextView.setMaxLines(2);
+    localTextView.setEllipsize(TextUtils.TruncateAt.END);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
+    localLayoutParams.addRule(1, 2131374964);
+    localLayoutParams.addRule(0, 2131374965);
+    localLayoutParams.addRule(15);
+    localLayoutParams.setMargins(ViewUtils.dip2px(12.0F), 0, ViewUtils.dip2px(12.0F), 0);
+    paramRelativeLayout.addView(localTextView, localLayoutParams);
+    a(paramContext, localTextView);
+    return localTextView;
+  }
+  
+  @NotNull
+  private TextView a(Context paramContext, CharSequence paramCharSequence)
+  {
+    paramContext = new TextView(paramContext);
+    paramContext.setId(2131374966);
+    paramContext.setText(paramCharSequence);
+    paramContext.setTextColor(s);
+    paramContext.setTextSize(1, 10.0F);
+    paramContext.setBackgroundDrawable(a());
+    paramContext.setPadding(ViewUtils.dpToPx(0.8F), 0, 0, ViewUtils.dpToPx(0.8F));
+    return paramContext;
+  }
+  
+  private void a(Context paramContext, LinearLayout paramLinearLayout, int paramInt)
+  {
+    if (paramInt == 12) {
+      paramLinearLayout.addView(a(paramContext, paramContext.getResources().getText(2131716837)));
+    }
+    paramContext = a(paramContext, paramContext.getResources().getText(2131716836));
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
+    localLayoutParams.leftMargin = ViewUtils.dpToPx(2.0F);
+    paramLinearLayout.addView(paramContext, localLayoutParams);
+  }
+  
+  private void a(Context paramContext, RelativeLayout paramRelativeLayout, ImageView paramImageView, LinearLayout paramLinearLayout, TextView paramTextView)
+  {
+    if ((paramContext instanceof BaseActivity)) {}
+    for (akrc localakrc = (akrc)((BaseActivity)paramContext).app.getManager(QQManagerFactory.QWALLET_GDT_AD_MANAGER);; localakrc = null)
     {
-    default: 
-      return;
-    case 1001: 
-      if ((this.a.jdField_a_of_type_Bhht != null) && (this.a.jdField_a_of_type_Bhht.isShowing()))
+      Object localObject = new AdExposureChecker(null, new WeakReference(paramRelativeLayout));
+      if ((localakrc != null) && (localakrc.a() != null) && (localakrc.a().getImageData() != null))
       {
-        this.a.c(false);
-        this.a.rightViewText.setEnabled(true);
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.setItemEnable(true);
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.setEnabled(true);
-        QQToast.a(this.a.getActivity(), 2131695729, 1).b(this.a.getTitleBarHeight());
-        if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar != null) {
-          break label254;
+        GdtAd localGdtAd = localakrc.a();
+        int i = localGdtAd.getProductType();
+        acal localacal = localGdtAd.getImageData();
+        ViewGroup.LayoutParams localLayoutParams = paramImageView.getLayoutParams();
+        if ((localacal.jdField_a_of_type_Int != 0) && (localacal.b != 0)) {
+          localLayoutParams.width = ((int)(Math.min(Math.max(localacal.jdField_a_of_type_Int * 1.0F / localacal.b, 1.0F), 1.777778F) * localLayoutParams.height));
+        }
+        localObject = paramContext.getResources().getDrawable(2130847357);
+        if (localacal.jdField_a_of_type_Int == localacal.b) {
+          localObject = paramContext.getResources().getDrawable(2130847356);
+        }
+        paramImageView.setImageDrawable(QWalletPicHelper.getNetDrawableForQWallet(localacal.jdField_a_of_type_JavaLangString, (Drawable)localObject, (Drawable)localObject));
+        if (QLog.isColorLevel()) {
+          QLog.i("QWalletGdtAdManager_StructMsgItemLayout31", 2, "adInfo:,text:" + localGdtAd.getText() + ",url:" + localacal.jdField_a_of_type_JavaLangString + ",width:" + localacal.jdField_a_of_type_Int + ",height:" + localacal.b + ",paramsWidth:" + localLayoutParams.width + ",paramsHeight:" + localLayoutParams.height + ",productType:" + i);
+        }
+        paramImageView.requestLayout();
+        paramTextView.setText(localGdtAd.getText());
+        a(paramContext, paramLinearLayout, i);
+        paramImageView = new AdExposureChecker(localGdtAd, new WeakReference(paramRelativeLayout));
+        if (a == null) {
+          a = new bdrl(this, localakrc, paramContext, localGdtAd);
+        }
+        paramImageView.setCallback(new WeakReference(a));
+        paramRelativeLayout.setOnClickListener(new bdrm(this, paramContext, localGdtAd, localakrc));
+        if (QLog.isColorLevel()) {
+          QLog.d("QWalletGdtAdManager_StructMsgItemLayout31", 2, "updateAdInfo....startCheck view:" + this);
         }
       }
-      for (localObject = "0";; localObject = this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar.jdField_c_of_type_JavaLangString)
+      for (paramContext = paramImageView;; paramContext = (Context)localObject)
       {
-        bfaj.a("pub_page", "fail", (String)localObject, "51", TroopBarPublishActivity.b(this.a), "");
-        QLog.d("tribe_publish_TroopBarPublishActivity", 2, "uploadVideoThumb failed " + paramMessage.obj);
-        TroopBarPublishActivity.a(this.a, null);
-        l1 = ypi.a(TroopBarPublishActivity.c(this.a));
-        bfaj.a(this.a.getActivity(), "tribe_video", "video_thumb_upload", paramMessage.arg1, String.valueOf(l1), "", "");
+        paramContext.startCheck();
+        b.add(paramContext);
+        if (QLog.isColorLevel()) {
+          QLog.d("QWalletGdtAdManager_StructMsgItemLayout31", 2, "updateAdInfo....adExposureCheckers size:" + b.size());
+        }
+        return;
+        paramRelativeLayout.setOnClickListener(new bdrn(this, paramContext));
+      }
+    }
+  }
+  
+  private void a(Context paramContext, TextView paramTextView)
+  {
+    TextPaint localTextPaint;
+    if ((paramContext instanceof BaseActivity))
+    {
+      paramContext = (aktz)((BaseActivity)paramContext).app.getManager(QQManagerFactory.QWALLET_CONFIG_MANAGER);
+      localTextPaint = paramTextView.getPaint();
+      if (paramContext.a("common", 0, new String[] { "pub_ad_control", "gdt_content_bold" }) != 1) {
+        break label143;
+      }
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      localTextPaint.setFakeBoldText(bool);
+      paramTextView.setTextSize(1, Math.min(Math.max(paramContext.a("common", 24, new String[] { "pub_ad_control", "gdt_content_size" }), 24), 36) >> 1);
+      try
+      {
+        paramTextView.setTextColor(Color.parseColor(paramContext.a("common", "#000000", new String[] { "pub_ad_control", "gdt_content_color" })));
         return;
       }
-    case 1003: 
-      localObject = (TroopBarPublishActivity.Pic_list)bfaj.a.get(TroopBarPublishActivity.c(this.a));
-      if (localObject != null)
+      catch (Throwable paramContext)
       {
-        this.a.jdField_a_of_type_Bdlg.d = ((TroopBarPublishActivity.Pic_list)localObject).url;
-        QLog.d("tribe_publish_TroopBarPublishActivity", 2, "uploadVideoThumb succ " + paramMessage.obj);
-        l1 = ypi.a(TroopBarPublishActivity.c(this.a));
-        bfaj.a(this.a.getActivity(), "tribe_video", "video_thumb_upload", paramMessage.arg1, String.valueOf(l1), String.valueOf(paramMessage.arg2), "");
-        if (!TextUtils.isEmpty(this.a.jdField_a_of_type_Bdlg.jdField_a_of_type_JavaLangString)) {
-          break label418;
-        }
-        this.a.b(this.a.y, true);
+        label143:
+        QLog.e("QWalletGdtAdManager_StructMsgItemLayout31", 1, paramContext, new Object[0]);
+        paramTextView.setTextColor(Color.parseColor("#000000"));
       }
-      for (;;)
+    }
+  }
+  
+  private void a(RelativeLayout paramRelativeLayout)
+  {
+    int i = paramRelativeLayout.getPaddingTop();
+    int j = paramRelativeLayout.getPaddingBottom();
+    paramRelativeLayout.setBackgroundResource(2130838349);
+    paramRelativeLayout.setPadding(this.t, i, this.u, j);
+  }
+  
+  protected int b()
+  {
+    return 31;
+  }
+  
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    if (paramBundle != null) {}
+    for (;;)
+    {
+      try
       {
-        TroopBarPublishActivity.a(this.a, null);
-        return;
-        if ((this.a.jdField_a_of_type_Bhht != null) && (this.a.jdField_a_of_type_Bhht.isShowing())) {
-          this.a.i();
+        if (!paramBundle.getBoolean("isShowQWalletPubAd")) {
+          return new View(paramContext);
+        }
+        this.t = (paramContext.getResources().getDimensionPixelSize(2131298982) - ViewUtils.dip2px(3.0F));
+        this.u = (paramContext.getResources().getDimensionPixelSize(2131298983) - ViewUtils.dip2px(3.0F));
+        if ((paramView instanceof RelativeLayout))
+        {
+          paramView = (RelativeLayout)paramView;
+          paramView.removeAllViews();
+          a(paramView);
+          a(paramContext, paramView, a(paramContext, paramView), a(paramContext, paramView), a(paramContext, paramView));
+          return paramView;
         }
       }
-    case 1011: 
-      paramMessage = (bdnd)paramMessage.obj;
-      this.a.jdField_a_of_type_Bdlg.b = paramMessage.jdField_c_of_type_JavaLangString;
-      this.a.jdField_a_of_type_Bdlg.jdField_a_of_type_JavaLangString = paramMessage.b;
-      TroopBarPublishActivity.a(this.a, null);
-      if ((this.a.jdField_a_of_type_Bhht != null) && (this.a.jdField_a_of_type_Bhht.isShowing())) {
-        this.a.i();
+      catch (Throwable paramContext)
+      {
+        QLog.e("QWalletGdtAdManager_StructMsgItemLayout31", 1, paramContext, new Object[0]);
+        return null;
       }
-      l1 = ypi.a(paramMessage.jdField_a_of_type_JavaLangString);
-      l2 = SystemClock.elapsedRealtime();
-      l3 = paramMessage.jdField_a_of_type_Long;
-      bfaj.a(this.a.getActivity(), "tribe_video", "video_upload", 0, String.valueOf(l1), String.valueOf(l2 - l3), "");
-      return;
+      paramView = a(paramContext);
     }
-    Object localObject = (bdnd)paramMessage.obj;
-    if ((this.a.jdField_a_of_type_Bhht != null) && (this.a.jdField_a_of_type_Bhht.isShowing()))
-    {
-      QQToast.a(this.a, 2131695729, 1).b(this.a.getTitleBarHeight());
-      this.a.c(false);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar != null) {
-        break label732;
-      }
-    }
-    label732:
-    for (paramMessage = "0";; paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar.jdField_c_of_type_JavaLangString)
-    {
-      bfaj.a("pub_page", "fail", paramMessage, "52", TroopBarPublishActivity.b(this.a), "");
-      l1 = ypi.a(((bdnd)localObject).jdField_a_of_type_JavaLangString);
-      l2 = SystemClock.elapsedRealtime();
-      l3 = ((bdnd)localObject).jdField_a_of_type_Long;
-      bfaj.a(this.a.getActivity(), "tribe_video", "video_upload", ((bdnd)localObject).jdField_c_of_type_Int, String.valueOf(l1), String.valueOf(l2 - l3), "");
-      TroopBarPublishActivity.a(this.a, null);
-      return;
-    }
+  }
+  
+  public String b()
+  {
+    return "Layout31";
   }
 }
 

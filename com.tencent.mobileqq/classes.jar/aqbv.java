@@ -1,53 +1,53 @@
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ark.ArkViewImplement.ArkViewInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aqbv
+class aqbv
+  implements View.OnClickListener
 {
-  public List<aqbx> a = new ArrayList();
+  aqbv(aqbu paramaqbu, int paramInt, ArkViewImplement.ArkViewInterface paramArkViewInterface) {}
   
-  public static aqbv a(String paramString)
+  public void onClick(View paramView)
   {
-    aqbv localaqbv = new aqbv();
-    try
-    {
-      paramString = new JSONObject(paramString);
-      if (paramString.has("QRCodeList"))
-      {
-        paramString = paramString.optJSONArray("QRCodeList");
-        Type localType = new aqbw().getClass().getGenericSuperclass();
-        localaqbv.a.addAll(ausy.a(paramString, localType));
-        if (localaqbv.a.size() > 0)
-        {
-          paramString = new aqbx();
-          paramString.jdField_a_of_type_JavaLangString = "default_bg";
-          paramString.c = 1;
-          paramString.jdField_b_of_type_Int = 0;
-          paramString.jdField_a_of_type_Int = 0;
-          paramString.jdField_b_of_type_JavaLangString = "";
-          localaqbv.a.add(paramString);
-        }
+    int i = paramView.getId();
+    if (this.jdField_a_of_type_Int == 2) {
+      if (i == 0) {
+        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(5);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("QrCodeDisplay.QrCodeConfBean", 2, "parse: " + localaqbv.a.size());
-      }
-      return localaqbv;
     }
-    catch (JSONException paramString)
+    for (;;)
     {
-      for (;;)
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (i == 1)
       {
-        paramString.printStackTrace();
+        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(4);
+      }
+      else if (i == 2)
+      {
+        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
+        continue;
+        if (this.jdField_a_of_type_Int == 1)
+        {
+          if (i == 0) {
+            this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(1);
+          } else if (i == 1) {
+            this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(2);
+          } else if (i == 2) {
+            this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
+          }
+        }
+        else {
+          this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqbv
  * JD-Core Version:    0.7.0.1
  */

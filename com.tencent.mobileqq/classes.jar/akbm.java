@@ -1,145 +1,36 @@
-import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import android.os.ResultReceiver;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManagerProxy.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
-import mqq.app.AppRuntime;
 
-public class akbm
-  extends akbl
+class akbm
+  extends ayqy
 {
-  private static volatile akbm a;
+  akbm(akam paramakam) {}
   
-  private akbm(AppRuntime paramAppRuntime)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    super(paramAppRuntime);
-    akbu.a().a();
-  }
-  
-  public static akbm a()
-  {
-    return a(BaseApplicationImpl.getApplication().peekAppRuntime());
-  }
-  
-  @Deprecated
-  public static akbm a(AppRuntime paramAppRuntime)
-  {
-    if (jdField_a_of_type_Akbm == null) {}
-    try
-    {
-      if (jdField_a_of_type_Akbm == null) {
-        jdField_a_of_type_Akbm = new akbm(paramAppRuntime);
-      }
-      return jdField_a_of_type_Akbm;
-    }
-    finally {}
-  }
-  
-  public static ResultReceiver a(ResultReceiver paramResultReceiver)
-  {
-    if (paramResultReceiver == null) {
-      return null;
-    }
-    Parcel localParcel = Parcel.obtain();
-    paramResultReceiver.writeToParcel(localParcel, 0);
-    localParcel.setDataPosition(0);
-    paramResultReceiver = (ResultReceiver)ResultReceiver.CREATOR.createFromParcel(localParcel);
-    localParcel.recycle();
-    return paramResultReceiver;
-  }
-  
-  private void a(String paramString1, Bundle paramBundle, akbe paramakbe, String paramString2)
-  {
-    paramBundle.putParcelable("receiver", a(new PreloadManagerProxy.1(this, null, paramakbe, paramString2)));
-    if (paramString1.equals("downloadModule")) {
-      QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "downloadModule", paramBundle, null);
-    }
-    while (!paramString1.equals("downloadRes")) {
-      return;
-    }
-    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "downloadRes", paramBundle, null);
-  }
-  
-  public void a(DownloadParam paramDownloadParam, akbj paramakbj)
-  {
-    if ((paramDownloadParam == null) || (TextUtils.isEmpty(paramDownloadParam.url))) {}
-    do
-    {
-      return;
-      if (!(this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface))
-      {
-        Bundle localBundle = new Bundle();
-        localBundle.putInt("method_type", 1);
-        localBundle.putSerializable("download_params", paramDownloadParam);
-        QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "preloadCommon", localBundle, new akbo(this, paramakbj, paramDownloadParam));
-        return;
-      }
-    } while (paramakbj == null);
-    paramakbj.onResult(1, PreloadManager.PathResult.getFailRes(paramDownloadParam.url));
-  }
-  
-  public void a(String paramString, ResultReceiver paramResultReceiver)
-  {
-    if (paramResultReceiver == null) {
-      return;
-    }
-    if (!(this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface))
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("id", paramString);
-      QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "getFilePathByResID", localBundle, new akbn(this, paramResultReceiver));
-      return;
-    }
-    paramResultReceiver.send(0, null);
-  }
-  
-  @Deprecated
-  public void a(String paramString1, String paramString2, akbe paramakbe)
-  {
-    if (!(this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface))
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("id", paramString1);
-      localBundle.putString("config_str", paramString2);
-      a("downloadModule", localBundle, paramakbe, paramString1);
-    }
-  }
-  
-  public String e(String paramString)
-  {
-    Object localObject2 = null;
-    Object localObject1;
-    if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)) {
-      localObject1 = localObject2;
-    }
-    for (;;)
-    {
+    if ((paramBoolean1) && (paramBoolean2) && (paramInt != 2)) {
       if (QLog.isColorLevel()) {
-        QLog.d("PreloadManagerProxy", 2, "getVideoResPathByID:" + paramString + "|" + (String)localObject1);
-      }
-      return localObject1;
-      localObject1 = new Bundle();
-      ((Bundle)localObject1).putString("mid", paramString);
-      akbu.a().a();
-      EIPCResult localEIPCResult = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "getVideoResPathByMID", (Bundle)localObject1);
-      localObject1 = localObject2;
-      if (localEIPCResult != null)
-      {
-        localObject1 = localObject2;
-        if (localEIPCResult.isSuccess()) {
-          localObject1 = localEIPCResult.data.getString("path");
-        }
+        QLog.d("MainActivity", 2, "inform onGameCenterMsgReceive.type=" + paramInt);
       }
     }
+    switch (paramInt)
+    {
+    case 2: 
+    case 3: 
+    default: 
+      return;
+    case 0: 
+      this.a.g();
+      return;
+    case 1: 
+      this.a.g();
+      return;
+    case 4: 
+      this.a.g();
+      return;
+    }
+    this.a.g();
+    this.a.e();
+    this.a.f();
   }
 }
 

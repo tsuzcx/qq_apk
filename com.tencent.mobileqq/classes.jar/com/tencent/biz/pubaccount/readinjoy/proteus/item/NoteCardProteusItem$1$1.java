@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.item;
 
-import qcq;
-import qcr;
+import qos;
+import qot;
 
 public class NoteCardProteusItem$1$1
   implements Runnable
 {
-  public NoteCardProteusItem$1$1(qcr paramqcr) {}
+  public NoteCardProteusItem$1$1(qot paramqot) {}
   
   public void run()
   {
-    if (qcq.b(this.a.a)) {
-      qcq.a(this.a.a);
+    if (qos.b(this.a.a)) {
+      qos.a(this.a.a);
     }
   }
 }

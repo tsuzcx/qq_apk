@@ -1,17 +1,21 @@
-import android.graphics.RectF;
-import java.util.List;
-
-public abstract interface ndu
+public class ndu
 {
-  public abstract RectF a();
+  int a;
   
-  public abstract RectF a(long paramLong);
+  public ndu(int paramInt)
+  {
+    this.a = paramInt;
+  }
   
-  public abstract List<ncs> a();
+  public int a()
+  {
+    return this.a;
+  }
   
-  public abstract void a(long paramLong, boolean paramBoolean);
-  
-  public abstract void a(naf paramnaf);
+  public boolean a()
+  {
+    return (this.a >= 0) && (this.a < 10);
+  }
 }
 
 

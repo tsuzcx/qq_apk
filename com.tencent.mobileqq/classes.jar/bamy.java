@@ -1,20 +1,25 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.qassistant.view.VoicePanelSlideContainer;
 
 public class bamy
-  implements TextView.OnEditorActionListener
+  implements Animator.AnimatorListener
 {
-  public bamy(SignTextEditFragment paramSignTextEditFragment) {}
+  public bamy(VoicePanelSlideContainer paramVoicePanelSlideContainer) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)) {
-      bjmm.b(paramTextView);
-    }
-    return true;
+    VoicePanelSlideContainer.a(this.a);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    VoicePanelSlideContainer.a(this.a);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

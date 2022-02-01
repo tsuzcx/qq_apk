@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.shortvideo.util;
 
-import bods;
+import bptk;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class NativeSoLoader$1
@@ -8,10 +8,10 @@ public final class NativeSoLoader$1
 {
   public void run()
   {
-    if (!bods.a().get())
+    if (!bptk.a().get())
     {
-      boolean bool = bods.a("TKGLRenderer");
-      bods.a().getAndSet(bool);
+      boolean bool = bptk.a("TKGLRenderer");
+      bptk.a().getAndSet(bool);
     }
   }
 }

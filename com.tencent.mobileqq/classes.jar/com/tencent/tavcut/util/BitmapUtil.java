@@ -199,6 +199,7 @@ public class BitmapUtil
     if (!new File(paramString).exists()) {
       return null;
     }
+    int k = getImageRotation(paramString);
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
     localOptions.inJustDecodeBounds = true;
     decodeFileWithBuffer(paramString, localOptions);
@@ -225,8 +226,14 @@ public class BitmapUtil
     j = localBitmap1.getHeight();
     float f2 = paramInt1 / i;
     float f3 = paramInt2 / j;
-    if ((f2 > 1.0F) && (f3 > 1.0F)) {
-      return localBitmap1;
+    if ((f2 > 1.0F) && (f3 > 1.0F))
+    {
+      if (k == 0) {
+        return localBitmap1;
+      }
+      paramString = new Matrix();
+      paramString.postRotate(k, localBitmap1.getWidth() / 2.0F, localBitmap1.getHeight() / 2.0F);
+      return retryMatrixBitmap(localBitmap1, i, j, paramString, true);
     }
     paramString = new Matrix();
     if (paramBoolean1)
@@ -239,6 +246,9 @@ public class BitmapUtil
     }
     for (;;)
     {
+      if (k != 0) {
+        paramString.postRotate(k, localBitmap1.getWidth() / 2.0F, localBitmap1.getHeight() / 2.0F);
+      }
       return retryMatrixBitmap(localBitmap1, i, j, paramString, true);
       paramString.postScale(f2, f3);
     }
@@ -376,19 +386,19 @@ public class BitmapUtil
     //   7: invokestatic 43	com/tencent/tavcut/util/BitmapUtil:isValidBitmap	(Landroid/graphics/Bitmap;)Z
     //   10: ifne +14 -> 24
     //   13: getstatic 21	com/tencent/tavcut/util/BitmapUtil:TAG	Ljava/lang/String;
-    //   16: ldc_w 269
+    //   16: ldc_w 273
     //   19: invokestatic 141	com/tencent/tavcut/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   22: iconst_0
     //   23: ireturn
     //   24: aconst_null
     //   25: astore 9
-    //   27: new 271	java/io/FileOutputStream
+    //   27: new 275	java/io/FileOutputStream
     //   30: dup
     //   31: new 145	java/io/File
     //   34: dup
     //   35: aload_3
     //   36: invokespecial 146	java/io/File:<init>	(Ljava/lang/String;)V
-    //   39: invokespecial 274	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   39: invokespecial 278	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   42: astore 10
     //   44: aload 10
     //   46: astore 9
@@ -396,23 +406,23 @@ public class BitmapUtil
     //   49: aload_1
     //   50: iload_2
     //   51: aload 10
-    //   53: invokevirtual 278	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   53: invokevirtual 282	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   56: pop
     //   57: aload 10
     //   59: ifnull +230 -> 289
     //   62: aload 10
-    //   64: invokevirtual 281	java/io/FileOutputStream:flush	()V
+    //   64: invokevirtual 285	java/io/FileOutputStream:flush	()V
     //   67: aload 10
-    //   69: invokevirtual 282	java/io/FileOutputStream:close	()V
+    //   69: invokevirtual 286	java/io/FileOutputStream:close	()V
     //   72: aload 4
     //   74: ifnull +191 -> 265
-    //   77: new 192	android/media/ExifInterface
+    //   77: new 198	android/media/ExifInterface
     //   80: dup
     //   81: aload_3
-    //   82: invokespecial 193	android/media/ExifInterface:<init>	(Ljava/lang/String;)V
+    //   82: invokespecial 199	android/media/ExifInterface:<init>	(Ljava/lang/String;)V
     //   85: astore_0
-    //   86: ldc 192
-    //   88: invokevirtual 286	java/lang/Class:getFields	()[Ljava/lang/reflect/Field;
+    //   86: ldc 198
+    //   88: invokevirtual 290	java/lang/Class:getFields	()[Ljava/lang/reflect/Field;
     //   91: astore_1
     //   92: aload_1
     //   93: arraylength
@@ -427,23 +437,23 @@ public class BitmapUtil
     //   107: aaload
     //   108: astore_3
     //   109: aload_3
-    //   110: invokevirtual 291	java/lang/reflect/Field:getName	()Ljava/lang/String;
+    //   110: invokevirtual 295	java/lang/reflect/Field:getName	()Ljava/lang/String;
     //   113: astore 9
     //   115: aload 9
-    //   117: invokestatic 297	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   117: invokestatic 301	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   120: ifne +37 -> 157
     //   123: aload 9
-    //   125: ldc_w 298
-    //   128: invokevirtual 304	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   125: ldc_w 302
+    //   128: invokevirtual 308	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   131: ifeq +26 -> 157
     //   134: aload_3
-    //   135: ldc 192
-    //   137: invokevirtual 308	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   140: invokevirtual 309	java/lang/Object:toString	()Ljava/lang/String;
+    //   135: ldc 198
+    //   137: invokevirtual 312	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   140: invokevirtual 313	java/lang/Object:toString	()Ljava/lang/String;
     //   143: astore_3
     //   144: aload_3
-    //   145: ldc 195
-    //   147: invokevirtual 313	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   145: ldc 201
+    //   147: invokevirtual 317	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   150: istore 8
     //   152: iload 8
     //   154: ifeq +83 -> 237
@@ -468,9 +478,9 @@ public class BitmapUtil
     //   185: aload_0
     //   186: ifnull +103 -> 289
     //   189: aload_0
-    //   190: invokevirtual 281	java/io/FileOutputStream:flush	()V
+    //   190: invokevirtual 285	java/io/FileOutputStream:flush	()V
     //   193: aload_0
-    //   194: invokevirtual 282	java/io/FileOutputStream:close	()V
+    //   194: invokevirtual 286	java/io/FileOutputStream:close	()V
     //   197: goto -125 -> 72
     //   200: astore_0
     //   201: aload_0
@@ -484,9 +494,9 @@ public class BitmapUtil
     //   215: aload_1
     //   216: ifnull +11 -> 227
     //   219: aload_1
-    //   220: invokevirtual 281	java/io/FileOutputStream:flush	()V
+    //   220: invokevirtual 285	java/io/FileOutputStream:flush	()V
     //   223: aload_1
-    //   224: invokevirtual 282	java/io/FileOutputStream:close	()V
+    //   224: invokevirtual 286	java/io/FileOutputStream:close	()V
     //   227: aload_0
     //   228: athrow
     //   229: astore_1
@@ -495,14 +505,14 @@ public class BitmapUtil
     //   234: goto -7 -> 227
     //   237: aload 4
     //   239: aload_3
-    //   240: invokevirtual 317	android/media/ExifInterface:getAttribute	(Ljava/lang/String;)Ljava/lang/String;
+    //   240: invokevirtual 321	android/media/ExifInterface:getAttribute	(Ljava/lang/String;)Ljava/lang/String;
     //   243: astore 9
     //   245: aload 9
     //   247: ifnull -90 -> 157
     //   250: aload_0
     //   251: aload_3
     //   252: aload 9
-    //   254: invokevirtual 320	android/media/ExifInterface:setAttribute	(Ljava/lang/String;Ljava/lang/String;)V
+    //   254: invokevirtual 324	android/media/ExifInterface:setAttribute	(Ljava/lang/String;Ljava/lang/String;)V
     //   257: goto -100 -> 157
     //   260: astore_0
     //   261: aload_0
@@ -510,7 +520,7 @@ public class BitmapUtil
     //   265: iload 7
     //   267: ireturn
     //   268: aload_0
-    //   269: invokevirtual 323	android/media/ExifInterface:saveAttributes	()V
+    //   269: invokevirtual 327	android/media/ExifInterface:saveAttributes	()V
     //   272: goto -7 -> 265
     //   275: astore_0
     //   276: aload 9

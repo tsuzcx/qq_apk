@@ -1,38 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
+import android.view.View;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import com.tencent.mobileqq.activity.weather.webpage.WeatherArkViewWrapper;
+import com.tencent.mobileqq.activity.weather.webpage.WebViewFragmentWithArk;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
+import kotlin.Metadata;
 
-class amfh
-  implements alqd
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "", "y", "<anonymous parameter 2>", "<anonymous parameter 3>", "<anonymous parameter 4>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onScrollChanged"}, k=3, mv={1, 1, 16})
+public final class amfh
+  implements TouchWebView.OnScrollChangedListener
 {
-  amfh(amez paramamez, int paramInt, String paramString, AppInterface paramAppInterface, File paramFile) {}
+  public amfh(WebViewFragmentWithArk paramWebViewFragmentWithArk) {}
   
-  public void a(boolean paramBoolean, alqc paramalqc)
+  public final void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    paramalqc = alpu.a().a(8, this.jdField_a_of_type_Int);
-    Object localObject = new StringBuilder().append("downloadApolloRes onCheckFinish success:").append(paramBoolean).append(" downloadItem:");
-    if (paramalqc == null) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      QLog.i("ApolloPluginRscLoader", 1, paramBoolean);
-      localObject = amez.a(this.jdField_a_of_type_JavaLangString);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        break;
-      }
-      QLog.e("ApolloPluginRscLoader", 1, "getApolloRsc error callbackId is null resourceUrl:" + this.jdField_a_of_type_JavaLangString);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("WebViewFragmentWithArk", 2, "showPreview scrollChangedListener  y: " + paramInt2 + ", arkLoadState：" + WebViewFragmentWithArk.a(this.a));
     }
-    if (paramalqc == null)
-    {
-      this.jdField_a_of_type_Amez.a((String)localObject, 2, this.jdField_a_of_type_Int + " json里无此id");
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramalqc);
-    alpw.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "", new amfi(this, (String)localObject), localArrayList, false, null);
+    WebViewFragmentWithArk.a(this.a).scrollTo(0, paramInt2);
   }
 }
 

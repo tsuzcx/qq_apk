@@ -1,25 +1,47 @@
 package com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.report;
 
-import android.content.Context;
-import java.util.Map;
-import oiy;
-import ojc;
-import pgw;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.config.beans.SneakyParams;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import olh;
+import org.json.JSONObject;
 
-public class RIJFrameworkReportManager$1
+public final class RIJFrameworkReportManager$1
   implements Runnable
 {
-  public RIJFrameworkReportManager$1(pgw parampgw, boolean paramBoolean1, Map paramMap1, boolean paramBoolean2, Map paramMap2, String paramString, Context paramContext, int paramInt1, int paramInt2, oiy paramoiy, boolean paramBoolean3, long paramLong) {}
+  public RIJFrameworkReportManager$1(int paramInt, long paramLong) {}
   
   public void run()
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.this$0.a(this.jdField_a_of_type_JavaUtilMap, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_JavaUtilMap, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Oiy, this.c, this.jdField_a_of_type_Long);
-    }
-    while (!ojc.b(this.jdField_a_of_type_Int)) {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      Object localObject = Aladdin.get(139);
+      if (localObject == null) {}
+      for (;;)
+      {
+        olh.a(null, "CliOper", "", "", "0X8009EB2", "0X8009EB2", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.jdField_a_of_type_Long), "1", localJSONObject.toString(), false);
+        return;
+        localObject = ((AladdinConfig)localObject).getList("param_list");
+        if (localObject != null)
+        {
+          localObject = ((List)localObject).iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            SneakyParams localSneakyParams = (SneakyParams)((Iterator)localObject).next();
+            localJSONObject.put(localSneakyParams.getPackageName(), localSneakyParams.toString());
+          }
+        }
+      }
       return;
     }
-    this.this$0.a(this.jdField_a_of_type_JavaUtilMap, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_JavaUtilMap, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Oiy, this.c, this.jdField_a_of_type_Long);
+    catch (Exception localException)
+    {
+      QLog.e("RIJFrameworkReportManager", 2, localException.getMessage());
+    }
   }
 }
 

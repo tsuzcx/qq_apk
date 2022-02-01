@@ -1,12 +1,10 @@
 public abstract interface aluh
 {
+  public abstract int a(int paramInt1, int paramInt2, alua paramalua);
+  
   public abstract void a();
   
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

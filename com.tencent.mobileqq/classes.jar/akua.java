@@ -1,24 +1,39 @@
-import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.3.1;
-import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.3.2;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.widget.HorizontalListView;
+import Wallet.RspWalletConfig;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.config.QWalletConfig;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
 
-public class akua
-  implements bbpy
+class akua
+  implements BusinessObserver
 {
-  akua(aktx paramaktx) {}
+  akua(aktz paramaktz, long paramLong, akuc paramakuc, WeakReference paramWeakReference) {}
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.a.post(new PtvTemplateAdapter.3.2(this, paramPtvTemplateInfo, paramInt));
-  }
-  
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
-  {
-    this.a.a.post(new PtvTemplateAdapter.3.1(this, paramPtvTemplateInfo, paramBoolean));
-    if (!paramBoolean) {
-      akrx.a("", "0X80075BB", "", "", "", "");
+    if ((paramInt != 10) || (!paramBoolean)) {}
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QWalletConfigManager", 2, "fail get rsp:" + this.jdField_a_of_type_Long);
+      }
+      aktz.a(this.jdField_a_of_type_Aktz, -1L);
+      return;
     }
+    catch (Throwable paramBundle)
+    {
+      for (;;)
+      {
+        paramBundle.printStackTrace();
+      }
+    }
+    paramBundle = (RspWalletConfig)paramBundle.getSerializable("rsp");
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletConfigManager", 2, "RspWalletConfig|" + paramBundle);
+    }
+    aktz.a(this.jdField_a_of_type_Aktz).handleRsp(paramBundle, this.jdField_a_of_type_Long, this.jdField_a_of_type_Akuc, (aktz)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    aktz.a(this.jdField_a_of_type_Aktz, -1L);
   }
 }
 

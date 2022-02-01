@@ -1,65 +1,28 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import tencent.im.msg.im_msg_body.RichText;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout;
 
 public class azuv
-  implements ayeo
+  extends RecyclerView.ViewHolder
 {
-  int jdField_a_of_type_Int;
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public RoundRelativeLayout a;
+  public ImageView b;
   
-  public azuv(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, String paramString, int paramInt)
+  public azuv(azun paramazun, View paramView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380038));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368621));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetRoundRelativeLayout = ((RoundRelativeLayout)paramView.findViewById(2131363497));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131370107));
+    this.b = ((ImageView)paramView.findViewById(2131368748));
   }
-  
-  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
-  {
-    return null;
-  }
-  
-  public void onSend(ayep paramayep)
-  {
-    if (paramayep.jdField_a_of_type_Int == 0)
-    {
-      MessageForStructing localMessageForStructing = (MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      localMessageForStructing.structingMsg.mResid = paramayep.c;
-      localMessageForStructing.structingMsg.mFileName = String.valueOf(localMessageForStructing.uniseq);
-      ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getMessageFacade().updateMsgContentByUniseq(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, localMessageForStructing.uniseq, localMessageForStructing.structingMsg.getBytes());
-      ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getMessageFacade().sendMessage(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null);
-      if (QLog.isColorLevel()) {
-        QLog.d("ReceiptMsgManager", 2, "send real struct msg done, uniseq: " + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMsgManager", 2, "upload receipt msg pack failed, result.errStr=" + paramayep.b + ",result.errStr=" + paramayep.jdField_a_of_type_JavaLangString + " uniseq=" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.extraflag = 32768;
-    ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getMsgCache().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
-    paramayep = ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getMessageFacade().getLastMessage(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    if ((paramayep != null) && (paramayep.uniseq == this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq)) {
-      paramayep.extraflag = 32768;
-    }
-    paramayep = this.jdField_a_of_type_JavaLangString;
-    int i = this.jdField_a_of_type_Int;
-    long l = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq;
-    ((MessageHandler)((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getBusinessHandler(0)).notifyUI(MessageHandler.a(this.jdField_a_of_type_Int), false, new Object[] { paramayep, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
-  }
-  
-  public void updateMsg(ayep paramayep) {}
 }
 
 

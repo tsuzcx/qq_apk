@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.troop.homework.recite.ui;
 
-import amtj;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -16,20 +15,21 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import bemg;
-import bemh;
-import bemi;
-import bemj;
-import bemk;
-import beml;
-import bemo;
-import bemp;
-import bene;
-import bezd;
-import beze;
-import bfra;
-import bftc;
-import bjnw;
+import anvx;
+import bftj;
+import bftk;
+import bftl;
+import bftm;
+import bftn;
+import bfto;
+import bftr;
+import bfts;
+import bfuh;
+import bghi;
+import bghj;
+import bgzr;
+import bhbu;
+import bkzi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.homework.entry.ui.api.AbsHomeWorkFragment;
 import com.tencent.mobileqq.troop.widget.FlowLayout;
@@ -41,27 +41,27 @@ import java.util.Queue;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import yst;
+import zhm;
 
 public class SearchReciteArticleFragment
   extends AbsHomeWorkFragment
-  implements bezd
+  implements bghi
 {
   protected volatile long a;
   protected View a;
   InputMethodManager a;
   public EditText a;
-  public beml a;
-  public bemp a;
-  protected bene a;
-  protected beze a;
+  public bfto a;
+  public bfts a;
+  protected bfuh a;
+  protected bghj a;
   protected FlowLayout a;
   public LoadMoreXListView a;
   public String a;
   protected boolean a;
   public int b;
   protected View b;
-  protected beze b;
+  protected bghj b;
   protected boolean b;
   
   public static CharSequence a(String paramString1, String paramString2, int paramInt)
@@ -120,18 +120,18 @@ public class SearchReciteArticleFragment
     AbsHomeWorkFragment.a((Activity)paramContext, SearchReciteArticleFragment.class, localIntent, paramInt, "");
   }
   
-  public void a(int paramInt, bemo parambemo)
+  public void a(int paramInt, bftr parambftr)
   {
     this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromInputMethod(this.jdField_a_of_type_AndroidWidgetEditText.getWindowToken(), 0);
     this.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
-    bjnw localbjnw = bjnw.d(getActivity());
-    localbjnw.a(new bemk(this, localbjnw, parambemo, paramInt));
-    if (parambemo.jdField_a_of_type_Int != 2) {
-      localbjnw.c(amtj.a(2131712774));
+    bkzi localbkzi = bkzi.d(getActivity());
+    localbkzi.a(new bftn(this, localbkzi, parambftr, paramInt));
+    if (parambftr.jdField_a_of_type_Int != 2) {
+      localbkzi.c(anvx.a(2131713121));
     }
-    localbjnw.c(amtj.a(2131712758));
-    localbjnw.d(amtj.a(2131712765));
-    localbjnw.show();
+    localbkzi.c(anvx.a(2131713105));
+    localbkzi.d(anvx.a(2131713112));
+    localbkzi.show();
   }
   
   public void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
@@ -204,11 +204,11 @@ public class SearchReciteArticleFragment
                   localObject = str3.substring(1, str3.length() - 1);
                 }
               }
-              this.jdField_a_of_type_Beml.a((String)localObject);
+              this.jdField_a_of_type_Bfto.a((String)localObject);
               i += 1;
               continue;
             }
-            this.jdField_a_of_type_Beml.notifyDataSetChanged();
+            this.jdField_a_of_type_Bfto.notifyDataSetChanged();
             if (!this.jdField_a_of_type_Boolean) {
               a(false);
             }
@@ -238,7 +238,7 @@ public class SearchReciteArticleFragment
         if (i != 0)
         {
           i = 1;
-          bftc.a("Grp_edu", "publish_homework", "get_search_keywords", 0, i, new String[] { paramJSONObject });
+          bhbu.a("Grp_edu", "publish_homework", "get_search_keywords", 0, i, new String[] { paramJSONObject });
           return;
           localObject = String.valueOf(i);
           i = 0;
@@ -280,7 +280,7 @@ public class SearchReciteArticleFragment
       return;
     }
     View localView = this.jdField_b_of_type_AndroidViewView;
-    if (this.jdField_a_of_type_Beml.getCount() != 0) {}
+    if (this.jdField_a_of_type_Bfto.getCount() != 0) {}
     for (;;)
     {
       localView.setVisibility(i);
@@ -293,11 +293,11 @@ public class SearchReciteArticleFragment
   
   protected void b()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)a(2131366179));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetLoadMoreXListView = ((LoadMoreXListView)a(2131376951));
-    this.jdField_a_of_type_AndroidViewView = a(2131371842);
-    this.jdField_b_of_type_AndroidViewView = a(2131370132);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFlowLayout = ((FlowLayout)a(2131366930));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)a(2131366280));
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetLoadMoreXListView = ((LoadMoreXListView)a(2131377223));
+    this.jdField_a_of_type_AndroidViewView = a(2131372032);
+    this.jdField_b_of_type_AndroidViewView = a(2131370306);
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFlowLayout = ((FlowLayout)a(2131367048));
   }
   
   public void b(String paramString)
@@ -310,7 +310,7 @@ public class SearchReciteArticleFragment
       if (QLog.isColorLevel()) {
         QLog.i("SearchReciteArticleFragment", 2, "request search start is " + this.jdField_b_of_type_Int);
       }
-      this.jdField_a_of_type_Beze = this.jdField_a_of_type_Bene.a(localQQAppInterface, this, paramString, this.jdField_b_of_type_Int, 10, 10002);
+      this.jdField_a_of_type_Bghj = this.jdField_a_of_type_Bfuh.a(localQQAppInterface, this, paramString, this.jdField_b_of_type_Int, 10, 10002);
     }
   }
   
@@ -382,14 +382,14 @@ public class SearchReciteArticleFragment
         if (i < m)
         {
           bool2 = bool1;
-          this.jdField_a_of_type_Bemp.a((bemo)bfra.b(localJSONArray.optJSONObject(i), bemo.class));
+          this.jdField_a_of_type_Bfts.a((bftr)bgzr.b(localJSONArray.optJSONObject(i), bftr.class));
           i += 1;
           continue;
         }
         bool2 = bool1;
-        this.jdField_a_of_type_Bemp.a(((JSONObject)localObject).optString("key", ""));
+        this.jdField_a_of_type_Bfts.a(((JSONObject)localObject).optString("key", ""));
         bool2 = bool1;
-        this.jdField_a_of_type_Bemp.notifyDataSetChanged();
+        this.jdField_a_of_type_Bfts.notifyDataSetChanged();
         bool2 = bool1;
         this.jdField_b_of_type_Int += 10;
         i = 1;
@@ -433,7 +433,7 @@ public class SearchReciteArticleFragment
         if (bool1)
         {
           i = 1;
-          bftc.a("Grp_edu", "publish_homework", "kewen_search", 0, i, new String[] { localObject, paramBundle, paramJSONObject });
+          bhbu.a("Grp_edu", "publish_homework", "kewen_search", 0, i, new String[] { localObject, paramBundle, paramJSONObject });
         }
       }
       else
@@ -477,13 +477,13 @@ public class SearchReciteArticleFragment
   
   protected void c()
   {
-    setTitle(amtj.a(2131712764));
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new bemg(this));
-    this.jdField_a_of_type_Beml.a = new bemh(this);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFlowLayout.setAdapter(this.jdField_a_of_type_Beml);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetLoadMoreXListView.setAdapter(this.jdField_a_of_type_Bemp);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetLoadMoreXListView.setOnItemClickListener(new bemi(this));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetLoadMoreXListView.a.a(new bemj(this));
+    setTitle(anvx.a(2131713111));
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new bftj(this));
+    this.jdField_a_of_type_Bfto.a = new bftk(this);
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFlowLayout.setAdapter(this.jdField_a_of_type_Bfto);
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetLoadMoreXListView.setAdapter(this.jdField_a_of_type_Bfts);
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetLoadMoreXListView.setOnItemClickListener(new bftl(this));
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetLoadMoreXListView.a.a(new bftm(this));
     String str = getArguments().getString("keywords", "");
     if (!TextUtils.isEmpty(str)) {
       this.jdField_a_of_type_AndroidWidgetEditText.setText(str);
@@ -496,45 +496,45 @@ public class SearchReciteArticleFragment
     if (localQQAppInterface != null)
     {
       f();
-      this.jdField_b_of_type_Beze = this.jdField_a_of_type_Bene.a(localQQAppInterface, this, this.jdField_a_of_type_JavaLangString, 10001);
+      this.jdField_b_of_type_Bghj = this.jdField_a_of_type_Bfuh.a(localQQAppInterface, this, this.jdField_a_of_type_JavaLangString, 10001);
     }
   }
   
   public void e()
   {
-    if (this.jdField_a_of_type_Beze != null)
+    if (this.jdField_a_of_type_Bghj != null)
     {
-      this.jdField_a_of_type_Beze.cancel(true);
-      this.jdField_a_of_type_Beze = null;
+      this.jdField_a_of_type_Bghj.cancel(true);
+      this.jdField_a_of_type_Bghj = null;
     }
   }
   
   protected void f()
   {
-    if (this.jdField_b_of_type_Beze != null)
+    if (this.jdField_b_of_type_Bghj != null)
     {
-      this.jdField_b_of_type_Beze.cancel(true);
-      this.jdField_b_of_type_Beze = null;
+      this.jdField_b_of_type_Bghj.cancel(true);
+      this.jdField_b_of_type_Bghj = null;
     }
   }
   
   protected void g()
   {
-    QQToast.a(getActivity(), amtj.a(2131712761), 0).a();
+    QQToast.a(getActivity(), anvx.a(2131713108), 0).a();
   }
   
   public int getContentLayoutId()
   {
-    return 2131560640;
+    return 2131560693;
   }
   
   public void init(Bundle paramBundle)
   {
     super.init(paramBundle);
     this.jdField_a_of_type_JavaLangString = paramBundle.getString("troop_uin");
-    this.jdField_a_of_type_Beml = new beml();
-    this.jdField_a_of_type_Bemp = new bemp(this);
-    this.jdField_a_of_type_Bene = new bene();
+    this.jdField_a_of_type_Bfto = new bfto();
+    this.jdField_a_of_type_Bfts = new bfts(this);
+    this.jdField_a_of_type_Bfuh = new bfuh();
     this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager = ((InputMethodManager)getActivity().getSystemService("input_method"));
   }
   

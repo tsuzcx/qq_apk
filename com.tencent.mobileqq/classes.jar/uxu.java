@@ -1,21 +1,84 @@
-import android.support.annotation.NonNull;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.GifDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
 
-final class uxu
-  extends ClickableSpan
+public class uxu
 {
-  uxu(String paramString) {}
+  private URLDrawableDownListener jdField_a_of_type_ComTencentImageURLDrawableDownListener = new uxv(this);
+  private urr jdField_a_of_type_Urr;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(@NonNull View paramView)
+  private URLDrawable a(String paramString, boolean paramBoolean)
   {
-    uyc.a(uxr.a(), "biz_src_jc_gzh_weishi", "weishi://profile?person_id=" + this.a);
+    Object localObject = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = paramBoolean;
+    paramString = URLDrawable.getDrawable(urq.a(paramString), (URLDrawable.URLDrawableOptions)localObject);
+    if ((paramString.getCurrDrawable() instanceof GifDrawable))
+    {
+      localObject = ((GifDrawable)paramString.getCurrDrawable()).getImage();
+      if (paramBoolean) {
+        break label54;
+      }
+      paramString.setIndividualPause(true);
+    }
+    for (;;)
+    {
+      ((AbstractGifImage)localObject).reset();
+      return paramString;
+      label54:
+      paramString.setIndividualPause(false);
+    }
   }
   
-  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  private void b()
   {
-    paramTextPaint.setUnderlineText(false);
+    if (this.jdField_a_of_type_Boolean) {
+      a();
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Urr != null) {
+      this.jdField_a_of_type_Urr.a();
+    }
+    AbstractGifImage.pauseAll();
+  }
+  
+  public void a(URLImageView paramURLImageView, Drawable paramDrawable, String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      paramURLImageView.setImageDrawable(paramDrawable);
+      return;
+    }
+    this.jdField_a_of_type_Boolean = paramBoolean2;
+    paramDrawable = a(paramString, paramBoolean1);
+    if (paramDrawable.getStatus() == 1)
+    {
+      if ((paramDrawable.getCurrDrawable() instanceof GifDrawable))
+      {
+        AbstractGifImage localAbstractGifImage = ((GifDrawable)paramDrawable.getCurrDrawable()).getImage();
+        if ((localAbstractGifImage instanceof urr))
+        {
+          this.jdField_a_of_type_Urr = ((urr)localAbstractGifImage);
+          this.jdField_a_of_type_Urr.a(new uxw(this, paramURLImageView, paramString));
+        }
+      }
+      this.jdField_a_of_type_ComTencentImageURLDrawableDownListener.onLoadSuccessed(paramURLImageView, paramDrawable);
+    }
+    for (;;)
+    {
+      paramURLImageView.setURLDrawableDownListener(this.jdField_a_of_type_ComTencentImageURLDrawableDownListener);
+      paramURLImageView.setImageDrawable(paramDrawable);
+      return;
+      paramDrawable.startDownload();
+    }
   }
 }
 

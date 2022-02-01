@@ -1,25 +1,25 @@
 package com.tencent.open.downloadnew;
 
-import bhzm;
-import biby;
-import bicg;
+import bjko;
+import bjna;
+import bjni;
 
 public class DownloadManager$20
   implements Runnable
 {
-  public DownloadManager$20(biby parambiby, DownloadInfo paramDownloadInfo) {}
+  public DownloadManager$20(bjna parambjna, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
     try
     {
-      bhzm.c("DownloadManager_", this.a.e + " begin getApkCode ......");
-      biby.a(this.this$0).a(this.a.e, this.a.b, biby.a(this.this$0));
+      bjko.c("DownloadManager_", this.a.e + " begin getApkCode ......");
+      bjna.a(this.this$0).a(this.a.e, this.a.b, bjna.a(this.this$0));
       return;
     }
     catch (Exception localException)
     {
-      bhzm.c("DownloadManager_", "downloadSDKClient>>>", localException);
+      bjko.c("DownloadManager_", "downloadSDKClient>>>", localException);
     }
   }
 }

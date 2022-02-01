@@ -14,7 +14,7 @@ public class ABTestConstants
   public static final String EXP_DEFAULT_LAYERCODE = "default";
   public static final String EXP_DEFAULT_PERCENTAGE = "0";
   public static final String HTTP_URL_DEV_FOR_SOURCE = "https://qbad.sparta.html5.qq.com/wabt/get_gray_policy_response";
-  public static final String HTTP_URL_RES_FOR_QQ_SOURCE = "https://ad.browser.qq.com/wabt/get_gray_policy_response";
+  public static final String HTTP_URL_RES_FOR_QQ_SOURCE = "https://505.ab.qq.com/wabt/get_gray_policy_response";
   public static final String HTTP_URL_RES_FOR_SOURCE = "https://casestudy.html5.qq.com/wabt/get_gray_policy_response";
   public static final String JSON_KEY_PARAMS = "params";
   public static final String KEY_EXPERIMENTS_CACHE = "cache";

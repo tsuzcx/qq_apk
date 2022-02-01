@@ -1,35 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCOnGetConnectionListener;
+import androidx.annotation.NonNull;
+import trpc.qq_vgame.common.AvGameCommon.CommonQuestionInfo;
 
-class ngi
-  implements EIPCOnGetConnectionListener
+public class ngi
+  extends ngf
 {
-  public void onConnectBind(EIPCConnection paramEIPCConnection)
+  protected ngf a()
   {
-    if (paramEIPCConnection == null) {}
-    do
-    {
-      return;
-      if (QLog.isDevelopLevel()) {
-        QLog.i("AVGameServerIPCModule", 4, "onConnectBind, [" + paramEIPCConnection.procName + "]");
-      }
-    } while (!TextUtils.equals(paramEIPCConnection.procName, "com.tencent.mobileqq:avgame"));
-    ngg.a(1);
+    return new ngi();
   }
   
-  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
+  public void a(ngf paramngf)
   {
-    if (paramEIPCConnection == null) {}
-    do
-    {
-      return;
-      if (QLog.isDevelopLevel()) {
-        QLog.i("AVGameServerIPCModule", 4, "onConnectUnbind, [" + paramEIPCConnection.procName + "]");
-      }
-    } while (!TextUtils.equals(paramEIPCConnection.procName, "com.tencent.mobileqq:avgame"));
-    ngg.a(2);
+    super.a(paramngf);
+  }
+  
+  public void a(AvGameCommon.CommonQuestionInfo paramCommonQuestionInfo)
+  {
+    super.a(paramCommonQuestionInfo);
+  }
+  
+  public int b()
+  {
+    return 4;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c());
+    return localStringBuilder.toString();
   }
 }
 

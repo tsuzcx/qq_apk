@@ -2,7 +2,7 @@ package com.tencent.mobileqq.webview;
 
 import android.graphics.Color;
 import android.text.TextUtils;
-import bges;
+import bhnm;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager;
 import com.tencent.qphone.base.util.QLog;
@@ -95,7 +95,7 @@ public class WebViewTitleStyleHelper
         break label416;
       }
       str = paramJSONObject.getString("minVersion");
-      if ((TextUtils.isEmpty(str)) || (bges.a(str, "8.4.8.4810"))) {
+      if ((TextUtils.isEmpty(str)) || (bhnm.a(str, "8.4.10.4875"))) {
         break label416;
       }
       i = 0;
@@ -132,7 +132,7 @@ public class WebViewTitleStyleHelper
         if (!TextUtils.isEmpty(str))
         {
           j = i;
-          if (!bges.a("8.4.8.4810", str)) {
+          if (!bhnm.a("8.4.10.4875", str)) {
             j = 0;
           }
         }

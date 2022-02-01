@@ -1,65 +1,21 @@
+import android.app.Activity;
+import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.fragment.BaseFragment;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanageraux.link.LinkByWeiyunFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class attp
+final class attp
+  implements View.OnClickListener
 {
-  public int a;
-  public View.OnClickListener a;
-  public BaseFragment a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b = true;
-  public String c;
-  public boolean c = false;
-  public String d;
-  public String e;
+  attp(Activity paramActivity, FileManagerEntity paramFileManagerEntity, String paramString) {}
   
-  public attp(BaseFragment paramBaseFragment)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment = paramBaseFragment;
-  }
-  
-  public attp a(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    return this;
-  }
-  
-  public attp a(String paramString)
-  {
-    this.d = paramString;
-    return this;
-  }
-  
-  public attp a(boolean paramBoolean)
-  {
-    this.c = paramBoolean;
-    return this;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment.c();
+    if (this.jdField_a_of_type_AndroidAppActivity != null) {
+      LinkByWeiyunFragment.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_JavaLangString, true);
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-  }
-  
-  public attp b(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public attp b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

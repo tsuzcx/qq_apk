@@ -1,39 +1,27 @@
-import com.tencent.mobileqq.activity.shopping.ShoppingFragment;
-import cooperation.qzone.mobilereport.MobileReportManager;
+import java.io.File;
+import java.util.Comparator;
 
-public class albx
-  implements alcd
+final class albx
+  implements Comparator<File>
 {
-  public albx(ShoppingFragment paramShoppingFragment) {}
-  
-  public void a()
+  private int a(String paramString)
   {
-    ShoppingFragment.a(this.a, 1, 0);
-    MobileReportManager.getInstance().reportActionLive("paying", "4", "qq_live", "shopcart_page", "order_paying_btn", 102, 1, System.currentTimeMillis(), "");
+    try
+    {
+      int i = paramString.lastIndexOf('.');
+      if (i == -1) {
+        return Integer.parseInt(paramString);
+      }
+      i = Integer.parseInt(paramString.substring(0, i));
+      return i;
+    }
+    catch (Exception paramString) {}
+    return 0;
   }
   
-  public void b()
+  public int a(File paramFile1, File paramFile2)
   {
-    ShoppingFragment.a(this.a, 1, 1);
-    MobileReportManager.getInstance().reportActionLive("inqueue", "4", "qq_live", "shopcart_page", "order_inqueue_btn", 102, 1, System.currentTimeMillis(), "");
-  }
-  
-  public void c()
-  {
-    ShoppingFragment.a(this.a, 1, 2);
-    MobileReportManager.getInstance().reportActionLive("ship", "4", "qq_live", "shopcart_page", "order_ship_btn", 102, 1, System.currentTimeMillis(), "");
-  }
-  
-  public void d()
-  {
-    ShoppingFragment.a(this.a, 1, 4);
-    MobileReportManager.getInstance().reportActionLive("service", "4", "qq_live", "shopcart_page", "order_service_btn", 102, 1, System.currentTimeMillis(), "");
-  }
-  
-  public void e()
-  {
-    ShoppingFragment.a(this.a, 0, 0);
-    MobileReportManager.getInstance().reportActionLive("all", "4", "qq_live", "shopcart_page", "order_all_btn", 102, 1, System.currentTimeMillis(), "");
+    return a(paramFile1.getName()) - a(paramFile2.getName());
   }
 }
 

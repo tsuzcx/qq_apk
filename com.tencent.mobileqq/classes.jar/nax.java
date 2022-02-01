@@ -1,12 +1,19 @@
-public abstract interface nax
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.wtogether.view.WatchTogetherAdminControlView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class nax
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public nax(WatchTogetherAdminControlView paramWatchTogetherAdminControlView) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void b(int paramInt);
+  public void onClick(View paramView)
+  {
+    WatchTogetherAdminControlView.g(this.a);
+    WatchTogetherAdminControlView.c(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

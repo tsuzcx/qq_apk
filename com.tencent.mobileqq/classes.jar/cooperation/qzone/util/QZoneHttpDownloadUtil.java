@@ -717,7 +717,7 @@ public class QZoneHttpDownloadUtil
     //   1315: aload_3
     //   1316: astore 26
     //   1318: invokestatic 374	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1321: invokestatic 380	bjkq:a	(Landroid/content/Context;)Z
+    //   1321: invokestatic 380	bkwb:a	(Landroid/content/Context;)Z
     //   1324: ifeq +1780 -> 3104
     //   1327: aload_0
     //   1328: astore 23
@@ -846,7 +846,7 @@ public class QZoneHttpDownloadUtil
     //   1553: aload_3
     //   1554: astore 26
     //   1556: aload_2
-    //   1557: invokestatic 387	bjkq:a	(Ljava/io/File;)Ljava/io/File;
+    //   1557: invokestatic 387	bkwb:a	(Ljava/io/File;)Ljava/io/File;
     //   1560: astore 39
     //   1562: aload_0
     //   1563: astore 23

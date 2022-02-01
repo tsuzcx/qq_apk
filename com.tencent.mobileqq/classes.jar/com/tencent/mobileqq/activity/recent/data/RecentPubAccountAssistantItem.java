@@ -1,16 +1,17 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import abwp;
-import afdj;
-import amxz;
+import acmw;
+import afuo;
 import android.content.Context;
 import android.text.TextUtils;
+import aoan;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.PAMessage;
 import com.tencent.mobileqq.data.PAMessage.Item;
 import com.tencent.mobileqq.data.PubAccountAssistantData;
@@ -112,13 +113,13 @@ public class RecentPubAccountAssistantItem
         if (paramIMCoreAppRuntime != null)
         {
           this.mUnreadNum = paramIMCoreAppRuntime.a(localMessage.frienduin, localMessage.istroop);
-          paramIMCoreAppRuntime = (amxz)localQQAppInterface.getManager(56);
+          paramIMCoreAppRuntime = (aoan)localQQAppInterface.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER);
           if (paramIMCoreAppRuntime == null) {
-            break label455;
+            break label456;
           }
           paramIMCoreAppRuntime = paramIMCoreAppRuntime.b((String)localObject2);
           if (paramIMCoreAppRuntime == null) {
-            break label455;
+            break label456;
           }
           str = paramIMCoreAppRuntime.name;
         }
@@ -140,16 +141,16 @@ public class RecentPubAccountAssistantItem
         }
         else
         {
-          label200:
+          label201:
           if ((TextUtils.isEmpty(((MsgSummary)localObject1).strContent)) && (TextUtils.isEmpty(((MsgSummary)localObject1).suffix)))
           {
             if (paramIMCoreAppRuntime != null) {
-              break label452;
+              break label453;
             }
             paramIMCoreAppRuntime = "";
           }
         }
-        label452:
+        label453:
         for (;;)
         {
           ((MsgSummary)localObject1).strContent = paramIMCoreAppRuntime;
@@ -164,11 +165,11 @@ public class RecentPubAccountAssistantItem
           this.mUnreadNum = 0;
           break;
           ((MsgSummary)localObject1).strContent = "";
-          localObject2 = afdj.a(localMessage);
+          localObject2 = afuo.a(localMessage);
           if ((localObject2 == null) || (((PAMessage)localObject2).items == null) || (((PAMessage)localObject2).items.size() == 0))
           {
             buildMessageBody(localMessage, i, localQQAppInterface, paramContext, (MsgSummary)localObject1);
-            break label200;
+            break label201;
           }
           str = ((PAMessage.Item)((PAMessage)localObject2).items.get(0)).title;
           if ((((PAMessage.Item)((PAMessage)localObject2).items.get(0)).cover == null) && (((PAMessage.Item)((PAMessage)localObject2).items.get(0)).digestList != null)) {
@@ -180,7 +181,7 @@ public class RecentPubAccountAssistantItem
             break;
           }
         }
-        label455:
+        label456:
         str = null;
       }
     }

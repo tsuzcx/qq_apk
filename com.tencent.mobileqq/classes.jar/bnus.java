@@ -1,16 +1,16 @@
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
+import android.os.Bundle;
+import eipc.EIPCResult;
 
-public class bnus
+class bnus
+  implements bnup
 {
-  int jdField_a_of_type_Int = 0;
-  boolean jdField_a_of_type_Boolean = false;
-  int b;
-  public boolean b;
+  bnus(bnur parambnur, int paramInt) {}
   
-  private bnus(RMVideoSwitchCameraPicMgr paramRMVideoSwitchCameraPicMgr)
+  public void a(String paramString)
   {
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_b_of_type_Boolean = true;
+    Bundle localBundle = new Bundle();
+    localBundle.putString("effect_group_json_path", paramString);
+    this.jdField_a_of_type_Bnur.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
   }
 }
 

@@ -1,6 +1,38 @@
-public abstract interface aktt
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+
+public class aktt
+  extends RecyclerView.ItemDecoration
 {
-  public abstract void a(boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, String paramString2);
+  private int a;
+  private int b;
+  
+  private aktt(int paramInt1, int paramInt2)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    int i = paramRecyclerView.getChildPosition(paramView);
+    if (i == 0)
+    {
+      paramRect.left = this.a;
+      return;
+    }
+    if (i == paramRecyclerView.getAdapter().getItemCount() - 1)
+    {
+      paramRect.left = this.b;
+      paramRect.right = this.a;
+      return;
+    }
+    paramRect.left = this.b;
+  }
 }
 
 

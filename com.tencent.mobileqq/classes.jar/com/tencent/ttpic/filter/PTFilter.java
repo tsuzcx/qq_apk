@@ -83,7 +83,7 @@ public class PTFilter
   
   public void destroy()
   {
-    this.mFilter.ClearGLSL();
+    this.mFilter.clearGLSL();
     this.mFilterFrame.clear();
   }
   

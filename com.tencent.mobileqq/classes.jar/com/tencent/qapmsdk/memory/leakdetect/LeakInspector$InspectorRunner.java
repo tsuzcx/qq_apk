@@ -11,7 +11,6 @@ import java.lang.ref.WeakReference;
 class LeakInspector$InspectorRunner
   implements Runnable
 {
-  private long occurTime = System.currentTimeMillis();
   private int retryCount = 0;
   private InspectUUID uuid;
   
@@ -38,7 +37,7 @@ class LeakInspector$InspectorRunner
         {
           Logger.INSTANCE.d(new String[] { "QAPM_memory_LeakInspector", "Inspecting ", str, " Time=", String.valueOf(System.currentTimeMillis()), " count=", String.valueOf(this.retryCount) });
           if (this.uuid.weakObj.get() == null) {
-            break label323;
+            break label326;
           }
           int i = this.retryCount + 1;
           this.retryCount = i;
@@ -64,9 +63,9 @@ class LeakInspector$InspectorRunner
       return;
       localDumpResult = LeakInspector.dumpMemory(str, LeakInspector.access$600(), LeakInspector.access$200(this.this$0));
     } while (!localDumpResult.success);
-    LeakInspector.report(this.occurTime, localDumpResult.zipFilePath);
+    LeakInspector.report(this.uuid.className, localDumpResult.zipFilePath);
     return;
-    label323:
+    label326:
     Logger.INSTANCE.d(new String[] { "QAPM_memory_LeakInspector", "inspect ", str, " finished no leak" });
     LeakInspector.access$500().recycle(this.uuid);
   }

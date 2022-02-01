@@ -11,7 +11,7 @@ class OnlineStatusPanel$2$1
   public void run()
   {
     boolean bool = true;
-    if ((this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel$2.a) && (this.jdField_a_of_type_JavaUtilArrayList == this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel$2.this$0.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.a()))
+    if ((this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel$2.a) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.equals(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel$2.this$0.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.a())))
     {
       this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel$2.this$0.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.a();
       this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel$2.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel$2.this$0.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.a(), false);

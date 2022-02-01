@@ -1,19 +1,22 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKuaKuaFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class akse
-  implements Handler.Callback
+public class akse
+  implements View.OnClickListener
 {
-  akse(aksd paramaksd) {}
+  public akse(RedPacketKuaKuaFragment paramRedPacketKuaKuaFragment) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LBSDetetor", 2, "check timeout. reqCookie:" + paramMessage.what);
+    if (RedPacketKuaKuaFragment.a(this.a) != null) {
+      RedPacketKuaKuaFragment.a(this.a).hideSoftInputFromWindow(this.a.getActivity().getWindow().getDecorView().getWindowToken(), 0);
     }
-    aksd.a(this.a, false, null, paramMessage.what);
-    return false;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

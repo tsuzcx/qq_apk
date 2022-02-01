@@ -1,17 +1,53 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.richstatus.SignatureEditFragment;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.widget.ImageView;
+import androidx.annotation.NonNull;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class bann
-  implements DialogInterface.OnClickListener
+  extends ReportDialog
 {
-  public bann(SignatureEditFragment paramSignatureEditFragment) {}
+  public static boolean a;
+  protected Context a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bann(@NonNull Context paramContext, boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
-    VasWebviewUtil.reportCommercialDrainage("signature_update", "click_choose", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+    super(paramContext, 2131755206);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    setCanceledOnTouchOutside(true);
+    jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void dismiss()
+  {
+    jdField_a_of_type_Boolean = false;
+    super.dismiss();
+  }
+  
+  protected void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    paramBundle = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561617, null);
+    setContentView(paramBundle);
+    Object localObject = paramBundle.getLayoutParams();
+    ((ViewGroup.LayoutParams)localObject).width = paramBundle.getResources().getDisplayMetrics().widthPixels;
+    paramBundle.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localObject = getWindow();
+    ((Window)localObject).setWindowAnimations(2131755575);
+    ((Window)localObject).setGravity(80);
+    ((ImageView)paramBundle.findViewById(2131362946)).setOnClickListener(new bano(this));
+  }
+  
+  public void show()
+  {
+    super.show();
   }
 }
 

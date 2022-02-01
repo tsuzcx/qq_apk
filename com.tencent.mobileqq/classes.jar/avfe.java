@@ -1,29 +1,28 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
 
 public class avfe
-  implements View.OnKeyListener
 {
-  public avfe(LocationPickFragment paramLocationPickFragment, EditText paramEditText) {}
+  private final GameCenterSessionInfo a;
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public avfe(GameCenterSessionInfo paramGameCenterSessionInfo)
   {
-    if ((paramInt == 4) && (LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).b()))
-    {
-      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).e();
-      return true;
+    this.a = paramGameCenterSessionInfo;
+  }
+  
+  public String a()
+  {
+    if (this.a.a() == 0) {
+      return this.a.a();
     }
-    if ((paramInt == 84) || (paramInt == 66))
-    {
-      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim());
-      LocationPickFragment.b(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment);
-      return true;
+    return this.a.g();
+  }
+  
+  public String b()
+  {
+    if (this.a.a() == 0) {
+      return this.a.f();
     }
-    return false;
+    return this.a.h();
   }
 }
 

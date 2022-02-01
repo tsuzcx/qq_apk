@@ -1,16 +1,33 @@
 class ascw
-  implements ascz
+  extends anrh
 {
-  ascw(asbj paramasbj) {}
+  ascw(asct paramasct) {}
   
-  public void a(Object[] paramArrayOfObject)
+  protected void doOnDeleteEmoResult(int paramInt)
   {
-    asbj.access$300(this.a, paramArrayOfObject);
+    asct.a(this.a, false);
+    if (this.a.a != null) {
+      this.a.a.e();
+    }
+  }
+  
+  protected void doOnGetEmoListResult(int paramInt)
+  {
+    if ((paramInt == 0) && (this.a.a != null)) {
+      this.a.a.e();
+    }
+  }
+  
+  protected void onCameraEmoSend(boolean paramBoolean, int paramInt)
+  {
+    if (this.a.a != null) {
+      this.a.a.e();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ascw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,23 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.nearby.now.model.Comments;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
 
-public class axyb
+public abstract interface axyb
 {
-  public axvj a;
-  public String a;
-  public List<axyc> a;
-  public axvj b;
-  public List<axyf> b;
+  public abstract void a();
   
-  public axyb()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public abstract void a(Comments.Comment paramComment);
   
-  public axyb(List<axyc> paramList, axvj paramaxvj1, List<axyf> paramList1, String paramString, axvj paramaxvj2)
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Axvj = paramaxvj1;
-    this.jdField_b_of_type_JavaUtilList = paramList1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Axvj = paramaxvj2;
-  }
+  public abstract void a(Comments.Comment paramComment, int paramInt, String paramString);
   
-  public List<axyc> a(boolean paramBoolean)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return localArrayList;
-    }
-    if (paramBoolean)
-    {
-      localArrayList.addAll(this.jdField_a_of_type_JavaUtilList);
-      return localArrayList;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      axyc localaxyc = (axyc)localIterator.next();
-      if (!localaxyc.a) {
-        localArrayList.add(localaxyc);
-      }
-    }
-    return localArrayList;
-  }
+  public abstract void a(Comments paramComments);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void b();
+  
+  public abstract void b(Comments.Comment paramComment);
+  
+  public abstract void c();
 }
 
 

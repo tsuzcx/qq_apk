@@ -1,10 +1,18 @@
-import android.content.pm.ResolveInfo;
-import com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable;
-import java.util.List;
+import com.tencent.mobileqq.transfile.NetResp;
 
 public abstract interface aucs
 {
-  public abstract void a(String paramString1, String paramString2, String paramString3, List<ResolveInfo> paramList, JefsClass.CancelableRunnable paramCancelableRunnable);
+  public abstract long a(NetResp paramNetResp);
+  
+  public abstract void a();
+  
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract byte[] a(byte[] paramArrayOfByte, long paramLong);
+  
+  public abstract void b();
 }
 
 

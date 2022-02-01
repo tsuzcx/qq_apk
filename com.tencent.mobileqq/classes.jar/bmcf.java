@@ -1,21 +1,34 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.ae.view.AEPituCameraCaptureButtonLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qqfav.widget.QfavJumpActivity;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class bmcf
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnClickListener
 {
-  public bmcf(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
+  public bmcf(QfavJumpActivity paramQfavJumpActivity, InputStream paramInputStream) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a(f);
+    try
+    {
+      this.jdField_a_of_type_JavaIoInputStream.close();
+      this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity.finish();
+      return;
+    }
+    catch (IOException paramDialogInterface)
+    {
+      for (;;)
+      {
+        paramDialogInterface.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bmcf
  * JD-Core Version:    0.7.0.1
  */

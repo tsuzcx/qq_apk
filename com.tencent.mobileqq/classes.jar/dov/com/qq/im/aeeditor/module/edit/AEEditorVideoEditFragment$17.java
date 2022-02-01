@@ -9,7 +9,7 @@ class AEEditorVideoEditFragment$17
   
   public void run()
   {
-    QQToast.a(this.this$0.a, 2131689841, 0).a();
+    QQToast.a(this.this$0.a, 2131689870, 0).a();
   }
 }
 

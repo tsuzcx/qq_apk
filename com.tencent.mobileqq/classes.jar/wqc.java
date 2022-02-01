@@ -1,30 +1,28 @@
-import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import java.util.ArrayList;
+import java.util.List;
 
 public class wqc
-  extends QQUIEventReceiver<wpu, wci>
+  extends wpt
 {
-  public wqc(@NonNull wpu paramwpu)
+  public int a;
+  public String a;
+  public List<VideoCollectionItem> a;
+  public String b;
+  public boolean e = true;
+  
+  public wqc(String paramString, ErrorMessage paramErrorMessage)
   {
-    super(paramwpu);
+    super(paramErrorMessage);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a(@NonNull wpu paramwpu, @NonNull wci paramwci)
+  public String toString()
   {
-    if (paramwci.a.isSuccess())
-    {
-      xvv.a(this.TAG, "receive user info event. %s.", paramwci.toString());
-      paramwpu = paramwpu.a();
-      if (paramwpu != null) {
-        paramwpu.a();
-      }
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wci.class;
+    return "GetCollectionListEvent{isEnd=" + this.jdField_a_of_type_Boolean + ", isUpdated=" + this.e + ", isLocalData=" + this.b + ", isFirstPage=" + this.c + ", isRefreshFromLoadMore=" + this.d + ", collectionList=" + this.jdField_a_of_type_JavaUtilList + ", totalVideoCount=" + this.jdField_a_of_type_Int + ", context='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
   }
 }
 

@@ -1,23 +1,61 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
+import android.graphics.Color;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import com.tencent.qphone.base.util.QLog;
 
-class awle
-  implements ValueAnimator.AnimatorUpdateListener
+public class awle
+  implements bpfj
 {
-  awle(awlc paramawlc, WindowManager.LayoutParams paramLayoutParams, ValueAnimator paramValueAnimator) {}
+  public awle(LocationPickFragment paramLocationPickFragment, View paramView1, View paramView2, View paramView3, ImageView paramImageView, View paramView4) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void cancelAnimator() {}
+  
+  public void displayPanel() {}
+  
+  public void displayPanelFinish()
   {
-    if (this.jdField_a_of_type_Awlc.b)
-    {
-      int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x = i;
-      this.jdField_a_of_type_Awlc.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_Awlc.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+    if (LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment) != null) {
+      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).setEnabled(false);
+    }
+    bdla.b(null, "CliOper", "", "", "0X800A95F", "0X800A95F", LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).b(), 0, "", "0", "0", "");
+    this.b.setVisibility(8);
+    this.c.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment.getString(2131693696));
+    if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).b())) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849681);
+    }
+  }
+  
+  public void fadeBackground(float paramFloat)
+  {
+    if (paramFloat < 0.0F) {
       return;
     }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationPickFragment", 2, "[panel] fadeBackground: invoked. alpha: " + paramFloat);
+    }
+    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(Math.round(0.7F * paramFloat * 255.0F), 0, 0, 0));
+  }
+  
+  public void hidePanel()
+  {
+    LocationPickFragment.b(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment);
+  }
+  
+  public void hidePanelFinish()
+  {
+    if (LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment) != null) {
+      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).setEnabled(true);
+    }
+    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).setDisplayFromType(2);
+    this.d.requestFocus();
+    this.b.setVisibility(0);
+    this.c.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment.getString(2131693694));
+    if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (!LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).b())) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849680);
+    }
   }
 }
 

@@ -1,123 +1,45 @@
-import NS_NEW_MOBILE_REPORT.AccessReqHead;
-import NS_NEW_MOBILE_REPORT.AccessRspHead;
-import NS_NEW_MOBILE_REPORT.Terminal;
-import com.qq.taf.jce.JceStruct;
-import com.tencent.beacon.event.UserAction;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.Scroller;
+import com.tencent.widget.MovingView;
 
 public class bldf
-  extends QzoneExternalRequest
+  extends Handler
 {
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static String b = "";
-  private static String c = "";
-  private AccessReqHead jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead;
-  
-  public bldf(long paramLong, ArrayList<String> paramArrayList)
+  public bldf(MovingView paramMovingView, Looper paramLooper)
   {
-    super.setHostUin(paramLong);
-    super.setLoginUserId(paramLong);
-    this.needCompress = false;
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead = new AccessReqHead();
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.loginType = 1;
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.uin = paramLong;
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal = new Terminal();
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.imei = String.valueOf(a());
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.macAddress = String.valueOf(c());
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.androidId = String.valueOf(DeviceInfoUtil.getAndroidID());
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.imsi = String.valueOf(b());
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.mode = String.valueOf(DeviceInfoUtil.getModel());
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.manufacture = String.valueOf(DeviceInfoUtil.getManufactureInfo());
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.qimei = String.valueOf(UserAction.getQIMEI());
-    if (QLog.isColorLevel()) {
-      QLog.d("YYBInstallPackageReportRequest", 1, "YYBInstallPackageReportRequest qimei=" + this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.qimei);
-    }
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.uniqueId = String.valueOf(biaq.c());
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.uninstallPkgList = new ArrayList();
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.uninstallPkgList.addAll(paramArrayList);
+    super(paramLooper);
   }
   
-  public static AccessRspHead a(byte[] paramArrayOfByte, int[] paramArrayOfInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
+    if (paramMessage.what == 1) {
+      if ((this.a.jdField_a_of_type_Boolean) && (!this.a.jdField_b_of_type_Boolean)) {}
     }
-    do
+    while (paramMessage.what != 2)
     {
-      return paramArrayOfByte;
-      paramArrayOfInt = (AccessRspHead)decode(paramArrayOfByte, "NewMobileReport", paramArrayOfInt);
-      paramArrayOfByte = paramArrayOfInt;
-    } while (paramArrayOfInt != null);
-    return null;
-  }
-  
-  public static String a()
-  {
-    if ((jdField_a_of_type_JavaLangString != null) && (jdField_a_of_type_JavaLangString.length() > 0)) {
-      return jdField_a_of_type_JavaLangString;
+      return;
+      if (this.a.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset())
+      {
+        int i = this.a.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
+        int j = this.a.jdField_a_of_type_AndroidWidgetScroller.getCurrY();
+        int k = this.a.c;
+        int m = this.a.d;
+        this.a.c = i;
+        this.a.d = j;
+        paramMessage = this.a;
+        paramMessage.jdField_a_of_type_Int += i - k;
+        paramMessage = this.a;
+        paramMessage.jdField_b_of_type_Int += j - m;
+        this.a.invalidate();
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 40L);
+        return;
+      }
+      this.a.a();
+      return;
     }
-    try
-    {
-      jdField_a_of_type_JavaLangString = bjms.a("b94d1a");
-      label27:
-      return jdField_a_of_type_JavaLangString;
-    }
-    catch (Exception localException)
-    {
-      break label27;
-    }
-  }
-  
-  public static String b()
-  {
-    if ((b != null) && (b.length() > 0)) {
-      return b;
-    }
-    try
-    {
-      b = bjms.b("b94d1a");
-      label27:
-      return b;
-    }
-    catch (Exception localException)
-    {
-      break label27;
-    }
-  }
-  
-  public static String c()
-  {
-    if ((c != null) && (c.length() > 0)) {
-      return c;
-    }
-    try
-    {
-      c = bjms.c("b94d1a");
-      label27:
-      return c;
-    }
-    catch (Exception localException)
-    {
-      break label27;
-    }
-  }
-  
-  public String getCmdString()
-  {
-    return "MobileReport.NewMobileReport";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead;
-  }
-  
-  public String uniKey()
-  {
-    return "NewMobileReport";
+    this.a.a();
   }
 }
 

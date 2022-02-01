@@ -1,17 +1,18 @@
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+
 public class bapf
+  implements AdapterView.OnItemClickListener
 {
-  public long a;
-  public bapg a;
+  public bapf(QCallDetailActivity paramQCallDetailActivity) {}
   
-  public bapf()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Long = 0L;
-  }
-  
-  public bapf(long paramLong, bapg parambapg)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Bapg = parambapg;
+    paramAdapterView = ajca.a(((TextView)paramView.findViewById(2131374338)).getText().toString());
+    this.a.a(this.a.getActivity(), paramAdapterView);
   }
 }
 

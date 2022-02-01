@@ -1,6 +1,6 @@
 package com.tencent.util;
 
-import bfvo;
+import bheg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.Utils;
 import com.tencent.mobileqq.app.AppConstants;
@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 import fd;
 import java.io.File;
 import java.io.IOException;
-import ypi;
+import zeb;
 
 public final class AutoSaveUtils$1
   implements Runnable
@@ -42,7 +42,7 @@ public final class AutoSaveUtils$1
             if (!this.jdField_a_of_type_Boolean) {
               continue;
             }
-            bfvo.a(BaseApplicationImpl.getApplication(), (File)localObject1);
+            bheg.a(BaseApplicationImpl.getApplication(), (File)localObject1);
             FileProvider7Helper.savePhotoToSysAlbum(BaseApplicationImpl.getApplication(), (File)localObject1);
             if (QLog.isColorLevel()) {
               QLog.d("AutoSaveUtils", 2, "autoSavePic success:" + ((File)localObject1).getAbsolutePath());
@@ -60,7 +60,7 @@ public final class AutoSaveUtils$1
         }
         localObject1 = FileUtils.estimateVideoType((String)localObject1);
         break;
-        ypi.a(BaseApplicationImpl.getApplication(), (File)localObject1);
+        zeb.a(BaseApplicationImpl.getApplication(), (File)localObject1);
       }
     }
   }

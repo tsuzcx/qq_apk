@@ -1,17 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adtj
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public adtj(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
+  public adtj(ChatTextSizeSettingActivity paramChatTextSizeSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    BaseApplicationImpl.getApplication().setPCActiveNotice(null, null, null, null);
-    this.a.finish();
+    switch (paramView.getId())
+    {
+    case 2131378801: 
+    default: 
+      this.a.a = 0;
+    }
+    for (;;)
+    {
+      this.a.a(this.a.a);
+      bdla.b(this.a.app, "CliOper", "", "", "Trends_tab", "Font_size", 0, 0, Integer.toString(this.a.a), "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.a = 1;
+      continue;
+      this.a.a = 2;
+      continue;
+      this.a.a = 3;
+    }
   }
 }
 

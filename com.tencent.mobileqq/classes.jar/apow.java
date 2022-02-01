@@ -1,6 +1,10 @@
 public abstract interface apow
 {
-  public abstract void c_(boolean paramBoolean);
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
 }
 
 

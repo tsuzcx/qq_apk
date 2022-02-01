@@ -1,23 +1,53 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
 
 public class adrs
   implements View.OnClickListener
 {
-  public adrs(NearbyActivity paramNearbyActivity) {}
+  public adrs(ChatSettingForTroop paramChatSettingForTroop) {}
   
   public void onClick(View paramView)
   {
-    int i = 0;
-    while (i < this.a.a.size())
+    switch (paramView.getId())
     {
-      ((View.OnClickListener)this.a.a.get(i)).onClick(paramView);
-      i += 1;
+    default: 
+    case 2131369231: 
+      for (;;)
+      {
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        ChatSettingForTroop.g(this.a);
+        this.a.finish();
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.a.jdField_a_of_type_Bgua != null) {
+      this.a.jdField_a_of_type_Bgua.e();
+    }
+    this.a.jdField_a_of_type_Bgua = TroopUtils.shareTroop(this.a, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData, this.a.app);
+    bhbu.a("Grp_set_new", "grpData_admin", "share_click", 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin });
+    String str1;
+    label149:
+    String str3;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isMember)
+    {
+      str1 = "grpData_admin";
+      str3 = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin;
+      if (!this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isMember) {
+        break label217;
+      }
+    }
+    label217:
+    for (String str2 = bhbu.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData);; str2 = "0")
+    {
+      bhbu.a("Grp_set_new", str1, "clk_upright", 0, 0, new String[] { str3, str2 });
+      break;
+      str1 = "grpData_visitor";
+      break label149;
+    }
   }
 }
 

@@ -432,39 +432,6 @@ public final class a
     return ((isAppXiJing()) && (!TextUtils.isEmpty(this.info.dest_info.canvas_json))) || ((getProductType() == 1000) && (getDestType() == 4) && (!TextUtils.isEmpty(this.info.dest_info.canvas_json)));
   }
   
-  public boolean isHitCanvasVideoCeilingExp()
-  {
-    boolean bool = true;
-    if (!isValid()) {}
-    for (;;)
-    {
-      bool = false;
-      do
-      {
-        return bool;
-      } while (this.info.ext.landing_page_style == 1);
-      if (TextUtils.isEmpty(this.info.ext_json)) {
-        continue;
-      }
-      try
-      {
-        qq_ad_get.QQAdGetRsp.AdInfo.Ext localExt = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(new JSONObject(this.info.ext_json));
-        if (localExt == null) {
-          continue;
-        }
-        int i = localExt.landing_page_style;
-        if (i == 1) {}
-        for (bool = true;; bool = false) {
-          return bool;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        AdLog.e("AdImplementation", "isHitCanvasVideoCeilingExp", localThrowable);
-      }
-    }
-  }
-  
   public boolean isHitFirstLoadImageExp()
   {
     if (!isValid()) {}

@@ -1,17 +1,16 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.helper.AIOShakeHelper.1;
 
-class aggt
-  extends aghj
+public class aggt
+  implements View.OnTouchListener
 {
-  aggt(agcw paramagcw)
-  {
-    super(paramagcw, null);
-  }
+  public aggt(AIOShakeHelper.1 param1) {}
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new afvf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    return true;
   }
 }
 

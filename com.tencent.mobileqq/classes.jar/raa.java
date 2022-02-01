@@ -1,172 +1,105 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
-import kotlin.Unit;
-import kotlin.jvm.functions.Function1;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.pts.ui.PTSImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJWatchWordJumpDialog;", "Landroid/view/View$OnClickListener;", "parent", "Landroid/view/ViewGroup;", "jumpAction", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "clickType", "", "(Landroid/view/ViewGroup;Lkotlin/jvm/functions/Function1;)V", "closeButton", "Landroid/widget/ImageView;", "contentView", "Landroid/view/View;", "getContentView", "()Landroid/view/View;", "dialogLayout", "Landroid/widget/RelativeLayout;", "isShowing", "", "getJumpAction", "()Lkotlin/jvm/functions/Function1;", "maskView", "moreButton", "Landroid/widget/TextView;", "getParent", "()Landroid/view/ViewGroup;", "createView", "dismiss", "needAnimation", "findViewById", "T", "id", "(I)Landroid/view/View;", "initOnClickListener", "onClick", "v", "show", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract class raa
-  implements View.OnClickListener
+public class raa
 {
-  public static final rab a;
-  @Nullable
-  private final View jdField_a_of_type_AndroidViewView;
-  @NotNull
-  private final ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private final ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private final RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private final TextView jdField_a_of_type_AndroidWidgetTextView;
-  @Nullable
-  private final Function1<Integer, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1;
-  private boolean jdField_a_of_type_Boolean;
-  private final View b;
-  
-  static
+  private static int a(Context paramContext, String paramString)
   {
-    jdField_a_of_type_Rab = new rab(null);
+    if ((paramContext == null) || (paramContext.getResources() == null) || (TextUtils.isEmpty(paramString))) {
+      return 0;
+    }
+    return paramContext.getResources().getIdentifier(paramString, "drawable", paramContext.getPackageName());
   }
   
-  public raa(@NotNull ViewGroup paramViewGroup, @Nullable Function1<? super Integer, Unit> paramFunction1)
+  public static Drawable a(Context paramContext, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction1 = paramFunction1;
-    this.jdField_a_of_type_AndroidViewView = b();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364630));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371361));
-    this.b = this.jdField_a_of_type_AndroidViewView.findViewById(2131370613);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365574));
-    c();
-  }
-  
-  private final void c()
-  {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-    if (localObject != null) {
-      ((TextView)localObject).setOnClickListener((View.OnClickListener)this);
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (paramContext != null) {
+        break label22;
+      }
+      localObject1 = localObject2;
     }
-    localObject = this.jdField_a_of_type_AndroidWidgetImageView;
-    if (localObject != null) {
-      ((ImageView)localObject).setOnClickListener((View.OnClickListener)this);
+    label22:
+    do
+    {
+      return localObject1;
+      if (!a(paramString)) {
+        break;
+      }
+      localObject1 = URLDrawable.URLDrawableOptions.obtain();
+      paramContext = paramContext.getResources().getDrawable(2130841740);
+      ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = paramContext;
+      ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = paramContext;
+      paramContext = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject1);
+      localObject1 = paramContext;
+    } while (paramInt <= 0);
+    paramContext.setDecodeHandler(new bgyb(paramInt));
+    return paramContext;
+    if (b(paramString))
+    {
+      paramString = paramString.substring(paramString.lastIndexOf("/") + 1, paramString.lastIndexOf("."));
+      paramString = "qb_public_account_readinjoy_" + paramString;
+      return paramContext.getResources().getDrawable(a(paramContext, paramString));
     }
-    localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-    if (localObject != null) {
-      ((RelativeLayout)localObject).setOnClickListener((View.OnClickListener)this);
-    }
-  }
-  
-  @Nullable
-  protected final View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  @Nullable
-  protected final <T extends View> T a(int paramInt)
-  {
-    View localView = this.jdField_a_of_type_AndroidViewView;
-    if (localView != null) {
-      return localView.findViewById(paramInt);
-    }
+    QLog.e("PTSImageUtil", 1, "[getDrawable] null, imageUrl = " + paramString);
     return null;
   }
   
-  @NotNull
-  protected final ViewGroup a()
+  public static void a(PTSImageView paramPTSImageView, String paramString)
   {
-    return this.jdField_a_of_type_AndroidViewViewGroup;
-  }
-  
-  @Nullable
-  protected final Function1<Integer, Unit> a()
-  {
-    return this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
-  }
-  
-  public final void a()
-  {
-    a(true);
-  }
-  
-  public final void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView);
-    if (paramBoolean)
-    {
-      AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-      localAlphaAnimation.setDuration(250L);
-      localAlphaAnimation.setFillAfter(true);
-      View localView = this.b;
-      if (localView != null) {
-        localView.startAnimation((Animation)localAlphaAnimation);
-      }
-    }
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  @NotNull
-  protected abstract View b();
-  
-  public final void b()
-  {
-    b(true);
-  }
-  
-  public final void b(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-      localAlphaAnimation.setDuration(250L);
-      localAlphaAnimation.setFillAfter(true);
-      localAlphaAnimation.setAnimationListener((Animation.AnimationListener)new rac(this));
-      View localView = this.jdField_a_of_type_AndroidViewView;
-      if (localView != null) {
-        localView.startAnimation((Animation)localAlphaAnimation);
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = false;
+    if ((paramPTSImageView == null) || (TextUtils.isEmpty(paramString))) {
       return;
-      this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_AndroidViewView);
     }
-  }
-  
-  public void onClick(@Nullable View paramView)
-  {
-    Object localObject;
-    if (Intrinsics.areEqual(paramView, this.jdField_a_of_type_AndroidWidgetImageView))
-    {
-      localObject = this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
-      if (localObject != null) {
-        localObject = (Unit)((Function1)localObject).invoke(Integer.valueOf(0));
-      }
-      b();
+    if (QLog.isDebugVersion()) {
+      QLog.i("PTSImageUtil", 2, "[setLocalImageDrawable], localPath = " + paramString);
     }
-    for (;;)
+    int i;
+    try
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (Intrinsics.areEqual(paramView, this.jdField_a_of_type_AndroidWidgetTextView))
+      String str = paramString.substring(paramString.lastIndexOf("/") + 1, paramString.lastIndexOf("."));
+      str = "qb_public_account_readinjoy_" + str;
+      i = a(paramPTSImageView.getContext(), str);
+      if (i == 0)
       {
-        localObject = this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
-        if (localObject != null) {
-          localObject = (Unit)((Function1)localObject).invoke(Integer.valueOf(1));
-        }
-        b(false);
+        QLog.e("PTSImageUtil", 1, "[setLocalImageDrawable], cannot find the resource, localPath = " + paramString);
+        paramPTSImageView.setImageDrawable(new ColorDrawable(0));
+        return;
       }
     }
+    catch (Exception paramString)
+    {
+      QLog.e("PTSImageUtil", 1, "[setLocalImageDrawable] error, e = " + paramString);
+      paramPTSImageView.setImageDrawable(new ColorDrawable(0));
+      return;
+    }
+    paramPTSImageView.setImageResource(i);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    while ((!paramString.startsWith("http")) && (!paramString.startsWith("pubaccount"))) {
+      return false;
+    }
+    return true;
+  }
+  
+  public static boolean b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    return paramString.startsWith("images");
   }
 }
 

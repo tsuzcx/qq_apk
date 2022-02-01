@@ -1,88 +1,99 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
-import com.tencent.biz.widgets.TabLayout;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.mp.mobileqq_mp.ConfigGroupInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import org.json.JSONException;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class ojh
-  extends pkt
+public class ojh
 {
-  ojh(ojc paramojc) {}
+  public int a;
+  public List<oji> a;
   
-  public void a(float paramFloat, int paramInt)
+  public ojh()
   {
-    super.a(paramFloat, paramInt);
-    paramFloat /= paramInt;
-    ojc.a(this.a).setY((1.0F - paramFloat) * ojc.a(this.a).getHeight() * 0.03F);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public void a(TabChannelCoverInfo paramTabChannelCoverInfo)
+  public ojh(int paramInt, mobileqq_mp.ConfigGroupInfo paramConfigGroupInfo)
   {
-    super.a(paramTabChannelCoverInfo);
-    if (paramTabChannelCoverInfo != null)
+    this.jdField_a_of_type_Int = paramInt;
+    if (paramConfigGroupInfo == null) {}
+    for (;;)
     {
-      QLog.d("ReadInJoyChannelViewPagerController", 2, new Object[] { "onChannelTabSelected, channelID = ", Integer.valueOf(paramTabChannelCoverInfo.mChannelCoverId), ", channelName = ", paramTabChannelCoverInfo.mChannelCoverName });
-      ojc.a(paramTabChannelCoverInfo.mChannelCoverId, 1);
-      this.a.c(paramTabChannelCoverInfo.mChannelCoverId);
-      ojc.a(this.a);
-      if (bkwm.B())
+      return;
+      paramConfigGroupInfo = paramConfigGroupInfo.config_info.get();
+      this.jdField_a_of_type_JavaUtilList = new ArrayList(paramConfigGroupInfo.size());
+      paramConfigGroupInfo = paramConfigGroupInfo.iterator();
+      while (paramConfigGroupInfo.hasNext()) {
+        this.jdField_a_of_type_JavaUtilList.add(new oji((mobileqq_mp.ConfigInfo)paramConfigGroupInfo.next()));
+      }
+    }
+  }
+  
+  public ojh(mobileqq_mp.ConfigGroupInfo paramConfigGroupInfo)
+  {
+    this(0, paramConfigGroupInfo);
+  }
+  
+  public static List<ojh> a(List<mobileqq_mp.ConfigGroupInfo> paramList)
+  {
+    if (paramList == null) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList(paramList.size());
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      localArrayList.add(new ojh((mobileqq_mp.ConfigGroupInfo)paramList.next()));
+    }
+    return localArrayList;
+  }
+  
+  public static List<ojh> a(JSONArray paramJSONArray)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramJSONArray == null) {
+      return localArrayList;
+    }
+    for (;;)
+    {
+      try
       {
-        ojc.b(this.a, paramTabChannelCoverInfo);
-        ojc.b(this.a, ojc.a(this.a, ojc.a(this.a)));
+        int k = paramJSONArray.length();
+        int i = 0;
+        if (i >= k) {
+          break;
+        }
+        Object localObject = paramJSONArray.getJSONObject(i);
+        ojh localojh = new ojh();
+        localojh.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("type");
+        localObject = ((JSONObject)localObject).getJSONArray("config");
+        int m = ((JSONArray)localObject).length();
+        int j = 0;
+        if (j < m)
+        {
+          oji localoji = oji.a(((JSONArray)localObject).getJSONObject(j));
+          if (localoji != null) {
+            localojh.jdField_a_of_type_JavaUtilList.add(localoji);
+          }
+        }
+        else
+        {
+          localArrayList.add(localojh);
+          i += 1;
+          continue;
+        }
+        j += 1;
+      }
+      catch (Exception paramJSONArray)
+      {
+        paramJSONArray.printStackTrace();
+        return localArrayList;
       }
     }
-    try
-    {
-      ojc.a("0X8009B94", "", new pbg().a("source", "303").a(paramTabChannelCoverInfo.mChannelCoverId).b("style", 0).a());
-      return;
-    }
-    catch (JSONException paramTabChannelCoverInfo)
-    {
-      QLog.d("ReadInJoyChannelViewPagerController", 2, "report click channel bar exception, e = ", paramTabChannelCoverInfo);
-    }
-  }
-  
-  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
-  {
-    super.a(paramBoolean1, paramInt, paramList, paramBoolean2);
-    paramInt = this.a.b();
-    ojc.a(this.a, paramInt);
-    ojc.a(this.a).a();
-  }
-  
-  public void a(boolean paramBoolean, List<TabChannelCoverInfo> paramList)
-  {
-    int i = 0;
-    if (paramList != null) {
-      i = paramList.size();
-    }
-    QLog.d("ReadInJoyChannelViewPagerController", 1, new Object[] { "onIndependentMainChannelListupdate, success = ", Boolean.valueOf(paramBoolean), ", size = ", Integer.valueOf(i) });
-    if ((paramBoolean) && (paramList != null) && (paramList.size() > 0)) {
-      ojc.a(this.a, paramList);
-    }
-  }
-  
-  public void ah_()
-  {
-    super.ah_();
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    int i = 8;
-    ojc.a(this.a, paramBoolean);
-    if (!pch.a())
-    {
-      ImageView localImageView = ojc.a(this.a);
-      if (paramBoolean) {
-        i = 0;
-      }
-      localImageView.setVisibility(i);
-      return;
-    }
-    ojc.a(this.a).setVisibility(8);
   }
 }
 

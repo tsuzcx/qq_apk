@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.app;
 
 import android.text.TextUtils;
-import ases;
-import asfm;
-import asfo;
-import asfp;
-import aslx;
-import aszt;
-import bcef;
+import atiy;
+import atjs;
+import atju;
+import atjv;
+import atqd;
+import auea;
+import bdla;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -20,7 +20,7 @@ import java.util.Set;
 public class QFileMsgForwardManager$1
   implements Runnable
 {
-  public QFileMsgForwardManager$1(ases paramases, aslx paramaslx) {}
+  public QFileMsgForwardManager$1(atiy paramatiy, atqd paramatqd) {}
   
   public void run()
   {
@@ -37,7 +37,7 @@ public class QFileMsgForwardManager$1
       this.a.a(0, new ArrayList(), new ArrayList());
       return;
     }
-    asfp localasfp = new asfp(this.this$0, str1, this.a, localHashMap);
+    atjv localatjv = new atjv(this.this$0, str1, this.a, localHashMap);
     Iterator localIterator1 = localHashMap.keySet().iterator();
     long l1 = 0L;
     if (localIterator1.hasNext())
@@ -51,15 +51,15 @@ public class QFileMsgForwardManager$1
           break;
         }
         Object localObject = (MessageRecord)localIterator2.next();
-        if ((aszt.a((MessageRecord)localObject)) && (ases.a(this.this$0, (MessageRecord)localObject)))
+        if ((auea.a((MessageRecord)localObject)) && (atiy.a(this.this$0, (MessageRecord)localObject)))
         {
-          asfm localasfm = ases.a(this.this$0, str2, i, str1, (MessageRecord)localObject);
-          if (localasfm == null) {
+          atjs localatjs = atiy.a(this.this$0, str2, i, str1, (MessageRecord)localObject);
+          if (localatjs == null) {
             break label301;
           }
-          localasfp.a(localasfm);
+          localatjv.a(localatjs);
           if (!bool) {
-            localasfm.a.a("", true);
+            localatjs.a.a("", true);
           }
           localObject = ((MessageRecord)localObject).getExtInfoFromExtStr("_m_ForwardSize");
           if (!TextUtils.isEmpty((CharSequence)localObject)) {
@@ -72,15 +72,15 @@ public class QFileMsgForwardManager$1
       this.a.a(1, new ArrayList(), new ArrayList());
       return;
     }
-    if (localasfp.a() > 0)
+    if (localatjv.a() > 0)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 2, "addMultiRequest : forwardMsgSeq[" + str1 + "] toUin[" + str2 + "] toType[" + i + "] uploadCount[" + localasfp.a() + "]");
+        QLog.i("FileMultiMsgManager<FileAssistant>", 2, "addMultiRequest : forwardMsgSeq[" + str1 + "] toUin[" + str2 + "] toType[" + i + "] uploadCount[" + localatjv.a() + "]");
       }
       str2 = new DecimalFormat("0.00").format(l1 / 1024.0D / 1024.0D);
-      bcef.b(ases.a(this.this$0), "dc00898", "", "", "0X8009ABE", "0X8009ABE", 0, 0, "", "", str2, "");
-      ases.a(this.this$0).put(str1, localasfp);
-      localasfp.a();
+      bdla.b(atiy.a(this.this$0), "dc00898", "", "", "0X8009ABE", "0X8009ABE", 0, 0, "", "", str2, "");
+      atiy.a(this.this$0).put(str1, localatjv);
+      localatjv.a();
       return;
     }
     this.a.a(0, new ArrayList(), new ArrayList());
@@ -88,7 +88,7 @@ public class QFileMsgForwardManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileMsgForwardManager.1
  * JD-Core Version:    0.7.0.1
  */

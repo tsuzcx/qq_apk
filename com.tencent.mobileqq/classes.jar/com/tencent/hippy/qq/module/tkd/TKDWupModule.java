@@ -1,12 +1,12 @@
 package com.tencent.hippy.qq.module.tkd;
 
-import andr;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.text.TextUtils;
-import andt;
-import bfuc;
+import aogi;
+import aogk;
+import bhcu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mtt.hippy.HippyEngineContext;
@@ -23,21 +23,15 @@ public class TKDWupModule
   extends HippyNativeModuleBase
 {
   private static final String TAG = "HippyQQWupModule";
-  protected QQAppInterface app = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+  protected QQAppInterface app;
   protected BroadcastReceiver mAccountChangedReceiver = new TKDWupModule.2(this);
-  protected andt mUniteSearchObserver = new TKDWupModule.1(this);
-  private Integer requestId = Integer.valueOf(0);
-  private TKDWupModule.HippyWupCallbackManager wupCallbackManager = new TKDWupModule.HippyWupCallbackManager();
+  protected aogk mUniteSearchObserver = new TKDWupModule.1(this);
+  private Integer requestId;
+  private TKDWupModule.HippyWupCallbackManager wupCallbackManager;
   
   public TKDWupModule(HippyEngineContext paramHippyEngineContext)
   {
     super(paramHippyEngineContext);
-    this.app.addObserver(this.mUniteSearchObserver);
-    if ((this.mContext != null) && (this.mContext.getGlobalConfigs() != null) && (this.mContext.getGlobalConfigs().getContext() != null))
-    {
-      paramHippyEngineContext = new IntentFilter("mqq.intent.action.ACCOUNT_CHANGED");
-      this.mContext.getGlobalConfigs().getContext().registerReceiver(this.mAccountChangedReceiver, paramHippyEngineContext);
-    }
   }
   
   private void doSend(HippyMap paramHippyMap, Promise paramPromise, boolean paramBoolean)
@@ -73,14 +67,14 @@ public class TKDWupModule
     if (localObject == null) {
       paramHippyMap = "";
     }
-    paramHippyMap = bfuc.decode(paramHippyMap, 0);
+    paramHippyMap = bhcu.decode(paramHippyMap, 0);
     Object localObject = new TKDWupUniPacket();
     ((TKDWupUniPacket)localObject).setServantName(str1);
     ((TKDWupUniPacket)localObject).setFuncName(str2);
     ((TKDWupUniPacket)localObject).setEncodeName("UTF-8");
     ((TKDWupUniPacket)localObject).setRequestId(this.requestId.intValue());
     ((TKDWupUniPacket)localObject).putRawRequestData(str3, str4, paramHippyMap);
-    new andr((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(((TKDWupUniPacket)localObject).encode(), this.wupCallbackManager, this.requestId);
+    new aogi((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(((TKDWupUniPacket)localObject).encode(), this.wupCallbackManager, this.requestId);
   }
   
   public void destroy()
@@ -89,6 +83,19 @@ public class TKDWupModule
     this.app.removeObserver(this.mUniteSearchObserver);
     if ((this.mContext != null) && (this.mContext.getGlobalConfigs() != null) && (this.mContext.getGlobalConfigs().getContext() != null)) {
       this.mContext.getGlobalConfigs().getContext().unregisterReceiver(this.mAccountChangedReceiver);
+    }
+  }
+  
+  public void initialize()
+  {
+    this.wupCallbackManager = new TKDWupModule.HippyWupCallbackManager();
+    this.requestId = Integer.valueOf(0);
+    this.app = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+    this.app.addObserver(this.mUniteSearchObserver);
+    if ((this.mContext != null) && (this.mContext.getGlobalConfigs() != null) && (this.mContext.getGlobalConfigs().getContext() != null))
+    {
+      IntentFilter localIntentFilter = new IntentFilter("mqq.intent.action.ACCOUNT_CHANGED");
+      this.mContext.getGlobalConfigs().getContext().registerReceiver(this.mAccountChangedReceiver, localIntentFilter);
     }
   }
   

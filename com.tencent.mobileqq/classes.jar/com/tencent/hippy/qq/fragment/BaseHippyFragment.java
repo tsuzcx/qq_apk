@@ -9,7 +9,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import atzd;
+import aves;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.hippy.qq.app.HippyQQPreloadEngine;
 import com.tencent.hippy.qq.utils.HippyAccessHelper;
@@ -22,7 +22,6 @@ import com.tencent.open.base.http.HttpBaseUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -30,16 +29,18 @@ import java.util.Map.Entry;
 import java.util.Set;
 import mqq.app.AppRuntime;
 import mqq.manager.TicketManager;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public abstract class BaseHippyFragment
   extends PublicBaseFragment
+  implements HippyActivityLifecycleOwner
 {
   protected static final String TAG = "BaseHippyFragment";
   private static HashMap<String, String> mNeedLoginStateInfoModules = new HashMap();
-  private ArrayList<BaseHippyFragment.HippyActivityLifecycleListener> mActivityLifecycleListeners = new ArrayList();
   private long mCreateViewStartTime;
+  private HippyActivityLifecycleDispatcher mDispatcher = new HippyActivityLifecycleDispatcher();
   private Bundle mEmptyBundle = new Bundle();
   protected HippyQQPreloadEngine mHippyQQEngine;
   private boolean mIsDebugMode;
@@ -50,86 +51,6 @@ public abstract class BaseHippyFragment
   static
   {
     mNeedLoginStateInfoModules.put("QQGameCenter", "gamecenter.qq.com");
-  }
-  
-  private void dispatchOnActivityCreated(Activity paramActivity, Bundle paramBundle)
-  {
-    int i = 0;
-    while (i < this.mActivityLifecycleListeners.size())
-    {
-      ((BaseHippyFragment.HippyActivityLifecycleListener)this.mActivityLifecycleListeners.get(i)).onActivityCreated(paramActivity, paramBundle);
-      i += 1;
-    }
-  }
-  
-  private void dispatchOnActivityDestroyed(Activity paramActivity)
-  {
-    int i = 0;
-    while (i < this.mActivityLifecycleListeners.size())
-    {
-      ((BaseHippyFragment.HippyActivityLifecycleListener)this.mActivityLifecycleListeners.get(i)).onActivityDestroyed(paramActivity);
-      i += 1;
-    }
-  }
-  
-  private void dispatchOnActivityPaused(Activity paramActivity)
-  {
-    int i = 0;
-    while (i < this.mActivityLifecycleListeners.size())
-    {
-      ((BaseHippyFragment.HippyActivityLifecycleListener)this.mActivityLifecycleListeners.get(i)).onActivityPaused(paramActivity);
-      i += 1;
-    }
-  }
-  
-  private void dispatchOnActivityResult(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    int i = 0;
-    while (i < this.mActivityLifecycleListeners.size())
-    {
-      ((BaseHippyFragment.HippyActivityLifecycleListener)this.mActivityLifecycleListeners.get(i)).onActivityResult(paramActivity, paramInt1, paramInt2, paramIntent);
-      i += 1;
-    }
-  }
-  
-  private void dispatchOnActivityResumed(Activity paramActivity)
-  {
-    int i = 0;
-    while (i < this.mActivityLifecycleListeners.size())
-    {
-      ((BaseHippyFragment.HippyActivityLifecycleListener)this.mActivityLifecycleListeners.get(i)).onActivityResumed(paramActivity);
-      i += 1;
-    }
-  }
-  
-  private void dispatchOnActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle)
-  {
-    int i = 0;
-    while (i < this.mActivityLifecycleListeners.size())
-    {
-      ((BaseHippyFragment.HippyActivityLifecycleListener)this.mActivityLifecycleListeners.get(i)).onActivitySaveInstanceState(paramActivity, paramBundle);
-      i += 1;
-    }
-  }
-  
-  private void dispatchOnActivityStarted(Activity paramActivity)
-  {
-    int i = 0;
-    while (i < this.mActivityLifecycleListeners.size())
-    {
-      ((BaseHippyFragment.HippyActivityLifecycleListener)this.mActivityLifecycleListeners.get(i)).onActivityStarted(paramActivity);
-      i += 1;
-    }
-  }
-  
-  private void dispatchOnActivityStopped(Activity paramActivity)
-  {
-    int i = 0;
-    while (i < this.mActivityLifecycleListeners.size())
-    {
-      ((BaseHippyFragment.HippyActivityLifecycleListener)this.mActivityLifecycleListeners.get(i)).onActivityStopped(paramActivity);
-      i += 1;
-    }
   }
   
   public static JSONObject getJSInitData(AppRuntime paramAppRuntime, String paramString1, String paramString2)
@@ -241,13 +162,6 @@ public abstract class BaseHippyFragment
     QLog.i("BaseHippyFragment", 2, localStringBuilder.toString());
   }
   
-  public void addActivityLifecycleListener(BaseHippyFragment.HippyActivityLifecycleListener paramHippyActivityLifecycleListener)
-  {
-    if (paramHippyActivityLifecycleListener != null) {
-      this.mActivityLifecycleListeners.add(paramHippyActivityLifecycleListener);
-    }
-  }
-  
   protected HashMap<String, Long> generateStepCosts()
   {
     Object localObject = getPerformanceData();
@@ -347,6 +261,12 @@ public abstract class BaseHippyFragment
     }
   }
   
+  @NotNull
+  public HippyActivityLifecycleDispatcher getDispatcher()
+  {
+    return this.mDispatcher;
+  }
+  
   protected Bundle getParameters()
   {
     Bundle localBundle1 = null;
@@ -390,7 +310,7 @@ public abstract class BaseHippyFragment
     } while ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()));
     if ((this.mModuleName != null) && (this.mModuleName.startsWith("QQGameCenter")))
     {
-      atzd.a(localFragmentActivity, str);
+      aves.a(localFragmentActivity, str);
       localFragmentActivity.finish();
     }
     for (;;)
@@ -467,13 +387,13 @@ public abstract class BaseHippyFragment
   {
     super.onActivityCreated(paramBundle);
     QLog.i("BaseHippyFragment", 1, "onActivityCreated this:" + this);
-    dispatchOnActivityCreated(getActivity(), paramBundle);
+    this.mDispatcher.onActivityCreated(getActivity(), paramBundle);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    dispatchOnActivityResult(getActivity(), paramInt1, paramInt2, paramIntent);
+    this.mDispatcher.onActivityResult(getActivity(), paramInt1, paramInt2, paramIntent);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
@@ -487,8 +407,8 @@ public abstract class BaseHippyFragment
   
   public void onDestroy()
   {
-    dispatchOnActivityDestroyed(getActivity());
-    this.mActivityLifecycleListeners.clear();
+    this.mDispatcher.onActivityDestroyed(getActivity());
+    this.mDispatcher.clearAllListener();
     if (this.mHippyQQEngine != null)
     {
       this.mHippyQQEngine.onDestroy();
@@ -531,7 +451,7 @@ public abstract class BaseHippyFragment
   public void onPause()
   {
     super.onPause();
-    dispatchOnActivityPaused(getActivity());
+    this.mDispatcher.onActivityPaused(getActivity());
     if (this.mHippyQQEngine != null) {
       this.mHippyQQEngine.onPause();
     }
@@ -540,7 +460,7 @@ public abstract class BaseHippyFragment
   public void onResume()
   {
     super.onResume();
-    dispatchOnActivityResumed(getActivity());
+    this.mDispatcher.onActivityResumed(getActivity());
     if (this.mHippyQQEngine != null) {
       this.mHippyQQEngine.onResume();
     }
@@ -549,26 +469,19 @@ public abstract class BaseHippyFragment
   public void onSaveInstanceState(Bundle paramBundle)
   {
     super.onSaveInstanceState(paramBundle);
-    dispatchOnActivitySaveInstanceState(getActivity(), paramBundle);
+    this.mDispatcher.onActivitySaveInstanceState(getActivity(), paramBundle);
   }
   
   public void onStart()
   {
     super.onStart();
-    dispatchOnActivityStarted(getActivity());
+    this.mDispatcher.onActivityStarted(getActivity());
   }
   
   public void onStop()
   {
     super.onStop();
-    dispatchOnActivityStopped(getActivity());
-  }
-  
-  public void removeActivityLifecycleListener(BaseHippyFragment.HippyActivityLifecycleListener paramHippyActivityLifecycleListener)
-  {
-    if (paramHippyActivityLifecycleListener != null) {
-      this.mActivityLifecycleListeners.remove(paramHippyActivityLifecycleListener);
-    }
+    this.mDispatcher.onActivityStopped(getActivity());
   }
 }
 

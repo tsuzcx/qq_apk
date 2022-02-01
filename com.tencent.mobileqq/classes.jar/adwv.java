@@ -1,17 +1,16 @@
-import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adwv
   implements View.OnClickListener
 {
-  public adwv(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public adwv(EditInfoActivity paramEditInfoActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.a.dismiss();
+    EditInfoActivity.d(this.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

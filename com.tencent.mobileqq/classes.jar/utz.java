@@ -1,38 +1,39 @@
-import UserGrowth.stSimpleGetFeedListRsp;
-import com.qq.taf.jce.JceStruct;
-import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.BiuObserver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
-class utz
-  implements ulb
+public class utz
+  extends pvq
 {
-  utz(utx paramutx, boolean paramBoolean1, boolean paramBoolean2) {}
+  final int jdField_a_of_type_Int;
+  final String jdField_a_of_type_JavaLangString;
   
-  public void a(JceStruct paramJceStruct)
+  public utz(uta paramuta, String paramString, int paramInt)
   {
-    uya.d("WSRecommendFragmentPresenter", "onReadCacheCompleted");
-    if (!(paramJceStruct instanceof stSimpleGetFeedListRsp)) {}
-    WSRecommendFragment localWSRecommendFragment;
-    do
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(long paramLong, int paramInt, String paramString)
+  {
+    super.a(paramLong, paramInt, paramString);
+    QLog.d("PublicAccountH5AbilityPlugin", 2, "[onBiuResult] " + paramLong + " " + paramInt + " errorMsg");
+    try
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            paramJceStruct = (stSimpleGetFeedListRsp)paramJceStruct;
-          } while ((paramJceStruct.feeds == null) || (paramJceStruct.feeds.size() <= 0));
-          utx.a(this.jdField_a_of_type_Utx, true);
-        } while (utx.a(this.jdField_a_of_type_Utx));
-        paramJceStruct = paramJceStruct.feeds;
-        localWSRecommendFragment = (WSRecommendFragment)this.jdField_a_of_type_Utx.a();
-      } while (localWSRecommendFragment == null);
-      localWSRecommendFragment.a(paramJceStruct, this.jdField_a_of_type_Boolean, this.b);
-    } while ((this.jdField_a_of_type_Boolean) || (utx.a(this.jdField_a_of_type_Utx)));
-    uya.d("WSRecommendFragmentPresenter", "showTopLoading");
-    localWSRecommendFragment.a(true);
+      paramString = new JSONObject();
+      paramString.put("feedsId", String.valueOf(paramLong));
+      paramString.put("retCode", paramInt);
+      paramString.put("feedsType", this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Uta.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
+      ThreadManager.getUIHandler().post(new PublicAccountH5AbilityPlugin.BiuObserver.1(this));
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("PublicAccountH5AbilityPlugin", 1, "[onBiuResult] ", paramString);
+    }
   }
 }
 

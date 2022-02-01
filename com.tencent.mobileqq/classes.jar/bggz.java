@@ -1,9 +1,14 @@
 public abstract interface bggz
-  extends bggt
 {
-  public abstract String a();
+  public abstract String getFriendUin();
   
-  public abstract boolean a();
+  public abstract int getLimitType();
+  
+  public abstract long getSenderUin();
+  
+  public abstract long getShmsgseq();
+  
+  public abstract boolean isReaded();
 }
 
 

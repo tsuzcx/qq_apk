@@ -191,11 +191,11 @@
                 "view_id": "id_view_AdDownloadView",
                 "height": {
                   "type": "relative",
-                  "value": "40"
+                  "value": "25"
                 },
                 "width": {
                   "type": "relative",
-                  "value": "82"
+                  "value": "62"
                 },
                 "margin_right": "4",
                 "align_parent_center_vertical": "YES",

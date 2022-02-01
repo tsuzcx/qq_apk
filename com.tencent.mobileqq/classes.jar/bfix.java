@@ -1,27 +1,32 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.face.FaceDrawable.OnLoadingStateChangeListener;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5.4.1;
-import com.tencent.mobileqq.troopgift.TroopGiftToPersonalSurfaceView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
-public class bfix
-  implements FaceDrawable.OnLoadingStateChangeListener
+class bfix
+  implements bkzq
 {
-  public bfix(TroopGiftAnimationController.5 param5) {}
+  bfix(bfis parambfis, boolean paramBoolean, bfif parambfif, bkzi parambkzi) {}
   
-  public void onLoadingStateChanged(int paramInt1, int paramInt2)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramInt1 == 0) && (paramInt2 == 1) && ((this.a.this$0.a instanceof TroopGiftToPersonalSurfaceView)))
+    int i = paramInt;
+    if (!this.jdField_a_of_type_Boolean) {
+      i = paramInt + 1;
+    }
+    switch (i)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopGiftAnimationController", 2, "onLoadingStateChanged: curState = " + paramInt2);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      TroopFileTransferManager.a(this.jdField_a_of_type_Bfis.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bfis.jdField_a_of_type_Long).a(this.jdField_a_of_type_Bfif.a);
+      bdla.b(this.jdField_a_of_type_Bfis.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Clk_delete_local", 0, 0, "", this.jdField_a_of_type_Bfis.jdField_a_of_type_Long + "", "", "");
+      continue;
+      if (bfis.a(this.jdField_a_of_type_Bfis) != 0)
+      {
+        bgjh.a(this.jdField_a_of_type_Bfis.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bfis.jdField_a_of_type_Long).b(this.jdField_a_of_type_Bfif);
+        bdla.b(this.jdField_a_of_type_Bfis.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Clk_delete_share", 0, 0, "", this.jdField_a_of_type_Bfis.jdField_a_of_type_Long + "", "", "");
       }
-      Bitmap localBitmap = TroopUtils.headDrawableToBitamp(this.a.this$0.a(String.valueOf(this.a.a.receiverUin), null));
-      this.a.this$0.a.b(new TroopGiftAnimationController.5.4.1(this, localBitmap));
     }
   }
 }

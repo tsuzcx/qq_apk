@@ -1,20 +1,44 @@
-import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton.9.1;
-import com.tencent.image.ApngDrawable.OnPlayRepeatListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
 public class tfa
-  implements ApngDrawable.OnPlayRepeatListener
+  implements tgo
 {
-  public tfa(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
+  public tfa(FastWebActivity paramFastWebActivity, BaseData paramBaseData) {}
   
-  public void onPlayRepeat(int paramInt)
+  public int a()
   {
-    this.a.post(new ColorBandVideoEntranceButton.9.1(this));
+    return odz.a().a();
+  }
+  
+  public BaseData a()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
+  }
+  
+  public void a()
+  {
+    FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    if (AdData.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData))
+    {
+      AdData localAdData = (AdData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
+      if (localAdData.a != null) {
+        odz.a().a(Long.valueOf(localAdData.a.mAdAid));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tfa
  * JD-Core Version:    0.7.0.1
  */

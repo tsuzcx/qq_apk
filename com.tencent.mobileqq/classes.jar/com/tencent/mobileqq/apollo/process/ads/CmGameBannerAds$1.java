@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.apollo.process.ads;
 
-import alwa;
+import amwq;
 
 public class CmGameBannerAds$1
   implements Runnable
 {
-  public CmGameBannerAds$1(alwa paramalwa, long paramLong, int paramInt) {}
+  public CmGameBannerAds$1(amwq paramamwq, long paramLong, int paramInt) {}
   
   public void run()
   {
-    alwa.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, -100, -1);
+    amwq.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, -100, -1);
   }
 }
 

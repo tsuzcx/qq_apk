@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo.audioroom.qqnotify;
 
-import aevj;
+import afmu;
 import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -11,7 +11,7 @@ public class VoiceQQNotifyHelper
 {
   public static void querySubscribe(@NonNull String paramString1, String paramString2, String paramString3, @NonNull IVoiceQQNotifyListener paramIVoiceQQNotifyListener)
   {
-    aevj.a(paramString1, paramString2, paramString3, paramIVoiceQQNotifyListener);
+    afmu.a(paramString1, paramString2, paramString3, paramIVoiceQQNotifyListener);
   }
   
   public static void showSubscribeDialog(@NonNull Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt)
@@ -22,7 +22,7 @@ public class VoiceQQNotifyHelper
       QLog.w("VoiceQQNotifyHelper", 1, "context is invalid, " + paramContext.getClass().getName());
       return;
     }
-    aevj.a(localActivity, paramString1, paramString2, paramString3, paramInt);
+    afmu.a(localActivity, paramString1, paramString2, paramString3, paramInt);
   }
 }
 

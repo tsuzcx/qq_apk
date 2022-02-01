@@ -2,12 +2,12 @@ package com.tencent.mobileqq.olympic;
 
 import android.content.Intent;
 import android.os.Bundle;
-import anyh;
-import aodm;
-import aozh;
-import axql;
-import axqm;
-import bcef;
+import apbj;
+import apgo;
+import aqcl;
+import ayww;
+import aywx;
+import bdla;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -34,8 +34,8 @@ public class OlympicToolAppInterface
   extends AppInterface
   implements IToolProcEventListener
 {
-  axql jdField_a_of_type_Axql = null;
-  public axqm a;
+  ayww jdField_a_of_type_Ayww = null;
+  public aywx a;
   private NetEngineFactory jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory;
   public HashMap<Integer, BusinessHandler> a;
   public List<BusinessObserver> a;
@@ -65,9 +65,9 @@ public class OlympicToolAppInterface
         }
         return localBusinessHandler1;
       }
-      Object localObject2 = new aozh(this);
+      Object localObject2 = new aqcl(this);
       continue;
-      localObject2 = new anyh(this);
+      localObject2 = new apbj(this);
       continue;
       return localObject2;
       label106:
@@ -81,7 +81,7 @@ public class OlympicToolAppInterface
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_Axqm.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
+    this.jdField_a_of_type_Aywx.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
   }
   
   public void addManager(int paramInt, Manager paramManager)
@@ -158,7 +158,7 @@ public class OlympicToolAppInterface
       QLog.i("olympic.OlympicToolAppInterface", 2, "onCreate");
     }
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Axqm = new axqm(this);
+    this.jdField_a_of_type_Aywx = new aywx(this);
     this.jdField_a_of_type_JavaUtilList = new Vector();
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
     AudioHelper.a(this.app, getLongAccountUin());
@@ -167,7 +167,7 @@ public class OlympicToolAppInterface
   public void onDestroy()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("olympic.OlympicToolAppInterface", 2, "onDestroy ,FaceScanModelsLoader.hasFaceModelInit = " + aodm.b);
+      QLog.i("olympic.OlympicToolAppInterface", 2, "onDestroy ,FaceScanModelsLoader.hasFaceModelInit = " + apgo.b);
     }
     super.onDestroy();
     if (this.mHwEngine != null) {
@@ -198,18 +198,18 @@ public class OlympicToolAppInterface
   
   public void reportClickEvent(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
   {
-    bcef.b(null, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
+    bdla.b(null, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
   }
   
   public void sendToService(ToServiceMsg paramToServiceMsg)
   {
-    this.jdField_a_of_type_Axqm.a(paramToServiceMsg);
+    this.jdField_a_of_type_Aywx.a(paramToServiceMsg);
   }
   
   public void start(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Axql = new axql(this, null);
-    AppNetConnInfo.registerConnectionChangeReceiver(getApplication(), this.jdField_a_of_type_Axql);
+    this.jdField_a_of_type_Ayww = new ayww(this, null);
+    AppNetConnInfo.registerConnectionChangeReceiver(getApplication(), this.jdField_a_of_type_Ayww);
     super.start(paramBoolean);
   }
 }

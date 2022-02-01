@@ -1,16 +1,10 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qqlive.module.videoreport.VideoReport;
 
-class sur
-  implements ViewBase.OnClickListener
+public class sur
 {
-  sur(suq paramsuq) {}
-  
-  public void onClick(ViewBase paramViewBase)
+  public static void a(sus paramsus)
   {
-    int i = StringCommon.getStrIdFromString(paramViewBase.getClickEvnet());
-    sup.a(this.a.jdField_a_of_type_Sup, i).a(paramViewBase, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData);
+    VideoReport.reportEvent(sus.a(paramsus), paramsus.a());
   }
 }
 

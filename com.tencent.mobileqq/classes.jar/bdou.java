@@ -1,16 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.structmsg.StructMsgForHypertext;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bdou
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public bdou(MediaPreviewActivity paramMediaPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
+  public bdou(StructMsgForHypertext paramStructMsgForHypertext) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.b(this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
+    new bdob(null, paramView, this.a.message).a("web", this.a.mSourceUrl, null, null);
+    bdla.b(null, "CliOper", "", "", "0X800567C", "0X800567C", 0, 0, this.a.mMsgServiceID + "", "", "", "");
+    bdla.b(null, "CliOper", "", "", "0X8004B5C", "0X8004B5C", 1, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

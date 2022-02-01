@@ -14,7 +14,7 @@ public final class ArkAppContainer$2
     if (localBaseApplication == null) {
       return;
     }
-    QQToast.a(localBaseApplication, localBaseApplication.getString(2131690157), 2000).a();
+    QQToast.a(localBaseApplication, localBaseApplication.getString(2131690195), 2000).a();
   }
 }
 

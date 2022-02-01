@@ -1,17 +1,18 @@
-import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.PoiMapActivity;
+import com.tencent.avgame.gameroom.stage.guesspicture.GuessPictureStageView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class nll
   implements View.OnClickListener
 {
-  public nll(PoiMapActivity paramPoiMapActivity, Dialog paramDialog) {}
+  public nll(GuessPictureStageView paramGuessPictureStageView) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (this.a.a != null) {
+      this.a.a.onClick(paramView);
+    }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

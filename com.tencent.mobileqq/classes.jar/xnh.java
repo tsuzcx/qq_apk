@@ -1,137 +1,49 @@
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedSeqInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class xnh
+  extends QQUIEventReceiver<xmx, xaa>
 {
-  public final int a;
-  public long a;
-  public final String a;
-  public final boolean a;
-  public int b;
-  public final String b;
-  public boolean b;
-  public final String c;
-  
-  public xnh(qqstory_struct.FeedSeqInfo paramFeedSeqInfo)
+  public xnh(@NonNull xmx paramxmx)
   {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramFeedSeqInfo.feed_id.get().toStringUtf8();
-    this.jdField_a_of_type_Int = paramFeedSeqInfo.seq.get();
-    this.jdField_b_of_type_JavaLangString = paramFeedSeqInfo.union_id.get().toStringUtf8();
-    this.c = String.valueOf(paramFeedSeqInfo.date.get());
-    if (paramFeedSeqInfo.is_playable.has()) {
-      if (paramFeedSeqInfo.is_playable.get() != 1) {}
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      try
-      {
-        for (;;)
-        {
-          if (!TextUtils.isEmpty(this.c)) {
-            this.jdField_a_of_type_Long = xnp.a().parse(this.c).getTime();
-          }
-          yos.a(this.jdField_a_of_type_JavaLangString);
-          return;
-          bool = false;
-          break;
-          this.jdField_a_of_type_Boolean = true;
-        }
-      }
-      catch (Exception paramFeedSeqInfo)
-      {
-        for (;;)
-        {
-          xvv.c("Q.qqstory.home", "parse date " + this.c, paramFeedSeqInfo);
-        }
-      }
-    }
+    super(paramxmx);
   }
   
-  public xnh(@NonNull String paramString1, int paramInt, String paramString2, String paramString3)
+  public void a(@NonNull xmx paramxmx, @NonNull xaa paramxaa)
   {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_Boolean = true;
-    try
-    {
-      if (!TextUtils.isEmpty(this.c)) {
-        this.jdField_a_of_type_Long = xnp.a().parse(this.c).getTime();
-      }
-      yos.a(paramString1);
+    if (!TextUtils.equals(paramxaa.b, String.valueOf(paramxmx.hashCode()))) {
       return;
     }
-    catch (ParseException paramString2)
-    {
-      for (;;)
-      {
-        xvv.c("Q.qqstory.home", "parse date", paramString2);
-      }
+    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)paramxmx.a()).a();
+    if (localVideoViewVideoHolder != null) {
+      localVideoViewVideoHolder.c(false);
     }
+    paramxmx.l();
+    if (paramxaa.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      ykq.a(this.TAG, "generate thumbnail success. shareThumbPath = %s.", paramxaa.jdField_a_of_type_JavaLangString);
+      if (paramxaa.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mIsPicture == 1)
+      {
+        wzy.a().a(paramxmx.b(), paramxaa.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      wzy.a().a(paramxmx.b(), paramxaa.jdField_a_of_type_JavaLangString, paramxaa.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramxmx.hashCode());
+      return;
+    }
+    ykq.e(this.TAG, "send video to friend failed because generate thumbnail failed.");
+    QQToast.a(BaseApplicationImpl.getContext(), 1, anvx.a(2131700672), 0).a();
   }
   
-  public static int a(List<xnh> paramList, String paramString)
+  public Class acceptEventClass()
   {
-    paramList = paramList.iterator();
-    int i = 0;
-    while (paramList.hasNext())
-    {
-      if (((xnh)paramList.next()).jdField_a_of_type_JavaLangString.equals(paramString)) {
-        return i;
-      }
-      i += 1;
-    }
-    return -1;
-  }
-  
-  public qqstory_struct.FeedSeqInfo a()
-  {
-    qqstory_struct.FeedSeqInfo localFeedSeqInfo = new qqstory_struct.FeedSeqInfo();
-    localFeedSeqInfo.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-    localFeedSeqInfo.seq.set(this.jdField_a_of_type_Int);
-    if (this.jdField_b_of_type_JavaLangString != null) {
-      localFeedSeqInfo.union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-    }
-    try
-    {
-      Integer localInteger1 = Integer.valueOf(xnp.a().format(new Date(NetConnInfoCenter.getServerTimeMillis())));
-      localFeedSeqInfo.date.set(localInteger1.intValue());
-      return localFeedSeqInfo;
-    }
-    catch (Exception localException1)
-    {
-      xvv.b("FeedIdListSeqInfo", "exception ", localException1);
-      try
-      {
-        Integer localInteger2 = Integer.valueOf(xnp.a().format(new Date()));
-        localFeedSeqInfo.date.set(localInteger2.intValue());
-        return localFeedSeqInfo;
-      }
-      catch (Exception localException2)
-      {
-        xvv.b("FeedIdListSeqInfo", "exception ", localException2);
-      }
-    }
-    return localFeedSeqInfo;
-  }
-  
-  public String toString()
-  {
-    return "FeedIdListSeqInfo{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mSeq=" + this.jdField_a_of_type_Int + ", mUnionId='" + this.jdField_b_of_type_JavaLangString + '\'' + ", date='" + this.c + '\'' + '}';
+    return xaa.class;
   }
 }
 

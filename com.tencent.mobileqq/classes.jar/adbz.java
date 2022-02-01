@@ -1,20 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.ChatSettingForTroop.52;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.manager.TicketManager;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class adbz
-  implements DialogInterface.OnClickListener
+  extends adae
 {
-  public adbz(ChatSettingForTroop.52 param52) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull adaa paramadaa)
   {
-    if (paramInt == 1)
+    switch (paramInt)
     {
-      this.a.this$0.a.cancel();
-      this.a.this$0.finish();
+    default: 
+      return false;
+    }
+    paramString = BaseApplicationImpl.getApplication().getRuntime();
+    paramJSONObject = (TicketManager)paramString.getManager(2);
+    paramString = paramString.getAccount();
+    paramJSONObject = paramJSONObject.getSkey(paramString);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("uin", paramString);
+      localJSONObject.put("skey", paramJSONObject);
+      addh.a(paramadaa, localJSONObject);
+      return true;
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        paramJSONObject = paramString.getMessage();
+        if (QLog.isColorLevel()) {
+          QLog.w("DoraemonOpenAPI.innerApi", 2, paramJSONObject, paramString);
+        }
+        paramString = paramJSONObject;
+        if (paramJSONObject == null) {
+          paramString = "";
+        }
+        addh.a(paramadaa, -1, paramString);
+      }
     }
   }
 }

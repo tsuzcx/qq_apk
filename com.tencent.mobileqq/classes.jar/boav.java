@@ -1,7 +1,8 @@
-public class boav
+public abstract interface boav
 {
-  public static String a;
-  public static boolean a;
+  public abstract void a();
+  
+  public abstract void a(String paramString);
 }
 
 

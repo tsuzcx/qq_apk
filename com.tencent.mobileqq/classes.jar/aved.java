@@ -1,16 +1,43 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.5;
+import com.tencent.mobileqq.app.BusinessObserver;
 
 public class aved
-  implements DialogInterface.OnClickListener
+  implements BusinessObserver
 {
-  public aved(LocationDialogUtil.5 param5) {}
+  protected void a(Object paramObject) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void b(Object paramObject) {}
+  
+  protected void c(Object paramObject) {}
+  
+  protected void d(Object paramObject) {}
+  
+  protected void e(Object paramObject) {}
+  
+  protected void f(Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a.a.finish();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 8224: 
+      b(paramObject);
+      return;
+    case 8225: 
+      e(paramObject);
+      return;
+    case 8227: 
+      a(paramObject);
+      return;
+    case 8226: 
+      c(paramObject);
+      return;
+    case 8228: 
+      f(paramObject);
+      return;
+    }
+    d(paramObject);
   }
 }
 

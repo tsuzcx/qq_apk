@@ -1,15 +1,90 @@
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.transfile.richmediavfs.RmVFSUtils;
-import com.tencent.mobileqq.vfs.VFSAssistantUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class aktw
 {
-  public static final String a = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_ROOT);
-  public static final String b = AppConstants.SDCARD_IMG_FLOW_CAMERA;
-  public static final String c = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_SHORTVIDEO_SAVE);
-  public static final String d = RmVFSUtils.getVFSPath(AppConstants.SDCARD_PATH);
-  public static final String e = AppConstants.SDCARD_IMG_CAMERA;
-  public static final String f = AppConstants.SDCARD_VIDEO;
+  public static int a(JSONObject paramJSONObject, int paramInt, String... paramVarArgs)
+  {
+    int i = paramInt;
+    if (paramJSONObject != null) {
+      i = 0;
+    }
+    try
+    {
+      while (i < paramVarArgs.length - 1)
+      {
+        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
+        i += 1;
+      }
+      i = paramJSONObject.getInt(paramVarArgs[(paramVarArgs.length - 1)]);
+      return i;
+    }
+    catch (Throwable paramJSONObject) {}
+    return paramInt;
+  }
+  
+  public static String a(JSONObject paramJSONObject, String paramString, String... paramVarArgs)
+  {
+    String str = paramString;
+    int i;
+    if (paramJSONObject != null) {
+      i = 0;
+    }
+    try
+    {
+      while (i < paramVarArgs.length - 1)
+      {
+        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
+        i += 1;
+      }
+      str = paramJSONObject.getString(paramVarArgs[(paramVarArgs.length - 1)]);
+      return str;
+    }
+    catch (Throwable paramJSONObject) {}
+    return paramString;
+  }
+  
+  public static JSONArray a(JSONObject paramJSONObject, String... paramVarArgs)
+  {
+    JSONArray localJSONArray = null;
+    int i;
+    if (paramJSONObject != null) {
+      i = 0;
+    }
+    try
+    {
+      while (i < paramVarArgs.length - 1)
+      {
+        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
+        i += 1;
+      }
+      localJSONArray = paramJSONObject.getJSONArray(paramVarArgs[(paramVarArgs.length - 1)]);
+      return localJSONArray;
+    }
+    catch (Throwable paramJSONObject) {}
+    return null;
+  }
+  
+  public static JSONObject a(JSONObject paramJSONObject, String... paramVarArgs)
+  {
+    JSONObject localJSONObject = null;
+    int i;
+    if (paramJSONObject != null) {
+      i = 0;
+    }
+    try
+    {
+      while (i < paramVarArgs.length - 1)
+      {
+        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
+        i += 1;
+      }
+      localJSONObject = paramJSONObject.getJSONObject(paramVarArgs[(paramVarArgs.length - 1)]);
+      return localJSONObject;
+    }
+    catch (Throwable paramJSONObject) {}
+    return null;
+  }
 }
 
 

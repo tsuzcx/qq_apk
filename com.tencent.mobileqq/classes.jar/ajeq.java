@@ -1,41 +1,19 @@
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajeq
-  extends ajeo
+class ajeq
+  implements View.OnClickListener
 {
-  private List<String> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
+  ajeq(ajep paramajep, View paramView) {}
   
-  public ajeq(boolean paramBoolean, BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if ((paramAppInfo != null) && (paramAppInfo.missions != null)) {
-      this.jdField_a_of_type_JavaUtilList = paramAppInfo.missions.get();
-    }
-  }
-  
-  public String a()
-  {
-    String str = String.format("&hasRedDot=%b", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) });
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        localStringBuilder.append((String)localIterator.next()).append("_");
-      }
-      localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
-      return str + String.format("&missions=%s", new Object[] { localStringBuilder.toString() });
-    }
-    return str;
-  }
-  
-  public boolean a(String paramString)
-  {
-    return (paramString != null) && (paramString.contains("need_fill_red_point_info=1"));
+    bdla.b(ajep.a(this.jdField_a_of_type_Ajep), "dc00899", "Grp_contacts_news", "", "notice", "verify_clk", 0, 0, "", "", "", "");
+    ajep.a(this.jdField_a_of_type_Ajep, true);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_Ajep.notifyDataSetChanged();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

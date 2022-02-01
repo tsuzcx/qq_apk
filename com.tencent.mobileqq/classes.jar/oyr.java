@@ -1,31 +1,21 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 import kotlin.Metadata;
-import kotlin.jvm.internal.Ref.ObjectRef;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "clickedView", "Landroid/view/View;", "kotlin.jvm.PlatformType", "which", "", "OnClick"}, k=3, mv={1, 1, 16})
-final class oyr
-  implements bjoe
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initChooseCommentTypeClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oyr
+  implements oyp
 {
-  oyr(oyn paramoyn, Ref.ObjectRef paramObjectRef, bjnw parambjnw) {}
-  
-  public final void OnClick(View paramView, int paramInt)
+  public void a(int paramInt, @NotNull Container paramContainer, @NotNull pcf parampcf, @NotNull pdp parampdp, @NotNull ViewBase paramViewBase)
   {
-    switch (paramInt)
-    {
-    default: 
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-    }
-    ouu localouu = (ouu)this.jdField_a_of_type_KotlinJvmInternalRef$ObjectRef.element;
-    paramView = oyn.a(this.jdField_a_of_type_Oyn).a;
-    if (paramView != null) {}
-    for (paramView = paramView.commentId;; paramView = null)
-    {
-      localouu.c(paramView);
-      oyn.a(this.jdField_a_of_type_Oyn, 8);
-      break;
-    }
+    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
+    Intrinsics.checkParameterIsNotNull(parampcf, "adapter");
+    Intrinsics.checkParameterIsNotNull(parampdp, "commentViewItem");
+    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
+    paramViewBase.setOnClickListener((ViewBase.OnClickListener)new oys(parampcf));
   }
 }
 

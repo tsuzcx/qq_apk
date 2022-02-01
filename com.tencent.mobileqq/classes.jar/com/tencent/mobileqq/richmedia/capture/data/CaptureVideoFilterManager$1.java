@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import baah;
+import bbgq;
 import com.tencent.qphone.base.util.QLog;
 
 public class CaptureVideoFilterManager$1
   implements Runnable
 {
-  public CaptureVideoFilterManager$1(baah parambaah) {}
+  public CaptureVideoFilterManager$1(bbgq parambbgq) {}
   
   public void run()
   {

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.forward;
 
 import android.content.Intent;
-import atky;
+import aupt;
 
 public class ForwardGetMemberListOption
-  extends atky
+  extends aupt
 {
   public ForwardGetMemberListOption(Intent paramIntent)
   {

@@ -34,14 +34,14 @@ public class ReplyActionView
   
   private void a()
   {
-    Object localObject = LayoutInflater.from(getContext()).inflate(2131558771, this, true);
-    this.a = ((TextView)((View)localObject).findViewById(2131371394));
-    this.b = ((TextView)((View)localObject).findViewById(2131369878));
+    Object localObject = LayoutInflater.from(getContext()).inflate(2131558796, this, true);
+    this.a = ((TextView)((View)localObject).findViewById(2131371579));
+    this.b = ((TextView)((View)localObject).findViewById(2131370048));
     int i = AIOUtils.dp2px(12.0F, getContext().getResources());
-    localObject = getResources().getDrawable(2130850806);
+    localObject = getResources().getDrawable(2130850948);
     ((Drawable)localObject).setBounds(0, 0, i, i);
     this.a.setCompoundDrawables(null, null, (Drawable)localObject, null);
-    localObject = getResources().getDrawable(2130850807);
+    localObject = getResources().getDrawable(2130850949);
     ((Drawable)localObject).setBounds(0, 0, i, i);
     this.b.setCompoundDrawables(null, null, (Drawable)localObject, null);
   }

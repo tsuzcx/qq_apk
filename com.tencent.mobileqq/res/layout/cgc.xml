@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/n9c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/nf_" android:layout_width="750.0px" android:layout_height="1334.0px"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.RoundedCornerImageViewNoPadding android:id="@id/n9b" android:layout_width="125.0dip" android:layout_height="125.0dip" android:scaleType="fitCenter" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/neu" android:layout_width="750.0px" android:layout_height="1624.0px" android:scaleType="centerCrop" />
+    <ImageView android:id="@id/net" android:layout_width="750.0px" android:layout_height="1134.0px" android:layout_marginTop="36.0px" android:scaleType="centerCrop" android:layout_centerHorizontal="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/nf7" android:layout_width="619.0px" android:layout_height="1108.0px" android:layout_marginTop="39.0px" android:layout_centerHorizontal="true">
+        <RelativeLayout android:id="@id/nfa" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <ImageView android:id="@id/new" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="38.0px" android:layout_centerHorizontal="true" />
+            <FrameLayout android:id="@id/nen" android:background="@drawable/bka" android:padding="8.0px" android:layout_width="370.0px" android:layout_height="370.0px" android:layout_marginTop="26.0px" android:layout_below="@id/new" android:layout_centerHorizontal="true">
+                <com.tencent.avgame.ui.AVGamePosterCoverView android:id="@id/neo" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            </FrameLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/nem" android:layout_width="478.0px" android:layout_height="wrap_content" android:layout_marginLeft="64.0px" android:layout_marginTop="31.0px" android:layout_below="@id/nen" />
+        </RelativeLayout>
+    </LinearLayout>
+    <com.tencent.mobileqq.widget.RoundCorneredRelativeLayout android:layout_gravity="right" android:id="@id/nex" android:background="@drawable/bk_" android:layout_width="100.0px" android:layout_height="120.0px" android:layout_marginTop="5.0px" android:layout_marginRight="88.0px" android:layout_below="@id/net" android:layout_alignRight="@id/net" android:layout_alignParentRight="true">
+        <ImageView android:id="@id/nev" android:padding="5.0px" android:layout_width="98.0px" android:layout_height="98.0px" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="15.0px" android:textStyle="bold" android:textColor="@color/bp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6.0px" android:text="@string/wjq" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </com.tencent.mobileqq.widget.RoundCorneredRelativeLayout>
 </RelativeLayout>

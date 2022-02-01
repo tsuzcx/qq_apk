@@ -1,12 +1,29 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.shadow.dynamic.host.EnterCallback;
-import com.tencent.shadow.dynamic.host.PluginManager;
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import com.tencent.mobileqq.flashchat.FlashChatPanel;
 
-public abstract interface aumc
-  extends PluginManager
+public class aumc
+  implements aftk
 {
-  public abstract void a(Context paramContext, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback);
+  public aumc(FlashChatPanel paramFlashChatPanel) {}
+  
+  public boolean onLongClick(View paramView)
+  {
+    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
+    paramView.dispatchTouchEvent(localMotionEvent);
+    localMotionEvent.recycle();
+    return true;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if ((paramView instanceof ArkAppView)) {
+      ((ArkAppView)paramView).onTouch(paramView, paramMotionEvent);
+    }
+    return true;
+  }
 }
 
 

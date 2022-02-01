@@ -1,26 +1,43 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import mqq.os.MqqHandler;
 
-public final class ambp
-  implements EIPCResultCallback
+public class ambp
+  implements SurfaceHolder.Callback
 {
-  public ambp(String paramString1, String paramString2, ambu paramambu) {}
+  public ambp(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    CmShowRenderView.a(true);
-    paramEIPCResult = paramEIPCResult.data;
-    int i = paramEIPCResult.getInt("selfUinStatus");
-    int j = paramEIPCResult.getInt("friendUinStatus");
-    ambn.a(this.jdField_a_of_type_JavaLangString, i);
-    ambn.a(this.b, j);
-    if (this.jdField_a_of_type_Ambu != null) {
-      this.jdField_a_of_type_Ambu.a(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "surfaceCreated: mSavedCurPosition:" + this.a.g + ",mSavedPlayState : " + this.a.a(this.a.h));
     }
-    QLog.i("CmShow_CmShowRenderView", 1, "initCmShowData selfUinStatus:" + i + " friendUinStatus:" + j);
+    if ((this.a.h == 1) && (this.a.g > 0))
+    {
+      this.a.a(this.a.g);
+      this.a.g = 0;
+      this.a.h = 0;
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+  }
+  
+  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "surfaceDestroyed ");
+    }
+    if (this.a.jdField_a_of_type_Bhxu != null) {
+      this.a.jdField_a_of_type_Bhxu.c();
+    }
+    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null) {
+      this.a.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    }
   }
 }
 

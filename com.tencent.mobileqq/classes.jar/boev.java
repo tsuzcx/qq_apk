@@ -1,32 +1,17 @@
-import android.graphics.Canvas;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
-
-public class boev
+public abstract class boev
 {
-  public boolean d = true;
-  public boolean e = true;
-  public int f;
-  public boolean f;
-  public int g;
+  protected float a;
   
-  boev(TCProgressBar paramTCProgressBar)
+  public boev(float paramFloat)
   {
-    this.jdField_f_of_type_Boolean = false;
+    this.a = paramFloat;
   }
   
-  void a(Canvas paramCanvas)
-  {
-    this.jdField_f_of_type_Boolean = false;
-  }
+  public abstract float a(long paramLong);
   
-  boolean a(float paramFloat)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TCProgressBar", 2, "checkBounds,x = " + paramFloat + ",x_coord = " + this.jdField_f_of_type_Int + ",x_coord + length = " + (this.jdField_f_of_type_Int + this.g));
-    }
-    return (paramFloat > this.jdField_f_of_type_Int) && (paramFloat < this.jdField_f_of_type_Int + this.g);
-  }
+  public abstract long a(float paramFloat);
+  
+  public abstract String a(long paramLong);
 }
 
 

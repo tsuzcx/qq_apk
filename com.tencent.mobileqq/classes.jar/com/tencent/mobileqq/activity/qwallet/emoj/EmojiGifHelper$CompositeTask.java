@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import akgd;
+import albw;
 import android.text.TextUtils;
 import com.tencent.mobileqq.shortvideo.mediadevice.GifProcessor;
 import com.tencent.qphone.base.util.QLog;
@@ -22,7 +22,7 @@ public class EmojiGifHelper$CompositeTask
   
   private String getGifPath()
   {
-    String str = akgd.a(null) + "Camera/";
+    String str = albw.a(null) + "Camera/";
     File localFile = new File(str + "gif");
     if ((localFile.exists()) && (!localFile.isDirectory())) {
       localFile.delete();

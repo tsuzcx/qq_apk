@@ -1,29 +1,27 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import amdp;
-import amdy;
-import amtj;
-import android.app.Activity;
-import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
+import java.util.ArrayList;
 
 class ApolloJsPlugin$4
-  implements amdy
+  extends ArrayList<String>
 {
-  ApolloJsPlugin$4(ApolloJsPlugin paramApolloJsPlugin, ApolloWebAvatarParam paramApolloWebAvatarParam, Activity paramActivity, int paramInt, String paramString) {}
-  
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  ApolloJsPlugin$4(ApolloJsPlugin paramApolloJsPlugin)
   {
-    if (paramBoolean)
-    {
-      if ((this.val$param.dressIds == null) || (this.val$param.dressIds.length == 0)) {
-        this.val$param.dressIds = amdp.a(this.val$param.roleId);
-      }
-      if (this.val$activity != null) {
-        this.val$activity.runOnUiThread(new ApolloJsPlugin.4.1(this));
-      }
-      return;
-    }
-    this.this$0.callbackError(this.val$callbackId, amtj.a(2131699595));
+    add("supportAEKit");
+    add("open3DDressUpPage");
+    add("init3DAvatar");
+    add("set3DFaceFull");
+    add("get3DFaceFull");
+    add("set3DFace");
+    add("get3DFace");
+    add("save3DFace");
+    add("set3DViewPort");
+    add("change3DAvatarComponent");
+    add("getAll3DAvatarComponent");
+    add("load3DFaceDress");
+    add("play3DAction");
+    add("open3DFaceRecognition");
+    add("set3DModeType");
   }
 }
 

@@ -1,31 +1,29 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.content.Intent;
 
 public class xmv
-  extends QQUIEventReceiver<StoryMessageListActivity, vvh>
+  extends xgs
 {
-  public xmv(@NonNull StoryMessageListActivity paramStoryMessageListActivity)
-  {
-    super(paramStoryMessageListActivity);
-  }
+  private xmu a;
   
-  public void a(@NonNull StoryMessageListActivity paramStoryMessageListActivity, @NonNull vvh paramvvh)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (paramvvh.a.isSuccess())
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i(this.TAG, 2, "TroopNickNameUpdateEvent");
-      }
-      paramStoryMessageListActivity.g();
+    if (this.a != null) {
+      this.a.a(paramInt1, paramInt2, paramIntent);
     }
   }
   
-  public Class acceptEventClass()
+  public void f()
   {
-    return vvh.class;
+    if (this.a != null) {
+      this.a.b();
+    }
+  }
+  
+  public void g()
+  {
+    if (this.a != null) {
+      this.a.a();
+    }
   }
 }
 

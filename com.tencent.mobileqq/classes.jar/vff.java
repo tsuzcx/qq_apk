@@ -1,18 +1,6 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class vff
-  implements CompoundButton.OnCheckedChangeListener
+public abstract interface vff
 {
-  public vff(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    PublicAccountImageCollectionCommentActivity.b(this.a, paramBoolean);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-  }
+  public abstract void a(Object paramObject, int paramInt1, int paramInt2, String paramString, boolean paramBoolean, vfh paramvfh);
 }
 
 

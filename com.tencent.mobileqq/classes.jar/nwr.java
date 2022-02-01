@@ -1,24 +1,58 @@
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import mqq.util.WeakReference;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.coupon.CouponActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
 public class nwr
-  extends amsu
+  extends WebViewPlugin
 {
-  WeakReference<AccountDetailActivity> a;
-  
-  public nwr(AccountDetailActivity paramAccountDetailActivity)
+  public nwr()
   {
-    this.a = new WeakReference(paramAccountDetailActivity);
+    this.mPluginNameSpace = "coupon";
   }
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void a(String paramString)
   {
-    AccountDetailActivity localAccountDetailActivity = (AccountDetailActivity)this.a.get();
-    if (localAccountDetailActivity == null) {}
-    while ((localAccountDetailActivity.h) || (!paramBoolean) || (!paramString.equals(localAccountDetailActivity.e))) {
+    Activity localActivity = this.mRuntime.a();
+    int i;
+    if ((localActivity instanceof CouponActivity))
+    {
+      localObject = (CouponActivity)localActivity;
+      i = ((CouponActivity)localObject).a;
+      if ((i & 0x8) != 0)
+      {
+        paramString = new Intent();
+        paramString.putExtra("toPage", 2);
+        ((CouponActivity)localObject).setResult(-1, paramString);
+        ((CouponActivity)localObject).superFinish();
+      }
+    }
+    else
+    {
       return;
     }
-    localAccountDetailActivity.S();
+    Object localObject = new Intent(localActivity, CouponActivity.class);
+    ((Intent)localObject).putExtra("from", (i | 0xA) & 0xE);
+    if (!TextUtils.isEmpty(paramString)) {
+      ((Intent)localObject).putExtra("jsonParams", paramString);
+    }
+    localActivity.startActivity((Intent)localObject);
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ("coupon".equals(paramString2))
+    {
+      if (("goToCouponHomePage".equals(paramString3)) && (paramVarArgs.length == 1))
+      {
+        a(paramVarArgs[0]);
+        paramJsBridgeListener.a(null);
+      }
+      return true;
+    }
+    return false;
   }
 }
 

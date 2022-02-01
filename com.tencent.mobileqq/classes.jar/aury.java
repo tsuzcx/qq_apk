@@ -1,117 +1,22 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherClientIPCModule.1;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingData;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 
-public class aury
-  extends QIPCModule
+class aury
+  implements TextWatcher
 {
-  private static volatile aury jdField_a_of_type_Aury;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  aury(aurs paramaurs, int paramInt) {}
   
-  public aury(String paramString)
-  {
-    super(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("WatchTogetherClientIPCModule", 2, "WatchTogetherClientIPCModule register");
-    }
-  }
+  public void afterTextChanged(Editable paramEditable) {}
   
-  public static aury a()
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (jdField_a_of_type_Aury == null) {}
-    try
+    if ((aurs.a(this.jdField_a_of_type_Aurs).getText().length() == this.jdField_a_of_type_Int) && (paramCharSequence.charAt(this.jdField_a_of_type_Int - 1) == '\024'))
     {
-      if (jdField_a_of_type_Aury == null) {
-        jdField_a_of_type_Aury = new aury("WatchTogetherClientIPCModule");
-      }
-      return jdField_a_of_type_Aury;
-    }
-    finally {}
-  }
-  
-  private boolean a()
-  {
-    return Thread.currentThread() == Looper.getMainLooper().getThread();
-  }
-  
-  public void a(String paramString, WatchTogetherFloatingData paramWatchTogetherFloatingData)
-  {
-    if (a())
-    {
-      if ("ACTION_SHOW_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(paramString)) {
-        aurt.a().a(BaseApplicationImpl.getContext(), paramWatchTogetherFloatingData);
-      }
-      do
-      {
-        return;
-        if ("ACTION_QUIT_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(paramString))
-        {
-          aurt.a().a(paramWatchTogetherFloatingData.getCurUin(), paramWatchTogetherFloatingData.getCurType(), true);
-          return;
-        }
-      } while (!"ACTION_CLOSE_OR_QUIT_WATCH_FLOATING_WINDOWS".equals(paramString));
-      aurt.a().b();
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.post(new WatchTogetherClientIPCModule.1(this, paramString, paramWatchTogetherFloatingData));
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WatchTogetherClientIPCModule", 2, "call TogetherBusinessIPCModule action=" + paramString);
-    }
-    EIPCResult localEIPCResult = new EIPCResult();
-    if ("ACTION_SHOW_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(paramString)) {
-      if (paramBundle != null)
-      {
-        paramBundle = (WatchTogetherFloatingData)paramBundle.getSerializable("BUNDLE_KEY_UI_DATA");
-        if (paramBundle != null)
-        {
-          a(paramString, paramBundle);
-          localEIPCResult.code = 0;
-        }
-      }
-    }
-    for (;;)
-    {
-      callbackResult(paramInt, localEIPCResult);
-      return localEIPCResult;
-      localEIPCResult.code = -102;
-      continue;
-      localEIPCResult.code = -102;
-      continue;
-      if ("ACTION_QUIT_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(paramString))
-      {
-        if (paramBundle != null)
-        {
-          paramBundle = (WatchTogetherFloatingData)paramBundle.getSerializable("BUNDLE_KEY_UI_DATA");
-          if (paramBundle != null)
-          {
-            a(paramString, paramBundle);
-            localEIPCResult.code = 0;
-          }
-          else
-          {
-            localEIPCResult.code = -102;
-          }
-        }
-        else
-        {
-          localEIPCResult.code = -102;
-        }
-      }
-      else if ("ACTION_CLOSE_OR_QUIT_WATCH_FLOATING_WINDOWS".equals(paramString))
-      {
-        a(paramString, new WatchTogetherFloatingData());
-        localEIPCResult.code = 0;
-      }
+      aurs.a(this.jdField_a_of_type_Aurs).setText(paramCharSequence.subSequence(0, this.jdField_a_of_type_Int - 1));
+      aurs.a(this.jdField_a_of_type_Aurs).setSelection(this.jdField_a_of_type_Int - 1);
     }
   }
 }

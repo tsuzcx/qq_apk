@@ -1,51 +1,50 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFeedLikeList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedLikeList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import UserGrowth.stSimpleGetFeedDetailRsp;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
+import java.util.ArrayList;
+import java.util.List;
 
-public class vsf
-  extends vsz
+class vsf
+  implements vfg
 {
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
+  vsf(vse paramvse, long paramLong, vos paramvos) {}
   
-  public vsf(vse paramvse, String paramString, boolean paramBoolean)
+  public void a(vfr paramvfr)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public String a()
-  {
-    return vse.jdField_a_of_type_JavaLangString;
-  }
-  
-  public vta a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspFeedLikeList localRspFeedLikeList = new qqstory_service.RspFeedLikeList();
-    try
+    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    vmp.a("weishi-beacon", "小程序播放页请求耗时：" + l + "毫秒");
+    vkk.a().a(l, paramvfr.jdField_a_of_type_Vfo, "fullscreen_videoplay", true);
+    if (!paramvfr.a())
     {
-      localRspFeedLikeList.mergeFrom(paramArrayOfByte);
-      return new vsg(this.jdField_a_of_type_Vse, localRspFeedLikeList, this.jdField_a_of_type_Boolean);
+      vmp.d("WSVerticalForMiniAppPresenter", "GetFeedDetailRequest onTaskResponse failed code:" + paramvfr.jdField_a_of_type_Int + ", msg:" + paramvfr.jdField_a_of_type_JavaLangString);
+      if (this.jdField_a_of_type_Vos != null) {
+        this.jdField_a_of_type_Vos.a(paramvfr.jdField_a_of_type_Int, paramvfr.jdField_a_of_type_JavaLangString);
+      }
+      vkk.a().a(l, paramvfr.jdField_a_of_type_Vfo, paramvfr.jdField_a_of_type_Int, paramvfr.jdField_a_of_type_JavaLangString);
     }
-    catch (Exception paramArrayOfByte)
+    Object localObject;
+    do
     {
-      xvv.d("Q.qqstory:FeedLikeDataProvider", "" + paramArrayOfByte);
+      do
+      {
+        return;
+        if (!(paramvfr.jdField_a_of_type_JavaLangObject instanceof stSimpleGetFeedDetailRsp)) {
+          break;
+        }
+        paramvfr = ((stSimpleGetFeedDetailRsp)paramvfr.jdField_a_of_type_JavaLangObject).feed;
+        paramvfr.isLoop = true;
+        localObject = new ArrayList();
+        ((ArrayList)localObject).add(paramvfr);
+        paramvfr = WSVerticalDataManager.a().a((List)localObject);
+        localObject = this.jdField_a_of_type_Vse.a();
+      } while ((localObject == null) || (((voi)localObject).a() == null) || (((voi)localObject).a().a() == null));
+      localObject = ((voi)localObject).a().a().a;
+    } while (!(localObject instanceof vqe));
+    ((vqe)localObject).b((vpj)paramvfr.get(0));
+    return;
+    if (this.jdField_a_of_type_Vos != null) {
+      this.jdField_a_of_type_Vos.a(paramvfr.b, paramvfr.jdField_a_of_type_JavaLangString);
     }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqFeedLikeList localReqFeedLikeList = new qqstory_service.ReqFeedLikeList();
-    localReqFeedLikeList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 2;; i = 1)
-    {
-      localReqFeedLikeList.source.set(i);
-      return localReqFeedLikeList.toByteArray();
-    }
+    vkk.a().a(l, paramvfr.jdField_a_of_type_Vfo, -1, "数据无法解析或为空");
   }
 }
 

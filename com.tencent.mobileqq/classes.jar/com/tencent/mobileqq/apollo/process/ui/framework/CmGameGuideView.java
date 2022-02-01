@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.apollo.process.ui.framework;
 
-import alvx;
-import alxn;
-import alxy;
-import alyh;
-import amdn;
-import amip;
+import amwn;
+import amyd;
+import amyo;
+import amyx;
 import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
@@ -15,7 +13,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bjng;
+import anev;
+import bkys;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
 import com.tencent.mobileqq.utils.VipUtils;
@@ -53,23 +52,23 @@ public class CmGameGuideView
   
   private void a(Context paramContext, boolean paramBoolean)
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(paramContext).inflate(2131558913, null);
-    alyh localalyh = alvx.a();
+    RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(paramContext).inflate(2131558940, null);
+    amyx localamyx = amwn.a();
     int i;
     Object localObject;
-    if ((localalyh != null) && (localalyh.b()))
+    if ((localamyx != null) && (localamyx.b()))
     {
       i = 1;
       if (!paramBoolean) {
         break label286;
       }
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localRelativeLayout.findViewById(2131364686));
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localRelativeLayout.findViewById(2131364690));
-      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localRelativeLayout.findViewById(2131364695));
-      this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)localRelativeLayout.findViewById(2131364693));
-      localRelativeLayout.findViewById(2131364684).setOnClickListener(this);
-      localRelativeLayout.findViewById(2131364685).setOnClickListener(this);
-      localRelativeLayout.findViewById(2131364682).setOnClickListener(this);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localRelativeLayout.findViewById(2131364771));
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localRelativeLayout.findViewById(2131364775));
+      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localRelativeLayout.findViewById(2131364780));
+      this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)localRelativeLayout.findViewById(2131364778));
+      localRelativeLayout.findViewById(2131364769).setOnClickListener(this);
+      localRelativeLayout.findViewById(2131364770).setOnClickListener(this);
+      localRelativeLayout.findViewById(2131364767).setOnClickListener(this);
       localObject = "https://cmshow.gtimg.cn/client/img/cmgame_framwork_guide_play.png";
       paramContext = "https://cmshow.gtimg.cn/client/img/cmgame_framwork_guide_plus.png";
       label135:
@@ -83,28 +82,28 @@ public class CmGameGuideView
     for (;;)
     {
       addView(localRelativeLayout);
-      paramContext = (RelativeLayout)((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get()).findViewById(2131376688);
+      paramContext = (RelativeLayout)((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get()).findViewById(2131376956);
       localObject = new RelativeLayout.LayoutParams(-2, -2);
       ((RelativeLayout.LayoutParams)localObject).addRule(13);
       paramContext.addView(this, (ViewGroup.LayoutParams)localObject);
       invalidate();
-      if (localalyh != null)
+      if (localamyx != null)
       {
-        localalyh.b();
-        this.jdField_a_of_type_Int = localalyh.jdField_a_of_type_Int;
+        localamyx.b();
+        this.jdField_a_of_type_Int = localamyx.jdField_a_of_type_Int;
       }
       VipUtils.a(null, "cmshow", "Apollo", "BeGuiShow_kxw", 0, 0, new String[] { String.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId), String.valueOf(this.jdField_a_of_type_Int) });
       return;
       i = 0;
       break;
       label286:
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localRelativeLayout.findViewById(2131364689));
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localRelativeLayout.findViewById(2131364691));
-      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localRelativeLayout.findViewById(2131364694));
-      this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)localRelativeLayout.findViewById(2131364692));
-      localRelativeLayout.findViewById(2131364687).setOnClickListener(this);
-      localRelativeLayout.findViewById(2131364688).setOnClickListener(this);
-      localRelativeLayout.findViewById(2131364683).setOnClickListener(this);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localRelativeLayout.findViewById(2131364774));
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localRelativeLayout.findViewById(2131364776));
+      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localRelativeLayout.findViewById(2131364779));
+      this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)localRelativeLayout.findViewById(2131364777));
+      localRelativeLayout.findViewById(2131364772).setOnClickListener(this);
+      localRelativeLayout.findViewById(2131364773).setOnClickListener(this);
+      localRelativeLayout.findViewById(2131364768).setOnClickListener(this);
       localObject = "https://cmshow.gtimg.cn/client/img/cmgame_framwork_guide_play_landscape.png";
       paramContext = "https://cmshow.gtimg.cn/client/img/cmgame_framwork_guide_plus_landscape.png";
       break label135;
@@ -118,15 +117,15 @@ public class CmGameGuideView
     if ((paramURLImageView == null) || (TextUtils.isEmpty(paramString))) {
       return;
     }
-    paramURLImageView.setImageDrawable(amdn.a(true, amip.k + paramString.substring(paramString.lastIndexOf("/") + 1), null, paramString, true));
+    paramURLImageView.setImageDrawable(anev.a(true, "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/image_cache/" + paramString.substring(paramString.lastIndexOf("/") + 1), null, paramString, true));
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_Alxy != null) {
-      this.jdField_a_of_type_Alxy.i();
+    if (this.jdField_a_of_type_Amyo != null) {
+      this.jdField_a_of_type_Amyo.i();
     }
-    this.jdField_a_of_type_Bjng.sendEmptyMessageDelayed(102, 500L);
+    this.jdField_a_of_type_Bkys.sendEmptyMessageDelayed(102, 500L);
   }
   
   public void d() {}
@@ -145,7 +144,7 @@ public class CmGameGuideView
       {
         localJSONObject.put("xyId", 3112);
         localJSONObject.put("src", 888001);
-        alxn.a("cs.create_xy.local", localJSONObject.toString(), false, null, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId);
+        amyd.a("cs.create_xy.local", localJSONObject.toString(), false, null, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId);
         b();
         VipUtils.a(null, "cmshow", "Apollo", "BeGuiClick", 0, 0, new String[] { String.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId), String.valueOf(this.jdField_a_of_type_Int) });
       }

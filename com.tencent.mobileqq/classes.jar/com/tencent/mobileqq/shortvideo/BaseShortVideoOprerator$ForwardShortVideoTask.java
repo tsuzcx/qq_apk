@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.shortvideo;
 
-import afoa;
-import ayde;
-import bbqj;
+import agfe;
+import azjq;
+import bcxd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -12,11 +12,11 @@ import com.tencent.mobileqq.transfile.TransferRequest;
 class BaseShortVideoOprerator$ForwardShortVideoTask
   implements Runnable
 {
-  bbqj a;
+  bcxd a;
   
-  public BaseShortVideoOprerator$ForwardShortVideoTask(BaseShortVideoOprerator paramBaseShortVideoOprerator, bbqj parambbqj)
+  public BaseShortVideoOprerator$ForwardShortVideoTask(BaseShortVideoOprerator paramBaseShortVideoOprerator, bcxd parambcxd)
   {
-    this.a = parambbqj;
+    this.a = parambcxd;
   }
   
   public void run()
@@ -25,19 +25,19 @@ class BaseShortVideoOprerator$ForwardShortVideoTask
     for (;;)
     {
       return;
-      bbqj localbbqj = this.a;
-      long l = localbbqj.jdField_a_of_type_Long;
-      int j = localbbqj.p;
+      bcxd localbcxd = this.a;
+      long l = localbcxd.jdField_a_of_type_Long;
+      int j = localbcxd.p;
       Object localObject;
       int i;
-      if (localbbqj.k == 3)
+      if (localbcxd.k == 3)
       {
-        localObject = this.this$0.a(localbbqj);
+        localObject = this.this$0.a(localbcxd);
         i = 1;
       }
       while (localObject != null)
       {
-        afoa.a().a(((MessageRecord)localObject).uniseq, l, j);
+        agfe.a().a(((MessageRecord)localObject).uniseq, l, j);
         this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((MessageRecord)localObject);
         l = System.currentTimeMillis();
         TransferRequest localTransferRequest = new TransferRequest();
@@ -45,24 +45,24 @@ class BaseShortVideoOprerator$ForwardShortVideoTask
         localTransferRequest.mPeerUin = ((MessageRecord)localObject).frienduin;
         localTransferRequest.mUinType = ((MessageRecord)localObject).istroop;
         localTransferRequest.mFileType = 20;
-        localTransferRequest.mExtraObj = localbbqj;
+        localTransferRequest.mExtraObj = localbcxd;
         localTransferRequest.mUniseq = ((MessageRecord)localObject).uniseq;
         localTransferRequest.mIsUp = true;
         localTransferRequest.mBusiType = 0;
-        localTransferRequest.mMd5 = localbbqj.e;
-        localTransferRequest.mLocalPath = (localbbqj.h + "QQ_&_MoblieQQ_&_QQ" + localbbqj.i + "QQ_&_MoblieQQ_&_QQ" + localbbqj.j + "QQ_&_MoblieQQ_&_QQ" + localbbqj.g);
+        localTransferRequest.mMd5 = localbcxd.e;
+        localTransferRequest.mLocalPath = (localbcxd.h + "QQ_&_MoblieQQ_&_QQ" + localbcxd.i + "QQ_&_MoblieQQ_&_QQ" + localbcxd.j + "QQ_&_MoblieQQ_&_QQ" + localbcxd.g);
         localTransferRequest.mUpCallBack = this.this$0;
         localTransferRequest.mRec = this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
         this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController().transferAsync(localTransferRequest);
         if (i != 0) {
-          this.this$0.a((MessageRecord)localObject, localbbqj.b);
+          this.this$0.a((MessageRecord)localObject, localbcxd.b);
         }
-        ayde.a(this.this$0.g, this.this$0.f, "doForwardShortVideo", "cost:" + (System.currentTimeMillis() - l));
-        ayde.a(this.this$0.g, this.this$0.f, "doForwardShortVideo.start", "TransferRequest: " + localTransferRequest.toString());
+        azjq.a(this.this$0.g, this.this$0.f, "doForwardShortVideo", "cost:" + (System.currentTimeMillis() - l));
+        azjq.a(this.this$0.g, this.this$0.f, "doForwardShortVideo.start", "TransferRequest: " + localTransferRequest.toString());
         return;
-        if (localbbqj.k == 4)
+        if (localbcxd.k == 4)
         {
-          localObject = (MessageForShortVideo)localbbqj.jdField_a_of_type_JavaLangObject;
+          localObject = (MessageForShortVideo)localbcxd.jdField_a_of_type_JavaLangObject;
           i = 0;
         }
         else

@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="horizontal" android:id="@id/nnv" android:background="@drawable/bry" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <LinearLayout android:orientation="vertical" android:id="@id/mzi" android:background="@color/age" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountNavBar android:gravity="center_vertical" android:id="@id/rlCommenTitle" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_marginTop="30.0dip" />
-            </LinearLayout>
-            <LinearLayout android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/mzi">
-                <com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountHeadLayout android:id="@id/cw5" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                    <com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountWebView android:id="@id/cwr" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-                </com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountHeadLayout>
-            </LinearLayout>
-        </RelativeLayout>
-    </RelativeLayout>
-</FrameLayout>
+    <ViewSwitcher android:id="@id/fgm" android:layout_width="0.0dip" android:layout_height="fill_parent" android:inAnimation="@anim/i2" android:outAnimation="@anim/i5" android:layout_weight="1.0" />
+    <TextView android:textSize="10.0sp" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/o1_" android:background="@drawable/bw4" android:padding="1.0dip" android:layout_width="wrap_content" android:layout_height="16.0dip" android:layout_marginLeft="5.0dip" android:text="99+" android:maxLines="1" />
+    <ImageView android:layout_gravity="center_vertical" android:layout_width="7.0dip" android:layout_height="11.0dip" android:layout_marginLeft="9.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/fzx" android:scaleType="centerCrop" />
+</LinearLayout>

@@ -1,283 +1,398 @@
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.activity.recent.MsgSummary;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.util.Base64;
+import android.view.View;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageForArkBabyqReply;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForFoldMsgGrayTips;
-import com.tencent.mobileqq.data.MessageForFuDai;
-import com.tencent.mobileqq.data.MessageForGrayTips;
-import com.tencent.mobileqq.data.MessageForIncompatibleGrayTips;
-import com.tencent.mobileqq.data.MessageForLightVideo;
-import com.tencent.mobileqq.data.MessageForLongTextMsg;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForNearbyMarketGrayTips;
-import com.tencent.mobileqq.data.MessageForNewGrayTips;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForQQWalletTips;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForSafeGrayTips;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageForSplitLineTips;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageForTroopConfess;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.data.MessageForTroopGift;
-import com.tencent.mobileqq.data.MessageForWriteTogether;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.jubao.JubaoMsgData;
+import com.tencent.mobileqq.mini.sdk.JsonORM;
+import com.tencent.mobileqq.mini.sdk.JsonORM.JsonParseException;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class awct
+  extends WebViewPlugin
 {
-  public static boolean a = true;
-  public static boolean b = true;
+  private String a;
+  private String b;
+  private final String c = "0x800A851";
+  private String d = anvx.a(2131705372);
   
-  public static int a(ChatMessage paramChatMessage)
+  public awct()
   {
+    this.mPluginNameSpace = "jubao";
+  }
+  
+  public static String a(int paramInt, String paramString)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("result", paramInt);
+      localJSONObject.put("uuid", paramString);
+      return localJSONObject.toString();
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+    }
+  }
+  
+  public static String a(ArrayList<ChatMessage> paramArrayList)
+  {
+    Object localObject2 = "";
     int j = 0;
     int i = j;
-    if (a(paramChatMessage))
+    Object localObject1 = localObject2;
+    if (paramArrayList != null)
     {
-      paramChatMessage = (MessageForStructing)paramChatMessage;
       i = j;
-      if (paramChatMessage.structingMsg != null)
+      localObject1 = localObject2;
+      if (paramArrayList.size() > 0)
       {
-        i = j;
-        if ("viewMultiMsg".equals(paramChatMessage.structingMsg.mMsgAction)) {
-          i = paramChatMessage.structingMsg.mTSum;
+        i = paramArrayList.size();
+        localObject1 = new JSONArray();
+        paramArrayList = paramArrayList.iterator();
+        while (paramArrayList.hasNext())
+        {
+          localObject2 = JubaoMsgData.transfer((ChatMessage)paramArrayList.next());
+          try
+          {
+            ((JSONArray)localObject1).put(((JubaoMsgData)localObject2).toJson());
+          }
+          catch (JsonORM.JsonParseException localJsonParseException)
+          {
+            localJsonParseException.printStackTrace();
+          }
         }
+        localObject1 = ((JSONArray)localObject1).toString();
       }
     }
-    return i + 1;
-  }
-  
-  public static MessageRecord a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord == null) || (paramQQAppInterface == null)) {
-      return null;
-    }
-    String str1 = paramMessageRecord.getExtInfoFromExtStr("outest_uin");
-    String str2 = paramMessageRecord.getExtInfoFromExtStr("outest_uintype");
-    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("outest_uniseq");
+    paramArrayList = new JSONObject();
     try
     {
-      paramQQAppInterface = paramQQAppInterface.getMessageFacade().getMsgItemByUniseq(str1, Integer.parseInt(str2), Long.parseLong(paramMessageRecord));
-      return paramQQAppInterface;
+      paramArrayList.put("msgcount", i);
+      paramArrayList.put("msgs", localObject1);
+      return paramArrayList.toString();
     }
-    catch (Exception paramQQAppInterface)
+    catch (JSONException localJSONException)
     {
-      QLog.e("MultiMsg_TAG", 1, paramQQAppInterface, new Object[0]);
-    }
-    return null;
-  }
-  
-  public static String a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
-  {
-    if ((paramQQAppInterface == null) || (paramMessageRecord == null)) {
-      return null;
-    }
-    if (((paramMessageRecord instanceof MessageForStructing)) && (((MessageForStructing)paramMessageRecord).structingMsg != null) && (((MessageForStructing)paramMessageRecord).structingMsg.mMsgServiceID == 128)) {
-      return amtj.a(2131706131);
-    }
-    QQMessageFacade.Message localMessage = new QQMessageFacade.Message();
-    MessageRecord.copyMessageRecordBaseField(localMessage, paramMessageRecord);
-    localMessage.emoRecentMsg = null;
-    localMessage.fileType = -1;
-    paramQQAppInterface.getMessageFacade().decodeMsg(localMessage);
-    paramMessageRecord = new MsgSummary();
-    bfwr.a(paramQQAppInterface.getApp(), paramQQAppInterface, localMessage, localMessage.istroop, paramMessageRecord, null, false, false);
-    try
-    {
-      paramQQAppInterface = paramMessageRecord.parseMsg(paramQQAppInterface.getApp()).toString();
-      return paramQQAppInterface;
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      QLog.e("MultiMsg_TAG.Nest", 1, paramQQAppInterface, new Object[0]);
-    }
-    return null;
-  }
-  
-  public static String a(String paramString)
-  {
-    return paramString;
-  }
-  
-  public static ArrayList<ChatMessage> a(QQAppInterface paramQQAppInterface, ArrayList<ChatMessage> paramArrayList)
-  {
-    if ((paramQQAppInterface == null) || (paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return paramArrayList;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      ChatMessage localChatMessage = (ChatMessage)paramArrayList.next();
-      if (a(paramQQAppInterface, localChatMessage))
+      for (;;)
       {
-        localArrayList.add(localChatMessage);
-      }
-      else
-      {
-        String str = a(paramQQAppInterface, localChatMessage);
-        localChatMessage = (ChatMessage)paramQQAppInterface.getMultiMessageProxy().a(localChatMessage, str, false);
-        if (localChatMessage.senderuin.equals(paramQQAppInterface.getCurrentAccountUin())) {
-          ((anaj)paramQQAppInterface.getBusinessHandler(13)).a(localChatMessage);
-        }
-        localChatMessage.setStatus(1000);
-        localChatMessage.msgData = localChatMessage.msg.getBytes();
-        localArrayList.add(localChatMessage);
+        localJSONException.printStackTrace();
       }
     }
-    return localArrayList;
   }
   
-  public static void a(MessageRecord paramMessageRecord1, String paramString, MessageRecord paramMessageRecord2)
+  private void a(String... paramVarArgs)
   {
-    a("step.fillExtraInfo.nickName = %s", new Object[] { paramString });
-    if ((paramMessageRecord1 == null) || (paramMessageRecord2 == null) || (TextUtils.isEmpty(paramString))) {
+    paramVarArgs = paramVarArgs[0];
+    if (TextUtils.isEmpty(paramVarArgs)) {
       return;
-    }
-    paramMessageRecord1.saveExtInfoToExtStr("outest_uin", paramMessageRecord2.frienduin);
-    paramMessageRecord1.saveExtInfoToExtStr("outest_uintype", String.valueOf(paramMessageRecord2.istroop));
-    paramMessageRecord1.saveExtInfoToExtStr("outest_uniseq", String.valueOf(paramMessageRecord2.uniseq));
-    paramMessageRecord1.saveExtInfoToExtStr("self_nickname", paramString);
-  }
-  
-  public static void a(String paramString)
-  {
-    bcef.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
-  }
-  
-  public static void a(String paramString, Object... paramVarArgs)
-  {
-    if (!a) {}
-    while (!QLog.isDevelopLevel()) {
-      return;
-    }
-    QLog.d("MultiMsg_TAG.Nest", 4, String.format(paramString, paramVarArgs));
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
-  {
-    if ((MessageForShortVideo.class.isInstance(paramChatMessage)) && (((MessageForShortVideo)paramChatMessage).busiType == 2)) {}
-    while (((MessageForLongTextMsg.class.isInstance(paramChatMessage)) && ((paramChatMessage.getExtInfoFromExtStr("long_text_recv_state").equals("2")) || (paramChatMessage.getExtInfoFromExtStr("long_text_recv_state").equals("3")))) || (!MessageForArkApp.isAllowedArkForward(false, paramChatMessage)) || (MessageForTroopConfess.class.isInstance(paramChatMessage)) || (MessageForLightVideo.class.isInstance(paramChatMessage)) || ((paramChatMessage instanceof MessageForFuDai)) || (amrp.a(paramChatMessage)) || (((paramChatMessage instanceof MessageForPic)) && (ahtj.a((MessageForPic)paramChatMessage)))) {
-      return false;
-    }
-    if ((paramChatMessage instanceof MessageForWriteTogether)) {
-      return true;
-    }
-    boolean bool;
-    switch (paramChatMessage.msgtype)
-    {
-    default: 
-      bool = false;
     }
     for (;;)
     {
-      return bool;
-      bool = true;
-      continue;
-      paramQQAppInterface = (MessageForStructing)paramChatMessage;
-      if (paramQQAppInterface.structingMsg == null)
+      Object localObject2;
+      String str;
+      try
       {
-        bool = false;
-      }
-      else
-      {
-        int i = paramQQAppInterface.structingMsg.mMsgServiceID;
-        if ((i == 107) || (i == 82) || (i == 128) || (i == 104))
-        {
-          bool = false;
+        JSONObject localJSONObject = new JSONObject(paramVarArgs);
+        localObject1 = localJSONObject.optString("chatuin", "");
+        localObject2 = localJSONObject.optString("groupcode", "");
+        j = localJSONObject.optInt("chattype", 0);
+        k = localJSONObject.optInt("topicid", 0);
+        str = localJSONObject.optString("uinname", "");
+        Object localObject3 = localJSONObject.optString("msgs");
+        paramVarArgs = (String[])localObject1;
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+          paramVarArgs = aaqo.c((String)localObject1, aaqo.b(1));
         }
-        else if ((paramQQAppInterface.structingMsg.hasFlag(1)) && (i != 35))
-        {
-          bool = false;
+        if (TextUtils.isEmpty(str)) {
+          break label437;
         }
-        else
+        str = new String(Base64.decode(str, 0));
+        if (QLog.isColorLevel()) {
+          QLog.i("NewReportPlugin", 2, String.format("jumpChatMsg [%s, %s, %s, %s, %s]", new Object[] { paramVarArgs, Integer.valueOf(j), localObject2, Integer.valueOf(k), str }));
+        }
+        if (TextUtils.isEmpty((CharSequence)localObject3)) {
+          break label440;
+        }
+        JubaoMsgData[] arrayOfJubaoMsgData = (JubaoMsgData[])JsonORM.parseFrom(new JSONArray((String)localObject3), JubaoMsgData.class);
+        localObject3 = new ArrayList();
+        int m = arrayOfJubaoMsgData.length;
+        int i = 0;
+        localObject1 = localObject3;
+        if (i < m)
         {
-          bool = true;
+          ((ArrayList)localObject3).add(arrayOfJubaoMsgData[i]);
+          i += 1;
           continue;
-          paramQQAppInterface = (MessageForArkBabyqReply)paramChatMessage;
-          if ((paramQQAppInterface.mArkBabyqReplyCardList == null) || (paramQQAppInterface.mArkBabyqReplyCardList.size() <= 0))
+        }
+        this.a = localJSONObject.optString("callback", "");
+        if (j == 1) {
+          break label446;
+        }
+        if (j != 3000) {
+          break label434;
+        }
+      }
+      catch (JSONException paramVarArgs)
+      {
+        int j;
+        int k;
+        QLog.e("jubaoApiPlugin", 1, paramVarArgs, new Object[0]);
+        return;
+        localObject2 = new Intent(this.mRuntime.a(), ChatActivity.class);
+        ((Intent)localObject2).putExtra("uin", paramVarArgs);
+        ((Intent)localObject2).putExtra("uintype", j);
+        if (TextUtils.isEmpty(str)) {
+          continue;
+        }
+        if ((j != 1033) && (j != 1034)) {
+          break label421;
+        }
+        ((Intent)localObject2).putExtra("key_confessor_nick", str);
+        ((Intent)localObject2).putExtra("key_confess_topicid", k);
+        if (localObject1 == null) {
+          continue;
+        }
+        ((Intent)localObject2).putExtra("msgs", (Serializable)localObject1);
+        ((Intent)localObject2).putExtra("entrance", 9);
+        startActivityForResult((Intent)localObject2, (byte)0);
+        return;
+      }
+      catch (JsonORM.JsonParseException paramVarArgs)
+      {
+        paramVarArgs.printStackTrace();
+        return;
+      }
+      if (TextUtils.isEmpty(paramVarArgs))
+      {
+        QLog.d("jubaoApiPlugin", 1, "jumpChatMsg openChatUin is null");
+        return;
+      }
+      label421:
+      ((Intent)localObject2).putExtra("uinname", str);
+      continue;
+      label434:
+      continue;
+      label437:
+      continue;
+      label440:
+      Object localObject1 = null;
+      continue;
+      label446:
+      paramVarArgs = (String[])localObject2;
+    }
+  }
+  
+  private void b(String... paramVarArgs)
+  {
+    if (!NetworkUtil.isNetworkAvailable(this.mRuntime.a()))
+    {
+      paramVarArgs = a(5, "");
+      callJs(this.b, new String[] { paramVarArgs });
+      return;
+    }
+    paramVarArgs = paramVarArgs[0];
+    if (TextUtils.isEmpty(paramVarArgs))
+    {
+      paramVarArgs = a(0, "");
+      callJs(this.b, new String[] { paramVarArgs });
+      QLog.d("jubaoApiPlugin", 1, "doUploadChatMsg js args is empty ");
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        localObject = new JSONObject(paramVarArgs);
+        paramVarArgs = ((JSONObject)localObject).optString("chatuin", "");
+        str = ((JSONObject)localObject).optString("groupcode", "");
+        j = ((JSONObject)localObject).optInt("chattype", 0);
+        if (!TextUtils.isEmpty(paramVarArgs))
+        {
+          paramVarArgs = aaqo.c(paramVarArgs, aaqo.b(1));
+          JubaoMsgData[] arrayOfJubaoMsgData = (JubaoMsgData[])JsonORM.parseFrom(new JSONArray(((JSONObject)localObject).optString("msgs")), JubaoMsgData.class);
+          localArrayList = new ArrayList();
+          int k = arrayOfJubaoMsgData.length;
+          int i = 0;
+          if (i < k)
           {
-            bool = false;
+            localArrayList.add(arrayOfJubaoMsgData[i]);
+            i += 1;
           }
           else
           {
-            bool = true;
-            continue;
-            if (!(paramChatMessage instanceof MessageForFile)) {
-              break;
-            }
-            if (paramChatMessage.isMultiMsg) {
-              bool = true;
-            } else if (aszt.a(paramQQAppInterface, (MessageForFile)paramChatMessage).getCloudType() == 0) {
-              bool = false;
-            } else {
-              bool = true;
+            this.b = ((JSONObject)localObject).optString("callback", "");
+            if ((localArrayList == null) || (localArrayList.size() == 0))
+            {
+              QLog.e("jubaoApiPlugin", 2, "ipc upload  to msgServer msg size = 0 ");
+              paramVarArgs = a(1, "");
+              callJs(this.b, new String[] { paramVarArgs });
+              return;
             }
           }
         }
       }
-    }
-  }
-  
-  public static boolean a(ChatMessage paramChatMessage)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (MessageForStructing.class.isInstance(paramChatMessage))
-    {
-      paramChatMessage = (MessageForStructing)paramChatMessage;
-      bool1 = bool2;
-      if (paramChatMessage.structingMsg != null)
+      catch (JSONException paramVarArgs)
       {
-        bool1 = bool2;
-        if ("viewMultiMsg".equals(paramChatMessage.structingMsg.mMsgAction)) {
-          bool1 = true;
+        int j;
+        ArrayList localArrayList;
+        str = a(2, "");
+        callJs(this.b, new String[] { str });
+        QLog.e("jubaoApiPlugin", 1, paramVarArgs, new Object[0]);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("jubaoApiPlugin", 2, "ipc upload  msg size = " + localArrayList.size());
         }
+        Object localObject = new Bundle();
+        ((Bundle)localObject).putString("jubao_chat_uin", paramVarArgs);
+        ((Bundle)localObject).putString("jubao_group_code", str);
+        ((Bundle)localObject).putInt("jubao_chat_type", j);
+        ((Bundle)localObject).putSerializable("jubao_msg_list", localArrayList);
+        QIPCClientHelper.getInstance().callServer("JubaoIPCServer", "", (Bundle)localObject, new awcu(this));
+        bdla.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 2, 0, "", "", "", "");
+        return;
+      }
+      catch (JsonORM.JsonParseException paramVarArgs)
+      {
+        String str = a(2, "");
+        callJs(this.b, new String[] { str });
+        QLog.e("jubaoApiPlugin", 1, paramVarArgs, new Object[0]);
+        return;
       }
     }
-    return bool1;
   }
   
-  public static boolean a(MessageRecord paramMessageRecord)
+  public void a(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return false;
-  }
-  
-  public static void b(String paramString, Object... paramVarArgs)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiMsg_TAG.Nest", 2, String.format(paramString, paramVarArgs));
+    QLog.e("jubaoApiPlugin", 2, "receiver msgServer resp  isSucesss =  " + paramBoolean);
+    int j = 1;
+    int i = 0;
+    bdla.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 3, 0, "", "", "", "");
+    String str;
+    if (paramInt == 0)
+    {
+      str = "";
+      if ((!paramBoolean) || (paramBundle == null)) {
+        break label226;
+      }
+      str = paramBundle.getString("jubao_uuid");
+      paramInt = paramBundle.getInt("jubao_result_code", 0);
+      i = 0;
+      paramBundle = str;
+    }
+    for (;;)
+    {
+      str = a(paramInt, paramBundle);
+      callJs(this.b, new String[] { str });
+      QLog.d("jubaoApiPlugin", 1, "upload resp uuid = " + paramBundle + ",result = " + paramInt);
+      j = i;
+      i = paramInt;
+      bdla.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 2, 0, "" + j, "" + i, "", "");
+      return;
+      label226:
+      if (paramBundle != null)
+      {
+        paramInt = paramBundle.getInt("jubao_result_code", 1);
+        i = 1;
+        paramBundle = str;
+      }
+      else
+      {
+        paramInt = 0;
+        i = 1;
+        paramBundle = str;
+      }
     }
   }
   
-  public static boolean b(ChatMessage paramChatMessage)
+  public void callJs(String paramString, String... paramVarArgs)
   {
-    return ((paramChatMessage instanceof MessageForText)) || ((paramChatMessage instanceof MessageForReplyText)) || ((paramChatMessage instanceof MessageForPic)) || ((paramChatMessage instanceof MessageForStructing)) || ((paramChatMessage instanceof MessageForShortVideo)) || ((paramChatMessage instanceof MessageForArkApp)) || ((paramChatMessage instanceof MessageForFile)) || ((paramChatMessage instanceof MessageForMixedMsg)) || ((paramChatMessage instanceof MessageForTroopFile));
+    if ((paramString != null) && (this.b != null) && (paramString.equals(this.b))) {
+      bdla.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 4, 0, "", "", "", "");
+    }
+    super.callJs(paramString, paramVarArgs);
   }
   
-  public static boolean c(ChatMessage paramChatMessage)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if (((paramChatMessage instanceof MessageForGrayTips)) || ((paramChatMessage instanceof MessageForUniteGrayTip)) || ((paramChatMessage instanceof MessageForIncompatibleGrayTips)) || ((paramChatMessage instanceof MessageForNewGrayTips)) || ((paramChatMessage instanceof MessageForSafeGrayTips)) || ((paramChatMessage instanceof MessageForFoldMsgGrayTips)) || ((paramChatMessage instanceof MessageForNearbyMarketGrayTips)) || ((paramChatMessage instanceof MessageForQQWalletTips)) || ((paramChatMessage instanceof MessageForSplitLineTips))) {}
-    for (boolean bool = false;; bool = true)
+    QLog.d("jubaoApiPlugin", 1, "handleJsRequest methodName= " + paramString3);
+    if ("jubao".equals(paramString2))
     {
-      if ((paramChatMessage instanceof MessageForTroopGift)) {
+      if ("selectMsgs".equalsIgnoreCase(paramString3))
+      {
+        if ((paramVarArgs != null) && (paramVarArgs.length > 0))
+        {
+          paramJsBridgeListener = (InputMethodManager)this.mRuntime.a().getSystemService("input_method");
+          if (paramJsBridgeListener != null) {
+            paramJsBridgeListener.hideSoftInputFromWindow(this.mRuntime.a().getWindow().getDecorView().getWindowToken(), 0);
+          }
+          a(paramVarArgs);
+          bdla.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 0, 0, "" + 0, "", "", "");
+        }
         return true;
       }
-      return bool;
+      if ("uploadMsgs".equalsIgnoreCase(paramString3))
+      {
+        if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
+          break label248;
+        }
+        b(new String[] { paramVarArgs[0] });
+      }
     }
+    label248:
+    for (int i = 0;; i = 1)
+    {
+      bdla.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 1, 0, "" + i, "", "", "");
+      return true;
+      return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+    }
+  }
+  
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  {
+    QLog.d("jubaoApiPlugin", 1, "onActivityResult ");
+    super.onActivityResult(paramIntent, paramByte, paramInt);
+    if (paramByte == 0)
+    {
+      if (paramInt != -1) {
+        break label81;
+      }
+      paramIntent = paramIntent.getStringExtra("msgs");
+      if (QLog.isDevelopLevel()) {
+        QLog.d("jubaoApiPlugin", 4, "onActivityResult msgs= " + paramIntent);
+      }
+      callJs(this.a, new String[] { paramIntent });
+    }
+    label81:
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("jubaoApiPlugin", 2, "onActivityResult user cancel select msg = ");
+  }
+  
+  public void startActivityForResult(Intent paramIntent, byte paramByte)
+  {
+    QLog.e("jubaoApiPlugin", 1, "startActivityForResult ");
+    super.startActivityForResult(paramIntent, paramByte);
   }
 }
 

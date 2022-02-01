@@ -1,19 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
-
 class apiv
-  implements View.OnClickListener
+  extends apbk
 {
-  apiv(apiu paramapiu, int paramInt) {}
+  apiv(apiu paramapiu) {}
   
-  public void onClick(View paramView)
+  public void a(apjq paramapjq)
   {
-    if (apiq.a(this.jdField_a_of_type_Apiu.a) != null) {
-      apiq.a(this.jdField_a_of_type_Apiu.a).a(this.jdField_a_of_type_Int, (aphw)apiq.a(this.jdField_a_of_type_Apiu.a).get(this.jdField_a_of_type_Int));
+    if (apiu.a(this.a) != null) {
+      apiu.a(this.a).a(paramapjq);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

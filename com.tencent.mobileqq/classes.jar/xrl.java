@@ -1,33 +1,70 @@
-public class xrl
-  extends xrj
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
+
+class xrl
+  implements URLDrawable.URLDrawableListener
 {
-  public Object a;
-  public String a;
+  private final int jdField_a_of_type_Int;
+  private final URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  private final String jdField_a_of_type_JavaLangString;
+  private final int b;
   
-  public xrl(Object paramObject)
+  public xrl(xrk paramxrk, @NonNull String paramString, int paramInt1, int paramInt2, URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_JavaLangString = "InitParamSimpleStep";
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
   }
   
-  public Object a()
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    return this.jdField_a_of_type_JavaLangObject;
+    xrk.a(this.jdField_a_of_type_Xrk).remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
   }
   
-  public String a()
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    xrk.a(this.jdField_a_of_type_Xrk).remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    ykq.d("story.icon.ShareGroupIconManager", "download url failed. %s", new Object[] { this.jdField_a_of_type_JavaLangString });
+    paramURLDrawable = (HashSet)xrk.a(this.jdField_a_of_type_Xrk).remove(this.jdField_a_of_type_JavaLangString);
+    if (paramURLDrawable != null)
+    {
+      paramURLDrawable = paramURLDrawable.iterator();
+      while (paramURLDrawable.hasNext()) {
+        ((xro)paramURLDrawable.next()).a(this.jdField_a_of_type_JavaLangString, paramThrowable);
+      }
+    }
   }
   
-  public void a()
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    d();
+    xrk.a(this.jdField_a_of_type_Xrk).remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    ykq.a("story.icon.ShareGroupIconManager", "download url success. %s", this.jdField_a_of_type_JavaLangString);
+    Bitmap localBitmap = xrk.a(this.jdField_a_of_type_Xrk, paramURLDrawable, this.jdField_a_of_type_Int, this.b);
+    if (localBitmap != null)
+    {
+      paramURLDrawable = (HashSet)xrk.a(this.jdField_a_of_type_Xrk).remove(this.jdField_a_of_type_JavaLangString);
+      if (paramURLDrawable != null)
+      {
+        paramURLDrawable = paramURLDrawable.iterator();
+        while (paramURLDrawable.hasNext()) {
+          ((xro)paramURLDrawable.next()).a(this.jdField_a_of_type_JavaLangString, localBitmap);
+        }
+      }
+    }
+    else
+    {
+      ykq.e("story.icon.ShareGroupIconManager", "download url success directly. but OOM occur !");
+      onLoadFialed(paramURLDrawable, new Throwable("getBitmapFromDrawable failed"));
+    }
   }
-  
-  public void b() {}
-  
-  public void c() {}
 }
 
 

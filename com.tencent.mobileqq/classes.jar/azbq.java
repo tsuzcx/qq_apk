@@ -1,36 +1,158 @@
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.animation.Animation;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AutoReplyText;
+import mqq.app.AppRuntime.Status;
 
 public class azbq
-  extends azbj
 {
-  public azbq(LSRecordPanel paramLSRecordPanel) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS startCloseAnimation onAnimationEnd");
+    if (paramQQAppInterface != null) {
+      bdla.b(paramQQAppInterface, "dc00898", "", "", "0X8009DDA", "0X8009DDA", 0, 0, "", "", "", "");
     }
-    if (LSRecordPanel.a(this.a))
-    {
-      if (paramAnimation == this.a.b) {
-        LSRecordPanel.a(this.a);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, AppRuntime.Status paramStatus, long paramLong)
+  {
+    int i;
+    if ((paramQQAppInterface != null) && (paramStatus != null)) {
+      switch (azbr.a[paramStatus.ordinal()])
+      {
+      default: 
+        i = 0;
       }
-      this.a.a = null;
-      this.a.b = null;
-      paramAnimation = (RelativeLayout.LayoutParams)LSRecordPanel.a(this.a).getLayoutParams();
-      int i = (int)(this.a.getResources().getDisplayMetrics().density * 4.0F);
-      paramAnimation.height -= i;
-      paramAnimation.width -= i;
-      int j = paramAnimation.rightMargin;
-      paramAnimation.rightMargin = (i / 2 + j);
-      LSRecordPanel.a(this.a, false);
-      LSRecordPanel.a(this.a).setLayoutParams(paramAnimation);
+    }
+    for (;;)
+    {
+      int j = i;
+      if (i == 1)
+      {
+        j = i;
+        if (paramLong > 0L) {
+          j = (int)paramLong;
+        }
+      }
+      if (j != 0) {
+        bdla.b(paramQQAppInterface, "dc00898", "", "", "0X8009DDB", "0X8009DDB", j, 0, "", "", "", "");
+      }
+      return;
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
+      continue;
+      i = 4;
+      continue;
+      i = 5;
+      continue;
+      i = 6;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, AppRuntime.Status paramStatus, long paramLong, AutoReplyText paramAutoReplyText)
+  {
+    if ((paramQQAppInterface != null) && (paramAutoReplyText != null) && (azbo.a(paramStatus)))
+    {
+      int i = 1;
+      if (paramAutoReplyText.getTextId() == 2147483647) {
+        i = 2;
+      }
+      bdla.b(paramQQAppInterface, "dc00898", "", "", "0X8009DDC", "0X8009DDC", i, 0, "", "", "", "");
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    String str1;
+    if (paramQQAppInterface != null)
+    {
+      if (!paramBoolean) {
+        break label41;
+      }
+      str1 = "0X8009DDE";
+      if (!paramBoolean) {
+        break label47;
+      }
+    }
+    label41:
+    label47:
+    for (String str2 = "0X8009DDE";; str2 = "0X8009DDF")
+    {
+      bdla.b(paramQQAppInterface, "dc00898", "", "", str1, str2, 0, 0, "", "", "", "");
+      return;
+      str1 = "0X8009DDF";
+      break;
+    }
+  }
+  
+  public static void a(AppRuntime.Status paramStatus, long paramLong)
+  {
+    int i = -1;
+    switch (azbr.a[paramStatus.ordinal()])
+    {
+    }
+    for (;;)
+    {
+      int j = i;
+      if (i == 1)
+      {
+        j = i;
+        if (paramLong > 0L) {
+          j = (int)paramLong;
+        }
+      }
+      azcl.a("0X800AF3D", j);
+      return;
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
+      continue;
+      i = 4;
+      continue;
+      i = 5;
+      continue;
+      i = 6;
+    }
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface != null) {
+      bdla.b(paramQQAppInterface, "dc00898", "", "", "0X8009DDD", "0X8009DDD", 0, 0, "", "", "", "");
+    }
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, AppRuntime.Status paramStatus, long paramLong)
+  {
+    int i = -1;
+    switch (azbr.a[paramStatus.ordinal()])
+    {
+    }
+    for (;;)
+    {
+      int j = i;
+      if (i == 1)
+      {
+        j = i;
+        if (paramLong > 0L) {
+          j = (int)paramLong;
+        }
+      }
+      bdla.b(paramQQAppInterface, "dc00898", "", "", "0X8009DE0", "0X8009DE0", j, 0, "", "", "", "");
+      return;
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
+      continue;
+      i = 4;
+      continue;
+      i = 5;
+      continue;
+      i = 6;
     }
   }
 }

@@ -1,84 +1,49 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class ool
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class ool
+  extends anyz
 {
-  public ool(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  ool(ook paramook) {}
   
-  public void onGlobalLayout()
+  public void onMessageRecordAdded(List<MessageRecord> paramList)
   {
-    Object localObject = new Rect();
-    ReadInJoyDeliverBiuActivity.a(this.a).getWindowVisibleDisplayFrame((Rect)localObject);
-    int i = ReadInJoyDeliverBiuActivity.b(this.a).getRootView().getHeight();
-    int j = i - ((Rect)localObject).height();
-    boolean bool;
-    if (j > 100)
-    {
-      bool = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout screenHeight:" + i + ", ExternalPanelheight:" + j + ", isShowKeybroad:" + bool);
-      }
-      i = ReadInJoyDeliverBiuActivity.a(this.a).getHeight();
-      if (bool == ReadInJoyDeliverBiuActivity.a(this.a)) {
-        break label394;
-      }
-      if (j > ReadInJoyDeliverBiuActivity.a(this.a)) {
-        ReadInJoyDeliverBiuActivity.a(this.a, j);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout mMAXExternalPanelheight:" + ReadInJoyDeliverBiuActivity.b(this.a));
-      }
-      j = i - ReadInJoyDeliverBiuActivity.c(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout contentHeight:" + i + ", fixedHeight:" + ReadInJoyDeliverBiuActivity.d(this.a) + ", maxHeight:" + j);
-      }
-      ReadInJoyDeliverBiuActivity.a(this.a).setMaxHeight(j);
-      ReadInJoyDeliverBiuActivity.a(this.a, bool);
-      localObject = this.a;
-      if (i >= ReadInJoyDeliverBiuActivity.e(this.a)) {
-        break label372;
-      }
-      j = i;
-      label283:
-      ReadInJoyDeliverBiuActivity.b((ReadInJoyDeliverBiuActivity)localObject, j);
-      localObject = this.a;
-      if (i <= ReadInJoyDeliverBiuActivity.f(this.a)) {
-        break label383;
-      }
-      label307:
-      ReadInJoyDeliverBiuActivity.c((ReadInJoyDeliverBiuActivity)localObject, i);
+    super.onMessageRecordAdded(paramList);
+    ook localook = (ook)this.a.mApp.getBusinessHandler(BusinessHandlerFactory.EC_SHOP_REPORT_HANDLER);
+    onq localonq = (onq)this.a.mApp.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER);
+    if ((localook == null) || (localonq == null)) {
+      return;
     }
+    paramList = new ArrayList(paramList).iterator();
+    label166:
+    label169:
     for (;;)
     {
-      ReadInJoyDeliverBiuActivity.d(this.a, ReadInJoyDeliverBiuActivity.h(this.a));
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout mExternalPanelheight:" + ReadInJoyDeliverBiuActivity.g(this.a));
-      }
-      return;
-      bool = false;
-      break;
-      label372:
-      j = ReadInJoyDeliverBiuActivity.e(this.a);
-      break label283;
-      label383:
-      i = ReadInJoyDeliverBiuActivity.f(this.a);
-      break label307;
-      label394:
-      if ((ReadInJoyDeliverBiuActivity.g(this.a) != ReadInJoyDeliverBiuActivity.h(this.a)) && (i == ReadInJoyDeliverBiuActivity.f(this.a)))
+      label64:
+      MessageRecord localMessageRecord;
+      if (paramList.hasNext())
       {
-        i -= ReadInJoyDeliverBiuActivity.h(this.a);
-        j = i - ReadInJoyDeliverBiuActivity.i(this.a);
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout contentHeight:" + i + ", fixedHeight:" + ReadInJoyDeliverBiuActivity.j(this.a) + ", maxHeight:" + j);
+        localMessageRecord = (MessageRecord)paramList.next();
+        if ((!"2".equals(localMessageRecord.getExtInfoFromExtStr("inter_num"))) && ((localMessageRecord.istroop != 1008) || (!uot.e(this.a.app, localMessageRecord.senderuin)))) {
+          break label166;
         }
-        ReadInJoyDeliverBiuActivity.b(this.a).setMaxHeight(j);
+      }
+      for (int i = 1;; i = 0)
+      {
+        if ((i == 0) && (!localonq.a(localMessageRecord.senderuin))) {
+          break label169;
+        }
+        if (i != 0) {
+          localook.a(localMessageRecord);
+        }
+        localook.b(localMessageRecord);
+        break label64;
+        break;
       }
     }
   }

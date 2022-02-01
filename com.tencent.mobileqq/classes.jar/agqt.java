@@ -1,21 +1,14 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.widget.GridView;
 
-class agqt
-  extends Handler
+public class agqt
+  extends afos
 {
-  agqt(agqs paramagqs, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == agqs.a) {
-      this.a.b();
-    }
-  }
+  public RelativeLayout a;
+  public GridView a;
+  public RelativeLayout b;
+  public TextView b;
 }
 
 

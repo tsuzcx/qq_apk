@@ -1,24 +1,36 @@
-import com.tencent.biz.JoinGroupTransitActivity;
+import android.content.Context;
 
-public class nkv
-  implements nku
+public abstract interface nkv
 {
-  public nkv(JoinGroupTransitActivity paramJoinGroupTransitActivity) {}
+  public abstract String a(Context paramContext, nfv paramnfv);
   
-  public void a()
-  {
-    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(1);
-  }
+  public abstract String a(Context paramContext, boolean paramBoolean);
   
-  public void b()
-  {
-    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(2);
-  }
+  public abstract nky a();
   
-  public void c()
-  {
-    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(3);
-  }
+  public abstract void a(nfh paramnfh);
+  
+  public abstract void a(nfv paramnfv);
+  
+  public abstract void a(nky paramnky);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(boolean paramBoolean);
+  
+  public abstract void b(nfv paramnfv);
+  
+  public abstract void c(nfv paramnfv);
+  
+  public abstract void d(nfv paramnfv);
+  
+  public abstract void e(nfv paramnfv);
+  
+  public abstract void f(nfv paramnfv);
 }
 
 

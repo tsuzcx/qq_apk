@@ -1,18 +1,37 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.widget.Workspace.SavedState;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
 
-public final class bhki
-  implements Parcelable.Creator<Workspace.SavedState>
+public class bhki
 {
-  public Workspace.SavedState a(Parcel paramParcel)
+  public static boolean a()
   {
-    return new Workspace.SavedState(paramParcel, null);
+    return (a("meizu", null, null)) && (Build.VERSION.SDK_INT > 20);
   }
   
-  public Workspace.SavedState[] a(int paramInt)
+  public static boolean a(String paramString1, String paramString2, String paramString3)
   {
-    return new Workspace.SavedState[paramInt];
+    boolean bool1 = false;
+    if (!TextUtils.isEmpty(paramString1)) {
+      bool1 = paramString1.equalsIgnoreCase(Build.MANUFACTURER);
+    }
+    boolean bool2;
+    if (!bool1) {
+      bool2 = bool1;
+    }
+    do
+    {
+      do
+      {
+        return bool2;
+        if (!TextUtils.isEmpty(paramString2)) {
+          bool1 = paramString2.equalsIgnoreCase(Build.BRAND);
+        }
+        bool2 = bool1;
+      } while (!bool1);
+      bool2 = bool1;
+    } while (TextUtils.isEmpty(paramString3));
+    return paramString3.equalsIgnoreCase(Build.MODEL);
   }
 }
 

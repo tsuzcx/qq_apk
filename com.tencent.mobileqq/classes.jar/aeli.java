@@ -1,43 +1,44 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class aeli
-  extends BroadcastReceiver
+  implements Handler.Callback
 {
-  public aeli(TroopInfoActivity paramTroopInfoActivity) {}
+  public aeli(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (paramIntent == null) {}
-    do
+    for (;;)
     {
-      do
+      try
       {
-        return;
-      } while (!"changeGroupTribe".equals(paramIntent.getStringExtra("event")));
-      paramContext = paramIntent.getStringExtra("data");
-    } while (paramContext == null);
-    try
-    {
-      paramContext = new JSONObject(paramContext);
-      this.a.a.tribeId = paramContext.optInt("bid");
-      this.a.a.tribeName = paramContext.optString("bname");
-      this.a.e = true;
-      paramContext = new ArrayList();
-      if (!TextUtils.isEmpty(this.a.a.tribeName)) {
-        paramContext.add(this.a.a.tribeName);
+        int i = paramMessage.what;
+        switch (i)
+        {
+        default: 
+          bool = false;
+          return bool;
+        }
       }
-      this.a.a(9, paramContext, true, 1, true);
-      return;
+      finally {}
+      boolean bool = ((Boolean)paramMessage.obj).booleanValue();
+      NotifyPushSettingActivity.g(this.a).setChecked(bool);
+      break label163;
+      paramMessage = (String)paramMessage.obj;
+      NotifyPushSettingActivity.a(this.a, paramMessage);
+      break label163;
+      paramMessage = (String)paramMessage.obj;
+      NotifyPushSettingActivity.b(this.a, paramMessage);
+      break label163;
+      bool = ((Boolean)paramMessage.obj).booleanValue();
+      NotifyPushSettingActivity.h(this.a).setChecked(bool);
+      break label163;
+      NotifyPushSettingActivity.i(this.a).setChecked(((Boolean)paramMessage.obj).booleanValue());
+      label163:
+      bool = true;
     }
-    catch (JSONException paramContext) {}
   }
 }
 

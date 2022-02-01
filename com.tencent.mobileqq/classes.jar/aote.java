@@ -1,38 +1,53 @@
-import android.annotation.TargetApi;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.data.RecommendCommonMessage.ArkMsgAppInfo;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class aote
-  implements ArkViewImplement.LoadCallback
+public class aote
+  extends aouc
 {
-  aote(aotd paramaotd, aowb paramaowb, aovx paramaovx, int paramInt, afvh paramafvh) {}
-  
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  public aote(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    onLoadState(paramInt1);
+    super(paramQQAppInterface, paramContext);
   }
   
-  @TargetApi(14)
-  public void onLoadState(int paramInt)
+  public boolean a()
   {
-    if (paramInt == 1)
+    try
     {
-      this.jdField_a_of_type_Aowb.a.setVisibility(0);
-      aotd.a(this.jdField_a_of_type_Aotd, this.jdField_a_of_type_Aovx, this.jdField_a_of_type_Aowb);
-      this.jdField_a_of_type_Aowb.b.setVisibility(0);
-      this.jdField_a_of_type_Aovx.a(this.jdField_a_of_type_Aowb, this.jdField_a_of_type_Aotd);
+      boolean bool = g_();
+      return bool;
     }
-    for (;;)
+    catch (Exception localException)
     {
-      QLog.d("ArkAdapterItemForTextMsg", 1, new Object[] { "ArkFold.attachArkView.appName:", this.jdField_a_of_type_Aotd.a.appName, ", position=", Integer.valueOf(this.jdField_a_of_type_Int), ",state=", Integer.valueOf(paramInt) });
-      this.jdField_a_of_type_Aovx.a(this.jdField_a_of_type_Afvh, this.jdField_a_of_type_Int);
-      return;
-      this.jdField_a_of_type_Aowb.a.setVisibility(8);
-      this.jdField_a_of_type_Aowb.b.setVisibility(8);
+      QLog.e("ContactAddAction", 1, "doAction error: " + localException.getMessage());
+      a("ContactAddAction");
     }
+    return false;
+  }
+  
+  public boolean g_()
+  {
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, AddContactsActivity.class);
+    localIntent.setFlags(67108864);
+    int j = Integer.parseInt((String)this.jdField_a_of_type_JavaUtilHashMap.get("des_type"));
+    int i = j;
+    if (j != 0)
+    {
+      i = j;
+      if (j != 1)
+      {
+        i = j;
+        if (j != 2) {
+          i = 0;
+        }
+      }
+    }
+    localIntent.putExtra("tab_index_key", i);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    return true;
   }
 }
 

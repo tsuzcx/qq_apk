@@ -1,23 +1,21 @@
-class udm
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.biz.pubaccount.readinjoy.widgets.LimitWordCountEditText;
+
+public class udm
+  implements TextView.OnEditorActionListener
 {
-  int a;
-  int b;
-  int c;
-  int d;
+  public udm(LimitWordCountEditText paramLimitWordCountEditText, boolean paramBoolean) {}
   
-  public udm() {}
-  
-  public udm(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
+    return (this.jdField_a_of_type_Boolean) && (paramKeyEvent.getKeyCode() == 66);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     udm
  * JD-Core Version:    0.7.0.1
  */

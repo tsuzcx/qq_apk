@@ -1,97 +1,21 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.lang.ref.WeakReference;
-import java.net.URL;
-import java.util.List;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
 class begg
-  extends zru
+  implements TextView.OnEditorActionListener
 {
-  begg(begf parambegf) {}
+  begg(begb parambegb) {}
   
-  public void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, ByteStringMicro paramByteStringMicro1, String paramString4, ByteStringMicro paramByteStringMicro2, Bundle paramBundle)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (!paramBoolean)
+    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
     {
-      befc.a("TroopZipInnerFileDownloadWorker", befc.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqDownloadResult isSuccess:false  errCode:" + paramInt1);
-      this.a.jdField_a_of_type_Been.c = 2;
-      this.a.a(true, bfdy.b, bfdy.A, 103);
-      return;
+      bkxz.b(this.a.a);
+      this.a.d();
+      return true;
     }
-    befc.c("TroopZipInnerFileDownloadWorker", befc.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqDownloadResult isSuccess:true  int32_ret_code:" + paramInt1);
-    if ((paramInt1 == 0) || ((TextUtils.isEmpty(paramString3)) && (paramInt2 == 0)))
-    {
-      befc.a("TroopZipInnerFileDownloadWorker", befc.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqDownloadResult. no host");
-      this.a.jdField_a_of_type_Been.c = 1;
-      this.a.jdField_a_of_type_Been.d = 101;
-      this.a.a(true, bfdy.c, bfdy.x, 1);
-      return;
-    }
-    paramString1 = aszt.a(paramByteStringMicro1);
-    if (TextUtils.isEmpty(paramString1))
-    {
-      befc.a("TroopZipInnerFileDownloadWorker", befc.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqDownloadResult. no string_download_url");
-      this.a.jdField_a_of_type_Been.c = 1;
-      this.a.jdField_a_of_type_Been.d = 102;
-      this.a.a(true, bfdy.b, bfdy.w, 1);
-      return;
-    }
-    paramString2 = bjnd.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.zipInnerPath);
-    paramByteStringMicro1 = (QQAppInterface)this.b.get();
-    if ((paramByteStringMicro1 != null) && (bfby.b(paramByteStringMicro1)) && (bfby.c(paramByteStringMicro1)) && (paramBundle != null))
-    {
-      paramByteStringMicro1 = paramBundle.getString("strHttpsDomain");
-      if (!TextUtils.isEmpty(paramByteStringMicro1))
-      {
-        this.a.jdField_a_of_type_Boolean = true;
-        this.a.g = paramByteStringMicro1;
-        int i = (short)paramBundle.getInt("httpsPort", 0);
-        paramInt1 = i;
-        if (i != 0) {}
-      }
-    }
-    for (paramInt1 = 443;; paramInt1 = 0)
-    {
-      if (this.a.jdField_a_of_type_Boolean) {}
-      for (;;)
-      {
-        this.a.f = ("/ftn_compress_getfile/rkey=" + paramString1 + "&filetype=" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.zipType + "&path=" + paramString2 + "&mType=Other");
-        paramString1 = paramString3 + ":" + paramInt1;
-        this.a.jdField_a_of_type_JavaUtilList.add(paramString1);
-        if (paramInt2 != 0)
-        {
-          paramString2 = this.a.a(paramInt2) + ":" + paramInt1;
-          this.a.jdField_a_of_type_JavaUtilList.add(paramString2);
-        }
-        if (this.a.jdField_a_of_type_Boolean) {
-          paramString1 = "https://" + paramString1 + this.a.f;
-        }
-        for (;;)
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.PreviewUrl = paramString1;
-          try
-          {
-            paramString1 = new URL(paramString1);
-            this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp = paramString1.getHost();
-            befc.c("TroopZipInnerFileDownloadWorker", befc.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqDownloadResult. str_download_dns:" + paramString3 + " int32_server_ip:" + paramInt2 + " int32_server_port:" + paramInt3 + " mUrlParm:" + this.a.f + " port:" + paramInt1 + " isHttps:" + this.a.jdField_a_of_type_Boolean + " httpsDomain:" + this.a.g);
-            this.a.g();
-            return;
-            paramString1 = "http://" + paramString1 + this.a.f;
-          }
-          catch (Exception paramString1)
-          {
-            for (;;)
-            {
-              paramString1.printStackTrace();
-            }
-          }
-        }
-        paramInt1 = paramInt3;
-      }
-    }
+    return false;
   }
 }
 

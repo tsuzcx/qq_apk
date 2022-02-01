@@ -1,27 +1,24 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.ark.open.delegate.ArkDelegateManager;
+import com.tencent.ark.open.delegate.IArkDelegateNet;
+import java.lang.ref.WeakReference;
 
 public class agpu
-  implements View.OnClickListener
+  extends agpw
 {
-  public agpu(StructingMsgItemBuilder paramStructingMsgItemBuilder, ImageView paramImageView, ChatMessage paramChatMessage, String paramString, long paramLong) {}
-  
-  public void onClick(View paramView)
+  public agpu(String paramString)
   {
-    if (StructingMsgItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder)) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      StructingMsgItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, true);
-      StructingMsgItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, (Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.jdField_a_of_type_JavaLangString, "0X800631E", "0X800631E", 0, 0, "" + this.jdField_a_of_type_Long, "", "", "");
+    super(null, paramString);
+  }
+  
+  protected boolean a(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    WeakReference localWeakReference = new WeakReference(this);
+    IArkDelegateNet localIArkDelegateNet = ArkDelegateManager.getInstance().getNetDelegate();
+    if (localIArkDelegateNet == null) {
+      return false;
     }
+    localIArkDelegateNet.sendAppMsg(paramString1, paramString2, this.a, paramInt2, new agpv(this, localWeakReference));
+    return true;
   }
 }
 

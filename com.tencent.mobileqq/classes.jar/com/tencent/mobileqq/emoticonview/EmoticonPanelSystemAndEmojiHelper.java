@@ -9,12 +9,13 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
-import azvi;
-import bcef;
+import bbbq;
+import bdla;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.utils.VipUtils;
@@ -87,7 +88,7 @@ public class EmoticonPanelSystemAndEmojiHelper
     Object localObject = this.mPanelController.app;
     if (localObject != null)
     {
-      localObject = (CommonUsedSystemEmojiManager)((QQAppInterface)localObject).getManager(172);
+      localObject = (CommonUsedSystemEmojiManager)((QQAppInterface)localObject).getManager(QQManagerFactory.COMMONUSED_SYSTEM_EMOJI_MANAGERT);
       if (localObject != null) {
         ((CommonUsedSystemEmojiManager)localObject).saveSystemEmojiInfoToFile();
       }
@@ -130,8 +131,8 @@ public class EmoticonPanelSystemAndEmojiHelper
     if (this.mPopupGuideView == null)
     {
       this.mPopupGuideView = new ImageView(localContext);
-      this.mPopupGuideView.setId(2131362364);
-      this.mPopupGuideView.setImageResource(2130838030);
+      this.mPopupGuideView.setId(2131362369);
+      this.mPopupGuideView.setImageResource(2130838044);
     }
     this.mPopupGuideView.setClickable(true);
     this.mPopupGuideView.setOnClickListener(this);
@@ -166,13 +167,13 @@ public class EmoticonPanelSystemAndEmojiHelper
   @TargetApi(11)
   void updateEmojiMallRedpoint()
   {
-    BusinessInfoCheckUpdate.AppInfo localAppInfo = ((azvi)this.mPanelController.app.getManager(36)).a(String.valueOf("100610.100611"));
+    BusinessInfoCheckUpdate.AppInfo localAppInfo = ((bbbq)this.mPanelController.app.getManager(QQManagerFactory.MGR_RED_TOUCH)).a(String.valueOf("100610.100611"));
     if ((localAppInfo != null) && (localAppInfo.iNewFlag.get() != 0))
     {
       if (QLog.isColorLevel()) {
         QLog.d("EmoticonPanelSystemAndEmojiHelper", 2, "emoji mall has redpoint.");
       }
-      bcef.b(this.mPanelController.app, "CliOper", "", "", "ep_mall", "0X80057B8", 0, 0, "", "", "", "");
+      bdla.b(this.mPanelController.app, "CliOper", "", "", "ep_mall", "0X80057B8", 0, 0, "", "", "", "");
       if (this.mPanelController.context.getSharedPreferences("mobileQQ", 0).getBoolean("emo_panel_mall_new_played", false)) {
         this.mPanelController.mNewFlag.setVisibility(0);
       }
@@ -194,7 +195,7 @@ public class EmoticonPanelSystemAndEmojiHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelSystemAndEmojiHelper
  * JD-Core Version:    0.7.0.1
  */

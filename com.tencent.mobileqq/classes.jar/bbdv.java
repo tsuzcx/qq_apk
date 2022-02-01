@@ -1,14 +1,15 @@
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.app.BusinessObserver;
 
-class bbdv
+public class bbdv
+  implements BusinessObserver
 {
-  int jdField_a_of_type_Int = -1;
-  WeakReference<bbdm> jdField_a_of_type_JavaLangRefWeakReference;
+  public void a(boolean paramBoolean, bbdw parambbdw) {}
   
-  public bbdv(int paramInt, bbdm parambbdm)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambbdm);
+    if (paramInt == 1) {
+      a(paramBoolean, (bbdw)paramObject);
+    }
   }
 }
 

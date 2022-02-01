@@ -4,7 +4,6 @@ import NS_COMM.COMM.StCommonExt;
 import NS_STORE_APP_SEARCH.MiniAppSearch.StSearchAppRsp;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -28,22 +27,22 @@ class MiniAppSearchDataManager$2
       }
       localObject1 = (MiniAppSearch.StSearchAppRsp)???.opt("searchAppResponse");
       if (localObject1 != null) {
-        MiniAppSearchDataManager.access$100(this.this$0, ((MiniAppSearch.StSearchAppRsp)localObject1).appList.get(), ((MiniAppSearch.StSearchAppRsp)localObject1).highlightWords.get());
+        MiniAppSearchDataManager.access$300(this.this$0, ((MiniAppSearch.StSearchAppRsp)localObject1).appList.get(), ((MiniAppSearch.StSearchAppRsp)localObject1).searchExtInfo.get(), ((MiniAppSearch.StSearchAppRsp)localObject1).rcmdList.get());
       }
     }
     for (;;)
     {
-      synchronized (MiniAppSearchDataManager.access$200(this.this$0))
+      synchronized (MiniAppSearchDataManager.access$100(this.this$0))
       {
         MiniAppSearchDataManager localMiniAppSearchDataManager = this.this$0;
         if (((MiniAppSearch.StSearchAppRsp)localObject1).isFinished.get() == 1)
         {
           paramBoolean = bool;
-          MiniAppSearchDataManager.access$302(localMiniAppSearchDataManager, paramBoolean);
-          MiniAppSearchDataManager.access$402(this.this$0, (COMM.StCommonExt)((MiniAppSearch.StSearchAppRsp)localObject1).extInfo.get());
-          synchronized (MiniAppSearchDataManager.access$200(this.this$0))
+          MiniAppSearchDataManager.access$402(localMiniAppSearchDataManager, paramBoolean);
+          MiniAppSearchDataManager.access$502(this.this$0, (COMM.StCommonExt)((MiniAppSearch.StSearchAppRsp)localObject1).extInfo.get());
+          synchronized (MiniAppSearchDataManager.access$100(this.this$0))
           {
-            MiniAppSearchDataManager.access$502(this.this$0, false);
+            MiniAppSearchDataManager.access$602(this.this$0, false);
             return;
           }
         }

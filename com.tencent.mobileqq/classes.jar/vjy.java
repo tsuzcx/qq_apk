@@ -1,24 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import UserGrowth.stWeishiReportRsp;
 
-class vjy
-  implements Animation.AnimationListener
+final class vjy
+  implements vfg
 {
-  vjy(vjx paramvjx) {}
+  vjy(String paramString) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(vfr paramvfr)
   {
-    this.a.b.setVisibility(8);
-    this.a.d.setVisibility(8);
-    this.a.g.setVisibility(8);
+    vmp.b("weishi-report", "report " + this.a + " start...");
+    if ((paramvfr != null) && (paramvfr.a != null) && ((paramvfr.a instanceof stWeishiReportRsp)))
+    {
+      paramvfr = (stWeishiReportRsp)paramvfr.a;
+      vmp.b("weishi-report", "report" + this.a + "end: " + paramvfr.code + paramvfr.msg);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

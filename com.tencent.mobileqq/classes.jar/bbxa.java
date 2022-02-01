@@ -1,71 +1,98 @@
-import android.annotation.TargetApi;
-import android.media.MediaMetadataRetriever;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.widget.SingleLineTextView;
+import com.tencent.widget.ThemeURLImageView;
+import java.lang.ref.WeakReference;
+import mqq.app.AppRuntime;
 
-@TargetApi(18)
 public class bbxa
 {
-  public static int a(String paramString, bbxb parambbxb)
+  private static String jdField_a_of_type_JavaLangString = "";
+  private static WeakReference<Drawable> jdField_a_of_type_JavaLangRefWeakReference;
+  
+  public static Drawable a(Context paramContext)
   {
-    MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-    label226:
-    for (;;)
+    if (paramContext == null) {
+      return null;
+    }
+    return paramContext.getResources().getDrawable(2130846165);
+  }
+  
+  private static Drawable a(QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    if (jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      String str1;
-      String str2;
-      String str3;
-      try
-      {
-        localMediaMetadataRetriever.setDataSource(paramString);
-        str1 = localMediaMetadataRetriever.extractMetadata(18);
-        str2 = localMediaMetadataRetriever.extractMetadata(19);
-        paramString = localMediaMetadataRetriever.extractMetadata(24);
-        str3 = localMediaMetadataRetriever.extractMetadata(9);
-        localMediaMetadataRetriever.release();
-        if ((paramString != null) && (!"".equals(paramString)) && (!"null".equals(paramString))) {
-          break label226;
-        }
-        paramString = "0";
-        if ((str1 == null) || (str2 == null))
+      Drawable localDrawable = (Drawable)jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localDrawable != null) {
+        if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
         {
-          QLog.e("MediaMetadataUtils", 1, "[@] extractMetadata:width=" + str1 + " height=" + str2);
-          return -2;
+          paramQQAppInterface = localDrawable;
+          if (jdField_a_of_type_JavaLangString.equals(ThemeUtil.curThemeId)) {}
         }
-      }
-      catch (RuntimeException paramString)
-      {
-        QLog.e("MediaMetadataUtils", 1, "[@] setDataSource", paramString);
-        return -1;
-      }
-      for (;;)
-      {
-        try
+        else
         {
-          parambbxb.a[0] = Integer.parseInt(str1);
-          parambbxb.a[1] = Integer.parseInt(str2);
-          parambbxb.a[3] = Integer.parseInt(str3);
-          i = 0;
-        }
-        catch (NumberFormatException localNumberFormatException)
-        {
-          QLog.e("MediaMetadataUtils", 1, "[@] parseInt", localNumberFormatException);
-          int i = -3;
-          continue;
-        }
-        try
-        {
-          parambbxb.a[2] = Integer.parseInt(paramString);
-          parambbxb.a[4] = 0;
-          return i;
-        }
-        catch (NumberFormatException paramString)
-        {
-          QLog.e("MediaMetadataUtils", 1, "[@] parseInt", paramString);
-          parambbxb.a[2] = 0;
-          return i;
+          ThemeUtil.setThemeFilter(localDrawable, ThemeUtil.curThemeId);
+          jdField_a_of_type_JavaLangString = ThemeUtil.curThemeId;
+          paramQQAppInterface = localDrawable;
         }
       }
     }
+    do
+    {
+      return paramQQAppInterface;
+      paramContext = a(paramContext);
+      paramQQAppInterface = paramContext;
+    } while (paramContext == null);
+    paramQQAppInterface = paramContext.getConstantState().newDrawable().mutate();
+    ThemeUtil.setThemeFilter(paramQQAppInterface, ThemeUtil.curThemeId);
+    jdField_a_of_type_JavaLangString = ThemeUtil.curThemeId;
+    jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    return paramQQAppInterface;
+  }
+  
+  public static ThemeURLImageView a(Context paramContext)
+  {
+    if (paramContext == null) {}
+    Drawable localDrawable;
+    do
+    {
+      return null;
+      localDrawable = a(paramContext);
+    } while (localDrawable == null);
+    paramContext = new ThemeURLImageView(paramContext);
+    paramContext.setContentDescription("BOT");
+    paramContext.setImageDrawable(localDrawable);
+    return paramContext;
+  }
+  
+  public static void a(Context paramContext, SingleLineTextView paramSingleLineTextView, String paramString)
+  {
+    if ((paramSingleLineTextView == null) || (TextUtils.isEmpty(paramString)) || (paramContext == null)) {}
+    do
+    {
+      return;
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((!(localAppRuntime instanceof QQAppInterface)) || (!bghs.b((QQAppInterface)localAppRuntime, paramString))) {
+        break;
+      }
+      paramString = a((QQAppInterface)localAppRuntime, paramContext);
+    } while (paramString == null);
+    paramSingleLineTextView.setCompoundDrawablePadding((int)bhdz.a(paramContext, 5.0F));
+    paramSingleLineTextView.setDrawableRight2WithIntrinsicBounds(paramString);
+    return;
+    paramSingleLineTextView.setDrawableRight2WithIntrinsicBounds(null);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    return ((localAppRuntime instanceof QQAppInterface)) && (bghs.b((QQAppInterface)localAppRuntime, paramString));
   }
 }
 

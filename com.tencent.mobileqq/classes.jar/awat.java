@@ -1,9 +1,37 @@
-import com.tencent.mobileqq.data.IntimateInfo;
-import java.util.HashMap;
+import android.os.Handler;
+import android.os.Message;
 
-public abstract interface awat
+public class awat
+  extends Handler
 {
-  public abstract void a(HashMap<Long, IntimateInfo> paramHashMap);
+  awas a;
+  
+  protected awat(awas paramawas)
+  {
+    this.a = paramawas;
+  }
+  
+  protected void a()
+  {
+    this.a = null;
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.a == null) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      paramMessage = (String)paramMessage.obj;
+      this.a.a(paramMessage);
+      return;
+    }
+    this.a.a();
+  }
 }
 
 

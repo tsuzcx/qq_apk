@@ -1,16 +1,43 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class avab
-  implements DialogInterface.OnClickListener
+  implements auzz
 {
-  public avab(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString1, String paramString2, String paramString3)
   {
-    ListenTogetherOverlayFragment.a(this.a).finish();
+    a(paramString1, paramString2, paramString3, null);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, Throwable paramThrowable)
+  {
+    if ("i".equals(paramString2)) {
+      if (QLog.isColorLevel()) {
+        QLog.i(paramString1, 2, paramString3, paramThrowable);
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (!"d".equals(paramString2)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d(paramString1, 2, paramString3, paramThrowable);
+      return;
+      if ("w".equals(paramString2))
+      {
+        QLog.w(paramString1, 2, paramString3, paramThrowable);
+        return;
+      }
+      if ("e".equals(paramString2))
+      {
+        QLog.e(paramString1, 2, paramString3, paramThrowable);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i(paramString1, 2, paramString3, paramThrowable);
   }
 }
 

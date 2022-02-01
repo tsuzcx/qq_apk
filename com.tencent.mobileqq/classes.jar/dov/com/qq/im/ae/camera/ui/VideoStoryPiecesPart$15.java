@@ -2,25 +2,25 @@ package dov.com.qq.im.ae.camera.ui;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
-import bfvo;
-import blid;
-import bloe;
+import bheg;
+import bmuu;
+import bnbp;
 import com.tencent.mobileqq.utils.ViewUtils;
 
 public class VideoStoryPiecesPart$15
   implements Runnable
 {
-  public VideoStoryPiecesPart$15(bloe parambloe) {}
+  public VideoStoryPiecesPart$15(bnbp parambnbp) {}
   
   public void run()
   {
     try
     {
-      bloe.a(this.this$0, blid.a(bloe.i(this.this$0), true));
-      if ((bloe.a(this.this$0) != null) && (!bloe.a(this.this$0).isRecycled())) {
-        bloe.a(this.this$0, bfvo.b(bloe.a(this.this$0), ViewUtils.dip2px(3.0F), bloe.a(this.this$0).getWidth(), bloe.a(this.this$0).getHeight()));
+      bnbp.a(this.this$0, bmuu.a(bnbp.i(this.this$0), true));
+      if ((bnbp.a(this.this$0) != null) && (!bnbp.a(this.this$0).isRecycled())) {
+        bnbp.a(this.this$0, bheg.b(bnbp.a(this.this$0), ViewUtils.dip2px(3.0F), bnbp.a(this.this$0).getWidth(), bnbp.a(this.this$0).getHeight()));
       }
-      bloe.j(this.this$0).runOnUiThread(new VideoStoryPiecesPart.15.1(this));
+      bnbp.j(this.this$0).runOnUiThread(new VideoStoryPiecesPart.15.1(this));
       return;
     }
     catch (Exception localException)

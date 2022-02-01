@@ -1,154 +1,179 @@
-import android.media.SoundPool;
-import android.text.TextUtils;
+import android.content.SharedPreferences;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
 
 public class lts
 {
-  int jdField_a_of_type_Int;
-  SoundPool jdField_a_of_type_AndroidMediaSoundPool;
-  HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
-  HashSet<Integer> jdField_a_of_type_JavaUtilHashSet;
-  List<String> jdField_a_of_type_JavaUtilList;
-  int jdField_b_of_type_Int;
-  HashMap<String, Integer> jdField_b_of_type_JavaUtilHashMap;
-  int c;
-  
-  public lts(List<String> paramList, int paramInt)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    this.jdField_b_of_type_Int = paramList.size();
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a()
+  public static void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("SoundPoolHelper", 2, "releaseMusic");
+      QLog.d("AV_rp_dc", 2, "reportNoEntranceByPtuSoFail");
     }
-    if (this.jdField_a_of_type_AndroidMediaSoundPool != null)
+    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actAVRPPtuSoFail", true, 0L, 0L, null, "", true);
+  }
+  
+  public static void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AV_rp_dc", 2, "reportDetectInvalidExpression,invalidType  = " + paramInt);
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("invalidType", String.valueOf(paramInt));
+    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actAVRPDetectInvalidExp", true, 0L, 0L, localHashMap, "", true);
+  }
+  
+  public static void a(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 == 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_AndroidMediaSoundPool.release();
-      this.jdField_a_of_type_AndroidMediaSoundPool = null;
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-      this.jdField_a_of_type_JavaUtilHashSet.clear();
-      this.jdField_b_of_type_JavaUtilHashMap.clear();
-      this.c = 0;
+      if (QLog.isColorLevel()) {
+        QLog.d("AV_rp_dc", 2, "reportResDownloadResult  resType = " + paramInt1 + ",success = " + bool);
+      }
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("resType", String.valueOf(paramInt1));
+      localHashMap.put("downResult", String.valueOf(bool));
+      localHashMap.put("errorCode", String.valueOf(paramInt2));
+      StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actResDownResult", bool, 0L, 0L, localHashMap, "", true);
+      return;
     }
   }
   
-  public void a(String paramString)
+  public static void a(int paramInt1, int paramInt2, int paramInt3, float paramFloat, int paramInt4, int paramInt5)
   {
-    Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if (localInteger == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SoundPoolHelper", 2, "stopMusic fail soundID is null, path = " + paramString);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("AV_rp_dc", 2, "reportEmojiHitResult,emojiID  = " + paramInt1 + ",emojiType = " + paramInt2 + ",hitType = " + paramInt3 + ",missCount1 = " + paramInt4 + ",missCount2 = " + paramInt5 + ",score = " + paramFloat);
     }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("id", String.valueOf(paramInt1));
+    localHashMap.put("etype", String.valueOf(paramInt2));
+    localHashMap.put("htype", String.valueOf(paramInt3));
+    localHashMap.put("score", String.valueOf(paramFloat));
+    localHashMap.put("mcount1", String.valueOf(paramInt4));
+    localHashMap.put("mcount2", String.valueOf(paramInt5));
+    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actAVEmojiHit", true, 0L, 0L, localHashMap, "", true);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
+    int i;
     do
     {
-      do
-      {
-        do
-        {
-          return;
-          if (this.jdField_a_of_type_JavaUtilHashSet.contains(localInteger)) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("SoundPoolHelper", 2, "stopMusic fail soundID is not ready, path = " + paramString);
-        return;
-        localInteger = (Integer)this.jdField_b_of_type_JavaUtilHashMap.get(paramString);
-        if (localInteger != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("SoundPoolHelper", 2, "stopMusic fail steamID is null, path = " + paramString);
       return;
-    } while (this.jdField_a_of_type_AndroidMediaSoundPool == null);
-    this.jdField_a_of_type_AndroidMediaSoundPool.stop(localInteger.intValue());
+      i = ((lui)paramQQAppInterface.getManager(QQManagerFactory.AV_REDPACKET_CONFIG_MGR)).a();
+      if (i > 0)
+      {
+        paramQQAppInterface = new HashMap();
+        paramQQAppInterface.put("configVersion", String.valueOf(i));
+        StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actConfigExistStatus", true, 0L, 0L, paramQQAppInterface, "", true);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("AV_rp_dc", 2, "reportConfigExistStatus localVersion = " + i);
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  public static void a(String paramString)
   {
+    boolean bool = BaseApplicationImpl.getApplication().getSharedPreferences("avredpacket_sp", 4).getBoolean("res_exist", false);
     if (QLog.isColorLevel()) {
-      QLog.d("SoundPoolHelper", 2, "playMusic, path = " + paramString + ",loop = " + paramBoolean);
+      QLog.d("AV_rp_dc", 2, "checkAndReportIllegalAVRedPacketRequest exist = " + bool);
     }
-    if (TextUtils.isEmpty(paramString)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SoundPoolHelper", 2, "playMusic fail path is empty ");
-      }
-    }
-    Integer localInteger;
-    do
+    if (bool)
     {
-      do
-      {
-        do
-        {
-          return;
-          localInteger = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-          if (localInteger != null) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("SoundPoolHelper", 2, "playMusic fail soundID is null, path = " + paramString + ",loop = " + paramBoolean);
-        return;
-        if (this.jdField_a_of_type_JavaUtilHashSet.contains(localInteger)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("SoundPoolHelper", 2, "playMusic fail soundID is not ready, path = " + paramString + ",loop = " + paramBoolean);
-      return;
-    } while (this.jdField_a_of_type_AndroidMediaSoundPool == null);
-    SoundPool localSoundPool = this.jdField_a_of_type_AndroidMediaSoundPool;
-    int j = localInteger.intValue();
-    if (paramBoolean) {}
-    for (int i = -1;; i = 0)
-    {
-      i = localSoundPool.play(j, 1.0F, 1.0F, 1, i, 1.0F);
-      this.jdField_b_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(i));
-      return;
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("md5", paramString);
+      localHashMap.put("model", Build.MODEL);
+      localHashMap.put("version", String.valueOf(Build.VERSION.SDK_INT));
+      StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actIllegalAVRPRequest", true, 0L, 0L, localHashMap, "", true);
     }
   }
   
-  public void a(ltu paramltu)
+  public static void a(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("SoundPoolHelper", 2, "loadMusic ,soundPool = " + this.jdField_a_of_type_AndroidMediaSoundPool);
+      QLog.d("AV_rp_dc", 2, "reportConfigReqResult success = " + paramBoolean);
     }
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() < 1)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SoundPoolHelper", 2, "loadMusic fail filPathList is empty");
-      }
+    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actAVConfigReqResult", paramBoolean, 0L, 0L, null, "", true);
+  }
+  
+  public static void a(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AV_rp_dc", 2, "reportRedPacketBtnGrayWhenSessionFinish,isGray  = " + paramBoolean + ",grayType = " + paramString);
     }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("grayType", paramString);
+    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actAVRPBtnGrayOrNot", paramBoolean, 0L, 0L, localHashMap, "", true);
+  }
+  
+  public static void a(boolean paramBoolean, String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AV_rp_dc", 2, "reportSendRedPacketResult success = " + paramBoolean + ",errorCode1 = " + paramString1 + ",errorCode2 = " + paramString2);
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("errorCode1", paramString1);
+    localHashMap.put("errorCode2", paramString2);
+    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actAVSendRPResult", paramBoolean, 0L, 0L, localHashMap, "", true);
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
     for (;;)
     {
       return;
-      if (this.jdField_a_of_type_AndroidMediaSoundPool == null)
+      int i = ((lui)paramQQAppInterface.getManager(QQManagerFactory.AV_REDPACKET_CONFIG_MGR)).a();
+      boolean bool;
+      if (i > 0)
       {
-        this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(this.jdField_a_of_type_JavaUtilList.size(), this.jdField_a_of_type_Int, 0);
-        this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new ltt(this, paramltu));
+        bool = BaseApplicationImpl.getApplication().getSharedPreferences("avredpacket_sp", 4).getBoolean("res_exist", false);
+        if (bool)
+        {
+          paramQQAppInterface = new HashMap();
+          paramQQAppInterface.put("configVersion", String.valueOf(i));
+          StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actResExistStatus", true, 0L, 0L, paramQQAppInterface, "", true);
+        }
       }
-      paramltu = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramltu.hasNext())
+      while (QLog.isColorLevel())
       {
-        String str = (String)paramltu.next();
-        int i = this.jdField_a_of_type_AndroidMediaSoundPool.load(str, 1);
-        this.jdField_a_of_type_JavaUtilHashMap.put(str, Integer.valueOf(i));
+        QLog.d("AV_rp_dc", 2, "reportResourceExistStaus localVersion = " + i + ",exist = " + bool);
+        return;
+        bool = false;
       }
     }
+  }
+  
+  public static void b(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AV_rp_dc", 2, "reportClickRedPacketBtnResult success = " + paramBoolean + ",errorCode = " + paramString);
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("errorCode", paramString);
+    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actAVClickRPBtnResult", paramBoolean, 0L, 0L, localHashMap, "", true);
+  }
+  
+  public static void b(boolean paramBoolean, String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AV_rp_dc", 2, "reportGrabRedPacketResult success = " + paramBoolean + ",errorCode1 = " + paramString1 + ",errorCode2 = " + paramString2);
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("errorCode1", paramString1);
+    localHashMap.put("errorCode2", paramString2);
+    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actAVGrabRPResult", paramBoolean, 0L, 0L, localHashMap, "", true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lts
  * JD-Core Version:    0.7.0.1
  */

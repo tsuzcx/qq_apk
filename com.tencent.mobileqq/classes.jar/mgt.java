@@ -1,20 +1,20 @@
-import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
 
-class mgt
-  implements HorizontalListView.OnScrollStateChangedListener
+public class mgt
+  implements DialogInterface.OnClickListener
 {
-  mgt(mgr parammgr) {}
+  public mgt(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
   
-  public void onScrollStateChanged(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt == 4097) && (this.a.a != null)) {
-      this.a.a.a(0L);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mgt
  * JD-Core Version:    0.7.0.1
  */

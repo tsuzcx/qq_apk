@@ -7,7 +7,7 @@ class MiniAppVideoController$17
   
   public void run()
   {
-    MiniAppVideoController.access$100(this.this$0).performClickControlBtn();
+    MiniAppVideoController.access$300(this.this$0).performClickControlBtn();
   }
 }
 

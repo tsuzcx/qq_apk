@@ -1,25 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.IntimateInfo;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 
-class afbm
-  implements DialogInterface.OnClickListener
+public class afbm
+  implements blel
 {
-  afbm(afbj paramafbj) {}
+  public afbm(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(blek paramblek)
   {
-    if ((!TextUtils.isEmpty(this.a.a)) && (afbj.a(this.a) != null))
+    boolean bool = false;
+    switch (paramblek.a)
     {
-      if (afbj.a(this.a) == 1) {
-        afbj.b(this.a, this.a.a);
+    default: 
+      return;
+    case 0: 
+      paramblek = this.a;
+      if (!this.a.d) {
+        bool = true;
       }
-    }
-    else {
+      paramblek.d = bool;
+      awtz.a().b(this.a.app, this.a.d);
       return;
     }
-    afbj.a(this.a, this.a.a, afbj.a(this.a).maskType);
+    paramblek = new Intent(this.a, TroopAssisSettingActivity.class);
+    paramblek.setFlags(67108864);
+    this.a.startActivity(paramblek);
+    bdla.b(this.a.app, "P_CliOper", "Grp_msg", "", "help_list", "Clk_set", 0, 0, "", "", "", "");
   }
 }
 

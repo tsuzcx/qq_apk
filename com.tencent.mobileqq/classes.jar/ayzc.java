@@ -1,52 +1,22 @@
-import android.graphics.PointF;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
-import com.tencent.mobileqq.widget.RatioLayout.LayoutParams;
+import android.os.Bundle;
+import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
 
 public class ayzc
-  implements ayqo
+  extends azce
 {
-  public ayzc(VasProfileTagView paramVasProfileTagView) {}
+  public ayzc(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
   
-  public void a()
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    Object localObject1;
-    if (VasProfileTagView.a(this.a) != null)
+    super.a(paramBoolean, paramBundle);
+    if (paramBoolean)
     {
-      localObject1 = VasProfileTagView.a(this.a);
-      int j = localObject1.length;
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject2 = localObject1[i];
-        if ((localObject2 != null) && (localObject2.getVisibility() != 8))
-        {
-          RatioLayout.LayoutParams localLayoutParams = (RatioLayout.LayoutParams)localObject2.getLayoutParams();
-          if (localLayoutParams != null)
-          {
-            localLayoutParams.a = VasProfileTagView.a(this.a).x;
-            localLayoutParams.b = VasProfileTagView.a(this.a).y;
-            localObject2.setLayoutParams(localLayoutParams);
-          }
-        }
-        i += 1;
+      if (!paramBundle.getBoolean("param_need_switch_online_status")) {
+        AccountOnlineStateActivity.a(this.a, true, 0);
       }
-      this.a.f();
+      return;
     }
-    if (Build.VERSION.SDK_INT >= 11)
-    {
-      localObject1 = (FrameLayout)VasProfileTagView.c(this.a).findViewById(16908290);
-      if (localObject1 != null)
-      {
-        VasProfileTagView.a(this.a, ((FrameLayout)localObject1).getBackground());
-        if (!bgio.a(VasProfileTagView.a(this.a))) {
-          ((FrameLayout)localObject1).setBackgroundDrawable(null);
-        }
-      }
-    }
+    AccountOnlineStateActivity.a(this.a, true, -1);
   }
 }
 

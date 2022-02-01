@@ -1,24 +1,19 @@
-final class rlh
-  extends rlf<rlk, rlj, rli>
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/reward/aidl/RIJAidlServer;", "Lcom/tencent/biz/pubaccount/readinjoy/reward/aidl/IRIJAidlInterface$Stub;", "()V", "rijAidlInterfaceForRedPacket", "Lcom/tencent/biz/pubaccount/readinjoy/reward/aidl/IRIJAidlInterfaceForRewardTask;", "getRewardTaskInterface", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rlh
+  extends rku
 {
-  public void a(rlk paramrlk, rlj paramrlj, int paramInt, rli paramrli)
+  private rkw a;
+  
+  @Nullable
+  public rkw a()
   {
-    switch (paramInt)
-    {
-    default: 
-      paramrlk.a(paramrlj);
-      return;
-    case 1: 
-      paramrlk.a(paramrlj, paramrli.a, paramrli.b);
-      return;
-    case 2: 
-      paramrlk.b(paramrlj, paramrli.a, paramrli.b);
-      return;
-    case 3: 
-      paramrlk.a(paramrlj, paramrli.a, paramrli.c, paramrli.b);
-      return;
+    if (this.a == null) {
+      this.a = ((rkw)new rli());
     }
-    paramrlk.c(paramrlj, paramrli.a, paramrli.b);
+    return this.a;
   }
 }
 

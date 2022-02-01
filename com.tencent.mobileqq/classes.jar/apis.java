@@ -1,25 +1,58 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 
-class apis
-  extends RecyclerView.OnScrollListener
+public abstract class apis
+  extends Binder
+  implements apir
 {
-  apis(apiq paramapiq) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public apis()
   {
-    if (paramInt == 0) {
-      apiq.a(this.a, paramRecyclerView);
-    }
+    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArSoCallback");
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public static apir a(IBinder paramIBinder)
   {
-    if (apiq.a(this.a))
-    {
-      apiq.a(this.a, false);
-      apiq.a(this.a, paramRecyclerView);
+    if (paramIBinder == null) {
+      return null;
     }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof apir))) {
+      return (apir)localIInterface;
+    }
+    return new apit(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      a();
+      paramParcel2.writeNoException();
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      b();
+      paramParcel2.writeNoException();
+      return true;
+    }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+    a(paramParcel1.readInt());
+    paramParcel2.writeNoException();
+    return true;
   }
 }
 

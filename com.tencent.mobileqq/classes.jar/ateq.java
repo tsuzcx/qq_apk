@@ -1,23 +1,44 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAppFileTabView;
 
-public final class ateq
-  implements Parcelable.Creator<WeiYunFileInfo>
+public class ateq
+  extends auex
 {
-  public WeiYunFileInfo a(Parcel paramParcel)
+  public ateq(QfileRecentAppFileTabView paramQfileRecentAppFileTabView) {}
+  
+  public void a()
   {
-    return new WeiYunFileInfo(paramParcel);
+    this.a.a.a().b();
   }
   
-  public WeiYunFileInfo[] a(int paramInt)
+  public void b()
   {
-    return new WeiYunFileInfo[paramInt];
+    this.a.a.a().o();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().p();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().q();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().r();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().E();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ateq
  * JD-Core Version:    0.7.0.1
  */

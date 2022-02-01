@@ -1,16 +1,16 @@
 package com.tencent.av.chatroom;
 
 import android.os.Handler;
-import ljt;
+import lkf;
 
 public class ChatRoomMng$2
   implements Runnable
 {
-  public ChatRoomMng$2(ljt paramljt, ChatRoomInfo paramChatRoomInfo) {}
+  public ChatRoomMng$2(lkf paramlkf, ChatRoomInfo paramChatRoomInfo) {}
   
   public void run()
   {
-    ljt.a(this.this$0).removeMessages(3, this.a);
+    lkf.a(this.this$0).removeMessages(3, this.a);
     this.this$0.b(this.a);
   }
 }

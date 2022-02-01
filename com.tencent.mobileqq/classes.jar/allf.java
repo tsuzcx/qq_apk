@@ -1,25 +1,87 @@
-import com.tencent.mobileqq.app.face.FaceDecoder;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class allf
-  implements AbsListView.OnScrollListener
+public class allf
+  extends alkr
 {
-  allf(allb paramallb) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public allf(Context paramContext)
   {
-    allb.a(this.a, paramInt);
-    if (paramInt == 0)
+    this.jdField_a_of_type_JavaLangString = anvx.a(2131699039);
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public Object a(int paramInt, bffl parambffl, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    if ((paramObject instanceof allf))
     {
-      allb.a(this.a, null, null);
-      allb.a(this.a).resume();
+      paramMessageRecord = (allf)paramObject;
+      paramObject = paramMessageRecord;
+    }
+    for (;;)
+    {
+      paramMessageRecord.jdField_a_of_type_Bffm.a(parambffl.jdField_a_of_type_Bffm);
+      return paramObject;
+      paramMessageRecord = new allf(BaseApplication.getContext());
+      if (!(paramObject instanceof alln))
+      {
+        paramQQAppInterface = paramMessageRecord;
+        paramObject = paramMessageRecord;
+        paramMessageRecord = paramQQAppInterface;
+      }
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    QLog.d("TroopKeyWordMsg", 2, "deSerialize");
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
+    {
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
+      this.jdField_a_of_type_Int = paramArrayOfByte.getInt("time");
+      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
+      this.c = paramArrayOfByte.getString("messageNavInfo");
+      if ((this.c != null) && (this.c.length() != 0)) {
+        this.jdField_a_of_type_Bffm.a(this.c);
+      }
       return;
     }
-    allb.a(this.a).pause();
-    allb.a(this.a).cancelPendingRequests();
+    catch (JSONException paramArrayOfByte)
+    {
+      QLog.e("TroopKeyWordMsg", 1, "deSerialize: ", paramArrayOfByte);
+    }
+  }
+  
+  public byte[] a()
+  {
+    return b();
+  }
+  
+  public byte[] b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("time", this.jdField_a_of_type_Int);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      this.c = this.jdField_a_of_type_Bffm.a();
+      localJSONObject.put("messageNavInfo", this.c);
+      return localJSONObject.toString().getBytes();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("TroopKeyWordMsg", 1, "deSerialize: ", localJSONException);
+      }
+    }
   }
 }
 

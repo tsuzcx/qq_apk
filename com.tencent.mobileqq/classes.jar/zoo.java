@@ -1,124 +1,609 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
+import android.app.Activity;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
+import android.util.Log;
+import android.util.SparseIntArray;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.richframework.part.block.BlockContainer;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import com.tencent.util.ArrayUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-class zoo
-  implements ServiceConnection
+public class zoo
+  extends zpc<zou>
+  implements Application.ActivityLifecycleCallbacks
 {
-  zoo(zon paramzon) {}
+  private static boolean jdField_a_of_type_Boolean;
+  private int jdField_a_of_type_Int;
+  private RecyclerView.ViewHolder jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
+  private SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
+  private final ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new zoq(this);
+  private BlockContainer jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer;
+  private final ConcurrentHashMap<String, zos> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private final CopyOnWriteArrayList<zot> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private zoj jdField_a_of_type_Zoj;
+  private int jdField_b_of_type_Int;
+  private final ConcurrentHashMap<String, zou> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  /* Error */
-  public void onServiceConnected(ComponentName paramComponentName, android.os.IBinder arg2)
+  public zoo(BlockContainer paramBlockContainer)
   {
-    // Byte code:
-    //   0: new 22	android/os/Messenger
-    //   3: dup
-    //   4: aload_2
-    //   5: invokespecial 25	android/os/Messenger:<init>	(Landroid/os/IBinder;)V
-    //   8: astore_1
-    //   9: invokestatic 31	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   12: ifeq +11 -> 23
-    //   15: ldc 33
-    //   17: iconst_2
-    //   18: ldc 35
-    //   20: invokestatic 39	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   23: aconst_null
-    //   24: iconst_1
-    //   25: invokestatic 45	android/os/Message:obtain	(Landroid/os/Handler;I)Landroid/os/Message;
-    //   28: astore_2
-    //   29: aload_2
-    //   30: aload_0
-    //   31: getfield 12	zoo:a	Lzon;
-    //   34: getfield 50	zon:jdField_a_of_type_AndroidOsMessenger	Landroid/os/Messenger;
-    //   37: putfield 53	android/os/Message:replyTo	Landroid/os/Messenger;
-    //   40: new 55	android/os/Bundle
-    //   43: dup
-    //   44: invokespecial 56	android/os/Bundle:<init>	()V
-    //   47: astore_3
-    //   48: aload_3
-    //   49: ldc 58
-    //   51: invokestatic 61	zon:a	()Ljava/lang/String;
-    //   54: invokevirtual 65	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   57: aload_2
-    //   58: aload_3
-    //   59: putfield 69	android/os/Message:obj	Ljava/lang/Object;
-    //   62: aload_1
-    //   63: aload_2
-    //   64: invokevirtual 73	android/os/Messenger:send	(Landroid/os/Message;)V
-    //   67: aload_0
-    //   68: getfield 12	zoo:a	Lzon;
-    //   71: astore_2
-    //   72: aload_2
-    //   73: monitorenter
-    //   74: aload_0
-    //   75: getfield 12	zoo:a	Lzon;
-    //   78: aload_1
-    //   79: putfield 76	zon:jdField_b_of_type_AndroidOsMessenger	Landroid/os/Messenger;
-    //   82: new 78	java/util/ArrayList
-    //   85: dup
-    //   86: aload_0
-    //   87: getfield 12	zoo:a	Lzon;
-    //   90: getfield 81	zon:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   93: invokespecial 84	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
-    //   96: astore_3
-    //   97: aload_0
-    //   98: getfield 12	zoo:a	Lzon;
-    //   101: getfield 81	zon:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   104: invokeinterface 89 1 0
-    //   109: aload_2
-    //   110: monitorexit
-    //   111: aload_3
-    //   112: invokeinterface 93 1 0
-    //   117: ifle +52 -> 169
-    //   120: aload_3
-    //   121: invokeinterface 97 1 0
-    //   126: astore_2
-    //   127: aload_2
-    //   128: invokeinterface 102 1 0
-    //   133: ifeq +36 -> 169
-    //   136: aload_1
-    //   137: aload_2
-    //   138: invokeinterface 106 1 0
-    //   143: checkcast 41	android/os/Message
-    //   146: invokevirtual 73	android/os/Messenger:send	(Landroid/os/Message;)V
-    //   149: goto -22 -> 127
-    //   152: astore_1
-    //   153: invokestatic 31	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   156: ifeq +13 -> 169
-    //   159: ldc 33
-    //   161: iconst_2
-    //   162: aload_1
-    //   163: invokevirtual 109	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   166: invokestatic 112	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   169: return
-    //   170: astore_1
-    //   171: aload_2
-    //   172: monitorexit
-    //   173: aload_1
-    //   174: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	175	0	this	zoo
-    //   0	175	1	paramComponentName	ComponentName
-    //   47	74	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   0	23	152	java/lang/Exception
-    //   23	74	152	java/lang/Exception
-    //   111	127	152	java/lang/Exception
-    //   127	149	152	java/lang/Exception
-    //   173	175	152	java/lang/Exception
-    //   74	111	170	finally
-    //   171	173	170	finally
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer = paramBlockContainer;
+    setHasStableIds(true);
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  private void a(RecyclerView.ViewHolder paramViewHolder, zou paramzou, ViewGroup.LayoutParams paramLayoutParams)
   {
-    this.a.jdField_b_of_type_AndroidOsMessenger = null;
-    this.a.jdField_a_of_type_JavaUtilMap.clear();
-    if (QLog.isColorLevel()) {
-      QLog.i("com.tencent.biz.troop.TroopMemberApiClient", 2, "Disconnected.");
+    if ((paramViewHolder != null) && (paramzou != null) && (paramzou.c(paramViewHolder.getLayoutPosition() - paramzou.b()) == 1)) {
+      ((StaggeredGridLayoutManager.LayoutParams)paramLayoutParams).setFullSpan(true);
+    }
+  }
+  
+  private void b(String paramString, zos paramzos)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() > 0)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      while (localIterator.hasNext()) {
+        ((zot)localIterator.next()).a(paramString, paramzos);
+      }
+    }
+  }
+  
+  private void b(zou paramzou, int paramInt)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((zou)localIterator.next()).a(paramzou, paramInt);
+    }
+  }
+  
+  private void d(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+    {
+      QLog.i("CMADebugTAG", 1, "isNeedTryToLoadMore mDataList.size() == 0" + hashCode());
+      return;
+    }
+    zou localzou = (zou)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+    if (localzou == null)
+    {
+      QLog.i("CMADebugTAG", 2, "isNeedTryToLoadMore adapter == null" + hashCode());
+      return;
+    }
+    if (localzou.a().b())
+    {
+      QLog.i("CMADebugTAG", 2, "isNeedTryToLoadMore is loading:" + hashCode());
+      return;
+    }
+    if (this.jdField_b_of_type_Int == 0)
+    {
+      QLog.i("CMADebugTAG", 2, "isNeedTryToLoadMore maxCount 0 hashCode:" + hashCode());
+      return;
+    }
+    int i = zpp.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
+    if (i == -1)
+    {
+      QLog.i("CMADebugTAG", 2, "isNeedTryToLoadMore not renderReady hashCode:" + hashCode());
+      return;
+    }
+    if (i < localzou.getItemCount() - 1)
+    {
+      QLog.i("CMADebugTAG", 2, "isNeedTryToLoadMore enough to scroll hashCode:" + hashCode());
+      return;
+    }
+    if (f())
+    {
+      QLog.e("CMADebugTAG", 2, "isNeedTryToLoadMore invalid hashCode:" + hashCode());
+      return;
+    }
+    if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null) && (!paramBoolean))
+    {
+      this.jdField_a_of_type_Int += 1;
+      b();
+      QLog.i("CMADebugTAG", 1, String.format("isNeedTryToLoadMore try to loadMore Success hashCode:%d", new Object[] { Integer.valueOf(hashCode()) }));
+      return;
+    }
+    this.jdField_a_of_type_Int = 0;
+    QLog.i("CMADebugTAG", 1, String.format("isNeedTryToLoadMore reset hashCode:%d", new Object[] { Integer.valueOf(hashCode()) }));
+  }
+  
+  private boolean f()
+  {
+    return (this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int >= this.jdField_b_of_type_Int);
+  }
+  
+  public int a()
+  {
+    return a(this.jdField_a_of_type_JavaUtilArrayList);
+  }
+  
+  public int a(ArrayList<zou> paramArrayList)
+  {
+    try
+    {
+      int m = paramArrayList.size();
+      int k = 0;
+      int i = 0;
+      int j = i;
+      if (k < m)
+      {
+        if (ArrayUtils.isOutOfArrayIndex(k, paramArrayList)) {
+          return i;
+        }
+        zou localzou = (zou)paramArrayList.get(k);
+        j = i;
+        if (localzou != null) {
+          if (!b()) {
+            break label148;
+          }
+        }
+        label148:
+        for (j = 1;; j = 0)
+        {
+          localzou.a(j + i);
+          i += localzou.getItemCount();
+          j = i;
+          if (jdField_a_of_type_Boolean)
+          {
+            Log.d("CMADebugTAG|" + localzou.getClass().getSimpleName(), "size:" + localzou.getItemCount());
+            j = i;
+          }
+          k += 1;
+          i = j;
+          break;
+        }
+      }
+      return j;
+    }
+    catch (Exception paramArrayList)
+    {
+      j = 0;
+    }
+  }
+  
+  public GridLayoutManager.SpanSizeLookup a()
+  {
+    return new zop(this);
+  }
+  
+  protected RecyclerView.ViewHolder a(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+    {
+      if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder == null) {
+        this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder = new zor(this, new View(paramViewGroup.getContext()));
+      }
+      return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
+    }
+    if (paramInt == -99999) {
+      return super.onCreateViewHolder(paramViewGroup, paramInt);
+    }
+    int k = this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt);
+    int i = paramInt;
+    if (k != 0)
+    {
+      i = 0;
+      int j = 0;
+      while (i < k)
+      {
+        j += ((zou)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a();
+        i += 1;
+      }
+      i = paramInt - j;
+    }
+    if (jdField_a_of_type_Boolean) {
+      Log.d("CMADebugTAG|" + ((zou)this.jdField_a_of_type_JavaUtilArrayList.get(k)).getClass().getSimpleName(), "createItemViewHolder ViewType:" + i);
+    }
+    return ((zou)this.jdField_a_of_type_JavaUtilArrayList.get(k)).onCreateViewHolder(paramViewGroup, i);
+  }
+  
+  public BlockContainer a()
+  {
+    return this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer;
+  }
+  
+  public zos a(String paramString)
+  {
+    return (zos)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+  }
+  
+  public zou a(int paramInt)
+  {
+    if (paramInt < a())
+    {
+      int k = this.jdField_a_of_type_JavaUtilArrayList.size();
+      int j = 0;
+      int i = paramInt;
+      paramInt = j;
+      while (paramInt < k)
+      {
+        zou localzou = (zou)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+        j = localzou.getItemCount();
+        if (i < j) {
+          return localzou;
+        }
+        i = Math.max(i - j, 0);
+        paramInt += 1;
+      }
+    }
+    return null;
+  }
+  
+  public zou a(String paramString)
+  {
+    return (zou)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+  }
+  
+  public void a()
+  {
+    super.a();
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+      a().setRefreshing(true);
+    }
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      zou localzou = (zou)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      if (localzou.a()) {
+        localzou.a();
+      }
+      i += 1;
+    }
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null) {
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      ((zou)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramInt1, paramInt2, paramIntent);
+      i += 1;
+    }
+  }
+  
+  protected void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    int k = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int j = 0;
+    int i = paramInt;
+    paramInt = j;
+    for (;;)
+    {
+      if (paramInt < k)
+      {
+        zou localzou = (zou)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+        j = localzou.getItemCount();
+        if (i < j) {
+          localzou.onBindViewHolder(paramViewHolder, i);
+        }
+      }
+      else
+      {
+        return;
+      }
+      i = Math.max(i - j, 0);
+      paramInt += 1;
+    }
+  }
+  
+  public void a(String paramString, zos paramzos)
+  {
+    if (paramzos == null)
+    {
+      QLog.w(getClass().getSimpleName(), 1, "setShareData null");
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramzos);
+    b(paramString, paramzos);
+  }
+  
+  public void a(zoj paramzoj)
+  {
+    this.jdField_a_of_type_Zoj = paramzoj;
+  }
+  
+  public void a(zot paramzot)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramzot);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      paramzot.a(str, (zos)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str));
+    }
+  }
+  
+  public void a(zou paramzou)
+  {
+    a(paramzou, -1);
+  }
+  
+  public void a(zou paramzou, int paramInt)
+  {
+    if ((paramzou != null) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramzou)))
+    {
+      int i = paramInt;
+      if (paramInt == -1) {
+        i = this.jdField_a_of_type_JavaUtilArrayList.size();
+      }
+      if (paramzou.a() != null) {
+        this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramzou.a(), paramzou);
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.add(i, paramzou);
+      paramzou.a(this);
+      paramzou.onAttachedToRecyclerView(a().a());
+      b(paramzou, 1);
+      a(paramzou);
+    }
+  }
+  
+  public boolean a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      if (((zou)localIterator.next()).c()) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    zou localzou = (zou)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+    if (!a().b()) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (localzou.a().b());
+      if (localzou.a().a())
+      {
+        localzou.a().a(4);
+        return;
+      }
+    } while (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0);
+    f();
+    localzou.a().a(3);
+    localzou.b(localzou.a());
+  }
+  
+  public void b(zot paramzot)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramzot);
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer = null;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    this.jdField_a_of_type_Zoj = null;
+  }
+  
+  public void d()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      zou localzou = (zou)localIterator.next();
+      if (!localzou.b()) {
+        localzou.b();
+      }
+    }
+  }
+  
+  public int getItemCount()
+  {
+    return a() + b();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    int k;
+    if ((b()) && (paramInt == 0))
+    {
+      k = -10000;
+      return k;
+    }
+    int j = a(paramInt);
+    if (j < a())
+    {
+      int m = -1;
+      int n = this.jdField_a_of_type_JavaUtilArrayList.size();
+      paramInt = 0;
+      int i = 0;
+      for (;;)
+      {
+        k = m;
+        if (paramInt >= n) {
+          break;
+        }
+        zou localzou = (zou)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+        k = localzou.getItemCount();
+        if (j < k)
+        {
+          j = localzou.getItemViewType(j);
+          if (jdField_a_of_type_Boolean) {
+            Log.d("CMADebugTAG|" + localzou.getClass().getSimpleName(), "getItemViewType ViewType:" + j);
+          }
+          if (j < 0) {}
+          for (;;)
+          {
+            localzou.b(i);
+            this.jdField_a_of_type_AndroidUtilSparseIntArray.put(j, paramInt);
+            return j;
+            j += i;
+          }
+        }
+        j = Math.max(j - k, 0);
+        if (localzou.a() == 0) {
+          throw new IllegalArgumentException("HorizontalRVBlock getViewTypeCount() has to be greater than 0");
+        }
+        i += localzou.a();
+        paramInt += 1;
+      }
+    }
+    return -99999;
+  }
+  
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityDestroyed(Activity paramActivity)
+  {
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      ((zou)this.jdField_a_of_type_JavaUtilArrayList.get(i)).onActivityDestroyed(paramActivity);
+      i += 1;
+    }
+  }
+  
+  public void onActivityPaused(Activity paramActivity)
+  {
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      ((zou)this.jdField_a_of_type_JavaUtilArrayList.get(i)).onActivityPaused(paramActivity);
+      i += 1;
+    }
+  }
+  
+  public void onActivityResumed(Activity paramActivity)
+  {
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      ((zou)this.jdField_a_of_type_JavaUtilArrayList.get(i)).onActivityResumed(paramActivity);
+      i += 1;
+    }
+  }
+  
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityStarted(Activity paramActivity)
+  {
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      ((zou)this.jdField_a_of_type_JavaUtilArrayList.get(i)).onActivityStarted(paramActivity);
+      i += 1;
+    }
+  }
+  
+  public void onActivityStopped(Activity paramActivity)
+  {
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      ((zou)this.jdField_a_of_type_JavaUtilArrayList.get(i)).onActivityStopped(paramActivity);
+      i += 1;
+    }
+  }
+  
+  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
+  {
+    super.onAttachedToRecyclerView(paramRecyclerView);
+  }
+  
+  public void onDetachedFromRecyclerView(RecyclerView paramRecyclerView)
+  {
+    super.onDetachedFromRecyclerView(paramRecyclerView);
+    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int i = 0;
+    while (i < j)
+    {
+      ((zou)this.jdField_a_of_type_JavaUtilArrayList.get(i)).onDetachedFromRecyclerView(paramRecyclerView);
+      i += 1;
+    }
+    paramRecyclerView.getViewTreeObserver().removeGlobalOnLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
+  }
+  
+  public void onViewAttachedToWindow(RecyclerView.ViewHolder paramViewHolder)
+  {
+    super.onViewAttachedToWindow(paramViewHolder);
+    ViewGroup.LayoutParams localLayoutParams = paramViewHolder.itemView.getLayoutParams();
+    boolean bool = localLayoutParams instanceof StaggeredGridLayoutManager.LayoutParams;
+    if ((bool) && (((paramViewHolder instanceof zpe)) || ((paramViewHolder instanceof zpf)))) {
+      ((StaggeredGridLayoutManager.LayoutParams)localLayoutParams).setFullSpan(true);
+    }
+    for (;;)
+    {
+      return;
+      int j = a(paramViewHolder.getAdapterPosition());
+      if (j >= 0)
+      {
+        int k = this.jdField_a_of_type_JavaUtilArrayList.size();
+        int i = 0;
+        while (i < k)
+        {
+          zou localzou = (zou)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+          int m = localzou.getItemCount();
+          if (j < m)
+          {
+            if (bool) {
+              a(paramViewHolder, localzou, localLayoutParams);
+            }
+            localzou.onViewAttachedToWindow(paramViewHolder);
+            return;
+          }
+          j = Math.max(j - m, 0);
+          i += 1;
+        }
+      }
+    }
+  }
+  
+  public void onViewDetachedFromWindow(RecyclerView.ViewHolder paramViewHolder)
+  {
+    super.onViewDetachedFromWindow(paramViewHolder);
+    int j = a(paramViewHolder.getAdapterPosition());
+    if (j < 0) {}
+    for (;;)
+    {
+      return;
+      int k = this.jdField_a_of_type_JavaUtilArrayList.size();
+      int i = 0;
+      while (i < k)
+      {
+        zox localzox = (zox)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        int m = localzox.getItemCount();
+        if (j < m)
+        {
+          localzox.onViewDetachedFromWindow(paramViewHolder);
+          return;
+        }
+        j = Math.max(j - m, 0);
+        i += 1;
+      }
     }
   }
 }

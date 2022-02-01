@@ -1,6 +1,6 @@
 public abstract interface afma
 {
-  public abstract void a(int paramInt, afml paramafml);
+  public abstract void a(int paramInt);
 }
 
 

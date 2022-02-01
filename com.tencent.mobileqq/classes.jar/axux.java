@@ -1,21 +1,33 @@
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
+import com.tencent.qphone.base.util.QLog;
 
 class axux
-  implements ncc
+  extends axuz
 {
-  axux(axuw paramaxuw) {}
+  axux(axuv paramaxuv) {}
   
-  public void a(LottieDrawable paramLottieDrawable)
+  public Message a(Message paramMessage)
   {
-    axuw.a(this.a, paramLottieDrawable);
-    axuw.a(this.a).setImageDrawable(axuw.a(this.a));
-    if (axuw.a(this.a))
-    {
-      this.a.b();
-      return;
+    if (paramMessage == null) {
+      return null;
     }
-    this.a.a();
+    return this.a.b(paramMessage);
+  }
+  
+  public BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel)
+  {
+    if (paramBasicTypeDataParcel == null) {}
+    Object[] arrayOfObject;
+    do
+    {
+      return null;
+      if (QLog.isColorLevel()) {
+        QLog.i("nearby_ipc_log_tag", 2, paramBasicTypeDataParcel.toString());
+      }
+      arrayOfObject = this.a.b(paramBasicTypeDataParcel.jdField_a_of_type_Int, paramBasicTypeDataParcel.jdField_a_of_type_ArrayOfJavaLangObject);
+    } while (arrayOfObject == null);
+    return new BasicTypeDataParcel(paramBasicTypeDataParcel.jdField_a_of_type_Int, arrayOfObject);
   }
 }
 

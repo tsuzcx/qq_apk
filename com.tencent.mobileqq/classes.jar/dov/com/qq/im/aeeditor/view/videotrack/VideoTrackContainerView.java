@@ -25,36 +25,36 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import androidx.annotation.RequiresApi;
-import bmbx;
-import bmkf;
-import bmoc;
-import bmod;
-import bmoe;
-import bmof;
-import bmog;
-import bmos;
-import bmoz;
-import bmpf;
-import bmpj;
-import bmpl;
-import bmpm;
-import bmpn;
-import bmpo;
-import bmpp;
-import bmpq;
-import bmpr;
-import bmps;
-import bmpt;
-import bmpu;
-import bmpv;
-import bmpw;
-import bmpx;
-import bmpy;
-import bmpz;
-import bmqa;
-import bmqb;
-import bmqc;
-import bmqf;
+import bnrh;
+import bnzx;
+import bodu;
+import bodv;
+import bodw;
+import bodx;
+import body;
+import boek;
+import boer;
+import boex;
+import bofb;
+import bofd;
+import bofe;
+import boff;
+import bofg;
+import bofh;
+import bofi;
+import bofj;
+import bofk;
+import bofl;
+import bofm;
+import bofn;
+import bofo;
+import bofp;
+import bofq;
+import bofr;
+import bofs;
+import boft;
+import bofu;
+import bofx;
 import com.tencent.tavsticker.utils.ViewUtils;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import com.tencent.weishi.module.edit.widget.playtrack.provider.VideoThumbListener;
@@ -71,7 +71,7 @@ import java.util.List;
 
 public class VideoTrackContainerView
   extends HorizontalScrollView
-  implements bmoe, bmof, bmpf, bmqf
+  implements bodw, bodx, boex, bofx
 {
   private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long = 2147483647L;
@@ -79,17 +79,17 @@ public class VideoTrackContainerView
   private Context jdField_a_of_type_AndroidContentContext;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private bmkf jdField_a_of_type_Bmkf;
-  private bmoc jdField_a_of_type_Bmoc;
-  private bmog jdField_a_of_type_Bmog;
-  private bmoz jdField_a_of_type_Bmoz;
-  private bmpj jdField_a_of_type_Bmpj;
-  private bmpl jdField_a_of_type_Bmpl;
-  private bmpz jdField_a_of_type_Bmpz;
-  private bmqa jdField_a_of_type_Bmqa;
-  private bmqb jdField_a_of_type_Bmqb;
-  private bmqc jdField_a_of_type_Bmqc;
-  private VideoThumbListener jdField_a_of_type_ComTencentWeishiModuleEditWidgetPlaytrackProviderVideoThumbListener = new bmpq(this);
+  private bnzx jdField_a_of_type_Bnzx;
+  private bodu jdField_a_of_type_Bodu;
+  private body jdField_a_of_type_Body;
+  private boer jdField_a_of_type_Boer;
+  private bofb jdField_a_of_type_Bofb;
+  private bofd jdField_a_of_type_Bofd;
+  private bofr jdField_a_of_type_Bofr;
+  private bofs jdField_a_of_type_Bofs;
+  private boft jdField_a_of_type_Boft;
+  private bofu jdField_a_of_type_Bofu;
+  private VideoThumbListener jdField_a_of_type_ComTencentWeishiModuleEditWidgetPlaytrackProviderVideoThumbListener = new bofi(this);
   private ScaleTimeBar jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleTimeBar;
   private Runnable jdField_a_of_type_JavaLangRunnable = new VideoTrackContainerView.1(this);
   private List<CutModelKt> jdField_a_of_type_JavaUtilList;
@@ -153,7 +153,7 @@ public class VideoTrackContainerView
   
   private long a(int paramInt)
   {
-    return (this.jdField_a_of_type_Bmoz.a(Math.abs(paramInt)) * 70 / this.jdField_a_of_type_Bmoz.a());
+    return (this.jdField_a_of_type_Boer.a(Math.abs(paramInt)) * 70 / this.jdField_a_of_type_Boer.a());
   }
   
   @RequiresApi(api=17)
@@ -163,8 +163,8 @@ public class VideoTrackContainerView
     if (Build.VERSION.SDK_INT >= 17) {
       localImageView.setId(View.generateViewId());
     }
-    localImageView.setImageResource(2130837925);
-    localImageView.setOnClickListener(new bmpu(this));
+    localImageView.setImageResource(2130837939);
+    localImageView.setOnClickListener(new bofm(this));
     return localImageView;
   }
   
@@ -186,8 +186,8 @@ public class VideoTrackContainerView
   
   private void a(long paramLong)
   {
-    if (this.jdField_a_of_type_Bmoz != null) {
-      this.jdField_a_of_type_Bmoz.a(paramLong);
+    if (this.jdField_a_of_type_Boer != null) {
+      this.jdField_a_of_type_Boer.a(paramLong);
     }
   }
   
@@ -228,7 +228,7 @@ public class VideoTrackContainerView
     }
   }
   
-  private void a(bmod parambmod, int paramInt)
+  private void a(bodv parambodv, int paramInt)
   {
     if (paramInt == 0) {
       return;
@@ -238,21 +238,21 @@ public class VideoTrackContainerView
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(a(paramInt));
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
     int k = this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleTimeBar.getScrollX();
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bmpv(this, parambmod, k, paramInt));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new bmpw(this, parambmod));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bofn(this, parambodv, k, paramInt));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new bofo(this, parambodv));
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
   }
   
-  private void a(bmod parambmod, long paramLong1, long paramLong2, int paramInt)
+  private void a(bodv parambodv, long paramLong1, long paramLong2, int paramInt)
   {
     this.jdField_b_of_type_Int = this.jdField_d_of_type_Int;
     this.jdField_c_of_type_Int = this.jdField_e_of_type_Int;
     a(a());
     if (this.jdField_a_of_type_Boolean)
     {
-      bmbx.b("miles", "onTimeLineChanged >> 拖动结束，滚动到当前滑块的起始位置:" + parambmod.a());
-      if (this.jdField_a_of_type_Bmqa != null) {
-        this.jdField_a_of_type_Bmqa.a(parambmod.a());
+      bnrh.b("miles", "onTimeLineChanged >> 拖动结束，滚动到当前滑块的起始位置:" + parambodv.a());
+      if (this.jdField_a_of_type_Bofs != null) {
+        this.jdField_a_of_type_Bofs.a(parambodv.a());
       }
     }
     for (;;)
@@ -260,30 +260,30 @@ public class VideoTrackContainerView
       this.jdField_a_of_type_Boolean = false;
       this.jdField_b_of_type_Boolean = false;
       this.jdField_f_of_type_Boolean = true;
-      parambmod = a();
-      if ((this.jdField_a_of_type_Bmqc != null) && (parambmod != null)) {
-        this.jdField_a_of_type_Bmqc.a(parambmod.getUuid(), parambmod.getResource().getSelectTimeStartUs(), parambmod.getResource().getSelectTimeDurationUs());
+      parambodv = a();
+      if ((this.jdField_a_of_type_Bofu != null) && (parambodv != null)) {
+        this.jdField_a_of_type_Bofu.a(parambodv.getUuid(), parambodv.getResource().getSelectTimeStartUs(), parambodv.getResource().getSelectTimeDurationUs());
       }
       return;
       if (this.jdField_b_of_type_Boolean)
       {
-        bmbx.b("miles", "onTimeLineChanged >> 拖动结束，滚动到当前滑块的结束位置:" + parambmod.b());
-        if (this.jdField_a_of_type_Bmqa != null) {
-          this.jdField_a_of_type_Bmqa.b(parambmod.b());
+        bnrh.b("miles", "onTimeLineChanged >> 拖动结束，滚动到当前滑块的结束位置:" + parambodv.b());
+        if (this.jdField_a_of_type_Bofs != null) {
+          this.jdField_a_of_type_Bofs.b(parambodv.b());
         }
       }
     }
   }
   
-  private void a(bmod parambmod, LinearLayout.LayoutParams paramLayoutParams, boolean paramBoolean)
+  private void a(bodv parambodv, LinearLayout.LayoutParams paramLayoutParams, boolean paramBoolean)
   {
     if (paramLayoutParams == null) {
       return;
     }
     if (!c()) {
-      b(parambmod);
+      b(parambodv);
     }
-    if (a(parambmod))
+    if (a(parambodv))
     {
       paramLayoutParams.leftMargin = this.jdField_d_of_type_Int;
       if (!paramBoolean) {
@@ -291,19 +291,19 @@ public class VideoTrackContainerView
       }
     }
     label103:
-    for (paramLayoutParams.rightMargin = this.jdField_e_of_type_Int;; paramLayoutParams.rightMargin = (-parambmod.b()))
+    for (paramLayoutParams.rightMargin = this.jdField_e_of_type_Int;; paramLayoutParams.rightMargin = (-parambodv.b()))
     {
-      paramLayoutParams.width = (this.jdField_a_of_type_Bmoz.a(parambmod.b() - parambmod.a()) + parambmod.a() + parambmod.b());
+      paramLayoutParams.width = (this.jdField_a_of_type_Boer.a(parambodv.b() - parambodv.a()) + parambodv.a() + parambodv.b());
       paramLayoutParams.height = -1;
       return;
-      paramLayoutParams.leftMargin = (-parambmod.a());
+      paramLayoutParams.leftMargin = (-parambodv.a());
       break;
     }
   }
   
-  private boolean a(bmod parambmod)
+  private boolean a(bodv parambodv)
   {
-    return parambmod.a() == 0L;
+    return parambodv.a() == 0L;
   }
   
   private float b()
@@ -311,15 +311,15 @@ public class VideoTrackContainerView
     return getResources().getDimension(2131296332);
   }
   
-  private void b(bmod parambmod)
+  private void b(bodv parambodv)
   {
-    this.jdField_d_of_type_Int = (c() / 2 - parambmod.a());
-    this.jdField_e_of_type_Int = (c() / 2 - parambmod.b());
+    this.jdField_d_of_type_Int = (c() / 2 - parambodv.a());
+    this.jdField_e_of_type_Int = (c() / 2 - parambodv.b());
     this.jdField_b_of_type_Int = this.jdField_d_of_type_Int;
     this.jdField_c_of_type_Int = this.jdField_e_of_type_Int;
   }
   
-  private void b(bmod parambmod, int paramInt)
+  private void b(bodv parambodv, int paramInt)
   {
     if (paramInt == 0) {
       return;
@@ -330,12 +330,12 @@ public class VideoTrackContainerView
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
     int k = this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleTimeBar.getScrollX();
     ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)((VideoTrackTimeLineView)this.jdField_c_of_type_JavaUtilList.get(0)).getLayoutParams();
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bmpx(this, parambmod, k, paramInt));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new bmpy(this, parambmod));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bofp(this, parambodv, k, paramInt));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new bofq(this, parambodv));
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
   }
   
-  private void b(bmod parambmod, boolean paramBoolean)
+  private void b(bodv parambodv, boolean paramBoolean)
   {
     if (paramBoolean)
     {
@@ -343,11 +343,11 @@ public class VideoTrackContainerView
       while (localIterator.hasNext())
       {
         VideoTrackTimeLineView localVideoTrackTimeLineView = (VideoTrackTimeLineView)localIterator.next();
-        if ((localVideoTrackTimeLineView != parambmod) && (localVideoTrackTimeLineView.isSelected())) {
+        if ((localVideoTrackTimeLineView != parambodv) && (localVideoTrackTimeLineView.isSelected())) {
           localVideoTrackTimeLineView.setSelected(false);
         }
       }
-      ((View)parambmod).bringToFront();
+      ((View)parambodv).bringToFront();
     }
   }
   
@@ -356,7 +356,7 @@ public class VideoTrackContainerView
     return this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels;
   }
   
-  private void c(bmod parambmod, int paramInt)
+  private void c(bodv parambodv, int paramInt)
   {
     if (paramInt == 0) {
       return;
@@ -366,8 +366,8 @@ public class VideoTrackContainerView
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(a(paramInt));
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
     int k = this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleTimeBar.getScrollX();
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bmpm(this, parambmod, k, paramInt));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new bmpn(this, parambmod));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bofe(this, parambodv, k, paramInt));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new boff(this, parambodv));
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
   }
   
@@ -381,7 +381,7 @@ public class VideoTrackContainerView
     return (int)getResources().getDimension(2131296312);
   }
   
-  private void d(bmod parambmod, int paramInt)
+  private void d(bodv parambodv, int paramInt)
   {
     if (paramInt == 0) {
       return;
@@ -392,8 +392,8 @@ public class VideoTrackContainerView
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
     int k = this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleTimeBar.getScrollX();
     ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)((VideoTrackTimeLineView)this.jdField_c_of_type_JavaUtilList.get(this.jdField_c_of_type_JavaUtilList.size() - 1)).getLayoutParams();
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bmpo(this, parambmod, k, paramInt));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new bmpp(this, parambmod));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bofg(this, parambodv, k, paramInt));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new bofh(this, parambodv));
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
   }
   
@@ -406,7 +406,7 @@ public class VideoTrackContainerView
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
     localObject = new RelativeLayout.LayoutParams(-1, -1);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, (ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new bmpr(this));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new bofj(this));
     this.jdField_g_of_type_Int = ViewUtils.dip2px(40.0F);
     VideoThumbProviderManager.getInstance().registerListener(this.jdField_a_of_type_ComTencentWeishiModuleEditWidgetPlaytrackProviderVideoThumbListener);
   }
@@ -448,13 +448,13 @@ public class VideoTrackContainerView
       }
     }
     label212:
-    for (int n = this.jdField_a_of_type_Bmoz.a((((VideoTransitionModel)localObject).getOverlapTime() / ((VideoTransitionModel)localObject).getSpeed()));; n = 0)
+    for (int n = this.jdField_a_of_type_Boer.a((((VideoTransitionModel)localObject).getOverlapTime() / ((VideoTransitionModel)localObject).getSpeed()));; n = 0)
     {
       localObject = (LinearLayout.LayoutParams)localVideoTrackTimeLineView.getLayoutParams();
       m = k;
       if (localObject != null)
       {
-        m = this.jdField_a_of_type_Bmoz.a(localVideoTrackTimeLineView.b() - localVideoTrackTimeLineView.a()) + localVideoTrackTimeLineView.a() + localVideoTrackTimeLineView.b() - n;
+        m = this.jdField_a_of_type_Boer.a(localVideoTrackTimeLineView.b() - localVideoTrackTimeLineView.a()) + localVideoTrackTimeLineView.a() + localVideoTrackTimeLineView.b() - n;
         if (((LinearLayout.LayoutParams)localObject).width != m)
         {
           ((LinearLayout.LayoutParams)localObject).width = m;
@@ -532,7 +532,7 @@ public class VideoTrackContainerView
     return 0L;
   }
   
-  public long a(bmod parambmod)
+  public long a(bodv parambodv)
   {
     long l = 0L;
     int k = 0;
@@ -542,13 +542,13 @@ public class VideoTrackContainerView
       if (k < this.jdField_c_of_type_JavaUtilList.size())
       {
         localVideoTrackTimeLineView = (VideoTrackTimeLineView)this.jdField_c_of_type_JavaUtilList.get(k);
-        if (parambmod != localVideoTrackTimeLineView) {}
+        if (parambodv != localVideoTrackTimeLineView) {}
       }
       else
       {
         return l;
       }
-      l += this.jdField_a_of_type_Bmoz.a(localVideoTrackTimeLineView.getWidth() - localVideoTrackTimeLineView.a() - localVideoTrackTimeLineView.b());
+      l += this.jdField_a_of_type_Boer.a(localVideoTrackTimeLineView.getWidth() - localVideoTrackTimeLineView.a() - localVideoTrackTimeLineView.b());
       k += 1;
     }
   }
@@ -591,13 +591,13 @@ public class VideoTrackContainerView
     scrollBy(paramInt1 - getScrollX(), paramInt2 - getScrollY());
   }
   
-  public void a(@NonNull bmod parambmod) {}
+  public void a(@NonNull bodv parambodv) {}
   
-  public void a(bmod parambmod, long paramLong1, long paramLong2)
+  public void a(bodv parambodv, long paramLong1, long paramLong2)
   {
     paramLong1 = 0L;
-    if ((this.jdField_a_of_type_Bmkf != null) && (this.jdField_a_of_type_Bmkf.a())) {
-      this.jdField_a_of_type_Bmkf.b();
+    if ((this.jdField_a_of_type_Bnzx != null) && (this.jdField_a_of_type_Bnzx.a())) {
+      this.jdField_a_of_type_Bnzx.b();
     }
     Object localObject1 = this.jdField_c_of_type_JavaUtilList.iterator();
     Object localObject2;
@@ -611,49 +611,49 @@ public class VideoTrackContainerView
     this.jdField_a_of_type_Boolean = true;
     this.jdField_f_of_type_Boolean = false;
     if ((this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean)) {
-      bmbx.b("miles", "正在滚动，直接返回");
+      bnrh.b("miles", "正在滚动，直接返回");
     }
     for (;;)
     {
       return;
       localObject1 = (ViewGroup.MarginLayoutParams)((VideoTrackTimeLineView)this.jdField_c_of_type_JavaUtilList.get(0)).getLayoutParams();
       localObject2 = new int[2];
-      ((VideoTrackTimeLineView)parambmod).getLocationOnScreen((int[])localObject2);
+      ((VideoTrackTimeLineView)parambodv).getLocationOnScreen((int[])localObject2);
       if ((paramLong2 <= 0L) && (localObject2[0] <= b())) {
-        a(parambmod, (int)((VideoTrackTimeLineView)parambmod).e());
+        a(parambodv, (int)((VideoTrackTimeLineView)parambodv).e());
       }
-      while (this.jdField_a_of_type_Bmkf != null)
+      while (this.jdField_a_of_type_Bnzx != null)
       {
-        parambmod = this.jdField_c_of_type_JavaUtilList.iterator();
-        while (parambmod.hasNext()) {
-          paramLong1 = ((VideoTrackTimeLineView)parambmod.next()).d() + paramLong1;
+        parambodv = this.jdField_c_of_type_JavaUtilList.iterator();
+        while (parambodv.hasNext()) {
+          paramLong1 = ((VideoTrackTimeLineView)parambodv.next()).d() + paramLong1;
         }
         if ((paramLong2 >= 0L) && (localObject2[0] >= c() - b()))
         {
-          b(parambmod, (int)((VideoTrackTimeLineView)parambmod).f());
+          b(parambodv, (int)((VideoTrackTimeLineView)parambodv).f());
         }
         else
         {
-          ((ViewGroup.MarginLayoutParams)localObject1).leftMargin = (this.jdField_b_of_type_Int + this.jdField_a_of_type_Bmoz.a(paramLong2));
-          ((VideoTrackTimeLineView)parambmod).a().scrollTo(this.jdField_a_of_type_Bmoz.a(((VideoTrackTimeLineView)parambmod).e()), ((VideoTrackTimeLineView)parambmod).a().getScrollY());
+          ((ViewGroup.MarginLayoutParams)localObject1).leftMargin = (this.jdField_b_of_type_Int + this.jdField_a_of_type_Boer.a(paramLong2));
+          ((VideoTrackTimeLineView)parambodv).a().scrollTo(this.jdField_a_of_type_Boer.a(((VideoTrackTimeLineView)parambodv).e()), ((VideoTrackTimeLineView)parambodv).a().getScrollY());
         }
       }
     }
-    this.jdField_a_of_type_Bmkf.a(paramLong1);
+    this.jdField_a_of_type_Bnzx.a(paramLong1);
   }
   
-  public void a(bmod parambmod, long paramLong1, long paramLong2, int paramInt, boolean paramBoolean)
+  public void a(bodv parambodv, long paramLong1, long paramLong2, int paramInt, boolean paramBoolean)
   {
-    a(parambmod, paramLong1, paramLong2, paramInt);
+    a(parambodv, paramLong1, paramLong2, paramInt);
   }
   
-  public void a(bmod parambmod, boolean paramBoolean)
+  public void a(bodv parambodv, boolean paramBoolean)
   {
-    b(parambmod, paramBoolean);
-    bmpl localbmpl;
-    if (this.jdField_a_of_type_Bmpl != null)
+    b(parambodv, paramBoolean);
+    bofd localbofd;
+    if (this.jdField_a_of_type_Bofd != null)
     {
-      localbmpl = this.jdField_a_of_type_Bmpl;
+      localbofd = this.jdField_a_of_type_Bofd;
       if (!paramBoolean) {
         break label39;
       }
@@ -661,7 +661,7 @@ public class VideoTrackContainerView
     label39:
     for (int k = a();; k = 0)
     {
-      localbmpl.a(parambmod, paramBoolean, k);
+      localbofd.a(parambodv, paramBoolean, k);
       return;
     }
   }
@@ -728,10 +728,10 @@ public class VideoTrackContainerView
         paramList.setBitmapWidth(this.jdField_g_of_type_Int);
         paramList.setMediaClipModel((CutModelKt)localObject1);
         Object localObject2 = ((CutModelKt)localObject1).getResource();
-        if (this.jdField_a_of_type_Bmog != null) {
-          paramList.setOnLongClickListener(new bmps(this, (CutModelKt)localObject1));
+        if (this.jdField_a_of_type_Body != null) {
+          paramList.setOnLongClickListener(new bofk(this, (CutModelKt)localObject1));
         }
-        int n = bmos.a.a(((CutModelKt)localObject1).getUuid());
+        int n = boek.a.a(((CutModelKt)localObject1).getUuid());
         if (n != -1)
         {
           paramList.setId(n);
@@ -744,13 +744,13 @@ public class VideoTrackContainerView
             paramList.setCornerRadius(this.jdField_f_of_type_Int);
           }
           if (this.jdField_g_of_type_Boolean) {
-            paramList.setOnClickListener(new bmpt(this, k));
+            paramList.setOnClickListener(new bofl(this, k));
           }
           paramList.setValueChangeListener(this);
           paramList.setStateChangeListener(this);
           paramList.setTimeLineViewListener(this);
           paramList.setOnSlideChangedListener(this);
-          paramList.setScaleModel(this.jdField_a_of_type_Bmoz);
+          paramList.setScaleModel(this.jdField_a_of_type_Boer);
           localObject1 = new LinearLayout.LayoutParams(-2, -2);
           if (k != this.jdField_a_of_type_JavaUtilList.size() - 1) {
             break label527;
@@ -778,7 +778,7 @@ public class VideoTrackContainerView
               this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView((View)localObject2, localLayoutParams);
               this.jdField_d_of_type_JavaUtilList.add(localObject2);
               paramList.setTag(localObject2);
-              bmbx.a("VideoTrackContainerView", "add piece view,x:" + ((ImageView)localObject2).getX());
+              bnrh.a("VideoTrackContainerView", "add piece view,x:" + ((ImageView)localObject2).getX());
             }
           }
           k += 1;
@@ -787,7 +787,7 @@ public class VideoTrackContainerView
           if (Build.VERSION.SDK_INT >= 17) {
             paramList.setId(View.generateViewId());
           }
-          bmos.a.a(((CutModelKt)localObject1).getUuid(), paramList.getId());
+          boek.a.a(((CutModelKt)localObject1).getUuid(), paramList.getId());
           break label137;
         }
       }
@@ -812,7 +812,7 @@ public class VideoTrackContainerView
       {
         localObject = (ImageView)((VideoTrackTimeLineView)localObject).getTag();
         if (a(paramList, m) != null) {
-          ((ImageView)localObject).setImageResource(2130837946);
+          ((ImageView)localObject).setImageResource(2130837960);
         }
         for (;;)
         {
@@ -822,7 +822,7 @@ public class VideoTrackContainerView
           ((ImageView)localObject).setSelected(true);
           k = m;
           break;
-          ((ImageView)localObject).setImageResource(2130837925);
+          ((ImageView)localObject).setImageResource(2130837939);
         }
         label117:
         ((ImageView)localObject).setSelected(false);
@@ -840,7 +840,7 @@ public class VideoTrackContainerView
   
   public void a(boolean paramBoolean, EffectTimelineView paramEffectTimelineView)
   {
-    bmbx.a("VideoTrackContainerView", "[onTimeLineViewSelected], selected=" + paramBoolean + ", view=" + paramEffectTimelineView);
+    bnrh.a("VideoTrackContainerView", "[onTimeLineViewSelected], selected=" + paramBoolean + ", view=" + paramEffectTimelineView);
   }
   
   public boolean a()
@@ -851,12 +851,12 @@ public class VideoTrackContainerView
   public int b()
   {
     int m;
-    if ((this.jdField_a_of_type_Bmoz == null) || (CollectionUtils.isEmpty(this.jdField_c_of_type_JavaUtilList)))
+    if ((this.jdField_a_of_type_Boer == null) || (CollectionUtils.isEmpty(this.jdField_c_of_type_JavaUtilList)))
     {
       m = -1;
       return m;
     }
-    long l2 = this.jdField_a_of_type_Bmoz.c();
+    long l2 = this.jdField_a_of_type_Boer.c();
     long l1 = 0L;
     int k = 0;
     label67:
@@ -897,7 +897,7 @@ public class VideoTrackContainerView
     return 0L;
   }
   
-  public long b(bmod parambmod)
+  public long b(bodv parambodv)
   {
     long l1 = 0L;
     int k = 0;
@@ -907,8 +907,8 @@ public class VideoTrackContainerView
       if (k < this.jdField_c_of_type_JavaUtilList.size())
       {
         VideoTrackTimeLineView localVideoTrackTimeLineView = (VideoTrackTimeLineView)this.jdField_c_of_type_JavaUtilList.get(k);
-        l1 += this.jdField_a_of_type_Bmoz.a(localVideoTrackTimeLineView.getWidth() - localVideoTrackTimeLineView.a() - localVideoTrackTimeLineView.b());
-        if (parambmod == localVideoTrackTimeLineView) {
+        l1 += this.jdField_a_of_type_Boer.a(localVideoTrackTimeLineView.getWidth() - localVideoTrackTimeLineView.a() - localVideoTrackTimeLineView.b());
+        if (parambodv == localVideoTrackTimeLineView) {
           l2 = l1;
         }
       }
@@ -934,12 +934,12 @@ public class VideoTrackContainerView
         if (((VideoTrackTimeLineView)localObject2).isSelected())
         {
           localImageView.setVisibility(8);
-          bmbx.a("VideoTrackContainerView", "refreshPieceView GONE");
+          bnrh.a("VideoTrackContainerView", "refreshPieceView GONE");
           localObject2 = localImageView;
           if (localObject1 != null)
           {
             localObject1.setVisibility(8);
-            bmbx.a("VideoTrackContainerView", "refreshPieceView lastPieceView GONE");
+            bnrh.a("VideoTrackContainerView", "refreshPieceView lastPieceView GONE");
             localObject2 = localImageView;
           }
         }
@@ -949,24 +949,24 @@ public class VideoTrackContainerView
         localObject1 = localObject2;
         break;
         localImageView.setVisibility(0);
-        bmbx.a("VideoTrackContainerView", "refreshPieceView VISIBLE");
+        bnrh.a("VideoTrackContainerView", "refreshPieceView VISIBLE");
         localObject2 = localImageView;
         continue;
         if ((localObject1 != null) && (((VideoTrackTimeLineView)localObject2).isSelected()))
         {
           localObject1.setVisibility(8);
-          bmbx.a("VideoTrackContainerView", "refreshPieceView lastPieceView GONE");
+          bnrh.a("VideoTrackContainerView", "refreshPieceView lastPieceView GONE");
         }
         localObject2 = localObject1;
       }
     }
   }
   
-  public void b(bmod parambmod, long paramLong1, long paramLong2)
+  public void b(bodv parambodv, long paramLong1, long paramLong2)
   {
     paramLong1 = 0L;
-    if ((this.jdField_a_of_type_Bmkf != null) && (this.jdField_a_of_type_Bmkf.a())) {
-      this.jdField_a_of_type_Bmkf.b();
+    if ((this.jdField_a_of_type_Bnzx != null) && (this.jdField_a_of_type_Bnzx.a())) {
+      this.jdField_a_of_type_Bnzx.b();
     }
     Object localObject1 = this.jdField_c_of_type_JavaUtilList.iterator();
     Object localObject2;
@@ -979,41 +979,41 @@ public class VideoTrackContainerView
     }
     this.jdField_b_of_type_Boolean = true;
     if ((this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean)) {
-      bmbx.b("miles", "正在滚动，直接返回");
+      bnrh.b("miles", "正在滚动，直接返回");
     }
     for (;;)
     {
       return;
       localObject1 = (ViewGroup.MarginLayoutParams)((VideoTrackTimeLineView)this.jdField_c_of_type_JavaUtilList.get(this.jdField_c_of_type_JavaUtilList.size() - 1)).getLayoutParams();
       localObject2 = new int[2];
-      ((VideoTrackTimeLineView)parambmod).getLocationOnScreen((int[])localObject2);
+      ((VideoTrackTimeLineView)parambodv).getLocationOnScreen((int[])localObject2);
       int k;
       if (paramLong2 <= 0L)
       {
         k = localObject2[0];
-        if (((VideoTrackTimeLineView)parambmod).getWidth() + k <= b()) {
-          c(parambmod, (int)((VideoTrackTimeLineView)parambmod).g());
+        if (((VideoTrackTimeLineView)parambodv).getWidth() + k <= b()) {
+          c(parambodv, (int)((VideoTrackTimeLineView)parambodv).g());
         }
       }
-      while (this.jdField_a_of_type_Bmkf != null)
+      while (this.jdField_a_of_type_Bnzx != null)
       {
-        parambmod = this.jdField_c_of_type_JavaUtilList.iterator();
-        while (parambmod.hasNext()) {
-          paramLong1 = ((VideoTrackTimeLineView)parambmod.next()).d() + paramLong1;
+        parambodv = this.jdField_c_of_type_JavaUtilList.iterator();
+        while (parambodv.hasNext()) {
+          paramLong1 = ((VideoTrackTimeLineView)parambodv.next()).d() + paramLong1;
         }
         if (paramLong2 >= 0L)
         {
           k = localObject2[0];
-          if (((VideoTrackTimeLineView)parambmod).getWidth() + k >= c() - b())
+          if (((VideoTrackTimeLineView)parambodv).getWidth() + k >= c() - b())
           {
-            d(parambmod, (int)((VideoTrackTimeLineView)parambmod).h());
+            d(parambodv, (int)((VideoTrackTimeLineView)parambodv).h());
             continue;
           }
         }
-        ((ViewGroup.MarginLayoutParams)localObject1).rightMargin = (this.jdField_c_of_type_Int - this.jdField_a_of_type_Bmoz.a(paramLong2));
+        ((ViewGroup.MarginLayoutParams)localObject1).rightMargin = (this.jdField_c_of_type_Int - this.jdField_a_of_type_Boer.a(paramLong2));
       }
     }
-    this.jdField_a_of_type_Bmkf.a(paramLong1);
+    this.jdField_a_of_type_Bnzx.a(paramLong1);
   }
   
   public void b(List<VideoTransitionModel> paramList)
@@ -1034,12 +1034,12 @@ public class VideoTrackContainerView
       }
     }
     label153:
-    for (k = this.jdField_a_of_type_Bmoz.a((((VideoTransitionModel)localObject).getOverlapTime() / ((VideoTransitionModel)localObject).getSpeed()));; k = 0)
+    for (k = this.jdField_a_of_type_Boer.a((((VideoTransitionModel)localObject).getOverlapTime() / ((VideoTransitionModel)localObject).getSpeed()));; k = 0)
     {
       localObject = (LinearLayout.LayoutParams)localVideoTrackTimeLineView.getLayoutParams();
       if (localObject != null)
       {
-        k = this.jdField_a_of_type_Bmoz.a(localVideoTrackTimeLineView.b() - localVideoTrackTimeLineView.a()) + localVideoTrackTimeLineView.a() + localVideoTrackTimeLineView.b() - k;
+        k = this.jdField_a_of_type_Boer.a(localVideoTrackTimeLineView.b() - localVideoTrackTimeLineView.a()) + localVideoTrackTimeLineView.a() + localVideoTrackTimeLineView.b() - k;
         if (((LinearLayout.LayoutParams)localObject).width != k)
         {
           ((LinearLayout.LayoutParams)localObject).width = k;
@@ -1145,8 +1145,8 @@ public class VideoTrackContainerView
   protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.jdField_a_of_type_Bmoc != null) && (!this.jdField_e_of_type_Boolean)) {
-      this.jdField_a_of_type_Bmoc.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
+    if ((this.jdField_a_of_type_Bodu != null) && (!this.jdField_e_of_type_Boolean)) {
+      this.jdField_a_of_type_Bodu.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
     }
     Iterator localIterator = this.jdField_c_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
@@ -1160,7 +1160,7 @@ public class VideoTrackContainerView
     if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
     {
       this.jdField_e_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Bmpz != null) {
+      if (this.jdField_a_of_type_Bofr != null) {
         post(this.jdField_a_of_type_JavaLangRunnable);
       }
     }
@@ -1194,9 +1194,9 @@ public class VideoTrackContainerView
     this.jdField_f_of_type_Int = paramInt;
   }
   
-  public void setItemOnLongClickListener(bmog parambmog)
+  public void setItemOnLongClickListener(body parambody)
   {
-    this.jdField_a_of_type_Bmog = parambmog;
+    this.jdField_a_of_type_Body = parambody;
   }
   
   public void setMaxDurationLimit(long paramLong)
@@ -1206,24 +1206,24 @@ public class VideoTrackContainerView
     }
   }
   
-  public void setOnScrollStoppedListener(bmpz parambmpz)
+  public void setOnScrollStoppedListener(bofr parambofr)
   {
-    this.jdField_a_of_type_Bmpz = parambmpz;
+    this.jdField_a_of_type_Bofr = parambofr;
   }
   
-  public void setOnStartTimeChangedListener(bmqa parambmqa)
+  public void setOnStartTimeChangedListener(bofs parambofs)
   {
-    this.jdField_a_of_type_Bmqa = parambmqa;
+    this.jdField_a_of_type_Bofs = parambofs;
   }
   
-  public void setOnTransitionListener(bmpj parambmpj)
+  public void setOnTransitionListener(bofb parambofb)
   {
-    this.jdField_a_of_type_Bmpj = parambmpj;
+    this.jdField_a_of_type_Bofb = parambofb;
   }
   
-  public void setScaleAdapter(bmoz parambmoz)
+  public void setScaleAdapter(boer paramboer)
   {
-    this.jdField_a_of_type_Bmoz = parambmoz;
+    this.jdField_a_of_type_Boer = paramboer;
   }
   
   public void setScrollByPassive(boolean paramBoolean)
@@ -1231,14 +1231,14 @@ public class VideoTrackContainerView
     this.jdField_e_of_type_Boolean = paramBoolean;
   }
   
-  public void setScrollListener(bmoc parambmoc)
+  public void setScrollListener(bodu parambodu)
   {
-    this.jdField_a_of_type_Bmoc = parambmoc;
+    this.jdField_a_of_type_Bodu = parambodu;
   }
   
-  public void setSelectedStateListener(bmpl parambmpl)
+  public void setSelectedStateListener(bofd parambofd)
   {
-    this.jdField_a_of_type_Bmpl = parambmpl;
+    this.jdField_a_of_type_Bofd = parambofd;
   }
   
   public void setShowLeftAndRightSliderView(boolean paramBoolean)
@@ -1256,14 +1256,14 @@ public class VideoTrackContainerView
     this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleTimeBar = paramScaleTimeBar;
   }
   
-  public void setVideoClipClickListener(bmqb parambmqb)
+  public void setVideoClipClickListener(boft paramboft)
   {
-    this.jdField_a_of_type_Bmqb = parambmqb;
+    this.jdField_a_of_type_Boft = paramboft;
   }
   
-  public void setVideoModel(bmkf parambmkf)
+  public void setVideoModel(bnzx parambnzx)
   {
-    this.jdField_a_of_type_Bmkf = parambmkf;
+    this.jdField_a_of_type_Bnzx = parambnzx;
   }
   
   public void setVideoTrackSelectedStyle(int paramInt)
@@ -1271,9 +1271,9 @@ public class VideoTrackContainerView
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void setVideoTrackStoreListener(bmqc parambmqc)
+  public void setVideoTrackStoreListener(bofu parambofu)
   {
-    this.jdField_a_of_type_Bmqc = parambmqc;
+    this.jdField_a_of_type_Bofu = parambofu;
   }
 }
 

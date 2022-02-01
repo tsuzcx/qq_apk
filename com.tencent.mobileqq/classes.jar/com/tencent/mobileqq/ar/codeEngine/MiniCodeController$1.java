@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.ar.codeEngine;
 
-import aokb;
-import aokn;
+import apnc;
+import apno;
 
 public class MiniCodeController$1
   implements Runnable
 {
-  public MiniCodeController$1(aokb paramaokb, int paramInt, long paramLong) {}
+  public MiniCodeController$1(apnc paramapnc, int paramInt, long paramLong) {}
   
   public void run()
   {
-    long l1 = aokn.a("report_tag_detect_supporttype", 0L);
+    long l1 = apno.a("report_tag_detect_supporttype", 0L);
     long l2 = System.currentTimeMillis();
     if (l2 - l1 > 86400000L)
     {
-      aokn.b(aokb.a(this.this$0), this.jdField_a_of_type_Int);
-      aokn.a("report_tag_detect_supporttype", l2);
+      apno.b(apnc.a(this.this$0), this.jdField_a_of_type_Int);
+      apno.a("report_tag_detect_supporttype", l2);
     }
-    if ((this.jdField_a_of_type_Long > 0L) && (this.jdField_a_of_type_Long < 15000L) && (l2 - aokn.a("report_tag_detect_init_internal_cost", 0L) > 86400000L))
+    if ((this.jdField_a_of_type_Long > 0L) && (this.jdField_a_of_type_Long < 15000L) && (l2 - apno.a("report_tag_detect_init_internal_cost", 0L) > 86400000L))
     {
-      aokn.e(aokb.a(this.this$0), (int)this.jdField_a_of_type_Long);
-      aokn.a("report_tag_detect_init_internal_cost", l2);
+      apno.e(apnc.a(this.this$0), (int)this.jdField_a_of_type_Long);
+      apno.a("report_tag_detect_init_internal_cost", l2);
     }
   }
 }

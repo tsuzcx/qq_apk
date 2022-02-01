@@ -1,25 +1,29 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class oks
-  implements TextWatcher
+class oks
+  extends BroadcastReceiver
 {
-  public oks(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  oks(okn paramokn, String paramString, boolean paramBoolean) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a(paramEditable);
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.a.a(paramCharSequence, paramInt1, paramInt2, paramInt3);
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.a.b(paramCharSequence, paramInt1, paramInt2, paramInt3);
+    double d1 = Double.parseDouble(paramIntent.getStringExtra("latitude"));
+    double d2 = Double.parseDouble(paramIntent.getStringExtra("longitude"));
+    paramIntent = paramIntent.getStringExtra("name");
+    this.jdField_a_of_type_Okn.a(d1, d2, paramIntent, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    try
+    {
+      paramContext.unregisterReceiver(this.jdField_a_of_type_Okn.c);
+      label58:
+      this.jdField_a_of_type_Okn.c = null;
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      break label58;
+    }
   }
 }
 

@@ -17,7 +17,6 @@ public class VideoViewProvider
     for (paramSurface = paramMap.toString();; paramSurface = "")
     {
       QMLog.e("QFVideoView", paramSurface);
-      paramMap.get("videoPlayerId");
       paramMap.put("autoplay", Boolean.valueOf(true));
       return new FlutterVideoViewContainer(paramContext, paramMap);
     }

@@ -1,78 +1,40 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class aqdh
-  extends aptq<aqdf>
+final class aqdh
+  implements INetEngine.IBreakDownFix
 {
-  @NonNull
-  public aqdf a(int paramInt)
+  public void fixReq(NetReq paramNetReq, NetResp paramNetResp)
   {
-    return new aqdf();
-  }
-  
-  @Nullable
-  public aqdf a(aptx[] paramArrayOfaptx)
-  {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null))
+    if ((paramNetReq == null) || (paramNetResp == null)) {}
+    do
     {
-      aqdf localaqdf = aqdf.a(paramArrayOfaptx[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("TogetherEntryConfProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
+      do
+      {
+        return;
+      } while (!(paramNetReq instanceof HttpNetReq));
+      paramNetReq = (HttpNetReq)paramNetReq;
+      paramNetReq.mStartDownOffset += paramNetResp.mWrittenBlockLen;
+      paramNetResp.mWrittenBlockLen = 0L;
+      paramNetResp = "bytes=" + paramNetReq.mStartDownOffset + "-";
+      paramNetReq.mReqProperties.put("Range", paramNetResp);
+      paramNetResp = paramNetReq.mReqUrl;
+      if (paramNetResp.contains("range="))
+      {
+        String str = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
+        paramNetReq.mReqUrl = (str + "range=" + paramNetReq.mStartDownOffset);
       }
-      return localaqdf;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherEntryConfProcessor", 2, "onParsed is null");
-    }
-    return null;
-  }
-  
-  public void a(aqdf paramaqdf)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherEntryConfProcessor", 2, "onUpdate " + paramaqdf.toString());
-    }
-  }
-  
-  public Class<aqdf> clazz()
-  {
-    return aqdf.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherEntryConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherEntryConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public int type()
-  {
-    return 553;
+    } while (!QLog.isColorLevel());
+    QLog.i("ResDownloadManager", 2, "IBreakDownFix, " + paramNetResp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqdh
  * JD-Core Version:    0.7.0.1
  */

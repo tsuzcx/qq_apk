@@ -1,53 +1,55 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import amqx;
-import amrb;
-import amrc;
 import android.content.SharedPreferences;
-import angn;
+import antl;
+import antp;
+import antq;
+import aojd;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 
 public class UpdateDiscuss
   extends AsyncStep
 {
-  private amrc a;
+  private antq a;
   
   private void a()
   {
-    if (this.jdField_a_of_type_Amrc == null)
+    if (this.jdField_a_of_type_Antq == null)
     {
-      this.jdField_a_of_type_Amrc = new angn(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Amrc);
+      this.jdField_a_of_type_Antq = new aojd(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Antq);
     }
-    ((amqx)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getBusinessHandler(6)).f(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getCurrentAccountUin()).longValue());
+    ((antl)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER)).f(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getCurrentAccountUin()).longValue());
   }
   
   public int a()
   {
     boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.getBoolean("isDiscussionlistok", false);
-    amrb localamrb = (amrb)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(53);
+    antp localantp = (antp)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(QQManagerFactory.DISCUSSION_MANAGER);
     if (bool)
     {
-      FriendListHandler localFriendListHandler = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getBusinessHandler(1);
-      localamrb.a();
+      FriendListHandler localFriendListHandler = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
+      localantp.a();
       localFriendListHandler.notifyUI(1000, true, null);
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.notifyUI(3, true, Integer.valueOf(3));
       return 7;
     }
-    localamrb.a();
+    localantp.a();
     a();
     return 2;
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Amrc != null)
+    if (this.jdField_a_of_type_Antq != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Amrc);
-      this.jdField_a_of_type_Amrc = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Antq);
+      this.jdField_a_of_type_Antq = null;
     }
   }
 }

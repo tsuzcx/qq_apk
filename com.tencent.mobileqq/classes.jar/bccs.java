@@ -1,80 +1,42 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.startup.step.CheckPermission;
-import com.tencent.mobileqq.startup.step.InitMemoryCache;
-import com.tencent.mobileqq.startup.step.LoadDex;
-import com.tencent.mobileqq.startup.step.OldApplication;
-import com.tencent.mobileqq.startup.step.SetSplash;
-import com.tencent.mobileqq.startup.step.StartService;
-import com.tencent.mobileqq.startup.step.Step;
-import com.tencent.mobileqq.startup.step.Update;
+import android.graphics.Bitmap;
+import android.util.Log;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.sdk.WebView;
 
-public class bccs
-  implements bcct
+class bccs
+  extends ogp
 {
-  private static bcct a;
-  
-  public static void a()
+  bccs(bccr parambccr, WebViewPluginEngine paramWebViewPluginEngine)
   {
-    a = (bcct)BaseApplicationImpl.sApplication.getClassLoader().loadClass("com.tencent.mobileqq.startup.step.Step$AfterDexStepFactory").newInstance();
+    super(paramWebViewPluginEngine);
   }
   
-  public static Step b(int paramInt, bcad parambcad, int[] paramArrayOfInt)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    Object localObject;
-    switch (paramInt)
-    {
-    case 5: 
-    case 6: 
-    case 7: 
-    case 11: 
-    case 12: 
-    case 14: 
-    case 15: 
-    case 16: 
-    case 17: 
-    case 18: 
-    case 19: 
-    case 20: 
-    default: 
-      if (a != null) {
-        localObject = a.a(paramInt, parambcad, paramArrayOfInt);
-      }
-      break;
-    }
-    for (;;)
-    {
-      ((Step)localObject).mId = paramInt;
-      ((Step)localObject).mDirector = parambcad;
-      if (paramInt == 0) {
-        Step.access$002((Step)localObject, paramArrayOfInt);
-      }
-      return localObject;
-      localObject = new LoadDex();
-      continue;
-      localObject = new InitMemoryCache();
-      continue;
-      localObject = new OldApplication();
-      continue;
-      localObject = new SetSplash();
-      continue;
-      localObject = new CheckPermission();
-      continue;
-      localObject = new Update();
-      continue;
-      localObject = new StartService();
-      continue;
-      localObject = new Step();
-    }
+    this.a.onPageFinished(paramWebView, paramString);
+    super.onPageFinished(paramWebView, paramString);
   }
   
-  public Step a(int paramInt, bcad parambcad, int[] paramArrayOfInt)
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    return null;
+    JsInjector.getInstance().onPageStarted(paramWebView);
+    this.a.onPageStarted(paramWebView, paramString, paramBitmap);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    Log.d("KDSearchResultBuilder", "shouldOverrideUrlLoading: setWebViewClient");
+    if (this.a.shouldOverrideUrlLoading(paramWebView, paramString)) {
+      return true;
+    }
+    return super.shouldOverrideUrlLoading(paramWebView, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bccs
  * JD-Core Version:    0.7.0.1
  */

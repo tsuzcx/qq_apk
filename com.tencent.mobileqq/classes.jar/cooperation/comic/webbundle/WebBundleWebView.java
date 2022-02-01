@@ -2,9 +2,9 @@ package cooperation.comic.webbundle;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import apub;
-import aqbj;
-import bkhi;
+import aqxe;
+import arem;
+import blsu;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.config.business.QQComicConfBean;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -40,7 +40,7 @@ public class WebBundleWebView
       if (localObject != null)
       {
         localObject = ((WebHistoryItem)localObject).getUrl();
-        QQComicConfBean localQQComicConfBean = (QQComicConfBean)apub.a().a(534);
+        QQComicConfBean localQQComicConfBean = (QQComicConfBean)aqxe.a().a(534);
         if ((localQQComicConfBean != null) && (localQQComicConfBean.a.a.equals(localObject))) {
           return super.canGoBackOrForward(-2);
         }
@@ -61,7 +61,7 @@ public class WebBundleWebView
   
   public void setOnPageFinishedListener(@NotNull IWebBundleWebView.OnPageFinishedListener paramOnPageFinishedListener)
   {
-    setWebViewClient(new bkhi(this, paramOnPageFinishedListener));
+    setWebViewClient(new blsu(this, paramOnPageFinishedListener));
   }
 }
 

@@ -7,7 +7,7 @@ import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
-import azzp;
+import bbfy;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.richmedia.capture.data.FilterCategory;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -66,10 +66,10 @@ public class FilterProviderPagerAdapter
       ((GridView)localObject1).setClipToPadding(false);
       ((GridView)localObject1).setPadding(jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int * 4);
       ((GridView)localObject1).setVerticalScrollBarEnabled(false);
-      localObject2 = new azzp(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Boolean);
+      localObject2 = new bbfy(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Boolean);
       ((GridView)localObject1).setAdapter((ListAdapter)localObject2);
       if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-        ((azzp)localObject2).a(((FilterCategory)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaUtilList);
+        ((bbfy)localObject2).a(((FilterCategory)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaUtilList);
       }
       ((GridView)localObject1).setOnItemClickListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener);
       this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject1);

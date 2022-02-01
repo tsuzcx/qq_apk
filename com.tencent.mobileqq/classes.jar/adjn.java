@@ -1,24 +1,34 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemSelectedListener;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
 
 public class adjn
-  implements AdapterView.OnItemSelectedListener
+  implements bkzq
 {
-  public adjn(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public adjn(AssociatedAccountActivity paramAssociatedAccountActivity, boolean paramBoolean, bkzi parambkzi) {}
   
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramView == null) {
+    int i = paramInt;
+    if (!this.jdField_a_of_type_Boolean) {
+      i = paramInt + 1;
+    }
+    this.jdField_a_of_type_Bkzi.cancel();
+    switch (i)
+    {
+    default: 
+      return;
+    case 0: 
+      AssociatedAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity);
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, "CliOper", "", "", "0X8007149", "0X8007149", 0, 0, "", "", "", "");
+      return;
+    case 2: 
+      AssociatedAccountActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity);
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, "CliOper", "", "", "0X8007145", "0X8007145", 0, 0, "", "", "", "");
       return;
     }
-    this.a.jdField_a_of_type_AndroidViewView = paramView;
-    this.a.jdField_a_of_type_Adjv.a(paramInt);
-    this.a.a(paramAdapterView, paramInt);
+    AssociatedAccountActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity);
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, "CliOper", "", "", "0X8007148", "0X8007148", 0, 0, "", "", "", "");
   }
-  
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

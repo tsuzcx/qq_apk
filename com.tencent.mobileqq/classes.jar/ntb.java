@@ -1,60 +1,197 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.lang.ref.WeakReference;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-class ntb
-  implements View.OnClickListener
+public class ntb
 {
-  ntb(nst paramnst, int paramInt, String paramString, nto paramnto) {}
-  
-  public void onClick(View paramView)
+  public static void a(AppInterface paramAppInterface, ntc paramntc, byte[] paramArrayOfByte, String paramString, int paramInt1, int paramInt2, Bundle paramBundle, long paramLong)
   {
-    JSONObject localJSONObject;
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Nst.jdField_a_of_type_Nts != null)) {
-        this.jdField_a_of_type_Nst.jdField_a_of_type_Nts.a(this.jdField_a_of_type_JavaLangString);
-      }
-      bcef.b(this.jdField_a_of_type_Nst.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Pb_account_lifeservice", this.jdField_a_of_type_Nst.jdField_a_of_type_JavaLangString, "0X8006981", "0X8006981", 0, 0, String.valueOf(this.jdField_a_of_type_Nto.a.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Nto.a.d), String.valueOf(this.jdField_a_of_type_Nto.a.jdField_a_of_type_Int), String.valueOf(this.jdField_a_of_type_Nto.a.jdField_b_of_type_Int));
-      localJSONObject = new JSONObject();
-      if (this.jdField_a_of_type_Nst.jdField_a_of_type_Boolean) {}
-    }
-    for (;;)
-    {
-      try
-      {
-        localJSONObject.put("cha_1", this.jdField_a_of_type_Nto.a.jdField_b_of_type_JavaLangString);
-        localJSONObject.put("cha_2", nst.a(this.jdField_a_of_type_Nst));
-        QQAppInterface localQQAppInterface = this.jdField_a_of_type_Nst.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        String str2 = this.jdField_a_of_type_Nst.jdField_a_of_type_JavaLangString;
-        int i = this.jdField_a_of_type_Nto.a.jdField_a_of_type_Int;
-        long l = this.jdField_a_of_type_Nto.a.jdField_a_of_type_Long;
-        if (this.jdField_a_of_type_Nst.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType != 1) {
-          continue;
-        }
-        str1 = "02";
-        bcef.b(localQQAppInterface, "dc01160", "Pb_account_lifeservice", str2, "0X80077FA", "0X80077FA", 0, 0, String.valueOf(i), String.valueOf(l), str1, localJSONObject.toString());
-      }
-      catch (JSONException localJSONException)
-      {
-        String str1;
-        localJSONException.printStackTrace();
-        continue;
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
+    if (paramAppInterface == null) {
       return;
-      if ((this.jdField_a_of_type_Int != 2) || (this.jdField_a_of_type_Nst.jdField_a_of_type_Nts == null)) {
-        break;
-      }
-      this.jdField_a_of_type_Nst.jdField_a_of_type_Nts.a(this.jdField_a_of_type_Nto);
-      break;
-      str1 = "01";
     }
+    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+    localOIDBSSOPkg.uint32_command.set(paramInt1);
+    localOIDBSSOPkg.uint32_service_type.set(paramInt2);
+    localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramArrayOfByte));
+    localOIDBSSOPkg.str_client_version.set(AppSetting.f());
+    paramArrayOfByte = new NewIntent(paramAppInterface.getApp(), nta.class);
+    if (paramBundle != null) {
+      paramArrayOfByte.putExtras(paramBundle);
+    }
+    if (paramntc != null)
+    {
+      paramntc.a = new WeakReference(paramAppInterface);
+      paramntc.jdField_b_of_type_Int = 1;
+      paramArrayOfByte.setObserver(paramntc);
+    }
+    paramArrayOfByte.putExtra("cmd", paramString);
+    paramArrayOfByte.putExtra("data", localOIDBSSOPkg.toByteArray());
+    if (paramLong > 0L) {
+      paramArrayOfByte.putExtra("timeout", paramLong);
+    }
+    paramAppInterface.startServlet(paramArrayOfByte);
+  }
+  
+  public static void a(AppInterface paramAppInterface, byte[] paramArrayOfByte, int paramInt, String paramString)
+  {
+    a(paramAppInterface, paramArrayOfByte, paramInt, paramString, null, false);
+  }
+  
+  public static void a(AppInterface paramAppInterface, byte[] paramArrayOfByte, int paramInt, String paramString, Bundle paramBundle, boolean paramBoolean)
+  {
+    if (paramAppInterface == null) {
+      return;
+    }
+    NewIntent localNewIntent = new NewIntent(paramAppInterface.getApp(), nta.class);
+    if (paramBundle != null) {
+      localNewIntent.putExtras(paramBundle);
+    }
+    localNewIntent.putExtra("cmd", paramString);
+    localNewIntent.putExtra("data", paramArrayOfByte);
+    localNewIntent.putExtra("isResend", paramBoolean);
+    localNewIntent.putExtra("RequestType", paramInt);
+    localNewIntent.putExtra("DataType", 2);
+    paramAppInterface.startServlet(localNewIntent);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, ntd paramntd, byte[] paramArrayOfByte, String paramString)
+  {
+    a(paramQQAppInterface, paramntd, paramArrayOfByte, paramString, null);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, ntd paramntd, byte[] paramArrayOfByte, String paramString, Bundle paramBundle)
+  {
+    if (paramQQAppInterface == null) {
+      return;
+    }
+    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApp(), nta.class);
+    if (paramBundle != null) {
+      localNewIntent.putExtras(paramBundle);
+    }
+    paramntd.a = new WeakReference(paramQQAppInterface);
+    localNewIntent.putExtra("cmd", paramString);
+    localNewIntent.putExtra("data", paramArrayOfByte);
+    localNewIntent.putExtra("isResend", false);
+    localNewIntent.setObserver(paramntd);
+    paramQQAppInterface.startServlet(localNewIntent);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, ntf paramntf, byte[] paramArrayOfByte, String paramString)
+  {
+    a(paramQQAppInterface, paramntf, paramArrayOfByte, paramString, null, false);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, ntf paramntf, byte[] paramArrayOfByte, String paramString, int paramInt1, int paramInt2)
+  {
+    a(paramQQAppInterface, paramntf, paramArrayOfByte, paramString, paramInt1, paramInt2, null, 0L);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, ntf paramntf, byte[] paramArrayOfByte, String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  {
+    a(paramQQAppInterface, paramntf, paramArrayOfByte, paramString, paramInt1, paramInt2, paramBundle, 0L);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, ntf paramntf, byte[] paramArrayOfByte, String paramString, int paramInt1, int paramInt2, Bundle paramBundle, long paramLong)
+  {
+    b(paramQQAppInterface, paramntf, paramArrayOfByte, paramString, paramInt1, paramInt2, paramBundle, paramLong);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, ntf paramntf, byte[] paramArrayOfByte, String paramString, Bundle paramBundle)
+  {
+    a(paramQQAppInterface, paramntf, paramArrayOfByte, paramString, paramBundle, false);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, ntf paramntf, byte[] paramArrayOfByte, String paramString, Bundle paramBundle, boolean paramBoolean)
+  {
+    if (paramQQAppInterface == null) {
+      return;
+    }
+    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApp(), nta.class);
+    if (paramBundle != null) {
+      localNewIntent.putExtras(paramBundle);
+    }
+    paramntf.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    paramntf.jdField_b_of_type_Int = 2;
+    localNewIntent.putExtra("cmd", paramString);
+    localNewIntent.putExtra("data", paramArrayOfByte);
+    localNewIntent.putExtra("isResend", paramBoolean);
+    localNewIntent.setObserver(paramntf);
+    paramQQAppInterface.startServlet(localNewIntent);
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, ntf paramntf, byte[] paramArrayOfByte, String paramString, int paramInt1, int paramInt2, Bundle paramBundle, long paramLong)
+  {
+    if (paramAppRuntime == null) {
+      return;
+    }
+    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+    localOIDBSSOPkg.uint32_command.set(paramInt1);
+    localOIDBSSOPkg.uint32_service_type.set(paramInt2);
+    localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramArrayOfByte));
+    localOIDBSSOPkg.str_client_version.set(AppSetting.f());
+    paramArrayOfByte = new NewIntent(BaseApplicationImpl.getContext(), nta.class);
+    if (paramBundle != null) {
+      paramArrayOfByte.putExtras(paramBundle);
+    }
+    if (paramntf != null)
+    {
+      paramntf.jdField_b_of_type_Int = 1;
+      paramArrayOfByte.setObserver(paramntf);
+    }
+    paramArrayOfByte.putExtra("cmd", paramString);
+    paramArrayOfByte.putExtra("data", localOIDBSSOPkg.toByteArray());
+    if (paramLong > 0L) {
+      paramArrayOfByte.putExtra("timeout", paramLong);
+    }
+    paramAppRuntime.startServlet(paramArrayOfByte);
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, ntf paramntf, byte[] paramArrayOfByte, String paramString, int paramInt1, int paramInt2)
+  {
+    b(paramQQAppInterface, paramntf, paramArrayOfByte, paramString, paramInt1, paramInt2, null, 0L);
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, ntf paramntf, byte[] paramArrayOfByte, String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  {
+    b(paramQQAppInterface, paramntf, paramArrayOfByte, paramString, paramInt1, paramInt2, paramBundle, 0L);
+  }
+  
+  private static void b(QQAppInterface paramQQAppInterface, ntf paramntf, byte[] paramArrayOfByte, String paramString, int paramInt1, int paramInt2, Bundle paramBundle, long paramLong)
+  {
+    if (paramQQAppInterface == null) {
+      return;
+    }
+    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+    localOIDBSSOPkg.uint32_command.set(paramInt1);
+    localOIDBSSOPkg.uint32_service_type.set(paramInt2);
+    localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramArrayOfByte));
+    localOIDBSSOPkg.str_client_version.set(AppSetting.f());
+    paramArrayOfByte = new NewIntent(paramQQAppInterface.getApp(), nta.class);
+    if (paramBundle != null) {
+      paramArrayOfByte.putExtras(paramBundle);
+    }
+    if (paramntf != null)
+    {
+      paramntf.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+      paramntf.jdField_b_of_type_Int = 1;
+      paramArrayOfByte.setObserver(paramntf);
+    }
+    paramArrayOfByte.putExtra("cmd", paramString);
+    paramArrayOfByte.putExtra("data", localOIDBSSOPkg.toByteArray());
+    if (paramLong > 0L) {
+      paramArrayOfByte.putExtra("timeout", paramLong);
+    }
+    paramQQAppInterface.startServlet(paramArrayOfByte);
   }
 }
 

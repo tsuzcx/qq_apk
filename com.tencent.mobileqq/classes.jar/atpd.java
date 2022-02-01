@@ -1,29 +1,24 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class atpd
-  extends Handler
+class atpd
+  implements atmg
 {
-  public atpd(ForwardSdkShareOption paramForwardSdkShareOption) {}
+  atpd(atpc paramatpc) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(String paramString) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString1, boolean paramBoolean, int paramInt, String paramString2, long paramLong)
   {
-    if (paramMessage.what == 0) {
-      QQToast.a(this.a.a, amtj.a(2131703943), 0).a();
-    }
-    while (1 != paramMessage.what) {
-      return;
-    }
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+    atpc.c(this.a, paramString1);
+    atpc.a(this.a).getFileManagerNotifyCenter().a(paramBoolean, 60, new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt), paramString2, paramString1 });
+    atpc.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atpd
  * JD-Core Version:    0.7.0.1
  */

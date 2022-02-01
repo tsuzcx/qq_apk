@@ -1,22 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
+import com.tencent.intervideo.nowproxy.customized_interface.ActionCallback;
 
-public class avvw
-  implements DialogInterface.OnClickListener
+class avvw
+  implements ActionCallback
 {
-  public avvw(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
+  avvw(avvu paramavvu) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onResult(String paramString)
   {
-    avtq.a().a().c();
-    avtq.a().d();
-    if (this.a.a)
+    try
     {
-      this.a.g();
+      i = Integer.parseInt(paramString);
+      if (avvu.a(this.a) != null) {
+        avvu.a(this.a).a(i, "");
+      }
       return;
     }
-    this.a.a(this.a.getActivity());
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        int i = -1;
+      }
+    }
   }
 }
 

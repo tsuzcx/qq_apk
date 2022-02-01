@@ -1,136 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.app.AppRuntime;
-import mqq.manager.VerifyDevLockManager.NotifyType;
-import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.Iterator;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
 
 public class acul
-  extends VerifyDevLockManager.VerifyDevLockObserver
+  extends acve
 {
-  public acul(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
-  
-  private void a(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
+  public int a()
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.c();
-    if (paramInt2 == 0)
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvVerifyCode uin:" + paramString + " seq=" + paramInt1);
-        if (paramDevlockInfo != null) {
-          QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvVerifyCode info.TimeLimit:" + paramDevlockInfo.TimeLimit);
-        }
-      }
-      setSeq(paramInt1);
-      paramInt2 = 60;
-      paramInt1 = paramInt2;
-      if (paramDevlockInfo != null)
-      {
-        paramInt1 = paramInt2;
-        if (paramDevlockInfo.TimeLimit > 0) {
-          paramInt1 = paramDevlockInfo.TimeLimit;
-        }
-      }
-      AuthDevVerifyCodeActivity.a(this.a, paramInt1);
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvVerifyCode ret = " + paramInt2 + " seq=" + paramInt1);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvVerifyCode  errMsg:" + paramErrMsg.getMessage() + " seq=" + paramInt1);
-      }
-    }
-    if ((paramInt2 == 9) || (paramInt2 == 155))
-    {
-      this.a.setResult(-1);
-      this.a.finish();
-    }
-    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
-    {
-      this.a.a(paramErrMsg.getMessage(), 1);
-      return;
-    }
-    paramString = this.a.getString(2131716113);
-    this.a.a(paramString, 1);
+    return -1000;
   }
   
-  private void b(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bffl parambffl, bcse parambcse, bcre parambcre)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    AuthDevVerifyCodeActivity.a(this.a);
-    if (paramInt2 == 0)
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvCheckSMSResult uin:" + paramString + " seq=" + paramInt1);
-      }
-      setSeq(paramInt1);
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvCheckSMSResult ret = " + paramInt2 + " seq=" + paramInt1);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvCheckSMSResult  errMsg:" + paramErrMsg.getMessage() + " seq=" + paramInt1);
+      paramStringBuilder = (im_msg_body.Elem)paramList.next();
+      if (a(paramStringBuilder)) {
+        aveb.a(paramMsg, paramStringBuilder, paramList1, (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), parambcre);
       }
     }
-    if ((paramInt2 == 9) || (paramInt2 == 155))
-    {
-      this.a.setResult(-1);
-      this.a.finish();
-    }
-    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
-    {
-      this.a.a(paramErrMsg.getMessage(), 1);
-      return;
-    }
-    paramString = this.a.getString(2131716113);
-    this.a.a(paramString, 1);
+    return false;
   }
   
-  public void onRecvNotice(VerifyDevLockManager.NotifyType paramNotifyType, int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
+  public boolean a(im_msg_body.Elem paramElem)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvNotice uin:" + paramString + " seq=" + paramInt1);
-    }
-    if (paramNotifyType == VerifyDevLockManager.NotifyType.NOTIFY_REFRESH_SMS_RESULT)
-    {
-      a(paramInt1, paramString, paramInt2, paramErrMsg, paramDevlockInfo);
-      return;
-    }
-    b(paramInt1, paramString, paramInt2, paramErrMsg, paramDevlockInfo);
-  }
-  
-  public void onVerifyClose(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onVerifyClose ret = " + paramInt2);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onVerifyClose  errMsg:" + paramErrMsg.getMessage());
-      }
-    }
-    if (this.a.isFinishing())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onVerifyClose activity is finishing.");
-      }
-      return;
-    }
-    this.a.c();
-    AuthDevVerifyCodeActivity.a(this.a);
-    this.a.setResult(-1);
-    this.a.finish();
-    arhf.a().a((AppRuntime)AuthDevVerifyCodeActivity.a(this.a).get(), this.a, paramString, true);
+    return (paramElem.common_elem.has()) && (34 == paramElem.common_elem.uint32_service_type.get());
   }
 }
 

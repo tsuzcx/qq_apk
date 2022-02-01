@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import alyd;
-import alyf;
+import amyt;
+import amyv;
 import com.tencent.qphone.base.util.QLog;
 
 public class CmGameLifeCycle$1
   implements Runnable
 {
-  public CmGameLifeCycle$1(alyd paramalyd, alyf paramalyf) {}
+  public CmGameLifeCycle$1(amyt paramamyt, amyv paramamyv) {}
   
   public void run()
   {
     this.a.f();
     this.a.g();
     if (QLog.isColorLevel()) {
-      QLog.d(alyd.a, 2, "onCurrentGame showMsgTips");
+      QLog.d(amyt.a, 2, "onCurrentGame showMsgTips");
     }
   }
 }

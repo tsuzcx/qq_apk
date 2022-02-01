@@ -1,21 +1,30 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import com.tencent.mobileqq.app.FontSettingManager;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adgl
   implements View.OnClickListener
 {
-  public adgl(FontSettingActivity paramFontSettingActivity) {}
+  public adgl(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString) {}
   
   public void onClick(View paramView)
   {
-    if (FontSettingManager.setCustomDensity(this.a, FontSettingActivity.a(this.a), true)) {
-      FontSettingManager.killProcess();
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.isShowing()) && (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.getWindow() != null)) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.dismiss();
+      AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, -1, this.jdField_a_of_type_JavaLangString);
+      label58:
+      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a = null;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    catch (Throwable localThrowable)
+    {
+      break label58;
+    }
   }
 }
 

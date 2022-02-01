@@ -1,36 +1,40 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-class qbl
-  implements ViewBase.OnClickListener
+public class qbl
+  implements URLDrawable.URLDrawableListener
 {
-  qbl(qbf paramqbf, rdl paramrdl, ArticleInfo paramArticleInfo) {}
+  public qbl(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment, int paramInt1, int paramInt2) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    boolean bool = true;
-    int i;
-    ArticleInfo localArticleInfo;
-    if (this.jdField_a_of_type_Rdl.a)
-    {
-      i = 2;
-      qbf.a(this.jdField_a_of_type_Qbf, this.jdField_a_of_type_Rdl, i);
-      paramViewBase = this.jdField_a_of_type_Qbf;
-      localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-      if (this.jdField_a_of_type_Rdl.a) {
-        break label60;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyIMAXAdFragment", 2, "onLoadCanceled");
     }
-    for (;;)
-    {
-      qbf.a(paramViewBase, localArticleInfo, bool);
-      return;
-      i = 1;
-      break;
-      label60:
-      bool = false;
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyIMAXAdFragment", 2, "onLoadFialed");
     }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyIMAXAdFragment", 2, "onLoadProgressed =" + paramInt);
+    }
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment, this.jdField_a_of_type_Int, this.b);
+    ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).removeMessages(-2);
+    ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).sendEmptyMessage(-2);
   }
 }
 

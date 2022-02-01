@@ -1,6 +1,7 @@
 package com.tencent.hippy.qq.adapter;
 
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
@@ -21,6 +22,7 @@ import com.tencent.viola.utils.ViolaLogUtils;
 import java.io.File;
 import java.net.URL;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class HippyQQImageLoader
@@ -44,55 +46,71 @@ public class HippyQQImageLoader
       int i = paramHippyMap.getInt("width");
       int j = paramHippyMap.getInt("height");
       String str = paramHippyMap.getString("imageType");
-      URLDrawable localURLDrawable;
-      HippyDrawable localHippyDrawable;
-      File localFile;
+      Object localObject3;
+      Object localObject2;
+      Object localObject1;
       boolean bool1;
       if (paramHippyMap.getString("resizeMode") != null)
       {
         paramHippyMap = paramHippyMap.getString("resizeMode");
-        localURLDrawable = URLDrawable.getDrawable(paramString, obtainURLDrawableOptions(bool2, i, j, str));
-        this.urlDrawableList.add(localURLDrawable);
-        localHippyDrawable = new HippyDrawable();
-        localFile = localURLDrawable.getFileInLocal();
-        if ((localFile == null) || (!localFile.exists())) {
-          break label252;
+        localObject3 = obtainURLDrawableOptions(bool2, i, j, str);
+        localObject2 = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject3);
+        if (((URLDrawable)localObject2).getFileInLocal() != null)
+        {
+          localObject1 = localObject2;
+          if (((URLDrawable)localObject2).getFileInLocal().exists()) {}
+        }
+        else
+        {
+          localObject1 = localObject2;
+          if (((URLDrawable)localObject2).getStatus() == 1)
+          {
+            QLog.i("HippyImageAdapter", 2, "internalRequestImage url:" + paramString + " remove cache status:" + ((URLDrawable)localObject2).getStatus());
+            URLDrawable.removeMemoryCacheByUrl(paramString, (URLDrawable.URLDrawableOptions)localObject3);
+            localObject1 = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject3);
+          }
+        }
+        this.urlDrawableList.add(localObject1);
+        localObject2 = new HippyDrawable();
+        localObject3 = ((URLDrawable)localObject1).getFileInLocal();
+        if ((localObject3 == null) || (!((File)localObject3).exists())) {
+          break label362;
         }
         bool1 = true;
-        label149:
-        if (QLog.isColorLevel()) {
-          QLog.i("HippyImageAdapter", 2, "internalRequestImage url:" + paramString + " localFileExist:" + bool1);
+        label241:
+        if ((QLog.isColorLevel()) || (!bool1)) {
+          QLog.i("HippyImageAdapter", 2, "internalRequestImage url:" + paramString + " localFileExist:" + bool1 + " status:" + ((URLDrawable)localObject1).getStatus());
         }
         if (!bool1) {
-          break label284;
+          break label394;
         }
         if (!isApng(str)) {
-          break label258;
+          break label368;
         }
-        localHippyDrawable.setDrawable(localURLDrawable);
-        this.mHandler.post(new HippyQQImageLoader.1(this, paramHippyMap, localURLDrawable, paramCallback, localHippyDrawable));
+        ((HippyDrawable)localObject2).setDrawable((Drawable)localObject1);
+        this.mHandler.post(new HippyQQImageLoader.1(this, paramHippyMap, (URLDrawable)localObject1, paramCallback, (HippyDrawable)localObject2));
       }
       for (;;)
       {
-        this.urlDrawableList.remove(localURLDrawable);
+        this.urlDrawableList.remove(localObject1);
         return;
         paramHippyMap = "";
         break;
-        label252:
+        label362:
         bool1 = false;
-        break label149;
-        label258:
-        ThreadManager.post(new HippyQQImageLoader.2(this, paramString, localHippyDrawable, localFile, bool2, paramCallback), 8, null, true);
+        break label241;
+        label368:
+        ThreadManager.post(new HippyQQImageLoader.2(this, paramString, (HippyDrawable)localObject2, (File)localObject3, bool2, paramCallback), 8, null, true);
       }
-      label284:
-      localURLDrawable.setTag(Integer.valueOf(0));
-      localURLDrawable.setURLDrawableListener(new HippyQQImageLoader.3(this, paramString, str, localHippyDrawable, paramHippyMap, paramCallback, bool2));
-      if (localURLDrawable.getStatus() == 2)
+      label394:
+      ((URLDrawable)localObject1).setTag(Integer.valueOf(0));
+      ((URLDrawable)localObject1).setURLDrawableListener(new HippyQQImageLoader.3(this, paramString, str, (HippyDrawable)localObject2, paramHippyMap, paramCallback, bool2));
+      if ((((URLDrawable)localObject1).getStatus() == 2) || (((URLDrawable)localObject1).getStatus() == 3))
       {
-        localURLDrawable.restartDownload();
+        ((URLDrawable)localObject1).restartDownload();
         return;
       }
-      localURLDrawable.startDownload();
+      ((URLDrawable)localObject1).startDownload();
       return;
     }
   }
@@ -105,8 +123,8 @@ public class HippyQQImageLoader
   private URLDrawable.URLDrawableOptions obtainURLDrawableOptions(boolean paramBoolean, int paramInt1, int paramInt2, String paramString)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mFailedDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130850605);
-    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130850605);
+    localURLDrawableOptions.mFailedDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130850736);
+    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130850736);
     localURLDrawableOptions.mRequestWidth = paramInt1;
     localURLDrawableOptions.mRequestHeight = paramInt2;
     if (paramBoolean) {
@@ -163,8 +181,17 @@ public class HippyQQImageLoader
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    if ((paramObject != null) && ((paramObject instanceof HippyMap))) {}
-    for (paramObject = (HippyMap)paramObject;; paramObject = new HippyMap())
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramObject != null)
+    {
+      localObject1 = localObject2;
+      if ((paramObject instanceof Map)) {
+        localObject1 = ((Map)paramObject).get("props");
+      }
+    }
+    if ((localObject1 != null) && ((localObject1 instanceof HippyMap))) {}
+    for (paramObject = (HippyMap)localObject1;; paramObject = new HippyMap())
     {
       internalRequestImage(paramString, paramObject, paramCallback);
       return;

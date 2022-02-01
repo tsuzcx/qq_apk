@@ -1,8 +1,20 @@
-import android.widget.TextView;
+import android.view.View;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
 
 public class adzj
+  implements adze
 {
-  TextView a;
+  public adzj(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  
+  public void a(View paramView)
+  {
+    ForwardTroopListFragment.a(this.a, paramView);
+  }
+  
+  public boolean a(String paramString, int paramInt)
+  {
+    return ForwardTroopListFragment.a(this.a, paramString, paramInt);
+  }
 }
 
 

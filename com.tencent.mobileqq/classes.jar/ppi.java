@@ -1,13 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.ProteusParserWithHotReload;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.ProteusParserWithHotReload.IHotReloadChangedObserver;
 
 public class ppi
-  implements pqe
+  implements ProteusParserWithHotReload.IHotReloadChangedObserver
 {
-  public ppi(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  private szd a;
+  
+  public ppi(szd paramszd)
+  {
+    this.a = paramszd;
+  }
   
   public void a()
   {
-    ReadInJoySelfFragment.g(this.a);
+    if (ProteusParserWithHotReload.getInstance().isSupportHotReload()) {
+      ProteusParserWithHotReload.getInstance().addHotReloadChangedObserver(this);
+    }
+  }
+  
+  public void b()
+  {
+    if (ProteusParserWithHotReload.getInstance().isSupportHotReload()) {
+      ProteusParserWithHotReload.getInstance().removeHotReloadChangedObserver(this);
+    }
+  }
+  
+  public void onHotReloadChanged(Context paramContext, String paramString1, String paramString2)
+  {
+    this.a.notifyDataSetChanged();
   }
 }
 

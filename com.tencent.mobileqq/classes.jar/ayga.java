@@ -1,23 +1,23 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluspanel.appinfo.GroupVideoChatAppInfo;
-import java.util.Map;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class ayga
-  implements DialogInterface.OnClickListener
+class ayga
+  implements View.OnClickListener
 {
-  public ayga(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean, Map paramMap) {}
+  ayga(ayfx paramayfx) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    ChatActivityUtils.a(-1034L, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.b);
-    GroupVideoChatAppInfo.enterNewGroupVideo(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, false, this.jdField_a_of_type_JavaUtilMap);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    Intent localIntent = new Intent(this.a.a, QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://imgcache.qq.com/club/client/flower/release/html/points.html?source=501");
+    localIntent.putExtra("url", "https://imgcache.qq.com/club/client/flower/release/html/points.html?source=501");
+    this.a.a.startActivity(localIntent);
+    bdla.b(null, "dc00899", "grp_lbs", "", "rank_data", "clk_gift", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

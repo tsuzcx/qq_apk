@@ -1,33 +1,19 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.async.Job;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.dispatch.Dispatcher;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import java.util.List;
 
 class vnx
-  extends Job<Object, Object, Object>
+  implements vgo
 {
-  vnx(vns paramvns, String paramString1, String paramString2, StoryVideoItem paramStoryVideoItem)
+  vnx(vnw paramvnw) {}
+  
+  public List<vgp> a(int paramInt, boolean paramBoolean)
   {
-    super(paramString1);
+    return voq.a(this.a.b(), paramInt, paramBoolean);
   }
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  public boolean a()
   {
-    paramJobContext = new vuc(new ErrorMessage(), this.jdField_a_of_type_JavaLangString, true);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null)
-    {
-      paramJobContext.b = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid;
-      paramJobContext.c = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.shareGroupId;
-      paramJobContext.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoIndex;
-      if (paramJobContext.a == 0L) {
-        paramJobContext.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime;
-      }
-    }
-    vli.a().dispatch(paramJobContext);
-    return null;
+    return AppNetConnInfo.isWifiConn();
   }
 }
 

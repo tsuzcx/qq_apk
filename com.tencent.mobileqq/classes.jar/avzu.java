@@ -1,9 +1,23 @@
-import android.view.MotionEvent;
-import android.view.View;
+import android.content.Intent;
+import com.tencent.mobileqq.jsp.IdentificationApiPlugin.2.1;
+import mqq.app.QQPermissionCallback;
 
-public abstract interface avzu
+public class avzu
+  implements QQPermissionCallback
 {
-  public abstract void b(View paramView, MotionEvent paramMotionEvent);
+  public avzu(IdentificationApiPlugin.2.1 param1) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bhdj.a(avzr.a(this.a.jdField_a_of_type_Avzt.a), paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    paramArrayOfString = new Intent();
+    paramArrayOfString.putExtra("FaceRecognition.AppConf", this.a.jdField_a_of_type_ComTencentMobileqqJspFaceDetectForThirdPartyManager$AppConf);
+    avzr.a(this.a.jdField_a_of_type_Avzt.a, paramArrayOfString);
+  }
 }
 
 

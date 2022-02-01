@@ -1,54 +1,31 @@
-import android.graphics.Color;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.mini.launch.CmdCallback;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class bkps
-  implements bbbn<bays, bbhb>
+class bkps
+  implements EIPCResultCallback
 {
-  public void a(bays parambays, bbhb parambbhb)
+  bkps(bkpq parambkpq, JSONObject paramJSONObject, CmdCallback paramCmdCallback) {}
+  
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    bkpw localbkpw;
-    int i;
-    if (((parambays instanceof bkpw)) && ((parambbhb instanceof bbir)))
+    paramEIPCResult = paramEIPCResult.data.getString("preview");
+    try
     {
-      localbkpw = (bkpw)parambays;
-      parambbhb = (bbir)parambbhb;
-      parambays = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/files/20170310/4c615c46286c40e78851635a63a22dae.png", URLDrawable.URLDrawableOptions.obtain());
-      if ((parambays != null) && (parambays.getStatus() == 2)) {
-        parambays.restartDownload();
-      }
-      parambbhb.b().setImageDrawable(parambays);
-      parambbhb.a().setText(bkpw.b);
-      if (localbkpw.a() != null) {
-        break label204;
-      }
-      i = 0;
-      if (i > 10) {
-        break label218;
-      }
-    }
-    label204:
-    label218:
-    for (parambays = String.valueOf(i);; parambays = "10+")
-    {
-      ((TextView)parambbhb.a().findViewById(2131365439)).setText(String.format("%s条与\"", new Object[] { parambays }));
-      parambays = (TextView)parambbhb.a().findViewById(2131365433);
-      if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
-        parambays.setTextColor(Color.parseColor("#004080"));
-      }
-      parambays.setText(localbkpw.b());
-      ((TextView)parambbhb.a().findViewById(2131365440)).setText("\"相关收藏");
-      parambbhb.a().setVisibility(8);
-      parambbhb.a().setOnClickListener(new bkpt(this, localbkpw));
+      this.jdField_a_of_type_OrgJsonJSONObject.optJSONObject("metaData").optJSONObject("detail").put("preview", paramEIPCResult);
+      bkpq.a(this.jdField_a_of_type_Bkpq, this.jdField_a_of_type_OrgJsonJSONObject.toString(), this.jdField_a_of_type_ComTencentMobileqqMiniLaunchCmdCallback);
       return;
-      i = localbkpw.a().size();
-      break;
+    }
+    catch (JSONException paramEIPCResult)
+    {
+      for (;;)
+      {
+        QLog.e("MiniSDKClientQIPCModule", 1, "getReplaceJsonString JSONException,", paramEIPCResult);
+      }
     }
   }
 }

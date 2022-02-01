@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import aafi;
+import aauu;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Context;
@@ -26,31 +26,31 @@ import android.view.Window;
 import android.view.animation.PathInterpolator;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import azid;
-import azie;
-import azig;
-import azih;
-import bbzy;
-import bcad;
-import bccf;
-import bccg;
-import bcch;
-import bcci;
-import bccj;
-import bcck;
-import bccl;
-import bccm;
-import bccn;
-import bcco;
-import bccp;
-import bccq;
-import bccr;
-import bfpx;
-import bfqa;
-import bfyz;
-import bfzg;
-import bkzh;
-import blaf;
+import baol;
+import baom;
+import baoo;
+import baop;
+import bdgt;
+import bdgy;
+import bdja;
+import bdjb;
+import bdjc;
+import bdjd;
+import bdje;
+import bdjf;
+import bdjg;
+import bdjh;
+import bdji;
+import bdjj;
+import bdjk;
+import bdjl;
+import bdjm;
+import bgyo;
+import bgyr;
+import bhhr;
+import bhhy;
+import bmll;
+import bmmj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -80,7 +80,7 @@ import mqq.os.MqqHandler;
 public class SetSplash
   extends Step
 {
-  private static bccr a;
+  private static bdjm a;
   public static Runnable a;
   protected static WeakReference<View> a;
   private static boolean b;
@@ -124,7 +124,7 @@ public class SetSplash
     return -1;
   }
   
-  private static AnimationDrawable a(Context paramContext, bcad parambcad)
+  private static AnimationDrawable a(Context paramContext, bdgy parambdgy)
   {
     for (;;)
     {
@@ -164,7 +164,7 @@ public class SetSplash
             if ((!((File)localObject2).exists()) || (((File)localObject2).length() <= 0L)) {
               break label423;
             }
-            localObject2 = bfpx.a(((File)localObject2).getAbsolutePath(), localOptions);
+            localObject2 = bgyo.a(((File)localObject2).getAbsolutePath(), localOptions);
             if (localObject2 == null) {
               break label425;
             }
@@ -175,8 +175,8 @@ public class SetSplash
               QLog.d("SetSplash", 2, "getDynamicSplashDrawable() playTimes=" + k + ", playInterval=" + m + ", totalFilesCount=" + n + ", totalPlayTime=" + i);
             }
             ThreadManager.post(new SetSplash.11(), 5, null, false);
-            if (parambcad != null) {
-              parambcad.jdField_a_of_type_Long = i;
+            if (parambdgy != null) {
+              parambdgy.jdField_a_of_type_Long = i;
             }
             return localObject1;
           }
@@ -219,14 +219,14 @@ public class SetSplash
     return null;
   }
   
-  private static SplashADView a(Activity paramActivity, azig paramazig, bcad parambcad)
+  private static SplashADView a(Activity paramActivity, baoo parambaoo, bdgy parambdgy)
   {
-    SplashADView localSplashADView = SplashADView.a(paramazig, paramActivity);
-    localSplashADView.setOnClickListener(new bcck(parambcad));
-    if (paramazig.a == 2)
+    SplashADView localSplashADView = SplashADView.a(parambaoo, paramActivity);
+    localSplashADView.setOnClickListener(new bdjf(parambdgy));
+    if (parambaoo.a == 2)
     {
-      localSplashADView.setOnErrorListener(new bccl(parambcad));
-      localSplashADView.setPresenter(new bccm((ImageView)paramActivity.findViewById(2131377680), (ImageView)paramActivity.findViewById(2131377683)));
+      localSplashADView.setOnErrorListener(new bdjg(parambdgy));
+      localSplashADView.setPresenter(new bdjh((ImageView)paramActivity.findViewById(2131377959), (ImageView)paramActivity.findViewById(2131377962)));
     }
     return localSplashADView;
   }
@@ -261,26 +261,26 @@ public class SetSplash
     label97:
     for (Object localObject = Integer.valueOf(paramView.getHeight());; localObject = "0")
     {
-      QLog.d("SetSplash", 2, localObject + " sSplashAnimListener:" + jdField_a_of_type_Bccr);
-      if ((paramView != null) && (paramView.getHeight() > 0) && (jdField_a_of_type_Bccr != null))
+      QLog.d("SetSplash", 2, localObject + " sSplashAnimListener:" + jdField_a_of_type_Bdjm);
+      if ((paramView != null) && (paramView.getHeight() > 0) && (jdField_a_of_type_Bdjm != null))
       {
-        a(paramView, jdField_a_of_type_Bccr);
-        jdField_a_of_type_Bccr = null;
+        a(paramView, jdField_a_of_type_Bdjm);
+        jdField_a_of_type_Bdjm = null;
       }
       return;
     }
   }
   
-  public static void a(View paramView, bccr parambccr)
+  public static void a(View paramView, bdjm parambdjm)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("SetSplash", 2, "startSplashAnim:" + paramView + " listener:" + parambccr + " sSplashView:" + jdField_a_of_type_JavaLangRefWeakReference);
+      QLog.d("SetSplash", 2, "startSplashAnim:" + paramView + " listener:" + parambdjm + " sSplashView:" + jdField_a_of_type_JavaLangRefWeakReference);
     }
-    bfzg.a("splashCost", null);
+    bhhy.a("splashCost", null);
     Object localObject = a();
     if (localObject == null)
     {
-      b(parambccr);
+      b(parambdjm);
       return;
     }
     if ((paramView != null) && (paramView.getHeight() > 0))
@@ -290,7 +290,7 @@ public class SetSplash
       }
       localObject = new int[2];
       paramView.getLocationOnScreen((int[])localObject);
-      a(parambccr, localObject[1], paramView.getHeight());
+      a(parambdjm, localObject[1], paramView.getHeight());
       return;
     }
     if (c())
@@ -298,28 +298,28 @@ public class SetSplash
       if (localObject != null) {
         ((View)localObject).postDelayed(jdField_a_of_type_JavaLangRunnable, 1000L);
       }
-      jdField_a_of_type_Bccr = parambccr;
+      jdField_a_of_type_Bdjm = parambdjm;
       return;
     }
-    b(parambccr);
+    b(parambdjm);
   }
   
-  private static void a(bccr parambccr, int paramInt1, int paramInt2)
+  private static void a(bdjm parambdjm, int paramInt1, int paramInt2)
   {
     View localView = a();
     if ((localView == null) || (paramInt2 == 0))
     {
-      b(parambccr);
+      b(parambdjm);
       return;
     }
     if (Build.VERSION.SDK_INT < 21)
     {
-      b(parambccr);
+      b(parambdjm);
       return;
     }
     a();
     if (QLog.isColorLevel()) {
-      QLog.d("SetSplash", 2, "adView:" + localView + " listener:" + jdField_a_of_type_Bccr);
+      QLog.d("SetSplash", 2, "adView:" + localView + " listener:" + jdField_a_of_type_Bdjm);
     }
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F });
     localValueAnimator.setDuration(800L);
@@ -328,7 +328,7 @@ public class SetSplash
     }
     localView.setClipToOutline(true);
     b = false;
-    localValueAnimator.addUpdateListener(new bccg(paramInt1, localView.getHeight(), paramInt2, localView, parambccr));
+    localValueAnimator.addUpdateListener(new bdjb(paramInt1, localView.getHeight(), paramInt2, localView, parambdjm));
     localValueAnimator.start();
   }
   
@@ -404,7 +404,7 @@ public class SetSplash
                     l1 = Long.parseLong(((String)localObject4).substring(k + 1));
                     l5 = l1;
                     l6 = l2;
-                    if (bfqa.a(l2, l1))
+                    if (bgyr.a(l2, l1))
                     {
                       return true;
                       localObject1 = "/data/data/com.tencent.mobileqq/files";
@@ -428,34 +428,34 @@ public class SetSplash
         }
       }
       label342:
-      Object localObject3 = bfyz.b(BaseApplicationImpl.getContext());
+      Object localObject3 = bhhr.b(BaseApplicationImpl.getContext());
       if (QLog.isColorLevel()) {
         QLog.i("SetSplash", 2, "bir = " + (String)localObject3);
       }
       if ((!((String)localObject3).equals("")) && (a((String)localObject3) == 0))
       {
-        localObject1 = new File((String)localObject1 + "/" + bfyz.a((Context)localObject2) + "/" + "birthdayflashlogo.png");
+        localObject1 = new File((String)localObject1 + "/" + bhhr.a((Context)localObject2) + "/" + "birthdayflashlogo.png");
         if ((localObject1 != null) && (((File)localObject1).exists()) && (((File)localObject1).length() > 1L)) {
           return true;
         }
       }
       try
       {
-        l1 = bbzy.a(BaseApplicationImpl.getApplication());
-        localObject1 = azid.a(BaseApplicationImpl.getContext(), l1);
+        l1 = bdgt.a(BaseApplicationImpl.getApplication());
+        localObject1 = baol.a(BaseApplicationImpl.getContext(), l1);
         if ((localObject1 != null) && (((List)localObject1).size() > 0))
         {
-          Object localObject5 = azid.a(BaseApplicationImpl.getContext(), l1 + "");
-          localObject2 = bkzh.a(BaseApplicationImpl.getContext(), l1 + "");
-          Set localSet = azid.a(BaseApplicationImpl.getContext(), l1 + "");
-          localObject3 = bkzh.a(BaseApplicationImpl.getContext(), l1 + "");
-          localObject5 = azid.a(l1 + "", (SharedPreferences)localObject5, localSet);
-          ((HashMap)localObject5).putAll(azid.a(l1 + "", (SharedPreferences)localObject2, (Set)localObject3));
+          Object localObject5 = baol.a(BaseApplicationImpl.getContext(), l1 + "");
+          localObject2 = bmll.a(BaseApplicationImpl.getContext(), l1 + "");
+          Set localSet = baol.a(BaseApplicationImpl.getContext(), l1 + "");
+          localObject3 = bmll.a(BaseApplicationImpl.getContext(), l1 + "");
+          localObject5 = baol.a(l1 + "", (SharedPreferences)localObject5, localSet);
+          ((HashMap)localObject5).putAll(baol.a(l1 + "", (SharedPreferences)localObject2, (Set)localObject3));
           localObject1 = ((List)localObject1).iterator();
           while (((Iterator)localObject1).hasNext())
           {
             localObject2 = (String)((Iterator)localObject1).next();
-            if ((((HashMap)localObject5).containsKey(localObject2)) && (((azie)((HashMap)localObject5).get(localObject2)).a()))
+            if ((((HashMap)localObject5).containsKey(localObject2)) && (((baom)((HashMap)localObject5).get(localObject2)).a()))
             {
               if (QLog.isColorLevel()) {
                 QLog.i("SetSplash", 2, "qbosssplash should show kill");
@@ -503,7 +503,7 @@ public class SetSplash
         i = str2.indexOf("|");
         l2 = Long.parseLong(str2.substring(0, i));
         l1 = Long.parseLong(str2.substring(i + 1));
-        if (!bfqa.a(l2, l1))
+        if (!bgyr.a(l2, l1))
         {
           if (!QLog.isColorLevel()) {
             break label306;
@@ -540,7 +540,7 @@ public class SetSplash
     }
   }
   
-  public static boolean a(AppActivity paramAppActivity, bcad parambcad, boolean paramBoolean)
+  public static boolean a(AppActivity paramAppActivity, bdgy parambdgy, boolean paramBoolean)
   {
     boolean bool1 = true;
     boolean bool2;
@@ -560,9 +560,9 @@ public class SetSplash
         }
         if ((paramAppActivity instanceof IphoneTitleBarActivity))
         {
-          ((IphoneTitleBarActivity)paramAppActivity).setContentViewNoTitle(2131562808);
-          localImageView2 = (ImageView)paramAppActivity.findViewById(2131377680);
-          localImageView1 = (ImageView)paramAppActivity.findViewById(2131377683);
+          ((IphoneTitleBarActivity)paramAppActivity).setContentViewNoTitle(2131562879);
+          localImageView2 = (ImageView)paramAppActivity.findViewById(2131377959);
+          localImageView1 = (ImageView)paramAppActivity.findViewById(2131377962);
           if ((localImageView2 != null) && (localImageView1 != null)) {
             break;
           }
@@ -574,15 +574,15 @@ public class SetSplash
         QLog.e("SetSplash", 1, "enableNotch exception", localThrowable1);
         continue;
       }
-      catch (Resources.NotFoundException parambcad)
+      catch (Resources.NotFoundException parambdgy)
       {
-        QLog.e("ResourcesLoad", 1, "", parambcad);
+        QLog.e("ResourcesLoad", 1, "", parambdgy);
         paramAppActivity.superFinish();
         return true;
       }
-      paramAppActivity.setContentView(2131562808);
+      paramAppActivity.setContentView(2131562879);
     }
-    Object localObject1 = bfyz.b(paramAppActivity);
+    Object localObject1 = bhhr.b(paramAppActivity);
     Object localObject3 = paramAppActivity.getFilesDir();
     Object localObject5;
     if (localObject3 != null)
@@ -594,7 +594,7 @@ public class SetSplash
       if ((localObject3 == null) || (((String)localObject1).equals("")) || (a((String)localObject1) != 0)) {
         break label2551;
       }
-      localObject1 = (String)localObject5 + "/" + bfyz.a(paramAppActivity) + "/" + "birthdayflashlogo.png";
+      localObject1 = (String)localObject5 + "/" + bhhr.a(paramAppActivity) + "/" + "birthdayflashlogo.png";
       localObject3 = new File((String)localObject1);
       if (QLog.isColorLevel()) {
         QLog.e("SetSplash", 2, (String)localObject1 + " ,birthday_logoPath exists? " + ((File)localObject3).exists());
@@ -615,11 +615,11 @@ public class SetSplash
     {
       try
       {
-        localObject1 = new BitmapDrawable(paramAppActivity.getResources(), bfpx.a((String)localObject1));
-        if (parambcad != null) {}
+        localObject1 = new BitmapDrawable(paramAppActivity.getResources(), bgyo.a((String)localObject1));
+        if (parambdgy != null) {}
         try
         {
-          parambcad.jdField_a_of_type_Long = 2200L;
+          parambdgy.jdField_a_of_type_Long = 2200L;
           bool1 = false;
           if (localObject1 == null) {
             break label2548;
@@ -643,15 +643,15 @@ public class SetSplash
           String[] arrayOfString;
           long l2;
           int m;
-          azie localazie;
+          baom localbaom;
           Object localObject6;
           Object localObject4;
           boolean bool3;
           boolean bool4;
           float f;
-          azih localazih;
+          baop localbaop;
           continue;
-          parambcad = null;
+          parambdgy = null;
           continue;
           bool2 = paramBoolean;
           paramBoolean = bool1;
@@ -667,22 +667,22 @@ public class SetSplash
           continue;
           continue;
         }
-        if ((localObject1 != null) || (parambcad == null)) {}
+        if ((localObject1 != null) || (parambdgy == null)) {}
       }
       catch (Throwable localException1)
       {
         try
         {
-          l1 = bbzy.a(BaseApplicationImpl.getApplication());
-          if (aafi.a(BaseApplicationImpl.getApplication()))
+          l1 = bdgt.a(BaseApplicationImpl.getApplication());
+          if (aauu.a(BaseApplicationImpl.getApplication()))
           {
-            azid.a(BaseApplicationImpl.getApplication(), l1, true);
-            bkzh.a(BaseApplicationImpl.getApplication(), l1);
+            baol.a(BaseApplicationImpl.getApplication(), l1, true);
+            bmll.a(BaseApplicationImpl.getApplication(), l1);
             i = 0;
             if ((localObject1 != null) || (!a(BaseApplicationImpl.getContext())) || (i != 0)) {
               break label2533;
             }
-            localObject1 = a(BaseApplicationImpl.getContext(), parambcad);
+            localObject1 = a(BaseApplicationImpl.getContext(), parambdgy);
             bool1 = false;
             localObject3 = localObject1;
             bool2 = bool1;
@@ -761,7 +761,7 @@ public class SetSplash
             m = ((String)localObject5).indexOf("|");
             l2 = Long.parseLong(((String)localObject5).substring(0, m));
             l1 = Long.parseLong(((String)localObject5).substring(m + 1));
-            if (bfqa.a(l2, l1))
+            if (bgyr.a(l2, l1))
             {
               localObject5 = localObject3;
               if (localObject3 == null) {
@@ -791,23 +791,23 @@ public class SetSplash
               }
               localThrowable4.printStackTrace();
               continue;
-              if (!azid.a(l1))
+              if (!baol.a(l1))
               {
                 QLog.i("QSplash@QbossSplashUtil", 1, "don't show splash");
                 i = 0;
                 continue;
               }
-              localazie = azid.a;
-              if (localazie == null)
+              localbaom = baol.a;
+              if (localbaom == null)
               {
                 QLog.i("QSplash@QbossSplashUtil", 1, "adEntry  == null");
                 i = 0;
                 continue;
               }
-              if (localazie.a == 1)
+              if (localbaom.a == 1)
               {
-                azid.a(localazie.jdField_b_of_type_JavaLangString, l1, false, "qboss_splash_ad_ids_with_showdate_with_priority_");
-                azid.a(localazie.jdField_b_of_type_JavaLangString, l1, false, "tianshu_splash_ad_ids_with_showdate_with_priority_");
+                baol.a(localbaom.jdField_b_of_type_JavaLangString, l1, false, "qboss_splash_ad_ids_with_showdate_with_priority_");
+                baol.a(localbaom.jdField_b_of_type_JavaLangString, l1, false, "tianshu_splash_ad_ids_with_showdate_with_priority_");
                 i = 0;
                 continue;
               }
@@ -815,36 +815,36 @@ public class SetSplash
               BaseApplicationImpl.sShowTime = 0L;
               QLog.i("QSplash@QbossSplashUtil", 1, "ready show Splash");
               b();
-              if (!bbzy.a(paramAppActivity)) {
+              if (!bdgt.a(paramAppActivity)) {
                 break label2536;
               }
               QLog.i("QSplash@QbossSplashUtil", 1, "show Splash AD, uin = " + l1 % 10000L);
-              if (localazie.jdField_b_of_type_Int == 1)
+              if (localbaom.jdField_b_of_type_Int == 1)
               {
                 QLog.i("QSplash@QbossSplashUtil", 1, "preLoad web");
                 WebProcessManager.b(-1);
-                azid.b = true;
+                baol.b = true;
               }
-              if (localazie.jdField_b_of_type_Int == 2)
+              if (localbaom.jdField_b_of_type_Int == 2)
               {
-                blaf.a();
+                bmmj.a();
                 SplashMiniGameStarter.preloadProcess();
               }
-              if (localazie.jdField_b_of_type_Int == 3)
+              if (localbaom.jdField_b_of_type_Int == 3)
               {
-                blaf.a();
+                bmmj.a();
                 SplashMiniGameStarter.preloadGameProcess();
               }
-              localObject7 = new azih();
-              ((azih)localObject7).a(localazie.a).a(localazie.h).c(localazie.h).b(localazie.e).c(1).b(localazie.j).d(localazie.jdField_b_of_type_Int).d(localazie.f);
-              parambcad.a(new bccf(localazie, b(paramAppActivity, ((azih)localObject7).a(), parambcad), paramAppActivity, localImageView1, localImageView2, l1));
+              localObject7 = new baop();
+              ((baop)localObject7).a(localbaom.a).a(localbaom.h).c(localbaom.h).b(localbaom.e).c(1).b(localbaom.j).d(localbaom.jdField_b_of_type_Int).d(localbaom.f);
+              parambdgy.a(new bdja(localbaom, b(paramAppActivity, ((baop)localObject7).a(), parambdgy), paramAppActivity, localImageView1, localImageView2, l1));
               bool1 = false;
               paramBoolean = true;
               bool2 = true;
             }
             try
             {
-              parambcad.jdField_a_of_type_Long = 1500L;
+              parambdgy.jdField_a_of_type_Long = 1500L;
               i = 1;
               paramBoolean = bool2;
             }
@@ -891,9 +891,9 @@ public class SetSplash
           {
             try
             {
-              localObject4 = new BitmapDrawable(paramAppActivity.getResources(), bfpx.a(((File)localObject6).getAbsolutePath()));
+              localObject4 = new BitmapDrawable(paramAppActivity.getResources(), bgyo.a(((File)localObject6).getAbsolutePath()));
               bool1 = false;
-              if (parambcad == null) {}
+              if (parambdgy == null) {}
             }
             catch (Throwable localThrowable6)
             {
@@ -907,14 +907,14 @@ public class SetSplash
               b();
               bool2 = bool1;
               bool3 = paramBoolean;
-              if ((bbzy.a(paramAppActivity)) && (bool4))
+              if ((bdgt.a(paramAppActivity)) && (bool4))
               {
                 bool2 = bool1;
                 bool3 = paramBoolean;
-                localObject4 = new azih();
+                localObject4 = new baop();
                 bool2 = bool1;
                 bool3 = paramBoolean;
-                localazih = ((azih)localObject4).a(2).a(null).b(0).c(1).c(SplashMiniGameStarter.curData.videoLocalPath);
+                localbaop = ((baop)localObject4).a(2).a(null).b(0).c(1).c(SplashMiniGameStarter.curData.videoLocalPath);
                 bool2 = bool1;
                 bool3 = paramBoolean;
                 if (SplashMiniGameStarter.curData.videoMute == 0)
@@ -922,13 +922,13 @@ public class SetSplash
                   bool4 = true;
                   bool2 = bool1;
                   bool3 = paramBoolean;
-                  localazih.a(bool4).b(false);
+                  localbaop.a(bool4).b(false);
                   bool2 = bool1;
                   bool3 = paramBoolean;
-                  localObject4 = ((azih)localObject4).a();
+                  localObject4 = ((baop)localObject4).a();
                   bool2 = bool1;
                   bool3 = paramBoolean;
-                  parambcad.a(new bccj(localObject4, a(paramAppActivity, (azig)localObject4, parambcad), paramAppActivity));
+                  parambdgy.a(new bdje(localObject4, a(paramAppActivity, (baoo)localObject4, parambdgy), paramAppActivity));
                 }
               }
               else
@@ -937,7 +937,7 @@ public class SetSplash
                 bool1 = false;
                 bool3 = true;
                 paramBoolean = true;
-                parambcad.jdField_a_of_type_Long = 1500L;
+                parambdgy.jdField_a_of_type_Long = 1500L;
                 continue;
               }
             }
@@ -945,7 +945,7 @@ public class SetSplash
             {
               try
               {
-                parambcad.jdField_a_of_type_Long = 2201L;
+                parambdgy.jdField_a_of_type_Long = 2201L;
                 localObject1 = localObject4;
                 bool1 = false;
                 localObject4 = localObject1;
@@ -954,7 +954,7 @@ public class SetSplash
                   break label2522;
                 }
                 b();
-                if ((localObject1 != null) || (parambcad == null) || (i != 0)) {
+                if ((localObject1 != null) || (parambdgy == null) || (i != 0)) {
                   break label2509;
                 }
                 bool2 = bool1;
@@ -975,11 +975,11 @@ public class SetSplash
                 bool1 = paramBoolean;
                 paramBoolean = bool2;
               }
-              catch (Throwable parambcad)
+              catch (Throwable parambdgy)
               {
                 bool1 = bool3;
                 paramBoolean = bool2;
-                QLog.e("SplashMiniGameStarter", 1, "show SplashAd initView error ", parambcad);
+                QLog.e("SplashMiniGameStarter", 1, "show SplashAd initView error ", parambdgy);
                 break;
                 bool4 = false;
                 break label2175;
@@ -994,7 +994,7 @@ public class SetSplash
               localObject7 = "splash.jpg";
               localObject4 = localObject9;
               localObject6 = localObject8;
-              parambcad = localInputStream;
+              parambdgy = localInputStream;
               localObject1 = str;
               for (;;)
               {
@@ -1005,47 +1005,47 @@ public class SetSplash
                   }
                   localObject4 = localObject9;
                   localObject6 = localObject8;
-                  parambcad = localInputStream;
+                  parambdgy = localInputStream;
                   localObject1 = str;
                   localObject8 = paramAppActivity.getAssets().open((String)localObject7);
                   localObject4 = localObject9;
                   localObject6 = localObject8;
-                  parambcad = localInputStream;
+                  parambdgy = localInputStream;
                   localObject1 = localObject8;
                   localObject7 = new BitmapDrawable(paramAppActivity.getResources(), (InputStream)localObject8);
                   localObject4 = localObject9;
                   localObject6 = localObject8;
-                  parambcad = localInputStream;
+                  parambdgy = localInputStream;
                   localObject1 = localObject8;
                   localInputStream = paramAppActivity.getAssets().open("splash_logo.png");
                   localObject4 = localInputStream;
                   localObject6 = localObject8;
-                  parambcad = localInputStream;
+                  parambdgy = localInputStream;
                   localObject1 = localObject8;
                   localObject9 = new BitmapDrawable(paramAppActivity.getResources(), localInputStream);
                   if (localObject8 == null) {}
                 }
                 catch (Throwable localThrowable8)
                 {
-                  parambcad = (bcad)localObject4;
-                  localObject1 = localazih;
+                  parambdgy = (bdgy)localObject4;
+                  localObject1 = localbaop;
                   QLog.e("SetSplash", 1, "e1:", localThrowable8);
-                  if (localazih == null) {
+                  if (localbaop == null) {
                     continue;
                   }
                   try
                   {
-                    localazih.close();
+                    localbaop.close();
                     if (localObject4 != null) {
                       ((InputStream)localObject4).close();
                     }
-                    parambcad = null;
+                    parambdgy = null;
                     localObject1 = null;
                   }
-                  catch (Throwable parambcad)
+                  catch (Throwable parambdgy)
                   {
-                    QLog.e("SetSplash", 1, "e2:", parambcad);
-                    parambcad = null;
+                    QLog.e("SetSplash", 1, "e2:", parambdgy);
+                    parambdgy = null;
                     localObject1 = null;
                   }
                   continue;
@@ -1058,14 +1058,14 @@ public class SetSplash
                   try
                   {
                     ((InputStream)localObject1).close();
-                    if (parambcad == null) {
+                    if (parambdgy == null) {
                       continue;
                     }
-                    parambcad.close();
+                    parambdgy.close();
                   }
-                  catch (Throwable parambcad)
+                  catch (Throwable parambdgy)
                   {
-                    QLog.e("SetSplash", 1, "e2:", parambcad);
+                    QLog.e("SetSplash", 1, "e2:", parambdgy);
                     continue;
                   }
                 }
@@ -1075,13 +1075,13 @@ public class SetSplash
                   if (localInputStream != null) {
                     localInputStream.close();
                   }
-                  parambcad = (bcad)localObject9;
+                  parambdgy = (bdgy)localObject9;
                   localObject1 = localObject7;
                 }
-                catch (Throwable parambcad)
+                catch (Throwable parambdgy)
                 {
-                  QLog.e("SetSplash", 1, "e2:", parambcad);
-                  parambcad = (bcad)localObject9;
+                  QLog.e("SetSplash", 1, "e2:", parambdgy);
+                  parambdgy = (bdgy)localObject9;
                   localObject1 = localObject7;
                 }
               }
@@ -1134,12 +1134,12 @@ public class SetSplash
                 localImageView1.setVisibility(8);
                 continue;
               }
-              if ((localImageView1 != null) && (parambcad != null)) {}
+              if ((localImageView1 != null) && (parambdgy != null)) {}
               try
               {
-                localImageView1.setImageDrawable(parambcad);
+                localImageView1.setImageDrawable(parambdgy);
                 i = paramAppActivity.getResources().getDisplayMetrics().widthPixels;
-                f = parambcad.getIntrinsicWidth() / parambcad.getIntrinsicHeight();
+                f = parambdgy.getIntrinsicWidth() / parambdgy.getIntrinsicHeight();
                 j = (int)(0.3333333F * i);
                 k = (int)(j / f);
                 paramAppActivity = (ViewGroup.MarginLayoutParams)localImageView1.getLayoutParams();
@@ -1172,15 +1172,15 @@ public class SetSplash
     }
   }
   
-  private static SplashADView b(Activity paramActivity, azig paramazig, bcad parambcad)
+  private static SplashADView b(Activity paramActivity, baoo parambaoo, bdgy parambdgy)
   {
-    SplashADView localSplashADView = SplashADView.a(paramazig, paramActivity);
-    localSplashADView.setOnClickListener(new bccn(paramazig, azid.a, bbzy.a(BaseApplicationImpl.getApplication()) + "", parambcad, localSplashADView, paramActivity));
-    if (paramazig.a == 2)
+    SplashADView localSplashADView = SplashADView.a(parambaoo, paramActivity);
+    localSplashADView.setOnClickListener(new bdji(parambaoo, baol.a, bdgt.a(BaseApplicationImpl.getApplication()) + "", parambdgy, localSplashADView, paramActivity));
+    if (parambaoo.a == 2)
     {
-      localSplashADView.setOnErrorListener(new bcco(parambcad));
-      localSplashADView.setOnCompletionListener(new bccp(parambcad));
-      localSplashADView.setPresenter(new bccq((ImageView)paramActivity.findViewById(2131377680), (ImageView)paramActivity.findViewById(2131377683)));
+      localSplashADView.setOnErrorListener(new bdjj(parambdgy));
+      localSplashADView.setOnCompletionListener(new bdjk(parambdgy));
+      localSplashADView.setPresenter(new bdjl((ImageView)paramActivity.findViewById(2131377959), (ImageView)paramActivity.findViewById(2131377962)));
     }
     return localSplashADView;
   }
@@ -1190,33 +1190,33 @@ public class SetSplash
     ThreadManager.getFileThreadHandler().postDelayed(new SetSplash.10(), 5000L);
   }
   
-  public static void b(View paramView, bccr parambccr)
+  public static void b(View paramView, bdjm parambdjm)
   {
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F });
     localValueAnimator.setDuration(300L);
-    localValueAnimator.addListener(new bcch(parambccr));
-    localValueAnimator.addUpdateListener(new bcci(paramView));
+    localValueAnimator.addListener(new bdjc(parambdjm));
+    localValueAnimator.addUpdateListener(new bdjd(paramView));
     localValueAnimator.start();
   }
   
-  private static void b(bccr parambccr)
+  private static void b(bdjm parambdjm)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("SetSplash", 2, "splashAnimEnd listener:" + parambccr);
+      QLog.d("SetSplash", 2, "splashAnimEnd listener:" + parambdjm);
     }
-    if (parambccr != null) {
-      parambccr.a();
+    if (parambdjm != null) {
+      parambdjm.a();
     }
-    parambccr = a();
-    if ((parambccr != null) && (parambccr.getParent() != null) && ((parambccr.getParent() instanceof ViewGroup)))
+    parambdjm = a();
+    if ((parambdjm != null) && (parambdjm.getParent() != null) && ((parambdjm.getParent() instanceof ViewGroup)))
     {
-      ((ViewGroup)parambccr.getParent()).removeView(parambccr);
+      ((ViewGroup)parambdjm.getParent()).removeView(parambdjm);
       if (QLog.isColorLevel()) {
         QLog.d("SetSplash", 2, "removeView splash view");
       }
     }
     a();
-    jdField_a_of_type_Bccr = null;
+    jdField_a_of_type_Bdjm = null;
     jdField_a_of_type_JavaLangRunnable = null;
   }
   
@@ -1226,7 +1226,7 @@ public class SetSplash
     if ((Build.VERSION.SDK_INT >= 21) && (b())) {}
     try
     {
-      View localView = paramAppActivity.findViewById(2131377679);
+      View localView = paramAppActivity.findViewById(2131377958);
       if ((localView != null) && ((localView.getParent() instanceof ViewGroup)))
       {
         ViewGroup localViewGroup = (ViewGroup)localView.getParent();
@@ -1235,7 +1235,7 @@ public class SetSplash
         }
         ((ViewGroup)paramAppActivity.getWindow().getDecorView()).addView(localView);
         jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localView);
-        bfzg.a(null, "splashCost");
+        bhhy.a(null, "splashCost");
       }
       ImmersiveUtils.a(paramAppActivity.getWindow(), true);
       QLog.d("QSplash@QbossSplashUtil", 1, "show UnionBannerSplash animation");

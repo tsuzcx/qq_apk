@@ -1,12 +1,8 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
-
 public class ahai
 {
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  
-  public ahai(ahae paramahae) {}
+  public int a;
+  public CharSequence a;
+  public int b;
 }
 
 

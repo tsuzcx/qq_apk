@@ -14,7 +14,7 @@ final class ThemeBackground$1
   
   public Drawable invoke()
   {
-    Drawable localDrawable = this.val$context.getResources().getDrawable(2130845954);
+    Drawable localDrawable = this.val$context.getResources().getDrawable(2130846042);
     AppRuntime localAppRuntime = this.val$app;
     String str1 = this.val$themeBackground.path;
     String str2 = this.val$animateName;

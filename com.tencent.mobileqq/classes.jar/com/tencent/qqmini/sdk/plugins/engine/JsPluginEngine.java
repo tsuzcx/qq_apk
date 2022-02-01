@@ -331,7 +331,7 @@ public class JsPluginEngine
     while (localIterator.hasNext()) {
       createJsPlugin((Class)localIterator.next());
     }
-    if ((this.mActivatedPlugins != null) && (this.mActivatedPlugins.size() > 0))
+    if ((!paramIMiniAppContext.isMiniGame()) && (this.mActivatedPlugins != null) && (this.mActivatedPlugins.size() > 0))
     {
       localIterator = this.mActivatedPlugins.values().iterator();
       while (localIterator.hasNext()) {

@@ -1,19 +1,15 @@
-import android.os.Bundle;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-
-class ufu
-  implements EIPCResultCallback
+public class ufu
 {
-  ufu(ufd paramufd, String paramString) {}
+  public long a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public ufu() {}
+  
+  public ufu(boolean paramBoolean)
   {
-    if (paramEIPCResult.data != null)
-    {
-      paramEIPCResult = paramEIPCResult.data.getString("action_update_biu_and_comment_request_string");
-      this.jdField_a_of_type_Ufd.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramEIPCResult });
-    }
+    this.a = paramBoolean;
   }
 }
 

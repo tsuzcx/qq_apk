@@ -16,10 +16,11 @@ public class Configuration$Builder
   private double mElementExposureMinRate = 0.01D;
   private long mElementExposureMinTime = 200L;
   private ReportPolicy mElementReportPolicy = ReportPolicy.REPORT_POLICY_ALL;
+  private boolean mEnablePageLink = false;
   private IFormatter mFormatter;
   private boolean mIndependentPageOut = false;
   private int mLazyInitType = 0;
-  private ILogger mLogger = Configuration.access$1700();
+  private ILogger mLogger = Configuration.access$1800();
   private double mPageExposureMinRate = 0.4D;
   private long mPageExposureMinTime = 200L;
   private long mVisitBackgroundTime = 900000L;
@@ -105,6 +106,12 @@ public class Configuration$Builder
   public Builder elementReportPolicy(ReportPolicy paramReportPolicy)
   {
     this.mElementReportPolicy = paramReportPolicy;
+    return this;
+  }
+  
+  public Builder enablePageLink(boolean paramBoolean)
+  {
+    this.mEnablePageLink = paramBoolean;
     return this;
   }
   

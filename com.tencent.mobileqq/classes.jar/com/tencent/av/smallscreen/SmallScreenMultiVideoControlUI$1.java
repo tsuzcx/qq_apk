@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Handler;
-import bcef;
+import bdla;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.service.RecvMsg;
@@ -14,14 +14,14 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import ldz;
-import lez;
-import lno;
-import mcc;
+import lee;
+import lfe;
+import lob;
+import mcx;
 import mqq.app.MobileQQ;
 
 class SmallScreenMultiVideoControlUI$1
-  extends ldz
+  extends lee
 {
   SmallScreenMultiVideoControlUI$1(SmallScreenMultiVideoControlUI paramSmallScreenMultiVideoControlUI) {}
   
@@ -60,7 +60,7 @@ class SmallScreenMultiVideoControlUI$1
   public void a(long paramLong1, int paramInt1, long paramLong2, long paramLong3, long paramLong4, int paramInt2)
   {
     label205:
-    lno locallno;
+    lob locallob;
     switch (paramInt1)
     {
     default: 
@@ -95,16 +95,16 @@ class SmallScreenMultiVideoControlUI$1
       paramInt1 = 0;
       if (paramInt1 < localArrayList.size())
       {
-        locallno = (lno)localArrayList.get(paramInt1);
-        if ((paramLong2 != locallno.jdField_a_of_type_Long) || (locallno.jdField_a_of_type_Int != 1)) {
+        locallob = (lob)localArrayList.get(paramInt1);
+        if ((paramLong2 != locallob.jdField_a_of_type_Long) || (locallob.jdField_a_of_type_Int != 1)) {
           break;
         }
       }
       break;
     }
-    for (boolean bool = locallno.jdField_a_of_type_Boolean;; bool = false)
+    for (boolean bool = locallob.jdField_a_of_type_Boolean;; bool = false)
     {
-      this.a.jdField_a_of_type_Mcc.update(null, new Object[] { Integer.valueOf(105), Boolean.valueOf(bool), Long.valueOf(paramLong1) });
+      this.a.jdField_a_of_type_Mcx.update(null, new Object[] { Integer.valueOf(105), Boolean.valueOf(bool), Long.valueOf(paramLong1) });
       this.a.o();
       return;
       paramInt1 += 1;
@@ -115,7 +115,7 @@ class SmallScreenMultiVideoControlUI$1
       if (this.a.d != 2) {
         break;
       }
-      bcef.b(null, "CliOper", "", "", "0X800441E", "0X800441E", 0, 0, "", "", "", "");
+      bdla.b(null, "CliOper", "", "", "0X800441E", "0X800441E", 0, 0, "", "", "", "");
       return;
       if (!QLog.isColorLevel()) {
         break;
@@ -188,12 +188,12 @@ class SmallScreenMultiVideoControlUI$1
     {
       this.a.a(paramLong3, 6, false, 73);
       return;
-      lno locallno = new lno();
-      locallno.jdField_a_of_type_Long = paramLong3;
-      locallno.jdField_a_of_type_Int = paramInt;
+      lob locallob = new lob();
+      locallob.jdField_a_of_type_Long = paramLong3;
+      locallob.jdField_a_of_type_Int = paramInt;
       ArrayList localArrayList = new ArrayList();
-      localArrayList.add(locallno);
-      this.a.jdField_a_of_type_Mcc.update(null, new Object[] { Integer.valueOf(104), localArrayList });
+      localArrayList.add(locallob);
+      this.a.jdField_a_of_type_Mcx.update(null, new Object[] { Integer.valueOf(104), localArrayList });
     }
   }
   
@@ -325,13 +325,13 @@ class SmallScreenMultiVideoControlUI$1
     paramArrayOfString = paramArrayOfString[0];
     this.a.jdField_a_of_type_ComTencentAvVideoController.a(paramArrayOfString, String.valueOf(this.a.a()), this.a.d);
     if (i == 1) {
-      this.a.jdField_a_of_type_AndroidContentResResources.getString(2131695047);
+      this.a.jdField_a_of_type_AndroidContentResResources.getString(2131695263);
     }
     for (;;)
     {
       this.a.a(Long.valueOf(paramString).longValue(), 82, true, -1);
       return;
-      String.format(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131695046), new Object[] { Integer.valueOf(i) });
+      String.format(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131695262), new Object[] { Integer.valueOf(i) });
     }
   }
   
@@ -466,7 +466,7 @@ class SmallScreenMultiVideoControlUI$1
       QLog.d("SmallScreenMultiVideoControlUI", 2, "onFirstFrameDataComeIn");
     }
     paramInt = this.a.jdField_a_of_type_ComTencentAvVideoController.a().a(paramLong, paramInt);
-    if ((paramInt != -1) && (((lno)this.a.jdField_a_of_type_ComTencentAvVideoController.a().c.get(paramInt)).jdField_a_of_type_Boolean)) {}
+    if ((paramInt != -1) && (((lob)this.a.jdField_a_of_type_ComTencentAvVideoController.a().c.get(paramInt)).jdField_a_of_type_Boolean)) {}
     this.a.b("onFirstFrameDataComeIn");
   }
   

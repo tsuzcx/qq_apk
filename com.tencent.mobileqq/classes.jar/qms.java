@@ -1,108 +1,112 @@
-import android.text.TextUtils;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.pts.core.PTSComposer;
-import com.tencent.pts.core.itemview.PTSItemData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
+import com.tencent.mobileqq.app.BaseActivity;
+import cooperation.qzone.util.NetworkState;
+import org.json.JSONObject;
 
 public class qms
+  implements qqa
 {
-  public static String a(BaseArticleInfo paramBaseArticleInfo)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    if (paramBaseArticleInfo == null) {
-      return "null";
-    }
-    return " title = " + paramBaseArticleInfo.mTitle + ", rowKey = " + paramBaseArticleInfo.innerUniqueID + ", pageName = " + paramBaseArticleInfo.ptsLitePageName;
+    return null;
   }
   
-  public static <T extends BaseArticleInfo> void a(T paramT)
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    if ((paramT == null) || (paramT.ptsComposer == null)) {
-      return;
-    }
-    paramT.ptsComposer.destroy();
-    paramT.ptsComposer = null;
-    QLog.i("PTSPreLayoutHandler", 1, "[destroy] succeed, " + a(paramT));
+    return qlw.a(paramBaseArticleInfo);
   }
   
-  private static void a(BaseArticleInfo paramBaseArticleInfo, String paramString)
+  public void a(int paramInt1, Container paramContainer, qfw paramqfw, int paramInt2)
   {
-    if ((paramBaseArticleInfo == null) || (TextUtils.isEmpty(paramString))) {
-      QLog.i("PTSPreLayoutHandler", 1, "[parsePtsCardType] articleInfo is null or frameTreeJson is empty.");
-    }
-    do
+    Object localObject2 = null;
+    ViewBase localViewBase = paramContainer.getVirtualView();
+    if ((NetworkState.isWifiConn()) || (Aladdin.getConfig(299).getIntegerFromString("rij_main_feeds_tips_off", 0) == 1))
     {
-      return;
-      if (paramString.contains("pts:round-corner-card"))
-      {
-        QLog.i("PTSPreLayoutHandler", 1, "[parsePtsCardType] ptsRoundCornerCard = true, articleInfo = " + a(paramBaseArticleInfo));
-        paramBaseArticleInfo.ptsRoundCornerCard = true;
+      localObject1 = localViewBase.findViewBaseByName("id_large_video_icon");
+      if (localObject1 != null) {
+        ((ViewBase)localObject1).setVisibility(0);
       }
-    } while (!paramString.contains("pts:special-card"));
-    QLog.i("PTSPreLayoutHandler", 1, "[parsePtsCardType] ptsSpecialCard = true, articleInfo = " + a(paramBaseArticleInfo));
-    paramBaseArticleInfo.ptsSpecialCard = true;
-  }
-  
-  public static void a(List<? extends BaseArticleInfo> paramList)
-  {
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      QLog.i("PTSPreLayoutHandler", 1, "[preHandleArticleInfo] articleInfoList is empty.");
-    }
-    for (;;)
-    {
-      return;
-      if (!qny.a().a())
-      {
-        QLog.i("PTSPreLayoutHandler", 1, "[preHandleArticleInfo] pts lite master switch disabled.");
-        return;
+      localObject1 = localViewBase.findViewBaseByName("id_video_bg");
+      if (localObject1 != null) {
+        ((ViewBase)localObject1).setVisibility(8);
       }
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      pjr.a(false, localViewBase, null);
+      if (paramqfw != null)
       {
-        BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)paramList.next();
-        if (!qmh.a(localBaseArticleInfo))
-        {
-          QLog.i("PTSPreLayoutHandler", 1, "[preHandleArticleInfo], articleInfo is not valid.");
-        }
-        else
-        {
-          String str1 = localBaseArticleInfo.ptsLitePageName;
-          String str2 = qoe.a().a("default_feeds", str1);
-          if (TextUtils.isEmpty(str2))
-          {
-            QLog.i("PTSPreLayoutHandler", 1, "[preHandleArticleInfo], frameTreeJson is empty.");
-          }
-          else
-          {
-            localBaseArticleInfo.ptsComposer = PTSComposer.buildComposer(str1, str2, localBaseArticleInfo.ptsItemData.getJSONData(), null, localBaseArticleInfo.ptsUpdateDataListener);
-            a(localBaseArticleInfo, str2);
-            QLog.i("PTSPreLayoutHandler", 1, "[preHandleArticleInfo] succeed, " + a(localBaseArticleInfo));
-          }
+        localObject1 = paramqfw.a();
+        if ((localObject1 != null) && (((BaseArticleInfo)localObject1).isAccountShown)) {
+          qsd.a(paramContainer, paramqfw);
         }
       }
+      paramContainer = localObject2;
+      if (paramqfw != null) {
+        paramContainer = paramqfw.a();
+      }
+      ssn.a(paramContainer, BaseActivity.sTopActivity);
+      return;
+    }
+    Object localObject1 = localViewBase.findViewBaseByName("id_large_video_icon");
+    if (localObject1 != null) {
+      ((ViewBase)localObject1).setVisibility(8);
+    }
+    localObject1 = localViewBase.findViewBaseByName("id_video_bg");
+    if (localObject1 != null) {
+      ((ViewBase)localObject1).setVisibility(0);
+    }
+    NativeText localNativeText = (NativeText)localViewBase.findViewBaseByName("id_video_paly_text");
+    String str;
+    if (localNativeText != null)
+    {
+      str = anvx.a(2131700601);
+      if (bhyk.a() == 1)
+      {
+        localObject1 = anvx.a(2131700602);
+        label210:
+        localNativeText.setText((CharSequence)localObject1);
+      }
+    }
+    else
+    {
+      if (paramqfw == null) {
+        break label303;
+      }
+    }
+    label303:
+    for (localObject1 = paramqfw.a();; localObject1 = null)
+    {
+      pjr.a(localViewBase, (BaseArticleInfo)localObject1);
+      break;
+      localObject1 = str;
+      if (paramqfw == null) {
+        break label210;
+      }
+      localObject1 = str;
+      if (paramqfw.a().mXGFileSize <= 0L) {
+        break label210;
+      }
+      localObject1 = six.b(paramqfw.a().mXGFileSize) + anvx.a(2131700600);
+      break label210;
     }
   }
   
-  public static void b(List<? extends BaseArticleInfo> paramList)
+  public boolean a(int paramInt, Container paramContainer, qfw paramqfw, ViewBase paramViewBase)
   {
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      QLog.i("PTSPreLayoutHandler", 1, "[destroy] articleInfoList is null.");
-    }
-    for (;;)
+    paramContainer = paramqfw.a();
+    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
     {
-      return;
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)paramList.next();
-        if (!qmh.a(localBaseArticleInfo)) {
-          QLog.i("PTSPreLayoutHandler", 1, "[destroy], articleInfo is not valid.");
-        } else {
-          a(localBaseArticleInfo);
-        }
-      }
+    default: 
+      return false;
     }
+    paramViewBase.setOnClickListener(new qmt(this, paramContainer, paramqfw, paramViewBase));
+    return true;
   }
 }
 

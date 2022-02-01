@@ -1,52 +1,16 @@
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ScrollView;
 
-public class aurx
-  implements avpj
+class aurx
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private WeakReference<IVideoOuterStatusListener> a;
+  aurx(aurs paramaurs) {}
   
-  public aurx(WeakReference<IVideoOuterStatusListener> paramWeakReference)
+  public void onGlobalLayout()
   {
-    this.a = paramWeakReference;
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    if ((this.a == null) || (this.a.get() == null)) {
-      return;
+    if (this.a.a != null) {
+      this.a.a.fullScroll(130);
     }
-    IVideoOuterStatusListener localIVideoOuterStatusListener = (IVideoOuterStatusListener)this.a.get();
-    if (paramBoolean)
-    {
-      localIVideoOuterStatusListener.onVideoStop();
-      return;
-    }
-    localIVideoOuterStatusListener.onVideoStart(-1);
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return;
-    case 1: 
-      QLog.i("WatchFloatingWindowController", 1, "onFocusChange: MEDIAFOCUS_GAIN");
-      aurt.a().a(false);
-      a(false);
-      return;
-    }
-    QLog.i("WatchFloatingWindowController", 1, "onFocusChange: MEDIAFOCUS_LOSS");
-    aurt.a().a(true);
-    a(true);
-  }
-  
-  public void a(WeakReference<IVideoOuterStatusListener> paramWeakReference)
-  {
-    this.a = paramWeakReference;
   }
 }
 

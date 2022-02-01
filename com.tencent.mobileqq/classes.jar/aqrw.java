@@ -1,10 +1,8 @@
-import com.tencent.mobileqq.data.QzoneCommonIntent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import mqq.app.MSFServlet;
-
 public abstract interface aqrw
 {
-  public abstract void a(MSFServlet paramMSFServlet, QzoneCommonIntent paramQzoneCommonIntent, FromServiceMsg paramFromServiceMsg);
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 

@@ -1,10 +1,18 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class axkx
-  implements BusinessObserver
+class axkx
+  extends BroadcastReceiver
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  axkx(axku paramaxku) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ((paramIntent != null) && ("BROAD_CAST_CALL_PAGE_SHARE".equals(paramIntent.getAction()))) {
+      axku.a(this.a);
+    }
+  }
 }
 
 

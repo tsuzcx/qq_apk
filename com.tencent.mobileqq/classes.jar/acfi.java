@@ -1,48 +1,44 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.HexUtil;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.media.AudioManager;
 import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.CommTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
 
-public class acfi
-  implements abyl
+class acfi
+  extends BroadcastReceiver
 {
-  public int a()
-  {
-    return 10010;
-  }
+  private acfi(acey paramacey) {}
   
-  public boolean a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return true;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
-    localCommTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    localCommTmp.c2c_type.set(1);
-    localCommTmp.svr_type.set(167);
-    paramMessageRecord = paramQQAppInterface.getMsgCache().l(paramMessageRecord.frienduin);
-    if (paramMessageRecord != null)
+    if (acey.a(this.a))
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("fight_accost", 4, "发送语音房临时会消息 有key------>" + HexUtil.bytes2HexStr(paramMessageRecord) + ",length:" + paramMessageRecord.length);
-      }
-      localCommTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
+      acey.b(this.a, false);
+      QLog.i("GdtMvViewController", 1, "SilentModeReceiver first auto called! so skip!");
     }
-    paramRoutingHead.comm_tmp.set(localCommTmp);
-    return true;
-  }
-  
-  public int b()
-  {
-    return 8045;
+    while ((acey.a(this.a) == null) || (!"android.media.RINGER_MODE_CHANGED".equalsIgnoreCase(paramIntent.getAction()))) {
+      return;
+    }
+    int i = acey.a(this.a).getRingerMode();
+    int j = acey.a(this.a).getStreamVolume(3);
+    QLog.i("GdtMvViewController", 1, "system context mode: " + i + ", streamVolume = " + j);
+    switch (i)
+    {
+    default: 
+      acey.c(this.a, true);
+      this.a.a = true;
+      acey.a(this.a).a(true);
+    }
+    for (;;)
+    {
+      acey.a(this.a, j, acey.b(this.a), false);
+      return;
+      acey.c(this.a, false);
+      if (j > 0) {
+        this.a.a = false;
+      }
+      acey.a(this.a).a(this.a.a);
+    }
   }
 }
 

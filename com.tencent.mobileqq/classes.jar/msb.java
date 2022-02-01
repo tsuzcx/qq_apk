@@ -1,12 +1,15 @@
-public abstract interface msb
+import com.tencent.av.VideoController;
+
+public class msb
 {
-  public abstract void a();
-  
-  public abstract void a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean);
+  public static void a()
+  {
+    msa.a("0X800A3D8", VideoController.a().a().d);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     msb
  * JD-Core Version:    0.7.0.1
  */

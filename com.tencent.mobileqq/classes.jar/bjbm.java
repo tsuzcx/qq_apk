@@ -1,57 +1,55 @@
-import NS_MINI_AD.MiniAppAd.StGetAdRsp;
-import android.text.TextUtils;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
-import com.tencent.mobileqq.mini.util.AdUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.proxyimpl.AdProxyImpl;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.ILoadingAdListener;
+import android.graphics.Bitmap;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.open.agent.BindGroupActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
 
 public class bjbm
-  implements MiniAppCmdInterface
+  extends bjgn
 {
-  public bjbm(AdProxyImpl paramAdProxyImpl, AdProxy.ILoadingAdListener paramILoadingAdListener) {}
+  public bjbm(BindGroupActivity paramBindGroupActivity) {}
   
-  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
+  public int getCount()
   {
-    if ((paramBoolean) && (paramJSONObject != null)) {}
-    while (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener == null) {
-      try
-      {
-        Object localObject = (MiniAppAd.StGetAdRsp)paramJSONObject.get("response");
-        int i = paramJSONObject.getInt("retCode");
-        String str = paramJSONObject.getString("errMsg");
-        paramJSONObject = ((MiniAppAd.StGetAdRsp)localObject).strAdsJson.get();
-        QLog.d("MiniLoadingAdManager", 1, "selectAd receive retCode= " + i + " errMsg=" + str + " adJson=" + paramJSONObject);
-        if ((i == 0) && (!TextUtils.isEmpty(paramJSONObject)))
-        {
-          localObject = AdUtils.convertJson2GdtAds(paramJSONObject);
-          if ((localObject != null) && (((List)localObject).size() > 0))
-          {
-            localObject = (GdtAd)((List)localObject).get(0);
-            if ((localObject != null) && (((GdtAd)localObject).info != null) && (((GdtAd)localObject).info.report_info != null) && (((GdtAd)localObject).info.report_info.trace_info != null))
-            {
-              long l = ((GdtAd)localObject).info.report_info.trace_info.aid.get();
-              this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener.onSelectAdProcessDone(paramJSONObject, l);
-              return;
-            }
-          }
-        }
+    return this.a.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    View localView;
+    if ((paramView != null) && (paramView.getTag() != null))
+    {
+      localObject = (bjbn)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
+      localObject = (bjbl)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((bjbl)localObject).b);
+      paramView.jdField_a_of_type_JavaLangString = ((bjbl)localObject).c;
+      Bitmap localBitmap = bjgt.a().a(((bjbl)localObject).c);
+      if (localBitmap == null) {
+        break label171;
       }
-      catch (JSONException paramJSONObject)
-      {
-        QLog.e("MiniLoadingAdManager", 1, "selectAd getRewardedVideoADInfo error", paramJSONObject);
-      }
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
     }
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener.onSelectAdProcessDone(null, -1L);
+    for (;;)
+    {
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562850, paramViewGroup, false);
+      paramView = new bjbn();
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366345));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379564));
+      localView.setTag(paramView);
+      break;
+      label171:
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840576);
+      bjgt.a().a(((bjbl)localObject).c, this.a);
+    }
   }
 }
 

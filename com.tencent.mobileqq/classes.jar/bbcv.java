@@ -1,47 +1,44 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-class bbcv
-  implements View.OnClickListener
+public class bbcv
 {
-  bbcv(bbcm parambbcm, Context paramContext, bazs parambazs) {}
+  private QQAppInterface a;
   
-  public void onClick(View paramView)
+  public bbcv(QQAppInterface paramQQAppInterface)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    bbgk.a(localQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bazs.a.jdField_a_of_type_JavaLangString);
-    batc localbatc;
-    JSONObject localJSONObject;
-    if (batb.b.containsKey(this.jdField_a_of_type_Bazs))
+    this.a = paramQQAppInterface;
+  }
+  
+  public static boolean a()
+  {
+    bbcu localbbcu = (bbcu)aqxe.a().a(677);
+    if (localbbcu != null) {}
+    for (boolean bool = localbbcu.a;; bool = false)
     {
-      localbatc = (batc)batb.b.get(this.jdField_a_of_type_Bazs);
-      localJSONObject = new JSONObject();
-    }
-    try
-    {
-      localJSONObject.put("project", bbda.a());
-      localJSONObject.put("event_src", "client");
-      localJSONObject.put("obj_lct", localbatc.jdField_a_of_type_Int);
-      localJSONObject.put("get_src", "web");
-      bbda.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(localbatc.jdField_a_of_type_Long + "").obj2(localbatc.b).ver1(localbatc.jdField_a_of_type_JavaLangString).ver2(bbda.a(this.jdField_a_of_type_Bazs.c)).ver7(localJSONObject.toString()).session_id(localQQAppInterface.getCurrentAccountUin() + batb.jdField_a_of_type_Long));
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.e("Q.uniteSearch.SearchTemplatePresenter", 2, "e = " + localJSONException);
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendClueConfigHelper", 2, String.format("isIsNeedShow isNeedShow=%s", new Object[] { Boolean.valueOf(bool) }));
       }
+      return bool;
+    }
+  }
+  
+  public void a(Activity paramActivity, String paramString)
+  {
+    paramString = String.format("%s?uin=%s", new Object[] { "https://ti.qq.com/friends/recall", paramString });
+    if (QLog.isDevelopLevel()) {
+      QLog.d("FriendClueConfigHelper", 1, String.format("openQQBrowser url=%s", new Object[] { paramString }));
+    }
+    Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
+    localIntent.putExtra("url", paramString);
+    localIntent.putExtra("finish_animation_out_to_right", true);
+    localIntent.putExtra("is_wrap_content", true);
+    localIntent.putExtra("hide_left_button", false);
+    if ((paramActivity != null) && (QQBrowserActivity.a(1000L))) {
+      paramActivity.startActivity(localIntent);
     }
   }
 }

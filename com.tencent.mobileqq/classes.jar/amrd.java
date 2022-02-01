@@ -1,149 +1,99 @@
-import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public class amrd
-  extends MSFServlet
+public abstract class amrd
+  implements amrf
 {
-  private byte[] a(String[] paramArrayOfString1, String[] paramArrayOfString2)
+  private AppInterface mApp;
+  private final boolean mInMainProcess;
+  
+  public amrd(AppInterface paramAppInterface, boolean paramBoolean)
   {
-    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-    localOIDBSSOPkg.uint32_command.set(1274);
-    localOIDBSSOPkg.uint32_service_type.set(7);
-    ByteBuffer localByteBuffer = ByteBuffer.allocate(paramArrayOfString1.length * 2 + 4 + paramArrayOfString2.length * 4);
-    int n = paramArrayOfString1.length;
-    int i = (byte)(n >> 8 & 0xFF);
-    int j = (byte)(n & 0xFF);
-    byte[] arrayOfByte = new byte[paramArrayOfString1.length * 2];
-    int i1 = 0;
-    int i2 = paramArrayOfString1.length;
-    n = 0;
-    long l;
-    while (n < i2)
-    {
-      l = Long.parseLong(paramArrayOfString1[n]);
-      arrayOfByte[i1] = ((byte)(int)(l >> 8 & 0xFF));
-      arrayOfByte[(i1 + 1)] = ((byte)(int)(l & 0xFF));
-      i1 += 2;
-      n += 1;
-    }
-    n = paramArrayOfString2.length;
-    int k = (byte)(n >> 8 & 0xFF);
-    int m = (byte)(n & 0xFF);
-    i1 = 0;
-    paramArrayOfString1 = new byte[n * 4];
-    i2 = paramArrayOfString2.length;
-    n = 0;
-    while (n < i2)
-    {
-      l = Long.parseLong(paramArrayOfString2[n]);
-      paramArrayOfString1[(i1 + 3)] = ((byte)(int)(0xFF & l));
-      paramArrayOfString1[(i1 + 2)] = ((byte)(int)(l >> 8 & 0xFF));
-      paramArrayOfString1[(i1 + 1)] = ((byte)(int)(l >> 16 & 0xFF));
-      paramArrayOfString1[i1] = ((byte)(int)(l >> 24 & 0xFF));
-      i1 += 4;
-      n += 1;
-    }
-    localByteBuffer.put(new byte[] { i, j }).put(arrayOfByte).put(new byte[] { k, m }).put(paramArrayOfString1);
-    localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(localByteBuffer.array()));
-    paramArrayOfString1 = localOIDBSSOPkg.toByteArray();
-    paramArrayOfString2 = ByteBuffer.allocate(paramArrayOfString1.length + 4);
-    paramArrayOfString2.putInt(paramArrayOfString1.length + 4);
-    paramArrayOfString2.put(paramArrayOfString1);
-    return paramArrayOfString2.array();
+    this.mApp = paramAppInterface;
+    this.mInMainProcess = paramBoolean;
   }
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public void onDownloadGameResDown(CmGameStartChecker.StartCheckParam paramStartCheckParam)
   {
-    int j = paramIntent.getIntExtra("key_cmd", -1);
-    paramFromServiceMsg.isSuccess();
-    Bundle localBundle = new Bundle();
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    switch (j)
-    {
-    default: 
-      return;
+    if ((paramStartCheckParam == null) || (paramStartCheckParam.game == null)) {
+      QLog.e("cmgame_process.CmGameStartChecker", 1, "onDownloadGameResDown startCheckParam == null");
     }
-    for (;;)
+    do
     {
-      try
-      {
-        paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
-        byte[] arrayOfByte = new byte[paramFromServiceMsg.getInt() - 4];
-        paramFromServiceMsg.get(arrayOfByte);
-        paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom(arrayOfByte);
-        if (paramFromServiceMsg.uint32_result.get() == 0)
-        {
-          bool = true;
-          paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
-          if (bool)
-          {
-            arrayOfByte = new byte[2];
-            paramFromServiceMsg.get(arrayOfByte);
-            int k = bftf.a(arrayOfByte, 0);
-            int i = 0;
-            if (i < k)
-            {
-              arrayOfByte = new byte[4];
-              paramFromServiceMsg.get(arrayOfByte);
-              localArrayList2.add(String.valueOf(bftf.a(arrayOfByte, 0)));
-              arrayOfByte = new byte[2];
-              paramFromServiceMsg.get(arrayOfByte);
-              long l = bftf.a(arrayOfByte, 0);
-              arrayOfByte = new byte[2];
-              paramFromServiceMsg.get(arrayOfByte);
-              l = bftf.a(arrayOfByte, 0);
-              arrayOfByte = new byte[2];
-              paramFromServiceMsg.get(arrayOfByte);
-              arrayOfByte = new byte[bftf.a(arrayOfByte, 0)];
-              paramFromServiceMsg.get(arrayOfByte);
-              localArrayList1.add(new String(arrayOfByte, "utf-8"));
-              i += 1;
-              continue;
-            }
-          }
-          localBundle.putStringArrayList("nickname_list", (ArrayList)localArrayList1);
-          localBundle.putStringArrayList("uin_list", (ArrayList)localArrayList2);
-          notifyObserver(paramIntent, j, bool, localBundle, ywi.class);
-          return;
-        }
+      return;
+      if (!this.mInMainProcess) {
+        break;
       }
-      catch (Exception paramIntent)
+    } while (!(this.mApp instanceof QQAppInterface));
+    ApolloGameUtil.b((QQAppInterface)this.mApp, paramStartCheckParam);
+    return;
+    Bundle localBundle = new Bundle();
+    localBundle.putSerializable("StartCheckParam", paramStartCheckParam);
+    QIPCClientHelper.getInstance().callServer("cm_game_module", "onDownloadGameResDown", localBundle, null);
+  }
+  
+  public void onDownloadGameResFail(CmGameStartChecker.StartCheckParam paramStartCheckParam) {}
+  
+  public void onDownloadGameResProgress(CmGameStartChecker.StartCheckParam paramStartCheckParam, int paramInt) {}
+  
+  public void onDownloadGameResStart(CmGameStartChecker.StartCheckParam paramStartCheckParam) {}
+  
+  public void onGameCheckRetry(int paramInt) {}
+  
+  public void onGameCheckStart(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    if (paramStartCheckParam == null) {
+      QLog.e("cmgame_process.CmGameStartChecker", 1, "onGameCheckStart startCheckParam == null");
+    }
+    do
+    {
+      return;
+      if (!this.mInMainProcess) {
+        break;
+      }
+    } while (!(this.mApp instanceof QQAppInterface));
+    ApolloGameUtil.a((QQAppInterface)this.mApp, paramStartCheckParam);
+    return;
+    Bundle localBundle = new Bundle();
+    localBundle.putSerializable("StartCheckParam", paramStartCheckParam);
+    QIPCClientHelper.getInstance().callServer("cm_game_module", "onGameCheckStart", localBundle, null);
+  }
+  
+  public void onGameFailed(CmGameStartChecker.StartCheckParam paramStartCheckParam, long paramLong) {}
+  
+  public void onGetGameData(CmGameStartChecker.StartCheckParam paramStartCheckParam) {}
+  
+  public void onSsoCmdRuleRsp(CmGameStartChecker.StartCheckParam paramStartCheckParam, String paramString)
+  {
+    if (paramStartCheckParam == null) {
+      QLog.e("cmgame_process.CmGameStartChecker", 1, "onSsoCmdRuleRsp startCheckParam == null");
+    }
+    Object localObject;
+    do
+    {
+      return;
+      if (this.mInMainProcess)
       {
-        paramIntent.printStackTrace();
+        localObject = new Bundle();
+        ((Bundle)localObject).putSerializable("StartCheckParam", paramStartCheckParam);
+        ((Bundle)localObject).putString("rule", paramString);
+        paramStartCheckParam.mSSORule = paramString;
+        QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "cm_game_client_module", "action_set_sso_rule", (Bundle)localObject, null);
         return;
       }
-      boolean bool = false;
-    }
+      localObject = amwn.a();
+    } while (localObject == null);
+    ((amyx)localObject).a(paramStartCheckParam.gameId, paramString);
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    int i = paramIntent.getIntExtra("key_cmd", -1);
-    String str = null;
-    switch (i)
-    {
-    }
-    for (paramIntent = str;; paramIntent = str)
-    {
-      if (paramIntent != null) {
-        paramPacket.setSSOCommand(paramIntent);
-      }
-      return;
-      str = "OidbSvc.0x4fa_7";
-      paramPacket.putSendData(a(paramIntent.getStringArrayExtra("field_id"), paramIntent.getStringArrayExtra("uin_list")));
-    }
-  }
+  public void onVerifyGameFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams) {}
 }
 
 

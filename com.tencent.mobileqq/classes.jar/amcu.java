@@ -1,16 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class amcu
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  public amcu(ApolloGameActivity paramApolloGameActivity) {}
+  public amcu(SpecailCareListActivity paramSpecailCareListActivity, amdg paramamdg) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Amdg.a.clearAnimation();
+    paramAnimation = new RelativeLayout.LayoutParams(-2, -2);
+    paramAnimation.addRule(1, 2131368381);
+    paramAnimation.setMargins(0, (int)(36.0F * SpecailCareListActivity.i(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), (int)(30.0F * SpecailCareListActivity.j(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0);
+    this.jdField_a_of_type_Amdg.a.setLayoutParams(paramAnimation);
+    this.jdField_a_of_type_Amdg.a.setVisibility(0);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

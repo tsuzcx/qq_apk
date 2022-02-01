@@ -1,20 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.RiskHintDlgFragment;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
 public class aedq
-  implements DialogInterface.OnDismissListener
+  extends WebViewClient
 {
-  public aedq(RiskHintDlgFragment paramRiskHintDlgFragment) {}
+  public aedq(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  @Override
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    if (this.a.getActivity() != null)
-    {
-      this.a.getActivity().finish();
-      this.a.getActivity().overridePendingTransition(0, 0);
-    }
+    JsInjector.getInstance().onPageStarted(paramWebView);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    this.a.a(paramString);
+    return true;
   }
 }
 

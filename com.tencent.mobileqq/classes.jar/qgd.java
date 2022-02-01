@@ -1,11 +1,6 @@
-import com.tencent.qphone.base.util.QLog;
-
-public class qgd
+public abstract interface qgd
 {
-  public static void a(String paramString1, String paramString2)
-  {
-    QLog.d("FluencyLogUtil", 1, "Class : " + paramString1 + " Scene : " + paramString2);
-  }
+  public abstract void a(int paramInt);
 }
 
 

@@ -1,23 +1,15 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.activateFriend.PositionActivatePage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
 
 public class aeuz
-  implements aeup
+  implements DialogInterface.OnClickListener
 {
-  public aeuz(PositionActivatePage paramPositionActivatePage) {}
+  public aeuz(RiskHintDlgFragment paramRiskHintDlgFragment) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt > 0) {
-      this.a.a.setEnabled(true);
-    }
-    while (paramInt > 1)
-    {
-      this.a.a.setText(2131689523);
-      return;
-      this.a.a.setEnabled(false);
-    }
-    this.a.a.setText(2131689524);
+    this.a.a(this.a.a);
   }
 }
 

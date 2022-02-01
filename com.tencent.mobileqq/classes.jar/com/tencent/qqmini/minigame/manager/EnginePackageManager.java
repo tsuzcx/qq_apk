@@ -198,7 +198,7 @@ public class EnginePackageManager
   
   private static Version getLocalTritonVersion()
   {
-    Version localVersion = getTritonVersionFromJSONStr("{\n    \"triton_info\": {\n        \"version\": \"1.8.0.64.bf85a90\",\n        \"timestamp\": 1598590401113\n    }\n}");
+    Version localVersion = getTritonVersionFromJSONStr("{\n    \"triton_info\": {\n        \"version\": \"1.8.0.66.3735de7\",\n        \"timestamp\": 1600749448814\n    }\n}");
     GameLog.getInstance().i("GameEnvManager[MiniEng]", "getLocalTritonVersion:" + localVersion);
     return localVersion;
   }

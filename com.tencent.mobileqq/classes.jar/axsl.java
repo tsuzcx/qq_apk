@@ -1,17 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.app.QQPermissionCallback;
 
 public class axsl
-  implements View.OnClickListener
+  implements QQPermissionCallback
 {
-  public axsl(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
+  public axsl(GameRoomTransActivity paramGameRoomTransActivity) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AccountOnlineStateActivity.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    QQToast.a(this.a, anvx.a(2131704538), 0).a();
+    this.a.finish();
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.a();
   }
 }
 

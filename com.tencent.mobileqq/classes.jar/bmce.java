@@ -1,69 +1,88 @@
-import android.content.Context;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import androidx.annotation.NonNull;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.widget.QQToast;
+import cooperation.qqfav.widget.LocationDetailActivity;
+import java.lang.ref.WeakReference;
 
 public class bmce
-  extends ReportDialog
+  extends bmbw
 {
-  private final TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bhhi jdField_a_of_type_Bhhi;
-  private final TextView b;
+  private WeakReference<LocationDetailActivity> a;
   
-  public bmce(@NonNull Context paramContext)
+  public bmce(LocationDetailActivity paramLocationDetailActivity)
   {
-    super(paramContext, 2131755826);
-    setCancelable(false);
-    setCanceledOnTouchOutside(false);
-    setContentView(2131558561);
-    this.b = ((TextView)findViewById(2131379563));
-    paramContext = (ImageView)findViewById(2131369334);
-    this.jdField_a_of_type_Bhhi = a();
-    paramContext.setImageDrawable(this.jdField_a_of_type_Bhhi);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363773));
+    this.a = new WeakReference(paramLocationDetailActivity);
   }
   
-  private bhhi a()
+  public int a()
   {
-    bhhi localbhhi = new bhhi(getContext());
-    localbhhi.a(UIUtils.dip2px(getContext(), 94.0F));
-    localbhhi.a(true);
-    localbhhi.g(-1711276033);
-    localbhhi.h(18);
-    localbhhi.b(true);
-    localbhhi.d(false);
-    localbhhi.f(0);
-    localbhhi.c(false);
-    localbhhi.d(-16722948);
-    localbhhi.e(872415231);
-    localbhhi.i(6);
-    localbhhi.e(true);
-    localbhhi.jdField_f_of_type_Boolean = true;
-    localbhhi.jdField_f_of_type_Int = 2;
-    return localbhhi;
+    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
+    if (localLocationDetailActivity == null) {
+      return 0;
+    }
+    return LocationDetailActivity.a(localLocationDetailActivity);
   }
   
-  public void a(int paramInt)
+  public void a()
   {
-    if (this.jdField_a_of_type_Bhhi == null) {
+    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
+    if (localLocationDetailActivity == null) {
       return;
     }
-    this.jdField_a_of_type_Bhhi.a();
-    this.jdField_a_of_type_Bhhi.c(paramInt);
-    this.jdField_a_of_type_Bhhi.a(paramInt + "%");
+    LocationDetailActivity.b(localLocationDetailActivity);
   }
   
-  public void a(View.OnClickListener paramOnClickListener)
+  public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
+    super.a(paramBundle);
+    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
+    if (localLocationDetailActivity == null) {
+      return;
+    }
+    localLocationDetailActivity.a(paramBundle);
   }
   
-  public void a(String paramString)
+  public void b()
   {
-    this.b.setText(paramString);
+    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
+    if (localLocationDetailActivity == null) {
+      return;
+    }
+    LocationDetailActivity.c(localLocationDetailActivity);
+  }
+  
+  public void c()
+  {
+    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
+    if (localLocationDetailActivity == null) {}
+    while (!localLocationDetailActivity.d()) {
+      return;
+    }
+    localLocationDetailActivity.finish();
+  }
+  
+  public void d()
+  {
+    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
+    if (localLocationDetailActivity == null) {
+      return;
+    }
+    localLocationDetailActivity.A();
+  }
+  
+  public void e()
+  {
+    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
+    if (localLocationDetailActivity == null) {
+      return;
+    }
+    Intent localIntent = LocationDetailActivity.d(localLocationDetailActivity);
+    if (localIntent != null)
+    {
+      aupt.a(localLocationDetailActivity, localIntent, 103);
+      return;
+    }
+    QQToast.a(localLocationDetailActivity, 2131692147, 1, 2000).b(5);
   }
 }
 

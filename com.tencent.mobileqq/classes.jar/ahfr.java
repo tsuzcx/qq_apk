@@ -1,14 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.SystemClock;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
+import com.tencent.mobileqq.data.MessageForScribble;
 
-class ahfr
-  implements DialogInterface.OnClickListener
+public class ahfr
+  implements bkzq
 {
-  ahfr(ahfp paramahfp, ahfz paramahfz) {}
+  public ahfr(ScribbleItemBuilder paramScribbleItemBuilder, View paramView, MessageForScribble paramMessageForScribble, bkzi parambkzi) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    ahfp.a(this.jdField_a_of_type_Ahfp, this.jdField_a_of_type_Ahfz);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      long l;
+      do
+      {
+        return;
+        l = SystemClock.uptimeMillis();
+      } while (l - this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder.c < 500L);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder.c = l;
+      paramView = afsl.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder.a);
+      if (paramView != null) {
+        paramView.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder);
+      }
+      bbxw.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
+    }
   }
 }
 

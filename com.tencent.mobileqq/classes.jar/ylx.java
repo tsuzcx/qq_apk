@@ -1,45 +1,28 @@
-import android.media.MediaFormat;
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.qqstory.takevideo.EditPicSave.1.1;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
 
-public abstract class ylx
+public class ylx
+  implements ThreadExcutor.IThreadListener
 {
-  protected int a;
-  protected bagl a;
-  protected String a;
-  protected String b;
+  ylx(ylw paramylw) {}
   
-  protected void a(int paramInt, String paramString1, String paramString2, MediaFormat paramMediaFormat, SlideItemInfo paramSlideItemInfo, ylw paramylw)
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    if (paramylw != null)
+    int i = 1;
+    this.a.a.a().postDelayed(new EditPicSave.1.1(this), 500L);
+    if (bdax.a().a == 1) {}
+    for (;;)
     {
-      ykv localykv = new ykv();
-      localykv.jdField_a_of_type_Long = paramylw.b;
-      localykv.jdField_a_of_type_Int = paramInt;
-      localykv.jdField_b_of_type_JavaLangString = paramString2;
-      localykv.jdField_a_of_type_JavaLangString = paramString1;
-      localykv.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
-      localykv.c = this.jdField_b_of_type_JavaLangString;
-      localykv.jdField_a_of_type_Boolean = false;
-      localykv.jdField_b_of_type_Int = 1;
-      if (paramSlideItemInfo != null)
-      {
-        localykv.jdField_a_of_type_Boolean = paramSlideItemInfo.jdField_a_of_type_Boolean;
-        localykv.jdField_b_of_type_Int = paramSlideItemInfo.c;
-      }
-      if (paramylw.a != null) {
-        paramylw.a.a(localykv);
-      }
+      bbhl.f(i);
+      return;
+      i = 2;
     }
   }
   
-  protected boolean a(ylw paramylw)
-  {
-    if ((!paramylw.d) && (QLog.isColorLevel())) {
-      QLog.d("ToVideoConverter", 2, "run exit:" + paramylw.b + " currContext.isRun:" + paramylw.d);
-    }
-    return !paramylw.d;
-  }
+  public void onPreRun() {}
 }
 
 

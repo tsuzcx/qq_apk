@@ -183,10 +183,13 @@ public class a
     paramContext.post(paramBundle);
   }
   
-  private void a(Bundle paramBundle)
+  private void a(Bundle paramBundle, EnterCallback paramEnterCallback)
   {
     if (paramBundle == null) {
       return;
+    }
+    if (paramEnterCallback != null) {
+      paramEnterCallback.onShowLoadingView(null);
     }
     Object localObject1 = paramBundle.getString("pluginZipPath", "/data/local/tmp/plugin-debug.zip");
     boolean bool = paramBundle.getBoolean("isDebugVersion", true);
@@ -216,12 +219,14 @@ public class a
         ((StringBuilder)localObject2).append("IliveLaunch preloadOdex success = ");
         ((StringBuilder)localObject2).append(paramBundle.a);
         ((Logger)localObject1).info(((StringBuilder)localObject2).toString());
-        return;
       }
     }
     catch (Throwable paramBundle)
     {
       paramBundle.printStackTrace();
+    }
+    if (paramEnterCallback != null) {
+      paramEnterCallback.onEnterComplete();
     }
   }
   
@@ -380,7 +385,7 @@ public class a
     }
     if (paramLong == 1002L)
     {
-      a(paramBundle);
+      a(paramBundle, paramEnterCallback);
       return;
     }
     paramContext = new StringBuilder();

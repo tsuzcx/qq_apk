@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.profilecard.bussiness.colorscreen;
 
-import ayvv;
+import baaq;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
 public class ProfileColorScreenComponent$ColorScreenLoader$ColorScreenListener$1
   implements Runnable
 {
-  public ProfileColorScreenComponent$ColorScreenLoader$ColorScreenListener$1(ayvv paramayvv) {}
+  public ProfileColorScreenComponent$ColorScreenLoader$ColorScreenListener$1(baaq parambaaq) {}
   
   public void run()
   {

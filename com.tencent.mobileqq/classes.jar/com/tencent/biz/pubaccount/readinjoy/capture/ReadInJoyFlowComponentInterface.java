@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.capture;
 
-import akry;
+import alpu;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
 public class ReadInJoyFlowComponentInterface
-  implements akry
+  implements alpu
 {
   public static final String a = ReadInJoyFlowComponentInterface.class.getName();
   

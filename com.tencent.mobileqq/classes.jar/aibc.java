@@ -1,34 +1,42 @@
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
-import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPagerAdapter;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public class aibc
-  implements aiob
+class aibc
+  extends bilh
 {
-  public aibc(TroopView paramTroopView) {}
+  aibc(aiav paramaiav) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(int paramInt)
   {
-    if (TroopView.a(this.a) != null) {
-      TroopView.a(this.a).a(paramInt1, paramInt2);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.tag, 2, "onDownLoadedPluginResult result = " + paramInt);
     }
-    if (paramInt1 >= paramInt2) {
-      if (!TroopView.a(this.a))
-      {
-        TroopView.a(this.a, true);
-        if (this.a.a != null) {
-          this.a.a.a(TroopView.a(this.a));
-        }
-      }
+    if (paramInt == 0) {
+      this.a.j();
     }
     do
     {
-      do
-      {
-        return;
-      } while (!TroopView.a(this.a));
-      TroopView.a(this.a, false);
-    } while (this.a.a == null);
-    this.a.a.a(TroopView.a(this.a));
+      return;
+      QQToast.a(this.a.getActivity(), anvx.a(2131704578), 0).a();
+    } while (this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView == null);
+    this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.setProgress(0);
+  }
+  
+  public void a(long paramLong1, long paramLong2, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.tag, 2, "onNotifyGameRoomSpeakerStatus uin = " + paramLong2 + " isSeaking = " + paramBoolean);
+    }
+    if ((!this.a.sessionInfo.curFriendUin.equals(String.valueOf(paramLong1))) || (this.a.jdField_a_of_type_Bilj == null)) {}
+    bili localbili;
+    do
+    {
+      return;
+      localbili = this.a.jdField_a_of_type_Bilj.a();
+    } while (localbili == null);
+    localbili.a(String.valueOf(paramLong2), paramBoolean);
   }
 }
 

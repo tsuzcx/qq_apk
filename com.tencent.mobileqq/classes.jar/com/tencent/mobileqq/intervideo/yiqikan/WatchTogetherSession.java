@@ -3,16 +3,16 @@ package com.tencent.mobileqq.intervideo.yiqikan;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import ausg;
-import bddf;
+import avyb;
+import bekh;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class WatchTogetherSession
-  extends bddf
+  extends bekh
   implements Parcelable
 {
-  public static final Parcelable.Creator<WatchTogetherSession> CREATOR = new ausg();
+  public static final Parcelable.Creator<WatchTogetherSession> CREATOR = new avyb();
   public int a;
   public long a;
   public String a;
@@ -23,31 +23,31 @@ public class WatchTogetherSession
   {
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_Int = paramParcel.readInt();
     this.jdField_e_of_type_Int = paramParcel.readInt();
-    this.jdField_e_of_type_JavaLangString = paramParcel.readString();
     this.jdField_f_of_type_Int = paramParcel.readInt();
+    this.jdField_e_of_type_JavaLangString = paramParcel.readString();
     this.g = paramParcel.readInt();
     this.jdField_h_of_type_Int = paramParcel.readInt();
+    this.i = paramParcel.readInt();
     this.jdField_f_of_type_JavaLangString = paramParcel.readString();
     this.jdField_c_of_type_Long = paramParcel.readLong();
-    this.i = paramParcel.readInt();
     this.j = paramParcel.readInt();
+    this.k = paramParcel.readInt();
     this.jdField_h_of_type_JavaLangString = paramParcel.readString();
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_a_of_type_Long = paramParcel.readInt();
     this.b = paramParcel.readString();
     this.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_d_of_type_Long = paramParcel.readLong();
+    this.d = paramParcel.readLong();
   }
   
   public WatchTogetherSession(String paramString)
   {
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_Int = 2;
-    this.jdField_e_of_type_Int = 1;
+    this.jdField_e_of_type_Int = 2;
+    this.jdField_f_of_type_Int = 1;
     this.jdField_e_of_type_JavaLangString = paramString;
   }
   
@@ -58,8 +58,8 @@ public class WatchTogetherSession
   
   public String a(QQAppInterface paramQQAppInterface)
   {
-    if (this.i == 1) {
-      return paramQQAppInterface.getApp().getString(2131698682) + this.b;
+    if (this.j == 1) {
+      return paramQQAppInterface.getApp().getString(2131698993) + this.b;
     }
     return this.b;
   }
@@ -67,41 +67,41 @@ public class WatchTogetherSession
   public String a(boolean paramBoolean, QQAppInterface paramQQAppInterface)
   {
     if (paramBoolean) {
-      return paramQQAppInterface.getApp().getString(2131698674);
+      return paramQQAppInterface.getApp().getString(2131698985);
     }
-    return a(paramQQAppInterface, 2131698686, 2131698684, 2131698681);
+    return a(paramQQAppInterface, 2131698997, 2131698995, 2131698992);
   }
   
   public int b()
   {
-    return 2130844732;
+    return 2130844803;
   }
   
   public String b(QQAppInterface paramQQAppInterface)
   {
-    return a(paramQQAppInterface, 2131698685, 2131698683);
+    return a(paramQQAppInterface, 2131698996, 2131698994);
   }
   
   protected Object clone()
   {
     WatchTogetherSession localWatchTogetherSession = (WatchTogetherSession)super.clone();
-    localWatchTogetherSession.jdField_d_of_type_Int = this.jdField_d_of_type_Int;
     localWatchTogetherSession.jdField_e_of_type_Int = this.jdField_e_of_type_Int;
-    localWatchTogetherSession.jdField_e_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
     localWatchTogetherSession.jdField_f_of_type_Int = this.jdField_f_of_type_Int;
+    localWatchTogetherSession.jdField_e_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
     localWatchTogetherSession.g = this.g;
     localWatchTogetherSession.jdField_h_of_type_Int = this.jdField_h_of_type_Int;
+    localWatchTogetherSession.i = this.i;
     localWatchTogetherSession.jdField_f_of_type_JavaLangString = this.jdField_f_of_type_JavaLangString;
     localWatchTogetherSession.jdField_c_of_type_Long = this.jdField_c_of_type_Long;
-    localWatchTogetherSession.i = this.i;
     localWatchTogetherSession.j = this.j;
+    localWatchTogetherSession.k = this.k;
     localWatchTogetherSession.jdField_h_of_type_JavaLangString = this.jdField_h_of_type_JavaLangString;
     localWatchTogetherSession.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
     localWatchTogetherSession.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
     localWatchTogetherSession.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
     localWatchTogetherSession.b = this.b;
     localWatchTogetherSession.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-    localWatchTogetherSession.jdField_d_of_type_Long = this.jdField_d_of_type_Long;
+    localWatchTogetherSession.d = this.d;
     return localWatchTogetherSession;
   }
   
@@ -112,28 +112,28 @@ public class WatchTogetherSession
   
   public String toString()
   {
-    return "WatchTogetherSession{roomType=" + this.jdField_a_of_type_Int + ", jumpurl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", roomId=" + this.jdField_a_of_type_Long + ", roomName='" + this.b + '\'' + ", roomCover='" + this.jdField_c_of_type_JavaLangString + '\'' + ", serviceType=" + this.jdField_d_of_type_Int + ", type=" + this.jdField_e_of_type_Int + ", uin='" + this.jdField_e_of_type_JavaLangString + '\'' + ", joinNum=" + this.jdField_f_of_type_Int + ", status=" + this.g + ", userState=" + this.jdField_h_of_type_Int + ", creator='" + this.jdField_f_of_type_JavaLangString + '\'' + ", timeStamp=" + this.jdField_c_of_type_Long + ", videoType=" + this.i + ", videoJumpType=" + this.j + ", videoJumpURL='" + this.jdField_h_of_type_JavaLangString + '\'' + ", identifyId=" + this.jdField_d_of_type_Long + '}';
+    return "WatchTogetherSession{roomType=" + this.jdField_a_of_type_Int + ", jumpurl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", roomId=" + this.jdField_a_of_type_Long + ", roomName='" + this.b + '\'' + ", roomCover='" + this.jdField_c_of_type_JavaLangString + '\'' + ", serviceType=" + this.jdField_e_of_type_Int + ", type=" + this.jdField_f_of_type_Int + ", uin='" + this.jdField_e_of_type_JavaLangString + '\'' + ", joinNum=" + this.g + ", status=" + this.jdField_h_of_type_Int + ", userState=" + this.i + ", creator='" + this.jdField_f_of_type_JavaLangString + '\'' + ", timeStamp=" + this.jdField_c_of_type_Long + ", videoType=" + this.j + ", videoJumpType=" + this.k + ", videoJumpURL='" + this.jdField_h_of_type_JavaLangString + '\'' + ", identifyId=" + this.d + '}';
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_d_of_type_Int);
     paramParcel.writeInt(this.jdField_e_of_type_Int);
-    paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
     paramParcel.writeInt(this.jdField_f_of_type_Int);
+    paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
     paramParcel.writeInt(this.g);
     paramParcel.writeInt(this.jdField_h_of_type_Int);
+    paramParcel.writeInt(this.i);
     paramParcel.writeString(this.jdField_f_of_type_JavaLangString);
     paramParcel.writeLong(this.jdField_c_of_type_Long);
-    paramParcel.writeInt(this.i);
     paramParcel.writeInt(this.j);
+    paramParcel.writeInt(this.k);
     paramParcel.writeString(this.jdField_h_of_type_JavaLangString);
     paramParcel.writeInt(this.jdField_a_of_type_Int);
     paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
     paramParcel.writeLong(this.jdField_a_of_type_Long);
     paramParcel.writeString(this.b);
     paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-    paramParcel.writeLong(this.jdField_d_of_type_Long);
+    paramParcel.writeLong(this.d);
   }
 }
 

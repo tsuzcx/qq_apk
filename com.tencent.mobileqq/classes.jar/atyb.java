@@ -1,249 +1,97 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
-import com.tencent.ark.ark;
-import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
-import com.tencent.biz.richframework.eventbus.SimpleEventBus;
-import com.tencent.biz.richframework.eventbus.SimpleEventReceiver;
-import com.tencent.mobileqq.gamecenter.data.QGameBusEvent;
-import com.tencent.mobileqq.gamecenter.media.GameCenterVideoViewController;
-import com.tencent.mobileqq.gamecenter.view.GameArkView;
-import com.tencent.mobileqq.gamecenter.web.view.QQGamePubWebView;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.mobileqq.utils.HexUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
-import mqq.util.WeakReference;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.UUID;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
 
-public class atyb
-  extends Observable
-  implements Handler.Callback, SimpleEventReceiver, Observer
+class atyb
+  extends aahm
 {
-  public static atyb a;
-  private int jdField_a_of_type_Int = -1;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(this);
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<GameArkView> jdField_a_of_type_MqqUtilWeakReference;
-  private WeakReference<QQGamePubWebView> b;
+  atyb(atxr paramatxr) {}
   
-  public static atyb a()
+  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
   {
-    if (jdField_a_of_type_Atyb == null) {}
-    try
-    {
-      if (jdField_a_of_type_Atyb == null) {
-        jdField_a_of_type_Atyb = new atyb();
-      }
-      return jdField_a_of_type_Atyb;
-    }
-    finally {}
-  }
-  
-  public static void b(int paramInt)
-  {
-    atzd.a(paramInt);
-  }
-  
-  private void f()
-  {
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      c();
-      return;
-    }
-    if (this.jdField_a_of_type_Int == 2)
-    {
-      d();
-      return;
-    }
-    QLog.e("GameVideoManager", 2, "qgame_pub type no set");
-  }
-  
-  private void g()
-  {
-    QLog.d("GameVideoManager", 4, "------>resumeFeedVideo");
-  }
-  
-  public void a()
-  {
-    QLog.d("GameVideoManager", 4, "--->stopArkVideo viewId:" + this.jdField_a_of_type_JavaLangString);
+    if (atxr.a(this.a) == null) {}
     Object localObject;
-    if (this.jdField_a_of_type_MqqUtilWeakReference != null)
+    label546:
+    do
     {
-      localObject = (GameArkView)this.jdField_a_of_type_MqqUtilWeakReference.get();
-      if ((localObject != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-        break label61;
-      }
-    }
-    label61:
-    while ((!((GameArkView)localObject).a()) || (!atzd.a(((GameArkView)localObject).a()))) {
-      return;
-    }
-    try
-    {
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("viewId", this.jdField_a_of_type_JavaLangString);
-      ark.arkNotify("com.tencent.gamecenter.newvideo", "notift_ark_video_stop", ((JSONObject)localObject).toString(), "json");
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    SimpleEventBus.getInstance().registerReceiver(this);
-    akfp.a().a("com.tencent.gamecenter.newvideo");
-    akfp.a().addObserver(this);
-  }
-  
-  public void a(GameArkView paramGameArkView)
-  {
-    if (paramGameArkView != null)
-    {
-      this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramGameArkView);
-      return;
-    }
-    this.jdField_a_of_type_MqqUtilWeakReference = null;
-  }
-  
-  public void a(QQGamePubWebView paramQQGamePubWebView)
-  {
-    if (paramQQGamePubWebView != null) {
-      this.b = new WeakReference(paramQQGamePubWebView);
-    }
-  }
-  
-  public void b()
-  {
-    QLog.d("GameVideoManager", 4, "--->playArkVideo viewId:" + this.jdField_a_of_type_JavaLangString);
-    Object localObject;
-    if (this.jdField_a_of_type_MqqUtilWeakReference != null)
-    {
-      localObject = (GameArkView)this.jdField_a_of_type_MqqUtilWeakReference.get();
-      if ((localObject != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-        break label61;
-      }
-    }
-    label61:
-    while ((!((GameArkView)localObject).a()) || (!atzd.a(((GameArkView)localObject).a()))) {
-      return;
-    }
-    try
-    {
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("viewId", this.jdField_a_of_type_JavaLangString);
-      ark.arkNotify("com.tencent.gamecenter.newvideo", "notift_ark_video_play", ((JSONObject)localObject).toString(), "json");
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
-  }
-  
-  public void c()
-  {
-    GameCenterVideoViewController localGameCenterVideoViewController = atxz.a().a();
-    if (localGameCenterVideoViewController != null) {
-      localGameCenterVideoViewController.stop();
-    }
-  }
-  
-  public void d()
-  {
-    if (this.b != null)
-    {
-      QQGamePubWebView localQQGamePubWebView = (QQGamePubWebView)this.b.get();
-      localQQGamePubWebView.getPluginEngine().a(localQQGamePubWebView.getUrl(), 8589934625L, null);
-    }
-  }
-  
-  public void e()
-  {
-    SimpleEventBus.getInstance().unRegisterReceiver(this);
-    akfp.a().b("gc_ark_video_play");
-    akfp.a().deleteObserver(this);
-    this.b = null;
-    this.jdField_a_of_type_MqqUtilWeakReference = null;
-    jdField_a_of_type_Atyb = null;
-  }
-  
-  public ArrayList<Class> getEventClass()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(QGameBusEvent.class);
-    return localArrayList;
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    return false;
-  }
-  
-  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
-  {
-    if ((paramSimpleBaseEvent instanceof QGameBusEvent)) {
-      QLog.d("GameVideoManager", 4, "onReceiveEvent() called with: event = [" + ((QGameBusEvent)paramSimpleBaseEvent).eventType + "]");
-    }
-    switch (((QGameBusEvent)paramSimpleBaseEvent).eventType)
-    {
-    default: 
-      return;
-    case 4: 
-      f();
-      return;
-    case 3: 
-      g();
-      return;
-    case 2: 
-    case 6: 
-      a();
-      return;
-    }
-    b();
-  }
-  
-  public void update(Observable paramObservable, Object paramObject)
-  {
-    try
-    {
-      if ((paramObject instanceof akfr))
+      do
       {
-        paramObservable = ((akfr)paramObject).jdField_a_of_type_JavaLangString;
-        String str = ((akfr)paramObject).b;
-        paramObject = ((akfr)paramObject).c;
-        if ((!TextUtils.isEmpty(paramObservable)) && ("com.tencent.gamecenter.newvideo".equals(paramObservable)))
+        return;
+        if (paramDownloadFileRspBody == null)
         {
-          if (TextUtils.isEmpty(str)) {
-            return;
-          }
-          if (("gc_ark_video_play".equals(str)) && (!TextUtils.isEmpty(paramObject)))
-          {
-            paramObject = new JSONObject(paramObject);
-            paramObservable = paramObject.optString("videoUrl", "");
-            paramObject = paramObject.optString("viewId", "");
-            Log.d("GameVideoManager", "update videoUrl: " + paramObservable);
-            Log.d("GameVideoManager", "update viewId: " + paramObject);
-            this.jdField_a_of_type_JavaLangString = paramObject;
-            f();
-            return;
+          QLog.i("TroopFileModel<FileAssistant>", 1, "requestOnlinePreviewDownloadUrl: error DownloadFileRspBody is null!");
+          atxr.a(this.a).c();
+          return;
+        }
+        long l = paramBundle.getLong("troopUin");
+        localObject = TroopFileTransferManager.a(l);
+        if (localObject == null)
+        {
+          QLog.i("TroopFileModel<FileAssistant>", 1, "requestOnlinePreviewDownloadUrl: error bad troopUin[" + l + "]");
+          atxr.a(this.a).c();
+          return;
+        }
+        paramBundle = paramBundle.getString("itemKey");
+        if (paramBundle == null)
+        {
+          atxr.a(this.a).c();
+          return;
+        }
+        localObject = ((TroopFileTransferManager)localObject).a(UUID.fromString(paramBundle));
+        if (localObject == null)
+        {
+          QLog.i("TroopFileModel<FileAssistant>", 1, "requestOnlinePreviewDownloadUrl: error bad item key" + paramBundle + "]");
+          atxr.a(this.a).c();
+          return;
+        }
+        paramInt = paramDownloadFileRspBody.int32_ret_code.get();
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopFileModel<FileAssistant>", 2, "requestOnlinePreviewDownloadUrl: onRspDownload - retCode[" + paramInt + "]");
+        }
+      } while (atxr.a(this.a, paramInt, atxr.a(this.a)));
+      ((TroopFileTransferManager.Item)localObject).cookieValue = HexUtil.bytes2HexStr(paramDownloadFileRspBody.bytes_cookie_val.get().toByteArray());
+      if (((TroopFileTransferManager.Item)localObject).cookieValue != null) {
+        ((TroopFileTransferManager.Item)localObject).cookieValue = ((TroopFileTransferManager.Item)localObject).cookieValue.toLowerCase();
+      }
+      ((TroopFileTransferManager.Item)localObject).DownloadIp = paramDownloadFileRspBody.str_download_ip.get();
+      ((TroopFileTransferManager.Item)localObject).DownloadUrl = HexUtil.bytes2HexStr(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
+      ((TroopFileTransferManager.Item)localObject).Md5 = paramDownloadFileRspBody.bytes_md5.get().toByteArray();
+      ((TroopFileTransferManager.Item)localObject).NameForSave = paramDownloadFileRspBody.str_save_file_name.get();
+      paramDownloadFileRspBody = atuh.a(((TroopFileTransferManager.Item)localObject).DownloadIp, ((TroopFileTransferManager.Item)localObject).DownloadUrl, ((TroopFileTransferManager.Item)localObject).FilePath, ((TroopFileTransferManager.Item)localObject).cookieValue, "");
+      if (!TextUtils.isEmpty(paramDownloadFileRspBody))
+      {
+        atxr.a(this.a).a(paramDownloadFileRspBody, ((TroopFileTransferManager.Item)localObject).cookieValue);
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopFileModel<FileAssistant>", 2, "requestOnlinePreviewDownloadUrl: url[" + paramDownloadFileRspBody + "], cookies [" + ((TroopFileTransferManager.Item)localObject).cookieValue + "]");
+        }
+        if (this.a.a.a() != null)
+        {
+          paramDownloadFileRspBody = String.valueOf(this.a.a.a().TroopUin);
+          if (this.a.a.a() == null) {
+            break label546;
           }
         }
+        for (paramBundle = auea.b(this.a.a.a().nFileType);; paramBundle = "unknow")
+        {
+          bdla.b(null, "dc00899", "Grp_files", "", "oper", "Clk_pre_video", 0, 0, paramDownloadFileRspBody, "", paramBundle, "1");
+          return;
+          paramDownloadFileRspBody = "";
+          break;
+        }
       }
-    }
-    catch (Throwable paramObservable)
-    {
-      paramObservable.printStackTrace();
-    }
+      atxr.a(this.a).c();
+    } while (!QLog.isColorLevel());
+    QLog.i("TroopFileModel<FileAssistant>", 2, "requestOnlinePreviewDownloadUrl: url[" + paramDownloadFileRspBody + "], cookies [" + ((TroopFileTransferManager.Item)localObject).cookieValue + "]");
   }
 }
 

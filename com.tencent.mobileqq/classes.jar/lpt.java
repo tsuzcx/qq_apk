@@ -1,162 +1,256 @@
-import android.annotation.TargetApi;
-import android.graphics.SurfaceTexture;
-import android.opengl.GLES20;
-import android.opengl.Matrix;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import com.tencent.av.opengl.GraphicRenderMgr;
+import com.tencent.av.video.effect.core.EffectTexture;
+import com.tencent.av.video.effect.denoise.DenoiseRender;
+import com.tencent.av.video.effect.lowlight.LowLightRender;
+import com.tencent.av.video.effect.utils.LowLightUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.filter.TextureRender;
 
-@TargetApi(16)
 public class lpt
-  implements lpk
 {
-  private int jdField_a_of_type_Int;
-  public final SurfaceTexture a;
-  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
-  private boolean jdField_a_of_type_Boolean = true;
-  private final float[] jdField_a_of_type_ArrayOfFloat;
-  private final float[] b;
+  private DenoiseRender jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender;
+  private LowLightRender jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender;
+  private String jdField_a_of_type_JavaLangString;
+  private final lpl jdField_a_of_type_Lpl;
+  public boolean a;
+  public int[] a;
   
-  public lpt(SurfaceTexture paramSurfaceTexture)
+  private lps a(lps paramlps)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SurfaceTag", 2, "SurfacePreRender");
+    if (!lpu.c()) {
+      this.jdField_a_of_type_ArrayOfInt[3] = 0;
     }
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = paramSurfaceTexture;
-    lok.a("SurfaceMode");
-    this.jdField_a_of_type_ArrayOfFloat = new float[16];
-    Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
-    this.jdField_a_of_type_Boolean = true;
-    this.b = new float[16];
-    Matrix.setIdentityM(this.b, 0);
-    Matrix.scaleM(this.b, 0, -1.0F, -1.0F, 1.0F);
+    do
+    {
+      return paramlps;
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_ArrayOfInt[3] = 0;
+        return paramlps;
+      }
+      localObject = a();
+    } while (localObject == null);
+    this.jdField_a_of_type_Lpl.a(4);
+    paramlps = ((DenoiseRender)localObject).process(paramlps.jdField_b_of_type_Int, paramlps.jdField_a_of_type_Int, this.jdField_a_of_type_Lpl.jdField_a_of_type_Int, this.jdField_a_of_type_Lpl.jdField_b_of_type_Int);
+    paramlps = lps.a(paramlps.getFbo(), paramlps.getTextureId());
+    this.jdField_a_of_type_ArrayOfInt[3] = 1;
+    Object localObject = this.jdField_a_of_type_ArrayOfInt;
+    localObject[5] += 1;
+    return paramlps;
   }
   
-  public lpf a(loy paramloy, lok paramlok, lpf paramlpf)
+  private lps a(lps paramlps, boolean paramBoolean)
   {
+    if (!lpu.b()) {
+      this.jdField_a_of_type_ArrayOfInt[0] = 0;
+    }
+    do
+    {
+      return paramlps;
+      if ((!this.jdField_a_of_type_Boolean) || (paramBoolean))
+      {
+        this.jdField_a_of_type_ArrayOfInt[0] = 0;
+        return paramlps;
+      }
+      localObject = a();
+    } while (localObject == null);
+    this.jdField_a_of_type_Lpl.a(2);
+    paramlps = ((LowLightRender)localObject).process(paramlps.jdField_b_of_type_Int, paramlps.jdField_a_of_type_Int, this.jdField_a_of_type_Lpl.jdField_a_of_type_Int, this.jdField_a_of_type_Lpl.jdField_b_of_type_Int);
+    paramlps = lps.a(paramlps.getFbo(), paramlps.getTextureId());
+    this.jdField_a_of_type_ArrayOfInt[0] = 1;
+    Object localObject = this.jdField_a_of_type_ArrayOfInt;
+    localObject[2] += 1;
+    return paramlps;
+  }
+  
+  private void a(byte[] paramArrayOfByte, long paramLong, boolean paramBoolean)
+  {
+    int j = 0;
+    int i = 0;
+    if ((lpu.b()) || (lpu.c()))
+    {
+      this.jdField_a_of_type_Lpl.a(1);
+      paramArrayOfByte = a(this.jdField_a_of_type_JavaLangString, paramArrayOfByte, (int)paramLong);
+      j = paramArrayOfByte[0];
+      i = paramArrayOfByte[1];
+    }
+    paramArrayOfByte = this.jdField_a_of_type_ArrayOfInt;
+    if (j == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if ((!this.jdField_a_of_type_Boolean) && (bool))
+      {
+        if (!paramBoolean) {
+          paramArrayOfByte[1] += 1;
+        }
+        paramArrayOfByte[4] += 1;
+        lbd.d(this.jdField_a_of_type_JavaLangString, " This is the " + paramArrayOfByte[2] + " times open lowlightand the " + paramArrayOfByte[4] + " times open videodenoise");
+        lbd.d(this.jdField_a_of_type_JavaLangString, " The LowlightInfo is: lowlight flag = " + paramArrayOfByte[0] + ", video denoise flag = " + paramArrayOfByte[3] + ", lowlight open times = " + paramArrayOfByte[1] + ", denoise open times = " + paramArrayOfByte[4] + ", average luma = " + paramArrayOfByte[6]);
+      }
+      paramArrayOfByte[6] = i;
+      if (j == 0)
+      {
+        paramArrayOfByte[0] = 0;
+        paramArrayOfByte[3] = 0;
+        GraphicRenderMgr.getInstance().setLowlightAndVideoDenoiseInfo(paramArrayOfByte);
+      }
+      paramArrayOfByte[7] = ((int)paramLong);
+      this.jdField_a_of_type_Boolean = bool;
+      return;
+    }
+  }
+  
+  private boolean a()
+  {
+    if (!lpu.c()) {}
+    while (!this.jdField_a_of_type_Boolean) {
+      return false;
+    }
+    return true;
+  }
+  
+  private boolean a(boolean paramBoolean)
+  {
+    if (!lpu.b()) {}
+    while ((!this.jdField_a_of_type_Boolean) || (paramBoolean)) {
+      return false;
+    }
+    return true;
+  }
+  
+  private static int[] a(String paramString, byte[] paramArrayOfByte, int paramInt)
+  {
+    int[] arrayOfInt = new int[2];
+    if (ljk.jdField_a_of_type_Int * ljk.jdField_b_of_type_Int * 3 / 2 != paramArrayOfByte.length)
+    {
+      lbd.h(paramString, "(AndroidCamera.PREVIEW_WIDTH * AndroidCamera.PREVIEW_HEIGHT * 3 / 2) != yuvData.length");
+      return arrayOfInt;
+    }
     try
     {
-      paramlok.a(this.jdField_a_of_type_ArrayOfFloat);
-      if (paramlok.jdField_a_of_type_Boolean != this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Boolean = paramlok.jdField_a_of_type_Boolean;
-        if (this.jdField_a_of_type_Boolean)
-        {
-          Matrix.setIdentityM(this.b, 0);
-          Matrix.scaleM(this.b, 0, -1.0F, -1.0F, 1.0F);
-        }
-      }
-      else
-      {
-        int i = paramlok.b;
-        int j = paramlok.jdField_a_of_type_Int;
-        GLES20.glBindFramebuffer(36160, paramlpf.jdField_a_of_type_Int);
-        GLES20.glViewport(0, 0, i, j);
-        GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
-        GLES20.glClear(16640);
-        if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender != null) {
-          this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(36197, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfFloat, this.b);
-        }
-        GLES20.glBindFramebuffer(36160, 0);
-      }
+      paramString = LowLightUtils.DetectLowLight(paramArrayOfByte, paramInt, ljk.jdField_a_of_type_Int, ljk.jdField_b_of_type_Int, 60, 0.75F);
+      return paramString;
     }
-    catch (Throwable paramloy)
+    catch (UnsatisfiedLinkError paramString)
     {
-      try
+      for (;;)
       {
-        for (;;)
-        {
-          if (Build.VERSION.SDK_INT >= 19) {
-            paramlok.jdField_a_of_type_AndroidGraphicsSurfaceTexture.releaseTexImage();
-          }
-          return paramlpf;
-          paramloy = paramloy;
-          if (QLog.isDevelopLevel()) {
-            QLog.i("SurfaceTag", 4, "render, surface[" + paramlok.jdField_a_of_type_AndroidGraphicsSurfaceTexture + "]", paramloy);
-          }
-        }
-        Matrix.setIdentityM(this.b, 0);
-        Matrix.scaleM(this.b, 0, 1.0F, -1.0F, 1.0F);
-      }
-      catch (Throwable paramloy)
-      {
-        while (!QLog.isDevelopLevel()) {}
-        QLog.i("SurfaceTag", 4, "render", paramloy);
+        QLog.i("FilterProcessRender", 1, "detectLowLightProcess", paramString);
+        paramString = arrayOfInt;
       }
     }
-    return paramlpf;
+    catch (Throwable paramString)
+    {
+      for (;;)
+      {
+        QLog.i("FilterProcessRender", 1, "detectLowLightProcess", paramString);
+        paramString = arrayOfInt;
+      }
+    }
+  }
+  
+  public DenoiseRender a()
+  {
+    if (this.jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender == null) {
+      this.jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender = new DenoiseRender(this.jdField_a_of_type_Lpl.jdField_a_of_type_AndroidContentContext);
+    }
+    this.jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender.setUpdateRate(lpu.a());
+    return this.jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender;
+  }
+  
+  public LowLightRender a()
+  {
+    if (this.jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender == null) {
+      this.jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender = new LowLightRender(this.jdField_a_of_type_Lpl.jdField_a_of_type_AndroidContentContext);
+    }
+    return this.jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
-    this.jdField_a_of_type_Int = GlUtil.createTexture(36197);
-    if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) {}
-    try
+    if (this.jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.detachFromGLContext();
+      this.jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender.destroy();
+      this.jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender = null;
     }
-    catch (Throwable localThrowable1)
+    if (this.jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender != null)
     {
-      try
-      {
-        for (;;)
-        {
-          this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.attachToGLContext(this.jdField_a_of_type_Int);
-          if (QLog.isColorLevel()) {
-            QLog.i("SurfaceTag", 2, "genTexture");
-          }
-          return;
-          localThrowable1 = localThrowable1;
-          QLog.i("SurfaceTag", 2, "genTexture1", localThrowable1);
-        }
-      }
-      catch (Throwable localThrowable2)
-      {
-        for (;;)
-        {
-          QLog.i("SurfaceTag", 2, "genTexture2", localThrowable2);
-        }
-      }
+      this.jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender.destroy();
+      this.jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender = null;
     }
   }
   
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public boolean a(lok paramlok)
+  public void a(mte parammte, lox paramlox, msh parammsh)
   {
-    return (paramlok != null) && (paramlok.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) && (paramlok.jdField_a_of_type_AndroidGraphicsSurfaceTexture == this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    if (parammte != null) {
+      parammte.a("checkLowLight");
+    }
+    a(paramlox.jdField_a_of_type_ArrayOfByte, paramlox.jdField_a_of_type_Long, paramlox.jdField_a_of_type_Boolean);
+    if (parammsh != null) {
+      parammsh.e();
+    }
+    if (parammte != null) {
+      parammte.b("checkLowLight");
+    }
   }
   
-  public void b() {}
-  
-  public void c()
+  public void a(mte parammte, msh parammsh)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) {}
-    try
+    this.jdField_a_of_type_Lpl.c();
+    if (a())
     {
-      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.detachFromGLContext();
-      int[] arrayOfInt = new int[1];
-      arrayOfInt[0] = this.jdField_a_of_type_Int;
-      GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
-      if (QLog.isColorLevel()) {
-        QLog.i("SurfaceTag", 2, "delTexture");
+      if (parammte != null) {
+        parammte.a("appleVideoDeNoise");
       }
+      this.jdField_a_of_type_Lpl.jdField_b_of_type_Lps = a(this.jdField_a_of_type_Lpl.jdField_a_of_type_Lps);
+      if (parammsh != null) {
+        if (this.jdField_a_of_type_Lpl.jdField_b_of_type_Lps.jdField_b_of_type_Int == this.jdField_a_of_type_Lpl.jdField_a_of_type_Lps.jdField_b_of_type_Int) {
+          break label110;
+        }
+      }
+    }
+    label110:
+    for (boolean bool = true;; bool = false)
+    {
+      parammsh.b(bool);
+      if (parammte != null) {
+        parammte.b("appleVideoDeNoise");
+      }
+      this.jdField_a_of_type_Lpl.a(6, this.jdField_a_of_type_Lpl.jdField_a_of_type_Lps, this.jdField_a_of_type_Lpl.jdField_b_of_type_Lps);
       return;
     }
-    catch (Throwable localThrowable)
+  }
+  
+  public void b(mte parammte, lox paramlox, msh parammsh)
+  {
+    this.jdField_a_of_type_Lpl.c();
+    if (a(paramlox.jdField_a_of_type_Boolean))
     {
-      for (;;)
-      {
-        QLog.i("SurfaceTag", 2, "delTexture", localThrowable);
+      if (parammte != null) {
+        parammte.a("appleLowLightEnhance");
       }
+      this.jdField_a_of_type_Lpl.jdField_b_of_type_Lps = a(this.jdField_a_of_type_Lpl.jdField_a_of_type_Lps, paramlox.jdField_a_of_type_Boolean);
+      if (parammte != null) {
+        parammte.b("appleLowLightEnhance");
+      }
+      this.jdField_a_of_type_Lpl.a(7, this.jdField_a_of_type_Lpl.jdField_a_of_type_Lps, this.jdField_a_of_type_Lpl.jdField_b_of_type_Lps);
+    }
+    GraphicRenderMgr.getInstance().setLowlightAndVideoDenoiseInfo(this.jdField_a_of_type_ArrayOfInt);
+    if (parammsh != null) {
+      if (this.jdField_a_of_type_Lpl.jdField_b_of_type_Lps.jdField_b_of_type_Int == this.jdField_a_of_type_Lpl.jdField_a_of_type_Lps.jdField_b_of_type_Int) {
+        break label130;
+      }
+    }
+    label130:
+    for (boolean bool = true;; bool = false)
+    {
+      parammsh.c(bool);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lpt
  * JD-Core Version:    0.7.0.1
  */

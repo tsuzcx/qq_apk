@@ -17,6 +17,7 @@ class BaseJsPluginEngine$10$1
     }
     AuthDialog.AuthDialogResBuilder localAuthDialogResBuilder = new AuthDialog.AuthDialogResBuilder();
     localAuthDialogResBuilder.setMiniAppIconUrl(this.this$1.val$miniAppProxy.getDrawable(this.this$1.val$context, this.this$1.val$miniIconUrl, this.val$miniAppIconSize, this.val$miniAppIconSize, null)).setMiniAppName(this.this$1.val$miniAppName).setAuthTitle(this.this$1.val$finalAuthTitle).setUserIconUrl(this.this$1.val$miniAppProxy.getDrawable(this.this$1.val$context, this.val$avatarUrl, this.val$userIconSize, this.val$userIconSize, null)).setUserName(this.val$nickName).setAuthDesc(this.this$1.val$finalAuthDesc).setReportSubAction(this.this$1.val$finalReportSubAction).setMiniAppInfo(this.this$1.this$0.mMiniAppContext.getMiniAppInfo()).setLeftBtnText("取消").setLeftBtnClickListener(new BaseJsPluginEngine.10.1.2(this)).setRightBtnText("允许").setRightBtnClickListener(new BaseJsPluginEngine.10.1.1(this));
+    this.this$1.this$0.authDialog.setCanceledOnTouchOutside(false);
     this.this$1.this$0.authDialog.show(localAuthDialogResBuilder);
   }
 }

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.addon;
 
-import almr;
+import amks;
 import com.etrump.mixlayout.ETEngine;
 
 public class DiyPendantFetcher$3
   implements Runnable
 {
-  public DiyPendantFetcher$3(almr paramalmr, String paramString, int paramInt) {}
+  public DiyPendantFetcher$3(amks paramamks, String paramString, int paramInt) {}
   
   public void run()
   {

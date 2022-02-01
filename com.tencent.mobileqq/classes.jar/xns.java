@@ -1,53 +1,43 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.lang.ref.WeakReference;
 
-public final class xns
-  extends QQUIEventReceiver<xnp, vuc>
+public class xns
+  extends QQUIEventReceiver<xnp, xhd>
 {
+  private WeakReference<xmw> a;
+  
   public xns(@NonNull xnp paramxnp)
   {
     super(paramxnp);
   }
   
-  public void a(@NonNull xnp paramxnp, @NonNull vuc paramvuc)
+  public void a(@NonNull xnp paramxnp, @NonNull xhd paramxhd)
   {
-    Iterator localIterator = paramxnp.a.iterator();
-    int j;
-    for (int i = 0; localIterator.hasNext(); i = j)
-    {
-      Object localObject = (xpe)localIterator.next();
-      j = i;
-      if ((localObject instanceof xnx))
+    if (paramxhd.jdField_a_of_type_Boolean) {
+      if ((paramxhd.jdField_a_of_type_JavaLangString != null) && (this.a != null))
       {
-        j = i;
-        if (((xnx)localObject).b())
-        {
-          localObject = ((xnx)localObject).a().iterator();
-          for (;;)
-          {
-            j = i;
-            if (!((Iterator)localObject).hasNext()) {
-              break;
-            }
-            if (((StoryVideoItem)((Iterator)localObject).next()).mVid.equals(paramvuc.a)) {
-              i = 1;
-            }
-          }
+        paramxnp = (xmw)this.a.get();
+        if (paramxnp != null) {
+          paramxnp.a(paramxhd.jdField_a_of_type_JavaLangString);
         }
       }
     }
-    if (i != 0) {
-      paramxnp.a.clear();
-    }
+    do
+    {
+      do
+      {
+        return;
+        ykq.e(this.TAG, "StoryVideoDownloadResultReceiver, onEvent download failed, vid:%s", new Object[] { paramxhd.jdField_a_of_type_JavaLangString });
+      } while (this.a == null);
+      paramxnp = (xmw)this.a.get();
+    } while (paramxnp == null);
+    paramxnp.a();
   }
   
   public Class acceptEventClass()
   {
-    return vuc.class;
+    return xhd.class;
   }
 }
 

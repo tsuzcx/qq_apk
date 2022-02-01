@@ -1,115 +1,178 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vas.CustomOnlineStatusManager.1;
-import com.tencent.pb.onlinestatus.CustomOnlineStatusPb.CustomOnlineStatusMsg;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class bgee
+class bgee
+  implements bghi
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString = "";
-  private final ArrayList<WeakReference<Runnable>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  HashMap<String, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private int b = 30000;
-  private int c = -1;
+  bgee(bgdy parambgdy) {}
   
-  public static bgee a()
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    return bgef.a();
-  }
-  
-  private final void a()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("CustomOnlineStatusManager", 4, "resetOnEnableToggle");
-    }
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-  }
-  
-  private void b()
-  {
-    ThreadManager.getUIHandler().post(new CustomOnlineStatusManager.1(this));
-  }
-  
-  public final String a()
-  {
-    if (a())
+    switch (paramInt)
     {
-      long l = System.currentTimeMillis();
-      if (Math.abs(this.jdField_a_of_type_Long - l) > this.b)
+    }
+    label295:
+    label820:
+    do
+    {
+      for (;;)
       {
-        this.jdField_a_of_type_Long = l;
-        if (QLog.isDevelopLevel()) {
-          QLog.d("CustomOnlineStatusManager", 4, "sync owner status");
+        return;
+        if (paramJSONObject != null)
+        {
+          try
+          {
+            paramInt = ((Integer)paramJSONObject.get("retcode")).intValue();
+            paramJSONObject = (JSONObject)paramJSONObject.get("result");
+            if ((paramInt != 0) || (paramJSONObject == null)) {
+              continue;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult. retCode = " + paramInt + "\n");
+            }
+            paramBundle = (JSONObject)paramJSONObject.get("basics");
+            Object localObject2;
+            String str;
+            int i;
+            Object localObject1;
+            if (paramBundle != null)
+            {
+              paramBundle = (JSONArray)paramBundle.get("datas");
+              if (paramBundle != null)
+              {
+                paramInt = 0;
+                if (paramInt < paramBundle.length())
+                {
+                  localObject2 = (JSONObject)paramBundle.get(paramInt);
+                  str = (String)((JSONObject)localObject2).get("name");
+                  i = ((Integer)((JSONObject)localObject2).get("state")).intValue();
+                  localObject1 = (String)((JSONObject)localObject2).get("api");
+                  localObject2 = (String)((JSONObject)localObject2).get("msg");
+                  if (!QLog.isColorLevel()) {
+                    break label1008;
+                  }
+                  QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult, basics name = " + str + " state = " + i + " api = " + (String)localObject1 + " msg = " + (String)localObject2 + "\n");
+                  break label1008;
+                }
+              }
+            }
+            paramBundle = (JSONObject)paramJSONObject.get("friendlink");
+            if (paramBundle != null)
+            {
+              paramBundle = (JSONArray)paramBundle.get("datas");
+              if (paramBundle != null)
+              {
+                paramInt = 0;
+                if (paramInt < paramBundle.length())
+                {
+                  localObject2 = (JSONObject)paramBundle.get(paramInt);
+                  str = (String)((JSONObject)localObject2).get("name");
+                  i = ((Integer)((JSONObject)localObject2).get("state")).intValue();
+                  localObject1 = (String)((JSONObject)localObject2).get("api");
+                  localObject2 = (String)((JSONObject)localObject2).get("msg");
+                  if (("add_group".equals(localObject1)) && (i != 1)) {
+                    bgdy.a(this.a).b();
+                  }
+                  if (!QLog.isColorLevel()) {
+                    break label1015;
+                  }
+                  QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult, friendlink name = " + str + " state = " + i + " api = " + (String)localObject1 + " msg= " + (String)localObject2 + "\n");
+                  break label1015;
+                }
+              }
+            }
+            paramInt = ((Integer)paramJSONObject.get("appid")).intValue();
+            if (QLog.isColorLevel()) {
+              QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult, appid =" + paramInt + "\n");
+            }
+            paramJSONObject = (JSONObject)paramJSONObject.get("qqpay");
+            if (paramJSONObject == null) {
+              continue;
+            }
+            paramJSONObject = (JSONArray)paramJSONObject.get("datas");
+            if (paramJSONObject == null) {
+              continue;
+            }
+            paramInt = 0;
+            while (paramInt < paramJSONObject.length())
+            {
+              localObject1 = (JSONObject)paramJSONObject.get(paramInt);
+              paramBundle = (String)((JSONObject)localObject1).get("name");
+              i = ((Integer)((JSONObject)localObject1).get("state")).intValue();
+              str = (String)((JSONObject)localObject1).get("api");
+              localObject1 = (String)((JSONObject)localObject1).get("msg");
+              if (QLog.isColorLevel()) {
+                QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult, qqpay name = " + paramBundle + " state = " + i + " api = " + str + " msg= " + (String)localObject1 + "\n");
+              }
+              paramInt += 1;
+            }
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+          }
+          catch (Exception paramJSONObject) {}
+          QLog.d("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult " + paramJSONObject.toString());
+          return;
+          if ((bgdy.a(this.a) != null) && (paramJSONObject != null)) {
+            try
+            {
+              paramJSONObject = (JSONObject)paramJSONObject.get("data");
+              if (paramJSONObject != null)
+              {
+                paramJSONObject = (JSONObject)paramJSONObject.get("key");
+                if (paramJSONObject != null)
+                {
+                  paramInt = ((Integer)paramJSONObject.get("retCode")).intValue();
+                  paramBundle = (String)paramJSONObject.get("retMsg");
+                  if (paramInt != 0) {
+                    break label921;
+                  }
+                  if (bgdy.a(this.a) != null) {
+                    bgdy.a(this.a).a(true);
+                  }
+                  bgef.a(9, new Object());
+                  if (QLog.isColorLevel())
+                  {
+                    QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "joinGroup onResult retCode = " + paramInt + " retMsg = " + paramBundle);
+                    return;
+                  }
+                }
+              }
+            }
+            catch (Exception paramJSONObject)
+            {
+              bgdy.a(this.a).c(bgdy.a(this.a).getString(2131719598));
+            }
+          }
         }
-        bgeg.a();
       }
-      if (bgeg.a(this.jdField_a_of_type_Int)) {
-        return this.jdField_a_of_type_JavaLangString;
-      }
-    }
-    return "";
-  }
-  
-  public final void a(CustomOnlineStatusPb.CustomOnlineStatusMsg paramCustomOnlineStatusMsg)
-  {
-    this.jdField_a_of_type_Int = bgeg.b(paramCustomOnlineStatusMsg);
-    this.jdField_a_of_type_JavaLangString = bgeg.a(paramCustomOnlineStatusMsg);
-    this.b = bgeg.a(paramCustomOnlineStatusMsg);
-    b();
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(new WeakReference(paramRunnable));
-  }
-  
-  public void a(String paramString)
-  {
-    if (paramString == null) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(System.currentTimeMillis()));
-  }
-  
-  public final boolean a()
-  {
-    int j = this.c;
-    aqgd localaqgd = (aqgd)apub.a().a(479);
-    if ((localaqgd == null) || (localaqgd.a)) {}
-    for (int i = 1;; i = 0)
+    } while (!QLog.isColorLevel());
+    QLog.e("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "joinGroup onResult " + paramJSONObject.toString());
+    return;
+    label921:
+    paramJSONObject = bgdy.a(this.a).getString(2131719598);
+    switch (paramInt)
     {
-      this.c = i;
-      if (j != this.c) {
-        a();
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("CustomOnlineStatusManager", 4, "featureEnable = " + this.c);
-      }
-      if (this.c != 1) {
-        break;
-      }
-      return true;
     }
-    return false;
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (paramString != null)
+    for (;;)
     {
-      paramString = (Long)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      if (paramString != null) {
-        return Math.abs(System.currentTimeMillis() - paramString.longValue()) > this.b;
-      }
+      bgdy.a(this.a).c(paramJSONObject);
+      break label820;
+      paramJSONObject = bgdy.a(this.a).getString(2131719593);
+      continue;
+      paramJSONObject = bgdy.a(this.a).getString(2131719599);
+      continue;
+      label1008:
+      paramInt += 1;
+      break;
+      label1015:
+      paramInt += 1;
+      break label295;
     }
-    return true;
   }
 }
 

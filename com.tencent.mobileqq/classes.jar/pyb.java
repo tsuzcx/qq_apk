@@ -1,30 +1,25 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyStaticGridView;
 
 class pyb
-  implements zop
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  pyb(pxw parampxw, String paramString) {}
+  pyb(pya parampya, ReadInJoyStaticGridView paramReadInJoyStaticGridView) {}
   
-  public void callback(Bundle paramBundle)
+  public boolean onPreDraw()
   {
-    if (QLog.isDebugVersion()) {
-      QLog.d("ReadInJoyWebviewPlugin", 4, "receive cancelLoadSkin callback resp:" + paramBundle.toString());
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      paramBundle = localJSONObject.put("retCode", paramBundle.getInt("retCode")).put("skinId", "" + paramBundle.getString("skinId"));
-      this.jdField_a_of_type_Pxw.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
-      return;
-    }
-    catch (JSONException paramBundle)
-    {
-      QLog.w("ReadInJoyWebviewPlugin", 1, "readSkinAndSound error " + paramBundle.toString());
-      this.jdField_a_of_type_Pxw.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"retCode\":-1}" });
-    }
+    Object localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.getChildAt(0);
+    Object localObject2 = new int[2];
+    ((View)localObject1).getLocationOnScreen((int[])localObject2);
+    localObject2 = this.jdField_a_of_type_Pya.a.a(pya.a(this.jdField_a_of_type_Pya), (int[])localObject2);
+    ReadInJoyChannelPanelFragment.a(localObject2[0], 0.0F, localObject2[1], 0.0F, (View)localObject1);
+    localObject1 = (ViewTreeObserver.OnPreDrawListener)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.getTag(2131376157);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.getViewTreeObserver().removeOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)localObject1);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.setTag(2131376157, null);
+    return false;
   }
 }
 

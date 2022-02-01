@@ -1,5 +1,6 @@
 package com.tencent.biz.richframework.widget;
 
+import aaky;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Handler;
@@ -17,7 +18,7 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView.ScaleType;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
-import azjl;
+import bapt;
 import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 import com.tencent.biz.richframework.eventbus.SimpleEventBus;
 import com.tencent.biz.richframework.eventbus.SimpleEventReceiver;
@@ -63,12 +64,11 @@ import java.util.List;
 import java.util.Timer;
 import org.json.JSONObject;
 import qqcircle.QQCircleReport.SingleDcData;
-import zat;
-import zaw;
-import zax;
-import zay;
-import zaz;
-import zvm;
+import zpy;
+import zqb;
+import zqc;
+import zqd;
+import zqe;
 
 public abstract class BaseVideoView
   extends BaseWidgetView
@@ -86,7 +86,7 @@ public abstract class BaseVideoView
   private ArrayList<QQCircleReport.SingleDcData> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private List<Pair<Long, Long>> jdField_a_of_type_JavaUtilList = new LinkedList();
   private volatile Timer jdField_a_of_type_JavaUtilTimer;
-  public zaz a;
+  public zqe a;
   public boolean a;
   public String b;
   protected boolean b;
@@ -481,9 +481,9 @@ public abstract class BaseVideoView
   
   public void a()
   {
-    if (!azjl.a())
+    if (!bapt.a())
     {
-      azjl.a(BaseApplicationImpl.getApplication(), new zax(this));
+      bapt.a(BaseApplicationImpl.getApplication(), new zqc(this));
       return;
     }
     a();
@@ -540,7 +540,7 @@ public abstract class BaseVideoView
       QLog.w("BaseVideoView", 1, "reportVideoEvent feed is null");
       return;
     }
-    localSingleDcData.report_data.addAll(zat.a(paramLong, paramString, paramObject));
+    localSingleDcData.report_data.addAll(zpy.a(paramLong, paramString, paramObject));
     if ((paramList != null) && (!paramList.isEmpty())) {
       localSingleDcData.report_data.addAll(paramList);
     }
@@ -751,9 +751,6 @@ public abstract class BaseVideoView
     {
       d1 = a().getCurrentPositionMs();
       f1 = (float)a().getDurationMs();
-      if ((f1 == 0.0F) && (a() != null)) {
-        a().setProgress(0);
-      }
       if ((!this.jdField_c_of_type_Boolean) && (d1 != 0.0D) && (!this.jdField_a_of_type_Boolean)) {}
     }
     else
@@ -766,7 +763,7 @@ public abstract class BaseVideoView
     localMessage.arg2 = ((int)f1);
     localMessage.obj = Boolean.valueOf(true);
     a().sendMessage(localMessage);
-    a().post(new BaseVideoView.6(this, d1, f1));
+    a().post(new BaseVideoView.7(this, f1, d1));
   }
   
   protected void l()
@@ -841,7 +838,7 @@ public abstract class BaseVideoView
   public boolean onInfo(ISuperPlayer paramISuperPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
   {
     int n = hashCode();
-    String str2 = zaw.a(paramInt);
+    String str2 = zqb.a(paramInt);
     String str1;
     if (paramObject == null)
     {
@@ -896,7 +893,7 @@ public abstract class BaseVideoView
   public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
     if (this.jdField_c_of_type_Boolean) {
-      zvm.a("setSeekBar", 100L, new zay(this, paramSeekBar));
+      aaky.a("setSeekBar", 100L, new zqd(this, paramSeekBar));
     }
   }
   
@@ -940,25 +937,14 @@ public abstract class BaseVideoView
   
   public void onVideoPrepared(ISuperPlayer paramISuperPlayer)
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerViewISPlayerVideoView != null) {
-      this.jdField_a_of_type_ComTencentSuperplayerViewISPlayerVideoView.setXYaxis(0);
-    }
-    if (a() != null) {
-      a().setMax((int)a().getDurationMs());
-    }
-    if (!b())
-    {
-      paramISuperPlayer = new ArrayList();
-      paramISuperPlayer.add(QCircleReportHelper.newEntry("time_cost", String.valueOf((float)(System.currentTimeMillis() - this.jdField_e_of_type_Long) / 1000.0F)));
-      a(this.jdField_a_of_type_Long, "video_first_buffer_time_consuming", a(), paramISuperPlayer);
-    }
+    a().post(new BaseVideoView.5(this));
   }
   
   public void onVideoSizeChanged(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2) {}
   
-  public void setBaseVideoViewListenerSets(zaz paramzaz)
+  public void setBaseVideoViewListenerSets(zqe paramzqe)
   {
-    this.jdField_a_of_type_Zaz = paramzaz;
+    this.jdField_a_of_type_Zqe = paramzqe;
   }
   
   public void setInterrupt(boolean paramBoolean)
@@ -998,8 +984,8 @@ public abstract class BaseVideoView
   {
     QLog.i("BaseVideoView", 1, "set Final VideoPath success");
     b();
-    zat.a();
-    this.jdField_a_of_type_Long = zat.a();
+    zpy.a();
+    this.jdField_a_of_type_Long = zpy.a();
     this.jdField_a_of_type_ComTencentSuperplayerApiSuperPlayerVideoInfo = a(paramString1, paramString2);
     if ((a() != null) && (this.jdField_a_of_type_ComTencentSuperplayerApiSuperPlayerVideoInfo != null))
     {

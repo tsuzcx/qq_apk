@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.weishi_new;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import ukg;
+import uyd;
 
 public class WSRecommendFragment$InternetDynamicBroadCastReceiver
   extends BroadcastReceiver
@@ -24,7 +24,7 @@ public class WSRecommendFragment$InternetDynamicBroadCastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment.InternetDynamicBroadCastReceiver
  * JD-Core Version:    0.7.0.1
  */

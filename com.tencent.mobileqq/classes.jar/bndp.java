@@ -1,13 +1,14 @@
-class bndp
-  extends boax
+public abstract interface bndp
 {
-  bndp(bndn parambndn) {}
+  public abstract void a();
   
-  public void a()
-  {
-    xvv.c("Q.qqstory.publish.edit.StoryDoodle", "DoodleInfoLoadObserver, onLoadSucc");
-    this.a.b();
-  }
+  public abstract void a(float paramFloat);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

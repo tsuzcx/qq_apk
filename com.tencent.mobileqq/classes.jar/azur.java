@@ -1,34 +1,15 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.face.FaceDecoder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class azur
-  extends RecyclerView.OnScrollListener
+  implements DialogInterface.OnClickListener
 {
-  azur(azuq paramazuq) {}
+  azur(azun paramazun) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    azuq.a(this.a, paramInt);
-    if (azuq.a(this.a) == 0)
-    {
-      if (azuq.a(this.a).isPausing()) {
-        azuq.a(this.a).resume();
-      }
-      int i = azuq.a(this.a).getChildCount();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        paramRecyclerView = azuq.a(this.a).getChildAt(paramInt);
-        paramRecyclerView = (azut)azuq.a(this.a).getChildViewHolder(paramRecyclerView);
-        azut.a(paramRecyclerView).setImageBitmap(azuq.a(this.a, azut.a(paramRecyclerView)));
-        paramInt += 1;
-      }
-    }
-    azuq.a(this.a).cancelPendingRequests();
-    azuq.a(this.a).pause();
+    azun.a(this.a, false);
+    paramDialogInterface.dismiss();
   }
 }
 

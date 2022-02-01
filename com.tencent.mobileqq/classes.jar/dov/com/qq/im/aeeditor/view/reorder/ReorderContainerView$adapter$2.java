@@ -1,6 +1,6 @@
 package dov.com.qq.im.aeeditor.view.reorder;
 
-import bmoi;
+import boea;
 import kotlin.Metadata;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Lambda;
@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Ldov/com/qq/im/aeeditor/view/reorder/ReorderContainerView$SpacingAdapter;", "invoke"}, k=3, mv={1, 1, 16})
 final class ReorderContainerView$adapter$2
   extends Lambda
-  implements Function0<bmoi>
+  implements Function0<boea>
 {
   public static final 2 INSTANCE = new 2();
   
@@ -19,9 +19,9 @@ final class ReorderContainerView$adapter$2
   }
   
   @NotNull
-  public final bmoi invoke()
+  public final boea invoke()
   {
-    return new bmoi();
+    return new boea();
   }
 }
 

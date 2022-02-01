@@ -1,11 +1,17 @@
-import android.widget.TextView;
-import com.tencent.biz.now.NowVideoLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bcii
+class bcii
+  implements View.OnClickListener
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  NowVideoLayout jdField_a_of_type_ComTencentBizNowNowVideoLayout;
-  TextView b;
+  bcii(bcih parambcih) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a.a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

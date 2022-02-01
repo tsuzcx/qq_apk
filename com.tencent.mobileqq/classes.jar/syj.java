@@ -1,11 +1,20 @@
-import java.util.Comparator;
+import android.view.animation.Interpolator;
+import com.tencent.biz.pubaccount.readinjoy.view.DailyTitleBarSwitcher;
 
-final class syj
-  implements Comparator<byte[]>
+public class syj
+  implements Interpolator
 {
-  public int a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  public syj(DailyTitleBarSwitcher paramDailyTitleBarSwitcher) {}
+  
+  public float getInterpolation(float paramFloat)
   {
-    return paramArrayOfByte1.length - paramArrayOfByte2.length;
+    if (paramFloat < 0.2F) {
+      return 0.0F;
+    }
+    if (paramFloat < 0.5F) {
+      return (paramFloat - 0.2F) / 0.3F;
+    }
+    return 1.0F;
   }
 }
 

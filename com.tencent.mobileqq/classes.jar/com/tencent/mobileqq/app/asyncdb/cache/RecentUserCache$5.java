@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.app.asyncdb.cache;
 
-import akju;
-import akla;
-import akmb;
-import anes;
-import bcdb;
+import alfm;
+import algs;
+import alht;
+import aohi;
+import bdjw;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
 import com.tencent.mobileqq.activity.recent.parcelUtils.ParcelHelper;
@@ -18,22 +18,22 @@ import java.util.concurrent.ConcurrentHashMap;
 public class RecentUserCache$5
   implements Runnable
 {
-  public RecentUserCache$5(anes paramanes, String paramString, RecentUser paramRecentUser, long paramLong) {}
+  public RecentUserCache$5(aohi paramaohi, String paramString, RecentUser paramRecentUser, long paramLong) {}
   
   public void run()
   {
-    Object localObject3 = akla.a().a(this.jdField_a_of_type_JavaLangString);
+    Object localObject3 = algs.a().a(this.jdField_a_of_type_JavaLangString);
     Object localObject1;
     if (localObject3 == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.db.Cache.RecentUserCache", 2, "getBaseItemDataFromCache is null!");
       }
-      localObject3 = akju.a(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser, (QQAppInterface)this.this$0.app, ((QQAppInterface)this.this$0.app).getApp());
+      localObject3 = alfm.a(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser, (QQAppInterface)this.this$0.app, ((QQAppInterface)this.this$0.app).getApp());
       localObject1 = localObject3;
       if (localObject3 != null)
       {
-        akla.a().a((RecentBaseData)localObject3, this.jdField_a_of_type_JavaLangString);
+        algs.a().a((RecentBaseData)localObject3, this.jdField_a_of_type_JavaLangString);
         localObject1 = localObject3;
       }
       if (!(localObject1 instanceof RecentUserBaseData)) {}
@@ -58,10 +58,10 @@ public class RecentUserCache$5
         catch (Throwable localThrowable2)
         {
           QLog.e("Q.db.Cache.RecentUserCache", 1, "saveParcelDataToRecentData fail, 请对应的开发检查是否使用了不该使用的字段", localThrowable2);
-          akmb.a(((QQAppInterface)this.this$0.app).getApp(), false, localThrowable2);
+          alht.a(((QQAppInterface)this.this$0.app).getApp(), false, localThrowable2);
           continue;
         }
-        anes.k(this.this$0).put(this.jdField_a_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long));
+        aohi.k(this.this$0).put(this.jdField_a_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long));
         if (QLog.isColorLevel()) {
           QLog.d("Q.db.Cache.RecentUserCache", 2, new Object[] { "saveParcelDataToRecentData success, key=", this.jdField_a_of_type_JavaLangString, " lastRealOPTime=", Long.valueOf(this.jdField_a_of_type_Long) });
         }
@@ -79,12 +79,12 @@ public class RecentUserCache$5
         }
         catch (ConcurrentModificationException localConcurrentModificationException)
         {
-          bcdb.a(localConcurrentModificationException, "Multi Recent Handle Report");
+          bdjw.a(localConcurrentModificationException, "Multi Recent Handle Report");
           Object localObject2 = localObject3;
         }
         catch (Throwable localThrowable1)
         {
-          akmb.a(((QQAppInterface)this.this$0.app).getApp(), false, localThrowable1);
+          alht.a(((QQAppInterface)this.this$0.app).getApp(), false, localThrowable1);
           throw new RuntimeException(localThrowable1);
         }
       }

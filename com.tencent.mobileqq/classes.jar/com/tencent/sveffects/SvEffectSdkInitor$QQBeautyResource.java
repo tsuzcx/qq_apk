@@ -1,6 +1,6 @@
 package com.tencent.sveffects;
 
-import baah;
+import bbgq;
 import com.tencent.mobileqq.shortvideo.resource.BeautyResource;
 
 public class SvEffectSdkInitor$QQBeautyResource
@@ -8,7 +8,7 @@ public class SvEffectSdkInitor$QQBeautyResource
 {
   public String getBeautyFilePath()
   {
-    return baah.c;
+    return bbgq.c;
   }
 }
 

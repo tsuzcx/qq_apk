@@ -1,13 +1,7 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-
 public class amdd
-  implements DialogInterface.OnClickListener
 {
-  public amdd(ApolloGameActivity paramApolloGameActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public String a;
+  public String b;
 }
 
 

@@ -1,129 +1,59 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
-import java.net.URL;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.DocExportFilePresenter.3.1;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class atza
-  extends WebViewPlugin
+  implements atuf
 {
-  public atza()
+  atza(atyy paramatyy) {}
+  
+  public View a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameCenterInterruptPlugin", 2, "GameCenterInterruptPlugin init");
-    }
-    this.mPluginNameSpace = "gameCenter";
+    return null;
   }
   
-  public boolean handleSchemaRequest(String paramString1, String paramString2)
+  public void a(String paramString, Drawable paramDrawable1, Drawable paramDrawable2, View.OnClickListener paramOnClickListener) {}
+  
+  public void a(boolean paramBoolean)
   {
-    if (paramString1 != null) {}
-    for (;;)
+    if (this.a.jdField_a_of_type_Atux != null) {
+      this.a.jdField_a_of_type_Atux.a(paramBoolean);
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a()) && (paramBoolean)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c();
+    }
+    while ((this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.b() == null) || (paramBoolean)) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_Atxa.a());
+  }
+  
+  public boolean a()
+  {
+    if (this.a.jdField_a_of_type_Atuw != null) {
+      return this.a.jdField_a_of_type_Atuw.b();
+    }
+    return false;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.jdField_a_of_type_Atux != null)) {
+      this.a.jdField_a_of_type_Atux.a();
+    }
+    if (paramBoolean)
     {
-      try
-      {
-        if (!paramString1.contains("apk")) {
-          break label591;
-        }
-        localObject4 = (bifp)bifq.a().a("comminfo");
-        if (localObject4 == null) {
-          break label593;
-        }
-        paramString2 = ((bifp)localObject4).a(paramString1);
-        if (QLog.isColorLevel()) {
-          QLog.d("GameCenterInterruptPlugin", 1, "handleSchemaRequest url=" + paramString1 + " apkInfo=" + paramString2);
-        }
-        if ((paramString2 == null) || (bfwv.a(BaseApplication.getContext(), paramString2.c)))
-        {
-          localObject3 = bigb.a();
-          paramString2 = null;
-        }
-      }
-      catch (Exception paramString1)
-      {
-        Object localObject4;
-        Object localObject3;
-        Object localObject1;
-        Pair localPair;
-        QLog.e("GameCenterInterruptPlugin", 1, "handleSchemaRequest error =" + paramString1.toString());
-      }
-      try
-      {
-        localObject1 = new URL(paramString1).getHost();
-        paramString2 = (String)localObject1;
-      }
-      catch (Throwable localThrowable)
-      {
-        continue;
-        continue;
-        paramString1 = null;
-        Object localObject2 = null;
-        continue;
-      }
-      ((bigb)localObject3).g = paramString1;
-      ((bigb)localObject3).h = paramString2;
-      blec.a().a("205925", "20", (bigb)localObject3, "dc05076");
-      return false;
-      QLog.i("GameCenterInterruptPlugin", 1, "interrupt url downLoad apk channelId=" + paramString2.d + " pkgName=" + paramString2.c + ", appid=" + paramString2.a + ",gameName=" + paramString2.b + ",url=" + paramString1);
-      if (this.mRuntime != null)
-      {
-        paramString1 = this.mRuntime.a();
-        localObject1 = this.mRuntime.a();
-        if (localObject1 != null)
-        {
-          localObject3 = null;
-          if (paramString1 != null) {
-            localObject3 = paramString1.getIntent();
-          }
-          localPair = abet.a((Intent)localObject3);
-          QLog.i("GameCenterInterruptPlugin", 1, "originalUrl=" + ((CustomWebView)localObject1).getOriginalUrl() + ",sessionInfo=" + localPair + ",url=" + ((CustomWebView)localObject1).getUrl());
-          paramString1 = new Bundle();
-          paramString1.putInt("from", 6);
-          paramString1.putInt("flags", 7);
-          paramString1.putString("packageName", paramString2.c);
-          paramString1.putString("apkChannel", paramString2.d);
-          paramString1.putString("appName", paramString2.b);
-          paramString1.putString("apkUrl", paramString2.e);
-          paramString1.putString("via", "GameCenterIntterup");
-          localObject3 = ((CustomWebView)localObject1).getUrl();
-          if (TextUtils.isEmpty((CharSequence)localObject3))
-          {
-            localObject3 = ((CustomWebView)localObject1).getOriginalUrl();
-            if (!TextUtils.isEmpty((CharSequence)localObject3))
-            {
-              paramString1.putString("ext", (String)localObject3);
-              paramString1.putString("fromWebUrl", (String)localObject3);
-            }
-            atzb.a(paramString1, paramString2.a, false, 0);
-            if (localObject4 != null)
-            {
-              paramString1 = ((bifp)localObject4).c;
-              localObject4 = paramString1;
-              if (TextUtils.isEmpty(paramString1)) {
-                localObject4 = "https://speed.gamecenter.qq.com/pushgame/v1/downloadadmin";
-              }
-              ((CustomWebView)localObject1).loadUrl((String)localObject4);
-              abet.a(null, "558", "205758", paramString2.a, "55801", "4", "430", new String[] { String.valueOf(localPair.first), (String)localPair.second, paramString2.d, paramString2.e, localObject3 });
-              return true;
-            }
-            paramString1 = "https://speed.gamecenter.qq.com/pushgame/v1/downloadadmin";
-            continue;
-          }
-        }
-        else
-        {
-          return false;
-        }
-      }
-      label591:
-      return false;
-      label593:
-      paramString2 = null;
+      atua.a().b(false);
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_Atxa.d(), this);
+      this.a.jdField_a_of_type_Boolean = false;
+      QQToast.a(this.a.jdField_a_of_type_AndroidAppActivity, 2, 2131692220, 1).a();
+      ThreadManagerV2.getUIHandlerV2().postDelayed(new DocExportFilePresenter.3.1(this), 800L);
     }
   }
 }

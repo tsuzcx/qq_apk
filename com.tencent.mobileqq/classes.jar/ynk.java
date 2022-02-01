@@ -1,8 +1,22 @@
-public abstract interface ynk
+import android.graphics.Bitmap;
+
+class ynk
+  extends yqa
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public Bitmap a;
+  public Bitmap b;
   
-  public abstract void b(int paramInt1, int paramInt2);
+  public ynk(int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3)
+  {
+    super(paramInt, paramBitmap1);
+    this.b = paramBitmap2;
+    this.a = paramBitmap3;
+  }
+  
+  public ynk(yqa paramyqa, Bitmap paramBitmap1, Bitmap paramBitmap2)
+  {
+    this(paramyqa.jdField_c_of_type_Int, paramyqa.jdField_c_of_type_AndroidGraphicsBitmap, paramBitmap1, paramBitmap2);
+  }
 }
 
 

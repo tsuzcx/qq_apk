@@ -1,58 +1,59 @@
-import android.content.Context;
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.ugc.upload.RIJUgcImageUploader.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.articlesummary.feeds_info.IconWordingInfo;
 
 public class rrb
-  implements rqy
 {
-  public static String a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private rqx jdField_a_of_type_Rqx;
-  private rrn jdField_a_of_type_Rrn;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private String jdField_b_of_type_JavaLangString;
-  private volatile boolean jdField_b_of_type_Boolean;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
   
-  static
+  private static rrb b(feeds_info.IconWordingInfo paramIconWordingInfo)
   {
-    jdField_a_of_type_JavaLangString = "RIJUGC.RIJUgcImageUploader";
-  }
-  
-  public rrb(Context paramContext, QQAppInterface paramQQAppInterface, String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public void a()
-  {
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "upload, path=" + this.jdField_b_of_type_JavaLangString);
-    this.jdField_b_of_type_Boolean = true;
-    ThreadManagerV2.getUIHandlerV2().post(new RIJUgcImageUploader.1(this));
-  }
-  
-  public void a(rqx paramrqx)
-  {
-    this.jdField_a_of_type_Rqx = paramrqx;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_b_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "cancel, path=" + this.jdField_b_of_type_JavaLangString);
-      if (this.jdField_a_of_type_Rrn != null)
-      {
-        this.jdField_a_of_type_Rrn.a();
-        this.jdField_a_of_type_Rrn.b();
-      }
+    rrb localrrb = new rrb();
+    localrrb.jdField_a_of_type_Int = qdv.a(paramIconWordingInfo.uint32_type);
+    if (paramIconWordingInfo.bytes_icon_url.has()) {
+      localrrb.jdField_a_of_type_JavaLangString = paramIconWordingInfo.bytes_icon_url.get().toStringUtf8();
     }
+    if (paramIconWordingInfo.bytes_wording.has()) {
+      localrrb.jdField_b_of_type_JavaLangString = paramIconWordingInfo.bytes_wording.get().toStringUtf8();
+    }
+    if (paramIconWordingInfo.bytes_status_icon_url.has()) {
+      localrrb.jdField_c_of_type_JavaLangString = paramIconWordingInfo.bytes_status_icon_url.get().toStringUtf8();
+    }
+    localrrb.jdField_b_of_type_Int = qdv.a(paramIconWordingInfo.uint32_status);
+    if (paramIconWordingInfo.bytes_status.has()) {
+      localrrb.d = paramIconWordingInfo.bytes_status.get().toStringUtf8();
+    }
+    localrrb.jdField_c_of_type_Int = qdv.a(paramIconWordingInfo.uint32_icon_show_mode);
+    return localrrb;
+  }
+  
+  public feeds_info.IconWordingInfo a()
+  {
+    feeds_info.IconWordingInfo localIconWordingInfo = new feeds_info.IconWordingInfo();
+    localIconWordingInfo.uint32_type.set(this.jdField_a_of_type_Int);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      localIconWordingInfo.bytes_icon_url.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    }
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      localIconWordingInfo.bytes_wording.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    }
+    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+      localIconWordingInfo.bytes_status_icon_url.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
+    }
+    localIconWordingInfo.uint32_status.set(this.jdField_b_of_type_Int);
+    localIconWordingInfo.uint32_icon_show_mode.set(this.jdField_c_of_type_Int);
+    if (!TextUtils.isEmpty(this.d)) {
+      localIconWordingInfo.bytes_status.set(ByteStringMicro.copyFromUtf8(this.d));
+    }
+    return localIconWordingInfo;
   }
 }
 

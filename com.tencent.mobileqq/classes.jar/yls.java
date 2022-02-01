@@ -1,12 +1,21 @@
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.io.FilenameFilter;
 
-public final class yls
-  implements FilenameFilter
+public class yls
 {
-  public boolean accept(File paramFile, String paramString)
+  public static String a;
+  
+  public static boolean a(long paramLong, Context paramContext)
   {
-    return paramString.endsWith(".mp4");
+    a = anuc.a + "QQEditPic" + File.separator;
+    paramContext = new File(a);
+    boolean bool1 = paramContext.mkdirs();
+    boolean bool2 = paramContext.isDirectory();
+    if (QLog.isColorLevel()) {
+      QLog.e("initDirs", 2, "thumbFilesDirPath=" + bool1 + " isdir=" + bool2);
+    }
+    return (bool1) || (bool2);
   }
 }
 

@@ -1,10 +1,14 @@
-import android.view.animation.Animation;
-
-public abstract interface aufw
+class aufw
+  implements audq
 {
-  public abstract void a(Animation paramAnimation);
+  aufw(aufu paramaufu) {}
   
-  public abstract void b(Animation paramAnimation);
+  public void onNo() {}
+  
+  public void onYes()
+  {
+    this.a.c();
+  }
 }
 
 

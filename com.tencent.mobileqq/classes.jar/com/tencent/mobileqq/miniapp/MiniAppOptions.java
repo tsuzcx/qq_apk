@@ -3,12 +3,12 @@ package com.tencent.mobileqq.miniapp;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import avrx;
+import awyc;
 
 public class MiniAppOptions
   implements Parcelable
 {
-  public static final Parcelable.Creator<MiniAppOptions> CREATOR = new avrx();
+  public static final Parcelable.Creator<MiniAppOptions> CREATOR = new awyc();
   
   public MiniAppOptions() {}
   

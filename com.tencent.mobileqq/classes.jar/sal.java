@@ -1,19 +1,10 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
-class sal
-  implements bjoi
+public abstract interface sal
 {
-  sal(sab paramsab) {}
-  
-  public void ab_()
-  {
-    if (sab.b(this.a)) {
-      sab.a(this.a).c();
-    }
-    if (sab.a(this.a) != null) {
-      sab.a(this.a).f();
-    }
-  }
+  public abstract void a(@NotNull List<UgcVideo> paramList);
 }
 
 

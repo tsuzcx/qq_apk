@@ -1,54 +1,25 @@
-import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
 
 public class bfrk
+  implements View.OnTouchListener
 {
-  Bundle a = new Bundle();
+  public bfrk(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
   
-  public Bundle a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return this.a;
-  }
-  
-  public bfrk a(String paramString)
-  {
-    this.a.putString("text_evidence", paramString);
-    return this;
-  }
-  
-  public bfrk b(String paramString)
-  {
-    this.a.putString("img_evidence", paramString);
-    return this;
-  }
-  
-  public bfrk c(String paramString)
-  {
-    this.a.putString("url_evidence", paramString);
-    return this;
-  }
-  
-  public bfrk d(String paramString)
-  {
-    this.a.putString("video_evidence", paramString);
-    return this;
-  }
-  
-  public bfrk e(String paramString)
-  {
-    this.a.putString("file_evidence", paramString);
-    return this;
-  }
-  
-  public bfrk f(String paramString)
-  {
-    this.a.putString("audio_evidence", paramString);
-    return this;
-  }
-  
-  public bfrk g(String paramString)
-  {
-    this.a.putString("user_input_param", paramString);
-    return this;
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 

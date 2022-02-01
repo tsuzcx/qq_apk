@@ -1,81 +1,17 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ofs
-  extends aptq<ofr>
+  implements View.OnClickListener
 {
-  @NonNull
-  public ofr a(int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime instanceof QQAppInterface))
-      {
-        uex.a((QQAppInterface)localAppRuntime);
-        return ofr.a();
-      }
-    }
-    return new ofr();
-  }
+  public ofs(VideoCoverView paramVideoCoverView) {}
   
-  @Nullable
-  public ofr a(aptx[] paramArrayOfaptx)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ServiceAccountFolderConfProcessor", 2, "[onParsed]");
-    }
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return ofr.a(paramArrayOfaptx);
-    }
-    return null;
-  }
-  
-  public void a(ofr paramofr)
-  {
-    paramofr.b();
-    paramofr.a();
-    paramofr.c();
-  }
-  
-  public Class<ofr> clazz()
-  {
-    return ofr.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return false;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return uex.a((QQAppInterface)localAppRuntime);
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 81;
+    VideoCoverView.a(this.a, true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

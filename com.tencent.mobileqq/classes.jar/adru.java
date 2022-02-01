@@ -1,30 +1,21 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.NearbyActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adru
-  implements Handler.Callback
+  implements View.OnClickListener
 {
-  public adru(NearbyActivity paramNearbyActivity) {}
+  public adru(ChatSettingForTroop paramChatSettingForTroop, Dialog paramDialog) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    for (;;)
-    {
-      return false;
-      if (!this.a.c)
-      {
-        this.a.g();
-        this.a.b.removeMessages(1000);
-        this.a.b.sendEmptyMessageDelayed(1000, this.a.n);
-        continue;
-        NearbyActivity.a(this.a);
-      }
-    }
+    ChatSettingForTroop.h(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

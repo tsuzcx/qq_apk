@@ -16,16 +16,16 @@ import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import bfwv;
-import bhpc;
-import bhwx;
-import bhzk;
-import bhzm;
-import bhzp;
-import biam;
-import biaq;
-import bias;
-import bicz;
+import bhfn;
+import bizw;
+import bjhz;
+import bjkm;
+import bjko;
+import bjkr;
+import bjlo;
+import bjls;
+import bjlu;
+import bjob;
 import com.tencent.smtt.sdk.WebView;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,7 @@ public class AppInterface
   private static final String TAG = "AppInterface";
   protected Activity activity;
   public Handler mHandler;
-  public bicz tipDialog;
+  public bjob tipDialog;
   protected WebView webView;
   
   public AppInterface(Activity paramActivity, WebView paramWebView)
@@ -51,12 +51,12 @@ public class AppInterface
   
   public static String getImei()
   {
-    return biaq.c();
+    return bjls.c();
   }
   
   public static String getImsi()
   {
-    return biaq.d();
+    return bjls.d();
   }
   
   public String gSetPackageScanSetting(String paramString1, String paramString2)
@@ -67,20 +67,20 @@ public class AppInterface
       return null;
       if (paramString1.equals("2"))
       {
-        if (biam.a(this.activity)) {
+        if (bjlo.a(this.activity)) {
           return "1";
         }
         return "0";
       }
       if (paramString1.equals("0"))
       {
-        bias.a("100", "ANDROIDQQ.STORE.UPDATECHECKBOX", "");
-        paramString1 = new bhwx(this, paramString2);
+        bjlu.a("100", "ANDROIDQQ.STORE.UPDATECHECKBOX", "");
+        paramString1 = new bjhz(this, paramString2);
         this.mHandler.post(new AppInterface.2(this, paramString1));
         return null;
       }
     } while (!paramString1.equals("1"));
-    paramString1 = bhpc.a().a().getSharedPreferences("package_scan", 0).edit();
+    paramString1 = bizw.a().a().getSharedPreferences("package_scan", 0).edit();
     paramString1.putBoolean("qqsetting_package_scan_flag", true);
     paramString1.commit();
     return "1";
@@ -124,7 +124,7 @@ public class AppInterface
       if (!hasRight()) {
         return "baby,you don't have permission";
       }
-      if (bhzp.a(paramString1)) {
+      if (bjkr.a(paramString1)) {
         return "[]";
       }
       paramString1 = this.activity.getPackageManager().getPackageInfo(paramString1, 0);
@@ -171,7 +171,7 @@ public class AppInterface
       if (j == 0) {
         break label224;
       }
-      paramString1.put(bhzk.a(paramPackageInfo.applicationInfo.loadIcon(this.activity.getPackageManager())));
+      paramString1.put(bjkm.a(paramPackageInfo.applicationInfo.loadIcon(this.activity.getPackageManager())));
       label128:
       if (k == 0) {
         break label252;
@@ -230,10 +230,10 @@ public class AppInterface
     if (!hasRight()) {
       return "baby,you don't have permission";
     }
-    if (bhzp.a(paramString1)) {
+    if (bjkr.a(paramString1)) {
       return "{}";
     }
-    paramString1 = bhzp.a(paramString1, paramString2);
+    paramString1 = bjkr.a(paramString1, paramString2);
     if (paramString1.length == 0) {
       return "{}";
     }
@@ -246,7 +246,7 @@ public class AppInterface
       if (i < j)
       {
         localCharSequence = paramString1[i];
-        if ((TextUtils.isEmpty(localCharSequence)) || (!bfwv.a(this.activity, localCharSequence))) {}
+        if ((TextUtils.isEmpty(localCharSequence)) || (!bhfn.a(this.activity, localCharSequence))) {}
       }
       try
       {
@@ -373,10 +373,10 @@ public class AppInterface
   
   public void getUpdateApp(String paramString)
   {
-    bhzm.b("AppUpdate", "getUpdateApp , param = " + paramString);
+    bjko.b("AppUpdate", "getUpdateApp , param = " + paramString);
     try
     {
-      bhpc.a().a(paramString, this.activity, this.webView);
+      bizw.a().a(paramString, this.activity, this.webView);
       return;
     }
     catch (Exception paramString)
@@ -388,7 +388,7 @@ public class AppInterface
   public int uninstallApp(String paramString)
   {
     if (!hasRight()) {}
-    while (!biam.b(this.activity, paramString)) {
+    while (!bjlo.b(this.activity, paramString)) {
       return -1;
     }
     return 0;

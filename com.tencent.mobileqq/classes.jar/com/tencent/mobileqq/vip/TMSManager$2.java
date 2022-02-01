@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.vip;
 
-import bgox;
-import bgoz;
+import bhzh;
+import bhzj;
 import com.tencent.qphone.base.util.QLog;
 
 public class TMSManager$2
   implements Runnable
 {
-  public TMSManager$2(bgox parambgox) {}
+  public TMSManager$2(bhzh parambhzh) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.i("KC.TMSManager", 2, "no file and requestDownloadDepends");
     }
-    bgox.a().a();
+    bhzh.a().a();
   }
 }
 

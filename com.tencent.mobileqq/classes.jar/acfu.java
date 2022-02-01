@@ -1,33 +1,53 @@
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.aditem.GdtBaseAdItem;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import msf.msgsvc.msg_svc.Grp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
 
 public class acfu
-  implements abyl
+  extends QIPCModule
 {
-  public int a()
+  private static volatile acfu a;
+  
+  private acfu(String paramString)
   {
-    return 1;
+    super(paramString);
   }
   
-  public boolean a()
+  public static acfu a()
   {
-    return false;
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new acfu("gdt_ipc");
+      }
+      return a;
+    }
+    finally {}
   }
   
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    paramQQAppInterface = new msg_svc.Grp();
-    paramQQAppInterface.group_code.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramRoutingHead.grp.set(paramQQAppInterface);
-    return true;
-  }
-  
-  public int b()
-  {
-    return 3002;
+    acho.b("gdt_ipc", "Action  " + paramString);
+    if ("do_app_jump".equals(paramString))
+    {
+      if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
+      {
+        paramString = (achp)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.GDT_AD_HANDLER);
+        paramBundle.setClassLoader(getClass().getClassLoader());
+        paramBundle = (GdtBaseAdItem)paramBundle.getParcelable("gdtBaseAdItem");
+        paramString.a(BaseApplicationImpl.getContext(), paramBundle);
+        callbackResult(paramInt, EIPCResult.createSuccessResult(null));
+      }
+    }
+    else {
+      return null;
+    }
+    callbackResult(paramInt, EIPCResult.createResult(-1, null));
+    return null;
   }
 }
 

@@ -10,12 +10,12 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.util.ArrayList;
 import org.json.JSONObject;
-import uuo;
+import vjb;
 
 public class WSPushVideoModel
   implements Parcelable
 {
-  public static final Parcelable.Creator<WSPushVideoModel> CREATOR = new uuo();
+  public static final Parcelable.Creator<WSPushVideoModel> CREATOR = new vjb();
   private int a;
   public String a;
   private int b;
@@ -122,7 +122,7 @@ public class WSPushVideoModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.push.WSPushVideoModel
  * JD-Core Version:    0.7.0.1
  */

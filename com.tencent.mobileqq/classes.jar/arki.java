@@ -1,52 +1,72 @@
-import android.os.Message;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.NearbyPeoplePhotoUploadProcessor;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arki
-  extends TransProcessorHandler
+  extends arjj<arkh>
 {
-  public arki(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
-  
-  public void handleMessage(Message paramMessage)
+  public static arkh c()
   {
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    switch (paramMessage.what)
+    arkh localarkh2 = (arkh)aqxe.a().a(469);
+    arkh localarkh1 = localarkh2;
+    if (localarkh2 == null) {
+      localarkh1 = new arkh();
+    }
+    return localarkh1;
+  }
+  
+  @NonNull
+  public arkh a()
+  {
+    return new arkh();
+  }
+  
+  @NonNull
+  public arkh a(aqxa[] paramArrayOfaqxa)
+  {
+    boolean bool = true;
+    localarkh = new arkh();
+    paramArrayOfaqxa = paramArrayOfaqxa[0].jdField_a_of_type_JavaLangString;
+    try
     {
-    case 1004: 
-    default: 
-      return;
-    case 1003: 
-      if (localFileMsg.fileType == 23)
+      paramArrayOfaqxa = new JSONObject(paramArrayOfaqxa);
+      if (paramArrayOfaqxa.optInt("is_show_recover_entry", 1) == 1) {}
+      for (;;)
       {
-        ExtendFriendEditFragment.a(this.a, ((NearbyPeoplePhotoUploadProcessor)localFileMsg.processor).mUrl);
-        if (QLog.isColorLevel()) {
-          QLog.i("ExtendFriendProfileEdit", 2, "mFileUploadHandler.handleMessage(), upload success. url = " + ExtendFriendEditFragment.a(this.a));
-        }
-        if (this.a.a != null)
-        {
-          this.a.a.a(ExtendFriendEditFragment.a(this.a));
-          ExtendFriendEditFragment.a(this.a, this.a.a.a());
-        }
+        localarkh.jdField_a_of_type_Boolean = bool;
+        localarkh.jdField_a_of_type_JavaLangString = paramArrayOfaqxa.optString("recover_text", localarkh.jdField_a_of_type_JavaLangString);
+        localarkh.b = paramArrayOfaqxa.optString("recover_url", localarkh.b);
+        localarkh.c = paramArrayOfaqxa.optString("recoveryHomePageUrl", localarkh.c);
+        return localarkh;
+        bool = false;
       }
-      aroq.a().d(true, 0);
-      return;
+      return localarkh;
     }
-    if ((localFileMsg.fileType == 23) && (QLog.isColorLevel())) {
-      QLog.i("ExtendFriendProfileEdit", 2, "mFileUploadHandler.handleMessage(), upload fail.");
+    catch (JSONException paramArrayOfaqxa)
+    {
+      ykq.e("QVipFriendTag2Processor", "QVipFriendTag2Config onParsed exception :" + paramArrayOfaqxa.getMessage());
     }
-    ExtendFriendEditFragment.a(this.a).dismiss();
-    QQToast.a(ExtendFriendEditFragment.a(this.a), amtj.a(2131703399), 0).a();
-    aroq.a().d(false, 0);
+  }
+  
+  @NonNull
+  public arkh b()
+  {
+    return new arkh();
+  }
+  
+  public Class<arkh> clazz()
+  {
+    return arkh.class;
+  }
+  
+  public int type()
+  {
+    return 469;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arki
  * JD-Core Version:    0.7.0.1
  */

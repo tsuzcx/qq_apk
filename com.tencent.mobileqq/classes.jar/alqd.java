@@ -1,6 +1,10 @@
+import java.util.ArrayList;
+
 public abstract interface alqd
 {
-  public abstract void a(boolean paramBoolean, alqc paramalqc);
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList);
 }
 
 

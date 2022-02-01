@@ -1,35 +1,27 @@
-import com.tencent.image.AbsThirdDataSourceAdapter.OnPreparedCallback;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
+import java.util.Iterator;
+import java.util.List;
 
 class sjn
-  implements sjr
+  extends QIPCModule
 {
-  sjn(sjm paramsjm) {}
-  
-  public void a(sjt paramsjt)
+  sjn(sjm paramsjm, String paramString)
   {
-    sjm.a(this.a, 2);
-    sjm localsjm = this.a;
-    String str;
-    if (paramsjt.jdField_a_of_type_JavaLangString == null)
+    super(paramString);
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    synchronized (sjm.a(this.a))
     {
-      str = "";
-      sjm.a(localsjm, str);
-      if (paramsjt.jdField_a_of_type_Int != 1) {
-        break label78;
+      Iterator localIterator = sjm.a(this.a).iterator();
+      if (localIterator.hasNext()) {
+        ((sjo)localIterator.next()).a(paramString, paramBundle);
       }
-      sjm.b(this.a, 1);
     }
-    for (;;)
-    {
-      if (sjm.a(this.a) != null) {
-        sjm.a(this.a).onPrepared();
-      }
-      return;
-      str = paramsjt.jdField_a_of_type_JavaLangString;
-      break;
-      label78:
-      sjm.b(this.a, 0);
-    }
+    return null;
   }
 }
 

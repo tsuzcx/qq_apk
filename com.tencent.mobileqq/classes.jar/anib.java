@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
+import com.tencent.TMG.sdk.AVAudioCtrl.EnableSpeakerCompleteCallback;
+import com.tencent.qphone.base.util.QLog;
 
 class anib
-  implements anig
+  extends AVAudioCtrl.EnableSpeakerCompleteCallback
 {
-  anib(ania paramania) {}
+  anib(anhw paramanhw) {}
   
-  public void a(FullMessageSearchResult paramFullMessageSearchResult)
+  public void onComplete(boolean paramBoolean, int paramInt)
   {
-    ania.a(this.a);
-    this.a.notifyObservers(paramFullMessageSearchResult);
+    QLog.d("AVEngineWalper", 1, "StartOpenSpeaker.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
+    if (this.a.a != null) {
+      this.a.a.b(paramBoolean, paramInt);
+    }
   }
 }
 

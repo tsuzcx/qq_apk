@@ -1,19 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.List;
 
 class zdh
-  implements View.OnClickListener
+  extends JobSegment<Integer, ych>
 {
-  zdh(zdg paramzdg) {}
+  private ycg a;
   
-  public void onClick(View paramView)
+  public zdh(@NonNull ycg paramycg)
   {
-    if ((this.a.a() instanceof SubscribeBaseFragment)) {
-      ((SubscribeBaseFragment)this.a.a()).a(this.a.a(2));
+    this.a = paramycg;
+  }
+  
+  protected void a(JobContext paramJobContext, Integer paramInteger)
+  {
+    Object localObject = this.a.a(paramInteger.intValue(), 5);
+    if ((((ych)localObject).a.size() > 0) || (((ych)localObject).b))
+    {
+      ykq.b("Q.qqstory.home.data.FeedListPageLoaderBase", "hit feed id cache");
+      notifyResult(localObject);
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    localObject = new wtx();
+    ((wtx)localObject).a = this.a.a();
+    wfi.a().a((wfm)localObject, new zdi(this, paramJobContext, paramInteger));
   }
 }
 

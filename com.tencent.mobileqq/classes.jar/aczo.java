@@ -1,13 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryImageView;
-
-public class aczo
-  implements DialogInterface.OnClickListener
+public abstract interface aczo
 {
-  public aczo(ChatHistoryImageView paramChatHistoryImageView) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(int paramInt);
 }
 
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.model;
 
-import avsq;
+import awyr;
 import java.util.List;
 
 public class EmoticonManager$10
   implements Runnable
 {
-  public EmoticonManager$10(avsq paramavsq, List paramList) {}
+  public EmoticonManager$10(awyr paramawyr, List paramList) {}
   
   /* Error */
   public void run()
@@ -17,8 +17,8 @@ public class EmoticonManager$10
     //   4: invokespecial 26	java/util/HashSet:<init>	()V
     //   7: astore_2
     //   8: aload_0
-    //   9: getfield 14	com/tencent/mobileqq/model/EmoticonManager$10:this$0	Lavsq;
-    //   12: getfield 31	avsq:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   9: getfield 14	com/tencent/mobileqq/model/EmoticonManager$10:this$0	Lawyr;
+    //   12: getfield 31	awyr:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   15: invokevirtual 37	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   18: astore_1
     //   19: aload_1
@@ -42,13 +42,13 @@ public class EmoticonManager$10
     //   64: invokevirtual 68	java/util/HashSet:add	(Ljava/lang/Object;)Z
     //   67: pop
     //   68: aload_0
-    //   69: getfield 14	com/tencent/mobileqq/model/EmoticonManager$10:this$0	Lavsq;
+    //   69: getfield 14	com/tencent/mobileqq/model/EmoticonManager$10:this$0	Lawyr;
     //   72: aload 4
-    //   74: invokestatic 71	avsq:a	(Lavsq;Lcom/tencent/mobileqq/data/Emoticon;)V
+    //   74: invokestatic 71	awyr:a	(Lawyr;Lcom/tencent/mobileqq/data/Emoticon;)V
     //   77: aload_0
-    //   78: getfield 14	com/tencent/mobileqq/model/EmoticonManager$10:this$0	Lavsq;
+    //   78: getfield 14	com/tencent/mobileqq/model/EmoticonManager$10:this$0	Lawyr;
     //   81: aload 4
-    //   83: invokestatic 74	avsq:a	(Lavsq;Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   83: invokestatic 74	awyr:a	(Lawyr;Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   86: ifne -53 -> 33
     //   89: ldc 76
     //   91: iconst_1
@@ -84,11 +84,11 @@ public class EmoticonManager$10
     //   163: aload_1
     //   164: invokevirtual 111	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   167: aload_0
-    //   168: getfield 14	com/tencent/mobileqq/model/EmoticonManager$10:this$0	Lavsq;
-    //   171: getfield 114	avsq:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   174: invokestatic 119	ahns:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Lahns;
+    //   168: getfield 14	com/tencent/mobileqq/model/EmoticonManager$10:this$0	Lawyr;
+    //   171: getfield 114	awyr:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   174: invokestatic 119	aiin:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Laiin;
     //   177: aload_2
-    //   178: invokevirtual 122	ahns:a	(Ljava/util/Collection;)V
+    //   178: invokevirtual 122	aiin:a	(Ljava/util/Collection;)V
     //   181: return
     //   182: aload_1
     //   183: invokevirtual 125	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V

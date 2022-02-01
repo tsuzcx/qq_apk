@@ -2,7 +2,7 @@ package cooperation.qzone.webviewplugin.sound;
 
 import android.os.Environment;
 import android.text.TextUtils;
-import bgve;
+import bifw;
 import com.tencent.component.network.DownloaderFactory;
 import com.tencent.component.network.downloader.Downloader;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;

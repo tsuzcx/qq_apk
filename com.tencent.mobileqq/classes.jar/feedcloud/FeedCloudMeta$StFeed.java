@@ -32,6 +32,7 @@ public final class FeedCloudMeta$StFeed
   public FeedCloudMeta.StLike likeInfo = new FeedCloudMeta.StLike();
   public final PBRepeatField<Integer> opMask = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
   public final PBRepeatField<Integer> opMask2 = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
+  public FeedCloudMeta.StOpinfo opinfo = new FeedCloudMeta.StOpinfo();
   public final PBBoolField orgFeedDeleted = PBField.initBool(false);
   public FeedCloudMeta.StPoiInfoV2 poiInfo = new FeedCloudMeta.StPoiInfoV2();
   public FeedCloudMeta.StUser poster = new FeedCloudMeta.StUser();
@@ -55,7 +56,7 @@ public final class FeedCloudMeta$StFeed
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 64, 72, 82, 88, 98, 106, 114, 122, 128, 138, 146, 154, 160, 170, 178, 184, 194, 202, 208, 218, 224, 234, 240, 250, 256 }, new String[] { "id", "title", "subtitle", "poster", "cover", "video", "content", "type", "createTime", "likeInfo", "commentCount", "vecComment", "share", "visitorInfo", "images", "status", "poiInfo", "adBuffer", "busiData", "isRecomFd", "recomForward", "tagInfos", "syncStatus", "busiReport", "dittoFeed", "feedType", "busiTranparent", "orgFeedDeleted", "recomInfo", "opMask", "reportInfoForClient", "opMask2" }, new Object[] { "", "", "", null, null, null, "", Integer.valueOf(0), Long.valueOf(0L), null, Integer.valueOf(0), null, null, null, null, Integer.valueOf(0), null, localByteStringMicro1, localByteStringMicro2, Boolean.valueOf(false), null, null, Integer.valueOf(0), localByteStringMicro3, null, Integer.valueOf(0), null, Boolean.valueOf(false), null, Integer.valueOf(0), localByteStringMicro4, Integer.valueOf(0) }, StFeed.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 64, 72, 82, 88, 98, 106, 114, 122, 128, 138, 146, 154, 160, 170, 178, 184, 194, 202, 208, 218, 224, 234, 240, 250, 256, 266 }, new String[] { "id", "title", "subtitle", "poster", "cover", "video", "content", "type", "createTime", "likeInfo", "commentCount", "vecComment", "share", "visitorInfo", "images", "status", "poiInfo", "adBuffer", "busiData", "isRecomFd", "recomForward", "tagInfos", "syncStatus", "busiReport", "dittoFeed", "feedType", "busiTranparent", "orgFeedDeleted", "recomInfo", "opMask", "reportInfoForClient", "opMask2", "opinfo" }, new Object[] { "", "", "", null, null, null, "", Integer.valueOf(0), Long.valueOf(0L), null, Integer.valueOf(0), null, null, null, null, Integer.valueOf(0), null, localByteStringMicro1, localByteStringMicro2, Boolean.valueOf(false), null, null, Integer.valueOf(0), localByteStringMicro3, null, Integer.valueOf(0), null, Boolean.valueOf(false), null, Integer.valueOf(0), localByteStringMicro4, Integer.valueOf(0), null }, StFeed.class);
   }
 }
 

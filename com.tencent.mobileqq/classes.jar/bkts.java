@@ -1,27 +1,8 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-
-class bkts
-  implements INetInfoHandler
+public abstract interface bkts
 {
-  bkts(bktr parambktr) {}
+  public abstract void a();
   
-  public void onNetMobile2None() {}
-  
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    bktr.a(this.a);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    bktr.a(this.a);
-  }
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None() {}
+  public abstract void b();
 }
 
 

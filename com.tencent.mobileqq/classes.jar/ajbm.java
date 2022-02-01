@@ -1,19 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.home.Conversation;
-
 public class ajbm
-  implements DialogInterface.OnClickListener
+  extends ajbn
 {
-  public ajbm(Conversation paramConversation) {}
+  public final arcd a;
+  public final boolean a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ajbm(arcd paramarcd, boolean paramBoolean)
   {
-    if (paramDialogInterface == Conversation.a(this.a)) {
-      Conversation.a(this.a, null);
-    }
-    bcef.b(this.a.a, "CliOper", "", "", "0X800815E", "0X800815E", 0, 0, "", "", "", "");
-    bcef.b(this.a.a, "CliOper", "", "", "0X8008656", "0X8008656", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Arcd = paramarcd;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

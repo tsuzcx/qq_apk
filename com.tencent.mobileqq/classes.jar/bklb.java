@@ -1,108 +1,88 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pluginsdk.IPluginAdapter;
-import com.tencent.mobileqq.pluginsdk.IPluginAdapterProxy;
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.mobileqq.startup.step.InitSkin;
-import com.tencent.theme.SkinEngine;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import java.util.HashMap;
-import mqq.app.MobileQQ;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.annotation.JsEvent;
+import com.tencent.qqmini.sdk.annotation.JsPlugin;
+import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
+import org.json.JSONObject;
 
+@JsPlugin(secondary=true)
 public class bklb
-  implements IPluginAdapter
+  extends BaseJsPlugin
 {
-  public static HashMap<String, Integer> a = new HashMap();
+  private int jdField_a_of_type_Int;
+  private aady jdField_a_of_type_Aady;
+  final aaea jdField_a_of_type_Aaea = new bklc(this);
   
-  static
+  private void a()
   {
-    a.put("qzone_plugin.apk", Integer.valueOf(2));
-  }
-  
-  public static int a(String paramString)
-  {
-    if ((Integer)a.get(paramString) == null) {
-      return 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("NowLiveJsPlugin", 2, "NowLiveJsPlugin | preload()");
     }
-    return ((Integer)a.get(paramString)).intValue();
-  }
-  
-  public void initSkin(Context paramContext)
-  {
-    InitSkin.initSkin(paramContext);
-  }
-  
-  public void initSkinEngine(Context paramContext)
-  {
-    SkinEngine.init(paramContext, 8191, 2130837504, 2130850838, 1264, 2131165184, null);
-  }
-  
-  public Object invoke(int paramInt, Object paramObject)
-  {
-    int i = 4;
-    boolean bool = false;
-    String str;
-    switch (paramInt)
+    if (this.jdField_a_of_type_Aady == null)
     {
-    default: 
-      return null;
-    case 1: 
-      paramObject = BaseApplicationImpl.getApplication();
-      str = IPluginAdapterProxy.getProxy().currentUin;
-      if (!TextUtils.isEmpty(str))
-      {
-        if (Build.VERSION.SDK_INT > 10) {}
-        for (;;)
-        {
-          paramObject = paramObject.getSharedPreferences(str, i).getString("currentThemeId_6.3.5", "1000");
-          if ((!"1103".equals(paramObject)) && (!"2920".equals(paramObject))) {
-            break;
-          }
-          return Boolean.valueOf(true);
-          i = 0;
-        }
-      }
-      return Boolean.valueOf(false);
-    case 3: 
-      paramObject = BaseApplicationImpl.getApplication();
-      str = IPluginAdapterProxy.getProxy().currentUin;
-      if (!TextUtils.isEmpty(str))
-      {
-        if (Build.VERSION.SDK_INT > 10) {}
-        for (;;)
-        {
-          paramObject = paramObject.getSharedPreferences(str, i).getString("currentThemeId_6.3.5", "1000");
-          if ((!"1000".equals(paramObject)) && (!"999".equals(paramObject))) {
-            break;
-          }
-          return Boolean.valueOf(true);
-          i = 0;
-        }
-      }
-      return Boolean.valueOf(false);
-    case 2: 
-      return ThreadManager.getSubThreadLooper();
-    case 4: 
-      if (a((String)paramObject) > 1) {
-        bool = true;
-      }
-      return Boolean.valueOf(bool);
+      this.jdField_a_of_type_Aady = aady.a();
+      this.jdField_a_of_type_Aady.a();
+      this.jdField_a_of_type_Aady.g(this.jdField_a_of_type_Aaea);
     }
-    return Integer.valueOf(ImmersiveUtils.isSupporImmersive());
+    this.jdField_a_of_type_Aady.a(null);
   }
   
-  public boolean isBuiltinPluginAndUpToDay(String paramString, PluginBaseInfo paramPluginBaseInfo)
+  public void onDestroy()
   {
-    return bkkk.a(MobileQQ.sMobileQQ).a(paramString, paramPluginBaseInfo);
+    if (QLog.isColorLevel()) {
+      QLog.d("NowLiveJsPlugin", 2, "NowLiveNativePlugin | onDestroy()");
+    }
+    if (this.jdField_a_of_type_Aady != null) {
+      this.jdField_a_of_type_Aady.g();
+    }
+  }
+  
+  @JsEvent({"nowlive"})
+  public void onInvoke(RequestEvent paramRequestEvent)
+  {
+    if ((paramRequestEvent == null) || (TextUtils.isEmpty(paramRequestEvent.jsonParams))) {
+      if (QLog.isColorLevel()) {
+        QLog.d("NowLiveJsPlugin", 2, "onInvoke(): request event  is null.");
+      }
+    }
+    label105:
+    do
+    {
+      do
+      {
+        for (;;)
+        {
+          return;
+          try
+          {
+            paramRequestEvent = new JSONObject(paramRequestEvent.jsonParams);
+            String str = paramRequestEvent.optString("api_name");
+            if (TextUtils.equals("nowlive", str)) {
+              break label105;
+            }
+            if (QLog.isColorLevel())
+            {
+              QLog.d("NowLiveJsPlugin", 2, "onInvoke() the api name: " + str);
+              return;
+            }
+          }
+          catch (Exception paramRequestEvent) {}
+        }
+      } while (!QLog.isColorLevel());
+      QLog.w("NowLiveJsPlugin", 2, "decode param error");
+      return;
+      paramRequestEvent = new JSONObject(paramRequestEvent.getString("data")).getString("action");
+      if (QLog.isColorLevel()) {
+        QLog.d("NowLiveJsPlugin", 2, "onInvoke()" + paramRequestEvent);
+      }
+    } while (!TextUtils.equals(paramRequestEvent, "preload"));
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bklb
  * JD-Core Version:    0.7.0.1
  */

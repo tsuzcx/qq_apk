@@ -1,19 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function0;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class awhg
-  implements View.OnClickListener
+class awhg
+  implements DialogInterface.OnCancelListener
 {
-  awhg(Function0 paramFunction0) {}
+  awhg(awgx paramawgx) {}
   
-  public final void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a.invoke();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.b(false);
   }
 }
 

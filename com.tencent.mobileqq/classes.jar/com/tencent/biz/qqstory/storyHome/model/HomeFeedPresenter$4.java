@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.storyHome.model;
 
-import xoi;
-import xpg;
+import ydd;
+import yeb;
 
 public final class HomeFeedPresenter$4
   implements Runnable
 {
-  public HomeFeedPresenter$4(xpg paramxpg) {}
+  public HomeFeedPresenter$4(yeb paramyeb) {}
   
   public void run()
   {
-    xoi.a(this.a);
+    ydd.a(this.a);
   }
 }
 

@@ -1,21 +1,36 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mfsdk.collector.DropFrameMonitor;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.history.ChatHistoryAuthDevForRoamMsgFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ajqp
-  extends RecyclerView.OnScrollListener
+  implements Handler.Callback
 {
-  public ajqp(NewPhotoListActivity paramNewPhotoListActivity) {}
+  public ajqp(ChatHistoryAuthDevForRoamMsgFragment paramChatHistoryAuthDevForRoamMsgFragment) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (paramInt == 0)
+    switch (paramMessage.what)
     {
-      DropFrameMonitor.getInstance().stopMonitorScene("list_photo", false);
-      return;
+    default: 
+      return false;
     }
-    DropFrameMonitor.getInstance().startMonitorScene("list_photo");
+    ChatHistoryAuthDevForRoamMsgFragment.a(this.a).findViewById(2131380577).setEnabled(true);
+    if ((this.a.a != null) && (this.a.a.isShowing())) {
+      this.a.a.dismiss();
+    }
+    if (paramMessage.arg1 == 0) {
+      QQToast.a(this.a.getActivity(), 2, anvx.a(2131701114), 0).b(this.a.getActivity().getTitleBarHeight());
+    }
+    for (;;)
+    {
+      this.a.getActivity().setResult(1);
+      this.a.getActivity().finish();
+      return false;
+      QQToast.a(this.a.getActivity(), 2, anvx.a(2131701124), 0).b(this.a.getActivity().getTitleBarHeight());
+    }
   }
 }
 

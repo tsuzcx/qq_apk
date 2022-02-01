@@ -1,38 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aacf
-  implements DialogInterface.OnClickListener
+public class aacf
+  implements View.OnClickListener
 {
-  aacf(aaca paramaaca) {}
+  public aacf(ServiceFolderFollowPBHeadView paramServiceFolderFollowPBHeadView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (!TextUtils.isEmpty(this.a.a))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PubAccountMailJsPlugin", 2, String.format("Contact menu dialog click phone = %s, which = %d", new Object[] { this.a.a, Integer.valueOf(paramInt) }));
-      }
-      switch (paramInt)
-      {
-      default: 
-        if (QLog.isColorLevel()) {
-          QLog.d("PubAccountMailJsPlugin", 2, String.format("Unknow contact button %d", new Object[] { Integer.valueOf(paramInt) }));
-        }
-        break;
-      }
+    if (!TextUtils.isEmpty(ServiceFolderFollowPBHeadView.a(this.a))) {
+      zqm.a(ServiceFolderFollowPBHeadView.a(this.a));
     }
-    while (!QLog.isColorLevel())
+    for (;;)
     {
+      ServiceFolderFollowPBHeadView.a(this.a).setVisibility(8);
+      bdla.b(null, "dc00898", "", "", "auth_page", "msg_exp", 0, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      aaca.h(this.a);
-      return;
-      aaca.i(this.a);
-      return;
+      QLog.e(ServiceFolderFollowPBHeadView.a(), 2, "jump error mJumpWebMessageListUrl is null");
     }
-    QLog.d("PubAccountMailJsPlugin", 2, "phone is empty");
   }
 }
 

@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.transfile;
 
-import aadf;
+import aasr;
 import android.text.TextUtils;
-import atks;
-import atlq;
-import atph;
+import aupn;
+import auql;
+import auuc;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.open.agent.AgentActivity;
@@ -54,13 +55,13 @@ class ForwardSdkShareProcessor$GetAppInfoStep
     default: 
       return;
     case 2: 
-      aadf.a(this.this$0.app, this.this$0.mAppContext, this.this$0.app.getCurrentAccountUin(), ForwardSdkShareProcessor.access$400(this.this$0), 0L, this.mAppInfoObserver, ForwardSdkShareProcessor.access$500(this.this$0));
+      aasr.a(this.this$0.app, this.this$0.mAppContext, this.this$0.app.getCurrentAccountUin(), ForwardSdkShareProcessor.access$400(this.this$0), 0L, this.mAppInfoObserver, ForwardSdkShareProcessor.access$500(this.this$0));
       return;
     }
-    Object localObject = ((atph)this.this$0.app.getManager(350)).a().a(ForwardSdkShareProcessor.access$400(this.this$0));
+    Object localObject = ((auuc)this.this$0.app.getManager(QQManagerFactory.SDK_SHARE)).a().a(ForwardSdkShareProcessor.access$400(this.this$0));
     if (localObject != null)
     {
-      useCachedAppInfo((atks)localObject);
+      useCachedAppInfo((aupn)localObject);
       return;
     }
     long l = ForwardSdkShareProcessor.access$600(this.this$0) / 1000L;
@@ -68,7 +69,7 @@ class ForwardSdkShareProcessor$GetAppInfoStep
     if (QLog.isColorLevel()) {
       QLog.d("Q.share.ForwardSdkShareProcessor", 2, "GetAppInfoStep|process|sign: " + (String)localObject);
     }
-    aadf.a(this.this$0.app, this.this$0.mAppContext, this.this$0.app.getCurrentAccountUin(), ForwardSdkShareProcessor.access$400(this.this$0), (String)localObject, l, this.mAppInfoObserver, ForwardSdkShareProcessor.access$500(this.this$0));
+    aasr.a(this.this$0.app, this.this$0.mAppContext, this.this$0.app.getCurrentAccountUin(), ForwardSdkShareProcessor.access$400(this.this$0), (String)localObject, l, this.mAppInfoObserver, ForwardSdkShareProcessor.access$500(this.this$0));
   }
   
   void updateMessageRecord()
@@ -87,21 +88,21 @@ class ForwardSdkShareProcessor$GetAppInfoStep
     }
   }
   
-  void useCachedAppInfo(atks paramatks)
+  void useCachedAppInfo(aupn paramaupn)
   {
     QLog.d("Q.share.ForwardSdkShareProcessor", 1, "GetAppInfoStep|useCachedAppInfo=,time=" + (System.currentTimeMillis() - ForwardSdkShareProcessor.access$600(this.this$0)));
-    this.this$0.mAppInfo.sourceIconSmall = paramatks.a();
-    this.this$0.mAppInfo.sourceIconBig = paramatks.e();
-    if (paramatks.a())
+    this.this$0.mAppInfo.sourceIconSmall = paramaupn.a();
+    this.this$0.mAppInfo.sourceIconBig = paramaupn.e();
+    if (paramaupn.a())
     {
-      if (!TextUtils.isEmpty(paramatks.d())) {
-        this.this$0.mAppInfo.packName = paramatks.d();
+      if (!TextUtils.isEmpty(paramaupn.d())) {
+        this.this$0.mAppInfo.packName = paramaupn.d();
       }
-      if (!TextUtils.isEmpty(paramatks.c())) {
-        this.this$0.mAppInfo.sourceName = paramatks.c();
+      if (!TextUtils.isEmpty(paramaupn.c())) {
+        this.this$0.mAppInfo.sourceName = paramaupn.c();
       }
-      if ((!TextUtils.isEmpty(paramatks.b())) && (ForwardSdkShareProcessor.access$400(this.this$0) != Long.parseLong("1103584836"))) {
-        this.this$0.mAppInfo.sourceUrl = paramatks.b();
+      if ((!TextUtils.isEmpty(paramaupn.b())) && (ForwardSdkShareProcessor.access$400(this.this$0) != Long.parseLong("1103584836"))) {
+        this.this$0.mAppInfo.sourceUrl = paramaupn.b();
       }
     }
     this.this$0.mAppInfo.status = 1;

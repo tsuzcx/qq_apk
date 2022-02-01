@@ -1,88 +1,55 @@
-import UserGrowth.stFeed;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.os.Bundle;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment.FolderRecommendHeadItemView;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import cooperation.vip.pb.TianShuAccess.AdItem;
+import cooperation.vip.tianshu.TianShuAdPosItemData;
+import cooperation.vip.tianshu.TianShuManager;
+import java.util.ArrayList;
 import java.util.List;
 
 public class upf
-  extends bjwy<stFeed>
+  extends zpo
 {
-  private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private ujh jdField_a_of_type_Ujh;
-  private uve jdField_a_of_type_Uve;
+  public FolderRecommendTabFragment.FolderRecommendHeadItemView a;
   
-  private upf(ViewGroup paramViewGroup, ujh paramujh)
+  public upf(FolderRecommendTabFragment paramFolderRecommendTabFragment, Bundle paramBundle)
   {
-    super(paramViewGroup, 2131560398);
-    this.jdField_a_of_type_Ujh = paramujh;
-    b();
+    super(paramBundle);
   }
   
-  public static upf a(ViewGroup paramViewGroup, ujh paramujh)
+  protected BaseWidgetView a(ViewGroup paramViewGroup, zou paramzou)
   {
-    return new upf(paramViewGroup, paramujh);
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131367707));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)a(2131376086));
-    TextView localTextView1 = (TextView)a(2131381215);
-    TextView localTextView2 = (TextView)a(2131381214);
-    ImageView localImageView = (ImageView)a(2131381188);
-    localTextView2.setVisibility(8);
-    localImageView.setVisibility(8);
-    localTextView1.setText(2131719678);
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(a(), 0, false);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setHasFixedSize(true);
-    this.jdField_a_of_type_Uve = new uve(a(), this.jdField_a_of_type_Ujh);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Uve);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new ujw());
-  }
-  
-  public RecyclerView a()
-  {
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager == null) || (this.jdField_a_of_type_Uve == null)) {}
-    for (;;)
-    {
-      return;
-      int i = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findFirstVisibleItemPosition();
-      int j = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findLastVisibleItemPosition();
-      if ((i >= 0) && (j < this.jdField_a_of_type_Uve.a().size())) {
-        while (i <= j)
-        {
-          RecyclerView.ViewHolder localViewHolder = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.findViewHolderForAdapterPosition(i);
-          if ((localViewHolder instanceof uvf)) {
-            ((uvf)localViewHolder).b();
-          }
-          i += 1;
-        }
-      }
+    this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView = new FolderRecommendTabFragment.FolderRecommendHeadItemView(paramViewGroup.getContext());
+    if (FolderRecommendTabFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment) != null) {
+      FolderRecommendTabFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment).a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView);
     }
+    return this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView;
   }
   
-  public void a(stFeed paramstFeed)
+  public void a(Bundle paramBundle) {}
+  
+  public void a(List<bekc> paramList)
   {
-    if (paramstFeed == null)
+    FolderRecommendTabFragment.FolderRecommendHeadItemView.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView).a(paramList);
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      FolderRecommendTabFragment.a("227", "227", ((bekc)paramList.get(0)).a.iAdId + "", 101, 1);
+      this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView.a(true);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_a_of_type_Uve.a(paramstFeed);
-    this.jdField_a_of_type_Uve.a(paramstFeed.person_meta);
+    this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView.a(false);
+  }
+  
+  public void a(zoz paramzoz)
+  {
+    paramzoz = new ArrayList();
+    TianShuAdPosItemData localTianShuAdPosItemData = new TianShuAdPosItemData();
+    localTianShuAdPosItemData.mPosId = 476;
+    localTianShuAdPosItemData.mNeedCnt = 6;
+    paramzoz.add(localTianShuAdPosItemData);
+    TianShuManager.getInstance().requestAdv(paramzoz, FolderRecommendTabFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment));
   }
 }
 

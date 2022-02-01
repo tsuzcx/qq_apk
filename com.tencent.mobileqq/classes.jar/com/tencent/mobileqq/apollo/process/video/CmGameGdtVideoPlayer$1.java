@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.process.video;
 
-import alzy;
-import amai;
+import anao;
+import anay;
 import android.os.Handler;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -9,25 +9,25 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class CmGameGdtVideoPlayer$1
   implements Runnable
 {
-  public CmGameGdtVideoPlayer$1(alzy paramalzy) {}
+  public CmGameGdtVideoPlayer$1(anao paramanao) {}
   
   public void run()
   {
-    if (alzy.a(this.this$0) < 0L) {}
+    if (anao.a(this.this$0) < 0L) {}
     do
     {
       return;
-      Iterator localIterator = alzy.a(this.this$0).iterator();
+      Iterator localIterator = anao.a(this.this$0).iterator();
       while (localIterator.hasNext())
       {
-        amai localamai = (amai)localIterator.next();
-        if (localamai != null) {
-          localamai.a(alzy.a(this.this$0), this.this$0.a());
+        anay localanay = (anay)localIterator.next();
+        if (localanay != null) {
+          localanay.a(anao.a(this.this$0), this.this$0.a());
         }
       }
-      alzy.a(this.this$0, this.this$0.a() - this.this$0.b());
-    } while (alzy.a(this.this$0) == null);
-    alzy.a(this.this$0).postDelayed(this, alzy.b(this.this$0));
+      anao.a(this.this$0, this.this$0.a() - this.this$0.b());
+    } while (anao.a(this.this$0) == null);
+    anao.a(this.this$0).postDelayed(this, anao.b(this.this$0));
   }
 }
 

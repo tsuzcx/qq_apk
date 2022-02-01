@@ -4,6 +4,7 @@ public class CompileConfig
 {
   public static final boolean appFlag = false;
   public static final boolean appStripFlag = false;
+  public static final boolean appWithPasswdFlag = false;
   public static final boolean demoFlag = false;
   public static final boolean enterpriseQQFlag = false;
   public static final boolean mobileQQFlag = true;

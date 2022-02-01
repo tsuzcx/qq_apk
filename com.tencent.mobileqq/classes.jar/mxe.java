@@ -1,62 +1,34 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import com.tencent.avgame.app.AVGameAppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.ApngSoLoader;
-import com.tencent.image.LocaleFileDownloader;
-import com.tencent.image.ProtocolDownloader;
-import com.tencent.image.URLDrawableParams;
-import com.tencent.mobileqq.transfile.FileAssistantDownloader;
-import com.tencent.mobileqq.transfile.HttpDownloader;
-import com.tencent.mobileqq.vas.VasApngIPCModule;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class mxe
-  extends URLDrawableParams
+class mxe
+  implements myh
 {
-  private ProtocolDownloader jdField_a_of_type_ComTencentImageProtocolDownloader;
+  mxe(mxd parammxd, lfe paramlfe, myx parammyx, mxk parammxk) {}
   
-  public mxe(AVGameAppInterface paramAVGameAppInterface, Context paramContext)
+  public void a()
   {
-    super(paramContext);
+    mxd.a(this.jdField_a_of_type_Mxd, this.jdField_a_of_type_Myx);
+    this.jdField_a_of_type_Mxk.a(null);
   }
   
-  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
+  public void a(boolean paramBoolean)
   {
-    if ("fileassistantimage".equals(paramString)) {
-      return new FileAssistantDownloader(BaseApplicationImpl.getApplication());
+    if (paramBoolean) {
+      this.jdField_a_of_type_Mxd.a(this.jdField_a_of_type_Lfe, this.jdField_a_of_type_Myx.a, this.jdField_a_of_type_Myx.a());
     }
-    if ("file".equalsIgnoreCase(paramString)) {
-      return new LocaleFileDownloader();
+    for (;;)
+    {
+      this.jdField_a_of_type_Mxk.a(null);
+      return;
+      mxd.a(this.jdField_a_of_type_Mxd, this.jdField_a_of_type_Myx);
+      mxd.a(this.jdField_a_of_type_Mxd, BaseApplicationImpl.getContext().getString(2131695749), 0L);
     }
-    if (this.jdField_a_of_type_ComTencentImageProtocolDownloader == null) {
-      this.jdField_a_of_type_ComTencentImageProtocolDownloader = new HttpDownloader();
-    }
-    return this.jdField_a_of_type_ComTencentImageProtocolDownloader;
-  }
-  
-  public String doGetLocalFilePath(String paramString)
-  {
-    return null;
-  }
-  
-  public ApngSoLoader getApngSoLoader()
-  {
-    return VasApngIPCModule.getInstance();
-  }
-  
-  public Drawable getDefaultLoadingDrawable()
-  {
-    return null;
-  }
-  
-  public Drawable getDefualtFailedDrawable()
-  {
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mxe
  * JD-Core Version:    0.7.0.1
  */

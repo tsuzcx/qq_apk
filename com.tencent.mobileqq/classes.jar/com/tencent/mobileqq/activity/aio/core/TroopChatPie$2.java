@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import bcef;
-import bfdz;
+import bdla;
+import bgmf;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopMemberInfo;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -17,7 +18,7 @@ class TroopChatPie$2
   
   public void run()
   {
-    TroopManager localTroopManager = (TroopManager)this.this$0.app.getManager(52);
+    TroopManager localTroopManager = (TroopManager)this.this$0.app.getManager(QQManagerFactory.TROOP_MANAGER);
     Object localObject = localTroopManager.b(this.this$0.sessionInfo.curFriendUin);
     long l;
     TroopMemberInfo localTroopMemberInfo;
@@ -31,9 +32,9 @@ class TroopChatPie$2
         localTroopMemberInfo = (TroopMemberInfo)((Iterator)localObject).next();
         if ((localTroopMemberInfo.mUniqueTitleExpire > 0) && (localTroopMemberInfo.mUniqueTitleExpire - NetConnInfoCenter.getServerTime() < 259200L) && (!localTroopManager.b(this.this$0.sessionInfo.curFriendUin, localTroopMemberInfo.memberuin)))
         {
-          ((bfdz)this.this$0.app.getManager(81)).a(this.this$0.sessionInfo.curFriendUin, this.this$0.a(localTroopMemberInfo), NetConnInfoCenter.getServerTime(), localTroopMemberInfo.mUniqueTitleExpire, 0, 1);
+          ((bgmf)this.this$0.app.getManager(QQManagerFactory.TROOP_TIPS_MSG_MANAGER)).a(this.this$0.sessionInfo.curFriendUin, this.this$0.a(localTroopMemberInfo), NetConnInfoCenter.getServerTime(), localTroopMemberInfo.mUniqueTitleExpire, 0, 1);
           localTroopManager.a(this.this$0.sessionInfo.curFriendUin, localTroopMemberInfo.memberuin, true);
-          bcef.b(this.this$0.app, "P_CliOper", "Grp_manage", "", "grp_aio", "exp_expire", 0, 0, this.this$0.sessionInfo.curFriendUin, "", "", "");
+          bdla.b(this.this$0.app, "P_CliOper", "Grp_manage", "", "grp_aio", "exp_expire", 0, 0, this.this$0.sessionInfo.curFriendUin, "", "", "");
         }
       }
     }

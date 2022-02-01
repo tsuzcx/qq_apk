@@ -1,15 +1,21 @@
-import android.app.Activity;
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.Comparator;
 
-public class ankh
-  implements anki
+class ankh
+  implements Comparator<ApolloActionData>
 {
-  public void a() {}
+  ankh(ankc paramankc) {}
   
-  public void a(Activity paramActivity) {}
-  
-  public void b() {}
-  
-  public void c() {}
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  {
+    if (paramApolloActionData2.version == paramApolloActionData1.version) {
+      return 0;
+    }
+    if (paramApolloActionData2.version > paramApolloActionData1.version) {
+      return 1;
+    }
+    return -1;
+  }
 }
 
 

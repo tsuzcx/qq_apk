@@ -3,13 +3,13 @@ package com.tencent.mobileqq.theme;
 import android.graphics.Bitmap;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import bdbm;
+import beim;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ThemeSwitchManager$1
   implements Runnable
 {
-  public ThemeSwitchManager$1(bdbm parambdbm) {}
+  public ThemeSwitchManager$1(beim parambeim) {}
   
   public void run()
   {

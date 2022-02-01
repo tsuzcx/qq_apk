@@ -1,30 +1,36 @@
-import android.content.Context;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-
 class benc
-  implements nnw
+  implements bend
 {
-  benc(bena parambena, long paramLong) {}
+  benc(benb parambenb, bene parambene) {}
   
-  public void loaded(int paramInt, String paramString)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SoLibraryLoader", 2, "transToLocalUrl loadMode:" + paramInt + ", time:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    if ((this.jdField_a_of_type_Bene.a != null) && (this.jdField_a_of_type_Bene.a.a != null)) {
+      this.jdField_a_of_type_Bene.a.a.d();
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("SoLibraryLoader", 4, "transToLocalUrl transUrl:" + paramString);
+    if ((this.jdField_a_of_type_Bene.b != null) && (this.jdField_a_of_type_Bene.b.a != null)) {
+      this.jdField_a_of_type_Bene.b.a.d();
     }
-    paramString = noe.a(bena.a(this.jdField_a_of_type_Bena)) + bena.a(this.jdField_a_of_type_Bena) + File.separator + bena.b(this.jdField_a_of_type_Bena);
-    if (!new File(paramString).exists())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("SoLibraryLoader", 2, "file not exist! path = " + paramString);
-      }
-      return;
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Bene.a != null) && (this.jdField_a_of_type_Bene.a.a != null)) {
+      this.jdField_a_of_type_Bene.a.a.c();
     }
-    FileUtils.copyFile(paramString, bena.a(this.jdField_a_of_type_Bena).getFilesDir().getAbsolutePath() + File.separator + bena.b(this.jdField_a_of_type_Bena));
+    if ((this.jdField_a_of_type_Bene.b != null) && (this.jdField_a_of_type_Bene.b.a != null)) {
+      this.jdField_a_of_type_Bene.b.a.c();
+    }
+  }
+  
+  public void c()
+  {
+    if ((this.jdField_a_of_type_Bene.a != null) && (this.jdField_a_of_type_Bene.a.a != null)) {
+      this.jdField_a_of_type_Bene.a.a.f();
+    }
+    if ((this.jdField_a_of_type_Bene.b != null) && (this.jdField_a_of_type_Bene.b.a != null)) {
+      this.jdField_a_of_type_Bene.b.a.f();
+    }
   }
 }
 

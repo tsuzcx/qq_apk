@@ -1,11 +1,13 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDeleteVideo;
+import java.util.Comparator;
 
 public class wfw
-  extends vqm
+  implements Comparator<wfu>
 {
-  public wfw(qqstory_service.RspDeleteVideo paramRspDeleteVideo)
+  private wfw(wfv paramwfv) {}
+  
+  public int a(wfu paramwfu1, wfu paramwfu2)
   {
-    super(paramRspDeleteVideo.result);
+    return paramwfu2.a - paramwfu1.a;
   }
 }
 

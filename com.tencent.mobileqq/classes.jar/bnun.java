@@ -1,15 +1,6 @@
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-
-public class bnun
-  extends bnup
+public abstract interface bnun
 {
-  public void a()
-  {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (localRMVideoStateMgr.a != null) {
-      localRMVideoStateMgr.a.d();
-    }
-  }
+  public abstract void a();
 }
 
 

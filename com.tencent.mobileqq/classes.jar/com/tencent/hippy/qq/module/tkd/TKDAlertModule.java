@@ -2,7 +2,7 @@ package com.tencent.hippy.qq.module.tkd;
 
 import android.content.DialogInterface.OnClickListener;
 import androidx.annotation.NonNull;
-import bfur;
+import bhdj;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.HippyGlobalConfigs;
@@ -65,7 +65,7 @@ public class TKDAlertModule
     if (paramHippyArray.size() > 3) {
       return;
     }
-    QQCustomDialog localQQCustomDialog = bfur.a(this.hippyEngineContext.getGlobalConfigs().getContext(), 230);
+    QQCustomDialog localQQCustomDialog = bhdj.a(this.hippyEngineContext.getGlobalConfigs().getContext(), 230);
     localQQCustomDialog.setTitle(paramString1);
     localQQCustomDialog.setMessage(paramString2);
     setDialogButton(paramHippyArray, paramPromise, localQQCustomDialog);

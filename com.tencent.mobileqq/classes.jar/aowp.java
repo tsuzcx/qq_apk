@@ -1,36 +1,39 @@
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.widget.TipsBar;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QUA;
+import cooperation.qzone.QZoneShareManager;
 
 public class aowp
+  extends aouc
 {
-  public int a;
-  public long a;
-  public afvh a;
-  public MessageForArkApp a;
-  public String a;
-  public WeakReference<TipsBar> a;
-  public long b;
-  public String b;
-  public WeakReference<ahpb> b;
-  public String c;
-  public String d;
-  
-  aowp(afvh paramafvh, String paramString1, long paramLong1, long paramLong2, String paramString2, int paramInt, String paramString3, MessageForArkApp paramMessageForArkApp)
+  public aowp(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    a(paramafvh, paramString1, paramLong1, paramLong2, paramString2, paramInt, paramString3, paramMessageForArkApp);
+    super(paramQQAppInterface, paramContext);
   }
   
-  void a(afvh paramafvh, String paramString1, long paramLong1, long paramLong2, String paramString2, int paramInt, String paramString3, MessageForArkApp paramMessageForArkApp)
+  private boolean C()
   {
-    this.jdField_a_of_type_Afvh = paramafvh;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.c = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramLong2;
-    this.d = paramString3;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp = paramMessageForArkApp;
+    String str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin();
+    String str2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname();
+    String str3 = QUA.getQUA3();
+    QZoneShareManager.shareToQZoneForRedPocket(this.jdField_a_of_type_AndroidContentContext, str1, null, 0, str2, str3);
+    return true;
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      boolean bool = C();
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QzoneRedpocketShareAction", 1, "doAction error: " + localException.getMessage());
+      a("QzoneRedpocketShareAction");
+    }
+    return false;
   }
 }
 

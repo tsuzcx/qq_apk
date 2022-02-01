@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import bbli;
+import bcsa;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
-import pay;
+import pkh;
 
 class KandianSubscribeManager$4
   implements Runnable
@@ -14,7 +14,7 @@ class KandianSubscribeManager$4
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)pay.a();
+    QQAppInterface localQQAppInterface = (QQAppInterface)pkh.a();
     if (localQQAppInterface == null) {
       return;
     }
@@ -22,7 +22,7 @@ class KandianSubscribeManager$4
     MessageRecord localMessageRecord1;
     if (localMessageRecord2 != null)
     {
-      localMessageRecord1 = bbli.a(-1000);
+      localMessageRecord1 = bcsa.a(-1000);
       MessageRecord.copyMessageRecordBaseField(localMessageRecord1, localMessageRecord2);
       localMessageRecord1.msgtype = -1000;
     }
@@ -31,7 +31,7 @@ class KandianSubscribeManager$4
       KandianSubscribeManager.a(localMessageRecord1, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.b);
       localQQAppInterface.getMessageFacade().addMessage(localMessageRecord1, localQQAppInterface.getCurrentUin());
       return;
-      localMessageRecord1 = bbli.a(-1000);
+      localMessageRecord1 = bcsa.a(-1000);
       localMessageRecord1.selfuin = localQQAppInterface.getCurrentAccountUin();
     }
   }

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afzl;
-import afzm;
+import agsb;
+import agsc;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -9,7 +9,7 @@ import com.tencent.mobileqq.data.ChatMessage;
 public class FileTimDocGrayTipsItemBuilder$1
   implements Runnable
 {
-  public FileTimDocGrayTipsItemBuilder$1(afzl paramafzl, afzm paramafzm) {}
+  public FileTimDocGrayTipsItemBuilder$1(agsb paramagsb, agsc paramagsc) {}
   
   public void run()
   {

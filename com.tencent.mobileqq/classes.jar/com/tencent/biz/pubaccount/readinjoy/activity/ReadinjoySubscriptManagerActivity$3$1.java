@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import onm;
+import ovj;
 
 public class ReadinjoySubscriptManagerActivity$3$1
   implements Runnable
 {
-  public ReadinjoySubscriptManagerActivity$3$1(onm paramonm) {}
+  public ReadinjoySubscriptManagerActivity$3$1(ovj paramovj) {}
   
   public void run()
   {

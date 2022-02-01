@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import java.util.Iterator;
 import java.util.List;
-import pkj;
+import pvg;
 
 class KandianSubscribeManager$1
   implements Runnable
@@ -14,9 +14,9 @@ class KandianSubscribeManager$1
     Iterator localIterator = KandianSubscribeManager.a(this.this$0).iterator();
     while (localIterator.hasNext())
     {
-      pkj localpkj = (pkj)localIterator.next();
-      if (localpkj != null) {
-        localpkj.w_();
+      pvg localpvg = (pvg)localIterator.next();
+      if (localpvg != null) {
+        localpvg.y_();
       }
     }
   }

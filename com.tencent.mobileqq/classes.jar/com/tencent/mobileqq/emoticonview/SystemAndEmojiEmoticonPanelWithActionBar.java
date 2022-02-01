@@ -16,20 +16,20 @@ public class SystemAndEmojiEmoticonPanelWithActionBar
   
   protected int getLayoutId()
   {
-    return 2131559146;
+    return 2131559175;
   }
   
   protected void initUI(Context paramContext, EmoticonCallback paramEmoticonCallback)
   {
     super.initUI(paramContext, paramEmoticonCallback);
     this.mCallback = paramEmoticonCallback;
-    this.mSendBtn = findViewById(2131377075);
+    this.mSendBtn = findViewById(2131377349);
     this.mSendBtn.setOnClickListener(new SystemAndEmojiEmoticonPanelWithActionBar.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanelWithActionBar
  * JD-Core Version:    0.7.0.1
  */

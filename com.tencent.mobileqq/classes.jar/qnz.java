@@ -1,47 +1,27 @@
-import com.tencent.pts.utils.PTSLogger;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import java.util.List;
 
-public class qnz
-  implements PTSLogger
+class qnz
+  implements ViewBase.OnClickListener
 {
-  public void d(String paramString1, String paramString2)
-  {
-    QLog.d(paramString1, 2, paramString2);
-  }
+  qnz(qnw paramqnw, BaseArticleInfo paramBaseArticleInfo, qfw paramqfw) {}
   
-  public void e(String paramString1, String paramString2)
+  public void onClick(ViewBase paramViewBase)
   {
-    QLog.e(paramString1, 1, paramString2);
-  }
-  
-  public void e(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.e(paramString1, 1, paramString2 + ", t = " + paramThrowable);
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    QLog.i(paramString1, 1, paramString2);
-  }
-  
-  public boolean isColorLevel()
-  {
-    return QLog.isColorLevel();
-  }
-  
-  public boolean isDebug()
-  {
-    return false;
-  }
-  
-  public void w(String paramString1, String paramString2)
-  {
-    QLog.w(paramString1, 1, paramString2);
-  }
-  
-  public void w(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.w(paramString1, 1, paramString2 + ", t = " + paramThrowable);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances.isEmpty())) {
+      return;
+    }
+    VideoColumnInfo localVideoColumnInfo = (VideoColumnInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances.get(0);
+    if ((localVideoColumnInfo.a != null) && (localVideoColumnInfo.a.a != 3)) {
+      six.a(this.jdField_a_of_type_Qfw.a().getContext(), localVideoColumnInfo.a);
+    }
+    piv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mProteusTemplateBean, paramViewBase);
+    ptj.a.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
   }
 }
 

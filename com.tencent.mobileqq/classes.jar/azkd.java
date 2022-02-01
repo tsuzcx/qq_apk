@@ -1,190 +1,74 @@
-import NS_MOBILE_PHOTO.operation_red_touch_req;
-import android.annotation.TargetApi;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.qzonealbumreddot.QzoneAlbumRedTouchManager.1;
-import com.tencent.mobileqq.qzonealbumreddot.QzoneAlbumRedTouchManager.2;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.QZoneClickReport;
-import cooperation.qzone.util.PhotoUtils;
-import mqq.app.NewIntent;
-import mqq.manager.Manager;
-import mqq.os.MqqHandler;
+import java.util.HashMap;
 
 public class azkd
-  implements Manager
 {
-  public QQAppInterface a;
+  private static final Object a = "PicReporter";
   
-  public azkd(QQAppInterface paramQQAppInterface)
+  public static void a()
   {
-    this.a = paramQQAppInterface;
+    boolean bool = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131694758), "qqsetting_auto_receive_pic_key", true);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_state", String.valueOf(bool));
+    azjq.a(a, "report2G3G4GSwitchState", "param_state:" + bool);
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "act2G3G4GSwitch", false, 0L, 0L, localHashMap, "");
   }
   
-  private SharedPreferences a()
+  public static void a(int paramInt, long paramLong)
   {
-    String str2 = "";
-    String str1 = str2;
-    if (this.a != null)
-    {
-      str1 = str2;
-      if (this.a.getCurrentAccountUin() != null) {
-        str1 = this.a.getCurrentAccountUin();
-      }
-    }
-    str1 = str1 + "_QZoneAlbumRedTouch";
-    return BaseApplication.getContext().getSharedPreferences(str1, 0);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_network", String.valueOf(paramInt));
+    localHashMap.put("param_limit", String.valueOf(paramLong));
+    azjq.a(a, "reportOverFlow", "param_network:" + paramInt + ",param_limit:" + paramLong);
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actPicPreDownOverFlow", false, 0L, 0L, localHashMap, "");
   }
   
-  public static boolean c()
+  public static void a(String paramString, int paramInt1, int paramInt2, long paramLong)
   {
-    long l = 0L;
-    if (QLog.isColorLevel()) {
-      l = System.currentTimeMillis();
-    }
-    if (PhotoUtils.get().checkNewImages())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneAlbumRedTouchManager", 2, "checkNewImages cost:" + (System.currentTimeMillis() - l));
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  public long a()
-  {
-    return a().getLong("key_photo_guide_has_red_date", 0L);
-  }
-  
-  public void a()
-  {
-    if (this.a == null) {
+    azjq.a(a, "reportBigPicDownCost", "uintype:" + paramInt1 + ",networktype:" + paramInt2 + ",timeCost:" + paramLong);
+    if ((paramInt1 == -1) || (paramInt2 == -1) || (paramLong < 0L)) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneAlbumRedTouchManager", 2, "setRedTouch");
-    }
-    NewIntent localNewIntent = new NewIntent(this.a.getApplication(), azkf.class);
-    localNewIntent.putExtra("req", new operation_red_touch_req(1L));
-    this.a.startServlet(localNewIntent);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_uintype", String.valueOf(paramInt1));
+    localHashMap.put("param_networktype", String.valueOf(paramInt2));
+    localHashMap.put("param_timecost", String.valueOf(paramLong));
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(paramString, "actBigPicDownCost", false, 0L, 0L, localHashMap, "");
   }
   
-  @TargetApi(9)
-  public void a(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  public static void a(String paramString, HashMap<String, String> paramHashMap)
   {
-    if ((paramAppInfo == null) || (paramAppInfo.iNewFlag.get() == 0) || (this.a == null)) {
-      return;
-    }
-    QZoneClickReport.startReportImediately(this.a.getCurrentAccountUin(), "443", "1");
-    ThreadManager.getSubThreadHandler().post(new QzoneAlbumRedTouchManager.2(this));
-  }
-  
-  public boolean a()
-  {
-    long l2 = a();
-    if (l2 <= 0L) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneAlbumRedTouchManager", 2, "isShowedRedTouchToday false");
-      }
-    }
-    do
+    if (paramHashMap == null)
     {
-      return false;
-      long l1 = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoUploadRedPointTimeInterval", 24) * 60 * 60 * 1000;
-      l2 = System.currentTimeMillis() - l2;
-      if ((l2 <= l1) && (l2 >= 0L)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("QzoneAlbumRedTouchManager", 2, "isShowedRedTouchToday false");
-    return false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneAlbumRedTouchManager", 2, "isShowedRedTouchToday true");
-    }
-    return true;
-  }
-  
-  public void b()
-  {
-    if (this.a == null) {
+      azjq.a(a, "reportPicDownAutoLearn", "reportInfo == null");
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneAlbumRedTouchManager", 2, "clearRedTouch");
-    }
-    ThreadManager.getSubThreadHandler().post(new QzoneAlbumRedTouchManager.1(this));
-  }
-  
-  public boolean b()
-  {
-    if (this.a == null) {
-      return false;
-    }
-    Object localObject = (azvi)this.a.getManager(36);
-    if (localObject == null) {
-      return false;
-    }
-    localObject = ((azvi)localObject).a(String.valueOf(100180));
-    return (localObject != null) && (((BusinessInfoCheckUpdate.AppInfo)localObject).iNewFlag.get() == 1);
-  }
-  
-  public void c()
-  {
-    if ((!PhotoUtils.isCurrentDayInQzone()) && (PhotoUtils.isOverLastCheck()) && (PhotoUtils.isInCheckTimeQuantum()))
+    if ((String)paramHashMap.get("xgPreDownCount") == null)
     {
-      LocalMultiProcConfig.putLong("key_photo_guide_last_check", System.currentTimeMillis());
-      if (b()) {
-        break label65;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneAlbumRedTouchManager", 2, "not red");
-      }
-      if ((!a()) && (c())) {
-        d();
-      }
-    }
-    label65:
-    while (c()) {
+      azjq.a(a, "reportPicDownAutoLearn", "no xg report data");
       return;
     }
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(paramString, "actPicDownAutoLearn", false, 0L, 0L, paramHashMap, "");
+    azjq.a(a, "reportPicDownAutoLearn", "");
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("QzoneAlbumRedTouchManager", 2, "has Red but clear Red Touch");
+      QLog.i("PicReporter", 2, "device busy " + paramBoolean);
     }
-    b();
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "Pic.Mkdir.DeviceBusy", paramBoolean, 0L, 0L, null, "");
   }
   
-  @TargetApi(9)
-  public void d()
+  public static void b(boolean paramBoolean)
   {
-    int i = QzoneConfig.getInstance().getConfig("PhotoUpload", "GuideSelectPhotoSendRedJumpToQzone", 0);
-    SharedPreferences.Editor localEditor = a().edit().putLong("key_photo_guide_has_red_date", System.currentTimeMillis());
-    if (Build.VERSION.SDK_INT < 9) {
-      localEditor.commit();
+    if (QLog.isColorLevel()) {
+      QLog.i("PicReporter", 2, "Aio preview " + paramBoolean);
     }
-    while ((i == 1) && (this.a != null) && (this.a.getApp() != null) && (azkg.a(this.a.getApp(), 84)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneAlbumRedTouchManager", 2, "GetQZonePhotoGuideCheck supportJumpToQzone");
-      }
-      new azkg(this.a, this).a();
-      return;
-      localEditor.apply();
-    }
-    a();
-  }
-  
-  public void onDestroy()
-  {
-    this.a = null;
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "Pic.AioPreview.Empty", paramBoolean, 0L, 0L, null, "");
   }
 }
 

@@ -1,64 +1,59 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
-import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
-import com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import protocol.KQQConfig.UpgradeInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+import org.jetbrains.annotations.NotNull;
 
 public class acne
-  implements View.OnClickListener
 {
-  public acne(AboutActivity paramAboutActivity) {}
+  protected ConcurrentHashMap<String, Lock> a;
+  private ConcurrentHashMap<String, List<MessageRecord>> b;
+  private ConcurrentHashMap<String, List<MessageRecord>> c;
   
-  public void onClick(View paramView)
+  public acne()
   {
-    int i = 2;
-    Intent localIntent;
-    if (bicl.a().b())
-    {
-      if (bfyr.a()) {
-        i = 1;
-      }
-      bcef.b(null, "dc00898", "", "", "0X8008FFB", "0X8008FFB", i, 0, "", "", "", "");
-      localIntent = new Intent(BaseApplication.getContext(), UpgradeActivity.class);
-      localIntent.putExtra("StrTitle", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strTitle);
-      localIntent.putExtra("StrUpgradeDesc", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradeDesc);
-      localIntent.putExtra("iUpgradeType", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType);
-      localIntent.putExtra("activity_type", 4096);
-      if (BaseActivity.sTopActivity != null) {
-        BaseActivity.sTopActivity.startActivity(localIntent);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgPool", 2, "MsgPool() called " + this);
     }
-    for (;;)
+    this.c = new ConcurrentHashMap();
+    this.a = new ConcurrentHashMap();
+    this.b = a();
+  }
+  
+  public Map<String, List<MessageRecord>> a()
+  {
+    return this.c;
+  }
+  
+  @NotNull
+  protected ConcurrentHashMap<String, List<MessageRecord>> a()
+  {
+    return new ConcurrentHashMap();
+  }
+  
+  public Lock a(String paramString)
+  {
+    if (!this.a.containsKey(paramString)) {}
+    synchronized (this.a)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((AboutActivity.a(this.a).jdField_a_of_type_Bfnl != null) && (bfyr.a(AboutActivity.a(this.a).jdField_a_of_type_Bfnl.a)))
-      {
-        if (bfyr.a()) {
-          i = 1;
-        }
-        bcef.b(null, "dc00898", "", "", "0X8008FFB", "0X8008FFB", i, 0, "", "", "", "");
-        localIntent = new Intent(BaseApplication.getContext(), UpgradeActivity.class);
-        localIntent.putExtra("StrTitle", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strTitle);
-        localIntent.putExtra("StrUpgradeDesc", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradeDesc);
-        localIntent.putExtra("iUpgradeType", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType);
-        localIntent.putExtra("activity_type", 4096);
-        if (BaseActivity.sTopActivity != null) {
-          BaseActivity.sTopActivity.startActivity(localIntent);
-        }
+      if (!this.a.containsKey(paramString)) {
+        this.a.put(paramString, new ReentrantLock());
       }
-      else if ((AboutActivity.a(this.a) != null) && (AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo != null))
-      {
-        bcef.b(this.a.app, "CliOper", "", "", "0X8004DB2", "0X8004DB2", 0, 0, "", "", bfng.a(), "");
-        UpgradeDetailActivity.a(this.a, bfng.a().a(), false, false, true);
-      }
+      return (Lock)this.a.get(paramString);
     }
+  }
+  
+  public Lock a(String paramString, int paramInt)
+  {
+    return a(acnh.a(paramString, paramInt));
+  }
+  
+  public ConcurrentHashMap<String, List<MessageRecord>> b()
+  {
+    return this.b;
   }
 }
 

@@ -1,35 +1,20 @@
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
-import java.util.ArrayList;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
 class thp
-  extends PagerAdapter
+  implements ViewFactory.FoundClickableViewListener
 {
-  thp(tho paramtho) {}
+  thp(tho paramtho, Context paramContext) {}
   
-  public int getCount()
+  public void onFound(ViewBase paramViewBase)
   {
-    return tho.a(this.a).size();
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    View localView = (View)tho.a(this.a).get(paramInt);
-    if (localView.getParent() == null) {
-      paramViewGroup.addView(localView);
-    }
-    return localView;
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
+    paramViewBase.setOnClickListener(new thq(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     thp
  * JD-Core Version:    0.7.0.1
  */

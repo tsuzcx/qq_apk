@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.portal;
 
 import android.graphics.Bitmap;
-import ayiv;
-import ayiw;
-import ayja;
+import aznq;
+import aznr;
+import aznv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.ConcurrentHashMap;
@@ -13,33 +13,33 @@ import org.json.JSONObject;
 public class PortalManager$5$1
   implements Runnable
 {
-  public PortalManager$5$1(ayiv paramayiv, String paramString, boolean paramBoolean) {}
+  public PortalManager$5$1(aznq paramaznq, String paramString, boolean paramBoolean) {}
   
   public void run()
   {
-    ayiw localayiw = (ayiw)this.jdField_a_of_type_Ayiv.a.a.get(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Ayiv.a.a.remove(this.jdField_a_of_type_JavaLangString);
+    aznr localaznr = (aznr)this.jdField_a_of_type_Aznq.a.a.get(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Aznq.a.a.remove(this.jdField_a_of_type_JavaLangString);
     Object localObject1;
     JSONObject localJSONObject;
     if (this.jdField_a_of_type_Boolean)
     {
       i = 1;
-      localObject1 = PortalManager.a(this.jdField_a_of_type_Ayiv.a).getFaceBitmap(this.jdField_a_of_type_JavaLangString, false);
+      localObject1 = PortalManager.a(this.jdField_a_of_type_Aznq.a).getFaceBitmap(this.jdField_a_of_type_JavaLangString, false);
       if (localObject1 != null)
       {
-        localObject1 = ayja.a((Bitmap)localObject1);
+        localObject1 = aznv.a((Bitmap)localObject1);
         localJSONObject = new JSONObject();
       }
     }
     try
     {
       localJSONObject.put("errorCode", 0);
-      localJSONObject.put("key", localayiw.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("key", localaznr.jdField_a_of_type_JavaLangString);
       localJSONObject.put("result", localObject1);
       if (QLog.isColorLevel()) {
-        QLog.d("PortalManagerhead", 2, "onUpdateCustomHead details.key = " + localayiw.jdField_a_of_type_JavaLangString);
+        QLog.d("PortalManagerhead", 2, "onUpdateCustomHead details.key = " + localaznr.jdField_a_of_type_JavaLangString);
       }
-      PortalManager.a(this.jdField_a_of_type_Ayiv.a, localayiw.b, localJSONObject.toString(), localayiw.jdField_a_of_type_Int);
+      PortalManager.a(this.jdField_a_of_type_Aznq.a, localaznr.b, localJSONObject.toString(), localaznr.jdField_a_of_type_Int);
       return;
     }
     catch (JSONException localJSONException)
@@ -54,9 +54,9 @@ public class PortalManager$5$1
           QLog.d("PortalManagerhead", 2, "error heppened info = " + localJSONObject);
         }
         if (QLog.isColorLevel()) {
-          QLog.d("PortalManagerhead", 2, "onUpdateCustomHead details.key = " + localayiw.jdField_a_of_type_JavaLangString);
+          QLog.d("PortalManagerhead", 2, "onUpdateCustomHead details.key = " + localaznr.jdField_a_of_type_JavaLangString);
         }
-        PortalManager.a(this.jdField_a_of_type_Ayiv.a, localayiw.b, localayiw.jdField_a_of_type_Int, null, -1, "get bitmap failed!");
+        PortalManager.a(this.jdField_a_of_type_Aznq.a, localaznr.b, localaznr.jdField_a_of_type_Int, null, -1, "get bitmap failed!");
         return;
       }
       finally
@@ -66,11 +66,11 @@ public class PortalManager$5$1
       localObject2 = finally;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("PortalManagerhead", 2, "onUpdateCustomHead details.key = " + localayiw.jdField_a_of_type_JavaLangString);
+      QLog.d("PortalManagerhead", 2, "onUpdateCustomHead details.key = " + localaznr.jdField_a_of_type_JavaLangString);
     }
     if (i != 0)
     {
-      PortalManager.a(this.jdField_a_of_type_Ayiv.a, localayiw.b, localJSONObject.toString(), localayiw.jdField_a_of_type_Int);
+      PortalManager.a(this.jdField_a_of_type_Aznq.a, localaznr.b, localJSONObject.toString(), localaznr.jdField_a_of_type_Int);
       return;
     }
     throw localObject2;

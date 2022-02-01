@@ -8,14 +8,14 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
-import pay;
-import qli;
-import qlj;
+import pkh;
+import qxn;
+import qxo;
 
 public class ReadInJoyMSFService$2
   implements Runnable
 {
-  public ReadInJoyMSFService$2(qli paramqli, ToServiceMsg paramToServiceMsg) {}
+  public ReadInJoyMSFService$2(qxn paramqxn, ToServiceMsg paramToServiceMsg) {}
   
   public void run()
   {
@@ -30,7 +30,7 @@ public class ReadInJoyMSFService$2
         if ((!this.a.extraData.getBoolean("req_pb_protocol_flag", false)) || (this.a.getWupBuffer() == null)) {
           break label441;
         }
-        if (!qli.a(this.this$0, this.a))
+        if (!qxn.a(this.this$0, this.a))
         {
           long l = this.a.getWupBuffer().length;
           localObject = new byte[(int)l + 4];
@@ -46,7 +46,7 @@ public class ReadInJoyMSFService$2
           if (i == 0) {
             break;
           }
-          localObject = new NewIntent(pay.a().getApplication(), qlj.class);
+          localObject = new NewIntent(pkh.a().getApplication(), qxo.class);
           ((NewIntent)localObject).putExtra(ToServiceMsg.class.getSimpleName(), this.a);
           if (this.a.getAttributes().get("req_enable_msf_retry") != null)
           {
@@ -58,7 +58,7 @@ public class ReadInJoyMSFService$2
               ((NewIntent)localObject).putExtra("quickSendStrategy", 0);
               QLog.d("ReadInJoyMSFService", 2, "handleRequest | MSF retry enabled");
             }
-            pay.a().startServlet((NewIntent)localObject);
+            pkh.a().startServlet((NewIntent)localObject);
             l = System.currentTimeMillis();
             this.a.extraData.putLong("sendtimekey", l);
           }

@@ -1,37 +1,29 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.data.MusicInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import java.util.HashMap;
 
-public class auzf
-  implements Handler.Callback
+class auzf
+  implements INetEngine.IBreakDownFix
 {
-  public auzf(ListenTogetherManager paramListenTogetherManager) {}
+  auzf(auzd paramauzd) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void fixReq(NetReq paramNetReq, NetResp paramNetResp)
   {
-    switch (paramMessage.what)
+    if ((paramNetReq != null) && (paramNetResp != null) && ((paramNetReq instanceof HttpNetReq)))
     {
-    default: 
-      return true;
-    }
-    paramMessage = this.a.a();
-    if (paramMessage != null)
-    {
-      paramMessage.a = (SystemClock.elapsedRealtime() - paramMessage.c + paramMessage.a);
-      paramMessage.c = SystemClock.elapsedRealtime();
-      boolean bool = ListenTogetherManager.a(this.a).a(paramMessage);
-      QLog.i("ListenTogether.Seek", 1, "MSG_TYPE_TIME_SYNC seek is: " + paramMessage.a + " currentTime: " + System.currentTimeMillis() + " result: " + bool);
-    }
-    for (;;)
-    {
-      ListenTogetherManager.a(this.a).removeMessages(1001);
-      ListenTogetherManager.a(this.a).sendEmptyMessageDelayed(1001, auys.a().a);
-      return true;
-      QLog.i("ListenTogether.Manager", 1, "MSG_TYPE_TIME_SYNC startPlay musicInfo is null.");
+      paramNetReq = (HttpNetReq)paramNetReq;
+      paramNetReq.mStartDownOffset += paramNetResp.mWrittenBlockLen;
+      paramNetResp.mWrittenBlockLen = 0L;
+      paramNetResp = "bytes=" + paramNetReq.mStartDownOffset + "-";
+      paramNetReq.mReqProperties.put("Range", paramNetResp);
+      paramNetResp = paramNetReq.mReqUrl;
+      if (paramNetResp.contains("range="))
+      {
+        paramNetResp = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
+        paramNetReq.mReqUrl = (paramNetResp + "range=" + paramNetReq.mStartDownOffset);
+      }
     }
   }
 }

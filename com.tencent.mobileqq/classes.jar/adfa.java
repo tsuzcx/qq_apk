@@ -1,20 +1,15 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.EditActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AddAccountActivity;
 
 public class adfa
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public adfa(EditActivity paramEditActivity) {}
+  public adfa(AddAccountActivity paramAddAccountActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((EditActivity.a(this.a) != null) && (EditActivity.a(this.a).isShowing()) && (EditActivity.a(this.a).getWindow() != null)) {
-      EditActivity.a(this.a).dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    AddAccountActivity.c(this.a, false);
   }
 }
 

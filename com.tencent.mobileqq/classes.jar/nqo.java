@@ -1,39 +1,71 @@
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
+import android.os.SystemClock;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-public final class nqo
-  implements zop
+public class nqo
 {
-  public nqo(Activity paramActivity, boolean paramBoolean, String paramString) {}
+  private static nqo jdField_a_of_type_Nqo;
+  private String jdField_a_of_type_JavaLangString;
+  private ConcurrentHashMap<String, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
   
-  public void callback(Bundle paramBundle)
+  public static nqo a()
   {
-    int i = paramBundle.getInt("currentFragment", -1);
-    if (QLog.isColorLevel()) {
-      QLog.i("SensorAPIJavaScript", 2, "isFromAio callback " + i);
-    }
-    if (i == 2)
+    if (jdField_a_of_type_Nqo == null) {}
+    try
     {
-      paramBundle = new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class);
-      paramBundle.setFlags(67108864);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramBundle);
+      jdField_a_of_type_Nqo = new nqo();
+      return jdField_a_of_type_Nqo;
+    }
+    finally {}
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(5);
       return;
     }
-    if ((this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+  }
+  
+  public void a(String paramString, Intent paramIntent)
+  {
+    if ((paramIntent != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
     {
-      paramBundle = AIOUtils.setOpenAIOIntent(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
-      paramBundle.putExtra("uin", this.jdField_a_of_type_JavaLangString);
-      paramBundle.putExtra("uintype", 1);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramBundle);
-      return;
+      long l1 = SystemClock.elapsedRealtime();
+      long l2 = paramIntent.getLongExtra("key_start_time", 0L);
+      if (l2 != 0L) {
+        QLog.i(this.jdField_a_of_type_JavaLangString, 2, paramString + "[" + (l1 - l2) + "]");
+      }
     }
-    this.jdField_a_of_type_AndroidAppActivity.setResult(4660);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+  }
+  
+  public void b(String paramString)
+  {
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      long l = SystemClock.elapsedRealtime();
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(l));
+    }
+  }
+  
+  public void c(String paramString)
+  {
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      long l1 = SystemClock.elapsedRealtime();
+      Long localLong = (Long)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      if (localLong != null)
+      {
+        long l2 = localLong.longValue();
+        QLog.i(this.jdField_a_of_type_JavaLangString, 2, paramString + "[" + (l1 - l2) + "]");
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+    }
   }
 }
 

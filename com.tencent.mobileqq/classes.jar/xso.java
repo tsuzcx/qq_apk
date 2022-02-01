@@ -1,58 +1,26 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryUploadProgressView.1;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.MessageProgressView;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.database.MemoryInfoEntry;
 
 public class xso
-  implements vog
 {
-  public MessageProgressView a;
-  private String a;
+  public int a;
+  public long a;
+  public String a;
   
-  public xso(MessageProgressView paramMessageProgressView)
+  public xso(xsl paramxsl, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = paramMessageProgressView;
-  }
-  
-  private void b(String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(paramInt, this.jdField_a_of_type_JavaLangString + "_" + hashCode());
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setRadius(UIUtils.dip2px(this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.getContext(), 8.0F), false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setShowCorner(false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(paramInt);
-  }
-  
-  public void a(bhfe parambhfe)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimRunnableListener(parambhfe);
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    b(paramString, paramInt);
-    if (paramInt >= 100) {
-      ThreadManager.getUIHandler().postDelayed(new StoryUploadProgressView.1(this), 500L);
+    this.jdField_a_of_type_JavaLangString = "";
+    paramxsl = ((wjf)wjs.a(19)).a(paramString);
+    if (paramxsl != null) {
+      a(paramxsl);
     }
   }
   
-  public boolean a()
+  public void a(@NonNull MemoryInfoEntry paramMemoryInfoEntry)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.a(this.jdField_a_of_type_JavaLangString + "_" + hashCode());
+    this.jdField_a_of_type_Long = paramMemoryInfoEntry.seq;
+    this.jdField_a_of_type_JavaLangString = paramMemoryInfoEntry.cookie;
+    this.jdField_a_of_type_Int = paramMemoryInfoEntry.timeZone;
   }
 }
 

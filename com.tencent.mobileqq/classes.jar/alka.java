@@ -1,24 +1,70 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
 
-class alka
-  implements View.OnTouchListener
+public class alka
+  extends aqwt<aljz>
 {
-  alka(aljz paramaljz) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static aljz a()
   {
-    switch (paramMotionEvent.getAction())
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("BeginnerBannerConfigProcessor", 2, "[loadConfig] configId: 698");
     }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
+    return (aljz)aqxe.a().a(698);
+  }
+  
+  @NonNull
+  public aljz a(int paramInt)
+  {
+    return new aljz();
+  }
+  
+  @Nullable
+  public aljz a(aqxa[] paramArrayOfaqxa)
+  {
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0)) {
+      return aljz.a(paramArrayOfaqxa[0].a);
     }
+    QLog.e("BeginnerBannerConfigProcessor", 1, "[onParsed] confFiles: " + Arrays.toString(paramArrayOfaqxa));
+    return new aljz();
+  }
+  
+  public void a(aljz paramaljz) {}
+  
+  public Class<aljz> clazz()
+  {
+    return aljz.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public boolean isNeedUpgradeReset()
+  {
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.e("BeginnerBannerConfigProcessor", 1, "[onReqFailed] failCode: " + paramInt);
+  }
+  
+  public int type()
+  {
+    return 698;
   }
 }
 

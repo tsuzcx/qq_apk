@@ -1,31 +1,61 @@
-import android.content.Intent;
+import android.graphics.ColorFilter;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.16;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
 
-public class bdrg
-  implements View.OnClickListener
+class bdrg
+  implements afqq
 {
-  public bdrg(TroopBarPublishActivity.16 param16) {}
+  int jdField_a_of_type_Int;
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  boolean jdField_a_of_type_Boolean;
+  TextView b;
   
-  public void onClick(View paramView)
+  private void a(boolean paramBoolean)
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("path", this.a.a);
-    PublicFragmentActivity.a(this.a.this$0, localIntent, TribeVideoPreviewFragment.class);
-    this.a.this$0.overridePendingTransition(2130772329, 2130772330);
-    if ((this.a.this$0.b != null) && (this.a.this$0.b.getVisibility() == 0)) {}
-    for (int i = 2;; i = 1)
+    Drawable localDrawable = this.a.getBackground();
+    if (localDrawable != null) {
+      if (!paramBoolean) {
+        break label28;
+      }
+    }
+    label28:
+    for (ColorFilter localColorFilter = null;; localColorFilter = BaseBubbleBuilder.a)
     {
-      bcef.b(null, "dc00899", "Grp_tribe", "", "post", "Clk_full_screen", i, 0, "", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
+      localDrawable.setColorFilter(localColorFilter);
+      localDrawable.invalidateSelf();
       return;
     }
+  }
+  
+  public void a(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    case 2: 
+    default: 
+    case 1: 
+    case 3: 
+      do
+      {
+        return;
+        paramView = this.a.getBackground();
+      } while (paramView == null);
+      paramView.setColorFilter(null);
+      paramView.invalidateSelf();
+      return;
+    }
+    a(false);
+  }
+  
+  public void a(View paramView, boolean paramBoolean)
+  {
+    a(paramBoolean);
   }
 }
 

@@ -1,15 +1,20 @@
-import androidx.annotation.RequiresApi;
-import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment;
+import android.app.Activity;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import mqq.app.QQPermissionCallback;
 
 public class bmjl
-  implements bmqc
+  implements QQPermissionCallback
 {
-  public bmjl(AEEditorMultiCutEditFragment paramAEEditorMultiCutEditFragment) {}
+  public bmjl(TroopHWJsPlugin paramTroopHWJsPlugin, Activity paramActivity, int paramInt) {}
   
-  @RequiresApi(api=16)
-  public void a(String paramString, long paramLong1, long paramLong2)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AEEditorMultiCutEditFragment.a(this.a, paramString, paramLong1, paramLong2);
+    bhdj.a(this.jdField_a_of_type_AndroidAppActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.c = TroopHWJsPlugin.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int);
   }
 }
 

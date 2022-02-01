@@ -1,7 +1,7 @@
 package com.tencent.qqmini.proxyimpl;
 
 import NS_MINI_AD.MiniAppAd.StGetAdReq;
-import abrk;
+import achn;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -10,23 +10,25 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bjbm;
-import bjbn;
-import bjbo;
-import bjbp;
-import bjbq;
-import bjbr;
-import bjbv;
-import bjbx;
-import bjca;
-import bjcc;
-import bjds;
+import android.webkit.URLUtil;
+import bkmt;
+import bkmu;
+import bkmv;
+import bkmw;
+import bkmx;
+import bkmy;
+import bknc;
+import bkne;
+import bknh;
+import bknj;
+import bkpa;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.aditem.GdtAppReceiver;
 import com.tencent.gdtad.aditem.GdtHandler;
 import com.tencent.gdtad.aditem.GdtHandler.Params;
 import com.tencent.gdtad.api.motivebrowsing.RewardedBrowsingCallbackReceiver;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.appbrand.utils.ThreadPools;
 import com.tencent.mobileqq.mini.manager.MiniLoadingAdManager;
@@ -58,6 +60,7 @@ import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.InterstitialADLisener;
 import com.tencent.qqmini.sdk.launcher.core.proxy.IGetAdPosInfo;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.model.LoginInfo;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
 import com.tencent.qqmini.sdk.launcher.utils.StorageUtil;
 import java.io.File;
@@ -76,7 +79,7 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
 public class AdProxyImpl
   extends AdProxy
 {
-  private static HashMap<String, bjbq> jdField_a_of_type_JavaUtilHashMap;
+  private static HashMap<String, bkmx> jdField_a_of_type_JavaUtilHashMap;
   private GdtAppReceiver jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver;
   private RewardedBrowsingCallbackReceiver jdField_a_of_type_ComTencentGdtadApiMotivebrowsingRewardedBrowsingCallbackReceiver;
   private final String jdField_a_of_type_JavaLangString = "AdProxyImpl";
@@ -112,7 +115,7 @@ public class AdProxyImpl
     return null;
   }
   
-  private GdtHandler.Params a(Activity paramActivity, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo, IMiniAppContext paramIMiniAppContext)
+  private GdtHandler.Params a(Activity paramActivity, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo, IMiniAppContext paramIMiniAppContext, String paramString)
   {
     if ((paramActivity == null) || (paramAdInfo == null)) {
       paramActivity = null;
@@ -139,7 +142,7 @@ public class AdProxyImpl
       localParams.jdField_a_of_type_AndroidOsBundle = paramActivity;
       paramActivity = localParams;
     } while (paramAdInfo.report_info == null);
-    localParams.jdField_a_of_type_OrgJsonJSONObject = bjds.a(paramIMiniAppContext, paramAdInfo.report_info.click_url.get());
+    localParams.jdField_a_of_type_OrgJsonJSONObject = bkpa.a(paramIMiniAppContext, paramAdInfo.report_info.click_url.get(), paramString);
     return localParams;
   }
   
@@ -168,7 +171,7 @@ public class AdProxyImpl
   {
     try
     {
-      qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(abrk.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramString)));
+      qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(achn.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramString)));
       return localAdInfo;
     }
     catch (Exception localException)
@@ -189,12 +192,21 @@ public class AdProxyImpl
     BaseApplicationImpl.getApplication().registerReceiver(this.jdField_a_of_type_ComTencentGdtadApiMotivebrowsingRewardedBrowsingCallbackReceiver, localIntentFilter);
   }
   
-  private void a(IMiniAppContext paramIMiniAppContext, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
+  private void a(IMiniAppContext paramIMiniAppContext, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo, String paramString)
   {
     if ((paramAdInfo == null) || (paramAdInfo.report_info == null)) {
       return;
     }
-    bjds.a(paramIMiniAppContext, paramAdInfo.report_info.click_url.get());
+    bkpa.a(paramIMiniAppContext, paramAdInfo.report_info.click_url.get(), paramString);
+  }
+  
+  public static void a(String paramString)
+  {
+    QLog.i("AdProxyImpl", 1, "reportBannerAd/BlockAd reportUrl = " + paramString);
+    if ((TextUtils.isEmpty(paramString)) || (!URLUtil.isNetworkUrl(paramString))) {
+      return;
+    }
+    ThreadManager.executeOnNetWorkThread(new AdProxyImpl.7(paramString));
   }
   
   private void a(String paramString, int paramInt)
@@ -240,14 +252,14 @@ public class AdProxyImpl
     if ((paramIntent != null) && (jdField_a_of_type_JavaUtilHashMap != null))
     {
       String str = paramIntent.getStringExtra("KEY_MOTIVE_BROWSING");
-      Object localObject = (bjbq)jdField_a_of_type_JavaUtilHashMap.get(str);
+      Object localObject = (bkmx)jdField_a_of_type_JavaUtilHashMap.get(str);
       if (localObject != null)
       {
-        localObject = bjbq.a((bjbq)localObject);
+        localObject = bkmx.a((bkmx)localObject);
         QLog.i("AdProxyImpl", 1, "mvBrowing dataKey = " + str + ", data =" + localObject);
         jdField_a_of_type_JavaUtilHashMap.remove(str);
         if (localObject != null) {
-          ((bjcc)localObject).a(-1, paramIntent.getExtras());
+          ((bknj)localObject).a(-1, paramIntent.getExtras());
         }
       }
     }
@@ -288,7 +300,7 @@ public class AdProxyImpl
             paramString2 = paramContext;
             paramContext = (Context)localObject;
             paramString1 = new JSONObject(paramString1);
-            localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(abrk.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramString1));
+            localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(achn.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramString1));
             if (this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver == null)
             {
               this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = new GdtAppReceiver();
@@ -363,7 +375,7 @@ public class AdProxyImpl
     if ((paramActivity == null) || (paramBundle == null)) {
       return null;
     }
-    return new bjbr(this, paramActivity, paramString1, paramString2, paramBundle.getString(AdProxy.KEY_ACCOUNT), paramBundle.getInt(AdProxy.KEY_AD_TYPE), paramBundle.getInt(AdProxy.KEY_ORIENTATION), paramBundle.getString(AdProxy.KEY_GDT_COOKIE), paramBundle.getString(AdProxy.KEY_ENTRY_PATH), paramBundle.getString(AdProxy.KEY_REPORT_DATA), paramBundle.getString(AdProxy.KEY_REFER), paramBundle.getString(AdProxy.KEY_VIA), paramInt1, paramInt2, paramIBannerAdListener, paramIMiniAppContext, paramIGetAdPosInfo);
+    return new bkmy(this, paramActivity, paramString1, paramString2, paramBundle.getString(AdProxy.KEY_ACCOUNT), paramBundle.getInt(AdProxy.KEY_AD_TYPE), paramBundle.getInt(AdProxy.KEY_ORIENTATION), paramBundle.getString(AdProxy.KEY_GDT_COOKIE), paramBundle.getString(AdProxy.KEY_ENTRY_PATH), paramBundle.getString(AdProxy.KEY_REPORT_DATA), paramBundle.getString(AdProxy.KEY_REFER), paramBundle.getString(AdProxy.KEY_VIA), paramInt1, paramInt2, paramIBannerAdListener, paramIMiniAppContext, paramIGetAdPosInfo);
   }
   
   public AdProxy.AbsBlockAdView createBlockAdView(Activity paramActivity, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, AdProxy.IBlockAdListener paramIBlockAdListener, Bundle paramBundle)
@@ -371,7 +383,7 @@ public class AdProxyImpl
     if ((paramActivity == null) || (paramBundle == null)) {
       return null;
     }
-    return new bjbv(this, paramActivity, paramString1, paramString2, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramBundle.getString(AdProxy.KEY_ACCOUNT), paramBundle.getInt(AdProxy.KEY_AD_TYPE), paramBundle.getInt(AdProxy.KEY_ORIENTATION), paramBundle.getString(AdProxy.KEY_GDT_COOKIE), paramBundle.getString(AdProxy.KEY_ENTRY_PATH), paramBundle.getString(AdProxy.KEY_REPORT_DATA), paramBundle.getString(AdProxy.KEY_REFER), paramBundle.getString(AdProxy.KEY_VIA), paramIBlockAdListener);
+    return new bknc(this, paramActivity, paramString1, paramString2, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramBundle.getString(AdProxy.KEY_ACCOUNT), paramBundle.getInt(AdProxy.KEY_AD_TYPE), paramBundle.getInt(AdProxy.KEY_ORIENTATION), paramBundle.getString(AdProxy.KEY_GDT_COOKIE), paramBundle.getString(AdProxy.KEY_ENTRY_PATH), paramBundle.getString(AdProxy.KEY_REPORT_DATA), paramBundle.getString(AdProxy.KEY_REFER), paramBundle.getString(AdProxy.KEY_VIA), paramIBlockAdListener);
   }
   
   public AdProxy.AbsBoxAdView createBoxAdView(Activity paramActivity, String paramString1, String paramString2, AdProxy.IBoxADLisener paramIBoxADLisener, Bundle paramBundle)
@@ -379,7 +391,7 @@ public class AdProxyImpl
     if ((paramActivity == null) || (paramBundle == null)) {
       return null;
     }
-    return new bjbx(this, paramActivity, paramString1, paramString2, paramBundle.getString(AdProxy.KEY_ACCOUNT), paramBundle.getInt(AdProxy.KEY_AD_TYPE), paramBundle.getInt(AdProxy.KEY_ORIENTATION), paramBundle.getString(AdProxy.KEY_GDT_COOKIE), paramBundle.getString(AdProxy.KEY_ENTRY_PATH), paramBundle.getString(AdProxy.KEY_REPORT_DATA), paramBundle.getString(AdProxy.KEY_REFER), paramBundle.getString(AdProxy.KEY_VIA), paramIBoxADLisener);
+    return new bkne(this, paramActivity, paramString1, paramString2, paramBundle.getString(AdProxy.KEY_ACCOUNT), paramBundle.getInt(AdProxy.KEY_AD_TYPE), paramBundle.getInt(AdProxy.KEY_ORIENTATION), paramBundle.getString(AdProxy.KEY_GDT_COOKIE), paramBundle.getString(AdProxy.KEY_ENTRY_PATH), paramBundle.getString(AdProxy.KEY_REPORT_DATA), paramBundle.getString(AdProxy.KEY_REFER), paramBundle.getString(AdProxy.KEY_VIA), paramIBoxADLisener);
   }
   
   public AdProxy.AbsInterstitialAdView createInterstitialAdView(Activity paramActivity, String paramString1, String paramString2, AdProxy.InterstitialADLisener paramInterstitialADLisener, Bundle paramBundle, IMiniAppContext paramIMiniAppContext)
@@ -387,7 +399,7 @@ public class AdProxyImpl
     if ((paramActivity == null) || (paramBundle == null)) {
       return null;
     }
-    return new bjca(this, paramActivity, paramString1, paramString2, paramBundle.getString(AdProxy.KEY_ACCOUNT), paramBundle.getInt(AdProxy.KEY_AD_TYPE), paramBundle.getInt(AdProxy.KEY_ORIENTATION), paramBundle.getString(AdProxy.KEY_GDT_COOKIE), paramBundle.getString(AdProxy.KEY_ENTRY_PATH), paramBundle.getString(AdProxy.KEY_REPORT_DATA), paramBundle.getString(AdProxy.KEY_REFER), paramBundle.getString(AdProxy.KEY_VIA), paramInterstitialADLisener, paramIMiniAppContext);
+    return new bknh(this, paramActivity, paramString1, paramString2, paramBundle.getString(AdProxy.KEY_ACCOUNT), paramBundle.getInt(AdProxy.KEY_AD_TYPE), paramBundle.getInt(AdProxy.KEY_ORIENTATION), paramBundle.getString(AdProxy.KEY_GDT_COOKIE), paramBundle.getString(AdProxy.KEY_ENTRY_PATH), paramBundle.getString(AdProxy.KEY_REPORT_DATA), paramBundle.getString(AdProxy.KEY_REFER), paramBundle.getString(AdProxy.KEY_VIA), paramInterstitialADLisener, paramIMiniAppContext);
   }
   
   public AdProxy.AbsRewardVideoAdView createRewardVideoAdView(Context paramContext, String paramString1, String paramString2, AdProxy.IRewardVideoAdListener paramIRewardVideoAdListener, Bundle paramBundle, IMiniAppContext paramIMiniAppContext)
@@ -395,7 +407,7 @@ public class AdProxyImpl
     if ((paramContext == null) || (paramBundle == null)) {
       return null;
     }
-    return new bjcc(this, paramContext, paramString1, paramString2, paramBundle.getString(AdProxy.KEY_ACCOUNT), paramBundle.getInt(AdProxy.KEY_AD_TYPE), paramBundle.getInt(AdProxy.KEY_ORIENTATION), paramBundle.getString(AdProxy.KEY_GDT_COOKIE), paramBundle.getString(AdProxy.KEY_ENTRY_PATH), paramBundle.getString(AdProxy.KEY_REPORT_DATA), paramBundle.getString(AdProxy.KEY_REFER), paramBundle.getString(AdProxy.KEY_VIA), paramIRewardVideoAdListener, paramIMiniAppContext);
+    return new bknj(this, paramContext, paramString1, paramString2, paramBundle.getString(AdProxy.KEY_ACCOUNT), paramBundle.getInt(AdProxy.KEY_AD_TYPE), paramBundle.getInt(AdProxy.KEY_ORIENTATION), paramBundle.getString(AdProxy.KEY_GDT_COOKIE), paramBundle.getString(AdProxy.KEY_ENTRY_PATH), paramBundle.getString(AdProxy.KEY_REPORT_DATA), paramBundle.getString(AdProxy.KEY_REFER), paramBundle.getString(AdProxy.KEY_VIA), paramIRewardVideoAdListener, paramIMiniAppContext);
   }
   
   public void destroy(Activity paramActivity)
@@ -454,7 +466,7 @@ public class AdProxyImpl
       }
     }
     paramString2 = new MiniLoadingAdManager.CachedAdInfo((GdtAd)localObject, paramString2, paramString3);
-    paramString3 = new bjbp(this, paramILoadingAdListener, paramString1, l1, paramString2);
+    paramString3 = new bkmw(this, paramILoadingAdListener, paramString1, l1, paramString2);
     if (new File(paramString2.filePath).exists())
     {
       QLog.d("MiniLoadingAdManager", 1, "processSelectAdWithUncachedAd 之前的实时广告下载过 因实时广告不落地 导致的本地有图片但是没信息的情况 直接回调");
@@ -467,19 +479,19 @@ public class AdProxyImpl
   public void onActivityStart()
   {
     super.onActivityStart();
-    bjds.b();
+    bkpa.b();
   }
   
   public void onActivityStop()
   {
     super.onActivityStop();
-    bjds.c();
+    bkpa.c();
   }
   
   public void onFirstFrame()
   {
     super.onFirstFrame();
-    bjds.a();
+    bkpa.a();
   }
   
   public void preloadLoadingAd(Context paramContext, Bundle paramBundle, AdProxy.ILoadingAdListener paramILoadingAdListener)
@@ -490,7 +502,7 @@ public class AdProxyImpl
     paramContext = a(paramBundle);
     String str = paramBundle.getString(AdProxy.KEY_APPID);
     paramBundle = paramBundle.getString(AdProxy.KEY_ACCOUNT);
-    MiniAppCmdUtil.getInstance().getRewardedVideoADInfo(paramContext, new bjbn(this, paramBundle, str, paramILoadingAdListener));
+    MiniAppCmdUtil.getInstance().getRewardedVideoADInfo(paramContext, new bkmu(this, paramBundle, str, paramILoadingAdListener));
   }
   
   public void requestAdInfo(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt4, AdProxy.ICmdListener paramICmdListener)
@@ -512,15 +524,15 @@ public class AdProxyImpl
     if ((paramILoadingAdListener == null) || (paramContext == null)) {
       return;
     }
-    MiniAppCmdUtil.getInstance().getRewardedVideoADInfo(paramContext, new bjbm(this, paramILoadingAdListener));
+    MiniAppCmdUtil.getInstance().getRewardedVideoADInfo(paramContext, new bkmt(this, paramILoadingAdListener));
   }
   
-  public void updateLoadingAdLayoutAndShow(Context paramContext, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, AdProxy.ILoadingAdListener paramILoadingAdListener)
+  public void updateLoadingAdLayoutAndShow(Context paramContext, MiniAppInfo paramMiniAppInfo, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, long paramLong1, long paramLong2, AdProxy.ILoadingAdListener paramILoadingAdListener)
   {
     paramContext = new MiniLoadingAdLayout(paramContext);
-    if (paramContext.setupUIForSDK(paramBoolean, paramString1, paramString2, paramString3, paramString4, paramString5, paramILoadingAdListener))
+    if (paramContext.setupUIForSDK(paramMiniAppInfo, paramBoolean, paramString1, paramString2, paramString3, paramString4, paramString5, paramLong1, paramLong2, paramILoadingAdListener))
     {
-      paramContext.show(new bjbo(this, paramILoadingAdListener));
+      paramContext.show(new bkmv(this, paramILoadingAdListener));
       if (paramILoadingAdListener != null) {
         paramILoadingAdListener.onAdShow(paramContext);
       }
@@ -532,7 +544,7 @@ public class AdProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl
  * JD-Core Version:    0.7.0.1
  */

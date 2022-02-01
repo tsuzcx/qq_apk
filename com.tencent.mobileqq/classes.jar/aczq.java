@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryImageView;
+import com.tencent.mfsdk.MagnifierSDK;
 
-public class aczq
-  implements DialogInterface.OnClickListener
+public final class aczq
+  implements aczo
 {
-  public aczq(ChatHistoryImageView paramChatHistoryImageView) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    this.a.k();
+    if (MagnifierSDK.a != null) {
+      MagnifierSDK.a.a("result_objects", paramInt, 2);
+    }
   }
 }
 

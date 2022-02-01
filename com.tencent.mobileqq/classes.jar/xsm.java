@@ -1,8 +1,25 @@
-public abstract interface xsm
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+
+class xsm
+  extends SimpleJob<Object>
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  xsm(xsl paramxsl, String paramString)
+  {
+    super(paramString);
+  }
   
-  public abstract void i();
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    if (this.a.a == null) {
+      this.a.a = new xso(this.a, this.a.c);
+    }
+    this.a.d = "";
+    xsl.a(this.a);
+    return null;
+  }
 }
 
 

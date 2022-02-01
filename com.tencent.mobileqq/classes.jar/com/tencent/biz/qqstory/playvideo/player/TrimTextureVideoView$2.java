@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.playvideo.player;
 
 import android.annotation.TargetApi;
-import xvv;
+import ykq;
 
 class TrimTextureVideoView$2
   implements Runnable
@@ -13,16 +13,16 @@ class TrimTextureVideoView$2
   {
     if (!this.this$0.jdField_i_of_type_Boolean)
     {
-      xvv.a(this.this$0.a, "[%d]not attach! not schedule!", Integer.valueOf(this.this$0.jdField_i_of_type_Int));
+      ykq.a(this.this$0.a, "[%d]not attach! not schedule!", Integer.valueOf(this.this$0.jdField_i_of_type_Int));
       return;
     }
     int i = this.this$0.getCurrentPosition();
-    xvv.b(this.this$0.a, "[%d]mCheckNeedRestart check enter! isPlaying = %b, mEndTime = %d, pos = %d, mPositionNotChangeCount = %d, mPausedPositionChangeCount = %d", new Object[] { Integer.valueOf(this.this$0.jdField_i_of_type_Int), Boolean.valueOf(this.this$0.isPlaying()), Integer.valueOf(this.this$0.l), Integer.valueOf(i), Integer.valueOf(this.this$0.q), Integer.valueOf(this.this$0.o) });
+    ykq.b(this.this$0.a, "[%d]mCheckNeedRestart check enter! isPlaying = %b, mEndTime = %d, pos = %d, mPositionNotChangeCount = %d, mPausedPositionChangeCount = %d", new Object[] { Integer.valueOf(this.this$0.jdField_i_of_type_Int), Boolean.valueOf(this.this$0.isPlaying()), Integer.valueOf(this.this$0.l), Integer.valueOf(i), Integer.valueOf(this.this$0.q), Integer.valueOf(this.this$0.o) });
     if ((this.this$0.isPlaying()) && (i == this.this$0.p) && (this.this$0.q > 0))
     {
       if (this.this$0.q > 1)
       {
-        xvv.e(this.this$0.a, "[%d]Position not change for %d times, restart! 命中异常播放容错逻辑", new Object[] { Integer.valueOf(this.this$0.jdField_i_of_type_Int), Integer.valueOf(this.this$0.q) });
+        ykq.e(this.this$0.a, "[%d]Position not change for %d times, restart! 命中异常播放容错逻辑", new Object[] { Integer.valueOf(this.this$0.jdField_i_of_type_Int), Integer.valueOf(this.this$0.q) });
         this.this$0.a(true);
         return;
       }
@@ -33,14 +33,14 @@ class TrimTextureVideoView$2
     {
       if (this.this$0.o > 1)
       {
-        xvv.e(this.this$0.a, "[%d]Position change for %d times, but is pause, restart! 命中异常播放容错逻辑", new Object[] { Integer.valueOf(this.this$0.jdField_i_of_type_Int), Integer.valueOf(this.this$0.o) });
+        ykq.e(this.this$0.a, "[%d]Position change for %d times, but is pause, restart! 命中异常播放容错逻辑", new Object[] { Integer.valueOf(this.this$0.jdField_i_of_type_Int), Integer.valueOf(this.this$0.o) });
         this.this$0.a(true);
         return;
       }
       this.this$0.postDelayed(this, 250L);
       return;
     }
-    xvv.b(this.this$0.a, "[%d] CheckNeedRestart good for now", Integer.valueOf(this.this$0.jdField_i_of_type_Int));
+    ykq.b(this.this$0.a, "[%d] CheckNeedRestart good for now", Integer.valueOf(this.this$0.jdField_i_of_type_Int));
   }
 }
 

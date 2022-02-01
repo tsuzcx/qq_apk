@@ -1,13 +1,14 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import amqd;
-import anla;
-import anuv;
-import aqjy;
-import bbko;
-import bcef;
-import bcxe;
+import ansr;
+import aont;
+import aoxv;
+import arnj;
+import bcrg;
+import bdla;
+import beed;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.qphone.base.util.QLog;
@@ -18,11 +19,11 @@ import java.util.Set;
 public class DataLineMessageSpreadManager$2
   implements Runnable
 {
-  public DataLineMessageSpreadManager$2(bcxe parambcxe, DataLineMsgRecord paramDataLineMsgRecord, String paramString1, aqjy paramaqjy, String paramString2, String paramString3) {}
+  public DataLineMessageSpreadManager$2(beed parambeed, DataLineMsgRecord paramDataLineMsgRecord, String paramString1, arnj paramarnj, String paramString2, String paramString3) {}
   
   public void run()
   {
-    Object localObject2 = bcxe.a(this.this$0).getMessageFacade().getDatalineMessageManager(bcxe.a(this.this$0)).a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid);
+    Object localObject2 = beed.a(this.this$0).getMessageFacade().getDatalineMessageManager(beed.a(this.this$0)).a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid);
     if (localObject2 == null)
     {
       if (QLog.isColorLevel()) {
@@ -34,17 +35,17 @@ public class DataLineMessageSpreadManager$2
     {
       HashMap localHashMap = new HashMap();
       Object localObject1 = this.jdField_a_of_type_JavaLangString;
-      if ((this.jdField_a_of_type_JavaLangString.contains("%s")) && (this.jdField_a_of_type_Aqjy != null)) {}
+      if ((this.jdField_a_of_type_JavaLangString.contains("%s")) && (this.jdField_a_of_type_Arnj != null)) {}
       DataLineMsgRecord localDataLineMsgRecord;
       for (;;)
       {
         try
         {
-          localObject3 = String.format(this.jdField_a_of_type_JavaLangString, new Object[] { this.jdField_a_of_type_Aqjy.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aqjy.jdField_a_of_type_JavaLangString });
+          localObject3 = String.format(this.jdField_a_of_type_JavaLangString, new Object[] { this.jdField_a_of_type_Arnj.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Arnj.jdField_a_of_type_JavaLangString });
           localObject1 = localObject3;
           localHashMap.put("tim_aio_file_tips", localObject3);
           localObject1 = localObject3;
-          localHashMap.put("tim_aio_file_link", String.format(this.b, new Object[] { this.jdField_a_of_type_Aqjy.jdField_a_of_type_JavaLangString }));
+          localHashMap.put("tim_aio_file_link", String.format(this.b, new Object[] { this.jdField_a_of_type_Arnj.jdField_a_of_type_JavaLangString }));
           localObject1 = localObject3;
         }
         catch (Exception localException)
@@ -56,30 +57,30 @@ public class DataLineMessageSpreadManager$2
         }
         localHashMap.put("tim_aio_file_msg_uiniseq", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid));
         localHashMap.put("tim_aio_tips_type", this.c);
-        if (this.jdField_a_of_type_Aqjy != null)
+        if (this.jdField_a_of_type_Arnj != null)
         {
-          localHashMap.put("tim_aio_tips_template_id", String.valueOf(this.jdField_a_of_type_Aqjy.jdField_a_of_type_Int));
-          localHashMap.put("tim_aio_tips_template_type", String.valueOf(this.jdField_a_of_type_Aqjy.b));
-          localHashMap.put("tim_aio_tips_keyword", String.valueOf(this.jdField_a_of_type_Aqjy.jdField_a_of_type_JavaLangString));
-          localHashMap.put("tim_aio_tips_type", String.valueOf(this.jdField_a_of_type_Aqjy.b));
+          localHashMap.put("tim_aio_tips_template_id", String.valueOf(this.jdField_a_of_type_Arnj.jdField_a_of_type_Int));
+          localHashMap.put("tim_aio_tips_template_type", String.valueOf(this.jdField_a_of_type_Arnj.b));
+          localHashMap.put("tim_aio_tips_keyword", String.valueOf(this.jdField_a_of_type_Arnj.jdField_a_of_type_JavaLangString));
+          localHashMap.put("tim_aio_tips_type", String.valueOf(this.jdField_a_of_type_Arnj.b));
         }
-        localObject3 = (amqd)bcxe.a(this.this$0).getBusinessHandler(8);
-        localLong = ((amqd)localObject3).a(0, bcxe.a(this.this$0));
+        localObject3 = (ansr)beed.a(this.this$0).getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+        localLong = ((ansr)localObject3).a(0, beed.a(this.this$0));
         localDataLineMsgRecord = new DataLineMsgRecord();
         localDataLineMsgRecord.msgId = localLong.longValue();
         localDataLineMsgRecord.sessionid = localLong.longValue();
         localDataLineMsgRecord.msgtype = -5041;
-        localDataLineMsgRecord.time = bbko.a();
-        localDataLineMsgRecord.selfuin = bcxe.a(this.this$0).getCurrentAccountUin();
+        localDataLineMsgRecord.time = bcrg.a();
+        localDataLineMsgRecord.selfuin = beed.a(this.this$0).getCurrentAccountUin();
         localDataLineMsgRecord.frienduin = ((DataLineMsgRecord)localObject2).frienduin;
-        localDataLineMsgRecord.senderuin = bcxe.a(this.this$0).getCurrentAccountUin();
+        localDataLineMsgRecord.senderuin = beed.a(this.this$0).getCurrentAccountUin();
         localDataLineMsgRecord.msg = ((String)localObject1);
         localDataLineMsgRecord.isread = true;
         localDataLineMsgRecord.issend = 0;
         localDataLineMsgRecord.msgseq = ((DataLineMsgRecord)localObject2).shmsgseq;
         localDataLineMsgRecord.shmsgseq = ((DataLineMsgRecord)localObject2).shmsgseq;
         localDataLineMsgRecord.msgUid = ((DataLineMsgRecord)localObject2).msgUid;
-        localDataLineMsgRecord.time = bbko.a();
+        localDataLineMsgRecord.time = bcrg.a();
         if ((localHashMap == null) || (localHashMap.size() <= 0)) {
           break;
         }
@@ -94,8 +95,8 @@ public class DataLineMessageSpreadManager$2
         localHashMap.put("tim_aio_file_link", this.b);
       }
       localDataLineMsgRecord.extraflag |= 0xFFFF7FFF;
-      bcef.b(bcxe.a(this.this$0), "dc00898", "", "", "0X80098F7", "0X80098F7", 0, 0, "", "", "", "");
-      bcxe.a(this.this$0).getDataLineMsgProxy(bcxe.a(this.this$0)).b(localDataLineMsgRecord);
+      bdla.b(beed.a(this.this$0), "dc00898", "", "", "0X80098F7", "0X80098F7", 0, 0, "", "", "", "");
+      beed.a(this.this$0).getDataLineMsgProxy(beed.a(this.this$0)).b(localDataLineMsgRecord);
       localException.a(11, true, null);
       return;
     }
@@ -103,7 +104,7 @@ public class DataLineMessageSpreadManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.DataLineMessageSpreadManager.2
  * JD-Core Version:    0.7.0.1
  */

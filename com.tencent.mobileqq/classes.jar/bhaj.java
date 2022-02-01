@@ -1,50 +1,43 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.TextView;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import android.view.View;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class bhaj
-  extends Handler
+final class bhaj
+  implements URLDrawable.URLDrawableListener
 {
-  public bhaj()
+  bhaj(View paramView) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    super(Looper.getMainLooper());
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setBounds(0, 0, 0, 0);
+    }
+    if (this.a != null) {
+      this.a.postInvalidate();
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    super.handleMessage(paramMessage);
-    paramMessage = (String[])paramMessage.obj;
-    Object localObject = paramMessage[0];
-    CharSequence localCharSequence = paramMessage[1];
-    WeakReference localWeakReference = (WeakReference)bhab.a.remove(localObject);
-    if ((localWeakReference != null) && (localWeakReference.get() != null))
-    {
-      if (!(((TextView)localWeakReference.get()).getTag() instanceof String[])) {
-        break label142;
-      }
-      paramMessage = (String[])((TextView)localWeakReference.get()).getTag();
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setBounds(0, 0, 0, 0);
     }
-    for (;;)
-    {
-      if ((paramMessage != null) && (paramMessage.length == 2) && (paramMessage[0].equals(localObject))) {}
-      try
-      {
-        ((TextView)localWeakReference.get()).setText(String.format(paramMessage[1], new Object[] { localCharSequence }));
-        ((TextView)localWeakReference.get()).setText(localCharSequence);
-        return;
-        label142:
-        paramMessage = null;
-      }
-      catch (Exception paramMessage)
-      {
-        for (;;)
-        {
-          ((TextView)localWeakReference.get()).setText(localCharSequence);
-        }
-      }
+    if (this.a != null) {
+      this.a.postInvalidate();
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setBounds(0, 0, UIUtils.dip2px(BaseApplicationImpl.getContext(), 47.0F), UIUtils.dip2px(BaseApplicationImpl.getContext(), 14.0F));
+    }
+    if (this.a != null) {
+      this.a.postInvalidate();
     }
   }
 }

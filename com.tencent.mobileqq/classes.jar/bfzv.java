@@ -1,10 +1,20 @@
-final class bfzv
-  implements bgaa<Number>
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.troop.quickat.ui.AtPanelTouchController;
+
+class bfzv
+  implements View.OnTouchListener
 {
-  public Float a(float paramFloat, Number paramNumber1, Number paramNumber2)
+  bfzv(bfzt parambfzt, View paramView1, View paramView2) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    float f = paramNumber1.floatValue();
-    return Float.valueOf(f + (paramNumber2.floatValue() - f) * paramFloat);
+    if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0) {}
+    for (int i = 1; (paramMotionEvent.getAction() == 4) && (AtPanelTouchController.a(this.b, paramMotionEvent)) && ((i == 0) || ((i != 0) && (!AtPanelTouchController.a(this.jdField_a_of_type_AndroidViewView, paramMotionEvent)))); i = 0) {
+      return true;
+    }
+    return false;
   }
 }
 

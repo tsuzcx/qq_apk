@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pkp;
+import pvm;
 
 public class SubscriptionInfoModule$4
   implements Runnable
 {
   public void run()
   {
-    pkp.a().b(this.a);
+    pvm.a().b(this.a);
   }
 }
 

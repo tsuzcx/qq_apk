@@ -1,21 +1,14 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment;
 
-class ajtk
-  implements afpa
+public class ajtk
+  implements ajwz
 {
-  ajtk(ajtj paramajtj) {}
+  public ajtk(ChatHistoryTroopAllFragment paramChatHistoryTroopAllFragment) {}
   
-  public void a()
+  public void a(MotionEvent paramMotionEvent)
   {
-    ((NewPhotoPreviewActivity)this.a.a.mActivity).setResult(-1, new Intent());
-    ((NewPhotoPreviewActivity)this.a.a.mActivity).finish();
-  }
-  
-  public void b()
-  {
-    ((NewPhotoPreviewActivity)this.a.a.mActivity).setResult(-1, new Intent());
-    ((NewPhotoPreviewActivity)this.a.a.mActivity).finish();
+    this.a.a.a(paramMotionEvent);
   }
 }
 

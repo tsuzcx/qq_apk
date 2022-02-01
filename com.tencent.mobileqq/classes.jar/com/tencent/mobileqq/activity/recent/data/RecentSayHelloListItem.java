@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import abwp;
-import abwz;
+import acmw;
+import acnh;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import aquj;
-import bftf;
+import arxx;
+import bhbx;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
@@ -60,21 +60,21 @@ public class RecentSayHelloListItem
         this.mDisplayTime = ((QQMessageFacade.Message)localObject1).time;
         if ((localObject2 != null) && (localObject1 != null))
         {
-          this.mUnreadNum = ((abwp)localObject2).a(((QQMessageFacade.Message)localObject1).frienduin, ((QQMessageFacade.Message)localObject1).istroop);
-          if (abwz.d((MessageRecord)localObject1)) {
+          this.mUnreadNum = ((acmw)localObject2).a(((QQMessageFacade.Message)localObject1).frienduin, ((QQMessageFacade.Message)localObject1).istroop);
+          if (acnh.d((MessageRecord)localObject1)) {
             this.mUnreadFlag = 3;
           }
           localMsgSummary = super.getMsgSummaryTemp();
           this.mHasFlowerMsg = false;
           this.mExtraInfoColor = 0;
           this.mMsgExtroInfo = null;
-          if (!aquj.a(paramQQAppInterface, getRecentUserUin(), 1001)) {
+          if (!arxx.a(paramQQAppInterface, getRecentUserUin(), 1001)) {
             break label366;
           }
-          this.mMsgExtroInfo = paramContext.getResources().getString(2131692933);
-          this.mExtraInfoColor = paramContext.getResources().getColor(2131167124);
+          this.mMsgExtroInfo = paramContext.getResources().getString(2131693069);
+          this.mExtraInfoColor = paramContext.getResources().getColor(2131167138);
           if (localObject2 != null) {
-            localMsgSummary.strContent = ((abwp)localObject2).a(getRecentUserUin(), 1001, paramContext.getResources().getString(2131692932), 0);
+            localMsgSummary.strContent = ((acmw)localObject2).a(getRecentUserUin(), 1001, paramContext.getResources().getString(2131693068), 0);
           }
           label171:
           localObject2 = ContactUtils.getDateNickName(paramQQAppInterface, getRecentUserUin());
@@ -115,11 +115,11 @@ public class RecentSayHelloListItem
         this.mDisplayTime = 0L;
         break label78;
         label366:
-        if (aquj.b(paramQQAppInterface, getRecentUserUin(), 1001))
+        if (arxx.b(paramQQAppInterface, getRecentUserUin(), 1001))
         {
           this.mHasFlowerMsg = true;
-          this.mMsgExtroInfo = paramContext.getResources().getString(2131693943);
-          this.mExtraInfoColor = paramContext.getResources().getColor(2131167124);
+          this.mMsgExtroInfo = paramContext.getResources().getString(2131694134);
+          this.mExtraInfoColor = paramContext.getResources().getColor(2131167138);
           break label171;
         }
         super.buildMessageBody((IMCoreMessageStub)localObject1, getRecentUserType(), paramQQAppInterface, paramContext, localMsgSummary);
@@ -163,7 +163,7 @@ public class RecentSayHelloListItem
   public boolean a(FansEntity paramFansEntity)
   {
     boolean bool = false;
-    if ((this.age != paramFansEntity.age) || (this.gender != paramFansEntity.gender) || (this.career != paramFansEntity.career) || (this.constellation != paramFansEntity.constellation) || (this.vip != paramFansEntity.vip) || (this.charmIcon != paramFansEntity.charmIcon) || (this.charmLevel != paramFansEntity.charmLevel) || (this.commonId != paramFansEntity.commonId) || (!bftf.a(this.common, paramFansEntity.common)))
+    if ((this.age != paramFansEntity.age) || (this.gender != paramFansEntity.gender) || (this.career != paramFansEntity.career) || (this.constellation != paramFansEntity.constellation) || (this.vip != paramFansEntity.vip) || (this.charmIcon != paramFansEntity.charmIcon) || (this.charmLevel != paramFansEntity.charmLevel) || (this.commonId != paramFansEntity.commonId) || (!bhbx.a(this.common, paramFansEntity.common)))
     {
       this.age = paramFansEntity.age;
       this.gender = paramFansEntity.gender;

@@ -1,34 +1,14 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.JoinGroupTransitActivity;
-import java.lang.ref.WeakReference;
+import android.widget.ImageView;
 
-public class nkw
-  extends Handler
+public abstract interface nkw
 {
-  private WeakReference<JoinGroupTransitActivity> a;
+  public abstract ImageView a();
   
-  public nkw(JoinGroupTransitActivity paramJoinGroupTransitActivity)
-  {
-    this.a = new WeakReference(paramJoinGroupTransitActivity);
-  }
+  public abstract void a(nfh paramnfh);
   
-  public void handleMessage(Message paramMessage)
-  {
-    JoinGroupTransitActivity localJoinGroupTransitActivity = (JoinGroupTransitActivity)this.a.get();
-    if ((paramMessage == null) || (localJoinGroupTransitActivity == null) || (localJoinGroupTransitActivity.isFinishing())) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      JoinGroupTransitActivity.a(localJoinGroupTransitActivity).a(JoinGroupTransitActivity.a(localJoinGroupTransitActivity));
-      return;
-    }
-    localJoinGroupTransitActivity.finish();
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

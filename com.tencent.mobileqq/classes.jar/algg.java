@@ -1,24 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class algg
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  algg(algf paramalgf, alge paramalge, int paramInt) {}
+  algg(algc paramalgc) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Alge.a.isChecked()) {}
-    for (((anni)this.jdField_a_of_type_Algf.a.get(this.jdField_a_of_type_Int)).a = false;; ((anni)this.jdField_a_of_type_Algf.a.get(this.jdField_a_of_type_Int)).a = true)
-    {
-      this.jdField_a_of_type_Algf.notifyItemChanged(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Algf.a();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
+    ((anri)this.a.a.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).m(false);
   }
 }
 

@@ -1,17 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.s2c.msgtype0x210.submsgtype0xa8.SubMsgType0xa8.MsgBody;
 
 public class acsm
-  implements View.OnClickListener
+  implements acpi
 {
-  public acsm(AssistantSettingActivity paramAssistantSettingActivity) {}
-  
-  public void onClick(View paramView)
+  private static void a(acnk paramacnk, MsgType0x210 paramMsgType0x210)
   {
-    new bgbi(this.a).a(this.a.getString(2131694844)).b(this.a.getString(2131694843)).c(this.a.getString(2131692712)).show();
-    EventCollector.getInstance().onViewClicked(paramView);
+    SubMsgType0xa8.MsgBody localMsgBody = new SubMsgType0xa8.MsgBody();
+    try
+    {
+      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+      paramacnk.a(localMsgBody);
+      return;
+    }
+    catch (Exception paramacnk)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("PullActive", 2, "recv 0x210_0xa8, prase msgBody error");
+    }
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk, paramMsgType0x210);
+    return null;
   }
 }
 

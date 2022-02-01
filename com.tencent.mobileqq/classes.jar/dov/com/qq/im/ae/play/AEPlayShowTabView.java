@@ -3,7 +3,7 @@ package dov.com.qq.im.ae.play;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import bmzq;
+import bopi;
 import dov.com.qq.im.capture.view.QIMSlidingTabView;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ public class AEPlayShowTabView
   extends QIMSlidingTabView
 {
   private int curIndex;
-  private ArrayList<bmzq> dataList;
+  private ArrayList<bopi> dataList;
   
   public AEPlayShowTabView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,12 +24,12 @@ public class AEPlayShowTabView
     return this.curIndex;
   }
   
-  public ArrayList<bmzq> getDataList()
+  public ArrayList<bopi> getDataList()
   {
     return this.dataList;
   }
   
-  public void initTabItemsWithRedDot(ArrayList<bmzq> paramArrayList)
+  public void initTabItemsWithRedDot(ArrayList<bopi> paramArrayList)
   {
     this.dataList = paramArrayList;
     super.initTabItemsWithRedDot(paramArrayList);

@@ -1,33 +1,55 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.Window;
-import android.widget.EditText;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.widget.BounceScrollView;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
+import java.util.Calendar;
 
-class axbe
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class axbe
+  implements aqul
 {
-  axbe(axax paramaxax) {}
+  private axbe(MsgBackupDateFragment paramMsgBackupDateFragment) {}
   
-  public void onGlobalLayout()
+  public int a()
   {
-    Object localObject = new Rect();
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-    int i = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getWindow().getDecorView().getRootView().getHeight() - ((Rect)localObject).bottom;
-    if (i <= 0) {}
-    int j;
-    do
+    return 3;
+  }
+  
+  public int a(int paramInt)
+  {
+    switch (paramInt)
     {
-      return;
-      j = this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getScrollY();
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getCurrentFocus();
-    } while ((localObject == null) || (!(localObject instanceof EditText)) || (((View)localObject).getParent() == null));
-    int k = ((ViewGroup)((View)localObject).getParent()).getBottom();
-    int m = this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getMeasuredHeight();
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.smoothScrollBy(0, k + i - m - j);
+    default: 
+      return 0;
+    case 0: 
+      return MsgBackupDateFragment.c(this.a) - MsgBackupDateFragment.d(this.a) + 1;
+    case 1: 
+      return 12;
+    }
+    Calendar localCalendar = Calendar.getInstance();
+    if (MsgBackupDateFragment.b(this.a) == 1)
+    {
+      localCalendar.set(1, MsgBackupDateFragment.e(this.a) + MsgBackupDateFragment.d(this.a));
+      localCalendar.set(2, MsgBackupDateFragment.f(this.a));
+      localCalendar.set(5, 1);
+    }
+    for (;;)
+    {
+      return localCalendar.getActualMaximum(5);
+      localCalendar.set(1, MsgBackupDateFragment.g(this.a) + MsgBackupDateFragment.d(this.a));
+      localCalendar.set(2, MsgBackupDateFragment.h(this.a));
+      localCalendar.set(5, 1);
+    }
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return "";
+    case 0: 
+      return MsgBackupDateFragment.d(this.a) + paramInt2 + anvx.a(2131706396);
+    case 1: 
+      return paramInt2 + 1 + anvx.a(2131706379);
+    }
+    return paramInt2 + 1 + anvx.a(2131706395);
   }
 }
 

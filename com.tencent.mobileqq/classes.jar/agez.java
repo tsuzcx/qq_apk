@@ -1,17 +1,52 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-class agez
-  extends aghj
+public class agez
+  extends aqwt<agfa>
 {
-  agez(agcw paramagcw)
+  @NonNull
+  public agfa a(int paramInt)
   {
-    super(paramagcw, null);
+    return new agfa();
   }
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  @Nullable
+  public agfa a(aqxa[] paramArrayOfaqxa)
   {
-    return new agje(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    agfa localagfa = new agfa();
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0) && (paramArrayOfaqxa[0] != null)) {
+      agfa.a(localagfa, paramArrayOfaqxa[0].a);
+    }
+    return localagfa;
+  }
+  
+  public void a(agfa paramagfa) {}
+  
+  public Class<agfa> clazz()
+  {
+    return agfa.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 592;
   }
 }
 

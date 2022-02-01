@@ -1,69 +1,73 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.widget.MessageProgressView.RefreshProgressRunnable;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.View;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
 
 public class bfwo
+  extends bfvq
 {
-  public ConcurrentHashMap<String, MessageProgressView.RefreshProgressRunnable> a = new ConcurrentHashMap();
+  int jdField_a_of_type_Int;
+  View jdField_a_of_type_AndroidViewView;
+  public bfwl a;
+  bfwp jdField_a_of_type_Bfwp;
+  public bfwr a;
   
-  public static final bfwo a()
+  public bfwo(View paramView)
   {
-    return bfwq.a();
+    super(paramView);
+    View localView1 = paramView.findViewById(2131369907);
+    View localView2 = paramView.findViewById(2131369853);
+    View localView3 = paramView.findViewById(2131369906);
+    this.jdField_a_of_type_Bfwr = new bfwr(localView1);
+    this.jdField_a_of_type_Bfwl = new bfwl(localView2);
+    this.jdField_a_of_type_Bfwp = new bfwp(localView3);
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
   
-  public MessageProgressView.RefreshProgressRunnable a(String paramString)
+  public void a(View paramView, HWReciteItem paramHWReciteItem)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (this.a.isEmpty()) {
-      return null;
-    }
-    return (MessageProgressView.RefreshProgressRunnable)this.a.get(paramString);
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.a.keySet().iterator();
-    while (localIterator.hasNext()) {
-      a((String)localIterator.next());
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
+    switch (((bfut)this.jdField_a_of_type_Bfur).jdField_a_of_type_Int)
     {
-      MessageProgressView.RefreshProgressRunnable localRefreshProgressRunnable = (MessageProgressView.RefreshProgressRunnable)this.a.get(paramString);
-      if (localRefreshProgressRunnable != null) {
-        localRefreshProgressRunnable.a();
+    default: 
+      return;
+    case 2: 
+      if (this.jdField_a_of_type_Int == 2)
+      {
+        this.jdField_a_of_type_Bfwl.a(paramView, paramHWReciteItem, this);
+        return;
       }
-    }
-    try
-    {
-      this.a.remove(paramString);
-      if (QLog.isColorLevel()) {
-        QLog.e("MessageProgressView", 2, " aflter removeAnimRunnable size=" + this.a.size());
-      }
+      this.jdField_a_of_type_Bfwr.a(paramView, paramHWReciteItem, this);
       return;
     }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("MessageProgressView", 2, "removeAnimRunnable exception = " + paramString.getMessage());
-        }
-      }
-    }
+    this.jdField_a_of_type_Bfwp.a(paramView, paramHWReciteItem, this);
   }
   
-  public void a(String paramString, MessageProgressView.RefreshProgressRunnable paramRefreshProgressRunnable)
+  public void a(HWReciteItem paramHWReciteItem, bfut parambfut, int paramInt)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      this.a.put(paramString, paramRefreshProgressRunnable);
+    this.jdField_a_of_type_Int = paramInt;
+    switch (parambfut.jdField_a_of_type_Int)
+    {
+    default: 
+      this.jdField_a_of_type_Bfwr.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_Bfwl.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_Bfwp.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      return;
+    case 2: 
+      if (paramInt == 2)
+      {
+        parambfut.g = 0;
+        this.jdField_a_of_type_Bfwr.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        this.jdField_a_of_type_Bfwl.a(paramHWReciteItem, this, parambfut, paramInt);
+        this.jdField_a_of_type_Bfwp.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        return;
+      }
+      parambfut.g = 3;
+      this.jdField_a_of_type_Bfwr.a(paramHWReciteItem, this, parambfut, paramInt);
+      this.jdField_a_of_type_Bfwl.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_Bfwp.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      return;
     }
+    this.jdField_a_of_type_Bfwr.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_Bfwl.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_Bfwp.a(paramHWReciteItem, this, parambfut, paramInt);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import aidp;
+import aiyo;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +11,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class BaseNewFriendView
   extends FrameLayout
 {
-  public aidp a;
+  public aiyo a;
   protected Intent a;
   public QQAppInterface a;
   private boolean a;
@@ -26,7 +26,7 @@ public class BaseNewFriendView
   {
     this.b = false;
     if (!a()) {
-      this.jdField_a_of_type_Aidp.b();
+      this.jdField_a_of_type_Aiyo.b();
     }
   }
   
@@ -34,16 +34,16 @@ public class BaseNewFriendView
   {
     if ((20000 == paramInt1) && (paramInt2 != 0))
     {
-      this.jdField_a_of_type_Aidp.getActivity().setResult(paramInt2, paramIntent);
+      this.jdField_a_of_type_Aiyo.getActivity().setResult(paramInt2, paramIntent);
       g();
     }
   }
   
-  protected void a(Intent paramIntent, aidp paramaidp)
+  protected void a(Intent paramIntent, aiyo paramaiyo)
   {
     this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_Aidp = paramaidp;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_Aidp.a();
+    this.jdField_a_of_type_Aiyo = paramaiyo;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_Aiyo.a();
   }
   
   protected final boolean a()
@@ -56,10 +56,10 @@ public class BaseNewFriendView
     this.jdField_a_of_type_Boolean = false;
     if (this.b)
     {
-      this.jdField_a_of_type_Aidp.a();
+      this.jdField_a_of_type_Aiyo.a();
       return;
     }
-    this.jdField_a_of_type_Aidp.b();
+    this.jdField_a_of_type_Aiyo.b();
   }
   
   protected void c() {}
@@ -82,7 +82,7 @@ public class BaseNewFriendView
   protected void g()
   {
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Aidp.getActivity().finish();
+    this.jdField_a_of_type_Aiyo.getActivity().finish();
   }
 }
 

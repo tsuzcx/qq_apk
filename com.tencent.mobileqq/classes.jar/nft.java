@@ -1,34 +1,121 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.avgame.gameroom.video.AVGameNetWorkQualityManager;
-import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
+import android.os.SystemClock;
+import com.tencent.avgame.app.AVGameAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class nft
-  implements anhg
+  implements nhb
 {
-  public nft(AVGameNetWorkQualityManager paramAVGameNetWorkQualityManager, Context paramContext, String paramString) {}
+  long jdField_a_of_type_Long = 0L;
+  AVGameAppInterface jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface;
+  long b = 0L;
+  long c = 0L;
   
-  public void a(boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3) {}
-  
-  public void a(boolean paramBoolean, String paramString)
+  public nft(AVGameAppInterface paramAVGameAppInterface)
   {
-    QLog.d("AVGameNetWorkQualityManager", 1, "getShareLinkCallback isSuccess: " + paramBoolean + " shareUrl: " + paramString);
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
+    this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface = paramAVGameAppInterface;
+  }
+  
+  private boolean a(long paramLong1, long paramLong2, boolean paramBoolean, int paramInt)
+  {
+    boolean bool1 = false;
+    long l = this.jdField_a_of_type_Long;
+    boolean bool3 = false;
+    boolean bool2;
+    if (paramBoolean)
     {
-      Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
-      StringBuilder localStringBuilder = new StringBuilder("https://act.qzone.qq.com/vip/meteor/blockly/p/4861x6970f?env=uat");
-      Intent localIntent = new Intent(localActivity, QQTranslucentBrowserActivity.class);
-      localIntent.putExtra("isTransparentTitle", true);
-      localIntent.putExtra("hide_more_button", true);
-      localIntent.putExtra("avgame_share_link", paramString);
-      localIntent.putExtra("avgame_share_name", this.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("url", localStringBuilder.toString());
-      localIntent.putExtra("big_brother_source_key", "biz_src_jc_av_game");
-      localActivity.startActivity(localIntent);
+      bool2 = bool3;
+      if (paramLong1 > this.jdField_a_of_type_Long)
+      {
+        this.jdField_a_of_type_Long = paramLong1;
+        bool1 = true;
+        bool2 = bool3;
+      }
     }
+    for (;;)
+    {
+      QLog.d("avgame_logic.SyncController", 1, String.format("onGetNewSeq [%d-->%d] result=%b needSync=%b fromSync=%b", new Object[] { Long.valueOf(l), Long.valueOf(paramLong1), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(paramBoolean) }));
+      if (bool2) {
+        a(paramLong2, paramInt);
+      }
+      return bool1;
+      if (paramLong1 <= this.jdField_a_of_type_Long)
+      {
+        bool1 = false;
+        bool2 = bool3;
+      }
+      else if ((paramLong1 - this.jdField_a_of_type_Long == 1L) || (this.jdField_a_of_type_Long <= 0L))
+      {
+        this.jdField_a_of_type_Long = paramLong1;
+        bool1 = true;
+        bool2 = bool3;
+      }
+      else
+      {
+        bool1 = false;
+        bool2 = true;
+      }
+    }
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public long a(long paramLong, int paramInt)
+  {
+    String str = this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getCurrentAccountUin();
+    QLog.d("avgame_logic.SyncController", 1, new Object[] { "reqPullSnapshot curSeq=", Long.valueOf(this.jdField_a_of_type_Long), " roomId=", Long.valueOf(paramLong), " uin=", str });
+    long l = System.currentTimeMillis();
+    ((ngu)this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.a(1)).a(paramLong, str, true, paramInt);
+    return l;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Long = 0L;
+  }
+  
+  public void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
+  {
+    boolean bool = false;
+    long l;
+    if (paramLong1 > this.jdField_a_of_type_Long)
+    {
+      l = SystemClock.elapsedRealtime();
+      if ((this.b != paramLong1) || (l - this.c >= paramInt1)) {
+        break label41;
+      }
+    }
+    label41:
+    do
+    {
+      return;
+      this.b = paramLong1;
+      this.c = l;
+      a(paramLong2, 2);
+    } while (!QLog.isColorLevel());
+    paramLong2 = this.jdField_a_of_type_Long;
+    if (paramLong1 > this.jdField_a_of_type_Long) {
+      bool = true;
+    }
+    QLog.d("avgame_logic.SyncController", 1, String.format("onGetNewSeqByHeartBeat [%d-->%d] needSync=%b", new Object[] { Long.valueOf(paramLong2), Long.valueOf(paramLong1), Boolean.valueOf(bool) }));
+  }
+  
+  public boolean a(long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("avgame_logic.SyncController", 2, String.format("onGetNewSeqByPush [%d], roomId=%d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
+    }
+    return a(paramLong1, paramLong2, false, 4);
+  }
+  
+  public boolean a(long paramLong1, long paramLong2, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("avgame_logic.SyncController", 2, String.format("onGetNewSeqByPullResp [%d], roomId=%d fromSync=%b", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Boolean.valueOf(paramBoolean) }));
+    }
+    return a(paramLong1, paramLong2, paramBoolean, 3);
   }
 }
 

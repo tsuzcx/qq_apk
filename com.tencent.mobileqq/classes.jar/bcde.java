@@ -1,26 +1,32 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.statistics.DailyReport;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import java.io.File;
+import com.tencent.mobileqq.data.fts.FTSMessage;
+import com.tencent.mobileqq.persistence.fts.FTSEntity;
+import com.tencent.mobileqq.utils.fts.FTSMessageCodec.TextMsgExts;
+import java.util.Comparator;
 
-public class bcde
-  extends bgod
+class bcde
+  implements Comparator<FTSEntity>
 {
-  public bcde(DailyReport paramDailyReport, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  bcde(bcdc parambcdc) {}
   
-  public void onDone(bgoe parambgoe)
+  public int a(FTSEntity paramFTSEntity1, FTSEntity paramFTSEntity2)
   {
-    super.onDone(parambgoe);
-    long l = parambgoe.a().getLong("id");
-    VasWebviewUtil.reportVasStatus("AvatarPendant", "AvatarPendantOn", String.valueOf(l), 0, 0, 0, 0, bfua.a(new File(bfua.b(l, 4))), "");
-  }
-  
-  public boolean onStart(bgoe parambgoe)
-  {
-    return true;
+    paramFTSEntity1 = (FTSMessageCodec.TextMsgExts)((FTSMessage)paramFTSEntity1).msgExts;
+    paramFTSEntity2 = (FTSMessageCodec.TextMsgExts)((FTSMessage)paramFTSEntity2).msgExts;
+    long l1;
+    if (paramFTSEntity1 != null)
+    {
+      l1 = paramFTSEntity1.time;
+      if (paramFTSEntity2 == null) {
+        break label54;
+      }
+    }
+    label54:
+    for (long l2 = paramFTSEntity2.time;; l2 = 0L)
+    {
+      return Long.signum(l2 - l1);
+      l1 = 0L;
+      break;
+    }
   }
 }
 

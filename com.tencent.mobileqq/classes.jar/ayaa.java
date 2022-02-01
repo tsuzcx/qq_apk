@@ -1,17 +1,6 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
-
-public class ayaa
-  implements BusinessObserver
+public abstract interface ayaa
 {
-  public void a(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (paramInt == 1) {
-      a(paramBoolean, paramBundle);
-    }
-  }
+  public abstract boolean a(axzw paramaxzw, int paramInt, Object paramObject);
 }
 
 

@@ -1,209 +1,30 @@
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementRecentUserManager.1;
-import com.tencent.common.app.AppInterface;
-import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.open.base.MD5Utils;
-import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import tencent.im.oidb.cmd0x886.oidb_cmd0x886.AdInfo;
-import tencent.im.oidb.cmd0x886.oidb_cmd0x886.PhoneInfo;
-import tencent.im.oidb.cmd0x886.oidb_cmd0x886.ReqBody;
+import mqq.observer.BusinessObserver;
 
-public class nxz
+final class nxz
+  implements BusinessObserver
 {
-  private static nxz jdField_a_of_type_Nxz;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private ArrayList<nxq> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private qli jdField_a_of_type_Qli = qli.a();
+  nxz(QQAppInterface paramQQAppInterface, nyb paramnyb) {}
   
-  public static nxz a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (jdField_a_of_type_Nxz == null) {
-      jdField_a_of_type_Nxz = new nxz();
-    }
-    return jdField_a_of_type_Nxz;
-  }
-  
-  private void a(ToServiceMsg paramToServiceMsg)
-  {
-    if (paramToServiceMsg != null)
+    if ((paramBoolean) && (paramBundle != null))
     {
-      paramToServiceMsg.extraData.putBoolean("req_pb_protocol_flag", true);
-      long l = System.currentTimeMillis();
-      paramToServiceMsg.extraData.putLong("time_stamp", l);
-      this.jdField_a_of_type_Qli.a(paramToServiceMsg);
-    }
-  }
-  
-  public String a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdvertisementRecentUserManager", 2, "getTrueUin uin:" + paramString);
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        nxq localnxq = (nxq)localIterator.next();
-        if (localnxq.jdField_a_of_type_JavaLangString.equals(paramString))
-        {
-          paramString = localnxq.jdField_a_of_type_Nxs.jdField_a_of_type_JavaLangString;
-          return paramString;
-        }
-      }
-      return null;
-    }
-  }
-  
-  public nxq a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdvertisementRecentUserManager", 2, "getAdvertisementItem uin:" + paramString);
-    }
-    if (!TextUtils.isEmpty(paramString)) {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (localIterator.hasNext())
-        {
-          nxq localnxq = (nxq)localIterator.next();
-          if (paramString.equals(localnxq.jdField_a_of_type_JavaLangString)) {
-            return localnxq;
-          }
-        }
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null) {
+        nxy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle, this.jdField_a_of_type_Nyb);
       }
     }
-    return null;
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((nxq)localIterator.next()).jdField_a_of_type_Boolean = false;
-    }
-  }
-  
-  public void a(AppInterface paramAppInterface, int paramInt, nxq paramnxq)
-  {
-    if ((paramnxq == null) || (paramAppInterface == null)) {}
-    for (;;)
+    else
     {
       return;
-      oidb_cmd0x886.PhoneInfo localPhoneInfo = nyj.a();
-      try
-      {
-        l1 = Long.parseLong(paramAppInterface.getCurrentAccountUin());
-        paramAppInterface = paramnxq.a(paramInt);
-        long l2 = NetConnInfoCenter.getServerTimeMillis();
-        String str = MD5Utils.toMD5(l1 + paramnxq.c + paramInt + l2);
-        oidb_cmd0x886.ReqBody localReqBody = new oidb_cmd0x886.ReqBody();
-        localReqBody.uint64_uin.set(l1);
-        localReqBody.msg_phone_info.set(localPhoneInfo);
-        localReqBody.msg_ad_info.set(paramAppInterface);
-        localReqBody.uint64_client_time.set(l2);
-        localReqBody.bytes_uuid.set(ByteStringMicro.copyFromUtf8(str));
-        localReqBody.enum_ad_display.set(1);
-        a(qlk.a("OidbSvc.0x886", 2182, 0, localReqBody.toByteArray()));
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        paramAppInterface = new StringBuilder("AdReport(");
-        paramAppInterface.append(paramInt).append(") msgID=").append(paramnxq.c);
-        QLog.d("AdvertisementRecentUserManager", 2, paramAppInterface.toString());
-        return;
-      }
-      catch (Exception paramAppInterface)
-      {
-        for (;;)
-        {
-          long l1 = 0L;
-          paramAppInterface.printStackTrace();
-        }
-      }
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser)
-  {
-    if ((paramRecentUser != null) && (paramRecentUser.uin != null)) {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        nxq localnxq = a(paramRecentUser.uin);
-        if ((localnxq != null) && (NetConnInfoCenter.getServerTimeMillis() - localnxq.jdField_a_of_type_Long > 86400000L))
-        {
-          localObject1 = (ProxyManager)paramQQAppInterface.getManager(18);
-          if (localObject1 == null)
-          {
-            localObject1 = null;
-            if (localObject1 != null)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("AdvertisementRecentUserManager", 2, "deleteItem uin:" + paramRecentUser.uin);
-              }
-              akla.a().a(paramRecentUser.uin + "-" + paramRecentUser.getType());
-              ((anuz)localObject1).delRecentUser(paramRecentUser);
-              akms.b(paramQQAppInterface, localnxq.jdField_a_of_type_JavaLangString, 1008);
-              paramQQAppInterface.getMessageFacade().setReaded(localnxq.jdField_a_of_type_JavaLangString, 1008);
-            }
-            ThreadManager.executeOnFileThread(new AdvertisementRecentUserManager.1(this, localnxq));
-          }
-        }
-        else
-        {
-          return;
-        }
-        Object localObject1 = ((ProxyManager)localObject1).a();
-      }
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("AdvertisementRecentUserManager", 2, "removeUinItem uin:" + paramString);
+      QLog.e("SplashActivity", 2, "getSameCityCheckTypeInfo success but data is null");
     }
-    ArrayList localArrayList = new ArrayList();
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        nxq localnxq = (nxq)localIterator.next();
-        if (paramString.equals(localnxq.jdField_a_of_type_JavaLangString)) {
-          localArrayList.add(localnxq);
-        }
-      }
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.removeAll(localArrayList);
-  }
-  
-  public void a(nxq paramnxq)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdvertisementRecentUserManager", 2, "putAdvertisementItem uin:" + paramnxq.jdField_a_of_type_JavaLangString);
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramnxq);
-      return;
-    }
+    this.jdField_a_of_type_Nyb.a();
   }
 }
 

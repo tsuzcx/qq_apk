@@ -1,20 +1,23 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import android.text.TextPaint;
-import android.widget.TextView;
-import com.tencent.mobileqq.text.QQTextBuilder;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class axtt
-  extends Editable.Factory
+public class axtt
+  implements View.OnClickListener
 {
-  axtt(axtr paramaxtr, TextView paramTextView) {}
+  public axtt(NearbyGuideActivity paramNearbyGuideActivity) {}
   
-  public Editable newEditable(CharSequence paramCharSequence)
+  public void onClick(View paramView)
   {
-    if ((paramCharSequence instanceof QQTextBuilder)) {
-      return (Editable)paramCharSequence;
+    if ((this.a.a != null) && (!this.a.isFinishing()))
+    {
+      this.a.a.dismiss();
+      this.a.a = null;
+      this.a.e("0X800590A");
     }
-    return new QQTextBuilder(paramCharSequence, 3, (int)(this.jdField_a_of_type_AndroidWidgetTextView.getTextSize() / this.jdField_a_of_type_AndroidWidgetTextView.getPaint().density));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

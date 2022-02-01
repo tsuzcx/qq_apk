@@ -1,60 +1,34 @@
-import android.text.TextUtils;
-import android.util.Base64;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.text.style.ImageSpan;
 
 public class bldi
+  extends ImageSpan
 {
-  public static String a(String paramString1, String paramString2, int paramInt)
+  public bldi(Drawable paramDrawable, int paramInt)
   {
-    localObject2 = null;
-    Object localObject3 = null;
-    Object localObject1 = localObject3;
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      if (!TextUtils.isEmpty(paramString2)) {
-        break label28;
-      }
-      localObject1 = localObject3;
-    }
-    label28:
-    do
-    {
-      return localObject1;
-      try
-      {
-        paramString1 = Base64.decode(paramString1, paramInt);
-        if ((paramString1 == null) || (paramString1.length <= 0)) {
-          break;
-        }
-        paramString1 = new bldh().a(paramString1, paramString2.getBytes());
-        if (paramString1 == null) {
-          break;
-        }
-        paramString1 = new String(paramString1);
-      }
-      catch (Exception paramString2)
-      {
-        for (;;)
-        {
-          paramString1 = localObject2;
-          if (QLog.isColorLevel())
-          {
-            QLog.e("WadlProviderUtil", 4, "decodeStr exception:", paramString2);
-            paramString1 = localObject2;
-            continue;
-            paramString1 = null;
-          }
-        }
-      }
-      localObject1 = paramString1;
-    } while (!QLog.isColorLevel());
-    QLog.d("WadlProviderUtil", 4, "decodeStr decodeStr=" + paramString1);
-    return paramString1;
+    super(paramDrawable, paramInt);
+  }
+  
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  {
+    paramCharSequence = getDrawable();
+    paramPaint = paramPaint.getFontMetricsInt();
+    paramInt1 = paramPaint.descent;
+    paramInt1 = (paramPaint.ascent + (paramInt1 + paramInt4 + paramInt4)) / 2;
+    paramInt2 = paramCharSequence.getBounds().bottom / 2;
+    paramCanvas.save();
+    paramCanvas.translate(paramFloat, paramInt1 - paramInt2);
+    paramCharSequence.draw(paramCanvas);
+    paramCanvas.restore();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bldi
  * JD-Core Version:    0.7.0.1
  */

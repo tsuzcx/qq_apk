@@ -1,21 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class awzz
-  implements View.OnClickListener
+public class awzz
 {
-  awzz(awzr paramawzr) {}
-  
-  public void onClick(View paramView)
-  {
-    bjnw localbjnw = bjnw.a(this.a.a);
-    localbjnw.a(2131716953, 1);
-    localbjnw.c(2131690620);
-    localbjnw.a(new axaa(this, localbjnw));
-    localbjnw.show();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
 }
 
 

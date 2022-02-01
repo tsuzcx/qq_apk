@@ -11,6 +11,7 @@ public final class GetTroopListRespV2
   static int cache_result = 0;
   static byte[] cache_vecCookies = (byte[])new byte[1];
   static ArrayList<stFavoriteGroup> cache_vecFavGroup;
+  static ArrayList<Long> cache_vecGroupInfoExt;
   static ArrayList<stTroopNum> cache_vecTroopList;
   static ArrayList<stTroopNum> cache_vecTroopListDel;
   static ArrayList<stTroopNum> cache_vecTroopListExt;
@@ -21,6 +22,7 @@ public final class GetTroopListRespV2
   public long uin;
   public byte[] vecCookies;
   public ArrayList<stFavoriteGroup> vecFavGroup;
+  public ArrayList<Long> vecGroupInfoExt;
   public ArrayList<stTroopNum> vecTroopList;
   public ArrayList<stTroopNum> vecTroopListDel;
   public ArrayList<stTroopNum> vecTroopListExt;
@@ -44,11 +46,13 @@ public final class GetTroopListRespV2
     cache_vecTroopListExt = new ArrayList();
     localObject = new stTroopNum();
     cache_vecTroopListExt.add(localObject);
+    cache_vecGroupInfoExt = new ArrayList();
+    cache_vecGroupInfoExt.add(Long.valueOf(0L));
   }
   
   public GetTroopListRespV2() {}
   
-  public GetTroopListRespV2(long paramLong, short paramShort1, int paramInt, short paramShort2, byte[] paramArrayOfByte, ArrayList<stTroopNum> paramArrayList1, ArrayList<stTroopNum> paramArrayList2, ArrayList<stGroupRankInfo> paramArrayList, ArrayList<stFavoriteGroup> paramArrayList3, ArrayList<stTroopNum> paramArrayList4)
+  public GetTroopListRespV2(long paramLong, short paramShort1, int paramInt, short paramShort2, byte[] paramArrayOfByte, ArrayList<stTroopNum> paramArrayList1, ArrayList<stTroopNum> paramArrayList2, ArrayList<stGroupRankInfo> paramArrayList, ArrayList<stFavoriteGroup> paramArrayList3, ArrayList<stTroopNum> paramArrayList4, ArrayList<Long> paramArrayList5)
   {
     this.uin = paramLong;
     this.troopcount = paramShort1;
@@ -60,6 +64,7 @@ public final class GetTroopListRespV2
     this.vecTroopRank = paramArrayList;
     this.vecFavGroup = paramArrayList3;
     this.vecTroopListExt = paramArrayList4;
+    this.vecGroupInfoExt = paramArrayList5;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -74,6 +79,7 @@ public final class GetTroopListRespV2
     this.vecTroopRank = ((ArrayList)paramJceInputStream.read(cache_vecTroopRank, 7, false));
     this.vecFavGroup = ((ArrayList)paramJceInputStream.read(cache_vecFavGroup, 8, false));
     this.vecTroopListExt = ((ArrayList)paramJceInputStream.read(cache_vecTroopListExt, 9, false));
+    this.vecGroupInfoExt = ((ArrayList)paramJceInputStream.read(cache_vecGroupInfoExt, 10, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -99,6 +105,9 @@ public final class GetTroopListRespV2
     }
     if (this.vecTroopListExt != null) {
       paramJceOutputStream.write(this.vecTroopListExt, 9);
+    }
+    if (this.vecGroupInfoExt != null) {
+      paramJceOutputStream.write(this.vecGroupInfoExt, 10);
     }
   }
 }

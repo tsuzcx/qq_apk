@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.capture;
 
-import rld;
+import rxq;
 
 public class SystemCaptureProxy$1
   implements Runnable
 {
-  public SystemCaptureProxy$1(rld paramrld) {}
+  public SystemCaptureProxy$1(rxq paramrxq) {}
   
   public void run()
   {
-    rld.a(this.this$0);
+    rxq.a(this.this$0);
   }
 }
 

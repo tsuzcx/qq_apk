@@ -1,20 +1,26 @@
-import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.ContactBindedActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class adtm
-  extends CardObserver
+  implements Animation.AnimationListener
 {
-  public adtm(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
+  public adtm(ContactBindedActivity paramContactBindedActivity) {}
   
-  public void onSetPCActiveState(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramBoolean1)
-    {
-      SettingCloneUtil.writeValue(this.a.app.getApp(), paramString2, null, "qqsetting_pcactive_key", true);
-      QLog.i("CardObserver_onSetPCActiveState", 1, "Set the PC Active State " + paramBoolean1);
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, "doMultiAddTipsAnim end");
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, "doMultiAddTipsAnim start");
     }
   }
 }

@@ -14,17 +14,18 @@ public final class oidb_cmd0xe71$ReqBody
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_version = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field uint32_client_type = PBField.initUInt32(0);
+  public final PBUInt32Field uint32_op_type = PBField.initUInt32(0);
   public final PBUInt64Field uint64_uin = PBField.initUInt64(0L);
   
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "uint64_uin", "uint32_client_type", "bytes_version" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro }, ReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32 }, new String[] { "uint64_uin", "uint32_client_type", "bytes_version", "uint32_op_type" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, ReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tencent.im.oidb.cmd0xe71.oidb_cmd0xe71.ReqBody
  * JD-Core Version:    0.7.0.1
  */

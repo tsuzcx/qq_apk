@@ -1,69 +1,93 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.ark.ArkPanelPagerAdapter;
+import com.tencent.widget.XPanelContainer;
 
 public class apzl
+  extends RelativeLayout
 {
-  private boolean a;
+  public int a;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   
-  public static apzl a(aptx[] paramArrayOfaptx)
+  public apzl(ArkPanelPagerAdapter paramArkPanelPagerAdapter, Context paramContext, AttributeSet paramAttributeSet)
   {
-    apzl localapzl = new apzl();
-    StringBuilder localStringBuilder = new StringBuilder();
-    for (;;)
+    super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    int k = paramArkPanelPagerAdapter.a();
+    int m = paramArkPanelPagerAdapter.b();
+    int n = AIOUtils.dp2px(15.0F, getContext().getResources());
+    int i = 0;
+    while (i < m)
     {
-      try
+      paramArkPanelPagerAdapter = new LinearLayout(paramContext);
+      int j = (XPanelContainer.jdField_a_of_type_Int - XPanelContainer.d - n) / m;
+      paramAttributeSet = new RelativeLayout.LayoutParams(-1, j);
+      paramAttributeSet.leftMargin = AIOUtils.dp2px(20.0F, getContext().getResources());
+      paramAttributeSet.rightMargin = AIOUtils.dp2px(20.0F, getContext().getResources());
+      paramArkPanelPagerAdapter.setOrientation(0);
+      if (i == 0) {}
+      for (paramAttributeSet.topMargin = (XPanelContainer.d / (m + 1));; paramAttributeSet.topMargin = (j * i + XPanelContainer.d * (i + 2) / (m + 1) / 2))
       {
-        int j = paramArrayOfaptx.length;
-        int i = 0;
-        if (i < j)
+        j = 0;
+        while (j < k)
         {
-          String str = paramArrayOfaptx[i].a;
-          QLog.d("OpenSdkD55Processor", 1, new Object[] { "content=", str });
-          JSONObject localJSONObject = new JSONObject(str);
-          if (localJSONObject.has("enable_d55"))
-          {
-            if (localJSONObject.optInt("enable_d55", 0) == 1)
-            {
-              bool = true;
-              localapzl.a = bool;
-            }
+          Object localObject = new LinearLayout.LayoutParams(-1, -1);
+          ((LinearLayout.LayoutParams)localObject).weight = 1.0F;
+          if (this.jdField_a_of_type_AndroidViewLayoutInflater == null) {
+            this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
           }
-          else
-          {
-            localStringBuilder.append("config: ").append(str).append(",");
-            i += 1;
-          }
-        }
-        else
-        {
-          QLog.d("OpenSdkD55Processor", 1, "parse, content:" + localStringBuilder.toString());
-          return localapzl;
+          View localView = LayoutInflater.from(paramContext).inflate(2131558903, null);
+          paramArkPanelPagerAdapter.addView(localView, (ViewGroup.LayoutParams)localObject);
+          localObject = new apzm();
+          ((apzm)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368525));
+          ((apzm)localObject).b = ((ImageView)localView.findViewById(2131366927));
+          ((apzm)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378673));
+          localView.setTag(localObject);
+          j += 1;
         }
       }
-      catch (JSONException paramArrayOfaptx)
-      {
-        QLog.e("OpenSdkD55Processor", 1, "JSONException", paramArrayOfaptx);
-        return null;
-      }
-      boolean bool = false;
+      addView(paramArkPanelPagerAdapter, paramAttributeSet);
+      i += 1;
     }
+    setTag(Integer.valueOf(XPanelContainer.d));
   }
   
-  public boolean a()
+  public void a()
   {
-    return this.a;
+    int i = 0;
+    while (i < getChildCount())
+    {
+      Object localObject = getChildAt(i);
+      if (localObject != null)
+      {
+        localObject = (apzm)((View)localObject).getTag();
+        if ((localObject != null) && (((apzm)localObject).jdField_a_of_type_AndroidWidgetImageView != null)) {
+          ((apzm)localObject).jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
+        }
+      }
+      i += 1;
+    }
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public String toString()
+  public void a(int paramInt)
   {
-    new StringBuilder().append("isSwitchOpen:").append(this.a);
-    return super.toString();
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apzl
  * JD-Core Version:    0.7.0.1
  */

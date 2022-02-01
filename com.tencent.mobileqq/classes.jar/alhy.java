@@ -1,18 +1,29 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.view.View;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class alhy
+class alhy
+  implements bkzq
 {
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public ImageView b;
-  public ImageView c;
-  public ImageView d;
-  public ImageView e;
+  alhy(alhu paramalhu, QQAppInterface paramQQAppInterface, RecentBaseData paramRecentBaseData, bkzi parambkzi) {}
   
-  public alhy(alhx paramalhx) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    if (alhu.a(this.jdField_a_of_type_Alhu)) {
+      return;
+    }
+    alhu.a(this.jdField_a_of_type_Alhu, true);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin(), "0X800991E", "0X800991E", 0, 0, "", "", "", "");
+      alhu.c(this.jdField_a_of_type_Alhu, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    }
+  }
 }
 
 

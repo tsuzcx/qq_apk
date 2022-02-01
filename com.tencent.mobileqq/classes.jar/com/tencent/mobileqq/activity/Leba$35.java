@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity;
 
-import adpo;
-import ajef;
+import aegr;
+import ajzt;
 import android.content.Context;
 import android.widget.TextView;
-import bjpg;
+import blas;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,13 +26,13 @@ class Leba$35
       if (Leba.d(this.this$0) != null) {
         Leba.d(this.this$0).setVisibility(0);
       }
-      bjpg.a(Leba.d(this.this$0), 9, this.jdField_a_of_type_Int, 0);
+      blas.a(Leba.d(this.this$0), 9, this.jdField_a_of_type_Int, 0);
       localObject = this.this$0.a();
       localTextView = Leba.c(this.this$0);
       if (Leba.a(this.this$0).b() == 1)
       {
         bool1 = true;
-        bjpg.a((Context)localObject, localTextView, 9, bool1);
+        blas.a((Context)localObject, localTextView, 9, bool1);
         label93:
         if (Leba.e(this.this$0) != null) {
           Leba.e(this.this$0).setVisibility(8);
@@ -48,14 +48,14 @@ class Leba$35
           if (Leba.f(this.this$0) != null)
           {
             Leba.f(this.this$0).setVisibility(0);
-            bjpg.a(Leba.f(this.this$0), 8, 0, 0);
+            blas.a(Leba.f(this.this$0), 8, 0, 0);
             localObject = this.this$0.a();
             localTextView = Leba.f(this.this$0);
             bool1 = bool2;
             if (Leba.a(this.this$0).b() == 1) {
               bool1 = true;
             }
-            bjpg.a((Context)localObject, localTextView, 8, bool1);
+            blas.a((Context)localObject, localTextView, 8, bool1);
           }
           localObject = new ArrayList();
           if (this.jdField_a_of_type_JavaUtilList != null) {
@@ -80,14 +80,14 @@ class Leba$35
             continue;
           }
           Leba.f(this.this$0).setVisibility(0);
-          bjpg.a(Leba.f(this.this$0), 8, this.jdField_a_of_type_Int, 0);
+          blas.a(Leba.f(this.this$0), 8, this.jdField_a_of_type_Int, 0);
           localObject = this.this$0.a();
           localTextView = Leba.f(this.this$0);
           bool1 = bool3;
           if (Leba.a(this.this$0).b() == 1) {
             bool1 = true;
           }
-          bjpg.a((Context)localObject, localTextView, 10, bool1);
+          blas.a((Context)localObject, localTextView, 10, bool1);
           continue;
         }
         if (!this.c) {
@@ -112,7 +112,7 @@ class Leba$35
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Leba.35
  * JD-Core Version:    0.7.0.1
  */

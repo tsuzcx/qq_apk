@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 import android.app.ActivityManager;
 import android.os.Environment;
 import android.text.TextUtils;
-import bkwm;
+import bmhv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -21,8 +21,8 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.AppRuntime;
-import pay;
-import ypi;
+import pkh;
+import zeb;
 
 public class ReadInJoyMMapKvStorage
 {
@@ -158,8 +158,8 @@ public class ReadInJoyMMapKvStorage
       if (this.mMMapFileSize == 0) {
         this.mMMapFileSize = this.mMMapMinSize;
       }
-      if (!ypi.e(this.mMMapFilepath)) {
-        ypi.a(this.mMMapFilepath);
+      if (!zeb.e(this.mMMapFilepath)) {
+        zeb.a(this.mMMapFilepath);
       }
       this.mMMapMemoryMappedFile = new RandomAccessFile(this.mMMapFilepath, "rw");
       this.mMMapDataBuffer = this.mMMapMemoryMappedFile.getChannel().map(FileChannel.MapMode.READ_WRITE, 0L, this.mMMapFileSize);
@@ -229,7 +229,7 @@ public class ReadInJoyMMapKvStorage
   
   public static void resetRootPath()
   {
-    AppRuntime localAppRuntime = pay.a();
+    AppRuntime localAppRuntime = pkh.a();
     StringBuilder localStringBuilder;
     try
     {
@@ -298,7 +298,7 @@ public class ReadInJoyMMapKvStorage
   
   public int getExpiredTime()
   {
-    this.expiredTime = ((Integer)bkwm.a("kandianreport_mmkv_expired_" + this.mMMapName, Integer.valueOf(0))).intValue();
+    this.expiredTime = ((Integer)bmhv.a("kandianreport_mmkv_expired_" + this.mMMapName, Integer.valueOf(0))).intValue();
     return this.expiredTime;
   }
   
@@ -351,7 +351,7 @@ public class ReadInJoyMMapKvStorage
       releaseMMapFile(this.mMMapMemoryMappedFile);
       this.mNumberOfKeysWithDuplicated = 0;
       this.mMMapCurrentSize = 0;
-      if ((!TextUtils.isEmpty(this.mMMapFilepath)) && (ypi.e(this.mMMapFilepath))) {
+      if ((!TextUtils.isEmpty(this.mMMapFilepath)) && (zeb.e(this.mMMapFilepath))) {
         new File(this.mMMapFilepath).delete();
       }
       mMapHelperMap.remove(this.mMMapName);
@@ -365,7 +365,7 @@ public class ReadInJoyMMapKvStorage
     try
     {
       this.expiredTime = paramInt;
-      bkwm.a("kandianreport_mmkv_expired_" + this.mMMapName, Integer.valueOf(paramInt));
+      bmhv.a("kandianreport_mmkv_expired_" + this.mMMapName, Integer.valueOf(paramInt));
       return;
     }
     finally

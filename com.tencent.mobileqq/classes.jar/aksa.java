@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.activity.richmedia.FlowActivity;
+import android.media.MediaPlayer;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
 
 public class aksa
+  extends bivp
 {
-  public static <T extends akrz> T a(FlowActivity paramFlowActivity, int paramInt)
+  public aksa(RedPacketKSongFragment paramRedPacketKSongFragment, bivq parambivq) {}
+  
+  public void a()
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    }
-    return new aksb(paramFlowActivity);
+    RedPacketKSongFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment, false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.a.release();
+    this.jdField_a_of_type_Bivq.a();
   }
 }
 

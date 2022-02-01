@@ -3,23 +3,23 @@ package com.tencent.av.smallscreen;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import lez;
-import lyt;
+import lfe;
+import lzj;
 
 public class SmallScreenDoubleVideoControlUI$1
   implements Runnable
 {
-  public SmallScreenDoubleVideoControlUI$1(lyt paramlyt, long paramLong) {}
+  public SmallScreenDoubleVideoControlUI$1(lzj paramlzj, long paramLong) {}
   
   public void run()
   {
     if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController != null) && (this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null))
     {
-      lez locallez = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a();
-      this.this$0.jdField_a_of_type_ComTencentAvVideoController.a(locallez.d, 225);
+      lfe locallfe = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a();
+      this.this$0.jdField_a_of_type_ComTencentAvVideoController.a(locallfe.d, 225);
       this.this$0.jdField_a_of_type_ComTencentAvVideoController.b(225);
-      this.this$0.jdField_a_of_type_ComTencentAvVideoController.b(locallez.d, 9);
-      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(28), locallez.d, Boolean.valueOf(true) });
+      this.this$0.jdField_a_of_type_ComTencentAvVideoController.b(locallfe.d, 9);
+      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(28), locallfe.d, Boolean.valueOf(true) });
       QLog.w("SmallScreenDoubleVideoControlUI", 1, "exit when onCreate fail, seq[" + this.a + "]");
       this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.a, 1008);
     }

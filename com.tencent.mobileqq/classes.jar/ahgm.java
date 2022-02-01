@@ -1,14 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
 class ahgm
-  implements DialogInterface.OnDismissListener
+  implements bkzq
 {
-  ahgm(ahgc paramahgc) {}
+  ahgm(ahgl paramahgl, MessageForShortVideo paramMessageForShortVideo, ahgr paramahgr, bkzi parambkzi) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.finish(1);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag == 2) {
+        this.jdField_a_of_type_Ahgl.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Ahgr);
+      } else {
+        this.jdField_a_of_type_Ahgl.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Ahgr);
+      }
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.gamecenter.data;
 
 import android.content.SharedPreferences;
-import atxa;
+import avce;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -9,25 +9,25 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class PadFaceManager$1
   implements Runnable
 {
-  public PadFaceManager$1(atxa paramatxa) {}
+  public PadFaceManager$1(avce paramavce) {}
   
   public void run()
   {
     for (boolean bool = true;; bool = false) {
       synchronized (this.this$0)
       {
-        atxa.a(this.this$0, atxa.a(this.this$0).getApp().getSharedPreferences("gamecenter_sp" + atxa.a(this.this$0).getCurrentAccountUin(), 4));
-        atxa.a(this.this$0, atxa.a(this.this$0).getLong("last_pad_face_request_time", 0L));
-        atxa localatxa2 = this.this$0;
-        if (atxa.a(this.this$0).getInt("pad_face_ad_enabled", 1) == 1)
+        avce.a(this.this$0, avce.a(this.this$0).getApp().getSharedPreferences("gamecenter_sp" + avce.a(this.this$0).getCurrentAccountUin(), 4));
+        avce.a(this.this$0, avce.a(this.this$0).getLong("last_pad_face_request_time", 0L));
+        avce localavce2 = this.this$0;
+        if (avce.a(this.this$0).getInt("pad_face_ad_enabled", 1) == 1)
         {
-          atxa.a(localatxa2, bool);
-          atxa.a(this.this$0, atxa.a(this.this$0).getInt("last_id_pad_face_shown", 0));
-          atxa.b(this.this$0, atxa.a(this.this$0).getLong("last_time_pad_face_shown", 0L));
-          atxa.c(this.this$0, atxa.a(this.this$0).getInt("request_interval", 2) * 3600000L);
-          atxa.a(this.this$0, atxa.a(this.this$0).getEntityManagerFactory().createEntityManager());
-          atxa.a(this.this$0);
-          atxa.b(this.this$0, true);
+          avce.a(localavce2, bool);
+          avce.a(this.this$0, avce.a(this.this$0).getInt("last_id_pad_face_shown", 0));
+          avce.b(this.this$0, avce.a(this.this$0).getLong("last_time_pad_face_shown", 0L));
+          avce.c(this.this$0, avce.a(this.this$0).getInt("request_interval", 2) * 3600000L);
+          avce.a(this.this$0, avce.a(this.this$0).getEntityManagerFactory().createEntityManager());
+          avce.a(this.this$0);
+          avce.b(this.this$0, true);
           return;
         }
       }

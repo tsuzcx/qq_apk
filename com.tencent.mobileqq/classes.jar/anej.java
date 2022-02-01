@@ -1,20 +1,23 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
 public class anej
-  implements BusinessObserver
+  implements Animation.AnimationListener
 {
-  protected void a(boolean paramBoolean, int paramInt, Bundle paramBundle) {}
+  public anej(ApolloGameActivity paramApolloGameActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a(paramBoolean, paramBundle.getInt("msgType", 0), paramBundle);
+    ApolloGameActivity.a(this.a).d();
+    ApolloGameActivity.a(this.a).setVisibility(4);
+    ApolloGameActivity.d(this.a);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

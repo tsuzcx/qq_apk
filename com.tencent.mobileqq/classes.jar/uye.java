@@ -1,15 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import UserGrowth.stSimpleMetaFeed;
 
-final class uye
-  implements DialogInterface.OnDismissListener
+public abstract interface uye
 {
-  uye(uwy paramuwy) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    uyd.b(this.a);
-  }
+  public abstract void a(blij<stSimpleMetaFeed> paramblij);
 }
 
 

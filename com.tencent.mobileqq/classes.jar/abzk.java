@@ -1,23 +1,35 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class abzk
-  implements abzb
+class abzk
+  implements EIPCResultCallback
 {
-  private static void a(long paramLong, MsgType0x210 paramMsgType0x210)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x113, ]");
-    }
-    azid.a(paramMsgType0x210.vProtobuf, paramLong);
-  }
+  abzk(abzj paramabzj, AdIPCManager.Params paramParams, int paramInt) {}
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    a(paramLong, paramMsgType0x210);
-    return null;
+    String str2 = null;
+    String str1;
+    if (this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Params != null)
+    {
+      str1 = this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Params.getAction();
+      if (this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Params != null) {
+        str2 = this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Params.getToProcessName();
+      }
+      if (paramEIPCResult == null) {
+        break label91;
+      }
+    }
+    label91:
+    for (boolean bool = paramEIPCResult.isSuccess();; bool = false)
+    {
+      acho.b("GdtIPCAdapter", String.format("ClientToServerIPCAsyncModule.onCallback action:%s to:%s success:%b", new Object[] { str1, str2, Boolean.valueOf(bool) }));
+      this.jdField_a_of_type_Abzj.callbackResult(this.jdField_a_of_type_Int, paramEIPCResult);
+      return;
+      str1 = null;
+      break;
+    }
   }
 }
 

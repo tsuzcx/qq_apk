@@ -1,6 +1,26 @@
-public abstract interface aicb
+class aicb
+  implements bgoa
 {
-  public abstract void a(String paramString);
+  aicb(aibs paramaibs) {}
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (this.a.b.equals(paramString)))
+    {
+      this.a.f = true;
+      paramString = (agld)this.a.getHelper(23);
+      if (paramString != null) {
+        paramString.a(true);
+      }
+    }
+    do
+    {
+      return;
+      this.a.f = false;
+      paramString = (agld)this.a.getHelper(23);
+    } while (paramString == null);
+    paramString.a(false);
+  }
 }
 
 

@@ -1,103 +1,114 @@
-import java.util.Comparator;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.AddressItem;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class vxe
-  implements Comparator<vxd>
+  extends vxa
 {
-  public int a(vxd paramvxd1, vxd paramvxd2)
+  public vxe(int paramInt, vxu paramvxu)
   {
-    int k = 0;
-    int m = 0;
-    int n = 0;
-    int i1 = 0;
-    int i = 0;
-    int j = 1;
-    if (paramvxd1.a == 1) {
-      if (paramvxd2.a != 1) {}
-    }
-    do
+    super(2);
+    this.jdField_a_of_type_JavaLangString = "Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter";
+    this.jdField_a_of_type_Boolean = false;
+    Object localObject = new vxz();
+    ((vxz)localObject).a(paramInt);
+    ((vxz)localObject).a(paramvxu);
+    a((vxv)localObject);
+    paramvxu = new vxy();
+    localObject = ((vwv)wjs.a(30)).c();
+    if (localObject != null)
     {
-      do
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        do
+        vyf localvyf = (vyf)((Iterator)localObject).next();
+        switch (localvyf.a)
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  for (;;)
-                  {
-                    return i;
-                    i = -1;
-                  }
-                  i = j;
-                } while (paramvxd2.a == 1);
-                if (((paramvxd2.a == 13) && (paramvxd2.b == 0)) || ((paramvxd1.a == 13) && (paramvxd1.b > 0))) {
-                  return -1;
-                }
-                if (paramvxd2.a != 13) {
-                  break;
-                }
-                i = j;
-              } while (paramvxd2.b > 0);
-              if (paramvxd1.a != 13) {
-                break;
-              }
-              i = j;
-            } while (paramvxd1.b == 0);
-            if (paramvxd1.a == 2)
-            {
-              if (paramvxd2.a == 2) {}
-              for (i = k;; i = -1) {
-                return i;
-              }
-            }
-            i = j;
-          } while (paramvxd2.a == 2);
-          if (paramvxd1.a == 3)
-          {
-            if (paramvxd2.a == 3) {}
-            for (i = m;; i = -1) {
-              return i;
-            }
-          }
-          i = j;
-        } while (paramvxd2.a == 3);
-        if ((paramvxd1.a == 5) && (paramvxd1.a() > 0))
-        {
-          if ((paramvxd2.a == 5) && (paramvxd2.a() > 0)) {}
-          for (i = n;; i = -1) {
-            return i;
-          }
-        }
-        if (paramvxd2.a != 5) {
+        default: 
           break;
+        case 2: 
+          paramvxu.a(localvyf);
+          break;
+        case 4: 
+          paramvxu.b(localvyf);
+          break;
+        case 3: 
+          paramvxu.c(localvyf);
         }
-        i = j;
-      } while (paramvxd2.a() > 0);
-      if (paramvxd1.a == 4)
-      {
-        if (paramvxd2.a == 4) {}
-        for (i = i1;; i = 1) {
-          return i;
-        }
       }
-      if (paramvxd2.a == 4) {
-        return -1;
-      }
-      if ((paramvxd1.b > 0) && (paramvxd2.b == 0)) {
-        return -1;
-      }
-      if (paramvxd1.b != 0) {
-        break;
-      }
-      i = j;
-    } while (paramvxd2.b > 0);
-    return -vzb.a(paramvxd1.d, paramvxd2.d);
+    }
+    paramvxu.a(new vyd());
+    a(paramvxu);
   }
+  
+  private static boolean a(String paramString1, String paramString2)
+  {
+    return (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (TextUtils.equals(paramString1, paramString2));
+  }
+  
+  public static boolean a(@NonNull vxg paramvxg, int paramInt)
+  {
+    Object localObject = paramvxg.a();
+    if ((localObject != null) && (((List)localObject).size() > 0))
+    {
+      AddressItem localAddressItem = ((vxh)((List)localObject).get(0)).a;
+      localObject = ((vxh)((List)localObject).get(((List)localObject).size() - 1)).a;
+      if ((localAddressItem == null) || (localObject == null))
+      {
+        ykq.e("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", "initAlbumNameByPOI find no poi item :" + paramvxg);
+        paramvxg.b = "";
+        return false;
+      }
+      if ((paramInt <= 5) && (a(localAddressItem.building, ((AddressItem)localObject).building)))
+      {
+        paramvxg.b = localAddressItem.building;
+        return true;
+      }
+      if ((paramInt <= 4) && (a(localAddressItem.district, ((AddressItem)localObject).district)))
+      {
+        paramvxg.b = localAddressItem.district;
+        return true;
+      }
+      if ((paramInt <= 3) && (a(localAddressItem.city, ((AddressItem)localObject).city)))
+      {
+        paramvxg.b = localAddressItem.city;
+        return true;
+      }
+      if ((paramInt <= 2) && (a(localAddressItem.province, ((AddressItem)localObject).province)))
+      {
+        paramvxg.b = localAddressItem.province;
+        return true;
+      }
+      if ((paramInt <= 1) && (a(localAddressItem.country, ((AddressItem)localObject).country)))
+      {
+        paramvxg.b = localAddressItem.country;
+        return true;
+      }
+    }
+    paramvxg.b = "";
+    return false;
+  }
+  
+  protected List<vxh> a()
+  {
+    ykq.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", "get start Pic list=" + super.a().size());
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = super.a().iterator();
+    while (localIterator.hasNext())
+    {
+      vxh localvxh = (vxh)localIterator.next();
+      if (localvxh.a != null) {
+        localArrayList.add(localvxh);
+      }
+    }
+    ykq.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", "get end Pic list=" + localArrayList.size());
+    return localArrayList;
+  }
+  
+  protected void c(List<vxg> paramList) {}
 }
 
 

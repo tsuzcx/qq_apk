@@ -1,90 +1,52 @@
-import android.app.Activity;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.qwallet.widget.HongBaoPanel;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.XPanelContainer;
 
 public class ahpv
-  implements ahqq, View.OnClickListener
+  implements ahqf<HongBaoPanel>
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  View jdField_a_of_type_AndroidViewView;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private String jdField_a_of_type_JavaLangString;
+  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  private HongBaoPanel jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetHongBaoPanel;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public ahpv(Activity paramActivity, SessionInfo paramSessionInfo, String paramString)
+  public ahpv(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.app;
   }
   
   public int a()
   {
-    return 58;
+    return 10;
   }
   
-  public View a(Object... paramVarArgs)
+  public HongBaoPanel a()
   {
-    if (this.jdField_a_of_type_AndroidViewView == null)
-    {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131560647, null);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    }
-    return this.jdField_a_of_type_AndroidViewView;
+    return this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetHongBaoPanel;
   }
   
-  public void a(int paramInt, Object... paramVarArgs) {}
-  
-  public void a(@NonNull ahqs paramahqs, boolean paramBoolean)
+  public HongBaoPanel a(Context paramContext)
   {
-    boolean bool = a(paramahqs);
-    if (QLog.isColorLevel()) {
-      QLog.d("HomeworkTroopTipsBar", 2, new Object[] { "show() isShowing=", Boolean.valueOf(bool), ", show=", Boolean.valueOf(paramBoolean) });
-    }
-    if (paramBoolean) {
-      if (!bool)
-      {
-        paramahqs.a(this, new Object[0]);
-        bftc.a("Grp_edu", "Grp_AIO", "mberinfotopGuidebar_Show", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin });
-      }
-    }
-    while (!bool) {
-      return;
-    }
-    paramahqs.a();
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetHongBaoPanel = ((HongBaoPanel)View.inflate(paramContext, 2131560555, null));
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetHongBaoPanel.init(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+    return this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetHongBaoPanel;
   }
   
-  public boolean a(@NonNull ahqs paramahqs)
+  public void a() {}
+  
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(XPanelContainer paramXPanelContainer)
   {
-    int i = paramahqs.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("HomeworkTroopTipsBar", 2, new Object[] { "show cur type=", Integer.valueOf(i) });
-    }
-    return i == b();
+    paramXPanelContainer.a(10);
   }
   
-  public int[] a()
+  public boolean a()
   {
-    return null;
-  }
-  
-  public int b()
-  {
-    return 19;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("HomeworkTroopTipsBar", 2, "click tips, jump to web");
-    }
-    beyy.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "aioTip");
-    bftc.a("Grp_edu", "Grp_AIO", "mberinfotopGuidebar_Clk", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin });
-    EventCollector.getInstance().onViewClicked(paramView);
+    return false;
   }
 }
 

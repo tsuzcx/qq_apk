@@ -1,30 +1,13 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPager;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPager.RollViewPager;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import java.util.ArrayList;
 
-public class bfes
-  extends Handler
+public abstract interface bfes
 {
-  public bfes(AvatarWallViewPager paramAvatarWallViewPager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract ArrayList<ResultRecord> a();
   
-  public void handleMessage(Message paramMessage)
-  {
-    if ((AvatarWallViewPager.a(this.a)) || (!AvatarWallViewPager.b(this.a))) {}
-    while (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.getCount() <= 1) {
-      return;
-    }
-    paramMessage = this.a;
-    paramMessage.b += 1;
-    this.a.b %= this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.getCount();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager$RollViewPager.setCurrentItem(this.a.b, true);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 4000L);
-  }
+  public abstract void a();
+  
+  public abstract ArrayList<String> b();
 }
 
 

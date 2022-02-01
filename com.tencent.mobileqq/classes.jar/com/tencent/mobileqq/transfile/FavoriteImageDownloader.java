@@ -8,9 +8,9 @@ import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import aszl;
-import aszt;
-import bkpf;
+import auds;
+import auea;
+import bman;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.GifDrawable;
@@ -88,9 +88,9 @@ public class FavoriteImageDownloader
       if (GifDrawable.isGifFile(paramFile)) {
         return super.decodeFile(paramFile, paramDownloadParams, paramURLDrawableHandler);
       }
-      if (5 == aszt.a(paramFile.getName()))
+      if (5 == auea.a(paramFile.getName()))
       {
-        localObject = aszl.a(this.application, paramFile.getPath());
+        localObject = auds.a(this.application, paramFile.getPath());
         if (localObject != null)
         {
           if ((localObject instanceof BitmapDrawable)) {
@@ -232,7 +232,7 @@ public class FavoriteImageDownloader
           FileUtils.copyFile(paramURLDrawableHandler, localFile);
           paramURLDrawableHandler.delete();
         }
-        bkpf.a(this.application.waitAppRuntime(null), false, new File(str1).length());
+        bman.a(this.application.waitAppRuntime(null), false, new File(str1).length());
         paramDownloadParams.url = ((URL)localObject);
         paramDownloadParams.urlStr = str2;
         paramOutputStream = new File(str1);

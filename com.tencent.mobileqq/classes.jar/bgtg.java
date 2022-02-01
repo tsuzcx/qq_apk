@@ -1,35 +1,11 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-
-class bgtg
-  implements nmh
+public class bgtg
 {
-  bgtg(bgte parambgte) {}
-  
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
-  {
-    Object localObject = this.a.mRuntime.a(this.a.mRuntime.a());
-    if (paramBoolean) {
-      if (this.a.a)
-      {
-        if ((localObject != null) && ((localObject instanceof bgzt))) {
-          ((bgzt)localObject).setWarnToastVisible(true, 1, 2131691342);
-        }
-      }
-      else {
-        bgte.a(this.a);
-      }
-    }
-    while ((localObject == null) || (!(localObject instanceof bgzt))) {
-      for (;;)
-      {
-        return;
-        localObject = QQToast.a(BaseApplicationImpl.getContext(), 1, 2131691342, 1);
-        ((QQToast)localObject).b(((QQToast)localObject).c());
-      }
-    }
-    ((bgzt)localObject).setWarnToastVisible(false, 0, 0);
-  }
+  public int a = 1;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
 }
 
 

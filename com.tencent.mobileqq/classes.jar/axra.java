@@ -1,8 +1,10 @@
-public abstract interface axra
+import android.widget.TextView;
+
+class axra
 {
-  public abstract void a();
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public abstract void b();
+  axra(axqz paramaxqz) {}
 }
 
 

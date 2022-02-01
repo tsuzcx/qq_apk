@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.widget.RelativeLayout;
-import atzp;
+import avfh;
 import com.tencent.ark.ArkViewImplement.LoadCallback;
 import com.tencent.ark.open.ArkView;
 import com.tencent.mobileqq.app.FontSettingManager;
@@ -21,7 +21,7 @@ import com.tencent.qphone.base.util.QLog;
 
 public class GameArkView
   extends RelativeLayout
-  implements atzp, ArkViewImplement.LoadCallback
+  implements avfh, ArkViewImplement.LoadCallback
 {
   private int jdField_a_of_type_Int = 101;
   private ArkView jdField_a_of_type_ComTencentArkOpenArkView;
@@ -31,8 +31,8 @@ public class GameArkView
   public GameArkView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    LayoutInflater.from(getContext()).inflate(2131559214, this);
-    this.jdField_a_of_type_ComTencentArkOpenArkView = ((ArkView)findViewById(2131374276));
+    LayoutInflater.from(getContext()).inflate(2131559252, this);
+    this.jdField_a_of_type_ComTencentArkOpenArkView = ((ArkView)findViewById(2131374514));
     try
     {
       paramContext = getResources().getDisplayMetrics();

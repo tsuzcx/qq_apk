@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class aubz
+class aubz
+  implements audq
 {
-  public void a(MessageForUniteGrayTip paramMessageForUniteGrayTip)
+  aubz(aubw paramaubw, List paramList) {}
+  
+  public void onNo() {}
+  
+  public void onYes()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(aucg.a, 2, "onPreAddedMsg");
-    }
+    aufd.a(aubw.a(this.jdField_a_of_type_Aubw), this.jdField_a_of_type_JavaUtilList, aubw.a(this.jdField_a_of_type_Aubw), aubw.a(this.jdField_a_of_type_Aubw));
   }
 }
 

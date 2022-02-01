@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import aezn;
-import ahqh;
-import aqlq;
-import aqls;
+import afqz;
+import ailg;
+import arpb;
+import arpd;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.data.ChatMessage;
 import java.util.ArrayList;
@@ -12,11 +12,11 @@ import java.util.List;
 public class QQOperateTips$2
   implements Runnable
 {
-  public QQOperateTips$2(ahqh paramahqh) {}
+  public QQOperateTips$2(ailg paramailg) {}
   
   public void run()
   {
-    Object localObject2 = ahqh.a(this.this$0).a();
+    Object localObject2 = ailg.a(this.this$0).a();
     Object localObject1;
     if ((localObject2 != null) && (((List)localObject2).size() > 0))
     {
@@ -24,42 +24,42 @@ public class QQOperateTips$2
       localObject1 = new ArrayList();
       int i;
       ChatMessage localChatMessage;
-      if (ahqh.a(this.this$0).curType == 0)
+      if (ailg.a(this.this$0).curType == 0)
       {
         i = j - 1;
         if (i >= 0)
         {
           localChatMessage = (ChatMessage)((List)localObject2).get(i);
-          if ((localChatMessage != null) && (localChatMessage.time > ahqh.a(this.this$0)))
+          if ((localChatMessage != null) && (localChatMessage.time > ailg.a(this.this$0)))
           {
-            if (localChatMessage.uniseq != ahqh.b(this.this$0)) {
+            if (localChatMessage.uniseq != ailg.b(this.this$0)) {
               ((ArrayList)localObject1).add(localChatMessage);
             }
             for (;;)
             {
               i -= 1;
               break;
-              ahqh.a(this.this$0, localChatMessage.time);
+              ailg.a(this.this$0, localChatMessage.time);
             }
           }
         }
       }
-      else if (ahqh.a(this.this$0).curType == 3000)
+      else if (ailg.a(this.this$0).curType == 3000)
       {
         i = j - 1;
         if (i >= 0)
         {
           localChatMessage = (ChatMessage)((List)localObject2).get(i);
-          if ((localChatMessage != null) && (localChatMessage.shmsgseq > ahqh.a(this.this$0)))
+          if ((localChatMessage != null) && (localChatMessage.shmsgseq > ailg.a(this.this$0)))
           {
-            if (localChatMessage.uniseq != ahqh.b(this.this$0)) {
+            if (localChatMessage.uniseq != ailg.b(this.this$0)) {
               ((ArrayList)localObject1).add(localChatMessage);
             }
             for (;;)
             {
               i -= 1;
               break;
-              ahqh.a(this.this$0, localChatMessage.shmsgseq);
+              ailg.a(this.this$0, localChatMessage.shmsgseq);
             }
           }
         }
@@ -69,29 +69,29 @@ public class QQOperateTips$2
         localObject2 = (ChatMessage)((List)localObject2).get(j - 1);
         if (localObject2 != null)
         {
-          if (ahqh.a(this.this$0).curType != 0) {
+          if (ailg.a(this.this$0).curType != 0) {
             break label408;
           }
-          ahqh.a(this.this$0, ((ChatMessage)localObject2).time);
-          ahqh.b(this.this$0, ((ChatMessage)localObject2).uniseq);
+          ailg.a(this.this$0, ((ChatMessage)localObject2).time);
+          ailg.b(this.this$0, ((ChatMessage)localObject2).uniseq);
         }
       }
     }
     for (;;)
     {
-      localObject2 = aqlq.a(ahqh.a(this.this$0));
-      localObject1 = ((aqlq)localObject2).a(ahqh.a(this.this$0).curFriendUin, ahqh.a(this.this$0).curType, ahqh.a(this.this$0), (List)localObject1, false, -1);
-      if (((aqls)localObject1).jdField_a_of_type_Boolean)
+      localObject2 = arpb.a(ailg.a(this.this$0));
+      localObject1 = ((arpb)localObject2).a(ailg.a(this.this$0).curFriendUin, ailg.a(this.this$0).curType, ailg.a(this.this$0), (List)localObject1, false, -1);
+      if (((arpd)localObject1).jdField_a_of_type_Boolean)
       {
-        localObject1 = ((aqls)localObject1).jdField_a_of_type_JavaUtilArrayList;
-        ((aqlq)localObject2).a(ahqh.a(this.this$0).curFriendUin, ahqh.a(this.this$0).curType, (ArrayList)localObject1, ahqh.a(this.this$0));
+        localObject1 = ((arpd)localObject1).jdField_a_of_type_JavaUtilArrayList;
+        ((arpb)localObject2).a(ailg.a(this.this$0).curFriendUin, ailg.a(this.this$0).curType, (ArrayList)localObject1, ailg.a(this.this$0));
       }
       return;
       label408:
-      if (ahqh.a(this.this$0).curType == 3000)
+      if (ailg.a(this.this$0).curType == 3000)
       {
-        ahqh.a(this.this$0, ((ChatMessage)localObject2).shmsgseq);
-        ahqh.b(this.this$0, ((ChatMessage)localObject2).uniseq);
+        ailg.a(this.this$0, ((ChatMessage)localObject2).shmsgseq);
+        ailg.b(this.this$0, ((ChatMessage)localObject2).uniseq);
       }
     }
   }

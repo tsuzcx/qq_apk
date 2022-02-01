@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.haoliyou;
 
-import amtj;
-import aucp;
-import aucq;
-import bfur;
+import anvx;
+import avij;
+import avik;
+import bhdj;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 
@@ -14,7 +14,7 @@ public class JefsClass$8
   {
     BaseActivity localBaseActivity = BaseActivity.sTopActivity;
     if ((localBaseActivity != null) && (!localBaseActivity.isFinishing())) {
-      bfur.a(localBaseActivity, 0, null, amtj.a(2131704998), localBaseActivity.getString(2131690620), localBaseActivity.getString(2131694201), new aucp(this), new aucq(this)).show();
+      bhdj.a(localBaseActivity, 0, null, anvx.a(2131705349), localBaseActivity.getString(2131690697), localBaseActivity.getString(2131694399), new avij(this), new avik(this)).show();
     }
   }
 }

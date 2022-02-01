@@ -1,6 +1,6 @@
 package dov.com.qq.im.ptv;
 
-import bnbb;
+import boqt;
 import com.tencent.widget.PatchedButton;
 
 public final class AIOBusinessOperation$4
@@ -10,7 +10,7 @@ public final class AIOBusinessOperation$4
   
   public void run()
   {
-    bnbb.a(this.jdField_a_of_type_ComTencentWidgetPatchedButton, this.jdField_a_of_type_DovComQqImPtvAIOLongCaptureCtrl);
+    boqt.a(this.jdField_a_of_type_ComTencentWidgetPatchedButton, this.jdField_a_of_type_DovComQqImPtvAIOLongCaptureCtrl);
   }
 }
 

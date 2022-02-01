@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import afsu;
-import ahns;
+import agki;
+import aiin;
 
 public class StickerRecHelper$1
   implements Runnable
 {
-  public StickerRecHelper$1(afsu paramafsu, ahns paramahns) {}
+  public StickerRecHelper$1(agki paramagki, aiin paramaiin) {}
   
   public void run()
   {

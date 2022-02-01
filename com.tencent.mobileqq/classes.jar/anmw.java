@@ -1,296 +1,42 @@
-import android.os.Environment;
-import android.os.Parcel;
-import android.support.annotation.NonNull;
-import android.util.Base64;
-import com.google.gson.ExclusionStrategy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vfs.VFSAssistantUtils;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qq.permissionmonitorcore.PermissionMonitor;
-import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
-import com.tencent.robolectric.ShadowParcel;
-import java.io.File;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.lang.reflect.Type;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
+import android.text.TextUtils;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class anmw
+class anmw
+  implements ThreadFactory
 {
-  private static Set<Class> jdField_a_of_type_JavaUtilSet;
-  private static volatile boolean b;
-  private volatile long jdField_a_of_type_Long;
-  private volatile Parcel jdField_a_of_type_AndroidOsParcel;
-  private volatile Thread jdField_a_of_type_JavaLangThread;
-  private ThreadLocal<anma> jdField_a_of_type_JavaLangThreadLocal = new ThreadLocal();
-  private volatile boolean jdField_a_of_type_Boolean;
+  private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
+  private final String jdField_a_of_type_JavaLangString;
+  private final ThreadGroup jdField_a_of_type_JavaLangThreadGroup;
+  private final AtomicInteger b = new AtomicInteger(1);
   
-  public static Gson a(Class<? extends MessageRecord> paramClass)
+  anmw(String paramString)
   {
-    GsonBuilder localGsonBuilder = new GsonBuilder();
-    paramClass = paramClass.getFields();
-    int j = paramClass.length;
-    int i = 0;
-    if (i < j)
+    Object localObject = System.getSecurityManager();
+    if (localObject != null) {}
+    for (localObject = ((SecurityManager)localObject).getThreadGroup();; localObject = Thread.currentThread().getThreadGroup())
     {
-      Object localObject = paramClass[i];
-      if (((localObject.getModifiers() & 0xC8) == 0) && (localObject.getAnnotation(anlz.class) != null))
-      {
-        if (!MessageMicro.class.isAssignableFrom(localObject.getType())) {
-          break label92;
-        }
-        localGsonBuilder.registerTypeAdapter(localObject.getType(), new anmv(localObject.getType()));
+      this.jdField_a_of_type_JavaLangThreadGroup = ((ThreadGroup)localObject);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localObject = paramString;
+      if (TextUtils.isEmpty(paramString)) {
+        localObject = "threadpool";
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        label92:
-        if (StructMsgForGeneralShare.class == localObject.getType()) {
-          localGsonBuilder.registerTypeAdapter(localObject.getType(), new anmu());
-        }
-      }
-    }
-    return localGsonBuilder.excludeFieldsWithModifiers(new int[] { 8, 128, 64 }).setExclusionStrategies(new ExclusionStrategy[] { new anmy() }).create();
-  }
-  
-  @NonNull
-  private PermissionMonitor.Listener a()
-  {
-    return new anmx(this);
-  }
-  
-  private void a(anlt paramanlt, String paramString)
-  {
-    paramanlt = new Gson().toJson(paramanlt);
-    String str = VFSAssistantUtils.getSDKPrivatePath(Environment.getExternalStorageDirectory() + "/Tencent/MobileQQ/MessageHandlerOnReceive/");
-    File localFile = new File(str);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    FileUtils.writeFile(str, System.currentTimeMillis() + "-" + paramString + ".json", paramanlt);
-  }
-  
-  private static void a(String paramString1, String paramString2)
-  {
-    String str = VFSAssistantUtils.getSDKPrivatePath(Environment.getExternalStorageDirectory() + "/Tencent/MobileQQ/QQMessageFacade/");
-    Object localObject = new File(str);
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
-    }
-    StringBuilder localStringBuilder = new StringBuilder().append(System.currentTimeMillis());
-    localObject = paramString2;
-    if (paramString2 == null) {
-      localObject = "";
-    }
-    FileUtils.writeFile(str, (String)localObject + ".txt", paramString1);
-  }
-  
-  private void a(Thread paramThread, Parcel paramParcel, long paramLong)
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  private byte[] a(FromServiceMsg paramFromServiceMsg)
-  {
-    Parcel localParcel = Parcel.obtain();
-    Number localNumber = ShadowParcel.a();
-    b(Thread.currentThread(), localParcel, localNumber.longValue());
-    paramFromServiceMsg.writeToParcel(localParcel, 0);
-    a(Thread.currentThread(), localParcel, localNumber.longValue());
-    paramFromServiceMsg = ShadowParcel.a(localNumber.intValue());
-    localParcel.recycle();
-    return paramFromServiceMsg;
-  }
-  
-  private byte[] a(ToServiceMsg paramToServiceMsg)
-  {
-    Parcel localParcel = Parcel.obtain();
-    Number localNumber = ShadowParcel.a();
-    b(Thread.currentThread(), localParcel, localNumber.longValue());
-    paramToServiceMsg.mSkipBinderWhenMarshall = true;
-    paramToServiceMsg.writeToParcel(localParcel, 0);
-    paramToServiceMsg.mSkipBinderWhenMarshall = false;
-    a(Thread.currentThread(), localParcel, localNumber.longValue());
-    paramToServiceMsg = ShadowParcel.a(localNumber.intValue());
-    localParcel.recycle();
-    return paramToServiceMsg;
-  }
-  
-  @NonNull
-  private PermissionMonitor.Listener b()
-  {
-    return new anmz(this);
-  }
-  
-  private void b(MessageRecord paramMessageRecord)
-  {
-    try
-    {
-      Method localMethod = Entity.class.getDeclaredMethod("prewrite", new Class[0]);
-      localMethod.setAccessible(true);
-      localMethod.invoke(paramMessageRecord, new Object[0]);
+      this.jdField_a_of_type_JavaLangString = ((String)localObject + "-" + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement() + "-thread-");
       return;
     }
-    catch (NoSuchMethodException paramMessageRecord)
-    {
-      paramMessageRecord.printStackTrace();
-      return;
+  }
+  
+  public Thread newThread(Runnable paramRunnable)
+  {
+    paramRunnable = new Thread(this.jdField_a_of_type_JavaLangThreadGroup, paramRunnable, this.jdField_a_of_type_JavaLangString + this.b.getAndIncrement(), 0L);
+    if (paramRunnable.isDaemon()) {
+      paramRunnable.setDaemon(false);
     }
-    catch (IllegalAccessException paramMessageRecord)
-    {
-      paramMessageRecord.printStackTrace();
-      return;
+    if (paramRunnable.getPriority() != 5) {
+      paramRunnable.setPriority(5);
     }
-    catch (InvocationTargetException paramMessageRecord)
-    {
-      paramMessageRecord.printStackTrace();
-    }
-  }
-  
-  private void b(Thread paramThread, Parcel paramParcel, long paramLong)
-  {
-    if (!b)
-    {
-      b = true;
-      PermissionMonitor.Listener localListener1 = i();
-      PermissionMonitor.Listener localListener2 = h();
-      PermissionMonitor.Listener localListener3 = e();
-      PermissionMonitor.Listener localListener4 = a();
-      PermissionMonitor.Listener localListener5 = b();
-      PermissionMonitor.Listener localListener6 = c();
-      PermissionMonitor.Listener localListener7 = d();
-      PermissionMonitor.Listener localListener8 = f();
-      PermissionMonitor.Listener localListener9 = g();
-      PermissionMonitor.getInstance().config(new PermissionMonitor.Listener[] { localListener1, localListener2, localListener3, localListener4, localListener5, localListener6, localListener7, localListener8, localListener9 }, new String[] { "android/os/Parcel$ReadWriteHelper", "android/os/Parcel", "android/os/Parcel", "android/os/Parcel", "android/os/Parcel", "android/os/Parcel", "android/os/Parcel", "android/os/Parcel", "android/os/Parcel" }, new String[] { "writeString", "writeStringNoHelper", "writeInt", "writeLong", "writeFloat", "writeDouble", "writeByteArray", "writeBlob", "setDataPosition" }, new String[] { "(Landroid/os/Parcel;Ljava/lang/String;)V", "(Ljava/lang/String;)V", "(I)V", "(J)V", "(F)V", "(D)V", "([BII)V", "([BII)V", "(I)V" }).start();
-    }
-    this.jdField_a_of_type_JavaLangThread = paramThread;
-    this.jdField_a_of_type_AndroidOsParcel = paramParcel;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  private static boolean b(Type paramType)
-  {
-    if (paramType == null) {
-      return false;
-    }
-    if (jdField_a_of_type_JavaUtilSet == null)
-    {
-      jdField_a_of_type_JavaUtilSet = new HashSet();
-      jdField_a_of_type_JavaUtilSet.addAll(Arrays.asList(new Class[] { Integer.TYPE, Integer.class, Long.TYPE, Long.class, Float.TYPE, Float.class, Double.TYPE, Double.class, Byte.TYPE, Byte.class, Boolean.TYPE, Boolean.class, Short.TYPE, Short.class, String.class }));
-    }
-    return jdField_a_of_type_JavaUtilSet.contains(paramType);
-  }
-  
-  @NonNull
-  private PermissionMonitor.Listener c()
-  {
-    return new anna(this);
-  }
-  
-  @NonNull
-  private PermissionMonitor.Listener d()
-  {
-    return new annb(this);
-  }
-  
-  @NonNull
-  private PermissionMonitor.Listener e()
-  {
-    return new annc(this);
-  }
-  
-  @NonNull
-  private PermissionMonitor.Listener f()
-  {
-    return new annd(this);
-  }
-  
-  @NonNull
-  private PermissionMonitor.Listener g()
-  {
-    return new anne(this);
-  }
-  
-  @NonNull
-  private PermissionMonitor.Listener h()
-  {
-    return new annf(this);
-  }
-  
-  @NonNull
-  private PermissionMonitor.Listener i()
-  {
-    return new anng(this);
-  }
-  
-  public anma a()
-  {
-    if (this.jdField_a_of_type_JavaLangThreadLocal.get() == null) {
-      this.jdField_a_of_type_JavaLangThreadLocal.set(new anma());
-    }
-    return (anma)this.jdField_a_of_type_JavaLangThreadLocal.get();
-  }
-  
-  public void a(MessageRecord paramMessageRecord)
-  {
-    b(paramMessageRecord);
-    anma localanma = a();
-    localanma.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
-    localanma.jdField_b_of_type_JavaLangString = a(paramMessageRecord.getClass()).toJson(paramMessageRecord);
-    localanma.jdField_a_of_type_JavaLangString = paramMessageRecord.getClass().getName();
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg)
-  {
-    paramToServiceMsg = bftf.a(a(paramToServiceMsg));
-    if (QLog.isColorLevel()) {
-      QLog.d("ParcelHooker", 2, "printSendParams reqData=[" + paramToServiceMsg + "]");
-    }
-    anma localanma = a();
-    localanma.c = paramToServiceMsg;
-    localanma.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((MessageRecord)a(localanma.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getClass()).fromJson(localanma.jdField_b_of_type_JavaLangString, localanma.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getClass()));
-    localanma.jdField_b_of_type_JavaLangString = null;
-    a(a(localanma.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getClass()).toJson(localanma), "_" + localanma.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    paramToServiceMsg = bftf.a(a(paramToServiceMsg));
-    if (QLog.isColorLevel()) {
-      QLog.d("ParcelHooker", 2, "printParams reqData=[" + paramToServiceMsg + "]");
-    }
-    Object localObject = paramFromServiceMsg.attributes.remove("FromServiceMsg");
-    String str = bftf.a(a(paramFromServiceMsg));
-    paramFromServiceMsg.attributes.put("FromServiceMsg", localObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("ParcelHooker", 2, "printParams respData=[" + str + "]");
-    }
-    localObject = new anlt();
-    ((anlt)localObject).jdField_a_of_type_JavaLangString = paramToServiceMsg;
-    ((anlt)localObject).jdField_b_of_type_JavaLangString = str;
-    ((anlt)localObject).c = "placeholder for MessageRecord's metadata";
-    ((anlt)localObject).jdField_b_of_type_Int = 1;
-    ((anlt)localObject).jdField_a_of_type_Int = 1;
-    a((anlt)localObject, paramFromServiceMsg.getServiceCmd());
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    a().d = Base64.encodeToString(paramArrayOfByte, 3);
+    return paramRunnable;
   }
 }
 

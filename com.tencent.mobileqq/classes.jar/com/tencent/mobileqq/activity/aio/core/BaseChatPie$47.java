@@ -1,22 +1,16 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import android.content.Context;
-import android.content.Intent;
-import bhbx;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class BaseChatPie$47
-  implements bhbx
+  implements DialogInterface.OnClickListener
 {
   BaseChatPie$47(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramClickableColorSpanTextView = new Intent(this.this$0.mContext, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "https://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    this.this$0.mContext.startActivity(paramClickableColorSpanTextView);
+    paramDialogInterface.dismiss();
   }
 }
 

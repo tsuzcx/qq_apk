@@ -1,24 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.MyMemoriesListView;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryListLoadMoreView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
-public class xdw
-  implements View.OnClickListener
+class xdw
+  implements xdg
 {
-  public xdw(MyMemoriesListView paramMyMemoriesListView) {}
+  xdw(xdv paramxdv) {}
   
-  public void onClick(View paramView)
+  public void a(ErrorMessage paramErrorMessage, List<xcy> paramList)
   {
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a() != 4) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a() != 1))
-    {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a(1);
-      if (this.a.jdField_a_of_type_Xdx != null) {
-        this.a.jdField_a_of_type_Xdx.c();
-      }
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a.a(paramErrorMessage, paramList);
+    this.a.b();
+  }
+  
+  public void a(List<xcz> paramList, boolean paramBoolean)
+  {
+    this.a.a.a(paramList, paramBoolean);
+    this.a.b();
   }
 }
 

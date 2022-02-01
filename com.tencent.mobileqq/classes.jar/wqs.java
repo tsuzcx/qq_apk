@@ -1,28 +1,43 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.AnimatorListenerAdapter;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.List;
 
-final class wqs
-  extends AnimatorListenerAdapter
+public class wqs
+  extends wpw
+  implements wfk<wqu, wqv>
 {
-  wqs(Animator.AnimatorListener paramAnimatorListener) {}
+  public List<String> a = new ArrayList();
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public wqs(String paramString)
   {
-    super.onAnimationCancel(paramAnimator);
-    this.a.onAnimationCancel(paramAnimator);
+    this.a.add(paramString);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a()
   {
-    xvv.b("Q.qqstory.playernew.AnimationUtils", "doExitAnimation, onAnimationEnd");
-    this.a.onAnimationEnd(paramAnimator);
+    wqu localwqu = new wqu();
+    localwqu.c = 1;
+    localwqu.a = this.a;
+    wfi.a().a(localwqu, this);
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void a(@NonNull wqu paramwqu, @Nullable wqv paramwqv, @NonNull ErrorMessage paramErrorMessage)
   {
-    super.onAnimationStart(paramAnimator);
-    this.a.onAnimationStart(paramAnimator);
+    paramwqu = new wqt(paramErrorMessage);
+    if ((paramErrorMessage.isSuccess()) && (paramwqv != null) && (paramwqv.a != null))
+    {
+      paramwqu.a = paramwqv.a;
+      b();
+    }
+    for (;;)
+    {
+      wad.a().dispatch(paramwqu);
+      return;
+      c();
+    }
   }
 }
 

@@ -1,25 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-import com.tencent.mobileqq.utils.QQCustomArkDialog.AppInfo;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import tencent.im.s2c.msgtype0x210.submsgtype0x63.submsgtype0x63.MsgBody;
 
 public class acrf
-  implements View.OnClickListener
+  implements acpi
 {
-  public acrf(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
-  
-  public void onClick(View paramView)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    if (ArkFullScreenAppActivity.a(this.a) != null) {
-      aovl.a(this.a.app, "FullScreenClickOper", ArkFullScreenAppActivity.a(this.a).appName, null, aovl.b, 0, 0);
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("ArkFullScreenAppActivity", 2, "click to close");
+      QLog.d("Q.msg.BaseMessageProcessor", 2, "Get crm voip push from handleC2COnlinePushMsg0x210Resp");
     }
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    bdla.b(paramQQAppInterface, "CliOper", "", "", "VoipService.ivrPush", "VoipService.ivrPush", 0, 0, "", "", "", "");
+    new submsgtype0x63.MsgBody();
+    new lxx(BaseApplication.getContext()).a(new acrg(paramMsgType0x210));
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramMsgType0x210);
+    return null;
   }
 }
 

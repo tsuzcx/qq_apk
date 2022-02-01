@@ -1,49 +1,17 @@
-import android.support.v4.util.SparseArrayCompat;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
 
 public class apdi
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private static final apdi jdField_a_of_type_Apdi = new apdi();
-  private int jdField_a_of_type_Int;
-  private final SparseArrayCompat<apcu> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
+  public apdi(ARVideoRecordButtonView paramARVideoRecordButtonView) {}
   
-  public static apdi a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return jdField_a_of_type_Apdi;
-  }
-  
-  public int a(apcu paramapcu)
-  {
-    synchronized (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat)
-    {
-      do
-      {
-        this.jdField_a_of_type_Int += 1;
-      } while ((this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(this.jdField_a_of_type_Int) != null) || (this.jdField_a_of_type_Int == 0));
-      this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.put(this.jdField_a_of_type_Int, paramapcu);
-      int i = this.jdField_a_of_type_Int;
-      return i;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    synchronized (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat)
-    {
-      this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.delete(paramInt);
-      return;
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    synchronized (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat)
-    {
-      apcu localapcu = (apcu)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt1);
-      if (localapcu != null) {
-        localapcu.a(paramInt1, paramInt2);
-      }
-      return;
-    }
+    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
+    ARVideoRecordButtonView.b(this.a, paramValueAnimator.floatValue());
+    ARVideoRecordButtonView.a(this.a);
   }
 }
 

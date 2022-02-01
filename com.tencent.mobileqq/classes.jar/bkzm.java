@@ -1,17 +1,24 @@
+import com.tencent.image.URLDrawable.DownloadListener;
 import com.tencent.qphone.base.util.QLog;
 
 class bkzm
-  implements blac
+  implements URLDrawable.DownloadListener
 {
-  bkzm(bkzk parambkzk) {}
+  bkzm(bkzi parambkzi) {}
   
-  public void a(boolean paramBoolean)
+  public void onFileDownloadFailed(int paramInt)
   {
-    QLog.d("VipARCameraController", 2, "loadState " + paramBoolean);
-    bkzk.b(this.a, paramBoolean);
-    if (paramBoolean) {
-      bkzx.a().a(bkzk.a(this.a));
-    }
+    QLog.i("ActionSheet", 1, "onFileDownloadFailed " + paramInt);
+  }
+  
+  public void onFileDownloadStarted()
+  {
+    QLog.i("ActionSheet", 1, "onFileDownloadStarted");
+  }
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    QLog.i("ActionSheet", 1, "onFileDownloadSucceed " + paramLong);
   }
 }
 

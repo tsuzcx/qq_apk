@@ -1,55 +1,67 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
 import java.util.List;
-import java.util.Map;
 
 public class wpj
-  extends woi
+  extends wpg
 {
-  private VidListPlayInfo jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo;
-  private wod jdField_a_of_type_Wod;
-  
-  public wpj(VidListPlayInfo paramVidListPlayInfo)
+  public wpj(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo = paramVidListPlayInfo;
-    this.jdField_a_of_type_Wod = new wod("vidList");
+    super(paramViewGroup, 2131561731);
   }
   
-  public List<wok> a(List<wod> paramList)
+  public void a()
   {
-    return null;
+    this.a.setTag(2131374695, null);
   }
   
-  public wog a()
+  public void a(wly paramwly)
   {
-    return new wog(this.jdField_a_of_type_Wod, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mStartVid, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mStartVideoFeedId);
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt, woj paramwoj)
-  {
-    ArrayList localArrayList = new ArrayList();
-    woe localwoe = new woe(this.jdField_a_of_type_Wod);
-    localArrayList.add(localwoe);
-    localwoe.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVidList;
-    int i = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVideoFeedIdList.size();
-    paramInt = 0;
-    if (paramInt < this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVidList.size())
+    super.a(paramwly);
+    this.a.setDisplayState(2);
+    c(paramwly.jdField_b_of_type_JavaLangString);
+    StoryMsgNodeFrameLayout localStoryMsgNodeFrameLayout;
+    String str;
+    if (!TextUtils.isEmpty(paramwly.j))
     {
-      if (paramInt < i) {}
-      for (String str = (String)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVideoFeedIdList.get(paramInt);; str = (String)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVideoFeedIdList.get(i - 1))
+      localStoryMsgNodeFrameLayout = this.a;
+      if (TextUtils.isEmpty(paramwly.c))
       {
-        localwoe.jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVidList.get(paramInt), str);
-        paramInt += 1;
-        break;
+        str = anvx.a(2131712724);
+        localStoryMsgNodeFrameLayout.setNodeName(str, paramwly.j);
+        if ((paramwly.jdField_a_of_type_JavaUtilList == null) || (paramwly.jdField_a_of_type_JavaUtilList.isEmpty())) {
+          this.a.a(1, 1 - paramwly.jdField_b_of_type_Int);
+        }
+        str = (String)this.a.getTag(2131374695);
+        if (!TextUtils.equals(paramwly.jdField_a_of_type_JavaLangString, str)) {
+          switch (paramwly.jdField_a_of_type_Int)
+          {
+          default: 
+            str = "unknown";
+          }
+        }
       }
     }
-    paramwoj.b(new ErrorMessage(), localArrayList, true);
+    for (;;)
+    {
+      ykv.a("PGC_story", "video_exp", "exp_newsrecommend", 0, 0, new String[] { paramwly.jdField_a_of_type_JavaLangString, str });
+      this.a.setTag(2131374695, paramwly.jdField_a_of_type_JavaLangString);
+      return;
+      str = paramwly.c;
+      break;
+      localStoryMsgNodeFrameLayout = this.a;
+      if (TextUtils.isEmpty(paramwly.c)) {}
+      for (str = anvx.a(2131712731);; str = paramwly.c)
+      {
+        localStoryMsgNodeFrameLayout.setNodeName(str, false);
+        break;
+      }
+      str = "2";
+      continue;
+      str = "3";
+    }
   }
-  
-  public void b() {}
 }
 
 

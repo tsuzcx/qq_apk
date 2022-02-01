@@ -1,24 +1,22 @@
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.ugc.RIJUgcUtils.RIJUGCAccountStatusCheckCallback.1;
+import java.lang.ref.WeakReference;
+
 public class rtq
+  implements qgu
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
+  private int jdField_a_of_type_Int = 0;
+  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public String toString()
+  public rtq(Activity paramActivity, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[");
-    localStringBuilder.append("mSceneType: ").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", mCurIndexDiff: ").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", mPreIndexDiff: ").append(this.c);
-    localStringBuilder.append(", mTimeInterval: ").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(", mIsPull: ").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(", mIsAutoPlay: ").append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append("]");
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(int paramInt)
+  {
+    bkyq.a(new RIJUgcUtils.RIJUGCAccountStatusCheckCallback.1(this, paramInt));
   }
 }
 

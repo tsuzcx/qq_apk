@@ -1,42 +1,43 @@
-import com.tencent.biz.pubaccount.PublicAccountManager.4;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.pb.oac.OACProfilePb.ProfileDataRsp;
+import com.tencent.qphone.base.util.QLog;
 
 public class odf
-  extends SosoInterface.OnLocationListener
+  implements olr<OACProfilePb.ProfileDataRsp>
 {
-  public odf(PublicAccountManager.4 param4, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString1, String paramString2, boolean paramBoolean5)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString1);
-  }
+  public odf(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(int paramInt, boolean paramBoolean, OACProfilePb.ProfileDataRsp paramProfileDataRsp, Bundle paramBundle)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null)) {}
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "success:" + String.valueOf(paramBoolean));
+    }
+    paramBundle = this.a;
+    paramBundle.jdField_c_of_type_Int -= 1;
+    if (this.a.jdField_c_of_type_Int == 0) {
+      this.a.M();
+    }
+    if (!paramBoolean)
     {
-      if (paramSosoLbsInfo.mLocation != null)
+      if (this.a.jdField_c_of_type_Boolean)
       {
-        double d1 = paramSosoLbsInfo.mLocation.mLat02;
-        double d2 = paramSosoLbsInfo.mLocation.mLon02;
-        String str1 = "";
-        if (paramSosoLbsInfo.mLocation.address != null) {
-          str1 = "" + paramSosoLbsInfo.mLocation.address;
+        if (this.a.jdField_a_of_type_Nzu != null)
+        {
+          this.a.jdField_a_of_type_Nzu.b(false);
+          this.a.jdField_a_of_type_Nzu.notifyDataSetChanged();
         }
-        String str2 = str1;
-        if (paramSosoLbsInfo.mLocation.name != null) {
-          str2 = str1 + paramSosoLbsInfo.mLocation.name;
-        }
-        this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager$4.this$0.a(true, d1, d2, str2, null, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
       }
+      else {
+        return;
+      }
+      this.a.d(2131694983);
       return;
     }
-    catch (Exception paramSosoLbsInfo)
-    {
-      paramSosoLbsInfo.printStackTrace();
-      this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager$4.this$0.a(false, 0.0D, 0.0D, null, null, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
-    }
+    paramBundle = new AccountDetail(paramProfileDataRsp);
+    okn.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.e, paramProfileDataRsp.menu_rsp);
+    this.a.a(paramBundle, true);
   }
 }
 

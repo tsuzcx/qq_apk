@@ -1,24 +1,36 @@
-import com.tencent.image.URLDrawableHandler;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
 class bikx
-  implements URLDrawableHandler
+  extends ntf
 {
-  bikx(bikw parambikw) {}
+  bikx(bikt parambikt, bila parambila) {}
   
-  public void doCancel() {}
-  
-  public boolean isCancelled()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    return false;
+    if (this.jdField_a_of_type_Bila != null)
+    {
+      paramBundle = new oidb_0x8e4.RspBody();
+      if (paramArrayOfByte == null) {}
+    }
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      this.jdField_a_of_type_Bila.a(paramInt, paramBundle);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("WerewolvesHandler", 2, paramArrayOfByte.getMessage());
+        }
+      }
+    }
   }
-  
-  public void onFileDownloadFailed(int paramInt) {}
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong) {}
-  
-  public void publishProgress(int paramInt) {}
 }
 
 

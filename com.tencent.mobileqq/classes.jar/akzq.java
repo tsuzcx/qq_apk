@@ -1,18 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.mobileqq.activity.selectmember.FriendTabView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawClassifier.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class akzq
-  implements View.OnClickListener
+  implements akxc
 {
-  public akzq(FriendTabView paramFriendTabView) {}
+  public akzq(DrawClassifier.1 param1) {}
   
-  public void onClick(View paramView)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    this.a.a.a(1);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("DrawClassifier", 2, "tryPreDownLoadModel finished:" + paramInt);
+    }
+    if (paramInt == 0) {
+      akzp.a(true);
+    }
   }
 }
 

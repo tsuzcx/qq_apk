@@ -1,6 +1,27 @@
-public abstract interface aumh
+import android.os.Message;
+import com.tencent.mobileqq.flashchat.FlashChatTextEffectView;
+import mqq.os.MqqHandler;
+
+class aumh
+  implements agph
 {
-  public abstract void onGetKeyComplete(String paramString, boolean paramBoolean, int paramInt);
+  aumh(aumf paramaumf, aumi paramaumi, int paramInt) {}
+  
+  public void a()
+  {
+    FlashChatTextEffectView.a(this.jdField_a_of_type_Aumi);
+    Message localMessage = Message.obtain();
+    localMessage.obj = this.jdField_a_of_type_Aumi;
+    localMessage.what = this.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_Int < FlashChatTextEffectView.a().length)
+    {
+      aumf.a(this.jdField_a_of_type_Aumf).sendMessageDelayed(localMessage, FlashChatTextEffectView.a()[this.jdField_a_of_type_Int]);
+      return;
+    }
+    aumf.a(this.jdField_a_of_type_Aumf).sendMessageDelayed(localMessage, 7000L);
+  }
+  
+  public void b() {}
 }
 
 

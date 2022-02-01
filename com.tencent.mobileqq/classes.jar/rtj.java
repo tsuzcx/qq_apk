@@ -1,35 +1,14 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class rtj
-  extends Handler
+final class rtj
+  implements DialogInterface.OnClickListener
 {
-  rtj(rti paramrti, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  rtj(rtp paramrtp) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      super.handleMessage(paramMessage);
-    }
-    do
-    {
-      return;
-      paramMessage = this.a.a(false);
-    } while (paramMessage == null);
-    rti.a(this.a).remove(Integer.valueOf(paramMessage.jdField_a_of_type_Int));
-    AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)paramMessage.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-    if (localAdvertisementInfo != null) {
-      localAdvertisementInfo.isShowingGuide = false;
-    }
-    this.a.a(null, paramMessage);
+    this.a.a(true);
   }
 }
 

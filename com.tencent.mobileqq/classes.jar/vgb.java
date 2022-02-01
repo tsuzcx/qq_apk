@@ -1,11 +1,19 @@
+import android.view.ViewGroup;
+
 public class vgb
 {
-  public int a = 600;
+  public int a = 0;
+  public long a;
+  public ViewGroup a;
   public String a;
+  public vfs a;
+  public vgh a;
+  public vgi a;
+  public vgq a;
+  public vhc a;
   public boolean a;
-  public int b = 400;
-  public String b;
-  public String c;
+  public int b;
+  public boolean b;
 }
 
 

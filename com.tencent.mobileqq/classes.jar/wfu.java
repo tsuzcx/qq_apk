@@ -1,11 +1,31 @@
+import android.text.TextUtils;
+
 public class wfu
-  extends vqm
 {
-  public final byte[] a;
+  public int a;
+  public final long a;
+  public final String a;
+  public final String b;
   
-  public wfu(byte[] paramArrayOfByte)
+  public boolean equals(Object paramObject)
   {
-    this.a = paramArrayOfByte;
+    if ((paramObject instanceof wfu)) {
+      return TextUtils.equals(((wfu)paramObject).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(String.valueOf(this.jdField_a_of_type_JavaLangString));
+    localStringBuilder.append("\n");
+    localStringBuilder.append("-t ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("  -dt ");
+    localStringBuilder.append(String.valueOf(this.jdField_a_of_type_Long));
+    localStringBuilder.append("\n");
+    return localStringBuilder.toString();
   }
 }
 

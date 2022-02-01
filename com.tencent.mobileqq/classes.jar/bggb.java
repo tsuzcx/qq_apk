@@ -1,25 +1,12 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-
-class bggb
-  implements INetInfoHandler
+public abstract interface bggb
 {
-  public void onNetMobile2None() {}
+  public abstract void a();
   
-  public void onNetMobile2Wifi(String paramString) {}
+  public abstract void a(int paramInt);
   
-  public void onNetNone2Mobile(String paramString)
-  {
-    bgga.a();
-  }
+  public abstract void a(String paramString);
   
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    bgga.a();
-  }
-  
-  public void onNetWifi2None() {}
+  public abstract void b(int paramInt);
 }
 
 

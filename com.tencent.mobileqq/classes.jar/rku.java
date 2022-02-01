@@ -1,138 +1,53 @@
-import android.graphics.Bitmap;
-import android.os.AsyncTask;
-import java.lang.ref.SoftReference;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 
-public class rku
-  extends AsyncTask<Void, Void, Bitmap>
+public abstract class rku
+  extends Binder
+  implements rkt
 {
-  int jdField_a_of_type_Int = -2147483648;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  public String a;
-  private SoftReference<Bitmap> jdField_a_of_type_JavaLangRefSoftReference;
-  private rkw jdField_a_of_type_Rkw;
-  private rkx jdField_a_of_type_Rkx;
-  private rky jdField_a_of_type_Rky;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  private int f;
-  
-  public rku(int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4, rkw paramrkw)
+  public rku()
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.c = paramInt2;
-    this.d = paramInt3;
-    this.e = paramInt4;
-    this.jdField_a_of_type_Rkw = paramrkw;
+    attachInterface(this, "com.tencent.biz.pubaccount.readinjoy.reward.aidl.IRIJAidlInterface");
   }
   
-  private void a()
+  public static rkt a(IBinder paramIBinder)
   {
-    this.jdField_a_of_type_Rkw = null;
-    this.jdField_a_of_type_Rkx = null;
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.biz.pubaccount.readinjoy.reward.aidl.IRIJAidlInterface");
+    if ((localIInterface != null) && ((localIInterface instanceof rkt))) {
+      return (rkt)localIInterface;
+    }
+    return new rkv(paramIBinder);
   }
   
-  private void b()
+  public IBinder asBinder()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      this.jdField_a_of_type_JavaLangObject.notifyAll();
-      return;
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.biz.pubaccount.readinjoy.reward.aidl.IRIJAidlInterface");
+      return true;
     }
-  }
-  
-  public Bitmap a()
-  {
-    if ((this.jdField_a_of_type_JavaLangRefSoftReference != null) && (this.jdField_a_of_type_JavaLangRefSoftReference.get() != null))
+    paramParcel1.enforceInterface("com.tencent.biz.pubaccount.readinjoy.reward.aidl.IRIJAidlInterface");
+    paramParcel1 = a();
+    paramParcel2.writeNoException();
+    if (paramParcel1 != null) {}
+    for (paramParcel1 = paramParcel1.asBinder();; paramParcel1 = null)
     {
-      Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_JavaLangRefSoftReference.get();
-      if (!localBitmap.isRecycled()) {
-        return localBitmap;
-      }
+      paramParcel2.writeStrongBinder(paramParcel1);
+      return true;
     }
-    this.jdField_a_of_type_JavaLangRefSoftReference = null;
-    return null;
-  }
-  
-  protected Bitmap a(Void... arg1)
-  {
-    ??? = a();
-    if (??? != null) {
-      return ???;
-    }
-    this.f += 1;
-    Bitmap[] arrayOfBitmap = new Bitmap[1];
-    arrayOfBitmap[0] = null;
-    this.jdField_a_of_type_Rky.a(this, new rkv(this, arrayOfBitmap));
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      try
-      {
-        this.jdField_a_of_type_JavaLangObject.wait();
-        return arrayOfBitmap[0];
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        for (;;)
-        {
-          localInterruptedException.printStackTrace();
-        }
-      }
-    }
-  }
-  
-  protected void a(Bitmap paramBitmap)
-  {
-    super.onPostExecute(paramBitmap);
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramBitmap);
-    if (this.jdField_a_of_type_Rkx != null) {
-      this.jdField_a_of_type_Rkx.b(this);
-    }
-    if (this.jdField_a_of_type_Rkw != null)
-    {
-      if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
-        break label68;
-      }
-      this.jdField_a_of_type_Rkw.a(paramBitmap, this);
-    }
-    for (;;)
-    {
-      a();
-      return;
-      label68:
-      this.jdField_a_of_type_Rkw.a();
-    }
-  }
-  
-  public void a(rkx paramrkx)
-  {
-    this.jdField_a_of_type_Rkx = paramrkx;
-  }
-  
-  public void a(rky paramrky)
-  {
-    this.jdField_a_of_type_Rky = paramrky;
-  }
-  
-  protected void onCancelled()
-  {
-    super.onCancelled();
-    a();
-  }
-  
-  protected void onPreExecute()
-  {
-    super.onPreExecute();
-    if (this.jdField_a_of_type_Rkx != null) {
-      this.jdField_a_of_type_Rkx.a(this);
-    }
-  }
-  
-  public String toString()
-  {
-    return "CaptureTask{id=" + this.jdField_a_of_type_Int + ", type=" + this.b + ", path='" + this.jdField_a_of_type_JavaLangString + '\'' + ", position=" + this.c + ", width=" + this.d + ", height=" + this.e + '}';
   }
 }
 

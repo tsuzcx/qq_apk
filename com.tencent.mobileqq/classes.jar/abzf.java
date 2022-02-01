@@ -1,34 +1,41 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0x103.submsgtype0x103.MsgBody;
+import android.app.Activity;
+import android.content.Context;
+import com.tencent.ad.tangram.AdError;
+import com.tencent.ad.tangram.canvas.views.canvas.AdCanvasData;
+import com.tencent.ad.tangram.canvas.views.canvas.AdCanvasDataBuilderV2;
+import com.tencent.ad.tangram.halfScreen.AdHalfScreenAdapter;
+import com.tencent.ad.tangram.halfScreen.AdHalfScreenAdapter.Params;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.jsbridge.GdtBaseHalfScreenFragmentForJs;
+import com.tencent.gdtad.views.halfScreen.GdtBaseHalfScreenFragment;
+import java.lang.ref.WeakReference;
 
 public class abzf
-  implements abzb
+  implements AdHalfScreenAdapter
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
+  public AdError show(AdHalfScreenAdapter.Params paramParams)
   {
-    submsgtype0x103.MsgBody localMsgBody = new submsgtype0x103.MsgBody();
-    try
+    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
     {
-      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-      paramQQAppInterface.getProxyManager().a().a(localMsgBody);
-      return;
+      acho.d("GdtHalfScreenAdapter", "show error");
+      return new AdError(4);
     }
-    catch (Exception paramQQAppInterface)
+    Object localObject = null;
+    if (paramParams.style == 2)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x103 wrong:" + paramQQAppInterface.toString());
+      AdCanvasData localAdCanvasData = AdCanvasDataBuilderV2.build((Context)paramParams.activity.get(), paramParams.ad, paramParams.autodownload);
+      if (localAdCanvasData != null)
+      {
+        localObject = localAdCanvasData;
+        if (localAdCanvasData.isValid()) {}
+      }
+      else
+      {
+        return new AdError(4);
+      }
     }
-  }
-  
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
-  {
-    a(paramabxc.a(), paramMsgType0x210);
-    return null;
+    GdtBaseHalfScreenFragment.a((Activity)paramParams.activity.get(), GdtBaseHalfScreenFragmentForJs.class, paramParams.ad, localObject, paramParams.webUrl, paramParams.style, paramParams.extrasForIntent);
+    return new AdError(0);
   }
 }
 

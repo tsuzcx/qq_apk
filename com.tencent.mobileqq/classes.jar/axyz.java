@@ -1,37 +1,22 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.onlinestatus.StatusVisibleFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
-class axyz
-  implements View.OnClickListener
+public class axyz
+  implements View.OnTouchListener
 {
-  axyz(axyy paramaxyy, boolean paramBoolean) {}
+  public axyz(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = 1;
-    if (this.jdField_a_of_type_Boolean)
+    if (paramMotionEvent.getAction() == 0)
     {
-      axvz.a("0X800AF41", 2, String.valueOf(this.jdField_a_of_type_Axyy.jdField_a_of_type_Int));
-      if (this.jdField_a_of_type_Axyy.jdField_a_of_type_Int != 1) {
-        break label84;
-      }
+      if (!ShortVideoCommentsView.a(this.a)) {}
+      this.a.l();
+      ShortVideoCommentsView.b(this.a);
     }
-    for (;;)
-    {
-      StatusVisibleFragment.a(this.jdField_a_of_type_Axyy.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Axyy.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem, i, 999);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      axvz.a("0X800AF41", 1, String.valueOf(this.jdField_a_of_type_Axyy.jdField_a_of_type_Int));
-      break;
-      label84:
-      if (this.jdField_a_of_type_Axyy.jdField_a_of_type_Int == 2) {
-        i = 3;
-      } else {
-        i = 0;
-      }
-    }
+    return false;
   }
 }
 

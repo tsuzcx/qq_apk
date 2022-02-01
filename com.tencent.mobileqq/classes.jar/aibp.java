@@ -1,142 +1,15 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.mini.ui.dialog.DisplayHelper;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aibp
-  extends BaseAdapter
+class aibp
+  implements DialogInterface.OnClickListener
 {
-  private aibq jdField_a_of_type_Aibq;
-  protected Context a;
-  protected View a;
-  private String jdField_a_of_type_JavaLangString;
-  private List<String> jdField_a_of_type_JavaUtilList;
+  aibp(aiav paramaiav) {}
   
-  public aibp(Context paramContext, View paramView, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilList = aibs.a().a(paramString);
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
-    {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-  }
-  
-  private boolean a(List<String> paramList1, List<String> paramList2)
-  {
-    if ((paramList1 == null) && (paramList2 == null)) {
-      return true;
-    }
-    if ((paramList1 == null) || (paramList2 == null) || (paramList1.size() != paramList2.size())) {
-      return false;
-    }
-    return paramList1.equals(paramList2);
-  }
-  
-  public String a(int paramInt)
-  {
-    return (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public void a()
-  {
-    ArrayList localArrayList = aibs.a().a(this.jdField_a_of_type_JavaLangString);
-    if (a(this.jdField_a_of_type_JavaUtilList, localArrayList)) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList = localArrayList;
-    if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-    for (;;)
-    {
-      notifyDataSetChanged();
-      return;
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
-  }
-  
-  public void a(aibq paramaibq)
-  {
-    this.jdField_a_of_type_Aibq = paramaibq;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    Object localObject;
-    if (paramView == null)
-    {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559818, paramViewGroup, false);
-      paramView = new aibr(this);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368083));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131368086));
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView = ((PressEffectImageView)localView.findViewById(2131376548));
-      paramView.b = localView.findViewById(2131365682);
-      paramView.jdField_a_of_type_AndroidViewView = localView;
-      localObject = (LinearLayout.LayoutParams)paramView.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-      ((LinearLayout.LayoutParams)localObject).leftMargin = DisplayHelper.dp2px(this.jdField_a_of_type_AndroidContentContext, 16);
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localView.setTag(paramView);
-      paramView.jdField_a_of_type_Int = paramInt;
-      if (this.jdField_a_of_type_JavaUtilList != null) {
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-      }
-      if (!ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
-        break label273;
-      }
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#A8A8A8"));
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846130);
-      paramView.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839429);
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView.setImageResource(2130846129);
-    }
-    for (;;)
-    {
-      paramView.b.setVisibility(8);
-      localView.setOnClickListener(paramView);
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView.setOnClickListener(paramView);
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (aibr)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-      break;
-      label273:
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#4D4D4D"));
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845932);
-      paramView.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839428);
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView.setImageResource(2130845930);
-    }
+    this.a.i = true;
+    aiav.a(this.a, false);
   }
 }
 

@@ -1,8 +1,6 @@
-import android.view.MotionEvent;
-
 public abstract interface bmcm
 {
-  public abstract void a(MotionEvent paramMotionEvent);
+  public abstract void a(String paramString1, int paramInt, String paramString2);
 }
 
 

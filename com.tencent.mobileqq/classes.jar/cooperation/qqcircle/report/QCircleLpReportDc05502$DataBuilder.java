@@ -68,6 +68,141 @@ public class QCircleLpReportDc05502$DataBuilder
     this.extras.putAll(paramDataBuilder.extras);
   }
   
+  public String getAuthorUin()
+  {
+    return this.authorUin;
+  }
+  
+  public long getBeginTime()
+  {
+    return this.beginTime;
+  }
+  
+  public int getContainerSeq()
+  {
+    return this.containerSeq;
+  }
+  
+  public long getEndTime()
+  {
+    return this.endTime;
+  }
+  
+  public String getExt1()
+  {
+    return this.ext1;
+  }
+  
+  public String getExt2()
+  {
+    return this.ext2;
+  }
+  
+  public String getExt3()
+  {
+    return this.ext3;
+  }
+  
+  public String getExt4()
+  {
+    return this.ext4;
+  }
+  
+  public String getExt5()
+  {
+    return this.ext5;
+  }
+  
+  public String getExt6()
+  {
+    return this.ext6;
+  }
+  
+  public String getExt7()
+  {
+    return this.ext7;
+  }
+  
+  public String getExt8()
+  {
+    return this.ext8;
+  }
+  
+  public HashMap<String, String> getExtras()
+  {
+    return this.extras;
+  }
+  
+  public String getFeedId()
+  {
+    return this.feedId;
+  }
+  
+  public String getFeedTag()
+  {
+    return this.feedTag;
+  }
+  
+  public int getFeedType1()
+  {
+    return this.feedType1;
+  }
+  
+  public int getFeedType2()
+  {
+    return this.feedType2;
+  }
+  
+  public int getFeedType3()
+  {
+    return this.feedType3;
+  }
+  
+  public int getFfPageId()
+  {
+    return this.ffPageId;
+  }
+  
+  public int getIndex()
+  {
+    return this.index;
+  }
+  
+  public int getPageId()
+  {
+    return this.pageId;
+  }
+  
+  public byte[] getReportInfo()
+  {
+    return this.reportInfo;
+  }
+  
+  public String getRequestId()
+  {
+    return this.requestId;
+  }
+  
+  public String getRuleId()
+  {
+    return this.ruleId;
+  }
+  
+  public long getStayTime()
+  {
+    return this.stayTime;
+  }
+  
+  public String getToUin()
+  {
+    return this.toUin;
+  }
+  
+  public int getfPageId()
+  {
+    return this.fPageId;
+  }
+  
   public DataBuilder setAuthorUin(String paramString)
   {
     this.authorUin = paramString;

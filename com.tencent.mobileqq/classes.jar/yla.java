@@ -1,18 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.biz.qqstory.takevideo.DanceMachineUploadVideoFragment;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class yla
-  implements View.OnClickListener
+public class yla
+  implements DialogInterface.OnKeyListener
 {
-  yla(yky paramyky, int paramInt) {}
+  public yla(DanceMachineUploadVideoFragment paramDanceMachineUploadVideoFragment) {}
   
-  public void onClick(View paramView)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (yky.a(this.jdField_a_of_type_Yky) != null) {
-      yky.a(this.jdField_a_of_type_Yky).a(this.jdField_a_of_type_Int);
+    if (paramInt == 84) {
+      return true;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramInt == 4)
+    {
+      this.a.a();
+      this.a.a();
+      paramDialogInterface = this.a.a;
+      paramKeyEvent = this.a.a;
+      paramDialogInterface.setResult(0);
+      this.a.a.finish();
+      DanceMachineUploadVideoFragment.a(this.a, false);
+      return true;
+    }
+    return false;
   }
 }
 

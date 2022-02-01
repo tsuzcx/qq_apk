@@ -1,37 +1,34 @@
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.HashMap;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
 public class qmr
+  implements qqa
 {
-  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
-  private slt jdField_a_of_type_Slt;
-  private HashMap<String, ArticleInfo> b;
-  
-  public qmp a()
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    qmp localqmp = new qmp(null);
-    qmp.a(localqmp, this.jdField_a_of_type_Slt);
-    qmp.a(localqmp, this.jdField_a_of_type_JavaUtilHashMap);
-    qmp.b(localqmp, this.b);
-    return localqmp;
+    return null;
   }
   
-  public qmr a(HashMap<String, Integer> paramHashMap)
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-    return this;
+    return qlv.a(paramBaseArticleInfo);
   }
   
-  public qmr a(slt paramslt)
+  public void a(int paramInt1, Container paramContainer, qfw paramqfw, int paramInt2)
   {
-    this.jdField_a_of_type_Slt = paramslt;
-    return this;
+    ArticleInfo localArticleInfo = paramqfw.a();
+    if ((localArticleInfo != null) && (localArticleInfo.isAccountShown)) {
+      qsd.a(paramContainer, paramqfw);
+    }
   }
   
-  public qmr b(HashMap<String, ArticleInfo> paramHashMap)
+  public boolean a(int paramInt, Container paramContainer, qfw paramqfw, ViewBase paramViewBase)
   {
-    this.b = paramHashMap;
-    return this;
+    return false;
   }
 }
 

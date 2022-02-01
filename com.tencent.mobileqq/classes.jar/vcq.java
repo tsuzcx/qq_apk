@@ -1,36 +1,21 @@
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class vcq
-  extends vbo
+class vcq
+  implements View.OnClickListener
 {
-  public vcq(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
-  {
-    super(paramViewGroup, paramInt, paramWSVerticalPageFragment);
-  }
+  vcq(vcp paramvcp) {}
   
-  public vbl a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new vcx(a(), this);
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-  }
-  
-  protected boolean a()
-  {
-    return true;
-  }
-  
-  protected boolean b()
-  {
-    if ((this.a != null) && (TextUtils.equals(this.a.a(), "aio_home_page"))) {
-      return false;
+    if (vnd.b()) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      vcp.a(this.a);
     }
-    return super.b();
   }
 }
 

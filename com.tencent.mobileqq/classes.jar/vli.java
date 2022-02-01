@@ -1,12 +1,28 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
+import UserGrowth.stSimpleGetFeedListReq;
+import UserGrowth.stSimpleGetFeedListRsp;
+import java.util.ArrayList;
 
 public class vli
+  extends vfo<stSimpleGetFeedListRsp>
 {
-  public static Dispatcher a()
+  public vli(String paramString1, byte paramByte1, byte paramByte2, ArrayList<String> paramArrayList, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    return Dispatchers.get(ThreadManager.getSubThreadLooper());
+    super("SimpleGetFeedList", paramInt);
+    stSimpleGetFeedListReq localstSimpleGetFeedListReq = new stSimpleGetFeedListReq();
+    localstSimpleGetFeedListReq.attach_info = paramString1;
+    localstSimpleGetFeedListReq.isrefresh = paramByte1;
+    localstSimpleGetFeedListReq.isfirst = paramByte2;
+    localstSimpleGetFeedListReq.channel_info = "from_android_qq";
+    localstSimpleGetFeedListReq.context_feedids = paramArrayList;
+    localstSimpleGetFeedListReq.scene = paramInt;
+    localstSimpleGetFeedListReq.gdt_args = paramString2;
+    localstSimpleGetFeedListReq.rowkey = paramString3;
+    localstSimpleGetFeedListReq.session = paramString4;
+    localstSimpleGetFeedListReq.push_info = paramString5;
+    localstSimpleGetFeedListReq.linkStragetyArgs = vmq.a();
+    localstSimpleGetFeedListReq.qqNum = vnd.a();
+    this.a = localstSimpleGetFeedListReq;
+    vmp.d("RecommendRequest", "stSimpleGetFeedListReq  = " + localstSimpleGetFeedListReq.toString());
   }
 }
 

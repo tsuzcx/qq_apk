@@ -7,7 +7,7 @@ import android.view.MotionEvent;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
-import avar;
+import awgu;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
@@ -19,7 +19,7 @@ public class FloatBaseLayout
   public int a;
   WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
   WindowManager jdField_a_of_type_AndroidViewWindowManager;
-  avar jdField_a_of_type_Avar;
+  awgu jdField_a_of_type_Awgu;
   boolean jdField_a_of_type_Boolean = false;
   float jdField_b_of_type_Float;
   public int b;
@@ -246,7 +246,7 @@ public class FloatBaseLayout
   
   public void b()
   {
-    this.jdField_a_of_type_Avar = null;
+    this.jdField_a_of_type_Awgu = null;
   }
   
   public boolean b()
@@ -325,16 +325,16 @@ public class FloatBaseLayout
           this.jdField_b_of_type_Boolean = true;
           c();
         }
-        if ((this.jdField_a_of_type_Avar != null) && (this.jdField_b_of_type_Boolean)) {
-          this.jdField_a_of_type_Avar.a((int)(f1 - this.jdField_a_of_type_Float), (int)(f2 - this.jdField_b_of_type_Float));
+        if ((this.jdField_a_of_type_Awgu != null) && (this.jdField_b_of_type_Boolean)) {
+          this.jdField_a_of_type_Awgu.a((int)(f1 - this.jdField_a_of_type_Float), (int)(f2 - this.jdField_b_of_type_Float));
         }
         if (!this.jdField_b_of_type_Boolean) {
           bool1 = super.dispatchTouchEvent(paramMotionEvent);
         }
       }
     }
-    if ((this.jdField_a_of_type_Avar != null) && (this.jdField_b_of_type_Boolean)) {
-      this.jdField_a_of_type_Avar.a();
+    if ((this.jdField_a_of_type_Awgu != null) && (this.jdField_b_of_type_Boolean)) {
+      this.jdField_a_of_type_Awgu.a();
     }
     if (this.jdField_b_of_type_Boolean) {
       d();
@@ -362,9 +362,9 @@ public class FloatBaseLayout
     return this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y;
   }
   
-  public void setFloatLayoutCallback(avar paramavar)
+  public void setFloatLayoutCallback(awgu paramawgu)
   {
-    this.jdField_a_of_type_Avar = paramavar;
+    this.jdField_a_of_type_Awgu = paramawgu;
   }
 }
 

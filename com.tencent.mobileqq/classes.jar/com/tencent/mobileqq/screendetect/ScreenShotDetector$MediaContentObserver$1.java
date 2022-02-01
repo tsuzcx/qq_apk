@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.screendetect;
 
-import baqs;
+import bbxh;
 
 public class ScreenShotDetector$MediaContentObserver$1
   implements Runnable
 {
-  public ScreenShotDetector$MediaContentObserver$1(baqs parambaqs) {}
+  public ScreenShotDetector$MediaContentObserver$1(bbxh parambbxh) {}
   
   public void run()
   {
-    ScreenShotDetector.a(this.a.a, baqs.a(this.a));
+    ScreenShotDetector.a(this.a.a, bbxh.a(this.a));
   }
 }
 

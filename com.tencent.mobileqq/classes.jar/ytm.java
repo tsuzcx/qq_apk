@@ -1,29 +1,15 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.view.widget.StoryUserBadgeView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.HashMap;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
 public class ytm
-  extends QQUIEventReceiver<StoryUserBadgeView, wcf>
+  implements yue
 {
-  public ytm(@NonNull StoryUserBadgeView paramStoryUserBadgeView)
-  {
-    super(paramStoryUserBadgeView);
-  }
+  public ytm(DoodleLayout paramDoodleLayout) {}
   
-  public void a(@NonNull StoryUserBadgeView paramStoryUserBadgeView, @NonNull wcf paramwcf)
+  public void a()
   {
-    if (paramwcf.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) {}
-    while (paramwcf.jdField_a_of_type_JavaUtilHashMap.get(paramStoryUserBadgeView.a()) == null) {
-      return;
+    if (this.a.a != null) {
+      this.a.a.g();
     }
-    paramStoryUserBadgeView.a(paramStoryUserBadgeView.a());
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wcf.class;
   }
 }
 

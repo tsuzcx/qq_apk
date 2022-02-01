@@ -1,19 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.leba.QzoneFrame;
-import cooperation.qzone.api.QzoneFragmentImpl;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class ajel
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public ajel(QzoneFrame paramQzoneFrame) {}
+  public ajel(NotificationView paramNotificationView, structmsg.SystemMsg paramSystemMsg) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (QzoneFrame.a(this.a) != null) {
-      ((QzoneFragmentImpl)QzoneFrame.a(this.a)).updatePublishBox(paramIntent);
-    }
+    azry.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.jdField_a_of_type_Ajdx.a(), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.group_code.get()), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.action_uin.get()), -1, 1);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

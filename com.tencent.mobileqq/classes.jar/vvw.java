@@ -1,76 +1,47 @@
-import java.io.File;
-import java.util.Map;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import qqcircle.QQCircleReport.SingleDcData;
 
-class vvw
-  extends vwx
+public class vvw
 {
-  vvw(vvv paramvvv, vmd paramvmd)
+  public static String a(String paramString)
   {
-    super(paramvmd);
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = "";
+    }
+    return str;
   }
   
-  protected vxa a(vwz... paramVarArgs)
+  public static List<QQCircleReport.SingleDcData> a(List<byte[]> paramList)
   {
-    vxa localvxa = super.a(paramVarArgs);
-    paramVarArgs = paramVarArgs[0];
-    String str;
-    if (localvxa.jdField_a_of_type_Int == 0) {
-      str = paramVarArgs.b.substring(0, paramVarArgs.b.length() - 4);
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      QQCircleReport.SingleDcData localSingleDcData = a((byte[])paramList.next());
+      if (localSingleDcData != null) {
+        localArrayList.add(localSingleDcData);
+      }
     }
+    return localArrayList;
+  }
+  
+  public static QQCircleReport.SingleDcData a(byte[] paramArrayOfByte)
+  {
     try
     {
-      ypi.d(str);
-      label42:
-      int i = npo.a(paramVarArgs.b, str);
-      if (i == 0)
-      {
-        if (vvv.a(str, false)) {
-          try
-          {
-            paramVarArgs = this.a.a(new File(str, "config.json"));
-            if (paramVarArgs != null)
-            {
-              xvv.d("FileDownloadTask", "parse config file success !");
-              this.a.a.put(str, paramVarArgs);
-              return localvxa;
-            }
-          }
-          catch (Exception paramVarArgs)
-          {
-            for (;;)
-            {
-              xvv.c("FileDownloadTask", "parse config failed", paramVarArgs);
-              paramVarArgs = null;
-            }
-            xvv.e("FileDownloadTask", "parse config failed : %s, %s", new Object[] { str, "config.json" });
-            return new vxa(localvxa.jdField_a_of_type_Vwz, -1, "illegal config file");
-          }
-        }
-        xvv.e("FileDownloadTask", "unzip success, but this is an illegal filter folder : %s", new Object[] { str });
-        return new vxa(localvxa.jdField_a_of_type_Vwz, -1, "illegal folder");
-      }
-      xvv.e("FileDownloadTask", "download success, but unzip failed : %d", new Object[] { Integer.valueOf(i) });
-      return new vxa(localvxa.jdField_a_of_type_Vwz, i, "unzip failed");
+      QQCircleReport.SingleDcData localSingleDcData = new QQCircleReport.SingleDcData();
+      localSingleDcData.mergeFrom(paramArrayOfByte);
+      return localSingleDcData;
     }
-    catch (Exception localException)
+    catch (Exception paramArrayOfByte)
     {
-      break label42;
+      paramArrayOfByte.printStackTrace();
     }
-  }
-  
-  protected void a(vxa arg1)
-  {
-    xvv.a("FileDownloadTask", "downloadConfigFile onPostExecute : %s", ???);
-    if (???.jdField_a_of_type_Int == 0) {
-      xvv.d("FileDownloadTask", "get filter resource success : %s", new Object[] { ???.jdField_a_of_type_Vwz.jdField_a_of_type_JavaLangString });
-    }
-    synchronized (this.a.b)
-    {
-      vvv.a(this.a, null);
-      this.a.d();
-      return;
-      xvv.d("FileDownloadTask", "get filter resource failed : %d : %s : %s", new Object[] { Integer.valueOf(???.jdField_a_of_type_Int), ???.jdField_a_of_type_JavaLangString, ???.jdField_a_of_type_Vwz.jdField_a_of_type_JavaLangString });
-    }
+    return null;
   }
 }
 

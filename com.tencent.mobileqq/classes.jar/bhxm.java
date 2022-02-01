@@ -1,9 +1,12 @@
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUiPlugin;
 
-class bhxm
+public class bhxm
+  extends VasWebviewUiPlugin
 {
-  WebView jdField_a_of_type_ComTencentSmttSdkWebView;
-  String jdField_a_of_type_JavaLangString;
+  public long getPluginBusiness()
+  {
+    return 1048576L;
+  }
 }
 
 

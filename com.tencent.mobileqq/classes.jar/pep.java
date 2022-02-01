@@ -1,6 +1,17 @@
-public abstract interface pep
+import java.util.List;
+
+class pep
+  extends pfe
 {
-  public abstract void a(int paramInt);
+  pep(pdv parampdv, boolean paramBoolean, List paramList)
+  {
+    super(parampdv, null);
+  }
+  
+  void a(pfh parampfh)
+  {
+    parampfh.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, pdv.c(this.jdField_a_of_type_Pdv), 6);
+  }
 }
 
 

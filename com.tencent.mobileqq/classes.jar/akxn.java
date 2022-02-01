@@ -1,33 +1,64 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager.3.1;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCClient;
 
 public class akxn
-  implements INetInfoHandler
 {
-  akxn(akxm paramakxm) {}
+  private static volatile akxn jdField_a_of_type_Akxn;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public void onNetMobile2None() {}
-  
-  public void onNetMobile2Wifi(String paramString)
+  public static akxn a()
   {
-    long l = Thread.currentThread().getId();
-    if (akxm.a(this.a) == l) {
-      akxm.a(this.a);
+    if (jdField_a_of_type_Akxn == null) {}
+    try
+    {
+      if (jdField_a_of_type_Akxn == null) {
+        jdField_a_of_type_Akxn = new akxn();
+      }
+      return jdField_a_of_type_Akxn;
     }
-    while (akxm.a(this.a) == null) {
-      return;
-    }
-    akxm.a(this.a).post(new LbsFilterStatusManager.3.1(this));
+    finally {}
   }
   
-  public void onNetNone2Mobile(String paramString) {}
+  private void b()
+  {
+    this.b = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCConnector", 2, "begin connect:");
+    }
+    QIPCClientHelper.getInstance().getClient().addListener(new akxo(this));
+    long l = System.currentTimeMillis();
+    QIPCClientHelper.getInstance().getClient().connect(new akxp(this, l));
+  }
   
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None() {}
+  public void a()
+  {
+    if ((!this.jdField_a_of_type_Boolean) && (!this.b)) {
+      b();
+    }
+    if (!this.jdField_a_of_type_Boolean) {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        boolean bool = this.jdField_a_of_type_Boolean;
+        if (!bool) {}
+        try
+        {
+          this.jdField_a_of_type_JavaLangObject.wait(500L);
+          return;
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          for (;;)
+          {
+            localInterruptedException.printStackTrace();
+          }
+        }
+      }
+    }
+  }
 }
 
 

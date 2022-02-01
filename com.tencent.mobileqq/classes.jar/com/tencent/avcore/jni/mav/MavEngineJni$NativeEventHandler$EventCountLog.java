@@ -1,6 +1,6 @@
 package com.tencent.avcore.jni.mav;
 
-import mwv;
+import ncl;
 
 class MavEngineJni$NativeEventHandler$EventCountLog
 {
@@ -17,7 +17,7 @@ class MavEngineJni$NativeEventHandler$EventCountLog
   
   void log()
   {
-    if (!mwv.c()) {}
+    if (!ncl.c()) {}
     long l1;
     do
     {
@@ -28,7 +28,7 @@ class MavEngineJni$NativeEventHandler$EventCountLog
     long l2 = this.intervalMS;
     long l3 = this.logTime;
     this.logTime = (l1 + this.intervalMS);
-    mwv.b(this.tag, "EventCountLog, eventCount[" + this.eventCount + "], intervalMS[" + (l2 + l1 - l3) + "]");
+    ncl.b(this.tag, "EventCountLog, eventCount[" + this.eventCount + "], intervalMS[" + (l2 + l1 - l3) + "]");
     this.eventCount = 0;
   }
 }

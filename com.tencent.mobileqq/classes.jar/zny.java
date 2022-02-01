@@ -1,32 +1,12 @@
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.superplayer.view.ISPlayerVideoView.IVideoViewCallBack;
-
-public class zny
-  implements ISPlayerVideoView.IVideoViewCallBack
+public abstract interface zny
 {
-  public zny(TribeVideoPlugin paramTribeVideoPlugin) {}
+  public abstract void a();
   
-  public void onSurfaceChanged(Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceDestory");
-    }
-  }
+  public abstract void a(boolean paramBoolean);
   
-  public void onSurfaceCreated(Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceCreated");
-    }
-  }
+  public abstract void b();
   
-  public void onSurfaceDestroy(Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceDestory");
-    }
-  }
+  public abstract void b(boolean paramBoolean);
 }
 
 

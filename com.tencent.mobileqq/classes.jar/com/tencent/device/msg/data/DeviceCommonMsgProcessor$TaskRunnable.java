@@ -1,7 +1,7 @@
 package com.tencent.device.msg.data;
 
-import aavh;
-import aavk;
+import abkt;
+import abkw;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -57,7 +57,7 @@ class DeviceCommonMsgProcessor$TaskRunnable
           localDataPoint = new DataPoint(((JSONObject)localObject2).optString("apiName"), ((JSONObject)localObject2).optInt("id"), ((JSONObject)localObject2).optString("type"), ((JSONObject)localObject2).optString("value"));
           localDataPoint.mSeq = ((JSONObject)localObject2).optString("seq", "0");
           localDataPoint.mDin = ((JSONObject)localObject2).optLong("din");
-          if ((aavk.d.equalsIgnoreCase(this.jdField_a_of_type_ComTencentLitetransfersdkSession.actionInfo.strServiceName)) || (aavk.e.equalsIgnoreCase(this.jdField_a_of_type_ComTencentLitetransfersdkSession.actionInfo.strServiceName)) || (aavk.h.equalsIgnoreCase(this.jdField_a_of_type_ComTencentLitetransfersdkSession.actionInfo.strServiceName)))
+          if ((abkw.d.equalsIgnoreCase(this.jdField_a_of_type_ComTencentLitetransfersdkSession.actionInfo.strServiceName)) || (abkw.e.equalsIgnoreCase(this.jdField_a_of_type_ComTencentLitetransfersdkSession.actionInfo.strServiceName)) || (abkw.h.equalsIgnoreCase(this.jdField_a_of_type_ComTencentLitetransfersdkSession.actionInfo.strServiceName)))
           {
             boolean bool = TextUtils.isEmpty(localDataPoint.mValue);
             if (!bool) {
@@ -73,7 +73,7 @@ class DeviceCommonMsgProcessor$TaskRunnable
             DataPoint localDataPoint;
             Object localObject1;
             Object localObject3;
-            aavh localaavh;
+            abkt localabkt;
             localException2.printStackTrace();
             continue;
             String str = "1";
@@ -87,18 +87,18 @@ class DeviceCommonMsgProcessor$TaskRunnable
         localException1.printStackTrace();
         localObject1 = null;
         continue;
-        localObject3 = new aavh();
-        ((aavh)localObject3).a = "path";
-        ((aavh)localObject3).b = localDataPoint.mValue;
-        localaavh = new aavh();
-        localaavh.a = "ret";
+        localObject3 = new abkt();
+        ((abkt)localObject3).a = "path";
+        ((abkt)localObject3).b = localDataPoint.mValue;
+        localabkt = new abkt();
+        localabkt.a = "ret";
         if (!this.jdField_a_of_type_Boolean) {
           break label370;
         }
       }
       localObject2 = "0";
-      localaavh.b = ((String)localObject2);
-      localDataPoint.mValue = DeviceCommonMsgProcessor.a((aavh)localObject3, localaavh);
+      localabkt.b = ((String)localObject2);
+      localDataPoint.mValue = DeviceCommonMsgProcessor.a((abkt)localObject3, localabkt);
       localObject2 = new Intent();
       ((Intent)localObject2).setAction("SmartDevice_receiveDPMsg");
       localObject3 = new Bundle();

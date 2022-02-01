@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agqd;
+import ahit;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -13,15 +13,15 @@ import mqq.os.MqqHandler;
 public class TextItemBuilder$8
   implements Runnable
 {
-  public TextItemBuilder$8(agqd paramagqd, CharSequence paramCharSequence, long paramLong1, long paramLong2) {}
+  public TextItemBuilder$8(ahit paramahit, CharSequence paramCharSequence, long paramLong1, long paramLong2) {}
   
   public void run()
   {
     SpannableString localSpannableString = this.this$0.a(this.jdField_a_of_type_JavaLangCharSequence, this.jdField_a_of_type_Long);
     if (localSpannableString != null) {}
-    synchronized (agqd.jdField_a_of_type_ComTencentUtilLRULinkedHashMap)
+    synchronized (ahit.jdField_a_of_type_ComTencentUtilLRULinkedHashMap)
     {
-      agqd.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(Long.valueOf(this.b), localSpannableString);
+      ahit.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(Long.valueOf(this.b), localSpannableString);
       Object localObject3 = this.this$0.b.obtainMessage();
       ((Message)localObject3).what = 1;
       ((Message)localObject3).obj = localSpannableString;

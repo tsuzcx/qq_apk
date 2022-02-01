@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
-import aiml;
+import ajhl;
 
 public class TroopView$MyTroopObserver$1
   implements Runnable
 {
-  public TroopView$MyTroopObserver$1(aiml paramaiml) {}
+  public TroopView$MyTroopObserver$1(ajhl paramajhl) {}
   
   public void run()
   {

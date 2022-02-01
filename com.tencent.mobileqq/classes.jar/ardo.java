@@ -1,34 +1,72 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.profile.like.PraiseManager;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class ardo
-  implements ayop
+public class ardo
+  extends aqwt<ardn>
 {
-  ardo(arcu paramarcu) {}
-  
-  public void a(int paramInt1, int paramInt2, String paramString, Bundle paramBundle)
+  @NonNull
+  public ardn a(int paramInt)
   {
-    MessengerService localMessengerService = (MessengerService)this.a.a.get();
-    if (localMessengerService != null)
+    return new ardn();
+  }
+  
+  @Nullable
+  public ardn a(aqxa[] paramArrayOfaqxa)
+  {
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0) && (paramArrayOfaqxa[0] != null))
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("id", paramInt2);
-      localBundle.putInt("code", paramInt1);
-      localBundle.putString("url", paramString);
-      paramBundle.putBundle("response", localBundle);
-      localMessengerService.a(paramBundle);
-      if ((paramInt1 == 0) && (MessengerService.e(localMessengerService) != null) && ((MessengerService.f(localMessengerService) instanceof QQAppInterface))) {
-        ((PraiseManager)((QQAppInterface)MessengerService.g(localMessengerService)).getManager(209)).a(paramInt2, true, "from_praise_mall");
+      ardn localardn = ardn.a(paramArrayOfaqxa[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("PttWithTextSwitchProcessor", 2, "onParsed " + paramArrayOfaqxa[0].a);
       }
+      return localardn;
     }
+    return null;
+  }
+  
+  public void a(ardn paramardn)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PttWithTextSwitchProcessor", 2, "onUpdate " + paramardn.toString());
+    }
+  }
+  
+  public Class<ardn> clazz()
+  {
+    return ardn.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 488;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ardo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.statistics;
 
-import aaff;
-import amvi;
+import aaur;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Application.ActivityLifecycleCallbacks;
@@ -13,7 +12,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.Fragment.IFragmentAttachCallback;
 import android.support.v4.app.Fragment.IFragmentLifecycleCallback;
 import android.support.v4.app.FragmentActivity;
-import bcfc;
+import anxv;
+import bdlx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mobileqq.activity.ChatFragment;
@@ -22,6 +22,7 @@ import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.home.MainFragment;
 import com.tencent.mobileqq.app.FontSettingManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.mobileqq.utils.StringUtil;
 import java.util.ArrayList;
@@ -284,7 +285,7 @@ public final class UEC
         }
       }
       paramObject.f = paramString3;
-      paramObject.e = "8.4.8";
+      paramObject.e = "8.4.10";
       this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramString1, paramObject);
     }
     for (paramString1 = paramObject;; paramString1 = paramObject)
@@ -361,15 +362,15 @@ public final class UEC
         localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
         if (localObject != null)
         {
-          bcfc localbcfc = (bcfc)((QQAppInterface)localObject).getManager(134);
-          if (localbcfc != null) {
-            localbcfc.a(paramArrayList);
+          bdlx localbdlx = (bdlx)((QQAppInterface)localObject).getManager(QQManagerFactory.ACT_DAU_REPORT_MANAGER);
+          if (localbdlx != null) {
+            localbdlx.a(paramArrayList);
           }
         }
       } while (localObject == null);
-      localObject = (bcfc)((QQAppInterface)localObject).getManager(158);
+      localObject = (bdlx)((QQAppInterface)localObject).getManager(QQManagerFactory.READINJOY_ACT_DAU_REPORT_MANAGER);
     } while (localObject == null);
-    ((bcfc)localObject).a(paramArrayList);
+    ((bdlx)localObject).a(paramArrayList);
   }
   
   public boolean a()
@@ -458,7 +459,7 @@ public final class UEC
     String str = c(paramActivity);
     a((String)localObject, paramActivity.hashCode(), str, paramActivity);
     if (Build.VERSION.SDK_INT >= 23) {
-      aaff.b(paramActivity);
+      aaur.b(paramActivity);
     }
   }
   
@@ -472,7 +473,7 @@ public final class UEC
     String str = c(paramActivity);
     b((String)localObject, paramActivity.hashCode(), str, paramActivity);
     if (Build.VERSION.SDK_INT >= 23) {
-      aaff.a(paramActivity);
+      aaur.a(paramActivity);
     }
   }
   
@@ -485,7 +486,7 @@ public final class UEC
       ((Application.ActivityLifecycleCallbacks)localIterator.next()).onActivityStarted(paramActivity);
     }
     this.jdField_a_of_type_Int += 1;
-    amvi.b(paramActivity);
+    anxv.b(paramActivity);
     if (Build.VERSION.SDK_INT >= 26) {
       FontSettingManager.resetFontIfNeeded(paramActivity, true, false);
     }

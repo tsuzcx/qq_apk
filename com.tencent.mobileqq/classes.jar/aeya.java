@@ -1,11 +1,28 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
-abstract interface aeya
+public class aeya
+  extends RecyclerView.ItemDecoration
 {
-  public abstract ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord);
+  private int jdField_a_of_type_Int;
+  
+  public aeya(aexr paramaexr, int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    paramRect.right = this.jdField_a_of_type_Int;
+    paramRect.bottom = this.jdField_a_of_type_Int;
+    paramRect.left = this.jdField_a_of_type_Int;
+    if (paramRecyclerView.getChildPosition(paramView) != 0) {
+      paramRect.right = this.jdField_a_of_type_Int;
+    }
+  }
 }
 
 

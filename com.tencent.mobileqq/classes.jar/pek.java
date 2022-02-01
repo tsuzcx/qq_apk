@@ -1,66 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.json.JSONTokener;
+import java.util.List;
 
-public class pek
+class pek
+  extends pfe
 {
-  public static String a(String paramString, Map<String, Object> paramMap)
+  pek(pdv parampdv, List paramList)
   {
-    JSONObject localJSONObject;
-    if ((paramMap != null) && (paramMap.size() > 0)) {
-      try
-      {
-        localJSONObject = new JSONObject(paramString);
-        paramMap = paramMap.entrySet().iterator();
-        while (paramMap.hasNext())
-        {
-          Map.Entry localEntry = (Map.Entry)paramMap.next();
-          localJSONObject.put((String)localEntry.getKey(), localEntry.getValue());
-          continue;
-          return paramString;
-        }
-      }
-      catch (Exception paramMap)
-      {
-        QLog.e("RIJR5JsonManager", 1, paramMap.getMessage());
-      }
-    }
-    paramMap = localJSONObject.toString();
-    return paramMap;
+    super(parampdv, null);
   }
   
-  public static JSONArray a(String paramString1, String paramString2)
+  void a(pfh parampfh)
   {
-    paramString1 = a(paramString1);
-    if ((paramString1 == null) || (paramString1.length() <= 0)) {
-      paramString1 = null;
-    }
-    do
-    {
-      return paramString1;
-      paramString2 = paramString1.optJSONArray(paramString2);
-      if (paramString2 == null) {
-        break;
-      }
-      paramString1 = paramString2;
-    } while (paramString2.length() > 0);
-    return null;
-  }
-  
-  public static JSONObject a(String paramString)
-  {
-    try
-    {
-      paramString = (JSONObject)new JSONTokener(paramString).nextValue();
-      return paramString;
-    }
-    catch (Exception paramString) {}
-    return null;
+    parampfh.onCommentListLoad(1, true, this.jdField_a_of_type_JavaUtilList, pdv.a(this.jdField_a_of_type_Pdv), 3, 3);
   }
 }
 

@@ -1,24 +1,18 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.gdtad.aditem.GdtBaseAdItem;
 
-public class acaj
-  implements abzb
+public final class acaj
+  implements Parcelable.Creator<GdtBaseAdItem>
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
+  public GdtBaseAdItem a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShieldListSvrPush", 2, "<---receive shieldlist push : forward to shieldlisthandler");
-    }
-    ((anaw)paramQQAppInterface.getBusinessHandler(18)).a(paramMsgType0x210.vProtobuf);
+    return new GdtBaseAdItem(paramParcel);
   }
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public GdtBaseAdItem[] a(int paramInt)
   {
-    a(paramabxc.a(), paramMsgType0x210);
-    return null;
+    return new GdtBaseAdItem[paramInt];
   }
 }
 

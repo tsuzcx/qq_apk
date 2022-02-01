@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import acvv;
+import admh;
 import android.content.Context;
 import android.os.SystemClock;
 import com.tencent.common.config.AppSetting;
@@ -43,7 +43,7 @@ public class ShortVideoUploadABTest
     if ((!canPerformABTest(paramSessionInfo.curType, paramSessionInfo.curFriendUin)) || (paramString == null)) {
       return;
     }
-    acvv.b(paramQQAppInterface, paramContext, paramSessionInfo, paramString);
+    admh.b(paramQQAppInterface, paramContext, paramSessionInfo, paramString);
   }
   
   /* Error */

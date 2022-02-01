@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.storyHome.detail.model.cmment;
 
-import xih;
+import xxc;
 
 public class KeyboardAndEmojiManager$2
   implements Runnable
 {
-  public KeyboardAndEmojiManager$2(xih paramxih) {}
+  public KeyboardAndEmojiManager$2(xxc paramxxc) {}
   
   public void run()
   {

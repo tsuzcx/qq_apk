@@ -1,7 +1,4 @@
-public abstract interface amjx
-{
-  public abstract void b(boolean paramBoolean);
-}
+public abstract interface amjx {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

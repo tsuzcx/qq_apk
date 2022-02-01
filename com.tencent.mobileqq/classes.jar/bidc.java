@@ -1,22 +1,32 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.qphone.base.util.QLog;
 
-class bidc
-  implements View.OnClickListener
+public class bidc
+  extends BroadcastReceiver
 {
-  bidc(bicz parambicz, DialogInterface.OnClickListener paramOnClickListener, int paramInt, boolean paramBoolean) {}
+  public bidc(WebProcessManager paramWebProcessManager) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bicz, this.jdField_a_of_type_Int);
+    int i = paramIntent.getIntExtra("user_type", 0);
+    int j = paramIntent.getIntExtra("from_type", 0);
+    paramContext = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramContext instanceof QQAppInterface))
+    {
+      paramContext = (anqn)((QQAppInterface)paramContext).getBusinessHandler(BusinessHandlerFactory.BABY_Q_HANDLER);
+      if (paramContext != null) {
+        paramContext.a(i, j);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("WebProcessManager", 2, "babyq receiver recv user_type=" + i + ", from_type=" + j);
+      }
     }
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Bicz.dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,22 +1,21 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
 
-class adjl
-  implements bjoe
+public class adjl
+  implements bkzq
 {
-  adjl(adjk paramadjk, adjx paramadjx, bjnw parambjnw) {}
+  public adjl(AssociatedAccountActivity paramAssociatedAccountActivity, bkzi parambkzi) {}
   
   public void OnClick(View paramView, int paramInt)
   {
     switch (paramInt)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bjnw.dismiss();
+    default: 
       return;
-      this.jdField_a_of_type_Adjk.a.b(this.jdField_a_of_type_Adjx);
     }
+    this.jdField_a_of_type_Bkzi.cancel();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.getString(2131690826));
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, "dc00898", "", "", "0X800AC3E", "0X800AC3E", 0, 0, "", "", "", "");
   }
 }
 

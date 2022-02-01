@@ -1,4 +1,13 @@
-// INTERNAL ERROR //
+public class vuu
+{
+  public int a = 600;
+  public String a;
+  public boolean a;
+  public int b = 400;
+  public String b;
+  public String c;
+}
+
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vuu

@@ -1,19 +1,10 @@
-import com.tencent.mobileqq.data.ApolloGameData;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.activity.richmedia.view.GLVideoClipUtil;
 
 public class alvh
 {
-  public String a;
-  public List<Integer> a;
-  public String b;
-  public List<ApolloGameData> b = new ArrayList();
-  public List<String> c = new ArrayList();
+  public int a;
   
-  public alvh(alvd paramalvd)
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  private alvh(GLVideoClipUtil paramGLVideoClipUtil) {}
 }
 
 

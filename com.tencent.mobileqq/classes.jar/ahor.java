@@ -1,12 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.data.MessageForStructing;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahor
-  implements ahos
+  implements ahnr
 {
-  public void a(MessageForStructing paramMessageForStructing, aezf paramaezf, View paramView, boolean paramBoolean)
+  public void a(agtf paramagtf, MessageRecord paramMessageRecord, agus paramagus, aftk paramaftk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    paramView.setBackgroundDrawable(null);
+    paramagtf.e(paramagus.b);
   }
 }
 

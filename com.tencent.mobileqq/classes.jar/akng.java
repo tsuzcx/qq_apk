@@ -1,49 +1,28 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.config.statusIcon.AbsRecentStatus;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
 
 public class akng
-  extends AbsRecentStatus
+  extends akly
 {
-  private static int a = 15;
+  boolean a;
   
-  public int[] declareStatus()
+  protected akng(AlbumListFragment paramAlbumListFragment)
   {
-    return new int[] { 8 };
+    super(paramAlbumListFragment);
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public boolean focusUINType(RecentBaseData paramRecentBaseData, IMCoreAppRuntime paramIMCoreAppRuntime)
+  public void initData(Intent paramIntent)
   {
-    return true;
-  }
-  
-  public boolean handleBusiness(IMCoreAppRuntime paramIMCoreAppRuntime, RecentBaseData paramRecentBaseData)
-  {
-    if (!(paramIMCoreAppRuntime instanceof QQAppInterface)) {}
-    String str;
-    do
+    super.initData(paramIntent);
+    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("PhotoConst.IS_FROM_QZONE_AND_NEED_FILTER_RECENT_IMAGES", false);
+    if (this.jdField_a_of_type_Boolean)
     {
-      do
-      {
-        return false;
-        paramIMCoreAppRuntime = (QQAppInterface)paramIMCoreAppRuntime;
-        str = paramRecentBaseData.getRecentUserUin();
-        paramRecentBaseData.mStatus = 0;
-        if (paramRecentBaseData.getRecentUserType() != 1) {
-          break;
-        }
-      } while (!avhg.b(paramIMCoreAppRuntime, str));
-      paramRecentBaseData.mStatus = 8;
-      return false;
-    } while ((paramRecentBaseData.getRecentUserType() != 0) || (!avhg.a(paramIMCoreAppRuntime, str)));
-    paramRecentBaseData.mStatus = 8;
-    return false;
-  }
-  
-  public int priority()
-  {
-    return a;
+      this.jdField_a_of_type_Aklx.recentImagesMaxCount = paramIntent.getIntExtra("PhotoConst.RECENT_IMAGES_MAX_COUNT", 100);
+      this.jdField_a_of_type_Aklx.recentImagesLimitSize = paramIntent.getIntExtra("PhotoConst.RECENT_IMAGES_LIMIT_SIZE", 0);
+      this.jdField_a_of_type_Aklx.recentImagesLimitWidth = paramIntent.getIntExtra("PhotoConst.RECENT_IMAGES_LIMIT_WIDTH", -1);
+      this.jdField_a_of_type_Aklx.recentImagesBlockPaths = paramIntent.getStringArrayListExtra("PhotoConst.RECENT_IMAGES_BLOCK_PATHS");
+    }
   }
 }
 

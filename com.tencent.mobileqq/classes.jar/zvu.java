@@ -1,15 +1,35 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
+import android.text.Editable;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import com.tencent.biz.subscribe.comment.EmoView;
+import com.tencent.mobileqq.widget.QQToast;
 
-class zvu
-  implements ValueAnimator.AnimatorUpdateListener
+public class zvu
+  implements zvv
 {
-  zvu(zvt paramzvt, zwc paramzwc, View paramView) {}
+  public zvu(EmoView paramEmoView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean a()
   {
-    this.jdField_a_of_type_Zwc.a(this.jdField_a_of_type_AndroidViewView, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    if (EmoView.a(this.a) == null) {
+      return false;
+    }
+    EmoView.a(this.a).dispatchKeyEvent(new KeyEvent(0L, 0L, 0, 67, 0, 0));
+    return true;
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (EmoView.a(this.a) == null) {
+      return false;
+    }
+    if ((EmoView.b(this.a) > 0) && (EmoView.a(this.a).getText().length() + paramString.length() > EmoView.b(this.a)))
+    {
+      QQToast.a(this.a.getContext(), 0, anvx.a(2131703601), 0);
+      return false;
+    }
+    EmoView.a(EmoView.a(this.a), paramString);
+    return true;
   }
 }
 

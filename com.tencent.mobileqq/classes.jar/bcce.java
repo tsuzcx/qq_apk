@@ -1,8 +1,21 @@
-import com.tencent.mobileqq.startup.step.RecordTracer;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.search.fragment.FunctionSearchFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class bcce
+public class bcce
+  implements View.OnTouchListener
 {
-  public static final RecordTracer a = new RecordTracer();
+  public bcce(FunctionSearchFragment paramFunctionSearchFragment) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
+  }
 }
 
 

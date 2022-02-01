@@ -1,22 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagItemView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class awoh
-  implements View.OnClickListener
+public abstract interface awoh
 {
-  public awoh(InterestTagItemView paramInterestTagItemView) {}
-  
-  public void onClick(View paramView)
-  {
-    if ((paramView == InterestTagItemView.a(this.a)) || (paramView == this.a))
-    {
-      InterestTagItemView.a(this.a).a(InterestTagItemView.a(this.a));
-      this.a.a();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a();
 }
 
 

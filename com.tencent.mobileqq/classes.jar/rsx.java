@@ -1,6 +1,6 @@
-public abstract interface rsx
+public abstract interface rsx<T, E>
 {
-  public abstract void a(int paramInt);
+  public abstract E a(T paramT);
 }
 
 

@@ -1,44 +1,42 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.vashealth.VideoCallBack;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.support.v4.view.ViewPager;
+import android.view.animation.Interpolator;
+import android.widget.Scroller;
+import com.tencent.mobileqq.troop.widget.AvatarWallViewPager;
+import java.lang.reflect.Field;
 
 public class bgmz
-  extends Handler
+  extends Scroller
 {
-  public bgmz(VideoCallBack paramVideoCallBack, bhht parambhht, String paramString, Activity paramActivity) {}
-  
-  public void handleMessage(Message paramMessage)
+  public bgmz(AvatarWallViewPager paramAvatarWallViewPager, Context paramContext, Interpolator paramInterpolator)
   {
-    switch (paramMessage.what)
+    super(paramContext, paramInterpolator);
+  }
+  
+  public void a()
+  {
+    try
     {
-    }
-    int i;
-    do
-    {
+      Field localField = ViewPager.class.getDeclaredField("mScroller");
+      localField.setAccessible(true);
+      localField.set(this.a.a, this);
+      localField.setAccessible(false);
       return;
-      if ((this.jdField_a_of_type_Bhht != null) && (this.jdField_a_of_type_Bhht.isShowing())) {
-        this.jdField_a_of_type_Bhht.dismiss();
-      }
-      i = paramMessage.arg1;
-      if (i != 0) {
-        break;
-      }
-      paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
-      Intent localIntent = new Intent();
-      localIntent.putExtra("video_dir", paramMessage);
-      localIntent.putExtra("thumb_dir", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidAppActivity.setResult(1, localIntent);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-    } while (!QLog.isColorLevel());
-    QLog.i("VideoCallBack", 2, "encode success: " + paramMessage);
-    return;
-    this.jdField_a_of_type_AndroidAppActivity.setResult(2);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-    QLog.e("VideoCallBack", 1, "error! ret = " + i);
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, 500);
+  }
+  
+  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, 500);
   }
 }
 

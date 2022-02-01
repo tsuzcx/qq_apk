@@ -1,4 +1,8 @@
-// INTERNAL ERROR //
+public class mzw
+{
+  public V a;
+}
+
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mzw

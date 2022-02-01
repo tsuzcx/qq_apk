@@ -1,15 +1,30 @@
-import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class asyv
-  implements bhnm
+public class asyv
+  implements View.OnClickListener
 {
-  asyv(asyq paramasyq, Activity paramActivity, int paramInt) {}
+  public asyv(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 2) {
-      asyq.a(this.jdField_a_of_type_Asyq, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.resetSlideStatus();
     }
+    Button localButton = (Button)paramView.findViewById(2131365464);
+    if (localButton.getTag() != null)
+    {
+      this.a.e = ((Integer)localButton.getTag()).intValue();
+      if (this.a.jdField_a_of_type_Atpx != null) {
+        this.a.jdField_a_of_type_Atpx.a(null);
+      }
+    }
+    this.a.m();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

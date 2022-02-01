@@ -8,22 +8,22 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.view.Window;
-import bkwm;
+import bmhv;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import oiz;
-import ols;
-import sek;
+import oqv;
+import otp;
+import sqp;
 
 public class ReadInJoyFollowActivity
   extends IphoneTitleBarActivity
 {
-  public oiz a;
+  public oqv a;
   
   private void a()
   {
-    ViewGroup localViewGroup = (ViewGroup)findViewById(2131375979);
-    this.a = new oiz(this);
+    ViewGroup localViewGroup = (ViewGroup)findViewById(2131376226);
+    this.a = new oqv(this);
     this.a.a(70);
     this.a.b(0);
     this.a.a(localViewGroup);
@@ -49,13 +49,13 @@ public class ReadInJoyFollowActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    sek.a().a(this);
+    sqp.a().a(this);
     if (Build.VERSION.SDK_INT >= 11) {
       getWindow().setFlags(16777216, 16777216);
     }
-    setContentView(2131560194);
+    setContentView(2131560240);
     getWindow().setBackgroundDrawable(null);
-    setClickableTitle("BB圈", new ols(this));
+    setClickableTitle("BB圈", new otp(this));
     a();
     this.a.a();
     return true;
@@ -65,7 +65,7 @@ public class ReadInJoyFollowActivity
   {
     super.doOnDestroy();
     this.a.d();
-    sek.a().b(this);
+    sqp.a().b(this);
   }
   
   public void doOnPause()
@@ -83,7 +83,7 @@ public class ReadInJoyFollowActivity
   public void doOnStart()
   {
     super.doOnStart();
-    bkwm.a(getAppRuntime());
+    bmhv.a(getAppRuntime());
     this.a.e();
   }
   

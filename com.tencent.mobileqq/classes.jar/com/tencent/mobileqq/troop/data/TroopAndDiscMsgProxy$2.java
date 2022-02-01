@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.data;
 
-import bdzk;
+import bfgn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -9,12 +9,12 @@ import java.util.HashMap;
 public class TroopAndDiscMsgProxy$2
   implements Runnable
 {
-  public TroopAndDiscMsgProxy$2(bdzk parambdzk, boolean paramBoolean) {}
+  public TroopAndDiscMsgProxy$2(bfgn parambfgn, boolean paramBoolean) {}
   
   public void run()
   {
     StatisticCollector localStatisticCollector = StatisticCollector.getInstance(BaseApplication.getContext());
-    String str = bdzk.a(this.this$0).getCurrentAccountUin();
+    String str = bfgn.a(this.this$0).getCurrentAccountUin();
     if (!this.a) {}
     for (boolean bool = true;; bool = false)
     {

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.chathistory;
 
-import argo;
+import asku;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -22,7 +22,7 @@ class TroopAIOEmotionFragment$2
     ArrayList localArrayList = new ArrayList();
     Object localObject = TroopAIOEmotionFragment.a(this.this$0).iterator();
     while (((Iterator)localObject).hasNext()) {
-      localArrayList.add((ChatMessage)((argo)((Iterator)localObject).next()).a);
+      localArrayList.add((ChatMessage)((asku)((Iterator)localObject).next()).a);
     }
     localObject = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject instanceof QQAppInterface)) {}

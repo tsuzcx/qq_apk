@@ -1,14 +1,25 @@
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import java.util.Comparator;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
 
 class aidg
-  implements Comparator<MayKnowRecommend>
+  extends axpz
 {
-  aidg(aidb paramaidb) {}
+  aidg(aidd paramaidd) {}
   
-  public int a(MayKnowRecommend paramMayKnowRecommend1, MayKnowRecommend paramMayKnowRecommend2)
+  public void a(String paramString1, String paramString2, Object paramObject)
   {
-    return paramMayKnowRecommend2.timestamp - paramMayKnowRecommend1.timestamp;
+    if (QLog.isDevelopLevel()) {
+      QLog.i(this.a.tag, 4, "onAutoInput, [" + paramString1 + "," + paramString2 + "," + paramObject + "," + System.currentTimeMillis() + "]");
+    }
+    if (!"tag_nearby_chat".equals(paramString1)) {}
+    while ((TextUtils.isEmpty(paramString2)) || (this.a.input == null)) {
+      return;
+    }
+    this.a.showInputPanel();
+    this.a.input.setText(paramString2);
+    this.a.input.selectAll();
+    this.a.b = paramString2;
   }
 }
 

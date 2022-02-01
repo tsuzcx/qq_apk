@@ -1,78 +1,30 @@
-import com.tencent.biz.richframework.preload.Worker;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
 
 public class zan
+  extends zap
 {
-  private static zan jdField_a_of_type_Zan;
-  private final ConcurrentHashMap<String, zaq> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(100);
+  public int a;
+  public long a;
+  public SlideItemInfo a;
+  public String a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public boolean c;
+  private boolean e;
   
-  private <T> String a(String paramString, Worker<T> paramWorker)
-  {
-    if (a(paramString))
-    {
-      zam.b("preLoader ID is used, please note that remove!");
-      a(paramString);
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramWorker);
-    paramWorker.a();
-    return paramString;
-  }
+  public zan() {}
   
-  public static zan a()
+  public zan(long paramLong1, SlideItemInfo paramSlideItemInfo, int paramInt1, int paramInt2, long paramLong2, zao paramzao, boolean paramBoolean)
   {
-    if (jdField_a_of_type_Zan == null) {
-      jdField_a_of_type_Zan = new zan();
-    }
-    return jdField_a_of_type_Zan;
-  }
-  
-  public <T> String a(String paramString, zal<T> paramzal)
-  {
-    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-    return a(paramString, new Worker(paramString, paramzal, (zas)null, i));
-  }
-  
-  public void a(String paramString)
-  {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))) {}
-    try
-    {
-      zaq localzaq = (zaq)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      if (localzaq != null) {
-        localzaq.b();
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        zam.a(localException);
-      }
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-  }
-  
-  public <T> void a(String paramString, zas<T> paramzas)
-  {
-    try
-    {
-      paramString = (zaq)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      if (paramString != null) {
-        paramString.a(paramzas);
-      }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      zam.a(paramString);
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
+    this.jdField_b_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Long = paramLong2;
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo = paramSlideItemInfo;
+    this.jdField_a_of_type_JavaLangString = paramSlideItemInfo.b;
+    this.jdField_a_of_type_Zao = paramzao;
+    this.e = paramBoolean;
   }
 }
 

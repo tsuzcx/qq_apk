@@ -1,69 +1,16 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import android.text.TextUtils;
-import com.tencent.gamecenter.appointment.GameCenterCheck;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
-import tencent.im.s2c.msgtype0x210.submsgtype0xce.submsgtype0xce.MsgBody;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import kotlin.Metadata;
 
-public class accv
-  implements abzb
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"}, k=3, mv={1, 1, 16})
+final class accv
+  implements DialogInterface.OnDismissListener
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
-  {
-    int k = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "OnLinePushMessageProcessor receive 0xce push message ");
-    }
-    Object localObject = new submsgtype0xce.MsgBody();
-    try
-    {
-      ((submsgtype0xce.MsgBody)localObject).mergeFrom(paramMsgType0x210.vProtobuf);
-      paramMsgType0x210 = ((submsgtype0xce.MsgBody)localObject).string_params.get();
-      if (QLog.isColorLevel()) {
-        bifn.c("Q.msg.BaseMessageProcessor", "yuyue(push):OnLinePushMessageProcessor receive 0xce strJson=" + paramMsgType0x210);
-      }
-      localObject = new JSONObject(paramMsgType0x210).optString("appid");
-      String[] arrayOfString = abet.a("APPOINTMENT_DOWNLOAD_LIST").split("\\|");
-      int i = 0;
-      for (;;)
-      {
-        int j = k;
-        if (i < arrayOfString.length)
-        {
-          if ((!TextUtils.isEmpty(arrayOfString[i])) && (!TextUtils.isEmpty((CharSequence)localObject)) && (arrayOfString[i].equals(localObject))) {
-            j = 1;
-          }
-        }
-        else
-        {
-          if ((j == 0) && (!TextUtils.isEmpty((CharSequence)localObject)))
-          {
-            abet.c((String)localObject, "APPOINTMENT_LIST");
-            abet.a((String)localObject, paramMsgType0x210, "APPOINT_APPID_DETAIL_");
-            abep.a();
-          }
-          GameCenterCheck.a();
-          abet.a(paramQQAppInterface, "426", "202136", (String)localObject, "42601", "1", "116");
-          return;
-        }
-        i += 1;
-      }
-      return;
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      paramQQAppInterface.printStackTrace();
-    }
-  }
+  accv(accm paramaccm) {}
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    a(paramabxc.a(), paramMsgType0x210);
-    return null;
+    accm.a(this.a).b();
   }
 }
 

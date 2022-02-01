@@ -7,7 +7,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import pax;
+import pkg;
 
 public class PicUploadExplicitError
 {
@@ -64,9 +64,9 @@ public class PicUploadExplicitError
       return null;
     case 1: 
     case 2: 
-      return BaseApplicationImpl.getApplication().getResources().getString(2131689939);
+      return BaseApplicationImpl.getApplication().getResources().getString(2131689968);
     }
-    return BaseApplicationImpl.getApplication().getResources().getString(2131689938);
+    return BaseApplicationImpl.getApplication().getResources().getString(2131689967);
   }
   
   public static String getFailedTip(MessageForPic paramMessageForPic)
@@ -90,7 +90,7 @@ public class PicUploadExplicitError
         }
         long l1 = Long.parseLong(str);
         long l2 = SystemClock.uptimeMillis();
-        if (pax.a(l1, l2))
+        if (pkg.a(l1, l2))
         {
           if (QLog.isColorLevel()) {
             QLog.d("PicUploadExplicitError", 2, "getFailedTip,lastSendPicTime:" + l1 + " timeCurrent:" + l2);

@@ -1,82 +1,28 @@
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppContentView;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.smtt.sdk.WebView;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class obk
-  extends abup
+class obk
+  implements View.OnClickListener
 {
-  public obk(ReadInJoyNativeAdAppContentView paramReadInJoyNativeAdAppContentView, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
-  {
-    super(paramContext, paramActivity, paramIntent, paramAppInterface);
-  }
+  obk(obj paramobj) {}
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public void onClick(View paramView)
   {
-    super.onPageFinished(paramWebView, paramString);
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    paramWebView = this.a.findViewById(2131362815);
-    if ((paramWebView != null) && (ReadInJoyNativeAdAppContentView.a(this.a) != null))
+    Object localObject = paramView.getTag();
+    if ((localObject != null) && ((localObject instanceof oji)))
     {
-      ReadInJoyNativeAdAppContentView.a(this.a).setVisibility(8);
-      paramWebView.setVisibility(0);
-    }
-  }
-  
-  public void onReceivedTitle(WebView paramWebView, String paramString)
-  {
-    super.onReceivedTitle(paramWebView, paramString);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    abrl.b("AbsWebView", "shouldOverrideUrlLoading:" + paramString);
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
-    Object localObject;
-    do
-    {
-      return true;
-      localObject = ((CustomWebView)paramWebView).getPluginEngine();
-      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
-      {
-        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
-        for (boolean bool = true;; bool = false) {
-          return bool;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("AccountDetailCustomModuleBaseWrapper", 2, "click!");
       }
-      paramString = Uri.parse(paramString);
-      localObject = paramString.getScheme();
-    } while (!nko.a().a(paramWebView.getUrl(), (String)localObject).booleanValue());
-    paramWebView = new Intent("android.intent.action.VIEW", paramString);
-    paramWebView.addFlags(268435456);
-    try
-    {
-      this.mContext.startActivity(paramWebView);
-      return true;
+      localObject = (oji)localObject;
+      if (this.a.a != null) {
+        this.a.a.a((oji)localObject);
+      }
+      this.a.a((oji)localObject);
     }
-    catch (ActivityNotFoundException paramWebView)
-    {
-      abrl.d("AbsWebView", paramWebView.toString());
-    }
-    return true;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

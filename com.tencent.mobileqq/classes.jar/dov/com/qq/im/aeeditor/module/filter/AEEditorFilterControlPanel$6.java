@@ -1,7 +1,7 @@
 package dov.com.qq.im.aeeditor.module.filter;
 
-import bmbc;
-import bmkl;
+import bnqm;
+import boad;
 
 class AEEditorFilterControlPanel$6
   implements Runnable
@@ -13,7 +13,7 @@ class AEEditorFilterControlPanel$6
     if (AEEditorFilterControlPanel.a(this.this$0) != null)
     {
       AEEditorFilterControlPanel.a(this.this$0).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean);
-      bmbc.a().b(this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean.getEffectId());
+      bnqm.a().b(this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean.getEffectId());
     }
     this.this$0.a(this.jdField_a_of_type_Int);
   }

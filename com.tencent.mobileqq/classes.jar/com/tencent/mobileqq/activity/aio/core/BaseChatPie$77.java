@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import awcm;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Message;
+import anvk;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import mqq.os.MqqHandler;
 
 class BaseChatPie$77
-  implements View.OnClickListener
+  implements Runnable
 {
-  BaseChatPie$77(BaseChatPie paramBaseChatPie) {}
+  BaseChatPie$77(BaseChatPie paramBaseChatPie, anvk paramanvk) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    awcm.a().a = 0;
-    this.this$0.chatPieHelper.a(this.this$0.getActivity(), this.this$0.getActivity().getIntent());
-    this.this$0.finish(1);
-    EventCollector.getInstance().onViewClicked(paramView);
+    ExtensionInfo localExtensionInfo = this.val$fm.a(this.this$0.sessionInfo.curFriendUin, true);
+    if ((localExtensionInfo != null) && (localExtensionInfo.audioPanelType != -1) && (this.this$0.mAudioPanel != null)) {
+      this.this$0.uiHandler.obtainMessage(40, localExtensionInfo.audioPanelType, this.this$0.sessionInfo.curType).sendToTarget();
+    }
   }
 }
 

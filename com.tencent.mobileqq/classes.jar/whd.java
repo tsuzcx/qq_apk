@@ -1,10 +1,24 @@
-public abstract interface whd
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspLikeFeed;
+
+public class whd
+  extends whv
 {
-  public abstract void a(wjk paramwjk);
+  qqstory_service.RspLikeFeed a;
   
-  public abstract void b(wjk paramwjk);
+  public whd() {}
   
-  public abstract void c(wjk paramwjk);
+  public whd(qqstory_service.RspLikeFeed paramRspLikeFeed)
+  {
+    super(paramRspLikeFeed.result);
+    this.a = paramRspLikeFeed;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt, Bundle paramBundle) {}
+  
+  public void a(int paramInt, String paramString) {}
 }
 
 

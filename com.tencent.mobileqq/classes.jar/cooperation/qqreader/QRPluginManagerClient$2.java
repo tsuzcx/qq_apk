@@ -1,12 +1,12 @@
 package cooperation.qqreader;
 
-import bksw;
-import bksx;
+import bmef;
+import bmeg;
 
 public class QRPluginManagerClient$2
   implements Runnable
 {
-  public QRPluginManagerClient$2(bksw parambksw, bksx parambksx) {}
+  public QRPluginManagerClient$2(bmef parambmef, bmeg parambmeg) {}
   
   public void run()
   {

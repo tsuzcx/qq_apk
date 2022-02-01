@@ -1,25 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import android.widget.ImageView;
-
-class arqu
-  implements Animation.AnimationListener
+public class arqu
 {
-  arqu(arqt paramarqt) {}
+  private arqx a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public static arqu a()
   {
-    paramAnimation = new ScaleAnimation(1.2F, 1.0F, 1.2F, 1.0F, 1, 0.5F, 1, 0.5F);
-    paramAnimation.setDuration(500);
-    paramAnimation.setFillAfter(true);
-    paramAnimation.setAnimationListener(new arqv(this));
-    this.a.c.startAnimation(paramAnimation);
+    return arqw.a();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public arqx a()
+  {
+    if (this.a == null) {
+      this.a = new arqy();
+    }
+    return this.a;
+  }
 }
 
 

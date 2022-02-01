@@ -1,40 +1,43 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil.3.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import android.view.View;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
+import com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment;
 
 public class bftn
-  extends anau
+  implements bkzq
 {
-  bftn(bftm parambftm) {}
+  public bftn(SearchReciteArticleFragment paramSearchReciteArticleFragment, bkzi parambkzi, bftr parambftr, int paramInt) {}
   
-  protected void b(int paramInt, Bundle paramBundle)
+  public void OnClick(View paramView, int paramInt)
   {
-    Object localObject = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-    if (localObject != null) {
-      ((QQAppInterface)localObject).removeObserver(bftm.a(this.a));
+    this.jdField_a_of_type_Bkzi.dismiss();
+    int i = paramInt;
+    if (this.jdField_a_of_type_Bftr.jdField_a_of_type_Int == 2) {
+      i = paramInt + 1;
     }
-    if (paramInt != 1) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SecSvcObserver", 2, "invalid notification type for onGetUinSafetyWordingConfig:" + Integer.toString(paramInt));
-      }
-    }
-    while (paramBundle == null) {
+    switch (i)
+    {
+    default: 
+      return;
+    case 0: 
+      SelectReciteParagraphFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bftr.c, SearchReciteArticleFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment));
+      bhbu.a("Grp_edu", "Grp_recite", "Search_Content_Clk", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment.jdField_a_of_type_JavaLangString, "0", String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.jdField_a_of_type_Bftr.jdField_a_of_type_Int) });
       return;
     }
-    String str = paramBundle.getString("config_name");
-    localObject = str;
-    if (!TextUtils.isEmpty(str))
+    bhbu.a("Grp_edu", "Grp_recite", "Search_Content_Clk", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment.jdField_a_of_type_JavaLangString, "1", String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.jdField_a_of_type_Bftr.jdField_a_of_type_Int) });
+    bhbu.a("Grp_edu", "Grp_recite", "Clk_Success", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Bftr.jdField_a_of_type_Int) });
+    try
     {
-      localObject = str;
-      if (TextUtils.equals("SenstiveMessageTipsCfg", str)) {
-        localObject = "SensMsgTipsCfg";
+      SearchReciteArticleFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment, bfut.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bftr.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bftr.c, null));
+      SearchReciteArticleFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment);
+      return;
+    }
+    catch (Exception paramView)
+    {
+      for (;;)
+      {
+        paramView.printStackTrace();
       }
     }
-    ThreadManager.post(new AntiFraudConfigFileUtil.3.1(this, (String)localObject, paramBundle.getInt("effect_time", 0), paramBundle.getString("md5"), paramBundle.getString("download_url")), 5, null, false);
   }
 }
 

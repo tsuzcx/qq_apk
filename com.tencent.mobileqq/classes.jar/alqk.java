@@ -1,39 +1,48 @@
-import android.util.Log;
-import com.tencent.mobileqq.apollo.GLTextureView;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class alqk
-  implements alqn
+  extends OrientationEventListener
 {
-  private int jdField_a_of_type_Int = 12440;
-  
-  private alqk(GLTextureView paramGLTextureView) {}
-  
-  public EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+  public alqk(NewFlowCameraActivity paramNewFlowCameraActivity, Context paramContext)
   {
-    int[] arrayOfInt = new int[3];
-    arrayOfInt[0] = this.jdField_a_of_type_Int;
-    arrayOfInt[1] = GLTextureView.access$400(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView);
-    arrayOfInt[2] = 12344;
-    EGLContext localEGLContext = EGL10.EGL_NO_CONTEXT;
-    if (GLTextureView.access$400(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView) != 0) {}
-    for (;;)
-    {
-      return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, localEGLContext, arrayOfInt);
-      arrayOfInt = null;
-    }
+    super(paramContext);
   }
   
-  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
+  public void onOrientationChanged(int paramInt)
   {
-    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext))
+    NewFlowCameraActivity.a(this.a).a(paramInt);
+    if (this.a.i) {}
+    do
     {
-      Log.e("DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext);
-      alqp.a("eglDestroyContex", paramEGL10.eglGetError());
-    }
+      return;
+      if (paramInt == -1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PTV.NewFlowCameraActivity", 2, "OrientationEventListener unknown");
+        }
+        this.a.o = 90;
+        return;
+      }
+      if ((paramInt > 315) || (paramInt < 45))
+      {
+        this.a.o = 90;
+        return;
+      }
+      if ((paramInt > 45) && (paramInt < 135))
+      {
+        this.a.o = 180;
+        return;
+      }
+      if ((paramInt > 135) && (paramInt < 225))
+      {
+        this.a.o = 270;
+        return;
+      }
+    } while ((paramInt <= 225) || (paramInt >= 315));
+    this.a.o = 0;
   }
 }
 

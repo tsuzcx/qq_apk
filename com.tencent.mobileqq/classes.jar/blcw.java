@@ -1,26 +1,6 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
-class blcw
-  implements View.OnTouchListener
+public abstract interface blcw
 {
-  blcw(blcs paramblcs) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.a.d();
-      return true;
-    }
-    if (paramMotionEvent.getAction() == 4)
-    {
-      this.a.d();
-      return true;
-    }
-    return paramView.onTouchEvent(paramMotionEvent);
-  }
+  public abstract void a();
 }
 
 

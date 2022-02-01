@@ -1,54 +1,16 @@
-import android.graphics.drawable.Animatable;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.item.BreathAnimationLayout;
-import com.tencent.mobileqq.activity.aio.item.PttAudioPlayView;
-import com.tencent.mobileqq.activity.aio.item.PttAudioWaveView;
-import com.tencent.mobileqq.activity.contact.connections.TriangleView;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.doutu.DuiButtonImageView;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
-public class agis
-  extends aezf
+class agis
+  extends awoe
 {
-  public long a;
-  public FrameLayout a;
-  public ImageView a;
-  public ProgressBar a;
-  public RelativeLayout a;
-  public TextView a;
-  public BreathAnimationLayout a;
-  public PttAudioPlayView a;
-  public PttAudioWaveView a;
-  public TriangleView a;
-  EmoticonPackage jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage;
-  DuiButtonImageView jdField_a_of_type_ComTencentMobileqqDoutuDuiButtonImageView;
-  public PicEmoticonInfo a;
-  public boolean a;
-  ImageView b;
-  public RelativeLayout b;
-  public boolean b;
-  ImageView c;
-  ImageView d;
-  public int e = -1;
-  public ImageView e;
-  public ImageView f;
-  ImageView g;
+  agis(agiq paramagiq) {}
   
-  public void a()
+  public void a() {}
+  
+  public void a(awit paramawit)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioPlayView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioPlayView.a();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.b();
-    }
-    if ((this.g != null) && ((this.g.getDrawable() instanceof Animatable))) {
-      ((Animatable)this.g.getDrawable()).stop();
+    if ((agiq.a(this.a) != null) && (agiq.a(this.a).equals(paramawit)) && (agiq.a(this.a) == agiq.a(this.a).getTipManager().a())) {
+      agiq.a(this.a).getTipManager().a();
     }
   }
 }

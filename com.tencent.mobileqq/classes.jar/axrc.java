@@ -1,33 +1,8 @@
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
-
-class axrc
-  extends Handler
+public abstract interface axrc
 {
-  private WeakReference<axqp> a;
+  public abstract void g();
   
-  public axrc(axqp paramaxqp)
-  {
-    this.a = new WeakReference(paramaxqp);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    axqp localaxqp = (axqp)this.a.get();
-    if (localaxqp == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 100: 
-      axqp.a(localaxqp, (axre)paramMessage.obj);
-      return;
-    }
-    axqp.a(localaxqp);
-  }
+  public abstract void h();
 }
 
 

@@ -1,20 +1,28 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.now.NowVideoView;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class nzc
-  implements DialogInterface.OnCancelListener
+public class nzc
+  extends Handler
 {
-  nzc(nyz paramnyz, JsResult paramJsResult, Context paramContext) {}
+  public nzc(NowVideoView paramNowVideoView) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
-    if (this.jdField_a_of_type_Nyz.a > 2) {
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
+    switch (paramMessage.what)
+    {
     }
+    do
+    {
+      do
+      {
+        return;
+      } while ((this.a.jdField_a_of_type_Nyv == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null));
+      this.a.jdField_a_of_type_Nyv.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq, true);
+      return;
+    } while ((this.a.jdField_a_of_type_Nyv == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) || (this.a.jdField_a_of_type_Boolean) || (this.a.d != 2));
+    this.a.jdField_a_of_type_Nyv.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq, false);
   }
 }
 

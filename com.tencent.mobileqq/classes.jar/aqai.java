@@ -1,51 +1,40 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aqai
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private int a;
-  private int b;
-  private int c;
+  public aqai(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  public static aqai a(String paramString)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramString == null) {}
-    do
+    if (paramBoolean)
     {
-      return null;
-      try
-      {
-        aqai localaqai = new aqai();
-        paramString = new JSONObject(paramString);
-        localaqai.a = paramString.optInt("showVoiceToTextSwitch", -1);
-        localaqai.b = paramString.optInt("grayTipShowPerThousand", -1);
-        localaqai.c = paramString.optInt("mainSwitch", -1);
-        return localaqai;
+      AboutActivity.a(5);
+      if (!this.a.b().equals("close")) {
+        this.a.b();
       }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("PttAutoChangeProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
-  }
-  
-  public int a()
-  {
-    return this.b;
-  }
-  
-  public boolean a()
-  {
-    return this.a == 1;
-  }
-  
-  public String toString()
-  {
-    return "open:" + this.a;
+      ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ArkDebug switch is opened and IDE debug is also open ,state=%s", new Object[] { AboutActivity.b() }));
+      ArkAppCenter.a(true);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      AboutActivity.a(0);
+      this.a.c();
+      ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ArkDebug switch is closed and IDE debug is also closed,state=%s", new Object[] { AboutActivity.b() }));
+      ArkAppCenter.a(false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqai
  * JD-Core Version:    0.7.0.1
  */

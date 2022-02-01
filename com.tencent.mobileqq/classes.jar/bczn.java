@@ -1,22 +1,23 @@
-import android.text.format.Time;
-import com.tencent.mobileqq.testassister.ShareAppLogHelper;
-import java.io.File;
-import java.io.FilenameFilter;
-
 public class bczn
-  implements FilenameFilter
 {
-  public bczn(ShareAppLogHelper paramShareAppLogHelper) {}
+  public float a;
+  public int a;
+  public alrq a;
+  public boolean a;
+  public float b;
+  public int b;
+  public int c;
   
-  public boolean accept(File paramFile, String paramString)
+  public bczn() {}
+  
+  public bczn(boolean paramBoolean)
   {
-    if ((!paramString.endsWith(".log")) && (!paramString.endsWith(".zip")) && (!paramString.endsWith(".qlog"))) {}
-    do
-    {
-      return false;
-      paramFile = ShareAppLogHelper.a(this.a, paramString);
-    } while ((paramFile == null) || (paramFile.toMillis(false) < ShareAppLogHelper.a(this.a).toMillis(false)) || (paramFile.toMillis(false) > ShareAppLogHelper.b(this.a).toMillis(false)));
-    return true;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_b_of_type_Int > 0) && (this.jdField_a_of_type_Int > 0) && (this.jdField_a_of_type_Alrq != null) && (this.jdField_a_of_type_Float > 0.01F) && (this.jdField_b_of_type_Float > 0.01F);
   }
 }
 

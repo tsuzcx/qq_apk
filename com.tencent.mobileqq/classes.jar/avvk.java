@@ -1,37 +1,59 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCConfirmFragment;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
-public class avvk
-  implements bhle
+class avvk
+  implements adaa
 {
-  public avvk(MsgBackupPCConfirmFragment paramMsgBackupPCConfirmFragment) {}
+  avvk(avux paramavux, WeakReference paramWeakReference, Bundle paramBundle) {}
   
-  public void onItemSelect(View paramView, int paramInt)
+  public void a() {}
+  
+  public void a(int paramInt)
   {
-    if ((paramInt == 1) || (paramInt == 2))
-    {
-      avwu.a("MsgBackupMsgBackupPCConfirmFragment", "click cancel btn bizType = %d, pcHandler %b", new Object[] { Integer.valueOf(this.a.b), Boolean.valueOf(avtq.c) });
-      avwk.a().c();
-      if (!TextUtils.isEmpty(this.a.a)) {
-        break label93;
-      }
-      this.a.a(this.a.getActivity());
-      if (this.a.b != 2) {
-        break label104;
-      }
-      avwr.a("0X800A282");
+    QLog.e("XProxy|NowProxy", 1, "doraemonAPIManager call login onPermission code = " + paramInt);
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
+      ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
     }
-    label93:
-    label104:
-    while (!avtq.c)
-    {
-      return;
-      this.a.onBackEvent();
-      break;
-    }
-    avwr.a("0X800A266", 4);
+    QQToast.a(BaseApplicationImpl.getContext(), 1, anvx.a(2131703059), 0).a();
   }
+  
+  public void a(int paramInt, String paramString)
+  {
+    QLog.e("XProxy|NowProxy", 1, "doraemonAPIManager call login onFailure code = " + paramInt);
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
+      ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), 1, anvx.a(2131703058), 0).a();
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
+      ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
+    }
+    try
+    {
+      QLog.e("XProxy|NowProxy", 1, "doraemonAPIManager call login onSuccess");
+      this.jdField_a_of_type_Avux.b = paramJSONObject.optString("access_token");
+      this.jdField_a_of_type_Avux.jdField_a_of_type_JavaLangString = paramJSONObject.optString("openid");
+      this.jdField_a_of_type_AndroidOsBundle.putString("access_token", this.jdField_a_of_type_Avux.b);
+      this.jdField_a_of_type_AndroidOsBundle.putString("openid", this.jdField_a_of_type_Avux.jdField_a_of_type_JavaLangString);
+      avux.a(this.jdField_a_of_type_Avux);
+      this.jdField_a_of_type_Avux.jdField_a_of_type_Avvu.b(this.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
+    catch (Throwable paramJSONObject)
+    {
+      QLog.e("XProxy|NowProxy", 1, paramJSONObject, new Object[0]);
+    }
+  }
+  
+  public void b(JSONObject paramJSONObject) {}
 }
 
 

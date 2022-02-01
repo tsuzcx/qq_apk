@@ -5,7 +5,7 @@ import com.tencent.aekit.api.standard.ai.AIManager;
 import com.tencent.av.opengl.effects.AEFilterSupport;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.ttpicmodule.module_human_segment.PTHumanSegmenter;
-import lou;
+import lph;
 
 class QavVirtualMenuView$2
   implements Runnable
@@ -15,7 +15,7 @@ class QavVirtualMenuView$2
   public void run()
   {
     long l;
-    if ((lou.b()) && (AEFilterSupport.a() > 3)) {
+    if ((lph.b()) && (AEFilterSupport.a() > 3)) {
       l = SystemClock.elapsedRealtime();
     }
     try

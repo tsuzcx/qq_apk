@@ -1,50 +1,32 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import android.text.TextUtils;
-import android.webkit.URLUtil;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
-import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.widget.SquareImageView;
-
-public class uam
-  implements VSDispatchObserver.onVSRspCallBack<CertifiedAccountRead.StGetMainPageRsp>
+public abstract interface uam
 {
-  public uam(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
+  public abstract void a(ual paramual, int paramInt);
   
-  private void a(CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
-  {
-    Object localObject = (CertifiedAccountMeta.StUser)paramStGetMainPageRsp.user.get();
-    ServiceAccountFolderActivityNew.a(this.a, ((CertifiedAccountMeta.StUser)localObject).id.get());
-    localObject = ((CertifiedAccountMeta.StUser)localObject).icon.get();
-    if ((!TextUtils.isEmpty(paramStGetMainPageRsp.user.icon.get())) && (URLUtil.isNetworkUrl((String)localObject)))
-    {
-      ServiceAccountFolderActivityNew.a(this.a).setImageResource(2130840568);
-      ServiceAccountFolderActivityNew.a(this.a).setOnClickListener(new uan(this, paramStGetMainPageRsp));
-    }
-  }
+  public abstract void a(ual paramual, int paramInt1, int paramInt2, String paramString);
   
-  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
-  {
-    if (paramBoolean)
-    {
-      if (paramStGetMainPageRsp != null)
-      {
-        ServiceAccountFolderActivityNew.a(this.a, paramStGetMainPageRsp);
-        xvv.c("ServiceAccountFolderActivityNew", "sendRequest GetMainPage success");
-        a(paramStGetMainPageRsp);
-        ServiceAccountFolderActivityNew.a(this.a);
-        ServiceAccountFolderActivityNew.a(this.a, paramStGetMainPageRsp);
-      }
-      return;
-    }
-    xvv.c("ServiceAccountFolderActivityNew", "sendRequest GetMainPage error retCode:" + paramLong + ",errMsg:" + paramString);
-  }
+  public abstract void a(ual paramual, long paramLong);
+  
+  public abstract void a(ual paramual, boolean paramBoolean);
+  
+  public abstract void b(ual paramual);
+  
+  public abstract void b(ual paramual, int paramInt);
+  
+  public abstract void c(ual paramual);
+  
+  public abstract void d(ual paramual);
+  
+  public abstract void e(ual paramual);
+  
+  public abstract void f(ual paramual);
+  
+  public abstract void g(ual paramual);
+  
+  public abstract void h(ual paramual);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uam
  * JD-Core Version:    0.7.0.1
  */

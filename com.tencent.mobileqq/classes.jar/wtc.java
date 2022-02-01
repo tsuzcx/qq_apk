@@ -1,27 +1,49 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeedTagInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedTagInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class wtc
-  extends wtk<StoryVideoItem>
+  extends wfm<wte>
 {
-  public wtc(VideoViewVideoHolder paramVideoViewVideoHolder)
+  public List<String> a = new ArrayList();
+  
+  public String a()
   {
-    super(paramVideoViewVideoHolder, null);
+    return "StorySvc.homepage_batch_feeds_label";
   }
   
-  public void a(StoryVideoItem paramStoryVideoItem)
+  public wfh a(byte[] paramArrayOfByte)
   {
-    super.onNext(paramStoryVideoItem);
-    VideoViewVideoHolder.a(this.a);
+    qqstory_service.RspStoryFeedTagInfo localRspStoryFeedTagInfo = new qqstory_service.RspStoryFeedTagInfo();
+    try
+    {
+      localRspStoryFeedTagInfo.mergeFrom(paramArrayOfByte);
+      return new wte(localRspStoryFeedTagInfo);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
   }
   
-  public void onError(@NonNull Error paramError)
+  protected byte[] a()
   {
-    super.onError(paramError);
-    xvv.d(this.a.a, "STATE_VIDEOFILE_ED error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
-    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
+    qqstory_service.ReqStoryFeedTagInfo localReqStoryFeedTagInfo = new qqstory_service.ReqStoryFeedTagInfo();
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      localReqStoryFeedTagInfo.feed_id_list.add(ByteStringMicro.copyFromUtf8(str));
+    }
+    return localReqStoryFeedTagInfo.toByteArray();
   }
 }
 

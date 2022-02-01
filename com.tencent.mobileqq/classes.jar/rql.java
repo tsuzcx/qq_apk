@@ -1,11 +1,11 @@
-class rql
-  implements rqd<rgo>
+import tencent.im.oidb.articlesummary.articlesummary.GameLiveInfo;
+
+public final class rql
+  implements qdt<articlesummary.GameLiveInfo, rra>
 {
-  rql(rqj paramrqj) {}
-  
-  public boolean a(rgo paramrgo)
+  public rra a(articlesummary.GameLiveInfo paramGameLiveInfo)
   {
-    return paramrgo.d >= 5000L;
+    return rra.a(paramGameLiveInfo);
   }
 }
 

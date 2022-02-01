@@ -1,22 +1,30 @@
-import com.tencent.mobileqq.data.HotChatItemData;
-import java.util.Comparator;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.TMG.utils.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class amtn
-  implements Comparator<HotChatItemData>
+  implements EIPCResultCallback
 {
   amtn(amtm paramamtm) {}
   
-  public int a(HotChatItemData paramHotChatItemData1, HotChatItemData paramHotChatItemData2)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    long l1 = paramHotChatItemData1.mMakeTopTime;
-    long l2 = paramHotChatItemData2.mMakeTopTime;
-    if (l1 < l2) {
-      return 1;
+    if (paramEIPCResult.code == 0)
+    {
+      paramEIPCResult = paramEIPCResult.data.getString("key_game_friUin");
+      QLog.i("CmGameTemp_CmGameAudioManager", 1, "[onCallback] current game friendUin:" + paramEIPCResult + ",mCurrentFriUin:" + amtm.a(this.a));
+      if (!amtm.a(this.a).equals(paramEIPCResult))
+      {
+        amtm.a(this.a).removeMessages(1);
+        amtm.a(this.a).sendEmptyMessage(1);
+      }
+      return;
     }
-    if (l1 == l2) {
-      return 0;
-    }
-    return -1;
+    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[onCallback] game is not exist. exit room");
+    amtm.a(this.a).removeMessages(1);
+    amtm.a(this.a).sendEmptyMessage(1);
   }
 }
 

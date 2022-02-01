@@ -37,6 +37,7 @@ import com.tencent.qqmini.sdk.plugins.SettingsJsPlugin;
 import com.tencent.qqmini.sdk.plugins.ShareJsPlugin;
 import com.tencent.qqmini.sdk.plugins.StorageJsPlugin;
 import com.tencent.qqmini.sdk.plugins.TelephonyJsPlugin;
+import com.tencent.qqmini.sdk.plugins.UDPJsPlugin;
 import com.tencent.qqmini.sdk.plugins.UIJsPlugin;
 import com.tencent.qqmini.sdk.plugins.UpdateAppJsPlugin;
 import com.tencent.qqmini.sdk.plugins.VoIPJsPlugin;
@@ -79,6 +80,7 @@ public final class SdkJsPluginScope
     EVENT_HANDLERS.put("canUseComponent", OpenDataCommonJsPlugin.class);
     EVENT_HANDLERS.put("onMessage", OpenDataCommonJsPlugin.class);
     EVENT_HANDLERS.put("getPotentialFriendList", OpenDataCommonJsPlugin.class);
+    EVENT_HANDLERS.put("getReactiveFriendList", OpenDataCommonJsPlugin.class);
     EVENT_HANDLERS.put("getUserInteractiveStorage", OpenDataCommonJsPlugin.class);
     EVENT_HANDLERS.put("modifyFriendInteractiveStorage", OpenDataCommonJsPlugin.class);
     EVENT_HANDLERS.put("Personalize", PersonalizeJsPlugin.class);
@@ -241,6 +243,8 @@ public final class SdkJsPluginScope
     EVENT_HANDLERS.put("enableDeviceMotionChangeListening", SensorJsPlugin.class);
     EVENT_HANDLERS.put("vibrateShort", SensorJsPlugin.class);
     EVENT_HANDLERS.put("vibrateLong", SensorJsPlugin.class);
+    EVENT_HANDLERS.put("createUDPTask", UDPJsPlugin.class);
+    EVENT_HANDLERS.put("operateUDPTask", UDPJsPlugin.class);
     EVENT_HANDLERS.put("addToFavorites", FavoritesJsPlugin.class);
     EVENT_HANDLERS.put("addFavorites", FavoritesJsPlugin.class);
     EVENT_HANDLERS.put("openNativePage", NativePageJsPlugin.class);
@@ -270,7 +274,7 @@ public final class SdkJsPluginScope
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.generated.SdkJsPluginScope
  * JD-Core Version:    0.7.0.1
  */

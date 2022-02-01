@@ -1,45 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskFileBatchDownloadMsgReq;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskSimpleFileItem;
-import cooperation.weiyun.sdk.download.DownloadType;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.URLDrawable;
 
-final class blek
-  implements blgi
+public class blek
 {
-  public void a(blfn paramblfn, DownloadType paramDownloadType, blgf paramblgf)
+  public float a;
+  public int a;
+  public BitmapDrawable a;
+  public Drawable a;
+  public URLDrawable a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  
+  public blek() {}
+  
+  public blek(int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
-    boolean bool = true;
-    Object localObject2 = new WeiyunPB.DiskSimpleFileItem();
-    ((WeiyunPB.DiskSimpleFileItem)localObject2).file_id.set(paramblfn.a);
-    if (paramblfn.e != null) {
-      ((WeiyunPB.DiskSimpleFileItem)localObject2).pdir_key.set(blhj.a(paramblfn.e));
-    }
-    ((WeiyunPB.DiskSimpleFileItem)localObject2).filename.set(paramblfn.b);
-    Object localObject1 = new ArrayList(1);
-    ((List)localObject1).add(localObject2);
-    localObject2 = new WeiyunPB.DiskFileBatchDownloadMsgReq();
-    ((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2).file_list.set((List)localObject1);
-    ((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2).download_type.set(paramDownloadType.ordinal());
-    localObject1 = ((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2).need_thumb;
-    if (paramDownloadType == DownloadType.FILE_THUMB) {}
-    for (;;)
-    {
-      ((PBBoolField)localObject1).set(bool);
-      if ((!TextUtils.isEmpty(paramblfn.d)) && (TextUtils.isDigitsOnly(paramblfn.d))) {
-        ((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2).file_owner.set(Long.parseLong(paramblfn.d));
-      }
-      blfm.a((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2, new blel(this, paramblfn, paramblgf, paramDownloadType));
-      return;
-      bool = false;
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.c = paramString2;
+    this.b = paramInt2;
   }
 }
 

@@ -2,30 +2,30 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
-import sdc;
-import sde;
-import sdg;
-import sdj;
+import spg;
+import spi;
+import spk;
+import spn;
 
 public class VideoPlayManager$6
   implements Runnable
 {
-  public VideoPlayManager$6(sdc paramsdc, sdg paramsdg, sdj paramsdj, int paramInt1, int paramInt2, Object paramObject) {}
+  public VideoPlayManager$6(spg paramspg, spk paramspk, spn paramspn, int paramInt1, int paramInt2, Object paramObject) {}
   
   public void run()
   {
-    if (sdc.a(this.this$0) != null)
+    if (spg.a(this.this$0) != null)
     {
-      Iterator localIterator = sdc.a(this.this$0).iterator();
+      Iterator localIterator = spg.a(this.this$0).iterator();
       while (localIterator.hasNext())
       {
-        sde localsde = (sde)localIterator.next();
-        if (localsde != null) {
-          localsde.a(this.jdField_a_of_type_Sdg, this.jdField_a_of_type_Sdj, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangObject);
+        spi localspi = (spi)localIterator.next();
+        if (localspi != null) {
+          localspi.a(this.jdField_a_of_type_Spk, this.jdField_a_of_type_Spn, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangObject);
         }
       }
     }
-    sdc.a(this.this$0, this.b, true);
+    spg.a(this.this$0, this.b, true);
   }
 }
 

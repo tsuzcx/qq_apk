@@ -1,11 +1,11 @@
 package dov.com.qq.im.ae.play;
 
 import android.view.View;
-import blvb;
+import bnke;
 
 abstract interface AEPlayShowGridViewHolder$ItemClickCallback
 {
-  public abstract void onItemClicked(View paramView, blvb paramblvb, int paramInt);
+  public abstract void onItemClicked(View paramView, bnke parambnke, int paramInt);
 }
 
 

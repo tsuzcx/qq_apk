@@ -1,46 +1,37 @@
-import android.content.Context;
-import android.support.annotation.Nullable;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.togetherui.writetogether.WriteTogetherEditorView;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public class berz
-  extends beqz
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public berz(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
-  {
-    super(paramQQAppInterface, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_Int = 101;
-  }
+  public berz(WriteTogetherEditorView paramWriteTogetherEditorView) {}
   
-  public int a(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return 2130838399;
-  }
-  
-  @Nullable
-  public bera a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
-  {
-    paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().queryMsgItemByUniseq(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, paramLong1);
-    if (((paramList instanceof MessageForArkApp)) && (a(paramList, paramLong2, paramLong3))) {
-      return new bera(true, this.jdField_a_of_type_AndroidContentContext.getString(2131698745), bdyo.a(paramInt1, paramLong1, paramInt2), paramList.senderuin);
+    if ((WriteTogetherEditorView.a(this.a) != null) && (WriteTogetherEditorView.a(this.a).size() != 0))
+    {
+      float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+      paramValueAnimator = WriteTogetherEditorView.a(this.a).iterator();
+      while (paramValueAnimator.hasNext())
+      {
+        bepb localbepb = (bepb)paramValueAnimator.next();
+        if (localbepb.jdField_a_of_type_Float < 0.0F) {
+          localbepb.jdField_a_of_type_Float = (1.0F - f1);
+        }
+        float f2 = localbepb.jdField_a_of_type_Float;
+        WriteTogetherEditorView.a(this.a).put(localbepb.jdField_a_of_type_JavaLangString, Float.valueOf((f2 + f1) % 1.0F));
+      }
+      this.a.invalidate();
     }
-    return null;
   }
-  
-  public void a(int paramInt, Object paramObject, String paramString)
-  {
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AA10", "0X800AA10", 0, 0, "", "", "", "");
-  }
-  
-  public void b(int paramInt, Object paramObject, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     berz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,78 +1,9 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqConvertUinAndUnionId;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertUinAndUnionId;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask;
 
-public class wdx
-  extends vqr<wfv>
+public abstract interface wdx
 {
-  public String a;
-  public List<vwe> a;
-  public boolean a;
-  public boolean b;
-  public int c;
-  public boolean c;
-  
-  public wdx()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public String a()
-  {
-    return vpl.a("StorySvc.convert_uid_and_union_id");
-  }
-  
-  public wfv a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspConvertUinAndUnionId localRspConvertUinAndUnionId = new qqstory_service.RspConvertUinAndUnionId();
-    try
-    {
-      localRspConvertUinAndUnionId.mergeFrom(paramArrayOfByte);
-      return new wfv(localRspConvertUinAndUnionId);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      xvv.d("Q.qqstory.user:ConvertUinAndUnionIdRequest", "" + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    int j = 1;
-    qqstory_service.ReqConvertUinAndUnionId localReqConvertUinAndUnionId = new qqstory_service.ReqConvertUinAndUnionId();
-    localReqConvertUinAndUnionId.convert_from.set(this.c);
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      vwe localvwe = (vwe)((Iterator)localObject).next();
-      localReqConvertUinAndUnionId.user_id_list.add(localvwe.a());
-    }
-    localObject = localReqConvertUinAndUnionId.need_medal;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      i = 1;
-      ((PBUInt32Field)localObject).set(i);
-      localObject = localReqConvertUinAndUnionId.need_grade_speed;
-      if (!this.b) {
-        break label121;
-      }
-    }
-    label121:
-    for (int i = j;; i = 0)
-    {
-      ((PBUInt32Field)localObject).set(i);
-      return localReqConvertUinAndUnionId.toByteArray();
-      i = 0;
-      break;
-    }
-  }
+  public abstract void a(BasePublishTask paramBasePublishTask, ErrorMessage paramErrorMessage);
 }
 
 

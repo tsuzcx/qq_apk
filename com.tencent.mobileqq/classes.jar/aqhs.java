@@ -1,50 +1,20 @@
-import android.support.annotation.NonNull;
+import android.animation.TypeEvaluator;
+import android.annotation.TargetApi;
 
+@TargetApi(11)
 public class aqhs
-  extends aqgc<aqhr>
+  implements TypeEvaluator<aqhq>
 {
-  @NonNull
-  public static aqhr c()
-  {
-    aqhr localaqhr2 = (aqhr)apub.a().a(651);
-    aqhr localaqhr1 = localaqhr2;
-    if (localaqhr2 == null) {
-      localaqhr1 = new aqhr();
-    }
-    return localaqhr1;
-  }
+  public aqhs(aqhk paramaqhk) {}
   
-  @NonNull
-  public aqhr a()
+  public aqhq a(float paramFloat, aqhq paramaqhq1, aqhq paramaqhq2)
   {
-    return new aqhr();
-  }
-  
-  @NonNull
-  public aqhr a(@NonNull aptx[] paramArrayOfaptx)
-  {
-    return aqhr.a(paramArrayOfaptx[0].a);
-  }
-  
-  @NonNull
-  public aqhr b()
-  {
-    return new aqhr();
-  }
-  
-  public Class<aqhr> clazz()
-  {
-    return aqhr.class;
-  }
-  
-  public int type()
-  {
-    return 651;
+    return paramaqhq2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqhs
  * JD-Core Version:    0.7.0.1
  */

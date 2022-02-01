@@ -1,28 +1,29 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.DiscussionMemberInfo;
+import java.util.Comparator;
 
 public class ansm
-  extends anrh
+  implements Comparator<DiscussionMemberInfo>
 {
-  public ansm(QQAppInterface paramQQAppInterface, Context paramContext)
+  public int a(DiscussionMemberInfo paramDiscussionMemberInfo1, DiscussionMemberInfo paramDiscussionMemberInfo2)
   {
-    super(paramQQAppInterface, paramContext);
-  }
-  
-  public boolean a()
-  {
-    try
+    if ((paramDiscussionMemberInfo1 != null) && (paramDiscussionMemberInfo2 != null))
     {
-      boolean bool = azhw.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap);
-      return bool;
+      paramDiscussionMemberInfo1 = Long.valueOf(Long.parseLong(paramDiscussionMemberInfo1.memberUin));
+      paramDiscussionMemberInfo2 = Long.valueOf(Long.parseLong(paramDiscussionMemberInfo2.memberUin));
+      if (paramDiscussionMemberInfo1.longValue() <= paramDiscussionMemberInfo2.longValue()) {}
     }
-    catch (Exception localException)
+    while (paramDiscussionMemberInfo1 != null)
     {
-      QLog.e("QbossLoaderAction", 1, "doAction error: " + localException.getMessage());
-      a("QbossLoaderAction");
+      return 1;
+      if (paramDiscussionMemberInfo1.longValue() < paramDiscussionMemberInfo2.longValue()) {
+        return -1;
+      }
+      return 0;
     }
-    return false;
+    if (paramDiscussionMemberInfo2 != null) {
+      return -1;
+    }
+    return 0;
   }
 }
 

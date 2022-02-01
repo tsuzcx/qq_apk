@@ -1,17 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qqfav.widget.LocationDetailActivity;
+import android.app.Activity;
+import com.tencent.mobileqq.mini.util.AnimUtil;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-public class bkqq
-  implements View.OnClickListener
+class bkqq
+  implements aqrq
 {
-  public bkqq(LocationDetailActivity paramLocationDetailActivity) {}
+  bkqq(bkqp parambkqp, Activity paramActivity) {}
   
-  public void onClick(View paramView)
+  public void onColorNoteAnimFinish()
   {
-    this.a.onBackPressed();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((bkqp.a(this.jdField_a_of_type_Bkqp) != null) && (bkqp.a(this.jdField_a_of_type_Bkqp).isInternalApp())) {
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+    }
+    AnimUtil.clearAnim(this.jdField_a_of_type_AndroidAppActivity);
   }
 }
 

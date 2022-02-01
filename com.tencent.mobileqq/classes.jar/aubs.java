@@ -1,29 +1,23 @@
-import java.util.Observable;
-import java.util.Observer;
+import java.util.List;
 
-public class aubs
-  implements Observer
+class aubs
+  implements audq
 {
-  protected void a() {}
+  aubs(aubq paramaubq, List paramList, aubv paramaubv) {}
   
-  protected void b() {}
-  
-  protected void c() {}
-  
-  public void update(Observable paramObservable, Object paramObject)
+  public void onNo()
   {
-    switch (((Integer)paramObject).intValue())
-    {
-    default: 
-      return;
-    case 1: 
-      a();
-      return;
-    case 2: 
-      b();
-      return;
+    if (this.jdField_a_of_type_Aubv != null) {
+      this.jdField_a_of_type_Aubv.a(2, 1);
     }
-    c();
+  }
+  
+  public void onYes()
+  {
+    auea.a(this.jdField_a_of_type_JavaUtilList, aubq.a(this.jdField_a_of_type_Aubq));
+    if (this.jdField_a_of_type_Aubv != null) {
+      this.jdField_a_of_type_Aubv.a(2, 0);
+    }
   }
 }
 

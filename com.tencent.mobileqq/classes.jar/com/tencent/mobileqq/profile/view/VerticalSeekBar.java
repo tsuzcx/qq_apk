@@ -69,7 +69,7 @@ public class VerticalSeekBar
     localOptions.inTargetDensity = localResources.getDisplayMetrics().densityDpi;
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(localResources, 2130847335, localOptions);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(localResources, 2130847422, localOptions);
       this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
       this.b = DisplayUtil.dip2px(getContext(), 5.0F);
       this.c = DisplayUtil.dip2px(getContext(), 30.0F);

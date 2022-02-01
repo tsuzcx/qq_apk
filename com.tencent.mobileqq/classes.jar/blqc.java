@@ -1,30 +1,123 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListPart.9.1;
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListPart.9.2;
-import java.util.concurrent.CountDownLatch;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class blqc
-  implements blvj
 {
-  blqc(blpr paramblpr) {}
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public int d;
+  public boolean d;
+  public int e;
+  public boolean e;
+  public int f;
+  public boolean f;
+  public int g;
+  public boolean g;
+  public int h;
+  public boolean h;
+  public int i;
+  public boolean i;
+  public boolean j;
+  public boolean k;
   
-  public void onDownloadFinish(blvb paramblvb, boolean paramBoolean)
+  public static blqc a(String paramString)
   {
-    bmbx.b("AEBottomListPart", "loadAndHandleData---download finish, isSuccess=" + paramBoolean);
-    if (!paramBoolean)
-    {
-      blpr.a(this.a, true);
-      ThreadManager.getUIHandler().post(new AEBottomListPart.9.1(this));
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    blpr.a(this.a).countDown();
+    try
+    {
+      paramString = new JSONObject(paramString);
+      return a(paramString);
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PreloadPublicParam", 2, "PreloadPublicParam parseJson Exception");
+        }
+        paramString = null;
+      }
+    }
   }
   
-  public void onProgressUpdate(blvb paramblvb, int paramInt)
+  public static blqc a(JSONObject paramJSONObject)
   {
-    if ((paramInt > 1) && (paramInt <= 100)) {
-      ThreadManager.getUIHandler().post(new AEBottomListPart.9.2(this, paramInt));
+    if (paramJSONObject == null) {
+      return null;
     }
+    blqc localblqc = new blqc();
+    try
+    {
+      if (paramJSONObject.has("pppid")) {
+        localblqc.jdField_a_of_type_Int = paramJSONObject.getInt("pppid");
+      }
+      if (paramJSONObject.has("timecontrol"))
+      {
+        localObject = paramJSONObject.getJSONObject("timecontrol");
+        localblqc.jdField_a_of_type_Boolean = ((JSONObject)localObject).getBoolean("switch");
+        localblqc.jdField_b_of_type_Int = ((JSONObject)localObject).getInt("dayofweek");
+        localblqc.jdField_c_of_type_Int = ((JSONObject)localObject).getInt("hourofday");
+      }
+      if (paramJSONObject.has("reddot"))
+      {
+        localObject = paramJSONObject.getJSONObject("reddot");
+        localblqc.jdField_b_of_type_Boolean = ((JSONObject)localObject).getBoolean("switch");
+        localblqc.jdField_c_of_type_Boolean = ((JSONObject)localObject).optBoolean("apponly");
+        localblqc.jdField_d_of_type_Boolean = ((JSONObject)localObject).getBoolean("app");
+        localblqc.jdField_e_of_type_Boolean = ((JSONObject)localObject).getBoolean("leba");
+      }
+      if (paramJSONObject.has("lebalist")) {
+        localblqc.jdField_h_of_type_Boolean = paramJSONObject.getJSONObject("lebalist").getBoolean("switch");
+      }
+      if (paramJSONObject.has("activetime"))
+      {
+        localObject = paramJSONObject.getJSONObject("activetime");
+        localblqc.jdField_i_of_type_Boolean = ((JSONObject)localObject).getBoolean("switch");
+        localblqc.jdField_e_of_type_Int = ((JSONObject)localObject).getInt("hour");
+      }
+      if (paramJSONObject.has("usedtimes"))
+      {
+        localObject = paramJSONObject.getJSONObject("usedtimes");
+        localblqc.j = ((JSONObject)localObject).getBoolean("switch");
+        localblqc.jdField_f_of_type_Int = ((JSONObject)localObject).getInt("times");
+      }
+      if (paramJSONObject.has("userlearn"))
+      {
+        localObject = paramJSONObject.getJSONObject("userlearn");
+        localblqc.k = ((JSONObject)localObject).getBoolean("switch");
+        localblqc.jdField_g_of_type_Int = ((JSONObject)localObject).getInt("timearea");
+        localblqc.jdField_h_of_type_Int = ((JSONObject)localObject).getInt("methodid");
+        localblqc.jdField_i_of_type_Int = ((JSONObject)localObject).getInt("clusternum");
+      }
+      localObject = localblqc;
+      if (paramJSONObject.has("cdperiod"))
+      {
+        paramJSONObject = paramJSONObject.getJSONObject("cdperiod");
+        localblqc.jdField_f_of_type_Boolean = paramJSONObject.optBoolean("switch");
+        localblqc.jdField_d_of_type_Int = paramJSONObject.optInt("time");
+        localblqc.jdField_g_of_type_Boolean = paramJSONObject.optBoolean("reverse");
+        localObject = localblqc;
+      }
+    }
+    catch (JSONException paramJSONObject)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PreloadPublicParam", 2, "PreloadPublicParam parseJson Exception");
+        }
+        Object localObject = null;
+      }
+    }
+    return localObject;
   }
 }
 

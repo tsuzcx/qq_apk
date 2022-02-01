@@ -1,112 +1,170 @@
-import android.app.Activity;
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextPaint;
+import android.content.res.ColorStateList;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ColorUtil;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.ButtonBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.ButtonBase.ClickStatus;
 
 public class qtv
-  extends ClickableSpan
-  implements som
+  extends ButtonBase
 {
-  public int a;
-  Context jdField_a_of_type_AndroidContentContext;
-  Resources jdField_a_of_type_AndroidContentResResources;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  qtr jdField_a_of_type_Qtr;
-  boolean jdField_a_of_type_Boolean;
-  private int b = -1;
+  private AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private boolean jdField_a_of_type_Boolean;
+  private AnimatorSet b = new AnimatorSet();
   
-  public qtv(ArticleInfo paramArticleInfo, int paramInt, Context paramContext, Resources paramResources, qtr paramqtr)
+  public qtv(VafContext paramVafContext)
   {
-    this.jdField_a_of_type_Int = 16;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.b = paramInt;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidContentResResources = paramResources;
-    this.jdField_a_of_type_Qtr = paramqtr;
+    super(paramVafContext);
+    a(paramVafContext);
   }
   
   private void a()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null)
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "scaleX", new float[] { 1.0F, 0.0F }).setDuration(200L), ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "scaleY", new float[] { 1.0F, 0.0F }).setDuration(200L) });
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new qtw(this));
+    this.b.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "scaleX", new float[] { 0.0F, 1.1F, 1.0F }).setDuration(200L), ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "scaleY", new float[] { 0.0F, 1.1F, 1.0F }).setDuration(200L) });
+    this.b.addListener(new qtx(this));
+  }
+  
+  private void a(VafContext paramVafContext)
+  {
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramVafContext.getContext());
+    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramVafContext.getContext());
+    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramVafContext.getContext());
+    paramVafContext = new LinearLayout.LayoutParams(-2, -2);
+    paramVafContext.gravity = 16;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setGravity(1);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, paramVafContext);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, paramVafContext);
+    a();
+  }
+  
+  private void a(CharSequence paramCharSequence)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+  }
+  
+  private void b()
+  {
+    c();
+    super.onClick();
+    if (!isSelected()) {}
+    for (boolean bool = true;; bool = false)
     {
-      int j = -1;
-      int i = j;
-      if (this.jdField_a_of_type_Qtr != null)
-      {
-        i = j;
-        if (this.jdField_a_of_type_Qtr.a != null) {
-          i = this.jdField_a_of_type_Qtr.a.e();
-        }
-      }
-      pgw.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, i);
+      super.setSelected(bool);
+      this.jdField_a_of_type_AndroidWidgetTextView.setSelected(bool);
       return;
     }
-    QLog.d("Q.readinjoy.ui", 1, "ComponentAccountSummary report click read article data, articleInfo is null!");
   }
   
-  private void a(ArticleInfo paramArticleInfo)
+  private void c()
   {
-    sxd.b("fast_web_show_light_house_1");
-    pkm.a().a().a(paramArticleInfo.mArticleContentUrl, String.valueOf(paramArticleInfo.innerUniqueID), paramArticleInfo.mSubscribeID, 1, null);
-    a(paramArticleInfo, null);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidWidgetImageView.setSelected(isSelected());
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
   }
   
-  private void a(ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo)
+  public int getComMeasuredHeight()
   {
-    pay.a((Activity)this.jdField_a_of_type_AndroidContentContext, paramArticleInfo);
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredHeight();
   }
   
-  public void a(boolean paramBoolean)
+  public int getComMeasuredWidth()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
-      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+  }
+  
+  public boolean onClick()
+  {
+    qgx.a().a(getNativeView().getContext(), 3, new qty(this));
+    return false;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.layout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.measure(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setClickable(true);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(this.mPaddingLeft, this.mPaddingTop, this.mPaddingRight, this.mPaddingBottom);
+    this.jdField_a_of_type_AndroidWidgetTextView.setClickable(true);
+    this.jdField_a_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, this.mTextSize);
+    this.jdField_a_of_type_AndroidWidgetTextView.setPadding(this.mCompoundDrawablePadding, 0, 0, 0);
+    a(this.mText);
+  }
+  
+  public void refresh()
+  {
+    super.refresh();
+  }
+  
+  public void setBackgroundColorForStates() {}
+  
+  public void setBackgroundForStates()
+  {
+    Object localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext();
+    localObject = DrawableUtil.getSelector(DrawableUtil.getDrawable((Context)localObject, getStatus(0).background, this.TRANSPARENT_PLACE_HOLDER, this.GRAY_PLACEHOLDER), DrawableUtil.getDrawable((Context)localObject, getStatus(1).background, this.TRANSPARENT_PLACE_HOLDER, this.GRAY_PLACEHOLDER), DrawableUtil.getDrawable((Context)localObject, getStatus(4).background, this.TRANSPARENT_PLACE_HOLDER, this.GRAY_PLACEHOLDER));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable((Drawable)localObject);
+  }
+  
+  public void setCompoundDrawableForStates()
+  {
+    Object localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext();
+    localObject = DrawableUtil.getSelector(DrawableUtil.getDrawable((Context)localObject, getStatus(0).img, this.TRANSPARENT_PLACE_HOLDER, this.GRAY_PLACEHOLDER), DrawableUtil.getDrawable((Context)localObject, getStatus(1).img, this.TRANSPARENT_PLACE_HOLDER, this.GRAY_PLACEHOLDER), DrawableUtil.getDrawable((Context)localObject, getStatus(4).img, this.TRANSPARENT_PLACE_HOLDER, this.GRAY_PLACEHOLDER));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+  }
+  
+  public void setSelected(boolean paramBoolean)
+  {
+    super.setSelected(paramBoolean);
+    this.jdField_a_of_type_AndroidWidgetTextView.setSelected(paramBoolean);
+    if (!this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setSelected(paramBoolean);
     }
   }
   
-  public void onClick(View paramView)
+  public void setText(CharSequence paramCharSequence)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleContentUrl))
+    if (!TextUtils.equals(paramCharSequence, this.mText))
     {
-      if (!pay.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleContentUrl, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
-        break label157;
-      }
-      a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-    }
-    for (;;)
-    {
-      a();
-      if ((pay.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) || (pay.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo))) {
-        odq.a(null, pay.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo), "0X8008A62", "0X8008A62", 0, 0, Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId), Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID), Integer.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mStrategyId), pay.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.businessId + "", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo), false);
-      }
-      return;
-      label157:
-      pay.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleContentUrl);
+      this.mText = paramCharSequence;
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
     }
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void setTextColorForStates()
   {
-    super.updateDrawState(paramTextPaint);
-    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-14132075);
-    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = this.b;; i = 16777215)
-    {
-      paramTextPaint.bgColor = i;
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(AIOUtils.sp2TextSize(2, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentResResources));
-      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
-      return;
-    }
+    ColorStateList localColorStateList = ColorUtil.getColorStateList(getStatus(0).textColor, getStatus(1).textColor, getStatus(4).textColor);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(localColorStateList);
   }
 }
 

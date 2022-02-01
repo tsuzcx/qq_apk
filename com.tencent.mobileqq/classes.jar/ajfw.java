@@ -1,43 +1,43 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver.5.1;
-import com.tencent.mobileqq.activity.main.MainAssistObserver.5.2;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class ajfw
-  extends anwi
+  extends bgiw
 {
-  ajfw(ajey paramajey) {}
+  public ajfw(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public void a()
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (bkwm.j()) {
-      this.a.a(39, null);
+    if ((paramBoolean) && (paramBundle != null)) {}
+    while (this.a.jdField_a_of_type_Bisl == null) {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("structMsg");
+        structmsg.StructMsg localStructMsg = new structmsg.StructMsg();
+        localStructMsg.mergeFrom(paramBundle);
+        TroopNotifyAndRecommendView.a(this.a, 1, localStructMsg);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        do
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("TroopNotifyAndRecommendView", 2, "structMsg merge error");
+          }
+        } while (this.a.jdField_a_of_type_Bisl == null);
+        this.a.jdField_a_of_type_Bisl.dismiss();
+        QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getString(2131697111), 0).b(this.a.a());
+        return;
+      }
     }
-  }
-  
-  public void a(int paramInt, Object paramObject)
-  {
-    super.a(paramInt, paramObject);
-    if (!bkwm.i()) {}
-    while (this.a.a == null) {
-      return;
-    }
-    this.a.a.runOnUiThread(new MainAssistObserver.5.2(this, paramInt, paramObject));
-  }
-  
-  public void a(View paramView)
-  {
-    super.a(paramView);
-    a(1, paramView);
-  }
-  
-  public void c()
-  {
-    if (!bkwm.i()) {}
-    while (this.a.a == null) {
-      return;
-    }
-    this.a.a.runOnUiThread(new MainAssistObserver.5.1(this));
+    this.a.jdField_a_of_type_Bisl.dismiss();
+    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getString(2131697111), 0).b(this.a.a());
   }
 }
 

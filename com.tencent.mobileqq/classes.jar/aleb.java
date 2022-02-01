@@ -1,37 +1,24 @@
-import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
-public class aleb
-  implements alep
+class aleb
+  implements View.OnClickListener
 {
-  public aleb(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
+  aleb(aldh paramaldh) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialCareSettingActivity", 2, "loadSpecialSoundConfig onResult: " + paramBoolean);
-    }
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        QQSpecialCareSettingActivity.a(this.a);
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-      finally
-      {
-        this.a.stopTitleProgress();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSpecialCareSettingActivity", 2, "loadSpecialSoundConfig fail.");
-      }
-    }
+    Intent localIntent = new Intent(aldh.a(this.a), TroopAssisSettingActivity.class);
+    aldh.a(this.a).startActivityForResult(localIntent, 9001);
+    aldh.a(this.a).sendEmptyMessageDelayed(1, 1000L);
+    bdla.b(aldh.a(this.a).app, "P_CliOper", "Grp_msg", "", "Msglist", "Clk_setmsg", 0, 0, "", "", "", "");
+    bdla.a(aldh.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 17, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

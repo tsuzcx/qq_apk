@@ -1,22 +1,22 @@
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.face.FaceDrawable.OnLoadingStateChangeListener;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5.1.1;
+
 public class bgrl
+  implements FaceDrawable.OnLoadingStateChangeListener
 {
-  public int a;
-  public bgrm a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public int d;
+  public bgrl(TroopGiftAnimationController.5 param5) {}
   
-  public bgrl(int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, int paramInt4, bgrm parambgrm)
+  public void onLoadingStateChanged(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramInt2;
-    this.jdField_b_of_type_Int = paramInt3;
-    this.d = paramInt4;
-    this.jdField_a_of_type_Bgrm = parambgrm;
+    Bitmap localBitmap = TroopUtils.headDrawableToBitamp(this.a.this$0.a(String.valueOf(this.a.a.senderUin), null));
+    if ((paramInt1 == 0) && (paramInt2 == 1) && (this.a.this$0.a != null)) {
+      this.a.this$0.a.b(new TroopGiftAnimationController.5.1.1(this, localBitmap));
+    }
   }
 }
 

@@ -1,30 +1,10 @@
-import android.os.Message;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import com.tencent.mobileqq.data.QQAlbumInfo;
 
-public class bmyp
-  implements bmtk
+public abstract interface bmyp
 {
-  public bmyp(MusicProviderView paramMusicProviderView) {}
+  public abstract void a(QQAlbumInfo paramQQAlbumInfo, int paramInt, boolean paramBoolean);
   
-  public void a(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MusicProviderView", 2, "onStep:" + paramInt + " done:" + paramBoolean);
-    }
-    if ((paramInt == 6) || (paramInt == 5) || (paramInt == 4)) {
-      this.a.a.sendEmptyMessage(3);
-    }
-  }
-  
-  public void a(MusicItemInfo paramMusicItemInfo)
-  {
-    Message localMessage = this.a.a.obtainMessage();
-    localMessage.obj = paramMusicItemInfo;
-    localMessage.what = 4;
-    this.a.a.sendMessage(localMessage);
-  }
+  public abstract void b();
 }
 
 

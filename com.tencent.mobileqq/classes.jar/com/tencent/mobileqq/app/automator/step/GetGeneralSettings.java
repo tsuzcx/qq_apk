@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.app.automator.step;
 
 import ConfigPush.FileStoragePushFSSvcList;
-import amsu;
-import anfw;
-import azck;
-import bbou;
+import anvi;
+import aoim;
+import bahy;
+import bcvo;
 import com.tencent.kingkong.Common;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
@@ -17,7 +17,7 @@ import mqq.app.MobileQQ;
 public class GetGeneralSettings
   extends AsyncStep
 {
-  private amsu a;
+  private anvi a;
   
   public int a()
   {
@@ -39,10 +39,10 @@ public class GetGeneralSettings
       if (!bool) {
         break;
       }
-      if (this.jdField_a_of_type_Amsu == null)
+      if (this.jdField_a_of_type_Anvi == null)
       {
-        this.jdField_a_of_type_Amsu = new anfw(this, null);
-        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Amsu, true);
+        this.jdField_a_of_type_Anvi = new aoim(this, null);
+        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Anvi, true);
       }
       if (!this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getAllGeneralSettings(bool)) {
         break;
@@ -57,20 +57,20 @@ public class GetGeneralSettings
       FileStoragePushFSSvcList localFileStoragePushFSSvcList = FMTSrvAddrProvider.getInstance().getSvcListCache();
       if (localFileStoragePushFSSvcList != null)
       {
-        bbou.a(localFileStoragePushFSSvcList, this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app);
+        bcvo.a(localFileStoragePushFSSvcList, this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app);
         FMTSrvAddrProvider.getInstance().setSvcListCache(null);
       }
-      azck.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app).a(true, true);
+      bahy.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app).a(true, true);
       return 7;
     }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Amsu != null)
+    if (this.jdField_a_of_type_Anvi != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Amsu);
-      this.jdField_a_of_type_Amsu = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Anvi);
+      this.jdField_a_of_type_Anvi = null;
     }
   }
 }

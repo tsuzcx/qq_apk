@@ -1,37 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-public class tin
-  implements DialogInterface.OnDismissListener
+class tin
+  implements tir
 {
-  public tin(BridgeModule paramBridgeModule, String paramString) {}
+  tin(tia paramtia) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
   {
-    paramDialogInterface = new JSONObject();
-    try
-    {
-      paramDialogInterface.put("type", -1);
-      paramDialogInterface.put("action", "close");
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
-      }
-      return;
-    }
-    catch (JSONException paramDialogInterface)
-    {
-      QLog.e(BridgeModule.TAG, 2, QLog.getStackTraceString(paramDialogInterface));
-    }
+    tjc.a(paramContext, paramProteusItemData.b, paramProteusItemData.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tin
  * JD-Core Version:    0.7.0.1
  */

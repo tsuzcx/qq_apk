@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.app;
 
-import amxn;
-import bcef;
+import aoab;
+import bdla;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class PrinterStatusHandler$1
   extends TimerTask
 {
-  public PrinterStatusHandler$1(amxn paramamxn) {}
+  public PrinterStatusHandler$1(aoab paramaoab) {}
   
   public void run()
   {
-    bcef.b(this.this$0.app, "CliOper", "", "", "0X8004023", "0X8004023", 0, 0, "", "", "", "");
-    if (amxn.a(this.this$0) != null)
+    bdla.b(this.this$0.app, "CliOper", "", "", "0X8004023", "0X8004023", 0, 0, "", "", "", "");
+    if (aoab.a(this.this$0) != null)
     {
-      amxn.a(this.this$0).cancel();
-      amxn.a(this.this$0, null);
+      aoab.a(this.this$0).cancel();
+      aoab.a(this.this$0, null);
     }
   }
 }

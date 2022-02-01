@@ -1,18 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter.5.1;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.Process;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class bmqy
-  implements DialogInterface.OnClickListener
+class bmqy
+  extends Handler
 {
-  bmqy(bmqu parambmqu) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bmqy(Looper paramLooper)
   {
-    ThreadManager.excute(new QIMPtvTemplateAdapter.5.1(this), 128, null, true);
-    bmzd.a(this.a.a).a();
-    bntw.a("shortvideo_download_effects", null);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 0) {
+      bmqx.a(0);
+    }
+    while ((paramMessage.what != 1) || (!bmqx.a()) || (TextUtils.isEmpty(bmqx.a())) || (TextUtils.isEmpty(bmqx.b()))) {
+      return;
+    }
+    String str1 = bmqx.a();
+    String str2 = bmqx.b();
+    int i = bmqx.a();
+    int j = bmqx.b();
+    String str3 = bmqx.a(BaseApplicationImpl.getApplication());
+    Process.setThreadPriority(10);
+    bmqx.a((QQAppInterface)paramMessage.obj, str1, str2, i, j, str3);
+    bmqx.b();
   }
 }
 

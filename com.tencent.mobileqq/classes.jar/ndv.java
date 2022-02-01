@@ -1,32 +1,6 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.TextView;
-import com.tencent.avgame.gameroom.seat.MemberItemView;
-import com.tencent.avgame.gameroom.seat.TalkingEffectLayout;
-
-public class ndv
-  implements Animator.AnimatorListener
+public abstract interface ndv
 {
-  public ndv(MemberItemView paramMemberItemView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.jdField_a_of_type_ComTencentAvgameGameroomSeatTalkingEffectLayout.setVisibility(4);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.jdField_a_of_type_ComTencentAvgameGameroomSeatTalkingEffectLayout.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-14558778);
-  }
+  public abstract void a();
 }
 
 

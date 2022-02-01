@@ -1,21 +1,12 @@
-import android.app.PendingIntent;
-
-class msy
+public abstract interface msy
 {
-  public final int a;
-  public final PendingIntent a;
-  public final String a;
+  public abstract void a();
   
-  public msy(int paramInt, String paramString, PendingIntent paramPendingIntent)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidAppPendingIntent = paramPendingIntent;
-  }
+  public abstract void a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     msy
  * JD-Core Version:    0.7.0.1
  */

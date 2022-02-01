@@ -1,20 +1,81 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class onh
-  extends sdx
+  extends aqwt<ong>
 {
-  public onh(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  @NonNull
+  public ong a(int paramInt)
   {
-    if (!paramBoolean1) {
-      ReadInJoyVideoSubChannelActivity.a(this.a, false);
+    if (paramInt == 0)
+    {
+      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject instanceof QQAppInterface))
+      {
+        localObject = (QQAppInterface)localObject;
+        usu.a((QQAppInterface)localObject, usu.a((QQAppInterface)localObject));
+        return ong.a();
+      }
     }
-    while (!ReadInJoyVideoSubChannelActivity.a(this.a)) {
-      return;
+    return new ong();
+  }
+  
+  @Nullable
+  public ong a(aqxa[] paramArrayOfaqxa)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountCenterUrlConfProcessor", 2, "[onParsed]");
     }
-    ReadInJoyVideoSubChannelActivity.a(this.a).c();
-    ReadInJoyVideoSubChannelActivity.a(this.a, false);
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0)) {
+      return ong.a(paramArrayOfaqxa);
+    }
+    return null;
+  }
+  
+  public void a(ong paramong)
+  {
+    paramong.a();
+    paramong.b();
+  }
+  
+  public Class<ong> clazz()
+  {
+    return ong.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return false;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return usu.b((QQAppInterface)localAppRuntime);
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 70;
   }
 }
 

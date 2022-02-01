@@ -1,36 +1,36 @@
 package dov.com.qq.im.ae.play;
 
-import blvb;
-import blvj;
+import bnke;
+import bnkq;
 import com.tencent.qphone.base.util.QLog;
 
 class PlayDownloadManagerWrap$DownloadProcessListener
-  implements blvj
+  implements bnkq
 {
-  public void onDownloadFinish(blvb paramblvb, boolean paramBoolean)
+  public void onDownloadFinish(bnke parambnke, boolean paramBoolean)
   {
-    if (paramblvb == null) {
+    if (parambnke == null) {
       return;
     }
-    paramblvb.f = false;
+    parambnke.f = false;
     if (paramBoolean) {
-      paramblvb.e = true;
+      parambnke.e = true;
     }
     for (;;)
     {
-      PlayDownloadManagerWrap.getInstance().notifyDownloadFinish(paramblvb, paramBoolean);
-      PlayDownloadManagerWrap.access$300(PlayDownloadManagerWrap.getInstance(), paramblvb.a);
+      PlayDownloadManagerWrap.getInstance().notifyDownloadFinish(parambnke, paramBoolean);
+      PlayDownloadManagerWrap.access$300(PlayDownloadManagerWrap.getInstance(), parambnke.a);
       return;
-      QLog.e("PlayDownloadManagerWrap", 1, "download failed with id: " + paramblvb.a);
+      QLog.e("PlayDownloadManagerWrap", 1, "download failed with id: " + parambnke.a);
     }
   }
   
-  public void onProgressUpdate(blvb paramblvb, int paramInt)
+  public void onProgressUpdate(bnke parambnke, int paramInt)
   {
     if (paramInt <= 1) {
       return;
     }
-    PlayDownloadManagerWrap.getInstance().notifyDownloadProgress(paramblvb.a, paramInt);
+    PlayDownloadManagerWrap.getInstance().notifyDownloadProgress(parambnke.a, paramInt);
   }
 }
 

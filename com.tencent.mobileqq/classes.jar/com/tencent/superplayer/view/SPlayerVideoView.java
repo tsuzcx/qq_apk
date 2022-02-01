@@ -43,7 +43,7 @@ public class SPlayerVideoView
     super(paramContext.getApplicationContext());
     this.mContext = paramContext.getApplicationContext();
     this.mIsUseTextureView = paramBoolean;
-    this.mVideoViewId = sVideoViewIdCreater.addAndGet(1);
+    this.mVideoViewId = sVideoViewIdCreater.getAndAdd(1);
     this.mTAG = ("SPlayerVideoView-" + this.mVideoViewId);
     if (Build.VERSION.SDK_INT < 14) {
       this.mIsUseTextureView = false;
@@ -121,7 +121,7 @@ public class SPlayerVideoView
     localLayoutParams2.gravity = 17;
     setLayoutParams(localLayoutParams1);
     this.mDisPlayView = SPlayerViewFactory.createPlayView(this.mContext, this.mIsUseTextureView);
-    this.mDisPlayView.setViewViewTagId(String.valueOf(this.mVideoViewId));
+    this.mDisPlayView.setVideoViewTagId(String.valueOf(this.mVideoViewId));
     this.mDisPlayView.setViewCallBack(this.mViewCallBack);
     addView((View)this.mDisPlayView, localLayoutParams2);
   }
@@ -234,6 +234,11 @@ public class SPlayerVideoView
   public boolean isSurfaceReady()
   {
     return this.mIsSurfaceReady;
+  }
+  
+  public boolean isTextureView()
+  {
+    return this.mIsUseTextureView;
   }
   
   public void removeViewCallBack(ISPlayerVideoView.IVideoViewCallBack paramIVideoViewCallBack)

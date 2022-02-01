@@ -1,21 +1,19 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import Wallet.PopDialog;
+import Wallet.SkinInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
 
-public class akwb
-  implements MediaPlayer.OnCompletionListener
+class akwb
+  implements DialogInterface.OnClickListener
 {
-  public akwb(FixedSizeVideoView paramFixedSizeVideoView) {}
+  akwb(akvz paramakvz, akvt paramakvt) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null)
-    {
-      if (FixedSizeVideoView.a(this.a) != null) {
-        FixedSizeVideoView.a(this.a).removeMessages(0);
-      }
-      this.a.a.a(paramMediaPlayer);
+    paramDialogInterface = this.jdField_a_of_type_Akvt.a.pop_dialog.right_url;
+    if (!TextUtils.isEmpty(paramDialogInterface)) {
+      bmhg.a(akvw.a(this.jdField_a_of_type_Akvz.a), paramDialogInterface);
     }
   }
 }

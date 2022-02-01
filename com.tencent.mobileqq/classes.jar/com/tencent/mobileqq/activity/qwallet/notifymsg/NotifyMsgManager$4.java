@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.qwallet.notifymsg;
 
-import akar;
-import akat;
-import akgd;
+import akwk;
+import akwm;
+import albw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
@@ -16,23 +16,23 @@ public final class NotifyMsgManager$4
   {
     do
     {
-      synchronized (akat.jdField_a_of_type_JavaLangObject)
+      synchronized (akwm.jdField_a_of_type_JavaLangObject)
       {
-        if (akat.jdField_a_of_type_Akar == null) {
-          akat.jdField_a_of_type_Akar = new akar(BaseApplicationImpl.getContext());
+        if (akwm.jdField_a_of_type_Akwk == null) {
+          akwm.jdField_a_of_type_Akwk = new akwk(BaseApplicationImpl.getContext());
         }
-        ??? = akgd.a();
+        ??? = albw.a();
         if (??? == null) {
           return;
         }
       }
-    } while (akat.jdField_a_of_type_Akar == null);
+    } while (akwm.jdField_a_of_type_Akwk == null);
     if (this.jdField_a_of_type_Boolean)
     {
-      akat.jdField_a_of_type_Akar.b(((QQAppInterface)???).getCurrentUin(), this.jdField_a_of_type_JavaUtilArrayList);
+      akwm.jdField_a_of_type_Akwk.b(((QQAppInterface)???).getCurrentUin(), this.jdField_a_of_type_JavaUtilArrayList);
       return;
     }
-    akat.jdField_a_of_type_Akar.c(((QQAppInterface)???).getCurrentUin(), this.jdField_a_of_type_JavaUtilArrayList);
+    akwm.jdField_a_of_type_Akwk.c(((QQAppInterface)???).getCurrentUin(), this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

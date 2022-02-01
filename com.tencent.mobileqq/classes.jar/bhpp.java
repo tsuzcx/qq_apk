@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityActivity;
+import android.annotation.TargetApi;
+import android.os.Handler;
 
-public class bhpp
-  implements DialogInterface.OnClickListener
+class bhpp
+  extends bhyn
 {
-  public bhpp(AuthorityActivity paramAuthorityActivity) {}
+  bhpp(bhpo parambhpo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  @TargetApi(9)
+  public void onDone(bhyo parambhyo)
   {
-    paramDialogInterface.dismiss();
+    super.onDone(parambhyo);
+    bhpo.a(this.a).sendMessage(bhpo.a(this.a).obtainMessage(10002, parambhyo.a(), 0, parambhyo.a()));
   }
 }
 

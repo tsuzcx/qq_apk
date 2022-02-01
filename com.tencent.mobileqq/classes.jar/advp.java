@@ -1,26 +1,18 @@
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import mqq.util.WeakReference;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.app.Dialog;
+import android.view.View;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class advp
-  extends WtloginObserver
+  implements AdapterView.OnItemClickListener
 {
-  public advp(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity, WeakReference paramWeakReference) {}
+  public advp(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
   
-  public void onCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    super.onCheckDevLockStatus(paramWUserSigInfo, paramDevlockInfo, paramInt, paramErrMsg);
-    paramWUserSigInfo = (PhoneUnityBindInfoActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (paramWUserSigInfo == null)
-    {
-      QLog.i("PhoneUnityBindInfoActivity", 1, "fetchSecurePhoneNum, activity destroyed");
-      return;
-    }
-    PhoneUnityBindInfoActivity.a(paramWUserSigInfo, paramDevlockInfo);
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a(paramView);
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 

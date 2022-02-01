@@ -1,207 +1,236 @@
-import android.database.Cursor;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.fms.FullMessageSearchResult.SearchResultItem;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import android.content.Context;
+import android.util.Log;
+import com.tencent.TMG.channel.AVAppChannel;
+import com.tencent.TMG.channel.AVChannelManager;
+import com.tencent.TMG.logger.AVLoggerChooser;
+import com.tencent.TMG.sdk.AVAudioCtrl;
+import com.tencent.TMG.sdk.AVAudioCtrl.EnableMicCompleteCallback;
+import com.tencent.TMG.sdk.AVAudioCtrl.EnableSpeakerCompleteCallback;
+import com.tencent.TMG.sdk.AVCallback;
+import com.tencent.TMG.sdk.AVContext;
+import com.tencent.TMG.sdk.AVContext.StartParam;
+import com.tencent.TMG.sdk.AVCustomSpearEngineCtrl;
+import com.tencent.TMG.sdk.AVRoomMulti.EnterParam;
+import com.tencent.TMG.sdk.AVRoomMulti.EnterParam.Builder;
+import com.tencent.TMG.sdk.AVRoomMulti.EventListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Locale;
 
 public class anie
 {
-  private static String[] a;
+  private static anie jdField_a_of_type_Anie;
+  private static String b = "LimixiuAVManager";
+  private Context jdField_a_of_type_AndroidContentContext;
+  anig jdField_a_of_type_Anig = null;
+  anih jdField_a_of_type_Anih = null;
+  anii jdField_a_of_type_Anii = null;
+  AVContext jdField_a_of_type_ComTencentTMGSdkAVContext = null;
+  private AVRoomMulti.EventListener jdField_a_of_type_ComTencentTMGSdkAVRoomMulti$EventListener = new anif(this);
+  String jdField_a_of_type_JavaLangString = null;
   
-  static
+  private anie(Context paramContext)
   {
-    String str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.struct_msg_global_search.name(), "1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|32|35|38|40|41|44|53|54|60");
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.MsgSearch", 2, str);
-    }
-    a = str.split("\\|");
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = "user";
   }
   
-  public static FullMessageSearchResult.SearchResultItem a(QQAppInterface paramQQAppInterface, EntityManager paramEntityManager, Cursor paramCursor, String paramString1, int paramInt, String paramString2, anic paramanic)
+  public static anie a(Context paramContext)
   {
-    if ((paramCursor == null) || (paramCursor.getCount() == 0) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      paramEntityManager = null;
-    }
-    ArrayList localArrayList1;
-    ArrayList localArrayList2;
-    do
+    if (jdField_a_of_type_Anie == null) {}
+    try
     {
-      return paramEntityManager;
-      String str = paramString2.toLowerCase(Locale.US);
-      localArrayList1 = new ArrayList();
-      localArrayList2 = new ArrayList();
-      if (paramCursor.isBeforeFirst()) {
-        paramCursor.moveToFirst();
+      if (jdField_a_of_type_Anie == null) {
+        jdField_a_of_type_Anie = new anie(paramContext);
       }
-      if (!paramCursor.isAfterLast())
-      {
-        if ((paramanic.c == 3) || (paramanic.c == 2)) {
-          return null;
-        }
-        paramInt = 0;
-        byte[] arrayOfByte = paramCursor.getBlob(paramCursor.getColumnIndex("msgData"));
-        int i = paramCursor.getInt(paramCursor.getColumnIndex("msgtype"));
-        paramString2 = "";
-        paramQQAppInterface = paramString2;
-        if (arrayOfByte != null)
-        {
-          paramQQAppInterface = paramString2;
-          paramString1 = paramString2;
-        }
-        for (;;)
-        {
-          try
-          {
-            if (arrayOfByte.length > 0)
-            {
-              if (i != -1000) {
-                continue;
-              }
-              paramString1 = paramString2;
-              paramQQAppInterface = new String(arrayOfByte, "utf-8");
-            }
-            paramString2 = paramQQAppInterface;
-            if (paramQQAppInterface == null)
-            {
-              paramString1 = paramQQAppInterface;
-              paramString2 = new String("");
-            }
-            paramString1 = paramString2;
-            paramQQAppInterface = paramString2.toLowerCase(Locale.US);
-            paramString1 = paramQQAppInterface;
-            boolean bool = paramQQAppInterface.contains(str);
-            paramString1 = paramQQAppInterface;
-            if (bool)
-            {
-              paramInt = 1;
-              paramString1 = paramQQAppInterface;
-            }
-          }
-          catch (Exception paramQQAppInterface)
-          {
-            paramQQAppInterface.printStackTrace();
-            paramInt = 0;
-            continue;
-          }
-          if (paramInt != 0)
-          {
-            if (localArrayList1.size() < 1)
-            {
-              paramQQAppInterface = (MessageRecord)paramEntityManager.cursor2Entity(MessageRecord.class, null, paramCursor);
-              if (paramQQAppInterface != null)
-              {
-                paramQQAppInterface.msg = paramString1;
-                localArrayList1.add(paramQQAppInterface);
-              }
-            }
-            localArrayList2.add(Long.valueOf(paramCursor.getLong(paramCursor.getColumnIndex("uniseq"))));
-          }
-          paramCursor.moveToNext();
-          break;
-          if (i == -1035)
-          {
-            paramString1 = paramString2;
-            paramQQAppInterface = new MessageForMixedMsg();
-            paramString1 = paramString2;
-            paramQQAppInterface.msgData = arrayOfByte;
-            paramString1 = paramString2;
-            paramQQAppInterface.doParse();
-            paramString1 = paramString2;
-            paramQQAppInterface = paramQQAppInterface.msg;
-          }
-          else
-          {
-            paramQQAppInterface = paramString2;
-            if (i == -2011)
-            {
-              paramString1 = paramString2;
-              paramQQAppInterface = a(arrayOfByte);
-            }
-          }
-        }
-      }
-      paramQQAppInterface = null;
-      if (localArrayList1.size() > 0)
-      {
-        paramQQAppInterface = new FullMessageSearchResult.SearchResultItem();
-        paramQQAppInterface.secondPageList = localArrayList1;
-        paramQQAppInterface.secondPageMessageUniseq = localArrayList2;
-      }
-      paramString1 = paramanic.a;
-      paramEntityManager = paramQQAppInterface;
-    } while (paramString1 == null);
-    paramString1.a += paramCursor.getCount();
-    paramString1.c += localArrayList1.size();
-    paramString1.c += localArrayList2.size();
-    return paramQQAppInterface;
+      return jdField_a_of_type_Anie;
+    }
+    finally {}
   }
   
-  private static String a(byte[] paramArrayOfByte)
+  private AVContext.StartParam a()
   {
-    String str = "";
-    Object localObject = str;
-    if (paramArrayOfByte != null)
-    {
-      localObject = str;
-      if (paramArrayOfByte.length > 0)
-      {
-        AbsStructMsg localAbsStructMsg = bchh.a(paramArrayOfByte);
-        localObject = str;
-        if (localAbsStructMsg != null)
-        {
-          boolean bool = a(String.valueOf(localAbsStructMsg.mMsgServiceID));
-          localObject = str;
-          if ((localAbsStructMsg instanceof AbsShareMsg))
-          {
-            localObject = str;
-            if (bool)
-            {
-              paramArrayOfByte = ((AbsShareMsg)localAbsStructMsg).mContentTitle;
-              localObject = paramArrayOfByte;
-              if (TextUtils.isEmpty(paramArrayOfByte))
-              {
-                localObject = paramArrayOfByte;
-                if ((localAbsStructMsg instanceof AbsStructMsg)) {
-                  localObject = ((AbsShareMsg)localAbsStructMsg).mMsgBrief;
-                }
-              }
-            }
-          }
-        }
+    anhv localanhv = new anhv();
+    localanhv.sdkAppId = Integer.parseInt(this.jdField_a_of_type_Anig.jdField_a_of_type_JavaLangString);
+    localanhv.accountType = this.jdField_a_of_type_Anig.b;
+    localanhv.appIdAt3rd = this.jdField_a_of_type_Anig.jdField_a_of_type_JavaLangString;
+    localanhv.identifier = this.jdField_a_of_type_Anig.c;
+    localanhv.engineCtrlType = 2;
+    localanhv.jdField_a_of_type_Int = Integer.valueOf(this.jdField_a_of_type_Anig.f).intValue();
+    localanhv.jdField_a_of_type_Long = Long.valueOf(this.jdField_a_of_type_Anig.g).longValue();
+    QLog.i("AVManager", 1, "getStartParams|param.sdkAppId=" + localanhv.sdkAppId + ", param.accountType=" + localanhv.accountType + ", param.appIdAt3rd=" + localanhv.appIdAt3rd + ", param.identifier=" + localanhv.identifier + ", param.engineCtrlType=" + localanhv.engineCtrlType + ", param.nGameID=" + localanhv.jdField_a_of_type_Int + ", param.lGameRoomID=" + localanhv.jdField_a_of_type_Long);
+    return localanhv;
+  }
+  
+  private AVRoomMulti.EnterParam a(String paramString, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    String str = this.jdField_a_of_type_JavaLangString;
+    QLog.e("AVManager", 1, "getEnterRoomParam roomID=" + paramString + ", roomRoleValue=" + str + ", videoRecvMode=" + paramInt + ", screenRecMode=" + 0 + ", mic=" + paramBoolean1 + ", speaker=" + paramBoolean2);
+    return new AVRoomMulti.EnterParam.Builder(Integer.parseInt(paramString)).avControlRole(str).autoCreateRoom(true).videoRecvMode(paramInt).screenRecvMode(0).isEnableMic(paramBoolean1).isEnableSpeaker(paramBoolean2).isEnableHwEnc(true).isEnableHwDec(true).build();
+  }
+  
+  public int a()
+  {
+    int i = 1003;
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext != null) {
+      i = this.jdField_a_of_type_ComTencentTMGSdkAVContext.stop();
+    }
+    QLog.i("AVManager", 1, "stopContext|ret=" + i);
+    return i;
+  }
+  
+  public AVContext a()
+  {
+    return this.jdField_a_of_type_ComTencentTMGSdkAVContext;
+  }
+  
+  public AVCustomSpearEngineCtrl a()
+  {
+    return a().getCustomSpearEngineCtrl();
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext != null) {
+      this.jdField_a_of_type_ComTencentTMGSdkAVContext.destroy();
+    }
+    this.jdField_a_of_type_ComTencentTMGSdkAVContext = null;
+    QLog.e("AVManager", 1, "destroyContext");
+  }
+  
+  public void a(long paramLong)
+  {
+    QLog.i("AVManager", 1, "setGameRoomID|lGameRoomID=" + paramLong);
+    this.jdField_a_of_type_Anig.g = String.valueOf(paramLong);
+  }
+  
+  public void a(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void a(anig paramanig)
+  {
+    this.jdField_a_of_type_Anig = paramanig;
+  }
+  
+  public void a(anii paramanii)
+  {
+    this.jdField_a_of_type_Anii = paramanii;
+  }
+  
+  public void a(AVCallback paramAVCallback)
+  {
+    int i = 0;
+    AVChannelManager.setIMChannelType(2);
+    com.tencent.TMG.utils.SoUtil.customLibPath = anin.a();
+    AVLoggerChooser.setUseImsdk(false);
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext == null) {
+      this.jdField_a_of_type_ComTencentTMGSdkAVContext = AVContext.createInstance(this.jdField_a_of_type_AndroidContentContext, false);
+    }
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext == null) {
+      if (AVContext.getSoExtractError() != 0) {
+        i = AVContext.getSoExtractError();
       }
     }
-    return localObject;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramString.equals("0"))) {}
     for (;;)
     {
-      return false;
-      if (a != null)
-      {
-        int i = a.length;
-        String[] arrayOfString = a;
-        int j = arrayOfString.length;
-        i = 0;
-        while (i < j)
-        {
-          if (paramString.equals(arrayOfString[i])) {
-            return true;
-          }
-          i += 1;
-        }
+      QLog.i("AVManager", 1, "startContext|ret=" + i);
+      if (i != 0) {
+        paramAVCallback.onComplete(i, "internal error.");
       }
+      return;
+      i = 1101;
+      continue;
+      this.jdField_a_of_type_ComTencentTMGSdkAVContext.setAppVersion(this.jdField_a_of_type_Anig.e);
+      AVChannelManager.setAppChannel(new anij());
+      AVChannelManager.getAppChannel().loginWithParam(a());
+      this.jdField_a_of_type_ComTencentTMGSdkAVContext.start(a(), null, paramAVCallback);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2, int paramInt, anih paramanih)
+  {
+    QLog.i("AVManager", 1, "enterRoom.");
+    this.jdField_a_of_type_Anih = paramanih;
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext == null)
+    {
+      Log.e("AVManager", "enterRoom| enter room faild, because of context not started.");
+      if (this.jdField_a_of_type_Anih != null) {
+        this.jdField_a_of_type_Anih.a(1101, "context not started.");
+      }
+      return;
+    }
+    AVChannelManager.getAppChannel().loginWithParam(a());
+    this.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl().startTRAEService();
+    QLog.e("AVManager", 1, "enterRoom| try enter room implement!!!!!!!!!");
+    this.jdField_a_of_type_ComTencentTMGSdkAVContext.enterRoom(this.jdField_a_of_type_ComTencentTMGSdkAVRoomMulti$EventListener, a(paramString, paramBoolean1, paramBoolean2, paramInt));
+  }
+  
+  public void a(boolean paramBoolean, AVAudioCtrl.EnableMicCompleteCallback paramEnableMicCompleteCallback)
+  {
+    AVAudioCtrl localAVAudioCtrl = null;
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext != null) {
+      localAVAudioCtrl = this.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl();
+    }
+    if (localAVAudioCtrl != null) {
+      localAVAudioCtrl.enableMic(paramBoolean, paramEnableMicCompleteCallback);
+    }
+  }
+  
+  public void a(boolean paramBoolean, AVAudioCtrl.EnableSpeakerCompleteCallback paramEnableSpeakerCompleteCallback)
+  {
+    AVAudioCtrl localAVAudioCtrl = null;
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext != null) {
+      localAVAudioCtrl = this.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl();
+    }
+    if (localAVAudioCtrl != null) {
+      localAVAudioCtrl.enableSpeaker(paramBoolean, paramEnableSpeakerCompleteCallback);
+    }
+  }
+  
+  public int b()
+  {
+    int i = 1003;
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext != null) {
+      i = this.jdField_a_of_type_ComTencentTMGSdkAVContext.exitRoom();
+    }
+    QLog.i("AVManager", 1, "exitRoom|ret=" + i);
+    return i;
+  }
+  
+  public void b()
+  {
+    AVAudioCtrl localAVAudioCtrl = null;
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext != null) {
+      localAVAudioCtrl = this.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl();
+    }
+    if (localAVAudioCtrl != null)
+    {
+      localAVAudioCtrl.PauseAudioByUser();
+      localAVAudioCtrl.stopTRAEService();
+    }
+  }
+  
+  public void b(long paramLong)
+  {
+    QLog.i("AVManager", 1, "setGameID|lGameID=" + paramLong);
+    this.jdField_a_of_type_Anig.f = String.valueOf(paramLong);
+  }
+  
+  public void c()
+  {
+    AVAudioCtrl localAVAudioCtrl = null;
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext != null) {
+      localAVAudioCtrl = this.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl();
+    }
+    if (localAVAudioCtrl != null)
+    {
+      localAVAudioCtrl.ResumeAudioByUser();
+      localAVAudioCtrl.startTRAEService();
     }
   }
 }

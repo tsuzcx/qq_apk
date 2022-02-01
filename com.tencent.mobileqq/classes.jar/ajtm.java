@@ -1,32 +1,15 @@
-import android.content.Intent;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment;
 
-class ajtm
-  extends ajrg
+public class ajtm
+  extends anrc
 {
-  protected ajtm(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
-  {
-    super(paramNewPhotoPreviewActivity);
-  }
+  public ajtm(ChatHistoryTroopAllFragment paramChatHistoryTroopAllFragment) {}
   
-  public void initData(Intent paramIntent)
+  protected void a(Object paramObject)
   {
-    super.initData(paramIntent);
-    this.a.customSendBtnText = ((NewPhotoPreviewActivity)this.mActivity).getString(2131694460);
-  }
-  
-  public void initUI()
-  {
-    super.initUI();
-    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setOnClickListener(new ajtn(this));
-  }
-  
-  public boolean needShowMultiPhoto()
-  {
-    return (this.mPhotoCommonData.selectedPhotoList != null) && (!this.mPhotoCommonData.selectedPhotoList.isEmpty());
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

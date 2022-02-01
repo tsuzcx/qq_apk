@@ -1,45 +1,36 @@
-import android.os.SystemClock;
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import java.util.List;
 
-class wso
-  implements AbsListView.OnScrollListener
+public class wso
 {
-  wso(wsm paramwsm) {}
+  public int a;
+  public String a;
+  public List<LikeEntry> a;
+  public int b;
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public boolean equals(Object paramObject)
   {
-    if (SystemClock.uptimeMillis() - wsm.a(this.a) < 500L) {}
-    int i;
+    if (this == paramObject) {}
     do
     {
-      do
-      {
-        return;
-        wsm.a(this.a, SystemClock.uptimeMillis());
-      } while (!(this.a.jdField_a_of_type_Wod instanceof wor));
-      i = paramInt1 + paramInt2;
-      ((wor)this.a.jdField_a_of_type_Wod).a = i;
-    } while ((paramInt3 <= 0) || (paramInt3 - paramInt1 - paramInt2 >= 10));
-    this.a.jdField_a_of_type_Wra.a();
-    xvv.a("VideoCoverListGroupHolder", "onScroll mStartRequestDataRunnable mShowPosition=%d totalItemCount=%d, groupId=%s", Integer.valueOf(i), Integer.valueOf(paramInt3), this.a.jdField_a_of_type_Wod.toString());
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (wso)paramObject;
+      if (this.a != null) {
+        return this.a.equals(paramObject.a);
+      }
+    } while (paramObject.a == null);
+    return false;
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public int hashCode()
   {
-    EventCollector.getInstance().onListScrollStateChanged(paramAbsListView, paramInt);
-    if (paramInt == 0) {
-      wsm.a(this.a, false);
+    if (this.a != null) {
+      return this.a.hashCode();
     }
-    for (;;)
-    {
-      if ((paramInt == 0) && (wsm.a(this.a))) {
-        this.a.d();
-      }
-      return;
-      wsm.a(this.a, true);
-    }
+    return 0;
   }
 }
 

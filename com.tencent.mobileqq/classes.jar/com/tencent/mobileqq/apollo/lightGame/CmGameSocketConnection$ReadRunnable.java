@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.lightGame;
 
-import alva;
+import amuc;
 import com.tencent.qphone.base.util.MsfSocketInputBuffer;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -39,9 +39,9 @@ class CmGameSocketConnection$ReadRunnable
             {
               if (CmGameSocketConnection.a(localCmGameSocketConnection) != null)
               {
-                alva localalva = (alva)CmGameSocketConnection.a(localCmGameSocketConnection).get();
-                if (localalva != null) {
-                  localalva.a(localMsfSocketInputBuffer);
+                amuc localamuc = (amuc)CmGameSocketConnection.a(localCmGameSocketConnection).get();
+                if (localamuc != null) {
+                  localamuc.a(localMsfSocketInputBuffer);
                 }
               }
               localMsfSocketInputBuffer.reset();

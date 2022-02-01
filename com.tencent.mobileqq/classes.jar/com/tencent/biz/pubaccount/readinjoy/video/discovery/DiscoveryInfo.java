@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.util.ArrayList;
-import sgc;
+import ssh;
 
 public class DiscoveryInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<DiscoveryInfo> CREATOR = new sgc();
+  public static final Parcelable.Creator<DiscoveryInfo> CREATOR = new ssh();
   public int a;
   public long a;
   public String a;

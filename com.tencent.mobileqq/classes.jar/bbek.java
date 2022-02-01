@@ -1,15 +1,14 @@
+import com.tencent.mobileqq.remind.widget.IosTimepicker;
+import com.tencent.widget.VerticalGallery;
+
 public class bbek
+  implements blge
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  long jdField_b_of_type_Long;
+  public bbek(IosTimepicker paramIosTimepicker) {}
   
-  public bbek(int paramInt, String paramString)
+  public void b(VerticalGallery paramVerticalGallery)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    IosTimepicker.a(this.a);
   }
 }
 

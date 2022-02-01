@@ -1,73 +1,54 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.util.LruCache;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashSet;
 
-public class aqcy
-  extends aptq<aqcz>
+class aqcy
+  extends BroadcastReceiver
 {
-  @NonNull
-  public aqcz a(int paramInt)
-  {
-    return new aqcz();
-  }
+  aqcy(aqcx paramaqcx) {}
   
-  @Nullable
-  public aqcz a(aptx[] paramArrayOfaptx)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null)) {
-      return aqcz.a(paramArrayOfaptx[0].a);
-    }
+    if ((paramIntent == null) || (!"com.tencent.qqhead.getheadresp".equals(paramIntent.getAction())) || (paramIntent.getIntExtra("faceType", -1) != this.a.jdField_a_of_type_Int)) {}
+    ArrayList localArrayList;
+    do
+    {
+      return;
+      paramContext = paramIntent.getStringArrayListExtra("uinList");
+      localArrayList = paramIntent.getStringArrayListExtra("headPathList");
+    } while ((paramContext == null) || (localArrayList == null));
+    int j = paramContext.size();
     if (QLog.isColorLevel()) {
-      QLog.d("SubAccountConfProcessor", 2, "onParsed is null");
+      QLog.d("NonMainAppHeadLoader", 2, "onReceive, uinListSize:" + j + " reqSize:" + this.a.jdField_a_of_type_JavaUtilHashSet.size());
     }
-    return null;
-  }
-  
-  public void a(aqcz paramaqcz)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SubAccountConfProcessor", 2, "onUpdate " + paramaqcz.toString());
+    paramIntent = new ArrayList(this.a.jdField_a_of_type_JavaUtilHashSet.size());
+    int i = 0;
+    while (i < j)
+    {
+      String str = (String)paramContext.get(i);
+      if (this.a.jdField_a_of_type_JavaUtilHashSet.contains(str))
+      {
+        this.a.jdField_a_of_type_JavaUtilHashSet.remove(str);
+        paramIntent.add(str);
+      }
+      this.a.jdField_b_of_type_AndroidSupportV4UtilLruCache.put(str, localArrayList.get(i));
+      i += 1;
     }
-  }
-  
-  public Class<aqcz> clazz()
-  {
-    return aqcz.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SubAccountConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SubAccountConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public int type()
-  {
-    return 607;
+    paramContext = Message.obtain();
+    paramContext.obj = paramIntent;
+    paramContext.what = 1001;
+    this.a.jdField_b_of_type_AndroidOsHandler.sendMessage(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqcy
  * JD-Core Version:    0.7.0.1
  */

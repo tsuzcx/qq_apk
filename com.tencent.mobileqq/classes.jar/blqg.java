@@ -1,14 +1,7 @@
-public abstract interface blqg
+public class blqg
 {
-  public abstract void a();
-  
-  public abstract void a(float paramFloat);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public int a = 0;
+  public String a;
 }
 
 

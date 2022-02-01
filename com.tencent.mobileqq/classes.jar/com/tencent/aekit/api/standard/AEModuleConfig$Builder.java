@@ -13,6 +13,7 @@ public class AEModuleConfig$Builder
   private boolean enableProfiler = false;
   private boolean enableReducedMeidaLibrary = false;
   private boolean enableResourceCheck;
+  private boolean enableSoLoadCheck = true;
   private boolean isFramebufferFetchEnable = true;
   private boolean isLoadSo = true;
   private String license;
@@ -74,6 +75,12 @@ public class AEModuleConfig$Builder
   public Builder setEnableResourceCheck(boolean paramBoolean)
   {
     this.enableResourceCheck = paramBoolean;
+    return this;
+  }
+  
+  public Builder setEnableSoLoadCheck(boolean paramBoolean)
+  {
+    this.enableSoLoadCheck = paramBoolean;
     return this;
   }
   

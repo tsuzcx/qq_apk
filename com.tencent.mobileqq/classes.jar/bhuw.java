@@ -1,15 +1,67 @@
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.open.agent.OpenFrame;
-import com.tencent.open.agent.SocialFriendChooser;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.vas.update.callback.IVasLog;
 
-class bhuw
-  implements bhty
+public class bhuw
+  implements IVasLog
 {
-  bhuw(bhuv parambhuv) {}
-  
-  public void a()
+  public void d(String paramString1, String paramString2)
   {
-    ((OpenFrame)this.a.a.a.getCurrentView()).g();
+    QLog.d(paramString1, 1, paramString2);
+  }
+  
+  public void d(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.d(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    QLog.e(paramString1, 1, paramString2);
+  }
+  
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.e(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 1, paramString2);
+  }
+  
+  public void i(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.i(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public boolean isColorLevel()
+  {
+    return QLog.isColorLevel();
+  }
+  
+  public boolean isDebugVersion()
+  {
+    return false;
+  }
+  
+  public void v(String paramString1, String paramString2)
+  {
+    QLog.d(paramString1, 1, paramString2);
+  }
+  
+  public void v(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.d(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    QLog.w(paramString1, 1, paramString2);
+  }
+  
+  public void w(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.w(paramString1, 1, paramString2, paramThrowable);
   }
 }
 

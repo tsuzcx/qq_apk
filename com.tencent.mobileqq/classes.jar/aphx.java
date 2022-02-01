@@ -1,12 +1,18 @@
-public class aphx
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
+
+public final class aphx
+  implements Parcelable.Creator<ARScanStarFaceConfigInfo>
 {
-  public String a;
-  public String b;
-  public String c;
-  
-  public String toString()
+  public ARScanStarFaceConfigInfo a(Parcel paramParcel)
   {
-    return "Label{content='" + this.a + '\'' + ", bgColor='" + this.b + '\'' + ", textColor='" + this.c + '\'' + '}';
+    return new ARScanStarFaceConfigInfo(paramParcel);
+  }
+  
+  public ARScanStarFaceConfigInfo[] a(int paramInt)
+  {
+    return new ARScanStarFaceConfigInfo[paramInt];
   }
 }
 

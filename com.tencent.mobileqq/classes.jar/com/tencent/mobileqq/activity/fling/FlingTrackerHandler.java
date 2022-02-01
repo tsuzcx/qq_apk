@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
-import bfrh;
+import bgzy;
 import java.lang.ref.WeakReference;
 
 public class FlingTrackerHandler
@@ -191,7 +191,7 @@ public class FlingTrackerHandler
   
   public void cancelDrag()
   {
-    bfrh.b((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    bgzy.b((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
   }
   
   public Bitmap decodeSampledBitmapFromFile(String paramString, int paramInt1, int paramInt2)
@@ -215,7 +215,7 @@ public class FlingTrackerHandler
     Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (localActivity != null)
     {
-      bfrh.b(localActivity);
+      bgzy.b(localActivity);
       localActivity.onBackPressed();
       localActivity.overridePendingTransition(2130772045, 2130772045);
     }
@@ -231,7 +231,7 @@ public class FlingTrackerHandler
   
   public void startDrag()
   {
-    bfrh.a((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    bgzy.a((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
   }
 }
 

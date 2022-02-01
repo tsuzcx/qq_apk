@@ -15,8 +15,8 @@ import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyIma
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import otl;
-import pay;
+import pbn;
+import pkh;
 
 public class CommentLinkItemView
   extends LinearLayout
@@ -52,9 +52,9 @@ public class CommentLinkItemView
   
   private void a()
   {
-    inflate(this.jdField_a_of_type_AndroidContentContext, 2131562668, this);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView = ((NativeReadInjoyImageView)findViewById(2131369285));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379700));
+    inflate(this.jdField_a_of_type_AndroidContentContext, 2131562739, this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView = ((NativeReadInjoyImageView)findViewById(2131369452));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380014));
   }
   
   private void a(int paramInt)
@@ -66,13 +66,13 @@ public class CommentLinkItemView
     {
     case 2: 
     default: 
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842821));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842853));
       return;
     case 3: 
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842823));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842855));
       return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842825));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842857));
   }
   
   public void a(ArticleInfo paramArticleInfo, BaseCommentData paramBaseCommentData, BaseCommentData.CommentLinkData paramCommentLinkData)
@@ -107,8 +107,8 @@ public class CommentLinkItemView
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData$CommentLinkData != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData$CommentLinkData.linkUrl)))
     {
       QLog.d("CommentLinkItemView", 2, "linkItemView click url " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData$CommentLinkData.linkUrl);
-      pay.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData$CommentLinkData.linkUrl);
-      otl.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData$CommentLinkData.type);
+      pkh.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData$CommentLinkData.linkUrl);
+      pbn.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData$CommentLinkData.type);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

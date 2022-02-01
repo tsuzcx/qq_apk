@@ -1,16 +1,19 @@
 package com.tencent.avgame.gameroom;
 
-import ncl;
-import nje;
+import nii;
+import nip;
+import nky;
 
 public class GameRoomPresenterImp$6
   implements Runnable
 {
-  public GameRoomPresenterImp$6(ncl paramncl) {}
+  public GameRoomPresenterImp$6(nii paramnii) {}
   
   public void run()
   {
-    nje.a().b(0);
+    this.this$0.jdField_a_of_type_Nky.b();
+    this.this$0.jdField_a_of_type_Nky.a(false);
+    this.this$0.jdField_a_of_type_Nip.c();
   }
 }
 

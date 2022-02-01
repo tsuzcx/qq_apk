@@ -1,19 +1,20 @@
-import android.view.ViewGroup;
+import kotlin.Metadata;
+import kotlin.jvm.JvmField;
+import org.jetbrains.annotations.NotNull;
 
-public class urt
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/util/ImageActionItem;", "Lcom/tencent/biz/pubaccount/util/ActionItem;", "name", "", "action", "", "webHandle", "", "url", "(Ljava/lang/String;IZLjava/lang/String;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class urt
+  extends urb
 {
-  public int a = 0;
-  public long a;
-  public ViewGroup a;
-  public String a;
-  public urk a;
-  public urw a;
-  public urx a;
-  public usf a;
-  public usr a;
-  public boolean a;
-  public int b;
-  public boolean b;
+  @JvmField
+  @NotNull
+  public String b;
+  
+  public urt(@NotNull String paramString1, int paramInt, boolean paramBoolean, @NotNull String paramString2)
+  {
+    super(paramString1, paramInt, paramBoolean);
+    this.b = paramString2;
+  }
 }
 
 

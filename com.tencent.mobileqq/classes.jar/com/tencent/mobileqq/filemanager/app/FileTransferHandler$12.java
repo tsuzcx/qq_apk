@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import asdg;
-import asdm;
+import athn;
+import atht;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 public class FileTransferHandler$12
   implements Runnable
 {
-  public FileTransferHandler$12(asdm paramasdm, FileManagerEntity paramFileManagerEntity) {}
+  public FileTransferHandler$12(atht paramatht, FileManagerEntity paramFileManagerEntity) {}
   
   public void run()
   {

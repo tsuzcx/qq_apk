@@ -1,26 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class oqw
-  implements ViewBase.OnClickListener
+class oqw
+  implements pns
 {
-  oqw(ouo paramouo, ouc paramouc) {}
+  oqw(oqv paramoqv) {}
   
-  public final void onClick(ViewBase paramViewBase)
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Ouo.a != null)
-    {
-      paramViewBase = this.jdField_a_of_type_Ouc.a();
-      Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "adapter.vafContext");
-      pay.a(paramViewBase.getContext(), this.jdField_a_of_type_Ouo.a.activityJumpUrl);
-      if (this.jdField_a_of_type_Ouc.a() != null) {
-        this.jdField_a_of_type_Ouc.a().e(this.jdField_a_of_type_Ouo);
-      }
+    if (this.a.jdField_a_of_type_Tds != null) {
+      this.a.jdField_a_of_type_Tds.a(paramInt, this.a.jdField_a_of_type_Int);
     }
   }
 }

@@ -1,15 +1,6 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
-
-class ahhq
-  implements Comparator<MessageRecord>
+public abstract interface ahhq
 {
-  ahhq(ahhp paramahhp) {}
-  
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
-  {
-    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
-  }
+  public abstract void a(agsz paramagsz);
 }
 
 

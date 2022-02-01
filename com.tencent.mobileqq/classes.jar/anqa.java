@@ -1,68 +1,23 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.parser.AVGameShareJoinRoomAction.2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.apollo.view.pannel.viewbinder.ApolloGameViewBinder.GameListAdapter.2;
+import com.tencent.mobileqq.apollo.view.pannel.viewbinder.ApolloGameViewBinder.GameListAdapter.2.1.1;
 
 public class anqa
-  extends anrh
+  implements Animation.AnimationListener
 {
-  public anqa(QQAppInterface paramQQAppInterface, Context paramContext)
+  public anqa(ApolloGameViewBinder.GameListAdapter.2 param2) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramQQAppInterface, paramContext);
+    this.a.a.setVisibility(8);
+    this.a.a.postDelayed(new ApolloGameViewBinder.GameListAdapter.2.1.1(this), 300L);
   }
   
-  public boolean a()
-  {
-    try
-    {
-      if (TextUtils.isEmpty((String)this.jdField_a_of_type_JavaUtilHashMap.get("key"))) {
-        return c();
-      }
-      boolean bool = b();
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("AVGameShareJoinRoomAction", 1, "doAction error: " + localException.getMessage());
-      a("AVGameShareJoinRoomAction");
-    }
-    return true;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  protected boolean b()
-  {
-    QLog.d("AVGameShareJoinRoomAction", 1, "doAction getRoomInfoAndJoinRoom");
-    String str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("key");
-    if (TextUtils.isEmpty(str))
-    {
-      QLog.e("AVGameShareJoinRoomAction", 1, "doAction error: key is empty");
-      return true;
-    }
-    anha.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, new anqb(this));
-    return false;
-  }
-  
-  protected boolean c()
-  {
-    QLog.d("AVGameShareJoinRoomAction", 1, "doAction directJoinRoom");
-    String str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("uin");
-    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("room");
-    if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2))) {
-      QLog.e("AVGameShareJoinRoomAction", 1, "doAction error: data is empty");
-    }
-    mxn localmxn;
-    do
-    {
-      return true;
-      localmxn = (mxn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(373);
-    } while (localmxn == null);
-    ThreadManager.getUIHandler().post(new AVGameShareJoinRoomAction.2(this, localmxn, str2, str1));
-    return true;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

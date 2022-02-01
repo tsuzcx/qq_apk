@@ -1,24 +1,23 @@
-import com.tencent.mobileqq.app.proxy.ProxyListener;
-import java.util.UUID;
+import android.view.View;
+import java.util.List;
 
 class beek
-  implements ProxyListener
+  implements bkzq
 {
-  beek(beeh parambeeh, UUID paramUUID) {}
+  beek(beeh parambeeh, List paramList, befn parambefn, bkzi parambkzi) {}
   
-  public void onDeleteFinish(String paramString, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    befc.d("TroopFileDataBaseProxy", befc.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish. table:" + paramString);
-  }
-  
-  public void onInsertFinish(String paramString)
-  {
-    befc.d("TroopFileDataBaseProxy", befc.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish[add]. table:" + paramString);
-  }
-  
-  public void onUpdateFinish(String paramString, int paramInt)
-  {
-    befc.d("TroopFileDataBaseProxy", befc.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish[up]. table:" + paramString);
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      paramView = (befo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if (beeh.a(this.jdField_a_of_type_Beeh) != null) {
+        beeh.a(this.jdField_a_of_type_Beeh).a(paramView.b(), this.jdField_a_of_type_Befn);
+      }
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+    }
+    this.jdField_a_of_type_Bkzi.cancel();
   }
 }
 

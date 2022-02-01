@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import java.util.concurrent.atomic.AtomicInteger;
-import sdj;
-import sgx;
+import spn;
+import stn;
 
 public class VideoPlayerWrapper$4
   implements Runnable
 {
-  public VideoPlayerWrapper$4(sdj paramsdj, boolean paramBoolean) {}
+  public VideoPlayerWrapper$4(spn paramspn, boolean paramBoolean) {}
   
   public void run()
   {
-    if ((sdj.a(this.this$0) != null) && (sdj.a(this.this$0).get() != 6) && (sdj.a(this.this$0).get() != 8)) {
-      sdj.a(this.this$0).b(this.a);
+    if ((spn.a(this.this$0) != null) && (spn.a(this.this$0).get() != 6) && (spn.a(this.this$0).get() != 8)) {
+      spn.a(this.this$0).b(this.a);
     }
   }
 }

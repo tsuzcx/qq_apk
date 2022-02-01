@@ -1,13 +1,10 @@
 package com.tencent.mobileqq.activity.qwallet.fragment;
 
-import ajyn;
-import ajze;
-import ajzz;
-import akao;
-import akgd;
-import amrb;
-import amsw;
-import amtj;
+import akug;
+import akux;
+import akvs;
+import akwh;
+import albw;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -24,14 +21,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bfun;
-import bkvx;
-import bkwe;
-import bkwf;
+import antp;
+import anvk;
+import anvx;
+import bhdf;
+import bmhg;
+import bmhn;
+import bmho;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.face.FaceDrawable;
 import com.tencent.mobileqq.data.DiscussionMemberInfo;
 import com.tencent.mobileqq.data.Friends;
@@ -55,7 +56,7 @@ public class ExclusiveHbFragment
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bkwf jdField_a_of_type_Bkwf = new bkwf();
+  private bmho jdField_a_of_type_Bmho = new bmho();
   private String jdField_a_of_type_JavaLangString;
   private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private int jdField_b_of_type_Int;
@@ -65,7 +66,7 @@ public class ExclusiveHbFragment
   
   public ExclusiveHbFragment()
   {
-    this.jdField_a_of_type_AndroidTextTextWatcher = new ajyn(this);
+    this.jdField_a_of_type_AndroidTextTextWatcher = new akug(this);
   }
   
   private String a(ArrayList<String> paramArrayList)
@@ -123,7 +124,7 @@ public class ExclusiveHbFragment
       Object localObject1 = paramIntent.getParcelableArrayListExtra("result_set");
       if (localObject1 != null)
       {
-        paramIntent = (amsw)this.mActivity.getAppInterface().getManager(51);
+        paramIntent = (anvk)this.mActivity.getAppInterface().getManager(QQManagerFactory.FRIENDS_MANAGER);
         localObject1 = ((ArrayList)localObject1).iterator();
         for (;;)
         {
@@ -162,7 +163,7 @@ public class ExclusiveHbFragment
     {
       if (this.jdField_a_of_type_JavaLangString.equals("2"))
       {
-        localObject2 = ((amrb)localQQAppInterface.getManager(53)).a(this.jdField_b_of_type_JavaLangString, localResultRecord.uin);
+        localObject2 = ((antp)localQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(this.jdField_b_of_type_JavaLangString, localResultRecord.uin);
         if (localObject2 == null) {
           break;
         }
@@ -172,7 +173,7 @@ public class ExclusiveHbFragment
       if (!this.jdField_a_of_type_JavaLangString.equals("3")) {
         break;
       }
-      localObject2 = bfun.a().a(localQQAppInterface, this.jdField_b_of_type_JavaLangString, localResultRecord.uin);
+      localObject2 = bhdf.a().a(localQQAppInterface, this.jdField_b_of_type_JavaLangString, localResultRecord.uin);
       if (localObject2 == null) {
         break;
       }
@@ -207,23 +208,23 @@ public class ExclusiveHbFragment
   
   private void a(View paramView, Bundle paramBundle)
   {
-    bkwe.a(paramBundle, this.jdField_a_of_type_Bkwf);
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Bkwf.recv_type;
+    bmhn.a(paramBundle, this.jdField_a_of_type_Bmho);
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Bmho.recv_type;
     this.jdField_b_of_type_JavaLangString = paramBundle.getString("recv_uin");
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131362672));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131362687));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new akao(this.jdField_a_of_type_AndroidWidgetEditText));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131363797));
-    this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131366188));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379657));
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new akwh(this.jdField_a_of_type_AndroidWidgetEditText));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131363869));
+    this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131366291));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379971));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131370124));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131370298));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetEditText.setHint(ajzz.a(this.channel, this.jdField_a_of_type_Bkwf, this.mActivity.a(), amtj.a(2131703355)));
-    paramView.findViewById(2131369191).setOnClickListener(this);
+    this.jdField_b_of_type_AndroidWidgetEditText.setHint(akvs.a(this.channel, this.jdField_a_of_type_Bmho, this.mActivity.a(), anvx.a(2131703706)));
+    paramView.findViewById(2131369353).setOnClickListener(this);
     if (QLog.isColorLevel()) {
-      QLog.i("ExclusiveHbFragment", 2, "bizParams:" + this.jdField_a_of_type_Bkwf.biz_params);
+      QLog.i("ExclusiveHbFragment", 2, "bizParams:" + this.jdField_a_of_type_Bmho.biz_params);
     }
   }
   
@@ -231,7 +232,7 @@ public class ExclusiveHbFragment
   {
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(paramBoolean);
     if (!paramBoolean) {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(getString(2131696252));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(getString(2131696506));
     }
   }
   
@@ -242,13 +243,13 @@ public class ExclusiveHbFragment
     TextView localTextView;
     if (this.jdField_a_of_type_Int == 1)
     {
-      i = 2130847070;
+      i = 2130847168;
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, i, 0);
       localObject = this.jdField_a_of_type_AndroidWidgetTextView;
       if (this.jdField_a_of_type_Int != 1) {
         break label105;
       }
-      i = 2131696245;
+      i = 2131696499;
       ((TextView)localObject).setText(i);
       localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
       if (this.jdField_a_of_type_Int != 1) {
@@ -257,14 +258,14 @@ public class ExclusiveHbFragment
     }
     label105:
     label112:
-    for (Object localObject = amtj.a(2131703358) + getString(2131696245);; localObject = amtj.a(2131703350) + getString(2131696244))
+    for (Object localObject = anvx.a(2131703709) + getString(2131696499);; localObject = anvx.a(2131703701) + getString(2131696498))
     {
       localTextView.setContentDescription((CharSequence)localObject);
       d();
       return;
-      i = 2130847069;
+      i = 2130847167;
       break;
-      i = 2131696244;
+      i = 2131696498;
       break label40;
     }
   }
@@ -283,7 +284,7 @@ public class ExclusiveHbFragment
       str = a(this.jdField_a_of_type_JavaUtilArrayList);
       if ((this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) || (TextUtils.isEmpty(str)))
       {
-        this.mActivity.c(amtj.a(2131703354));
+        this.mActivity.c(anvx.a(2131703705));
         return;
       }
     }
@@ -294,12 +295,12 @@ public class ExclusiveHbFragment
     }
     localException.put("grab_uin_list", str);
     this.c = String.valueOf(a());
-    combineUploadData(this.jdField_a_of_type_Bkwf, this.channel, this.jdField_b_of_type_Int, bkvx.a(this.c), "only.wrappacket.wrap");
+    combineUploadData(this.jdField_a_of_type_Bmho, this.channel, this.jdField_b_of_type_Int, bmhg.a(this.c), "only.wrappacket.wrap");
     localException.put("type", String.valueOf(1));
-    localException.put("wishing", ajzz.a(this.jdField_b_of_type_AndroidWidgetEditText));
+    localException.put("wishing", akvs.a(this.jdField_b_of_type_AndroidWidgetEditText));
     localException.put("bus_type", this.jdField_a_of_type_Int + "");
     localException.put("total_num", this.jdField_b_of_type_Int + "");
-    localException.put("total_amount", bkvx.a(this.c));
+    localException.put("total_amount", bmhg.a(this.c));
     localException.put("channel", String.valueOf(this.channel));
     this.mLogic.a(localException);
   }
@@ -311,9 +312,15 @@ public class ExclusiveHbFragment
       a(false);
       return;
     }
-    this.c = String.valueOf(a());
+    float f = a();
+    if (f <= 0.0F)
+    {
+      a(false);
+      return;
+    }
+    this.c = String.valueOf(f);
     a(true);
-    String str = getString(2131696252) + this.c + amtj.a(2131703353);
+    String str = getString(2131696506) + this.c + anvx.a(2131703704);
     this.jdField_a_of_type_AndroidWidgetButton.setText(str);
   }
   
@@ -321,13 +328,13 @@ public class ExclusiveHbFragment
   {
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setContentDescription(amtj.a(2131703351));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setContentDescription(anvx.a(2131703702));
     TextView localTextView = new TextView(getActivity());
-    localTextView.setText(amtj.a(2131703352));
+    localTextView.setText(anvx.a(2131703703));
     localTextView.setSingleLine();
     localTextView.setTextSize(15.0F);
-    localTextView.setTextColor(getActivity().getResources().getColor(2131166195));
-    akgd.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, 0.6F);
+    localTextView.setTextColor(getActivity().getResources().getColor(2131166204));
+    albw.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, 0.6F);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localTextView);
     d();
   }
@@ -335,7 +342,7 @@ public class ExclusiveHbFragment
   protected float a()
   {
     this.jdField_b_of_type_Int = this.jdField_a_of_type_JavaUtilArrayList.size();
-    float f2 = bkvx.a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
+    float f2 = bmhg.a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
     float f1 = f2;
     if (this.jdField_a_of_type_Int == 1) {
       f1 = f2 * this.jdField_b_of_type_Int;
@@ -400,7 +407,7 @@ public class ExclusiveHbFragment
           }
         }
         if (!TextUtils.isEmpty(localStringBuffer)) {
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.setContentDescription(amtj.a(2131703357) + j + amtj.a(2131703356) + localStringBuffer.toString());
+          this.jdField_a_of_type_AndroidWidgetLinearLayout.setContentDescription(anvx.a(2131703708) + j + anvx.a(2131703707) + localStringBuffer.toString());
         }
         d();
         return;
@@ -442,7 +449,7 @@ public class ExclusiveHbFragment
       if (this.jdField_a_of_type_Long + 1200L <= l)
       {
         this.jdField_a_of_type_Long = l;
-        this.mActivity.a(this.jdField_a_of_type_Bkwf.recv_type, this.jdField_a_of_type_JavaUtilArrayList);
+        this.mActivity.a(this.jdField_a_of_type_Bmho.recv_type, this.jdField_a_of_type_JavaUtilArrayList);
       }
     }
   }
@@ -450,7 +457,7 @@ public class ExclusiveHbFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramLayoutInflater = paramLayoutInflater.inflate(2131561871, null);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131561939, null);
     a(paramLayoutInflater, getArguments());
     a();
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);

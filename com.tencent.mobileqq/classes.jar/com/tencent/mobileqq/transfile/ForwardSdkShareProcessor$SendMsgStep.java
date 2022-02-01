@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
 import android.os.Bundle;
-import bhvw;
+import bjgx;
 import com.tencent.biz.common.util.NetworkUtil;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -53,7 +53,7 @@ public class ForwardSdkShareProcessor$SendMsgStep
     ((Bundle)localObject).putString("intext_2", "" + ForwardSdkShareProcessor.access$000(this.this$0));
     ((Bundle)localObject).putString("stringext_1", "" + this.this$0.mTargetUrl);
     ((Bundle)localObject).putString("intext_3", "0");
-    bhvw.a().a((Bundle)localObject, "", this.this$0.app.getCurrentAccountUin(), false);
+    bjgx.a().a((Bundle)localObject, "", this.this$0.app.getCurrentAccountUin(), false, this.this$0.isSdkShare());
     this.isFinished = true;
     doNextStep();
     this.this$0.onSuccess();

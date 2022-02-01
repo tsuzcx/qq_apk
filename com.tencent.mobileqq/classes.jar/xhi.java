@@ -1,25 +1,23 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.util.Comparator;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+import java.util.List;
 
-public class xhi
-  implements Comparator<CommentEntry>
+class xhi
+  implements xcd
 {
-  public xhi(xhh paramxhh) {}
+  xhi(xhh paramxhh) {}
   
-  public int a(CommentEntry paramCommentEntry1, CommentEntry paramCommentEntry2)
+  public void a(String paramString)
   {
-    if ((paramCommentEntry1.status == 0) && (paramCommentEntry2.status == 0)) {
-      if (paramCommentEntry1.replyTime >= paramCommentEntry2.replyTime) {}
-    }
-    while ((paramCommentEntry1.status == 0) && (paramCommentEntry2.status != 0))
+    int i = 0;
+    while (i < this.a.a.size())
     {
-      return -1;
-      if (paramCommentEntry1.replyTime > paramCommentEntry2.replyTime) {
-        return 1;
+      if (TextUtils.equals(paramString, ((xhf)this.a.a.get(i)).a)) {
+        ((StoryPlayerGroupHolder)this.a.a()).a.setCurrentItem(i);
       }
-      return 0;
+      i += 1;
     }
-    return 1;
   }
 }
 

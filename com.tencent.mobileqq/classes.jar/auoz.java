@@ -1,24 +1,20 @@
-import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class auoz
-  implements zop
+  implements EIPCResultCallback
 {
   auoz(auoy paramauoy) {}
   
-  public void callback(Bundle paramBundle)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    int i = paramBundle.getInt("msg");
-    if (i == 90)
+    if (!paramEIPCResult.isSuccess())
     {
-      auoy.a(this.a, paramBundle.getInt("state"));
-      auoy.a(this.a, auoy.a(this.a), auoy.b(this.a));
+      QLog.d("QFlutter.launcher", 1, "install IPC fail");
+      auos.b();
+      auoy.a(this.a, 1, true);
     }
-    while (i != 91) {
-      return;
-    }
-    i = paramBundle.getInt("errCode");
-    paramBundle = paramBundle.getString("desc");
-    auoy.a(this.a, i, paramBundle);
   }
 }
 

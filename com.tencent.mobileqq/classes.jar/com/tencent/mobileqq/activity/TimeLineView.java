@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import amtj;
-import amwo;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -10,8 +8,11 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.FrameLayout;
+import anvx;
+import anzc;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 import java.util.BitSet;
 import java.util.Calendar;
@@ -113,7 +114,7 @@ public class TimeLineView
       if (i3 != 1) {
         break label389;
       }
-      str = i2 + amtj.a(2131713989);
+      str = i2 + anvx.a(2131714336);
       label287:
       float f = localPaint2.measureText(str);
       i2 = AIOUtils.dp2pxByRound(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
@@ -170,7 +171,7 @@ public class TimeLineView
       localStringBuilder.append(i).append("-").append(j + 1).append("-").append(k);
       localStringBuilder.append(", isLoc: ").append(paramBoolean);
     }
-    paramQQAppInterface = (amwo)paramQQAppInterface.getManager(92);
+    paramQQAppInterface = (anzc)paramQQAppInterface.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
     if (!paramBoolean) {}
     for (this.jdField_a_of_type_JavaUtilBitSet = paramQQAppInterface.c(this.jdField_a_of_type_JavaUtilCalendar, this.jdField_b_of_type_JavaUtilCalendar);; this.jdField_a_of_type_JavaUtilBitSet = paramQQAppInterface.a(paramCalendar1, paramCalendar2))
     {
@@ -192,7 +193,7 @@ public class TimeLineView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TimeLineView
  * JD-Core Version:    0.7.0.1
  */

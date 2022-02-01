@@ -1,105 +1,33 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.MessageMicro;
 
-public abstract class wsr
-  extends wrz
+public class wsr<REQ extends MessageMicro>
+  extends wfm<wup>
 {
-  public int a;
-  @NonNull
-  public final View a;
-  public StoryPlayerGroupHolder a;
-  public String a;
-  public wsk a;
-  protected wss a;
-  protected boolean a;
-  public int b;
-  private final String b;
-  protected boolean b;
+  public final Bundle a;
+  public final REQ a;
+  public final String a;
   
-  public wsr(@NonNull ViewGroup paramViewGroup)
+  public wsr(String paramString, REQ paramREQ, Bundle paramBundle)
   {
-    this.jdField_b_of_type_JavaLangString = ("Q.qqstory.playernew." + getClass().getSimpleName());
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this));
-    this.jdField_a_of_type_AndroidViewView = a(paramViewGroup);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro = paramREQ;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
   
-  protected abstract View a(ViewGroup paramViewGroup);
-  
-  public wsr a(Class<? extends wsr> paramClass)
+  public String a()
   {
-    if (this.jdField_a_of_type_Wss != null) {
-      return this.jdField_a_of_type_Wss.b(paramClass);
-    }
-    return null;
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public wfh a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this) + "[" + paramInt1 + "," + paramInt2 + "]");
-    xvv.a(this.jdField_a_of_type_JavaLangString, "onPositionChanged, oldVer=%d, oldHor=%d, newVer=%d, newHor=%d", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    return new wup(paramArrayOfByte);
   }
   
-  public void a(int paramInt1, int paramInt2, @NonNull wsk paramwsk, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
+  protected byte[] a()
   {
-    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this) + "[" + paramInt1 + "," + paramInt2 + "]");
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Wsk = paramwsk;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder = paramStoryPlayerGroupHolder;
-  }
-  
-  void a(wss paramwss)
-  {
-    this.jdField_a_of_type_Wss = paramwss;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_b_of_type_Boolean != paramBoolean)
-    {
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      b(this.jdField_b_of_type_Boolean);
-      return;
-    }
-    xvv.e(this.jdField_a_of_type_JavaLangString, "onSelected donot changed !");
-  }
-  
-  protected void b() {}
-  
-  protected void b(boolean paramBoolean)
-  {
-    xvv.b(this.jdField_a_of_type_JavaLangString, "onSelectedChanged (ver=%d, hor=%d) , => %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Boolean.valueOf(paramBoolean));
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_Wsk = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder = null;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String toString()
-  {
-    return "VideoHolderBase{, GroupPos=" + this.jdField_a_of_type_Int + ", VideoPos=" + this.jdField_b_of_type_Int + ", mData=" + this.jdField_a_of_type_Wsk + '}';
+    return this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro.toByteArray();
   }
 }
 

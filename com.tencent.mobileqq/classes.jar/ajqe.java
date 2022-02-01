@@ -1,8 +1,20 @@
-public abstract interface ajqe
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class ajqe
+  implements View.OnClickListener
 {
-  public abstract void a(long paramLong, float paramFloat, String paramString);
+  ajqe(ajqb paramajqb, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public abstract void b(long paramLong);
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Ajqb, 2);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

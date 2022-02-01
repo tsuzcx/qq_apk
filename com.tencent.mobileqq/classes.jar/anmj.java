@@ -1,83 +1,38 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.transfile.ProtoReqManager.IProtoRespBack;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoResp;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.os.SystemClock;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.RspHead;
-import tencent.mobileim.structmsg.structmsg.RspSystemMsgAction;
+import java.util.HashMap;
 
-class anmj
-  implements ProtoReqManager.IProtoRespBack
+public final class anmj
 {
-  anmj(anmf paramanmf) {}
+  private static HashMap<String, Long> a = new HashMap();
+  private static HashMap<String, Long> b = new HashMap();
   
-  public void onProtoResp(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
+  public static void a()
   {
-    ToServiceMsg localToServiceMsg = (ToServiceMsg)paramProtoReq.busiData;
-    if (paramProtoResp.resp.getResultCode() != 1000) {
-      this.a.a(4012, false, localToServiceMsg);
+    a.clear();
+    b.clear();
+  }
+  
+  public static void a(String paramString)
+  {
+    if ((QLog.isColorLevel()) && (!TextUtils.isEmpty(paramString))) {
+      a.put(paramString, Long.valueOf(SystemClock.uptimeMillis()));
     }
-    for (;;)
+  }
+  
+  public static void b(String paramString)
+  {
+    if ((QLog.isColorLevel()) && (!TextUtils.isEmpty(paramString)) && (a.containsKey(paramString)))
     {
-      try
+      Long localLong = (Long)a.get(paramString);
+      if (localLong != null)
       {
-        paramProtoResp = paramProtoResp.resp.getWupBuffer();
-        localRspSystemMsgAction = new structmsg.RspSystemMsgAction();
-        localRspSystemMsgAction.mergeFrom(paramProtoResp);
-        j = localRspSystemMsgAction.head.result.get();
-        if (j != 0) {
-          continue;
-        }
-        bool1 = true;
-        paramProtoResp = localRspSystemMsgAction.msg_detail.get();
-        if (paramProtoResp != null) {
-          continue;
-        }
-        paramProtoResp = "";
+        long l1 = localLong.longValue();
+        long l2 = SystemClock.uptimeMillis();
+        b.put(paramString, Long.valueOf(l2));
+        QLog.d("TraceReport_CmShowStatUtil", 1, new Object[] { "eventName=", paramString, ", cost=", Long.valueOf(l2 - l1) });
       }
-      catch (Exception paramProtoResp)
-      {
-        structmsg.RspSystemMsgAction localRspSystemMsgAction;
-        int j;
-        boolean bool1;
-        int i;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", paramProtoResp);
-        boolean bool2 = false;
-        continue;
-        continue;
-      }
-      i = -1;
-      if (localRspSystemMsgAction.remark_result.has()) {
-        i = localRspSystemMsgAction.remark_result.get();
-      }
-      localToServiceMsg.extraData.putString("system_msg_action_resp_key", paramProtoResp);
-      localToServiceMsg.extraData.putInt("system_msg_action_resp_result_code_key", localRspSystemMsgAction.head.result.get());
-      localToServiceMsg.extraData.putInt("system_msg_action_resp_type_key", localRspSystemMsgAction.type.get());
-      localToServiceMsg.extraData.putString("system_msg_action_resp_invalid_decided_key", localRspSystemMsgAction.msg_invalid_decided.get());
-      localToServiceMsg.extraData.putInt("system_msg_action_resp_remark_result_key", i);
-      bool2 = bool1;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgActionResp result:" + j + " msg:" + paramProtoResp);
-        bool2 = bool1;
-      }
-      this.a.a(4011, bool2, localToServiceMsg);
-      return;
-      paramProtoReq = localRspSystemMsgAction.head.msg_fail.get();
-      paramProtoResp = paramProtoReq;
-      if (paramProtoReq == null) {
-        paramProtoResp = "";
-      }
-      localToServiceMsg.extraData.putString("system_msg_action_resp_error_key", paramProtoResp);
-      bool1 = false;
     }
   }
 }

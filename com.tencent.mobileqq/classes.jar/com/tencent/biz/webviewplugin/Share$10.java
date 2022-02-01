@@ -1,16 +1,16 @@
 package com.tencent.biz.webviewplugin;
 
-import aadf;
-import bcvc;
+import aasr;
+import becb;
 
 public class Share$10
   implements Runnable
 {
-  public Share$10(aadf paramaadf) {}
+  public Share$10(aasr paramaasr) {}
   
   public void run()
   {
-    bcvc.a(this.this$0.n, this.this$0.a);
+    becb.a(this.this$0.n, this.this$0.a);
   }
 }
 

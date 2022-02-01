@@ -1,18 +1,16 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.data.ChatMessage;
 
 class aggj
-  extends aghj
+  implements DialogInterface.OnClickListener
 {
-  aggj(agcw paramagcw)
-  {
-    super(paramagcw, null);
-  }
+  aggj(aggh paramaggh, ChatMessage paramChatMessage) {}
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new FlashPicItemBuilder(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    this.jdField_a_of_type_Aggh.d(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    paramDialogInterface.dismiss();
   }
 }
 

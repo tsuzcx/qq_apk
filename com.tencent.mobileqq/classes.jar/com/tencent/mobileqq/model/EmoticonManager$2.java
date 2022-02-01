@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.model;
 
-import avsq;
+import awyr;
 
 public class EmoticonManager$2
   implements Runnable
 {
-  public EmoticonManager$2(avsq paramavsq) {}
+  public EmoticonManager$2(awyr paramawyr) {}
   
   public void run()
   {
-    avsq.a(this.this$0);
+    awyr.a(this.this$0);
   }
 }
 

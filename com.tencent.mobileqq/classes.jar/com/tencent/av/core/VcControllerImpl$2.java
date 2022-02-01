@@ -2,6 +2,7 @@ package com.tencent.av.core;
 
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import lll;
 import mqq.os.MqqHandler;
 
 class VcControllerImpl$2
@@ -16,10 +17,11 @@ class VcControllerImpl$2
     ThreadManager.getUIHandler().removeCallbacks(VcControllerImpl.access$300(this.this$0));
     VcControllerImpl.access$202(this.this$0, -1);
     VcControllerImpl.access$102(this.this$0, null);
+    VcControllerImpl.access$400(this.this$0).a(this.jdField_a_of_type_Long);
     QLog.d("VcControllerImpl", 1, "closeVideo end. mCloseResult = " + VcControllerImpl.access$000(this.this$0));
-    synchronized (VcControllerImpl.access$400(this.this$0))
+    synchronized (VcControllerImpl.access$500(this.this$0))
     {
-      VcControllerImpl.access$400(this.this$0).notify();
+      VcControllerImpl.access$500(this.this$0).notify();
       return;
     }
   }

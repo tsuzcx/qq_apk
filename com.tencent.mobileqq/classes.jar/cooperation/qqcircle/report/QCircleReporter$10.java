@@ -1,15 +1,14 @@
 package cooperation.qqcircle.report;
 
-import java.util.List;
-
 class QCircleReporter$10
   implements Runnable
 {
-  QCircleReporter$10(QCircleReporter paramQCircleReporter, List paramList) {}
+  QCircleReporter$10(QCircleReporter paramQCircleReporter) {}
   
   public void run()
   {
-    QCircleReporter.access$1100(this.this$0, this.val$dataList);
+    QCircleReporter.access$900(this.this$0);
+    QCircleReporter.access$1000(this.this$0);
   }
 }
 

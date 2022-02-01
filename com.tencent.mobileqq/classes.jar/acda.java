@@ -1,36 +1,17 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0xdb.submsgtype0xdb.MsgBody;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.gdtad.api.motivebrowsing.GdtMotiveBrowsingFragment;
+import kotlin.Metadata;
 
-public class acda
-  implements abzb
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"}, k=3, mv={1, 1, 16})
+public final class acda
+  implements DialogInterface.OnDismissListener
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QAV.push", 2, "onLinePush receive 0x210_0xdb");
-    }
-    try
-    {
-      submsgtype0xdb.MsgBody localMsgBody = new submsgtype0xdb.MsgBody();
-      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-      paramQQAppInterface.getGAudioHandler().a(localMsgBody);
-      return;
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QAV.push", 2, "onLinePush 0x210_0xdb push exception : ", paramQQAppInterface);
-    }
-  }
+  public acda(GdtMotiveBrowsingFragment paramGdtMotiveBrowsingFragment) {}
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    a(paramabxc.a(), paramMsgType0x210);
-    return null;
+    GdtMotiveBrowsingFragment.a(this.a).b();
   }
 }
 

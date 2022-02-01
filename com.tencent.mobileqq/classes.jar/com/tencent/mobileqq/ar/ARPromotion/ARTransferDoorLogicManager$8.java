@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
-import amtj;
-import anzc;
+import anvx;
+import apce;
 import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
 public class ARTransferDoorLogicManager$8
   implements Runnable
 {
-  public ARTransferDoorLogicManager$8(anzc paramanzc) {}
+  public ARTransferDoorLogicManager$8(apce paramapce) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class ARTransferDoorLogicManager$8
       this.this$0.a.b(1);
       return;
     }
-    this.this$0.a(true, amtj.a(2131699908));
+    this.this$0.a(true, anvx.a(2131700259));
   }
 }
 

@@ -1,30 +1,30 @@
 package com.tencent.biz.pubaccount.util;
 
-import ayeu;
-import bcef;
+import azlg;
+import bdla;
 import com.tencent.mobileqq.pic.CompressInfo;
 import com.tencent.mobileqq.utils.StringUtil;
 import java.util.HashMap;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ufd;
+import uta;
 
 public class PublicAccountH5AbilityPlugin$2
   implements Runnable
 {
-  public PublicAccountH5AbilityPlugin$2(ufd paramufd, JSONArray paramJSONArray, JSONObject paramJSONObject) {}
+  public PublicAccountH5AbilityPlugin$2(uta paramuta, JSONArray paramJSONArray, JSONObject paramJSONObject) {}
   
   public void run()
   {
     CompressInfo localCompressInfo = new CompressInfo(this.this$0.n, 0);
     localCompressInfo.f = 0;
-    ayeu.a(localCompressInfo);
+    azlg.a(localCompressInfo);
     String str;
     if (!StringUtil.isEmpty(localCompressInfo.e))
     {
       str = "mqqpa://resourceid/" + this.this$0.p;
-      ufd.b.put(str, localCompressInfo.e);
+      uta.b.put(str, localCompressInfo.e);
     }
     for (;;)
     {
@@ -36,7 +36,7 @@ public class PublicAccountH5AbilityPlugin$2
         this.jdField_a_of_type_OrgJsonJSONObject.put("msg", "Success");
         this.jdField_a_of_type_OrgJsonJSONObject.put("sourceType", "camera");
         this.this$0.callJs(this.this$0.o, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
-        bcef.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005895", "0X8005895", 0, 0, "1", "", "", "");
+        bdla.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005895", "0X8005895", 0, 0, "1", "", "", "");
         this.this$0.n = "";
         this.this$0.o = "";
         this.this$0.p = "";
@@ -53,7 +53,7 @@ public class PublicAccountH5AbilityPlugin$2
         this.jdField_a_of_type_OrgJsonJSONObject.put("msg", "compress fail");
         this.jdField_a_of_type_OrgJsonJSONObject.put("sourceType", "camera");
         this.this$0.callJs(this.this$0.o, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
-        bcef.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005895", "0X8005895", 0, -1, "1", "", "", "");
+        bdla.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005895", "0X8005895", 0, -1, "1", "", "", "");
       }
       catch (JSONException localJSONException2)
       {
@@ -64,7 +64,7 @@ public class PublicAccountH5AbilityPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.2
  * JD-Core Version:    0.7.0.1
  */

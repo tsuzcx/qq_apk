@@ -1,136 +1,60 @@
-import android.content.Context;
-import android.content.res.Resources;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.contact.newfriend.QIMFollowerAddBuilder.1;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.QIMFollwerAdd;
-import com.tencent.mobileqq.flashchat.FlashChatManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.Locale;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqcircle.chat.QCircleChatUtil;
+import cooperation.qqcircle.report.QCircleLpReportDc05504;
+import qqcircle.QQCirclePrivateMsgAIO.StGetPMBeginShowMsgRsp;
 
-public class aifp
-  extends aiea
-  implements View.OnClickListener
+class aifp
+  implements VSDispatchObserver.onVSRspCallBack<QQCirclePrivateMsgAIO.StGetPMBeginShowMsgRsp>
 {
-  public aifp(Context paramContext, QQAppInterface paramQQAppInterface, aifw paramaifw, aigo paramaigo)
-  {
-    super(paramContext, paramQQAppInterface, paramaifw, paramaigo);
-    this.jdField_a_of_type_Bjty = a(paramContext);
-    this.b = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297425);
-  }
+  aifp(aifl paramaifl) {}
   
-  protected int a()
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, QQCirclePrivateMsgAIO.StGetPMBeginShowMsgRsp paramStGetPMBeginShowMsgRsp)
   {
-    return 1;
-  }
-  
-  public View a(int paramInt, View paramView)
-  {
-    aifq localaifq;
-    QIMFollwerAdd localQIMFollwerAdd;
-    label249:
-    Object localObject;
-    boolean bool;
-    if ((paramView == null) || (!(paramView.getTag() instanceof aifq)))
-    {
-      localaifq = new aifq();
-      paramView = a(this.jdField_a_of_type_AndroidContentContext, 2131561479, localaifq);
-      a(paramView, this.b);
-      localaifq.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131361795));
-      localaifq.h = ((TextView)paramView.findViewById(2131371791));
-      localaifq.i = ((TextView)paramView.findViewById(2131376354));
-      localaifq.l = ((TextView)paramView.findViewById(2131362305));
-      localaifq.j = ((TextView)paramView.findViewById(2131377631));
-      localaifq.k = ((TextView)paramView.findViewById(2131376351));
-      localaifq.a = ((Button)paramView.findViewById(2131376341));
-      b(localaifq.jdField_f_of_type_AndroidWidgetImageView);
-      paramView.setTag(localaifq);
-      localaifq.g.setTag(localaifq);
-      localaifq.g.setOnClickListener(this);
-      a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_Aigo, localaifq, this);
-      localaifq.g.setBackgroundResource(2130839434);
-      localQIMFollwerAdd = ((aigy)this.jdField_a_of_type_Aigo).a;
-      if (TextUtils.isEmpty(localQIMFollwerAdd.smartRemark)) {
-        break label470;
-      }
-      localaifq.h.setVisibility(0);
-      localaifq.h.setText(localQIMFollwerAdd.smartRemark);
-      localObject = localaifq.g;
-      if (this.jdField_a_of_type_Aigo.a()) {
-        break label483;
-      }
-      bool = true;
-      label268:
-      a((View)localObject, bool);
-      localObject = new StringBuilder(256);
-      a(localaifq.l, localQIMFollwerAdd.gender, 0, (StringBuilder)localObject);
-      if (!TextUtils.isEmpty(localQIMFollwerAdd.longNick)) {
-        break label488;
-      }
-      localaifq.i.setVisibility(8);
-      label323:
-      if (TextUtils.isEmpty(localQIMFollwerAdd.source)) {
-        break label535;
-      }
-      localObject = String.format(Locale.getDefault(), amtj.a(2131708916), new Object[] { localQIMFollwerAdd.source });
-      localaifq.j.setText((CharSequence)localObject);
-      localaifq.j.setVisibility(0);
+    if ((!paramBoolean) || (paramLong != 0L) || (paramStGetPMBeginShowMsgRsp == null)) {
+      QLog.e(this.a.tag, 1, "requestNewestShowFuelTips error:" + paramLong + "  errorMsg:" + paramString);
     }
-    for (;;)
+    label259:
+    label277:
+    do
     {
-      localaifq.k.setVisibility(8);
-      localaifq.a.setText(amtj.a(2131708915));
-      localaifq.a.setVisibility(0);
-      localaifq.a.setOnClickListener(this);
-      localaifq.jdField_f_of_type_JavaLangString = String.valueOf(localQIMFollwerAdd.uin);
-      localaifq.jdField_f_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_Aifw.a(1, String.valueOf(localQIMFollwerAdd.uin)));
-      return paramView;
-      localaifq = (aifq)paramView.getTag();
-      break;
-      label470:
-      localaifq.h.setVisibility(8);
-      break label249;
-      label483:
-      bool = false;
-      break label268;
-      label488:
-      localaifq.i.setVisibility(0);
-      localaifq.i.setText(localQIMFollwerAdd.longNick);
-      if (!AppSetting.c) {
-        break label323;
-      }
-      ((StringBuilder)localObject).append(",").append(localQIMFollwerAdd.longNick);
-      break label323;
-      label535:
-      localaifq.j.setVisibility(8);
-    }
-  }
-  
-  protected void a()
-  {
-    ThreadManager.postImmediately(new QIMFollowerAddBuilder.1(this), null, true);
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-      a(paramView);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+      do
+      {
+        do
+        {
+          return;
+        } while (!paramStGetPMBeginShowMsgRsp.pmBeginShow.has());
+        paramVSBaseRequest = paramStGetPMBeginShowMsgRsp.pmBeginShow.get();
+        if (aifl.a(this.a) == null) {
+          break label277;
+        }
+        if ((TextUtils.isEmpty(aifl.a(this.a))) || (aifl.a(this.a).equals(paramVSBaseRequest))) {
+          break label259;
+        }
+        aifl.a(this.a, paramVSBaseRequest);
+        if (TextUtils.isEmpty(aifl.a(this.a))) {
+          break;
+        }
+      } while (!QCircleChatUtil.updateExpiredShowFuelTipMsg(this.a.app, aifl.a(this.a), aifl.a(this.a)));
+      this.a.refreshListItem(aifl.a(this.a), 0);
+      QCircleLpReportDc05504.report(this.a.sessionInfo.curFriendUin, 45, 3, 1);
       return;
-      ((FlashChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(217)).a(this.jdField_a_of_type_AndroidContentContext, null);
-    }
+      this.a.app.getMessageFacade().removeMsgFromCacheByUniseq(this.a.sessionInfo.curFriendUin, this.a.sessionInfo.curType, aifl.a(this.a).msgtype, aifl.a(this.a).uniseq);
+      this.a.refresh(131072);
+      return;
+      QCircleLpReportDc05504.report(this.a.sessionInfo.curFriendUin, 45, 3, 1);
+      return;
+      aifl.a(this.a, paramVSBaseRequest);
+    } while (TextUtils.isEmpty(aifl.a(this.a)));
+    aifl.a(this.a, QCircleChatUtil.addShowFuelTipsGrayMessage(this.a.app, this.a.sessionInfo.curFriendUin, this.a.sessionInfo.curType, aifl.a(this.a), aifl.a(this.a)));
+    QCircleLpReportDc05504.report(this.a.sessionInfo.curFriendUin, 45, 3, 1);
   }
 }
 

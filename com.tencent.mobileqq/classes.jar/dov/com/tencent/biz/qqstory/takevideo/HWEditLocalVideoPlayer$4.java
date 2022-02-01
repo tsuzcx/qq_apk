@@ -1,6 +1,6 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bnck;
+import bosc;
 
 class HWEditLocalVideoPlayer$4
   implements Runnable
@@ -9,9 +9,9 @@ class HWEditLocalVideoPlayer$4
   
   public void run()
   {
-    bnck localbnck = (bnck)this.this$0.a(bnck.class);
-    if (localbnck != null) {
-      localbnck.b();
+    bosc localbosc = (bosc)this.this$0.a(bosc.class);
+    if (localbosc != null) {
+      localbosc.b();
     }
   }
 }

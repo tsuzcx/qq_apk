@@ -1,29 +1,28 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import java.util.ArrayList;
 import java.util.List;
 
 class asdq
+  implements asdb
 {
-  long jdField_a_of_type_Long = 0L;
-  ByteStringMicro jdField_a_of_type_ComTencentMobileqqPbByteStringMicro = null;
-  String jdField_a_of_type_JavaLangString = null;
-  List<String> jdField_a_of_type_JavaUtilList = null;
-  short jdField_a_of_type_Short = 0;
-  String jdField_b_of_type_JavaLangString = null;
-  List<String> jdField_b_of_type_JavaUtilList = null;
-  short jdField_b_of_type_Short = 0;
-  String c = null;
-  String d = null;
-  String e = null;
-  String f = null;
-  String g = null;
-  String h = null;
-  String i = null;
+  asdq(asdl paramasdl) {}
   
-  private asdq(asdm paramasdm) {}
+  public void a(List<EmoticonInfo> paramList)
+  {
+    Object localObject = paramList;
+    if (paramList == null) {
+      localObject = new ArrayList();
+    }
+    if (asdl.a(this.a) != null) {
+      asdl.a(this.a).obtainMessage(206, localObject).sendToTarget();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asdq
  * JD-Core Version:    0.7.0.1
  */

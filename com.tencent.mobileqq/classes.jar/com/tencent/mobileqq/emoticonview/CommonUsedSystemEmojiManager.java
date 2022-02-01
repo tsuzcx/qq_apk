@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import arev;
+import asjb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -287,7 +287,7 @@ public class CommonUsedSystemEmojiManager
           }
           ((EmosmPb.SmallYellowItem)localObject2).id.set(j);
           label183:
-          if (!arev.a().a(((EmosmPb.SmallYellowItem)localObject2).type.get()).b(((EmosmPb.SmallYellowItem)localObject2).id.get())) {
+          if (!asjb.a().a(((EmosmPb.SmallYellowItem)localObject2).type.get()).b(((EmosmPb.SmallYellowItem)localObject2).id.get())) {
             break label312;
           }
           if (QLog.isColorLevel()) {
@@ -328,7 +328,7 @@ public class CommonUsedSystemEmojiManager
       while (((Iterator)localObject2).hasNext())
       {
         EmosmPb.SmallYellowItem localSmallYellowItem = (EmosmPb.SmallYellowItem)((Iterator)localObject2).next();
-        if (arev.a().a(localSmallYellowItem.type.get()).b(localSmallYellowItem.id.get())) {
+        if (asjb.a().a(localSmallYellowItem.type.get()).b(localSmallYellowItem.id.get())) {
           ((Iterator)localObject2).remove();
         }
       }
@@ -520,7 +520,7 @@ public class CommonUsedSystemEmojiManager
     }
     for (;;)
     {
-      if (arev.a().a(i).b(j))
+      if (asjb.a().a(i).b(j))
       {
         n = m;
         if (QLog.isColorLevel())
@@ -612,7 +612,7 @@ public class CommonUsedSystemEmojiManager
         {
           EmosmPb.SmallYellowItem localSmallYellowItem = (EmosmPb.SmallYellowItem)paramList2.next();
           String str = localSmallYellowItem.type.get() + "-" + localSmallYellowItem.id.get();
-          if ((paramList1.contains(str)) || (arev.a().a(localSmallYellowItem.type.get()).b(localSmallYellowItem.id.get()))) {
+          if ((paramList1.contains(str)) || (asjb.a().a(localSmallYellowItem.type.get()).b(localSmallYellowItem.id.get()))) {
             paramList2.remove();
           } else {
             paramList1.add(str);
@@ -790,7 +790,7 @@ public class CommonUsedSystemEmojiManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.CommonUsedSystemEmojiManager
  * JD-Core Version:    0.7.0.1
  */

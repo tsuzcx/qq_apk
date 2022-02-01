@@ -1,64 +1,26 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class yes
-  implements ycj
+  extends QQUIEventReceiver<yer, wiv>
 {
-  public yes(DoodleLayout paramDoodleLayout) {}
-  
-  public void a(int paramInt)
+  public yes(yer paramyer1, @NonNull yer paramyer2)
   {
-    if (this.a.jdField_a_of_type_Yew != null) {
-      this.a.jdField_a_of_type_Yew.b(1, paramInt);
-    }
+    super(paramyer2);
   }
   
-  public void a(ycd paramycd)
+  public void a(@NonNull yer paramyer, @NonNull wiv paramwiv)
   {
-    this.a.jdField_a_of_type_Ycd = paramycd;
-    if (this.a.jdField_a_of_type_Yew != null)
-    {
-      xvv.b("DoodleLayout", "selectLocation: clickItem-->" + paramycd.toString());
-      this.a.jdField_a_of_type_Yew.a(this.a.jdField_a_of_type_Ycd.a());
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.playernew.StoryPlayerActivity", 2, "GetStoryListReceiver");
     }
+    paramyer.b(paramwiv.a);
   }
   
-  public boolean a(ycg paramycg)
+  public Class acceptEventClass()
   {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView != null)
-    {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.setVisibility(0);
-      Object localObject;
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b())
-      {
-        localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a();
-        ((ygw)localObject).d = false;
-        if (!(localObject instanceof ycg)) {
-          break label120;
-        }
-        ycc localycc = this.a.a();
-        if (localycc != null) {
-          localycc.a.add((ycg)localObject);
-        }
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a(paramycg);
-        paramycg.d = true;
-        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.requestLayout();
-        return true;
-        label120:
-        if ((localObject instanceof ycr))
-        {
-          localObject = this.a.a();
-          if (localObject != null) {
-            ((ycp)localObject).d();
-          }
-        }
-      }
-    }
-    return false;
+    return wiv.class;
   }
 }
 

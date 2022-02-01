@@ -1,60 +1,24 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMonitorValue;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMonitorValue;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.support.annotation.NonNull;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.ArrayList;
+import java.util.List;
 
 public class xvy
-  extends vqr
+  extends JobSegment<String, xwc>
 {
-  public String a;
-  private int c;
-  private int d;
+  private wsp jdField_a_of_type_Wsp = new wsp();
   
-  public String a()
+  public xvy(xvx paramxvx, @NonNull String paramString)
   {
-    return vpl.a("StoryMonitorSvc.client_monitor_report");
+    this.jdField_a_of_type_Wsp.a = new ArrayList();
+    paramxvx = new ycc(paramString, 0, "", "");
+    this.jdField_a_of_type_Wsp.a.add(paramxvx);
   }
   
-  public vqm a(byte[] paramArrayOfByte)
+  protected void a(JobContext paramJobContext, String paramString)
   {
-    qqstory_service.RspMonitorValue localRspMonitorValue = new qqstory_service.RspMonitorValue();
-    try
-    {
-      localRspMonitorValue.mergeFrom(paramArrayOfByte);
-      return new xvz(localRspMonitorValue);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
-    return null;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.c = paramInt1;
-    this.d = paramInt2;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqMonitorValue localReqMonitorValue = new qqstory_service.ReqMonitorValue();
-    localReqMonitorValue.ID.set(this.c);
-    if (this.d > 0) {
-      localReqMonitorValue.Value.set(this.d);
-    }
-    for (;;)
-    {
-      if (this.a != null) {
-        localReqMonitorValue.errmsg.set(ByteStringMicro.copyFromUtf8(this.a));
-      }
-      return localReqMonitorValue.toByteArray();
-      localReqMonitorValue.Value.set(1);
-    }
-  }
-  
-  public String toString()
-  {
-    return "MonitorValueRequest{ID=" + this.c + ", value=" + this.d + ", msg=" + this.a + '}';
+    wfi.a().a(this.jdField_a_of_type_Wsp, new xvz(this, paramJobContext));
   }
 }
 

@@ -1,34 +1,26 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
-public class aimo
-  implements View.OnClickListener
+class aimo
+  implements Handler.Callback
 {
-  public aimo(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
+  aimo(aimn paramaimn) {}
   
-  public void onClick(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    Object localObject;
-    if ((paramView.getTag() instanceof aikn))
+    switch (paramMessage.what)
     {
-      localObject = (aikn)paramView.getTag();
-      if (localObject != null) {
-        break label30;
-      }
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label30:
-      localObject = TroopInfoActivity.a(((aikn)localObject).b, 4);
-      ((Bundle)localObject).putInt("t_s_f", 1002);
-      TroopUtils.openTroopInfoActivity(this.a.getActivity(), (Bundle)localObject, 2);
+      return true;
+      if ((paramMessage.obj instanceof ColorNote))
+      {
+        paramMessage = (ColorNote)paramMessage.obj;
+        aimn.a(this.a, paramMessage);
+        aimn.b(this.a, paramMessage);
+      }
     }
   }
 }

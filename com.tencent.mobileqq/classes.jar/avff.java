@@ -1,22 +1,16 @@
-import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
+import java.util.List;
 
-public class avff
-  implements View.OnClickListener
+public abstract interface avff
+  extends View.OnClickListener
 {
-  public avff(LocationPickFragment paramLocationPickFragment, EditText paramEditText) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_AndroidWidgetEditText.setText("");
-    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).e();
-    bcef.b(null, "CliOper", "", "", "0X800A961", "0X800A961", 0, 0, "0", "0", "0", "");
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(ViewGroup paramViewGroup);
+  
+  public abstract void a(List<GameCenterSessionInfo> paramList, int paramInt);
 }
 
 

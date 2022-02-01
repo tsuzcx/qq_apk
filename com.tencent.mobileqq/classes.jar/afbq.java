@@ -1,25 +1,18 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
 
-class afbq
+public class afbq
   implements View.OnClickListener
 {
-  afbq(afbj paramafbj) {}
+  public afbq(TroopAssistantActivity paramTroopAssistantActivity) {}
   
   public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.isEmpty())) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      TroopWithCommonFriendsFragment.a(this.a.jdField_a_of_type_JavaLangString);
-      TroopWithCommonFriendsFragment.a(paramView.getContext(), 2);
-      bcef.b(null, "dc00898", "", "", "0X800AD22", "0X800AD22", 0, 0, "0", "0", "", "");
-    }
+    TroopAssistantActivity.a(this.a);
+    bdla.b(this.a.app, "dc00899", "Grp_msg", "", "helper-guide", "Clk_close", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

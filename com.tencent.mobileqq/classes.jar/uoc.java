@@ -1,15 +1,22 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
+import java.util.List;
 
-class uoc
-  extends AnimatorListenerAdapter
+public class uoc
+  extends Handler
 {
-  uoc(uoa paramuoa) {}
+  public uoc(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void handleMessage(Message paramMessage)
   {
-    uoa.a(this.a).setClickable(false);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    paramMessage = (List)paramMessage.obj;
+    ReadInJoyNewSearchActivity.a(this.a, paramMessage);
   }
 }
 

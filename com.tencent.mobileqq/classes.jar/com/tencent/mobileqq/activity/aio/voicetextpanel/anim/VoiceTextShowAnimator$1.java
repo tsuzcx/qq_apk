@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio.voicetextpanel.anim;
 
-import ahry;
-import ahrz;
+import aimx;
+import aimy;
 import java.util.TimerTask;
 
 public class VoiceTextShowAnimator$1
   extends TimerTask
 {
-  public VoiceTextShowAnimator$1(ahry paramahry) {}
+  public VoiceTextShowAnimator$1(aimx paramaimx) {}
   
   public void run()
   {
-    int i = ahry.a(this.this$0) / ahry.a().length;
-    int j = ahry.a().length;
-    ahry.a(this.this$0, ahry.a()[(i % j)]);
-    if (ahry.a(this.this$0) != null) {
-      ahry.a(this.this$0).a();
+    int i = aimx.a(this.this$0) / aimx.a().length;
+    int j = aimx.a().length;
+    aimx.a(this.this$0, aimx.a()[(i % j)]);
+    if (aimx.a(this.this$0) != null) {
+      aimx.a(this.this$0).a();
     }
   }
 }

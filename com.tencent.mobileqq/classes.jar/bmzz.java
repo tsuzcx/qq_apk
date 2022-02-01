@@ -1,14 +1,17 @@
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface bmzz
+class bmzz
+  implements View.OnClickListener
 {
-  public abstract void a();
+  bmzz(bmzr parambmzr, bmyx parambmyx, int paramInt) {}
   
-  public abstract void a(long paramLong);
-  
-  public abstract void a(long paramLong, boolean paramBoolean);
-  
-  public abstract void a(List<Long> paramList);
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Bmzr.a(this.jdField_a_of_type_Bmyx.itemView, this.jdField_a_of_type_Int);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

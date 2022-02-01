@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.photo;
 
-import ajnr;
-import bfai;
+import akjf;
+import bgio;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -10,7 +10,7 @@ import java.util.List;
 class TroopPhotoController$3
   implements Runnable
 {
-  TroopPhotoController$3(TroopPhotoController paramTroopPhotoController, ajnr paramajnr, String paramString) {}
+  TroopPhotoController$3(TroopPhotoController paramTroopPhotoController, akjf paramakjf, String paramString) {}
   
   public void run()
   {

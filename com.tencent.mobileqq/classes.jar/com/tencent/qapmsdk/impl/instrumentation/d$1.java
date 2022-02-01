@@ -1,67 +1,64 @@
 package com.tencent.qapmsdk.impl.instrumentation;
 
+import com.tencent.qapmsdk.common.logger.Logger;
 import com.tencent.qapmsdk.impl.instrumentation.b.c;
 import java.io.IOException;
-import javax.net.ssl.HttpsURLConnection;
+import java.net.HttpURLConnection;
 
 class d$1
   implements com.tencent.qapmsdk.impl.instrumentation.b.d
 {
-  d$1(d paramd, g paramg) {}
+  d$1(d paramd, h paramh) {}
   
   public void a(c paramc)
   {
+    Logger.INSTANCE.e(new String[] { "QAPM_Impl_QAPMHttpURLConnectionExtension", "streamError:", paramc.toString() });
+    if (!this.a.f()) {
+      this.a.d(paramc.a());
+    }
     try
     {
       int i = d.a(this.b).getResponseCode();
       this.a.c(i);
-      label19:
-      if (!this.a.f()) {
-        this.a.d(paramc.a());
-      }
+      label67:
       d.a(this.b, paramc.b());
       return;
     }
     catch (IOException localIOException)
     {
-      break label19;
+      break label67;
     }
   }
   
   public void b(c paramc)
   {
-    int i;
-    if (!this.a.f()) {
-      i = 0;
-    }
-    try
+    long l1;
+    long l2;
+    if (!this.a.f())
     {
-      int j = d.a(this.b).getResponseCode();
-      i = j;
-      this.a.c(j);
-      i = j;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        long l1;
-        long l2;
+      l1 = d.a(this.b).getContentLength();
+      l2 = paramc.a();
+      if (l1 < 0L) {
+        break label77;
       }
     }
-    l1 = paramc.a();
-    if (i != 206)
+    for (;;)
     {
-      l2 = d.a(this.b).getContentLength();
-      if (l2 >= 0L) {
-        l1 = l2;
-      }
-      for (;;)
+      this.a.d(l1);
+      try
       {
-        this.a.d(l1);
+        int i = d.a(this.b).getResponseCode();
+        this.a.c(i);
+        label61:
         d.a(this.b, this.a);
         return;
       }
+      catch (IOException paramc)
+      {
+        break label61;
+      }
+      label77:
+      l1 = l2;
     }
   }
 }

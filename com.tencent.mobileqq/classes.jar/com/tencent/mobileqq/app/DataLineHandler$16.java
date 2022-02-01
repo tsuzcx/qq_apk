@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app;
 
-import amqd;
+import ansr;
 
 public class DataLineHandler$16
   implements Runnable
 {
-  public DataLineHandler$16(amqd paramamqd, int paramInt, long paramLong, String paramString) {}
+  public DataLineHandler$16(ansr paramansr, int paramInt, long paramLong, String paramString) {}
   
   public void run()
   {
-    amqd.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
+    ansr.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
   }
 }
 

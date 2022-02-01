@@ -1,12 +1,15 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public abstract interface vmy
+final class vmy
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(String paramString1, String paramString2, int paramInt);
+  vmy(vln paramvln) {}
   
-  public abstract void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt);
-  
-  public abstract void b(String paramString1, String paramString2, int paramInt);
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    vms.b(this.a);
+  }
 }
 
 

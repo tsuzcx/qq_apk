@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.vashealth;
 
-import bgmp;
+import bhwz;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 class StepAlarmReceiver$1
   implements Runnable
@@ -13,7 +14,7 @@ class StepAlarmReceiver$1
     if (this.this$0.a == null) {
       return;
     }
-    ((bgmp)this.this$0.a.getManager(260)).b();
+    ((bhwz)this.this$0.a.getManager(QQManagerFactory.SPORT_MANAGER)).b();
   }
 }
 

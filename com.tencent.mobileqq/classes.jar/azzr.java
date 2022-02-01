@@ -1,53 +1,114 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import mqq.manager.Manager;
 
-class azzr
-  implements azzt
+public class azzr
+  implements birt, Manager
 {
-  azzr(azzq paramazzq) {}
+  private bafn jdField_a_of_type_Bafn = new azzs(this);
+  private birs jdField_a_of_type_Birs;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c;
   
-  public void a(int paramInt)
+  public azzr(QQAppInterface paramQQAppInterface)
   {
-    int i = 1;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Birs = new birs(paramQQAppInterface, this);
+    a(this.jdField_a_of_type_Birs.a(13));
+    a(paramQQAppInterface);
+  }
+  
+  private void a()
+  {
+    if ((this.b) && (this.c)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if (bool != this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Boolean = bool;
+        b();
+      }
+      return;
+    }
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface != null)
+    {
+      bafl localbafl = (bafl)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CARD_SETTING_HANDLER);
+      if (localbafl != null)
+      {
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add(Integer.valueOf(42425));
+        localbafl.a(localArrayList);
+        paramQQAppInterface.addObserver(this.jdField_a_of_type_Bafn);
+      }
+    }
+  }
+  
+  private void b()
+  {
     if (QLog.isColorLevel()) {
-      QLog.i("CapturePtvTemplateManager", 2, "PtvTemplateAdapter onItemClicked position: " + paramInt);
+      QLog.d("AnonymousManager", 2, String.format("notifySettingMeRedPointChanged mSettingMeRedPointEnable=%s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
     }
-    if ((paramInt < 0) || (paramInt >= this.a.a.size())) {}
-    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
-    do
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      return;
-      localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)this.a.a.get(paramInt);
-      if (!localPtvTemplateInfo.advertisement) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("CapturePtvTemplateManager", 2, "info.advertisement is ture onItemClicked name: " + localPtvTemplateInfo.name);
-      }
-    } while (azzq.a(this.a) == null);
-    azzq.a(this.a).a(localPtvTemplateInfo);
-    return;
-    this.a.a(paramInt);
-    babc.jdField_b_of_type_JavaLangString = azzq.a(this.a).a + "";
-    babc.c = localPtvTemplateInfo.id;
-    babc.a = localPtvTemplateInfo.hasGesture();
-    boolean bool;
-    if (localPtvTemplateInfo.kind == 3)
-    {
-      bool = true;
-      babc.jdField_b_of_type_Boolean = bool;
-      if (bbuc.a().a != 1) {
-        break label228;
+      anri localanri = (anri)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
+      if (localanri != null) {
+        localanri.notifyUI(115, true, Boolean.valueOf(this.jdField_a_of_type_Boolean));
       }
     }
-    label228:
-    for (paramInt = i;; paramInt = 2)
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if ((TextUtils.equals(paramString, "profile_switch_config")) && (this.jdField_a_of_type_Birs != null)) {
+      a(this.jdField_a_of_type_Birs.a(13));
+    }
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AnonymousManager", 2, String.format("updateConfigSwitch newConfigSwitch=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    if (paramBoolean != this.b)
     {
-      babc.d(paramInt);
-      return;
-      bool = false;
-      break;
+      this.b = paramBoolean;
+      a();
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AnonymousManager", 2, String.format("updateBusinessSwitch newBusinessSwitch=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    if (paramBoolean != this.c)
+    {
+      this.c = paramBoolean;
+      a();
+    }
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    if (this.jdField_a_of_type_Birs != null)
+    {
+      this.jdField_a_of_type_Birs.a();
+      this.jdField_a_of_type_Birs = null;
     }
   }
 }

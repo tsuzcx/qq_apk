@@ -1,45 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.biz.qrcode.ipc.ScannerParams;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
-import mqq.app.AppActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class yxm
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  yxm(yxk paramyxk, String paramString) {}
+  yxm(yxl paramyxl, yxo paramyxo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = this.jdField_a_of_type_JavaLangString.toLowerCase();
-    if (paramDialogInterface.startsWith("www.")) {
-      paramDialogInterface = "http://" + this.jdField_a_of_type_JavaLangString;
+    if (!this.jdField_a_of_type_Yxo.a()) {
+      this.jdField_a_of_type_Yxo.b();
     }
     for (;;)
     {
-      Intent localIntent = new Intent(this.jdField_a_of_type_Yxk.jdField_a_of_type_MqqAppAppActivity, QQBrowserDelegationActivity.class);
-      localIntent.putExtra("url", paramDialogInterface);
-      localIntent.putExtra("param_force_internal_browser", true);
-      localIntent.putExtra("key_isReadModeEnabled", true);
-      localIntent.putExtra("fromQrcode", true);
-      localIntent.putExtra("injectrecommend", false);
-      localIntent.putExtra("big_brother_source_key", "biz_src_jc_sacan_qr");
-      this.jdField_a_of_type_Yxk.jdField_a_of_type_MqqAppAppActivity.startActivity(localIntent);
-      if (this.jdField_a_of_type_Yxk.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.e) {
-        this.jdField_a_of_type_Yxk.jdField_a_of_type_MqqAppAppActivity.finish();
+      if (this.jdField_a_of_type_Yxl.a != null) {
+        this.jdField_a_of_type_Yxl.a.a(this.jdField_a_of_type_Yxl);
       }
-      if (this.jdField_a_of_type_Yxk.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.b) {
-        this.jdField_a_of_type_Yxk.jdField_a_of_type_MqqAppAppActivity.finish();
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (paramDialogInterface.startsWith("https:")) {
-        paramDialogInterface = "https" + this.jdField_a_of_type_JavaLangString.substring(5);
-      } else if (paramDialogInterface.startsWith("http:")) {
-        paramDialogInterface = "http" + this.jdField_a_of_type_JavaLangString.substring(4);
-      } else {
-        paramDialogInterface = this.jdField_a_of_type_JavaLangString;
-      }
+      this.jdField_a_of_type_Yxo.c();
     }
   }
 }

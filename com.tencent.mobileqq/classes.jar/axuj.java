@@ -1,21 +1,21 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import android.text.TextPaint;
-import android.widget.EditText;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
-import com.tencent.mobileqq.text.QQTextBuilder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagItemView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class axuj
-  extends Editable.Factory
+  implements View.OnClickListener
 {
-  public axuj(AutoReplyEditActivity paramAutoReplyEditActivity) {}
+  public axuj(InterestTagItemView paramInterestTagItemView) {}
   
-  public Editable newEditable(CharSequence paramCharSequence)
+  public void onClick(View paramView)
   {
-    if ((paramCharSequence instanceof QQTextBuilder)) {
-      return (Editable)paramCharSequence;
+    if ((paramView == InterestTagItemView.a(this.a)) || (paramView == this.a))
+    {
+      InterestTagItemView.a(this.a).a(InterestTagItemView.a(this.a));
+      this.a.a();
     }
-    return new QQTextBuilder(paramCharSequence, 3, (int)(AutoReplyEditActivity.a(this.a).getTextSize() / AutoReplyEditActivity.a(this.a).getPaint().density));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

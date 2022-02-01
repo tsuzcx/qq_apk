@@ -1,45 +1,20 @@
-import android.content.Intent;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.qzone.QzoneExternalRequest;
-import cooperation.vip.manager.CommonRequestManager.1;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-import mqq.os.MqqHandler;
+import android.animation.TypeEvaluator;
+import android.graphics.Rect;
+import com.tencent.widget.DynamicGridView;
 
-public abstract class blaw
-  extends MSFServlet
+public class blaw
+  implements TypeEvaluator<Rect>
 {
-  protected long a()
+  public blaw(DynamicGridView paramDynamicGridView) {}
+  
+  public int a(int paramInt1, int paramInt2, float paramFloat)
   {
-    return 10000L;
+    return (int)(paramInt1 + (paramInt2 - paramInt1) * paramFloat);
   }
   
-  public abstract QzoneExternalRequest a(Intent paramIntent);
-  
-  public void a(Intent paramIntent)
+  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
   {
-    ThreadManager.getSubThreadHandler().post(new CommonRequestManager.1(this, paramIntent));
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    QzoneExternalRequest localQzoneExternalRequest = a(paramIntent);
-    if (localQzoneExternalRequest == null)
-    {
-      QLog.i("CommonRequestManager", 1, " onSend request = null");
-      return;
-    }
-    byte[] arrayOfByte = localQzoneExternalRequest.encode();
-    paramIntent = arrayOfByte;
-    if (arrayOfByte == null)
-    {
-      QLog.e("CommonRequestManager", 1, "onSend request encode result is null.cmd=" + localQzoneExternalRequest.uniKey());
-      paramIntent = new byte[4];
-    }
-    paramPacket.setTimeout(a());
-    paramPacket.setSSOCommand("SQQzoneSvc." + localQzoneExternalRequest.uniKey());
-    paramPacket.putSendData(paramIntent);
+    return new Rect(a(paramRect1.left, paramRect2.left, paramFloat), a(paramRect1.top, paramRect2.top, paramFloat), a(paramRect1.right, paramRect2.right, paramFloat), a(paramRect1.bottom, paramRect2.bottom, paramFloat));
   }
 }
 

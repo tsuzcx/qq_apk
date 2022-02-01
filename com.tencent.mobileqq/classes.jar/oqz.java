@@ -1,39 +1,42 @@
-import android.app.Activity;
-import android.graphics.Color;
+import android.content.Intent;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyChannelViewPager;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONException;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class oqz
-  implements ViewBase.OnClickListener
+class oqz
+  implements View.OnClickListener
 {
-  oqz(ViewBase paramViewBase, ouc paramouc, ouo paramouo) {}
+  oqz(oqy paramoqy) {}
   
-  public final void onClick(ViewBase paramViewBase)
+  public void onClick(View paramView)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase;
-    paramViewBase = (ViewBase)localObject;
-    if (!(localObject instanceof oxv)) {
-      paramViewBase = null;
-    }
-    paramViewBase = (oxv)paramViewBase;
-    if (paramViewBase != null)
+    if (pli.a()) {}
+    for (;;)
     {
-      paramViewBase = paramViewBase.getNativeView();
-      if (paramViewBase != null) {
-        paramViewBase.setBackgroundColor(Color.parseColor("#DBE5EF"));
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Intent localIntent = new Intent();
+      localIntent.putExtra("currentIndex", oqy.a(this.a).getCurrentItem());
+      PublicTransFragmentActivity.b(oqy.a(this.a), localIntent, ReadInJoyChannelPanelFragment.class);
+      try
+      {
+        ReadInJoyChannelPanelFragment.a("0X8009497", new pqg().b().c(this.a.a()).a());
+        oqy.a(this.a, false);
+        oqy.a(this.a).setVisibility(8);
       }
-    }
-    paramViewBase = this.jdField_a_of_type_Ouc;
-    if (paramViewBase != null)
-    {
-      localObject = (Activity)this.jdField_a_of_type_Ouc.a;
-      ViewBase localViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase;
-      Intrinsics.checkExpressionValueIsNotNull(localViewBase, "commentContentView");
-      paramViewBase.a((Activity)localObject, localViewBase.getNativeView(), this.jdField_a_of_type_Ouo, (bjoy)new ora(this));
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          QLog.e("ReadInJoyChannelViewPagerController", 1, QLog.getStackTraceString(localJSONException));
+        }
+      }
     }
   }
 }

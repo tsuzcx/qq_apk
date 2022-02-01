@@ -1,18 +1,19 @@
-import com.tencent.image.Utils;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
 public class ajub
-  extends ajuc
+  implements ajwj
 {
-  public ajub(String paramString)
+  public ajub(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  
+  public void a()
   {
-    super(paramString);
-    this.a = "PhotoIncompatibleWebp";
-    this.b = "reportGenerateHeif";
+    ChatHistoryTroopMemberFragment.a(this.a).sendEmptyMessage(1);
   }
   
-  static boolean a(String paramString)
+  public void b()
   {
-    return Utils.isHeifFile(paramString);
+    ChatHistoryTroopMemberFragment.a(this.a).sendEmptyMessage(2);
   }
 }
 

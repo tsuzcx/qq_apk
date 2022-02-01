@@ -1,16 +1,12 @@
-class aqbe
-  implements bmxi
+public abstract interface aqbe
 {
-  aqbe(aqbd paramaqbd) {}
+  public abstract void a();
   
-  public void a(String paramString)
-  {
-    ((boba)bmql.a(3)).a(paramString, 1);
-  }
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqbe
  * JD-Core Version:    0.7.0.1
  */

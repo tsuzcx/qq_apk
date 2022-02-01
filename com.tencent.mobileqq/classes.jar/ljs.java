@@ -1,18 +1,51 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.chatroom.ChatRoomInfo;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.av.camera.CameraUtils;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ljs
-  implements Parcelable.Creator<ChatRoomInfo>
+public class ljs
+  extends Handler
 {
-  public ChatRoomInfo a(Parcel paramParcel)
+  public ljs(CameraUtils paramCameraUtils, Looper paramLooper)
   {
-    return new ChatRoomInfo(paramParcel);
+    super(paramLooper);
   }
   
-  public ChatRoomInfo[] a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new ChatRoomInfo[paramInt];
+    boolean bool = true;
+    long l = mur.a(paramMessage.obj);
+    if (AudioHelper.f()) {
+      QLog.w("CameraUtils", 1, "CameraHandlerThread, seq[" + l + "], event[" + paramMessage.what + "]");
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      CameraUtils.a(this.a, l);
+      return;
+    case 2: 
+      if (paramMessage.arg1 == 1) {}
+      for (;;)
+      {
+        CameraUtils.a(this.a, l, bool);
+        return;
+        bool = false;
+      }
+    case 3: 
+      i = paramMessage.arg1;
+      int j = paramMessage.arg2;
+      CameraUtils.a(this.a, l, i, j);
+      return;
+    case 4: 
+      CameraUtils.b(this.a, l);
+      return;
+    }
+    int i = paramMessage.arg1;
+    CameraUtils.a(this.a, l, i);
   }
 }
 

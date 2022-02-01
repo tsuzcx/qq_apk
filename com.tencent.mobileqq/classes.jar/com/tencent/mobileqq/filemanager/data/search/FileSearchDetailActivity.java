@@ -10,7 +10,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.MotionEvent;
-import asmd;
+import atqj;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
@@ -20,15 +20,15 @@ import java.util.List;
 public class FileSearchDetailActivity
   extends IphoneTitleBarActivity
 {
-  static asmd a;
-  asmd b;
+  static atqj a;
+  atqj b;
   
-  public static void a(Context paramContext, String paramString, asmd paramasmd)
+  public static void a(Context paramContext, String paramString, atqj paramatqj)
   {
-    a = paramasmd;
-    paramasmd = new Intent(paramContext, FileSearchDetailActivity.class);
-    paramasmd.putExtra("keyword", paramString);
-    paramContext.startActivity(paramasmd);
+    a = paramatqj;
+    paramatqj = new Intent(paramContext, FileSearchDetailActivity.class);
+    paramatqj.putExtra("keyword", paramString);
+    paramContext.startActivity(paramatqj);
   }
   
   @Override
@@ -60,12 +60,12 @@ public class FileSearchDetailActivity
         }
       }
     }
-    super.setContentView(2131558936);
+    super.setContentView(2131558963);
     super.setTitle(((FileManagerEntity)this.b.a.get(0)).fileName);
     Object localObject = getSupportFragmentManager();
     paramBundle = FileSearchDetailFragment.a(getIntent().getStringExtra("keyword"), this.b);
     localObject = ((FragmentManager)localObject).beginTransaction();
-    ((FragmentTransaction)localObject).replace(2131365087, paramBundle);
+    ((FragmentTransaction)localObject).replace(2131365171, paramBundle);
     ((FragmentTransaction)localObject).commit();
     return true;
   }
@@ -79,7 +79,7 @@ public class FileSearchDetailActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.FileSearchDetailActivity
  * JD-Core Version:    0.7.0.1
  */

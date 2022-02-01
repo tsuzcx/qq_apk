@@ -1,19 +1,169 @@
-import java.util.Comparator;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
-class bcgi
-  implements Comparator
+public class bcgi
+  extends bcfs
 {
-  public int compare(Object paramObject1, Object paramObject2)
+  public bcgj a;
+  public bcgk a;
+  public ArrayList<bcgl> a;
+  public boolean b;
+  public boolean c;
+  
+  public bcgi(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    paramObject1 = (bcgf)paramObject1;
-    paramObject2 = (bcgf)paramObject2;
-    if (paramObject1.b > paramObject2.b) {
-      return -1;
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public bcgi(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public int a(int paramInt)
+  {
+    int i = paramInt;
+    switch (paramInt)
+    {
+    default: 
+      i = 1;
     }
-    if (paramObject1.b < paramObject2.b) {
-      return 1;
+    return i;
+  }
+  
+  public void a(View paramView)
+  {
+    super.a(paramView);
+    QQAppInterface localQQAppInterface;
+    if (this.jdField_a_of_type_Long == 1003L)
+    {
+      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (b() == null) {
+        break label93;
+      }
     }
-    return 0;
+    label93:
+    for (paramView = b();; paramView = "")
+    {
+      bdla.b(localQQAppInterface, "dc00898", "", paramView, "auth_search", "clk_content", 0, 0, "", "", "", "");
+      if (this.jdField_c_of_type_Boolean) {
+        bdla.b(null, "dc00898", "", "", "0X800AC12", "0X800AC12", 0, 0, "", "", "", "");
+      }
+      return;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    for (;;)
+    {
+      int i;
+      try
+      {
+        paramString = new JSONObject(paramString);
+        if (paramString.optInt("needRightCenter") != 1) {
+          break label509;
+        }
+        bool = true;
+        this.b = bool;
+        JSONObject localJSONObject = paramString.optJSONObject("imageInfo");
+        if (localJSONObject != null) {
+          a(localJSONObject);
+        }
+        localJSONObject = paramString.optJSONObject("actionInfo");
+        if (localJSONObject != null)
+        {
+          this.jdField_a_of_type_Bcgj = new bcgj(this);
+          this.jdField_a_of_type_Bcgj.jdField_a_of_type_Int = localJSONObject.optInt("type");
+          this.jdField_a_of_type_Bcgj.jdField_a_of_type_JavaLangCharSequence = localJSONObject.optString("word");
+          this.jdField_a_of_type_Bcgj.jdField_a_of_type_JavaLangString = localJSONObject.optString("jumpUrl");
+        }
+        localJSONObject = paramString.optJSONObject("headIconInfo");
+        if (localJSONObject != null)
+        {
+          this.jdField_a_of_type_Bcgk = new bcgk(this);
+          this.jdField_a_of_type_Bcgk.jdField_a_of_type_Int = localJSONObject.optInt("type");
+          this.jdField_a_of_type_Bcgk.jdField_a_of_type_JavaLangString = localJSONObject.optString("iconUrl");
+          this.jdField_a_of_type_Bcgk.jdField_b_of_type_Int = localJSONObject.optInt("iconWidth");
+          this.jdField_a_of_type_Bcgk.c = localJSONObject.optInt("iconHeight");
+          this.jdField_a_of_type_Bcgk.jdField_a_of_type_JavaLangCharSequence = localJSONObject.optString("tagText");
+          this.jdField_a_of_type_Bcgk.jdField_b_of_type_JavaLangString = localJSONObject.optString("tagBgColor");
+        }
+        paramString = paramString.optJSONArray("lineList");
+        if ((paramString != null) && (paramString.length() > 0))
+        {
+          i = 0;
+          if (i < paramString.length())
+          {
+            localJSONObject = paramString.getJSONObject(i);
+            bcgl localbcgl;
+            if (!TextUtils.isEmpty(localJSONObject.optString("word")))
+            {
+              if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+                this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+              }
+              localbcgl = new bcgl(this);
+              localbcgl.jdField_a_of_type_JavaLangCharSequence = localJSONObject.optString("word");
+              localbcgl.jdField_a_of_type_JavaLangString = localJSONObject.optString("fontType", "A");
+              localbcgl.jdField_a_of_type_Int = localJSONObject.optInt("maxLines");
+              if (localJSONObject.optInt("needHighlight") != 1) {
+                break label514;
+              }
+              bool = true;
+              localbcgl.jdField_a_of_type_Boolean = bool;
+              this.jdField_a_of_type_JavaUtilArrayList.add(localbcgl);
+            }
+            else if (localJSONObject.optJSONArray("words") != null)
+            {
+              if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+                this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+              }
+              localbcgl = new bcgl(this);
+              localbcgl.jdField_a_of_type_JavaLangCharSequence = bcnc.a(localJSONObject.optJSONArray("words"));
+              localbcgl.jdField_a_of_type_JavaLangString = localJSONObject.optString("fontType", "A");
+              localbcgl.jdField_a_of_type_Int = localJSONObject.optInt("maxLines");
+              if (localJSONObject.optInt("needHighlight") == 1)
+              {
+                bool = true;
+                localbcgl.jdField_a_of_type_Boolean = bool;
+                this.jdField_a_of_type_JavaUtilArrayList.add(localbcgl);
+              }
+            }
+          }
+        }
+      }
+      catch (JSONException paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_c_of_type_JavaLangString, 0, paramString.toString());
+        }
+      }
+      return;
+      boolean bool = false;
+      continue;
+      i += 1;
+      continue;
+      label509:
+      bool = false;
+      continue;
+      label514:
+      bool = false;
+    }
+  }
+  
+  public boolean b()
+  {
+    return true;
   }
 }
 

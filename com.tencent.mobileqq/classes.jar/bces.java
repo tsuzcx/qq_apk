@@ -1,65 +1,56 @@
-import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.search.activity.FunctionSearchActivity;
+import java.util.List;
 
 public class bces
-  extends RecyclablePool.Recyclable
+  implements bcfi
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public boolean b;
-  public long c;
-  public String c;
-  public long d;
-  public long e;
-  public long f;
-  public long g;
-  public long h;
-  public long i;
-  public long j;
-  public long k;
-  public long l;
-  public long m;
-  public long n;
-  public long o;
-  public long p;
+  private int jdField_a_of_type_Int;
+  private final String jdField_a_of_type_JavaLangString;
+  public final List<bcfj> a;
   
-  public bces()
+  public bces(List<bcfj> paramList, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void recycle()
+  public int a()
   {
-    super.recycle();
-    this.jdField_a_of_type_JavaLangString = null;
-    this.e = 0L;
-    this.d = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_Long = 0L;
-    this.f = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.j = 0L;
-    this.i = 0L;
-    this.h = 0L;
-    this.g = 0L;
-    this.m = 0L;
-    this.l = 0L;
-    this.k = 0L;
-    this.jdField_a_of_type_Int = 0;
-    this.p = 0L;
-    this.o = 0L;
-    this.n = 0L;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_b_of_type_Boolean = false;
+    return bbzh.a("fts_native_function_maxnum", 3);
+  }
+  
+  public String a()
+  {
+    return bbzh.a();
+  }
+  
+  public List<bcfj> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(View paramView)
+  {
+    FunctionSearchActivity.a((BaseActivity)paramView.getContext(), this.jdField_a_of_type_JavaLangString);
+    bcjs.a(null, 0, this.jdField_a_of_type_Int, "0X8009D4B", 0, 0, null, null);
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bces
  * JD-Core Version:    0.7.0.1
  */

@@ -1,101 +1,62 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Checkable;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.emosm.view.DragSortItemView;
-import com.tencent.mobileqq.emosm.view.DragSortItemViewCheckable;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.AbsListView.LayoutParams;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arbr
-  extends BaseAdapter
 {
-  private ListAdapter jdField_a_of_type_AndroidWidgetListAdapter;
+  private boolean a;
+  private boolean b;
+  private boolean c = true;
   
-  public arbr(DragSortListView paramDragSortListView, ListAdapter paramListAdapter)
+  public static arbr a(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetListAdapter = paramListAdapter;
-    this.jdField_a_of_type_AndroidWidgetListAdapter.registerDataSetObserver(new arbs(this, paramDragSortListView));
-  }
-  
-  public boolean areAllItemsEnabled()
-  {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.areAllItemsEnabled();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.getCount();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.getItem(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.getItemId(paramInt);
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.getItemViewType(paramInt);
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView != null)
+    if (paramString == null) {}
+    do
     {
-      localObject = (DragSortItemView)paramView;
-      localView1 = ((DragSortItemView)localObject).getChildAt(0);
-      View localView2 = this.jdField_a_of_type_AndroidWidgetListAdapter.getView(paramInt, localView1, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView);
-      if (localView2 != localView1)
+      return null;
+      try
       {
-        if (localView1 != null) {
-          ((DragSortItemView)localObject).removeViewAt(0);
-        }
-        ((DragSortItemView)localObject).addView(localView2);
+        arbr localarbr = new arbr();
+        paramString = new JSONObject(paramString);
+        localarbr.a = paramString.optBoolean("isIPCDivideToTransportEnable", false);
+        localarbr.b = paramString.optBoolean("isSleepThreadWhenIPCBlockEnable", false);
+        localarbr.c = paramString.optBoolean("isSendQuickHBByDeepSleepEnable", true);
+        return localarbr;
       }
-      DragSortListView.a(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getHeaderViewsCount() + paramInt, (View)localObject, true);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localObject;
-    }
-    View localView1 = this.jdField_a_of_type_AndroidWidgetListAdapter.getView(paramInt, null, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView);
-    if ((localView1 instanceof Checkable)) {}
-    for (Object localObject = new DragSortItemViewCheckable(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getContext());; localObject = new DragSortItemView(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getContext()))
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("MSFConfigProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
+  }
+  
+  public static String a(arbr paramarbr)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    if (paramarbr != null) {}
+    try
     {
-      ((DragSortItemView)localObject).setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-      ((DragSortItemView)localObject).addView(localView1);
-      break;
+      localJSONObject.put("isIPCDivideToTransportEnable", paramarbr.a);
+      localJSONObject.put("isSleepThreadWhenIPCBlockEnable", paramarbr.b);
+      localJSONObject.put("isSendQuickHBByDeepSleepEnable", paramarbr.c);
+      return localJSONObject.toString();
+    }
+    catch (JSONException paramarbr)
+    {
+      for (;;)
+      {
+        paramarbr.printStackTrace();
+      }
     }
   }
   
-  public int getViewTypeCount()
+  public String toString()
   {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.getViewTypeCount();
-  }
-  
-  public boolean hasStableIds()
-  {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.hasStableIds();
-  }
-  
-  public boolean isEmpty()
-  {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.isEmpty();
-  }
-  
-  public boolean isEnabled(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.isEnabled(paramInt);
+    return "MSFConfigBean{isIPCDivideToTransportEnable=" + this.a + ", isSleepThreadWhenIPCBlockEnable=" + this.b + ", isSendQuickHBByDeepSleepEnable=" + this.c + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arbr
  * JD-Core Version:    0.7.0.1
  */

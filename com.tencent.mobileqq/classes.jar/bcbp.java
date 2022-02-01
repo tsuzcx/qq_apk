@@ -1,12 +1,21 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.CaughtExceptionReport.Proxy;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class bcbp
-  implements IMCoreProxyRoute.CaughtExceptionReport.Proxy
+class bcbp
+  implements View.OnClickListener
 {
-  public void e(@NonNull Throwable paramThrowable, @NonNull String paramString)
+  bcbp(bcbo parambcbo, String paramString) {}
+  
+  public void onClick(View paramView)
   {
-    bcdb.a(paramThrowable, paramString);
+    Intent localIntent = new Intent(this.jdField_a_of_type_Bcbo.a.getActivity(), QQBrowserActivity.class);
+    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Bcbo.a.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

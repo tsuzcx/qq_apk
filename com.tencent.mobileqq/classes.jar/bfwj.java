@@ -1,67 +1,50 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.content.res.Resources;
-import android.net.Uri;
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.ROMUtil;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.widget.MessageProgressView;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.Map;
 
-public class bfwj
+class bfwj
+  extends SimpleObserver<bfvc>
 {
-  public static Intent a(Context paramContext)
+  bfwj(bfwh parambfwh, bfvc parambfvc) {}
+  
+  public void a(bfvc parambfvc)
   {
-    if (("MIUI".equals(ROMUtil.getRomName())) && (Build.VERSION.SDK_INT > 19)) {
-      return d(paramContext);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoItem", 2, new Object[] { "VideoItem GeneratePoster onNext. info position=", Integer.valueOf(parambfvc.c), ", old status=", Integer.valueOf(parambfvc.g) });
     }
-    if (("SMARTISAN".equals(ROMUtil.getRomName())) || ("360".equals(ROMUtil.getRomName()))) {
-      return c(paramContext);
-    }
-    return b(paramContext);
+    this.jdField_a_of_type_Bfwh.b.remove(parambfvc);
+    this.jdField_a_of_type_Bfwh.a(1, false);
   }
   
-  public static Intent b(Context paramContext)
+  public void onError(@NonNull Error paramError)
   {
-    Intent localIntent;
-    if (Build.VERSION.SDK_INT >= 26)
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoItem", 2, new Object[] { "VideoItem GeneratePoster onError. info position=", Integer.valueOf(this.jdField_a_of_type_Bfvc.c), ", old status=", Integer.valueOf(this.jdField_a_of_type_Bfvc.g) });
+    }
+    this.jdField_a_of_type_Bfvc.g = 2;
+    this.jdField_a_of_type_Bfwh.b.remove(this.jdField_a_of_type_Bfvc);
+    QLog.d("VideoItem", 1, paramError, new Object[0]);
+    paramError = paramError.getMessage();
+    if (this.jdField_a_of_type_Bfwh.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor != null)
     {
-      localIntent = new Intent();
-      localIntent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
-      localIntent.putExtra("android.provider.extra.APP_PACKAGE", paramContext.getPackageName());
-      localIntent.putExtra("android.provider.extra.CHANNEL_ID", paramContext.getApplicationInfo().uid);
-      return localIntent;
+      Object localObject = this.jdField_a_of_type_Bfwh.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForLayoutPosition(this.jdField_a_of_type_Bfvc.c);
+      if ((localObject instanceof bfwk))
+      {
+        localObject = (bfwk)localObject;
+        if (this.jdField_a_of_type_Bfvc.d.equals(((bfwk)localObject).a.getTag())) {
+          ((bfwh)((bfun)this.jdField_a_of_type_Bfwh.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter()).a.a(2)).a((bfvx)localObject, this.jdField_a_of_type_Bfvc, 0);
+        }
+      }
     }
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      localIntent = new Intent();
-      localIntent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
-      localIntent.putExtra("app_package", paramContext.getPackageName());
-      localIntent.putExtra("app_uid", paramContext.getApplicationInfo().uid);
-      return localIntent;
+    if (!paramError.startsWith("c_")) {
+      bgmd.a("hw_entry_upload", "upload_video", "2", paramError, String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Bfvc.a), "");
     }
-    if (Build.VERSION.SDK_INT >= 19) {
-      return c(paramContext);
+    if (this.jdField_a_of_type_Bfvc.d.equals(this.jdField_a_of_type_Bfwh.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_Bfwh.a(1, false);
     }
-    return c(paramContext);
-  }
-  
-  public static Intent c(Context paramContext)
-  {
-    Intent localIntent = new Intent();
-    localIntent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
-    localIntent.setData(Uri.parse("package:" + paramContext.getPackageName()));
-    return localIntent;
-  }
-  
-  public static Intent d(Context paramContext)
-  {
-    if (Build.VERSION.SDK_INT < 21) {
-      return c(paramContext);
-    }
-    Intent localIntent = new Intent("android.intent.action.MAIN");
-    localIntent.setClassName("com.android.settings", "com.android.settings.Settings$NotificationFilterActivity");
-    localIntent.putExtra("appName", paramContext.getResources().getString(paramContext.getApplicationInfo().labelRes));
-    localIntent.putExtra("packageName", paramContext.getPackageName());
-    return localIntent;
   }
 }
 

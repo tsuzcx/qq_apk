@@ -1,88 +1,60 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.database.ContentObserver;
+import android.os.Handler;
+import android.provider.Settings.System;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import mqq.observer.BusinessObserver;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnBusinessObserver;", "Lmqq/observer/BusinessObserver;", "dataManager", "Lcom/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnDataManager;", "topicId", "", "rowKey", "(Lcom/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnDataManager;Ljava/lang/String;Ljava/lang/String;)V", "getRowKey", "()Ljava/lang/String;", "getTopicId", "weakRef", "Ljava/lang/ref/WeakReference;", "addToDataManager", "", "json", "Lorg/json/JSONObject;", "onReceive", "type", "", "isSuccess", "", "bundle", "Landroid/os/Bundle;", "parseToJson", "byteArray", "", "removeRequest", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class sfn
-  implements BusinessObserver
+public class sfn
+  extends ContentObserver
 {
-  @NotNull
-  private final String jdField_a_of_type_JavaLangString;
-  private WeakReference<sfo> jdField_a_of_type_JavaLangRefWeakReference;
-  @NotNull
-  private final String b;
-  
-  public sfn(@NotNull sfo paramsfo, @NotNull String paramString1, @NotNull String paramString2)
+  public sfn(sfk paramsfk, Handler paramHandler)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramsfo);
+    super(paramHandler);
   }
   
-  private final JSONObject a(byte[] paramArrayOfByte)
+  public ContentResolver a()
   {
-    WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-    localWebSsoResponseBody.mergeFrom(paramArrayOfByte);
-    paramArrayOfByte = new JSONObject().put("data", new JSONObject(localWebSsoResponseBody.data.get())).put("retcode", localWebSsoResponseBody.ret.get()).put("cret", 0);
-    Intrinsics.checkExpressionValueIsNotNull(paramArrayOfByte, "JSONObject()\n           …          .put(\"cret\", 0)");
-    return paramArrayOfByte;
+    if (this.a.a() != null) {
+      return this.a.a().getContentResolver();
+    }
+    return null;
   }
   
-  private final void a(String paramString)
+  public void a()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
-    if (localObject != null)
-    {
-      localObject = (sfo)((WeakReference)localObject).get();
-      if (localObject != null) {
-        ((sfo)localObject).a(paramString);
-      }
+    if (a() != null) {
+      a().registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
     }
   }
   
-  private final void a(JSONObject paramJSONObject)
+  public void b()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
-    if (localObject != null)
-    {
-      localObject = (sfo)((WeakReference)localObject).get();
-      if (localObject != null) {
-        ((sfo)localObject).a(this.jdField_a_of_type_JavaLangString, paramJSONObject);
-      }
+    if (a() != null) {
+      a().unregisterContentObserver(this);
     }
   }
   
-  public void onReceive(int paramInt, boolean paramBoolean, @Nullable Bundle paramBundle)
+  public void onChange(boolean paramBoolean)
   {
-    if (paramBoolean) {
-      if (paramBundle == null) {}
-    }
+    super.onChange(paramBoolean);
+    if (this.a.a() == null) {}
     for (;;)
     {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null) {
-          a(a(paramBundle));
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        QLog.e("VideoColumnDataManager", 1, "parse video column json error: " + paramBundle.getMessage());
-        continue;
-      }
-      a(this.jdField_a_of_type_JavaLangString);
       return;
-      QLog.e("VideoColumnDataManager", 1, "request error, topicId: " + this.jdField_a_of_type_JavaLangString + ", rowKey: " + this.b);
+      int i = Settings.System.getInt(this.a.a().getContentResolver(), "accelerometer_rotation", -1);
+      if (i == 1)
+      {
+        sfk.a(this.a, true);
+        this.a.a(true);
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.d(sfk.a, 2, "RotationObserver.onChange() : rotateState=" + i);
+        return;
+        sfk.a(this.a, false);
+        this.a.a(false);
+      }
     }
   }
 }

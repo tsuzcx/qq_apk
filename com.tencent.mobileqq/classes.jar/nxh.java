@@ -1,25 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class nxh
-  implements View.OnClickListener
+class nxh
 {
-  public nxh(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  public int a;
+  public long a;
   
-  public void onClick(View paramView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("PublicAccountAdvertisementActivity", 2, "action cancel");
-    }
-    bcef.a(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X80090FD", "0X80090FD", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
-    if ((PublicAccountAdvertisementActivity.a(this.a) != null) && (PublicAccountAdvertisementActivity.a(this.a).isShowing())) {
-      PublicAccountAdvertisementActivity.a(this.a).dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  private nxh(nxf paramnxf) {}
 }
 
 

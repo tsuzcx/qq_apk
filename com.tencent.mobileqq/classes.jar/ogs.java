@@ -1,48 +1,41 @@
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.EncryptUinInfo;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 class ogs
-  extends amwl
+  extends ogt
 {
   ogs(ogr paramogr) {}
   
-  public void onMessageRecordAdded(List<MessageRecord> paramList)
+  protected void a(boolean paramBoolean, List<EncryptUinInfo> paramList, Bundle paramBundle)
   {
-    super.onMessageRecordAdded(paramList);
-    ogr localogr = (ogr)this.a.mApp.getBusinessHandler(88);
-    ofx localofx = (ofx)this.a.mApp.getManager(88);
-    if ((localogr == null) || (localofx == null)) {
+    if ((paramBoolean) && (paramList != null) && (!paramList.isEmpty()))
+    {
+      paramList = (EncryptUinInfo)paramList.get(0);
+      if ((paramList.jdField_a_of_type_Int != 0) || (paramList.jdField_a_of_type_Long != this.a.mApp.getLongAccountUin()) || (TextUtils.isEmpty(paramList.jdField_a_of_type_JavaLangString))) {
+        break label113;
+      }
+      ogr.a(this.a, paramList.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.d("EncryptUinHandler", 2, "onGetEncryptUin: " + ogr.a(this.a));
+      }
+    }
+    label113:
+    while (!QLog.isColorLevel()) {
       return;
     }
-    paramList = new ArrayList(paramList).iterator();
-    label164:
-    label167:
-    for (;;)
+    QLog.d("EncryptUinHandler", 2, "onGetEncryptUin: failed，code=" + paramList.jdField_a_of_type_Int);
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt == 1)
     {
-      label62:
-      MessageRecord localMessageRecord;
-      if (paramList.hasNext())
-      {
-        localMessageRecord = (MessageRecord)paramList.next();
-        if ((!"2".equals(localMessageRecord.getExtInfoFromExtStr("inter_num"))) && ((localMessageRecord.istroop != 1008) || (!uaw.e(this.a.app, localMessageRecord.senderuin)))) {
-          break label164;
-        }
-      }
-      for (int i = 1;; i = 0)
-      {
-        if ((i == 0) && (!localofx.a(localMessageRecord.senderuin))) {
-          break label167;
-        }
-        if (i != 0) {
-          localogr.a(localMessageRecord);
-        }
-        localogr.b(localMessageRecord);
-        break label62;
-        break;
-      }
+      super.onUpdate(paramInt, paramBoolean, paramObject);
+      this.a.mApp.removeObserver(ogr.a(this.a));
     }
   }
 }

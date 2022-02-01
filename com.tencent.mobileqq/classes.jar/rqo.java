@@ -1,20 +1,11 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideo.SelectVideoPresenter.5.1;
-import java.util.List;
+import tencent.im.oidb.articlesummary.articlesummary.WendaInfo;
 
-public class rqo
-  implements rgy
+public final class rqo
+  implements qdt<articlesummary.WendaInfo, rru>
 {
-  rqo(rqj paramrqj) {}
-  
-  public List a(int paramInt1, int paramInt2)
+  public rru a(articlesummary.WendaInfo paramWendaInfo)
   {
-    return rgn.a(paramInt1, paramInt2);
-  }
-  
-  public void a(List paramList, boolean paramBoolean)
-  {
-    rqj.a(this.a).a(paramList, paramBoolean);
-    bijk.c(new SelectVideoPresenter.5.1(this));
+    return rru.a(paramWendaInfo);
   }
 }
 

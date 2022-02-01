@@ -1,26 +1,29 @@
-import com.tencent.viola.adapter.IJSApiAdapter.OnInovkeCallback;
-import org.json.JSONObject;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
-class thf
-  implements rtf
+public class thf
+  implements tgs
 {
-  IJSApiAdapter.OnInovkeCallback a;
-  
-  public thf(IJSApiAdapter.OnInovkeCallback paramOnInovkeCallback)
+  public int a(BaseData paramBaseData)
   {
-    this.a = paramOnInovkeCallback;
+    return 11;
   }
   
-  public void a(JSONObject paramJSONObject)
+  public tgr a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
   {
-    if (this.a != null) {
-      this.a.callback(paramJSONObject);
-    }
+    return new thg(LayoutInflater.from(paramContext).inflate(2131560225, paramViewGroup, false), paramBaseData);
+  }
+  
+  public boolean a(BaseData paramBaseData)
+  {
+    return paramBaseData.r == 11;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     thf
  * JD-Core Version:    0.7.0.1
  */

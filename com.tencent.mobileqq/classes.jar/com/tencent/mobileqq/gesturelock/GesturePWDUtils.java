@@ -11,9 +11,10 @@ import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import android.os.Process;
 import android.text.TextUtils;
-import aubt;
+import avhn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.database.corrupt.DBFixManager;
 import com.tencent.qphone.base.util.MD5;
@@ -409,7 +410,7 @@ public class GesturePWDUtils
     }
   }
   
-  public static String patternToString(List<aubt> paramList)
+  public static String patternToString(List<avhn> paramList)
   {
     if (paramList == null) {
       return "";
@@ -419,9 +420,9 @@ public class GesturePWDUtils
     int i = 0;
     while (i < j)
     {
-      aubt localaubt = (aubt)paramList.get(i);
-      int k = localaubt.a();
-      arrayOfByte[i] = ((byte)(localaubt.b() + k * 3));
+      avhn localavhn = (avhn)paramList.get(i);
+      int k = localavhn.a();
+      arrayOfByte[i] = ((byte)(localavhn.b() + k * 3));
       i += 1;
     }
     return Arrays.toString(arrayOfByte);
@@ -459,7 +460,7 @@ public class GesturePWDUtils
       localObject = BaseApplicationImpl.getApplication().getRuntime();
       if ((localObject != null) && ((localObject instanceof QQAppInterface)))
       {
-        localObject = (DBFixManager)((QQAppInterface)localObject).getManager(205);
+        localObject = (DBFixManager)((QQAppInterface)localObject).getManager(QQManagerFactory.DB_FIX_MANAGER);
         if (localObject != null) {
           ((DBFixManager)localObject).a(paramContext);
         }

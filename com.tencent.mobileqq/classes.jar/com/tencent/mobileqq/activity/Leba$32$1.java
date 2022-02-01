@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import adoz;
-import ajef;
+import aegc;
+import ajzt;
 
 public class Leba$32$1
   implements Runnable
 {
-  public Leba$32$1(adoz paramadoz) {}
+  public Leba$32$1(aegc paramaegc) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class Leba$32$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Leba.32.1
  * JD-Core Version:    0.7.0.1
  */

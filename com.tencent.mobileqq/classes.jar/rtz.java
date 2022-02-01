@@ -1,19 +1,19 @@
-import kotlin.Metadata;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity.8.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/VideoColumnBannerManager$onColumnSubscribeChangeObserver$1", "Lcom/tencent/biz/pubaccount/readinjoy/ugc/managecolumn/ColumnSubscribeChangeObserver;", "onUgcColumnSubscribeStateChange", "", "columnId", "", "subscribeAction", "subscribeCount", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rtz
-  extends rmm
+public class rtz
+  implements DialogInterface.OnDismissListener
 {
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public rtz(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    boolean bool = true;
-    if (paramInt2 == 1) {}
-    for (;;)
-    {
-      rtv.a(this.a, null, paramInt1, bool);
-      return;
-      bool = false;
-    }
+    ReadInJoyDeliverUGCActivity.b(this.a, false);
+    ThreadManager.getUIHandler().postDelayed(new ReadInJoyDeliverUGCActivity.8.1(this), 300L);
   }
 }
 

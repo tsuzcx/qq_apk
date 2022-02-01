@@ -1,42 +1,46 @@
-import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
-import com.tencent.mobileqq.multicard.MultiCardFragment.ReportRunnable;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
+import com.tencent.mobileqq.jsp.ShareMsgImpl.3;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
 public class awap
-  implements avzr
+  implements aaea
 {
-  public awap(MultiCardFragment paramMultiCardFragment) {}
+  public awap(ShareMsgImpl.3 param3, Bitmap paramBitmap) {}
   
-  public void a(int paramInt)
+  public void callback(Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiCardFragment", 2, "Indicator onPageScrollStateChanged() called with: state = [" + paramInt + "]");
-    }
-    switch (paramInt)
+    int j = 0;
+    int i = 0;
+    if (paramBundle.getInt("readinjoy_to_wx_config") == 0)
     {
-    default: 
-    case 0: 
-    case 1: 
-      do
+      paramBundle = WxShareHelperFromReadInjoy.a();
+      str1 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.this$0.b;
+      str2 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.d;
+      localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      str3 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.e;
+      str4 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.b;
+      if ("2".equals(this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.a)) {}
+      for (;;)
       {
-        do
-        {
-          return;
-          MultiCardFragment.a(this.a);
-          MultiCardFragment.a(this.a, true);
-        } while ((MultiCardFragment.a(this.a) == null) || (MultiCardFragment.a(this.a).a() <= MultiCardFragment.a(this.a).a()));
-        MultiCardFragment.a(this.a).b(MultiCardFragment.a(this.a).a());
-        MultiCardFragment.a(this.a).a();
+        paramBundle.a(str1, str2, localBitmap, str3, str4, i);
         return;
-        MultiCardFragment.b(this.a, true);
-        MultiCardFragment.a(this.a, false);
-      } while (MultiCardFragment.a(this.a) == null);
-      MultiCardFragment.a(this.a, MultiCardFragment.a(this.a).a());
+        i = 1;
+      }
+    }
+    paramBundle = WXShareHelper.a();
+    String str1 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.this$0.b;
+    String str2 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.d;
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    String str3 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.e;
+    String str4 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.b;
+    if ("2".equals(this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.a)) {}
+    for (i = j;; i = 1)
+    {
+      paramBundle.b(str1, str2, localBitmap, str3, str4, i);
       return;
     }
-    MultiCardFragment.b(this.a, true);
-    MultiCardFragment.a(this.a, false);
   }
 }
 

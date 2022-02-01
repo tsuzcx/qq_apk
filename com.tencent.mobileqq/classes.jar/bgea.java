@@ -1,14 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
+import com.tencent.qphone.base.util.QLog;
 
 class bgea
-  implements DialogInterface.OnClickListener
+  implements FaceDecoder.DecodeTaskCompletionListener
 {
-  bgea(bgdv parambgdv, long paramLong, int paramInt, String paramString) {}
+  bgea(bgdy parambgdy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Bgdv.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    if ((paramBitmap != null) && (bgdy.a(this.a) != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, String.format("onDecodeTaskCompleted uin=%s", new Object[] { paramString }));
+      }
+      if (!TextUtils.isEmpty(paramString)) {
+        bgdy.a(this.a).b(paramString);
+      }
+    }
   }
 }
 

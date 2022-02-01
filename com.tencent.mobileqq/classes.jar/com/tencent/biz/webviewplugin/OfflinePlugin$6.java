@@ -1,6 +1,6 @@
 package com.tencent.biz.webviewplugin;
 
-import aabq;
+import aarc;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
@@ -16,13 +16,13 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import nny;
-import npn;
+import nuz;
+import nwo;
 
 public class OfflinePlugin$6
   implements Runnable
 {
-  public OfflinePlugin$6(aabq paramaabq, String paramString1, String paramString2, CustomWebView paramCustomWebView) {}
+  public OfflinePlugin$6(aarc paramaarc, String paramString1, String paramString2, CustomWebView paramCustomWebView) {}
   
   public void run()
   {
@@ -38,10 +38,10 @@ public class OfflinePlugin$6
     {
       return;
       localObject2 = BaseApplicationImpl.getApplication().getSharedPreferences("offline_sw_register", 4);
-      str1 = nny.d(this.jdField_a_of_type_JavaLangString);
+      str1 = nuz.d(this.jdField_a_of_type_JavaLangString);
       str2 = str1 + "_register_time";
       l1 = ((SharedPreferences)localObject2).getLong(str2, -1L);
-      if ((!"0".equals(this.b)) && (aabq.a())) {
+      if ((!"0".equals(this.b)) && (aarc.a())) {
         break;
       }
     } while (l1 == -1L);
@@ -51,7 +51,7 @@ public class OfflinePlugin$6
     ((SharedPreferences)localObject2).edit().putLong(str2, -1L).commit();
     this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.getX5WebViewExtension().unRegisterServiceWorker(this.jdField_a_of_type_JavaLangString, true);
     return;
-    QLog.i("OfflinePluginQQ", 1, String.format("now start registerServiceWorkerOffline, current tbs version: %d, url: %s", new Object[] { Integer.valueOf(i), npn.b(this.jdField_a_of_type_JavaLangString, new String[0]) }));
+    QLog.i("OfflinePluginQQ", 1, String.format("now start registerServiceWorkerOffline, current tbs version: %d, url: %s", new Object[] { Integer.valueOf(i), nwo.b(this.jdField_a_of_type_JavaLangString, new String[0]) }));
     Object localObject1 = ((SharedPreferences)localObject2).getString(str1, "");
     int j;
     if (!TextUtils.isEmpty((CharSequence)localObject1))

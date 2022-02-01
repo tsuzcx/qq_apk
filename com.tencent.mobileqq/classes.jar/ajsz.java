@@ -1,178 +1,58 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.AlbumUtil;
-import java.io.File;
-import java.util.ArrayList;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
 import java.util.List;
 
 public class ajsz
-  extends ajqv
+  implements axji
 {
-  private boolean a;
+  public ajsz(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment, axjb paramaxjb, axjk paramaxjk, List paramList) {}
   
-  ajsz(NewPhotoListActivity paramNewPhotoListActivity)
+  public void a()
   {
-    super(paramNewPhotoListActivity);
+    this.jdField_a_of_type_Axjb.a(new ajta(this));
+    this.jdField_a_of_type_Axjb.show();
   }
   
-  protected void b()
+  public void a(axjg paramaxjg)
   {
-    NewPhotoListActivity localNewPhotoListActivity = (NewPhotoListActivity)this.mActivity;
-    if ((localNewPhotoListActivity == null) || (localNewPhotoListActivity.isFinishing())) {
-      return;
-    }
-    Intent localIntent;
-    if (this.mPhotoCommonData.albumId.equals("$RecentAlbumId"))
-    {
-      StatisticCollector.getInstance(localNewPhotoListActivity).collectPerformance(null, "sendAlbumRecent", true, 0L, 0L, null, "");
-      if (this.mPhotoCommonData.selectedPhotoList != null)
+    if ((paramaxjg != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.getActivity().isFinishing())) {
+      switch (paramaxjg.a)
       {
-        ajpv.a(localNewPhotoListActivity.getIntent(), this.mPhotoCommonData.selectedPhotoList.size());
-        ajpv.a(localNewPhotoListActivity.getIntent(), this.mPhotoCommonData.selectedPhotoList.size(), this.mPhotoCommonData.currentQualityType);
-      }
-      localIntent = new Intent();
-      if (this.mPhotoCommonData.selectedPhotoList != null) {
-        break label252;
       }
     }
-    label252:
-    for (ArrayList localArrayList = new ArrayList(0);; localArrayList = this.mPhotoCommonData.selectedPhotoList)
+    for (;;)
     {
-      localIntent.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", localArrayList);
-      localNewPhotoListActivity.setResult(-1, localIntent);
-      localNewPhotoListActivity.finish();
-      AlbumUtil.anim(localNewPhotoListActivity, false, false);
+      if (this.jdField_a_of_type_Axjb.isShowing()) {
+        this.jdField_a_of_type_Axjb.dismiss();
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.w();
+      this.jdField_a_of_type_Axjk.b();
       return;
-      if ((this.mPhotoCommonData.albumName.equalsIgnoreCase("Camera")) || (this.mPhotoCommonData.albumName.equalsIgnoreCase("camera")) || (this.mPhotoCommonData.albumName.contains("Camera")) || (this.mPhotoCommonData.albumName.contains("camera")))
-      {
-        StatisticCollector.getInstance(localNewPhotoListActivity).collectPerformance(null, "sendAlbumRecent", false, 0L, 0L, null, "");
-        break;
-      }
-      StatisticCollector.getInstance(localNewPhotoListActivity).collectPerformance(null, "sendAlbumOther", true, 0L, 0L, null, "");
-      break;
+      axjh.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.getActivity());
+      continue;
+      axjh.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.getActivity());
+      continue;
+      axjh.c(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.getActivity());
     }
   }
   
-  public void initData(Intent paramIntent)
+  public void a(axjg paramaxjg, int paramInt)
   {
-    super.initData(paramIntent);
-    Object localObject = (NewPhotoListActivity)this.mActivity;
-    if ((localObject == null) || (((NewPhotoListActivity)localObject).isFinishing())) {
-      return;
-    }
-    this.mPhotoCommonData.albumName = paramIntent.getStringExtra("ALBUM_NAME");
-    localObject = blhe.a(((NewPhotoListActivity)localObject).getApplicationContext(), this.mPhotoCommonData.myUin, "pref_select_album");
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      localObject = blhe.a((String)localObject);
-      if ((localObject != null) && (!((List)localObject).isEmpty())) {
-        this.mPhotoCommonData.albumId = ((String)((List)localObject).get(0));
-      }
-    }
-    this.jdField_a_of_type_Ajqu.isRecodeLastAlbumPath = false;
-    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("PhotoConst.ENTER_ALBUM_LIST", false);
+    this.jdField_a_of_type_Axjb.a(paramInt);
   }
   
-  public boolean needVedio()
+  public void b()
   {
-    return false;
+    if (this.jdField_a_of_type_Axjb.isShowing()) {
+      this.jdField_a_of_type_Axjb.dismiss();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.w();
+    this.jdField_a_of_type_Axjk.b();
   }
   
-  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void c()
   {
-    NewPhotoListActivity localNewPhotoListActivity = (NewPhotoListActivity)this.mActivity;
-    Intent localIntent;
-    if ((localNewPhotoListActivity != null) && (!localNewPhotoListActivity.isFinishing()) && (paramInt1 == 100010) && (paramInt2 == -1))
-    {
-      localIntent = new Intent();
-      if (this.mPhotoCommonData.selectedPhotoList != null) {
-        break label100;
-      }
-    }
-    label100:
-    for (ArrayList localArrayList = new ArrayList(0);; localArrayList = this.mPhotoCommonData.selectedPhotoList)
-    {
-      localIntent.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", localArrayList);
-      localNewPhotoListActivity.setResult(-1, localIntent);
-      localNewPhotoListActivity.finish();
-      AlbumUtil.anim(localNewPhotoListActivity, false, false);
-      super.onActivityResult(paramInt1, paramInt2, paramIntent);
-      return;
-    }
-  }
-  
-  public void onAlbumListShown(boolean paramBoolean)
-  {
-    if ((this.jdField_a_of_type_Boolean) && (!paramBoolean)) {
-      onTitleBtnCancelClick(null);
-    }
-  }
-  
-  public void onTitleBtnCancelClick(View paramView)
-  {
-    NewPhotoListActivity localNewPhotoListActivity = (NewPhotoListActivity)this.mActivity;
-    if ((localNewPhotoListActivity != null) && (!localNewPhotoListActivity.isFinishing())) {
-      localNewPhotoListActivity.setResult(-1, new Intent());
-    }
-    super.onTitleBtnCancelClick(paramView);
-  }
-  
-  public void postInitUI()
-  {
-    super.postInitUI();
-    NewPhotoListActivity localNewPhotoListActivity = (NewPhotoListActivity)this.mActivity;
-    if ((localNewPhotoListActivity == null) || (localNewPhotoListActivity.isFinishing())) {}
-    do
-    {
-      return;
-      View localView = localNewPhotoListActivity.findViewById(2131369068);
-      if (localView != null) {
-        localView.setContentDescription(localNewPhotoListActivity.getString(2131719727));
-      }
-    } while (!this.jdField_a_of_type_Boolean);
-    enterAlbumListFragment(localNewPhotoListActivity.getIntent());
-    localNewPhotoListActivity.transAlbumList(true);
-  }
-  
-  public void startPhotoPreviewActivity(Intent paramIntent)
-  {
-    NewPhotoListActivity localNewPhotoListActivity = (NewPhotoListActivity)this.mActivity;
-    if ((localNewPhotoListActivity == null) || (localNewPhotoListActivity.isFinishing())) {
-      return;
-    }
-    localNewPhotoListActivity.startActivityForResult(paramIntent, 100010);
-  }
-  
-  public void updateAddData(List<LocalMediaInfo> paramList, int paramInt)
-  {
-    int i = paramList.size();
-    ArrayList localArrayList = ((NewPhotoListActivity)this.mActivity).getIntent().getStringArrayListExtra("weiyun_filter_data");
-    if (localArrayList != null)
-    {
-      i -= 1;
-      if (i >= paramInt)
-      {
-        Object localObject = (LocalMediaInfo)paramList.get(i);
-        int j = ((LocalMediaInfo)localObject).path.lastIndexOf("/");
-        String str = ((LocalMediaInfo)localObject).path.substring(j + 1);
-        File localFile = new File(((LocalMediaInfo)localObject).path);
-        if (localFile.exists()) {}
-        for (localObject = str + localFile.length();; localObject = str + ((LocalMediaInfo)localObject).fileSize)
-        {
-          if (localArrayList.contains(localObject)) {
-            paramList.remove(i);
-          }
-          i -= 1;
-          break;
-        }
-      }
-    }
-    super.updateAddData(paramList, paramInt);
+    this.jdField_a_of_type_Axjk.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.getActivity(), this.jdField_a_of_type_JavaUtilList);
   }
 }
 

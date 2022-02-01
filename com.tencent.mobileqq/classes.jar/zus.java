@@ -1,18 +1,8 @@
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
 
-class zus
-  implements ViewTreeObserver.OnPreDrawListener
+public abstract interface zus
 {
-  zus(zur paramzur, View paramView) {}
-  
-  public boolean onPreDraw()
-  {
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnPreDrawListener(this);
-    zur.a(this.jdField_a_of_type_Zur, this.jdField_a_of_type_AndroidViewView);
-    return false;
-  }
+  public abstract void a(View paramView);
 }
 
 

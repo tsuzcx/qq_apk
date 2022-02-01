@@ -1,35 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemSelectedListener;
+import com.tencent.ark.ark.VariantWrapper;
 
-public class aprd
-  implements AdapterView.OnItemSelectedListener
+class aprd
+  implements apsj
 {
-  public aprd(IphonePickerView paramIphonePickerView) {}
+  aprd(aprb paramaprb, long paramLong) {}
   
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(long paramLong)
   {
-    IphonePickerView.a(this.a, paramView, 1);
-    IphonePickerView.a(this.a, paramView, true);
-    if ((paramView != null) && (paramView.getTag() != null))
-    {
-      int i = Integer.parseInt(paramView.getTag().toString());
-      int j = paramAdapterView.getChildCount();
-      paramInt = 0;
-      while (paramInt < j)
-      {
-        if (i != paramInt)
-        {
-          IphonePickerView.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
-          IphonePickerView.a(this.a, paramAdapterView.getChildAt(paramInt), false);
-        }
-        paramInt += 1;
-      }
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Aprb.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
     }
   }
   
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
+  public void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    apqy.a(this.jdField_a_of_type_Aprb.a, this.jdField_a_of_type_Long, paramBoolean, "Orientation", paramFloat1, paramFloat2, paramFloat3);
+  }
 }
 
 

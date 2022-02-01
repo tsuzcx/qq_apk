@@ -1,26 +1,26 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.Context;
+import android.view.OrientationEventListener;
 
-public abstract interface aysy
+class aysy
+  extends OrientationEventListener
 {
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  aysy(aysx paramaysx, Context paramContext)
+  {
+    super(paramContext);
+  }
   
-  public abstract void a(Intent paramIntent);
-  
-  public abstract void a(BaseActivity paramBaseActivity, Bundle paramBundle);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
+  public void onOrientationChanged(int paramInt)
+  {
+    if (paramInt == -1) {
+      this.a.b = 0;
+    }
+    do
+    {
+      return;
+      this.a.b = ((paramInt + 45) / 90 * 90);
+    } while (this.a.b >= 0);
+    this.a.b = 0;
+  }
 }
 
 

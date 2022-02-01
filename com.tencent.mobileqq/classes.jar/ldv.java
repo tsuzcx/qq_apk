@@ -1,40 +1,35 @@
-import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
-import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import java.util.HashMap;
 
 public class ldv
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private boolean jdField_a_of_type_Boolean;
+  HashMap<String, String> a = new HashMap();
+  HashMap<String, Long> b = new HashMap();
   
-  public ldv(VideoAppInterface paramVideoAppInterface)
+  void a(String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ldw(this);
+    QLog.w("DeviceCapabilityExamination", 1, "setDownloadFinish, md5[" + paramString + "], suc[" + paramBoolean + "], time[" + this.b.get(paramString) + "]");
+    AudioHelper.c(anvx.a(2131702650) + paramBoolean);
+    this.a.remove(paramString);
+    this.b.remove(paramString);
   }
   
-  public void a()
+  boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GAudioExitMonitor", 2, "regist QQ Process Exit Receiver1");
-    }
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("com.tencent.av.EXIT_VIDEO_PROCESS");
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter) != null) {
-      this.jdField_a_of_type_Boolean = true;
-    }
+    return this.a.isEmpty();
   }
   
-  public void b()
+  public boolean a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a.get(paramString1) != null)
     {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_Boolean = false;
+      QLog.w("DeviceCapabilityExamination", 1, "isDownloading, md5[" + paramString1 + "], time[" + this.b.get(paramString1) + "]");
+      return true;
     }
+    this.a.put(paramString1, paramString2);
+    this.b.put(paramString1, Long.valueOf(System.currentTimeMillis()));
+    return false;
   }
 }
 

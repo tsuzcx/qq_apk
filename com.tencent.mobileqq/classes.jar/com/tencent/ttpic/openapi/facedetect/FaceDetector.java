@@ -51,7 +51,7 @@ public abstract class FaceDetector
   private double angle = 0.0D;
   boolean clearFaceQueue = false;
   private int curDetectInterval = 800;
-  private FaceDetector.DETECT_STAGE detectStage = FaceDetector.DETECT_STAGE.DETECT_NO_FACE;
+  private FaceDetector.DetectStage detectStage = FaceDetector.DetectStage.DETECT_NO_FACE;
   protected List<Set<Integer>> expressions;
   protected Set<FaceDetector.FaceDetectListener> faceDetectListeners = new HashSet();
   protected List<FaceInfo> faceInfos = new ArrayList();
@@ -407,17 +407,17 @@ public abstract class FaceDetector
   public boolean needDetectFace(boolean paramBoolean1, boolean paramBoolean2)
   {
     boolean bool = true;
-    if (this.detectStage == FaceDetector.DETECT_STAGE.DETECT_NO_FACE)
+    if (this.detectStage == FaceDetector.DetectStage.DETECT_NO_FACE)
     {
       if (paramBoolean1)
       {
-        this.detectStage = FaceDetector.DETECT_STAGE.DETECT_HAS_FACE;
+        this.detectStage = FaceDetector.DetectStage.DETECT_HAS_FACE;
         this.curDetectInterval = -1;
       }
       if (paramBoolean2) {
         break label198;
       }
-      if (this.detectStage != FaceDetector.DETECT_STAGE.DETECT_HAS_FACE) {
+      if (this.detectStage != FaceDetector.DetectStage.DETECT_HAS_FACE) {
         break label174;
       }
       if (this.mTrackFrameCount <= 7) {
@@ -431,30 +431,30 @@ public abstract class FaceDetector
         this.lastFaceDetectTime = System.currentTimeMillis();
       }
       return paramBoolean1;
-      if (this.detectStage == FaceDetector.DETECT_STAGE.DETECT_HAS_FACE)
+      if (this.detectStage == FaceDetector.DetectStage.DETECT_HAS_FACE)
       {
         if (paramBoolean1) {
           break;
         }
-        this.detectStage = FaceDetector.DETECT_STAGE.DETECT_LOOKIN_FOR_FACE;
+        this.detectStage = FaceDetector.DetectStage.DETECT_LOOKIN_FOR_FACE;
         this.startLostFaceTime = System.currentTimeMillis();
         this.curDetectInterval = 100;
         this.lastFaceDetectTime = 0L;
         break;
       }
-      if (this.detectStage != FaceDetector.DETECT_STAGE.DETECT_LOOKIN_FOR_FACE) {
+      if (this.detectStage != FaceDetector.DetectStage.DETECT_LOOKIN_FOR_FACE) {
         break;
       }
       if (paramBoolean1)
       {
-        this.detectStage = FaceDetector.DETECT_STAGE.DETECT_HAS_FACE;
+        this.detectStage = FaceDetector.DetectStage.DETECT_HAS_FACE;
         this.curDetectInterval = -1;
         break;
       }
       if (System.currentTimeMillis() - this.startLostFaceTime <= 100000L) {
         break;
       }
-      this.detectStage = FaceDetector.DETECT_STAGE.DETECT_NO_FACE;
+      this.detectStage = FaceDetector.DetectStage.DETECT_NO_FACE;
       this.curDetectInterval = 800;
       break;
       label169:
@@ -614,6 +614,11 @@ public abstract class FaceDetector
         System.arraycopy(localFaceStatus.xys, 134, localFaceInfo.origFacePoints, 0, 42);
         System.arraycopy(localFaceStatus.xys, 176, localFaceInfo.origFacePoints, 176, 12);
         System.arraycopy(localFaceStatus.pointVis, 0, localFaceInfo.origPointsVis, 0, localFaceStatus.pointVis.length);
+        if (localFaceStatus.xys256 != null)
+        {
+          localFaceInfo.orig256FacePoints = new float[localFaceStatus.xys256.length];
+          System.arraycopy(localFaceStatus.xys256, 0, localFaceInfo.orig256FacePoints, 0, localFaceInfo.orig256FacePoints.length);
+        }
         localFaceInfo.points = YoutuPointsUtil.transformYTPointsToPtuPoints(localFaceStatus.xys);
         localFaceInfo.irisPoints = YoutuPointsUtil.getIrisPoints(localFaceStatus.xys);
         localFaceInfo.pointsVis = YoutuPointsUtil.transformYTPointsVisToPtuPoints(localFaceStatus.pointVis);

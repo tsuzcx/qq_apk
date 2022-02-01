@@ -1,21 +1,21 @@
 package dov.com.qq.im.capture.control;
 
-import bmrl;
+import bohd;
 
 public class QIMAsyncManager$1
   implements Runnable
 {
-  public QIMAsyncManager$1(bmrl parambmrl) {}
+  public QIMAsyncManager$1(bohd parambohd) {}
   
   public void run()
   {
     synchronized (this.this$0)
     {
-      if (bmrl.access$000(this.this$0)) {
+      if (bohd.access$000(this.this$0)) {
         return;
       }
       this.this$0.initIndeed();
-      bmrl.access$002(this.this$0, true);
+      bohd.access$002(this.this$0, true);
       return;
     }
   }

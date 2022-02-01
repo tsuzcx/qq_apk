@@ -1,64 +1,59 @@
-import android.content.ContentValues;
-import android.database.Cursor;
-import com.tencent.mobileqq.data.RoamSetting;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.NoColumnError;
-import com.tencent.mobileqq.persistence.NoColumnErrorHandler;
-import com.tencent.mobileqq.persistence.OGAbstractDao;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.3.1;
+import com.tencent.mobileqq.nearby.now.view.widget.LikeAniView;
 
 public class aybp
-  extends OGAbstractDao
+  implements GestureDetector.OnDoubleTapListener
 {
-  public aybp()
-  {
-    this.columnLen = 2;
-  }
+  aybp(ayat paramayat) {}
   
-  public Entity cursor2Entity(Entity paramEntity, Cursor paramCursor, boolean paramBoolean, NoColumnErrorHandler paramNoColumnErrorHandler)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    paramEntity = (RoamSetting)paramEntity;
-    if (paramNoColumnErrorHandler == null)
+    if (System.currentTimeMillis() - ayat.a(this.a) >= 500L)
     {
-      paramEntity.path = paramCursor.getString(paramCursor.getColumnIndex("path"));
-      paramEntity.value = paramCursor.getString(paramCursor.getColumnIndex("value"));
-      return paramEntity;
-    }
-    int i = paramCursor.getColumnIndex("path");
-    if (i == -1) {
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("path", String.class));
+      int i = (int)paramMotionEvent.getRawX();
+      int j = (int)paramMotionEvent.getRawY();
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData != null) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a != 6)) {
+        ((LikeAniView)this.a.jdField_a_of_type_AndroidViewView.findViewById(2131370084)).a(i, j);
+      }
+      if (!ayat.a(this.a)) {
+        break label98;
+      }
     }
     for (;;)
     {
-      i = paramCursor.getColumnIndex("value");
-      if (i != -1) {
-        break;
+      ayat.a(this.a, System.currentTimeMillis());
+      return true;
+      label98:
+      if ((!ayat.b(this.a)) && (this.a.jdField_a_of_type_AndroidViewView.findViewById(2131370084).getVisibility() == 0))
+      {
+        ayat.a(this.a, false);
+        this.a.c(null);
+        new axxu().h("video").i("playpage_double_click").b().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        ThreadManagerV2.excute(new PlayOperationViewModel.3.1(this, (axny)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NEARBY_CARD_MANAGER)), 16, null, false);
       }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("value", String.class));
-      return paramEntity;
-      paramEntity.path = paramCursor.getString(i);
     }
-    paramEntity.value = paramCursor.getString(i);
-    return paramEntity;
   }
   
-  public void entity2ContentValues(Entity paramEntity, ContentValues paramContentValues)
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
   {
-    paramEntity = (RoamSetting)paramEntity;
-    paramContentValues.put("path", paramEntity.path);
-    paramContentValues.put("value", paramEntity.value);
+    return false;
   }
   
-  public String getCreateTableSql(String paramString)
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,path TEXT UNIQUE ,value TEXT)");
-    return localStringBuilder.toString();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aybp
  * JD-Core Version:    0.7.0.1
  */

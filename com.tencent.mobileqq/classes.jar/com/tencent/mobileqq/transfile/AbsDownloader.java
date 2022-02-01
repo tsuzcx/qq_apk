@@ -334,7 +334,7 @@ public abstract class AbsDownloader
     //   53: invokevirtual 279	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   56: invokevirtual 27	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   59: invokevirtual 38	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   62: invokestatic 285	ayde:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
+    //   62: invokestatic 285	azjq:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
     //   65: aload_2
     //   66: ifnull +14 -> 80
     //   69: aload_2
@@ -425,7 +425,7 @@ public abstract class AbsDownloader
     //   245: invokevirtual 279	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   248: invokevirtual 27	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   251: invokevirtual 38	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   254: invokestatic 285	ayde:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
+    //   254: invokestatic 285	azjq:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
     //   257: aload 11
     //   259: getfield 319	com/tencent/mobileqq/transfile/DiskCache$Editor:dirtyFile	Ljava/io/File;
     //   262: invokevirtual 345	java/io/File:delete	()Z
@@ -506,7 +506,7 @@ public abstract class AbsDownloader
     //   416: aload 7
     //   418: invokevirtual 27	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   421: invokevirtual 38	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   424: invokestatic 373	ayde:b	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
+    //   424: invokestatic 373	azjq:b	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
     //   427: aload_1
     //   428: invokevirtual 374	java/lang/Exception:printStackTrace	()V
     //   431: aload_1

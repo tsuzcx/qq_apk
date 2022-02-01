@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.emoticonview;
 
-import amtj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
@@ -8,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import anvx;
 import com.tencent.mobileqq.text.EmotcationConstants;
 
 class EmoticonPanelViewBinder$DefaultEmoticonAdapter
@@ -25,7 +25,7 @@ class EmoticonPanelViewBinder$DefaultEmoticonAdapter
   
   public void bindView(int paramInt, RelativeLayout paramRelativeLayout, ViewGroup paramViewGroup)
   {
-    ImageView localImageView = (ImageView)paramRelativeLayout.findViewById(2131365977);
+    ImageView localImageView = (ImageView)paramRelativeLayout.findViewById(2131366078);
     localImageView.setVisibility(0);
     localImageView.setTag(Boolean.valueOf(false));
     EmoticonInfo localEmoticonInfo = getItem(paramInt);
@@ -91,8 +91,8 @@ class EmoticonPanelViewBinder$DefaultEmoticonAdapter
       }
     } while (!"delete".equals(localEmoticonInfo.action));
     label256:
-    localImageView.setImageResource(2130839600);
-    paramRelativeLayout.setContentDescription(amtj.a(2131703193));
+    localImageView.setImageResource(2130839621);
+    paramRelativeLayout.setContentDescription(anvx.a(2131703544));
     return;
     localImageView.setImageDrawable(null);
     localImageView.setVisibility(4);
@@ -100,7 +100,7 @@ class EmoticonPanelViewBinder$DefaultEmoticonAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelViewBinder.DefaultEmoticonAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,68 +1,23 @@
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer.GestureRelativeLayout;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class aswy
-  implements GestureDetector.OnGestureListener
+class aswy
+  implements Animation.AnimationListener
 {
-  private aswy(SimpleFileViewer.GestureRelativeLayout paramGestureRelativeLayout) {}
+  aswy(asww paramasww) {}
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return false;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if (Math.abs(paramFloat2) > Math.abs(paramFloat1))
-    {
-      paramMotionEvent1 = this.a.a.b();
-      if (paramFloat2 <= 0.0F) {
-        break label97;
-      }
-      if (paramMotionEvent1 != null) {
-        paramMotionEvent1.setVisibility(8);
-      }
-      if (this.a.a.jdField_a_of_type_Athk != null) {
-        this.a.a.jdField_a_of_type_Athk.b(true);
-      }
-      if (this.a.a.jdField_a_of_type_Athi != null) {
-        this.a.a.jdField_a_of_type_Athi.b(true);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(Face2FaceAddFriendActivity.a, 2, "startFriendDisappearAnimation disappear ( disappearCount: " + this.a.h + ", disappearSize: " + this.a.i + " )");
     }
-    label97:
-    do
-    {
-      do
-      {
-        return false;
-      } while (paramFloat2 >= 0.0F);
-      if (paramMotionEvent1 != null) {
-        paramMotionEvent1.setVisibility(0);
-      }
-      if (this.a.a.jdField_a_of_type_Athk != null) {
-        this.a.a.jdField_a_of_type_Athk.a(true);
-      }
-    } while (this.a.a.jdField_a_of_type_Athi == null);
-    this.a.a.jdField_a_of_type_Athi.a(true);
-    return false;
   }
   
-  public void onShowPress(MotionEvent paramMotionEvent) {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,15 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.widget.ImageView;
+import com.tencent.tavcut.timeline.TimelineView.SpeedChangeCallback;
+import dov.com.qq.im.aeeditor.module.clip.video.AEEditorMvClipMenu;
 
 public class bnws
-  implements DialogInterface.OnClickListener
+  implements TimelineView.SpeedChangeCallback
 {
-  public bnws(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public bnws(AEEditorMvClipMenu paramAEEditorMvClipMenu, float paramFloat, TimelineView.SpeedChangeCallback paramSpeedChangeCallback) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onChangeFailed(int paramInt)
   {
-    ShortVideoPlayActivity.b(this.a);
+    this.jdField_a_of_type_ComTencentTavcutTimelineTimelineView$SpeedChangeCallback.onChangeFailed(paramInt);
+  }
+  
+  public void onChangeSucc(float paramFloat)
+  {
+    ImageView localImageView = AEEditorMvClipMenu.a(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu);
+    Resources localResources = this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu.getContext().getResources();
+    if (this.jdField_a_of_type_Float == 1.0F) {}
+    for (int i = 2130837906;; i = 2130837907)
+    {
+      localImageView.setImageDrawable(localResources.getDrawable(i));
+      this.jdField_a_of_type_ComTencentTavcutTimelineTimelineView$SpeedChangeCallback.onChangeSucc(paramFloat);
+      return;
+    }
   }
 }
 

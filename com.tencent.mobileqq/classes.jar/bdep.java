@@ -1,12 +1,6 @@
-final class bdep
-  implements bdfc
+public abstract interface bdep
 {
-  bdep(bdef parambdef) {}
-  
-  public void a(bdfd parambdfd1, bdfd parambdfd2, bdfd parambdfd3)
-  {
-    bdej.a(parambdfd1, parambdfd2, parambdfd3, this.a);
-  }
+  public abstract void a();
 }
 
 

@@ -1,35 +1,32 @@
-import android.app.Activity;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
 class ajim
-  implements AdapterView.OnItemClickListener
+  implements bkzq
 {
-  ajim(ajif paramajif) {}
+  ajim(ajik paramajik, boolean paramBoolean, Friends paramFriends, bkzi parambkzi) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, position = " + paramInt);
+    if (!NetworkUtil.isNetworkAvailable(ajik.a(this.jdField_a_of_type_Ajik))) {
+      QQToast.a(ajik.a(this.jdField_a_of_type_Ajik), 1, 2131692125, 0).a();
     }
-    if ((this.a.jdField_a_of_type_Ajbe.getCount() <= 0) || (paramInt <= 0)) {}
-    do
+    for (;;)
     {
+      this.jdField_a_of_type_Bkzi.e();
       return;
-      paramAdapterView = (ajhk)this.a.jdField_a_of_type_Ajbe.getItem(paramInt - 1);
-    } while (paramAdapterView == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, mRecordCount = " + this.a.jdField_a_of_type_Int + ",needSearchInCloud:" + this.a.b);
+      paramView = (FriendListHandler)ajik.a(this.jdField_a_of_type_Ajik).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
+      if (this.jdField_a_of_type_Boolean) {
+        paramView.setSpecialCareSwitch(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { false });
+      } else {
+        paramView.setSpecialCareSwitch(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { true });
+      }
     }
-    paramView = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin;
-    ChatHistoryBubbleListForTroopFragment.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, paramView, paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq, -1, 2);
-    this.a.a(true);
   }
 }
 

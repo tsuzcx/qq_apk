@@ -1,12 +1,18 @@
 package com.tencent.hippy.qq.app;
 
 import com.tencent.hippy.qq.module.tkd.TKDAccountModule;
+import com.tencent.hippy.qq.module.tkd.TKDAladdinConfigModule;
 import com.tencent.hippy.qq.module.tkd.TKDAlertModule;
+import com.tencent.hippy.qq.module.tkd.TKDBiuModule;
+import com.tencent.hippy.qq.module.tkd.TKDCommentBizModule;
+import com.tencent.hippy.qq.module.tkd.TKDDataReportModule;
 import com.tencent.hippy.qq.module.tkd.TKDDebugModule;
 import com.tencent.hippy.qq.module.tkd.TKDDeviceModule;
 import com.tencent.hippy.qq.module.tkd.TKDNativeProxyModule;
 import com.tencent.hippy.qq.module.tkd.TKDSearchStatModule;
+import com.tencent.hippy.qq.module.tkd.TKDSsoModule;
 import com.tencent.hippy.qq.module.tkd.TKDToastModule;
+import com.tencent.hippy.qq.module.tkd.TKDWindowModule;
 import com.tencent.hippy.qq.module.tkd.TKDWupModule;
 import com.tencent.hippy.qq.view.tkd.doublescrollview.HippyTKDDoubleScrollViewController;
 import com.tencent.hippy.qq.view.tkd.image.HippyTKDGifImageViewController;
@@ -50,6 +56,8 @@ public class TKDApiProvider
   {
     HashMap localHashMap = new HashMap();
     Object localObject = new ArrayList();
+    ((List)localObject).add(new TKDApiProvider.NativeModule(TKDAladdinConfigModule.class, new TKDAladdinConfigModule(paramHippyEngineContext)));
+    ((List)localObject).add(new TKDApiProvider.NativeModule(TKDDataReportModule.class, new TKDDataReportModule(paramHippyEngineContext)));
     ((List)localObject).add(new TKDApiProvider.NativeModule(TKDToastModule.class, new TKDToastModule(paramHippyEngineContext)));
     ((List)localObject).add(new TKDApiProvider.NativeModule(TKDNativeProxyModule.class, new TKDNativeProxyModule(paramHippyEngineContext)));
     ((List)localObject).add(new TKDApiProvider.NativeModule(TKDDeviceModule.class, new TKDDeviceModule(paramHippyEngineContext)));
@@ -58,6 +66,10 @@ public class TKDApiProvider
     ((List)localObject).add(new TKDApiProvider.NativeModule(TKDAccountModule.class, new TKDAccountModule(paramHippyEngineContext)));
     ((List)localObject).add(new TKDApiProvider.NativeModule(TKDAlertModule.class, new TKDAlertModule(paramHippyEngineContext)));
     ((List)localObject).add(new TKDApiProvider.NativeModule(TKDDebugModule.class, new TKDDebugModule(paramHippyEngineContext)));
+    ((List)localObject).add(new TKDApiProvider.NativeModule(TKDSsoModule.class, new TKDSsoModule(paramHippyEngineContext)));
+    ((List)localObject).add(new TKDApiProvider.NativeModule(TKDWindowModule.class, new TKDWindowModule(paramHippyEngineContext)));
+    ((List)localObject).add(new TKDApiProvider.NativeModule(TKDCommentBizModule.class, new TKDCommentBizModule(paramHippyEngineContext)));
+    ((List)localObject).add(new TKDApiProvider.NativeModule(TKDBiuModule.class, new TKDBiuModule(paramHippyEngineContext)));
     paramHippyEngineContext = ((List)localObject).iterator();
     while (paramHippyEngineContext.hasNext())
     {

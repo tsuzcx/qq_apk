@@ -1,186 +1,157 @@
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build.VERSION;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.HotSearchItem;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.app.AppRuntime;
-import tencent.im.oidb.cmd0xda2.content_vidurl_svr.GetVid2UrlsReq;
-import tencent.im.oidb.cmd0xda2.content_vidurl_svr.GetVid2UrlsRsp;
-import tencent.im.oidb.cmd0xda2.content_vidurl_svr.UrlInfo;
-import tencent.im.oidb.cmd0xda2.oidb_cmd0xda2.ReqBody;
-import tencent.im.oidb.cmd0xda2.oidb_cmd0xda2.RspBody;
+import org.json.JSONObject;
 
 public class prm
-  extends pwd
-  implements prk
 {
-  private static prm jdField_a_of_type_Prm = new prm();
-  private final String jdField_a_of_type_JavaLangString = "gifvideo.KandianShortContentGifStrategy";
-  private ConcurrentHashMap<Integer, Object> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  
-  public prm()
+  public static int a()
   {
-    super(null, null, null, qli.a(), null);
-  }
-  
-  private Object a(Integer paramInteger)
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramInteger);
-  }
-  
-  public static prm a()
-  {
-    return jdField_a_of_type_Prm;
-  }
-  
-  private void a(Integer paramInteger, Object paramObject)
-  {
-    if (paramObject == null) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramInteger, paramObject);
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    Object localObject1 = new oidb_cmd0xda2.RspBody();
-    Object localObject2 = (Boolean)paramToServiceMsg.getAttribute("compressFlag");
-    if (localObject2 != null) {}
-    for (boolean bool = ((Boolean)localObject2).booleanValue();; bool = false)
+    int i3 = 0;
+    boolean bool = false;
+    int i1 = 1024;
+    int n = 100;
+    int m = 2;
+    int i = m;
+    int k = n;
+    int j = i1;
+    if (!TextUtils.isEmpty(usu.g))
     {
-      QLog.d("gifvideo.KandianShortContentGifStrategy", 1, new Object[] { "convertVidToUrl resp result code ", Integer.valueOf(paq.a(paramToServiceMsg, paramFromServiceMsg, paramObject, (MessageMicro)localObject1, bool)) });
-      if ((((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp != null) && (((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp.ret_code.has()))
-      {
-        int i = ((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp.ret_code.get();
-        QLog.d("gifvideo.KandianShortContentGifStrategy", 1, "ret code is " + i);
-        if ((((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp == null) || (!((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp.ret_msg.has())) {
-          break label449;
-        }
-        paramFromServiceMsg = ((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp.ret_msg.get();
-        QLog.d("gifvideo.KandianShortContentGifStrategy", 1, "ret msg is " + paramFromServiceMsg);
-        label183:
-        if ((((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp == null) || (!((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp.urls.has())) {
-          break label555;
-        }
-        paramObject = (ArrayList)((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp.urls.get();
-        localObject1 = new StringBuilder().append("urls result: ");
-        if (paramObject == null) {
-          break label460;
-        }
-      }
-      label449:
-      label460:
-      for (paramFromServiceMsg = paramObject.toString();; paramFromServiceMsg = "null")
-      {
-        QLog.d("gifvideo.KandianShortContentGifStrategy", 1, paramFromServiceMsg);
-        if ((paramObject == null) || (paramObject.size() <= 0)) {
-          break label545;
-        }
-        paramFromServiceMsg = new ArrayList();
-        localObject1 = new ArrayList();
-        paramObject = paramObject.iterator();
-        while (paramObject.hasNext())
-        {
-          localObject2 = (content_vidurl_svr.UrlInfo)paramObject.next();
-          if (localObject2 != null)
-          {
-            paramFromServiceMsg.add(((content_vidurl_svr.UrlInfo)localObject2).url.get());
-            ((List)localObject1).add(((content_vidurl_svr.UrlInfo)localObject2).vid.get());
-            QLog.d("gifvideo.KandianShortContentGifStrategy", 2, "update vid: " + ((content_vidurl_svr.UrlInfo)localObject2).vid.get() + " url: " + ((content_vidurl_svr.UrlInfo)localObject2).url.get());
-            sjt localsjt = new sjt();
-            localsjt.b = ((content_vidurl_svr.UrlInfo)localObject2).vid.get();
-            localsjt.jdField_a_of_type_JavaLangString = ((content_vidurl_svr.UrlInfo)localObject2).url.get();
-            sjo.a(localsjt);
-          }
-        }
-        QLog.d("gifvideo.KandianShortContentGifStrategy", 1, "no ret code");
-        break;
-        QLog.d("gifvideo.KandianShortContentGifStrategy", 1, "no ret msg");
-        break label183;
-      }
-      paramToServiceMsg = (prl)a(Integer.valueOf(((Integer)paramToServiceMsg.getAttribute("vidToUrlSeq")).intValue()));
-      if (paramToServiceMsg != null)
-      {
-        QLog.d("gifvideo.KandianShortContentGifStrategy", 2, "has callback");
-        paramToServiceMsg.a((String[])((List)localObject1).toArray(new String[((List)localObject1).size()]), (String[])paramFromServiceMsg.toArray(new String[paramFromServiceMsg.size()]));
-        label545:
-        return;
-      }
-      QLog.d("gifvideo.KandianShortContentGifStrategy", 2, " call back is null");
-      return;
-      label555:
-      QLog.d("gifvideo.KandianShortContentGifStrategy", 1, "no urls");
-      return;
+      i = m;
+      k = n;
+      j = i1;
+      i3 = bool;
     }
-  }
-  
-  public void a(String paramString, prl paramprl)
-  {
-    a(new String[] { paramString }, paramprl);
-  }
-  
-  public void a(String[] paramArrayOfString, prl paramprl)
-  {
-    if ((paramArrayOfString != null) && (paramArrayOfString.length > 0))
+    long l2;
+    for (;;)
     {
-      content_vidurl_svr.GetVid2UrlsReq localGetVid2UrlsReq = new content_vidurl_svr.GetVid2UrlsReq();
-      Object localObject = DeviceInfoUtil.getQQVersion();
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localGetVid2UrlsReq.app_version.set((String)localObject);
-      }
-      localGetVid2UrlsReq.appid.set("143193");
-      localGetVid2UrlsReq.app_name.set("");
-      localObject = pri.a(BaseApplicationImpl.getContext());
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localGetVid2UrlsReq.client_ip.set((String)localObject);
-      }
-      localObject = pay.i();
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localGetVid2UrlsReq.imei.set((String)localObject);
-      }
-      localGetVid2UrlsReq.net_type.set(bhov.a(null));
-      localGetVid2UrlsReq.system.set(1);
-      localGetVid2UrlsReq.timestamp.set(System.currentTimeMillis() / 1000L + "");
-      if (pay.a() != null) {}
-      for (localObject = pay.a().getAccount();; localObject = "")
+      try
       {
-        if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          localGetVid2UrlsReq.uid.set((String)localObject);
+        JSONObject localJSONObject = new JSONObject(usu.g);
+        i = m;
+        k = n;
+        j = i1;
+        i3 = bool;
+        bool = localJSONObject.optBoolean("useNewLogic", false);
+        i = m;
+        k = n;
+        j = i1;
+        i3 = bool;
+        i1 = localJSONObject.optInt("minTotalMem", 1024);
+        i = m;
+        k = n;
+        j = i1;
+        i3 = bool;
+        n = localJSONObject.optInt("minAvailableMem", 100);
+        i = m;
+        k = n;
+        j = i1;
+        i3 = bool;
+        m = localJSONObject.optInt("minCpuNum", 2);
+        i = m;
+        k = n;
+        j = i1;
+        i3 = bool;
+        int i2 = localJSONObject.optInt("minCpuFreq", 1000);
+        i3 = bool;
+        j = i1;
+        k = n;
+        i = m;
+        m = i2;
+        if (i3 == 0) {
+          break label284;
         }
-        int j = paramArrayOfString.length;
-        i = 0;
-        while (i < j)
-        {
-          localObject = paramArrayOfString[i];
-          localGetVid2UrlsReq.vids.add(localObject);
-          i += 1;
+        long l1 = DeviceInfoUtil.getSystemTotalMemory();
+        l2 = DeviceInfoUtil.getSystemAvaialbeMemory();
+        n = DeviceInfoUtil.getCpuNumber();
+        long l3 = DeviceInfoUtil.getCpuFrequency();
+        if ((l1 >>> 20 < j) || (n < i) || (l3 < m)) {
+          break;
         }
+        return 1;
       }
-      localObject = MD5.toMD5(localGetVid2UrlsReq.appid.get() + "|" + localGetVid2UrlsReq.timestamp.get() + "|" + localGetVid2UrlsReq.uid.get() + "|" + localGetVid2UrlsReq.system.get() + "|" + localGetVid2UrlsReq.app_name.get() + "|" + localGetVid2UrlsReq.app_version.get() + "|" + "MTQzMTkzYWRhZmdkaGg=");
-      localGetVid2UrlsReq.sign.set((String)localObject);
-      localObject = new oidb_cmd0xda2.ReqBody();
-      ((oidb_cmd0xda2.ReqBody)localObject).msg_get_vid_to_url_req.set(localGetVid2UrlsReq);
-      ((oidb_cmd0xda2.ReqBody)localObject).uint32_req_type.set(1);
-      localObject = qlk.a("OidbSvc.0xda2", 3490, 0, ((oidb_cmd0xda2.ReqBody)localObject).toByteArray());
-      QLog.d("gifvideo.KandianShortContentGifStrategy", 2, "request vids " + paramArrayOfString);
-      int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
-      ((ToServiceMsg)localObject).addAttribute("vidToUrlSeq", Integer.valueOf(i));
-      a(Integer.valueOf(i), paramprl);
-      a((ToServiceMsg)localObject);
+      catch (Exception localException)
+      {
+        QLog.e("RIJWebSearchUtils", 2, localException.getMessage());
+      }
+      m = 1000;
     }
+    if (l2 >>> 20 >= k) {
+      return 2;
+    }
+    if (Build.VERSION.SDK_INT >= 19) {
+      return 1;
+    }
+    return 0;
+    label284:
+    if (Build.VERSION.SDK_INT >= 19) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public static Intent a(Activity paramActivity, ArticleInfo paramArticleInfo, int paramInt, boolean paramBoolean)
+  {
+    Intent localIntent = new Intent();
+    localIntent.setClass(paramActivity, SplashActivity.class);
+    localIntent.setFlags(67108864);
+    localIntent.putExtra("tab_index", MainFragment.b);
+    localIntent.putExtra("fragment_id", 1);
+    localIntent.putExtra("banner_activityName", FastWebActivity.class.getName());
+    localIntent.putExtra("banner_webViewUrl", paramArticleInfo.mArticleContentUrl);
+    localIntent.putExtra("banner_wording", String.format(anvx.a(2131712585), new Object[] { paramArticleInfo.mTitle }));
+    paramActivity = paramArticleInfo.mArticleContentUrl;
+    if (!TextUtils.isEmpty(paramActivity))
+    {
+      paramActivity = Uri.parse(paramActivity);
+      if (paramActivity.isHierarchical()) {
+        localIntent.putExtra("banner_businessCategory", "WebView_" + paramActivity.getHost());
+      }
+    }
+    paramActivity = new Bundle();
+    paramActivity.putParcelable("fast_web_article_info", paramArticleInfo);
+    paramActivity.putInt("fast_web_banner_from_channel_id", (int)paramArticleInfo.mChannelID);
+    paramActivity.putBoolean("fast_web_from_article_recommend", paramBoolean);
+    localIntent.putExtra("banner_webview_extra", paramActivity);
+    return localIntent;
+  }
+  
+  public static void a(Activity paramActivity)
+  {
+    a(paramActivity, null);
+  }
+  
+  public static void a(Activity paramActivity, HotWordSearchEntryDataModel.HotSearchItem paramHotSearchItem)
+  {
+    UniteSearchActivity.a(paramActivity, "", 25, 0L, paramHotSearchItem, 0);
+    olh.a(null, "CliOper", "", "", "0X80067D3", "0X80067D3", 0, 0, "", "", "", pqf.a(), false);
+  }
+  
+  public static boolean a()
+  {
+    boolean bool = false;
+    if (!TextUtils.isEmpty(usu.g)) {}
+    try
+    {
+      bool = new JSONObject(usu.g).optBoolean("useNewLogic", false);
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("RIJWebSearchUtils", 2, localException.getMessage());
+    }
+    return false;
   }
 }
 

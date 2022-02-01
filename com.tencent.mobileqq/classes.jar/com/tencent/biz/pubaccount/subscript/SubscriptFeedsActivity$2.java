@@ -1,6 +1,7 @@
 package com.tencent.biz.pubaccount.subscript;
 
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
 
@@ -11,7 +12,7 @@ class SubscriptFeedsActivity$2
   
   public void run()
   {
-    WebProcessManager localWebProcessManager = (WebProcessManager)this.this$0.app.getManager(13);
+    WebProcessManager localWebProcessManager = (WebProcessManager)this.this$0.app.getManager(QQManagerFactory.WEBPROCESS_MANAGER);
     if (localWebProcessManager != null) {
       localWebProcessManager.a(1);
     }
@@ -22,7 +23,7 @@ class SubscriptFeedsActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.2
  * JD-Core Version:    0.7.0.1
  */

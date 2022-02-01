@@ -1,15 +1,6 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.MessageMicro;
-
 public abstract interface vtb
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(MessageMicro paramMessageMicro);
-  
-  public abstract void a(boolean paramBoolean, Bundle paramBundle);
+  public abstract void a(vta paramvta);
 }
 
 

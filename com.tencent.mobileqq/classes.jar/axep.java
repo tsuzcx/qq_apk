@@ -1,14 +1,8 @@
-class axep
-  implements axff
+import android.content.Intent;
+
+public abstract interface axep
 {
-  axep(axen paramaxen, String paramString) {}
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    if (paramBoolean) {
-      this.jdField_a_of_type_Axen.b(this.jdField_a_of_type_JavaLangString, paramInt);
-    }
-  }
+  public abstract void a(Intent paramIntent);
 }
 
 

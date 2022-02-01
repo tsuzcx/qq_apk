@@ -1,6 +1,7 @@
 package com.tencent.hippy.qq.app;
 
 import com.tencent.mtt.hippy.HippyEngine.EngineListener;
+import java.util.HashMap;
 
 class HippyQQEngine$4
   implements HippyEngine.EngineListener
@@ -9,6 +10,7 @@ class HippyQQEngine$4
   
   public void onInitialized(int paramInt, String paramString)
   {
+    this.this$0.mMapLoadStepsTime.put("initEngineEnd", Long.valueOf(System.currentTimeMillis()));
     this.this$0.onInitEngineComplete(paramInt, paramString);
   }
 }

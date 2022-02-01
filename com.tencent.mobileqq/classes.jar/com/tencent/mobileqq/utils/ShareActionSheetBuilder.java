@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.utils;
 
-import amvi;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.DialogInterface.OnCancelListener;
@@ -24,8 +23,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bjnw;
-import bjon;
+import anxv;
+import bkzi;
+import bkzz;
 import com.tencent.biz.widgets.ElasticHorScrView;
 import com.tencent.mobileqq.widget.share.ShareActionSheet;
 import com.tencent.mobileqq.widget.share.ShareActionSheet.IShareActionSheetV2BottomBar;
@@ -36,7 +36,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import zjv;
+import zza;
 
 public class ShareActionSheetBuilder
   implements ShareActionSheet
@@ -55,7 +55,7 @@ public class ShareActionSheetBuilder
   protected List<ShareActionSheetBuilder.ActionSheetItem>[] mActionSheetItems;
   public LinearLayout mActionSheetLin;
   protected ShareActionSheetBuilder.AdViewManager mAdViewManager;
-  public bjnw mDialog;
+  public bkzi mDialog;
   private boolean mEnableNotTriggerVirtualNavigationBar;
   public int mGridView1Length;
   protected int mGridView2Length;
@@ -94,12 +94,12 @@ public class ShareActionSheetBuilder
     this.mOutAct = paramContext;
     if (paramBoolean)
     {
-      this.mDialog = ((bjnw)bjon.b(this.mOutAct, null));
+      this.mDialog = ((bkzi)bkzz.b(this.mOutAct, null));
       paramContext = this.mOutAct.getResources();
-      this.itemImageSize = paramContext.getDimensionPixelSize(2131296795);
+      this.itemImageSize = paramContext.getDimensionPixelSize(2131296796);
       this.itemTextWidth = this.itemImageSize;
-      this.itemTextMargin = paramContext.getDimensionPixelOffset(2131296797);
-      this.textSpacingExtra = paramContext.getDimensionPixelOffset(2131296798);
+      this.itemTextMargin = paramContext.getDimensionPixelOffset(2131296798);
+      this.textSpacingExtra = paramContext.getDimensionPixelOffset(2131296799);
       this.mAdViewManager = new ShareActionSheetBuilder.AdViewManager();
       paramInt = paramContext.getDisplayMetrics().widthPixels;
       int i = paramContext.getDisplayMetrics().heightPixels;
@@ -115,7 +115,7 @@ public class ShareActionSheetBuilder
       setIconMarginLeftRight(paramInt);
       setRowMarginLeftRight((int)(paramInt * 6 / 5.5F));
       return;
-      this.mDialog = ((bjnw)bjon.a(this.mOutAct, null));
+      this.mDialog = ((bkzi)bkzz.a(this.mOutAct, null));
       break;
     }
   }
@@ -144,7 +144,7 @@ public class ShareActionSheetBuilder
       {
         return paramString;
         i = findMaxCharCntPerLine(paramTextPaint, paramString, paramFloat);
-        if (!amvi.a()) {
+        if (!anxv.a()) {
           break;
         }
         paramInt = Math.min(paramInt, i);
@@ -245,7 +245,7 @@ public class ShareActionSheetBuilder
   
   private void handleScrollViewTwo(View paramView, List<ShareActionSheetBuilder.ActionSheetItem> paramList, StaticLayout paramStaticLayout, int paramInt)
   {
-    this.grid_row_view2 = ((GridView)paramView.findViewById(2131367716));
+    this.grid_row_view2 = ((GridView)paramView.findViewById(2131367852));
     this.grid_row_view2.setSmoothScrollbarEnabled(false);
     handleScrollView(this.grid_row_view2, paramList, paramStaticLayout, paramInt);
     this.mGridView2Length = this.grid_row_view2.getLayoutParams().width;
@@ -260,9 +260,9 @@ public class ShareActionSheetBuilder
   protected View createViewFlipper()
   {
     View localView = View.inflate(this.mOutAct, getActionSheetLayoutId(), null);
-    this.mAdViewManager.setAdContainer((RelativeLayout)localView.findViewById(2131362216));
-    this.mActionSheetLin = ((LinearLayout)localView.findViewById(2131361976));
-    this.mTitleTv = ((TextView)localView.findViewById(2131361974));
+    this.mAdViewManager.setAdContainer((RelativeLayout)localView.findViewById(2131362221));
+    this.mActionSheetLin = ((LinearLayout)localView.findViewById(2131361978));
+    this.mTitleTv = ((TextView)localView.findViewById(2131361976));
     Object localObject2;
     Object localObject1;
     if (this.showTitle)
@@ -271,8 +271,8 @@ public class ShareActionSheetBuilder
       if (this.dialogTitle != null) {
         this.mTitleTv.setText(this.dialogTitle);
       }
-      this.mScrollView1 = ((ElasticHorScrView)localView.findViewById(2131376872));
-      this.mScrollView2 = ((ElasticHorScrView)localView.findViewById(2131376873));
+      this.mScrollView1 = ((ElasticHorScrView)localView.findViewById(2131377144));
+      this.mScrollView2 = ((ElasticHorScrView)localView.findViewById(2131377145));
       localObject2 = getActionSheetItems();
       if (localObject2.length <= 0) {
         break label439;
@@ -299,21 +299,21 @@ public class ShareActionSheetBuilder
       for (int j = 0;; j = 1)
       {
         Object localObject4 = new TextPaint();
-        ((TextPaint)localObject4).setTextSize(this.mOutAct.getResources().getDimensionPixelSize(2131299004));
+        ((TextPaint)localObject4).setTextSize(this.mOutAct.getResources().getDimensionPixelSize(2131299008));
         Object localObject3 = new StaticLayout(breakLabel2((TextPaint)localObject4, this.itemTextWidth, getLongestLabel((List)localObject1), 5), (TextPaint)localObject4, this.itemTextWidth, Layout.Alignment.ALIGN_CENTER, 1.0F, this.textSpacingExtra, true);
         localObject4 = new StaticLayout(breakLabel2((TextPaint)localObject4, this.itemTextWidth, getLongestLabel((List)localObject2), 5), (TextPaint)localObject4, this.itemTextWidth, Layout.Alignment.ALIGN_CENTER, 1.0F, this.textSpacingExtra, true);
         if (((StaticLayout)localObject3).getHeight() >= ((StaticLayout)localObject4).getHeight()) {}
         for (;;)
         {
-          int k = this.mOutAct.getResources().getDimensionPixelOffset(2131296794);
+          int k = this.mOutAct.getResources().getDimensionPixelOffset(2131296795);
           if (i != 0) {
             handleScrollViewOne(localView, (List)localObject1, (StaticLayout)localObject3, k);
           }
           if (j != 0) {
             handleScrollViewTwo(localView, (List)localObject2, (StaticLayout)localObject3, k);
           }
-          this.cancel = ((TextView)localView.findViewById(2131361966));
-          this.cancel.setText(2131692570);
+          this.cancel = ((TextView)localView.findViewById(2131361968));
+          this.cancel.setText(2131692672);
           this.cancel.setOnClickListener(new ShareActionSheetBuilder.1(this));
           if (i == 0) {
             this.mScrollView1.setVisibility(8);
@@ -376,7 +376,7 @@ public class ShareActionSheetBuilder
     return null;
   }
   
-  public bjnw getActionSheet()
+  public bkzi getActionSheet()
   {
     if (this.mProxy != null) {
       return this.mProxy.getActionSheet();
@@ -394,7 +394,7 @@ public class ShareActionSheetBuilder
   
   protected int getActionSheetLayoutId()
   {
-    return 2131558944;
+    return 2131558971;
   }
   
   public int getActionSheetPanelViewHeight()
@@ -457,7 +457,7 @@ public class ShareActionSheetBuilder
   
   protected void handleScrollViewOne(View paramView, List<ShareActionSheetBuilder.ActionSheetItem> paramList, StaticLayout paramStaticLayout, int paramInt)
   {
-    this.grid_row_view1 = ((GridView)paramView.findViewById(2131367715));
+    this.grid_row_view1 = ((GridView)paramView.findViewById(2131367851));
     handleScrollView(this.grid_row_view1, paramList, paramStaticLayout, paramInt);
     this.mGridView1Length = this.grid_row_view1.getLayoutParams().width;
   }
@@ -740,13 +740,13 @@ public class ShareActionSheetBuilder
           if (!isShowing())
           {
             if (this.mEnableNotTriggerVirtualNavigationBar) {
-              zjv.b(getWindow());
+              zza.b(getWindow());
             }
             this.mDialog.show();
             if (this.mEnableNotTriggerVirtualNavigationBar)
             {
-              zjv.a(getWindow());
-              zjv.c(getWindow());
+              zza.a(getWindow());
+              zza.c(getWindow());
               return;
             }
           }

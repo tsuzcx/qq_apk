@@ -1,25 +1,17 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.MsgBoxInterFollowManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.gdtad.api.motivebrowsing.GdtMotiveBrowsingFragment;
+import kotlin.Metadata;
 
-public class accy
-  implements abzb
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"}, k=3, mv={1, 1, 16})
+public final class accy
+  implements DialogInterface.OnClickListener
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0xd7");
-    }
-    ((MsgBoxInterFollowManager)paramQQAppInterface.getManager(202)).decode0xd7InteractAndFollowMsg(paramMsgType0x210.vProtobuf);
-  }
+  public accy(GdtMotiveBrowsingFragment paramGdtMotiveBrowsingFragment) {}
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    a(paramabxc.a(), paramMsgType0x210);
-    return null;
+    GdtMotiveBrowsingFragment.a(this.a);
   }
 }
 

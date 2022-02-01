@@ -1,6 +1,17 @@
-public abstract interface bnvi
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+
+public class bnvi
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(float paramFloat1, float paramFloat2);
+  public bnvi(AEEditorAILoadingView paramAEEditorAILoadingView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    AEEditorAILoadingView.c(this.a).setAlpha(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+  }
 }
 
 

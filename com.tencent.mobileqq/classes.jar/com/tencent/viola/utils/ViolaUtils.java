@@ -849,6 +849,28 @@ public class ViolaUtils
     return 0.0D;
   }
   
+  public static float getFaceSize(Object paramObject, float paramFloat)
+  {
+    if (paramObject == null) {
+      return paramFloat;
+    }
+    String str2 = paramObject.toString().trim();
+    String str1 = str2;
+    try
+    {
+      if (str2.endsWith("dp")) {
+        str1 = str2.substring(0, str2.indexOf("dp"));
+      }
+      float f = Float.parseFloat(str1);
+      return f;
+    }
+    catch (Exception localException)
+    {
+      ViolaLogUtils.e("ViolaUtils", "Argument error! value is " + paramObject);
+    }
+    return paramFloat;
+  }
+  
   public static String getFileWithExtensionFromUrl(String paramString)
   {
     if (!TextUtils.isEmpty(paramString))
@@ -1430,28 +1452,28 @@ public class ViolaUtils
     //   0: aconst_null
     //   1: astore 7
     //   3: aload_0
-    //   4: invokevirtual 788	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   4: invokevirtual 789	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   7: astore_0
     //   8: aload_0
     //   9: aload_1
-    //   10: invokevirtual 794	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   10: invokevirtual 795	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   13: astore_0
-    //   14: new 796	java/io/InputStreamReader
+    //   14: new 797	java/io/InputStreamReader
     //   17: dup
     //   18: aload_0
-    //   19: invokespecial 799	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   19: invokespecial 800	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
     //   22: astore_3
-    //   23: new 801	java/io/BufferedInputStream
+    //   23: new 802	java/io/BufferedInputStream
     //   26: dup
     //   27: aload_0
-    //   28: invokespecial 802	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   28: invokespecial 803	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   31: astore 6
     //   33: aload_3
     //   34: astore 5
     //   36: aload 6
     //   38: astore 4
     //   40: aload_0
-    //   41: invokevirtual 807	java/io/InputStream:available	()I
+    //   41: invokevirtual 808	java/io/InputStream:available	()I
     //   44: istore_2
     //   45: iload_2
     //   46: sipush 12288
@@ -1470,7 +1492,7 @@ public class ViolaUtils
     //   72: new 97	java/lang/StringBuilder
     //   75: dup
     //   76: sipush 12288
-    //   79: invokespecial 810	java/lang/StringBuilder:<init>	(I)V
+    //   79: invokespecial 811	java/lang/StringBuilder:<init>	(I)V
     //   82: astore 8
     //   84: aload_3
     //   85: astore 5
@@ -1478,7 +1500,7 @@ public class ViolaUtils
     //   89: astore 4
     //   91: aload_3
     //   92: aload_0
-    //   93: invokevirtual 814	java/io/InputStreamReader:read	([C)I
+    //   93: invokevirtual 815	java/io/InputStreamReader:read	([C)I
     //   96: istore_2
     //   97: iconst_m1
     //   98: iload_2
@@ -1491,7 +1513,7 @@ public class ViolaUtils
     //   111: aload_0
     //   112: iconst_0
     //   113: iload_2
-    //   114: invokevirtual 817	java/lang/StringBuilder:append	([CII)Ljava/lang/StringBuilder;
+    //   114: invokevirtual 818	java/lang/StringBuilder:append	([CII)Ljava/lang/StringBuilder;
     //   117: pop
     //   118: goto -34 -> 84
     //   121: astore 4
@@ -1508,11 +1530,11 @@ public class ViolaUtils
     //   140: new 97	java/lang/StringBuilder
     //   143: dup
     //   144: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   147: ldc_w 819
+    //   147: ldc_w 820
     //   150: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   153: aload_1
     //   154: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   157: ldc_w 821
+    //   157: ldc_w 822
     //   160: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   163: aload 6
     //   165: invokevirtual 107	java/lang/Exception:getMessage	()Ljava/lang/String;
@@ -1522,13 +1544,13 @@ public class ViolaUtils
     //   177: aload_0
     //   178: ifnull +7 -> 185
     //   181: aload_0
-    //   182: invokevirtual 822	java/io/BufferedInputStream:close	()V
+    //   182: invokevirtual 823	java/io/BufferedInputStream:close	()V
     //   185: aload 7
     //   187: astore 4
     //   189: aload_3
     //   190: ifnull +11 -> 201
     //   193: aload_3
-    //   194: invokevirtual 823	java/io/InputStreamReader:close	()V
+    //   194: invokevirtual 824	java/io/InputStreamReader:close	()V
     //   197: aload 7
     //   199: astore 4
     //   201: aload 4
@@ -1543,13 +1565,13 @@ public class ViolaUtils
     //   217: aload 6
     //   219: ifnull +8 -> 227
     //   222: aload 6
-    //   224: invokevirtual 822	java/io/BufferedInputStream:close	()V
+    //   224: invokevirtual 823	java/io/BufferedInputStream:close	()V
     //   227: aload_0
     //   228: astore 4
     //   230: aload_3
     //   231: ifnull -30 -> 201
     //   234: aload_3
-    //   235: invokevirtual 823	java/io/InputStreamReader:close	()V
+    //   235: invokevirtual 824	java/io/InputStreamReader:close	()V
     //   238: aload_0
     //   239: areturn
     //   240: astore_3
@@ -1558,11 +1580,11 @@ public class ViolaUtils
     //   245: new 97	java/lang/StringBuilder
     //   248: dup
     //   249: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   252: ldc_w 825
+    //   252: ldc_w 826
     //   255: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   258: aload_1
     //   259: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   262: ldc_w 821
+    //   262: ldc_w 822
     //   265: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   268: aload_3
     //   269: invokevirtual 107	java/lang/Exception:getMessage	()Ljava/lang/String;
@@ -1588,8 +1610,8 @@ public class ViolaUtils
     //   306: iconst_0
     //   307: aload_3
     //   308: aload_0
-    //   309: invokevirtual 814	java/io/InputStreamReader:read	([C)I
-    //   312: invokespecial 828	java/lang/String:<init>	([CII)V
+    //   309: invokevirtual 815	java/io/InputStreamReader:read	([C)I
+    //   312: invokespecial 829	java/lang/String:<init>	([CII)V
     //   315: astore_0
     //   316: goto -99 -> 217
     //   319: astore 4
@@ -1598,11 +1620,11 @@ public class ViolaUtils
     //   325: new 97	java/lang/StringBuilder
     //   328: dup
     //   329: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   332: ldc_w 825
+    //   332: ldc_w 826
     //   335: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   338: aload_1
     //   339: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   342: ldc_w 821
+    //   342: ldc_w 822
     //   345: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   348: aload 4
     //   350: invokevirtual 107	java/lang/Exception:getMessage	()Ljava/lang/String;
@@ -1616,11 +1638,11 @@ public class ViolaUtils
     //   370: new 97	java/lang/StringBuilder
     //   373: dup
     //   374: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   377: ldc_w 825
+    //   377: ldc_w 826
     //   380: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   383: aload_1
     //   384: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   387: ldc_w 821
+    //   387: ldc_w 822
     //   390: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   393: aload_0
     //   394: invokevirtual 107	java/lang/Exception:getMessage	()Ljava/lang/String;
@@ -1634,11 +1656,11 @@ public class ViolaUtils
     //   414: new 97	java/lang/StringBuilder
     //   417: dup
     //   418: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   421: ldc_w 825
+    //   421: ldc_w 826
     //   424: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   427: aload_1
     //   428: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   431: ldc_w 821
+    //   431: ldc_w 822
     //   434: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   437: aload_0
     //   438: invokevirtual 107	java/lang/Exception:getMessage	()Ljava/lang/String;
@@ -1655,11 +1677,11 @@ public class ViolaUtils
     //   458: aload 4
     //   460: ifnull +8 -> 468
     //   463: aload 4
-    //   465: invokevirtual 822	java/io/BufferedInputStream:close	()V
+    //   465: invokevirtual 823	java/io/BufferedInputStream:close	()V
     //   468: aload_3
     //   469: ifnull +7 -> 476
     //   472: aload_3
-    //   473: invokevirtual 823	java/io/InputStreamReader:close	()V
+    //   473: invokevirtual 824	java/io/InputStreamReader:close	()V
     //   476: aload_0
     //   477: athrow
     //   478: astore 4
@@ -1668,11 +1690,11 @@ public class ViolaUtils
     //   484: new 97	java/lang/StringBuilder
     //   487: dup
     //   488: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   491: ldc_w 825
+    //   491: ldc_w 826
     //   494: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   497: aload_1
     //   498: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   501: ldc_w 821
+    //   501: ldc_w 822
     //   504: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   507: aload 4
     //   509: invokevirtual 107	java/lang/Exception:getMessage	()Ljava/lang/String;
@@ -1686,11 +1708,11 @@ public class ViolaUtils
     //   529: new 97	java/lang/StringBuilder
     //   532: dup
     //   533: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   536: ldc_w 825
+    //   536: ldc_w 826
     //   539: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   542: aload_1
     //   543: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   546: ldc_w 821
+    //   546: ldc_w 822
     //   549: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   552: aload_3
     //   553: invokevirtual 107	java/lang/Exception:getMessage	()Ljava/lang/String;
@@ -1785,50 +1807,50 @@ public class ViolaUtils
     //   4: astore 9
     //   6: aload_0
     //   7: ifnonnull +19 -> 26
-    //   10: ldc_w 838
-    //   13: ldc_w 840
+    //   10: ldc_w 839
+    //   13: ldc_w 841
     //   16: invokestatic 236	com/tencent/viola/utils/ViolaLogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   19: aload 9
     //   21: astore 5
     //   23: aload 5
     //   25: areturn
     //   26: aload_0
-    //   27: invokevirtual 845	java/io/File:exists	()Z
+    //   27: invokevirtual 846	java/io/File:exists	()Z
     //   30: ifeq +10 -> 40
     //   33: aload_0
-    //   34: invokevirtual 848	java/io/File:canRead	()Z
+    //   34: invokevirtual 849	java/io/File:canRead	()Z
     //   37: ifne +47 -> 84
-    //   40: ldc_w 838
+    //   40: ldc_w 839
     //   43: new 97	java/lang/StringBuilder
     //   46: dup
     //   47: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   50: ldc_w 850
+    //   50: ldc_w 851
     //   53: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   56: aload_0
-    //   57: invokevirtual 845	java/io/File:exists	()Z
-    //   60: invokevirtual 853	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   63: ldc_w 855
+    //   57: invokevirtual 846	java/io/File:exists	()Z
+    //   60: invokevirtual 854	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   63: ldc_w 856
     //   66: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   69: aload_0
-    //   70: invokevirtual 848	java/io/File:canRead	()Z
-    //   73: invokevirtual 853	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   70: invokevirtual 849	java/io/File:canRead	()Z
+    //   73: invokevirtual 854	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   76: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   79: invokestatic 236	com/tencent/viola/utils/ViolaLogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   82: aconst_null
     //   83: areturn
-    //   84: new 801	java/io/BufferedInputStream
+    //   84: new 802	java/io/BufferedInputStream
     //   87: dup
-    //   88: new 857	java/io/FileInputStream
+    //   88: new 858	java/io/FileInputStream
     //   91: dup
     //   92: aload_0
-    //   93: invokespecial 860	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   96: invokespecial 802	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   93: invokespecial 861	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   96: invokespecial 803	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   99: astore 5
-    //   101: new 796	java/io/InputStreamReader
+    //   101: new 797	java/io/InputStreamReader
     //   104: dup
     //   105: aload 5
-    //   107: ldc_w 862
-    //   110: invokespecial 865	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
+    //   107: ldc_w 863
+    //   110: invokespecial 866	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
     //   113: astore 8
     //   115: aload 8
     //   117: astore 7
@@ -1837,7 +1859,7 @@ public class ViolaUtils
     //   123: iload_1
     //   124: istore_3
     //   125: aload_0
-    //   126: invokevirtual 867	java/io/File:length	()J
+    //   126: invokevirtual 868	java/io/File:length	()J
     //   129: l2i
     //   130: istore 4
     //   132: iload 4
@@ -1883,7 +1905,7 @@ public class ViolaUtils
     //   204: iload_2
     //   205: sipush 1024
     //   208: imul
-    //   209: invokespecial 810	java/lang/StringBuilder:<init>	(I)V
+    //   209: invokespecial 811	java/lang/StringBuilder:<init>	(I)V
     //   212: astore 12
     //   214: aload 8
     //   216: astore 7
@@ -1893,7 +1915,7 @@ public class ViolaUtils
     //   223: istore_3
     //   224: aload 8
     //   226: aload 11
-    //   228: invokevirtual 814	java/io/InputStreamReader:read	([C)I
+    //   228: invokevirtual 815	java/io/InputStreamReader:read	([C)I
     //   231: istore_1
     //   232: iconst_m1
     //   233: iload_1
@@ -1908,7 +1930,7 @@ public class ViolaUtils
     //   249: aload 11
     //   251: iconst_0
     //   252: iload_1
-    //   253: invokevirtual 817	java/lang/StringBuilder:append	([CII)Ljava/lang/StringBuilder;
+    //   253: invokevirtual 818	java/lang/StringBuilder:append	([CII)Ljava/lang/StringBuilder;
     //   256: pop
     //   257: goto -43 -> 214
     //   260: astore 6
@@ -1920,27 +1942,27 @@ public class ViolaUtils
     //   270: astore 7
     //   272: aload 5
     //   274: astore 6
-    //   276: ldc_w 838
+    //   276: ldc_w 839
     //   279: new 97	java/lang/StringBuilder
     //   282: dup
     //   283: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   286: ldc_w 869
+    //   286: ldc_w 870
     //   289: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   292: aload 8
-    //   294: invokevirtual 870	java/lang/Exception:toString	()Ljava/lang/String;
+    //   294: invokevirtual 871	java/lang/Exception:toString	()Ljava/lang/String;
     //   297: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   300: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   303: invokestatic 236	com/tencent/viola/utils/ViolaLogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   306: aload 5
     //   308: ifnull +8 -> 316
     //   311: aload 5
-    //   313: invokevirtual 822	java/io/BufferedInputStream:close	()V
+    //   313: invokevirtual 823	java/io/BufferedInputStream:close	()V
     //   316: aload 9
     //   318: astore 5
     //   320: aload_0
     //   321: ifnull -298 -> 23
     //   324: aload_0
-    //   325: invokevirtual 823	java/io/InputStreamReader:close	()V
+    //   325: invokevirtual 824	java/io/InputStreamReader:close	()V
     //   328: aconst_null
     //   329: areturn
     //   330: astore_0
@@ -1968,13 +1990,13 @@ public class ViolaUtils
     //   367: aload 5
     //   369: ifnull +8 -> 377
     //   372: aload 5
-    //   374: invokevirtual 822	java/io/BufferedInputStream:close	()V
+    //   374: invokevirtual 823	java/io/BufferedInputStream:close	()V
     //   377: aload_0
     //   378: astore 5
     //   380: aload 8
     //   382: ifnull -359 -> 23
     //   385: aload 8
-    //   387: invokevirtual 823	java/io/InputStreamReader:close	()V
+    //   387: invokevirtual 824	java/io/InputStreamReader:close	()V
     //   390: aload_0
     //   391: areturn
     //   392: astore 5
@@ -2001,8 +2023,8 @@ public class ViolaUtils
     //   428: iconst_0
     //   429: aload 8
     //   431: aload 11
-    //   433: invokevirtual 814	java/io/InputStreamReader:read	([C)I
-    //   436: invokespecial 828	java/lang/String:<init>	([CII)V
+    //   433: invokevirtual 815	java/io/InputStreamReader:read	([C)I
+    //   436: invokespecial 829	java/lang/String:<init>	([CII)V
     //   439: astore 11
     //   441: aload 11
     //   443: astore_0
@@ -2016,14 +2038,14 @@ public class ViolaUtils
     //   457: astore 7
     //   459: aload 5
     //   461: astore 6
-    //   463: ldc_w 838
+    //   463: ldc_w 839
     //   466: new 97	java/lang/StringBuilder
     //   469: dup
     //   470: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   473: ldc_w 872
+    //   473: ldc_w 873
     //   476: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   479: aload_0
-    //   480: invokevirtual 875	java/io/File:getName	()Ljava/lang/String;
+    //   480: invokevirtual 876	java/io/File:getName	()Ljava/lang/String;
     //   483: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   486: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   489: invokestatic 441	com/tencent/viola/utils/ViolaLogUtils:d	(Ljava/lang/String;Ljava/lang/String;)V
@@ -2038,20 +2060,20 @@ public class ViolaUtils
     //   507: astore 6
     //   509: aload_0
     //   510: bipush 6
-    //   512: invokestatic 834	com/tencent/viola/utils/ViolaUtils:readFileToStringEx	(Ljava/io/File;I)Ljava/lang/String;
+    //   512: invokestatic 835	com/tencent/viola/utils/ViolaUtils:readFileToStringEx	(Ljava/io/File;I)Ljava/lang/String;
     //   515: astore_0
     //   516: aload_0
     //   517: astore 6
     //   519: aload 5
     //   521: ifnull +8 -> 529
     //   524: aload 5
-    //   526: invokevirtual 822	java/io/BufferedInputStream:close	()V
+    //   526: invokevirtual 823	java/io/BufferedInputStream:close	()V
     //   529: aload 6
     //   531: astore 5
     //   533: aload 8
     //   535: ifnull -512 -> 23
     //   538: aload 8
-    //   540: invokevirtual 823	java/io/InputStreamReader:close	()V
+    //   540: invokevirtual 824	java/io/InputStreamReader:close	()V
     //   543: aload 6
     //   545: areturn
     //   546: astore_0
@@ -2065,11 +2087,11 @@ public class ViolaUtils
     //   557: aload 5
     //   559: ifnull +8 -> 567
     //   562: aload 5
-    //   564: invokevirtual 822	java/io/BufferedInputStream:close	()V
+    //   564: invokevirtual 823	java/io/BufferedInputStream:close	()V
     //   567: aload 7
     //   569: ifnull +8 -> 577
     //   572: aload 7
-    //   574: invokevirtual 823	java/io/InputStreamReader:close	()V
+    //   574: invokevirtual 824	java/io/InputStreamReader:close	()V
     //   577: aload_0
     //   578: athrow
     //   579: astore 5
@@ -2404,10 +2426,10 @@ public class ViolaUtils
     // Byte code:
     //   0: iconst_0
     //   1: istore_2
-    //   2: new 842	java/io/File
+    //   2: new 843	java/io/File
     //   5: dup
     //   6: aload_1
-    //   7: invokespecial 954	java/io/File:<init>	(Ljava/lang/String;)V
+    //   7: invokespecial 955	java/io/File:<init>	(Ljava/lang/String;)V
     //   10: astore 7
     //   12: aconst_null
     //   13: astore 5
@@ -2416,20 +2438,20 @@ public class ViolaUtils
     //   18: aload 5
     //   20: astore 4
     //   22: aload 7
-    //   24: invokevirtual 845	java/io/File:exists	()Z
+    //   24: invokevirtual 846	java/io/File:exists	()Z
     //   27: ifne +74 -> 101
     //   30: aload 5
     //   32: astore 4
     //   34: aload 7
-    //   36: invokevirtual 957	java/io/File:createNewFile	()Z
+    //   36: invokevirtual 958	java/io/File:createNewFile	()Z
     //   39: istore_3
     //   40: iload_3
     //   41: ifne +60 -> 101
     //   44: iconst_0
     //   45: ifeq +11 -> 56
-    //   48: new 959	java/lang/NullPointerException
+    //   48: new 960	java/lang/NullPointerException
     //   51: dup
-    //   52: invokespecial 960	java/lang/NullPointerException:<init>	()V
+    //   52: invokespecial 961	java/lang/NullPointerException:<init>	()V
     //   55: athrow
     //   56: iload_2
     //   57: ireturn
@@ -2439,14 +2461,14 @@ public class ViolaUtils
     //   63: new 97	java/lang/StringBuilder
     //   66: dup
     //   67: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   70: ldc_w 962
+    //   70: ldc_w 963
     //   73: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   76: aload_1
     //   77: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   80: ldc_w 821
+    //   80: ldc_w 822
     //   83: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   86: aload_0
-    //   87: invokevirtual 963	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   87: invokevirtual 964	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   90: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   93: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   96: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
@@ -2454,23 +2476,23 @@ public class ViolaUtils
     //   100: ireturn
     //   101: aload 5
     //   103: astore 4
-    //   105: new 965	java/io/FileOutputStream
+    //   105: new 966	java/io/FileOutputStream
     //   108: dup
     //   109: aload 7
-    //   111: invokespecial 966	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   111: invokespecial 967	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   114: astore 5
     //   116: aload 5
     //   118: aload_0
-    //   119: invokevirtual 968	java/lang/String:getBytes	()[B
-    //   122: invokevirtual 972	java/io/FileOutputStream:write	([B)V
+    //   119: invokevirtual 969	java/lang/String:getBytes	()[B
+    //   122: invokevirtual 973	java/io/FileOutputStream:write	([B)V
     //   125: aload 5
-    //   127: invokevirtual 973	java/io/FileOutputStream:flush	()V
+    //   127: invokevirtual 974	java/io/FileOutputStream:flush	()V
     //   130: iconst_1
     //   131: istore_2
     //   132: aload 5
     //   134: ifnull -78 -> 56
     //   137: aload 5
-    //   139: invokevirtual 974	java/io/FileOutputStream:close	()V
+    //   139: invokevirtual 975	java/io/FileOutputStream:close	()V
     //   142: iconst_1
     //   143: ireturn
     //   144: astore_0
@@ -2479,14 +2501,14 @@ public class ViolaUtils
     //   149: new 97	java/lang/StringBuilder
     //   152: dup
     //   153: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   156: ldc_w 962
+    //   156: ldc_w 963
     //   159: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   162: aload_1
     //   163: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   166: ldc_w 821
+    //   166: ldc_w 822
     //   169: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   172: aload_0
-    //   173: invokevirtual 963	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   173: invokevirtual 964	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   176: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   179: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   182: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
@@ -2502,21 +2524,21 @@ public class ViolaUtils
     //   199: new 97	java/lang/StringBuilder
     //   202: dup
     //   203: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   206: ldc_w 976
+    //   206: ldc_w 977
     //   209: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   212: aload_1
     //   213: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   216: ldc_w 821
+    //   216: ldc_w 822
     //   219: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   222: aload 5
-    //   224: invokevirtual 963	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   224: invokevirtual 964	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   227: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   230: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   233: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
     //   236: aload_0
     //   237: ifnull -181 -> 56
     //   240: aload_0
-    //   241: invokevirtual 974	java/io/FileOutputStream:close	()V
+    //   241: invokevirtual 975	java/io/FileOutputStream:close	()V
     //   244: iconst_0
     //   245: ireturn
     //   246: astore_0
@@ -2525,14 +2547,14 @@ public class ViolaUtils
     //   251: new 97	java/lang/StringBuilder
     //   254: dup
     //   255: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   258: ldc_w 962
+    //   258: ldc_w 963
     //   261: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   264: aload_1
     //   265: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   268: ldc_w 821
+    //   268: ldc_w 822
     //   271: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   274: aload_0
-    //   275: invokevirtual 963	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   275: invokevirtual 964	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   278: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   281: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   284: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
@@ -2542,7 +2564,7 @@ public class ViolaUtils
     //   290: aload 4
     //   292: ifnull +8 -> 300
     //   295: aload 4
-    //   297: invokevirtual 974	java/io/FileOutputStream:close	()V
+    //   297: invokevirtual 975	java/io/FileOutputStream:close	()V
     //   300: aload_0
     //   301: athrow
     //   302: astore 4
@@ -2551,14 +2573,14 @@ public class ViolaUtils
     //   308: new 97	java/lang/StringBuilder
     //   311: dup
     //   312: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   315: ldc_w 962
+    //   315: ldc_w 963
     //   318: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   321: aload_1
     //   322: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   325: ldc_w 821
+    //   325: ldc_w 822
     //   328: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   331: aload 4
-    //   333: invokevirtual 963	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   333: invokevirtual 964	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   336: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   339: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   342: invokestatic 114	com/tencent/viola/utils/ViolaUtils:log	(Ljava/lang/String;ILjava/lang/String;)V
@@ -2607,7 +2629,7 @@ public class ViolaUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.viola.utils.ViolaUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -1,75 +1,79 @@
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.home.MainFragment;
-import com.tencent.qphone.base.util.BaseApplication;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.multicard.RecommendPerson;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/notification/modularize/BaseJumpScheme;", "", "()V", "customJumpIntent", "Landroid/app/PendingIntent;", "pushComponent", "Lcom/tencent/mobileqq/notification/modularize/PushComponent;", "fallbackJumpIntent", "jumpActionIntent", "jumpIntent", "jumpMsgTabIntent", "needCustomJump", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract class axhx
+public class axhx
 {
-  private final PendingIntent e(axib paramaxib)
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, RecommendPerson paramRecommendPerson)
   {
-    BaseApplication localBaseApplication = BaseApplication.context;
-    Intent localIntent = new Intent((Context)localBaseApplication, SplashActivity.class);
-    localIntent.putExtra("tab_index", MainFragment.b);
-    localIntent.putExtra("fragment_id", 1);
-    localIntent.setFlags(335544320);
-    paramaxib = PendingIntent.getActivity((Context)localBaseApplication, paramaxib.jdField_d_of_type_Int, localIntent, 134217728);
-    Intrinsics.checkExpressionValueIsNotNull(paramaxib, "jumpPendingIntent");
-    return paramaxib;
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramRecommendPerson);
+    a("grp_card_add", paramInt2, paramQQAppInterface, paramRecommendPerson.cardTypeID, paramRecommendPerson.uin, paramInt1, localArrayList);
   }
   
-  @NotNull
-  protected abstract PendingIntent a(@NotNull axib paramaxib);
-  
-  protected boolean a()
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, List<RecommendPerson> paramList)
   {
-    return false;
+    a("grp_card_exp", 0, paramQQAppInterface, paramInt1, "", paramInt2, paramList);
   }
   
-  @NotNull
-  public final PendingIntent b(@NotNull axib paramaxib)
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, RecommendPerson paramRecommendPerson)
   {
-    Intrinsics.checkParameterIsNotNull(paramaxib, "pushComponent");
-    if (a()) {
-      return a(paramaxib);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramRecommendPerson);
+    a("grp_card_clk", 0, paramQQAppInterface, paramRecommendPerson.cardTypeID, paramRecommendPerson.uin, paramInt, localArrayList);
+  }
+  
+  private static void a(String paramString1, int paramInt1, QQAppInterface paramQQAppInterface, int paramInt2, String paramString2, int paramInt3, List<RecommendPerson> paramList)
+  {
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    StringBuilder localStringBuilder3 = new StringBuilder();
+    StringBuilder localStringBuilder4 = new StringBuilder();
+    JSONObject localJSONObject = new JSONObject();
+    int i = 0;
+    if (i < paramList.size())
+    {
+      if (paramList.get(i) == null) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        if (i > 0)
+        {
+          localStringBuilder1.append(",");
+          localStringBuilder2.append(",");
+          localStringBuilder3.append(",");
+          localStringBuilder4.append(",");
+        }
+        localStringBuilder1.append(((RecommendPerson)paramList.get(i)).uin);
+        localStringBuilder2.append(((RecommendPerson)paramList.get(i)).recommendReason);
+        localStringBuilder3.append(((RecommendPerson)paramList.get(i)).recommendALghrithm);
+        localStringBuilder4.append(((RecommendPerson)paramList.get(i)).recommendRecall);
+      }
     }
-    return c(paramaxib);
-  }
-  
-  @NotNull
-  public final PendingIntent c(@NotNull axib paramaxib)
-  {
-    Intrinsics.checkParameterIsNotNull(paramaxib, "pushComponent");
-    if (Intrinsics.areEqual(paramaxib.jdField_d_of_type_JavaLangString, "")) {
-      return e(paramaxib);
+    try
+    {
+      if ("grp_card_exp".equals(paramString1)) {
+        localJSONObject.put("exp_uin", localStringBuilder1.toString());
+      }
+      localJSONObject.put("exp_reason", localStringBuilder2.toString());
+      localJSONObject.put("algh_id", localStringBuilder3.toString());
+      localJSONObject.put("recall_id", localStringBuilder4.toString());
     }
-    BaseApplication localBaseApplication = BaseApplication.context;
-    Intent localIntent = new Intent((Context)localBaseApplication, QQBrowserActivity.class);
-    localIntent.putExtra("url", paramaxib.jdField_d_of_type_JavaLangString);
-    localIntent.addFlags(268435456);
-    axic.a(localIntent, paramaxib);
-    localIntent.putExtra("param_notifyid", paramaxib.jdField_d_of_type_Int);
-    paramaxib = PendingIntent.getActivity((Context)localBaseApplication, paramaxib.jdField_d_of_type_Int, localIntent, 134217728);
-    Intrinsics.checkExpressionValueIsNotNull(paramaxib, "jumpPendingIntent");
-    return paramaxib;
-  }
-  
-  @NotNull
-  public final PendingIntent d(@NotNull axib paramaxib)
-  {
-    Intrinsics.checkParameterIsNotNull(paramaxib, "pushComponent");
-    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(paramaxib.jdField_d_of_type_JavaLangString));
-    localIntent.setFlags(268435456);
-    paramaxib = PendingIntent.getActivity((Context)BaseApplication.context, paramaxib.jdField_d_of_type_Int, localIntent, 134217728);
-    Intrinsics.checkExpressionValueIsNotNull(paramaxib, "PendingIntent.getActivit…tent.FLAG_UPDATE_CURRENT)");
-    return paramaxib;
+    catch (JSONException paramList)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopMemberRecommend.Report", 2, "reportRecommend error: " + paramList.getMessage());
+        }
+      }
+    }
+    bdla.b(paramQQAppInterface, "dc00898", "", paramString2, "frd_recom", paramString1, paramInt2, paramInt1, String.valueOf(paramInt3), "", localJSONObject.toString(), "");
   }
 }
 

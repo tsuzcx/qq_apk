@@ -1,25 +1,66 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import mqq.manager.Manager;
 
-final class bboo
-  implements bbos
+public class bboo
+  implements Manager
 {
-  bboo(BusinessObserver paramBusinessObserver) {}
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private HashMap<Long, bbot> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public void a(int paramInt, String paramString)
+  public bboo(QQAppInterface paramQQAppInterface)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("dataErrorMsg", paramString);
-    localBundle.putInt("dataErrorCode", paramInt);
-    this.a.onReceive(0, false, localBundle);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public void a(String paramString)
+  public static bboo a(QQAppInterface paramQQAppInterface)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putByteArray("data", paramString.getBytes());
-    localBundle.putString("cmd", "getTmpkey");
-    this.a.onReceive(0, true, localBundle);
+    return (bboo)paramQQAppInterface.getManager(QQManagerFactory.LIGHT_VIDEO_MANAGER);
+  }
+  
+  public bbot a(long paramLong, int paramInt)
+  {
+    try
+    {
+      bbot localbbot2 = (bbot)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+      bbot localbbot1 = localbbot2;
+      if (localbbot2 == null)
+      {
+        localbbot1 = new bbot(paramLong);
+        localbbot1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        localbbot1.jdField_a_of_type_Int = paramInt;
+        this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), localbbot1);
+      }
+      return localbbot1;
+    }
+    finally {}
+  }
+  
+  public void a(bbot parambbot)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(parambbot.jdField_a_of_type_Long));
+      return;
+    }
+    finally {}
+  }
+  
+  public void onDestroy()
+  {
+    try
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      while (localIterator.hasNext()) {
+        ((bbot)localIterator.next()).b();
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+    }
+    finally {}
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   }
 }
 

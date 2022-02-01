@@ -175,7 +175,7 @@ final class ai
     //   376: astore 4
     //   378: getstatic 74	com/tencent/mobileqq/msf/core/ab:ad	Lorg/json/JSONObject;
     //   381: invokevirtual 148	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   384: astore 7
+    //   384: astore 8
     //   386: aload 5
     //   388: astore 4
     //   390: getstatic 151	com/tencent/mobileqq/msf/core/ab:aj	Z
@@ -448,19 +448,19 @@ final class ai
     //   1041: aload 5
     //   1043: astore 4
     //   1045: invokestatic 279	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1048: aload 7
+    //   1048: aload 8
     //   1050: ldc_w 281
     //   1053: invokestatic 287	com/tencent/mobileqq/msf/sdk/utils/SignUtils:signData	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   1056: astore 8
+    //   1056: astore 7
     //   1058: aload 5
     //   1060: astore 4
     //   1062: getstatic 290	com/tencent/mobileqq/msf/core/ab:af	Ljava/lang/String;
-    //   1065: aload 8
+    //   1065: aload 7
     //   1067: invokestatic 294	com/tencent/mobileqq/msf/sdk/utils/SignUtils:writeFile	(Ljava/lang/String;Ljava/lang/String;)V
     //   1070: aload 5
     //   1072: astore 4
     //   1074: getstatic 156	com/tencent/mobileqq/msf/core/ab:ac	Ljava/lang/String;
-    //   1077: aload 7
+    //   1077: aload 8
     //   1079: invokestatic 294	com/tencent/mobileqq/msf/sdk/utils/SignUtils:writeFile	(Ljava/lang/String;Ljava/lang/String;)V
     //   1082: goto -206 -> 876
     //   1085: astore 4
@@ -544,8 +544,8 @@ final class ai
     //   4	1102	6	localObject7	Object
     //   1128	7	6	localObject8	Object
     //   1217	1	6	localException4	java.lang.Exception
-    //   30	1048	7	localObject9	Object
-    //   825	241	8	localObject10	Object
+    //   30	1036	7	localObject9	Object
+    //   384	694	8	localObject10	Object
     // Exception table:
     //   from	to	target	type
     //   430	436	812	java/lang/Exception

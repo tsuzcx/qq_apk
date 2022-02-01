@@ -1,51 +1,43 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.annotation.TargetApi;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.data.RecommendCommonMessage.ArkMsgAppInfo;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class apwi
-  implements apts<String>
+class apwi
+  implements ArkViewImplement.LoadCallback
 {
-  public boolean a = true;
-  public boolean b = true;
+  apwi(apwh paramapwh, apzf paramapzf, apzb paramapzb, int paramInt, agnw paramagnw) {}
   
-  public void a(String paramString)
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    try
+    onLoadState(paramInt1);
+  }
+  
+  @TargetApi(14)
+  public void onLoadState(int paramInt)
+  {
+    if (paramInt == 1)
     {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      paramString = new JSONObject(paramString);
-      if (paramString.optInt("ark_app_manage_panel_disable", 1) != 0)
-      {
-        bool = true;
-        this.a = bool;
-        aoth.a = this.a;
-        if (paramString.optInt("ark_download_by_yyb_disable", 1) == 0) {
-          break label115;
-        }
-      }
-      label115:
-      for (boolean bool = true;; bool = false)
-      {
-        this.b = bool;
-        aoth.f = this.b;
-        QLog.i("ArkMsgAIDisableConfig", 1, "onParse " + ", ark_app_manage_panel_disable=" + this.a + ", ark_download_by_yyb_disable =" + this.b);
-        return;
-        bool = false;
-        break;
-      }
-      return;
+      this.jdField_a_of_type_Apzf.a.setVisibility(0);
+      apwh.a(this.jdField_a_of_type_Apwh, this.jdField_a_of_type_Apzb, this.jdField_a_of_type_Apzf);
+      this.jdField_a_of_type_Apzf.b.setVisibility(0);
+      this.jdField_a_of_type_Apzb.a(this.jdField_a_of_type_Apzf, this.jdField_a_of_type_Apwh);
     }
-    catch (JSONException paramString)
+    for (;;)
     {
-      QLog.e("ArkMsgAIDisableConfig", 1, "handleArkMsgAIDisableConfig parse config_content exception=" + paramString);
+      QLog.d("ArkAdapterItemForTextMsg", 1, new Object[] { "ArkFold.attachArkView.appName:", this.jdField_a_of_type_Apwh.a.appName, ", position=", Integer.valueOf(this.jdField_a_of_type_Int), ",state=", Integer.valueOf(paramInt) });
+      this.jdField_a_of_type_Apzb.a(this.jdField_a_of_type_Agnw, this.jdField_a_of_type_Int);
+      return;
+      this.jdField_a_of_type_Apzf.a.setVisibility(8);
+      this.jdField_a_of_type_Apzf.b.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apwi
  * JD-Core Version:    0.7.0.1
  */

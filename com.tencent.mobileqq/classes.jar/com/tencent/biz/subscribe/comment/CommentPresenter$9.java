@@ -1,11 +1,11 @@
 package com.tencent.biz.subscribe.comment;
 
-import zfs;
+import zux;
 
 public class CommentPresenter$9
   implements Runnable
 {
-  public CommentPresenter$9(zfs paramzfs) {}
+  public CommentPresenter$9(zux paramzux) {}
   
   public void run()
   {

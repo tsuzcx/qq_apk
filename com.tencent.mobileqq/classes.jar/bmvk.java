@@ -1,878 +1,606 @@
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Typeface;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.graphics.PointF;
+import android.graphics.RectF;
+import android.support.annotation.Nullable;
 import android.util.Log;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.aekit.api.standard.ai.AEDetector;
+import com.tencent.aekit.api.standard.ai.AIManager;
+import com.tencent.aekit.api.standard.filter.AEFilterManager;
+import com.tencent.aekit.plugin.core.AIAttr;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.text.DynamicTextBuilder.1;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
-import dov.com.qq.im.capture.text.DynamicTextItem;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.tavsticker.utils.TAVStickerUtil;
+import com.tencent.ttpic.filament.CMShowUserLoader;
+import com.tencent.ttpic.openapi.PTFaceAttr;
+import dov.com.qq.im.ae.AECMShowCameraUnit.1;
+import dov.com.qq.im.ae.AECMShowCameraUnit.10;
+import dov.com.qq.im.ae.AECMShowCameraUnit.11;
+import dov.com.qq.im.ae.AECMShowCameraUnit.12;
+import dov.com.qq.im.ae.AECMShowCameraUnit.13;
+import dov.com.qq.im.ae.AECMShowCameraUnit.2;
+import dov.com.qq.im.ae.AECMShowCameraUnit.3;
+import dov.com.qq.im.ae.AECMShowCameraUnit.4;
+import dov.com.qq.im.ae.AECMShowCameraUnit.5;
+import dov.com.qq.im.ae.AECMShowCameraUnit.6;
+import dov.com.qq.im.ae.AECMShowCameraUnit.7;
+import dov.com.qq.im.ae.AECMShowCameraUnit.8;
+import dov.com.qq.im.ae.AECMShowCameraUnit.9;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
+import dov.com.qq.im.ae.cmshow.AECMShowLoadingView;
+import dov.com.qq.im.ae.cmshow.AECMShowRequestController;
+import dov.com.qq.im.ae.cmshow.AECMShowRequestController.CmShowDataWrapper;
+import dov.com.qq.im.ae.play.FaceChangeUtils;
+import dov.com.qq.im.ae.view.AECMShowFaceScanView;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.List<Ljava.lang.String;>;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import mqq.os.MqqHandler;
 
 public class bmvk
+  extends bmxa
+  implements bnjc, bnrq
 {
-  private static final String jdField_a_of_type_JavaLangString = bmvk.class.getSimpleName();
-  private static final Map<Integer, List<String>> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private DynamicTextConfigManager jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager;
-  private ConcurrentHashMap<String, Typeface> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private ConcurrentHashMap<Integer, Bitmap> b = new ConcurrentHashMap();
+  private static String jdField_b_of_type_JavaLangString = "";
+  private float jdField_a_of_type_Float = 1.0F;
+  int jdField_a_of_type_Int = 2;
+  public long a;
+  private Button jdField_a_of_type_AndroidWidgetButton;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bnrp jdField_a_of_type_Bnrp;
+  private AEFilterManager jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager;
+  private PTFaceAttr jdField_a_of_type_ComTencentTtpicOpenapiPTFaceAttr;
+  private AECMShowLoadingView jdField_a_of_type_DovComQqImAeCmshowAECMShowLoadingView;
+  public AECMShowRequestController.CmShowDataWrapper a;
+  private AECMShowRequestController jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController = new AECMShowRequestController(1, this);
+  private AECMShowFaceScanView jdField_a_of_type_DovComQqImAeViewAECMShowFaceScanView;
+  private ArrayList<CMShowUserLoader> jdField_a_of_type_JavaUtilArrayList;
+  private int jdField_b_of_type_Int = 1000;
+  public long b;
+  private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private ArrayList<CMShowUserLoader> jdField_b_of_type_JavaUtilArrayList;
+  private long c;
+  private long d;
+  public volatile boolean d;
+  private long e;
+  private volatile boolean h = false;
+  private volatile boolean i = false;
+  private boolean j;
   
-  static
+  public bmvk(borh paramborh, borg paramborg)
   {
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(0), Collections.singletonList(amtj.a(2131702717)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(1), Collections.singletonList("Hi (•ω•)"));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(3), Collections.singletonList(amtj.a(2131702727)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(4), Collections.singletonList(amtj.a(2131702740)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(5), Arrays.asList(new String[] { amtj.a(2131702715), "MY JOURNEY" }));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(7), Collections.singletonList(amtj.a(2131702714)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(8), Collections.singletonList(amtj.a(2131702737)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(11), Collections.singletonList(amtj.a(2131702732)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(15), Collections.singletonList(amtj.a(2131702733)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(16), Collections.singletonList(amtj.a(2131702719)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(17), Collections.singletonList(amtj.a(2131702743)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(19), Collections.singletonList(amtj.a(2131702738)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(20), Collections.singletonList("superich"));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(21), Collections.singletonList(amtj.a(2131702728)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(24), Collections.singletonList("街头，\n艺术家。"));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(26), Collections.singletonList(amtj.a(2131702720)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(27), Arrays.asList(new String[] { "悠闲的\n下午。", "jenny" }));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(28), Collections.singletonList(amtj.a(2131702741)));
-    ThreadManager.post(new DynamicTextBuilder.1(), 5, null, false);
+    super(paramborh, paramborg);
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_d_of_type_Boolean = false;
+    ae();
   }
   
-  public static int a(int paramInt)
+  private bnrp a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("DText", 2, "getIconDrawable type is: " + paramInt);
+    if ((this.jdField_a_of_type_ComTencentTtpicOpenapiPTFaceAttr == null) || (this.jdField_a_of_type_ComTencentTtpicOpenapiPTFaceAttr.getAllFacePoints() == null) || (this.jdField_a_of_type_ComTencentTtpicOpenapiPTFaceAttr.getAllFacePoints().size() == 0)) {
+      return b();
     }
-    switch (paramInt)
-    {
-    case 0: 
-    case 2: 
-    case 6: 
-    case 9: 
-    case 10: 
-    case 12: 
-    case 13: 
-    case 14: 
-    case 18: 
-    case 22: 
-    case 23: 
-    case 25: 
-    default: 
-      return 2130844398;
-    case 28: 
-      return 2130844377;
-    case 1: 
-      return 2130844386;
-    case 3: 
-      return 2130844388;
-    case 4: 
-      return 2130844390;
-    case 5: 
-      return 2130844389;
-    case 7: 
-      return 2130844403;
-    case 8: 
-      return 2130844387;
-    case 11: 
-      return 2130844378;
-    case 15: 
-      return 2130844392;
-    case 16: 
-      return 2130844396;
-    case 17: 
-      return 2130844393;
-    case 19: 
-      return 2130844384;
-    case 20: 
-      return 2130844405;
-    case 26: 
-      return 2130844394;
-    case 24: 
-      return 2130844400;
-    case 27: 
-      return 2130844401;
-    }
-    return 2130844399;
+    bnrp localbnrp = new bnrp();
+    RectF localRectF = new RectF();
+    List localList = FaceChangeUtils.getMaxFacePoints(this.jdField_a_of_type_ComTencentTtpicOpenapiPTFaceAttr.getAllFacePoints(), this.jdField_a_of_type_ComTencentTtpicOpenapiPTFaceAttr.getFaceDetectScale() * this.jdField_a_of_type_Float);
+    PointF localPointF1 = (PointF)localList.get(0);
+    PointF localPointF2 = (PointF)localList.get(18);
+    PointF localPointF3 = new PointF((localPointF1.x + localPointF2.x) / 2.0F, (localPointF1.y + localPointF2.y) / 2.0F);
+    float f1 = TAVStickerUtil.getDistance(localPointF3, (PointF)localList.get(9));
+    float f2 = TAVStickerUtil.getDistance(localPointF1, localPointF2) / 2.0F;
+    localRectF.left = (localPointF3.x - f2);
+    localRectF.right = (f2 + localPointF3.x);
+    localRectF.top = (localPointF3.y - f1);
+    localRectF.bottom = (f1 + localPointF3.y);
+    localbnrp.a(localRectF);
+    f1 = localPointF2.y;
+    f2 = localPointF1.y;
+    float f3 = localPointF2.x;
+    float f4 = localPointF1.x;
+    localbnrp.a((float)Math.toDegrees(Math.atan2(f1 - f2, f3 - f4)));
+    return localbnrp;
   }
   
-  public static String a(int paramInt)
+  private void a(AEFilterManager paramAEFilterManager)
   {
-    switch (paramInt)
-    {
-    case 2: 
-    case 6: 
-    case 9: 
-    case 10: 
-    case 12: 
-    case 13: 
-    case 14: 
-    case 18: 
-    case 22: 
-    case 23: 
-    case 25: 
-    default: 
-      return null;
-    case 0: 
-      return amtj.a(2131702730);
-    case 1: 
-      return "Hi";
-    case 3: 
-      return amtj.a(2131702729);
-    case 4: 
-      return amtj.a(2131702736);
-    case 5: 
-      return amtj.a(2131702731);
-    case 7: 
-      return amtj.a(2131702735);
-    case 8: 
-      return amtj.a(2131702734);
-    case 11: 
-      return amtj.a(2131702721);
-    case 15: 
-      return amtj.a(2131702718);
-    case 16: 
-      return amtj.a(2131702742);
-    case 17: 
-      return amtj.a(2131702716);
-    case 19: 
-      return amtj.a(2131702724);
-    case 20: 
-      return "superich";
-    case 21: 
-      return amtj.a(2131702723);
-    case 24: 
-      return amtj.a(2131702725);
-    case 26: 
-      return amtj.a(2131702739);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiPTFaceAttr = ((PTFaceAttr)paramAEFilterManager.getAIAttr().getFaceAttr());
+    if ((paramAEFilterManager.getAEDetector() == null) || (paramAEFilterManager.getAEDetector().getFaceDetector() == null)) {
+      return;
     }
-    return amtj.a(2131702722);
-  }
-  
-  public static String a(int paramInt1, int paramInt2)
-  {
-    List localList = a(paramInt1);
-    if ((localList != null) && (paramInt2 >= 0) && (paramInt2 < localList.size())) {
-      return (String)localList.get(paramInt2);
-    }
-    return "";
-  }
-  
-  public static List<String> a(int paramInt)
-  {
-    List localList = null;
-    if (jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt))) {
-      localList = (List)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-    }
-    return localList;
-  }
-  
-  public static List<String> a(List<String> paramList, @NonNull DynamicTextItem paramDynamicTextItem)
-  {
-    int j = 0;
-    ArrayList localArrayList = paramDynamicTextItem.a();
-    if ((localArrayList.isEmpty()) || (TextUtils.isEmpty((CharSequence)localArrayList.get(0)))) {
-      return paramList;
-    }
-    Iterator localIterator = localArrayList.iterator();
-    if (localIterator.hasNext())
-    {
-      localIterator.next();
-      i = 1;
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        if ((str != null) && (str.equals(a(paramDynamicTextItem.c(), i)))) {
-          localIterator.remove();
-        }
-        i += 1;
-      }
-    }
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return localArrayList;
-    }
-    int i = localArrayList.size();
-    int m = paramList.size();
-    int k = Math.min(i, paramDynamicTextItem.a());
-    i = j;
-    for (;;)
-    {
-      if ((i >= k) || (i >= m))
-      {
-        i = k;
-        while (i < m)
-        {
-          localArrayList.add(paramList.get(i));
-          i += 1;
-        }
-      }
-      if (((String)localArrayList.get(i)).equals(a(paramDynamicTextItem.c(), i))) {
-        localArrayList.set(i, paramList.get(i));
-      }
-      i += 1;
-    }
-    return localArrayList;
-  }
-  
-  public int a(DynamicTextItem paramDynamicTextItem)
-  {
-    int i = 0;
-    if (bmwl.class.isInstance(paramDynamicTextItem)) {
-      if ((paramDynamicTextItem instanceof bmwk)) {
-        i = 28;
-      }
-    }
-    do
-    {
-      return i;
-      if (bmvg.class.isInstance(paramDynamicTextItem)) {
-        return 1;
-      }
-      if (bmvz.class.isInstance(paramDynamicTextItem)) {
-        return 3;
-      }
-      if (bmwr.class.isInstance(paramDynamicTextItem)) {
-        return 4;
-      }
-      if (bmwc.class.isInstance(paramDynamicTextItem)) {
-        return 5;
-      }
-      if (bmww.class.isInstance(paramDynamicTextItem)) {
-        return 7;
-      }
-      if (bmvt.class.isInstance(paramDynamicTextItem)) {
-        return 8;
-      }
-      if (bmuu.class.isInstance(paramDynamicTextItem)) {
-        return 11;
-      }
-      if (bmwa.class.isInstance(paramDynamicTextItem)) {
-        return 17;
-      }
-      if (bmvw.class.isInstance(paramDynamicTextItem)) {
-        return 15;
-      }
-      if (bmwg.class.isInstance(paramDynamicTextItem)) {
-        return 16;
-      }
-      if (bmvf.class.isInstance(paramDynamicTextItem)) {
-        return 19;
-      }
-      if (bmwb.class.isInstance(paramDynamicTextItem)) {
-        return 26;
-      }
-      if (bmxa.class.isInstance(paramDynamicTextItem)) {
-        return 20;
-      }
-      if (bmwq.class.isInstance(paramDynamicTextItem)) {
-        return 24;
-      }
-      if (bmwu.class.isInstance(paramDynamicTextItem)) {
-        return 27;
-      }
-    } while (!bmvc.class.isInstance(paramDynamicTextItem));
-    return ((bmvc)paramDynamicTextItem).c();
-  }
-  
-  public <T extends DynamicTextItem> T a(int paramInt, @NonNull List<String> paramList)
-  {
-    Object localObject11 = null;
-    if (this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager == null) {
-      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager = ((DynamicTextConfigManager)bmql.a(7));
-    }
-    Object localObject10 = new ArrayList();
-    if (paramList != null)
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        ((List)localObject10).add((String)paramList.next());
-      }
-    }
-    if (((List)localObject10).isEmpty())
-    {
-      paramList = a(paramInt);
-      if (paramList != null) {
-        localObject10 = paramList;
+    paramAEFilterManager = this.jdField_a_of_type_ComTencentTtpicOpenapiPTFaceAttr.getAllFacePoints();
+    if ((paramAEFilterManager == null) || (paramAEFilterManager.size() == 0)) {
+      if (this.jdField_a_of_type_Long == -1L) {
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
       }
     }
     for (;;)
     {
-      Object localObject14 = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a(String.valueOf(paramInt));
-      Object localObject1;
-      List<String> localList;
-      if (localObject14 != null) {
-        if (((DynamicTextConfigManager.DynamicTextConfigBean)localObject14).fontInfos.isEmpty())
-        {
-          paramList = null;
-          if (paramList == null) {
-            break label3241;
-          }
-          localObject1 = (Typeface)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramList.c);
-          localList = paramList;
-          paramList = (List<String>)localObject1;
-        }
-      }
-      for (;;)
-      {
-        Object localObject8;
-        label526:
-        Object localObject2;
-        switch (paramInt)
-        {
-        case 2: 
-        case 6: 
-        case 9: 
-        case 10: 
-        case 12: 
-        case 13: 
-        case 14: 
-        case 18: 
-        case 22: 
-        case 23: 
-        case 25: 
-        default: 
-          localObject1 = "invalid text type" + paramInt;
-          if (QLog.isColorLevel()) {
-            QLog.i(jdField_a_of_type_JavaLangString, 2, "DynamicTextBuilder : " + (String)localObject1);
-          }
-          localObject1 = new bmwl(paramInt, (List)localObject10);
-        case 0: 
-        case 28: 
-        case 1: 
-          for (;;)
-          {
-            if ((paramList != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt)) == null) && (localList != null)) {
-              this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localList.c, paramList);
-            }
-            return localObject1;
-            paramList = (bmvl)((DynamicTextConfigManager.DynamicTextConfigBean)localObject14).fontInfos.get(0);
-            break;
-            localObject1 = new bmwl(paramInt, (List)localObject10);
-            continue;
-            localObject1 = new bmwk(paramInt, (List)localObject10);
-            continue;
-            localObject11 = (Bitmap)this.b.get(Integer.valueOf(2130844539));
-            if (paramList != null)
-            {
-              localObject1 = localObject11;
-              localObject8 = paramList;
-              if (localObject11 != null) {
-                break label526;
-              }
-            }
-            try
-            {
-              localObject1 = Typeface.createFromFile(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.b(localList) + "dynamic_text.ttf");
-              paramList = (List<String>)localObject1;
-            }
-            catch (Exception localException1)
-            {
-              for (;;)
-              {
-                QLog.i(jdField_a_of_type_JavaLangString, 2, Log.getStackTraceString(localException1));
-              }
-            }
-            localObject1 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844539);
-            this.b.put(Integer.valueOf(2130844539), localObject1);
-            localObject8 = paramList;
-            localObject1 = new bmvg(paramInt, (List)localObject10, (Typeface)localObject8, (Bitmap)localObject1);
-            paramList = (List<String>)localObject8;
-          }
-        case 3: 
-          localObject8 = (Bitmap)this.b.get(Integer.valueOf(2130844406));
-          localObject2 = (Bitmap)this.b.get(Integer.valueOf(2130844407));
-          if (paramList == null)
-          {
-            try
-            {
-              localObject2 = Typeface.createFromFile(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.b(localList) + "dynamic_text.ttf");
-              paramList = (List<String>)localObject2;
-            }
-            catch (Exception localException2)
-            {
-              for (;;)
-              {
-                QLog.i(jdField_a_of_type_JavaLangString, 2, Log.getStackTraceString(localException2));
-              }
-            }
-            localObject8 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844406);
-            localObject2 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844407);
-            this.b.put(Integer.valueOf(2130844406), localObject8);
-            this.b.put(Integer.valueOf(2130844407), localObject2);
-          }
-          break;
-        }
-        for (;;)
-        {
-          for (;;)
-          {
-            for (;;)
-            {
-              for (;;)
-              {
-                localObject2 = new bmvz(paramInt, (List)localObject10, paramList, (Bitmap)localObject8, (Bitmap)localObject2);
-                break;
-                localObject8 = paramList;
-                if (paramList == null) {}
-                try
-                {
-                  localObject8 = Typeface.createFromFile(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.b(localList) + "dynamic_text.ttf");
-                  bmwr localbmwr = new bmwr(BaseApplicationImpl.getContext(), paramInt, (List)localObject10, (Typeface)localObject8);
-                  paramList = (List<String>)localObject8;
-                }
-                catch (Exception localException3)
-                {
-                  for (;;)
-                  {
-                    QLog.i(jdField_a_of_type_JavaLangString, 2, Log.getStackTraceString(localException3));
-                    localObject8 = paramList;
-                  }
-                }
-              }
-              localObject11 = (Bitmap)this.b.get(Integer.valueOf(2130844444));
-              localObject8 = (Bitmap)this.b.get(Integer.valueOf(2130844443));
-              Object localObject3 = localObject11;
-              if (localObject11 == null)
-              {
-                localObject3 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844444);
-                localObject8 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844443);
-              }
-              localObject3 = new bmwc(paramInt, (List)localObject10, (Bitmap)localObject3, (Bitmap)localObject8);
-              break;
-              localObject8 = (Bitmap)this.b.get(Integer.valueOf(2130844545));
-              localObject3 = localObject8;
-              if (localObject8 == null)
-              {
-                localObject3 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844545);
-                this.b.put(Integer.valueOf(2130844545), localObject3);
-              }
-              localObject11 = (Bitmap)this.b.get(Integer.valueOf(2130844546));
-              localObject8 = localObject11;
-              if (localObject11 == null)
-              {
-                localObject8 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844546);
-                this.b.put(Integer.valueOf(2130844546), localObject8);
-              }
-              localObject14 = (Bitmap)this.b.get(Integer.valueOf(2130844547));
-              localObject11 = localObject14;
-              if (localObject14 == null)
-              {
-                localObject11 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844547);
-                this.b.put(Integer.valueOf(2130844547), localObject11);
-              }
-              localObject14 = new ArrayList(3);
-              ((List)localObject14).add(localObject3);
-              ((List)localObject14).add(localObject8);
-              ((List)localObject14).add(localObject11);
-              localObject8 = paramList;
-              if (paramList == null) {}
-              try
-              {
-                localObject8 = Typeface.createFromFile(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.b(localList) + "dynamic_text.ttf");
-                localObject3 = new bmww(paramInt, (Typeface)localObject8, (List)localObject10, (List)localObject14);
-                paramList = (List<String>)localObject8;
-              }
-              catch (Exception localException4)
-              {
-                for (;;)
-                {
-                  localObject8 = paramList;
-                  if (QLog.isColorLevel())
-                  {
-                    QLog.i(jdField_a_of_type_JavaLangString, 2, localException4.getMessage(), localException4);
-                    localObject8 = paramList;
-                  }
-                }
-              }
-            }
-            localObject8 = (Bitmap)this.b.get(Integer.valueOf(2130844437));
-            localObject4 = localObject8;
-            if (localObject8 == null)
-            {
-              localObject4 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844437);
-              this.b.put(Integer.valueOf(2130844437), localObject4);
-            }
-            localObject8 = paramList;
-            if (paramList == null) {}
-            try
-            {
-              localObject8 = Typeface.createFromFile(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.b(localList) + "dynamic_text.ttf");
-              localObject4 = new bmvt(paramInt, (List)localObject10, (Typeface)localObject8, (Bitmap)localObject4);
-              paramList = (List<String>)localObject8;
-            }
-            catch (RuntimeException localRuntimeException)
-            {
-              for (;;)
-              {
-                localObject8 = paramList;
-                if (QLog.isColorLevel())
-                {
-                  QLog.e(jdField_a_of_type_JavaLangString, 2, Log.getStackTraceString(localRuntimeException));
-                  localObject8 = paramList;
-                }
-              }
-            }
-          }
-          Object localObject4 = (Bitmap)this.b.get(Integer.valueOf(2130844379));
-          localObject8 = (Bitmap)this.b.get(Integer.valueOf(2130844381));
-          Object localObject12 = (Bitmap)this.b.get(Integer.valueOf(2130844380));
-          if (localObject4 == null)
-          {
-            localObject4 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844379);
-            localObject8 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844381);
-            localObject12 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844380);
-          }
-          for (;;)
-          {
-            Object localObject5;
-            for (;;)
-            {
-              for (;;)
-              {
-                if (paramList == null) {}
-                for (;;)
-                {
-                  try
-                  {
-                    localObject14 = Typeface.createFromFile(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.b(localList) + "dynamic_text.ttf");
-                    paramList = (List<String>)localObject14;
-                    localObject4 = new bmuu(paramInt, (List)localObject10, paramList, (Bitmap)localObject4, (Bitmap)localObject8, (Bitmap)localObject12);
-                  }
-                  catch (Exception localException14)
-                  {
-                    QLog.i(jdField_a_of_type_JavaLangString, 2, Log.getStackTraceString(localException14));
-                  }
-                }
-                localObject8 = (Bitmap)this.b.get(Integer.valueOf(2130844540));
-                localObject4 = localObject8;
-                if (localObject8 == null)
-                {
-                  localObject4 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844540);
-                  this.b.put(Integer.valueOf(2130844540), localObject4);
-                }
-                localObject12 = (Bitmap)this.b.get(Integer.valueOf(2130844541));
-                localObject8 = localObject12;
-                if (localObject12 == null)
-                {
-                  localObject8 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844541);
-                  this.b.put(Integer.valueOf(2130844541), localObject8);
-                }
-                localObject12 = new ArrayList(3);
-                ((List)localObject12).add(localObject4);
-                ((List)localObject12).add(localObject8);
-                localObject8 = paramList;
-                if (paramList == null) {}
-                try
-                {
-                  localObject8 = Typeface.createFromFile(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.b(localList) + "dynamic_text.ttf");
-                  localObject4 = new bmwa(paramInt, (List)localObject10, (Typeface)localObject8, (List)localObject12);
-                  paramList = (List<String>)localObject8;
-                }
-                catch (Exception localException5)
-                {
-                  for (;;)
-                  {
-                    QLog.i(jdField_a_of_type_JavaLangString, 2, Log.getStackTraceString(localException5));
-                    localObject8 = paramList;
-                  }
-                }
-              }
-              localObject8 = (Bitmap)this.b.get(Integer.valueOf(2130844391));
-              localObject5 = localObject8;
-              if (localObject8 == null)
-              {
-                localObject5 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844391);
-                this.b.put(Integer.valueOf(2130844391), localObject5);
-              }
-              localObject8 = paramList;
-              if (paramList == null) {}
-              try
-              {
-                localObject8 = Typeface.createFromFile(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.b(localList) + "dynamic_text.ttf");
-                localObject5 = new bmvw(paramInt, (List)localObject10, (Typeface)localObject8, (Bitmap)localObject5);
-                paramList = (List<String>)localObject8;
-              }
-              catch (Exception localException11)
-              {
-                for (;;)
-                {
-                  QLog.i(jdField_a_of_type_JavaLangString, 2, Log.getStackTraceString(localException11));
-                  localObject9 = paramList;
-                }
-              }
-            }
-            Object localObject9 = (Bitmap)this.b.get(Integer.valueOf(2130844395));
-            if (localObject9 == null)
-            {
-              localObject9 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844395);
-              this.b.put(Integer.valueOf(2130844395), localObject9);
-            }
-            for (;;)
-            {
-              for (;;)
-              {
-                for (;;)
-                {
-                  if (paramList == null) {}
-                  label2136:
-                  for (;;)
-                  {
-                    try
-                    {
-                      localObject5 = Typeface.createFromFile(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.b(localList) + "dynamic_text.ttf");
-                      paramList = (List<String>)localObject5;
-                      localObject5 = localObject12;
-                      if (localException14 != null)
-                      {
-                        localObject5 = localObject12;
-                        if (localException14.fontInfos.size() > 1)
-                        {
-                          localObject5 = localObject12;
-                          if (localException14.fontInfos.get(1) != null)
-                          {
-                            localObject5 = localObject12;
-                            if (!TextUtils.isEmpty(((bmvl)localException14.fontInfos.get(1)).c))
-                            {
-                              localObject5 = (Typeface)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(((bmvl)localException14.fontInfos.get(1)).c);
-                              if (localObject5 != null) {
-                                break label2136;
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                    catch (Exception localException6)
-                    {
-                      try
-                      {
-                        localObject12 = Typeface.createFromFile(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.b((bmvl)localException14.fontInfos.get(1)) + "dynamic_text.ttf");
-                        localObject5 = localObject12;
-                        localObject5 = new bmwg(paramInt, (List)localObject10, paramList, (Typeface)localObject5, (Bitmap)localObject9);
-                      }
-                      catch (Exception localException12)
-                      {
-                        QLog.i(jdField_a_of_type_JavaLangString, 2, Log.getStackTraceString(localException12));
-                      }
-                      localException6 = localException6;
-                      QLog.i(jdField_a_of_type_JavaLangString, 2, Log.getStackTraceString(localException6));
-                    }
-                  }
-                  localObject9 = paramList;
-                  if (paramList == null)
-                  {
-                    localObject9 = paramList;
-                    if (!FileUtil.isFileExists(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.b(localList) + "dynamic_text.ttf")) {}
-                  }
-                  try
-                  {
-                    localObject9 = Typeface.createFromFile(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.b(localList) + "dynamic_text.ttf");
-                    bmvf localbmvf = new bmvf(paramInt, (List)localObject10, (Typeface)localObject9);
-                    paramList = (List<String>)localObject9;
-                  }
-                  catch (Exception localException7)
-                  {
-                    for (;;)
-                    {
-                      QLog.i(jdField_a_of_type_JavaLangString, 2, Log.getStackTraceString(localException7));
-                      localObject9 = paramList;
-                    }
-                  }
-                }
-                localObject9 = paramList;
-                if (paramList == null)
-                {
-                  localObject9 = paramList;
-                  if (!FileUtil.isFileExists(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.b(localList) + "dynamic_text.ttf")) {}
-                }
-                try
-                {
-                  localObject9 = Typeface.createFromFile(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.b(localList) + "dynamic_text.ttf");
-                  if (QLog.isColorLevel()) {
-                    QLog.i(jdField_a_of_type_JavaLangString, 2, "added new rich super : ");
-                  }
-                  bmxa localbmxa = new bmxa(paramInt, (List)localObject10, (Typeface)localObject9);
-                  paramList = (List<String>)localObject9;
-                }
-                catch (Exception localException8)
-                {
-                  for (;;)
-                  {
-                    localObject9 = paramList;
-                    if (QLog.isColorLevel())
-                    {
-                      QLog.i(jdField_a_of_type_JavaLangString, 2, localException8.toString());
-                      localObject9 = paramList;
-                    }
-                  }
-                }
-              }
-              Object localObject6 = (Bitmap)this.b.get(Integer.valueOf(2130844383));
-              if (localObject6 == null)
-              {
-                localObject6 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844383);
-                this.b.put(Integer.valueOf(2130844383), localObject6);
-              }
-              for (;;)
-              {
-                localObject9 = (Bitmap)this.b.get(Integer.valueOf(2130844382));
-                if (localObject9 == null)
-                {
-                  localObject9 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844382);
-                  this.b.put(Integer.valueOf(2130844382), localObject9);
-                }
-                for (;;)
-                {
-                  for (;;)
-                  {
-                    for (;;)
-                    {
-                      for (;;)
-                      {
-                        if (paramList == null) {}
-                        for (;;)
-                        {
-                          try
-                          {
-                            Typeface localTypeface = Typeface.createFromFile(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.b(localList) + "dynamic_text.ttf");
-                            paramList = localTypeface;
-                            localObject6 = new bmwb(paramInt, (List)localObject10, (Bitmap)localObject9, (Bitmap)localObject6, paramList);
-                          }
-                          catch (Exception localException13)
-                          {
-                            if (QLog.isColorLevel()) {
-                              QLog.i(jdField_a_of_type_JavaLangString, 2, localException13.getMessage(), localException13);
-                            }
-                          }
-                        }
-                        localObject9 = paramList;
-                        if (paramList == null) {}
-                        try
-                        {
-                          localObject9 = Typeface.createFromFile(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.b(localList) + "dynamic_text.ttf");
-                          localObject6 = new bmwq(paramInt, (List)localObject10, (Typeface)localObject9);
-                          paramList = (List<String>)localObject9;
-                        }
-                        catch (Exception localException9)
-                        {
-                          for (;;)
-                          {
-                            localObject9 = paramList;
-                            if (QLog.isColorLevel())
-                            {
-                              QLog.i(jdField_a_of_type_JavaLangString, 2, localException9.getMessage(), localException9);
-                              localObject9 = paramList;
-                            }
-                          }
-                        }
-                      }
-                      localObject9 = paramList;
-                      if (paramList == null)
-                      {
-                        localObject9 = paramList;
-                        if (!FileUtil.isFileExists(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.b(localList) + "dynamic_text.ttf")) {}
-                      }
-                      try
-                      {
-                        localObject9 = Typeface.createFromFile(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.b(localList) + "dynamic_text.ttf");
-                        if (QLog.isColorLevel()) {
-                          QLog.i(jdField_a_of_type_JavaLangString, 2, "added new rich super : ");
-                        }
-                        bmwu localbmwu = new bmwu(paramInt, (List)localObject10, (Typeface)localObject9);
-                        paramList = (List<String>)localObject9;
-                      }
-                      catch (Exception localException10)
-                      {
-                        for (;;)
-                        {
-                          localObject9 = paramList;
-                          if (QLog.isColorLevel())
-                          {
-                            QLog.i(jdField_a_of_type_JavaLangString, 2, localException10.toString());
-                            localObject9 = paramList;
-                          }
-                        }
-                      }
-                    }
-                    localObject9 = (Bitmap)this.b.get(Integer.valueOf(2130844542));
-                    Object localObject7 = localObject9;
-                    if (localObject9 == null)
-                    {
-                      localObject7 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844542);
-                      this.b.put(Integer.valueOf(2130844542), localObject7);
-                    }
-                    localObject9 = (Bitmap)this.b.get(Integer.valueOf(2130844543));
-                    Object localObject13 = localObject9;
-                    if (localObject9 == null)
-                    {
-                      localObject13 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844543);
-                      this.b.put(Integer.valueOf(2130844543), localObject13);
-                    }
-                    localObject9 = (Bitmap)this.b.get(Integer.valueOf(2130844544));
-                    Object localObject15 = localObject9;
-                    if (localObject9 == null)
-                    {
-                      localObject15 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844544);
-                      this.b.put(Integer.valueOf(2130844544), localObject15);
-                    }
-                    localObject9 = paramList;
-                    if (paramList == null) {}
-                    try
-                    {
-                      localObject9 = Typeface.createFromFile(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.b(localList) + "dynamic_text.ttf");
-                      paramList = new bmvb().a(10.0F, 12.0F).a((Bitmap)localObject7).a(41.0F, 36.0F, 1, 1).a((Typeface)localObject9).a();
-                      localObject7 = new bmvb().a(12.0F, 21.0F).a((Bitmap)localObject13).a(123.0F, 33.0F, 7, 2).a((Typeface)localObject9).a();
-                      localObject13 = new bmvb().a(10.0F, 27.0F).a((Bitmap)localObject15).a(192.0F, 43.0F, 10, 8).a((Typeface)localObject9).a();
-                      localObject15 = new bmve();
-                      ((bmve)localObject15).a(paramList);
-                      ((bmve)localObject15).a((bmva)localObject7);
-                      ((bmve)localObject15).a((bmva)localObject13);
-                      ((bmve)localObject15).a((Typeface)localObject9);
-                      ((bmve)localObject15).a(-16777216);
-                      localObject7 = ((bmve)localObject15).a(paramInt, (List)localObject10);
-                      paramList = (List<String>)localObject9;
-                    }
-                    catch (Exception localException15)
-                    {
-                      for (;;)
-                      {
-                        localObject9 = paramList;
-                        if (QLog.isColorLevel())
-                        {
-                          QLog.i(jdField_a_of_type_JavaLangString, 2, localException15.getMessage(), localException15);
-                          localObject9 = paramList;
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-        label3241:
-        localList = paramList;
-        paramList = null;
-        continue;
-        localList = null;
-        paramList = null;
+      af();
+      return;
+      this.jdField_b_of_type_Long = (System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      continue;
+      this.jdField_b_of_type_Long = 0L;
+      this.jdField_a_of_type_Long = -1L;
+    }
+  }
+  
+  private void ad()
+  {
+    this.i = true;
+    this.jdField_b_of_type_Int = 1001;
+    this.jdField_a_of_type_DovComQqImAeViewAECMShowFaceScanView.a(1003, null);
+    D();
+    this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.queueEvent(new AECMShowCameraUnit.1(this));
+  }
+  
+  private void ae()
+  {
+    ThreadManager.getSubThreadHandler().post(new AECMShowCameraUnit.2(this));
+  }
+  
+  private void af()
+  {
+    ThreadManager.getUIHandler().post(new AECMShowCameraUnit.3(this));
+  }
+  
+  private void ag()
+  {
+    bnqm.a().aE();
+    a().setResult(0);
+    a().finish();
+  }
+  
+  private void ah()
+  {
+    switch (((Integer)this.jdField_a_of_type_AndroidWidgetImageView.getTag()).intValue())
+    {
+    default: 
+      an();
+      return;
+    case 5: 
+      an();
+      return;
+    }
+    bnqm.a().aM();
+    ai();
+  }
+  
+  private void ai()
+  {
+    this.jdField_a_of_type_Bnay = null;
+    this.jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController$CmShowDataWrapper = null;
+    ak();
+    am();
+  }
+  
+  private void aj()
+  {
+    switch (((Integer)this.jdField_a_of_type_AndroidWidgetButton.getTag()).intValue())
+    {
+    default: 
+      al();
+      return;
+    case 1: 
+      bnqm.a().aL();
+      z();
+      return;
+    }
+    bnqm.a().aN();
+    ai();
+  }
+  
+  private void ak()
+  {
+    ap();
+    this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.setMaterial(null);
+    this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.setMaterial(jdField_b_of_type_JavaLangString);
+  }
+  
+  private void al()
+  {
+    this.i = true;
+    bnqm.a().aD();
+    if (this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.captureByCameraProxy())
+    {
+      x();
+      return;
+    }
+    w();
+  }
+  
+  private void am()
+  {
+    this.i = false;
+    this.jdField_b_of_type_Int = 1000;
+    bnqm.a().aA();
+    if (this.jdField_d_of_type_Long > 0L) {
+      bnqm.a().g(System.currentTimeMillis() - this.jdField_d_of_type_Long);
+    }
+    for (;;)
+    {
+      this.c = System.currentTimeMillis();
+      this.jdField_d_of_type_Long = 0L;
+      this.e = 0L;
+      ThreadManager.getUIHandler().post(new AECMShowCameraUnit.8(this));
+      return;
+      if (this.e > 0L) {
+        bnqm.a().a(0, System.currentTimeMillis() - this.e);
       }
     }
+  }
+  
+  private void an()
+  {
+    bnqm.a().aB();
+    Intent localIntent = new Intent(a(), NewPhotoListActivity.class);
+    localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 6);
+    localIntent.putExtra("PhotoConst.IS_SINGLE_MODE", false);
+    localIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM", 1);
+    localIntent.putExtra("enter_from", 51);
+    a().startActivityForResult(localIntent, 10006);
+  }
+  
+  private void ao()
+  {
+    if ((this.jdField_a_of_type_Bnay != null) && (!StringUtil.isEmpty(this.jdField_a_of_type_Bnay.jdField_a_of_type_JavaLangString)))
+    {
+      D();
+      Bitmap localBitmap = BitmapFactory.decodeFile(this.jdField_a_of_type_Bnay.jdField_a_of_type_JavaLangString);
+      ThreadManager.getSubThreadHandler().post(new AECMShowCameraUnit.9(this, localBitmap));
+      return;
+    }
+    bnrh.d(this.jdField_a_of_type_JavaLangString, "sendMakeFaceRequests: 拍摄结果异常");
+  }
+  
+  private void ap()
+  {
+    try
+    {
+      as();
+      this.jdField_b_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  private void aq()
+  {
+    try
+    {
+      as();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext()) {
+        ((CMShowUserLoader)localIterator.next()).destroy();
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+    }
+    finally {}
+  }
+  
+  private void ar()
+  {
+    try
+    {
+      as();
+      Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext()) {
+        ((CMShowUserLoader)localIterator.next()).destroy();
+      }
+      this.jdField_b_of_type_JavaUtilArrayList.clear();
+    }
+    finally {}
+  }
+  
+  private void as()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+      if (this.jdField_b_of_type_JavaUtilArrayList == null) {
+        this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  private bnrp b()
+  {
+    if (this.jdField_a_of_type_Bnrp == null) {
+      this.jdField_a_of_type_Bnrp = c();
+    }
+    return this.jdField_a_of_type_Bnrp;
+  }
+  
+  private bnrp c()
+  {
+    bnrp localbnrp = new bnrp();
+    RectF localRectF = new RectF();
+    int k = UIUtils.dip2px(a(), 65.0F);
+    localRectF.left = k;
+    localRectF.right = (UIUtils.getScreenWidth(a()) - k);
+    k = (int)(localRectF.width() / 0.786047F);
+    localRectF.top = ((int)(UIUtils.getScreenHeight(a()) / 2.0F - k / 2.0F));
+    float f = UIUtils.getScreenHeight(a()) / 2.0F;
+    localRectF.bottom = ((int)(k / 2.0F + f));
+    localbnrp.a(localRectF);
+    f = localRectF.width();
+    localbnrp.a((int)(localRectF.height() * f));
+    return localbnrp;
+  }
+  
+  protected void A()
+  {
+    ThreadManager.getUIHandler().post(new AECMShowCameraUnit.4(this));
+  }
+  
+  protected void B()
+  {
+    this.jdField_b_of_type_Int = 1001;
+    ThreadManager.getUIHandler().post(new AECMShowCameraUnit.5(this));
+  }
+  
+  protected void C()
+  {
+    this.jdField_b_of_type_Int = 1001;
+    bnqm.a().aK();
+    this.jdField_d_of_type_Long = System.currentTimeMillis();
+    this.e = 0L;
+    this.c = 0L;
+    ThreadManager.getUIHandler().post(new AECMShowCameraUnit.6(this));
+  }
+  
+  protected void D()
+  {
+    this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.queueEvent(new AECMShowCameraUnit.10(this));
+  }
+  
+  protected void E()
+  {
+    this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.queueEvent(new AECMShowCameraUnit.11(this));
+  }
+  
+  public void F()
+  {
+    if (this.c > 0L)
+    {
+      bnqm.a().e(System.currentTimeMillis() - this.c);
+      this.c = 0L;
+    }
+    B();
+    ao();
+  }
+  
+  public void G() {}
+  
+  protected int a()
+  {
+    return 2131558495;
+  }
+  
+  public View a()
+  {
+    this.jdField_a_of_type_AndroidViewView = a().getLayoutInflater().inflate(a(), null, false);
+    this.jdField_a_of_type_Bnqc = new bnqc(this.jdField_a_of_type_Borh.a(), this.jdField_a_of_type_AndroidViewView, this);
+    this.j = false;
+    p();
+    ab();
+    q();
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  protected void a() {}
+  
+  protected void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.a(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_Float = (1.0F * paramInt1 / paramInt3);
+  }
+  
+  protected void a(int paramInt, AEFilterManager paramAEFilterManager)
+  {
+    if (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager == null) {
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager = paramAEFilterManager;
+    }
+    a(paramAEFilterManager);
+  }
+  
+  public void a(int paramInt, @Nullable AECMShowRequestController.CmShowDataWrapper paramCmShowDataWrapper)
+  {
+    this.i = true;
+    if ((this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager != null) && (paramCmShowDataWrapper != null))
+    {
+      this.jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController$CmShowDataWrapper = paramCmShowDataWrapper;
+      if (paramInt == 1)
+      {
+        C();
+        ThreadManager.getUIHandler().post(new AECMShowCameraUnit.13(this, paramCmShowDataWrapper));
+        return;
+      }
+      b(paramInt);
+      return;
+    }
+    b(paramInt);
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    super.a(paramIntent);
+    if ((paramIntent != null) && (paramIntent.hasExtra("KEY_CMSHOW_DATA")))
+    {
+      this.jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController$CmShowDataWrapper = ((AECMShowRequestController.CmShowDataWrapper)paramIntent.getSerializableExtra("KEY_CMSHOW_DATA"));
+      z();
+    }
+  }
+  
+  public void b()
+  {
+    ar();
+    super.b();
+    this.j = true;
+    if (this.c > 0L) {
+      bnqm.a().e(System.currentTimeMillis() - this.c);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController.b();
+      this.jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController = null;
+      return;
+      if (this.jdField_d_of_type_Long > 0L) {
+        bnqm.a().g(System.currentTimeMillis() - this.jdField_d_of_type_Long);
+      } else if (this.e > 0L) {
+        bnqm.a().a(0, System.currentTimeMillis() - this.e);
+      }
+    }
+  }
+  
+  protected void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = 1001;
+    bnqm.a().g(0);
+    this.e = System.currentTimeMillis();
+    this.jdField_d_of_type_Long = 0L;
+    this.c = 0L;
+    ThreadManager.getUIHandler().post(new AECMShowCameraUnit.7(this, paramInt));
+  }
+  
+  public void c()
+  {
+    super.c();
+    aq();
+  }
+  
+  public void c(int paramInt)
+  {
+    ThreadManager.getUIHandler().post(new AECMShowCameraUnit.12(this, paramInt));
+  }
+  
+  public void onAEKitInited()
+  {
+    super.onAEKitInited();
+    this.h = true;
+    this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.setPauseFilterChainWhenCapture(false);
+    if (!StringUtil.isEmpty(jdField_b_of_type_JavaLangString))
+    {
+      this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.setMaterial(jdField_b_of_type_JavaLangString);
+      this.jdField_d_of_type_Boolean = true;
+      bnrh.a(this.jdField_a_of_type_JavaLangString, "onAEKitInited: 完成设置素材");
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      aj();
+      continue;
+      ah();
+      continue;
+      ag();
+    }
+  }
+  
+  public void onFilterReady()
+  {
+    super.onFilterReady();
+    if ((this.jdField_a_of_type_Bnay != null) && (this.jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController$CmShowDataWrapper != null) && (this.j)) {
+      ad();
+    }
+    for (;;)
+    {
+      this.j = false;
+      ar();
+      return;
+      if (this.j)
+      {
+        ak();
+        am();
+      }
+      else
+      {
+        this.c = System.currentTimeMillis();
+      }
+    }
+  }
+  
+  public void onPhotoCaptured(bnay parambnay)
+  {
+    super.onPhotoCaptured(parambnay);
+    Log.d("cmjoy_request", "onPhotoCaptured: 厘米秀 拍摄完成 ---" + Thread.currentThread());
+    A();
+    if (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager != null)
+    {
+      E();
+      this.jdField_a_of_type_DovComQqImAeViewAECMShowFaceScanView.a(1001, a());
+    }
+  }
+  
+  public void onSetFilterProcess(bnaz parambnaz)
+  {
+    super.onSetFilterProcess(parambnaz);
+    this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager = parambnaz.a();
+    if (this.jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController == null) {
+      this.jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController = new AECMShowRequestController(1, this);
+    }
+    AIManager.installDetector(bmyb.class);
+    if (this.j) {
+      this.jdField_a_of_type_DovComQqImAeViewAECMShowFaceScanView.a(1003, null);
+    }
+  }
+  
+  protected void p()
+  {
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131363645));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131363643));
+    this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView = ((AECameraGLSurfaceView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364231));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363846));
+    this.jdField_a_of_type_AndroidWidgetButton.setTag(Integer.valueOf(3));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369306));
+    this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(5));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369356));
+    this.jdField_a_of_type_DovComQqImAeViewAECMShowFaceScanView = ((AECMShowFaceScanView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366392));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380206));
+    this.jdField_a_of_type_DovComQqImAeCmshowAECMShowLoadingView = ((AECMShowLoadingView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364783));
+    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    this.jdField_a_of_type_DovComQqImAeViewAECMShowFaceScanView.setListener(this);
+  }
+  
+  protected void z()
+  {
+    Intent localIntent = new Intent();
+    if (this.jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController$CmShowDataWrapper != null) {
+      localIntent.putExtra("cms_face_data", this.jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController$CmShowDataWrapper);
+    }
+    a().setResult(-1, localIntent);
+    a().finish();
   }
 }
 

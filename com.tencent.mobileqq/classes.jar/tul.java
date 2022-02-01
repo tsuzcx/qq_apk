@@ -1,42 +1,36 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
 
 public class tul
-  implements qdy
+  implements TopGestureLayout.OnGestureListener
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
+  private tul(ViolaFragment paramViolaFragment) {}
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  private BridgeModule a()
   {
-    return pzk.a(paramBaseArticleInfo);
-  }
-  
-  public void a(int paramInt1, Container paramContainer, pvc parampvc, int paramInt2)
-  {
-    paramContainer = paramContainer.getVirtualView().findViewBaseByName("id_artilce_title");
-    if ((paramContainer != null) && (paramContainer.getNativeView() != null) && ((paramContainer.getNativeView() instanceof NativeTextImp)))
-    {
-      paramContainer = (NativeTextImp)paramContainer.getNativeView();
-      paramContainer.setLines(2);
-      paramContainer.setGravity(51);
+    ViolaBaseView localViolaBaseView = this.a.getViolaBaseView();
+    if (localViolaBaseView == null) {
+      return null;
     }
+    return (BridgeModule)localViolaBaseView.a(BridgeModule.MODULE_NAME);
   }
   
-  public boolean a(int paramInt, Container paramContainer, pvc parampvc, ViewBase paramViewBase)
+  public void flingLToR()
   {
-    return false;
+    BridgeModule localBridgeModule = a();
+    if ((localBridgeModule != null) && (localBridgeModule.onFlingLToR())) {
+      return;
+    }
+    this.a.judgeIfNeedInterruptLToR();
   }
+  
+  public void flingRToL() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tul
  * JD-Core Version:    0.7.0.1
  */

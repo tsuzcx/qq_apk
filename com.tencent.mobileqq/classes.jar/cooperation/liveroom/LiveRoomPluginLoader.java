@@ -3,8 +3,8 @@ package cooperation.liveroom;
 import android.content.Context;
 import android.content.Intent;
 import android.os.SystemClock;
-import bkkq;
-import bkkz;
+import blvy;
+import blwh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -23,16 +23,16 @@ public class LiveRoomPluginLoader
     localIntent.putExtra("isPreloadProcess", true);
     localIntent.putExtra("preloadEntry", 9999);
     localIntent.putExtra("sendTime", SystemClock.elapsedRealtime());
-    bkkz localbkkz = new bkkz(1);
-    localbkkz.b = "LiveRoomPlugin.apk";
-    localbkkz.d = "直播SDK";
-    localbkkz.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    localbkkz.e = "com.tencent.gamecontent.livesdkqqplugin.plugins.QQLiveRoomPluginService";
-    localbkkz.jdField_a_of_type_AndroidContentIntent = localIntent;
+    blwh localblwh = new blwh(1);
+    localblwh.b = "LiveRoomPlugin.apk";
+    localblwh.d = "直播SDK";
+    localblwh.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    localblwh.e = "com.tencent.gamecontent.livesdkqqplugin.plugins.QQLiveRoomPluginService";
+    localblwh.jdField_a_of_type_AndroidContentIntent = localIntent;
     if (QLog.isColorLevel()) {
       QLog.d("LiveRoomPluginLoader", 2, "[LiveRoomPluginLoader] launchPluginService");
     }
-    bkkq.c(BaseApplicationImpl.getApplication(), localbkkz);
+    blvy.c(BaseApplicationImpl.getApplication(), localblwh);
   }
   
   public static void stopService()

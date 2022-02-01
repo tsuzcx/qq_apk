@@ -1,6 +1,12 @@
-abstract interface vmb
+public abstract interface vmb
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract void a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

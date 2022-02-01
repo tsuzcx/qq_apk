@@ -12,8 +12,8 @@ import android.view.ViewConfiguration;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.Scroller;
-import bhke;
-import bhkf;
+import biuu;
+import biuv;
 import com.tencent.mobileqq.app.FrameHelperActivity;
 
 public class WorkSpaceView
@@ -21,10 +21,10 @@ public class WorkSpaceView
 {
   private float jdField_a_of_type_Float;
   public int a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bhke(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new biuu(this);
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private Scroller jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext(), new AccelerateDecelerateInterpolator());
-  private bhkf jdField_a_of_type_Bhkf;
+  private biuv jdField_a_of_type_Biuv;
   boolean jdField_a_of_type_Boolean = true;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -87,8 +87,8 @@ public class WorkSpaceView
       paramInt = getWidth();
       i = getScrollX();
       this.jdField_a_of_type_AndroidWidgetScroller.startScroll(getScrollX(), 0, paramInt * j - i, 0, 400);
-      if (this.jdField_a_of_type_Bhkf != null) {
-        this.jdField_a_of_type_Bhkf.a(j);
+      if (this.jdField_a_of_type_Biuv != null) {
+        this.jdField_a_of_type_Biuv.a(j);
       }
       invalidate();
       return;
@@ -112,8 +112,8 @@ public class WorkSpaceView
       paramInt = getWidth();
       int j = getScrollX();
       this.jdField_a_of_type_AndroidWidgetScroller.startScroll(getScrollX(), 0, paramInt * i - j, 0, 400);
-      if (this.jdField_a_of_type_Bhkf != null) {
-        this.jdField_a_of_type_Bhkf.a(i);
+      if (this.jdField_a_of_type_Biuv != null) {
+        this.jdField_a_of_type_Biuv.a(i);
       }
       invalidate();
       return;
@@ -454,9 +454,9 @@ public class WorkSpaceView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnScreenChangeListener(bhkf parambhkf)
+  public void setOnScreenChangeListener(biuv parambiuv)
   {
-    this.jdField_a_of_type_Bhkf = parambhkf;
+    this.jdField_a_of_type_Biuv = parambiuv;
   }
 }
 

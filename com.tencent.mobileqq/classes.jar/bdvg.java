@@ -1,20 +1,12 @@
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import com.tencent.mobileqq.troop.widget.TroopActiveLayout;
-import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
-import com.tencent.mobileqq.widget.FolderTextView;
-import com.tencent.widget.SingleLineTextView;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class bdvg
+@Metadata(bv={1, 0, 3}, k=3, mv={1, 1, 16})
+public final class bdvg
 {
-  View jdField_a_of_type_AndroidViewView;
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TroopActiveLayout jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout;
-  TroopLabelLayout jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout;
-  FolderTextView jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView;
-  SingleLineTextView jdField_a_of_type_ComTencentWidgetSingleLineTextView;
+  public static void a(bdvf parambdvf, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt) {}
+  
+  public static void a(bdvf parambdvf, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt, @Nullable String paramString) {}
 }
 
 

@@ -1,27 +1,70 @@
-import android.content.Context;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class zlm
-  extends ahyk
+  extends Handler
 {
-  public zlm(Context paramContext, String paramString)
-  {
-    super(paramContext, paramString);
-  }
+  public zlm(QRLoginAuthActivity paramQRLoginAuthActivity) {}
   
-  protected void onCreate(Bundle paramBundle)
+  public void handleMessage(Message paramMessage)
   {
-    super.onCreate(paramBundle);
-    paramBundle = getWindow();
-    WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();
-    localLayoutParams.width = -2;
-    localLayoutParams.height = -2;
-    localLayoutParams.gravity = 17;
-    localLayoutParams.y -= getContext().getResources().getDimensionPixelOffset(2131299156);
-    paramBundle.setAttributes(localLayoutParams);
+    Object localObject = paramMessage.getData();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.a((Bundle)localObject);
+      return;
+    case 2: 
+      int i = ((Bundle)localObject).getInt("ret", 1);
+      paramMessage = ((Bundle)localObject).getByteArray("errMsg");
+      localObject = ((Bundle)localObject).getByteArray("devInfo");
+      if (localObject != null) {}
+      for (;;)
+      {
+        try
+        {
+          localObject = new JSONObject(new String((byte[])localObject, "UTF-8"));
+          this.a.b = ((JSONObject)localObject).optInt("app_type");
+          this.a.i = ((JSONObject)localObject).optString("login_tips");
+          this.a.jdField_a_of_type_Long = ((JSONObject)localObject).optLong("sub_appid");
+          if (QLog.isColorLevel()) {
+            QLog.d("QRLoginAuthActivity", 2, "ON CLOSE appType:" + this.a.b + ",bannerTips:" + this.a.i + ",subappid:" + this.a.jdField_a_of_type_Long);
+          }
+          if (this.a.jdField_a_of_type_Bisl.isShowing()) {
+            this.a.jdField_a_of_type_Bisl.dismiss();
+          }
+          if (i != 0) {
+            break;
+          }
+          this.a.c();
+          return;
+        }
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+          continue;
+        }
+        if (QLog.isDevelopLevel()) {
+          QLog.d("QRLoginAuthActivity", 4, "ON CLOSE devInfo == null");
+        }
+      }
+      this.a.a(new String(paramMessage));
+      return;
+    }
+    if ((this.a.jdField_a_of_type_Bisl != null) && (this.a.jdField_a_of_type_Bisl.isShowing())) {
+      this.a.jdField_a_of_type_Bisl.dismiss();
+    }
+    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.a.a(null);
   }
 }
 

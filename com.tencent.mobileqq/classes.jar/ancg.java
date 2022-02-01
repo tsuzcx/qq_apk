@@ -1,82 +1,96 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.List;
-import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupInfo;
-import tencent.im.oidb.cmd0x88d.oidb_0x88d.RspBody;
-import tencent.im.oidb.cmd0x88d.oidb_0x88d.RspGroupInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class ancg
+public class ancg
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private oidb_0x88d.GroupInfo jdField_a_of_type_TencentImOidbCmd0x88dOidb_0x88d$GroupInfo;
-  private byte[] jdField_a_of_type_ArrayOfByte;
+  private ancc jdField_a_of_type_Ancc;
+  private ancl jdField_a_of_type_Ancl;
+  private CopyOnWriteArrayList<anbu> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
   
-  public ancg(anca paramanca, String paramString, long paramLong, int paramInt, byte... paramVarArgs)
+  public ancg(ancc paramancc, ancl paramancl)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ArrayOfByte = paramVarArgs;
+    this.jdField_a_of_type_Ancl = paramancl;
+    this.jdField_a_of_type_Ancc = paramancc;
   }
   
-  public int a()
+  public anbu a(int paramInt)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public ancg a()
-  {
-    Object localObject = new oidb_0x88d.RspBody();
-    ((oidb_0x88d.RspBody)localObject).mergeFrom(this.jdField_a_of_type_ArrayOfByte);
-    if ((this.jdField_a_of_type_Int != 0) && (((oidb_0x88d.RspBody)localObject).str_errorinfo.has())) {
-      this.jdField_a_of_type_JavaLangString = String.valueOf(((oidb_0x88d.RspBody)localObject).str_errorinfo.get().toByteArray());
-    }
-    this.jdField_a_of_type_TencentImOidbCmd0x88dOidb_0x88d$GroupInfo = null;
-    localObject = ((oidb_0x88d.RspBody)localObject).stzrspgroupinfo.get();
-    int i;
-    int j;
-    label72:
-    oidb_0x88d.RspGroupInfo localRspGroupInfo;
-    if (localObject == null)
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext())
     {
-      i = 0;
-      j = 0;
-      if ((this.jdField_a_of_type_TencentImOidbCmd0x88dOidb_0x88d$GroupInfo != null) || (j >= i)) {
-        return this;
-      }
-      localRspGroupInfo = (oidb_0x88d.RspGroupInfo)((List)localObject).get(j);
-      if ((localRspGroupInfo != null) && (localRspGroupInfo.uint64_group_code.get() == this.jdField_a_of_type_Long)) {
-        break label134;
+      anbu localanbu = (anbu)localIterator.next();
+      if (localanbu.b() == paramInt) {
+        return localanbu;
       }
     }
-    for (;;)
+    return null;
+  }
+  
+  public anbu a(int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Ancc == null) {
+      return null;
+    }
+    long l1 = System.currentTimeMillis();
+    Object localObject = a(paramInt1);
+    boolean bool = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    if (localObject != null)
     {
-      j += 1;
-      break label72;
-      i = ((List)localObject).size();
-      break;
-      label134:
-      this.jdField_a_of_type_Int = localRspGroupInfo.uint32_result.get();
-      if ((this.jdField_a_of_type_Int == 0) && (localRspGroupInfo.stgroupinfo.has())) {
-        this.jdField_a_of_type_TencentImOidbCmd0x88dOidb_0x88d$GroupInfo = ((oidb_0x88d.GroupInfo)localRspGroupInfo.stgroupinfo.get());
+      if (bool)
+      {
+        QLog.w("cmshow_scripted_SpriteCreator", 1, "createScript init load but has last script");
+        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
       }
     }
-    return this;
+    else {
+      switch (paramInt1)
+      {
+      }
+    }
+    for (localObject = new anca(paramInt1, paramInt2, this.jdField_a_of_type_Ancc); (localObject != null) && (((anbu)localObject).a()); localObject = new anbt(paramInt1, this.jdField_a_of_type_Ancc))
+    {
+      ((anbu)localObject).d();
+      ((anbu)localObject).a(this.jdField_a_of_type_Ancl);
+      ((anbu)localObject).c();
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localObject);
+      long l2 = System.currentTimeMillis();
+      QLog.i("cmshow_scripted_SpriteCreator", 1, "create script, bid:" + paramInt1 + ",cost:" + (l2 - l1) + ",threadId:" + Thread.currentThread().getId() + ",init:" + bool);
+      return localObject;
+      return localObject;
+    }
   }
   
-  public String a()
+  public void a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_Ancc == null) {}
+    anbu localanbu;
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_Ancc.a() == null)
+      {
+        QLog.w("cmshow_scripted_SpriteCreator", 1, "[loadBasicScript], fail. surfaceView is null.");
+        return;
+      }
+      localanbu = a(0, -1);
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    } while ((localanbu == null) || (!(localanbu instanceof anbt)) || ((anbt)localanbu != null));
   }
   
-  public oidb_0x88d.GroupInfo a()
+  public void b()
   {
-    return this.jdField_a_of_type_TencentImOidbCmd0x88dOidb_0x88d$GroupInfo;
+    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList == null) || (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() == 0)) {
+      return;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((anbu)localIterator.next()).g();
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
   }
 }
 

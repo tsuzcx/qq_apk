@@ -1,26 +1,15 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
+import java.util.List;
 
-public class atxt
-  extends GestureDetector.SimpleOnGestureListener
+class atxt
+  implements aagw
 {
-  public atxt(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
+  atxt(atxs paramatxs, boolean paramBoolean, String paramString, short paramShort) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void a(List<auao> paramList)
   {
-    this.a.d();
-    return super.onDoubleTap(paramMotionEvent);
-  }
-  
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
-  {
-    return super.onDoubleTapEvent(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    if (this.jdField_a_of_type_Atxs.a.jdField_a_of_type_Atxh != null) {
+      this.jdField_a_of_type_Atxs.a.jdField_a_of_type_Atxh.a(paramList, this.jdField_a_of_type_Atxs.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Atxs.a.b, this.jdField_a_of_type_Atxs.a.c, this.jdField_a_of_type_Atxs.a.d, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Short);
+    }
   }
 }
 

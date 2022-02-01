@@ -1,15 +1,8 @@
-import android.view.View;
-
-class zvv
-  implements zwc
+public abstract interface zvv
 {
-  zvv(zvt paramzvt) {}
+  public abstract boolean a();
   
-  public void a(View paramView, float paramFloat)
-  {
-    paramView.getLayoutParams().height = ((int)paramFloat);
-    paramView.requestLayout();
-  }
+  public abstract boolean a(String paramString);
 }
 
 

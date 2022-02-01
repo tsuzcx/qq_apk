@@ -1,32 +1,23 @@
-import com.tencent.TMG.utils.QLog;
-import java.util.Observable;
+import android.content.Context;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.video.decode.ShortVideoSoLoad;
 
 public class bddn
-  extends Observable
 {
-  private boolean a;
-  
-  public void a(int paramInt)
+  public static String a(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ClockAnimController", 0, "notifyAnimChanged : nEventId = " + paramInt);
+    if (Build.VERSION.SDK_INT >= 16) {}
+    for (String str = "trim_process_pie";; str = "trim_process_pic") {
+      return ShortVideoSoLoad.getShortVideoSoPath(paramContext) + str;
     }
-    if (paramInt == 1) {
-      this.a = true;
-    }
-    if (paramInt == 4) {
-      this.a = false;
-    }
-    setChanged();
-    notifyObservers(Integer.valueOf(paramInt));
   }
   
-  public boolean a()
+  public static String b(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ClockAnimController", 0, "isPlayAnim : isPlayAnim = " + this.a);
-    }
-    return this.a;
+    paramContext = ShortVideoSoLoad.getShortVideoSoPath(paramContext);
+    String str = VideoEnvironment.getShortVideoSoLibName();
+    return paramContext + str;
   }
 }
 

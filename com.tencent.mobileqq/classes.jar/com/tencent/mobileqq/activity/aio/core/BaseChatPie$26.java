@@ -1,31 +1,19 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import aezp;
-import android.view.ViewGroup;
-import bdav;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
-import java.io.File;
-import mqq.os.MqqHandler;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.widget.ScrollerRunnable;
 
 class BaseChatPie$26
   implements Runnable
 {
-  BaseChatPie$26(BaseChatPie paramBaseChatPie) {}
+  BaseChatPie$26(BaseChatPie paramBaseChatPie, int paramInt) {}
   
   public void run()
   {
-    if (bdav.a().c()) {}
-    do
-    {
-      return;
-      if ((aezp.a(this.this$0.mContext, this.this$0.app.getCurrentAccountUin(), this.this$0.sessionInfo.curFriendUin, true, 3, this.this$0.sessionInfo.chatBg)) || (this.this$0.sessionInfo.chatBg.a != this.this$0.afRoot.getBackground())) {
-        this.this$0.uiHandler.sendMessage(this.this$0.uiHandler.obtainMessage(60, this.this$0.sessionInfo.chatBg.a));
-      }
-    } while (!ChatBackgroundManager.b(new File(aezp.a(this.this$0.mContext, this.this$0.app.getCurrentAccountUin(), this.this$0.sessionInfo.curFriendUin))));
-    ThreadManager.getSubThreadHandler().postDelayed(new BaseChatPie.26.1(this), 2000L);
+    int i = this.this$0.listView.getHeaderViewsCount();
+    this.this$0.listView.setSelectionFromTop(i + this.val$selection, this.this$0.mActivity.getTitleBarHeight());
+    this.this$0.mScrollerRunnable.a(this.val$selection, 250L);
   }
 }
 

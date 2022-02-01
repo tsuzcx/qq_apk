@@ -2,12 +2,12 @@ package com.tencent.av.ui;
 
 import com.tencent.av.VideoController;
 import com.tencent.av.screenshare.ScreenShareCtrl;
-import mct;
+import mdp;
 
 public class DoubleVideoMeetingCtrlUI$1$1
   implements Runnable
 {
-  public DoubleVideoMeetingCtrlUI$1$1(mct parammct) {}
+  public DoubleVideoMeetingCtrlUI$1$1(mdp parammdp) {}
   
   public void run()
   {

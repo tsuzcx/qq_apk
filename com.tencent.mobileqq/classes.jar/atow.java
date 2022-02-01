@@ -1,36 +1,14 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 class atow
-  implements View.OnClickListener
+  extends atob
 {
-  atow(atov paramatov) {}
-  
-  public void onClick(View paramView)
+  public atow(atno paramatno)
   {
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg == null) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      String str = this.a.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgUrl.trim();
-      if (QLog.isColorLevel()) {
-        QLog.e("ForwardOption.ForwardSdkBaseOption", 2, "gotoWeb " + str);
-      }
-      Intent localIntent = new Intent(this.a.a.jdField_a_of_type_AndroidAppActivity, QQBrowserDelegationActivity.class);
-      localIntent.putExtra("param_force_internal_browser", true);
-      localIntent.putExtra("reqType", 7);
-      localIntent.putExtra("hide_more_button", true);
-      localIntent.putExtra("url", str);
-      aeub.a(this.a.a.jdField_a_of_type_AndroidAppActivity, localIntent, str);
-      this.a.a.F();
-    }
+    super(paramatno);
+  }
+  
+  protected String a()
+  {
+    return "StateUploadoneWhenChangeToOff";
   }
 }
 

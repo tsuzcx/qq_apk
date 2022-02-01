@@ -3,11 +3,11 @@ package com.tencent.biz.subscribe.widget.relativevideo;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StPoiInfoV2;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StVisitor;
-import amtj;
 import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
-import bfzl;
+import anvx;
+import bhid;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.biz.subscribe.widget.textview.AsyncRichTextView;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -32,17 +32,17 @@ public class RelativeVideoHeadItemView
   
   public int a()
   {
-    return 2131558806;
+    return 2131558831;
   }
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379613));
-    this.b = ((TextView)findViewById(2131379611));
-    this.c = ((TextView)findViewById(2131379614));
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView = ((AsyncRichTextView)findViewById(2131379605));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370196);
-    this.d = ((TextView)findViewById(2131379759));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379925));
+    this.b = ((TextView)findViewById(2131379923));
+    this.c = ((TextView)findViewById(2131379926));
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView = ((AsyncRichTextView)findViewById(2131379917));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131370370);
+    this.d = ((TextView)findViewById(2131380080));
   }
   
   public void a(Object paramObject)
@@ -57,13 +57,13 @@ public class RelativeVideoHeadItemView
     {
       i = 0;
       ((TextView)localObject).setVisibility(i);
-      this.b.setText(bfzl.c(getContext(), paramObject.createTime.get() * 1000L));
+      this.b.setText(bhid.c(getContext(), paramObject.createTime.get() * 1000L));
       i = ((CertifiedAccountMeta.StVisitor)paramObject.visitorInfo.get()).view_count.get();
       if (i <= 0) {
         break label241;
       }
       this.c.setVisibility(0);
-      this.c.setText(UIUtils.formatCount(i) + amtj.a(2131718740));
+      this.c.setText(UIUtils.formatCount(i) + anvx.a(2131719129));
       label139:
       localObject = this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView;
       if (paramObject.content.get().trim().length() <= 0) {

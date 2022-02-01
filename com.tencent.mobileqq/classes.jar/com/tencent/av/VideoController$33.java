@@ -1,18 +1,18 @@
 package com.tencent.av;
 
-import lbt;
-
 class VideoController$33
   implements Runnable
 {
-  VideoController$33(VideoController paramVideoController, int paramInt1, int paramInt2, long paramLong) {}
+  VideoController$33(VideoController paramVideoController, boolean paramBoolean) {}
   
   public void run()
   {
-    if (this.this$0.a != null)
+    VideoController localVideoController = this.this$0;
+    if (!this.this$0.l) {}
+    for (boolean bool = true;; bool = false)
     {
-      long l = this.this$0.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Long);
-      this.this$0.a.a(this.jdField_a_of_type_Long, l, false);
+      localVideoController.a("onGAudioUserEnterOrLeave", bool, this.a);
+      return;
     }
   }
 }

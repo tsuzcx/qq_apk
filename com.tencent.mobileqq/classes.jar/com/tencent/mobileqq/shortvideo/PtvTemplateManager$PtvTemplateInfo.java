@@ -3,7 +3,7 @@ package com.tencent.mobileqq.shortvideo;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bfra;
+import bgzr;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -132,7 +132,7 @@ public class PtvTemplateManager$PtvTemplateInfo
         if (i >= j) {
           break label188;
         }
-        PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateInfo)bfra.a(paramJSONArray.getJSONObject(i), PtvTemplateInfo.class);
+        PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateInfo)bgzr.a(paramJSONArray.getJSONObject(i), PtvTemplateInfo.class);
         if (localPtvTemplateInfo == null) {
           break label193;
         }

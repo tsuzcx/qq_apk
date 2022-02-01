@@ -1,16 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.mediafocus.MediaFocusStackItem;
 
-class awvp
-  implements View.OnClickListener
+public final class awvp
+  implements Parcelable.Creator<MediaFocusStackItem>
 {
-  awvp(awur paramawur) {}
-  
-  public void onClick(View paramView)
+  public MediaFocusStackItem a(Parcel paramParcel)
   {
-    this.a.d(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new MediaFocusStackItem(paramParcel);
+  }
+  
+  public MediaFocusStackItem[] a(int paramInt)
+  {
+    return new MediaFocusStackItem[paramInt];
   }
 }
 

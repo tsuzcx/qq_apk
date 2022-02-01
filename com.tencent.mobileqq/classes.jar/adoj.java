@@ -1,20 +1,27 @@
-import android.app.Dialog;
+import android.os.Handler;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.LbsBaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.image.Utils;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class adoj
-  implements View.OnClickListener
+  implements bkzq
 {
-  public adoj(LbsBaseActivity paramLbsBaseActivity) {}
+  public adoj(ChatHistory paramChatHistory, MessageRecord paramMessageRecord, bkzi parambkzi) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((LbsBaseActivity.a(this.a) != null) && (LbsBaseActivity.a(this.a).isShowing())) {
-      this.a.a(LbsBaseActivity.a(this.a));
+    switch (paramInt)
+    {
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.obtainMessage(1);
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.sendMessageDelayed(paramView, 800L);
+      Utils.executeAsyncTaskOnThreadPool(new adok(this), new MessageRecord[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord });
+    }
   }
 }
 

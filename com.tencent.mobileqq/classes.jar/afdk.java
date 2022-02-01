@@ -1,44 +1,17 @@
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.widget.ListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class afdk
+public class afdk
+  implements View.OnClickListener
 {
-  public int a;
-  public AIOAnimationConatiner a;
-  public ListView a;
+  public afdk(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public afdk(int paramInt, AIOAnimationConatiner paramAIOAnimationConatiner, ListView paramListView)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner = paramAIOAnimationConatiner;
-    this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public boolean a(int paramInt)
-  {
-    return false;
-  }
-  
-  public abstract boolean a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public abstract boolean a(Object... paramVarArgs);
-  
-  public void b() {}
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a(paramInt);
-  }
-  
-  public abstract void c();
-  
-  public void d()
-  {
-    AIOAnimationConatiner.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    TroopInfoActivity.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

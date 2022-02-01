@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.apollo.aioChannel;
 
-import alri;
-import alvx;
-import alxy;
+import amqj;
+import amwn;
+import amyo;
 import com.tencent.mobileqq.apollo.IApolloRunnableTask;
 
 public class ApolloCmdChannel$7$2
   extends IApolloRunnableTask
 {
-  public ApolloCmdChannel$7$2(alri paramalri, int paramInt) {}
+  public ApolloCmdChannel$7$2(amqj paramamqj, int paramInt) {}
   
   public String a()
   {
@@ -17,8 +17,8 @@ public class ApolloCmdChannel$7$2
   
   public void run()
   {
-    if ((alvx.a() != null) && (alvx.a().a())) {
-      this.jdField_a_of_type_Alri.jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel.nativeOpenApiGetHeadCallBack(this.jdField_a_of_type_Alri.jdField_a_of_type_Long, this.jdField_a_of_type_Alri.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 0, 0, null);
+    if ((amwn.a() != null) && (amwn.a().a())) {
+      this.jdField_a_of_type_Amqj.jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel.nativeOpenApiGetHeadCallBack(this.jdField_a_of_type_Amqj.jdField_a_of_type_Long, this.jdField_a_of_type_Amqj.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 0, 0, null);
     }
   }
 }

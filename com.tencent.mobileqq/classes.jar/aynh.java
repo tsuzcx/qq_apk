@@ -1,17 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aynh
-  implements DialogInterface.OnClickListener
+  extends ayni
 {
-  public aynh(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aynh(String paramString, aynq paramaynq)
   {
-    this.a.e();
-    this.a.g();
-    bcef.b(this.a.app, "P_CliOper", "Vip_SummaryCard", "", "SummaryCard", "CLICK_VIPOPENSERVICE", 0, 0, "", "", "", "");
+    super(paramString, paramaynq);
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130839347);
+    this.jdField_a_of_type_Int = -1;
   }
 }
 

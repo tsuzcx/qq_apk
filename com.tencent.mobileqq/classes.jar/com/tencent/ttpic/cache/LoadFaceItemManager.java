@@ -6,9 +6,10 @@ import android.opengl.ETC1Util.ETC1Texture;
 import android.os.AsyncTask;
 import android.os.AsyncTask.Status;
 import android.text.TextUtils;
+import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.openapi.model.FaceItem;
 import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
-import com.tencent.ttpic.util.FaceOffUtil.FEATURE_TYPE;
+import com.tencent.ttpic.util.FaceOffUtil.FeatureType;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ public class LoadFaceItemManager
   private final FaceItem item;
   private final Map<String, Bitmap> mCache;
   private AsyncTask<Void, Integer, Boolean> mFaceImageTask;
-  private final Map<FaceOffUtil.FEATURE_TYPE, Bitmap> mGrayCache;
+  private final Map<FaceOffUtil.FeatureType, Bitmap> mGrayCache;
   private AsyncTask<Void, Integer, Boolean> mGrayImageTask;
   private AsyncTask<Void, Integer, Boolean> mGrayImageTask2;
   private AsyncTask<Void, Integer, Boolean> mGrayImageTask3;
@@ -29,7 +30,7 @@ public class LoadFaceItemManager
   private AsyncTask<Void, Integer, Boolean> mImageTask;
   private final int sampleSize;
   
-  public LoadFaceItemManager(Map<String, Bitmap> paramMap, Map<FaceOffUtil.FEATURE_TYPE, Bitmap> paramMap1, String paramString, FaceItem paramFaceItem, int paramInt)
+  public LoadFaceItemManager(Map<String, Bitmap> paramMap, Map<FaceOffUtil.FeatureType, Bitmap> paramMap1, String paramString, FaceItem paramFaceItem, int paramInt)
   {
     this.dataPath = paramString;
     this.item = paramFaceItem;
@@ -94,44 +95,52 @@ public class LoadFaceItemManager
   
   public void prepareImages()
   {
-    this.mGrayImageTask = new LoadGrayImageTask(this.mGrayCache, this.item.featureType, this.sampleSize);
-    if (this.mGrayImageTask.getStatus() != AsyncTask.Status.RUNNING) {
-      this.mGrayImageTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
-    }
-    this.mGrayImageTask2 = new LoadGrayImageTask(this.mGrayCache, FaceOffUtil.FEATURE_TYPE.MASK, this.sampleSize);
-    if (this.mGrayImageTask2.getStatus() != AsyncTask.Status.RUNNING) {
-      this.mGrayImageTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
-    }
-    this.mGrayImageTask3 = new LoadGrayImageTask(this.mGrayCache, FaceOffUtil.FEATURE_TYPE.NOSE_MASK, this.sampleSize);
-    if (this.mGrayImageTask3.getStatus() != AsyncTask.Status.RUNNING) {
-      this.mGrayImageTask3.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
-    }
-    this.mGrayImageTask4 = new LoadGrayImageTask(this.mGrayCache, FaceOffUtil.FEATURE_TYPE.LIPS_MASK, this.sampleSize);
-    if (this.mGrayImageTask4.getStatus() != AsyncTask.Status.RUNNING) {
-      this.mGrayImageTask4.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
-    }
-    ArrayList localArrayList = new ArrayList();
-    if (!TextUtils.isEmpty(this.item.lipsStyleMask)) {
-      localArrayList.add(this.item.lipsStyleMask);
-    }
-    if (TextUtils.isEmpty(this.item.id))
+    int i = 0;
+    try
     {
-      localArrayList.add(this.item.faceExchangeImage);
-      if (this.item.blendMode == 14) {
-        localArrayList.add(this.item.irisImage);
+      this.mGrayImageTask = new LoadGrayImageTask(this.mGrayCache, this.item.featureType, this.sampleSize);
+      if (this.mGrayImageTask.getStatus() != AsyncTask.Status.RUNNING) {
+        this.mGrayImageTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
       }
-      this.mFaceImageTask = new LoadImageTask(this.mCache, localArrayList, this.dataPath, VideoMaterialUtil.getMaterialId(this.dataPath), this.sampleSize);
-      this.mFaceImageTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
+      this.mGrayImageTask2 = new LoadGrayImageTask(this.mGrayCache, FaceOffUtil.FeatureType.MASK, this.sampleSize);
+      if (this.mGrayImageTask2.getStatus() != AsyncTask.Status.RUNNING) {
+        this.mGrayImageTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
+      }
+      this.mGrayImageTask3 = new LoadGrayImageTask(this.mGrayCache, FaceOffUtil.FeatureType.NOSE_MASK, this.sampleSize);
+      if (this.mGrayImageTask3.getStatus() != AsyncTask.Status.RUNNING) {
+        this.mGrayImageTask3.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
+      }
+      this.mGrayImageTask4 = new LoadGrayImageTask(this.mGrayCache, FaceOffUtil.FeatureType.LIPS_MASK, this.sampleSize);
+      if (this.mGrayImageTask4.getStatus() != AsyncTask.Status.RUNNING) {
+        this.mGrayImageTask4.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
+      }
+      ArrayList localArrayList = new ArrayList();
+      if (!TextUtils.isEmpty(this.item.lipsStyleMask)) {
+        localArrayList.add(this.item.lipsStyleMask);
+      }
+      if (TextUtils.isEmpty(this.item.id))
+      {
+        localArrayList.add(this.item.faceExchangeImage);
+        if (this.item.blendMode == 14) {
+          localArrayList.add(this.item.irisImage);
+        }
+        this.mFaceImageTask = new LoadImageTask(this.mCache, localArrayList, this.dataPath, VideoMaterialUtil.getMaterialId(this.dataPath), this.sampleSize);
+        this.mFaceImageTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
+        return;
+      }
+      while (i < this.item.frames)
+      {
+        localArrayList.add(this.item.id + "_" + i + ".png");
+        i += 1;
+      }
+      this.mImageTask = new LoadImageTask(this.mCache, localArrayList, this.dataPath + File.separator + this.item.id, VideoMaterialUtil.getMaterialId(this.dataPath), this.sampleSize);
+      this.mImageTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
       return;
     }
-    int i = 0;
-    while (i < this.item.frames)
+    catch (Exception localException)
     {
-      localArrayList.add(this.item.id + "_" + i + ".png");
-      i += 1;
+      LogUtils.e("LoadFaceItemManager", "prepareImages():Exception-" + localException.getMessage());
     }
-    this.mImageTask = new LoadImageTask(this.mCache, localArrayList, this.dataPath + File.separator + this.item.id, VideoMaterialUtil.getMaterialId(this.dataPath), this.sampleSize);
-    this.mImageTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
   }
   
   public void reset() {}

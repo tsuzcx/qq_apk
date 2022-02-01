@@ -1,77 +1,26 @@
-import com.tencent.superplayer.api.ISPlayerPreDownloader;
-import com.tencent.superplayer.api.ISPlayerPreDownloader.Listener;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.app.Activity;
+import android.view.View;
+import android.view.ViewTreeObserver.OnDrawListener;
+import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.1.1;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/superplayer/SuperPlayerPreloader;", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerPreloader;", "Lcom/tencent/superplayer/api/ISPlayerPreDownloader$Listener;", "preloader", "Lcom/tencent/superplayer/api/ISPlayerPreDownloader;", "(Lcom/tencent/superplayer/api/ISPlayerPreDownloader;)V", "listener", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerPreloader$Listener;", "destory", "", "isVideoCached", "", "videoInfo", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/PlayerVideoInfo;", "onPrepareDownloadProgressUpdate", "p0", "p1", "p2", "p3", "", "p4", "onPrepareError", "onPrepareSuccess", "setPreDownloadListener", "startPreDownload", "videoDurationMs", "preloadDurationMs", "stopPreDownload", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class shm
-  implements ISPlayerPreDownloader.Listener, sha
+public class shm
+  implements ViewTreeObserver.OnDrawListener
 {
-  private final ISPlayerPreDownloader jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
-  private shc jdField_a_of_type_Shc;
+  int jdField_a_of_type_Int = 0;
   
-  public shm(@Nullable ISPlayerPreDownloader paramISPlayerPreDownloader)
+  shm(shl paramshl, skq paramskq) {}
+  
+  public void onDraw()
   {
-    this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader = paramISPlayerPreDownloader;
-  }
-  
-  public int a(@NotNull shi paramshi)
-  {
-    Intrinsics.checkParameterIsNotNull(paramshi, "videoInfo");
-    return 0;
-  }
-  
-  public void a()
-  {
-    ISPlayerPreDownloader localISPlayerPreDownloader = this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
-    if (localISPlayerPreDownloader != null) {
-      localISPlayerPreDownloader.stopAllPreDownload();
-    }
-  }
-  
-  public void a(@Nullable shc paramshc)
-  {
-    this.jdField_a_of_type_Shc = paramshc;
-    paramshc = this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
-    if (paramshc != null) {
-      paramshc.setOnPreDownloadListener((ISPlayerPreDownloader.Listener)this);
-    }
-  }
-  
-  public void a(@NotNull shi paramshi, long paramLong1, long paramLong2)
-  {
-    Intrinsics.checkParameterIsNotNull(paramshi, "videoInfo");
-    ISPlayerPreDownloader localISPlayerPreDownloader = this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
-    if (localISPlayerPreDownloader != null) {
-      localISPlayerPreDownloader.startPreDownload(shj.a(paramshi), paramLong1, paramLong2);
-    }
-  }
-  
-  public void b()
-  {
-    ISPlayerPreDownloader localISPlayerPreDownloader = this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
-    if (localISPlayerPreDownloader != null) {
-      localISPlayerPreDownloader.destory();
-    }
-  }
-  
-  public void onPrepareDownloadProgressUpdate(int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2) {}
-  
-  public void onPrepareError(int paramInt)
-  {
-    shc localshc = this.jdField_a_of_type_Shc;
-    if (localshc != null) {
-      localshc.a();
-    }
-  }
-  
-  public void onPrepareSuccess(int paramInt)
-  {
-    shc localshc = this.jdField_a_of_type_Shc;
-    if (localshc != null) {
-      localshc.b();
+    this.jdField_a_of_type_Int += 1;
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      this.jdField_a_of_type_Shl.a.getWindow().getDecorView().post(new VideoFeedsAdapter.1.1(this, this));
+      if (this.jdField_a_of_type_Skq == shl.a(this.jdField_a_of_type_Shl).jdField_a_of_type_Skq) {
+        shl.a(this.jdField_a_of_type_Shl).a(this.jdField_a_of_type_Skq, false);
+      }
     }
   }
 }

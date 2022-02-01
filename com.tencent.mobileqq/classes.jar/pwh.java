@@ -1,49 +1,11 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Request0xb81Params;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq;
-import java.util.List;
-
-public class pwh
+final class pwh
+  implements pwk
 {
-  private int jdField_a_of_type_Int = 1;
-  private List<ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq> jdField_a_of_type_JavaUtilList;
-  private int b;
-  private int c;
-  private int d;
-  private int e;
+  public void l() {}
   
-  public ReadInJoyUserInfoModule.Request0xb81Params a()
+  public void m()
   {
-    return new ReadInJoyUserInfoModule.Request0xb81Params(this, null);
-  }
-  
-  public pwh a(int paramInt)
-  {
-    this.b = paramInt;
-    return this;
-  }
-  
-  public pwh a(List<ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    return this;
-  }
-  
-  public pwh b(int paramInt)
-  {
-    this.c = paramInt;
-    return this;
-  }
-  
-  public pwh c(int paramInt)
-  {
-    this.d = paramInt;
-    return this;
-  }
-  
-  public pwh d(int paramInt)
-  {
-    this.e = paramInt;
-    return this;
+    pwb.a().a("2909288299", pwf.b, false, null, false);
   }
 }
 

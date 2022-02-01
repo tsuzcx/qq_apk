@@ -1,44 +1,24 @@
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.vip.ad.TianshuSplashManager.TianShuGetSplashCallback.1;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import cooperation.vip.tianshu.TianShuGetAdvCallback;
+import mqq.os.MqqHandler;
+
 public class bmlk
+  implements TianShuGetAdvCallback
 {
-  private long a;
-  private long b;
-  private long c;
-  private long d;
-  private long e;
+  public String a;
   
-  public static bmlk a()
+  public bmlk(bmlj parambmlj, String paramString)
   {
-    return bmlm.a;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public long a(long paramLong, boolean paramBoolean)
+  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
-    this.a = paramLong;
-    if (this.e >= this.b) {
-      return this.c + this.a;
+    if ((paramBoolean) && (paramGetAdsRsp != null)) {
+      ThreadManager.getUIHandler().postDelayed(new TianshuSplashManager.TianShuGetSplashCallback.1(this, paramGetAdsRsp), 500L);
     }
-    if (paramBoolean) {
-      return this.c + this.a % this.e;
-    }
-    return this.c + this.a;
-  }
-  
-  public long a(boolean paramBoolean)
-  {
-    return a(this.a, paramBoolean);
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    this.a = paramLong1;
-    this.b = paramLong2;
-  }
-  
-  public void b(long paramLong1, long paramLong2)
-  {
-    this.c = paramLong1;
-    this.d = paramLong2;
-    this.e = (paramLong2 - paramLong1);
   }
 }
 

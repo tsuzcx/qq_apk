@@ -1,22 +1,24 @@
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class bebb
+final class bebb
+  implements DialogInterface.OnClickListener
 {
-  public String a;
-  public String b;
-  public String c;
+  bebb(Context paramContext, String paramString) {}
   
-  public static bebb a(JSONObject paramJSONObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramJSONObject != null)
+    try
     {
-      bebb localbebb = new bebb();
-      localbebb.a = paramJSONObject.optString("apurl");
-      localbebb.c = paramJSONObject.optString("img");
-      localbebb.b = paramJSONObject.optString("rl");
-      return localbebb;
+      auea.c(this.jdField_a_of_type_AndroidContentContext, arng.a().a());
+      return;
     }
-    return null;
+    catch (Exception paramDialogInterface)
+    {
+      QLog.i(this.jdField_a_of_type_JavaLangString, 1, paramDialogInterface.toString());
+    }
   }
 }
 

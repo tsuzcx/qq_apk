@@ -1,30 +1,16 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
 
-class bgws
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class bgws
+  implements DialogInterface.OnClickListener
 {
-  bgws(bgwr parambgwr, View paramView) {}
+  public bgws(UpgradeActivity paramUpgradeActivity) {}
   
-  public void onGlobalLayout()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Rect localRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
-    int i = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight() - localRect.height();
-    if (QLog.isDevelopLevel()) {
-      QLog.d("SwiftBrowserScreenShotHandler", 2, "heightDiff:" + i);
-    }
-    if (i > 150)
-    {
-      this.jdField_a_of_type_Bgwr.c = true;
-      this.jdField_a_of_type_Bgwr.a(false, 0);
-    }
-    while (!this.jdField_a_of_type_Bgwr.c) {
-      return;
-    }
-    this.jdField_a_of_type_Bgwr.c = false;
+    UpgradeActivity.a(this.a, true);
+    bdla.b(this.a.app, "CliOper", "", "", "0X8004DA1", "0X8004DA1", 0, 0, bgvw.b(), String.valueOf(0), bgvx.a(), "");
   }
 }
 

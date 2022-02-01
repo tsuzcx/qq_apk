@@ -1,75 +1,61 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.together.writetogether.data.GetChangesetsResp;
+import com.tencent.mobileqq.together.writetogether.websocket.msg.NewChangesMsg.Data;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.lang.ref.WeakReference;
+import java.util.TreeSet;
 
-public class benv
-  extends JobSegment<bent, bent>
+class benv
+  extends benp
 {
-  private int jdField_a_of_type_Int;
-  private bent jdField_a_of_type_Bent;
-  private bkxx jdField_a_of_type_Bkxx;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<XMediaEditor> jdField_a_of_type_JavaLangRefWeakReference;
+  benv(benu parambenu) {}
   
-  public benv(int paramInt, XMediaEditor paramXMediaEditor, String paramString)
+  public void a(boolean paramBoolean, GetChangesetsResp paramGetChangesetsResp)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramXMediaEditor);
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  protected void a(JobContext paramJobContext, bent parambent)
-  {
-    if (isCanceled()) {
-      return;
-    }
+    int j = 0;
+    int i = 0;
     if (QLog.isColorLevel()) {
-      QLog.d("UploadMediaSegment", 2, new Object[] { "UploadMediaSegment start. mediaType=", Integer.valueOf(this.jdField_a_of_type_Int), ", info status=", Integer.valueOf(parambent.g) });
+      QLog.i("ChangesetClient", 2, "onPullPad");
     }
-    this.jdField_a_of_type_Bent = parambent;
-    switch (this.jdField_a_of_type_Int)
+    NewChangesMsg.Data localData;
+    if (paramBoolean)
     {
-    }
-    for (paramJobContext = parambent.c;; paramJobContext = ((benz)parambent).g)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadMediaSegment", 2, new Object[] { "UploadMediaSegment start - getFilePath: ", paramJobContext });
+      if ((paramGetChangesetsResp.changes.length > 0) && (paramGetChangesetsResp.changes[0].a.newRev > this.a.jdField_a_of_type_Int + 1))
+      {
+        QLog.w("ChangesetClient", 1, "get newer cs, store it");
+        paramGetChangesetsResp = paramGetChangesetsResp.changes;
+        j = paramGetChangesetsResp.length;
       }
-      if (TextUtils.isEmpty(paramJobContext)) {
-        break;
+      for (;;)
+      {
+        if (i < j)
+        {
+          localData = paramGetChangesetsResp[i];
+          this.a.jdField_a_of_type_JavaUtilTreeSet.add(localData.a);
+          i += 1;
+          continue;
+          paramGetChangesetsResp = paramGetChangesetsResp.changes;
+          int k = paramGetChangesetsResp.length;
+          i = j;
+          if (i < k)
+          {
+            localData = paramGetChangesetsResp[i].a;
+            if (localData.newRev <= this.a.jdField_a_of_type_Int) {
+              QLog.w("ChangesetClient", 1, "get duplicate cs");
+            }
+          }
+        }
       }
-      this.jdField_a_of_type_Bkxx = parambent.a(paramJobContext, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Bkxx.a(new benw(this));
-      this.jdField_a_of_type_Bkxx.b();
-      return;
-    }
-    notifyError(new Error("-2"));
-  }
-  
-  public void onCancel()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(getClass().getSimpleName(), 2, new Object[] { "UploadMediaSegment onCancel. mediaType=", Integer.valueOf(this.jdField_a_of_type_Int) });
-    }
-    if (this.jdField_a_of_type_Bkxx != null) {
-      this.jdField_a_of_type_Bkxx.c();
-    }
-    Error localError;
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      localError = new Error("c_1001");
     }
     for (;;)
     {
-      notifyError(localError);
-      return;
-      localError = new Error("c_2002");
-      continue;
-      localError = new Error("c_2003");
+      i += 1;
+      break;
+      if (localData.newRev > this.a.jdField_a_of_type_Int + 1)
+      {
+        QLog.e("ChangesetClient", 1, "get broken cs");
+        this.a.b();
+        return;
+      }
+      benu.a(this.a, localData);
     }
   }
 }

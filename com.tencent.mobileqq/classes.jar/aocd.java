@@ -1,40 +1,75 @@
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.RecentUser;
+import mqq.manager.Manager;
+
 public class aocd
-  extends aobf
+  implements Manager
 {
-  public aoex a;
-  public aokz a;
-  public boolean a;
-  public long b;
-  public String b;
-  public int d;
-  public int e = 1;
+  private QQAppInterface a;
   
-  public aocd(String paramString1, int paramInt1, int paramInt2, int paramInt3, aokz paramaokz, aoex paramaoex, String paramString2, long paramLong, boolean paramBoolean, int paramInt4, int paramInt5, float paramFloat1, float paramFloat2, float paramFloat3)
+  public aocd(QQAppInterface paramQQAppInterface)
   {
-    super(paramString1, paramInt1, paramInt2, paramInt5, paramFloat1, paramFloat2, paramFloat3);
-    this.d = paramInt3;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.e = paramInt4;
-    this.jdField_a_of_type_Aokz = paramaokz;
-    this.jdField_a_of_type_Aoex = paramaoex;
+    if (paramQQAppInterface == null) {
+      throw new NullPointerException("RecentManagerFor3rdPart, app is null");
+    }
+    this.a = paramQQAppInterface;
   }
   
-  public String toString()
+  public boolean a(String paramString, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder("OnlineVideoARRenderableInfo{");
-    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", trackMode=").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", mRealRenderType=").append(this.d);
-    localStringBuilder.append(", mKeyingParams='").append(this.jdField_a_of_type_Aokz).append('\'');
-    localStringBuilder.append(", mVideoUrl='").append(this.jdField_b_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", mVideoSize='").append(this.jdField_b_of_type_Long).append('\'');
-    localStringBuilder.append(", mLayout='").append(this.jdField_a_of_type_Aoex).append('\'');
-    localStringBuilder.append(", isSoftPlay='").append(this.jdField_a_of_type_Boolean).append('\'');
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    if ((this.a != null) && (this.a.isAccLoginSuccess()))
+    {
+      aoxz localaoxz = this.a.getProxyManager().a();
+      paramString = (RecentUser)localaoxz.findRecentUser(paramString, paramInt);
+      if (paramString != null)
+      {
+        localaoxz.delRecentUser(paramString);
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public boolean a(String paramString, int paramInt, long paramLong)
+  {
+    if ((this.a != null) && (this.a.isAccLoginSuccess()))
+    {
+      aoxz localaoxz = this.a.getProxyManager().a();
+      paramString = (RecentUser)localaoxz.findRecentUser(paramString, paramInt);
+      if (paramString != null)
+      {
+        paramString.lastmsgtime = paramLong;
+        localaoxz.saveRecentUser(paramString);
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public boolean a(String paramString1, int paramInt, String paramString2, long paramLong1, long paramLong2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return false;
+    }
+    if ((this.a != null) && (this.a.isAccLoginSuccess()))
+    {
+      aoxz localaoxz = this.a.getProxyManager().a();
+      RecentUser localRecentUser = (RecentUser)localaoxz.findRecentUserByUin(paramString1, paramInt);
+      localRecentUser.uin = paramString1;
+      localRecentUser.setType(paramInt);
+      localRecentUser.displayName = paramString2;
+      localRecentUser.lastmsgtime = paramLong1;
+      localRecentUser.lastmsgdrafttime = paramLong2;
+      localaoxz.saveRecentUser(localRecentUser);
+    }
+    return true;
+  }
+  
+  public void onDestroy()
+  {
+    this.a = null;
   }
 }
 

@@ -1,53 +1,79 @@
-import android.text.TextUtils;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import com.tencent.mobileqq.widget.CircleProgress;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class aqez
-  implements apts<String>
+  implements View.OnTouchListener
 {
-  public boolean a;
+  public aqez(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
   
-  public void a(String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QLog.i("QFileApkCheckConfigBean", 1, "configID:663 onParse apkcheckConfig:" + paramString);
-    String str = "";
-    if (!TextUtils.isEmpty(paramString)) {
-      str = paramString.toLowerCase();
+    boolean bool = true;
+    if (!this.a.jdField_c_of_type_Boolean) {
+      bool = false;
     }
-    if (TextUtils.isEmpty(str))
+    do
     {
-      QLog.w("QFileApkCheckConfigBean", 1, "apkcheckConfig is empty, configID:663 use default value");
-      this.a = false;
-      return;
-    }
-    try
-    {
-      paramString = new JSONObject(str).getJSONObject("apkcheckconfig");
-      if (paramString == null) {
-        break label118;
-      }
-      if (paramString.has("enable"))
+      return bool;
+      if ((paramView == this.a.jdField_a_of_type_AndroidWidgetImageView) || (paramView == this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress)) {}
+      switch (paramMotionEvent.getAction())
       {
-        this.a = paramString.getBoolean("enable");
-        return;
+      case 2: 
+      default: 
+        return false;
+      case 0: 
+        this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
+        this.a.jdField_b_of_type_AndroidWidgetButton.setVisibility(4);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("0\"");
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
+        this.a.jdField_c_of_type_AndroidWidgetTextView.setVisibility(4);
+        this.a.d.setVisibility(4);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+        this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setVisibility(0);
+        this.a.e.setVisibility(4);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(0.0F);
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a = System.currentTimeMillis();
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.e();
+        if (this.a.jdField_b_of_type_Int == 1) {}
+        for (int i = 0;; i = 1)
+        {
+          bdla.b(null, "dc00898", "", "", "0X8007106", "0X8007106", i, 0, "", "", "", "");
+          return true;
+        }
       }
+      if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a()) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("DynamicAvatarRecordActivity", 2, "ACTION_UP, current state is already preview!");
+    return true;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.e();
     }
-    catch (JSONException paramString)
+    if (System.currentTimeMillis() - this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a < 500L)
     {
-      QLog.e("QFileApkCheckConfigBean", 1, paramString, new Object[0]);
-      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.b(false);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.d();
+      DynamicAvatarRecordActivity.a(this.a);
+      return true;
     }
-    this.a = false;
-    return;
-    label118:
-    QLog.w("QFileApkCheckConfigBean", 1, "apkcheckConfig is no enable. use default value");
-    this.a = false;
+    DynamicAvatarRecordActivity.b(this.a);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqez
  * JD-Core Version:    0.7.0.1
  */

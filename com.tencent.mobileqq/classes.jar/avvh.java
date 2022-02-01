@@ -1,69 +1,31 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.widget.Button;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCAuthFragment;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.navbar.NavBarCommon;
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.NowLive;
+import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
 
-public class avvh
-  implements Handler.Callback
+class avvh
+  implements avxb
 {
-  public avvh(MsgBackupPCAuthFragment paramMsgBackupPCAuthFragment) {}
+  avvh(avux paramavux) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
   {
-    if (paramMessage.what == 1)
-    {
-      if (this.a.getActivity() == null) {
-        return true;
-      }
-      if (MsgBackupPCAuthFragment.a(this.a) > 0)
-      {
-        if (MsgBackupPCAuthFragment.a(this.a) == 60)
-        {
-          MsgBackupPCAuthFragment.a(this.a, 1);
-          MsgBackupPCAuthFragment.a(this.a).setLeftBackVisible(0);
-          MsgBackupPCAuthFragment.b(this.a).setRightViewTextVisible(8);
-        }
-        MsgBackupPCAuthFragment.b(this.a);
-        this.a.b.setText(this.a.getString(2131690507, new Object[] { Integer.valueOf(MsgBackupPCAuthFragment.a(this.a)) }));
-        if (AppSetting.c) {
-          this.a.b.setContentDescription(this.a.getString(2131690507));
-        }
-        MsgBackupPCAuthFragment.a(this.a).sendEmptyMessageDelayed(1, 1000L);
-        return true;
-      }
-      MsgBackupPCAuthFragment.a(this.a).removeCallbacksAndMessages(null);
-      MsgBackupPCAuthFragment.a(this.a, 60);
-      MsgBackupPCAuthFragment.a(this.a, false);
-      if (NetworkUtil.getSystemNetwork(this.a.getActivity()) == 1)
-      {
-        i = 1;
-        label205:
-        paramMessage = this.a;
-        if (i == 0) {
-          break label288;
-        }
-      }
-      label288:
-      for (int i = 0;; i = 2)
-      {
-        MsgBackupPCAuthFragment.a(paramMessage, i);
-        MsgBackupPCAuthFragment.c(this.a).setLeftBackVisible(0);
-        MsgBackupPCAuthFragment.d(this.a).setRightViewTextVisible(8);
-        this.a.b.setText(2131690497);
-        if (!AppSetting.c) {
-          break;
-        }
-        this.a.b.setContentDescription(this.a.getString(2131690497));
-        return true;
-        i = 0;
-        break label205;
-      }
-    }
-    return false;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("ctrl_cmd", 101);
+    NowLive.sendServerPushMessage(avux.a(this.a, localBundle, paramNewTogetherRoomMessageData));
+  }
+  
+  public void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("ctrl_cmd", 102);
+    NowLive.sendServerPushMessage(avux.a(this.a, localBundle, paramNewTogetherRoomMessageData));
+  }
+  
+  public void c(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("ctrl_cmd", 103);
+    NowLive.sendServerPushMessage(avux.a(this.a, localBundle, paramNewTogetherRoomMessageData));
   }
 }
 

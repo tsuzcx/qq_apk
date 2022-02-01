@@ -1,75 +1,52 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.mobileqq.config.business.qvip.QQFriendRelation2Config;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.database.sqlite.SQLiteDatabase;
+import com.tencent.mobileqq.app.SQLiteOpenHelper;
+import com.tencent.mobileqq.data.RockDownloadInfo;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManagerFactory.SQLiteOpenHelperImpl;
+import com.tencent.mobileqq.persistence.TableBuilder;
+import java.util.HashMap;
+import java.util.Map;
 
 public class aqgl
-  extends aqgc<QQFriendRelation2Config>
+  extends EntityManagerFactory
 {
-  public static QQFriendRelation2Config c()
+  private static Map<String, Class<?>> a = new HashMap();
+  
+  static
   {
-    QQFriendRelation2Config localQQFriendRelation2Config2 = (QQFriendRelation2Config)apub.a().a(491);
-    QQFriendRelation2Config localQQFriendRelation2Config1 = localQQFriendRelation2Config2;
-    if (localQQFriendRelation2Config2 == null) {
-      localQQFriendRelation2Config1 = new QQFriendRelation2Config();
-    }
-    return localQQFriendRelation2Config1;
+    a.put(RockDownloadInfo.class.getSimpleName(), RockDownloadInfo.class);
   }
   
-  @NonNull
-  public QQFriendRelation2Config a()
+  public aqgl()
   {
-    return new QQFriendRelation2Config();
+    super("RockDownload");
   }
   
-  @NonNull
-  public QQFriendRelation2Config a(aptx[] paramArrayOfaptx)
+  public SQLiteOpenHelper build(String paramString)
   {
-    boolean bool = true;
-    localQQFriendRelation2Config = new QQFriendRelation2Config();
-    paramArrayOfaptx = paramArrayOfaptx[0].a;
-    try
+    if (this.dbHelper == null)
     {
-      if (!TextUtils.isEmpty(paramArrayOfaptx)) {
-        if (new JSONObject(paramArrayOfaptx).optInt("enable", 1) != 1) {
-          break label49;
-        }
-      }
-      for (;;)
-      {
-        localQQFriendRelation2Config.mIsEnable = bool;
-        return localQQFriendRelation2Config;
-        label49:
-        bool = false;
-      }
-      return localQQFriendRelation2Config;
+      this.mInnerDbHelper = new EntityManagerFactory.SQLiteOpenHelperImpl(this, paramString + ".db", null, 1);
+      this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
     }
-    catch (JSONException paramArrayOfaptx)
-    {
-      xvv.e("QQFriendRelation2Processor", "QQFriendRelation2Config onParsed exception :" + paramArrayOfaptx.getMessage());
-    }
+    return this.dbHelper;
   }
   
-  @NonNull
-  public QQFriendRelation2Config b()
+  public void createDatabase(SQLiteDatabase paramSQLiteDatabase)
   {
-    return new QQFriendRelation2Config();
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new RockDownloadInfo()));
   }
   
-  public Class<QQFriendRelation2Config> clazz()
+  public String getPackageName()
   {
-    return QQFriendRelation2Config.class;
+    return getClass().getPackage().getName();
   }
   
-  public int type()
-  {
-    return 491;
-  }
+  public void upgradeDatabase(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqgl
  * JD-Core Version:    0.7.0.1
  */

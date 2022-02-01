@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import bkwf;
+import bmho;
 
 public class DrawHbFragment$DrawHbBundleInfo
-  extends bkwf
+  extends bmho
 {
   public String drawParam;
   public String modelList;

@@ -1,22 +1,93 @@
-import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
-import dov.com.qq.im.ae.camera.core.AECameraManager.CameraOpenCallback;
+import android.content.Context;
 
-class blip
-  implements AECameraManager.CameraOpenCallback
+public class blip
 {
-  blip(blio paramblio) {}
+  protected int a;
+  Context a;
+  protected blio a;
+  protected blir a;
+  protected boolean a;
   
-  public void onOpenResult(int paramInt, boolean paramBoolean)
+  public blip(blio paramblio, Context paramContext)
   {
+    this.jdField_a_of_type_Int = 5;
+    this.jdField_a_of_type_Blio = paramblio;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(blir paramblir)
+  {
+    this.jdField_a_of_type_Blir = paramblir;
+    if (paramblir != null)
+    {
+      a(true);
+      a(true, false);
+    }
+    this.jdField_a_of_type_Blio.setOnClickListener(new bliq(this));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Boolean == paramBoolean) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
     if (paramBoolean)
     {
-      this.a.a.onChangeCamera(paramInt);
-      if (this.a.b()) {
-        babb.a(paramInt);
-      }
-      this.a.c();
-      this.a.l();
+      this.jdField_a_of_type_Blio.a(3);
+      return;
     }
+    this.jdField_a_of_type_Blio.a(0);
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (!paramBoolean1)
+    {
+      this.jdField_a_of_type_Blio.a(5);
+      return;
+    }
+    if (paramBoolean2) {}
+    for (int i = 3;; i = 4)
+    {
+      this.jdField_a_of_type_Blio.a(i);
+      if ((!this.jdField_a_of_type_Blio.b(i)) || (this.jdField_a_of_type_Blir == null)) {
+        break;
+      }
+      this.jdField_a_of_type_Blir.c();
+      return;
+    }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    boolean bool;
+    do
+    {
+      do
+      {
+        return;
+      } while ((this.jdField_a_of_type_Blio.a() == 0) || (!this.jdField_a_of_type_Blio.b(2)));
+      bool = true;
+      if (this.jdField_a_of_type_Blir != null) {
+        bool = this.jdField_a_of_type_Blir.a(paramBoolean);
+      }
+    } while (!bool);
+    this.jdField_a_of_type_Blio.a(2);
   }
 }
 

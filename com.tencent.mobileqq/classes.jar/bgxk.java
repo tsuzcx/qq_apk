@@ -1,21 +1,36 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 
-class bgxk
-  implements View.OnClickListener
+final class bgxk
+  implements DownloadParams.DecodeHandler
 {
-  bgxk(bgxh parambgxh) {}
-  
-  public void onClick(View paramView)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
     }
-    this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(102));
-    EventCollector.getInstance().onViewClicked(paramView);
+    Object localObject;
+    do
+    {
+      do
+      {
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 2);
+    paramDownloadParams = (int[])localObject;
+    float f2 = DeviceInfoUtil.getDesity();
+    float f1 = f2;
+    if (f2 < 0.01F) {
+      f1 = 1.0F;
+    }
+    paramDownloadParams[0] = ((int)(paramDownloadParams[0] / f1));
+    paramDownloadParams[1] = ((int)(paramDownloadParams[1] / f1));
+    return bheg.a(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
   }
 }
 

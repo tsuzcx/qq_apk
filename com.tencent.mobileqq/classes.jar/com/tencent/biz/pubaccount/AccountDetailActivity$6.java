@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount;
 
-import bfwu;
+import bhfm;
 import com.tencent.mobileqq.app.PublicAccountHandler;
 import com.tencent.qphone.base.util.QLog;
 
@@ -20,7 +20,7 @@ class AccountDetailActivity$6
     if (this.this$0.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams == null) {}
     for (boolean bool = true;; bool = false)
     {
-      bfwu.a("pubAcc_follow_confirm", null, this.this$0.e);
+      bhfm.a("pubAcc_follow_confirm", null, this.this$0.e);
       if (!this.this$0.c(this.this$0.jdField_a_of_type_ComTencentMobileqqDataAccountDetail)) {
         break;
       }

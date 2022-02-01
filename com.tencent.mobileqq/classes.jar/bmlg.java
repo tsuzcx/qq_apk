@@ -1,11 +1,19 @@
-class bmlg
-  implements bmdp
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
+
+final class bmlg
+  implements View.OnClickListener
 {
-  bmlg(bmlf parambmlf) {}
+  bmlg(MqqHandler paramMqqHandler, QQAppInterface paramQQAppInterface, bbbu parambbbu) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    bmlf.a(this.a, paramInt);
+    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(9);
+    bmlf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 122, this.jdField_a_of_type_Bbbu.a, this.jdField_a_of_type_Bbbu.b);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

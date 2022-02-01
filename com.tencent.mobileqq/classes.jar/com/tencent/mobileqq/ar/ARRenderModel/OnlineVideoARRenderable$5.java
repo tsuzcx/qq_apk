@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import aocb;
+import apfd;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.superplayer.api.ISuperPlayer;
 
 public class OnlineVideoARRenderable$5
   implements Runnable
 {
-  public OnlineVideoARRenderable$5(aocb paramaocb) {}
+  public OnlineVideoARRenderable$5(apfd paramapfd) {}
   
   public void run()
   {
     try
     {
-      aocb.a(this.this$0).stop();
+      apfd.a(this.this$0).stop();
     }
     catch (Exception localException1)
     {
@@ -21,9 +21,9 @@ public class OnlineVideoARRenderable$5
       {
         try
         {
-          aocb.b(this.this$0, true);
-          aocb.a(this.this$0, aocb.a(this.this$0));
-          aocb.h(this.this$0);
+          apfd.b(this.this$0, true);
+          apfd.a(this.this$0, apfd.a(this.this$0));
+          apfd.h(this.this$0);
           return;
         }
         catch (Exception localException2)

@@ -279,23 +279,6 @@ public class FastRenderFilter
     return localObject1;
   }
   
-  public void OnDrawFrameGLSL()
-  {
-    this.shader.bind();
-    Iterator localIterator = this.mParamList.values().iterator();
-    while (localIterator.hasNext()) {
-      ((UniformParam)localIterator.next()).setParams(this.shader.getShaderProgram());
-    }
-    localIterator = this.mAttrParams.values().iterator();
-    while (localIterator.hasNext())
-    {
-      AttributeParam localAttributeParam = (AttributeParam)localIterator.next();
-      if (localAttributeParam.handle >= 0) {
-        localAttributeParam.setParams(this.shader.getShaderProgram());
-      }
-    }
-  }
-  
   public void addAttribParam(AttributeParam paramAttributeParam)
   {
     if (paramAttributeParam == null) {
@@ -406,6 +389,23 @@ public class FastRenderFilter
     }
   }
   
+  public void onDrawFrameGLSL()
+  {
+    this.shader.bind();
+    Iterator localIterator = this.mParamList.values().iterator();
+    while (localIterator.hasNext()) {
+      ((UniformParam)localIterator.next()).setParams(this.shader.getShaderProgram());
+    }
+    localIterator = this.mAttrParams.values().iterator();
+    while (localIterator.hasNext())
+    {
+      AttributeParam localAttributeParam = (AttributeParam)localIterator.next();
+      if (localAttributeParam.handle >= 0) {
+        localAttributeParam.setParams(this.shader.getShaderProgram());
+      }
+    }
+  }
+  
   public void render(int paramInt, List<RenderParam> paramList, Frame paramFrame, boolean paramBoolean)
   {
     if (paramInt > 0) {
@@ -435,7 +435,7 @@ public class FastRenderFilter
         while (paramList.hasNext()) {
           if (mergeRenderParams((List)paramList.next(), true))
           {
-            OnDrawFrameGLSL();
+            onDrawFrameGLSL();
             renderTexture();
           }
         }
@@ -445,7 +445,7 @@ public class FastRenderFilter
       while (paramList.hasNext()) {
         if (mergeRenderParams((List)paramList.next()))
         {
-          OnDrawFrameGLSL();
+          onDrawFrameGLSL();
           renderTexture();
         }
       }

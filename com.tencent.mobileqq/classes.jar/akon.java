@@ -1,75 +1,74 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Intent;
+import com.tencent.component.media.image.ImageManager;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.activity.shortvideo.SendVideoActivity.SendVideoInfo;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class akon
-  extends akns
+  extends akmj
 {
-  public akon(Context paramContext)
+  protected akon(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    this.jdField_a_of_type_JavaLangString = ("[" + amtj.a(2131698745) + "]");
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    super(paramNewPhotoListActivity);
   }
   
-  public Object a(int paramInt, bdyi parambdyi, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  protected void a(Intent paramIntent, boolean paramBoolean, ArrayList<String> paramArrayList)
   {
-    if ((paramObject instanceof akon))
+    int i2 = PhotoUtils.getTypeforReportSpcialDiscuss(this.a.a);
+    paramIntent = new HashMap();
+    int i1 = 0;
+    int k = 0;
+    int j = 0;
+    int i = 0;
+    while (i1 < this.mPhotoCommonData.selectedPhotoList.size())
     {
-      paramObject = (akon)paramObject;
-      paramObject.jdField_a_of_type_Bdyj.a(parambdyi.jdField_a_of_type_Bdyj);
-      return paramObject;
-    }
-    paramObject = new akon(BaseApplication.getContext());
-    paramObject.jdField_a_of_type_Bdyj = new bdyj(parambdyi.jdField_a_of_type_Bdyj);
-    return paramObject;
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
-    {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
-      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      if (this.jdField_a_of_type_Bdyj == null) {
-        this.jdField_a_of_type_Bdyj = new bdyj();
-      }
-      this.jdField_a_of_type_Bdyj.a(paramArrayOfByte.getString("messageNavInfo"));
-      return;
-    }
-    catch (JSONException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-  }
-  
-  public byte[] a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
-      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_Bdyj != null) {
-        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bdyj.a());
-      }
-      return localJSONObject.toString().getBytes();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      paramArrayList = (String)this.mPhotoCommonData.selectedPhotoList.get(i1);
+      int m;
+      if (ImageManager.isNetworkUrl(paramArrayList))
       {
-        localJSONException.printStackTrace();
+        m = k;
+        k = i;
+        i = m;
+        i1 += 1;
+        m = k;
+        k = i;
+        i = m;
+      }
+      else
+      {
+        int n;
+        if (((akmq)this.mOtherCommonData).a(this.mPhotoCommonData, paramArrayList) == 1)
+        {
+          paramArrayList = ((akmq)this.mOtherCommonData).a(this.mPhotoCommonData, paramArrayList);
+          n = j;
+          m = i;
+          if (paramArrayList != null)
+          {
+            SendVideoActivity.SendVideoInfo localSendVideoInfo = new SendVideoActivity.SendVideoInfo();
+            localSendVideoInfo.fileSize = paramArrayList.fileSize;
+            localSendVideoInfo.duration = paramArrayList.mDuration;
+            paramIntent.put(Integer.valueOf(k), localSendVideoInfo);
+            m = i + 1;
+            n = j;
+          }
+        }
+        for (;;)
+        {
+          i = k + 1;
+          j = n;
+          k = m;
+          break;
+          n = j + 1;
+          m = i;
+        }
       }
     }
+    bdla.b(null, "CliOper", "", "", "0X8009AB0", "0X8009AB0", i2, 0, String.valueOf(j), String.valueOf(i), "", "");
+    c();
   }
 }
 

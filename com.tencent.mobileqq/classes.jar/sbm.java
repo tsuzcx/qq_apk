@@ -1,12 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 class sbm
-  implements DialogInterface.OnClickListener
+  extends sbo
 {
-  sbm(sbk paramsbk) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public ImageView a;
+  public TextView a;
+  public TextView b;
+  public TextView c;
 }
 
 

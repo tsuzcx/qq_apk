@@ -1,26 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class aizh
-  implements View.OnClickListener
 {
-  public aizh(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.a.a.b.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(Long.valueOf(Long.parseLong((String)localIterator.next())));
-    }
-    ChatHistoryTroopMemberFragment.a(this.a, localArrayList);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public TextView b;
 }
 
 

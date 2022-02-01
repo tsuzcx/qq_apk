@@ -1,17 +1,57 @@
-import java.util.Comparator;
+import com.tencent.mobileqq.app.BusinessObserver;
 
 public class bebe
-  implements Comparator<bebc>
+  implements BusinessObserver
 {
-  public int a(bebc parambebc1, bebc parambebc2)
+  public void a(int paramInt) {}
+  
+  public void a(String paramString1, String paramString2) {}
+  
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4) {}
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (parambebc1.b < parambebc2.b) {
-      return 1;
+    switch (paramInt)
+    {
     }
-    if (parambebc1.b == parambebc2.b) {
-      return 0;
-    }
-    return -1;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    return;
+                  } while (paramObject == null);
+                  paramObject = (Object[])paramObject;
+                } while (paramObject.length != 2);
+                a((String)paramObject[0], (String)paramObject[1]);
+                return;
+              } while (paramObject == null);
+              paramObject = (Object[])paramObject;
+            } while (paramObject.length != 4);
+            a((String)paramObject[0], (String)paramObject[1], (String)paramObject[2], (String)paramObject[3]);
+            return;
+          } while (paramObject == null);
+          paramObject = (Object[])paramObject;
+        } while (paramObject.length != 2);
+        a(paramBoolean, (String)paramObject[0], (String)paramObject[1]);
+        return;
+      } while (paramObject == null);
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length != 1);
+    a(((Integer)paramObject[0]).intValue());
   }
 }
 

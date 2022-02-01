@@ -1,51 +1,80 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
+import com.tencent.mobileqq.transfile.predownload.HttpEngineTask.IHttpEngineTask;
+import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-class apmd
-  implements View.OnClickListener
+public class apmd
 {
-  apmc jdField_a_of_type_Apmc;
-  apmg jdField_a_of_type_Apmg;
+  protected static INetEngine.IBreakDownFix a;
+  public QQAppInterface a;
+  private INetEngine jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
+  private PreDownloadController jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private ArrayList<apmj> jdField_a_of_type_JavaUtilArrayList;
+  private HashMap<String, apmi> jdField_a_of_type_JavaUtilHashMap;
   
-  apmd(apmc paramapmc, apmg paramapmg)
+  static
   {
-    this.jdField_a_of_type_Apmc = paramapmc;
-    this.jdField_a_of_type_Apmg = paramapmg;
+    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new apmh();
   }
   
-  public void onClick(View paramView)
+  public apmd(QQAppInterface paramQQAppInterface)
   {
-    int i = this.jdField_a_of_type_Apmg.getAdapterPosition();
-    ColorNote localColorNote = (ColorNote)apmc.a(this.jdField_a_of_type_Apmc).get(i);
-    apkr.b(localColorNote.mServiceType, localColorNote.mSubType);
-    apmc.a(this.jdField_a_of_type_Apmc).remove(i);
-    this.jdField_a_of_type_Apmc.notifyDataSetChanged();
-    switch (localColorNote.getServiceType())
-    {
-    default: 
-      if (aplm.b(localColorNote))
-      {
-        if ((apll.a().a()) && (apku.b())) {
-          apmc.a(this.jdField_a_of_type_Apmc).a(paramView);
-        }
-        bcef.b(null, "dc00898", "", "", "0X800A8AC", "0X800A8AC", apkm.b(aplm.a(localColorNote.getServiceType())), 0, "", "", "", "");
-      }
-      break;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController = ((PreDownloadController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2));
+  }
+  
+  public boolean a(apmj paramapmj, apmi paramapmi)
+  {
+    if ((paramapmj == null) || (paramapmi == null)) {
+      return false;
     }
+    Object localObject1 = new apme(this, paramapmj);
+    ??? = new apmf(this);
+    HttpNetReq localHttpNetReq = new HttpNetReq();
+    localHttpNetReq.mCallback = ((INetEngine.INetEngineListener)???);
+    localHttpNetReq.mReqUrl = paramapmj.jdField_a_of_type_JavaLangString;
+    localHttpNetReq.mHttpMethod = 0;
+    localHttpNetReq.mOutPath = paramapmj.c;
+    localHttpNetReq.mPrioty = 1;
+    localHttpNetReq.mBreakDownFix = jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix;
+    paramapmj.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = localHttpNetReq;
     for (;;)
     {
-      if ((this.jdField_a_of_type_Apmc.getItemCount() == 0) && (apmc.a(this.jdField_a_of_type_Apmc) != null)) {
-        apmc.a(this.jdField_a_of_type_Apmc).b();
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramapmj);
+        switch (NetworkUtil.getSystemNetwork(BaseApplication.getContext()))
+        {
+        default: 
+          i = 1;
+          localObject1 = new apmg(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramapmj.b, (HttpEngineTask.IHttpEngineTask)localObject1, localHttpNetReq, paramapmj, paramapmi);
+          this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController.requestPreDownload(10065, "prd", paramapmj.b, 0, paramapmj.jdField_a_of_type_JavaLangString, localHttpNetReq.mOutPath, i, 0, false, (AbsPreDownloadTask)localObject1);
+          this.jdField_a_of_type_JavaUtilHashMap.put(paramapmj.b, paramapmi);
+          QLog.i("AREngine_ARPreSoResourceDownload", 1, "submitDownloadTask. url = " + paramapmj.jdField_a_of_type_JavaLangString);
+          return true;
+        }
       }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      QQPlayerService.c(paramView.getContext());
-      break;
-      bcef.b(null, "dc00898", "", "", "0X800A747", "0X800A747", apkm.a(localColorNote.getServiceType()), 0, "", "", "", "");
+      int i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
+      continue;
+      i = 4;
     }
   }
 }

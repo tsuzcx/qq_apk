@@ -1,65 +1,19 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.activity.contacts.base.Contacts;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 
 public class ajjd
-  extends aptq
+  extends aixn
 {
-  public static ajjc a()
-  {
-    return (ajjc)apub.a().a(470);
-  }
+  public ajjd(Contacts paramContacts) {}
   
-  @NonNull
-  public ajjc a(int paramInt)
-  {
-    return new ajjc();
-  }
-  
-  @Nullable
-  public ajjc a(aptx[] paramArrayOfaptx)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("mini_msg_config", 2, "parse.configData : " + paramArrayOfaptx[0].a);
+      QLog.i("NewFriendVerification.manager", 2, "ui.onGetAddFriendBlockedRedPoint, success=" + paramBoolean1 + ",blockedUin=" + paramString);
     }
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return ajjc.a(paramArrayOfaptx);
-    }
-    return null;
-  }
-  
-  public Class<ajjc> clazz()
-  {
-    return ajjc.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public void onUpdate(Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("mini_msg_config", 0, "onUpdate " + paramObject);
-    }
-  }
-  
-  public int type()
-  {
-    return 470;
+    ((aizi)this.a.a.getManager(QQManagerFactory.NEW_FRIEND_MANAGER)).c();
   }
 }
 

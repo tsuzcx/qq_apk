@@ -2,9 +2,10 @@ package com.tencent.biz.qcircleshadow.lib.delegate;
 
 import com.tencent.biz.qcircleshadow.lib.QCircleInitInject;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.List;
-import vgw;
+import vvq;
 
 public abstract class ILoadPluginDelegate
 {
@@ -18,7 +19,7 @@ public abstract class ILoadPluginDelegate
   public static void disPatchCallback(int paramInt, String paramString)
   {
     if (paramInt == 0) {
-      vgw.a().a(true);
+      vvq.a().a(true);
     }
     Object localObject = QCircleInitInject.g().getPluginCallbacks();
     if ((localObject != null) && (((List)localObject).size() > 0)) {
@@ -26,12 +27,14 @@ public abstract class ILoadPluginDelegate
     }
     while (((Iterator)localObject).hasNext())
     {
-      ILoadPluginDelegate localILoadPluginDelegate = (ILoadPluginDelegate)((Iterator)localObject).next();
+      ILoadPluginDelegate localILoadPluginDelegate = (ILoadPluginDelegate)((WeakReference)((Iterator)localObject).next()).get();
       if (paramInt == 0)
       {
-        localILoadPluginDelegate.onLoadingSuccess();
+        if (localILoadPluginDelegate != null) {
+          localILoadPluginDelegate.onLoadingSuccess();
+        }
       }
-      else
+      else if (localILoadPluginDelegate != null)
       {
         localILoadPluginDelegate.onLoadingFailed(paramInt, paramString);
         continue;
@@ -46,7 +49,7 @@ public abstract class ILoadPluginDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.delegate.ILoadPluginDelegate
  * JD-Core Version:    0.7.0.1
  */

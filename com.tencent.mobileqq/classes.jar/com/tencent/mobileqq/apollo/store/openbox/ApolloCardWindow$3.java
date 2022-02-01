@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.apollo.store.openbox;
 
-import amip;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Map;
@@ -17,7 +16,7 @@ class ApolloCardWindow$3
     {
       try
       {
-        Object localObject1 = new File(amip.k);
+        Object localObject1 = new File("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/image_cache/");
         if (((File)localObject1).exists())
         {
           if (!((File)localObject1).isDirectory()) {
@@ -29,7 +28,7 @@ class ApolloCardWindow$3
           {
             Object localObject3 = localObject1[i];
             if ((localObject3 == null) || (!localObject3.getPath().endsWith(".cache"))) {
-              break label143;
+              break label142;
             }
             ??? = localObject3.getName();
             String str = ((String)???).substring(0, ((String)???).indexOf("."));
@@ -45,7 +44,7 @@ class ApolloCardWindow$3
       {
         QLog.e("ApolloCardWindow", 1, "mPreloadRunnable error:", localException);
       }
-      label143:
+      label142:
       i += 1;
     }
   }

@@ -1,20 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.RiskHintDlgFragment;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
 
 public class aedu
-  implements DialogInterface.OnDismissListener
+  implements View.OnTouchListener
 {
-  public aedu(RiskHintDlgFragment paramRiskHintDlgFragment) {}
+  public aedu(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.getActivity() != null)
+    switch (paramMotionEvent.getAction())
     {
-      this.a.getActivity().finish();
-      this.a.getActivity().overridePendingTransition(0, 0);
     }
+    return false;
   }
 }
 

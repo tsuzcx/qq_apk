@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar;
 
-import aoct;
+import apfv;
 
 public class ArConfigService$ArConfigManagerStub$2
   implements Runnable
 {
-  public ArConfigService$ArConfigManagerStub$2(aoct paramaoct, ArConfigService paramArConfigService) {}
+  public ArConfigService$ArConfigManagerStub$2(apfv paramapfv, ArConfigService paramArConfigService) {}
   
   public void run()
   {

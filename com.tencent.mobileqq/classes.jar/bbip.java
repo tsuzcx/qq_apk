@@ -1,16 +1,10 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
 
-class bbip
-  implements View.OnTouchListener
+public abstract interface bbip
 {
-  bbip(bbio parambbio) {}
+  public abstract void a(FilterCategoryItem paramFilterCategoryItem);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

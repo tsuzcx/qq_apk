@@ -1,24 +1,24 @@
 package com.tencent.qqmini.proxyimpl;
 
-import amtj;
-import bjha;
-import bjhf;
+import anvx;
+import bksl;
+import bksq;
 
 public class X5UpdateGuard$6
   implements Runnable
 {
-  public X5UpdateGuard$6(bjha parambjha, int paramInt) {}
+  public X5UpdateGuard$6(bksl parambksl, int paramInt) {}
   
   public void run()
   {
-    if ((bjha.a(this.this$0) != null) && (bjha.a(this.this$0).isShowing())) {
-      bjha.a(this.this$0).a(amtj.a(2131705015) + this.a + "%");
+    if ((bksl.a(this.this$0) != null) && (bksl.a(this.this$0).isShowing())) {
+      bksl.a(this.this$0).a(anvx.a(2131705366) + this.a + "%");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.X5UpdateGuard.6
  * JD-Core Version:    0.7.0.1
  */

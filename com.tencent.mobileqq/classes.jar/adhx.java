@@ -1,16 +1,50 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class adhx
-  implements View.OnClickListener
+public class adhx
+  implements CompoundButton.OnCheckedChangeListener
 {
-  adhx(adhv paramadhv) {}
+  public adhx(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    adhv.a(this.a).a(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    int j = 1;
+    if (!paramCompoundButton.isPressed())
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+    }
+    Object localObject;
+    if (paramBoolean)
+    {
+      localObject = "open_storyset";
+      label27:
+      ykv.a("dynamic_more", (String)localObject, 0, 0, new String[0]);
+      localObject = new Integer[5];
+      localObject[0] = Integer.valueOf(1);
+      if (!paramBoolean) {
+        break label126;
+      }
+    }
+    label126:
+    for (int i = 1;; i = 0)
+    {
+      localObject[3] = Integer.valueOf(i);
+      this.a.app.getNowLiveManager().a((Integer[])localObject);
+      localObject = (vzu)this.a.app.getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER);
+      i = j;
+      if (paramBoolean) {
+        i = 2;
+      }
+      ((vzu)localObject).a(i);
+      break;
+      localObject = "close_storyset";
+      break label27;
+    }
   }
 }
 

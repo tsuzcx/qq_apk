@@ -1,17 +1,41 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.vas.avatar.VasAvatar;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
+import com.tencent.qphone.base.util.QLog;
 
-public class alhw
+class alhw
+  extends apas
 {
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public VasAvatar a;
-  public ImageView b;
+  alhw(alhu paramalhu, RecentBaseData paramRecentBaseData, QQAppInterface paramQQAppInterface) {}
   
-  public alhw(alhv paramalhv) {}
+  public int a()
+  {
+    return 5;
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RecentPubAccHelper", 2, "unfollow success");
+    }
+    alhu.a(this.jdField_a_of_type_Alhu, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    StructLongMessageDownloadProcessor.deleteTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin());
+    ((bgiy)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin());
+    alhu.b(this.jdField_a_of_type_Alhu, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(Object paramObject)
+  {
+    alhu.a(this.jdField_a_of_type_Alhu, 2131694983);
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject)
+  {
+    alhu.a(this.jdField_a_of_type_Alhu);
+  }
 }
 
 

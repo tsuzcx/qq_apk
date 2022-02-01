@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.data.Friends;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseVideoArticleInfo;
 
-class rou
+public final class rou
+  implements Parcelable.Creator<BaseVideoArticleInfo>
 {
-  public int a;
-  public Friends a;
-  
-  public rou(Friends paramFriends, int paramInt)
+  public BaseVideoArticleInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
-    this.jdField_a_of_type_Int = paramInt;
+    return new BaseVideoArticleInfo(paramParcel);
+  }
+  
+  public BaseVideoArticleInfo[] a(int paramInt)
+  {
+    return new BaseVideoArticleInfo[paramInt];
   }
 }
 

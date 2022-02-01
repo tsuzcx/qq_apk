@@ -1,153 +1,113 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.PBDoubleField;
-import com.tencent.mobileqq.pb.PBFixed32Field;
-import com.tencent.mobileqq.pb.PBFloatField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.vashealth.PathTraceManager;
-import com.tencent.mobileqq.vashealth.PathTraceManager.DataUploadTask;
-import com.tencent.mobileqq.vashealth.TracePathData;
-import com.tencent.mobileqq.vashealth.TracePointsData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
-import tencent.im.pb.qqsport.QQSportsOrbit.OrbitPoint;
-import tencent.im.pb.qqsport.QQSportsOrbit.OrbitReq;
-import tencent.im.pb.qqsport.QQSportsOrbit.OrbitRsp;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.util.SharePreferenceUtils;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.Manager;
 
 public class bgmk
-  implements BusinessObserver
+  implements Manager
 {
-  public bgmk(PathTraceManager.DataUploadTask paramDataUploadTask, JSONObject paramJSONObject, List paramList, TracePathData paramTracePathData, SharedPreferences paramSharedPreferences, QQSportsOrbit.OrbitReq paramOrbitReq) {}
+  protected Handler a;
+  QQAppInterface a;
+  public Map<String, Integer> a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public bgmk(QQAppInterface paramQQAppInterface)
   {
-    PathTraceManager.DataUploadTask.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager$DataUploadTask, paramBoolean, paramInt);
-    int i;
-    if (paramBoolean)
+    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    b();
+  }
+  
+  public int a(String paramString)
+  {
+    paramString = (Integer)this.jdField_a_of_type_JavaUtilMap.get(String.valueOf(paramString));
+    if (paramString != null) {
+      return paramString.intValue();
+    }
+    return 0;
+  }
+  
+  public void a()
+  {
+    Object localObject = new StringBuilder();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      try
-      {
-        byte[] arrayOfByte = paramBundle.getByteArray("extra_data");
-        paramBundle = new QQSportsOrbit.OrbitRsp();
-        try
-        {
-          paramBundle.mergeFrom(arrayOfByte);
-          paramInt = paramBundle.lastNum.get();
-          if ((paramInt == -1) || (paramBundle.retCode.get() != 0))
-          {
-            this.jdField_a_of_type_OrgJsonJSONObject.put("retCode", -10);
-            if (this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager$DataUploadTask.this$0.a == null) {
-              break label802;
-            }
-            paramBundle = Message.obtain();
-            paramBundle.what = 1;
-            paramBundle.obj = this.jdField_a_of_type_OrgJsonJSONObject;
-            this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager$DataUploadTask.this$0.a.sendMessage(paramBundle);
-            return;
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            QLog.e("PathTraceManager", 1, "[run] json fail" + localException.getMessage());
-            paramInt = -1;
-          }
-        }
-        if (paramInt >= this.jdField_a_of_type_JavaUtilList.size())
-        {
-          this.jdField_a_of_type_OrgJsonJSONObject.put("retCode", 1);
-          if (this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager$DataUploadTask.this$0.a != null)
-          {
-            paramBundle = Message.obtain();
-            paramBundle.what = 1;
-            paramBundle.obj = this.jdField_a_of_type_OrgJsonJSONObject;
-            this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager$DataUploadTask.this$0.a.sendMessage(paramBundle);
-          }
-          this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager$DataUploadTask.this$0.a(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqVashealthTracePathData.startTime));
-          QLog.d("PathTraceManager", 1, "upload success");
-          PathTraceManager.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager$DataUploadTask.this$0, null);
-          this.jdField_a_of_type_AndroidContentSharedPreferences.edit().clear().commit();
-          return;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        QLog.e("PathTraceManager", 1, "[run] json fail" + paramBundle.getMessage());
-        return;
-      }
-      if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
-        if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
-          i = paramInt;
-        }
+      String str = (String)localIterator.next();
+      if (((Integer)this.jdField_a_of_type_JavaUtilMap.get(str)).intValue() == 1) {
+        ((StringBuilder)localObject).append(str).append(";");
       }
     }
-    for (;;)
+    if (((StringBuilder)localObject).length() > 0)
     {
-      if (i < paramInt + 3000)
-      {
-        paramBundle = new QQSportsOrbit.OrbitPoint();
-        paramBundle.latitude.set(((TracePointsData)this.jdField_a_of_type_JavaUtilList.get(i)).latitude);
-        paramBundle.longitude.set(((TracePointsData)this.jdField_a_of_type_JavaUtilList.get(i)).longitude);
-        paramBundle.timef.set((int)((TracePointsData)this.jdField_a_of_type_JavaUtilList.get(i)).time);
-        paramBundle.speedf.set(((TracePointsData)this.jdField_a_of_type_JavaUtilList.get(i)).speed);
-        paramBundle.accuracy.set(((TracePointsData)this.jdField_a_of_type_JavaUtilList.get(i)).accuracy);
-        paramBundle.step.set(((TracePointsData)this.jdField_a_of_type_JavaUtilList.get(i)).steps);
-        paramBundle.altitude.set((float)((TracePointsData)this.jdField_a_of_type_JavaUtilList.get(i)).altitude);
-        this.jdField_a_of_type_TencentImPbQqsportQQSportsOrbit$OrbitReq.tracePath.add(paramBundle);
-        if (i != this.jdField_a_of_type_JavaUtilList.size() - 1) {}
+      localObject = ((StringBuilder)localObject).substring(0, ((StringBuilder)localObject).length() - 1).toString();
+      SharePreferenceUtils.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "TroopVideoNotify", (String)localObject);
+      return;
+    }
+    SharePreferenceUtils.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "TroopVideoNotify", "");
+  }
+  
+  public void a(long paramLong)
+  {
+    int j = 0;
+    Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(String.valueOf(paramLong));
+    if (localInteger != null) {}
+    for (int i = localInteger.intValue();; i = 0)
+    {
+      boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAVNotifyCenter().c(paramLong);
+      if ((bool) && (i == 0)) {
+        j = 1;
       }
-      else
+      for (;;)
       {
-        if (paramInt + 3000 >= this.jdField_a_of_type_JavaUtilList.size()) {
-          this.jdField_a_of_type_TencentImPbQqsportQQSportsOrbit$OrbitReq.isOver.set(1);
+        this.jdField_a_of_type_JavaUtilMap.put(String.valueOf(paramLong), Integer.valueOf(j));
+        if (j != i) {
+          a();
         }
-        for (;;)
-        {
-          this.jdField_a_of_type_TencentImPbQqsportQQSportsOrbit$OrbitReq.num.set(paramInt + 1);
-          paramBundle = new NewIntent(BaseApplicationImpl.sApplication.getApplicationContext(), auwo.class);
-          paramBundle.putExtra("extra_cmd", PathTraceManager.DataUploadTask.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager$DataUploadTask));
-          paramBundle.putExtra("extra_data", PathTraceManager.a(this.jdField_a_of_type_TencentImPbQqsportQQSportsOrbit$OrbitReq.toByteArray()));
-          this.jdField_a_of_type_TencentImPbQqsportQQSportsOrbit$OrbitReq.tracePath.clear();
-          paramBundle.putExtra("extra_timeout", 15000);
-          paramBundle.setObserver(this);
-          BaseApplicationImpl.sApplication.getRuntime().startServlet(paramBundle);
-          return;
-          this.jdField_a_of_type_TencentImPbQqsportQQSportsOrbit$OrbitReq.isOver.set(0);
-        }
-        QLog.e("PathTraceManager", 1, "upload fail");
-        try
-        {
-          paramBundle = new JSONObject();
-          paramBundle.put("retCode", -10);
-          if (this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager$DataUploadTask.this$0.a != null)
-          {
-            Message localMessage = Message.obtain();
-            localMessage.what = 1;
-            localMessage.obj = paramBundle;
-            this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager$DataUploadTask.this$0.a.sendMessage(localMessage);
-            return;
-          }
-        }
-        catch (Exception paramBundle)
-        {
-          QLog.d("PathTraceManager", 1, "uploadfail:" + paramBundle.toString());
-        }
-        label802:
         return;
+        if (bool) {
+          j = i;
+        }
       }
-      i += 1;
     }
   }
+  
+  public void a(String paramString)
+  {
+    if (a(paramString) == 1)
+    {
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, Integer.valueOf(2));
+      a();
+    }
+  }
+  
+  public void b()
+  {
+    Object localObject = SharePreferenceUtils.get(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "TroopVideoNotify");
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      localObject = ((String)localObject).split(";");
+      if (localObject != null)
+      {
+        int i = 0;
+        while (i < localObject.length)
+        {
+          this.jdField_a_of_type_JavaUtilMap.put(localObject[i], Integer.valueOf(1));
+          i += 1;
+        }
+      }
+    }
+  }
+  
+  public void onDestroy() {}
 }
 
 

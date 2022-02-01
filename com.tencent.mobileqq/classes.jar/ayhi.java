@@ -1,15 +1,19 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import android.text.Editable;
+import android.text.TextWatcher;
 
-public class ayhi
-  extends aygp
+class ayhi
+  implements TextWatcher
 {
-  public void b(BaseChatPie paramBaseChatPie)
+  ayhi(ayhd paramayhd) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    a(paramBaseChatPie.sessionInfo.curType, 201);
-    a(paramBaseChatPie.sessionInfo.curType, 202);
-    a(paramBaseChatPie.sessionInfo.curType, 208);
+    axql.a(this.a.e, 90);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

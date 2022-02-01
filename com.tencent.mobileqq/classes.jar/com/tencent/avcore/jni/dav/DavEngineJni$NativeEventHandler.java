@@ -5,37 +5,37 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.SystemClock;
 import java.lang.ref.WeakReference;
-import mwi;
-import mwk;
-import mwv;
-import mww;
-import mwx;
+import nbw;
+import nbz;
+import ncl;
+import ncm;
+import ncn;
 
 class DavEngineJni$NativeEventHandler
   extends Handler
 {
   private static final String TAG = "DAVEngineJni_NativeEvent";
-  protected final WeakReference<mwx> mCallback;
-  protected final WeakReference<mwk> mEventLisRef;
+  protected final WeakReference<ncn> mCallback;
+  protected final WeakReference<nbz> mEventLisRef;
   
-  DavEngineJni$NativeEventHandler(Looper paramLooper, mwk parammwk, mwx parammwx)
+  DavEngineJni$NativeEventHandler(Looper paramLooper, nbz paramnbz, ncn paramncn)
   {
     super(paramLooper);
-    this.mEventLisRef = new WeakReference(parammwk);
-    this.mCallback = new WeakReference(parammwx);
+    this.mEventLisRef = new WeakReference(paramnbz);
+    this.mCallback = new WeakReference(paramncn);
   }
   
-  private void onReceiveRequest(int paramInt, mwi parammwi, mwk parammwk)
+  private void onReceiveRequest(int paramInt, nbw paramnbw, nbz paramnbz)
   {
-    byte[] arrayOfByte1 = parammwi.jdField_a_of_type_ArrayOfByte;
-    int i = (int)parammwi.c;
-    String str1 = parammwi.jdField_a_of_type_JavaLangString;
-    int j = parammwi.jdField_a_of_type_Int;
-    int k = parammwi.jdField_b_of_type_Int;
+    byte[] arrayOfByte1 = paramnbw.jdField_a_of_type_ArrayOfByte;
+    int i = (int)paramnbw.c;
+    String str1 = paramnbw.jdField_a_of_type_JavaLangString;
+    int j = paramnbw.jdField_a_of_type_Int;
+    int k = paramnbw.jdField_b_of_type_Int;
     if (k == 3124) {
       i = 26;
     }
-    String str2 = mww.a(parammwi.jdField_b_of_type_Long);
+    String str2 = ncm.a(paramnbw.jdField_b_of_type_Long);
     Object localObject2 = null;
     Object localObject1 = localObject2;
     switch (i)
@@ -72,10 +72,10 @@ class DavEngineJni$NativeEventHandler
     case 26: 
       while ((paramInt == 2) || (paramInt == 60))
       {
-        parammwk.a(i, str2, (String)localObject1, parammwi.jdField_b_of_type_ArrayOfByte, true, str1, j, k);
+        paramnbz.a(i, str2, (String)localObject1, paramnbw.jdField_b_of_type_ArrayOfByte, true, str1, j, k);
         label234:
-        if (mwv.c()) {
-          mwv.b("onReceiveRequest", "uinType = " + i + ", extraUin = " + (String)localObject1 + ", longFronUin = " + parammwi.jdField_b_of_type_Long);
+        if (ncl.c()) {
+          ncl.b("onReceiveRequest", "uinType = " + i + ", extraUin = " + (String)localObject1 + ", longFronUin = " + paramnbw.jdField_b_of_type_Long);
         }
         return;
         localObject1 = null;
@@ -116,16 +116,16 @@ class DavEngineJni$NativeEventHandler
     }
     for (;;)
     {
-      if (mwv.c()) {
-        mwv.b("onReceiveRequest", "uinType = " + i + ", extraUin = " + (String)localObject1);
+      if (ncl.c()) {
+        ncl.b("onReceiveRequest", "uinType = " + i + ", extraUin = " + (String)localObject1);
       }
       break;
-      localObject1 = String.valueOf(parammwi.d);
+      localObject1 = String.valueOf(paramnbw.d);
       break;
       if ((paramInt != 1) && (paramInt != 61)) {
         break label234;
       }
-      parammwk.a(i, str2, (String)localObject1, parammwi.jdField_b_of_type_ArrayOfByte, false, str1, j, k);
+      paramnbz.a(i, str2, (String)localObject1, paramnbw.jdField_b_of_type_ArrayOfByte, false, str1, j, k);
       break label234;
       label549:
       continue;
@@ -136,32 +136,32 @@ class DavEngineJni$NativeEventHandler
   
   public void handleMessage(Message paramMessage)
   {
-    mwk localmwk = (mwk)this.mEventLisRef.get();
-    if (localmwk == null) {
+    nbz localnbz = (nbz)this.mEventLisRef.get();
+    if (localnbz == null) {
       return;
     }
     int i = paramMessage.what;
-    Object localObject1 = (mwi)paramMessage.obj;
+    Object localObject1 = (nbw)paramMessage.obj;
     if (localObject1 == null)
     {
-      mwv.h("DAVEngineJni_NativeEvent", "p is null");
+      ncl.h("DAVEngineJni_NativeEvent", "p is null");
       return;
     }
-    Object localObject2 = ((mwi)localObject1).jdField_a_of_type_ArrayOfByte;
-    long l1 = ((mwi)localObject1).jdField_a_of_type_Long;
-    String str = mww.a(((mwi)localObject1).jdField_b_of_type_Long);
-    byte[] arrayOfByte = ((mwi)localObject1).jdField_b_of_type_ArrayOfByte;
+    Object localObject2 = ((nbw)localObject1).jdField_a_of_type_ArrayOfByte;
+    long l1 = ((nbw)localObject1).jdField_a_of_type_Long;
+    String str = ncm.a(((nbw)localObject1).jdField_b_of_type_Long);
+    byte[] arrayOfByte = ((nbw)localObject1).jdField_b_of_type_ArrayOfByte;
     if ((i != 16) && (i != 100) && (i != 117) && (i != 120) && (i != 124) && (i != 125)) {
-      mwv.g("DAVEngineJni_NativeEvent", "handleMessage eventId[" + i + "], info[" + l1 + "], fromUin[" + str + "]");
+      ncl.g("DAVEngineJni_NativeEvent", "handleMessage eventId[" + i + "], info[" + l1 + "], fromUin[" + str + "]");
     }
-    mwx localmwx = (mwx)this.mCallback.get();
+    ncn localncn = (ncn)this.mCallback.get();
     int j;
-    if ((localmwx != null) && (localmwx.a(i)))
+    if ((localncn != null) && (localncn.a(i)))
     {
       j = 1;
       label191:
       if (j != 0) {
-        ((mwi)localObject1).f = SystemClock.elapsedRealtime();
+        ((nbw)localObject1).f = SystemClock.elapsedRealtime();
       }
       switch (i)
       {
@@ -237,10 +237,9 @@ class DavEngineJni$NativeEventHandler
       case 120: 
       case 121: 
       case 122: 
-      case 123: 
       default: 
-        if (localmwx != null) {
-          localmwx.handleMessage(paramMessage);
+        if (localncn != null) {
+          localncn.handleMessage(paramMessage);
         }
         break;
       }
@@ -248,159 +247,161 @@ class DavEngineJni$NativeEventHandler
     label738:
     while (j != 0)
     {
-      localmwx.handleMessage(paramMessage);
+      localncn.handleMessage(paramMessage);
       return;
       j = 0;
       break label191;
-      onReceiveRequest(i, (mwi)localObject1, localmwk);
+      onReceiveRequest(i, (nbw)localObject1, localnbz);
       continue;
-      localmwk.d(str);
+      localnbz.d(str);
       continue;
       i = (int)l1;
-      localObject2 = new StringBuilder().append("SdkEventId.EV_VOIP_CLOSED, Param0[").append(((mwi)localObject1).c).append("], Param1[").append(((mwi)localObject1).d).append("], Param2[").append(((mwi)localObject1).jdField_a_of_type_JavaLangString).append("], Param3[").append(((mwi)localObject1).jdField_a_of_type_Int).append("], Param4[").append(((mwi)localObject1).jdField_b_of_type_Int).append("], Param5[").append(((mwi)localObject1).e).append("], extraBuf[");
-      if (((mwi)localObject1).jdField_b_of_type_ArrayOfByte != null) {}
+      localObject2 = new StringBuilder().append("SdkEventId.EV_VOIP_CLOSED, Param0[").append(((nbw)localObject1).c).append("], Param1[").append(((nbw)localObject1).d).append("], Param2[").append(((nbw)localObject1).jdField_a_of_type_JavaLangString).append("], Param3[").append(((nbw)localObject1).jdField_a_of_type_Int).append("], Param4[").append(((nbw)localObject1).jdField_b_of_type_Int).append("], Param5[").append(((nbw)localObject1).e).append("], extraBuf[");
+      if (((nbw)localObject1).jdField_b_of_type_ArrayOfByte != null) {}
       for (boolean bool = true;; bool = false)
       {
-        mwv.c("DAVEngineJni_NativeEvent", bool + "], reason[" + i + "]");
+        ncl.c("DAVEngineJni_NativeEvent", bool + "], reason[" + i + "]");
         switch (i)
         {
         default: 
-          localmwk.a(str, i, ((mwi)localObject1).c);
+          localnbz.a(str, i, ((nbw)localObject1).c);
           break label738;
         }
       }
-      localmwk.i(str);
+      localnbz.i(str);
       continue;
-      i = (int)((mwi)localObject1).c;
-      int k = (int)((mwi)localObject1).d;
-      l1 = ((mwi)localObject1).e;
-      if (((mwi)localObject1).jdField_b_of_type_ArrayOfByte != null) {}
-      for (localObject1 = new String(((mwi)localObject1).jdField_b_of_type_ArrayOfByte);; localObject1 = "")
+      i = (int)((nbw)localObject1).c;
+      int k = (int)((nbw)localObject1).d;
+      l1 = ((nbw)localObject1).e;
+      if (((nbw)localObject1).jdField_b_of_type_ArrayOfByte != null) {}
+      for (localObject1 = new String(((nbw)localObject1).jdField_b_of_type_ArrayOfByte);; localObject1 = "")
       {
-        localmwk.a(str, i, k, (String)localObject1, l1);
+        localnbz.a(str, i, k, (String)localObject1, l1);
         break;
       }
       if (l1 == 1L)
       {
-        localmwk.a(str, arrayOfByte, 1L);
+        localnbz.a(str, arrayOfByte, 1L);
       }
       else
       {
-        localmwk.a(str, (byte[])localObject2, 0L);
+        localnbz.a(str, (byte[])localObject2, 0L);
         continue;
-        localmwk.b(((mwi)localObject1).c, 0L, 100L);
+        localnbz.b(((nbw)localObject1).c, 0L, 100L);
         continue;
-        localmwk.a(str, 12, 0L);
+        localnbz.a(str, 12, 0L);
         continue;
-        localmwk.e(str);
+        localnbz.e(str);
         continue;
-        localmwk.f(str);
+        localnbz.f(str);
         continue;
-        localmwk.g(str);
+        localnbz.g(str);
         continue;
-        localmwk.h(str);
+        localnbz.h(str);
         continue;
-        localmwk.j(str);
+        localnbz.j(str);
         continue;
-        localmwk.k(str);
+        localnbz.k(str);
         continue;
-        localmwk.l(str);
+        localnbz.l(str);
         continue;
-        localmwk.a(i - 19, str);
+        localnbz.a(i - 19, str);
         continue;
-        localmwk.a(str, true);
+        localnbz.a(str, true);
         continue;
-        localmwk.a(str, false);
+        localnbz.a(str, false);
         continue;
-        localmwk.m(str);
+        localnbz.m(str);
         continue;
-        localmwk.n(str);
+        localnbz.n(str);
         continue;
-        localmwk.o(str);
+        localnbz.o(str);
         continue;
-        localmwk.p(str);
+        localnbz.p(str);
         continue;
-        localmwk.b(true);
+        localnbz.b(true);
         continue;
-        localmwk.b(false);
+        localnbz.b(false);
         continue;
-        localmwk.a((byte[])localObject2, l1);
+        localnbz.a((byte[])localObject2, l1);
         continue;
-        localmwk.t(str);
+        localnbz.t(str);
         continue;
-        localmwk.b(str, (int)l1, ((mwi)localObject1).c, ((mwi)localObject1).jdField_a_of_type_ArrayOfByte);
+        localnbz.b(str, (int)l1, ((nbw)localObject1).c, ((nbw)localObject1).jdField_a_of_type_ArrayOfByte);
         continue;
-        localmwk.a(str, (int)l1, ((mwi)localObject1).c, ((mwi)localObject1).jdField_a_of_type_ArrayOfByte);
+        localnbz.a(str, (int)l1, ((nbw)localObject1).c, ((nbw)localObject1).jdField_a_of_type_ArrayOfByte);
         continue;
-        localmwk.b(str, (byte[])localObject2, l1);
+        localnbz.b(str, (byte[])localObject2, l1);
         continue;
-        localmwk.d(str, (byte[])localObject2, l1);
+        localnbz.d(str, (byte[])localObject2, l1);
         continue;
-        localmwk.c(str, (byte[])localObject2, l1);
+        localnbz.c(str, (byte[])localObject2, l1);
         continue;
-        switch ((int)((mwi)localObject1).c)
+        switch ((int)((nbw)localObject1).c)
         {
         default: 
           i = 0;
         }
         for (;;)
         {
-          mwv.c("DAVEngineJni_NativeEvent", "SdkEventId.EV_VOIP_OTHER_TER_CHATING_STAUTS, type[" + ((mwi)localObject1).c + "]");
-          localmwk.a(str, ((mwi)localObject1).d, i);
+          ncl.c("DAVEngineJni_NativeEvent", "SdkEventId.EV_VOIP_OTHER_TER_CHATING_STAUTS, type[" + ((nbw)localObject1).c + "]");
+          localnbz.a(str, ((nbw)localObject1).d, i);
           break;
           i = 2;
           continue;
           i = 1;
         }
-        localmwk.a(str, (int)((mwi)localObject1).c, (int)((mwi)localObject1).d, ((mwi)localObject1).e);
+        localnbz.a(str, (int)((nbw)localObject1).c, (int)((nbw)localObject1).d, ((nbw)localObject1).e);
         continue;
-        localmwk.d(str, (int)l1);
+        localnbz.d(str, (int)l1);
         continue;
-        i = (int)((mwi)localObject1).c;
-        k = (int)((mwi)localObject1).d;
-        long l2 = ((mwi)localObject1).e;
-        if (((mwi)localObject1).jdField_b_of_type_ArrayOfByte != null) {}
-        for (localObject1 = new String(((mwi)localObject1).jdField_b_of_type_ArrayOfByte);; localObject1 = "")
+        i = (int)((nbw)localObject1).c;
+        k = (int)((nbw)localObject1).d;
+        long l2 = ((nbw)localObject1).e;
+        if (((nbw)localObject1).jdField_b_of_type_ArrayOfByte != null) {}
+        for (localObject1 = new String(((nbw)localObject1).jdField_b_of_type_ArrayOfByte);; localObject1 = "")
         {
-          localmwk.a(str, (int)l1, i, k, (String)localObject1, l2);
+          localnbz.a(str, (int)l1, i, k, (String)localObject1, l2);
           break;
         }
-        localmwk.c(str, (int)l1);
+        localnbz.c(str, (int)l1);
         continue;
-        localmwk.u(str);
-        localmwk.h(2048);
+        localnbz.v(str);
+        localnbz.h(2048);
         continue;
-        localmwk.h(3);
+        localnbz.h(3);
         continue;
-        localmwk.h(4);
+        localnbz.h(4);
         continue;
-        localmwk.a(str, l1, (byte[])localObject2);
+        localnbz.a(str, l1, (byte[])localObject2);
         continue;
-        localmwk.b(str, (int)l1, ((mwi)localObject1).jdField_a_of_type_ArrayOfByte);
+        localnbz.b(str, (int)l1, ((nbw)localObject1).jdField_a_of_type_ArrayOfByte);
         continue;
         i = (int)l1;
-        localmwk.e(str, i);
-        if (mwv.c())
+        localnbz.e(str, i);
+        if (ncl.c())
         {
-          mwv.b("NativeEventHandler", "EM_SDK_EVENT_ID_GROUND_GLASS_SWITCH, nSwitch[" + i + "], fromUin[" + str + "]");
+          ncl.b("NativeEventHandler", "EM_SDK_EVENT_ID_GROUND_GLASS_SWITCH, nSwitch[" + i + "], fromUin[" + str + "]");
           continue;
           i = (int)l1;
-          localmwk.f(str, i);
-          if (mwv.c())
+          localnbz.f(str, i);
+          if (ncl.c())
           {
-            mwv.b("NativeEventHandler", "EM_SDK_EVENT_ID_GROUND_GLASS_WAIT_TIME, nTime[" + i + "], fromUin[" + str + "]");
+            ncl.b("NativeEventHandler", "EM_SDK_EVENT_ID_GROUND_GLASS_WAIT_TIME, nTime[" + i + "], fromUin[" + str + "]");
             continue;
-            localmwk.f((int)l1);
+            localnbz.f((int)l1);
             continue;
-            mwv.c("NativeEventHandler", "EM_SDK_EVENT_ID_CUSTOM_COMMAND, peerUin[" + str + "]");
-            localmwk.a(str, ((mwi)localObject1).c, ((mwi)localObject1).d, ((mwi)localObject1).jdField_b_of_type_Int);
+            ncl.c("NativeEventHandler", "EM_SDK_EVENT_ID_CUSTOM_COMMAND, peerUin[" + str + "]");
+            localnbz.a(str, ((nbw)localObject1).c, ((nbw)localObject1).d, ((nbw)localObject1).jdField_b_of_type_Int);
             continue;
-            mwv.c("NativeEventHandler", "NETWORK_CHECK, peerUin[" + str + "]");
-            localmwk.G();
+            ncl.c("NativeEventHandler", "NETWORK_CHECK, peerUin[" + str + "]");
+            localnbz.G();
             continue;
-            localmwk.c(true);
+            localnbz.c(true);
             continue;
-            localmwk.g((int)((mwi)localObject1).c);
+            localnbz.g((int)((nbw)localObject1).c);
+            continue;
+            localnbz.u(str);
           }
         }
       }

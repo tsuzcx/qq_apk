@@ -1,56 +1,27 @@
-import android.app.Activity;
-import android.graphics.Rect;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class amcp
+  implements Animation.AnimationListener
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private FrameLayout.LayoutParams jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams;
+  public amcp(SpecailCareListActivity paramSpecailCareListActivity, amdg paramamdg) {}
   
-  private amcp(Activity paramActivity)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidViewView = ((FrameLayout)paramActivity.findViewById(16908290)).getChildAt(0);
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new amcq(this));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams = ((FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams());
+    this.jdField_a_of_type_Amdg.a.clearAnimation();
+    paramAnimation = new RelativeLayout.LayoutParams(-2, -2);
+    paramAnimation.addRule(1, 2131368381);
+    paramAnimation.setMargins(0, (int)(24.0F * SpecailCareListActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0, 0);
+    this.jdField_a_of_type_Amdg.a.setLayoutParams(paramAnimation);
+    this.jdField_a_of_type_Amdg.a.setVisibility(4);
   }
   
-  private int a()
-  {
-    Rect localRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
-    return localRect.bottom - localRect.top;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  private void a()
-  {
-    int i = a();
-    int j;
-    int k;
-    if (i != this.jdField_a_of_type_Int)
-    {
-      j = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight();
-      k = j - i;
-      if (k <= j / 4) {
-        break label58;
-      }
-    }
-    label58:
-    for (this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.height = (j - k);; this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.height = j)
-    {
-      this.jdField_a_of_type_AndroidViewView.requestLayout();
-      this.jdField_a_of_type_Int = i;
-      return;
-    }
-  }
-  
-  public static void a(Activity paramActivity)
-  {
-    new amcp(paramActivity);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

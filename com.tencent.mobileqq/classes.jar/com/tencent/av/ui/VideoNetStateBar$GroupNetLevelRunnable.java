@@ -1,9 +1,8 @@
 package com.tencent.av.ui;
 
-import android.os.Handler;
 import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 class VideoNetStateBar$GroupNetLevelRunnable
   implements Runnable
@@ -30,10 +29,10 @@ class VideoNetStateBar$GroupNetLevelRunnable
       if (QLog.isColorLevel()) {
         QLog.d("VideoNetStateBar", 2, String.format("getGAudioNetLevel[%s], mCurNetLevel[%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(this.this$0.b) }));
       }
-      if ((this.this$0.jdField_a_of_type_JavaLangRunnable == null) || (this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) || (this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a() == null)) {
+      if ((this.this$0.jdField_a_of_type_JavaLangRunnable == null) || (this.this$0.jdField_a_of_type_ComTencentAvVideoController == null) || (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a() == null)) {
         break;
       }
-      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.this$0.jdField_a_of_type_JavaLangRunnable, 2000L);
+      this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().postDelayed(this.this$0.jdField_a_of_type_JavaLangRunnable, 2000L);
       return;
       this.this$0.b = 3;
       continue;

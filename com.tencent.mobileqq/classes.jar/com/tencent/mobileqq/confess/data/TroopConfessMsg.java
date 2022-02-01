@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.confess.data;
 
-import amsw;
 import android.text.TextUtils;
+import anvk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -133,7 +134,7 @@ public class TroopConfessMsg
         Object localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
         if (!Long.toString(localTroopConfessMsgItem.confessToUin).equals(((QQAppInterface)localObject).getCurrentAccountUin()))
         {
-          localObject = ((amsw)((QQAppInterface)localObject).getManager(51)).b(Long.toString(localTroopConfessMsgItem.confessToUin));
+          localObject = ((anvk)((QQAppInterface)localObject).getManager(QQManagerFactory.FRIENDS_MANAGER)).b(Long.toString(localTroopConfessMsgItem.confessToUin));
           if ((localObject != null) && (((Friends)localObject).isFriend()) && (!TextUtils.isEmpty(((Friends)localObject).remark))) {
             localStringBuilder.append(((Friends)localObject).remark);
           } else {
@@ -246,7 +247,7 @@ public class TroopConfessMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.confess.data.TroopConfessMsg
  * JD-Core Version:    0.7.0.1
  */

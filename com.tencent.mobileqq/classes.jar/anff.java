@@ -1,31 +1,18 @@
-import com.tencent.mobileqq.app.automator.step.CheckFriendsLastLoginInfo;
-
 public class anff
-  extends amsu
 {
-  private anff(CheckFriendsLastLoginInfo paramCheckFriendsLastLoginInfo) {}
+  public int a;
+  public int b;
+  public int c;
   
-  protected void onUpdateLastLoginInfo(boolean paramBoolean1, boolean paramBoolean2)
+  public anff(int paramInt1, int paramInt2)
   {
-    int i = 0;
-    if (!paramBoolean1) {
-      this.a.a(6);
-    }
-    for (;;)
-    {
-      if (i != 0) {
-        this.a.a(7);
-      }
-      return;
-      if (paramBoolean2) {
-        i = 1;
-      }
-    }
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anff
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,40 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.Map;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
 
 public class whj
-  extends wje
+  implements TextView.OnEditorActionListener
 {
-  StoryVideoItem a;
-  public xcs a;
+  public whj(StoryInputBarView paramStoryInputBarView) {}
   
-  public whj(StoryVideoItem paramStoryVideoItem)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null)
+    if (paramInt == 4)
     {
-      xvv.c(this.b, "Error: ", new IllegalStateException("这里VideoItem为空, 临时保护, 可能存在逻辑异常"));
-      b(false);
-      return;
+      paramTextView = paramTextView.getText().toString();
+      if (paramTextView.length() <= 0) {
+        break label140;
+      }
+      this.a.setKeyBoardState(false);
+      if (this.a.jdField_a_of_type_Wgm != null) {
+        this.a.jdField_a_of_type_Wgm.a(paramTextView, this.a.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      }
+      this.a.c();
+      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
+      if (StoryInputBarView.a(this.a) != null) {
+        StoryInputBarView.a(this.a).a(paramTextView, this.a.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqstory:StoryInputBarView", 2, "onEditorAction vaule=" + paramTextView);
+      }
     }
-    vwh localvwh = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getPollLayout();
-    if (localvwh != null)
-    {
-      this.jdField_a_of_type_Xcs = new xcp();
-      this.jdField_a_of_type_Xcs.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl, 0, 0, new whk(this, localvwh));
-      return;
-    }
-    a("result", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);
-    b(true);
+    return false;
+    label140:
+    return true;
   }
-  
-  protected void a(Map<String, Object> paramMap) {}
 }
 
 

@@ -1,21 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class axal
-  implements View.OnClickListener
+public class axal
 {
-  axal(awzr paramawzr) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onClick(View paramView)
+  public axaj a()
   {
-    if (!this.a.a.onBackEvent())
-    {
-      this.a.a.finish();
-      this.a.a.c(false);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new axaj(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, null);
+  }
+  
+  public axal a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public axal a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
   }
 }
 

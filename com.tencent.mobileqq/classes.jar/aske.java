@@ -1,29 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
 
 class aske
-  extends asjn
+  implements awzc<Emoticon>
 {
-  public aske(asji paramasji)
-  {
-    super(paramasji);
-  }
+  aske(askd paramaskd, int paramInt1, QQAppInterface paramQQAppInterface, int paramInt2, String paramString) {}
   
-  protected String a()
+  public void a(Emoticon paramEmoticon)
   {
-    return "StateRefuseByPCWhenPause";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
-    }
-    asji.b(this.jdField_a_of_type_Asji, 11, 6);
-    asji.c(this.jdField_a_of_type_Asji, 11, 6);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Asjn.a() + "->StateRefuseByPC)");
-    this.jdField_a_of_type_Asjn = new askd(this.jdField_a_of_type_Asji);
+    ahaw.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Askd.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticon, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Askd.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true);
   }
 }
 

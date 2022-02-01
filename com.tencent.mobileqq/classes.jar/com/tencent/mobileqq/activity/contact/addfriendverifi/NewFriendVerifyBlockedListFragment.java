@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.contact.addfriendverifi;
 
-import aicl;
-import aico;
-import aicp;
-import aicq;
-import aicr;
-import aics;
-import aict;
-import aicu;
-import aicv;
+import aixk;
+import aixn;
+import aixo;
+import aixp;
+import aixq;
+import aixr;
+import aixs;
+import aixt;
+import aixu;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -25,7 +25,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bcef;
+import bdla;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.face.FaceDecoder;
@@ -41,27 +41,27 @@ public class NewFriendVerifyBlockedListFragment
   extends IphoneTitleBarFragment
   implements FaceDecoder.DecodeTaskCompletionListener
 {
-  private aico jdField_a_of_type_Aico = new aicq(this);
-  private aicu jdField_a_of_type_Aicu;
+  private aixn jdField_a_of_type_Aixn = new aixp(this);
+  private aixt jdField_a_of_type_Aixt;
   private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private FaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder;
-  private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = new aicr(this);
+  private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = new aixq(this);
   private ListView jdField_a_of_type_ComTencentWidgetListView;
   private List<AddFriendBlockedInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
   public MqqHandler a;
   
   public NewFriendVerifyBlockedListFragment()
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = new aicp(this);
+    this.jdField_a_of_type_MqqOsMqqHandler = new aixo(this);
   }
   
   private void a()
   {
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    localSpannableStringBuilder.append(getString(2131698380));
-    localSpannableStringBuilder.setSpan(new aict(this), 27, 31, 33);
+    localSpannableStringBuilder.append(getString(2131698676));
+    localSpannableStringBuilder.setSpan(new aixs(this), 27, 31, 33);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(localSpannableStringBuilder);
     localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Color.parseColor("#4D94FF")), 27, 31, 33);
     this.jdField_a_of_type_AndroidWidgetTextView.setMovementMethod(LinkMovementMethod.getInstance());
@@ -75,11 +75,11 @@ public class NewFriendVerifyBlockedListFragment
   
   private void b()
   {
-    if (this.jdField_a_of_type_Aicu != null)
+    if (this.jdField_a_of_type_Aixt != null)
     {
       this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll(aicl.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app).jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_Aicu.notifyDataSetChanged();
+      this.jdField_a_of_type_JavaUtilList.addAll(aixk.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app).jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_Aixt.notifyDataSetChanged();
       if (this.jdField_a_of_type_JavaUtilList.isEmpty())
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
@@ -97,23 +97,23 @@ public class NewFriendVerifyBlockedListFragment
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    setTitle(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131698382));
-    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131366078);
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)this.mContentView.findViewById(2131364912));
+    setTitle(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131698678));
+    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131366179);
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)this.mContentView.findViewById(2131365000));
     this.jdField_a_of_type_ComTencentWidgetListView.setNeedCheckSpringback(true);
     this.jdField_a_of_type_ComTencentWidgetListView.setOverscrollHeader(null);
     this.jdField_a_of_type_ComTencentWidgetListView.setOnScrollListener(this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131370019));
-    this.jdField_a_of_type_Aicu = new aicu(this, null);
-    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Aicu);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131370190));
+    this.jdField_a_of_type_Aixt = new aixt(this, null);
+    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Aixt);
     a();
-    setRightButton(2131690756, new aics(this));
+    setRightButton(2131690833, new aixr(this));
     b();
   }
   
   public int getContentLayoutId()
   {
-    return 2131561489;
+    return 2131561551;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -139,7 +139,7 @@ public class NewFriendVerifyBlockedListFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.addObserver(this.jdField_a_of_type_Aico);
+    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.addObserver(this.jdField_a_of_type_Aixn);
     this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder = new FaceDecoder(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app);
     this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.setDecodeTaskCompletionListener(this);
   }
@@ -155,11 +155,11 @@ public class NewFriendVerifyBlockedListFragment
       while (paramInt1 < paramInt2)
       {
         Object localObject = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(paramInt1).getTag();
-        if ((localObject != null) && ((localObject instanceof aicv)))
+        if ((localObject != null) && ((localObject instanceof aixu)))
         {
-          localObject = (aicv)localObject;
-          if ((((aicv)localObject).jdField_a_of_type_ComTencentMobileqqActivityContactAddfriendverifiAddFriendBlockedInfo != null) && (paramString.equals(((aicv)localObject).jdField_a_of_type_ComTencentMobileqqActivityContactAddfriendverifiAddFriendBlockedInfo.a))) {
-            ((aicv)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+          localObject = (aixu)localObject;
+          if ((((aixu)localObject).jdField_a_of_type_ComTencentMobileqqActivityContactAddfriendverifiAddFriendBlockedInfo != null) && (paramString.equals(((aixu)localObject).jdField_a_of_type_ComTencentMobileqqActivityContactAddfriendverifiAddFriendBlockedInfo.a))) {
+            ((aixu)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
           }
         }
         paramInt1 += 1;
@@ -170,7 +170,7 @@ public class NewFriendVerifyBlockedListFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.removeObserver(this.jdField_a_of_type_Aico);
+    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.removeObserver(this.jdField_a_of_type_Aixn);
     this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.setDecodeTaskCompletionListener(null);
     this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.destory();
   }
@@ -184,19 +184,19 @@ public class NewFriendVerifyBlockedListFragment
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Aicu != null) {
-      this.jdField_a_of_type_Aicu.b();
+    if (this.jdField_a_of_type_Aixt != null) {
+      this.jdField_a_of_type_Aixt.b();
     }
-    bcef.b(null, "dc00898", "", "", "0X800A3A6", "0X800A3A6", 0, 0, "", "", "", "");
+    bdla.b(null, "dc00898", "", "", "0X800A3A6", "0X800A3A6", 0, 0, "", "", "", "");
   }
   
   public void onStop()
   {
     super.onStop();
-    if (this.jdField_a_of_type_Aicu != null) {
-      this.jdField_a_of_type_Aicu.a();
+    if (this.jdField_a_of_type_Aixt != null) {
+      this.jdField_a_of_type_Aixt.a();
     }
-    aicl.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app).b();
+    aixk.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app).b();
   }
 }
 

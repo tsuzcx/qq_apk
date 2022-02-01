@@ -1,21 +1,18 @@
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.ThreadTraceHelper.Proxy;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class bcbr
-  implements IMCoreProxyRoute.ThreadTraceHelper.Proxy
+class bcbr
+  implements View.OnClickListener
 {
-  public void addWaitingTransThread(long paramLong, String paramString)
-  {
-    bcfa.b(paramLong, paramString);
-  }
+  bcbr(bcbo parambcbo) {}
   
-  public void removeWaitingTransThread(long paramLong)
+  public void onClick(View paramView)
   {
-    bcfa.a(paramLong);
-  }
-  
-  public void setCurrentTransThread(long paramLong, String paramString)
-  {
-    bcfa.a(paramLong, paramString);
+    this.a.a.b(this.a.a.b);
+    this.a.a.f.setVisibility(8);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -11,47 +11,32 @@ class SensorJsPlugin$1
   
   public void run()
   {
-    for (;;)
+    try
     {
-      int j;
-      int i;
-      try
+      SensorJsPlugin.access$000(this.this$0);
+      JSONObject localJSONObject1 = new JSONObject(this.val$req.jsonParams);
+      if (localJSONObject1.optBoolean("enable"))
       {
-        SensorJsPlugin.access$000(this.this$0);
-        JSONObject localJSONObject1 = new JSONObject(this.val$req.jsonParams);
-        if (localJSONObject1.optBoolean("enable"))
+        int i = this.this$0.getInterval(localJSONObject1);
+        if (this.this$0.startAccelerometer(this.val$req.jsService, i))
         {
-          j = localJSONObject1.optInt("interval");
-          i = 3;
-          if (j != 20) {
-            break label157;
-          }
-          i = 1;
-          if (this.this$0.startAccelerometer(this.val$req.jsService, i))
-          {
-            this.val$req.ok();
-            return;
-          }
-          this.val$req.fail();
+          this.val$req.ok();
           return;
         }
-      }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
+        this.val$req.fail();
         return;
       }
-      this.this$0.stopAccelerometer();
-      this.val$req.ok();
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("errMsg", this.val$req.event + ":cancel");
-      this.val$req.evaluateCallbackJs(localJSONObject2.toString());
-      return;
-      label157:
-      if (j == 60) {
-        i = 2;
-      }
     }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+      return;
+    }
+    this.this$0.stopAccelerometer();
+    this.val$req.ok();
+    JSONObject localJSONObject2 = new JSONObject();
+    localJSONObject2.put("errMsg", this.val$req.event + ":cancel");
+    this.val$req.evaluateCallbackJs(localJSONObject2.toString());
   }
 }
 

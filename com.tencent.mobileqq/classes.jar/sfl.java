@@ -1,179 +1,54 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.video.bandwidth.VideoBufferRangeController.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.mobileqq.activity.SplashActivity;
+import java.lang.ref.WeakReference;
 
-public class sfl
-  implements Comparator<Integer[]>
+class sfl
+  extends OrientationEventListener
 {
-  private static sfl a;
-  
-  private int a(List<Integer[]> paramList, long paramLong, int paramInt)
+  sfl(sfk paramsfk, Context paramContext, WeakReference paramWeakReference)
   {
-    if ((paramLong > 0L) && (paramInt > 0))
-    {
-      Iterator localIterator = paramList.iterator();
-      while (localIterator.hasNext())
-      {
-        Integer[] arrayOfInteger = (Integer[])localIterator.next();
-        if (paramLong > arrayOfInteger[0].intValue() * paramInt / 8) {
-          return arrayOfInteger[1].intValue();
-        }
-      }
-    }
-    if (!paramList.isEmpty())
-    {
-      paramList = (Integer[])paramList.get(paramList.size() - 1);
-      if (paramList[0].intValue() <= 0) {
-        return paramList[1].intValue();
-      }
-    }
-    return 0;
+    super(paramContext);
   }
   
-  private List<Integer[]> a()
+  public void onOrientationChanged(int paramInt)
   {
-    return a("effective_time");
-  }
-  
-  private List<Integer[]> a(String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = Aladdin.getConfig(288).getString(paramString, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoBufferRangeController", 2, "decodeConfigs: key=" + paramString + ", configStr=" + (String)localObject);
+    if (!sfk.a(this.jdField_a_of_type_Sfk, paramInt)) {
+      break label11;
     }
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      return localArrayList;
-    }
-    paramString = ((String)localObject).split("\\|");
-    int j = paramString.length;
-    int i = 0;
+    label11:
+    label159:
     for (;;)
     {
-      if (i < j)
+      return;
+      if (!(this.jdField_a_of_type_Sfk.a() instanceof SplashActivity))
       {
-        localObject = paramString[i].split(",");
-        if (localObject.length == 2) {}
-        try
-        {
-          localArrayList.add(new Integer[] { Integer.valueOf(localObject[0]), Integer.valueOf(localObject[1]) });
-          i += 1;
+        int i = sfk.a(this.jdField_a_of_type_Sfk);
+        if (((paramInt >= 0) && (paramInt <= 30)) || (paramInt > 330)) {
+          paramInt = 1;
         }
-        catch (Exception localException)
+        for (;;)
         {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("VideoBufferRangeController", 2, "getConfigs: ", localException);
-            }
+          if (paramInt == sfk.a(this.jdField_a_of_type_Sfk)) {
+            break label159;
+          }
+          sfk.a(this.jdField_a_of_type_Sfk, paramInt);
+          if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+            break;
+          }
+          ((sfm)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(paramInt);
+          return;
+          if ((paramInt > 70) && (paramInt <= 110)) {
+            paramInt = 8;
+          } else if ((paramInt > 150) && (paramInt <= 210)) {
+            paramInt = 9;
+          } else if ((paramInt > 250) && (paramInt <= 290)) {
+            paramInt = 0;
+          } else {
+            paramInt = i;
           }
         }
       }
-    }
-    Collections.sort(localArrayList, this);
-    return localArrayList;
-  }
-  
-  public static sfl a()
-  {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new sfl();
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  private boolean a(List<Integer[]> paramList)
-  {
-    int i = Calendar.getInstance().get(11);
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      Integer[] arrayOfInteger = (Integer[])paramList.next();
-      if ((i >= arrayOfInteger[0].intValue()) && (i < arrayOfInteger[1].intValue())) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  private int[] a()
-  {
-    Object localObject = a("uneffective_time_config");
-    if (((List)localObject).size() > 0) {
-      localObject = (Integer[])((List)localObject).get(0);
-    }
-    for (;;)
-    {
-      return new int[] { localObject[0].intValue(), localObject[1].intValue() };
-      localObject = new Integer[2];
-      localObject[0] = Integer.valueOf(0);
-      localObject[1] = Integer.valueOf(0);
-    }
-  }
-  
-  private List<Integer[]> b()
-  {
-    return a("emergency_time_config");
-  }
-  
-  private List<Integer[]> c()
-  {
-    return a("safe_play_time_config");
-  }
-  
-  public int a(Integer[] paramArrayOfInteger1, Integer[] paramArrayOfInteger2)
-  {
-    return paramArrayOfInteger2[0].intValue() - paramArrayOfInteger1[0].intValue();
-  }
-  
-  public String a()
-  {
-    return Aladdin.getConfig(288).getString("buffer_range_report_tag", null);
-  }
-  
-  public void a(sdj paramsdj, int paramInt, long paramLong)
-  {
-    rwv.a(new VideoBufferRangeController.1(this, paramsdj, a().a(paramInt, paramLong)));
-  }
-  
-  public int[] a(long paramLong1, long paramLong2)
-  {
-    long l = sfc.a().a();
-    if ((paramLong2 > 0L) && (paramLong1 > 0L)) {}
-    for (int i = (int)(paramLong2 / 1024L * 8L / paramLong1);; i = 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoBufferRangeController", 2, "getBufferRange: fileSize=" + paramLong2 + ", duration=" + paramLong1);
-      }
-      if (!a(a()))
-      {
-        localObject = a();
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoBufferRangeController", 2, "computeBufferange: no peak period，use defaultConfig, range=" + localObject[0] + ", " + localObject[1]);
-        }
-        return localObject;
-      }
-      Object localObject = b();
-      List localList = c();
-      int j = a((List)localObject, l, i);
-      int k = a(localList, l, i);
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoBufferRangeController", 2, "getBufferRange: bandwidth=" + l + ", bitrate=" + i + ", range=" + j + ", " + k);
-      }
-      return new int[] { j, k };
     }
   }
 }

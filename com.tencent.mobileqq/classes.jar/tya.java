@@ -1,51 +1,27 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.data.GiftServiceBean;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.json.JSONObject;
 
-class tya
-  implements tyh
+public class tya
+  extends txt
 {
-  tya(txz paramtxz) {}
-  
-  public void a(GiftServiceBean paramGiftServiceBean)
+  tya(txq paramtxq1, Activity paramActivity, txq paramtxq2, JSONObject paramJSONObject)
   {
-    Object localObject = txz.a(this.a).getText().toString();
-    if ((!TextUtils.isEmpty(paramGiftServiceBean.t)) && (!((String)localObject).equals(paramGiftServiceBean.t)))
-    {
-      txz.a(this.a, paramGiftServiceBean);
-      txz.a(this.a).setText(paramGiftServiceBean.t);
-      txz.b(this.a, null);
-      if (txz.a(this.a)) {
-        txz.c(this.a, null);
-      }
-      txz.b(this.a).setText("");
-      txz.c(this.a).setText("");
-      txz.a(this.a, new ArrayList());
-      localObject = txz.a(this.a).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        GiftServiceBean localGiftServiceBean = (GiftServiceBean)((Iterator)localObject).next();
-        if ((!TextUtils.isEmpty(localGiftServiceBean.ck)) && (localGiftServiceBean.ck.equals(paramGiftServiceBean.ck)) && (localGiftServiceBean.c.equals(paramGiftServiceBean.v))) {
-          txz.b(this.a).add(localGiftServiceBean);
-        }
-      }
-      if (txz.b(this.a).size() <= 0)
-      {
-        paramGiftServiceBean = new GiftServiceBean();
-        paramGiftServiceBean.t = amtj.a(2131704397);
-        paramGiftServiceBean.v = "0";
-        txz.b(this.a).add(paramGiftServiceBean);
-      }
-      txz.a(this.a);
+    super(paramtxq1, paramActivity, paramtxq2, paramJSONObject);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
+  {
+    paramString1 = txq.a(this.a).mShareHelper.a(txq.a(this.b), txq.b(this.b), paramInt);
+    if ((paramString1 instanceof urt)) {
+      BridgeModule.saveImageToLocal(((urt)paramString1).b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tya
  * JD-Core Version:    0.7.0.1
  */

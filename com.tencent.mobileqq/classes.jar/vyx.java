@@ -1,13 +1,25 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.List;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.album.view.AlbumImageView;
 
-public abstract interface vyx
+class vyx
+  implements Animation.AnimationListener
 {
-  public abstract void a(@Nullable vxd paramvxd, Error paramError);
+  vyx(vyw paramvyw) {}
   
-  public abstract void a(@Nullable vxd paramvxd, @NonNull List<StoryVideoItem> paramList);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (vys.a(this.a.a) == 1)
+    {
+      this.a.a.b.setVisibility(8);
+      vys.a(this.a.a).sendEmptyMessage(1);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

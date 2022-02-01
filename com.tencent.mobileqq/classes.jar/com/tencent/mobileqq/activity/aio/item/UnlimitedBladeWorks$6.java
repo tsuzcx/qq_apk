@@ -20,7 +20,7 @@ class UnlimitedBladeWorks$6
     do
     {
       return;
-      localView = ((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView()).getChildAt(0).findViewById(2131362294);
+      localView = ((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView()).getChildAt(0).findViewById(2131362299);
       localAnimationSet = UnlimitedBladeWorks.a(this.this$0, this.jdField_a_of_type_Int);
     } while (localView == null);
     localView.startAnimation(localAnimationSet);

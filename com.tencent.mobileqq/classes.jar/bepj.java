@@ -1,20 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
+import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
+import java.util.List;
 
-public class bepj
-  extends BroadcastReceiver
+class bepj
+  extends bept
 {
-  public bepj(HWReciteItem paramHWReciteItem) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  bepj(bepg parambepg, EditorState paramEditorState, List paramList)
   {
-    if (("com.tnecnet.mobileqq.homework.recite.stopAudio".equals(paramIntent.getAction())) && (HWReciteItem.a(this.a)) && (this.a.a != null) && (this.a.a.a != null))
-    {
-      this.a.b();
-      this.a.a.a.a();
-    }
+    super(parambepg, paramEditorState, paramList);
+  }
+  
+  public void a(EditorState paramEditorState)
+  {
+    bepg.a(this.a).c();
+    bepg.a(this.a).b(true);
   }
 }
 

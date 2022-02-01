@@ -1,6 +1,39 @@
-public abstract interface zuz
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class zuz
+  implements AbsListView.OnScrollListener
 {
-  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  boolean jdField_a_of_type_Boolean = false;
+  
+  zuz(zux paramzux) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((paramInt3 > 0) && (paramAbsListView.getFirstVisiblePosition() + paramInt2 >= paramInt3))
+    {
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    EventCollector.getInstance().onListScrollStateChanged(paramAbsListView, paramInt);
+    if ((this.jdField_a_of_type_Boolean) && (paramInt == 0) && (!zux.a(this.jdField_a_of_type_Zux)) && (!zux.b(this.jdField_a_of_type_Zux)))
+    {
+      QLog.i(zux.a(), 1, "onLastItemVisible");
+      zux.a(this.jdField_a_of_type_Zux, zux.a(this.jdField_a_of_type_Zux).a(zux.a(this.jdField_a_of_type_Zux)));
+      if (zux.a(this.jdField_a_of_type_Zux) != null)
+      {
+        zux.a(this.jdField_a_of_type_Zux).a(zux.a(this.jdField_a_of_type_Zux), true);
+        zux.a(this.jdField_a_of_type_Zux, true);
+      }
+    }
+  }
 }
 
 

@@ -1,19 +1,39 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class rzs
-  implements View.OnLayoutChangeListener
+class rzs
+  implements rzi
 {
-  public rzs(VideoFeedsRecyclerView paramVideoFeedsRecyclerView) {}
+  rzs(rzq paramrzq, ColumnInfo paramColumnInfo) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void a(int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
-    this.a.removeOnLayoutChangeListener(this);
-    if (VideoFeedsRecyclerView.a(this.a) != null) {
-      VideoFeedsRecyclerView.a(this.a).a(VideoFeedsRecyclerView.a(this.a).itemView);
+    QLog.i("RIJUGC.ManageColumnPresenter", 2, "createTopic response errorCode = " + paramInt1 + ", errorMsg = " + paramString + ", bizCode = " + paramInt2 + ", topicId = " + paramInt3);
+    if (rzq.a(this.jdField_a_of_type_Rzq) == null) {
+      return;
     }
+    rzq.a(this.jdField_a_of_type_Rzq).d();
+    if (paramInt1 == 0)
+    {
+      if (paramInt2 == 0)
+      {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo.columnID = paramInt3;
+        rzq.a(this.jdField_a_of_type_Rzq).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo, true);
+        rzq.a(this.jdField_a_of_type_Rzq).a(2131717672);
+        rzq.a(this.jdField_a_of_type_Rzq).a();
+        return;
+      }
+      rzq.a(this.jdField_a_of_type_Rzq).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo, false);
+      if (!paramString.isEmpty())
+      {
+        rzq.a(this.jdField_a_of_type_Rzq).a(paramString);
+        return;
+      }
+      rzq.a(this.jdField_a_of_type_Rzq).a(2131717671);
+      return;
+    }
+    rzq.a(this.jdField_a_of_type_Rzq).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo, false);
+    rzq.a(this.jdField_a_of_type_Rzq).a(2131717671);
   }
 }
 

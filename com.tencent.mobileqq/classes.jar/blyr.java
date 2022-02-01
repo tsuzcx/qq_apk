@@ -1,16 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
 
-class blyr
-  implements View.OnClickListener
+public class blyr
+  extends aoxs
 {
-  blyr(blyk paramblyk) {}
-  
-  public void onClick(View paramView)
+  public blyr(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
   {
-    blyk.b(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramQQAppInterface, paramProxyManager);
+  }
+  
+  protected void a()
+  {
+    blyp.a().c();
+  }
+  
+  protected void b()
+  {
+    blyp.a().d();
   }
 }
 

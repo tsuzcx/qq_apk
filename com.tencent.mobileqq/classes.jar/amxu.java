@@ -1,54 +1,106 @@
-import android.text.Layout;
-import android.text.Selection;
-import android.text.Spannable;
-import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
-import android.text.style.ForegroundColorSpan;
-import android.view.MotionEvent;
-import android.widget.TextView;
+import android.app.Activity;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.app.AppRuntime;
 
 public class amxu
-  extends LinkMovementMethod
+  implements amxt
 {
-  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  private int jdField_a_of_type_Int;
+  private amyv jdField_a_of_type_Amyv;
+  public WeakReference<Context> a;
+  
+  public amxu(Activity paramActivity, amyv paramamyv, int paramInt)
   {
-    int i = paramMotionEvent.getAction();
-    if ((i == 1) || (i == 0))
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.jdField_a_of_type_Amyv = paramamyv;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return 200;
+  }
+  
+  public amqr a(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    amyv localamyv = this.jdField_a_of_type_Amyv;
+    if ((!(localAppRuntime instanceof QQAppInterface)) || (localamyv == null)) {}
+    do
     {
-      int j = (int)paramMotionEvent.getX();
-      int k = (int)paramMotionEvent.getY();
-      int m = paramTextView.getTotalPaddingLeft();
-      int n = paramTextView.getTotalPaddingTop();
-      int i1 = paramTextView.getScrollX();
-      int i2 = paramTextView.getScrollY();
-      Object localObject = paramTextView.getLayout();
-      j = ((Layout)localObject).getOffsetForHorizontal(((Layout)localObject).getLineForVertical(k - n + i2), j - m + i1);
-      localObject = (ClickableSpan[])paramSpannable.getSpans(j, j, ClickableSpan.class);
-      if (localObject.length != 0)
+      do
       {
-        if (i == 1)
-        {
-          localObject[0].onClick(paramTextView);
-          paramSpannable.setSpan(new ForegroundColorSpan(-12541697), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
+        return null;
+        if (this.jdField_a_of_type_Int == paramInt2) {
+          break;
         }
-        for (;;)
-        {
-          return true;
-          if (i == 0)
-          {
-            paramSpannable.setSpan(new ForegroundColorSpan(2134941951), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
-            Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]));
-          }
-        }
+      } while (!QLog.isColorLevel());
+      QLog.d("CmGameHandler", 2, new Object[] { "not the same gameId, self:", Integer.valueOf(this.jdField_a_of_type_Int), "cmd gameId:", Integer.valueOf(paramInt2), ",cmd:", paramString1 });
+      return null;
+      if ("cs.first_frame_drawn.local".equals(paramString1))
+      {
+        localamyv.e(paramString2);
+        return null;
       }
-      Selection.removeSelection(paramSpannable);
-    }
-    return super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
+      if ("cs.create_room.local".equals(paramString1))
+      {
+        localamyv.f(paramString2);
+        return null;
+      }
+      if ("cs.join_room.local".equals(paramString1))
+      {
+        localamyv.g(paramString2);
+        return null;
+      }
+      if ("cs.game_start.local".equals(paramString1))
+      {
+        localamyv.h(paramString2);
+        return null;
+      }
+      if ("cs.make_room_min.local".equals(paramString1))
+      {
+        localamyv.b();
+        return null;
+      }
+      if ("cs.close_room.local".equals(paramString1))
+      {
+        localamyv.c();
+        return null;
+      }
+      if ("cs.game_tips.local".equals(paramString1))
+      {
+        localamyv.i(ApolloUtil.a(paramString2, "tips"));
+        return null;
+      }
+      if ("cs.check_pubAccount_state.local".equals(paramString1))
+      {
+        localamyv.a(paramString2, paramInt1);
+        return null;
+      }
+    } while (!"cs.on_get_open_key.local".equals(paramString1));
+    localamyv.b(paramString2, paramInt1);
+    return null;
+  }
+  
+  public amyv a()
+  {
+    return this.jdField_a_of_type_Amyv;
+  }
+  
+  public void a()
+  {
+    QLog.i("CmGameHandler", 1, "[destroyHandler]");
+    this.jdField_a_of_type_Amyv = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amxu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,63 +1,17 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.SubscribeResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import mqq.observer.BusinessObserver;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.ark.ArkViewModelBase.AppInfo;
+import com.tencent.mobileqq.activity.aio.item.ArkFlashChatContainerWrapper;
+import com.tencent.mobileqq.activity.aio.item.ArkFlashChatContainerWrapper.2.1;
 
-class agpm
-  implements BusinessObserver
+public class agpm
+  extends auly
 {
-  agpm(agpl paramagpl, String paramString) {}
+  public agpm(ArkFlashChatContainerWrapper paramArkFlashChatContainerWrapper) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramBoolean) {}
-    for (;;)
-    {
-      int i;
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          mobileqq_mp.SubscribeResponse localSubscribeResponse = new mobileqq_mp.SubscribeResponse();
-          localSubscribeResponse.mergeFrom(paramBundle);
-          paramInt = ((mobileqq_mp.RetInfo)localSubscribeResponse.ret_info.get()).ret_code.get();
-          if (paramInt == 0)
-          {
-            i = 1;
-            paramInt = 1;
-          }
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        paramInt = 0;
-      }
-      try
-      {
-        StructingMsgItemBuilder.a(this.jdField_a_of_type_Agpl.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Agpl.jdField_a_of_type_AndroidAppActivity);
-        bcef.b(this.jdField_a_of_type_Agpl.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a, "dc00899", "Pb_account_lifeservice", "", "0X8006513", "0X8006513", 0, 0, "" + paramInt, "" + this.jdField_a_of_type_JavaLangString, "", "");
-        return;
-      }
-      catch (Exception paramBundle)
-      {
-        for (;;)
-        {
-          paramInt = i;
-        }
-      }
-      StructingMsgItemBuilder.b(this.jdField_a_of_type_Agpl.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Agpl.jdField_a_of_type_AndroidAppActivity);
-      break label236;
-      StructingMsgItemBuilder.b(this.jdField_a_of_type_Agpl.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Agpl.jdField_a_of_type_AndroidAppActivity);
-      break label236;
-      StructingMsgItemBuilder.b(this.jdField_a_of_type_Agpl.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Agpl.jdField_a_of_type_AndroidAppActivity);
-      continue;
-      StructingMsgItemBuilder.b(this.jdField_a_of_type_Agpl.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Agpl.jdField_a_of_type_AndroidAppActivity);
-      label236:
-      paramInt = 0;
-    }
+    ArkDispatchTask.getInstance().postDelayed(ArkFlashChatContainerWrapper.a(this.a).name, new ArkFlashChatContainerWrapper.2.1(this, paramBoolean, paramBundle), 1000L);
   }
 }
 

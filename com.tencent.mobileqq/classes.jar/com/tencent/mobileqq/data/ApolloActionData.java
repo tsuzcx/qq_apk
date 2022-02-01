@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import bges;
+import bhnm;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.unique;
@@ -44,6 +44,7 @@ public class ApolloActionData
   public String iconUrl;
   @notColumn
   public String inputText;
+  public int isForPlayerAction;
   public int isShow;
   public String keywords;
   public long limitEnd;
@@ -102,12 +103,12 @@ public class ApolloActionData
   
   public boolean verifyVersion(String paramString)
   {
-    return (TextUtils.isEmpty(this.minVer)) || (TextUtils.isEmpty(this.maxVer)) || ((bges.a(this.minVer, paramString)) && (bges.a(paramString, this.maxVer)));
+    return (TextUtils.isEmpty(this.minVer)) || (TextUtils.isEmpty(this.maxVer)) || ((bhnm.a(this.minVer, paramString)) && (bhnm.a(paramString, this.maxVer)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.ApolloActionData
  * JD-Core Version:    0.7.0.1
  */

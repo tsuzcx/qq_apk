@@ -1,22 +1,13 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.view.View;
 
-class alwj
-  implements MediaPlayer.OnPreparedListener
+public abstract interface alwj
 {
-  alwj(alwf paramalwf, JSONObject paramJSONObject, alxf paramalxf) {}
+  public abstract void a();
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
-  {
-    this.jdField_a_of_type_Alwf.a(3);
-    if (alwf.a(this.jdField_a_of_type_Alwf)) {
-      this.jdField_a_of_type_Alwf.b(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Alxf);
-    }
-    if (this.jdField_a_of_type_OrgJsonJSONObject != null) {
-      alwf.a(this.jdField_a_of_type_Alwf, this.jdField_a_of_type_Alxf, this.jdField_a_of_type_OrgJsonJSONObject);
-    }
-  }
+  public abstract void a(@NonNull View paramView1, int paramInt1, int paramInt2, @NonNull View paramView2, boolean paramBoolean);
+  
+  public abstract boolean a();
 }
 
 

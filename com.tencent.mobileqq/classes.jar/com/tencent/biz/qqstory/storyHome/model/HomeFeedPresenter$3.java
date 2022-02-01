@@ -3,30 +3,30 @@ package com.tencent.biz.qqstory.storyHome.model;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import vux;
-import xnv;
-import xoi;
-import xpe;
-import xpg;
+import wjs;
+import ycq;
+import ydd;
+import ydz;
+import yeb;
 
 public class HomeFeedPresenter$3
   implements Runnable
 {
-  public HomeFeedPresenter$3(xoi paramxoi, ArrayList paramArrayList) {}
+  public HomeFeedPresenter$3(ydd paramydd, ArrayList paramArrayList) {}
   
   public void run()
   {
-    xnv localxnv = (xnv)vux.a(12);
+    ycq localycq = (ycq)wjs.a(12);
     Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
-      Object localObject = (xpe)localIterator.next();
-      if ((localObject instanceof xpg))
+      Object localObject = (ydz)localIterator.next();
+      if ((localObject instanceof yeb))
       {
-        localObject = (xpg)localObject;
-        FeedVideoInfo localFeedVideoInfo = ((xpg)localObject).a().getVideoInfo();
-        localFeedVideoInfo.mVideoItemList.addAll(((xpg)localObject).a());
-        localxnv.a(0, localFeedVideoInfo.feedId, localFeedVideoInfo.mVideoSeq, localFeedVideoInfo.mVideoItemList, localFeedVideoInfo.mVideoNextCookie, localFeedVideoInfo.mIsVideoEnd, localFeedVideoInfo.mVideoPullType, true);
+        localObject = (yeb)localObject;
+        FeedVideoInfo localFeedVideoInfo = ((yeb)localObject).a().getVideoInfo();
+        localFeedVideoInfo.mVideoItemList.addAll(((yeb)localObject).a());
+        localycq.a(0, localFeedVideoInfo.feedId, localFeedVideoInfo.mVideoSeq, localFeedVideoInfo.mVideoItemList, localFeedVideoInfo.mVideoNextCookie, localFeedVideoInfo.mIsVideoEnd, localFeedVideoInfo.mVideoPullType, true);
       }
     }
   }

@@ -1,19 +1,32 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPromoteTaskList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 
 public class wul
-  extends DataSetObserver
+  extends wsr<qqstory_service.ReqGetPromoteTaskList>
 {
-  private wul(XViewPager paramXViewPager) {}
+  public static final String b = weg.a("StorySvc.get_promote_tasklist");
   
-  public void onChanged()
+  public wul(String paramString)
   {
-    this.a.b();
+    super(b, new qqstory_service.ReqGetPromoteTaskList(), null);
+    ((qqstory_service.ReqGetPromoteTaskList)this.a).bytes_cookie.set(ByteStringMicro.copyFromUtf8(paramString));
   }
   
-  public void onInvalidated()
+  public wfh a(byte[] paramArrayOfByte)
   {
-    this.a.b();
+    return new wum(paramArrayOfByte);
+  }
+  
+  protected byte[] a()
+  {
+    ykq.a("GetPromoteTaskRequest", "encode: %s", this);
+    return super.a();
+  }
+  
+  public String toString()
+  {
+    return zel.a(this.a);
   }
 }
 

@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import odq;
-import ofe;
-import rtl;
+import olh;
+import omx;
+import sga;
 
 public class TopicShareHelper$5
   implements Runnable
 {
-  public TopicShareHelper$5(rtl paramrtl, String paramString) {}
+  public TopicShareHelper$5(sga paramsga, String paramString) {}
   
   public void run()
   {
-    odq.a(null, "", "0X80088B4", "0X80088B4", 0, 0, "", this.a, "", ofe.a(rtl.a(this.this$0).mChannelID, null), false);
+    olh.a(null, "", "0X80088B4", "0X80088B4", 0, 0, "", this.a, "", omx.a(sga.a(this.this$0).mChannelID, null), false);
   }
 }
 

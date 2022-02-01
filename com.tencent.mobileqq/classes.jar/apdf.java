@@ -1,69 +1,44 @@
-import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloadListener;
-import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderTask;
-import com.tencent.mobileqq.data.RockDownloadInfo;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import java.util.ArrayList;
-import javax.annotation.Nonnull;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ar.ARRecord.ARRecordReport.1;
+import com.tencent.mobileqq.ar.ARRecord.ARRecordReport.2;
+import com.tencent.mobileqq.ar.ARRecord.ARRecordReport.3;
+import com.tencent.mobileqq.ar.ARRecord.ARRecordReport.4;
+import com.tencent.qphone.base.util.QLog;
 
 public class apdf
 {
-  @android.support.annotation.Nullable
-  public static ArrayList<RockDownloadInfo> a(@NonNull RockDownloadInfo paramRockDownloadInfo)
-  {
-    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
-    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
-    localRockDownloaderTask.setTaskCheckLevel(1);
-    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
-    return apda.a(localRockDownloaderTask);
-  }
+  private static apdf a;
   
-  public static void a(@Nonnull RockDownloadInfo paramRockDownloadInfo, @javax.annotation.Nullable apcz paramapcz)
+  public static apdf a()
   {
-    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
-    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
-    localRockDownloaderTask.setTaskCheckLevel(1);
-    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
-    localRockDownloaderTask.setQueryAPKListener(paramapcz);
-    apda.b(localRockDownloaderTask);
-  }
-  
-  public static void a(@Nonnull RockDownloadInfo paramRockDownloadInfo, @javax.annotation.Nullable RockDownloadListener paramRockDownloadListener)
-  {
-    if (!NetworkUtil.isWifiEnabled(BaseApplicationImpl.context))
-    {
-      if (paramRockDownloadListener != null)
-      {
-        paramRockDownloadListener.onDownloadFail(paramRockDownloadInfo, amtj.a(2131712605), 10009);
-        paramRockDownloadListener.onDownloadFinish(paramRockDownloadInfo);
-      }
-      return;
+    if (a == null) {
+      a = new apdf();
     }
-    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
-    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
-    localRockDownloaderTask.setTaskCheckLevel(1);
-    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
-    localRockDownloaderTask.setRockDownloadListener(paramRockDownloadListener);
-    apda.a(localRockDownloaderTask);
+    return a;
   }
   
-  public static boolean a(@Nonnull RockDownloadInfo paramRockDownloadInfo)
+  public void a()
   {
-    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
-    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
-    localRockDownloaderTask.setTaskCheckLevel(1);
-    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
-    return apda.b(localRockDownloaderTask);
+    QLog.d("ARRecordReport", 2, "reportPreRecordStart");
+    ThreadManager.post(new ARRecordReport.1(this), 5, null, false);
   }
   
-  public static boolean b(@Nonnull RockDownloadInfo paramRockDownloadInfo)
+  public void a(int paramInt)
   {
-    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
-    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
-    localRockDownloaderTask.setTaskCheckLevel(1);
-    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
-    return apda.a(localRockDownloaderTask);
+    QLog.d("ARRecordReport", 2, String.format("reportRecordFail failType=%s", new Object[] { Integer.valueOf(paramInt) }));
+    ThreadManager.post(new ARRecordReport.4(this, paramInt), 5, null, false);
+  }
+  
+  public void a(int paramInt, long paramLong)
+  {
+    QLog.d("ARRecordReport", 2, String.format("reportRecordSuccess successType=%s videoLength=%s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) }));
+    ThreadManager.post(new ARRecordReport.3(this, paramInt, paramLong), 5, null, false);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    QLog.d("ARRecordReport", 2, String.format("reportActiveRecordStart inPreRecord=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    ThreadManager.post(new ARRecordReport.2(this, paramBoolean), 5, null, false);
   }
 }
 

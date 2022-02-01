@@ -1,45 +1,33 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
 
 public class bfad
+  implements URLDrawable.URLDrawableListener
 {
-  public static bfad[] a;
-  public String a;
+  public bfad(TroopCreateLogicActivity paramTroopCreateLogicActivity, URLDrawable paramURLDrawable, bfaf parambfaf) {}
   
-  static
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    jdField_a_of_type_ArrayOfBfad = new bfad[] { new bfad("BulkChatMessageConfig") };
+    this.jdField_a_of_type_Bfaf.a(null);
   }
   
-  public bfad(String paramString)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Bfaf.a(null);
   }
   
-  final JSONObject a(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      return a(paramString);
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        paramString = new JSONObject();
-      }
-    }
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  JSONObject a(JSONObject paramJSONObject)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    return paramJSONObject;
+    paramURLDrawable = bjkm.a(this.jdField_a_of_type_ComTencentImageURLDrawable, 100, 100);
+    this.jdField_a_of_type_Bfaf.a(paramURLDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfad
  * JD-Core Version:    0.7.0.1
  */

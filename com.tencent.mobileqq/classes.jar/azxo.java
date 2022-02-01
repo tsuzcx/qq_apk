@@ -1,11 +1,28 @@
-import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.redtouch.RedTouch;
 
-public abstract class azxo
-  implements DialogInterface.OnDismissListener
+class azxo
+  implements bkzv
 {
-  public DialogInterface.OnDismissListener a()
+  azxo(azxh paramazxh, bkzi parambkzi) {}
+  
+  public void a()
   {
-    return new azxp(this, this);
+    View localView = this.jdField_a_of_type_Bkzi.a.findViewById(1);
+    if (localView == null) {}
+    for (localView = null;; localView = localView.findViewById(2131361971))
+    {
+      if (localView != null)
+      {
+        localView = azxh.a(this.jdField_a_of_type_Azxh, localView, 5, 5, 7, 5);
+        if (localView != null) {
+          new RedTouch(azxh.e(this.jdField_a_of_type_Azxh), localView).b(53).a().a(bhaa.a());
+        }
+      }
+      this.jdField_a_of_type_Bkzi.a(null);
+      return;
+    }
   }
 }
 

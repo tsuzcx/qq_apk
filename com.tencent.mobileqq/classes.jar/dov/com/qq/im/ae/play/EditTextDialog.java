@@ -50,12 +50,12 @@ public class EditTextDialog
   
   private void initView(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131558499, null);
-    this.mEditText = ((EditText)paramContext.findViewById(2131365861));
-    this.mEditTip = ((TextView)paramContext.findViewById(2131365863));
-    this.mCancelView = ((TextView)paramContext.findViewById(2131364175));
-    this.mConfirmView = ((Button)paramContext.findViewById(2131364983));
-    this.mCleanTextView = ((ImageView)paramContext.findViewById(2131363996));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131558510, null);
+    this.mEditText = ((EditText)paramContext.findViewById(2131365959));
+    this.mEditTip = ((TextView)paramContext.findViewById(2131365962));
+    this.mCancelView = ((TextView)paramContext.findViewById(2131364250));
+    this.mConfirmView = ((Button)paramContext.findViewById(2131365067));
+    this.mCleanTextView = ((ImageView)paramContext.findViewById(2131364070));
     this.mEditText.addTextChangedListener(new EditTextDialog.1(this));
     this.mConfirmView.setOnClickListener(new EditTextDialog.2(this));
     this.mCancelView.setOnClickListener(new EditTextDialog.3(this));

@@ -23,7 +23,7 @@ class Conversation$19
         QLog.d("Q.recent", 2, "[status][mainTab] updateNickName() from: " + this.b + " nickName: " + this.a);
       }
       Conversation.a(this.this$0).setText(this.a);
-      Object localObject = Conversation.a(this.this$0).getTag(2131366130);
+      Object localObject = Conversation.a(this.this$0).getTag(2131366231);
       if (((localObject instanceof WeakReference)) && ((((WeakReference)localObject).get() instanceof TextView))) {}
       for (localObject = (TextView)((WeakReference)localObject).get(); localObject != null; localObject = null)
       {

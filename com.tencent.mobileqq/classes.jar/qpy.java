@@ -1,19 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
-
 class qpy
-  implements View.OnTouchListener
 {
-  qpy(qpw paramqpw, LinearLayout paramLinearLayout) {}
+  private boolean jdField_a_of_type_Boolean;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  qpy(qph paramqph, boolean paramBoolean)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
-    }
-    return false;
+    a(paramBoolean);
+  }
+  
+  void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

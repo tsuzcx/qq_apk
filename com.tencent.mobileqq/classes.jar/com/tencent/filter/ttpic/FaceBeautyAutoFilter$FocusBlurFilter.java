@@ -31,12 +31,6 @@ public class FaceBeautyAutoFilter$FocusBlurFilter
     }
   }
   
-  public void ClearGLSL()
-  {
-    RendererUtils.clearTexture(this.paramTEXTRUEID);
-    super.ClearGLSL();
-  }
-  
   public void applyFilterChain(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
     this.paramTEXTRUEID = RendererUtils.createTexture();
@@ -49,6 +43,12 @@ public class FaceBeautyAutoFilter$FocusBlurFilter
     FaceBeautyAutoFilter.nativeFastBlur(localQImage, this.blurSize * this.lastScaleFilt);
     GLSLRender.nativeTextImage(localQImage, this.paramTEXTRUEID);
     localQImage.Dispose();
+  }
+  
+  public void clearGLSL()
+  {
+    RendererUtils.clearTexture(this.paramTEXTRUEID);
+    super.clearGLSL();
   }
   
   public boolean renderTexture(int paramInt1, int paramInt2, int paramInt3)

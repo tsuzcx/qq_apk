@@ -1,10 +1,32 @@
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
+
 public class aohf
+  implements BusinessObserver
 {
-  public int a = 3000;
+  public void a() {}
   
-  public String toString()
+  public void a(int paramInt) {}
+  
+  public void b() {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return "ARCloudRecogReqSceneRecogInfo{timeout = " + this.a + '}';
+    switch (paramInt)
+    {
+    case 111: 
+    case 112: 
+    case 114: 
+    default: 
+      return;
+    case 113: 
+      a(paramBundle.getInt("key_rt_type"));
+      return;
+    case 115: 
+      a();
+      return;
+    }
+    b();
   }
 }
 

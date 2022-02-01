@@ -1,22 +1,14 @@
-import java.util.HashMap;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.model.RIJUserLevelRequestModule.UserLevelInfo;
 
-final class shs
-  implements rqx
+class shs
+  implements qha
 {
-  shs(HashMap paramHashMap) {}
+  shs(shl paramshl, VideoInfo paramVideoInfo, swj paramswj, boolean paramBoolean) {}
   
-  public void a(float paramFloat) {}
-  
-  public void a(int paramInt, @NotNull String paramString)
+  public void a(RIJUserLevelRequestModule.UserLevelInfo paramUserLevelInfo)
   {
-    shq.a(this.a);
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.put("capture_url", paramString);
-    shq.a(this.a);
+    shl.a(this.jdField_a_of_type_Shl, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, this.jdField_a_of_type_Swj, this.jdField_a_of_type_Boolean);
   }
 }
 

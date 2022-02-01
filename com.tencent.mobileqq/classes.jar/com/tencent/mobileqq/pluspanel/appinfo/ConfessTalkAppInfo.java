@@ -1,15 +1,17 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import amtj;
-import anca;
+import ahvi;
 import android.content.res.Resources;
 import android.os.SystemClock;
-import ayfu;
-import bcef;
+import anvx;
+import aoep;
+import bdla;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
@@ -22,7 +24,7 @@ public class ConfessTalkAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130843737;
+    return 2130843775;
   }
   
   public int getAppID()
@@ -43,7 +45,7 @@ public class ConfessTalkAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131698077);
+    return BaseApplicationImpl.getContext().getString(2131698363);
   }
   
   public void init()
@@ -52,25 +54,25 @@ public class ConfessTalkAppInfo
     this.mConfessTalkIconLastClickTime = 0L;
   }
   
-  public void onPlusPanelAppClick(ayfu paramayfu, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     QQAppInterface localQQAppInterface = paramBaseChatPie.app;
-    bcef.b(localQQAppInterface, "dc00898", "", "", "0X800956E", "0X800956E", 0, 0, "", "", "", "");
+    bdla.b(localQQAppInterface, "dc00898", "", "", "0X800956E", "0X800956E", 0, 0, "", "", "", "");
     if (!NetworkUtil.isNetSupportHw(BaseApplicationImpl.getContext()))
     {
-      QQToast.a(BaseApplicationImpl.getContext(), 2131692035, 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299076));
+      QQToast.a(BaseApplicationImpl.getContext(), 2131692125, 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299080));
       return;
     }
     if (SystemClock.elapsedRealtime() - this.mConfessTalkIconLastClickTime < 5000L) {
-      paramayfu.b(paramBaseChatPie, false);
+      paramahvi.b(paramBaseChatPie, false);
     }
     for (;;)
     {
-      paramayfu.a(true);
+      paramahvi.a(true);
       this.mConfessTalkIconLastClickTime = SystemClock.elapsedRealtime();
       return;
-      ((TroopChatPie)paramBaseChatPie).a(amtj.a(2131707416));
-      ((anca)localQQAppInterface.getBusinessHandler(20)).b(paramSessionInfo.curFriendUin, false);
+      ((TroopChatPie)paramBaseChatPie).a(anvx.a(2131707763));
+      ((aoep)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).b(paramSessionInfo.curFriendUin, false);
     }
   }
 }

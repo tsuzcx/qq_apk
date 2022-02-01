@@ -1,15 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-
-public class adal
-  implements DialogInterface.OnClickListener
+class adal
+  implements adaz
 {
-  public adal(ChatSettingActivity paramChatSettingActivity) {}
+  adal(adak paramadak) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(awxt paramawxt, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    this.a.a = paramawxt;
+    adak.a(this.a, paramInt);
   }
 }
 

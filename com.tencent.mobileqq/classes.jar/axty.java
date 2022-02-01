@@ -1,30 +1,63 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.14.1;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import java.util.ArrayList;
 
-class axty
-  extends Animation
+public class axty
+  implements axuk
 {
-  axty(axtr paramaxtr, View paramView, int paramInt) {}
+  public axty(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void a(InterestTagInfo paramInterestTagInfo)
   {
-    super.applyTransformation(paramFloat, paramTransformation);
-    if (paramFloat == 1.0F) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    ChooseInterestTagActivity.a(this.a, 0);
+    bkxz.b(ChooseInterestTagActivity.a(this.a));
+    boolean bool;
+    if (!TextUtils.isEmpty(ChooseInterestTagActivity.a(this.a)))
+    {
+      ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), true);
+      ChooseInterestTagActivity localChooseInterestTagActivity = this.a;
+      if (ChooseInterestTagActivity.b(this.a) != -1)
+      {
+        bool = true;
+        ChooseInterestTagActivity.a(localChooseInterestTagActivity, false, bool);
+        ChooseInterestTagActivity.a(this.a).setText("");
+        ChooseInterestTagActivity.a(this.a, "");
+      }
     }
+    else
+    {
+      if (!ChooseInterestTagActivity.a(this.a, paramInterestTagInfo)) {
+        break label132;
+      }
+      ChooseInterestTagActivity.a(this.a).remove(paramInterestTagInfo);
+      ChooseInterestTagActivity.a(this.a, paramInterestTagInfo);
+    }
+    label132:
     do
     {
       return;
-      paramTransformation = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    } while (paramTransformation == null);
-    paramTransformation.height = (this.jdField_a_of_type_Int - (int)(this.jdField_a_of_type_Int * paramFloat));
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramTransformation);
+      bool = false;
+      break;
+      if (ChooseInterestTagActivity.a(this.a).size() < 8) {
+        break label198;
+      }
+    } while (ChooseInterestTagActivity.d(this.a));
+    ChooseInterestTagActivity.a(this.a, "最多只能添加8个标签哦");
+    ChooseInterestTagActivity.b(this.a, true);
+    ChooseInterestTagActivity.a(this.a).postDelayed(new ChooseInterestTagActivity.14.1(this), 2800L);
+    return;
+    label198:
+    ChooseInterestTagActivity.a(this.a).add(paramInterestTagInfo);
+    ChooseInterestTagActivity.c(this.a, paramInterestTagInfo);
   }
   
-  public boolean willChangeBounds()
+  public boolean a(InterestTagInfo paramInterestTagInfo)
   {
-    return true;
+    return ChooseInterestTagActivity.a(this.a, paramInterestTagInfo);
   }
 }
 

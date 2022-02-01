@@ -1,18 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
 
 public class adxh
-  implements View.OnClickListener
+  implements asgl
 {
-  public adxh(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public adxh(EmosmActivity paramEmosmActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    this.a.a.setText("");
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramInt -= this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getHeaderViewsCount();
+    if (paramInt < 0) {
+      return;
+    }
+    Object localObject = (EmoticonPackage)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    if (!NetworkUtil.isNetSupport(this.a))
+    {
+      localObject = new QQToast(this.a);
+      ((QQToast)localObject).a(2130839611);
+      ((QQToast)localObject).d(1500);
+      ((QQToast)localObject).a(anvx.a(2131703512));
+      ((QQToast)localObject).b(0);
+      return;
+    }
+    this.a.jdField_a_of_type_Bisl.a(this.a.getString(2131691882));
+    this.a.jdField_a_of_type_Bisl.show();
+    ((antu)this.a.app.getBusinessHandler(BusinessHandlerFactory.HANDLER_EMOSM)).a(Integer.parseInt(((EmoticonPackage)localObject).epId));
+    URLDrawable.clearMemoryCache();
+    if (this.a.b == 1)
+    {
+      bdla.b(this.a.app, "dc00898", "", "", "0X800AB12", "0X800AB12", 1, 0, "", "", "", "");
+      return;
+    }
+    bdla.b(this.a.app, "dc00898", "", "", "0X800AB15", "0X800AB15", 0, 0, "", "", "", "");
   }
 }
 

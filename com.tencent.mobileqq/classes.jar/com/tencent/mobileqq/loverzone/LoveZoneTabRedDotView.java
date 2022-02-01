@@ -13,7 +13,7 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import avjo;
+import awpt;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.utils.ViewUtils;
@@ -31,7 +31,7 @@ public class LoveZoneTabRedDotView
   private final int jdField_a_of_type_Int = 11;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private Drawable.Callback jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback = new avjo(this);
+  private Drawable.Callback jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback = new awpt(this);
   private ZipAnimationDrawable jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable;
   public boolean a;
   private String b = "";
@@ -119,7 +119,7 @@ public class LoveZoneTabRedDotView
       return;
     }
     paramCanvas.save();
-    Drawable localDrawable = getResources().getDrawable(2130845951);
+    Drawable localDrawable = getResources().getDrawable(2130846039);
     localDrawable.getBounds();
     localDrawable.setBounds(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.bottom);
     localDrawable.draw(paramCanvas);

@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.StructMsgSubImageVideo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class aggn
-  implements aghk
+class aggn
+  implements DialogInterface.OnClickListener
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  aggn(aggh paramaggh) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((((MessageForStructing)paramChatMessage).structingMsg instanceof StructMsgSubImageVideo)) {
-      return 111;
-    }
-    return 5;
+    paramDialogInterface.dismiss();
   }
 }
 

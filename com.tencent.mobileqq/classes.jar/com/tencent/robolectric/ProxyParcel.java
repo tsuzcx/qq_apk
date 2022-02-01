@@ -2,8 +2,8 @@ package com.tencent.robolectric;
 
 import android.os.IBinder;
 import android.os.Parcelable.Creator;
-import bjkt;
-import bjku;
+import bkwe;
+import bkwf;
 import java.io.FileDescriptor;
 import java.util.HashMap;
 
@@ -14,13 +14,13 @@ public final class ProxyParcel
   private static final ProxyParcel[] jdField_a_of_type_ArrayOfComTencentRobolectricProxyParcel;
   private static final ProxyParcel[] jdField_b_of_type_ArrayOfComTencentRobolectricProxyParcel;
   private long jdField_a_of_type_Long;
-  private bjku jdField_a_of_type_Bjku;
+  private bkwf jdField_a_of_type_Bkwf;
   private boolean jdField_a_of_type_Boolean;
   private long jdField_b_of_type_Long;
   
   static
   {
-    jdField_a_of_type_AndroidOsParcelable$Creator = new bjkt();
+    jdField_a_of_type_AndroidOsParcelable$Creator = new bkwe();
     jdField_a_of_type_ArrayOfComTencentRobolectricProxyParcel = new ProxyParcel[6];
     jdField_b_of_type_ArrayOfComTencentRobolectricProxyParcel = new ProxyParcel[6];
   }
@@ -36,7 +36,7 @@ public final class ProxyParcel
       }
       this.jdField_a_of_type_Long = 0L;
     }
-    this.jdField_a_of_type_Bjku = null;
+    this.jdField_a_of_type_Bkwf = null;
   }
   
   private void a(long paramLong)

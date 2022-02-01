@@ -1,17 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.SearchDialogDismissRunnable;
+import java.util.Comparator;
 
-public class aizj
-  implements DialogInterface.OnDismissListener
+class aizj
+  implements Comparator<ajbn>
 {
-  public aizj(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  aizj(aizi paramaizi) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public int a(ajbn paramajbn1, ajbn paramajbn2)
   {
-    this.a.b.postDelayed(new ChatHistoryTroopMemberFragment.SearchDialogDismissRunnable(this.a), 150L);
+    if ((!paramajbn1.a()) && (paramajbn2.a())) {
+      return -1;
+    }
+    if ((paramajbn1.a()) && (!paramajbn2.a())) {
+      return 1;
+    }
+    return (int)(paramajbn2.a - paramajbn1.a);
   }
 }
 

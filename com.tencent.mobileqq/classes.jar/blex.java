@@ -1,118 +1,48 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextUtils;
-import android.util.Log;
-import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Point;
+import com.tencent.widget.RangeButtonView;
 import java.util.ArrayList;
-import mqq.app.MobileQQ;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.Iterator;
+import java.util.List;
 
 public class blex
-  extends WebViewPlugin
 {
-  public blex()
+  private List<blew> jdField_a_of_type_JavaUtilList;
+  
+  public blex(List<blew> paramList)
   {
-    this.mPluginNameSpace = "Weiyun";
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
   
-  public static boolean a(String paramString)
+  public void a(Canvas paramCanvas, Paint paramPaint)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    try
+    if (this.jdField_a_of_type_JavaUtilList == null) {}
+    for (;;)
     {
-      if (TextUtils.isEmpty(paramString)) {
-        return bool1;
-      }
-      paramString = Uri.parse(paramString);
-      String str = paramString.getScheme();
-      if (("http".equalsIgnoreCase(str)) || ("https".equalsIgnoreCase(str)))
-      {
-        paramString = paramString.getHost();
-        bool1 = bool2;
-        if (TextUtils.isEmpty(paramString)) {
-          return bool1;
-        }
-        if (!paramString.contains("share.weiyun.com"))
-        {
-          bool1 = bool2;
-          if (!paramString.contains("h5.weiyun.com")) {
-            return bool1;
-          }
-        }
-      }
-      else
-      {
-        Log.e("WeiyunJsPlugin", "Weiyun urlString is not url!");
-        return false;
+      return;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        ((blew)localIterator.next()).a(paramCanvas, paramPaint, this.jdField_a_of_type_ComTencentWidgetRangeButtonView.a);
       }
     }
-    catch (Exception paramString)
-    {
-      Log.e("WeiyunJsPlugin", "Weiyun exception: " + paramString);
-      return false;
-    }
-    bool1 = true;
-    return bool1;
   }
   
-  public WeiYunFileInfo a(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
+  public void a(ArrayList<Integer> paramArrayList, int paramInt)
   {
-    WeiYunFileInfo localWeiYunFileInfo = new WeiYunFileInfo();
-    localWeiYunFileInfo.jdField_a_of_type_JavaLangString = paramString4;
-    localWeiYunFileInfo.c = paramString3;
-    localWeiYunFileInfo.jdField_a_of_type_Long = paramLong;
-    localWeiYunFileInfo.f = "FTN5K";
-    localWeiYunFileInfo.g = paramString2;
-    localWeiYunFileInfo.jdField_a_of_type_Int = 2;
-    localWeiYunFileInfo.e = bjnd.b(paramString1);
-    localWeiYunFileInfo.h = (blhk.b() + "/" + paramString3);
-    localWeiYunFileInfo.jdField_b_of_type_JavaLangString = ("FTN5K=" + paramString2);
-    localWeiYunFileInfo.jdField_b_of_type_Long = System.currentTimeMillis();
-    return localWeiYunFileInfo;
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    int i = 0;
-    if ((paramString2 == null) || (!paramString2.equalsIgnoreCase("Weiyun")) || (paramString3 == null)) {}
-    while ((this.mRuntime == null) || (this.mRuntime.a() == null) || (!paramString3.equals("createDownload"))) {
-      return false;
-    }
-    paramString1 = paramVarArgs[0];
-    try
+    if (this.jdField_a_of_type_JavaUtilList == null) {}
+    for (;;)
     {
-      paramJsBridgeListener = new ArrayList();
-      paramString1 = new JSONObject(paramString1);
-      if (paramString1.has("file_list"))
+      return;
+      int i = 0;
+      while (i < paramArrayList.size())
       {
-        paramString1 = paramString1.getJSONArray("file_list");
-        while (i < paramString1.length())
-        {
-          paramString2 = paramString1.getJSONObject(i);
-          paramString3 = paramString2.getString("url");
-          paramVarArgs = paramString2.getString("pack_name");
-          String str = paramString2.getString("file_id");
-          paramJsBridgeListener.add(a(paramString3, paramString2.getString("FTN5K"), paramVarArgs, str, paramString2.getLong("file_size")));
-          i += 1;
-        }
+        blew localblew = (blew)this.jdField_a_of_type_JavaUtilList.get(i);
+        localblew.a = new Point(((Integer)paramArrayList.get(i)).intValue() - (localblew.a() >> 1), paramInt);
+        i += 1;
       }
-      paramString1 = new Intent("com.weiyun.BROADCAST");
-      paramString1.setPackage(MobileQQ.getContext().getPackageName());
-      paramString1.putExtra("fileinfos", paramJsBridgeListener);
-      this.mRuntime.a().sendBroadcast(paramString1);
     }
-    catch (Exception paramJsBridgeListener)
-    {
-      label204:
-      break label204;
-    }
-    return true;
   }
 }
 

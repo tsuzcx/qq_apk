@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bmbk;
-import bmng;
+import bnqu;
+import bocy;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import dov.com.qq.im.ae.view.AECompoundButton;
@@ -22,7 +22,7 @@ public abstract class AEEditorToolBar
   implements View.OnClickListener
 {
   private static final String jdField_a_of_type_JavaLangString = AEEditorToolBar.class.getSimpleName();
-  protected bmng a;
+  protected bocy a;
   private List<AECompoundButton> jdField_a_of_type_JavaUtilList = new ArrayList();
   
   public AEEditorToolBar(Context paramContext)
@@ -63,7 +63,7 @@ public abstract class AEEditorToolBar
     localLayoutParams.width = ViewUtils.dip2px(56.0F);
     localLayoutParams.height = ViewUtils.dip2px(56.0F);
     if ((a(paramString)) && (!b(paramString))) {
-      localAECompoundButton.addView(LayoutInflater.from(getContext()).inflate(2131558562, localAECompoundButton, false));
+      localAECompoundButton.addView(LayoutInflater.from(getContext()).inflate(2131558573, localAECompoundButton, false));
     }
     addView(localAECompoundButton, paramInt1, localLayoutParams);
     this.jdField_a_of_type_JavaUtilList.add(paramInt1, localAECompoundButton);
@@ -95,7 +95,7 @@ public abstract class AEEditorToolBar
   
   public void b(String paramString)
   {
-    paramString = findViewById(2131376509);
+    paramString = findViewById(2131376768);
     if (paramString != null) {
       paramString.setVisibility(8);
     }
@@ -103,7 +103,7 @@ public abstract class AEEditorToolBar
   
   protected boolean b(String paramString)
   {
-    return bmbk.a().a("ae_editor_tool_bar_red_dot_" + paramString, false, 0);
+    return bnqu.a().a("ae_editor_tool_bar_red_dot_" + paramString, false, 0);
   }
   
   public void c()
@@ -117,9 +117,9 @@ public abstract class AEEditorToolBar
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public void setToolBarListener(bmng parambmng)
+  public void setToolBarListener(bocy parambocy)
   {
-    this.jdField_a_of_type_Bmng = parambmng;
+    this.jdField_a_of_type_Bocy = parambocy;
   }
 }
 

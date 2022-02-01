@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
+import ahvi;
 import android.content.Intent;
-import ayfu;
-import ayfy;
-import bcef;
-import bjnw;
+import azmf;
+import bdla;
+import bkzi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
@@ -16,15 +16,15 @@ import com.tencent.qphone.base.util.QLog;
 public class GroupPublicClassChatAppInfo
   extends GroupVideoChatAppInfo
 {
-  private void a(ayfu paramayfu, BaseChatPie paramBaseChatPie)
+  private void a(ahvi paramahvi, BaseChatPie paramBaseChatPie)
   {
-    bjnw localbjnw = bjnw.a(paramBaseChatPie.getActivity());
-    localbjnw.b(2131696761);
-    localbjnw.b(2131696762);
-    localbjnw.c(2131690620);
-    localbjnw.a(new ayfy(this, localbjnw, paramayfu, paramBaseChatPie));
-    localbjnw.show();
-    bcef.b(paramBaseChatPie.app, "dc00898", "", "", "0X800ABC6", "0X800ABC6", 0, 0, "", "", "", "");
+    bkzi localbkzi = bkzi.a(paramBaseChatPie.getActivity());
+    localbkzi.b(2131697028);
+    localbkzi.b(2131697029);
+    localbkzi.c(2131690697);
+    localbkzi.a(new azmf(this, localbkzi, paramahvi, paramBaseChatPie));
+    localbkzi.show();
+    bdla.b(paramBaseChatPie.app, "dc00898", "", "", "0X800ABC6", "0X800ABC6", 0, 0, "", "", "", "");
   }
   
   private void a(BaseChatPie paramBaseChatPie)
@@ -37,29 +37,29 @@ public class GroupPublicClassChatAppInfo
       QLog.i("GroupVideoChatAppInfo", 2, "showTroopCourseActionSheet replayUrl = " + str);
     }
     paramBaseChatPie.getActivity().startActivity(localIntent);
-    bcef.b(paramBaseChatPie.app, "dc00898", "", "", "0X800ABFD", "0X800ABFD", 0, 0, "", "", "", "");
+    bdla.b(paramBaseChatPie.app, "dc00898", "", "", "0X800ABFD", "0X800ABFD", 0, 0, "", "", "", "");
   }
   
-  private void b(ayfu paramayfu, BaseChatPie paramBaseChatPie)
+  private void b(ahvi paramahvi, BaseChatPie paramBaseChatPie)
   {
     try
     {
-      handleTroopLiveOrTroopCourseClick(paramayfu, paramBaseChatPie, paramBaseChatPie.sessionInfo, true);
-      bcef.b(paramBaseChatPie.app, "dc00898", "", "", "0X800ABFC", "0X800ABFC", 0, 0, "", "", "", "");
+      handleTroopLiveOrTroopCourseClick(paramahvi, paramBaseChatPie, paramBaseChatPie.sessionInfo, true);
+      bdla.b(paramBaseChatPie.app, "dc00898", "", "", "0X800ABFC", "0X800ABFC", 0, 0, "", "", "", "");
       return;
     }
-    catch (Exception paramayfu)
+    catch (Exception paramahvi)
     {
       for (;;)
       {
-        QLog.d("GroupVideoChatAppInfo", 1, "showTroopCourseActionSheet handleTroopLiveOrTroopCourseClick Exception", paramayfu);
+        QLog.d("GroupVideoChatAppInfo", 1, "showTroopCourseActionSheet handleTroopLiveOrTroopCourseClick Exception", paramahvi);
       }
     }
   }
   
   public int defaultDrawableID()
   {
-    return 2130839172;
+    return 2130839192;
   }
   
   public int getAppID()
@@ -80,19 +80,19 @@ public class GroupPublicClassChatAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131719038);
+    return BaseApplicationImpl.getContext().getString(2131719443);
   }
   
-  public void onPlusPanelAppClick(ayfu paramayfu, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     try
     {
-      a(paramayfu, paramBaseChatPie);
+      a(paramahvi, paramBaseChatPie);
       return;
     }
-    catch (Exception paramayfu)
+    catch (Exception paramahvi)
     {
-      QLog.d("GroupVideoChatAppInfo", 1, "handleTroopLiveOrTroopCourseClick Exception", paramayfu);
+      QLog.d("GroupVideoChatAppInfo", 1, "handleTroopLiveOrTroopCourseClick Exception", paramahvi);
     }
   }
 }

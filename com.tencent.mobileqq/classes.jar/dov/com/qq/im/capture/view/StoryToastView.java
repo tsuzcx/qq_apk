@@ -9,7 +9,7 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
-import bmzv;
+import bopn;
 
 public abstract class StoryToastView
   extends LinearLayout
@@ -42,7 +42,7 @@ public abstract class StoryToastView
     {
       this.jdField_a_of_type_AndroidAnimationAnimator = ObjectAnimator.ofFloat(this, "alpha", new float[] { 1.0F, 0.0F });
       this.jdField_a_of_type_AndroidAnimationAnimator.setDuration(300L);
-      this.jdField_a_of_type_AndroidAnimationAnimator.addListener(new bmzv(this));
+      this.jdField_a_of_type_AndroidAnimationAnimator.addListener(new bopn(this));
     }
     return this.jdField_a_of_type_AndroidAnimationAnimator;
   }

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ark;
 
-import aots;
-import aowe;
+import apww;
+import apzi;
 
 final class ArkRecommendLogic$1
   implements Runnable
 {
   public void run()
   {
-    aots.a(null);
-    aowe.a();
+    apww.a(null);
+    apzi.a();
   }
 }
 

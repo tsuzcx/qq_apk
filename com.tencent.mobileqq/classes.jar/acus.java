@@ -1,64 +1,26 @@
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.AutoLoginHelper.4.1;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
-import com.tencent.mobileqq.activity.home.MainFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
-import mqq.observer.AccountObserver;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.Elem;
+import tencent.im.msg.im_msg_body.MarketFace;
 
 public class acus
-  extends AccountObserver
+  extends acve
 {
-  acus(acup paramacup) {}
-  
-  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2)
+  public int a()
   {
-    super.onLoginFailed(paramString1, paramString2, paramString3, paramInt1, paramArrayOfByte1, paramInt2, paramArrayOfByte2);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("AutoLoginHelper", 4, String.format(Locale.getDefault(), "onLoginFailed, ret: %s, uin: %s, msg: %s, alias: %s", new Object[] { Integer.valueOf(paramInt1), acup.a(this.a), paramString2, paramString1 }));
-    }
-    this.a.c = false;
-    acup.a(this.a);
-    if (acup.a(this.a) != null)
-    {
-      paramString1 = new Intent(acup.a(this.a), LoginActivity.class);
-      paramString1.putExtra("uin", acup.a(this.a));
-      paramString1.putExtra("tab_index", MainFragment.b);
-      paramString1.addFlags(131072);
-      acup.a(this.a).startActivity(paramString1);
-      acup.a(this.a).finish();
-    }
+    return super.a() + 5;
   }
   
-  public void onLoginSuccess(String paramString1, String paramString2)
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bffl parambffl, bcse parambcse, bcre parambcre)
   {
-    super.onLoginSuccess(paramString1, paramString2);
-    this.a.c = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("AutoLoginHelper", 2, "AccountObserver ,onLoginSuccess ");
-    }
+    new bcrt().a(paramList, paramList1, paramStringBuilder, paramMsg, parambffl, paramBoolean2);
+    return true;
   }
   
-  public void onLoginTimeout(String paramString)
+  public boolean a(im_msg_body.Elem paramElem)
   {
-    super.onLoginTimeout(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("AutoLoginHelper", 2, "AccountObserver ,onLoginTimeout ");
-    }
-    this.a.c = false;
-    acup.a(this.a);
-    acup.a(this.a).a.post(new AutoLoginHelper.4.1(this));
-  }
-  
-  public void onUserCancel(String paramString)
-  {
-    super.onUserCancel(paramString);
-    this.a.c = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("AutoLoginHelper", 2, "AccountObserver ,onUserCancel ");
-    }
+    return paramElem.market_face.has();
   }
 }
 

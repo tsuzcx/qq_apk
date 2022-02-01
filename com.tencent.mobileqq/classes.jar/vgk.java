@@ -1,33 +1,37 @@
-import com.tencent.biz.qcircleshadow.lib.delegate.IToastDelegate;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public class vgk
-  implements IToastDelegate
+class vgk
+  implements Handler.Callback
 {
-  public int getIconTypeDefault()
-  {
-    return 0;
-  }
+  vgk(vgj paramvgj) {}
   
-  public int getIconTypeError()
+  public boolean handleMessage(Message paramMessage)
   {
-    return 1;
-  }
-  
-  public int getIconTypeNone()
-  {
-    return -1;
-  }
-  
-  public int getIconTypeSuccess()
-  {
-    return 2;
-  }
-  
-  public void makeTextAndShow(int paramInt1, String paramString, int paramInt2)
-  {
-    QQToast.a(BaseApplicationImpl.getContext(), paramInt1, paramString, paramInt2).a();
+    switch (paramMessage.what)
+    {
+    default: 
+    case 0: 
+    case 1: 
+      do
+      {
+        do
+        {
+          return true;
+          vgj.a(this.a, false);
+          vgj.a(this.a).removeMessages(0);
+        } while (vgj.a(this.a) == null);
+        vgj.a(this.a).a(true);
+        return true;
+        vgj.a(this.a, false);
+        vgj.a(this.a).removeMessages(1);
+      } while (vgj.a(this.a) == null);
+      vgj.a(this.a).a(false);
+      return true;
+    }
+    vgj.a(this.a, true);
+    return true;
   }
 }
 

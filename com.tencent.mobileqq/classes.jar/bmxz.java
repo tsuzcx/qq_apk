@@ -1,21 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.capture.view.AdvancedProviderView;
-import java.util.List;
+import android.arch.lifecycle.ViewModelProvider;
+import android.arch.lifecycle.ViewModelProvider.AndroidViewModelFactory;
+import android.arch.lifecycle.ViewModelProvider.Factory;
+import android.arch.lifecycle.ViewModelStoreOwner;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class bmxz
-  implements View.OnClickListener
 {
-  public bmxz(AdvancedProviderView paramAdvancedProviderView) {}
-  
-  public void onClick(View paramView)
+  public static ViewModelProvider a(@NonNull ViewModelStoreOwner paramViewModelStoreOwner)
   {
-    List localList = boaz.a().a();
-    if (localList.size() > 0) {
-      yqu.a(this.a.a, localList.get(0));
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new ViewModelProvider(paramViewModelStoreOwner, ViewModelProvider.AndroidViewModelFactory.getInstance(BaseApplicationImpl.getApplication()));
+  }
+  
+  public static ViewModelProvider a(@NonNull ViewModelStoreOwner paramViewModelStoreOwner, ViewModelProvider.Factory paramFactory)
+  {
+    return new ViewModelProvider(paramViewModelStoreOwner, paramFactory);
   }
 }
 

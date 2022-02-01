@@ -1,17 +1,15 @@
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
-final class awfz
-  implements Comparator<String>
+public class awfz
+  implements DialogInterface.OnClickListener
 {
-  public int a(String paramString1, String paramString2)
+  public awfz(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramString1.length() > paramString2.length()) {
-      return -1;
-    }
-    if (paramString1.length() < paramString2.length()) {
-      return 1;
-    }
-    return 0;
+    paramDialogInterface.dismiss();
   }
 }
 

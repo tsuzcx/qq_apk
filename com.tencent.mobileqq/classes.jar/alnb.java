@@ -1,25 +1,26 @@
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+
 public class alnb
+  implements View.OnTouchListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d = -1;
+  public alnb(LoginView paramLoginView) {}
   
-  public alnb()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_ArrayOfByte = null;
-    this.jdField_a_of_type_Boolean = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginActivity.LoginView", 2, "mScrollRootView.setOnTouch action=" + paramMotionEvent.getAction() + " im:" + LoginView.a(this.a));
+    }
+    if ((paramMotionEvent.getAction() == 1) && (LoginView.a(this.a) != null)) {
+      LoginView.a(this.a).hideSoftInputFromWindow(this.a.a.getWindow().getDecorView().getWindowToken(), 0);
+    }
+    return true;
   }
 }
 

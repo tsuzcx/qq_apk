@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import abwx;
-import abwz;
-import aezq;
+import acnf;
+import acnh;
+import afrc;
 import android.os.SystemClock;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.RefreshMessageContext;
@@ -79,8 +79,8 @@ class TroopChatPie$6
         QLog.i(this.this$0.tag, 2, "now pull more message for troop!");
       }
       this.this$0.pullReqTime = SystemClock.uptimeMillis();
-      ((aezq)this.this$0.refreshMessageContext.context).a(this.this$0.pullReqTime);
-      this.this$0.refreshMessageContext.needAutoNavigateTop = abwz.c((List)localObject);
+      ((afrc)this.this$0.refreshMessageContext.context).a(this.this$0.pullReqTime);
+      this.this$0.refreshMessageContext.needAutoNavigateTop = acnh.c((List)localObject);
       this.this$0.refreshMessageContext.needNotifyUI = true;
     } while (this.this$0.refreshMessageContext.repullStickerMsgIndex != 0);
     localObject = this.this$0.refreshMessageContext;

@@ -1,29 +1,34 @@
-import com.tencent.mobileqq.app.automator.step.RegisterPush;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime.Status;
-import mqq.observer.AccountObserver;
+import java.io.File;
+import org.json.JSONArray;
 
-public class angl
-  extends AccountObserver
+class angl
+  implements anfj
 {
-  private angl(RegisterPush paramRegisterPush) {}
+  angl(angh paramangh, String paramString1, File paramFile, JSONArray paramJSONArray, int[] paramArrayOfInt, String paramString2) {}
   
-  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
+  public void onDownloadFinish(boolean paramBoolean, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "onOnlineStatusChanged isSuccess=" + paramBoolean1 + ",curStatus=" + paramStatus.toString() + ",isFriendListChang=" + paramBoolean3 + ",timeStamp=" + paramLong + ",isGatherListChange=" + paramBoolean4);
-    }
-    if (paramBoolean1)
+    QLog.d("ApolloPluginRscLoader", 1, "getApolloRsc checkDownloadFaceData onDownLoadFinish: sucess:" + paramBoolean);
+    Object localObject = this.jdField_a_of_type_Angh;
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_JavaIoFile.exists()) {}
+    for (paramInt = 0;; paramInt = 2)
     {
-      this.a.a(7);
+      localObject = angh.a((angh)localObject, 6, str, paramInt);
+      this.jdField_a_of_type_OrgJsonJSONArray.put(localObject);
+      if ((this.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ArrayOfInt.length > 0)) {
+        break;
+      }
+      this.jdField_a_of_type_Angh.a(this.b, anvx.a(2131700004), this.jdField_a_of_type_OrgJsonJSONArray);
       return;
     }
-    this.a.a(6);
+    angh.a(this.jdField_a_of_type_Angh, this.jdField_a_of_type_ArrayOfInt, this.b, this.jdField_a_of_type_OrgJsonJSONArray);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     angl
  * JD-Core Version:    0.7.0.1
  */

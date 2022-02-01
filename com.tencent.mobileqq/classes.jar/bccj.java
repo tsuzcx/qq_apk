@@ -1,91 +1,33 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.minigame.splash.SplashMiniGameData;
-import com.tencent.mobileqq.minigame.splash.SplashMiniGameStarter;
-import com.tencent.mobileqq.splashad.SplashADView;
+import com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment;
+import com.tencent.mobileqq.search.model.BusinessGroupWord;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppActivity;
+import java.util.List;
 
-public final class bccj
-  extends bcae
+public class bccj
+  extends aogk
 {
-  public bccj(Object paramObject, SplashADView paramSplashADView, AppActivity paramAppActivity)
-  {
-    super(paramObject);
-  }
+  public bccj(HotWordsForSubBussFragment paramHotWordsForSubBussFragment) {}
   
-  protected void a()
+  public void handleBusiHotWordError(int paramInt, String paramString)
   {
-    try
-    {
-      azig localazig = (azig)this.jdField_a_of_type_JavaLangObject;
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.b = false;
-      switch (localazig.a)
-      {
-      case 2: 
-        this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.d();
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      QLog.e("SplashMiniGameStarter", 1, "show SplashAd end() error ", localException);
-      return;
+    super.handleBusiHotWordError(paramInt, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.w(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "handleBusiHotWordError code=" + paramInt + " errorMsg;" + paramString);
     }
   }
   
-  protected void a(bcad parambcad)
+  public void handleBusiHotWordResult(int paramInt, List<BusinessGroupWord> paramList)
   {
-    azig localazig;
-    try
-    {
-      if (this.jdField_a_of_type_JavaLangObject == null) {
-        return;
-      }
-      localazig = (azig)this.jdField_a_of_type_JavaLangObject;
-      QLog.i("SplashMiniGameStarter", 1, "bindView");
-      bbzy.a = System.currentTimeMillis();
-      if (!this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.jdField_a_of_type_Boolean)
-      {
-        parambcad.a = 0L;
-        return;
-      }
-    }
-    catch (Exception parambcad)
-    {
-      QLog.e("SplashMiniGameStarter", 1, "show SplashAd bindView error ", parambcad);
-      return;
-    }
-    ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_MqqAppAppActivity.findViewById(2131377679);
-    if (localViewGroup == null)
-    {
-      QLog.i("SplashMiniGameStarter", 1, "bindView fail, root is null");
-      parambcad.a = 0L;
-      return;
-    }
-    SplashMiniGameStarter.setNeedShow(false);
-    localViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView, 0);
-    switch (localazig.a)
-    {
-    }
-    for (;;)
-    {
-      SplashMiniGameStarter.preloadMiniGame();
-      return;
-      QLog.i("SplashMiniGameStarter", 1, "show video");
-      this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.b();
-      if (SplashMiniGameStarter.curData != null) {}
-      for (long l = SplashMiniGameStarter.curData.videoDuration * 1000;; l = 5000L)
-      {
-        parambcad.a = l;
-        break;
-      }
+    HotWordsForSubBussFragment.jdField_a_of_type_Int = paramInt;
+    HotWordsForSubBussFragment.a(this.a, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.i(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "handleTabSearchResult expireTime;" + HotWordsForSubBussFragment.jdField_a_of_type_Int);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bccj
  * JD-Core Version:    0.7.0.1
  */

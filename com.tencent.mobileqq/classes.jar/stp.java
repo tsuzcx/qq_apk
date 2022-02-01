@@ -1,63 +1,22 @@
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.widget.HorizontalLabelLayout;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class stp
-  implements sth
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerFactory;", "", "createMediaPlayer", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayer;", "videoView", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IVideoView;", "createPlayerVideoView", "context", "Landroid/content/Context;", "isUseTextureView", "", "createPreloader", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerPreloader;", "obtainMediaPlayer", "token", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface stp
 {
-  public int a(BaseData paramBaseData)
-  {
-    switch (paramBaseData.r)
-    {
-    case 9: 
-    case 10: 
-    case 11: 
-    case 12: 
-    default: 
-      throw new IllegalArgumentException();
-    case 7: 
-    case 13: 
-      return 7;
-    case 8: 
-    case 14: 
-      return 8;
-    case 15: 
-      return 13;
-    }
-    return 14;
-  }
+  @Nullable
+  public abstract stn a(@NotNull String paramString);
   
-  public stg a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
-  {
-    LayoutInflater localLayoutInflater = LayoutInflater.from(paramContext);
-    switch (a(paramBaseData))
-    {
-    case 9: 
-    case 10: 
-    case 11: 
-    case 12: 
-    default: 
-      throw new IllegalArgumentException();
-    case 7: 
-      return new stt(this, localLayoutInflater.inflate(2131560186, paramViewGroup, false), paramBaseData);
-    case 8: 
-      return new str(this, localLayoutInflater.inflate(2131560183, paramViewGroup, false), paramBaseData);
-    case 13: 
-      paramViewGroup = new HorizontalLabelLayout(paramContext);
-      int i = AIOUtils.dp2px(15.0F, paramContext.getResources());
-      paramViewGroup.setPadding(i, 0, i, 0);
-      return new stq(this, paramViewGroup, paramBaseData);
-    }
-    return new sts(this, localLayoutInflater.inflate(2131560106, paramViewGroup, false), paramBaseData);
-  }
+  @NotNull
+  public abstract stn a(@Nullable stv paramstv);
   
-  public boolean a(BaseData paramBaseData)
-  {
-    return (paramBaseData.r == 7) || (paramBaseData.r == 8) || (paramBaseData.r == 13) || (paramBaseData.r == 14) || (paramBaseData.r == 15) || (paramBaseData.r == 16);
-  }
+  @NotNull
+  public abstract stq a();
+  
+  @NotNull
+  public abstract stv a(@NotNull Context paramContext, boolean paramBoolean);
 }
 
 

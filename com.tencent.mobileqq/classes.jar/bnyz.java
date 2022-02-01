@@ -1,21 +1,22 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
+import android.view.View;
+import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment;
+import dov.com.qq.im.aeeditor.view.timebar.ScaleTimeBar;
+import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackContainerView;
 
 public class bnyz
-  extends AnimatorListenerAdapter
+  implements bodu
 {
-  public bnyz(QIMCameraSegmentCaptureButtonLayout paramQIMCameraSegmentCaptureButtonLayout, boolean paramBoolean, float paramFloat) {}
+  public bnyz(AEEditorMultiCutEditFragment paramAEEditorMultiCutEditFragment) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.a.e();
-      return;
+    AEEditorMultiCutEditFragment.a(this.a).setScrollX(paramView.getScrollX());
+    AEEditorMultiCutEditFragment.a(this.a).postInvalidate();
+    if (AEEditorMultiCutEditFragment.a(this.a).a()) {
+      AEEditorMultiCutEditFragment.a(this.a).b();
     }
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.a.a(this.jdField_a_of_type_Float);
+    AEEditorMultiCutEditFragment.c(this.a, AEEditorMultiCutEditFragment.a(this.a).b(paramView.getScrollX()));
+    this.a.a.c();
   }
 }
 

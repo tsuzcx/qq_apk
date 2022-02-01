@@ -9,7 +9,7 @@ import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import aoyv;
+import aqbz;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.widget.FormSimpleItem;
@@ -35,7 +35,7 @@ public class ArkAppListActivity
     super.doOnCreate(paramBundle);
     paramBundle = new LinearLayout(this);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1);
-    paramBundle.setBackgroundResource(2130838892);
+    paramBundle.setBackgroundResource(2130838912);
     paramBundle.setLayoutParams(localLayoutParams);
     paramBundle.setOrientation(1);
     paramBundle.setPadding(0, AIOUtils.dp2px(20.0F, getResources()), 0, 0);
@@ -52,14 +52,14 @@ public class ArkAppListActivity
           FormSimpleItem localFormSimpleItem = new FormSimpleItem(this);
           localFormSimpleItem.setLeftText(localLayoutParams);
           localFormSimpleItem.a(true);
-          localFormSimpleItem.setOnClickListener(new aoyv(this, localLayoutParams));
+          localFormSimpleItem.setOnClickListener(new aqbz(this, localLayoutParams));
           this.a.addView(localFormSimpleItem);
         }
         i += 1;
       }
     }
     super.setContentView(this.a);
-    super.setTitle(2131690112);
+    super.setTitle(2131690150);
     return true;
   }
   

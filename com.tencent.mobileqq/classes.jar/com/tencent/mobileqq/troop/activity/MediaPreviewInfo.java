@@ -3,14 +3,14 @@ package com.tencent.mobileqq.troop.activity;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apbd;
-import bdow;
+import aqeh;
+import bevz;
 import org.json.JSONObject;
 
 public class MediaPreviewInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<MediaPreviewInfo> CREATOR = new bdow();
+  public static final Parcelable.Creator<MediaPreviewInfo> CREATOR = new bevz();
   public int a;
   public String a;
   public String b;
@@ -29,7 +29,7 @@ public class MediaPreviewInfo
       this.jdField_a_of_type_Int = paramJSONObject.optInt("type", -1);
       this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("image");
       this.b = paramJSONObject.optString("video");
-      this.c = apbd.b(this.b);
+      this.c = aqeh.b(this.b);
     }
   }
   

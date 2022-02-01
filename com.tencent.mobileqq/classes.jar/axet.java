@@ -1,8 +1,12 @@
-import java.util.List;
+import java.util.Comparator;
 
-public abstract interface axet
+public final class axet
+  implements Comparator<axey>
 {
-  public abstract void a(boolean paramBoolean1, List<axfs> paramList, boolean paramBoolean2, int paramInt);
+  public int a(axey paramaxey1, axey paramaxey2)
+  {
+    return paramaxey1.a - paramaxey2.a;
+  }
 }
 
 

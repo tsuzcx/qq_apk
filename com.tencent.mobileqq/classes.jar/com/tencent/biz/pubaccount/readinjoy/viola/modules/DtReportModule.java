@@ -1,12 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.modules;
 
 import android.text.TextUtils;
+import com.tencent.qqlive.module.videoreport.VideoReport;
 import com.tencent.viola.annotation.JSMethod;
 import com.tencent.viola.core.ViolaInstance;
 import com.tencent.viola.module.BaseModule;
 import com.tencent.viola.ui.baseComponent.VComponent;
 import com.tencent.viola.utils.ViolaUtils;
-import tml;
+import java.util.Map;
+import tzz;
 
 public class DtReportModule
   extends BaseModule
@@ -16,21 +18,29 @@ public class DtReportModule
   @JSMethod
   public void dtReport(String paramString1, Object paramObject, String paramString2)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (getViolaInstance() != null)
+    Map localMap = null;
+    if ((getViolaInstance() != null) && (!TextUtils.isEmpty(paramString2)))
     {
-      localObject1 = localObject2;
-      if (!TextUtils.isEmpty(paramString2))
-      {
-        paramString2 = ViolaUtils.findComponent(getViolaInstance().getInstanceId(), paramString2);
-        localObject1 = localObject2;
-        if (paramString2 != null) {
-          localObject1 = paramString2.getHostView();
-        }
+      VComponent localVComponent = ViolaUtils.findComponent(getViolaInstance().getInstanceId(), paramString2);
+      paramString2 = localMap;
+      if (localVComponent != null) {
+        paramString2 = localVComponent.getHostView();
       }
+      if (paramString2 != null) {}
     }
-    tml.a(paramString1, paramObject, localObject1);
+    else
+    {
+      return;
+    }
+    localMap = tzz.a(paramObject.toString());
+    if (localMap.containsKey("dt_pgid")) {
+      VideoReport.setPageId(paramString2, ViolaUtils.getString(localMap.get("dt_pgid"), ""));
+    }
+    if (localMap.containsKey("dt_eid")) {
+      VideoReport.setElementId(paramString2, ViolaUtils.getString(localMap.get("dt_eid"), ""));
+    }
+    VideoReport.setElementParams(paramString2, localMap);
+    tzz.a(paramString1, paramObject, paramString2);
   }
   
   public String getModuleName()
@@ -40,7 +50,7 @@ public class DtReportModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.modules.DtReportModule
  * JD-Core Version:    0.7.0.1
  */

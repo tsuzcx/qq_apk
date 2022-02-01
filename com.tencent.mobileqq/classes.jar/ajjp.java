@@ -1,16 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment;
+import android.view.View;
 
-public class ajjp
-  implements DialogInterface.OnCancelListener
+public abstract interface ajjp
 {
-  public ajjp(MiniMsgTabFragment paramMiniMsgTabFragment) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    MiniMsgTabFragment.a(this.a, -1, null);
-  }
+  public abstract View a();
 }
 
 

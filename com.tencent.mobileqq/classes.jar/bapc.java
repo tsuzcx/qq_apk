@@ -1,18 +1,107 @@
-class bapc
-  extends anbd
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.mobileqq.qcall.QCallDetailActivity.1.1;
+import com.tencent.mobileqq.qcall.QCallDetailActivity.1.2;
+import com.tencent.qphone.base.util.QLog;
+import friendlist.GetOnlineInfoResp;
+import java.util.Map;
+
+public class bapc
+  extends anvi
 {
-  bapc(baoy parambaoy) {}
+  public bapc(QCallDetailActivity paramQCallDetailActivity) {}
   
-  protected void g(boolean paramBoolean, Object paramObject)
+  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
   {
-    int j = ((Integer)paramObject).intValue();
-    paramObject = gk.a();
-    if (paramBoolean) {}
-    for (int i = 0;; i = -1)
+    if ((paramBoolean) && (TextUtils.equals(paramString, QCallDetailActivity.a(this.a))))
     {
-      paramObject.b(i, j);
-      return;
+      QCallDetailActivity.a(this.a);
+      this.a.runOnUiThread(new QCallDetailActivity.1.1(this));
     }
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QCallDetailActivity", 2, " === onUpdateCustomHead isSuccess | " + paramBoolean + ", uin | " + paramString);
+    }
+    Object localObject;
+    if ((paramBoolean) && (QCallDetailActivity.a(this.a) == 3000) && (!bhbx.a(paramString, this.a.app.getCurrentAccountUin())))
+    {
+      localObject = (antp)this.a.app.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+      if (localObject != null) {
+        break label110;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("QCallDetailActivity", 2, " === onUpdateCustomHead dm is null  ====");
+      }
+    }
+    label110:
+    do
+    {
+      do
+      {
+        return;
+        if (((antp)localObject).a(QCallDetailActivity.a(this.a)) != null) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.i("QCallDetailActivity", 2, " === onUpdateCustomHead info is null ====");
+      return;
+      if (TextUtils.isEmpty(paramString))
+      {
+        QLog.i("QCallDetailActivity", 1, " === onUpdateCustomHead uin is null ====");
+        return;
+      }
+      localObject = ((antp)localObject).a(QCallDetailActivity.a(this.a));
+    } while ((localObject == null) || (((Map)localObject).size() <= 0) || (!((Map)localObject).containsKey(paramString)));
+    this.a.a(QCallDetailActivity.a(this.a));
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    Object localObject;
+    if ((paramBoolean) && (QCallDetailActivity.a(this.a) == 3000))
+    {
+      localObject = (antp)this.a.app.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+      if (localObject != null) {
+        break label53;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("QCallDetailActivity", 2, " === onUpdateFriendInfo dm is null  ====");
+      }
+    }
+    label53:
+    do
+    {
+      DiscussionInfo localDiscussionInfo;
+      do
+      {
+        return;
+        localDiscussionInfo = ((antp)localObject).a(QCallDetailActivity.a(this.a));
+        if (localDiscussionInfo == null)
+        {
+          QLog.i("QCallDetailActivity", 1, " ===onUpdateFriendInfo info is null ====");
+          return;
+        }
+        if (TextUtils.isEmpty(paramString))
+        {
+          QLog.i("QCallDetailActivity", 1, " === onUpdateFriendInfo uin is null ====");
+          return;
+        }
+      } while (localDiscussionInfo.hasRenamed());
+      localObject = ((antp)localObject).a(QCallDetailActivity.a(this.a));
+    } while ((localObject == null) || (((Map)localObject).size() <= 0) || (!((Map)localObject).containsKey(paramString)));
+    this.a.a(QCallDetailActivity.a(this.a));
+  }
+  
+  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    QCallDetailActivity.a(this.a);
+    this.a.runOnUiThread(new QCallDetailActivity.1.2(this));
   }
 }
 

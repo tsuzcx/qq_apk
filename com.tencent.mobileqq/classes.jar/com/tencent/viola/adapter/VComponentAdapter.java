@@ -20,7 +20,7 @@ public abstract interface VComponentAdapter
   
   public abstract void requestImage(String paramString, int paramInt1, int paramInt2, boolean paramBoolean1, ImageAction paramImageAction, boolean paramBoolean2);
   
-  public abstract CharSequence setEmoticonText(CharSequence paramCharSequence, int paramInt);
+  public abstract CharSequence setEmoticonText(CharSequence paramCharSequence, int paramInt1, int paramInt2);
   
   public abstract void setImage(String paramString, VImageView paramVImageView, ImageAdapterHolder paramImageAdapterHolder, ViolaInstance paramViolaInstance, boolean paramBoolean);
   

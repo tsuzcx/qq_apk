@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppRuntime;
-import vha;
+import vvv;
 
 public class QCircleDoubleFollowUserHepler
 {
@@ -119,7 +119,7 @@ public class QCircleDoubleFollowUserHepler
   
   public void doGetFollowUser()
   {
-    if (System.currentTimeMillis() - vha.a() > QzoneConfig.getQQCircleGetFollowUserInternal())
+    if (System.currentTimeMillis() - vvv.a() > QzoneConfig.getQQCircleGetFollowUserInternal())
     {
       this.mFriends_temp.clear();
       doGetFollowUser(null, 0L);

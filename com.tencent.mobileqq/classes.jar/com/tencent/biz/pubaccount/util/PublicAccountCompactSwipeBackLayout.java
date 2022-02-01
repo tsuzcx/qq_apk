@@ -4,30 +4,30 @@ import android.content.Context;
 import android.graphics.Rect;
 import com.tencent.mobileqq.colornote.swipeback.SwipePostTableLayout;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import uht;
+import uvq;
 
 public class PublicAccountCompactSwipeBackLayout
   extends SwipePostTableLayout
 {
   protected WebViewFragment a;
-  protected uht a;
+  protected uvq a;
   private boolean g = true;
   private boolean h;
   
   public PublicAccountCompactSwipeBackLayout(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Uht = new uht();
+    this.jdField_a_of_type_Uvq = new uvq();
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_Uht.a(paramString);
+    this.jdField_a_of_type_Uvq.a(paramString);
   }
   
   public void a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_Uht.a(paramString, new Rect(paramInt1, paramInt2, paramInt3, paramInt4));
+    this.jdField_a_of_type_Uvq.a(paramString, new Rect(paramInt1, paramInt2, paramInt3, paramInt4));
   }
   
   public void a(boolean paramBoolean)
@@ -47,7 +47,7 @@ public class PublicAccountCompactSwipeBackLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.PublicAccountCompactSwipeBackLayout
  * JD-Core Version:    0.7.0.1
  */

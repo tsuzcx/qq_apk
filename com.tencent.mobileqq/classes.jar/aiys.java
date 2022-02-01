@@ -1,29 +1,32 @@
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aiys
-  implements View.OnClickListener
+  extends aizb
 {
-  public aiys(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.f = false;
-    this.a.u = "";
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    if (this.a.d != 22) {
-      this.a.b.setVisibility(0);
-    }
-    if (this.a.jdField_a_of_type_Ajae != null) {
-      this.a.jdField_a_of_type_Ajae.a();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public String a;
+  public View b;
+  public ImageView b;
+  public TextView b;
+  public String b;
+  public View c;
+  public ImageView c;
+  public TextView c;
+  public String c;
+  public View d;
+  public ImageView d;
+  public TextView d;
+  public String d;
+  public View e;
+  public ImageView e;
+  public TextView e;
+  public String e;
+  public TextView f;
+  public TextView g;
 }
 
 

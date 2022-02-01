@@ -1,24 +1,36 @@
-import mqq.app.QQPermissionCallback;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.LinkedHashMap;
 
 class aqzc
-  implements QQPermissionCallback
+  extends aqzb
 {
-  aqzc(aqzb paramaqzb) {}
+  private String a;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public aqzc(String paramString)
   {
-    bfur.a(this.a.a);
+    this.a = paramString;
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public Object a(Object paramObject)
   {
-    this.a.c();
-    aqzb.a(this.a).f();
+    if (paramObject == null) {}
+    do
+    {
+      return null;
+      paramObject = (LinkedHashMap)paramObject;
+      if (!(paramObject instanceof LinkedHashMap))
+      {
+        QLog.e("ArkMsgReplyConfigMgr", 1, "getElement instance wrong");
+        return null;
+      }
+    } while (TextUtils.isEmpty(this.a));
+    return paramObject.get(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqzc
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package cooperation.qzone.webviewplugin;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bgve;
+import bifw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -18,14 +18,14 @@ public class QzoneDeviceTagJsPlugin
   public static final String NAMESPACE = "Qzone";
   private static final String TAG = QzoneBlogJsPlugin.class.getSimpleName();
   
-  private static void handleDeviceTag(WebViewPlugin paramWebViewPlugin, bgve parambgve, String[] paramArrayOfString)
+  private static void handleDeviceTag(WebViewPlugin paramWebViewPlugin, bifw parambifw, String[] paramArrayOfString)
   {
-    parambgve.a().getHandler(QzoneDeviceTagJsPlugin.class).post(new QzoneDeviceTagJsPlugin.2());
+    parambifw.a().getHandler(QzoneDeviceTagJsPlugin.class).post(new QzoneDeviceTagJsPlugin.2());
   }
   
-  private static void handleUserTail(WebViewPlugin paramWebViewPlugin, bgve parambgve, String[] paramArrayOfString)
+  private static void handleUserTail(WebViewPlugin paramWebViewPlugin, bifw parambifw, String[] paramArrayOfString)
   {
-    parambgve.a().getHandler(QzoneDeviceTagJsPlugin.class).post(new QzoneDeviceTagJsPlugin.1(paramArrayOfString));
+    parambifw.a().getHandler(QzoneDeviceTagJsPlugin.class).post(new QzoneDeviceTagJsPlugin.1(paramArrayOfString));
   }
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)

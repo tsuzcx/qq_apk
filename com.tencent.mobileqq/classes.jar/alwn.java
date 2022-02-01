@@ -1,62 +1,24 @@
-import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import java.lang.ref.WeakReference;
 
-class alwn
-  implements SoundPool.OnLoadCompleteListener
+public class alwn
+  implements DialogInterface.OnCancelListener
 {
-  alwn(alwm paramalwm, float paramFloat, int paramInt, String paramString, alxf paramalxf, JSONObject paramJSONObject) {}
+  private final WeakReference<Activity> a;
   
-  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
+  public alwn(Activity paramActivity)
   {
-    float f = 1.0F;
-    if (alwm.a(this.jdField_a_of_type_Alwm) != null)
-    {
-      try
-      {
-        if (-1.0F == this.jdField_a_of_type_Float) {}
-        for (;;)
-        {
-          paramInt1 = alwm.a(this.jdField_a_of_type_Alwm).play(paramInt1, f, f, 0, this.jdField_a_of_type_Int, 1.0F);
-          if (paramInt1 != 0) {
-            break;
-          }
-          QLog.w("cmgame_process.CmGameSoudPoolPlayer", 1, "fail to play, musicPath:" + this.jdField_a_of_type_JavaLangString);
-          return;
-          f = this.jdField_a_of_type_Float;
-        }
-        paramSoundPool = this.jdField_a_of_type_Alxf;
-        if (paramSoundPool == null) {
-          break label159;
-        }
-        try
-        {
-          if (this.jdField_a_of_type_OrgJsonJSONObject != null)
-          {
-            this.jdField_a_of_type_OrgJsonJSONObject.put("id", paramInt1);
-            this.jdField_a_of_type_Alxf.a(this.jdField_a_of_type_OrgJsonJSONObject);
-            return;
-          }
-        }
-        catch (Throwable paramSoundPool)
-        {
-          QLog.e("cmgame_process.CmGameSoudPoolPlayer", 1, paramSoundPool, new Object[0]);
-          return;
-        }
-        QLog.e("cmgame_process.CmGameSoudPoolPlayer", 1, "result is null");
-      }
-      catch (Throwable paramSoundPool)
-      {
-        QLog.e("cmgame_process.CmGameSoudPoolPlayer", 1, "pool play failed", paramSoundPool);
-        return;
-      }
-      return;
-      label159:
-      QLog.e("cmgame_process.CmGameSoudPoolPlayer", 1, "handler is null");
-      return;
+    this.a = new WeakReference(paramActivity);
+  }
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    Activity localActivity = (Activity)this.a.get();
+    if ((localActivity != null) && (!localActivity.isFinishing())) {
+      paramDialogInterface.dismiss();
     }
-    QLog.e("cmgame_process.CmGameSoudPoolPlayer", 1, "soundpool is null");
   }
 }
 

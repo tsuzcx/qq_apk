@@ -2,6 +2,7 @@ package com.tencent.hippy.qq.module;
 
 import android.app.Activity;
 import android.support.v4.app.Fragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
 import com.tencent.hippy.qq.fragment.BaseHippyFragment;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin;
@@ -62,25 +63,38 @@ public class QQDebugModule
   {
     Object localObject = getFragment();
     HippyMap localHippyMap = new HippyMap();
-    if ((localObject instanceof BaseHippyFragment))
-    {
+    if ((localObject instanceof BaseHippyFragment)) {
       localObject = ((BaseHippyFragment)localObject).getPerformanceData();
-      if (((HashMap)localObject).size() > 0)
-      {
-        localObject = ((HashMap)localObject).entrySet().iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-          localHippyMap.pushLong((String)localEntry.getKey(), ((Long)localEntry.getValue()).longValue());
-        }
-      }
-      localHippyMap.pushInt("retCode", 0);
     }
     for (;;)
     {
-      paramPromise.resolve(localHippyMap);
-      return;
-      localHippyMap.pushInt("retCode", -1);
+      if ((localObject != null) && (((HashMap)localObject).size() > 0))
+      {
+        localObject = ((HashMap)localObject).entrySet().iterator();
+        for (;;)
+        {
+          if (((Iterator)localObject).hasNext())
+          {
+            Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+            localHippyMap.pushLong((String)localEntry.getKey(), ((Long)localEntry.getValue()).longValue());
+            continue;
+            if (!(localObject instanceof ViolaFragment)) {
+              break label142;
+            }
+            localObject = ((ViolaFragment)localObject).getPerformanceData();
+            break;
+          }
+        }
+        localHippyMap.pushInt("retCode", 0);
+      }
+      for (;;)
+      {
+        paramPromise.resolve(localHippyMap);
+        return;
+        localHippyMap.pushInt("retCode", -1);
+      }
+      label142:
+      localObject = null;
     }
   }
 }

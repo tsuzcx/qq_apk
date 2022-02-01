@@ -1,40 +1,44 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.selectmember.TroopAddFrdsInnerFrame;
-import com.tencent.mobileqq.activity.selectmember.TroopAddFrdsInnerFrame.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.troop.TroopMemberInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import java.text.DecimalFormat;
 
 public class alau
-  extends andd
 {
-  public alau(TroopAddFrdsInnerFrame paramTroopAddFrdsInnerFrame) {}
+  public static String a;
+  public static DecimalFormat a;
+  private static boolean a;
+  public static String b;
+  public static String c;
+  private static String d;
+  public int a;
+  public long a;
+  public int b;
+  public long b;
   
-  protected void onTroopBatchReqMemberCmnFrds(boolean paramBoolean1, String paramString1, String paramString2, long paramLong, int paramInt, boolean paramBoolean2, boolean paramBoolean3, HashMap<String, Integer> paramHashMap, List<String> paramList)
+  static
   {
-    if ((paramBoolean1) && (this.a.a != null) && (this.a.a.longValue() == paramLong) && (paramString1.equals(this.a.jdField_b_of_type_JavaLangString)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopAddFrdsInnerFrame", 2, String.format("onTroopBatchReqMemberCmnFrds suc. troopUin:%s, cmnfrds.size:%d", new Object[] { paramString1, Integer.valueOf(paramHashMap.size()) }));
-      }
-      if (paramHashMap.size() > 0)
-      {
-        paramString1 = this.a.jdField_b_of_type_AndroidOsHandler.obtainMessage(6);
-        paramString1.obj = paramHashMap;
-        this.a.jdField_b_of_type_AndroidOsHandler.sendMessage(paramString1);
-      }
-    }
+    jdField_a_of_type_JavaLangString = "https://i.gtimg.cn/channel/exclusive_hb/socialpay_makehb_ani_";
+    jdField_b_of_type_JavaLangString = "https://i.gtimg.cn/channel/exclusive_hb/socialpay_aio_ani_";
+    c = jdField_a_of_type_JavaLangString;
+    d = jdField_b_of_type_JavaLangString;
+    jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("#0.00");
   }
   
-  protected void onUpdateTroopGetMemberList(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  public static String a()
   {
-    if ((!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) && (!this.a.jdField_b_of_type_JavaLangString.equals(paramString))) {
-      return;
+    if (!jdField_a_of_type_Boolean)
+    {
+      QQAppInterface localQQAppInterface = albw.a();
+      if (localQQAppInterface != null) {
+        d = ((aktz)localQQAppInterface.getManager(QQManagerFactory.QWALLET_CONFIG_MANAGER)).a("hb_exclusive", jdField_b_of_type_JavaLangString, new String[] { "aio_red", "prefix" });
+      }
     }
-    ThreadManager.post(new TroopAddFrdsInnerFrame.2.1(this, paramList), 5, null, true);
+    return d;
+  }
+  
+  public String toString()
+  {
+    return "SpecifyAnimInfo{aId=" + this.jdField_a_of_type_Int + ", minPrice=" + this.jdField_a_of_type_Long + ", maxPrice=" + this.jdField_b_of_type_Long + ", skinId=" + this.jdField_b_of_type_Int + '}';
   }
 }
 

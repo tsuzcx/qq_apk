@@ -1,10 +1,18 @@
-import android.widget.TextView;
-
 public class almk
 {
-  public TextView a;
+  public int a;
+  public int b;
   
-  protected almk(almi paramalmi) {}
+  public almk(int paramInt1, int paramInt2)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public String toString()
+  {
+    return "SessionKey{c2CType=" + this.a + ", serviceType=" + this.b + '}';
+  }
 }
 
 

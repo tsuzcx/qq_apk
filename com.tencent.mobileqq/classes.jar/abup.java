@@ -1,128 +1,53 @@
-import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import java.util.ArrayList;
 
 public class abup
-  extends bgsp
-  implements bgtk
+  extends BroadcastReceiver
 {
-  protected Intent a;
+  private abup(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
   
-  public abup(Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramContext, paramActivity, paramAppInterface);
-    this.a = paramIntent;
-  }
-  
-  public void a()
-  {
-    super.doOnResume();
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    super.doOnCreate(this.a);
-  }
-  
-  public void a(TouchWebView paramTouchWebView)
-  {
-    this.mWebview = paramTouchWebView;
-  }
-  
-  public boolean a(WebView paramWebView, String paramString)
-  {
-    QLog.i("AbsWebView", 1, "qZoneShouldOverrideUrlLoading:" + paramString);
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
-    Object localObject;
+    String str = paramIntent.getAction();
+    if (QLog.isColorLevel())
+    {
+      if ("[onRecevier] action:" + str + ",data:" + paramIntent.getExtras() != null)
+      {
+        paramContext = paramIntent.getExtras().toString();
+        QLog.d("GCApi", 2, paramContext);
+      }
+    }
+    else {
+      if (str != null) {
+        break label70;
+      }
+    }
+    label70:
+    label104:
     do
     {
-      return true;
-      localObject = ((CustomWebView)paramWebView).getPluginEngine();
-      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
+      do
       {
-        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
-        for (boolean bool = true;; bool = false) {
-          return bool;
-        }
-      }
-      paramString = Uri.parse(paramString);
-      localObject = paramString.getScheme();
-    } while (!nko.a().a(paramWebView.getUrl(), (String)localObject).booleanValue());
-    paramWebView = new Intent("android.intent.action.VIEW", paramString);
-    paramWebView.addFlags(268435456);
-    try
-    {
-      this.mContext.startActivity(paramWebView);
-      return true;
-    }
-    catch (Exception paramWebView)
-    {
-      QLog.e("AbsWebView", 1, "startActivity", paramWebView);
-    }
-    return true;
-  }
-  
-  public void b()
-  {
-    super.doOnPause();
-  }
-  
-  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
-  {
-    super.bindJavaScript(paramArrayList);
-  }
-  
-  public void buildBottomBar() {}
-  
-  public void buildContentView(Bundle paramBundle) {}
-  
-  public void buildData() {}
-  
-  public void buildLayout() {}
-  
-  public void buildTitleBar() {}
-  
-  public final void buildWebView(AppInterface paramAppInterface)
-  {
-    super.buildBaseWebView(paramAppInterface);
-  }
-  
-  public void c()
-  {
-    try
-    {
-      super.doOnDestroy();
-      return;
-    }
-    catch (Exception localException)
-    {
-      abrl.d("GdtWebViewBuilder", "getVideoComponent error", localException);
-    }
-  }
-  
-  public void preInitWebviewPlugin()
-  {
-    super.preInitPluginEngine();
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {
-      return true;
-    }
-    paramWebView.loadUrl(paramString);
-    return true;
+        do
+        {
+          return;
+          paramContext = null;
+          break;
+          if (!"action_qgame_messgae_change".equals(str)) {
+            break label104;
+          }
+          paramContext = GameCenterAPIJavaScript.parseGameMessageChange(paramIntent.getExtras());
+        } while (paramContext == null);
+        this.a.dispatchJsEvent(GameCenterAPIJavaScript.EVENT_UPDATE_SESSION_INFO, paramContext, null);
+        return;
+      } while (!"action_qgame_unread_change".equals(str));
+      paramContext = GameCenterAPIJavaScript.parseGameMessageUnreadCount(paramIntent.getExtras());
+    } while (paramContext == null);
+    this.a.dispatchJsEvent(GameCenterAPIJavaScript.EVENT_UPDATE_UNREAD_CNT, paramContext, null);
   }
 }
 

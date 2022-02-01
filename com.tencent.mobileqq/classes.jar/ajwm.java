@@ -1,40 +1,19 @@
-import android.os.Handler;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKuaKuaFragment;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.QQWalletBaseMsgElem;
-import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajwm
-  implements TextWatcher
+class ajwm
+  implements View.OnClickListener
 {
-  public ajwm(RedPacketKuaKuaFragment paramRedPacketKuaKuaFragment) {}
+  ajwm(ajwl paramajwl, ajwo paramajwo) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    if (RedPacketKuaKuaFragment.a(this.a) > 0) {
-      RedPacketKuaKuaFragment.a(this.a).setText(paramEditable.length() + "/" + RedPacketKuaKuaFragment.a(this.a));
-    }
-    if (paramEditable.toString().trim().length() > 0)
-    {
-      this.a.a(amtj.a(2131705096));
-      RedPacketKuaKuaFragment.a(this.a).removeCallbacks(RedPacketKuaKuaFragment.a(this.a));
-      RedPacketKuaKuaFragment.a(this.a).postDelayed(RedPacketKuaKuaFragment.a(this.a), RedPacketKuaKuaFragment.a(this.a) * 1000L);
-      return;
-    }
-    this.a.a(amtj.a(2131705098));
+    String str = String.valueOf(this.jdField_a_of_type_Ajwo.a.getText());
+    ajwl.a(this.jdField_a_of_type_Ajwl, str);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((paramInt1 == 0) && (paramInt3 > paramInt1)) {
-      bcef.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "kuakua.get.begin", 0, 0, RedPacketKuaKuaFragment.a(this.a).mQQWalletRedPacketMsg.elem.title, "", "", "");
-    }
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

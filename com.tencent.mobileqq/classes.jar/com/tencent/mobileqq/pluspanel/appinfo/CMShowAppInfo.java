@@ -1,13 +1,15 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import alnr;
+import ahvi;
+import amme;
 import android.content.SharedPreferences;
-import ayfu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import mqq.app.MobileQQ;
@@ -24,7 +26,7 @@ public class CMShowAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130838463;
+    return 2130838479;
   }
   
   public int getAppID()
@@ -53,29 +55,29 @@ public class CMShowAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131690416);
+    return BaseApplicationImpl.getContext().getString(2131690488);
   }
   
-  public void onPlusPanelAppClick(ayfu paramayfu, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     QQAppInterface localQQAppInterface = paramBaseChatPie.app;
     boolean bool = localQQAppInterface.getApplication().getSharedPreferences(localQQAppInterface.getCurrentAccountUin(), 0).getBoolean("chat_tool_apollo_" + localQQAppInterface.getCurrentAccountUin(), false);
-    paramayfu.a("chat_tool_apollo", localQQAppInterface.getCurrentAccountUin());
+    paramahvi.a("chat_tool_apollo", localQQAppInterface.getCurrentAccountUin());
     if (bool) {
-      paramayfu.b(paramBaseChatPie);
+      paramahvi.b(paramBaseChatPie);
     }
     for (int i = 1;; i = 0)
     {
       paramBaseChatPie.showApolloStatusPanel(0);
-      paramayfu = (alnr)localQQAppInterface.getManager(153);
+      paramahvi = (amme)localQQAppInterface.getManager(QQManagerFactory.APOLLO_MANAGER);
       paramBaseChatPie = paramSessionInfo.curFriendUin;
-      int j = paramayfu.b(localQQAppInterface.getCurrentUin());
-      int k = ApolloUtil.h(alnr.a(localQQAppInterface));
+      int j = paramahvi.b(localQQAppInterface.getCurrentUin());
+      int k = ApolloUtil.h(amme.a(localQQAppInterface));
       String str = "" + i;
       if (paramSessionInfo.curType == 0) {}
-      for (paramayfu = "0";; paramayfu = "2")
+      for (paramahvi = "0";; paramahvi = "2")
       {
-        VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "panel_enter_clk", paramBaseChatPie, j, k, new String[] { str, paramayfu, "", String.valueOf(System.currentTimeMillis() / 1000L) });
+        VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "panel_enter_clk", paramBaseChatPie, j, k, new String[] { str, paramahvi, "", String.valueOf(System.currentTimeMillis() / 1000L) });
         return;
       }
     }

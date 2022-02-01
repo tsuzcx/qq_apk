@@ -1,41 +1,97 @@
-import android.content.Context;
-import android.net.Uri;
-import android.text.TextUtils;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 public class antz
-  extends anri
+  extends QIPCModule
 {
-  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
+  private static volatile antz a;
+  
+  public antz(String paramString)
   {
-    paramQQAppInterface = new anty(paramQQAppInterface, paramContext);
-    paramContext = paramString.split("\\?");
-    if (paramContext.length < 1) {
-      return paramQQAppInterface;
-    }
-    paramContext = paramContext[0].substring("mqqapi://".length()).split("/");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
-    }
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = paramContext[0];
-    paramQQAppInterface.c = paramContext[1];
-    paramContext = Uri.parse(paramString);
-    paramString = paramContext.getQueryParameterNames().iterator();
-    while (paramString.hasNext())
+    super(paramString);
+  }
+  
+  public static antz a()
+  {
+    if (a == null) {}
+    try
     {
-      paramanrl = (String)paramString.next();
-      if (!TextUtils.isEmpty(paramanrl))
+      if (a == null) {
+        a = new antz("ExtendFriendQIPCModule");
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (!(localObject instanceof QQAppInterface)) {
+      return null;
+    }
+    localObject = (QQAppInterface)localObject;
+    boolean bool;
+    if ("notifyCampusFriendCertificateResult".equals(paramString))
+    {
+      bool = paramBundle.getBoolean("key_result");
+      if (QLog.isColorLevel()) {
+        QLog.d("ExtendFriendQIPCModule", 2, "onCall ACTION_NOTIFY_CAMPUS_FRIEND_CERTIFICATE_RESULT ,result = " + bool);
+      }
+      paramString = (aslo)((QQAppInterface)localObject).getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
+      if (paramString != null)
       {
-        String str = paramContext.getQueryParameter(paramanrl);
-        if (!TextUtils.isEmpty(str)) {
-          paramQQAppInterface.a(paramanrl.toLowerCase(), str);
+        if (!bool) {
+          break label133;
         }
+        paramInt = 2;
+        paramString.a(paramInt, 1);
+        ((aslm)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER)).notifyUI(20, true, new Object[] { Integer.valueOf(2) });
       }
     }
-    return paramQQAppInterface;
+    for (;;)
+    {
+      return null;
+      label133:
+      paramInt = 3;
+      break;
+      if ("notifyUploadSutudentIDResult".equals(paramString))
+      {
+        bool = paramBundle.getBoolean("key_result");
+        paramString = (aslo)((QQAppInterface)localObject).getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
+        if (bool)
+        {
+          paramString.a(1, 2);
+          ((aslm)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER)).notifyUI(20, true, new Object[] { Integer.valueOf(2) });
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ExtendFriendQIPCModule", 2, "onCall ACTION_NOTIFY_STUDENTID_UPLOAD_RESULT ,result = " + bool);
+        }
+      }
+      else if ("notifyUpdateSchoolInfo".equals(paramString))
+      {
+        paramString = paramBundle.getString("name", "");
+        paramInt = paramBundle.getInt("category", 0);
+        String str1 = paramBundle.getString("schoolid", "");
+        int i = paramBundle.getInt("idx", 0);
+        aslo localaslo = (aslo)((QQAppInterface)localObject).getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
+        String str2 = localaslo.g();
+        if (QLog.isColorLevel()) {
+          QLog.d("ExtendFriendQIPCModule", 2, "onCall ACTION_NOTIFY_SCHOOL_INFO_UPDATE ，schoolName = " + paramString + "，oldSchoolName = " + str2);
+        }
+        if (!paramString.equals(str2)) {
+          localaslo.a(0, -1);
+        }
+        localaslo.a(i, paramString, str1, paramInt);
+        ((aslm)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER)).notifyUI(22, true, paramBundle);
+      }
+    }
   }
 }
 

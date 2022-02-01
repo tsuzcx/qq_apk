@@ -2,17 +2,17 @@ package com.tencent.biz.pubaccount.readinjoy.ugc.publishvideotask;
 
 import android.os.Handler;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import rod;
+import sas;
 
 public class ViolaVideoUpdateController$1
   implements Runnable
 {
-  public ViolaVideoUpdateController$1(rod paramrod) {}
+  public ViolaVideoUpdateController$1(sas paramsas) {}
   
   public void run()
   {
-    rod.a(this.this$0).run();
-    ThreadManagerV2.getUIHandlerV2().postDelayed(this, rod.a(this.this$0));
+    sas.a(this.this$0).run();
+    ThreadManagerV2.getUIHandlerV2().postDelayed(this, sas.a(this.this$0));
   }
 }
 

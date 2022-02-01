@@ -1,24 +1,38 @@
-public class bodh
+import dov.com.qq.im.aeeditor.module.text.AEEditorTextBean;
+
+final class bodh
+  implements bnuy
 {
-  public static String a;
-  public static boolean a;
-  private static long[] a;
-  private static boolean jdField_b_of_type_Boolean = true;
-  private static long[] jdField_b_of_type_ArrayOfLong;
-  private static long[] c;
-  private static long[] d;
-  private static long[] e;
-  private static long[] f;
+  bodh(bodi parambodi, AEEditorTextBean paramAEEditorTextBean) {}
   
-  static
+  public void a(int paramInt)
   {
-    jdField_a_of_type_ArrayOfLong = new long[20];
-    jdField_b_of_type_ArrayOfLong = new long[20];
-    c = new long[20];
-    d = new long[20];
-    e = new long[20];
-    f = new long[20];
-    jdField_a_of_type_JavaLangString = "";
+    if (this.jdField_a_of_type_Bodi != null) {
+      this.jdField_a_of_type_Bodi.a(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean, (int)(66.0D + 0.34D * paramInt));
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.jdField_a_of_type_Bodi != null)) {
+      this.jdField_a_of_type_Bodi.a(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean, 100);
+    }
+    bodi localbodi;
+    AEEditorTextBean localAEEditorTextBean;
+    if (this.jdField_a_of_type_Bodi != null)
+    {
+      localbodi = this.jdField_a_of_type_Bodi;
+      localAEEditorTextBean = this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean;
+      if (!paramBoolean) {
+        break label62;
+      }
+    }
+    label62:
+    for (String str = "SUCCESS_FONT_DOWNLOAD_SUCCEEDED";; str = "ERROR_FONT_DOWNLOAD_FAILED")
+    {
+      localbodi.a(localAEEditorTextBean, paramBoolean, str);
+      return;
+    }
   }
 }
 

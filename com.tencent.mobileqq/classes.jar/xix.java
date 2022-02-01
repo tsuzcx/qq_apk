@@ -1,45 +1,29 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
-public final class xix
-  extends QQUIEventReceiver<xin, wbm>
+public class xix
+  implements Animator.AnimatorListener
 {
-  public xix(@NonNull xin paramxin)
-  {
-    super(paramxin);
-  }
+  public xix(XViewPager paramXViewPager) {}
   
-  public void a(@NonNull xin paramxin, @NonNull wbm paramwbm)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (xin.a(paramxin) == null) {
-      xvv.b(this.TAG, "ignore this feature event. %s.", paramwbm.toString());
+    if (XViewPager.a(this.a) != null) {
+      XViewPager.a(this.a).b(0);
     }
-    vwa localvwa;
-    do
-    {
-      return;
-      while (!paramwbm.hasNext())
-      {
-        do
-        {
-          xvv.a(this.TAG, "receive feature event. %s.", paramwbm.toString());
-        } while (paramwbm.a == null);
-        paramwbm = paramwbm.a.iterator();
-      }
-      localvwa = (vwa)paramwbm.next();
-    } while (!localvwa.a.equals(xin.a(paramxin)));
-    xvv.a(this.TAG, "receive feature data. update visit count from %d to %d.", Long.valueOf(xin.a(paramxin).a.mViewTotalTime), Integer.valueOf(localvwa.c));
-    xin.a(paramxin).a.mViewTotalTime = localvwa.c;
-    paramxin.a();
   }
   
-  public Class acceptEventClass()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return wbm.class;
+    if (XViewPager.a(this.a) != null) {
+      XViewPager.a(this.a).b(0);
+    }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -21,10 +21,10 @@ import android.widget.Button;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
-import avli;
-import avlu;
-import avmi;
-import avmn;
+import awrn;
+import awrz;
+import awsn;
+import awss;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
@@ -43,7 +43,7 @@ public class QzoneGiftFullScreenViewController
 {
   public static boolean IS_SUPPORT_MAGICFACE = true;
   public static final String TAG = "QzoneGiftFullScreenViewController";
-  protected avli actionGlobalData;
+  protected awrn actionGlobalData;
   protected String epId;
   protected boolean isUseHardDecode;
   private Activity mActivity;
@@ -51,7 +51,7 @@ public class QzoneGiftFullScreenViewController
   private List<QzoneGiftFullScreenViewController.MagicData> magicDatas = new ArrayList();
   public QzoneGiftFullScreenActionManager magicfaceActionManager;
   protected MagicfaceContainerView magicfaceReceiveContent;
-  protected avmn magicfaceReceivePlay;
+  protected awss magicfaceReceivePlay;
   protected Button magicfaceReceiveStop;
   protected ImageView magicfaceTip;
   protected View topbar;
@@ -104,15 +104,15 @@ public class QzoneGiftFullScreenViewController
       }
     }
     label126:
-    for (View localView = View.inflate(BaseApplicationImpl.getContext(), 2131561894, null);; localView = View.inflate(BaseApplicationImpl.getContext(), 2131561896, null))
+    for (View localView = View.inflate(BaseApplicationImpl.getContext(), 2131561962, null);; localView = View.inflate(BaseApplicationImpl.getContext(), 2131561964, null))
     {
-      this.topbar = View.inflate(BaseApplicationImpl.getContext(), 2131561898, null);
-      this.topbarBgView = this.topbar.findViewById(2131370517);
-      this.magicfaceReceivePlay = ((avmn)localView.findViewById(2131370510));
-      this.magicfaceReceiveContent = ((MagicfaceContainerView)localView.findViewById(2131370512));
-      this.magicfaceReceiveStop = ((Button)this.topbar.findViewById(2131370511));
+      this.topbar = View.inflate(BaseApplicationImpl.getContext(), 2131561966, null);
+      this.topbarBgView = this.topbar.findViewById(2131370700);
+      this.magicfaceReceivePlay = ((awss)localView.findViewById(2131370693));
+      this.magicfaceReceiveContent = ((MagicfaceContainerView)localView.findViewById(2131370695));
+      this.magicfaceReceiveStop = ((Button)this.topbar.findViewById(2131370694));
       this.magicfaceReceiveStop.setVisibility(8);
-      this.magicfaceTip = ((ImageView)this.topbar.findViewById(2131370515));
+      this.magicfaceTip = ((ImageView)this.topbar.findViewById(2131370698));
       this.magicfaceReceiveStop.setOnClickListener(this);
       return;
     }
@@ -325,9 +325,9 @@ public class QzoneGiftFullScreenViewController
       ((View)localObject1).setVisibility(0);
       ((SurfaceView)localObject1).setZOrderOnTop(true);
       ((SurfaceView)localObject1).getHolder().setFormat(-2);
-      localObject2 = new avmi();
-      ((avmi)localObject2).a((avlu)localObject1);
-      this.magicfaceActionManager.setMagicfacePlayManager((avmi)localObject2);
+      localObject2 = new awsn();
+      ((awsn)localObject2).a((awrz)localObject1);
+      this.magicfaceActionManager.setMagicfacePlayManager((awsn)localObject2);
       this.magicfaceActionManager.setMagicfaceActionListener(new QzoneGiftFullScreenViewController.3(this, l, paramGiftFullScreenPlayListener));
       this.magicfaceActionManager.doAction(paramString1, paramString2);
     }

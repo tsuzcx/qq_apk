@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import awfy;
+import android.text.TextUtils;
+import axma;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -39,7 +40,7 @@ public class IntimateInfo$PrefetchMutualMarkInfo
         i = paramPrefetchMutualMarkInfo.uint32_level.get();
         localPrefetchMutualMarkInfo.level = i;
         if (!paramPrefetchMutualMarkInfo.uint32_days.has()) {
-          break label235;
+          break label255;
         }
         i = paramPrefetchMutualMarkInfo.uint32_days.get();
         localPrefetchMutualMarkInfo.days = i;
@@ -49,7 +50,7 @@ public class IntimateInfo$PrefetchMutualMarkInfo
         }
         localPrefetchMutualMarkInfo.currentDays = i;
         if (!paramPrefetchMutualMarkInfo.uint64_sub_level.has()) {
-          break label240;
+          break label260;
         }
         l = paramPrefetchMutualMarkInfo.uint64_sub_level.get();
         localPrefetchMutualMarkInfo.subLevel = l;
@@ -58,19 +59,19 @@ public class IntimateInfo$PrefetchMutualMarkInfo
       try
       {
         localPrefetchMutualMarkInfo.gradeResourceInfo.mergeFrom(paramPrefetchMutualMarkInfo.bytes_grade_resource_info.get().toByteArray());
-        if ((localPrefetchMutualMarkInfo.gradeResourceInfo != null) && (localPrefetchMutualMarkInfo.gradeResourceInfo.bytes_static_url.has())) {
+        if ((localPrefetchMutualMarkInfo.gradeResourceInfo != null) && (localPrefetchMutualMarkInfo.gradeResourceInfo.bytes_static_url.has()) && (!TextUtils.isEmpty(localPrefetchMutualMarkInfo.gradeResourceInfo.bytes_static_url.get().toStringUtf8()))) {
           localPrefetchMutualMarkInfo.iconStaticUrl = localPrefetchMutualMarkInfo.gradeResourceInfo.bytes_static_url.get().toStringUtf8();
         }
-        localPrefetchMutualMarkInfo.iconStaticUrl = awfy.c(localPrefetchMutualMarkInfo.iconStaticUrl);
+        localPrefetchMutualMarkInfo.iconStaticUrl = axma.c(localPrefetchMutualMarkInfo.iconStaticUrl);
         return localPrefetchMutualMarkInfo;
         i = 0;
         continue;
         i = 0;
         break label59;
-        label235:
+        label255:
         i = 0;
         break label83;
-        label240:
+        label260:
         l = 0L;
       }
       catch (Throwable paramPrefetchMutualMarkInfo)
@@ -123,7 +124,7 @@ public class IntimateInfo$PrefetchMutualMarkInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.IntimateInfo.PrefetchMutualMarkInfo
  * JD-Core Version:    0.7.0.1
  */

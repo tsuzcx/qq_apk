@@ -1,17 +1,16 @@
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.view.View;
-import android.view.View.OnCreateContextMenuListener;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
 
 public class adqt
-  implements View.OnCreateContextMenuListener
+  extends aslz
 {
-  public adqt(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
+  public adqt(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
+  protected void a(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
   {
-    paramContextMenu.clear();
+    if (TextUtils.equals(paramString, ChatSettingActivity.a(this.a))) {
+      asqn.a(this.a.app, this.a, paramBoolean1, paramInt, paramString, paramBoolean2, this.a);
+    }
   }
 }
 

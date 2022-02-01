@@ -1,48 +1,58 @@
+import com.tencent.sharp.jni.TraeAudioManager;
+
 public class bkwv
 {
-  private static bkwv jdField_a_of_type_Bkwv = new bkwv();
-  private bkww jdField_a_of_type_Bkww;
-  bkwx jdField_a_of_type_Bkwx;
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString = "DEVICE_NONE";
+  boolean jdField_a_of_type_Boolean = false;
+  boolean b = false;
   
-  public static bkwv a()
+  public bkwv(bkwu parambkwu) {}
+  
+  public int a()
   {
-    return jdField_a_of_type_Bkwv;
+    return this.jdField_a_of_type_Int;
   }
   
-  public void a()
+  public String a()
   {
-    this.jdField_a_of_type_Bkww = null;
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void a(bkww parambkww)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Bkww = parambkww;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void a(bkwx parambkwx)
+  public boolean a()
   {
-    this.jdField_a_of_type_Bkwx = parambkwx;
+    return this.jdField_a_of_type_Boolean;
   }
   
-  public void a(String paramString, long paramLong1, long[] paramArrayOfLong, long paramLong2)
+  public boolean a(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_Bkww == null) {
-      return;
+    if ((paramString == null) || (paramString.length() <= 0)) {}
+    while (!TraeAudioManager.a(paramString)) {
+      return false;
     }
-    this.jdField_a_of_type_Bkww.a(paramString, paramLong1, paramArrayOfLong, paramLong2);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    return true;
   }
   
-  public void a(String paramString1, String paramString2)
+  public void b(boolean paramBoolean)
   {
-    bkwx localbkwx = this.jdField_a_of_type_Bkwx;
-    if ((localbkwx != null) && (!"0X8009831".equals(paramString1)) && (!"0X8009830".equals(paramString1)) && (!"0X800982E".equals(paramString1)) && (!"0X800982F".equals(paramString1))) {
-      localbkwx.a(paramString2);
-    }
+    this.b = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkwv
  * JD-Core Version:    0.7.0.1
  */

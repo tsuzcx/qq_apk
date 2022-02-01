@@ -1,34 +1,33 @@
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
-import com.tencent.robolectric.ShadowParcel;
-import java.util.Arrays;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class annf
-  implements PermissionMonitor.Listener
+  implements View.OnClickListener
 {
-  static
+  annf(annc paramannc, String paramString, int paramInt) {}
+  
+  public void onClick(View paramView)
   {
-    if (!anmw.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString != null))
     {
-      jdField_a_of_type_Boolean = bool;
+      String str = "https://lgame.qq.com/html/feedback/index?gameid=" + this.jdField_a_of_type_Int + "&_wv=2&openid=" + this.jdField_a_of_type_JavaLangString;
+      Intent localIntent = new Intent(this.jdField_a_of_type_Annc.a.getActivity(), QQBrowserActivity.class);
+      localIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
+      VasWebviewUtil.openQQBrowserActivity(this.jdField_a_of_type_Annc.a.getActivity(), str, -1L, localIntent, false, -1);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      QLog.e("apollo_cmGame_ApolloGameInfoFragment", 1, "[setGameIdAndOpenId] openId is null or is empty");
     }
-  }
-  
-  annf(anmw paramanmw) {}
-  
-  public void onMethodEntry(String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject)
-  {
-    if (anmw.a(this.jdField_a_of_type_Anmw) != Thread.currentThread()) {}
-    while ((!anmw.a(this.jdField_a_of_type_Anmw)) || (paramArrayOfObject.length != 2)) {
-      return;
-    }
-    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[0] != anmw.a(this.jdField_a_of_type_Anmw))) {
-      throw new AssertionError();
-    }
-    ShadowParcel.a((int)anmw.a(this.jdField_a_of_type_Anmw), (String)paramArrayOfObject[1]);
-    QLog.i("ParcelHooker", 2, "onMethodEntry() called with: className = [" + paramString1 + "], methodName = [" + paramString2 + "], sig = [" + paramString3 + "], arguments = [" + Arrays.toString(paramArrayOfObject) + "]");
   }
 }
 

@@ -1,85 +1,64 @@
-import com.tencent.mobileqq.transfile.AbsDownloader;
-import java.io.File;
+import android.content.Context;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
+import com.tencent.mobileqq.nearby.profilecard.LabelContainer;
 
-public abstract class aydh
-  extends aydo
+public class aydh
+  extends aydg
 {
-  public int a;
-  public long a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public String e;
-  public String f;
+  protected View a;
   
-  public aydh()
+  protected int a()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_d_of_type_Int = 5;
+    return 2131561235;
   }
   
-  public File a()
+  protected LabelContainer a(View paramView, int paramInt1, axug paramaxug, int paramInt2)
   {
-    return AbsDownloader.getFile(b());
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Int == -1)
-    {
-      a("PicBaseInfo.check", "busiType invalid,busiType:" + this.jdField_a_of_type_Int);
-      return false;
+    paramaxug = (ImageView)paramView.findViewById(2131380397);
+    if (paramInt1 == 7) {
+      paramaxug.setVisibility(8);
     }
-    if (this.jdField_b_of_type_Int == -1)
+    for (;;)
     {
-      a("PicBaseInfo.check", "uinType invalid,uinType:" + this.jdField_b_of_type_Int);
-      return false;
+      if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() != 0)
+      {
+        paramaxug = (LinearLayout.LayoutParams)paramView.getLayoutParams();
+        paramaxug.topMargin = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 16.0F);
+        paramView.setLayoutParams(paramaxug);
+      }
+      paramInt1 = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 7.0F);
+      paramInt2 = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 7.0F);
+      paramView = (LabelContainer)paramView.findViewById(2131369761);
+      paramView.setSpace(paramInt1, paramInt2);
+      return paramView;
+      paramaxug.setImageResource(b[paramInt1]);
     }
-    if (this.c == null)
+  }
+  
+  public void a(Context paramContext, LinearLayout paramLinearLayout, View paramView)
+  {
+    super.a(paramContext, paramLinearLayout);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+  }
+  
+  public boolean a(axug[] paramArrayOfaxug)
+  {
+    if (super.a(paramArrayOfaxug))
     {
-      a("PicBaseInfo.check", "peerUin invalid,peerUin:" + this.c);
-      return false;
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
-    return true;
-  }
-  
-  abstract String b();
-  
-  public boolean b()
-  {
-    return a() != null;
-  }
-  
-  public String c()
-  {
-    return AbsDownloader.getFilePath(b());
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("\nPicBaseInfo");
-    localStringBuilder.append("\n |-").append("localUUID:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("uniseq:").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append("\n |-").append("busiType:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append("\n |-").append("selfUin:").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("peerUin:").append(this.c);
-    localStringBuilder.append("\n |-").append("secondId:").append(this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("md5:").append(this.f);
-    localStringBuilder.append("\n |-").append("errInfo:").append(this.jdField_a_of_type_Aydp);
-    return localStringBuilder.toString();
+    for (;;)
+    {
+      return true;
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
   }
 }
 

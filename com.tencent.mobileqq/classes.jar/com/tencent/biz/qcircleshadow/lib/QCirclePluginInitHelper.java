@@ -2,13 +2,13 @@ package com.tencent.biz.qcircleshadow.lib;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import azjl;
-import blig;
+import bapt;
+import bmux;
 import com.tencent.hippy.qq.update.HippyQQLibraryManager;
 import com.tencent.mobileqq.app.ThreadManager;
 import cooperation.qzone.font.FontManager;
 import mqq.os.MqqHandler;
-import vgw;
+import vvq;
 
 public class QCirclePluginInitHelper
 {
@@ -40,22 +40,22 @@ public class QCirclePluginInitHelper
   
   public static String getPluginQUA()
   {
-    return vgw.a().a();
+    return vvq.a().a();
   }
   
   public static String getReportVersionName()
   {
-    return "8.4.8.4810";
+    return "8.4.10.4875";
   }
   
   public static boolean isPeakAlive(Context paramContext)
   {
-    return blig.a(paramContext);
+    return bmux.a(paramContext);
   }
   
   public static boolean isVideoSDKReady()
   {
-    return azjl.a();
+    return bapt.a();
   }
   
   public static void preloadPeakProcess(@NonNull Context paramContext)
@@ -85,7 +85,7 @@ public class QCirclePluginInitHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.QCirclePluginInitHelper
  * JD-Core Version:    0.7.0.1
  */

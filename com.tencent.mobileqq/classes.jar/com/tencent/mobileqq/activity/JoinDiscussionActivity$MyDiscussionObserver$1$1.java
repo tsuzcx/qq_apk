@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import adnf;
+import aeem;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 
@@ -16,7 +16,7 @@ class JoinDiscussionActivity$MyDiscussionObserver$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.JoinDiscussionActivity.MyDiscussionObserver.1.1
  * JD-Core Version:    0.7.0.1
  */

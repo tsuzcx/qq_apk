@@ -1,7 +1,7 @@
 package com.tencent.gdtad.views.form.framework;
 
-import abrl;
-import abti;
+import acho;
+import acjh;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -37,7 +37,7 @@ public class GdtFormTableView
   {
     if ((this.jdField_a_of_type_ComTencentAdTangramCanvasViewsFormFrameworkAdFormTableData == null) || (!this.jdField_a_of_type_ComTencentAdTangramCanvasViewsFormFrameworkAdFormTableData.isValid()) || (this.jdField_a_of_type_ComTencentAdTangramCanvasViewsFormFrameworkAdFormTableData.getSize() != getChildCount()))
     {
-      abrl.d("GdtFormTableView", "getBackground error");
+      acho.d("GdtFormTableView", "getBackground error");
       localObject1 = null;
     }
     int i;
@@ -60,7 +60,7 @@ public class GdtFormTableView
         localObject2 = this.jdField_a_of_type_ComTencentAdTangramCanvasViewsFormFrameworkAdFormTableData.getItem(j);
         if (localObject2 == null)
         {
-          abrl.d("GdtFormTableView", "getBackground error");
+          acho.d("GdtFormTableView", "getBackground error");
           return null;
           i = this.jdField_a_of_type_ComTencentAdTangramCanvasViewsFormFrameworkAdFormTableData.getSize() + 1;
           break;
@@ -73,7 +73,7 @@ public class GdtFormTableView
         localObject2 = this.jdField_a_of_type_ComTencentAdTangramCanvasViewsFormFrameworkAdFormTableData.getItem(paramInt);
         if (localObject2 == null)
         {
-          abrl.d("GdtFormTableView", "getBackground error");
+          acho.d("GdtFormTableView", "getBackground error");
           return null;
         }
         localObject1[(i - 1)] = a(a(this.jdField_a_of_type_ComTencentAdTangramCanvasViewsFormFrameworkAdFormTableData.borderCornerRadius, paramInt, this.jdField_a_of_type_ComTencentAdTangramCanvasViewsFormFrameworkAdFormTableData.getSize()), this.jdField_a_of_type_ComTencentAdTangramCanvasViewsFormFrameworkAdFormTableData.borderWidth, this.jdField_a_of_type_ComTencentAdTangramCanvasViewsFormFrameworkAdFormTableData.borderColorError, ((AdFormItemData)localObject2).backgroundColor);
@@ -85,7 +85,7 @@ public class GdtFormTableView
         localObject1 = getChildAt(j);
         if (localObject1 == null)
         {
-          abrl.d("GdtFormTableView", "getBackground error");
+          acho.d("GdtFormTableView", "getBackground error");
           return null;
         }
         ((LayerDrawable)localObject2).setLayerInset(j, 0, ((View)localObject1).getTop() - this.jdField_a_of_type_ComTencentAdTangramCanvasViewsFormFrameworkAdFormTableData.borderWidth, 0, getHeight() - ((View)localObject1).getBottom() - this.jdField_a_of_type_ComTencentAdTangramCanvasViewsFormFrameworkAdFormTableData.borderWidth);
@@ -96,7 +96,7 @@ public class GdtFormTableView
     Object localObject1 = getChildAt(paramInt);
     if (localObject1 == null)
     {
-      abrl.d("GdtFormTableView", "getBackground error");
+      acho.d("GdtFormTableView", "getBackground error");
       return null;
     }
     ((LayerDrawable)localObject2).setLayerInset(i - 1, 0, ((View)localObject1).getTop() - this.jdField_a_of_type_ComTencentAdTangramCanvasViewsFormFrameworkAdFormTableData.borderWidth, 0, getHeight() - ((View)localObject1).getBottom() - this.jdField_a_of_type_ComTencentAdTangramCanvasViewsFormFrameworkAdFormTableData.borderWidth);
@@ -117,7 +117,7 @@ public class GdtFormTableView
   {
     if ((paramContext == null) || (paramAdFormTableData == null) || (!paramAdFormTableData.isValid()))
     {
-      abrl.d("GdtFormTableView", "init error");
+      acho.d("GdtFormTableView", "init error");
       return;
     }
     this.jdField_a_of_type_ComTencentAdTangramCanvasViewsFormFrameworkAdFormTableData = paramAdFormTableData;
@@ -133,7 +133,7 @@ public class GdtFormTableView
       }
       if (localGdtFormItemTextBoxView == null)
       {
-        abrl.d("GdtFormTableView", "init error");
+        acho.d("GdtFormTableView", "init error");
         i += 1;
       }
       else
@@ -182,7 +182,7 @@ public class GdtFormTableView
         getViewTreeObserver().removeOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
         this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = null;
       }
-      this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new abti(this);
+      this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new acjh(this);
     } while ((this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener == null) || (getViewTreeObserver() == null));
     getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
   }
@@ -192,7 +192,7 @@ public class GdtFormTableView
     b();
     if ((this.jdField_a_of_type_ComTencentAdTangramCanvasViewsFormFrameworkAdFormTableData == null) || (!this.jdField_a_of_type_ComTencentAdTangramCanvasViewsFormFrameworkAdFormTableData.isValid()) || (this.jdField_a_of_type_ComTencentAdTangramCanvasViewsFormFrameworkAdFormTableData.getSize() != getChildCount()))
     {
-      abrl.d("GdtFormTableView", "reset error");
+      acho.d("GdtFormTableView", "reset error");
       return;
     }
     int i = 0;
@@ -202,7 +202,7 @@ public class GdtFormTableView
       if ((getChildAt(i) != null) && ((getChildAt(i) instanceof GdtFormItemView))) {
         break label86;
       }
-      abrl.d("GdtFormTableView", "reset error");
+      acho.d("GdtFormTableView", "reset error");
     }
     for (;;)
     {

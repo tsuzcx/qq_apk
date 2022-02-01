@@ -1,48 +1,49 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import com.tencent.biz.qqstory.album.view.AlbumImageView;
-import java.util.List;
+import com.tencent.biz.pubaccount.weishi_new.player.WSVideoPreDownloadManager;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.common.app.BaseApplicationImpl;
 
-class vkb
-  extends Handler
+public class vkb
 {
-  public vkb(vjx paramvjx, Looper paramLooper)
+  int jdField_a_of_type_Int;
+  boolean jdField_a_of_type_Boolean = true;
+  int b;
+  
+  public vkb(WSPublicAccReport paramWSPublicAccReport) {}
+  
+  public int a()
   {
-    super(paramLooper);
+    this.jdField_a_of_type_Boolean = false;
+    return this.b;
   }
   
-  public void handleMessage(Message paramMessage)
+  public long a()
   {
-    switch (paramMessage.what)
+    this.jdField_a_of_type_Boolean = false;
+    return System.currentTimeMillis() - WSPublicAccReport.access$000(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newReportWSPublicAccReport);
+  }
+  
+  public void a(String paramString)
+  {
+    int i = 1;
+    this.jdField_a_of_type_Int = 1;
+    if (new WSVideoPreDownloadManager(BaseApplicationImpl.sApplication).a(paramString)) {}
+    for (;;)
     {
-    }
-    do
-    {
+      this.b = i;
       return;
-      xvv.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "on receive msg play loop");
-    } while ((vjx.a(this.a) != 1) || (vjx.a(this.a) == null));
-    Object localObject = vjx.a(this.a);
-    int i = vjx.a(this.a, (List)localObject, vjx.c(this.a));
-    int j = vjx.a(this.a, (List)localObject, i + 1);
-    if ((((List)localObject).size() <= 1) || (i == j) || (i < 0))
-    {
-      vjx.b(this.a);
-      xvv.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "on receive msg play loop, pick count not enougth , dont play loop");
-      return;
+      i = 0;
     }
-    vjx.a(this.a, j);
-    paramMessage = (vim)((List)localObject).get(i);
-    localObject = (vim)((List)localObject).get(j);
-    this.a.jdField_b_of_type_ComTencentBizQqstoryAlbumViewAlbumImageView.setVisibility(0);
-    this.a.jdField_b_of_type_ComTencentBizQqstoryAlbumViewAlbumImageView.setLocalDrawable(paramMessage.a, this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_Int, vjx.a(this.a));
-    this.a.jdField_a_of_type_ComTencentBizQqstoryAlbumViewAlbumImageView.setLocalDrawable(((vim)localObject).a, this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_Int, vjx.a(this.a));
-    paramMessage = AnimationUtils.loadAnimation(vjx.a(this.a), 2130772242);
-    paramMessage.setAnimationListener(new vkc(this));
-    this.a.jdField_b_of_type_ComTencentBizQqstoryAlbumViewAlbumImageView.startAnimation(paramMessage);
-    xvv.a("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "on receive msg play loop, start play loop , ani index = %d , rear index = %d", Integer.valueOf(i), Integer.valueOf(j));
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int b()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    return this.jdField_a_of_type_Int;
   }
 }
 

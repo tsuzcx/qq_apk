@@ -1,30 +1,53 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import amec;
-import amej;
-import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
-import java.util.ArrayList;
-import java.util.Vector;
+import android.text.TextUtils;
+import anka;
+import anma;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import org.json.JSONObject;
 
 class ApolloJsPlugin$5$1
   implements Runnable
 {
-  ApolloJsPlugin$5$1(ApolloJsPlugin.5 param5, ArrayList paramArrayList) {}
+  ApolloJsPlugin$5$1(ApolloJsPlugin.5 param5, String paramString) {}
   
   public void run()
   {
-    if (ApolloJsPlugin.access$200(this.this$1.this$0).contains(this.this$1.val$param.apolloId))
+    Object localObject = anma.a(this.val$dressPath);
+    if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      if (!(this.this$1.val$activity instanceof amej)) {
-        break label60;
-      }
-      ((amej)this.this$1.val$activity).a(this.val$tempList);
-    }
-    label60:
-    while (ApolloJsPlugin.access$300(this.this$1.this$0) == null) {
+      QLog.e("ApolloJsPlugin", 1, "[handleCmShowLoad3DFaceDress] fileJsonFilePath is null!");
+      this.this$1.this$0.callbackError(this.this$1.val$callbackId, "file face.json is not exists!");
       return;
     }
-    ApolloJsPlugin.access$300(this.this$1.this$0).a(this.val$tempList);
+    localObject = new File((String)localObject);
+    if (!((File)localObject).exists())
+    {
+      QLog.e("ApolloJsPlugin", 1, "[handleCmShowLoad3DFaceDress] file face.json is not exists!");
+      this.this$1.this$0.callbackError(this.this$1.val$callbackId, "file face.json is not exists!");
+      return;
+    }
+    try
+    {
+      localObject = FileUtils.readFileToString((File)localObject);
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put(anka.b, new JSONObject((String)localObject));
+        this.this$1.this$0.callbackOk(this.this$1.val$callbackId, localJSONObject);
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      this.this$1.this$0.callbackError(this.this$1.val$callbackId, localException.getMessage());
+      QLog.e("ApolloJsPlugin", 1, "[handleCmShowLoad3DFaceDress] read file face.json error!", localException);
+      return;
+    }
+    this.this$1.this$0.callbackError(this.this$1.val$callbackId, "file face.json is empty!");
+    QLog.e("ApolloJsPlugin", 1, "[handleCmShowLoad3DFaceDress] file face.json is empty!");
   }
 }
 

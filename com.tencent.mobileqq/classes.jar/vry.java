@@ -1,323 +1,316 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailActivity;
-import com.tencent.biz.qqstory.storyHome.model.BannerFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import UserGrowth.stSimpleMetaFeed;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tribe.async.dispatch.Dispatcher;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Collections;
 import java.util.List;
 
-class vry
-  extends vsw
+public class vry
+  extends vrx
 {
-  vry(vrx paramvrx) {}
+  private static final int b = ScreenUtil.dip2px(42.0F);
+  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
+  private String jdField_a_of_type_JavaLangString;
+  private List<vpj> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean c;
   
-  public void onClick(View paramView)
+  public vry(voi paramvoi)
   {
-    Object localObject1;
-    label672:
-    label812:
-    Object localObject2;
-    label1158:
-    List localList;
-    Object localObject4;
-    Object localObject3;
-    switch (paramView.getId())
-    {
-    default: 
-    case 2131371314: 
-    case 2131371312: 
-    case 2131374376: 
-    case 2131364838: 
-    case 2131371315: 
-      int i;
-      for (;;)
-      {
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        if (!NetworkUtil.isNetSupport(this.a.jdField_a_of_type_AndroidContentContext))
-        {
-          QQToast.a(BaseApplication.getContext(), 1, amtj.a(2131703528), 0).a();
-        }
-        else
-        {
-          if ((this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.type == 2))
-          {
-            if (xbw.a(this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem)) {
-              QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 1, amtj.a(2131703548), 1).a();
-            }
-          }
-          else if ((this.a.jdField_a_of_type_Xmz != null) && (xbw.a()))
-          {
-            i = this.a.jdField_a_of_type_Xmz.a().type;
-            if ((i == 3) || (i == 5))
-            {
-              QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 1, amtj.a(2131703519), 1).a();
-              continue;
-            }
-          }
-          this.a.e();
-          continue;
-          if (!NetworkUtil.isNetSupport(this.a.jdField_a_of_type_AndroidContentContext))
-          {
-            QQToast.a(BaseApplication.getContext(), 1, amtj.a(2131703542), 0).a();
-          }
-          else if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.isFakeFeedItem())
-          {
-            QQToast.a(BaseApplication.getContext(), 1, amtj.a(2131703526), 0).a();
-          }
-          else
-          {
-            if ((this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.type == 2))
-            {
-              if (xbw.a(this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem)) {
-                QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 1, amtj.a(2131703533), 1).a();
-              }
-            }
-            else if ((this.a.jdField_a_of_type_Xmz != null) && (xbw.a()))
-            {
-              i = this.a.jdField_a_of_type_Xmz.a().type;
-              if ((i == 3) || (i == 5))
-              {
-                QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 1, amtj.a(2131703543), 1).a();
-                continue;
-              }
-            }
-            i = xwa.b(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
-            if ((this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner() instanceof ShareGroupItem)) {}
-            for (localObject1 = this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().getUnionId();; localObject1 = "")
-            {
-              xwa.a("home_page", "clk_reply", xwa.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem), 0, new String[] { String.valueOf(i), xwa.a(this.a.jdField_a_of_type_Int), this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, localObject1 });
-              if (this.a.jdField_a_of_type_Vrn == null) {
-                break;
-              }
-              localObject1 = (vrr)this.a.a("commentLego");
-              this.a.jdField_a_of_type_Vrn.a((vrr)localObject1, paramView, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId);
-              break;
-            }
-            if (vrx.a(this.a) != null)
-            {
-              if ((this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner() instanceof QQUserUIItem))
-              {
-                localObject1 = (QQUserUIItem)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner();
-                vrx.a(this.a).a(Long.parseLong(((QQUserUIItem)localObject1).qq), this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.ownerId, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
-              }
-            }
-            else
-            {
-              i = xwa.b(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
-              if (!(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner() instanceof ShareGroupItem)) {
-                break label812;
-              }
-            }
-            for (localObject1 = this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().getUnionId();; localObject1 = "")
-            {
-              xwa.a("home_page", "clk_play", xwa.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem), 0, new String[] { String.valueOf(i), xwa.a(this.a.jdField_a_of_type_Int), this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, localObject1 });
-              break;
-              vrx.a(this.a).a(0L, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.ownerId, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
-              break label672;
-            }
-            if (this.a.jdField_a_of_type_Int == 11) {
-              i = 211;
-            }
-            for (;;)
-            {
-              StoryDetailActivity.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, i, 0);
-              xwa.a("home_page", "clk_reply_mini", xwa.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem), 0, new String[] { String.valueOf(xwa.b(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem)), xwa.a(this.a.jdField_a_of_type_Int), "", this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
-              break;
-              if (this.a.jdField_a_of_type_Int == 12) {
-                i = 222;
-              } else {
-                i = 210;
-              }
-            }
-            if (!NetworkUtil.isNetSupport(this.a.jdField_a_of_type_AndroidContentContext))
-            {
-              QQToast.a(BaseApplication.getContext(), 1, amtj.a(2131703527), 0).a();
-            }
-            else if (!UIUtils.isFastDoubleClick())
-            {
-              if ((this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner() instanceof ShareGroupItem)) {}
-              for (localObject1 = this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().getUnionId();; localObject1 = "")
-              {
-                xwa.a("home_page", "clk_share", xwa.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem), 0, new String[] { xwa.b(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem) + "", xwa.a(this.a.jdField_a_of_type_Int), this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, localObject1 });
-                if ((this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner() != null)) {
-                  break label1158;
-                }
-                if (!QLog.isColorLevel()) {
-                  break;
-                }
-                QLog.i("FeedCommentLikeLego", 2, "can't share, commentLikeFeedItem not ready");
-                break;
-              }
-              if (this.a.jdField_a_of_type_Xmy == null) {
-                break;
-              }
-              if (vrx.a(this.a) == null) {
-                vrx.a(this.a, wgz.a(this.a.jdField_a_of_type_AndroidAppActivity));
-              }
-              vrx.a(this.a).a(this.a.jdField_a_of_type_AndroidContentContext.getString(2131718400)).a(new vrz(this)).a(new why((BannerFeedItem)this.a.jdField_a_of_type_Xmy.a())).b();
-            }
-          }
-        }
-      }
-      localObject2 = null;
-      localObject1 = null;
-      localList = this.a.jdField_a_of_type_Xmz.a();
-      if (!localList.isEmpty())
-      {
-        Iterator localIterator = localList.iterator();
-        label1409:
-        label1426:
-        label1441:
-        label1448:
-        if (localIterator.hasNext())
-        {
-          localObject4 = (StoryVideoItem)localIterator.next();
-          if (StoryVideoItem.isFakeVid(((StoryVideoItem)localObject4).mVid)) {
-            break label1986;
-          }
-          localObject3 = localObject1;
-          if (localObject1 == null)
-          {
-            if (!ypb.c(((StoryVideoItem)localObject4).mCreateTime)) {
-              break label1448;
-            }
-            i = localList.size() - 1;
-            label1359:
-            if (i < 0) {
-              break label1983;
-            }
-            localObject3 = (StoryVideoItem)localList.get(i);
-            if (StoryVideoItem.isFakeVid(((StoryVideoItem)localObject3).mVid)) {
-              break label1441;
-            }
-            localObject1 = localObject3;
-          }
-          label1391:
-          for (localObject3 = localObject1;; localObject3 = localObject4)
-          {
-            if (localObject2 != null) {
-              break label1976;
-            }
-            localObject1 = new ArrayList();
-            ((List)localObject1).add(((StoryVideoItem)localObject4).mVid);
-            localObject2 = localObject3;
-            localObject3 = localObject2;
-            localObject2 = localObject1;
-            localObject1 = localObject3;
-            break;
-            i -= 1;
-            break label1359;
-          }
-        }
-      }
-      break;
+    super(paramvoi);
+  }
+  
+  private String a(Object paramObject)
+  {
+    if ((paramObject instanceof vov)) {
+      return ((vov)paramObject).b;
     }
-    for (;;)
+    return "";
+  }
+  
+  private vpj a(List<vpj> paramList)
+  {
+    int i = 0;
+    while (i < paramList.size())
     {
-      if (localObject2 == null)
+      Object localObject = (vpj)paramList.get(i);
+      if (localObject != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("FeedCommentLikeLego", 2, "can't share, video list empty");
+        localObject = (stSimpleMetaFeed)((vpj)localObject).a();
+        if ((localObject != null) && (!TextUtils.isEmpty(((stSimpleMetaFeed)localObject).id)) && (((stSimpleMetaFeed)localObject).id.equals(this.jdField_a_of_type_JavaLangString))) {
+          return (vpj)paramList.remove(i);
         }
-        QQToast.a(BaseApplication.getContext(), 1, amtj.a(2131703556), 0).a();
-        break;
       }
-      if (localObject1 == null) {
-        break;
-      }
-      boolean bool1 = StoryVideoItem.hasPollVideo(localList);
-      boolean bool2 = StoryVideoItem.hasInteractVideo(localList);
-      boolean bool3 = this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isMe();
-      if ((this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.allowStrangerVisitAndPost == 1))
+      i += 1;
+    }
+    return null;
+  }
+  
+  private void a(int paramInt, voi paramvoi)
+  {
+    if ((paramInt == 1) && (this.c))
+    {
+      paramvoi = paramvoi.a();
+      if (paramvoi != null)
       {
-        if (vrx.a(this.a) == null) {
-          vrx.a(this.a, wgz.a(this.a.jdField_a_of_type_AndroidAppActivity));
-        }
-        localObject4 = vrx.a(this.a);
-        if (bool3)
-        {
-          localObject3 = amtj.a(2131703553);
-          label1605:
-          localObject2 = ((wgz)localObject4).a((String)localObject3).a(new vsa(this)).a(wic.a(this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem, (StoryVideoItem)localObject1, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, ((StoryVideoItem)localObject1).mCreateTime, ((List)localObject2).size()));
-          if (!bool1) {
-            break label1755;
-          }
-          localObject1 = "1";
-          label1671:
-          localObject2 = ((wgz)localObject2).a("vote", (String)localObject1);
-          if (!bool2) {
-            break label1763;
-          }
-        }
-        label1755:
-        label1763:
-        for (localObject1 = "1";; localObject1 = "0")
-        {
-          ((wgz)localObject2).a("grade", (String)localObject1).b();
-          xwa.a("share_story", "share_day", 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.getReportUserType() });
-          break;
-          localObject3 = this.a.jdField_a_of_type_AndroidContentContext.getString(2131718400);
-          break label1605;
-          localObject1 = "0";
-          break label1671;
-        }
+        this.c = false;
+        paramvoi.a(paramvoi.b().get(0));
       }
-      if (vrx.a(this.a) == null) {
-        vrx.a(this.a, wgz.a(this.a.jdField_a_of_type_AndroidAppActivity));
-      }
-      localObject4 = vrx.a(this.a);
-      if (bool3)
+    }
+  }
+  
+  private void a(voi paramvoi, String paramString)
+  {
+    if ((paramvoi == null) || (paramvoi.c()) || (TextUtils.isEmpty(paramString))) {
+      return;
+    }
+    paramvoi = QQToast.a(BaseApplicationImpl.getContext(), paramString, 1);
+    paramvoi.b(4);
+    paramvoi.a(QQToast.a(4));
+    paramvoi.a();
+    vmp.e("WSVerticalForArkCardPresenter", "[WSVerticalForArkCardPresenter.java][showToast] toastTips:" + paramString);
+  }
+  
+  private void a(voi paramvoi, boolean paramBoolean)
+  {
+    if ((paramvoi instanceof WSVerticalPageFragment))
+    {
+      paramvoi = ((WSVerticalPageFragment)paramvoi).a();
+      if (paramvoi != null) {}
+    }
+    else
+    {
+      return;
+    }
+    paramvoi.f(paramBoolean);
+    paramvoi.e(paramBoolean);
+  }
+  
+  private void a(vpj paramvpj)
+  {
+    voi localvoi = a();
+    Object localObject;
+    vrn localvrn;
+    if ((paramvpj != null) && (localvoi != null))
+    {
+      localObject = localvoi.a();
+      if (localObject != null)
       {
-        localObject3 = amtj.a(2131703537);
-        label1821:
-        localObject2 = ((wgz)localObject4).a((String)localObject3).a(new vsb(this)).a(new whz((StoryVideoItem)localObject1, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, ((List)localObject2).size()));
-        if (!bool1) {
-          break label1935;
-        }
-        localObject1 = "1";
-        label1879:
-        localObject2 = ((wgz)localObject2).a("vote", (String)localObject1);
-        if (!bool2) {
-          break label1943;
+        localvrn = ((vnw)localObject).a();
+        if (localvrn != null) {
+          break label37;
         }
       }
-      label1935:
-      label1943:
-      for (localObject1 = "1";; localObject1 = "0")
+    }
+    label37:
+    do
+    {
+      do
       {
-        ((wgz)localObject2).a("grade", (String)localObject1).b();
-        break;
-        localObject3 = this.a.jdField_a_of_type_AndroidContentContext.getString(2131718400);
-        break label1821;
-        localObject1 = "0";
-        break label1879;
+        return;
+        vmp.d("terry_ark", "WSVerticalForArkCardPresenter onSuccess getItemCount: " + ((vnw)localObject).getItemCount());
+        uyx localuyx = localvrn.jdField_a_of_type_Uyx;
+        if ((localuyx instanceof vqe)) {
+          ((vqe)localuyx).b(paramvpj);
+        }
+        localObject = (vpj)((vnw)localObject).a(0);
+      } while (localObject == null);
+      paramvpj = (stSimpleMetaFeed)paramvpj.a();
+    } while (paramvpj == null);
+    if (paramvpj.floatingLayerCardStyle != null) {
+      paramvpj.floatingLayerCardStyle.cardType = 3;
+    }
+    ((vpj)localObject).a(paramvpj);
+    if (localvrn.jdField_a_of_type_Vgb != null) {
+      localvrn.jdField_a_of_type_Vgb.a = vgd.a(paramvpj);
+    }
+    a(localvoi, paramvpj.isLoop);
+  }
+  
+  private boolean a(Object paramObject)
+  {
+    boolean bool1 = true;
+    boolean bool2 = true;
+    if ((paramObject instanceof vov))
+    {
+      paramObject = (vov)paramObject;
+      if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!TextUtils.equals(paramObject.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString))) {
+        break label92;
       }
-      QQStoryWatcherListActivity.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, 10);
-      break;
-      label1976:
-      localObject1 = localObject2;
-      break label1409;
-      label1983:
-      break label1391;
-      label1986:
-      localObject3 = localObject2;
-      localObject2 = localObject1;
-      localObject1 = localObject3;
-      break label1426;
-      localObject2 = null;
-      localObject1 = null;
+    }
+    label92:
+    for (bool1 = bool2;; bool1 = false)
+    {
+      vmp.e("WSVerticalForArkCardPresenter", "[isIntentFeedVideoInvalid] isInvalid:" + bool1 + ", mIntentFeedId:" + this.jdField_a_of_type_JavaLangString + ", params.mFeedId:" + paramObject.jdField_a_of_type_JavaLangString);
+      return bool1;
+    }
+  }
+  
+  private boolean a(List<vpj> paramList)
+  {
+    paramList = (vpj)paramList.get(0);
+    if ((paramList != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed != null) && ((paramList.a() instanceof stSimpleMetaFeed)))
+    {
+      paramList = (stSimpleMetaFeed)paramList.a();
+      boolean bool = TextUtils.equals(paramList.video_url, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.video_url);
+      vmp.d("WSVerticalForArkCardPresenter", "[isSameUrlForArkAndFirstFeed] isSame:" + bool + ", intentUrl:" + this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.video_url + ", firstUrl:" + paramList.video_url);
+      return bool;
+    }
+    return false;
+  }
+  
+  private boolean a(boolean paramBoolean, List<vpj> paramList)
+  {
+    if ((paramBoolean) && (!a(paramList))) {
+      return d();
+    }
+    return false;
+  }
+  
+  private void b(voi paramvoi)
+  {
+    if (!(paramvoi instanceof WSVerticalPageFragment)) {
+      return;
+    }
+    ((WSVerticalPageFragment)paramvoi).f();
+  }
+  
+  private boolean d()
+  {
+    Object localObject = a();
+    if (localObject != null)
+    {
+      localObject = ((voi)localObject).a();
+      if ((localObject != null) && ((((WSPlayerManager)localObject).e()) || ((!((WSPlayerManager)localObject).c()) && (!((WSPlayerManager)localObject).b()))))
+      {
+        vmp.d("WSVerticalForArkCardPresenter", "[isFirstVideoPlayInvalid] state:" + ((WSPlayerManager)localObject).a());
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public List<vpj> a(ArrayList paramArrayList)
+  {
+    if ((paramArrayList != null) && (paramArrayList.size() > 0))
+    {
+      if ((paramArrayList.get(0) instanceof stSimpleMetaFeed))
+      {
+        this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)paramArrayList.get(0));
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.id;
+        this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.isLoop = true;
+      }
+      return WSVerticalDataManager.a().a(paramArrayList);
+    }
+    return Collections.emptyList();
+  }
+  
+  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    super.a(paramViewHolder, paramInt);
+    vmp.d("WSVerticalForArkCardPresenter", "WSVerticalForMiniAppPresenter onPageSelected: " + paramInt);
+    voi localvoi = a();
+    if (localvoi == null) {
+      return;
+    }
+    if ((paramViewHolder instanceof vrn))
+    {
+      paramViewHolder = (vrn)paramViewHolder;
+      com.tencent.biz.pubaccount.weishi_new.WSHomeFragment.a = 1;
+      vbv localvbv = new vbv(4, new Object[] { Integer.valueOf(paramInt), paramViewHolder.jdField_a_of_type_JavaLangObject });
+      wad.a().dispatch(localvbv);
+      if (paramViewHolder.jdField_a_of_type_JavaLangObject != null) {
+        localvoi.b(((vpj)paramViewHolder.jdField_a_of_type_JavaLangObject).a());
+      }
+    }
+    a(paramInt, localvoi);
+  }
+  
+  public void a(blij<vpj> paramblij, int paramInt)
+  {
+    super.a(paramblij, paramInt);
+    if ((paramInt == 1) && (this.c)) {
+      b(a());
+    }
+  }
+  
+  public void a(List<vpj> paramList, boolean paramBoolean1, boolean paramBoolean2, Object paramObject)
+  {
+    Object localObject = a();
+    if (localObject == null) {
+      return;
+    }
+    if (paramBoolean2)
+    {
+      boolean bool = a(paramObject);
+      this.c = bool;
+      if (bool)
+      {
+        super.a(paramList, paramBoolean1, true, paramObject);
+        a((voi)localObject, a(paramObject));
+        return;
+      }
+    }
+    if (a(paramBoolean2, paramList))
+    {
+      super.a(paramList, paramBoolean1, true, paramObject);
+      return;
+    }
+    if (paramBoolean2) {}
+    for (localObject = a(paramList);; localObject = null)
+    {
+      super.a(paramList, paramBoolean1, paramBoolean2, paramObject);
+      a((vpj)localObject);
+      return;
+    }
+  }
+  
+  public boolean a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    vmp.d("terry_ark", "WSVerticalForArkCardPresenter fetchFeedData isRefresh: " + paramBoolean1 + " isFirst = " + paramBoolean2 + " from = " + paramString);
+    paramString = a();
+    if ((paramString != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed != null))
+    {
+      if (paramBoolean2) {
+        this.jdField_a_of_type_JavaUtilList = paramString.a();
+      }
+      vot.a().a(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster_id, 10007, paramBoolean1, paramBoolean2, this.jdField_a_of_type_JavaUtilList, this, null);
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean a(boolean paramBoolean1, boolean paramBoolean2, List<vpj> paramList, Object paramObject)
+  {
+    if (a(paramObject)) {
+      return false;
+    }
+    return a(paramBoolean2, paramList);
+  }
+  
+  public int b()
+  {
+    return b;
+  }
+  
+  public void b()
+  {
+    super.b();
+    vot.a().a();
+  }
+  
+  public void c()
+  {
+    super.c();
+    voi localvoi = a();
+    if ((localvoi != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed != null)) {
+      localvoi.b(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
     }
   }
 }

@@ -1,17 +1,36 @@
-import android.view.View;
-import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
-import com.tencent.qflutter.utils.FLog;
-import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
-class vbb
-  implements AdExposureChecker.ExposureCallback
+public class vbb
+  extends vat
 {
-  vbb(vba paramvba) {}
+  public long a;
+  public boolean a;
   
-  public void onExposure(WeakReference<View> paramWeakReference)
+  public vbb(JSONObject paramJSONObject)
   {
-    FLog.e("AdExposureChecker", "onExposure");
-    var.a(vba.a(this.a), (vaq)this.a.a());
+    super(paramJSONObject);
+  }
+  
+  public static vbb a(JSONObject paramJSONObject)
+  {
+    return new vbb(paramJSONObject);
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject != null)
+    {
+      this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isPreloadVideoPlugin");
+      this.jdField_a_of_type_Long = paramJSONObject.optLong("queryPluginTimeInterval");
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = 3600L;
+  }
+  
+  public String toString()
+  {
+    return "WeSeeVideoPluginConfigInfo{mIsPreloadPluginInWsRecommend=" + this.jdField_a_of_type_Boolean + ", mQueryPluginTimeInterval=" + this.jdField_a_of_type_Long + '}';
   }
 }
 

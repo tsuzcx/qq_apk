@@ -2,8 +2,8 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bgcw;
-import bgda;
+import bhln;
+import bhlr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -28,7 +28,7 @@ final class VasWebviewUtil$1
           return;
         }
         ((SharedPreferences)localObject1).edit().putLong("read_vas_asyncCookie", System.currentTimeMillis()).commit();
-        localObject1 = FileUtils.readFileContent(new File(BaseApplicationImpl.getContext().getFilesDir(), bgcw.e.a));
+        localObject1 = FileUtils.readFileContent(new File(BaseApplicationImpl.getContext().getFilesDir(), bhln.e.a));
         if ((localObject1 == null) || (((String)localObject1).length() == 0)) {
           break;
         }

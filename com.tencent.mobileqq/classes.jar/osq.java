@@ -1,6 +1,20 @@
-public abstract interface osq
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity.11.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
+
+public class osq
+  implements bkzs
 {
-  public abstract void onViewState(boolean paramBoolean, String paramString);
+  public osq(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  
+  public void onDismiss()
+  {
+    if ((!this.a.a) && (this.a.j != -1)) {
+      ThreadManager.getUIHandler().postDelayed(new ReadInJoyBaseDeliverActivity.11.1(this), 300L);
+    }
+    this.a.a = false;
+  }
 }
 
 

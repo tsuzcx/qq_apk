@@ -1,51 +1,40 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.SendPublicAccountMessageReceiptResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
 
-class odh
-  implements BusinessObserver
+public class odh
+  implements ShareActionSheet.OnItemClickListener
 {
-  odh(ocw paramocw, NewIntent paramNewIntent) {}
+  public odh(AccountDetailActivity paramAccountDetailActivity, Activity paramActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-    if (paramBoolean) {}
-    try
+    Object localObject = null;
+    int i = paramActionSheetItem.action;
+    aaht localaaht = this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.a();
+    String str1 = localaaht.a();
+    int j = this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.a();
+    String str2 = this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.b();
+    switch (i)
     {
-      paramBundle = paramBundle.getByteArray("data");
-      mobileqq_mp.SendPublicAccountMessageReceiptResponse localSendPublicAccountMessageReceiptResponse = new mobileqq_mp.SendPublicAccountMessageReceiptResponse();
-      localSendPublicAccountMessageReceiptResponse.mergeFrom(paramBundle);
-      boolean bool = paramBoolean;
-      if (localSendPublicAccountMessageReceiptResponse.ret_info.has())
-      {
-        bool = paramBoolean;
-        if (localSendPublicAccountMessageReceiptResponse.ret_info.ret_code.has())
-        {
-          paramInt = localSendPublicAccountMessageReceiptResponse.ret_info.ret_code.get();
-          bool = paramBoolean;
-          if (paramInt != 0L) {
-            bool = false;
-          }
-        }
-      }
-      return;
+    default: 
+      paramActionSheetItem = localObject;
     }
-    catch (Exception paramBundle)
+    for (;;)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("PublicAccountManager", 2, "sendMsgArriveReceipt response :" + String.valueOf(false));
+      paramShareActionSheet.dismiss();
+      AccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity, paramActionSheetItem, localaaht);
       return;
-    }
-    finally
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("PublicAccountManager", 2, "sendMsgArriveReceipt response :" + String.valueOf(paramBoolean));
-      }
+      paramActionSheetItem = AccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity, paramActionSheetItem, localaaht, str1, j, str2, this.jdField_a_of_type_AndroidAppActivity);
+      continue;
+      paramActionSheetItem = AccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity, localaaht, str1, j, str2, (BaseActivity)this.jdField_a_of_type_AndroidAppActivity);
+      continue;
+      paramActionSheetItem = AccountDetailActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity, localaaht, str1, j, str2, (BaseActivity)this.jdField_a_of_type_AndroidAppActivity);
+      continue;
+      paramActionSheetItem = AccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity, i, localaaht, str1, j, str2, (BaseActivity)this.jdField_a_of_type_AndroidAppActivity);
     }
   }
 }

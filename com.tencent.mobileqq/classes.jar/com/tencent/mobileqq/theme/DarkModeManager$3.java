@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.theme;
 
-import bdai;
+import behh;
 
 public final class DarkModeManager$3
   implements Runnable
@@ -9,7 +9,7 @@ public final class DarkModeManager$3
   
   public void run()
   {
-    bdai.a(this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+    behh.a(this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
   }
 }
 

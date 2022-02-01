@@ -123,9 +123,10 @@ public class VSwitch
       }
     }
     this.mActiveColor = ColorParseUtils.parseColor(str);
+    paramString = new int[] { 16842912 };
     int i = this.mActiveColor;
     int j = this.mInActiveColor;
-    this.mColorStateList = new ColorStateList(new int[][] { { 16842912 }, { 0 } }, new int[] { i, j });
+    this.mColorStateList = new ColorStateList(new int[][] { paramString, { 0 } }, new int[] { i, j });
     ((VSwitchView)getHostView()).setTrackTintList(this.mColorStateList);
     return true;
     this.mInActiveColor = ColorParseUtils.parseColor(str);

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.shopping;
 
-import alcd;
+import alzz;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
@@ -17,7 +17,7 @@ public class ShoppingHeadView
   extends RelativeFeedBaseHeaderView
   implements View.OnClickListener
 {
-  alcd jdField_a_of_type_Alcd;
+  alzz jdField_a_of_type_Alzz;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
@@ -48,7 +48,7 @@ public class ShoppingHeadView
   
   public int a()
   {
-    return 2131559322;
+    return 2131559372;
   }
   
   public void a()
@@ -61,26 +61,26 @@ public class ShoppingHeadView
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityShoppingItemCountView = ((ItemCountView)paramView.findViewById(2131378881));
-    this.jdField_a_of_type_ComTencentMobileqqActivityShoppingItemCountView.setBg(getResources().getDrawable(2130840570));
+    this.jdField_a_of_type_ComTencentMobileqqActivityShoppingItemCountView = ((ItemCountView)paramView.findViewById(2131379174));
+    this.jdField_a_of_type_ComTencentMobileqqActivityShoppingItemCountView.setBg(getResources().getDrawable(2130840609));
     this.jdField_a_of_type_ComTencentMobileqqActivityShoppingItemCountView.setTitle("待付款");
-    this.b = ((ItemCountView)paramView.findViewById(2131378882));
-    this.b.setBg(getResources().getDrawable(2130840571));
+    this.b = ((ItemCountView)paramView.findViewById(2131379175));
+    this.b.setBg(getResources().getDrawable(2130840610));
     this.b.setTitle("待发货");
-    this.c = ((ItemCountView)paramView.findViewById(2131362296));
-    this.c.setBg(getResources().getDrawable(2130840566));
+    this.c = ((ItemCountView)paramView.findViewById(2131362301));
+    this.c.setBg(getResources().getDrawable(2130840605));
     this.c.setTitle("已发货");
-    this.d = ((ItemCountView)paramView.findViewById(2131362295));
-    this.d.setBg(getResources().getDrawable(2130840565));
+    this.d = ((ItemCountView)paramView.findViewById(2131362300));
+    this.d.setBg(getResources().getDrawable(2130840604));
     this.d.setTitle("退款/售后");
     this.jdField_a_of_type_ComTencentMobileqqActivityShoppingItemCountView.setOnClickListener(this);
     this.b.setOnClickListener(this);
     this.c.setOnClickListener(this);
     this.d.setOnClickListener(this);
-    paramView.findViewById(2131362645).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131378762));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131366118));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366117));
+    paramView.findViewById(2131362659).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131379056));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131366219));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366218));
     paramContext = URLDrawable.getDrawable("https://sola.gtimg.cn/aoi/sola/20200530172043_bPKKBWfucM.png", null);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramContext);
   }
@@ -101,7 +101,7 @@ public class ShoppingHeadView
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Alcd == null) {}
+    if (this.jdField_a_of_type_Alzz == null) {}
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
@@ -110,20 +110,20 @@ public class ShoppingHeadView
       {
       default: 
         break;
-      case 2131362295: 
-        this.jdField_a_of_type_Alcd.d();
+      case 2131362300: 
+        this.jdField_a_of_type_Alzz.d();
         break;
-      case 2131378881: 
-        this.jdField_a_of_type_Alcd.a();
+      case 2131379174: 
+        this.jdField_a_of_type_Alzz.a();
         break;
-      case 2131378882: 
-        this.jdField_a_of_type_Alcd.b();
+      case 2131379175: 
+        this.jdField_a_of_type_Alzz.b();
         break;
-      case 2131362296: 
-        this.jdField_a_of_type_Alcd.c();
+      case 2131362301: 
+        this.jdField_a_of_type_Alzz.c();
         break;
-      case 2131362645: 
-        this.jdField_a_of_type_Alcd.e();
+      case 2131362659: 
+        this.jdField_a_of_type_Alzz.e();
       }
     }
   }
@@ -138,9 +138,9 @@ public class ShoppingHeadView
     a(this.c, paramInt);
   }
   
-  public void setOnClickEventListener(alcd paramalcd)
+  public void setOnClickEventListener(alzz paramalzz)
   {
-    this.jdField_a_of_type_Alcd = paramalcd;
+    this.jdField_a_of_type_Alzz = paramalzz;
   }
   
   public void setToPayViewCount(int paramInt)

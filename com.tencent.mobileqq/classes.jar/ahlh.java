@@ -1,13 +1,11 @@
-import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class ahlh
-  implements bjoe
+  extends ahle
 {
-  ahlh(ahlf paramahlf, bjnw parambjnw) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public ahlh(QQAppInterface paramQQAppInterface)
   {
-    ahlf.a(this.jdField_a_of_type_Ahlf, paramView, paramInt, this.jdField_a_of_type_Bjnw);
+    super(paramQQAppInterface);
   }
 }
 

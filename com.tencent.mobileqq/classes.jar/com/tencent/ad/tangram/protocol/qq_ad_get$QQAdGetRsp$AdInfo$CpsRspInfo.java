@@ -12,11 +12,11 @@ public final class qq_ad_get$QQAdGetRsp$AdInfo$CpsRspInfo
   public String product_name;
   public int product_original_price = 0;
   public int product_price = 0;
-  public qq_ad_get.QQAdGetRsp.AdInfo.QQAppInfo qq_app_info = new qq_ad_get.QQAdGetRsp.AdInfo.QQAppInfo();
+  public qq_ad_get.QQAdGetRsp.AdInfo.QQAppInfo qq_app_info;
   public String rl;
   public String sales_tips;
   public int source = 0;
-  public qq_ad_get.QQAdGetRsp.AdInfo.WeChatAppInfo wechat_app_info = new qq_ad_get.QQAdGetRsp.AdInfo.WeChatAppInfo();
+  public qq_ad_get.QQAdGetRsp.AdInfo.WeChatAppInfo wechat_app_info;
 }
 
 

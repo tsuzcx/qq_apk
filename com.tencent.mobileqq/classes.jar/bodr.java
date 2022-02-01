@@ -1,6 +1,10 @@
-public class bodr
+import android.content.Context;
+
+public abstract interface bodr
 {
-  public int[] a = new int[5];
+  public abstract Context a();
+  
+  public abstract void a();
 }
 
 

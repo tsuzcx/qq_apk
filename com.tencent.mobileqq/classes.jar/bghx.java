@@ -1,232 +1,290 @@
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Rect;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.vas.gldrawable.DynamicDrawable.doFailedDrawableBuild.1;
-import com.tencent.mobileqq.vas.gldrawable.DynamicDrawable.doTargetDrawableBuild.1;
-import com.tencent.mobileqq.vas.gldrawable.DynamicDrawable.loadAndRefresh.1;
-import com.tencent.mobileqq.vas.gldrawable.DynamicDrawable.targetDrawableBuild.1;
-import com.tencent.mobileqq.vas.gldrawable.DynamicDrawable.updateDrawableState.1;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function0;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import android.util.SparseIntArray;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.text.EmotcationConstants;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import mqq.manager.Manager;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/gldrawable/DynamicDrawable;", "Lcom/tencent/mobileqq/vas/gldrawable/AbsBaseDrawable;", "()V", "callbackProxy", "com/tencent/mobileqq/vas/gldrawable/DynamicDrawable$callbackProxy$1", "Lcom/tencent/mobileqq/vas/gldrawable/DynamicDrawable$callbackProxy$1;", "value", "Landroid/graphics/drawable/Drawable;", "currentDrawable", "getCurrentDrawable", "()Landroid/graphics/drawable/Drawable;", "setCurrentDrawable", "(Landroid/graphics/drawable/Drawable;)V", "doFailedDrawableBuild", "Lkotlin/Function0;", "doTargetDrawableBuild", "failedDrawableBuild", "getFailedDrawableBuild", "()Lkotlin/jvm/functions/Function0;", "setFailedDrawableBuild", "(Lkotlin/jvm/functions/Function0;)V", "isRecycle", "", "targetDrawableBuild", "getTargetDrawableBuild", "setTargetDrawableBuild", "tmpalpha", "", "applyToBaseDrawable", "", "child", "applyToDrawable", "build", "getConstantState", "Landroid/graphics/drawable/Drawable$ConstantState;", "getIntrinsicHeight", "getIntrinsicWidth", "getOpacity", "getPadding", "padding", "Landroid/graphics/Rect;", "getResID", "", "isRecyclyed", "loadAndRefresh", "loader", "Lcom/tencent/mobileqq/vas/gldrawable/GLDrawableProxy$GLDrawableLoader;", "onBoundsChange", "bounds", "onDraw", "canvas", "Landroid/graphics/Canvas;", "left", "top", "right", "bottom", "onTouch", "x", "", "y", "recycle", "setAlpha", "alpha", "setBounds", "setColorFilter", "colorFilter", "Landroid/graphics/ColorFilter;", "setVisible", "visible", "restart", "updateDrawableState", "MyLoaderCallback", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class bghx
-  extends bghw
+public class bghx
+  implements Manager
 {
-  private int jdField_a_of_type_Int = 255;
-  @Nullable
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private final bghz jdField_a_of_type_Bghz = new bghz(this);
-  @Nullable
-  private Function0<? extends Drawable> jdField_a_of_type_KotlinJvmFunctionsFunction0;
-  private boolean jdField_a_of_type_Boolean;
-  @NotNull
-  private Function0<? extends Drawable> b = (Function0)DynamicDrawable.targetDrawableBuild.1.INSTANCE;
-  private final Function0<Drawable> c = (Function0)new DynamicDrawable.doFailedDrawableBuild.1(this);
-  private final Function0<Drawable> d = (Function0)new DynamicDrawable.doTargetDrawableBuild.1(this);
+  public static final String a;
+  private static final String[] a;
+  private static final String[] b = { "", anvx.a(2131713029), anvx.a(2131713025) };
+  protected SparseArray<String[]> a;
+  protected final QQAppInterface a;
+  protected LinkedHashMap<String, bghy> a;
   
-  private final void a(Drawable paramDrawable)
+  static
   {
-    if ((Intrinsics.areEqual(paramDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable) ^ true)) {
-      c();
+    jdField_a_of_type_JavaLangString = ".troop.school_troop." + bghx.class.getSimpleName();
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "", anvx.a(2131713026), anvx.a(2131713028) };
+  }
+  
+  public bghx(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    a();
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    if (paramString1 == null) {
+      return "";
     }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-  }
-  
-  private final void a(bgil parambgil)
-  {
-    ThreadManagerV2.executeOnSubThread((Runnable)new DynamicDrawable.loadAndRefresh.1(this, parambgil));
-  }
-  
-  private final void b(Drawable paramDrawable)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      bgih.a().a(paramDrawable);
+    if (paramString1.length() <= 0) {
+      return "";
     }
-    if ((paramDrawable instanceof Animatable)) {
-      ((Animatable)paramDrawable).start();
+    String str = paramString2;
+    if (paramString2 == null) {
+      str = "";
     }
-  }
-  
-  private final void c()
-  {
-    ThreadManagerV2.getUIHandlerV2().post((Runnable)new DynamicDrawable.updateDrawableState.1(this));
-  }
-  
-  private final void c(Drawable paramDrawable)
-  {
-    paramDrawable.setCallback((Drawable.Callback)this.jdField_a_of_type_Bghz);
-    paramDrawable.setAlpha(this.jdField_a_of_type_Int);
-    paramDrawable.setBounds(getBounds());
-    paramDrawable.setVisible(isVisible(), false);
-  }
-  
-  @Nullable
-  public final Drawable a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  }
-  
-  @Nullable
-  public final Function0<Drawable> a()
-  {
-    return this.jdField_a_of_type_KotlinJvmFunctionsFunction0;
-  }
-  
-  public final void a()
-  {
-    bgil localbgil = bgio.a();
-    Intrinsics.checkExpressionValueIsNotNull(localbgil, "loader");
-    if (!localbgil.a())
+    paramString2 = new StringBuilder();
+    int k = paramString1.length();
+    int i = 0;
+    if (i < k)
     {
-      Drawable localDrawable = (Drawable)this.c.invoke();
-      if (localDrawable != null) {
-        a(localDrawable);
+      int m = paramString1.codePointAt(i);
+      if (EmotcationConstants.EMOJI_MAP.get(m, -1) != -1)
+      {
+        int j = i;
+        if (m > 65535) {
+          j = i + 1;
+        }
+        paramString2.append(str);
+        i = j;
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        if (m == 20)
+        {
+          i += 1;
+          paramString2.append(str);
+        }
+        else
+        {
+          paramString2.append(paramString1.charAt(i));
+        }
       }
     }
-    a(localbgil);
+    return paramString2.toString();
   }
   
-  public void a(@NotNull Canvas paramCanvas, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private void a()
   {
-    Intrinsics.checkParameterIsNotNull(paramCanvas, "canvas");
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    if (localDrawable != null)
+    long l = System.currentTimeMillis();
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("homework_troop_config" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), 0).getString("troop_school_keyword_config", "");
+    if (TextUtils.isEmpty(str))
     {
-      localDrawable.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
-      localDrawable.draw(paramCanvas);
+      if (QLog.isColorLevel()) {
+        QLog.w(jdField_a_of_type_JavaLangString, 2, "The configString is empty, new user or no config");
+      }
+      return;
     }
+    a(str);
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "loadConfig cost time: " + (System.currentTimeMillis() - l));
   }
   
-  public final void a(@Nullable Function0<? extends Drawable> paramFunction0)
+  public static boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction0 = paramFunction0;
-  }
-  
-  @NotNull
-  public final Function0<Drawable> b()
-  {
-    return this.b;
-  }
-  
-  public void b()
-  {
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    if ((localDrawable != null) && (bgih.a(localDrawable))) {
-      bgih.a().a(localDrawable);
+    if (paramSessionInfo.curType != 1) {
+      return false;
     }
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public final void b(@NotNull Function0<? extends Drawable> paramFunction0)
-  {
-    Intrinsics.checkParameterIsNotNull(paramFunction0, "<set-?>");
-    this.b = paramFunction0;
-  }
-  
-  @Nullable
-  public Drawable.ConstantState getConstantState()
-  {
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    if (localDrawable != null) {
-      return localDrawable.getConstantState();
+    paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramSessionInfo.curFriendUin);
+    if (paramQQAppInterface == null) {
+      return false;
     }
-    return null;
+    return paramQQAppInterface.dwGroupClassExt == 32L;
   }
   
-  public int getIntrinsicHeight()
+  public int a(SessionInfo paramSessionInfo)
   {
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    if (localDrawable != null) {
-      return localDrawable.getIntrinsicHeight();
-    }
-    return super.getIntrinsicHeight();
-  }
-  
-  public int getIntrinsicWidth()
-  {
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    if (localDrawable != null) {
-      return localDrawable.getIntrinsicWidth();
-    }
-    return super.getIntrinsicWidth();
-  }
-  
-  public int getOpacity()
-  {
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    if (localDrawable != null) {
-      return localDrawable.getOpacity();
-    }
-    return -3;
-  }
-  
-  public boolean getPadding(@NotNull Rect paramRect)
-  {
-    Intrinsics.checkParameterIsNotNull(paramRect, "padding");
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    if (localDrawable != null) {
-      return localDrawable.getPadding(paramRect);
-    }
-    return super.getPadding(paramRect);
-  }
-  
-  protected void onBoundsChange(@Nullable Rect paramRect)
-  {
-    if (paramRect != null)
+    int j;
+    if (paramSessionInfo.curType != 1)
     {
-      Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      if (localDrawable != null) {
-        localDrawable.setBounds(paramRect);
+      j = -1;
+      return j;
+    }
+    if (this.jdField_a_of_type_AndroidUtilSparseArray.size() == 0) {
+      return -4;
+    }
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    TroopInfo localTroopInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramSessionInfo.curFriendUin);
+    if (localTroopInfo == null)
+    {
+      QLog.w(jdField_a_of_type_JavaLangString, 2, "it must be wrong. The troopUin '" + paramSessionInfo.curFriendUin + "' has not troopInfo");
+      return -2;
+    }
+    if (localTroopInfo.dwGroupClassExt != 32L)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i(jdField_a_of_type_JavaLangString, 2, "Not school troop. The troopUin '" + paramSessionInfo.curFriendUin + "', dwGroupClassExt = " + localTroopInfo.dwGroupClassExt);
+      }
+      return -3;
+    }
+    int i = 0;
+    if (localTroopInfo.isTroopOwner(str)) {
+      i = 1;
+    }
+    for (;;)
+    {
+      j = i;
+      if (!QLog.isDevelopLevel()) {
+        break;
+      }
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "detect role. The currentUin '" + str + "', role = " + i);
+      return i;
+      if (localTroopInfo.isTroopAdmin(str)) {
+        i = 2;
       }
     }
-    super.onBoundsChange(paramRect);
   }
   
-  public void setAlpha(int paramInt)
+  public bghy a(SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    if (localDrawable != null) {
-      localDrawable.setAlpha(paramInt);
+    long l1 = System.currentTimeMillis();
+    if ((paramMessageRecord == null) || (TextUtils.isEmpty(paramMessageRecord.msg))) {
+      paramSessionInfo = null;
     }
-    this.jdField_a_of_type_Int = paramInt;
+    long l2;
+    String str1;
+    do
+    {
+      return paramSessionInfo;
+      i = a(paramSessionInfo);
+      if (QLog.isColorLevel()) {
+        QLog.i(jdField_a_of_type_JavaLangString, 2, "detectKeyword.detectRole time cost: " + (System.currentTimeMillis() - l1));
+      }
+      if (i <= 0) {
+        return null;
+      }
+      if (((i & 0x2) != 2) && ((i & 0x1) != 1)) {
+        return null;
+      }
+      if (this.jdField_a_of_type_AndroidUtilSparseArray.size() == 0)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.w(jdField_a_of_type_JavaLangString, 2, "Keywords is empty, the config is error?");
+        }
+        return null;
+      }
+      l2 = paramMessageRecord.uniseq;
+      str1 = l2 + "_" + i;
+      localbghy = (bghy)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(str1);
+      if (localbghy == null) {
+        break;
+      }
+      paramSessionInfo = localbghy;
+    } while (!QLog.isColorLevel());
+    QLog.i(jdField_a_of_type_JavaLangString, 2, "detectKeyword.useCache time cost: " + (System.currentTimeMillis() - l1));
+    return localbghy;
+    paramMessageRecord = paramMessageRecord.msg;
+    bghy localbghy = new bghy();
+    localbghy.jdField_a_of_type_Long = l2;
+    localbghy.jdField_a_of_type_Int = i;
+    localbghy.jdField_a_of_type_JavaLangString = paramSessionInfo.curFriendUin;
+    localbghy.a(paramMessageRecord);
+    int k = this.jdField_a_of_type_AndroidUtilSparseArray.size();
+    int i = 0;
+    while (i < k)
+    {
+      int m = this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i);
+      paramSessionInfo = (String[])this.jdField_a_of_type_AndroidUtilSparseArray.get(m);
+      int n = paramSessionInfo.length;
+      int j = 0;
+      while (j < n)
+      {
+        String str2 = paramSessionInfo[j];
+        int i1 = paramMessageRecord.indexOf(str2);
+        if (i1 != -1)
+        {
+          localbghy.jdField_b_of_type_Int = m;
+          localbghy.jdField_b_of_type_JavaLangString = str2;
+          localbghy.c = i1;
+          localbghy.d = (str2.length() + i1);
+          this.jdField_a_of_type_JavaUtilLinkedHashMap.put(str1, localbghy);
+          return localbghy;
+        }
+        j += 1;
+      }
+      i += 1;
+    }
+    localbghy.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(str1, localbghy);
+    if (QLog.isColorLevel()) {
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "detectKeyword time cost: " + (System.currentTimeMillis() - l1) + ", result = " + localbghy.jdField_b_of_type_Int);
+    }
+    return localbghy;
   }
   
-  public void setBounds(@NotNull Rect paramRect)
+  public void a(String paramString)
   {
-    Intrinsics.checkParameterIsNotNull(paramRect, "bounds");
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    if (localDrawable != null) {
-      localDrawable.setBounds(paramRect);
+    long l = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "update config, config=" + paramString);
     }
-    super.setBounds(paramRect);
+    for (;;)
+    {
+      int i;
+      try
+      {
+        JSONArray localJSONArray = new JSONArray(paramString);
+        int k = localJSONArray.length();
+        i = 0;
+        if (i < k)
+        {
+          Object localObject = localJSONArray.optJSONObject(i);
+          int m = ((JSONObject)localObject).getInt("action");
+          if (m >= jdField_a_of_type_ArrayOfJavaLangString.length) {
+            break label308;
+          }
+          ArrayList localArrayList = new ArrayList();
+          localObject = ((JSONObject)localObject).getJSONArray("words");
+          int n = ((JSONArray)localObject).length();
+          int j = 0;
+          if (j < n)
+          {
+            localArrayList.add(((JSONArray)localObject).getString(j));
+            j += 1;
+            continue;
+          }
+          this.jdField_a_of_type_AndroidUtilSparseArray.put(m, localArrayList.toArray(new String[localArrayList.size()]));
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        QLog.w(jdField_a_of_type_JavaLangString, 2, "parse config error, config = " + paramString);
+        return;
+        this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+        return;
+      }
+      finally
+      {
+        QLog.i(jdField_a_of_type_JavaLangString, 1, "updateConfig cost time: " + (System.currentTimeMillis() - l));
+      }
+      label308:
+      i += 1;
+    }
   }
   
-  public void setColorFilter(@Nullable ColorFilter paramColorFilter)
-  {
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    if (localDrawable != null) {
-      localDrawable.setColorFilter(paramColorFilter);
-    }
-  }
-  
-  public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    if (localDrawable != null) {
-      localDrawable.setVisible(paramBoolean1, paramBoolean2);
-    }
-    return super.setVisible(paramBoolean1, paramBoolean2);
-  }
+  public void onDestroy() {}
 }
 
 

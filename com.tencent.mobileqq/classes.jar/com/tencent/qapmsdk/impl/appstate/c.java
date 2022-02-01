@@ -1,63 +1,69 @@
 package com.tencent.qapmsdk.impl.appstate;
 
 import com.tencent.qapmsdk.impl.instrumentation.QAPMAppInstrumentation;
-import com.tencent.qapmsdk.impl.instrumentation.f;
-import com.tencent.qapmsdk.impl.instrumentation.k.a;
-import com.tencent.qapmsdk.impl.instrumentation.k.b;
+import com.tencent.qapmsdk.impl.instrumentation.g;
+import com.tencent.qapmsdk.impl.instrumentation.l.a;
+import com.tencent.qapmsdk.impl.instrumentation.l.b;
 
 public class c
 {
-  protected d a = new d();
+  protected e a = new e();
   
   public void a()
   {
-    if (d()) {
+    if (e()) {
       this.a.c();
     }
   }
   
   public void a(String paramString)
   {
-    if (d()) {
-      this.a.a(new f(paramString + "#onStart", k.a.a.a()));
+    if (e()) {
+      this.a.a(new g(paramString, paramString + "#onStart", l.a.a.a()));
     }
   }
   
   public void a(String paramString1, String paramString2)
   {
-    if (d())
+    if (e())
     {
-      this.a.a(paramString1, 500L, k.b.c);
-      this.a.a(new f(paramString1 + paramString2, k.a.a.a()));
+      this.a.a(paramString1, 500L, l.b.c);
+      this.a.a(new g(paramString1, paramString1 + paramString2, l.a.a.a()));
     }
   }
   
   public void b()
   {
-    if (d()) {
+    if (e()) {
       this.a.c();
     }
   }
   
   public void b(String paramString)
   {
-    if (d()) {
-      this.a.a(new f(paramString + "#onResume", k.a.a.a()));
+    if (e()) {
+      this.a.a(new g(paramString, paramString + "#onResume", l.a.a.a()));
     }
   }
   
-  public h c()
+  public void c()
   {
-    if (!d()) {
+    if (e()) {
+      this.a.c();
+    }
+  }
+  
+  public j d()
+  {
+    if (!e()) {
       return null;
     }
-    this.a.c();
     return this.a.a();
   }
   
-  protected boolean d()
+  protected boolean e()
   {
-    return (com.tencent.qapmsdk.impl.g.b.c) && (b.a) && (!QAPMAppInstrumentation.isAppInBackground);
+    return (com.tencent.qapmsdk.impl.g.b.g) && (b.a) && (!QAPMAppInstrumentation.isAppInBackground);
   }
 }
 

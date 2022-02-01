@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.entry.MiniAppExposureManager;
@@ -28,8 +29,8 @@ class MiniAppDesktopAdapter$ModuleViewHolder
   {
     super(paramView);
     this.mActivityReference = new WeakReference(paramActivity);
-    this.mModuleText = ((TextView)paramView.findViewById(2131371045));
-    this.mMoreMiniApp = ((ImageView)paramView.findViewById(2131371044));
+    this.mModuleText = ((TextView)paramView.findViewById(2131371237));
+    this.mMoreMiniApp = ((ImageView)paramView.findViewById(2131371236));
   }
   
   public void update(DesktopAppModuleInfo paramDesktopAppModuleInfo)
@@ -54,7 +55,7 @@ class MiniAppDesktopAdapter$ModuleViewHolder
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append(this.mAppStoreInfo.appId).append("_").append(this.mAppStoreInfo.verType).append("_").append(j).append("_").append(paramDesktopAppModuleInfo.launchParam.scene);
           paramDesktopAppModuleInfo = localStringBuilder.toString();
-          ((MiniAppExposureManager)localAppInterface.getManager(322)).putReportDataToMap(paramDesktopAppModuleInfo, (MiniAppExposureManager.BaseExposureReport)localObject);
+          ((MiniAppExposureManager)localAppInterface.getManager(QQManagerFactory.MINI_APP_EXPOSURE_MANAGER)).putReportDataToMap(paramDesktopAppModuleInfo, (MiniAppExposureManager.BaseExposureReport)localObject);
         }
       }
       for (;;)

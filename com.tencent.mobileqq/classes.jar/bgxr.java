@@ -1,113 +1,118 @@
-import android.os.Looper;
-import android.os.MessageQueue;
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.TbsDownloader;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Locale;
 
-public class bgxr
+final class bgxr
+  implements DownloadParams.DecodeHandler
 {
-  private static int jdField_a_of_type_Int;
-  private static long jdField_a_of_type_Long;
-  private static bgxr jdField_a_of_type_Bgxr;
-  static WeakReference<BrowserAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private static final ArrayList<bgxu> jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
-  final MessageQueue.IdleHandler jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new bgxs(this);
-  boolean jdField_a_of_type_Boolean = false;
-  
-  public static bgxr a()
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if (jdField_a_of_type_Bgxr == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bgxr == null) {
-        jdField_a_of_type_Bgxr = new bgxr();
-      }
-      return jdField_a_of_type_Bgxr;
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
     }
-    finally {}
-  }
-  
-  static void a()
-  {
-    try
+    int n;
+    int i1;
+    int i;
+    int j;
+    int k;
+    int m;
+    int i2;
+    int i3;
+    boolean bool;
+    label128:
+    label380:
+    do
     {
-      npn.a("downloadX5KernelIfNeeded");
-      BrowserAppInterface localBrowserAppInterface = (BrowserAppInterface)jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localBrowserAppInterface != null)
+      Object localObject;
+      do
       {
-        String str = WebAccelerateHelper.getInstance().getTBSDpcParam();
-        if ((str == null) || (str.charAt(0) != '1') || (!"CN".equals(Locale.getDefault().getCountry()))) {
-          break label91;
-        }
-        if (TbsDownloader.needDownload(BaseApplication.getContext(), false, false, new bgxt()))
+        do
         {
-          localBrowserAppInterface.a(false);
-          QLog.i("SwiftBrowserIdleTaskHelper", 1, "call downloadX5Kernel on idle:download tbs.");
+          return paramDownloadParams;
+          localObject = paramDownloadParams.tag;
+          paramDownloadParams = paramBitmap;
+        } while (!(localObject instanceof int[]));
+        paramDownloadParams = paramBitmap;
+      } while (((int[])localObject).length != 6);
+      paramDownloadParams = (int[])localObject;
+      n = paramDownloadParams[0];
+      i1 = paramDownloadParams[1];
+      i = paramDownloadParams[2];
+      j = paramDownloadParams[3];
+      k = paramDownloadParams[4];
+      m = paramDownloadParams[5];
+      i2 = paramBitmap.getHeight();
+      i3 = paramBitmap.getWidth();
+      float f1;
+      if ((n >= 0) && (i1 >= 0) && (i > 0) && (j > 0) && (n < i3) && (i1 < i2))
+      {
+        bool = true;
+        if (QLog.isColorLevel()) {
+          QLog.i(bgxc.a(), 2, String.format("CUSTOM_CLIP_DECODER [%d,%d,%d,%d,%d,%d] valid=%b", new Object[] { Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Boolean.valueOf(bool) }));
         }
+        if ((bool) || (k <= 0) || (m <= 0)) {
+          break label439;
+        }
+        f1 = k / m;
+        float f2 = paramBitmap.getWidth() / paramBitmap.getHeight();
+        localObject = new Rect();
+        if (f1 <= f2) {
+          break label380;
+        }
+        i = paramBitmap.getWidth();
+        j = (int)(i / f1);
+        n = (int)(0.5F * (paramBitmap.getHeight() - j));
+        f1 = paramBitmap.getHeight() - j;
+        ((Rect)localObject).set(0, n, i, (int)(j + 0.5F * f1));
       }
       for (;;)
       {
-        npn.b("downloadX5KernelIfNeeded");
-        return;
-        label91:
-        jdField_a_of_type_Int = 5;
-        QLog.i("SwiftBrowserIdleTaskHelper", 1, "call downloadX5Kernel on idle: no need download tbs.");
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("SwiftBrowserIdleTaskHelper", 1, "downloadX5Kernel error:" + localThrowable.getMessage());
-      npn.b("downloadX5KernelIfNeeded");
-    }
-  }
-  
-  public static void a(BrowserAppInterface paramBrowserAppInterface)
-  {
-    jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBrowserAppInterface);
-  }
-  
-  public void a(bgxu parambgxu)
-  {
-    if (Looper.myLooper() == Looper.getMainLooper())
-    {
-      Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
-      do
-      {
-        if (!localIterator.hasNext()) {
+        paramBitmap = bheg.a(paramBitmap, (Rect)localObject, akln.a(k, m, ((Rect)localObject).width(), ((Rect)localObject).height()));
+        paramDownloadParams = paramBitmap;
+        if (!QLog.isColorLevel()) {
           break;
         }
-      } while (((bgxu)localIterator.next()).jdField_a_of_type_Int != parambgxu.jdField_a_of_type_Int);
+        QLog.i(bgxc.a(), 2, String.format("CUSTOM_CLIP_DECODER centerCrop %s", new Object[] { ((Rect)localObject).toShortString() }));
+        return paramBitmap;
+        bool = false;
+        break label128;
+        i = paramBitmap.getHeight();
+        j = (int)(f1 * i);
+        n = (int)(0.5F * (paramBitmap.getWidth() - j));
+        f1 = paramBitmap.getWidth() - j;
+        ((Rect)localObject).set(n, 0, (int)(j + 0.5F * f1), i);
+      }
+      paramDownloadParams = paramBitmap;
+    } while (!bool);
+    label439:
+    if (n + i > i3) {
+      i = i3 - n;
     }
-    do
+    for (;;)
     {
-      return;
-      jdField_a_of_type_JavaUtilArrayList.add(parambgxu);
-    } while ((jdField_a_of_type_JavaUtilArrayList.isEmpty()) || (this.jdField_a_of_type_Boolean));
-    this.jdField_a_of_type_Boolean = true;
-    Looper.myQueue().addIdleHandler(this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      bgxu localbgxu = (bgxu)localIterator.next();
-      if (localbgxu.jdField_a_of_type_Int == paramInt)
+      if (i1 + j > i2) {
+        j = i2 - i1;
+      }
+      for (;;)
       {
-        jdField_a_of_type_JavaUtilArrayList.remove(localbgxu);
-        return true;
+        paramDownloadParams = new Rect(n, i1, i + n, j + i1);
+        j = 1;
+        i = j;
+        if (k > 0)
+        {
+          i = j;
+          if (m > 0) {
+            i = akln.a(k, m, paramDownloadParams.width(), paramDownloadParams.height());
+          }
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i(bgxc.a(), 2, String.format("CUSTOM_CLIP_DECODER [w,h]=[%d,%d] dstClip=%s sample=%d", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()), paramDownloadParams, Integer.valueOf(i) }));
+        }
+        return bheg.a(paramBitmap, paramDownloadParams, i);
       }
     }
-    return false;
   }
 }
 

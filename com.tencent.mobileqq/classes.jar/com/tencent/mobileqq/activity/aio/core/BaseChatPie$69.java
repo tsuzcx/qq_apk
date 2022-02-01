@@ -1,18 +1,13 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import ahpk;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-
 class BaseChatPie$69
   implements Runnable
 {
-  BaseChatPie$69(BaseChatPie paramBaseChatPie, long paramLong) {}
+  BaseChatPie$69(BaseChatPie paramBaseChatPie) {}
   
   public void run()
   {
-    if ((this.this$0.mFraudTipsBar != null) && (this.val$fUin == Long.parseLong(this.this$0.sessionInfo.curFriendUin))) {
-      this.this$0.mFraudTipsBar.a();
-    }
+    this.this$0.hideAddFriendAndShield();
   }
 }
 

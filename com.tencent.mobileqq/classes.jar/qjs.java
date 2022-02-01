@@ -1,20 +1,9 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeCommentView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.support.annotation.Nullable;
+import java.util.ArrayList;
 
-public class qjs
-  extends qjj
+public abstract interface qjs<B, C>
 {
-  public qjs(NativeCommentView paramNativeCommentView, int paramInt1, int paramInt2, int paramInt3, ArticleInfo paramArticleInfo)
-  {
-    super(paramInt1, paramInt2, paramInt3);
-  }
-  
-  public void onClick(View paramView)
-  {
-    pay.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.a.a.a(), 4, false, 7, false);
-    pgw.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.a.a.e());
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, ArrayList<B> paramArrayList, @Nullable C paramC, int paramInt2, String paramString);
 }
 
 

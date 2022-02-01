@@ -1,27 +1,58 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetLocation;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetLocation;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class wtg
-  extends wtk<StoryVideoItem>
+  extends wfm<wva>
 {
-  public wtg(VideoViewVideoHolder paramVideoViewVideoHolder)
+  private static final String a = weg.a("StorySvc.get_location");
+  public final int c;
+  public final int d;
+  public final int e;
+  
+  public wtg(int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramVideoViewVideoHolder, null);
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
   }
   
-  public void a(StoryVideoItem paramStoryVideoItem)
+  public String a()
   {
-    super.onNext(paramStoryVideoItem);
-    VideoViewVideoHolder.a(this.a);
+    return a;
   }
   
-  public void onError(@NonNull Error paramError)
+  public wfh a(byte[] paramArrayOfByte)
   {
-    super.onError(paramError);
-    xvv.d(this.a.a, "VideoStartSegment, error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
-    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
+    qqstory_service.RspGetLocation localRspGetLocation = new qqstory_service.RspGetLocation();
+    try
+    {
+      localRspGetLocation.mergeFrom(paramArrayOfByte);
+      return new wva(localRspGetLocation);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetLocation localReqGetLocation = new qqstory_service.ReqGetLocation();
+    localReqGetLocation.coordinate.set(this.c);
+    localReqGetLocation.gps.lng.set(this.d);
+    localReqGetLocation.gps.lat.set(this.e);
+    localReqGetLocation.gps.setHasFlag(true);
+    return localReqGetLocation.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetLocationRequest{mCoordinate=" + this.c + ", mLng=" + this.d + ", mLat=" + this.e + '}';
   }
 }
 

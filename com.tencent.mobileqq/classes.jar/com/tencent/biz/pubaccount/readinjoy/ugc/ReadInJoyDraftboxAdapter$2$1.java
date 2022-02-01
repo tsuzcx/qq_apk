@@ -3,18 +3,18 @@ package com.tencent.biz.pubaccount.readinjoy.ugc;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import pwc;
-import ria;
-import ric;
+import qhi;
+import rum;
+import ruo;
 
 public class ReadInJoyDraftboxAdapter$2$1
   implements Runnable
 {
-  public ReadInJoyDraftboxAdapter$2$1(ric paramric) {}
+  public ReadInJoyDraftboxAdapter$2$1(ruo paramruo) {}
   
   public void run()
   {
-    boolean bool = ria.a(this.a.jdField_a_of_type_Ria).a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyDraftboxItem.getId());
+    boolean bool = rum.a(this.a.jdField_a_of_type_Rum).a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyDraftboxItem.getId());
     ThreadManager.getUIHandler().post(new ReadInJoyDraftboxAdapter.2.1.1(this, bool));
   }
 }

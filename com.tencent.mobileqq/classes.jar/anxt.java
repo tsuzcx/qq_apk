@@ -1,74 +1,68 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.os.Process;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.mobileqq.app.MemoryManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.transfile.predownload.schedule.PreDownloadScheduler;
+import mqq.app.AppRuntime;
 
 public class anxt
-  extends QIPCModule
+  extends anvw
 {
-  private static anxt a;
-  
-  public anxt(String paramString)
+  protected void a()
   {
-    super(paramString);
-  }
-  
-  public static anxt a()
-  {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new anxt("PublicAccountModule");
-      }
-      return a;
+    super.a();
+    if (this.c >= anvu.a().a(this.a.jdField_a_of_type_Array2dOfLong, this.a.jdField_a_of_type_Int, this.a.b, MemoryManager.getMemory(Process.myPid())) / 12000L) {
+      this.a.a(7, null);
     }
-    finally {}
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountModule", 2, new Object[] { "PublicAccountModule : " + paramString + ", " + paramBundle.toString(), ", " + paramInt });
-    }
-    String str;
-    boolean bool;
-    if ("ACTION_REPORT_PUBLIC_ACCOUNT_FOLLOW_INFO_IN_WEBVIEW".equalsIgnoreCase(paramString))
+    Object localObject;
+    do
     {
-      paramInt = paramBundle.getInt("BUNDLE_KEY_REPORT_INFO_SOURCE", -1);
-      str = paramBundle.getString("BUNDLE_KEY_REPORT_INFO_PUIN", "");
-      bool = paramBundle.getBoolean("BUNDLE_KEY_REPORT_INFO_IS_FOLLOW", false);
-      if ((paramInt != -1) && (!TextUtils.isEmpty(str))) {
-        break label161;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PublicAccountModule", 2, new Object[] { "empty error: source=", Integer.valueOf(paramInt), " uin=", str });
-      }
-    }
-    return null;
-    label161:
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
-    for (paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; paramString = null)
-    {
-      if (paramString == null)
+      do
       {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("PublicAccountModule", 2, "app is null!");
-        return null;
-      }
-      anxu.a(paramString, bool, str, paramInt);
-      return null;
+        do
+        {
+          return;
+        } while (this.d != 1L);
+        MemoryManager.getInstance().reportMemory("LITE_GUARD");
+        localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      } while (localObject == null);
+      localObject = (PreDownloadScheduler)((QQAppInterface)localObject).getManager(QQManagerFactory.PRE_DOWNLOAD_SCHEDULER_MANAGER);
+    } while (localObject == null);
+    ((PreDownloadScheduler)localObject).onAppLiteStart(true);
+  }
+  
+  protected void a(String paramString)
+  {
+    GuardManager localGuardManager = this.a;
+    if ("com.tencent.mobileqq".equals(paramString)) {}
+    for (int i = 2;; i = 3)
+    {
+      localGuardManager.a(i, paramString);
+      return;
     }
+  }
+  
+  protected void b()
+  {
+    if (this.c > 2L) {
+      this.c -= 2L;
+    }
+  }
+  
+  protected void b(String paramString)
+  {
+    super.b(paramString);
+    CoreService.startCoreService(anvu.a().a);
+    this.a.b();
+    BaseApplicationImpl.sApplication.getRuntime().onGuardEvent(3, 0L, 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anxt
  * JD-Core Version:    0.7.0.1
  */

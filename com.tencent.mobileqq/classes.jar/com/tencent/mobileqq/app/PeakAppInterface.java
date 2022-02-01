@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.app;
 
-import amwr;
-import amxh;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.accessibility.AccessibilityManager;
-import annq;
-import aybg;
-import ayby;
-import azzj;
-import baig;
-import baih;
-import bbjf;
-import bbof;
-import bbwb;
-import blul;
-import blup;
-import bmbx;
-import bmdb;
-import bmri;
+import anzf;
+import anzv;
+import aoqj;
+import azhs;
+import azik;
+import bbfs;
+import bbov;
+import bbow;
+import bcpx;
+import bcuz;
+import bdcw;
+import bnjo;
+import bnjs;
+import bnrh;
+import bnst;
+import boha;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -44,17 +44,17 @@ import java.util.Vector;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.IToolProcEventListener;
 import mqq.manager.Manager;
-import yln;
+import zag;
 
 public class PeakAppInterface
   extends AppInterface
   implements IToolProcEventListener
 {
-  public static bmri a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new amxh(this);
-  private aybg jdField_a_of_type_Aybg;
-  private baih jdField_a_of_type_Baih;
-  private bbjf jdField_a_of_type_Bbjf;
+  public static boha a;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new anzv(this);
+  private azhs jdField_a_of_type_Azhs;
+  private bbow jdField_a_of_type_Bbow;
+  private bcpx jdField_a_of_type_Bcpx;
   private QQStoryContext jdField_a_of_type_ComTencentBizQqstoryAppQQStoryContext;
   private EntityManagerFactory jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
   private NetEngineFactory jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory;
@@ -67,7 +67,7 @@ public class PeakAppInterface
   
   static
   {
-    jdField_a_of_type_Bmri = new bmri();
+    jdField_a_of_type_Boha = new boha();
   }
   
   public PeakAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
@@ -85,14 +85,14 @@ public class PeakAppInterface
   
   private boolean a(BaseApplication paramBaseApplication, Intent paramIntent)
   {
-    bmbx.d("PeakAppInterface", "exitPeakRunTime");
+    bnrh.d("PeakAppInterface", "exitPeakRunTime");
     paramBaseApplication = paramIntent.getAction();
     if (paramBaseApplication == null) {}
     while (!paramBaseApplication.equals("com.tencent.process.exit")) {
       return false;
     }
-    boolean bool = bmdb.a().a();
-    bmbx.d("PeakAppInterface", "isGenerateWorking" + bool);
+    boolean bool = bnst.a().a();
+    bnrh.d("PeakAppInterface", "isGenerateWorking" + bool);
     return bool;
   }
   
@@ -104,25 +104,25 @@ public class PeakAppInterface
     default: 
       return null;
     case 0: 
-      return new baig(this);
+      return new bbov(this);
     case 1: 
-      return new yln(this);
+      return new zag(this);
     case 2: 
-      return new amwr(this);
+      return new anzf(this);
     case 3: 
-      return new blup(this);
+      return new bnjs(this);
     }
-    return new blul(this);
+    return new bnjo(this);
   }
   
-  public aybg a()
+  public azhs a()
   {
-    if (this.jdField_a_of_type_Aybg == null)
+    if (this.jdField_a_of_type_Azhs == null)
     {
       String str = getCurrentAccountUin();
-      this.jdField_a_of_type_Aybg = new aybg(((QQEntityManagerFactory)getEntityManagerFactory(str)).build(str), str);
+      this.jdField_a_of_type_Azhs = new azhs(((QQEntityManagerFactory)getEntityManagerFactory(str)).build(str), str);
     }
-    return this.jdField_a_of_type_Aybg;
+    return this.jdField_a_of_type_Azhs;
   }
   
   public QQStoryContext a()
@@ -174,10 +174,10 @@ public class PeakAppInterface
   {
     if ((paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetRecommandTextByEmotion")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetTextValidStatus")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCameraConfig")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCompressedCategoryMaterial")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetPlayShowCatMatTree")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetOnlineUserNum")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetFontData")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetImgValidStatus")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetBulkImageClassify")))
     {
-      this.jdField_a_of_type_Bbjf.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg);
+      this.jdField_a_of_type_Bcpx.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg);
       return;
     }
-    this.jdField_a_of_type_Baih.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
+    this.jdField_a_of_type_Bbow.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
   }
   
   public void a(String paramString)
@@ -200,7 +200,7 @@ public class PeakAppInterface
   public SQLiteDatabase b()
   {
     Object localObject = getCurrentAccountUin();
-    localObject = new ayby((String)localObject).build((String)localObject);
+    localObject = new azik((String)localObject).build((String)localObject);
     if (localObject != null) {
       return ((SQLiteOpenHelper)localObject).getReadableDatabase();
     }
@@ -282,7 +282,7 @@ public class PeakAppInterface
         localObject2 = super.getManager(paramInt);
       }
       return localObject2;
-      localObject2 = new annq();
+      localObject2 = new aoqj();
       break;
       localObject1 = localObject2;
       if (localObject2 != null)
@@ -308,8 +308,8 @@ public class PeakAppInterface
   
   public void onBeforeExitProc()
   {
-    bmbx.d("PeakAppInterface", "onBeforeExitProc");
-    bmdb.a().b();
+    bnrh.d("PeakAppInterface", "onBeforeExitProc");
+    bnst.a().b();
   }
   
   public void onCreate(Bundle paramBundle)
@@ -323,16 +323,16 @@ public class PeakAppInterface
     a();
     this.jdField_a_of_type_JavaUtilList = new Vector();
     this.b = a();
-    this.jdField_a_of_type_Baih = new baih(this);
-    this.jdField_a_of_type_Bbjf = new bbjf(this);
-    jdField_a_of_type_Bmri.a("{1000,1002}");
+    this.jdField_a_of_type_Bbow = new bbow(this);
+    this.jdField_a_of_type_Bcpx = new bcpx(this);
+    jdField_a_of_type_Boha.a("{1000,1002}");
     DtSdkInitStep.initDTSDK(0);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    azzj.a().b(BaseApplicationImpl.sApplication);
+    bbfs.a().b(BaseApplicationImpl.sApplication);
     ??? = PresendPicMgr.a(null);
     if (??? != null) {
       ((PresendPicMgr)???).b();
@@ -366,9 +366,9 @@ public class PeakAppInterface
           this.b = false;
         }
         if (this.jdField_a_of_type_Boolean) {
-          bbwb.a(this).a(this);
+          bdcw.a(this).a(this);
         }
-        jdField_a_of_type_Bmri.a();
+        jdField_a_of_type_Boha.a();
         if (QLog.isColorLevel()) {
           QLog.d("PeakAppInterface", 2, "onDestroy");
         }
@@ -390,13 +390,13 @@ public class PeakAppInterface
   
   public boolean onReceiveAccountAction(String paramString, Intent paramIntent)
   {
-    bmbx.b("PeakAppInterface", "onReceiveAccountAction");
+    bnrh.b("PeakAppInterface", "onReceiveAccountAction");
     return false;
   }
   
   public boolean onReceiveLegalExitProcAction(Intent paramIntent)
   {
-    bmbx.d("PeakAppInterface", "onReceiveAccountAction");
+    bnrh.d("PeakAppInterface", "onReceiveAccountAction");
     return a(BaseApplicationImpl.getContext(), paramIntent);
   }
   
@@ -424,10 +424,10 @@ public class PeakAppInterface
   {
     if ((paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetRecommandTextByEmotion")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetTextValidStatus")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCameraConfig")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCompressedCategoryMaterial")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetPlayShowCatMatTree")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetOnlineUserNum")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetFontData")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetImgValidStatus")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetBulkImageClassify")))
     {
-      this.jdField_a_of_type_Bbjf.a(paramToServiceMsg);
+      this.jdField_a_of_type_Bcpx.a(paramToServiceMsg);
       return;
     }
-    this.jdField_a_of_type_Baih.a(paramToServiceMsg, null, bbof.class);
+    this.jdField_a_of_type_Bbow.a(paramToServiceMsg, null, bcuz.class);
   }
 }
 

@@ -20,8 +20,8 @@ import android.util.TypedValue;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import mvp;
-import mwa;
+import mwn;
+import mwy;
 
 public class StageMemberView
   extends ViewGroup
@@ -34,8 +34,8 @@ public class StageMemberView
   private TextPaint jdField_a_of_type_AndroidTextTextPaint;
   public ImageView a;
   private String jdField_a_of_type_JavaLangString;
-  public mvp a;
-  private mwa jdField_a_of_type_Mwa;
+  public mwn a;
+  private mwy jdField_a_of_type_Mwy;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = 3;
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
@@ -44,17 +44,17 @@ public class StageMemberView
   public StageMemberView(Context paramContext, Bitmap paramBitmap1, Bitmap paramBitmap2)
   {
     super(paramContext);
-    this.jdField_a_of_type_Mvp = null;
+    this.jdField_a_of_type_Mwn = null;
     this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap1;
     this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap2;
-    this.jdField_a_of_type_Mwa = new mwa(this, getContext());
-    this.jdField_a_of_type_Mwa.setVisibility(0);
+    this.jdField_a_of_type_Mwy = new mwy(this, getContext());
+    this.jdField_a_of_type_Mwy.setVisibility(0);
     this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(getContext());
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     addViewInLayout(this.jdField_a_of_type_AndroidWidgetImageView, 0, generateDefaultLayoutParams(), false);
     addViewInLayout(this.jdField_b_of_type_AndroidWidgetImageView, 1, generateDefaultLayoutParams(), false);
-    addViewInLayout(this.jdField_a_of_type_Mwa, 2, generateDefaultLayoutParams(), false);
+    addViewInLayout(this.jdField_a_of_type_Mwy, 2, generateDefaultLayoutParams(), false);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     setClipChildren(false);
     this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint(1);
@@ -115,7 +115,7 @@ public class StageMemberView
     {
       int j = (int)(localFontMetrics.descent - localFontMetrics.ascent);
       getWidth();
-      this.jdField_a_of_type_Mwa.layout((getWidth() - i) / 2 + 5, this.jdField_b_of_type_AndroidWidgetImageView.getHeight(), (i + getWidth()) / 2 + 5, j + this.jdField_b_of_type_AndroidWidgetImageView.getHeight());
+      this.jdField_a_of_type_Mwy.layout((getWidth() - i) / 2 + 5, this.jdField_b_of_type_AndroidWidgetImageView.getHeight(), (i + getWidth()) / 2 + 5, j + this.jdField_b_of_type_AndroidWidgetImageView.getHeight());
       b();
       return;
     }
@@ -126,7 +126,7 @@ public class StageMemberView
     if (((this.jdField_a_of_type_JavaLangString == null) && (paramString == null)) || ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.equals(paramString)))) {
       return;
     }
-    float f2 = super.getResources().getDimensionPixelSize(2131298716);
+    float f2 = super.getResources().getDimensionPixelSize(2131298720);
     String str2 = paramString;
     if (f2 > 0.0F)
     {
@@ -163,19 +163,19 @@ public class StageMemberView
         }
       }
     }
-    if ((this.jdField_a_of_type_Mvp != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Mvp.jdField_a_of_type_JavaLangString))) {
-      if ((TextUtils.isEmpty(str2)) && (this.jdField_a_of_type_Mvp.jdField_a_of_type_JavaLangString.contains("%s "))) {
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Mvp.jdField_a_of_type_JavaLangString.replace("%s ", "");
+    if ((this.jdField_a_of_type_Mwn != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Mwn.jdField_a_of_type_JavaLangString))) {
+      if ((TextUtils.isEmpty(str2)) && (this.jdField_a_of_type_Mwn.jdField_a_of_type_JavaLangString.contains("%s "))) {
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Mwn.jdField_a_of_type_JavaLangString.replace("%s ", "");
       }
     }
     for (;;)
     {
       a();
-      this.jdField_a_of_type_Mwa.invalidate();
+      this.jdField_a_of_type_Mwy.invalidate();
       this.jdField_a_of_type_AndroidWidgetImageView.invalidate();
       setContentDescription(this.jdField_a_of_type_JavaLangString);
       return;
-      this.jdField_a_of_type_JavaLangString = String.format(this.jdField_a_of_type_Mvp.jdField_a_of_type_JavaLangString, new Object[] { str2 });
+      this.jdField_a_of_type_JavaLangString = String.format(this.jdField_a_of_type_Mwn.jdField_a_of_type_JavaLangString, new Object[] { str2 });
       continue;
       this.jdField_a_of_type_JavaLangString = str2;
     }
@@ -190,7 +190,7 @@ public class StageMemberView
     }
     for (;;)
     {
-      this.jdField_a_of_type_Mwa.invalidate();
+      this.jdField_a_of_type_Mwy.invalidate();
       this.jdField_a_of_type_AndroidWidgetImageView.invalidate();
       this.jdField_b_of_type_AndroidWidgetImageView.invalidate();
       return;

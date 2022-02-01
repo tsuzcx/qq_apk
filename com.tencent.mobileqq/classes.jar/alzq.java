@@ -1,20 +1,18 @@
-import android.content.Context;
+import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import java.util.Comparator;
 
-public abstract class alzq
+public class alzq
+  implements Comparator<TroopMemberInfo>
 {
-  abstract int a(Context paramContext);
+  private alzq(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
   
-  abstract String a();
-  
-  abstract void a();
-  
-  void a(String paramString1, String paramString2, alzr paramalzr)
+  public int a(TroopMemberInfo paramTroopMemberInfo1, TroopMemberInfo paramTroopMemberInfo2)
   {
-    if (("destroy".equals(paramString2)) && (paramalzr != null))
-    {
-      a();
-      paramalzr.a(this);
+    if ((paramTroopMemberInfo1 != null) && (paramTroopMemberInfo1.displayedNamePinyinFirst != null) && (paramTroopMemberInfo2 != null)) {
+      return paramTroopMemberInfo1.displayedNamePinyinFirst.compareToIgnoreCase(paramTroopMemberInfo2.displayedNamePinyinFirst);
     }
+    return 0;
   }
 }
 

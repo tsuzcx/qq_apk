@@ -1,19 +1,42 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 
-class bobm
-  implements bobt
+public final class bobm
+  implements INetEngine.INetEngineListener
 {
-  bobm(bobl parambobl) {}
+  public bobm(bobn parambobn, bobg parambobg, String paramString) {}
   
-  public void a(int paramInt) {}
+  public void onResp(NetResp paramNetResp)
+  {
+    boolean bool2 = true;
+    bnqm localbnqm;
+    if ((paramNetResp != null) && (paramNetResp.mResult == 0))
+    {
+      bool1 = true;
+      bnrh.b("AEEditorMusicHelper", "[downloadMusic], onResp, succeeded=" + bool1);
+      if (this.jdField_a_of_type_Bobn != null) {
+        this.jdField_a_of_type_Bobn.a(this.jdField_a_of_type_Bobg, bool1, this.jdField_a_of_type_JavaLangString);
+      }
+      if (paramNetResp != null)
+      {
+        localbnqm = bnqm.a();
+        if (paramNetResp.mResult != 0) {
+          break label113;
+        }
+      }
+    }
+    label113:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localbnqm.a(bool1, 5, "AEEditorMusicDownload", this.jdField_a_of_type_Bobg.a(), paramNetResp.mErrCode, paramNetResp.reqCost);
+      return;
+      bool1 = false;
+      break;
+    }
+  }
   
-  public void a(int paramInt, bobo parambobo) {}
-  
-  public void a(int paramInt, ArrayList<bobo> paramArrayList) {}
-  
-  public void a(String[] paramArrayOfString, String paramString) {}
-  
-  public void b(int paramInt, bobo parambobo) {}
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

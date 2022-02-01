@@ -1,12 +1,43 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-
-public class ayhm
-  extends aygp
+class ayhm
+  implements aqul
 {
-  public void b(BaseChatPie paramBaseChatPie)
+  ayhm(ayhd paramayhd) {}
+  
+  public int a()
   {
-    a(paramBaseChatPie.sessionInfo.curType, 205);
+    return 1;
+  }
+  
+  public int a(int paramInt)
+  {
+    return 4;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    int i = 3;
+    if (paramInt2 < 0) {}
+    for (paramInt1 = 0;; paramInt1 = paramInt2)
+    {
+      if (paramInt1 > 3) {
+        paramInt1 = i;
+      }
+      for (;;)
+      {
+        switch (paramInt1)
+        {
+        default: 
+          return "";
+        case 0: 
+          return anvx.a(2131706777);
+        case 1: 
+          return anvx.a(2131706748);
+        case 2: 
+          return anvx.a(2131706718);
+        }
+        return anvx.a(2131706750);
+      }
+    }
   }
 }
 

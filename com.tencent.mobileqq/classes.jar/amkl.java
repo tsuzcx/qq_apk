@@ -1,13 +1,10 @@
-import com.tencent.mobileqq.soload.LoadExtResult;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
 
-final class amkl
-  implements bbzh
+public class amkl
 {
-  public void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
-  {
-    QLog.i("ApolloSoLoader", 1, "[loadAllSo] predownload result=" + paramInt);
-  }
+  public TextView a;
+  
+  protected amkl(amkj paramamkj) {}
 }
 
 

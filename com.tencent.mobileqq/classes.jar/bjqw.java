@@ -1,10 +1,18 @@
-public abstract interface bjqw
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.wadl.WadlJsBridgeCallBack.2;
+
+public class bjqw
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt);
+  public bjqw(WadlJsBridgeCallBack.2 param2) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void h();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    this.a.a.h = 1;
+    bmqk.a().a(this.a.a);
+  }
 }
 
 

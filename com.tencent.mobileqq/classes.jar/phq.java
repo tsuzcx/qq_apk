@@ -1,19 +1,61 @@
-import android.app.Activity;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.comment.ui.CommentLinkViewContainer;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-class phq
-  implements pen
+public class phq
+  extends ViewBase
 {
-  phq(phl paramphl) {}
+  private CommentLinkViewContainer a;
   
-  public void onClick(View paramView)
+  public phq(VafContext paramVafContext)
   {
-    Object localObject = (sjy)paramView.getTag();
-    localObject = phl.a(this.a).a(((sjy)localObject).a);
-    uhs.a(phl.a(this.a).a().a(), (ArticleInfo)localObject, phl.a(this.a).a().a(), 56);
-    uhs.a((Activity)phl.a(this.a).a().a(), (ArticleInfo)localObject, phl.a(this.a).a().a(), 56, true, null);
-    psf.a(paramView);
+    super(paramVafContext);
+    this.a = new CommentLinkViewContainer(paramVafContext.getContext());
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.a.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.a.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.a;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.layout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.a.measure(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      return super.setAttribute(paramInt, paramObject);
+      if (((paramObject instanceof pdp)) && (((pdp)paramObject).a != null)) {
+        this.a.a((pdp)paramObject);
+      }
+    }
   }
 }
 

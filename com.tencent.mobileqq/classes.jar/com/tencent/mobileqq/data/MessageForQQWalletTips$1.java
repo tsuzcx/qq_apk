@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.data;
 
-import akgd;
+import albw;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopMemberInfo;
@@ -21,7 +22,7 @@ class MessageForQQWalletTips$1
     if (localObject1 == null) {
       return;
     }
-    Object localObject2 = (TroopManager)((QQAppInterface)localObject1).getManager(52);
+    Object localObject2 = (TroopManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.TROOP_MANAGER);
     LinkedList localLinkedList = new LinkedList();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     Object localObject3;
@@ -39,16 +40,16 @@ class MessageForQQWalletTips$1
       return;
     }
     localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
-    label135:
-    label229:
-    label232:
+    label136:
+    label230:
+    label233:
     for (;;)
     {
       if (((Iterator)localObject1).hasNext())
       {
         localObject2 = (String)((Iterator)localObject1).next();
         if (localLinkedList == null) {
-          break label229;
+          break label230;
         }
         localIterator = localLinkedList.iterator();
         do
@@ -57,15 +58,15 @@ class MessageForQQWalletTips$1
             break;
           }
           localObject3 = (TroopMemberInfo)localIterator.next();
-        } while ((localObject3 == null) || (!akgd.c(((TroopMemberInfo)localObject3).memberuin, (String)localObject2)));
+        } while ((localObject3 == null) || (!albw.c(((TroopMemberInfo)localObject3).memberuin, (String)localObject2)));
       }
       for (int i = 0;; i = 1)
       {
         if (i == 0) {
-          break label232;
+          break label233;
         }
         ThreadManager.executeOnNetWorkThread(new MessageForQQWalletTips.1.1(this, (String)localObject2));
-        break label135;
+        break label136;
         break;
       }
     }
@@ -73,7 +74,7 @@ class MessageForQQWalletTips$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForQQWalletTips.1
  * JD-Core Version:    0.7.0.1
  */

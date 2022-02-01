@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import acwi;
-import azjc;
+import admu;
+import bapk;
 
 class ChatActivityUtils$14$1$1
   implements Runnable
@@ -10,7 +10,7 @@ class ChatActivityUtils$14$1$1
   
   public void run()
   {
-    this.a.this$0.jdField_a_of_type_Azjc.a(1, this.a.this$0.jdField_a_of_type_Long, "", "");
+    this.a.this$0.jdField_a_of_type_Bapk.a(1, this.a.this$0.jdField_a_of_type_Long, "", "");
   }
 }
 

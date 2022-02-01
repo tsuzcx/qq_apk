@@ -1,7 +1,4 @@
-public abstract interface mzr
-{
-  public abstract int f_();
-}
+class mzr {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

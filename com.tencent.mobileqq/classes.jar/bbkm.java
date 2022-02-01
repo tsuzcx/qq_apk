@@ -1,51 +1,50 @@
-import android.util.SparseArray;
+import java.util.HashMap;
 
 public class bbkm
-  extends bbll
+  extends bbko
 {
   public int a;
   public long a;
-  private SparseArray<Object> a;
   public boolean a;
   public int b;
-  public long b;
-  public boolean b;
   public int c;
-  public long c;
-  public boolean c;
   public int d;
-  public long d;
-  public boolean d;
-  public boolean e;
-  public boolean f;
-  public boolean g = true;
-  public boolean h;
-  public boolean i;
+  public int e;
+  public int f;
+  public int g;
   
-  public bbkm(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  public HashMap<String, String> a(String paramString)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.e = paramLong2;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
-    this.c = paramBoolean3;
-    this.d = paramBoolean4;
-  }
-  
-  public Object a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray != null) {
-      return this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if ("actStreamingVideoPlay".equalsIgnoreCase(paramString))
+    {
+      paramString = new HashMap();
+      paramString.put("StreamingVideoSupport", String.valueOf(this.jdField_a_of_type_Boolean));
+      paramString.put("FirstBufferTime", String.valueOf(this.jdField_a_of_type_Int));
+      paramString.put("PlayProgress", String.valueOf(this.b));
+      paramString.put("LoadProgress", String.valueOf(this.c));
+      paramString.put("FileDuration", String.valueOf(this.d));
+      paramString.put("FileLen", String.valueOf(this.e));
+      paramString.put("param_seekTimes", String.valueOf(this.f));
+      paramString.put("PlayResult", String.valueOf(this.g));
+      paramString.put("param_playTimeCost", String.valueOf(this.jdField_a_of_type_Long));
+      return paramString;
     }
     return null;
   }
   
-  public void a(int paramInt, Object paramObject)
+  public String toString()
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
-      this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    }
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("supportProgressive ").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("playReadyTime ").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("exitPlayProgress ").append(this.b);
+    localStringBuilder.append("exitCacheProgress ").append(this.c);
+    localStringBuilder.append("durationTime ").append(this.d);
+    localStringBuilder.append("fileSize ").append(this.e);
+    localStringBuilder.append("seekTimes ").append(this.f);
+    localStringBuilder.append("playResult ").append(this.g);
+    localStringBuilder.append("playTimeCost").append(this.jdField_a_of_type_Long);
+    return localStringBuilder.toString();
   }
 }
 

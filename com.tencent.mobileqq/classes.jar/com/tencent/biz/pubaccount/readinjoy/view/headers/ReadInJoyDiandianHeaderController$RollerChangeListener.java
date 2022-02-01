@@ -6,11 +6,11 @@ import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.RollViewPager;
 import com.tencent.mobileqq.widget.MeasureGridView;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import odq;
+import olh;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pay;
-import sxl;
+import prp;
+import tku;
 
 public class ReadInJoyDiandianHeaderController$RollerChangeListener
   extends ViewPager.SimpleOnPageChangeListener
@@ -72,36 +72,36 @@ public class ReadInJoyDiandianHeaderController$RollerChangeListener
   {
     int i = ReadInJoyDiandianHeaderController.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController).a(paramInt);
     if ((this.jdField_a_of_type_Int != i) && (ReadInJoyDiandianHeaderController.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController))) {
-      odq.a(null, "", "0X8009826", "0X8009826", 0, 0, "", "", "", "", false);
+      olh.a(null, "", "0X8009826", "0X8009826", 0, 0, "", "", "", "", false);
     }
     if ((i >= 0) && (this.jdField_a_of_type_Int >= 0)) {
       this.jdField_a_of_type_Int = i;
     }
-    sxl localsxl;
+    tku localtku;
     if (ReadInJoyDiandianHeaderController.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController).get(i) != null)
     {
-      localsxl = (sxl)((MeasureGridView)ReadInJoyDiandianHeaderController.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController).get(i)).getAdapter();
+      localtku = (tku)((MeasureGridView)ReadInJoyDiandianHeaderController.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController).get(i)).getAdapter();
       paramInt = 0;
     }
     for (;;)
     {
-      if (paramInt < localsxl.getCount())
+      if (paramInt < localtku.getCount())
       {
-        DiandianTopConfig localDiandianTopConfig = (DiandianTopConfig)localsxl.getItem(paramInt);
+        DiandianTopConfig localDiandianTopConfig = (DiandianTopConfig)localtku.getItem(paramInt);
         if ((localDiandianTopConfig != null) && (!localDiandianTopConfig.hasExposeReported)) {
           try
           {
             JSONObject localJSONObject = new JSONObject();
-            localJSONObject.put("folder_status", pay.d);
+            localJSONObject.put("folder_status", prp.jdField_a_of_type_Int);
             if (localDiandianTopConfig.type == 5) {
               localJSONObject.put("list_URL", localDiandianTopConfig.jumpUrl);
             }
             for (;;)
             {
               localJSONObject.put("type", localDiandianTopConfig.type);
-              odq.a(null, "", "0X80092FC", "0X80092FC", 0, 0, ReadInJoyDiandianHeaderController.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController).size() + "", i + 1 + "", localDiandianTopConfig.topicId + "", localJSONObject.toString(), false);
+              olh.a(null, "", "0X80092FC", "0X80092FC", 0, 0, ReadInJoyDiandianHeaderController.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController).size() + "", i + 1 + "", localDiandianTopConfig.topicId + "", localJSONObject.toString(), false);
               localDiandianTopConfig.hasExposeReported = true;
-              localsxl.a(paramInt, localDiandianTopConfig);
+              localtku.a(paramInt, localDiandianTopConfig);
               break;
               localJSONObject.put("list_URL", "0");
             }
@@ -126,7 +126,7 @@ public class ReadInJoyDiandianHeaderController$RollerChangeListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController.RollerChangeListener
  * JD-Core Version:    0.7.0.1
  */

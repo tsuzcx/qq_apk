@@ -14,38 +14,33 @@ public class TissueGlobal
   public static boolean checkEngineAvailable(String paramString1, String[] paramArrayOfString, String paramString2)
   {
     if (TextUtils.isEmpty(paramString1)) {}
-    label120:
-    label125:
-    for (;;)
+    Object localObject;
+    do
     {
-      return false;
-      Object localObject = new File(paramString1);
-      if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
+      do
       {
-        localObject = EngineVersion.fromFolderName(((File)localObject).getName());
-        if ((localObject != null) && (EngineVersion.compareVersion(((EngineVersion)localObject).mMinor, paramString2) >= 0)) {}
-        for (int i = 1;; i = 0)
-        {
-          if (i == 0) {
-            break label125;
-          }
-          int j = paramArrayOfString.length;
-          i = 0;
-          for (;;)
-          {
-            if (i >= j) {
-              break label120;
-            }
-            paramString2 = new File(paramString1, paramArrayOfString[i]);
-            if ((!paramString2.exists()) || (!paramString2.isFile()) || (!paramString2.canRead())) {
-              break;
-            }
-            i += 1;
-          }
-          return true;
-        }
+        return false;
+        localObject = new File(paramString1);
+      } while ((!((File)localObject).exists()) || (!((File)localObject).isDirectory()));
+      localObject = EngineVersion.fromFolderName(((File)localObject).getName());
+    } while ((localObject == null) || (EngineVersion.compareVersion(((EngineVersion)localObject).mMinor, paramString2) < 0));
+    return checkFileExists(paramString1, paramArrayOfString);
+  }
+  
+  private static boolean checkFileExists(String paramString, String[] paramArrayOfString)
+  {
+    int j = paramArrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      File localFile = new File(paramString, paramArrayOfString[i]);
+      if (!localFile.exists()) {}
+      while ((!localFile.isFile()) || (!localFile.canRead())) {
+        return false;
       }
+      i += 1;
     }
+    return true;
   }
   
   public static boolean verifyTissueEngine(String paramString)
@@ -56,7 +51,7 @@ public class TissueGlobal
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.tissue.TissueGlobal
  * JD-Core Version:    0.7.0.1
  */

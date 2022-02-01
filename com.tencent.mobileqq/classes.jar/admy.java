@@ -1,23 +1,26 @@
-import android.view.View;
-import android.view.animation.OvershootInterpolator;
-import com.tencent.mobileqq.activity.JDHongbaoActivity;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class admy
-  extends OvershootInterpolator
+public final class admy
+  implements bhym
 {
-  private boolean jdField_a_of_type_Boolean;
+  public admy(DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2) {}
   
-  public admy(JDHongbaoActivity paramJDHongbaoActivity) {}
-  
-  public float getInterpolation(float paramFloat)
+  public void callback(int paramInt)
   {
-    if ((!this.jdField_a_of_type_Boolean) && (paramFloat > 0.7D))
-    {
-      this.jdField_a_of_type_Boolean = true;
-      JDHongbaoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJDHongbaoActivity).setBackgroundColor(-16777216);
-      JDHongbaoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJDHongbaoActivity).startAnimation(this.jdField_a_of_type_ComTencentMobileqqActivityJDHongbaoActivity.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatActivityUtils", 2, "showDlgWithCuOpenCheck type = " + paramInt);
     }
-    return (float)(1.0D - Math.pow(2.718281828459045D, 5.0F * -paramFloat) * Math.cos(8.0F * paramFloat));
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+    case 2: 
+      this.a.onClick(null, 0);
+      return;
+    }
+    this.b.onClick(null, 0);
   }
 }
 

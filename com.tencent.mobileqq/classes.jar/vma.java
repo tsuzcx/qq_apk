@@ -1,14 +1,18 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.weishi_new.util.OuterInterceptManager.1;
+
 public class vma
+  implements DialogInterface.OnCancelListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b = -1;
-  public String b;
-  public int c;
+  public vma(OuterInterceptManager.1 param1) {}
   
-  public void a() {}
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    if (this.a.a != null) {
+      this.a.a.d();
+    }
+  }
 }
 
 

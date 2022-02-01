@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.messagesearch;
 
-import amsw;
 import android.text.TextUtils;
-import bcgw;
-import bcgx;
+import anvk;
+import bdnu;
+import bdnv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
@@ -57,19 +57,19 @@ public class C2CLinkElement
               if (!localIterator.hasNext()) {
                 return paramAbsShareMsg;
               }
-              localObject2 = (bcgw)localIterator.next();
-              if (!(localObject2 instanceof bcgx)) {
+              localObject2 = (bdnu)localIterator.next();
+              if (!(localObject2 instanceof bdnv)) {
                 break label214;
               }
               localObject1 = paramAbsShareMsg;
-              if (((bcgx)localObject2).a == null) {
+              if (((bdnv)localObject2).a == null) {
                 break label248;
               }
               localObject1 = paramAbsShareMsg;
-              if (((bcgx)localObject2).a.isEmpty()) {
+              if (((bdnv)localObject2).a.isEmpty()) {
                 break label248;
               }
-              localObject2 = ((bcgx)localObject2).a.iterator();
+              localObject2 = ((bdnv)localObject2).a.iterator();
               localObject1 = paramAbsShareMsg;
               label176:
               do
@@ -78,7 +78,7 @@ public class C2CLinkElement
                 if (!((Iterator)localObject2).hasNext()) {
                   break;
                 }
-                paramAbsShareMsg = (bcgw)((Iterator)localObject2).next();
+                paramAbsShareMsg = (bdnu)((Iterator)localObject2).next();
                 if (!paramString.equals("cover")) {
                   break label206;
                 }
@@ -108,14 +108,14 @@ public class C2CLinkElement
       if (!paramString.equals("cover")) {
         break label240;
       }
-      paramAbsShareMsg = StructMsgForGeneralShare.getCoverForChatHistory((bcgw)localObject2);
+      paramAbsShareMsg = StructMsgForGeneralShare.getCoverForChatHistory((bdnu)localObject2);
       localObject2 = paramAbsShareMsg;
     } while (!TextUtils.isEmpty(paramAbsShareMsg));
     for (;;)
     {
       break;
       label240:
-      paramAbsShareMsg = StructMsgForGeneralShare.getTitleForChatHistory((bcgw)localObject2);
+      paramAbsShareMsg = StructMsgForGeneralShare.getTitleForChatHistory((bdnu)localObject2);
       break label228;
       label248:
       paramAbsShareMsg = (AbsShareMsg)localObject1;
@@ -123,36 +123,36 @@ public class C2CLinkElement
     return paramAbsShareMsg;
   }
   
-  public static C2CLinkElement parseFrom(QQAppInterface paramQQAppInterface, Object paramObject, amsw paramamsw, SimpleDateFormat paramSimpleDateFormat, int paramInt)
+  public static C2CLinkElement parseFrom(QQAppInterface paramQQAppInterface, Object paramObject, anvk paramanvk, SimpleDateFormat paramSimpleDateFormat, int paramInt)
   {
     AbsShareMsg localAbsShareMsg = null;
-    paramamsw = localAbsShareMsg;
+    paramanvk = localAbsShareMsg;
     if ((paramObject instanceof MessageForStructing))
     {
       paramObject = (MessageForStructing)paramObject;
-      paramamsw = localAbsShareMsg;
+      paramanvk = localAbsShareMsg;
       if (paramObject.structingMsg != null)
       {
-        paramamsw = localAbsShareMsg;
+        paramanvk = localAbsShareMsg;
         if ((paramObject.structingMsg instanceof AbsShareMsg))
         {
           localAbsShareMsg = (AbsShareMsg)paramObject.structingMsg;
-          paramamsw = new C2CLinkElement();
-          paramamsw.uin = paramObject.frienduin;
-          paramamsw.title = getStructMsgInfo(localAbsShareMsg, "title");
-          paramamsw.iconUrl = getStructMsgInfo(localAbsShareMsg, "cover");
-          paramamsw.nickname = ContactUtils.getFriendNick(paramQQAppInterface, paramObject.senderuin);
-          paramamsw.time = paramObject.time;
-          paramamsw.timeSecond = paramSimpleDateFormat.format(new Date(paramObject.time * 1000L));
-          paramamsw.mPos = paramInt;
-          paramamsw.msgSeq = paramObject.shmsgseq;
-          paramamsw.sendUin = paramObject.senderuin;
-          paramamsw.isSend = paramObject.issend;
-          paramamsw.url = localAbsShareMsg.mMsgUrl;
+          paramanvk = new C2CLinkElement();
+          paramanvk.uin = paramObject.frienduin;
+          paramanvk.title = getStructMsgInfo(localAbsShareMsg, "title");
+          paramanvk.iconUrl = getStructMsgInfo(localAbsShareMsg, "cover");
+          paramanvk.nickname = ContactUtils.getFriendNick(paramQQAppInterface, paramObject.senderuin);
+          paramanvk.time = paramObject.time;
+          paramanvk.timeSecond = paramSimpleDateFormat.format(new Date(paramObject.time * 1000L));
+          paramanvk.mPos = paramInt;
+          paramanvk.msgSeq = paramObject.shmsgseq;
+          paramanvk.sendUin = paramObject.senderuin;
+          paramanvk.isSend = paramObject.issend;
+          paramanvk.url = localAbsShareMsg.mMsgUrl;
         }
       }
     }
-    return paramamsw;
+    return paramanvk;
   }
   
   public String description()

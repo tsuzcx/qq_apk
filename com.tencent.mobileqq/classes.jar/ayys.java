@@ -1,30 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.profilecard.vas.view.VasProfileQVipDiyView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
 
 public class ayys
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ayys(VasProfileQVipDiyView paramVasProfileQVipDiyView) {}
+  public ayys(ScanIconAnimateView paramScanIconAnimateView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      VasProfileQVipDiyView.a(this.a, VasProfileQVipDiyView.a(this.a));
-      bfyi.a(VasProfileQVipDiyView.a(this.a).a, VasProfileQVipDiyView.e(this.a), VasProfileQVipDiyView.a(this.a));
-      bcef.b(VasProfileQVipDiyView.f(this.a), "dc00898", "", "", "qvip", "0X8009E7B", 0, 0, "", "", "", "");
-      continue;
-      VasProfileQVipDiyView.a(this.a, VasProfileQVipDiyView.a(this.a));
-      bfrj.b(VasProfileQVipDiyView.g(this.a));
-      bcef.b(VasProfileQVipDiyView.h(this.a), "dc00898", "", "", "qvip", "0X8009E7C", 0, 0, "", "", "", "");
-    }
+    this.a.f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
   }
 }
 

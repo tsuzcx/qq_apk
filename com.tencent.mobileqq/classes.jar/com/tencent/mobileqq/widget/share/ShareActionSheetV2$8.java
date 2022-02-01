@@ -2,7 +2,7 @@ package com.tencent.mobileqq.widget.share;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import bjnw;
+import bkzi;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ShareActionSheetV2$8

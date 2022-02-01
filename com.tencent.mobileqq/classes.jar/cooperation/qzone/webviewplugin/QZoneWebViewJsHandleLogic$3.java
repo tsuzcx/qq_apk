@@ -1,7 +1,7 @@
 package cooperation.qzone.webviewplugin;
 
 import android.graphics.BitmapFactory;
-import bgve;
+import bifw;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -12,7 +12,7 @@ import java.util.Map;
 final class QZoneWebViewJsHandleLogic$3
   implements Runnable
 {
-  QZoneWebViewJsHandleLogic$3(String paramString, Map paramMap, bgve parambgve, Runnable paramRunnable) {}
+  QZoneWebViewJsHandleLogic$3(String paramString, Map paramMap, bifw parambifw, Runnable paramRunnable) {}
   
   public void run()
   {

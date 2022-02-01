@@ -1,45 +1,42 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
-import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.data.OpenID;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Map;
 
-public class akbb
-  extends bgod
+class akbb
+  extends nwk
 {
-  public akbb(PreloadManager paramPreloadManager, akbe paramakbe) {}
+  akbb(akam paramakam) {}
   
-  public void onDoneFile(bgoe parambgoe)
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    int i = -5;
-    super.onDoneFile(parambgoe);
     if (QLog.isColorLevel()) {
-      QLog.d("PreloadManager", 2, "downloadRes|done" + parambgoe.jdField_a_of_type_JavaLangString + "|" + parambgoe.jdField_a_of_type_Int);
+      QLog.i("MainAssistObserver", 2, "-->onGetOpenId, isSuccess: " + paramBoolean + " data: " + paramOpenID.toString() + " mOpenId = " + this.a.jdField_b_of_type_JavaLangString);
     }
-    Object localObject = parambgoe.a();
-    PreloadModule localPreloadModule = (PreloadModule)((Bundle)localObject).getSerializable("module");
-    localObject = (PreloadResource)((Bundle)localObject).getSerializable("resource");
-    if (parambgoe.jdField_a_of_type_Int == 0)
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.isFinishing()) || (this.a.c)) {}
+    do
     {
-      i = 0;
-      if (localObject != null) {
-        break label146;
-      }
-    }
-    label146:
-    for (localObject = null;; localObject = ((PreloadResource)localObject).getResInfo(localPreloadModule))
-    {
-      this.jdField_a_of_type_Akbe.onDownloadResFinished(localPreloadModule.mid, i, ((File)parambgoe.jdField_a_of_type_JavaUtilMap.get(parambgoe.jdField_a_of_type_JavaLangString)).getAbsolutePath(), (ResourceInfo)localObject);
+      do
+      {
+        return;
+        if (this.a.jdField_a_of_type_Bisl != null) {
+          this.a.jdField_a_of_type_Bisl.hide();
+        }
+        if (this.a.jdField_b_of_type_AndroidOsHandler != null) {
+          this.a.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+        }
+        if ((!paramBoolean) || (paramOpenID == null) || (paramOpenID.openID == null)) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("MainAssistObserver", 2, "openIdObserver success");
+        }
+      } while ((TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) || (paramOpenID.openID.equals(this.a.jdField_b_of_type_JavaLangString)));
+      this.a.i();
       return;
-      if (parambgoe.jdField_a_of_type_Int == -5) {
-        break;
-      }
-      i = -6;
-      break;
-    }
+    } while (!QLog.isColorLevel());
+    QLog.d("MainAssistObserver", 2, "openIdObserver fail");
   }
 }
 

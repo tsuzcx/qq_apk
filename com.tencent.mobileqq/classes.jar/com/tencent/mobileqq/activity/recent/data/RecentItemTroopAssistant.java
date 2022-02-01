@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import amtj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import bczs;
-import bgdk;
+import anvx;
+import begq;
+import bhmb;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
@@ -16,7 +16,7 @@ import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.imcore.message.IMCoreMessageStub;
 import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
 import com.tencent.mobileqq.text.QQText;
-import nmy;
+import nty;
 
 public class RecentItemTroopAssistant
   extends RecentItemTroopAssistantBaseData
@@ -36,19 +36,19 @@ public class RecentItemTroopAssistant
     if (AppSetting.c)
     {
       if (this.mUnreadNum > 0) {
-        this.mContentDesc = String.format(amtj.a(2131712294), new Object[] { Integer.valueOf(this.mUnreadNum), this.mShowTime });
+        this.mContentDesc = String.format(anvx.a(2131712641), new Object[] { Integer.valueOf(this.mUnreadNum), this.mShowTime });
       }
     }
     else {
       return;
     }
-    this.mContentDesc = String.format(amtj.a(2131712300), new Object[] { this.mLastMsg, this.mShowTime });
+    this.mContentDesc = String.format(anvx.a(2131712647), new Object[] { this.mLastMsg, this.mShowTime });
   }
   
   private void a(Context paramContext, QQMessageFacade.Message paramMessage, MsgSummary paramMsgSummary)
   {
-    if ((TextUtils.isEmpty(this.mMsgExtroInfo)) && (paramMessage != null) && (paramMsgSummary != null) && (nmy.a(paramMessage))) {
-      this.mLastMsg = paramMsgSummary.parseMsgWithExtraInfo(paramContext, paramContext.getResources().getString(2131696698), -1);
+    if ((TextUtils.isEmpty(this.mMsgExtroInfo)) && (paramMessage != null) && (paramMsgSummary != null) && (nty.a(paramMessage))) {
+      this.mLastMsg = paramMsgSummary.parseMsgWithExtraInfo(paramContext, paramContext.getResources().getString(2131696965), -1);
     }
   }
   
@@ -78,9 +78,9 @@ public class RecentItemTroopAssistant
     for (Object localObject = (String)str.subSequence(paramMsgSummary.strPrefix.length() + 2, paramMsgSummary.strContent.length());; localObject = paramMsgSummary.suffix.toString())
     {
       if (!TextUtils.isEmpty(paramMsgSummary.strPrefix)) {
-        localSpannableString = new bczs(paramMsgSummary.strPrefix, 16).a();
+        localSpannableString = new begq(paramMsgSummary.strPrefix, 16).a();
       }
-      paramMessage = bgdk.a((String)localObject, paramMessage, 16, 3);
+      paramMessage = bhmb.a((String)localObject, paramMessage, 16, 3);
       localObject = new SpannableStringBuilder();
       if (localSpannableString != null) {
         ((SpannableStringBuilder)localObject).append(localSpannableString).append(": ");

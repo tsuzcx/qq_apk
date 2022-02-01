@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.search.activity;
 
 import Override;
-import amtj;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
+import anvx;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.mobileqq.search.fragment.MessageSearchFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -27,7 +27,7 @@ public class MessageSearchActivity
   
   protected String a()
   {
-    return amtj.a(2131705782);
+    return anvx.a(2131706133);
   }
   
   @Override

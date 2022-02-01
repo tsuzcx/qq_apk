@@ -1,13 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityControlFragment;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class bhqk
-  implements DialogInterface.OnClickListener
+class bhqk
+  extends fy
 {
-  public bhqk(AuthorityControlFragment paramAuthorityControlFragment) {}
+  bhqk(bhqi parambhqi) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(ChatMessage paramChatMessage, int paramInt)
+  {
+    if ((bhqi.a(this.a) < 0) || (bhqi.b(this.a) < bhqi.a(this.a)))
+    {
+      bhqi.a(this.a).shouldStartAnimation = true;
+      bhqi.a(this.a).startAnimation(false, false);
+      if (bhqi.a(this.a) > 0) {
+        bhqi.c(this.a);
+      }
+    }
+  }
+  
+  public void a(ChatMessage paramChatMessage, boolean paramBoolean, int paramInt) {}
 }
 
 

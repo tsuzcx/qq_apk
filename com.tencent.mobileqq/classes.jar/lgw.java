@@ -1,22 +1,10 @@
-import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
-import com.tencent.av.business.manager.pendant.PendantItem;
-
-public class lgw
-  implements lgk<PendantItem>
+public abstract interface lgw<T>
 {
-  public lgw(MagicFaceDataEntity paramMagicFaceDataEntity) {}
+  public abstract void onDownloadFinish(long paramLong, T paramT, boolean paramBoolean);
   
-  public void a(long paramLong, PendantItem paramPendantItem) {}
+  public abstract void onItemSelectedChanged(long paramLong, T paramT);
   
-  public void a(long paramLong, PendantItem paramPendantItem, boolean paramBoolean)
-  {
-    lba.f("MagicFaceDataEntity", "onDownloadFinish: " + paramPendantItem.toString() + "|" + paramBoolean);
-    if (paramBoolean) {
-      MagicFaceDataEntity.a(this.a, paramLong, paramPendantItem);
-    }
-  }
-  
-  public void a(PendantItem paramPendantItem, int paramInt) {}
+  public abstract void onProgressUpdate(T paramT, int paramInt);
 }
 
 

@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.EditText;
-import spd;
+import tco;
 
 public class ReadinjoyClipboardEditText
   extends EditText
 {
-  private spd a;
+  private tco a;
   
   public ReadinjoyClipboardEditText(Context paramContext)
   {
@@ -49,9 +49,9 @@ public class ReadinjoyClipboardEditText
     }
   }
   
-  public void setClipboardCallBack(spd paramspd)
+  public void setClipboardCallBack(tco paramtco)
   {
-    this.a = paramspd;
+    this.a = paramtco;
   }
 }
 

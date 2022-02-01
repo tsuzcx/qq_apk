@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.contact.addcontact.findtroop;
 
-import aiak;
-import ainy;
-import aiot;
+import aivj;
+import ajjn;
+import ajki;
 import android.support.v4.app.FragmentManager;
 import android.util.SparseArray;
 import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsBaseFragment;
@@ -14,40 +14,40 @@ import java.util.ArrayList;
 public class AddContactFindTroopViewPagerAdapter
   extends ContactsViewPagerAdapter
 {
-  public AddContactFindTroopViewPagerAdapter(FragmentManager paramFragmentManager, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, ArrayList<aiot> paramArrayList)
+  public AddContactFindTroopViewPagerAdapter(FragmentManager paramFragmentManager, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, ArrayList<ajki> paramArrayList)
   {
     super(paramFragmentManager, paramQQAppInterface, paramBaseActivity, paramArrayList);
   }
   
   public ContactsBaseFragment a(int paramInt, boolean paramBoolean)
   {
-    aiot localaiot = a(paramInt);
+    ajki localajki = a(paramInt);
     Object localObject;
-    if ((localaiot != null) && ((localaiot instanceof aiak)))
+    if ((localajki != null) && ((localajki instanceof aivj)))
     {
-      aiak localaiak = (aiak)localaiot;
-      localObject = a(localaiot.c);
+      aivj localaivj = (aivj)localajki;
+      localObject = a(localajki.c);
       if ((localObject == null) && (paramBoolean))
       {
         localObject = new AddContactViewPagerTroopFragment();
-        ((AddContactViewPagerTroopFragment)localObject).jdField_a_of_type_Int = localaiak.jdField_a_of_type_Int;
-        ((AddContactViewPagerTroopFragment)localObject).jdField_a_of_type_JavaLangString = localaiak.jdField_a_of_type_JavaLangString;
-        ((AddContactViewPagerTroopFragment)localObject).b = localaiak.d;
+        ((AddContactViewPagerTroopFragment)localObject).jdField_a_of_type_Int = localaivj.jdField_a_of_type_Int;
+        ((AddContactViewPagerTroopFragment)localObject).jdField_a_of_type_JavaLangString = localaivj.jdField_a_of_type_JavaLangString;
+        ((AddContactViewPagerTroopFragment)localObject).b = localaivj.d;
         ((ContactsBaseFragment)localObject).a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
         ((ContactsBaseFragment)localObject).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
         ((ContactsBaseFragment)localObject).a(this);
-        ((ContactsBaseFragment)localObject).a(this.jdField_a_of_type_Aiof);
+        ((ContactsBaseFragment)localObject).a(this.jdField_a_of_type_Ajju);
         ((ContactsBaseFragment)localObject).e(paramInt);
-        if ((localObject instanceof ainy)) {
-          this.jdField_b_of_type_JavaUtilArrayList.add((ainy)localObject);
+        if ((localObject instanceof ajjn)) {
+          this.jdField_b_of_type_JavaUtilArrayList.add((ajjn)localObject);
         }
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(localaiot.c, localObject);
+        this.jdField_a_of_type_AndroidUtilSparseArray.put(localajki.c, localObject);
       }
     }
     for (;;)
     {
-      if ((localObject != null) && ((localObject instanceof ainy)) && (this.jdField_b_of_type_Int > 0)) {
-        ((ainy)localObject).a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      if ((localObject != null) && ((localObject instanceof ajjn)) && (this.jdField_b_of_type_Int > 0)) {
+        ((ajjn)localObject).a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
       }
       return localObject;
       continue;

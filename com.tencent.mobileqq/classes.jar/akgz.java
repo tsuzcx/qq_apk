@@ -1,36 +1,29 @@
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class akgz
-  implements WtTicketPromise
+public abstract interface akgz
 {
-  akgz(akgt paramakgt, akha paramakha) {}
+  public abstract View a();
   
-  public void Done(Ticket paramTicket)
-  {
-    if ((paramTicket != null) && (paramTicket._sig != null) && (paramTicket._sig.length != 0))
-    {
-      paramTicket = new String(paramTicket._sig);
-      this.jdField_a_of_type_Akha.a(paramTicket);
-      return;
-    }
-    this.jdField_a_of_type_Akgt.c("get skey is null");
-  }
+  public abstract ImageView a();
   
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    this.jdField_a_of_type_Akgt.c("get skey failed");
-  }
+  public abstract TextView a();
   
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    this.jdField_a_of_type_Akgt.c("get skey time out");
-  }
+  public abstract QQAppInterface a();
+  
+  public abstract View b();
+  
+  public abstract TextView b();
+  
+  public abstract TextView c();
+  
+  public abstract TextView d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akgz
  * JD-Core Version:    0.7.0.1
  */

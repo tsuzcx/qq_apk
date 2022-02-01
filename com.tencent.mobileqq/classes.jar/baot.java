@@ -1,44 +1,30 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class baot
-  implements EIPCResultCallback
+final class baot
+  implements bkzq
 {
-  baot(baos parambaos) {}
+  baot(bkzi parambkzi, int[] paramArrayOfInt, String paramString, Context paramContext, QQAppInterface paramQQAppInterface) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramEIPCResult.data == null) {}
-    do
+    this.jdField_a_of_type_Bkzi.dismiss();
+    switch (this.jdField_a_of_type_ArrayOfInt[paramInt])
     {
-      do
-      {
-        do
-        {
-          return;
-          switch (paramEIPCResult.data.getInt("notify_type"))
-          {
-          default: 
-            return;
-          }
-        } while (paramEIPCResult.code != 0);
-        i = paramEIPCResult.data.getInt("id");
-        paramEIPCResult = paramEIPCResult.data.getString("url");
-        if (QLog.isColorLevel()) {
-          QLog.d("Signature.TOOL", 2, "mSignatureManagerIPCCallback get action id = " + i + " url = " + paramEIPCResult);
-        }
-      } while (TextUtils.isEmpty(paramEIPCResult));
-      baos.b(this.a).put(Integer.valueOf(i), paramEIPCResult);
-      baos.b(this.a);
-      this.a.notifyObservers(Integer.valueOf(4));
+    default: 
       return;
-    } while (paramEIPCResult.code != 0);
-    int i = paramEIPCResult.data.getInt("id");
-    this.a.a(i, true);
+    }
+    paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+    if ((!bhkn.a) && (bhkk.a().a())) {
+      bhkk.a().a(paramView);
+    }
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCallFacade();
+    long l = bcrg.a();
+    paramView.a(this.jdField_a_of_type_JavaLangString, 26, -1, l, this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,20 +1,20 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.takevideo.EditVideoFilterNeo.1.1;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
 
-public class xyk
-  implements vtx<vvo>
+class xyk
+  extends wwa
 {
-  xyk(xyj paramxyj) {}
+  xyk(xyi paramxyi, FeedItem paramFeedItem) {}
   
-  public void a(boolean paramBoolean, vvo paramvvo)
+  public void a()
   {
-    xvv.b("Q.qqstory.publish.edit.EditVideoFilterNeo", "onWeatherUpdate, isSuccess=" + paramBoolean);
-    if ((paramBoolean) && (paramvvo != null))
-    {
-      xvv.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "onWeatherUpdate, temperature=%s", Integer.valueOf(paramvvo.a));
-      int i = paramvvo.a;
-      xyj.a(this.a).post(new EditVideoFilterNeo.1.1(this, i));
-    }
+    super.a();
+    xyi.a(this.jdField_a_of_type_Xyi, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    ykv.a("home_page", "suc_share", 2, paramInt, new String[] { ykv.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem) + "", ykv.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem) + "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId });
   }
 }
 

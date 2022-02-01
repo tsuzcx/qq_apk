@@ -1,9 +1,49 @@
-class agbh
-  implements bjog
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
+
+public class agbh
+  implements Animation.AnimationListener
 {
-  agbh(agbg paramagbg) {}
+  public agbh(TroopChatPie paramTroopChatPie) {}
   
-  public void onDismiss() {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.c.setVisibility(8);
+    this.a.d.setVisibility(8);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.afRoot.setBackgroundDrawable(this.a.sessionInfo.chatBg.a);
+    if (!this.a.isThemeDefault)
+    {
+      this.a.mCustomTitleView.setBackgroundResource(2130850109);
+      this.a.titleBgView.setVisibility(8);
+      paramAnimation = this.a.mContext.getResources().getColorStateList(2131167023);
+      this.a.mTitleText.setTextColor(paramAnimation);
+    }
+    for (;;)
+    {
+      AIOUtils.setViewDrawalbe(this.a.mInputBar, 2130849852);
+      return;
+      this.a.mCustomTitleView.setBackgroundResource(2130850110);
+      this.a.titleBgView.setVisibility(8);
+      paramAnimation = this.a.mContext.getResources().getColorStateList(2131167024);
+      this.a.mTitleText.setTextColor(paramAnimation);
+    }
+  }
 }
 
 

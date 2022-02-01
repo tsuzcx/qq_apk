@@ -1,26 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.AuthDevEnableCompleteActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
 
 public class acub
-  implements View.OnClickListener
+  extends acve
 {
-  public acub(AuthDevEnableCompleteActivity paramAuthDevEnableCompleteActivity) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    ImageView localImageView = (ImageView)paramView.findViewById(2131368367);
-    if (localImageView != null)
-    {
-      int i = 0;
-      if (localImageView.getVisibility() == 0) {
-        i = 4;
-      }
-      localImageView.setVisibility(i);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return 1000;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bffl parambffl, bcse parambcse, bcre parambcre)
+  {
+    new bcrt().b(paramList, paramList1, paramStringBuilder, paramMsg, parambffl);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return (paramElem.common_elem.has()) && (19 == paramElem.common_elem.uint32_service_type.get());
   }
 }
 

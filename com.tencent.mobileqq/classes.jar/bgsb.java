@@ -1,17 +1,13 @@
-class bgsb
+import com.tencent.mobileqq.troopgift.TroopGiftToPersonalSurfaceView;
+
+public class bgsb
+  implements bdyy
 {
-  int jdField_a_of_type_Int;
-  char[] jdField_a_of_type_ArrayOfChar = new char[4];
+  public bgsb(TroopGiftToPersonalSurfaceView paramTroopGiftToPersonalSurfaceView, bdyy parambdyy) {}
   
-  private void a(byte[] paramArrayOfByte)
+  public void a()
   {
-    this.jdField_a_of_type_Int = bgrz.a(paramArrayOfByte);
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfChar.length)
-    {
-      this.jdField_a_of_type_ArrayOfChar[i] = ((char)paramArrayOfByte[(i + 4)]);
-      i += 1;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToPersonalSurfaceView.a(0, new bgsc(this));
   }
 }
 

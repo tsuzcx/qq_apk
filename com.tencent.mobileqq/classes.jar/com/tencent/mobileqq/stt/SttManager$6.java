@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.stt;
 
-import bcmt;
-import bcmu;
-import bcmw;
+import bdtt;
+import bdtu;
+import bdtw;
 
 public class SttManager$6
   implements Runnable
 {
-  public SttManager$6(bcmt parambcmt, bcmw parambcmw) {}
+  public SttManager$6(bdtt parambdtt, bdtw parambdtw) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class SttManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.stt.SttManager.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import akrw;
-import akus;
-import akuz;
-import akva;
-import akvb;
+import alps;
+import also;
+import alsv;
+import alsw;
+import alsx;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -16,7 +16,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
-import bfpx;
+import bgyo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.qmcf.QmcfManager;
 import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
@@ -28,9 +28,9 @@ public class VideoFilterViewPager
   extends ViewPager
 {
   private int jdField_a_of_type_Int;
-  private akuz jdField_a_of_type_Akuz;
-  private akva jdField_a_of_type_Akva;
-  private akvb jdField_a_of_type_Akvb;
+  private alsv jdField_a_of_type_Alsv;
+  private alsw jdField_a_of_type_Alsw;
+  private alsx jdField_a_of_type_Alsx;
   private Runnable jdField_a_of_type_JavaLangRunnable = new VideoFilterViewPager.1(this);
   private boolean jdField_a_of_type_Boolean = true;
   private boolean b = true;
@@ -50,23 +50,23 @@ public class VideoFilterViewPager
   private void a(View paramView, int paramInt, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, String.format("onPageSelect position:%s, instantiate:%s, mShowGuideWording:%s, mShowNewGuide:%s, camera:%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(this.b), Integer.valueOf(akrw.jdField_a_of_type_Int) }));
+      QLog.d("VideoFilterViewPager", 2, String.format("onPageSelect position:%s, instantiate:%s, mShowGuideWording:%s, mShowNewGuide:%s, camera:%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(this.b), Integer.valueOf(alps.jdField_a_of_type_Int) }));
     }
-    Object localObject2 = this.jdField_a_of_type_Akvb.a(paramInt);
+    Object localObject2 = this.jdField_a_of_type_Alsx.a(paramInt);
     if (!paramBoolean) {
-      akus.a().a((FilterDesc)localObject2);
+      also.a().a((FilterDesc)localObject2);
     }
-    paramView = (TextView)paramView.findViewById(2131374119);
+    paramView = (TextView)paramView.findViewById(2131374353);
     Object localObject1 = BaseApplicationImpl.getApplication().getSharedPreferences("VideoFilterViewPager_video_filter", 0);
     int i = ((SharedPreferences)localObject1).getInt("wordingShowTimes", 0);
     String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
     boolean bool = ((SharedPreferences)localObject1).getBoolean("showSvafGuideWording_" + str, true);
-    if ((this.jdField_a_of_type_Boolean) && (i < 3) && (this.jdField_a_of_type_Akvb.a(paramInt) == 0))
+    if ((this.jdField_a_of_type_Boolean) && (i < 3) && (this.jdField_a_of_type_Alsx.a(paramInt) == 0))
     {
       if (!paramBoolean) {
         ((SharedPreferences)localObject1).edit().putInt("wordingShowTimes", i + 1).commit();
       }
-      localObject2 = bfpx.a(getResources(), 2130845904);
+      localObject2 = bgyo.a(getResources(), 2130845992);
       if (localObject2 != null)
       {
         paramInt = ((Bitmap)localObject2).getWidth();
@@ -89,13 +89,13 @@ public class VideoFilterViewPager
       paramView.setCompoundDrawables(null, null, null, null);
       paramView.setText("");
       continue;
-      if ((this.b) && (bool) && (akrw.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Akvb.a(paramInt) == 0) && (QmcfManager.getInstance().hasQmcfEntrance(1)))
+      if ((this.b) && (bool) && (alps.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Alsx.a(paramInt) == 0) && (QmcfManager.getInstance().hasQmcfEntrance(1)))
       {
         if (QLog.isColorLevel()) {
           QLog.d("VideoFilterViewPager", 2, "mShowSvafGuideWording!");
         }
         ((SharedPreferences)localObject1).edit().putBoolean("showSvafGuideWording_" + str, false).commit();
-        localObject1 = bfpx.a(getResources(), 2130845903);
+        localObject1 = bgyo.a(getResources(), 2130845991);
         if (localObject1 != null)
         {
           paramInt = ((Bitmap)localObject1).getWidth();
@@ -108,7 +108,7 @@ public class VideoFilterViewPager
       }
       else if (localObject2 != null)
       {
-        localObject1 = bfpx.a(((FilterDesc)localObject2).getIconFile(akus.b));
+        localObject1 = bgyo.a(((FilterDesc)localObject2).getIconFile(also.b));
         if (localObject1 != null)
         {
           paramInt = ((Bitmap)localObject1).getWidth();
@@ -132,26 +132,26 @@ public class VideoFilterViewPager
   
   private void d()
   {
-    this.jdField_a_of_type_Akvb = new akvb(this);
-    this.jdField_a_of_type_Akva = new akva(this);
-    setAdapter(this.jdField_a_of_type_Akvb);
-    setOnPageChangeListener(this.jdField_a_of_type_Akva);
+    this.jdField_a_of_type_Alsx = new alsx(this);
+    this.jdField_a_of_type_Alsw = new alsw(this);
+    setAdapter(this.jdField_a_of_type_Alsx);
+    setOnPageChangeListener(this.jdField_a_of_type_Alsw);
   }
   
   public FilterDesc a()
   {
-    return this.jdField_a_of_type_Akvb.a(getCurrentItem());
+    return this.jdField_a_of_type_Alsx.a(getCurrentItem());
   }
   
   public FilterDesc a(int paramInt)
   {
-    return this.jdField_a_of_type_Akvb.a(paramInt);
+    return this.jdField_a_of_type_Alsx.a(paramInt);
   }
   
   public void a()
   {
     int i = getCurrentItem();
-    if ((this.b) && (this.jdField_a_of_type_Akvb.a(i) == 0) && (akrw.jdField_a_of_type_Int == 2) && (QmcfManager.getInstance().hasQmcfEntrance(1)))
+    if ((this.b) && (this.jdField_a_of_type_Alsx.a(i) == 0) && (alps.jdField_a_of_type_Int == 2) && (QmcfManager.getInstance().hasQmcfEntrance(1)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("VideoFilterViewPager", 2, "onCameraChange back!");
@@ -168,16 +168,16 @@ public class VideoFilterViewPager
   {
     int i = 1;
     setVisibility(0);
-    this.jdField_a_of_type_Akvb.a(paramList);
-    setCurrentItem(this.jdField_a_of_type_Akvb.a() * 50, false);
+    this.jdField_a_of_type_Alsx.a(paramList);
+    setCurrentItem(this.jdField_a_of_type_Alsx.a() * 50, false);
     paramList = BaseApplicationImpl.getApplication().getSharedPreferences("VideoFilterViewPager_video_filter", 0);
     int j = paramList.getInt("wordingShowTimes", 0);
     String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    if ((akrw.jdField_a_of_type_Int == 2) && (paramList.getBoolean("showSvafGuideWording_" + str, true))) {}
+    if ((alps.jdField_a_of_type_Int == 2) && (paramList.getBoolean("showSvafGuideWording_" + str, true))) {}
     for (;;)
     {
       int k = getCurrentItem();
-      if (((j < 3) || (i != 0)) && (this.jdField_a_of_type_Akvb.a(k) == 0)) {
+      if (((j < 3) || (i != 0)) && (this.jdField_a_of_type_Alsx.a(k) == 0)) {
         postDelayed(this.jdField_a_of_type_JavaLangRunnable, 2000L);
       }
       return;
@@ -197,15 +197,15 @@ public class VideoFilterViewPager
     if (isShown())
     {
       int i = getCurrentItem();
-      View localView = this.jdField_a_of_type_Akvb.a(i);
+      View localView = this.jdField_a_of_type_Alsx.a(i);
       if (localView != null)
       {
         localView.removeCallbacks((Runnable)localView.getTag());
         localView.clearAnimation();
         localView.setVisibility(4);
-        if (this.jdField_a_of_type_Akuz != null)
+        if (this.jdField_a_of_type_Alsv != null)
         {
-          this.jdField_a_of_type_Akuz.a(1);
+          this.jdField_a_of_type_Alsv.a(1);
           if (QLog.isColorLevel()) {
             QLog.d("VideoFilterViewPager", 2, "OnViewPagerItemVisiableChangeListener hideWordingIfNeed state: 1");
           }
@@ -219,9 +219,9 @@ public class VideoFilterViewPager
     return false;
   }
   
-  public void setViewPagerItemVisiableChangeListener(akuz paramakuz)
+  public void setViewPagerItemVisiableChangeListener(alsv paramalsv)
   {
-    this.jdField_a_of_type_Akuz = paramakuz;
+    this.jdField_a_of_type_Alsv = paramalsv;
     this.jdField_a_of_type_Int = 0;
   }
 }

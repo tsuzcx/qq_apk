@@ -1,48 +1,70 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFrameSelectBar;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.FileUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class akqp
-  implements MediaPlayer.OnPreparedListener
 {
-  public akqp(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  public String a;
+  public Pattern a;
+  public boolean a;
+  public String b;
+  public Pattern b;
+  public boolean b;
+  public String c;
+  public String d;
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public static List<akqp> a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EditLocalVideoActivity", 2, "onPrepared, duration:" + paramMediaPlayer.getDuration());
-    }
-    EditLocalVideoActivity.a(this.a).removeMessages(9999);
-    EditLocalVideoActivity.h(this.a);
-    EditLocalVideoActivity.a(this.a).a(EditLocalVideoActivity.a(this.a), EditLocalVideoActivity.a(this.a));
-    EditLocalVideoActivity.a(this.a).a(EditLocalVideoActivity.c(this.a), EditLocalVideoActivity.d(this.a));
-    EditLocalVideoActivity.a(this.a).a(paramMediaPlayer.getDuration());
-    int i;
-    int j;
-    if (!EditLocalVideoActivity.a(this.a).a())
+    localArrayList = new ArrayList();
+    try
     {
-      EditLocalVideoActivity.d(this.a, paramMediaPlayer.getDuration());
-      if ((FileUtils.getFileSize(EditLocalVideoActivity.b(this.a)) / EditLocalVideoActivity.a(this.a).getDuration() * 15000L > this.a.a(EditLocalVideoActivity.a())) && (QLog.isColorLevel())) {
-        QLog.d("EditLocalVideoActivity", 2, "prepared, there is not enough space on sdcard");
+      paramString = new JSONArray(paramString);
+      int i = 0;
+      if (i < paramString.length())
+      {
+        JSONObject localJSONObject = paramString.getJSONObject(i);
+        akqp localakqp;
+        if (localJSONObject != null)
+        {
+          localakqp = new akqp();
+          localakqp.jdField_a_of_type_JavaLangString = localJSONObject.optString("sourceURLRegular");
+          localakqp.jdField_b_of_type_JavaLangString = localJSONObject.optString("interceptURLRegular");
+          if (localJSONObject.optInt("shouldReport") != 1) {
+            break label138;
+          }
+          bool = true;
+          label85:
+          localakqp.jdField_a_of_type_Boolean = bool;
+          if (localJSONObject.optInt("shouldIntercept") != 1) {
+            break label143;
+          }
+        }
+        label138:
+        label143:
+        for (boolean bool = true;; bool = false)
+        {
+          localakqp.jdField_b_of_type_Boolean = bool;
+          localakqp.c = localJSONObject.optString("jumpURL");
+          localArrayList.add(localakqp);
+          i += 1;
+          break;
+          bool = false;
+          break label85;
+        }
       }
-      i = paramMediaPlayer.getVideoWidth();
-      j = paramMediaPlayer.getVideoHeight();
-      if ((i <= 0) || (j <= 0)) {
-        Toast.makeText(this.a.getApplicationContext(), amtj.a(2131702772), 1).show();
-      }
+      return localArrayList;
     }
-    else
+    catch (Exception paramString)
     {
-      return;
+      paramString.printStackTrace();
     }
-    EditLocalVideoActivity.e(this.a, i);
-    EditLocalVideoActivity.f(this.a, j);
-    EditLocalVideoActivity.a(this.a, i, j);
+  }
+  
+  public String toString()
+  {
+    return "InterceptConfig [mSrcUrlRegular=" + this.jdField_a_of_type_JavaLangString + ", mInterceptUrlRegular=" + this.jdField_b_of_type_JavaLangString + ", mIsReport=" + this.jdField_a_of_type_Boolean + ", mIsIntercept=" + this.jdField_b_of_type_Boolean + ", mJumpUrl=" + this.c + "]";
   }
 }
 

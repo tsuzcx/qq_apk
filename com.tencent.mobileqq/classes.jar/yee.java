@@ -1,19 +1,58 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Comparator;
 
-class yee
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class yee
+  implements Comparator<StoryVideoItem>
 {
-  private yee(ydv paramydv) {}
+  private boolean a;
   
-  public void onGlobalLayout()
+  public yee(boolean paramBoolean)
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetEditText.getBottom() - this.a.c > this.a.b)
-    {
-      this.a.dismiss();
-      return;
+    this.a = paramBoolean;
+  }
+  
+  public int a(StoryVideoItem paramStoryVideoItem1, StoryVideoItem paramStoryVideoItem2)
+  {
+    int j = 1;
+    int i = -1;
+    if (paramStoryVideoItem1.isUploadFail() == paramStoryVideoItem2.isUploadFail()) {
+      if (paramStoryVideoItem1.mCreateTime == paramStoryVideoItem2.mCreateTime) {
+        i = 0;
+      }
     }
-    this.a.jdField_a_of_type_Yec.a(this.a.a());
+    do
+    {
+      do
+      {
+        return i;
+        if (paramStoryVideoItem1.mCreateTime <= paramStoryVideoItem2.mCreateTime) {
+          break;
+        }
+        i = j;
+      } while (this.a);
+      return -1;
+      if (this.a) {}
+      for (;;)
+      {
+        return i;
+        i = 1;
+      }
+      if (!paramStoryVideoItem1.isUploadFail()) {
+        break;
+      }
+      i = j;
+    } while (this.a);
+    return -1;
+    if (paramStoryVideoItem2.isUploadFail())
+    {
+      if (this.a) {}
+      for (;;)
+      {
+        return i;
+        i = 1;
+      }
+    }
+    return 0;
   }
 }
 

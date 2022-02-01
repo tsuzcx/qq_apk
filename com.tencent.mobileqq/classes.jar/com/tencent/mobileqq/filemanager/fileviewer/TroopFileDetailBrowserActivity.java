@@ -6,14 +6,14 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout.LayoutParams;
-import asbj;
-import ashb;
-import asox;
-import asqp;
-import asqx;
-import asqy;
-import aszt;
-import bcef;
+import atfq;
+import atlh;
+import attd;
+import atuw;
+import atve;
+import atvf;
+import auea;
+import bdla;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
 import com.tencent.mobileqq.utils.NetworkUtil;
@@ -22,14 +22,14 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public final class TroopFileDetailBrowserActivity
   extends FileBrowserActivity
-  implements asqp
+  implements atuw
 {
-  protected asbj a;
+  protected atfq a;
   public ForwardFileInfo b;
   
   public TroopFileDetailBrowserActivity()
   {
-    this.jdField_a_of_type_Asbj = new asqx(this);
+    this.jdField_a_of_type_Atfq = new atve(this);
   }
   
   private int a(Context paramContext)
@@ -46,34 +46,34 @@ public final class TroopFileDetailBrowserActivity
   protected boolean a(Intent paramIntent)
   {
     if (this.app != null) {
-      this.app.getFileManagerNotifyCenter().addObserver(this.jdField_a_of_type_Asbj);
+      this.app.getFileManagerNotifyCenter().addObserver(this.jdField_a_of_type_Atfq);
     }
-    asqy localasqy = new asqy(this.app);
-    if (!localasqy.a(paramIntent, this)) {}
+    atvf localatvf = new atvf(this.app);
+    if (!localatvf.a(paramIntent, this)) {}
     do
     {
       return false;
       this.b = ((ForwardFileInfo)super.getIntent().getParcelableExtra("fileinfo"));
-      if (this.jdField_a_of_type_Asox == null)
+      if (this.jdField_a_of_type_Attd == null)
       {
-        this.jdField_a_of_type_Asox = new asox(this, this, localasqy.a(this));
-        this.jdField_a_of_type_Asox.a(this.jdField_a_of_type_Asqq);
+        this.jdField_a_of_type_Attd = new attd(this, this, localatvf.a(this));
+        this.jdField_a_of_type_Attd.a(this.jdField_a_of_type_Atux);
       }
       int i = paramIntent.getIntExtra("file_enter_file_browser_type", 0);
       paramIntent = paramIntent.getBundleExtra("file_browser_extra_params");
-      if (this.jdField_a_of_type_Asox.a(a(), new RelativeLayout.LayoutParams(-1, -1), i, paramIntent)) {
+      if (this.jdField_a_of_type_Attd.a(a(), new RelativeLayout.LayoutParams(-1, -1), i, paramIntent)) {
         break;
       }
     } while (!QLog.isColorLevel());
     QLog.w("FileBrowserActivity<FileAssistant>", 2, "error. can not create a fileviewer from FileBrowserManager");
     return false;
-    if (localasqy.a() == 1) {
-      bcef.b(super.a(), "P_CliOper", "Grp_files", "", "in_mid", "pic_enter", 0, 0, this.b.a() + "", this.jdField_a_of_type_Int + "", a(getApplicationContext()) + "", aszt.b(aszt.a(this.b.d())));
+    if (localatvf.a() == 1) {
+      bdla.b(super.a(), "P_CliOper", "Grp_files", "", "in_mid", "pic_enter", 0, 0, this.b.a() + "", this.jdField_a_of_type_Int + "", a(getApplicationContext()) + "", auea.b(auea.a(this.b.d())));
     }
     for (;;)
     {
       return true;
-      bcef.b(super.a(), "P_CliOper", "Grp_files", "", "in_mid", "nonpic_enter", 0, 0, this.b.a() + "", this.jdField_a_of_type_Int + "", a(getApplicationContext()) + "", aszt.b(aszt.a(this.b.d())));
+      bdla.b(super.a(), "P_CliOper", "Grp_files", "", "in_mid", "nonpic_enter", 0, 0, this.b.a() + "", this.jdField_a_of_type_Int + "", a(getApplicationContext()) + "", auea.b(auea.a(this.b.d())));
     }
   }
   
@@ -107,7 +107,7 @@ public final class TroopFileDetailBrowserActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.app.getFileManagerNotifyCenter().deleteObserver(this.jdField_a_of_type_Asbj);
+    this.app.getFileManagerNotifyCenter().deleteObserver(this.jdField_a_of_type_Atfq);
   }
   
   @Override
@@ -119,7 +119,7 @@ public final class TroopFileDetailBrowserActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.TroopFileDetailBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

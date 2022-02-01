@@ -1,99 +1,30 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.gamecenter.share.GameShareConfProcessor.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class atyr
-  extends aptq<atyq>
+class atyr
+  implements View.OnClickListener
 {
-  private static atyq jdField_a_of_type_Atyq;
-  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  atyr(atyq paramatyq) {}
   
-  public static atyq a()
+  public void onClick(View paramView)
   {
-    if (jdField_a_of_type_Atyq != null) {
-      return jdField_a_of_type_Atyq;
-    }
-    if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
-      ThreadManager.executeOnSubThread(new GameShareConfProcessor.1());
-    }
-    return atyq.jdField_a_of_type_Atyq;
-  }
-  
-  public static void a()
-  {
-    jdField_a_of_type_Atyq = null;
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-  }
-  
-  @NonNull
-  public atyq a(int paramInt)
-  {
-    return new atyq();
-  }
-  
-  @Nullable
-  public atyq a(aptx[] paramArrayOfaptx)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameShare.ConfProcessor", 2, "[onParsed]");
-    }
-    if ((paramArrayOfaptx == null) || (paramArrayOfaptx.length == 0) || (paramArrayOfaptx[0] == null)) {}
-    for (paramArrayOfaptx = new atyq();; paramArrayOfaptx = atyq.a(paramArrayOfaptx[0].a))
+    Object localObject = atyq.a(this.a);
+    String str = this.a.jdField_a_of_type_Atxa.k();
+    if ((TextUtils.isEmpty(str)) || (localObject == null) || (!((atip)localObject).a(this.a.jdField_a_of_type_AndroidAppActivity, str, atyq.a(this.a))))
     {
-      jdField_a_of_type_Atyq = paramArrayOfaptx;
-      return paramArrayOfaptx;
+      int i = aufd.b(this.a.jdField_a_of_type_Atxa.e());
+      bdla.b(null, "dc00898", "", "", "0X800A688", "0X800A688", 0, 0, i + "", "", "", "");
+      localObject = this.a.jdField_a_of_type_Atxa.a();
+      if (localObject != null)
+      {
+        ((atvp)localObject).a();
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.d(false);
+      }
     }
-  }
-  
-  public void a(atyq paramatyq)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameShare.ConfProcessor", 2, "[onUpdate] newConf:" + paramatyq);
-    }
-  }
-  
-  public Class<atyq> clazz()
-  {
-    return atyq.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameShare.ConfProcessor", 2, "[onReqFailed] failCode=" + paramInt);
-    }
-    apub.a().a(617);
-  }
-  
-  public void onReqNoReceive()
-  {
-    apub.a().a(617);
-    if (QLog.isColorLevel()) {
-      QLog.d("GameShare.ConfProcessor", 2, "onReqNoReceive: type=" + type() + "curContent:" + jdField_a_of_type_Atyq);
-    }
-  }
-  
-  public int type()
-  {
-    return 617;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,22 +1,17 @@
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 
-class okc
-  implements slr
+public class okc
+  extends BroadcastReceiver
 {
-  private WeakReference<okb> a;
+  public okc(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface) {}
   
-  public okc(okb paramokb)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a = new WeakReference(paramokb);
-  }
-  
-  public void a()
-  {
-    okb localokb = (okb)this.a.get();
-    if ((localokb == null) || (!localokb.b())) {
-      return;
-    }
-    okb.a(localokb).sendEmptyMessage(1);
+    this.a.a.finish();
   }
 }
 

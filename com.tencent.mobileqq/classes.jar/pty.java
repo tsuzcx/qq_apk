@@ -1,9 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.List;
+import android.view.View;
 
-public abstract interface pty
+class pty
+  extends blij
 {
-  public abstract List<ArticleInfo> a(int paramInt, List<ArticleInfo> paramList1, List<ArticleInfo> paramList2);
+  pty(ptx paramptx, View paramView)
+  {
+    super(paramView);
+  }
 }
 
 

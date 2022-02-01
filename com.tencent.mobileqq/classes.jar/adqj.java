@@ -1,22 +1,25 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class adqj
-  implements Animation.AnimationListener
+  extends aqlq
 {
-  public adqj(LoginInfoActivity paramLoginInfoActivity) {}
+  public adqj(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    LoginInfoActivity.a(this.a).setVisibility(4);
-    LoginInfoActivity.a(this.a).clearAnimation();
+    if (paramBoolean1)
+    {
+      if ((this.a.f != null) && (paramBoolean2 != this.a.f.a()))
+      {
+        this.a.f.setOnCheckedChangeListener(null);
+        this.a.f.setChecked(paramBoolean2);
+        this.a.f.setOnCheckedChangeListener(this.a);
+      }
+      return;
+    }
+    ChatSettingActivity.a(this.a, 2131690682, 1);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

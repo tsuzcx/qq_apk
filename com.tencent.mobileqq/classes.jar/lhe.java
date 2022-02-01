@@ -1,110 +1,23 @@
-import com.tencent.av.business.manager.magicface.MagicfaceDataAudioJason;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-
 public class lhe
 {
-  private avmj jdField_a_of_type_Avmj;
-  String jdField_a_of_type_JavaLangString;
-  private lgz jdField_a_of_type_Lgz;
-  lha jdField_a_of_type_Lha;
-  lhb jdField_a_of_type_Lhb;
-  lhc jdField_a_of_type_Lhc;
-  String jdField_b_of_type_JavaLangString;
-  lha jdField_b_of_type_Lha;
-  lha c = new lhf(this);
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public String c = "";
   
   public lhe()
   {
-    a();
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 30;
+    this.jdField_b_of_type_Int = 3;
   }
   
-  public void a()
+  public String toString()
   {
-    if (this.jdField_a_of_type_Lgz == null)
-    {
-      if (DeviceInfoUtil.isSupportOpenGlES20())
-      {
-        this.jdField_a_of_type_Lgz = new lhd();
-        lba.h("AVMagicfacePlayer", "initDecoder| use [MagicfaceNormalDecoder]");
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_Lgz = new lhd();
-    lba.h("AVMagicfacePlayer", "initDecoder|use [MagicfaceNormalDecoder]");
-  }
-  
-  public void a(long paramLong, String paramString, lhc paramlhc, lhb paramlhb, lha paramlha)
-  {
-    if (this.jdField_a_of_type_Lgz.a) {
-      try
-      {
-        this.jdField_b_of_type_JavaLangString = paramString;
-        this.jdField_a_of_type_Lhc = paramlhc;
-        this.jdField_a_of_type_Lhb = paramlhb;
-        this.jdField_a_of_type_Lha = paramlha;
-        this.jdField_a_of_type_Lgz.b();
-        return;
-      }
-      finally {}
-    }
-    QLog.w("AVMagicfacePlayer", 1, "playMagicface, srcPath[" + paramString + "], seq[" + paramLong + "]");
-    try
-    {
-      this.jdField_a_of_type_JavaLangString = (paramString + "audio" + File.separator + paramlhc.a.src);
-      this.jdField_b_of_type_Lha = paramlha;
-      this.jdField_b_of_type_JavaLangString = null;
-      this.jdField_a_of_type_Lhc = null;
-      this.jdField_a_of_type_Lhb = null;
-      this.jdField_a_of_type_Lha = null;
-      if ((paramlhc.a.src != null) && (!paramlhc.a.src.equals("")) && (this.jdField_a_of_type_Avmj == null)) {
-        this.jdField_a_of_type_Avmj = new avmj();
-      }
-      this.jdField_a_of_type_Lgz.a(paramString);
-      this.jdField_a_of_type_Lgz.a(paramlhc);
-      this.jdField_a_of_type_Lgz.a(paramlhb);
-      this.jdField_a_of_type_Lgz.a(this.c);
-      this.jdField_a_of_type_Lgz.a();
-      return;
-    }
-    finally {}
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_Avmj != null) {
-      this.jdField_a_of_type_Avmj.a(paramString);
-    }
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    lba.f("AVMagicfacePlayer", "playSound soundSrc = " + paramString + ", loop = " + paramInt);
-    if (this.jdField_a_of_type_Avmj != null) {
-      this.jdField_a_of_type_Avmj.a(paramString, paramInt, 0);
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Lgz.a;
-  }
-  
-  public void b()
-  {
-    try
-    {
-      this.jdField_b_of_type_JavaLangString = null;
-      this.jdField_a_of_type_Lhc = null;
-      this.jdField_a_of_type_Lhb = null;
-      this.jdField_a_of_type_Lha = null;
-      this.jdField_a_of_type_Lgz.b();
-      return;
-    }
-    finally {}
+    return "id[" + this.jdField_a_of_type_JavaLangString + "], text[" + this.jdField_b_of_type_JavaLangString + "], date[" + this.jdField_a_of_type_Long + "->" + this.jdField_b_of_type_Long + "], imageUrl[" + this.c + "], callTimeLen[" + this.jdField_a_of_type_Int + "], showTimeLen[" + this.jdField_b_of_type_Int + "]";
   }
 }
 

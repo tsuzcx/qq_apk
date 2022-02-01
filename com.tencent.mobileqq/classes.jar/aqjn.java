@@ -1,61 +1,45 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 public class aqjn
-  extends aptq<aqjm>
+  implements BusinessObserver
 {
-  public static aqjm a()
-  {
-    return (aqjm)apub.a().a(521);
-  }
+  public void a(boolean paramBoolean) {}
   
-  @NonNull
-  public aqjm a(int paramInt)
-  {
-    return new aqjm();
-  }
+  public void a(boolean paramBoolean, String paramString) {}
   
-  @Nullable
-  public aqjm a(aptx[] paramArrayOfaptx)
+  public void a(boolean paramBoolean, String paramString, int paramInt) {}
+  
+  public void b(boolean paramBoolean, String paramString) {}
+  
+  public void b(boolean paramBoolean, String paramString, int paramInt) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return aqjm.a(paramArrayOfaptx);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      paramInt = paramBundle.getInt("resp_result", 0);
+      b(paramBoolean, paramBundle.getString("key_card_id"), paramInt);
+      return;
+    case 2: 
+      a(paramBoolean, paramBundle.getString("key_card_id"));
+      return;
+    case 3: 
+      b(paramBoolean, paramBundle.getString("key_card_id"));
+      return;
+    case 4: 
+      a(paramBoolean);
+      return;
     }
-    return null;
-  }
-  
-  public void a(aqjm paramaqjm) {}
-  
-  public Class<aqjm> clazz()
-  {
-    return aqjm.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 521;
+    a(paramBoolean, paramBundle.getString("key_card_id"), paramBundle.getInt("key_get_detail_type"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqjn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,19 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment;
 
-class uow
-  implements View.OnTouchListener
+public class uow
+  implements zow<zsx>
 {
-  uow(uou paramuou) {}
+  public uow(FolderFollowTabFragment paramFolderFollowTabFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(zoz paramzoz, zsx paramzsx)
   {
-    uou.a(this.a).onTouchEvent(paramMotionEvent);
-    return true;
+    if (paramzoz.e()) {
+      FolderFollowTabFragment.a(this.a, paramzsx);
+    }
+    while ((!paramzoz.d()) && (!paramzoz.c())) {
+      return;
+    }
+    FolderFollowTabFragment.b(this.a, paramzsx);
   }
 }
 

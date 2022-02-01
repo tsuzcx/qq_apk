@@ -1,79 +1,24 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 
-public class tzs
-  extends NativeText
+final class tzs
+  implements qhl
 {
-  protected String a;
+  tzs(BridgeModule paramBridgeModule, String paramString) {}
   
-  public tzs(VafContext paramVafContext)
+  public void onLoadUserInfoFailed(String paramString1, String paramString2)
   {
-    super(paramVafContext);
-    QLog.d("ReadInJoyIconText", 2, "ReadInJoyIconText create");
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeErrorCallJS(this.jdField_a_of_type_JavaLangString, paramString2);
   }
   
-  public boolean setAttribute(int paramInt, String paramString)
+  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
   {
-    QLog.d("ReadInJoyIconText", 2, "key ->" + paramInt + " , value = " + paramString);
-    if (paramInt == 1085)
-    {
-      if (paramString != null)
-      {
-        this.a = paramString;
-        setDrawableLeft(null);
-      }
-      return true;
-    }
-    if (paramInt == 1086) {
-      if (paramString != null)
-      {
-        int i = Utils.dp2px(obg.a(paramString, 0));
-        this.mNative.setCompoundDrawablePadding(i);
-      }
-    }
-    for (;;)
-    {
-      return super.setAttribute(paramInt, paramString);
-      if (paramInt == 48)
-      {
-        Float localFloat = Utils.toFloat(paramString);
-        if (localFloat != null)
-        {
-          this.mAlpha = localFloat.floatValue();
-          getNativeView().setAlpha(this.mAlpha);
-        }
-        else
-        {
-          QLog.d("ReadInJoyIconText", 2, "setAttribute: fail to parse - " + paramInt + ": " + paramString);
-        }
-      }
-    }
-  }
-  
-  public void setDrawableLeft(String paramString)
-  {
-    QLog.d("ReadInJoyIconText", 2, "setDrawableLeft drawableLeftPath->" + this.drawableLeftPath + " , drawableRightPath = " + this.a);
-    if (this.drawableLeftPath != null) {}
-    for (paramString = DrawableUtil.getDrawable(this.mNative.getContext(), this.drawableLeftPath, null, null);; paramString = null)
-    {
-      if (this.a != null) {}
-      for (Drawable localDrawable = DrawableUtil.getDrawable(this.mNative.getContext(), this.a, null, null);; localDrawable = null)
-      {
-        this.mNative.setCompoundDrawablesWithIntrinsicBounds(paramString, null, localDrawable, null);
-        return;
-      }
-    }
+    tzr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, paramReadInJoyUserInfo, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tzs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,22 @@
-import android.os.IInterface;
-import cooperation.qappcenter.remote.SendMsg;
+import android.graphics.Bitmap;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCaptureImageListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnCaptureImageListener;
 
-public abstract interface bkmj
-  extends IInterface
+class bkmj
+  implements TVK_IMediaPlayer.OnCaptureImageListener
 {
-  public abstract void a(SendMsg paramSendMsg);
+  bkmj(bkmb parambkmb, AbsVideoPlayer.OnCaptureImageListener paramOnCaptureImageListener) {}
+  
+  public void onCaptureImageFailed(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnCaptureImageListener.onCaptureImageFailed();
+  }
+  
+  public void onCaptureImageSucceed(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap)
+  {
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnCaptureImageListener.onCaptureImageSucceed(paramBitmap);
+  }
 }
 
 

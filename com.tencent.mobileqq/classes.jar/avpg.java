@@ -1,29 +1,14 @@
-import android.os.Handler;
-import android.os.Looper;
-
-class avpg
+public abstract interface avpg
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
+  public abstract void a(int paramInt);
   
-  avpg(avpf paramavpf)
-  {
-    Looper localLooper2 = Looper.myLooper();
-    Looper localLooper1 = localLooper2;
-    if (localLooper2 == null) {
-      localLooper1 = Looper.getMainLooper();
-    }
-    if (localLooper1 != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandler = new avph(this, localLooper1, paramavpf);
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler = null;
-  }
+  public abstract void b(boolean paramBoolean);
   
-  Handler a()
-  {
-    return this.jdField_a_of_type_AndroidOsHandler;
-  }
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void h();
+  
+  public abstract void i();
 }
 
 

@@ -14,10 +14,10 @@ class VcControllerImpl$3
     }
     for (;;)
     {
-      VcControllerImpl.access$502((VcControllerImpl)???, i);
-      synchronized (VcControllerImpl.access$600(this.this$0))
+      VcControllerImpl.access$602((VcControllerImpl)???, i);
+      synchronized (VcControllerImpl.access$700(this.this$0))
       {
-        VcControllerImpl.access$600(this.this$0).notify();
+        VcControllerImpl.access$700(this.this$0).notify();
         return;
         i = this.this$0.startAudioSend();
       }

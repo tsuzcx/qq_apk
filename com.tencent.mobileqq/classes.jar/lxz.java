@@ -1,52 +1,39 @@
-import android.text.TextUtils;
-import com.tencent.av.share.AVSchema;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import com.tencent.qphone.base.util.QLog;
 
-public class lxz
-  extends andd
+class lxz
+  implements ServiceConnection
 {
-  public String a;
+  lxz(lxx paramlxx) {}
   
-  private lxz(AVSchema paramAVSchema) {}
-  
-  protected void onGetSimpleTroopInfoResult(boolean paramBoolean, TroopInfo paramTroopInfo, String paramString)
-  {
-    long l = AudioHelper.b();
-    if (this.jdField_a_of_type_ComTencentAvShareAVSchema.a("onGetSimpleTroopInfoResult", l)) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (paramTroopInfo == null);
-        paramString = paramTroopInfo.troopuin;
-      } while ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString)));
-      QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_JavaLangString, 1, "onGetSimpleTroopInfoResult, isSuc[" + paramBoolean + "], enum_verify_status[" + this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_Lxx.a + "], seq[" + l + "]");
-      this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_Lxx.b = paramTroopInfo.troopname;
-    } while (this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_Lxx.a != 0);
-    if (ChatActivityUtils.a(this.jdField_a_of_type_ComTencentAvShareAVSchema.getActivity(), true, new lya(this, l)))
-    {
-      this.jdField_a_of_type_ComTencentAvShareAVSchema.b(l, this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_JavaLangString, 1, "onGetSimpleTroopInfoResult, 等权限确认, seq[" + l + "]");
-  }
-  
-  protected void onUpdateTroopList(boolean paramBoolean)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
     if (QLog.isColorLevel()) {
-      QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_JavaLangString, 1, "onUpdateTroopList, isSuccess[" + paramBoolean + "]");
+      QLog.d("QavWrapper", 2, "Qav Service connected!");
     }
+    this.a.jdField_a_of_type_Lws = lwt.a(paramIBinder);
+    if ((this.a.jdField_a_of_type_Lws != null) && (this.a.jdField_a_of_type_Lxy != null)) {
+      this.a.jdField_a_of_type_Lxy.a(this.a);
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("QavWrapper", 2, "mQavProxy == null or mOnReadyListener == null");
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QavWrapper", 2, "Qav Service disconnected!");
+    }
+    this.a.jdField_a_of_type_Lws = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lxz
  * JD-Core Version:    0.7.0.1
  */

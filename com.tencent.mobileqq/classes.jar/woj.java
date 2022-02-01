@@ -1,11 +1,23 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public abstract interface woj
+public class woj
+  extends QQUIEventReceiver<woa, wcx>
 {
-  public abstract void a(ErrorMessage paramErrorMessage, List<wod> paramList, boolean paramBoolean);
+  public woj(@NonNull woa paramwoa)
+  {
+    super(paramwoa);
+  }
   
-  public abstract void b(ErrorMessage paramErrorMessage, List<woe> paramList, boolean paramBoolean);
+  public void a(@NonNull woa paramwoa, @NonNull wcx paramwcx)
+  {
+    paramwoa.a.b(paramwcx);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wcx.class;
+  }
 }
 
 

@@ -1,66 +1,29 @@
-import com.tencent.biz.now.NowVideoView;
-import com.tencent.image.AbsThirdDataSourceAdapter;
-import com.tencent.image.AbsThirdDataSourceAdapter.OnPreparedCallback;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.biz.PoiMapActivity;
 
 public class nsd
-  extends AbsThirdDataSourceAdapter
+  implements Animation.AnimationListener
 {
-  int jdField_a_of_type_Int = 0;
-  AbsThirdDataSourceAdapter.OnPreparedCallback jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback;
-  String jdField_a_of_type_JavaLangString;
+  public nsd(PoiMapActivity paramPoiMapActivity) {}
   
-  public nsd(NowVideoView paramNowVideoView) {}
-  
-  public boolean a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (!this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_Nru.a(this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time)) {
-      return true;
+    paramAnimation = (FrameLayout.LayoutParams)PoiMapActivity.c(this.a).getLayoutParams();
+    paramAnimation.bottomMargin = (this.a.p + this.a.q);
+    PoiMapActivity.c(this.a).setLayoutParams(paramAnimation);
+    if ((this.a.e != null) && (this.a.e.getVisibility() != 8)) {
+      this.a.e.setVisibility(8);
     }
-    if (this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.size() > 0)
-    {
-      String str = (String)this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.size() - 1);
-      this.jdField_a_of_type_Int = 2;
-      this.jdField_a_of_type_JavaLangString = str;
-      if ((this.jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback != null) && (this.jdField_a_of_type_ComTencentBizNowNowVideoView.d == 0))
-      {
-        this.jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback.onPrepared();
-        return true;
-      }
-    }
-    return false;
+    PoiMapActivity.d(this.a).clearAnimation();
+    this.a.a = true;
   }
   
-  public int getPlayType()
-  {
-    return 1;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public int getStaus()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String getURL()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void requestPrepare(String paramString, AbsThirdDataSourceAdapter.OnPreparedCallback paramOnPreparedCallback)
-  {
-    this.jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback = paramOnPreparedCallback;
-    if (this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.size() > 0)
-    {
-      paramString = (String)this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.size() - 1);
-      this.jdField_a_of_type_Int = 2;
-      this.jdField_a_of_type_JavaLangString = paramString;
-      paramOnPreparedCallback.onPrepared();
-      return;
-    }
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_Nru.a(this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

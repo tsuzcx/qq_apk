@@ -1,24 +1,20 @@
-public class amqs
+import com.tencent.mobileqq.apollo.IApolloRunnableTask;
+
+public abstract interface amqs
 {
-  public int a;
-  public String a;
-  public String b = "";
-  public String c = "0";
-  public String d = "";
+  public abstract void exeJsOnEngine(String paramString);
   
-  amqs()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public abstract long getRenderThreadId();
   
-  public String toString()
-  {
-    return "DPCXMLParseInfo: key=" + this.jdField_a_of_type_JavaLangString + ",value=" + this.b + ",weight=" + this.jdField_a_of_type_Int + ",taskId=" + this.c + ",testType=" + this.d;
-  }
+  public abstract long getRuntimeState();
+  
+  public abstract boolean isJsRuntime();
+  
+  public abstract void runRenderTask(IApolloRunnableTask paramIApolloRunnableTask);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amqs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,79 +1,162 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
-import com.tencent.mobileqq.app.fms.FullMessageSearchResult.SearchResultItem;
-import com.tencent.mobileqq.search.searchengine.MessageSearchEngine.1;
-import com.tencent.mobileqq.search.searchengine.MessageSearchEngine.2;
-import com.tencent.mobileqq.search.searchengine.MessageSearchEngine.3;
-import com.tencent.mobileqq.search.searchengine.MessageSearchEngine.4;
+import android.app.Activity;
+import android.arch.lifecycle.ViewModelProvider;
+import android.arch.lifecycle.ViewModelStoreOwner;
+import android.graphics.Rect;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.resourcesgrab.ResourceGrabFragment;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class bbfg
-  implements bbfe<bayx>
+  implements View.OnClickListener
 {
-  public ania a;
-  public QQAppInterface a;
-  public String a;
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private List<bbfb> jdField_a_of_type_JavaUtilList;
+  boolean jdField_a_of_type_Boolean;
   
-  public bbfg(QQAppInterface paramQQAppInterface)
+  bbfg(List<bbfb> paramList, View.OnClickListener paramOnClickListener, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Ania = ((ania)paramQQAppInterface.getManager(105));
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  private List<bayx> a(String paramString, FullMessageSearchResult paramFullMessageSearchResult)
+  private List<bbfb> a(View paramView)
   {
     ArrayList localArrayList = new ArrayList();
-    if ((paramFullMessageSearchResult != null) && (paramFullMessageSearchResult.a != null))
+    try
     {
-      int i = 0;
-      while (i < paramFullMessageSearchResult.a.size())
-      {
-        localArrayList.add(new bayx(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, (FullMessageSearchResult.SearchResultItem)paramFullMessageSearchResult.a.get(i)));
-        i += 1;
+      Object localObject = View.class.getDeclaredMethod("getListenerInfo", new Class[0]);
+      if (!((Method)localObject).isAccessible()) {
+        ((Method)localObject).setAccessible(true);
       }
+      paramView = ((Method)localObject).invoke(paramView, new Object[0]);
+      localObject = paramView.getClass().getDeclaredField("mOnClickListener");
+      ((Field)localObject).setAccessible(true);
+      paramView = (View.OnClickListener)((Field)localObject).get(paramView);
+      if ((paramView instanceof bbfg))
+      {
+        paramView = ((bbfg)paramView).jdField_a_of_type_JavaUtilList;
+        if ((paramView != null) && (paramView.size() > 0)) {
+          localArrayList.addAll(paramView);
+        }
+      }
+      return localArrayList;
+    }
+    catch (Exception paramView)
+    {
+      QLog.d("ResourceNameOnClickListener", 1, paramView, new Object[0]);
     }
     return localArrayList;
   }
   
-  public List<bayx> a(bbfs parambbfs)
+  private void a(View paramView, FragmentActivity paramFragmentActivity, List<bbfb> paramList)
+  {
+    Rect localRect;
+    int i;
+    if ((paramView instanceof ViewGroup))
+    {
+      localRect = new Rect();
+      i = 0;
+    }
+    for (;;)
+    {
+      if (i < ((ViewGroup)paramView).getChildCount())
+      {
+        View localView = ((ViewGroup)paramView).getChildAt(i);
+        localView.getGlobalVisibleRect(localRect);
+        if (localRect.contains(paramFragmentActivity.clickX, paramFragmentActivity.clickY))
+        {
+          paramView = a(localView);
+          if (paramView.size() > 0) {
+            paramList.addAll(paramView);
+          }
+          a(localView, paramFragmentActivity, paramList);
+        }
+      }
+      else
+      {
+        return;
+      }
+      i += 1;
+    }
+  }
+  
+  private void a(View paramView, List<bbfb> paramList, Rect paramRect)
+  {
+    if (paramView.getParent() != null)
+    {
+      paramView = (View)paramView.getParent();
+      Object localObject = new Rect();
+      paramView.getGlobalVisibleRect((Rect)localObject);
+      if ((((Rect)localObject).left - paramRect.left <= 20) && (((Rect)localObject).top - paramRect.top <= 20) && (((Rect)localObject).right - paramRect.right <= 20) && (((Rect)localObject).bottom - paramRect.bottom <= 20))
+      {
+        localObject = a(paramView);
+        if (((List)localObject).size() > 0) {
+          paramList.addAll((Collection)localObject);
+        }
+        a(paramView, paramList, paramRect);
+      }
+    }
+  }
+  
+  public void onClick(View paramView)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MessageSearchEngine", 2, "========== search message use MessageSearchEngine");
+      QLog.d("ResourceNameOnClickListener", 2, "ResourceNameOnClickListener onLongClick");
     }
-    this.jdField_a_of_type_JavaLangString = parambbfs.jdField_a_of_type_JavaLangString;
-    if ((parambbfs.jdField_a_of_type_AndroidOsBundle != null) && (parambbfs.jdField_a_of_type_AndroidOsBundle.getBoolean("SEARCH_REQUEST_EXTRA_TIME_LIMIT", false))) {}
-    for (parambbfs = this.jdField_a_of_type_Ania.a(this.jdField_a_of_type_JavaLangString);; parambbfs = this.jdField_a_of_type_Ania.b(this.jdField_a_of_type_JavaLangString)) {
-      return a(this.jdField_a_of_type_JavaLangString, parambbfs);
+    Object localObject1 = null;
+    if ((paramView.getContext() instanceof Activity)) {
+      localObject1 = (Activity)paramView.getContext();
+    }
+    Object localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = BaseActivity.sTopActivity;
+    }
+    bbfe localbbfe;
+    ArrayList localArrayList;
+    if ((localObject2 instanceof FragmentActivity))
+    {
+      localObject1 = ((FragmentActivity)localObject2).getSupportFragmentManager().findFragmentByTag("ResourceGrabFragment");
+      if ((localObject1 instanceof ResourceGrabFragment))
+      {
+        localObject1 = (ResourceGrabFragment)localObject1;
+        localbbfe = (bbfe)axne.a((ViewModelStoreOwner)localObject1).get(bbfe.class);
+        localbbfe.a();
+        localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
+      }
+    }
+    try
+    {
+      a(paramView, (FragmentActivity)localObject2, localArrayList);
+      localObject2 = new Rect();
+      paramView.getGlobalVisibleRect((Rect)localObject2);
+      a(paramView, localArrayList, (Rect)localObject2);
+      ((ResourceGrabFragment)localObject1).a(localArrayList);
+      if (((ResourceGrabFragment)localObject1).a()) {
+        localbbfe.a(localArrayList);
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.d("ResourceNameOnClickListener", 1, localException, new Object[0]);
+      }
     }
   }
-  
-  public void a() {}
-  
-  public void a(bbfs parambbfs, bbff<bayx> parambbff)
-  {
-    ThreadManager.post(new MessageSearchEngine.1(this, parambbff, parambbfs), 8, null, true);
-  }
-  
-  public void b()
-  {
-    ThreadManager.post(new MessageSearchEngine.2(this), 8, null, true);
-  }
-  
-  public void c()
-  {
-    ThreadManager.post(new MessageSearchEngine.3(this, this.jdField_a_of_type_JavaLangString), 8, null, true);
-  }
-  
-  public void d()
-  {
-    ThreadManager.post(new MessageSearchEngine.4(this, this.jdField_a_of_type_JavaLangString), 8, null, true);
-  }
-  
-  public void e() {}
 }
 
 

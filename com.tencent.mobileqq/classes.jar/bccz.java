@@ -1,60 +1,49 @@
-class bccz
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.fts.FTSMessage;
+import com.tencent.mobileqq.persistence.fts.FTSEntity;
+import java.util.ArrayList;
+
+public class bccz
 {
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
-  public final long e;
-  public String e;
-  public long f = 0L;
-  public long g = 0L;
-  
-  public bccz()
+  public static bccv a(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    this.jdField_e_of_type_Long = 2L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 1L;
-    this.jdField_d_of_type_Long = 0L;
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
+    return new bcdc(paramQQAppInterface);
   }
   
-  public String a()
+  public static bccx a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, ArrayList<String> paramArrayList, FTSEntity paramFTSEntity)
   {
-    StringBuilder localStringBuilder = new StringBuilder(256);
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_b_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append("${count_unknown}");
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_d_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(2L);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.f);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.g);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    return localStringBuilder.toString();
+    return new bcdi(paramQQAppInterface, paramString, paramArrayList, paramFTSEntity);
+  }
+  
+  public static bcmk a(int paramInt, String paramString, FTSEntity paramFTSEntity)
+  {
+    paramString = new bcmk(paramString);
+    paramFTSEntity = (FTSMessage)paramFTSEntity;
+    paramString.a = new Bundle();
+    paramString.a.putLong("uin", paramFTSEntity.uin);
+    paramString.a.putInt("uinType", paramFTSEntity.istroop);
+    return paramString;
+  }
+  
+  public static String a(Context paramContext, int paramInt)
+  {
+    return paramContext.getString(2131718374);
+  }
+  
+  public static String a(Context paramContext, int paramInt1, String paramString, int paramInt2)
+  {
+    String str = paramString;
+    if (paramString.length() > 13) {
+      str = paramString.substring(0, 10) + "…";
+    }
+    return paramContext.getString(2131718373, new Object[] { Integer.valueOf(paramInt1), str });
+  }
+  
+  public static String b(Context paramContext, int paramInt)
+  {
+    return anvx.a(2131704425);
   }
 }
 

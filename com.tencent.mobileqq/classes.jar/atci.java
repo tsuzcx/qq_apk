@@ -1,20 +1,36 @@
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileTabView;
+import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class atci
-  implements aszj
+  implements View.OnClickListener
 {
-  public atci(SendBottomBar paramSendBottomBar) {}
+  public atci(QfileFavFileTabView paramQfileFavFileTabView) {}
   
-  public void onNo() {}
-  
-  public void onYes()
+  public void onClick(View paramView)
   {
-    this.a.c();
+    if (!QfileFavFileTabView.a(this.a)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      QfileFavFileTabView.a(this.a);
+      this.a.a();
+      if (this.a.jdField_a_of_type_Atab.getGroupCount() > 0) {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.a(this.a.jdField_a_of_type_Atab.getGroupCount() - 1);
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.getAdapter().getCount() - 1);
+      QfileFavFileTabView.a(this.a, false);
+      this.a.g();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atci
  * JD-Core Version:    0.7.0.1
  */

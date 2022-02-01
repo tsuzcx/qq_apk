@@ -1,35 +1,21 @@
-import java.util.Arrays;
+import com.tencent.qphone.base.util.QLog;
 
-class bdfh
+public class bdfh
+  extends beip
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  int b;
+  private boolean jdField_a_of_type_Boolean;
   
-  public bdfh(int paramInt1, int paramInt2, String paramString)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public bdfh(bdfe parambdfe) {}
   
-  public boolean equals(Object paramObject)
+  public boolean a(int paramInt)
   {
-    if (this == paramObject) {}
-    do
-    {
+    QLog.i("SimpleUILog.SimpleUIHandler", 1, String.format("emptyCallback postSwitch %d", new Object[] { Integer.valueOf(paramInt) }));
+    if (this.jdField_a_of_type_Boolean) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (bdfh)paramObject;
-    } while ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.b == paramObject.b) && (bdfn.a(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)));
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    return Arrays.hashCode(new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_JavaLangString });
+    }
+    this.jdField_a_of_type_Boolean = true;
+    bdfe.a(this.jdField_a_of_type_Bdfe, bdfe.a(this.jdField_a_of_type_Bdfe), -2147483648, bdfe.b(this.jdField_a_of_type_Bdfe), -2147483648, null, -2147483648);
+    return true;
   }
 }
 

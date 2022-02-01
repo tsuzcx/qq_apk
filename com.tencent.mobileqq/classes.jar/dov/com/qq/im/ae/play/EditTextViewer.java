@@ -16,8 +16,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
-import blup;
-import bmbc;
+import bnjs;
+import bnqm;
 import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetFontDataRsp;
 import com.tencent.aekit.api.standard.AEModule;
 import com.tencent.biz.qqstory.app.QQStoryContext;
@@ -64,9 +64,9 @@ public class EditTextViewer
     this.mActivity = ((Activity)paramContext);
     setOnClickListener(this);
     this.isFirstRender = true;
-    setBackgroundDrawable(getResources().getDrawable(2130837691));
-    this.mAnimationDrawable = ((LayerDrawable)getResources().getDrawable(2130837690));
-    this.mAnimationSolidDrawable = this.mAnimationDrawable.findDrawableByLayerId(2131368422);
+    setBackgroundDrawable(getResources().getDrawable(2130837706));
+    this.mAnimationDrawable = ((LayerDrawable)getResources().getDrawable(2130837705));
+    this.mAnimationSolidDrawable = this.mAnimationDrawable.findDrawableByLayerId(2131368579);
   }
   
   private boolean deleteSingleFile(String paramString)
@@ -111,7 +111,7 @@ public class EditTextViewer
     String str2 = this.mTextWMElement.userValue;
     AppInterface localAppInterface = QQStoryContext.a();
     localAppInterface.addObserver(new EditTextViewer.4(this, localAppInterface, str2));
-    ((blup)localAppInterface.getBusinessHandler(3)).a(str1, str2);
+    ((bnjs)localAppInterface.getBusinessHandler(3)).a(str1, str2);
   }
   
   private String getValue()
@@ -325,7 +325,7 @@ public class EditTextViewer
     }
     showTextEditDlg();
     setTextSelected(false);
-    bmbc.a().f();
+    bnqm.a().f();
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
@@ -388,7 +388,7 @@ public class EditTextViewer
   public void renderAndSaveTexture(String paramString)
   {
     if (!DeviceUtils.isNetworkAvailable(AEModule.getContext())) {
-      QQToast.a(getContext(), 2131689773, 1).a();
+      QQToast.a(getContext(), 2131689782, 1).a();
     }
     label131:
     for (;;)

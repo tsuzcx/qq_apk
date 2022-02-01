@@ -1,82 +1,24 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.utils.httputils.PkgTools;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.view.View;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.mobileqq.nearby.widget.OverCoverFrameLayout;
 
 public class auwo
-  extends MSFServlet
+  implements TouchWebView.OnScrollChangedListener
 {
-  public static long a;
-  public static long b;
-  public static long c;
-  public static long d;
+  public auwo(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    c = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("WebSSOAgentServlet", 2, "onReceive");
-    }
-    byte[] arrayOfByte;
-    if (paramFromServiceMsg.isSuccess())
-    {
-      int i = paramFromServiceMsg.getWupBuffer().length - 4;
-      arrayOfByte = new byte[i];
-      PkgTools.copyData(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-    }
-    for (;;)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("extra_result_code", paramFromServiceMsg.getResultCode());
-      localBundle.putString("extra_result_err_msg", paramFromServiceMsg.getBusinessFailMsg());
-      localBundle.putString("extra_cmd", paramIntent.getStringExtra("extra_cmd"));
-      localBundle.putString("extra_callbackid", paramIntent.getStringExtra("extra_callbackid"));
-      localBundle.putByteArray("extra_data", arrayOfByte);
-      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
-      return;
-      arrayOfByte = null;
-    }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebSSOAgentServlet", 2, "onSend");
-    }
-    String str = paramIntent.getStringExtra("extra_cmd");
-    if (str == null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent != null)
-      {
-        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-        paramPacket.putSendData(paramIntent.getWupBuffer());
-        paramPacket.setTimeout(paramIntent.getTimeout());
-        paramPacket.setAttributes(paramIntent.getAttributes());
-        if (!paramIntent.isNeedCallback()) {
-          paramPacket.setNoResponse();
-        }
+    if (paramInt4 > paramInt2) {
+      if (paramInt2 == 0) {
+        this.a.a.b();
       }
+    }
+    while ((paramInt4 >= paramInt2) || (paramInt2 < this.a.c.getHeight())) {
       return;
     }
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("extra_data");
-    paramPacket.setSSOCommand(str);
-    long l = paramIntent.getLongExtra("extra_timeout", -1L);
-    if (l > 0L) {
-      paramPacket.setTimeout(l);
-    }
-    if (arrayOfByte != null)
-    {
-      paramIntent = new byte[arrayOfByte.length + 4];
-      PkgTools.DWord2Byte(paramIntent, 0, arrayOfByte.length + 4);
-      PkgTools.copyData(paramIntent, 4, arrayOfByte, arrayOfByte.length);
-      paramPacket.putSendData(paramIntent);
-    }
-    b = System.currentTimeMillis();
+    this.a.a.a();
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import alng;
-import alvx;
-import alwt;
-import alww;
-import alxy;
-import amgw;
+import amlh;
+import amwn;
+import amxj;
+import amxm;
+import amyo;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import anie;
 import com.tencent.TMG.opengl.GraphicRendererMgr;
 import com.tencent.TMG.sdk.AVContext;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -18,7 +18,7 @@ import org.json.JSONObject;
 public class CmGameAvHandler$15$1
   implements Runnable
 {
-  public CmGameAvHandler$15$1(alww paramalww, int paramInt) {}
+  public CmGameAvHandler$15$1(amxm paramamxm, int paramInt) {}
   
   public void run()
   {
@@ -26,14 +26,18 @@ public class CmGameAvHandler$15$1
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("res", "ok");
-      alwt.c(this.jdField_a_of_type_Alww.a, true);
-      this.jdField_a_of_type_Alww.a.a = new alng(alvx.b(alwt.a(this.jdField_a_of_type_Alww.a)).a(), alwt.a(this.jdField_a_of_type_Alww.a));
-      this.jdField_a_of_type_Alww.a.a.a();
-      GraphicRendererMgr localGraphicRendererMgr = GraphicRendererMgr.getInstance();
-      SurfaceHolder localSurfaceHolder = this.jdField_a_of_type_Alww.a.a.a.getHolder();
-      QLog.e("onSDKEnterRoom", 1, "onSDKEnterRoom mgr=" + String.valueOf(localGraphicRendererMgr));
-      amgw.a(BaseApplicationImpl.getContext()).a().setRenderMgrAndHolder(localGraphicRendererMgr, localSurfaceHolder);
-      alvx.a().callbackFromRequest(alwt.a(this.jdField_a_of_type_Alww.a), this.jdField_a_of_type_Int, "cs.audioRoom_enter.local", localJSONObject.toString());
+      amxj.c(this.jdField_a_of_type_Amxm.a, true);
+      Object localObject = amwn.b(amxj.a(this.jdField_a_of_type_Amxm.a));
+      if (localObject != null)
+      {
+        this.jdField_a_of_type_Amxm.a.a = new amlh(((amyo)localObject).a(), amxj.a(this.jdField_a_of_type_Amxm.a));
+        this.jdField_a_of_type_Amxm.a.a.a();
+      }
+      localObject = GraphicRendererMgr.getInstance();
+      SurfaceHolder localSurfaceHolder = this.jdField_a_of_type_Amxm.a.a.a.getHolder();
+      QLog.e("onSDKEnterRoom", 1, "onSDKEnterRoom mgr=" + String.valueOf(localObject));
+      anie.a(BaseApplicationImpl.getContext()).a().setRenderMgrAndHolder((GraphicRendererMgr)localObject, localSurfaceHolder);
+      amwn.a().callbackFromRequest(amxj.a(this.jdField_a_of_type_Amxm.a), this.jdField_a_of_type_Int, "cs.audioRoom_enter.local", localJSONObject.toString());
       return;
     }
     catch (Exception localException) {}

@@ -1,22 +1,31 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.tavcut.session.TAVCutVideoSession;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import cooperation.troop.TroopPluginManager.InstallRunable;
 
 public class bmix
-  implements View.OnTouchListener
+  extends Handler
 {
-  public bmix(AEEditorVideoEditFragment paramAEEditorVideoEditFragment, GestureDetector paramGestureDetector) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public bmix(TroopPluginManager.InstallRunable paramInstallRunable, Looper paramLooper)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
-      this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorVideoEditFragment.a.toggleAEKit(true);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
     }
-    return false;
+    do
+    {
+      do
+      {
+        return;
+      } while (this.a.a == null);
+      this.a.a.a(0);
+      return;
+    } while (this.a.a == null);
+    this.a.a.a(2);
   }
 }
 

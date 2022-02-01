@@ -1,16 +1,38 @@
-import android.view.View;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
+import com.tencent.mobileqq.data.LebaPluginInfo;
+import com.tencent.mobileqq.widget.QQToast;
 
-public abstract interface nym
+public class nym
+  extends Handler
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
+  public nym(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
   
-  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
-  
-  public abstract boolean a();
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
+  public void handleMessage(Message paramMessage)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    switch (paramMessage.what)
+    {
+    case -1: 
+    default: 
+      return;
+    case 0: 
+      this.a.a.jdField_a_of_type_Byte = 0;
+      LebaSearchPluginManagerActivity.a(this.a);
+      localStringBuilder.append(this.a.getString(2131695772));
+      localStringBuilder.append(this.a.getString(2131695770));
+      localStringBuilder.append(this.a.a.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName);
+      QQToast.a(this.a, 2, localStringBuilder.toString(), 1).b(this.a.getTitleBarHeight());
+      return;
+    }
+    this.a.a.jdField_a_of_type_Byte = 1;
+    LebaSearchPluginManagerActivity.a(this.a);
+    localStringBuilder.append(this.a.getString(2131695772));
+    localStringBuilder.append(this.a.getString(2131695766));
+    localStringBuilder.append(this.a.a.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName);
+    QQToast.a(this.a, 2, localStringBuilder.toString(), 1).b(this.a.getTitleBarHeight());
+  }
 }
 
 

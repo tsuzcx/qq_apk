@@ -1,20 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.10;
-import cooperation.wadl.ipc.WadlParams;
-
-public class aooo
-  implements DialogInterface.OnClickListener
+public abstract interface aooo
 {
-  public aooo(ArkAppDownloadModule.10 param10) {}
+  public abstract void a(String paramString1, String paramString2, boolean paramBoolean1, int paramInt, boolean paramBoolean2, boolean paramBoolean3);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    bcef.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "8", "", this.a.a.a, "");
-  }
+  public abstract void b(int paramInt, boolean paramBoolean, Object paramObject);
+  
+  public abstract void c(int paramInt, boolean paramBoolean, Object paramObject);
 }
 
 

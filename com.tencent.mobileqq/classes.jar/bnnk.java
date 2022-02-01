@@ -1,22 +1,27 @@
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import dov.com.qq.im.ae.gif.giftext.AEGIFTextColorSelectionView;
 
 class bnnk
-  extends Handler
+  extends RecyclerView.ViewHolder
 {
-  private WeakReference<bnnj> a;
+  AEGIFTextColorSelectionView a;
   
-  public bnnk(WeakReference<bnnj> paramWeakReference)
+  public bnnk(@NonNull View paramView)
   {
-    this.a = paramWeakReference;
+    super(paramView);
+    this.a = ((AEGIFTextColorSelectionView)paramView.findViewById(2131364175));
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(String paramString)
   {
-    if (this.a.get() != null) {
-      bnnj.a((bnnj)this.a.get());
-    }
+    this.a.setColor(paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.a.a(Boolean.valueOf(paramBoolean));
   }
 }
 

@@ -22,7 +22,7 @@ public final class ItemDisDetail
   public String itemBgColor = "";
   public int itemId;
   public String name = "";
-  public int validlast;
+  public long validlast;
   
   static
   {
@@ -32,7 +32,7 @@ public final class ItemDisDetail
   
   public ItemDisDetail() {}
   
-  public ItemDisDetail(int paramInt1, int paramInt2, String paramString1, int paramInt3, String paramString2, String paramString3, UniBusiExtraInfo paramUniBusiExtraInfo, int paramInt4, int paramInt5, ExtraImageInfo paramExtraImageInfo, ExtraAppInfo paramExtraAppInfo, AuthResultInfo paramAuthResultInfo)
+  public ItemDisDetail(int paramInt1, int paramInt2, String paramString1, int paramInt3, String paramString2, String paramString3, UniBusiExtraInfo paramUniBusiExtraInfo, long paramLong, int paramInt4, ExtraImageInfo paramExtraImageInfo, ExtraAppInfo paramExtraAppInfo, AuthResultInfo paramAuthResultInfo)
   {
     this.appId = paramInt1;
     this.itemId = paramInt2;
@@ -41,8 +41,8 @@ public final class ItemDisDetail
     this.image = paramString2;
     this.itemBgColor = paramString3;
     this.extrainfo = paramUniBusiExtraInfo;
-    this.validlast = paramInt4;
-    this.isSetup = paramInt5;
+    this.validlast = paramLong;
+    this.isSetup = paramInt4;
     this.extraimage = paramExtraImageInfo;
     this.extraappinfo = paramExtraAppInfo;
     this.authResult = paramAuthResultInfo;

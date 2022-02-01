@@ -1,45 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.wtogether.view.WatchTogetherAdminControlView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class nbb
-  extends BroadcastReceiver
+public class nbb
+  implements View.OnClickListener
 {
-  nbb(nba paramnba) {}
+  public nbb(WatchTogetherAdminControlView paramWatchTogetherAdminControlView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    boolean bool = true;
-    paramContext = paramIntent.getAction();
-    paramIntent = paramIntent.getStringExtra("process_name");
-    if (QLog.isColorLevel()) {
-      QLog.d("GlobalExitRoomManagement", 2, "onReceive action: " + paramContext + "  process_name:" + paramIntent);
-    }
-    int i;
-    if ((paramIntent != null) && (paramIntent.contains("openSdk")))
-    {
-      i = 1;
-      if (!"mqq.intent.action.QQ_BACKGROUND".equals(paramContext)) {
-        break label94;
-      }
-      nba.a(this.a, false);
-    }
-    label94:
-    while (!"mqq.intent.action.QQ_FOREGROUND".equals(paramContext))
-    {
-      return;
-      i = 0;
-      break;
-    }
-    paramContext = this.a;
-    if (i == 0) {}
-    for (;;)
-    {
-      nba.a(paramContext, bool);
-      return;
-      bool = false;
-    }
+    WatchTogetherAdminControlView.d(this.a);
+    WatchTogetherAdminControlView.c(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

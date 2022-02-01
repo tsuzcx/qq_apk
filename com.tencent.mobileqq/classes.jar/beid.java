@@ -1,59 +1,174 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.troop.homework.arithmetic.pb.MathHWNetWorkPB.ErrorInfo;
-import com.tencent.mobileqq.troop.homework.arithmetic.pb.MathHWNetWorkPB.ReqCheckHomework;
-import com.tencent.mobileqq.troop.homework.arithmetic.pb.MathHWNetWorkPB.YoutuPicInfo;
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.theme.ThemeSwitcher;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.app.AppRuntime;
 
 public class beid
-  extends vqr
 {
-  beic jdField_a_of_type_Beic;
-  String jdField_a_of_type_JavaLangString;
+  Handler jdField_a_of_type_AndroidOsHandler = new beif(this, Looper.getMainLooper());
+  beim jdField_a_of_type_Beim;
+  beip jdField_a_of_type_Beip = new beie(this);
+  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
+  ArrayList<beig> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  AppRuntime jdField_a_of_type_MqqAppAppRuntime;
   
-  public beid(beic parambeic, String paramString)
+  public beid(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_Beic = parambeic;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.jdField_a_of_type_Beim = ((beim)paramAppRuntime.getManager(QQManagerFactory.THEME_MANAGER));
   }
   
-  public String a()
+  public int a()
   {
-    return "HwSvc.check_homework";
-  }
-  
-  public vqm a(byte[] paramArrayOfByte)
-  {
-    MathHWNetWorkPB.ErrorInfo localErrorInfo = new MathHWNetWorkPB.ErrorInfo();
-    try
+    int i = 2;
+    if (a())
     {
-      localErrorInfo.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = new vqm(localErrorInfo.error_code.get(), localErrorInfo.error_desc.get().toStringUtf8());
-      return paramArrayOfByte;
+      if (QLog.isColorLevel()) {
+        QLog.i("NightModeLogic", 2, "switchRightViewImage status: juhua");
+      }
+      i = 0;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    do
     {
-      xvv.b("QQ.Troop.homework.SendArithHomeResultSegment", "decodeResponse", paramArrayOfByte);
-    }
-    return new vqm(-99, "decodeResponse error:" + paramArrayOfByte);
+      return i;
+      if (ThemeUtil.isInNightMode(this.jdField_a_of_type_MqqAppAppRuntime))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("NightModeLogic", 2, "switchRightViewImage status: sun");
+        }
+        return 1;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("NightModeLogic", 2, "switchRightViewImage status: moon");
+    return 2;
   }
   
-  protected byte[] a()
+  public void a()
   {
-    MathHWNetWorkPB.ReqCheckHomework localReqCheckHomework = new MathHWNetWorkPB.ReqCheckHomework();
-    MathHWNetWorkPB.YoutuPicInfo localYoutuPicInfo = new MathHWNetWorkPB.YoutuPicInfo();
-    localYoutuPicInfo.old_url.set(this.jdField_a_of_type_Beic.jdField_a_of_type_JavaLangString);
-    localYoutuPicInfo.new_url.set(this.jdField_a_of_type_JavaLangString);
-    localYoutuPicInfo.new_data.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Beic.jdField_b_of_type_JavaLangString));
-    localReqCheckHomework.group_id.set(this.jdField_a_of_type_Beic.jdField_a_of_type_Long);
-    localReqCheckHomework.hw_id.set(this.jdField_a_of_type_Beic.jdField_b_of_type_Long);
-    localReqCheckHomework.uin.set(this.jdField_a_of_type_Beic.c);
-    localReqCheckHomework.pics.add(localYoutuPicInfo);
-    return localReqCheckHomework.toByteArray();
+    this.jdField_a_of_type_MqqAppAppRuntime = null;
+  }
+  
+  public void a(int paramInt, Bundle paramBundle)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      beig localbeig = (beig)localIterator.next();
+      if (1 == paramInt) {
+        localbeig.b(paramBundle);
+      } else if (-2 == paramInt) {
+        localbeig.a(paramBundle);
+      }
+    }
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    if (this.jdField_a_of_type_MqqAppAppRuntime == null) {
+      QLog.e("NightModeLogic", 1, "startNightMode Err mRuntime == null");
+    }
+    boolean bool;
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("NightModeLogic", 2, "startNightMode, isNightMode=" + ThemeUtil.isInNightMode(this.jdField_a_of_type_MqqAppAppRuntime) + ", nowThemeId=" + ThemeUtil.getCurrentThemeId() + ", userThemeId=" + ThemeUtil.getUserCurrentThemeId(this.jdField_a_of_type_MqqAppAppRuntime) + ", mRuntime=" + this.jdField_a_of_type_MqqAppAppRuntime);
+      }
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+      bool = b();
+    } while (!QLog.isColorLevel());
+    QLog.i("NightModeLogic", 2, "startNightMode result=" + bool);
+  }
+  
+  public void a(beig parambeig, boolean paramBoolean)
+  {
+    if (parambeig != null)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.remove(parambeig);
+      if (paramBoolean) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(parambeig);
+      }
+    }
+  }
+  
+  public void a(AppRuntime paramAppRuntime)
+  {
+    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+  }
+  
+  public boolean a()
+  {
+    boolean bool = ThemeSwitcher.a();
+    QLog.e("NightModeLogic", 1, "isDownloadOrSwtich: " + bool);
+    return bool;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Beim.c();
+    if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)) {
+      ((bdfe)((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).getBusinessHandler(BusinessHandlerFactory.SIMPLE_UI_HANDLER)).c();
+    }
+  }
+  
+  public boolean b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("NightModeLogic", 2, "setupNightTheme");
+    }
+    if (this.jdField_a_of_type_MqqAppAppRuntime == null)
+    {
+      QLog.e("NightModeLogic", 1, "setupNightTheme Err mRuntime == null");
+      return false;
+    }
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putInt("start_status", 1);
+    a(1, (Bundle)localObject);
+    boolean bool1 = ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_MqqAppAppRuntime, false, null);
+    boolean bool2 = bdfk.b();
+    if (!bool1) {
+      if (bool2)
+      {
+        localObject = "2920";
+        bdla.b((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, "CliOper", "", "", "Setting_tab", "Night_mode", 0, 0, "1", "", "", "");
+        VasWebviewUtil.reportVasStatus("Setting_tab", "Night_mode", "0", 0, 0);
+      }
+    }
+    for (;;)
+    {
+      QLog.d("NightModeLogic", 1, "setupNightTheme themeID=" + (String)localObject);
+      ThemeSwitcher.a((String)localObject, "202", this.jdField_a_of_type_Beip);
+      return true;
+      localObject = "1103";
+      break;
+      if (!bool2) {
+        break label176;
+      }
+      localObject = bdfk.a(bdfk.d());
+    }
+    label176:
+    Bundle localBundle = beio.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime);
+    localObject = localBundle.getString("themeID");
+    QLog.d("NightModeLogic", 1, "setupNightTheme, pre themeID=" + (String)localObject + ",version=" + localBundle.getString("version"));
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {}
+    for (;;)
+    {
+      bdla.b((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, "CliOper", "", "", "Setting_tab", "Night_mode", 0, 0, "0", "", "", "");
+      break;
+      localObject = "1000";
+    }
   }
 }
 

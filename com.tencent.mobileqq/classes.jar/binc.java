@@ -1,18 +1,6 @@
-class binc
-  extends binf
+public abstract interface binc
 {
-  binc(binb parambinb) {}
-  
-  protected void a(boolean paramBoolean)
-  {
-    super.a(paramBoolean);
-    if (paramBoolean)
-    {
-      binb.a(this.a);
-      return;
-    }
-    binb.b(this.a);
-  }
+  public abstract void a();
 }
 
 

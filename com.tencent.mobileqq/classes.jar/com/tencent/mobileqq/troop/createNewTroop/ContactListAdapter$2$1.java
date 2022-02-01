@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.createNewTroop;
 
 import android.view.View;
-import bdwl;
+import bfdo;
 
 public class ContactListAdapter$2$1
   implements Runnable
 {
-  public ContactListAdapter$2$1(bdwl parambdwl, View paramView) {}
+  public ContactListAdapter$2$1(bfdo parambfdo, View paramView) {}
   
   public void run()
   {

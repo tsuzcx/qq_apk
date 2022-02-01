@@ -1,93 +1,24 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class apxu
-  extends aptq<apxt>
+class apxu
+  implements BusinessObserver
 {
-  @NonNull
-  public apxt a(int paramInt)
-  {
-    return new apxt();
-  }
+  apxu(apxp paramapxp) {}
   
-  @Nullable
-  public apxt a(aptx[] paramArrayOfaptx)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameCenterConfProcessor", 2, "[onParsed]");
-    }
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
+    if (!paramBoolean)
     {
-      apxt localapxt = new apxt();
-      localapxt.a = paramArrayOfaptx[0].a;
-      return localapxt;
-    }
-    return null;
-  }
-  
-  public void a(apxt paramapxt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameCenterConfProcessor", 2, "[onUpdate]");
-    }
-    alnr localalnr = (alnr)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(153);
-    if (paramapxt != null) {}
-    for (paramapxt = paramapxt.a;; paramapxt = null)
-    {
-      localalnr.d(paramapxt);
+      ArkAppCenter.c("ArkApp.ArkAppCGI", "doVipReport(), sso request failed");
       return;
     }
-  }
-  
-  public Class<apxt> clazz()
-  {
-    return apxt.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameCenterConfProcessor", 2, new Object[] { "[onReqFailed] failCode=", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public void onReqNoReceive()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameCenterConfProcessor", 2, "[onReqNoReceive]");
-    }
-    apxt localapxt = (apxt)apub.a().a(417);
-    if (localapxt != null) {
-      ((alnr)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(153)).d(localapxt.a);
-    }
-  }
-  
-  public int type()
-  {
-    return 417;
+    ArkAppCenter.b("ArkApp.ArkAppCGI", "doVipReport().server.back=" + paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apxu
  * JD-Core Version:    0.7.0.1
  */

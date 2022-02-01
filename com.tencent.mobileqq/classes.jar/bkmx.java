@@ -1,19 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class bkmx
-  implements DialogInterface.OnClickListener
+public final class bkmx
 {
-  bkmx(bkmt parambkmt) {}
+  private static int jdField_a_of_type_Int;
+  private bknj jdField_a_of_type_Bknj;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private bkmx(bknj parambknj)
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Bknj = parambknj;
+  }
+  
+  private String a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("AD_PROXY_ACTION_MOTIVE_BROWSING_END#index#");
+    int i = jdField_a_of_type_Int;
+    jdField_a_of_type_Int = i + 1;
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkmx
  * JD-Core Version:    0.7.0.1
  */

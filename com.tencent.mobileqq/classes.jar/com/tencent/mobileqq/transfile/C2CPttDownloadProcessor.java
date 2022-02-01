@@ -1,18 +1,19 @@
 package com.tencent.mobileqq.transfile;
 
 import android.text.TextUtils;
-import aycx;
-import aycy;
-import azbx;
-import azby;
-import azck;
-import bcef;
-import bcgn;
-import bcgo;
-import bcmt;
+import azjj;
+import azjk;
+import bahl;
+import bahm;
+import bahy;
+import bdla;
+import bdnl;
+import bdnm;
+import bdtt;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForPtt;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -51,7 +52,7 @@ public class C2CPttDownloadProcessor
   private long mMsgTime;
   String[] mProtoMsg = null;
   private MessageForPtt mPtt;
-  protected bcmt mSttManager;
+  protected bdtt mSttManager;
   String mTempPath;
   private boolean useUrlIp;
   
@@ -61,7 +62,7 @@ public class C2CPttDownloadProcessor
   {
     super(paramTransFileController, paramTransferRequest);
     this.mProxyIpList = ((ProxyIpManager)this.app.getManager(3)).getProxyIp(4);
-    this.mSttManager = ((bcmt)this.app.getManager(17));
+    this.mSttManager = ((bdtt)this.app.getManager(QQManagerFactory.STT_MANAGER));
   }
   
   private cmd0x346.ReqBody constructApplyDownSuccess()
@@ -92,18 +93,18 @@ public class C2CPttDownloadProcessor
   
   private File getUnfinishedStreamFile(long paramLong1, long paramLong2)
   {
-    Object localObject = bcgn.a(paramLong1, paramLong2);
+    Object localObject = bdnl.a(paramLong1, paramLong2);
     if (QLog.isColorLevel()) {
       QLog.d("BaseTransProcessor", 2, "try get stream info " + paramLong1 + " " + paramLong2 + " " + localObject);
     }
     if (localObject != null)
     {
-      bcgo localbcgo = (bcgo)((Map.Entry)localObject).getValue();
-      if (localbcgo != null)
+      bdnm localbdnm = (bdnm)((Map.Entry)localObject).getValue();
+      if (localbdnm != null)
       {
-        bcgn.a((String)((Map.Entry)localObject).getKey());
-        localbcgo.a(false);
-        localObject = localbcgo.a();
+        bdnl.a((String)((Map.Entry)localObject).getKey());
+        localbdnm.a(false);
+        localObject = localbdnm.a();
         if ((localObject != null) && (((File)localObject).exists())) {
           return localObject;
         }
@@ -314,7 +315,7 @@ public class C2CPttDownloadProcessor
       this.mReportInfo.put("param_uuid", this.mUiRequest.mServerPath);
       this.mReportInfo.put("param_writtenSize", String.valueOf(this.mRecvLen));
       this.mReportInfo.put("param_quickHttp", String.valueOf(this.mSendByQuickHttp));
-      this.mReportInfo.put("param_pttOpt", String.valueOf(azby.a(this.app, this.useUrlIp)));
+      this.mReportInfo.put("param_pttOpt", String.valueOf(bahm.a(this.app, this.useUrlIp)));
       if (QLog.isColorLevel()) {
         QLog.d("BaseTransProcessor", 2, "totle=" + this.mTotolLen + " written=" + this.mRecvLen);
       }
@@ -358,7 +359,7 @@ public class C2CPttDownloadProcessor
       if (localObject1 == null) {
         break;
       }
-      azck.a(this.app).a(paramBoolean, this.errCode, this.mExtraInfo, (MessageForPtt)localObject1);
+      bahy.a(this.app).a(paramBoolean, this.errCode, this.mExtraInfo, (MessageForPtt)localObject1);
       return;
       i = 1;
       break label62;
@@ -402,7 +403,7 @@ public class C2CPttDownloadProcessor
           }
           localObject1 = "0X80059B2";
           localObject2 = (TransferRequest.PttDownExtraInfo)this.mUiRequest.mExtraObj;
-          bcef.b(this.app, "CliOper", "", "", (String)localObject1, (String)localObject1, PttInfoCollector.mergeDownloadPTTFromType(((TransferRequest.PttDownExtraInfo)localObject2).mFromType, ((TransferRequest.PttDownExtraInfo)localObject2).mLayer), 0, "", "", "", "8.4.8");
+          bdla.b(this.app, "CliOper", "", "", (String)localObject1, (String)localObject1, PttInfoCollector.mergeDownloadPTTFromType(((TransferRequest.PttDownExtraInfo)localObject2).mFromType, ((TransferRequest.PttDownExtraInfo)localObject2).mLayer), 0, "", "", "", "8.4.10");
         }
       }
     }
@@ -503,79 +504,79 @@ public class C2CPttDownloadProcessor
   {
     // Byte code:
     //   0: aload_0
-    //   1: ldc_w 316
-    //   4: ldc_w 843
-    //   7: invokevirtual 322	com/tencent/mobileqq/transfile/C2CPttDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1: ldc_w 321
+    //   4: ldc_w 848
+    //   7: invokevirtual 327	com/tencent/mobileqq/transfile/C2CPttDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
     //   10: aload_2
-    //   11: invokevirtual 848	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
+    //   11: invokevirtual 853	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
     //   14: sipush 1000
     //   17: if_icmpeq +38 -> 55
     //   20: aload_2
-    //   21: invokevirtual 848	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
+    //   21: invokevirtual 853	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
     //   24: istore 4
     //   26: aload_0
-    //   27: ldc_w 849
-    //   30: new 167	java/lang/StringBuilder
+    //   27: ldc_w 854
+    //   30: new 173	java/lang/StringBuilder
     //   33: dup
-    //   34: invokespecial 168	java/lang/StringBuilder:<init>	()V
-    //   37: ldc_w 851
-    //   40: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   34: invokespecial 174	java/lang/StringBuilder:<init>	()V
+    //   37: ldc_w 856
+    //   40: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   43: iload 4
-    //   45: invokevirtual 854	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   48: invokevirtual 186	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   51: invokevirtual 322	com/tencent/mobileqq/transfile/C2CPttDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
+    //   45: invokevirtual 859	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   48: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   51: invokevirtual 327	com/tencent/mobileqq/transfile/C2CPttDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
     //   54: return
-    //   55: new 856	tencent/im/cs/cmd0x346/cmd0x346$RspBody
+    //   55: new 861	tencent/im/cs/cmd0x346/cmd0x346$RspBody
     //   58: dup
-    //   59: invokespecial 857	tencent/im/cs/cmd0x346/cmd0x346$RspBody:<init>	()V
+    //   59: invokespecial 862	tencent/im/cs/cmd0x346/cmd0x346$RspBody:<init>	()V
     //   62: astore_1
     //   63: aload_1
     //   64: aload_3
-    //   65: invokevirtual 861	tencent/im/cs/cmd0x346/cmd0x346$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   65: invokevirtual 866	tencent/im/cs/cmd0x346/cmd0x346$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   68: pop
     //   69: aload_1
-    //   70: getfield 862	tencent/im/cs/cmd0x346/cmd0x346$RspBody:uint32_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   73: invokevirtual 865	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   70: getfield 867	tencent/im/cs/cmd0x346/cmd0x346$RspBody:uint32_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   73: invokevirtual 870	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
     //   76: ifeq +91 -> 167
     //   79: aload_1
-    //   80: getfield 862	tencent/im/cs/cmd0x346/cmd0x346$RspBody:uint32_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   83: invokevirtual 867	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   80: getfield 867	tencent/im/cs/cmd0x346/cmd0x346$RspBody:uint32_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   83: invokevirtual 872	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   86: i2l
     //   87: lstore 5
     //   89: lload 5
-    //   91: ldc2_w 868
+    //   91: ldc2_w 873
     //   94: lcmp
     //   95: ifne -41 -> 54
     //   98: aload_1
-    //   99: getfield 873	tencent/im/cs/cmd0x346/cmd0x346$RspBody:msg_download_succ_rsp	Ltencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp;
-    //   102: invokevirtual 876	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp:has	()Z
+    //   99: getfield 878	tencent/im/cs/cmd0x346/cmd0x346$RspBody:msg_download_succ_rsp	Ltencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp;
+    //   102: invokevirtual 881	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp:has	()Z
     //   105: ifeq -51 -> 54
     //   108: aload_1
-    //   109: getfield 873	tencent/im/cs/cmd0x346/cmd0x346$RspBody:msg_download_succ_rsp	Ltencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp;
-    //   112: invokevirtual 879	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   115: checkcast 875	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp
-    //   118: getfield 883	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp:int32_ret_code	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   121: invokevirtual 886	com/tencent/mobileqq/pb/PBInt32Field:get	()I
+    //   109: getfield 878	tencent/im/cs/cmd0x346/cmd0x346$RspBody:msg_download_succ_rsp	Ltencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp;
+    //   112: invokevirtual 884	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   115: checkcast 880	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp
+    //   118: getfield 888	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp:int32_ret_code	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   121: invokevirtual 891	com/tencent/mobileqq/pb/PBInt32Field:get	()I
     //   124: istore 4
-    //   126: invokestatic 163	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   126: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   129: ifeq -75 -> 54
     //   132: aload_0
-    //   133: ldc_w 849
-    //   136: new 167	java/lang/StringBuilder
+    //   133: ldc_w 854
+    //   136: new 173	java/lang/StringBuilder
     //   139: dup
-    //   140: invokespecial 168	java/lang/StringBuilder:<init>	()V
-    //   143: ldc_w 888
-    //   146: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   140: invokespecial 174	java/lang/StringBuilder:<init>	()V
+    //   143: ldc_w 893
+    //   146: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   149: iload 4
-    //   151: invokevirtual 854	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   154: invokevirtual 186	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   157: invokevirtual 322	com/tencent/mobileqq/transfile/C2CPttDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
+    //   151: invokevirtual 859	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   154: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   157: invokevirtual 327	com/tencent/mobileqq/transfile/C2CPttDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
     //   160: return
     //   161: astore_1
     //   162: aload_1
-    //   163: invokevirtual 891	java/lang/Exception:printStackTrace	()V
+    //   163: invokevirtual 896	java/lang/Exception:printStackTrace	()V
     //   166: return
-    //   167: ldc2_w 892
+    //   167: ldc2_w 897
     //   170: lstore 5
     //   172: goto -83 -> 89
     //   175: astore_1
@@ -601,9 +602,9 @@ public class C2CPttDownloadProcessor
     super.onError();
     if (this.mUiRequest.mDownCallBack != null)
     {
-      aycy localaycy = new aycy();
-      localaycy.a = -1;
-      this.mUiRequest.mDownCallBack.a(localaycy);
+      azjk localazjk = new azjk();
+      localazjk.a = -1;
+      this.mUiRequest.mDownCallBack.a(localazjk);
       return;
     }
     sendMessageToUpdate(2005);
@@ -701,14 +702,14 @@ public class C2CPttDownloadProcessor
     }
     if (this.mSttManager.b(this.mPtt))
     {
-      bcef.b(null, "dc00898", "", "", "0X8009DF6", "0X8009DF6", 0, 0, "", "", "", "");
+      bdla.b(null, "dc00898", "", "", "0X8009DF6", "0X8009DF6", 0, 0, "", "", "", "");
       this.mSttManager.b(this.mPtt, 2);
     }
     if (this.mUiRequest.mDownCallBack != null)
     {
-      localObject = new aycy();
-      ((aycy)localObject).a = 0;
-      this.mUiRequest.mDownCallBack.a((aycy)localObject);
+      localObject = new azjk();
+      ((azjk)localObject).a = 0;
+      this.mUiRequest.mDownCallBack.a((azjk)localObject);
       return;
     }
     sendMessageToUpdate(2003);

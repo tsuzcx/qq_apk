@@ -1,78 +1,39 @@
-import android.content.Context;
-import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View.OnTouchListener;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 
-public abstract class asmv
-  extends bayu
+class asmv
+  implements View.OnTouchListener
 {
-  protected int a;
-  protected Bundle a;
-  protected String a;
+  asmv(asmt paramasmt, View paramView, FrameLayout paramFrameLayout, TextView paramTextView1, TextView paramTextView2, asms paramasms, int paramInt) {}
   
-  public asmv(String paramString, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<bayt> a(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    return new ArrayList(0);
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-  }
-  
-  public void a(View paramView)
-  {
-    int i = d();
-    if (i == 1) {
-      if (paramView.getId() == 2131366631) {
-        b(paramView);
-      }
-    }
-    while (i <= 1)
+    switch (paramMotionEvent.getActionMasked())
     {
-      return;
-      c(paramView);
-      return;
     }
-    d(paramView);
+    for (;;)
+    {
+      return true;
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setAlpha(0.5F);
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
+      this.b.setAlpha(0.5F);
+      continue;
+      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setAlpha(1.0F);
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+      this.b.setAlpha(1.0F);
+      asmt.a(this.jdField_a_of_type_Asmt, this.jdField_a_of_type_Asms, this.jdField_a_of_type_Int);
+      continue;
+      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setAlpha(1.0F);
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+      this.b.setAlpha(1.0F);
+    }
   }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  protected abstract void b(View paramView);
-  
-  public abstract boolean b();
-  
-  public abstract String c();
-  
-  protected abstract void c(View paramView);
-  
-  public int d()
-  {
-    return 0;
-  }
-  
-  public abstract String d();
-  
-  protected abstract void d(View paramView);
-  
-  public abstract int e();
 }
 
 

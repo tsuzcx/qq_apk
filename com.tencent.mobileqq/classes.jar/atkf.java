@@ -1,25 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.data.FavFileInfo;
+import java.util.List;
 
-class atkf
-  implements EIPCResultCallback
+public abstract class atkf
 {
-  atkf(atke paramatke) {}
+  long jdField_a_of_type_Long;
+  List<FavFileInfo> jdField_a_of_type_JavaUtilList;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public atkf()
   {
-    if (!paramEIPCResult.isSuccess())
-    {
-      QLog.d("QFlutter.launcher", 1, "install IPC fail");
-      atjz.b();
-      atke.a(this.a, 1, true);
-    }
+    this.a = 0L;
   }
+  
+  protected abstract void a(int paramInt, List<FavFileInfo> paramList, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atkf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.av.app;
 
-import amtj;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.text.TextUtils;
-import apub;
+import anvx;
+import aqxe;
 import com.tencent.av.VideoController;
 import com.tencent.av.video.call.ClientLogReport;
 import com.tencent.av.videoeffect.VideoEffectTest;
@@ -29,27 +29,27 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
-import lbc;
-import lbh;
-import lbj;
-import lbk;
-import ldk;
-import ldl;
-import ldm;
-import ldn;
+import lbf;
+import lbl;
+import lbn;
+import lbo;
 import ldp;
 import ldq;
 import ldr;
 import lds;
-import lke;
+import ldu;
+import ldv;
+import ldw;
+import ldx;
 import lkq;
-import lnu;
-import muy;
-import mvf;
+import llc;
+import loh;
+import mvw;
+import mwd;
 
 public class DeviceCapabilityExamination
 {
-  public static ldq a;
+  public static ldv a;
   public VideoAppInterface a;
   
   public DeviceCapabilityExamination(VideoAppInterface paramVideoAppInterface)
@@ -78,14 +78,14 @@ public class DeviceCapabilityExamination
     return "DT_" + paramInt + "_" + paramString;
   }
   
-  public static String a(int paramInt, lbj paramlbj)
+  public static String a(int paramInt, lbn paramlbn)
   {
-    String str = "enc_[w" + paramlbj.jdField_a_of_type_Int + "h" + paramlbj.jdField_b_of_type_Int + "fYUV420]_";
-    paramlbj = c(paramlbj.jdField_a_of_type_JavaLangString) + str + paramlbj.jdField_c_of_type_Int + "_" + paramlbj.d + "_" + paramlbj.jdField_a_of_type_Int + "x" + paramlbj.jdField_b_of_type_Int;
+    String str = "enc_[w" + paramlbn.jdField_a_of_type_Int + "h" + paramlbn.jdField_b_of_type_Int + "fYUV420]_";
+    paramlbn = c(paramlbn.jdField_a_of_type_JavaLangString) + str + paramlbn.jdField_c_of_type_Int + "_" + paramlbn.d + "_" + paramlbn.jdField_a_of_type_Int + "x" + paramlbn.jdField_b_of_type_Int;
     if ((paramInt == 1) || (paramInt == 2)) {
-      return paramlbj + ".264";
+      return paramlbn + ".264";
     }
-    return paramlbj + ".265";
+    return paramlbn + ".265";
   }
   
   public static String a(String paramString)
@@ -153,17 +153,17 @@ public class DeviceCapabilityExamination
     return localTreeMap;
   }
   
-  public static lds a(int paramInt1, int paramInt2, long paramLong1, String paramString1, String paramString2, int paramInt3, long paramLong2)
+  public static ldx a(int paramInt1, int paramInt2, long paramLong1, String paramString1, String paramString2, int paramInt3, long paramLong2)
   {
-    lds locallds = new lds();
-    locallds.jdField_a_of_type_Long = Long.parseLong(VideoController.a().jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
-    locallds.jdField_b_of_type_Int = paramInt1;
-    locallds.g = paramString2;
-    locallds.h = paramString1;
-    locallds.jdField_c_of_type_Int = paramInt2;
-    locallds.d = ((int)paramLong2);
-    locallds.e = ((int)paramLong1);
-    return locallds;
+    ldx localldx = new ldx();
+    localldx.jdField_a_of_type_Long = Long.parseLong(VideoController.a().jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
+    localldx.jdField_b_of_type_Int = paramInt1;
+    localldx.g = paramString2;
+    localldx.h = paramString1;
+    localldx.jdField_c_of_type_Int = paramInt2;
+    localldx.d = ((int)paramLong2);
+    localldx.e = ((int)paramLong1);
+    return localldx;
   }
   
   private void a()
@@ -179,7 +179,7 @@ public class DeviceCapabilityExamination
     Object localObject1 = a().edit();
     ((SharedPreferences.Editor)localObject1).putLong(a(paramInt, "doneTime"), l);
     ((SharedPreferences.Editor)localObject1).commit();
-    int i = apub.a().a(431, "");
+    int i = aqxe.a().a(431, "");
     localObject1 = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject1 instanceof VideoAppInterface))
     {
@@ -188,12 +188,12 @@ public class DeviceCapabilityExamination
       ((HashMap)localObject1).put("uin", ((VideoAppInterface)localObject2).getCurrentAccountUin());
       ((HashMap)localObject1).put("ver", i + "");
       ((HashMap)localObject1).put("sdk", String.valueOf(Build.VERSION.SDK_INT));
-      localObject2 = lbh.a(paramInt);
+      localObject2 = lbl.a(paramInt);
       if (localObject2 != null)
       {
-        i = lnu.a((lbk)localObject2);
+        i = loh.a((lbo)localObject2);
         ((HashMap)localObject1).put("test" + paramInt, "1");
-        ((HashMap)localObject1).put("test" + paramInt + "_ver", ((lbk)localObject2).e + "");
+        ((HashMap)localObject1).put("test" + paramInt + "_ver", ((lbo)localObject2).e + "");
         ((HashMap)localObject1).put("test" + paramInt + "_flag", i + "");
       }
       UserAction.onUserAction("qav_codec_done", true, -1L, -1L, (Map)localObject1, true, true);
@@ -210,8 +210,8 @@ public class DeviceCapabilityExamination
   
   public static void a(int paramInt, VideoAppInterface paramVideoAppInterface)
   {
-    muy.a(paramVideoAppInterface);
-    muy.a("DeviceCapabilityExamination", paramVideoAppInterface);
+    mvw.a(paramVideoAppInterface);
+    mvw.a("DeviceCapabilityExamination", paramVideoAppInterface);
     ThreadManager.excute(new DeviceCapabilityExamination.1(paramInt, paramVideoAppInterface), 16, null, true);
   }
   
@@ -225,19 +225,19 @@ public class DeviceCapabilityExamination
     b(paramInt, paramString);
   }
   
-  public static void a(long paramLong, VideoAppInterface paramVideoAppInterface, int paramInt, lbj paramlbj, ldl paramldl)
+  public static void a(long paramLong, VideoAppInterface paramVideoAppInterface, int paramInt, lbn paramlbn, ldq paramldq)
   {
     long l = System.currentTimeMillis();
     VideoController localVideoController = paramVideoAppInterface.a();
-    ldm localldm = new ldm();
-    localldm.jdField_a_of_type_Int = paramInt;
-    localldm.jdField_a_of_type_JavaLangString = paramlbj.jdField_a_of_type_JavaLangString;
-    localldm.jdField_b_of_type_JavaLangString = a(paramlbj.jdField_a_of_type_JavaLangString);
-    localldm.d = a(paramInt, paramlbj);
-    localldm.jdField_c_of_type_Int = paramlbj.jdField_c_of_type_Int;
-    localldm.jdField_b_of_type_Int = paramlbj.d;
-    localldm.jdField_c_of_type_JavaLangString = paramlbj.jdField_c_of_type_JavaLangString;
-    ldk.a(paramLong, localVideoController, localldm, new ldn(l, paramInt, localldm, paramlbj, paramVideoAppInterface, paramLong, paramldl));
+    ldr localldr = new ldr();
+    localldr.jdField_a_of_type_Int = paramInt;
+    localldr.jdField_a_of_type_JavaLangString = paramlbn.jdField_a_of_type_JavaLangString;
+    localldr.jdField_b_of_type_JavaLangString = a(paramlbn.jdField_a_of_type_JavaLangString);
+    localldr.d = a(paramInt, paramlbn);
+    localldr.jdField_c_of_type_Int = paramlbn.jdField_c_of_type_Int;
+    localldr.jdField_b_of_type_Int = paramlbn.d;
+    localldr.jdField_c_of_type_JavaLangString = paramlbn.jdField_c_of_type_JavaLangString;
+    ldp.a(paramLong, localVideoController, localldr, new lds(l, paramInt, localldr, paramlbn, paramVideoAppInterface, paramLong, paramldq));
   }
   
   public static void a(VideoAppInterface paramVideoAppInterface)
@@ -270,7 +270,7 @@ public class DeviceCapabilityExamination
     QLog.w("DeviceCapabilityExamination", 1, "testHWCodecIfNeed, no");
   }
   
-  public static void a(lbk paramlbk, String paramString1, String paramString2)
+  public static void a(lbo paramlbo, String paramString1, String paramString2)
   {
     if (!NetworkUtil.isWifiConnected(null))
     {
@@ -279,10 +279,10 @@ public class DeviceCapabilityExamination
     }
     try
     {
-      if (jdField_a_of_type_Ldq == null) {
-        jdField_a_of_type_Ldq = new ldq();
+      if (jdField_a_of_type_Ldv == null) {
+        jdField_a_of_type_Ldv = new ldv();
       }
-      if (jdField_a_of_type_Ldq.a(paramString1, paramString2))
+      if (jdField_a_of_type_Ldv.a(paramString1, paramString2))
       {
         QLog.w("DeviceCapabilityExamination", 1, "startDownloadTestResource, 下载中 , md5[" + paramString1 + "]");
         return;
@@ -292,28 +292,28 @@ public class DeviceCapabilityExamination
     if (AudioHelper.f()) {
       QLog.w("DeviceCapabilityExamination", 1, "startDownloadTestResource, md5[" + paramString1 + "]");
     }
-    paramlbk = new HttpNetReq();
-    paramlbk.mCallback = new ldr();
-    paramlbk.mReqUrl = paramString2;
-    paramlbk.mHttpMethod = 0;
-    paramlbk.mOutPath = (c(paramString1) + "sample.zip");
-    paramlbk.mMsgId = paramString1;
-    paramlbk.setUserData(paramString1);
-    lbc.a().sendReq(paramlbk);
+    paramlbo = new HttpNetReq();
+    paramlbo.mCallback = new ldw();
+    paramlbo.mReqUrl = paramString2;
+    paramlbo.mHttpMethod = 0;
+    paramlbo.mOutPath = (c(paramString1) + "sample.zip");
+    paramlbo.mMsgId = paramString1;
+    paramlbo.setUserData(paramString1);
+    lbf.a().sendReq(paramlbo);
   }
   
-  public static void a(lds paramlds, int paramInt1, int paramInt2)
+  public static void a(ldx paramldx, int paramInt1, int paramInt2)
   {
-    ClientLogReport.instance().sendLog(paramlds.jdField_a_of_type_Long, 5274, paramlds.a().getBytes(), false);
-    AudioHelper.c(amtj.a(2131702298) + paramInt1 + "], resultCode:" + paramInt2);
+    ClientLogReport.instance().sendLog(paramldx.jdField_a_of_type_Long, 5274, paramldx.a().getBytes(), false);
+    AudioHelper.c(anvx.a(2131702649) + paramInt1 + "], resultCode:" + paramInt2);
     a(paramInt1, paramInt2);
-    a(paramInt1, paramlds.h);
+    a(paramInt1, paramldx.h);
   }
   
   static boolean a(int paramInt)
   {
-    lbk locallbk = lbh.a(paramInt);
-    if ((locallbk == null) || (System.currentTimeMillis() > locallbk.jdField_a_of_type_Long)) {}
+    lbo locallbo = lbl.a(paramInt);
+    if ((locallbo == null) || (System.currentTimeMillis() > locallbo.jdField_a_of_type_Long)) {}
     SharedPreferences localSharedPreferences;
     long l1;
     do
@@ -321,19 +321,19 @@ public class DeviceCapabilityExamination
       do
       {
         return false;
-        b(locallbk.jdField_b_of_type_Int, locallbk.e);
+        b(locallbo.jdField_b_of_type_Int, locallbo.e);
         localSharedPreferences = a();
         l1 = localSharedPreferences.getLong(a(paramInt, "doneTime"), 0L);
         if (l1 != 0L) {
           break;
         }
-      } while (!a(locallbk, true));
+      } while (!a(locallbo, true));
       if (((paramInt == 8) || (paramInt == 2)) && (TextUtils.isEmpty(AVSoUtils.d())))
       {
         QLog.w("DeviceCapabilityExamination", 1, "runTest, cannot find libTcHevcDec2.so for hardware encode detect!!");
         return false;
       }
-      a(locallbk.jdField_b_of_type_Int);
+      a(locallbo.jdField_b_of_type_Int);
       return true;
     } while (!AudioHelper.f());
     int i = localSharedPreferences.getInt(a(paramInt, "result"), -99);
@@ -342,29 +342,29 @@ public class DeviceCapabilityExamination
     return false;
   }
   
-  public static boolean a(lbk paramlbk, boolean paramBoolean)
+  public static boolean a(lbo paramlbo, boolean paramBoolean)
   {
-    if (paramlbk == null) {}
-    lbj locallbj;
+    if (paramlbo == null) {}
+    lbn locallbn;
     do
     {
       do
       {
         return false;
-      } while (lnu.a(paramlbk) == 0);
-      locallbj = b(paramlbk);
-      if (locallbj == null)
+      } while (loh.a(paramlbo) == 0);
+      locallbn = b(paramlbo);
+      if (locallbn == null)
       {
-        QLog.w("DeviceCapabilityExamination", 1, "checkCondition, 无样本, codec[" + paramlbk.jdField_b_of_type_Int + "]");
+        QLog.w("DeviceCapabilityExamination", 1, "checkCondition, 无样本, codec[" + paramlbo.jdField_b_of_type_Int + "]");
         return false;
       }
-      String str = a(locallbj.jdField_a_of_type_JavaLangString);
+      String str = a(locallbn.jdField_a_of_type_JavaLangString);
       if (new File(str).exists()) {
         break;
       }
-      QLog.w("DeviceCapabilityExamination", 1, "checkCondition, 样本未下载, codec[" + paramlbk.jdField_b_of_type_Int + "], path[" + str + "], downloadRes[" + paramBoolean + "]");
+      QLog.w("DeviceCapabilityExamination", 1, "checkCondition, 样本未下载, codec[" + paramlbo.jdField_b_of_type_Int + "], path[" + str + "], downloadRes[" + paramBoolean + "]");
     } while (!paramBoolean);
-    a(paramlbk, locallbj.jdField_a_of_type_JavaLangString, locallbj.jdField_b_of_type_JavaLangString);
+    a(paramlbo, locallbn.jdField_a_of_type_JavaLangString, locallbn.jdField_b_of_type_JavaLangString);
     return false;
     return true;
   }
@@ -375,14 +375,14 @@ public class DeviceCapabilityExamination
     return (Integer[])paramTreeMap.get((int)(System.currentTimeMillis() % paramTreeMap.size()));
   }
   
-  private static lbj b(lbk paramlbk)
+  private static lbn b(lbo paramlbo)
   {
     Object localObject1 = null;
     Object localObject3 = null;
     Object localObject2 = localObject3;
-    if (paramlbk.jdField_a_of_type_JavaUtilHashMap != null)
+    if (paramlbo.jdField_a_of_type_JavaUtilHashMap != null)
     {
-      if (paramlbk.jdField_a_of_type_JavaUtilHashMap.size() != 0) {
+      if (paramlbo.jdField_a_of_type_JavaUtilHashMap.size() != 0) {
         break label30;
       }
       localObject2 = localObject3;
@@ -392,21 +392,21 @@ public class DeviceCapabilityExamination
     {
       return localObject2;
       localObject3 = a();
-      localObject2 = ((SharedPreferences)localObject3).getString(a(paramlbk.jdField_b_of_type_Int, "md5"), null);
+      localObject2 = ((SharedPreferences)localObject3).getString(a(paramlbo.jdField_b_of_type_Int, "md5"), null);
       if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        localObject1 = (lbj)paramlbk.jdField_a_of_type_JavaUtilHashMap.get(localObject2);
+        localObject1 = (lbn)paramlbo.jdField_a_of_type_JavaUtilHashMap.get(localObject2);
       }
       if (localObject1 == null) {
         break;
       }
       localObject2 = localObject1;
-    } while (!TextUtils.isEmpty(((lbj)localObject1).jdField_b_of_type_JavaLangString));
-    int i = paramlbk.jdField_a_of_type_JavaUtilHashMap.size();
+    } while (!TextUtils.isEmpty(((lbn)localObject1).jdField_b_of_type_JavaLangString));
+    int i = paramlbo.jdField_a_of_type_JavaUtilHashMap.size();
     i = (int)(System.currentTimeMillis() % i);
-    localObject1 = (String)paramlbk.jdField_a_of_type_JavaUtilHashMap.keySet().toArray()[i];
-    localObject2 = (lbj)paramlbk.jdField_a_of_type_JavaUtilHashMap.get(localObject1);
+    localObject1 = (String)paramlbo.jdField_a_of_type_JavaUtilHashMap.keySet().toArray()[i];
+    localObject2 = (lbn)paramlbo.jdField_a_of_type_JavaUtilHashMap.get(localObject1);
     localObject3 = ((SharedPreferences)localObject3).edit();
-    ((SharedPreferences.Editor)localObject3).putString(a(paramlbk.jdField_b_of_type_Int, "md5"), (String)localObject1);
+    ((SharedPreferences.Editor)localObject3).putString(a(paramlbo.jdField_b_of_type_Int, "md5"), (String)localObject1);
     ((SharedPreferences.Editor)localObject3).commit();
     return localObject2;
   }
@@ -416,14 +416,14 @@ public class DeviceCapabilityExamination
     if (AudioHelper.f()) {
       QLog.d("DeviceCapabilityExamination", 1, "testVideoEffectIfNeed");
     }
-    Object localObject = lkq.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp());
+    Object localObject = llc.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp());
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
       if (AudioHelper.f()) {
         QLog.d("DeviceCapabilityExamination", 1, "testVideoEffectIfNeed test config: \n" + (String)localObject);
       }
-      localObject = new lke((String)localObject);
-      if (new mvf().a((lke)localObject) == 1)
+      localObject = new lkq((String)localObject);
+      if (new mwd().a((lkq)localObject) == 1)
       {
         localObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getSharedPreferences("qav_sp_video_effect", 0);
         if (((SharedPreferences)localObject).getBoolean("qav_key_test_executed", false)) {
@@ -432,7 +432,7 @@ public class DeviceCapabilityExamination
         localObject = ((SharedPreferences)localObject).edit();
         ((SharedPreferences.Editor)localObject).putBoolean("qav_key_test_executed", true);
         ((SharedPreferences.Editor)localObject).commit();
-        new VideoEffectTest(new ldp(this)).a();
+        new VideoEffectTest(new ldu(this)).a();
       }
     }
     label161:

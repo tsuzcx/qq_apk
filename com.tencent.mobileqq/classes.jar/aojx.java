@@ -1,20 +1,8 @@
-import android.graphics.Rect;
-
-public class aojx
+public abstract interface aojx
 {
-  public float a;
-  public int a;
-  public Rect a;
+  public abstract void a();
   
-  public aojx()
-  {
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  }
-  
-  public String toString()
-  {
-    return String.format("AIRect[%d,%.2f,%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Float.valueOf(this.jdField_a_of_type_Float), this.jdField_a_of_type_AndroidGraphicsRect });
-  }
+  public abstract void a(String paramString);
 }
 
 

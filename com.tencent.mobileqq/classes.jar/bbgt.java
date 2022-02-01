@@ -1,61 +1,53 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.SecUtil;
+import java.io.IOException;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class bbgt
-  implements bbha
+class bbgt
+  implements INetEngine.INetEngineListener
 {
-  protected View a;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bbhb jdField_a_of_type_Bbhb;
-  private List<bbhb> jdField_a_of_type_JavaUtilList;
-  private TextView b;
+  bbgt(bbgq parambbgq) {}
   
-  public bbgt() {}
-  
-  public bbgt(ViewGroup paramViewGroup, int paramInt)
+  public void onResp(NetResp paramNetResp)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371352));
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370109));
-    this.jdField_a_of_type_Bbhb = new bbgv(this.jdField_a_of_type_AndroidViewView.findViewById(2131368870));
+    Object localObject = (FilterDesc)paramNetResp.mReq.getUserData();
+    if (paramNetResp.mResult != 0) {
+      lbd.f("CaptureVideoFilterManager", "download file failed. errorCode: " + paramNetResp.mErrCode + ", errorMsg: " + paramNetResp.mErrDesc + ", file: " + ((FilterDesc)localObject).resurl);
+    }
+    for (;;)
+    {
+      return;
+      if (!((FilterDesc)localObject).resMD5.equalsIgnoreCase(SecUtil.getFileMd5(paramNetResp.mReq.mOutPath)))
+      {
+        lbd.f("CaptureVideoFilterManager", "download file failed: md5 is not match.");
+        FileUtils.deleteFile(paramNetResp.mReq.mOutPath);
+        return;
+      }
+      lbd.f("CaptureVideoFilterManager", "download resFile success. file: " + ((FilterDesc)localObject).resurl);
+      try
+      {
+        localObject = bbgq.b;
+        FileUtils.uncompressZip(paramNetResp.mReq.mOutPath, (String)localObject, false);
+        FileUtils.deleteFile(paramNetResp.mReq.mOutPath);
+        if ((bbgq.a(this.a).decrementAndGet() == 0) && (bbgq.a(this.a) != null))
+        {
+          bbgq.a(this.a).a(true);
+          return;
+        }
+      }
+      catch (IOException paramNetResp)
+      {
+        paramNetResp.printStackTrace();
+        lbd.f("CaptureVideoFilterManager", "unzip file failed.");
+      }
+    }
   }
   
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public LinearLayout a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
-  }
-  
-  public TextView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  public bbhb a()
-  {
-    return this.jdField_a_of_type_Bbhb;
-  }
-  
-  public List<bbhb> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public TextView b()
-  {
-    return this.b;
-  }
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

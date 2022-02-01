@@ -1,85 +1,67 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.troop.TroopInfo;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import tencent.intimate_relation.intimate_relation.IntimateBuddy;
+import tencent.intimate_relation.intimate_relation.IntimateInfo;
+import tencent.intimate_relation.intimate_relation.IntimateLadybro;
+import tencent.intimate_relation.intimate_relation.IntimateLover;
+import tencent.intimate_relation.intimate_relation.SnsRelationInfo;
 
 public class afsj
-  implements afrc
 {
-  private BaseChatPie a;
+  public int a;
   
-  public afsj(BaseChatPie paramBaseChatPie)
+  public static afsj a(byte[] paramArrayOfByte)
   {
-    this.a = paramBaseChatPie;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt == 8)
+    intimate_relation.IntimateInfo localIntimateInfo = null;
+    intimate_relation.SnsRelationInfo localSnsRelationInfo = new intimate_relation.SnsRelationInfo();
+    for (;;)
     {
-      if ((this.a.getActivity() != null) && (this.a.getActivity().getIntent() != null)) {
-        break label44;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ReplyOnlyHelper", 2, "params is error");
-      }
-    }
-    return;
-    label44:
-    Intent localIntent = this.a.getActivity().getIntent();
-    long l = localIntent.getLongExtra("key_reply_only_uniseq", 0L);
-    ChatMessage localChatMessage;
-    Object localObject2;
-    Object localObject1;
-    if (l > 0L)
-    {
-      localChatMessage = ((azye)this.a.app.getManager(340)).a(l);
-      localObject2 = localIntent.getStringExtra("troop_code");
-      localObject1 = localObject2;
-      if (TextUtils.isEmpty((CharSequence)localObject2)) {
-        localObject1 = "0";
-      }
-    }
-    try
-    {
-      l = Long.parseLong((String)localObject1);
-      localObject1 = null;
-      if (l > 0L)
+      try
       {
-        localObject2 = (TroopManager)this.a.app.getManager(52);
-        localObject1 = l + "";
-        localObject2 = ((TroopManager)localObject2).b((String)localObject1);
-        if ((localObject2 != null) && (!TextUtils.isEmpty(((TroopInfo)localObject2).getTroopName()))) {
-          localObject1 = ((TroopInfo)localObject2).getTroopName();
+        localSnsRelationInfo.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = localIntimateInfo;
+        if (localSnsRelationInfo.intimate_list.has())
+        {
+          paramArrayOfByte = localIntimateInfo;
+          if (localSnsRelationInfo.intimate_list.size() > 0)
+          {
+            paramArrayOfByte = new afsj();
+            localIntimateInfo = (intimate_relation.IntimateInfo)localSnsRelationInfo.intimate_list.get(0);
+            if ((!localIntimateInfo.lover.has()) || (!((intimate_relation.IntimateLover)localIntimateInfo.lover.get()).level.has())) {
+              break label173;
+            }
+            paramArrayOfByte.a = ((intimate_relation.IntimateLover)localIntimateInfo.lover.get()).level.get();
+          }
         }
-      }
-      else
-      {
-        this.a.replyMessageAtInput(localChatMessage, 0, l, (String)localObject1);
-        localIntent.removeExtra("key_reply_only_uniseq");
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
         if (QLog.isColorLevel()) {
-          QLog.d("ReplyOnlyHelper", 2, "replyMessageAtInput", localException);
+          QLog.i("ExtSnsIntimateInfo", 1, "parseFrom retInfo:" + paramArrayOfByte);
         }
-        l = 0L;
+        return paramArrayOfByte;
+      }
+      catch (Throwable paramArrayOfByte)
+      {
+        QLog.i("ExtSnsIntimateInfo", 1, "parseFrom error:" + paramArrayOfByte.getMessage());
+        return null;
+      }
+      label173:
+      if ((localIntimateInfo.buddy.has()) && (((intimate_relation.IntimateBuddy)localIntimateInfo.buddy.get()).level.has())) {
+        paramArrayOfByte.a = ((intimate_relation.IntimateBuddy)localIntimateInfo.buddy.get()).level.get();
+      } else if ((localIntimateInfo.ladybro.has()) && (((intimate_relation.IntimateLadybro)localIntimateInfo.ladybro.get()).level.has())) {
+        paramArrayOfByte.a = ((intimate_relation.IntimateLadybro)localIntimateInfo.ladybro.get()).level.get();
       }
     }
   }
   
-  public int[] a()
+  @NonNull
+  public String toString()
   {
-    return new int[] { 8 };
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ExtSnsIntimatePushInfo{");
+    localStringBuilder.append("intimate_level:").append(this.a).append(", ");
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

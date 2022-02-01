@@ -1,23 +1,24 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.PopupWindow;
+import com.tencent.biz.subscribe.bizdapters.DetailBaseBlock.4.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class zsr
+  implements zrx
 {
-  public View a;
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public zsy a;
-  public ImageView b;
-  public TextView b;
-  public ImageView c;
-  public TextView c;
-  public TextView d;
-  public TextView e;
-  public TextView f;
-  public TextView g;
+  public zsr(DetailBaseBlock.4.1 param1) {}
+  
+  public void a()
+  {
+    QLog.d(zsl.jdField_a_of_type_JavaLangString, 2, "showPraiseTipView");
+  }
+  
+  public void b()
+  {
+    QLog.d(zsl.jdField_a_of_type_JavaLangString, 2, "dismiss popupWindow priseTipView");
+    if (this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
+      this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+    }
+  }
 }
 
 

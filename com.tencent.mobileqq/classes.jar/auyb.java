@@ -1,26 +1,10 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.qcircleshadow.local.requests.QCircleSetCircleSwitchRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.image.URLImageView;
 
-class auyb
-  implements CompoundButton.OnCheckedChangeListener
+public class auyb
 {
-  auyb(auya paramauya) {}
+  public URLImageView a;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (Object localObject = "1";; localObject = "0")
-    {
-      localObject = new QCircleSetCircleSwitchRequest("qqcircle", "qqcircle_entrance_enable", (String)localObject);
-      VSNetworkHelper.getInstance().sendRequest((VSBaseRequest)localObject, new auyc(this, paramBoolean));
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-    }
-  }
+  public auyb(auxz paramauxz) {}
 }
 
 

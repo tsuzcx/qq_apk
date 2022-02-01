@@ -1,10 +1,19 @@
-import android.widget.TextView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FavEmosmManageActivity;
 
 public class adxo
-  extends aliz
+  extends BroadcastReceiver
 {
-  public adxi a;
-  public TextView a;
+  public adxo(FavEmosmManageActivity paramFavEmosmManageActivity) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if (FavEmosmManageActivity.a(this.a) != null) {
+      FavEmosmManageActivity.a(this.a).a(paramContext, paramIntent);
+    }
+  }
 }
 
 

@@ -1,31 +1,12 @@
-import com.tencent.biz.ui.CustomMenuBar;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.ButtonInfo;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.widget.TextView;
 
-class ahjp
-  implements zuz
+public class ahjp
+  extends afos
 {
-  ahjp(ahiu paramahiu) {}
+  public TextView b;
+  public TextView c;
   
-  public void a(String paramString, int paramInt1, int paramInt2)
-  {
-    if ((agjp.a(this.a.sessionInfo.curFriendUin)) && (paramInt1 == 0)) {
-      this.a.jdField_a_of_type_ComTencentBizUiCustomMenuBar.a();
-    }
-    for (;;)
-    {
-      paramString = this.a.jdField_a_of_type_Ocw.a(this.a.app, this.a.getCurFriendUin(), paramInt1);
-      if (paramString != null) {
-        nsf.a.b(this.a.getCurFriendUin(), paramString.id.get(), paramString.name.get());
-      }
-      return;
-      com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
-      this.a.jdField_a_of_type_Ocw.a(paramString, this.a.mActivity, this.a.app, this.a.getCurFriendUin(), paramInt1, ahiu.a(this.a), ahiu.b(this.a), paramInt2, this.a.sessionInfo);
-      anxs.a(this.a.app, this.a.sessionInfo.curFriendUin, ahiu.e(this.a), paramInt1);
-    }
-  }
+  public ahjp(ahjn paramahjn) {}
 }
 
 

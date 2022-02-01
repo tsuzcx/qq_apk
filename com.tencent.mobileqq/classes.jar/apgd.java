@@ -1,17 +1,53 @@
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
+import com.tencent.qphone.base.util.QLog;
 
-public class apgd
+class apgd
+  implements apmi
 {
-  public Set<Integer> a;
-  public boolean a;
-  public boolean b = false;
-  public boolean c = false;
+  apgd(apgb paramapgb, ARCommonConfigInfo.NativeSoRes paramNativeSoRes) {}
   
-  public apgd()
+  public void a()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
+    apmi localapmi = apgb.a(this.jdField_a_of_type_Apgb, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    if (localapmi != null) {
+      localapmi.a();
+    }
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    apmi localapmi = apgb.a(this.jdField_a_of_type_Apgb, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    if (localapmi != null) {
+      localapmi.a(paramLong1, paramLong2);
+    }
+  }
+  
+  public void a(boolean paramBoolean, apmj paramapmj)
+  {
+    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes onARResourceDownloadComplete. result = " + paramBoolean + ", name = " + this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a + ", filename = " + paramapmj.c + ", url = " + paramapmj.a);
+    if (paramBoolean) {
+      if (!apgb.a(this.jdField_a_of_type_Apgb, paramapmj.c, paramapmj.b))
+      {
+        apgb.a(this.jdField_a_of_type_Apgb, paramapmj.c);
+        QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes failed. checkFileValid failed.");
+      }
+    }
+    apmi localapmi;
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_Apgb.a(paramapmj.d, paramapmj.c, paramapmj.b) == 0) {}
+      localapmi = apgb.a(this.jdField_a_of_type_Apgb, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    } while (localapmi == null);
+    localapmi.a(paramBoolean, paramapmj);
+  }
+  
+  public void b()
+  {
+    apmi localapmi = apgb.a(this.jdField_a_of_type_Apgb, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    if (localapmi != null) {
+      localapmi.b();
+    }
   }
 }
 

@@ -1,16 +1,22 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class akzx
   implements View.OnClickListener
 {
-  public akzx(PhoneContactTabView paramPhoneContactTabView) {}
+  public akzx(DrawHbFragment paramDrawHbFragment) {}
   
   public void onClick(View paramView)
   {
-    PhoneContactTabView.a(this.a);
+    if ((paramView instanceof TextView))
+    {
+      DrawHbFragment.a(this.a).setText(((TextView)paramView).getText().toString());
+      DrawHbFragment.a(this.a).c("draw.wrappacket.choose");
+    }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

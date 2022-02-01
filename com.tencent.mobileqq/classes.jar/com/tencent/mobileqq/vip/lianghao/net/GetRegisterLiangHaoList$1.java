@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.vip.lianghao.net;
 
 import android.os.SystemClock;
-import bgqe;
-import bgqm;
+import biao;
+import biaw;
 
 public class GetRegisterLiangHaoList$1
   implements Runnable
 {
-  public GetRegisterLiangHaoList$1(bgqm parambgqm) {}
+  public GetRegisterLiangHaoList$1(biaw parambiaw) {}
   
   public void run()
   {
-    bgqm.a(this.this$0, SystemClock.elapsedRealtime());
-    bgqe localbgqe = bgqm.a(this.this$0);
-    bgqm.a(this.this$0, localbgqe);
+    biaw.a(this.this$0, SystemClock.elapsedRealtime());
+    biao localbiao = biaw.a(this.this$0);
+    biaw.a(this.this$0, localbiao);
   }
 }
 

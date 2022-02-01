@@ -1,22 +1,26 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public class avzn
-  extends GestureDetector.SimpleOnGestureListener
+final class avzn
+  extends BroadcastReceiver
 {
-  public avzn(TabPageIndicator paramTabPageIndicator) {}
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TabPageIndicator", 2, "onSingleTapConfirmed() called with: e = [" + paramMotionEvent + "]");
+    if ((avzm.a != null) && (avzm.a.size() > 0))
+    {
+      Iterator localIterator = avzm.a.iterator();
+      while (localIterator.hasNext())
+      {
+        avzm localavzm = (avzm)((WeakReference)localIterator.next()).get();
+        if (localavzm != null) {
+          localavzm.a(paramContext, paramIntent);
+        }
+      }
     }
-    if (TabPageIndicator.a(this.a) != null) {
-      this.a.performClick();
-    }
-    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 

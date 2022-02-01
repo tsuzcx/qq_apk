@@ -1,16 +1,4 @@
-import android.support.annotation.NonNull;
-
-class bmvu
-  implements bmvq
-{
-  bmvu(bmvt parambmvt) {}
-  
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
-  {
-    return bfby.b(paramString);
-  }
-}
+public abstract interface bmvu {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

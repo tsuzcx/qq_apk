@@ -1,160 +1,35 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.AbsListView.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
-import com.tencent.mobileqq.app.face.FaceDrawable;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
+import java.util.HashMap;
 
 public class aelc
-  extends BaseAdapter
+  implements CompoundButton.OnCheckedChangeListener
 {
-  protected int a;
-  protected List<String> a;
+  public aelc(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public aelc(TroopDisbandActivity paramTroopDisbandActivity)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add("0");
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_JavaUtilList.size() == 1) && (this.jdField_a_of_type_JavaUtilList.contains(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.d))) {
+    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131717979), "qqsetting_lock_screen_whenexit_key", paramBoolean);
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (paramBoolean) {}
+    for (Object localObject = "1";; localObject = "0")
+    {
+      bdla.b(localQQAppInterface, "CliOper", "", "", "0X80040D9", "0X80040D9", 0, 0, (String)localObject, "", "", "");
+      if (QLog.isDevelopLevel()) {
+        QLog.i("qqls", 4, "collectPerformance qqls setting isChecked=" + paramBoolean);
+      }
+      localObject = new HashMap();
+      ((HashMap)localObject).put("param_ls_setting", paramBoolean + "");
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.app.getCurrentAccountUin(), "qqlsSettingReprotTag", true, 0L, 0L, (HashMap)localObject, "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.d);
-    notifyDataSetChanged();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(List<String> paramList)
-  {
-    if (paramList != null) {}
-    for (int i = paramList.size();; i = 0)
-    {
-      if (i > 0)
-      {
-        this.jdField_a_of_type_JavaUtilList.clear();
-        this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-        notifyDataSetChanged();
-      }
-      return;
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    return this.jdField_a_of_type_JavaUtilList.contains(paramString);
-  }
-  
-  public void b(List<oidb_0x899.memberlist> paramList)
-  {
-    int i;
-    int j;
-    label26:
-    Object localObject;
-    if (paramList != null)
-    {
-      i = paramList.size();
-      if (i <= 0) {
-        return;
-      }
-      this.jdField_a_of_type_JavaUtilList.clear();
-      j = 0;
-      if (j >= i) {
-        break label113;
-      }
-      localObject = (oidb_0x899.memberlist)paramList.get(j);
-      if ((localObject != null) && (((oidb_0x899.memberlist)localObject).uint64_member_uin.has())) {
-        break label71;
-      }
-    }
-    for (;;)
-    {
-      j += 1;
-      break label26;
-      i = 0;
-      break;
-      label71:
-      localObject = String.valueOf(((oidb_0x899.memberlist)localObject).uint64_member_uin.get());
-      if (!this.jdField_a_of_type_JavaUtilList.contains(localObject)) {
-        this.jdField_a_of_type_JavaUtilList.add(localObject);
-      }
-    }
-    label113:
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    int i = this.jdField_a_of_type_JavaUtilList.size();
-    if (i > 6) {
-      return 6;
-    }
-    return i;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject1;
-    Object localObject2;
-    if (paramView == null)
-    {
-      localObject1 = new ImageView(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity);
-      ((ImageView)localObject1).setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int));
-      ((ImageView)localObject1).setScaleType(ImageView.ScaleType.CENTER_CROP);
-      ((ImageView)localObject1).setAdjustViewBounds(true);
-      paramView = (View)localObject1;
-      localObject2 = (String)getItem(paramInt);
-      if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!((String)localObject2).equals("0"))) {
-        break label156;
-      }
-      paramView.setImageDrawable(bfvo.b());
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
-      return localObject1;
-      localObject1 = (ImageView)paramView;
-      localObject2 = ((ImageView)localObject1).getLayoutParams();
-      if (localObject2 != null)
-      {
-        ((ViewGroup.LayoutParams)localObject2).width = this.jdField_a_of_type_Int;
-        ((ViewGroup.LayoutParams)localObject2).height = this.jdField_a_of_type_Int;
-      }
-      localObject2 = paramView;
-      paramView = (View)localObject1;
-      localObject1 = localObject2;
-      break;
-      label156:
-      paramView.setImageDrawable(FaceDrawable.getUserFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.app, (String)localObject2, (byte)3));
     }
   }
 }

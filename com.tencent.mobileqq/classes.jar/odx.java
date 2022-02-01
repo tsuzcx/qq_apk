@@ -1,29 +1,17 @@
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class odx
-  extends odw
+  implements View.OnClickListener
 {
-  protected byte[] a(FromServiceMsg paramFromServiceMsg)
+  public odx(AccountSettingFragment paramAccountSettingFragment) {}
+  
+  public void onClick(View paramView)
   {
-    paramFromServiceMsg = super.a(paramFromServiceMsg);
-    if (paramFromServiceMsg != null)
-    {
-      PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-      try
-      {
-        localStQWebRsp.mergeFrom(paramFromServiceMsg);
-        paramFromServiceMsg = localStQWebRsp.busiBuff.get().toByteArray();
-        return paramFromServiceMsg;
-      }
-      catch (Throwable paramFromServiceMsg)
-      {
-        paramFromServiceMsg.printStackTrace();
-      }
-    }
-    return null;
+    AccountSettingFragment.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import bbko;
+import bcrg;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -466,7 +466,7 @@ public class DataLineMsgSet
   
   public boolean isTimeOut()
   {
-    return bbko.a() - this.mLastArriveTime > 90L;
+    return bcrg.a() - this.mLastArriveTime > 90L;
   }
   
   public void printlog()
@@ -614,7 +614,7 @@ public class DataLineMsgSet
   
   public void setTimeOut()
   {
-    this.mLastArriveTime = (bbko.a() - 95L);
+    this.mLastArriveTime = (bcrg.a() - 95L);
     if (QLog.isColorLevel()) {
       QLog.d(TAG, 2, "设置timeOut, mLastArriveTime[" + this.mLastArriveTime);
     }
@@ -654,7 +654,7 @@ public class DataLineMsgSet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.DataLineMsgSet
  * JD-Core Version:    0.7.0.1
  */

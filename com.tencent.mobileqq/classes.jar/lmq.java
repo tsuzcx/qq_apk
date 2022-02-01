@@ -1,16 +1,12 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-
-public class lmq
+public abstract interface lmq
 {
-  public long a;
-  String jdField_a_of_type_JavaLangString = null;
-  public boolean a;
+  public abstract void a(int paramInt);
   
-  public lmq(AVNotifyCenter paramAVNotifyCenter) {}
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lmq
  * JD-Core Version:    0.7.0.1
  */

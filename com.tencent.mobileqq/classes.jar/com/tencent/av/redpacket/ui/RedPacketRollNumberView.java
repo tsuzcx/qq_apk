@@ -11,16 +11,16 @@ import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.portal.StrokeTextView;
-import lvc;
-import lve;
+import lvp;
+import lvr;
 
 public class RedPacketRollNumberView
   extends LinearLayout
-  implements lve
+  implements lvr
 {
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
-  private lvc jdField_a_of_type_Lvc;
+  private lvp jdField_a_of_type_Lvp;
   private boolean jdField_a_of_type_Boolean = true;
   private int b;
   private int c;
@@ -108,8 +108,8 @@ public class RedPacketRollNumberView
   
   public void b()
   {
-    if ((this.c == this.jdField_a_of_type_Int - 2) && (this.jdField_a_of_type_Lvc != null)) {
-      this.jdField_a_of_type_Lvc.a();
+    if ((this.c == this.jdField_a_of_type_Int - 2) && (this.jdField_a_of_type_Lvp != null)) {
+      this.jdField_a_of_type_Lvp.a();
     }
     this.c += 1;
   }
@@ -143,10 +143,10 @@ public class RedPacketRollNumberView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setLisener(lvc paramlvc)
+  public void setLisener(lvp paramlvp)
   {
-    if (paramlvc != null) {
-      this.jdField_a_of_type_Lvc = paramlvc;
+    if (paramlvp != null) {
+      this.jdField_a_of_type_Lvp = paramlvp;
     }
   }
 }

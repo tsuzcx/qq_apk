@@ -1,42 +1,30 @@
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class avcj
-  extends avca
+class avcj
+  implements View.OnClickListener
 {
-  public avcj(BaseChatPie paramBaseChatPie)
-  {
-    super(paramBaseChatPie);
-  }
+  avcj(avci paramavci, FeedsItemData paramFeedsItemData) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof afiw)) {
-      ((afiw)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie).b();
+    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl.startsWith("mqqapi://miniapp/")) {
+      MiniAppLauncher.startMiniApp(this.jdField_a_of_type_Avci.itemView.getContext(), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl, 2016, null);
     }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public void d()
-  {
-    super.d();
-    this.jdField_a_of_type_Avci.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_Avci.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getCurFriendUin();
-    if (this.jdField_a_of_type_Avci.jdField_a_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_Avci.jdField_a_of_type_JavaLangString = "";
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Intent localIntent = new Intent(this.jdField_a_of_type_Avci.itemView.getContext(), QQBrowserActivity.class);
+      localIntent.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl);
+      this.jdField_a_of_type_Avci.itemView.getContext().startActivity(localIntent);
     }
-    this.jdField_a_of_type_Avch = new avch();
-    this.jdField_a_of_type_Avch.jdField_a_of_type_JavaLangString = "c2c_AIO";
-    this.jdField_a_of_type_Avch.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Avch.b = "";
   }
 }
 

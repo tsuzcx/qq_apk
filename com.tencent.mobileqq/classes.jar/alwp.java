@@ -1,30 +1,68 @@
-import com.tencent.common.app.AppInterface;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.view.View;
+import com.tencent.TMG.utils.QLog;
 
-public abstract interface alwp
+public class alwp
 {
-  public abstract int a(int paramInt);
+  private static final int b = Color.rgb(123, 113, 30);
+  private static final int c = Color.argb(64, 125, 113, 30);
+  private static final int d = Color.rgb(162, 116, 4);
+  private static final int e = Color.argb(64, 213, 185, 118);
+  public int a = 0;
   
-  public abstract int a(alrr paramalrr, int paramInt1, int paramInt2, String paramString, long paramLong, int paramInt3, float paramFloat);
+  private alwg a(View paramView)
+  {
+    if (paramView == null) {}
+    do
+    {
+      return null;
+      if ((paramView.getParent() instanceof alwg)) {
+        return (alwg)paramView.getParent();
+      }
+    } while (!(paramView instanceof alwg));
+    return (alwg)paramView;
+  }
   
-  public abstract int a(AppInterface paramAppInterface);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt, AppInterface paramAppInterface);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract int b(int paramInt);
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt, String paramString);
-  
-  public abstract void c();
-  
-  public abstract void c(int paramInt, String paramString);
+  void a(View paramView, alvy paramalvy)
+  {
+    alwg localalwg = a(paramView);
+    if (localalwg == null) {}
+    alwi localalwi;
+    do
+    {
+      return;
+      localalwi = localalwg.delegate();
+    } while ((localalwi == null) || (!localalwi.b()) || (localalwg.hasSelected()));
+    if (this.a == 2)
+    {
+      localalwi.c(d);
+      localalwi.b(e);
+    }
+    for (;;)
+    {
+      localalwi.a(paramalvy);
+      localalwg.doSelecting(null);
+      return;
+      if (this.a == 1)
+      {
+        localalwi.c(b);
+        localalwi.b(c);
+      }
+      else
+      {
+        paramView = paramView.getResources();
+        int i = paramView.getColorStateList(2131167001).getDefaultColor();
+        int j = paramView.getColorStateList(2131167003).getDefaultColor();
+        localalwi.c(i);
+        localalwi.b(j);
+        if (QLog.isColorLevel()) {
+          QLog.d("ChatAdapterSelectableHelper", 0, "Load Select color, cursor=" + i + ", component=" + j);
+        }
+      }
+    }
+  }
 }
 
 

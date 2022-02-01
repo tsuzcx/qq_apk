@@ -1,20 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.open.agent.BindGroupActivity;
-import com.tencent.open.agent.BindGroupActivity.4.1;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.theme.TextHook;
 
-public class bhqn
-  implements DialogInterface.OnClickListener
+class bhqn
+  extends BroadcastReceiver
 {
-  public bhqn(BindGroupActivity.4.1 param1) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramInt == 1)
-    {
-      this.a.a.a.a.cancel();
-      this.a.a.a.finish();
+    if (paramIntent.getBooleanExtra("isFont", false)) {
+      TextHook.getInstance().checkTypeface(paramContext);
     }
   }
 }

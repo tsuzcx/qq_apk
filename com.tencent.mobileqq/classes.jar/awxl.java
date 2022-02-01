@@ -1,20 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.profilecard.NearbyCardVoteView;
-import java.util.List;
+import android.content.res.Resources;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class awxl
-  implements ayoo
+class awxl
+  extends ClickableSpan
 {
-  public awxl(NearbyCardVoteView paramNearbyCardVoteView, int paramInt1, int paramInt2, List paramList) {}
+  awxl(awxj paramawxj, BaseActivity paramBaseActivity) {}
   
-  public void a(int paramInt1, ayon paramayon, int paramInt2, String paramString)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyCardVoteView.a.hasMessages(NearbyCardVoteView.d))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyCardVoteView.a.removeMessages(NearbyCardVoteView.d);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyCardVoteView.a.obtainMessage(NearbyCardVoteView.d, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaUtilList).sendToTarget();
-    }
+    awxj.a(this.jdField_a_of_type_Awxj, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.setColor(this.jdField_a_of_type_Awxj.a.getApp().getResources().getColor(2131167034));
   }
 }
 

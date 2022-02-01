@@ -1,23 +1,23 @@
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
-public final class auta
-  implements INetEngine.INetEngineListener
+class auta
+  implements DialogInterface.OnClickListener
 {
-  public auta(INetEngine.INetEngineListener paramINetEngineListener) {}
+  auta(ausz paramausz, int paramInt, String paramString) {}
   
-  public void onResp(NetResp paramNetResp)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a != null) {
-      this.a.onResp(paramNetResp);
-    }
-  }
-  
-  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
-  {
-    if (this.a != null) {
-      this.a.onUpdateProgeress(paramNetReq, paramLong1, paramLong2);
+    if (paramInt == 1)
+    {
+      auui.a(ausz.a(this.jdField_a_of_type_Ausz), "shareToQQ", ausz.a(this.jdField_a_of_type_Ausz), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      nwo.a(ausz.a(this.jdField_a_of_type_Ausz), 0, "", "");
+      if (ausz.a(this.jdField_a_of_type_Ausz) != null) {
+        ausz.a(this.jdField_a_of_type_Ausz).finish(1);
+      }
+      ausz.a(this.jdField_a_of_type_Ausz).moveTaskToBack(true);
     }
   }
 }

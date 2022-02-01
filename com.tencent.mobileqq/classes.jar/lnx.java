@@ -1,56 +1,40 @@
-import android.util.SparseArray;
-import com.tencent.smtt.utils.ByteUtils;
-import java.nio.ByteBuffer;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.VideoController;
+import com.tencent.av.gaudio.GaInviteLockActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class lnx
+  extends BroadcastReceiver
 {
-  public static SparseArray<lnw> a(byte[] paramArrayOfByte)
+  public lnx(GaInviteLockActivity paramGaInviteLockActivity) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ByteBuffer localByteBuffer = ByteBuffer.wrap(paramArrayOfByte);
-    SparseArray localSparseArray = new SparseArray();
-    int j = 0;
-    while (j < paramArrayOfByte.length)
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
     {
-      short s = a(localByteBuffer, j);
-      j += 2;
-      int i = b(localByteBuffer, j);
-      j += 2;
-      byte[] arrayOfByte = a(paramArrayOfByte, j, i);
-      j += i;
-      localSparseArray.put(s, new lnw(s, i, arrayOfByte));
+      paramContext = paramIntent.getStringExtra("reason");
+      if ((paramContext != null) && (paramContext.equals("homekey")))
+      {
+        bdla.b(null, "CliOper", "", "", "0X8004210", "0X8004210", 0, 0, "", "", "", "");
+        this.a.c(-1038L);
+      }
     }
-    return localSparseArray;
-  }
-  
-  private static short a(ByteBuffer paramByteBuffer, int paramInt)
-  {
-    return paramByteBuffer.getShort(paramInt);
-  }
-  
-  public static byte[] a(lnw paramlnw)
-  {
-    if (paramlnw != null)
+    boolean bool;
+    do
     {
-      short s1 = paramlnw.a();
-      short s2 = paramlnw.b();
-      paramlnw = paramlnw.a();
-      ByteBuffer localByteBuffer = ByteBuffer.allocate(s2 + 4);
-      localByteBuffer.putShort(s1);
-      localByteBuffer.putShort(s2);
-      localByteBuffer.put(paramlnw);
-      return localByteBuffer.array();
-    }
-    return null;
-  }
-  
-  public static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    return ByteUtils.subByte(paramArrayOfByte, paramInt1, paramInt2);
-  }
-  
-  private static short b(ByteBuffer paramByteBuffer, int paramInt)
-  {
-    return paramByteBuffer.getShort(paramInt);
+      do
+      {
+        return;
+      } while (!paramContext.equals("android.intent.action.SCREEN_OFF"));
+      bool = VideoController.a(this.a);
+      if (bool) {
+        bdla.b(null, "CliOper", "", "", "0X800420C", "0X800420C", 0, 0, "", "", "", "");
+      }
+    } while (!QLog.isColorLevel());
+    QLog.w(this.a.b, 1, "ACTION_SCREEN_OFF, isScreenLocked[" + bool + "]");
   }
 }
 

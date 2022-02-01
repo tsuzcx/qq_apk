@@ -1,11 +1,11 @@
 package dov.com.qq.im.aeeditor.module.edit.multi;
 
-import bmjj;
+import bnzb;
 
 public class AEEditorMultiCutEditFragment$15$2
   implements Runnable
 {
-  public AEEditorMultiCutEditFragment$15$2(bmjj parambmjj) {}
+  public AEEditorMultiCutEditFragment$15$2(bnzb parambnzb) {}
   
   public void run()
   {

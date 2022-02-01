@@ -2,7 +2,7 @@ package com.tencent.litetransfersdk;
 
 import android.os.Handler;
 import android.os.Looper;
-import asyy;
+import audf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.transfile.NetworkCenter;
@@ -411,26 +411,26 @@ public class LiteTransferWrapper
   {
     try
     {
-      File localFile = new File(asyy.a().b());
+      File localFile = new File(audf.a().b());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetDefaultPath(asyy.a().b());
-      localFile = new File(asyy.a().d());
+      SetDefaultPath(audf.a().b());
+      localFile = new File(audf.a().d());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetThumbPath(asyy.a().d());
-      localFile = new File(asyy.a().c());
+      SetThumbPath(audf.a().d());
+      localFile = new File(audf.a().c());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetTempPath(asyy.a().c());
-      localFile = new File(asyy.a().c());
+      SetTempPath(audf.a().c());
+      localFile = new File(audf.a().c());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetThumbTempPath(asyy.a().c());
+      SetThumbTempPath(audf.a().c());
       return;
     }
     catch (Exception localException) {}

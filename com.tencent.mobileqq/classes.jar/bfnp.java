@@ -1,8 +1,24 @@
-import com.tencent.mobileqq.upgrade.UpgradeTipsDialog;
+import android.os.Bundle;
+import java.util.UUID;
 
-public abstract interface bfnp
+class bfnp
+  extends aahl
 {
-  public abstract void a(UpgradeTipsDialog paramUpgradeTipsDialog);
+  bfnp(bfno parambfno) {}
+  
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
+  {
+    if (paramBundle.getLong("troopUin") != bfno.a(this.a)) {}
+    do
+    {
+      return;
+      paramBundle = paramBundle.getString("itemKey");
+    } while ((paramBundle == null) || (!UUID.fromString(paramBundle).equals(this.a.a())));
+    if (!paramBoolean) {
+      bfmf.a("TroopFileToTroopForwarder", bfmf.a, "[" + bfno.a(this.a) + "] onFowardToTroopResult isSuccess:false ");
+    }
+    bfno.a(this.a, paramInt1, paramInt2, paramString1, paramString2, paramString3);
+  }
 }
 
 

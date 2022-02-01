@@ -16,11 +16,11 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.WindowManager;
 import android.view.animation.Transformation;
-import bhkk;
-import bhkl;
-import bhkm;
-import bhkn;
-import bhkq;
+import biva;
+import bivb;
+import bivc;
+import bivd;
+import bivg;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -33,8 +33,8 @@ public class BounceViewPager
   public int a;
   private Camera jdField_a_of_type_AndroidGraphicsCamera = new Camera();
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private final bhkq jdField_a_of_type_Bhkq = new bhkq(this);
-  private List<bhkl> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private final bivg jdField_a_of_type_Bivg = new bivg(this);
+  private List<bivb> jdField_a_of_type_JavaUtilList = new ArrayList();
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
   private float jdField_c_of_type_Float;
@@ -55,14 +55,14 @@ public class BounceViewPager
   private void b()
   {
     setStaticTransformationsEnabled(true);
-    setOnPageChangeListener(new bhkk(this, null));
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new bhkm(this));
+    setOnPageChangeListener(new biva(this, null));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new bivc(this));
     this.jdField_c_of_type_Int = ViewConfigurationCompat.getScaledPagingTouchSlop(ViewConfiguration.get(getContext()));
     Object localObject = new Point();
     ((WindowManager)BaseApplicationImpl.getApplication().getSystemService("window")).getDefaultDisplay().getSize((Point)localObject);
     this.jdField_c_of_type_Float = (((Point)localObject).x / 2);
-    localObject = new bhkn(getContext());
-    ((bhkn)localObject).a(850);
+    localObject = new bivd(getContext());
+    ((bivd)localObject).a(850);
     try
     {
       Field localField = ViewPager.class.getDeclaredField("mScroller");
@@ -83,17 +83,17 @@ public class BounceViewPager
     }
   }
   
-  public void a(bhkl parambhkl)
+  public void a(bivb parambivb)
   {
-    if (!this.jdField_a_of_type_JavaUtilList.contains(parambhkl)) {
-      this.jdField_a_of_type_JavaUtilList.add(parambhkl);
+    if (!this.jdField_a_of_type_JavaUtilList.contains(parambivb)) {
+      this.jdField_a_of_type_JavaUtilList.add(parambivb);
     }
   }
   
-  public void b(bhkl parambhkl)
+  public void b(bivb parambivb)
   {
-    if (this.jdField_a_of_type_JavaUtilList.contains(parambhkl)) {
-      this.jdField_a_of_type_JavaUtilList.remove(parambhkl);
+    if (this.jdField_a_of_type_JavaUtilList.contains(parambivb)) {
+      this.jdField_a_of_type_JavaUtilList.remove(parambivb);
     }
   }
   
@@ -109,7 +109,7 @@ public class BounceViewPager
     if ((i == 0) || (i == getAdapter().getCount() - 1))
     {
       i = 1;
-      if ((!this.jdField_a_of_type_Bhkq.a()) || (i == 0)) {
+      if ((!this.jdField_a_of_type_Bivg.a()) || (i == 0)) {
         break label197;
       }
       paramTransformation.clear();
@@ -118,13 +118,13 @@ public class BounceViewPager
       i = getHeight() / 2;
       paramTransformation.getMatrix().reset();
       f3 = this.jdField_c_of_type_Float;
-      if (this.jdField_a_of_type_Bhkq.jdField_a_of_type_Float <= 0.0F) {
+      if (this.jdField_a_of_type_Bivg.jdField_a_of_type_Float <= 0.0F) {
         break label199;
       }
     }
     label197:
     label199:
-    for (float f1 = Math.min(this.jdField_a_of_type_Bhkq.jdField_a_of_type_Float, 1.0F);; f1 = Math.max(this.jdField_a_of_type_Bhkq.jdField_a_of_type_Float, -1.0F))
+    for (float f1 = Math.min(this.jdField_a_of_type_Bivg.jdField_a_of_type_Float, 1.0F);; f1 = Math.max(this.jdField_a_of_type_Bivg.jdField_a_of_type_Float, -1.0F))
     {
       this.jdField_a_of_type_AndroidGraphicsCamera.save();
       this.jdField_a_of_type_AndroidGraphicsCamera.translate(-(f1 * f3), 0.0F, 0.0F);
@@ -182,7 +182,7 @@ public class BounceViewPager
       i = 0;
       for (;;)
       {
-        if (((this.jdField_a_of_type_Bhkq.a()) && (i == 0)) || (super.onTouchEvent(paramMotionEvent))) {
+        if (((this.jdField_a_of_type_Bivg.a()) && (i == 0)) || (super.onTouchEvent(paramMotionEvent))) {
           bool = true;
         }
         return bool;
@@ -212,7 +212,7 @@ public class BounceViewPager
               if (f4 == 0.0F)
               {
                 f2 = this.jdField_c_of_type_Int;
-                this.jdField_a_of_type_Bhkq.a((f2 + f1) / i);
+                this.jdField_a_of_type_Bivg.a((f2 + f1) / i);
               }
             }
           }
@@ -223,17 +223,17 @@ public class BounceViewPager
             if ((f5 > f2) && (f2 == k * j))
             {
               f1 = this.jdField_c_of_type_Int;
-              this.jdField_a_of_type_Bhkq.a((f5 - f2 - f1) / i);
+              this.jdField_a_of_type_Bivg.a((f5 - f2 - f1) / i);
               continue;
               this.jdField_a_of_type_Float = f3;
             }
           }
         }
-        this.jdField_a_of_type_Bhkq.b();
+        this.jdField_a_of_type_Bivg.b();
         i = 0;
         continue;
         this.jdField_b_of_type_Int = -1;
-        this.jdField_a_of_type_Bhkq.b();
+        this.jdField_a_of_type_Bivg.b();
         i = 1;
       }
       i = (paramMotionEvent.getAction() & 0xFF00) >> 8;
@@ -250,7 +250,7 @@ public class BounceViewPager
   
   public void setPull(float paramFloat)
   {
-    this.jdField_a_of_type_Bhkq.a(paramFloat);
+    this.jdField_a_of_type_Bivg.a(paramFloat);
   }
 }
 

@@ -4,10 +4,16 @@ import android.content.Context;
 import android.view.Surface;
 import com.tencent.superplayer.player.MediaInfo;
 import com.tencent.superplayer.view.ISPlayerVideoView;
+import com.tencent.thumbplayer.api.TPProgramInfo;
 import com.tencent.thumbplayer.api.TPTrackInfo;
+import java.util.Map;
 
 public abstract interface ISuperPlayer
 {
+  public abstract void addExtReportData(String paramString1, String paramString2);
+  
+  public abstract void addExtReportData(Map<String, String> paramMap);
+  
   public abstract void addSubtitleSource(String paramString1, String paramString2, String paramString3);
   
   public abstract int captureImageInTime(long paramLong, int paramInt1, int paramInt2);
@@ -27,6 +33,8 @@ public abstract interface ISuperPlayer
   public abstract long getFileSizeBytes();
   
   public abstract MediaInfo getMediaInfo();
+  
+  public abstract TPProgramInfo[] getProgramInfo();
   
   public abstract String getStreamDumpInfo();
   
@@ -71,6 +79,8 @@ public abstract interface ISuperPlayer
   public abstract void seekTo(int paramInt);
   
   public abstract void seekTo(int paramInt1, int paramInt2);
+  
+  public abstract void selectProgram(int paramInt, long paramLong);
   
   public abstract void selectTrack(int paramInt, long paramLong);
   

@@ -1,12 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.util.Pair;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
 class awyy
-  implements DialogInterface.OnClickListener
+  implements awzd<Pair<String, Integer>, EmoticonPackage>
 {
-  awyy(awyf paramawyf) {}
+  awyy(awyr paramawyr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public EmoticonPackage a(Pair<String, Integer> paramPair)
+  {
+    return this.a.a((String)paramPair.first, ((Integer)paramPair.second).intValue());
+  }
 }
 
 

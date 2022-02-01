@@ -1,19 +1,16 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
 
-class ajpe
-  implements DialogInterface.OnClickListener
+public class ajpe
+  extends RecyclerView.ViewHolder
 {
-  ajpe(ajpd paramajpd) {}
+  TextView a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  ajpe(View paramView)
   {
-    if (paramInt == 0)
-    {
-      this.a.b();
-      ajpd.a(this.a).moveTaskToBack(true);
-    }
+    super(paramView);
+    this.a = ((TextView)paramView.findViewById(2131380335));
   }
 }
 

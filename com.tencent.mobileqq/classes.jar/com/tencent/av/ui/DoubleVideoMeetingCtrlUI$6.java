@@ -10,7 +10,7 @@ class DoubleVideoMeetingCtrlUI$6
     this.this$0.c();
     this.jdField_a_of_type_ComTencentAvUiAVActivity.a(4, false);
     if ((this.jdField_a_of_type_Boolean) && (this.this$0.a != null)) {
-      this.this$0.a_(this.jdField_a_of_type_Long, 2131694898);
+      this.this$0.a_(this.jdField_a_of_type_Long, 2131695114);
     }
   }
 }

@@ -1,6 +1,47 @@
-public abstract interface pvv
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+
+class pvv
+  implements pvz
 {
-  public abstract void a(int paramInt);
+  pvv(pvu parampvu) {}
+  
+  public int a(Bundle paramBundle)
+  {
+    int j = this.a.a;
+    int i = -1;
+    long l = System.currentTimeMillis();
+    switch (this.a.a)
+    {
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("viola.ReadInJoyWebRenderEngine", 1, "native_render CreateLoop:step[" + j + "] -> step[" + this.a.a + "] cost[" + (System.currentTimeMillis() - l) + "ms]" + " timestamps[" + System.currentTimeMillis() + "]");
+      }
+      pqe.a(pkh.a(), true, j, System.currentTimeMillis() - l);
+      return i;
+      i = this.a.b(paramBundle);
+      continue;
+      i = this.a.c(paramBundle);
+      continue;
+      i = this.a.d(paramBundle);
+      continue;
+      i = this.a.e(paramBundle);
+      continue;
+      i = this.a.f(paramBundle);
+      continue;
+      i = this.a.g(paramBundle);
+      continue;
+      i = this.a.h(paramBundle);
+      continue;
+      i = this.a.i(paramBundle);
+      continue;
+      i = this.a.j(paramBundle);
+      continue;
+      i = this.a.k(paramBundle);
+    }
+  }
 }
 
 

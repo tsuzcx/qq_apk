@@ -1,18 +1,14 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.qzonevip.gift.particle.ParticleDropView;
+import android.view.animation.Interpolator;
 
-class aztf
-  extends AnimatorListenerAdapter
+final class aztf
+  implements Interpolator
 {
-  aztf(aztc paramaztc) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public float getInterpolation(float paramFloat)
   {
-    if (aztc.a(this.a) != null) {
-      aztc.a(this.a).c();
+    if (paramFloat <= 0.3333333F) {
+      return 0.0F;
     }
-    aztc.a(this.a, 8);
+    return (paramFloat - 0.3333333F) * 1.5F;
   }
 }
 

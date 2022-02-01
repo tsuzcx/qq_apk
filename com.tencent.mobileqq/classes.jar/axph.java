@@ -1,8 +1,19 @@
-public abstract interface axph
+public class axph
 {
-  public abstract void a(axpv paramaxpv);
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  public abstract void a(axpv paramaxpv1, axpv paramaxpv2);
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ret=").append(this.jdField_a_of_type_Int).append(",uin=").append(this.jdField_a_of_type_Long).append(",succFreeLikeCnt=").append(this.b).append(",succPayLikeCnt=").append(this.c).append(",todayLikeCnt=").append(this.d).append(",totalPayStockCnt=").append(this.e).append(",errMsg=").append(this.jdField_a_of_type_JavaLangString);
+    return localStringBuilder.toString();
+  }
 }
 
 

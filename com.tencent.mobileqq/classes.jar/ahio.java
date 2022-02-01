@@ -1,25 +1,70 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.CacheMap;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class ahio
-  extends awjx
+public class ahio
 {
-  ahio(ahik paramahik) {}
+  private static final String jdField_a_of_type_JavaLangString = ahio.class.getSimpleName();
+  private StructingMsgItemBuilder.CacheMap jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap = new StructingMsgItemBuilder.CacheMap(null);
+  private StructingMsgItemBuilder.CacheMap b = new StructingMsgItemBuilder.CacheMap(null);
   
-  public void a(String paramString1, String paramString2, Object paramObject)
+  private ahip a(String paramString, ViewGroup paramViewGroup)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i(this.a.tag, 4, "onAutoInput, [" + paramString1 + "," + paramString2 + "," + paramObject + "," + System.currentTimeMillis() + "]");
+    Iterator localIterator = this.b.get(paramString).iterator();
+    while (localIterator.hasNext())
+    {
+      paramString = (ahip)localIterator.next();
+      if (paramString != null) {
+        paramString.a(paramViewGroup);
+      }
     }
-    if (!"tag_nearby_chat".equals(paramString1)) {}
-    while ((TextUtils.isEmpty(paramString2)) || (this.a.input == null)) {
+    for (;;)
+    {
+      this.b.remove(paramString);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.add(paramString);
+      return paramString;
+      paramString = null;
+    }
+  }
+  
+  public View a(String paramString, ViewGroup paramViewGroup)
+  {
+    a(paramString, paramViewGroup);
+    paramString = a(paramString, paramViewGroup);
+    if (paramString != null) {
+      return paramString.a();
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.clear();
+    this.b.clear();
+  }
+  
+  public void a(String paramString, View paramView, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.add(new ahip(paramString, paramView, paramViewGroup));
+  }
+  
+  public void a(String paramString, ViewGroup paramViewGroup)
+  {
+    if (paramViewGroup == null) {}
+    ahip localahip;
+    do
+    {
       return;
-    }
-    this.a.showInputPanel();
-    this.a.input.setText(paramString2);
-    this.a.input.selectAll();
-    this.a.b = paramString2;
+      while (!paramString.hasNext()) {
+        paramString = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.get(paramString).iterator();
+      }
+      localahip = (ahip)paramString.next();
+    } while ((localahip == null) || (localahip.a() == null) || (localahip.a() != paramViewGroup));
+    localahip.a().removeAllViews();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.remove(localahip);
+    this.b.add(localahip);
   }
 }
 

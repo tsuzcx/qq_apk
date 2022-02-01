@@ -14,7 +14,7 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.Lifecycle.Event;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LifecycleRegistry;
-import atjj;
+import auoc;
 import com.idlefish.flutterboost.FlutterBoost;
 import com.idlefish.flutterboost.XPlatformPlugin;
 import com.idlefish.flutterboost.containers.BoostFlutterActivity.SerializableMap;
@@ -217,7 +217,7 @@ public class QFlutterFragment
     if (this.jdField_a_of_type_IoFlutterEmbeddingAndroidSplashScreen != null) {
       return this.jdField_a_of_type_IoFlutterEmbeddingAndroidSplashScreen;
     }
-    return new atjj(null);
+    return new auoc(null);
   }
   
   public boolean shouldAttachEngineToActivity()

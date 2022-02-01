@@ -1,10 +1,18 @@
-public abstract interface aiep
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.face.FaceDrawable;
+
+class aiep
+  extends anvi
 {
-  public abstract void ad_();
+  aiep(aido paramaido, ImageView paramImageView) {}
   
-  public abstract void b();
-  
-  public abstract void j_(int paramInt);
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (paramString.equals(this.jdField_a_of_type_Aido.getSessionInfo().curFriendUin))) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(FaceDrawable.getUserFaceDrawable(this.jdField_a_of_type_Aido.app, paramString, (byte)3));
+    }
+  }
 }
 
 

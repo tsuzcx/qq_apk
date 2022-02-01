@@ -1,98 +1,126 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.util.WeakReference;
 
-public class aqes
-  extends aptq<aqer>
+class aqes
+  implements aqej
 {
-  public static aqer a()
-  {
-    aqer localaqer2 = (aqer)apub.a().a(493);
-    aqer localaqer1 = localaqer2;
-    if (localaqer2 == null) {
-      localaqer1 = new aqer();
-    }
-    return localaqer1;
-  }
+  aqes(aqeq paramaqeq) {}
   
-  @NonNull
-  public aqer a(int paramInt)
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String arg1, boolean paramBoolean1, boolean paramBoolean2)
   {
     if (QLog.isColorLevel()) {
-      QLog.e("SearchBusinessConfProcessor", 2, "migrateOldOrDefaultContent ");
+      QLog.i("Q.dynamicAvatar", 2, "onDownloadFinish url: " + ??? + " isSuccess: " + paramBoolean1 + " isFileExist: " + paramBoolean2);
     }
-    return new aqer();
-  }
-  
-  @Nullable
-  public aqer a(aptx[] paramArrayOfaptx)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchBusinessConfProcessor", 2, "onParsed start");
-    }
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchBusinessConfProcessor", 2, "onParsed " + paramArrayOfaptx.length);
-      }
-      return aqer.a(paramArrayOfaptx[0]);
-    }
-    return null;
-  }
-  
-  public void a(aqer paramaqer)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onUpdate ");
-      if (paramaqer == null) {
-        break label43;
-      }
-    }
-    label43:
-    for (paramaqer = paramaqer.toString();; paramaqer = " empty")
-    {
-      QLog.d("SearchBusinessConfProcessor", 2, paramaqer);
+    if (TextUtils.isEmpty(???)) {
       return;
     }
-  }
-  
-  public Class<aqer> clazz()
-  {
-    return aqer.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("SearchBusinessConfProcessor", 2, "onReqFailed " + paramInt);
+    int i;
+    synchronized (this.a.c)
+    {
+      i = this.a.c.size() - 1;
+      if (i >= 0)
+      {
+        WeakReference localWeakReference = (WeakReference)this.a.c.get(i);
+        if ((localWeakReference == null) || (localWeakReference.get() == null))
+        {
+          this.a.c.remove(i);
+        }
+        else if (???.equals(((aokb)((WeakReference)this.a.c.get(i)).get()).jdField_b_of_type_JavaLangString))
+        {
+          localWeakReference = (WeakReference)this.a.c.remove(i);
+          if (paramBoolean1)
+          {
+            this.a.b.add(localWeakReference);
+            if (QLog.isColorLevel()) {
+              QLog.i("Q.dynamicAvatar", 2, "onFileDownloadFinish add to wait play list.");
+            }
+          }
+        }
+      }
     }
-  }
-  
-  public int type()
-  {
-    return 493;
+    if (!aokb.jdField_b_of_type_Boolean) {
+      synchronized (this.a.d)
+      {
+        i = this.a.d.size() - 1;
+        label257:
+        if (i >= 0) {
+          if ((this.a.d.get(i) != null) && (((WeakReference)this.a.d.get(i)).get() != null))
+          {
+            ??? = (WeakReference)this.a.d.get(i);
+            label314:
+            if ((??? != null) && (???.get() != null)) {
+              this.a.a((aokb)???.get(), false, false);
+            }
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      synchronized (this.a.a)
+      {
+        i = this.a.a.size() - 1;
+        if (i >= 0)
+        {
+          if (((WeakReference)this.a.a.get(i)).get() == null) {
+            this.a.a.remove(i);
+          }
+          i -= 1;
+          continue;
+          this.a.d.remove(i);
+          i -= 1;
+          break label257;
+          ??? = finally;
+          throw ???;
+        }
+        i = this.a.b.size() - 1;
+        if (i < 0) {
+          break label695;
+        }
+        ??? = (WeakReference)this.a.b.get(i);
+        if ((??? == null) || (((WeakReference)???).get() == null))
+        {
+          this.a.b.remove(i);
+        }
+        else if (this.a.a.size() < aqeq.a(this.a).a)
+        {
+          this.a.b.remove(i);
+          if (this.a.a.contains(???)) {
+            break label712;
+          }
+          paramBoolean1 = this.a.a((aokb)((WeakReference)???).get());
+          if (paramBoolean1) {
+            this.a.a.add(???);
+          }
+          if (!QLog.isColorLevel()) {
+            break label712;
+          }
+          QLog.i("Q.dynamicAvatar", 2, "onFileDownloadFinish to play.02 result : " + paramBoolean1 + " playing size: " + this.a.a.size());
+        }
+      }
+      if (QLog.isColorLevel())
+      {
+        QLog.i("Q.dynamicAvatar", 2, "onFileDownloadFinish to play.02 beyond maxPlayingCount : " + aqeq.a(this.a).a);
+        break label712;
+        label695:
+        return;
+        ??? = null;
+        break label314;
+        i -= 1;
+        break;
+      }
+      label712:
+      i -= 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqes
  * JD-Core Version:    0.7.0.1
  */

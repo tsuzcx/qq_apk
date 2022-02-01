@@ -1,17 +1,16 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
 
 public class ajst
-  extends ajqv
+  implements adps
 {
-  public ajst(NewPhotoListActivity paramNewPhotoListActivity)
-  {
-    super(paramNewPhotoListActivity);
-  }
+  public ajst(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment) {}
   
-  public void initData(Intent paramIntent)
+  public boolean a(boolean paramBoolean)
   {
-    super.initData(paramIntent);
+    if (paramBoolean) {
+      bmri.a(this.a.getActivity());
+    }
+    return false;
   }
 }
 

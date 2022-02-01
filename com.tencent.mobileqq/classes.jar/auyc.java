@@ -1,36 +1,45 @@
-import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qqcircle.redpoint.QCircleRedPointManager;
-import mqq.app.AppRuntime;
-import qqcircle.QQCircleSwitch.SetCircleSwitchRsp;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.fragment.ShieldFriendsListFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class auyc
-  implements VSDispatchObserver.onVSRspCallBack<QQCircleSwitch.SetCircleSwitchRsp>
+public class auyc
+  extends anvi
 {
-  auyc(auyb paramauyb, boolean paramBoolean) {}
+  public auyc(ShieldFriendsListFragment paramShieldFriendsListFragment) {}
   
-  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, QQCircleSwitch.SetCircleSwitchRsp paramSetCircleSwitchRsp)
+  protected void onUpdateFriendShieldFlag(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
   {
-    if ((paramBoolean) && (paramLong == 0L))
+    super.onUpdateFriendShieldFlag(paramLong, paramBoolean1, paramBoolean2, paramBoolean3, paramString);
+    if (!paramBoolean2)
     {
-      QLog.w("leba_sort_LebaTableMgrAdpter", 1, "setCircleSwitch success isChecked" + this.jdField_a_of_type_Boolean);
-      paramString = QzoneConfig.getInstance();
-      if (this.jdField_a_of_type_Boolean) {}
-      for (paramVSBaseRequest = "1";; paramVSBaseRequest = "0")
+      paramString = this.a;
+      if (!paramBoolean1)
       {
-        paramString.updateOneConfig("qqcircle", "qqcircle_entrance_enable", paramVSBaseRequest);
-        if (!this.jdField_a_of_type_Boolean)
-        {
-          ((QCircleRedPointManager)BaseApplicationImpl.getApplication().getRuntime().getManager(376)).clearPedPoint();
-          QLog.w("leba_sort_LebaTableMgrAdpter", 1, "setCircleSwitch success clearPedPoint");
+        paramBoolean1 = true;
+        if (ShieldFriendsListFragment.a(paramString, paramLong, paramBoolean1)) {
+          QQToast.a(BaseApplication.getContext(), anvx.a(2131713445), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299080));
         }
-        return;
       }
     }
-    QLog.w("leba_sort_LebaTableMgrAdpter", 1, "setCircleSwitch error retcode= " + paramLong);
+    do
+    {
+      return;
+      paramBoolean1 = false;
+      break;
+      if (ShieldFriendsListFragment.a(this.a).a(String.valueOf(paramLong)))
+      {
+        ShieldFriendsListFragment.a(this.a, paramLong, paramBoolean1);
+        return;
+      }
+      paramString = ((anvk)this.a.getActivity().app.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(String.valueOf(paramLong));
+    } while ((paramString == null) || (paramString.isShield()));
+    ShieldFriendsListFragment.a(this.a).a(paramString);
+    ShieldFriendsListFragment.a(this.a);
   }
 }
 

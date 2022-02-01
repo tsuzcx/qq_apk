@@ -1,20 +1,13 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.RelativeLayout;
 
 class ahku
-  extends amsu
+  extends afqr
 {
-  ahku(ahkr paramahkr) {}
+  public long a;
+  public RelativeLayout a;
+  public String b;
   
-  protected void onAddFriend(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.tag, 2, "onAddFriend : " + paramString);
-    }
-    if ((this.a.isActivityResume()) && (paramString != null) && (paramString.equals(this.a.sessionInfo.curFriendUin))) {
-      ahkr.a(this.a);
-    }
-  }
+  private ahku(ahks paramahks) {}
 }
 
 

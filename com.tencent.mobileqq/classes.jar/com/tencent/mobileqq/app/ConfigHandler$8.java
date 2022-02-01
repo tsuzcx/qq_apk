@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.app;
 
-import afdo;
-import ampt;
+import afut;
+import ansg;
 import com.tencent.qphone.base.util.QLog;
 import protocol.KQQConfig.GetResourceRespInfo;
 
 public class ConfigHandler$8
   implements Runnable
 {
-  public ConfigHandler$8(ampt paramampt, GetResourceRespInfo paramGetResourceRespInfo) {}
+  public ConfigHandler$8(ansg paramansg, GetResourceRespInfo paramGetResourceRespInfo) {}
   
   public void run()
   {
-    if (!ampt.a(this.this$0, this.a.strPkgName, 10000L)) {
+    if (!ansg.a(this.this$0, this.a.strPkgName, 10000L)) {
       if (QLog.isColorLevel()) {
         QLog.d("eggs", 2, "handleUpdateEggsActions dpc aio_eggs is false");
       }
     }
-    while (afdo.a().a() != null) {
+    while (afut.a().a() != null) {
       return;
     }
-    afdo.a().a(this.this$0.app.getApplication());
+    afut.a().a(this.this$0.app.getApplication());
   }
 }
 

@@ -1,18 +1,13 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
-public class xlb
-  extends vko
+class xlb
+  implements xlx
 {
-  public String a;
-  public ArrayList<String> a;
-  public List<String> a;
-  public boolean a;
+  xlb(xkz paramxkz, xjp paramxjp, Object paramObject) {}
   
-  public xlb(String paramString)
+  public boolean a(xlu paramxlu, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
+    return this.jdField_a_of_type_Xjp.a(this.jdField_a_of_type_Xkz, 0, paramInt1, this.jdField_a_of_type_Xkz.a.getCurrentPosition(), String.valueOf(paramInt2), this.jdField_a_of_type_JavaLangObject);
   }
 }
 

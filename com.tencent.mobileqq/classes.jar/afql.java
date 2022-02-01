@@ -1,31 +1,55 @@
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.widget.XEditTextEx;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import java.util.List;
 
-class afql
-  implements bjve
+public class afql
 {
-  afql(afqj paramafqj) {}
+  public float a;
+  public int a;
+  public RelativeLayout.LayoutParams a;
+  public List<Long> a;
+  public boolean a;
+  public int b;
+  public RelativeLayout.LayoutParams b;
+  public boolean b;
+  public int c;
+  public RelativeLayout.LayoutParams c;
+  public boolean c;
+  public int d;
+  public RelativeLayout.LayoutParams d;
+  public boolean d;
+  public int e;
+  public RelativeLayout.LayoutParams e;
+  public int f;
+  public RelativeLayout.LayoutParams f;
+  public int g = 0;
+  public int h = 0;
+  public int i = 0;
+  public int j = 0;
+  public int k = 0;
+  public int l = 0;
+  public int m = 0;
   
-  public boolean a()
+  public afql(BaseBubbleBuilder paramBaseBubbleBuilder)
   {
-    boolean bool = false;
-    if (afqj.a(this.a).input.length() > 0) {
-      bool = this.a.a(false);
-    }
-    return bool;
-  }
-  
-  public boolean b()
-  {
-    if (afqj.a(this.a).input.length() > 0) {
-      return this.a.a(true);
-    }
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return this.a.c();
+    this.jdField_a_of_type_JavaUtilList = null;
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = null;
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams = null;
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams = null;
+    this.jdField_d_of_type_AndroidWidgetRelativeLayout$LayoutParams = null;
+    this.jdField_e_of_type_AndroidWidgetRelativeLayout$LayoutParams = null;
+    this.jdField_f_of_type_AndroidWidgetRelativeLayout$LayoutParams = null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_Int = 0;
+    this.jdField_e_of_type_Int = 0;
+    this.jdField_f_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
   }
 }
 

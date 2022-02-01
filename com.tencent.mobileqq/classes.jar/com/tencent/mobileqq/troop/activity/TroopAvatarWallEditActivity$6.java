@@ -3,7 +3,8 @@ package com.tencent.mobileqq.troop.activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bjnw;
+import bkzi;
+import com.tencent.biz.qrcode.activity.ScannerResult;
 import com.tencent.image.URLDrawable;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -11,14 +12,14 @@ import com.tencent.smtt.sdk.CookieManager;
 import com.tencent.smtt.sdk.CookieSyncManager;
 import java.io.File;
 import java.net.URL;
-import npg;
-import npn;
-import yxi;
+import nwh;
+import nwo;
+import zmk;
 
 class TroopAvatarWallEditActivity$6
   implements Runnable
 {
-  TroopAvatarWallEditActivity$6(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, URLDrawable paramURLDrawable, bjnw parambjnw) {}
+  TroopAvatarWallEditActivity$6(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, URLDrawable paramURLDrawable, bkzi parambkzi) {}
   
   public void run()
   {
@@ -27,29 +28,31 @@ class TroopAvatarWallEditActivity$6
       if (QLog.isColorLevel()) {
         QLog.d("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, "QR Check Start!");
       }
-      Object localObject = new Bundle();
-      String str1 = this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString();
+      Object localObject2 = new Bundle();
+      Object localObject1 = this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString();
       if (this.this$0.a == null)
       {
         CookieSyncManager.createInstance(this.this$0.getApplicationContext());
         this.this$0.a = CookieManager.getInstance();
       }
-      String str2 = this.this$0.a.getCookie(str1);
-      if (str2 != null)
+      String str = this.this$0.a.getCookie((String)localObject1);
+      if (str != null)
       {
-        ((Bundle)localObject).putString("Cookie", str2);
+        ((Bundle)localObject2).putString("Cookie", str);
         if (QLog.isColorLevel()) {
-          QLog.d("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, "Get cookie: " + npn.c(str2, new String[0]) + " from " + npn.b(str1, new String[0]));
+          QLog.d("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, "Get cookie: " + nwo.c(str, new String[0]) + " from " + nwo.b((String)localObject1, new String[0]));
         }
       }
-      localObject = npg.a(BaseApplication.getContext(), str1, (Bundle)localObject);
+      localObject2 = nwh.a(BaseApplication.getContext(), (String)localObject1, (Bundle)localObject2);
       if (QLog.isColorLevel()) {
-        QLog.d("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, "saveTmpImage path = " + (String)localObject);
+        QLog.d("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, "saveTmpImage path = " + (String)localObject2);
       }
-      this.this$0.c = ((String)localObject);
-      bijm.a = npn.b(str1, new String[0]);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        if (yxi.a(Uri.parse("file://" + new File((String)localObject).getAbsolutePath()), this.this$0))
+      this.this$0.c = ((String)localObject2);
+      bjup.a = nwo.b((String)localObject1, new String[0]);
+      if (!TextUtils.isEmpty((CharSequence)localObject2))
+      {
+        localObject1 = zmk.a(Uri.parse("file://" + new File((String)localObject2).getAbsolutePath()), this.this$0, 1);
+        if ((localObject1 != null) && (((ScannerResult)localObject1).d()))
         {
           if (QLog.isColorLevel()) {
             QLog.d("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, "has QRCode ");
@@ -59,7 +62,7 @@ class TroopAvatarWallEditActivity$6
       }
       for (;;)
       {
-        bijm.a = null;
+        bjup.a = null;
         return;
         if (QLog.isColorLevel()) {
           QLog.d("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, "no QRCode ");

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.voicetextpanel.ui;
 
-import ahsa;
-import ahse;
-import ahsg;
-import ahsj;
-import ahsl;
-import ahso;
-import ahsp;
-import ahsr;
-import ahsv;
-import ahtb;
-import ahtd;
-import ahte;
-import ahtf;
+import aimz;
+import aind;
+import ainf;
+import aini;
+import aink;
+import ainn;
+import aino;
+import ainq;
+import ainu;
+import aioa;
+import aioc;
+import aiod;
+import aioe;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
@@ -30,14 +30,14 @@ import com.tencent.qphone.base.util.QLog;
 public class VoiceTextPanel
   extends RelativeLayout
 {
-  private ahsa jdField_a_of_type_Ahsa;
-  private ahse jdField_a_of_type_Ahse;
-  private ahsj jdField_a_of_type_Ahsj;
-  private ahsp jdField_a_of_type_Ahsp;
-  private ahsr jdField_a_of_type_Ahsr;
-  private ahsv jdField_a_of_type_Ahsv;
-  private ahtb jdField_a_of_type_Ahtb;
-  private ahtd jdField_a_of_type_Ahtd;
+  private aimz jdField_a_of_type_Aimz;
+  private aind jdField_a_of_type_Aind;
+  private aini jdField_a_of_type_Aini;
+  private aino jdField_a_of_type_Aino;
+  private ainq jdField_a_of_type_Ainq;
+  private ainu jdField_a_of_type_Ainu;
+  private aioa jdField_a_of_type_Aioa;
+  private aioc jdField_a_of_type_Aioc;
   private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
@@ -64,51 +64,51 @@ public class VoiceTextPanel
   
   private void f()
   {
-    this.jdField_a_of_type_Ahsa.a();
-    this.jdField_a_of_type_Ahtd.a(this);
-    this.jdField_a_of_type_Ahsr.a(this);
-    this.jdField_a_of_type_Ahtb.a(this);
+    this.jdField_a_of_type_Aimz.a();
+    this.jdField_a_of_type_Aioc.a(this);
+    this.jdField_a_of_type_Ainq.a(this);
+    this.jdField_a_of_type_Aioa.a(this);
   }
   
   private void g()
   {
-    this.jdField_a_of_type_Ahsa.i();
-    this.jdField_a_of_type_Ahsj.a();
-    this.jdField_a_of_type_Ahtd.b();
-    this.jdField_a_of_type_Ahsv.c();
-    this.jdField_a_of_type_Ahtb.d();
-    this.jdField_a_of_type_Ahsr.c();
+    this.jdField_a_of_type_Aimz.i();
+    this.jdField_a_of_type_Aini.a();
+    this.jdField_a_of_type_Aioc.b();
+    this.jdField_a_of_type_Ainu.c();
+    this.jdField_a_of_type_Aioa.d();
+    this.jdField_a_of_type_Ainq.c();
     this.jdField_a_of_type_Boolean = false;
   }
   
   private void h()
   {
-    this.jdField_a_of_type_Ahsa.h();
-    this.jdField_a_of_type_Ahsv.a();
-    this.jdField_a_of_type_Ahtd.d();
-    this.jdField_a_of_type_Ahtb.e();
-    this.jdField_a_of_type_Ahsa.k();
-    ahte.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
-    agkq.b = false;
+    this.jdField_a_of_type_Aimz.h();
+    this.jdField_a_of_type_Ainu.a();
+    this.jdField_a_of_type_Aioc.d();
+    this.jdField_a_of_type_Aioa.e();
+    this.jdField_a_of_type_Aimz.k();
+    aiod.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+    ahdg.b = false;
     this.b = false;
     this.jdField_a_of_type_Boolean = true;
   }
   
-  public ahse a()
+  public aind a()
   {
-    return this.jdField_a_of_type_Ahse;
+    return this.jdField_a_of_type_Aind;
   }
   
-  public ahsg a()
+  public ainf a()
   {
-    return this.jdField_a_of_type_Ahsp;
+    return this.jdField_a_of_type_Aino;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Ahsv.b();
-    if (this.jdField_a_of_type_Ahsv.b() != 0) {
-      this.jdField_a_of_type_Ahsa.g();
+    this.jdField_a_of_type_Ainu.b();
+    if (this.jdField_a_of_type_Ainu.b() != 0) {
+      this.jdField_a_of_type_Aimz.g();
     }
   }
   
@@ -121,9 +121,9 @@ public class VoiceTextPanel
       if (paramInt2 == 0) {
         break label114;
       }
-      this.jdField_a_of_type_Ahtb.a(paramInt4);
+      this.jdField_a_of_type_Aioa.a(paramInt4);
       if ((paramInt2 > i) && (getTop() == i) && (!this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_Ahsv.a(getRight() - getLeft(), this.jdField_a_of_type_Ahsv.a());
+        this.jdField_a_of_type_Ainu.a(getRight() - getLeft(), this.jdField_a_of_type_Ainu.a());
       }
       if ((getTop() != paramInt2) || (paramInt4 != getBottom()) || (!paramBoolean)) {
         break label122;
@@ -139,7 +139,7 @@ public class VoiceTextPanel
       return;
       paramInt2 += i;
       break;
-      if ((this.jdField_a_of_type_Ahtb.a() <= 0) || (this.jdField_a_of_type_Ahtb.a() + getTop() - paramInt2 >= ScreenUtil.dip2px(2.0F))) {
+      if ((this.jdField_a_of_type_Aioa.a() <= 0) || (this.jdField_a_of_type_Aioa.a() + getTop() - paramInt2 >= ScreenUtil.dip2px(2.0F))) {
         break label168;
       }
     } while (!QLog.isColorLevel());
@@ -155,16 +155,16 @@ public class VoiceTextPanel
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_Ahse = new ahso(this);
-    this.jdField_a_of_type_Ahsp = new ahsp(this);
-    this.jdField_a_of_type_Ahsj = new ahsj();
-    this.jdField_a_of_type_Ahsa = new ahsa(this.jdField_a_of_type_Ahsj, paramQQAppInterface, this);
-    this.jdField_a_of_type_Ahtd = new ahtd();
-    this.jdField_a_of_type_Ahsr = new ahsr();
-    this.jdField_a_of_type_Ahtb = new ahtb();
-    this.jdField_a_of_type_Ahsv = new ahsv();
+    this.jdField_a_of_type_Aind = new ainn(this);
+    this.jdField_a_of_type_Aino = new aino(this);
+    this.jdField_a_of_type_Aini = new aini();
+    this.jdField_a_of_type_Aimz = new aimz(this.jdField_a_of_type_Aini, paramQQAppInterface, this);
+    this.jdField_a_of_type_Aioc = new aioc();
+    this.jdField_a_of_type_Ainq = new ainq();
+    this.jdField_a_of_type_Aioa = new aioa();
+    this.jdField_a_of_type_Ainu = new ainu();
     f();
-    this.jdField_a_of_type_Ahsv.a(paramViewGroup2, this, paramViewGroup1, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+    this.jdField_a_of_type_Ainu.a(paramViewGroup2, this, paramViewGroup1, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
   }
   
   public void a(boolean paramBoolean)
@@ -172,29 +172,29 @@ public class VoiceTextPanel
     if (QLog.isColorLevel()) {
       QLog.d("VoiceTextPanel", 2, " onSoftInputShowing  isShow=" + paramBoolean + " isDrag=" + this.b);
     }
-    this.jdField_a_of_type_Ahsj.a().a(paramBoolean);
+    this.jdField_a_of_type_Aini.a().a(paramBoolean);
     if (paramBoolean)
     {
-      ahtf.a("0X800A1DC", 0, 0);
-      this.jdField_a_of_type_Ahtb.b();
-      this.jdField_a_of_type_Ahsr.a();
+      aioe.a("0X800A1DC", 0, 0);
+      this.jdField_a_of_type_Aioa.b();
+      this.jdField_a_of_type_Ainq.a();
     }
     for (;;)
     {
       if ((!this.b) && (!this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_Ahsv.a(paramBoolean);
+        this.jdField_a_of_type_Ainu.a(paramBoolean);
       }
       return;
       if (!this.b) {
-        this.jdField_a_of_type_Ahsr.b();
+        this.jdField_a_of_type_Ainq.b();
       }
-      this.jdField_a_of_type_Ahtb.c();
+      this.jdField_a_of_type_Aioa.c();
     }
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Ahtd.c();
+    this.jdField_a_of_type_Aioc.c();
   }
   
   public void c()
@@ -205,9 +205,9 @@ public class VoiceTextPanel
   
   public void d()
   {
-    if ((this.jdField_a_of_type_Ahsj.a().a()) && (!this.jdField_a_of_type_Boolean))
+    if ((this.jdField_a_of_type_Aini.a().a()) && (!this.jdField_a_of_type_Boolean))
     {
-      this.jdField_a_of_type_Ahsv.a(getRight() - getLeft(), this.jdField_a_of_type_Ahsv.a());
+      this.jdField_a_of_type_Ainu.a(getRight() - getLeft(), this.jdField_a_of_type_Ainu.a());
       return;
     }
     h();
@@ -227,12 +227,12 @@ public class VoiceTextPanel
   
   public void setParam(String paramString1, QQRecorder.RecorderParam paramRecorderParam, int paramInt, String paramString2)
   {
-    this.jdField_a_of_type_Ahtd.a(paramString1, paramRecorderParam, paramInt, this);
-    this.jdField_a_of_type_Ahsa.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramRecorderParam, paramInt, paramString2, paramString1);
-    this.jdField_a_of_type_Ahtb.a();
+    this.jdField_a_of_type_Aioc.a(paramString1, paramRecorderParam, paramInt, this);
+    this.jdField_a_of_type_Aimz.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramRecorderParam, paramInt, paramString2, paramString1);
+    this.jdField_a_of_type_Aioa.a();
     g();
-    ahte.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
-    this.jdField_a_of_type_Ahsa.e();
+    aiod.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+    this.jdField_a_of_type_Aimz.e();
   }
 }
 

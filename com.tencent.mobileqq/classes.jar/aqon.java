@@ -1,6 +1,10 @@
+import com.tencent.mobileqq.colornote.data.ColorNote;
+
 public abstract interface aqon
 {
-  public abstract void a();
+  public abstract void a(ColorNote paramColorNote);
+  
+  public abstract void b(ColorNote paramColorNote);
 }
 
 

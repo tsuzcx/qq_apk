@@ -1,23 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class agxu
-  extends BroadcastReceiver
+class agxu
+  extends ahaa
 {
-  public agxu(AIOGalleryActivity paramAIOGalleryActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  agxu(agvm paramagvm)
   {
-    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOGalleryActivity", 2, "receive videochat in aiogallery");
-      }
-      this.a.finish();
-    }
+    super(paramagvm, null);
+  }
+  
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new agqm(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

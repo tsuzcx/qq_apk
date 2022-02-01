@@ -1,26 +1,19 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeInfo;
-import com.tencent.widget.Switch;
+import com.tencent.qphone.base.util.QLog;
 
-class aljt
-  extends View.AccessibilityDelegate
+public class aljt
+  implements aljm
 {
-  aljt(aljq paramaljq) {}
-  
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  public aljl a()
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
-    if (paramView != null)
-    {
-      paramView = (Switch)paramView.findViewById(2131363982);
-      if ((paramView != null) && (paramView.getVisibility() != 8))
-      {
-        paramAccessibilityNodeInfo.setCheckable(true);
-        paramAccessibilityNodeInfo.setChecked(paramView.isChecked());
-        paramAccessibilityNodeInfo.setClassName(Switch.class.getName());
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("BannerConflictExperiment", 2, "[getShouldShowBanner] get strategy 5");
     }
+    aljl localaljl = new aljl();
+    localaljl.a = true;
+    localaljl.b = true;
+    localaljl.f = true;
+    localaljl.g = true;
+    return localaljl;
   }
 }
 

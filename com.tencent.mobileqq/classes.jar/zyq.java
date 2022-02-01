@@ -1,34 +1,12 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.TextView;
-import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
-
-public class zyq
-  extends AnimatorListenerAdapter
+public abstract interface zyq
 {
-  public zyq(SingleLyricView paramSingleLyricView, String paramString) {}
+  public abstract void m();
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    super.onAnimationCancel(paramAnimator);
-    if (SingleLyricView.a(this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricSingleLyricView) != null) {
-      SingleLyricView.a(this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricSingleLyricView).setText(this.jdField_a_of_type_JavaLangString);
-    }
-  }
+  public abstract void n();
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (SingleLyricView.a(this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricSingleLyricView) != null)
-    {
-      SingleLyricView.a(this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricSingleLyricView).setText(this.jdField_a_of_type_JavaLangString);
-      SingleLyricView.a(this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricSingleLyricView).setAlpha(0.3F);
-    }
-  }
+  public abstract void o();
   
-  public void onAnimationStart(Animator paramAnimator, boolean paramBoolean)
-  {
-    SingleLyricView.a(this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricSingleLyricView).setAlpha(1.0F);
-  }
+  public abstract void p();
 }
 
 

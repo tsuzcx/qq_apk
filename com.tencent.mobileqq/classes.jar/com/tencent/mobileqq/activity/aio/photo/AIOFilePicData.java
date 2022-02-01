@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
 import android.os.Parcel;
-import asgz;
-import becp;
+import atlf;
+import bfjs;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import java.io.File;
@@ -142,30 +142,30 @@ public class AIOFilePicData
     }
   }
   
-  public void a(becp parambecp)
+  public void a(bfjs parambfjs)
   {
-    if (parambecp == null) {
+    if (parambfjs == null) {
       return;
     }
     String str;
-    if (parambecp.jdField_d_of_type_JavaLangString != null)
+    if (parambfjs.jdField_d_of_type_JavaLangString != null)
     {
-      str = parambecp.jdField_d_of_type_JavaLangString;
+      str = parambfjs.jdField_d_of_type_JavaLangString;
       this.jdField_b_of_type_JavaLangString = str;
-      if (parambecp.jdField_c_of_type_JavaLangString == null) {
+      if (parambfjs.jdField_c_of_type_JavaLangString == null) {
         break label108;
       }
-      str = parambecp.jdField_c_of_type_JavaLangString;
+      str = parambfjs.jdField_c_of_type_JavaLangString;
       label34:
       this.jdField_c_of_type_JavaLangString = str;
-      if (parambecp.jdField_a_of_type_JavaLangString == null) {
+      if (parambfjs.jdField_a_of_type_JavaLangString == null) {
         break label114;
       }
-      str = parambecp.jdField_a_of_type_JavaLangString;
+      str = parambfjs.jdField_a_of_type_JavaLangString;
       label51:
       this.jdField_d_of_type_JavaLangString = str;
-      this.g = parambecp.g;
-      if (parambecp.jdField_b_of_type_Int != 12) {
+      this.g = parambfjs.g;
+      if (parambfjs.jdField_b_of_type_Int != 12) {
         break label120;
       }
     }
@@ -175,8 +175,8 @@ public class AIOFilePicData
     for (boolean bool = true;; bool = false)
     {
       this.jdField_d_of_type_Boolean = bool;
-      this.jdField_a_of_type_Long = parambecp.jdField_c_of_type_Long;
-      this.jdField_h_of_type_Long = parambecp.jdField_c_of_type_Long;
+      this.jdField_a_of_type_Long = parambfjs.jdField_c_of_type_Long;
+      this.jdField_h_of_type_Long = parambfjs.jdField_c_of_type_Long;
       this.jdField_e_of_type_Boolean = false;
       return;
       str = "I:N";

@@ -1,12 +1,45 @@
-import kotlin.Metadata;
+import android.content.Context;
+import android.content.IntentFilter;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/util/ReadInJoyShareHelperV2$openWithQQBrowser$1", "Lcom/tencent/biz/pubaccount/util/OpenWithQQBrowser$UiCallback;", "onHideProgress", "", "onShowProgress", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class uhf
-  implements uec
+public class uhf
 {
-  public void a() {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private IntentFilter jdField_a_of_type_AndroidContentIntentFilter;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private uhg jdField_a_of_type_Uhg;
+  private uhh jdField_a_of_type_Uhh;
   
-  public void b() {}
+  public uhf(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidContentIntentFilter = new IntentFilter("android.intent.action.CLOSE_SYSTEM_DIALOGS");
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_Uhg != null) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))) {
+      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_Uhg, this.jdField_a_of_type_AndroidContentIntentFilter);
+    }
+  }
+  
+  public void a(uhh paramuhh)
+  {
+    this.jdField_a_of_type_Uhh = paramuhh;
+    this.jdField_a_of_type_Uhg = new uhg(this);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Uhg != null) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false))) {
+      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_Uhg);
+    }
+  }
 }
 
 

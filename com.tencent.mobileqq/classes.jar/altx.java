@@ -1,29 +1,22 @@
-import android.os.Process;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
 public class altx
+  implements MediaPlayer.OnCompletionListener
 {
-  public static final int a;
-  public static final long a;
-  public static final String a;
-  public static final String b;
-  public static final String c;
-  public long b;
-  public long c;
+  public altx(FixedSizeVideoView paramFixedSizeVideoView) {}
   
-  static
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    jdField_a_of_type_JavaLangString = DeviceInfoUtil.getDeviceOSVersion();
-    jdField_b_of_type_JavaLangString = DeviceInfoUtil.getModel();
-    jdField_c_of_type_JavaLangString = DeviceInfoUtil.getCpuType();
-    jdField_a_of_type_Int = DeviceInfoUtil.getCpuNumber();
-    jdField_a_of_type_Long = DeviceInfoUtil.getCpuFrequency();
-  }
-  
-  public altx()
-  {
-    this.jdField_b_of_type_Long = DeviceInfoUtil.getApplicationMemory(Process.myPid());
-    this.jdField_c_of_type_Long = DeviceInfoUtil.getMemoryClass();
+    if (this.a.a != null)
+    {
+      if (FixedSizeVideoView.a(this.a) != null) {
+        FixedSizeVideoView.a(this.a).removeMessages(0);
+      }
+      this.a.a.a(paramMediaPlayer);
+    }
   }
 }
 

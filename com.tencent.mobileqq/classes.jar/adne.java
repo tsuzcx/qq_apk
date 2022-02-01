@@ -1,47 +1,19 @@
-import QQService.DiscussMemberInfo;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity.FaceObserver.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adne
-  extends amsu
+public final class adne
+  implements DialogInterface.OnClickListener
 {
-  private adne(JoinDiscussionActivity paramJoinDiscussionActivity) {}
+  public adne(adnm paramadnm) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!paramBoolean) || (this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.app.getCurrentAccountUin().equals(paramString))) {}
-    label192:
-    for (;;)
-    {
-      return;
-      Object localObject = this.a.jdField_a_of_type_JavaUtilList.iterator();
-      do
-      {
-        if (!((Iterator)localObject).hasNext()) {
-          break;
-        }
-      } while (!String.valueOf(((DiscussMemberInfo)((Iterator)localObject).next()).Uin).equals(paramString));
-      for (int i = 1;; i = 0)
-      {
-        if ((i == 0) || (this.a.jdField_a_of_type_JavaUtilArrayList.contains(paramString))) {
-          break label192;
-        }
-        this.a.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-        localObject = new StringBuilder();
-        JoinDiscussionActivity localJoinDiscussionActivity = this.a;
-        localJoinDiscussionActivity.f = (localJoinDiscussionActivity.f + paramString + ";");
-        if (this.a.jdField_a_of_type_JavaUtilArrayList.size() != this.a.b) {
-          break;
-        }
-        ThreadManager.post(new JoinDiscussionActivity.FaceObserver.1(this), 8, null, true);
-        return;
-      }
+    if (this.a != null) {
+      this.a.onCancel();
     }
+    msa.e(true, false);
+    paramDialogInterface.dismiss();
+    msa.b();
   }
 }
 

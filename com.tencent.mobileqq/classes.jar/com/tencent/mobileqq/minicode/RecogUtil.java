@@ -9,8 +9,8 @@ import android.graphics.Bitmap.Config;
 import android.graphics.Rect;
 import android.os.Build;
 import android.text.TextUtils;
-import aokn;
-import bbvz;
+import apno;
+import bdcu;
 import com.tencent.biz.flatbuffers.FlatBuffersParser;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.AppConstants;
@@ -26,7 +26,7 @@ public class RecogUtil
   public static final int CLASS_FOR_QRCODE = 1;
   public static final int CLASS_FOR_WEIXINCODE = 3;
   public static boolean DEBUG = false;
-  public static final int MAX_DETECT_ERROR_COUNT = 2;
+  public static final int MAX_DETECT_ERROR_COUNT = 3;
   public static volatile boolean SAVE_DETECT_IMAGE = false;
   public static String SP_FILE_MINIRECOG = "sp_file_minirecog";
   public static String SP_KEY_DETECT_INIT_ERROR = "sp_key_detect_init_error_";
@@ -365,16 +365,16 @@ public class RecogUtil
   public static int getSupportDetectType()
   {
     int j = 1;
-    if (getMiniScanErrorCnt(false) >= 2)
+    if (getMiniScanErrorCnt(false) >= 3)
     {
       i = -2;
       return i;
     }
-    int m = bbvz.a();
-    int k = bbvz.b();
+    int m = bdcu.a();
+    int k = bdcu.b();
     if (!s_bHasSupportReported)
     {
-      aokn.c(m, k);
+      apno.c(m, k);
       s_bHasSupportReported = true;
     }
     if (k > 0) {}

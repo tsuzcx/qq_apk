@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
-import aqyp;
+import ascz;
 import com.tencent.qphone.base.util.QLog;
 
 class EmojiUiPlugin$1
-  extends aqyp
+  extends ascz
 {
   EmojiUiPlugin$1(EmojiUiPlugin paramEmojiUiPlugin) {}
   

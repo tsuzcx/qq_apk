@@ -1,57 +1,36 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.widget.MultiImageTextView;
 
 public class aqtx
-  extends aqsw
+  implements DialogInterface.OnDismissListener
 {
-  public aqty a;
-  public String b;
-  public boolean b;
+  public aqtx(LocationSelectActivity paramLocationSelectActivity) {}
   
-  public static aqtx a(JSONObject paramJSONObject)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    aqtx localaqtx = new aqtx();
-    localaqtx.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name");
-    localaqtx.jdField_b_of_type_JavaLangString = paramJSONObject.optString("action");
-    localaqtx.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isChecked", true);
-    localaqtx.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("isAddByUser");
-    return localaqtx;
-  }
-  
-  public JSONObject a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    LocationSelectActivity.a(this.a).setRightTextColor(2);
+    if (AppSetting.c)
     {
-      localJSONObject.put("name", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("action", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("isChecked", this.jdField_a_of_type_Boolean);
-      localJSONObject.put("isAddByUser", this.jdField_b_of_type_Boolean);
-      return localJSONObject;
+      LocationSelectActivity.b(this.a).setContentDescription(anvx.a(2131705791) + LocationSelectActivity.a(this.a).name);
+      LocationSelectActivity.a(this.a).setContentDescription(anvx.a(2131705789) + LocationSelectActivity.a(this.a).a().getText());
     }
-    catch (JSONException localJSONException)
+    paramDialogInterface = LocationSelectActivity.a(this.a);
+    if (LocationSelectActivity.a(this.a) == 0)
     {
-      localJSONException.printStackTrace();
+      bdla.b(this.a.app, "CliOper", "", "", "0X8004248", "0X8004248", 0, 0, paramDialogInterface[0], paramDialogInterface[1], paramDialogInterface[2], "");
+      return;
     }
-    return localJSONObject;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public boolean b()
-  {
-    if (this.jdField_a_of_type_Aqty == null) {
-      return this.jdField_a_of_type_Boolean;
-    }
-    return this.jdField_a_of_type_Aqty.jdField_a_of_type_Boolean;
+    bdla.b(this.a.app, "CliOper", "", "", "0X800424A", "0X800424A", 0, 0, paramDialogInterface[0], paramDialogInterface[1], paramDialogInterface[2], "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqtx
  * JD-Core Version:    0.7.0.1
  */

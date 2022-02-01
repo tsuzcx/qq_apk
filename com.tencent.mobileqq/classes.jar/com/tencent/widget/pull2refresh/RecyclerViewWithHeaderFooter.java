@@ -10,11 +10,11 @@ import android.support.v7.widget.RecyclerView.RecycledViewPool;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import bjxc;
-import bjxq;
-import bjxu;
-import bjxv;
-import bjxw;
+import blin;
+import bljb;
+import bljf;
+import bljg;
+import bljh;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -22,8 +22,8 @@ import java.util.List;
 public class RecyclerViewWithHeaderFooter
   extends RecyclerViewCompat
 {
-  private bjxu jdField_a_of_type_Bjxu;
-  private bjxv jdField_a_of_type_Bjxv;
+  private bljf jdField_a_of_type_Bljf;
+  private bljg jdField_a_of_type_Bljg;
   private final List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
   public boolean a;
   private final List<View> b = new ArrayList();
@@ -103,26 +103,26 @@ public class RecyclerViewWithHeaderFooter
     }
     else
     {
-      localObject = new bjxq(paramAdapter);
+      localObject = new bljb(paramAdapter);
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((bjxq)localObject).a((View)localIterator.next());
+        ((bljb)localObject).a((View)localIterator.next());
       }
       localIterator = this.b.iterator();
       while (localIterator.hasNext()) {
-        ((bjxq)localObject).c((View)localIterator.next());
+        ((bljb)localObject).c((View)localIterator.next());
       }
-      ((bjxq)localObject).setHasStableIds(paramAdapter.hasStableIds());
+      ((bljb)localObject).setHasStableIds(paramAdapter.hasStableIds());
       if ((getLayoutManager() instanceof GridLayoutManager))
       {
         paramAdapter = (GridLayoutManager)getLayoutManager();
-        paramAdapter.setSpanSizeLookup(new bjxc((bjxq)localObject, paramAdapter));
+        paramAdapter.setSpanSizeLookup(new blin((bljb)localObject, paramAdapter));
       }
-      if (this.jdField_a_of_type_Bjxu != null) {
-        ((bjxq)localObject).a(this.jdField_a_of_type_Bjxu);
+      if (this.jdField_a_of_type_Bljf != null) {
+        ((bljb)localObject).a(this.jdField_a_of_type_Bljf);
       }
-      if (this.jdField_a_of_type_Bjxv != null) {
-        ((bjxq)localObject).a(this.jdField_a_of_type_Bjxv);
+      if (this.jdField_a_of_type_Bljg != null) {
+        ((bljb)localObject).a(this.jdField_a_of_type_Bljg);
       }
     }
     super.setAdapter((RecyclerView.Adapter)localObject);
@@ -131,30 +131,30 @@ public class RecyclerViewWithHeaderFooter
   public void setLayoutManager(RecyclerView.LayoutManager paramLayoutManager)
   {
     super.setLayoutManager(paramLayoutManager);
-    if ((getAdapter() != null) && ((getAdapter() instanceof bjxq)))
+    if ((getAdapter() != null) && ((getAdapter() instanceof bljb)))
     {
-      Object localObject = (bjxq)getAdapter();
+      Object localObject = (bljb)getAdapter();
       if ((getLayoutManager() instanceof GridLayoutManager))
       {
         paramLayoutManager = (GridLayoutManager)getLayoutManager();
-        localObject = new bjxc((bjxq)localObject, paramLayoutManager);
-        ((bjxc)localObject).a(paramLayoutManager.getSpanSizeLookup());
+        localObject = new blin((bljb)localObject, paramLayoutManager);
+        ((blin)localObject).a(paramLayoutManager.getSpanSizeLookup());
         paramLayoutManager.setSpanSizeLookup((GridLayoutManager.SpanSizeLookup)localObject);
       }
     }
   }
   
-  public void setOnBindHeaderObserver(bjxv parambjxv)
+  public void setOnBindHeaderObserver(bljg parambljg)
   {
-    this.jdField_a_of_type_Bjxv = parambjxv;
-    if ((getAdapter() instanceof bjxq)) {
-      ((bjxq)getAdapter()).a(parambjxv);
+    this.jdField_a_of_type_Bljg = parambljg;
+    if ((getAdapter() instanceof bljb)) {
+      ((bljb)getAdapter()).a(parambljg);
     }
   }
   
   public void setRecycledViewPool(RecyclerView.RecycledViewPool paramRecycledViewPool)
   {
-    super.setRecycledViewPool(new bjxw(this));
+    super.setRecycledViewPool(new bljh(this));
   }
 }
 

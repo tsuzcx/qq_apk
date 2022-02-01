@@ -1,6 +1,22 @@
-public abstract interface adxs
+import android.os.Message;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.app.FontSettingManager;
+import mqq.os.MqqHandler;
+
+public class adxs
+  extends MqqHandler
 {
-  public abstract void onBackPressed();
+  public adxs(FontSettingActivity paramFontSettingActivity) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (16711697 == paramMessage.what)
+    {
+      FontSettingManager.setCustomDensity(this.a, FontSettingActivity.a(this.a), false);
+      this.a.c = true;
+      this.a.a.notifyDataSetChanged();
+    }
+  }
 }
 
 

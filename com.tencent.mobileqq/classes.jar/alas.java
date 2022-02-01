@@ -1,16 +1,24 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.soload.LoadExtResult;
 
 class alas
+  implements bdgc
 {
-  int jdField_a_of_type_Int;
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  Groups jdField_a_of_type_ComTencentMobileqqDataGroups;
-  TextView b;
+  alas(alar paramalar, alat paramalat) {}
   
-  alas(alaq paramalaq) {}
+  public void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
+  {
+    if (paramInt == 0)
+    {
+      alar.a(this.jdField_a_of_type_Alar, true);
+      if (this.jdField_a_of_type_Alat != null) {
+        this.jdField_a_of_type_Alat.a(true);
+      }
+    }
+    while (this.jdField_a_of_type_Alat == null) {
+      return;
+    }
+    this.jdField_a_of_type_Alat.a(false);
+  }
 }
 
 

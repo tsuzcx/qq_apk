@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import askw;
+import atpc;
 
 public class ThumbDownloadManager$2
   implements Runnable
 {
-  public ThumbDownloadManager$2(askw paramaskw, String paramString) {}
+  public ThumbDownloadManager$2(atpc paramatpc, String paramString) {}
   
   public void run()
   {
-    askw.a(this.this$0, this.a);
-    askw.b(this.this$0, this.a);
+    atpc.a(this.this$0, this.a);
+    atpc.b(this.this$0, this.a);
   }
 }
 

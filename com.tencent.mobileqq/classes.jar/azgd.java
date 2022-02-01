@@ -1,6 +1,29 @@
-public abstract interface azgd
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.onlinestatus.StatusVisibleFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Ref.ObjectRef;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mobileqq/onlinestatus/view/WeatherView$bindTextView$2$1"}, k=3, mv={1, 1, 16})
+final class azgd
+  implements View.OnClickListener
 {
-  public abstract void a(boolean paramBoolean);
+  azgd(azga paramazga, Ref.ObjectRef paramObjectRef, boolean paramBoolean) {}
+  
+  public final void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      azcl.a("0X800AF49", 2, null, null, 12, null);
+    }
+    for (;;)
+    {
+      StatusVisibleFragment.a(this.jdField_a_of_type_Azga.a(), azga.a(this.jdField_a_of_type_Azga), 2, 998);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      azcl.a("0X800AF49", 1, null, null, 12, null);
+    }
+  }
 }
 
 

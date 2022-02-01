@@ -1,50 +1,48 @@
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.view.View;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.widget.ListView;
 
 public class qlj
-  extends MSFServlet
+  implements qkv
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private qfw jdField_a_of_type_Qfw;
+  private qkv jdField_a_of_type_Qkv;
+  private tbs jdField_a_of_type_Tbs;
+  private qkv b;
+  
+  public qlj(Context paramContext, pnv parampnv, FaceDecoder paramFaceDecoder, szd paramszd, blcn paramblcn, ListView paramListView)
   {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-    }
-    for (;;)
-    {
-      udz.a(paramFromServiceMsg);
-      if (getAppRuntime() != null) {
-        qli.a().a(paramFromServiceMsg.isSuccess(), paramIntent, paramFromServiceMsg, null);
-      }
-      return;
-      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
-    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Qkv = new qle(this.jdField_a_of_type_AndroidContentContext, paramFaceDecoder, paramszd, paramListView, paramblcn);
+    this.b = new qkw(this.jdField_a_of_type_AndroidContentContext, parampnv, paramszd);
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(tbs paramtbs, qfw paramqfw, int paramInt)
   {
-    if (paramIntent != null)
+    this.jdField_a_of_type_Tbs = paramtbs;
+    this.jdField_a_of_type_Qfw = paramqfw;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Qkv.a(paramtbs, paramqfw, paramInt);
+    this.b.a(paramtbs, paramqfw, paramInt);
+    if ((paramtbs != null) && (paramtbs.e != null))
     {
-      ToServiceMsg localToServiceMsg = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      udz.a(localToServiceMsg);
-      if (localToServiceMsg != null)
-      {
-        paramPacket.setSSOCommand(localToServiceMsg.getServiceCmd());
-        paramPacket.putSendData(localToServiceMsg.getWupBuffer());
-        paramPacket.setTimeout(localToServiceMsg.getTimeout());
-        paramPacket.setAttributes(localToServiceMsg.getAttributes());
-        paramPacket.setQuickSend(paramIntent.getBooleanExtra("quickSendEnable", false), paramIntent.getIntExtra("quickSendStrategy", 0));
-        paramPacket.autoResend = localToServiceMsg.isFastResendEnabled();
-        if (!localToServiceMsg.isNeedCallback()) {
-          paramPacket.setNoResponse();
-        }
+      if (paramqfw.h()) {
+        paramtbs.e.setVisibility(8);
       }
     }
+    else {
+      return;
+    }
+    paramtbs.e.setVisibility(0);
+  }
+  
+  public void a(tbs paramtbs, qfw paramqfw, long paramLong, Bitmap paramBitmap)
+  {
+    this.jdField_a_of_type_Qkv.a(paramtbs, paramqfw, paramLong, paramBitmap);
   }
 }
 

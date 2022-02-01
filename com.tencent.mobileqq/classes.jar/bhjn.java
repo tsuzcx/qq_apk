@@ -1,42 +1,18 @@
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-import com.tencent.mobileqq.widget.TabDragAnimationView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.utils.confighandler.NormalConfigHandler.GetConfigListen;
+import com.tencent.mobileqq.utils.confighandler.QAVFunCallConfig;
+import com.tencent.mobileqq.utils.confighandler.QAVFunCallHandler;
 
 public class bhjn
-  extends GestureDetector.SimpleOnGestureListener
+  implements NormalConfigHandler.GetConfigListen<QAVFunCallConfig>
 {
-  public bhjn(TabDragAnimationView paramTabDragAnimationView) {}
+  public bhjn(QAVFunCallHandler paramQAVFunCallHandler) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void a(AppInterface paramAppInterface, QAVFunCallConfig paramQAVFunCallConfig)
   {
-    if (TabDragAnimationView.a(this.a) != null) {
-      return TabDragAnimationView.a(this.a).onDoubleTap(paramMotionEvent);
-    }
-    return super.onDoubleTap(paramMotionEvent);
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    super.onLongPress(paramMotionEvent);
-    if (TabDragAnimationView.a(this.a) != null) {
-      TabDragAnimationView.a(this.a).onLongClick(this.a);
-    }
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    if (TabDragAnimationView.a(this.a) != null) {
-      TabDragAnimationView.a(this.a).onSingleTapConfirmed(paramMotionEvent);
-    }
-    ViewParent localViewParent = this.a.getParent();
-    if (localViewParent != null) {
-      ((ViewGroup)localViewParent).performClick();
-    }
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    this.a.setConfig(paramQAVFunCallConfig);
+    this.a.onGetConfig(paramAppInterface);
+    QAVFunCallHandler.access$000(this.a, "onGetConfig", paramAppInterface);
   }
 }
 

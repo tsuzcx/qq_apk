@@ -1,74 +1,20 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
-import com.tencent.mobileqq.activity.selectable.TranslateSelectableMenu.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.AnimationTextView;
-import com.tencent.mobileqq.widget.ContainerView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.ScrollView;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import mqq.observer.BusinessObserver;
 
 public class akyu
-  extends akyf<TextPreviewTranslateActivity>
+  implements BusinessObserver
 {
-  protected void a(ContainerView paramContainerView)
-  {
-    super.a(paramContainerView);
-    TextPreviewTranslateActivity localTextPreviewTranslateActivity = (TextPreviewTranslateActivity)this.b.get();
-    if (localTextPreviewTranslateActivity != null) {
-      paramContainerView.setOutScrollView((ScrollView)localTextPreviewTranslateActivity.findViewById(2131376863));
-    }
-    paramContainerView.jdField_a_of_type_Boolean = false;
-    paramContainerView.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.post(new TranslateSelectableMenu.1(this, paramContainerView));
-  }
+  public akyu(RedPacketManager paramRedPacketManager) {}
   
-  protected void a(ContainerView paramContainerView, View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super.a(paramContainerView, paramView);
-    bcef.b((QQAppInterface)this.a.get(), "dc00898", "", "", "0X800A435", "0X800A435", 0, 0, "", "", "", "");
-  }
-  
-  public void onClick(View paramView)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
-    switch (paramView.getId())
+    switch (paramInt)
     {
+    default: 
+      return;
     }
-    for (;;)
-    {
-      if ((paramView.getId() != 2131377014) && (akxv.a().c())) {
-        akxv.a().d();
-      }
-      for (;;)
-      {
-        for (;;)
-        {
-          EventCollector.getInstance().onViewClicked(paramView);
-          return;
-          try
-          {
-            bdaf.a(a(), "TextPreview");
-            bcef.b((QQAppInterface)this.a.get(), "dc00898", "", "", "0X800A437", "0X800A437", 0, 0, "", "", "", "");
-          }
-          catch (Exception localException) {}
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("TranslateSelectableMenu", 2, localException.toString());
-        }
-      }
-      bdaf.a((Activity)paramView.getContext(), a());
-      bcef.b((QQAppInterface)this.a.get(), "dc00898", "", "", "0X800A438", "0X800A438", 0, 0, "", "", "", "");
-      continue;
-      if (localException != null) {
-        bdaf.a((Activity)paramView.getContext(), localException, a());
-      }
-      bcef.b((QQAppInterface)this.a.get(), "dc00898", "", "", "0X800A439", "0X800A439", 0, 0, "", "", "", "");
-      continue;
-      akxv.a().a(null);
-      bcef.b((QQAppInterface)this.a.get(), "dc00898", "", "", "0X800A436", "0X800A436", 0, 0, "", "", "", "");
-    }
+    this.a.a(paramBoolean, paramBundle);
   }
 }
 

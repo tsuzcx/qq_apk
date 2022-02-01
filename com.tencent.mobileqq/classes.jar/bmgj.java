@@ -1,11 +1,14 @@
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.SmartFilterReqItem;
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
-public abstract interface bmgj
+public final class bmgj
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(ArrayList<SmartFilterReqItem> paramArrayList);
+  private static SharedPreferences b(Context paramContext)
+  {
+    return paramContext.getSharedPreferences("reader_user" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0);
+  }
 }
 
 

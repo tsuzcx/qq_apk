@@ -1,77 +1,86 @@
-import com.tencent.biz.qqstory.database.VideoUrlEntry;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetCollectionVideoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoFullInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoUrl;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class wfy
-  extends vqm
+  extends whq
 {
-  public String a;
-  public List<StoryVideoItem> a;
-  public boolean a;
-  public int b;
-  public List<List<VideoUrlEntry>> b;
-  public String c;
+  public static final String a;
+  public static final String b = weg.a("StorySvc.del_feed_comment");
+  public static final String c = weg.a("StorySvc.get_comment_list");
+  protected int a;
+  protected wgm a;
+  protected boolean a;
+  private String d;
   
-  public wfy(String paramString, qqstory_service.RspGetCollectionVideoList paramRspGetCollectionVideoList)
+  static
   {
-    super(paramRspGetCollectionVideoList.result);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (paramRspGetCollectionVideoList.is_end.get() == 1)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_b_of_type_Int = paramRspGetCollectionVideoList.interact_status.get();
-      this.c = paramRspGetCollectionVideoList.next_cookie.get().toStringUtf8();
-      paramString = paramRspGetCollectionVideoList.full_video_info_list.get().iterator();
-    }
-    for (;;)
-    {
-      if (!paramString.hasNext()) {
-        return;
-      }
-      Object localObject1 = (qqstory_struct.StoryVideoFullInfo)paramString.next();
-      paramRspGetCollectionVideoList = new StoryVideoItem();
-      paramRspGetCollectionVideoList.convertFrom((qqstory_struct.StoryVideoFullInfo)localObject1);
-      this.jdField_a_of_type_JavaUtilList.add(paramRspGetCollectionVideoList);
-      Object localObject2 = ((qqstory_struct.StoryVideoFullInfo)localObject1).compressed_video.get();
-      if (localObject2 != null)
-      {
-        localObject1 = new ArrayList(((List)localObject2).size());
-        localObject2 = ((List)localObject2).iterator();
-        for (;;)
-        {
-          if (((Iterator)localObject2).hasNext())
-          {
-            qqstory_struct.VideoUrl localVideoUrl = (qqstory_struct.VideoUrl)((Iterator)localObject2).next();
-            VideoUrlEntry localVideoUrlEntry = new VideoUrlEntry();
-            localVideoUrlEntry.vid = paramRspGetCollectionVideoList.mVid;
-            localVideoUrlEntry.videoUrlLevel = localVideoUrl.video_level.get();
-            localVideoUrlEntry.videoUrl = localVideoUrl.video_url.get();
-            ((List)localObject1).add(localVideoUrlEntry);
-            continue;
-            bool = false;
-            break;
-          }
-        }
-        this.jdField_b_of_type_JavaUtilList.add(localObject1);
-      }
-    }
+    jdField_a_of_type_JavaLangString = weg.a("StorySvc.add_feed_comment");
   }
   
-  public String toString()
+  public wfy(wgm paramwgm)
   {
-    return "GetCollectionVideoListResponse{unionId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", nextCookie='" + this.c + '\'' + ", isEnd=" + this.jdField_a_of_type_Boolean + ", interactStatus=" + this.jdField_b_of_type_Int + ", videoItems=" + this.jdField_a_of_type_JavaUtilList + '}';
+    this.jdField_a_of_type_Wgm = paramwgm;
+  }
+  
+  public static void a(CommentEntry paramCommentEntry, whw paramwhw)
+  {
+    paramCommentEntry = new wgc(paramCommentEntry, paramwhw);
+    paramwhw = new wgd(paramwhw);
+    whs.a().a(paramCommentEntry, paramwhw);
+  }
+  
+  public static void a(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, String paramString5, String paramString6)
+  {
+    long l = System.currentTimeMillis();
+    Object localObject1 = null;
+    try
+    {
+      Object localObject2 = new JSONObject();
+      ((JSONObject)localObject2).putOpt("vid", paramString3);
+      ((JSONObject)localObject2).putOpt("feedid", paramString4);
+      ((JSONObject)localObject2).putOpt("pvid", paramString5);
+      ((JSONObject)localObject2).putOpt("styles", new JSONArray(paramString6));
+      localObject2 = ((JSONObject)localObject2).toString();
+      localObject1 = localObject2;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("Q.qqstory:FeedCommentDataProvider", 2, "addGamePKComment jsonException " + localJSONException);
+      }
+    }
+    a(paramString1, null, paramString2, l, paramInt, localObject1, 4, new wfz(paramString1, paramInt, l, paramString2, paramString3, paramString4, paramString5, paramString6));
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, String paramString4, int paramInt2, whw paramwhw)
+  {
+    paramString1 = new wga(paramString1, paramString2, paramString3, paramLong, paramInt1, paramString4, paramInt2, paramwhw);
+    paramString2 = new wgb(paramwhw);
+    whs.a().a(paramString1, paramString2);
+  }
+  
+  public static void b(CommentEntry paramCommentEntry, whw paramwhw)
+  {
+    paramCommentEntry = new wga(paramCommentEntry, paramwhw);
+    paramwhw = new wgb(paramwhw);
+    whs.a().a(paramCommentEntry, paramwhw);
+  }
+  
+  public void a()
+  {
+    a(this.jdField_a_of_type_Wgm.a.feedId, 0);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    paramString = new wge(this, paramString, paramInt);
+    wgf localwgf = new wgf(this);
+    whs.a().a(paramString, localwgf);
   }
 }
 

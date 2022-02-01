@@ -1,12 +1,42 @@
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public abstract interface bluw
+public class bluw
 {
-  public abstract void a(MetaMaterial paramMetaMaterial);
+  public ArrayList<Integer> a = new ArrayList();
   
-  public abstract void a(MetaMaterial paramMetaMaterial, int paramInt);
-  
-  public abstract void b(MetaMaterial paramMetaMaterial);
+  public static bluw a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return new bluw();
+    }
+    bluw localbluw = new bluw();
+    try
+    {
+      paramString = new JSONObject(paramString).optJSONArray("black_version_list");
+      if (paramString != null)
+      {
+        ArrayList localArrayList = new ArrayList();
+        int i = 0;
+        while (i < paramString.length())
+        {
+          localArrayList.add((Integer)paramString.get(i));
+          i += 1;
+        }
+        localbluw.a = localArrayList;
+      }
+    }
+    catch (Throwable paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+    }
+    return localbluw;
+  }
 }
 
 

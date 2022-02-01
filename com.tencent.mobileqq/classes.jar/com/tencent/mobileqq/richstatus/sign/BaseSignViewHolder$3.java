@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.richstatus.sign;
 
-import bapu;
+import bbwj;
 
 public class BaseSignViewHolder$3
   implements Runnable
 {
-  public BaseSignViewHolder$3(bapu parambapu) {}
+  public BaseSignViewHolder$3(bbwj parambbwj) {}
   
   public void run()
   {

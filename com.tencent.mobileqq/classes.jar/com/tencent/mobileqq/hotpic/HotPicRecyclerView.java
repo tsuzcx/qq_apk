@@ -7,21 +7,21 @@ import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import auhh;
-import auhi;
-import auhj;
-import auiv;
-import auiw;
+import avnb;
+import avnc;
+import avnd;
+import avop;
+import avoq;
 import com.tencent.qphone.base.util.QLog;
 
 public class HotPicRecyclerView
   extends FooterRecyclerView
-  implements auiw
+  implements avoq
 {
   public int a;
-  public auhi a;
-  auhj jdField_a_of_type_Auhj;
-  public auiv a;
+  public avnc a;
+  avnd jdField_a_of_type_Avnd;
+  public avop a;
   boolean jdField_a_of_type_Boolean = false;
   public int[] a;
   boolean b = false;
@@ -36,8 +36,8 @@ public class HotPicRecyclerView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_ArrayOfInt = new int[3];
-    this.jdField_a_of_type_Auiv = new auiv(200, this);
-    setOnScrollListener(new auhh(this));
+    this.jdField_a_of_type_Avop = new avop(200, this);
+    setOnScrollListener(new avnb(this));
   }
   
   public static void a(String paramString)
@@ -242,8 +242,8 @@ public class HotPicRecyclerView
   
   public void b()
   {
-    if (this.jdField_a_of_type_Auhj != null) {
-      this.jdField_a_of_type_Auhj.g();
+    if (this.jdField_a_of_type_Avnd != null) {
+      this.jdField_a_of_type_Avnd.g();
     }
     this.b = false;
   }
@@ -255,16 +255,16 @@ public class HotPicRecyclerView
     {
       return;
       this.b = true;
-    } while (this.jdField_a_of_type_Auhj == null);
-    this.jdField_a_of_type_Auhj.f();
+    } while (this.jdField_a_of_type_Avnd == null);
+    this.jdField_a_of_type_Avnd.f();
   }
   
   public void onCheckSpeed(boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.jdField_a_of_type_Auhi != null) && (HotPicPageView.b)) {
-      this.jdField_a_of_type_Auhi.c();
+    if ((paramBoolean) && (this.jdField_a_of_type_Avnc != null) && (HotPicPageView.b)) {
+      this.jdField_a_of_type_Avnc.c();
     }
-    this.jdField_a_of_type_Auiv.a(false);
+    this.jdField_a_of_type_Avop.a(false);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -288,8 +288,8 @@ public class HotPicRecyclerView
     if (paramMotionEvent.getAction() == 1)
     {
       ((StaggeredGridLayoutManager)getLayoutManager()).findFirstCompletelyVisibleItemPositions(this.jdField_a_of_type_ArrayOfInt);
-      if ((this.jdField_a_of_type_ArrayOfInt[0] == 0) && (this.jdField_a_of_type_Auhi != null)) {
-        this.jdField_a_of_type_Auhi.d();
+      if ((this.jdField_a_of_type_ArrayOfInt[0] == 0) && (this.jdField_a_of_type_Avnc != null)) {
+        this.jdField_a_of_type_Avnc.d();
       }
     }
     try
@@ -301,9 +301,9 @@ public class HotPicRecyclerView
     return true;
   }
   
-  public void setScrollStatusChengedListener(auhj paramauhj)
+  public void setScrollStatusChengedListener(avnd paramavnd)
   {
-    this.jdField_a_of_type_Auhj = paramauhj;
+    this.jdField_a_of_type_Avnd = paramavnd;
   }
 }
 

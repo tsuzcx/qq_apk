@@ -1,24 +1,77 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.appcommon.now.download.local.DownloadNativeApi.1;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class bhya
-  implements DialogInterface.OnClickListener
+class bhya
+  extends ascz
 {
-  public bhya(DownloadNativeApi.1 param1) {}
+  bhya(bhxz parambhxz) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onBindedToClient() {}
+  
+  public void onDisconnectWithService() {}
+  
+  public void onPushMsg(Bundle paramBundle) {}
+  
+  public void onResponse(Bundle paramBundle)
   {
-    try
+    Object localObject;
+    String str;
+    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == this.a.a.key))
     {
-      paramDialogInterface.dismiss();
-      label6:
-      bhxy.a(this.a.this$0).onDownloadCancel(this.a.a);
-      return;
+      localObject = paramBundle.getString("cmd");
+      str = paramBundle.getString("callbackid");
+      paramBundle = paramBundle.getBundle("response");
     }
-    catch (Exception paramDialogInterface)
+    for (;;)
     {
-      break label6;
+      try
+      {
+        if (TextUtils.equals((CharSequence)localObject, "ipc_video_isinstalled"))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("VideoApiPlugin", 2, "video remote response cmd=" + (String)localObject);
+          }
+          boolean bool = paramBundle.getBoolean("isInstalled");
+          this.a.callJs(str, new String[] { String.valueOf(bool) });
+          return;
+        }
+        if (!TextUtils.equals((CharSequence)localObject, "ipc_video_install_plugin")) {
+          break label347;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoApiPlugin", 2, "video remote response cmd=" + (String)localObject);
+        }
+        int i = paramBundle.getInt("status");
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("status", i);
+        switch (i)
+        {
+        case 3: 
+          this.a.callJs(str, new String[] { ((JSONObject)localObject).toString() });
+          return;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        paramBundle.printStackTrace();
+        return;
+      }
+      ((JSONObject)localObject).put("result", 0);
+      ((JSONObject)localObject).put("progress", 100);
+      ((JSONObject)localObject).put("msg", "install finished");
+      continue;
+      ((JSONObject)localObject).put("result", 1);
+      ((JSONObject)localObject).put("progress", paramBundle.getFloat("progress"));
+      ((JSONObject)localObject).put("msg", "install progress");
+      continue;
+      ((JSONObject)localObject).put("result", paramBundle.getInt("errCode"));
+      ((JSONObject)localObject).put("progress", bhyb.a);
+      ((JSONObject)localObject).put("msg", "install failed");
+      continue;
+      label347:
+      return;
     }
   }
 }

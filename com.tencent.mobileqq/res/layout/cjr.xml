@@ -1,13 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/root_layout" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/a02"
+<LinearLayout android:orientation="vertical" android:id="@id/n__" android:background="@drawable/bg_texture_theme_version2" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/title_container" android:paddingLeft="@dimen/a03" android:paddingRight="@dimen/a03" android:layout_width="fill_parent" android:layout_height="47.0dip">
-        <ImageView android:id="@id/joy" android:layout_width="16.0dip" android:layout_height="28.0dip" android:layout_marginRight="6.0dip" android:layout_centerVertical="true" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/nma" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_toRightOf="@id/joy" android:layout_centerVertical="true" android:layout_alignWithParentIfMissing="true">
-            <TextView android:textSize="20.0dip" android:textStyle="bold" android:textColor="@color/skin_black" android:id="@id/jq2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" />
-        </LinearLayout>
-        <RelativeLayout android:id="@id/nm7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/nm3" android:layout_centerVertical="true" />
-        <ImageView android:id="@id/nm3" android:layout_marginLeft="5.0dip" android:layout_marginRight="0.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/bt" />
+    <RelativeLayout android:background="@drawable/skin_searchbar_bg_theme_version2" android:layout_width="fill_parent" android:layout_height="60.0dip">
+        <TextView android:textSize="17.0sp" android:textColor="@color/skin_black_theme_version2" android:id="@id/n8u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginRight="16.0dip" android:text="@string/cancel" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <EditText android:textSize="16.0dip" android:textColor="@color/skin_input_theme_version2" android:textColorHint="@color/skin_hint_input_theme_version2" android:id="@id/n_1" android:background="@drawable/skin_searchbar_input_theme_version2" android:paddingLeft="15.0dip" android:paddingTop="0.0dip" android:paddingRight="30.0dip" android:paddingBottom="0.0dip" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="13.0dip" android:layout_marginBottom="12.0dip" android:hint="@string/wu9" android:singleLine="true" android:maxLength="200" android:drawableLeft="@drawable/skin_searchbar_icon_theme_version2" android:drawablePadding="5.0dip" android:layout_toLeftOf="@id/n8u" android:layout_centerVertical="true" android:inputType="textNoSuggestions" android:imeOptions="actionSearch" />
+        <ImageButton android:id="@id/n_3" android:background="@null" android:padding="0.0dip" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/cross" android:scaleType="centerCrop" android:layout_alignRight="@id/n_1" android:layout_centerVertical="true" android:contentDescription="@string/r2_" />
     </RelativeLayout>
-    <FrameLayout android:id="@id/b9t" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/a03" android:layout_marginRight="@dimen/a03" />
+    <FrameLayout android:id="@id/n_f" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/n93" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <RelativeLayout android:id="@id/n_8" android:background="@drawable/skin_list_item_normal_theme_version2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="12.0dip">
+                <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2_theme_version2" android:id="@id/n_9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="@string/wu7" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+                <ImageView android:id="@id/n_2" android:layout_width="17.0dip" android:layout_height="17.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/g5l" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+                <com.tencent.mobileqq.mini.entry.search.widget.BubbleViewGroup android:id="@id/n_7" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="16.0dip" android:layout_below="@id/n_9" />
+            </RelativeLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/n_k" android:background="@drawable/skin_list_item_normal_theme_version2" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <android.support.v7.widget.RecyclerView android:id="@id/n_i" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="never" />
+            </LinearLayout>
+        </LinearLayout>
+        <RelativeLayout android:orientation="vertical" android:id="@id/n_s" android:background="@drawable/skin_list_item_normal_theme_version2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <RelativeLayout android:id="@id/n_e" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="77.0dip">
+                <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2_theme_version2" android:gravity="center" android:id="@id/n_u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wu_" android:layout_centerInParent="true" />
+                <View android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="16.0dip" android:layout_alignParentBottom="true" />
+            </RelativeLayout>
+            <TextView android:textColor="@color/skin_black_theme_version2" android:id="@id/n_y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip" android:text="@string/wuc" android:layout_below="@id/n_e" />
+            <ListView android:id="@id/n_w" android:background="@android:color/transparent" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:divider="@android:color/transparent" android:dividerHeight="0.0dip" android:layout_below="@id/n_y" />
+        </RelativeLayout>
+    </FrameLayout>
 </LinearLayout>

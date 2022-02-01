@@ -10,18 +10,18 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.widget.TextView;
-import bktp;
-import bkuh;
-import bkus;
-import bkut;
-import bkuu;
-import bkuv;
-import bkuw;
-import bkvb;
-import bkvd;
-import bkvr;
-import bkvu;
-import bkvv;
+import bmey;
+import bmfq;
+import bmgb;
+import bmgc;
+import bmgd;
+import bmge;
+import bmgf;
+import bmgk;
+import bmgm;
+import bmha;
+import bmhd;
+import bmhe;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -36,12 +36,12 @@ public class ForceUserUpdateActivity
   private long jdField_a_of_type_Long = -1L;
   private Context jdField_a_of_type_AndroidContentContext;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bkuh jdField_a_of_type_Bkuh = new bkus(this);
-  private bkvr jdField_a_of_type_Bkvr;
+  private bmfq jdField_a_of_type_Bmfq = new bmgb(this);
+  private bmha jdField_a_of_type_Bmha;
   private LoadingImageView jdField_a_of_type_CooperationQqreaderViewLoadingImageView;
   private boolean jdField_a_of_type_Boolean;
-  private bkuh b = new bkut(this);
-  private bkuh c = new bkuu(this);
+  private bmfq b = new bmgc(this);
+  private bmfq c = new bmgd(this);
   
   private void a()
   {
@@ -58,7 +58,7 @@ public class ForceUserUpdateActivity
   
   private void a(String paramString)
   {
-    bkvd.a("ForceUserUpdateActivity", paramString);
+    bmgm.a("ForceUserUpdateActivity", paramString);
     b("哎呀，升级出了点问题，再试试看吧~");
   }
   
@@ -70,26 +70,26 @@ public class ForceUserUpdateActivity
     do
     {
       return;
-      if (!bktp.a()) {
+      if (!bmey.a()) {
         c();
       }
-    } while (bkvb.d(this));
+    } while (bmgk.d(this));
     e();
   }
   
   private void b(String paramString)
   {
     if ((isFinishing()) || ((Build.VERSION.SDK_INT >= 17) && (isDestroyed()))) {
-      bkvd.c("ForceUserUpdateActivity", "showRetryDialog: activity 已经销毁，不显示Dialog");
+      bmgm.c("ForceUserUpdateActivity", "showRetryDialog: activity 已经销毁，不显示Dialog");
     }
     do
     {
       return;
-      if (this.jdField_a_of_type_Bkvr == null) {
-        this.jdField_a_of_type_Bkvr = new bkvu(this).a(paramString).a("退出", new bkuw(this)).b("重试", new bkuv(this)).a();
+      if (this.jdField_a_of_type_Bmha == null) {
+        this.jdField_a_of_type_Bmha = new bmhd(this).a(paramString).a("退出", new bmgf(this)).b("重试", new bmge(this)).a();
       }
-    } while (this.jdField_a_of_type_Bkvr.isShowing());
-    this.jdField_a_of_type_Bkvr.show();
+    } while (this.jdField_a_of_type_Bmha.isShowing());
+    this.jdField_a_of_type_Bmha.show();
   }
   
   private void c()
@@ -108,12 +108,12 @@ public class ForceUserUpdateActivity
   
   private void e()
   {
-    bkvv.a(bkvv.a, this.jdField_a_of_type_Bkuh);
+    bmhe.a(bmhe.a, this.jdField_a_of_type_Bmfq);
   }
   
   private void f()
   {
-    bkvb.b(this.jdField_a_of_type_AndroidContentContext, 1);
+    bmgk.b(this.jdField_a_of_type_AndroidContentContext, 1);
     g();
   }
   
@@ -121,7 +121,7 @@ public class ForceUserUpdateActivity
   {
     long l2 = 1000L;
     long l1;
-    if ((!this.jdField_a_of_type_Boolean) && (bktp.a()) && (bkvb.d(this.jdField_a_of_type_AndroidContentContext)))
+    if ((!this.jdField_a_of_type_Boolean) && (bmey.a()) && (bmgk.d(this.jdField_a_of_type_AndroidContentContext)))
     {
       if (this.jdField_a_of_type_Long <= 0L) {
         break label74;
@@ -173,16 +173,16 @@ public class ForceUserUpdateActivity
     this.jdField_a_of_type_AndroidWidgetTextView.setText("正在升级到新书城，请稍等...");
     a();
     b();
-    bkvd.c("cost_time_tag", "ForceUserUpdateActivity mClickToOnCreateTime=" + (System.currentTimeMillis() - getIntent().getLongExtra("key_click_leba_start_time", 0L)));
+    bmgm.c("cost_time_tag", "ForceUserUpdateActivity mClickToOnCreateTime=" + (System.currentTimeMillis() - getIntent().getLongExtra("key_click_leba_start_time", 0L)));
   }
   
   protected void onDestroy()
   {
     super.onDestroy();
-    if ((this.jdField_a_of_type_Bkvr != null) && (this.jdField_a_of_type_Bkvr.isShowing()))
+    if ((this.jdField_a_of_type_Bmha != null) && (this.jdField_a_of_type_Bmha.isShowing()))
     {
-      this.jdField_a_of_type_Bkvr.dismiss();
-      this.jdField_a_of_type_Bkvr = null;
+      this.jdField_a_of_type_Bmha.dismiss();
+      this.jdField_a_of_type_Bmha = null;
     }
   }
 }

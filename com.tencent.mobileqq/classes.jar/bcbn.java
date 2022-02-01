@@ -1,12 +1,18 @@
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.ExceptionTracker.Proxy;
-import com.tencent.mobileqq.pluginsdk.exception.ExceptionTracker;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class bcbn
-  implements IMCoreProxyRoute.ExceptionTracker.Proxy
+class bcbn
+  implements View.OnClickListener
 {
-  public void trackException(String paramString1, String paramString2)
+  bcbn(bcbk parambcbk) {}
+  
+  public void onClick(View paramView)
   {
-    ExceptionTracker.trackException(paramString1, paramString2);
+    this.a.a.b(this.a.a.b);
+    this.a.a.f.setVisibility(8);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

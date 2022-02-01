@@ -1,21 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 
-class bndt
-  implements DialogInterface.OnDismissListener
+public abstract interface bndt<T extends RecyclerView.ViewHolder>
 {
-  bndt(bndn parambndn) {}
+  public abstract void a(@Nullable T paramT, int paramInt);
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    paramDialogInterface = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a;
-    if (paramDialogInterface != null) {
-      paramDialogInterface.b();
-    }
-    this.a.jdField_a_of_type_Bnee.a(true, 0.0F, 0.0F, 0.0F, 0.0F);
-  }
+  public abstract void a(@Nullable T paramT, boolean paramBoolean);
 }
 
 

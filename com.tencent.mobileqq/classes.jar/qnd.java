@@ -1,15 +1,27 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.pts.nativemodule.IPTSAllInOneJump;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-public class qnd
-  implements IPTSAllInOneJump
+class qnd
+  implements View.OnClickListener
 {
-  public void allInOneJump(String paramString)
+  qnd(qmx paramqmx, qfw paramqfw, Container paramContainer, int paramInt) {}
+  
+  public void onClick(View paramView)
   {
-    QLog.i("PTSAllInOneJumpModule", 1, "[allInOneJump], url = " + paramString);
-    if (BaseActivity.sTopActivity != null) {
-      pay.a(BaseActivity.sTopActivity, paramString);
+    Object localObject = this.jdField_a_of_type_Qfw.a().mSocialFeedInfo.a;
+    ArrayList localArrayList = ((rrl)localObject).a;
+    if ((localArrayList == null) || (localArrayList.size() == 0)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localObject = (rrm)((rrl)localObject).a.get(0);
+      qmx.a(this.jdField_a_of_type_Qmx, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Qfw.a(), (int)((rrm)localObject).a, this.jdField_a_of_type_Qfw.a().innerUniqueID, this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_Qfw.a());
     }
   }
 }

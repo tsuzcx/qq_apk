@@ -1,23 +1,22 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Calendar;
+
 class bgqa
-  implements bgqn
+  implements View.OnClickListener
 {
-  bgqa(bgpz parambgpz) {}
+  bgqa(bgpy parambgpy, bgqc parambgqc) {}
   
-  public void a(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    if (bgpz.a(this.a) != null) {
-      bgpz.a(this.a).a(false);
+    if ((bgpy.a(this.jdField_a_of_type_Bgpy) != null) && (bgpy.a(this.jdField_a_of_type_Bgpy).isShowing())) {
+      bgpy.a(this.jdField_a_of_type_Bgpy).dismiss();
     }
-  }
-  
-  public void a(bgqe parambgqe)
-  {
-    bgpz.a(this.a, parambgqe);
-    if (bgpz.a(this.a) != null)
-    {
-      bgpz.a(this.a);
-      bgpz.a(this.a).a(parambgqe.a);
+    if ((this.jdField_a_of_type_Bgqc != null) && (bgpy.a(this.jdField_a_of_type_Bgpy) != null)) {
+      this.jdField_a_of_type_Bgqc.a(bgpy.a(this.jdField_a_of_type_Bgpy).getTimeInMillis());
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.widget;
 
-import agjd;
-import agmk;
-import akyk;
-import akym;
+import ahbt;
+import ahfa;
+import alwg;
+import alwi;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -21,11 +21,11 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import aqwu;
-import bcef;
-import bhba;
-import bhff;
-import bhfg;
+import asbe;
+import bdla;
+import bils;
+import bipx;
+import bipy;
 import com.etrump.mixlayout.ETTextView;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.activity.aio.item.ChatThumbView;
@@ -47,20 +47,20 @@ import java.util.List;
 
 public class MixedMsgLinearLayout
   extends LinearLayout
-  implements akyk
+  implements alwg
 {
   private int jdField_a_of_type_Int;
-  private akyk jdField_a_of_type_Akyk;
-  private akym jdField_a_of_type_Akym;
+  private alwg jdField_a_of_type_Alwg;
+  private alwi jdField_a_of_type_Alwi;
   private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
-  public bhba a;
-  private bhff jdField_a_of_type_Bhff = new bhff(this);
-  private bhfg jdField_a_of_type_Bhfg = new bhfg(this);
+  public bils a;
+  private bipx jdField_a_of_type_Bipx = new bipx(this);
+  private bipy jdField_a_of_type_Bipy = new bipy(this);
   private boolean jdField_a_of_type_Boolean;
   private final int[] jdField_a_of_type_ArrayOfInt = new int[2];
   private int jdField_b_of_type_Int;
   private MotionEvent jdField_b_of_type_AndroidViewMotionEvent;
-  public bhba b;
+  public bils b;
   private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int = -5250572;
   private boolean jdField_c_of_type_Boolean = true;
@@ -111,7 +111,7 @@ public class MixedMsgLinearLayout
         break label526;
       }
       paramMessageForPic = ((SkinnableBitmapDrawable)URLDrawableHelper.getLoadingDrawable()).getBitmap();
-      localChatThumbView.setImageDrawable(new aqwu(getResources(), paramMessageForPic, j, i, -921103));
+      localChatThumbView.setImageDrawable(new asbe(getResources(), paramMessageForPic, j, i, -921103));
       return localChatThumbView;
       i = k;
       break;
@@ -183,7 +183,7 @@ public class MixedMsgLinearLayout
     if ((URLDrawableHelper.getLoadingDrawable() instanceof BitmapDrawable))
     {
       paramMessageForPic = ((BitmapDrawable)URLDrawableHelper.getLoadingDrawable()).getBitmap();
-      localChatThumbView.setImageDrawable(new aqwu(getResources(), paramMessageForPic, j, i, -921103));
+      localChatThumbView.setImageDrawable(new asbe(getResources(), paramMessageForPic, j, i, -921103));
       return localChatThumbView;
     }
     localChatThumbView.setImageDrawable(URLDrawableHelper.getLoadingDrawable());
@@ -193,14 +193,14 @@ public class MixedMsgLinearLayout
   private AnimationTextView a()
   {
     AnimationTextView localAnimationTextView = new AnimationTextView(getContext());
-    localAnimationTextView.setTextColor(getContext().getResources().getColorStateList(2131167031));
-    localAnimationTextView.setLinkTextColor(getContext().getResources().getColorStateList(2131167024));
+    localAnimationTextView.setTextColor(getContext().getResources().getColorStateList(2131167045));
+    localAnimationTextView.setLinkTextColor(getContext().getResources().getColorStateList(2131167038));
     localAnimationTextView.setSpannableFactory(QQText.SPANNABLE_FACTORY);
     localAnimationTextView.setMaxWidth(BaseChatItemLayout.f);
     localAnimationTextView.setMovementMethod(LinkMovementMethod.getInstance());
     localAnimationTextView.setPadding(0, 0, 0, 0);
     localAnimationTextView.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
-    localAnimationTextView.onDoubleClick = this.jdField_a_of_type_Bhba;
+    localAnimationTextView.onDoubleClick = this.jdField_a_of_type_Bils;
     return localAnimationTextView;
   }
   
@@ -237,14 +237,14 @@ public class MixedMsgLinearLayout
     if (n < i3)
     {
       localObject = getChildAt(n);
-      if ((localObject instanceof akyk))
+      if ((localObject instanceof alwg))
       {
-        localObject = (akyk)localObject;
+        localObject = (alwg)localObject;
         m = i;
         if (i != 0) {
           break label211;
         }
-        i1 = ((akyk)localObject).contentLength();
+        i1 = ((alwg)localObject).contentLength();
         if (j >= i1)
         {
           m = k - i1;
@@ -269,7 +269,7 @@ public class MixedMsgLinearLayout
         if (k <= i1) {
           i = 1;
         }
-        localObject = ((akyk)localObject).selectContent();
+        localObject = ((alwg)localObject).selectContent();
         if (localObject != null) {
           localStringBuilder.append((CharSequence)localObject);
         }
@@ -331,7 +331,7 @@ public class MixedMsgLinearLayout
     }
   }
   
-  public void a(List<MessageRecord> paramList, agjd paramagjd)
+  public void a(List<MessageRecord> paramList, ahbt paramahbt)
   {
     int k = 0;
     Object localObject1 = new ArrayList();
@@ -364,7 +364,7 @@ public class MixedMsgLinearLayout
       localObject1 = (View)localArrayList.get(i);
       detachViewFromParent((View)localObject1);
       ((AnimationTextView)localObject1).setText("");
-      this.jdField_a_of_type_Bhfg.a((AnimationTextView)localObject1);
+      this.jdField_a_of_type_Bipy.a((AnimationTextView)localObject1);
       i += 1;
     }
     j = paramList.size();
@@ -376,15 +376,16 @@ public class MixedMsgLinearLayout
       {
         localObject1 = new SelectableLinearLayout(getContext());
         ((LinearLayout)localObject1).setOrientation(1);
-        localObject2 = agmk.a(getContext());
-        paramagjd.e = i;
-        paramagjd.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((ViewGroup)localObject2).findViewById(2131371615));
-        paramagjd.jdField_a_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)((ViewGroup)localObject2).findViewById(2131371413));
-        paramagjd.jdField_b_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)((ViewGroup)localObject2).findViewById(2131371430));
+        localObject2 = ahfa.a(getContext());
+        paramahbt.e = i;
+        paramahbt.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((ViewGroup)localObject2).findViewById(2131371803));
+        paramahbt.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((ViewGroup)localObject2).findViewById(2131378915));
+        paramahbt.jdField_a_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)((ViewGroup)localObject2).findViewById(2131371598));
+        paramahbt.jdField_b_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)((ViewGroup)localObject2).findViewById(2131371616));
         ((LinearLayout)localObject1).addView((View)localObject2);
         localObject2 = new ETTextView(getContext());
-        ((ETTextView)localObject2).setTextColor(getContext().getResources().getColorStateList(2131167031));
-        ((ETTextView)localObject2).setLinkTextColor(getContext().getResources().getColorStateList(2131167024));
+        ((ETTextView)localObject2).setTextColor(getContext().getResources().getColorStateList(2131167045));
+        ((ETTextView)localObject2).setLinkTextColor(getContext().getResources().getColorStateList(2131167038));
         ((ETTextView)localObject2).setEditableFactory(QQTextBuilder.EMOCTATION_FACORY);
         ((ETTextView)localObject2).setSpannableFactory(QQText.SPANNABLE_FACTORY);
         ((ETTextView)localObject2).setMaxWidth(BaseChatItemLayout.e);
@@ -392,9 +393,9 @@ public class MixedMsgLinearLayout
         ((LinearLayout)localObject1).addView((View)localObject2);
         ((LinearLayout)localObject1).setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
         addViewInLayout((View)localObject1, i, ((LinearLayout)localObject1).getLayoutParams(), true);
-        paramagjd.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localObject2);
+        paramahbt.c = ((TextView)localObject2);
       }
-      label509:
+      label524:
       do
       {
         for (;;)
@@ -402,9 +403,9 @@ public class MixedMsgLinearLayout
           i += 1;
           break;
           if (!(localObject2 instanceof MessageForText)) {
-            break label509;
+            break label524;
           }
-          localObject2 = this.jdField_a_of_type_Bhfg.a();
+          localObject2 = this.jdField_a_of_type_Bipy.a();
           localObject1 = localObject2;
           if (localObject2 == null) {
             localObject1 = a();
@@ -412,13 +413,13 @@ public class MixedMsgLinearLayout
           addViewInLayout((View)localObject1, i, ((AnimationTextView)localObject1).getLayoutParams(), true);
         }
       } while (!(localObject2 instanceof MessageForPic));
-      localObject1 = this.jdField_a_of_type_Bhff.a();
+      localObject1 = this.jdField_a_of_type_Bipx.a();
       if (localObject1 != null) {
-        break label677;
+        break label692;
       }
       localObject1 = a((MessageForPic)localObject2);
     }
-    label677:
+    label692:
     for (;;)
     {
       addViewInLayout((View)localObject1, i, ((ChatThumbView)localObject1).getLayoutParams(), true);
@@ -445,7 +446,7 @@ public class MixedMsgLinearLayout
         {
           ((ChatThumbView)paramList).setImageDrawable(null);
           ((ChatThumbView)paramList).setURLDrawableDownListener(null);
-          this.jdField_a_of_type_Bhff.a((ChatThumbView)paramList);
+          this.jdField_a_of_type_Bipx.a((ChatThumbView)paramList);
         }
         i += 1;
       }
@@ -453,9 +454,9 @@ public class MixedMsgLinearLayout
     }
   }
   
-  public void bind(@Nullable akym paramakym)
+  public void bind(@Nullable alwi paramalwi)
   {
-    this.jdField_a_of_type_Akym = paramakym;
+    this.jdField_a_of_type_Alwi = paramalwi;
   }
   
   public void clearHighlightContent()
@@ -466,8 +467,8 @@ public class MixedMsgLinearLayout
     while (i < j)
     {
       View localView = getChildAt(i);
-      if ((localView instanceof akyk)) {
-        ((akyk)localView).clearHighlightContent();
+      if ((localView instanceof alwg)) {
+        ((alwg)localView).clearHighlightContent();
       }
       i += 1;
     }
@@ -482,8 +483,8 @@ public class MixedMsgLinearLayout
     while (i < j)
     {
       View localView = getChildAt(i);
-      if ((localView instanceof akyk)) {
-        localStringBuilder.append(((akyk)localView).content());
+      if ((localView instanceof alwg)) {
+        localStringBuilder.append(((alwg)localView).content());
       }
       i += 1;
     }
@@ -498,10 +499,10 @@ public class MixedMsgLinearLayout
     if (j < k)
     {
       View localView = getChildAt(j);
-      if (!(localView instanceof akyk)) {
+      if (!(localView instanceof alwg)) {
         break label51;
       }
-      i = ((akyk)localView).contentLength() + i;
+      i = ((alwg)localView).contentLength() + i;
     }
     label51:
     for (;;)
@@ -513,9 +514,9 @@ public class MixedMsgLinearLayout
   }
   
   @Nullable
-  public akym delegate()
+  public alwi delegate()
   {
-    return this.jdField_a_of_type_Akym;
+    return this.jdField_a_of_type_Alwi;
   }
   
   public void doSelecting(ChatMessage paramChatMessage)
@@ -527,12 +528,12 @@ public class MixedMsgLinearLayout
       }
       return;
     }
-    if (this.jdField_a_of_type_Akym == null) {
+    if (this.jdField_a_of_type_Alwi == null) {
       throw new IllegalStateException("Has no bound delegate!");
     }
-    this.jdField_a_of_type_Akyk = null;
-    this.jdField_a_of_type_Akym.a(paramChatMessage);
-    bcef.b(null, "dc00898", "", "", "0X800AE7A", "0X800AE7A", 2, 0, "", "", "", "");
+    this.jdField_a_of_type_Alwg = null;
+    this.jdField_a_of_type_Alwi.a(paramChatMessage);
+    bdla.b(null, "dc00898", "", "", "0X800AE7A", "0X800AE7A", 2, 0, "", "", "", "");
   }
   
   public boolean hasSelected()
@@ -550,7 +551,7 @@ public class MixedMsgLinearLayout
     while (paramInt1 < j)
     {
       View localView = getChildAt(paramInt1);
-      if ((localView instanceof akyk))
+      if ((localView instanceof alwg))
       {
         if (QLog.isColorLevel()) {
           QLog.d("MixedMsgLinearLayout", 2, new Object[] { "left=", Integer.valueOf(localView.getLeft()), " right=", Integer.valueOf(localView.getRight()), " top=", Integer.valueOf(localView.getTop()), " bottom=", Integer.valueOf(localView.getBottom()), " relativeX=", Integer.valueOf(i), " relativeY=", Integer.valueOf(paramInt2) });
@@ -583,14 +584,14 @@ public class MixedMsgLinearLayout
     if (i < j)
     {
       localObject = getChildAt(i);
-      if ((localObject instanceof akyk))
+      if ((localObject instanceof alwg))
       {
-        localObject = (akyk)localObject;
-        if (!((akyk)localObject).hasSelected()) {
+        localObject = (alwg)localObject;
+        if (!((alwg)localObject).hasSelected()) {
           break label74;
         }
-        ((akyk)localObject).highlightBackgroundColor(this.jdField_c_of_type_Int);
-        ((akyk)localObject).highlightContent();
+        ((alwg)localObject).highlightBackgroundColor(this.jdField_c_of_type_Int);
+        ((alwg)localObject).highlightContent();
       }
     }
     for (;;)
@@ -599,7 +600,7 @@ public class MixedMsgLinearLayout
       break label19;
       break;
       label74:
-      ((akyk)localObject).clearHighlightContent();
+      ((alwg)localObject).clearHighlightContent();
     }
   }
   
@@ -611,11 +612,11 @@ public class MixedMsgLinearLayout
     if (i < j)
     {
       localObject = getChildAt(i);
-      if (!(localObject instanceof akyk)) {
+      if (!(localObject instanceof alwg)) {
         break label79;
       }
-      localObject = (akyk)localObject;
-      int k = ((akyk)localObject).contentLength();
+      localObject = (alwg)localObject;
+      int k = ((alwg)localObject).contentLength();
       if (paramInt > k) {
         paramInt -= k;
       }
@@ -625,7 +626,7 @@ public class MixedMsgLinearLayout
     {
       i += 1;
       break;
-      ((akyk)localObject).locationByIndex(paramInt, paramArrayOfInt, paramBoolean);
+      ((alwg)localObject).locationByIndex(paramInt, paramArrayOfInt, paramBoolean);
       return;
     }
   }
@@ -642,7 +643,7 @@ public class MixedMsgLinearLayout
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_b_of_type_Bhba != null) {
+    if (this.jdField_b_of_type_Bils != null) {
       if ((this.jdField_b_of_type_AndroidViewMotionEvent != null) && (paramMotionEvent.getAction() == 0))
       {
         this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
@@ -650,9 +651,9 @@ public class MixedMsgLinearLayout
         {
           this.jdField_a_of_type_AndroidViewMotionEvent = null;
           this.jdField_b_of_type_AndroidViewMotionEvent = null;
-          if (this.jdField_b_of_type_Bhba != null)
+          if (this.jdField_b_of_type_Bils != null)
           {
-            this.jdField_b_of_type_Bhba.a(this);
+            this.jdField_b_of_type_Bils.a(this);
             return true;
           }
         }
@@ -680,7 +681,7 @@ public class MixedMsgLinearLayout
     int i;
     int k;
     label46:
-    akyk localakyk;
+    alwg localalwg;
     int m;
     int j;
     if ((paramInt1 == -1) || (paramInt2 == -1))
@@ -697,19 +698,19 @@ public class MixedMsgLinearLayout
         break label257;
       }
       View localView = getChildAt(k);
-      if (!(localView instanceof akyk)) {
+      if (!(localView instanceof alwg)) {
         break label266;
       }
-      localakyk = (akyk)localView;
+      localalwg = (alwg)localView;
       if (paramInt1 != 0) {
         break label237;
       }
-      m = localakyk.contentLength();
+      m = localalwg.contentLength();
       if (paramInt2 < m) {
         break label190;
       }
       i -= m;
-      localakyk.selectContent(-1, -1);
+      localalwg.selectContent(-1, -1);
       j = paramInt2 - m;
       paramInt2 = paramInt1;
       paramInt1 = j;
@@ -745,7 +746,7 @@ public class MixedMsgLinearLayout
       }
       for (;;)
       {
-        localakyk.selectContent(paramInt2, paramInt1);
+        localalwg.selectContent(paramInt2, paramInt1);
         if (j != 0) {
           break label258;
         }
@@ -757,7 +758,7 @@ public class MixedMsgLinearLayout
         j = 1;
       }
       label237:
-      localakyk.selectContent(-1, -1);
+      localalwg.selectContent(-1, -1);
       j = paramInt1;
       paramInt1 = paramInt2;
       paramInt2 = j;
@@ -787,16 +788,16 @@ public class MixedMsgLinearLayout
     if (j < k)
     {
       localObject = getChildAt(j);
-      if (!(localObject instanceof akyk)) {
+      if (!(localObject instanceof alwg)) {
         break label238;
       }
-      akyk localakyk = (akyk)localObject;
+      alwg localalwg = (alwg)localObject;
       if ((m > ((View)localObject).getLeft()) && (m < ((View)localObject).getRight()) && (n > ((View)localObject).getTop()) && (n < ((View)localObject).getBottom()))
       {
-        this.jdField_a_of_type_Akyk = localakyk;
-        return localakyk.touchIndex(paramInt1, paramInt2) + i;
+        this.jdField_a_of_type_Alwg = localalwg;
+        return localalwg.touchIndex(paramInt1, paramInt2) + i;
       }
-      i = localakyk.contentLength() + i;
+      i = localalwg.contentLength() + i;
     }
     label235:
     label238:
@@ -809,14 +810,14 @@ public class MixedMsgLinearLayout
       if (j < k)
       {
         localObject = getChildAt(j);
-        if (!(localObject instanceof akyk)) {
+        if (!(localObject instanceof alwg)) {
           break label235;
         }
-        localObject = (akyk)localObject;
-        if (this.jdField_a_of_type_Akyk == localObject) {
-          return this.jdField_a_of_type_Akyk.touchIndex(paramInt1, paramInt2) + i;
+        localObject = (alwg)localObject;
+        if (this.jdField_a_of_type_Alwg == localObject) {
+          return this.jdField_a_of_type_Alwg.touchIndex(paramInt1, paramInt2) + i;
         }
-        i = ((akyk)localObject).contentLength() + i;
+        i = ((alwg)localObject).contentLength() + i;
       }
       for (;;)
       {

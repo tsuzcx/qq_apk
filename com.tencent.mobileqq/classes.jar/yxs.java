@@ -1,73 +1,12 @@
-import android.content.Context;
-import com.tencent.biz.qrcode.ipc.ScannerParams;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.manager.Manager;
-
-public class yxs
-  implements Manager
+class yxs
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private yxu jdField_a_of_type_Yxu;
+  final int jdField_a_of_type_Int;
+  final yxt jdField_a_of_type_Yxt;
   
-  public yxs(QQAppInterface paramQQAppInterface)
+  public yxs(yxt paramyxt, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_Yxu != null) {
-      this.jdField_a_of_type_Yxu.a();
-    }
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_Yxu != null) {
-      this.jdField_a_of_type_Yxu.b();
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Yxu != null)
-    {
-      this.jdField_a_of_type_Yxu.c();
-      this.jdField_a_of_type_Yxu = null;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 1: 
-    default: 
-      return;
-    case 2: 
-      b();
-      return;
-    case 3: 
-      c();
-      return;
-    }
-    a();
-  }
-  
-  public void a(Context paramContext, ScannerParams paramScannerParams)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    if ((paramScannerParams.f) && (!paramScannerParams.d) && (this.jdField_a_of_type_Yxu == null)) {
-      this.jdField_a_of_type_Yxu = new yxu(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    }
-  }
-  
-  public void onDestroy()
-  {
-    a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
+    this.jdField_a_of_type_Yxt = paramyxt;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

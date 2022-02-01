@@ -1,32 +1,26 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.data.MessageForPoke;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
 
 class agaf
-  implements afym
+  implements Animation.AnimationListener
 {
-  agaf(afzw paramafzw, agaj paramagaj, MessageForPoke paramMessageForPoke) {}
+  agaf(agae paramagae) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Agaj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
-    this.jdField_a_of_type_Agaj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
-    this.jdField_a_of_type_Agaj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(null);
-    this.jdField_a_of_type_Agaj.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    if ((this.jdField_a_of_type_Agaj.b == afzw.b()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (!(this.jdField_a_of_type_Afzw.a instanceof ChatHistoryActivity)) && (!afzw.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
-      this.jdField_a_of_type_Agaj.c.setVisibility(0);
-    }
-    for (;;)
+    if (this.a.a.a != null)
     {
-      this.jdField_a_of_type_Agaj.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
-      this.jdField_a_of_type_Agaj.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
-      return;
-      this.jdField_a_of_type_Agaj.c.setVisibility(8);
+      paramAnimation = AnimationUtils.loadAnimation(this.a.a.mContext, 2130772231);
+      paramAnimation.setAnimationListener(this);
+      this.a.a.a.startAnimation(paramAnimation);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

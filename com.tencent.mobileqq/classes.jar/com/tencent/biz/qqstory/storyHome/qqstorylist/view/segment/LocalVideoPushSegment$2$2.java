@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment;
 
-import xtx;
+import yis;
 
 class LocalVideoPushSegment$2$2
   implements Runnable
@@ -9,7 +9,7 @@ class LocalVideoPushSegment$2$2
   
   public void run()
   {
-    xtx.a(this.a.this$0);
+    yis.a(this.a.this$0);
   }
 }
 

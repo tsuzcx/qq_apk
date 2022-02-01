@@ -1,33 +1,17 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class anwi
-  extends pkt
-  implements pke, pkf, pkg
+final class anwi
+  implements DialogInterface.OnClickListener
 {
-  public void C_()
+  anwi(QQAppInterface paramQQAppInterface) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    c();
+    paramDialogInterface.dismiss();
+    bdla.b(this.a, "CliOper", "", "", "0X8004C6C", "0X8004C6C", 0, 0, "", "", "", "");
   }
-  
-  public void a() {}
-  
-  public void a(MessageRecord paramMessageRecord)
-  {
-    c();
-  }
-  
-  public void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle)
-  {
-    c();
-  }
-  
-  public void b(MessageRecord paramMessageRecord)
-  {
-    c();
-  }
-  
-  public void c() {}
 }
 
 

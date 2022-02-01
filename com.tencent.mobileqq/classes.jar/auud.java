@@ -1,23 +1,26 @@
-import com.tencent.mobileqq.jsp.MediaApiPlugin;
+import android.content.Context;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
-import org.json.JSONObject;
+import java.io.Closeable;
+import java.io.IOException;
 
 public class auud
-  implements QQPermissionCallback
 {
-  public auud(MediaApiPlugin paramMediaApiPlugin, JSONObject paramJSONObject, boolean paramBoolean, AppActivity paramAppActivity) {}
+  public static void a(Context paramContext, String paramString) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public static void a(Closeable paramCloseable)
   {
-    QLog.d(MediaApiPlugin.a, 1, "User requestPermissions WRITE_EXTERNAL_STORAGE denied");
-    bfur.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Boolean);
+    if (paramCloseable == null) {
+      return;
+    }
+    try
+    {
+      paramCloseable.close();
+      return;
+    }
+    catch (IOException paramCloseable)
+    {
+      QLog.e("ForwardSdkUtil", 1, " requestShareMessage net error");
+    }
   }
 }
 

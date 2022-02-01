@@ -1,114 +1,71 @@
+import android.content.Intent;
 import com.tencent.avgame.app.AVGameAppInterface;
-import com.tencent.avgame.gamelogic.data.Player;
-import com.tencent.avgame.gamelogic.data.RoomInfo;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class ncy
-  implements ndl
+  extends MSFServlet
 {
-  protected ncq a;
-  protected ndm a;
+  private AVGameAppInterface a;
   
-  public ncy(ndm paramndm)
+  public String[] getPreferSSOCommands()
   {
-    this.jdField_a_of_type_Ndm = paramndm;
+    return new String[] { "OnlinePush.ReqPush" };
   }
   
-  public int a()
+  public void onCreate()
   {
-    return mzl.a().a().jdField_a_of_type_Int;
+    super.onCreate();
+    AppRuntime localAppRuntime = getAppRuntime();
+    if ((localAppRuntime instanceof AVGameAppInterface)) {
+      this.a = ((AVGameAppInterface)localAppRuntime);
+    }
   }
   
-  public List<nak> a()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    return mzl.a().a().jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-  }
-  
-  public void a()
-  {
-    naf localnaf = mzl.a().a();
-    mzl.a().a(localnaf.a(), mzl.a().a().getAccount(), 0, 3);
-  }
-  
-  public void a(naf paramnaf)
-  {
-    this.jdField_a_of_type_Ndm.a(paramnaf);
-  }
-  
-  public void a(nak paramnak, int paramInt)
-  {
-    if (paramnak != null)
+    if (paramIntent != null)
     {
-      mzl.a().b(paramnak.jdField_a_of_type_Int);
-      bcef.b(null, "dc00898", "", "", "0X800B06D", "0X800B06D", paramnak.jdField_a_of_type_Int, 0, "", "" + mzl.a().a().a().players.size(), "", "");
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
     }
-  }
-  
-  public void a(ncq paramncq)
-  {
-    this.jdField_a_of_type_Ncq = paramncq;
-  }
-  
-  public boolean a()
-  {
-    return mzl.a().a();
-  }
-  
-  public void b()
-  {
-    naf localnaf = mzl.a().a();
-    mzl.a().a(localnaf.a(), mzl.a().a().getAccount(), 1, 3);
-  }
-  
-  public void b(nak paramnak, int paramInt)
-  {
-    int j = 0;
-    Object localObject1 = this.jdField_a_of_type_Ncq.c();
-    QLog.i("GameListPresenterImp", 1, "clickBeginGame players:" + localObject1);
-    if (((List)localObject1).size() <= 1) {
-      return;
-    }
-    paramInt = 0;
     for (;;)
     {
-      int i = j;
-      if (paramInt < ((List)localObject1).size())
-      {
-        if ((((List)localObject1).get(paramInt) != null) && (((Player)((List)localObject1).get(paramInt)).status == 0)) {
-          i = 1;
-        }
+      if (QLog.isDevelopLevel()) {
+        QLog.i("AVGameServlet", 4, "onReceive, cmd[" + paramFromServiceMsg.getServiceCmd() + "]");
       }
-      else
-      {
-        if ((i != 0) || (paramnak == null)) {
-          break;
-        }
-        Object localObject2 = mzl.a().a();
-        localObject1 = ((naf)localObject2).a(paramnak.jdField_a_of_type_Int);
-        String str = ((naf)localObject2).jdField_a_of_type_JavaLangString;
-        localObject2 = ((naf)localObject2).b;
-        if ((localObject1 == null) || (((nal)localObject1).a == null) || (((nal)localObject1).a.size() <= 0) || (str == null) || (localObject2 == null)) {
-          break label206;
-        }
-        nhx.a(this.jdField_a_of_type_Ndm.a(), paramnak.jdField_a_of_type_Int, ((nal)localObject1).a, str, (String)localObject2);
-        return;
+      if (this.a != null) {
+        this.a.a(paramIntent, paramFromServiceMsg);
       }
-      paramInt += 1;
+      return;
+      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
     }
-    label206:
-    mzl.a().a(paramnak.jdField_a_of_type_Int, null);
   }
   
-  public void c()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    mzl.a().e();
-  }
-  
-  public void d()
-  {
-    mzl.a().f();
+    if (paramIntent != null)
+    {
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (paramIntent != null)
+      {
+        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
+        paramPacket.putSendData(paramIntent.getWupBuffer());
+        paramPacket.setTimeout(paramIntent.getTimeout());
+        paramPacket.setAttributes(paramIntent.getAttributes());
+        if (!paramIntent.isNeedCallback()) {
+          paramPacket.setNoResponse();
+        }
+        if (QLog.isDevelopLevel()) {
+          QLog.i("AVGameServlet", 4, "send, cmd[" + paramIntent.getServiceCmd() + "]");
+        }
+      }
+    }
   }
 }
 

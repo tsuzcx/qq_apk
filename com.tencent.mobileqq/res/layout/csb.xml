@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/mmj" android:layout_width="wrap_content" android:layout_height="29.0dip">
+        <TextView android:textSize="14.0dip" android:layout_gravity="center_vertical" android:id="@id/nt8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:layout_marginRight="9.0dip" android:text="待处理" android:singleLine="true" />
+        <TextView android:textSize="8.0dip" android:textColor="@color/al3" android:layout_gravity="center_vertical" android:id="@id/nt4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-12.0dip" android:layout_marginRight="4.0dip" android:layout_marginBottom="8.0dip" android:includeFontPadding="false" />
+        <TextView android:textSize="14.0dip" android:layout_gravity="center_vertical" android:id="@id/nt3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:layout_marginRight="9.0dip" android:text="退群" android:singleLine="true" />
+        <TextView android:textSize="14.0dip" android:layout_gravity="center_vertical" android:id="@id/nt_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="9.0dip" android:text="已过滤" android:singleLine="true" />
+    </LinearLayout>
+</FrameLayout>

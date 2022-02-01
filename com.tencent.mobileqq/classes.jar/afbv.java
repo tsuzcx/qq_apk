@@ -1,72 +1,47 @@
-import android.support.annotation.RequiresApi;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
+import com.tencent.biz.qqstory.troop.activity.TroopStoryMainActivity;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
 
-class afbv
-  extends BaseAdapter
+public class afbv
+  implements View.OnClickListener
 {
-  private List<String> jdField_a_of_type_JavaUtilList;
+  public afbv(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  private afbv(afbj paramafbj) {}
-  
-  public void a(List<String> paramList)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  @RequiresApi(api=16)
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null) {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_Afbj.a).inflate(2131559278, null);
-    }
+    if (System.currentTimeMillis() - this.a.jdField_a_of_type_Long >= 1500L) {}
     for (;;)
     {
-      ImageView localImageView = (ImageView)paramView.findViewById(2131367269);
-      String str = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      if (!TextUtils.isEmpty(str)) {}
       try
       {
-        URLDrawable localURLDrawable = URLDrawable.getDrawable(str, null);
-        localURLDrawable.setDecodeHandler(bfol.z);
-        localImageView.setImageDrawable(localURLDrawable);
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
+        this.a.jdField_a_of_type_Long = System.currentTimeMillis();
+        int i = paramView.getId();
+        switch (i)
+        {
+        }
       }
       catch (Exception localException)
       {
-        for (;;)
-        {
-          QLog.e("intimate_relationship", 1, String.format("Url for friend gift:" + str, new Object[] { localException }));
+        if (!QLog.isColorLevel()) {
+          continue;
         }
+        QLog.e("TroopAssistantFeedsJsHandler", 2, "feedsTitle onClick:" + localException.toString());
+        continue;
       }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      TroopStoryMainActivity.a(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopAssistantFeedsJsHandler", 2, "feedsTitle onClick, url:https://qqweb.qq.com/m/qunfeeds/index.html?_wv=1031&_bid=200");
+      }
+      if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      }
+      ykv.a("grp_help", "clk_video", 0, 0, new String[] { "", "", "", "" });
     }
   }
 }

@@ -1,113 +1,42 @@
-import Wallet.RedInfoSyncReq;
-import com.tencent.mobileqq.activity.qwallet.red.QWRedConfig;
-import com.tencent.mobileqq.activity.qwallet.red.QWRedConfig.RedInfo;
-import com.tencent.mobileqq.activity.qwallet.red.QWalletRedManager.1;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import mqq.manager.Manager;
+import com.tencent.widget.XListView;
 
-public class akcq
-  implements ajyk, Manager
+class akcq
+  implements TextWatcher
 {
-  private QWRedConfig jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  akcq(akcp paramakcp) {}
   
-  public akcq(QQAppInterface paramQQAppInterface)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletRedManager", 2, "QWalletRedManager init");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig = QWRedConfig.readConfig(paramQQAppInterface);
-    a();
-  }
-  
-  private void a()
-  {
-    ThreadManager.executeOnSubThread(new QWalletRedManager.1(this));
-  }
-  
-  public akcs a(String paramString)
-  {
-    akcs localakcs = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig.getShowInfoByPath(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletRedManager", 2, "getShowInfo path=" + paramString + ",res=" + localakcs);
-    }
-    return localakcs;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig.getNotShowListStr();
-  }
-  
-  public void a(String paramString)
-  {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig.getCurShowRedInfosByPath(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletRedManager", 2, "doClick" + paramString + "|" + localList);
-    }
-    paramString = new LinkedList();
-    Iterator localIterator = localList.iterator();
-    while (localIterator.hasNext())
+    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
+    if (paramEditable.length() == 0)
     {
-      QWRedConfig.RedInfo localRedInfo = (QWRedConfig.RedInfo)localIterator.next();
-      if (localRedInfo.doClick()) {
-        paramString.add(localRedInfo);
-      }
+      this.a.jdField_b_of_type_JavaLangString = "";
+      this.a.findViewById(2131368378).setVisibility(8);
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.a.jdField_a_of_type_Ajws.a();
+      this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
     }
-    if (paramString.size() > 0)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig.saveConfig();
-      ajvh.a(RedInfoSyncReq.createReq(paramString), new akcr(this));
-    }
-    if (localList.size() > 0) {
-      VACDReportUtil.a(null, "QWalletStat", "QWalletRedClick", "QWalletRedClick", QWRedConfig.RedInfo.transToReportStr(localList), 0, null);
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, ajye paramajye)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig.parseConfig(paramajye);
-  }
-  
-  public void a(List<String> paramList)
-  {
-    if (paramList == null) {}
-    LinkedList localLinkedList;
-    do
-    {
+    while (this.a.jdField_b_of_type_JavaLangString.equals(paramEditable)) {
       return;
-      localLinkedList = new LinkedList();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        String str = (String)paramList.next();
-        localLinkedList.addAll(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig.getCurShowRedInfosByPath(str));
-      }
-    } while (localLinkedList.size() <= 0);
-    VACDReportUtil.a(null, "QWalletStat", "QWalletRedShow", "QWalletRedShow", QWRedConfig.RedInfo.transToReportStr(localLinkedList), 0, null);
-  }
-  
-  public void b(String paramString)
-  {
-    LinkedList localLinkedList = new LinkedList();
-    localLinkedList.add(paramString);
-    a(localLinkedList);
-  }
-  
-  public void onDestroy()
-  {
-    ajyg localajyg = (ajyg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(245);
-    if (localajyg != null) {
-      localajyg.d("redPoint", this);
     }
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "afterTextChanged, lastChangedKeyword = " + this.a.jdField_b_of_type_JavaLangString + ",lastKeyWord:" + paramEditable);
+    }
+    this.a.jdField_b_of_type_JavaLangString = paramEditable;
+    this.a.findViewById(2131368378).setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+    this.a.a();
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

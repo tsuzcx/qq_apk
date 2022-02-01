@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.managers;
 
-import avnb;
+import awtg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DraftTextInfo;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
@@ -10,7 +10,7 @@ import com.tencent.mobileqq.persistence.EntityManager;
 public class DraftTextManager$2
   implements Runnable
 {
-  public DraftTextManager$2(avnb paramavnb, DraftTextInfo paramDraftTextInfo, QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
+  public DraftTextManager$2(awtg paramawtg, DraftTextInfo paramDraftTextInfo, QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
   
   public void run()
   {

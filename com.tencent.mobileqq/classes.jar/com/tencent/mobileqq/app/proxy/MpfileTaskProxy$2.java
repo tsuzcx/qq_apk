@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app.proxy;
 
 import android.content.ContentValues;
-import anuy;
+import aoxy;
 
 public class MpfileTaskProxy$2
   implements Runnable
 {
-  public MpfileTaskProxy$2(anuy paramanuy, String paramString1, ContentValues paramContentValues, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener) {}
+  public MpfileTaskProxy$2(aoxy paramaoxy, String paramString1, ContentValues paramContentValues, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener) {}
   
   public void run()
   {

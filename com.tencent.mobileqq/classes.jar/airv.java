@@ -1,11 +1,57 @@
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import java.util.List;
+import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface airv
+public class airv
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public abstract void a(List<MayKnowRecommend> paramList);
+  public airv(AddContactsActivity paramAddContactsActivity) {}
   
-  public abstract boolean a();
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  {
+    if ((paramInt == 2131378406) && (AddContactsActivity.a(this.a).isChecked()))
+    {
+      AddContactsActivity.a(this.a);
+      bdla.b(this.a.app, "CliOper", "", "", "0X8004BE9", "0X8004BE9", 0, 0, "", "", "", "");
+      AddContactsActivity.a(this.a).setSelected(true);
+      AddContactsActivity.b(this.a).setSelected(false);
+      AddContactsActivity.c(this.a).setSelected(false);
+      AddContactsActivity.a(this.a).setVisibility(8);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
+      return;
+      if ((paramInt == 2131378408) && (AddContactsActivity.b(this.a).isChecked()))
+      {
+        AddContactsActivity.b(this.a);
+        bdla.b(this.a.app, "CliOper", "", "", "0X8004BEA", "0X8004BEA", 0, 0, "", "", "", "");
+        bdla.b(this.a.app, "P_CliOper", "Grp_find", "", "grptab", "exp", 0, 0, "", "", "", "");
+        AddContactsActivity.b(this.a).setSelected(true);
+        AddContactsActivity.a(this.a).setSelected(false);
+        AddContactsActivity.c(this.a).setSelected(false);
+        ImageView localImageView = AddContactsActivity.a(this.a);
+        if (AddContactsActivity.a(this.a)) {}
+        for (int i = 0;; i = 8)
+        {
+          localImageView.setVisibility(i);
+          break;
+        }
+      }
+      if ((paramInt == 2131378407) && (AddContactsActivity.c(this.a).isChecked()))
+      {
+        AddContactsActivity.c(this.a);
+        bdla.b(this.a.app, "CliOper", "", "", "0X8004BEB", "0X8004BEB", 0, 0, "", "", "", "");
+        AddContactsActivity.c(this.a).setSelected(true);
+        AddContactsActivity.a(this.a).setSelected(false);
+        AddContactsActivity.b(this.a).setSelected(false);
+        AddContactsActivity.a(this.a).setVisibility(8);
+      }
+    }
+  }
 }
 
 

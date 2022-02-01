@@ -1,25 +1,24 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
-import com.tencent.mobileqq.data.MessageForTribeShortVideo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForDeviceFile;
 
 class agrn
-  extends bgod
+  implements bkzq
 {
-  agrn(agrl paramagrl, agrq paramagrq, MessageForTribeShortVideo paramMessageForTribeShortVideo) {}
+  agrn(agrl paramagrl, MessageForDeviceFile paramMessageForDeviceFile, bkzi parambkzi) {}
   
-  public void onDone(bgoe parambgoe)
+  public void OnClick(View paramView, int paramInt)
   {
-    String str = parambgoe.a().getString("filePath");
-    if (parambgoe.a == 0)
+    if ("device_groupchat".equals(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile.extStr)) {
+      ((abkw)this.jdField_a_of_type_Agrl.a.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    }
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("TribeShortVideoItemBuilder", 2, "download video success! videoFile:" + str);
-      }
-      this.jdField_a_of_type_Agrq.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Agrq.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.b();
-      this.jdField_a_of_type_Agrq.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setVisibility(8);
-      this.jdField_a_of_type_Agrl.a(this.jdField_a_of_type_Agrq.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.videoWidth, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.videoHeight, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.coverImgUrl, str);
+      this.jdField_a_of_type_Agrl.b();
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      this.jdField_a_of_type_Agrl.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
     }
   }
 }

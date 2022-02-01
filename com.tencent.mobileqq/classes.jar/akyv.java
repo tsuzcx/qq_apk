@@ -1,23 +1,9 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
 
 public class akyv
-  extends MqqHandler
 {
-  public akyv(ContactsInnerFrame paramContactsInnerFrame) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    case 1: 
-    case 2: 
-    default: 
-      return;
-    }
-    ContactsInnerFrame.a(this.a);
-  }
+  public static final IRedPacket a = new RedPacketManager();
 }
 
 

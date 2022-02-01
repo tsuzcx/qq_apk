@@ -1,29 +1,72 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.mobileqq.richstatus.topic.TopicEditTextView;
+import android.content.res.Resources;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class baqg
-  implements ActionMode.Callback
+class baqg
+  extends ClickableSpan
 {
-  public baqg(TopicEditTextView paramTopicEditTextView) {}
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<BaseActivity> b;
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public baqg(WeakReference<QQAppInterface> paramWeakReference, WeakReference<BaseActivity> paramWeakReference1)
   {
-    return false;
+    WeakReference localWeakReference;
+    if (a(paramWeakReference1, localWeakReference))
+    {
+      QLog.e("ClosePCVerifyImpl", 1, "ClosePCVerifyClickableSpan() error: params wrong");
+      return;
+    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference1;
+    this.b = localWeakReference;
   }
   
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  private boolean a()
   {
-    return TopicEditTextView.a(this.a);
+    return (this.b == null) || (this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.b.get() == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null);
   }
   
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  private boolean a(WeakReference<QQAppInterface> paramWeakReference, WeakReference<BaseActivity> paramWeakReference1)
   {
-    return false;
+    return (paramWeakReference == null) || (paramWeakReference1 == null);
+  }
+  
+  public void onClick(View paramView)
+  {
+    QLog.d("ClosePCVerifyImpl", 1, "onClick");
+    bdla.b(null, "dc00898", "", "", "0X800AE03", "0X800AE03", 0, 0, "", "", "", "");
+    if (a())
+    {
+      QLog.e("ClosePCVerifyImpl", 1, "onClick error: params wrong");
+      return;
+    }
+    paramView = (BaseActivity)this.b.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (!NetworkUtil.isNetSupport(paramView))
+    {
+      QQToast.a(paramView, 1, 2131698957, 1).a();
+      QLog.e("ClosePCVerifyImpl", 1, "NetworkError");
+      return;
+    }
+    baqd.a(this.jdField_a_of_type_Baqd, localQQAppInterface, paramView);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    QLog.d("ClosePCVerifyImpl", 1, "updateDrawState");
+    if (a())
+    {
+      QLog.e("ClosePCVerifyImpl", 1, "updateDrawState error: param wrong");
+      return;
+    }
+    paramTextPaint.setColor(((BaseActivity)this.b.get()).getResources().getColor(2131165748));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

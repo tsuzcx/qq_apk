@@ -1,25 +1,49 @@
-import com.tencent.qapmsdk.base.reporter.ab.AbType;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class achj
-  extends AbType
+class achj
+  implements acgx
 {
-  public void active()
+  public boolean a(acfw paramacfw, String paramString, String... paramVarArgs)
   {
-    setPerfTimeout(1, 9223372036854775807L);
-    setPerfTimeout(4, 9223372036854775807L);
-    setPerfTimeout(2, 9223372036854775807L);
-  }
-  
-  public String getDescription()
-  {
-    return "AIO3D背景";
-  }
-  
-  public void unActive()
-  {
-    setPerfTimeout(1, 3000L);
-    setPerfTimeout(2, 2000L);
-    setPerfTimeout(4, 9223372036854775807L);
+    Object localObject = null;
+    if (paramacfw != null) {}
+    for (paramVarArgs = paramacfw.a(); (paramacfw == null) || (paramVarArgs == null); paramVarArgs = null)
+    {
+      acho.d("GdtNetTypeJsCallHandler", "handleJsCallRequest error");
+      return true;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("netType", achq.a(paramVarArgs));
+    }
+    catch (JSONException localJSONException)
+    {
+      try
+      {
+        for (;;)
+        {
+          paramacfw.callJs(paramString, new String[] { localJSONObject.toString() });
+          paramString = localObject;
+          if (paramacfw != null) {
+            paramString = paramacfw.a();
+          }
+          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getNetType", paramString);
+          return true;
+          localJSONException = localJSONException;
+          acho.d("GdtNetTypeJsCallHandler", "handleJsCallRequest error", localJSONException);
+        }
+      }
+      catch (Throwable paramString)
+      {
+        for (;;)
+        {
+          acho.d("GdtNetTypeJsCallHandler", "handleJsCallRequest error", paramString);
+        }
+      }
+    }
   }
 }
 

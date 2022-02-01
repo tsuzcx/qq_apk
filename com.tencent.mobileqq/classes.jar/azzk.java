@@ -1,41 +1,18 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
-import com.tencent.util.BinderWarpper;
+import java.util.ArrayList;
+import java.util.List;
 
-class azzk
-  implements ServiceConnection
+public class azzk
 {
-  azzk(azzj paramazzj) {}
+  public int a;
+  public List<azzl> a;
+  public boolean a;
+  public int b;
+  public boolean b;
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public azzk()
   {
-    azzi.a("PTV.RichmediaClient", "onServiceConnected");
-    this.a.b = new Messenger(paramIBinder);
-    paramComponentName = Message.obtain(null, 1);
-    paramComponentName.replyTo = this.a.jdField_a_of_type_AndroidOsMessenger;
-    paramIBinder = new BinderWarpper(this.a.jdField_a_of_type_Azzf.asBinder());
-    Bundle localBundle = new Bundle();
-    localBundle.putParcelable("ICallBack_BinderWrapper", paramIBinder);
-    paramComponentName.setData(localBundle);
-    try
-    {
-      this.a.b.send(paramComponentName);
-      return;
-    }
-    catch (RemoteException paramComponentName)
-    {
-      azzi.b("PTV.RichmediaClient", "MSG_C2S_REGISTER_CLIENT send failed. e = " + paramComponentName);
-    }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    this.a.b = null;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
 }
 

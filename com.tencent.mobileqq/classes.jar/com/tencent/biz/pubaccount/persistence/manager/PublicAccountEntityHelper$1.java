@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.persistence.manager;
 
-import oib;
+import opx;
 
 public class PublicAccountEntityHelper$1
   implements Runnable
 {
-  public PublicAccountEntityHelper$1(oib paramoib, PublicAccountEntityManagerFactory paramPublicAccountEntityManagerFactory) {}
+  public PublicAccountEntityHelper$1(opx paramopx, PublicAccountEntityManagerFactory paramPublicAccountEntityManagerFactory) {}
   
   public void run()
   {

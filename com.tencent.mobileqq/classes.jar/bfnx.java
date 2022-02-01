@@ -1,16 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
+import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailGenTask;
 
-public class bfnx
-  implements DialogInterface.OnDismissListener
+public abstract interface bfnx
 {
-  public bfnx(UpgradeActivity paramUpgradeActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.finish();
-  }
+  public abstract void a(String paramString, boolean paramBoolean, int paramInt, TroopFileThumbnailGenTask paramTroopFileThumbnailGenTask);
 }
 
 

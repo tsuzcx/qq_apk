@@ -1,54 +1,6 @@
-import android.text.TextUtils;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-
-public class ngs
-  extends aafe
+class ngs
 {
-  static final String[] a = { "ProfileService", "OnlinePush" };
-  private final HashMap<String, ngt> b = new HashMap();
-  
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    String str = paramFromServiceMsg.getServiceCmd();
-    if (!TextUtils.isEmpty(str)) {}
-    for (ngt localngt = (ngt)this.b.get(str);; localngt = null)
-    {
-      if (localngt != null) {}
-      for (paramToServiceMsg = localngt.a(paramToServiceMsg, paramFromServiceMsg);; paramToServiceMsg = null)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("AVGameProtocolCoder", 4, "decode, cmd[" + str + "], coder[" + localngt + "], result[" + paramToServiceMsg + "]");
-        }
-        return paramToServiceMsg;
-      }
-    }
-  }
-  
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    String str = paramToServiceMsg.getServiceCmd();
-    if (!TextUtils.isEmpty(str)) {}
-    for (ngt localngt = (ngt)this.b.get(str);; localngt = null)
-    {
-      if (localngt != null) {}
-      for (boolean bool = localngt.a(paramToServiceMsg, paramUniPacket);; bool = false)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("AVGameProtocolCoder", 4, "encodeReqMsg, cmd[" + str + "], coder[" + localngt + "], ret[" + bool + "]");
-        }
-        return bool;
-      }
-    }
-  }
-  
-  public String[] a()
-  {
-    return a;
-  }
+  public static ngq a = new ngq(null);
 }
 
 

@@ -5,17 +5,17 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnDrawListener;
 import android.view.Window;
-import ruw;
-import rux;
+import shl;
+import shm;
 
 public class VideoFeedsAdapter$1$1
   implements Runnable
 {
-  public VideoFeedsAdapter$1$1(rux paramrux, ViewTreeObserver.OnDrawListener paramOnDrawListener) {}
+  public VideoFeedsAdapter$1$1(shm paramshm, ViewTreeObserver.OnDrawListener paramOnDrawListener) {}
   
   public void run()
   {
-    ruw.a(this.jdField_a_of_type_Rux.a).getWindow().getDecorView().getViewTreeObserver().removeOnDrawListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnDrawListener);
+    this.jdField_a_of_type_Shm.a.a.getWindow().getDecorView().getViewTreeObserver().removeOnDrawListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnDrawListener);
   }
 }
 

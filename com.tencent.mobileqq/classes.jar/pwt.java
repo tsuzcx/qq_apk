@@ -1,23 +1,176 @@
 import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.feedsinsert.RIJFeedsInsertController.insertArticleInfo.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.collections.CollectionsKt;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-class pwt
-  extends Handler
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/feedsinsert/RIJFeedsInsertController;", "", "()V", "TAG", "", "addToListFilterDuplicate", "", "articleInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;", "articleInfoList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "index", "", "getInsertArticleInfoList", "insertAfterArticleInfo", "feedsInsertInfoMap", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "getNewArticleInfoListWithInsertFeeds", "", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoyBaseAdapter;", "insertArticleInfo", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pwt
 {
-  pwt(pwr parampwr, Looper paramLooper)
+  public static final pwt a = new pwt();
+  
+  private final ArrayList<BaseArticleInfo> a(BaseArticleInfo paramBaseArticleInfo, HashMap<String, ArrayList<BaseArticleInfo>> paramHashMap)
   {
-    super(paramLooper);
+    Object localObject2 = (ArrayList)paramHashMap.get(paramBaseArticleInfo.innerUniqueID);
+    if (localObject2 != null) {}
+    Object localObject1;
+    do
+    {
+      return localObject2;
+      Object localObject3 = paramBaseArticleInfo.mSubArtilceList;
+      localObject1 = localObject2;
+      if (localObject3 != null)
+      {
+        localObject3 = ((List)localObject3).iterator();
+        localObject1 = localObject2;
+        if (((Iterator)localObject3).hasNext())
+        {
+          localObject2 = (ArrayList)paramHashMap.get(((ArticleInfo)((Iterator)localObject3).next()).innerUniqueID);
+          if (localObject2 != null) {
+            localObject1 = localObject2;
+          }
+          for (;;)
+          {
+            break;
+          }
+        }
+      }
+      localObject2 = localObject1;
+    } while (localObject1 != null);
+    paramBaseArticleInfo = paramBaseArticleInfo.mNewPolymericInfo;
+    if (paramBaseArticleInfo != null)
+    {
+      paramBaseArticleInfo = paramBaseArticleInfo.a;
+      if (paramBaseArticleInfo != null)
+      {
+        localObject2 = paramBaseArticleInfo.iterator();
+        paramBaseArticleInfo = (BaseArticleInfo)localObject1;
+        if (((Iterator)localObject2).hasNext())
+        {
+          localObject1 = (ArrayList)paramHashMap.get(((rpt)((Iterator)localObject2).next()).g);
+          if (localObject1 != null) {
+            paramBaseArticleInfo = (BaseArticleInfo)localObject1;
+          }
+          for (;;)
+          {
+            break;
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      return paramBaseArticleInfo;
+      paramBaseArticleInfo = (BaseArticleInfo)localObject1;
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  private final void a(BaseArticleInfo paramBaseArticleInfo, ArrayList<BaseArticleInfo> paramArrayList, int paramInt)
   {
-    switch (paramMessage.what)
+    Iterator localIterator = paramArrayList.iterator();
+    while (localIterator.hasNext())
     {
-    default: 
-      return;
+      BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)localIterator.next();
+      if (TextUtils.equals((CharSequence)paramBaseArticleInfo.innerUniqueID, (CharSequence)localBaseArticleInfo.innerUniqueID))
+      {
+        QLog.i("RIJFeedsInsertController", 1, "[addToListFilterDuplicate] has duplicate, articleInfo = " + pwx.a.a(paramBaseArticleInfo));
+        return;
+      }
     }
-    this.a.f();
+    paramArrayList.add(paramInt, paramBaseArticleInfo);
+    if (!paramBaseArticleInfo.hasBeenInsertIntoList)
+    {
+      pwx.a.b();
+      paramBaseArticleInfo.hasBeenInsertIntoList = true;
+    }
+    QLog.i("RIJFeedsInsertController", 1, "[addToListFilterDuplicate], index = " + paramInt + ", articleInfo = " + pwx.a.a(paramBaseArticleInfo));
+  }
+  
+  @NotNull
+  public final List<BaseArticleInfo> a(@NotNull szd paramszd, @NotNull List<? extends BaseArticleInfo> paramList)
+  {
+    Intrinsics.checkParameterIsNotNull(paramszd, "adapter");
+    Intrinsics.checkParameterIsNotNull(paramList, "articleInfoList");
+    long l = System.currentTimeMillis();
+    int i = paramszd.a();
+    if (!pwx.a.a(i))
+    {
+      QLog.i("RIJFeedsInsertController", 1, "[getNewArticleInfoListWithInsertFeeds] channelId = " + i + ", do not insert...");
+      return paramList;
+    }
+    paramszd = pkh.a();
+    if (paramszd == null) {
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
+    }
+    paramszd = (pvp)((QQAppInterface)paramszd).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
+    ArrayList localArrayList;
+    if (paramszd != null)
+    {
+      paramszd = paramszd.a();
+      if (paramszd != null)
+      {
+        paramszd = paramszd.a();
+        if (paramszd != null)
+        {
+          paramszd = paramszd.a(i);
+          localArrayList = new ArrayList((Collection)paramList);
+          if (paramszd == null) {
+            break label255;
+          }
+          paramList = ((Iterable)paramList).iterator();
+          i = 0;
+        }
+      }
+    }
+    for (;;)
+    {
+      if (!paramList.hasNext()) {
+        break label255;
+      }
+      Object localObject = (BaseArticleInfo)paramList.next();
+      localObject = a.a((BaseArticleInfo)localObject, paramszd);
+      if (localObject != null)
+      {
+        localObject = CollectionsKt.asReversedMutable((List)localObject).iterator();
+        for (;;)
+        {
+          if (((Iterator)localObject).hasNext())
+          {
+            BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)((Iterator)localObject).next();
+            a.a(localBaseArticleInfo, localArrayList, i + 1);
+            continue;
+            paramszd = null;
+            break;
+          }
+        }
+      }
+      i += 1;
+    }
+    label255:
+    if (QLog.isColorLevel()) {
+      QLog.i("RIJFeedsInsertController", 1, "[getNewArticleInfoListWithInsertFeeds], time cost = " + (System.currentTimeMillis() - l) + " ms");
+    }
+    return (List)localArrayList;
+  }
+  
+  public final void a(@NotNull szd paramszd, @NotNull List<? extends BaseArticleInfo> paramList)
+  {
+    Intrinsics.checkParameterIsNotNull(paramszd, "adapter");
+    Intrinsics.checkParameterIsNotNull(paramList, "articleInfoList");
+    pno.b().post((Runnable)new RIJFeedsInsertController.insertArticleInfo.1(paramszd, paramList));
   }
 }
 

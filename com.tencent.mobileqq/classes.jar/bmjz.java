@@ -1,18 +1,29 @@
-import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiVideoEditFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.troop_homework.outer.TroopHWRecordBaseActivity;
 
 public class bmjz
-  implements bmfk
+  implements View.OnClickListener
 {
-  public bmjz(AEEditorMultiVideoEditFragment paramAEEditorMultiVideoEditFragment) {}
+  public bmjz(TroopHWRecordBaseActivity paramTroopHWRecordBaseActivity) {}
   
-  public void a(int paramInt, bmgl parambmgl)
+  public void onClick(View paramView)
   {
-    if ((parambmgl instanceof bmgw)) {
-      AEEditorMultiVideoEditFragment.a(this.a, (bmgw)parambmgl);
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (!this.a.a)
+      {
+        this.a.setResult(0);
+        this.a.finish();
+      }
     }
   }
-  
-  public void aD_() {}
 }
 
 

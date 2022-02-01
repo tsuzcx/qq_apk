@@ -1,104 +1,63 @@
-import com.tencent.mobileqq.filemanager.data.FavFileInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.dating.HotChatFlashPicActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
-class arxz
-  extends aryb
+public class arxz
+  extends ahtt
 {
-  Comparator<FavFileInfo> jdField_a_of_type_JavaUtilComparator = new arya(this);
-  Map<Long, FavFileInfo> jdField_a_of_type_JavaUtilMap = new HashMap();
+  public arxz(HotChatFlashPicActivity paramHotChatFlashPicActivity) {}
   
-  arxz(arxv paramarxv)
+  public void a() {}
+  
+  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean)
   {
-    super(paramarxv);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.hotchat", 4, "notifyImageProgress progress:" + paramInt3);
+    }
+    if ((HotChatFlashPicActivity.a(this.a).jdField_f_of_type_Long == paramLong1) && (HotChatFlashPicActivity.a(this.a).jdField_f_of_type_Int == paramInt1)) {
+      HotChatFlashPicActivity.a(this.a, paramInt3 / 100);
+    }
   }
   
-  FavFileInfo a(long paramLong)
+  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
   {
-    return (FavFileInfo)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
-  }
-  
-  List<FavFileInfo> a(int paramInt)
-  {
-    if (paramInt == 1) {
-      return this.jdField_a_of_type_JavaUtilArrayList;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.hotchat", 4, "notifyImageResult type:" + paramInt2 + ",resultStr:" + paramString + ",result:" + paramInt3 + ",isPart:" + paramBoolean);
     }
-    if (paramInt == 2) {
-      return this.b;
-    }
-    if (paramInt == 3) {
-      return this.c;
-    }
-    if (paramInt == 4) {
-      return this.d;
-    }
-    if (paramInt == 5) {
-      return this.e;
-    }
-    return this.e;
-  }
-  
-  void a()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.b.clear();
-    this.c.clear();
-    this.d.clear();
-    this.e.clear();
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    QLog.i(arxv.a, 1, arxv.b + "FavFileRecords clear...");
-  }
-  
-  void a(List<FavFileInfo> paramList, int paramInt)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    ArrayList localArrayList;
-    if (paramInt == 1) {
-      localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    }
-    int i;
-    for (;;)
+    if ((HotChatFlashPicActivity.a(this.a).jdField_f_of_type_Long == paramLong) && (HotChatFlashPicActivity.a(this.a).jdField_f_of_type_Int == paramInt1) && (paramInt2 == 2))
     {
-      Iterator localIterator = paramList.iterator();
-      i = 0;
-      while (localIterator.hasNext())
-      {
-        FavFileInfo localFavFileInfo = (FavFileInfo)localIterator.next();
-        if (localFavFileInfo != null)
-        {
-          if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(localFavFileInfo.a))) {
-            QLog.w(arxv.a, 1, arxv.b + "addOrUpdateFileRecords favfile is exsited, favid:" + localFavFileInfo.a);
-          }
-          localArrayList.add(localFavFileInfo);
-          this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(localFavFileInfo.a), localFavFileInfo);
-          i = 1;
-        }
+      HotChatFlashPicActivity.a(this.a, false);
+      if (paramInt3 != 1) {
+        break label228;
       }
-      if (paramInt == 2) {
-        localArrayList = this.b;
-      } else if (paramInt == 3) {
-        localArrayList = this.c;
-      } else if (paramInt == 4) {
-        localArrayList = this.d;
-      } else if (paramInt == 5) {
-        localArrayList = this.e;
-      } else {
-        localArrayList = this.e;
+      HotChatFlashPicActivity.a(this.a).jdField_b_of_type_JavaLangString = paramString;
+      HotChatFlashPicActivity.a(this.a).d = paramBoolean;
+      HotChatFlashPicActivity.a(this.a).jdField_b_of_type_Boolean = false;
+      HotChatFlashPicActivity.a(this.a, HotChatFlashPicActivity.a(this.a));
+      if ((HotChatFlashPicActivity.b(this.a) == null) || (HotChatFlashPicActivity.b(this.a).equals("I:E"))) {
+        break label242;
       }
+      bhdi.b(HotChatFlashPicActivity.b(this.a), HotChatFlashPicActivity.c(this.a));
+      HotChatFlashPicActivity.b(this.a, true);
+      HotChatFlashPicActivity.a(this.a, HotChatFlashPicActivity.b(this.a));
     }
-    if (i != 0) {
-      Collections.sort(localArrayList, this.jdField_a_of_type_JavaUtilComparator);
+    label228:
+    label242:
+    while (HotChatFlashPicActivity.b(this.a) == null)
+    {
+      return;
+      HotChatFlashPicActivity.a(this.a).jdField_b_of_type_Boolean = true;
+      break;
     }
-    QLog.i(arxv.a, 1, arxv.b + "addOrUpdateFileRecords recordType:" + paramInt + " addsize:" + paramList.size() + " recordSize:" + localArrayList.size());
+    HotChatFlashPicActivity.a(this.a).sendEmptyMessage(1);
   }
+  
+  public void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3, Bundle paramBundle) {}
+  
+  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt) {}
 }
 
 

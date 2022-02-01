@@ -1,6 +1,6 @@
 public abstract interface amnu
 {
-  public abstract void a(amns paramamns, String paramString1, String paramString2, String paramString3);
+  public abstract void a(int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3, long paramLong);
 }
 
 

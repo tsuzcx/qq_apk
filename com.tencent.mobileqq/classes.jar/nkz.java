@@ -1,34 +1,26 @@
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.view.View;
 
-public class nkz
-  implements AbsListView.OnScrollListener
+public abstract interface nkz
 {
-  public nkz(PoiMapActivity paramPoiMapActivity) {}
+  public abstract void a();
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  public abstract void a(View paramView);
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("PoiMapActivity", 4, "onScrollStateChanged");
-      }
-      if ((!this.a.f) && (this.a.d))
-      {
-        this.a.f = true;
-        paramAbsListView = this.a;
-        paramAbsListView.n += 1;
-        if (QLog.isDevelopLevel()) {
-          QLog.i("PoiMapActivity", 4, "onScrollStateChanged mSearchPage:" + this.a.n);
-        }
-        this.a.a(this.a.h, this.a.i, this.a.c, "", this.a.n, 20);
-      }
-    }
-  }
+  public abstract void a(View paramView, int paramInt, boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract void b(View paramView);
+  
+  public abstract void c();
+  
+  public abstract void c(View paramView);
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 

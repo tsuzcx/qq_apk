@@ -1,18 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Inherited;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-final class axew
-  implements awqt
-{
-  axew(axfd paramaxfd, int paramInt) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte)
-  {
-    QLog.i("NearbyMomentProtocol", 1, "getMomentList, 0xada_0 errorCode=" + paramInt);
-    if (this.jdField_a_of_type_Axfd != null) {
-      this.jdField_a_of_type_Axfd.a(false, null, true, this.jdField_a_of_type_Int);
-    }
-  }
-}
+@Inherited
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.TYPE})
+public @interface axew {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

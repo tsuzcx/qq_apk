@@ -1,22 +1,9 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
+import android.view.MotionEvent;
+import android.view.View;
 
-public abstract class ajzw
-  implements TextWatcher
+public abstract interface ajzw
 {
-  protected EditText a;
-  
-  public ajzw(EditText paramEditText)
-  {
-    this.a = paramEditText;
-  }
-  
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public abstract boolean a(View paramView, MotionEvent paramMotionEvent);
 }
 
 

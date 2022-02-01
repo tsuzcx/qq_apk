@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
-import ajye;
-import ajyg;
+import aktx;
+import aktz;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 
@@ -15,12 +16,12 @@ class PreloadManager$1
     if (QLog.isColorLevel()) {
       QLog.d("PreloadManager", 2, "synDataFromMoggy");
     }
-    Object localObject = (ajyg)this.this$0.a.getManager(245);
+    Object localObject = (aktz)this.this$0.a.getManager(QQManagerFactory.QWALLET_CONFIG_MANAGER);
     if (localObject != null)
     {
-      ((ajyg)localObject).c("preload", this.this$0);
-      localObject = ((ajyg)localObject).a("preload");
-      this.this$0.a((ajye)localObject);
+      ((aktz)localObject).c("preload", this.this$0);
+      localObject = ((aktz)localObject).a("preload");
+      this.this$0.a((aktx)localObject);
     }
   }
 }

@@ -1,19 +1,19 @@
 package com.tencent.av.ui;
 
 import com.tencent.av.opengl.ui.GLRootView;
-import mdy;
+import meu;
 
 public class GLVideoView$2
   implements Runnable
 {
-  public GLVideoView$2(mdy parammdy) {}
+  public GLVideoView$2(meu parammeu) {}
   
   public void run()
   {
     GLRootView localGLRootView = this.this$0.a();
     if (localGLRootView != null)
     {
-      mdy.e(this.this$0);
+      meu.e(this.this$0);
       localGLRootView.postDelayed(this.this$0.a, 80L);
     }
   }

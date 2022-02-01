@@ -1,22 +1,23 @@
-public abstract interface lor
+import android.support.annotation.NonNull;
+
+public class lor
 {
-  public abstract int a();
+  public float a;
+  public int a;
+  public float b;
+  public int b;
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(lok paramlok);
-  
-  public abstract boolean a();
-  
-  public abstract void b(int paramInt);
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    localStringBuilder.append("[apiLevel: ").append(this.jdField_a_of_type_Int).append(", cpuNum: ").append(this.jdField_b_of_type_Int).append(", maxFreqGHZ: ").append(this.jdField_a_of_type_Float).append(", ramSizeGB:").append(this.jdField_b_of_type_Float).append("]");
+    return localStringBuilder.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lor
  * JD-Core Version:    0.7.0.1
  */

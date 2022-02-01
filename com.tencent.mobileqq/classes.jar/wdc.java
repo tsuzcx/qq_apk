@@ -1,13 +1,20 @@
-public final class wdc
-  extends vko
+import android.support.annotation.Nullable;
+import java.lang.ref.WeakReference;
+
+class wdc
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
+  private WeakReference<wdb> a;
+  
+  public wdc(wdb paramwdb)
+  {
+    this.a = new WeakReference(paramwdb);
+  }
+  
+  @Nullable
+  public wdb a()
+  {
+    return (wdb)this.a.get();
+  }
 }
 
 

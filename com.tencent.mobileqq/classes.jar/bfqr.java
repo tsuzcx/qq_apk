@@ -1,89 +1,36 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bfqr
+  implements CompoundButton.OnCheckedChangeListener
 {
-  baoy jdField_a_of_type_Baoy;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public bfqr(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public bfqr(QQAppInterface paramQQAppInterface)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public Bundle a(Bundle paramBundle)
-  {
-    paramBundle = paramBundle.getStringArrayList("key");
-    Bundle localBundle = new Bundle();
-    localBundle.putStringArrayList("key", paramBundle);
-    if ((paramBundle == null) || (paramBundle.size() == 0)) {
-      return localBundle;
-    }
-    if (this.jdField_a_of_type_Baoy == null) {
-      this.jdField_a_of_type_Baoy = ((baoy)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(15));
-    }
-    if (this.jdField_a_of_type_Baoy == null) {
-      return localBundle;
-    }
-    ArrayList localArrayList = new ArrayList(paramBundle.size());
-    Iterator localIterator = paramBundle.iterator();
-    String str1;
-    if (localIterator.hasNext())
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      String str2 = (String)localIterator.next();
-      str1 = "";
-      Object localObject;
-      if (str2 == null)
-      {
-        localObject = null;
-        label124:
-        paramBundle = str1;
-        if (localObject != null)
-        {
-          paramBundle = str1;
-          if (localObject.length != 3) {}
-        }
-      }
-      for (;;)
-      {
-        try
-        {
-          int j = Integer.parseInt(localObject[0]);
-          String str3 = localObject[1];
-          int i = Integer.parseInt(localObject[2]);
-          paramBundle = str1;
-          if (j == 1)
-          {
-            j = Integer.parseInt(str3);
-            localObject = this.jdField_a_of_type_Baoy.a(j);
-            paramBundle = str1;
-            if (localObject != null)
-            {
-              if (i != 201) {
-                continue;
-              }
-              paramBundle = ((balv)localObject).a;
-            }
-          }
-        }
-        catch (Exception paramBundle)
-        {
-          paramBundle.printStackTrace();
-          paramBundle = str1;
-          continue;
-        }
-        awkj.a("getIconUrl", "getIconUrl", new Object[] { str2, paramBundle });
-        localArrayList.add(paramBundle);
-        break;
-        localObject = str2.split("_s_");
-        break label124;
-        paramBundle = ((balv)localObject).b;
+      localStringBuilder = new StringBuilder().append("口算开关状态改变 ");
+      if (!paramBoolean) {
+        break label80;
       }
     }
-    localBundle.putStringArrayList("path", localArrayList);
-    return localBundle;
+    label80:
+    for (String str = "on";; str = "off")
+    {
+      QLog.d("PublishHomeWorkFragment", 2, str);
+      this.a.e = paramBoolean;
+      if (this.a.e) {
+        this.a.a.setChecked(true);
+      }
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+    }
   }
 }
 

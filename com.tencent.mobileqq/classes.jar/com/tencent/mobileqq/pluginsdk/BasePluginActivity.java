@@ -8,6 +8,7 @@ import android.app.FragmentManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -22,6 +23,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.util.SparseArray;
 import android.view.KeyEvent;
@@ -602,6 +604,31 @@ public class BasePluginActivity
     return super.getWindowManager();
   }
   
+  public void initNavigationBarColor()
+  {
+    try
+    {
+      if (this.mContext == null)
+      {
+        QLog.d("plugin_tag", 1, "[NavigationBar] initNavigationBarColor context empty:");
+        return;
+      }
+      boolean bool1 = this.mContext.getSharedPreferences("BootOptimize", 0).getBoolean("KEY_DISABLE_NAVIGATION_BAR", false);
+      boolean bool2 = IPluginAdapterProxy.getProxy().isNightMode();
+      if ((bool1) || (!bool2))
+      {
+        QLog.d("plugin_tag", 1, new Object[] { "[NavigationBar] disableNavigationBar=", Boolean.valueOf(bool1), " isNightMode=", Boolean.valueOf(bool2) });
+        return;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.d("plugin_tag", 1, "[NavigationBar] initNavigationBarColor=", localThrowable);
+      return;
+    }
+    setNavigationBarColor(-16777216);
+  }
+  
   public boolean isFinishing()
   {
     if (this.mIsRunInPlugin) {
@@ -747,7 +774,7 @@ public class BasePluginActivity
     // Byte code:
     //   0: aload_0
     //   1: getfield 63	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mIsRunInPlugin	Z
-    //   4: ifeq +112 -> 116
+    //   4: ifeq +116 -> 120
     //   7: aload_0
     //   8: aload_0
     //   9: getfield 65	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mOutActivity	Landroid/app/Activity;
@@ -763,65 +790,67 @@ public class BasePluginActivity
     //   32: ldc 241
     //   34: ldc_w 457
     //   37: aload_2
-    //   38: invokestatic 651	com/tencent/mobileqq/pluginsdk/BasePluginActivity:setProperty	(Ljava/lang/Object;Ljava/lang/Class;Ljava/lang/String;Ljava/lang/Object;)V
+    //   38: invokestatic 700	com/tencent/mobileqq/pluginsdk/BasePluginActivity:setProperty	(Ljava/lang/Object;Ljava/lang/Class;Ljava/lang/String;Ljava/lang/Object;)V
     //   41: aload_0
     //   42: aload_0
     //   43: getfield 86	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mConfig	Lcom/tencent/mobileqq/pluginsdk/BasePluginActivity$PluginConfig;
-    //   46: invokevirtual 653	com/tencent/mobileqq/pluginsdk/BasePluginActivity:onConfig	(Lcom/tencent/mobileqq/pluginsdk/BasePluginActivity$PluginConfig;)V
+    //   46: invokevirtual 702	com/tencent/mobileqq/pluginsdk/BasePluginActivity:onConfig	(Lcom/tencent/mobileqq/pluginsdk/BasePluginActivity$PluginConfig;)V
     //   49: aload_0
-    //   50: getfield 655	com/tencent/mobileqq/pluginsdk/BasePluginActivity:processer	Lcom/tencent/theme/SkinnableActivityProcesser;
+    //   50: getfield 704	com/tencent/mobileqq/pluginsdk/BasePluginActivity:processer	Lcom/tencent/theme/SkinnableActivityProcesser;
     //   53: ifnonnull +16 -> 69
     //   56: aload_0
-    //   57: new 657	com/tencent/theme/SkinnableActivityProcesser
+    //   57: new 706	com/tencent/theme/SkinnableActivityProcesser
     //   60: dup
     //   61: aload_0
     //   62: aload_0
-    //   63: invokespecial 660	com/tencent/theme/SkinnableActivityProcesser:<init>	(Landroid/app/Activity;Lcom/tencent/theme/SkinnableActivityProcesser$Callback;)V
-    //   66: putfield 655	com/tencent/mobileqq/pluginsdk/BasePluginActivity:processer	Lcom/tencent/theme/SkinnableActivityProcesser;
+    //   63: invokespecial 709	com/tencent/theme/SkinnableActivityProcesser:<init>	(Landroid/app/Activity;Lcom/tencent/theme/SkinnableActivityProcesser$Callback;)V
+    //   66: putfield 704	com/tencent/mobileqq/pluginsdk/BasePluginActivity:processer	Lcom/tencent/theme/SkinnableActivityProcesser;
     //   69: aload_0
-    //   70: invokestatic 666	com/tencent/mobileqq/pluginsdk/PluginStatic:add	(Lcom/tencent/mobileqq/pluginsdk/IPluginActivity;)V
+    //   70: invokestatic 715	com/tencent/mobileqq/pluginsdk/PluginStatic:add	(Lcom/tencent/mobileqq/pluginsdk/IPluginActivity;)V
     //   73: aload_0
     //   74: aload_1
-    //   75: invokespecial 667	mqq/app/BaseActivity:onCreate	(Landroid/os/Bundle;)V
+    //   75: invokespecial 716	mqq/app/BaseActivity:onCreate	(Landroid/os/Bundle;)V
     //   78: aload_0
-    //   79: invokevirtual 671	com/tencent/mobileqq/pluginsdk/BasePluginActivity:getIntent	()Landroid/content/Intent;
-    //   82: ldc_w 673
+    //   79: invokevirtual 720	com/tencent/mobileqq/pluginsdk/BasePluginActivity:getIntent	()Landroid/content/Intent;
+    //   82: ldc_w 722
     //   85: iconst_0
-    //   86: invokevirtual 585	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
+    //   86: invokevirtual 640	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
     //   89: ifeq +12 -> 101
     //   92: aload_0
     //   93: aload_0
     //   94: getfield 65	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mOutActivity	Landroid/app/Activity;
     //   97: aload_0
-    //   98: invokevirtual 677	com/tencent/mobileqq/pluginsdk/BasePluginActivity:readyPluginInterface	(Landroid/content/Context;Lcom/tencent/mobileqq/pluginsdk/PluginInterfaceHelper$OnPluginInterfaceLoadedListener;)V
-    //   101: return
-    //   102: astore_2
-    //   103: ldc 251
-    //   105: iconst_1
-    //   106: ldc_w 679
-    //   109: aload_2
-    //   110: invokestatic 685	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   113: goto -72 -> 41
-    //   116: aload_0
-    //   117: aload_1
-    //   118: invokespecial 667	mqq/app/BaseActivity:onCreate	(Landroid/os/Bundle;)V
-    //   121: aload_0
-    //   122: aload_0
-    //   123: putfield 69	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mActivity	Landroid/app/Activity;
-    //   126: return
-    //   127: astore_2
-    //   128: goto -59 -> 69
+    //   98: invokevirtual 726	com/tencent/mobileqq/pluginsdk/BasePluginActivity:readyPluginInterface	(Landroid/content/Context;Lcom/tencent/mobileqq/pluginsdk/PluginInterfaceHelper$OnPluginInterfaceLoadedListener;)V
+    //   101: aload_0
+    //   102: invokevirtual 728	com/tencent/mobileqq/pluginsdk/BasePluginActivity:initNavigationBarColor	()V
+    //   105: return
+    //   106: astore_2
+    //   107: ldc 251
+    //   109: iconst_1
+    //   110: ldc_w 730
+    //   113: aload_2
+    //   114: invokestatic 622	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   117: goto -76 -> 41
+    //   120: aload_0
+    //   121: aload_1
+    //   122: invokespecial 716	mqq/app/BaseActivity:onCreate	(Landroid/os/Bundle;)V
+    //   125: aload_0
+    //   126: aload_0
+    //   127: putfield 69	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mActivity	Landroid/app/Activity;
+    //   130: goto -29 -> 101
+    //   133: astore_2
+    //   134: goto -65 -> 69
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	131	0	this	BasePluginActivity
-    //   0	131	1	paramBundle	Bundle
+    //   0	137	0	this	BasePluginActivity
+    //   0	137	1	paramBundle	Bundle
     //   22	16	2	localWindow	Window
-    //   102	8	2	localException1	Exception
-    //   127	1	2	localException2	Exception
+    //   106	8	2	localException1	Exception
+    //   133	1	2	localException2	Exception
     // Exception table:
     //   from	to	target	type
-    //   31	41	102	java/lang/Exception
-    //   56	69	127	java/lang/Exception
+    //   31	41	106	java/lang/Exception
+    //   56	69	133	java/lang/Exception
   }
   
   public void onDestroy()
@@ -1130,6 +1159,23 @@ public class BasePluginActivity
   public void setJumpDialog(Dialog paramDialog)
   {
     this.jumpDialog = paramDialog;
+  }
+  
+  public void setNavigationBarColor(@ColorInt int paramInt)
+  {
+    if ((Build.VERSION.SDK_INT < 21) || (getWindow() == null)) {
+      return;
+    }
+    try
+    {
+      getWindow().addFlags(-2147483648);
+      getWindow().setNavigationBarColor(paramInt);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("plugin_tag", 1, "[NavigationBar] setNavigationBarColor Exception:", localException);
+    }
   }
   
   public void setRequestedOrientation(int paramInt)

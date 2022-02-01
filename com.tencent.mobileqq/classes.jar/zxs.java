@@ -1,8 +1,37 @@
-public abstract interface zxs
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class zxs
+  implements View.OnClickListener
 {
-  public abstract void failed(zxt paramzxt);
+  public zxs(SubscribeVideoDetailFragment paramSubscribeVideoDetailFragment) {}
   
-  public abstract void success(zxt paramzxt);
+  public void onClick(View paramView)
+  {
+    boolean bool2 = true;
+    zsf localzsf;
+    if ((SubscribeVideoDetailFragment.a(this.a) != null) && (SubscribeVideoDetailFragment.a(this.a) != null))
+    {
+      localzsf = SubscribeVideoDetailFragment.a(this.a).a(1);
+      bool1 = bool2;
+      if (SubscribeVideoDetailFragment.a(this.a).g()) {
+        if (SubscribeVideoDetailFragment.a(this.a).i()) {
+          break label88;
+        }
+      }
+    }
+    label88:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localzsf.c = bool1;
+      this.a.a(localzsf);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+  }
 }
 
 

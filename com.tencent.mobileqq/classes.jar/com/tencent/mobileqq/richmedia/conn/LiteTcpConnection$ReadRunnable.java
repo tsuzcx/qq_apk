@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.conn;
 
-import badk;
+import bbjz;
 import com.tencent.qphone.base.util.MsfSocketInputBuffer;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;

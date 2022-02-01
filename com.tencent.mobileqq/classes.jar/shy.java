@@ -1,34 +1,20 @@
-import android.graphics.Bitmap;
-import android.view.PixelCopy.OnPixelCopyFinishedListener;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAioGuideView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "copyResult", "", "onPixelCopyFinished", "com/tencent/biz/pubaccount/readinjoy/video/playfeedback/ScreenCaptureHelper$captureViewApiO$1$1"}, k=3, mv={1, 1, 16})
-final class shy
-  implements PixelCopy.OnPixelCopyFinishedListener
+public class shy
+  implements Animation.AnimationListener
 {
-  shy(Bitmap paramBitmap, shu paramshu, View paramView, float paramFloat, shv paramshv) {}
+  public shy(VideoFeedsAioGuideView paramVideoFeedsAioGuideView) {}
   
-  public final void onPixelCopyFinished(int paramInt)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    Object localObject;
-    if (paramInt == 0)
-    {
-      localObject = this.jdField_a_of_type_Shu;
-      Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-      Intrinsics.checkExpressionValueIsNotNull(localBitmap, "bitmap");
-      shu.a((shu)localObject, localBitmap, this.jdField_a_of_type_Shv);
-    }
-    do
-    {
-      return;
-      QLog.e("ScreenCaptureHelper", 1, "captureViewApiO failed, copyResult:" + paramInt);
-      localObject = this.jdField_a_of_type_Shv;
-    } while (localObject == null);
-    ((shv)localObject).a();
+    VideoFeedsAioGuideView.b(this.a).setStartOffset(360L);
   }
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,24 +1,18 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
-import java.util.List;
-
-public class asae
-  extends asdv
+class asae
 {
-  public asae(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  long jdField_b_of_type_Long;
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, List<OfflineFileInfo> paramList)
+  public asae(asaa paramasaa, long paramLong1, long paramLong2, String paramString, int paramInt1, int paramInt2)
   {
-    if (paramBoolean1) {
-      QfileBaseRecentFileTabView.a(this.a, Boolean.valueOf(paramBoolean2), paramList);
-    }
-  }
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2, List<OfflineFileInfo> paramList)
-  {
-    if (paramBoolean1) {
-      QfileBaseRecentFileTabView.a(this.a, Boolean.valueOf(paramBoolean2), paramList);
-    }
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
 }
 

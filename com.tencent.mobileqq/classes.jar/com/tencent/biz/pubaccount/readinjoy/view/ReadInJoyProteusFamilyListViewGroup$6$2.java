@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import sns;
+import tbd;
 
 public class ReadInJoyProteusFamilyListViewGroup$6$2
   implements Runnable
 {
-  public ReadInJoyProteusFamilyListViewGroup$6$2(sns paramsns) {}
+  public ReadInJoyProteusFamilyListViewGroup$6$2(tbd paramtbd) {}
   
   public void run()
   {

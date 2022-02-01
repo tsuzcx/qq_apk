@@ -1,24 +1,22 @@
-import android.graphics.Bitmap;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.util.ProfileParams;
+import com.tencent.biz.pubaccount.util.ProfileParams.CurLoginUsr;
 
-public abstract interface usm
+public final class usm
+  implements Parcelable.Creator<ProfileParams>
 {
-  public abstract void a(int paramInt, long paramLong, String paramString);
+  public ProfileParams a(Parcel paramParcel)
+  {
+    usn localusn = new usn();
+    localusn.a(paramParcel.readString()).a(paramParcel.readInt()).b(paramParcel.readString()).c(paramParcel.readString()).d(paramParcel.readString()).a((ProfileParams.CurLoginUsr)paramParcel.readParcelable(ProfileParams.CurLoginUsr.CREATOR.getClass().getClassLoader()));
+    return localusn.a();
+  }
   
-  public abstract void a(String paramString);
-  
-  public abstract void a(usk paramusk);
-  
-  public abstract void a(usk paramusk, int paramInt1, int paramInt2);
-  
-  public abstract void a(usk paramusk, int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap);
-  
-  public abstract boolean a(usk paramusk, int paramInt1, int paramInt2, int paramInt3, String paramString);
-  
-  public abstract boolean a(usk paramusk, int paramInt, Object paramObject);
-  
-  public abstract void b(usk paramusk);
-  
-  public abstract void c(usk paramusk);
+  public ProfileParams[] a(int paramInt)
+  {
+    return new ProfileParams[paramInt];
+  }
 }
 
 

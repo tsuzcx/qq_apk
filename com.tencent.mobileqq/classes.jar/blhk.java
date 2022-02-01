@@ -1,53 +1,36 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import java.io.File;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.view.Window;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class blhk
 {
-  private static String a;
-  private static String b;
+  private final int jdField_a_of_type_Int;
+  private final boolean jdField_a_of_type_Boolean;
+  private final boolean b;
   
-  public static String a()
+  private blhk(Window paramWindow, boolean paramBoolean)
   {
-    if (a != null) {
-      return a;
-    }
-    Object localObject1 = BaseApplicationImpl.sApplication.getExternalFilesDir(null);
-    if (localObject1 == null) {}
-    for (localObject1 = BaseApplicationImpl.sApplication.getFilesDir().getAbsolutePath();; localObject1 = ((File)localObject1).getAbsolutePath())
+    if (paramWindow.getContext().getResources().getConfiguration().orientation == 1) {}
+    for (;;)
     {
-      Object localObject2 = localObject1;
-      if (!((String)localObject1).endsWith("/")) {
-        localObject2 = (String)localObject1 + "/";
-      }
-      a = (String)localObject2;
-      return localObject2;
+      this.b = bool;
+      this.jdField_a_of_type_Int = ImmersiveUtils.getStatusBarHeight(paramWindow.getContext());
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      return;
+      bool = false;
     }
   }
   
-  public static String a(long paramLong)
+  public int a()
   {
-    return b(paramLong) + "disk_file_cache" + "/";
-  }
-  
-  public static String b()
-  {
-    if (b != null) {
-      return b;
-    }
-    String str = a();
-    str = str + "Tencent" + "/" + "weiyun" + "/";
-    b = str;
-    return str;
-  }
-  
-  private static String b(long paramLong)
-  {
-    return b() + paramLong + "/";
+    return this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     blhk
  * JD-Core Version:    0.7.0.1
  */

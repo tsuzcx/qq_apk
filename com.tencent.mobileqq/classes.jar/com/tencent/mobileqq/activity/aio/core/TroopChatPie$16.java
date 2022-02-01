@@ -2,10 +2,11 @@ package com.tencent.mobileqq.activity.aio.core;
 
 import android.os.Handler;
 import android.os.Message;
-import bfbz;
-import bfcf;
+import bgkf;
+import bgkl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 class TroopChatPie$16
   implements Runnable
@@ -14,9 +15,9 @@ class TroopChatPie$16
   
   public void run()
   {
-    bfcf localbfcf = ((bfbz)this.this$0.app.getManager(48)).a(this.this$0.sessionInfo.curFriendUin, this.a);
+    bgkl localbgkl = ((bgkf)this.this$0.app.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a(this.this$0.sessionInfo.curFriendUin, this.a);
     Message localMessage = this.this$0.b.obtainMessage(2);
-    localMessage.obj = localbfcf;
+    localMessage.obj = localbgkl;
     this.this$0.b.sendMessage(localMessage);
   }
 }

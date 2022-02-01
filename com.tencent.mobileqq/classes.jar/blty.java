@@ -1,23 +1,34 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.Button;
-import com.tencent.ttpic.openapi.model.WMEditItem;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
 
 class blty
-  implements View.OnFocusChangeListener
+  implements ServiceConnection
 {
-  blty(bltv parambltv, blud paramblud, WMEditItem paramWMEditItem) {}
+  blty(bltw parambltw) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    if (paramBoolean)
-    {
-      bltv.a(this.jdField_a_of_type_Bltv, this.jdField_a_of_type_Blud.jdField_a_of_type_AndroidWidgetEditText, this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem);
-      this.jdField_a_of_type_Blud.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130837693);
-      this.jdField_a_of_type_Blud.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupVideoRemoteManager", 2, "Qav Service connected!");
+    }
+    this.a.jdField_a_of_type_Loc = lod.a(paramIBinder);
+    if ((this.a.jdField_a_of_type_Loc != null) && (this.a.jdField_a_of_type_Bltx != null)) {
+      this.a.jdField_a_of_type_Bltx.a(this.a);
+    }
+    while (!QLog.isColorLevel()) {
       return;
     }
-    this.jdField_a_of_type_Blud.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
+    QLog.d("GroupVideoRemoteManager", 2, "mQavProxy == null or mOnReadyListener == null");
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupVideoRemoteManager", 2, "Qav Service disconnected!");
+    }
+    this.a.jdField_a_of_type_Loc = null;
   }
 }
 

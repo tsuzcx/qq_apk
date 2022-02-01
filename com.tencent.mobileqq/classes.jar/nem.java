@@ -1,23 +1,14 @@
-import com.tencent.avgame.gameroom.stage.StageView;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.qphone.base.util.QLog;
+import androidx.annotation.Nullable;
 
-public class nem
-  implements ncc
+public abstract interface nem
 {
-  public nem(StageView paramStageView) {}
+  public abstract int a();
   
-  public void a(LottieDrawable paramLottieDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StageView", 2, "COUNT_DOWN_5S_JSON onLoad lottieDrawable = " + paramLottieDrawable);
-    }
-    if (paramLottieDrawable != null)
-    {
-      this.a.a = paramLottieDrawable;
-      StageView.a(this.a);
-    }
-  }
+  @Nullable
+  public abstract String a(int paramInt);
+  
+  @Nullable
+  public abstract nel b(int paramInt);
 }
 
 

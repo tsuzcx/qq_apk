@@ -1,28 +1,22 @@
-import com.tencent.mobileqq.data.TroopMessageNavigateInfo;
-import java.util.Comparator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ListView;
+import com.tencent.mobileqq.util.DisplayUtil;
 
 class besf
-  implements Comparator<TroopMessageNavigateInfo>
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a(TroopMessageNavigateInfo paramTroopMessageNavigateInfo1, TroopMessageNavigateInfo paramTroopMessageNavigateInfo2)
+  besf(bese parambese) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramTroopMessageNavigateInfo1.type == paramTroopMessageNavigateInfo2.type)
-    {
-      int i = 0;
-      if (paramTroopMessageNavigateInfo1.msgseq > paramTroopMessageNavigateInfo2.msgseq) {
-        i = -1;
-      }
-      while (paramTroopMessageNavigateInfo1.msgseq >= paramTroopMessageNavigateInfo2.msgseq) {
-        return i;
-      }
-      return 1;
-    }
-    return -(berd.a(paramTroopMessageNavigateInfo1.type) - berd.a(paramTroopMessageNavigateInfo2.type));
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    bese.a(this.a).setPadding(DisplayUtil.dip2px(bese.a(this.a).getContext(), 8.0F), i, 0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     besf
  * JD-Core Version:    0.7.0.1
  */

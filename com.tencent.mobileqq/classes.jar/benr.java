@@ -1,14 +1,19 @@
-public class benr
-  extends beno
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+
+final class benr
+  implements DialogInterface.OnClickListener
 {
-  public int a()
-  {
-    return 0;
-  }
+  benr(bent parambent) {}
   
-  public int b()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return -1;
+    if (this.a != null) {
+      this.a.a(paramInt);
+    }
+    benq.a().edit().putBoolean("KEY_WRITE_TOGETHER_IS_FIRST_USE_", false).apply();
   }
 }
 

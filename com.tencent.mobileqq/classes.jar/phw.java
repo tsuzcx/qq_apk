@@ -1,35 +1,16 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.video.click.RIJVideoHandleClick.8.1;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class phw
-  implements pen
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/ui/RIJCommentBubbleView$clickReportOrDelete$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentUtils$ReportCommentDialogClickListener;", "onClick", "", "msg", "", "reportType", "", "which", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class phw
+  extends pbx
 {
-  phw(phl paramphl) {}
-  
-  public void onClick(View paramView)
+  public void a(@NotNull String paramString, int paramInt1, int paramInt2)
   {
-    sjy localsjy = (sjy)paramView.getTag();
-    BaseArticleInfo localBaseArticleInfo = phl.a(this.a).a(localsjy.jdField_a_of_type_Int);
-    if (localBaseArticleInfo == null) {
-      return;
-    }
-    if (!rwv.a(localBaseArticleInfo, phl.a(this.a).a().a()))
-    {
-      if (AdvertisementInfo.isAdvertisementInfo(localBaseArticleInfo))
-      {
-        uhs.a(phl.a(this.a).a().a(), (ArticleInfo)localBaseArticleInfo, phl.a(this.a).a().a(), 56);
-        uhs.a((Activity)phl.a(this.a).a().a(), (ArticleInfo)localBaseArticleInfo, phl.a(this.a).a().a(), 56, true, null);
-        return;
-      }
-      phl.a(this.a).a().a().a(localsjy.jdField_a_of_type_Sdg, localBaseArticleInfo, false, true);
-    }
-    ThreadManager.executeOnSubThread(new RIJVideoHandleClick.8.1(this, localBaseArticleInfo));
-    psf.a(paramView);
+    Intrinsics.checkParameterIsNotNull(paramString, "msg");
+    phs.a(this.a).a().a(phs.a(this.a).a.commentId, paramString, paramInt1);
   }
 }
 

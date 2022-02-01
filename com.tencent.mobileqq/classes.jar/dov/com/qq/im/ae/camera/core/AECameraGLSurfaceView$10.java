@@ -7,9 +7,7 @@ class AECameraGLSurfaceView$10
   
   public void run()
   {
-    if (AECameraGLSurfaceView.access$900(this.this$0) != null) {
-      AECameraGLSurfaceView.access$900(this.this$0).run();
-    }
+    this.this$0.captureListener.onVideoCaptureStart();
   }
 }
 

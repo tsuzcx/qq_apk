@@ -1,31 +1,16 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.data.MessageForPoke;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-
 class agam
-  implements afym
+  extends beci
 {
-  agam(agak paramagak, agaj paramagaj, MessageForPoke paramMessageForPoke) {}
+  agam(agab paramagab) {}
   
-  public void a()
+  public void a(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    this.jdField_a_of_type_Agaj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
-    this.jdField_a_of_type_Agaj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
-    this.jdField_a_of_type_Agaj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(null);
-    this.jdField_a_of_type_Agaj.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    if ((this.jdField_a_of_type_Agaj.b == afzw.b()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (!(this.jdField_a_of_type_Agak.a.a instanceof ChatHistoryActivity)) && (!afzw.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
-      this.jdField_a_of_type_Agaj.c.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Agaj.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
-      this.jdField_a_of_type_Agaj.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
-      return;
-      this.jdField_a_of_type_Agaj.c.setVisibility(8);
-    }
+    becr.a(this.a.app, this.a.mContext, this.a.uiHandler, paramBoolean, paramArrayOfObject);
+  }
+  
+  public void b(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    becr.b(this.a.app, this.a.mContext, this.a.uiHandler, paramBoolean, paramArrayOfObject);
   }
 }
 

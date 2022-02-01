@@ -15,7 +15,7 @@ class EmojiFragment$TempListItem$2
   {
     super.onLoadFialed(paramURLDrawable, paramThrowable);
     EmojiFragment.TempListItem.access$200(this.this$1).setImageDrawable(null);
-    EmojiFragment.TempListItem.access$300(this.this$1).setBackgroundDrawable(this.this$1.getResources().getDrawable(2130843557));
+    EmojiFragment.TempListItem.access$300(this.this$1).setBackgroundDrawable(this.this$1.getResources().getDrawable(2130843594));
     EmojiFragment.TempListItem.access$400(this.this$1).setVisibility(8);
   }
   

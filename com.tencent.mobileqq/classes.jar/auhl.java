@@ -1,38 +1,17 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.hotpic.HotPicTab;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class auhl
-  extends Handler
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public auhl(HotPicTab paramHotPicTab) {}
+  public auhl(QFileDebugSettingFragment paramQFileDebugSettingFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      HotPicTab.a(this.a, 0.0F);
-      HotPicTab.a(this.a, (float)(HotPicTab.a(this.a) + 0.1D));
-      this.a.invalidate();
-      sendMessageDelayed(HotPicTab.a(this.a).obtainMessage(1), 10L);
-      return;
-    case 1: 
-      HotPicTab.a(this.a, (float)(HotPicTab.a(this.a) + 0.1D));
-      if (HotPicTab.a(this.a) < 1.0F)
-      {
-        this.a.invalidate();
-        sendMessageDelayed(HotPicTab.a(this.a).obtainMessage(1), 10L);
-        return;
-      }
-      sendMessageDelayed(HotPicTab.a(this.a).obtainMessage(2), 10L);
-      return;
-    }
-    HotPicTab.a(this.a, 1.0F);
-    HotPicTab.a(this.a, HotPicTab.a(this.a));
-    this.a.invalidate();
+    atlb.a().f(paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

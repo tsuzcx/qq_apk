@@ -1,7 +1,8 @@
 package com.etrump.mixlayout;
 
-import bgae;
+import bhiw;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager;
 import gb;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -14,16 +15,16 @@ public class FontManager$1
   
   public void run()
   {
-    switch (bgae.a(bgae.a(), "libFounderColorFont_818.so"))
+    switch (bhiw.a(bhiw.a(), "libFounderColorFont_818.so"))
     {
     default: 
       return;
     case 1: 
-      ((VasQuickUpdateManager)this.this$0.a.getManager(184)).downloadItem(1004L, "libColorFont_818", "FontManager_initFZEngine");
+      ((VasQuickUpdateManager)this.this$0.a.getManager(QQManagerFactory.VAS_QUICKUPDATE_MANAGER)).downloadItem(1004L, "libColorFont_818", "FontManager_initFZEngine");
       return;
     }
     l.a().b.set(true);
-    bgae.a(this.this$0.a);
+    bhiw.a(this.this$0.a);
     gb.a(this.this$0);
   }
 }

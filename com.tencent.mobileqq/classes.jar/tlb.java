@@ -1,10 +1,19 @@
-import kotlin.Metadata;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.image.URLImageView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/DeviceBridgeInvokeHandler$Companion;", "", "()V", "GET_CLIENT_INFO", "", "GET_CU_KING_STATUS", "GET_DEVICE_INFO", "GET_GDT_INFO", "GET_NETWORK_INFO", "GET_NETWORK_TYPE", "GET_NET_TYPE", "GET_RECOMMEND_FLAG", "IS_MOBILE_QQ", "NS_DEVICE", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class tlb {}
+class tlb
+  implements urs
+{
+  tlb(tkx paramtkx, ChannelCoverInfo paramChannelCoverInfo) {}
+  
+  public void a()
+  {
+    tkx.a(this.jdField_a_of_type_Tkx).setImageDrawable(tkx.a(this.jdField_a_of_type_Tkx, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo, false));
+  }
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tlb
  * JD-Core Version:    0.7.0.1
  */

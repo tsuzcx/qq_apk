@@ -1,8 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
 import Override;
-import aklg;
-import amtj;
+import algy;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -18,7 +17,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
-import bjts;
+import anvx;
+import blfe;
 import com.tencent.biz.pubaccount.AccountDetail.view.ReadInJoyNewFeedsTopGestureLayout;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
@@ -36,41 +36,41 @@ import com.tencent.widget.immersive.SystemBarCompact;
 import java.util.Comparator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import oeb;
-import onl;
-import onm;
-import onn;
-import onq;
-import onr;
+import ols;
+import ovi;
+import ovj;
+import ovk;
+import ovn;
+import ovo;
 
 public class ReadinjoySubscriptManagerActivity
   extends IphoneTitleBarActivity
-  implements View.OnClickListener, bjts, FaceDecoder.DecodeTaskCompletionListener
+  implements View.OnClickListener, blfe, FaceDecoder.DecodeTaskCompletionListener
 {
-  private aklg jdField_a_of_type_Aklg;
+  private algy jdField_a_of_type_Algy;
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private TopGestureLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
   private SwipListView jdField_a_of_type_ComTencentWidgetSwipListView;
-  private Comparator<onq> jdField_a_of_type_JavaUtilComparator = new onl(this);
-  private onn jdField_a_of_type_Onn;
+  private Comparator<ovn> jdField_a_of_type_JavaUtilComparator = new ovi(this);
+  private ovk jdField_a_of_type_Ovk;
   private boolean jdField_a_of_type_Boolean;
   private View b;
   
   private void a(String paramString)
   {
     Context localContext = getApplicationContext();
-    new oeb(this.app, paramString, localContext, new onm(this, localContext)).a();
+    new ols(this.app, paramString, localContext, new ovj(this, localContext)).a();
   }
   
-  private void a(List<onq> paramList)
+  private void a(List<ovn> paramList)
   {
     if (paramList != null)
     {
-      this.jdField_a_of_type_Onn.a(paramList);
+      this.jdField_a_of_type_Ovk.a(paramList);
       this.jdField_a_of_type_ComTencentWidgetSwipListView.t();
     }
-    if (this.jdField_a_of_type_Onn.getCount() == 0)
+    if (this.jdField_a_of_type_Ovk.getCount() == 0)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
@@ -109,28 +109,28 @@ public class ReadinjoySubscriptManagerActivity
     if ((this.mFlingHandler != null) && ((this.mFlingHandler instanceof FlingGestureHandler))) {
       ((FlingGestureHandler)this.mFlingHandler).setTopLayout(new ReadInJoyNewFeedsTopGestureLayout(this));
     }
-    setTitle(amtj.a(2131711856));
-    setLeftViewName(2131690424);
+    setTitle(anvx.a(2131712203));
+    setLeftViewName(2131690499);
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)getRightTextView());
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131717364);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131366078);
-    ((TextView)findViewById(2131379131)).setText(amtj.a(2131711928));
-    this.jdField_a_of_type_Onn = new onn(this, null);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)findViewById(2131377967));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131717730);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131366179);
+    ((TextView)findViewById(2131379426)).setText(anvx.a(2131712275));
+    this.jdField_a_of_type_Ovk = new ovk(this, null);
+    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)findViewById(2131378255));
     TextView localTextView = new TextView(this);
     localTextView.setHeight(AIOUtils.dp2px(20.0F, getResources()));
-    localTextView.setBackgroundResource(2131167276);
+    localTextView.setBackgroundResource(2131167296);
     localTextView.setClickable(false);
-    localTextView.setHintTextColor(getResources().getColor(2131167276));
+    localTextView.setHintTextColor(getResources().getColor(2131167296));
     this.jdField_a_of_type_ComTencentWidgetSwipListView.addHeaderView(localTextView, null, false);
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setDragEnable(this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_Onn);
+    this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_Ovk);
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setRightIconMenuListener(this);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setOnItemClickListener(this.jdField_a_of_type_Onn);
-    this.jdField_a_of_type_Aklg = new aklg(this.app, this, false);
-    this.b = findViewById(2131371800);
+    this.jdField_a_of_type_ComTencentWidgetSwipListView.setOnItemClickListener(this.jdField_a_of_type_Ovk);
+    this.jdField_a_of_type_Algy = new algy(this.app, this, false);
+    this.b = findViewById(2131371990);
     if (ThemeUtil.isInNightMode(this.app)) {
       this.b.setVisibility(0);
     }
@@ -162,7 +162,7 @@ public class ReadinjoySubscriptManagerActivity
     {
       this.leftView.setTextColor(-14408926);
       this.leftView.setTextColor(-14408926);
-      this.leftView.setBackgroundResource(2130849445);
+      this.leftView.setBackgroundResource(2130849537);
       if (this.centerView != null) {
         this.centerView.setTextColor(-16777216);
       }
@@ -218,7 +218,7 @@ public class ReadinjoySubscriptManagerActivity
     if (Build.VERSION.SDK_INT >= 11) {
       getWindow().setFlags(16777216, 16777216);
     }
-    setContentView(2131560289);
+    setContentView(2131560335);
     b();
     a();
     c();
@@ -228,10 +228,10 @@ public class ReadinjoySubscriptManagerActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Aklg != null)
+    if (this.jdField_a_of_type_Algy != null)
     {
-      this.jdField_a_of_type_Aklg.a();
-      this.jdField_a_of_type_Aklg = null;
+      this.jdField_a_of_type_Algy.a();
+      this.jdField_a_of_type_Algy = null;
     }
   }
   
@@ -263,10 +263,10 @@ public class ReadinjoySubscriptManagerActivity
       }
     }
     label95:
-    for (int i = 2131717296;; i = 2131717364)
+    for (int i = 2131717662;; i = 2131717730)
     {
       localTextView.setText(i);
-      this.jdField_a_of_type_Onn.notifyDataSetChanged();
+      this.jdField_a_of_type_Ovk.notifyDataSetChanged();
       break;
       bool = false;
       break label41;
@@ -291,12 +291,12 @@ public class ReadinjoySubscriptManagerActivity
       while (paramInt1 < paramInt2)
       {
         Object localObject = this.jdField_a_of_type_ComTencentWidgetSwipListView.getChildAt(paramInt1);
-        if ((((View)localObject).getTag() instanceof onr))
+        if ((((View)localObject).getTag() instanceof ovo))
         {
-          localObject = (onr)((View)localObject).getTag();
-          if (TextUtils.equals(onr.a((onr)localObject), paramString))
+          localObject = (ovo)((View)localObject).getTag();
+          if (TextUtils.equals(ovo.a((ovo)localObject), paramString))
           {
-            new Handler(Looper.getMainLooper()).post(new ReadinjoySubscriptManagerActivity.4(this, (onr)localObject, paramBitmap));
+            new Handler(Looper.getMainLooper()).post(new ReadinjoySubscriptManagerActivity.4(this, (ovo)localObject, paramBitmap));
             return;
           }
         }

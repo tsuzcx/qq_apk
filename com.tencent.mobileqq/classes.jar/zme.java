@@ -1,18 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.subscribe.widget.comment.component.richtext.element.ContentElement;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
 
-public final class zme
-  implements Parcelable.Creator<ContentElement>
+public class zme
+  implements Handler.Callback
 {
-  public ContentElement a(Parcel paramParcel)
-  {
-    return new ContentElement();
-  }
+  public zme(ScannerActivity paramScannerActivity) {}
   
-  public ContentElement[] a(int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    return new ContentElement[paramInt];
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.a.c();
+    }
   }
 }
 

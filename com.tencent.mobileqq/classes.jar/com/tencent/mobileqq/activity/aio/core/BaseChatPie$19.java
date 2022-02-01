@@ -1,26 +1,42 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import ahqs;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import admg;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
+import com.tencent.qphone.base.util.QLog;
 
 class BaseChatPie$19
-  implements View.OnClickListener
+  implements Runnable
 {
-  BaseChatPie$19(BaseChatPie paramBaseChatPie) {}
+  BaseChatPie$19(BaseChatPie paramBaseChatPie, String paramString1, String paramString2, String paramString3) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.this$0.mTipsMgr.a();
-    SharedPreferences.Editor localEditor = this.this$0.app.getPreferences().edit();
-    localEditor.putInt("funcall_tip_" + this.this$0.sessionInfo.curFriendUin, 4);
-    localEditor.commit();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.i(this.this$0.tag, 2, "set left text from update unread: " + this.val$unRead);
+    }
+    if (this.this$0.isThemeDefault)
+    {
+      this.this$0.mDefautlBtnLeft.setText(String.valueOf(this.val$unreadCount));
+      if (TextUtils.isEmpty(this.val$unreadCount)) {
+        this.this$0.mDefautlBtnLeft.setVisibility(8);
+      }
+    }
+    for (;;)
+    {
+      this.this$0.adjustTitleDimension();
+      if (admg.a) {
+        this.this$0.mCustomTitleView.setLeftContentDescription(this.val$contentDescription);
+      }
+      return;
+      this.this$0.mDefautlBtnLeft.setVisibility(0);
+      continue;
+      this.this$0.mTitleBubbleLeft.setText(this.val$unreadCount);
+      if (this.this$0.mCustomTitleView != null) {
+        this.this$0.mCustomTitleView.e();
+      }
+    }
   }
 }
 

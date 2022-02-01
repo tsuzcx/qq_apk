@@ -1,21 +1,22 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ttf
-  implements ViewFactory.FoundClickableViewListener
+public class ttf
+  implements View.OnClickListener
 {
-  ttf(tte paramtte, BaseData paramBaseData, Context paramContext) {}
+  public ttf(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout) {}
   
-  public void onFound(ViewBase paramViewBase)
+  public void onClick(View paramView)
   {
-    paramViewBase.setOnClickListener(new ttg(this));
+    this.a.a(0, 2);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ttf
  * JD-Core Version:    0.7.0.1
  */

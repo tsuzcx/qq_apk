@@ -1,127 +1,55 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Cap;
-import android.graphics.Paint.Join;
-import android.graphics.Paint.Style;
-import android.graphics.Path;
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserGuide;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class yfw
-  extends yfm
+  extends wfh
 {
-  public static final int a;
-  public float a;
-  public Paint a;
-  yfi a;
-  public yfv a;
-  public float b;
+  public String a;
   public int b;
-  public Paint b;
-  public int c = AIOUtils.dp2px(6.0F, BaseApplicationImpl.getContext().getResources());
+  public String c;
+  public String d;
+  public String e;
   
-  static
+  public yfw(qqstory_service.RspGetUserGuide paramRspGetUserGuide)
   {
-    jdField_a_of_type_Int = ynb.a[8];
-  }
-  
-  public yfw(yfi paramyfi)
-  {
-    this.jdField_b_of_type_Int = jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeJoin(Paint.Join.ROUND);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.c);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(jdField_a_of_type_Int);
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeJoin(Paint.Join.ROUND);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(jdField_a_of_type_Int);
-    this.jdField_a_of_type_Yfi = paramyfi;
-  }
-  
-  private void a(Paint paramPaint, yfv paramyfv)
-  {
-    paramPaint.setXfermode(null);
-    paramPaint.setColor(paramyfv.jdField_b_of_type_Int);
-    paramPaint.setStrokeWidth(paramyfv.c);
-    paramPaint.setShader(null);
-  }
-  
-  public Paint a()
-  {
-    return this.jdField_b_of_type_AndroidGraphicsPaint;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.c);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void a(Canvas paramCanvas, yfj paramyfj, Paint paramPaint)
-  {
-    if ((paramyfj instanceof yfv))
+    if (paramRspGetUserGuide.pic_url.has())
     {
-      paramyfj = (yfv)paramyfj;
-      a(paramPaint, paramyfj);
-      paramCanvas.drawPath(paramyfj.a, paramPaint);
-    }
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.jdField_a_of_type_Float = f1;
-      this.jdField_b_of_type_Float = f2;
-      this.jdField_a_of_type_Yfv = new yfv(new Path(), 101, this.jdField_a_of_type_AndroidGraphicsPaint.getColor(), this.c);
-      if (this.jdField_a_of_type_Yfi != null) {
-        this.jdField_a_of_type_Yfi.a(this.jdField_a_of_type_Yfv);
+      localObject1 = paramRspGetUserGuide.pic_url.get().toStringUtf8();
+      this.a = ((String)localObject1);
+      if (!paramRspGetUserGuide.word.has()) {
+        break label129;
       }
-      DoodleLayout.a("use_graffiti");
-      this.jdField_a_of_type_Yfv.a.reset();
-      this.jdField_a_of_type_Yfv.a.moveTo(f1, f2);
-      this.jdField_a_of_type_Yfv.a.lineTo(f1 + 1.0F, f2 + 1.0F);
-      continue;
-      if ((this.jdField_a_of_type_Yfv != null) && (this.jdField_a_of_type_Yfv.a != null)) {
-        this.jdField_a_of_type_Yfv.a.quadTo(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, (this.jdField_a_of_type_Float + f1) / 2.0F, (this.jdField_b_of_type_Float + f2) / 2.0F);
+      localObject1 = paramRspGetUserGuide.word.get().toStringUtf8();
+      label53:
+      this.c = ((String)localObject1);
+      this.b = paramRspGetUserGuide.seqno.get();
+      if (!paramRspGetUserGuide.confirm_word.has()) {
+        break label134;
       }
-      this.jdField_a_of_type_Float = f1;
-      this.jdField_b_of_type_Float = f2;
+    }
+    label129:
+    label134:
+    for (Object localObject1 = paramRspGetUserGuide.confirm_word.get().toStringUtf8();; localObject1 = null)
+    {
+      this.d = ((String)localObject1);
+      localObject1 = localObject2;
+      if (paramRspGetUserGuide.cancel_word.has()) {
+        localObject1 = paramRspGetUserGuide.cancel_word.get().toStringUtf8();
+      }
+      this.e = ((String)localObject1);
+      return;
+      localObject1 = null;
+      break;
+      localObject1 = null;
+      break label53;
     }
   }
   
-  public Paint b()
+  public String toString()
   {
-    return this.jdField_a_of_type_AndroidGraphicsPaint;
-  }
-  
-  public void b()
-  {
-    this.jdField_b_of_type_Int = jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(jdField_a_of_type_Int);
-    this.jdField_a_of_type_Yfv = null;
+    return "Response{imageUrl='" + this.a + '\'' + ", word='" + this.c + '\'' + ", seqno=" + this.b + ", confirmBtnTxt='" + this.d + '\'' + ", cancelBtnTxt='" + this.e + '\'' + '}';
   }
 }
 

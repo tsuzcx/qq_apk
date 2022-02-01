@@ -1,32 +1,36 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CardProfile;
+import android.os.Message;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ocr.OCRPerformFragment;
+import com.tencent.mobileqq.ocr.OCRPerformFragment.6.1;
+import com.tencent.qphone.base.util.QLog;
 
-class ayrp
-  implements awjh
+public class ayrp
+  extends avau
 {
-  ayrp(ayro paramayro, CardProfile paramCardProfile, ImageView paramImageView) {}
+  public ayrp(OCRPerformFragment paramOCRPerformFragment) {}
   
-  public void a(String paramString, boolean paramBoolean)
+  public void a()
   {
-    this.jdField_a_of_type_Ayro.a(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile, this.jdField_a_of_type_AndroidWidgetImageView, paramBoolean);
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_Ayro.a;
-    String str1;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type == 3)
+    OCRPerformFragment.a(this.a).sendEmptyMessageDelayed(101, 60000L);
+  }
+  
+  public void a(avaw paramavaw)
+  {
+    OCRPerformFragment.a(this.a).obtainMessage(102, paramavaw).sendToTarget();
+  }
+  
+  protected void a(boolean paramBoolean, avaw paramavaw)
+  {
+    if ((!OCRPerformFragment.a(this.a)) || (OCRPerformFragment.a(this.a) == null))
     {
-      str1 = "1";
-      if (!paramBoolean) {
-        break label69;
+      if (QLog.isColorLevel()) {
+        QLog.d("OCRPerformFragment", 2, "onPicOcrResult other! or mActivity null");
       }
-    }
-    label69:
-    for (String str2 = "2";; str2 = "1")
-    {
-      awiz.a(localQQAppInterface, "detail_like", paramString, str1, "", "", str2);
       return;
-      str1 = "2";
-      break;
     }
+    OCRPerformFragment.a(this.a).removeMessages(101);
+    OCRPerformFragment.a(this.a, false);
+    OCRPerformFragment.a(this.a).runOnUiThread(new OCRPerformFragment.6.1(this, paramBoolean, paramavaw));
   }
 }
 

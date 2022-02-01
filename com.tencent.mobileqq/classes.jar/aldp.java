@@ -1,22 +1,29 @@
-import android.view.SurfaceView;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aldp
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class aldp
+  implements View.OnClickListener
 {
-  public aldp(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  aldp(aldh paramaldh) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    this.a.e = this.a.a.getWidth();
-    this.a.f = this.a.a.getHeight();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "onGlobalLayout,mSurfaceViewWidth:" + this.a.e + ",mSurfaceViewHeight:" + this.a.f);
+    try
+    {
+      bhdj.a(aldh.a(this.a), 0, null, anvx.a(2131700416), 2131690697, 2131694399, new aldq(this), new aldr(this)).show();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        QLog.e("Q.recent.banner", 1, "show dialog err, errInfo->" + localThrowable.getMessage());
+      }
+    }
   }
 }
 

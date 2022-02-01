@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.activity.phone;
 
 import Override;
-import aihs;
-import amtj;
+import ajcr;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -11,12 +10,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import aycg;
-import bcef;
+import anvx;
+import azis;
+import bdla;
 import com.tencent.mobileqq.activity.ContactBindedActivity;
 import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -28,7 +29,7 @@ public class GuideBindPhoneActivity
   implements View.OnClickListener
 {
   protected int a;
-  protected aycg a;
+  protected azis a;
   protected int b = 0;
   
   public GuideBindPhoneActivity()
@@ -38,7 +39,7 @@ public class GuideBindPhoneActivity
   
   public void a()
   {
-    if (((PhoneContactManagerImp)this.app.getManager(11)).a(true))
+    if (((PhoneContactManagerImp)this.app.getManager(QQManagerFactory.CONTACT_MANAGER)).a(true))
     {
       ContactBindedActivity.a(this.app, -1, 2, null);
       setResult(-1);
@@ -48,13 +49,13 @@ public class GuideBindPhoneActivity
   
   public void b()
   {
-    if ((VersionUtils.isM()) && (aihs.a("android.permission.WRITE_CONTACTS")))
+    if ((VersionUtils.isM()) && (ajcr.a("android.permission.WRITE_CONTACTS")))
     {
       String str1 = getIntent().getStringExtra("key_contact_name");
       String str2 = getIntent().getStringExtra("key_contact_phone");
-      PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)this.app.getManager(11);
+      PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)this.app.getManager(QQManagerFactory.CONTACT_MANAGER);
       if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (localPhoneContactManagerImp.b(str1, str2))) {
-        QQToast.a(getApplicationContext(), 2, amtj.a(2131704549), 0).a();
+        QQToast.a(getApplicationContext(), 2, anvx.a(2131704900), 0).a();
       }
       finish();
     }
@@ -62,7 +63,7 @@ public class GuideBindPhoneActivity
   
   public void c()
   {
-    if (((PhoneContactManagerImp)this.app.getManager(11)).k())
+    if (((PhoneContactManagerImp)this.app.getManager(QQManagerFactory.CONTACT_MANAGER)).k())
     {
       setResult(-1);
       finish();
@@ -122,27 +123,27 @@ public class GuideBindPhoneActivity
     {
       paramBundle = new GuideBindPhoneActivity.1(this);
       GuideBindPhoneActivity.2 local2 = new GuideBindPhoneActivity.2(this);
-      aihs.a(this, this.app, paramBundle, local2);
+      ajcr.a(this, this.app, paramBundle, local2);
     }
-    setContentView(2131559259);
-    PhoneContactManagerImp.a(this.app, getResources(), (ImageView)findViewById(2131365013));
-    paramBundle = findViewById(2131369619);
+    setContentView(2131559298);
+    PhoneContactManagerImp.a(this.app, getResources(), (ImageView)findViewById(2131365097));
+    paramBundle = findViewById(2131369788);
     if ((paramBundle != null) && ("1000".equals(ThemeUtil.curThemeId))) {
-      paramBundle.setBackgroundResource(2130839437);
+      paramBundle.setBackgroundResource(2130839458);
     }
     for (;;)
     {
-      setTitle(null, getString(2131694393));
-      setLeftViewName(2131690424);
-      this.jdField_a_of_type_Aycg = new aycg(this, getPackageName());
-      findViewById(2131365012).setOnClickListener(this);
-      bcef.b(this.app, "dc00898", "", "", "0X8009F1B", "0X8009F1B", 0, 0, "", "", "", "");
+      setTitle(null, getString(2131694594));
+      setLeftViewName(2131690499);
+      this.jdField_a_of_type_Azis = new azis(this, getPackageName());
+      findViewById(2131365096).setOnClickListener(this);
+      bdla.b(this.app, "dc00898", "", "", "0X8009F1B", "0X8009F1B", 0, 0, "", "", "", "");
       if (QLog.isColorLevel()) {
         QLog.i("GuideBindPhoneActivity", 2, String.format("init [%s, %s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b) }));
       }
       return true;
       if (paramBundle != null) {
-        paramBundle.setBackgroundResource(2130838891);
+        paramBundle.setBackgroundResource(2130838911);
       }
     }
   }
@@ -154,35 +155,35 @@ public class GuideBindPhoneActivity
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131365012)
+    if (paramView.getId() == 2131365096)
     {
       if (QLog.isColorLevel()) {
         QLog.i("GuideBindPhoneActivity", 2, "jump permission page");
       }
       if (!VersionUtils.isM()) {
-        break label122;
+        break label123;
       }
       if ((this.b == 2) || (this.b == 1)) {
-        ((PhoneContactManagerImp)this.app.getManager(11)).b(true);
+        ((PhoneContactManagerImp)this.app.getManager(QQManagerFactory.CONTACT_MANAGER)).b(true);
       }
     }
     for (;;)
     {
       try
       {
-        this.jdField_a_of_type_Aycg.a();
-        bcef.b(this.app, "dc00898", "", "", "0X8009F1C", "0X8009F1C", 0, 0, "", "", "", "");
+        this.jdField_a_of_type_Azis.a();
+        bdla.b(this.app, "dc00898", "", "", "0X8009F1C", "0X8009F1C", 0, 0, "", "", "", "");
         EventCollector.getInstance().onViewClicked(paramView);
         return;
       }
       catch (Throwable localThrowable)
       {
         localThrowable.printStackTrace();
-        this.jdField_a_of_type_Aycg.b();
+        this.jdField_a_of_type_Azis.b();
         continue;
       }
-      label122:
-      this.jdField_a_of_type_Aycg.b();
+      label123:
+      this.jdField_a_of_type_Azis.b();
     }
   }
   

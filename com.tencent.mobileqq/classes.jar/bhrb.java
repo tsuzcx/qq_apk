@@ -1,25 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.open.agent.BindGroupFragment;
+import android.os.Bundle;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
 
-public class bhrb
-  implements DialogInterface.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/gldrawable/GLDrawableOptions;", "", "name", "", "translate", "Landroid/os/Bundle;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface bhrb
 {
-  public bhrb(BindGroupFragment paramBindGroupFragment, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramInt == 1)
-    {
-      BindGroupFragment.a(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment, amtj.a(2131700265));
-      ((anca)BindGroupFragment.a(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment).getBusinessHandler(20)).a(Integer.valueOf(BindGroupFragment.a(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment)).intValue(), Integer.valueOf(BindGroupFragment.b(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment)).intValue(), Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), BindGroupFragment.c(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment));
-    }
-    while (paramInt != 0) {
-      return;
-    }
-    paramDialogInterface.dismiss();
-  }
+  @NotNull
+  public abstract Bundle a();
 }
 
 

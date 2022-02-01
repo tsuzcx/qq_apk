@@ -1,23 +1,22 @@
 package dov.com.qq.im.ae;
 
-import bljy;
-import blsw;
-import bmas;
+import android.widget.ImageView;
+import bmxa;
+import com.tencent.ttpic.openapi.view.LazyLoadAnimationDrawable;
 
 public class AEPituCameraUnit$27
   implements Runnable
 {
-  public AEPituCameraUnit$27(bljy parambljy) {}
+  public AEPituCameraUnit$27(bmxa parambmxa) {}
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Blsw != null) {
-      this.this$0.jdField_a_of_type_Blsw.d();
-    }
-    if (this.this$0.jdField_a_of_type_Bmas != null)
+    bmxa.a(this.this$0).setVisibility(8);
+    if (bmxa.a(this.this$0).getDrawable() != null)
     {
-      this.this$0.jdField_a_of_type_Bmas.a(196611, new Object[] { Boolean.valueOf(bljy.a(this.this$0)) });
-      this.this$0.jdField_a_of_type_Bmas.a(327685, new Object[0]);
+      LazyLoadAnimationDrawable localLazyLoadAnimationDrawable = (LazyLoadAnimationDrawable)bmxa.a(this.this$0).getDrawable();
+      localLazyLoadAnimationDrawable.stop();
+      localLazyLoadAnimationDrawable.clear();
     }
   }
 }

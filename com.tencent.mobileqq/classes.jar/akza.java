@@ -1,26 +1,17 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class akza
   implements View.OnClickListener
 {
-  public akza(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  public akza(ChooseItemView paramChooseItemView) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.c) {
-      bcef.b(this.a.app, "CliOper", "", "", "0X80041AE", "0X80041AE", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      this.a.finish();
-      this.a.overridePendingTransition(2130771988, 2130771989);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      bcef.b(this.a.app, "CliOper", "", "", "0X80041A9", "0X80041A9", 0, 0, "", "", "", "");
-    }
+    this.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

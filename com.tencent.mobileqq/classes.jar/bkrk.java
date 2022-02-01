@@ -1,17 +1,18 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.proxyimpl.ShortcutUtils.4;
+
 public class bkrk
+  implements DialogInterface.OnClickListener
 {
-  public static String a = "noticeServiceActive";
-  public static String b = "noticeSendEmoticon";
-  public static String c = "com.qqindividuality.ipc.IpcServer";
-  public static String d = "emoticonPackageId";
-  public static String e = "imagePath";
-  public static String f = "imageName";
-  public static String g = "imageWidth";
-  public static String h = "imageHeight";
-  public static String i = "requestCode";
-  public static String j = "commDiyText";
-  public static String k = "diyText";
-  public static String l = "individuality_plugin";
+  public bkrk(ShortcutUtils.4 param4) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    QLog.e("Shortcut", 2, "confirm");
+    bkrh.a(this.a.a);
+  }
 }
 
 

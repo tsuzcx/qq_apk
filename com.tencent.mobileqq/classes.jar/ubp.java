@@ -1,56 +1,44 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.image.URLDrawable;
-import com.tencent.mfsdk.collector.DropFrameMonitor;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.topicvideo.VTopicVideo;
+import com.tencent.viola.core.dispatch.ComponentAppearEvent;
+import com.tencent.viola.core.dispatch.IEvent;
+import com.tencent.viola.core.dispatch.IObserver;
 
 public class ubp
-  implements AbsListView.OnScrollListener
+  implements IObserver
 {
-  public ubp(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  public ubp(VTopicVideo paramVTopicVideo) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public String getRef()
   {
-    switch (paramInt)
+    return this.a.getRef();
+  }
+  
+  public void onReceive(IEvent paramIEvent)
+  {
+    if ((paramIEvent.getRef().equals(this.a.getRef())) && (this.a.getVideoLifeCycleChangeListener() != null))
     {
-    default: 
-      DropFrameMonitor.getInstance().startMonitorScene("list_subscript");
+      paramIEvent = (ComponentAppearEvent)paramIEvent;
+      if (!paramIEvent.event.equals("didDisappear")) {
+        break label59;
+      }
+      this.a.getVideoLifeCycleChangeListener().H_();
     }
-    for (;;)
+    label59:
+    do
     {
       return;
-      DropFrameMonitor.getInstance().stopMonitorScene("list_subscript", false);
-      paramInt = 0;
-      while (paramInt <= paramAbsListView.getChildCount())
+      if (paramIEvent.event.equals("willAppear"))
       {
-        Object localObject = paramAbsListView.getChildAt(paramInt);
-        if ((localObject != null) && ((((View)localObject).getTag() instanceof ubu)))
-        {
-          localObject = (ubu)((View)localObject).getTag();
-          Drawable localDrawable = ((ubu)localObject).b.getDrawable();
-          if ((localDrawable != null) && ((localDrawable instanceof URLDrawable)) && (!((URLDrawable)localDrawable).isDownloadStarted()))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("SubscriptFeedsActivity", 2, "list child view start download pic!  uin : " + ((ubu)localObject).a);
-            }
-            ((URLDrawable)localDrawable).startDownload();
-            ((URLDrawable)localDrawable).setAutoDownload(true);
-          }
-        }
-        paramInt += 1;
+        this.a.getVideoLifeCycleChangeListener().F_();
+        return;
       }
-    }
+    } while (!paramIEvent.event.equals("didAppear"));
+    this.a.getVideoLifeCycleChangeListener().G_();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ubp
  * JD-Core Version:    0.7.0.1
  */

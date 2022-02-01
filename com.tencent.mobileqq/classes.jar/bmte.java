@@ -1,67 +1,52 @@
-public abstract class bmte
-  extends bgod
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.weiyun.transmission.utils.handler.ReleaseLooperHandler;
+
+public class bmte
+  implements Handler.Callback
 {
-  public static final int MOBILE_TO_NONE = 2;
-  public static final int WIFI_TO_MOBILE = 1;
-  public static final int WIFI_TO_NONE = 3;
+  private bmsz jdField_a_of_type_Bmsz;
+  private final bmtg jdField_a_of_type_Bmtg;
+  private final ReleaseLooperHandler jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler;
   
-  public void onCancel(bgoe parambgoe)
+  public bmte(bmtg parambmtg, bmsz parambmsz, ReleaseLooperHandler paramReleaseLooperHandler)
   {
-    super.onCancel(parambgoe);
-    onCancel(parambgoe.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Bmtg = parambmtg;
+    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler = paramReleaseLooperHandler;
+    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler.addCallback(this);
+    this.jdField_a_of_type_Bmsz = parambmsz;
   }
   
-  public abstract void onCancel(String paramString);
-  
-  public void onDone(bgoe parambgoe)
+  private void b(bmsi parambmsi, int paramInt)
   {
-    String str = parambgoe.jdField_a_of_type_JavaLangString;
-    if (parambgoe.a() == 3) {}
-    for (boolean bool = true;; bool = false)
+    if (parambmsi == null) {}
+    long l;
+    String str;
+    do
     {
-      onFinish(str, bool, parambgoe.jdField_a_of_type_Int);
+      return;
+      l = parambmsi.a();
+      str = parambmsi.a().a;
+    } while (parambmsi.d());
+    this.jdField_a_of_type_Bmsz.a(parambmsi.a().a(), cooperation.weiyun.sdk.download.DownloadType.values()[paramInt], new bmtf(this, str, l, parambmsi, paramInt));
+  }
+  
+  public void a(bmsi parambmsi, int paramInt)
+  {
+    if (parambmsi == null) {
       return;
     }
+    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler.sendMessage(Message.obtain(null, 21, paramInt, 0, parambmsi));
   }
   
-  public abstract void onFinish(String paramString, boolean paramBoolean, int paramInt);
-  
-  public abstract void onNetChange(int paramInt);
-  
-  public void onNetMobile2None()
+  public boolean handleMessage(Message paramMessage)
   {
-    super.onNetMobile2None();
-    onNetChange(2);
-  }
-  
-  public void onNetWifi2Mobile()
-  {
-    super.onNetWifi2Mobile();
-    onNetChange(1);
-  }
-  
-  public void onNetWifi2None()
-  {
-    super.onNetWifi2None();
-    onNetChange(3);
-  }
-  
-  public void onProgress(bgoe parambgoe)
-  {
-    super.onProgress(parambgoe);
-    int i = (int)parambgoe.jdField_a_of_type_Float;
-    onProgress(parambgoe.jdField_a_of_type_JavaLangString, i);
-  }
-  
-  public abstract void onProgress(String paramString, int paramInt);
-  
-  public abstract void onStart(String paramString, boolean paramBoolean);
-  
-  public boolean onStart(bgoe parambgoe)
-  {
-    super.onStart(parambgoe);
-    onStart(parambgoe.jdField_a_of_type_JavaLangString, true);
-    return true;
+    if (paramMessage.what == 21)
+    {
+      b((bmsi)paramMessage.obj, paramMessage.arg1);
+      return true;
+    }
+    return false;
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.device.msg.data;
 
-import aavk;
-import bbko;
+import abkw;
+import bcrg;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -9,7 +9,7 @@ import com.tencent.mobileqq.data.MessageRecord;
 public class DeviceMsgHandle$3
   implements Runnable
 {
-  public DeviceMsgHandle$3(aavk paramaavk, MessageRecord paramMessageRecord) {}
+  public DeviceMsgHandle$3(abkw paramabkw, MessageRecord paramMessageRecord) {}
   
   public void run()
   {

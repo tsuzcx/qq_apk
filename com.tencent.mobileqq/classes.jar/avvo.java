@@ -1,13 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPcBaseFragment;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedLog;
+import com.tencent.qphone.base.util.QLog;
 
-public class avvo
-  implements DialogInterface.OnClickListener
+class avvo
+  implements CustomizedLog
 {
-  public avvo(MsgBackupPcBaseFragment paramMsgBackupPcBaseFragment) {}
+  avvo(avux paramavux) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onFlushLogs() {}
+  
+  public void onLog(int paramInt, String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 1, paramString2);
+  }
+  
+  public void onUploadLogs() {}
 }
 
 

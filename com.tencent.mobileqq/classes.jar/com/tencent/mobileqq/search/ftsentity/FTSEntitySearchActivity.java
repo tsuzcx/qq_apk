@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
-import bawj;
+import bccz;
 import com.tencent.mobileqq.search.activity.BaseSearchActivity;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -31,7 +31,7 @@ public class FTSEntitySearchActivity
   
   public String a()
   {
-    return bawj.b(this, this.a);
+    return bccz.b(this, this.a);
   }
   
   @Override
@@ -46,7 +46,7 @@ public class FTSEntitySearchActivity
   public void doOnStart()
   {
     super.doOnStart();
-    bgbp.a = true;
+    bhkg.a = true;
   }
   
   @Override

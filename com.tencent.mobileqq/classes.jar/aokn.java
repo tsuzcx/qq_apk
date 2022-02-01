@@ -1,210 +1,87 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.SystemClock;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ar.codeEngine.MiniScanReport.1;
-import com.tencent.mobileqq.ar.codeEngine.MiniScanReport.2;
-import com.tencent.mobileqq.ar.codeEngine.MiniScanReport.3;
-import com.tencent.mobileqq.ar.codeEngine.MiniScanReport.4;
-import com.tencent.mobileqq.ar.codeEngine.MiniScanReport.5;
-import com.tencent.mobileqq.ar.codeEngine.MiniScanReport.6;
-import com.tencent.mobileqq.ar.codeEngine.MiniScanReport.7;
-import com.tencent.mobileqq.ar.codeEngine.MiniScanReport.8;
-import com.tencent.mobileqq.ar.codeEngine.MiniScanReport.9;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.face.FaceDecodeTask;
+import com.tencent.mobileqq.app.face.FaceDrawable;
+import com.tencent.mobileqq.app.face.FaceDrawable.OnLoadingStateChangeListener;
+import com.tencent.mobileqq.app.face.FaceInfo;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
 public class aokn
+  extends FaceDrawable
 {
-  private static int jdField_a_of_type_Int;
-  private static long jdField_a_of_type_Long;
-  private static aoko jdField_a_of_type_Aoko;
-  private static int b = -1;
+  aoki jdField_a_of_type_Aoki = null;
+  NearbyAppInterface jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
   
-  public static long a(String paramString, long paramLong)
+  public aokn(AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString, byte paramByte, int paramInt3, boolean paramBoolean1, Drawable paramDrawable1, Drawable paramDrawable2, FaceDrawable.OnLoadingStateChangeListener paramOnLoadingStateChangeListener, boolean paramBoolean2)
   {
-    return BaseApplicationImpl.sApplication.getSharedPreferences("sp_mini_scan_report", 4).getLong(paramString, paramLong);
+    super(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, 100, paramBoolean1, paramDrawable1, paramDrawable2, paramOnLoadingStateChangeListener, paramBoolean2);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = ((NearbyAppInterface)paramAppInterface);
   }
   
-  public static void a()
+  public void cancel()
   {
-    jdField_a_of_type_Aoko = new aoko(null);
-    jdField_a_of_type_Aoko.jdField_a_of_type_Long = System.currentTimeMillis();
+    if ((this.jdField_a_of_type_Aoki != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.removeObserver(this.jdField_a_of_type_Aoki);
+      this.jdField_a_of_type_Aoki = null;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = null;
+    super.cancel();
   }
   
-  public static void a(int paramInt)
+  public Bitmap getBitmapFromCache()
   {
-    aoko localaoko = jdField_a_of_type_Aoko;
-    if (localaoko == null) {}
-    long l;
-    do
+    if (this.mFaceInfo == null) {
+      return null;
+    }
+    String str = FaceInfo.a(this.mFaceInfo.jdField_a_of_type_Int, this.mFaceInfo.jdField_a_of_type_JavaLangString, this.mFaceInfo.b, this.mFaceInfo.c, this.mFaceInfo.d);
+    return ((aoke)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(axoc.k)).a(str);
+  }
+  
+  public Bitmap getBitmapFromCache(boolean paramBoolean)
+  {
+    return getBitmapFromCache();
+  }
+  
+  public void onNeedDownload()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqhead.NearByFaceDrawable", 2, "onNeedDownload.faceInfo=" + this.mFaceInfo);
+    }
+    Bitmap localBitmap = getBitmapFromCache();
+    if (localBitmap != null)
     {
-      return;
-      jdField_a_of_type_Aoko = null;
-      l = System.currentTimeMillis() - localaoko.jdField_a_of_type_Long;
-    } while ((l > 600000L) || (localaoko.jdField_a_of_type_Int <= 0));
-    int k = localaoko.jdField_a_of_type_Int;
-    int m = localaoko.b;
-    int n = localaoko.c;
-    int i1 = localaoko.d / k;
-    int i;
-    if (m <= 0)
-    {
-      i = 0;
-      if (n > 0) {
-        break label124;
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqhead.NearByFaceDrawable", 2, "onNeedDownload.faceInfo=" + this.mFaceInfo + ",bitmap is already in cache...");
       }
+      onDecodeTaskCompleted(this.mFaceInfo, localBitmap);
+      return;
     }
-    label124:
-    for (int j = 0;; j = localaoko.f / n)
+    if (this.jdField_a_of_type_Aoki == null)
     {
-      ThreadManager.post(new MiniScanReport.1(i1, l, k, paramInt, m, i, n, j), 5, null, false);
-      return;
-      i = localaoko.e / m;
-      break;
+      this.jdField_a_of_type_Aoki = new aoko(this);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.addObserver(this.jdField_a_of_type_Aoki);
     }
+    ((aokc)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(axoc.d)).a(this.mFaceInfo);
   }
   
-  public static void a(int paramInt1, int paramInt2)
+  public boolean requestDecode()
   {
-    if ((jdField_a_of_type_Aoko == null) || (paramInt1 <= 1) || (paramInt1 > 15000)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqhead.NearByFaceDrawable", 2, "requestDecode.faceInfo=" + this.mFaceInfo);
     }
-    switch (paramInt2)
-    {
-    default: 
-      return;
-    case 0: 
-      localaoko = jdField_a_of_type_Aoko;
-      localaoko.jdField_a_of_type_Int += 1;
-      localaoko = jdField_a_of_type_Aoko;
-      localaoko.d += paramInt1;
-      return;
-    case 1: 
-      localaoko = jdField_a_of_type_Aoko;
-      localaoko.b += 1;
-      localaoko = jdField_a_of_type_Aoko;
-      localaoko.e += paramInt1;
-      return;
+    if (this.mFaceInfo == null) {
+      return false;
     }
-    aoko localaoko = jdField_a_of_type_Aoko;
-    localaoko.c += 1;
-    localaoko = jdField_a_of_type_Aoko;
-    localaoko.f += paramInt1;
+    FaceDecodeTask.execute(FaceDecodeTask.getFaceDecodeTask(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, this.mFaceInfo, this));
+    return true;
   }
   
-  public static void a(String paramString, long paramLong)
+  public void setApp(AppInterface paramAppInterface)
   {
-    BaseApplicationImpl.sApplication.getSharedPreferences("sp_mini_scan_report", 4).edit().putLong(paramString, paramLong).apply();
-  }
-  
-  public static void a(boolean paramBoolean, int paramInt, String paramString)
-  {
-    ThreadManager.post(new MiniScanReport.2(paramBoolean, paramInt, paramString), 5, null, false);
-  }
-  
-  public static void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    ThreadManager.post(new MiniScanReport.5(paramBoolean1, paramBoolean2), 5, null, false);
-  }
-  
-  public static boolean a()
-  {
-    if (b == -1) {
-      if (!BaseApplication.getContext().getSharedPreferences("envSwitch", 4).getBoolean("key_base_test_scan_on", false)) {
-        break label42;
-      }
-    }
-    label42:
-    for (int i = 1;; i = 0)
-    {
-      b = i;
-      if (b != 1) {
-        break;
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  public static void b()
-  {
-    if (jdField_a_of_type_Long == 0L) {
-      jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    }
-    jdField_a_of_type_Int += 1;
-  }
-  
-  public static void b(int paramInt)
-  {
-    ThreadManager.post(new MiniScanReport.6(paramInt), 5, null, false);
-  }
-  
-  public static void b(int paramInt1, int paramInt2)
-  {
-    ThreadManager.post(new MiniScanReport.3(paramInt1, paramInt2), 5, null, false);
-  }
-  
-  private static void b(HashMap<String, String> paramHashMap)
-  {
-    String str2 = Build.MODEL;
-    int i = Build.VERSION.SDK_INT;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    paramHashMap.put("report_key_device_model", str1);
-    paramHashMap.put("report_key_device_sdk", String.valueOf(i));
-  }
-  
-  public static void c()
-  {
-    if ((jdField_a_of_type_Long == 0L) || (jdField_a_of_type_Int == 0))
-    {
-      jdField_a_of_type_Long = 0L;
-      jdField_a_of_type_Int = 0;
-      return;
-    }
-    long l = (SystemClock.uptimeMillis() - jdField_a_of_type_Long) / 1000L;
-    if (l != 0L)
-    {
-      int i = (int)(jdField_a_of_type_Int / l);
-      if ((QLog.isColorLevel()) || (a())) {
-        QLog.i("MiniRecog.MiniScanReport", 1, String.format("base_test_scan frame_rate=%d", new Object[] { Integer.valueOf(i) }));
-      }
-    }
-    jdField_a_of_type_Long = 0L;
-    jdField_a_of_type_Int = 0;
-  }
-  
-  public static void c(int paramInt1, int paramInt2)
-  {
-    ThreadManager.post(new MiniScanReport.4(paramInt2, paramInt1), 5, null, false);
-  }
-  
-  public static void d(int paramInt1, int paramInt2)
-  {
-    if ((paramInt2 <= 0) || (paramInt2 > 180000)) {
-      return;
-    }
-    ThreadManager.post(new MiniScanReport.7(paramInt1, paramInt2), 5, null, false);
-  }
-  
-  public static void e(int paramInt1, int paramInt2)
-  {
-    ThreadManager.post(new MiniScanReport.8(paramInt1, paramInt2), 5, null, false);
-  }
-  
-  public static void f(int paramInt1, int paramInt2)
-  {
-    if ((paramInt2 <= 0) || (paramInt2 > 180000)) {
-      return;
-    }
-    ThreadManager.post(new MiniScanReport.9(paramInt1, paramInt2), 5, null, false);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = ((NearbyAppInterface)paramAppInterface);
   }
 }
 

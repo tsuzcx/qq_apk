@@ -1,15 +1,17 @@
 package dov.com.qq.im.ae.camera.ui.aiscene;
 
-import blpb;
+import android.widget.Toast;
+import anvx;
+import bncm;
 
 public class VideoStoryAIScenePart$15
   implements Runnable
 {
-  public VideoStoryAIScenePart$15(blpb paramblpb) {}
+  public VideoStoryAIScenePart$15(bncm parambncm) {}
   
   public void run()
   {
-    this.this$0.b();
+    Toast.makeText(bncm.e(this.this$0), anvx.a(2131715771), 0).show();
   }
 }
 

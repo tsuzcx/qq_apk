@@ -1,15 +1,6 @@
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-
-public class agpk
-  implements PopupWindow.OnDismissListener
+abstract interface agpk
 {
-  public agpk(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
-  
-  public void onDismiss()
-  {
-    StructingMsgItemBuilder.a(this.a, false);
-  }
+  public abstract void a();
 }
 
 

@@ -1,25 +1,25 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.home.Conversation;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.recommendtroop.TroopRecommendFriendFragment;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
 
 public class ajdj
+  implements ajdu
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final String b;
-  private final String c;
+  public ajdj(TroopRecommendFriendFragment paramTroopRecommendFriendFragment) {}
   
-  public ajdj(Conversation paramConversation, String paramString1, String paramString2, String paramString3)
+  public void a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    if (!(paramViewHolder instanceof ajcu)) {
+      return;
+    }
+    paramView = ((ajcu)paramViewHolder).a;
+    TroopUtils.openUserProfileCardForTroopRecommend(TroopRecommendFriendFragment.a(this.a), TroopRecommendFriendFragment.a(this.a), paramView.a, TroopRecommendFriendFragment.a(this.a), TroopRecommendFriendFragment.a(this.a));
   }
   
-  public void a()
+  public boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    ajdk localajdk = new ajdk(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a = bfur.a(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a(), 230, this.jdField_a_of_type_JavaLangString, this.b, amtj.a(2131701734), amtj.a(2131701738), localajdk, localajdk);
-    this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a.setCancelable(false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a.show();
+    return false;
   }
 }
 

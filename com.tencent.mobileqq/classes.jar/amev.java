@@ -1,13 +1,15 @@
-import android.widget.ImageView.ScaleType;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-public class amev
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WeatherPreloadWebPageConfigProcessor$Companion;", "", "()V", "CONFIG_ID", "", "TAG", "", "enablePreloadWebProcess", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class amev
 {
-  public int a;
-  public ImageView.ScaleType a = ImageView.ScaleType.CENTER_INSIDE;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
+  public final boolean a()
+  {
+    Object localObject = aqxe.a().a(638);
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "QConfigManager.getSingle…n().loadConObj(CONFIG_ID)");
+    return ((amew)localObject).a();
+  }
 }
 
 

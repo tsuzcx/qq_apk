@@ -1,21 +1,21 @@
 package com.tencent.avgame.gameroom.video;
 
-import bcef;
-import ngu;
+import bdla;
+import nnm;
 
 class AVGameControlUIImpl$7
   implements Runnable
 {
-  AVGameControlUIImpl$7(AVGameControlUIImpl paramAVGameControlUIImpl, ngu paramngu, int paramInt) {}
+  AVGameControlUIImpl$7(AVGameControlUIImpl paramAVGameControlUIImpl, nnm paramnnm, int paramInt) {}
   
   public void run()
   {
     int i = 1;
-    this.jdField_a_of_type_Ngu.a(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Nnm.a(this.jdField_a_of_type_Int);
     if (this.jdField_a_of_type_Int == 1) {}
     for (;;)
     {
-      bcef.b(null, "dc00898", "", "", "0X800B03B", "0X800B03B", i, 0, "", "", "", "");
+      bdla.b(null, "dc00898", "", "", "0X800B03B", "0X800B03B", i, 0, "", "", "", "");
       return;
       i = 2;
     }

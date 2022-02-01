@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.data.ShowExternalTroop;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.recent.msgbox.FilterMessageBoxFragment;
 
 public class allp
+  extends almi
 {
-  public int a;
-  public ShowExternalTroop a;
+  public allp(FilterMessageBoxFragment paramFilterMessageBoxFragment) {}
   
-  public allp(int paramInt, ShowExternalTroop paramShowExternalTroop)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqDataShowExternalTroop = paramShowExternalTroop;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    FilterMessageBoxFragment.a(this.a);
   }
 }
 

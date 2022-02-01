@@ -1,24 +1,26 @@
-import kotlin.Metadata;
+import android.support.annotation.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.viola.lottie.KdLottieView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/ChannelIdCheckStep;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/api/SuperMaskStep;", "()V", "doStep", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class tvk
-  extends tvc
+class tvk
+  implements OnCompositionLoadedListener
 {
-  public boolean a()
+  tvk(tvj paramtvj) {}
+  
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    if ((tvi.a.b() == 0) || (pcl.c(tvi.a.b()))) {}
-    for (boolean bool = true;; bool = false)
+    if (paramLottieComposition != null)
     {
-      if (!bool) {
-        tvg.a.a("invalidChannel");
-      }
-      return tvs.a.a(bool, (tvc)this);
+      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaLottieKdLottieView.setImageAssetsFolder(this.a.jdField_a_of_type_JavaLangString);
+      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaLottieKdLottieView.setComposition(paramLottieComposition);
+      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaLottieKdLottieView.playAnimation();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tvk
  * JD-Core Version:    0.7.0.1
  */

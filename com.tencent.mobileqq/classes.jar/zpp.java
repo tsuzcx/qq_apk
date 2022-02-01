@@ -1,16 +1,40 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 
-class zpp
-  implements bgtc
+public class zpp
 {
-  zpp(zpf paramzpf, int paramInt, String paramString) {}
-  
-  public void a(Bundle paramBundle)
+  public static int a(RecyclerView paramRecyclerView)
   {
-    paramBundle.putInt("seq", this.jdField_a_of_type_Int);
-    paramBundle.putString("processName", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Zpf.a.a(121, paramBundle);
+    int i;
+    if (paramRecyclerView != null) {
+      try
+      {
+        if ((paramRecyclerView.getLayoutManager() instanceof LinearLayoutManager)) {
+          return ((LinearLayoutManager)paramRecyclerView.getLayoutManager()).findLastCompletelyVisibleItemPosition();
+        }
+        if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
+        {
+          i = paramRecyclerView.getLayoutManager().getColumnCountForAccessibility(null, null);
+          int[] arrayOfInt = new int[i];
+          ((StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager()).findLastCompletelyVisibleItemPositions(arrayOfInt);
+          i = arrayOfInt[(i - 1)];
+          if (arrayOfInt.length != 2) {
+            return i;
+          }
+          i = Math.max(arrayOfInt[0], arrayOfInt[1]);
+          return i;
+        }
+      }
+      catch (Exception paramRecyclerView)
+      {
+        paramRecyclerView.printStackTrace();
+      }
+    } else {
+      i = -1;
+    }
+    return i;
   }
 }
 

@@ -1,18 +1,17 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qqfav.widget.LocationDetailActivity;
 
 public class bmby
+  implements View.OnClickListener
 {
-  private static boolean a;
+  public bmby(LocationDetailActivity paramLocationDetailActivity) {}
   
-  public static void a()
+  public void onClick(View paramView)
   {
-    a = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
-  }
-  
-  public static boolean a()
-  {
-    return false;
+    this.a.onBackPressed();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

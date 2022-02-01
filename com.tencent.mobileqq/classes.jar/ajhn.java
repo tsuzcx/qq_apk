@@ -1,31 +1,38 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
 
-class ajhn
-  implements TextWatcher
+public class ajhn
+  extends ajdm<ajdy>
 {
-  ajhn(ajhm paramajhm) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public ajhn(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment, Context paramContext, int paramInt)
   {
-    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-    if (this.a.b) {
-      this.a.jdField_a_of_type_Ajhw.a(paramEditable);
-    }
-    this.a.b = true;
-    if (paramEditable.length() == 0)
-    {
-      this.a.findViewById(2131368234).setVisibility(8);
-      return;
-    }
-    this.a.findViewById(2131368234).setVisibility(0);
+    super(paramContext, paramInt);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  protected ajdw a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
+  {
+    paramViewGroup = LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false);
+    paramContext = new ajfk(paramContext, paramViewGroup);
+    paramContext.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131373819));
+    paramContext.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131373803));
+    paramContext.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131373811));
+    paramContext.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131373809));
+    paramContext.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131373820));
+    paramContext.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131373818));
+    return paramContext;
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  protected void a(ajdw paramajdw, ajdy paramajdy, int paramInt)
+  {
+    TroopWithCommonFriendsFragment.a(this.a, paramajdw, paramajdy, paramInt);
+  }
 }
 
 

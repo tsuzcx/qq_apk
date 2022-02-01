@@ -1,20 +1,15 @@
-import com.tencent.oskplayer.OskPlayerCore;
-import com.tencent.oskplayer.proxy.VideoManager;
-import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayerUtil;
-
-class bjcg
-  implements IMediaPlayerUtil
+public class bjcg
 {
-  bjcg(bjce parambjce) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
   
-  public int getContentFlag(String paramString)
+  public String toString()
   {
-    return VideoManager.getInstance().probeContentFlag(paramString);
-  }
-  
-  public String getUrl(String paramString)
-  {
-    return OskPlayerCore.getInstance().getUrl(paramString);
+    return "[flag=" + this.jdField_a_of_type_Int + ", title=" + this.jdField_a_of_type_JavaLangString + ", isNew=" + this.jdField_a_of_type_Boolean + ", api=" + this.jdField_b_of_type_JavaLangString + ", id=" + this.jdField_b_of_type_Int + ", isChecked=" + this.jdField_b_of_type_Boolean + "]";
   }
 }
 

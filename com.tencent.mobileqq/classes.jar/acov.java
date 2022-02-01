@@ -1,15 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class acov
-  implements DialogInterface.OnClickListener
+public abstract interface acov
 {
-  acov(acot paramacot) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(bcre parambcre, byte[] paramArrayOfByte);
 }
 
 

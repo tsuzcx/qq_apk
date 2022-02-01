@@ -1,25 +1,17 @@
-import com.tencent.mobileqq.apollo.process.data.CmGameAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class alxt
-  implements TVK_SDKMgr.InstallListener
+  implements View.OnClickListener
 {
-  public alxt(CmGameAppInterface paramCmGameAppInterface) {}
+  public alxt(PhoneContactTabView paramPhoneContactTabView) {}
   
-  public void onInstallProgress(float paramFloat)
+  public void onClick(View paramView)
   {
-    QLog.i("cmgame_process.CmGameAppInterface", 1, "[onInstallProgress] v:" + paramFloat);
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    QLog.i("cmgame_process.CmGameAppInterface", 1, "[onInstalledFailed], i:" + paramInt);
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    QLog.i("cmgame_process.CmGameAppInterface", 1, "[onInstalledSuccessed]");
+    PhoneContactTabView.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,41 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler.Callback;
+import android.os.Message;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.ConcurrentHashMap;
 
-class asbc
-  implements View.OnClickListener
+final class asbc
+  implements Handler.Callback
 {
-  asbc(asbb paramasbb) {}
-  
-  public void onClick(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    aezf localaezf = (aezf)AIOUtils.getHolder(paramView);
-    int i;
-    ChatMessage localChatMessage;
-    if (localaezf != null)
+    if (paramMessage.what == 1)
     {
-      i = -1;
-      localChatMessage = aszt.a(localaezf.a);
-      if (!this.a.b(localChatMessage)) {
-        break label83;
-      }
-      i = 0;
-    }
-    for (;;)
-    {
-      this.a.a(paramView, localaezf, localChatMessage, i);
-      if (this.a.a != null) {
-        this.a.a.h(localaezf.a);
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label83:
-      if (this.a.a(localChatMessage)) {
-        i = 1;
+      long l = ((Long)paramMessage.obj).longValue();
+      if (asbb.a().containsKey(Long.valueOf(l)))
+      {
+        WeakReference localWeakReference = (WeakReference)asbb.a().get(Long.valueOf(l));
+        if ((localWeakReference != null) && (localWeakReference.get() != null))
+        {
+          ((asbd)localWeakReference.get()).a(paramMessage.arg1);
+          asbb.a().remove(Long.valueOf(l));
+        }
       }
     }
+    return false;
   }
 }
 

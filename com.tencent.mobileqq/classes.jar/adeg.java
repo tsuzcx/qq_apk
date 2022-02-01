@@ -1,34 +1,44 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
 
 public class adeg
-  implements Animation.AnimationListener
+  extends anyz
 {
-  public adeg(DiscussionMemberActivity paramDiscussionMemberActivity, TranslateAnimation paramTranslateAnimation1, Dialog paramDialog, TranslateAnimation paramTranslateAnimation2, int paramInt) {}
+  public adeg(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onPushSubAccountMsg(boolean paramBoolean, String paramString, bdxt parambdxt)
   {
-    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
+    if (this.a.isFinishing()) {}
+    bdxj localbdxj;
+    do
     {
-      this.jdField_a_of_type_AndroidAppDialog.show();
-      this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.setAnimation(null);
-      DiscussionMemberActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity).setVisibility(8);
-    }
-    while (paramAnimation != this.b) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.setAnimation(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.requestLayout();
+      for (;;)
+      {
+        return;
+        AccountManageActivity.a(this.a, false);
+        localbdxj = (bdxj)this.a.app.getManager(QQManagerFactory.SUB_ACCOUNT_CONTROLL);
+        if (parambdxt.a != 1) {
+          break;
+        }
+        if ((this.a.isResume()) && (bdxj.a(this.a.app, "sub.uin.all")))
+        {
+          paramString = localbdxj.a("sub.uin.all");
+          int j = paramString.size();
+          int i = 0;
+          while (i < j)
+          {
+            parambdxt = (Pair)paramString.get(i);
+            localbdxj.a(this.a.app, this.a, parambdxt, new adeh(this, localbdxj, parambdxt));
+            i += 1;
+          }
+        }
+      }
+    } while (!this.a.isResume());
+    localbdxj.a(paramString, 1, true);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

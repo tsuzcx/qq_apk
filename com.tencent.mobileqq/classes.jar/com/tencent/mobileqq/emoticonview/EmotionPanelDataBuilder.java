@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.emoticonview;
 
 import android.text.TextUtils;
-import aqzt;
-import arad;
-import aray;
-import arba;
-import avsq;
+import ased;
+import asen;
+import asfi;
+import asfk;
+import awyr;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.data.EmoticonPackage;
@@ -49,7 +50,7 @@ public class EmotionPanelDataBuilder
       QLog.d("EmotionPanelDataBuilder", 2, "getEmotionPanelData panelType = " + paramInt1);
     }
     ArrayList localArrayList = new ArrayList();
-    Object localObject1 = (avsq)paramQQAppInterface.getManager(14);
+    Object localObject1 = (awyr)paramQQAppInterface.getManager(QQManagerFactory.EMOTICON_MANAGER);
     switch (paramInt1)
     {
     }
@@ -61,7 +62,7 @@ public class EmotionPanelDataBuilder
       return SystemAndEmojiEmoticonInfo.getEmoticonList(paramQQAppInterface, paramInt3);
       localArrayList.add(new EmotionPanelData());
       return localArrayList;
-      paramQQAppInterface = ((arba)paramQQAppInterface.getManager(149)).b();
+      paramQQAppInterface = ((asfk)paramQQAppInterface.getManager(QQManagerFactory.FAVROAMING_DB_MANAGER)).b();
       paramEmoticonPackage = new EmoticonInfo();
       paramEmoticonPackage.action = "favEdit";
       localArrayList.add(paramEmoticonPackage);
@@ -73,14 +74,14 @@ public class EmotionPanelDataBuilder
       }
       if (paramQQAppInterface != null)
       {
-        if (paramQQAppInterface.size() > aray.a)
+        if (paramQQAppInterface.size() > asfi.a)
         {
-          localArrayList.addAll(new ArrayList(paramQQAppInterface.subList(0, aray.a)));
+          localArrayList.addAll(new ArrayList(paramQQAppInterface.subList(0, asfi.a)));
           return localArrayList;
         }
         localArrayList.addAll(paramQQAppInterface);
         return localArrayList;
-        paramQQAppInterface = ((arad)paramQQAppInterface.getManager(333)).b();
+        paramQQAppInterface = ((asen)paramQQAppInterface.getManager(QQManagerFactory.CAMERA_EMOTION_DB_MANAGER)).b();
         paramEmoticonPackage = new CameraEmoticonInfo();
         paramEmoticonPackage.action = "cameraEdit";
         localArrayList.add(paramEmoticonPackage);
@@ -89,20 +90,20 @@ public class EmotionPanelDataBuilder
         localArrayList.add(paramEmoticonPackage);
         if (paramQQAppInterface != null)
         {
-          if (paramQQAppInterface.size() > aqzt.a)
+          if (paramQQAppInterface.size() > ased.a)
           {
-            localArrayList.addAll(new ArrayList(paramQQAppInterface.subList(0, aqzt.a)));
+            localArrayList.addAll(new ArrayList(paramQQAppInterface.subList(0, ased.a)));
             return localArrayList;
           }
           localArrayList.addAll(paramQQAppInterface);
           return localArrayList;
           paramQQAppInterface = new PicEmoticonInfo(paramQQAppInterface.getCurrentAccountUin());
           paramQQAppInterface.action = "push";
-          paramEmoticonPackage = ((avsq)localObject1).b(0);
+          paramEmoticonPackage = ((awyr)localObject1).b(0);
           localArrayList.add(paramQQAppInterface);
           localArrayList.addAll(paramEmoticonPackage);
           return localArrayList;
-          paramQQAppInterface = ((avsq)localObject1).a(true, paramInt3, paramBoolean);
+          paramQQAppInterface = ((awyr)localObject1).a(true, paramInt3, paramBoolean);
           if (paramQQAppInterface != null)
           {
             localArrayList.addAll(paramQQAppInterface);
@@ -110,7 +111,7 @@ public class EmotionPanelDataBuilder
             if ((paramEmoticonPackage == null) || (TextUtils.isEmpty(paramEmoticonPackage.epId))) {
               return null;
             }
-            localObject1 = ((avsq)localObject1).a(paramEmoticonPackage.epId, true);
+            localObject1 = ((awyr)localObject1).a(paramEmoticonPackage.epId, true);
             if (paramEmoticonPackage.jobType == 4) {}
             for (paramInt1 = 1;; paramInt1 = 0)
             {
@@ -154,7 +155,7 @@ public class EmotionPanelDataBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionPanelDataBuilder
  * JD-Core Version:    0.7.0.1
  */

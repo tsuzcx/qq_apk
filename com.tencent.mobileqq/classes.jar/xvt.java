@@ -1,24 +1,28 @@
-public abstract interface xvt
+import com.tribe.async.async.JobContext;
+import com.tribe.async.parallel.ParallelJobSegment;
+
+class xvt
+  extends ParallelJobSegment<String, xvp>
 {
-  public abstract void a(String paramString1, String paramString2);
+  public int a;
   
-  public abstract void a(String paramString1, String paramString2, Throwable paramThrowable);
+  public xvt(xvn paramxvn, int paramInt)
+  {
+    super("RequestLikeListSegment");
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Int = paramInt;
+  }
   
-  public abstract boolean a(int paramInt);
-  
-  public abstract void b(String paramString1, String paramString2);
-  
-  public abstract void b(String paramString1, String paramString2, Throwable paramThrowable);
-  
-  public abstract void c(String paramString1, String paramString2);
-  
-  public abstract void c(String paramString1, String paramString2, Throwable paramThrowable);
-  
-  public abstract void d(String paramString1, String paramString2);
-  
-  public abstract void d(String paramString1, String paramString2, Throwable paramThrowable);
-  
-  public abstract void e(String paramString1, String paramString2);
+  protected void a(JobContext paramJobContext, String paramString)
+  {
+    xwh localxwh = new xwh();
+    localxwh.jdField_a_of_type_JavaLangString = paramString;
+    localxwh.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Int != -1) {
+      localxwh.c = this.jdField_a_of_type_Int;
+    }
+    wfi.a().a(localxwh, new xvu(this, paramJobContext, paramString));
+  }
 }
 
 

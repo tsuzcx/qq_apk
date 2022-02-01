@@ -1,20 +1,22 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import java.util.ArrayList;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentPGCShortContentBig;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 
 class qpp
-  implements bjrf
+  extends ComponentPGCShortContentBig
 {
-  qpp(qpk paramqpk) {}
-  
-  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
+  qpp(qph paramqph, Context paramContext, ArticleInfo paramArticleInfo)
   {
-    if (this.a.jdField_a_of_type_Pwe != null)
-    {
-      qpk.a(this.a, this.a.jdField_a_of_type_Pwe, paramInt, paramArrayList, paramObject);
-      return;
+    super(paramContext);
+  }
+  
+  public int a()
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a != null)) {
+      return 11;
     }
-    qpk.a(this.a, (pvc)this.a.jdField_a_of_type_JavaLangObject, paramInt, paramArrayList, paramObject);
+    return super.a();
   }
 }
 

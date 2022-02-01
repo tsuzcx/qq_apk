@@ -3,13 +3,15 @@ package com.tencent.biz.qrcode.ipc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import yxt;
+import com.tencent.biz.qrcode.activity.ScannerResult;
+import zmw;
 
 public class ScannerParams
   implements Parcelable
 {
-  public static final Parcelable.Creator<ScannerParams> CREATOR = new yxt();
+  public static final Parcelable.Creator<ScannerParams> CREATOR = new zmw();
   public int a;
+  public ScannerResult a;
   public String a;
   public boolean a;
   public String b;
@@ -18,6 +20,7 @@ public class ScannerParams
   public boolean c;
   public String d;
   public boolean d;
+  public String e;
   public boolean e;
   public boolean f;
   public boolean g;
@@ -33,13 +36,13 @@ public class ScannerParams
       bool1 = true;
       this.jdField_a_of_type_Boolean = bool1;
       if (paramParcel.readByte() == 0) {
-        break label178;
+        break label202;
       }
       bool1 = true;
       label29:
       this.jdField_b_of_type_Boolean = bool1;
       if (paramParcel.readByte() == 0) {
-        break label183;
+        break label207;
       }
       bool1 = true;
       label43:
@@ -47,53 +50,55 @@ public class ScannerParams
       this.jdField_a_of_type_JavaLangString = paramParcel.readString();
       this.jdField_b_of_type_JavaLangString = paramParcel.readString();
       if (paramParcel.readByte() == 0) {
-        break label188;
+        break label212;
       }
       bool1 = true;
       label73:
       this.jdField_d_of_type_Boolean = bool1;
       this.jdField_c_of_type_JavaLangString = paramParcel.readString();
       if (paramParcel.readByte() == 0) {
-        break label193;
+        break label217;
       }
       bool1 = true;
       label95:
-      this.e = bool1;
+      this.jdField_e_of_type_Boolean = bool1;
       if (paramParcel.readByte() == 0) {
-        break label198;
+        break label222;
       }
       bool1 = true;
       label109:
       this.f = bool1;
       if (paramParcel.readByte() == 0) {
-        break label203;
+        break label227;
       }
       bool1 = true;
       label123:
       this.g = bool1;
       if (paramParcel.readByte() == 0) {
-        break label208;
+        break label232;
       }
       bool1 = true;
       label137:
       this.h = bool1;
       if (paramParcel.readByte() == 0) {
-        break label213;
+        break label237;
       }
     }
-    label178:
-    label183:
-    label188:
-    label193:
-    label198:
-    label203:
-    label208:
-    label213:
+    label202:
+    label207:
+    label212:
+    label217:
+    label222:
+    label227:
+    label232:
+    label237:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.i = bool1;
-      this.jdField_a_of_type_Int = paramParcel.readByte();
+      this.jdField_a_of_type_Int = paramParcel.readInt();
       this.jdField_d_of_type_JavaLangString = paramParcel.readString();
+      this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerResult = ((ScannerResult)paramParcel.readParcelable(ScannerResult.class.getClassLoader()));
+      this.jdField_e_of_type_JavaLangString = paramParcel.readString();
       return;
       bool1 = false;
       break;
@@ -129,102 +134,106 @@ public class ScannerParams
     localStringBuilder.append("  subFrom: ").append(this.jdField_b_of_type_JavaLangString);
     localStringBuilder.append("  isDecodingFile: ").append(this.jdField_d_of_type_Boolean);
     localStringBuilder.append("  toDecodeFilePath: ").append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append("  fromQRDecode: ").append(this.e);
+    localStringBuilder.append("  fromQRDecode: ").append(this.jdField_e_of_type_Boolean);
     localStringBuilder.append("  hasCamera: ").append(this.g);
     localStringBuilder.append("  fromQLink: ").append(this.h);
     localStringBuilder.append("  isCameraReadyToUse: ").append(this.i);
     localStringBuilder.append("  detectType: ").append(this.jdField_a_of_type_Int);
     localStringBuilder.append("  preResult: ").append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append("  preScanResult: ").append(this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerResult);
+    localStringBuilder.append("  qrPhotoPath: ").append(this.jdField_e_of_type_JavaLangString);
     localStringBuilder.append("} ");
     return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    int j = 1;
+    int k = 1;
     if (this.jdField_a_of_type_Boolean)
     {
-      paramInt = 1;
-      paramParcel.writeByte((byte)paramInt);
+      j = 1;
+      paramParcel.writeByte((byte)j);
       if (!this.jdField_b_of_type_Boolean) {
-        break label184;
+        break label202;
       }
-      paramInt = 1;
-      label26:
-      paramParcel.writeByte((byte)paramInt);
+      j = 1;
+      label27:
+      paramParcel.writeByte((byte)j);
       if (!this.jdField_c_of_type_Boolean) {
-        break label189;
+        break label207;
       }
-      paramInt = 1;
-      label41:
-      paramParcel.writeByte((byte)paramInt);
+      j = 1;
+      label42:
+      paramParcel.writeByte((byte)j);
       paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
       paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
       if (!this.jdField_d_of_type_Boolean) {
-        break label194;
+        break label212;
       }
-      paramInt = 1;
-      label72:
-      paramParcel.writeByte((byte)paramInt);
+      j = 1;
+      label73:
+      paramParcel.writeByte((byte)j);
       paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-      if (!this.e) {
-        break label199;
+      if (!this.jdField_e_of_type_Boolean) {
+        break label217;
       }
-      paramInt = 1;
-      label95:
-      paramParcel.writeByte((byte)paramInt);
+      j = 1;
+      label96:
+      paramParcel.writeByte((byte)j);
       if (!this.f) {
-        break label204;
+        break label222;
       }
-      paramInt = 1;
-      label110:
-      paramParcel.writeByte((byte)paramInt);
+      j = 1;
+      label111:
+      paramParcel.writeByte((byte)j);
       if (!this.g) {
-        break label209;
+        break label227;
       }
-      paramInt = 1;
-      label125:
-      paramParcel.writeByte((byte)paramInt);
+      j = 1;
+      label126:
+      paramParcel.writeByte((byte)j);
       if (!this.h) {
-        break label214;
+        break label232;
       }
-      paramInt = 1;
-      label140:
-      paramParcel.writeByte((byte)paramInt);
+      j = 1;
+      label141:
+      paramParcel.writeByte((byte)j);
       if (!this.i) {
-        break label219;
+        break label237;
       }
     }
-    label184:
-    label189:
-    label194:
-    label199:
-    label204:
-    label209:
-    label214:
-    label219:
-    for (paramInt = j;; paramInt = 0)
+    label202:
+    label207:
+    label212:
+    label217:
+    label222:
+    label227:
+    label232:
+    label237:
+    for (int j = k;; j = 0)
     {
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeByte((byte)this.jdField_a_of_type_Int);
+      paramParcel.writeByte((byte)j);
+      paramParcel.writeInt(this.jdField_a_of_type_Int);
       paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
+      paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerResult, paramInt);
+      paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
       return;
-      paramInt = 0;
+      j = 0;
       break;
-      paramInt = 0;
-      break label26;
-      paramInt = 0;
-      break label41;
-      paramInt = 0;
-      break label72;
-      paramInt = 0;
-      break label95;
-      paramInt = 0;
-      break label110;
-      paramInt = 0;
-      break label125;
-      paramInt = 0;
-      break label140;
+      j = 0;
+      break label27;
+      j = 0;
+      break label42;
+      j = 0;
+      break label73;
+      j = 0;
+      break label96;
+      j = 0;
+      break label111;
+      j = 0;
+      break label126;
+      j = 0;
+      break label141;
     }
   }
 }

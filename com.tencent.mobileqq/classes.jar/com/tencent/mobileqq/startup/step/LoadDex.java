@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.startup.step;
 
-import aaff;
-import abvg;
+import aaur;
+import acln;
 import android.os.Build.VERSION;
-import auci;
-import avnf;
-import bccs;
-import bccu;
-import bgng;
-import bhyw;
+import avic;
+import awtk;
+import bdjn;
+import bdjp;
+import bhxq;
+import bjjy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.commonsdk.util.notification.NotificationReportUtil;
@@ -33,7 +33,7 @@ public class LoadDex
       for (NotificationReportControllerImpl localNotificationReportControllerImpl = new NotificationReportControllerImpl();; localNotificationReportControllerImpl = (NotificationReportControllerImpl)Class.forName("com.tencent.util.notification.NotificationReportControllerImpl").newInstance())
       {
         NotificationReportUtil.setReport(localNotificationReportControllerImpl);
-        avnf.a(localNotificationReportControllerImpl);
+        awtk.a(localNotificationReportControllerImpl);
         return;
       }
       return;
@@ -68,7 +68,7 @@ public class LoadDex
   protected boolean doStep()
   {
     if ("Success".equals(BaseApplicationImpl.sInjectResult)) {
-      abvg.a(BaseApplicationImpl.sApplication);
+      acln.a(BaseApplicationImpl.sApplication);
     }
     boolean bool1;
     label83:
@@ -99,8 +99,8 @@ public class LoadDex
     } while (!"Success".equals(BaseApplicationImpl.sInjectResult));
     try
     {
-      abvg.a(BaseApplicationImpl.sApplication);
-      bgng.a().a(BaseApplicationImpl.sApplication);
+      acln.a(BaseApplicationImpl.sApplication);
+      bhxq.a().a(BaseApplicationImpl.sApplication);
       if (BaseApplicationImpl.sProcessId == 1)
       {
         eipc.EIPCContentProvider.sIsDexInjectFinish = true;
@@ -108,13 +108,13 @@ public class LoadDex
       }
       if (BaseApplicationImpl.sProcessId != 4)
       {
-        bccs.a();
-        bccu.a();
+        bdjn.a();
+        bdjp.a();
       }
       if (2 != BaseApplicationImpl.sProcessId)
       {
         if ((7 == BaseApplicationImpl.sProcessId) || (11 == BaseApplicationImpl.sProcessId)) {
-          ThreadManager.getSubThreadHandler().post(bccs.b(14, this.mDirector, null));
+          ThreadManager.getSubThreadHandler().post(bdjn.b(14, this.mDirector, null));
         }
       }
       else
@@ -137,31 +137,31 @@ public class LoadDex
         }
         ThreadManager.getSubThreadHandler().postDelayed(new LoadDex.6(this), 3000L);
         if ((BaseApplicationImpl.processName != null) && (Build.VERSION.SDK_INT >= 21) && (BaseApplicationImpl.processName.endsWith("TMAssistantDownloadSDKService"))) {
-          DownloadTaskNotifier.get().addListener(bhyw.a());
+          DownloadTaskNotifier.get().addListener(bjjy.a());
         }
         if (Build.VERSION.SDK_INT < 21)
         {
-          bool1 = bccs.b(6, this.mDirector, null).step();
+          bool1 = bdjn.b(6, this.mDirector, null).step();
           if (QLog.isColorLevel()) {
             QLog.d("LoadDex", 2, new Object[] { "try init LoadModule after LoadDex Finish, result=", Boolean.valueOf(bool1) });
           }
         }
         if (BaseApplicationImpl.sProcessId == 1) {
-          bccs.b(8, this.mDirector, null).step();
+          bdjn.b(8, this.mDirector, null).step();
         }
         ThreadManager.getSubThreadHandler().postDelayed(new LoadDex.8(this), 5000L);
         if (BaseApplicationImpl.sProcessId != 1) {
           UnifiedMonitor.d();
         }
-        auci.a();
-        aaff.a();
+        avic.a();
+        aaur.a();
         b();
         a();
         return true;
         if (1 == BaseApplicationImpl.sProcessId) {
           break;
         }
-        ThreadManager.getSubThreadHandler().postDelayed(bccs.b(14, this.mDirector, null), 3000L);
+        ThreadManager.getSubThreadHandler().postDelayed(bdjn.b(14, this.mDirector, null), 3000L);
         break;
         label486:
         ThreadManager.getSubThreadHandler().postDelayed(new LoadDex.2(this), 5000L);

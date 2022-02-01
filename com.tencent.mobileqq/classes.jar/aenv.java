@@ -1,18 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
 
 public class aenv
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public aenv(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aenv(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.setText("");
-    EventCollector.getInstance().onViewClicked(paramView);
+    ProfileLabelEditorActivity.a(this.a);
   }
 }
 

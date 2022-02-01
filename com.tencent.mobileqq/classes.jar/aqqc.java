@@ -1,36 +1,38 @@
-import android.annotation.TargetApi;
-import android.widget.LinearLayout;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.data.ArkBabyqCardInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.colornote.settings.HistoryFormItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class aqqc
-  implements ArkViewImplement.LoadCallback
+class aqqc
+  implements View.OnClickListener
 {
-  public aqqc(ArkBabyqCardInfo paramArkBabyqCardInfo, aowb paramaowb, aovx paramaovx, afvh paramafvh, int paramInt) {}
+  aqqc(aqqb paramaqqb, HistoryFormItem paramHistoryFormItem) {}
   
-  @TargetApi(14)
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    onLoadState(paramInt1);
-  }
-  
-  @TargetApi(14)
-  public void onLoadState(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkBabyqCardInfo", 2, "attachArkView onLoadFinish ArkBabyqCardInfo state=" + paramInt);
-    }
-    if (paramInt == 1)
-    {
-      this.jdField_a_of_type_Aowb.b.setVisibility(0);
-      this.jdField_a_of_type_Aovx.a(this.jdField_a_of_type_Aowb, this.jdField_a_of_type_ComTencentMobileqqDataArkBabyqCardInfo);
+    ColorNote localColorNote = (ColorNote)aqqb.a(this.jdField_a_of_type_Aqqb).get(this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a());
+    Bundle localBundle = new Bundle();
+    if (aqqb.a(this.jdField_a_of_type_Aqqb) == 17104896) {
+      if ((localColorNote.getServiceType() == 16908288) || (localColorNote.getServiceType() == 16908290)) {
+        localBundle.putBoolean("isFromFavourite", true);
+      }
     }
     for (;;)
     {
-      this.jdField_a_of_type_Aovx.a(this.jdField_a_of_type_Afvh, this.jdField_a_of_type_Int);
+      aqnr.a(paramView.getContext(), localColorNote, localBundle);
+      if (QLog.isColorLevel()) {
+        QLog.d("BaseSectionAdapter", 0, "getAllViews#onClick: index: " + this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a());
+      }
+      bdla.b(null, "dc00898", "", "", "0X800AA7F", "0X800AA7F", aqoq.b(aqqb.a(this.jdField_a_of_type_Aqqb)), 0, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a() + 1), "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      this.jdField_a_of_type_Aowb.b.setVisibility(8);
+      if (aqqb.a(this.jdField_a_of_type_Aqqb) == 16908289) {
+        localBundle.putBoolean("history_note", true);
+      }
     }
   }
 }

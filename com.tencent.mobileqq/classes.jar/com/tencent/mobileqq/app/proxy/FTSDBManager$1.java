@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app.proxy;
 
-import anux;
-import anvf;
-import bgbo;
+import aoxx;
+import aoyf;
+import bhkf;
 import com.tencent.mobileqq.app.ThreadRegulator;
 
 public class FTSDBManager$1
   implements Runnable
 {
-  public FTSDBManager$1(anux paramanux) {}
+  public FTSDBManager$1(aoxx paramaoxx) {}
   
   public void run()
   {
@@ -20,21 +20,21 @@ public class FTSDBManager$1
         do
         {
           return;
-          if (bgbo.g(anux.a(this.this$0)))
+          if (bhkf.g(aoxx.a(this.this$0)))
           {
-            anux.a(this.this$0);
+            aoxx.a(this.this$0);
             return;
           }
-        } while ((!bgbo.h(anux.a(this.this$0))) || (this.this$0.b));
-        anux.a(this.this$0);
+        } while ((!bhkf.h(aoxx.a(this.this$0))) || (this.this$0.b));
+        aoxx.a(this.this$0);
         ThreadRegulator.a().b();
-      } while (anux.a(this.this$0));
-      if ((anux.b(this.this$0) > 10) || (anux.c(this.this$0) == 1))
+      } while (aoxx.a(this.this$0));
+      if ((aoxx.b(this.this$0) > 10) || (aoxx.c(this.this$0) == 1))
       {
-        anux.a(this.this$0);
+        aoxx.a(this.this$0);
         return;
       }
-    } while (anux.c(this.this$0) != -1);
+    } while (aoxx.c(this.this$0) != -1);
     this.this$0.a.postDelayed(this, 5000L);
   }
 }

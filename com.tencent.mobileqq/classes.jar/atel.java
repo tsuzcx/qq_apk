@@ -1,48 +1,31 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
 
 public class atel
-  extends ashp
+  implements View.OnLongClickListener
 {
-  asbj jdField_a_of_type_Asbj = null;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  public atel(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public atel(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  public boolean onLongClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    b();
-  }
-  
-  public int a()
-  {
-    return 4;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Asbj != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().deleteObserver(this.jdField_a_of_type_Asbj);
+    if ((paramView == null) || (QfileBaseRecentFileTabView.a(this.a))) {
+      return false;
     }
-  }
-  
-  public boolean a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().c(this.jdField_a_of_type_JavaLangString, this.b);
+    paramView.setSelected(true);
+    bhjq localbhjq = new bhjq();
+    localbhjq.a(2131367216, paramView.getContext().getString(2131692550));
+    localbhjq.a(2131365469, paramView.getContext().getString(2131691448));
+    ApolloUtil.a(paramView, QfileBaseRecentFileTabView.n(this.a), localbhjq);
+    this.a.a = bhcw.a(paramView, localbhjq, new atem(this, paramView), new ateo(this, paramView));
     return true;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Asbj = new atem(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().addObserver(this.jdField_a_of_type_Asbj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atel
  * JD-Core Version:    0.7.0.1
  */

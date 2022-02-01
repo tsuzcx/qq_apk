@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.shortvideo.redbag;
 
-import bbwb;
+import bdcw;
 
 public class RedBagVideoManager$7
   implements Runnable
 {
-  public RedBagVideoManager$7(bbwb parambbwb) {}
+  public RedBagVideoManager$7(bdcw parambdcw) {}
   
   public void run()
   {
-    bbwb.b(this.this$0);
+    bdcw.b(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager.7
  * JD-Core Version:    0.7.0.1
  */

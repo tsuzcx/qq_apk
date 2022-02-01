@@ -1,30 +1,16 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class akja
-  implements View.OnClickListener
+public class akja
+  implements bkzq
 {
-  akja(akho paramakho) {}
+  public akja(SettingActivity2 paramSettingActivity2, bkzi parambkzi) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    Intent localIntent = new Intent(akho.a(this.a), GuideBindPhoneActivity.class);
-    localIntent.putExtra("fromKeyForContactBind", 4);
-    akho.a(this.a).startActivity(localIntent);
-    akho.a(this.a).getSharedPreferences("contact_bind_info" + akho.a(this.a).app.getAccount(), 0).edit().putBoolean("key_show_contact_banner", false).commit();
-    this.a.a(18, 0);
-    akho.a(this.a).removeMessages(11);
-    bcef.a(akho.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 13, 0, "", "", "", "");
-    bcef.b(akho.a(this.a).app, "CliOper", "", "", "0X80053D9", "0X80053D9", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Bkzi.cancel();
+    bhdj.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2, 230, anvx.a(2131713311), anvx.a(2131713308), anvx.a(2131713309), anvx.a(2131713307), new akjb(this), new akjc(this)).show();
   }
 }
 

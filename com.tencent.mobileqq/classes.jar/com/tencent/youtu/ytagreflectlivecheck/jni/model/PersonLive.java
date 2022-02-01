@@ -1,14 +1,17 @@
 package com.tencent.youtu.ytagreflectlivecheck.jni.model;
 
+import com.tencent.youtu.ytagreflectlivecheck.requester.LiveStyleRequester.SeleceData;
 import java.util.ArrayList;
 
 public class PersonLive
 {
   private String app_id = "";
+  public String client_version;
   private String color_data;
   private ArrayList<FaceFrame> frames;
   private int platform;
   private ReflectColorData reflect_data;
+  public LiveStyleRequester.SeleceData select_data;
   
   public String getColor_data()
   {

@@ -1,15 +1,43 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.device.bind.DevicePluginDownloadActivity;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.os.Build.VERSION;
 
 public class aapv
-  implements DialogInterface.OnClickListener
+  implements SensorEventListener
 {
-  public aapv(DevicePluginDownloadActivity paramDevicePluginDownloadActivity) {}
+  protected byte a;
+  protected String a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aapv(aapu paramaapu, byte paramByte, String paramString)
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Byte = paramByte;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    switch (this.jdField_a_of_type_Byte)
+    {
+    }
+    do
+    {
+      return;
+      float[] arrayOfFloat = new float[4];
+      if (Build.VERSION.SDK_INT >= 9)
+      {
+        SensorManager localSensorManager = this.jdField_a_of_type_Aapu.a;
+        SensorManager.getQuaternionFromVector(arrayOfFloat, paramSensorEvent.values);
+        aapu.a(this.jdField_a_of_type_Aapu)[0] = arrayOfFloat[1];
+        aapu.a(this.jdField_a_of_type_Aapu)[1] = arrayOfFloat[2];
+        aapu.a(this.jdField_a_of_type_Aapu)[2] = arrayOfFloat[3];
+        aapu.a(this.jdField_a_of_type_Aapu)[3] = arrayOfFloat[0];
+      }
+    } while ((!aapu.a()) || (!aapu.b()));
+    this.jdField_a_of_type_Aapu.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(aapu.a(this.jdField_a_of_type_Aapu)[0]), String.valueOf(aapu.a(this.jdField_a_of_type_Aapu)[1]), String.valueOf(aapu.a(this.jdField_a_of_type_Aapu)[2]), String.valueOf(aapu.a(this.jdField_a_of_type_Aapu)[3]) });
   }
 }
 

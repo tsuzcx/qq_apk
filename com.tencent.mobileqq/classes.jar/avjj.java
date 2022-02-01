@@ -1,29 +1,80 @@
-import android.view.ViewGroup;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.loginwelcome.LoginwelcomeHelper.1.1;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.util.SparseArray;
+import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
 
 public class avjj
-  implements avjg
+  implements BusinessObserver
 {
-  avjj(avji paramavji) {}
+  private int jdField_a_of_type_Int;
+  private final SparseArray<WeakReference<avjl>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   
-  public void a(avjd paramavjd)
+  private void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, "onShowCommonGuideWeb");
+    int j = 0;
+    int i;
+    if (paramBundle != null) {
+      i = paramBundle.getInt("req_id");
     }
-    avji.a(this.a, paramavjd);
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
+      {
+        localObject1 = (WeakReference)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+        if (localObject1 == null) {
+          break label149;
+        }
+        localObject2 = (avjl)((WeakReference)localObject1).get();
+        localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          this.jdField_a_of_type_AndroidUtilSparseArray.delete(i);
+          return;
+        }
+        i = paramBundle.getInt("result");
+        j = paramBundle.getInt("jump_result");
+        ??? = paramBundle.getString("jump_url");
+        localObject2 = paramBundle.getString("ext_info");
+        paramBundle = (Bundle)???;
+        if (localObject1 == null) {
+          break label148;
+        }
+        ((avjl)localObject1).a(paramBoolean, i, j, paramBundle, (String)localObject2);
+        return;
+      }
+      Object localObject1 = null;
+      Object localObject2 = null;
+      paramBundle = null;
+      i = 0;
+      continue;
+      label148:
+      return;
+      label149:
+      localObject1 = null;
+    }
   }
   
-  public void a(URLDrawable paramURLDrawable)
+  int a(avjl paramavjl)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, "onShowContactsGuideLayer");
+    synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
+    {
+      SparseArray localSparseArray2 = this.jdField_a_of_type_AndroidUtilSparseArray;
+      int i = this.jdField_a_of_type_Int + 1;
+      this.jdField_a_of_type_Int = i;
+      localSparseArray2.append(i, new WeakReference(paramavjl));
+      i = this.jdField_a_of_type_Int;
+      return i;
     }
-    if (avji.a(this.a) != null) {
-      avji.a(this.a).post(new LoginwelcomeHelper.1.1(this, paramURLDrawable));
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
     }
+    a(paramBoolean, paramBundle);
   }
 }
 

@@ -1,22 +1,16 @@
-import com.tencent.ark.ark.VariantWrapper;
+import android.graphics.Bitmap;
 
-class aoqb
-  implements afwg
+public class aoqb
 {
-  aoqb(aoqa paramaoqa, long paramLong) {}
-  
-  public void a()
-  {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Aoqa.a(this.jdField_a_of_type_Long);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
-    }
-  }
-  
-  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
-  {
-    this.jdField_a_of_type_Aoqa.a(this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
-  }
+  public int a;
+  public long a;
+  public Bitmap a;
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public String c;
+  public String d;
 }
 
 

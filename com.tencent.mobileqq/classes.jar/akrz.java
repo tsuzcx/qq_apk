@@ -1,22 +1,17 @@
-import android.content.Context;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.richmedia.FlowActivity;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
 
-public abstract class akrz
+public class akrz
+  implements MediaPlayer.OnCompletionListener
 {
-  FlowActivity a;
+  public akrz(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  public akrz(FlowActivity paramFlowActivity)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    this.a = paramFlowActivity;
+    RedPacketKSongFragment.a(this.a, false);
+    paramMediaPlayer.release();
   }
-  
-  public Context a()
-  {
-    return this.a;
-  }
-  
-  public abstract void a(ViewGroup paramViewGroup);
 }
 
 

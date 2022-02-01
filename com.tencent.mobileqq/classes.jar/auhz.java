@@ -1,10 +1,15 @@
-import com.tencent.mobileqq.hotpic.HotVideoData;
+import android.os.Bundle;
 
-public abstract interface auhz
+public class auhz
 {
-  public abstract void a(HotVideoData paramHotVideoData);
+  public int a;
+  public long a;
+  public Bundle a;
+  public String a;
+  public boolean a;
+  public String b;
   
-  public abstract void b(HotVideoData paramHotVideoData);
+  auhz(auht paramauht) {}
 }
 
 

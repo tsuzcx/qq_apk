@@ -1,23 +1,25 @@
-import android.annotation.TargetApi;
-import android.hardware.Camera;
-import android.hardware.Camera.Face;
-import android.hardware.Camera.FaceDetectionListener;
-import android.os.Handler;
-import com.tencent.mobileqq.camera.CameraManagerImpl.FaceDetectionCallbackForward.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import mqq.app.QQPermissionCallback;
 
-@TargetApi(14)
-public class apjn
-  implements Camera.FaceDetectionListener
+class apjn
+  implements QQPermissionCallback
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final apjc jdField_a_of_type_Apjc;
-  private final apjg jdField_a_of_type_Apjg;
+  apjn(apji paramapji) {}
   
-  public void onFaceDetection(Camera.Face[] paramArrayOfFace, Camera paramCamera)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    QLog.d("Q.camera.CameraManagerImpl", 2, "[onFaceDetection] faces = " + paramArrayOfFace + ", length = " + paramArrayOfFace.length);
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.FaceDetectionCallbackForward.1(this, paramArrayOfFace));
+    paramArrayOfString = new apjq();
+    paramArrayOfString.a = 2;
+    apki.a(this.a.a.recognitions, apji.a(this.a), paramArrayOfString);
+    if (apji.a(this.a) != null) {
+      apji.a(this.a).a(0, apji.a(this.a));
+    }
+    apji.a(this.a, null);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.grant();
   }
 }
 

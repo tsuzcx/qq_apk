@@ -1,11 +1,12 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import java.util.List;
 
-public abstract interface aiiv
+public class aiiv
 {
-  public abstract void a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt);
-  
-  public abstract boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt);
+  public int a = 0;
+  public String a;
+  public List<? extends aihq> a;
+  public String b;
+  public List<? extends aihq> b;
 }
 
 

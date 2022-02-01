@@ -1,30 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.liveroom.LiveRoomProxyActivity;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyVideoChannelFragment;
 
-class qbe
-  implements View.OnClickListener
+public class qbe
+  implements uhh
 {
-  qbe(qbb paramqbb, pvc parampvc, slt paramslt) {}
+  public qbe(ReadInJoyVideoChannelFragment paramReadInJoyVideoChannelFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if ((this.jdField_a_of_type_Pvc.a() != null) && (this.jdField_a_of_type_Pvc.a().mSocialFeedInfo != null) && (this.jdField_a_of_type_Pvc.a().mSocialFeedInfo.a != null)) {
-      LiveRoomProxyActivity.open(this.jdField_a_of_type_Slt.a(), this.jdField_a_of_type_Pvc.a().mSocialFeedInfo.a.c, "kandian biu feed click");
-    }
-    for (;;)
+    spg localspg = this.a.a();
+    if ((localspg != null) && (localspg.a() != null))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      pet localpet = this.jdField_a_of_type_Slt.a().a();
-      if (localpet != null) {
-        localpet.a(paramView, this.jdField_a_of_type_Pvc.a(), 2);
+      if (localspg.a().a()) {
+        localspg.a().j();
       }
+      localspg.a().d();
     }
   }
+  
+  public void b() {}
 }
 
 

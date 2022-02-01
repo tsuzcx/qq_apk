@@ -1,43 +1,70 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.util.Iterator;
-import java.util.List;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
 
-class xhb
-  implements vqp<weg, wgd>
+public class xhb
+  implements xjd
 {
-  xhb(xha paramxha, JobContext paramJobContext, String paramString) {}
+  public xhb(StoryPlayerGroupHolder paramStoryPlayerGroupHolder) {}
   
-  public void a(@NonNull weg paramweg, @Nullable wgd paramwgd, @NonNull ErrorMessage paramErrorMessage)
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    ykq.a(this.a.jdField_a_of_type_JavaLangString, "onPageSelected : position = %d", Integer.valueOf(paramInt));
+    int i = this.a.b;
+    this.a.b = paramInt;
+    Object localObject = this.a.a();
+    if (localObject != null)
     {
-      xvv.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "segment cancel on net respond");
-      return;
+      localObject = (xho)((xhm)localObject).a(xho.class);
+      if ((localObject != null) && (((xho)localObject).b.getVisibility() != 0)) {
+        this.a.a(true, true);
+      }
     }
-    if ((paramwgd == null) || (paramErrorMessage.isFail()))
-    {
-      xvv.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for feature request");
-      xha.a(this.jdField_a_of_type_Xha, paramErrorMessage);
-      return;
+    localObject = (xgb)this.a.b(xgb.class);
+    if (localObject != null) {
+      ((xgb)localObject).a().a(paramInt);
     }
-    if (paramwgd.a != null)
-    {
-      paramweg = paramwgd.a.iterator();
-      do
-      {
-        if (!paramweg.hasNext()) {
-          break;
-        }
-        paramwgd = (vwa)paramweg.next();
-      } while (!paramwgd.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString));
+    c(paramInt);
+    if (StoryPlayerGroupHolder.a(this.a) != null) {
+      StoryPlayerGroupHolder.a(this.a).a(this.a.jdField_a_of_type_Int, i, paramInt);
     }
-    for (int i = paramwgd.c;; i = 0)
+  }
+  
+  public void a(int paramInt1, float paramFloat, int paramInt2)
+  {
+    if (StoryPlayerGroupHolder.a(this.a) != null) {
+      StoryPlayerGroupHolder.a(this.a).a(this.a.jdField_a_of_type_Int, paramInt1, paramFloat, paramInt2);
+    }
+    xgb localxgb = (xgb)this.a.b(xgb.class);
+    if (localxgb != null) {
+      localxgb.a().a(paramInt1, paramFloat, paramInt2);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if ((paramInt == 1) && (this.a.d()) && (this.a.c()))
     {
-      xha.a(this.jdField_a_of_type_Xha, Integer.valueOf(i));
-      return;
+      ((xgb)this.a.b(xgb.class)).d();
+      ykq.a(this.a.jdField_a_of_type_JavaLangString + "Q.qqstory.weishi", "onPageScrolled, showLoadingMoreWidget position=%d", Integer.valueOf(this.a.b));
+    }
+    xgb localxgb = (xgb)this.a.b(xgb.class);
+    if (localxgb != null) {
+      localxgb.a().b(paramInt);
+    }
+    if (StoryPlayerGroupHolder.a(this.a) != null) {
+      StoryPlayerGroupHolder.a(this.a).a(this.a.jdField_a_of_type_Int, paramInt);
+    }
+  }
+  
+  public void c(int paramInt)
+  {
+    ykq.a(this.a.jdField_a_of_type_JavaLangString, "onIdlePageSelected : position = %d", Integer.valueOf(paramInt));
+    xhm localxhm = this.a.a();
+    if ((localxhm != null) && (TextUtils.equals(StoryPlayerGroupHolder.a(this.a).a().jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Xcy.jdField_a_of_type_JavaLangString)) && (!localxhm.c()))
+    {
+      ykq.a(this.a.jdField_a_of_type_JavaLangString, "onIdlePageSelected, setSelected => %s", localxhm);
+      this.a.a(localxhm);
     }
   }
 }

@@ -1,16 +1,17 @@
-import android.graphics.Bitmap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class anni
+class anni
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public Bitmap a;
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public String c;
-  public String d;
+  anni(anng paramanng) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

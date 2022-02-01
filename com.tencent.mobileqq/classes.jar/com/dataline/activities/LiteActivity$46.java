@@ -12,15 +12,15 @@ class LiteActivity$46
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 10
+    //   1: astore 12
     //   3: aconst_null
     //   4: astore 9
     //   6: aconst_null
-    //   7: astore 8
+    //   7: astore 10
     //   9: aconst_null
-    //   10: astore 12
+    //   10: astore 13
     //   12: aconst_null
-    //   13: astore 13
+    //   13: astore 8
     //   15: new 33	com/tencent/mm/vfs/VFSFile
     //   18: dup
     //   19: aload_0
@@ -74,366 +74,360 @@ class LiteActivity$46
     //   122: invokespecial 81	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   125: astore 11
     //   127: aload 13
-    //   129: astore 8
-    //   131: aload 12
-    //   133: astore 9
-    //   135: invokestatic 60	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   138: sipush 8192
-    //   141: invokevirtual 85	com/tencent/commonsdk/pool/ByteArrayPool:getBuf	(I)[B
-    //   144: astore 10
-    //   146: lconst_0
-    //   147: lstore 6
-    //   149: lconst_0
-    //   150: lstore 4
+    //   129: astore 9
+    //   131: invokestatic 60	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   134: sipush 8192
+    //   137: invokevirtual 85	com/tencent/commonsdk/pool/ByteArrayPool:getBuf	(I)[B
+    //   140: astore 10
+    //   142: lconst_0
+    //   143: lstore 6
+    //   145: lconst_0
+    //   146: lstore 4
+    //   148: aload 10
+    //   150: astore 8
     //   152: aload 10
-    //   154: astore 8
-    //   156: aload 10
-    //   158: astore 9
-    //   160: aload_0
-    //   161: getfield 20	com/dataline/activities/LiteActivity$46:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   164: aload 10
-    //   166: invokevirtual 89	java/io/InputStream:read	([B)I
-    //   169: istore_1
-    //   170: iload_1
-    //   171: iconst_m1
-    //   172: if_icmpeq +126 -> 298
+    //   154: astore 9
+    //   156: aload_0
+    //   157: getfield 20	com/dataline/activities/LiteActivity$46:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   160: aload 10
+    //   162: invokevirtual 89	java/io/InputStream:read	([B)I
+    //   165: istore_1
+    //   166: iload_1
+    //   167: iconst_m1
+    //   168: if_icmpeq +126 -> 294
+    //   171: aload 10
+    //   173: astore 8
     //   175: aload 10
-    //   177: astore 8
-    //   179: aload 10
-    //   181: astore 9
-    //   183: aload_0
-    //   184: getfield 16	com/dataline/activities/LiteActivity$46:this$0	Lcom/dataline/activities/LiteActivity;
-    //   187: invokestatic 93	com/dataline/activities/LiteActivity:b	(Lcom/dataline/activities/LiteActivity;)Z
-    //   190: ifeq +108 -> 298
-    //   193: lload 4
-    //   195: iload_1
-    //   196: i2l
-    //   197: ladd
-    //   198: lstore_2
+    //   177: astore 9
+    //   179: aload_0
+    //   180: getfield 16	com/dataline/activities/LiteActivity$46:this$0	Lcom/dataline/activities/LiteActivity;
+    //   183: invokestatic 93	com/dataline/activities/LiteActivity:b	(Lcom/dataline/activities/LiteActivity;)Z
+    //   186: ifeq +108 -> 294
+    //   189: lload 4
+    //   191: iload_1
+    //   192: i2l
+    //   193: ladd
+    //   194: lstore_2
+    //   195: aload 10
+    //   197: astore 8
     //   199: aload 10
-    //   201: astore 8
-    //   203: aload 10
-    //   205: astore 9
-    //   207: aload 11
-    //   209: aload 10
-    //   211: iconst_0
-    //   212: iload_1
-    //   213: invokevirtual 97	java/io/FileOutputStream:write	([BII)V
-    //   216: lload_2
-    //   217: lstore 4
+    //   201: astore 9
+    //   203: aload 11
+    //   205: aload 10
+    //   207: iconst_0
+    //   208: iload_1
+    //   209: invokevirtual 97	java/io/FileOutputStream:write	([BII)V
+    //   212: lload_2
+    //   213: lstore 4
+    //   215: aload 10
+    //   217: astore 8
     //   219: aload 10
-    //   221: astore 8
-    //   223: aload 10
-    //   225: astore 9
-    //   227: lload_2
-    //   228: lload 6
-    //   230: lsub
-    //   231: l2d
-    //   232: aload_0
-    //   233: getfield 22	com/dataline/activities/LiteActivity$46:jdField_a_of_type_Long	J
-    //   236: l2d
-    //   237: ddiv
-    //   238: ldc2_w 98
-    //   241: dcmpl
-    //   242: ifle -90 -> 152
+    //   221: astore 9
+    //   223: lload_2
+    //   224: lload 6
+    //   226: lsub
+    //   227: l2d
+    //   228: aload_0
+    //   229: getfield 22	com/dataline/activities/LiteActivity$46:jdField_a_of_type_Long	J
+    //   232: l2d
+    //   233: ddiv
+    //   234: ldc2_w 98
+    //   237: dcmpl
+    //   238: ifle -90 -> 148
+    //   241: aload 10
+    //   243: astore 8
     //   245: aload 10
-    //   247: astore 8
-    //   249: aload 10
-    //   251: astore 9
-    //   253: aload_0
-    //   254: getfield 16	com/dataline/activities/LiteActivity$46:this$0	Lcom/dataline/activities/LiteActivity;
-    //   257: getfield 48	com/dataline/activities/LiteActivity:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   260: aload_0
-    //   261: getfield 16	com/dataline/activities/LiteActivity$46:this$0	Lcom/dataline/activities/LiteActivity;
-    //   264: getfield 48	com/dataline/activities/LiteActivity:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   267: iconst_3
-    //   268: lload_2
-    //   269: l2d
-    //   270: aload_0
-    //   271: getfield 22	com/dataline/activities/LiteActivity$46:jdField_a_of_type_Long	J
-    //   274: l2d
-    //   275: ddiv
-    //   276: ldc2_w 100
-    //   279: dmul
-    //   280: d2i
-    //   281: iconst_0
-    //   282: invokevirtual 105	mqq/os/MqqHandler:obtainMessage	(III)Landroid/os/Message;
-    //   285: invokevirtual 109	mqq/os/MqqHandler:sendMessage	(Landroid/os/Message;)Z
-    //   288: pop
-    //   289: lload_2
-    //   290: lstore 6
-    //   292: lload_2
-    //   293: lstore 4
-    //   295: goto -143 -> 152
-    //   298: lload 4
-    //   300: lconst_0
-    //   301: lcmp
-    //   302: ifne +43 -> 345
+    //   247: astore 9
+    //   249: aload_0
+    //   250: getfield 16	com/dataline/activities/LiteActivity$46:this$0	Lcom/dataline/activities/LiteActivity;
+    //   253: getfield 48	com/dataline/activities/LiteActivity:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
+    //   256: aload_0
+    //   257: getfield 16	com/dataline/activities/LiteActivity$46:this$0	Lcom/dataline/activities/LiteActivity;
+    //   260: getfield 48	com/dataline/activities/LiteActivity:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
+    //   263: iconst_3
+    //   264: lload_2
+    //   265: l2d
+    //   266: aload_0
+    //   267: getfield 22	com/dataline/activities/LiteActivity$46:jdField_a_of_type_Long	J
+    //   270: l2d
+    //   271: ddiv
+    //   272: ldc2_w 100
+    //   275: dmul
+    //   276: d2i
+    //   277: iconst_0
+    //   278: invokevirtual 105	mqq/os/MqqHandler:obtainMessage	(III)Landroid/os/Message;
+    //   281: invokevirtual 109	mqq/os/MqqHandler:sendMessage	(Landroid/os/Message;)Z
+    //   284: pop
+    //   285: lload_2
+    //   286: lstore 6
+    //   288: lload_2
+    //   289: lstore 4
+    //   291: goto -143 -> 148
+    //   294: lload 4
+    //   296: lconst_0
+    //   297: lcmp
+    //   298: ifne +43 -> 341
+    //   301: aload 10
+    //   303: astore 8
     //   305: aload 10
-    //   307: astore 8
-    //   309: aload 10
-    //   311: astore 9
-    //   313: aload_0
-    //   314: getfield 16	com/dataline/activities/LiteActivity$46:this$0	Lcom/dataline/activities/LiteActivity;
-    //   317: ldc 110
-    //   319: invokevirtual 114	com/dataline/activities/LiteActivity:getString	(I)Ljava/lang/String;
-    //   322: putstatic 117	com/dataline/activities/LiteActivity:c	Ljava/lang/String;
+    //   307: astore 9
+    //   309: aload_0
+    //   310: getfield 16	com/dataline/activities/LiteActivity$46:this$0	Lcom/dataline/activities/LiteActivity;
+    //   313: ldc 110
+    //   315: invokevirtual 114	com/dataline/activities/LiteActivity:getString	(I)Ljava/lang/String;
+    //   318: putstatic 117	com/dataline/activities/LiteActivity:c	Ljava/lang/String;
+    //   321: aload 10
+    //   323: astore 8
     //   325: aload 10
-    //   327: astore 8
-    //   329: aload 10
-    //   331: astore 9
-    //   333: aload_0
-    //   334: getfield 16	com/dataline/activities/LiteActivity$46:this$0	Lcom/dataline/activities/LiteActivity;
-    //   337: getfield 48	com/dataline/activities/LiteActivity:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   340: iconst_1
-    //   341: invokevirtual 54	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
-    //   344: pop
+    //   327: astore 9
+    //   329: aload_0
+    //   330: getfield 16	com/dataline/activities/LiteActivity$46:this$0	Lcom/dataline/activities/LiteActivity;
+    //   333: getfield 48	com/dataline/activities/LiteActivity:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
+    //   336: iconst_1
+    //   337: invokevirtual 54	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
+    //   340: pop
+    //   341: aload 10
+    //   343: astore 8
     //   345: aload 10
-    //   347: astore 8
-    //   349: aload 10
-    //   351: astore 9
-    //   353: aload_0
-    //   354: getfield 16	com/dataline/activities/LiteActivity$46:this$0	Lcom/dataline/activities/LiteActivity;
-    //   357: invokestatic 93	com/dataline/activities/LiteActivity:b	(Lcom/dataline/activities/LiteActivity;)Z
-    //   360: ifeq +107 -> 467
+    //   347: astore 9
+    //   349: aload_0
+    //   350: getfield 16	com/dataline/activities/LiteActivity$46:this$0	Lcom/dataline/activities/LiteActivity;
+    //   353: invokestatic 93	com/dataline/activities/LiteActivity:b	(Lcom/dataline/activities/LiteActivity;)Z
+    //   356: ifeq +107 -> 463
+    //   359: aload 10
+    //   361: astore 8
     //   363: aload 10
-    //   365: astore 8
-    //   367: aload 10
-    //   369: astore 9
-    //   371: aload_0
-    //   372: getfield 16	com/dataline/activities/LiteActivity$46:this$0	Lcom/dataline/activities/LiteActivity;
-    //   375: getfield 48	com/dataline/activities/LiteActivity:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   378: aload_0
-    //   379: getfield 16	com/dataline/activities/LiteActivity$46:this$0	Lcom/dataline/activities/LiteActivity;
-    //   382: getfield 48	com/dataline/activities/LiteActivity:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   385: iconst_3
-    //   386: bipush 100
-    //   388: iconst_0
-    //   389: invokevirtual 105	mqq/os/MqqHandler:obtainMessage	(III)Landroid/os/Message;
-    //   392: invokevirtual 109	mqq/os/MqqHandler:sendMessage	(Landroid/os/Message;)Z
-    //   395: pop
+    //   365: astore 9
+    //   367: aload_0
+    //   368: getfield 16	com/dataline/activities/LiteActivity$46:this$0	Lcom/dataline/activities/LiteActivity;
+    //   371: getfield 48	com/dataline/activities/LiteActivity:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
+    //   374: aload_0
+    //   375: getfield 16	com/dataline/activities/LiteActivity$46:this$0	Lcom/dataline/activities/LiteActivity;
+    //   378: getfield 48	com/dataline/activities/LiteActivity:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
+    //   381: iconst_3
+    //   382: bipush 100
+    //   384: iconst_0
+    //   385: invokevirtual 105	mqq/os/MqqHandler:obtainMessage	(III)Landroid/os/Message;
+    //   388: invokevirtual 109	mqq/os/MqqHandler:sendMessage	(Landroid/os/Message;)Z
+    //   391: pop
+    //   392: aload 10
+    //   394: astore 8
     //   396: aload 10
-    //   398: astore 8
-    //   400: aload 10
-    //   402: astore 9
-    //   404: aload_0
-    //   405: getfield 16	com/dataline/activities/LiteActivity$46:this$0	Lcom/dataline/activities/LiteActivity;
-    //   408: getfield 48	com/dataline/activities/LiteActivity:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   411: iconst_2
-    //   412: ldc2_w 118
-    //   415: invokevirtual 123	mqq/os/MqqHandler:sendEmptyMessageDelayed	(IJ)Z
-    //   418: pop
-    //   419: aload 10
-    //   421: ifnull +11 -> 432
-    //   424: invokestatic 60	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   427: aload 10
-    //   429: invokevirtual 64	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   432: aload_0
-    //   433: getfield 16	com/dataline/activities/LiteActivity$46:this$0	Lcom/dataline/activities/LiteActivity;
-    //   436: iconst_0
-    //   437: invokestatic 67	com/dataline/activities/LiteActivity:a	(Lcom/dataline/activities/LiteActivity;Z)Z
-    //   440: pop
-    //   441: aload_0
-    //   442: getfield 20	com/dataline/activities/LiteActivity$46:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   445: invokevirtual 72	java/io/InputStream:close	()V
-    //   448: aload 11
-    //   450: ifnull -355 -> 95
-    //   453: aload 11
-    //   455: invokevirtual 124	java/io/FileOutputStream:close	()V
-    //   458: return
-    //   459: astore 8
-    //   461: aload 8
-    //   463: invokevirtual 78	java/io/IOException:printStackTrace	()V
-    //   466: return
+    //   398: astore 9
+    //   400: aload_0
+    //   401: getfield 16	com/dataline/activities/LiteActivity$46:this$0	Lcom/dataline/activities/LiteActivity;
+    //   404: getfield 48	com/dataline/activities/LiteActivity:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
+    //   407: iconst_2
+    //   408: ldc2_w 118
+    //   411: invokevirtual 123	mqq/os/MqqHandler:sendEmptyMessageDelayed	(IJ)Z
+    //   414: pop
+    //   415: aload 10
+    //   417: ifnull +11 -> 428
+    //   420: invokestatic 60	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   423: aload 10
+    //   425: invokevirtual 64	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
+    //   428: aload_0
+    //   429: getfield 16	com/dataline/activities/LiteActivity$46:this$0	Lcom/dataline/activities/LiteActivity;
+    //   432: iconst_0
+    //   433: invokestatic 67	com/dataline/activities/LiteActivity:a	(Lcom/dataline/activities/LiteActivity;Z)Z
+    //   436: pop
+    //   437: aload_0
+    //   438: getfield 20	com/dataline/activities/LiteActivity$46:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   441: invokevirtual 72	java/io/InputStream:close	()V
+    //   444: aload 11
+    //   446: ifnull -351 -> 95
+    //   449: aload 11
+    //   451: invokevirtual 124	java/io/FileOutputStream:close	()V
+    //   454: return
+    //   455: astore 8
+    //   457: aload 8
+    //   459: invokevirtual 78	java/io/IOException:printStackTrace	()V
+    //   462: return
+    //   463: aload 10
+    //   465: astore 8
     //   467: aload 10
-    //   469: astore 8
-    //   471: aload 10
-    //   473: astore 9
-    //   475: aload 11
-    //   477: invokestatic 130	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   469: astore 9
+    //   471: aload 11
+    //   473: invokestatic 130	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   476: aload 10
+    //   478: astore 8
     //   480: aload 10
-    //   482: astore 8
-    //   484: aload 10
-    //   486: astore 9
-    //   488: aload 14
-    //   490: invokevirtual 133	com/tencent/mm/vfs/VFSFile:delete	()Z
-    //   493: pop
-    //   494: goto -75 -> 419
-    //   497: astore 12
-    //   499: aload 11
-    //   501: astore 10
-    //   503: aload 8
-    //   505: astore 9
-    //   507: aload 12
-    //   509: astore 8
-    //   511: invokestatic 138	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   514: ifeq +14 -> 528
-    //   517: getstatic 139	com/dataline/activities/LiteActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   520: iconst_2
-    //   521: ldc 141
-    //   523: aload 8
-    //   525: invokestatic 145	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   528: aload_0
-    //   529: getfield 16	com/dataline/activities/LiteActivity$46:this$0	Lcom/dataline/activities/LiteActivity;
-    //   532: getfield 48	com/dataline/activities/LiteActivity:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   535: iconst_1
-    //   536: invokevirtual 54	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
-    //   539: pop
-    //   540: aload 9
-    //   542: ifnull +11 -> 553
-    //   545: invokestatic 60	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   548: aload 9
-    //   550: invokevirtual 64	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   553: aload_0
-    //   554: getfield 16	com/dataline/activities/LiteActivity$46:this$0	Lcom/dataline/activities/LiteActivity;
-    //   557: iconst_0
-    //   558: invokestatic 67	com/dataline/activities/LiteActivity:a	(Lcom/dataline/activities/LiteActivity;Z)Z
-    //   561: pop
-    //   562: aload_0
-    //   563: getfield 20	com/dataline/activities/LiteActivity$46:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   566: invokevirtual 72	java/io/InputStream:close	()V
-    //   569: aload 10
-    //   571: ifnull -476 -> 95
-    //   574: aload 10
-    //   576: invokevirtual 124	java/io/FileOutputStream:close	()V
-    //   579: return
-    //   580: astore 8
-    //   582: aload 8
-    //   584: invokevirtual 78	java/io/IOException:printStackTrace	()V
-    //   587: return
-    //   588: astore 8
-    //   590: aload 8
-    //   592: invokevirtual 78	java/io/IOException:printStackTrace	()V
-    //   595: goto -147 -> 448
-    //   598: astore 8
-    //   600: aload 8
-    //   602: invokevirtual 78	java/io/IOException:printStackTrace	()V
-    //   605: goto -36 -> 569
-    //   608: astore 11
-    //   610: aconst_null
-    //   611: astore 9
-    //   613: aload 8
-    //   615: astore 10
-    //   617: aload 11
-    //   619: astore 8
-    //   621: aload 10
-    //   623: ifnull +11 -> 634
-    //   626: invokestatic 60	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   629: aload 10
-    //   631: invokevirtual 64	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   634: aload_0
-    //   635: getfield 16	com/dataline/activities/LiteActivity$46:this$0	Lcom/dataline/activities/LiteActivity;
-    //   638: iconst_0
-    //   639: invokestatic 67	com/dataline/activities/LiteActivity:a	(Lcom/dataline/activities/LiteActivity;Z)Z
-    //   642: pop
-    //   643: aload_0
-    //   644: getfield 20	com/dataline/activities/LiteActivity$46:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   647: invokevirtual 72	java/io/InputStream:close	()V
-    //   650: aload 9
-    //   652: ifnull +8 -> 660
-    //   655: aload 9
-    //   657: invokevirtual 124	java/io/FileOutputStream:close	()V
-    //   660: aload 8
-    //   662: athrow
-    //   663: astore 10
-    //   665: aload 10
-    //   667: invokevirtual 78	java/io/IOException:printStackTrace	()V
-    //   670: goto -20 -> 650
-    //   673: astore 9
-    //   675: aload 9
-    //   677: invokevirtual 78	java/io/IOException:printStackTrace	()V
-    //   680: goto -20 -> 660
-    //   683: astore 8
-    //   685: aload 9
-    //   687: astore 10
-    //   689: aload 11
-    //   691: astore 9
-    //   693: goto -72 -> 621
-    //   696: astore 8
-    //   698: aload 10
-    //   700: astore 11
-    //   702: aload 9
-    //   704: astore 10
-    //   706: aload 11
-    //   708: astore 9
-    //   710: goto -89 -> 621
-    //   713: astore 8
-    //   715: goto -204 -> 511
+    //   482: astore 9
+    //   484: aload 14
+    //   486: invokevirtual 133	com/tencent/mm/vfs/VFSFile:delete	()Z
+    //   489: pop
+    //   490: goto -75 -> 415
+    //   493: astore 12
+    //   495: aload 11
+    //   497: astore 10
+    //   499: aload 8
+    //   501: astore 9
+    //   503: aload 12
+    //   505: astore 8
+    //   507: invokestatic 138	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   510: ifeq +14 -> 524
+    //   513: getstatic 139	com/dataline/activities/LiteActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   516: iconst_2
+    //   517: ldc 141
+    //   519: aload 8
+    //   521: invokestatic 145	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   524: aload_0
+    //   525: getfield 16	com/dataline/activities/LiteActivity$46:this$0	Lcom/dataline/activities/LiteActivity;
+    //   528: getfield 48	com/dataline/activities/LiteActivity:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
+    //   531: iconst_1
+    //   532: invokevirtual 54	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
+    //   535: pop
+    //   536: aload 9
+    //   538: ifnull +11 -> 549
+    //   541: invokestatic 60	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   544: aload 9
+    //   546: invokevirtual 64	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
+    //   549: aload_0
+    //   550: getfield 16	com/dataline/activities/LiteActivity$46:this$0	Lcom/dataline/activities/LiteActivity;
+    //   553: iconst_0
+    //   554: invokestatic 67	com/dataline/activities/LiteActivity:a	(Lcom/dataline/activities/LiteActivity;Z)Z
+    //   557: pop
+    //   558: aload_0
+    //   559: getfield 20	com/dataline/activities/LiteActivity$46:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   562: invokevirtual 72	java/io/InputStream:close	()V
+    //   565: aload 10
+    //   567: ifnull -472 -> 95
+    //   570: aload 10
+    //   572: invokevirtual 124	java/io/FileOutputStream:close	()V
+    //   575: return
+    //   576: astore 8
+    //   578: aload 8
+    //   580: invokevirtual 78	java/io/IOException:printStackTrace	()V
+    //   583: return
+    //   584: astore 8
+    //   586: aload 8
+    //   588: invokevirtual 78	java/io/IOException:printStackTrace	()V
+    //   591: goto -147 -> 444
+    //   594: astore 8
+    //   596: aload 8
+    //   598: invokevirtual 78	java/io/IOException:printStackTrace	()V
+    //   601: goto -36 -> 565
+    //   604: astore 8
+    //   606: aconst_null
+    //   607: astore 9
+    //   609: aload 10
+    //   611: ifnull +11 -> 622
+    //   614: invokestatic 60	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   617: aload 10
+    //   619: invokevirtual 64	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
+    //   622: aload_0
+    //   623: getfield 16	com/dataline/activities/LiteActivity$46:this$0	Lcom/dataline/activities/LiteActivity;
+    //   626: iconst_0
+    //   627: invokestatic 67	com/dataline/activities/LiteActivity:a	(Lcom/dataline/activities/LiteActivity;Z)Z
+    //   630: pop
+    //   631: aload_0
+    //   632: getfield 20	com/dataline/activities/LiteActivity$46:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   635: invokevirtual 72	java/io/InputStream:close	()V
+    //   638: aload 9
+    //   640: ifnull +8 -> 648
+    //   643: aload 9
+    //   645: invokevirtual 124	java/io/FileOutputStream:close	()V
+    //   648: aload 8
+    //   650: athrow
+    //   651: astore 10
+    //   653: aload 10
+    //   655: invokevirtual 78	java/io/IOException:printStackTrace	()V
+    //   658: goto -20 -> 638
+    //   661: astore 9
+    //   663: aload 9
+    //   665: invokevirtual 78	java/io/IOException:printStackTrace	()V
+    //   668: goto -20 -> 648
+    //   671: astore 8
+    //   673: aload 9
+    //   675: astore 10
+    //   677: aload 11
+    //   679: astore 9
+    //   681: goto -72 -> 609
+    //   684: astore 8
+    //   686: aload 10
+    //   688: astore 11
+    //   690: aload 9
+    //   692: astore 10
+    //   694: aload 11
+    //   696: astore 9
+    //   698: goto -89 -> 609
+    //   701: astore 8
+    //   703: aload 12
+    //   705: astore 10
+    //   707: goto -200 -> 507
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	718	0	this	46
-    //   169	44	1	i	int
-    //   198	95	2	l1	long
-    //   150	149	4	l2	long
-    //   147	144	6	l3	long
-    //   7	1	8	localObject1	Object
+    //   0	710	0	this	46
+    //   165	44	1	i	int
+    //   194	95	2	l1	long
+    //   146	149	4	l2	long
+    //   143	144	6	l3	long
+    //   13	1	8	localObject1	Object
     //   96	3	8	localIOException1	java.io.IOException
     //   106	3	8	localIOException2	java.io.IOException
-    //   129	270	8	localObject2	Object
-    //   459	3	8	localIOException3	java.io.IOException
-    //   469	55	8	localObject3	Object
-    //   580	3	8	localIOException4	java.io.IOException
-    //   588	3	8	localIOException5	java.io.IOException
-    //   598	16	8	localIOException6	java.io.IOException
-    //   619	42	8	localObject4	Object
-    //   683	1	8	localObject5	Object
-    //   696	1	8	localObject6	Object
-    //   713	1	8	localException1	java.lang.Exception
-    //   4	652	9	localObject7	Object
-    //   673	13	9	localIOException7	java.io.IOException
-    //   691	18	9	localObject8	Object
-    //   1	629	10	localObject9	Object
-    //   663	3	10	localIOException8	java.io.IOException
-    //   687	18	10	localObject10	Object
-    //   125	375	11	localFileOutputStream	java.io.FileOutputStream
-    //   608	82	11	localObject11	Object
-    //   700	7	11	localObject12	Object
-    //   10	122	12	localObject13	Object
-    //   497	11	12	localException2	java.lang.Exception
-    //   13	115	13	localObject14	Object
-    //   26	463	14	localVFSFile	com.tencent.mm.vfs.VFSFile
+    //   150	245	8	localObject2	Object
+    //   455	3	8	localIOException3	java.io.IOException
+    //   465	55	8	localObject3	Object
+    //   576	3	8	localIOException4	java.io.IOException
+    //   584	3	8	localIOException5	java.io.IOException
+    //   594	3	8	localIOException6	java.io.IOException
+    //   604	45	8	localObject4	Object
+    //   671	1	8	localObject5	Object
+    //   684	1	8	localObject6	Object
+    //   701	1	8	localException1	java.lang.Exception
+    //   4	640	9	localObject7	Object
+    //   661	13	9	localIOException7	java.io.IOException
+    //   679	18	9	localObject8	Object
+    //   7	611	10	localObject9	Object
+    //   651	3	10	localIOException8	java.io.IOException
+    //   675	31	10	localObject10	Object
+    //   125	570	11	localObject11	Object
+    //   1	1	12	localObject12	Object
+    //   493	211	12	localException2	java.lang.Exception
+    //   10	118	13	localObject13	Object
+    //   26	459	14	localVFSFile	com.tencent.mm.vfs.VFSFile
     // Exception table:
     //   from	to	target	type
     //   76	83	96	java/io/IOException
     //   87	95	106	java/io/IOException
-    //   453	458	459	java/io/IOException
-    //   135	146	497	java/lang/Exception
-    //   160	170	497	java/lang/Exception
-    //   183	193	497	java/lang/Exception
-    //   207	216	497	java/lang/Exception
-    //   227	245	497	java/lang/Exception
-    //   253	289	497	java/lang/Exception
-    //   313	325	497	java/lang/Exception
-    //   333	345	497	java/lang/Exception
-    //   353	363	497	java/lang/Exception
-    //   371	396	497	java/lang/Exception
-    //   404	419	497	java/lang/Exception
-    //   475	480	497	java/lang/Exception
-    //   488	494	497	java/lang/Exception
-    //   574	579	580	java/io/IOException
-    //   441	448	588	java/io/IOException
-    //   562	569	598	java/io/IOException
-    //   15	56	608	finally
-    //   114	127	608	finally
-    //   643	650	663	java/io/IOException
-    //   655	660	673	java/io/IOException
-    //   135	146	683	finally
-    //   160	170	683	finally
-    //   183	193	683	finally
-    //   207	216	683	finally
-    //   227	245	683	finally
-    //   253	289	683	finally
-    //   313	325	683	finally
-    //   333	345	683	finally
-    //   353	363	683	finally
-    //   371	396	683	finally
-    //   404	419	683	finally
-    //   475	480	683	finally
-    //   488	494	683	finally
-    //   511	528	696	finally
-    //   528	540	696	finally
-    //   15	56	713	java/lang/Exception
-    //   114	127	713	java/lang/Exception
+    //   449	454	455	java/io/IOException
+    //   131	142	493	java/lang/Exception
+    //   156	166	493	java/lang/Exception
+    //   179	189	493	java/lang/Exception
+    //   203	212	493	java/lang/Exception
+    //   223	241	493	java/lang/Exception
+    //   249	285	493	java/lang/Exception
+    //   309	321	493	java/lang/Exception
+    //   329	341	493	java/lang/Exception
+    //   349	359	493	java/lang/Exception
+    //   367	392	493	java/lang/Exception
+    //   400	415	493	java/lang/Exception
+    //   471	476	493	java/lang/Exception
+    //   484	490	493	java/lang/Exception
+    //   570	575	576	java/io/IOException
+    //   437	444	584	java/io/IOException
+    //   558	565	594	java/io/IOException
+    //   15	56	604	finally
+    //   114	127	604	finally
+    //   631	638	651	java/io/IOException
+    //   643	648	661	java/io/IOException
+    //   131	142	671	finally
+    //   156	166	671	finally
+    //   179	189	671	finally
+    //   203	212	671	finally
+    //   223	241	671	finally
+    //   249	285	671	finally
+    //   309	321	671	finally
+    //   329	341	671	finally
+    //   349	359	671	finally
+    //   367	392	671	finally
+    //   400	415	671	finally
+    //   471	476	671	finally
+    //   484	490	671	finally
+    //   507	524	684	finally
+    //   524	536	684	finally
+    //   15	56	701	java/lang/Exception
+    //   114	127	701	java/lang/Exception
   }
 }
 

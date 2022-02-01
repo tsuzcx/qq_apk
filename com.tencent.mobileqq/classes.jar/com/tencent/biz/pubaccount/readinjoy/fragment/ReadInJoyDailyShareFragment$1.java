@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import qib;
+import quf;
 
 class ReadInJoyDailyShareFragment$1
   implements Runnable
@@ -11,8 +11,8 @@ class ReadInJoyDailyShareFragment$1
   public void run()
   {
     ReadInJoyDailyShareFragment.a(this.this$0);
-    ((qib)this.a).a(ReadInJoyDailyShareFragment.a(this.this$0));
-    ((qib)this.a).a(ReadInJoyDailyShareFragment.a(this.this$0));
+    ((quf)this.a).a(ReadInJoyDailyShareFragment.a(this.this$0));
+    ((quf)this.a).a(ReadInJoyDailyShareFragment.a(this.this$0));
   }
 }
 

@@ -1,32 +1,38 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.UpdateTroop;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.List;
 
-public class angr
-  extends andd
+class angr
+  implements amoz
 {
-  private angr(UpdateTroop paramUpdateTroop) {}
+  angr(angh paramangh, String paramString, File paramFile, int paramInt) {}
   
-  protected void onUpdateTroopList(boolean paramBoolean)
+  public void a(boolean paramBoolean, String paramString1, List<amow> paramList, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "updateTroopList:" + paramBoolean);
-    }
-    if (!paramBoolean)
+    QLog.i("ApolloPluginRscLoader", 1, "downloadApolloRes onDownLoadFinish success:" + paramBoolean);
+    paramString1 = angh.a(this.jdField_a_of_type_JavaLangString);
+    if (TextUtils.isEmpty(paramString1))
     {
-      this.a.a(6);
+      QLog.e("ApolloPluginRscLoader", 1, "getApolloRsc error callbackId is null resourceUrl:" + this.jdField_a_of_type_JavaLangString);
       return;
     }
-    this.a.a.a.edit().putBoolean("isTrooplistok", true).commit();
-    this.a.a.notifyUI(3, true, Integer.valueOf(2));
-    this.a.a(7);
+    if (paramBoolean)
+    {
+      if (this.jdField_a_of_type_JavaIoFile.exists())
+      {
+        this.jdField_a_of_type_Angh.a(paramString1, 0, this.jdField_a_of_type_Int + anvx.a(2131699996));
+        return;
+      }
+      this.jdField_a_of_type_Angh.a(paramString1, 2, this.jdField_a_of_type_Int + anvx.a(2131699995));
+      return;
+    }
+    this.jdField_a_of_type_Angh.a(paramString1, 2, this.jdField_a_of_type_Int + anvx.a(2131699990));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     angr
  * JD-Core Version:    0.7.0.1
  */

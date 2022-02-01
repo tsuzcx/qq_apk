@@ -3,13 +3,13 @@ package com.tencent.mobileqq.mini.share;
 import NS_COMM.COMM.StCommonExt;
 import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoReq;
 import NS_MINI_SHARE.MiniProgramShare.StTemplateInfo;
-import amtj;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import atky;
+import anvx;
+import aupt;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.mini.launch.AppBrandProxy;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
@@ -51,6 +51,13 @@ public class MiniProgramShareUtils
   public static final long SHARE_OUT_OF_LIMIT = -100070004L;
   private static final String SHARE_PATH_DETAIL = "openMiniApp/detail";
   private static final String SHARE_SCHEME = "miniapp";
+  public static final int SHARE_TARGET_QQ = 0;
+  public static final int SHARE_TARGET_QQ_DIRECTLY = 2;
+  public static final int SHARE_TARGET_QZONE = 1;
+  public static final int SHARE_TARGET_SHARE_CHAT = 5;
+  public static final int SHARE_TARGET_TO_FRIEND_LIST = 6;
+  public static final int SHARE_TARGET_WECHAT_FRIEND = 3;
+  public static final int SHARE_TARGET_WECHAT_MOMENTS = 4;
   private static final String TAG = "MiniProgramShareUtils [miniappArkShare]";
   
   public static String getArkPrompt(MiniArkShareModel paramMiniArkShareModel, JSONObject paramJSONObject)
@@ -72,7 +79,7 @@ public class MiniProgramShareUtils
       }
     }
     label77:
-    for (paramJSONObject = amtj.a(2131705992);; paramJSONObject = amtj.a(2131705993))
+    for (paramJSONObject = anvx.a(2131706343);; paramJSONObject = anvx.a(2131706344))
     {
       paramJSONObject = paramJSONObject + "]" + paramMiniArkShareModel.getTitle();
       return paramJSONObject;
@@ -240,7 +247,7 @@ public class MiniProgramShareUtils
     }
     for (;;)
     {
-      MiniAppCmdUtil.getInstance().getShareInfo(newShareInfoRequest(paramMiniArkShareModel.getAppId(), paramMiniArkShareModel.getTitle(), paramMiniArkShareModel.getDescription(), (int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()), paramMiniArkShareModel.getShareScene(), paramMiniArkShareModel.getShareTemplateType(), paramMiniArkShareModel.getShareBusinessType(), paramMiniArkShareModel.getPicUrl(), paramMiniArkShareModel.getVidUrl(), paramMiniArkShareModel.getJumpUrl(), paramMiniArkShareModel.getIconUrl(), paramStCommonExt, paramMiniArkShareModel.getVersionType(), paramMiniArkShareModel.getVersionId(), i, paramBoolean, paramMiniArkShareModel.getWebURL(), paramMiniArkShareModel.getAppidRich(), paramMiniArkShareModel.getTemplateId(), paramMiniArkShareModel.getTemplateData(), paramMiniArkShareModel.getRcvOpenId()), new MiniProgramShareUtils.2(i, paramActivity, paramMiniArkShareModel, paramInt, paramOnShareListener));
+      MiniAppCmdUtil.getInstance().getShareInfo(newShareInfoRequest(paramMiniArkShareModel.getAppId(), paramMiniArkShareModel.getTitle(), paramMiniArkShareModel.getDescription(), (int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()), paramMiniArkShareModel.getShareScene(), paramMiniArkShareModel.getShareTemplateType(), paramMiniArkShareModel.getShareBusinessType(), paramMiniArkShareModel.getPicUrl(), paramMiniArkShareModel.getVidUrl(), paramMiniArkShareModel.getJumpUrl(), paramMiniArkShareModel.getIconUrl(), paramStCommonExt, paramMiniArkShareModel.getVersionType(), paramMiniArkShareModel.getVersionId(), i, paramBoolean, paramMiniArkShareModel.getWebURL(), paramMiniArkShareModel.getAppidRich(), paramMiniArkShareModel.getTemplateId(), paramMiniArkShareModel.getTemplateData(), paramMiniArkShareModel.getRcvOpenId()), new MiniProgramShareUtils.2(paramActivity, paramMiniArkShareModel, paramInt, i, paramOnShareListener));
       return;
     }
   }
@@ -312,7 +319,7 @@ public class MiniProgramShareUtils
     localIntent.putExtra("miniAppShareTemplateId", paramString2);
     localIntent.putExtra("miniAppShareEvent", paramString3);
     localIntent.putExtra("miniAppShareCallbackId", paramInt2);
-    atky.a(paramContext, localIntent);
+    aupt.a(paramContext, localIntent);
   }
   
   public static String updateImagePathToArkMeta(String paramString1, String paramString2)

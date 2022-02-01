@@ -8,14 +8,14 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import oxn;
-import pay;
+import pgr;
+import pkh;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SimpleCommentData;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "contentSrc", "", "businessInfo", "", "(ILjava/lang/String;)V", "articleId", "getArticleId", "()Ljava/lang/String;", "setArticleId", "(Ljava/lang/String;)V", "authorId", "", "getAuthorId", "()J", "getBusinessInfo", "setBusinessInfo", "getContentSrc", "()I", "setContentSrc", "(I)V", "linkDataList", "", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/BaseCommentData$CommentLinkData;", "getLinkDataList", "()Ljava/util/List;", "setLinkDataList", "(Ljava/util/List;)V", "reportScene", "getReportScene", "setReportScene", "rowKey", "getRowKey", "setRowKey", "src", "getSrc", "describeContents", "readFromParcel", "", "toString", "writeToParcel", "flags", "CREATOR", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public class SimpleCommentData
   implements Parcelable
 {
-  public static final oxn CREATOR = new oxn(null);
+  public static final pgr CREATOR = new pgr(null);
   private int jdField_a_of_type_Int;
   private final long jdField_a_of_type_Long;
   @NotNull
@@ -35,7 +35,7 @@ public class SimpleCommentData
     this.jdField_c_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = pay.a();
+    this.jdField_a_of_type_Long = pkh.a();
     this.jdField_b_of_type_Int = 20;
   }
   

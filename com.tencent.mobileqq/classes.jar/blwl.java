@@ -1,88 +1,69 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
-import android.util.Pair;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator;
-import dov.com.qq.im.ae.data.AEGifCategoryWrapper;
-import dov.com.qq.im.ae.gif.AEGIFStickerListPart.7.1;
-import dov.com.qq.im.ae.gif.AEGIFStickerListPart.7.2;
-import java.util.List;
+import android.content.Intent;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.pluginsdk.IStatisticsUploader;
+import com.tencent.mobileqq.pluginsdk.PluginStatic;
+import java.io.File;
+import mqq.app.MobileQQ;
 
 public class blwl
-  implements Observer<Boolean>
+  extends AsyncTask<String, String, String>
 {
-  blwl(blwd paramblwd) {}
+  private IStatisticsUploader jdField_a_of_type_ComTencentMobileqqPluginsdkIStatisticsUploader;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
+  private String d;
+  private String e;
+  private String f;
   
-  public void a(@Nullable Boolean paramBoolean)
+  public blwl(Intent paramIntent)
   {
-    if ((paramBoolean == null) || (!paramBoolean.booleanValue())) {}
-    label516:
+    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("pluginsdk_selfuin");
+    this.b = paramIntent.getStringExtra("pluginsdk_pluginName");
+    this.c = paramIntent.getStringExtra("pluginsdk_pluginLocation");
+    this.d = paramIntent.getStringExtra("pluginsdk_pluginpath");
+    this.e = paramIntent.getStringExtra("pluginsdk_launchActivity");
+    this.f = paramIntent.getStringExtra("pluginsdk_extraInfo");
+    paramIntent = paramIntent.getStringExtra("clsUploader");
+    if (paramIntent != null) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqPluginsdkIStatisticsUploader = ((IStatisticsUploader)Class.forName(paramIntent).newInstance());
+      return;
+    }
+    catch (Exception paramIntent)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqPluginsdkIStatisticsUploader = null;
+    }
+  }
+  
+  protected String a(String... paramVarArgs)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqPluginsdkIStatisticsUploader == null) || (this.f == null)) {
+      return "";
+    }
     for (;;)
     {
-      return;
-      blwd.c(this.a);
-      paramBoolean = blut.a().a(2);
-      if (paramBoolean.size() > 0)
+      try
       {
-        Pair localPair = blwd.a(this.a, paramBoolean);
-        int i;
-        label61:
-        int j;
-        if ((localPair == null) || (localPair.first == null))
+        if ((this.f.contains("Resources$NotFoundException")) || (this.f.contains("ResourcesNotFoundException")) || (this.f.contains("ClassNotFoundException")) || (this.f.contains("GetPackageInfoFailException")))
         {
-          i = 0;
-          if ((localPair != null) && (localPair.second != null)) {
-            break label492;
+          paramVarArgs = PluginStatic.encodeFile(this.d);
+          if (this.d == null) {
+            continue;
           }
-          j = 0;
-          label76:
-          blwd.b(this.a, ((AEGifCategoryWrapper)paramBoolean.get(i)).categoryId);
-          blwd.a(this.a, ((AEGifCategoryWrapper)paramBoolean.get(i)).fontId);
-          if (blwd.b(this.a))
-          {
-            if ((i == 0) && (j == 0) && (!blwd.c(this.a))) {
-              Toast.makeText(blwd.a(this.a).a(), 2131689674, 1).show();
-            }
-            blwd.a(this.a, true);
-          }
-          blwd.b(this.a).clear();
-          blwd.b(this.a).addAll(paramBoolean);
-          blwd.a(this.a, blwd.b(this.a, paramBoolean));
-          blwd.a(this.a).setTabData((String[])blwd.a(this.a).first, (int[])blwd.a(this.a).second);
-          blwd.a(this.a).post(new AEGIFStickerListPart.7.1(this, i));
-          blwd.a(this.a).clear();
-          blwd.a(this.a).addAll(((AEGifCategoryWrapper)blwd.b(this.a).get(i)).materialWrapperList);
-          blwd.a(this.a).notifyDataSetChanged();
-          blwd.a(this.a).post(new AEGIFStickerListPart.7.2(this, j));
-          paramBoolean = (blvd)((AEGifCategoryWrapper)blwd.b(this.a).get(i)).materialWrapperList.get(j);
-          if (paramBoolean.b != 1) {
-            break label507;
-          }
-          blwd.a(this.a, null);
+          l = new File(this.d).length();
+          this.f = ("ApkMd5:" + paramVarArgs + "__FileSize:" + l + "__" + this.f);
         }
-        for (;;)
-        {
-          if ((!TextUtils.isEmpty(blwd.a(this.a))) || (i != 0)) {
-            break label516;
-          }
-          blwd.c(this.a, ((AEGifCategoryWrapper)blwd.b(this.a).get(i)).categoryId);
-          if ((blwd.a(this.a) == null) || (!blwd.a(this.a).a())) {
-            break;
-          }
-          bmbg.a().l(blwd.a(this.a));
-          bmbc.a().aj();
-          return;
-          i = ((Integer)localPair.first).intValue();
-          break label61;
-          label492:
-          j = ((Integer)localPair.second).intValue();
-          break label76;
-          label507:
-          blwd.a(this.a, paramBoolean);
-        }
+        this.jdField_a_of_type_ComTencentMobileqqPluginsdkIStatisticsUploader.uploadStartupFailure(MobileQQ.getContext(), this.jdField_a_of_type_JavaLangString, this.b, this.c, this.e, this.f);
       }
+      catch (Throwable paramVarArgs)
+      {
+        long l;
+        continue;
+      }
+      return null;
+      l = 0L;
     }
   }
 }

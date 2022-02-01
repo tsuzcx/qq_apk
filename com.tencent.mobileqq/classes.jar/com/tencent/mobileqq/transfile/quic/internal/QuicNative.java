@@ -7,12 +7,12 @@ public class QuicNative
   private int handleId;
   private byte[] srvMessage;
   
-  private native void cancelRequest(int paramInt);
-  
   private native void clear(int paramInt);
   
   @Deprecated
   private native void connect(int paramInt1, String paramString1, String paramString2, int paramInt2, boolean paramBoolean, int paramInt3, byte[] paramArrayOfByte);
+  
+  private native void connectSupportGlobal0Rtt(int paramInt1, String paramString1, String paramString2, int paramInt2, boolean paramBoolean1, int paramInt3, byte[] paramArrayOfByte, boolean paramBoolean2, String paramString3);
   
   private native void connectSupportIpv6(int paramInt1, String paramString1, String paramString2, int paramInt2, boolean paramBoolean1, int paramInt3, byte[] paramArrayOfByte, boolean paramBoolean2);
   
@@ -55,14 +55,6 @@ public class QuicNative
   public static native void setDebugLog(boolean paramBoolean);
   
   private native void setTransCompleted(int paramInt, boolean paramBoolean);
-  
-  public void cancelRequest()
-  {
-    if (this.cleared) {
-      return;
-    }
-    cancelRequest(this.handleId);
-  }
   
   public void clear()
   {
@@ -109,11 +101,21 @@ public class QuicNative
   
   public void startConnect(int paramInt1, String paramString1, String paramString2, int paramInt2, boolean paramBoolean1, int paramInt3, byte[] paramArrayOfByte, boolean paramBoolean2)
   {
+    startConnect(paramInt1, paramString1, paramString2, paramInt2, paramBoolean1, paramInt3, paramArrayOfByte, paramBoolean2, "sns.cdn.qq.com");
+  }
+  
+  public void startConnect(int paramInt1, String paramString1, String paramString2, int paramInt2, boolean paramBoolean1, int paramInt3, byte[] paramArrayOfByte, boolean paramBoolean2, String paramString3)
+  {
     if (this.cleared) {
       return;
     }
     this.handleId = paramInt1;
-    connectSupportIpv6(this.handleId, paramString1, paramString2, paramInt2, paramBoolean1, paramInt3, paramArrayOfByte, paramBoolean2);
+    if ("sns.cdn.qq.com".equals(paramString3))
+    {
+      connectSupportIpv6(this.handleId, paramString1, paramString2, paramInt2, paramBoolean1, paramInt3, paramArrayOfByte, paramBoolean2);
+      return;
+    }
+    connectSupportGlobal0Rtt(this.handleId, paramString1, paramString2, paramInt2, paramBoolean1, paramInt3, paramArrayOfByte, paramBoolean2, paramString3);
   }
 }
 

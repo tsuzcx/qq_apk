@@ -1,27 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import com.tencent.qphone.base.util.QLog;
 
-class qbz
-  implements ViewBase.OnClickListener
+public class qbz
+  implements spr
 {
-  qbz(qbu paramqbu, BaseArticleInfo paramBaseArticleInfo, pvc parampvc) {}
+  public qbz(VideoView paramVideoView) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void a(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances.isEmpty())) {
+    if (paramBoolean)
+    {
+      QLog.d("gifvideo.VideoView", 1, "install success");
+      VideoView.access$000(this.a, 2);
+      VideoView.access$100(this.a);
       return;
     }
-    VideoColumnInfo localVideoColumnInfo = (VideoColumnInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances.get(0);
-    if ((localVideoColumnInfo.a != null) && (localVideoColumnInfo.a.a != 3)) {
-      rwv.a(this.jdField_a_of_type_Pvc.a().getContext(), localVideoColumnInfo.a);
-    }
-    ozp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mProteusTemplateBean, paramViewBase);
-    pim.a.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+    QLog.d("gifvideo.VideoView", 1, "install fail");
+    VideoView.access$000(this.a, -1);
   }
 }
 

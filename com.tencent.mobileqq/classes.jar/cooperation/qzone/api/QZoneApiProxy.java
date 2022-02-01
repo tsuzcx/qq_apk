@@ -1,6 +1,5 @@
 package cooperation.qzone.api;
 
-import amtj;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
@@ -13,12 +12,14 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import bbyp;
-import bcaz;
-import bkkq;
+import anvx;
+import bdfk;
+import bdhu;
+import blvy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
 import com.tencent.mobileqq.pluginsdk.PluginManagerHelper;
 import com.tencent.mobileqq.startup.step.InstallPlugins;
@@ -212,7 +213,7 @@ public class QZoneApiProxy
     String str = getSelfSharedPreferences(paramContext).getString("msg_page_title", "");
     paramContext = str;
     if (TextUtils.isEmpty(str)) {
-      paramContext = amtj.a(2131718769);
+      paramContext = anvx.a(2131719159);
     }
     return paramContext;
   }
@@ -283,7 +284,7 @@ public class QZoneApiProxy
     if (sIsInit) {
       return true;
     }
-    ((bkkq)paramQQAppInterface.getManager(27)).a("qzone_plugin.apk");
+    ((blvy)paramQQAppInterface.getManager(QQManagerFactory.MGR_PLUGIN)).a("qzone_plugin.apk");
     paramContext = loadQZoneClass(paramContext, "com.qzone.common.servlet.QZoneServlet");
     if (paramContext == null) {
       return false;
@@ -352,12 +353,12 @@ public class QZoneApiProxy
           int k;
           Set localSet;
           long l2;
-          break label200;
+          break label201;
         }
         localThrowable2 = localThrowable2;
         paramContext = null;
       }
-      label200:
+      label201:
       localObject3 = null;
     }
     try
@@ -382,7 +383,7 @@ public class QZoneApiProxy
         paramContext.put("com.qzone.common.servlet.QZoneServlet", localObject1);
         localObject4 = ((MSFServlet)localObject1).getPreferSSOCommands();
         if (localObject4 == null) {
-          break label432;
+          break label433;
         }
         k = localObject4.length;
         i = j;
@@ -680,7 +681,7 @@ public class QZoneApiProxy
           return bool1;
           bool1 = bool2;
         } while (!needLoadQZoneEnv());
-        if (!bbyp.a())
+        if (!bdfk.a())
         {
           QZLog.e("QZoneApiProxy", "isNowSimpleUI no");
           return false;
@@ -723,7 +724,7 @@ public class QZoneApiProxy
         sSchoolExtendListConstructor = paramQQAppInterface.getConstructor(new Class[] { Context.class, AttributeSet.class });
         try
         {
-          paramActivity.getLayoutInflater().inflate(2131561051, null);
+          paramActivity.getLayoutInflater().inflate(2131561112, null);
           i = 1;
         }
         catch (Throwable paramActivity)

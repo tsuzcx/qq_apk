@@ -1,16 +1,55 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import android.content.Context;
+import android.os.Handler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class blxd
+  implements INetEventHandler
 {
-  public static final List<blxe> a;
-  public static final int[] a;
+  private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getApplication();
+  private boolean jdField_a_of_type_Boolean;
   
-  static
+  public blxd(blwy paramblwy) {}
+  
+  public void a()
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 1, 2, 3, 4, 5 };
-    jdField_a_of_type_JavaUtilList = new ArrayList(Arrays.asList(new blxe[] { new blxe("#ffffff", "#000000"), new blxe("#000000", "#ffffff"), new blxe("#ff596a", "#ffffff"), new blxe("#ffcc00", "#b96300"), new blxe("#64ecde", "#1d70c0"), new blxe("#8173ff", "#ffffff") }));
+    if (this.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_Boolean = true;
+      try
+      {
+        AppNetConnInfo.registerNetChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this);
+        return;
+      }
+      catch (Exception localException) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("plugin_tag", 2, localException, new Object[0]);
+  }
+  
+  public void b()
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_Boolean = false;
+      try
+      {
+        AppNetConnInfo.unregisterNetEventHandler(this);
+        return;
+      }
+      catch (Exception localException) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("plugin_tag", 2, localException, new Object[0]);
+  }
+  
+  public void onNetChangeEvent(boolean paramBoolean)
+  {
+    blwy.a(this.jdField_a_of_type_Blwy).sendEmptyMessage(66304);
   }
 }
 

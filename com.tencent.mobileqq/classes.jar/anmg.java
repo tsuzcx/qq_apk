@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.io.File;
 import java.util.Comparator;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-class anmg
-  implements Comparator<structmsg.StructMsg>
+public final class anmg
+  implements Comparator<File>
 {
-  anmg(anmf paramanmf) {}
-  
-  public int a(structmsg.StructMsg paramStructMsg1, structmsg.StructMsg paramStructMsg2)
+  public int a(File paramFile1, File paramFile2)
   {
-    if (paramStructMsg1.msg_time.get() < paramStructMsg2.msg_time.get()) {
-      return 1;
-    }
-    if (paramStructMsg1.msg_time.get() > paramStructMsg2.msg_time.get()) {
+    if ((paramFile1.exists()) && (paramFile2.exists()))
+    {
+      if (paramFile1.lastModified() - paramFile2.lastModified() > 0L) {
+        return 1;
+      }
       return -1;
     }
     return 0;

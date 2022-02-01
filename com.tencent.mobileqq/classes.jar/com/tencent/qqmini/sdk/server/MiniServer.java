@@ -107,7 +107,7 @@ public class MiniServer
           QMLog.e("MiniServer", "Failed to init MiniServer. context is null");
           continue;
         }
-        QMLog.i("MiniServer", "Init MiniServer. MiniSdkVersion:1.8.0_25_0ea610c QUA:" + QUAUtil.getQUA() + " PlatformQUA:" + QUAUtil.getPlatformQUA());
+        QMLog.i("MiniServer", "Init MiniServer. MiniSdkVersion:1.9.0_75_e0f9b31 QUA:" + QUAUtil.getQUA() + " PlatformQUA:" + QUAUtil.getPlatformQUA());
       }
       finally {}
       this.mContext = paramContext;

@@ -1,57 +1,34 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.EcShopFirstRunMsgConfigs;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-
 public class anfq
-  extends bgod
+  implements Comparable
 {
-  public anfq(EcShopFirstRunMsgConfigs paramEcShopFirstRunMsgConfigs) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
   
-  public void onDone(bgoe parambgoe)
+  public int compareTo(Object paramObject)
   {
-    super.onDone(parambgoe);
-    if ((parambgoe.a == 0) && (this.a.a.app != null))
-    {
-      str = parambgoe.a().getString("path");
-      if ((this.a.a.app != null) && (!TextUtils.isEmpty(str)))
-      {
-        if (!ofx.e.equals(str)) {
-          break label142;
-        }
-        this.a.a.app.getApp().getSharedPreferences("ecshop_sp", 0).edit().putLong("last_modified_report_json", parambgoe.i).commit();
-        ((ogr)this.a.a.app.getBusinessHandler(88)).a();
-        if (QLog.isColorLevel()) {
-          QLog.i("Ecshop", 2, "download report json success.");
-        }
-      }
+    paramObject = (anfq)paramObject;
+    if (this.d < paramObject.d) {
+      return 1;
     }
-    label142:
-    while (!QLog.isColorLevel())
-    {
-      do
-      {
-        String str;
-        do
-        {
-          return;
-        } while (!ofx.f.equals(str));
-        this.a.a.app.getApp().getSharedPreferences("ecshop_sp", 0).edit().putLong("last_modified_behaviors_json", parambgoe.i).commit();
-      } while (!QLog.isColorLevel());
-      QLog.i("Ecshop", 2, "download behaviors json success.");
-      return;
+    if (this.d > paramObject.d) {
+      return -1;
     }
-    QLog.i("Ecshop", 2, "download json failed.");
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anfq
  * JD-Core Version:    0.7.0.1
  */

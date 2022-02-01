@@ -1,147 +1,58 @@
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.animation.Animator.AnimatorListener;
+import android.util.SparseArray;
 
 public class apqd
-  implements apri
 {
-  public apqd(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  private int jdField_a_of_type_Int = 1;
+  private Animator.AnimatorListener jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener = new apqe(this);
+  private SparseArray<apqa> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private apqf jdField_a_of_type_Apqf;
   
-  public int a()
+  private void a(int paramInt)
   {
-    int j = 1;
-    int i;
-    if (this.a.i == 0) {
-      i = 2;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ConditionSearchFriendActivity", 2, "getColumnCount|pickerType : " + this.a.i + ", count : " + i);
-      }
-      return i;
-      i = j;
-      if (this.a.i != 3) {
-        if (this.a.i != 1)
-        {
-          i = j;
-          if (this.a.i != 2) {}
-        }
-        else
-        {
-          i = this.a.h;
-        }
-      }
+    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null) {
+      ((apqa)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).stop();
     }
   }
   
-  public int a(int paramInt)
+  private void a(int paramInt1, int paramInt2)
   {
-    int j = 0;
-    int i;
-    if (this.a.i == 0) {
-      i = ampm.b.length - 17;
-    }
-    for (;;)
+    apqa localapqa1 = (apqa)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
+    apqa localapqa2 = (apqa)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2);
+    localapqa1.a(false, null);
+    localapqa2.a(true, this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener);
+  }
+  
+  public void a()
+  {
+    int i = 1;
+    while (i <= 3)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ConditionSearchFriendActivity", 2, "getRowCount|pickerType : " + this.a.i + ", column : " + paramInt + ", count : " + i);
-      }
-      return i;
-      if (this.a.i == 3)
-      {
-        i = ampm.c.length;
-      }
-      else if (this.a.i != 1)
-      {
-        i = j;
-        if (this.a.i != 2) {}
-      }
-      else
-      {
-        i = j;
-        if (paramInt < this.a.h)
-        {
-          i = j;
-          if (paramInt >= 0)
-          {
-            i = j;
-            if (this.a.a[paramInt] != null) {
-              i = ((List)this.a.a[paramInt]).size();
-            }
-          }
-        }
-      }
+      a(i);
+      i += 1;
     }
   }
   
-  public String a(int paramInt1, int paramInt2)
+  public void a(int paramInt, apqa paramapqa)
   {
-    int i;
-    String str;
-    if (this.a.i == 0)
-    {
-      if (paramInt2 >= 0)
-      {
-        i = paramInt2;
-        if (paramInt2 < ampm.b.length) {}
-      }
-      else
-      {
-        i = 0;
-      }
-      paramInt2 = ConditionSearchFriendActivity.b(this.a, i);
-      str = ampm.b[paramInt2];
-      paramInt2 = i;
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramapqa);
+  }
+  
+  public void a(int paramInt, apqf paramapqf)
+  {
+    if (this.jdField_a_of_type_Int == paramInt) {
+      return;
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ConditionSearchFriendActivity", 2, "getText|pickerType : " + this.a.i + ", column : " + paramInt1 + ", row : " + paramInt2 + ", result : " + str);
-      }
-      return str;
-      if (this.a.i == 3)
-      {
-        if (paramInt2 >= 0)
-        {
-          i = paramInt2;
-          if (paramInt2 < ampm.c.length) {}
-        }
-        else
-        {
-          i = 0;
-        }
-        str = ampm.c[i];
-        paramInt2 = i;
-      }
-      else if (((this.a.i == 1) || (this.a.i == 2)) && (paramInt1 < this.a.a.length) && (this.a.a[paramInt1] != null) && (((List)this.a.a[paramInt1]).size() > 0))
-      {
-        if (paramInt2 >= 0)
-        {
-          i = paramInt2;
-          if (paramInt2 < ((List)this.a.a[paramInt1]).size()) {}
-        }
-        else
-        {
-          i = 0;
-        }
-        if (((BaseAddress)((List)this.a.a[paramInt1]).get(i)).code.equals("0"))
-        {
-          str = ConditionSearchFriendActivity.a();
-          paramInt2 = i;
-        }
-        else
-        {
-          str = ((BaseAddress)((List)this.a.a[paramInt1]).get(i)).name;
-          paramInt2 = i;
-        }
-      }
-      else
-      {
-        str = "";
-      }
-    }
+    this.jdField_a_of_type_Apqf = paramapqf;
+    a(this.jdField_a_of_type_Int, paramInt);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void b()
+  {
+    a();
+    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    this.jdField_a_of_type_Apqf = null;
   }
 }
 

@@ -1,31 +1,26 @@
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.NowEntryData;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedReport;
 
-public class avuz
-  implements RadioGroup.OnCheckedChangeListener
+class avuz
+  extends CustomizedReport
 {
-  public avuz(MsgBackupDateFragment paramMsgBackupDateFragment) {}
+  avuz(avux paramavux) {}
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public void onNowEntry(Bundle paramBundle, NowEntryData paramNowEntryData) {}
+  
+  public void onReport(Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.BackupAndMigrateDateFragment", 2, "checkedId = " + paramInt);
+    avuo localavuo = avvz.a().a();
+    if (localavuo != null) {
+      localavuo.a(paramBundle);
     }
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
-      return;
-      MsgBackupDateFragment.a(this.a, 1);
-      continue;
-      MsgBackupDateFragment.a(this.a, 2);
+    if ((paramBundle != null) && ("weishi_service_num".equals(paramBundle.getString("id", "")))) {
+      vjx.a(avvy.jdField_a_of_type_JavaLangString, "", "", avvy.b, avvy.jdField_a_of_type_Int, 4, 2, paramBundle.getInt("play_time"));
     }
   }
+  
+  public void setNowEntryData(NowEntryData paramNowEntryData) {}
 }
 
 

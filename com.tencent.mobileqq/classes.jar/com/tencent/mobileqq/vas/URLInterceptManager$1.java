@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.vas;
 
 import android.content.Context;
-import bgfs;
+import bhon;
 
 public class URLInterceptManager$1
   implements Runnable
 {
-  public URLInterceptManager$1(bgfs parambgfs, Context paramContext) {}
+  public URLInterceptManager$1(bhon parambhon, Context paramContext) {}
   
   public void run()
   {

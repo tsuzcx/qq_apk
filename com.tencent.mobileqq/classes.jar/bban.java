@@ -1,24 +1,35 @@
-import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 public class bban
-  extends bbam
+  extends aofu
 {
-  bays a(ahzl paramahzl, List<bayt> paramList, String paramString1, boolean paramBoolean, String paramString2)
-  {
-    bbgj.a(70);
-    return new baxu(paramahzl, paramList, paramString1);
-  }
+  public bban(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
   
-  bayt a(AccountSearchPb.hotwordrecord paramhotwordrecord, String paramString1, CharSequence paramCharSequence1, String paramString2, CharSequence paramCharSequence2)
+  protected void onUpdateTroopGetMemberList(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    return null;
-  }
-  
-  bayt a(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
-  {
-    return new baxv(paramrecord, paramString, paramCharSequence);
+    if (paramBoolean)
+    {
+      if (!this.a.isAdded())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ReceiptMessageReadMemberListContainerFragment", 2, "onUpdateTroopGetMemberList succ with fragment is detached");
+        }
+        return;
+      }
+      ReceiptMessageReadMemberListContainerFragment.a(this.a).getApp().getSharedPreferences("last_update_time" + ReceiptMessageReadMemberListContainerFragment.a(this.a).getCurrentAccountUin(), 4).edit().putLong("key_last_update_time" + ReceiptMessageReadMemberListContainerFragment.a(this.a), paramLong).apply();
+      ReceiptMessageReadMemberListContainerFragment.a(this.a).sendEmptyMessage(4);
+      ReceiptMessageReadMemberListContainerFragment.a(this.a).removeObserver(this);
+      return;
+    }
+    ReceiptMessageReadMemberListContainerFragment.a(this.a).sendEmptyMessage(-1);
+    QLog.d("ReceiptMessageReadMemberListContainerFragment", 1, "mTroopObserver onUpdateTroopGetMemberList fail");
   }
 }
 

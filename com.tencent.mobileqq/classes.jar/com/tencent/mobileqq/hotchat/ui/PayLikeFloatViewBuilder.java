@@ -10,30 +10,31 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.DisplayMetrics;
-import aufs;
-import aufy;
-import augb;
-import bfvo;
-import bgoe;
-import bgog;
-import bgoj;
+import avlm;
+import avls;
+import avlv;
+import bheg;
+import bhyo;
+import bhyq;
+import bhyt;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import java.io.File;
 
 public class PayLikeFloatViewBuilder
-  extends aufy
+  extends avls
 {
   private static boolean jdField_a_of_type_Boolean;
   private Drawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
   
-  public PayLikeFloatViewBuilder(Context paramContext, int paramInt, aufs paramaufs)
+  public PayLikeFloatViewBuilder(Context paramContext, int paramInt, avlm paramavlm)
   {
-    super(paramContext, paramInt, paramaufs);
+    super(paramContext, paramInt, paramavlm);
   }
   
   private static Bitmap a(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    bgoe localbgoe = null;
+    bhyo localbhyo = null;
     String str = Environment.getExternalStorageDirectory().getAbsolutePath() + "/tencent/MobileQQ/.nearby/nearby_pay_zan_anim.png";
     if (new File(str).exists())
     {
@@ -45,7 +46,7 @@ public class PayLikeFloatViewBuilder
     {
       try
       {
-        paramContext = bfvo.a(str, paramQQAppInterface);
+        paramContext = bheg.a(str, paramQQAppInterface);
         return paramContext;
       }
       catch (OutOfMemoryError paramContext)
@@ -55,13 +56,13 @@ public class PayLikeFloatViewBuilder
           paramContext = null;
         }
       }
-      paramContext = localbgoe;
+      paramContext = localbhyo;
     } while (jdField_a_of_type_Boolean);
     jdField_a_of_type_Boolean = true;
     paramContext = new Bundle();
-    localbgoe = new bgoe("https://pub.idqqimg.com/pc/misc/nearby_pay_zan_anim.png", new File(str + ".tmp"));
-    localbgoe.b = 2;
-    ((bgog)paramQQAppInterface.getManager(47)).a(1).a(localbgoe, new augb(str), paramContext);
+    localbhyo = new bhyo("https://pub.idqqimg.com/pc/misc/nearby_pay_zan_anim.png", new File(str + ".tmp"));
+    localbhyo.b = 2;
+    ((bhyq)paramQQAppInterface.getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1).a(localbhyo, new avlv(str), paramContext);
     return null;
   }
   

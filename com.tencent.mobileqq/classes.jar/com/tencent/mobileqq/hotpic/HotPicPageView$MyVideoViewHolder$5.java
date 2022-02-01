@@ -2,16 +2,16 @@ package com.tencent.mobileqq.hotpic;
 
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-import auhb;
+import avmv;
 
 public class HotPicPageView$MyVideoViewHolder$5
   implements Runnable
 {
-  public HotPicPageView$MyVideoViewHolder$5(auhb paramauhb, Drawable paramDrawable) {}
+  public HotPicPageView$MyVideoViewHolder$5(avmv paramavmv, Drawable paramDrawable) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Auhb.b.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.jdField_a_of_type_Avmv.b.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
 }
 

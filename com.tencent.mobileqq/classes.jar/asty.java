@@ -1,37 +1,41 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import java.util.UUID;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-class asty
-  implements asrl
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/extendfriend/wiget/CompletePersonalDataDialog$TaskAdapter$ViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "taskDescription", "Landroid/widget/TextView;", "getTaskDescription", "()Landroid/widget/TextView;", "setTaskDescription", "(Landroid/widget/TextView;)V", "taskStatus", "Landroid/widget/Button;", "getTaskStatus", "()Landroid/widget/Button;", "setTaskStatus", "(Landroid/widget/Button;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class asty
+  extends RecyclerView.ViewHolder
 {
-  asty(astk paramastk) {}
+  @NotNull
+  private Button jdField_a_of_type_AndroidWidgetButton;
+  @NotNull
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void a()
+  public asty(@NotNull View paramView)
   {
-    FileManagerEntity localFileManagerEntity = this.a.jdField_a_of_type_Asqs.a();
-    becp localbecp = this.a.a(localFileManagerEntity);
-    if ((TextUtils.isEmpty(astk.a(this.a))) && (localbecp.a != null)) {
-      astk.a(this.a, localbecp.a.toString());
-    }
-    bebp localbebp = new bebp(localFileManagerEntity.TroopUin, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidAppActivity);
-    if (((localbecp.b == 3) || (localbecp.b == 2)) && (localbecp.a != null)) {
-      localbebp.a(localbecp.a);
-    }
-    localFileManagerEntity.status = 2;
+    super(paramView);
+    View localView = paramView.findViewById(2131378509);
+    Intrinsics.checkExpressionValueIsNotNull(localView, "itemView.findViewById(R.id.task_description)");
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView);
+    paramView = paramView.findViewById(2131378514);
+    Intrinsics.checkExpressionValueIsNotNull(paramView, "itemView.findViewById(R.id.task_status)");
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView);
   }
   
-  public void b()
+  @NotNull
+  public final Button a()
   {
-    Object localObject = this.a.jdField_a_of_type_Asqs.a();
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((FileManagerEntity)localObject).TroopUin);
-    localObject = this.a.a((FileManagerEntity)localObject);
-    if (!TextUtils.isEmpty(astk.a(this.a)))
-    {
-      localTroopFileTransferManager.a(UUID.fromString(astk.a(this.a)));
-      astk.a(this.a, (becp)localObject);
-    }
+    return this.jdField_a_of_type_AndroidWidgetButton;
+  }
+  
+  @NotNull
+  public final TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
   }
 }
 

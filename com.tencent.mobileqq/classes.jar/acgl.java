@@ -1,48 +1,49 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.HexUtil;
-import com.tencent.mobileqq.utils.httputils.PkgTools;
-import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.RoutingHead;
-import msf.msgsvc.msg_svc.WPATmp;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class acgl
-  implements abyl
+class acgl
+  implements acgx
 {
-  public int a()
+  public boolean a(acfw paramacfw, String paramString, String... paramVarArgs)
   {
-    return 1005;
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = paramQQAppInterface.getMsgCache().b(paramMessageRecord.frienduin);
-    msg_svc.WPATmp localWPATmp = new msg_svc.WPATmp();
-    localWPATmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    if (paramQQAppInterface != null)
+    Object localObject = null;
+    if (paramacfw != null) {}
+    for (paramVarArgs = paramacfw.a(); (paramacfw == null) || (paramVarArgs == null); paramVarArgs = null)
     {
-      paramMessageRecord = new byte[paramQQAppInterface.length - 2];
-      PkgTools.copyData(paramMessageRecord, 0, paramQQAppInterface, 2, paramQQAppInterface.length - 2);
-      if (QLog.isColorLevel()) {
-        QLog.d("WPARoutingType", 2, "wpa------>" + HexUtil.bytes2HexStr(paramMessageRecord) + ",length:" + paramMessageRecord.length);
-      }
-      localWPATmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
+      acho.d("GdtDeviceJsCallHandler", "handleJsCallRequest error");
+      return true;
     }
-    paramRoutingHead.wpa_tmp.set(localWPATmp);
-    return true;
-  }
-  
-  public int b()
-  {
-    return 7000;
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("deviceId", acil.a(paramVarArgs));
+    }
+    catch (JSONException localJSONException)
+    {
+      try
+      {
+        for (;;)
+        {
+          paramacfw.callJs(paramString, new String[] { localJSONObject.toString() });
+          paramString = localObject;
+          if (paramacfw != null) {
+            paramString = paramacfw.a();
+          }
+          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getDeviceId", paramString);
+          return true;
+          localJSONException = localJSONException;
+          acho.d("GdtDeviceJsCallHandler", "handleJsCallRequest error", localJSONException);
+        }
+      }
+      catch (Throwable paramString)
+      {
+        for (;;)
+        {
+          acho.d("GdtDeviceJsCallHandler", "handleJsCallRequest error", paramString);
+        }
+      }
+    }
   }
 }
 

@@ -1,16 +1,16 @@
-public class aqgu
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class aqgu
+  implements DialogInterface.OnClickListener
 {
-  public boolean a;
-  public boolean b;
+  aqgu(aqgs paramaqgs) {}
   
-  public String toString()
-  {
-    return "QVipDiyTemplateConfig{enable=" + this.a + '}';
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqgu
  * JD-Core Version:    0.7.0.1
  */

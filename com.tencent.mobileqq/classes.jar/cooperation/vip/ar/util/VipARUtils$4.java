@@ -1,21 +1,21 @@
 package cooperation.vip.ar.util;
 
-import bkzx;
-import blab;
+import bmmb;
+import bmmf;
 import cooperation.qzone.networkedmodule.QzoneModuleManager;
 
 public class VipARUtils$4
   implements Runnable
 {
-  public VipARUtils$4(bkzx parambkzx) {}
+  public VipARUtils$4(bmmb parambmmb) {}
   
   public void run()
   {
-    if ((bkzx.a("VipARUtils_SO_md5", bkzx.d())) || (!bkzx.b())) {}
+    if ((bmmb.a("VipARUtils_SO_md5", bmmb.d())) || (!bmmb.b())) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        QzoneModuleManager.getInstance().downloadModule("libTar.so", new blab(this));
+        QzoneModuleManager.getInstance().downloadModule("libTar.so", new bmmf(this));
       }
       return;
     }

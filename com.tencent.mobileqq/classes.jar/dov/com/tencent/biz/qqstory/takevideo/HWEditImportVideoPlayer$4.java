@@ -1,23 +1,23 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bnck;
-import bnfa;
+import bosc;
+import bous;
 
 public class HWEditImportVideoPlayer$4
   implements Runnable
 {
-  public HWEditImportVideoPlayer$4(bnfa parambnfa) {}
+  public HWEditImportVideoPlayer$4(bous parambous) {}
   
   public void run()
   {
     if (this.this$0.g) {}
-    bnck localbnck;
+    bosc localbosc;
     do
     {
       return;
-      localbnck = (bnck)this.this$0.a(bnck.class);
-    } while (localbnck == null);
-    localbnck.b();
+      localbosc = (bosc)this.this$0.a(bosc.class);
+    } while (localbosc == null);
+    localbosc.b();
   }
 }
 

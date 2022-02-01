@@ -1,23 +1,9 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
+import android.view.View;
+import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
 
-public class bbye
-  extends bbyh
+public abstract interface bbye
 {
-  public bbye(TCProgressBar paramTCProgressBar)
-  {
-    super(paramTCProgressBar);
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    this.a.b.left = this.f;
-    this.a.b.right = (this.f + this.g);
-    this.a.a.setColor(this.a.m);
-    paramCanvas.drawRect(this.a.b, this.a.a);
-    super.a(paramCanvas);
-  }
+  public abstract void a(View paramView, int paramInt1, ScribbleResMgr.ResInfo paramResInfo, int paramInt2);
 }
 
 

@@ -1,19 +1,72 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.reflect.Array;
 
-class avhn
-  implements View.OnClickListener
+public class avhn
 {
-  avhn(avhj paramavhj, View.OnClickListener paramOnClickListener) {}
+  static avhn[][] a;
+  public int a;
+  public int b;
   
-  public void onClick(View paramView)
+  static
   {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    jdField_a_of_type_Array2dOfAvhn = (avhn[][])Array.newInstance(avhn.class, new int[] { 3, 3 });
+    int i = 0;
+    while (i < 3)
+    {
+      int j = 0;
+      while (j < 3)
+      {
+        jdField_a_of_type_Array2dOfAvhn[i][j] = new avhn(i, j);
+        j += 1;
+      }
+      i += 1;
     }
-    this.jdField_a_of_type_Avhj.b();
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  private avhn(int paramInt1, int paramInt2)
+  {
+    a(paramInt1, paramInt2);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public static avhn a(int paramInt1, int paramInt2)
+  {
+    try
+    {
+      a(paramInt1, paramInt2);
+      avhn localavhn = jdField_a_of_type_Array2dOfAvhn[paramInt1][paramInt2];
+      return localavhn;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  private static void a(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 < 0) || (paramInt1 > 2)) {
+      throw new IllegalArgumentException("row must be in range 0-2");
+    }
+    if ((paramInt2 < 0) || (paramInt2 > 2)) {
+      throw new IllegalArgumentException("column must be in range 0-2");
+    }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public int b()
+  {
+    return this.b;
+  }
+  
+  public String toString()
+  {
+    return "(row=" + this.jdField_a_of_type_Int + ",clmn=" + this.b + ")";
   }
 }
 

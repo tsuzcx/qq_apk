@@ -1,11 +1,13 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
 
-public abstract interface augg
+public class augg
+  implements DialogInterface.OnClickListener
 {
-  public abstract RecyclerView.ViewHolder a(ViewGroup paramViewGroup, int paramInt);
+  public augg(QfileEditBottomBar paramQfileEditBottomBar) {}
   
-  public abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

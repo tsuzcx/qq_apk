@@ -1,20 +1,30 @@
 package com.tencent.qqmini.sdk.runtime;
 
+import android.os.Bundle;
+import android.os.ResultReceiver;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
+
 class BaseUIProxy$1
-  implements BaseRuntimeLoader.OnAppRuntimeLoadListener
+  implements Runnable
 {
-  BaseUIProxy$1(BaseUIProxy paramBaseUIProxy) {}
+  BaseUIProxy$1(BaseUIProxy paramBaseUIProxy, Bundle paramBundle) {}
   
-  public void onResult(int paramInt, String paramString, BaseRuntimeLoader paramBaseRuntimeLoader)
+  public void run()
   {
-    if ((paramInt == 0) && (paramBaseRuntimeLoader != null))
+    try
     {
-      if (paramBaseRuntimeLoader == this.this$0.mCurrRuntimeLoader) {
-        this.this$0.onRuntimeReady();
+      ResultReceiver localResultReceiver = (ResultReceiver)this.val$bundle.getParcelable("receiver");
+      if (localResultReceiver != null)
+      {
+        QMLog.i("minisdk-start_UIProxy", "notify resultReceiver.");
+        localResultReceiver.send(0, new Bundle());
       }
       return;
     }
-    this.this$0.onRuntimeFail(paramInt, paramString);
+    catch (Throwable localThrowable)
+    {
+      QMLog.e("minisdk-start_UIProxy", "exception when notify resultReceiver.", localThrowable);
+    }
   }
 }
 

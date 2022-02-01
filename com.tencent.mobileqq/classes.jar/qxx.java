@@ -1,12 +1,7 @@
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
-
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTaskRemoteRepo$IReportTaskProgressCallback;", "", "onReportFailed", "", "errorCode", "", "errorMsg", "", "onReportSucceed", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface qxx
+public class qxx
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt, @Nullable String paramString);
+  public int a;
+  public long a;
 }
 
 

@@ -1,40 +1,83 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.hardware.GeomagneticField;
+import android.hardware.Sensor;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class aqds
+public abstract class aqds
+  implements SensorEventListener
 {
-  public int a = 1;
-  public int b = 1;
+  private float jdField_a_of_type_Float = -1.0F;
+  protected SensorManager a;
+  protected aqdl a;
+  protected List<Sensor> a;
+  private boolean jdField_a_of_type_Boolean;
+  protected float[] a;
+  private float b = -1.0F;
+  private float c = -1.0F;
   
-  public static aqds a(String paramString)
+  public aqds(SensorManager paramSensorManager, aqdl paramaqdl)
   {
-    aqds localaqds = new aqds();
-    try
-    {
-      paramString = new JSONObject(paramString);
-      localaqds.a = paramString.optInt("preloadPskey", 1);
-      localaqds.b = paramString.optInt("enableFTSMerge", 1);
-      QLog.d("WVPreloadPskeyConfProcessor", 2, "confBean = " + localaqds.toString());
-      return localaqds;
-    }
-    catch (Exception paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("WVPreloadPskeyConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-    }
-    return localaqds;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_ArrayOfFloat = new float[3];
+    this.jdField_a_of_type_AndroidHardwareSensorManager = paramSensorManager;
+    this.jdField_a_of_type_Aqdl = paramaqdl;
   }
   
-  public String toString()
+  private GeomagneticField a()
   {
-    StringBuilder localStringBuilder = new StringBuilder(20);
-    localStringBuilder.append("preloadPskey:").append(this.a);
-    return localStringBuilder.toString();
+    if (this.jdField_a_of_type_Boolean) {
+      return new GeomagneticField(this.jdField_a_of_type_Float, this.b, this.c, System.currentTimeMillis());
+    }
+    return null;
   }
+  
+  protected float a()
+  {
+    GeomagneticField localGeomagneticField = a();
+    if (localGeomagneticField != null) {
+      return localGeomagneticField.getDeclination();
+    }
+    return 0.0F;
+  }
+  
+  public void a(int paramInt)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      Sensor localSensor = (Sensor)localIterator.next();
+      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, localSensor, paramInt);
+    }
+  }
+  
+  public void b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      Sensor localSensor = (Sensor)localIterator.next();
+      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, localSensor, 1);
+    }
+  }
+  
+  public void c()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      Sensor localSensor = (Sensor)localIterator.next();
+      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this, localSensor);
+    }
+  }
+  
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqds
  * JD-Core Version:    0.7.0.1
  */

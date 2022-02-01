@@ -1,14 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryBaseTenDocFragment;
+import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
 
-class ajqy
-  implements DialogInterface.OnClickListener
+public class ajqy
+  implements ajqv
 {
-  ajqy(ajqv paramajqv, Runnable paramRunnable) {}
+  public ajqy(ChatHistoryBaseTenDocFragment paramChatHistoryBaseTenDocFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(TencentDocItem paramTencentDocItem)
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    return (this.a.a != null) && (this.a.a.a(paramTencentDocItem));
   }
 }
 

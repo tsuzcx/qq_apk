@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import amtz;
 import android.text.TextUtils;
+import anwn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -64,8 +64,8 @@ class HotChatManager$3
         }
       }
       this.this$0.f = false;
-      if (this.this$0.jdField_a_of_type_Amtz != null) {
-        this.this$0.jdField_a_of_type_Amtz.a();
+      if (this.this$0.jdField_a_of_type_Anwn != null) {
+        this.this$0.jdField_a_of_type_Anwn.a();
       }
     }
   }

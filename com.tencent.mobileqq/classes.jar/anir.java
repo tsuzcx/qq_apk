@@ -1,324 +1,138 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
+import android.util.SparseIntArray;
 import java.util.ArrayList;
-import java.util.List;
-import tencent.im.oidb.cmd0x7c7.cmd0x7c7.RspBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class anir
-  extends anio
+  implements anjf
 {
-  public anir(QQAppInterface paramQQAppInterface, FriendListHandler paramFriendListHandler)
-  {
-    super(paramQQAppInterface, paramFriendListHandler);
-  }
+  public static SparseIntArray a = new SparseIntArray();
   
-  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public static int a(int paramInt1, boolean paramBoolean1, int paramInt2, int paramInt3, boolean paramBoolean2)
   {
-    int i = paramToServiceMsg.extraData.getInt("key_permission_opcode");
-    boolean bool2 = paramToServiceMsg.extraData.getBoolean("key_dongtai_permission", false);
-    FriendListHandler localFriendListHandler = this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
-    boolean bool1;
-    if (FriendListHandler.parseSSOPkg(paramToServiceMsg, paramFromServiceMsg, paramObject) == null)
-    {
-      if (!QLog.isColorLevel()) {
-        break label169;
-      }
-      QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handleSetDongtaiPermission: ssoPkg parse failed");
-      bool1 = false;
-    }
-    for (;;)
-    {
-      if (!bool1) {
-        if (i == 1) {
-          bool2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNotAllowedSeeMyDongtai(false);
-        }
-      }
-      label259:
-      for (;;)
-      {
-        label76:
-        if (i == 1) {
-          a(81, bool1, Boolean.valueOf(bool2));
-        }
-        label169:
-        do
-        {
-          return;
-          if (i == 1) {}
-          try
-          {
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.setNotAllowedSeeMyDongtai(bool2, false);
-          }
-          catch (Exception paramToServiceMsg)
-          {
-            if (!QLog.isColorLevel()) {
-              break label169;
-            }
-            QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handleSetDongtaiPermission " + paramToServiceMsg.getMessage());
-          }
-          if (i == 2)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.setShieldHisDongtai(bool2, false);
-            break label262;
-            bool1 = false;
-            break;
-          }
-          if (i != 3) {
-            break label262;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.setNotAllowedSeeMyDongtai(bool2, false);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.setShieldHisDongtai(bool2, false);
-          break label262;
-          if (i != 2) {
-            break label259;
-          }
-          bool2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getShieldHisDongtai(false);
-          break label76;
-          if (i == 2)
-          {
-            a(83, bool1, Boolean.valueOf(bool2));
-            return;
-          }
-        } while (i != 3);
-        a(85, bool1, null);
-        return;
-      }
-      label262:
-      bool1 = true;
-    }
-  }
-  
-  private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    boolean bool3 = true;
-    boolean bool4 = true;
-    boolean bool1;
+    int k = 0;
+    int j = 0;
     int i;
-    Object localObject;
-    if ((paramObject != null) && (paramFromServiceMsg.isSuccess()))
-    {
-      bool1 = true;
-      i = paramToServiceMsg.extraData.getInt("key_permission_opcode");
-      paramFromServiceMsg = null;
-      localObject = null;
-      if (!bool1) {
-        break label698;
-      }
+    if (paramInt3 != 0) {
+      i = 1;
     }
-    for (;;)
-    {
-      try
+    while ((paramInt2 == 0) && (!paramBoolean2)) {
+      if (i != 0)
       {
-        paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
-        paramToServiceMsg.mergeFrom((byte[])paramObject);
-        if ((paramToServiceMsg != null) && (paramToServiceMsg.uint32_result.get() == 0))
-        {
-          bool2 = true;
-          if (!bool2) {
-            continue;
-          }
-          paramObject = new cmd0x7c7.RspBody();
-          paramObject.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
-          if (i != 1) {
-            continue;
-          }
-          j = paramObject.uint32_not_see_qzone.get();
-          if (j != 1) {
-            continue;
-          }
-          bool1 = true;
-          bool3 = bool1;
-        }
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        try
-        {
-          if (paramObject.uint32_not_see_qzone.get() == 1)
-          {
-            bool1 = true;
-            paramToServiceMsg.add(Boolean.valueOf(bool1));
-            if (paramObject.uint32_prevent_dynamic.get() == 1)
-            {
-              bool1 = true;
-              paramToServiceMsg.add(Boolean.valueOf(bool1));
-              paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-              if (paramObject.uint32_not_see_qzone.get() != 1) {
-                continue;
-              }
-              bool1 = true;
-              paramFromServiceMsg.setNotAllowedSeeMyDongtai(bool1, false);
-              paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-              if (paramObject.uint32_prevent_dynamic.get() != 1) {
-                continue;
-              }
-              bool1 = true;
-              paramFromServiceMsg.setShieldHisDongtai(bool1, false);
-              bool1 = true;
-            }
-          }
-          else
-          {
-            bool1 = false;
-            continue;
-          }
-          bool1 = false;
-          continue;
-          bool1 = false;
-          continue;
-          bool1 = false;
-          continue;
-          if (paramToServiceMsg == null) {
-            continue;
-          }
-          int j = paramToServiceMsg.uint32_result.get();
-          paramToServiceMsg = localObject;
-          bool1 = bool4;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handleGetDongtaiPermission  fail resultCode : " + j);
-          paramToServiceMsg = localObject;
-          bool1 = bool4;
-        }
-        catch (Exception paramObject)
-        {
-          paramFromServiceMsg = paramToServiceMsg;
-          paramToServiceMsg = paramObject;
-          bool1 = bool3;
-          continue;
-        }
-        paramToServiceMsg = paramToServiceMsg;
-        bool1 = bool3;
-        if (QLog.isColorLevel()) {
-          QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handleGetDongtaiPermission Exception " + paramToServiceMsg.getMessage());
-        }
-        paramToServiceMsg = paramFromServiceMsg;
-        bool2 = false;
-        continue;
-        paramToServiceMsg = localObject;
-        bool1 = bool4;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "ssoPkg is null");
-        paramToServiceMsg = localObject;
-        bool1 = bool4;
-        continue;
-        if (i == 2)
-        {
-          bool3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getShieldHisDongtai(false);
-          paramFromServiceMsg = paramToServiceMsg;
-          continue;
-        }
-        paramFromServiceMsg = paramToServiceMsg;
-        bool3 = bool1;
-        if (i != 3) {
-          continue;
-        }
-        paramFromServiceMsg = new ArrayList();
-        paramFromServiceMsg.add(Boolean.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNotAllowedSeeMyDongtai(false)));
-        paramFromServiceMsg.add(Boolean.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getShieldHisDongtai(false)));
-        bool3 = bool1;
-        continue;
-        if (i == 2)
-        {
-          a(84, bool2, Boolean.valueOf(bool3));
-          return;
-        }
-        if (i != 3) {
-          continue;
-        }
-        a(86, bool2, paramFromServiceMsg);
-        return;
-      }
-      try
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.setNotAllowedSeeMyDongtai(bool1, false);
-        paramToServiceMsg = null;
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        bool1 = bool3;
-        continue;
-        paramToServiceMsg = null;
-        bool1 = true;
-        continue;
-      }
-      paramFromServiceMsg = paramToServiceMsg;
-      bool3 = bool1;
-      if (!bool2)
-      {
-        if (i == 1)
-        {
-          bool3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNotAllowedSeeMyDongtai(false);
-          paramFromServiceMsg = paramToServiceMsg;
-        }
+        paramInt2 = j;
+        return paramInt2;
+        i = 0;
       }
       else
       {
-        if (i != 1) {
-          continue;
-        }
-        a(82, bool2, Boolean.valueOf(bool3));
-        return;
-        bool1 = false;
-        break;
-        bool2 = false;
-        continue;
-        bool1 = false;
-        continue;
-        if (i == 2)
-        {
-          j = paramObject.uint32_prevent_dynamic.get();
-          if (j == 1)
-          {
-            bool1 = true;
-            bool3 = bool1;
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.setShieldHisDongtai(bool1, false);
-            paramToServiceMsg = null;
-            continue;
-          }
-          bool1 = false;
-          continue;
-        }
-        if (i != 3) {
-          break label690;
-        }
-        paramToServiceMsg = new ArrayList();
+        return 6;
       }
-      label690:
-      label698:
-      bool3 = true;
-      boolean bool2 = bool1;
-      paramToServiceMsg = null;
-      bool1 = bool3;
+    }
+    if ((paramInt2 != 1) && (paramInt2 != 2)) {
+      return 101;
+    }
+    if (a.get(paramInt1) == 0)
+    {
+      j = 1;
+      switch (paramInt2)
+      {
+      default: 
+        label67:
+        paramInt3 = k;
+        label95:
+        a.put(paramInt1, 1);
+        if (paramBoolean1) {
+          if (paramInt2 == 1) {
+            paramInt2 = 4;
+          }
+        }
+        break;
+      }
+    }
+    for (;;)
+    {
+      paramInt3 = paramInt2;
+      if (paramInt1 == 1)
+      {
+        paramInt3 = paramInt2;
+        if (!anjy.b) {
+          paramInt3 = paramInt2 + 10;
+        }
+      }
+      paramInt2 = paramInt3;
+      if (paramInt1 != 1) {
+        break;
+      }
+      paramInt2 = paramInt3;
+      if (anjy.jdField_d_of_type_Boolean) {
+        break;
+      }
+      return paramInt3 | 0x20;
+      j = 0;
+      break label67;
+      paramInt3 = k;
+      if (j != 0) {
+        break label95;
+      }
+      paramInt3 = 1;
+      break label95;
+      if (j != 0)
+      {
+        paramInt3 = 2;
+        break label95;
+      }
+      paramInt3 = 3;
+      break label95;
+      paramInt2 = 5;
+      continue;
+      paramInt2 = paramInt3;
+      if (i == 0) {
+        paramInt2 = paramInt3 + 6;
+      }
     }
   }
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public String a(int paramInt)
   {
-    String str = paramFromServiceMsg.getServiceCmd();
-    if ("OidbSvc.0x7c6_0".equals(str)) {
-      c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    switch (paramInt)
+    {
+    default: 
+      return "";
+    case 1: 
+      return "_sprite_aio";
+    case 2: 
+      return "_sprite_drawer";
+    case 3: 
+      return "_sprite_friend_card";
+    case 113: 
+      return "_sprite_sdk";
+    case 4: 
+      return "_sprite_action_fps";
+    case 10: 
+      return "_apollo_so";
+    case 20: 
+      return "_apollo_crash";
+    case 30: 
+      return "_apollo_resource_download";
+    case 40: 
+      return "_apollo_store_sso";
+    case 5: 
+      return "_apollo_view_re_attach";
     }
-    while (!"OidbSvc.0x7c7_0".equals(str)) {
-      return;
-    }
-    d(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    return "_game_center";
   }
   
-  public boolean a(String paramString)
+  public void a()
   {
-    return ("OidbSvc.0x7c6_0".equals(paramString)) || ("OidbSvc.0x7c7_0".equals(paramString));
+    a.clear();
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return anjy.jdField_d_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt));
+  }
+  
+  public boolean b(int paramInt)
+  {
+    return anjy.e.contains(Integer.valueOf(paramInt));
   }
 }
 

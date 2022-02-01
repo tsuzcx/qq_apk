@@ -46,11 +46,11 @@ public class AlbumPermissionView
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    LayoutInflater.from(paramContext).inflate(2131559981, this, true);
+    LayoutInflater.from(paramContext).inflate(2131560025, this, true);
     setOrientation(1);
     setGravity(17);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131379591);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379873));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131379903);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380206));
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
   }
   
@@ -64,7 +64,7 @@ public class AlbumPermissionView
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131379591) {
+    if (paramView.getId() == 2131379903) {
       PermissionUtils.requestStorePermission((AppActivity)this.jdField_a_of_type_AndroidContentContext, 10000, this.jdField_a_of_type_MqqAppQQPermissionCallback);
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -79,10 +79,10 @@ public class AlbumPermissionView
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167345));
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167371));
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165362));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165368));
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.avcore.jni.log;
 
-import mwv;
+import ncl;
 
 public class GAClientLogReportJni
 {
   private static final String TAG = "GAClientLogReport";
   protected final IClientLogReport mImpl;
-  public final boolean mNativeInit;
+  protected final boolean mNativeInit;
   
   public GAClientLogReportJni(IClientLogReport paramIClientLogReport)
   {
@@ -27,7 +27,7 @@ public class GAClientLogReportJni
         }
         catch (Throwable paramIClientLogReport)
         {
-          mwv.a("GAClientLogReport", "inti fail.", paramIClientLogReport);
+          ncl.a("GAClientLogReport", "inti fail.", paramIClientLogReport);
           return;
         }
         finally
@@ -35,7 +35,7 @@ public class GAClientLogReportJni
           this.mNativeInit = false;
         }
         paramIClientLogReport = paramIClientLogReport;
-        mwv.a("GAClientLogReport", "cacheMethodIds fail.", paramIClientLogReport);
+        ncl.a("GAClientLogReport", "cacheMethodIds fail.", paramIClientLogReport);
       }
     }
   }
@@ -46,7 +46,7 @@ public class GAClientLogReportJni
   {
     int i = 0;
     StringBuilder localStringBuilder;
-    if (mwv.c())
+    if (ncl.c())
     {
       localStringBuilder = new StringBuilder().append("callbackSendLog, sendUin[").append(paramLong).append("], topicId[").append(paramInt).append("], log[");
       if (paramArrayOfByte != null) {
@@ -56,7 +56,7 @@ public class GAClientLogReportJni
     label96:
     for (Object localObject = "null";; localObject = Integer.valueOf(paramArrayOfByte.length))
     {
-      mwv.b("GAClientLogReport", localObject + "]");
+      ncl.b("GAClientLogReport", localObject + "]");
       if (this.mImpl != null) {
         i = this.mImpl.sendLog(paramLong, paramInt, paramArrayOfByte, false);
       }

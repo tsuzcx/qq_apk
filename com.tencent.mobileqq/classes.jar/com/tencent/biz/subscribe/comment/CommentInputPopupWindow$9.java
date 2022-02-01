@@ -1,16 +1,16 @@
 package com.tencent.biz.subscribe.comment;
 
 import android.widget.ImageButton;
-import zfp;
+import zuu;
 
 public class CommentInputPopupWindow$9
   implements Runnable
 {
   public void run()
   {
-    zfp.a(this.this$0);
-    zfp.a(this.this$0).setVisibility(0);
-    zfp.b(this.this$0).setVisibility(8);
+    zuu.a(this.this$0);
+    zuu.a(this.this$0).setVisibility(0);
+    zuu.b(this.this$0).setVisibility(8);
   }
 }
 

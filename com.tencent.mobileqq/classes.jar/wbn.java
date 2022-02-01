@@ -1,28 +1,14 @@
-public class wbn
+import java.util.List;
+
+public abstract interface wbn
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  public boolean a;
-  private String b;
+  public abstract void a();
   
-  public wbn(String paramString)
-  {
-    this.b = paramString;
-  }
+  public abstract void a(int paramInt);
   
-  public void a()
-  {
-    wbo localwbo = new wbo(this, false);
-    wbp localwbp = new wbp(this, false);
-    vsx.a().a(localwbo, localwbp);
-  }
+  public abstract void a(List<wbk> paramList, boolean paramBoolean);
   
-  public void b()
-  {
-    wbo localwbo = new wbo(this, true);
-    wbp localwbp = new wbp(this, true);
-    vsx.a().a(localwbo, localwbp);
-  }
+  public abstract void a(wbo paramwbo);
 }
 
 

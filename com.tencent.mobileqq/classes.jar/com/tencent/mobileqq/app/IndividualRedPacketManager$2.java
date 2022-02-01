@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import amuo;
+import anxc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +12,7 @@ import java.util.LinkedList;
 public class IndividualRedPacketManager$2
   implements Runnable
 {
-  public IndividualRedPacketManager$2(amuo paramamuo) {}
+  public IndividualRedPacketManager$2(anxc paramanxc) {}
   
   public void run()
   {
@@ -23,13 +23,13 @@ public class IndividualRedPacketManager$2
     {
       arrayOfString = new String[4];
       localObject1 = str;
-      arrayOfString[0] = amuo.a(5);
+      arrayOfString[0] = anxc.a(5);
       localObject1 = str;
-      arrayOfString[1] = amuo.a(6);
+      arrayOfString[1] = anxc.a(6);
       localObject1 = str;
-      arrayOfString[2] = amuo.a(7);
+      arrayOfString[2] = anxc.a(7);
       localObject1 = str;
-      arrayOfString[3] = amuo.a(8);
+      arrayOfString[3] = anxc.a(8);
     }
     catch (Exception localException2)
     {
@@ -40,7 +40,7 @@ public class IndividualRedPacketManager$2
         File[] arrayOfFile;
         int j;
         if (QLog.isColorLevel()) {
-          QLog.e(amuo.b(), 2, "eliminateImageCache error: " + localException2.getMessage() + ", in step=" + (String)localObject1);
+          QLog.e(anxc.b(), 2, "eliminateImageCache error: " + localException2.getMessage() + ", in step=" + (String)localObject1);
         }
         label425:
         try

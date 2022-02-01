@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.theme.ListenTogetherTheme;
 
-import bdav;
+import behu;
 import com.tencent.mobileqq.activity.ChatFragment;
 
 public class AIOMusicSkin$4
   implements Runnable
 {
-  public AIOMusicSkin$4(bdav parambdav, boolean paramBoolean) {}
+  public AIOMusicSkin$4(behu parambehu, boolean paramBoolean) {}
   
   public void run()
   {
-    if (bdav.a(this.this$0) != null)
+    if (behu.a(this.this$0) != null)
     {
       if (this.a)
       {
-        this.this$0.a = false;
-        bdav.a(this.this$0, bdav.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout);
-        this.this$0.a(bdav.a(this.this$0).jdField_a_of_type_AndroidContentContext, bdav.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout);
+        this.this$0.b(false);
+        behu.a(this.this$0, behu.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout);
+        this.this$0.a(behu.a(this.this$0).jdField_a_of_type_AndroidContentContext, behu.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout);
       }
     }
     else {
       return;
     }
-    this.this$0.a(bdav.a(this.this$0), bdav.a(this.this$0));
+    this.this$0.a(behu.a(this.this$0), behu.a(this.this$0));
   }
 }
 

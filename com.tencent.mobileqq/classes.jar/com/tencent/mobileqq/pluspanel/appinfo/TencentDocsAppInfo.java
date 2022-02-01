@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import agwt;
-import ayfu;
-import bcvs;
+import ahpt;
+import ahvi;
+import becr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 
@@ -21,7 +22,7 @@ public class TencentDocsAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839202;
+    return 2130839223;
   }
   
   public int getAppID()
@@ -50,28 +51,28 @@ public class TencentDocsAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131697929);
+    return BaseApplicationImpl.getContext().getString(2131698212);
   }
   
-  public void onPlusPanelAppClick(ayfu paramayfu, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     QQAppInterface localQQAppInterface = paramBaseChatPie.app;
-    paramayfu.a("chat_tool_tencentdoc", localQQAppInterface.getCurrentAccountUin());
-    paramayfu.b(paramBaseChatPie);
-    bcvs.a(localQQAppInterface, paramBaseChatPie.getActivity(), paramSessionInfo.curFriendUin, paramSessionInfo.curType, paramSessionInfo.curFriendNick);
+    paramahvi.a("chat_tool_tencentdoc", localQQAppInterface.getCurrentAccountUin());
+    paramahvi.b(paramBaseChatPie);
+    becr.a(localQQAppInterface, paramBaseChatPie.getActivity(), paramSessionInfo.curFriendUin, paramSessionInfo.curType, paramSessionInfo.curFriendNick);
     if (paramSessionInfo.curType == 0) {
-      agwt.a(localQQAppInterface, "0X80093F4", paramSessionInfo.curType);
+      ahpt.a(localQQAppInterface, "0X80093F4", paramSessionInfo.curType);
     }
     do
     {
       return;
       if (paramSessionInfo.curType == 3000)
       {
-        agwt.a(localQQAppInterface, "0X80093F6", paramSessionInfo.curType);
+        ahpt.a(localQQAppInterface, "0X80093F6", paramSessionInfo.curType);
         return;
       }
     } while (paramSessionInfo.curType != 1);
-    agwt.a(localQQAppInterface, "0X80093F8", paramSessionInfo.curType);
+    ahpt.a(localQQAppInterface, "0X80093F8", paramSessionInfo.curType);
   }
 }
 

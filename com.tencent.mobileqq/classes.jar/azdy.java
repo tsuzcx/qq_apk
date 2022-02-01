@@ -1,18 +1,11 @@
-public class azdy
-  implements azeb
+class azdy
+  implements azde
 {
-  private azfa a;
+  azdy(azdw paramazdw) {}
   
-  public azdy(azfa paramazfa)
+  public void a(double paramDouble1, double paramDouble2)
   {
-    this.a = paramazfa;
-  }
-  
-  public void a(azfk paramazfk)
-  {
-    if (this.a != null) {
-      this.a.j(paramazfk);
-    }
+    this.a.a(paramDouble1);
   }
 }
 

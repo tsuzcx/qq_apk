@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.history;
 
-import abwz;
-import ajar;
-import alij;
+import acnh;
+import ajwg;
+import amgj;
 import android.text.TextUtils;
-import asle;
-import atbg;
-import bfwx;
+import atpk;
+import aufn;
+import bhfp;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForArkApp;
@@ -65,14 +65,14 @@ class ChatHistoryC2CLinkFragment$2
       localObject2 = new LinkedHashMap();
       ((LinkedHashMap)localObject2).putAll(ChatHistoryC2CLinkFragment.a(this.this$0));
       if ((localObject1 == null) || (((List)localObject1).isEmpty())) {
-        break label927;
+        break label955;
       }
       i = ((List)localObject1).size() - 1;
       if (i < 0) {
-        break label927;
+        break label955;
       }
       localObject3 = (MessageRecord)((List)localObject1).get(i);
-      if (!alij.a((MessageRecord)localObject3)) {
+      if (!amgj.a((MessageRecord)localObject3)) {
         break label771;
       }
       if (((MessageRecord)localObject3).shmsgseq < this.this$0.jdField_b_of_type_Long) {
@@ -95,7 +95,7 @@ class ChatHistoryC2CLinkFragment$2
         break label711;
       }
       localObject4 = (AbsShareMsg)((MessageForStructing)localObject4).structingMsg;
-      if ((((MessageRecord)localObject3).time < 1548460800L) || (!asle.a(((AbsShareMsg)localObject4).mMsgUrl))) {
+      if ((((MessageRecord)localObject3).time < 1548460800L) || (!atpk.a(((AbsShareMsg)localObject4).mMsgUrl))) {
         break label711;
       }
     }
@@ -103,7 +103,7 @@ class ChatHistoryC2CLinkFragment$2
     {
       i -= 1;
       break label229;
-      if (abwz.a(this.this$0.jdField_a_of_type_Int))
+      if (acnh.a(this.this$0.jdField_a_of_type_Int))
       {
         localObject1 = this.this$0;
         ((ChatHistoryC2CLinkFragment)localObject1).jdField_b_of_type_Long -= 1L;
@@ -130,7 +130,7 @@ class ChatHistoryC2CLinkFragment$2
       i = 0;
       break label125;
       label711:
-      localObject4 = atbg.a(((MessageRecord)localObject3).time * 1000L);
+      localObject4 = aufn.a(((MessageRecord)localObject3).time * 1000L);
       if (!((LinkedHashMap)localObject2).containsKey(localObject4)) {
         ((LinkedHashMap)localObject2).put(localObject4, new ArrayList());
       }
@@ -139,21 +139,27 @@ class ChatHistoryC2CLinkFragment$2
       label771:
       if ((((localObject3 instanceof MessageForText)) || ((localObject3 instanceof MessageForMixedMsg)) || ((localObject3 instanceof MessageForReplyText)) || ((localObject3 instanceof MessageForArkApp))) && (((MessageRecord)localObject3).time >= 1548460800L))
       {
-        localObject4 = ajar.a((MessageRecord)localObject3);
-        if ((!TextUtils.isEmpty((CharSequence)localObject4)) && (bfwx.b.matcher((CharSequence)localObject4).find()) && (ChatHistoryC2CLinkFragment.jdField_a_of_type_JavaUtilRegexPattern.matcher((CharSequence)localObject4).find()))
+        localObject4 = ajwg.a((MessageRecord)localObject3);
+        if (!TextUtils.isEmpty((CharSequence)localObject4))
         {
-          localObject4 = atbg.a(((MessageRecord)localObject3).time * 1000L);
-          if (!((LinkedHashMap)localObject2).containsKey(localObject4)) {
-            ((LinkedHashMap)localObject2).put(localObject4, new ArrayList());
+          if (((MessageRecord)localObject3).time < this.this$0.jdField_c_of_type_Long) {
+            this.this$0.jdField_c_of_type_Long = ((MessageRecord)localObject3).time;
           }
-          localObject4 = (List)((LinkedHashMap)localObject2).get(localObject4);
-          if (localObject4 != null) {
-            ((List)localObject4).add(localObject3);
+          if ((bhfp.b.matcher((CharSequence)localObject4).find()) && (ChatHistoryC2CLinkFragment.jdField_a_of_type_JavaUtilRegexPattern.matcher((CharSequence)localObject4).find()))
+          {
+            localObject4 = aufn.a(((MessageRecord)localObject3).time * 1000L);
+            if (!((LinkedHashMap)localObject2).containsKey(localObject4)) {
+              ((LinkedHashMap)localObject2).put(localObject4, new ArrayList());
+            }
+            localObject4 = (List)((LinkedHashMap)localObject2).get(localObject4);
+            if (localObject4 != null) {
+              ((List)localObject4).add(localObject3);
+            }
           }
         }
       }
     }
-    label927:
+    label955:
     if (this.this$0.jdField_a_of_type_JavaUtilArrayList == null) {
       this.this$0.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     }

@@ -1,22 +1,40 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aqyx
+public class aqyx
+  extends aqyt
 {
-  public static aqyi a(QQAppInterface paramQQAppInterface, aqzb paramaqzb, int paramInt)
+  public aqyn a(String paramString)
   {
-    switch (paramInt)
+    QLog.d("ArkMsgAIDisableConfProcessor", 1, "[onParsed] type=" + type() + ", content = " + paramString);
+    try
     {
-    default: 
-      return new aqzl(paramQQAppInterface, paramaqzb);
-    case 0: 
-      return new aqzl(paramQQAppInterface, paramaqzb);
+      aqzl localaqzl = (aqzl)aqxo.a(paramString, aqzl.class);
+      return new aqyr(paramString, localaqzl);
     }
-    return new aqyj(paramQQAppInterface, paramaqzb);
+    catch (QStorageInstantiateException localQStorageInstantiateException)
+    {
+      for (;;)
+      {
+        QLog.i("ArkMsgAIDisableConfProcessor", 1, "loadConfig:" + paramString + "fail", localQStorageInstantiateException);
+        Object localObject = null;
+      }
+    }
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public int type()
+  {
+    return 159;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqyx
  * JD-Core Version:    0.7.0.1
  */

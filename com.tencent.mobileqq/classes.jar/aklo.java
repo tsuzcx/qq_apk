@@ -1,597 +1,108 @@
-import com.tencent.mobileqq.activity.recent.HotChatCenterItemBuilder;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemAppletsFolderData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemConfessMsg;
-import com.tencent.mobileqq.activity.recent.data.RecentItemContactsGuideData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemImaxADData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemMayKnowFriendData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemMayKnowFriendVerticalListData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemNearbyLiveTipData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemPublicAccountADFolderData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemRecommendTroopData;
-import com.tencent.mobileqq.activity.recent.data.RecentMsgBoxItem;
-import com.tencent.mobileqq.activity.recent.data.RecentSayHelloBoxItem;
-import com.tencent.mobileqq.activity.recent.data.RecentSayHelloListItem;
-import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
-import com.tencent.mobileqq.apollo.activity.RecentHotchatItem;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.matchchat.RecentMatchChatListItem;
-import org.jetbrains.annotations.Nullable;
+import android.app.Activity;
+import android.media.AudioManager;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.Window;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
+import com.tencent.mobileqq.activity.photo.VideoPlayController.1;
+import com.tencent.mobileqq.activity.photo.VideoPlayController.2;
+import com.tencent.mobileqq.activity.photo.VideoPlayController.3;
+import com.tencent.mobileqq.activity.photo.VideoPlayController.4;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.transfile.dns.InnerDns;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
+import com.tencent.util.VersionUtils;
+import java.util.HashMap;
 
-public class aklo
+public abstract class aklo
 {
-  protected static final int[] a;
-  protected static final int[] b = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-  protected static final int[] c = { 0, 1, 2, 3 };
-  protected static final int[] d = { 0, 1 };
-  protected static final int[] e = { 0, 1, 2, 3 };
-  protected static final int[] f = { 0, 1, 2 };
-  protected static final int[] g = { 0, 1, 2 };
-  protected static final int[] h = { 0, 1, 2 };
-  protected static final int[] i = { 0, 1, 2, 3, 4 };
-  protected static final int[] j = { 0, 1, 2, 3 };
-  protected static final int[] k = { 0, 1, 2, 3 };
-  protected int a;
-  protected akkk a;
-  protected akll[] a;
-  protected int[] l;
+  private int jdField_a_of_type_Int = 0;
+  protected ahtp a;
+  akjs jdField_a_of_type_Akjs = new akjs();
+  aklp jdField_a_of_type_Aklp = new aklp(this, null);
+  public aklq a;
+  public aklw a;
+  Activity jdField_a_of_type_AndroidAppActivity;
+  View jdField_a_of_type_AndroidViewView;
+  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new VideoPlayController.1(this);
+  private final String jdField_a_of_type_JavaLangString = "carverW VideoPlayController";
+  protected boolean a;
+  private boolean b;
+  private boolean c;
+  private boolean d;
   
-  static
+  private void a(aklw paramaklw)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 0 };
+    if (QLog.isColorLevel()) {
+      QLog.d("carverW VideoPlayController", 2, "#initMediaPlayVideo  ");
+    }
+    if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
+    }
+    if (this.jdField_a_of_type_Akjs != null)
+    {
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Akjs.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Aklp, paramaklw, this.jdField_a_of_type_Ahtp);
+      if (this.jdField_a_of_type_AndroidViewView != null)
+      {
+        a(this.jdField_a_of_type_AndroidAppActivity);
+        paramaklw = new HashMap();
+        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "previewVideoViewCreateSuc", true, 0L, 0L, paramaklw, null);
+      }
+    }
   }
   
-  public aklo(int paramInt)
+  private void a(Activity paramActivity)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Int == 0) {
-      this.l = b;
+    if (QLog.isColorLevel()) {
+      QLog.d("carverW VideoPlayController", 2, "#setupVideoView  ");
     }
-    for (;;)
+    if (this.jdField_a_of_type_AndroidWidgetFrameLayout == null)
     {
-      this.jdField_a_of_type_ArrayOfAkll = new akll[this.l.length];
+      if (QLog.isColorLevel()) {
+        QLog.d("carverW VideoPlayController", 2, "#setupVideoView  layout is null#");
+      }
       return;
-      if (this.jdField_a_of_type_Int == 1) {
-        this.l = e;
-      } else if (this.jdField_a_of_type_Int == 5) {
-        this.l = g;
-      } else if (this.jdField_a_of_type_Int == 6) {
-        this.l = c;
-      } else if (this.jdField_a_of_type_Int == 7) {
-        this.l = d;
-      } else if (this.jdField_a_of_type_Int == 9) {
-        this.l = h;
-      } else if (this.jdField_a_of_type_Int == 10) {
-        this.l = i;
-      } else if (this.jdField_a_of_type_Int == 11) {
-        this.l = j;
-      } else if (this.jdField_a_of_type_Int == 12) {
-        this.l = f;
-      } else if (this.jdField_a_of_type_Int == 13) {
-        this.l = k;
-      } else {
-        this.l = jdField_a_of_type_ArrayOfInt;
-      }
+    }
+    if (Build.VERSION.SDK_INT >= 19) {
+      paramActivity.getWindow().addFlags(67108864);
+    }
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidViewView);
+    b(paramActivity);
+  }
+  
+  private void b(Activity paramActivity)
+  {
+    if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Akjs != null))
+    {
+      this.jdField_a_of_type_Akjs.a(paramActivity, (IVideoViewBase)this.jdField_a_of_type_AndroidViewView);
+      this.jdField_b_of_type_Boolean = true;
     }
   }
   
-  private int a(Object paramObject, int paramInt)
+  private void o()
   {
-    int m;
-    if ((paramObject instanceof RecentMatchChatListItem)) {
-      m = this.l[1];
+    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Akjs != null)) {
+      this.jdField_a_of_type_Akjs.b();
     }
-    do
+    if ((VersionUtils.isrFroyo()) && (this.jdField_a_of_type_AndroidAppActivity != null))
     {
-      do
-      {
-        return m;
-        if (((paramObject instanceof Integer)) && (((Integer)paramObject).intValue() == 20)) {
-          return this.l[2];
-        }
-        m = paramInt;
-      } while (!(paramObject instanceof Integer));
-      m = paramInt;
-    } while (((Integer)paramObject).intValue() != 21);
-    return this.l[3];
-  }
-  
-  @Nullable
-  private akll a(int paramInt)
-  {
-    akll localakll = null;
-    Object localObject = localakll;
-    if (paramInt > 0)
-    {
-      localObject = localakll;
-      if (paramInt < this.jdField_a_of_type_ArrayOfAkll.length)
-      {
-        localakll = this.jdField_a_of_type_ArrayOfAkll[paramInt];
-        localObject = localakll;
-        if (localakll == null) {
-          switch (paramInt)
-          {
-          default: 
-            localObject = localakll;
-          }
-        }
-      }
+      Activity localActivity1 = this.jdField_a_of_type_AndroidAppActivity;
+      Activity localActivity2 = this.jdField_a_of_type_AndroidAppActivity;
+      ((AudioManager)localActivity1.getSystemService("audio")).abandonAudioFocus(null);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ArrayOfAkll[paramInt] = localObject;
-      return localObject;
-      localObject = new akld();
-      continue;
-      localObject = new avof();
+    if (this.jdField_a_of_type_AndroidAppActivity != null) {
+      this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new VideoPlayController.2(this));
     }
-  }
-  
-  private int b(Object paramObject, int paramInt)
-  {
-    int m;
-    if ((paramObject instanceof RecentItemConfessMsg)) {
-      m = this.l[1];
-    }
-    do
-    {
-      do
-      {
-        return m;
-        if (((paramObject instanceof Integer)) && (((Integer)paramObject).intValue() == 16)) {
-          return this.l[2];
-        }
-        m = paramInt;
-      } while (!(paramObject instanceof Integer));
-      m = paramInt;
-    } while (((Integer)paramObject).intValue() != 17);
-    return this.l[3];
-  }
-  
-  @Nullable
-  private akll b(int paramInt)
-  {
-    akll localakll = null;
-    Object localObject = localakll;
-    if (paramInt > 0)
-    {
-      localObject = localakll;
-      if (paramInt < this.jdField_a_of_type_ArrayOfAkll.length)
-      {
-        localakll = this.jdField_a_of_type_ArrayOfAkll[paramInt];
-        localObject = localakll;
-        if (localakll == null) {
-          switch (paramInt)
-          {
-          default: 
-            localObject = localakll;
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ArrayOfAkll[paramInt] = localObject;
-      return localObject;
-      localObject = new akkw();
-      continue;
-      localObject = new apry();
-    }
-  }
-  
-  private int c(Object paramObject, int paramInt)
-  {
-    int m;
-    if ((paramObject instanceof Integer))
-    {
-      paramObject = (Integer)paramObject;
-      if (paramObject.intValue() == 13) {
-        m = this.l[2];
-      }
-    }
-    do
-    {
-      do
-      {
-        return m;
-        m = paramInt;
-      } while (paramObject.intValue() != 4);
-      return this.l[1];
-      m = paramInt;
-    } while (!(paramObject instanceof RecentHotchatItem));
-    switch (((RecentHotchatItem)paramObject).mType)
-    {
-    default: 
-      return paramInt;
-    case 1: 
-      return this.l[3];
-    case 4: 
-      return this.l[4];
-    case 2: 
-      return this.l[2];
-    }
-    return this.l[1];
-  }
-  
-  @Nullable
-  private akll c(int paramInt)
-  {
-    akll localakll = null;
-    Object localObject = localakll;
-    if (paramInt > 0)
-    {
-      localObject = localakll;
-      if (paramInt < this.jdField_a_of_type_ArrayOfAkll.length)
-      {
-        localakll = this.jdField_a_of_type_ArrayOfAkll[paramInt];
-        localObject = localakll;
-        if (localakll == null) {
-          switch (paramInt)
-          {
-          default: 
-            localObject = localakll;
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ArrayOfAkll[paramInt] = localObject;
-      return localObject;
-      localObject = new aklb();
-      continue;
-      localObject = new akmz();
-      continue;
-      localObject = new HotChatCenterItemBuilder();
-      continue;
-      localObject = new akkc();
-    }
-  }
-  
-  private int d(Object paramObject, int paramInt)
-  {
-    if ((paramObject instanceof String)) {
-      paramInt = this.l[0];
-    }
-    while (!(paramObject instanceof RecentSayHelloListItem)) {
-      return paramInt;
-    }
-    return this.l[1];
-  }
-  
-  private akll d(int paramInt)
-  {
-    akll localakll = null;
-    if (paramInt == 1)
-    {
-      if (this.jdField_a_of_type_ArrayOfAkll[1] == null) {
-        this.jdField_a_of_type_ArrayOfAkll[1] = new akmw();
-      }
-      localakll = this.jdField_a_of_type_ArrayOfAkll[1];
-    }
-    return localakll;
-  }
-  
-  private int e(Object paramObject, int paramInt)
-  {
-    if ((paramObject instanceof String)) {
-      paramInt = this.l[0];
-    }
-    do
-    {
-      return paramInt;
-      if ((paramObject instanceof RecentSayHelloBoxItem)) {
-        return this.l[2];
-      }
-      if ((paramObject instanceof RecentItemNearbyLiveTipData)) {
-        return this.l[3];
-      }
-    } while (!(paramObject instanceof RecentMsgBoxItem));
-    return this.l[1];
-  }
-  
-  private akll e(int paramInt)
-  {
-    akll localakll = null;
-    if (paramInt == 2)
-    {
-      if (this.jdField_a_of_type_ArrayOfAkll[2] == null) {
-        this.jdField_a_of_type_ArrayOfAkll[2] = new akmt();
-      }
-      localakll = this.jdField_a_of_type_ArrayOfAkll[2];
-    }
-    do
-    {
-      return localakll;
-      if (paramInt == 1)
-      {
-        if (this.jdField_a_of_type_ArrayOfAkll[1] == null) {
-          this.jdField_a_of_type_ArrayOfAkll[1] = new aklb();
-        }
-        return this.jdField_a_of_type_ArrayOfAkll[1];
-      }
-    } while (paramInt != 3);
-    if (this.jdField_a_of_type_ArrayOfAkll[3] == null) {
-      this.jdField_a_of_type_ArrayOfAkll[3] = new aklp();
-    }
-    return this.jdField_a_of_type_ArrayOfAkll[3];
-  }
-  
-  private int f(Object paramObject, int paramInt)
-  {
-    if ((paramObject instanceof Integer)) {
-      paramInt = this.l[1];
-    }
-    while (!(paramObject instanceof RecentBaseData)) {
-      return paramInt;
-    }
-    return this.l[2];
-  }
-  
-  private akll f(int paramInt)
-  {
-    akll localakll = null;
-    if (paramInt == 1)
-    {
-      if (this.jdField_a_of_type_ArrayOfAkll[1] == null) {
-        this.jdField_a_of_type_ArrayOfAkll[1] = new akku();
-      }
-      localakll = this.jdField_a_of_type_ArrayOfAkll[1];
-    }
-    while (paramInt != 2) {
-      return localakll;
-    }
-    if (this.jdField_a_of_type_ArrayOfAkll[2] == null) {
-      this.jdField_a_of_type_ArrayOfAkll[2] = new aklb();
-    }
-    return this.jdField_a_of_type_ArrayOfAkll[2];
-  }
-  
-  private int g(Object paramObject, int paramInt)
-  {
-    if ((paramObject instanceof Integer))
-    {
-      paramObject = (Integer)paramObject;
-      if (paramObject.intValue() == 11) {
-        paramInt = this.l[1];
-      }
-    }
-    while (!(paramObject instanceof RecentBaseData))
-    {
-      do
-      {
-        return paramInt;
-      } while (paramObject.intValue() != 12);
-      return this.l[1];
-    }
-    return this.l[2];
-  }
-  
-  private akll g(int paramInt)
-  {
-    akll localakll = null;
-    if (paramInt == 1)
-    {
-      if (this.jdField_a_of_type_ArrayOfAkll[1] == null) {
-        this.jdField_a_of_type_ArrayOfAkll[1] = new akmz();
-      }
-      localakll = this.jdField_a_of_type_ArrayOfAkll[1];
-    }
-    while (paramInt != 2) {
-      return localakll;
-    }
-    if (this.jdField_a_of_type_ArrayOfAkll[2] == null) {
-      this.jdField_a_of_type_ArrayOfAkll[2] = new aklb();
-    }
-    return this.jdField_a_of_type_ArrayOfAkll[2];
-  }
-  
-  private int h(Object paramObject, int paramInt)
-  {
-    if ((paramObject instanceof Integer))
-    {
-      paramObject = (Integer)paramObject;
-      if (paramObject.intValue() == 18) {
-        paramInt = this.l[1];
-      }
-    }
-    while (!(paramObject instanceof RecentBaseData))
-    {
-      do
-      {
-        return paramInt;
-      } while (paramObject.intValue() != 19);
-      return this.l[1];
-    }
-    return this.l[2];
-  }
-  
-  private akll h(int paramInt)
-  {
-    akll localakll = null;
-    if (paramInt == 1)
-    {
-      if (this.jdField_a_of_type_ArrayOfAkll[1] == null) {
-        this.jdField_a_of_type_ArrayOfAkll[1] = new akmz();
-      }
-      localakll = this.jdField_a_of_type_ArrayOfAkll[1];
-    }
-    while (paramInt != 2) {
-      return localakll;
-    }
-    if (this.jdField_a_of_type_ArrayOfAkll[2] == null) {
-      this.jdField_a_of_type_ArrayOfAkll[2] = new aklb();
-    }
-    return this.jdField_a_of_type_ArrayOfAkll[2];
-  }
-  
-  private int i(Object paramObject, int paramInt)
-  {
-    if ((paramObject instanceof Integer))
-    {
-      paramObject = (Integer)paramObject;
-      if (paramObject.intValue() == 3) {
-        paramInt = this.l[3];
-      }
-    }
-    while (!(paramObject instanceof RecentBaseData))
-    {
-      do
-      {
-        return paramInt;
-        if (paramObject.intValue() == 4) {
-          return this.l[1];
-        }
-      } while (paramObject.intValue() != 5);
-      return this.l[1];
-    }
-    return this.l[2];
-  }
-  
-  private akll i(int paramInt)
-  {
-    akll localakll = null;
-    if (paramInt == 1)
-    {
-      if (this.jdField_a_of_type_ArrayOfAkll[1] == null) {
-        this.jdField_a_of_type_ArrayOfAkll[1] = new akmz();
-      }
-      localakll = this.jdField_a_of_type_ArrayOfAkll[1];
-    }
-    do
-    {
-      return localakll;
-      if (paramInt == 2)
-      {
-        if (this.jdField_a_of_type_ArrayOfAkll[2] == null) {
-          this.jdField_a_of_type_ArrayOfAkll[2] = new aklb();
-        }
-        return this.jdField_a_of_type_ArrayOfAkll[2];
-      }
-    } while (paramInt != 3);
-    if (this.jdField_a_of_type_ArrayOfAkll[3] == null) {
-      this.jdField_a_of_type_ArrayOfAkll[3] = new akmy();
-    }
-    return this.jdField_a_of_type_ArrayOfAkll[3];
-  }
-  
-  private int j(Object paramObject, int paramInt)
-  {
-    if ((paramObject instanceof Integer)) {
-      if (((Integer)paramObject).intValue() == 0) {
-        paramInt = this.l[1];
-      }
-    }
-    do
-    {
-      return paramInt;
-      if ((paramObject instanceof RecentUserBaseData))
-      {
-        if ((paramObject instanceof RecentItemPublicAccountADFolderData)) {
-          return this.l[3];
-        }
-        if ((paramObject instanceof RecentItemImaxADData)) {
-          return this.l[4];
-        }
-        if ((paramObject instanceof RecentItemChatMsgData)) {
-          return this.l[5];
-        }
-        if ((paramObject instanceof RecentItemMayKnowFriendData)) {
-          return this.l[6];
-        }
-        if ((paramObject instanceof RecentItemMayKnowFriendVerticalListData)) {
-          return this.l[7];
-        }
-        if ((paramObject instanceof RecentItemAppletsFolderData)) {
-          return this.l[8];
-        }
-        if ((paramObject instanceof RecentItemContactsGuideData)) {
-          return this.l[9];
-        }
-        if ((paramObject instanceof RecentItemRecommendTroopData)) {
-          return this.l[10];
-        }
-        return this.l[2];
-      }
-    } while (!(paramObject instanceof String));
-    return this.l[0];
-  }
-  
-  private akll j(int paramInt)
-  {
-    akll localakll = null;
-    if (paramInt == 1)
-    {
-      if (this.jdField_a_of_type_ArrayOfAkll[1] == null) {
-        this.jdField_a_of_type_ArrayOfAkll[1] = new aklf();
-      }
-      localakll = this.jdField_a_of_type_ArrayOfAkll[1];
-    }
-    do
-    {
-      return localakll;
-      if (paramInt == 2)
-      {
-        if (this.jdField_a_of_type_ArrayOfAkll[2] == null) {
-          this.jdField_a_of_type_ArrayOfAkll[2] = new akld();
-        }
-        return this.jdField_a_of_type_ArrayOfAkll[2];
-      }
-      if (paramInt == 3)
-      {
-        if (this.jdField_a_of_type_ArrayOfAkll[3] == null) {
-          this.jdField_a_of_type_ArrayOfAkll[3] = new akmj();
-        }
-        return this.jdField_a_of_type_ArrayOfAkll[3];
-      }
-      if (paramInt == 4)
-      {
-        if (this.jdField_a_of_type_ArrayOfAkll[4] == null) {
-          this.jdField_a_of_type_ArrayOfAkll[4] = new aklh();
-        }
-        return this.jdField_a_of_type_ArrayOfAkll[4];
-      }
-      if (paramInt == 5)
-      {
-        if (this.jdField_a_of_type_ArrayOfAkll[5] == null) {
-          this.jdField_a_of_type_ArrayOfAkll[5] = new akkv();
-        }
-        return this.jdField_a_of_type_ArrayOfAkll[5];
-      }
-      if (paramInt == 6)
-      {
-        if (this.jdField_a_of_type_ArrayOfAkll[6] == null) {
-          this.jdField_a_of_type_ArrayOfAkll[6] = new aklr();
-        }
-        return this.jdField_a_of_type_ArrayOfAkll[6];
-      }
-      if (paramInt == 7)
-      {
-        if (this.jdField_a_of_type_ArrayOfAkll[7] == null) {
-          this.jdField_a_of_type_ArrayOfAkll[7] = new aklu();
-        }
-        return this.jdField_a_of_type_ArrayOfAkll[7];
-      }
-      if (paramInt == 8)
-      {
-        if (this.jdField_a_of_type_ArrayOfAkll[8] == null) {
-          this.jdField_a_of_type_ArrayOfAkll[8] = new akks();
-        }
-        return this.jdField_a_of_type_ArrayOfAkll[8];
-      }
-      if (paramInt == 9)
-      {
-        if (this.jdField_a_of_type_ArrayOfAkll[9] == null) {
-          this.jdField_a_of_type_ArrayOfAkll[9] = new akkx();
-        }
-        return this.jdField_a_of_type_ArrayOfAkll[9];
-      }
-    } while (paramInt != 10);
-    if (this.jdField_a_of_type_ArrayOfAkll[10] == null) {
-      this.jdField_a_of_type_ArrayOfAkll[10] = new akmn();
-    }
-    return this.jdField_a_of_type_ArrayOfAkll[10];
   }
   
   public int a()
@@ -599,108 +110,359 @@ public class aklo
     return this.jdField_a_of_type_Int;
   }
   
-  public int a(Object paramObject)
+  public long a()
   {
-    int m = this.l[0];
-    switch (this.jdField_a_of_type_Int)
-    {
-    case 2: 
-    case 3: 
-    case 4: 
-    case 8: 
-    default: 
-      return m;
-    case 0: 
-      return j(paramObject, m);
-    case 1: 
-      return i(paramObject, m);
-    case 12: 
-      return h(paramObject, m);
-    case 9: 
-      return g(paramObject, m);
-    case 5: 
-      return f(paramObject, m);
-    case 6: 
-      return e(paramObject, m);
-    case 7: 
-      return d(paramObject, m);
-    case 10: 
-      return c(paramObject, m);
-    case 11: 
-      return b(paramObject, m);
+    if (this.jdField_a_of_type_Akjs != null) {
+      return this.jdField_a_of_type_Akjs.b();
     }
-    return a(paramObject, m);
+    return 0L;
   }
   
-  public akll a(Object paramObject)
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  void a(int paramInt1, int paramInt2)
   {
-    Object localObject = null;
-    int m = a(paramObject);
-    paramObject = localObject;
-    switch (this.jdField_a_of_type_Int)
+    String str1 = anvx.a(2131715684);
+    if (this.jdField_a_of_type_AndroidAppActivity != null) {
+      str1 = this.jdField_a_of_type_AndroidAppActivity.getString(2131718852);
+    }
+    if ((paramInt1 == 101) && (this.jdField_a_of_type_Aklw != null) && (this.jdField_a_of_type_Aklw.jdField_a_of_type_ArrayOfJavaLangString != null) && (!StringUtil.isEmpty(this.jdField_a_of_type_Aklw.jdField_b_of_type_JavaLangString)))
     {
-    default: 
-      paramObject = localObject;
+      localObject = this.jdField_a_of_type_Aklw.jdField_a_of_type_ArrayOfJavaLangString;
+      int j = localObject.length;
+      int i = 0;
+      while (i < j)
+      {
+        String str2 = localObject[i];
+        if (!StringUtil.isEmpty(str2)) {
+          InnerDns.getInstance().reportBadIp(this.jdField_a_of_type_Aklw.jdField_b_of_type_JavaLangString, InnerDns.getHostFromUrl(str2), 1005);
+        }
+        i += 1;
+      }
+      ahty.a().a();
+    }
+    Object localObject = str1;
+    if (paramInt1 == 122) {
+      if (paramInt2 != 204)
+      {
+        localObject = str1;
+        if (paramInt2 != 202) {}
+      }
+      else
+      {
+        localObject = str1;
+        if (this.jdField_a_of_type_AndroidAppActivity != null) {
+          localObject = this.jdField_a_of_type_AndroidAppActivity.getString(2131718849);
+        }
+      }
+    }
+    if (this.jdField_a_of_type_Aklq != null) {
+      this.jdField_a_of_type_Aklq.a(this.jdField_a_of_type_Aklw, paramInt1, paramInt2, (String)localObject);
+    }
+  }
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public void a(ahtp paramahtp)
+  {
+    this.jdField_a_of_type_Ahtp = paramahtp;
+  }
+  
+  public void a(aklq paramaklq)
+  {
+    this.jdField_a_of_type_Aklq = paramaklq;
+  }
+  
+  public abstract void a(View paramView);
+  
+  public void a(View paramView, aklw paramaklw)
+  {
+    if ((paramView == null) || (paramaklw == null) || (this.jdField_a_of_type_Akjs == null)) {
+      return;
+    }
+    h();
+    if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.removeAllViews();
+    }
+    if (paramView == null)
+    {
+      a();
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = null;
+      this.jdField_a_of_type_AndroidAppActivity = null;
     }
     for (;;)
     {
-      localObject = paramObject;
-      if (paramObject == null)
-      {
-        if (this.jdField_a_of_type_ArrayOfAkll[0] == null) {
-          this.jdField_a_of_type_ArrayOfAkll[0] = new akku();
-        }
-        localObject = this.jdField_a_of_type_ArrayOfAkll[0];
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        ((IVideoViewBase)this.jdField_a_of_type_AndroidViewView).removeViewCallBack(this.jdField_a_of_type_Akjs);
       }
-      ((akll)localObject).a(this.jdField_a_of_type_Akkk);
-      return localObject;
-      paramObject = j(m);
-      continue;
-      paramObject = i(m);
-      continue;
-      paramObject = h(m);
-      continue;
-      paramObject = g(m);
-      continue;
-      paramObject = f(m);
-      continue;
-      paramObject = e(m);
-      continue;
-      paramObject = d(m);
-      continue;
-      paramObject = c(m);
-      continue;
-      paramObject = b(m);
-      continue;
-      paramObject = a(m);
+      this.jdField_a_of_type_Aklp.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      this.c = false;
+      this.d = false;
+      a(false);
+      this.jdField_a_of_type_AndroidViewView = null;
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Akjs.a();
+      this.jdField_b_of_type_Boolean = false;
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_Aklw = paramaklw;
+      if ((this.jdField_a_of_type_Aklw == null) || (paramView == null) || (paramView.getContext() == null)) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("carverW VideoPlayController", 2, "onItemSelect no == " + this.jdField_a_of_type_Aklw.hashCode() + " id=" + paramaklw.jdField_a_of_type_Long);
+      }
+      this.jdField_a_of_type_AndroidAppActivity = ((Activity)paramView.getContext());
+      a(this.jdField_a_of_type_Aklw);
+      return;
+      a(paramView);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131373144));
     }
   }
   
-  public void a(akkk paramakkk)
+  public void a(AIOShortVideoData paramAIOShortVideoData, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Akkk = paramakkk;
+    if ((this.jdField_a_of_type_Aklw != null) && (paramAIOShortVideoData.jdField_f_of_type_Long != this.jdField_a_of_type_Aklw.jdField_a_of_type_Long)) {
+      QLog.d("carverW VideoPlayController", 2, "onGetUrl data.id = " + paramAIOShortVideoData.jdField_f_of_type_Long + " mInfo,id=" + this.jdField_a_of_type_Aklw.jdField_a_of_type_Long);
+    }
+    while (this.jdField_a_of_type_Aklq == null) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("carverW VideoPlayController", 2, "onGetUrl data=" + paramAIOShortVideoData.jdField_f_of_type_Long + " isNeedShowCenterBtn=" + paramBoolean2 + " isStart=" + paramBoolean1);
+    }
+    aklw localaklw = new aklw();
+    localaklw.jdField_a_of_type_Long = paramAIOShortVideoData.jdField_f_of_type_Long;
+    localaklw.jdField_b_of_type_Int = paramAIOShortVideoData.jdField_f_of_type_Int;
+    this.jdField_a_of_type_Aklq.a(localaklw, paramBoolean1);
+    if (paramBoolean2)
+    {
+      b(0);
+      return;
+    }
+    b(8);
   }
   
-  public void a(QQAppInterface paramQQAppInterface)
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public long b()
   {
-    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_ArrayOfAkll != null) && (this.jdField_a_of_type_ArrayOfAkll.length > 6) && ((this.jdField_a_of_type_ArrayOfAkll[6] instanceof aklr)))
-    {
-      ((aklr)this.jdField_a_of_type_ArrayOfAkll[6]).a();
-      this.jdField_a_of_type_ArrayOfAkll[6] = null;
+    return this.jdField_a_of_type_Akjs.c();
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Aklw != null) {
+      this.jdField_a_of_type_Aklw.d = true;
+    }
+    b(8);
+    a(8, "");
+  }
+  
+  public abstract void b(int paramInt);
+  
+  public boolean b()
+  {
+    if (this.jdField_a_of_type_Int == 0) {
+      g();
+    }
+    return this.jdField_a_of_type_Aklw.jdField_a_of_type_Boolean;
+  }
+  
+  public long c()
+  {
+    return this.jdField_a_of_type_Akjs.a();
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_a_of_type_Akjs.a(paramInt);
+  }
+  
+  public boolean c()
+  {
+    if (this.jdField_a_of_type_Akjs != null) {
+      return this.jdField_a_of_type_Akjs.a();
+    }
+    return false;
+  }
+  
+  public long d()
+  {
+    return this.jdField_a_of_type_Akjs.d();
+  }
+  
+  public void d() {}
+  
+  public void d(int paramInt)
+  {
+    if (this.jdField_a_of_type_Akjs != null) {
+      this.jdField_a_of_type_Akjs.b(paramInt);
     }
   }
   
-  public int b()
+  public void e() {}
+  
+  public void f()
   {
-    return this.l.length;
+    if (this.jdField_a_of_type_Aklw == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("carverW VideoPlayController", 2, "onItemClick  onItemClick mCurInfo is null");
+      }
+    }
+    do
+    {
+      return;
+      this.c = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("carverW VideoPlayController", 2, "onItemClick curState=" + this.jdField_a_of_type_Int + " no = " + this.jdField_a_of_type_Aklw.hashCode() + " id=" + this.jdField_a_of_type_Aklw.jdField_a_of_type_Long);
+      }
+      if (this.jdField_a_of_type_Int == 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("carverW VideoPlayController", 2, "onItemClick  isComplete=" + this.d);
+        }
+        if (this.d)
+        {
+          if (!this.jdField_a_of_type_Aklw.jdField_b_of_type_Boolean) {
+            g();
+          }
+          this.d = false;
+        }
+        a(true);
+        return;
+      }
+      if (this.jdField_a_of_type_Int == 2)
+      {
+        a(true);
+        return;
+      }
+      if (this.jdField_a_of_type_Int == 3)
+      {
+        l();
+        return;
+      }
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        h();
+        this.jdField_a_of_type_Int = 4;
+        return;
+      }
+    } while (this.jdField_a_of_type_Int != 4);
+    l();
   }
   
-  public void b(QQAppInterface paramQQAppInterface)
+  public void g()
   {
-    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_ArrayOfAkll != null) && (this.jdField_a_of_type_ArrayOfAkll.length > 6) && ((this.jdField_a_of_type_ArrayOfAkll[6] instanceof aklr)))
+    if ((this.jdField_a_of_type_Akjs != null) && (this.jdField_a_of_type_Aklw != null))
     {
-      ((aklr)this.jdField_a_of_type_ArrayOfAkll[6]).a();
-      this.jdField_a_of_type_ArrayOfAkll[6] = null;
+      if (this.jdField_a_of_type_Aklw.jdField_a_of_type_Boolean) {
+        break label50;
+      }
+      if (this.jdField_a_of_type_Aklw.jdField_a_of_type_JavaLangString != null) {
+        this.jdField_a_of_type_Akjs.a(this.jdField_a_of_type_Aklw.jdField_a_of_type_JavaLangString, 0L);
+      }
+    }
+    return;
+    label50:
+    String str1;
+    if (this.jdField_a_of_type_Aklw.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null)
+    {
+      str1 = "0";
+      if (this.jdField_a_of_type_Aklw.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null) {
+        break label124;
+      }
+    }
+    label124:
+    for (String str2 = "";; str2 = this.jdField_a_of_type_Aklw.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.md5)
+    {
+      this.jdField_a_of_type_Akjs.a(this.jdField_a_of_type_Aklw.a(), str1, this.jdField_a_of_type_Aklw.jdField_a_of_type_ArrayOfJavaLangString, 0L, str2, this.jdField_a_of_type_AndroidAppActivity);
+      return;
+      str1 = String.valueOf(this.jdField_a_of_type_Aklw.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileTime);
+      break;
+    }
+  }
+  
+  public void h()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("carverW VideoPlayController", 2, "  play = Pasue ");
+    }
+    this.jdField_a_of_type_Int = 4;
+    o();
+  }
+  
+  public void i()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("carverW VideoPlayController", 2, "  play = onResume mVideoState=" + this.jdField_a_of_type_Int);
+    }
+    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Int == 1))
+    {
+      a(true);
+      if (this.jdField_a_of_type_AndroidAppActivity != null) {
+        this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new VideoPlayController.3(this));
+      }
+    }
+  }
+  
+  public void j()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("carverW VideoPlayController", 2, "  play = onDestory ");
+    }
+    this.jdField_a_of_type_Aklw = null;
+    if (this.jdField_a_of_type_Akjs != null)
+    {
+      this.jdField_a_of_type_Akjs.f();
+      this.jdField_a_of_type_Akjs.a();
+      this.jdField_a_of_type_Akjs = null;
+    }
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidAppActivity = null;
+    if (this.jdField_a_of_type_Aklp != null)
+    {
+      this.jdField_a_of_type_Aklp.removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_Aklp = null;
+    }
+  }
+  
+  public void k() {}
+  
+  protected void l()
+  {
+    if ((VersionUtils.isrFroyo()) && (!this.jdField_a_of_type_Aklw.e) && (this.jdField_a_of_type_AndroidAppActivity != null))
+    {
+      Activity localActivity1 = this.jdField_a_of_type_AndroidAppActivity;
+      Activity localActivity2 = this.jdField_a_of_type_AndroidAppActivity;
+      ((AudioManager)localActivity1.getSystemService("audio")).requestAudioFocus(null, 3, 2);
+    }
+    this.jdField_a_of_type_Akjs.c();
+    if (this.jdField_a_of_type_AndroidAppActivity != null) {
+      this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new VideoPlayController.4(this));
+    }
+    this.jdField_a_of_type_Aklp.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 200L);
+  }
+  
+  public void m()
+  {
+    if (this.jdField_a_of_type_Akjs != null) {
+      this.jdField_a_of_type_Akjs.d();
+    }
+  }
+  
+  public void n()
+  {
+    if (this.jdField_a_of_type_Akjs != null) {
+      this.jdField_a_of_type_Akjs.e();
     }
   }
 }

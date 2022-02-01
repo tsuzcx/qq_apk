@@ -1,27 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2.23;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
 public class akro
-  implements DialogInterface.OnClickListener
+  implements OnCompositionLoadedListener
 {
-  public akro(FlowCameraActivity2.23 param23) {}
+  public akro(RedPacketEmojiFragment paramRedPacketEmojiFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    paramDialogInterface = this.a.this$0.getIntent();
-    paramDialogInterface.putExtra("flow_back", 0);
-    this.a.this$0.setResult(1001, paramDialogInterface);
-    paramDialogInterface = null;
-    if (this.a.this$0.f) {
-      paramDialogInterface = this.a.this$0.a.jdField_a_of_type_Akvi;
-    }
-    this.a.this$0.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoSwitchCameraPicMgr.a(this.a.this$0.d, this.a.this$0.e, this.a.this$0.m, this.a.this$0.f, paramDialogInterface);
-    this.a.this$0.finish();
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.loop(true);
+    localLottieDrawable.playAnimation();
+    this.a.d.setImageDrawable(localLottieDrawable);
   }
 }
 

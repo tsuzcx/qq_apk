@@ -1,16 +1,18 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
+import java.util.List;
 
 public class vph
-  implements vox
 {
-  public vph(StoryVideoUploadTask paramStoryVideoUploadTask) {}
+  public Object a;
+  public List<vpj> a;
+  public boolean a;
+  public boolean b;
   
-  public void a(vow paramvow)
+  public vph(List<vpj> paramList, boolean paramBoolean1, boolean paramBoolean2, Object paramObject)
   {
-    ((vpd)this.a.a).j = ((vor)paramvow).b;
-    xvv.b("Q.qqstory.publish.upload:StoryVideoUploadTask", "make video thumbnail finish:%s", ((vpd)this.a.a).j);
-    this.a.a(1, new ErrorMessage());
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
   }
 }
 

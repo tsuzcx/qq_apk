@@ -1,9 +1,14 @@
-public final class boex
+import dov.com.qq.im.aeeditor.view.timeline.EffectTimelineView;
+
+public abstract interface boex
 {
-  public static boolean a(int paramInt)
-  {
-    return (paramInt == 3006) || (paramInt == 3009) || (paramInt == 3014) || (paramInt == 3068) || (paramInt == 3075) || (paramInt == 3078) || (paramInt == 3079);
-  }
+  public abstract void a(bodv parambodv, long paramLong1, long paramLong2);
+  
+  public abstract void a(bodv parambodv, long paramLong1, long paramLong2, int paramInt, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean, EffectTimelineView paramEffectTimelineView);
+  
+  public abstract void b(bodv parambodv, long paramLong1, long paramLong2);
 }
 
 

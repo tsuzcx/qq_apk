@@ -1,15 +1,14 @@
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
-import rx.Observable.OnSubscribe;
-import rx.Subscriber;
+import UserGrowth.stSimpleMetaComment;
+import UserGrowth.stSimpleMetaReply;
 
-public class van
-  implements Observable.OnSubscribe<vao>
+class van
+  implements zuf
 {
-  public van(WSVerticalDataManager paramWSVerticalDataManager, urj paramurj, boolean paramBoolean1, vaa paramvaa, boolean paramBoolean2, Object paramObject, String paramString, long paramLong) {}
+  van(vaj paramvaj, stSimpleMetaComment paramstSimpleMetaComment, boolean paramBoolean, stSimpleMetaReply paramstSimpleMetaReply) {}
   
-  public void a(Subscriber<? super vao> paramSubscriber)
+  public void a()
   {
-    WSVerticalDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalDataManager, this.jdField_a_of_type_Urj, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Vaa, this.b, this.jdField_a_of_type_JavaLangObject, paramSubscriber, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
+    vaj.a(this.jdField_a_of_type_Vaj, this.jdField_a_of_type_UserGrowthStSimpleMetaComment, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_UserGrowthStSimpleMetaReply);
   }
 }
 

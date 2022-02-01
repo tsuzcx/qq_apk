@@ -1,39 +1,24 @@
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-class amwp
-  extends bgod
+final class amwp
+  implements BusinessObserver
 {
-  amwp(amwo paramamwo) {}
-  
-  public void onDone(bgoe parambgoe)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super.onDone(parambgoe);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.roammsg.MessageRoamManager", 2, "onDone status: " + parambgoe.f + ", url: " + parambgoe.a);
-    }
-    int i = parambgoe.a.indexOf("?");
-    String str;
-    if (i == -1)
+    try
     {
-      str = parambgoe.a;
-      if (!amwn.a.contains(str)) {
-        break label105;
+      paramInt = paramBundle.getInt("extra_result_code");
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameUtil", 1, new Object[] { "[reportGameData] retCode=", Integer.valueOf(paramInt) });
       }
-      this.a.a(parambgoe);
-    }
-    label105:
-    do
-    {
       return;
-      str = parambgoe.a.substring(0, i - 1);
-      break;
-      if ("https://imgcache.qq.com/club/mobile/messageroam/xiaoximanyou2.json".equals(str))
-      {
-        this.a.b(parambgoe);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("Q.roammsg.MessageRoamManager", 2, "onDone unkonw url: " + parambgoe.a);
+    }
+    catch (Exception paramBundle)
+    {
+      QLog.e("cmgame_process.CmGameUtil", 1, "[reportGameData] onReceive, exception=", paramBundle);
+    }
   }
 }
 

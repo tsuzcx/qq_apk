@@ -1,18 +1,20 @@
-import java.util.Collection;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
 public class bfwk
+  extends bfvx
 {
-  public static int a(Collection paramCollection)
+  public bfwk(View paramView)
   {
-    if (paramCollection == null) {
-      return 0;
-    }
-    return paramCollection.size();
+    super(paramView);
   }
   
-  public static boolean a(Collection paramCollection)
+  protected void a()
   {
-    return (paramCollection == null) || (paramCollection.isEmpty());
+    this.a.setVisibility(4);
+    this.c.setVisibility(0);
+    this.b.setVisibility(4);
   }
 }
 

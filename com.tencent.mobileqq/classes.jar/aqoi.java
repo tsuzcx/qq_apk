@@ -1,59 +1,72 @@
-import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.danmaku.data.ViewDanmaku.1;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
-public class aqoi
-  extends aqoh
+public final class aqoi
 {
-  private aqpl a;
-  private boolean e;
+  public int a;
+  public long a;
+  public String a;
+  public byte[] a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
   
-  public aqoi(aqoj paramaqoj)
+  public aqoi()
   {
-    super(paramaqoj);
+    this.jdField_b_of_type_Int = 0;
   }
   
-  public int a()
+  public aqoi a(int paramInt)
   {
-    return -2147483647;
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
   }
   
-  public aqpl a()
+  public aqoi a(long paramLong)
   {
-    return this.a;
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
   }
   
-  public aqpn a(aqpx paramaqpx)
+  public aqoi a(String paramString)
   {
-    if (this.a != null)
-    {
-      View localView = this.a.a(paramaqpx);
-      if (localView != null) {
-        aqnj.a().a().a().post(new ViewDanmaku.1(this, localView));
-      }
-    }
-    return super.a(paramaqpx);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
   }
   
-  public void a(aqpl paramaqpl)
+  public aqoi a(byte[] paramArrayOfByte)
   {
-    this.a = paramaqpl;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    return this;
   }
   
-  public void e()
+  public ColorNote a()
   {
-    super.e();
-    this.e = false;
+    return new ColorNote(this);
   }
   
-  public void f(boolean paramBoolean)
+  public aqoi b(int paramInt)
   {
-    this.e = paramBoolean;
+    this.jdField_b_of_type_Int = paramInt;
+    return this;
   }
   
-  public boolean i()
+  public aqoi b(String paramString)
   {
-    return this.e;
+    this.jdField_b_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public aqoi c(String paramString)
+  {
+    this.c = paramString;
+    return this;
+  }
+  
+  public aqoi d(String paramString)
+  {
+    this.d = paramString;
+    return this;
   }
 }
 

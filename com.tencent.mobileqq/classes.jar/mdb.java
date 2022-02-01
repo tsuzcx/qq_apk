@@ -1,105 +1,32 @@
-import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.av.ui.funchat.filter.EffectFilterPanel;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
 
 public class mdb
-  implements View.OnClickListener
+  extends mcy
 {
-  public mdb(EffectSettingUi paramEffectSettingUi) {}
+  private View a;
+  public String b;
+  public boolean b;
   
-  public void onClick(View paramView)
+  public mdb(int paramInt, View paramView)
   {
-    long l = AudioHelper.b();
-    int k = paramView.getId();
-    Object localObject = paramView.getTag(2131378168);
-    if ((localObject != null) && ((localObject instanceof Boolean))) {}
-    for (boolean bool = ((Boolean)localObject).booleanValue();; bool = false)
-    {
-      int m = this.a.jdField_a_of_type_Int;
-      bool = this.a.a(l, k, bool);
-      int i;
-      int j;
-      if (k == 4)
-      {
-        i = 1;
-        j = i;
-        if (i != 0)
-        {
-          localObject = ((AVActivity)this.a.getContext()).a;
-          if ((localObject != null) && ((localObject == null) || (((EffectFilterPanel)localObject).getVisibility() != 8))) {
-            break label344;
-          }
-          j = 1;
-        }
-        label117:
-        if ((bool) && ((m != k) || (j != 0))) {
-          this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(6105), Integer.valueOf(k), Long.valueOf(l) });
-        }
-        if (bool)
-        {
-          localObject = VideoController.a().a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get());
-          if (localObject != null)
-          {
-            if (QLog.isDevelopLevel()) {
-              QLog.d(this.a.jdField_a_of_type_JavaLangString, 1, "onShow clear state");
-            }
-            ((lor)localObject).b(k);
-          }
-        }
-        this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(165), Integer.valueOf(1) });
-        if (m != k)
-        {
-          if (k != 1) {
-            break label349;
-          }
-          mbi.b((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().F, this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d, this.a.a(), bool);
-        }
-      }
-      for (;;)
-      {
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        i = 0;
-        break;
-        label344:
-        j = 0;
-        break label117;
-        label349:
-        if (k == 2)
-        {
-          mbi.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.a.a(), bool);
-          if (this.a.jdField_a_of_type_Mcy != null) {
-            this.a.jdField_a_of_type_Mcy.a();
-          }
-        }
-        else if (k == 4)
-        {
-          mbi.a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().F, this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d, this.a.a(), bool);
-        }
-        else if (k == 3)
-        {
-          mbi.a(this.a.a(), bool);
-        }
-        else if (k == 5)
-        {
-          mrd.f();
-        }
-      }
-    }
+    super(paramInt);
+    this.a = paramView;
+  }
+  
+  public mdb(View paramView)
+  {
+    super(0);
+    this.a = paramView;
+  }
+  
+  public View a()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mdb
  * JD-Core Version:    0.7.0.1
  */

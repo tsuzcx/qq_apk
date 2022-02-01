@@ -1,19 +1,21 @@
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 
-public abstract interface owg
-  extends owf
+class owg
+  implements qgw
 {
-  public abstract void onCommentCreate(boolean paramBoolean, ouo paramouo, List<ouo> paramList, int paramInt);
+  owg(owf paramowf) {}
   
-  public abstract void onCommentCreate(boolean paramBoolean1, ouo paramouo, boolean paramBoolean2, List<ouo> paramList, int paramInt);
-  
-  public abstract void onCommentDelete(int paramInt1, boolean paramBoolean, ouo paramouo, int paramInt2);
-  
-  public abstract void onCommentLikeOrDislike(boolean paramBoolean, String paramString, int paramInt1, int paramInt2);
-  
-  public abstract void onCommentLoadMore(int paramInt1, boolean paramBoolean1, List<ouo> paramList, boolean paramBoolean2, int paramInt2);
-  
-  public abstract void onCommentReply(boolean paramBoolean, ouo paramouo);
+  public void a(int paramInt)
+  {
+    if ((owf.a(this.a) != null) && (owf.a(this.a).a != null))
+    {
+      if (owf.a(this.a).a.mSocialFeedInfo == null) {
+        owf.a(this.a).a.mSocialFeedInfo = new SocializeFeedsInfo();
+      }
+      owf.a(this.a).a.mSocialFeedInfo.a.a = paramInt;
+    }
+  }
 }
 
 

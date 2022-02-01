@@ -1,16 +1,14 @@
-import android.view.animation.Interpolator;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.EditVideoFragment;
 
 public class ryk
-  implements Interpolator
+  implements tnz
 {
-  private float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    return -paramFloat3 * (float)Math.cos(paramFloat1 / paramFloat4 * 1.570796326794897D) + paramFloat3 + paramFloat2;
-  }
+  public ryk(EditVideoFragment paramEditVideoFragment) {}
   
-  public float getInterpolation(float paramFloat)
+  public void a(TopicInfo paramTopicInfo)
   {
-    return a(paramFloat, 0.0F, 1.0F, 1.0F);
+    olh.a("0X800B24D", new pqg().a("topic_id", Long.valueOf(paramTopicInfo.a())).a());
   }
 }
 

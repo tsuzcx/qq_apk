@@ -1,36 +1,28 @@
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.view.Window;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.image.URLDrawableHandler;
 
-public class bjvz
+class bjvz
+  implements URLDrawableHandler
 {
-  private final int jdField_a_of_type_Int;
-  private final boolean jdField_a_of_type_Boolean;
-  private final boolean b;
+  bjvz(bjvy parambjvy) {}
   
-  private bjvz(Window paramWindow, boolean paramBoolean)
+  public void doCancel() {}
+  
+  public boolean isCancelled()
   {
-    if (paramWindow.getContext().getResources().getConfiguration().orientation == 1) {}
-    for (;;)
-    {
-      this.b = bool;
-      this.jdField_a_of_type_Int = ImmersiveUtils.getStatusBarHeight(paramWindow.getContext());
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      return;
-      bool = false;
-    }
+    return false;
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
+  public void onFileDownloadFailed(int paramInt) {}
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong) {}
+  
+  public void publishProgress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjvz
  * JD-Core Version:    0.7.0.1
  */

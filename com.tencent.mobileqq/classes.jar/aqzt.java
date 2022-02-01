@@ -1,34 +1,28 @@
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.utils.StringUtil;
+import android.text.TextUtils;
 
-public class aqzt
+class aqzt
 {
-  public static int a = 300;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  public static String a(String paramString)
+  public String a()
   {
-    if (StringUtil.isEmpty(paramString)) {
-      return "";
-    }
-    paramString = paramString.split("_");
-    if (paramString.length > 2) {
-      return paramString[1];
-    }
-    return "";
+    return this.a + this.b;
   }
   
-  public static String a(String paramString1, String paramString2)
+  public boolean a()
   {
-    if ((StringUtil.isEmpty(paramString1)) || (StringUtil.isEmpty(paramString2))) {
-      return "";
-    }
-    paramString2 = bhzn.a(paramString2);
-    return AppConstants.SDCARD_IMG_CAMERA_EMO + paramString2 + paramString1;
+    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqzt
  * JD-Core Version:    0.7.0.1
  */

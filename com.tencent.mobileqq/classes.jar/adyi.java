@@ -1,21 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQIdentiferActivity;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
 
 public class adyi
-  implements DialogInterface.OnClickListener
+  extends anvi
 {
-  public adyi(QQIdentiferActivity paramQQIdentiferActivity) {}
+  public adyi(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
-    this.a.finish();
+    if (paramBoolean) {
+      ForwardRecentActivity.f(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adyi
  * JD-Core Version:    0.7.0.1
  */

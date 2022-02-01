@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.vas.wallpaper;
 
-import bgks;
+import bhvc;
 import java.lang.ref.WeakReference;
 
 class WallpaperHelper$ReTryRunnable
   implements Runnable
 {
-  bgks jdField_a_of_type_Bgks;
+  bhvc jdField_a_of_type_Bhvc;
   WeakReference<WallpaperHelper> jdField_a_of_type_JavaLangRefWeakReference;
   
   public WallpaperHelper$ReTryRunnable(WallpaperHelper paramWallpaperHelper)
@@ -14,16 +14,16 @@ class WallpaperHelper$ReTryRunnable
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramWallpaperHelper);
   }
   
-  public void a(bgks parambgks)
+  public void a(bhvc parambhvc)
   {
-    this.jdField_a_of_type_Bgks = parambgks;
+    this.jdField_a_of_type_Bhvc = parambhvc;
   }
   
   public void run()
   {
     WallpaperHelper localWallpaperHelper = (WallpaperHelper)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localWallpaperHelper != null) && (this.jdField_a_of_type_Bgks != null)) {
-      WallpaperHelper.a(localWallpaperHelper, this.jdField_a_of_type_Bgks, false);
+    if ((localWallpaperHelper != null) && (this.jdField_a_of_type_Bhvc != null)) {
+      WallpaperHelper.a(localWallpaperHelper, this.jdField_a_of_type_Bhvc, false);
     }
   }
 }

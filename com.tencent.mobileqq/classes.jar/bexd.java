@@ -1,22 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
 public class bexd
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public bexd(BulkSendMessageFragment paramBulkSendMessageFragment) {}
+  public bexd(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void onClick(View paramView)
-  {
-    BulkSendMessageFragment.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bexd
  * JD-Core Version:    0.7.0.1
  */

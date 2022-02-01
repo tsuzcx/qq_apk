@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.richmediabrowser.view;
 
-import bajo;
-import bakr;
+import bbqd;
+import bbrg;
 import com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData;
 
 public class AIOFileVideoView$4
   implements Runnable
 {
-  public AIOFileVideoView$4(bakr parambakr, AIOFileVideoData paramAIOFileVideoData) {}
+  public AIOFileVideoView$4(bbrg parambbrg, AIOFileVideoData paramAIOFileVideoData) {}
   
   public void run()
   {
-    bakr.a(this.this$0, this.this$0.a.getCurrentPosition(), this.a.i);
+    bbrg.a(this.this$0, this.this$0.a.getCurrentPosition(), this.a.i);
   }
 }
 

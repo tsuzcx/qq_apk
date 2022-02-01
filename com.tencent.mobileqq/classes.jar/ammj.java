@@ -1,52 +1,48 @@
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.ApolloManager.20.1;
+import com.tencent.mobileqq.apollo.data.ApolloPreDownloadData;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
 public class ammj
-  implements View.OnClickListener
+  extends bhyn
 {
-  public ammj(ApolloPanel paramApolloPanel, Bundle paramBundle, ApolloActionData paramApolloActionData, int paramInt, String paramString1, String paramString2) {}
+  ammj(amme paramamme) {}
   
-  public void onClick(View paramView)
+  public void onDoneFile(bhyo parambhyo)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mActivity != null))
+    if ((parambhyo == null) || (this.a.a == null)) {}
+    String str1;
+    do
     {
-      Object localObject1 = null;
-      if (this.jdField_a_of_type_AndroidOsBundle != null) {
-        localObject1 = this.jdField_a_of_type_AndroidOsBundle.getString("activityUrl");
-      }
-      Object localObject2 = localObject1;
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.url;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloPanel", 2, new Object[] { "[realshowNewActionFloatView] btn click, activityUrl=", localObject2 });
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject2))
+      return;
+      if (parambhyo.a != 0)
       {
-        localObject1 = new Intent(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mActivity, QQBrowserActivity.class);
-        ((Intent)localObject1).putExtra("url", (String)localObject2);
-        this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mActivity.startActivity((Intent)localObject1);
+        QLog.e("ApolloManager", 1, new Object[] { "preDownloadListener task error:", Integer.valueOf(parambhyo.a()) });
+        return;
       }
-      ApolloPanel.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel);
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
-        VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, "cmshow", "Apollo", "action_flame_clickgain", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType), 0, new String[] { String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId) });
-      }
-      alnr.a(125, String.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, this.b);
+      str1 = parambhyo.c;
+      parambhyo = parambhyo.a();
+    } while (parambhyo == null);
+    ApolloPreDownloadData localApolloPreDownloadData = (ApolloPreDownloadData)parambhyo.getSerializable(str1);
+    if (localApolloPreDownloadData == null)
+    {
+      QLog.e("ApolloManager", 1, "preDownloadListener res onDoneFile but preDownload data is null");
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (!TextUtils.isEmpty(localApolloPreDownloadData.zipDir)) {}
+    for (parambhyo = ApolloUtil.e(localApolloPreDownloadData.dirType) + localApolloPreDownloadData.zipDir;; parambhyo = "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/pre_download/" + localApolloPreDownloadData.resId + ".zip")
+    {
+      String str2 = ApolloUtil.e(localApolloPreDownloadData.dirType) + localApolloPreDownloadData.dir;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloManager", 2, new Object[] { "preDownloadListener res zip done reportId:", localApolloPreDownloadData.reportId, ", url:", str1 });
+      }
+      ThreadManager.getSubThreadHandler().post(new ApolloManager.20.1(this, localApolloPreDownloadData, parambhyo, str2));
+      return;
+    }
   }
 }
 

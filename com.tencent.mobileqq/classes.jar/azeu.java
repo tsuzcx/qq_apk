@@ -1,169 +1,315 @@
-import android.app.Activity;
-import android.app.KeyguardManager;
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.transfile.BuddyTransfileProcessor;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.jvm.internal.Intrinsics;
+import mqq.app.AppRuntime.Status;
+import mqq.manager.Manager;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class azeu
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"TAG", "", "defaultDateFormat", "Ljava/text/SimpleDateFormat;", "getDefaultDateFormat", "()Ljava/text/SimpleDateFormat;", "defaultRequestDateFormat", "getDefaultRequestDateFormat", "bgImageUrlFromEntity", "app", "Lcom/tencent/mobileqq/app/QQAppInterface;", "constellationLinkFromEntity", "constellationRequestTsFromSp", "", "constellationTextColorFromSp", "currentDate", "currentRequestDate", "extInfoRequestIntervalSecondFromSp", "getCurrentProfileConstellation", "uin", "getMsfDate", "Ljava/util/Date;", "iconUrlFromEntity", "isConstellationRequestExpired", "", "isConstellationStatus", "saveConstellationRequestTsSp", "", "ts", "saveConstellationTextColorSp", "color", "saveExtInfoRequestIntervalSecondSp", "second", "", "saveTodayTrendJsonSp", "todayConstellationTrend", "simpleTrend", "suitableTrend", "friends", "Lcom/tencent/mobileqq/data/Friends;", "todayTrendJsonFromSp", "tomorrowRequestDate", "yesterdayRequestDate", "constellationInfo", "todayTrendFromEntity", "Lcom/tencent/mobileqq/app/FriendsManager;", "tomorrowTrendFromEntity", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
+public final class azeu
 {
-  public static azfg a()
+  @NotNull
+  private static final SimpleDateFormat a = new SimpleDateFormat("yyyy-MM-dd");
+  @NotNull
+  private static final SimpleDateFormat b = new SimpleDateFormat("yyyyMMdd");
+  
+  public static final long a(@NotNull QQAppInterface paramQQAppInterface)
   {
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface != null) {
-      return (azfg)localQQAppInterface.getManager(387);
+    Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "app");
+    paramQQAppInterface = bhhr.a((Context)BaseApplicationImpl.context, paramQQAppInterface.getCurrentAccountUin(), "key_ext_info_request_interval_second", Long.valueOf(0L));
+    if (paramQQAppInterface == null) {
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.Long");
     }
-    return null;
+    return ((Long)paramQQAppInterface).longValue();
   }
   
-  public static QQAppInterface a()
+  @NotNull
+  public static final String a()
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    return null;
+    Object localObject = a();
+    localObject = a.format((Date)localObject);
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "defaultDateFormat.format(date)");
+    return localObject;
   }
   
-  public static String a()
+  @NotNull
+  public static final String a(@NotNull anvk paramanvk, @NotNull String paramString)
   {
-    return System.currentTimeMillis() + "_" + ((int)(Math.random() * 900.0D) + 100);
-  }
-  
-  public static String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return paramString;
-    }
-    return paramString.substring(paramString.indexOf("_") + 1);
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    return b() + paramString1 + "." + paramString2;
-  }
-  
-  public static void a(Activity paramActivity, azfk paramazfk)
-  {
-    if ((paramActivity == null) || (paramazfk == null) || (paramazfk.a == null)) {
+    Intrinsics.checkParameterIsNotNull(paramanvk, "$this$todayTrendFromEntity");
+    Intrinsics.checkParameterIsNotNull(paramString, "uin");
+    paramanvk = paramanvk.d(paramString).constellationTodayTrend;
+    if (paramanvk != null) {}
+    for (;;)
+    {
       if (QLog.isColorLevel()) {
-        QLog.d("AssistantUtils", 2, "executeJumpAction jump params is null activity = " + paramActivity + ", commandInformation = " + paramazfk);
+        QLog.d("ConstellationUtil", 2, new Object[] { "todayTrendFromEntity: called. ", "trend: " + paramanvk });
       }
+      return paramanvk;
+      paramanvk = "";
     }
-    do
+  }
+  
+  @NotNull
+  public static final String a(@NotNull QQAppInterface paramQQAppInterface)
+  {
+    Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "app");
+    paramQQAppInterface = bhhr.a((Context)BaseApplicationImpl.context, paramQQAppInterface.getCurrentAccountUin(), "key_today_constellation_trends_json", "");
+    if (paramQQAppInterface == null) {
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.String");
+    }
+    return (String)paramQQAppInterface;
+  }
+  
+  @NotNull
+  public static final String a(@NotNull QQAppInterface paramQQAppInterface, @NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "app");
+    Intrinsics.checkParameterIsNotNull(paramString, "uin");
+    paramQQAppInterface = paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    if (paramQQAppInterface == null) {
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.FriendsManager");
+    }
+    paramQQAppInterface = ((anvk)paramQQAppInterface).d(paramString);
+    Intrinsics.checkExpressionValueIsNotNull(paramQQAppInterface, "friends");
+    return b(paramQQAppInterface);
+  }
+  
+  @NotNull
+  public static final String a(@NotNull Friends paramFriends)
+  {
+    Intrinsics.checkParameterIsNotNull(paramFriends, "$this$constellationInfo");
+    return " uin: " + paramFriends.uin + " constellationTodayTrend: " + paramFriends.constellationTodayTrend + ' ' + "constellationTomorrowTrend: " + paramFriends.constellationTomorrowTrend + ' ' + "constellationDateStr: " + paramFriends.constellationDateStr;
+  }
+  
+  @NotNull
+  public static final SimpleDateFormat a()
+  {
+    return a;
+  }
+  
+  private static final Date a()
+  {
+    return new Date(NetConnInfoCenter.getServerTimeMillis());
+  }
+  
+  public static final void a(@NotNull QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "app");
+    bhhr.a((Context)BaseApplicationImpl.context, paramQQAppInterface.getCurrentAccountUin(), true, "key_ext_info_request_interval_second", Integer.valueOf(paramInt));
+  }
+  
+  public static final void a(@NotNull QQAppInterface paramQQAppInterface, long paramLong)
+  {
+    Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "app");
+    bhhr.a((Context)BaseApplicationImpl.context, paramQQAppInterface.getCurrentAccountUin(), true, "key_constellation_last_request_second", Long.valueOf(paramLong));
+  }
+  
+  public static final void a(@NotNull QQAppInterface paramQQAppInterface, @Nullable String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "app");
+    Context localContext = (Context)BaseApplicationImpl.context;
+    paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
+    if (paramString != null) {}
+    for (;;)
     {
+      bhhr.a(localContext, paramQQAppInterface, true, "key_today_constellation_trends_json", paramString);
       return;
-      if (paramazfk.a.jdField_a_of_type_Int == 115)
+      paramString = "";
+    }
+  }
+  
+  public static final boolean a(@NotNull QQAppInterface paramQQAppInterface)
+  {
+    Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "app");
+    long l1 = System.currentTimeMillis() / 1000L;
+    long l2 = a(paramQQAppInterface);
+    if (l1 - b(paramQQAppInterface) >= l2) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ConstellationUtil", 2, new Object[] { "isConstellationRequestExpired: called. ", "expired: " + bool });
+      }
+      return bool;
+    }
+  }
+  
+  public static final long b(@NotNull QQAppInterface paramQQAppInterface)
+  {
+    Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "app");
+    paramQQAppInterface = bhhr.a((Context)BaseApplicationImpl.context, paramQQAppInterface.getCurrentAccountUin(), "key_constellation_last_request_second", Long.valueOf(0L));
+    if (paramQQAppInterface == null) {
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.Long");
+    }
+    return ((Long)paramQQAppInterface).longValue();
+  }
+  
+  @NotNull
+  public static final String b()
+  {
+    Object localObject = a();
+    localObject = b.format((Date)localObject);
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "defaultRequestDateFormat.format(date)");
+    return localObject;
+  }
+  
+  @NotNull
+  public static final String b(@NotNull anvk paramanvk, @NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramanvk, "$this$tomorrowTrendFromEntity");
+    Intrinsics.checkParameterIsNotNull(paramString, "uin");
+    paramanvk = paramanvk.d(paramString).constellationTomorrowTrend;
+    if (paramanvk != null) {
+      return paramanvk;
+    }
+    return "";
+  }
+  
+  @Nullable
+  public static final String b(@NotNull QQAppInterface paramQQAppInterface)
+  {
+    Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "app");
+    Manager localManager = paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    if (localManager == null) {
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.FriendsManager");
+    }
+    paramQQAppInterface = ((anvk)localManager).d(paramQQAppInterface.getCurrentUin()).constellationIconUrl;
+    if (paramQQAppInterface != null) {
+      return paramQQAppInterface;
+    }
+    return "";
+  }
+  
+  @NotNull
+  public static final String b(@NotNull QQAppInterface paramQQAppInterface, @NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "app");
+    Intrinsics.checkParameterIsNotNull(paramString, "uin");
+    paramQQAppInterface = bgzv.c(bhaa.a(paramQQAppInterface, paramString).constellation);
+    Intrinsics.checkExpressionValueIsNotNull(paramQQAppInterface, "constellationStr");
+    return paramQQAppInterface;
+  }
+  
+  @NotNull
+  public static final String b(@NotNull Friends paramFriends)
+  {
+    Intrinsics.checkParameterIsNotNull(paramFriends, "friends");
+    Object localObject;
+    if (Intrinsics.areEqual(b(), paramFriends.constellationDateStr))
+    {
+      localObject = paramFriends.constellationTodayTrend;
+      if (localObject == null) {}
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ConstellationUtil", 2, new Object[] { "suitableTrend: called. ", a(paramFriends) });
+      }
+      return localObject;
+      localObject = "";
+      continue;
+      if (Intrinsics.areEqual(d(), paramFriends.constellationDateStr))
       {
-        a(paramActivity, paramazfk.a.jdField_a_of_type_JavaLangString, paramazfk.a.jdField_b_of_type_JavaLangString, paramazfk.a.jdField_b_of_type_Int);
-        return;
+        String str = paramFriends.constellationTomorrowTrend;
+        localObject = str;
+        if (str == null) {
+          localObject = "";
+        }
       }
-      paramazfk = azen.a(paramazfk.a.jdField_a_of_type_Int);
-      if (!TextUtils.isEmpty(paramazfk)) {
-        break;
+      else
+      {
+        localObject = "";
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("AssistantUtils", 2, "executeJumpAction openAction is null");
-    return;
-    a(paramActivity, paramazfk);
-  }
-  
-  public static void a(Activity paramActivity, String paramString)
-  {
-    paramString = "mqqaudioassistant://mqq.jump.qq/default?jumpaction=" + paramString;
-    Intent localIntent = new Intent();
-    localIntent.setAction("android.intent.action.VIEW");
-    localIntent.setData(Uri.parse(paramString));
-    localIntent.setFlags(268435456);
-    localIntent.setComponent(new ComponentName("com.tencent.mobileqq", "com.tencent.mobileqq.activity.JumpActivity"));
-    paramActivity.startActivity(localIntent);
-  }
-  
-  public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt)
-  {
-    if ((paramString1 != null) && (!paramString1.equals("")))
-    {
-      Intent localIntent = AIOUtils.setOpenAIOIntent(new Intent(paramActivity, SplashActivity.class), null);
-      localIntent.putExtra("uin", paramString1);
-      localIntent.putExtra("uinname", paramString2);
-      localIntent.putExtra("uintype", paramInt);
-      localIntent.putExtra("isNeedUpdate", true);
-      paramActivity.startActivity(localIntent);
     }
   }
   
-  public static void a(String paramString)
+  public static final void b(@NotNull QQAppInterface paramQQAppInterface, @NotNull String paramString)
   {
-    ((azfg)a().getManager(387)).b(paramString);
+    Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "app");
+    Intrinsics.checkParameterIsNotNull(paramString, "color");
+    bhhr.a((Context)BaseApplicationImpl.context, paramQQAppInterface.getCurrentAccountUin(), true, "key_constellation_text_color", paramString);
   }
   
-  public static void a(String paramString1, String paramString2)
+  public static final boolean b(@NotNull QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
+    Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "app");
+    return (paramQQAppInterface.getOnlineStatus() == AppRuntime.Status.online) && (paramQQAppInterface.getExtOnlineStatus() == 1040);
   }
   
-  public static void a(boolean paramBoolean, int paramInt)
+  @NotNull
+  public static final String c()
   {
-    HashMap localHashMap = new HashMap();
-    if (!paramBoolean) {
-      localHashMap.put("downloadError", "" + paramInt);
-    }
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface != null) {
-      StatisticCollector.getInstance(localQQAppInterface.getApp()).collectPerformance(localQQAppInterface.getCurrentAccountUin(), "WakeDataDownloadMonitor", paramBoolean, 0L, 0L, localHashMap, null);
-    }
+    Object localObject = Calendar.getInstance();
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "cal");
+    ((Calendar)localObject).setTime(a());
+    ((Calendar)localObject).add(5, 1);
+    localObject = b.format(((Calendar)localObject).getTime());
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "defaultRequestDateFormat.format(cal.time)");
+    return localObject;
   }
   
-  public static void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2)
+  @Nullable
+  public static final String c(@NotNull QQAppInterface paramQQAppInterface)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("voiceId", paramString);
-    localHashMap.put("stCode", String.valueOf(paramInt1));
-    localHashMap.put("wxCode", String.valueOf(paramInt2));
-    paramString = a();
-    if (paramString != null) {
-      StatisticCollector.getInstance(paramString.getApp()).collectPerformance(paramString.getCurrentAccountUin(), "VoiceRequestMonitor", paramBoolean, 0L, 0L, localHashMap, null);
+    Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "app");
+    Manager localManager = paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    if (localManager == null) {
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.FriendsManager");
     }
+    paramQQAppInterface = ((anvk)localManager).d(paramQQAppInterface.getCurrentUin()).constellationBgImageUrl;
+    if (paramQQAppInterface != null) {
+      return paramQQAppInterface;
+    }
+    return "";
   }
   
-  public static boolean a()
+  @NotNull
+  public static final String d()
   {
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface != null)
-    {
-      boolean bool = ((KeyguardManager)localQQAppInterface.getApp().getApplicationContext().getSystemService("keyguard")).inKeyguardRestrictedInputMode();
-      a("HelloQQWake", "MSG_IS_IN_BACKGROUND_ROTATION isBackgroundStop:" + localQQAppInterface.isBackgroundStop + ",isScreenLocked:" + bool);
-      return (localQQAppInterface.isBackgroundStop) || (bool);
-    }
-    return false;
+    Object localObject = Calendar.getInstance();
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "cal");
+    ((Calendar)localObject).setTime(a());
+    ((Calendar)localObject).add(5, -1);
+    localObject = b.format(((Calendar)localObject).getTime());
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "defaultRequestDateFormat.format(cal.time)");
+    return localObject;
   }
   
-  public static String b()
+  @NotNull
+  public static final String d(@NotNull QQAppInterface paramQQAppInterface)
   {
-    String str = BuddyTransfileProcessor.getTransferFilePath(a().getCurrentAccountUin(), null, 327697, null, false);
-    return str.substring(0, str.lastIndexOf(File.separator)) + "/";
+    Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "app");
+    paramQQAppInterface = bhhr.a((Context)BaseApplicationImpl.context, paramQQAppInterface.getCurrentAccountUin(), "key_constellation_text_color", "");
+    if (paramQQAppInterface == null) {
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.String");
+    }
+    return (String)paramQQAppInterface;
   }
   
-  public static String b(String paramString)
+  @NotNull
+  public static final String e(@NotNull QQAppInterface paramQQAppInterface)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return paramString;
+    Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "app");
+    Manager localManager = paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    if (localManager == null) {
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.FriendsManager");
     }
-    return a().getCurrentAccountUin() + "_" + paramString;
+    paramQQAppInterface = ((anvk)localManager).d(paramQQAppInterface.getCurrentUin()).constellationJumpUrl;
+    if (paramQQAppInterface != null) {
+      return paramQQAppInterface;
+    }
+    return "";
   }
 }
 

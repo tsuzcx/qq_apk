@@ -1,56 +1,15 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.TroopManager;
 
-public abstract class aofh
-  extends Binder
-  implements aofg
+public final class aofh
+  implements DialogInterface.OnClickListener
 {
-  public aofh()
-  {
-    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
-  }
+  public aofh(TroopManager paramTroopManager, String paramString) {}
   
-  public static aofg a(IBinder paramIBinder)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
-    if ((localIInterface != null) && ((localIInterface instanceof aofg))) {
-      return (aofg)localIInterface;
-    }
-    return new aofi(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
-      return true;
-    }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
-    paramParcel1 = a();
-    paramParcel2.writeNoException();
-    if (paramParcel1 != null)
-    {
-      paramParcel2.writeInt(1);
-      paramParcel1.writeToParcel(paramParcel2, 1);
-      return true;
-    }
-    paramParcel2.writeInt(0);
-    return true;
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
   }
 }
 

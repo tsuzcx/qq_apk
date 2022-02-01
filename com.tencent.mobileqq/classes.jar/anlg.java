@@ -1,14 +1,13 @@
-public class anlg
+import com.tencent.qphone.base.util.QLog;
+
+class anlg
+  extends anln
 {
-  public int a;
-  public String a;
-  public int b;
+  anlg(anlf paramanlf) {}
   
-  public anlg(String paramString, int paramInt1, int paramInt2)
+  public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    QLog.d("ApolloGameUtil", 2, "  onPermission the http retcode = " + paramInt);
   }
 }
 

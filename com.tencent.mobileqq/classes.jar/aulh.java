@@ -1,28 +1,87 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.os.Handler;
+import com.tencent.mobileqq.filemanageraux.util.UniformDownloaderAppBabySdk.4.1;
+import com.tencent.mobileqq.filemanageraux.util.UniformDownloaderAppBabySdk.4.2;
+import com.tencent.mobileqq.filemanageraux.util.UniformDownloaderAppBabySdk.4.3;
+import com.tencent.mobileqq.filemanageraux.util.UniformDownloaderAppBabySdk.4.4;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
+import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
 
-class aulh
-  implements URLDrawable.URLDrawableListener
+public class aulh
+  implements ITMAssistantDownloadClientListener
 {
-  aulh(aulg paramaulg, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt) {}
+  aulh(aulg paramaulg) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
   {
-    QLog.e("ImaxAdvertisement", 1, "s_forShare Bitmap onLoadCanceled");
+    aulg.b(this.a);
+    if (!aulg.a(this.a).post(new UniformDownloaderAppBabySdk.4.1(this, paramString, paramLong1, paramLong2))) {
+      QLog.e(aulg.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. thread error!!");
+    }
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    QLog.e("ImaxAdvertisement", 1, "s_forShare Bitmap FAILED, no more action ...");
+    int i = 0;
+    int j = 0;
+    Object localObject2 = null;
+    QLog.i(aulg.a, 1, "[UniformDL] inPDownloadSDKTaskStateChanged  state:[" + paramInt1 + "] errcode:[" + paramInt2 + "] errStr:[" + paramString2 + "] url:[" + paramString1 + "]");
+    String str = "";
+    Object localObject1;
+    if ((paramTMAssistantDownloadClient != null) && (4 == paramInt1))
+    {
+      try
+      {
+        localObject1 = paramTMAssistantDownloadClient.getDownloadTaskState(paramString1);
+        i = 0;
+        paramTMAssistantDownloadClient = str;
+      }
+      catch (Exception paramTMAssistantDownloadClient)
+      {
+        do
+        {
+          for (;;)
+          {
+            paramTMAssistantDownloadClient.printStackTrace();
+            paramTMAssistantDownloadClient = aukz.a(22);
+            localObject1 = null;
+            j = 22;
+            i = 1;
+            continue;
+            localObject1 = ((TMAssistantDownloadTaskInfo)localObject1).mSavePath;
+          }
+        } while ((aulg.a(this.a) == null) || (aulg.a(this.a).post(new UniformDownloaderAppBabySdk.4.3(this, paramString1, paramInt1, paramInt2, paramString2, (String)localObject1))));
+        QLog.e(aulg.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. thread error!!");
+        return;
+      }
+      if (localObject1 == null) {
+        localObject1 = localObject2;
+      }
+    }
+    for (;;)
+    {
+      aulg.b(this.a);
+      if (i != 0)
+      {
+        if (!aulg.a(this.a).post(new UniformDownloaderAppBabySdk.4.2(this, paramString1, j, paramTMAssistantDownloadClient))) {
+          QLog.e(aulg.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. haveErr and thread error!!");
+        }
+        return;
+      }
+      localObject1 = null;
+      paramTMAssistantDownloadClient = "";
+      j = 0;
+    }
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient)
   {
-    paramURLDrawable = awrc.a(paramURLDrawable);
-    aulg.a(this.jdField_a_of_type_Aulg, this.jdField_a_of_type_JavaLangString, this.b, this.c, paramURLDrawable, this.d, this.jdField_a_of_type_Int);
+    QLog.e(aulg.a, 1, "[UniformDL] ABSdkdownload service invalid ");
+    aulg.b(this.a);
+    if (!aulg.a(this.a).post(new UniformDownloaderAppBabySdk.4.4(this))) {
+      QLog.e(aulg.a, 1, "[UniformDL] OnDwonloadSDKServiceInvalid. thread error!!");
+    }
   }
 }
 

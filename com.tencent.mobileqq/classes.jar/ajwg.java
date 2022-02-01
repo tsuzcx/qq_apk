@@ -1,16 +1,36 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ajwg
-  implements MediaPlayer.OnCompletionListener
 {
-  public ajwg(RedPacketKSongFragment paramRedPacketKSongFragment) {}
-  
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public static String a(MessageRecord paramMessageRecord)
   {
-    RedPacketKSongFragment.a(this.a, false);
-    paramMediaPlayer.release();
+    if ((paramMessageRecord instanceof MessageForText))
+    {
+      paramMessageRecord = (MessageForText)paramMessageRecord;
+      if (paramMessageRecord.sb != null) {
+        return paramMessageRecord.sb.toString();
+      }
+      return paramMessageRecord.msg;
+    }
+    if ((paramMessageRecord instanceof MessageForMixedMsg)) {
+      return String.valueOf(MessageForMixedMsg.getTextFromMixedMsg((MessageForMixedMsg)paramMessageRecord));
+    }
+    if ((paramMessageRecord instanceof MessageForReplyText))
+    {
+      paramMessageRecord = (MessageForReplyText)paramMessageRecord;
+      if (paramMessageRecord.sb != null) {
+        return paramMessageRecord.sb.toString();
+      }
+      return paramMessageRecord.msg;
+    }
+    if ((paramMessageRecord instanceof MessageForArkApp)) {
+      return ((MessageForArkApp)paramMessageRecord).getJumpUrl();
+    }
+    return "";
   }
 }
 

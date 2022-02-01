@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
-import amtj;
-import bfur;
+import anvx;
+import bhdj;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 
@@ -12,7 +12,7 @@ class TaskManager$13$1
   
   public void run()
   {
-    bfur.a(BaseActivity.sTopActivity, 232, this.val$title, this.val$message, "OK", amtj.a(2131713764), new TaskManager.13.1.1(this), new TaskManager.13.1.2(this)).show();
+    bhdj.a(BaseActivity.sTopActivity, 232, this.val$title, this.val$message, "OK", anvx.a(2131714111), new TaskManager.13.1.1(this), new TaskManager.13.1.2(this)).show();
   }
 }
 

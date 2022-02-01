@@ -1,11 +1,11 @@
 package com.tencent.biz.subscribe.videoplayer;
 
-import zla;
+import aaaf;
 
 public class VideoPlayerView$15$1
   implements Runnable
 {
-  public VideoPlayerView$15$1(zla paramzla) {}
+  public VideoPlayerView$15$1(aaaf paramaaaf) {}
   
   public void run()
   {

@@ -1,129 +1,166 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ocr.OCRTextSearchInfo.SougouSearchInfo;
+import com.tencent.mobileqq.ocr.ui.BaseOCRTextSearchFragment;
+import com.tencent.mobileqq.ocr.ui.SearchResultFragment;
+import com.tencent.mobileqq.ocr.ui.SearchResultPageView.1;
 import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import kotlin.text.StringsKt;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.widget.XListView;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilecard/bussiness/anonymous/jsp/AskAnonymouslyApiPlugin;", "Lcom/tencent/mobileqq/webview/swift/WebViewPlugin;", "()V", "handleJsRequest", "", "listener", "Lcom/tencent/mobileqq/webview/swift/JsBridgeListener;", "url", "", "pkgName", "method", "args", "", "(Lcom/tencent/mobileqq/webview/swift/JsBridgeListener;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)Z", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class ayut
-  extends WebViewPlugin
+public class ayut
+  implements ayuo
 {
-  public static final ayuu a = new ayuu(null);
+  int jdField_a_of_type_Int = 0;
+  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  View jdField_a_of_type_AndroidViewView = null;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public ayud a;
+  ayul jdField_a_of_type_Ayul;
+  ayuu jdField_a_of_type_Ayuu;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  BaseOCRTextSearchFragment jdField_a_of_type_ComTencentMobileqqOcrUiBaseOCRTextSearchFragment;
+  public XListView a;
+  boolean jdField_a_of_type_Boolean = false;
+  boolean b = false;
+  boolean c = false;
+  boolean d = false;
   
-  public ayut()
+  public ayut(ayud paramayud, SearchResultFragment paramSearchResultFragment)
   {
-    this.mPluginNameSpace = "askanonymously";
+    this.jdField_a_of_type_Ayud = paramayud;
+    this.jdField_a_of_type_ComTencentMobileqqOcrUiBaseOCRTextSearchFragment = paramSearchResultFragment;
+    this.jdField_a_of_type_Ayul = new ayul(paramayud.a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
   }
   
-  public boolean handleJsRequest(@Nullable JsBridgeListener paramJsBridgeListener, @Nullable String paramString1, @Nullable String paramString2, @Nullable String paramString3, @NotNull String... paramVarArgs)
+  private void a(String paramString1, String paramString2)
   {
-    Object localObject3 = null;
-    paramJsBridgeListener = null;
-    Object localObject1 = null;
-    Object localObject2 = null;
-    Intrinsics.checkParameterIsNotNull(paramVarArgs, "args");
-    if (TextUtils.isEmpty((CharSequence)paramString1))
+    Intent localIntent = new Intent(this.jdField_a_of_type_Ayud.a(), QQBrowserActivity.class);
+    localIntent.putExtra("uin", paramString1);
+    localIntent.putExtra("url", paramString2);
+    localIntent.putExtra("hide_more_button", true);
+    this.jdField_a_of_type_Ayud.a().startActivity(localIntent);
+  }
+  
+  public View a(Context paramContext, ayuu paramayuu)
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      QLog.e("AskAnonymouslyApiPlugin", 1, "Call askanonymously jsapi error, url is empty");
-      return false;
+      paramContext = LayoutInflater.from(paramContext).inflate(2131561316, null);
+      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramContext.findViewById(2131377223));
+      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramContext.findViewById(2131378423));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131372032));
+      this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(this.jdField_a_of_type_ComTencentMobileqqOcrUiBaseOCRTextSearchFragment.a);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131370441));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+      this.jdField_a_of_type_AndroidViewView = paramContext;
+      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Ayul);
     }
-    int i;
-    if (StringsKt.equals(paramString2, "askanonymously", true))
+    a(paramayuu);
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public void a() {}
+  
+  protected void a(int paramInt)
+  {
+    switch (paramInt)
     {
-      if (StringsKt.equals("invite", paramString3, true))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("AskAnonymouslyApiPlugin", 2, "Call method invite");
-        }
-        try
-        {
-          i = new JSONObject(paramVarArgs[0]).optInt("invite_type", 0);
-          if (i == 0)
-          {
-            paramString1 = ayuz.a;
-            paramString2 = this.mRuntime;
-            paramJsBridgeListener = localObject2;
-            if (paramString2 != null) {
-              paramJsBridgeListener = paramString2.a();
-            }
-            paramString1.a(paramJsBridgeListener, false);
-          }
-          else if (i == 1)
-          {
-            paramString1 = ayuz.a;
-            paramString2 = this.mRuntime;
-            paramJsBridgeListener = localObject3;
-            if (paramString2 != null) {
-              paramJsBridgeListener = paramString2.a();
-            }
-            paramString1.a(paramJsBridgeListener);
-          }
-        }
-        catch (JSONException paramJsBridgeListener)
-        {
-          QLog.e("AskAnonymouslyApiPlugin", 2, paramJsBridgeListener.getMessage(), (Throwable)paramJsBridgeListener);
-        }
-        QLog.e("AskAnonymouslyApiPlugin", 2, "invite inviteType invalid: " + i);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Ayud.a(null);
+      return;
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+      continue;
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131695775);
+      continue;
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131698703);
+      continue;
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+  }
+  
+  public void a(ayun paramayun)
+  {
+    if (paramayun == null) {
+      return;
+    }
+    if ((paramayun.b == 2049) && (paramayun.jdField_a_of_type_Int == 0))
+    {
+      paramayun = (OCRTextSearchInfo.SougouSearchInfo)paramayun.jdField_a_of_type_JavaLangObject;
+      if ((paramayun != null) && (!TextUtils.isEmpty(paramayun.jumpURL))) {
+        a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), paramayun.jumpURL);
       }
-      else
-      {
-        if (StringsKt.equals("shareDetailToQZone", paramString3, true)) {
-          if (QLog.isColorLevel()) {
-            QLog.i("AskAnonymouslyApiPlugin", 2, "Call method invite");
-          }
-        }
-        for (;;)
-        {
-          try
-          {
-            paramString3 = new JSONObject(paramVarArgs[0]);
-            paramString1 = paramString3.optString("jump_url");
-            paramString2 = paramString3.optString("image_url");
-            i = paramString3.optInt("share_type", 0);
-            if (i != 0) {
-              continue;
-            }
-            paramString3 = ayuz.a;
-            paramVarArgs = this.mRuntime;
-            if (paramVarArgs != null) {
-              paramJsBridgeListener = paramVarArgs.a();
-            }
-            paramString3.a(paramJsBridgeListener, paramString2, paramString1);
-          }
-          catch (JSONException paramJsBridgeListener)
-          {
-            QLog.e("AskAnonymouslyApiPlugin", 2, paramJsBridgeListener.getMessage(), (Throwable)paramJsBridgeListener);
-            continue;
-            QLog.e("AskAnonymouslyApiPlugin", 2, "shareDetailToQZone shareType invalid: " + i);
-            continue;
-          }
-          QLog.e("AskAnonymouslyApiPlugin", 1, "Call askanonymously jsapi error, method not match");
-          return false;
-          if (i != 1) {
-            continue;
-          }
-          paramString3 = ayuz.a;
-          paramVarArgs = this.mRuntime;
-          paramJsBridgeListener = localObject1;
-          if (paramVarArgs != null) {
-            paramJsBridgeListener = paramVarArgs.a();
-          }
-          paramString3.b(paramJsBridgeListener, paramString2, paramString1);
-        }
+    }
+    bdla.b(null, "dc00898", "", "", "0X80082E9", "0X80082E9", 0, 0, "", "", "", "");
+  }
+  
+  protected void a(ayuu paramayuu)
+  {
+    if (this.d) {
+      return;
+    }
+    this.d = true;
+    this.jdField_a_of_type_Ayuu = paramayuu;
+    if ((this.jdField_a_of_type_Ayuu.b == 0) && (this.jdField_a_of_type_Ayuu.a != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.ocr.SearchResultFragment", 2, "results: " + this.jdField_a_of_type_Ayuu.a.size());
+      }
+      List localList = this.jdField_a_of_type_Ayuu.a;
+      if (localList.size() != 0) {
+        this.jdField_a_of_type_Ayul.a(this.jdField_a_of_type_Ayuu, localList, false, false);
       }
     }
     else
     {
-      QLog.e("AskAnonymouslyApiPlugin", 1, "Call askanonymously jsapi error, package not match");
-      return false;
+      b();
+      a(paramayuu.b);
+      return;
     }
-    return true;
+    a(-1);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.d = false;
+    this.jdField_a_of_type_Int = 0;
+    this.c = false;
+    this.b = false;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_Ayul != null) {
+      this.jdField_a_of_type_Ayul.a();
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new SearchResultPageView.1(this), 50L);
   }
 }
 

@@ -1,21 +1,22 @@
 package com.tencent.mobileqq.troop.data;
 
-import anca;
-import becw;
+import aoep;
+import bfjz;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr;
 
 public class TroopMessageManager$1
   implements Runnable
 {
-  public TroopMessageManager$1(becw parambecw, String paramString1, String paramString2, int paramInt, long paramLong1, long paramLong2) {}
+  public TroopMessageManager$1(bfjz parambfjz, String paramString1, String paramString2, int paramInt, long paramLong1, long paramLong2) {}
   
   public void run()
   {
-    Object localObject = (anca)becw.a(this.this$0).getBusinessHandler(20);
+    Object localObject = (aoep)bfjz.a(this.this$0).getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
     if (localObject != null)
     {
-      localObject = ((anca)localObject).a();
+      localObject = ((aoep)localObject).a();
       if (localObject != null) {
         ((TroopBatchAddFriendMgr)localObject).a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long);
       }

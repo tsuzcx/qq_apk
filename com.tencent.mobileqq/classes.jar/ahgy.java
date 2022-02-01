@@ -1,18 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
-class ahgy
-  implements DialogInterface.OnClickListener
+public class ahgy
+  implements bipw
 {
-  ahgy(ahgc paramahgc, bhaq parambhaq) {}
+  public ahgy(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, ahha paramahha) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_Ahgc.j = true;
-    this.jdField_a_of_type_Ahgc.i = true;
-    ahgc.b(this.jdField_a_of_type_Ahgc, false);
-    if ((this.jdField_a_of_type_Bhaq.a()) && (!this.jdField_a_of_type_Bhaq.b())) {
-      bcef.b(this.jdField_a_of_type_Ahgc.app, "dc00899", "Grp_wolf", "", "ready_time", "ready_kick", 0, 0, "", "", "", "");
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Ahha.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Ahha.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
+      this.jdField_a_of_type_Ahha.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
     }
   }
 }

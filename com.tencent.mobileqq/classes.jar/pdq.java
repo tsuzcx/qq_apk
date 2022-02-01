@@ -1,16 +1,33 @@
-import kotlin.Metadata;
-import kotlin.jvm.JvmStatic;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.SubCommentData;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/config/handlers/ViolaVideoFeedsConfigHandler$Companion;", "", "()V", "KEY_FROM_SOURCE", "", "TAG", "detectConfigInDebug", "", "isViolaVideoFeeds", "videoFromType", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class pdq
+class pdq
+  extends ClickableSpan
 {
-  @JvmStatic
-  public final boolean a(int paramInt)
+  pdq(pdp parampdp, SubCommentData paramSubCommentData) {}
+  
+  public void onClick(View paramView)
   {
-    if ("all".equals((String)bkwm.a("viola_video_feeds_config", ""))) {
-      return true;
+    pbq.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.uin, BaseActivity.sTopActivity);
+    paramView = new paa(this.jdField_a_of_type_Pdp).a().a();
+    olh.a(null, pbq.a(this.jdField_a_of_type_Pdp.a), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.jdField_a_of_type_Pdp.a.mArticleID), String.valueOf(this.jdField_a_of_type_Pdp.a.mAlgorithmID), this.jdField_a_of_type_Pdp.a.innerUniqueID, paramView, false);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.isAuthorSelection()) {}
+    for (String str = "#FF8444";; str = "#737373")
+    {
+      paramTextPaint.setColor(Color.parseColor(str));
+      paramTextPaint.setUnderlineText(false);
+      return;
     }
-    return bkwm.b(paramInt, "\\|", "viola_video_feeds_config");
   }
 }
 

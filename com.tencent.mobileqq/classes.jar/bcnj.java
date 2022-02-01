@@ -1,18 +1,13 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.studymode.KidModeAdvanceSettingFragment;
-import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
+import android.content.DialogInterface.OnClickListener;
 
-public class bcnj
-  implements DialogInterface.OnCancelListener
+public final class bcnj
+  implements DialogInterface.OnClickListener
 {
-  public bcnj(KidModeAdvanceSettingFragment paramKidModeAdvanceSettingFragment) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    com.tencent.mobileqq.search.util.VADHelper.c = false;
     paramDialogInterface.dismiss();
-    KidModeAdvanceSettingFragment.a(this.a).setEnabled(true);
-    KidModeAdvanceSettingFragment.a(this.a, KidModeAdvanceSettingFragment.a(this.a), false, KidModeAdvanceSettingFragment.a(this.a));
   }
 }
 

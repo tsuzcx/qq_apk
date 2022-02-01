@@ -1,49 +1,33 @@
-import android.text.TextUtils;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import android.os.Bundle;
 
-class apwa
+public abstract class apwa
+  implements apvj
 {
-  private static volatile apwa a;
+  private final long a;
+  private final long b;
   
-  public static apwa a()
+  public apwa(long paramLong1, long paramLong2)
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new apwa();
-      }
-      return a;
-    }
-    finally {}
+    this.a = paramLong1;
+    this.b = paramLong2;
   }
   
-  public String a(String paramString)
+  public Bundle a()
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return null;
-      paramString = Pattern.compile("^\\[(\\d+)\\]$").matcher(paramString);
-    } while (!paramString.find());
-    return paramString.group(1);
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("srcAppID", this.a);
+    localBundle.putLong("dstAppID", this.b);
+    return localBundle;
   }
   
-  public String b(String paramString)
+  public String a()
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return null;
-      paramString = Pattern.compile("^\\[('|\")(.+)('|\")\\]$").matcher(paramString);
-    } while (!paramString.find());
-    return paramString.group(2);
+    return "QQ.Login";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apwa
  * JD-Core Version:    0.7.0.1
  */

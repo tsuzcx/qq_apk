@@ -1,18 +1,21 @@
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
 
-public class ynz
-  implements View.OnLongClickListener
+class ynz
+  implements bkzq
 {
-  public ynz(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, int paramInt) {}
+  ynz(ynw paramynw, bkzi parambkzi) {}
   
-  public boolean onLongClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
-      return this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(paramView, this.jdField_a_of_type_Int);
+    switch (paramInt)
+    {
     }
-    return true;
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      this.jdField_a_of_type_Ynw.c();
+    }
   }
 }
 

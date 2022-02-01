@@ -1,66 +1,29 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
 import com.tencent.qphone.base.util.QLog;
 
 class atok
-  extends nmf
+  extends atnt
 {
-  atok(atoi paramatoi, long paramLong, Bundle paramBundle) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public atok(atno paramatno)
   {
-    if (paramInt == 0)
-    {
-      bool = true;
-      atqa.a("KEY_STAGE_2_NORMAL_B77", bool);
-      if (System.currentTimeMillis() - this.jdField_a_of_type_Long <= 10000L) {
-        break label117;
-      }
-    }
-    label117:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, new Object[] { "notifyServerSendMessage() onResult errorCode=", Integer.valueOf(paramInt), ", timeout=", Boolean.valueOf(bool) });
-      if (!bool) {
-        break label123;
-      }
-      atoi.a(this.jdField_a_of_type_Atoi, new Object[] { Integer.valueOf(0), "", amtj.a(2131703918), "" }, -6);
-      return;
-      bool = false;
-      break;
-    }
-    label123:
-    if (paramBundle != null)
-    {
-      long l = paramBundle.getLong("0xb77_9_sendTime", -1L);
-      if ((l == -1L) || (l != atoi.a(this.jdField_a_of_type_Atoi)))
-      {
-        QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, "handleGetMessageState currentRequestTime =" + atoi.a(this.jdField_a_of_type_Atoi) + ", sendStamp = " + l);
-        return;
-      }
-    }
-    paramBundle = ForwardUtils.reqTypeToReportData(this.jdField_a_of_type_AndroidOsBundle.getInt("req_type"));
-    Object localObject = ForwardUtils.toType(this.jdField_a_of_type_AndroidOsBundle.getInt("uintype"));
-    String str = this.jdField_a_of_type_AndroidOsBundle.getString("title");
-    bcef.b(null, "dc00898", "", "", "0X8009C94", "0X8009C94", 0, 0, "" + paramInt, paramBundle, (String)localObject, str);
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      atoi.a(this.jdField_a_of_type_Atoi, this.jdField_a_of_type_AndroidOsBundle);
-    }
-    paramBundle = this.jdField_a_of_type_Atoi;
-    localObject = ForwardUtils.parseOIDBb77RspBody(paramArrayOfByte);
-    if (paramArrayOfByte == null) {
-      paramInt = -7;
-    }
-    atoi.a(paramBundle, (Object[])localObject, paramInt);
+    super(paramatno);
   }
   
-  public boolean a(int paramInt, String paramString, Bundle paramBundle)
+  protected String a()
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      QLog.e("SDK_SHARE.ForwardSDKB77Sender", 1, new Object[] { "onError msg =", paramString });
+    return "StateRefuseByPCWhenPause";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Atno.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atno.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
     }
-    return super.a(paramInt, paramString, paramBundle);
+    atno.b(this.jdField_a_of_type_Atno, 11, 6);
+    atno.c(this.jdField_a_of_type_Atno, 11, 6);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atno.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atnt.a() + "->StateRefuseByPC)");
+    this.jdField_a_of_type_Atnt = new atoj(this.jdField_a_of_type_Atno);
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.open.appstore.dl;
 
 import android.text.TextUtils;
-import bhyo;
-import bhzm;
+import bjjq;
+import bjko;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 
 public class DownloadManagerV2$9
   implements Runnable
 {
-  public DownloadManagerV2$9(bhyo parambhyo, DownloadInfo paramDownloadInfo) {}
+  public DownloadManagerV2$9(bjjq parambjjq, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class DownloadManagerV2$9
       TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.this$0.a(this.a.d);
       if (localTMAssistantDownloadTaskInfo != null)
       {
-        bhzm.b("DownloadManagerV2", "[doGeneraWriteCodeTask] taskInfo=" + localTMAssistantDownloadTaskInfo + ",writeCodeState=" + this.a.j);
+        bjko.b("DownloadManagerV2", "[doGeneraWriteCodeTask] taskInfo=" + localTMAssistantDownloadTaskInfo + ",writeCodeState=" + this.a.j);
         this.a.l = localTMAssistantDownloadTaskInfo.mSavePath;
         this.a.jdField_c_of_type_Long = localTMAssistantDownloadTaskInfo.mTotalDataLen;
         this.this$0.c(this.a);
@@ -38,15 +38,15 @@ public class DownloadManagerV2$9
       for (;;)
       {
         label182:
-        bhzm.c("DownloadManagerV2", "[doGeneraWriteCodeTask]>>>", localException);
+        bjko.c("DownloadManagerV2", "[doGeneraWriteCodeTask]>>>", localException);
       }
     }
     if (this.a.a) {
       this.this$0.a(this.a, false);
     }
     return;
-    bhzm.b("DownloadManagerV2", "[doGeneraWriteCodeTask] taskInfo == null");
-    bhyo.b(this.this$0, this.a);
+    bjko.b("DownloadManagerV2", "[doGeneraWriteCodeTask] taskInfo == null");
+    bjjq.b(this.this$0, this.a);
   }
 }
 

@@ -1,38 +1,23 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.OvershootInterpolator;
+import com.tencent.mobileqq.activity.JDHongbaoActivity;
 
-class aeef
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+public class aeef
+  extends OvershootInterpolator
 {
-  aeec jdField_a_of_type_Aeec;
-  Button jdField_a_of_type_AndroidWidgetButton;
+  private boolean jdField_a_of_type_Boolean;
   
-  public aeef(aeee paramaeee, View paramView, aeec paramaeec)
-  {
-    super(paramView);
-    this.jdField_a_of_type_Aeec = paramaeec;
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131374604));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-  }
+  public aeef(JDHongbaoActivity paramJDHongbaoActivity) {}
   
-  public void onClick(View paramView)
+  public float getInterpolation(float paramFloat)
   {
-    if (this.jdField_a_of_type_Aeec != null) {
-      this.jdField_a_of_type_Aeec.a(paramView, getPosition());
-    }
-    for (;;)
+    if ((!this.jdField_a_of_type_Boolean) && (paramFloat > 0.7D))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ScoreActivity", 2, "mOnItemClickListener is null!");
-      }
+      this.jdField_a_of_type_Boolean = true;
+      JDHongbaoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJDHongbaoActivity).setBackgroundColor(-16777216);
+      JDHongbaoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJDHongbaoActivity).startAnimation(this.jdField_a_of_type_ComTencentMobileqqActivityJDHongbaoActivity.a);
     }
+    return (float)(1.0D - Math.pow(2.718281828459045D, 5.0F * -paramFloat) * Math.cos(8.0F * paramFloat));
   }
 }
 

@@ -1,21 +1,21 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ucrop.GestureCropImageView;
 
-class toe
-  extends AnimatorListenerAdapter
+public class toe
+  extends ScaleGestureDetector.SimpleOnScaleGestureListener
 {
-  toe(toc paramtoc, VVideoView paramVVideoView, View paramView) {}
+  private toe(GestureCropImageView paramGestureCropImageView) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    toc.a(this.jdField_a_of_type_Toc, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideoView, this.jdField_a_of_type_AndroidViewView);
+    this.a.a(paramScaleGestureDetector.getScaleFactor(), GestureCropImageView.a(this.a), GestureCropImageView.b(this.a), true);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     toe
  * JD-Core Version:    0.7.0.1
  */

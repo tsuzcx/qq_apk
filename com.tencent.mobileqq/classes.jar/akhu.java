@@ -1,29 +1,103 @@
-import android.os.Message;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.upgrade.UpgradeTIMWrapper;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.mobileqq.data.PhoneContact;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
 
-class akhu
-  implements View.OnClickListener
+public class akhu
+  extends birb
 {
-  akhu(akho paramakho, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
+  private akhu(ContactListView paramContactListView) {}
   
-  public void onClick(View paramView)
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "UpgradeTIMWrapper close banner");
+    return 2131559591;
+  }
+  
+  public void a(View paramView, int paramInt)
+  {
+    if ((this.a.a == null) || (this.a.a.isEmpty()) || (paramInt < 0) || (paramInt >= this.a.a.size())) {}
+    PhoneContact localPhoneContact1;
+    do
+    {
+      return;
+      PhoneContact localPhoneContact2 = (PhoneContact)this.a.a.get(paramInt);
+      localPhoneContact1 = localPhoneContact2;
+      if (localPhoneContact2 == null)
+      {
+        localPhoneContact1 = localPhoneContact2;
+        if (paramInt + 1 < this.a.a.size()) {
+          localPhoneContact1 = (PhoneContact)this.a.a.get(paramInt + 1);
+        }
+      }
+    } while (localPhoneContact1 == null);
+    ((TextView)paramView).setText(localPhoneContact1.pinyinFirst);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return getItemViewType(paramInt) == 1;
+  }
+  
+  public int getCount()
+  {
+    if (this.a.a != null) {
+      return this.a.a.size();
     }
-    QQAppInterface localQQAppInterface = (QQAppInterface)akho.a(this.jdField_a_of_type_Akho).getAppRuntime();
-    this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeTIMWrapper.a();
-    UpgradeTIMWrapper.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeTIMWrapper);
-    akho.a(this.jdField_a_of_type_Akho).obtainMessage(20).sendToTarget();
-    bcef.b(localQQAppInterface, "CliOper", "", "", "0X800865A", "0X800865A", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if ((this.a.a == null) || (this.a.a.isEmpty())) {}
+    while (this.a.a.get(paramInt) == null) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if (getItemViewType(paramInt) == 1)
+    {
+      localView = paramView;
+      if (paramView == null) {
+        localView = LayoutInflater.from(this.a.getContext()).inflate(a(), paramViewGroup, false);
+      }
+      a(localView, paramInt);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localView = paramView;
+      if (paramView == null)
+      {
+        localView = this.a.a();
+        localView.setOnClickListener(this.a);
+      }
+      paramView = (PhoneContact)this.a.a.get(paramInt);
+      this.a.a(localView, paramView, false);
+    }
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 2;
   }
 }
 

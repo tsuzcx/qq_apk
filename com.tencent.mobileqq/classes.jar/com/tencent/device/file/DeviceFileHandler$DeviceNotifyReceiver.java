@@ -1,6 +1,6 @@
 package com.tencent.device.file;
 
-import aavk;
+import abkw;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -103,7 +103,7 @@ public class DeviceFileHandler$DeviceNotifyReceiver
                     return;
                     paramContext = ".amr";
                     break;
-                    if (!paramIntent.actionInfo.strServiceName.equalsIgnoreCase(aavk.c)) {
+                    if (!paramIntent.actionInfo.strServiceName.equalsIgnoreCase(abkw.c)) {
                       break label301;
                     }
                     paramIntent.vFileMD5Src = str.getBytes();

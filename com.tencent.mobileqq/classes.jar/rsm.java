@@ -1,13 +1,19 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.VideoInfo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
 
-public abstract interface rsm
+public final class rsm
+  implements Parcelable.Creator<UrlJumpInfo>
 {
-  public abstract long a();
+  public UrlJumpInfo a(Parcel paramParcel)
+  {
+    return new UrlJumpInfo(paramParcel);
+  }
   
-  public abstract View a();
-  
-  public abstract void a(VideoInfo paramVideoInfo, boolean paramBoolean);
+  public UrlJumpInfo[] a(int paramInt)
+  {
+    return new UrlJumpInfo[paramInt];
+  }
 }
 
 

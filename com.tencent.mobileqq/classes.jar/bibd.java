@@ -1,105 +1,107 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.vas.ui.VasPagView;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
+import org.libpag.PAGView;
 
-public class bibd
+final class bibd
+  implements Function1<View, Unit>
 {
-  public static int a()
+  bibd(String paramString1, String paramString2, bibe parambibe, VasPagView paramVasPagView) {}
+  
+  private boolean a(View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
-    int j = biar.a(bhpc.a().a(), null).a("Common_BusinessReportMaxcount");
-    int i = j;
-    if (j == 0) {
-      i = 20;
+    bibb.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Bibe.jdField_a_of_type_Int);
+    int i = bibb.b(this.jdField_a_of_type_JavaLangString, this.b);
+    int j;
+    if ((i != this.jdField_a_of_type_Bibe.jdField_a_of_type_Int) || (bibb.c(this.jdField_a_of_type_JavaLangString, this.b) != 0) || ((this.b == "setting") && (bibb.b() != this.jdField_a_of_type_JavaLangString)))
+    {
+      j = 1;
+      if ((j == 0) || (i == -2) || (this.jdField_a_of_type_Bibe.jdField_a_of_type_Int == bibb.b(this.jdField_a_of_type_JavaLangString, "setting")) || (this.jdField_a_of_type_Bibe.jdField_a_of_type_Int == bibb.b(this.jdField_a_of_type_JavaLangString, "card"))) {
+        break label429;
+      }
+      if (this.jdField_a_of_type_Bibe.jdField_a_of_type_Int != i) {
+        break label289;
+      }
+      i = 0;
     }
-    return i;
+    for (;;)
+    {
+      label139:
+      String str1 = "nochange";
+      if (i == 1) {
+        str1 = "up";
+      }
+      String str2;
+      for (;;)
+      {
+        str2 = bibf.a().a(this.jdField_a_of_type_Bibe.jdField_a_of_type_JavaLangString) + "/qqvalue/level_" + this.jdField_a_of_type_Bibe.b + "/" + str1;
+        str1 = str2 + "/qqvalue.pag";
+        str2 = str2 + "/number.ttf";
+        if ((paramView.getLayoutParams().width > 0) && (j == 0)) {
+          break label419;
+        }
+        if (((PAGView)paramView).getFile() == null) {
+          break label322;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqVasUiVasPagView.a();
+        return true;
+        j = 0;
+        break;
+        label289:
+        if (this.jdField_a_of_type_Bibe.jdField_a_of_type_Int > i)
+        {
+          i = 1;
+          break label139;
+        }
+        i = -1;
+        break label139;
+        if (i == -1) {
+          str1 = "down";
+        }
+      }
+      label322:
+      if (bibb.a((PAGView)paramView, this.jdField_a_of_type_JavaLangString, str2, str1, this.b))
+      {
+        bibb.c(this.jdField_a_of_type_JavaLangString, this.b, i);
+        bibb.b(this.jdField_a_of_type_JavaLangString, this.b, bibb.a(this.jdField_a_of_type_JavaLangString, this.b));
+        bibb.jdField_a_of_type_JavaLangString = this.b;
+        if (this.b == "setting") {
+          bibb.a(this.jdField_a_of_type_JavaLangString);
+        }
+        paramLayoutParams.width = AIOUtils.dp2px(42.0F, paramView.getResources());
+        paramView.postInvalidate();
+      }
+      for (;;)
+      {
+        label419:
+        return false;
+        paramLayoutParams.width = 0;
+      }
+      label429:
+      i = 0;
+    }
   }
   
-  public static int a(int paramInt)
+  public Unit a(View paramView)
   {
-    int i;
-    if (paramInt == 0)
+    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+    if (localLayoutParams == null) {
+      return Unit.INSTANCE;
+    }
+    localLayoutParams.height = AIOUtils.dp2px(15.0F, paramView.getResources());
+    if ((paramView instanceof PAGView))
     {
-      i = biar.a(bhpc.a().a(), null).a("Common_ViaSuccessRatioFrequencySuccess");
-      paramInt = i;
-      if (i == 0) {
-        paramInt = 20;
+      if (a(paramView, localLayoutParams)) {
+        return Unit.INSTANCE;
       }
     }
-    do
-    {
-      return paramInt;
-      i = biar.a(bhpc.a().a(), null).a("Common_ViaSuccessRatioFrequencyFail");
-      paramInt = i;
-    } while (i != 0);
-    return 50;
-  }
-  
-  public static int a(String paramString)
-  {
-    int j = biar.a(bhpc.a().a(), paramString).a("Common_BusinessReportFrequency");
-    int i = j;
-    if (j == 0) {
-      i = 100;
+    else {
+      localLayoutParams.width = 0;
     }
-    return i;
-  }
-  
-  public static long a()
-  {
-    return bhpc.a().a().getSharedPreferences("reportConfig", 0).getLong("lastTime", 0L);
-  }
-  
-  protected static SharedPreferences a()
-  {
-    return bhpc.a().a().getSharedPreferences("reportConfig", 0);
-  }
-  
-  public static String a()
-  {
-    if (bhpc.a().a() == null) {
-      return "";
-    }
-    return a().getString("uin", "");
-  }
-  
-  public static void a(long paramLong)
-  {
-    if (bhpc.a().a() == null) {
-      return;
-    }
-    SharedPreferences.Editor localEditor = a().edit();
-    localEditor.putLong("lastTime", paramLong);
-    localEditor.commit();
-  }
-  
-  public static void a(String paramString)
-  {
-    if (bhpc.a().a() == null) {
-      return;
-    }
-    SharedPreferences.Editor localEditor = a().edit();
-    localEditor.putString("uin", paramString);
-    localEditor.commit();
-  }
-  
-  public static int b()
-  {
-    int j = biar.a(bhpc.a().a(), null).a("Common_HttpRetryCount");
-    int i = j;
-    if (j == 0) {
-      i = 2;
-    }
-    return i;
-  }
-  
-  public static long b()
-  {
-    long l2 = biar.a(bhpc.a().a(), null).a("Common_BusinessReportTimeinterval");
-    long l1 = l2;
-    if (l2 == 0L) {
-      l1 = 3600L;
-    }
-    return l1;
+    return Unit.INSTANCE;
   }
 }
 

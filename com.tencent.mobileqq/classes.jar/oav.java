@@ -1,29 +1,20 @@
-import com.tencent.biz.pubaccount.NativeAd.util.ADBaseAppDownloadManager.3;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class oav
-  implements tqb
+class oav
+  implements View.OnClickListener
 {
-  public oav(ADBaseAppDownloadManager.3 param3) {}
+  oav(oat paramoat, String paramString) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      this.a.this$0.a(this.a.a, 5, 100);
-      this.a.this$0.d(this.a.a);
-    }
-    do
-    {
-      return;
-      if (this.a.a.a)
-      {
-        oau.a(this.a.this$0, this.a.a);
-        return;
-      }
-    } while (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext()));
-    this.a.this$0.a(this.a.a, 0);
+    Intent localIntent = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+    oat.a(this.jdField_a_of_type_Oat).startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

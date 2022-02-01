@@ -1,21 +1,20 @@
-public class ajes
-  extends ajeo
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class ajes
+  implements View.OnClickListener
 {
-  private String a;
+  ajes(ajep paramajep) {}
   
-  public ajes(String paramString)
+  public void onClick(View paramView)
   {
-    this.a = paramString;
-  }
-  
-  public String a()
-  {
-    return String.format("&mqqvkey=%s", new Object[] { this.a });
-  }
-  
-  public boolean a(String paramString)
-  {
-    return (paramString != null) && (paramString.contains("plg_vkey=1"));
+    RecommendTroopItem localRecommendTroopItem = (RecommendTroopItem)paramView.getTag(-1);
+    TroopUtils.openRecommendTroop(ajep.a(this.a), localRecommendTroopItem, 17, 10029);
+    bhbu.a("Grp_contacts_news", "notice", "recom_clk", 1, 0, new String[] { localRecommendTroopItem.uin, localRecommendTroopItem.recomAlgol });
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.open.appstore.dl;
 
-import bhyo;
-import bhys;
-import bhzm;
-import bicf;
+import bjjq;
+import bjju;
+import bjko;
+import bjnh;
 import com.tencent.open.downloadnew.DownloadInfo;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,12 +11,12 @@ import java.util.List;
 public class DownloadProxy$2
   implements Runnable
 {
-  public DownloadProxy$2(bhys parambhys, List paramList, bicf parambicf) {}
+  public DownloadProxy$2(bjju parambjju, List paramList, bjnh parambjnh) {}
   
   public void run()
   {
-    bhzm.b("DownloadResolver", "[queryByDownloadManagerV2] enter");
-    bhyo.a().a();
+    bjko.b("DownloadResolver", "[queryByDownloadManagerV2] enter");
+    bjjq.a().a();
     for (;;)
     {
       int i;
@@ -28,27 +28,27 @@ public class DownloadProxy$2
         if (i < j)
         {
           DownloadInfo localDownloadInfo = (DownloadInfo)this.jdField_a_of_type_JavaUtilList.get(i);
-          if (bhyo.a().b(localDownloadInfo))
+          if (bjjq.a().b(localDownloadInfo))
           {
-            bhzm.b("DownloadResolver", "[queryByDownloadManagerV2] refreshDownloadInfo true " + localDownloadInfo);
+            bjko.b("DownloadResolver", "[queryByDownloadManagerV2] refreshDownloadInfo true " + localDownloadInfo);
             localArrayList.add(localDownloadInfo);
           }
         }
         else
         {
-          if (this.jdField_a_of_type_Bicf != null) {
-            this.jdField_a_of_type_Bicf.a(localArrayList);
+          if (this.jdField_a_of_type_Bjnh != null) {
+            this.jdField_a_of_type_Bjnh.a(localArrayList);
           }
           return;
         }
       }
       catch (Exception localException)
       {
-        bhzm.c("DownloadResolver", "[queryByDownloadManagerV2] Exception>>>", localException);
-        if (this.jdField_a_of_type_Bicf == null) {
+        bjko.c("DownloadResolver", "[queryByDownloadManagerV2] Exception>>>", localException);
+        if (this.jdField_a_of_type_Bjnh == null) {
           continue;
         }
-        this.jdField_a_of_type_Bicf.a(-1, localException.getMessage());
+        this.jdField_a_of_type_Bjnh.a(-1, localException.getMessage());
         return;
       }
       i += 1;

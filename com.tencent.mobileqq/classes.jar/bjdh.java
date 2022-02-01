@@ -1,20 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qqmini.proxyimpl.MediaChooseJsProxyImpl.2;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class bjdh
-  implements DialogInterface.OnClickListener
 {
-  public bjdh(MediaChooseJsProxyImpl.2 param2) {}
+  public RelativeLayout a;
+  public TextView a;
+  public TextView b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    bjde.a(this.a.this$0, this.a.jdField_a_of_type_AndroidAppActivity);
-    bjde.a(this.a.this$0, this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Long, this.a.b, this.a.jdField_a_of_type_Int, this.a.c);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-  }
+  protected bjdh(bjdf parambjdf) {}
 }
 
 

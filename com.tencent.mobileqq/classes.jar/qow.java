@@ -1,20 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function3;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Build.VERSION;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class qow
-  implements View.OnClickListener
+class qow
+  implements ViewBase.OnClickListener
 {
-  qow(qor paramqor) {}
+  qow(qos paramqos, Container paramContainer) {}
   
-  public final void onClick(View paramView)
+  public void onClick(ViewBase paramViewBase)
   {
-    qor.a(this.a).a().invoke(Boolean.valueOf(true), Boolean.valueOf(qor.a(this.a)), Integer.valueOf(2));
-    this.a.b(true);
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramViewBase = BaseApplicationImpl.getContext();
+    int i;
+    if ((Build.VERSION.SDK_INT >= 23) && (paramViewBase != null)) {
+      if (paramViewBase.checkSelfPermission("android.permission.RECORD_AUDIO") == 0) {
+        i = 1;
+      }
+    }
+    for (;;)
+    {
+      if ((i == 0) && (qjw.a() == 1) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext() instanceof Activity))) {
+        qos.a(this.jdField_a_of_type_Qos, (Activity)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext());
+      }
+      return;
+      i = 0;
+      continue;
+      i = 1;
+    }
   }
 }
 

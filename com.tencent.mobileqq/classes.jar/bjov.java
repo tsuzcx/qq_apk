@@ -1,85 +1,69 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.export.js.VipDownloadInterface;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bjov
-  extends Drawable
+  implements bjnh
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private int jdField_b_of_type_Int;
-  Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
-  private int c;
-  private int d;
-  private int e;
-  private int f;
+  public bjov(VipDownloadInterface paramVipDownloadInterface) {}
   
-  public bjov(Bitmap paramBitmap, int paramInt1, int paramInt2)
+  public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Int = paramBitmap.getWidth();
-    this.jdField_b_of_type_Int = paramBitmap.getHeight();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.c = paramInt1;
-    this.d = paramInt2;
-    if (this.c <= 0) {
-      this.c = 1080;
-    }
-    if (this.d <= 0) {
-      this.d = 1920;
-    }
-    this.f = (this.d * this.jdField_a_of_type_Int / this.c);
-    if (this.jdField_b_of_type_Int > this.f) {
-      this.e = (this.jdField_b_of_type_Int - this.f);
-    }
-    if (QLog.isColorLevel())
+    bjko.e(this.a.a, "getQueryDownloadAction onException code = " + paramInt + " msg= ");
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      QLog.i("UserGuideWeiShiActivity", 2, "displayWidth" + paramInt1 + " displayHeight " + paramInt2);
-      QLog.i("UserGuideWeiShiActivity", 2, "mWidth" + this.jdField_a_of_type_Int + " mHeight " + this.jdField_b_of_type_Int);
-      QLog.i("UserGuideWeiShiActivity", 2, "mNewBitmMapHeight" + this.f + " mTop " + this.e);
+      localJSONObject.put("errCode", paramInt);
+      localJSONObject.put("errMsg", paramString);
+      paramString = "javascript:publicAccountDownload.queryProcess(" + localJSONObject.toString() + ")";
+      this.a.a(paramString);
+      return;
     }
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    this.jdField_a_of_type_AndroidGraphicsRect.set(0, this.e, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    this.jdField_b_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_a_of_type_Int, this.f);
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-  }
-  
-  public int getIntrinsicHeight()
-  {
-    return this.f;
-  }
-  
-  public int getIntrinsicWidth()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public int getOpacity()
-  {
-    return -3;
-  }
-  
-  public void setAlpha(int paramInt)
-  {
-    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
+    catch (JSONException paramString)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
-      super.invalidateSelf();
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
     }
   }
   
-  public void setColorFilter(ColorFilter paramColorFilter)
+  public void a(List<DownloadInfo> paramList)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
-    super.invalidateSelf();
+    bjko.a(this.a.a, "getQueryDownloadAction onResult = " + paramList.size());
+    JSONArray localJSONArray = new JSONArray();
+    int j = paramList.size();
+    int i = 0;
+    for (;;)
+    {
+      if (i < j)
+      {
+        JSONObject localJSONObject = new JSONObject();
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
+        try
+        {
+          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
+          localJSONObject.put("pro", localDownloadInfo.f);
+          localJSONObject.put("state", localDownloadInfo.a());
+          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
+          localJSONArray.put(localJSONObject);
+          i += 1;
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+          }
+        }
+      }
+    }
+    paramList = "javascript:publicAccountDownload.queryProcess(" + localJSONArray.toString() + ")";
+    bjko.a(this.a.a, "getQueryDownloadAction callback url = " + paramList);
+    this.a.a(paramList);
   }
 }
 

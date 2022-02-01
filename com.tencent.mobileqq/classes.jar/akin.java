@@ -1,19 +1,23 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
 
-class akin
-  implements View.OnClickListener
+public class akin
+  implements Animation.AnimationListener
 {
-  akin(akho paramakho, axyc paramaxyc) {}
+  public akin(NewStyleCountryActivity paramNewStyleCountryActivity, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    axwc.a(akho.a(this.jdField_a_of_type_Akho).app, this.jdField_a_of_type_Axyc.a, false, "br_switch");
-    axvz.a("0X800AFA0", (int)this.jdField_a_of_type_Axyc.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.setAnimation(null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.offsetTopAndBottom(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.requestLayout();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,17 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.plugin.PluginInfo;
 
-class blxi
-  implements View.OnClickListener
+public abstract interface blxi
 {
-  blxi(blxg paramblxg) {}
+  public abstract void a(boolean paramBoolean);
   
-  public void onClick(View paramView)
-  {
-    this.a.d();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract boolean a(PluginInfo paramPluginInfo);
 }
 
 

@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.AutoReplyText;
-
-public final class aqqe
-  implements Parcelable.Creator<AutoReplyText>
+public abstract interface aqqe
 {
-  public AutoReplyText a(Parcel paramParcel)
-  {
-    return new AutoReplyText(paramParcel);
-  }
-  
-  public AutoReplyText[] a(int paramInt)
-  {
-    return new AutoReplyText[paramInt];
-  }
+  public abstract void a();
 }
 
 

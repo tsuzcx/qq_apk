@@ -1,15 +1,63 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorApplyAllLoadingView;
+import android.content.res.Resources;
+import android.widget.TextView;
+import cooperation.qqreader.net.BaseCgiTask;
+import cooperation.qqreader.ui.ForceUserUpdateActivity;
+import org.json.JSONObject;
 
 public class bmgc
-  implements ValueAnimator.AnimatorUpdateListener
+  extends bmft
 {
-  public bmgc(AEEditorApplyAllLoadingView paramAEEditorApplyAllLoadingView) {}
+  public bmgc(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(bmfs parambmfs)
   {
-    this.a.setAlpha(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    JSONObject localJSONObject = parambmfs.a();
+    if (localJSONObject == null) {}
+    try
+    {
+      ForceUserUpdateActivity.a(this.a, "onReceiveData: QueryGrayUpdate response json is null");
+      return;
+    }
+    catch (Exception parambmfs)
+    {
+      ForceUserUpdateActivity.a(this.a, "onReceiveData: QueryGrayUpdate parse failed: " + parambmfs.getMessage());
+      return;
+    }
+    int i = localJSONObject.getInt("ret");
+    parambmfs = localJSONObject.getString("msg");
+    localJSONObject = localJSONObject.getJSONObject("data");
+    if ((i != 0) || (localJSONObject == null) || (localJSONObject.length() == 0))
+    {
+      ForceUserUpdateActivity.a(this.a, "onReceiveData: QueryGrayUpdate ret=" + i + "|msg=" + parambmfs);
+      return;
+    }
+    i = localJSONObject.optInt("gray_level", 0);
+    int j = localJSONObject.optInt("updateStatus", 0);
+    int k = localJSONObject.optInt("updateStatus", 0);
+    int m = localJSONObject.optInt("remainMaxTime", 0);
+    bmgk.a(ForceUserUpdateActivity.a(this.a), i);
+    bmgk.b(ForceUserUpdateActivity.a(this.a), j);
+    bmgk.c(ForceUserUpdateActivity.a(this.a), k);
+    bmgk.d(ForceUserUpdateActivity.a(this.a), m);
+    bmgm.d("ForceUserUpdateActivity", "onReceiveData: QueryGrayUpdate result: level=" + i + "|status=" + j + "|remain=" + m + "|interval=" + k);
+    if (j == 1)
+    {
+      ForceUserUpdateActivity.c(this.a);
+      return;
+    }
+    if (j == 2)
+    {
+      ForceUserUpdateActivity.a(this.a, k);
+      ForceUserUpdateActivity.a(this.a).setText(this.a.getResources().getString(2131716500, new Object[] { Integer.valueOf(m) }));
+      return;
+    }
+    ForceUserUpdateActivity.d(this.a);
+    bmgk.b(ForceUserUpdateActivity.a(this.a), 2);
+  }
+  
+  public void a(BaseCgiTask paramBaseCgiTask, String paramString)
+  {
+    ForceUserUpdateActivity.a(this.a, "onConnectionError: QueryGrayUpdate error: " + paramString);
   }
 }
 

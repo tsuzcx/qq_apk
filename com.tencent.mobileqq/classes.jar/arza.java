@@ -1,18 +1,7 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import kotlin.Metadata;
 
-final class arza
-  implements aszj
-{
-  arza(Activity paramActivity, FileManagerEntity paramFileManagerEntity) {}
-  
-  public void onNo() {}
-  
-  public void onYes()
-  {
-    aszt.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/debug/VasAdvDebugFragment$Companion;", "", "()V", "ENABLE_WEBVIEW_DEBUG_KEY", "", "JSAPI_DEBUG_URL", "TAG", "TITLE", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class arza {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

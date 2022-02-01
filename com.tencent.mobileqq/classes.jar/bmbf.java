@@ -1,65 +1,82 @@
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
+import android.os.Bundle;
+import android.util.SparseArray;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Set;
+import java.util.List;
+import mqq.app.AppRuntime;
 
 public class bmbf
+  extends RemoteCommand
 {
-  public static String a()
+  private SparseArray<List<bmbg>> a = new SparseArray();
+  
+  public bmbf(AppRuntime paramAppRuntime)
   {
-    Date localDate = new Date();
-    return new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(localDate);
+    super("com.tencent.qqfav.favoritesremotecommand");
+    a(0, new bmbh());
   }
   
-  public static String a(int paramInt)
+  public boolean a(int paramInt, bmbg parambmbg)
   {
-    if (paramInt == 1) {
-      return "1";
-    }
-    return "2";
-  }
-  
-  public static String a(Long paramLong)
-  {
-    float f = (float)paramLong.longValue() / 1000.0F;
-    return new DecimalFormat("0.00").format(f);
-  }
-  
-  public static HashMap<String, String> a(HashMap<String, String> paramHashMap1, HashMap<String, String> paramHashMap2)
-  {
-    paramHashMap1 = new HashMap(paramHashMap1);
-    Iterator localIterator = paramHashMap2.keySet().iterator();
-    while (localIterator.hasNext())
+    List localList = (List)this.a.get(paramInt);
+    Object localObject = localList;
+    if (localList == null)
     {
-      String str = (String)localIterator.next();
-      paramHashMap1.put(str, paramHashMap2.get(str));
+      localObject = new ArrayList();
+      this.a.put(paramInt, localObject);
     }
-    return paramHashMap1;
+    if (!((List)localObject).contains(parambmbg)) {
+      return ((List)localObject).add(parambmbg);
+    }
+    return false;
   }
   
-  public static void a()
+  public boolean b(int paramInt, bmbg parambmbg)
   {
-    bmbk.a().a("AEKIT_CAMERA_FIRST_LAUNCH", 1, 0);
+    List localList = (List)this.a.get(paramInt);
+    if ((localList != null) && (localList.contains(parambmbg))) {
+      return localList.remove(parambmbg);
+    }
+    return false;
   }
   
-  public static boolean a()
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
   {
-    boolean bool = false;
-    if (bmbk.a().a("AEKIT_CAMERA_FIRST_LAUNCH", 0, 0) == 0) {
-      bool = true;
+    int i = paramBundle.getInt("com.tencent.qqfav.favoritesremotecommand.id", -1);
+    if (-1 != i)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("FavoritesRemoteCommand", 4, "invoke: dataInvoke=" + paramBundle.toString());
+      }
+      paramOnInvokeFinishLinstener = (List)this.a.get(i);
+      if (paramOnInvokeFinishLinstener == null) {
+        break label100;
+      }
+      paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.iterator();
+      do
+      {
+        if (!paramOnInvokeFinishLinstener.hasNext()) {
+          break;
+        }
+      } while (!((bmbg)paramOnInvokeFinishLinstener.next()).a(i, paramBundle));
     }
-    return bool;
-  }
-  
-  public static boolean b()
-  {
-    if (bmbk.a().a("sp_key_ae_camera_launch_mark", 0)) {
-      return false;
-    }
-    bmbk.a().a("sp_key_ae_camera_launch_mark", true, 0);
-    return true;
+    label100:
+    do
+    {
+      while (!paramOnInvokeFinishLinstener.hasNext())
+      {
+        do
+        {
+          return paramBundle;
+          paramOnInvokeFinishLinstener = (List)this.a.get(0);
+        } while (paramOnInvokeFinishLinstener == null);
+        paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.iterator();
+      }
+    } while (!((bmbg)paramOnInvokeFinishLinstener.next()).a(i, paramBundle));
+    return paramBundle;
   }
 }
 

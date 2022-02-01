@@ -39,7 +39,7 @@ public class RedDotRadioButton
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850321);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850427);
     }
     invalidate();
   }

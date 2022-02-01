@@ -1,22 +1,16 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class bida
-  implements View.OnClickListener
+public class bida
 {
-  bida(bicz parambicz, DialogInterface.OnClickListener paramOnClickListener, int paramInt, boolean paramBoolean) {}
+  public int a;
+  public int b;
+  public int c;
+  public int d;
   
-  public void onClick(View paramView)
+  bida(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bicz, this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Bicz.dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = paramInt;
+    this.b = 0;
+    this.c = 0;
+    this.d = 0;
   }
 }
 

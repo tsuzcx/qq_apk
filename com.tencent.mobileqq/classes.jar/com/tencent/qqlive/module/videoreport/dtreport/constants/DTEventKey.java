@@ -15,6 +15,8 @@ public class DTEventKey
   public static final String ORIGIN_VST = "dt_origin_vst";
   public static final String PG_IN = "dt_pgin";
   public static final String PG_OUT = "dt_pgout";
+  public static final String VIDEO_END = "dt_video_end";
+  public static final String VIDEO_START = "dt_video_start";
   public static final String VST = "dt_vst";
 }
 

@@ -1,121 +1,50 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.ark.image.PhotoPreviewLogicArk.1.1;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Locale;
 
 public class aqbh
+  implements View.OnClickListener
 {
-  private String a = "";
-  private String b = "";
+  aqbh(aqbg paramaqbg) {}
   
-  private static String a(String paramString)
+  public void onClick(View paramView)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
+    ((NewPhotoPreviewActivity)this.a.mActivity).sendBtn.setClickable(false);
+    if (aqbg.a(this.a).selectedPhotoList.size() > 0)
     {
-      return paramString;
-      try
+      if (QLog.isColorLevel())
       {
-        Object localObject1 = new JSONObject(paramString).getString("oac_triggle").split("&");
-        if (localObject1 == null) {
-          continue;
-        }
-        int j = localObject1.length;
+        StringBuilder localStringBuilder = new StringBuilder(aqbg.b(this.a).selectedPhotoList.size() * 128);
         int i = 0;
-        while (i < j)
+        while (i < aqbg.c(this.a).selectedPhotoList.size())
         {
-          Object localObject2 = localObject1[i];
-          if (localObject2.startsWith("busi_id"))
-          {
-            localObject1 = bjnd.b(localObject2.split("=")[1]);
-            return localObject1;
-          }
+          localStringBuilder.append(String.format(Locale.CHINA, "choose image[%d],path=%s \r\n", new Object[] { Integer.valueOf(i), aqbg.d(this.a).selectedPhotoList.get(i) }));
           i += 1;
         }
-        return paramString;
+        QLog.d("PhotoPreviewLogicArk", 2, localStringBuilder.toString());
       }
-      catch (Exception localException)
-      {
-        QLog.e("QQComicConfBean", 1, localException, new Object[0]);
-      }
+      ThreadManagerV2.executeOnSubThread(new PhotoPreviewLogicArk.1.1(this));
     }
-  }
-  
-  private static String a(String paramString1, String paramString2, String paramString3)
-  {
-    int i = paramString1.indexOf('?');
-    int j = paramString1.indexOf('#');
-    String str;
-    if (i == -1) {
-      str = "?";
-    }
-    try
+    for (;;)
     {
-      for (;;)
-      {
-        paramString2 = str + bjnd.a(new StringBuilder().append(paramString2).append('=').append(paramString3).toString());
-        if (j != -1) {
-          break;
-        }
-        paramString2 = paramString1 + paramString2;
-        return paramString2;
-        str = bjnd.a("&");
-      }
-      paramString2 = paramString1.substring(0, j) + paramString2 + paramString1.substring(j);
-      paramString1 = paramString2;
+      ((NewPhotoPreviewActivity)this.a.mActivity).finish();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      aqba.a().a("callbackArk", null, null);
     }
-    catch (Exception paramString2)
-    {
-      return paramString1;
-    }
-    return paramString1;
-  }
-  
-  public boolean a(String paramString)
-  {
-    return TextUtils.equals(paramString, this.a);
-  }
-  
-  public boolean a(String paramString, Context paramContext, int paramInt, QQAppInterface paramQQAppInterface)
-  {
-    if ((a(paramString)) && (!TextUtils.isEmpty(this.b)))
-    {
-      String str3 = this.b;
-      String str2 = null;
-      QQMessageFacade.Message localMessage = paramQQAppInterface.getMessageFacade().getLastMessage(paramString, 1008);
-      String str1 = str2;
-      if (localMessage != null)
-      {
-        str1 = str2;
-        if (!localMessage.isread) {
-          str1 = a(localMessage.getExtInfoFromExtStr("report_key_bytes_oac_msg_extend"));
-        }
-      }
-      str2 = str3;
-      if (!TextUtils.isEmpty(str1)) {
-        str2 = a(str3, "_ext", str1);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QQComicConfBean", 2, new Object[] { "launchIfMatched, params=", str1, ", finalUrl=", str2 });
-      }
-      return MiniAppLauncher.startMiniApp(paramContext, str2, paramInt, new aqbi(this, paramQQAppInterface, paramString));
-    }
-    return false;
-  }
-  
-  public String toString()
-  {
-    return "ServiceAccountConfig{uin=" + this.a + ", url=" + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqbh
  * JD-Core Version:    0.7.0.1
  */

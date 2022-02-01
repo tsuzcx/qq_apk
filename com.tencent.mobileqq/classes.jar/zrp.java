@@ -1,50 +1,128 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import tencent.im.cs.group_file_common.group_file_common.FolderInfo;
-import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.CreateFolderRspBody;
-import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.RspBody;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StEntry;
+import android.support.v7.widget.RecyclerView;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.TopRecommendBannerAdapter.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.os.MqqHandler;
+import org.jetbrains.annotations.NotNull;
 
-public abstract class zrp
-  extends nmf
+public class zrp
+  extends zrb
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private boolean jdField_a_of_type_Boolean;
+  private List<zse> b = new ArrayList();
+  
+  public zrp(@NotNull RecyclerView paramRecyclerView)
   {
-    b(paramInt, paramArrayOfByte, paramBundle);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
   }
   
-  protected abstract void a(boolean paramBoolean, int paramInt, bebc parambebc);
-  
-  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  private void a()
   {
-    if (paramInt != 0)
+    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null)
     {
-      a(false, paramInt, null);
+      if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.isComputingLayout()) {
+        ThreadManager.getUIHandler().postDelayed(new TopRecommendBannerAdapter.1(this), 500L);
+      }
+    }
+    else {
       return;
     }
-    paramBundle = new oidb_0x6d7.RspBody();
-    try
+    notifyDataSetChanged();
+  }
+  
+  private void b()
+  {
+    this.b.clear();
+    this.b.addAll(this.jdField_a_of_type_JavaUtilList.subList(0, 10));
+    this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList.subList(10, this.jdField_a_of_type_JavaUtilList.size());
+  }
+  
+  public List<zse> a()
+  {
+    return this.b;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (paramInt < this.b.size())
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = (oidb_0x6d7.CreateFolderRspBody)paramBundle.create_folder_rsp.get();
-      if (!paramArrayOfByte.int32_ret_code.has()) {
-        break label104;
-      }
-      if (paramArrayOfByte.int32_ret_code.get() == 0)
+      this.b.remove(paramInt);
+      notifyItemRemoved(a() + paramInt);
+      notifyItemRangeChanged(a() + paramInt, this.b.size() - paramInt);
+    }
+  }
+  
+  public void a(CertifiedAccountMeta.StEntry paramStEntry, List<zse> paramList)
+  {
+    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry = paramStEntry;
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_JavaUtilList != null)
       {
-        a(true, 0, new bebc((group_file_common.FolderInfo)paramArrayOfByte.folder_info.get()));
-        return;
+        if (this.jdField_a_of_type_JavaUtilList.size() < 10) {
+          break;
+        }
+        b();
+        a();
+      }
+      return;
+      this.jdField_a_of_type_JavaUtilList = paramList;
+    }
+    this.b.addAll(paramList);
+    this.jdField_a_of_type_JavaUtilList.clear();
+    a();
+  }
+  
+  public boolean a()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() >= 10))
+    {
+      b();
+      a();
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() < 10);
+  }
+  
+  public boolean c()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+      {
+        this.b.add(this.jdField_a_of_type_JavaUtilList.remove(0));
+        notifyItemInserted(this.b.size());
+        bool1 = true;
       }
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      a(false, -1, null);
-      return;
+    return bool1;
+  }
+  
+  public void d(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public int getItemCount()
+  {
+    if (this.b != null) {
+      return this.b.size() + a();
     }
-    a(false, paramArrayOfByte.int32_ret_code.get(), null);
-    return;
-    label104:
-    a(false, -1, null);
+    return a();
   }
 }
 

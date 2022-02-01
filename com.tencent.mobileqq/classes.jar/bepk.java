@@ -1,39 +1,20 @@
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem.AudioUploadCallback.1;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem.AudioUploadCallback.2;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
+import java.util.List;
 
-public final class bepk
-  implements bkxw
+class bepk
+  extends bepw
 {
-  public benq a;
-  
-  public bepk(HWReciteItem paramHWReciteItem, benq parambenq)
+  bepk(bepg parambepg, EditorState paramEditorState, List paramList)
   {
-    this.jdField_a_of_type_Benq = parambenq;
+    super(parambepg, paramEditorState, paramList);
   }
   
-  public void a(int paramInt)
+  public void a(EditorState paramEditorState)
   {
-    HWReciteItem.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem).post(new HWReciteItem.AudioUploadCallback.1(this));
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("HWReciteItem", 2, "upload onComplete " + this.jdField_a_of_type_Benq.b);
+    super.a(paramEditorState);
+    if (!arhn.a(bepg.a(this.a))) {
+      bepg.a(this.a).a(false, false);
     }
-    this.jdField_a_of_type_Benq.b(paramString);
-    this.jdField_a_of_type_Benq.g = 3;
-  }
-  
-  public void b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("HWReciteItem", 2, "onError errorCode = " + paramInt);
-    }
-    this.jdField_a_of_type_Benq.g = 2;
-    HWReciteItem.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem).post(new HWReciteItem.AudioUploadCallback.2(this));
   }
 }
 

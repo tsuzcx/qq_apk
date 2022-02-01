@@ -1,24 +1,37 @@
-import com.tencent.mobileqq.activity.KPLProfileCardActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.data.KplCard;
-import com.tencent.qphone.base.util.QLog;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
 
 public class adoh
-  extends CardObserver
+  implements afpx
 {
-  public adoh(KPLProfileCardActivity paramKPLProfileCardActivity) {}
+  public adoh(ChatHistory paramChatHistory) {}
   
-  public void onGetKplCard(boolean paramBoolean, Object paramObject)
+  public void a(AudioPlayerBase paramAudioPlayerBase)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("KPLProfileCardActivity", 2, "onGetKplCard, isSuccess=" + paramBoolean);
+    this.a.p();
+    if (this.a.jdField_a_of_type_Adpc != null) {
+      this.a.jdField_a_of_type_Adpc.d();
     }
-    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof KplCard)))
-    {
-      KPLProfileCardActivity.a(this.a, (KplCard)paramObject);
-      this.a.a = ((KplCard)paramObject);
-    }
+    this.a.setVolumeControlStream(3);
+    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
   }
+  
+  public void a(AudioPlayerBase paramAudioPlayerBase, int paramInt)
+  {
+    this.a.b(2131694699);
+    this.a.setVolumeControlStream(3);
+    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
+  }
+  
+  public void b(AudioPlayerBase paramAudioPlayerBase, int paramInt)
+  {
+    this.a.setVolumeControlStream(paramInt);
+  }
+  
+  public void c(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
+  
+  public void d(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
 }
 
 

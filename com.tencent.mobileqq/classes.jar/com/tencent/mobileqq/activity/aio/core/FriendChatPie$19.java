@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import afiw;
-import aidr;
+import agab;
+import aiyq;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class FriendChatPie$19
   implements Runnable
 {
-  public FriendChatPie$19(afiw paramafiw) {}
+  public FriendChatPie$19(agab paramagab) {}
   
   public void run()
   {
-    if (aidr.a(this.this$0.app, this.this$0.sessionInfo.curFriendUin))
+    if (aiyq.a(this.this$0.app, this.this$0.sessionInfo.curFriendUin))
     {
-      afiw.b(this.this$0, true);
-      aidr.a(this.this$0.app, this.this$0.sessionInfo.curFriendUin);
+      agab.b(this.this$0, true);
+      aiyq.a(this.this$0.app, this.this$0.sessionInfo.curFriendUin);
       this.this$0.app.reportClickEvent("CliOper", "", "", "0X8008072", "0X8008072", 0, 0, "", "", "", "");
       return;
     }
-    afiw.b(this.this$0, false);
+    agab.b(this.this$0, false);
   }
 }
 

@@ -1,22 +1,15 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
 
 public class xtk
-  extends QQUIEventReceiver<xss, wci>
+  implements xtz
 {
-  public xtk(@NonNull xss paramxss)
-  {
-    super(paramxss);
-  }
+  public xtk(StoryPickerFragment paramStoryPickerFragment) {}
   
-  public void a(@NonNull xss paramxss, @NonNull wci paramwci)
+  public void a(String paramString)
   {
-    paramxss.i();
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wci.class;
+    if (this.a.a != null) {
+      this.a.a.a(paramString);
+    }
   }
 }
 

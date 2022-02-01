@@ -1,9 +1,16 @@
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
 
-public abstract interface asrj
+public class asrj
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(String paramString, List<ShareActionSheetBuilder.ActionSheetItem> paramList);
+  public asrj(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

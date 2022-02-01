@@ -1,22 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.gaudio.GaInviteLockActivity;
-import com.tencent.av.ui.QavPanel;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.av.gaudio.BaseGaInvite;
 
 public class lnh
-  implements DialogInterface.OnClickListener
+  implements lni
 {
-  public lnh(GaInviteLockActivity paramGaInviteLockActivity) {}
+  public lnh(BaseGaInvite paramBaseGaInvite) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(Bitmap paramBitmap, String paramString)
   {
-    mrd.e(false, false);
-    if (paramDialogInterface != null)
+    if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+    }
+    for (boolean bool = true;; bool = false)
     {
-      paramDialogInterface.dismiss();
-      if ((this.a.a != null) && (this.a.a.a != null)) {
-        this.a.a.a.b();
+      if (this.a.jdField_b_of_type_AndroidWidgetTextView != null)
+      {
+        paramBitmap = BaseGaInvite.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.a.jdField_b_of_type_AndroidWidgetTextView, paramString, this.a.jdField_b_of_type_Int, String.valueOf(this.a.jdField_a_of_type_Long), this.a.jdField_a_of_type_ArrayOfLong);
+        this.a.jdField_b_of_type_AndroidWidgetTextView.setText(paramBitmap);
       }
+      return bool;
     }
   }
 }

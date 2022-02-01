@@ -1,17 +1,22 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
 
-public class smn
-  implements oww
+class smn
+  implements DialogInterface.OnDismissListener
 {
-  public smn(ReadInJoyFastWebBottomSocialView paramReadInJoyFastWebBottomSocialView, oww paramoww) {}
+  smn(smg paramsmg) {}
   
-  public void a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ReadInJoyFastWebBottomSocialView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialView).setVisibility(8);
-    if (this.jdField_a_of_type_Oww != null) {
-      this.jdField_a_of_type_Oww.a(paramInt);
+    smg.a(this.a, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
+    if ((smg.a(this.a) != null) && (smg.a(this.a).b()) && (smg.b(this.a)) && (!smg.c(this.a)) && (smg.a(this.a)) && (!smg.d(this.a))) {
+      smg.a(this.a).c();
     }
+    if (smg.a(this.a) != null) {
+      smg.a(this.a).f();
+    }
+    smg.a(this.a, false);
   }
 }
 

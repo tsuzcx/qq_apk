@@ -1,248 +1,214 @@
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.HexUtil;
+import com.tencent.mobileqq.app.ThreadManagerExecutor;
+import com.tencent.mobileqq.intervideo.InvalidFileException;
+import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import localpb.richMsg.MixedMsg.Elem;
-import localpb.richMsg.MixedMsg.Msg;
-import localpb.richMsg.RichMsg.PicRec;
-import tencent.im.msg.im_msg_body.CustomFace;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.NotOnlineImage;
-import tencent.im.msg.im_msg_body.RichText;
+import com.tencent.shadow.core.common.LoggerFactory;
+import com.tencent.shadow.dynamic.host.DynamicPluginManager;
+import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
+import java.io.File;
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
-class avsg
-  extends ayen
+public final class avsg
 {
-  avsg(avsf paramavsf, MessageForMixedMsg paramMessageForMixedMsg, QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
+  private static avsf jdField_a_of_type_Avsf;
+  public static final IVPluginDataReporter a;
+  private static final Object jdField_a_of_type_JavaLangObject;
+  private static boolean jdField_a_of_type_Boolean;
   
-  private boolean a(MessageForPic paramMessageForPic, aydt paramaydt)
+  static
   {
-    im_msg_body.RichText localRichText = new im_msg_body.RichText();
-    im_msg_body.Elem localElem = new im_msg_body.Elem();
-    String str = "";
-    if (paramaydt.jdField_a_of_type_JavaLangObject != null) {
-      if ((paramaydt.jdField_a_of_type_JavaLangObject instanceof im_msg_body.NotOnlineImage))
-      {
-        localElem.not_online_image.set((im_msg_body.NotOnlineImage)paramaydt.jdField_a_of_type_JavaLangObject);
-        if (paramaydt.b)
-        {
-          if (!localElem.not_online_image.res_id.has()) {
-            break label274;
-          }
-          str = localElem.not_online_image.res_id.get().toStringUtf8();
-        }
-      }
-    }
-    for (;;)
+    jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter = new IVPluginDataReporter();
+    jdField_a_of_type_JavaLangObject = new Object();
+    a();
+  }
+  
+  public static avrx a(Context paramContext, String paramString1, String paramString2)
+  {
+    try
     {
-      paramMessageForPic.uuid = str;
-      paramMessageForPic.path = str;
-      paramMessageForPic.thumbMsgUrl = localElem.not_online_image.str_thumb_url.get();
-      paramMessageForPic.thumbHeight = localElem.not_online_image.uint32_thumb_height.get();
-      paramMessageForPic.thumbWidth = localElem.not_online_image.uint32_thumb_width.get();
-      paramMessageForPic.md5 = FileUtils.calcMd5(avsf.a());
-      paramMessageForPic.msgData = paramMessageForPic.getSerialPB().toByteArray();
-      if (QLog.isColorLevel()) {
-        QLog.d("MixedMsgManager", 2, " pic resp uuid = " + str + " picMsgMD5 = " + paramMessageForPic.md5 + " hasCode = " + paramMessageForPic.hashCode());
-      }
-      int i = 1;
-      label227:
-      boolean bool;
-      if (i != 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MixedMsgManager", 2, "updateMessageForPic success");
-        }
-        localRichText.elems.add(localElem);
-        if (paramaydt.jdField_a_of_type_Int == 0) {
-          bool = true;
-        }
-      }
-      for (;;)
-      {
-        paramMessageForPic.richText = localRichText;
-        return bool;
-        label274:
-        if (!localElem.not_online_image.download_path.has()) {
-          break label489;
-        }
-        str = localElem.not_online_image.download_path.get().toStringUtf8();
-        break;
-        if ((paramaydt.jdField_a_of_type_JavaLangObject instanceof im_msg_body.CustomFace))
-        {
-          localElem.custom_face.set((im_msg_body.CustomFace)paramaydt.jdField_a_of_type_JavaLangObject);
-          if (paramaydt.b)
-          {
-            if (localElem.custom_face.str_file_path.has()) {
-              str = localElem.custom_face.str_file_path.get();
-            }
-            paramMessageForPic.path = str;
-            paramMessageForPic.uuid = str;
-            paramMessageForPic.md5 = FileUtils.calcMd5(avsf.a());
-            paramMessageForPic.msgData = paramMessageForPic.getSerialPB().toByteArray();
-          }
-          i = 1;
-          break label227;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("MixedMsgManager", 2, "WTF, picResult.mExtraObj is " + paramaydt.jdField_a_of_type_JavaLangObject.getClass().getSimpleName());
-        }
-        i = 0;
-        break label227;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("MixedMsgManager", 2, "[requestUploadPics] Bad picture element");
-          bool = false;
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.e("MixedMsgManager", 2, "updateMessageForPic failed, add empty element");
-          }
-        }
-        bool = false;
-      }
-      label489:
-      str = "";
+      paramContext = (avrx)ThreadManagerExecutor.getExecutorService(192).submit(new avsh(paramContext, paramString1)).get(20L, TimeUnit.SECONDS);
+      return paramContext;
+    }
+    catch (TimeoutException paramContext)
+    {
+      jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("updateException").d1(paramContext.toString()).report();
+      throw paramContext;
+    }
+    catch (InterruptedException paramContext)
+    {
+      jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("updateException").d1(paramContext.toString()).report();
+      throw paramContext;
+    }
+    catch (ExecutionException paramContext)
+    {
+      jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("updateException").d1(paramContext.toString()).report();
+      throw paramContext;
     }
   }
   
-  private boolean a(ArrayList<aydt> paramArrayList)
+  private static avsf a(String paramString, avrm paramavrm)
   {
-    MessageForMixedMsg localMessageForMixedMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg;
-    int j;
-    boolean bool2;
-    if (localMessageForMixedMsg.msgElemList != null)
+    QLog.i("shadow::Shadow", 2, "pluginManagerWrapper ，sPluginManagerWrapper = " + jdField_a_of_type_Avsf + " bizType:" + paramString);
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      int i = 0;
-      j = 0;
-      boolean bool1 = true;
-      bool2 = bool1;
-      if (j >= localMessageForMixedMsg.msgElemList.size()) {
-        break label135;
+      if (jdField_a_of_type_Avsf == null)
+      {
+        jdField_a_of_type_Avsf = new avsf(paramString, new DynamicPluginManager(paramavrm));
+        QLog.i("shadow::Shadow", 2, "new pluginManagerWrapper : " + jdField_a_of_type_Avsf);
       }
-      Object localObject = (MessageRecord)localMessageForMixedMsg.msgElemList.get(j);
-      if (!(localObject instanceof MessageForPic)) {
-        break label138;
-      }
-      localObject = (MessageForPic)localObject;
-      if (QLog.isColorLevel()) {
-        QLog.d("MixedMsgManager", 2, "updateMessageForPic for MessageForMixedMsg, subMsgIndex[" + j);
-      }
-      if (!a((MessageForPic)localObject, (aydt)paramArrayList.get(i))) {
-        bool1 = false;
-      }
-      i += 1;
-    }
-    label135:
-    label138:
-    for (;;)
-    {
-      j += 1;
-      break;
-      bool2 = true;
-      return bool2;
+      paramString = jdField_a_of_type_Avsf;
+      return paramString;
     }
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, ArrayList<aydt> paramArrayList)
+  public static void a()
   {
-    if ((paramInt == 0) && (paramArrayList != null) && (paramArrayList.size() > 0))
+    if (!jdField_a_of_type_Boolean) {}
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MixedMsgManager", 2, "onForwardMultiMsgPicsUpload success[" + paramArrayList.size() + "]");
-      }
-      boolean bool = a(paramArrayList);
-      if (!bool)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("MixedMsgManager", 2, "onForwardMultiMsgPicsUpload : isAllPicUploadSuccessful = false ");
-        }
-        avsf.a(this.jdField_a_of_type_Avsf, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, false, "picUpload fail");
-        return;
-      }
-      paramArrayList = new MixedMsg.Msg();
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgElemList.iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject1 = (MessageRecord)localIterator.next();
-        MixedMsg.Elem localElem = new MixedMsg.Elem();
-        if ((localObject1 instanceof MessageForText))
-        {
-          if (!TextUtils.isEmpty(((MessageRecord)localObject1).msg)) {
-            localElem.textMsg.set(((MessageRecord)localObject1).msg);
-          }
-        }
-        else {
-          for (;;)
-          {
-            paramArrayList.elems.get().add(localElem);
-            break;
-            Object localObject2;
-            if (((MessageRecord)localObject1).msgtype == -2000)
-            {
-              localObject2 = new RichMsg.PicRec();
-              try
-              {
-                localObject1 = (RichMsg.PicRec)((RichMsg.PicRec)localObject2).mergeFrom(((MessageRecord)localObject1).msgData);
-                localElem.picMsg.set((MessageMicro)localObject1);
-              }
-              catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-              {
-                QLog.e("MixedMsgManager", 1, "onForwardMultiMsgPicsUpload", localInvalidProtocolBufferMicroException);
-              }
-            }
-            else if ((localInvalidProtocolBufferMicroException instanceof MessageForReplyText))
-            {
-              try
-              {
-                MessageForReplyText localMessageForReplyText = (MessageForReplyText)localInvalidProtocolBufferMicroException;
-                if (localMessageForReplyText.mSourceMsgInfo != null) {
-                  localMessageForReplyText.mSourceMsgInfo.packSourceMsg(MessageForReplyText.getAppInterface(), localMessageForReplyText.getSourceMessage());
-                }
-                localObject2 = anwz.a(localMessageForReplyText.mSourceMsgInfo);
-                localElem.sourceMsgInfo.set(HexUtil.bytes2HexStr((byte[])localObject2));
-                if (TextUtils.isEmpty(localMessageForReplyText.msg)) {
-                  continue;
-                }
-                localElem.textMsg.set(localMessageForReplyText.msg);
-              }
-              catch (Exception localException) {}
-              if (QLog.isColorLevel()) {
-                QLog.d("MixedMsgManager", 2, localException.getMessage());
-              }
-            }
-          }
-        }
-      }
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgData = paramArrayList.toByteArray();
-      if (QLog.isColorLevel()) {
-        QLog.d("MixedMsgManager", 2, "updateMsgRecords done, goto onPackAndSendMsg");
-      }
-      avsf.a(this.jdField_a_of_type_Avsf, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, bool);
+      LoggerFactory.setILoggerFactory(avru.a());
+      label12:
+      jdField_a_of_type_Boolean = true;
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("MixedMsgManager", 2, "onForwardMultiMsgPicsUpload failed");
+    catch (RuntimeException localRuntimeException)
+    {
+      break label12;
     }
-    avsf.a(this.jdField_a_of_type_Avsf, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, false, "picUpload fail : result = " + paramInt);
+  }
+  
+  public static avrx b(Context paramContext, String paramString1, String paramString2)
+  {
+    l1 = System.currentTimeMillis();
+    jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opDepartment("shadow").opName(paramString1).opType("CdnGetBizPm").toUin(paramString2);
+    Object localObject1 = new avrq(paramString1);
+    if (((avrq)localObject1).getLatest() != null) {
+      return new avsf(paramString1, new DynamicPluginManager((PluginManagerUpdater)localObject1));
+    }
+    localavrm = new avrm(paramContext.getApplicationContext(), paramString1, paramString2, "9_1");
+    if (QLog.isColorLevel()) {
+      QLog.i("shadow::Shadow", 2, "wasUpdating:" + localavrm.wasUpdating() + " getLatest:" + localavrm.getLatest());
+    }
+    if ((localavrm.wasUpdating()) || (localavrm.getLatest() == null))
+    {
+      bool = true;
+      if (QLog.isColorLevel()) {
+        QLog.i("shadow::Shadow", 2, "needWaitingUpdate:" + bool);
+      }
+      if (TextUtils.equals("GVideo", paramString1)) {
+        localavrm.a(new avsi(paramString1));
+      }
+      paramString2 = localavrm.update();
+      if (!bool) {}
+    }
+    for (;;)
+    {
+      try
+      {
+        paramString2.get();
+        localObject2 = paramContext.getPackageManager();
+        if (localavrm.getLatest() != null)
+        {
+          paramContext = localavrm.getLatest().getAbsolutePath();
+          l2 = System.currentTimeMillis();
+          localObject1 = null;
+          paramString2 = null;
+        }
+      }
+      catch (ExecutionException paramContext)
+      {
+        Object localObject2;
+        l2 = System.currentTimeMillis();
+        jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.d1(Boolean.toString(bool)).d2(Long.toString(l2 - l1)).opResult(1).report();
+        throw paramContext;
+      }
+      catch (InterruptedException paramContext)
+      {
+        l2 = System.currentTimeMillis();
+        jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.d1(Boolean.toString(bool)).d2(Long.toString(l2 - l1)).opResult(2).report();
+        throw paramContext;
+      }
+      try
+      {
+        localObject2 = ((PackageManager)localObject2).getPackageArchiveInfo(paramContext, 128);
+        paramString2 = (String)localObject2;
+        localObject1 = localObject2;
+        QLog.i("shadow::Shadow", 2, "getPackageArchiveInfo，timespan = " + (System.currentTimeMillis() - l2));
+        if (localObject2 == null) {
+          paramString1 = "";
+        }
+      }
+      catch (Exception localException)
+      {
+        if (paramString2 == null) {
+          paramString1 = "";
+        }
+        try
+        {
+          paramString2 = bkvq.a(localavrm.getLatest());
+          paramString1 = paramString2;
+        }
+        catch (IOException paramString2)
+        {
+          break label497;
+        }
+        QLog.i("shadow::Shadow", 1, "pluginManager apk file is invalid，apk = " + paramContext + " md5 = " + paramString1);
+        jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.d1(paramContext).d2("FileInvalid").d3(paramString1).opResult(1000).report();
+        localavrm.a();
+        throw new InvalidFileException("pluginManager apk file is invalid!");
+      }
+      finally
+      {
+        if (localException == null) {
+          paramString1 = "";
+        }
+        try
+        {
+          paramString2 = bkvq.a(localavrm.getLatest());
+          paramString1 = paramString2;
+        }
+        catch (IOException paramString2)
+        {
+          break label592;
+        }
+        QLog.i("shadow::Shadow", 1, "pluginManager apk file is invalid，apk = " + paramContext + " md5 = " + paramString1);
+        jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.d1(paramContext).d2("FileInvalid").d3(paramString1).opResult(1000).report();
+        localavrm.a();
+        throw new InvalidFileException("pluginManager apk file is invalid!");
+        throw paramString1;
+        l2 = System.currentTimeMillis();
+        if (TextUtils.equals("GVideo", paramString1)) {}
+        for (paramContext = a(paramString1, localavrm);; paramContext = new avsf(paramString1, new DynamicPluginManager(localavrm)))
+        {
+          jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.d1(Boolean.toString(bool)).d2(Long.toString(l2 - l1)).opResult(0).report();
+          return paramContext;
+        }
+      }
+      try
+      {
+        paramString2 = bkvq.a(localavrm.getLatest());
+        paramString1 = paramString2;
+      }
+      catch (IOException paramString2)
+      {
+        continue;
+      }
+      QLog.i("shadow::Shadow", 1, "pluginManager apk file is invalid，apk = " + paramContext + " md5 = " + paramString1);
+      jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.d1(paramContext).d2("FileInvalid").d3(paramString1).opResult(1000).report();
+      localavrm.a();
+      throw new InvalidFileException("pluginManager apk file is invalid!");
+      bool = false;
+      break;
+      paramContext = "";
+    }
   }
 }
 

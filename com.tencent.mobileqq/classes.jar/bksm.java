@@ -1,38 +1,16 @@
-import android.content.Context;
-import android.text.TextUtils;
-import cooperation.qqpim.QQPimTipsInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class bksm
+class bksm
+  implements DialogInterface.OnClickListener
 {
-  public static void a(Context paramContext, QQPimTipsInfo paramQQPimTipsInfo)
-  {
-    if (paramQQPimTipsInfo == null)
-    {
-      bksk.a(paramContext, "QQPIM_TIPS_CLICK", System.currentTimeMillis());
-      return;
-    }
-    bksk.a(paramContext, "QQPIM_TIPS_CLICK" + paramQQPimTipsInfo.jdField_a_of_type_Int, paramQQPimTipsInfo.jdField_a_of_type_JavaLangString + ";" + paramQQPimTipsInfo.b + ";" + System.currentTimeMillis());
-  }
+  bksm(bksl parambksl) {}
   
-  public static void b(Context paramContext, QQPimTipsInfo paramQQPimTipsInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramQQPimTipsInfo == null) {}
-    while (TextUtils.isEmpty(bksk.a(paramContext, "QQPIM_TIPS_CLICK" + paramQQPimTipsInfo.jdField_a_of_type_Int))) {
-      return;
-    }
-    switch (paramQQPimTipsInfo.jdField_a_of_type_Int)
-    {
-    case 3: 
-    default: 
-      return;
-    case 1: 
-      paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
-      return;
-    case 2: 
-      paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
-      return;
-    }
-    paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
+    QLog.e("minisdk_X5UpdateGuard", 2, "cancel");
+    bksl.a(this.a, null);
   }
 }
 

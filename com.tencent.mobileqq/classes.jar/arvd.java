@@ -1,23 +1,18 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.PrecoverResource;
 
-public class arvd
-  implements View.OnClickListener
+public final class arvd
+  implements Parcelable.Creator<PrecoverResource>
 {
-  public arvd(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity, FileManagerEntity paramFileManagerEntity) {}
-  
-  public void onClick(View paramView)
+  public PrecoverResource a(Parcel paramParcel)
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("isNeedFinish", true);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.setResult(-1, localIntent);
-    TroopFileZipPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity);
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.app, "dc00899", "Grp_files", null, "oper", "pre_arc_close", 0, 0, "" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin, "", "", "1");
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new PrecoverResource(paramParcel);
+  }
+  
+  public PrecoverResource[] a(int paramInt)
+  {
+    return new PrecoverResource[paramInt];
   }
 }
 

@@ -1,17 +1,17 @@
-import dov.com.qq.im.capture.text.DynamicTextConfigManager;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextPanel;
-
 public class bnmm
-  implements aszj
 {
-  public bnmm(EditTextPanel paramEditTextPanel, DynamicTextConfigManager paramDynamicTextConfigManager, DynamicTextConfigManager.DynamicTextConfigBean paramDynamicTextConfigBean) {}
+  private Boolean a;
+  public String a;
   
-  public void onNo() {}
-  
-  public void onYes()
+  public bnmm(String paramString)
   {
-    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean, EditTextPanel.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextPanel));
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(paramBoolean);
   }
 }
 

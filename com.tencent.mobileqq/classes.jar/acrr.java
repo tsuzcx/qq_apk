@@ -1,56 +1,58 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.UndealCount.QZoneCountUserInfo;
+import java.util.ArrayList;
+import tencent.im.c2c.msgtype0x210.submsgtype0x79.submsgtype0x79.MsgBody;
 
 public class acrr
-  implements CompoundButton.OnCheckedChangeListener
+  implements acpi
 {
-  public acrr(AssistantSettingActivity paramAssistantSettingActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  private static void a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
   {
-    int i;
-    label43:
-    QQAppInterface localQQAppInterface;
-    String str1;
-    if (paramBoolean)
-    {
-      i = 1;
-      bkwm.d(i);
-      bkwm.a(paramBoolean);
-      bkwm.a(true);
-      if (!paramBoolean) {
-        break label108;
-      }
-      QQToast.a(this.a.getBaseContext(), 2, 2131717529, 2000).a();
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label131;
-      }
-      str1 = "0X8008236";
-      label60:
-      if (!paramBoolean) {
-        break label138;
-      }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("UndealCount.ZebraAlbum.Q.msg.BaseMessageProcessor", 4, "OnLinePushMessageProcessor receive zebarunread push message, seq = " + paramMsgInfo.shMsgSeq + "submsgtype:" + paramMsgInfo.shMsgType);
     }
-    label131:
-    label138:
-    for (String str2 = "0X8008236";; str2 = "0X8008235")
+    try
     {
-      odq.a(localQQAppInterface, "CliOper", "", "", str1, str2, 0, 1, "", "", "", "", false);
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      paramMsgInfo = new submsgtype0x79.MsgBody();
+      paramMsgInfo.mergeFrom(paramMsgType0x210.vProtobuf);
+      paramMsgInfo.uint32_src_app_id.get();
+      int i = paramMsgInfo.uint32_undeal_count.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("UndealCount.ZebraAlbum.Q.msg.BaseMessageProcessor", 2, "OnLinePushMessageProcessor receive zebarunread count: " + i);
+      }
+      int j = LocalMultiProcConfig.getInt4Uin("NavigatorItemShow7", -1, paramQQAppInterface.getLongAccountUin());
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.msg.BaseMessageProcessor", 2, "account: " + paramQQAppInterface.getLongAccountUin() + " QZoneGetFeedAlertRequest read NavigatorItemShow 7 from sharerefrence value: " + j);
+      }
+      if (j == 1)
+      {
+        paramMsgInfo = (bcvr)paramQQAppInterface.getManager(QQManagerFactory.QZONE_MANAGER);
+        paramMsgType0x210 = new ArrayList();
+        QZoneCountUserInfo localQZoneCountUserInfo = new QZoneCountUserInfo();
+        localQZoneCountUserInfo.uin = paramQQAppInterface.getLongAccountUin();
+        paramMsgType0x210.add(localQZoneCountUserInfo);
+        paramMsgInfo.a(17, i, paramMsgType0x210, "", false, true, "");
+      }
       return;
-      i = 0;
-      break;
-      label108:
-      QQToast.a(this.a.getBaseContext(), 2, 2131717527, 2000).a();
-      break label43;
-      str1 = "0X8008235";
-      break label60;
     }
+    catch (InvalidProtocolBufferMicroException paramQQAppInterface)
+    {
+      paramQQAppInterface.printStackTrace();
+    }
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramMsgInfo, paramMsgType0x210);
+    return null;
   }
 }
 

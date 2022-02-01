@@ -20,9 +20,9 @@ public class UIUtil
     int j = k / 60 % 60;
     k /= 3600;
     if (k > 0) {
-      return String.format("%d:%02d:%02d", new Object[] { Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(i) }).toString();
+      return String.format("%d:%02d:%02d", new Object[] { Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(i) });
     }
-    return String.format("%02d:%02d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) }).toString();
+    return String.format("%02d:%02d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
   }
 }
 

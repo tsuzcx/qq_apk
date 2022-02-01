@@ -1,18 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-final class phg
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/ui/CommentLinkView$OnLinkDeleteListener;", "", "onLinkDelete", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface phg
 {
-  phg(String paramString, sjv paramsjv) {}
-  
-  public void onClick(View paramView)
-  {
-    odq.a(null, "", "0X8009BE2", "0X8009BE2", 0, 0, "", "", "", this.jdField_a_of_type_JavaLangString, false);
-    psf.b(this.jdField_a_of_type_Sjv.g);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void c();
 }
 
 

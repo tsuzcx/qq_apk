@@ -1,24 +1,22 @@
-import UserGrowth.stSimpleMetaPerson;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.common.util.NetworkUtil;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import cooperation.vip.tianshu.TianShuGetAdvCallback;
+import java.util.List;
 
-class upb
-  implements bjoe
+public class upb
+  implements TianShuGetAdvCallback
 {
-  upb(uou paramuou, stSimpleMetaPerson paramstSimpleMetaPerson) {}
+  public upb(FolderRecommendTabFragment paramFolderRecommendTabFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
-    if (!NetworkUtil.isNetworkAvailable(uou.c(this.jdField_a_of_type_Uou)))
-    {
-      bhzt.a().a(2131719692);
-      return;
+    List localList = null;
+    if (paramBoolean) {
+      localList = bekc.a(paramBoolean, paramGetAdsRsp, 476);
     }
-    uou.a(this.jdField_a_of_type_Uou).b(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.id, 2);
-    this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.followStatus = 2;
-    uou.a(this.jdField_a_of_type_Uou).setVisibility(0);
-    uou.b(this.jdField_a_of_type_Uou).setVisibility(4);
+    if (FolderRecommendTabFragment.a(this.a) != null) {
+      FolderRecommendTabFragment.a(this.a).a(localList);
+    }
   }
 }
 

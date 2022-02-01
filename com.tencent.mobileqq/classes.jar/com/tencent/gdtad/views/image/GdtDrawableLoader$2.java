@@ -1,15 +1,15 @@
 package com.tencent.gdtad.views.image;
 
-import abtv;
+import acju;
 
 public class GdtDrawableLoader$2
   implements Runnable
 {
-  public GdtDrawableLoader$2(abtv paramabtv) {}
+  public GdtDrawableLoader$2(acju paramacju) {}
   
   public void run()
   {
-    abtv.a(this.this$0);
+    acju.a(this.this$0);
   }
 }
 

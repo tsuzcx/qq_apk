@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.contacts.base.tabs;
 
-import aioa;
-import aiod;
-import aioe;
-import aiof;
+import ajjp;
+import ajjs;
+import ajjt;
+import ajju;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.graphics.Rect;
@@ -24,12 +24,12 @@ import com.tencent.widget.AbsListView.OnScrollListener;
 
 public abstract class ContactsBaseFragment
   extends ReportV4Fragment
-  implements aioa, AbsListView.OnScrollListener
+  implements ajjp, AbsListView.OnScrollListener
 {
   public static Rect a;
   private int a;
-  protected aioe a;
-  public aiof a;
+  protected ajjt a;
+  public ajju a;
   public BaseActivity a;
   public QQAppInterface a;
   public boolean a;
@@ -51,14 +51,14 @@ public abstract class ContactsBaseFragment
   
   public abstract void a();
   
-  public void a(aioe paramaioe)
+  public void a(ajjt paramajjt)
   {
-    this.jdField_a_of_type_Aioe = paramaioe;
+    this.jdField_a_of_type_Ajjt = paramajjt;
   }
   
-  public void a(aiof paramaiof)
+  public void a(ajju paramajju)
   {
-    this.jdField_a_of_type_Aiof = paramaiof;
+    this.jdField_a_of_type_Ajju = paramajju;
   }
   
   public void a(BaseActivity paramBaseActivity)
@@ -77,7 +77,7 @@ public abstract class ContactsBaseFragment
   
   public abstract void a(boolean paramBoolean);
   
-  public abstract void af_();
+  public abstract void ah_();
   
   public int b()
   {
@@ -154,7 +154,7 @@ public abstract class ContactsBaseFragment
     this.jdField_b_of_type_AndroidViewView = a(paramLayoutInflater, paramBundle);
     paramLayoutInflater = a();
     if ((paramLayoutInflater != null) && (Build.VERSION.SDK_INT >= 14)) {
-      paramLayoutInflater.setAccessibilityDelegate(new aiod(this));
+      paramLayoutInflater.setAccessibilityDelegate(new ajjs(this));
     }
     if ((this.jdField_b_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Boolean))
     {
@@ -180,8 +180,8 @@ public abstract class ContactsBaseFragment
     }
     this.jdField_b_of_type_AndroidViewView = null;
     this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Aioe != null) {
-      this.jdField_a_of_type_Aioe.a(this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Ajjt != null) {
+      this.jdField_a_of_type_Ajjt.a(this.jdField_a_of_type_Int);
     }
   }
   

@@ -1,30 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
+import UserGrowth.stReportItem;
+import UserGrowth.stWeishiReportReq;
+import UserGrowth.stWeishiReportRsp;
 import java.util.ArrayList;
 
-class vlk
-  extends amsu
+public class vlk
+  extends vfo<stWeishiReportRsp>
 {
-  vlk(vlj paramvlj) {}
-  
-  protected void onAddFriend(String paramString)
+  public vlk(ArrayList<stReportItem> paramArrayList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("StoryHaloManager", 2, "onAddFriend: invoked.  addUin: " + paramString);
-    }
-    try
-    {
-      paramString = Long.valueOf(paramString);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(paramString);
-      this.a.a(3, localArrayList);
-      this.a.a();
-      return;
-    }
-    catch (NumberFormatException paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("StoryHaloManager", 2, "onAddFriend: failed.  exception: " + paramString);
-    }
+    super("WeishiReport");
+    this.a = new stWeishiReportReq(paramArrayList);
   }
 }
 

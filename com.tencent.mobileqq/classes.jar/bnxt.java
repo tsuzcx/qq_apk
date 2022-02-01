@@ -1,18 +1,19 @@
-public abstract interface bnxt
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.tavcut.session.TAVCutImageSession;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
+
+public class bnxt
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public abstract void A();
+  public bnxt(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
   
-  public abstract void B();
-  
-  public abstract void a();
-  
-  public abstract boolean g();
-  
-  public abstract void x();
-  
-  public abstract void y();
-  
-  public abstract void z();
+  public void onShowPress(MotionEvent paramMotionEvent)
+  {
+    super.onShowPress(paramMotionEvent);
+    AEEditorImageEditFragment.a(this.a).toggleAEKit(AEEditorImageEditFragment.a(this.a), false);
+    bnrh.a("AEEditorImageEditFragment", "[onTouch] onShowPress");
+  }
 }
 
 

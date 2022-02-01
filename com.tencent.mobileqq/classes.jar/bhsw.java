@@ -1,47 +1,25 @@
-import com.tencent.open.agent.OpenAuthorityFragment;
-import com.tencent.open.model.GetVirtualListResult;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import QC.UniLoginCheckRsp;
+import com.tencent.mobileqq.app.BusinessObserver;
+import java.lang.ref.WeakReference;
 
-public class bhsw
-  implements bifh
+class bhsw
+  implements BusinessObserver
 {
-  public bhsw(OpenAuthorityFragment paramOpenAuthorityFragment) {}
+  private WeakReference<bhsv> a;
   
-  public void a()
+  public bhsw(bhsv parambhsv)
   {
-    boolean bool = true;
-    GetVirtualListResult localGetVirtualListResult = OpenAuthorityFragment.a(this.a).a().a(OpenAuthorityFragment.a(this.a));
-    if (localGetVirtualListResult != null)
-    {
-      QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, "getVirtualList onSuccess null != virtualResult");
-      bhvf localbhvf = this.a.a;
-      if (localGetVirtualListResult.a == 0) {}
-      for (;;)
-      {
-        localbhvf.a(bool, localGetVirtualListResult);
-        return;
-        bool = false;
-      }
-    }
-    QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, "getVirtualList onSuccess null == virtualResult");
-    this.a.a.a(false, null);
+    this.a = new WeakReference(parambhsv);
   }
   
-  public void a(int paramInt, String paramString)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, new Object[] { "getVirtualList onFail errorCode=", Integer.valueOf(paramInt), ", msg=", paramString });
-    if (OpenAuthorityFragment.a(this.a, paramInt, true))
-    {
-      QLog.e("SDK_LOGIN.OpenAuthorityFragment", 1, "getVirtualList handle110537");
+    bhsv localbhsv = (bhsv)this.a.get();
+    if (localbhsv == null) {}
+    while (!(paramObject instanceof UniLoginCheckRsp)) {
       return;
     }
-    if (OpenAuthorityFragment.a(this.a, paramInt, 2))
-    {
-      QLog.e("SDK_LOGIN.OpenAuthorityFragment", 1, "getVirtualList handle110509");
-      return;
-    }
-    this.a.a.a(false, null);
+    localbhsv.a(((UniLoginCheckRsp)paramObject).stKeyWord);
   }
 }
 

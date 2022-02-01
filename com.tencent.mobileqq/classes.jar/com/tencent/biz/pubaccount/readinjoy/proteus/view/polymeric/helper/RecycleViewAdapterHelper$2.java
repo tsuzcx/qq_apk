@@ -2,20 +2,20 @@ package com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.helper;
 
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.polymeric.PolymericContainerHelper;
 import java.util.List;
-import qks;
-import qla;
+import qwx;
+import qxf;
 
 public class RecycleViewAdapterHelper$2
   implements Runnable
 {
-  public RecycleViewAdapterHelper$2(qks paramqks) {}
+  public RecycleViewAdapterHelper$2(qwx paramqwx) {}
   
   public void run()
   {
     this.this$0.a.childs.clear();
     this.this$0.notifyDataSetChanged();
-    if (qks.a(this.this$0) != null) {
-      qks.a(this.this$0).a();
+    if (qwx.a(this.this$0) != null) {
+      qwx.a(this.this$0).a();
     }
   }
 }

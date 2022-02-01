@@ -3,55 +3,25 @@ package com.tencent.mobileqq.vas.VasResEngine;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import bggu;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
+import bhpo;
 
 public class VasResController$2
   implements Runnable
 {
-  public VasResController$2(bggu parambggu, String paramString, int paramInt1, int paramInt2) {}
+  public VasResController$2(bhpo parambhpo, String paramString, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    Object localObject1 = new File(this.jdField_a_of_type_JavaLangString);
-    if ((localObject1 == null) || (!((File)localObject1).exists()) || (!((File)localObject1).isDirectory())) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VasResController", 2, "SignatureView DynamicItem png file path error.");
-      }
-    }
-    do
-    {
-      return;
-      localObject1 = FileUtils.getChildFiles(this.jdField_a_of_type_JavaLangString);
-    } while (((ArrayList)localObject1).size() <= 0);
-    String[] arrayOfString = new String[((ArrayList)localObject1).size()];
-    Object localObject2 = new StringBuilder();
-    StringBuilder localStringBuilder = ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString).append(File.separator);
-    if (((String)((ArrayList)localObject1).get(0)).contains(".9.png")) {}
-    for (localObject1 = "%d.9.png";; localObject1 = "%d.png")
-    {
-      localStringBuilder.append((String)localObject1);
-      localObject1 = ((StringBuilder)localObject2).toString();
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        arrayOfString[i] = String.format((String)localObject1, new Object[] { Integer.valueOf(i + 1) });
-        i += 1;
-      }
-    }
-    localObject1 = bggu.a(this.this$0).obtainMessage();
-    localObject2 = new Bundle();
-    ((Bundle)localObject2).putInt("type", 1);
-    ((Bundle)localObject2).putStringArray("pngs", arrayOfString);
-    ((Bundle)localObject2).putInt("interval", this.jdField_a_of_type_Int);
-    ((Bundle)localObject2).putInt("repeatTimes", this.b);
-    ((Message)localObject1).setData((Bundle)localObject2);
-    ((Message)localObject1).what = 10001;
-    bggu.a(this.this$0).sendMessage((Message)localObject1);
+    String[] arrayOfString = this.this$0.a(this.jdField_a_of_type_JavaLangString);
+    Message localMessage = bhpo.a(this.this$0).obtainMessage();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 1);
+    localBundle.putStringArray("pngs", arrayOfString);
+    localBundle.putInt("interval", this.jdField_a_of_type_Int);
+    localBundle.putInt("repeatTimes", this.b);
+    localMessage.setData(localBundle);
+    localMessage.what = 10001;
+    bhpo.a(this.this$0).sendMessage(localMessage);
   }
 }
 

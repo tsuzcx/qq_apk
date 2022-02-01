@@ -1,19 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.ark.API.ArkAppYYBDownloadModule.7;
-import com.tencent.open.downloadnew.DownloadInfo;
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
 
-public class aord
-  implements DialogInterface.OnClickListener
+class aord
+  implements View.OnTouchListener
 {
-  public aord(ArkAppYYBDownloadModule.7 param7) {}
+  aord(aora paramaora, ImageView paramImageView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.a != null) {
-      aoqz.a(this.a.this$0, this.a.a, this.a.a.g);
+    int i;
+    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0))
+    {
+      if (paramMotionEvent.getAction() != 1) {
+        break label45;
+      }
+      i = 255;
+      if (Build.VERSION.SDK_INT < 16) {
+        break label51;
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(i);
     }
-    paramDialogInterface.dismiss();
+    for (;;)
+    {
+      return false;
+      label45:
+      i = 127;
+      break;
+      label51:
+      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(i);
+    }
   }
 }
 

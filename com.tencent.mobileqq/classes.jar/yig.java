@@ -1,40 +1,26 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.FlowMusic;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class yig
-  implements bmrk
+public class yig
+  extends QQUIEventReceiver<yhn, wsb>
 {
-  yig(yie paramyie) {}
-  
-  public void a(boolean paramBoolean, Object paramObject)
+  public yig(@NonNull yhn paramyhn)
   {
-    String str = yie.a(this.a).getResources().getString(2131697745);
-    Object localObject = str;
-    if (paramBoolean)
-    {
-      paramObject = (FlowMusic)paramObject;
-      if (QLog.isColorLevel()) {
-        QLog.d("MusicCache", 2, "onGetSingleMusicInfo flowMusic:" + paramObject.toString());
-      }
-      if ((paramObject.playable == 1) && (!TextUtils.isEmpty(paramObject.url)))
-      {
-        localObject = new yir();
-        ((yir)localObject).jdField_b_of_type_JavaLangString = paramObject.songName;
-        ((yir)localObject).d = paramObject.url;
-        ((yir)localObject).jdField_b_of_type_Int = 2;
-        ((yir)localObject).a = String.valueOf(paramObject.songId);
-        this.a.a(12, localObject);
-        return;
-      }
-      localObject = str;
-      if (paramObject.playable != 1) {
-        localObject = yie.a(this.a).getResources().getString(2131697746);
-      }
+    super(paramyhn);
+  }
+  
+  public void a(@NonNull yhn paramyhn, @NonNull wsb paramwsb)
+  {
+    if ((paramwsb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramwsb.jdField_a_of_type_JavaUtilList == null)) {
+      return;
     }
-    this.a.a(7, localObject);
+    paramyhn.a(paramwsb);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wsb.class;
   }
 }
 

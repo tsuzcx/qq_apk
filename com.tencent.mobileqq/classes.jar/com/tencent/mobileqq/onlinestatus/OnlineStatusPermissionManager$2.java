@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import axvp;
+import azcb;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.FileUtils;
 
 public class OnlineStatusPermissionManager$2
   implements Runnable
 {
-  public OnlineStatusPermissionManager$2(axvp paramaxvp, OnlineStatusFriendsPermissionItem paramOnlineStatusFriendsPermissionItem) {}
+  public OnlineStatusPermissionManager$2(azcb paramazcb, OnlineStatusFriendsPermissionItem paramOnlineStatusFriendsPermissionItem) {}
   
   public void run()
   {
-    FileUtils.writeObject("online_status_file_" + axvp.a(this.this$0).getCurrentAccountUin(), this.a);
+    FileUtils.writeObject("online_status_file_" + azcb.a(this.this$0).getCurrentAccountUin(), this.a);
   }
 }
 

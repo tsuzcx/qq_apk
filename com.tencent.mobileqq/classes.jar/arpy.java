@@ -1,6 +1,28 @@
-public abstract interface arpy
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.contactsync.ContactSyncManager;
+
+public class arpy
+  extends Handler
 {
-  public abstract void a(String paramString, int paramInt);
+  public arpy(ContactSyncManager paramContactSyncManager, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      ContactSyncManager.a(this.a);
+      return;
+    }
+    ContactSyncManager.b(this.a);
+  }
 }
 
 

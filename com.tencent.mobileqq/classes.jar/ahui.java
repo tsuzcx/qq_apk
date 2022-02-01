@@ -1,6 +1,16 @@
-class ahui
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+
+public class ahui
+  implements DialogInterface.OnClickListener
 {
-  private static ahuf a = new ahuf(null);
+  public ahui(PhotoListPanel paramPhotoListPanel, Runnable paramRunnable) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangRunnable.run();
+  }
 }
 
 

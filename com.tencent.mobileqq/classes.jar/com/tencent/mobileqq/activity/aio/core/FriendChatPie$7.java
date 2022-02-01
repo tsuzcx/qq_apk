@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import afiw;
+import agab;
 import android.os.Bundle;
 import android.os.Message;
 import mqq.os.MqqHandler;
@@ -8,7 +8,7 @@ import mqq.os.MqqHandler;
 public class FriendChatPie$7
   implements Runnable
 {
-  public FriendChatPie$7(afiw paramafiw) {}
+  public FriendChatPie$7(agab paramagab) {}
   
   public void run()
   {

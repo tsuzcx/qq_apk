@@ -1,27 +1,9 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.RecommendAndAdCallback.1;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class ssl
-  implements swf
+public abstract interface ssl
 {
-  private WeakReference<FastWebActivity> a;
-  
-  public ssl(FastWebActivity paramFastWebActivity)
-  {
-    this.a = new WeakReference(paramFastWebActivity);
-  }
-  
-  public void a(boolean paramBoolean, String paramString, List<BaseData> paramList1, List<BaseData> paramList2)
-  {
-    FastWebActivity localFastWebActivity = (FastWebActivity)this.a.get();
-    if (localFastWebActivity == null) {
-      return;
-    }
-    localFastWebActivity.runOnUiThread(new FastWebActivity.RecommendAndAdCallback.1(this, paramList1, paramList2, localFastWebActivity, paramBoolean, paramString));
-  }
+  public abstract View a(ViewGroup paramViewGroup);
 }
 
 

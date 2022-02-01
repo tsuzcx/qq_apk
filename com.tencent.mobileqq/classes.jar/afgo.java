@@ -1,15 +1,22 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class afgo
-  implements bcrf
+  implements TextWatcher
 {
-  public afgo(FriendShipWaveView paramFriendShipWaveView) {}
+  public afgo(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void a()
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a.jdField_a_of_type_Bcsc.a = 255;
-    this.a.jdField_a_of_type_Bcsc.a(this.a.jdField_a_of_type_Bcsd);
+    paramEditable = this.a.a.getText().toString().trim();
+    this.a.c(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

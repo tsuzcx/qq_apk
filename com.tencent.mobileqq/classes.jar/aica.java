@@ -1,12 +1,19 @@
-public class aica
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+
+class aica
+  implements DialogInterface.OnClickListener
 {
-  public String a;
-  public String b;
+  aica(aibs paramaibs) {}
   
-  public aica(String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    paramDialogInterface = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", "https://qun.qq.com/qqweb/m/nearby/charm_level/index.html?_wv=1027&_bid=2747");
+    this.a.mContext.startActivity(paramDialogInterface);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import acqz;
+import adhj;
 import android.widget.TextView;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.pb.PBStringField;

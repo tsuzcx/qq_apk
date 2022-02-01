@@ -1,42 +1,22 @@
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
 
 class uml
-  implements AbsListView.OnScrollListener
+  extends sfi
 {
-  boolean jdField_a_of_type_Boolean = false;
+  uml(umk paramumk) {}
   
-  uml(umj paramumj) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(spn paramspn, Object paramObject)
   {
-    if ((paramInt3 > 0) && (paramAbsListView.getFirstVisiblePosition() + paramInt2 >= paramInt3)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
-    }
+    QLog.d("ReadInJoySuperMaskAd", 2, "onVideoPrepared");
+    umk.a(this.a).d();
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void b(spn paramspn)
   {
-    EventCollector.getInstance().onListScrollStateChanged(paramAbsListView, paramInt);
-    if ((this.jdField_a_of_type_Boolean) && (paramInt == 0))
-    {
-      uya.c("comment", "onScrollStateChanged scrollState:" + paramInt);
-      umj.a(this.jdField_a_of_type_Umj, this.jdField_a_of_type_Umj.a().a(umj.a(this.jdField_a_of_type_Umj)));
-      if (umj.b(this.jdField_a_of_type_Umj) != null)
-      {
-        this.jdField_a_of_type_Umj.a().a(umj.a(this.jdField_a_of_type_Umj), true);
-        umj.a(this.jdField_a_of_type_Umj, true);
-      }
-    }
-    else
-    {
-      return;
-    }
-    uya.c("comment", "mCommentAttachInfo is null");
+    super.b(paramspn);
+    QLog.d("ReadInJoySuperMaskAd", 2, "onCompletion");
+    umk.a(this.a).sendEmptyMessage(2);
   }
 }
 

@@ -5,7 +5,6 @@ import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StLike;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import amtj;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -18,6 +17,7 @@ import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import anvx;
 import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 import com.tencent.biz.richframework.eventbus.SimpleEventBus;
 import com.tencent.biz.richframework.eventbus.SimpleEventReceiver;
@@ -31,17 +31,17 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.widget.QQToast;
 import java.util.ArrayList;
-import zbi;
-import zet;
-import zeu;
-import zev;
-import zew;
-import zex;
-import zey;
-import zez;
-import zfs;
-import zgb;
-import zgv;
+import zqn;
+import zty;
+import ztz;
+import zua;
+import zub;
+import zuc;
+import zud;
+import zue;
+import zux;
+import zvg;
+import zwa;
 
 public class CommentBottomBar
   extends LinearLayout
@@ -54,7 +54,7 @@ public class CommentBottomBar
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private zfs jdField_a_of_type_Zfs;
+  private zux jdField_a_of_type_Zux;
   private boolean jdField_a_of_type_Boolean = true;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -92,7 +92,7 @@ public class CommentBottomBar
       if (paramStReply.postUser == null) {
         break label162;
       }
-      paramStReply = String.format(getContext().getString(2131692094), new Object[] { paramStReply.postUser.nick.get() });
+      paramStReply = String.format(getContext().getString(2131692184), new Object[] { paramStReply.postUser.nick.get() });
       paramStComment = paramStReply;
       if (paramStReply.length() > 10)
       {
@@ -106,7 +106,7 @@ public class CommentBottomBar
       if ((paramStComment == null) || (paramStComment.postUser == null)) {
         break;
       }
-      paramStReply = String.format(getContext().getString(2131692094), new Object[] { paramStComment.postUser.nick.get() });
+      paramStReply = String.format(getContext().getString(2131692184), new Object[] { paramStComment.postUser.nick.get() });
       paramStComment = paramStReply;
     } while (paramStReply.length() <= 10);
     paramStComment = paramStReply.substring(0, 10);
@@ -120,14 +120,14 @@ public class CommentBottomBar
     if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839094);
+    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839114);
     if (paramBoolean) {}
     for (ScaleAnimation localScaleAnimation = new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F, 1, 0.5F, 1, 0.5F);; localScaleAnimation = new ScaleAnimation(1.0F, 0.0F, 1.0F, 0.0F, 1, 0.5F, 1, 0.5F))
     {
       localScaleAnimation.setDuration(1000L);
       localScaleAnimation.setFillAfter(true);
       localScaleAnimation.setRepeatCount(0);
-      localScaleAnimation.setAnimationListener(new zey(this, paramBoolean));
+      localScaleAnimation.setAnimationListener(new zud(this, paramBoolean));
       this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localScaleAnimation);
       return;
     }
@@ -146,7 +146,7 @@ public class CommentBottomBar
       }
     }
     label35:
-    for (paramInt = 2130839085;; paramInt = 2130839086)
+    for (paramInt = 2130839105;; paramInt = 2130839106)
     {
       localImageView.setBackgroundResource(paramInt);
       return;
@@ -161,13 +161,13 @@ public class CommentBottomBar
     setOrientation(0);
     setBackgroundColor(-1);
     setGravity(16);
-    LayoutInflater.from(getContext()).inflate(2131558812, this);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369329));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379454));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369374));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369203));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369202));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369331));
+    LayoutInflater.from(getContext()).inflate(2131558837, this);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369496));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379759));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369540));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369366));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369365));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369498));
     this.jdField_b_of_type_Boolean = ((String)VSConfigManager.getInstance().getValue("is_open_sharing", "1")).equals("1");
     ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
     if (this.jdField_b_of_type_Boolean) {}
@@ -181,40 +181,40 @@ public class CommentBottomBar
   private void g()
   {
     SimpleEventBus.getInstance().registerReceiver(this);
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new zet(this));
-    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new zeu(this));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new zev(this));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new zew(this));
+    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new zty(this));
+    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new ztz(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new zua(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new zub(this));
   }
   
   private void h()
   {
     this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment = null;
     this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply = null;
-    a(getContext().getString(2131700641));
+    a(getContext().getString(2131700992));
   }
   
   private void i()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130847436);
+    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130847527);
     ScaleAnimation localScaleAnimation = new ScaleAnimation(1.0F, 0.8F, 1.0F, 0.8F, 1, 0.5F, 1, 0.5F);
     localScaleAnimation.setDuration(600L);
     localScaleAnimation.setFillAfter(true);
     localScaleAnimation.setRepeatMode(2);
     localScaleAnimation.setRepeatCount(5);
-    localScaleAnimation.setAnimationListener(new zez(this));
+    localScaleAnimation.setAnimationListener(new zue(this));
     this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localScaleAnimation);
   }
   
-  public zfs a()
+  public zux a()
   {
-    return this.jdField_a_of_type_Zfs;
+    return this.jdField_a_of_type_Zux;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Zfs != null) {
-      this.jdField_a_of_type_Zfs.h();
+    if (this.jdField_a_of_type_Zux != null) {
+      this.jdField_a_of_type_Zux.h();
     }
   }
   
@@ -226,7 +226,7 @@ public class CommentBottomBar
     }
     if (paramInt > 0)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(zgv.a(paramInt));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(zwa.a(paramInt));
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
       return;
     }
@@ -236,19 +236,19 @@ public class CommentBottomBar
   
   public void a(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    if (this.jdField_a_of_type_Zfs != null) {
-      this.jdField_a_of_type_Zfs.a(paramStFeed);
+    if (this.jdField_a_of_type_Zux != null) {
+      this.jdField_a_of_type_Zux.a(paramStFeed);
     }
   }
   
-  public void a(Activity paramActivity, CertifiedAccountMeta.StFeed paramStFeed, zgb paramzgb)
+  public void a(Activity paramActivity, CertifiedAccountMeta.StFeed paramStFeed, zvg paramzvg)
   {
-    a(paramActivity, paramStFeed, paramzgb, null);
+    a(paramActivity, paramStFeed, paramzvg, null);
   }
   
-  public void a(Activity paramActivity, CertifiedAccountMeta.StFeed paramStFeed, zgb paramzgb, ExtraTypeInfo paramExtraTypeInfo)
+  public void a(Activity paramActivity, CertifiedAccountMeta.StFeed paramStFeed, zvg paramzvg, ExtraTypeInfo paramExtraTypeInfo)
   {
-    this.jdField_a_of_type_Zfs = new zfs(paramActivity, false, paramStFeed, paramzgb, paramExtraTypeInfo);
+    this.jdField_a_of_type_Zux = new zux(paramActivity, false, paramStFeed, paramzvg, paramExtraTypeInfo);
   }
   
   public void a(String paramString)
@@ -271,12 +271,12 @@ public class CommentBottomBar
     }
     if (!this.jdField_a_of_type_Boolean)
     {
-      QQToast.a(getContext(), amtj.a(2131701320), 0).a();
+      QQToast.a(getContext(), anvx.a(2131701671), 0).a();
       return;
     }
     this.jdField_a_of_type_Boolean = false;
     DoLikeRequest localDoLikeRequest = new DoLikeRequest(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
-    VSNetworkHelper.getInstance().sendRequest(localDoLikeRequest, new zex(this));
+    VSNetworkHelper.getInstance().sendRequest(localDoLikeRequest, new zuc(this));
   }
   
   @SuppressLint({"DefaultLocale", "SetTextI18n"})
@@ -287,7 +287,7 @@ public class CommentBottomBar
     }
     if (paramInt > 0)
     {
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(zgv.a(paramInt));
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(zwa.a(paramInt));
       this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
       return;
     }
@@ -297,34 +297,34 @@ public class CommentBottomBar
   
   public boolean b()
   {
-    if (this.jdField_a_of_type_Zfs != null) {
-      return this.jdField_a_of_type_Zfs.b();
+    if (this.jdField_a_of_type_Zux != null) {
+      return this.jdField_a_of_type_Zux.b();
     }
     return false;
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Zfs != null) {
-      this.jdField_a_of_type_Zfs.f();
+    if (this.jdField_a_of_type_Zux != null) {
+      this.jdField_a_of_type_Zux.f();
     }
     SimpleEventBus.getInstance().unRegisterReceiver(this);
   }
   
   public boolean c()
   {
-    return (this.jdField_a_of_type_Zfs != null) && (this.jdField_a_of_type_Zfs.c());
+    return (this.jdField_a_of_type_Zux != null) && (this.jdField_a_of_type_Zux.c());
   }
   
   public void d()
   {
     this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839094);
+    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839114);
   }
   
   public boolean d()
   {
-    return (this.jdField_a_of_type_Zfs != null) && (this.jdField_a_of_type_Zfs.d());
+    return (this.jdField_a_of_type_Zux != null) && (this.jdField_a_of_type_Zux.d());
   }
   
   public void e()
@@ -365,7 +365,7 @@ public class CommentBottomBar
     b(paramStFeed.likeInfo.count.get());
     if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
-      if ((this.jdField_b_of_type_Boolean) && (zbi.a(paramStFeed.status.get()))) {
+      if ((this.jdField_b_of_type_Boolean) && (zqn.a(paramStFeed.status.get()))) {
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       }
     }

@@ -1,35 +1,35 @@
 package com.tencent.open.agent;
 
-import amtj;
 import android.text.TextUtils;
 import android.widget.EditText;
-import bhrp;
-import biey;
+import anvx;
+import bjcm;
+import bjqa;
 import com.tencent.qphone.base.util.QLog;
 
 public class CreateVirtualAccountFragment$6$1
   implements Runnable
 {
-  public CreateVirtualAccountFragment$6$1(bhrp parambhrp, boolean paramBoolean, String paramString1, String paramString2, int paramInt) {}
+  public CreateVirtualAccountFragment$6$1(bjcm parambjcm, boolean paramBoolean, String paramString1, String paramString2, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bhrp.a.b();
+    this.jdField_a_of_type_Bjcm.a.b();
     QLog.d("CreateVirtualAccountFragment", 2, "========> onUploadAvatar isSuccess = " + this.jdField_a_of_type_Boolean + " filePath ==" + this.jdField_a_of_type_JavaLangString + " headid==" + this.b);
     if (this.jdField_a_of_type_Boolean)
     {
-      if (TextUtils.isEmpty(CreateVirtualAccountFragment.a(this.jdField_a_of_type_Bhrp.a).getText()))
+      if (TextUtils.isEmpty(CreateVirtualAccountFragment.a(this.jdField_a_of_type_Bjcm.a).getText()))
       {
-        CreateVirtualAccountFragment.a(this.jdField_a_of_type_Bhrp.a, amtj.a(2131701761), false);
+        CreateVirtualAccountFragment.a(this.jdField_a_of_type_Bjcm.a, anvx.a(2131702112), false);
         return;
       }
-      String str = CreateVirtualAccountFragment.a(this.jdField_a_of_type_Bhrp.a).getText().toString();
+      String str = CreateVirtualAccountFragment.a(this.jdField_a_of_type_Bjcm.a).getText().toString();
       QLog.d("CreateVirtualAccountFragment", 2, "========> doCreateVirtualAccount nickName = " + str + " headId==" + this.b);
-      CreateVirtualAccountFragment.a(this.jdField_a_of_type_Bhrp.a);
-      CreateVirtualAccountFragment.a(this.jdField_a_of_type_Bhrp.a).a(CreateVirtualAccountFragment.a(this.jdField_a_of_type_Bhrp.a), str, this.b, CreateVirtualAccountFragment.a(this.jdField_a_of_type_Bhrp.a));
+      CreateVirtualAccountFragment.a(this.jdField_a_of_type_Bjcm.a);
+      CreateVirtualAccountFragment.a(this.jdField_a_of_type_Bjcm.a).a(CreateVirtualAccountFragment.a(this.jdField_a_of_type_Bjcm.a), str, this.b, CreateVirtualAccountFragment.a(this.jdField_a_of_type_Bjcm.a));
       return;
     }
-    CreateVirtualAccountFragment.a(this.jdField_a_of_type_Bhrp.a, amtj.a(2131701763) + this.jdField_a_of_type_Int, false);
+    CreateVirtualAccountFragment.a(this.jdField_a_of_type_Bjcm.a, anvx.a(2131702114) + this.jdField_a_of_type_Int, false);
     QLog.d("CreateVirtualAccountFragment", 1, "upload avatar failed ");
   }
 }

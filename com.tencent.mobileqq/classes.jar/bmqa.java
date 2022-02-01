@@ -1,8 +1,16 @@
+import android.os.Bundle;
+
 public abstract interface bmqa
 {
-  public abstract void a(long paramLong);
+  public abstract void a();
   
-  public abstract void b(long paramLong);
+  public abstract void a(float paramFloat, boolean paramBoolean);
+  
+  public abstract void a(Bundle paramBundle);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import acqe;
-import bfur;
+import adgo;
+import bhdj;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class AddFriendVerifyActivity$30
@@ -19,10 +19,10 @@ public class AddFriendVerifyActivity$30
     do
     {
       return;
-      this.this$0.a = bfur.a(this.this$0, 230);
-      this.this$0.a.setMessage(2131719180);
-      acqe localacqe = new acqe(this);
-      this.this$0.a.setPositiveButton(2131690952, localacqe);
+      this.this$0.a = bhdj.a(this.this$0, 230);
+      this.this$0.a.setMessage(2131719600);
+      adgo localadgo = new adgo(this);
+      this.this$0.a.setPositiveButton(2131691037, localadgo);
     } while (this.this$0.a.isShowing());
     this.this$0.a.show();
   }

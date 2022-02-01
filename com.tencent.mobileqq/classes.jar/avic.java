@@ -1,34 +1,48 @@
-import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import java.lang.reflect.Method;
 
-public class avic
+public abstract class avic
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new avid(this);
-  private avie jdField_a_of_type_Avie;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public static avic a;
   
-  public avic(QQAppInterface paramQQAppInterface)
+  public static void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    BaseApplicationImpl.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("com.tencent.qplus.THEME_INVALIDATE"), "com.tencent.msg.permission.pushnotify", null);
+    try
+    {
+      Method localMethod = Class.forName("com.tencent.mobileqq.haoliyou.JefsClass").getMethod("getInstance", new Class[0]);
+      localMethod.setAccessible(true);
+      a = (avic)localMethod.invoke(null, new Object[0]);
+      return;
+    }
+    catch (Throwable localThrowable) {}
   }
   
-  public void a()
+  public static void a(Activity paramActivity, Intent paramIntent, int paramInt, Bundle paramBundle)
   {
-    BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    avic localavic = a;
+    if (localavic != null) {
+      localavic.b(paramActivity, paramIntent, paramInt, paramBundle);
+    }
   }
   
-  public void a(avie paramavie)
+  public static void a(Context paramContext, Intent paramIntent, Runnable paramRunnable)
   {
-    this.jdField_a_of_type_Avie = paramavie;
+    avic localavic = a;
+    if (localavic != null) {
+      localavic.b(paramContext, paramIntent, paramRunnable);
+    }
   }
+  
+  public abstract void b(Activity paramActivity, Intent paramIntent, int paramInt, Bundle paramBundle);
+  
+  public abstract void b(Context paramContext, Intent paramIntent, Runnable paramRunnable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     avic
  * JD-Core Version:    0.7.0.1
  */

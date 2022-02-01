@@ -1,13 +1,6 @@
-public class bnlm
+public abstract interface bnlm
 {
-  public int a;
-  public String a;
-  public int[] a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
+  public abstract void a(bnme parambnme);
 }
 
 

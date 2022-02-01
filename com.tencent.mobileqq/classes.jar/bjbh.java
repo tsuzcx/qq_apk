@@ -1,16 +1,13 @@
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnErrorListener;
-import com.tencent.superplayer.api.ISuperPlayer;
-import com.tencent.superplayer.api.ISuperPlayer.OnErrorListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.AuthorityControlFragment;
 
-class bjbh
-  implements ISuperPlayer.OnErrorListener
+public class bjbh
+  implements DialogInterface.OnClickListener
 {
-  bjbh(bjbd parambjbd, AbsVideoPlayer.OnErrorListener paramOnErrorListener) {}
+  public bjbh(AuthorityControlFragment paramAuthorityControlFragment) {}
   
-  public boolean onError(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString)
-  {
-    return this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnErrorListener.onError(this.jdField_a_of_type_Bjbd, paramInt1, paramInt2);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

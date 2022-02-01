@@ -1,24 +1,36 @@
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 
-class wzq
-  implements bjoe
+final class wzq
+  implements bkzq
 {
-  wzq(wzo paramwzo, StoryVideoItem paramStoryVideoItem, VideoViewVideoHolder paramVideoViewVideoHolder, AtomicBoolean paramAtomicBoolean, bjnw parambjnw) {}
+  wzq(CommentEntry paramCommentEntry, bkzi parambkzi) {}
   
   public void OnClick(View paramView, int paramInt)
   {
     switch (paramInt)
     {
+    default: 
+      paramView = "16384";
+      QQUserUIItem localQQUserUIItem = ((wke)wjs.a(2)).b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.authorUnionId);
+      if ((localQQUserUIItem != null) && (!TextUtils.isEmpty(localQQUserUIItem.qq))) {
+        new wro().a(localQQUserUIItem.qq, localQQUserUIItem.isFriend(), paramView, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.content);
+      }
+      break;
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bjnw.dismiss();
+      this.jdField_a_of_type_Bkzi.dismiss();
       return;
-      wkp.a(this.jdField_a_of_type_Wzo.b(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, new wzr(this));
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      paramView = "2";
+      break;
+      paramView = "1";
+      break;
+      paramView = "4";
+      break;
+      ykq.d("Q.qqstory.player.PlayModeUtils", "report comment error because evil uin is empty.");
     }
   }
 }

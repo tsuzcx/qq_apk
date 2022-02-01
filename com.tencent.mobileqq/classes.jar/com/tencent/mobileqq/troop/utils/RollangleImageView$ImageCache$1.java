@@ -3,14 +3,14 @@ package com.tencent.mobileqq.troop.utils;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.util.MQLruCache;
-import bezn;
-import bezp;
+import bght;
+import bghv;
 import java.util.LinkedList;
 
 public class RollangleImageView$ImageCache$1
   implements Runnable
 {
-  public RollangleImageView$ImageCache$1(bezn parambezn) {}
+  public RollangleImageView$ImageCache$1(bght parambght) {}
   
   public void run()
   {
@@ -26,25 +26,25 @@ public class RollangleImageView$ImageCache$1
         label19:
         synchronized (this.this$0)
         {
-          if (bezn.a(this.this$0) == null) {
+          if (bght.a(this.this$0) == null) {
             return;
           }
         }
         if (localObject2 != null) {
-          bezn.a(this.this$0).poll();
+          bght.a(this.this$0).poll();
         }
-        if (bezn.a(this.this$0).isEmpty()) {
+        if (bght.a(this.this$0).isEmpty()) {
           return;
         }
-        bezp localbezp = (bezp)bezn.a(this.this$0).peek();
-        ??? = RollangleImageView.a(localbezp.jdField_a_of_type_JavaLangString);
-        Object localObject3 = localbezp;
+        bghv localbghv = (bghv)bght.a(this.this$0).peek();
+        ??? = RollangleImageView.a(localbghv.jdField_a_of_type_JavaLangString);
+        Object localObject3 = localbghv;
         if (??? == null) {
           continue;
         }
-        RollangleImageView.a.put("troopfileimage://" + localbezp.jdField_a_of_type_JavaLangString, ???);
-        bezn.a(this.this$0).obtainMessage(0, new Object[] { localbezp.jdField_a_of_type_ComTencentMobileqqTroopUtilsRollangleImageView, localbezp.jdField_a_of_type_JavaLangString, ??? }).sendToTarget();
-        localObject3 = localbezp;
+        RollangleImageView.a.put("troopfileimage://" + localbghv.jdField_a_of_type_JavaLangString, ???);
+        bght.a(this.this$0).obtainMessage(0, new Object[] { localbghv.jdField_a_of_type_ComTencentMobileqqTroopUtilsRollangleImageView, localbghv.jdField_a_of_type_JavaLangString, ??? }).sendToTarget();
+        localObject3 = localbghv;
       }
       catch (InterruptedException localInterruptedException)
       {

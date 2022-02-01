@@ -1,31 +1,78 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.redtouch.RedAppInfo;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import mqq.manager.Manager;
 
 public class bmfv
-  implements Animator.AnimatorListener
+  implements Manager
 {
-  public bmfv(AEEditorAILoadingView paramAEEditorAILoadingView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  @Nullable
+  public RedAppInfo a(String paramString)
   {
-    AEEditorAILoadingView.a(this.a, 0);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("path", paramString);
+    paramString = QIPCClientHelper.getInstance().getClient().callServer("ReaderIPCModule", "getSingleRedTouchInfo", localBundle);
+    if ((paramString != null) && (paramString.code == 0) && (paramString.data != null))
+    {
+      paramString = paramString.data;
+      paramString.setClassLoader(RedAppInfo.class.getClassLoader());
+      return (RedAppInfo)paramString.getParcelable("redTouchInfo");
+    }
+    return null;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  @Nullable
+  public Map<String, RedAppInfo> a(ArrayList<String> paramArrayList)
   {
-    AEEditorAILoadingView.a(this.a, 0);
+    if (paramArrayList == null) {}
+    do
+    {
+      do
+      {
+        return null;
+        localObject = new Bundle();
+        ((Bundle)localObject).putStringArrayList("pathList", paramArrayList);
+        paramArrayList = QIPCClientHelper.getInstance().getClient().callServer("ReaderIPCModule", "getRedTouchInfo", (Bundle)localObject);
+      } while ((paramArrayList == null) || (paramArrayList.code != 0) || (paramArrayList.data == null));
+      paramArrayList = paramArrayList.data;
+      paramArrayList.setClassLoader(RedAppInfo.class.getClassLoader());
+      localObject = paramArrayList.getParcelableArrayList("redTouchInfoList");
+    } while (localObject == null);
+    paramArrayList = new HashMap();
+    Object localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      RedAppInfo localRedAppInfo = (RedAppInfo)((Iterator)localObject).next();
+      paramArrayList.put(localRedAppInfo.b(), localRedAppInfo);
+    }
+    return paramArrayList;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator)
+  public void a(String paramString)
   {
-    AEEditorAILoadingView.a(this.a, AEEditorAILoadingView.a(this.a) + 1);
+    if (a(paramString))
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("path", paramString);
+      QIPCClientHelper.getInstance().getClient().callServer("ReaderIPCModule", "reportRedTouchClick", localBundle);
+    }
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public boolean a(String paramString)
   {
-    AEEditorAILoadingView.a(this.a, 1);
+    paramString = a(paramString);
+    return (paramString != null) && (paramString.b() == 1);
   }
+  
+  public void onDestroy() {}
 }
 
 

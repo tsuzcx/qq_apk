@@ -13,7 +13,7 @@ import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
-import ywr;
+import zlp;
 
 public abstract class QRLoginBaseActivity
   extends IphoneTitleBarActivity
@@ -36,9 +36,9 @@ public abstract class QRLoginBaseActivity
     super.doOnCreate(paramBundle);
     a();
     hideTitleBar();
-    this.b = ((ImageView)super.findViewById(2131369818));
-    this.b.setContentDescription(getText(2131690599));
-    this.b.setOnClickListener(new ywr(this));
+    this.b = ((ImageView)super.findViewById(2131369988));
+    this.b.setContentDescription(getText(2131690676));
+    this.b.setOnClickListener(new zlp(this));
     return true;
   }
   
@@ -73,14 +73,14 @@ public abstract class QRLoginBaseActivity
       getWindow().addFlags(67108864);
       if (this.mActNeedImmersive)
       {
-        int i = getResources().getColor(2131167070);
+        int i = getResources().getColor(2131167084);
         if (this.mSystemBarComp == null)
         {
           this.mSystemBarComp = new SystemBarCompact(this, true, i);
           if (!ThemeUtil.isDefaultOrDIYTheme(false)) {
             break label103;
           }
-          this.mSystemBarComp.setStatusDrawable(getResources().getDrawable(2130838891));
+          this.mSystemBarComp.setStatusDrawable(getResources().getDrawable(2130838911));
         }
       }
     }

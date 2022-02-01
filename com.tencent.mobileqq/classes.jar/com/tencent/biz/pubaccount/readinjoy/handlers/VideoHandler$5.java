@@ -4,23 +4,23 @@ import android.content.Context;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
-import psf;
-import sdc;
-import sdg;
+import qdc;
+import spg;
+import spk;
 
 public class VideoHandler$5
   implements Runnable
 {
-  public VideoHandler$5(psf parampsf, sdg paramsdg1, sdc paramsdc, sdg paramsdg2) {}
+  public VideoHandler$5(qdc paramqdc, spk paramspk1, spg paramspg, spk paramspk2) {}
   
   public void run()
   {
-    int i = psf.a(this.this$0).getHeaderViewsCount() + this.jdField_a_of_type_Sdg.a + 1;
+    int i = qdc.a(this.this$0).getHeaderViewsCount() + this.jdField_a_of_type_Spk.a + 1;
     if (QLog.isColorLevel()) {
       QLog.i("VideoHandler", 2, "setSelectionFromTop selectIndex:" + i);
     }
-    psf.a(this.this$0).setSelectionFromTop(i, AIOUtils.dp2px(175.0F, psf.a(this.this$0).getResources()));
-    if (this.jdField_a_of_type_Sdc.a() == 7)
+    qdc.a(this.this$0).setSelectionFromTop(i, AIOUtils.dp2px(175.0F, qdc.a(this.this$0).getResources()));
+    if (this.jdField_a_of_type_Spg.a() == 7)
     {
       this.this$0.a(this.b);
       return;

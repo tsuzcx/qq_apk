@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import aobu;
+import apew;
 import com.tencent.mobileqq.ar.ARNativeBridge;
 import com.tencent.qphone.base.util.QLog;
 
@@ -9,7 +9,7 @@ public class Interactive3DRenderable$8
 {
   public void run()
   {
-    aobu.a(this.this$0).native_onTouchCancel(this.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_ArrayOfFloat, this.b, this.jdField_a_of_type_Long, aobu.a(this.this$0).mCurrentActiveId);
+    apew.a(this.this$0).native_onTouchCancel(this.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_ArrayOfFloat, this.b, this.jdField_a_of_type_Long, apew.a(this.this$0).mCurrentActiveId);
     if (QLog.isColorLevel()) {
       QLog.d("AREngine_Interactive3DRenderable", 2, "ACTION_CANCEL native_onTouchCancel");
     }

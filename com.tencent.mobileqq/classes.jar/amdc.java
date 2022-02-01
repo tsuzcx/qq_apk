@@ -1,16 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class amdc
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  public amdc(ApolloGameActivity paramApolloGameActivity) {}
+  public amdc(SpecailCareListActivity paramSpecailCareListActivity, amdg paramamdg) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    mum.a(this.a);
+    this.jdField_a_of_type_Amdg.c.setVisibility(0);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,15 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.profilecard.base.framework.impl.ComponentCenter;
+import android.hardware.Camera;
+import android.hardware.Camera.PreviewCallback;
 
-public class ayta
-  implements aytk
+class ayta
+  implements Camera.PreviewCallback
 {
-  public ayta(ComponentCenter paramComponentCenter, BaseActivity paramBaseActivity, Bundle paramBundle) {}
+  ayta(aysx paramaysx) {}
   
-  public void a(aysw paramaysw)
+  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    paramaysw.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidOsBundle);
+    if (paramArrayOfByte == null) {
+      return;
+    }
+    if (((this.a.jdField_a_of_type_Boolean) || (this.a.e == 1)) && (!aysx.a(this.a)))
+    {
+      this.a.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+      if ((this.a.e != 1) && (System.currentTimeMillis() - aysx.a(this.a) > this.a.c))
+      {
+        aysx.a(this.a, System.currentTimeMillis());
+        aysx.a(this.a, paramArrayOfByte);
+      }
+    }
+    aysx.a(this.a).addCallbackBuffer(paramArrayOfByte);
   }
 }
 

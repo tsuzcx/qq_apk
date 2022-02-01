@@ -1,28 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.21;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.21.1.1;
-import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 
 public class aksu
-  implements akuz
+  extends BroadcastReceiver
 {
-  public aksu(NewFlowCameraActivity.21.1.1 param1) {}
+  public aksu(SendHbActivity paramSendHbActivity) {}
   
-  public void a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramInt == 0)
-    {
-      NewFlowCameraActivity.b(this.a.a.a.this$0, true);
-      if (this.a.a.a.this$0.d.getVisibility() == 0)
-      {
-        this.a.a.a.this$0.d.setVisibility(8);
-        this.a.a.a.this$0.a.a(NewFlowCameraActivity.a(this.a.a.a.this$0));
-      }
-      return;
+    if (("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) && (SendHbActivity.a(this.a)) && ((this.a.a & 0x40) > 0)) {
+      this.a.finish();
     }
-    NewFlowCameraActivity.b(this.a.a.a.this$0, false);
-    this.a.a.a.this$0.a.a(NewFlowCameraActivity.a(this.a.a.a.this$0));
   }
 }
 

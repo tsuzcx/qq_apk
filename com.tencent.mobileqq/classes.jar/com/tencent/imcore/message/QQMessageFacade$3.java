@@ -1,15 +1,15 @@
 package com.tencent.imcore.message;
 
-import anmr;
-import asgz;
-import aslf;
+import aopk;
+import atlf;
+import atpl;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForFile;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 class QQMessageFacade$3
-  implements aslf
+  implements atpl
 {
   QQMessageFacade$3(QQMessageFacade paramQQMessageFacade, MessageForFile paramMessageForFile, FileManagerEntity paramFileManagerEntity) {}
   
@@ -20,7 +20,7 @@ class QQMessageFacade$3
       this.val$entity.status = 16;
       QQMessageFacade.access$100(this.this$0).getFileManagerDataCenter().c(this.val$entity);
     }
-    QQMessageFacade.access$100(this.this$0).getMsgHandler().a().a(this.val$msg.frienduin, this.val$msg.istroop, anmr.e, 0);
+    QQMessageFacade.access$100(this.this$0).getMsgHandler().a().a(this.val$msg.frienduin, this.val$msg.istroop, aopk.e, 0);
   }
   
   public void onSuccess()

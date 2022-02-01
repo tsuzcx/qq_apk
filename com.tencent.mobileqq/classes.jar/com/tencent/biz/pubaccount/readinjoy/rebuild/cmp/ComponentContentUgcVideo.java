@@ -15,12 +15,12 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import java.util.ArrayList;
-import pai;
-import pay;
-import pvc;
-import qtr;
-import rfj;
-import rfl;
+import pjr;
+import pqw;
+import qfw;
+import rfw;
+import rrq;
+import rrs;
 
 public class ComponentContentUgcVideo
   extends ComponentContentBigImageVideo
@@ -42,17 +42,17 @@ public class ComponentContentUgcVideo
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131560125, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131560172, this, true);
   }
   
-  public URL a(pvc parampvc)
+  public URL a(qfw paramqfw)
   {
-    ArticleInfo localArticleInfo = parampvc.a();
+    ArticleInfo localArticleInfo = paramqfw.a();
     if ((localArticleInfo.mSocialFeedInfo != null) && (localArticleInfo.mSocialFeedInfo.a != null) && (localArticleInfo.mSocialFeedInfo.a.b.size() > 0))
     {
-      Object localObject = (rfl)localArticleInfo.mSocialFeedInfo.a.b.get(0);
-      int i = ((rfl)localObject).c;
-      int j = ((rfl)localObject).d;
+      Object localObject = (rrs)localArticleInfo.mSocialFeedInfo.a.b.get(0);
+      int i = ((rrs)localObject).c;
+      int j = ((rrs)localObject).d;
       if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getLayoutParams() != null))
       {
         localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getLayoutParams();
@@ -70,8 +70,8 @@ public class ComponentContentUgcVideo
           }
           while (localObject != null)
           {
-            parampvc = (pvc)localObject;
-            return parampvc;
+            paramqfw = (qfw)localObject;
+            return paramqfw;
             label204:
             QLog.d("ComponentContentUgcVideo", 2, "ivWidth: " + k + ", ivHeight: " + m);
           }
@@ -92,7 +92,7 @@ public class ComponentContentUgcVideo
         if (localObject == null) {
           break label327;
         }
-        parampvc = (pvc)localObject;
+        paramqfw = (qfw)localObject;
         if (!QLog.isColorLevel()) {
           break;
         }
@@ -103,7 +103,7 @@ public class ComponentContentUgcVideo
       }
     }
     label327:
-    return super.a(parampvc);
+    return super.a(paramqfw);
   }
   
   public void a(View paramView)
@@ -125,9 +125,9 @@ public class ComponentContentUgcVideo
     int k;
     boolean bool;
     int j;
-    if ((this.jdField_a_of_type_Qtr.a != null) && (this.jdField_a_of_type_Qtr.a.a() != null))
+    if ((this.jdField_a_of_type_Rfw.a != null) && (this.jdField_a_of_type_Rfw.a.a() != null))
     {
-      localArticleInfo = this.jdField_a_of_type_Qtr.a.a();
+      localArticleInfo = this.jdField_a_of_type_Rfw.a.a();
       if ((localArticleInfo.mSocialFeedInfo != null) && (localArticleInfo.mSocialFeedInfo.a != null) && (localArticleInfo.mSocialFeedInfo.a.b.size() > 0))
       {
         localLayoutParams = getLayoutParams();
@@ -135,8 +135,8 @@ public class ComponentContentUgcVideo
         i = Math.min(((DisplayMetrics)localObject).widthPixels, ((DisplayMetrics)localObject).heightPixels);
         k = AIOUtils.dp2px(12.0F, getResources());
         localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getLayoutParams();
-        rfl localrfl = (rfl)localArticleInfo.mSocialFeedInfo.a.b.get(0);
-        if (pay.a(localrfl.c, localrfl.d)) {
+        rrs localrrs = (rrs)localArticleInfo.mSocialFeedInfo.a.b.get(0);
+        if (pqw.a(localrrs.c, localrrs.d)) {
           break label299;
         }
         bool = true;
@@ -165,7 +165,7 @@ public class ComponentContentUgcVideo
       label305:
       if (localArticleInfo.mChannelID == 0L)
       {
-        i = pai.a(i, getResources());
+        i = pjr.a(i, getResources());
         QLog.d("ComponentContentUgcVideo", 2, "main feeds | ivWidth is " + i + "; ivHeight is " + i);
         j = i;
       }

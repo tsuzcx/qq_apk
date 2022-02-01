@@ -1,23 +1,107 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.ipc.AdIPCManager;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Handler;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
+import com.tencent.ad.tangram.process.AdProcessManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import eipc.EIPCResult;
 
-public class abzj
-  implements abzb
+public final class abzj
+  extends QIPCModule
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
+  private static volatile abzj a;
+  
+  private abzj(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x111");
-    }
-    amvo.a(paramQQAppInterface, paramMsgType0x210.vProtobuf);
+    super(paramString);
   }
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public static abzj a()
   {
-    a(paramabxc.a(), paramMsgType0x210);
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new abzj("gdt_ipc_async_module_client_to_server");
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public void callbackResult(int paramInt, EIPCResult paramEIPCResult)
+  {
+    if (paramEIPCResult != null) {}
+    for (boolean bool = paramEIPCResult.isSuccess();; bool = false)
+    {
+      acho.b("GdtIPCAdapter", String.format("ClientToServerIPCAsyncModule.callbackResult success:%b", new Object[] { Boolean.valueOf(bool) }));
+      super.callbackResult(paramInt, paramEIPCResult);
+      return;
+    }
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    AdIPCManager.Params localParams = new AdIPCManager.Params(paramBundle);
+    String str1;
+    String str2;
+    if (localParams != null)
+    {
+      str1 = localParams.getAction();
+      if (localParams == null) {
+        break label73;
+      }
+      str2 = localParams.getToProcessName();
+      label34:
+      acho.b("GdtIPCAdapter", String.format("ClientToServerIPCAsyncModule.onCall action:%s to:%s", new Object[] { str1, str2 }));
+      if (!TextUtils.isEmpty(paramString)) {
+        break label79;
+      }
+    }
+    label73:
+    label79:
+    do
+    {
+      do
+      {
+        return null;
+        str1 = null;
+        break;
+        str2 = null;
+        break label34;
+      } while ((!localParams.isValid()) || (!TextUtils.equals(localParams.getAction(), paramString)));
+      str1 = AdProcessManager.INSTANCE.getCurrentProcessName(BaseApplicationImpl.getContext());
+      paramString = AdIPCManager.INSTANCE.getHandler(paramString);
+      if (!TextUtils.equals(str1, localParams.getToProcessName())) {
+        break label206;
+      }
+    } while (paramString == null);
+    paramString = paramString.handle(localParams);
+    paramBundle = new EIPCResult();
+    int i;
+    if ((paramString != null) && (paramString.success))
+    {
+      i = 0;
+      paramBundle.code = i;
+      if (paramString == null) {
+        break label201;
+      }
+    }
+    label201:
+    for (paramString = paramString.bundle;; paramString = null)
+    {
+      paramBundle.data = paramString;
+      callbackResult(paramInt, paramBundle);
+      return null;
+      i = -102;
+      break;
+    }
+    label206:
+    QIPCServerHelper.getInstance().callClient(localParams.getToProcessName(), "gdt_ipc_module_server_to_client", localParams.getAction(), paramBundle, new abzk(this, localParams, paramInt));
     return null;
   }
 }

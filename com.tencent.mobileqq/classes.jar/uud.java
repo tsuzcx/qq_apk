@@ -1,23 +1,23 @@
-import UserGrowth.stFeed;
-import com.tencent.widget.pull2refresh.XRecyclerView;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil.10.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import mqq.os.MqqHandler;
 
-public abstract interface uud
-  extends uuf<List<stFeed>>
+public final class uud
+  implements BusinessObserver
 {
-  public abstract XRecyclerView a();
+  uud(QQAppInterface paramQQAppInterface) {}
   
-  public abstract ujh a();
-  
-  public abstract void a(List<stFeed> paramList, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, List<stFeed> paramList, boolean paramBoolean3);
-  
-  public abstract void b(boolean paramBoolean1, boolean paramBoolean2);
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountUtil", 2, "success:" + String.valueOf(paramBoolean));
+    }
+    ThreadManager.getSubThreadHandler().postDelayed(new PublicAccountUtil.10.1(this, paramBoolean, paramBundle), 10L);
+  }
 }
 
 

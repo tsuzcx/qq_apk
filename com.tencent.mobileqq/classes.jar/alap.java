@@ -1,13 +1,6 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
-
-public class alap
-  extends aliz
+public abstract interface alap
 {
-  public CheckBox a;
-  public Object a;
-  public TextView d;
-  public TextView e;
+  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString);
 }
 
 

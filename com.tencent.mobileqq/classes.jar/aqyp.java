@@ -1,28 +1,29 @@
-import android.os.Bundle;
-
-public abstract class aqyp
+public class aqyp
+  extends aqyn
 {
-  private static int seed;
-  public int key;
+  private aqzg jdField_a_of_type_Aqzg;
+  private aqzq jdField_a_of_type_Aqzq;
   
-  public aqyp()
+  public aqyp(String paramString, aqzg paramaqzg, aqzq paramaqzq)
   {
-    int i = seed;
-    seed = i + 1;
-    this.key = i;
+    super(paramString);
+    this.jdField_a_of_type_Aqzg = paramaqzg;
+    this.jdField_a_of_type_Aqzq = paramaqzq;
   }
   
-  public abstract void onBindedToClient();
+  public aqzg a()
+  {
+    return this.jdField_a_of_type_Aqzg;
+  }
   
-  public abstract void onDisconnectWithService();
-  
-  public abstract void onPushMsg(Bundle paramBundle);
-  
-  public abstract void onResponse(Bundle paramBundle);
+  public aqzq a()
+  {
+    return this.jdField_a_of_type_Aqzq;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqyp
  * JD-Core Version:    0.7.0.1
  */

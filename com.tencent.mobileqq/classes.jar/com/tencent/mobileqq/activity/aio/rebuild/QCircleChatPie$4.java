@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahkr;
+import aifl;
 import android.text.TextUtils;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
@@ -13,35 +13,35 @@ import java.util.List;
 public class QCircleChatPie$4
   implements Runnable
 {
-  public QCircleChatPie$4(ahkr paramahkr) {}
+  public QCircleChatPie$4(aifl paramaifl) {}
   
   public void run()
   {
     List localList = this.this$0.app.getMessageFacade().getAllMessages(this.this$0.sessionInfo.curFriendUin, this.this$0.sessionInfo.curType, null, 500);
     if (localList != null) {
-      ahkr.a(this.this$0, localList.size());
+      aifl.a(this.this$0, localList.size());
     }
     if ((localList != null) && (localList.size() > 0))
     {
-      ahkr.b(this.this$0, (MessageRecord)localList.get(0));
-      ahkr.a(this.this$0, (MessageRecord)localList.get(localList.size() - 1));
+      aifl.b(this.this$0, (MessageRecord)localList.get(0));
+      aifl.a(this.this$0, (MessageRecord)localList.get(localList.size() - 1));
     }
-    if ((QCircleChatUtil.filterFuelTipsGrayMessage(this.this$0.app, this.this$0.sessionInfo.curFriendUin, this.this$0.sessionInfo.curType, localList)) && (!TextUtils.isEmpty(ahkr.a(this.this$0))))
+    if ((QCircleChatUtil.filterFuelTipsGrayMessage(this.this$0.app, this.this$0.sessionInfo.curFriendUin, this.this$0.sessionInfo.curType, localList)) && (!TextUtils.isEmpty(aifl.a(this.this$0))))
     {
-      ahkr.a(this.this$0, QCircleChatUtil.addShowFuelTipsGrayMessage(this.this$0.app, this.this$0.sessionInfo.curFriendUin, this.this$0.sessionInfo.curType, ahkr.a(this.this$0), ahkr.a(this.this$0)));
-      QLog.d(this.this$0.tag, 2, "showFuelTips:" + ahkr.a(this.this$0));
+      aifl.a(this.this$0, QCircleChatUtil.addShowFuelTipsGrayMessage(this.this$0.app, this.this$0.sessionInfo.curFriendUin, this.this$0.sessionInfo.curType, aifl.a(this.this$0), aifl.a(this.this$0)));
+      QLog.d(this.this$0.tag, 2, "showFuelTips:" + aifl.a(this.this$0));
     }
-    ahkr.a(this.this$0, this.this$0.sessionInfo.curFriendUin);
+    aifl.a(this.this$0, this.this$0.sessionInfo.curFriendUin);
     if (!QCircleChatUtil.getIceBreakMsgHasShownFromSp(this.this$0.app, this.this$0.sessionInfo.curFriendUin))
     {
       QLog.d(this.this$0.tag, 2, "showIceBreakMessage");
-      ahkr.a(this.this$0, QCircleChatUtil.addIceBreakMessage(this.this$0.app, this.this$0.sessionInfo.curFriendUin, this.this$0.sessionInfo.curType, ahkr.a(this.this$0), ahkr.b(this.this$0)));
-      if (ahkr.a(this.this$0) != null) {
+      aifl.a(this.this$0, QCircleChatUtil.addIceBreakMessage(this.this$0.app, this.this$0.sessionInfo.curFriendUin, this.this$0.sessionInfo.curType, aifl.a(this.this$0), aifl.b(this.this$0)));
+      if (aifl.a(this.this$0) != null) {
         QCircleChatUtil.setIceBreakMsgHasShownToSp(this.this$0.app, this.this$0.sessionInfo.curFriendUin);
       }
     }
     if (QLog.isColorLevel()) {
-      QLog.d(this.this$0.tag, 2, "mAllMsgCount " + ahkr.b(this.this$0));
+      QLog.d(this.this$0.tag, 2, "mAllMsgCount " + aifl.b(this.this$0));
     }
     this.this$0.refresh(65536);
   }

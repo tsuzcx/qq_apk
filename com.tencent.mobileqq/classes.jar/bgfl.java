@@ -1,10 +1,33 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.troopapps.TroopAppShortcutContainer;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
-public abstract interface bgfl
+public class bgfl
+  implements AbsListView.OnScrollListener
 {
-  public abstract void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2);
+  int jdField_a_of_type_Int = 0;
+  int b = 0;
   
-  public abstract void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3);
+  public bgfl(TroopAppShortcutContainer paramTroopAppShortcutContainer) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1);
+    this.b = paramInt3;
+    TroopAppShortcutContainer.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer, this.jdField_a_of_type_Int);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((paramInt != 0) || (this.jdField_a_of_type_Int != this.b - 1) || (!TroopAppShortcutContainer.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer).a())) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopAppShortcutContainer", 2, "needLoad mCurPage:" + TroopAppShortcutContainer.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer).a());
+    }
+    TroopAppShortcutContainer.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer, TroopAppShortcutContainer.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer).a() + 1, 30, 2);
+  }
 }
 
 

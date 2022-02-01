@@ -1,35 +1,34 @@
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.util.QZLog;
-import cooperation.vip.ar.util.VipARUtils.4;
+import android.content.Context;
+import android.graphics.Color;
+import android.text.SpannableString;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ForegroundColorSpan;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-public class blab
-  implements ModuleDownloadListener
+class blab
+  extends bkzi
 {
-  public blab(VipARUtils.4 param4) {}
-  
-  public void onDownloadCanceled(String paramString)
+  blab(Context paramContext)
   {
-    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
+    super(paramContext);
+    f();
   }
   
-  public void onDownloadFailed(String paramString)
+  private void f()
   {
-    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
-  }
-  
-  public void onDownloadProgress(String paramString, float paramFloat)
-  {
-    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
-  }
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (!paramString.equals("libTar.so")) {
-      return;
-    }
-    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bkzx.c(), " onDownloadSucceed = ", bkzx.d() });
-    LocalMultiProcConfig.putString("VipARUtils_SO_md5", bkzx.d());
+    LinearLayout localLinearLayout = (LinearLayout)LayoutInflater.from(getContext()).inflate(2131559117, null);
+    localLinearLayout.findViewById(2131369324).setOnClickListener(new blac(this));
+    String str = getContext().getString(2131690243);
+    TextView localTextView = (TextView)localLinearLayout.findViewById(2131379855);
+    SpannableString localSpannableString = new SpannableString(str);
+    localSpannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#1B90EE")), str.length() - 3, str.length() - 1, 33);
+    localSpannableString.setSpan(new blad(getContext(), null), str.length() - 3, str.length() - 1, 33);
+    localTextView.setText(localSpannableString);
+    localTextView.setMovementMethod(LinkMovementMethod.getInstance());
+    a(localLinearLayout);
   }
 }
 

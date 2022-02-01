@@ -1,29 +1,11 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+import cooperation.qqreader.net.BaseCgiTask;
 
-public class bmft
-  implements Animator.AnimatorListener
+public abstract class bmft
+  implements bmfq
 {
-  public bmft(AEEditorAILoadingView paramAEEditorAILoadingView) {}
+  public void a(BaseCgiTask paramBaseCgiTask, String paramString) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    AEEditorAILoadingView.a(this.a).setVisibility(8);
-    AEEditorAILoadingView.b(this.a).setVisibility(0);
-    AEEditorAILoadingView.b(this.a).playAnimation();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    AEEditorAILoadingView.a(this.a).setAlpha(1.0F);
-  }
+  public void b(bmfs parambmfs) {}
 }
 
 

@@ -1,7 +1,7 @@
 package cooperation.qzone.model;
 
 import NS_FASHION_FEEDS_TAG_PROTO.TagInfo;
-import aago;
+import aawa;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Parcel;
@@ -14,7 +14,7 @@ import java.util.Map;
 import mqq.util.WeakReference;
 
 public class PhotoInfo
-  extends aago
+  extends aawa
   implements Parcelable
 {
   public static final Parcelable.Creator<PhotoInfo> CREATOR = new PhotoInfo.1();

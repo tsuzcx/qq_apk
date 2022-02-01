@@ -1,35 +1,65 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
-import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
-
-final class wmw
-  implements wla
+public class wmw
 {
-  wmw(ShareFromMemoryPlayInfo paramShareFromMemoryPlayInfo, int paramInt, Activity paramActivity, View paramView) {}
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public boolean b;
+  public String c;
+  public String d;
   
-  public void a(int paramInt)
+  public void a(wmw paramwmw)
   {
-    int i = 1;
-    OpenPlayerBuilder.Data localData = new OpenPlayerBuilder(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo, this.jdField_a_of_type_Int).a();
-    OpenPlayerBuilder.UIStyle localUIStyle;
-    if (paramInt != -1)
-    {
-      localUIStyle = localData.mUIStyle;
-      if (paramInt != 1) {
-        break label66;
-      }
-    }
-    label66:
-    for (paramInt = i;; paramInt = 2)
-    {
-      localUIStyle.bottomWidgetShowFlag = paramInt;
-      localData.mUIStyle.mPlayerRepeatMode = 2;
-      wmu.a(this.jdField_a_of_type_AndroidAppActivity, localData, this.jdField_a_of_type_AndroidViewView);
+    if (paramwmw == null) {
       return;
     }
+    this.jdField_a_of_type_Long = paramwmw.jdField_a_of_type_Long;
+    this.jdField_b_of_type_Long = paramwmw.jdField_b_of_type_Long;
+    this.jdField_a_of_type_JavaLangString = paramwmw.jdField_a_of_type_JavaLangString;
+    this.jdField_b_of_type_JavaLangString = paramwmw.jdField_b_of_type_JavaLangString;
+    this.c = paramwmw.c;
+    this.d = paramwmw.d;
+    this.jdField_a_of_type_Boolean = paramwmw.jdField_a_of_type_Boolean;
+    this.jdField_b_of_type_Boolean = paramwmw.jdField_b_of_type_Boolean;
+  }
+  
+  public boolean a()
+  {
+    boolean bool2 = false;
+    long l = System.currentTimeMillis();
+    boolean bool1;
+    if ((l >= this.jdField_a_of_type_Long) && (l < this.jdField_b_of_type_Long))
+    {
+      bool1 = true;
+      if ((!bool1) || (!this.jdField_a_of_type_Boolean) || (!this.jdField_b_of_type_Boolean)) {
+        break label68;
+      }
+      bool1 = bool2;
+    }
+    label68:
+    for (;;)
+    {
+      ykq.a("Q.qqstory.config.takevideo", "isVariable=%b content=%s", Boolean.valueOf(bool1), toString());
+      return bool1;
+      bool1 = false;
+      break;
+    }
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("MsgTabTakeVideoNodeConfig=[");
+    localStringBuilder.append(" startTime:").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" endTime:").append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(" imageUrl:").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" desc:").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(" jumpUrl:").append(this.c);
+    localStringBuilder.append(" contentId:").append(this.d);
+    localStringBuilder.append(" isOneTimeUse:").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" hasClicked:").append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 

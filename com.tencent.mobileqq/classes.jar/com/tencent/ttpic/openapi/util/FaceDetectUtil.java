@@ -7,9 +7,9 @@ import android.graphics.Rect;
 import android.text.TextUtils;
 import android.util.Pair;
 import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.faceBeauty.AndroidFaceDetect;
-import com.tencent.faceBeauty.FaceDetect;
-import com.tencent.faceBeauty.FaceParam;
+import com.tencent.facebeauty.AndroidFaceDetect;
+import com.tencent.facebeauty.FaceDetect;
+import com.tencent.facebeauty.FaceParam;
 import com.tencent.ttpic.facedetect.FaceStatus;
 import com.tencent.ttpic.facedetect.GenderType;
 import com.tencent.ttpic.facedetect.TTFaceOriginDataModel;
@@ -37,7 +37,6 @@ import java.util.Set;
 public class FaceDetectUtil
 {
   public static final int CF_FACE_POINTS = 131;
-  public static final List<PointF> EMPTY_LIST = new ArrayList();
   public static final int ILLEGAL_BIG_FACE = 2;
   public static final int ILLEGAL_SMALL_FACE = 1;
   public static final int LEGAL_NORMAL_FACE = 0;
@@ -87,11 +86,10 @@ public class FaceDetectUtil
     paramBitmap = new Frame(0, i, paramBitmap.getWidth(), paramBitmap.getHeight());
     PTFaceDetector localPTFaceDetector = new PTFaceDetector();
     localPTFaceDetector.init(true);
-    PTFaceAttr localPTFaceAttr = localPTFaceDetector.detectFrame(paramBitmap, System.currentTimeMillis(), 0, false, paramDouble, 0.0F, true, false, null);
     paramBitmap.clear();
     RendererUtils.clearTexture(i);
     localPTFaceDetector.destroy();
-    return localPTFaceAttr;
+    return localPTFaceDetector.detectFrame(paramBitmap, System.currentTimeMillis(), 0, paramDouble, 0.0F, true, false, null);
   }
   
   public static List<FaceParam> detectFacesByBitmap(Bitmap paramBitmap, boolean paramBoolean)
@@ -291,47 +289,47 @@ public class FaceDetectUtil
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (TTFaceOriginDataModel)((Iterator)localObject1).next();
-      localObject3 = new FaceInfo();
-      localObject4 = new float['¼'];
+      localObject3 = new float['¼'];
       int i = 0;
       while (i < 67)
       {
-        localObject4[(i * 2)] = localObject2.facePoint[(i + 21)][0];
-        localObject4[(i * 2 + 1)] = localObject2.facePoint[(i + 21)][1];
+        localObject3[(i * 2)] = localObject2.facePoint[(i + 21)][0];
+        localObject3[(i * 2 + 1)] = localObject2.facePoint[(i + 21)][1];
         i += 1;
       }
       i = 67;
       while (i < 88)
       {
-        localObject4[(i * 2)] = localObject2.facePoint[(i - 67)][0];
-        localObject4[(i * 2 + 1)] = localObject2.facePoint[(i - 67)][1];
+        localObject3[(i * 2)] = localObject2.facePoint[(i - 67)][0];
+        localObject3[(i * 2 + 1)] = localObject2.facePoint[(i - 67)][1];
         i += 1;
       }
       i = 88;
       while (i < 94)
       {
-        localObject4[(i * 2)] = localObject2.facePoint[i][0];
-        localObject4[(i * 2 + 1)] = localObject2.facePoint[i][1];
+        localObject3[(i * 2)] = localObject2.facePoint[i][0];
+        localObject3[(i * 2 + 1)] = localObject2.facePoint[i][1];
         i += 1;
       }
-      ((FaceInfo)localObject3).points = YoutuPointsUtil.transformYTPointsToPtuPoints((float[])localObject4);
-      ((FaceInfo)localObject3).irisPoints = YoutuPointsUtil.getIrisPoints((float[])localObject4);
-      ((FaceInfo)localObject3).pointsVis = YoutuPointsUtil.transformYTPointsVisToPtuPoints(((TTFaceOriginDataModel)localObject2).facePointVisible);
-      ((FaceInfo)localObject3).pointsVis = YoutuPointsUtil.smoothYTPointsVisPoints(((FaceInfo)localObject3).pointsVis);
-      ((FaceInfo)localObject3).angles[0] = ((float)(((TTFaceOriginDataModel)localObject2).pitch * 3.141592653589793D / 180.0D) * -1.0F);
-      ((FaceInfo)localObject3).angles[1] = ((float)(((TTFaceOriginDataModel)localObject2).yaw * 3.141592653589793D / 180.0D) * -1.0F);
-      ((FaceInfo)localObject3).angles[2] = ((float)(((TTFaceOriginDataModel)localObject2).roll * 3.141592653589793D / 180.0D) * -1.0F);
-      ((FaceInfo)localObject3).pitch = ((TTFaceOriginDataModel)localObject2).pitch;
-      ((FaceInfo)localObject3).yaw = ((TTFaceOriginDataModel)localObject2).yaw;
-      ((FaceInfo)localObject3).roll = ((TTFaceOriginDataModel)localObject2).roll;
-      ((FaceInfo)localObject3).scale = 0.0F;
-      ((FaceInfo)localObject3).tx = 0.0F;
-      ((FaceInfo)localObject3).ty = 0.0F;
-      ((FaceInfo)localObject3).denseFaceModel = null;
-      ((FaceInfo)localObject3).transform = null;
-      ((FaceInfo)localObject3).expressionWeights = null;
-      ((FaceInfo)localObject3).gender = GenderType.FEMALE.value;
-      localArrayList.add(localObject3);
+      localObject4 = new FaceInfo();
+      ((FaceInfo)localObject4).points = YoutuPointsUtil.transformYTPointsToPtuPoints((float[])localObject3);
+      ((FaceInfo)localObject4).irisPoints = YoutuPointsUtil.getIrisPoints((float[])localObject3);
+      ((FaceInfo)localObject4).pointsVis = YoutuPointsUtil.transformYTPointsVisToPtuPoints(((TTFaceOriginDataModel)localObject2).facePointVisible);
+      ((FaceInfo)localObject4).pointsVis = YoutuPointsUtil.smoothYTPointsVisPoints(((FaceInfo)localObject4).pointsVis);
+      ((FaceInfo)localObject4).angles[0] = ((float)(((TTFaceOriginDataModel)localObject2).pitch * 3.141592653589793D / 180.0D) * -1.0F);
+      ((FaceInfo)localObject4).angles[1] = ((float)(((TTFaceOriginDataModel)localObject2).yaw * 3.141592653589793D / 180.0D) * -1.0F);
+      ((FaceInfo)localObject4).angles[2] = ((float)(((TTFaceOriginDataModel)localObject2).roll * 3.141592653589793D / 180.0D) * -1.0F);
+      ((FaceInfo)localObject4).pitch = ((TTFaceOriginDataModel)localObject2).pitch;
+      ((FaceInfo)localObject4).yaw = ((TTFaceOriginDataModel)localObject2).yaw;
+      ((FaceInfo)localObject4).roll = ((TTFaceOriginDataModel)localObject2).roll;
+      ((FaceInfo)localObject4).scale = 0.0F;
+      ((FaceInfo)localObject4).tx = 0.0F;
+      ((FaceInfo)localObject4).ty = 0.0F;
+      ((FaceInfo)localObject4).denseFaceModel = null;
+      ((FaceInfo)localObject4).transform = null;
+      ((FaceInfo)localObject4).expressionWeights = null;
+      ((FaceInfo)localObject4).gender = GenderType.FEMALE.value;
+      localArrayList.add(localObject4);
     }
     Object localObject7 = new ArrayList();
     Object localObject6 = new ArrayList();
@@ -340,7 +338,6 @@ public class FaceDetectUtil
     Object localObject2 = new ArrayList();
     Object localObject3 = new HashSet();
     Object localObject4 = new HashMap();
-    Pair localPair = Pair.create(Integer.valueOf(255), null);
     ((Set)localObject3).add(Integer.valueOf(1));
     Iterator localIterator = localArrayList.iterator();
     while (localIterator.hasNext())
@@ -375,7 +372,8 @@ public class FaceDetectUtil
       ((Set)localObject3).add(Integer.valueOf(PTFaceAttr.PTExpression.FACE_DETECT.value));
       ((Map)localObject4).put(Integer.valueOf(PTFaceAttr.PTExpression.FACE_DETECT.value), new FaceActionCounter(1, System.currentTimeMillis()));
     }
-    return new PTFaceAttr(new PTFaceAttr.Builder().facePoints((List)localObject7).irisPoints((List)localObject6).faceAngles((List)localObject5).pointsVis((List)localObject1).faceInfoList(localArrayList).histogram(localPair).faceStatusList((List)localObject2).faceActionCounter((Map)localObject4).triggeredExpression((Set)localObject3).faceDetectScale(1.0D).timeStamp(System.currentTimeMillis()).rotation(0).faceDetector(null));
+    paramList = Pair.create(Integer.valueOf(255), null);
+    return new PTFaceAttr(new PTFaceAttr.Builder().facePoints((List)localObject7).irisPoints((List)localObject6).faceAngles((List)localObject5).pointsVis((List)localObject1).faceInfoList(localArrayList).histogram(paramList).faceStatusList((List)localObject2).faceActionCounter((Map)localObject4).triggeredExpression((Set)localObject3).faceDetectScale(1.0D).timeStamp(System.currentTimeMillis()).rotation(0).faceDetector(null));
   }
   
   public static void getAngleFromFaceParams(List<FaceParams> paramList, HashMap<FaceParam, float[]> paramHashMap)
@@ -426,67 +424,67 @@ public class FaceDetectUtil
     //   6: aload_0
     //   7: ifnull +13 -> 20
     //   10: aload_0
-    //   11: invokevirtual 213	android/graphics/Bitmap:isRecycled	()Z
+    //   11: invokevirtual 208	android/graphics/Bitmap:isRecycled	()Z
     //   14: ifeq +8 -> 22
     //   17: aload 4
     //   19: astore_1
     //   20: aload_1
     //   21: areturn
-    //   22: new 130	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect
+    //   22: new 125	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect
     //   25: dup
-    //   26: invokespecial 131	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:<init>	()V
+    //   26: invokespecial 126	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:<init>	()V
     //   29: astore_2
     //   30: aload_2
     //   31: astore_1
     //   32: aload_2
     //   33: iconst_1
-    //   34: invokevirtual 134	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:needDetectFaceFeatures	(Z)V
+    //   34: invokevirtual 129	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:needDetectFaceFeatures	(Z)V
     //   37: aload_2
     //   38: astore_1
     //   39: aload_2
     //   40: iconst_1
-    //   41: invokevirtual 245	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:needDetectFaceGender	(Z)V
+    //   41: invokevirtual 240	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:needDetectFaceGender	(Z)V
     //   44: aload_2
     //   45: astore_1
     //   46: aload_2
     //   47: aload_0
-    //   48: invokevirtual 137	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:detectFace	(Landroid/graphics/Bitmap;)V
+    //   48: invokevirtual 132	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:detectFace	(Landroid/graphics/Bitmap;)V
     //   51: aload_2
     //   52: astore_1
     //   53: aload_2
-    //   54: invokevirtual 140	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:detectedFace	()Z
+    //   54: invokevirtual 135	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:detectedFace	()Z
     //   57: ifeq +72 -> 129
     //   60: aload_2
     //   61: astore_1
-    //   62: getstatic 30	com/tencent/ttpic/openapi/util/FaceDetectUtil:TAG	Ljava/lang/String;
-    //   65: new 524	java/lang/StringBuilder
+    //   62: getstatic 27	com/tencent/ttpic/openapi/util/FaceDetectUtil:TAG	Ljava/lang/String;
+    //   65: new 520	java/lang/StringBuilder
     //   68: dup
-    //   69: invokespecial 525	java/lang/StringBuilder:<init>	()V
-    //   72: ldc_w 527
-    //   75: invokevirtual 531	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   69: invokespecial 521	java/lang/StringBuilder:<init>	()V
+    //   72: ldc_w 523
+    //   75: invokevirtual 527	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   78: aload_0
-    //   79: invokevirtual 93	android/graphics/Bitmap:getWidth	()I
-    //   82: invokevirtual 534	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   85: ldc_w 536
-    //   88: invokevirtual 531	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   79: invokevirtual 88	android/graphics/Bitmap:getWidth	()I
+    //   82: invokevirtual 530	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   85: ldc_w 532
+    //   88: invokevirtual 527	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   91: aload_0
-    //   92: invokevirtual 96	android/graphics/Bitmap:getHeight	()I
-    //   95: invokevirtual 534	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   98: ldc_w 538
-    //   101: invokevirtual 531	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   104: invokevirtual 541	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   107: invokestatic 547	com/tencent/ttpic/baseutils/log/LogUtils:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   92: invokevirtual 91	android/graphics/Bitmap:getHeight	()I
+    //   95: invokevirtual 530	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   98: ldc_w 534
+    //   101: invokevirtual 527	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   104: invokevirtual 537	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   107: invokestatic 543	com/tencent/ttpic/baseutils/log/LogUtils:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   110: aload_2
     //   111: astore_1
     //   112: aload_2
-    //   113: getfield 550	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:mFaceParams	Ljava/util/List;
+    //   113: getfield 546	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:mFaceParams	Ljava/util/List;
     //   116: astore_0
     //   117: aload_0
     //   118: astore_1
     //   119: aload_2
     //   120: ifnull -100 -> 20
     //   123: aload_2
-    //   124: invokevirtual 148	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:destroy	()V
+    //   124: invokevirtual 143	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:destroy	()V
     //   127: aload_0
     //   128: areturn
     //   129: aload 4
@@ -494,7 +492,7 @@ public class FaceDetectUtil
     //   132: aload_2
     //   133: ifnull -113 -> 20
     //   136: aload_2
-    //   137: invokevirtual 148	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:destroy	()V
+    //   137: invokevirtual 143	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:destroy	()V
     //   140: aconst_null
     //   141: areturn
     //   142: astore_3
@@ -502,23 +500,23 @@ public class FaceDetectUtil
     //   144: astore_0
     //   145: aload_0
     //   146: astore_1
-    //   147: getstatic 30	com/tencent/ttpic/openapi/util/FaceDetectUtil:TAG	Ljava/lang/String;
-    //   150: new 524	java/lang/StringBuilder
+    //   147: getstatic 27	com/tencent/ttpic/openapi/util/FaceDetectUtil:TAG	Ljava/lang/String;
+    //   150: new 520	java/lang/StringBuilder
     //   153: dup
-    //   154: invokespecial 525	java/lang/StringBuilder:<init>	()V
-    //   157: ldc_w 552
-    //   160: invokevirtual 531	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   154: invokespecial 521	java/lang/StringBuilder:<init>	()V
+    //   157: ldc_w 548
+    //   160: invokevirtual 527	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   163: aload_3
-    //   164: invokevirtual 555	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   167: invokevirtual 531	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   170: invokevirtual 541	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   173: invokestatic 558	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   164: invokevirtual 551	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   167: invokevirtual 527	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   170: invokevirtual 537	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   173: invokestatic 554	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   176: aload 4
     //   178: astore_1
     //   179: aload_0
     //   180: ifnull -160 -> 20
     //   183: aload_0
-    //   184: invokevirtual 148	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:destroy	()V
+    //   184: invokevirtual 143	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:destroy	()V
     //   187: aconst_null
     //   188: areturn
     //   189: astore_0
@@ -527,7 +525,7 @@ public class FaceDetectUtil
     //   192: aload_1
     //   193: ifnull +7 -> 200
     //   196: aload_1
-    //   197: invokevirtual 148	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:destroy	()V
+    //   197: invokevirtual 143	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:destroy	()V
     //   200: aload_0
     //   201: athrow
     //   202: astore_0

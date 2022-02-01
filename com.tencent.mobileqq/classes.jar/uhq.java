@@ -1,14 +1,16 @@
-import android.os.Bundle;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
 class uhq
-  implements zop
+  implements ViewFactory.FoundClickableViewListener
 {
-  uhq(uhp paramuhp, ude paramude) {}
+  uhq(uhp paramuhp, BaseData paramBaseData, Context paramContext) {}
   
-  public void callback(Bundle paramBundle)
+  public void onFound(ViewBase paramViewBase)
   {
-    boolean bool = paramBundle.getBoolean("isSuccess");
-    uhk.a(this.jdField_a_of_type_Uhp.a, this.jdField_a_of_type_Ude.a, bool);
+    paramViewBase.setOnClickListener(new uhr(this));
   }
 }
 

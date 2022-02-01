@@ -1,18 +1,17 @@
-public class aqnj
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class aqnj
+  implements View.OnClickListener
 {
-  private aqnm a;
+  aqnj(aqni paramaqni, aldh paramaldh) {}
   
-  public static aqnj a()
+  public void onClick(View paramView)
   {
-    return aqnl.a();
-  }
-  
-  public aqnm a()
-  {
-    if (this.a == null) {
-      this.a = new aqnn();
-    }
-    return this.a;
+    this.jdField_a_of_type_Aqni.a(this.jdField_a_of_type_Aldh);
+    this.jdField_a_of_type_Aqni.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

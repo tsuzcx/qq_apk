@@ -1,70 +1,155 @@
 package com.tencent.mobileqq.emosm.web;
 
-import ajek;
 import android.os.Bundle;
-import aqmf;
-import arcu;
+import android.text.TextUtils;
+import anvn;
+import asfi;
+import asfk;
+import ashe;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.LebaPluginInfo;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.CustomEmotionBase;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.mqsafeedit.MD5;
+import com.tencent.mobileqq.utils.HexUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MessengerService$IncomingHandler$14
   implements Runnable
 {
-  public MessengerService$IncomingHandler$14(arcu paramarcu, MessengerService paramMessengerService, QQAppInterface paramQQAppInterface, int paramInt, Bundle paramBundle) {}
+  public MessengerService$IncomingHandler$14(ashe paramashe, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
   
   public void run()
   {
-    Object localObject2 = ajek.a().a();
-    Object localObject1;
-    if (localObject2 != null)
-    {
-      localObject1 = localObject2;
-      if (!((List)localObject2).isEmpty()) {}
-    }
-    else
-    {
-      ajek.a().a(this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      localObject1 = ajek.a().a();
-    }
-    if (localObject1 != null)
-    {
-      localObject1 = ((List)localObject1).iterator();
-      do
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    Object localObject2 = (asfk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FAVROAMING_DB_MANAGER);
+    Object localObject3 = ((asfk)localObject2).a();
+    HashSet localHashSet;
+    int i;
+    if (localObject3 != null) {
+      for (;;)
       {
-        if (!((Iterator)localObject1).hasNext()) {
-          break;
+        try
+        {
+          JSONArray localJSONArray = new JSONArray();
+          localHashSet = new HashSet();
+          localObject3 = ((List)localObject3).iterator();
+          i = 0;
         }
-        localObject2 = (aqmf)((Iterator)localObject1).next();
-      } while ((localObject2 == null) || (((aqmf)localObject2).jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null) || (((aqmf)localObject2).jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId != this.jdField_a_of_type_Int));
-    }
-    for (int i = ((aqmf)localObject2).jdField_a_of_type_Byte;; i = -1)
-    {
-      localObject1 = new Bundle();
-      if (i == -1)
-      {
-        ((Bundle)localObject1).putInt("ret", 1);
-        if (i != 0) {
-          break label171;
+        catch (JSONException localJSONException)
+        {
+          int j;
+          this.jdField_a_of_type_AndroidOsBundle.putInt("result", 1);
+          localObject2 = localJSONException.getMessage();
+          if (localObject2 == null) {
+            continue;
+          }
+          this.jdField_a_of_type_AndroidOsBundle.putString("message", (String)localObject2);
+          this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.i("Q.emoji.web.MessengerService", 2, localJSONException.getMessage());
+          return;
+          i = j;
+          if (TextUtils.isEmpty(((CustomEmotionData)localObject4).md5)) {
+            continue;
+          }
+          i = j;
+          if (((CustomEmotionData)localObject4).md5.length() <= 8) {
+            continue;
+          }
+          Object localObject4 = ((CustomEmotionData)localObject4).md5.substring(0, 8).toLowerCase();
+          localHashSet.add("qto_" + (String)localObject4);
+          i = j;
+          continue;
+        }
+        catch (Exception localException1)
+        {
+          this.jdField_a_of_type_AndroidOsBundle.putInt("result", 1);
+          localObject1 = localException1.getMessage();
+          if (localObject1 == null) {
+            continue;
+          }
+          this.jdField_a_of_type_AndroidOsBundle.putString("message", (String)localObject1);
+          this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.i("Q.emoji.web.MessengerService", 2, (String)localObject1);
+          return;
+        }
+        if (!((Iterator)localObject3).hasNext()) {
+          break label440;
+        }
+        localObject4 = (CustomEmotionData)((Iterator)localObject3).next();
+        if (!"needDel".equals(((CustomEmotionData)localObject4).RomaingType))
+        {
+          j = i + 1;
+          if ((!((CustomEmotionData)localObject4).isMarkFace) && (TextUtils.isEmpty(((CustomEmotionData)localObject4).md5)) && (!TextUtils.isEmpty(((CustomEmotionData)localObject4).emoPath)))
+          {
+            ((CustomEmotionData)localObject4).md5 = HexUtil.bytes2HexStr(MD5.getFileMd5(((CustomEmotionData)localObject4).emoPath));
+            ((asfk)localObject2).b((CustomEmotionBase)localObject4);
+          }
+          if ((TextUtils.isEmpty(((CustomEmotionData)localObject4).url)) || (!((CustomEmotionData)localObject4).url.contains("qto_"))) {
+            continue;
+          }
+          localObject4 = anvn.a(((CustomEmotionData)localObject4).url);
+          i = j;
+          if (!TextUtils.isEmpty((CharSequence)localObject4))
+          {
+            i = j;
+            if (((String)localObject4).length() > "qto_".length() + 8)
+            {
+              localHashSet.add(((String)localObject4).substring(0, "qto_".length() + 8));
+              i = j;
+            }
+          }
         }
       }
-      label171:
-      for (i = 1;; i = 0)
+    }
+    label440:
+    do
+    {
+      Object localObject1;
+      localHashSet.addAll(anvn.a);
+      localObject2 = localHashSet.iterator();
+      while (((Iterator)localObject2).hasNext()) {
+        ((JSONArray)localObject1).put((String)((Iterator)localObject2).next());
+      }
+      localObject2 = new JSONObject();
+      ((JSONObject)localObject2).put("remainNum", asfi.a - i);
+      ((JSONObject)localObject2).put("uid", localObject1);
+      this.jdField_a_of_type_AndroidOsBundle.putInt("result", 0);
+      this.jdField_a_of_type_AndroidOsBundle.putString("data", ((JSONObject)localObject2).toString());
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      return;
+      try
       {
-        ((Bundle)localObject1).putInt("type", i);
-        this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject1);
+        localObject1 = new JSONObject();
+        ((JSONObject)localObject1).put("remainNum", asfi.a);
+        ((JSONObject)localObject1).put("uid", new JSONArray());
+        this.jdField_a_of_type_AndroidOsBundle.putInt("result", 0);
+        this.jdField_a_of_type_AndroidOsBundle.putString("data", ((JSONObject)localObject1).toString());
         this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
         return;
-        ((Bundle)localObject1).putInt("ret", 0);
-        break;
       }
-    }
+      catch (Exception localException2) {}
+    } while (!QLog.isColorLevel());
+    QLog.i("Q.emoji.web.MessengerService", 2, localException2.getMessage());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.14
  * JD-Core Version:    0.7.0.1
  */

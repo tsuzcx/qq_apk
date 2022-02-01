@@ -1,19 +1,251 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
-import com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import QQService.InstanceInfo;
+import RegisterProxySvcPack.OnlineInfos;
+import RegisterProxySvcPack.SvcRespParam;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import mqq.manager.Manager;
 
 public class zng
-  implements View.OnClickListener
+  implements Manager
 {
-  public zng(SubScribeDraftItemView paramSubScribeDraftItemView, SubscribeDraftBean paramSubscribeDraftBean) {}
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private ArrayList<znf> jdField_a_of_type_JavaUtilArrayList;
+  private ArrayList<zni> b;
   
-  public void onClick(View paramView)
+  public zng(QQAppInterface paramQQAppInterface)
   {
-    zxp.b(SubScribeDraftItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView), "auth_pubish", "clk_delete_draft", 0, 0, new String[0]);
-    zka.a().a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView.getContext(), SubScribeDraftItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView), String.valueOf(this.jdField_a_of_type_ComTencentBizSubscribeBeansSubscribeDraftBean.getDraftId()), 2131718720, new znh(this));
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  private void a()
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 1)) {
+      Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, new znh(this));
+    }
+  }
+  
+  public int a()
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() < 1)) {
+      return 0;
+    }
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 1) {
+      return 4;
+    }
+    return ((znf)this.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_b_of_type_Int;
+  }
+  
+  public String a()
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() < 1)) {
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    Object localObject = (arai)aqxe.a().a(528);
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (((arai)localObject).a == 1)) {}
+    for (boolean bool = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), null, "qqsetting_qrlogin_set_mute", false);; bool = false)
+    {
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() == 1)
+      {
+        localObject = (znf)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+        localStringBuilder.append(((znf)localObject).jdField_a_of_type_JavaLangString).append(" ").append(((znf)localObject).jdField_b_of_type_JavaLangString).append(" ").append(anvx.a(2131693718));
+        if (bool) {
+          localStringBuilder.append("，").append(anvx.a(2131694595));
+        }
+      }
+      for (;;)
+      {
+        return localStringBuilder.toString();
+        localStringBuilder.append(anvx.a(2131698607));
+        localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        while (((Iterator)localObject).hasNext()) {
+          localStringBuilder.append(((znf)((Iterator)localObject).next()).jdField_a_of_type_JavaLangString).append("、");
+        }
+        if (bool)
+        {
+          localStringBuilder.replace(localStringBuilder.length() - 1, localStringBuilder.length(), "，");
+          localStringBuilder.append(anvx.a(2131694595));
+        }
+        else
+        {
+          localStringBuilder.replace(localStringBuilder.length() - 1, localStringBuilder.length(), "。");
+        }
+      }
+    }
+  }
+  
+  public String a(Context paramContext)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext()) {
+        localStringBuilder.append(((znf)localIterator.next()).jdField_a_of_type_JavaLangString).append("、");
+      }
+      localStringBuilder.deleteCharAt(localStringBuilder.lastIndexOf("、"));
+    }
+    return paramContext.getString(2131716513, new Object[] { localStringBuilder.toString() });
+  }
+  
+  public void a(zni paramzni)
+  {
+    try
+    {
+      if (this.b == null) {
+        this.b = new ArrayList();
+      }
+      if (!this.b.contains(paramzni)) {
+        this.b.add(paramzni);
+      }
+      if (paramzni != null) {
+        paramzni.a(this.jdField_a_of_type_JavaUtilArrayList);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public boolean a(SvcRespParam paramSvcRespParam)
+  {
+    boolean bool = true;
+    if ((paramSvcRespParam == null) || (paramSvcRespParam.onlineinfos == null))
+    {
+      bool = false;
+      return bool;
+    }
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    Iterator localIterator = paramSvcRespParam.onlineinfos.iterator();
+    int i = 0;
+    label56:
+    while (localIterator.hasNext())
+    {
+      OnlineInfos localOnlineInfos = (OnlineInfos)localIterator.next();
+      if (localOnlineInfos.onlineStatus != 0)
+      {
+        int j = (int)localOnlineInfos.uClientType;
+        if (znj.a(j))
+        {
+          znf localznf = new znf(j);
+          localznf.jdField_a_of_type_Long = localOnlineInfos.instanceId;
+          this.jdField_a_of_type_JavaUtilArrayList.add(localznf);
+          if (QLog.isDevelopLevel()) {
+            QLog.d("LoginDevicesManager", 4, localznf.toString());
+          }
+        }
+        if ((j != 66818) && (j != 66831) && (j != 81154)) {
+          break label332;
+        }
+        i = 1;
+      }
+    }
+    label332:
+    for (;;)
+    {
+      break label56;
+      if ((i == 0) && (paramSvcRespParam.PCstat != 0) && ((paramSvcRespParam.iPCClientType == 65793) || (paramSvcRespParam.iPCClientType == 77313)))
+      {
+        paramSvcRespParam = new znf(paramSvcRespParam.iPCClientType);
+        this.jdField_a_of_type_JavaUtilArrayList.add(0, paramSvcRespParam);
+        if (QLog.isDevelopLevel()) {
+          QLog.d("LoginDevicesManager", 4, paramSvcRespParam.toString());
+        }
+      }
+      a();
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginDevicesManager", 2, new Object[] { "updateDevListByRegPrxy size:", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) });
+      }
+      if (this.b != null)
+      {
+        paramSvcRespParam = this.b.iterator();
+        while (paramSvcRespParam.hasNext()) {
+          ((zni)paramSvcRespParam.next()).a(this.jdField_a_of_type_JavaUtilArrayList);
+        }
+      }
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+        break;
+      }
+      return false;
+    }
+  }
+  
+  public boolean a(ArrayList<InstanceInfo> paramArrayList)
+  {
+    if (paramArrayList == null) {
+      return false;
+    }
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
+    {
+      InstanceInfo localInstanceInfo = (InstanceInfo)paramArrayList.next();
+      int i = (int)localInstanceInfo.iClientType;
+      if (znj.a(i))
+      {
+        znf localznf = new znf(i);
+        localznf.jdField_a_of_type_Long = localInstanceInfo.iAppId;
+        this.jdField_a_of_type_JavaUtilArrayList.add(localznf);
+        if (QLog.isDevelopLevel()) {
+          QLog.d("LoginDevicesManager", 4, localznf.toString());
+        }
+      }
+    }
+    a();
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginDevicesManager", 2, new Object[] { "updateDevListByOnlinePush size:", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) });
+    }
+    if (this.b != null)
+    {
+      paramArrayList = this.b.iterator();
+      while (paramArrayList.hasNext()) {
+        ((zni)paramArrayList.next()).a(this.jdField_a_of_type_JavaUtilArrayList);
+      }
+    }
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
+  }
+  
+  public void b(zni paramzni)
+  {
+    try
+    {
+      if (this.b != null) {
+        this.b.remove(paramzni);
+      }
+      return;
+    }
+    finally
+    {
+      paramzni = finally;
+      throw paramzni;
+    }
+  }
+  
+  public void onDestroy()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.jdField_a_of_type_JavaUtilArrayList = null;
+    }
+    if (this.b != null)
+    {
+      this.b.clear();
+      this.b = null;
+    }
   }
 }
 

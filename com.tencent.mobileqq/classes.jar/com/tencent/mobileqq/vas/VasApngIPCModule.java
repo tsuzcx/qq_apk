@@ -2,14 +2,15 @@ package com.tencent.mobileqq.vas;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bcef;
-import bgae;
+import bdla;
+import bhiw;
 import com.tencent.biz.flatbuffers.FlatBuffersParser;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngSoLoader;
 import com.tencent.image.URLDrawableHandler;
 import com.tencent.image.URLDrawableHandler.Adapter;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -44,7 +45,7 @@ public class VasApngIPCModule
   
   private boolean download(QQAppInterface paramQQAppInterface)
   {
-    paramQQAppInterface = (VasQuickUpdateManager)paramQQAppInterface.getManager(184);
+    paramQQAppInterface = (VasQuickUpdateManager)paramQQAppInterface.getManager(QQManagerFactory.VAS_QUICKUPDATE_MANAGER);
     if (paramQQAppInterface != null)
     {
       QLog.e("VasApngUtil.IPCModule", 1, "start download so");
@@ -103,7 +104,7 @@ public class VasApngIPCModule
   
   public boolean isSoExists()
   {
-    String str = bgae.a();
+    String str = bhiw.a();
     return (!TextUtils.isEmpty(str)) && (new File(str + "libAPNG_release_845.so").exists());
   }
   
@@ -184,7 +185,7 @@ public class VasApngIPCModule
           }
           return bool1;
         }
-        String str = bgae.a();
+        String str = bhiw.a();
         if (!TextUtils.isEmpty(str))
         {
           str = str + "libAPNG_release_845.so";
@@ -202,15 +203,15 @@ public class VasApngIPCModule
             {
               QLog.d("VasApngUtil.IPCModule", 1, "libAPNG.so load failed. :", localThrowable);
               VasQuickUpdateEngine.safeDeleteFile(new File(str));
-              bcef.b(null, "CliOper", "", "", "Font_Mall", "0X80073FE", 0, 0, "101", "", "", "");
-              break label201;
+              bdla.b(null, "CliOper", "", "", "Font_Mall", "0X80073FE", 0, 0, "101", "", "", "");
+              break label202;
             }
           }
           QLog.e("VasApngUtil.IPCModule", 1, "loadSoLib not exists: " + str);
         }
       }
       finally {}
-      label201:
+      label202:
       boolean bool1 = false;
     }
   }
@@ -264,9 +265,9 @@ public class VasApngIPCModule
     String str2;
     if (paramInt == 0)
     {
-      str1 = bgae.a();
+      str1 = bhiw.a();
       str2 = BaseApplicationImpl.getContext().getFilesDir() + File.separator + "apng.zip";
-      if (bgae.a(str2, str1, "libAPNG_release_845.so"))
+      if (bhiw.a(str2, str1, "libAPNG_release_845.so"))
       {
         QLog.d("VasApngUtil.IPCModule", 1, "unzip apng zip success");
         loadSoLib();

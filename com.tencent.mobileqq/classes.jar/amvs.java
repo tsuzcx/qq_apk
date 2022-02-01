@@ -1,32 +1,64 @@
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Activity;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.player.action.CMSAction;
+import com.tencent.mobileqq.apollo.player.manager.CMSBornPlayer.CMSActionContext.cmdHandler.2;
+import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
 import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONObject;
 
-class amvs
-  implements avsz
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/apollo/player/manager/CMSBornPlayer$CMSActionContext$cmdHandler$2$1", "Lcom/tencent/mobileqq/apollo/aioChannel/ApolloCmdChannel$IRequestHandler;", "checkReCreateOnActivityChanged", "", "activity", "Landroid/app/Activity;", "destroyHandler", "", "getHandlePriority", "", "handleCmd", "Lcom/tencent/mobileqq/apollo/aioChannel/HandleResult;", "jsState", "", "cmd", "", "reqData", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class amvs
+  implements amql
 {
-  amvs(amvo paramamvo) {}
-  
-  public void a(int paramInt)
+  public int a()
   {
-    boolean bool1 = amvo.b(this.a);
-    amvo.a(this.a, false);
-    boolean bool2 = this.a.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("MayknowRecommendManager", 2, "onBindStateChanged last:" + bool1 + "  now:" + bool2);
-    }
-    if (bool1 != bool2) {
-      ((FriendListHandler)amvo.a(this.a).getBusinessHandler(1)).notifyUI(92, true, null);
-    }
+    return 100;
   }
   
-  public void a(long paramLong) {}
+  @Nullable
+  public amqr a(long paramLong, @Nullable String paramString1, @Nullable String paramString2)
+  {
+    if (this.a.this$0.a().getLuaState() != paramLong) {}
+    do
+    {
+      int i;
+      do
+      {
+        do
+        {
+          do
+          {
+            return null;
+          } while (paramString1 == null);
+          switch (paramString1.hashCode())
+          {
+          default: 
+            return null;
+          }
+        } while (!paramString1.equals("cs.script_action_status_notify.local"));
+        paramString1 = new JSONObject(paramString2);
+        i = paramString1.optInt("taskId");
+        int j = paramString1.optInt("status");
+        paramString1 = amve.a.a(j);
+        if (QLog.isColorLevel()) {
+          QLog.w("cmshow_scripted_[CMSPlayer]CMSBornPlayer", 2, "action status notify, " + this.a.this$0.a().d() + " taskId:" + i + ", status:" + paramString1);
+        }
+      } while (i != this.a.this$0.a().a().a);
+      this.a.this$0.a().a(this.a.this$0.a(), paramString1);
+      return null;
+    } while (!paramString1.equals("cs.first_frame_drawn.local"));
+    this.a.this$0.a().a(this.a.this$0.a());
+    return null;
+  }
   
-  public void a(boolean paramBoolean, int paramInt) {}
+  public void a() {}
   
-  public void b(int paramInt) {}
-  
-  public void c(int paramInt) {}
+  public boolean a(@Nullable Activity paramActivity)
+  {
+    return false;
+  }
 }
 
 

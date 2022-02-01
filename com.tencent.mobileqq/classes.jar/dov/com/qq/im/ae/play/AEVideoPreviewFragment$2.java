@@ -3,7 +3,7 @@ package dov.com.qq.im.ae.play;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
-import bmnt;
+import bodl;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tavcut.player.MoviePlayer;
@@ -21,7 +21,7 @@ class AEVideoPreviewFragment$2
       paramSeekBar = new CMTime(f);
       this.this$0.mMoviePlayer.seekToTime(paramSeekBar);
     }
-    paramSeekBar = bmnt.a((f * 1000.0F));
+    paramSeekBar = bodl.a((f * 1000.0F));
     this.this$0.tvCurrentDuration.setText(paramSeekBar);
   }
   

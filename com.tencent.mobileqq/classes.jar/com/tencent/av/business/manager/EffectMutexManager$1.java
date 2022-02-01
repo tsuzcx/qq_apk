@@ -1,22 +1,22 @@
 package com.tencent.av.business.manager;
 
 import android.util.SparseArray;
-import lgn;
-import lgo;
+import lgz;
+import lha;
 
 public class EffectMutexManager$1
   implements Runnable
 {
-  public EffectMutexManager$1(lgn paramlgn, int paramInt, String paramString) {}
+  public EffectMutexManager$1(lgz paramlgz, int paramInt, String paramString) {}
   
   public void run()
   {
     int i = 0;
-    while (i < lgn.a(this.this$0).size())
+    while (i < lgz.a(this.this$0).size())
     {
-      lgo locallgo = (lgo)lgn.a(this.this$0).valueAt(i);
-      if ((locallgo != null) && (lgn.a(this.this$0).keyAt(i) != this.jdField_a_of_type_Int)) {
-        locallgo.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      lha locallha = (lha)lgz.a(this.this$0).valueAt(i);
+      if ((locallha != null) && (lgz.a(this.this$0).keyAt(i) != this.jdField_a_of_type_Int)) {
+        locallha.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
       }
       i += 1;
     }

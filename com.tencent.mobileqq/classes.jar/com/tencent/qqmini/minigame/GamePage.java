@@ -39,7 +39,6 @@ import com.tencent.qqmini.minigame.ui.VConsoleDragView.Listener;
 import com.tencent.qqmini.minigame.ui.VConsoleView;
 import com.tencent.qqmini.minigame.utils.VConsoleLogManager;
 import com.tencent.qqmini.minigame.utils.VConsoleManager;
-import com.tencent.qqmini.minigame.widget.DragLinearLayout;
 import com.tencent.qqmini.minigame.widget.GameNavigationBar;
 import com.tencent.qqmini.sdk.action.AppStateEvent;
 import com.tencent.qqmini.sdk.core.Preloadable;
@@ -76,7 +75,7 @@ public class GamePage
   private TextView mDebuggerEndBtn;
   private View mDebuggerLayer;
   private TextView mDebuggerStatusTv;
-  private DragLinearLayout mDebuggerView;
+  private ViewGroup mDebuggerView;
   private FloatDragAdManager mFloatDragAdManager;
   private ViewGroup mGameContainerView;
   private int mGameHeight = 0;
@@ -381,7 +380,7 @@ public class GamePage
       localLayoutParams.setMargins(0, dip2px(50.0F), dip2px(10.0F), 0);
       localLayoutParams.addRule(10, 1);
       localLayoutParams.addRule(11, 1);
-      this.mDebuggerView = ((DragLinearLayout)LayoutInflater.from(this.mActivity).inflate(R.layout.mini_sdk_game_debugger_layout, null));
+      this.mDebuggerView = ((ViewGroup)LayoutInflater.from(this.mActivity).inflate(R.layout.mini_sdk_game_debugger_layout, null));
       this.mRootView.addView(this.mDebuggerView, localLayoutParams);
       this.mDebuggerStatusTv = ((TextView)this.mDebuggerView.findViewById(R.id.debugger_status_tv));
       this.mDebuggerEndBtn = ((TextView)this.mDebuggerView.findViewById(R.id.debugger_end_btn));

@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import java.util.Properties;
+import android.view.View;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
 
 public class akuq
+  implements akzh
 {
-  private static int a = 10000;
+  public akuq(LingHbFragment paramLingHbFragment) {}
   
-  public static void a(int paramInt)
+  public void a(int paramInt)
   {
-    a = paramInt;
-  }
-  
-  public static void a(String paramString, Properties paramProperties)
-  {
-    Properties localProperties = paramProperties;
-    if (paramProperties == null) {
-      localProperties = new Properties();
+    if (paramInt == 0)
+    {
+      this.a.a.findViewById(2131368797).setVisibility(8);
+      return;
     }
-    localProperties.setProperty("shortvideo_business_type", "" + a);
-    bcdu.a(VideoEnvironment.getContext()).reportKVEvent(paramString, localProperties);
+    this.a.a.findViewById(2131368797).setVisibility(0);
   }
 }
 

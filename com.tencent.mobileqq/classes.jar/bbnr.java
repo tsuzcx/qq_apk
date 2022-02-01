@@ -1,214 +1,105 @@
-import QQWalletPay.ReqCheckChangePwdAuth;
-import QQWalletPay.RespCheckChangePwdAuth;
-import Wallet.AuthCodeReq;
-import Wallet.AuthCodeRsp;
-import Wallet.GetPasswordReq;
-import Wallet.GetPasswordRsp;
-import Wallet.PfaFriendRqt;
-import Wallet.PfaFriendRsp;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.richmedia.mediacodec.renderer.GpuImagePartsFilterGroup.1;
+import com.tencent.mobileqq.richmedia.mediacodec.renderer.GpuImagePartsFilterGroup.2;
+import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
+import java.util.LinkedList;
 
 public class bbnr
-  extends aafe
+  extends GPUBaseFilter
 {
-  private static final String[] a = { "QQWalletPayAuthServer", "AdvRuleSvrCmd", "WalletGestureSvc", "VacThirdCodeSvc", "QWalletPfa" };
+  private float jdField_a_of_type_Float;
+  private bbnk jdField_a_of_type_Bbnk;
+  private final LinkedList<Runnable> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private bbnk b;
   
-  private Object b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  private void a(@NonNull Runnable paramRunnable)
   {
-    if (paramFromServiceMsg == null) {
-      return null;
+    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    {
+      this.jdField_a_of_type_JavaUtilLinkedList.add(paramRunnable);
+      return;
     }
-    paramToServiceMsg = new UniPacket(true);
+  }
+  
+  private void a(@NonNull LinkedList<Runnable> paramLinkedList)
+  {
     try
     {
-      paramToServiceMsg.setEncodeName("utf-8");
-      paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
-      paramToServiceMsg = (RespCheckChangePwdAuth)paramToServiceMsg.getByClass("resp", new RespCheckChangePwdAuth());
-      return paramToServiceMsg;
-    }
-    catch (RuntimeException paramToServiceMsg)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeModifyPassAuthWUP error:" + paramToServiceMsg.getMessage());
-      }
-      return null;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeModifyPassAuthWUP error:" + paramToServiceMsg.getMessage());
+      while (!paramLinkedList.isEmpty())
+      {
+        Runnable localRunnable = (Runnable)paramLinkedList.poll();
+        if (localRunnable != null) {
+          localRunnable.run();
+        }
       }
     }
-    return null;
+    finally {}
   }
   
-  private boolean b(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  public void a()
   {
-    paramUniPacket.setServantName("MQQ.OpenPayServer.QQWalletPayAuthObj");
-    paramUniPacket.setFuncName("checkChangePwdAuth");
-    paramUniPacket.put("req", (ReqCheckChangePwdAuth)paramToServiceMsg.extraData.getSerializable("ReqCheckChangePwdAuth"));
-    return true;
+    a(this.jdField_a_of_type_JavaUtilLinkedList);
   }
   
-  private Object c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5)
   {
-    if (paramFromServiceMsg == null) {
-      return null;
-    }
-    paramToServiceMsg = new UniPacket(true);
-    try
-    {
-      paramToServiceMsg.setEncodeName("utf-8");
-      paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
-      paramToServiceMsg = (GetPasswordRsp)paramToServiceMsg.getByClass("rsp", new GetPasswordRsp());
-      return paramToServiceMsg;
-    }
-    catch (RuntimeException paramToServiceMsg)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeGetPasswordWUP error:" + paramToServiceMsg.getMessage());
-      }
-      return null;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeGetPasswordWUP error:" + paramToServiceMsg.getMessage());
-      }
-    }
-    return null;
+    a(new GpuImagePartsFilterGroup.2(this, paramInt1, paramInt4, paramInt5, paramInt2, paramInt3, paramFloat));
   }
   
-  private boolean c(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    paramUniPacket.setServantName("Wallet.GesturePasswordServer.GesturePasswordObj");
-    paramUniPacket.setFuncName("GetPassword");
-    paramUniPacket.put("req", (GetPasswordReq)paramToServiceMsg.extraData.getSerializable("GetPasswordReq"));
-    return true;
+    if (!bbni.a(paramInt1)) {
+      throw new IllegalArgumentException("filterType " + paramInt1 + " is invalid color filter type");
+    }
+    a(new GpuImagePartsFilterGroup.1(this, paramInt1, paramInt2, paramInt3));
   }
   
-  private Object d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public boolean a()
   {
-    if (paramFromServiceMsg == null) {
-      return null;
-    }
-    paramToServiceMsg = new UniPacket(true);
-    try
-    {
-      paramToServiceMsg.setEncodeName("utf-8");
-      paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
-      paramToServiceMsg = (AuthCodeRsp)paramToServiceMsg.getByClass("rsp", new AuthCodeRsp());
-      return paramToServiceMsg;
-    }
-    catch (RuntimeException paramToServiceMsg)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeGetAuthCode error:" + paramToServiceMsg.getMessage());
-      }
-      return null;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeGetAuthCode error:" + paramToServiceMsg.getMessage());
-      }
-    }
-    return null;
+    return (this.jdField_a_of_type_Bbnk != null) || (this.b != null);
   }
   
-  private boolean d(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  public void destroy()
   {
-    paramUniPacket.setServantName("VAC.AuthCodeCoroServer.AuthCodeCoroObj");
-    paramUniPacket.setFuncName("fetchCodes");
-    paramUniPacket.put("req", (AuthCodeReq)paramToServiceMsg.extraData.getSerializable("AuthCodeReq"));
-    return true;
-  }
-  
-  private Object e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramFromServiceMsg == null) {
-      return null;
+    if (this.jdField_a_of_type_Bbnk != null) {
+      this.jdField_a_of_type_Bbnk.destroy();
     }
-    paramToServiceMsg = new UniPacket(true);
-    try
-    {
-      paramToServiceMsg.setEncodeName("utf-8");
-      paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
-      paramToServiceMsg = (PfaFriendRsp)paramToServiceMsg.getByClass("rsp", new PfaFriendRsp());
-      return paramToServiceMsg;
+    if (this.b != null) {
+      this.b.destroy();
     }
-    catch (RuntimeException paramToServiceMsg)
+  }
+  
+  public void drawTexture(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  {
+    if (!a())
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeGetRecentList error:" + paramToServiceMsg.getMessage());
-      }
-      return null;
+      ykq.e("Q.qqstory.publish.edit GpuImagePartsFilterGroup", "must set filters before draw texture");
+      return;
     }
-    catch (Exception paramToServiceMsg)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeGetRecentList error:" + paramToServiceMsg.getMessage());
-      }
+    if (this.jdField_a_of_type_Bbnk != null) {
+      this.jdField_a_of_type_Bbnk.drawTexture(paramInt, paramArrayOfFloat1, paramArrayOfFloat2);
     }
-    return null;
+    this.b.drawTexture(paramInt, paramArrayOfFloat1, paramArrayOfFloat2);
   }
   
-  private boolean e(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  public void init()
   {
-    paramUniPacket.setServantName("Wallet.WalletFriendQueryServer.WalletFriendObj");
-    paramUniPacket.setFuncName("QueryRecommendFriend");
-    paramUniPacket.put("rqt", (PfaFriendRqt)paramToServiceMsg.extraData.getSerializable("PfaFriendRqt"));
-    return true;
+    if ((this.jdField_a_of_type_Bbnk != null) && (!this.jdField_a_of_type_Bbnk.isInitialized())) {
+      this.jdField_a_of_type_Bbnk.init();
+    }
+    if ((this.b != null) && (!this.b.isInitialized())) {
+      this.b.init();
+    }
   }
   
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public void onOutputSizeChanged(int paramInt1, int paramInt2)
   {
-    String str = paramToServiceMsg.getServiceCmd();
-    if (TextUtils.isEmpty(str)) {}
-    do
-    {
-      return null;
-      if (str.compareTo("QQWalletPayAuthServer.checkChangePwdAuth") == 0) {
-        return b(paramToServiceMsg, paramFromServiceMsg);
-      }
-      if (str.compareTo("WalletGestureSvc.GetPassword") == 0) {
-        return c(paramToServiceMsg, paramFromServiceMsg);
-      }
-      if (str.compareTo("VacThirdCodeSvc.fetchCodes") == 0) {
-        return d(paramToServiceMsg, paramFromServiceMsg);
-      }
-    } while (str.compareTo("QWalletPfa.RecFriend") != 0);
-    return e(paramToServiceMsg, paramFromServiceMsg);
-  }
-  
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    String str = paramToServiceMsg.getServiceCmd();
-    if (TextUtils.isEmpty(str)) {}
-    do
-    {
-      return false;
-      if (str.compareTo("QQWalletPayAuthServer.checkChangePwdAuth") == 0) {
-        return b(paramToServiceMsg, paramUniPacket);
-      }
-      if (str.compareTo("WalletGestureSvc.GetPassword") == 0) {
-        return c(paramToServiceMsg, paramUniPacket);
-      }
-      if (str.compareTo("VacThirdCodeSvc.fetchCodes") == 0) {
-        return d(paramToServiceMsg, paramUniPacket);
-      }
-    } while (str.compareTo("QWalletPfa.RecFriend") != 0);
-    return e(paramToServiceMsg, paramUniPacket);
-  }
-  
-  public String[] a()
-  {
-    return a;
+    if (this.jdField_a_of_type_Bbnk != null) {
+      this.jdField_a_of_type_Bbnk.onOutputSizeChanged(paramInt1, paramInt2);
+    }
+    if (this.b != null) {
+      this.b.onOutputSizeChanged(paramInt1, paramInt2);
+    }
   }
 }
 

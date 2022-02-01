@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.forward;
 
-import atky;
+import aupt;
 
 public class ForwardBaseOption$3
   implements Runnable
 {
-  public ForwardBaseOption$3(atky paramatky) {}
+  public ForwardBaseOption$3(aupt paramaupt) {}
   
   public void run()
   {
-    atky.d(this.this$0);
+    aupt.d(this.this$0);
   }
 }
 

@@ -1,17 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class ajid
-  implements View.OnClickListener
+public class ajid
+  extends ajib
 {
-  ajid(ajhz paramajhz) {}
-  
-  public void onClick(View paramView)
+  public ajid(QQAppInterface paramQQAppInterface)
   {
-    ajhz.a(this.a).setText("");
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramQQAppInterface);
+  }
+  
+  public ajhx a(int paramInt)
+  {
+    return ajif.a().a(paramInt);
+  }
+  
+  public void a() {}
+  
+  public void b()
+  {
+    super.b();
   }
 }
 

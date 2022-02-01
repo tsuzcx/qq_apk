@@ -1,16 +1,18 @@
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ovm
-  extends owd
+  implements View.OnClickListener
 {
-  ovm(ouu paramouu, boolean paramBoolean1, List paramList, boolean paramBoolean2)
-  {
-    super(paramouu, null);
-  }
+  ovm(ovk paramovk, ovn paramovn) {}
   
-  void a(owg paramowg)
+  public void onClick(View paramView)
   {
-    paramowg.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.b, 3);
+    ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_Ovk.a, ovn.c(this.jdField_a_of_type_Ovn));
+    olh.a(null, "CliOper", "", ovn.c(this.jdField_a_of_type_Ovn), "0X80078A8", "0X80078A8", 0, 0, "", "", "", pqf.a(), false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

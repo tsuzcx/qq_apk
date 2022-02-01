@@ -1,39 +1,19 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import android.animation.ValueAnimator;
+import android.annotation.TargetApi;
+import android.view.animation.AccelerateDecelerateInterpolator;
 
+@TargetApi(11)
 public class ysy
-  extends Handler
 {
-  public ysy(QQStoryLoadingView paramQQStoryLoadingView, Looper paramLooper)
+  public static ValueAnimator a(long paramLong, float paramFloat1, float paramFloat2, ytb paramytb)
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    Object localObject = paramMessage.obj;
-    String str;
-    if (paramMessage.what == 8) {
-      str = "GONE";
-    }
-    for (;;)
-    {
-      xvv.a("QQStoryLoadingView", "%s => setVisibility => %s", localObject, str);
-      this.a.setVisibility(paramMessage.what);
-      return;
-      if (paramMessage.what == 0) {
-        str = "VISIBLE";
-      } else {
-        str = "INVISIBLE";
-      }
-    }
+    float f = (paramFloat2 - paramFloat1) / 5.0F;
+    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { paramFloat1, paramFloat2, paramFloat2 - 3.0F * f, paramFloat2, paramFloat2 - f, paramFloat2 });
+    localValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+    localValueAnimator.addUpdateListener(new ysz(paramytb));
+    localValueAnimator.addListener(new yta(paramytb, localValueAnimator));
+    localValueAnimator.setDuration(paramLong);
+    return localValueAnimator;
   }
 }
 

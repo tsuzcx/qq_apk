@@ -1,12 +1,9 @@
-public abstract interface aoaw
+import com.tencent.mobileqq.data.PublicAccountInfo;
+
+public class aoaw
 {
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void h();
+  public int a;
+  public PublicAccountInfo a;
 }
 
 

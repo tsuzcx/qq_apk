@@ -2,14 +2,16 @@ package com.tencent.mobileqq.app.automator.step;
 
 import QC.Hamlet;
 import QC.UniBusinessItem;
-import amsw;
-import anaj;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import anfb;
-import bgje;
+import anvk;
+import aocy;
+import aohr;
+import bhrz;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.model.ChatBackgroundManager;
@@ -50,15 +52,15 @@ public class ChatBackgroundAuth
     return null;
   }
   
-  private ArrayList<Hamlet> a(HashMap<String, Integer> paramHashMap1, HashMap<String, Integer> paramHashMap2, amsw paramamsw, int paramInt1, int paramInt2)
+  private ArrayList<Hamlet> a(HashMap<String, Integer> paramHashMap1, HashMap<String, Integer> paramHashMap2, anvk paramanvk, int paramInt1, int paramInt2)
   {
     ArrayList localArrayList = new ArrayList();
-    a(paramamsw, paramHashMap1, localArrayList, paramInt1);
-    a(paramamsw, paramHashMap2, localArrayList, paramInt2);
+    a(paramanvk, paramHashMap1, localArrayList, paramInt1);
+    a(paramanvk, paramHashMap2, localArrayList, paramInt2);
     return localArrayList;
   }
   
-  private void a(amsw paramamsw, HashMap<String, Integer> paramHashMap, ArrayList<Hamlet> paramArrayList, int paramInt)
+  private void a(anvk paramanvk, HashMap<String, Integer> paramHashMap, ArrayList<Hamlet> paramArrayList, int paramInt)
   {
     Iterator localIterator = paramHashMap.keySet().iterator();
     Object localObject3;
@@ -75,7 +77,7 @@ public class ChatBackgroundAuth
         localObject1 = null;
         if (localObject2 != null)
         {
-          localUniBusinessItem = new UniBusinessItem(paramInt, ((Integer)localObject2).intValue());
+          localUniBusinessItem = new UniBusinessItem(paramInt, ((Integer)localObject2).intValue(), "");
           if (((String)localObject3).contains("_"))
           {
             localObject3 = ((String)localObject3).split("_");
@@ -90,7 +92,7 @@ public class ChatBackgroundAuth
     }
     for (;;)
     {
-      label115:
+      label117:
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 2, "friendUin:" + (String)localObject1 + " serverUinType:" + i + " appId:" + paramInt + " id:" + localObject2);
       }
@@ -105,23 +107,23 @@ public class ChatBackgroundAuth
       {
         ((Hamlet)localObject1).itemlist.add(localUniBusinessItem);
         break;
-        if (paramamsw.b((String)localObject1))
+        if (paramanvk.b((String)localObject1))
         {
           i = 2;
-          break label115;
+          break label117;
         }
         i = 3;
-        break label115;
+        break label117;
         if (!"null".equals(localObject3)) {
-          break label298;
+          break label300;
         }
         localObject1 = this.a.app.getCurrentUin();
         i = 1;
-        break label115;
+        break label117;
         return;
         localObject1 = localObject2;
       }
-      label298:
+      label300:
       i = 1;
     }
   }
@@ -147,14 +149,14 @@ public class ChatBackgroundAuth
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 2, "doStep start auth");
       }
-      Object localObject = (ChatBackgroundManager)this.a.app.getManager(63);
+      Object localObject = (ChatBackgroundManager)this.a.app.getManager(QQManagerFactory.CHAT_BACKGROUND_MANAGER);
       HashMap localHashMap = ((ChatBackgroundManager)localObject).a();
       localObject = ((ChatBackgroundManager)localObject).c();
-      ((anaj)this.a.app.getBusinessHandler(13)).a(a(localHashMap, (HashMap)localObject, (amsw)this.a.app.getManager(51), 8, 35), new anfb(this.a.app), true);
+      ((aocy)this.a.app.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(a(localHashMap, (HashMap)localObject, (anvk)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER), 8, 35), new aohr(this.a.app), true);
       localSharedPreferences.edit().putLong("lastChabgAuthTime", System.currentTimeMillis()).apply();
     }
-    if (!bgje.a.a(this.a.app, "namePlate_UrlConfig")) {
-      bgje.a.download(null, "namePlate_UrlConfig", null, false);
+    if (!bhrz.a.a(this.a.app, "namePlate_UrlConfig")) {
+      bhrz.a.download(null, "namePlate_UrlConfig", null, false);
     }
     return 7;
   }

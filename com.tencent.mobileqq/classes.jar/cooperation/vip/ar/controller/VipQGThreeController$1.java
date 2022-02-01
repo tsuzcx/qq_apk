@@ -1,20 +1,20 @@
 package cooperation.vip.ar.controller;
 
-import bilb;
-import bilc;
-import bkzr;
+import bjwd;
+import bjwe;
+import bmlv;
 
 public class VipQGThreeController$1
   implements Runnable
 {
-  public VipQGThreeController$1(bkzr parambkzr) {}
+  public VipQGThreeController$1(bmlv parambmlv) {}
   
   public void run()
   {
-    if (bilc.a("VipQGThreeController load QG So")) {
-      bkzr.a(this.this$0).a();
+    if (bjwe.a("VipQGThreeController load QG So")) {
+      bmlv.a(this.this$0).a();
     }
-    bilc.a("1018", true, bkzr.a(this.this$0));
+    bjwe.a("1018", true, bmlv.a(this.this$0));
   }
 }
 

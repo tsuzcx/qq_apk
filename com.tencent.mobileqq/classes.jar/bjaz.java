@@ -1,15 +1,17 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnErrorListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.AuthorityControlAppDetailsFragment;
+import com.tencent.open.agent.AuthorityControlAppDetailsFragment.2.1;
 
-class bjaz
-  implements TVK_IMediaPlayer.OnErrorListener
+public class bjaz
+  implements DialogInterface.OnClickListener
 {
-  bjaz(bjau parambjau, AbsVideoPlayer.OnErrorListener paramOnErrorListener) {}
+  public bjaz(AuthorityControlAppDetailsFragment paramAuthorityControlAppDetailsFragment) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnErrorListener.onError(this.jdField_a_of_type_Bjau, paramInt1, paramInt2);
+    paramDialogInterface = new AuthorityControlAppDetailsFragment.2.1(this);
+    AuthorityControlAppDetailsFragment.a(this.a).a(paramDialogInterface);
   }
 }
 

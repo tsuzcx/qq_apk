@@ -1,21 +1,18 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Comparator;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.doutu.DoutuData;
 
-public class arzu
-  implements Comparator<FileManagerEntity>
+public final class arzu
+  implements Parcelable.Creator<DoutuData>
 {
-  public arzu(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
-  
-  public int a(FileManagerEntity paramFileManagerEntity1, FileManagerEntity paramFileManagerEntity2)
+  public DoutuData a(Parcel paramParcel)
   {
-    if (paramFileManagerEntity2.srvTime > paramFileManagerEntity1.srvTime) {
-      return 1;
-    }
-    if (paramFileManagerEntity2.srvTime < paramFileManagerEntity1.srvTime) {
-      return -1;
-    }
-    return 0;
+    return new DoutuData(paramParcel);
+  }
+  
+  public DoutuData[] a(int paramInt)
+  {
+    return new DoutuData[paramInt];
   }
 }
 

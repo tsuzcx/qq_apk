@@ -1,210 +1,366 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.os.Bundle;
+import android.content.Context;
 import android.os.Handler;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
-import com.tencent.biz.richframework.eventbus.SimpleEventBus;
-import com.tencent.biz.richframework.eventbus.SimpleEventReceiver;
-import com.tencent.biz.subscribe.bizdapters.FakerFeedsAdapter.1;
-import com.tencent.biz.subscribe.bizdapters.FakerFeedsAdapter.2;
-import com.tencent.biz.subscribe.bizdapters.FakerFeedsAdapter.3;
-import com.tencent.biz.subscribe.bizdapters.FakerFeedsAdapter.4;
-import com.tencent.biz.subscribe.event.PublishBoxStatusEvent;
-import com.tencent.biz.subscribe.event.SubscribeFeedsEvent;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.ArrayUtils;
-import cooperation.qzone.QzoneIPCModule;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
+import android.view.VelocityTracker;
+import android.view.ViewConfiguration;
 
-public abstract class zdp
-  extends yzp<CertifiedAccountMeta.StFeed>
-  implements SimpleEventReceiver, zmo
+class zdp
+  implements zdo
 {
-  protected RecyclerView.LayoutManager a;
-  private boolean c = true;
-  private boolean d;
+  private static int jdField_e_of_type_Int = ;
+  private static final int jdField_f_of_type_Int = ViewConfiguration.getTapTimeout();
+  private static final int jdField_g_of_type_Int = ViewConfiguration.getDoubleTapTimeout();
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  GestureDetector.OnDoubleTapListener jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener;
+  final GestureDetector.OnGestureListener jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener;
+  MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
+  private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
+  boolean jdField_a_of_type_Boolean;
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int;
+  private MotionEvent jdField_b_of_type_AndroidViewMotionEvent;
+  boolean jdField_b_of_type_Boolean;
+  private float jdField_c_of_type_Float;
+  private int jdField_c_of_type_Int;
+  private boolean jdField_c_of_type_Boolean;
+  private float jdField_d_of_type_Float;
+  private int jdField_d_of_type_Int;
+  private boolean jdField_d_of_type_Boolean;
+  private boolean jdField_e_of_type_Boolean;
+  private boolean jdField_f_of_type_Boolean;
+  private boolean jdField_g_of_type_Boolean;
+  private boolean h = true;
   
-  public zdp(Bundle paramBundle)
+  public zdp(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener, Handler paramHandler)
   {
-    super(paramBundle);
-  }
-  
-  private int a(String paramString)
-  {
-    int i = 0;
-    for (;;)
+    if (paramHandler != null) {}
+    for (this.jdField_a_of_type_AndroidOsHandler = new zdq(this, paramHandler);; this.jdField_a_of_type_AndroidOsHandler = new zdq(this))
     {
-      CertifiedAccountMeta.StFeed localStFeed;
-      if (i < a().size())
-      {
-        localStFeed = (CertifiedAccountMeta.StFeed)a().get(i);
-        if ((paramString.startsWith("fakeid_")) && (!localStFeed.id.get().startsWith("fakeid_"))) {
-          QLog.d("FakerFeedsAdapter", 2, "has none fakeFeeds");
-        }
+      this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener = paramOnGestureListener;
+      if ((paramOnGestureListener instanceof GestureDetector.OnDoubleTapListener)) {
+        a((GestureDetector.OnDoubleTapListener)paramOnGestureListener);
       }
-      else
-      {
-        return -1;
-      }
-      if (paramString.equals(localStFeed.id.get()))
-      {
-        QLog.d("FakerFeedsAdapter", 2, "find fakeid:" + paramString);
-        return i;
-      }
-      i += 1;
+      a(paramContext);
+      return;
     }
   }
   
-  private void a(SubscribeFeedsEvent paramSubscribeFeedsEvent)
+  private void a(Context paramContext)
   {
-    Object localObject = new StringBuilder().append("fakeFeed state:").append(paramSubscribeFeedsEvent.mState).append(",fakeId:").append(paramSubscribeFeedsEvent.mTargetId).append(",fake listSize:");
+    if (paramContext == null) {
+      throw new IllegalArgumentException("Context must not be null");
+    }
+    if (this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener == null) {
+      throw new IllegalArgumentException("OnGestureListener must not be null");
+    }
+    this.jdField_g_of_type_Boolean = true;
+    paramContext = ViewConfiguration.get(paramContext);
+    int i = paramContext.getScaledTouchSlop();
+    int j = paramContext.getScaledDoubleTapSlop();
+    this.jdField_c_of_type_Int = paramContext.getScaledMinimumFlingVelocity();
+    this.jdField_d_of_type_Int = paramContext.getScaledMaximumFlingVelocity();
+    this.jdField_a_of_type_Int = (i * i);
+    this.jdField_b_of_type_Int = (j * j);
+  }
+  
+  private boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, MotionEvent paramMotionEvent3)
+  {
+    if (!this.jdField_e_of_type_Boolean) {}
     int i;
-    if (paramSubscribeFeedsEvent.mFakeFeedDataList == null)
-    {
-      i = 0;
-      QLog.d("FakerFeedsAdapter", 2, i);
-      if (a("share_key_subscribe_user") != null) {
-        break label83;
-      }
-    }
-    label83:
+    int j;
     do
     {
       do
       {
-        do
-        {
-          do
-          {
-            return;
-            i = paramSubscribeFeedsEvent.mFakeFeedDataList.size();
-            break;
-            switch (paramSubscribeFeedsEvent.mState)
-            {
-            default: 
-              return;
-            case 1: 
-              if (zbc.a() != null)
-              {
-                paramSubscribeFeedsEvent.mSingleFakeFeed.poster.icon.set(zbc.a().icon.get());
-                paramSubscribeFeedsEvent.mSingleFakeFeed.poster.nick.set(zbc.a().nick.get());
-              }
-              a().post(new FakerFeedsAdapter.1(this, paramSubscribeFeedsEvent));
-              return;
-            case 2: 
-              i = a(paramSubscribeFeedsEvent.mTargetId);
-            }
-          } while (i == -1);
-          localObject = zbi.a((CertifiedAccountMeta.StFeed)a().get(i));
-          ((CertifiedAccountMeta.StFeed)localObject).id.set(paramSubscribeFeedsEvent.mSingleFakeFeed.id.get());
-          ((CertifiedAccountMeta.StFeed)localObject).createTime.set(paramSubscribeFeedsEvent.mSingleFakeFeed.createTime.get());
-          ((CertifiedAccountMeta.StFeed)localObject).cover.url.set(paramSubscribeFeedsEvent.mSingleFakeFeed.cover.url.get());
-          a().post(new FakerFeedsAdapter.2(this, (CertifiedAccountMeta.StFeed)localObject, i));
-          return;
-          i = a(paramSubscribeFeedsEvent.mTargetId);
-        } while (i == -1);
-        a().post(new FakerFeedsAdapter.3(this, i));
-        return;
-      } while (!this.c);
-      this.c = false;
-    } while ((paramSubscribeFeedsEvent.mFakeFeedDataList == null) || (paramSubscribeFeedsEvent.mFakeFeedDataList.size() <= 0));
-    if (zbc.a() != null)
+        return false;
+      } while (paramMotionEvent3.getEventTime() - paramMotionEvent2.getEventTime() > jdField_g_of_type_Int);
+      i = (int)paramMotionEvent1.getX() - (int)paramMotionEvent3.getX();
+      j = (int)paramMotionEvent1.getY() - (int)paramMotionEvent3.getY();
+    } while (i * i + j * j >= this.jdField_b_of_type_Int);
+    return true;
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
+    this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
+    this.jdField_a_of_type_AndroidViewVelocityTracker = null;
+    this.jdField_f_of_type_Boolean = false;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_e_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    if (this.jdField_c_of_type_Boolean) {
+      this.jdField_c_of_type_Boolean = false;
+    }
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
+    this.jdField_f_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_e_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    if (this.jdField_c_of_type_Boolean) {
+      this.jdField_c_of_type_Boolean = false;
+    }
+  }
+  
+  void a()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onLongPress(this.jdField_a_of_type_AndroidViewMotionEvent);
+  }
+  
+  public void a(GestureDetector.OnDoubleTapListener paramOnDoubleTapListener)
+  {
+    this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener = paramOnDoubleTapListener;
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    int i1 = paramMotionEvent.getAction();
+    if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
+      this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
+    }
+    this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
+    int i;
+    int k;
+    label53:
+    int n;
+    int m;
+    float f1;
+    float f2;
+    if ((i1 & 0xFF) == 6)
     {
-      localObject = paramSubscribeFeedsEvent.mFakeFeedDataList.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        CertifiedAccountMeta.StFeed localStFeed = (CertifiedAccountMeta.StFeed)((Iterator)localObject).next();
-        if (localStFeed.poster != null)
-        {
-          localStFeed.poster.icon.set(zbc.a().icon.get());
-          localStFeed.poster.nick.set(zbc.a().nick.get());
-        }
+      i = 1;
+      if (i == 0) {
+        break label95;
+      }
+      k = paramMotionEvent.getActionIndex();
+      n = paramMotionEvent.getPointerCount();
+      m = 0;
+      f1 = 0.0F;
+      f2 = 0.0F;
+      label66:
+      if (m >= n) {
+        break label122;
+      }
+      if (k != m) {
+        break label101;
       }
     }
-    a().post(new FakerFeedsAdapter.4(this, paramSubscribeFeedsEvent));
-  }
-  
-  protected void a(CertifiedAccountMeta.StFeed paramStFeed)
-  {
-    if (a() != null) {
-      c(a().indexOf(paramStFeed));
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.d = paramBoolean;
-  }
-  
-  public void c()
-  {
-    if ((this.a instanceof StaggeredGridLayoutManager)) {
-      ((StaggeredGridLayoutManager)this.a).invalidateSpanAssignments();
-    }
-  }
-  
-  public void c(int paramInt)
-  {
-    if (ArrayUtils.isOutOfArrayIndex(paramInt, a())) {
-      return;
-    }
-    a().remove(paramInt);
-    notifyItemRemoved(paramInt);
-  }
-  
-  public void d()
-  {
-    if (e())
+    for (;;)
     {
-      this.c = true;
-      QzoneIPCModule.getInstance().getCertifiedAccountTaskList();
+      m += 1;
+      break label66;
+      i = 0;
+      break;
+      label95:
+      k = -1;
+      break label53;
+      label101:
+      f2 += paramMotionEvent.getX(m);
+      f1 += paramMotionEvent.getY(m);
     }
-  }
-  
-  public boolean e()
-  {
-    return this.d;
-  }
-  
-  public ArrayList<Class> getEventClass()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(SubscribeFeedsEvent.class);
-    localArrayList.add(PublishBoxStatusEvent.class);
-    return localArrayList;
-  }
-  
-  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
-  {
-    super.onAttachedToRecyclerView(paramRecyclerView);
-    this.a = paramRecyclerView.getLayoutManager();
-    if (this.d)
+    label122:
+    if (i != 0)
     {
-      SimpleEventBus.getInstance().registerReceiver(this);
-      QzoneIPCModule.getInstance().getCertifiedAccountTaskList();
+      i = n - 1;
+      f2 /= i;
+      f1 /= i;
     }
-  }
-  
-  public void onDetachedFromRecyclerView(RecyclerView paramRecyclerView)
-  {
-    super.onDetachedFromRecyclerView(paramRecyclerView);
-    if (this.d) {
-      SimpleEventBus.getInstance().unRegisterReceiver(this);
+    float f3;
+    boolean bool2;
+    float f4;
+    int j;
+    switch (i1 & 0xFF)
+    {
+    case 4: 
+    default: 
+    case 5: 
+    case 6: 
+    case 0: 
+    case 2: 
+      do
+      {
+        do
+        {
+          return false;
+          i = n;
+          break;
+          this.jdField_a_of_type_Float = f2;
+          this.jdField_c_of_type_Float = f2;
+          this.jdField_b_of_type_Float = f1;
+          this.jdField_d_of_type_Float = f1;
+          c();
+          return false;
+          this.jdField_a_of_type_Float = f2;
+          this.jdField_c_of_type_Float = f2;
+          this.jdField_b_of_type_Float = f1;
+          this.jdField_d_of_type_Float = f1;
+          this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000, this.jdField_d_of_type_Int);
+          k = paramMotionEvent.getActionIndex();
+          i = paramMotionEvent.getPointerId(k);
+          f1 = this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity(i);
+          f2 = this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity(i);
+          i = 0;
+        } while (i >= n);
+        if (i == k) {}
+        do
+        {
+          i += 1;
+          break;
+          m = paramMotionEvent.getPointerId(i);
+          f3 = this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity(m);
+        } while (this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity(m) * f2 + f3 * f1 >= 0.0F);
+        this.jdField_a_of_type_AndroidViewVelocityTracker.clear();
+        return false;
+        if (this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener != null)
+        {
+          bool2 = this.jdField_a_of_type_AndroidOsHandler.hasMessages(3);
+          if (bool2) {
+            this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
+          }
+          if ((this.jdField_a_of_type_AndroidViewMotionEvent != null) && (this.jdField_b_of_type_AndroidViewMotionEvent != null) && (bool2) && (a(this.jdField_a_of_type_AndroidViewMotionEvent, this.jdField_b_of_type_AndroidViewMotionEvent, paramMotionEvent))) {
+            this.jdField_f_of_type_Boolean = true;
+          }
+        }
+        for (boolean bool1 = this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onDoubleTap(this.jdField_a_of_type_AndroidViewMotionEvent) | false | this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onDoubleTapEvent(paramMotionEvent);; bool1 = false)
+        {
+          this.jdField_a_of_type_Float = f2;
+          this.jdField_c_of_type_Float = f2;
+          this.jdField_b_of_type_Float = f1;
+          this.jdField_d_of_type_Float = f1;
+          if (this.jdField_a_of_type_AndroidViewMotionEvent != null) {
+            this.jdField_a_of_type_AndroidViewMotionEvent.recycle();
+          }
+          this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+          this.jdField_d_of_type_Boolean = true;
+          this.jdField_e_of_type_Boolean = true;
+          this.jdField_a_of_type_Boolean = true;
+          this.jdField_c_of_type_Boolean = false;
+          this.jdField_b_of_type_Boolean = false;
+          if (this.jdField_g_of_type_Boolean)
+          {
+            this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+            this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageAtTime(2, this.jdField_a_of_type_AndroidViewMotionEvent.getDownTime() + jdField_f_of_type_Int + jdField_e_of_type_Int);
+          }
+          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageAtTime(1, this.jdField_a_of_type_AndroidViewMotionEvent.getDownTime() + jdField_f_of_type_Int);
+          return bool1 | this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onDown(paramMotionEvent);
+          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, jdField_g_of_type_Int);
+        }
+      } while ((this.jdField_c_of_type_Boolean) && (!this.h));
+      f3 = this.jdField_a_of_type_Float - f2;
+      f4 = this.jdField_b_of_type_Float - f1;
+      if (this.jdField_f_of_type_Boolean) {
+        return false | this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onDoubleTapEvent(paramMotionEvent);
+      }
+      if (this.jdField_d_of_type_Boolean)
+      {
+        j = (int)(f2 - this.jdField_c_of_type_Float);
+        k = (int)(f1 - this.jdField_d_of_type_Float);
+        j = j * j + k * k;
+        if (j <= this.jdField_a_of_type_Int) {
+          break label1143;
+        }
+        bool2 = this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onScroll(this.jdField_a_of_type_AndroidViewMotionEvent, paramMotionEvent, f3, f4);
+        this.jdField_a_of_type_Float = f2;
+        this.jdField_b_of_type_Float = f1;
+        this.jdField_d_of_type_Boolean = false;
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+      }
+      break;
     }
-  }
-  
-  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
-  {
-    if ((paramSimpleBaseEvent instanceof SubscribeFeedsEvent)) {
-      a((SubscribeFeedsEvent)paramSimpleBaseEvent);
+    for (;;)
+    {
+      if (j > this.jdField_a_of_type_Int) {
+        this.jdField_e_of_type_Boolean = false;
+      }
+      return bool2;
+      if ((Math.abs(f3) < 1.0F) && (Math.abs(f4) < 1.0F)) {
+        break;
+      }
+      bool2 = this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onScroll(this.jdField_a_of_type_AndroidViewMotionEvent, paramMotionEvent, f3, f4);
+      this.jdField_a_of_type_Float = f2;
+      this.jdField_b_of_type_Float = f1;
+      return bool2;
+      this.jdField_a_of_type_Boolean = false;
+      MotionEvent localMotionEvent = MotionEvent.obtain(paramMotionEvent);
+      if (this.jdField_f_of_type_Boolean) {
+        bool2 = this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onDoubleTapEvent(paramMotionEvent) | false;
+      }
+      for (;;)
+      {
+        if (this.jdField_b_of_type_AndroidViewMotionEvent != null) {
+          this.jdField_b_of_type_AndroidViewMotionEvent.recycle();
+        }
+        this.jdField_b_of_type_AndroidViewMotionEvent = localMotionEvent;
+        if (this.jdField_a_of_type_AndroidViewVelocityTracker != null)
+        {
+          this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
+          this.jdField_a_of_type_AndroidViewVelocityTracker = null;
+        }
+        this.jdField_f_of_type_Boolean = false;
+        this.jdField_b_of_type_Boolean = false;
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+        return bool2;
+        if (this.jdField_c_of_type_Boolean)
+        {
+          this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
+          this.jdField_c_of_type_Boolean = false;
+          bool2 = false;
+        }
+        else if (this.jdField_d_of_type_Boolean)
+        {
+          boolean bool3 = this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onSingleTapUp(paramMotionEvent);
+          bool2 = bool3;
+          if (this.jdField_b_of_type_Boolean)
+          {
+            bool2 = bool3;
+            if (this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener != null)
+            {
+              this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onSingleTapConfirmed(paramMotionEvent);
+              bool2 = bool3;
+            }
+          }
+        }
+        else
+        {
+          VelocityTracker localVelocityTracker = this.jdField_a_of_type_AndroidViewVelocityTracker;
+          j = paramMotionEvent.getPointerId(0);
+          localVelocityTracker.computeCurrentVelocity(1000, this.jdField_d_of_type_Int);
+          f1 = localVelocityTracker.getYVelocity(j);
+          f2 = localVelocityTracker.getXVelocity(j);
+          if ((Math.abs(f1) > this.jdField_c_of_type_Int) || (Math.abs(f2) > this.jdField_c_of_type_Int))
+          {
+            bool2 = this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onFling(this.jdField_a_of_type_AndroidViewMotionEvent, paramMotionEvent, f2, f1);
+            continue;
+            b();
+            return false;
+          }
+          else
+          {
+            bool2 = false;
+          }
+        }
+      }
+      label1143:
+      bool2 = false;
     }
   }
 }

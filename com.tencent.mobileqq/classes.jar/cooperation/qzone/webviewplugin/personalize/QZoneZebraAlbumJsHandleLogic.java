@@ -2,7 +2,7 @@ package cooperation.qzone.webviewplugin.personalize;
 
 import android.content.Intent;
 import android.os.Bundle;
-import bgve;
+import bifw;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
@@ -11,7 +11,7 @@ public class QZoneZebraAlbumJsHandleLogic
 {
   public static final String TAG = "QZoneZebraAlbumJsHandleLogicQZonePersonalizePlugin";
   
-  public static void handleCleanZebraNum(bgve parambgve, String... paramVarArgs)
+  public static void handleCleanZebraNum(bifw parambifw, String... paramVarArgs)
   {
     paramVarArgs = new Intent("action_js2qzone");
     Bundle localBundle = new Bundle();
@@ -20,7 +20,7 @@ public class QZoneZebraAlbumJsHandleLogic
     if (QLog.isColorLevel()) {
       QLog.d("QZoneZebraAlbumJsHandleLogicQZonePersonalizePlugin", 2, "actionString: " + paramVarArgs.getAction());
     }
-    QZoneHelper.forwardToQzoneTransluentActivity(parambgve.a(), QZoneHelper.UserInfo.getInstance(), paramVarArgs);
+    QZoneHelper.forwardToQzoneTransluentActivity(parambifw.a(), QZoneHelper.UserInfo.getInstance(), paramVarArgs);
   }
 }
 

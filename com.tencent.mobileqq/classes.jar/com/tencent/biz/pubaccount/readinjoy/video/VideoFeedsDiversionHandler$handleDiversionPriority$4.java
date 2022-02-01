@@ -6,7 +6,7 @@ import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Lambda;
-import rwg;
+import sii;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 16})
 public final class VideoFeedsDiversionHandler$handleDiversionPriority$4
@@ -21,7 +21,7 @@ public final class VideoFeedsDiversionHandler$handleDiversionPriority$4
   public final void invoke()
   {
     VideoInfo.ECommerceEntranceInfo localECommerceEntranceInfo = this.$videoInfo.a;
-    rwg.a(rwg.a, this.$videoInfo);
+    sii.a(sii.a, this.$videoInfo);
     this.$videoInfo.a = localECommerceEntranceInfo;
   }
 }

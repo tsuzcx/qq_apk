@@ -1,35 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class aepj
-  extends Handler
+  implements bbji
 {
-  public aepj(TroopRequestActivity paramTroopRequestActivity) {}
+  public aepj(QQIdentiferActivity paramQQIdentiferActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a() {}
+  
+  public void a(boolean paramBoolean, String paramString)
   {
-    switch (paramMessage.what)
+    if (!paramBoolean)
     {
-    default: 
-      return;
-    case 0: 
-      this.a.h();
-      QQToast.a(this.a, this.a.getString(2131718128), 0).b(this.a.getTitleBarHeight());
-      this.a.finish();
-      return;
-    case 1: 
-      this.a.a(true);
-      this.a.h();
-      QQToast.a(this.a, this.a.getString(2131718115), 0).b(this.a.getTitleBarHeight());
+      paramString = bhdj.a(this.a, 230, this.a.getString(2131698169), anvx.a(2131709810), new aepk(this), null);
+      paramString.setOnDismissListener(new aepl(this));
+      paramString.show();
       return;
     }
-    paramMessage = (String)paramMessage.obj;
-    this.a.o.setText(paramMessage + "");
-    this.a.o.setContentDescription(paramMessage + "");
-    this.a.o.setVisibility(0);
+    QQIdentiferActivity.a(this.a).set(false);
+    QQIdentiferActivity.a(this.a).a();
   }
 }
 

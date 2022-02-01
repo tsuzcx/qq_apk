@@ -1,42 +1,12 @@
-import android.os.CountDownTimer;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-
 public class belz
-  implements INetInfoHandler
 {
-  public belz(ReciteRecordLayout paramReciteRecordLayout) {}
+  public beli a;
+  public String a;
   
-  public void onNetMobile2None()
+  public belz(String paramString, beli parambeli)
   {
-    this.a.b.cancel();
-    this.a.b.start();
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    this.a.b.cancel();
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    this.a.b.cancel();
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    this.a.b.cancel();
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    this.a.b.cancel();
-  }
-  
-  public void onNetWifi2None()
-  {
-    this.a.b.cancel();
-    this.a.b.start();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Beli = parambeli;
   }
 }
 

@@ -10,15 +10,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import avtf;
-import avtq;
-import avue;
-import avvh;
-import avvi;
-import avvj;
-import avwk;
-import avwr;
-import avxi;
+import awzh;
+import awzs;
+import axag;
+import axbj;
+import axbk;
+import axbl;
+import axcm;
+import axct;
+import axdk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.utils.ViewUtils;
@@ -38,7 +38,7 @@ public class MsgBackupPCAuthFragment
   
   public MsgBackupPCAuthFragment()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(new avvh(this));
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(new axbj(this));
   }
   
   private void a(int paramInt)
@@ -46,27 +46,27 @@ public class MsgBackupPCAuthFragment
     this.jdField_g_of_type_Int = paramInt;
     if (paramInt == 0)
     {
-      this.jdField_b_of_type_AndroidWidgetButton.setBackgroundResource(2130839326);
+      this.jdField_b_of_type_AndroidWidgetButton.setBackgroundResource(2130839347);
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetButton.setBackgroundResource(2130849962);
+    this.jdField_b_of_type_AndroidWidgetButton.setBackgroundResource(2130850055);
   }
   
   private void n()
   {
-    avxi.a(BaseApplicationImpl.getContext(), "https://qzs.qzone.qq.com/qzone/qzact/act/external/qzone-platform/qq-web/pcqq_version_upgrade_919.html", true, true, true, false, null, "biz_src_msg_backup");
+    axdk.a(BaseApplicationImpl.getContext(), "https://qzs.qzone.qq.com/qzone/qzact/act/external/qzone-platform/qq-web/pcqq_version_upgrade_919.html", true, true, true, false, null, "biz_src_msg_backup");
   }
   
-  protected void a(avue paramavue)
+  protected void a(axag paramaxag)
   {
-    super.a(paramavue);
+    super.a(paramaxag);
     if (QLog.isColorLevel()) {
-      QLog.d("MsgBackupMsgBackupPCAuthFragment", 2, "processGetQrRsp data = " + paramavue);
+      QLog.d("MsgBackupMsgBackupPCAuthFragment", 2, "processGetQrRsp data = " + paramaxag);
     }
-    if (paramavue != null)
+    if (paramaxag != null)
     {
-      avtf.a().a(paramavue.a());
-      avtf.a().a(paramavue.a());
+      awzh.a().a(paramaxag.a());
+      awzh.a().a(paramaxag.a());
     }
   }
   
@@ -83,7 +83,7 @@ public class MsgBackupPCAuthFragment
   
   protected void b()
   {
-    setTitle(getActivity().getString(2131690428));
+    setTitle(getActivity().getString(2131690503));
   }
   
   protected void c()
@@ -94,16 +94,16 @@ public class MsgBackupPCAuthFragment
     ViewUtils.setVisible(this.jdField_b_of_type_AndroidWidgetButton, 0);
     ViewUtils.setVisible(this.jdField_a_of_type_AndroidWidgetButton, 8);
     ViewUtils.setVisible(this.jdField_b_of_type_AndroidWidgetButton, 0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841320);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131690492);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131690494);
-    this.jdField_b_of_type_AndroidWidgetButton.setText(2131690497);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841326);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131690567);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131690569);
+    this.jdField_b_of_type_AndroidWidgetButton.setText(2131690572);
     if (AppSetting.c) {
-      this.jdField_b_of_type_AndroidWidgetButton.setContentDescription(getString(2131690497));
+      this.jdField_b_of_type_AndroidWidgetButton.setContentDescription(getString(2131690572));
     }
     this.vg.setRightViewTextVisible(0);
-    this.vg.setOnItemSelectListener(new avvi(this));
-    avtq.a().a(new avvj(this));
+    this.vg.setOnItemSelectListener(new axbk(this));
+    awzs.a().a(new axbl(this));
     this.jdField_b_of_type_MqqOsMqqHandler.post(this.jdField_a_of_type_JavaLangRunnable);
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
@@ -132,13 +132,13 @@ public class MsgBackupPCAuthFragment
         }
         if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (!isDetached()))
         {
-          this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131165866));
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690446));
+          this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131165875));
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690521));
         }
         if ((this.jdField_b_of_type_AndroidWidgetTextView == null) || (isDetached())) {
           break;
         }
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690494));
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690569));
         break;
       }
       label149:
@@ -152,25 +152,25 @@ public class MsgBackupPCAuthFragment
       label166:
       if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (!isDetached()))
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167012));
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690492));
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167026));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690567));
       }
       if ((this.jdField_b_of_type_AndroidWidgetTextView != null) && (!isDetached())) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690494));
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690569));
       }
     }
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
   {
-    avtq.c = false;
+    awzs.c = false;
     super.initWindowStyleAndAnimation(paramActivity);
   }
   
   public void k()
   {
-    avtq.a().a().c();
-    avwk.a().b();
+    awzs.a().a().c();
+    axcm.a().b();
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -196,12 +196,12 @@ public class MsgBackupPCAuthFragment
         if (QLog.isColorLevel()) {
           QLog.d("MsgBackupMsgBackupPCAuthFragment", 2, "migrate_sure onclick phone request backup!");
         }
-        avtq.a().a(true);
-        avwr.a("0X800A26A");
+        awzs.a().a(true);
+        axct.a("0X800A26A");
       }
       else if ((this.jdField_g_of_type_Int == 1) && (!this.e))
       {
-        avwr.a("0X800A26B");
+        axct.a("0X800A26B");
       }
     }
   }
@@ -209,14 +209,14 @@ public class MsgBackupPCAuthFragment
   public void onDestroy()
   {
     super.onDestroy();
-    avtq.a().a(null);
+    awzs.a().a(null);
   }
   
   public void onDestroyView()
   {
     super.onDestroyView();
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    avtq.a().a(null);
+    awzs.a().a(null);
     if (this.jdField_a_of_type_JavaLangRunnable != null) {
       this.jdField_b_of_type_MqqOsMqqHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     }

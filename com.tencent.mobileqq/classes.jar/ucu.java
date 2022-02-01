@@ -1,46 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageButton;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController.6.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.viola.wormhole.NativeVueLoaderManager;
+import com.tencent.mobileqq.soload.LoadExtResult;
+import com.tencent.nativevue.NativeVuePreconditionAdapter.LoadSoResult;
+import com.tencent.qphone.base.util.QLog;
 
 public class ucu
-  implements View.OnClickListener
+  implements bdgc
 {
-  ucu(ucp paramucp) {}
+  public ucu(NativeVueLoaderManager paramNativeVueLoaderManager, NativeVuePreconditionAdapter.LoadSoResult paramLoadSoResult) {}
   
-  public void onClick(View paramView)
+  public void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
   {
-    bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005733", "0X8005733", 0, 0, "", "", "", "");
-    bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006430", "0X8006430", 0, 0, "", "", "", "");
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setEnabled(false);
-    ThreadManager.getSubThreadHandler().post(new SubscriptRecommendController.6.1(this));
-    if (this.a.jdField_a_of_type_Int == 1) {
-      ucp.a(this.a);
-    }
-    for (;;)
+    if (paramInt == 0)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.jdField_a_of_type_ComTencentNativevueNativeVuePreconditionAdapter$LoadSoResult.onLoadSuccess();
+      QLog.d("NativeVueLoaderManager", 1, "load NativeVue Success");
       return;
-      if (this.a.jdField_a_of_type_Int == 3)
-      {
-        MqqHandler localMqqHandler = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(SubscriptFeedsActivity.class);
-        if ((localMqqHandler != null) && (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && ((this.a.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof SubscriptFeedsActivity))) {
-          localMqqHandler.sendEmptyMessage(1006);
-        }
-      }
     }
+    this.jdField_a_of_type_ComTencentNativevueNativeVuePreconditionAdapter$LoadSoResult.onLoadError();
+    QLog.e("NativeVueLoaderManager", 1, "load NativeVue Error: " + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ucu
  * JD-Core Version:    0.7.0.1
  */

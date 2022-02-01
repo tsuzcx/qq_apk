@@ -1,36 +1,14 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil.DrawableCallBack;
-import com.tencent.image.URLDrawable;
-import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import tencent.im.oidb.cmd0xed4.oidb_cmd0xed4.ReqBody;
+import tencent.im.oidb.cmd0xed4.oidb_cmd0xed4.RspBody;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/proteus/utils/RIJProteusDrawableHelper$getDrawableFromNet$1", "Landroid/graphics/drawable/Drawable$Callback;", "invalidateDrawable", "", "who", "Landroid/graphics/drawable/Drawable;", "scheduleDrawable", "what", "Ljava/lang/Runnable;", "when", "", "unscheduleDrawable", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qgk
-  implements Drawable.Callback
+public abstract interface qgk
 {
-  qgk(DrawableUtil.DrawableCallBack paramDrawableCallBack, URLDrawable paramURLDrawable) {}
+  public abstract int a();
   
-  public void invalidateDrawable(@NotNull Drawable paramDrawable)
-  {
-    Intrinsics.checkParameterIsNotNull(paramDrawable, "who");
-    QLog.i("Q.readinjoy.proteus", 1, "invalidateDrawable: ");
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewUtilsDrawableUtil$DrawableCallBack.onCallBack(true, (Drawable)this.jdField_a_of_type_ComTencentImageURLDrawable);
-  }
+  public abstract void a(ToServiceMsg paramToServiceMsg, oidb_cmd0xed4.RspBody paramRspBody, int paramInt1, int paramInt2, String paramString);
   
-  public void scheduleDrawable(@NotNull Drawable paramDrawable, @NotNull Runnable paramRunnable, long paramLong)
-  {
-    Intrinsics.checkParameterIsNotNull(paramDrawable, "who");
-    Intrinsics.checkParameterIsNotNull(paramRunnable, "what");
-  }
-  
-  public void unscheduleDrawable(@NotNull Drawable paramDrawable, @NotNull Runnable paramRunnable)
-  {
-    Intrinsics.checkParameterIsNotNull(paramDrawable, "who");
-    Intrinsics.checkParameterIsNotNull(paramRunnable, "what");
-  }
+  public abstract void a(qxw paramqxw, oidb_cmd0xed4.ReqBody paramReqBody);
 }
 
 

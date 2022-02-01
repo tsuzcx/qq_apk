@@ -1,6 +1,13 @@
-public abstract interface axyv
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+
+public class axyv
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public axyv(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  
+  public void onClick(View paramView) {}
 }
 
 

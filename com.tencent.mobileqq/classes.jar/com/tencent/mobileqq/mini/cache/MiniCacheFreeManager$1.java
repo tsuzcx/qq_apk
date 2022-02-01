@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.cache;
 
-import amtj;
 import android.app.Activity;
-import bfur;
+import anvx;
+import bhdj;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
@@ -22,7 +22,7 @@ final class MiniCacheFreeManager$1
       return;
       try
       {
-        QQCustomDialog localQQCustomDialog = bfur.a(this.val$activity, 230, null, this.val$dialogContext, amtj.a(2131709331), amtj.a(2131709332), new MiniCacheFreeManager.1.1(this), new MiniCacheFreeManager.1.2(this));
+        QQCustomDialog localQQCustomDialog = bhdj.a(this.val$activity, 230, null, this.val$dialogContext, anvx.a(2131709678), anvx.a(2131709679), new MiniCacheFreeManager.1.1(this), new MiniCacheFreeManager.1.2(this));
         localQQCustomDialog.setCanceledOnTouchOutside(false);
         if ((this.val$activity != null) && (!this.val$activity.isFinishing()))
         {

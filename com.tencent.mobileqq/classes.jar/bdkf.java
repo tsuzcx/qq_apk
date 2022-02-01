@@ -1,19 +1,39 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.togetherui.writetogether.SavingAnimView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bdkf
-  implements Animator.AnimatorListener
 {
-  public bdkf(SavingAnimView paramSavingAnimView) {}
+  int jdField_a_of_type_Int = 0;
+  bdkg jdField_a_of_type_Bdkg = new bdkg(this.jdField_a_of_type_Int, '&');
+  List<Object> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public bdkf()
+  {
+    this.jdField_a_of_type_Int += 1;
+  }
   
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void a(String paramString)
+  {
+    Object localObject = this.jdField_a_of_type_Bdkg;
+    int i = 0;
+    if (i < paramString.length())
+    {
+      char c = paramString.charAt(i);
+      bdkg localbdkg = ((bdkg)localObject).a(c);
+      if (localbdkg == null)
+      {
+        localbdkg = new bdkg(this.jdField_a_of_type_Int, c);
+        this.jdField_a_of_type_Int += 1;
+        ((bdkg)localObject).a(localbdkg);
+      }
+      for (localObject = localbdkg;; localObject = localbdkg)
+      {
+        i += 1;
+        break;
+        localbdkg.a();
+      }
+    }
+  }
 }
 
 

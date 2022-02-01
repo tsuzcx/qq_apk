@@ -3,7 +3,7 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import bcef;
+import bdla;
 import org.json.JSONObject;
 
 class ThemeAndBubbleCommonJsPlugin$7
@@ -27,7 +27,7 @@ class ThemeAndBubbleCommonJsPlugin$7
             if (i != 0) {
               break label152;
             }
-            bcef.b(null, "CliOper", "", "", "starphoto", "downloadsuc_starphoto_button", 0, 0, "", "", "", "");
+            bdla.b(null, "CliOper", "", "", "starphoto", "downloadsuc_starphoto_button", 0, 0, "", "", "", "");
             this.this$0.callJs(this.this$0.saveCallbackId, new String[] { paramMessage.toString() });
             return;
           }
@@ -42,7 +42,7 @@ class ThemeAndBubbleCommonJsPlugin$7
         paramMessage.put("ret", 2);
         continue;
         label152:
-        bcef.b(null, "CliOper", "", "", "starphoto", "downloadfail_starphoto_button", 0, 0, "", "", "", "");
+        bdla.b(null, "CliOper", "", "", "starphoto", "downloadfail_starphoto_button", 0, 0, "", "", "", "");
       }
     }
   }

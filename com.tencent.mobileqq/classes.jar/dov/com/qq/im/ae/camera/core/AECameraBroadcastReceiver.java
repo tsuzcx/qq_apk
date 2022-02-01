@@ -6,27 +6,27 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.util.Log;
-import blio;
-import bljy;
-import dov.com.qq.im.ae.download.AEResInfo;
+import bmvf;
+import bmxa;
+import bnkt;
 
 public class AECameraBroadcastReceiver
   extends BroadcastReceiver
 {
   private static final String TAG = "AECameraReceiver";
-  private blio captureUnit;
+  private bmvf captureUnit;
   
-  public AECameraBroadcastReceiver(blio paramblio)
+  public AECameraBroadcastReceiver(bmvf parambmvf)
   {
-    this.captureUnit = paramblio;
+    this.captureUnit = parambmvf;
   }
   
   private IntentFilter getBroadcastIntentFilter()
   {
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("tencent.av.v2q.StartVideoChat");
-    localIntentFilter.addAction(AEResInfo.AE_RES_BASE_PACKAGE.resPrefix);
-    localIntentFilter.addAction(AEResInfo.AE_RES_ADDITIONAL_PACKAGE.resPrefix);
+    localIntentFilter.addAction(bnkt.jdField_b_of_type_Bnkt.jdField_b_of_type_JavaLangString);
+    localIntentFilter.addAction(bnkt.c.jdField_b_of_type_JavaLangString);
     return localIntentFilter;
   }
   
@@ -40,12 +40,12 @@ public class AECameraBroadcastReceiver
       {
         return;
         paramContext = paramIntent.getAction();
-        if (!AEResInfo.AE_RES_ADDITIONAL_PACKAGE.resPrefix.equals(paramContext)) {
+        if (!bnkt.c.jdField_b_of_type_JavaLangString.equals(paramContext)) {
           break;
         }
-        boav.a = true;
-      } while (!(this.captureUnit instanceof bljy));
-      ((bljy)this.captureUnit).R();
+        bpqn.a = true;
+      } while (!(this.captureUnit instanceof bmxa));
+      ((bmxa)this.captureUnit).aa();
       return;
     } while (!"tencent.av.v2q.StartVideoChat".equals(paramContext));
     Log.d("AECameraReceiver", "onReceive: action = " + paramContext);

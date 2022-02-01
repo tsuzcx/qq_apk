@@ -1,27 +1,6 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar.4;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-import com.tencent.qphone.base.util.QLog;
-
-class bdyy
-  extends bdze
+public abstract interface bdyy
 {
-  bdyy(bdyx parambdyx) {}
-  
-  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo)
-  {
-    if (!this.a.a.this$0.a) {}
-    do
-    {
-      return;
-      if ((paramMessageRecord != null) && (paramTroopAioKeywordTipInfo != null)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("TroopAioKeywordTipBar", 2, "mCheckKeywordRunnable, messageRecord == null || keywordTipInfo == null");
-    return;
-    bdyt.a(this.a.a.this$0, paramMessageRecord, paramTroopAioKeywordTipInfo);
-  }
+  public abstract void a();
 }
 
 

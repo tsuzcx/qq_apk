@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import adlp;
-import adlq;
-import amtj;
+import aecv;
+import aecw;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -11,6 +10,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import anvx;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
@@ -21,7 +21,7 @@ public class GesturePWDSettingActivity
   extends IphoneTitleBarActivity
 {
   private int jdField_a_of_type_Int;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new adlq(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aecw(this);
   private View jdField_a_of_type_AndroidViewView;
   private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   private boolean jdField_a_of_type_Boolean;
@@ -34,20 +34,20 @@ public class GesturePWDSettingActivity
   
   private void b()
   {
-    setTitle(2131692697);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131367536);
-    this.c = findViewById(2131367533);
-    this.d = findViewById(2131367550);
-    this.e = findViewById(2131367538);
-    this.f = findViewById(2131367534);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131367537);
-    this.jdField_a_of_type_AndroidViewView.setContentDescription(amtj.a(2131704383));
+    setTitle(2131692799);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131367668);
+    this.c = findViewById(2131367665);
+    this.d = findViewById(2131367682);
+    this.e = findViewById(2131367670);
+    this.f = findViewById(2131367666);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131367669);
+    this.jdField_a_of_type_AndroidViewView.setContentDescription(anvx.a(2131704734));
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.c.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.d.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131367551));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new adlp(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131367683));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new aecv(this));
   }
   
   private void c()
@@ -62,7 +62,7 @@ public class GesturePWDSettingActivity
       if (this.jdField_a_of_type_Boolean)
       {
         if ((this.leftView != null) && ((this.leftView instanceof TextView))) {
-          this.leftView.setText(2131718034);
+          this.leftView.setText(2131718419);
         }
         startActivityForResult(new Intent(this, GesturePWDCreateActivity.class), 10);
         overridePendingTransition(2130771997, 2130771990);
@@ -154,7 +154,7 @@ public class GesturePWDSettingActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559247);
+    super.setContentView(2131559286);
     b();
     c();
     return true;
@@ -183,14 +183,14 @@ public class GesturePWDSettingActivity
   public String setLastActivityName()
   {
     if (this.jdField_a_of_type_Int == 0) {
-      return getString(2131698503);
+      return getString(2131698800);
     }
-    return getString(2131692697);
+    return getString(2131692799);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GesturePWDSettingActivity
  * JD-Core Version:    0.7.0.1
  */

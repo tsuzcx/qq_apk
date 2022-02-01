@@ -1,37 +1,19 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 
 public class alth
-  extends alte
+  extends altj
 {
-  public alth(QQAppInterface paramQQAppInterface)
+  public void a()
   {
-    super(paramQQAppInterface);
-    this.jdField_a_of_type_Int = 0;
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (localRMVideoStateMgr.a != null) {
+      localRMVideoStateMgr.a.n();
+    }
   }
   
-  public void a(ambl paramambl, Context paramContext, QQAppInterface paramQQAppInterface) {}
-  
-  public void a(ambl paramambl, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  public void b()
   {
-    if (!a()) {}
-    SharedPreferences localSharedPreferences;
-    do
-    {
-      return;
-      this.b = true;
-      localSharedPreferences = paramContext.getSharedPreferences("apollo_sp", 0);
-    } while (!localSharedPreferences.getBoolean(paramQQAppInterface.getAccount() + "apollo_settingme_first_enter", true));
-    ambc.a(paramambl, amtj.a(2131703732), 7, 0);
-    localSharedPreferences.edit().putBoolean(paramQQAppInterface.getAccount() + "apollo_settingme_first_enter", false).commit();
-    a(paramContext, paramQQAppInterface);
-  }
-  
-  public boolean a()
-  {
-    return (this.c) && (!this.jdField_a_of_type_Boolean);
+    RMVideoStateMgr.a().a(2);
   }
 }
 

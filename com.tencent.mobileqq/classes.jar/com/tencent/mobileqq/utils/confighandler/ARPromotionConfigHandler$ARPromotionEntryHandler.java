@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.utils.confighandler;
 
-import anzo;
-import anzv;
+import apcq;
+import apcx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
 
@@ -10,12 +10,12 @@ public class ARPromotionConfigHandler$ARPromotionEntryHandler
 {
   public ARPromotionConfigHandler$ARPromotionEntryHandler(String paramString)
   {
-    super(anzv.a + 365, paramString, "config_qq.android.ar_", "config", "ver");
+    super(apcx.a + 365, paramString, "config_qq.android.ar_", "config", "ver");
   }
   
   public void onGetConfigFinish(QQAppInterface paramQQAppInterface, String paramString, PromotionConfigInfo paramPromotionConfigInfo)
   {
-    anzv.a(paramQQAppInterface).a(paramQQAppInterface, paramString, paramPromotionConfigInfo);
+    apcx.a(paramQQAppInterface).a(paramQQAppInterface, paramString, paramPromotionConfigInfo);
   }
 }
 

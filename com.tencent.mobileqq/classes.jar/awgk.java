@@ -1,34 +1,164 @@
-import java.util.HashMap;
+import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.listentogether.ListenTogetherSession;
+import com.tencent.mobileqq.listentogether.data.ISong;
+import com.tencent.mobileqq.listentogether.data.MusicInfo;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class awgk
+  extends awfk
 {
-  public static HashMap<String, Integer> a = new HashMap();
+  public awgk(ListenTogetherPlayFragment paramListenTogetherPlayFragment) {}
   
-  static
+  protected void a(int paramInt, String paramString1, String paramString2)
   {
-    a.put("skin_icon_small_ship_svip", Integer.valueOf(2130850119));
-    a.put("skin_icon_big_ship_svip", Integer.valueOf(2130850075));
-    a.put("skin_icon_small_ship_unionvip", Integer.valueOf(2130850120));
-    a.put("skin_icon_big_ship_unionvip", Integer.valueOf(2130850076));
-    a.put("skin_icon_small_fire_svip", Integer.valueOf(2130850115));
-    a.put("skin_icon_big_fire_svip", Integer.valueOf(2130850071));
-    a.put("skin_icon_small_fire_unionvip", Integer.valueOf(2130850116));
-    a.put("skin_icon_big_fire_unionvip", Integer.valueOf(2130850072));
-    a.put("skin_icon_intimate_lover_vip_1", Integer.valueOf(2130850096));
-    a.put("skin_icon_intimate_lover_vip_2", Integer.valueOf(2130850097));
-    a.put("skin_icon_intimate_lover_vip_3", Integer.valueOf(2130850098));
-    a.put("hot_reactive_gray_intimate_guimi_svip_1_icon", Integer.valueOf(2130840344));
-    a.put("hot_reactive_gray_intimate_guimi_svip_2_icon", Integer.valueOf(2130840345));
-    a.put("hot_reactive_gray_intimate_guimi_svip_3_icon", Integer.valueOf(2130840346));
-    a.put("hot_reactive_gray_intimate_guimi_unionvip_1_icon", Integer.valueOf(2130840347));
-    a.put("hot_reactive_gray_intimate_guimi_unionvip_2_icon", Integer.valueOf(2130840348));
-    a.put("hot_reactive_gray_intimate_guimi_unionvip_3_icon", Integer.valueOf(2130840349));
-    a.put("hot_reactive_gray_intimate_jiyou_svip_1_icon", Integer.valueOf(2130840350));
-    a.put("hot_reactive_gray_intimate_jiyou_svip_2_icon", Integer.valueOf(2130840351));
-    a.put("hot_reactive_gray_intimate_jiyou_svip_3_icon", Integer.valueOf(2130840352));
-    a.put("hot_reactive_gray_intimate_jiyou_unionvip_1_icon", Integer.valueOf(2130840353));
-    a.put("hot_reactive_gray_intimate_jiyou_unionvip_2_icon", Integer.valueOf(2130840354));
-    a.put("hot_reactive_gray_intimate_jiyou_unionvip_3_icon", Integer.valueOf(2130840355));
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
+    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(paramString1)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ListenTogetherPlayFragment", 2, String.format("onListenTogetherJoinedCountChange msg=%s", new Object[] { paramString2 }));
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.jdField_a_of_type_JavaLangString = paramString2;
+    if (paramInt == 1)
+    {
+      this.a.jdField_a_of_type_Awev.a(paramString1);
+      return;
+    }
+    ListenTogetherPlayFragment.a(this.a, ListenTogetherPlayFragment.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.jdField_a_of_type_JavaLangString);
+  }
+  
+  protected void a(ListenTogetherSession paramListenTogetherSession)
+  {
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
+    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(paramListenTogetherSession.e)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ListenTogetherPlayFragment", 2, String.format("onUIModuleNeedRefresh session=%s", new Object[] { paramListenTogetherSession }));
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession = paramListenTogetherSession;
+    MusicInfo localMusicInfo = paramListenTogetherSession.a();
+    if ((paramListenTogetherSession.i != 2) || (paramListenTogetherSession.h == 3) || (paramListenTogetherSession.h == 4) || (localMusicInfo == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("ListenTogetherPlayFragment", 2, "onExit");
+      }
+      QQToast.a(localFragmentActivity, 2131693550, 1).a();
+      this.a.getActivity().finish();
+      return;
+    }
+    a(localMusicInfo);
+    ListenTogetherPlayFragment.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqListentogetherDataISong.a(), paramListenTogetherSession.h, this.a.jdField_a_of_type_JavaLangString);
+  }
+  
+  protected void a(ISong paramISong)
+  {
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
+    while (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherDataISong.equals(paramISong)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ListenTogetherPlayFragment", 2, String.format("onPlayMusicChange %s", new Object[] { paramISong }));
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqListentogetherDataISong = paramISong;
+    this.a.jdField_a_of_type_JavaLangString = null;
+    ListenTogetherPlayFragment.a(this.a, paramISong);
+  }
+  
+  protected void a(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    int i = 0;
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
+    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherDataISong.a().equals(paramString1)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      if (paramString2 != null) {
+        break label120;
+      }
+    }
+    for (;;)
+    {
+      QLog.i("ListenTogetherPlayFragment", 2, String.format("onGetLyric %s %d", new Object[] { paramString1, Integer.valueOf(i) }));
+      this.a.jdField_a_of_type_JavaLangString = paramString2;
+      ListenTogetherPlayFragment.a(this.a, paramString1, this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.h, paramString2);
+      return;
+      label120:
+      i = paramString2.length();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, int paramInt, List<String> paramList)
+  {
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
+    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(paramString)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ListenTogetherPlayFragment", 2, String.format("onGetGroupJoinedUsers uin=%s num=%d", new Object[] { paramString, Integer.valueOf(paramInt) }));
+    }
+    ListenTogetherPlayFragment.a(this.a, paramList, this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.jdField_a_of_type_JavaLangString);
+  }
+  
+  protected void c(int paramInt, String paramString)
+  {
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
+    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ListenTogetherPlayFragment", 2, String.format("onPauseListenTogetherFail [%s, %d]", new Object[] { paramString, Integer.valueOf(paramInt) }));
+    }
+    QQToast.a(localFragmentActivity, 2131693558, 1).a();
+  }
+  
+  protected void d(int paramInt, String paramString)
+  {
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
+    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ListenTogetherPlayFragment", 2, String.format("onResumeListenTogetherFail [%s, %d]", new Object[] { paramString, Integer.valueOf(paramInt) }));
+    }
+    QQToast.a(localFragmentActivity, 2131693560, 1).a();
+  }
+  
+  protected void e(int paramInt, String paramString)
+  {
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
+    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ListenTogetherPlayFragment", 2, String.format("onCutListenTogetherFail [%s, %d]", new Object[] { paramString, Integer.valueOf(paramInt) }));
+    }
+    QQToast.a(localFragmentActivity, 2131693538, 1).a();
+  }
+  
+  protected void f(int paramInt, String paramString)
+  {
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
+    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ListenTogetherPlayFragment", 2, String.format("onChangePlayModeListenTogetherFail [%s, %d]", new Object[] { paramString, Integer.valueOf(paramInt) }));
+    }
+    QQToast.a(localFragmentActivity, 2131693559, 1).a();
   }
 }
 

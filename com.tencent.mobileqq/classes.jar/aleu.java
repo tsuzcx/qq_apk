@@ -1,29 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aleu
-  implements Animation.AnimationListener
+class aleu
+  implements View.OnClickListener
 {
-  public aleu(SpecailCareListActivity paramSpecailCareListActivity) {}
+  aleu(aldh paramaldh) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.leftView.clearAnimation();
-    this.a.a.clearAnimation();
-    this.a.leftView.setVisibility(4);
-    this.a.a.setVisibility(8);
-    this.a.rightViewText.setClickable(true);
-    this.a.rightViewText.setText(SpecailCareListActivity.b);
-    this.a.rightViewText.setContentDescription(amtj.a(2131713342));
-    this.a.c = true;
+    this.a.a(25, 0);
+    this.a.a(-1, null);
+    bdla.b(aldh.a(this.a).app, "CliOper", "", "", "QQWIFI", "clk_buleClose", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

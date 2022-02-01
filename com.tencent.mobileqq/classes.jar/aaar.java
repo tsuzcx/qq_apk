@@ -1,27 +1,27 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
 
-class aaar
-  implements View.OnClickListener
+public class aaar
+  extends aitj
 {
-  aaar(aaaq paramaaaq, String paramString, Activity paramActivity) {}
-  
-  public void onClick(View paramView)
+  public aaar(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_Aaaq.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
-    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity))
-    {
-      AppInterface localAppInterface = ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getAppInterface();
-      if ((localAppInterface instanceof NearbyAppInterface)) {
-        ((NearbyAppInterface)localAppInterface).reportClickEvent("dc00899", "grp_lbs", "", "hot_create", "clk_create", 0, 0, "", "", "", "");
-      }
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramContext, paramString);
+  }
+  
+  protected void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    paramBundle = getWindow();
+    WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();
+    localLayoutParams.width = -2;
+    localLayoutParams.height = -2;
+    localLayoutParams.gravity = 17;
+    localLayoutParams.y -= getContext().getResources().getDimensionPixelOffset(2131299167);
+    paramBundle.setAttributes(localLayoutParams);
   }
 }
 

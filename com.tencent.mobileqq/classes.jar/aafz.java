@@ -1,80 +1,60 @@
-import android.app.Activity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Gallery;
+import java.io.File;
+import java.util.HashMap;
 
-class aafz
-  implements aagl
+public abstract class aafz
 {
-  aafz(aafy paramaafy) {}
+  aafz jdField_a_of_type_Aafz;
+  aaga jdField_a_of_type_Aaga;
+  String c;
+  String d;
   
-  public void f()
+  public aafz(aafb paramaafb, aaga paramaaga, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GalleryComponent", 2, "gallery onEnterAnimationEnd");
-    }
-    if (this.a.jdField_a_of_type_ComTencentWidgetGallery.getVisibility() != 0) {
-      this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
-    }
-    this.a.f();
-    if ((this.a.jdField_a_of_type_Aagk != null) && (!this.a.jdField_a_of_type_Aagk.a())) {
-      this.a.jdField_a_of_type_Aagk.a();
-    }
+    this.jdField_a_of_type_Aaga = paramaaga;
+    this.c = paramString;
   }
   
-  public void g()
+  public aafl a()
   {
-    if (this.a.jdField_a_of_type_Aagp.a().b) {
-      this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(4);
-    }
-    this.a.g();
-    if ((this.a.jdField_a_of_type_Aagk != null) && (this.a.jdField_a_of_type_Aagk.a())) {
-      this.a.jdField_a_of_type_Aagk.b();
-    }
-  }
-  
-  public void h()
-  {
-    if (this.a.jdField_a_of_type_Aagp.a().b) {
-      this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(4);
-    }
-    if (this.a.jdField_a_of_type_Aafx != null) {
-      this.a.jdField_a_of_type_Aafx.a(4);
-    }
-    if ((this.a.jdField_a_of_type_Aagk != null) && (this.a.jdField_a_of_type_Aagk.a())) {
-      this.a.jdField_a_of_type_Aagk.b();
-    }
-    this.a.h();
-    this.a.jdField_a_of_type_ComTencentWidgetGallery.e();
-  }
-  
-  public void i()
-  {
-    this.a.i();
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    synchronized (this.b.jdField_a_of_type_JavaLangObject)
     {
-      localStringBuilder = new StringBuilder().append("gallery onExitAnimationEnd ");
-      if (this.a.jdField_a_of_type_Aagp.a() != this.a) {
-        break label87;
-      }
+      aafl localaafl = (aafl)this.b.jdField_a_of_type_JavaUtilHashMap.get(this.c);
+      return localaafl;
     }
-    label87:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("GalleryComponent", 2, bool);
-      if (this.a.jdField_a_of_type_Aagp.a() != this.a) {
-        break;
-      }
-      this.a.jdField_a_of_type_AndroidAppActivity.finish();
-      return;
+  }
+  
+  public File a()
+  {
+    int i = this.c.indexOf("_");
+    Object localObject = this.c.substring(i + 1, this.c.length());
+    localObject = new File(aafb.jdField_a_of_type_JavaLangString + File.separator + (String)localObject);
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdirs();
     }
-    this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
-    this.a.n();
+    return localObject;
+  }
+  
+  public abstract void a();
+  
+  public File b()
+  {
+    File localFile = new File(aafb.jdField_a_of_type_JavaLangString + File.separator + "cache");
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return localFile;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Aafz != null) {
+      this.jdField_a_of_type_Aafz.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aafz
  * JD-Core Version:    0.7.0.1
  */

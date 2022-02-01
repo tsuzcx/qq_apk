@@ -1,55 +1,54 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.mobileqq.activity.SplashActivity;
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class rsw
-  extends OrientationEventListener
+public class rsw
 {
-  rsw(rsv paramrsv, Context paramContext, WeakReference paramWeakReference)
+  public static <T> int a(Iterable<T> paramIterable, rsy<T> paramrsy)
   {
-    super(paramContext);
+    if (paramIterable != null)
+    {
+      int i = 0;
+      paramIterable = paramIterable.iterator();
+      while (paramIterable.hasNext())
+      {
+        if (paramrsy.a(paramIterable.next())) {
+          return i;
+        }
+        i += 1;
+      }
+    }
+    return -1;
   }
   
-  public void onOrientationChanged(int paramInt)
+  public static <T, E> List<E> a(Iterable<T> paramIterable, rsx<T, E> paramrsx)
   {
-    if (!rsv.a(this.jdField_a_of_type_Rsv, paramInt)) {
-      break label11;
-    }
-    label11:
-    label159:
-    for (;;)
+    ArrayList localArrayList = new ArrayList();
+    if ((paramIterable != null) && (paramrsx != null))
     {
-      return;
-      if (!(this.jdField_a_of_type_Rsv.a() instanceof SplashActivity))
+      paramIterable = paramIterable.iterator();
+      while (paramIterable.hasNext()) {
+        localArrayList.add(paramrsx.a(paramIterable.next()));
+      }
+    }
+    return localArrayList;
+  }
+  
+  public static <T> List<T> a(Iterable<T> paramIterable, rsy<T> paramrsy)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((paramIterable != null) && (paramrsy != null))
+    {
+      paramIterable = paramIterable.iterator();
+      while (paramIterable.hasNext())
       {
-        int i = rsv.a(this.jdField_a_of_type_Rsv);
-        if (((paramInt >= 0) && (paramInt <= 30)) || (paramInt > 330)) {
-          paramInt = 1;
-        }
-        for (;;)
-        {
-          if (paramInt == rsv.a(this.jdField_a_of_type_Rsv)) {
-            break label159;
-          }
-          rsv.a(this.jdField_a_of_type_Rsv, paramInt);
-          if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
-            break;
-          }
-          ((rsx)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(paramInt);
-          return;
-          if ((paramInt > 70) && (paramInt <= 110)) {
-            paramInt = 8;
-          } else if ((paramInt > 150) && (paramInt <= 210)) {
-            paramInt = 9;
-          } else if ((paramInt > 250) && (paramInt <= 290)) {
-            paramInt = 0;
-          } else {
-            paramInt = i;
-          }
+        Object localObject = paramIterable.next();
+        if (paramrsy.a(localObject)) {
+          localArrayList.add(localObject);
         }
       }
     }
+    return localArrayList;
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar;
 
-import anyd;
+import apbf;
 
 public class ARGlobalConfigManager$2
   implements Runnable
 {
-  public ARGlobalConfigManager$2(anyd paramanyd) {}
+  public ARGlobalConfigManager$2(apbf paramapbf) {}
   
   public void run()
   {

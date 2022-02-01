@@ -1,46 +1,21 @@
-import android.app.Activity;
-import android.os.Looper;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.view.ApolloGameWrapper.1;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import eipc.EIPCResult;
 
-public class amls
+class amls
+  implements anfj
 {
-  public static void a(boolean paramBoolean, Activity paramActivity, ahqs paramahqs, AppInterface paramAppInterface, String paramString, amlt paramamlt)
-  {
-    a(paramBoolean, paramActivity, paramahqs, paramAppInterface, paramString, paramamlt, true);
-  }
+  amls(amlo paramamlo, Bundle paramBundle, int paramInt) {}
   
-  public static void a(boolean paramBoolean1, Activity paramActivity, ahqs paramahqs, AppInterface paramAppInterface, String paramString, amlt paramamlt, boolean paramBoolean2)
+  public void onDownloadFinish(boolean paramBoolean, int paramInt)
   {
-    if (paramamlt == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.ApolloGameWrapper", 2, "checkApolloGame listener is null");
-      }
-      return;
+    EIPCResult localEIPCResult = new EIPCResult();
+    if (paramBoolean) {
+      paramInt = 0;
     }
-    if ((paramActivity == null) || (paramAppInterface == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.ApolloGameWrapper", 2, "checkApolloGame activity is null OR appInterface is null");
-      }
-      paramamlt.a(false, null);
-      return;
-    }
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      paramahqs = alyf.a(paramString);
-      if ((paramahqs == null) || (paramahqs.a == null) || (paramahqs.a.get() != paramActivity))
-      {
-        paramamlt.a(false, paramahqs);
-        return;
-      }
-      paramamlt.a(true, paramahqs);
-      return;
-    }
-    paramActivity.runOnUiThread(new ApolloGameWrapper.1(paramString, paramActivity, paramamlt));
+    localEIPCResult.code = paramInt;
+    localEIPCResult.data = this.jdField_a_of_type_AndroidOsBundle;
+    this.jdField_a_of_type_AndroidOsBundle.putString("apolloErrMsg", "success");
+    this.jdField_a_of_type_Amlo.callbackResult(this.jdField_a_of_type_Int, localEIPCResult);
   }
 }
 

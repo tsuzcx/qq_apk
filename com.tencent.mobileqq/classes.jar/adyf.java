@@ -1,17 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQIdentiferActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
 
-class adyf
-  implements DialogInterface.OnClickListener
+public class adyf
+  implements amhj
 {
-  adyf(adye paramadye) {}
+  public adyf(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(View paramView)
   {
-    paramDialogInterface.dismiss();
-    QQIdentiferActivity.a(this.a.a, 205, amtj.a(2131709472));
-    this.a.a.finish();
+    if (ForwardFriendListActivity.a(this.a))
+    {
+      ForwardFriendListActivity.b(this.a, paramView);
+      return;
+    }
+    ForwardFriendListActivity.c(this.a, paramView);
+  }
+  
+  public boolean a(String paramString, int paramInt)
+  {
+    return ForwardFriendListActivity.a(this.a, paramString, paramInt);
   }
 }
 

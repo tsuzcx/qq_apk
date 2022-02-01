@@ -1,134 +1,89 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.utils.ViewUtils;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
 
 public class yxw
-  extends BaseAdapter
+  extends yxt
 {
-  private List<yyc> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private yya jdField_a_of_type_Yya;
+  private boolean c;
   
-  public List<yyc> a()
+  public yxw(Context paramContext, String paramString, int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    super(paramContext, paramString, paramInt);
   }
   
-  public void a(List<yyc> paramList)
+  public int a()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    notifyDataSetChanged();
+    return 1;
   }
   
-  public void a(yya paramyya)
+  public int a(int paramInt)
   {
-    this.jdField_a_of_type_Yya = paramyya;
+    return 0;
   }
   
-  public int getCount()
+  public View a(int paramInt, ViewGroup paramViewGroup)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561746, null);
   }
   
-  public Object getItem(int paramInt)
+  public void a(int paramInt)
   {
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public long getItemId(int paramInt)
+  public void a(int paramInt, View paramView)
   {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    yyc localyyc = (yyc)getItem(paramInt);
-    Object localObject1;
-    if (localyyc == null)
+    ImageView localImageView1 = (ImageView)paramView.findViewById(2131364376);
+    ImageView localImageView2 = (ImageView)paramView.findViewById(2131364371);
+    TextView localTextView = (TextView)paramView.findViewById(2131364373);
+    paramView = paramView.findViewById(2131364367);
+    localTextView.setText(this.jdField_a_of_type_JavaLangString);
+    switch (this.jdField_a_of_type_Int)
     {
-      localObject1 = paramView;
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
-      return paramView;
-    }
-    Object localObject2;
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560414, null);
-      localObject1 = new yyb(paramView);
-      paramView.setTag(localObject1);
-      localObject2 = new GradientDrawable();
-      if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
-      {
-        ((GradientDrawable)localObject2).setColor(-16777216);
-        label97:
-        if (!bbyp.b()) {
-          break label287;
-        }
-        ((GradientDrawable)localObject2).setCornerRadius(ViewUtils.dpToPx(16.0F));
-        label114:
-        paramView.setBackgroundDrawable((Drawable)localObject2);
-        label120:
-        paramView.setOnTouchListener(new yxx(this, paramView.getBackground(), localyyc));
-        ((yyb)localObject1).c.setOnClickListener(new yxy(this, localyyc));
-        ((yyb)localObject1).jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new yxz(this, localyyc));
-        localObject2 = paramView.getContext().getString(2131716179, new Object[] { localyyc.a, localyyc.jdField_b_of_type_JavaLangString });
-        ((yyb)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
-        if (!TextUtils.isEmpty(localyyc.c)) {
-          break label313;
-        }
-        ((yyb)localObject1).jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-        label236:
-        if (localyyc.jdField_b_of_type_Int != 1) {
-          break label349;
-        }
-        ((yyb)localObject1).jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846911);
-        ((yyb)localObject1).jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+    case 10002: 
+    case 10003: 
+    default: 
+      if (this.jdField_a_of_type_Boolean) {
+        localImageView1.setVisibility(0);
       }
+      break;
     }
     for (;;)
     {
-      localObject1 = paramView;
+      if (!this.c) {
+        break label177;
+      }
+      paramInt = -2170912;
+      QQStoryContext.a();
+      if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
+        paramInt = -16444373;
+      }
+      paramView.setBackgroundColor(paramInt);
+      paramView.setVisibility(0);
+      return;
+      localImageView2.setImageResource(2130846716);
       break;
-      ((GradientDrawable)localObject2).setColor(paramView.getResources().getColor(2131167177));
-      break label97;
-      label287:
-      ((GradientDrawable)localObject2).setCornerRadius(ViewUtils.dpToPx(40.0F));
-      break label114;
-      localObject1 = (yyb)paramView.getTag();
-      break label120;
-      label313:
-      localObject2 = paramView.getContext().getString(2131716180, new Object[] { localyyc.c });
-      ((yyb)localObject1).jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
-      break label236;
-      label349:
-      if (localyyc.jdField_b_of_type_Int == 2)
-      {
-        ((yyb)localObject1).jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846910);
-        ((yyb)localObject1).jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      }
-      else if (localyyc.jdField_b_of_type_Int == 3)
-      {
-        ((yyb)localObject1).jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846912);
-        ((yyb)localObject1).jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      }
+      localImageView2.setImageResource(2130846712);
+      break;
+      localImageView2.setImageResource(2130846715);
+      break;
+      localImageView1.setVisibility(4);
     }
+    label177:
+    paramView.setVisibility(4);
+  }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void c(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
   }
 }
 

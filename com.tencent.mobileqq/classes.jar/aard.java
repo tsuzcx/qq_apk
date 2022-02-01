@@ -1,107 +1,52 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.device.datadef.DeviceInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.ArrayList;
-import java.util.Arrays;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class aard
-  extends BroadcastReceiver
+  implements nuw
 {
-  aard(aara paramaara) {}
+  aard(aarc paramaarc) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void loaded(String paramString, int paramInt)
   {
-    int i = 0;
-    if ((paramIntent.getAction().equalsIgnoreCase("SmartDevice_devListChang")) || (paramIntent.getAction().equalsIgnoreCase("onDeviceDisconnected")) || (paramIntent.getAction().equalsIgnoreCase("onDeviceLogined")))
-    {
-      aara.a(this.a).sendEmptyMessage(1003);
-      new abdb().a();
-      this.a.b = 2;
+    if (QLog.isColorLevel()) {
+      QLog.i("OfflinePluginQQ", 2, "-->offline:checkOfflineUp. result: " + paramString + ", code: " + paramInt);
     }
-    long l;
-    do
+    if (paramInt == 9)
     {
-      do
+      try
       {
-        do
+        localObject = new JSONObject(paramString);
+        paramString = (String)localObject;
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
         {
-          do
-          {
-            do
-            {
-              return;
-              if (!paramIntent.getAction().equalsIgnoreCase("SmartDevice_devListChangeUI")) {
-                break;
-              }
-              paramContext = this.a.a();
-              aara.a(this.a, "DeviceList @@ cache receivechange for ui list:" + paramContext);
-            } while (paramContext == null);
-            this.a.notifyUI(1, true, new ArrayList(Arrays.asList(paramContext)));
-            return;
-            if (paramIntent.getAction().equalsIgnoreCase("SmartDevice_login"))
-            {
-              i = paramIntent.getExtras().getInt("logincode");
-              aara.a(this.a, "SmartDeviceProxyMgr::receive qq login broadcast!!!resultCode = " + i);
-              SettingCloneUtil.writeValue(this.a.app.getApp(), this.a.app.getCurrentAccountUin(), null, "account_login_success_time", String.valueOf(bbko.a()));
-              if (i == 0)
-              {
-                this.a.jdField_a_of_type_Int = 2;
-                return;
-              }
-              this.a.jdField_a_of_type_Int = 3;
-              return;
-            }
-            if ((paramIntent.getAction().equalsIgnoreCase("mqq.intent.action.LOGOUT")) || (paramIntent.getAction().equalsIgnoreCase("mqq.intent.action.ACCOUNT_CHANGED")))
-            {
-              if (this.a.a())
-              {
-                aara.a(this.a, "SmartDeviceProxyMgr::receive qq logout broadcast!!!");
-                this.a.d();
-              }
-              abdb.c();
-              return;
-            }
-            if (paramIntent.getAction().equalsIgnoreCase("SmartDevice_clickOnDeviceList"))
-            {
-              if (this.a.a())
-              {
-                this.a.b(false);
-                this.a.e();
-              }
-              abdm.a(null, "Usr_Click_MyDevice", 0, 0, 0);
-              return;
-            }
-            if (!paramIntent.getAction().equalsIgnoreCase("onQFindLostDeviceList")) {
-              break;
-            }
-          } while (paramIntent.getExtras().getInt("qfind_result", 1) != 0);
-          this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-          paramContext = paramIntent.getExtras().getLongArray("qfind_dins");
-          int j = paramContext.length;
-          while (i < j)
-          {
-            l = paramContext[i];
-            this.a.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(l));
-            i += 1;
+          Object localObject;
+          localJSONException.printStackTrace();
+          if (QLog.isColorLevel()) {
+            QLog.i("OfflinePluginQQ", 2, "-->offline:checkUp loaded err:" + paramString);
           }
-          paramContext = this.a.a();
-        } while (paramContext == null);
-        this.a.notifyUI(1, true, new ArrayList(Arrays.asList(paramContext)));
-        return;
-      } while ((paramIntent.getAction().equals("SmartDevice_receiveDPMsg")) || (!paramIntent.getAction().equals("SmartDevice_DeviceBindRst")) || (paramIntent.getExtras().getInt("deviceoprstcode") != 0));
-      aara.a(this.a, 1);
-      SettingCloneUtil.writeValueForInt(BaseApplication.getContext(), this.a.app.getCurrentAccountUin(), null, "qqsetting_deviceplugin_bind_flag", aara.a(this.a));
-      l = paramIntent.getExtras().getLong("deviceopdin", 0L);
-      paramContext = this.a.a(l);
-    } while ((paramContext == null) || (paramContext.productId < 2000000000L) || (paramContext.productId >= 3000000000L));
-    this.a.a(l);
+          paramString = null;
+        }
+      }
+      localObject = this.a.a.obtainMessage();
+      ((Message)localObject).arg1 = 3;
+      ((Message)localObject).obj = paramString;
+      this.a.a.sendMessage((Message)localObject);
+    }
+    while (paramInt != -1) {
+      return;
+    }
+    paramString = this.a.a.obtainMessage();
+    paramString.arg1 = 2;
+    this.a.a.sendMessage(paramString);
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

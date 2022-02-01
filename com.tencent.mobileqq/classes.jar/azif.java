@@ -1,155 +1,137 @@
-import com.tencent.mobileqq.vfs.VFSAssistantUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.content.ContentValues;
+import android.database.Cursor;
+import com.tencent.mobileqq.data.Stranger;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.NoColumnError;
+import com.tencent.mobileqq.persistence.NoColumnErrorHandler;
+import com.tencent.mobileqq.persistence.OGAbstractDao;
 
 public class azif
+  extends OGAbstractDao
 {
-  private int jdField_a_of_type_Int = -1;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = -1;
-  private String jdField_b_of_type_JavaLangString = "";
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString = "";
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int;
-  private String jdField_d_of_type_JavaLangString = "";
-  private int jdField_e_of_type_Int;
-  private String jdField_e_of_type_JavaLangString = "";
-  private String f = "";
-  private String g = "";
-  private String h = "";
-  private String i;
-  private String j = "-1";
-  private String k;
-  
-  public azie a()
+  public azif()
   {
+    this.columnLen = 9;
+  }
+  
+  public Entity cursor2Entity(Entity paramEntity, Cursor paramCursor, boolean paramBoolean, NoColumnErrorHandler paramNoColumnErrorHandler)
+  {
+    paramEntity = (Stranger)paramEntity;
+    if (paramNoColumnErrorHandler == null)
+    {
+      paramEntity.uin = paramCursor.getString(paramCursor.getColumnIndex("uin"));
+      paramEntity.name = paramCursor.getString(paramCursor.getColumnIndex("name"));
+      paramEntity.age = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("age")));
+      paramEntity.remark = paramCursor.getString(paramCursor.getColumnIndex("remark"));
+      paramEntity.gender = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("gender")));
+      paramEntity.groupName = paramCursor.getString(paramCursor.getColumnIndex("groupName"));
+      paramEntity.login = paramCursor.getString(paramCursor.getColumnIndex("login"));
+      paramEntity.loginId = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("loginId")));
+      paramEntity.time = paramCursor.getLong(paramCursor.getColumnIndex("time"));
+      return paramEntity;
+    }
+    int i = paramCursor.getColumnIndex("uin");
+    if (i == -1)
+    {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("uin", String.class));
+      i = paramCursor.getColumnIndex("name");
+      if (i != -1) {
+        break label504;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("name", String.class));
+      label245:
+      i = paramCursor.getColumnIndex("age");
+      if (i != -1) {
+        break label519;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("age", Byte.TYPE));
+      label280:
+      i = paramCursor.getColumnIndex("remark");
+      if (i != -1) {
+        break label535;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("remark", String.class));
+      label314:
+      i = paramCursor.getColumnIndex("gender");
+      if (i != -1) {
+        break label550;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("gender", Byte.TYPE));
+      label349:
+      i = paramCursor.getColumnIndex("groupName");
+      if (i != -1) {
+        break label566;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("groupName", String.class));
+      label383:
+      i = paramCursor.getColumnIndex("login");
+      if (i != -1) {
+        break label581;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("login", String.class));
+      label417:
+      i = paramCursor.getColumnIndex("loginId");
+      if (i != -1) {
+        break label596;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("loginId", Byte.TYPE));
+    }
     for (;;)
     {
-      try
-      {
-        switch (this.jdField_a_of_type_Int)
-        {
-        case 0: 
-          if (this.jdField_a_of_type_Boolean) {
-            this.jdField_b_of_type_Boolean = false;
-          }
-          return new azie(this.k, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_d_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_e_of_type_JavaLangString, this.jdField_c_of_type_Int, this.f, this.jdField_a_of_type_Boolean, this.jdField_c_of_type_Boolean, this.jdField_b_of_type_Boolean, this.i, this.jdField_d_of_type_Int, this.g, this.h, this.jdField_e_of_type_Int, this.j);
-        }
+      i = paramCursor.getColumnIndex("time");
+      if (i != -1) {
+        break label612;
       }
-      catch (Exception localException)
-      {
-        QLog.e("QSplash@SplashItem", 1, localException, new Object[0]);
-        return null;
-      }
-      this.i = (VFSAssistantUtils.getSDKPrivatePath(azid.jdField_a_of_type_JavaLangString) + "pic/" + this.jdField_d_of_type_JavaLangString.hashCode());
-      continue;
-      this.i = (VFSAssistantUtils.getSDKPrivatePath(azid.jdField_a_of_type_JavaLangString) + "gif/" + this.jdField_d_of_type_JavaLangString.hashCode());
-      this.i = (VFSAssistantUtils.getSDKPrivatePath(azid.jdField_a_of_type_JavaLangString) + "video/" + this.jdField_d_of_type_JavaLangString.hashCode());
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("time", Long.TYPE));
+      return paramEntity;
+      paramEntity.uin = paramCursor.getString(i);
+      break;
+      label504:
+      paramEntity.name = paramCursor.getString(i);
+      break label245;
+      label519:
+      paramEntity.age = ((byte)paramCursor.getShort(i));
+      break label280;
+      label535:
+      paramEntity.remark = paramCursor.getString(i);
+      break label314;
+      label550:
+      paramEntity.gender = ((byte)paramCursor.getShort(i));
+      break label349;
+      label566:
+      paramEntity.groupName = paramCursor.getString(i);
+      break label383;
+      label581:
+      paramEntity.login = paramCursor.getString(i);
+      break label417;
+      label596:
+      paramEntity.loginId = ((byte)paramCursor.getShort(i));
     }
+    label612:
+    paramEntity.time = paramCursor.getLong(i);
+    return paramEntity;
   }
   
-  public azif a(int paramInt)
+  public void entity2ContentValues(Entity paramEntity, ContentValues paramContentValues)
   {
-    this.jdField_e_of_type_Int = paramInt;
-    return this;
+    paramEntity = (Stranger)paramEntity;
+    paramContentValues.put("uin", paramEntity.uin);
+    paramContentValues.put("name", paramEntity.name);
+    paramContentValues.put("age", Byte.valueOf(paramEntity.age));
+    paramContentValues.put("remark", paramEntity.remark);
+    paramContentValues.put("gender", Byte.valueOf(paramEntity.gender));
+    paramContentValues.put("groupName", paramEntity.groupName);
+    paramContentValues.put("login", paramEntity.login);
+    paramContentValues.put("loginId", Byte.valueOf(paramEntity.loginId));
+    paramContentValues.put("time", Long.valueOf(paramEntity.time));
   }
   
-  public azif a(String paramString)
+  public String getCreateTableSql(String paramString)
   {
-    this.j = paramString;
-    return this;
-  }
-  
-  public azif a(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public azif b(int paramInt)
-  {
-    this.jdField_d_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public azif b(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public azif b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public azif c(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public azif c(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public azif d(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public azif d(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public azif e(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public azif e(String paramString)
-  {
-    this.jdField_d_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public azif f(String paramString)
-  {
-    this.jdField_e_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public azif g(String paramString)
-  {
-    this.f = paramString;
-    return this;
-  }
-  
-  public azif h(String paramString)
-  {
-    this.k = paramString;
-    return this;
-  }
-  
-  public azif i(String paramString)
-  {
-    this.g = paramString;
-    return this;
-  }
-  
-  public azif j(String paramString)
-  {
-    this.h = paramString;
-    return this;
+    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,uin TEXT ,name TEXT ,age INTEGER ,remark TEXT ,gender INTEGER ,groupName TEXT ,login TEXT ,loginId INTEGER ,time INTEGER,UNIQUE(uin) ON CONFLICT IGNORE)");
+    return localStringBuilder.toString();
   }
 }
 

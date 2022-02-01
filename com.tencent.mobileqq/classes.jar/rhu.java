@@ -1,32 +1,35 @@
-import android.os.Bundle;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+import android.text.TextPaint;
+import android.widget.Button;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderFriendRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class rhu
-  extends pkt
+  implements qie
 {
-  public rhu(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
+  public rhu(ComponentHeaderFriendRecommend paramComponentHeaderFriendRecommend, ArticleInfo paramArticleInfo) {}
   
-  public void a(int paramInt, rdi paramrdi)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    if ((paramInt == 0) && (ReadInJoyDeliverVideoActivity.a(this.a)))
+    QLog.d("ComponentHeaderFriendRecommend", 2, "978 resp, result : " + paramBoolean + ", data : " + paramInt + ", distUin : " + paramString);
+    if ((paramBoolean) && (paramInt == 2))
     {
-      ReadInJoyDeliverVideoActivity.a(this.a, new Bundle());
-      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_video_cover_url", paramrdi.h);
-      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_video_url", paramrdi.g);
-      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_video_title", paramrdi.jdField_d_of_type_JavaLangString);
-      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_video_uuid", paramrdi.f);
-      ReadInJoyDeliverVideoActivity.a(this.a).putLong("arg_video_duration", paramrdi.jdField_a_of_type_Long);
-      ReadInJoyDeliverVideoActivity.a(this.a).putInt("arg_video_cover_width", paramrdi.c);
-      ReadInJoyDeliverVideoActivity.a(this.a).putInt("arg_video_cover_height", paramrdi.jdField_b_of_type_Int);
-      ReadInJoyDeliverVideoActivity.a(this.a).putInt("arg_video_width", paramrdi.e);
-      ReadInJoyDeliverVideoActivity.a(this.a).putInt("arg_video_height", paramrdi.jdField_d_of_type_Int);
-      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_topic_id", paramrdi.jdField_a_of_type_Int + "");
-      ReadInJoyDeliverVideoActivity.a(this.a).setHint("#" + paramrdi.jdField_a_of_type_JavaLangString + "#");
-      ReadInJoyDeliverVideoActivity.a(this.a, paramrdi.jdField_b_of_type_JavaLangString);
-      ReadInJoyDeliverVideoActivity.a(this.a, true);
-      ReadInJoyDeliverVideoActivity.a(this.a, paramrdi.h);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.h = paramInt;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend.a.setEnabled(false);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend.a.getPaint().setFakeBoldText(false);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend.a.setText(anvx.a(2131701804));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.h = 2;
+      pvj.a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      pvj.a().c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.a, paramInt);
+      pvm.a().b();
+      return;
     }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend.a.setEnabled(true);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend.a.getPaint().setFakeBoldText(true);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend.a.setText(anvx.a(2131701805));
+    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend.getContext(), anvx.a(2131701846), 0).a();
   }
 }
 

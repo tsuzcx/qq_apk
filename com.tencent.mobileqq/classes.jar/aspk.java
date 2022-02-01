@@ -1,16 +1,41 @@
-import com.tencent.mobileqq.filemanageraux.link.LinkByWeiyunFragment;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
 
-class aspk
-  implements aszj
+public class aspk
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  aspk(aspj paramaspj) {}
+  private int jdField_a_of_type_Int;
+  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onNo() {}
+  public aspk(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
   
-  public void onYes()
+  public void onGlobalLayout()
   {
-    bcef.b(null, "dc00898", "", "", "0X800AEE3", "0X800AEE3", 0, 0, "", "", "", "");
-    LinkByWeiyunFragment.a(this.a.jdField_a_of_type_AndroidAppActivity, null, this.a.jdField_a_of_type_JavaLangString, false);
+    ExtendFriendProfileEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment).getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
+    int i = this.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_AndroidGraphicsRect.top;
+    if (i != this.jdField_a_of_type_Int)
+    {
+      int j = ExtendFriendProfileEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment).getRootView().getHeight();
+      int k = j - i;
+      if (k <= j / 4) {
+        break label90;
+      }
+      ExtendFriendProfileEditFragment.c(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment, k);
+      this.jdField_a_of_type_Boolean = true;
+      ExtendFriendProfileEditFragment.d(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = i;
+      return;
+      label90:
+      if (this.jdField_a_of_type_Boolean) {
+        ExtendFriendProfileEditFragment.e(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment);
+      }
+    }
   }
 }
 

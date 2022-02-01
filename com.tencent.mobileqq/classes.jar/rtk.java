@@ -1,14 +1,14 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-class rtk
-  implements tzl
+final class rtk
+  implements DialogInterface.OnDismissListener
 {
-  rtk(rti paramrti, AdvertisementInfo paramAdvertisementInfo, sdg paramsdg) {}
+  rtk(DialogInterface.OnDismissListener paramOnDismissListener) {}
   
-  public void a(View paramView, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Rti.a(paramView.getContext(), paramInt, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_Sdg.a);
+    this.a.onDismiss(paramDialogInterface);
   }
 }
 

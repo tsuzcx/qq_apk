@@ -1,29 +1,28 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.View.MeasureSpec;
+import android.widget.FrameLayout;
+import com.tencent.widget.GridView;
 
 class askj
-  extends asjn
+  extends FrameLayout
 {
-  public askj(asji paramasji)
+  public askj(askg paramaskg, Context paramContext)
   {
-    super(paramasji);
+    super(paramContext);
   }
   
-  protected String a()
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return "StateSaveToWeiYunByPCWhenToOffFailed";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+    int i = askg.a(this.a).getPaddingLeft() + getPaddingLeft();
+    if (i != paramInt1) {
+      offsetLeftAndRight(i - paramInt1);
     }
-    asji.b(this.jdField_a_of_type_Asji, 11, 7);
-    asji.c(this.jdField_a_of_type_Asji, 11, 7);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Asjn.a() + "->StateSaveToWeiYunByPC)");
-    this.jdField_a_of_type_Asjn = new askh(this.jdField_a_of_type_Asji);
+    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  protected void onMeasure(int paramInt1, int paramInt2)
+  {
+    super.onMeasure(View.MeasureSpec.makeMeasureSpec(askg.a(this.a).getMeasuredWidth() - askg.a(this.a).getPaddingLeft() - askg.a(this.a).getPaddingRight(), View.MeasureSpec.getMode(paramInt1)), paramInt2);
   }
 }
 

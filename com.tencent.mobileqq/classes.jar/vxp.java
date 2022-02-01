@@ -1,16 +1,18 @@
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckBlackList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.List;
 
-public abstract interface vxp
+public class vxp
+  extends wfh
 {
-  public abstract void a();
+  public List<qqstory_struct.GpsMsg> a;
   
-  public abstract void a(ArrayList<vxd> paramArrayList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3);
-  
-  public abstract void a(vxd paramvxd, boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(boolean paramBoolean);
+  public vxp(qqstory_service.RspCheckBlackList paramRspCheckBlackList)
+  {
+    super(paramRspCheckBlackList.result);
+    this.a = paramRspCheckBlackList.black_gps_list.get();
+  }
 }
 
 

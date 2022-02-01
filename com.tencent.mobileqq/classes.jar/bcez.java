@@ -1,72 +1,44 @@
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import android.view.View;
+import java.util.List;
 
-class bcez
+public class bcez
+  implements bcfi
 {
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
-  public long e;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k = "8.4.8.4810";
-  public String l = "AND";
+  public static final String a;
+  private final List<bcfj> a;
+  private final String b;
   
-  public bcez()
+  static
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_b_of_type_Long = AppSetting.a();
-    this.jdField_a_of_type_JavaLangString = DeviceInfoUtil.getIMEI();
-    this.jdField_b_of_type_JavaLangString = "";
+    jdField_a_of_type_JavaLangString = anvx.a(2131704866);
+  }
+  
+  public bcez(List<bcfj> paramList, String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.b = paramString;
+  }
+  
+  public int a()
+  {
+    return 2147483647;
   }
   
   public String a()
   {
-    StringBuilder localStringBuilder = new StringBuilder(256);
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_b_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.f);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_c_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_d_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_e_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.g);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.h);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.i);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.j);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.k);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.l);
-    localStringBuilder.append('|');
-    return localStringBuilder.toString();
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public List<bcfj> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(View paramView) {}
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 

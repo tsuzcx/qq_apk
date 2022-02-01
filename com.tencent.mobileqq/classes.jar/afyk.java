@@ -1,45 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.confess.ConfessNewsBgView;
-import com.tencent.mobileqq.data.MessageForConfessNews;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import mqq.app.QQPermissionCallback;
 
-class afyk
-  implements View.OnClickListener
+public class afyk
+  implements QQPermissionCallback
 {
-  afyk(afyj paramafyj) {}
+  public afyk(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    Object localObject;
-    int i;
-    if ((paramView instanceof ConfessNewsBgView))
-    {
-      localObject = paramView.getTag();
-      if ((localObject instanceof MessageForConfessNews))
-      {
-        localObject = (MessageForConfessNews)localObject;
-        if (((MessageForConfessNews)localObject).istroop != 1) {
-          break label80;
-        }
-        i = 1;
-        if (i == 0) {
-          break label85;
-        }
-        apsz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, 2, ((MessageForConfessNews)localObject).strGroupUin, ((MessageForConfessNews)localObject).nTopicId, ((MessageForConfessNews)localObject).strConfessorUin, ((MessageForConfessNews)localObject).strRecUin);
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label80:
-      i = 0;
-      break;
-      label85:
-      apse.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.getContext(), ((MessageForConfessNews)localObject).nTopicId, ((MessageForConfessNews)localObject).strConfessorUin, ((MessageForConfessNews)localObject).nConfessorSex, ((MessageForConfessNews)localObject).strRecUin);
-    }
+    bhdj.a(this.a.a, paramArrayOfString, paramArrayOfInt);
   }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

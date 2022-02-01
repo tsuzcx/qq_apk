@@ -1,12 +1,25 @@
-import android.view.View;
-import com.tencent.widget.ListView;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
-public abstract interface snm
-  extends bjsd
+class snm
+  extends suv
 {
-  public abstract void a(int paramInt1, View paramView, ListView paramListView, int paramInt2);
+  snm(smg paramsmg) {}
   
-  public abstract void a(View paramView, ListView paramListView, int paramInt);
+  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  {
+    smg.a(this.a, paramInt, paramVideoInfo, paramString, c(), a());
+  }
+  
+  public int b()
+  {
+    return 4;
+  }
+  
+  public int c()
+  {
+    return 4;
+  }
 }
 
 

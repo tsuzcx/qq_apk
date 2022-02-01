@@ -1,58 +1,45 @@
-import com.tencent.commonsdk.util.notification.NotificationLimiter;
-import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 public class bjnk
-  implements NotificationLimiter
 {
-  private boolean a(int paramInt)
-  {
-    return (paramInt == 241) || (paramInt == 244) || (paramInt == 242) || (paramInt == 243);
-  }
+  private static bjnk jdField_a_of_type_Bjnk;
+  private bjnm jdField_a_of_type_Bjnm = new bjnm(this, null);
+  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new bjnl(this, "Module_DownloaderGetCodeServer");
+  private Map<String, Bundle> jdField_a_of_type_JavaUtilMap = Collections.synchronizedMap(new HashMap());
   
-  private boolean b(int paramInt)
+  public static bjnk a()
   {
-    return (paramInt >= 528) && (paramInt <= 3000528);
-  }
-  
-  private boolean c(int paramInt)
-  {
-    return paramInt == 3000530;
-  }
-  
-  public boolean shouldNotify(int paramInt)
-  {
-    if (a(paramInt)) {}
-    while ((b(paramInt)) || (c(paramInt))) {
-      return true;
-    }
-    if (MiniChatActivity.a()) {
-      if (QLog.isColorLevel()) {
-        QLog.i("NotificationLimiterImpl", 2, "MiniMsgActForeGround");
-      }
-    }
-    for (boolean bool1 = false;; bool1 = true)
+    if (jdField_a_of_type_Bjnk == null) {}
+    try
     {
-      boolean bool2 = bool1;
-      if (bool1) {
-        if (bcoo.a(paramInt)) {
-          break label93;
-        }
-      }
-      label93:
-      for (bool2 = true;; bool2 = false)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("NotificationLimiterImpl", 2, String.format("studymode_fightNotificationLimiterImpl ,shouldNotify1 = %b,", new Object[] { Boolean.valueOf(bool2) }));
-        }
-        return bool2;
-      }
+      jdField_a_of_type_Bjnk = new bjnk();
+      return jdField_a_of_type_Bjnk;
     }
+    finally {}
+  }
+  
+  private QQAppInterface a()
+  {
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    }
+    return null;
+  }
+  
+  public QIPCModule a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjnk
  * JD-Core Version:    0.7.0.1
  */

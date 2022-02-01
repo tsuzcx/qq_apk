@@ -1,29 +1,23 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
+import com.tencent.mobileqq.activity.TroopRobotPickerActivity.RobotPickerData;
+import com.tencent.mobileqq.conditionsearch.CountrySelectActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afhp
-  extends Handler
+  implements View.OnClickListener
 {
-  public afhp(RecordSoundPanel paramRecordSoundPanel, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public afhp(TroopRobotPickerActivity paramTroopRobotPickerActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.a.stopAudioRecord(1);
-    this.a.d();
-    QQToast.a(this.a.a.getActivity(), this.a.a.getActivity().getString(2131697962), 1).a();
+    Intent localIntent = new Intent(this.a, CountrySelectActivity.class);
+    localIntent.putExtra("key_country_code", this.a.a.mLocationCountyCode);
+    localIntent.putExtra("key_no_limit_allow", true);
+    this.a.startActivityForResult(localIntent, 111);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

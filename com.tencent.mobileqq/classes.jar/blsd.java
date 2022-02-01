@@ -1,16 +1,19 @@
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class blsd
   implements View.OnClickListener
 {
-  blsd(blsc paramblsc, blsf paramblsf) {}
+  blsd(blsc paramblsc) {}
   
   public void onClick(View paramView)
   {
-    int i = this.jdField_a_of_type_Blsf.getLayoutPosition();
-    blsc.a(this.jdField_a_of_type_Blsc).a(this.jdField_a_of_type_Blsf.itemView, i);
+    if ((this.a.mUIStyleHandler.mHostActivity != null) && (!this.a.mUIStyleHandler.mHostActivity.isFinishing())) {
+      this.a.mUIStyleHandler.mHostActivity.finish();
+    }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

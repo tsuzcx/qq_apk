@@ -1,9 +1,9 @@
 package com.tencent.gdtad.aditem;
 
-import abko;
-import abkv;
-import abrk;
-import abrl;
+import acae;
+import acal;
+import achn;
+import acho;
 import android.content.ContentResolver;
 import android.database.Cursor;
 import android.net.Uri;
@@ -12,7 +12,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bcef;
+import bdla;
 import com.tencent.ad.tangram.Ad;
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.util.AdClickUtil.Result;
@@ -58,7 +58,7 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.WeChatAppInfo;
 public class GdtAd
   implements Parcelable, Ad, Externalizable
 {
-  public static final Parcelable.Creator<GdtAd> CREATOR = new abko();
+  public static final Parcelable.Creator<GdtAd> CREATOR = new acae();
   public static final int EXP_KEY_CELLING_STYLE = 100329;
   public static final String EXP_VALUE_CELLING_STYLE = "1";
   public static final int REPORT_STATE_FINISHED = 2;
@@ -80,7 +80,7 @@ public class GdtAd
       int i = paramParcel.readInt();
       if (i <= 0)
       {
-        abrl.d("GdtAd", "GdtAd(Parcel in) error");
+        acho.d("GdtAd", "GdtAd(Parcel in) error");
         return;
       }
       byte[] arrayOfByte = new byte[i];
@@ -92,7 +92,7 @@ public class GdtAd
     }
     catch (Throwable paramParcel)
     {
-      abrl.d("GdtAd", "GdtAd(Parcel in)", paramParcel);
+      acho.d("GdtAd", "GdtAd(Parcel in)", paramParcel);
     }
   }
   
@@ -151,7 +151,7 @@ public class GdtAd
           arrayOfByte = new byte[paramInt - i];
           j = paramObjectInput.read(arrayOfByte);
           if (j < 0) {
-            abrl.d("GdtAd", "readBytes error");
+            acho.d("GdtAd", "readBytes error");
           }
         }
         else
@@ -166,12 +166,12 @@ public class GdtAd
         localByteArrayOutputStream.write(arrayOfByte, 0, j);
         i += j;
       }
-      abrl.d("GdtAd", "readBytes error");
+      acho.d("GdtAd", "readBytes error");
       return null;
     }
     catch (Throwable paramObjectInput)
     {
-      abrl.d("GdtAd", "readBytes", paramObjectInput);
+      acho.d("GdtAd", "readBytes", paramObjectInput);
     }
     return null;
   }
@@ -196,7 +196,7 @@ public class GdtAd
       try
       {
         Object localObject = new JSONObject(this.info.ext_json.get());
-        localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(abrk.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+        localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(achn.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
         if (localObject == null) {
           continue;
         }
@@ -208,7 +208,7 @@ public class GdtAd
       }
       catch (Throwable localThrowable)
       {
-        abrl.b("GdtAd", "canPreloadForQQMINIProgram", localThrowable);
+        acho.b("GdtAd", "canPreloadForQQMINIProgram", localThrowable);
       }
     }
   }
@@ -236,7 +236,7 @@ public class GdtAd
         try
         {
           Object localObject = new JSONObject(this.info.ext_json.get());
-          localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(abrk.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+          localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(achn.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
           if (localObject != null)
           {
             bool = ((qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).disable_auto_download.get();
@@ -245,7 +245,7 @@ public class GdtAd
         }
         catch (Throwable localThrowable)
         {
-          abrl.b("GdtAd", "disableAutoDownload", localThrowable);
+          acho.b("GdtAd", "disableAutoDownload", localThrowable);
         }
       }
     }
@@ -335,7 +335,7 @@ public class GdtAd
           try
           {
             Object localObject = new JSONObject(this.info.ext_json.get());
-            localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(abrk.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+            localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(achn.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
             if (localObject != null)
             {
               localObject = ((qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).market_deep_link.get();
@@ -344,7 +344,7 @@ public class GdtAd
           }
           catch (Throwable localThrowable)
           {
-            abrl.b("GdtAd", "getAppMarketDeeplink", localThrowable);
+            acho.b("GdtAd", "getAppMarketDeeplink", localThrowable);
           }
         }
       }
@@ -366,7 +366,7 @@ public class GdtAd
           try
           {
             Object localObject = new JSONObject(this.info.ext_json.get());
-            localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(abrk.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+            localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(achn.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
             if (localObject != null)
             {
               localObject = ((qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).market_package_name.get();
@@ -375,7 +375,7 @@ public class GdtAd
           }
           catch (Throwable localThrowable)
           {
-            abrl.b("GdtAd", "getAppMarketPackageName", localThrowable);
+            acho.b("GdtAd", "getAppMarketPackageName", localThrowable);
           }
         }
       }
@@ -466,6 +466,19 @@ public class GdtAd
     }
   }
   
+  public int getBottomCardLoadTime()
+  {
+    return 2;
+  }
+  
+  public String getBottomCardUrl()
+  {
+    if (isValid()) {
+      return this.info.display_info.video_info.bottom_card_url.get();
+    }
+    return null;
+  }
+  
   public String getBusinessIdForXiJingOffline()
   {
     if (!isValid()) {}
@@ -479,7 +492,7 @@ public class GdtAd
         try
         {
           Object localObject = new JSONObject(this.info.ext_json.get());
-          localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(abrk.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+          localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(achn.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
           if (localObject != null)
           {
             int i = ((qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).xj_offline.offline_id.get();
@@ -488,7 +501,7 @@ public class GdtAd
         }
         catch (Throwable localThrowable)
         {
-          abrl.b("GdtAd", "getJSONKeyForXiJingOffline", localThrowable);
+          acho.b("GdtAd", "getJSONKeyForXiJingOffline", localThrowable);
         }
       }
     }
@@ -574,7 +587,7 @@ public class GdtAd
     try
     {
       Object localObject = new JSONObject(this.info.ext_json.get());
-      localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(abrk.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+      localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(achn.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
       if (localObject == null) {
         return localArrayList;
       }
@@ -583,38 +596,54 @@ public class GdtAd
     }
     catch (Throwable localThrowable)
     {
-      abrl.d("GdtAd", "getExpMap", localThrowable);
+      acho.d("GdtAd", "getExpMap", localThrowable);
     }
     return localArrayList;
   }
   
-  public abkv getImageData()
+  public acal getImageData()
   {
     if (!isValid()) {
       return null;
     }
-    abkv localabkv = new abkv();
-    localabkv.jdField_a_of_type_JavaLangString = this.info.display_info.basic_info.img.get();
-    localabkv.jdField_a_of_type_Int = this.info.display_info.basic_info.pic_width.get();
-    localabkv.b = this.info.display_info.basic_info.pic_height.get();
-    if (localabkv.a()) {}
+    acal localacal = new acal();
+    localacal.jdField_a_of_type_JavaLangString = this.info.display_info.basic_info.img.get();
+    localacal.jdField_a_of_type_Int = this.info.display_info.basic_info.pic_width.get();
+    localacal.b = this.info.display_info.basic_info.pic_height.get();
+    if (localacal.a()) {}
     for (;;)
     {
-      return localabkv;
-      localabkv = null;
+      return localacal;
+      localacal = null;
     }
   }
   
-  public abkv getImageData(int paramInt)
+  public acal getImageData(int paramInt)
   {
     if ((!isValid()) || (paramInt < 0) || (paramInt >= this.info.display_info.muti_pic_text_info.image.size())) {
       return null;
     }
-    abkv localabkv = new abkv();
-    localabkv.jdField_a_of_type_JavaLangString = ((String)this.info.display_info.muti_pic_text_info.image.get(paramInt));
-    localabkv.jdField_a_of_type_Int = this.info.display_info.basic_info.pic_width.get();
-    localabkv.b = this.info.display_info.basic_info.pic_height.get();
-    return localabkv;
+    acal localacal = new acal();
+    localacal.jdField_a_of_type_JavaLangString = ((String)this.info.display_info.muti_pic_text_info.image.get(paramInt));
+    localacal.jdField_a_of_type_Int = this.info.display_info.basic_info.pic_width.get();
+    localacal.b = this.info.display_info.basic_info.pic_height.get();
+    return localacal;
+  }
+  
+  public int getImageHeight()
+  {
+    if (getImageData() == null) {
+      return 0;
+    }
+    return getImageData().b;
+  }
+  
+  public int getImageWidth()
+  {
+    if (getImageData() == null) {
+      return 0;
+    }
+    return getImageData().jdField_a_of_type_Int;
   }
   
   public String getJSONKeyForXiJingOffline()
@@ -630,7 +659,7 @@ public class GdtAd
         try
         {
           Object localObject = new JSONObject(this.info.ext_json.get());
-          localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(abrk.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+          localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(achn.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
           if (localObject != null)
           {
             localObject = ((qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).xj_offline.offline_json_key.get();
@@ -639,7 +668,7 @@ public class GdtAd
         }
         catch (Throwable localThrowable)
         {
-          abrl.b("GdtAd", "getJSONKeyForXiJingOffline", localThrowable);
+          acho.b("GdtAd", "getJSONKeyForXiJingOffline", localThrowable);
         }
       }
     }
@@ -658,7 +687,7 @@ public class GdtAd
         try
         {
           Object localObject = new JSONObject(this.info.ext_json.get());
-          localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(abrk.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+          localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(achn.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
           if (localObject != null)
           {
             localObject = ((qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).xj_offline.offline_json_url.get();
@@ -667,7 +696,7 @@ public class GdtAd
         }
         catch (Throwable localThrowable)
         {
-          abrl.b("GdtAd", "getJSONUrlForXiJingOffline", localThrowable);
+          acho.b("GdtAd", "getJSONUrlForXiJingOffline", localThrowable);
         }
       }
     }
@@ -762,7 +791,7 @@ public class GdtAd
         try
         {
           Object localObject = new JSONObject(this.info.ext_json.get());
-          localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(abrk.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+          localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(achn.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
           if (localObject != null)
           {
             int i = ((qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).relation_target.get();
@@ -870,7 +899,7 @@ public class GdtAd
         try
         {
           Object localObject = new JSONObject(this.info.ext_json.get());
-          localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(abrk.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+          localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(achn.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
           if (localObject != null)
           {
             localObject = ((qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).xj_offline.offline_landing_page.get();
@@ -879,7 +908,7 @@ public class GdtAd
         }
         catch (Throwable localThrowable)
         {
-          abrl.b("GdtAd", "getJSONUrlForXiJingOffline", localThrowable);
+          acho.b("GdtAd", "getJSONUrlForXiJingOffline", localThrowable);
         }
       }
     }
@@ -961,40 +990,6 @@ public class GdtAd
   public boolean isCanvas()
   {
     return ((!isAppXiJingDefault()) && (!isAppXiJing())) || ((!TextUtils.isEmpty(this.info.dest_info.canvas_json.get())) || ((getProductType() == 1000) && (getDestType() == 4) && (!TextUtils.isEmpty(this.info.dest_info.canvas_json.get()))));
-  }
-  
-  public boolean isHitCanvasVideoCeilingExp()
-  {
-    boolean bool = true;
-    if (!isValid()) {}
-    for (;;)
-    {
-      bool = false;
-      do
-      {
-        return bool;
-      } while (this.info.ext.landing_page_style.get() == 1);
-      if (TextUtils.isEmpty(this.info.ext_json.get())) {
-        continue;
-      }
-      try
-      {
-        Object localObject = new JSONObject(this.info.ext_json.get());
-        localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(abrk.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
-        if (localObject == null) {
-          continue;
-        }
-        int i = ((qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).landing_page_style.get();
-        if (i == 1) {}
-        for (bool = true;; bool = false) {
-          return bool;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        abrl.b("GdtAd", "isHitCanvasVideoCeilingExp", localThrowable);
-      }
-    }
   }
   
   public boolean isHitFirstLoadImageExp()
@@ -1086,7 +1081,7 @@ public class GdtAd
       try
       {
         Object localObject = new JSONObject(this.info.ext_json.get());
-        localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(abrk.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+        localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(achn.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
         if (localObject == null) {
           continue;
         }
@@ -1098,7 +1093,7 @@ public class GdtAd
       }
       catch (Throwable localThrowable)
       {
-        abrl.b("GdtAd", "isInterstitial", localThrowable);
+        acho.b("GdtAd", "isInterstitial", localThrowable);
       }
     }
   }
@@ -1205,7 +1200,7 @@ public class GdtAd
         if (((IWXAPI)localObject2).isWXAppInstalled()) {
           continue;
         }
-        a(paramHandler, 2131692664);
+        a(paramHandler, 2131692766);
         paramHandler = null;
       }
       catch (Exception paramHandler)
@@ -1233,12 +1228,12 @@ public class GdtAd
           continue;
         }
       }
-      bcef.b(null, "dc00898", "", "", "0X800AA79", "0X800AA79", 0, 0, "", "", String.valueOf(this.info.wechat_app_info.pos_id.get()), "");
+      bdla.b(null, "dc00898", "", "", "0X800AA79", "0X800AA79", 0, 0, "", "", String.valueOf(this.info.wechat_app_info.pos_id.get()), "");
       return paramHandler;
       if (((IWXAPI)localObject2).getWXAppSupportAPI() >= 621086464) {
         continue;
       }
-      a(paramHandler, 2131692665);
+      a(paramHandler, 2131692767);
       paramHandler = null;
     }
     paramHandler = new WXLaunchMiniProgram.Req();
@@ -1340,7 +1335,7 @@ public class GdtAd
   {
     if (paramObjectInput == null)
     {
-      abrl.d("GdtAd", "readExternal error");
+      acho.d("GdtAd", "readExternal error");
       return;
     }
     for (;;)
@@ -1366,7 +1361,7 @@ public class GdtAd
       }
       catch (Throwable paramObjectInput)
       {
-        abrl.d("GdtAd", "readExternal", paramObjectInput);
+        acho.d("GdtAd", "readExternal", paramObjectInput);
         return;
       }
       byte[] arrayOfByte = a(paramObjectInput, i);
@@ -1402,7 +1397,7 @@ public class GdtAd
     do
     {
       return null;
-      localObject = abrk.a(this.info);
+      localObject = achn.a(this.info);
     } while ((localObject == null) || (JSONObject.NULL.equals(localObject)));
     return localObject.toString();
   }
@@ -1430,7 +1425,7 @@ public class GdtAd
     Object localObject2 = null;
     if ((paramObjectOutput == null) || (this.info == null))
     {
-      abrl.d("GdtAd", "writeExternal error");
+      acho.d("GdtAd", "writeExternal error");
       return;
     }
     for (;;)
@@ -1460,7 +1455,7 @@ public class GdtAd
       }
       catch (Throwable paramObjectOutput)
       {
-        abrl.d("GdtAd", "writeExternal", paramObjectOutput);
+        acho.d("GdtAd", "writeExternal", paramObjectOutput);
         return;
       }
       Object localObject1 = null;
@@ -1475,7 +1470,7 @@ public class GdtAd
   {
     if ((paramParcel == null) || (this.info == null))
     {
-      abrl.d("GdtAd", "writeToParcel error");
+      acho.d("GdtAd", "writeToParcel error");
       return;
     }
     byte[] arrayOfByte;
@@ -1493,13 +1488,13 @@ public class GdtAd
           if (paramInt > 0) {
             break;
           }
-          abrl.d("GdtAd", "writeToParcel error");
+          acho.d("GdtAd", "writeToParcel error");
           return;
         }
       }
       catch (Throwable paramParcel)
       {
-        abrl.d("GdtAd", "writeToParcel", paramParcel);
+        acho.d("GdtAd", "writeToParcel", paramParcel);
         return;
       }
       paramInt = 0;

@@ -1,18 +1,11 @@
-import com.tencent.mobileqq.together.writetogether.statemachine.CreatingState;
-import java.util.List;
+import com.tencent.mobileqq.imcore.proxy.RecentRoute.ColorNickManagerProxy.Proxy;
 
-class bdia
-  extends bdji<CreatingState>
+public final class bdia
+  implements RecentRoute.ColorNickManagerProxy.Proxy
 {
-  bdia(bdhz parambdhz, CreatingState paramCreatingState, List paramList)
+  public CharSequence transformMessageWithAtTroopMember(String paramString1, String paramString2)
   {
-    super(paramCreatingState, paramList);
-  }
-  
-  public void a(CreatingState paramCreatingState)
-  {
-    super.a(paramCreatingState);
-    bdhz.a(this.a).e();
+    return bhmb.a(paramString1, paramString2, 16, null, 3);
   }
 }
 

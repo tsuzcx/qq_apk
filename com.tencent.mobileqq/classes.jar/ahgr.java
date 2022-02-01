@@ -1,31 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import com.tencent.mobileqq.widget.AudioAnimationView;
+import com.tencent.mobileqq.widget.CircleProgressView;
 
-class ahgr
-  extends BroadcastReceiver
+public class ahgr
+  extends afqr
 {
-  ahgr(ahgc paramahgc) {}
+  ahgo jdField_a_of_type_Ahgo;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  AudioAnimationView jdField_a_of_type_ComTencentMobileqqWidgetAudioAnimationView;
+  CircleProgressView jdField_a_of_type_ComTencentMobileqqWidgetCircleProgressView;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    paramIntent.getStringExtra("peerUin");
-    paramIntent.getIntExtra("sessionType", -1);
-    paramContext = paramIntent.getStringExtra("sessionId");
-    if (TextUtils.isEmpty(paramContext)) {}
-    while (!paramContext.startsWith("10-")) {
-      return;
-    }
-    this.a.jdField_a_of_type_Awkz.c();
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.tag, 2, "onBind enter room setSoundDisable");
-    }
-    this.a.jdField_a_of_type_Awkz.a(false);
-  }
+  public ahgr(ahgl paramahgl) {}
 }
 
 

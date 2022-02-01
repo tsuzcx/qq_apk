@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.playvideo.lrtbwidget;
 
-import wsa;
-import wsb;
+import xgv;
+import xgw;
 
 public class StoryPlayerGlobalHolder$1
   implements Runnable
 {
-  public StoryPlayerGlobalHolder$1(wsa paramwsa) {}
+  public StoryPlayerGlobalHolder$1(xgv paramxgv) {}
   
   public void run()
   {
-    wsa.a(this.this$0).a(this.this$0.a.c());
+    xgv.a(this.this$0).a(this.this$0.a.c());
   }
 }
 

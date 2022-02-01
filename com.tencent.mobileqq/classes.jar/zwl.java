@@ -1,20 +1,17 @@
-import android.support.annotation.FloatRange;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.biz.subscribe.comment.SubscribeCommentInputPopupWindow.1.1;
 
 public class zwl
+  implements zus
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  private zwk jdField_a_of_type_Zwk = new zwk();
+  zwl(zwk paramzwk) {}
   
-  public zwk a()
+  public void a(View paramView)
   {
-    zwk.b(this.jdField_a_of_type_Zwk, this.jdField_a_of_type_Float - zwk.a(this.jdField_a_of_type_Zwk));
-    return this.jdField_a_of_type_Zwk;
-  }
-  
-  public zwl a(@FloatRange(from=0.01D) float paramFloat)
-  {
-    zwk.a(this.jdField_a_of_type_Zwk, paramFloat);
-    return this;
+    if (this.a.isShowing()) {
+      zwk.a(this.a).runOnUiThread(new SubscribeCommentInputPopupWindow.1.1(this));
+    }
   }
 }
 

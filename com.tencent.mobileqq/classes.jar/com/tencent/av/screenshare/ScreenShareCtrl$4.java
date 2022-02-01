@@ -6,12 +6,12 @@ import com.tencent.av.ui.AVActivity;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import lez;
+import lfe;
 
 class ScreenShareCtrl$4
   implements Runnable
 {
-  ScreenShareCtrl$4(ScreenShareCtrl paramScreenShareCtrl, AVActivity paramAVActivity, lez paramlez) {}
+  ScreenShareCtrl$4(ScreenShareCtrl paramScreenShareCtrl, AVActivity paramAVActivity, lfe paramlfe) {}
   
   public void run()
   {
@@ -20,16 +20,16 @@ class ScreenShareCtrl$4
         QLog.i("AVShare", 2, "stopShareScreen, activity finish");
       }
     }
-    lez locallez;
+    lfe locallfe;
     do
     {
       return;
-      locallez = ScreenShareCtrl.a(this.this$0).a();
-      if ((locallez.r()) && (!locallez.f()) && (TextUtils.equals(this.jdField_a_of_type_Lez.c, locallez.c))) {
-        QQToast.a(BaseApplicationImpl.getApplication(), 0, 2131695378, 1).a();
+      locallfe = ScreenShareCtrl.a(this.this$0).a();
+      if ((locallfe.r()) && (!locallfe.f()) && (TextUtils.equals(this.jdField_a_of_type_Lfe.c, locallfe.c))) {
+        QQToast.a(BaseApplicationImpl.getApplication(), 0, 2131695595, 1).a();
       }
     } while (!QLog.isColorLevel());
-    QLog.i("AVShare", 2, "stopShareScreen, session[" + locallez + "]");
+    QLog.i("AVShare", 2, "stopShareScreen, session[" + locallfe + "]");
   }
 }
 

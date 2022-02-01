@@ -1,41 +1,31 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGridItem;
-import com.tencent.mobileqq.data.ActivateFriendItem;
-import java.util.ArrayList;
+import android.os.Message;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
+import mqq.os.MqqHandler;
 
 public class aeuo
-  extends anep
+  extends MqqHandler
 {
-  public aeuo(ActivateFriendGrid paramActivateFriendGrid) {}
+  public aeuo(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity) {}
   
-  public void b()
+  public void handleMessage(Message paramMessage)
   {
-    if ((ActivateFriendGrid.a(this.a) == null) || (ActivateFriendGrid.b(this.a) == null)) {
+    switch (paramMessage.what)
+    {
+    case 107: 
+    default: 
+      return;
+    case 106: 
+      this.a.finish();
       return;
     }
     int i = 0;
-    label23:
-    if (i < ActivateFriendGrid.a(this.a).size())
+    while (i < 6)
     {
-      if (!this.a.a.c(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin, 2)) {
-        break label122;
-      }
-      ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setChecked(false);
-      ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689516));
-    }
-    for (;;)
-    {
+      RegisterVerifyCodeActivity.a(this.a)[i].setText("");
       i += 1;
-      break label23;
-      break;
-      label122:
-      if (this.a.a.b(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin, 2))
-      {
-        ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setChecked(false);
-        ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689519));
-      }
     }
+    RegisterVerifyCodeActivity.a(this.a)[0].requestFocus();
   }
 }
 

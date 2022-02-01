@@ -1,44 +1,17 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnControllerClickListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo.RecommadInfo;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnControllerClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.AuthorityActivity;
 
 class bjaw
-  implements TVK_IMediaPlayer.OnControllerClickListener
+  implements DialogInterface.OnClickListener
 {
-  bjaw(bjau parambjau, AbsVideoPlayer.OnControllerClickListener paramOnControllerClickListener) {}
+  bjaw(bjat parambjat) {}
   
-  public void onAttationClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnControllerClickListener.onAttationClick(this.jdField_a_of_type_Bjau);
+    paramDialogInterface.dismiss();
+    this.a.a.b(110405, "", "", "");
   }
-  
-  public void onBackClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnControllerClickListener.onBackClick(this.jdField_a_of_type_Bjau);
-  }
-  
-  public void onBackOnFullScreenClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnControllerClickListener.onBackOnFullScreenClick(this.jdField_a_of_type_Bjau);
-  }
-  
-  public void onCacheClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnControllerClickListener.onCacheClick(this.jdField_a_of_type_Bjau);
-  }
-  
-  public void onFeedbackClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnControllerClickListener.onFeedbackClick(this.jdField_a_of_type_Bjau);
-  }
-  
-  public void onFullScreenClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnControllerClickListener.onFullScreenClick(this.jdField_a_of_type_Bjau);
-  }
-  
-  public void onReopenClick(TVK_NetVideoInfo.RecommadInfo paramRecommadInfo) {}
 }
 
 

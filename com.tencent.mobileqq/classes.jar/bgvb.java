@@ -1,18 +1,18 @@
-import android.content.Intent;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper.CommonJsPluginFactory;
-
 public class bgvb
 {
-  public static final WebAccelerateHelper.CommonJsPluginFactory a = new bgvc();
+  final int jdField_a_of_type_Int;
+  final long jdField_a_of_type_Long;
+  final String jdField_a_of_type_JavaLangString;
+  public final long b;
+  final String b;
   
-  public static WebAccelerateHelper.CommonJsPluginFactory a(Intent paramIntent)
+  public bgvb(bguw parambguw, String paramString1, int paramInt, long paramLong1, long paramLong2, String paramString2)
   {
-    switch (paramIntent.getIntExtra("web_view_module_from", -1))
-    {
-    default: 
-      return null;
-    }
-    return a;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

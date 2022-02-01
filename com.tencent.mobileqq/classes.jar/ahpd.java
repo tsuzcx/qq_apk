@@ -1,140 +1,307 @@
 import android.content.Context;
-import android.content.Intent;
-import android.text.SpannableString;
-import android.view.LayoutInflater;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.player.action.CMSAction;
+import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.jvm.internal.Intrinsics;
+import mqq.app.AppRuntime;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONObject;
 
-public class ahpd
-  implements ahqq, View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/aio/item/view/ApolloIceBreakShow;", "", "context", "Landroid/content/Context;", "width", "", "height", "app", "Lcom/tencent/mobileqq/app/QQAppInterface;", "(Landroid/content/Context;IILcom/tencent/mobileqq/app/QQAppInterface;)V", "mBrickPlayer", "Lcom/tencent/mobileqq/apollo/ApolloBrickPlayer;", "mCMSAction", "Lcom/tencent/mobileqq/apollo/player/action/CMSAction;", "mIsPlaying", "", "mSessionInfo", "Lcom/tencent/mobileqq/activity/aio/SessionInfo;", "mType", "name", "", "getView", "Landroid/view/View;", "kotlin.jvm.PlatformType", "isPlaying", "isReady", "onSend", "", "chatPie", "Lcom/tencent/mobileqq/activity/aio/core/BaseChatPie;", "pause", "play", "resume", "setJson", "jsonObject", "Lorg/json/JSONObject;", "sessionInfo", "stop", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ahpd
 {
-  public static String a;
+  public static final ahpe a;
+  private static final String jdField_b_of_type_JavaLangString = "ApolloIceBreakShow";
+  private static final String jdField_c_of_type_JavaLangString = "actionId";
+  private static final String d = "id";
+  private static final String e = "actionType";
+  private static final String f = "extJson";
+  private static final String g = "type";
+  private static final String h = "name";
   private int jdField_a_of_type_Int;
-  private ahqs jdField_a_of_type_Ahqs;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SpannableString jdField_a_of_type_AndroidTextSpannableString;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private final amlm jdField_a_of_type_Amlm;
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private CMSAction jdField_a_of_type_ComTencentMobileqqApolloPlayerActionCMSAction;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  private final int jdField_b_of_type_Int;
+  private final int jdField_c_of_type_Int;
   
   static
   {
-    jdField_a_of_type_JavaLangString = "https://imgcache.qq.com/club/client/group/release/index.html?_bid=199&groupId=%s&from=%s";
+    jdField_a_of_type_Ahpe = new ahpe(null);
   }
   
-  public ahpd(QQAppInterface paramQQAppInterface, Context paramContext, ahqs paramahqs)
+  public ahpd(@NotNull Context paramContext, int paramInt1, int paramInt2, @NotNull QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Ahqs = paramahqs;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_c_of_type_Int = paramInt2;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Amlm = new amlm(new amnc(this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int));
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public int a()
+  public final View a()
   {
-    return 25;
+    return this.jdField_a_of_type_Amlm.a();
   }
   
-  public View a(Object... paramVarArgs)
+  public final void a()
   {
-    paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558658, null);
-    ImageView localImageView1 = (ImageView)paramVarArgs.findViewById(2131362522);
-    ImageView localImageView2 = (ImageView)paramVarArgs.findViewById(2131362532);
-    ((TextView)paramVarArgs.findViewById(2131362533)).setText(this.jdField_a_of_type_AndroidTextSpannableString);
-    if (this.jdField_a_of_type_Int == 0)
+    if (!a())
     {
-      localImageView1.setImageResource(2130839513);
-      paramVarArgs.setBackgroundResource(2130839510);
-      localImageView2.setImageResource(2130850066);
-    }
-    for (;;)
-    {
-      paramVarArgs.setOnClickListener(this);
-      return paramVarArgs;
-      localImageView1.setImageResource(2130844124);
-      paramVarArgs.setBackgroundResource(2130847063);
-      localImageView2.setImageResource(2130844280);
-      localImageView2.setOnClickListener(this);
-    }
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs) {}
-  
-  public void a(String paramString, SpannableString paramSpannableString, int paramInt1, int paramInt2)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidTextSpannableString = paramSpannableString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    if ((paramInt2 == 3) || (paramInt2 == 4)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
+      QLog.w(jdField_b_of_type_JavaLangString, 1, "play not ready");
       return;
     }
-  }
-  
-  public int[] a()
-  {
-    return null;
-  }
-  
-  public int b()
-  {
-    return 23;
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloPlayerActionCMSAction != null)
     {
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqApolloPlayerActionCMSAction;
+      if (localObject == null) {
+        Intrinsics.throwNpe();
+      }
+      int i = ((CMSAction)localObject).a().f;
+      localObject = (AppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+      if (localSessionInfo == null) {
+        Intrinsics.throwNpe();
+      }
+      VipUtils.a((AppInterface)localObject, "cmshow", "Apollo", "y_gjcbq_expose", "", ApolloUtil.b(localSessionInfo.curType), 0, new String[] { String.valueOf(this.jdField_a_of_type_Int), String.valueOf(i), this.jdField_a_of_type_JavaLangString });
     }
-    do
+    this.jdField_a_of_type_Amlm.a();
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public final void a(@Nullable BaseChatPie paramBaseChatPie)
+  {
+    QLog.d(jdField_b_of_type_JavaLangString, 1, "onSend");
+    for (;;)
     {
-      for (;;)
+      try
       {
-        EventCollector.getInstance().onViewClicked(paramView);
+        if (this.jdField_a_of_type_ComTencentMobileqqApolloPlayerActionCMSAction != null)
+        {
+          Object localObject = this.jdField_a_of_type_ComTencentMobileqqApolloPlayerActionCMSAction;
+          if (localObject == null) {
+            Intrinsics.throwNpe();
+          }
+          int i = ((CMSAction)localObject).a().f;
+          localObject = this.jdField_a_of_type_ComTencentMobileqqApolloPlayerActionCMSAction;
+          if (localObject == null) {
+            Intrinsics.throwNpe();
+          }
+          localObject = ((CMSAction)localObject).a().jdField_b_of_type_JavaLangString;
+          if (TextUtils.isEmpty((CharSequence)localObject))
+          {
+            localObject = "0";
+            if (paramBaseChatPie != null)
+            {
+              AppInterface localAppInterface = (AppInterface)paramBaseChatPie.app;
+              SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+              if (localSessionInfo == null) {
+                Intrinsics.throwNpe();
+              }
+              VipUtils.a(localAppInterface, "cmshow", "Apollo", "y_gjcbq_click", "", ApolloUtil.b(localSessionInfo.curType), 0, new String[] { String.valueOf(this.jdField_a_of_type_Int), String.valueOf(i), this.jdField_a_of_type_JavaLangString });
+            }
+            anlv.a.a(paramBaseChatPie, i, 0, (String)localObject, this.jdField_a_of_type_Int, 3);
+          }
+        }
+        else
+        {
+          return;
+        }
+      }
+      catch (Exception paramBaseChatPie)
+      {
+        QLog.e(jdField_b_of_type_JavaLangString, 1, "onSend error", (Throwable)paramBaseChatPie);
         return;
-        if (QLog.isColorLevel()) {
-          QLog.d("BigTroopExpiredTipsBar", 2, "click tips, jump");
-        }
-        if (this.jdField_a_of_type_Boolean) {
-          break;
-        }
-        localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-        ((Intent)localObject).putExtra("url", String.format(jdField_a_of_type_JavaLangString, new Object[] { this.jdField_b_of_type_JavaLangString, "group_aio_tip" }));
-        ((Intent)localObject).putExtra("hide_operation_bar", true);
-        this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "qq_vip", "0X8009E34", this.jdField_b_of_type_Int, 0, "", "", "", "");
-        this.jdField_a_of_type_Ahqs.a();
       }
-      ancy.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_JavaLangString, "group_aio_tip");
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      if (this.jdField_b_of_type_Int == 3) {}
-      for (localObject = "0X800A57A";; localObject = "0X800A57C")
-      {
-        bcef.b(localQQAppInterface, "dc00898", "", "", "qq_vip", (String)localObject, 1, 0, "", "", "", "");
-        break;
-      }
-      localObject = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
-      int i = ((TroopManager)localObject).f(this.jdField_b_of_type_JavaLangString);
-      ((TroopManager)localObject).g(this.jdField_b_of_type_JavaLangString, i + 1);
-      this.jdField_a_of_type_Ahqs.a();
-    } while (!this.jdField_a_of_type_Boolean);
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (this.jdField_b_of_type_Int == 3) {}
-    for (Object localObject = "0X800A57A";; localObject = "0X800A57C")
-    {
-      bcef.b(localQQAppInterface, "dc00898", "", "", "qq_vip", (String)localObject, 2, 0, "", "", "", "");
-      break;
     }
+  }
+  
+  public final void a(@Nullable JSONObject paramJSONObject, @Nullable SessionInfo paramSessionInfo)
+  {
+    if ((paramJSONObject == null) || (paramSessionInfo == null)) {
+      return;
+    }
+    QLog.d(jdField_b_of_type_JavaLangString, 4, "setJson: json = " + paramJSONObject);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    Object localObject1;
+    try
+    {
+      if (!paramJSONObject.has(jdField_c_of_type_JavaLangString)) {
+        break label157;
+      }
+      localObject1 = paramJSONObject.get(jdField_c_of_type_JavaLangString);
+      if (localObject1 == null) {
+        throw new TypeCastException("null cannot be cast to non-null type kotlin.Int");
+      }
+    }
+    catch (Exception paramJSONObject)
+    {
+      QLog.e(jdField_b_of_type_JavaLangString, 1, "setJson error", (Throwable)paramJSONObject);
+      return;
+    }
+    int i = ((Integer)localObject1).intValue();
+    label100:
+    Object localObject2;
+    label157:
+    label204:
+    int j;
+    label249:
+    int k;
+    label284:
+    String str;
+    for (;;)
+    {
+      if (i != -1)
+      {
+        try
+        {
+          localObject1 = paramJSONObject.get(e);
+          if (localObject1 != null) {
+            break label204;
+          }
+          throw new TypeCastException("null cannot be cast to non-null type kotlin.Int");
+        }
+        catch (Exception localException)
+        {
+          localObject2 = paramJSONObject.get(e);
+          if (localObject2 != null) {
+            break label249;
+          }
+        }
+        throw new TypeCastException("null cannot be cast to non-null type kotlin.String");
+        if (paramJSONObject.has(d))
+        {
+          localObject2 = paramJSONObject.get(d);
+          if (localObject2 == null) {
+            throw new TypeCastException("null cannot be cast to non-null type kotlin.Int");
+          }
+          i = ((Integer)localObject2).intValue();
+          continue;
+          j = ((Integer)localObject2).intValue();
+          while (paramJSONObject.has(g))
+          {
+            localObject2 = paramJSONObject.get(g);
+            if (localObject2 == null)
+            {
+              throw new TypeCastException("null cannot be cast to non-null type kotlin.Int");
+              j = Integer.parseInt((String)localObject2);
+            }
+            else
+            {
+              this.jdField_a_of_type_Int = ((Integer)localObject2).intValue();
+            }
+          }
+          if (paramSessionInfo.troopUin == null) {
+            break label526;
+          }
+          k = 1;
+          paramSessionInfo = BaseApplicationImpl.getApplication();
+          Intrinsics.checkExpressionValueIsNotNull(paramSessionInfo, "BaseApplicationImpl.getApplication()");
+          paramSessionInfo = paramSessionInfo.getRuntime();
+          Intrinsics.checkExpressionValueIsNotNull(paramSessionInfo, "BaseApplicationImpl.getApplication().runtime");
+          str = paramSessionInfo.getAccount();
+          localObject2 = "";
+          paramSessionInfo = (SessionInfo)localObject2;
+          if (this.jdField_a_of_type_Int == 1)
+          {
+            paramSessionInfo = (SessionInfo)localObject2;
+            if (k == 0)
+            {
+              paramSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+              if (paramSessionInfo == null) {
+                break label532;
+              }
+            }
+          }
+        }
+      }
+    }
+    label526:
+    label532:
+    for (paramSessionInfo = paramSessionInfo.curFriendUin;; paramSessionInfo = null)
+    {
+      if (paramSessionInfo == null) {
+        Intrinsics.throwNpe();
+      }
+      paramSessionInfo = paramSessionInfo.toString();
+      localObject2 = "";
+      if (paramJSONObject.has(f))
+      {
+        localObject2 = paramJSONObject.get(f);
+        if (localObject2 == null) {
+          throw new TypeCastException("null cannot be cast to non-null type kotlin.String");
+        }
+        localObject2 = (String)localObject2;
+      }
+      Intrinsics.checkExpressionValueIsNotNull(str, "senderUin");
+      this.jdField_a_of_type_ComTencentMobileqqApolloPlayerActionCMSAction = ((CMSAction)new amvo(i, j, str, paramSessionInfo, (String)localObject2));
+      if (paramJSONObject.has(h))
+      {
+        paramJSONObject = paramJSONObject.get(h);
+        if (paramJSONObject == null) {
+          throw new TypeCastException("null cannot be cast to non-null type kotlin.String");
+        }
+        this.jdField_a_of_type_JavaLangString = ((String)paramJSONObject);
+      }
+      this.jdField_a_of_type_Amlm.a(this.jdField_a_of_type_ComTencentMobileqqApolloPlayerActionCMSAction);
+      QLog.d(jdField_b_of_type_JavaLangString, 4, "setJson: CMSCommonAction = " + this.jdField_a_of_type_ComTencentMobileqqApolloPlayerActionCMSAction);
+      return;
+      i = -1;
+      break label100;
+      break;
+      k = 0;
+      break label284;
+    }
+  }
+  
+  public final boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqApolloPlayerActionCMSAction != null;
+  }
+  
+  public final void b()
+  {
+    if (!a())
+    {
+      QLog.w(jdField_b_of_type_JavaLangString, 1, "pause not ready");
+      return;
+    }
+    this.jdField_a_of_type_Amlm.c();
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public final boolean b()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public final void c()
+  {
+    if (!a())
+    {
+      QLog.w(jdField_b_of_type_JavaLangString, 1, "stop not ready");
+      return;
+    }
+    this.jdField_a_of_type_Amlm.d();
+    this.jdField_a_of_type_ComTencentMobileqqApolloPlayerActionCMSAction = ((CMSAction)null);
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

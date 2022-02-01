@@ -1,22 +1,31 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.JumpActivity;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
 
 public class adnp
-  extends adnm
+  implements TopGestureLayout.InterceptTouchEventListener
 {
-  public adnp(JumpActivity paramJumpActivity)
+  public adnp(ChatFragment paramChatFragment) {}
+  
+  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    super(paramJumpActivity);
+    if (this.a.a != null) {
+      this.a.a.onDispatchTouchEvent(paramMotionEvent);
+    }
   }
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    this.b.a(paramInt1, paramInt2, paramIntent);
+    if (this.a.a != null) {
+      return this.a.a.onInterceptTouchEvent(paramMotionEvent);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adnp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
 public class ajlt
-  implements DialogInterface.OnClickListener
+  extends RecyclerView.ItemDecoration
 {
-  public ajlt(BindNumberActivity paramBindNumberActivity) {}
+  private int a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ajlt(int paramInt)
   {
-    this.a.a("dc00898", "0X8009F15", 0);
-    paramDialogInterface.dismiss();
-    BindNumberActivity.b(this.a);
+    this.a = paramInt;
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    paramRect.right = this.a;
   }
 }
 

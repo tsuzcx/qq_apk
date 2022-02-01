@@ -1,30 +1,30 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agnt;
-import agnu;
-import amtj;
+import ahgj;
+import ahgk;
+import anvx;
 import com.tencent.mobileqq.customviews.VideoProgressView;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 
 public class ShortVideoItemBuilder$CompressUpdateListenerImpl$1
   implements Runnable
 {
-  public ShortVideoItemBuilder$CompressUpdateListenerImpl$1(agnt paramagnt, MessageForShortVideo paramMessageForShortVideo, boolean paramBoolean, agnu paramagnu) {}
+  public ShortVideoItemBuilder$CompressUpdateListenerImpl$1(ahgj paramahgj, MessageForShortVideo paramMessageForShortVideo, boolean paramBoolean, ahgk paramahgk) {}
   
   public void run()
   {
     String str = this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.frienduin + this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq;
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Agnu.a.setDrawStatus(1);
-      this.jdField_a_of_type_Agnu.a.setAnimProgress(amtj.a(2131713186), str);
-      this.jdField_a_of_type_Agnu.a.e = 10;
-      this.jdField_a_of_type_Agnu.a.setVideoCompressStatus(true);
+      this.jdField_a_of_type_Ahgk.a.setDrawStatus(1);
+      this.jdField_a_of_type_Ahgk.a.setAnimProgress(anvx.a(2131713533), str);
+      this.jdField_a_of_type_Ahgk.a.e = 10;
+      this.jdField_a_of_type_Ahgk.a.setVideoCompressStatus(true);
       return;
     }
-    this.jdField_a_of_type_Agnu.a.a(str, 1.0F);
-    this.jdField_a_of_type_Agnu.a.setAnimProgress(10, str);
-    this.jdField_a_of_type_Agnu.a.setVideoCompressStatus(false);
+    this.jdField_a_of_type_Ahgk.a.a(str, 1.0F);
+    this.jdField_a_of_type_Ahgk.a.setAnimProgress(10, str);
+    this.jdField_a_of_type_Ahgk.a.setVideoCompressStatus(false);
   }
 }
 

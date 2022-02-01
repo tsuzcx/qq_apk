@@ -4,8 +4,8 @@ import android.content.Context;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pay;
-import swy;
+import pqf;
+import tkj;
 
 public final class ReportUtil$4
   implements Runnable
@@ -23,11 +23,11 @@ public final class ReportUtil$4
     }
     for (;;)
     {
-      localObject = pay.a(localContext, localArticleInfo, i, (String)localObject);
+      localObject = pqf.a(localContext, localArticleInfo, i, (String)localObject);
       try
       {
         ((JSONObject)localObject).put("rowkey", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID);
-        swy.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X800A731", ((JSONObject)localObject).toString());
+        tkj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X800A731", ((JSONObject)localObject).toString());
         return;
         localObject = "1";
       }
@@ -43,7 +43,7 @@ public final class ReportUtil$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.ReportUtil.4
  * JD-Core Version:    0.7.0.1
  */

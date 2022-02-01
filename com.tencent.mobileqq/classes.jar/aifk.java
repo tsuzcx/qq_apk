@@ -1,8 +1,23 @@
-import android.widget.TextView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class aifk
+class aifk
+  extends BroadcastReceiver
 {
-  public TextView a;
+  private aifk(aido paramaido) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")) {
+      aido.a(this.a, 1);
+    }
+    while (!paramContext.equals("android.intent.action.SCREEN_OFF")) {
+      return;
+    }
+    aido.a(this.a, 1);
+  }
 }
 
 

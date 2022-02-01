@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.anim.businesseggs;
 
-import affh;
+import afwm;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
 import java.util.Queue;
@@ -23,9 +23,9 @@ class BusinessEggsAnimation$BusinessEggsQueueDriver
     }
     if (!BusinessEggsAnimation.c(this.this$0).isEmpty())
     {
-      affh localaffh = (affh)BusinessEggsAnimation.c(this.this$0).remove();
-      BusinessEggsAnimation.a(this.this$0).add(localaffh);
-      localaffh.a();
+      afwm localafwm = (afwm)BusinessEggsAnimation.c(this.this$0).remove();
+      BusinessEggsAnimation.a(this.this$0).add(localafwm);
+      localafwm.a();
       if (QLog.isColorLevel()) {
         QLog.i("BusinessEggsAnimation", 2, "[BusinessEggsQueueDriver#run] peak one then play");
       }
@@ -36,7 +36,7 @@ class BusinessEggsAnimation$BusinessEggsQueueDriver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.businesseggs.BusinessEggsAnimation.BusinessEggsQueueDriver
  * JD-Core Version:    0.7.0.1
  */

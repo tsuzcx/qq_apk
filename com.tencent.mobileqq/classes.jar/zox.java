@@ -1,21 +1,76 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import java.util.ArrayList;
+import java.util.List;
 
-public class zox
-  extends anej
+public abstract class zox<E>
+  extends RecyclerView.Adapter
 {
-  public zox(TroopMemberApiService paramTroopMemberApiService) {}
+  private Handler a;
+  protected ArrayList<E> a;
   
-  protected void a(boolean paramBoolean, int paramInt, Bundle paramBundle)
+  public zox()
   {
-    if (paramBoolean) {
-      this.a.a(147, paramBundle);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public Handler a()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     }
-    while (!QLog.isColorLevel()) {
+    return this.jdField_a_of_type_AndroidOsHandler;
+  }
+  
+  public ArrayList<E> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a(E paramE, int paramInt)
+  {
+    if ((paramE == null) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
       return;
     }
-    QLog.d("TroopMemberApiService", 2, new Object[] { "onWebPushResp isSuc:", Boolean.valueOf(paramBoolean), " type:", Integer.valueOf(paramInt) });
+    this.jdField_a_of_type_JavaUtilArrayList.set(paramInt, paramE);
+  }
+  
+  public void a(ArrayList<E> paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    notifyDataSetChanged();
+    if (paramArrayList == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+    notifyDataSetChanged();
+  }
+  
+  public void b(List<E> paramList)
+  {
+    if (paramList == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+    notifyItemRangeInserted(this.jdField_a_of_type_JavaUtilArrayList.size(), paramList.size());
+  }
+  
+  public void e()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public void onDetachedFromRecyclerView(RecyclerView paramRecyclerView)
+  {
+    super.onDetachedFromRecyclerView(paramRecyclerView);
+    a().removeCallbacksAndMessages(null);
   }
 }
 

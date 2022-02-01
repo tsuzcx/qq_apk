@@ -1,6 +1,6 @@
 package cooperation.qzone.report;
 
-import bbyp;
+import bdfk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -23,7 +23,7 @@ class QzoneOnlineTimeCollectRptService$1
       this.this$0.mUin = Long.parseLong(BaseApplicationImpl.getApplication().getRuntime().getAccount());
       QzoneOnlineTimeCollectRptService.access$102(this.this$0, QzoneConfig.getInstance().getConfig("ClientReport", "OnlineLocalSaveFrequency", 10000));
       this.this$0.beginRecord();
-      if (!bbyp.c())
+      if (!bdfk.c())
       {
         QzoneOnlineTimeCollectRptService.access$200(this.this$0);
         QzoneOnlineTimeCollectRptService.access$002(this.this$0, true);

@@ -1,18 +1,10 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-class bmui
-  implements bmuj
+final class bmui
+  implements DialogInterface.OnDismissListener
 {
-  bmui(bmug parambmug) {}
-  
-  public void a(float paramFloat, String paramString, int paramInt) {}
-  
-  public void a(boolean paramBoolean, String paramString, bnli parambnli)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMInformationPasterManager", 2, "preload:" + paramString + " item:" + parambnli.toString());
-    }
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

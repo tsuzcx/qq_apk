@@ -10,9 +10,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ToggleButton;
-import ayqr;
-import ayqs;
-import ayqu;
+import azvm;
+import azvn;
+import azvp;
 import com.tencent.mobileqq.emoticonview.PanelRecycleBin;
 import com.tencent.mobileqq.profile.ProfileLabelInfo;
 import com.tencent.mobileqq.profile.ProfileLabelTypeInfo;
@@ -26,10 +26,10 @@ public class ProfileLabelPanelAdapter
   public float a;
   protected int a;
   public Context a;
-  protected SparseArray<ayqu> a;
-  protected ayqr a;
-  public ayqs a;
-  protected ayqu a;
+  protected SparseArray<azvp> a;
+  protected azvm a;
+  public azvn a;
+  protected azvp a;
   protected PanelRecycleBin a;
   protected List<ProfileLabelTypeInfo> a;
   
@@ -57,25 +57,25 @@ public class ProfileLabelPanelAdapter
     if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
       this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
     }
-    this.jdField_a_of_type_Ayqu = ((ayqu)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
-    if (this.jdField_a_of_type_Ayqu == null)
+    this.jdField_a_of_type_Azvp = ((azvp)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
+    if (this.jdField_a_of_type_Azvp == null)
     {
-      this.jdField_a_of_type_Ayqu = new ayqu(this, null);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, this.jdField_a_of_type_Ayqu);
+      this.jdField_a_of_type_Azvp = new azvp(this, null);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, this.jdField_a_of_type_Azvp);
     }
     paramView = (GridView)paramView;
-    this.jdField_a_of_type_Ayqu.a(((ProfileLabelTypeInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labels);
-    paramView.setAdapter(this.jdField_a_of_type_Ayqu);
+    this.jdField_a_of_type_Azvp.a(((ProfileLabelTypeInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labels);
+    paramView.setAdapter(this.jdField_a_of_type_Azvp);
   }
   
-  public void a(ayqr paramayqr)
+  public void a(azvm paramazvm)
   {
-    this.jdField_a_of_type_Ayqr = paramayqr;
+    this.jdField_a_of_type_Azvm = paramazvm;
   }
   
-  public void a(ayqs paramayqs)
+  public void a(azvn paramazvn)
   {
-    this.jdField_a_of_type_Ayqs = paramayqs;
+    this.jdField_a_of_type_Azvn = paramazvn;
   }
   
   public void destroyItem(View paramView, int paramInt, Object paramObject)
@@ -114,10 +114,10 @@ public class ProfileLabelPanelAdapter
     ToggleButton localToggleButton = (ToggleButton)paramView;
     localToggleButton.toggle();
     ProfileLabelInfo localProfileLabelInfo = (ProfileLabelInfo)paramView.getTag();
-    ayqr localayqr;
+    azvm localazvm;
     if (localProfileLabelInfo != null)
     {
-      localayqr = this.jdField_a_of_type_Ayqr;
+      localazvm = this.jdField_a_of_type_Azvm;
       if (localProfileLabelInfo.labelStatus != ProfileLabelInfo.STATUS_CHECKED) {
         break label64;
       }
@@ -125,7 +125,7 @@ public class ProfileLabelPanelAdapter
     label64:
     for (boolean bool = false;; bool = true)
     {
-      localayqr.a(localProfileLabelInfo, localToggleButton, Boolean.valueOf(bool));
+      localazvm.a(localProfileLabelInfo, localToggleButton, Boolean.valueOf(bool));
       EventCollector.getInstance().onViewClicked(paramView);
       return;
     }

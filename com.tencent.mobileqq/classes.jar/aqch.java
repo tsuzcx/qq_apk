@@ -1,96 +1,113 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqch
-  extends aptq<aqci>
 {
-  @NonNull
-  public aqci a(int paramInt)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    String str = bfyz.n(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin());
-    return new aqci(bfyz.o(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin()), str);
-  }
+  public long a;
+  public String a;
+  public ArrayList<aqcg> a;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  @Nullable
-  public aqci a(aptx[] paramArrayOfaptx)
+  public JSONObject a()
   {
-    if ((paramArrayOfaptx == null) || (paramArrayOfaptx.length == 0)) {
-      return null;
-    }
-    paramArrayOfaptx = paramArrayOfaptx[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("RedBagVideoResProcessor", 2, "handleVideoRedbagConfig onParsed, content:" + paramArrayOfaptx);
-    }
-    try
+    JSONObject localJSONObject = new JSONObject();
+    for (;;)
     {
-      paramArrayOfaptx = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramArrayOfaptx.getBytes("utf-8")));
-      NodeList localNodeList = paramArrayOfaptx.getElementsByTagName("video_redbag_config");
-      if ((localNodeList != null) && (localNodeList.getLength() > 0))
+      try
       {
-        paramArrayOfaptx = new aqci(paramArrayOfaptx.getElementsByTagName("resUrl").item(0).getFirstChild().getNodeValue(), paramArrayOfaptx.getElementsByTagName("resMd5").item(0).getFirstChild().getNodeValue());
-        return paramArrayOfaptx;
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+        {
+          Object localObject = this.jdField_a_of_type_JavaLangString;
+          localJSONObject.put("uin", localObject);
+          if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+            break label285;
+          }
+          localObject = this.jdField_b_of_type_JavaLangString;
+          localJSONObject.put("phone", localObject);
+          if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+            break label291;
+          }
+          localObject = this.jdField_c_of_type_JavaLangString;
+          localJSONObject.put("os", localObject);
+          if (TextUtils.isEmpty(this.d)) {
+            break label297;
+          }
+          localObject = this.d;
+          localJSONObject.put("qqver", localObject);
+          if (TextUtils.isEmpty(this.e)) {
+            break label303;
+          }
+          localObject = this.e;
+          localJSONObject.put("scene", localObject);
+          if (TextUtils.isEmpty(this.f)) {
+            break label309;
+          }
+          localObject = this.f;
+          localJSONObject.put("startEvt", localObject);
+          if (TextUtils.isEmpty(this.g)) {
+            break label315;
+          }
+          localObject = this.g;
+          localJSONObject.put("endEvt", localObject);
+          localJSONObject.put("startTime", this.jdField_a_of_type_Long);
+          localJSONObject.put("endTime", this.jdField_b_of_type_Long);
+          localJSONObject.put("costTime", this.jdField_c_of_type_Long);
+          localObject = new JSONArray();
+          if (this.jdField_a_of_type_JavaUtilArrayList != null)
+          {
+            int i = 0;
+            if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+            {
+              ((JSONArray)localObject).put(i, ((aqcg)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a());
+              i += 1;
+              continue;
+            }
+          }
+          localJSONObject.put("evtlist", localObject);
+          return localJSONObject;
+        }
       }
+      catch (JSONException localJSONException)
+      {
+        QLog.e("ArkVipReportScene", 1, "getJsonObject()", localJSONException);
+        return localJSONObject;
+      }
+      String str = "";
+      continue;
+      label285:
+      str = "";
+      continue;
+      label291:
+      str = "";
+      continue;
+      label297:
+      str = "";
+      continue;
+      label303:
+      str = "";
+      continue;
+      label309:
+      str = "";
+      continue;
+      label315:
+      str = "";
     }
-    catch (Exception paramArrayOfaptx)
-    {
-      QLog.e("RedBagVideoResProcessor", 1, "handleVideoRedbagConfig failed" + paramArrayOfaptx);
-    }
-    return null;
-  }
-  
-  public void a(aqci paramaqci)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RedBagVideoResProcessor", 2, "handleVideoRedbagConfig onUpdate");
-    }
-  }
-  
-  public Class<aqci> clazz()
-  {
-    return aqci.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    return bfyz.ao(localQQAppInterface.getApp(), localQQAppInterface.getCurrentUin());
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RedBagVideoResProcessor", 2, "handleVideoRedbagConfig onReqFailed");
-    }
-  }
-  
-  public int type()
-  {
-    return 252;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqch
  * JD-Core Version:    0.7.0.1
  */

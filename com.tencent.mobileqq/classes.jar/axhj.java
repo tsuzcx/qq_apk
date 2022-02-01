@@ -1,16 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Message;
+import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
+import mqq.os.MqqHandler;
 
-class axhj
-  implements View.OnClickListener
+public class axhj
+  extends MqqHandler
 {
-  axhj(axhi paramaxhi) {}
+  public axhj(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      MultiCardRecommendFragment.e(this.a);
+      sendEmptyMessageDelayed(3, 500L);
+      return;
+      MultiCardRecommendFragment.a(this.a, MultiCardRecommendFragment.b(this.a));
+      MultiCardRecommendFragment.e(this.a);
+      return;
+      MultiCardRecommendFragment.d(this.a);
+      return;
+    } while (MultiCardRecommendFragment.a(this.a) == null);
+    MultiCardRecommendFragment.a(this.a).notifyDataSetChanged();
   }
 }
 

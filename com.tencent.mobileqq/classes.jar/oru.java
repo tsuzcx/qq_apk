@@ -1,22 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.view.animation.Animation;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.1;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initLikeClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class oru
-  implements oqp
+class oru
+  extends bkxp
 {
-  public void a(int paramInt, @NotNull Container paramContainer, @NotNull ouc paramouc, @NotNull ouo paramouo, @NotNull ViewBase paramViewBase)
+  oru(ort paramort) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
-    Intrinsics.checkParameterIsNotNull(paramouc, "adapter");
-    Intrinsics.checkParameterIsNotNull(paramouo, "commentViewItem");
-    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
-    if ((paramViewBase instanceof oxx)) {
-      ((oxx)paramViewBase).a((oyu)paramouc);
-    }
+    ors.a(this.a.a.this$0, true);
   }
 }
 

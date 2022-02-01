@@ -1,18 +1,21 @@
+import android.content.Intent;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForceLogoutActivity;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adxz
+  implements View.OnClickListener
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  TextView c;
-  TextView d;
+  public adxz(ForceLogoutActivity paramForceLogoutActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.finish();
+    this.a.startActivity(new Intent(this.a, LoginActivity.class).addFlags(67108864));
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

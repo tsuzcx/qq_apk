@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.bigbrother.RockDownloader;
 
-import apde;
-import apdf;
+import aqgi;
+import aqgj;
 import com.tencent.mobileqq.data.RockDownloadInfo;
 
 public class RockDownloaderManager$2
@@ -9,7 +9,7 @@ public class RockDownloaderManager$2
 {
   public void run()
   {
-    apdf.a(new RockDownloadInfo("biz_src_kandian", "com.tencent.now"), new apde(this));
+    aqgj.a(new RockDownloadInfo("biz_src_kandian", "com.tencent.now"), new aqgi(this));
   }
 }
 

@@ -1,25 +1,30 @@
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class xoz
-  extends vll<xoi, wcy>
+public final class xoz
+  extends QQUIEventReceiver<xoj, ycp>
 {
-  public xoz(xoi paramxoi)
+  public xoz(@NonNull xoj paramxoj)
   {
-    super(paramxoi);
+    super(paramxoj);
   }
   
-  public void a(@NonNull xoi paramxoi, @NonNull wcy paramwcy)
+  public void a(@NonNull xoj paramxoj, @NonNull ycp paramycp)
   {
-    xvv.a("Q.qqstory.home.data.HomeFeedPresenter", "upload status change event:%s", paramwcy);
-    xoi.a(paramxoi, paramwcy.a);
+    if ((paramycp.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramycp.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem != null) && (paramxoj.a != null) && (TextUtils.equals(paramycp.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId, paramxoj.a.b)))
+    {
+      ykq.a(paramxoj.b, "refresh feed item , feed id :%s", paramxoj.a.b);
+      paramxoj.i();
+    }
   }
   
   public Class acceptEventClass()
   {
-    return wcy.class;
+    return ycp.class;
   }
-  
-  public void b(@NonNull xoi paramxoi, @NonNull wcy paramwcy) {}
 }
 
 

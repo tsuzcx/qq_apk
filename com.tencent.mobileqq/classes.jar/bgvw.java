@@ -1,16 +1,41 @@
-import android.app.Activity;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.biz.common.util.HttpUtil;
 
-public abstract interface bgvw
+public final class bgvw
 {
-  public abstract Activity a();
+  public static String a()
+  {
+    switch ()
+    {
+    default: 
+      return "X";
+    case 2: 
+      return "2g";
+    case 3: 
+      return "3g";
+    case 4: 
+      return "4g";
+    }
+    return "wifi";
+  }
   
-  public abstract bgvt a();
-  
-  public abstract WebViewFragment a();
-  
-  public abstract WebView a();
+  public static String b()
+  {
+    int i = 4;
+    switch (HttpUtil.getNetWorkType())
+    {
+    }
+    for (;;)
+    {
+      return String.valueOf(i);
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
+      continue;
+      i = 0;
+    }
+  }
 }
 
 

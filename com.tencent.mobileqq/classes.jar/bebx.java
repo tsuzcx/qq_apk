@@ -1,14 +1,20 @@
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 
-class bebx
-  implements bhnm
+public class bebx
+  extends bebo
 {
-  bebx(bebp parambebp, TroopFileTransferManager paramTroopFileTransferManager, String paramString1, String paramString2, long paramLong, int paramInt) {}
-  
-  public void a(int paramInt)
+  public bebx(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
   {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    super(paramTeamWorkFileImportInfo, paramQQAppInterface);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null) && (paramQQAppInterface != null))
+    {
+      this.jdField_a_of_type_Bebl.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+      this.jdField_a_of_type_Bebl.h(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
     }
   }
 }

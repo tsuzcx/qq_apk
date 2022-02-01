@@ -1,24 +1,84 @@
-import android.arch.lifecycle.MutableLiveData;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.tavcut.session.TAVCutVideoSession;
-import com.tencent.weseevideo.camera.mvauto.redo.CutModelKt;
-import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment;
-import java.util.List;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bmjx
-  implements DialogInterface.OnClickListener
+public class bmjx
+  extends alkr
+  implements Cloneable
 {
-  bmjx(bmjw parambmjw, CutModelKt paramCutModelKt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bmjx(Context paramContext)
   {
-    if (AEEditorMultiCutEditFragment.a(this.jdField_a_of_type_Bmjw.a).size() <= 2) {
-      AEEditorMultiCutEditFragment.b(this.jdField_a_of_type_Bmjw.a).setImageResource(2130837904);
+    this.jdField_a_of_type_JavaLangString = anvx.a(2131697174);
+  }
+  
+  public Object a(int paramInt, bffl parambffl, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    if ((paramObject instanceof bmjx))
+    {
+      paramObject = (bmjx)paramObject;
+      paramObject.jdField_a_of_type_Bffm.a(parambffl.jdField_a_of_type_Bffm);
+      return paramObject;
     }
-    AEEditorMultiCutEditFragment.a(this.jdField_a_of_type_Bmjw.a, 0L);
-    AEEditorMultiCutEditFragment.a(this.jdField_a_of_type_Bmjw.a).a.postValue(bmkc.a(this.jdField_a_of_type_ComTencentWeseevideoCameraMvautoRedoCutModelKt.getUuid(), AEEditorMultiCutEditFragment.a(this.jdField_a_of_type_Bmjw.a), AEEditorMultiCutEditFragment.a(this.jdField_a_of_type_Bmjw.a).getMediaModel()));
+    paramObject = new bmjx(BaseApplication.getContext());
+    paramObject.jdField_a_of_type_Bffm = new bffm(parambffl.jdField_a_of_type_Bffm);
+    return paramObject;
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    QLog.d("TroopSpecialAttentionMsg", 2, "deSerialize");
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
+    {
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
+      this.jdField_a_of_type_Int = paramArrayOfByte.getInt("time");
+      this.b = paramArrayOfByte.getInt("color");
+      this.c = paramArrayOfByte.getString("messageNavInfo");
+      if ((!TextUtils.isEmpty(this.c)) && (this.jdField_a_of_type_Bffm == null))
+      {
+        this.jdField_a_of_type_Bffm = new bffm();
+        this.jdField_a_of_type_Bffm.a(this.c);
+      }
+      return;
+    }
+    catch (JSONException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+  }
+  
+  public byte[] a()
+  {
+    return b();
+  }
+  
+  public byte[] b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("time", this.jdField_a_of_type_Int);
+      localJSONObject.put("color", this.b);
+      if (this.jdField_a_of_type_Bffm != null) {
+        this.c = this.jdField_a_of_type_Bffm.a();
+      }
+      localJSONObject.put("messageNavInfo", this.c);
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+    return localJSONObject.toString().getBytes();
   }
 }
 

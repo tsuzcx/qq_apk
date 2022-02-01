@@ -1,22 +1,22 @@
 package com.tencent.biz.webviewplugin;
 
-import aabc;
+import aaqo;
 import android.os.Bundle;
-import bhht;
+import bisl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public final class NewReportPlugin$4
   implements Runnable
 {
-  public NewReportPlugin$4(int paramInt, BaseActivity paramBaseActivity, String paramString1, String paramString2, Bundle paramBundle, String paramString3, String paramString4, String paramString5, String paramString6, bhht parambhht) {}
+  public NewReportPlugin$4(int paramInt, BaseActivity paramBaseActivity, String paramString1, String paramString2, Bundle paramBundle, String paramString3, String paramString4, String paramString5, String paramString6, bisl parambisl) {}
   
   public void run()
   {
     try
     {
-      Object localObject = aabc.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_AndroidOsBundle);
-      localObject = aabc.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, this.c, this.d, this.b, "", this.e, this.jdField_a_of_type_Int, aabc.a(this.jdField_a_of_type_Int), this.f, "", "", "", "", "", "", "", (Bundle)localObject);
+      Object localObject = aaqo.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_AndroidOsBundle);
+      localObject = aaqo.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, this.c, this.d, this.b, "", this.e, this.jdField_a_of_type_Int, aaqo.a(this.jdField_a_of_type_Int), this.f, "", "", "", "", "", "", "", (Bundle)localObject);
       if (QLog.isColorLevel()) {
         QLog.d("NewReportPlugin", 1, "safetyNewReport postData=" + (String)localObject);
       }

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.photo;
 
-import ajob;
-import ajoc;
+import akjp;
+import akjq;
 
 public class FileVideoMediaPlayHelper$4
   implements Runnable
 {
-  public FileVideoMediaPlayHelper$4(ajob paramajob) {}
+  public FileVideoMediaPlayHelper$4(akjp paramakjp) {}
   
   public void run()
   {
-    if (ajob.a(this.this$0) != null) {
-      ajob.a(this.this$0).a(false, "");
+    if (akjp.a(this.this$0) != null) {
+      akjp.a(this.this$0).a(false, "");
     }
   }
 }

@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.channelCover;
 
-import opw;
+import oxu;
 
 public class FollowCoverView$2
   implements Runnable
 {
   public void run()
   {
-    opw.a(this.this$0);
+    oxu.a(this.this$0);
   }
 }
 

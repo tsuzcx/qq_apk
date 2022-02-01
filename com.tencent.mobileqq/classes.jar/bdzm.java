@@ -1,18 +1,37 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.troop.data.TroopBarMyBar;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.os.Handler;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.CompletionListener.1;
+import mqq.util.WeakReference;
 
-public final class bdzm
-  implements Parcelable.Creator<TroopBarMyBar>
+public class bdzm
+  implements MediaPlayer.OnCompletionListener
 {
-  public TroopBarMyBar a(Parcel paramParcel)
+  private WeakReference<VideoSprite> a;
+  
+  private bdzm(VideoSprite paramVideoSprite)
   {
-    return new TroopBarMyBar(paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString());
+    this.a = new WeakReference(paramVideoSprite);
   }
   
-  public TroopBarMyBar[] a(int paramInt)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    return null;
+    paramMediaPlayer = (VideoSprite)this.a.get();
+    if (paramMediaPlayer == null) {}
+    do
+    {
+      return;
+      if (paramMediaPlayer.j)
+      {
+        paramMediaPlayer.b.b(new VideoSprite.CompletionListener.1(this, paramMediaPlayer));
+        return;
+      }
+      paramMediaPlayer.g = false;
+      paramMediaPlayer.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    } while (paramMediaPlayer.jdField_a_of_type_Bdyy == null);
+    paramMediaPlayer.jdField_a_of_type_Bdyy.a();
   }
 }
 

@@ -1,37 +1,14 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.fragment.QQSettingMsgClearFragment;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
 
 public class atsy
-  extends Handler
+  implements aqrq
 {
-  public atsy(QQSettingMsgClearFragment paramQQSettingMsgClearFragment) {}
+  public atsy(FileBrowserActivity paramFileBrowserActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onColorNoteAnimFinish()
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      paramMessage = this.a.getActivity();
-      if ((paramMessage != null) && (!paramMessage.isFinishing()))
-      {
-        this.a.jdField_a_of_type_Bhht.a(this.a.getString(2131690749));
-        this.a.jdField_a_of_type_Bhht.d(2130849594);
-        this.a.jdField_a_of_type_Bhht.b(false);
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
-      return;
-    } while ((this.a.jdField_a_of_type_Bhht == null) || (!this.a.jdField_a_of_type_Bhht.isShowing()));
-    this.a.jdField_a_of_type_Bhht.cancel();
-    this.a.jdField_a_of_type_Bhht.a(this.a.getString(2131690751));
-    this.a.jdField_a_of_type_Bhht.c(true);
-    this.a.jdField_a_of_type_Bhht.a(false);
-    this.a.jdField_a_of_type_Bhht.b(true);
+    FileBrowserActivity.a(this.a);
+    this.a.overridePendingTransition(0, 0);
   }
 }
 

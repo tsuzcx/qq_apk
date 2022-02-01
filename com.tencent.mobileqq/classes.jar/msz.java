@@ -1,98 +1,132 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.IntentFilter;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.ArrayList;
+import java.util.List;
 
-class msz
+public class msz
 {
-  int jdField_a_of_type_Int;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
-  int jdField_c_of_type_Int;
-  String jdField_c_of_type_JavaLangString;
-  String d;
+  private static volatile msz jdField_a_of_type_Msz;
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new mta(this);
+  Context jdField_a_of_type_AndroidContentContext = null;
+  VideoController jdField_a_of_type_ComTencentAvVideoController = null;
+  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
+  String jdField_a_of_type_JavaLangString = null;
+  List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  mtb jdField_a_of_type_Mtb = null;
   
-  private msz(msw parammsw)
+  private msz(VideoAppInterface paramVideoAppInterface)
   {
-    a(null);
+    IntentFilter localIntentFilter = new IntentFilter("tencent.video.q2v.getNearByProfile");
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp();
+    this.jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
+    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+    this.jdField_a_of_type_ComTencentAvVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
   }
   
-  msz(msw parammsw, String paramString1, String paramString2, Bitmap paramBitmap, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4)
+  public static msz a(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.d = paramString4;
-  }
-  
-  private void a(msz parammsz)
-  {
-    if (parammsz != null)
+    if (jdField_a_of_type_Msz == null) {}
+    try
     {
-      this.jdField_a_of_type_JavaLangString = parammsz.jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_Int = parammsz.jdField_a_of_type_Int;
-      this.jdField_c_of_type_JavaLangString = parammsz.jdField_c_of_type_JavaLangString;
-      this.jdField_b_of_type_JavaLangString = parammsz.jdField_b_of_type_JavaLangString;
-      this.d = parammsz.d;
-      this.jdField_b_of_type_Int = parammsz.jdField_b_of_type_Int;
-      this.jdField_c_of_type_Int = parammsz.jdField_c_of_type_Int;
-      this.jdField_a_of_type_Boolean = parammsz.jdField_a_of_type_Boolean;
-      return;
-    }
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.d = "";
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  private boolean a()
-  {
-    return (this.jdField_a_of_type_Int == 47) || (this.jdField_a_of_type_Int == 42) || (this.jdField_a_of_type_Int == 48) || (this.jdField_a_of_type_Int == 44);
-  }
-  
-  private boolean a(msz parammsz)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (parammsz != null) {
-      if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, parammsz.jdField_a_of_type_JavaLangString))
-      {
-        bool1 = bool2;
-        if (this.jdField_a_of_type_Int != parammsz.jdField_a_of_type_Int)
-        {
-          bool1 = bool2;
-          if (!parammsz.a()) {}
-        }
+      if (jdField_a_of_type_Msz == null) {
+        jdField_a_of_type_Msz = new msz(paramVideoAppInterface);
       }
-      else
-      {
-        bool1 = true;
-      }
+      return jdField_a_of_type_Msz;
     }
-    return bool1;
+    finally {}
   }
   
-  public String toString()
+  public void a()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("NotifyData{sessionId[").append(this.jdField_a_of_type_JavaLangString).append("], id[").append(this.jdField_c_of_type_JavaLangString).append("], type[").append(this.jdField_a_of_type_Int).append("], uinType[").append(this.jdField_b_of_type_Int).append("], name[").append(this.jdField_b_of_type_JavaLangString).append("], extraName[").append(this.d).append("], head[");
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {}
-    for (boolean bool = true;; bool = false) {
-      return bool + "], isHide[" + this.jdField_a_of_type_Boolean + "]}";
-    }
+    this.jdField_a_of_type_Mtb = null;
+    this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_ComTencentAvVideoController = null;
+    this.jdField_a_of_type_AndroidContentContext = null;
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
+    jdField_a_of_type_Msz = null;
+  }
+  
+  /* Error */
+  public void a(VideoAppInterface paramVideoAppInterface, String paramString)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: invokestatic 89	lbz:a	()Llbz;
+    //   5: aload_0
+    //   6: getfield 34	msz:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   9: invokevirtual 93	lbz:c	(Ljava/lang/String;)Llfe;
+    //   12: astore_3
+    //   13: aload_3
+    //   14: ifnonnull +6 -> 20
+    //   17: aload_0
+    //   18: monitorexit
+    //   19: return
+    //   20: aload_0
+    //   21: getfield 32	msz:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   24: aload_2
+    //   25: invokeinterface 97 2 0
+    //   30: ifne -13 -> 17
+    //   33: invokestatic 103	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   36: ifeq +28 -> 64
+    //   39: ldc 105
+    //   41: iconst_2
+    //   42: new 107	java/lang/StringBuilder
+    //   45: dup
+    //   46: invokespecial 108	java/lang/StringBuilder:<init>	()V
+    //   49: ldc 110
+    //   51: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   54: aload_2
+    //   55: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   58: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   61: invokestatic 122	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   64: aload_1
+    //   65: aload_2
+    //   66: invokevirtual 126	com/tencent/av/app/VideoAppInterface:b	(Ljava/lang/String;)Z
+    //   69: ifeq -52 -> 17
+    //   72: aload_0
+    //   73: getfield 32	msz:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   76: aload_2
+    //   77: invokeinterface 129 2 0
+    //   82: pop
+    //   83: goto -66 -> 17
+    //   86: astore_1
+    //   87: aload_0
+    //   88: monitorexit
+    //   89: aload_1
+    //   90: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	91	0	this	msz
+    //   0	91	1	paramVideoAppInterface	VideoAppInterface
+    //   0	91	2	paramString	String
+    //   12	2	3	locallfe	lfe
+    // Exception table:
+    //   from	to	target	type
+    //   2	13	86	finally
+    //   20	64	86	finally
+    //   64	83	86	finally
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(mtb parammtb)
+  {
+    this.jdField_a_of_type_Mtb = parammtb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     msz
  * JD-Core Version:    0.7.0.1
  */

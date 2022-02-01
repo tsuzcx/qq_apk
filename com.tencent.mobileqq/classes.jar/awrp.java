@@ -1,93 +1,27 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 public class awrp
 {
-  public static int a(CharSequence paramCharSequence)
+  public int a;
+  public String a;
+  public List<awrs> a = new ArrayList();
+  public int b = -1;
+  public String b;
+  public String c;
+  
+  public int a(int paramInt)
   {
-    if (paramCharSequence == null) {
-      return 0;
-    }
-    int m = paramCharSequence.length();
-    int i = 0;
-    int j = 0;
-    if (i < m)
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
     {
-      if (paramCharSequence.charAt(i) < '') {}
-      for (int k = 1;; k = 2)
-      {
-        j += k;
-        i += 1;
-        break;
+      awrs localawrs = (awrs)localIterator.next();
+      if ((localawrs.a <= paramInt) && (localawrs.b > paramInt)) {
+        return localawrs.c;
       }
     }
-    return j;
-  }
-  
-  public static CharSequence a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
-  {
-    int m = paramCharSequence.length();
-    int j = 0;
-    int i = paramInt1;
-    for (;;)
-    {
-      CharSequence localCharSequence = paramCharSequence;
-      if (i < m) {
-        if (paramCharSequence.charAt(i) >= '') {
-          break label91;
-        }
-      }
-      label91:
-      for (int k = 1;; k = 2)
-      {
-        j = k + j;
-        if (j <= paramInt2) {
-          break;
-        }
-        paramInt2 = i;
-        if (i > 0)
-        {
-          paramInt2 = i;
-          if (Character.isHighSurrogate(paramCharSequence.charAt(i - 1))) {
-            paramInt2 = i - 1;
-          }
-        }
-        localCharSequence = paramCharSequence.subSequence(paramInt1, paramInt2);
-        return localCharSequence;
-      }
-      i += 1;
-    }
-  }
-  
-  public static String a(long paramLong)
-  {
-    paramLong = System.currentTimeMillis() - paramLong;
-    if (paramLong < 3600000L) {
-      return paramLong / 60L / 1000L + 1L + amtj.a(2131701354);
-    }
-    if (paramLong < 86400000L) {
-      return paramLong / 60L / 60L / 1000L + amtj.a(2131701361);
-    }
-    return paramLong / 24L / 60L / 60L / 1000L + amtj.a(2131701353);
-  }
-  
-  public static String b(long paramLong)
-  {
-    if (paramLong < 10000L) {
-      return Long.toString(paramLong);
-    }
-    if (paramLong > 100000L) {
-      return "9.9万+";
-    }
-    return String.format("%.1f万", new Object[] { Double.valueOf(paramLong / 10000.0D) });
-  }
-  
-  public static String c(long paramLong)
-  {
-    if (paramLong < 10000L) {
-      return Long.toString(paramLong);
-    }
-    if ((paramLong > 10000L) && (paramLong < 10000000L)) {
-      return String.format("%.1f万", new Object[] { Double.valueOf(paramLong / 10000.0D) });
-    }
-    return String.format("%d千万", new Object[] { Long.valueOf(paramLong / 10000000L) });
+    return 0;
   }
 }
 

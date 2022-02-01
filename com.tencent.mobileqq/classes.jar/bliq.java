@@ -1,22 +1,16 @@
-import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
-import dov.com.qq.im.ae.camera.core.AECameraManager.CameraOpenCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bliq
-  implements AECameraManager.CameraOpenCallback
+  implements View.OnClickListener
 {
-  bliq(blio paramblio) {}
+  bliq(blip paramblip) {}
   
-  public void onOpenResult(int paramInt, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      this.a.a.onChangeCamera(paramInt);
-      if (this.a.b()) {
-        babb.a(paramInt);
-      }
-      this.a.c();
-      this.a.l();
-    }
+    this.a.b(true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

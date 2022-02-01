@@ -1,20 +1,21 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.content.DialogInterface.OnClickListener;
 
 class adsu
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  adsu(adst paramadst) {}
+  adsu(adst paramadst, boolean paramBoolean) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.a();
+    if (this.jdField_a_of_type_Boolean) {
+      bdla.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adsu
  * JD-Core Version:    0.7.0.1
  */

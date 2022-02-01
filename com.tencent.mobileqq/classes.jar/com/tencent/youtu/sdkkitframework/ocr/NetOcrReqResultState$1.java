@@ -1,5 +1,6 @@
 package com.tencent.youtu.sdkkitframework.ocr;
 
+import com.tencent.youtu.sdkkitframework.common.CommonUtils;
 import java.util.HashMap;
 import org.json.JSONException;
 
@@ -12,7 +13,7 @@ class NetOcrReqResultState$1
     put("ui_tips", "rst_failed");
     put("process_action", "failed");
     put("error_code", Integer.valueOf(3145729));
-    put("message", this.val$e.getMessage());
+    put("message", CommonUtils.makeMessageJson(3145729, this.val$e.getMessage(), ""));
   }
 }
 

@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 class aixl
-  implements awdb
+  extends CardObserver
 {
   aixl(aixk paramaixk) {}
   
-  public void a()
+  public void onGetSelfAddFriendSetting(boolean paramBoolean, int paramInt)
   {
-    this.a.jdField_a_of_type_Awdi.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
-    this.a.jdField_a_of_type_Awdi.a();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.w();
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendVerification.manager", 2, "onGetSelfAddFriendSetting() addFriendSetting is:" + paramInt);
+    }
+    aixk.a(this.a, aixk.a(this.a, paramInt));
+    if ((aixk.a(this.a)) && (aixk.a(this.a) != null)) {
+      this.a.b(aixk.a(this.a).getCurrentUin());
+    }
   }
 }
 

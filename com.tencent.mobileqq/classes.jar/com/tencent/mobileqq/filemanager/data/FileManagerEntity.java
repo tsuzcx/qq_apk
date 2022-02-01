@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.data;
 
 import android.text.TextUtils;
-import ataj;
-import bbko;
+import aueq;
+import bcrg;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
@@ -89,7 +89,7 @@ public class FileManagerEntity
   @notColumn
   public FileManagerEntity relatedEntity;
   public String selfUin;
-  public long srvTime = bbko.a() * 1000L;
+  public long srvTime = bcrg.a() * 1000L;
   public int status;
   public String str10Md5;
   public String strApkPackageName;
@@ -280,7 +280,7 @@ public class FileManagerEntity
   
   public String getFilePath()
   {
-    return ataj.c(this.strFilePath);
+    return aueq.c(this.strFilePath);
   }
   
   public String getTableName()
@@ -358,7 +358,7 @@ public class FileManagerEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.FileManagerEntity
  * JD-Core Version:    0.7.0.1
  */

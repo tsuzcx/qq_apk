@@ -1,10 +1,10 @@
-public class bazt
+public abstract interface bazt
 {
-  public int a;
-  public CharSequence a;
-  public String a;
+  public abstract void a();
   
-  public bazt(bazs parambazs) {}
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

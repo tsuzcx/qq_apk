@@ -1,39 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class oiw
-  extends Handler
+final class oiw
+  extends LbsManagerService.OnLocationChangeListener
 {
-  private WeakReference<ois> a;
-  
-  public oiw(ois paramois)
+  oiw(String paramString)
   {
-    this.a = new WeakReference(paramois);
+    super(paramString);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    ois localois = (ois)this.a.get();
-    if (localois == null) {}
-    do
-    {
-      do
-      {
-        return;
-        switch (paramMessage.what)
-        {
-        default: 
-          return;
-        case 1: 
-          ois.a(localois);
-          return;
-        }
-      } while (ois.a(localois) == null);
-      ois.a(localois).a(ois.a(localois));
-      return;
-    } while (ois.a(localois) == null);
-    ois.a(localois).b();
+    if (QLog.isColorLevel()) {
+      QLog.d("NativeAdUtils", 2, "getADPosition doStartADLocation onLocationFinish errCode " + paramInt + " info = " + paramSosoLbsInfo);
+    }
   }
 }
 

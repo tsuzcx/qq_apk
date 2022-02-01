@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahgz;
-import amuc;
+import aibs;
+import anwq;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.data.HotChatInfo;
 
 public class HotChatPie$8
   implements Runnable
 {
-  public HotChatPie$8(ahgz paramahgz) {}
+  public HotChatPie$8(aibs paramaibs) {}
   
   public void run()
   {
     int i = this.this$0.a.state;
-    amuc.a(this.this$0.app, this.this$0.sessionInfo.curFriendUin, i);
-    amuc.a(this.this$0.app);
+    anwq.a(this.this$0.app, this.this$0.sessionInfo.curFriendUin, i);
+    anwq.a(this.this$0.app);
   }
 }
 

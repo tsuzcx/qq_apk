@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.conditionsearch.widget.TimeSelectView;
-import com.tencent.mobileqq.remind.widget.WheelView;
-import com.tencent.widget.VerticalGallery;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.10;
+import cooperation.wadl.ipc.WadlParams;
 
 public class aprp
-  implements bjut
+  implements DialogInterface.OnClickListener
 {
-  private int jdField_a_of_type_Int;
+  public aprp(ArkAppDownloadModule.10 param10) {}
   
-  public aprp(TimeSelectView paramTimeSelectView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(VerticalGallery paramVerticalGallery)
-  {
-    int i = TimeSelectView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetTimeSelectView)[this.jdField_a_of_type_Int].getSelectedItemPosition();
-    if (TimeSelectView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetTimeSelectView) != null) {
-      TimeSelectView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetTimeSelectView).a(this.jdField_a_of_type_Int, i);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
+    bdla.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "8", "", this.a.a.a, "");
   }
 }
 

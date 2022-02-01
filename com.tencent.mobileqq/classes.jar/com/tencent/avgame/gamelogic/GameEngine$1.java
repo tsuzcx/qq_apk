@@ -1,19 +1,19 @@
 package com.tencent.avgame.gamelogic;
 
 import java.util.List;
-import mzl;
-import naf;
-import nav;
+import nfc;
+import nfv;
+import ngl;
 
 public class GameEngine$1
   implements Runnable
 {
-  public GameEngine$1(mzl parammzl, naf paramnaf) {}
+  public GameEngine$1(nfc paramnfc, nfv paramnfv) {}
   
   public void run()
   {
     List localList = this.a.a();
-    new nav(this.this$0.a()).a(localList, ".mp3", false);
+    new ngl(this.this$0.a()).a(localList, ".mp3", false);
   }
 }
 

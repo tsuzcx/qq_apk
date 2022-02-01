@@ -1,39 +1,39 @@
 package com.tencent.gdtad.api.interstitial;
 
-import abmf;
-import abmi;
-import abrl;
+import acbv;
+import acby;
+import acho;
 import android.text.TextUtils;
 
 public class GdtArkPreDownloadTask$1
   implements Runnable
 {
-  public GdtArkPreDownloadTask$1(abmf paramabmf) {}
+  public GdtArkPreDownloadTask$1(acbv paramacbv) {}
   
   public void run()
   {
-    abrl.b("GdtArkPreDownloadTask", String.format("run status:%d", new Object[] { Integer.valueOf(abmf.a(this.this$0)) }));
-    if (!abmf.a(this.this$0))
+    acho.b("GdtArkPreDownloadTask", String.format("run status:%d", new Object[] { Integer.valueOf(acbv.a(this.this$0)) }));
+    if (!acbv.a(this.this$0))
     {
-      abmf.a(this.this$0, 1);
-      abmf.a(this.this$0, 4, -2147483648, 0L);
+      acbv.a(this.this$0, 1);
+      acbv.a(this.this$0, 4, -2147483648, 0L);
     }
     for (;;)
     {
       return;
-      abmf.a(this.this$0, 1);
-      abmi.a();
-      if (TextUtils.isEmpty(abmf.a(this.this$0)))
+      acbv.a(this.this$0, 1);
+      acby.a();
+      if (TextUtils.isEmpty(acbv.a(this.this$0)))
       {
-        abmf.a(this.this$0, 2);
-        abmf.a(this.this$0);
+        acbv.a(this.this$0, 2);
+        acbv.a(this.this$0);
       }
-      while (abmf.a(this.this$0) >= 0L)
+      while (acbv.a(this.this$0) >= 0L)
       {
-        abmf.a(this.this$0, 13, -2147483648, abmf.a(this.this$0));
+        acbv.a(this.this$0, 13, -2147483648, acbv.a(this.this$0));
         return;
-        abmf.a(this.this$0, 3);
-        abmf.b(this.this$0);
+        acbv.a(this.this$0, 3);
+        acbv.b(this.this$0);
       }
     }
   }

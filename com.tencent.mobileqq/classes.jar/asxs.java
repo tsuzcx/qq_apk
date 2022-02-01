@@ -1,15 +1,17 @@
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class asxs
-  implements aszj
+public class asxs
+  implements View.OnClickListener
 {
-  asxs(asxp paramasxp, List paramList) {}
+  public asxs(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
   
-  public void onNo() {}
-  
-  public void onYes()
+  public void onClick(View paramView)
   {
-    ataw.a(asxp.a(this.jdField_a_of_type_Asxp), this.jdField_a_of_type_JavaUtilList, asxp.a(this.jdField_a_of_type_Asxp), asxp.a(this.jdField_a_of_type_Asxp));
+    this.a.i();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

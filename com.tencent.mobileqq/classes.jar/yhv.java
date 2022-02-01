@@ -1,15 +1,9 @@
-public class yhv
+class yhv
+  implements bkzs
 {
-  public int a;
-  public String a;
-  public yhr<Boolean, yhw> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public yhr<Boolean, yhx> b;
-  public boolean b;
-  public int c;
-  public int d;
+  yhv(yhn paramyhn) {}
+  
+  public void onDismiss() {}
 }
 
 

@@ -19,24 +19,8 @@ class AppStateManager$3
   
   public void run()
   {
-    if (AppStateManager.access$200(this.this$0))
-    {
-      QMLog.i("minisdk-start_RuntimeState", "has shown cleanInfo, not showCleanInfo 2");
-      return;
-    }
-    if (AppStateManager.access$300())
-    {
-      QMLog.i("minisdk-start_RuntimeState", "mX5GuideShowed not showCleanInfo 2");
-      return;
-    }
-    if ((this.val$type == 1) && (this.this$0.hasFirstDomReadied))
-    {
-      QMLog.i("minisdk-start_RuntimeState", "hasFirstDomReadied not showCleanInfo 2");
-      return;
-    }
-    if (!this.val$baseRuntime.isForground())
-    {
-      QMLog.e("minisdk-start_RuntimeState", "showCleanInfo failed, not is forground");
+    long l = System.currentTimeMillis();
+    if (AppStateManager.access$200(this.this$0, l, this.val$type, this.val$baseRuntime)) {
       return;
     }
     int i = QbSdk.getTbsVersion(this.val$activity);
@@ -67,7 +51,7 @@ class AppStateManager$3
       str = str + "\n是否需要清理当前小程序缓存，并重新启动小程序？";
       QMLog.e("minisdk-start_RuntimeState", "show Dialig :" + str);
       DialogUtil.createCustomDialog(this.val$activity, 230, "小程序启动", str, R.string.mini_sdk_cancel, R.string.mini_sdk_ok, new AppStateManager.3.1(this), new AppStateManager.3.2(this)).show();
-      AppStateManager.access$202(this.this$0, true);
+      AppStateManager.access$402(this.this$0, true);
       return;
       if (this.val$type == 2) {
         str = "小程序启动可能碰到了问题.";

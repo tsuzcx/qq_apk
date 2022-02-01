@@ -1,29 +1,18 @@
 package cooperation.qzone.stickynote;
 
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzonePluginProxyActivity;
-import cooperation.qzone.api.QZoneApiProxy;
+import cooperation.qzone.api.QZoneApiProxy.QZoneLoadCallback;
+import cooperation.qzone.thread.QzoneBaseThread;
+import cooperation.qzone.thread.QzoneHandlerThreadFactory;
 
 class QzoneStickyNoteManager$1$1
-  implements Runnable
+  implements QZoneApiProxy.QZoneLoadCallback
 {
   QzoneStickyNoteManager$1$1(QzoneStickyNoteManager.1 param1) {}
   
-  public void run()
+  public void onLoadOver(boolean paramBoolean)
   {
-    try
-    {
-      QzonePluginProxyActivity.getQZonePluginClassLoader(this.this$1.val$activity);
-      boolean bool = QZoneApiProxy.initServlet(this.this$1.val$activity, this.this$1.val$app);
-      if ((QZoneApiProxy.initEnv(this.this$1.val$activity, this.this$1.val$app)) && (bool)) {
-        QzoneStickyNoteManager.access$000(this.this$1.this$0).post(new QzoneStickyNoteManager.1.1.1(this));
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.w("QzoneStickyNoteManager", 1, "tryLoadQzonePlugin: failed to load qzone plugin");
+    if (paramBoolean) {
+      QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new QzoneStickyNoteManager.1.1.1(this));
     }
   }
 }

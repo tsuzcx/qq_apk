@@ -1,6 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.event;
 
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -28,7 +29,7 @@ public class ItemShowDispatcher$CheckAndStartWebProcessRunnable
       {
         return;
       } while ((this.a == null) || (this.a.get() == null));
-      WebProcessManager localWebProcessManager = (WebProcessManager)((QQAppInterface)this.a.get()).getManager(13);
+      WebProcessManager localWebProcessManager = (WebProcessManager)((QQAppInterface)this.a.get()).getManager(QQManagerFactory.WEBPROCESS_MANAGER);
       if (localWebProcessManager != null)
       {
         if (QLog.isColorLevel()) {
@@ -42,7 +43,7 @@ public class ItemShowDispatcher$CheckAndStartWebProcessRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher.CheckAndStartWebProcessRunnable
  * JD-Core Version:    0.7.0.1
  */

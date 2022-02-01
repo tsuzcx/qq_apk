@@ -1,9 +1,15 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-
-public abstract interface pet
+class pet
+  extends pfe
 {
-  public abstract void a(View paramView, ArticleInfo paramArticleInfo, int paramInt);
+  pet(pdv parampdv, boolean paramBoolean, String paramString, int paramInt1, int paramInt2)
+  {
+    super(parampdv, null);
+  }
+  
+  void a(pfh parampfh)
+  {
+    parampfh.onCommentLikeOrDislike(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
+  }
 }
 
 

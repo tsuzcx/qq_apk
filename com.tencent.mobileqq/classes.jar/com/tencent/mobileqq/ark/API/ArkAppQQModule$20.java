@@ -2,8 +2,8 @@ package com.tencent.mobileqq.ark.API;
 
 import android.app.Activity;
 import android.content.Intent;
-import aopk;
-import aoqa;
+import apsl;
+import aptb;
 import com.tencent.ark.ArkEnvironmentManager;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.qphone.base.util.QLog;
@@ -11,12 +11,12 @@ import com.tencent.qphone.base.util.QLog;
 public class ArkAppQQModule$20
   implements Runnable
 {
-  public ArkAppQQModule$20(aoqa paramaoqa, int paramInt, boolean paramBoolean, String paramString) {}
+  public ArkAppQQModule$20(aptb paramaptb, int paramInt, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
     String str = ArkEnvironmentManager.getInstance().getAppResPath(this.this$0.jdField_a_of_type_JavaLangString);
-    Activity localActivity = aopk.a();
+    Activity localActivity = apsl.a();
     if (localActivity != null)
     {
       Intent localIntent = new Intent(localActivity, NewPhotoListActivity.class);

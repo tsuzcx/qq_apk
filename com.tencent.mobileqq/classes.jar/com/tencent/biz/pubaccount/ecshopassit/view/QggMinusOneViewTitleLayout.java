@@ -19,8 +19,8 @@ import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.utils.StringUtil;
 import java.util.Date;
-import ohh;
-import ohm;
+import opa;
+import opg;
 
 public class QggMinusOneViewTitleLayout
   extends FrameLayout
@@ -82,7 +82,7 @@ public class QggMinusOneViewTitleLayout
       try
       {
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130850605);
+        localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130850736);
         this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.height = UIUtils.dip2px(getContext(), 40.0F);
         localURLDrawableOptions.mRequestHeight = this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.height;
         this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.width = (localURLDrawableOptions.mRequestHeight * 3 + UIUtils.dip2px(getContext(), 10.0F));
@@ -119,31 +119,31 @@ public class QggMinusOneViewTitleLayout
     paramTextView.setText(paramString);
   }
   
-  public void setMinusViewTitle(ohh paramohh)
+  public void setMinusViewTitle(opa paramopa)
   {
-    if (paramohh == null) {
+    if (paramopa == null) {
       return;
     }
-    if (StringUtil.isEmpty(paramohh.c)) {}
-    for (paramohh = "https://i.gtimg.cn/channel/imglib/202005/upload_0130d1d150ac825d9804c01c17955272.png";; paramohh = paramohh.c)
+    if (StringUtil.isEmpty(paramopa.c)) {}
+    for (paramopa = "https://i.gtimg.cn/channel/imglib/202005/upload_0130d1d150ac825d9804c01c17955272.png";; paramopa = paramopa.c)
     {
-      a(paramohh, this.jdField_a_of_type_AndroidWidgetImageView, 0);
-      paramohh = ohm.a(NetConnInfoCenter.getServerTimeMillis(), "M月d日");
-      String str = ohm.a(getContext(), new Date());
-      a(paramohh + "\n" + str, this.jdField_a_of_type_AndroidWidgetTextView);
+      a(paramopa, this.jdField_a_of_type_AndroidWidgetImageView, 0);
+      paramopa = opg.a(NetConnInfoCenter.getServerTimeMillis(), "M月d日");
+      String str = opg.a(getContext(), new Date());
+      a(paramopa + "\n" + str, this.jdField_a_of_type_AndroidWidgetTextView);
       return;
     }
   }
   
-  public void setQggTitle(ohh paramohh)
+  public void setQggTitle(opa paramopa)
   {
-    if (paramohh == null) {
+    if (paramopa == null) {
       return;
     }
-    if (StringUtil.isEmpty(paramohh.d)) {}
-    for (paramohh = "https://i.gtimg.cn/channel/imglib/202005/upload_d10f6014892e80a6195c5a965a6b8ac0.png";; paramohh = paramohh.d)
+    if (StringUtil.isEmpty(paramopa.d)) {}
+    for (paramopa = "https://i.gtimg.cn/channel/imglib/202005/upload_d10f6014892e80a6195c5a965a6b8ac0.png";; paramopa = paramopa.d)
     {
-      a(paramohh, this.jdField_a_of_type_AndroidWidgetImageView, 1);
+      a(paramopa, this.jdField_a_of_type_AndroidWidgetImageView, 1);
       return;
     }
   }

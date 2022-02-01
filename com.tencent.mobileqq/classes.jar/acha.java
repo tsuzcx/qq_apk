@@ -1,149 +1,37 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import java.lang.ref.WeakReference;
+import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class acha
+class acha
+  implements acag
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
+  acha(acgz paramacgz) {}
   
-  public acha() {}
-  
-  public acha(SharedPreferences paramSharedPreferences, String paramString)
+  public void onResponse(acaf paramacaf)
   {
-    String str1 = a("ver", paramString);
-    String str2 = a("system", paramString);
-    String str3 = a("driver", paramString);
-    String str4 = a("url", paramString);
-    String str5 = a("type", paramString);
-    String str6 = a("status", paramString);
-    String str7 = a("previousPatch", paramString);
-    String str8 = a("enabled", paramString);
-    this.b = paramSharedPreferences.getString(str1, "");
-    this.c = paramSharedPreferences.getString(str2, "");
-    this.d = paramSharedPreferences.getString(str3, "");
-    this.e = paramSharedPreferences.getString(str4, "");
-    this.f = paramSharedPreferences.getString(str5, "");
-    this.g = paramSharedPreferences.getString(str6, "");
-    this.k = paramSharedPreferences.getString(str7, "").trim();
-    this.a = paramString;
-    this.h = paramSharedPreferences.getString(str8, "").trim();
-  }
-  
-  public static acha a(JSONObject paramJSONObject)
-  {
-    acha localacha = new acha();
+    if ((paramacaf == null) || (paramacaf.a() == null) || (acgz.a(this.a) == null) || (acgz.a(this.a).get() == null)) {
+      return;
+    }
+    String str = (String)acgz.a(this.a).get(paramacaf);
+    acgz.a(this.a).remove(paramacaf);
+    Object localObject1 = achn.a(paramacaf.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet);
+    Object localObject2 = achn.a(paramacaf.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp);
+    paramacaf = new JSONObject();
     try
     {
-      localacha.a = paramJSONObject.getString("name").trim();
-      localacha.b = paramJSONObject.getString("ver").trim();
-      localacha.c = paramJSONObject.getString("system").trim();
-      localacha.d = paramJSONObject.getString("driver").trim();
-      localacha.e = paramJSONObject.getString("url").trim();
-      localacha.f = paramJSONObject.getString("type").trim();
-      localacha.h = paramJSONObject.getString("enabled").trim();
-      localacha.k = paramJSONObject.optString("previousPatch", "").trim();
-      return localacha;
-    }
-    catch (Exception paramJSONObject)
-    {
-      acgp.a("PatchInfo", "Parse PatchInfo from JSON exception " + paramJSONObject);
-    }
-    return null;
-  }
-  
-  private String a(String paramString1, String paramString2)
-  {
-    return paramString1 + "_" + paramString2;
-  }
-  
-  public JSONObject a()
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("name", this.a);
-      localJSONObject.put("ver", this.b);
-      localJSONObject.put("system", this.c);
-      localJSONObject.put("driver", this.d);
-      localJSONObject.put("url", this.e);
-      localJSONObject.put("type", this.f);
-      localJSONObject.put("enabled", this.h);
-      localJSONObject.put("previousPatch", this.k);
-      return localJSONObject;
+      paramacaf.put("request", localObject1);
+      paramacaf.put("response", localObject2);
+      ((acfw)acgz.a(this.a).get()).callJs(str, new String[] { paramacaf.toString() });
+      return;
     }
     catch (JSONException localJSONException)
     {
-      acgp.a("PatchInfo", "Get JSON String failed " + localJSONException);
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
     }
-    return new JSONObject();
-  }
-  
-  public void a(SharedPreferences.Editor paramEditor)
-  {
-    String str1 = a("ver", this.a);
-    String str2 = a("system", this.a);
-    String str3 = a("driver", this.a);
-    String str4 = a("url", this.a);
-    String str5 = a("type", this.a);
-    String str6 = a("status", this.a);
-    String str7 = a("previousPatch", this.a);
-    String str8 = a("enabled", this.a);
-    paramEditor.remove(str1);
-    paramEditor.remove(str2);
-    paramEditor.remove(str3);
-    paramEditor.remove(str4);
-    paramEditor.remove(str5);
-    paramEditor.remove(str6);
-    paramEditor.remove(str7);
-    paramEditor.remove(str8);
-    paramEditor.commit();
-  }
-  
-  public boolean a()
-  {
-    return this.h.equals("true");
-  }
-  
-  public void b(SharedPreferences.Editor paramEditor)
-  {
-    String str1 = a("ver", this.a);
-    String str2 = a("system", this.a);
-    String str3 = a("driver", this.a);
-    String str4 = a("url", this.a);
-    String str5 = a("type", this.a);
-    String str6 = a("status", this.a);
-    String str7 = a("previousPatch", this.a);
-    String str8 = a("enabled", this.a);
-    paramEditor.putString(str1, this.b);
-    paramEditor.putString(str2, this.c);
-    paramEditor.putString(str3, this.d);
-    paramEditor.putString(str4, this.e);
-    paramEditor.putString(str5, this.f);
-    paramEditor.putString(str6, this.g);
-    paramEditor.putString(str7, this.k);
-    paramEditor.putString(str8, this.h);
-    paramEditor.commit();
-  }
-  
-  public boolean b()
-  {
-    return achc.a(this.c);
-  }
-  
-  public String toString()
-  {
-    return "I'm Patch " + this.a + "," + this.h + "," + this.f + "," + this.e + "," + this.j + "," + this.k + "," + this.i + "," + this.g;
   }
 }
 

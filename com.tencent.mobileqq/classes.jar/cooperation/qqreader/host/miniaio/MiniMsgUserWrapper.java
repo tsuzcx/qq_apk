@@ -1,7 +1,7 @@
 package cooperation.qqreader.host.miniaio;
 
 import android.content.ContextWrapper;
-import bkve;
+import bmgn;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
 
 public class MiniMsgUserWrapper
@@ -10,7 +10,7 @@ public class MiniMsgUserWrapper
   
   public MiniMsgUserWrapper(ContextWrapper paramContextWrapper, MiniMsgUserParamWrapper paramMiniMsgUserParamWrapper)
   {
-    paramContextWrapper = bkve.a(paramContextWrapper);
+    paramContextWrapper = bmgn.a(paramContextWrapper);
     if (paramContextWrapper != null) {
       this.a = new MiniMsgUser(paramContextWrapper, paramMiniMsgUserParamWrapper.mParam);
     }

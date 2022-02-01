@@ -1,13 +1,13 @@
 package com.tencent.hippy.qq.module.gamecenter;
 
-import bldr;
+import bmqi;
 import com.tencent.mtt.hippy.common.HippyArray;
 import cooperation.wadl.ipc.WadlResult;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 abstract class QQWadlModule$WadlListener
-  implements bldr
+  implements bmqi
 {
   protected abstract void onCallback(String paramString, Object paramObject);
   

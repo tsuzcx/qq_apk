@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.pic;
 
 import android.text.TextUtils;
-import aycn;
-import ayco;
-import ayde;
-import ayds;
-import ayeb;
-import ayeu;
+import aziz;
+import azja;
+import azjq;
+import azke;
+import azkn;
+import azlg;
 import com.tencent.mobileqq.activity.photo.PhotoSendParams;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPic;
@@ -23,24 +23,24 @@ import com.tencent.qphone.base.util.QLog;
 public class AioQzonePicOperator$1
   implements Runnable
 {
-  public AioQzonePicOperator$1(aycn paramaycn, ayeb paramayeb, ayds paramayds) {}
+  public AioQzonePicOperator$1(aziz paramaziz, azkn paramazkn, azke paramazke) {}
   
   public void run()
   {
     this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHwEngine().preConnect();
-    ??? = this.jdField_a_of_type_Ayeb;
-    Object localObject1 = new CompressInfo(((ayeb)???).jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams.thumbPath, 0);
-    ayeu.b((CompressInfo)localObject1);
+    ??? = this.jdField_a_of_type_Azkn;
+    Object localObject1 = new CompressInfo(((azkn)???).jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams.thumbPath, 0);
+    azlg.b((CompressInfo)localObject1);
     if (((CompressInfo)localObject1).jdField_e_of_type_JavaLangString != null)
     {
-      ((ayeb)???).h = ((CompressInfo)localObject1).jdField_e_of_type_JavaLangString;
-      ((ayeb)???).jdField_e_of_type_Int = ((CompressInfo)localObject1).d;
-      ((ayeb)???).jdField_f_of_type_Int = ((CompressInfo)localObject1).jdField_e_of_type_Int;
+      ((azkn)???).h = ((CompressInfo)localObject1).jdField_e_of_type_JavaLangString;
+      ((azkn)???).jdField_e_of_type_Int = ((CompressInfo)localObject1).d;
+      ((azkn)???).jdField_f_of_type_Int = ((CompressInfo)localObject1).jdField_e_of_type_Int;
     }
-    if ((((ayeb)???).jdField_g_of_type_Boolean) && (((ayeb)???).jdField_b_of_type_JavaLangObject != null)) {}
-    for (localObject1 = (MessageForPic)((ayeb)???).jdField_b_of_type_JavaLangObject; localObject1 == null; localObject1 = this.this$0.a((ayeb)???))
+    if ((((azkn)???).jdField_g_of_type_Boolean) && (((azkn)???).jdField_b_of_type_JavaLangObject != null)) {}
+    for (localObject1 = (MessageForPic)((azkn)???).jdField_b_of_type_JavaLangObject; localObject1 == null; localObject1 = this.this$0.a((azkn)???))
     {
-      ayde.b(this.this$0.b, "doSendPic", "error, mr==null, return");
+      azjq.b(this.this$0.b, "doSendPic", "error, mr==null, return");
       return;
     }
     if (QLog.isColorLevel()) {
@@ -48,10 +48,10 @@ public class AioQzonePicOperator$1
     }
     if (MessageForPic.class.isInstance(localObject1))
     {
-      if (this.jdField_a_of_type_Ayds.a != null)
+      if (this.jdField_a_of_type_Azke.a != null)
       {
-        ((MessageForPic)localObject1).picExtraData = this.jdField_a_of_type_Ayds.a;
-        ??? = this.jdField_a_of_type_Ayds.a;
+        ((MessageForPic)localObject1).picExtraData = this.jdField_a_of_type_Azke.a;
+        ??? = this.jdField_a_of_type_Azke.a;
         if (((PicMessageExtraData)???).stickerInfo != null) {
           ((MessageRecord)localObject1).saveExtInfoToExtStr("sticker_info", ((PicMessageExtraData)???).stickerInfo.toJsonString());
         }
@@ -61,20 +61,20 @@ public class AioQzonePicOperator$1
           EmojiStickerManager.a().a((MessageRecord)localObject1);
         }
       }
-      if (!((ayeb)???).i) {
-        ayco.b((MessageForPic)localObject1);
+      if (!((azkn)???).i) {
+        azja.b((MessageForPic)localObject1);
       }
     }
-    if (this.jdField_a_of_type_Ayeb.jdField_c_of_type_Boolean) {
-      synchronized (this.jdField_a_of_type_Ayeb)
+    if (this.jdField_a_of_type_Azkn.jdField_c_of_type_Boolean) {
+      synchronized (this.jdField_a_of_type_Azkn)
       {
-        this.jdField_a_of_type_Ayeb.jdField_a_of_type_JavaLangObject = localObject1;
-        this.jdField_a_of_type_Ayeb.notifyAll();
-        ayde.a(this.this$0.b, "doSendPic ", "PresendStatus: destPath:" + this.jdField_a_of_type_Ayeb.jdField_g_of_type_JavaLangString + ",uuid:" + this.this$0.jdField_a_of_type_JavaLangString + ",canceled:false, peakCompress:true, peakUpload:true, saveMR:true");
-        if (this.jdField_a_of_type_Ayeb.jdField_c_of_type_Int == 3)
+        this.jdField_a_of_type_Azkn.jdField_a_of_type_JavaLangObject = localObject1;
+        this.jdField_a_of_type_Azkn.notifyAll();
+        azjq.a(this.this$0.b, "doSendPic ", "PresendStatus: destPath:" + this.jdField_a_of_type_Azkn.jdField_g_of_type_JavaLangString + ",uuid:" + this.this$0.jdField_a_of_type_JavaLangString + ",canceled:false, peakCompress:true, peakUpload:true, saveMR:true");
+        if (this.jdField_a_of_type_Azkn.jdField_c_of_type_Int == 3)
         {
-          ayde.a(this.this$0.b, this.this$0.jdField_a_of_type_JavaLangString, "PresendPic doSendPic ", "FLAG_NOT_UPLOAD,do not upload!");
-          ayde.a(this.this$0.b, "doSendPic", "PresendStatus: destPath:" + this.jdField_a_of_type_Ayeb.jdField_g_of_type_JavaLangString + ",uuid:" + this.this$0.jdField_a_of_type_JavaLangString + ",canceled:false, peakCompress:true, peakUpload:true, saveMR:true, FLAG_NOT_UPLOAD,do not upload!");
+          azjq.a(this.this$0.b, this.this$0.jdField_a_of_type_JavaLangString, "PresendPic doSendPic ", "FLAG_NOT_UPLOAD,do not upload!");
+          azjq.a(this.this$0.b, "doSendPic", "PresendStatus: destPath:" + this.jdField_a_of_type_Azkn.jdField_g_of_type_JavaLangString + ",uuid:" + this.this$0.jdField_a_of_type_JavaLangString + ",canceled:false, peakCompress:true, peakUpload:true, saveMR:true, FLAG_NOT_UPLOAD,do not upload!");
           return;
         }
       }
@@ -89,49 +89,49 @@ public class AioQzonePicOperator$1
     ((TransferRequest)???).mFileType = 1;
     ((TransferRequest)???).mUniseq = localObject2.uniseq;
     ((TransferRequest)???).mIsUp = true;
-    ((TransferRequest)???).mBusiType = this.jdField_a_of_type_Ayeb.jdField_a_of_type_Int;
-    ((TransferRequest)???).mLocalPath = this.jdField_a_of_type_Ayeb.jdField_g_of_type_JavaLangString;
-    ((TransferRequest)???).mMd5 = this.jdField_a_of_type_Ayeb.jdField_f_of_type_JavaLangString;
+    ((TransferRequest)???).mBusiType = this.jdField_a_of_type_Azkn.jdField_a_of_type_Int;
+    ((TransferRequest)???).mLocalPath = this.jdField_a_of_type_Azkn.jdField_g_of_type_JavaLangString;
+    ((TransferRequest)???).mMd5 = this.jdField_a_of_type_Azkn.jdField_f_of_type_JavaLangString;
     ??? = new TransferRequest.PicUpExtraInfo();
-    if (this.jdField_a_of_type_Ayeb.a() == 1) {}
+    if (this.jdField_a_of_type_Azkn.a() == 1) {}
     for (boolean bool = true;; bool = false)
     {
       ((TransferRequest.PicUpExtraInfo)???).mIsRaw = bool;
       ((TransferRequest)???).mExtraObj = ???;
       ((TransferRequest)???).mUpCallBack = this.this$0;
       ((TransferRequest)???).mRec = this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      ((TransferRequest)???).mIsPresend = this.jdField_a_of_type_Ayeb.jdField_c_of_type_Boolean;
-      ((TransferRequest)???).myPresendInvalid = this.jdField_a_of_type_Ayeb.jdField_e_of_type_Boolean;
-      if (this.jdField_a_of_type_Ayds.b == 1045)
+      ((TransferRequest)???).mIsPresend = this.jdField_a_of_type_Azkn.jdField_c_of_type_Boolean;
+      ((TransferRequest)???).myPresendInvalid = this.jdField_a_of_type_Azkn.jdField_e_of_type_Boolean;
+      if (this.jdField_a_of_type_Azke.b == 1045)
       {
-        ((TransferRequest)???).isQzonePic = this.jdField_a_of_type_Ayeb.i;
-        ((TransferRequest)???).photoSendParams = this.jdField_a_of_type_Ayeb.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams;
+        ((TransferRequest)???).isQzonePic = this.jdField_a_of_type_Azkn.i;
+        ((TransferRequest)???).photoSendParams = this.jdField_a_of_type_Azkn.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams;
       }
-      if (!this.jdField_a_of_type_Ayeb.jdField_c_of_type_Boolean) {
+      if (!this.jdField_a_of_type_Azkn.jdField_c_of_type_Boolean) {
         break label1074;
       }
-      synchronized (this.jdField_a_of_type_Ayeb)
+      synchronized (this.jdField_a_of_type_Azkn)
       {
-        if (!this.jdField_a_of_type_Ayeb.d) {
+        if (!this.jdField_a_of_type_Azkn.d) {
           break;
         }
-        ayde.a(this.this$0.b, this.this$0.jdField_a_of_type_JavaLangString, "PresendPic doSendPic cancel transferAsync!", "");
-        ayde.a(this.this$0.b, "doSendPic ", "PresendStatus: destPath:" + this.jdField_a_of_type_Ayeb.jdField_g_of_type_JavaLangString + ",uuid:" + this.this$0.jdField_a_of_type_JavaLangString + ",canceled:true, peakCompress:true, peakUpload:true, saveMR:true, transferAsync:false");
+        azjq.a(this.this$0.b, this.this$0.jdField_a_of_type_JavaLangString, "PresendPic doSendPic cancel transferAsync!", "");
+        azjq.a(this.this$0.b, "doSendPic ", "PresendStatus: destPath:" + this.jdField_a_of_type_Azkn.jdField_g_of_type_JavaLangString + ",uuid:" + this.this$0.jdField_a_of_type_JavaLangString + ",canceled:true, peakCompress:true, peakUpload:true, saveMR:true, transferAsync:false");
         return;
       }
     }
-    ayde.a(this.this$0.b, this.this$0.jdField_a_of_type_JavaLangString, "PresendPic doSendPic start transferAsync!", "");
+    azjq.a(this.this$0.b, this.this$0.jdField_a_of_type_JavaLangString, "PresendPic doSendPic start transferAsync!", "");
     this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController().transferAsync((TransferRequest)???);
-    ayde.a(this.this$0.b, "doSendPic ", "PresendStatus: destPath:" + this.jdField_a_of_type_Ayeb.jdField_g_of_type_JavaLangString + ",uuid:" + this.this$0.jdField_a_of_type_JavaLangString + ",canceled:false, peakCompress:true, peakUpload:true, saveMR:true, transferAsync:true");
+    azjq.a(this.this$0.b, "doSendPic ", "PresendStatus: destPath:" + this.jdField_a_of_type_Azkn.jdField_g_of_type_JavaLangString + ",uuid:" + this.this$0.jdField_a_of_type_JavaLangString + ",canceled:false, peakCompress:true, peakUpload:true, saveMR:true, transferAsync:true");
     for (;;)
     {
-      ayde.a(this.this$0.b, this.this$0.jdField_a_of_type_JavaLangString, "sendReq", "cost:" + (System.currentTimeMillis() - l));
-      if ((this.jdField_a_of_type_Ayeb.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_Ayeb.jdField_c_of_type_Boolean))
+      azjq.a(this.this$0.b, this.this$0.jdField_a_of_type_JavaLangString, "sendReq", "cost:" + (System.currentTimeMillis() - l));
+      if ((this.jdField_a_of_type_Azkn.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_Azkn.jdField_c_of_type_Boolean))
       {
-        ayde.a(this.this$0.b, this.this$0.jdField_a_of_type_JavaLangString, "sendPic", "@#addMsg");
+        azjq.a(this.this$0.b, this.this$0.jdField_a_of_type_JavaLangString, "sendPic", "@#addMsg");
         this.this$0.a(localMessageRecord);
       }
-      ayde.a(this.this$0.b, this.this$0.jdField_a_of_type_JavaLangString, "getSendTask.start", "");
+      azjq.a(this.this$0.b, this.this$0.jdField_a_of_type_JavaLangString, "getSendTask.start", "");
       return;
       label1074:
       this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController().transferAsync((TransferRequest)???);

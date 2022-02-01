@@ -10,11 +10,9 @@ import java.util.LinkedList;
 import java.util.Queue;
 import kotlin.Metadata;
 import kotlin.Unit;
-import kotlin.collections.CollectionsKt;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
-import org.json.JSONObject;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/triton/internal/touch/TouchEventManager;", "", "mScreenScale", "", "listener", "Lkotlin/Function1;", "Ljava/util/ArrayList;", "Lcom/tencent/mobileqq/triton/touch/TTTouchEvents;", "", "(FLkotlin/jvm/functions/Function1;)V", "curTouchListCopy", "getCurTouchListCopy", "()Ljava/util/ArrayList;", "currentClick", "Lcom/tencent/mobileqq/triton/internal/touch/TouchEventManager$Click;", "lastClicks", "Ljava/util/Queue;", "mCurTouchList", "mGameBeginTime", "", "mTTTouchEvents", "addClick", "motionEvent", "Landroid/view/MotionEvent;", "clear", "flushTouchEvents", "getLastClicks", "", "getTheLastClickInfo", "handleTouchEvent", "touchEvent", "onTouch", "action", "", "onTouchEvent", "", "setBeginTime", "time", "Click", "Companion", "Triton_release"}, k=1, mv={1, 1, 16})
 final class TouchEventManager
@@ -67,73 +65,89 @@ final class TouchEventManager
     //   36: iload_2
     //   37: invokevirtual 121	android/view/MotionEvent:getX	(I)F
     //   40: aload_3
-    //   41: invokevirtual 127	com/tencent/mobileqq/triton/internal/touch/TouchEventManager$Click:getStartX	()F
-    //   44: fsub
-    //   45: invokestatic 133	java/lang/Math:abs	(F)F
-    //   48: fconst_1
-    //   49: fcmpl
-    //   50: ifgt -35 -> 15
-    //   53: aload_1
-    //   54: iload_2
-    //   55: invokevirtual 136	android/view/MotionEvent:getY	(I)F
-    //   58: aload_3
-    //   59: invokevirtual 139	com/tencent/mobileqq/triton/internal/touch/TouchEventManager$Click:getStartY	()F
-    //   62: fsub
-    //   63: invokestatic 133	java/lang/Math:abs	(F)F
-    //   66: fconst_1
-    //   67: fcmpl
-    //   68: ifgt -53 -> 15
-    //   71: aload_3
-    //   72: aload_1
-    //   73: iload_2
-    //   74: invokevirtual 121	android/view/MotionEvent:getX	(I)F
-    //   77: invokevirtual 143	com/tencent/mobileqq/triton/internal/touch/TouchEventManager$Click:setEndX	(F)V
-    //   80: aload_3
-    //   81: aload_1
-    //   82: iload_2
-    //   83: invokevirtual 136	android/view/MotionEvent:getY	(I)F
-    //   86: invokevirtual 146	com/tencent/mobileqq/triton/internal/touch/TouchEventManager$Click:setEndY	(F)V
-    //   89: aload_3
-    //   90: invokestatic 152	java/lang/System:currentTimeMillis	()J
-    //   93: aload_3
-    //   94: invokevirtual 155	com/tencent/mobileqq/triton/internal/touch/TouchEventManager$Click:getTimestamp	()J
-    //   97: lsub
-    //   98: invokevirtual 159	com/tencent/mobileqq/triton/internal/touch/TouchEventManager$Click:setDuration	(J)V
-    //   101: aload_3
-    //   102: invokestatic 152	java/lang/System:currentTimeMillis	()J
-    //   105: invokevirtual 162	com/tencent/mobileqq/triton/internal/touch/TouchEventManager$Click:setTimestamp	(J)V
-    //   108: aload_0
-    //   109: getfield 102	com/tencent/mobileqq/triton/internal/touch/TouchEventManager:lastClicks	Ljava/util/Queue;
-    //   112: aload_3
-    //   113: invokeinterface 166 2 0
-    //   118: pop
-    //   119: aload_0
-    //   120: getfield 102	com/tencent/mobileqq/triton/internal/touch/TouchEventManager:lastClicks	Ljava/util/Queue;
-    //   123: invokeinterface 169 1 0
-    //   128: bipush 10
-    //   130: if_icmple -115 -> 15
-    //   133: aload_0
-    //   134: getfield 102	com/tencent/mobileqq/triton/internal/touch/TouchEventManager:lastClicks	Ljava/util/Queue;
-    //   137: invokeinterface 173 1 0
+    //   41: invokevirtual 126	com/tencent/mobileqq/triton/internal/touch/TouchEventManager$Click:getStartX	()I
+    //   44: i2f
+    //   45: aload_0
+    //   46: getfield 83	com/tencent/mobileqq/triton/internal/touch/TouchEventManager:mScreenScale	F
+    //   49: fmul
+    //   50: fsub
+    //   51: invokestatic 132	java/lang/Math:abs	(F)F
+    //   54: fconst_1
+    //   55: fcmpl
+    //   56: ifgt -41 -> 15
+    //   59: aload_1
+    //   60: iload_2
+    //   61: invokevirtual 135	android/view/MotionEvent:getY	(I)F
+    //   64: aload_3
+    //   65: invokevirtual 138	com/tencent/mobileqq/triton/internal/touch/TouchEventManager$Click:getStartY	()I
+    //   68: i2f
+    //   69: aload_0
+    //   70: getfield 83	com/tencent/mobileqq/triton/internal/touch/TouchEventManager:mScreenScale	F
+    //   73: fmul
+    //   74: fsub
+    //   75: invokestatic 132	java/lang/Math:abs	(F)F
+    //   78: fconst_1
+    //   79: fcmpl
+    //   80: ifgt -65 -> 15
+    //   83: aload_3
+    //   84: aload_1
+    //   85: iload_2
+    //   86: invokevirtual 121	android/view/MotionEvent:getX	(I)F
+    //   89: aload_0
+    //   90: getfield 83	com/tencent/mobileqq/triton/internal/touch/TouchEventManager:mScreenScale	F
+    //   93: fdiv
+    //   94: f2i
+    //   95: invokevirtual 142	com/tencent/mobileqq/triton/internal/touch/TouchEventManager$Click:setEndX	(I)V
+    //   98: aload_3
+    //   99: aload_1
+    //   100: iload_2
+    //   101: invokevirtual 135	android/view/MotionEvent:getY	(I)F
+    //   104: aload_0
+    //   105: getfield 83	com/tencent/mobileqq/triton/internal/touch/TouchEventManager:mScreenScale	F
+    //   108: fdiv
+    //   109: f2i
+    //   110: invokevirtual 145	com/tencent/mobileqq/triton/internal/touch/TouchEventManager$Click:setEndY	(I)V
+    //   113: aload_3
+    //   114: invokestatic 151	java/lang/System:currentTimeMillis	()J
+    //   117: aload_3
+    //   118: invokevirtual 154	com/tencent/mobileqq/triton/internal/touch/TouchEventManager$Click:getTimestamp	()J
+    //   121: lsub
+    //   122: invokevirtual 158	com/tencent/mobileqq/triton/internal/touch/TouchEventManager$Click:setDuration	(J)V
+    //   125: aload_3
+    //   126: invokestatic 151	java/lang/System:currentTimeMillis	()J
+    //   129: invokevirtual 161	com/tencent/mobileqq/triton/internal/touch/TouchEventManager$Click:setTimestamp	(J)V
+    //   132: aload_0
+    //   133: getfield 102	com/tencent/mobileqq/triton/internal/touch/TouchEventManager:lastClicks	Ljava/util/Queue;
+    //   136: aload_3
+    //   137: invokeinterface 165 2 0
     //   142: pop
-    //   143: goto -128 -> 15
-    //   146: astore_1
-    //   147: aload_0
-    //   148: monitorexit
-    //   149: aload_1
-    //   150: athrow
+    //   143: aload_0
+    //   144: getfield 102	com/tencent/mobileqq/triton/internal/touch/TouchEventManager:lastClicks	Ljava/util/Queue;
+    //   147: invokeinterface 168 1 0
+    //   152: bipush 10
+    //   154: if_icmple -139 -> 15
+    //   157: aload_0
+    //   158: getfield 102	com/tencent/mobileqq/triton/internal/touch/TouchEventManager:lastClicks	Ljava/util/Queue;
+    //   161: invokeinterface 172 1 0
+    //   166: pop
+    //   167: goto -152 -> 15
+    //   170: astore_1
+    //   171: aload_0
+    //   172: monitorexit
+    //   173: aload_1
+    //   174: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	151	0	this	TouchEventManager
-    //   0	151	1	paramMotionEvent	MotionEvent
-    //   34	49	2	i	int
-    //   10	103	3	localClick	TouchEventManager.Click
+    //   0	175	0	this	TouchEventManager
+    //   0	175	1	paramMotionEvent	MotionEvent
+    //   34	67	2	i	int
+    //   10	127	3	localClick	TouchEventManager.Click
     // Exception table:
     //   from	to	target	type
-    //   6	11	146	finally
-    //   18	23	146	finally
-    //   27	30	146	finally
-    //   30	143	146	finally
+    //   6	11	170	finally
+    //   18	23	170	finally
+    //   27	30	170	finally
+    //   30	167	170	finally
   }
   
   /* Error */
@@ -147,8 +161,8 @@ final class TouchEventManager
     //   6: astore_2
     //   7: aload_0
     //   8: getfield 95	com/tencent/mobileqq/triton/internal/touch/TouchEventManager:mCurTouchList	Ljava/util/ArrayList;
-    //   11: checkcast 175	java/util/Collection
-    //   14: invokeinterface 179 1 0
+    //   11: checkcast 174	java/util/Collection
+    //   14: invokeinterface 178 1 0
     //   19: ifne +35 -> 54
     //   22: iconst_1
     //   23: istore_1
@@ -158,12 +172,12 @@ final class TouchEventManager
     //   31: dup
     //   32: aload_0
     //   33: getfield 95	com/tencent/mobileqq/triton/internal/touch/TouchEventManager:mCurTouchList	Ljava/util/ArrayList;
-    //   36: checkcast 175	java/util/Collection
-    //   39: invokespecial 182	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
+    //   36: checkcast 174	java/util/Collection
+    //   39: invokespecial 181	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
     //   42: astore_2
     //   43: aload_0
     //   44: getfield 95	com/tencent/mobileqq/triton/internal/touch/TouchEventManager:mCurTouchList	Ljava/util/ArrayList;
-    //   47: invokevirtual 184	java/util/ArrayList:clear	()V
+    //   47: invokevirtual 183	java/util/ArrayList:clear	()V
     //   50: aload_0
     //   51: monitorexit
     //   52: aload_2
@@ -257,27 +271,83 @@ final class TouchEventManager
     return str;
   }
   
+  /* Error */
   @NotNull
   public final String getTheLastClickInfo()
   {
-    try
-    {
-      Object localObject1 = new JSONObject();
-      TouchEventManager.Click localClick = (TouchEventManager.Click)CollectionsKt.last((Iterable)this.lastClicks);
-      ((JSONObject)localObject1).put("tsx", Float.valueOf(localClick.getStartX()));
-      ((JSONObject)localObject1).put("tsy", Float.valueOf(localClick.getStartY()));
-      ((JSONObject)localObject1).put("tex", Float.valueOf(localClick.getEndX()));
-      ((JSONObject)localObject1).put("tey", Float.valueOf(localClick.getEndY()));
-      ((JSONObject)localObject1).put("td", localClick.getDuration());
-      localObject1 = ((JSONObject)localObject1).toString();
-      Intrinsics.checkExpressionValueIsNotNull(localObject1, "res.toString()");
-      return localObject1;
-    }
-    finally
-    {
-      localObject2 = finally;
-      throw localObject2;
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: new 263	org/json/JSONObject
+    //   5: dup
+    //   6: invokespecial 264	org/json/JSONObject:<init>	()V
+    //   9: astore_1
+    //   10: aload_0
+    //   11: getfield 102	com/tencent/mobileqq/triton/internal/touch/TouchEventManager:lastClicks	Ljava/util/Queue;
+    //   14: checkcast 266	java/lang/Iterable
+    //   17: invokestatic 272	kotlin/collections/CollectionsKt:last	(Ljava/lang/Iterable;)Ljava/lang/Object;
+    //   20: checkcast 123	com/tencent/mobileqq/triton/internal/touch/TouchEventManager$Click
+    //   23: astore_2
+    //   24: aload_1
+    //   25: ldc_w 274
+    //   28: aload_2
+    //   29: invokevirtual 126	com/tencent/mobileqq/triton/internal/touch/TouchEventManager$Click:getStartX	()I
+    //   32: invokevirtual 278	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   35: pop
+    //   36: aload_1
+    //   37: ldc_w 280
+    //   40: aload_2
+    //   41: invokevirtual 138	com/tencent/mobileqq/triton/internal/touch/TouchEventManager$Click:getStartY	()I
+    //   44: invokevirtual 278	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   47: pop
+    //   48: aload_1
+    //   49: ldc_w 282
+    //   52: aload_2
+    //   53: invokevirtual 242	com/tencent/mobileqq/triton/internal/touch/TouchEventManager$Click:getEndX	()I
+    //   56: invokevirtual 278	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   59: pop
+    //   60: aload_1
+    //   61: ldc_w 284
+    //   64: aload_2
+    //   65: invokevirtual 245	com/tencent/mobileqq/triton/internal/touch/TouchEventManager$Click:getEndY	()I
+    //   68: invokevirtual 278	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   71: pop
+    //   72: aload_1
+    //   73: ldc_w 286
+    //   76: aload_2
+    //   77: invokevirtual 289	com/tencent/mobileqq/triton/internal/touch/TouchEventManager$Click:getDuration	()J
+    //   80: invokevirtual 292	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   83: pop
+    //   84: aload_1
+    //   85: invokevirtual 293	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   88: astore_1
+    //   89: aload_1
+    //   90: ldc_w 295
+    //   93: invokestatic 194	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   96: aload_0
+    //   97: monitorexit
+    //   98: aload_1
+    //   99: areturn
+    //   100: astore_1
+    //   101: aload_0
+    //   102: monitorexit
+    //   103: aload_1
+    //   104: athrow
+    //   105: astore_2
+    //   106: goto -22 -> 84
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	109	0	this	TouchEventManager
+    //   9	90	1	localObject1	Object
+    //   100	4	1	localObject2	Object
+    //   23	54	2	localClick	TouchEventManager.Click
+    //   105	1	2	localNoSuchElementException	java.util.NoSuchElementException
+    // Exception table:
+    //   from	to	target	type
+    //   2	10	100	finally
+    //   10	84	100	finally
+    //   84	96	100	finally
+    //   10	84	105	java/util/NoSuchElementException
   }
   
   public final void handleTouchEvent(@NotNull TTTouchEvents paramTTTouchEvents)
@@ -324,7 +394,7 @@ final class TouchEventManager
         onTouch(m);
         if (m == 0)
         {
-          this.currentClick = new TouchEventManager.Click(paramMotionEvent.getX(k), paramMotionEvent.getY(k));
+          this.currentClick = new TouchEventManager.Click((int)(paramMotionEvent.getX(k) / this.mScreenScale), (int)(paramMotionEvent.getY(k) / this.mScreenScale));
           continue;
           i = 0;
           while (i < paramMotionEvent.getPointerCount())

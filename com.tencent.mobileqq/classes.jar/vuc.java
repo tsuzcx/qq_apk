@@ -1,26 +1,19 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class vuc
-  extends vko
+  implements View.OnClickListener
 {
-  public long a;
-  public final String a;
-  public final boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public String d;
+  public vuc(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  public vuc(ErrorMessage paramErrorMessage, String paramString, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public String toString()
-  {
-    return "DeleteStoryVideoEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", groupId='" + this.c + '\'' + ", feedId='" + this.d + '\'' + ", videoIndex=" + this.jdField_a_of_type_Long + ", localDelete=" + this.jdField_a_of_type_Boolean + ", isRemoveMember=" + this.jdField_b_of_type_Boolean + '}';
+    if (this.a.a.isShowing()) {
+      this.a.a.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

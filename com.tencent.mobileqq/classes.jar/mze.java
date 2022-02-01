@@ -1,36 +1,13 @@
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import androidx.annotation.NonNull;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.wtogether.fragment.AVRecentFileSelectFragment;
 
 public class mze
-  extends mzh
+  implements DialogInterface.OnClickListener
 {
-  static
-  {
-    if (!mze.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a = bool;
-      return;
-    }
-  }
+  public mze(AVRecentFileSelectFragment paramAVRecentFileSelectFragment) {}
   
-  public <VH extends mzg<?>> VH a(int paramInt, @NonNull ViewGroup paramViewGroup, @NonNull Class<VH> paramClass)
-  {
-    paramClass = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
-    paramViewGroup = null;
-    switch (paramInt)
-    {
-    }
-    while ((!a) && (paramViewGroup == null))
-    {
-      throw new AssertionError("ViewHolder null");
-      paramViewGroup = new mza(paramClass);
-      continue;
-      paramViewGroup = new mzb(paramClass);
-    }
-    return paramViewGroup;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

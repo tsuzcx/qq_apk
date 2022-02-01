@@ -1,21 +1,56 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.widget.ImageView;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
-class afgt
-  implements ValueAnimator.AnimatorUpdateListener
+public class afgt
+  implements bkzq
 {
-  afgt(afgs paramafgs) {}
+  public afgt(TroopRequestActivity paramTroopRequestActivity, bkzi parambkzi) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void OnClick(View paramView, int paramInt)
   {
-    double d = ((Double)paramValueAnimator.getAnimatedValue()).doubleValue();
-    if (afgs.a(this.a) != null) {
-      afgs.a(this.a).setAlpha((float)d);
+    int i = 20011;
+    switch (paramInt)
+    {
+    default: 
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
     }
-    if (afgs.a(this.a) != null) {
-      afgs.a(this.a).setAlpha((float)d * 2.0F);
+    if (NetworkUtil.isNetSupport(BaseApplication.getContext())) {
+      paramInt = i;
+    }
+    for (;;)
+    {
+      try
+      {
+        switch (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get())
+        {
+        case 1: 
+        case 22: 
+          long l = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get();
+          paramView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.app.getCurrentAccountUin();
+          aaqo.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.t, String.valueOf(l), paramView, paramInt, null);
+        }
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+        continue;
+      }
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.app, "P_CliOper", "Grp_sysmsg", "", "verify_msg", "report", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.u, "", "");
+      break;
+      paramInt = 20009;
+      continue;
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, 2131694255, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.getTitleBarHeight());
+      continue;
+      paramInt = i;
     }
   }
 }

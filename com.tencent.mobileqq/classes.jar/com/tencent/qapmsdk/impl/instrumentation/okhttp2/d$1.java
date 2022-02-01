@@ -1,10 +1,10 @@
 package com.tencent.qapmsdk.impl.instrumentation.okhttp2;
 
 import com.squareup.okhttp.Request;
-import com.tencent.qapmsdk.impl.instrumentation.e;
+import com.tencent.qapmsdk.impl.instrumentation.f;
 
 final class d$1
-  implements e
+  implements f
 {
   d$1(Request paramRequest) {}
 }

@@ -1,23 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 
-class okf
-  implements ViewFactory.FoundClickableViewListener
+public class okf
+  implements DialogInterface.OnCancelListener
 {
-  okf(oke paramoke, TemplateBean paramTemplateBean) {}
+  public okf(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString) {}
   
-  public void onFound(ViewBase paramViewBase)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
-    {
-    }
-    do
-    {
-      return;
-    } while (!(paramViewBase instanceof qki));
-    ((qki)paramViewBase).a(new okg(this, paramViewBase));
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a = true;
   }
 }
 

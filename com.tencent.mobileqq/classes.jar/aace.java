@@ -1,21 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aace
-  implements QQPermissionCallback
+public class aace
+  implements View.OnClickListener
 {
-  aace(aaca paramaaca) {}
+  public aace(ServiceFolderFollowPBHeadView paramServiceFolderFollowPBHeadView) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    QLog.d("PubAccountMailJsPlugin", 1, "CheckPermission user denied = ");
-    bfur.a(this.a.mRuntime.a(), paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.d("PubAccountMailJsPlugin", 1, "CheckPermission user grant = ");
-    aaca.g(this.a);
+    if (ServiceFolderFollowPBHeadView.a(this.a) != null) {
+      ServiceFolderFollowPBHeadView.a(this.a).setCurrentItem(1, true);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

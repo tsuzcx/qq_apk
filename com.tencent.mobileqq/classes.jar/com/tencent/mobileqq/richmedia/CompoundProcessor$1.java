@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.richmedia;
 
 import android.os.Bundle;
-import azzd;
-import azzj;
-import bfwl;
+import bbfm;
+import bbfs;
+import bhfd;
 
 public class CompoundProcessor$1
   implements Runnable
 {
-  public CompoundProcessor$1(azzd paramazzd) {}
+  public CompoundProcessor$1(bbfm parambbfm) {}
   
   public void run()
   {
-    azzj localazzj = azzj.a();
+    bbfs localbbfs = bbfs.a();
     String str = this.this$0.a(this.this$0.jdField_b_of_type_JavaLangString);
     Bundle localBundle = new Bundle();
     localBundle.putString("vidoe_record_uniseq", this.this$0.a);
     localBundle.putString("full_video_path", str);
     localBundle.putInt("video_slices_total_time_length", this.this$0.jdField_b_of_type_Int);
-    localazzj.a(103, -1, localBundle);
-    bfwl.a(this.this$0.a, "clicompCompoundProcessor.compressSourceYUV", "path = " + str + ",totalTime = " + this.this$0.jdField_b_of_type_Int);
+    localbbfs.a(103, -1, localBundle);
+    bhfd.a(this.this$0.a, "clicompCompoundProcessor.compressSourceYUV", "path = " + str + ",totalTime = " + this.this$0.jdField_b_of_type_Int);
   }
 }
 

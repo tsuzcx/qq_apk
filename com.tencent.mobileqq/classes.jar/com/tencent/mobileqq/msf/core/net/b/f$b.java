@@ -47,11 +47,11 @@ class f$b
         QLog.d("ReqAllFailSocket", 1, "", localException);
         break label43;
         if ((595 != CodecWarpper.getSharedObjectVersion()) && (600 != CodecWarpper.getSharedObjectVersion())) {
-          break label211;
+          break label212;
         }
-        byte[] arrayOfByte1 = CodecWarpper.nativeEncodeRequest(localToServiceMsg.getRequestSsoSeq(), w.d(), w.f(), w.g(), "", str, null, localToServiceMsg.getAppId(), 0, localToServiceMsg.getUin(), (byte)0, (byte)0, localThrowable, localToServiceMsg.getWupBuffer(), true);
+        byte[] arrayOfByte1 = CodecWarpper.nativeEncodeRequest(localToServiceMsg.getRequestSsoSeq(), w.d(), w.f(), w.g(), "", str, null, localToServiceMsg.getAppId(), 0, localToServiceMsg.getUin(), (byte)0, (byte)0, localThrowable, null, localToServiceMsg.getWupBuffer(), true);
         break label90;
-        arrayOfByte1 = CodecWarpper.nativeEncodeRequest(localToServiceMsg.getRequestSsoSeq(), w.d(), w.f(), w.g(), "", str, null, localToServiceMsg.getAppId(), 0, localToServiceMsg.getUin(), (byte)0, (byte)0, (byte)0, arrayOfByte1, localToServiceMsg.getWupBuffer(), true);
+        arrayOfByte1 = CodecWarpper.nativeEncodeRequest(localToServiceMsg.getRequestSsoSeq(), w.d(), w.f(), w.g(), "", str, null, localToServiceMsg.getAppId(), 0, localToServiceMsg.getUin(), (byte)0, (byte)0, (byte)0, arrayOfByte1, null, localToServiceMsg.getWupBuffer(), true);
         break label90;
       }
       if (591 != CodecWarpper.getSharedObjectVersion()) {
@@ -62,7 +62,7 @@ class f$b
         f.a(this.a, localToServiceMsg.getServiceCmd(), localToServiceMsg.getMsfCommand(), (byte[])localObject);
       }
     }
-    label211:
+    label212:
   }
 }
 

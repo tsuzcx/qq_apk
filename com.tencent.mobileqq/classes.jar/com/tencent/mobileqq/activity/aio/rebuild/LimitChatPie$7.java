@@ -1,14 +1,15 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahhp;
+import aici;
 import android.support.v4.app.FragmentActivity;
-import arhi;
-import arib;
-import aros;
-import auyo;
+import aslo;
+import asmh;
+import assy;
+import aweo;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ExtendFriendUserInfo;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -20,55 +21,55 @@ import mqq.os.MqqHandler;
 public class LimitChatPie$7
   implements Runnable
 {
-  public LimitChatPie$7(ahhp paramahhp, String paramString) {}
+  public LimitChatPie$7(aici paramaici, String paramString) {}
   
   public void run()
   {
-    arhi localarhi = (arhi)this.this$0.app.getManager(264);
-    if (localarhi == null) {
+    aslo localaslo = (aslo)this.this$0.app.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
+    if (localaslo == null) {
       QLog.e(this.this$0.tag, 2, "getSubThreadHandler  extendFriendManager Is null");
     }
     do
     {
       return;
-      ahhp.a(this.this$0, localarhi.a(this.a, true));
-      if (ahhp.a(this.this$0) == null)
+      aici.a(this.this$0, localaslo.a(this.a, true));
+      if (aici.a(this.this$0) == null)
       {
-        auyo.a(this.this$0.app, this.a, 1, "", false);
-        ahhp.a(this.this$0, localarhi.a(this.a, true));
+        aweo.a(this.this$0.app, this.a, 1, "", false);
+        aici.a(this.this$0, localaslo.a(this.a, true));
       }
-      if ((ahhp.a(this.this$0) != null) && (ahhp.a(this.this$0).isSignalBomb()) && (ahhp.a(this.this$0).showDistanceHLight))
+      if ((aici.a(this.this$0) != null) && (aici.a(this.this$0).isSignalBomb()) && (aici.a(this.this$0).showDistanceHLight))
       {
-        ahhp.a(this.this$0).showDistanceHLight = false;
-        localarhi.a(ahhp.a(this.this$0));
+        aici.a(this.this$0).showDistanceHLight = false;
+        localaslo.a(aici.a(this.this$0));
       }
       Object localObject = this.this$0.app.getMessageFacade().getAllMessages(this.this$0.sessionInfo.curFriendUin, this.this$0.sessionInfo.curType, null, 500);
-      ahhp.a(this.this$0, (List)localObject);
+      aici.a(this.this$0, (List)localObject);
       if (localObject != null) {
-        ahhp.a(this.this$0, ((List)localObject).size());
+        aici.a(this.this$0, ((List)localObject).size());
       }
-      if (ahhp.g(this.this$0) <= 0) {
-        aros.a(this.this$0.app, this.this$0.app.getCurrentAccountUin(), this.a, this.this$0.sessionInfo.curType);
+      if (aici.g(this.this$0) <= 0) {
+        assy.a(this.this$0.app, this.this$0.app.getCurrentAccountUin(), this.a, this.this$0.sessionInfo.curType);
       }
-      if ((localObject != null) && (((List)localObject).size() > 0) && (!ahhp.a(this.this$0).enableQQCall))
+      if ((localObject != null) && (((List)localObject).size() > 0) && (!aici.a(this.this$0).enableQQCall))
       {
         QLog.d(this.this$0.tag, 2, "enableQQCall check");
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext()) {
-          if (((MessageRecord)((Iterator)localObject).next()).senderuin.equals(ahhp.a(this.this$0).uin))
+          if (((MessageRecord)((Iterator)localObject).next()).senderuin.equals(aici.a(this.this$0).uin))
           {
-            ahhp.a(this.this$0).enableQQCall = true;
-            localarhi.a(ahhp.a(this.this$0));
+            aici.a(this.this$0).enableQQCall = true;
+            localaslo.a(aici.a(this.this$0));
           }
         }
       }
       if (QLog.isColorLevel()) {
-        QLog.d(this.this$0.tag, 2, "mAllMsgCount " + ahhp.g(this.this$0));
+        QLog.d(this.this$0.tag, 2, "mAllMsgCount " + aici.g(this.this$0));
       }
       this.this$0.refresh(65536);
       ThreadManager.getUIHandler().post(new LimitChatPie.7.1(this));
     } while (this.this$0.mActivity.isFinishing());
-    arib.a(this.this$0.app, this.this$0.mActivity, this.this$0.sessionInfo);
+    asmh.a(this.this$0.app, this.this$0.mActivity, this.this$0.sessionInfo);
   }
 }
 

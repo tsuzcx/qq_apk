@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.vas.ipc;
 
 import android.os.Bundle;
-import bkjy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.ilive.manager.IlivePreDownloadManager;
 import eipc.EIPCResult;
 import mqq.app.AppRuntime;
-import ugf;
+import uuc;
 
 public class VasLiveIPCModule
   extends QIPCModule
@@ -79,7 +79,7 @@ public class VasLiveIPCModule
       paramBundle = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
       if (i == 1)
       {
-        ugf.a(paramBundle, BaseApplicationImpl.getContext(), str, new VasLiveIPCModule.1(this, paramInt), false, 0, true);
+        uuc.a(paramBundle, BaseApplicationImpl.getContext(), str, new VasLiveIPCModule.1(this, paramInt), false, 0, true);
         return;
       }
     }
@@ -89,7 +89,7 @@ public class VasLiveIPCModule
       QLog.e("VasLiveIPCModule", 1, "handleFollowAccountAction exception = " + paramBundle.getMessage());
       return;
     }
-    ugf.a(paramBundle, BaseApplicationImpl.getContext(), str, false, new VasLiveIPCModule.2(this, paramInt), true);
+    uuc.a(paramBundle, BaseApplicationImpl.getContext(), str, false, new VasLiveIPCModule.2(this, paramInt), true);
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
@@ -106,7 +106,7 @@ public class VasLiveIPCModule
     }
     if ("action_cancel_pre_load".equals(paramString))
     {
-      bkjy.a().a();
+      IlivePreDownloadManager.getInstance().cancelPreloadDownload();
       return null;
     }
     if ("followAccount".equals(paramString))

@@ -1,47 +1,43 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.widget.SimpleTextView;
 
 class bjeq
-  implements ServiceConnection
+  extends blfn
 {
-  bjeq(bjep parambjep) {}
-  
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  bjeq(bjeo parambjeo, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    bjep.a(this.a, awea.a(paramIBinder));
-    try
-    {
-      if (bjep.a(this.a) != null) {
-        bjep.a(this.a).a(bjep.a(this.a));
-      }
-      if (paramIBinder != null) {
-        paramIBinder.linkToDeath(new bjer(this, paramIBinder), 0);
-      }
-      return;
-    }
-    catch (Exception paramComponentName)
-    {
-      QLog.i("MusicPlayerProxyImpl", 2, "onServiceConnected " + paramComponentName);
-    }
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public View a(int paramInt, Object paramObject, blfm paramblfm, View.OnClickListener paramOnClickListener)
   {
-    QLog.i("MusicPlayerProxyImpl", 2, "onServiceDisconnected " + paramComponentName);
-    try
-    {
-      if (bjep.a(this.a) != null)
-      {
-        bjep.a(this.a).b(bjep.a(this.a));
-        bjep.a(this.a, null);
-      }
-      return;
+    paramblfm = super.a(paramInt, paramObject, paramblfm, paramOnClickListener);
+    if ((paramblfm instanceof SimpleTextView)) {
+      paramblfm.setTag(paramObject);
     }
-    catch (Exception paramComponentName)
+    return paramblfm;
+  }
+  
+  public void a(int paramInt, Object paramObject, blfm[] paramArrayOfblfm)
+  {
+    paramInt = 0;
+    if ((paramArrayOfblfm == null) || (paramArrayOfblfm.length <= 0)) {}
+    for (;;)
     {
-      QLog.i("MusicPlayerProxyImpl", 2, "onServiceDisconnected " + paramComponentName);
+      return;
+      if (paramArrayOfblfm.length < 0)
+      {
+        paramArrayOfblfm[0].b = 0;
+        paramArrayOfblfm[0].a = 0;
+        paramInt = 1;
+      }
+      while (paramInt < paramArrayOfblfm.length)
+      {
+        paramArrayOfblfm[paramInt].b = -1;
+        paramArrayOfblfm[paramInt].a = -1;
+        paramInt += 1;
+      }
     }
   }
 }

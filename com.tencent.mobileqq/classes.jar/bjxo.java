@@ -1,14 +1,21 @@
+import android.graphics.drawable.Drawable;
 import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.qidian.QidianProfileCardActivity;
 
-public abstract interface bjxo
+public class bjxo
+  implements View.OnLongClickListener
 {
-  public abstract void a(View paramView);
+  public bjxo(QidianProfileCardActivity paramQidianProfileCardActivity, Drawable paramDrawable, bjyn parambjyn) {}
   
-  public abstract void a(View paramView, int paramInt);
-  
-  public abstract void a(View paramView, boolean paramBoolean);
-  
-  public abstract boolean a(View paramView);
+  public boolean onLongClick(View paramView)
+  {
+    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof URLDrawable)) {
+      QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, (URLDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Bjyn.b);
+    }
+    return true;
+  }
 }
 
 

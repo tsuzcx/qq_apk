@@ -1,6 +1,39 @@
-public abstract interface aouu
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profilesetting.InterestSwitchEditActivity;
+import com.tencent.qphone.base.util.QLog;
+
+public class aouu
+  extends aouc
 {
-  public abstract void a(aoux paramaoux, boolean paramBoolean, byte[] paramArrayOfByte);
+  public aouu(QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      boolean bool = f();
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("OpenOnProfileSettingAction", 1, "doAction error: " + localException.getMessage());
+      a("OpenOnProfileSettingAction");
+    }
+    return false;
+  }
+  
+  public boolean f()
+  {
+    Intent localIntent = new Intent(this.a, InterestSwitchEditActivity.class);
+    localIntent.setFlags(67108864);
+    this.a.startActivity(localIntent);
+    return true;
+  }
 }
 
 

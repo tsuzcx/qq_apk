@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import ajwn;
-import ajwo;
-import ajwp;
-import amtj;
+import aksg;
+import aksh;
+import aksi;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.widget.ImageView;
+import anvx;
 
 public class RedPacketKuaKuaFragment$4$1$1$1
   implements Runnable
 {
-  public RedPacketKuaKuaFragment$4$1$1$1(ajwp paramajwp, Drawable paramDrawable, ImageView paramImageView) {}
+  public RedPacketKuaKuaFragment$4$1$1$1(aksi paramaksi, Drawable paramDrawable, ImageView paramImageView) {}
   
   public void run()
   {
     ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).stop();
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    RedPacketKuaKuaFragment.a(this.jdField_a_of_type_Ajwp.a.a.a).removeCallbacks(RedPacketKuaKuaFragment.a(this.jdField_a_of_type_Ajwp.a.a.a));
-    RedPacketKuaKuaFragment.a(this.jdField_a_of_type_Ajwp.a.a.a).postDelayed(RedPacketKuaKuaFragment.a(this.jdField_a_of_type_Ajwp.a.a.a), RedPacketKuaKuaFragment.a(this.jdField_a_of_type_Ajwp.a.a.a) * 1000L);
-    this.jdField_a_of_type_Ajwp.a.a.a.a(amtj.a(2131705096));
+    RedPacketKuaKuaFragment.a(this.jdField_a_of_type_Aksi.a.a.a).removeCallbacks(RedPacketKuaKuaFragment.a(this.jdField_a_of_type_Aksi.a.a.a));
+    RedPacketKuaKuaFragment.a(this.jdField_a_of_type_Aksi.a.a.a).postDelayed(RedPacketKuaKuaFragment.a(this.jdField_a_of_type_Aksi.a.a.a), RedPacketKuaKuaFragment.a(this.jdField_a_of_type_Aksi.a.a.a) * 1000L);
+    this.jdField_a_of_type_Aksi.a.a.a.a(anvx.a(2131705447));
   }
 }
 

@@ -1,9 +1,9 @@
 package cooperation.qzone.birthdaynotice;
 
 import GIFT_MALL_PROTOCOL.DouFuInfo;
-import awfp;
-import bbko;
-import bbog;
+import axlr;
+import bcrg;
+import bcva;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -52,8 +52,8 @@ public class BirthDayNoticeManager
   
   public static boolean isBirthDayNoticeEnable(QQAppInterface paramQQAppInterface, String paramString)
   {
-    if (awfp.a(paramQQAppInterface, paramString, 5L, false) != null) {}
-    while ((awfp.a(paramQQAppInterface, paramString, 12L, false) != null) || (awfp.a(paramQQAppInterface, paramString, false) != null)) {
+    if (axlr.a(paramQQAppInterface, paramString, 5L, false) != null) {}
+    while ((axlr.a(paramQQAppInterface, paramString, 12L, false) != null) || (axlr.a(paramQQAppInterface, paramString, false) != null)) {
       return true;
     }
     return false;
@@ -72,7 +72,7 @@ public class BirthDayNoticeManager
       if (l3 - l1 >= 86400L)
       {
         QLog.i("BirthDayNoticeManager", 2, "requestBirthDayNotice ");
-        paramSessionInfo = new NewIntent(BaseApplicationImpl.getApplication(), bbog.class);
+        paramSessionInfo = new NewIntent(BaseApplicationImpl.getApplication(), bcva.class);
         l1 = 0L;
       }
     }

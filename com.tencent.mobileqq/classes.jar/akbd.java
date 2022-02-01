@@ -1,54 +1,14 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.8.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.lang.ref.WeakReference;
-import java.util.LinkedList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class akbd
-  extends Handler
+class akbd
+  implements DialogInterface.OnClickListener
 {
-  private LinkedList<akbg> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private boolean jdField_a_of_type_Boolean;
+  akbd(akam paramakam) {}
   
-  public akbd(PreloadManager paramPreloadManager, Looper paramLooper)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramLooper);
-  }
-  
-  private void a()
-  {
-    WeakReference localWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager);
-    akbg localakbg = (akbg)this.jdField_a_of_type_JavaUtilLinkedList.getFirst();
-    this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
-    ThreadManager.excute(new PreloadManager.8.1(this, localWeakReference, localakbg), 64, null, false);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager.jdField_a_of_type_Boolean) {}
-    do
-    {
-      return;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 1: 
-        this.jdField_a_of_type_JavaUtilLinkedList.addLast((akbg)paramMessage.obj);
-      }
-    } while (this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Boolean = true;
-    sendEmptyMessage(2);
-    return;
-    if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)
-    {
-      a();
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
+    paramDialogInterface.dismiss();
   }
 }
 

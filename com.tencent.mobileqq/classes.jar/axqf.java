@@ -1,68 +1,35 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.olympic.OlympicManager;
-import com.tencent.mobileqq.olympic.ShuayishuaConfig;
-import com.tencent.mobileqq.olympic.TorchInfo;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.transfile.BaseTransFileController;
+import com.tencent.mobileqq.transfile.BaseTransProcessor;
+import com.tencent.mobileqq.transfile.NearbyPeoplePhotoUploadProcessor;
+import com.tencent.mobileqq.transfile.TransferRequest;
 import com.tencent.qphone.base.util.QLog;
 
 public class axqf
-  extends axqg
+  extends BaseTransFileController
 {
-  public axqf(OlympicManager paramOlympicManager) {}
+  private NearbyAppInterface a;
   
-  public void a(boolean paramBoolean, int paramInt1, TorchInfo paramTorchInfo, int paramInt2)
+  public axqf(NearbyAppInterface paramNearbyAppInterface)
   {
-    if (QLog.isColorLevel())
-    {
-      OlympicManager localOlympicManager = this.a;
-      QLog.i("OlympicManager", 2, "onGetMyTorchInfo.isSuccess=" + paramBoolean + ",errCode=" + paramInt1 + ",errStr=,info=" + paramTorchInfo);
-    }
+    super(paramNearbyAppInterface);
+    this.a = paramNearbyAppInterface;
   }
   
-  public void a(boolean paramBoolean, int paramInt, String paramString, byte[] paramArrayOfByte, TorchInfo paramTorchInfo)
+  public void destroy() {}
+  
+  public BaseTransProcessor getProcessor(TransferRequest paramTransferRequest)
   {
-    if (QLog.isColorLevel())
+    if (paramTransferRequest == null) {}
+    do
     {
-      OlympicManager localOlympicManager = this.a;
-      QLog.i("OlympicManager", 2, "onCollectTorch.isSuccess=" + paramBoolean + ",errCode=" + paramInt + ",errStr=" + paramString + ",sig=" + paramArrayOfByte + ",info=" + paramTorchInfo);
-    }
-    OlympicManager.a(this.a, false);
-    if (paramBoolean)
-    {
-      OlympicManager.a(this.a, paramArrayOfByte);
-      if (paramInt == 0)
-      {
-        bcef.b(this.a.a, "CliOper", "", "", "0X80069C8", "0X80069C8", 0, 0, "", "", "", "");
-        this.a.a(1);
-        this.a.a(paramTorchInfo);
-        OlympicManager.b(this.a).obtainMessage(6).sendToTarget();
-        OlympicManager.b(this.a).obtainMessage(5).sendToTarget();
-        paramArrayOfByte = Long.valueOf(-1L);
-        paramString = paramArrayOfByte;
-        if (OlympicManager.a(this.a) != null)
-        {
-          paramString = paramArrayOfByte;
-          if (OlympicManager.a(this.a).type == 2) {
-            paramString = Long.valueOf(OlympicManager.a(this.a).uiBegin);
-          }
-        }
-        OlympicManager.a(this.a).obtainMessage(7, paramString).sendToTarget();
+      return null;
+      if ((paramTransferRequest.mFileType == 8) || (paramTransferRequest.mFileType == 64) || (paramTransferRequest.mFileType == 21)) {
+        return new NearbyPeoplePhotoUploadProcessor(this, paramTransferRequest);
       }
-    }
-    else
-    {
-      return;
-    }
-    if (paramInt == 1)
-    {
-      this.a.a(1);
-      OlympicManager.b(this.a).obtainMessage(6).sendToTarget();
-      OlympicManager.b(this.a).obtainMessage(5).sendToTarget();
-      return;
-    }
-    OlympicManager.b(this.a, false);
-    OlympicManager.b(this.a, null);
-    OlympicManager.a(this.a, 0);
+    } while (!QLog.isColorLevel());
+    QLog.e("Q.richmedia.TransFileController", 2, paramTransferRequest.toString());
+    return null;
   }
 }
 

@@ -1,18 +1,19 @@
 package com.tencent.mobileqq.troop.troopCard;
 
-import bewm;
+import bgdy;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 
 public class VisitorTroopCardPresenter$8
   implements Runnable
 {
-  public VisitorTroopCardPresenter$8(bewm parambewm) {}
+  public VisitorTroopCardPresenter$8(bgdy parambgdy) {}
   
   public void run()
   {
-    if (bewm.a(this.this$0) != null) {
-      ((TroopManager)bewm.a(this.this$0).getManager(52)).b(bewm.a(this.this$0).a);
+    if (bgdy.a(this.this$0) != null) {
+      ((TroopManager)bgdy.a(this.this$0).getManager(QQManagerFactory.TROOP_MANAGER)).b(bgdy.a(this.this$0).a);
     }
   }
 }

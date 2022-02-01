@@ -1,53 +1,53 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
 public class aeog
-  implements View.OnClickListener
+  implements Comparator<aeon>
 {
-  public aeog(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aeog(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void onClick(View paramView)
+  public int a(aeon paramaeon1, aeon paramaeon2)
   {
-    Object localObject = paramView.getTag();
-    if ((localObject == null) || (!(localObject instanceof Integer))) {}
-    int i;
+    paramaeon1 = paramaeon1.a.name;
+    paramaeon2 = paramaeon2.a.name;
+    if ((paramaeon1 == null) && (paramaeon2 == null)) {}
+    int j;
+    int k;
     do
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      i = ((Integer)localObject).intValue();
-    } while (i < 0);
-    localObject = paramView.findViewById(2131379713);
-    if ((((View)localObject).getTag() != null) && ((((View)localObject).getTag() instanceof Boolean))) {}
-    for (boolean bool = ((Boolean)((View)localObject).getTag()).booleanValue();; bool = false)
-    {
-      if (bool)
+      return 0;
+      if ((paramaeon1 == null) && (paramaeon2 != null)) {
+        return -1;
+      }
+      if ((paramaeon1 != null) && (paramaeon2 == null)) {
+        return 1;
+      }
+      j = paramaeon1.length();
+      k = paramaeon2.length();
+      int m = Math.min(j, k);
+      int i = 0;
+      while (i < m)
       {
-        localObject = (aeox)this.a.jdField_a_of_type_Aepb.getItem(i);
-        this.a.a((aeox)localObject);
-        if ((this.a.jdField_b_of_type_AndroidAppDialog != null) && (this.a.jdField_b_of_type_AndroidAppDialog.isShowing())) {
-          this.a.jdField_b_of_type_AndroidAppDialog.dismiss();
+        char c1 = paramaeon1.charAt(i);
+        char c2 = paramaeon2.charAt(i);
+        if (c1 != c2)
+        {
+          paramaeon1 = ChnToSpell.a(c1, i);
+          paramaeon2 = ChnToSpell.a(c2, i);
+          if (paramaeon1.jdField_a_of_type_Int == paramaeon2.jdField_a_of_type_Int) {
+            return paramaeon1.jdField_a_of_type_JavaLangString.compareTo(paramaeon2.jdField_a_of_type_JavaLangString);
+          }
+          return paramaeon1.jdField_a_of_type_Int - paramaeon2.jdField_a_of_type_Int;
         }
-        if (this.a.d != 11) {
-          break;
-        }
-        bcef.b(this.a.app, "CliOper", "", "", "0X8006218", "0X8006218", 0, 0, "", "", "", "");
-        break;
+        i += 1;
       }
-      localObject = (aeox)this.a.jdField_a_of_type_Aeoz.getItem(i);
-      this.a.a((aeox)localObject);
-      if (this.a.d == 11) {
-        bcef.b(this.a.app, "CliOper", "", "", "0X8006219", "0X8006219", 0, 0, "", "", "", "");
+      if (j < k) {
+        return -1;
       }
-      if (this.a.d != 18) {
-        break;
-      }
-      bcef.b(this.a.app, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "mber_clk", 0, 0, this.a.jdField_b_of_type_JavaLangString, "", "", "");
-      break;
-    }
+    } while (j <= k);
+    return 1;
   }
 }
 

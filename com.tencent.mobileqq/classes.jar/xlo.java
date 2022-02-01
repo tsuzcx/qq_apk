@@ -1,25 +1,72 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.model.ShareGroupCollectionItem;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer;
 
 public class xlo
-  extends way
+  extends Handler
 {
-  public int a;
-  public String a;
-  public List<ShareGroupCollectionItem> a;
+  private xlo(MediaPlayer paramMediaPlayer) {}
   
-  public xlo(ErrorMessage paramErrorMessage, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    super(paramErrorMessage);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public String toString()
-  {
-    return "GetShareGroupListEvent{mShareGroupList=" + this.jdField_a_of_type_JavaUtilList.size() + ", mShareGroupTotalCount=" + this.jdField_a_of_type_Int + ", errorCode=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode + ", isLocalData=" + this.b + ", isFirstPage=" + this.c + ", isEnd=" + this.jdField_a_of_type_Boolean + '}';
+    switch (paramMessage.what)
+    {
+    default: 
+    case 1: 
+    case 4: 
+    case 2: 
+    case 5: 
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            Log.d("Story-MediaPlayer", "onPrepared");
+          } while (this.a.jdField_a_of_type_Xlz == null);
+          this.a.jdField_a_of_type_Xlz.a_(this.a);
+          return;
+          Log.d("Story-MediaPlayer", "onSeekComplete");
+        } while (this.a.jdField_a_of_type_Xma == null);
+        this.a.jdField_a_of_type_Xma.a(this.a);
+        return;
+        Log.d("Story-MediaPlayer", "onPlaybackComplete");
+        if (this.a.jdField_a_of_type_Xlw != null) {
+          this.a.jdField_a_of_type_Xlw.a(this.a);
+        }
+        this.a.c(false);
+        return;
+        Log.d("Story-MediaPlayer", "onVideoSizeChanged");
+      } while (this.a.jdField_a_of_type_Xmc == null);
+      this.a.jdField_a_of_type_Xmc.a(this.a, paramMessage.arg1, paramMessage.arg2);
+      return;
+    case 100: 
+      Log.e("Story-MediaPlayer", "Error (" + paramMessage.arg1 + "," + paramMessage.arg2 + ")");
+      if (this.a.jdField_a_of_type_Xlx == null) {
+        break;
+      }
+    }
+    for (boolean bool = this.a.jdField_a_of_type_Xlx.a(this.a, paramMessage.arg1, paramMessage.arg2);; bool = false)
+    {
+      if ((this.a.jdField_a_of_type_Xlw != null) && (!bool)) {
+        this.a.jdField_a_of_type_Xlw.a(this.a);
+      }
+      this.a.c(false);
+      return;
+      Log.d("Story-MediaPlayer", "onInfo");
+      if (this.a.jdField_a_of_type_Xly == null) {
+        break;
+      }
+      this.a.jdField_a_of_type_Xly.a_(this.a, paramMessage.arg1, paramMessage.arg2);
+      return;
+      if (this.a.jdField_a_of_type_Xlv != null) {
+        this.a.jdField_a_of_type_Xlv.a(this.a, paramMessage.arg1);
+      }
+      this.a.e = paramMessage.arg1;
+      return;
+    }
   }
 }
 

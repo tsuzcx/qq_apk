@@ -14,11 +14,11 @@ import android.text.InputFilter;
 import android.text.StaticLayout;
 import android.view.MotionEvent;
 import android.view.View;
-import bmvk;
-import bmvp;
-import bmvq;
-import bngq;
-import bnnn;
+import bolc;
+import bolh;
+import boli;
+import bowi;
+import bpdf;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +30,7 @@ public abstract class DynamicTextItem
   protected int a;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private volatile bmvp<Integer, Boolean> jdField_a_of_type_Bmvp = new bmvp(Integer.valueOf(-1), Boolean.valueOf(false));
+  private volatile bolh<Integer, Boolean> jdField_a_of_type_Bolh = new bolh(Integer.valueOf(-1), Boolean.valueOf(false));
   private DynamicTextItem.TextMap jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem$TextMap;
   public Stack<Integer> a;
   private boolean jdField_a_of_type_Boolean;
@@ -99,7 +99,7 @@ public abstract class DynamicTextItem
     return -1;
   }
   
-  public int a(@NonNull MotionEvent paramMotionEvent, float paramFloat1, float paramFloat2, @Nullable bngq parambngq, bnnn parambnnn)
+  public int a(@NonNull MotionEvent paramMotionEvent, float paramFloat1, float paramFloat2, @Nullable bowi parambowi, bpdf parambpdf)
   {
     if (QLog.isColorLevel())
     {
@@ -108,7 +108,7 @@ public abstract class DynamicTextItem
       QLog.d(jdField_a_of_type_JavaLangString, 2, "Touch Y: " + paramMotionEvent.getY());
       QLog.d(jdField_a_of_type_JavaLangString, 2, "Container W: " + paramFloat1);
       QLog.d(jdField_a_of_type_JavaLangString, 2, "Container H: " + paramFloat2);
-      if (parambngq != null) {
+      if (parambowi != null) {
         break label208;
       }
       QLog.d(jdField_a_of_type_JavaLangString, 2, "Text Zoom info is null, use default info");
@@ -120,15 +120,15 @@ public abstract class DynamicTextItem
       QLog.d(jdField_a_of_type_JavaLangString, 2, "=========================================");
       return -1;
       label208:
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text X: " + parambngq.jdField_a_of_type_AndroidGraphicsPointF.x);
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text Y: " + parambngq.jdField_a_of_type_AndroidGraphicsPointF.y);
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text W: " + parambngq.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a());
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text H: " + parambngq.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.b());
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text Scale: " + parambnnn.a(parambngq));
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text Matrix: " + parambnnn.a(parambngq));
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text translateX: " + parambngq.s);
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text translateY: " + parambngq.t);
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text rotate: " + parambngq.r);
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text X: " + parambowi.jdField_a_of_type_AndroidGraphicsPointF.x);
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text Y: " + parambowi.jdField_a_of_type_AndroidGraphicsPointF.y);
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text W: " + parambowi.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a());
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text H: " + parambowi.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.b());
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text Scale: " + parambpdf.a(parambowi));
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text Matrix: " + parambpdf.a(parambowi));
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text translateX: " + parambowi.s);
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text translateY: " + parambowi.t);
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text rotate: " + parambowi.r);
     }
   }
   
@@ -171,13 +171,13 @@ public abstract class DynamicTextItem
   }
   
   @NonNull
-  protected final String a(int paramInt, @Nullable bmvq parambmvq)
+  protected final String a(int paramInt, @Nullable boli paramboli)
   {
     paramInt = a(paramInt);
     String str2 = a(paramInt);
     String str1 = str2;
-    if (parambmvq != null) {
-      str1 = parambmvq.a(paramInt, str2);
+    if (paramboli != null) {
+      str1 = paramboli.a(paramInt, str2);
     }
     return a(str1);
   }
@@ -289,7 +289,7 @@ public abstract class DynamicTextItem
     for (;;)
     {
       int i = 0;
-      this.jdField_a_of_type_Bmvp.a = Integer.valueOf(paramInt1);
+      this.jdField_a_of_type_Bolh.a = Integer.valueOf(paramInt1);
       paramInt1 = i;
       while (paramInt1 < paramInt2 - paramInt3)
       {
@@ -323,8 +323,8 @@ public abstract class DynamicTextItem
   public void a(int paramInt, boolean paramBoolean)
   {
     a();
-    this.jdField_a_of_type_Bmvp.a = Integer.valueOf(paramInt);
-    this.jdField_a_of_type_Bmvp.b = Boolean.valueOf(paramBoolean);
+    this.jdField_a_of_type_Bolh.a = Integer.valueOf(paramInt);
+    this.jdField_a_of_type_Bolh.b = Boolean.valueOf(paramBoolean);
   }
   
   protected abstract void a(Canvas paramCanvas);
@@ -338,7 +338,7 @@ public abstract class DynamicTextItem
   
   public boolean a(int paramInt)
   {
-    return a(paramInt).equals(bmvk.a(this.jdField_b_of_type_Int, paramInt));
+    return a(paramInt).equals(bolc.a(this.jdField_b_of_type_Int, paramInt));
   }
   
   public abstract float b();
@@ -363,7 +363,7 @@ public abstract class DynamicTextItem
   public void b()
   {
     a();
-    this.jdField_a_of_type_Bmvp.b = Boolean.valueOf(false);
+    this.jdField_a_of_type_Bolh.b = Boolean.valueOf(false);
   }
   
   public void b(int paramInt)
@@ -395,8 +395,8 @@ public abstract class DynamicTextItem
   
   public boolean b(int paramInt)
   {
-    if ((((Integer)this.jdField_a_of_type_Bmvp.a).intValue() == paramInt) || (((Integer)this.jdField_a_of_type_Bmvp.a).intValue() == -1)) {
-      return ((Boolean)this.jdField_a_of_type_Bmvp.b).booleanValue();
+    if ((((Integer)this.jdField_a_of_type_Bolh.a).intValue() == paramInt) || (((Integer)this.jdField_a_of_type_Bolh.a).intValue() == -1)) {
+      return ((Boolean)this.jdField_a_of_type_Bolh.b).booleanValue();
     }
     return false;
   }
@@ -430,7 +430,7 @@ public abstract class DynamicTextItem
   public boolean d()
   {
     ArrayList localArrayList = a();
-    List localList = bmvk.a(this.jdField_b_of_type_Int);
+    List localList = bolc.a(this.jdField_b_of_type_Int);
     if (localList == null) {}
     int i;
     String str;

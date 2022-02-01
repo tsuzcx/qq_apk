@@ -1,25 +1,74 @@
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import mqq.app.QQPermissionCallback;
+import VIP.AIOKeyWordReq;
+import VIP.AIOSendReq;
+import VIP.AIOSendRes;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-class aogl
-  implements QQPermissionCallback
+public class aogl
+  extends BusinessHandler
 {
-  aogl(aogg paramaogg) {}
+  public static int a;
+  public static String a;
+  public static String b = "AIOSendSvc.getUserKeyWordStips";
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  static
   {
-    paramArrayOfString = new aogo();
-    paramArrayOfString.a = 2;
-    aohg.a(this.a.a.recognitions, aogg.a(this.a), paramArrayOfString);
-    if (aogg.a(this.a) != null) {
-      aogg.a(this.a).a(0, aogg.a(this.a));
-    }
-    aogg.a(this.a, null);
+    jdField_a_of_type_Int = 1;
+    jdField_a_of_type_JavaLangString = "AIOSendSvc.CheckPopGrayStips";
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  protected aogl(QQAppInterface paramQQAppInterface)
   {
-    this.a.grant();
+    super(paramQQAppInterface);
+  }
+  
+  public void a(AIOSendReq paramAIOSendReq)
+  {
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), jdField_a_of_type_JavaLangString);
+    localToServiceMsg.extraData.putSerializable("VIPAioSendRequest", paramAIOSendReq);
+    super.send(localToServiceMsg);
+  }
+  
+  public void a(String paramString)
+  {
+    paramString = new AIOKeyWordReq(this.app.getCurrentUin(), paramString);
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), b);
+    localToServiceMsg.extraData.putSerializable("VIPAioSendRequest", paramString);
+    super.send(localToServiceMsg);
+  }
+  
+  public Class<? extends BusinessObserver> observerClass()
+  {
+    return aogm.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null))
+    {
+      notifyUI(jdField_a_of_type_Int, false, null);
+      return;
+    }
+    paramToServiceMsg = paramToServiceMsg.getServiceCmd();
+    if (jdField_a_of_type_JavaLangString.equals(paramToServiceMsg))
+    {
+      paramToServiceMsg = (AIOSendRes)paramObject;
+      bhyh.a().a(this.app, paramToServiceMsg);
+    }
+    for (;;)
+    {
+      notifyUI(jdField_a_of_type_Int, true, paramObject);
+      return;
+      if (b.equals(paramToServiceMsg))
+      {
+        paramToServiceMsg = (AIOSendRes)paramObject;
+        bhyi.a().a(this.app, paramToServiceMsg);
+      }
+    }
   }
 }
 

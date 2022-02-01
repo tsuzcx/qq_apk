@@ -1,19 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.common.app.AppInterface;
 
 class bnhx
-  implements View.OnClickListener
+  extends bnju
 {
-  bnhx(bnhv parambnhv) {}
+  bnhx(bnhv parambnhv, AppInterface paramAppInterface) {}
   
-  public void onClick(View paramView)
+  public void onUpdateOnlineUserNum(boolean paramBoolean, int paramInt)
   {
-    this.a.a.setSelectAllOnFocus(false);
-    this.a.a.setSelection(this.a.a.length());
-    this.a.a.setOnClickListener(null);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this);
+    if (paramBoolean) {
+      synchronized (bnhv.a(this.jdField_a_of_type_Bnhv))
+      {
+        bnhv.a(this.jdField_a_of_type_Bnhv, paramInt);
+        return;
+      }
+    }
   }
 }
 

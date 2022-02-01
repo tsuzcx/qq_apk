@@ -1,35 +1,40 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr.FileDownloadMgrObserver.1;
+import java.util.Observable;
+import java.util.Observer;
+import java.util.Set;
 
-class bfnb
-  implements View.OnClickListener
+public class bfnb
+  implements Observer
 {
-  bfnb(bfmy parambfmy, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean) {}
-  
-  public void onClick(View paramView)
+  private final void a(Object paramObject)
   {
-    bhzm.b("NewUpgradeDialog", bhwn.a(10010, bfmy.a(), 2, 200));
-    bhwl.a().a(17, bhwn.a(10010, bfmy.a(), 2, 200));
-    if (bfmy.a() == 2) {
-      bcef.b(null, "dc00898", "", "", "0X8008F80", "0X8008F80", 0, 0, "", "", "", "");
-    }
-    for (;;)
+    paramObject = (Object[])paramObject;
+    int i = ((Integer)paramObject[0]).intValue();
+    paramObject = (Object[])paramObject[1];
+    switch (i)
     {
-      if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-        this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bfmy, 0);
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        biby.a().b(bfmy.a(this.jdField_a_of_type_Bfmy));
-        this.jdField_a_of_type_Bfmy.dismiss();
-      }
-      bfmy.a(this.jdField_a_of_type_Bfmy, true);
-      EventCollector.getInstance().onViewClicked(paramView);
+    default: 
       return;
-      bcef.b(null, "dc00898", "", "", "0X8008F83", "0X8008F83", 0, 0, "", "", "", "");
     }
+    a((Set)paramObject[0]);
+  }
+  
+  protected void a(Set<Long> paramSet) {}
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    if (paramObject == null) {
+      return;
+    }
+    paramObservable = Looper.getMainLooper();
+    if (Thread.currentThread() != paramObservable.getThread())
+    {
+      new Handler(paramObservable).post(new TroopFileDownloadMgr.FileDownloadMgrObserver.1(this, paramObject));
+      return;
+    }
+    a(paramObject);
   }
 }
 

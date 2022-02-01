@@ -1,24 +1,16 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-
 public class benj
-  extends RecyclerView.ItemDecoration
 {
-  private int a;
+  public static final Character a;
+  public static String a;
+  public static final int[] a;
+  public static final String[] a;
   
-  public benj(int paramInt)
+  static
   {
-    this.a = paramInt;
-  }
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    if (paramRecyclerView.getChildAdapterPosition(paramView) != 0) {
-      paramRect.top = this.a;
-    }
+    jdField_a_of_type_ArrayOfInt = new int[] { -419455168, -419473046, -419466297, -423136257, -427723777, -431123201, -433989178, -436151955, -419443712, -422808289, -422825150, -422819945, -426558004, -430618676, -433493300, -435640682, -426190592, -422796544, -426264602, -428159804 };
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "English", "中文", "English中文", "LongEnglishLongEnglish", "长文本长文本长文本长文本", "1204524009", "李大宝 等10人" };
+    jdField_a_of_type_JavaLangString = "CElFQIwpHGWx";
+    jdField_a_of_type_JavaLangCharacter = Character.valueOf('、');
   }
 }
 

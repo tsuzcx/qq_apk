@@ -1,22 +1,38 @@
-import android.os.Bundle;
+import android.os.SystemClock;
 
-public abstract interface mwu
+public class mwu
 {
-  public abstract void d(Bundle paramBundle);
+  public final int a;
+  public final long a;
+  public final boolean a;
+  public int[] a;
+  public final int b;
+  public final int c;
+  public int d;
+  public int e;
   
-  public abstract void e(Bundle paramBundle);
-  
-  public abstract void f(Bundle paramBundle);
-  
-  public abstract void g(Bundle paramBundle);
-  
-  public abstract void h(Bundle paramBundle);
-  
-  public abstract void receiveGatewayMsg(String paramString, int paramInt);
+  private mwu(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.b = mwm.a(paramInt1, 20000);
+    this.c = paramInt2;
+    this.jdField_a_of_type_Long = (SystemClock.uptimeMillis() + paramInt4);
+    this.e = paramInt1;
+    paramInt1 = mwm.a(paramInt1, this.c, 20000, true);
+    if (paramInt1 > 10000) {
+      this.d = (20000 - paramInt1);
+    }
+    for (this.jdField_a_of_type_Boolean = false; paramInt3 == -1; this.jdField_a_of_type_Boolean = true)
+    {
+      this.jdField_a_of_type_Int = ((int)(0.1F * this.d));
+      return;
+      this.d = paramInt1;
+    }
+    this.jdField_a_of_type_Int = paramInt3;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mwu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,107 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RewardNoticeActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
+import java.util.List;
 
 public class aedm
-  extends amof
+  implements asgh
 {
-  public aedm(RewardNoticeActivity paramRewardNoticeActivity) {}
+  public aedm(GroupManagerActivity paramGroupManagerActivity) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void a_(int paramInt1, int paramInt2)
   {
-    if (paramBoolean)
-    {
-      if (!TextUtils.isEmpty(this.a.f)) {
-        QQToast.a(this.a.app.getApp(), 2, this.a.f, 0).a();
-      }
-      if (this.a.a == 13) {
-        this.a.b();
-      }
-      this.a.finish();
+    if (paramInt1 == paramInt2) {
       return;
     }
-    QQToast.a(this.a.app.getApp(), 1, amtj.a(2131712557), 0).a();
+    int j = this.a.jdField_a_of_type_JavaUtilList.size();
+    this.a.jdField_a_of_type_ArrayOfByte = new byte[j];
+    this.a.b = new byte[j];
+    int i = 0;
+    while (i < j)
+    {
+      this.a.jdField_a_of_type_ArrayOfByte[i] = ((byte)((Groups)this.a.jdField_a_of_type_JavaUtilList.get(i)).group_id);
+      i += 1;
+    }
+    if (paramInt2 < paramInt1)
+    {
+      i = j - 1;
+      if (i >= 0)
+      {
+        if ((paramInt2 < i) && (i <= paramInt1)) {
+          this.a.b[i] = this.a.jdField_a_of_type_ArrayOfByte[(i - 1)];
+        }
+        for (;;)
+        {
+          i -= 1;
+          break;
+          if (i == paramInt2) {
+            this.a.b[i] = this.a.jdField_a_of_type_ArrayOfByte[paramInt1];
+          } else {
+            this.a.b[i] = this.a.jdField_a_of_type_ArrayOfByte[i];
+          }
+        }
+      }
+    }
+    else if (paramInt1 < paramInt2)
+    {
+      i = 0;
+      if (i < j)
+      {
+        if ((i < paramInt1) || (paramInt2 < i)) {
+          this.a.b[i] = this.a.jdField_a_of_type_ArrayOfByte[i];
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          if (i == paramInt2) {
+            this.a.b[i] = this.a.jdField_a_of_type_ArrayOfByte[paramInt1];
+          } else {
+            this.a.b[i] = this.a.jdField_a_of_type_ArrayOfByte[(i + 1)];
+          }
+        }
+      }
+    }
+    i = 0;
+    while (i < j)
+    {
+      this.a.jdField_a_of_type_ArrayOfByte[i] = ((byte)i);
+      i += 1;
+    }
+    Groups localGroups;
+    if (paramInt2 < paramInt1)
+    {
+      localGroups = (Groups)this.a.jdField_a_of_type_JavaUtilList.remove(paramInt1);
+      this.a.jdField_a_of_type_JavaUtilList.add(paramInt2, localGroups);
+      GroupManagerActivity.a(this.a).notifyDataSetChanged();
+      if (QLog.isColorLevel())
+      {
+        QLog.d("GroupManagerActivity", 2, "DragSortListView.DropListener onDrop groupIdList = " + Arrays.toString(this.a.b));
+        QLog.d("GroupManagerActivity", 2, "DragSortListView.DropListener onDrop sortIdList = " + Arrays.toString(this.a.jdField_a_of_type_ArrayOfByte));
+      }
+      GroupManagerActivity.a(this.a, this.a.a(this.a.b, this.a.jdField_a_of_type_ArrayOfByte));
+      if (QLog.isColorLevel()) {
+        QLog.d("GroupManagerActivity", 2, "SortFriendGroup needShowDialog = " + GroupManagerActivity.a(this.a));
+      }
+      if (!GroupManagerActivity.a(this.a)) {
+        break label586;
+      }
+      this.a.a(2131692994);
+    }
+    for (;;)
+    {
+      bdla.b(this.a.app, "CliOper", "", "", "category", "Move_category", 0, 0, "", "", "", "");
+      return;
+      if (paramInt1 >= paramInt2) {
+        break;
+      }
+      localGroups = (Groups)this.a.jdField_a_of_type_JavaUtilList.remove(paramInt1);
+      this.a.jdField_a_of_type_JavaUtilList.add(paramInt2, localGroups);
+      break;
+      label586:
+      this.a.a();
+    }
   }
 }
 

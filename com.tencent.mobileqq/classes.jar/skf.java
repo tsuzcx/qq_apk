@@ -1,27 +1,22 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
 
 public class skf
-  extends AccessibilityDelegateCompat
+  extends OrientationEventListener
 {
-  public skf(BaseTabbar paramBaseTabbar) {}
-  
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public skf(VideoFeedsListView paramVideoFeedsListView, Context paramContext, int paramInt)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if (BaseTabbar.a(this.a, paramView) == BaseTabbar.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramAccessibilityNodeInfoCompat.setSelected(bool);
-      return;
-    }
+    super(paramContext, paramInt);
   }
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public void onOrientationChanged(int paramInt)
   {
-    super.sendAccessibilityEvent(paramView, paramInt);
+    if (VideoFeedsListView.a(this.a)) {}
+    while ((!VideoFeedsListView.b(this.a)) || (!VideoFeedsListView.c(this.a)) || (VideoFeedsListView.a(this.a) == 1) || (VideoFeedsListView.d(this.a)) || (!VideoFeedsListView.a(this.a, paramInt)) || ((!VideoFeedsListView.e(this.a)) && (VideoFeedsListView.f(this.a)))) {
+      return;
+    }
+    VideoFeedsListView.a(this.a, paramInt);
   }
 }
 

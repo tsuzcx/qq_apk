@@ -1,10 +1,30 @@
-import java.util.List;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.ugc.upload.RIJUgcImageUploader.1;
+import com.tencent.biz.pubaccount.readinjoy.ugc.upload.RIJUgcImageUploader.1.1.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface sdr
+public class sdr
+  implements seb
 {
-  public abstract List<sds> a(int paramInt, boolean paramBoolean);
+  public sdr(RIJUgcImageUploader.1 param1) {}
   
-  public abstract boolean a();
+  public void a() {}
+  
+  public void a(float paramFloat)
+  {
+    sdq.a(this.a.this$0).a(paramFloat);
+  }
+  
+  public void a(int paramInt, String paramString1, String paramString2, String paramString3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(sdq.a, 2, "uploadImage finish, url=" + paramString1);
+    }
+    sdq.a(this.a.this$0, false);
+    ThreadManagerV2.getUIHandlerV2().post(new RIJUgcImageUploader.1.1.1(this, paramInt, paramString1));
+    sdq.a(this.a.this$0).b();
+  }
 }
 
 

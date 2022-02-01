@@ -8,7 +8,7 @@ import android.util.DisplayMetrics;
 import android.util.Pair;
 import android.view.Display;
 import android.view.WindowManager;
-import attw;
+import auyw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -26,7 +26,7 @@ public class NearbyImgLoader
   public static int b;
   public static int c;
   NearbyImgDownloader jdField_a_of_type_ComTencentMobileqqTransfileNearbyImgDownloader = new NearbyImgDownloader();
-  ArrayList<attw> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  ArrayList<auyw> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public List<URL> a;
   AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
   

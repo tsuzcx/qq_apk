@@ -1,46 +1,16 @@
-public class bciy
-  extends bcgy
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bciy
+  implements View.OnClickListener
 {
-  public boolean c;
-  public int o;
-  public int p = 3;
+  bciy(bcix parambcix, bcfi parambcfi) {}
   
-  public bciy()
+  public void onClick(View paramView)
   {
-    this(null);
-  }
-  
-  public bciy(String paramString)
-  {
-    super(paramString, "content");
-  }
-  
-  public String a()
-  {
-    return "Content";
-  }
-  
-  public int b()
-  {
-    return this.p;
-  }
-  
-  public int c()
-  {
-    return 2131379544;
-  }
-  
-  public int e()
-  {
-    if ((this.c) && (this.o != 0)) {
-      return -1;
-    }
-    return -8355712;
-  }
-  
-  public int f()
-  {
-    return 28;
+    this.jdField_a_of_type_Bcfi.a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

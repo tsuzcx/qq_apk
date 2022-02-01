@@ -6,12 +6,12 @@ import android.os.Bundle;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.ScrollView;
-import bfvp;
-import bfwg;
+import bheh;
+import bhey;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
-import xwa;
+import ykv;
 
 public class ForwardQQStoryMsgOption
   extends ForwardStructingMsgOption
@@ -29,7 +29,7 @@ public class ForwardQQStoryMsgOption
     int i = 3;
     try
     {
-      paramString2 = bfwg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramContext, paramString2);
+      paramString2 = bhey.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramContext, paramString2);
       paramContext = "";
       str = "";
       for (;;)
@@ -70,7 +70,7 @@ public class ForwardQQStoryMsgOption
           j = -1;
         }
       }
-      xwa.a("share", paramString1, i, j, new String[] { paramContext, paramString2, "", "" });
+      ykv.a("share", paramString1, i, j, new String[] { paramContext, paramString2, "", "" });
       if (QLog.isColorLevel())
       {
         QLog.d("ForwardOption.ForwardQQStoryMsgOption", 2, "reportClickEvent: opName=" + paramString1 + ", fromType=" + i + ", result=" + j + ", extra1=" + paramContext + ", extra2=" + paramString2);

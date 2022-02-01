@@ -1,17 +1,19 @@
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.concurrent.CountDownLatch;
 
 class bndk
   implements View.OnClickListener
 {
-  bndk(bndj parambndj, int paramInt) {}
+  bndk(bnda parambnda) {}
   
   public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_Bndj.a.jdField_a_of_type_Bnew != null) && (this.jdField_a_of_type_Bndj.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams != null)) {
-      this.jdField_a_of_type_Bndj.a.a(this.jdField_a_of_type_Int);
-    }
+    bnda.a(this.a, true);
+    bnda.a(this.a).countDown();
+    this.a.a.c();
+    bnda.a(this.a).cancel();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

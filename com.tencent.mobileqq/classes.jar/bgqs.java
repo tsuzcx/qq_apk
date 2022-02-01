@@ -1,14 +1,8 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.KeyEvent;
 
-final class bgqs
-  implements View.OnTouchListener
+public abstract interface bgqs
 {
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
+  public abstract boolean a(int paramInt, KeyEvent paramKeyEvent);
 }
 
 

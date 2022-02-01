@@ -149,11 +149,11 @@ public class RealTimeSmoothFilterV3
   public void clear()
   {
     this.mVarianceFilter.clearGLSLSelf();
-    this.mBgSharpenFilter.ClearGLSL();
-    this.mBilaterialFilter.ClearGLSL();
+    this.mBgSharpenFilter.clearGLSL();
+    this.mBilaterialFilter.clearGLSL();
     this.mProcessVarianceFilter.clearGLSLSelf();
     this.mProcessVarianceFilterDenoise.clearGLSLSelf();
-    this.mCopyFilter.ClearGLSL();
+    this.mCopyFilter.clearGLSL();
     this.mBoxFrame1.clear();
     this.mBoxFrame2.clear();
     this.mVarianceFrame1.clear();

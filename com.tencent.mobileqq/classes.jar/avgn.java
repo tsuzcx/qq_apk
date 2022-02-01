@@ -1,45 +1,51 @@
-import android.view.ViewTreeObserver;
-import com.tencent.mobileqq.location.data.LocationRoom;
-import com.tencent.mobileqq.location.ui.MapWidget;
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.os.SystemClock;
+import android.widget.LinearLayout;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.mobileqq.gamecenter.web.view.QQGamePubWebView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapLoadedCallback;
-import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
+import com.tencent.smtt.sdk.WebView;
 
 public class avgn
-  implements TencentMap.OnMapLoadedCallback
+  extends avgw
 {
-  public avgn(MapWidget paramMapWidget) {}
-  
-  public void onMapLoaded()
+  public avgn(QQGameFeedWebFragment paramQQGameFeedWebFragment, Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView)
   {
-    avco localavco = this.a.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("MapWidget", 2, new Object[] { "[map][init]onMapLoaded invoked. selfItem: ", localavco.a() });
-    }
-    if ((localavco.a() != null) && (!avgm.a(this.a.getContext(), this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap, localavco.a())))
+    super(paramContext, paramActivity, paramAppInterface, paramTouchWebView);
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    this.a.i = SystemClock.elapsedRealtime();
+    this.a.e = System.currentTimeMillis();
+    super.onPageFinished(paramWebView, paramString);
+    QQGameFeedWebFragment.a(this.a).setVisibility(0);
+    QQGameFeedWebFragment.a(this.a).setVisibility(8);
+    QLog.d("GameWebPage", 4, "-->web onPageFinished");
+    try
     {
-      this.a.a(false);
-      this.a.setTag(-2147483648, null);
-      if (QLog.isColorLevel()) {
-        QLog.d("MapWidget", 2, new Object[] { "[map][init]onMapLoaded invoked. success moveMapToSelfCenter selfItem: ", localavco.a() });
-      }
-    }
-    for (;;)
-    {
-      if (MapWidget.a(this.a) != null)
-      {
-        if (this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.getCameraPosition() != null) {
-          break;
-        }
-        this.a.getViewTreeObserver().addOnGlobalLayoutListener(new avgo(this));
-      }
+      QQGameFeedWebFragment.b(this.a);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("MapWidget", 2, new Object[] { "[map][init]onMapLoaded invoked. failed moveMapToSelfCenter selfItem: ", localavco.a() });
-      }
     }
-    MapWidget.a(this.a).a(this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.getCameraPosition().target);
+    catch (Throwable paramWebView)
+    {
+      paramWebView.printStackTrace();
+    }
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    this.a.g = SystemClock.elapsedRealtime();
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    return super.shouldOverrideUrlLoading(paramWebView, paramString);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import bays;
-import bbff;
+import bcfi;
+import bclx;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -17,20 +17,20 @@ public class NetSearchEngine$ParseTask
   implements Runnable
 {
   private String jdField_a_of_type_JavaLangString;
-  private WeakReference<bbff> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<bclx> jdField_a_of_type_JavaLangRefWeakReference;
   private ArrayList<byte[]> jdField_a_of_type_JavaUtilArrayList;
   
-  public NetSearchEngine$ParseTask(String paramString, ArrayList<byte[]> paramArrayList, bbff parambbff)
+  public NetSearchEngine$ParseTask(String paramString, ArrayList<byte[]> paramArrayList, bclx parambclx)
   {
     this.jdField_a_of_type_JavaLangString = paramArrayList;
-    this.jdField_a_of_type_JavaUtilArrayList = parambbff;
+    this.jdField_a_of_type_JavaUtilArrayList = parambclx;
     Object localObject;
     if (localObject != null) {
       this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localObject);
     }
   }
   
-  private List<bays> a(String paramString, ArrayList<byte[]> paramArrayList)
+  private List<bcfi> a(String paramString, ArrayList<byte[]> paramArrayList)
   {
     if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
       return null;
@@ -104,9 +104,9 @@ public class NetSearchEngine$ParseTask
     List localList = a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList);
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      bbff localbbff = (bbff)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbbff != null) {
-        localbbff.a(localList, 1);
+      bclx localbclx = (bclx)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbclx != null) {
+        localbclx.a(localList, 1);
       }
     }
   }

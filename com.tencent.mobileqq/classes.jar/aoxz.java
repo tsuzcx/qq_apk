@@ -1,6 +1,13 @@
-public abstract interface aoxz
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.asyncdb.DBDelayManager;
+
+public class aoxz
+  extends aohi
 {
-  public abstract void a(String paramString);
+  public aoxz(QQAppInterface paramQQAppInterface, DBDelayManager paramDBDelayManager)
+  {
+    super(paramQQAppInterface, paramDBDelayManager);
+  }
 }
 
 

@@ -1,14 +1,14 @@
 package cooperation.qzone;
 
-import amtj;
 import android.os.Bundle;
 import android.os.ResultReceiver;
-import bbqi;
-import bbrg;
+import anvx;
+import bcxc;
+import bcya;
 import com.tencent.qphone.base.util.QLog;
 
 class QzoneVideoSoDownloadModule$MyShortVideoResource
-  implements bbrg
+  implements bcya
 {
   ResultReceiver mReceiver;
   
@@ -25,8 +25,8 @@ class QzoneVideoSoDownloadModule$MyShortVideoResource
       if (paramInt == 0) {
         break label102;
       }
-      QzoneVideoSoDownloadModule.access$000(this.this$0, this.mReceiver, -3, amtj.a(2131711592) + paramInt + "]");
-      bbqi.b(2, paramInt);
+      QzoneVideoSoDownloadModule.access$000(this.this$0, this.mReceiver, -3, anvx.a(2131711939) + paramInt + "]");
+      bcxc.b(2, paramInt);
     }
     label102:
     while (this.mReceiver == null) {
@@ -39,7 +39,7 @@ class QzoneVideoSoDownloadModule$MyShortVideoResource
   public void onNetWorkNone()
   {
     QLog.e("QzoneVideoSoDownloadModule", 1, "onNetWorkNone");
-    QzoneVideoSoDownloadModule.access$000(this.this$0, this.mReceiver, -3, amtj.a(2131711583));
+    QzoneVideoSoDownloadModule.access$000(this.this$0, this.mReceiver, -3, anvx.a(2131711930));
   }
   
   public void onUpdateProgress(String paramString, long paramLong1, long paramLong2)

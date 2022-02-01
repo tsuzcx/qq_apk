@@ -13,7 +13,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.ViewSwitcher.ViewFactory;
-import bjou;
+import blag;
 
 public class AutoVerticalScrollTextView
   extends TextSwitcher
@@ -23,10 +23,10 @@ public class AutoVerticalScrollTextView
   private long jdField_a_of_type_Long = 1000L;
   private Context jdField_a_of_type_AndroidContentContext;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private bjou jdField_a_of_type_Bjou;
+  private blag jdField_a_of_type_Blag;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
   private long jdField_b_of_type_Long = 800L;
-  private bjou jdField_b_of_type_Bjou;
+  private blag jdField_b_of_type_Blag;
   
   public AutoVerticalScrollTextView(Context paramContext)
   {
@@ -40,32 +40,32 @@ public class AutoVerticalScrollTextView
     c();
   }
   
-  private bjou a(boolean paramBoolean1, boolean paramBoolean2)
+  private blag a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    bjou localbjou = new bjou(this, paramBoolean1, paramBoolean2);
-    localbjou.setDuration(this.jdField_b_of_type_Long);
-    localbjou.setFillAfter(false);
-    localbjou.setInterpolator(new AccelerateInterpolator());
-    return localbjou;
+    blag localblag = new blag(this, paramBoolean1, paramBoolean2);
+    localblag.setDuration(this.jdField_b_of_type_Long);
+    localblag.setFillAfter(false);
+    localblag.setInterpolator(new AccelerateInterpolator());
+    return localblag;
   }
   
   private void c()
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
     setFactory(this);
-    this.jdField_a_of_type_Bjou = a(true, true);
-    this.jdField_b_of_type_Bjou = a(false, true);
-    setInAnimation(this.jdField_a_of_type_Bjou);
-    setOutAnimation(this.jdField_b_of_type_Bjou);
+    this.jdField_a_of_type_Blag = a(true, true);
+    this.jdField_b_of_type_Blag = a(false, true);
+    setInAnimation(this.jdField_a_of_type_Blag);
+    setOutAnimation(this.jdField_b_of_type_Blag);
   }
   
   public void a()
   {
-    if (getInAnimation() != this.jdField_a_of_type_Bjou) {
-      setInAnimation(this.jdField_a_of_type_Bjou);
+    if (getInAnimation() != this.jdField_a_of_type_Blag) {
+      setInAnimation(this.jdField_a_of_type_Blag);
     }
-    if (getOutAnimation() != this.jdField_b_of_type_Bjou) {
-      setOutAnimation(this.jdField_b_of_type_Bjou);
+    if (getOutAnimation() != this.jdField_b_of_type_Blag) {
+      setOutAnimation(this.jdField_b_of_type_Blag);
     }
   }
   
@@ -135,7 +135,7 @@ public class AutoVerticalScrollTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.widget.AutoVerticalScrollTextView
  * JD-Core Version:    0.7.0.1
  */

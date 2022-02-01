@@ -1,64 +1,69 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import mqq.os.MqqHandler;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import android.text.TextUtils;
+import com.tencent.gamecenter.appointment.GameCenterCheck;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
+import tencent.im.s2c.msgtype0x210.submsgtype0xce.submsgtype0xce.MsgBody;
 
 public class actd
-  extends CardObserver
+  implements acpi
 {
-  public actd(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
-  
-  public void onSetSubaccountDisplayThirdQQ(boolean paramBoolean)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    boolean bool1 = true;
-    boolean bool2 = AssociatedAccountManageActivity.a(this.a).a();
-    AssociatedAccountManageActivity.a(this.a).removeMessages(8193);
-    AssociatedAccountManageActivity.a(this.a).sendEmptyMessage(8194);
-    Object localObject = AssociatedAccountManageActivity.a(this.a).obtainMessage(8195);
-    int i;
-    if (paramBoolean)
-    {
-      i = 2;
-      ((Message)localObject).arg1 = i;
-      if (!paramBoolean) {
-        break label134;
-      }
-      if (!bool2) {
-        break label128;
-      }
-      i = 2131698593;
+    int k = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.BaseMessageProcessor", 2, "OnLinePushMessageProcessor receive 0xce push message ");
     }
-    for (;;)
+    Object localObject = new submsgtype0xce.MsgBody();
+    try
     {
-      ((Message)localObject).arg2 = i;
-      AssociatedAccountManageActivity.a(this.a).sendMessage((Message)localObject);
-      if (!paramBoolean) {
-        break label151;
+      ((submsgtype0xce.MsgBody)localObject).mergeFrom(paramMsgType0x210.vProtobuf);
+      paramMsgType0x210 = ((submsgtype0xce.MsgBody)localObject).string_params.get();
+      if (QLog.isColorLevel()) {
+        bjqp.c("Q.msg.BaseMessageProcessor", "yuyue(push):OnLinePushMessageProcessor receive 0xce strJson=" + paramMsgType0x210);
       }
-      AssociatedAccountManageActivity.a(this.a);
-      bcqk.a(this.a.app, bool2);
-      return;
-      i = 1;
-      break;
-      label128:
-      i = 2131698592;
-      continue;
-      label134:
-      if (bool2) {
-        i = 2131718667;
-      } else {
-        i = 2131718666;
+      localObject = new JSONObject(paramMsgType0x210).optString("appid");
+      String[] arrayOfString = abuf.a("APPOINTMENT_DOWNLOAD_LIST").split("\\|");
+      int i = 0;
+      for (;;)
+      {
+        int j = k;
+        if (i < arrayOfString.length)
+        {
+          if ((!TextUtils.isEmpty(arrayOfString[i])) && (!TextUtils.isEmpty((CharSequence)localObject)) && (arrayOfString[i].equals(localObject))) {
+            j = 1;
+          }
+        }
+        else
+        {
+          if ((j == 0) && (!TextUtils.isEmpty((CharSequence)localObject)))
+          {
+            abuf.c((String)localObject, "APPOINTMENT_LIST");
+            abuf.a((String)localObject, paramMsgType0x210, "APPOINT_APPID_DETAIL_");
+            abub.a();
+          }
+          GameCenterCheck.a();
+          abuf.a(paramQQAppInterface, "426", "202136", (String)localObject, "42601", "1", "116");
+          return;
+        }
+        i += 1;
       }
-    }
-    label151:
-    localObject = this.a;
-    if (!bool2) {}
-    for (paramBoolean = bool1;; paramBoolean = false)
-    {
-      AssociatedAccountManageActivity.a((AssociatedAccountManageActivity)localObject, paramBoolean);
       return;
     }
+    catch (Exception paramQQAppInterface)
+    {
+      paramQQAppInterface.printStackTrace();
+    }
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramMsgType0x210);
+    return null;
   }
 }
 

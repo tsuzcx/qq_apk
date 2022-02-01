@@ -1,25 +1,28 @@
-import UserGrowth.stRedDotRsp;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class uts
-  implements uqy
+  implements raq
 {
-  uts(utr paramutr) {}
+  uts(uta paramuta, String paramString) {}
   
-  public void a(urj paramurj)
+  public void a(int paramInt1, int paramInt2)
   {
-    if ((this.a.a() != null) && (paramurj != null) && (paramurj.a()) && (paramurj.a != null) && ((paramurj.a instanceof stRedDotRsp)))
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      paramurj = (stRedDotRsp)paramurj.a;
-      utr.a(this.a, paramurj.notificationReddot);
-      utr.b(this.a, paramurj.menu);
-      if (this.a.a() != null) {
-        ((uue)this.a.a()).a(paramurj);
-      }
-    }
-    while (this.a.a() == null) {
+      localJSONObject.put("button", paramInt1);
+      localJSONObject.put("result", paramInt2);
+      this.jdField_a_of_type_Uta.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
       return;
     }
-    ((uue)this.a.a()).a();
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
 }
 

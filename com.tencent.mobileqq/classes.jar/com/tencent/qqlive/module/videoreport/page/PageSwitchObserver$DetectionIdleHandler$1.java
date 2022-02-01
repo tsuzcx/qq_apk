@@ -9,8 +9,8 @@ class PageSwitchObserver$DetectionIdleHandler$1
   
   public void run()
   {
-    if (PageSwitchObserver.DetectionIdleHandler.access$300(this.this$1, this.val$activity)) {
-      PageSwitchObserver.access$400(this.this$1.this$0, this.val$activity);
+    if (PageSwitchObserver.DetectionIdleHandler.access$400(this.this$1, this.val$activity)) {
+      PageSwitchObserver.access$500(this.this$1.this$0, this.val$activity);
     }
   }
 }

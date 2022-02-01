@@ -2,10 +2,11 @@ package com.tencent.mobileqq.extendfriend;
 
 import Override;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import bcef;
+import bdla;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
@@ -34,7 +35,7 @@ public class ExtendFriendPublicFragmentActivity
     }
     for (;;)
     {
-      bcef.b(null, "dc00898", "", "", "0X800AD99", "0X800AD99", paramInt, 0, "", "", str, (String)localObject);
+      bdla.b(null, "dc00898", "", "", "0X800AD99", "0X800AD99", paramInt, 0, "", "", str, (String)localObject);
       return;
       str = "";
     }
@@ -62,7 +63,9 @@ public class ExtendFriendPublicFragmentActivity
       return;
     }
     a = l;
-    PublicFragmentActivity.a(paramContext, ExtendFriendFragment.class);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("extend_frient_from", paramInt);
+    PublicFragmentActivity.a(paramContext, localIntent, ExtendFriendFragment.class);
     a(paramInt);
   }
   
@@ -84,7 +87,7 @@ public class ExtendFriendPublicFragmentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.ExtendFriendPublicFragmentActivity
  * JD-Core Version:    0.7.0.1
  */

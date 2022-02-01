@@ -1,31 +1,99 @@
-import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.NowLive;
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.HashMap;
+import java.util.Map;
 
-class aupm
-  implements aurg
+public class aupm
 {
-  aupm(aupc paramaupc) {}
-  
-  public void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  public static Object a(Map<String, Object> paramMap, Class<?> paramClass)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("ctrl_cmd", 101);
-    NowLive.sendServerPushMessage(aupc.a(this.a, localBundle, paramNewTogetherRoomMessageData));
+    Object localObject1 = null;
+    Object localObject2 = null;
+    int i = 0;
+    if (paramMap == null) {
+      return localObject2;
+    }
+    localObject2 = localObject1;
+    for (;;)
+    {
+      Field localField;
+      try
+      {
+        localObject1 = paramClass.newInstance();
+        localObject2 = localObject1;
+        Field[] arrayOfField = localObject1.getClass().getDeclaredFields();
+        localObject2 = localObject1;
+        int j = arrayOfField.length;
+        localObject2 = localObject1;
+        if (i >= j) {
+          break;
+        }
+        localField = arrayOfField[i];
+        localObject2 = localObject1;
+        int k = localField.getModifiers();
+        localObject2 = localObject1;
+        if (Modifier.isStatic(k)) {
+          break label195;
+        }
+        localObject2 = localObject1;
+        if (Modifier.isFinal(k)) {
+          break label195;
+        }
+        localObject2 = localObject1;
+        localField.setAccessible(true);
+        localObject2 = localObject1;
+        if (paramMap.containsKey(localField.getName()))
+        {
+          localObject2 = localObject1;
+          localField.set(localObject1, paramMap.get(localField.getName()));
+        }
+      }
+      catch (Exception paramMap)
+      {
+        paramMap.printStackTrace();
+        return localObject2;
+      }
+      localObject2 = localObject1;
+      QLog.e("QFlutter.ModelUtils", 1, String.format("mapToObject, %s.%s is null", new Object[] { paramClass.getSimpleName(), localField.getName() }));
+      label195:
+      i += 1;
+    }
   }
   
-  public void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  public static Map a(Object paramObject)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("ctrl_cmd", 102);
-    NowLive.sendServerPushMessage(aupc.a(this.a, localBundle, paramNewTogetherRoomMessageData));
-  }
-  
-  public void c(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("ctrl_cmd", 103);
-    NowLive.sendServerPushMessage(aupc.a(this.a, localBundle, paramNewTogetherRoomMessageData));
+    Object localObject;
+    if (paramObject == null) {
+      localObject = null;
+    }
+    for (;;)
+    {
+      return localObject;
+      localHashMap = new HashMap();
+      try
+      {
+        Field[] arrayOfField = paramObject.getClass().getDeclaredFields();
+        int j = arrayOfField.length;
+        int i = 0;
+        for (;;)
+        {
+          localObject = localHashMap;
+          if (i >= j) {
+            break;
+          }
+          localObject = arrayOfField[i];
+          ((Field)localObject).setAccessible(true);
+          localHashMap.put(((Field)localObject).getName(), ((Field)localObject).get(paramObject));
+          i += 1;
+        }
+        return localHashMap;
+      }
+      catch (Exception paramObject)
+      {
+        paramObject.printStackTrace();
+      }
+    }
   }
 }
 

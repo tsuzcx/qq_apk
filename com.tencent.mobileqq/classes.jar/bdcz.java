@@ -1,9 +1,18 @@
-import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager.12.1;
 
-public final class bdcz
+public class bdcz
+  implements agrc
 {
-  public final Bundle a = new Bundle();
-  public Object a;
+  bdcz(bdcw parambdcw) {}
+  
+  public void a()
+  {
+    if (bdcw.a(this.a) == null) {
+      bdcw.a(this.a, new Handler());
+    }
+    bdcw.a(this.a).postDelayed(new RedBagVideoManager.12.1(this), 1000L);
+  }
 }
 
 

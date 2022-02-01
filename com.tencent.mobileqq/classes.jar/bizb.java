@@ -1,31 +1,72 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import com.tencent.qqconnect.wtlogin.Login;
+import android.os.Bundle;
+import java.io.File;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class bizb
-  implements TextWatcher
+  implements biys
 {
-  public bizb(Login paramLogin) {}
-  
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  private void a(Document paramDocument, Bundle paramBundle)
   {
-    if (paramInt3 < 2)
+    NodeList localNodeList = paramDocument.getElementsByTagName("ModifyPwdUrls");
+    paramDocument = new Bundle();
+    if ((localNodeList != null) && (localNodeList.getLength() >= 1))
     {
-      this.a.jdField_b_of_type_Boolean = false;
-      if (paramCharSequence.length() == 0) {
-        this.a.jdField_b_of_type_AndroidViewView.setVisibility(4);
+      localNodeList = localNodeList.item(0).getChildNodes();
+      int i = 0;
+      while (i < localNodeList.getLength())
+      {
+        Object localObject = localNodeList.item(i);
+        if ((localObject instanceof Element))
+        {
+          String str = ((Element)localObject).getAttribute("Name");
+          localObject = ((Element)localObject).getAttribute("Url");
+          if ((str != null) && (localObject != null) && (!str.equals("")) && (!((String)localObject).equals(""))) {
+            paramDocument.putString(str, (String)localObject);
+          }
+        }
+        i += 1;
       }
+      paramBundle.putBundle("ModifyPwdUrls", paramDocument);
     }
-    else
+  }
+  
+  public biyz a(String paramString)
+  {
+    paramString = new File(paramString);
+    Object localObject1 = DocumentBuilderFactory.newInstance();
+    try
     {
-      return;
+      paramString = ((DocumentBuilderFactory)localObject1).newDocumentBuilder().parse(paramString);
+      Object localObject2 = paramString.getDocumentElement();
+      localObject1 = new Bundle();
+      localObject2 = ((Element)localObject2).getAttribute("Version");
+      int i = -1;
+      try
+      {
+        int j = Integer.parseInt((String)localObject2);
+        i = j;
+      }
+      catch (Throwable localThrowable)
+      {
+        for (;;)
+        {
+          localThrowable.printStackTrace();
+        }
+      }
+      ((Bundle)localObject1).putInt("version", i);
+      a(paramString, (Bundle)localObject1);
+      return new biza((Bundle)localObject1);
     }
-    this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
   }
 }
 

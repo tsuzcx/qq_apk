@@ -1,28 +1,68 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.downloadnew.DownloadManager.5.1;
-import com.tencent.open.downloadnew.DownloadManager.5.2;
-import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
 
-public class bice
-  implements ITMAssistantDownloadClientListener
+class bice
+  extends bhyn
 {
-  bice(biby parambiby) {}
+  bice(bicd parambicd) {}
   
-  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
+  public void onDone(bhyo parambhyo)
   {
-    ThreadManager.getSubThreadHandler().post(new DownloadManager.5.2(this, paramLong1, paramLong2, paramString));
-  }
-  
-  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    ThreadManager.getSubThreadHandler().post(new DownloadManager.5.1(this, paramTMAssistantDownloadClient, paramInt1, paramString1, paramInt2, paramString2));
-  }
-  
-  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient)
-  {
-    bhzm.e("DownloadManager_", "OnDwonloadSDKServiceInvalid");
+    if (parambhyo == null)
+    {
+      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      {
+        localObject = (String)this.a.jdField_a_of_type_JavaUtilArrayList.remove(0);
+        if (QLog.isColorLevel()) {
+          QLog.d("VoiceChangeManager", 2, "picDownloadListener mUrlList.size()=" + this.a.jdField_a_of_type_JavaUtilArrayList.size() + ", url=" + (String)localObject);
+        }
+        if (TextUtils.isEmpty((CharSequence)localObject))
+        {
+          QLog.e("VoiceChangeManager", 1, "picDownloadListener url = null");
+          onDone(null);
+        }
+      }
+      else
+      {
+        while (!QLog.isColorLevel()) {
+          return;
+        }
+        QLog.d("VoiceChangeManager", 2, "picDownloadListener mUrlList.size() = 0");
+        return;
+      }
+      File localFile = new File(bicd.jdField_a_of_type_JavaLangString + ((String)localObject).substring(((String)localObject).lastIndexOf("/") + 1));
+      if ((localFile.isFile()) && (localFile.exists()))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("VoiceChangeManager", 2, "picDownloadListener  file.exists()");
+        }
+        onDone(null);
+        return;
+      }
+      parambhyo = new Bundle();
+      Object localObject = new bhyo((String)localObject, localFile);
+      ((bhyo)localObject).n = true;
+      ((bhyq)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1).a((bhyo)localObject, this.a.jdField_a_of_type_Bhyn, parambhyo);
+      return;
+    }
+    super.onDone(parambhyo);
+    parambhyo.a();
+    if ((parambhyo.a() == 3) && (parambhyo.jdField_a_of_type_Int == 0)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("VoiceChangeManager", 2, "picDownloadListener downloadOk task.key = " + parambhyo.jdField_a_of_type_JavaLangString);
+      }
+    }
+    for (;;)
+    {
+      onDone(null);
+      return;
+      QLog.e("VoiceChangeManager", 1, "picDownloadListener download Error task.key = " + parambhyo.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

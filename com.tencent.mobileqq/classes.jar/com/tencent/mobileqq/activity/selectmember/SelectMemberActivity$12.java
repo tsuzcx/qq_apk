@@ -1,12 +1,14 @@
 package com.tencent.mobileqq.activity.selectmember;
 
 import QQService.AddDiscussMemberInfo;
-import amqx;
-import amrb;
-import amsw;
 import android.text.TextUtils;
-import bfun;
+import antl;
+import antp;
+import anvk;
+import bhdf;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.DiscussionMemberInfo;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.data.troop.TroopMemberInfo;
@@ -17,7 +19,7 @@ import java.util.ArrayList;
 class SelectMemberActivity$12
   extends Thread
 {
-  SelectMemberActivity$12(SelectMemberActivity paramSelectMemberActivity, amsw paramamsw) {}
+  SelectMemberActivity$12(SelectMemberActivity paramSelectMemberActivity, anvk paramanvk) {}
   
   public void run()
   {
@@ -45,7 +47,7 @@ class SelectMemberActivity$12
         }
         localObject2 = this.val$fm.e(localResultRecord.uin);
         if (localObject2 == null) {
-          break label825;
+          break label827;
         }
         localObject1 = ((Friends)localObject2).name;
         if (!TextUtils.isEmpty(((Friends)localObject2).remark)) {
@@ -86,7 +88,7 @@ class SelectMemberActivity$12
         Object localObject5;
         if (localResultRecord.type == 1)
         {
-          localObject5 = bfun.a().a(this.this$0.app, localResultRecord.groupUin, localResultRecord.uin);
+          localObject5 = bhdf.a().a(this.this$0.app, localResultRecord.groupUin, localResultRecord.uin);
           localObject1 = localObject3;
           if (localObject5 == null) {
             break label207;
@@ -106,7 +108,7 @@ class SelectMemberActivity$12
         }
         if (localResultRecord.type == 2)
         {
-          localObject5 = ((amrb)this.this$0.app.getManager(53)).a(localResultRecord.groupUin, localResultRecord.uin);
+          localObject5 = ((antp)this.this$0.app.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(localResultRecord.groupUin, localResultRecord.uin);
           localObject1 = localObject3;
           if (localObject5 == null) {
             break label207;
@@ -166,10 +168,10 @@ class SelectMemberActivity$12
             continue;
           }
           QLog.d("SelectMemberActivity", 2, "add discussion member: groupCode: " + this.this$0.mGroupCode + " member count: " + localArrayList1.size());
-          ((amqx)localObject1).b(Long.valueOf(this.this$0.mGroupCode).longValue(), localArrayList1);
+          ((antl)localObject1).b(Long.valueOf(this.this$0.mGroupCode).longValue(), localArrayList1);
           return;
         }
-        localObject1 = (amqx)this.this$0.app.getBusinessHandler(6);
+        localObject1 = (antl)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER);
         if (this.this$0.mGroupCode != null) {
           continue;
         }
@@ -177,11 +179,11 @@ class SelectMemberActivity$12
           QLog.d("SelectMemberActivity", 2, "create discussion: " + (String)localObject3 + " member count: " + localArrayList1.size());
         }
         SelectMemberActivity.sNeedBlockDiscussSelfInviteMsg = false;
-        ((amqx)localObject1).a((String)localObject3, localArrayList1, this.this$0.mFrom);
+        ((antl)localObject1).a((String)localObject3, localArrayList1, this.this$0.mFrom);
         return;
         i += 1;
       }
-      label825:
+      label827:
       localObject1 = null;
     }
   }

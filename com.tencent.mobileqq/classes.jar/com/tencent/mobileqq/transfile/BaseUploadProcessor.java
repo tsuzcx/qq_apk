@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import bjyw;
+import blkh;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.highway.openup.SessionInfo;
 import com.tencent.mobileqq.highway.transaction.TransReport;
@@ -48,7 +48,7 @@ public class BaseUploadProcessor
   int mWidth;
   protected boolean needSendMsg = true;
   public int shouldMsgReportSucc = -1;
-  bjyw sscmObject = new bjyw();
+  blkh sscmObject = new blkh();
   boolean useServerInitSize = false;
   
   public BaseUploadProcessor() {}
@@ -271,7 +271,7 @@ public class BaseUploadProcessor
     //   146: aload_3
     //   147: astore_2
     //   148: aload 4
-    //   150: invokestatic 434	bjkf:a	(Ljava/io/File;)Ljava/lang/String;
+    //   150: invokestatic 434	bkvq:a	(Ljava/io/File;)Ljava/lang/String;
     //   153: astore 4
     //   155: aload 4
     //   157: ifnull +17 -> 174

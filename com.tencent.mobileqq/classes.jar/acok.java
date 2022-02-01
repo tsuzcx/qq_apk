@@ -1,28 +1,18 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class acok
-  implements CompoundButton.OnCheckedChangeListener
+  implements acoj
 {
-  public acok(AccountManageActivity paramAccountManageActivity) {}
+  private acnw<acoi> a = new acnx();
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public List<acoi> a()
   {
-    SettingCloneUtil.writeValue(this.a, this.a.app.getCurrentAccountUin(), null, "qqsetting_subaccount_notify", paramBoolean);
-    ((bcqt)this.a.app.getManager(61)).a(this.a.app);
-    QQAppInterface localQQAppInterface = this.a.app;
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (paramBoolean) {}
-    for (int i = 0;; i = 1)
-    {
-      bcef.b(localQQAppInterface, "dc00898", "", "", "0X800AC3A", "0X800AC3A", 0, 0, i + "", "", "", "");
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-    }
+    return this.a.a();
+  }
+  
+  public void a(Class<? extends acoi> paramClass)
+  {
+    this.a.a(paramClass);
   }
 }
 

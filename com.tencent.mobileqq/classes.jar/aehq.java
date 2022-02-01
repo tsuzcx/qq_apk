@@ -1,25 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import face.qqlogin.FaceSecureCheck.SecureCheckResponse;
 
 public class aehq
-  implements DialogInterface.OnClickListener
+  extends ayra
 {
-  public aehq(SplashActivity paramSplashActivity) {}
+  public aehq(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void checkSecureResponse(FaceSecureCheck.SecureCheckResponse paramSecureCheckResponse)
   {
-    Intent localIntent = new Intent(this.a, GesturePWDSettingActivity.class);
-    localIntent.putExtra("key_reset", true);
-    this.a.startActivity(localIntent);
-    paramDialogInterface.dismiss();
+    LoginInfoActivity.a(this.a, paramSecureCheckResponse);
+  }
+  
+  public void onFailedResponse(String paramString1, int paramInt, String paramString2)
+  {
+    QQToast.a(this.a, paramString2, 0).a();
+    QLog.e("LoginInfoActivity.AccDevSec", 1, "cmd : " + paramString1 + " request failed  code : " + paramInt + " message : " + paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aehq
  * JD-Core Version:    0.7.0.1
  */

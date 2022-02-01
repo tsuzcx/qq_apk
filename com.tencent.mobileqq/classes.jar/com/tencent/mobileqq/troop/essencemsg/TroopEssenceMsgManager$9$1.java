@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.essencemsg;
 
-import bedz;
-import beef;
+import bflc;
+import bfli;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -19,7 +19,7 @@ class TroopEssenceMsgManager$9$1
     {
       localObject = ((ArrayList)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((beef)((Iterator)localObject).next()).a(this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager$9.a, this.jdField_a_of_type_JavaUtilHashMap);
+        ((bfli)((Iterator)localObject).next()).a(this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager$9.a, this.jdField_a_of_type_JavaUtilHashMap);
       }
       this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager$9.this$0.b.remove(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager$9.a));
     }

@@ -1,53 +1,50 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.HexUtil;
-import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.AccostTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.jsbridge.GdtBannerFragmentForJS;
 
 public class acfx
-  implements abyl
+  implements acaq
 {
-  public int a()
-  {
-    return 1001;
-  }
+  public acfx(GdtBannerFragmentForJS paramGdtBannerFragmentForJS) {}
   
-  public boolean a()
+  private long a(com.tencent.gdtad.api.GdtAd paramGdtAd)
   {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    msg_svc.AccostTmp localAccostTmp = new msg_svc.AccostTmp();
-    localAccostTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    QQMessageFacade.Message localMessage = paramQQAppInterface.getMessageFacade().getLastMessage(paramMessageRecord.frienduin, 1001);
-    localAccostTmp.reply.set(localMessage.hasReply);
-    if (QLog.isColorLevel()) {
-      QLog.d("LBSFriendRoutingType", 2, "LBS_FRIEND------>reply=" + localMessage.hasReply);
+    if ((paramGdtAd != null) && (paramGdtAd.getAd() != null)) {
+      return paramGdtAd.getAd().getAId();
     }
-    paramMessageRecord = paramQQAppInterface.getMsgCache().n(paramMessageRecord.frienduin);
-    if (paramMessageRecord != null)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("fight_accost", 4, "发送附近人临时会消息 有keyLBSFriend------>" + HexUtil.bytes2HexStr(paramMessageRecord) + ",length:" + paramMessageRecord.length);
-      }
-      localAccostTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
-    }
-    paramRoutingHead.accost_tmp.set(localAccostTmp);
-    return true;
+    return -2147483648L;
   }
   
-  public int b()
+  public void a(com.tencent.gdtad.api.GdtAd paramGdtAd)
   {
-    return 6010;
+    acho.b("GdtBannerFragmentForJS", String.format("onAdLoaded %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
+    Toast.makeText(BaseApplicationImpl.getContext(), String.format("onAdLoaded %d", new Object[] { Long.valueOf(a(paramGdtAd)) }), 0).show();
+  }
+  
+  public void a(com.tencent.gdtad.api.GdtAd paramGdtAd, acap paramacap)
+  {
+    acho.d("GdtBannerFragmentForJS", "onAdFailedToLoad " + paramacap.a());
+    Toast.makeText(BaseApplicationImpl.getContext(), "onAdFailedToLoad " + paramacap.a(), 0).show();
+  }
+  
+  public void b(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  {
+    acho.b("GdtBannerFragmentForJS", String.format("onAdImpression %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
+    Toast.makeText(BaseApplicationImpl.getContext(), String.format("onAdImpression %d", new Object[] { Long.valueOf(a(paramGdtAd)) }), 0).show();
+  }
+  
+  public void c(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  {
+    acho.b("GdtBannerFragmentForJS", String.format("onAdClicked %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
+    Toast.makeText(BaseApplicationImpl.getContext(), String.format("onAdClicked %d", new Object[] { Long.valueOf(a(paramGdtAd)) }), 0).show();
+  }
+  
+  public void d(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  {
+    acho.b("GdtBannerFragmentForJS", String.format("onAdClosed %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
+    Toast.makeText(BaseApplicationImpl.getContext(), String.format("onAdClosed %d", new Object[] { Long.valueOf(a(paramGdtAd)) }), 0).show();
+    this.a.a.removeView(GdtBannerFragmentForJS.a(this.a).a());
   }
 }
 

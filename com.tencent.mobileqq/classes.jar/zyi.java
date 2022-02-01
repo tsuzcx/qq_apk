@@ -1,10 +1,19 @@
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.widget.ImageView;
+import com.tencent.qphone.base.util.QLog;
+
 class zyi
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public long a;
+  zyi(zyh paramzyh) {}
   
-  public zyi(long paramLong)
+  public boolean onPreDraw()
   {
-    this.a = paramLong;
+    zyh.a(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
+    zyh.a(this.a, zyh.a(this.a).getLeft(), zyh.a(this.a).getTop(), zyh.a(this.a).getWidth(), zyh.a(this.a).getHeight());
+    QLog.d("TransitionAnimHelper", 4, new Object[] { "initImageEnterAnimation left:" + zyh.a(this.a).getLeft(), ",top:", Integer.valueOf(zyh.a(this.a).getTop()), ",width:", Integer.valueOf(zyh.a(this.a).getWidth()), ",height:", Integer.valueOf(zyh.a(this.a).getHeight()) });
+    return true;
   }
 }
 

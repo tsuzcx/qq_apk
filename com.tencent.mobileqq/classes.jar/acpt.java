@@ -1,68 +1,54 @@
-import android.app.Dialog;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import mqq.app.MobileQQ;
+import tencent.im.s2c.msgtype0x210.submsgtype0x116.submsgtype0x116.MsgBody;
 
 public class acpt
-  implements View.OnClickListener
+  implements acpi
 {
-  public acpt(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
-  
-  public void onClick(View paramView)
+  private static void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte)
   {
-    if (!AddFriendVerifyActivity.a(this.a)) {}
-    for (;;)
+    Object localObject = new submsgtype0x116.MsgBody();
+    try
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      ((submsgtype0x116.MsgBody)localObject).mergeFrom(paramArrayOfByte);
+      long l1 = lcx.a(((submsgtype0x116.MsgBody)localObject).uint32_group_id.get());
+      long l2 = lcx.a(((submsgtype0x116.MsgBody)localObject).uint32_room_id.get());
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SuMsgType0x116 qqMainThread;roomId=" + l2 + ";groupId=" + l1);
+      }
+      if (paramQQAppInterface != null)
+      {
+        localObject = new Intent("tencent.video.q2v.GvideoMemInviteUpdate");
+        ((Intent)localObject).putExtra("uin", paramQQAppInterface.getCurrentUin());
+        ((Intent)localObject).putExtra("groupId", l1);
+        ((Intent)localObject).putExtra("roomId", l2);
+        ((Intent)localObject).putExtra("pushData", paramArrayOfByte);
+        ((Intent)localObject).setPackage(MobileQQ.getContext().getPackageName());
+        paramQQAppInterface.getApp().sendBroadcast((Intent)localObject);
+      }
       return;
-      if (this.a.a != null)
+    }
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    {
+      for (;;)
       {
-        this.a.getWindow().setSoftInputMode(2);
-        this.a.a.hideSoftInputFromWindow(AddFriendVerifyActivity.a(this.a).getWindowToken(), 0);
-        AddFriendVerifyActivity.a(this.a).clearFocus();
-      }
-      if (AddFriendVerifyActivity.a(this.a).getText().toString().length() > 90)
-      {
-        ReportDialog localReportDialog = new ReportDialog(this.a, 2131755826);
-        localReportDialog.setContentView(2131562728);
-        ((TextView)localReportDialog.findViewById(2131365552)).setText(this.a.getString(2131690992));
-        ((ProgressBar)localReportDialog.findViewById(2131367022)).setVisibility(8);
-        ((ImageView)localReportDialog.findViewById(2131380190)).setImageResource(2130839632);
-        localReportDialog.show();
-      }
-      else
-      {
-        this.a.a(AddFriendVerifyActivity.a(this.a).getText().toString(), true);
-        if (NetworkUtil.isNetSupport(this.a))
-        {
-          if (AddFriendVerifyActivity.a(this.a) != null) {}
-          for (int i = AddFriendVerifyActivity.a(this.a).a();; i = 2000)
-          {
-            QLog.e("AddFriendVerifyActivity", 1, "joinTroop templateId: " + i);
-            AddFriendVerifyActivity.a(this.a, AddFriendVerifyActivity.a(this.a), AddFriendVerifyActivity.a(this.a).getText().toString(), this.a.getIntent().getIntExtra("stat_option", 0), i);
-            bcef.b(null, "dc00898", "", "", "qq_vip", "0X800A62B", agjw.a(i), 0, "", "", "", "");
-            if (!"d2g".equals(this.a.getIntent().getStringExtra("jump_from"))) {
-              break;
-            }
-            bcef.b(this.a.app, "P_CliOper", "Grp_discuss", "", "discuss_set", "send_ask", 0, 0, AddFriendVerifyActivity.a(this.a), "", "", "");
-            break;
-          }
-        }
-        QQToast.a(this.a, 1, 2131694064, 0).b(this.a.getTitleBarHeight());
+        localInvalidProtocolBufferMicroException.printStackTrace();
       }
     }
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramMsgType0x210.vProtobuf);
+    return null;
   }
 }
 

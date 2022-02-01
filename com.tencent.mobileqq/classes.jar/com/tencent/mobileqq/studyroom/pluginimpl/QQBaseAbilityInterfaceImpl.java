@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.studyroom.pluginimpl;
 
+import aady;
 import android.content.Context;
 import android.os.Bundle;
-import auqe;
-import bcph;
-import bcpi;
+import avvz;
+import bdwg;
+import bdwh;
 import com.tencent.mobileqq.app.ThreadManagerExecutor;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqinterface.CommonCallback;
@@ -15,20 +16,19 @@ import com.tencent.qqinterface.QQConfigAbilityInterface.Callback;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 import org.json.JSONObject;
-import zon;
 
 public class QQBaseAbilityInterfaceImpl
   implements QQBaseAbilityInterface, QQConfigAbilityInterface
 {
   private static final String TAG = "studyroom.QQBaseAbilityInterface";
-  private final auqe impl = auqe.a();
-  private final zon mClient;
+  private final avvz impl = avvz.a();
+  private final aady mClient;
   private ExecutorService networkExecutor = ThreadManagerExecutor.getExecutorService(128);
   
   public QQBaseAbilityInterfaceImpl()
   {
     QLog.d("studyroom.QQBaseAbilityInterface", 4, "init");
-    this.mClient = zon.a();
+    this.mClient = aady.a();
     this.mClient.a();
   }
   
@@ -54,9 +54,9 @@ public class QQBaseAbilityInterfaceImpl
   
   public JSONObject getConfigFromQQ()
   {
-    bcph localbcph = bcpi.a();
-    if (localbcph != null) {
-      return localbcph.a;
+    bdwg localbdwg = bdwh.a();
+    if (localbdwg != null) {
+      return localbdwg.a;
     }
     return new JSONObject();
   }
@@ -92,7 +92,7 @@ public class QQBaseAbilityInterfaceImpl
   
   public void reportData(Bundle paramBundle)
   {
-    this.mClient.b(paramBundle);
+    this.mClient.c(paramBundle);
   }
   
   public String reqDns(String paramString)
@@ -105,7 +105,7 @@ public class QQBaseAbilityInterfaceImpl
     if (paramCallback != null) {
       paramCallback.onResult(getConfigFromQQ());
     }
-    bcpi.a();
+    bdwh.a();
   }
   
   public void sendSSOTask(Bundle paramBundle, CommonCallback<Bundle> paramCommonCallback) {}
@@ -119,7 +119,7 @@ public class QQBaseAbilityInterfaceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.pluginimpl.QQBaseAbilityInterfaceImpl
  * JD-Core Version:    0.7.0.1
  */

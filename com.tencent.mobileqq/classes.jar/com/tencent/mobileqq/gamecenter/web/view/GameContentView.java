@@ -3,16 +3,15 @@ package com.tencent.mobileqq.gamecenter.web.view;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
 import android.widget.LinearLayout;
-import aube;
+import avgy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.gamecenter.view.GameSessionView;
 
 public class GameContentView
   extends LinearLayout
 {
-  private aube jdField_a_of_type_Aube;
+  private avgy jdField_a_of_type_Avgy;
   GameSessionView jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView;
   
   public GameContentView(Context paramContext)
@@ -33,17 +32,14 @@ public class GameContentView
   
   private void d()
   {
-    LayoutInflater.from(getContext()).inflate(2131559197, this);
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView = new GameSessionView(getContext());
+    addView(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView);
   }
   
   private void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView = ((GameSessionView)findViewById(2131370162));
-    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView.a(BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_Aube);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView.a(BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_Avgy);
   }
   
   public int a()
@@ -51,9 +47,14 @@ public class GameContentView
     return getHeight();
   }
   
+  public GameSessionView a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView;
+  }
+  
   public void a()
   {
-    this.jdField_a_of_type_Aube = null;
+    this.jdField_a_of_type_Avgy = null;
   }
   
   public void b()
@@ -68,9 +69,9 @@ public class GameContentView
     }
   }
   
-  public void setUiRefresh(aube paramaube)
+  public void setUiRefresh(avgy paramavgy)
   {
-    this.jdField_a_of_type_Aube = paramaube;
+    this.jdField_a_of_type_Avgy = paramavgy;
   }
 }
 

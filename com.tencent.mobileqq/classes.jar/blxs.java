@@ -1,34 +1,53 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qappcenter.remote.SendMsg;
 
-class blxs
-  implements View.OnClickListener
+public abstract class blxs
+  extends Binder
+  implements blxr
 {
-  blxs(blxr paramblxr, blxt paramblxt, String paramString) {}
-  
-  public void onClick(View paramView)
+  public blxs()
   {
-    if (blxr.a(this.jdField_a_of_type_Blxr) != this.jdField_a_of_type_Blxt.getLayoutPosition()) {
-      bmbc.a().i(this.jdField_a_of_type_JavaLangString);
+    attachInterface(this, "cooperation.qappcenter.remote.IServiceHandler");
+  }
+  
+  public static blxr a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
     }
-    if ((blxr.a(this.jdField_a_of_type_Blxr) == -1) && (TextUtils.isEmpty(blxr.a(this.jdField_a_of_type_Blxr).a())))
-    {
-      blxr.a(this.jdField_a_of_type_Blxr).a(this.jdField_a_of_type_JavaLangString, ((blxe)blxd.a.get(0)).jdField_a_of_type_JavaLangString, ((blxe)blxd.a.get(0)).b);
-      blxr.a(this.jdField_a_of_type_Blxr).a(true, false);
+    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qappcenter.remote.IServiceHandler");
+    if ((localIInterface != null) && ((localIInterface instanceof blxr))) {
+      return (blxr)localIInterface;
     }
-    for (;;)
+    return new blxt(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      this.jdField_a_of_type_Blxr.a();
-      blxr.a(this.jdField_a_of_type_Blxr, this.jdField_a_of_type_Blxt.getLayoutPosition());
-      ((blxc)blxr.a(this.jdField_a_of_type_Blxr).get(blxr.a(this.jdField_a_of_type_Blxr) - 1)).a(true);
-      this.jdField_a_of_type_Blxt.a(true);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      blxr.a(this.jdField_a_of_type_Blxr).a(this.jdField_a_of_type_JavaLangString);
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("cooperation.qappcenter.remote.IServiceHandler");
+      return true;
+    }
+    paramParcel1.enforceInterface("cooperation.qappcenter.remote.IServiceHandler");
+    if (paramParcel1.readInt() != 0) {}
+    for (paramParcel1 = (SendMsg)SendMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    {
+      a(paramParcel1);
+      paramParcel2.writeNoException();
+      return true;
     }
   }
 }

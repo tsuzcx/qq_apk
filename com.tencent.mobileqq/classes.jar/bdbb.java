@@ -1,36 +1,21 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.theme.ListenTogetherTheme.FloatViewSkin.3.1;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Rect;
+import android.hardware.Camera.Size;
+import java.io.File;
 
 public class bdbb
-  implements bgfl
 {
-  bdbb(bday parambday) {}
+  public int a;
+  public alun a;
+  public Rect a;
+  public Camera.Size a;
+  public File a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public int c;
+  public int d;
   
-  public void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
-  {
-    if (paramQQAppInterface != null)
-    {
-      paramQQAppInterface = bgiw.a.getDir(paramQQAppInterface.getApp().getApplicationContext(), paramString1);
-      if ((!TextUtils.isEmpty(paramQQAppInterface)) && (bday.a(this.a) != null))
-      {
-        bday.a(this.a, true);
-        this.a.a(paramQQAppInterface);
-        if (QLog.isColorLevel()) {
-          QLog.i("FloatViewSkin", 2, "onCompleted: mSkinRootPath" + this.a.jdField_a_of_type_JavaLangString);
-        }
-        if (this.a.jdField_a_of_type_Boolean) {
-          ThreadManagerV2.getUIHandlerV2().post(new FloatViewSkin.3.1(this));
-        }
-      }
-    }
-  }
-  
-  public void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3) {}
+  private bdbb(bdax parambdax) {}
 }
 
 

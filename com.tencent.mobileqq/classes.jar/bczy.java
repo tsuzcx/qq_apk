@@ -1,17 +1,74 @@
-import android.graphics.Paint;
-import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class bczy
-  extends bdae
+public class bczy
 {
-  bczy(@NonNull String paramString)
+  private static volatile bczy jdField_a_of_type_Bczy;
+  bdaa jdField_a_of_type_Bdaa = null;
+  bdad jdField_a_of_type_Bdad = null;
+  
+  public static bczy a()
   {
-    super(1, paramString);
+    if (jdField_a_of_type_Bczy == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bczy == null)
+      {
+        bczy localbczy = new bczy();
+        localbczy.b();
+        jdField_a_of_type_Bczy = localbczy;
+      }
+      return jdField_a_of_type_Bczy;
+    }
+    finally {}
   }
   
-  float a(@NonNull Paint paramPaint)
+  public static void a()
   {
-    return paramPaint.measureText(a());
+    bczy localbczy = a();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavGesture", 4, String.format("onDownloadRequest, mStatusGesture[%s]", new Object[] { Integer.valueOf(localbczy.jdField_a_of_type_Bdad.a) }));
+    }
+    bdaa.a();
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_Bdad = new bdad();
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      this.jdField_a_of_type_Bdaa = new bdaa();
+    }
+  }
+  
+  public void a(boolean paramBoolean, bczz parambczz)
+  {
+    this.jdField_a_of_type_Bdad.a(paramBoolean, parambczz);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Bdad.a();
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Bdad.d();
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_Bdad.b();
+  }
+  
+  public boolean d()
+  {
+    return this.jdField_a_of_type_Bdad.a == 1;
+  }
+  
+  public boolean e()
+  {
+    return this.jdField_a_of_type_Bdad.c();
   }
 }
 

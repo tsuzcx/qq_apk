@@ -1,7 +1,7 @@
 package com.tencent.av;
 
-import lez;
-import mua;
+import lfe;
+import muy;
 
 class VideoController$17
   implements Runnable
@@ -10,9 +10,9 @@ class VideoController$17
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Mua.b(this.a);
-    mua localmua = this.this$0.jdField_a_of_type_Mua;
-    mua.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    this.this$0.jdField_a_of_type_Muy.b(this.a);
+    muy localmuy = this.this$0.jdField_a_of_type_Muy;
+    muy.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
     this.this$0.b(this.this$0.a().d, 50);
   }
 }

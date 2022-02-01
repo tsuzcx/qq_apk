@@ -1,23 +1,95 @@
-import android.annotation.TargetApi;
-import com.tencent.biz.qqstory.base.preload.PreloadDownloader;
-import com.tencent.biz.qqstory.base.preload.PreloadQueue;
-import java.util.List;
+import android.app.Activity;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-@TargetApi(14)
 public class vnc
-  implements vnb
 {
-  public vnc(vna paramvna) {}
+  public static final int a;
+  private static final Pattern a;
+  public static final int b = ScreenUtil.dip2px(2.0F);
+  public static final int c = ScreenUtil.dip2px(4.0F);
+  public static final int d = ScreenUtil.dip2px(16.0F);
+  public static final int e = ScreenUtil.dip2px(28.0F);
+  public static final int f = ScreenUtil.dip2px(80.0F);
+  private static final int g;
+  private static final int h;
+  private static int i;
+  private static int j;
+  private static int k;
+  private static int l;
   
-  public void a(int paramInt)
+  static
   {
-    int i = paramInt + 1;
-    if (i < this.a.jdField_a_of_type_JavaUtilList.size())
-    {
-      PreloadQueue localPreloadQueue = (PreloadQueue)this.a.jdField_a_of_type_JavaUtilList.get(i);
-      xvv.b("Q.qqstory.download.preload.PreloadDownloaderManager", "queue " + paramInt + " download completed , turn to " + localPreloadQueue.getId());
-      this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a(localPreloadQueue);
+    jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("^#([0-9a-fA-F]{8}|[0-9a-fA-F]{6})$");
+    g = ScreenUtil.getRealWidth(BaseApplicationImpl.getApplication());
+    h = ScreenUtil.getRealHeight(BaseApplicationImpl.getApplication());
+    jdField_a_of_type_Int = ScreenUtil.dip2px(0.5F);
+  }
+  
+  public static int a()
+  {
+    if (k == 0) {
+      k = ScreenUtil.dip2px(16.0F);
     }
+    return k;
+  }
+  
+  public static int a(Activity paramActivity)
+  {
+    if ((i == 0) && (paramActivity != null)) {
+      i = LiuHaiUtils.b(paramActivity);
+    }
+    return i;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    return jdField_a_of_type_JavaUtilRegexPattern.matcher(paramString).matches();
+  }
+  
+  public static int b()
+  {
+    if (l == 0) {
+      l = ScreenUtil.dip2px(41.0F);
+    }
+    return l;
+  }
+  
+  public static int b(Activity paramActivity)
+  {
+    if (j == 0) {
+      j = a(paramActivity) + ScreenUtil.dip2px(4.5F);
+    }
+    return j;
+  }
+  
+  public static int c()
+  {
+    return g;
+  }
+  
+  public static int c(Activity paramActivity)
+  {
+    if (paramActivity == null) {
+      return h;
+    }
+    int m = ScreenUtil.getNavigationBarHeight(paramActivity);
+    if (ScreenUtil.checkDeviceHasNavigationBar(paramActivity)) {
+      return h - m;
+    }
+    return h;
+  }
+  
+  public static int d()
+  {
+    return h;
   }
 }
 

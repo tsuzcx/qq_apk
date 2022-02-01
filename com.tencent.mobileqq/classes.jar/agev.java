@@ -1,22 +1,110 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForPic;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.qphone.base.util.QLog;
 
-final class agev
-  implements aghk
+public class agev
+  extends ager
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  private afsv jdField_a_of_type_Afsv;
+  private boolean jdField_a_of_type_Boolean = true;
+  
+  public agev(BaseChatPie paramBaseChatPie)
   {
-    if (((MessageForPic)paramChatMessage).isMixed) {
-      return 24;
+    super(paramBaseChatPie);
+  }
+  
+  private void m() {}
+  
+  protected View a()
+  {
+    this.jdField_a_of_type_Afsv = new agew(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin);
+    if (this.jdField_a_of_type_Afsv.a() == null) {}
+    this.jdField_a_of_type_Afsv.a(1);
+    return this.jdField_a_of_type_Afsv.a();
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if (this.jdField_a_of_type_Afsv != null) {
+      this.jdField_a_of_type_Afsv.a(paramInt1, paramInt2, paramIntent);
     }
-    if (amtr.a(paramChatMessage)) {
-      return 42;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Afsv != null) {
+      this.jdField_a_of_type_Afsv.a();
     }
-    if (amrp.a(paramChatMessage)) {
-      return 66;
+  }
+  
+  public void f()
+  {
+    super.f();
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, String.format("onDrawerOpened, needReqIntimateInfo: %s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
     }
-    return 1;
+    if (this.jdField_a_of_type_Afsv != null)
+    {
+      this.jdField_a_of_type_Afsv.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Afsv.b();
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_Afsv.c();
+        this.jdField_a_of_type_Afsv.d();
+        this.jdField_a_of_type_Afsv.m();
+      }
+    }
+    m();
+  }
+  
+  public void h()
+  {
+    super.h();
+    if (this.jdField_a_of_type_Afsv != null)
+    {
+      this.jdField_a_of_type_Afsv.b = true;
+      this.jdField_a_of_type_Afsv.f();
+    }
+  }
+  
+  public void i()
+  {
+    super.i();
+    if (this.jdField_a_of_type_Afsv != null)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Afsv.e();
+    }
+  }
+  
+  public void j()
+  {
+    if (this.jdField_a_of_type_Afsv != null)
+    {
+      if (a())
+      {
+        this.jdField_a_of_type_Afsv.c();
+        this.jdField_a_of_type_Afsv.m();
+      }
+      this.jdField_a_of_type_Afsv.h();
+    }
+  }
+  
+  public void k()
+  {
+    if (this.jdField_a_of_type_Afsv != null) {
+      this.jdField_a_of_type_Afsv.i();
+    }
+  }
+  
+  public void l()
+  {
+    if (this.jdField_a_of_type_Afsv != null) {
+      this.jdField_a_of_type_Afsv.g();
+    }
   }
 }
 

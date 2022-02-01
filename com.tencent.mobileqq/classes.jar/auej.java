@@ -1,15 +1,24 @@
-import java.util.List;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-public class auej
+final class auej
+  extends ClickableSpan
 {
-  public int a;
-  public String a;
-  public List<auek> a;
-  public int[] a;
-  public String b;
-  public List<auel> b;
-  public String c;
-  public String d;
+  auej(aueo paramaueo) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.a != null) {
+      this.a.onClick(paramView);
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
+    paramTextPaint.setUnderlineText(false);
+  }
 }
 
 

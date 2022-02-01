@@ -1,6 +1,8 @@
+import com.tencent.mobileqq.together.writetogether.websocket.msg.BaseWriteTogetherMsg.Type;
+
 public abstract interface benh
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public abstract void a(BaseWriteTogetherMsg.Type paramType, boolean paramBoolean, Object paramObject);
 }
 
 

@@ -1,39 +1,66 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Set;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Shader.TileMode;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 
 public class acjt
 {
-  public static final JSONObject a = new JSONObject();
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int;
+  private float c;
   
-  public static JSONObject a(Bundle paramBundle)
+  public acjt()
   {
-    JSONObject localJSONObject = new JSONObject();
-    if (paramBundle == null) {
-      return a;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+  }
+  
+  private Bitmap a(Drawable paramDrawable)
+  {
+    if ((paramDrawable instanceof BitmapDrawable)) {
+      return ((BitmapDrawable)paramDrawable).getBitmap();
     }
-    Iterator localIterator = paramBundle.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      Object localObject2 = paramBundle.get(str);
-      Object localObject1 = localObject2;
-      if ((localObject2 instanceof Bundle)) {
-        localObject1 = a((Bundle)localObject2);
-      }
-      try
-      {
-        localJSONObject.put(str, localObject1);
-      }
-      catch (JSONException localJSONException) {}
-      if (QLog.isColorLevel()) {
-        QLog.e("APIParam", 2, localJSONException.getMessage(), localJSONException);
-      }
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, Bitmap.Config.ARGB_8888);
     }
-    return localJSONObject;
+    Canvas localCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    paramDrawable.setBounds(0, 0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    paramDrawable.draw(localCanvas);
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.c = paramFloat;
+  }
+  
+  public void a(float paramFloat1, float paramFloat2)
+  {
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public void a(Canvas paramCanvas, Drawable paramDrawable)
+  {
+    if ((paramCanvas == null) || (paramDrawable == null)) {
+      return;
+    }
+    paramDrawable = new BitmapShader(a(paramDrawable), Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setShader(paramDrawable);
+    paramCanvas.drawCircle(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.c, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
 }
 

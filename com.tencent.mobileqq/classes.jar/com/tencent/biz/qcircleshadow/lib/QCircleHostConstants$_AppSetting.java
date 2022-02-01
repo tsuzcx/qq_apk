@@ -6,7 +6,7 @@ public class QCircleHostConstants$_AppSetting
 {
   public static String buildNum()
   {
-    return "4810";
+    return "4875";
   }
   
   public static boolean enableTalkBack()
@@ -36,12 +36,12 @@ public class QCircleHostConstants$_AppSetting
   
   public static String reportVersionName()
   {
-    return "8.4.8.4810";
+    return "8.4.10.4875";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.QCircleHostConstants._AppSetting
  * JD-Core Version:    0.7.0.1
  */

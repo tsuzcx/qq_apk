@@ -1,30 +1,40 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.Entity;
-
 public class aini
 {
-  public static ainj a(int paramInt, Entity paramEntity, QQAppInterface paramQQAppInterface, Context paramContext)
+  private ainh jdField_a_of_type_Ainh = new ainh();
+  private ainj jdField_a_of_type_Ainj = new ainj();
+  private aink jdField_a_of_type_Aink = new aink();
+  
+  public ainh a()
   {
-    if (paramInt == 0) {
-      return new aipl(paramQQAppInterface, paramContext, paramEntity);
+    return this.jdField_a_of_type_Ainh;
+  }
+  
+  public ainj a()
+  {
+    return this.jdField_a_of_type_Ainj;
+  }
+  
+  public aink a()
+  {
+    return this.jdField_a_of_type_Aink;
+  }
+  
+  public String a()
+  {
+    if (!this.jdField_a_of_type_Aink.b) {
+      return this.jdField_a_of_type_Ainh.b();
     }
-    if (paramInt == 5) {
-      return new aiou(paramQQAppInterface, paramContext, paramEntity);
+    if (this.jdField_a_of_type_Ainj.f()) {
+      return this.jdField_a_of_type_Ainh.a();
     }
-    if (paramInt == 1) {
-      return new aiqg(paramQQAppInterface, paramContext, paramEntity);
-    }
-    if (paramInt == 2) {
-      return new aisg(paramQQAppInterface, paramContext, paramEntity, 2);
-    }
-    if (paramInt == 3) {
-      return new aisg(paramQQAppInterface, paramContext, paramEntity, 3);
-    }
-    if (paramInt == 4) {
-      return new aipl(paramQQAppInterface, paramContext, paramEntity);
-    }
-    return null;
+    return "";
+  }
+  
+  public void a()
+  {
+    a().b("");
+    this.jdField_a_of_type_Ainj.a(0);
+    this.jdField_a_of_type_Aink.b(false);
   }
 }
 

@@ -1,74 +1,11 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.view.View;
+import com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView;
 
-public class ofq
-  extends aptq<ofp>
+public abstract interface ofq
 {
-  @NonNull
-  public ofp a(int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime instanceof QQAppInterface)) {
-        return ofp.a(bfyz.e(((QQAppInterface)localAppRuntime).getApplication()));
-      }
-    }
-    return new ofp();
-  }
+  public abstract void a(VerticalPagerView paramVerticalPagerView, View paramView, int paramInt);
   
-  @Nullable
-  public ofp a(aptx[] paramArrayOfaptx)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountConfProcessor", 2, "[onParsed]");
-    }
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return ofp.a(paramArrayOfaptx);
-    }
-    return null;
-  }
-  
-  public void a(ofp paramofp)
-  {
-    paramofp.b();
-    paramofp.a();
-  }
-  
-  public Class<ofp> clazz()
-  {
-    return ofp.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return false;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return bfyz.m(((QQAppInterface)localAppRuntime).getApp());
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 32;
-  }
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 

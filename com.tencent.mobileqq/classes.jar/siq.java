@@ -1,62 +1,109 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGestureProgressView;
 
-class siq
-  extends sif
+public class siq
 {
-  siq(sig paramsig) {}
+  private int jdField_a_of_type_Int = 0;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private VideoFeedsGestureProgressView jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureProgressView;
+  private ViewGroup jdField_b_of_type_AndroidViewViewGroup;
+  private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private VideoFeedsGestureProgressView jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureProgressView;
+  private ViewGroup c;
+  private ViewGroup d;
+  private ViewGroup e;
   
-  public int a()
+  public void a()
   {
-    return 5;
+    if (this.c != null) {
+      this.c.setVisibility(8);
+    }
+    if (this.d != null) {
+      this.d.setVisibility(8);
+    }
+    if (this.e != null) {
+      this.e.setVisibility(8);
+    }
   }
   
-  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public void a(int paramInt, float paramFloat, long paramLong1, long paramLong2)
   {
-    sig.a(this.a, false);
-    Object localObject = null;
-    try
+    switch (paramInt)
     {
-      paramActionSheetItem = URLEncoder.encode(paramString, "UTF-8");
-      if (!TextUtils.isEmpty(paramBaseArticleInfo.getSubscribeUin()))
-      {
-        paramString = paramBaseArticleInfo.getSubscribeUin();
-        paramBaseArticleInfo = "https://post.mp.qq.com/jubao/index?_wv=3&puin=" + paramString + "&uin_type=0&url=" + paramActionSheetItem + "&type=4&key=" + paramBaseArticleInfo.getInnerUniqueID();
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "click jubao btn, reportUrl:" + paramBaseArticleInfo);
-        }
-        paramString = new Intent(sig.a(this.a), QQBrowserActivity.class);
-        paramString.putExtra("url", paramBaseArticleInfo);
-        paramString.putExtra("hide_more_button", true);
-        sig.a(this.a).startActivity(paramString);
-        return;
-      }
     }
-    catch (UnsupportedEncodingException paramString)
+    for (;;)
     {
-      for (;;)
+      this.jdField_a_of_type_Int = paramInt;
+      return;
+      String str1 = six.a(paramLong1);
+      String str2 = six.a(paramLong2);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(str1 + "/");
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(str2);
+      if (paramFloat > 0.0F) {
+        this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130843208);
+      }
+      while (this.c.getVisibility() == 8)
       {
-        paramActionSheetItem = localObject;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "encode url failed, because UTF-8 is unknown");
-          paramActionSheetItem = localObject;
-          continue;
-          if (!TextUtils.isEmpty(paramBaseArticleInfo.thirdUin)) {
-            paramString = paramBaseArticleInfo.thirdUin;
-          } else {
-            paramString = "0";
+        six.a(this.c, 0, 300);
+        break;
+        this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130843206);
+      }
+      this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureProgressView.setProgress(paramFloat);
+      if (paramFloat == 0.0F) {
+        this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130843121);
+      }
+      while (this.e.getVisibility() == 8)
+      {
+        six.a(this.e, 0, 300);
+        break;
+        this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130843122);
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureProgressView.setProgress(paramFloat);
+      if (this.d.getVisibility() == 8)
+      {
+        six.a(this.d, 0, 300);
+        continue;
+        if (this.jdField_a_of_type_Int != 0) {
+          if (this.jdField_a_of_type_Int == 3)
+          {
+            if (this.c.getVisibility() == 0) {
+              six.a(this.c, 8, 300);
+            }
+          }
+          else if (this.jdField_a_of_type_Int == 2)
+          {
+            if (this.d.getVisibility() == 0) {
+              six.a(this.d, 8, 300);
+            }
+          }
+          else if ((this.jdField_a_of_type_Int == 1) && (this.e.getVisibility() == 0)) {
+            six.a(this.e, 8, 300);
           }
         }
       }
     }
+  }
+  
+  public void a(Context paramContext, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560365, paramViewGroup));
+    this.c = ((ViewGroup)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131373250));
+    this.d = ((ViewGroup)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131363775));
+    this.e = ((ViewGroup)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131381299));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131373248));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131373252));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131381298));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131373249));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureProgressView = ((VideoFeedsGestureProgressView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131363776));
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureProgressView = ((VideoFeedsGestureProgressView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131381300));
   }
 }
 

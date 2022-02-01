@@ -1,6 +1,9 @@
-public abstract interface aulu
+import com.tencent.mobileqq.app.BusinessObserver;
+
+public class aulu
+  implements BusinessObserver
 {
-  public abstract void a();
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
 }
 
 

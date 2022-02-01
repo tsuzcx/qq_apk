@@ -1,88 +1,42 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
-
 public class aqdi
-  extends aptq<apxz>
 {
-  public static apxz a()
+  public int a;
+  public aqdj a;
+  public Object a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public String c;
+  
+  public aqdi()
   {
-    return (apxz)apub.a().a(633);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Boolean = true;
   }
   
-  @NonNull
-  public apxz a(int paramInt)
+  public String toString()
   {
-    return new apxz();
-  }
-  
-  @Nullable
-  public apxz a(aptx[] paramArrayOfaptx)
-  {
-    QLog.i("TroopFoldMsgConfProcessor", 1, "[onParsed] config");
-    Object localObject = null;
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null))
-    {
-      localapxz = apxz.a(paramArrayOfaptx[0].a);
-      localObject = localapxz;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("TroopFoldMsgConfProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
-        localObject = localapxz;
-      }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("|_DownloadParam_start");
+    localStringBuilder.append("|").append(" type:").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("|").append(" md5:").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("|").append(" endFix:").append(this.c);
+    localStringBuilder.append("|").append(" retryCount:").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("|").append(" needUnzip:").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("|").append(" needVerify:").append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append("|").append(" url:").append(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_JavaLangObject != null) {
+      localStringBuilder.append("|").append(" userData:").append(this.jdField_a_of_type_JavaLangObject);
     }
-    while (!QLog.isColorLevel())
-    {
-      apxz localapxz;
-      return localObject;
-    }
-    QLog.d("TroopFoldMsgConfProcessor", 2, "onParsed is null");
-    return null;
-  }
-  
-  public void a(apxz paramapxz)
-  {
-    QLog.i("TroopFoldMsgConfProcessor", 1, "[onUpdate]");
-  }
-  
-  public Class<apxz> clazz()
-  {
-    return apxz.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.i("TroopFoldMsgConfProcessor", 1, "[onReqFailed] failCode=" + paramInt);
-  }
-  
-  public int type()
-  {
-    return 633;
+    localStringBuilder.append("|end");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqdi
  * JD-Core Version:    0.7.0.1
  */

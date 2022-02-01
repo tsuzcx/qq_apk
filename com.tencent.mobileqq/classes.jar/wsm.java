@@ -1,93 +1,62 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.IEventReceiver;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchFeedLike;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedLike;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.List;
 
 public class wsm
-  extends wqz
-  implements IEventReceiver
+  extends wfm
 {
-  private long jdField_a_of_type_Long;
-  private VideoCoverListBar jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar;
-  private wny jdField_a_of_type_Wny;
-  private wsp jdField_a_of_type_Wsp;
-  private volatile boolean b;
-  private boolean c;
-  private boolean d;
+  public static final String a;
+  private List<String> a;
+  private int c;
   
-  public wsm(@NonNull ViewGroup paramViewGroup)
+  static
   {
-    super(paramViewGroup);
+    jdField_a_of_type_JavaLangString = weg.a("StorySvc.feed_like_list_batch_715");
   }
   
-  protected View a(ViewGroup paramViewGroup)
+  public wsm(List<String> paramList, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar = ((VideoCoverListBar)paramViewGroup.findViewById(2131380529));
-    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar;
-  }
-  
-  public void a(int paramInt, woe paramwoe, @NonNull ArrayList<wsk> paramArrayList)
-  {
-    xvv.a("VideoCoverListGroupHolder", "onBind() pos=%d, group=%s", Integer.valueOf(paramInt), paramwoe);
-    boolean bool = this.jdField_a_of_type_Boolean;
-    super.a(paramInt, paramwoe, paramArrayList);
-    if (!bool)
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
     {
-      this.d = true;
-      if (this.jdField_a_of_type_Wsp == null) {
-        this.jdField_a_of_type_Wsp = new wsp(this);
-      }
-      vli.a().registerSubscriber("", this.jdField_a_of_type_Wsp);
-    }
-    if ((paramwoe.c()) || (paramwoe.b())) {}
-    int i;
-    do
-    {
+      this.c = i;
       return;
-      i = this.jdField_a_of_type_Wny.a().size();
-      this.jdField_a_of_type_Wny.a(paramInt, paramArrayList, paramwoe.a);
-    } while (i == this.jdField_a_of_type_Wny.a().size());
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.a();
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.a(paramString);
-  }
-  
-  protected void b()
-  {
-    super.b();
-    this.jdField_a_of_type_Wny = new wny(a().mUIStyle.showVideoCoverList);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.a(this.jdField_a_of_type_Wny);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.setOnVideoClickListener(new wsn(this));
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.setOnScrollListener(new wso(this));
-  }
-  
-  public void c()
-  {
-    super.c();
-    if (this.jdField_a_of_type_Wsp != null)
-    {
-      this.d = false;
-      vli.a().unRegisterSubscriber(this.jdField_a_of_type_Wsp);
     }
   }
   
-  public void d()
+  public String a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.b();
+    return jdField_a_of_type_JavaLangString;
   }
   
-  public boolean isValidate()
+  public wfh a(byte[] paramArrayOfByte)
   {
-    return this.d;
+    qqstory_service.RspBatchFeedLike localRspBatchFeedLike = new qqstory_service.RspBatchFeedLike();
+    try
+    {
+      localRspBatchFeedLike.mergeFrom(paramArrayOfByte);
+      return new wsn(localRspBatchFeedLike);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqBatchFeedLike localReqBatchFeedLike = new qqstory_service.ReqBatchFeedLike();
+    List localList = a(this.jdField_a_of_type_JavaUtilList);
+    localReqBatchFeedLike.feed_id_list.set(localList);
+    localReqBatchFeedLike.source.set(this.c);
+    return localReqBatchFeedLike.toByteArray();
   }
 }
 

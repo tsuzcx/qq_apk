@@ -1,23 +1,19 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import com.tencent.biz.richframework.eventbus.SimpleEventBus;
-import com.tencent.biz.subscribe.event.CommentListShowStateEvent;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.view.NeoVideoRecordButton;
 
-class zfx
-  implements DialogInterface.OnShowListener
+public class zfx
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  zfx(zfs paramzfs, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
+  public zfx(NeoVideoRecordButton paramNeoVideoRecordButton) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (zfs.a(this.jdField_a_of_type_Zfs) != null) {
-      zfs.a(this.jdField_a_of_type_Zfs).a(paramDialogInterface);
-    }
-    paramDialogInterface = zjz.a().a(zfs.a(this.jdField_a_of_type_Zfs), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply);
-    zfs.a(this.jdField_a_of_type_Zfs).a(paramDialogInterface);
-    SimpleEventBus.getInstance().dispatchEvent(new CommentListShowStateEvent(true));
+    this.a.a.a(((Integer)paramValueAnimator.getAnimatedValue("border")).intValue(), 0.0F);
+    this.a.a.b(((Integer)paramValueAnimator.getAnimatedValue("ring")).intValue(), 0.0F);
+    this.a.b.a(((Integer)paramValueAnimator.getAnimatedValue("center")).intValue(), 0.0F);
+    this.a.b.e = ((Integer)paramValueAnimator.getAnimatedValue("color")).intValue();
+    NeoVideoRecordButton.a(this.a);
   }
 }
 

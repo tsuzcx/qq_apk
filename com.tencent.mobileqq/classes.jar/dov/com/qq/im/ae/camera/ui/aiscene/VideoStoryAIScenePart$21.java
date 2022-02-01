@@ -1,26 +1,15 @@
 package dov.com.qq.im.ae.camera.ui.aiscene;
 
-import android.animation.AnimatorSet;
-import android.animation.AnimatorSet.Builder;
-import android.animation.ObjectAnimator;
-import android.widget.TextView;
-import blpb;
+import bncm;
 
 public class VideoStoryAIScenePart$21
   implements Runnable
 {
-  public VideoStoryAIScenePart$21(blpb paramblpb) {}
+  public VideoStoryAIScenePart$21(bncm parambncm) {}
   
   public void run()
   {
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(blpb.a(this.this$0), "translationY", new float[] { 0.0F });
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(blpb.b(this.this$0), "translationY", new float[] { 0.0F });
-    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(blpb.b(this.this$0), "translationY", new float[] { 0.0F });
-    Object localObject = new int[2];
-    blpb.a(this.this$0).getLocationInWindow((int[])localObject);
-    localObject = new AnimatorSet();
-    ((AnimatorSet)localObject).play(localObjectAnimator1).with(localObjectAnimator2).with(localObjectAnimator3);
-    ((AnimatorSet)localObject).setDuration(300L).start();
+    bncm.b(this.this$0);
   }
 }
 

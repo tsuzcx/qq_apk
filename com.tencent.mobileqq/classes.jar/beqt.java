@@ -1,17 +1,10 @@
-import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
-
-class beqt
-  implements beza
+public abstract interface beqt
 {
-  beqt(beqp parambeqp, TroopChatPie paramTroopChatPie) {}
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
   
-  public void a(int paramInt)
-  {
-    if (!beyy.a(paramInt)) {
-      this.jdField_a_of_type_Beqp.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie);
-    }
-    this.jdField_a_of_type_Beqp.e(beyy.b(paramInt));
-  }
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c();
 }
 
 

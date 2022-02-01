@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.apollo.script.drawerInfo;
 
-import amau;
-import ambf;
-import ambk;
+import ancc;
+import ancn;
+import ancs;
 
 public class SpriteDrawerInfoBridge$2
   implements Runnable
 {
-  public SpriteDrawerInfoBridge$2(ambk paramambk, amau paramamau) {}
+  public SpriteDrawerInfoBridge$2(ancs paramancs, ancc paramancc) {}
   
   public void run()
   {
-    ambf localambf = this.a.a();
-    if (localambf != null) {
-      localambf.b();
+    ancn localancn = this.a.a();
+    if (localancn != null) {
+      localancn.b();
     }
   }
 }

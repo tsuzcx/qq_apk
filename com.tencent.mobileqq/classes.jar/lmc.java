@@ -1,59 +1,40 @@
+import android.graphics.Canvas;
+import com.tencent.av.doodle.MySurfaceView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
 
 public class lmc
+  extends lmb
 {
-  private static volatile lmc jdField_a_of_type_Lmc;
-  lme jdField_a_of_type_Lme = null;
-  lmg jdField_a_of_type_Lmg = null;
+  private lmd a;
   
-  public static lmc a()
+  public lmc(int paramInt)
   {
-    if (jdField_a_of_type_Lmc == null) {}
-    try
-    {
-      if (jdField_a_of_type_Lmc == null)
-      {
-        lmc locallmc = new lmc();
-        locallmc.b();
-        jdField_a_of_type_Lmc = locallmc;
-      }
-      return jdField_a_of_type_Lmc;
-    }
-    finally {}
+    this.jdField_a_of_type_Lmd = new lmd();
+    a(paramInt);
   }
   
-  public static void a()
+  private void a(int paramInt)
   {
-    lmc locallmc = a();
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QavGPDownloadManager", 4, String.format("onDownloadRequest, mStatusGameplay[%s]", new Object[] { Integer.valueOf(locallmc.jdField_a_of_type_Lme.a) }));
-    }
-    lmg.a();
+    this.jdField_a_of_type_Lmd.a(BaseApplicationImpl.getApplication(), 2131230735, paramInt);
+    this.jdField_a_of_type_Lmd.a(this.jdField_a_of_type_AndroidGraphicsPathMeasure);
   }
   
-  public static boolean a()
+  public void a() {}
+  
+  public void a(long paramLong)
   {
-    return jdField_a_of_type_Lmc != null;
+    this.jdField_a_of_type_Lmd.a((float)paramLong / 1000.0F);
   }
   
-  private void b()
+  public void b(Canvas paramCanvas, MySurfaceView paramMySurfaceView, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Lme = new lme();
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      this.jdField_a_of_type_Lmg = new lmg();
-    }
+    this.jdField_a_of_type_Lmd.a(paramCanvas);
   }
   
-  public boolean b()
+  public void c(float paramFloat1, float paramFloat2)
   {
-    return this.jdField_a_of_type_Lme.a();
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_Lme.c();
+    super.c(paramFloat1, paramFloat2);
+    this.jdField_a_of_type_Lmd.a(null);
   }
 }
 

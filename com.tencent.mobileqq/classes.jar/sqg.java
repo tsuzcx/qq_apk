@@ -1,19 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class sqg
-  implements View.OnClickListener
+class sqg
+  implements szk
 {
-  public sqg(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  sqg(sqd paramsqd) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    PublicTransFragmentActivity.a(this.a.a(), ReadInJoyChannelPanelFragment.class);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.g();
   }
 }
 

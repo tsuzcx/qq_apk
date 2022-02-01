@@ -1,52 +1,39 @@
-import android.content.Context;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import com.tencent.widget.XListView;
+import android.content.res.Resources;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.os.MqqHandler;
 
-class ajht
-  implements AdapterView.OnItemClickListener
+public class ajht
+  extends MqqHandler
 {
-  ajht(ajhm paramajhm) {}
+  public ajht(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(ajhm.jdField_a_of_type_JavaLangString, 2, "onItemClick, position = " + paramInt);
-    }
-    paramAdapterView = this.a.jdField_a_of_type_ComTencentWidgetXListView.getAdapter();
-    if (paramAdapterView == this.a.jdField_a_of_type_Ajhl)
+    switch (paramMessage.what)
     {
-      paramAdapterView = (ajhk)this.a.jdField_a_of_type_Ajhl.getItem(paramInt);
-      this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      this.a.jdField_a_of_type_Int = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().queryMsgRecordIndex(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-      if (QLog.isColorLevel()) {
-        QLog.i(ajhm.jdField_a_of_type_JavaLangString, 2, "onItemClick, mRecordCount = " + this.a.jdField_a_of_type_Int);
-      }
-      this.a.a(true);
-      this.a.dismiss();
-    }
-    do
-    {
-      return;
-      if (paramAdapterView == this.a.jdField_a_of_type_Ajhw)
+    case 1013: 
+    case 1015: 
+    case 1017: 
+    default: 
+    case 1012: 
+      do
       {
-        paramAdapterView = (ajha)this.a.jdField_a_of_type_Ajhw.getItem(paramInt);
-        this.a.b = false;
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramAdapterView.jdField_a_of_type_JavaLangString);
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramAdapterView.jdField_a_of_type_JavaLangString.length());
-        this.a.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-        ((InputMethodManager)this.a.jdField_a_of_type_AndroidWidgetEditText.getContext().getSystemService("input_method")).toggleSoftInput(0, 2);
         return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i(ajhm.jdField_a_of_type_JavaLangString, 2, "onItemClick, unknown data type");
+      } while (TroopWithCommonFriendsFragment.a(this.a) == null);
+      TroopWithCommonFriendsFragment.a(this.a).notifyDataSetChanged();
+      return;
+    case 1014: 
+      paramMessage = this.a.a.getResources().getString(2131719155);
+      QQToast.a(this.a.a, 1, paramMessage, 0).b(this.a.a());
+      return;
+    case 1016: 
+      QQToast.a(this.a.a, this.a.getString(2131718513), 0).b(this.a.a());
+      return;
+    }
+    QQToast.a(this.a.a, this.a.getString(2131718500), 0).b(this.a.a());
   }
 }
 

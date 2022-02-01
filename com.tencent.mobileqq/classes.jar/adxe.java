@@ -1,25 +1,76 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import android.view.View;
-import android.view.Window;
-import android.view.animation.TranslateAnimation;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class adxe
-  implements DialogInterface.OnDismissListener
+  implements awzc<List<EmoticonPackage>>
 {
-  public adxe(PublicAccountListActivity paramPublicAccountListActivity, int paramInt, TranslateAnimation paramTranslateAnimation, InputMethodManager paramInputMethodManager) {}
+  public adxe(EmosmActivity paramEmosmActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(List<EmoticonPackage> paramList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.d.setTag("");
-    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidWidgetLinearLayout.offsetTopAndBottom(-this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.getWindow().peekDecorView().getWindowToken(), 0);
+    this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+    if (this.a.jdField_a_of_type_Asfv != null) {
+      this.a.jdField_a_of_type_Asfv.a();
+    }
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      EmoticonPackage localEmoticonPackage;
+      if (this.a.b == 1)
+      {
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          localEmoticonPackage = (EmoticonPackage)paramList.next();
+          if ((3 != localEmoticonPackage.jobType) && (1 != localEmoticonPackage.jobType) && (5 != localEmoticonPackage.jobType)) {
+            this.a.jdField_a_of_type_JavaUtilArrayList.add(localEmoticonPackage);
+          }
+        }
+      }
+      if (this.a.b == 2)
+      {
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          localEmoticonPackage = (EmoticonPackage)paramList.next();
+          if ((3 == localEmoticonPackage.jobType) || (5 == localEmoticonPackage.jobType)) {
+            this.a.jdField_a_of_type_JavaUtilArrayList.add(localEmoticonPackage);
+          }
+        }
+      }
+    }
+    if (this.a.b == 1)
+    {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.findHeaderViewPosition(this.a.jdField_a_of_type_AndroidViewView) == -1) {
+        this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.addHeaderView(this.a.jdField_a_of_type_AndroidViewView);
+      }
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.a.d();
+      if (this.a.b != 2) {
+        break label344;
+      }
+      this.a.setTitle(2131691871);
+    }
+    for (;;)
+    {
+      if (this.a.jdField_a_of_type_Asfv != null) {
+        this.a.jdField_a_of_type_Asfv.notifyDataSetChanged();
+      }
+      return;
+      if (this.a.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+      {
+        this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        break;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.removeHeaderView(this.a.jdField_a_of_type_AndroidViewView);
+      break;
+      label344:
+      this.a.setTitle(2131692079);
+    }
   }
 }
 

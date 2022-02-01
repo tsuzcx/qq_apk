@@ -1,22 +1,25 @@
-import android.os.Bundle;
-import kotlin.Metadata;
-import mqq.observer.BusinessObserver;
-import org.jetbrains.annotations.Nullable;
+import android.view.View;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/onlinestatus/constellation/StatusExtInfoObserver;", "Lmqq/observer/BusinessObserver;", "()V", "onGetConstellationTrend", "", "success", "", "bundle", "Landroid/os/Bundle;", "onReceive", "type", "", "isSuccess", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public class axyk
-  implements BusinessObserver
+  implements bkzq
 {
-  public void a(boolean paramBoolean, @Nullable Bundle paramBundle) {}
+  public axyk(ShortVideoCommentsView paramShortVideoCommentsView, Comments.Comment paramComment, bkzi parambkzi) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, @Nullable Bundle paramBundle)
+  public void OnClick(View paramView, int paramInt)
   {
     switch (paramInt)
     {
-    default: 
-      return;
     }
-    a(paramBoolean, paramBundle);
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Bkzi != null) {
+        this.jdField_a_of_type_Bkzi.dismiss();
+      }
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.f(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
+    }
   }
 }
 

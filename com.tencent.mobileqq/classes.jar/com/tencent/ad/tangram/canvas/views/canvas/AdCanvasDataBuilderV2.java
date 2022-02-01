@@ -11,8 +11,10 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import com.tencent.ad.tangram.Ad;
 import com.tencent.ad.tangram.canvas.AdCanvasJsonManager;
+import com.tencent.ad.tangram.canvas.report.AdReport;
 import com.tencent.ad.tangram.canvas.views.canvas.components.AdCanvasComponentData;
 import com.tencent.ad.tangram.log.AdLog;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
 import com.tencent.ad.tangram.util.AdUIUtils;
 import com.tencent.ad.tangram.util.AdUriUtil;
 import java.util.ArrayList;
@@ -56,30 +58,42 @@ public class AdCanvasDataBuilderV2
   
   public static AdCanvasData build(Context paramContext, Ad paramAd, boolean paramBoolean)
   {
+    boolean bool = true;
+    long l = System.currentTimeMillis();
     if (paramAd == null)
     {
       AdLog.e("AdCanvasDataBuilderV2", "build error");
+      AdReport.reportForCanvasDataBuildError(paramContext, 1, null, null);
+      AdReporterForAnalysis.reportForCanvasDataBuildError(paramContext, null, String.valueOf(1));
       return null;
     }
-    String str = paramAd.getCanvas();
-    if (TextUtils.isEmpty(str))
+    Object localObject = paramAd.getCanvas();
+    if (TextUtils.isEmpty((CharSequence)localObject))
     {
       AdLog.e("AdCanvasDataBuilderV2", "build error");
+      AdReport.reportForCanvasDataBuildError(paramContext, 2, paramAd, null);
+      AdReporterForAnalysis.reportForCanvasDataBuildError(paramContext, paramAd, String.valueOf(2));
       return null;
     }
-    AdLog.i("AdCanvasDataBuilderV2", "build " + str);
+    AdLog.i("AdCanvasDataBuilderV2", "build " + (String)localObject);
     try
     {
-      paramContext = getCanvasData(paramContext, paramAd, new JSONObject(str), paramBoolean);
-      setArkFormIndex(paramContext);
-      setActiveAppBtnView(paramContext);
-      return paramContext;
+      localObject = getCanvasData(paramContext, paramAd, new JSONObject((String)localObject), paramBoolean);
+      setArkFormIndex((AdCanvasData)localObject);
+      setActiveAppBtnView((AdCanvasData)localObject);
+      AdReport.reportForCanvasDataBuildEnd(paramContext, paramAd, System.currentTimeMillis() - l);
+      if ((localObject != null) && (((AdCanvasData)localObject).isValid())) {}
+      for (paramBoolean = bool;; paramBoolean = false)
+      {
+        AdReporterForAnalysis.reportForCanvasDataBuildEnd(paramContext, paramAd, paramBoolean, System.currentTimeMillis() - l);
+        return localObject;
+      }
+      return null;
     }
     catch (Throwable paramContext)
     {
       AdLog.e("AdCanvasDataBuilderV2", "build error", paramContext);
     }
-    return null;
   }
   
   private static com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.c getAppButtonComponent(Context paramContext, JSONObject paramJSONObject, int paramInt)
@@ -134,12 +148,12 @@ public class AdCanvasDataBuilderV2
       else
       {
         if (!TextUtils.equals(str, "right")) {
-          break label443;
+          break label446;
         }
         localc.gravity = 5;
       }
     }
-    label443:
+    label446:
     throw new Exception("unknow button align");
   }
   
@@ -240,6 +254,8 @@ public class AdCanvasDataBuilderV2
     if ((paramJSONArray == null) || (JSONObject.NULL.equals(paramJSONArray)))
     {
       AdLog.e("AdCanvasDataBuilderV2", "getCanvasComponents error");
+      AdReport.reportForCanvasDataBuildError(paramContext, 5, paramAd, null);
+      AdReporterForAnalysis.reportForCanvasDataBuildError(paramContext, paramAd, String.valueOf(5));
       return localArrayList;
     }
     if (paramAd.isHitFirstLoadImageExp()) {
@@ -252,7 +268,7 @@ public class AdCanvasDataBuilderV2
       if (localAdCanvasComponentData != null)
       {
         if (!(localAdCanvasComponentData instanceof com.tencent.ad.tangram.canvas.views.canvas.components.fixedbutton.a)) {
-          break label124;
+          break label140;
         }
         paramAdCanvasData.fixedButtonComponentDataList.add((com.tencent.ad.tangram.canvas.views.canvas.components.fixedbutton.a)localAdCanvasComponentData);
       }
@@ -260,7 +276,7 @@ public class AdCanvasDataBuilderV2
       {
         i += 1;
         break;
-        label124:
+        label140:
         if ((localAdCanvasComponentData instanceof com.tencent.ad.tangram.canvas.views.canvas.components.button.a))
         {
           if (((com.tencent.ad.tangram.canvas.views.canvas.components.button.a)localAdCanvasComponentData).isFixed) {
@@ -321,25 +337,27 @@ public class AdCanvasDataBuilderV2
   
   private static AdCanvasData getCanvasData(Context paramContext, Ad paramAd, JSONObject paramJSONObject, boolean paramBoolean)
   {
-    if ((paramAd == null) || (paramJSONObject == null) || (JSONObject.NULL.equals(paramJSONObject))) {
-      AdLog.e("AdCanvasDataBuilderV2", "getCanvasData error");
-    }
-    AdCanvasData localAdCanvasData;
-    JSONObject localJSONObject;
-    do
+    if ((paramAd == null) || (paramJSONObject == null) || (JSONObject.NULL.equals(paramJSONObject)))
     {
+      AdLog.e("AdCanvasDataBuilderV2", "getCanvasData error");
       return null;
-      localAdCanvasData = new AdCanvasData();
-      localAdCanvasData.ad = paramAd;
-      localAdCanvasData.setAutodownload(paramBoolean);
-      localJSONObject = paramJSONObject.optJSONObject("content");
-      if ((localJSONObject != null) && (!JSONObject.NULL.equals(localJSONObject))) {
-        break;
-      }
+    }
+    AdCanvasData localAdCanvasData = new AdCanvasData();
+    localAdCanvasData.ad = paramAd;
+    localAdCanvasData.setAutodownload(paramBoolean);
+    JSONObject localJSONObject = paramJSONObject.optJSONObject("content");
+    if ((localJSONObject == null) || (JSONObject.NULL.equals(localJSONObject)))
+    {
       paramJSONObject = paramJSONObject.getString("canvas_json_key");
       paramJSONObject = AdCanvasJsonManager.getInstance().getCachedCanvasJson(paramAd, paramJSONObject, true);
-    } while (TextUtils.isEmpty(paramJSONObject));
-    getPageList(paramContext, paramAd, localAdCanvasData, new JSONObject(paramJSONObject).getJSONObject("content"));
+      if (TextUtils.isEmpty(paramJSONObject))
+      {
+        AdReport.reportForCanvasDataBuildError(paramContext, 3, paramAd, null);
+        AdReporterForAnalysis.reportForCanvasDataBuildError(paramContext, paramAd, String.valueOf(3));
+        return null;
+      }
+      getPageList(paramContext, paramAd, localAdCanvasData, new JSONObject(paramJSONObject).getJSONObject("content"));
+    }
     for (;;)
     {
       return localAdCanvasData;
@@ -362,8 +380,11 @@ public class AdCanvasDataBuilderV2
   private static AdCanvasComponentData getComponent(Context paramContext, Ad paramAd, JSONObject paramJSONObject, AdCanvasData paramAdCanvasData)
   {
     Object localObject = null;
-    if ((paramJSONObject == null) || (JSONObject.NULL.equals(paramJSONObject))) {
+    if ((paramJSONObject == null) || (JSONObject.NULL.equals(paramJSONObject)))
+    {
       AdLog.e("AdCanvasDataBuilderV2", "getComponent error");
+      AdReport.reportForCanvasDataBuildError(paramContext, 6, paramAd, null);
+      AdReporterForAnalysis.reportForCanvasDataBuildError(paramContext, paramAd, String.valueOf(6));
     }
     String str;
     do
@@ -421,6 +442,8 @@ public class AdCanvasDataBuilderV2
     if (str.equals("XJAPPInfoButton")) {
       return getAppInfoButtonComponent(paramContext, paramJSONObject, paramAdCanvasData);
     }
+    AdReport.reportForCanvasDataBuildError(paramContext, 0, paramAd, str);
+    AdReporterForAnalysis.reportForCanvasDataBuildError(paramContext, paramAd, str);
     throw new Exception("unknow type exception");
   }
   
@@ -764,6 +787,8 @@ public class AdCanvasDataBuilderV2
     if ((paramJSONObject == null) || (JSONObject.NULL.equals(paramJSONObject)))
     {
       AdLog.e("AdCanvasDataBuilderV2", "getPageList error");
+      AdReport.reportForCanvasDataBuildError(paramContext, 4, paramAd, null);
+      AdReporterForAnalysis.reportForCanvasDataBuildError(paramContext, paramAd, String.valueOf(4));
       return localArrayList;
     }
     paramContext = getPage(paramContext, paramAd, paramJSONObject, paramAdCanvasData);

@@ -2,9 +2,9 @@ package com.tencent.mobileqq.onlinestatus.auto;
 
 import android.os.Handler;
 import android.util.SparseArray;
-import axwc;
-import axwj;
-import axwu;
+import azco;
+import azcv;
+import azdg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
 public class AutoStatusManager$3
   implements Runnable
 {
-  public AutoStatusManager$3(axwc paramaxwc) {}
+  public AutoStatusManager$3(azco paramazco) {}
   
   public void run()
   {
@@ -21,17 +21,17 @@ public class AutoStatusManager$3
       this.this$0.d("schedule");
       return;
     }
-    axwc.a(this.this$0).b();
-    if ((axwj.jdField_a_of_type_AndroidUtilSparseArray == null) || (axwj.jdField_a_of_type_AndroidUtilSparseArray.size() == 0)) {
-      axwc.a(this.this$0);
+    azco.a(this.this$0).b();
+    if ((azcv.jdField_a_of_type_AndroidUtilSparseArray == null) || (azcv.jdField_a_of_type_AndroidUtilSparseArray.size() == 0)) {
+      azco.a(this.this$0);
     }
-    if ((axwj.jdField_a_of_type_JavaUtilList == null) || (axwj.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      axwc.b(this.this$0);
+    if ((azcv.jdField_a_of_type_JavaUtilList == null) || (azcv.jdField_a_of_type_JavaUtilList.isEmpty())) {
+      azco.b(this.this$0);
     }
-    if ((axwj.jdField_a_of_type_AndroidUtilSparseArray != null) && (axwj.jdField_a_of_type_AndroidUtilSparseArray.size() > 0) && (axwj.jdField_a_of_type_JavaUtilList != null) && (!axwj.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      axwc.c(this.this$0);
+    if ((azcv.jdField_a_of_type_AndroidUtilSparseArray != null) && (azcv.jdField_a_of_type_AndroidUtilSparseArray.size() > 0) && (azcv.jdField_a_of_type_JavaUtilList != null) && (!azcv.jdField_a_of_type_JavaUtilList.isEmpty())) {
+      azco.c(this.this$0);
     }
-    axwc.a(this.this$0).postDelayed(this, axwj.c);
+    azco.a(this.this$0).postDelayed(this, azcv.c);
   }
 }
 

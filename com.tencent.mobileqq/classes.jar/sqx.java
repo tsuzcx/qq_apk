@@ -1,59 +1,84 @@
-import android.os.Looper;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.media.AudioManager;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeController.VolumeReceiver.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.app.AppRuntime;
 
 public class sqx
+  extends BroadcastReceiver
 {
-  private int jdField_a_of_type_Int = this.jdField_a_of_type_JavaLangThread.getPriority();
-  private Thread jdField_a_of_type_JavaLangThread = Looper.getMainLooper().getThread();
-  private int jdField_b_of_type_Int;
-  private Thread jdField_b_of_type_JavaLangThread;
+  private sqx(sqt paramsqt) {}
   
-  public sqx()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    for (ThreadGroup localThreadGroup = Thread.currentThread().getThreadGroup(); localThreadGroup.getParent() != null; localThreadGroup = localThreadGroup.getParent()) {}
-    Thread[] arrayOfThread = new Thread[localThreadGroup.activeCount()];
-    localThreadGroup.enumerate(arrayOfThread);
-    int i = 0;
-    for (;;)
+    if ((BaseApplicationImpl.getApplication().getRuntime().isBackgroundStop) || (BaseApplicationImpl.getApplication().getRuntime().isBackgroundPause)) {}
+    do
     {
-      if (i < arrayOfThread.length)
+      for (;;)
       {
-        if ((arrayOfThread[i] != null) && (arrayOfThread[i].isAlive()) && (arrayOfThread[i].getName().equalsIgnoreCase("RenderThread")))
+        return;
+        if (sqt.a(this.a) == null)
         {
-          this.jdField_b_of_type_JavaLangThread = arrayOfThread[i];
-          this.jdField_b_of_type_Int = this.jdField_b_of_type_JavaLangThread.getPriority();
+          if (QLog.isColorLevel()) {
+            QLog.d("VideoVolumeController", 2, "VolumeReceiver onReceive null");
+          }
+        }
+        else if (sqt.b(this.a)) {
+          if (sqt.c(this.a))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("VideoVolumeController", 2, "dynamicPauseReceive true");
+            }
+          }
+          else
+          {
+            int i;
+            try
+            {
+              if (!paramIntent.getAction().equals("android.media.VOLUME_CHANGED_ACTION")) {
+                break;
+              }
+              i = sqt.a(this.a).getStreamVolume(3);
+              if (QLog.isColorLevel()) {
+                QLog.d("VideoVolumeController", 2, "volume change:" + i);
+              }
+              if (sqt.d(this.a))
+              {
+                QLog.d("VideoVolumeController", 2, "volume change shield ");
+                return;
+              }
+            }
+            catch (Exception paramContext)
+            {
+              QLog.d("VideoVolumeController", 1, "VolumeReceiver", paramContext);
+              return;
+            }
+            paramContext = sqt.a(this.a).iterator();
+            while (paramContext.hasNext()) {
+              ((squ)paramContext.next()).onSystemVolumeChanged(i);
+            }
+          }
         }
       }
-      else {
-        return;
-      }
-      i += 1;
+    } while (!paramIntent.getAction().equals("android.intent.action.HEADSET_PLUG"));
+    boolean bool = sqt.a(this.a).isWiredHeadsetOn();
+    if (sqt.e(this.a))
+    {
+      sqt.a(this.a, false);
+      return;
     }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangThread.setPriority(10);
-    if (this.jdField_b_of_type_JavaLangThread != null) {
-      this.jdField_b_of_type_JavaLangThread.setPriority(10);
+    sqt.b(this.a, true);
+    paramContext = sqt.a(this.a).iterator();
+    while (paramContext.hasNext()) {
+      ((squ)paramContext.next()).onHeadsetStateChanged(bool);
     }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_JavaLangThread.setPriority(this.jdField_a_of_type_Int);
-    if (this.jdField_b_of_type_JavaLangThread != null) {
-      this.jdField_b_of_type_JavaLangThread.setPriority(this.jdField_b_of_type_Int);
-    }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("main:" + this.jdField_a_of_type_JavaLangThread.getPriority());
-    if (this.jdField_b_of_type_JavaLangThread != null) {
-      localStringBuilder.append(" render:" + this.jdField_b_of_type_JavaLangThread.getPriority());
-    }
-    return localStringBuilder.toString();
+    sqt.a(this.a).postDelayed(new VideoVolumeController.VolumeReceiver.1(this), 200L);
   }
 }
 

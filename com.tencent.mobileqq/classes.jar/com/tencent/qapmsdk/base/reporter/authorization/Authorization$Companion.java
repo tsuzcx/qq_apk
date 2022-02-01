@@ -2,7 +2,7 @@ package com.tencent.qapmsdk.base.reporter.authorization;
 
 import kotlin.Metadata;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/base/reporter/authorization/Authorization$Companion;", "", "()V", "TAG", "", "isAuthorize", "", "qapmbase_release"}, k=1, mv={1, 1, 15})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/base/reporter/authorization/Authorization$Companion;", "", "()V", "TAG", "", "qapmbase_release"}, k=1, mv={1, 1, 15})
 public final class Authorization$Companion {}
 
 

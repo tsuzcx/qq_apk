@@ -1,6 +1,6 @@
 package dov.com.qq.im.capture.music;
 
-import bmri;
+import boha;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.PeakAppInterface;
 import com.tencent.mobileqq.transfile.HttpNetReq;
@@ -76,8 +76,8 @@ final class QIMMusicConfigManager$GetSongListStepTask
             long l2 = System.currentTimeMillis() / 1000L;
             localObject2 = ((TicketManagerImpl)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(2)).getSkey(this.c);
             HashMap localHashMap = new HashMap();
-            localHashMap.put("app_id", "2000000025");
-            localHashMap.put("app_key", "SApgehUTVGxZKBQZTt");
+            localHashMap.put("app_id", "2000000228");
+            localHashMap.put("app_key", "TCOHANTCNlddnsTY");
             localHashMap.put("device_id", DeviceInfoUtil.getIMEI());
             localHashMap.put("timestamp", String.valueOf(l2));
             localHashMap.put("sign", a(l2));

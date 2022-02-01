@@ -1,15 +1,18 @@
-import android.graphics.Canvas;
-import android.view.MotionEvent;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
 
-public abstract interface bngz
+class bngz
+  implements Observer<bnpr>
 {
-  public abstract void a();
+  bngz(bngy parambngy) {}
   
-  public abstract boolean a();
-  
-  public abstract void b(Canvas paramCanvas);
-  
-  public abstract boolean b(MotionEvent paramMotionEvent);
+  public void a(@Nullable bnpr parambnpr)
+  {
+    if (parambnpr == null) {
+      return;
+    }
+    bngy.a(this.a, parambnpr.b);
+  }
 }
 
 

@@ -1,16 +1,44 @@
-import android.os.Handler;
-
-class nkl
-  extends nkn
+public class nkl
 {
-  nkl(nkk paramnkk) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private int b;
   
-  public boolean a(int paramInt, String paramString, naf paramnaf)
+  public nkl()
   {
-    bija.c(this.a.a, "onRoomSelfExit " + paramInt + " " + paramString);
-    nkk.a(this.a).removeCallbacksAndMessages(null);
-    nkk.a(this.a).sendEmptyMessage(2);
-    return true;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public nkl(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    this.b = -1;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int b()
+  {
+    return this.b;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.b = paramInt;
   }
 }
 

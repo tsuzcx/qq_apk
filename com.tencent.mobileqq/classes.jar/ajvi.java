@@ -1,27 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.qwallet.QWalletFullWindowActivity.QWalletFullWindowFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajvi
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public ajvi(QWalletFullWindowActivity.QWalletFullWindowFragment paramQWalletFullWindowFragment) {}
+  public ajvi(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (paramIntent == null) {}
-    do
-    {
-      return;
-      if ("action_close_camera".equals(paramIntent.getAction()))
-      {
-        QWalletFullWindowActivity.QWalletFullWindowFragment.a(this.a).finish();
-        return;
-      }
-    } while ((!"cn.abel.action.broadcast".equals(paramIntent.getAction())) || (paramIntent.getBooleanExtra("isOpen", false)));
-    QWalletFullWindowActivity.QWalletFullWindowFragment.b(this.a).finish();
+    Intent localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
+    this.a.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

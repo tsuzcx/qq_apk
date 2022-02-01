@@ -1,33 +1,17 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface bnew
+class bnew
+  implements View.OnClickListener
 {
-  @NonNull
-  public abstract Context a();
+  bnew(bnev parambnev) {}
   
-  public abstract Intent a(bnot parambnot);
-  
-  @NonNull
-  public abstract View a();
-  
-  public abstract void a(int paramInt1, @Nullable Intent paramIntent, int paramInt2, int paramInt3);
-  
-  public abstract void a(int paramInt1, @Nullable Intent paramIntent, int paramInt2, int paramInt3, boolean paramBoolean);
-  
-  public abstract void a(CharSequence paramCharSequence, boolean paramBoolean, long paramLong);
-  
-  public abstract void a(CharSequence paramCharSequence, boolean paramBoolean, long paramLong, DialogInterface.OnDismissListener paramOnDismissListener);
-  
-  public abstract void b();
-  
-  @Nullable
-  public abstract Activity getActivity();
+  public void onClick(View paramView)
+  {
+    bnev.a(this.a).a(655364, new Object[] { "热门玩法", "vt_pag_jiaopiangushi" });
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

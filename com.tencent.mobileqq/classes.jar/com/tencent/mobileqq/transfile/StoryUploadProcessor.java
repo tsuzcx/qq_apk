@@ -3,9 +3,9 @@ package com.tencent.mobileqq.transfile;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import ayeo;
-import ayep;
-import bjyw;
+import azla;
+import azlb;
+import blkh;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.network.pb.qqstory_bhd_upload_pic.ReqStoryPic;
 import com.tencent.common.app.AppInterface;
@@ -24,11 +24,11 @@ import com.tribe.async.async.Boss;
 import com.tribe.async.async.Bosses;
 import java.io.File;
 import java.util.HashMap;
-import vkm;
-import xvv;
-import xwa;
-import ypi;
-import ypp;
+import vzh;
+import ykq;
+import ykv;
+import zeb;
+import zei;
 
 public class StoryUploadProcessor
   extends BaseUploadProcessor
@@ -62,7 +62,7 @@ public class StoryUploadProcessor
   
   private String getSdcardInfo()
   {
-    return String.format("sdcard free size:%d, upload dir exist:%b ", new Object[] { Long.valueOf(ypi.a()), Boolean.valueOf(FileUtils.fileExists(vkm.e)) });
+    return String.format("sdcard free size:%d, upload dir exist:%b ", new Object[] { Long.valueOf(zeb.a()), Boolean.valueOf(FileUtils.fileExists(vzh.e)) });
   }
   
   public static int makeStoryErrorCoder(int paramInt)
@@ -72,7 +72,7 @@ public class StoryUploadProcessor
   
   private int thisFileRemoveByOtherSoftWareErrorCode(String paramString)
   {
-    String str = ypi.a(paramString);
+    String str = zeb.a(paramString);
     long l1 = 0L;
     try
     {
@@ -83,7 +83,7 @@ public class StoryUploadProcessor
     {
       for (;;)
       {
-        xvv.c(TAG, "exception", localException);
+        ykq.c(TAG, "exception", localException);
       }
       if (l1 <= 0L) {
         break label173;
@@ -96,11 +96,11 @@ public class StoryUploadProcessor
       l1 = 30L;
       return (int)(l1 + 999000L);
     }
-    l2 = ypi.b(vkm.e);
-    xvv.e(TAG, "orig file create time:%d, flag file create time:%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2) });
+    l2 = zeb.b(vzh.e);
+    ykq.e(TAG, "orig file create time:%d, flag file create time:%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2) });
     if ((l2 == 0L) || ((l1 > 0L) && (l2 > l1)))
     {
-      xvv.e(TAG, "your file delete by software %s", new Object[] { paramString });
+      ykq.e(TAG, "your file delete by software %s", new Object[] { paramString });
       return 940017;
     }
     label166:
@@ -140,7 +140,7 @@ public class StoryUploadProcessor
     long l = localFile.length();
     this.file.fileSize = l;
     this.mFileSize = l;
-    xvv.a(TAG, "upload file size %d, file %s", Long.valueOf(this.mFileSize), str);
+    ykq.a(TAG, "upload file size %d, file %s", Long.valueOf(this.mFileSize), str);
     if (l <= 0L)
     {
       setError(thisFileRemoveByOtherSoftWareErrorCode(str), getSdcardInfo() + "sendFile size empty " + str);
@@ -183,7 +183,7 @@ public class StoryUploadProcessor
       if (this.file.fileType != 196609) {
         break label249;
       }
-      xwa.b("publish_story", "publish_video", 0, 0, new String[] { String.valueOf(this.mFileSize), String.valueOf(this.mEndTime - this.mStartUploadTime), xwa.a(BaseApplication.getContext()), this.mVideoUrl });
+      ykv.b("publish_story", "publish_video", 0, 0, new String[] { String.valueOf(this.mFileSize), String.valueOf(this.mEndTime - this.mStartUploadTime), ykv.a(BaseApplication.getContext()), this.mVideoUrl });
     }
     for (;;)
     {
@@ -198,7 +198,7 @@ public class StoryUploadProcessor
       str = "actStoryVideoUpload";
       break label84;
       label249:
-      xwa.b("publish_story", "publish_thumbnail", 0, 0, new String[] { String.valueOf(this.mFileSize), String.valueOf(this.mEndTime - this.mStartUploadTime), xwa.a(BaseApplication.getContext()) });
+      ykv.b("publish_story", "publish_thumbnail", 0, 0, new String[] { String.valueOf(this.mFileSize), String.valueOf(this.mEndTime - this.mStartUploadTime), ykv.a(BaseApplication.getContext()) });
       continue;
       label301:
       if (this.errCode != -9527) {
@@ -209,9 +209,9 @@ public class StoryUploadProcessor
       this.mReportInfo.put("param_picSize", String.valueOf(this.mFileSize));
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, str, false, l, this.mFileSize, this.mReportInfo, "");
       if (this.file.fileType == 196609) {
-        xwa.b("publish_story", "publish_video", 0, makeStoryErrorCoder(this.errCode), new String[] { String.valueOf(this.mFileSize), String.valueOf(this.mEndTime - this.mStartUploadTime), xwa.a(BaseApplication.getContext()), this.errDesc });
+        ykv.b("publish_story", "publish_video", 0, makeStoryErrorCoder(this.errCode), new String[] { String.valueOf(this.mFileSize), String.valueOf(this.mEndTime - this.mStartUploadTime), ykv.a(BaseApplication.getContext()), this.errDesc });
       } else {
-        xwa.b("publish_story", "publish_thumbnail", 0, makeStoryErrorCoder(this.errCode), new String[] { String.valueOf(this.mFileSize), String.valueOf(this.mEndTime - this.mStartUploadTime), xwa.a(BaseApplication.getContext()), this.errDesc });
+        ykv.b("publish_story", "publish_thumbnail", 0, makeStoryErrorCoder(this.errCode), new String[] { String.valueOf(this.mFileSize), String.valueOf(this.mEndTime - this.mStartUploadTime), ykv.a(BaseApplication.getContext()), this.errDesc });
       }
     }
   }
@@ -234,14 +234,14 @@ public class StoryUploadProcessor
   {
     super.onError();
     sendMessageToUpdate(1005);
-    xvv.d(TAG, "error errCode:%d,errDesc:%s, %s", new Object[] { Integer.valueOf(this.errCode), this.errDesc, this.mUiRequest.mLocalPath });
+    ykq.d(TAG, "error errCode:%d,errDesc:%s, %s", new Object[] { Integer.valueOf(this.errCode), this.errDesc, this.mUiRequest.mLocalPath });
     if (this.mUiRequest.mUpCallBack != null)
     {
-      ayep localayep = new ayep();
-      localayep.jdField_a_of_type_Int = -1;
-      localayep.jdField_b_of_type_Int = makeStoryErrorCoder(this.errCode);
-      localayep.jdField_a_of_type_JavaLangString = this.errDesc;
-      this.mUiRequest.mUpCallBack.onSend(localayep);
+      azlb localazlb = new azlb();
+      localazlb.jdField_a_of_type_Int = -1;
+      localazlb.jdField_b_of_type_Int = makeStoryErrorCoder(this.errCode);
+      localazlb.jdField_a_of_type_JavaLangString = this.errDesc;
+      this.mUiRequest.mUpCallBack.onSend(localazlb);
     }
   }
   
@@ -254,22 +254,22 @@ public class StoryUploadProcessor
   {
     super.onSuccess();
     sendMessageToUpdate(1003);
-    xvv.d(TAG, "success path:%s", new Object[] { this.mUiRequest.mLocalPath });
-    ayep localayep;
+    ykq.d(TAG, "success path:%s", new Object[] { this.mUiRequest.mLocalPath });
+    azlb localazlb;
     if (this.mUiRequest.mUpCallBack != null)
     {
-      localayep = new ayep();
-      localayep.jdField_a_of_type_Int = 0;
+      localazlb = new azlb();
+      localazlb.jdField_a_of_type_Int = 0;
       if (this.file.fileType != 196610) {
         break label92;
       }
     }
-    for (localayep.jdField_b_of_type_JavaLangString = this.mPhotoUrl;; localayep.jdField_b_of_type_JavaLangString = this.mVideoUrl)
+    for (localazlb.jdField_b_of_type_JavaLangString = this.mPhotoUrl;; localazlb.jdField_b_of_type_JavaLangString = this.mVideoUrl)
     {
-      this.mUiRequest.mUpCallBack.onSend(localayep);
+      this.mUiRequest.mUpCallBack.onSend(localazlb);
       return;
       label92:
-      localayep.c = this.mVid;
+      localazlb.c = this.mVid;
     }
   }
   
@@ -297,7 +297,7 @@ public class StoryUploadProcessor
   
   public void sendFile()
   {
-    xvv.d(TAG, "send file %s", new Object[] { this.mUiRequest.mLocalPath });
+    ykq.d(TAG, "send file %s", new Object[] { this.mUiRequest.mLocalPath });
     this.mStepTrans.logStartTime();
     StoryUploadProcessor.1 local1 = new StoryUploadProcessor.1(this, SystemClock.uptimeMillis());
     int i = -1;
@@ -307,7 +307,7 @@ public class StoryUploadProcessor
       qqstory_bhd_upload_pic.ReqStoryPic localReqStoryPic = new qqstory_bhd_upload_pic.ReqStoryPic();
       localReqStoryPic.platform.set(2);
       localReqStoryPic.tojpg.set(0);
-      localReqStoryPic.version.set(ByteStringMicro.copyFromUtf8("8.4.8"));
+      localReqStoryPic.version.set(ByteStringMicro.copyFromUtf8("8.4.10"));
       this.file.bdhExtendInfo = localReqStoryPic.toByteArray();
     }
     for (;;)
@@ -333,7 +333,7 @@ public class StoryUploadProcessor
         this.trans = new Transaction(this.app.getCurrentAccountUin(), i, this.mUiRequest.mLocalPath, (int)this.mStartOffset, this.mLocalMd5, local1, this.file.bdhExtendInfo, false);
         this.trans.setVideoSegmentMode(true);
         int j = this.app.getHwEngine().submitTransactionTask(this.trans);
-        xvv.c(TAG, "Transaction submit RetCode:" + j + " T_ID:" + this.trans.getTransationId() + " UniSeq:" + this.mUiRequest.mUniseq + " MD5:" + this.mMd5Str + " uuid:" + this.mUuid + " Path:" + this.trans.filePath + " Cmd:" + i);
+        ykq.c(TAG, "Transaction submit RetCode:" + j + " T_ID:" + this.trans.getTransationId() + " UniSeq:" + this.mUiRequest.mUniseq + " MD5:" + this.mMd5Str + " uuid:" + this.mUuid + " Path:" + this.trans.filePath + " Cmd:" + i);
         if (j != 0)
         {
           setError(j, "SubmitError.", "", this.mStepTrans);
@@ -353,14 +353,14 @@ public class StoryUploadProcessor
   public void start()
   {
     super.start();
-    xvv.d(TAG, "start upload %s", new Object[] { this.mUiRequest.mLocalPath });
+    ykq.d(TAG, "start upload %s", new Object[] { this.mUiRequest.mLocalPath });
     if ((this.mLocalMd5 == null) && (!getMd5()))
     {
       setError(940006, "make md5 fail");
       onError();
       return;
     }
-    if (!ypp.a(QQStoryContext.a().a()))
+    if (!zei.a(QQStoryContext.a().a()))
     {
       setError(880001, "no network");
       onError();

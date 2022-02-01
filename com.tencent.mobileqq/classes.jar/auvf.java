@@ -1,39 +1,16 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 
-public class auvf
-  implements zop
+class auvf
+  extends GridLayoutManager.SpanSizeLookup
 {
-  public auvf(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  auvf(auve paramauve) {}
   
-  public void callback(Bundle paramBundle)
+  public int getSpanSize(int paramInt)
   {
-    paramBundle = paramBundle.getString("sayhiinfo");
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      if (TextUtils.isEmpty(paramBundle)) {
-        localJSONObject.put("result", "fail");
-      }
-      for (;;)
-      {
-        paramBundle = localJSONObject.toString();
-        QLog.i("UiApiPlugin", 1, "getTribeSayHelloRedInfo callback result = " + paramBundle);
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
-        return;
-        localJSONObject.put("result", "success");
-        localJSONObject.put("data", new JSONObject(paramBundle));
-      }
-      return;
+    if (this.a.getItemViewType(paramInt) == auva.b) {
+      return 5;
     }
-    catch (JSONException paramBundle)
-    {
-      QLog.e("UiApiPlugin", 1, "getTribeSayHelloRedInfo callback Exception:", paramBundle);
-    }
+    return 1;
   }
 }
 

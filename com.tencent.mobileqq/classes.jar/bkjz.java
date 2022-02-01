@@ -1,49 +1,56 @@
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qqconnect.wtlogin.Login;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import java.util.Locale;
 
 public class bkjz
+  implements bkzq
 {
-  public static String a = "3";
+  public bkjz(Login paramLogin) {}
   
-  public static String a(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramAppInfo != null) && (paramAppInfo.buffer.has()) && (paramAppInfo.iNewFlag.get() != 0)) {
-      try
-      {
-        paramAppInfo = new JSONObject(paramAppInfo.buffer.get()).optString("_jump_url");
-        return paramAppInfo;
-      }
-      catch (JSONException paramAppInfo)
-      {
-        paramAppInfo.printStackTrace();
-      }
+    paramView = null;
+    if (Login.a(this.a)) {
+      return;
     }
-    return null;
-  }
-  
-  public static String b(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
-  {
-    if ((paramAppInfo == null) || (!paramAppInfo.buffer.has()) || (paramAppInfo.iNewFlag.get() == 0)) {
-      return "3";
-    }
-    try
+    if (paramInt == 0)
     {
-      paramAppInfo = new JSONObject(paramAppInfo.buffer.get());
-      if (paramAppInfo.has("param")) {
-        return "1";
+      bdla.a(null, "dc00898", "", "", "0X800B291", "0X800B291", 0, 0, "", "", "", "");
+      if (this.a.jdField_a_of_type_AndroidWidgetEditText != null) {
+        paramView = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
       }
-      if (paramAppInfo.has("msg")) {
-        return "2";
+      if (TextUtils.isEmpty(paramView)) {
+        break label238;
       }
     }
-    catch (JSONException paramAppInfo)
+    label238:
+    for (paramView = String.format(Locale.getDefault(), "%s&account=%s", new Object[] { "https://ti.qq.com/safe/forgetpw?source_id=2756", paramView });; paramView = "https://ti.qq.com/safe/forgetpw?source_id=2756")
     {
-      paramAppInfo.printStackTrace();
+      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
+      localIntent.putExtra("uin", this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getCurrentAccountUin());
+      localIntent.putExtra("reqType", 3);
+      localIntent.putExtra("url", paramView);
+      this.a.startActivity(localIntent);
+      for (;;)
+      {
+        Login.b(this.a, true);
+        Login.a(this.a).dismiss();
+        return;
+        if (paramInt == 1)
+        {
+          bdla.a(null, "dc00898", "", "", "0X800AFE5", "0X800AFE5", 0, 0, "", "", "", "");
+          paramView = new Intent(this.a, LoginPhoneNumActivity.class);
+          paramView.putExtra("entrance", Login.class.getName());
+          this.a.startActivityForResult(paramView, 10000);
+        }
+      }
     }
-    return "3";
   }
 }
 

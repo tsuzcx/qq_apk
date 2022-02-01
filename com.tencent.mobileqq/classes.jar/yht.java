@@ -1,83 +1,59 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMultiRcmdDisLike;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.biz.qqstory.storyHome.model.HotRecommendFeedItem;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import java.util.List;
 
-public class yht
+class yht
+  extends ntf
 {
-  public Handler a;
-  public HandlerThread a;
-  public yhu a;
+  yht(yhs paramyhs) {}
   
-  public yht()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("MediaCodecThumbnailGenerator");
-  }
-  
-  private float a(Bitmap paramBitmap)
-  {
-    int i1 = paramBitmap.getHeight() / 16;
-    int i2 = paramBitmap.getWidth() / 9;
-    int k = 0;
-    int i = 0;
-    int j = 0;
-    while (k < paramBitmap.getHeight())
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-      int m = 0;
-      if (m < paramBitmap.getWidth())
-      {
-        int n = paramBitmap.getPixel(m, k);
-        if (((n >> 16 & 0xFF) < 10) && ((n >> 8 & 0xFF) < 10) && ((n & 0xFF) < 10))
-        {
-          n = j + 1;
-          j = i;
-        }
-        for (i = n;; i = n)
-        {
-          n = m + i2;
-          m = i;
-          i = j;
-          j = m;
-          m = n;
-          break;
-          n = j;
-          j = i + 1;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqstory.home:FeedSegment", 2, "ReqMultiRcmdDisLike,onResult error=" + paramInt + " data=" + paramArrayOfByte);
       }
-      k += i1;
+      return;
     }
-    float f = j / (i + j);
-    xvv.c("MediaCodecThumbnailGen", "whitePixelCount = " + i + " blackPixelCount = " + j);
-    return f;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_Yhu = new yhu(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.myLooper());
-  }
-  
-  public void a(String paramString1, String paramString2, boolean paramBoolean1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean2, yhr<Boolean, yhx> paramyhr, yhr<Boolean, yhw> paramyhr1)
-  {
-    yhv localyhv = new yhv();
-    localyhv.jdField_a_of_type_JavaLangString = paramString1;
-    localyhv.jdField_b_of_type_JavaLangString = paramString2;
-    localyhv.jdField_a_of_type_Boolean = paramBoolean1;
-    localyhv.jdField_a_of_type_Int = paramInt1;
-    localyhv.jdField_b_of_type_Int = paramInt2;
-    localyhv.c = paramInt3;
-    localyhv.d = paramInt4;
-    localyhv.jdField_b_of_type_Boolean = paramBoolean2;
-    localyhv.jdField_b_of_type_Yhr = paramyhr;
-    localyhv.jdField_a_of_type_Yhr = paramyhr1;
-    Message.obtain(this.jdField_a_of_type_Yhu, 1, localyhv).sendToTarget();
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+    try
+    {
+      paramBundle = new qqstory_service.RspMultiRcmdDisLike();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramInt = ((qqstory_struct.ErrorInfo)paramBundle.result.get()).error_code.get();
+      if (paramInt != 0) {
+        break label263;
+      }
+      QLog.d("Q.qqstory.home:FeedSegment", 1, "RspMultiRcmdDisLike, dislike success");
+      paramArrayOfByte = (ydv)this.a.jdField_a_of_type_Yhn.a.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHotRecommendFeedItem.feedId);
+      if (paramArrayOfByte != null) {
+        paramArrayOfByte.a(this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+      }
+      if ((paramArrayOfByte != null) && (paramArrayOfByte.a().isEmpty()))
+      {
+        this.a.jdField_a_of_type_Yhn.a.a().remove(paramArrayOfByte);
+        paramArrayOfByte = this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHotRecommendFeedItem.feedId;
+        Bosses.get().postJob(new yhu(this, "Q.qqstory.home:FeedSegment", paramArrayOfByte));
+        yhn.a(this.a.jdField_a_of_type_Yhn);
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      QLog.d("Q.qqstory.home:FeedSegment", 1, "RspMultiRcmdDisLike, error protobuf content" + paramArrayOfByte.getStackTrace());
+      return;
+    }
+    yhn.a(this.a.jdField_a_of_type_Yhn, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHotRecommendFeedItem.feedId);
+    return;
+    label263:
+    QLog.d("Q.qqstory.home:FeedSegment", 1, "RspMultiRcmdDisLike, errorcode:" + paramInt);
   }
 }
 

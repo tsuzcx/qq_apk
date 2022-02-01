@@ -1,34 +1,60 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
-import org.json.JSONObject;
+import android.opengl.GLES20;
 
-class bkyj
-  implements bkyk
+public class bkyj
 {
-  bkyj(bkyi parambkyi) {}
-  
-  public void a(boolean paramBoolean, String paramString)
+  public static int a(int paramInt, String paramString)
   {
-    if (paramBoolean)
+    paramInt = GLES20.glCreateShader(paramInt);
+    if (paramInt != 0)
     {
-      JSONObject localJSONObject = this.a.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.a.a.jdField_a_of_type_Bkyg.c, this.a.a.jdField_a_of_type_Int, this.a.a.b, "uploaded", this.a.a.jdField_a_of_type_JavaLangString, 0);
-      try
+      GLES20.glShaderSource(paramInt, paramString);
+      GLES20.glCompileShader(paramInt);
+      paramString = new int[1];
+      GLES20.glGetShaderiv(paramInt, 35713, paramString, 0);
+      if (paramString[0] == 0)
       {
-        localJSONObject.put("result", 0);
-        localJSONObject.put("progress", 1.0D);
-        localJSONObject.put("coverurl", paramString);
-        QLog.e("TroopHWJsPlugin", 2, "upload thumb success:" + localJSONObject.toString());
-        this.a.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.callJs(this.a.a.jdField_a_of_type_Bkyg.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-        return;
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("TroopHWJsPlugin", 2, "upload thumb exception:", paramString);
-        return;
+        GLES20.glDeleteShader(paramInt);
+        return 0;
       }
     }
-    QLog.e("TroopHWJsPlugin", 1, "upload thumb failed!");
-    this.a.b(-1);
+    return paramInt;
+  }
+  
+  public static int a(String paramString1, String paramString2)
+  {
+    int i = a(35633, paramString1);
+    if (i == 0) {}
+    int j;
+    do
+    {
+      return 0;
+      j = a(35632, paramString2);
+    } while (j == 0);
+    int k = GLES20.glCreateProgram();
+    if (k != 0)
+    {
+      GLES20.glAttachShader(k, i);
+      a("glAttachShader");
+      GLES20.glAttachShader(k, j);
+      a("glAttachShader");
+      GLES20.glLinkProgram(k);
+      paramString1 = new int[1];
+      GLES20.glGetProgramiv(k, 35714, paramString1, 0);
+      if (paramString1[0] != 1)
+      {
+        GLES20.glDeleteProgram(k);
+        return 0;
+      }
+    }
+    return k;
+  }
+  
+  public static void a(String paramString)
+  {
+    int i = GLES20.glGetError();
+    if (i != 0) {
+      throw new RuntimeException(paramString + ": glError " + i);
+    }
   }
 }
 

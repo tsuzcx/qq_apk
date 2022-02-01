@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
-import begz;
+import bfoc;
 
 public class TroopFileScaner$2
   implements Runnable
 {
-  public TroopFileScaner$2(begz parambegz, long paramLong) {}
+  public TroopFileScaner$2(bfoc parambfoc, long paramLong) {}
   
   public void run()
   {
-    begz.a(this.this$0, this.a);
-    begz.a(this.this$0);
+    bfoc.a(this.this$0, this.a);
+    bfoc.a(this.this$0);
   }
 }
 

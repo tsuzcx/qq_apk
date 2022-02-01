@@ -1,34 +1,30 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnticipateInterpolator;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.VideoInfo;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
 
-class rvp
-  implements Animation.AnimationListener
+public class rvp
+  implements View.OnTouchListener
 {
-  rvp(rvo paramrvo) {}
+  public rvp(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((ruw.a(this.a.c) == rvo.a(this.a)) && (ruw.a(this.a.c) != null)) {
-      ruw.a(this.a.c).a(rvo.a(this.a));
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation)
-  {
-    if ((rvo.a(this.a).a != null) && (rvo.a(this.a).a.a != null))
+    paramView = ReadInJoyVideoSearchTagFragment.a(this.a).getCompoundDrawables()[2];
+    if ((paramMotionEvent.getAction() == 0) && (paramView != null))
     {
-      boolean bool = rvo.a(this.a).a.a.r;
-      if (rvo.a(this.a).o != null) {
-        rvo.a(this.a).o.setImageDrawable(ruw.a(this.a.c, this.a.a(bool)));
+      float f = ReadInJoyVideoSearchTagFragment.a(this.a).getRight() - paramView.getBounds().width();
+      if (paramMotionEvent.getRawX() >= f)
+      {
+        ReadInJoyVideoSearchTagFragment.a(this.a);
+        return true;
       }
     }
-    paramAnimation.setInterpolator(new AnticipateInterpolator());
+    return false;
   }
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

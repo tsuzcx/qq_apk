@@ -1,15 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-
-public class adpz
-  extends axkt
+class adpz
+  extends atfq
 {
-  public adpz(LoginInfoActivity paramLoginInfoActivity) {}
+  adpz(adpt paramadpt) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  protected void a(long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    LoginInfoActivity.a(this.a);
-    LoginInfoActivity.b(this.a);
+    this.a.a.notifyDataSetChanged();
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    this.a.a.notifyDataSetChanged();
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    this.a.a.notifyDataSetChanged();
   }
 }
 

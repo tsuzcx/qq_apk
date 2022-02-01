@@ -1,12 +1,27 @@
-public abstract interface akfi
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import friendlist.GetOnlineInfoResp;
+
+class akfi
+  extends anvi
 {
-  public abstract void a(int paramInt);
+  akfi(akfg paramakfg) {}
   
-  public abstract void b(int paramInt);
+  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
+  {
+    if (TextUtils.equals(paramString, this.a.a.curFriendUin)) {
+      this.a.f();
+    }
+  }
+  
+  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    this.a.f();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akfi
  * JD-Core Version:    0.7.0.1
  */

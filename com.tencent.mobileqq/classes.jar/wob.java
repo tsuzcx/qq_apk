@@ -1,24 +1,26 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class wob
+class wob
+  extends vzx
 {
-  public ErrorMessage a;
-  public List<woe> a;
-  public boolean a;
-  public ErrorMessage b;
-  public boolean b;
-  public boolean c;
+  wob(woa paramwoa) {}
   
-  public wob()
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public String toString()
-  {
-    return "Data{upErrorMessage=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", isUpEnd=" + this.jdField_a_of_type_Boolean + ", mGroupInfoList=" + this.jdField_a_of_type_JavaUtilList + ", isDownEnd=" + this.jdField_b_of_type_Boolean + ", isFastData=" + this.c + ", downErrorMessage=" + this.jdField_b_of_type_ComTencentBizQqstoryBaseErrorMessage + '}';
+    super.a(paramBoolean1, paramBoolean2, paramInt, paramString);
+    if ((paramBoolean1) && (paramBoolean2)) {
+      QQToast.a(this.a.a.a, 2, anvx.a(2131706433), 0).a();
+    }
+    do
+    {
+      return;
+      if ((!paramBoolean1) && (paramBoolean2))
+      {
+        QQToast.a(this.a.a.a, 1, anvx.a(2131706438), 0).a();
+        return;
+      }
+    } while ((paramBoolean1) || (paramBoolean2));
+    QQToast.a(this.a.a.a, 1, anvx.a(2131706434), 0).a();
   }
 }
 

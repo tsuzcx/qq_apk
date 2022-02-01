@@ -3,7 +3,7 @@ package com.tencent.avgame.gameroom.stage.guesspicture;
 import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Message;
-import njr;
+import nqr;
 
 class GuessPictureStageView$8
   implements Runnable
@@ -12,7 +12,7 @@ class GuessPictureStageView$8
   
   public void run()
   {
-    Bitmap localBitmap = njr.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int);
+    Bitmap localBitmap = nqr.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int);
     Message localMessage = GuessPictureStageView.a(this.this$0).obtainMessage();
     localMessage.obj = localBitmap;
     localMessage.what = 1;

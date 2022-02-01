@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.intervideo.groupvideo.cschannel;
 
 import android.os.Bundle;
-import aunn;
-import aunq;
-import auqe;
+import avti;
+import avtl;
+import avvz;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -11,11 +11,11 @@ import java.util.concurrent.Future;
 public class ODCsChannel$1
   implements Runnable
 {
-  public ODCsChannel$1(aunn paramaunn, int paramInt1, int paramInt2, byte[] paramArrayOfByte, boolean paramBoolean, aunq paramaunq) {}
+  public ODCsChannel$1(avti paramavti, int paramInt1, int paramInt2, byte[] paramArrayOfByte, boolean paramBoolean, avtl paramavtl) {}
   
   public void run()
   {
-    Object localObject1 = auqe.a().a("Od", "1104763709");
+    Object localObject1 = avvz.a().a("Od", "1104763709");
     Bundle localBundle;
     try
     {
@@ -25,7 +25,7 @@ public class ODCsChannel$1
         QLog.i("ODCsChannel", 2, "getAccessToken: get access token fail，bundle = null");
         if (this.jdField_a_of_type_Int > 0)
         {
-          aunn.a(this.this$0, this.b, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int - 1, this.jdField_a_of_type_Aunq);
+          avti.a(this.this$0, this.b, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int - 1, this.jdField_a_of_type_Avtl);
           return;
         }
       }
@@ -47,7 +47,7 @@ public class ODCsChannel$1
         QLog.e("ODCsChannel", 2, "getAccessToken: error=" + localInterruptedException.getMessage());
         localBundle = null;
       }
-      aunn.a(this.this$0, -1, null, null, this.jdField_a_of_type_Aunq);
+      avti.a(this.this$0, -1, null, null, this.jdField_a_of_type_Avtl);
       return;
     }
     int i = localBundle.getInt("code");
@@ -62,17 +62,17 @@ public class ODCsChannel$1
         if (this.jdField_a_of_type_Int <= 0) {
           break;
         }
-        aunn.a(this.this$0, this.b, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int - 1, this.jdField_a_of_type_Aunq);
+        avti.a(this.this$0, this.b, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int - 1, this.jdField_a_of_type_Avtl);
         return;
       }
-      aunn.a(this.this$0, i, null, localBundle, this.jdField_a_of_type_Aunq);
+      avti.a(this.this$0, i, null, localBundle, this.jdField_a_of_type_Avtl);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("ODCsChannel", 2, "getAccessToken: accessToken=" + ((Bundle)localObject3).toString());
     }
-    aunn.a(this.this$0, (Bundle)localObject3);
-    this.this$0.a(this.b, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_Aunq);
+    avti.a(this.this$0, (Bundle)localObject3);
+    this.this$0.a(this.b, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_Avtl);
   }
 }
 

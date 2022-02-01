@@ -1,12 +1,12 @@
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.widget.ThemeImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class avog
+  implements DialogInterface.OnClickListener
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ThemeImageView jdField_a_of_type_ComTencentWidgetThemeImageView;
+  avog(avod paramavod) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,76 +1,289 @@
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.view.PagerAdapter;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.ReportData;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.PromoteWidgetController.1;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.PromoteWidgetController.3;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+import com.tencent.biz.qqstory.playvideo.playerwidget.StoryPlayerWebFragment;
+import com.tencent.biz.qqstory.playvideo.playerwidget.StoryPlayerWebToolFragment;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.mobileqq.webview.sonic.SonicPreloadData;
+import com.tencent.mobileqq.webview.sonic.SonicPreloader;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 
 public class xgm
-  extends xjt
-  implements xpz
+  extends xgs
 {
-  public xgm(Context paramContext, Activity paramActivity, int paramInt1, int paramInt2)
+  public int a;
+  public long a;
+  public StoryPlayerGroupHolder a;
+  public String a;
+  public xgv a;
+  public boolean a;
+  public String b;
+  public String c;
+  
+  public xgm()
   {
-    super(paramContext, paramActivity, paramInt1, paramInt2);
-    super.a(this);
+    this.jdField_a_of_type_Long = -1L;
   }
   
-  public static void a(Activity paramActivity, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    StringBuilder localStringBuilder1 = null;
-    StringBuilder localStringBuilder2;
-    if ((paramVideoListFeedItem != null) && (paramStoryVideoItem != null))
+    if (paramInt1 == StoryPlayerActivity.jdField_a_of_type_Int) {
+      b();
+    }
+  }
+  
+  public void a(Bundle paramBundle1, Bundle paramBundle2) {}
+  
+  public void a(ArrayList<String> paramArrayList, String paramString, int paramInt)
+  {
+    ThreadManager.executeOnSubThread(new PromoteWidgetController.1(this, paramArrayList, paramString, paramInt));
+  }
+  
+  public void a(@NonNull xcw paramxcw, String paramString)
+  {
+    int i = this.jdField_a_of_type_Xgv.a().a().mReportData.from;
+    ykq.a("PromoteWidgetController", "onViewHolderBindData() from: %d, groupId: %s, isFinish: %b, isFastData: %b", Integer.valueOf(i), paramString, Boolean.valueOf(this.jdField_a_of_type_Xgv.a().isFinishing()), Boolean.valueOf(paramxcw.c));
+    if (paramxcw.c)
     {
-      localStringBuilder2 = new StringBuilder();
-      if (paramStoryVideoItem.mTimeZoneOffsetMillis != 2147483647L)
+      ykq.b("PromoteWidgetController", "onViewHolderBindData() fastData will ignore");
+      return;
+    }
+    this.jdField_a_of_type_Int = 0;
+    switch (i)
+    {
+    default: 
+      ykq.a("PromoteWidgetController", "onViewHolderBindData() from(%d) mismatch, will not promote!", Integer.valueOf(i));
+      return;
+    }
+    for (this.jdField_a_of_type_Int = 1; TextUtils.equals(this.b, paramString); this.jdField_a_of_type_Int = 2)
+    {
+      ykq.b("PromoteWidgetController", "onViewHolderBindData() not first bind");
+      return;
+    }
+    int j = paramxcw.jdField_a_of_type_JavaUtilList.size();
+    i = 0;
+    label153:
+    xcz localxcz;
+    String str;
+    Object localObject;
+    label238:
+    ArrayList localArrayList;
+    if (i < j)
+    {
+      localxcz = (xcz)paramxcw.jdField_a_of_type_JavaUtilList.get(i);
+      ykq.a("PromoteWidgetController", "onViewHolderBindData() [%d/%d]: %s", Integer.valueOf(i), Integer.valueOf(j), localxcz);
+      str = localxcz.jdField_a_of_type_Xcy.jdField_a_of_type_JavaLangString;
+      if (!(localxcz.jdField_a_of_type_Xcy instanceof xcn)) {
+        break label383;
+      }
+      localObject = ((xcn)localxcz.jdField_a_of_type_Xcy).a;
+      if (localObject == null) {
+        break label374;
+      }
+      localObject = ((ycc)localObject).b;
+      localArrayList = new ArrayList(new HashSet(localxcz.jdField_a_of_type_JavaUtilMap.values()));
+      ykq.a("PromoteWidgetController", "onViewHolderBindData() [%d/%d]: groupId: %s, feedId: %s", Integer.valueOf(i), Integer.valueOf(j), str, localArrayList);
+      if (TextUtils.equals(str, paramString))
       {
-        localStringBuilder2.append(UIUtils.convertToHHMM(paramStoryVideoItem.mCreateTime, paramStoryVideoItem.mTimeZoneOffsetMillis));
-        paramStoryVideoItem = localStringBuilder2;
-        paramVideoListFeedItem = localStringBuilder1;
-        if (localStringBuilder2.length() > 0)
+        ykq.d("PromoteWidgetController", "onViewHolderBindData() Find groupId: %s, feeds: %s, unionId: %s", new Object[] { str, localArrayList, localObject });
+        if ((!localArrayList.isEmpty()) && (!TextUtils.equals(this.b, paramString)))
         {
-          paramVideoListFeedItem = new Intent();
-          paramVideoListFeedItem.putExtra("at_video_text", localStringBuilder2.toString());
-          paramStoryVideoItem = localStringBuilder2;
+          if ((localArrayList.size() <= 1) || (this.jdField_a_of_type_Int != 2)) {
+            break label390;
+          }
+          ykq.d("PromoteWidgetController", "onViewHolderBindData(), feedIds size > 1, unexpected!");
         }
       }
     }
     for (;;)
     {
-      if (QLog.isColorLevel())
+      this.b = paramString;
+      i += 1;
+      break label153;
+      break;
+      label374:
+      zdl.a("groupInfo FeedIdListSeqInfo is null!", new Object[0]);
+      label383:
+      localObject = str;
+      break label238;
+      label390:
+      a(localArrayList, (String)localObject, localxcz.jdField_a_of_type_JavaUtilList.size());
+    }
+  }
+  
+  public void a(xgv paramxgv)
+  {
+    ykq.a("PromoteWidgetController", "attachHolder(%s)", paramxgv);
+    this.jdField_a_of_type_Xgv = paramxgv;
+    ((wjq)wjs.a(29)).a(false);
+    this.jdField_a_of_type_Xgv.a(this);
+  }
+  
+  public boolean a()
+  {
+    ykq.b("PromoteWidgetController", "preloadWebProcessAndUrl()");
+    Object localObject1 = ((wjq)wjs.a(29)).b;
+    if (TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      ykq.a("PromoteWidgetController", "preloadWebProcessAndUrl() url is null! %s", localObject1);
+      this.c = "";
+    }
+    for (;;)
+    {
+      return false;
+      Object localObject2 = bkyp.a((String)localObject1);
+      if (!((Map)localObject2).containsKey("sonic")) {
+        this.c = bkyp.a((String)localObject1, "sonic", "1");
+      }
+      if (!((Map)localObject2).containsKey("vid")) {
+        this.c = bkyp.a((String)localObject1, "vid", this.jdField_a_of_type_JavaLangString);
+      }
+      localObject1 = (WebProcessManager)QQStoryContext.a().getManager(QQManagerFactory.WEBPROCESS_MANAGER);
+      if (localObject1 != null)
       {
-        localStringBuilder1 = new StringBuilder().append("set result ok. At video text is:");
-        if (paramStoryVideoItem != null) {
-          break label146;
+        if (((WebProcessManager)localObject1).d()) {
+          ((WebProcessManager)localObject1).a(203, new xgn(this));
+        }
+        while (SonicPreloader.isWifiOrG3OrG4())
+        {
+          localObject2 = new SonicPreloadData(1003, this.c, true, 0L, 0);
+          ArrayList localArrayList = new ArrayList();
+          localArrayList.add(localObject2);
+          boolean bool = ((WebProcessManager)localObject1).a(localArrayList);
+          ykq.a("PromoteWidgetController", "preloadSonicSession() load url %s: return %b.", this.c, Boolean.valueOf(bool));
+          return bool;
+          this.jdField_a_of_type_Boolean = true;
         }
       }
-      label146:
-      for (paramStoryVideoItem = "";; paramStoryVideoItem = paramStoryVideoItem.toString())
-      {
-        QLog.d("Q.qqstory.detail.FeedItemThumbAdapter", 2, paramStoryVideoItem);
-        paramActivity.setResult(-1, paramVideoListFeedItem);
-        return;
-        localStringBuilder2.append(UIUtils.convertToHHMM(paramStoryVideoItem.mCreateTime));
-        break;
-      }
-      paramStoryVideoItem = null;
-      paramVideoListFeedItem = localStringBuilder1;
     }
   }
   
-  public void a(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt)
+  protected boolean a(long paramLong)
   {
-    if (UIUtils.isFastDoubleClick()) {
-      return;
+    if (TextUtils.isEmpty(this.c))
+    {
+      ykq.b("PromoteWidgetController", "tryStartPromoteWebActivity() url is null, ignore!");
+      return false;
     }
-    a(this.a, paramVideoListFeedItem, paramStoryVideoItem);
-    xwa.a("home_page", "choose_video", 0, 0, new String[0]);
-    this.a.finish();
+    if (!SonicPreloader.isWifiOrG3OrG4())
+    {
+      ykq.b("PromoteWidgetController", "tryStartPromoteWebActivity() network not ready, ignore!");
+      return false;
+    }
+    ykv.a("weishi_share", "video_cover_exp", 0, 0, new String[] { "", this.jdField_a_of_type_JavaLangString });
+    Intent localIntent = StoryPlayerWebFragment.a(this.jdField_a_of_type_Xgv.a(), this.c);
+    aeow.a(this.jdField_a_of_type_Xgv.a(), localIntent, PublicFragmentActivityForTool.class, StoryPlayerWebToolFragment.class, StoryPlayerActivity.jdField_a_of_type_Int);
+    ThreadManager.executeOnSubThread(new PromoteWidgetController.3(this, paramLong));
+    return true;
   }
   
-  public void b(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt) {}
+  public boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, xjm paramxjm, boolean paramBoolean)
+  {
+    boolean bool = false;
+    ykq.a("PromoteWidgetController", "handleVideoCompletion(%s, %s, %b)", paramVideoViewVideoHolder, paramxjm, Boolean.valueOf(paramBoolean));
+    paramVideoViewVideoHolder = this.jdField_a_of_type_Xgv.a();
+    int i = 0;
+    int j = -1;
+    while (i < paramVideoViewVideoHolder.size())
+    {
+      if (TextUtils.equals(((xcz)paramVideoViewVideoHolder.get(i)).jdField_a_of_type_Xcy.jdField_a_of_type_JavaLangString, this.b)) {
+        j = i;
+      }
+      i += 1;
+    }
+    paramBoolean = bool;
+    if (j >= 0)
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder = this.jdField_a_of_type_Xgv.a(j);
+      paramBoolean = bool;
+      if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder != null)
+      {
+        paramBoolean = bool;
+        if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder.a.a().getCount() - 1 == this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder.a.c())
+        {
+          ykq.a("PromoteWidgetController", "handleVideoCompletion() match last video!! promoteTaskId: %d, fragmentLoaded: %b", Long.valueOf(this.jdField_a_of_type_Long), Boolean.valueOf(this.jdField_a_of_type_Boolean));
+          paramBoolean = bool;
+          if (this.jdField_a_of_type_Boolean)
+          {
+            paramBoolean = bool;
+            if (this.jdField_a_of_type_Long != -1L)
+            {
+              paramBoolean = bool;
+              if (!TextUtils.isEmpty(this.c))
+              {
+                bool = a(this.jdField_a_of_type_Long);
+                paramBoolean = bool;
+                if (!bool)
+                {
+                  this.jdField_a_of_type_Long = -1L;
+                  paramBoolean = bool;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    ykq.b("PromoteWidgetController", "closePromoteWidget()");
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      ykv.a("weishi_share", "video_cover_close", 0, 0, new String[] { "", this.jdField_a_of_type_JavaLangString });
+    }
+    this.b = "";
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = "";
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder != null)
+    {
+      XViewPager localXViewPager = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder.a();
+      if (localXViewPager.c() < localXViewPager.a().getCount() - 1)
+      {
+        localXViewPager.setCurrentItem(localXViewPager.c() + 1, true);
+        return true;
+      }
+      this.jdField_a_of_type_Xgv.a().finish();
+      ykv.a("play_video", "auto_quit", 0, 0, new String[0]);
+      return true;
+    }
+    return false;
+  }
+  
+  public void c() {}
+  
+  public boolean c()
+  {
+    return false;
+  }
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
 }
 
 

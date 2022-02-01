@@ -1,8 +1,17 @@
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
+
 public class bgeo
+  implements View.OnTouchListener
 {
-  public long a;
-  public String a;
-  public String b;
+  public bgeo(BulkSendMessageFragment paramBulkSendMessageFragment) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
 }
 
 

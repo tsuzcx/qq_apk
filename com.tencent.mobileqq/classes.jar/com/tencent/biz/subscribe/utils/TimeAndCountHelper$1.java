@@ -2,17 +2,17 @@ package com.tencent.biz.subscribe.utils;
 
 import android.content.Context;
 import java.util.TimerTask;
-import zkn;
-import zko;
+import zzs;
+import zzt;
 
 public class TimeAndCountHelper$1
   extends TimerTask
 {
-  public TimeAndCountHelper$1(zkn paramzkn, Context paramContext, String paramString, zko paramzko) {}
+  public TimeAndCountHelper$1(zzs paramzzs, Context paramContext, String paramString, zzt paramzzt) {}
   
   public void run()
   {
-    zkn.a(this.this$0, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Zko);
+    zzs.a(this.this$0, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Zzt);
   }
 }
 

@@ -1,64 +1,76 @@
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import com.tencent.av.business.manager.EffectConfigBase;
-import com.tencent.mobileqq.startup.step.AVSoUtils;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
+import java.io.BufferedReader;
 
 public class lmj
+  extends lmi
 {
-  public static int a(lmb paramlmb)
+  private float jdField_a_of_type_Float;
+  float[] jdField_a_of_type_ArrayOfFloat = { 0.0F };
+  private float jdField_b_of_type_Float;
+  private float[] jdField_b_of_type_ArrayOfFloat = { 1.0F };
+  private boolean c;
+  
+  public float a(float paramFloat)
   {
-    if (paramlmb == null) {}
-    do
+    float[] arrayOfFloat1 = this.jdField_a_of_type_ArrayOfFloat;
+    int j = arrayOfFloat1.length;
+    int i = 1;
+    if (i < j) {
+      if (arrayOfFloat1[i] <= paramFloat) {}
+    }
+    for (;;)
     {
-      do
+      if (i == -1)
       {
-        return 11;
-        if (!TextUtils.isEmpty(paramlmb.c)) {
-          break;
-        }
-      } while (!QLog.isDevelopLevel());
-      QLog.d("QavGPDownloadManager", 4, String.format("getEnableFlag, %s", new Object[] { paramlmb }));
-      return 11;
-      if (!paramlmb.a) {
+        return this.jdField_b_of_type_ArrayOfFloat[(j - 1)];
+        i += 1;
         break;
       }
-    } while (!a(paramlmb));
-    return 1;
-    return 2;
+      float[] arrayOfFloat2 = this.jdField_b_of_type_ArrayOfFloat;
+      j = i - 1;
+      float f1 = arrayOfFloat2[j];
+      float f2 = arrayOfFloat1[j];
+      float f3 = arrayOfFloat2[i];
+      return (paramFloat - f2) / (arrayOfFloat1[i] - f2) * (f3 - f1) + f1;
+      i = -1;
+    }
   }
   
-  static SharedPreferences a()
+  public void a(BufferedReader paramBufferedReader)
   {
-    return EffectConfigBase.a(298, EffectConfigBase.c);
-  }
-  
-  public static String a()
-  {
-    return AVSoUtils.b();
-  }
-  
-  public static boolean a(lmb paramlmb)
-  {
-    String str1 = paramlmb.b;
-    paramlmb = a() + paramlmb.d + ".so";
-    String str2 = a().getString("so_zip_md5", null);
-    if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1))) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QavGPDownloadManager", 4, String.format("isSoReady, sp_md5[%s], xmlMd5[%s]", new Object[] { str2, str1 }));
+    int j = 0;
+    super.a(paramBufferedReader);
+    if (!this.jdField_a_of_type_Boolean) {}
+    for (;;)
+    {
+      return;
+      this.jdField_a_of_type_Float = lme.a(paramBufferedReader, "highMin");
+      this.jdField_b_of_type_Float = lme.a(paramBufferedReader, "highMax");
+      this.c = lme.a(paramBufferedReader, "relative");
+      this.jdField_b_of_type_ArrayOfFloat = new float[lme.a(paramBufferedReader, "scalingCount")];
+      int i = 0;
+      while (i < this.jdField_b_of_type_ArrayOfFloat.length)
+      {
+        this.jdField_b_of_type_ArrayOfFloat[i] = lme.a(paramBufferedReader, "scaling" + i);
+        i += 1;
+      }
+      this.jdField_a_of_type_ArrayOfFloat = new float[lme.a(paramBufferedReader, "timelineCount")];
+      i = j;
+      while (i < this.jdField_a_of_type_ArrayOfFloat.length)
+      {
+        this.jdField_a_of_type_ArrayOfFloat[i] = lme.a(paramBufferedReader, "timeline" + i);
+        i += 1;
       }
     }
-    do
-    {
-      return false;
-      if (FileUtils.fileExists(paramlmb)) {
-        break;
-      }
-    } while (!QLog.isDevelopLevel());
-    QLog.d("QavGPDownloadManager", 4, String.format("isSoReady, file no exist,  fileName[%s]", new Object[] { paramlmb }));
-    return false;
-    return true;
+  }
+  
+  public boolean a()
+  {
+    return this.c;
+  }
+  
+  public float b()
+  {
+    return this.jdField_a_of_type_Float + (this.jdField_b_of_type_Float - this.jdField_a_of_type_Float) * llz.a();
   }
 }
 

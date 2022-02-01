@@ -1,49 +1,22 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.gdtad.views.videoimax.TransitionContext;
 
-class ackx
-  extends ackw
+public class ackx
+  extends AnimatorListenerAdapter
 {
-  public ackx(acjr paramacjr, long paramLong)
+  public ackx(TransitionContext paramTransitionContext) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super(paramacjr, 3, paramLong);
+    super.onAnimationCancel(paramAnimator);
+    this.a.a();
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DoraemonOpenAPI.sensor.location", 2, "onLocationFinish: errCode=" + paramInt + ", info=" + paramSosoLbsInfo + ", isActive=" + this.jdField_a_of_type_Boolean);
-    }
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    if (paramInt == 0)
-    {
-      JSONObject localJSONObject = new JSONObject();
-      try
-      {
-        localJSONObject.put("nation", paramSosoLbsInfo.mLocation.nation);
-        localJSONObject.put("province", paramSosoLbsInfo.mLocation.province);
-        localJSONObject.put("city", paramSosoLbsInfo.mLocation.city);
-        localJSONObject.put("district", paramSosoLbsInfo.mLocation.district);
-        acmy.a(this.jdField_a_of_type_Acjr, localJSONObject);
-        return;
-      }
-      catch (JSONException paramSosoLbsInfo)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("DoraemonOpenAPI.sensor", 2, paramSosoLbsInfo.getMessage(), paramSosoLbsInfo);
-          }
-        }
-      }
-    }
-    acmy.a(this.jdField_a_of_type_Acjr, paramInt, "error " + paramInt);
+    super.onAnimationEnd(paramAnimator);
+    this.a.a();
   }
 }
 

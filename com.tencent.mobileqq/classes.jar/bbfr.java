@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.search.searchengine.PublicAccountSearchEngine;
-import java.util.Comparator;
+import com.tencent.qphone.base.util.QLog;
 
-public final class bbfr
-  implements Comparator<bazx>
+public class bbfr
 {
-  public int a(bazx parambazx1, bazx parambazx2)
+  public static int a(String paramString1, String paramString2)
   {
-    int j = Long.signum(parambazx2.b() - parambazx1.b());
-    int i = j;
-    if (j == 0) {
-      i = Long.signum(parambazx2.a() - parambazx1.a());
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, "##" + paramString2);
     }
-    j = i;
-    if (i == 0) {
-      j = PublicAccountSearchEngine.a(parambazx1, parambazx2);
-    }
-    return j;
+    return 0;
+  }
+  
+  public static int b(String paramString1, String paramString2)
+  {
+    QLog.e(paramString1, 2, "##" + paramString2);
+    return 0;
   }
 }
 

@@ -8,32 +8,48 @@ public class LoadSoImp
   implements ILoadSo
 {
   private static final String TAG = "[VideoPlatForm]LoadSoImp";
-  boolean bCkeygeneratorV2 = false;
-  boolean bCkguard = false;
-  boolean bDownProxyResult = false;
-  boolean bTPCoreResult = false;
+  boolean mCkeygeneratorV2 = false;
+  boolean mCkguard = false;
+  boolean mDownProxyResult = false;
+  boolean mTPCoreResult = false;
   
-  public boolean isCkeygeneratorV2Load()
+  private boolean loadCkGenSo()
   {
-    return this.bCkeygeneratorV2;
+    try
+    {
+      System.loadLibrary("ckeygeneratorV2");
+      if (LogUtil.isColorLevel()) {
+        LogUtil.d("[VideoPlatForm]LoadSoImp", 2, "loadCkGenSo success.");
+      }
+      this.mCkeygeneratorV2 = true;
+      return true;
+    }
+    catch (Throwable localThrowable)
+    {
+      LogUtil.e("[VideoPlatForm]LoadSoImp", 2, "loadCkGenSo err.", localThrowable);
+    }
+    return false;
   }
   
-  public boolean isCkguardLoad()
+  private boolean loadCkGuardSo()
   {
-    return this.bCkguard;
+    try
+    {
+      System.loadLibrary("ckguard");
+      if (LogUtil.isColorLevel()) {
+        LogUtil.d("[VideoPlatForm]LoadSoImp", 2, "loadCkGuardSo success.");
+      }
+      this.mCkguard = true;
+      return true;
+    }
+    catch (Throwable localThrowable)
+    {
+      LogUtil.e("[VideoPlatForm]LoadSoImp", 2, "loadCkGuardSo err.", localThrowable);
+    }
+    return false;
   }
   
-  public boolean isDownProxyLoad()
-  {
-    return this.bDownProxyResult;
-  }
-  
-  public boolean isTPCoreLoad()
-  {
-    return this.bTPCoreResult;
-  }
-  
-  public boolean loadDownProxySync()
+  private boolean loadDownloadProxySo()
   {
     try
     {
@@ -41,6 +57,7 @@ public class LoadSoImp
       if (LogUtil.isColorLevel()) {
         LogUtil.d("[VideoPlatForm]LoadSoImp", 2, "loadDownProxySync success.");
       }
+      this.mDownProxyResult = true;
       return true;
     }
     catch (Throwable localThrowable)
@@ -50,88 +67,66 @@ public class LoadSoImp
     return false;
   }
   
-  public void loadSo(LoadSoCallback paramLoadSoCallback)
+  private boolean loadTpCoreSo()
   {
     try
     {
       System.loadLibrary("TPCore-master");
       if (LogUtil.isColorLevel()) {
-        LogUtil.d("[VideoPlatForm]LoadSoImp", 2, "loadSo  SONAME_TPCORE_MASTER success.");
+        LogUtil.d("[VideoPlatForm]LoadSoImp", 2, "loadTpCoreSo success.");
       }
-      this.bTPCoreResult = true;
-      return;
-    }
-    catch (Throwable localThrowable3)
-    {
-      try
-      {
-        System.loadLibrary("DownloadProxy");
-        if (LogUtil.isColorLevel()) {
-          LogUtil.d("[VideoPlatForm]LoadSoImp", 2, "loadSo SONAME_DOWNLOADPROXY success.");
-        }
-      }
-      catch (Throwable localThrowable3)
-      {
-        try
-        {
-          System.loadLibrary("ckguard");
-          if (LogUtil.isColorLevel()) {
-            LogUtil.d("[VideoPlatForm]LoadSoImp", 2, "loadSo SONAME_CKGUARD success.");
-          }
-        }
-        catch (Throwable localThrowable3)
-        {
-          try
-          {
-            for (;;)
-            {
-              System.loadLibrary("ckeygeneratorV2");
-              if (LogUtil.isColorLevel()) {
-                LogUtil.d("[VideoPlatForm]LoadSoImp", 2, "loadSo SONAME_CKEYGENERATORV2 success.");
-              }
-              if ((!this.bTPCoreResult) || (!this.bDownProxyResult) || (!this.bCkguard) || (!this.bCkeygeneratorV2)) {
-                break;
-              }
-              paramLoadSoCallback.onLoad(true);
-              return;
-              localThrowable1 = localThrowable1;
-              LogUtil.e("[VideoPlatForm]LoadSoImp", 2, "loadSo SONAME_TPCORE_MASTER err.", localThrowable1);
-              continue;
-              localThrowable2 = localThrowable2;
-              LogUtil.e("[VideoPlatForm]LoadSoImp", 2, "loadSo SONAME_DOWNLOADPROXY err.", localThrowable2);
-              continue;
-              localThrowable3 = localThrowable3;
-              LogUtil.e("[VideoPlatForm]LoadSoImp", 2, "loadSo SONAME_CKGUARD err.", localThrowable3);
-            }
-          }
-          catch (Throwable localThrowable4)
-          {
-            for (;;)
-            {
-              LogUtil.e("[VideoPlatForm]LoadSoImp", 2, "loadSo SONAME_CKEYGENERATORV2 err.", localThrowable4);
-            }
-            paramLoadSoCallback.onLoad(false);
-          }
-        }
-      }
-    }
-  }
-  
-  public boolean loadTPCoreSync()
-  {
-    try
-    {
-      System.loadLibrary("TPCore-master");
-      if (LogUtil.isColorLevel()) {
-        LogUtil.d("[VideoPlatForm]LoadSoImp", 2, "loadTPCoreSync success.");
-      }
+      this.mTPCoreResult = true;
       return true;
     }
     catch (Throwable localThrowable)
     {
-      LogUtil.e("[VideoPlatForm]LoadSoImp", 2, "loadTPCoreSync err.", localThrowable);
+      LogUtil.e("[VideoPlatForm]LoadSoImp", 2, "loadTpCoreSo err.", localThrowable);
     }
     return false;
+  }
+  
+  public boolean isCkeygeneratorV2Load()
+  {
+    return this.mCkeygeneratorV2;
+  }
+  
+  public boolean isCkguardLoad()
+  {
+    return this.mCkguard;
+  }
+  
+  public boolean isDownProxyLoad()
+  {
+    return this.mDownProxyResult;
+  }
+  
+  public boolean isTPCoreLoad()
+  {
+    return this.mTPCoreResult;
+  }
+  
+  public boolean loadDownProxySync()
+  {
+    return loadDownloadProxySo();
+  }
+  
+  public void loadSo(LoadSoCallback paramLoadSoCallback)
+  {
+    loadTpCoreSo();
+    loadDownloadProxySo();
+    loadCkGuardSo();
+    loadCkGenSo();
+    if ((this.mTPCoreResult) && (this.mDownProxyResult) && (this.mCkguard) && (this.mCkeygeneratorV2))
+    {
+      paramLoadSoCallback.onLoad(true);
+      return;
+    }
+    paramLoadSoCallback.onLoad(false);
+  }
+  
+  public boolean loadTPCoreSync()
+  {
+    return loadTpCoreSo();
   }
 }
 

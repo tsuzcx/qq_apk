@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.webview.swift.component;
 
 import android.os.Environment;
-import bgwj;
+import bihb;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import java.io.File;
@@ -9,7 +9,7 @@ import java.io.File;
 public class SwiftBrowserMiscHandler$2
   implements Runnable
 {
-  public SwiftBrowserMiscHandler$2(bgwj parambgwj) {}
+  public SwiftBrowserMiscHandler$2(bihb parambihb) {}
   
   public void run()
   {

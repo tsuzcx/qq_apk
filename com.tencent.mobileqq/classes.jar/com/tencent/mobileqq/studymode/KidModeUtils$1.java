@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.studymode;
 
-import bcnw;
+import bduv;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class KidModeUtils$1
@@ -10,12 +10,12 @@ public final class KidModeUtils$1
   
   public void run()
   {
-    bcnw.a(this.a);
+    bduv.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.KidModeUtils.1
  * JD-Core Version:    0.7.0.1
  */

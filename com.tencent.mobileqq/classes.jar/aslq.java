@@ -1,18 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public final class aslq
-  implements Parcelable.Creator<ForwardFileInfo>
+final class aslq
+  implements DialogInterface.OnKeyListener
 {
-  public ForwardFileInfo a(Parcel paramParcel)
-  {
-    return new ForwardFileInfo(paramParcel, null);
-  }
+  aslq(BaseActivity paramBaseActivity) {}
   
-  public ForwardFileInfo[] a(int paramInt)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    return new ForwardFileInfo[paramInt];
+    if (paramInt == 4)
+    {
+      paramDialogInterface.dismiss();
+      this.a.finish();
+      return true;
+    }
+    return false;
   }
 }
 

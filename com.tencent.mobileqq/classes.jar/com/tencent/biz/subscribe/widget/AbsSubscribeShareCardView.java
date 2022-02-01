@@ -1,5 +1,7 @@
 package com.tencent.biz.subscribe.widget;
 
+import aaap;
+import aaau;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -20,9 +22,7 @@ import com.tencent.smtt.utils.Md5Utils;
 import java.io.File;
 import java.util.ArrayList;
 import mqq.os.MqqHandler;
-import zda;
-import zlk;
-import zlp;
+import zsf;
 
 public abstract class AbsSubscribeShareCardView
   extends FrameLayout
@@ -36,7 +36,7 @@ public abstract class AbsSubscribeShareCardView
   protected Bitmap a;
   protected View a;
   protected ArrayList<String> a;
-  protected zda a;
+  protected zsf a;
   protected View b;
   protected ArrayList<ImageView> b;
   private volatile int f;
@@ -136,7 +136,7 @@ public abstract class AbsSubscribeShareCardView
     }
   }
   
-  protected void a(ArrayList<String> paramArrayList, ArrayList<ImageView> paramArrayList1, zlk paramzlk)
+  protected void a(ArrayList<String> paramArrayList, ArrayList<ImageView> paramArrayList1, aaap paramaaap)
   {
     int i = 0;
     if ((paramArrayList != null) && (paramArrayList.size() == paramArrayList1.size()))
@@ -144,28 +144,28 @@ public abstract class AbsSubscribeShareCardView
       this.f = 0;
       if (i < paramArrayList.size())
       {
-        String str = zlp.a + Md5Utils.getMD5((String)paramArrayList.get(i)) + ".png";
+        String str = aaau.a + Md5Utils.getMD5((String)paramArrayList.get(i)) + ".png";
         if (new File(str).exists())
         {
           ((ImageView)paramArrayList1.get(i)).setImageBitmap(SafeBitmapFactory.decodeFile(str));
           this.f += 1;
           if (this.f == paramArrayList.size()) {
-            ThreadManager.getUIHandler().post(new AbsSubscribeShareCardView.1(this, paramzlk));
+            ThreadManager.getUIHandler().post(new AbsSubscribeShareCardView.1(this, paramaaap));
           }
         }
         for (;;)
         {
           i += 1;
           break;
-          ThreadManagerV2.executeOnFileThread(new AbsSubscribeShareCardView.2(this, paramArrayList1, i, str, paramArrayList, paramzlk));
+          ThreadManagerV2.executeOnFileThread(new AbsSubscribeShareCardView.2(this, paramArrayList1, i, str, paramArrayList, paramaaap));
         }
       }
     }
   }
   
-  public void a(zda paramzda, Bitmap paramBitmap, zlk paramzlk)
+  public void a(zsf paramzsf, Bitmap paramBitmap, aaap paramaaap)
   {
-    this.jdField_a_of_type_Zda = paramzda;
+    this.jdField_a_of_type_Zsf = paramzsf;
     this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
     measure(c, e);
     layout(0, 0, getMeasuredWidth(), getMeasuredHeight());

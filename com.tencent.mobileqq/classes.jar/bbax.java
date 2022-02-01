@@ -1,27 +1,50 @@
-class bbax
-  implements bdom
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.LayoutParams;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+
+public class bbax
+  extends RecyclerView.ItemDecoration
 {
-  bbax(bbau parambbau, baxr parambaxr) {}
+  private int jdField_a_of_type_Int;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private int b;
   
-  public void a(String paramString, int paramInt)
+  private bbax(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_Baxr.b != null) && (this.jdField_a_of_type_Baxr.b.equals(paramString)))
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    paramRect.set(0, 0, 0, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight());
+  }
+  
+  public void onDraw(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    int j = paramRecyclerView.getPaddingLeft();
+    int k = this.jdField_a_of_type_Int;
+    int m = paramRecyclerView.getWidth();
+    int n = paramRecyclerView.getPaddingRight();
+    int i1 = this.b;
+    int i2 = paramRecyclerView.getChildCount();
+    int i = 0;
+    while (i < i2)
     {
-      if (paramInt != 3) {
-        break label45;
-      }
-      this.jdField_a_of_type_Baxr.m = 2;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bbau.a();
-      return;
-      label45:
-      if ((paramInt == 2) || (paramInt == 4)) {
-        this.jdField_a_of_type_Baxr.m = 1;
-      } else if (paramInt == 1) {
-        this.jdField_a_of_type_Baxr.m = 0;
-      }
+      paramState = paramRecyclerView.getChildAt(i);
+      RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramState.getLayoutParams();
+      int i3 = paramState.getBottom();
+      i3 = localLayoutParams.bottomMargin + i3;
+      int i4 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(j + k, i3, m - n - i1, i4 + i3);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      i += 1;
     }
   }
 }

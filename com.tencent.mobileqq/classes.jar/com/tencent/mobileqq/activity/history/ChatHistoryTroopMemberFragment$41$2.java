@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.activity.history;
 
-import aizs;
-import ajac;
-import amsw;
-import bfun;
+import ajvh;
+import ajvr;
+import anvk;
+import bhdf;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.troop.TroopMemberInfo;
 import mqq.os.MqqHandler;
@@ -12,16 +13,16 @@ import mqq.os.MqqHandler;
 public class ChatHistoryTroopMemberFragment$41$2
   implements Runnable
 {
-  public ChatHistoryTroopMemberFragment$41$2(aizs paramaizs, String paramString) {}
+  public ChatHistoryTroopMemberFragment$41$2(ajvh paramajvh, String paramString) {}
   
   public void run()
   {
-    Object localObject = (amsw)this.jdField_a_of_type_Aizs.a.b.getManager(51);
-    TroopMemberInfo localTroopMemberInfo = bfun.a().a(this.jdField_a_of_type_Aizs.a.b, this.jdField_a_of_type_Aizs.a.c, this.jdField_a_of_type_JavaLangString);
+    Object localObject = (anvk)this.jdField_a_of_type_Ajvh.a.b.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    TroopMemberInfo localTroopMemberInfo = bhdf.a().a(this.jdField_a_of_type_Ajvh.a.b, this.jdField_a_of_type_Ajvh.a.c, this.jdField_a_of_type_JavaLangString);
     if ((localTroopMemberInfo != null) && (localObject != null))
     {
-      localObject = this.jdField_a_of_type_Aizs.a.a(localTroopMemberInfo, (amsw)localObject);
-      ThreadManager.getUIHandler().post(new ChatHistoryTroopMemberFragment.41.2.1(this, (ajac)localObject));
+      localObject = this.jdField_a_of_type_Ajvh.a.a(localTroopMemberInfo, (anvk)localObject);
+      ThreadManager.getUIHandler().post(new ChatHistoryTroopMemberFragment.41.2.1(this, (ajvr)localObject));
     }
   }
 }

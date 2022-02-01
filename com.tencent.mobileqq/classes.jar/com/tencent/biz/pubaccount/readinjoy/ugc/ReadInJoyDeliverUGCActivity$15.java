@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc;
 
 import com.tencent.qphone.base.util.QLog;
-import rhp;
-import rht;
+import rub;
+import ruf;
 
 class ReadInJoyDeliverUGCActivity$15
   implements Runnable
@@ -25,12 +25,12 @@ class ReadInJoyDeliverUGCActivity$15
           return;
           str = ReadInJoyDeliverUGCActivity.a(this.this$0, this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Int);
         } while (str == null);
-        localObject = new rht(this.this$0, str, this.jdField_a_of_type_Int).a();
-      } while (((rht)localObject).a());
-      l = ((rht)localObject).a();
-      localObject = new rhp(this.this$0, str, l).a();
-    } while (((rhp)localObject).a());
-    ReadInJoyDeliverUGCActivity.a(this.this$0, str, l, (rhp)localObject, this.jdField_a_of_type_Int);
+        localObject = new ruf(this.this$0, str, this.jdField_a_of_type_Int).a();
+      } while (((ruf)localObject).a());
+      l = ((ruf)localObject).a();
+      localObject = new rub(this.this$0, str, l).a();
+    } while (((rub)localObject).a());
+    ReadInJoyDeliverUGCActivity.a(this.this$0, str, l, (rub)localObject, this.jdField_a_of_type_Int);
   }
 }
 

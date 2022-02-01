@@ -1,10 +1,27 @@
-import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxData;
+import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxView;
 
-public final class acjn
-  extends RecyclablePool.Recyclable
+public class acjn
+  implements TextWatcher
 {
-  public int a;
-  public long a;
+  public acjn(GdtFormItemTextBoxView paramGdtFormItemTextBoxView) {}
+  
+  public void afterTextChanged(Editable paramEditable)
+  {
+    if ((this.a.a() == null) || (!this.a.a().isValid()) || (paramEditable == null))
+    {
+      acho.d("GdtFormItemTextBoxView", "afterTextChanged error");
+      return;
+    }
+    acho.b("GdtFormItemTextBoxView", "afterTextChanged " + paramEditable.toString());
+    this.a.a().content.text = paramEditable.toString();
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

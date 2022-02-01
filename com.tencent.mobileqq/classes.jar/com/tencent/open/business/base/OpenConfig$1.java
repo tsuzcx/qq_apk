@@ -1,13 +1,13 @@
 package com.tencent.open.business.base;
 
-import biar;
+import bjlt;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class OpenConfig$1
   implements Runnable
 {
-  public OpenConfig$1(biar parambiar) {}
+  public OpenConfig$1(bjlt parambjlt) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class OpenConfig$1
     try
     {
       this.this$0.a = new JSONObject(str);
-      biar.a(this.this$0, true);
+      bjlt.a(this.this$0, true);
       return;
     }
     catch (JSONException localJSONException) {}

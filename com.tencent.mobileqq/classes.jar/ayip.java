@@ -1,25 +1,20 @@
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.portal.ImageAlphaSwitchView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class ayip
-  implements bfzz<Float>
+class ayip
+  implements DialogInterface.OnClickListener
 {
-  public ayip(ImageAlphaSwitchView paramImageAlphaSwitchView) {}
+  ayip(ayin paramayin, QQCustomDialog paramQQCustomDialog) {}
   
-  public void a(bfzt<Float> parambfzt, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_Float = paramFloat1.floatValue();
-    if (paramFloat1.floatValue() >= 255.0F)
-    {
-      this.a.jdField_a_of_type_AndroidGraphicsBitmap = this.a.b;
-      this.a.b = null;
-      this.a.jdField_a_of_type_Float = 0.0F;
-      if (this.a.jdField_a_of_type_Bfzt != null)
-      {
-        this.a.jdField_a_of_type_Bfzt.cancel();
-        this.a.jdField_a_of_type_Bfzt = null;
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    this.jdField_a_of_type_Ayin.a.a.d();
+    paramInt = ((Integer)axqc.a(this.jdField_a_of_type_Ayin.a.a.app.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1))).intValue();
+    bdla.b(this.jdField_a_of_type_Ayin.a.a.app, "dc00899", "grp_lbs", "", "data_card", "return_no", 0, 0, axql.a(this.jdField_a_of_type_Ayin.a.a.j), paramInt + "", "", "");
   }
 }
 

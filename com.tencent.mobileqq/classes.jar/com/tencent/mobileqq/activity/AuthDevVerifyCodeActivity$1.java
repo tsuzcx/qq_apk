@@ -12,13 +12,13 @@ class AuthDevVerifyCodeActivity$1
   {
     if (AuthDevVerifyCodeActivity.b <= 1)
     {
-      AuthDevVerifyCodeActivity.a(this.this$0).setText(2131716125);
+      AuthDevVerifyCodeActivity.a(this.this$0).setText(2131716478);
       AuthDevVerifyCodeActivity.a(this.this$0).setEnabled(true);
       AuthDevVerifyCodeActivity.a(this.this$0).setClickable(true);
       return;
     }
     AuthDevVerifyCodeActivity.b -= 1;
-    AuthDevVerifyCodeActivity.a(this.this$0).setText(this.this$0.getString(2131716125) + "(" + AuthDevVerifyCodeActivity.b + ")");
+    AuthDevVerifyCodeActivity.a(this.this$0).setText(this.this$0.getString(2131716478) + "(" + AuthDevVerifyCodeActivity.b + ")");
     this.this$0.a.postDelayed(this, 1000L);
   }
 }

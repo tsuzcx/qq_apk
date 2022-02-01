@@ -1,17 +1,18 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
 
 public class azvg
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public azvg(RedTouch paramRedTouch, String paramString) {}
+  public azvg(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
   
-  public void onGlobalLayout()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    RedTouch.a(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds((Rect)paramValueAnimator.getAnimatedValue());
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewBreatheEffectView.invalidate();
   }
 }
 

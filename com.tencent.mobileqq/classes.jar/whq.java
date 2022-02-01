@@ -1,17 +1,6 @@
-class whq
-  extends xco
+public abstract class whq
 {
-  whq(whp paramwhp) {}
-  
-  protected void a(Error paramError)
-  {
-    this.a.a(paramError);
-  }
-  
-  protected void a(xcc paramxcc)
-  {
-    this.a.a(paramxcc);
-  }
+  public abstract void a();
 }
 
 

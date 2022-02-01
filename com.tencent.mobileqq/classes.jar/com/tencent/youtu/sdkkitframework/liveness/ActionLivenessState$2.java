@@ -5,9 +5,9 @@ import java.util.HashMap;
 class ActionLivenessState$2
   extends HashMap<String, Object>
 {
-  ActionLivenessState$2(ActionLivenessState paramActionLivenessState)
+  ActionLivenessState$2(ActionLivenessState paramActionLivenessState, String paramString)
   {
-    put("ui_tips", ActionLivenessState.access$100(this.this$0, ActionLivenessState.access$000(this.this$0)));
+    put("version_tips", "动作库版本异常！目标版本：" + ActionLivenessState.access$000(this.this$0) + " 当前版本：" + this.val$realVersion);
   }
 }
 

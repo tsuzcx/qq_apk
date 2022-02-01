@@ -1,6 +1,6 @@
 package com.tencent.mfsdk.impls.memory;
 
-import amtj;
+import anvx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -12,7 +12,7 @@ class MemoryDumpHelper$5$4
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext().getApplicationContext(), 2, amtj.a(2131705665), 1).a();
+    QQToast.a(BaseApplicationImpl.getContext().getApplicationContext(), 2, anvx.a(2131706016), 1).a();
   }
 }
 

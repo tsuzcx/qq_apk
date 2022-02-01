@@ -1,15 +1,27 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
-import com.tencent.mobileqq.app.proxy.ProxyObserver;
-import mqq.os.MqqHandler;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
 public class aivq
-  extends ProxyObserver
+  extends RecyclerView.ItemDecoration
 {
-  public aivq(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
+  private int a;
+  private int b;
   
-  public void onProxySaveToDbFinished()
+  public aivq(int paramInt1, int paramInt2)
   {
-    this.a.a.sendEmptyMessage(41);
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    paramRect.right = this.a;
+    if (paramRecyclerView.getChildPosition(paramView) == 0) {
+      paramRect.left = this.b;
+    }
   }
 }
 

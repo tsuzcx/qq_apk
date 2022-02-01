@@ -1,16 +1,6 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.widget.bounce.BounceViewPager;
-
-public class bhkm
-  extends GestureDetector.SimpleOnGestureListener
+class bhkm
 {
-  public bhkm(BounceViewPager paramBounceViewPager) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return Math.abs(paramFloat1) > Math.abs(paramFloat2);
-  }
+  public static final bhkk a = new bhkk(null);
 }
 
 

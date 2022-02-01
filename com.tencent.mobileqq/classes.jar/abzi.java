@@ -1,40 +1,49 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.MsgTabNodePushNotify;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Callback;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.lang.ref.WeakReference;
 
-public class abzi
-  implements abzb
+class abzi
+  implements EIPCResultCallback
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
+  abzi(abzg paramabzg, WeakReference paramWeakReference, String paramString1, String paramString2, String paramString3, AdIPCManager.Params paramParams) {}
+  
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x10b");
-    }
-    vxx localvxx = (vxx)paramQQAppInterface.getManager(252);
-    try
+    boolean bool2 = true;
+    boolean bool1;
+    AdIPCManager.Result localResult;
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
     {
-      qqstory_service.MsgTabNodePushNotify localMsgTabNodePushNotify = new qqstory_service.MsgTabNodePushNotify();
-      localMsgTabNodePushNotify.mergeFrom(paramMsgType0x210.vProtobuf);
-      paramQQAppInterface = (vxw)paramQQAppInterface.getManager(251);
-      if (localvxx.a) {
-        paramQQAppInterface.a().a(localMsgTabNodePushNotify);
+      bool1 = true;
+      acho.b("GdtIPCAdapter", String.format("send.onCallback:%b action:%s from:%s to:%s", new Object[] { Boolean.valueOf(bool1), this.jdField_a_of_type_JavaLangString, this.b, this.c }));
+      localResult = new AdIPCManager.Result();
+      if ((paramEIPCResult == null) || (!paramEIPCResult.isSuccess())) {
+        break label150;
+      }
+      bool1 = bool2;
+      label85:
+      localResult.success = bool1;
+      if (paramEIPCResult == null) {
+        break label155;
+      }
+    }
+    label150:
+    label155:
+    for (paramEIPCResult = paramEIPCResult.data;; paramEIPCResult = null)
+    {
+      localResult.bundle = paramEIPCResult;
+      if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+        ((AdIPCManager.Callback)this.jdField_a_of_type_JavaLangRefWeakReference.get()).onCallback(this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Params, localResult);
       }
       return;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label85;
     }
-    catch (InvalidProtocolBufferMicroException paramQQAppInterface)
-    {
-      QLog.e("Q.msg.BaseMessageProcessor", 1, "[msg0x210.uSubMsgType == 0xf3], errInfo->" + paramQQAppInterface.getMessage());
-    }
-  }
-  
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
-  {
-    a(paramabxc.a(), paramMsgType0x210);
-    return null;
   }
 }
 

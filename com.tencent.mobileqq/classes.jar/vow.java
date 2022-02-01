@@ -1,37 +1,6 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.concurrent.atomic.AtomicInteger;
-
-public abstract class vow
-  extends JobSegment<ErrorMessage, ErrorMessage>
+class vow
 {
-  protected AtomicInteger a;
-  public vox a;
-  
-  public vow()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  }
-  
-  protected abstract void a();
-  
-  protected void a(JobContext paramJobContext, ErrorMessage paramErrorMessage)
-  {
-    a();
-  }
-  
-  public void a(vox paramvox)
-  {
-    this.jdField_a_of_type_Vox = paramvox;
-  }
-  
-  protected void b()
-  {
-    if (this.jdField_a_of_type_Vox != null) {
-      this.jdField_a_of_type_Vox.a(this);
-    }
-  }
+  private static final vot a = new vot(null);
 }
 
 

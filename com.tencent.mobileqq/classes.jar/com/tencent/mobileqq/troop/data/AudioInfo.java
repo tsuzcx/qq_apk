@@ -9,15 +9,15 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bdyh;
-import bfvh;
+import bffk;
+import bhdz;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class AudioInfo
-  extends bdyh
+  extends bffk
   implements Serializable, Cloneable
 {
   public static final String AUDIO_DURATION = "duration";
@@ -125,23 +125,23 @@ public class AudioInfo
     if (this.duration < 0) {
       return null;
     }
-    View localView = LayoutInflater.from(paramContext).inflate(2131559921, null);
-    RelativeLayout localRelativeLayout = (RelativeLayout)localView.findViewById(2131363034);
+    View localView = LayoutInflater.from(paramContext).inflate(2131559965, null);
+    RelativeLayout localRelativeLayout = (RelativeLayout)localView.findViewById(2131363051);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(localRelativeLayout.getLayoutParams());
     int i = (int)((this.mMaxLayoutLength - this.mMinLayoutLength) / 60000.0F * this.duration + this.mMinLayoutLength);
     if (this.duration < 60000) {}
-    for (localLayoutParams.width = ((int)bfvh.a(paramContext, i));; localLayoutParams.width = ((int)bfvh.a(paramContext, this.mMaxLayoutLength)))
+    for (localLayoutParams.width = ((int)bhdz.a(paramContext, i));; localLayoutParams.width = ((int)bhdz.a(paramContext, this.mMaxLayoutLength)))
     {
-      localLayoutParams.height = ((int)bfvh.a(paramContext, 41.0F));
-      localLayoutParams.topMargin = ((int)bfvh.a(paramContext, 12.0F));
-      localLayoutParams.leftMargin = ((int)bfvh.a(paramContext, 3.0F));
+      localLayoutParams.height = ((int)bhdz.a(paramContext, 41.0F));
+      localLayoutParams.topMargin = ((int)bhdz.a(paramContext, 12.0F));
+      localLayoutParams.leftMargin = ((int)bhdz.a(paramContext, 3.0F));
       localRelativeLayout.setLayoutParams(localLayoutParams);
-      i = (int)bfvh.a(paramContext, 5.0F);
+      i = (int)bhdz.a(paramContext, 5.0F);
       localRelativeLayout.setPadding(i, i, i, i);
-      localView.findViewById(2131363037).setOnClickListener(paramOnClickListener);
-      this.mAudioIcon = ((ImageView)localView.findViewById(2131363036));
+      localView.findViewById(2131363054).setOnClickListener(paramOnClickListener);
+      this.mAudioIcon = ((ImageView)localView.findViewById(2131363053));
       this.mAudioIcon.setOnClickListener(paramOnClickListener);
-      paramContext = (TextView)localView.findViewById(2131363035);
+      paramContext = (TextView)localView.findViewById(2131363052);
       paramContext.setOnClickListener(paramOnClickListener);
       paramContext.setText(getAudioTime(this.duration));
       return localView;

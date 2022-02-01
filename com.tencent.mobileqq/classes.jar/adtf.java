@@ -1,55 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.app.MobileQQ;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adtf
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public adtf(NotificationActivity paramNotificationActivity) {}
+  public adtf(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.finish();
-    Bundle localBundle = new Bundle();
-    localBundle.putString("password", null);
-    localBundle.putBoolean("is_from_account_another_login_exit", true);
-    if (!aych.a().a(this.a.app, this.a.app.getCurrentAccountUin()))
-    {
-      this.a.app.updateSubAccountLogin(this.a.app.getCurrentAccountUin(), false);
-      this.a.app.getApplication().refreAccountList();
-    }
-    paramDialogInterface = (bcqt)this.a.app.getManager(61);
-    if (paramDialogInterface != null) {}
-    for (paramDialogInterface = paramDialogInterface.a();; paramDialogInterface = null)
-    {
-      if ((paramDialogInterface != null) && (paramDialogInterface.size() > 0))
-      {
-        paramDialogInterface = paramDialogInterface.iterator();
-        while (paramDialogInterface.hasNext())
-        {
-          String str = (String)paramDialogInterface.next();
-          if (!aych.a().a(this.a.app, str))
-          {
-            this.a.app.updateSubAccountLogin(str, false);
-            this.a.app.getApplication().refreAccountList();
-          }
-        }
-      }
-      this.a.startActivity(new Intent(this.a, LoginActivity.class).putExtras(localBundle).addFlags(67108864));
-      return;
-    }
+    TroopUtils.doReportTroop(this.a, this.a.a, this.a.app);
+    bhbu.a("Grp_set_new", "grpData_admin", "tipoff_click", 0, 0, new String[] { this.a.a.troopUin });
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adtf
  * JD-Core Version:    0.7.0.1
  */

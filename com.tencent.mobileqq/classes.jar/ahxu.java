@@ -1,56 +1,155 @@
-import android.content.res.Resources;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.app.face.FaceDrawable;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.QQWalletBaseMsgElem;
+import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
+import com.tencent.mobileqq.util.DisplayUtil;
+import java.util.Iterator;
+import java.util.List;
 
 public class ahxu
-  implements TextWatcher
+  extends ahxy
 {
-  public ahxu(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ahxv(this);
+  BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  private FaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder;
   
-  public void afterTextChanged(Editable paramEditable)
+  public ahxu(QQAppInterface paramQQAppInterface, ahxr paramahxr, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt, afrr paramafrr)
   {
-    String str = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    paramEditable = this.a.jdField_a_of_type_AndroidWidgetImageButton;
-    if (str.equals("")) {}
-    for (int i = 8;; i = 0)
-    {
-      paramEditable.setVisibility(i);
-      if (this.a.f != ClassificationSearchActivity.c) {
-        break;
-      }
-      this.a.jdField_a_of_type_AndroidWidgetButton.setText(this.a.getResources().getString(2131690620));
-      if (AppSetting.c) {
-        this.a.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.a.jdField_a_of_type_AndroidWidgetButton.getText().toString());
-      }
-      if ((str.equals("")) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment != null))
-      {
-        if ((this.a.f != ClassificationSearchActivity.jdField_a_of_type_Int) && (this.a.f != ClassificationSearchActivity.d)) {
-          break label219;
-        }
-        ClassificationSearchActivity.a(this.a);
-      }
-      return;
-    }
-    Button localButton = this.a.jdField_a_of_type_AndroidWidgetButton;
-    if (!str.equals("")) {}
-    for (paramEditable = this.a.getResources().getString(2131718003);; paramEditable = this.a.getResources().getString(2131690620))
-    {
-      localButton.setText(paramEditable);
-      break;
-    }
-    label219:
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
+    super(paramQQAppInterface, paramahxr, paramQQWalletBaseMsgElem, paramInt, paramafrr);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void a(FaceDecoder paramFaceDecoder)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder = paramFaceDecoder;
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public boolean b()
+  {
+    boolean bool = super.b();
+    if (bool) {
+      return bool;
+    }
+    this.jdField_a_of_type_Ahxr.b.setVisibility(0);
+    this.jdField_a_of_type_Ahxr.b.setTextColor(-8947849);
+    this.jdField_a_of_type_Ahxr.b.setText(ahxc.d);
+    return false;
+  }
+  
+  public void c()
+  {
+    int j = 0;
+    super.c();
+    if ((this.jdField_a_of_type_Ahxr == null) || (this.jdField_a_of_type_Ahxr.g == null)) {}
+    for (;;)
+    {
+      return;
+      if (this.jdField_a_of_type_Ahxr.g.getVisibility() != 0) {
+        this.jdField_a_of_type_Ahxr.g.setVisibility(0);
+      }
+      LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+      localLinearLayout.setOrientation(0);
+      this.jdField_a_of_type_Ahxr.g.addView(localLinearLayout);
+      Object localObject = (RelativeLayout.LayoutParams)localLinearLayout.getLayoutParams();
+      ((RelativeLayout.LayoutParams)localObject).width = -2;
+      ((RelativeLayout.LayoutParams)localObject).height = -2;
+      ((RelativeLayout.LayoutParams)localObject).addRule(14, -1);
+      ((RelativeLayout.LayoutParams)localObject).addRule(12, -1);
+      ((RelativeLayout.LayoutParams)localObject).bottomMargin = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 25.0F);
+      int k = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 1.0F);
+      int i;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.specifyUinList.size() <= 1) {
+        i = 0;
+      }
+      while ((j < 5) && (j < this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.specifyUinList.size()))
+      {
+        long l = ((Long)this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.specifyUinList.get(j)).longValue();
+        localObject = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+        localLinearLayout.addView((View)localObject);
+        LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)((ImageView)localObject).getLayoutParams();
+        localLayoutParams.width = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 33.0F);
+        localLayoutParams.height = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 33.0F);
+        ((ImageView)localObject).setScaleType(ImageView.ScaleType.FIT_XY);
+        if (j > 0) {
+          localLayoutParams.leftMargin = i;
+        }
+        ((ImageView)localObject).setImageDrawable(FaceDrawable.getUserFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(l), (byte)4));
+        ((ImageView)localObject).setBackgroundResource(2130847364);
+        ((ImageView)localObject).setPadding(k, k, k, k);
+        j += 1;
+        continue;
+        if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.specifyUinList.size() == 2) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.specifyUinList.size() == 3)) {
+          i = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 10.0F);
+        } else if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.specifyUinList.size() == 4) {
+          i = 0;
+        } else if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.specifyUinList.size() >= 5) {
+          i = -DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 8.0F);
+        } else {
+          i = 0;
+        }
+      }
+    }
+  }
+  
+  public void h()
+  {
+    super.h();
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg == null) || (this.jdField_a_of_type_ComTencentMobileqqDataQQWalletRedPacketMsg == null) || (this.jdField_a_of_type_Ahxr == null) || (this.jdField_a_of_type_Ahxr.f == null)) {}
+    while ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.isSender()) || (alaw.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg))) {
+      return;
+    }
+    View localView = new View(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_Ahxr.f.setVisibility(0);
+    this.jdField_a_of_type_Ahxr.f.addView(localView);
+    Object localObject = (RelativeLayout.LayoutParams)localView.getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject).width = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 33.5F);
+    ((RelativeLayout.LayoutParams)localObject).height = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 33.5F);
+    ((RelativeLayout.LayoutParams)localObject).leftMargin = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 10.0F);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataQQWalletRedPacketMsg.specifyUinList != null)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqDataQQWalletRedPacketMsg.specifyUinList.iterator();
+      Long localLong;
+      do
+      {
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+        localLong = (Long)((Iterator)localObject).next();
+      } while (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin().equals(localLong + ""));
+    }
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        localView.setBackgroundResource(2130847367);
+        localView.setTag(Integer.valueOf(1));
+      }
+      for (;;)
+      {
+        if (((this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)) && (((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment() != null)) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a();
+        }
+        localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+        albw.a(localView, 0.6F);
+        return;
+        localView.setBackgroundResource(2130847366);
+        localView.setTag(Integer.valueOf(0));
+      }
+    }
+  }
 }
 
 

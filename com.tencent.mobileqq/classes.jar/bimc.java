@@ -1,30 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.widget.BubblePopupWindow;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.widget.BounceScrollView;
 
 public class bimc
-  implements View.OnLongClickListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bimd(this);
-  public BubblePopupWindow a;
-  public String a;
+  public bimc(BounceScrollView paramBounceScrollView) {}
   
-  public bimc(QidianProfileCardActivity paramQidianProfileCardActivity)
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    int i = paramView.getId();
-    this.jdField_a_of_type_JavaLangString = String.valueOf(paramView.getTag());
-    bgaz localbgaz = new bgaz();
-    localbgaz.a(i, amtj.a(2131708857));
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bfue.a(paramView, localbgaz, this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new bime(this));
-    return true;
+    return Math.abs(paramFloat2) >= Math.abs(paramFloat1);
   }
 }
 

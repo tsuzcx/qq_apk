@@ -1,60 +1,65 @@
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import android.content.Context;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.conditionsearch.widget.TimeSelectView;
+import java.util.Calendar;
+import java.util.Date;
 
 class aimw
-  implements Comparator<aimy>
+  implements aquv
 {
-  aimw(aimv paramaimv) {}
+  aimw(aimt paramaimt) {}
   
-  public int a(aimy paramaimy1, aimy paramaimy2)
+  public int a()
   {
-    if ((paramaimy1 == null) && (paramaimy2 == null)) {}
-    int j;
-    int k;
-    do
+    return 2;
+  }
+  
+  public int a(int paramInt)
+  {
+    switch (paramInt)
     {
-      do
+    default: 
+      return 1;
+    case 0: 
+      if (this.a.c >= 23) {
+        return 365;
+      }
+      return 366;
+    }
+    if ((aimt.a(this.a).a(0) == 0) && (this.a.c < 23)) {
+      return this.a.a();
+    }
+    return 24;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      localObject = "";
+      return localObject;
+    case 0: 
+      Calendar localCalendar = Calendar.getInstance();
+      localCalendar.setFirstDayOfWeek(1);
+      if (this.a.c < 23) {}
+      for (paramInt1 = paramInt2;; paramInt1 = paramInt2 + 1)
       {
-        return 0;
-        if ((paramaimy1 == null) && (paramaimy2 != null)) {
-          return -1;
+        localCalendar.add(6, paramInt1);
+        localObject = this.a.a(paramInt2, localCalendar);
+        String str = "" + (String)localObject;
+        localObject = str;
+        if (!QLog.isColorLevel()) {
+          break;
         }
-        if ((paramaimy1 != null) && (paramaimy2 == null)) {
-          return 1;
-        }
-        paramaimy1 = paramaimy1.b;
-        paramaimy2 = paramaimy2.b;
-      } while ((paramaimy1 == null) && (paramaimy2 == null));
-      if ((paramaimy1 == null) && (paramaimy2 != null)) {
-        return -1;
+        QLog.d("UpComingMsgLogic.UpcomingTimeSelector", 1, str + " day_of_week " + localCalendar.get(7) + "\n" + localCalendar.getTime().toString());
+        return str;
       }
-      if ((paramaimy1 != null) && (paramaimy2 == null)) {
-        return 1;
-      }
-      j = paramaimy1.length();
-      k = paramaimy2.length();
-      int m = Math.min(j, k);
-      int i = 0;
-      while (i < m)
-      {
-        char c1 = paramaimy1.charAt(i);
-        char c2 = paramaimy2.charAt(i);
-        if (c1 != c2)
-        {
-          paramaimy1 = ChnToSpell.a(c1);
-          paramaimy2 = ChnToSpell.a(c2);
-          if (paramaimy1.jdField_a_of_type_Int == paramaimy2.jdField_a_of_type_Int) {
-            return paramaimy1.jdField_a_of_type_JavaLangString.compareTo(paramaimy2.jdField_a_of_type_JavaLangString);
-          }
-          return paramaimy1.jdField_a_of_type_Int - paramaimy2.jdField_a_of_type_Int;
-        }
-        i += 1;
-      }
-      if (j < k) {
-        return -1;
-      }
-    } while (j <= k);
-    return 1;
+    }
+    if ((aimt.a(this.a).a(0) == 0) && (this.a.c < 23)) {}
+    for (Object localObject = this.a.a(paramInt2);; localObject = paramInt2 + this.a.a.getString(2131694372)) {
+      return "" + (String)localObject;
+    }
   }
 }
 

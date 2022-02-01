@@ -1,0 +1,305 @@
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.crop.CropNewView;
+import java.util.ArrayList;
+
+public class bosf
+  extends botu
+  implements View.OnClickListener, boym
+{
+  int jdField_a_of_type_Int = 0;
+  public Bitmap a;
+  View jdField_a_of_type_AndroidViewView;
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  CropNewView jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewView;
+  boolean jdField_a_of_type_Boolean = false;
+  int[] jdField_a_of_type_ArrayOfInt = new int[5];
+  public Bitmap b;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  boolean jdField_b_of_type_Boolean = false;
+  View jdField_c_of_type_AndroidViewView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  boolean jdField_c_of_type_Boolean = false;
+  TextView jdField_d_of_type_AndroidWidgetTextView;
+  boolean jdField_d_of_type_Boolean = false;
+  boolean e = false;
+  public boolean f = false;
+  
+  public bosf(@NonNull botw parambotw)
+  {
+    super(parambotw);
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Botw.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a();
+  }
+  
+  private void b(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Botw == null) {}
+    int i;
+    do
+    {
+      return;
+      i = this.jdField_a_of_type_Botw.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a();
+    } while (!QLog.isColorLevel());
+    QLog.d("EditPicCropPart", 2, "onBussiRestoreClick , bussiId = " + i + ",hasModified" + paramBoolean);
+  }
+  
+  private void c()
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)a(2131365211));
+      this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this);
+      if (this.jdField_a_of_type_Botw.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+      {
+        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+        localLayoutParams.bottomMargin = ViewUtils.dip2px(56.5F);
+        this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams);
+      }
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewView = ((CropNewView)a(2131365333));
+      this.jdField_a_of_type_AndroidViewView = a(2131365329);
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+      this.jdField_b_of_type_AndroidViewView = a(2131365331);
+      this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131365209));
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+      this.jdField_c_of_type_AndroidViewView = a(2131364259);
+      this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131365332));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)a(2131365330));
+      this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)a(2131378208));
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewView.setCropListener(this);
+    }
+  }
+  
+  private boolean c()
+  {
+    boolean bool = false;
+    int i = this.jdField_a_of_type_Botw.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a();
+    if (i == 103)
+    {
+      this.jdField_a_of_type_Botw.d();
+      bool = true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("EditPicCropPart", 2, "onBussiCropClick , bussiId = " + i + ",clickHit = " + bool);
+    }
+    return bool;
+  }
+  
+  private void d()
+  {
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+    if (!this.f)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+    for (;;)
+    {
+      k();
+      this.jdField_a_of_type_AndroidViewView.setEnabled(false);
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      return;
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+    }
+  }
+  
+  private boolean d()
+  {
+    int i = this.jdField_a_of_type_Botw.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a();
+    this.jdField_d_of_type_Boolean = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("EditPicCropPart", 2, "onBussiCropClickIntercept , bussiId = " + i + ",intercepte = " + false);
+    }
+    return false;
+  }
+  
+  private boolean e()
+  {
+    boolean bool = false;
+    int i = this.jdField_a_of_type_Botw.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a();
+    if (i == 103)
+    {
+      bool = true;
+      this.jdField_a_of_type_Botw.e();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("EditPicCropPart", 2, "onBussiBackPressed , bussiId = " + i + ",clickHit = " + bool);
+    }
+    return bool;
+  }
+  
+  private void i()
+  {
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    this.jdField_b_of_type_AndroidGraphicsBitmap = null;
+  }
+  
+  private void k()
+  {
+    if (this.jdField_a_of_type_Botw.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a() == 103)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+      if ((this.jdField_a_of_type_AndroidWidgetTextView instanceof TextView)) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131698682);
+      }
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+  }
+  
+  private void l() {}
+  
+  public void a(int paramInt)
+  {
+    if (paramInt == 1) {
+      this.jdField_b_of_type_AndroidViewView.setEnabled(false);
+    }
+    while (paramInt != 2) {
+      return;
+    }
+    this.jdField_b_of_type_AndroidViewView.setEnabled(true);
+  }
+  
+  public void a(int paramInt, @NonNull bpel parambpel)
+  {
+    bpeq localbpeq = parambpel.jdField_a_of_type_Bpeq;
+    localbpeq.jdField_a_of_type_Int += this.jdField_a_of_type_Int;
+    if (this.jdField_c_of_type_Boolean)
+    {
+      parambpel.jdField_a_of_type_CooperationQzoneReportLpLpReportInfo_pf00064.reservesArray.add("2");
+      ykw.b("0X80075E9", ykw.jdField_a_of_type_Int);
+    }
+  }
+  
+  public void a(int paramInt, Object paramObject)
+  {
+    c();
+    if (paramInt == 7) {
+      if (!this.jdField_b_of_type_Boolean) {
+        d();
+      }
+    }
+    while (!this.jdField_b_of_type_Boolean) {
+      return;
+    }
+    i();
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    this.jdField_a_of_type_AndroidViewView.setEnabled(true);
+    this.e = true;
+    a(this.e);
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_c_of_type_Boolean;
+  }
+  
+  public boolean l_()
+  {
+    if (this.jdField_b_of_type_Boolean)
+    {
+      if (!e()) {
+        this.jdField_a_of_type_Botw.a(0);
+      }
+      ykw.b("0X80075D5");
+      ayrt.a("0X800AAE5", 0);
+      return true;
+    }
+    return false;
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewView.a();
+      this.jdField_a_of_type_AndroidViewView.setEnabled(false);
+      if (!this.f) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+      }
+      if ((this.jdField_a_of_type_Botw != null) && (this.jdField_a_of_type_Botw.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a() == 103)) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+      }
+      this.e = false;
+      b(this.e);
+      ykw.b("0X80075D3");
+      ayrt.a("0X800AAE3", 0);
+      continue;
+      b();
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewView.b();
+      ykw.b("0X80075D4");
+      ayrt.a("0X800AAE4", 0);
+      continue;
+      if (!d())
+      {
+        this.jdField_a_of_type_Int += 1;
+        this.jdField_c_of_type_Boolean = true;
+        boolean bool = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewView.c();
+        if (QLog.isColorLevel()) {
+          QLog.d("EditPicCrop", 2, "crop remove face items" + bool);
+        }
+        if (bool)
+        {
+          if (this.jdField_a_of_type_Botw.jdField_a_of_type_AndroidOsBundle != null)
+          {
+            this.jdField_a_of_type_Botw.jdField_a_of_type_AndroidOsBundle.remove(bovr.a);
+            this.jdField_a_of_type_Botw.jdField_a_of_type_AndroidOsBundle.remove("DynamicFaceLayer");
+            this.jdField_a_of_type_Botw.jdField_a_of_type_AndroidOsBundle.remove(bowf.a);
+          }
+          this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewView.a();
+          bpjt.a().a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+          this.jdField_a_of_type_Botw.a(this.jdField_a_of_type_AndroidGraphicsBitmap, false);
+          if (!c()) {
+            this.jdField_a_of_type_Botw.v();
+          }
+          ykw.b("0X80075D2");
+          ayrt.a("0X800AAE6", 0);
+          bpeq.a(this.jdField_a_of_type_ArrayOfInt);
+          continue;
+          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewView.c();
+          l_();
+          continue;
+          l();
+        }
+      }
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     bosf
+ * JD-Core Version:    0.7.0.1
+ */

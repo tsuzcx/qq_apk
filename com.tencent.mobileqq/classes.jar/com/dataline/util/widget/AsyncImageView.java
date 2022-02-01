@@ -8,8 +8,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import aqwu;
-import aszt;
+import asbe;
+import auea;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
@@ -68,7 +68,7 @@ public class AsyncImageView
       }
       String str2;
       String str1;
-      if (aszt.a(paramString) == 2)
+      if (auea.a(paramString) == 2)
       {
         str2 = "videothumb";
         str1 = paramString;
@@ -167,12 +167,12 @@ public class AsyncImageView
     Resources localResources = getResources();
     if ((URLDrawableHelper.getLoadingDrawable() instanceof SkinnableBitmapDrawable))
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new aqwu(localResources, ((SkinnableBitmapDrawable)URLDrawableHelper.getLoadingDrawable()).getBitmap(), i, j, -921103);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new asbe(localResources, ((SkinnableBitmapDrawable)URLDrawableHelper.getLoadingDrawable()).getBitmap(), i, j, -921103);
       return;
     }
     if ((URLDrawableHelper.getLoadingDrawable() instanceof BitmapDrawable))
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new aqwu(localResources, ((BitmapDrawable)URLDrawableHelper.getLoadingDrawable()).getBitmap(), i, j, -921103);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new asbe(localResources, ((BitmapDrawable)URLDrawableHelper.getLoadingDrawable()).getBitmap(), i, j, -921103);
       return;
     }
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = URLDrawableHelper.getLoadingDrawable();

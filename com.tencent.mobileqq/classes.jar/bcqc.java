@@ -1,9 +1,41 @@
-import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
+import java.util.HashMap;
 
-public abstract interface bcqc
-  extends PluginManagerUpdater
+public class bcqc
 {
-  public abstract boolean a();
+  private Long jdField_a_of_type_JavaLangLong;
+  private HashMap<Integer, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private Long b;
+  
+  public bcqc(Long paramLong1, Long paramLong2)
+  {
+    this.jdField_a_of_type_JavaLangLong = paramLong1;
+    this.b = paramLong2;
+  }
+  
+  public String a()
+  {
+    String str = new String();
+    if (!a()) {
+      return str;
+    }
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilHashMap.size())
+    {
+      str = str + (String)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
+      i += 1;
+    }
+    return str;
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), paramString);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilHashMap.size() == this.jdField_a_of_type_JavaLangLong.longValue();
+  }
 }
 
 

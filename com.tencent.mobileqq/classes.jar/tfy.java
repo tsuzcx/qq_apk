@@ -1,25 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import android.database.DataSetObserver;
 
-public class tfy
-  implements Animation.AnimationListener
+class tfy
+  extends DataSetObserver
 {
-  public tfy(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout, int paramInt) {}
+  tfy(tfx paramtfx) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onChanged()
   {
-    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout).a(false, this.jdField_a_of_type_Int, 2);
-    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout, 2);
+    super.onChanged();
+    this.a.notifyDataSetChanged();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tfy
  * JD-Core Version:    0.7.0.1
  */

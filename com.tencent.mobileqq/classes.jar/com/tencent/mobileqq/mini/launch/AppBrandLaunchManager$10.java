@@ -1,19 +1,13 @@
 package com.tencent.mobileqq.mini.launch;
 
-import amtj;
-import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-
 class AppBrandLaunchManager$10
   implements Runnable
 {
-  AppBrandLaunchManager$10(AppBrandLaunchManager paramAppBrandLaunchManager, MiniAppConfig paramMiniAppConfig) {}
+  AppBrandLaunchManager$10(AppBrandLaunchManager paramAppBrandLaunchManager) {}
   
   public void run()
   {
-    QLog.e("miniapp-process_AppBrandLaunchManager", 1, "启动失败, scene未知" + this.val$appConfig.toString());
-    QQToast.a(AppBrandLaunchManager.access$100(this.this$0), amtj.a(2131699750), 2000).a();
+    AppBrandLaunchManager.access$600(this.this$0);
   }
 }
 

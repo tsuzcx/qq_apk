@@ -1,40 +1,18 @@
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
+import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
 
 public class yxe
-  implements yxq
+  implements DialogInterface.OnClickListener
 {
-  public yxe(ScannerActivity paramScannerActivity) {}
+  public yxe(EditVideoMusicDialog paramEditVideoMusicDialog) {}
   
-  public JSONObject a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      JSONObject localJSONObject = ScannerActivity.a(this.a);
-      return localJSONObject;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.i("ScannerActivity", 1, "getQRReportParams error: " + localThrowable.getMessage());
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScannerActivity", 2, "restartDecodeFrame");
-    }
-    this.a.finish();
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScannerActivity", 2, "cameraOn");
-    }
-    this.a.finish();
+    this.a.a.h();
+    paramDialogInterface.dismiss();
+    this.a.dismiss();
   }
 }
 

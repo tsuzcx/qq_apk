@@ -15,10 +15,13 @@ public final class AcsMsg
   public String btn_text = "";
   public String busi_icon = "";
   public String busi_id = "";
+  public String busi_logo = "";
   public String busi_name = "";
   public String content = "";
   public String flag_text = "";
   public String jump_url = "";
+  public int mn_appid;
+  public String mn_reserved = "";
   public String msg_id = "";
   public long notice_time;
   public long sub_time;
@@ -27,14 +30,14 @@ public final class AcsMsg
   
   public AcsMsg() {}
   
-  public AcsMsg(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, int paramInt, String paramString5, String paramString6, String paramString7, String paramString8, long paramLong2, String paramString9, String paramString10, String paramString11)
+  public AcsMsg(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, int paramInt1, String paramString5, String paramString6, String paramString7, String paramString8, long paramLong2, String paramString9, String paramString10, String paramString11, int paramInt2, int paramInt3, String paramString12, String paramString13)
   {
     this.msg_id = paramString1;
     this.busi_id = paramString2;
     this.busi_name = paramString3;
     this.busi_icon = paramString4;
     this.sub_time = paramLong1;
-    this.type = paramInt;
+    this.type = paramInt1;
     this.flag_text = paramString5;
     this.btn_text = paramString6;
     this.title = paramString7;
@@ -43,6 +46,10 @@ public final class AcsMsg
     this.banner_url = paramString9;
     this.jump_url = paramString10;
     this.applet_jump_url = paramString11;
+    this.banner_type = paramInt2;
+    this.mn_appid = paramInt3;
+    this.mn_reserved = paramString12;
+    this.busi_logo = paramString13;
   }
   
   public int compareTo(AcsMsg paramAcsMsg)
@@ -84,11 +91,9 @@ public final class AcsMsg
     this.jump_url = paramJceInputStream.readString(12, false);
     this.applet_jump_url = paramJceInputStream.readString(13, false);
     this.banner_type = paramJceInputStream.read(this.banner_type, 14, false);
-  }
-  
-  public String toString()
-  {
-    return "AcsMsg{msg_id='" + this.msg_id + '\'' + ", busi_id='" + this.busi_id + '\'' + ", busi_name='" + this.busi_name + '\'' + ", busi_icon='" + this.busi_icon + '\'' + ", sub_time=" + this.sub_time + ", type=" + this.type + ", flag_text='" + this.flag_text + '\'' + ", btn_text='" + this.btn_text + '\'' + ", title='" + this.title + '\'' + ", content='" + this.content + '\'' + ", notice_time=" + this.notice_time + ", banner_type=" + this.banner_type + ", banner_url='" + this.banner_url + '\'' + ", jump_url='" + this.jump_url + '\'' + ", applet_jump_url='" + this.applet_jump_url + '\'' + '}';
+    this.mn_appid = paramJceInputStream.read(this.mn_appid, 15, false);
+    this.mn_reserved = paramJceInputStream.readString(16, false);
+    this.busi_logo = paramJceInputStream.readString(17, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -130,6 +135,13 @@ public final class AcsMsg
       paramJceOutputStream.write(this.applet_jump_url, 13);
     }
     paramJceOutputStream.write(this.banner_type, 14);
+    paramJceOutputStream.write(this.mn_appid, 15);
+    if (this.mn_reserved != null) {
+      paramJceOutputStream.write(this.mn_reserved, 16);
+    }
+    if (this.busi_logo != null) {
+      paramJceOutputStream.write(this.busi_logo, 17);
+    }
   }
 }
 

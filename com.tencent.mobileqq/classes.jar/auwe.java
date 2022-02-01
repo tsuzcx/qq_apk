@@ -1,48 +1,29 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import cooperation.plugin.PluginInfo;
-import cooperation.troop.TroopManageProxyActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.fragment.LangSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class auwe
-  implements zop
+  implements View.OnClickListener
 {
-  public auwe(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  public auwe(LangSettingFragment paramLangSettingFragment, int paramInt) {}
   
-  public void callback(Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    int i = 12;
-    if (paramBundle != null)
+    if ((this.jdField_a_of_type_Int >= 0) && (this.jdField_a_of_type_Int < LangSettingFragment.a().size()))
     {
-      if (paramBundle.getBoolean("isSuccess"))
-      {
-        paramBundle = new Intent();
-        paramBundle.putExtra("troop_uin", this.jdField_a_of_type_JavaLangString);
-        if (this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a() != null) {
-          i = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a().switchRequestCode(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin, (byte)12);
-        }
-        TroopManageProxyActivity.a("troop_manage_plugin.apk", PluginInfo.j, TroopManageProxyActivity.class, this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a(), paramBundle, TroopManageProxyActivity.a(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a()), "com.tencent.mobileqq.activity.TroopSetJoinTypeActivity", this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a().getAccount(), i);
-      }
+      LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment, this.jdField_a_of_type_Int);
+      LangSettingFragment.c(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment, ((Integer)LangSettingFragment.a().get(this.jdField_a_of_type_Int)).intValue());
     }
-    else {
-      return;
+    if ((LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment) != null) && (LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment).isShowing())) {
+      LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment).dismiss();
     }
-    paramBundle = new JSONObject();
-    try
-    {
-      paramBundle.put("gc", this.jdField_a_of_type_JavaLangString);
-      paramBundle.put("ret", 1);
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.m, new String[] { paramBundle.toString() });
-      return;
+    if ((LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment) != null) && (LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment).isShowing())) {
+      LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment).dismiss();
     }
-    catch (JSONException paramBundle)
-    {
-      paramBundle.printStackTrace();
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

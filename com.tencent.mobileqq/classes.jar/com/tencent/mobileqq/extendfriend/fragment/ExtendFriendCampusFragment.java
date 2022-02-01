@@ -16,24 +16,26 @@ import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import arhi;
-import arht;
-import ariq;
-import arjq;
-import arjz;
-import arka;
-import arkb;
-import arkc;
-import arkd;
-import arke;
-import arky;
-import armd;
-import aroq;
-import arqg;
-import bcef;
-import bjng;
+import aslo;
+import aslz;
+import asmw;
+import asnw;
+import asof;
+import asog;
+import asoh;
+import asoi;
+import asoj;
+import asok;
+import aspe;
+import asqj;
+import assw;
+import asum;
+import bdla;
+import bkys;
+import com.tencent.beacon.event.UserAction;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendBottomBarView;
 import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView;
 import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView.TipsType;
@@ -49,28 +51,30 @@ import cooperation.qzone.api.FeedListView;
 import cooperation.qzone.api.FeedListView.FeedUinChangedListener;
 import cooperation.qzone.api.FeedListView.LoadFeedCallback;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import mum;
+import java.util.Map;
+import mvk;
 
 public class ExtendFriendCampusFragment
-  extends armd
-  implements Handler.Callback, ViewTreeObserver.OnGlobalLayoutListener, ariq, arqg, AbsListView.OnScrollListener, FeedListView.FeedUinChangedListener, FeedListView.LoadFeedCallback
+  extends asqj
+  implements Handler.Callback, ViewTreeObserver.OnGlobalLayoutListener, asmw, asum, AbsListView.OnScrollListener, FeedListView.FeedUinChangedListener, FeedListView.LoadFeedCallback
 {
   private static final int jdField_a_of_type_Int = ViewUtils.dpToPx(60.0F);
   private Handler jdField_a_of_type_AndroidOsHandler;
   private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private arhi jdField_a_of_type_Arhi;
-  private arht jdField_a_of_type_Arht = new arjz(this);
-  private arjq jdField_a_of_type_Arjq;
+  private aslo jdField_a_of_type_Aslo;
+  private aslz jdField_a_of_type_Aslz = new asof(this);
+  private asnw jdField_a_of_type_Asnw;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private ExtendFriendBottomBarView jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendBottomBarView;
   private ExtendFriendCampusVerifyTipsView jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendCampusVerifyTipsView;
   private ExtendFriendFeedBannerView jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendFeedBannerView;
   private ExtendFriendSearchBarView jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendSearchBarView;
   private FeedListView jdField_a_of_type_CooperationQzoneApiFeedListView;
-  private String jdField_a_of_type_JavaLangString = arhi.jdField_a_of_type_JavaLangString;
+  private String jdField_a_of_type_JavaLangString = aslo.jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean = true;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
@@ -78,27 +82,27 @@ public class ExtendFriendCampusFragment
   
   private void a(View paramView)
   {
-    View localView = paramView.findViewById(2131375243);
-    paramView = paramView.findViewById(2131375244);
+    View localView = paramView.findViewById(2131375485);
+    paramView = paramView.findViewById(2131375486);
     if (localView != null)
     {
-      localView.setOnTouchListener(new arkc(this, paramView));
-      localView.setOnClickListener(new arkd(this));
+      localView.setOnTouchListener(new asoi(this, paramView));
+      localView.setOnClickListener(new asoj(this));
     }
   }
   
   private void a(String paramString, List<Long> paramList)
   {
-    if (((arhi.jdField_a_of_type_JavaLangString.equals(paramString)) || (TextUtils.isEmpty(paramString))) && (paramList != null))
+    if (((aslo.jdField_a_of_type_JavaLangString.equals(paramString)) || (TextUtils.isEmpty(paramString))) && (paramList != null))
     {
       paramString = new ArrayList();
       paramList = paramList.iterator();
       while (paramList.hasNext()) {
         paramString.add(String.valueOf((Long)paramList.next()));
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendFeedBannerView != null) && (this.jdField_a_of_type_Arhi != null))
+      if ((this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendFeedBannerView != null) && (this.jdField_a_of_type_Aslo != null))
       {
-        int i = this.jdField_a_of_type_Arhi.g();
+        int i = this.jdField_a_of_type_Aslo.g();
         this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendFeedBannerView.a(i, paramString);
       }
       if (this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendBottomBarView != null) {
@@ -111,7 +115,7 @@ public class ExtendFriendCampusFragment
   {
     if (this.jdField_a_of_type_AndroidWidgetLinearLayout == null)
     {
-      boolean bool = ((arhi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(264)).g();
+      boolean bool = ((aslo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).g();
       if (QLog.isColorLevel()) {
         QLog.d("ExtendFriendCampusFragment", 2, String.format("initHeaderView mTabPos=%s limitChatSwitch=%s", new Object[] { Integer.valueOf(this.j), Boolean.valueOf(bool) }));
       }
@@ -124,17 +128,17 @@ public class ExtendFriendCampusFragment
           this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendFeedBannerView = new ExtendFriendFeedBannerView(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
           this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendFeedBannerView.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
           localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-          localLayoutParams.topMargin = ((int)mum.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 10.0F));
+          localLayoutParams.topMargin = ((int)mvk.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 10.0F));
           this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendFeedBannerView, localLayoutParams);
           this.jdField_b_of_type_Boolean = true;
-          bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80096A4", "0X80096A4", 0, 0, "", "", "", "");
+          bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80096A4", "0X80096A4", 0, 0, "", "", "", "");
         }
         this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendCampusVerifyTipsView = new ExtendFriendCampusVerifyTipsView(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-        this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendCampusVerifyTipsView.setOnClickListener(new arke(this));
+        this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendCampusVerifyTipsView.setOnClickListener(new asok(this));
         LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-        localLayoutParams.topMargin = ((int)mum.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 10.0F));
-        localLayoutParams.leftMargin = ((int)mum.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 8.0F));
-        localLayoutParams.rightMargin = ((int)mum.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 8.0F));
+        localLayoutParams.topMargin = ((int)mvk.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 10.0F));
+        localLayoutParams.leftMargin = ((int)mvk.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 8.0F));
+        localLayoutParams.rightMargin = ((int)mvk.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 8.0F));
         this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendCampusVerifyTipsView, localLayoutParams);
         g();
       }
@@ -176,8 +180,8 @@ public class ExtendFriendCampusFragment
   private void f()
   {
     List localList = null;
-    if (this.jdField_a_of_type_Arhi != null) {
-      localList = this.jdField_a_of_type_Arhi.a(1);
+    if (this.jdField_a_of_type_Aslo != null) {
+      localList = this.jdField_a_of_type_Aslo.a(1);
     }
     ExtendFriendSearchBarView localExtendFriendSearchBarView;
     if ((localList != null) && (this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendSearchBarView != null))
@@ -199,9 +203,9 @@ public class ExtendFriendCampusFragment
   
   private void g()
   {
-    Object localObject = (arhi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(264);
-    boolean bool = ((arhi)localObject).f();
-    int i = ((arhi)localObject).e();
+    Object localObject = (aslo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
+    boolean bool = ((aslo)localObject).f();
+    int i = ((aslo)localObject).e();
     if (QLog.isColorLevel()) {
       QLog.d("ExtendFriendCampusFragment", 2, String.format("updateVerifyTipsView needShowVerifyTips=%s verifyStatus=%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) }));
     }
@@ -226,12 +230,12 @@ public class ExtendFriendCampusFragment
   
   public void a()
   {
-    if (this.jdField_a_of_type_Arky != null)
+    if (this.jdField_a_of_type_Aspe != null)
     {
-      this.jdField_a_of_type_Arky.a();
-      aroq.a().b(2);
+      this.jdField_a_of_type_Aspe.a();
+      assw.a().b(2);
     }
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80096A5", "0X80096A5", 0, 0, "", "", "", "");
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80096A5", "0X80096A5", 0, 0, "", "", "", "");
   }
   
   public void a(String paramString, int paramInt)
@@ -242,20 +246,25 @@ public class ExtendFriendCampusFragment
     if (!paramString.equals(this.jdField_a_of_type_JavaLangString)) {
       this.jdField_a_of_type_JavaLangString = paramString;
     }
-    this.jdField_a_of_type_Arjq.b();
+    this.jdField_a_of_type_Asnw.b();
     FeedListView localFeedListView = this.jdField_a_of_type_CooperationQzoneApiFeedListView;
-    if (paramInt == 0) {
-      paramString = null;
-    }
-    if (!localFeedListView.switchTag(paramString, this)) {
-      this.jdField_a_of_type_Arjq.a();
+    if (paramInt == 0) {}
+    for (Object localObject = null;; localObject = paramString)
+    {
+      if (!localFeedListView.switchTag((String)localObject, this)) {
+        this.jdField_a_of_type_Asnw.a();
+      }
+      localObject = new HashMap();
+      ((HashMap)localObject).put("small_tab_id", paramString);
+      UserAction.onUserActionToTunnel("0AND0Y11VZ3PFHQD", "click#school_tab#small_tab", true, -1L, -1L, (Map)localObject, true, true);
+      return;
     }
   }
   
   public void b()
   {
     PublicFragmentActivity.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, ExtendFriendCampusSearchFragment.class);
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.overridePendingTransition(0, 2130772331);
+    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.overridePendingTransition(0, 2130772330);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -275,11 +284,11 @@ public class ExtendFriendCampusFragment
     super.onCreate(paramBundle);
     this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = getActivity();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app;
-    this.jdField_a_of_type_AndroidOsHandler = new bjng(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_AndroidOsHandler = new bkys(Looper.getMainLooper(), this);
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Arht);
-      this.jdField_a_of_type_Arhi = ((arhi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(264));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aslz);
+      this.jdField_a_of_type_Aslo = ((aslo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER));
     }
     this.c = true;
   }
@@ -296,7 +305,7 @@ public class ExtendFriendCampusFragment
       QLog.i("ExtendFriendCampusFragment", 4, paramViewGroup);
       try
       {
-        paramViewGroup = paramLayoutInflater.inflate(2131561051, null);
+        paramViewGroup = paramLayoutInflater.inflate(2131561112, null);
         if (paramViewGroup == null)
         {
           ExtendFriendFragment.a();
@@ -314,11 +323,11 @@ public class ExtendFriendCampusFragment
           QLog.w("ExtendFriendCampusFragment", 4, "onCreateView: failed create view");
           paramViewGroup = paramBundle;
           continue;
-          this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendSearchBarView = ((ExtendFriendSearchBarView)paramViewGroup.findViewById(2131376883));
+          this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendSearchBarView = ((ExtendFriendSearchBarView)paramViewGroup.findViewById(2131377155));
           this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendSearchBarView.getViewTreeObserver().addOnGlobalLayoutListener(this);
           this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendSearchBarView.setItemClickListener(this);
           this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendSearchBarView.setSearchButtonEnable(true);
-          this.jdField_a_of_type_CooperationQzoneApiFeedListView = ((FeedListView)paramViewGroup.findViewById(2131376820));
+          this.jdField_a_of_type_CooperationQzoneApiFeedListView = ((FeedListView)paramViewGroup.findViewById(2131377090));
           this.jdField_a_of_type_CooperationQzoneApiFeedListView.setOverScrollMode(0);
           this.jdField_a_of_type_CooperationQzoneApiFeedListView.setEdgeEffectEnabled(false);
           this.jdField_a_of_type_CooperationQzoneApiFeedListView.setVerticalScrollBarEnabled(false);
@@ -326,12 +335,12 @@ public class ExtendFriendCampusFragment
           this.jdField_a_of_type_CooperationQzoneApiFeedListView.setFeedUinChangedListener(this);
           this.jdField_a_of_type_CooperationQzoneApiFeedListView.setOnScrollListener(this);
           this.jdField_a_of_type_CooperationQzoneApiFeedListView.postDelayed(new ExtendFriendCampusFragment.2(this), 800L);
-          this.jdField_a_of_type_CooperationQzoneApiFeedListView.setExpandHead(new arka(this));
-          this.jdField_a_of_type_Arjq = new arjq(paramViewGroup);
-          this.jdField_a_of_type_Arjq.b();
-          this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendBottomBarView = ((ExtendFriendBottomBarView)paramViewGroup.findViewById(2131363623));
+          this.jdField_a_of_type_CooperationQzoneApiFeedListView.setExpandHead(new asog(this));
+          this.jdField_a_of_type_Asnw = new asnw(paramViewGroup);
+          this.jdField_a_of_type_Asnw.b();
+          this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendBottomBarView = ((ExtendFriendBottomBarView)paramViewGroup.findViewById(2131363692));
           this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendBottomBarView.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_CooperationQzoneApiFeedListView);
-          this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendBottomBarView.setOnClickListener(new arkb(this));
+          this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendBottomBarView.setOnClickListener(new asoh(this));
           a(paramViewGroup);
           this.jdField_a_of_type_Boolean = false;
           paramLayoutInflater = paramViewGroup;
@@ -346,7 +355,7 @@ public class ExtendFriendCampusFragment
     super.onDestroy();
     d();
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Arht);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aslz);
     }
     if ((Build.VERSION.SDK_INT > 15) && (this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendSearchBarView != null)) {
       this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendSearchBarView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
@@ -393,7 +402,7 @@ public class ExtendFriendCampusFragment
   {
     QLog.i("ExtendFriendCampusFragment", 1, "onLoadOver: " + paramBoolean);
     if (paramBoolean) {
-      this.jdField_a_of_type_Arjq.a();
+      this.jdField_a_of_type_Asnw.a();
     }
     for (;;)
     {
@@ -404,9 +413,9 @@ public class ExtendFriendCampusFragment
       }
       return;
       if (NetworkUtil.isNetworkAvailable()) {
-        this.jdField_a_of_type_Arjq.c();
+        this.jdField_a_of_type_Asnw.c();
       } else {
-        this.jdField_a_of_type_Arjq.e();
+        this.jdField_a_of_type_Asnw.e();
       }
     }
   }
@@ -427,6 +436,10 @@ public class ExtendFriendCampusFragment
     if (this.jdField_a_of_type_CooperationQzoneApiFeedListView != null) {
       this.jdField_a_of_type_CooperationQzoneApiFeedListView.onResume();
     }
+    int i = getActivity().getIntent().getIntExtra("extend_frient_from", 0);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("frompage", String.valueOf(i));
+    UserAction.onUserActionToTunnel("0AND0Y11VZ3PFHQD", "expose#school_tab#view", true, -1L, -1L, localHashMap, true, true);
   }
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
@@ -458,7 +471,7 @@ public class ExtendFriendCampusFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment
  * JD-Core Version:    0.7.0.1
  */

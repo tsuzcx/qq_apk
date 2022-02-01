@@ -1,8 +1,19 @@
-public abstract interface yma
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
+
+public final class yma
+  implements Parcelable.Creator<EditRecordVideoSource>
 {
-  public abstract void a(boolean paramBoolean);
+  public EditRecordVideoSource a(Parcel paramParcel)
+  {
+    return new EditRecordVideoSource(paramParcel);
+  }
   
-  public abstract void j();
+  public EditRecordVideoSource[] a(int paramInt)
+  {
+    return new EditRecordVideoSource[paramInt];
+  }
 }
 
 

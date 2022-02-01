@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import aquz;
+import aryo;
 import com.tencent.mobileqq.text.QQText;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
@@ -27,7 +27,7 @@ public class MessageForInteractAndFollow
     this.rawContext = paramObjectInput.readUTF();
     this.timeStamp = paramObjectInput.readLong();
     this.time = this.timeStamp;
-    this.context = aquz.a(this.rawContext, 14);
+    this.context = aryo.a(this.rawContext, 14);
   }
   
   private void writeExternal(ObjectOutput paramObjectOutput)
@@ -449,7 +449,7 @@ public class MessageForInteractAndFollow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForInteractAndFollow
  * JD-Core Version:    0.7.0.1
  */

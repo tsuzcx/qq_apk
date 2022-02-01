@@ -1,311 +1,33 @@
-import android.app.Application;
-import android.content.res.Resources;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity.16.1;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity.16.2;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
+import android.view.View;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
 import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.util.VersionUtils;
-import mqq.app.MobileQQ;
 
 public class aduy
-  implements CompoundButton.OnCheckedChangeListener
+  implements bkzq
 {
-  public aduy(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public aduy(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, bkzi parambkzi) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void OnClick(View paramView, int paramInt)
   {
-    boolean bool;
-    if (((paramCompoundButton == this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a()) || (paramCompoundButton == PermisionPrivacyActivity.b(this.a)) || (paramCompoundButton == PermisionPrivacyActivity.a(this.a)) || (paramCompoundButton == this.a.b.a()) || (paramCompoundButton == this.a.c.a()) || (paramCompoundButton == this.a.e.a())) && (!NetworkUtil.isNetSupport(this.a.getActivity())))
+    switch (paramInt)
     {
-      this.a.a(2131694105, 1);
-      localObject1 = this.a;
-      if (!paramBoolean)
-      {
-        bool = true;
-        PermisionPrivacyActivity.a((PermisionPrivacyActivity)localObject1, paramCompoundButton, bool);
-      }
     }
-    int i;
-    label402:
-    label449:
-    label578:
-    Object localObject2;
     for (;;)
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      this.jdField_a_of_type_Bkzi.dismiss();
       return;
-      bool = false;
-      break;
-      if (paramCompoundButton == this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())
+      if (NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.getActivity()))
       {
-        if (AppSetting.c) {
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(this.a.getResources().getString(2131694061));
-        }
-        if (paramBoolean) {}
-        for (i = 1;; i = 0)
-        {
-          bcef.b(this.a.app, "CliOper", "", "", "Setting_tab", "Nearby_likeme", 0, i, String.valueOf(i), "", "", "");
-          this.a.app.setZanAllowed(true, paramBoolean);
-          break;
-        }
-      }
-      if (paramCompoundButton == this.a.e.a())
-      {
-        ((amov)this.a.app.getBusinessHandler(2)).o(paramBoolean);
-        if (paramBoolean) {
-          bcef.b(this.a.app, "dc00898", "", "", "0X8009E81", "0X8009E81", 0, 0, "", "", "", "");
-        } else {
-          bcef.b(this.a.app, "dc00898", "", "", "0X8009E80", "0X8009E80", 0, 0, "", "", "", "");
-        }
+        bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "CliOper", "", "", "0X80040EA", "0X80040EA", 0, 0, "", "", "", "");
+        bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "CliOper", "", "", "0X8006669", "0X8006669", 0, 0, "", "", "", "");
+        DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).c(Long.valueOf(DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity)).longValue());
+        this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.getString(2131692036));
+        DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).show();
       }
       else
       {
-        if (paramCompoundButton == this.a.i.a())
-        {
-          if (!NetworkUtil.isNetSupport(this.a.app.getApplication().getApplicationContext()))
-          {
-            QQToast.a(this.a.getApplicationContext(), 2131718207, 1).a();
-            localObject1 = this.a;
-            if (!paramBoolean)
-            {
-              bool = true;
-              PermisionPrivacyActivity.a((PermisionPrivacyActivity)localObject1, paramCompoundButton, bool);
-            }
-          }
-          else
-          {
-            localObject1 = (amov)this.a.app.getBusinessHandler(2);
-            if (paramBoolean) {
-              break label449;
-            }
-          }
-          for (bool = true;; bool = false)
-          {
-            ((amov)localObject1).k(bool);
-            break;
-            bool = false;
-            break label402;
-          }
-        }
-        if (paramCompoundButton == this.a.jdField_a_of_type_AndroidWidgetCompoundButton)
-        {
-          if (!NetworkUtil.isNetSupport(this.a.app.getApplication().getApplicationContext()))
-          {
-            QQToast.a(this.a.getApplicationContext(), 2131694064, 1).a();
-            this.a.jdField_a_of_type_AndroidWidgetCompoundButton.setOnCheckedChangeListener(null);
-            localObject1 = this.a.jdField_a_of_type_AndroidWidgetCompoundButton;
-            if (this.a.app.getC2CRoamingSetting() == 1) {}
-            for (bool = true;; bool = false)
-            {
-              ((CompoundButton)localObject1).setChecked(bool);
-              this.a.jdField_a_of_type_AndroidWidgetCompoundButton.setOnCheckedChangeListener(this.a.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-              break;
-            }
-          }
-          if (paramBoolean)
-          {
-            i = 1;
-            bcef.b(this.a.app, "CliOper", "", "", "Setting_tab", "Latest_chatlog_syn", 0, i, String.valueOf(i), "", "", "");
-            this.a.a(this.a.getApplication().getResources().getString(2131718160));
-            if (!paramBoolean) {
-              break label657;
-            }
-          }
-          label657:
-          for (i = 1;; i = 0)
-          {
-            this.a.app.setC2CRoamingSetting(i);
-            break;
-            i = 0;
-            break label578;
-          }
-        }
-        if (paramCompoundButton == PermisionPrivacyActivity.b(this.a))
-        {
-          if (paramBoolean) {}
-          for (i = 1;; i = 0)
-          {
-            bcef.b(this.a.app, "CliOper", "", "", "Setting_tab", "Visible_same", 0, i, String.valueOf(i), "", "", "");
-            this.a.app.setVisibilityForStatus(paramBoolean, false);
-            this.a.a(paramBoolean);
-            break;
-          }
-        }
-        if (paramCompoundButton == PermisionPrivacyActivity.a(this.a))
-        {
-          if (paramBoolean) {}
-          for (i = 1;; i = 0)
-          {
-            bcef.b(this.a.app, "CliOper", "", "", "Setting_tab", "Same_likeme", 0, i, String.valueOf(i), "", "", "");
-            this.a.app.setZanAllowed(false, paramBoolean);
-            break;
-          }
-        }
-        if (paramCompoundButton == this.a.h.a())
-        {
-          if (paramBoolean) {}
-          for (i = 1;; i = 0)
-          {
-            bcef.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_signature_qzone", 0, i, String.valueOf(i), "", "", "");
-            if ((!NetworkUtil.isNetSupport(this.a.getActivity())) || (PermisionPrivacyActivity.a(this.a) == null)) {
-              break label924;
-            }
-            if (AppSetting.c) {
-              this.a.h.setContentDescription(amtj.a(2131707030));
-            }
-            PermisionPrivacyActivity.a(this.a).a(paramBoolean);
-            break;
-          }
-          label924:
-          localObject1 = this.a;
-          if (PermisionPrivacyActivity.a(this.a) != null)
-          {
-            i = 2131694105;
-            label943:
-            PermisionPrivacyActivity.a((PermisionPrivacyActivity)localObject1, i);
-            localObject1 = this.a;
-            localObject2 = this.a.h.a();
-            if (paramBoolean) {
-              break label992;
-            }
-          }
-          label992:
-          for (bool = true;; bool = false)
-          {
-            PermisionPrivacyActivity.a((PermisionPrivacyActivity)localObject1, (CompoundButton)localObject2, bool);
-            break;
-            i = 2131718207;
-            break label943;
-          }
-        }
-        if (paramCompoundButton == this.a.g.a())
-        {
-          if (AppSetting.c) {
-            this.a.g.setContentDescription("可通过系统通讯录发起QQ聊天");
-          }
-          localObject1 = new PermisionPrivacyActivity.16.1(this, (ContactSyncManager)this.a.app.getManager(41), paramBoolean);
-          localObject2 = new PermisionPrivacyActivity.16.2(this);
-          if (paramBoolean)
-          {
-            if ((aihs.a()) && (VersionUtils.isM()))
-            {
-              PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)this.a.app.getManager(11);
-              aihu localaihu = new aihu();
-              localaihu.jdField_a_of_type_JavaLangRunnable = ((Runnable)localObject1);
-              localaihu.b = ((Runnable)localObject2);
-              localaihu.jdField_a_of_type_Int = 7;
-              localPhoneContactManagerImp.a().a(this.a, localaihu, this.a, new String[] { "android.permission.READ_CONTACTS", "android.permission.WRITE_CONTACTS", "android.permission.GET_ACCOUNTS" });
-            }
-            else
-            {
-              ((Runnable)localObject1).run();
-            }
-          }
-          else {
-            ((Runnable)localObject1).run();
-          }
-        }
-        else if (paramCompoundButton == this.a.b.a())
-        {
-          if (AppSetting.c) {
-            this.a.b.setContentDescription(amtj.a(2131707032));
-          }
-          PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean);
-          this.a.app.setVisibilityForNetWorkStatus(paramBoolean, true);
-          if (paramBoolean) {
-            bcef.b(this.a.app, "CliOper", "", "", "0X8009C08", "0X8009C08", 0, 0, "", "", "", "");
-          } else {
-            bcef.b(this.a.app, "CliOper", "", "", "0X8009C09", "0X8009C09", 0, 0, "", "", "", "");
-          }
-        }
-        else if (paramCompoundButton == this.a.c.a())
-        {
-          if (AppSetting.c) {
-            this.a.c.setContentDescription(amtj.a(2131707023));
-          }
-          PermisionPrivacyActivity.a(this.a, this.a.c.a(), paramBoolean);
-          this.a.app.setVisibilityForInputStatus(paramBoolean, true);
-        }
-        else
-        {
-          if (paramCompoundButton == this.a.d.a())
-          {
-            localObject1 = this.a.app;
-            if (paramBoolean) {}
-            for (i = 1;; i = 0)
-            {
-              bcef.b((QQAppInterface)localObject1, "CliOper", "", "", "0X800487E", "0X800487E", 0, 0, String.valueOf(i), "", "", "");
-              if (!NetworkUtil.isNetSupport(this.a.getActivity())) {
-                break label1520;
-              }
-              if (AppSetting.c) {
-                this.a.d.setContentDescription(amtj.a(2131707033));
-              }
-              ((amov)this.a.app.getBusinessHandler(2)).i(paramBoolean);
-              break;
-            }
-            label1520:
-            localObject1 = this.a;
-            if (PermisionPrivacyActivity.a(this.a) != null)
-            {
-              i = 2131694105;
-              label1539:
-              PermisionPrivacyActivity.a((PermisionPrivacyActivity)localObject1, i);
-              localObject1 = this.a;
-              localObject2 = this.a.d.a();
-              if (paramBoolean) {
-                break label1588;
-              }
-            }
-            label1588:
-            for (bool = true;; bool = false)
-            {
-              PermisionPrivacyActivity.a((PermisionPrivacyActivity)localObject1, (CompoundButton)localObject2, bool);
-              break;
-              i = 2131718207;
-              break label1539;
-            }
-          }
-          if (paramCompoundButton == this.a.f.a())
-          {
-            if ((paramCompoundButton.getTag() == null) || (!((Boolean)paramCompoundButton.getTag()).booleanValue())) {
-              break label1638;
-            }
-            paramCompoundButton.setTag(Boolean.FALSE);
-          }
-        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a(1, this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.getString(2131694305));
       }
-    }
-    label1638:
-    this.a.jdField_a_of_type_Anca.a(paramBoolean);
-    Object localObject1 = this.a.jdField_a_of_type_AndroidWidgetTextView;
-    if (paramBoolean)
-    {
-      i = 2131692854;
-      label1666:
-      ((TextView)localObject1).setText(i);
-      localObject2 = this.a.app;
-      if (!paramBoolean) {
-        break label1728;
-      }
-    }
-    label1728:
-    for (localObject1 = "open_autopass";; localObject1 = "close_autopass")
-    {
-      bcef.b((QQAppInterface)localObject2, "dc00899", "Grp_invite_friend", "", "auto_pass", (String)localObject1, 0, 0, "", "", "", "");
-      break;
-      i = 2131692855;
-      break label1666;
     }
   }
 }

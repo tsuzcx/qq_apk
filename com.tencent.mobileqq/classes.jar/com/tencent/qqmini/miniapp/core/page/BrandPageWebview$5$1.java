@@ -8,7 +8,10 @@ class BrandPageWebview$5$1
 {
   BrandPageWebview$5$1(BrandPageWebview.5 param5) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    BrandPageWebview.access$700(this.this$1.this$0).onNewPageCompleted();
+  }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
   

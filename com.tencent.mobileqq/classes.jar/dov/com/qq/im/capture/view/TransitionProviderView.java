@@ -1,6 +1,5 @@
 package dov.com.qq.im.capture.view;
 
-import amtj;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler.Callback;
@@ -8,19 +7,20 @@ import android.os.Looper;
 import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
-import bhkl;
-import bjng;
-import bmql;
-import bmrr;
-import bmte;
-import bmtm;
-import bmyx;
-import bmzp;
-import bmzq;
-import bmzw;
-import bnev;
-import bnub;
-import bnuc;
+import anvx;
+import bivb;
+import bkys;
+import bogd;
+import bohj;
+import boiw;
+import boje;
+import boop;
+import boph;
+import bopi;
+import bopo;
+import boun;
+import bpjt;
+import bpju;
 import com.tencent.image.ApngImage;
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
 import com.tencent.mobileqq.widget.bounce.BounceViewPager;
@@ -34,18 +34,18 @@ import dov.com.qq.im.capture.data.TransitionCategoryItem;
 import dov.com.qq.im.capture.music.QIMMusicConfigManager;
 import java.util.ArrayList;
 import java.util.List;
-import xwa;
-import yld;
-import yle;
-import ylg;
+import ykv;
+import yzw;
+import yzx;
+import yzz;
 
 public class TransitionProviderView
   extends ProviderView
-  implements Handler.Callback, bhkl, bmzp, AdapterView.OnItemClickListener
+  implements Handler.Callback, bivb, boph, AdapterView.OnItemClickListener
 {
   public int a;
-  public bjng a;
-  bmte jdField_a_of_type_Bmte = new bmzw(this);
+  public bkys a;
+  boiw jdField_a_of_type_Boiw = new bopo(this);
   public MusicItemInfo a;
   private BounceViewPager jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager;
   private TransitionProviderPagerAdapter jdField_a_of_type_DovComQqImCaptureAdapterTransitionProviderPagerAdapter;
@@ -56,28 +56,28 @@ public class TransitionProviderView
   {
     super(paramContext);
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Bjng = new bjng(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_Bkys = new bkys(Looper.getMainLooper(), this);
   }
   
   private void a(MusicItemInfo paramMusicItemInfo)
   {
-    bmtm localbmtm;
+    boje localboje;
     if (paramMusicItemInfo != null)
     {
-      localbmtm = (bmtm)bmql.a().c(8);
-      if ((localbmtm == null) || (!localbmtm.b(paramMusicItemInfo))) {
+      localboje = (boje)bogd.a().c(8);
+      if ((localboje == null) || (!localboje.b(paramMusicItemInfo))) {
         break label52;
       }
-      localbmtm.a(paramMusicItemInfo);
-      if (this.jdField_a_of_type_Bmyx != null) {
-        this.jdField_a_of_type_Bmyx.c(true);
+      localboje.a(paramMusicItemInfo);
+      if (this.jdField_a_of_type_Boop != null) {
+        this.jdField_a_of_type_Boop.c(true);
       }
     }
     label52:
-    while (localbmtm == null) {
+    while (localboje == null) {
       return;
     }
-    localbmtm.a(paramMusicItemInfo, this.jdField_a_of_type_Bmte);
+    localboje.a(paramMusicItemInfo, this.jdField_a_of_type_Boiw);
   }
   
   protected int a()
@@ -85,17 +85,17 @@ public class TransitionProviderView
     return 0;
   }
   
-  public ArrayList<bmzq> a()
+  public ArrayList<bopi> a()
   {
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      bmzq localbmzq = new bmzq();
-      localbmzq.jdField_a_of_type_JavaLangString = ((FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString;
-      localbmzq.jdField_a_of_type_Boolean = false;
-      localbmzq.b = (amtj.a(2131714079) + localbmzq.jdField_a_of_type_JavaLangString + amtj.a(2131714080));
-      localArrayList.add(localbmzq);
+      bopi localbopi = new bopi();
+      localbopi.jdField_a_of_type_JavaLangString = ((FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString;
+      localbopi.jdField_a_of_type_Boolean = false;
+      localbopi.b = (anvx.a(2131714426) + localbopi.jdField_a_of_type_JavaLangString + anvx.a(2131714427));
+      localArrayList.add(localbopi);
       i += 1;
     }
     return localArrayList;
@@ -127,11 +127,11 @@ public class TransitionProviderView
     super.a(paramBundle);
     this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.setTabCheckListener(this);
     if (this.jdField_a_of_type_AndroidViewView == null) {}
-    for (this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager = ((BounceViewPager)LayoutInflater.from(getContext()).inflate(2131560861, this, false));; this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager = ((BounceViewPager)this.jdField_a_of_type_AndroidViewView))
+    for (this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager = ((BounceViewPager)LayoutInflater.from(getContext()).inflate(2131560921, this, false));; this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager = ((BounceViewPager)this.jdField_a_of_type_AndroidViewView))
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.a(this);
       a(this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager);
-      paramBundle = ((bmrr)bmql.a(5)).a;
+      paramBundle = ((bohj)bogd.a(5)).a;
       if (paramBundle != null) {
         break;
       }
@@ -198,18 +198,18 @@ public class TransitionProviderView
           break;
         }
         paramView = (TransitionCategoryItem)paramAdapterView.jdField_a_of_type_JavaUtilList.get(paramInt);
-        if ((paramView != null) && (!paramView.equals(bnub.a().a())))
+        if ((paramView != null) && (!paramView.equals(bpjt.a().a())))
         {
-          bnub.a().a(paramView);
+          bpjt.a().a(paramView);
           g();
-          if (this.jdField_a_of_type_Bmyx != null)
+          if (this.jdField_a_of_type_Boop != null)
           {
             paramInt = Integer.parseInt(paramView.jdField_a_of_type_JavaLangString);
-            this.jdField_a_of_type_Bmyx.d(paramInt);
+            this.jdField_a_of_type_Boop.d(paramInt);
           }
-          xwa.a("video_edit_transition", "clk_effects", bnev.a(this.jdField_a_of_type_Int), 0, new String[] { paramView.k, paramView.n, paramView.l, paramView.m });
+          ykv.a("video_edit_transition", "clk_effects", boun.a(this.jdField_a_of_type_Int), 0, new String[] { paramView.k, paramView.n, paramView.l, paramView.m });
         }
-        if (ylg.a().b() == 22)
+        if (yzz.a().b() == 22)
         {
           if ((paramView == null) || (Integer.valueOf(paramView.jdField_a_of_type_JavaLangString).intValue() >= 0)) {
             break label307;
@@ -220,11 +220,11 @@ public class TransitionProviderView
         {
           paramAdapterView = new MusicItemInfo();
           paramAdapterView.mType = 2;
-          paramView = yld.a(getContext()).a(paramView.k);
+          paramView = yzw.a(getContext()).a(paramView.k);
           if ((paramView == null) || (paramView.size() <= 0)) {
             break label372;
           }
-          this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = ((QIMMusicConfigManager)bmql.a(2)).a(((yle)paramView.get(0)).jdField_a_of_type_Int, ((yle)paramView.get(0)).b);
+          this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = ((QIMMusicConfigManager)bogd.a(2)).a(((yzx)paramView.get(0)).jdField_a_of_type_Int, ((yzx)paramView.get(0)).b);
           if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo == null) {
             break label366;
           }

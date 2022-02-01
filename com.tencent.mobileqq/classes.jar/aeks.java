@@ -1,22 +1,77 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.TroopClassChoiceActivity;
-import com.tencent.mobileqq.activity.TroopClassChoiceActivity.GetClassChoiceCallBack.1;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.MultiImageTextView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class aeks
-  implements bfke
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aeks(TroopClassChoiceActivity paramTroopClassChoiceActivity) {}
+  public aeks(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramBoolean)
-    {
-      this.a.a = bfkc.a(BaseApplicationImpl.getContext()).a(BaseApplicationImpl.getContext(), TroopClassChoiceActivity.a(this.a));
-      this.a.runOnUiThread(new TroopClassChoiceActivity.GetClassChoiceCallBack.1(this));
-      return;
+    boolean bool2 = true;
+    boolean bool1 = true;
+    int j = HttpUtil.getNetWorkType();
+    int i = j;
+    if (j == -1) {
+      i = 2;
     }
-    QLog.e("IphoneTitleBarActivity", 1, "getClassChoiceFromServer failed!");
+    Object localObject;
+    if (i == 0)
+    {
+      QQToast.a(this.a.getActivity(), 1, 2131695849, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299080));
+      localObject = this.a;
+      if (!paramBoolean) {
+        NotifyPushSettingActivity.a((NotifyPushSettingActivity)localObject, bool1);
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      bool1 = false;
+      break;
+      if (NotifyPushSettingActivity.a(this.a).compareAndSet(true, true))
+      {
+        QQToast.a(this.a.getActivity(), 1, 2131698035, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299080));
+        localObject = this.a;
+        if (!paramBoolean) {}
+        for (bool1 = bool2;; bool1 = false)
+        {
+          NotifyPushSettingActivity.a((NotifyPushSettingActivity)localObject, bool1);
+          break;
+        }
+      }
+      NotifyPushSettingActivity.a(this.a, paramBoolean);
+      if (paramBoolean)
+      {
+        localObject = anvx.a(2131707102) + aelq.a(3600000L);
+        NotifyPushSettingActivity.a(this.a).setRightText((CharSequence)localObject);
+        NotifyPushSettingActivity.a(this.a).set(true);
+        long l = NetConnInfoCenter.getServerTime();
+        ((anri)this.a.app.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).a((int)(3600L + l), "", "not_disturb_from_notify_push_setting_activity");
+        bdla.b(this.a.app, "CliOper", "", "", "0X8009DD2", "0X8009DD2", 0, 1, 60L + "", "0", "", "");
+      }
+      else
+      {
+        localObject = NotifyPushSettingActivity.a(this.a).a().getText().toString();
+        NotifyPushSettingActivity.a(this.a).a().setText("");
+        NotifyPushSettingActivity.a(this.a).set(true);
+        ((anri)this.a.app.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).a(0, (String)localObject, "not_disturb_from_notify_push_setting_activity");
+        bdla.b(this.a.app, "CliOper", "", "", "0X8009DD2", "0X8009DD2", 0, 2, "0", "0", "", "");
+      }
+    }
   }
 }
 

@@ -1,36 +1,49 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.widget.RoundImageView;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
 import com.tencent.qphone.base.util.QLog;
 
-class appv
-  implements URLDrawable.URLDrawableListener
+public class appv
+  implements apox
 {
-  appv(appt paramappt, RoundImageView paramRoundImageView, aqoi paramaqoi, String paramString) {}
+  public appv(ARScanEntryView paramARScanEntryView) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommentDanmakuRender", 2, "onLoadCanceled : " + this.jdField_a_of_type_JavaLangString);
+    QLog.d("AREngine_ARScanEntryView", 1, "onAsyncFaceResDownLoadComplete " + this.a.m);
+    if (!this.a.m) {
+      return;
     }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommentDanmakuRender", 2, "onLoadFailed : " + this.jdField_a_of_type_JavaLangString);
+    ARScanEntryView.b(this.a, 100);
+    if ((ARScanEntryView.a(this.a).a != null) && (ARScanEntryView.a(this.a).a.a != null)) {
+      ARScanEntryView.a(this.a).a.a.a();
     }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (paramURLDrawable != null)
+    if (ARScanEntryView.a(this.a) != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageDrawable(paramURLDrawable);
-      this.jdField_a_of_type_Aqoi.c(true);
+      ARScanEntryView.a(this.a).removeMessages(324);
+      ARScanEntryView.a(this.a).sendEmptyMessage(324);
     }
+    if ((ARScanEntryView.a(this.a)) && (this.a.a.a().a()))
+    {
+      ARScanEntryView.b(this.a);
+      QLog.d("AREngine_ARScanEntryView", 1, "everything is ready,so quit update resources");
+      return;
+    }
+    this.a.k();
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.d("AREngine_ARScanEntryView", 1, "onAsyncFaceResUpdateProgress " + paramInt + ";" + this.a.m);
+    if (!this.a.m) {
+      return;
+    }
+    ARScanEntryView.b(this.a, paramInt);
+    ARScanEntryView.a(this.a);
+  }
+  
+  public void b()
+  {
+    this.a.k();
   }
 }
 

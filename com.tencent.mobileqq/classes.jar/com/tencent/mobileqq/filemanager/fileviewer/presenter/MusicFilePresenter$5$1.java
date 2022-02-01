@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import asqh;
-import asuz;
-import aswq;
+import atuo;
+import atzg;
+import auax;
 
 class MusicFilePresenter$5$1
   implements Runnable
@@ -11,17 +11,17 @@ class MusicFilePresenter$5$1
   
   public void run()
   {
-    if ((this.a.this$0.jdField_a_of_type_Asqh != null) && (this.a.this$0.jdField_a_of_type_Asqh.b(asuz.a(this.a.this$0))))
+    if ((this.a.this$0.jdField_a_of_type_Atuo != null) && (this.a.this$0.jdField_a_of_type_Atuo.b(atzg.a(this.a.this$0))))
     {
-      int i = this.a.this$0.jdField_a_of_type_Asqh.a();
+      int i = this.a.this$0.jdField_a_of_type_Atuo.a();
       this.a.this$0.b(i);
-      this.a.this$0.jdField_a_of_type_Aswq.c(i);
+      this.a.this$0.jdField_a_of_type_Auax.c(i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.MusicFilePresenter.5.1
  * JD-Core Version:    0.7.0.1
  */

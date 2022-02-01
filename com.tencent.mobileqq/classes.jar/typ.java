@@ -1,24 +1,10 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.liveroom.LiveRoomGiftCallback;
+import kotlin.Metadata;
 
-class typ
-  implements LiveRoomGiftCallback
-{
-  typ(tym paramtym) {}
-  
-  public void onCall(int paramInt, String paramString)
-  {
-    if (paramInt == 7)
-    {
-      QLog.d("ReadInJoySuperMaskAd", 2, "Vpng play completion!");
-      tym.a(this.a).sendEmptyMessage(2);
-    }
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/DeviceBridgeInvokeHandler$Companion;", "", "()V", "GET_CLIENT_INFO", "", "GET_CU_KING_STATUS", "GET_DEVICE_INFO", "GET_GDT_INFO", "GET_NETWORK_INFO", "GET_NETWORK_TYPE", "GET_NET_TYPE", "GET_RECOMMEND_FLAG", "IS_MOBILE_QQ", "NS_DEVICE", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class typ {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     typ
  * JD-Core Version:    0.7.0.1
  */

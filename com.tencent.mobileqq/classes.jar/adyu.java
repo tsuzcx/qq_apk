@@ -1,53 +1,55 @@
-import android.os.Handler;
+import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.adapter.ForwardRecentItemView;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adyu
-  implements AdapterView.OnItemClickListener
+  implements View.OnClickListener
 {
-  public adyu(QQLSActivity paramQQLSActivity) {}
+  public adyu(ForwardRecentActivity paramForwardRecentActivity, ResultRecord paramResultRecord) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    paramView = (RecentBaseData)QQLSActivity.a(this.a).getItem(paramInt);
-    paramLong = paramAdapterView.getAdapter().getItemId(paramInt);
-    if ((paramLong == QQLSActivity.a(this.a)) && (Math.abs(QQLSActivity.b(this.a) - System.currentTimeMillis()) < 300L))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("QQLSActivity", 2, "mRecentList is double click");
+    if (ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity)) {
+      if (ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity, AppConstants.DATALINE_PC_UIN, 6000))
+      {
+        ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity).a(false);
+        ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity, AppConstants.DATALINE_PC_UIN, 6000);
       }
-      QQLSActivity.a(this.a, -1L);
-      QQLSActivity.b(this.a, 0L);
-      QQLSActivity.a(this.a, paramView);
-      QQLSActivity.a(this.a, true);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("QQLSActivity", 2, "mRecentList  click once");
-    }
-    QQLSActivity.a(this.a, paramLong);
-    QQLSActivity.b(this.a, System.currentTimeMillis());
-    if (QQLSActivity.a(this.a)) {
-      QQLSActivity.a(this.a).setText(2131698316);
     }
     for (;;)
     {
-      paramAdapterView = QQLSActivity.a(this.a).obtainMessage(6);
-      QQLSActivity.a(this.a).sendMessageDelayed(paramAdapterView, 500L);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      QQLSActivity.a(this.a).setText(2131698315);
+      if (ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberResultRecord))
+      {
+        ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity).a(true);
+        continue;
+        Bundle localBundle = new Bundle();
+        localBundle.putString("uin", String.valueOf(AppConstants.DATALINE_PC_UIN));
+        localBundle.putInt("uintype", -1);
+        localBundle.putBoolean("forward_report_confirm", true);
+        localBundle.putString("forward_report_confirm_action_name", "0X8005A13");
+        localBundle.putString("forward_report_confirm_reverse2", "0");
+        localBundle.putString("caller_name", this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.c);
+        this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.jdField_a_of_type_Aupt.a(aupp.f.intValue(), localBundle);
+        this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.jdField_a_of_type_Aupt.D();
+        bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.app, "CliOper", "", "", "friendchoose", "0X8009D90", ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity), 0, "", "", "", "");
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.jdField_a_of_type_Boolean) {
+          bjgx.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.app.getAccount(), "", this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.b, "1000", "34", "0", false, this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.jdField_a_of_type_Boolean);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adyu
  * JD-Core Version:    0.7.0.1
  */

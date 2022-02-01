@@ -1,50 +1,23 @@
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
+
 public class zjb
+  implements Animator.AnimatorListener
 {
-  private volatile int jdField_a_of_type_Int = 0;
-  private zjl jdField_a_of_type_Zjl;
+  public zjb(RotateCircleImageView paramRotateCircleImageView) {}
   
-  public void a()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    a(-1);
+    RotateCircleImageView.a(this.a).start();
   }
   
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Zjl != null) {}
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return;
-    case -1: 
-      this.jdField_a_of_type_Zjl.p();
-      return;
-    case 1: 
-      this.jdField_a_of_type_Zjl.n();
-      return;
-    case 2: 
-      this.jdField_a_of_type_Zjl.m();
-      return;
-    }
-    this.jdField_a_of_type_Zjl.o();
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void a(zjl paramzjl)
-  {
-    this.jdField_a_of_type_Zjl = paramzjl;
-    a(this.jdField_a_of_type_Int);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int == -1;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Int == 1;
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

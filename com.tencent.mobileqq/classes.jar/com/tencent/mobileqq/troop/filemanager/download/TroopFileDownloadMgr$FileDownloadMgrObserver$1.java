@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.troop.filemanager.download;
 
-import befy;
+import bfnb;
 
 public class TroopFileDownloadMgr$FileDownloadMgrObserver$1
   implements Runnable
 {
-  public TroopFileDownloadMgr$FileDownloadMgrObserver$1(befy parambefy, Object paramObject) {}
+  public TroopFileDownloadMgr$FileDownloadMgrObserver$1(bfnb parambfnb, Object paramObject) {}
   
   public void run()
   {
-    befy.a(this.this$0, this.a);
+    bfnb.a(this.this$0, this.a);
   }
 }
 

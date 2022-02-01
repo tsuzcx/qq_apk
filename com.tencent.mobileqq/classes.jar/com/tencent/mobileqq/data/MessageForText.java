@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
 import ActionMsg.MsgBody;
-import aaeb;
-import abwz;
-import acwc;
+import aatn;
+import acnh;
+import admo;
 import android.text.TextUtils;
-import bevq;
-import bfti;
-import bgdk;
-import bhoa;
+import bgcz;
+import bhca;
+import bhmb;
+import biyt;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
@@ -25,12 +25,12 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.app.AccountNotMatchException;
 import mqq.app.AppRuntime;
-import npr;
-import npt;
+import nws;
+import nwu;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ugf;
+import uuc;
 
 public class MessageForText
   extends RecommendCommonMessage
@@ -186,7 +186,7 @@ public class MessageForText
       }
       localObject = new CopyOnWriteArrayList();
       ((List)localObject).add(this);
-      bhoa.a(this, (List)localObject, bool1, HexUtil.hexStr2Bytes(str2));
+      biyt.a(this, (List)localObject, bool1, HexUtil.hexStr2Bytes(str2));
       return;
     }
   }
@@ -198,7 +198,7 @@ public class MessageForText
     Object localObject1 = localObject2;
     if (this.msgtype == -1003)
     {
-      localObject1 = bfti.a((String)localObject2);
+      localObject1 = bhca.a((String)localObject2);
       this.action = ((MsgBody)localObject1).action;
       localObject1 = ((MsgBody)localObject1).msg;
     }
@@ -208,10 +208,10 @@ public class MessageForText
     }
     if (this.istroop == 1008)
     {
-      this.sb = new aaeb((CharSequence)localObject2, 13);
-      ((aaeb)this.sb).a = this.selfuin;
-      ((aaeb)this.sb).b = this.frienduin;
-      ((aaeb)this.sb).setBizSrc(ugf.b(this.frienduin));
+      this.sb = new aatn((CharSequence)localObject2, 13);
+      ((aatn)this.sb).a = this.selfuin;
+      ((aatn)this.sb).b = this.frienduin;
+      ((aatn)this.sb).setBizSrc(uuc.b(this.frienduin));
     }
     for (;;)
     {
@@ -232,7 +232,7 @@ public class MessageForText
               continue;
             }
             localObject1 = localAppRuntime;
-            boolean bool = npt.a((QQAppInterface)localAppRuntime, this.frienduin, this.istroop);
+            boolean bool = nwu.a((QQAppInterface)localAppRuntime, this.frienduin, this.istroop);
             paramBoolean = bool;
           }
           catch (AccountNotMatchException localAccountNotMatchException)
@@ -251,7 +251,7 @@ public class MessageForText
           if (!paramBoolean) {
             continue;
           }
-          this.sb = new npr((CharSequence)localObject2, 13, ChatTextSizeSettingActivity.a(), this, this.frienduin, this.selfuin, (QQAppInterface)localAppRuntime);
+          this.sb = new nws((CharSequence)localObject2, 13, ChatTextSizeSettingActivity.a(), this, this.frienduin, this.selfuin, (QQAppInterface)localAppRuntime);
           ((QQText)this.sb).setBizSrc("biz_src_jc_aio");
           break;
           localObject1 = localAppRuntime;
@@ -273,7 +273,7 @@ public class MessageForText
       }
       else
       {
-        this.sb = bgdk.a((String)localObject2, this, ChatTextSizeSettingActivity.a(), 13);
+        this.sb = bhmb.a((String)localObject2, this, ChatTextSizeSettingActivity.a(), 13);
         localObject1 = getExtInfoFromExtStr("disc_at_info_list");
         if (!TextUtils.isEmpty((CharSequence)localObject1))
         {
@@ -284,8 +284,8 @@ public class MessageForText
             if (!QQAppInterface.class.isInstance(localObject3)) {
               break label583;
             }
-            this.msg2 = bevq.a((QQAppInterface)localObject3, (StringBuilder)localObject2, (String)localObject1, this.frienduin, isSend()).toString();
-            this.sb2 = bgdk.a(this.msg2, this, ChatTextSizeSettingActivity.a(), 13);
+            this.msg2 = bgcz.a((QQAppInterface)localObject3, (StringBuilder)localObject2, (String)localObject1, this.frienduin, isSend()).toString();
+            this.sb2 = bhmb.a(this.msg2, this, ChatTextSizeSettingActivity.a(), 13);
             if (!(this.sb2 instanceof QQText)) {
               continue;
             }
@@ -315,7 +315,7 @@ public class MessageForText
   
   public boolean isSupportFTS()
   {
-    return abwz.x(this.istroop);
+    return acnh.x(this.istroop);
   }
   
   public boolean isSupportReply()
@@ -340,23 +340,23 @@ public class MessageForText
     this.msgData = str1.getBytes();
   }
   
-  public void setSendMsgParams(acwc paramacwc)
+  public void setSendMsgParams(admo paramadmo)
   {
-    this.mMsgSignalSum = paramacwc.jdField_a_of_type_Int;
-    this.mMsgSignalCount = paramacwc.b;
-    this.mIsMsgSignalOpen = paramacwc.jdField_c_of_type_Boolean;
-    this.mMsgSignalNetType = paramacwc.jdField_c_of_type_Int;
-    this.mMsgSendTime = paramacwc.jdField_a_of_type_Long;
-    this.mPasswdRedBagFlag = paramacwc.f;
-    this.mPasswdRedBagSender = paramacwc.d;
+    this.mMsgSignalSum = paramadmo.jdField_a_of_type_Int;
+    this.mMsgSignalCount = paramadmo.b;
+    this.mIsMsgSignalOpen = paramadmo.jdField_c_of_type_Boolean;
+    this.mMsgSignalNetType = paramadmo.jdField_c_of_type_Int;
+    this.mMsgSendTime = paramadmo.jdField_a_of_type_Long;
+    this.mPasswdRedBagFlag = paramadmo.f;
+    this.mPasswdRedBagSender = paramadmo.d;
     if ((this instanceof MessageForFoldMsg)) {
-      ((MessageForFoldMsg)this).foldFlagTemp = paramacwc.e;
+      ((MessageForFoldMsg)this).foldFlagTemp = paramadmo.e;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForText
  * JD-Core Version:    0.7.0.1
  */

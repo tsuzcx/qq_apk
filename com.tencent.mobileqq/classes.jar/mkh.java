@@ -1,55 +1,51 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.av.VideoController;
-import com.tencent.av.ui.VideoInviteActivity;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.VideoControlUI;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class mkh
   implements DialogInterface.OnClickListener
 {
-  int jdField_a_of_type_Int;
+  public mkh(VideoControlUI paramVideoControlUI, long paramLong) {}
   
-  public mkh(VideoInviteActivity paramVideoInviteActivity, int paramInt)
+  public void onClick(DialogInterface arg1, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
-      return;
-    }
-    long l = AudioHelper.b();
-    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_JavaLangString, 1, "onClick, seq[" + l + "]");
-    switch (this.jdField_a_of_type_Int)
+    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h()) {}
+    long l;
+    do
     {
-    default: 
-      return;
-    case 0: 
-      paramDialogInterface.dismiss();
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().l();
-      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().l()) {
-        this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().g(false);
-      }
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.d = true;
-      paramDialogInterface = this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a();
-      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.b) {}
-      for (paramInt = 1;; paramInt = 2)
+      do
       {
-        paramDialogInterface.a(l, paramInt, false, true);
-        this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.e();
         return;
+        QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d, 1, "showPermissionDialog.gotoSetting, seq[" + this.jdField_a_of_type_Long + "]");
+        if ((this.jdField_a_of_type_ComTencentAvUiVideoControlUI.m) && (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g != null)) {
+          bdla.b(null, "CliOper", "", "", this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g, this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g, 0, 0, "", "", this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h, "");
+        }
+        mvk.a(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a());
+      } while ((this.jdField_a_of_type_ComTencentAvUiVideoControlUI.z != 2) && (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.z != 1));
+      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.b.update(null, new Object[] { Integer.valueOf(106), Long.valueOf(this.jdField_a_of_type_Long) });
+      l = Long.valueOf(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin()).longValue();
+      paramInt = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().a(l, 1);
+    } while (paramInt == -1);
+    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().c.remove(paramInt);
+    synchronized (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().d)
+    {
+      paramInt = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().b(l, 1);
+      if (paramInt != -1)
+      {
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().d.remove(paramInt);
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().c();
       }
+      return;
     }
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a(l, true);
-    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mkh
  * JD-Core Version:    0.7.0.1
  */

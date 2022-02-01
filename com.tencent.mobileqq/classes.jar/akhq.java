@@ -1,27 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.phone.ContactListView;
 
-class akhq
-  implements View.OnClickListener
+public class akhq
+  extends anvi
 {
-  akhq(akho paramakho, int paramInt) {}
+  public akhq(ContactListView paramContactListView) {}
   
-  public void onClick(View paramView)
+  protected void onAddFriend(String paramString) {}
+  
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    if (BaseActivity.sTopActivity != null) {
-      avtq.a().a(BaseActivity.sTopActivity, this.jdField_a_of_type_Int);
-    }
-    for (;;)
-    {
-      avtq.m();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent.banner", 2, "sTopActivity is null");
-      }
+    if ((paramBoolean1) && (paramBoolean2) && (!paramBoolean3)) {
+      this.a.j();
     }
   }
 }

@@ -1,757 +1,439 @@
-import QC.Concise;
-import QC.UniBusinessItem;
-import QC.UniSetReq;
-import QC.UniSetRsp;
-import android.os.Bundle;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.theme.ThemeSwitcher;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
-import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.ReqBody;
-import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.RspBody;
-import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.UdcUinData;
-import tencent.im.oidb.cmd0xed1.oidb_0xed1.ReqBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import com.tencent.mobileqq.utils.ContactUtils;
+import mqq.app.MobileQQ;
 
 public class bbyj
-  extends BusinessHandler
+  extends bbzc
 {
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(-2147483648);
-  private AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(0L);
-  volatile boolean jdField_a_of_type_Boolean = true;
-  private final AtomicInteger b = new AtomicInteger(-2147483648);
-  private final AtomicInteger c = new AtomicInteger(-2147483648);
+  private int jdField_a_of_type_Int;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private Friends jdField_a_of_type_ComTencentMobileqqDataFriends;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  private String e;
+  private String f;
   
-  public bbyj(QQAppInterface paramQQAppInterface)
+  @SuppressLint({"DefaultLocale"})
+  public bbyj(Context paramContext, QQAppInterface paramQQAppInterface, Friends paramFriends, String paramString, long paramLong1, long paramLong2)
   {
-    super(paramQQAppInterface);
-    bghq.d();
-  }
-  
-  private int a(AtomicInteger paramAtomicInteger)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger)
+    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
+    this.aa = paramLong2;
+    this.e = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark != null) && (this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark.length() != 0))
     {
-      int i = paramAtomicInteger.get();
-      return i;
+      this.jdField_a_of_type_JavaLangString = ChnToSpell.a(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark, 1).toLowerCase();
+      this.b = ChnToSpell.a(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark, 2).toLowerCase();
     }
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataFriends.name != null) && (this.jdField_a_of_type_ComTencentMobileqqDataFriends.name.length() != 0))
+    {
+      this.c = ChnToSpell.a(this.jdField_a_of_type_ComTencentMobileqqDataFriends.name, 1).toLowerCase();
+      this.d = ChnToSpell.a(this.jdField_a_of_type_ComTencentMobileqqDataFriends.name, 2).toLowerCase();
+    }
+    b();
   }
   
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private String e()
   {
-    int j;
-    String str;
-    boolean bool4;
-    boolean bool5;
-    int i;
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataFriends.alias)) {
+      return this.jdField_a_of_type_ComTencentMobileqqDataFriends.alias;
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  protected long a()
+  {
+    QQMessageFacade.Message localMessage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getLastMessage(this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin, 0);
+    if (localMessage != null) {
+      return localMessage.time;
+    }
+    return 0L;
+  }
+  
+  public Drawable a()
+  {
+    return null;
+  }
+  
+  public Friends a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataFriends;
+  }
+  
+  public String a()
+  {
+    if (nwu.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin, 0)) {
+      return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131689656);
+    }
+    return this.e;
+  }
+  
+  @SuppressLint({"DefaultLocale"})
+  public void a(String paramString)
+  {
+    String str1;
+    String str2;
+    label44:
+    String str3;
+    label63:
+    String str4;
+    label82:
+    String str5;
+    String str6;
+    String str7;
+    String str8;
+    long l1;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark != null)
     {
-      j = 1;
-      str = paramToServiceMsg.extraData.getString("uin", "");
-      bool4 = false;
-      bool5 = false;
-      i = bbyp.c();
-      if (!QLog.isColorLevel()) {
-        break label755;
+      str1 = this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark.toLowerCase();
+      if (this.jdField_a_of_type_ComTencentMobileqqDataFriends.name == null) {
+        break label600;
       }
-    }
-    label599:
-    label752:
-    label755:
-    for (StringBuilder localStringBuilder = new StringBuilder(1024);; localStringBuilder = null)
-    {
-      if (j != 0)
+      str2 = this.jdField_a_of_type_ComTencentMobileqqDataFriends.name.toLowerCase();
+      if (this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin == null) {
+        break label606;
+      }
+      str3 = this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataFriends.alias == null) {
+        break label612;
+      }
+      str4 = this.jdField_a_of_type_ComTencentMobileqqDataFriends.alias;
+      str5 = this.jdField_a_of_type_JavaLangString;
+      str6 = this.b;
+      str7 = this.c;
+      str8 = this.d;
+      paramString = paramString.toLowerCase();
+      l2 = -9223372036854775808L;
+      this.Z = -9223372036854775808L;
+      l1 = l2;
+      if (str1 != null)
       {
-        paramFromServiceMsg = (byte[])paramObject;
-        paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
+        l1 = l2;
+        if (str1.length() != 0)
+        {
+          if ((!str1.equals(paramString)) && ((str5 == null) || (!str5.equals(paramString))) && ((str6 == null) || (!str6.equals(paramString)))) {
+            break label629;
+          }
+          l1 = bbzc.u;
+          if ((str1.equals(paramString)) || (str1.equals(str5))) {
+            break label618;
+          }
+          l1 += bbzc.s;
+          label213:
+          l2 = l1 + 0L;
+          l1 = l2;
+          if (this.Z < l2)
+          {
+            this.Z = l2;
+            this.jdField_a_of_type_Int = 2;
+            l1 = l2;
+          }
+        }
       }
-      for (;;)
+      if ((str2 == null) || (str2.length() == 0)) {
+        break label1090;
+      }
+      if ((!str2.equals(paramString)) && ((str7 == null) || (!str7.equals(paramString))) && ((str8 == null) || (!str8.equals(paramString)))) {
+        break label773;
+      }
+      l1 = bbzc.u;
+      if ((str2.equals(paramString)) || (str2.equals(str7))) {
+        break label753;
+      }
+      l1 = bbzc.s + l1;
+      label330:
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark)) {
+        break label764;
+      }
+      l1 += 0L;
+      label349:
+      l2 = l1;
+      if (this.Z < l1)
       {
-        boolean bool1;
-        boolean bool2;
-        boolean bool6;
-        boolean bool3;
-        try
-        {
-          paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)paramToServiceMsg.mergeFrom(paramFromServiceMsg);
-          paramToServiceMsg = paramFromServiceMsg;
-          if ((paramToServiceMsg == null) || (!paramToServiceMsg.uint32_result.has()) || (paramToServiceMsg.uint32_result.get() != 0)) {
-            break label599;
-          }
-          if ((paramToServiceMsg.bytes_bodybuffer.has()) && (paramToServiceMsg.bytes_bodybuffer.get() != null)) {
-            paramFromServiceMsg = new oidb_0x5eb.RspBody();
-          }
-        }
-        catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-        {
-          try
-          {
-            paramFromServiceMsg.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
-            if (paramFromServiceMsg.rpt_msg_uin_data.size() > 0)
-            {
-              paramToServiceMsg = (oidb_0x5eb.UdcUinData)paramFromServiceMsg.rpt_msg_uin_data.get(0);
-              j = paramToServiceMsg.uint32_simple_ui_switch.get();
-              int k = paramToServiceMsg.uint32_flag_study_mode_switch.get();
-              if (paramToServiceMsg.uint32_flag_kid_mode_switch.has())
-              {
-                i = paramToServiceMsg.uint32_flag_kid_mode_switch.get();
-                QLog.d("SimpleUILog.SimpleUIHandler", 1, new Object[] { "studyFlag:", Integer.valueOf(k), " kidModeFlag:", Integer.valueOf(i) });
-                if ((k != 1) && (i != 1)) {
-                  continue;
-                }
-                bool1 = true;
-                if (j != 1) {
-                  continue;
-                }
-                bool2 = true;
-                j = bbyp.c();
-                if ((!bool2) || (!bool1)) {
-                  break label752;
-                }
-                bool2 = false;
-                j = 0;
-                QLog.e("SimpleUILog.SimpleUIHandler", 1, "[KidMode] both true");
-                bool6 = true;
-                bbyp.a(str, bool2, 2);
-                bbyp.a(str, j, 2);
-                bcoo.a(bool1, this.app);
-                bool5 = bool2;
-                bool4 = bool1;
-                i = j;
-                bool1 = bool4;
-                bool2 = bool5;
-                bool3 = bool6;
-                if (localStringBuilder != null)
-                {
-                  localStringBuilder.append(String.format("suc=%b %s", new Object[] { Boolean.valueOf(bool6), str }));
-                  bool3 = bool6;
-                  bool2 = bool5;
-                  bool1 = bool4;
-                  i = j;
-                }
-                bool4 = bool1;
-                bool1 = bool2;
-                bool2 = bool4;
-                j = i;
-                if ((QLog.isColorLevel()) && (localStringBuilder != null))
-                {
-                  localStringBuilder.append("; bSwitch = ").append(bool1).append("; bPref = ").append(j);
-                  QLog.i("SimpleUILog.SimpleUIHandler", 2, String.format("handleReqGetSimpleUISwitch %s", new Object[] { localStringBuilder.toString() }));
-                }
-                notifyUI(1, bool3, new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Integer.valueOf(j), str });
-                return;
-                j = 0;
-                break;
-                paramFromServiceMsg = paramFromServiceMsg;
-                paramFromServiceMsg.printStackTrace();
-              }
-            }
-          }
-          catch (InvalidProtocolBufferMicroException paramToServiceMsg)
-          {
-            paramToServiceMsg.printStackTrace();
-            continue;
-            i = 0;
-            continue;
-            bool1 = false;
-            continue;
-            bool2 = false;
-            continue;
-            bool4 = false;
-            bool5 = false;
-            bool6 = false;
-            j = i;
-            continue;
-          }
-        }
-        if (localStringBuilder != null)
-        {
-          localStringBuilder.append("fail pkg.bytes is null");
-          bool1 = false;
-          bool2 = false;
-          bool3 = false;
-          continue;
-          if (localStringBuilder != null)
-          {
-            if (paramToServiceMsg != null) {
-              break label642;
-            }
-            paramToServiceMsg = "pkg=null";
-          }
-          for (;;)
-          {
-            localStringBuilder.append(String.format("fail %s", new Object[] { paramToServiceMsg }));
-            bool1 = false;
-            bool2 = false;
-            bool3 = false;
-            break;
-            if (paramToServiceMsg.uint32_result.has()) {
-              paramToServiceMsg = Integer.valueOf(paramToServiceMsg.uint32_result.get());
-            } else {
-              paramToServiceMsg = "no result";
-            }
-          }
-          bool6 = false;
-          bool3 = bool6;
-          j = i;
-          bool2 = bool5;
-          bool1 = bool4;
-          if (localStringBuilder != null)
-          {
-            localStringBuilder.append(String.format("fail resultCode=%d", new Object[] { Integer.valueOf(paramFromServiceMsg.getResultCode()) }));
-            bool3 = bool6;
-            j = i;
-            bool2 = bool5;
-            bool1 = bool4;
-          }
-        }
-        else
-        {
-          bool1 = false;
-          bool2 = false;
-          bool3 = false;
-        }
+        this.Z = l1;
+        this.jdField_a_of_type_Int = 1;
       }
     }
-  }
-  
-  private void a(AtomicInteger paramAtomicInteger1, int paramInt1, AtomicInteger paramAtomicInteger2, int paramInt2, AtomicInteger paramAtomicInteger3, int paramInt3)
-  {
-    AtomicInteger localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-    if (paramAtomicInteger1 != null) {}
-    try
+    label449:
+    label1090:
+    for (long l2 = l1;; l2 = l1)
     {
-      paramAtomicInteger1.set(paramInt1);
-      if (paramAtomicInteger2 != null) {
-        paramAtomicInteger2.set(paramInt2);
-      }
-      if (paramAtomicInteger3 != null) {
-        paramAtomicInteger3.set(paramInt3);
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  public static void a(boolean paramBoolean, int paramInt, BusinessObserver paramBusinessObserver)
-  {
-    bgol localbgol = new bgol("QC.UniBusinessLogicServer.UniBusinessLogicObj", "QCUniBusinessLogic.uniSet", "stReq", "rsp");
-    UniSetReq localUniSetReq = new UniSetReq();
-    localUniSetReq.stLogin = bgol.a();
-    localUniSetReq.stUniBusinessItem = new UniBusinessItem();
-    localUniSetReq.stUniBusinessItem.appid = 307;
-    localUniSetReq.stUniBusinessItem.itemid = Integer.decode(bbyp.a(paramInt)).intValue();
-    localUniSetReq.stConcise = new Concise();
-    Concise localConcise = localUniSetReq.stConcise;
-    if (paramBoolean) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      localConcise.isSwitch = paramInt;
-      localbgol.a("uniSet", localUniSetReq, new UniSetRsp(), paramBusinessObserver, false);
-      return;
-    }
-  }
-  
-  public static void a(boolean paramBoolean1, int paramInt, QQAppInterface paramQQAppInterface, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    QLog.d("SimpleUILog.SimpleUIHandler", 1, new Object[] { "[KidMode]doSwitchSimpleMode sSimpleOpen:", Boolean.valueOf(paramBoolean1), " sSimpleThemeId:", Integer.valueOf(paramInt), " sStudyOpen:", Boolean.valueOf(paramBoolean2), " sKidOpen:", Boolean.valueOf(paramBoolean3) });
-    paramBoolean3 = paramBoolean2 | paramBoolean3;
-    bcoo.a(paramBoolean3, paramQQAppInterface);
-    ((bcof)paramQQAppInterface.getManager(361)).b(paramBoolean3);
-    paramBoolean2 = paramBoolean1;
-    if (bcoo.a(paramQQAppInterface, paramBoolean3, paramBoolean1)) {
-      paramBoolean2 = false;
-    }
-    int i = bbyp.a(String.valueOf(paramInt));
-    if (i != -1)
-    {
-      bbyp.a(paramQQAppInterface.getCurrentAccountUin(), paramBoolean2, 1);
-      bbyp.a(paramQQAppInterface.getCurrentAccountUin(), i, 1);
-      return;
-    }
-    bbyp.a(paramQQAppInterface, paramBoolean2, String.valueOf(paramInt));
-  }
-  
-  private boolean a(boolean paramBoolean, String paramString)
-  {
-    boolean bool = ThemeUtil.isNowThemeIsSimple(this.app, true, null);
-    String str = ThemeUtil.getUserCurrentThemeId(this.app);
-    if (bool != paramBoolean) {}
-    do
-    {
-      return true;
-      if (!paramBoolean) {
-        return false;
-      }
-    } while (!paramString.equals(str));
-    return false;
-  }
-  
-  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    boolean bool2;
-    boolean bool3;
-    boolean bool5;
-    int i;
-    boolean bool4;
-    long l;
-    String str;
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
-    {
-      bool2 = true;
-      bool3 = paramToServiceMsg.extraData.getBoolean("switch");
-      bool5 = paramToServiceMsg.extraData.getBoolean("studyModeSwitch");
-      i = paramToServiceMsg.extraData.getInt("pref");
-      bool4 = paramToServiceMsg.extraData.getBoolean("switchElsePref");
-      l = paramToServiceMsg.extraData.getLong("reqTs");
-      str = this.app.getCurrentAccountUin();
-      if (!QLog.isColorLevel()) {
-        break label738;
-      }
-    }
-    label293:
-    label713:
-    label738:
-    for (StringBuilder localStringBuilder = new StringBuilder(1024);; localStringBuilder = null)
-    {
-      bcnv.a(this.app, "", "", 0, null);
-      boolean bool1;
-      if (bool2)
+      long l3 = l2;
+      if (str4 != null)
       {
-        paramFromServiceMsg = (byte[])paramObject;
-        paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
-        try
+        l3 = l2;
+        if (str4.length() != 0)
         {
-          paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)paramToServiceMsg.mergeFrom(paramFromServiceMsg);
-          paramToServiceMsg = paramFromServiceMsg;
-        }
-        catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-        {
-          do
+          if (!str4.equals(paramString)) {
+            break label928;
+          }
+          l1 = bbzc.u + bbzc.r;
+          if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark)) || (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataFriends.name))) {
+            break label919;
+          }
+          l1 += 0L;
+          l3 = l1;
+          if (this.Z < l1)
           {
-            for (;;)
-            {
-              paramFromServiceMsg.printStackTrace();
-              continue;
-              bool2 = false;
-              bool1 = bool2;
-              if (localStringBuilder != null)
-              {
-                localStringBuilder.append("fail pkg.bytes is null");
-                bool1 = bool2;
-              }
-            }
-            bool2 = false;
-            bool1 = bool2;
-          } while (localStringBuilder == null);
-          if (paramToServiceMsg != null) {
-            break label647;
+            this.Z = l1;
+            this.jdField_a_of_type_Int = 3;
+            l3 = l1;
           }
         }
-        if ((paramToServiceMsg != null) && (paramToServiceMsg.uint32_result.has()) && (paramToServiceMsg.uint32_result.get() == 0)) {
-          if ((paramToServiceMsg.bytes_bodybuffer.has()) && (paramToServiceMsg.bytes_bodybuffer.get() != null))
-          {
-            if (localStringBuilder != null) {
-              localStringBuilder.append(String.format("suc=%b bSwitch=%b bPref=%d [%s]", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool3), Integer.valueOf(i), this.app.getCurrentAccountUin() }));
-            }
-            bool1 = bool2;
-            if (bool2)
-            {
-              bcoo.a(bool5, this.app);
-              bbyp.a(this.app.getCurrentAccountUin(), bool3, 3);
-              bbyp.a(this.app.getCurrentAccountUin(), i, 3);
-              bool1 = bool2;
-            }
-            if ((QLog.isColorLevel()) && (localStringBuilder != null)) {
-              QLog.i("SimpleUILog.SimpleUIHandler", 2, String.format("handleReqSetSimpleUISwitch %s", new Object[] { localStringBuilder.toString() }));
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("SimpleUILog.SimpleUIHandler", 1, new Object[] { "handleReqSetSimpleUISwitch: ts:", Long.valueOf(l), ", mReqTs: ", Long.valueOf(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get()) });
-            }
-            if (l == this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get())
-            {
-              if (bool1) {
-                break label713;
-              }
-              bool2 = a(false, "211", bbyp.b(), true, bbyp.a(bbyp.c()));
-              if (!bool2) {
-                a(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger, -2147483648, this.b, -2147483648, this.c, -2147483648);
-              }
-              if (QLog.isColorLevel()) {
-                QLog.i("SimpleUILog.SimpleUIHandler", 2, String.format("handleReqSetSimpleUISwitch revert theme bStartSwtich=%b", new Object[] { Boolean.valueOf(bool2) }));
-              }
-            }
+      }
+      if (1 != this.jdField_a_of_type_ComTencentMobileqqDataFriends.cSpecialFlag)
+      {
+        l1 = l3;
+        if (str3 != null)
+        {
+          if (!str3.equals(paramString)) {
+            break label1003;
           }
+          l1 = bbzc.u + bbzc.r;
+          if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark)) || (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataFriends.name))) {
+            break label994;
+          }
+          l1 += 0L;
         }
       }
       for (;;)
       {
-        notifyUI(3, bool1, new Object[] { Boolean.valueOf(true), Boolean.valueOf(bool4), Integer.valueOf(5) });
-        if (l != 0L) {
-          notifyUI(2, bool1, new Object[] { Boolean.valueOf(bool3), Integer.valueOf(i), Boolean.valueOf(bool4), str, Long.valueOf(l) });
+        if (this.Z < l1)
+        {
+          this.Z = l1;
+          this.jdField_a_of_type_Int = 0;
+        }
+        if (this.Z != -9223372036854775808L) {
+          this.Z += this.aa;
         }
         return;
-        bool2 = false;
+        str1 = null;
         break;
-        paramToServiceMsg = "pkg=null";
-        for (;;)
+        label600:
+        str2 = null;
+        break label44;
+        label606:
+        str3 = null;
+        break label63;
+        label612:
+        str4 = null;
+        break label82;
+        label618:
+        l1 += bbzc.r;
+        break label213;
+        label629:
+        int k = str1.indexOf(paramString);
+        int j;
+        if (str5 != null)
         {
-          localStringBuilder.append(String.format("fail %s", new Object[] { paramToServiceMsg }));
-          bool1 = bool2;
-          break;
-          if (paramToServiceMsg.uint32_result.has()) {
-            paramToServiceMsg = Integer.valueOf(paramToServiceMsg.uint32_result.get());
-          } else {
-            paramToServiceMsg = "no result";
+          i = str5.indexOf(paramString);
+          if (str6 == null) {
+            break label729;
+          }
+          j = str6.indexOf(paramString);
+          if ((k < 0) && (i < 0) && (j < 0)) {
+            break label732;
+          }
+          if ((k != 0) && (i != 0) && (j != 0)) {
+            break label734;
+          }
+          l1 = bbzc.v;
+          if ((k >= 0) || (str1.equals(str5))) {
+            break label742;
           }
         }
-        if (localStringBuilder != null) {
-          localStringBuilder.append(String.format("fail resultCode=%d", new Object[] { Integer.valueOf(paramFromServiceMsg.getResultCode()) }));
-        }
-        bool1 = false;
-        break label293;
-        a(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger, -2147483648, this.b, -2147483648, this.c, -2147483648);
-      }
-    }
-  }
-  
-  public long a(boolean paramBoolean1, int paramInt, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SimpleUILog.SimpleUIHandler", 2, new Object[] { "sendSwitchAndSetSimpleUI switch:", Boolean.valueOf(paramBoolean1), " prefId:", Integer.valueOf(paramInt), " bSwitchElsePref:", Boolean.valueOf(paramBoolean2), " bStudyModeSwitch", Boolean.valueOf(paramBoolean3) });
-    }
-    long l = System.currentTimeMillis();
-    a(paramBoolean1, paramInt, new bbyl(this, paramBoolean1, paramInt, paramBoolean2, paramBoolean3, l));
-    return l;
-  }
-  
-  public long a(boolean paramBoolean1, int paramInt, boolean paramBoolean2, boolean paramBoolean3, long paramLong)
-  {
-    int j = 0;
-    Object localObject1 = this.app.getCurrentAccountUin();
-    if (QLog.isColorLevel()) {
-      QLog.i("SimpleUILog.SimpleUIHandler", 2, String.format("reqSetSimpleUISwitch [%b,%d,%b] uin=%s", new Object[] { Boolean.valueOf(paramBoolean1), Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2), localObject1 }));
-    }
-    for (;;)
-    {
-      try
-      {
-        localObject1 = new oidb_sso.OIDBSSOPkg();
-        ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command.set(3793);
-        ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(1);
-        if (!paramBoolean1) {
-          continue;
-        }
-        i = 1;
-      }
-      catch (Exception localException)
-      {
-        int i;
-        Object localObject2;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("SimpleUILog.SimpleUIHandler", 1, "reqSetSimpleUISwitch ex", localException);
-        return paramLong;
-      }
-      localObject2 = new oidb_0xed1.ReqBody();
-      ((oidb_0xed1.ReqBody)localObject2).uint32_simple_mode.set(i);
-      ((oidb_0xed1.ReqBody)localObject2).uint32_learn_mode.set(j);
-      localObject2 = ((oidb_0xed1.ReqBody)localObject2).toByteArray();
-      ((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.set(ByteStringMicro.copyFrom((byte[])localObject2));
-      localObject2 = createToServiceMsg("OidbSvc.0xed1_SimpleUI");
-      ((ToServiceMsg)localObject2).putWupBuffer(((oidb_sso.OIDBSSOPkg)localObject1).toByteArray());
-      ((ToServiceMsg)localObject2).setTimeout(30000L);
-      ((ToServiceMsg)localObject2).extraData.putBoolean("studyModeSwitch", paramBoolean3);
-      ((ToServiceMsg)localObject2).extraData.putBoolean("switch", paramBoolean1);
-      ((ToServiceMsg)localObject2).extraData.putInt("pref", paramInt);
-      ((ToServiceMsg)localObject2).extraData.putBoolean("switchElsePref", paramBoolean2);
-      ((ToServiceMsg)localObject2).extraData.putLong("reqTs", paramLong);
-      sendPbReq((ToServiceMsg)localObject2);
-      return paramLong;
-      i = 0;
-      if (paramBoolean3) {
-        j = 1;
-      }
-    }
-  }
-  
-  public void a()
-  {
-    String str = this.app.getCurrentAccountUin();
-    if (QLog.isColorLevel()) {
-      QLog.i("SimpleUILog.SimpleUIHandler", 2, String.format("reqGetSimpleUISwitch uin=%s", new Object[] { str }));
-    }
-    Object localObject = new oidb_0x5eb.ReqBody();
-    try
-    {
-      long l = Long.parseLong(this.app.getCurrentAccountUin());
-      ((oidb_0x5eb.ReqBody)localObject).rpt_uint64_uins.add(Long.valueOf(l));
-      ((oidb_0x5eb.ReqBody)localObject).uint32_simple_ui_switch.set(1);
-      ((oidb_0x5eb.ReqBody)localObject).uint32_simple_ui_pref.set(1);
-      ((oidb_0x5eb.ReqBody)localObject).uint32_flag_study_mode_switch.set(1);
-      ((oidb_0x5eb.ReqBody)localObject).uint32_flag_kid_mode_switch.set(1);
-      localObject = makeOIDBPkg("OidbSvc.0x5eb_SimpleUI", 1515, 22, ((oidb_0x5eb.ReqBody)localObject).toByteArray());
-      ((ToServiceMsg)localObject).extraData.putString("uin", str);
-      sendPbReq((ToServiceMsg)localObject);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(paramLong);
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
-  {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    int i;
-    if (paramBoolean5) {
-      if (localBaseActivity != null)
-      {
-        AtomicInteger localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-        if (!paramBoolean2) {
-          break label72;
-        }
-        i = 1;
-        localAtomicInteger.set(i);
-        this.b.set(paramInt);
-        localAtomicInteger = this.c;
-        if (!paramBoolean3) {
-          break label78;
-        }
-        paramInt = 1;
-        label56:
-        localAtomicInteger.set(paramInt);
-        bgge.a(localBaseActivity, aqhz.a(), 1);
-      }
-    }
-    label72:
-    label78:
-    do
-    {
-      return;
-      i = 0;
-      break;
-      paramInt = 0;
-      break label56;
-      ((bcof)this.app.getManager(361)).a(this.b.get(), 1);
-      a(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger, -2147483648, this.b, -2147483648, this.c, -2147483648);
-      notifyUI(3, paramBoolean1, new Object[] { Boolean.valueOf(true), Boolean.valueOf(paramBoolean4), Integer.valueOf(5) });
-      if ((localBaseActivity != null) && ((localBaseActivity instanceof GeneralSettingActivity))) {
-        ((GeneralSettingActivity)localBaseActivity).a(1, bbyp.c(), false, true);
-      }
-    } while (localBaseActivity == null);
-    QQToast.a(localBaseActivity, 1, "付费失败", 0).a();
-  }
-  
-  public boolean a(boolean paramBoolean, int paramInt)
-  {
-    if (a(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger) != -2147483648) {
-      return false;
-    }
-    Object localObject = ThemeUtil.getUserCurrentThemeId(this.app);
-    boolean bool2 = a(paramBoolean, bbyp.a(paramInt));
-    if (bool2) {}
-    for (boolean bool1 = a(false, "212", paramBoolean, true, bbyp.a(paramInt));; bool1 = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("SimpleUILog.SimpleUIHandler", 2, String.format("onGetSimpleUISwtichLogin [%b,%b] cur=%s needChange=%b start=%b", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), localObject, Boolean.valueOf(bool2), Boolean.valueOf(bool1) }));
-      }
-      int i;
-      if (bool1)
-      {
-        localObject = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-        if (paramBoolean)
+        label729:
+        label732:
+        label734:
+        label742:
+        for (l1 += bbzc.s;; l1 += bbzc.r)
         {
-          i = 1;
-          a((AtomicInteger)localObject, i, this.b, paramInt, null, -2147483648);
+          l2 = l1 + 0L;
+          break;
+          i = -1;
+          break label649;
+          j = -1;
+          break label661;
+          break;
+          l1 = bbzc.w;
+          break label692;
         }
-      }
-      for (;;)
-      {
-        return bool1;
-        i = 0;
-        break;
-        a(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger, -2147483648, this.b, -2147483648, null, -2147483648);
-      }
-    }
-  }
-  
-  public boolean a(boolean paramBoolean1, int paramInt, boolean paramBoolean2)
-  {
-    return a(paramBoolean1, paramInt, paramBoolean2, false);
-  }
-  
-  public boolean a(boolean paramBoolean1, int paramInt, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    if (a(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger) != -2147483648) {
-      return false;
-    }
-    Object localObject = bbyp.a(paramInt);
-    boolean bool = a(paramBoolean1, (String)localObject);
-    if (QLog.isColorLevel()) {
-      QLog.i("SimpleUILog.SimpleUIHandler", 2, String.format("startSwitchSimpleUI [%b,%s,%b] needSwitch=%b", new Object[] { Boolean.valueOf(paramBoolean1), localObject, Boolean.valueOf(paramBoolean2), Boolean.valueOf(bool) }));
-    }
-    int i;
-    label116:
-    int j;
-    if (bool)
-    {
-      bool = a(true, "211", paramBoolean1, paramBoolean2, (String)localObject);
-      if (!bool) {
-        break label212;
-      }
-      localObject = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-      if (!paramBoolean1) {
-        break label200;
-      }
-      i = 1;
-      AtomicInteger localAtomicInteger1 = this.b;
-      AtomicInteger localAtomicInteger2 = this.c;
-      if (!paramBoolean3) {
-        break label206;
-      }
-      j = 1;
-      label136:
-      a((AtomicInteger)localObject, i, localAtomicInteger1, paramInt, localAtomicInteger2, j);
-      this.jdField_a_of_type_Boolean = paramBoolean2;
-    }
-    for (;;)
-    {
-      return bool;
-      long l = ((bbyj)this.app.getBusinessHandler(154)).a(paramBoolean1, paramInt, paramBoolean2, paramBoolean3, System.currentTimeMillis());
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(l);
-      bool = true;
-      break;
-      label200:
-      i = 0;
-      break label116;
-      label206:
-      j = 0;
-      break label136;
-      label212:
-      a(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger, -2147483648, this.b, -2147483648, this.c, -2147483648);
-    }
-  }
-  
-  protected boolean a(boolean paramBoolean1, String paramString1, boolean paramBoolean2, boolean paramBoolean3, String paramString2)
-  {
-    boolean bool = ThemeUtil.isNowThemeIsNight(this.app, true, null);
-    String str = ThemeUtil.getUserCurrentThemeId(this.app);
-    Object localObject1 = bdbo.a(this.app).getString("themeID");
-    Object localObject2 = localObject1;
-    if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      localObject2 = "1000";
-    }
-    if (paramBoolean3) {
-      if (bool) {
-        if (paramBoolean2) {
-          localObject1 = "2920";
-        }
-      }
-    }
-    for (;;)
-    {
-      QLog.i("SimpleUILog.SimpleUIHandler", 1, String.format("doSwitchTheme needCallback=%b dst=[%b,%s][cur,pre,to]=[%s,%s,%s]", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), paramString2, str, localObject2, localObject1 }));
-      if (str.equals(localObject1))
-      {
-        return false;
-        localObject1 = "1103";
-        continue;
-        if (paramBoolean2)
+        label753:
+        l1 = bbzc.r + l1;
+        break label330;
+        label764:
+        l1 += 0L;
+        break label349;
+        k = str2.indexOf(paramString);
+        if (str7 != null)
         {
-          localObject1 = paramString2;
-          continue;
+          i = str7.indexOf(paramString);
+          if (str8 == null) {
+            break label886;
+          }
+          j = str8.indexOf(paramString);
+          if ((k < 0) && (i < 0) && (j < 0)) {
+            break label1087;
+          }
+          if ((k != 0) && (i != 0) && (j != 0)) {
+            break label891;
+          }
+          l1 = bbzc.v;
+          label836:
+          if ((k >= 0) || (str2.equals(str7))) {
+            break label899;
+          }
         }
-        localObject1 = localObject2;
+        for (l1 = bbzc.s + l1;; l1 = bbzc.r + l1)
+        {
+          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark)) {
+            break label910;
+          }
+          l1 += 0L;
+          break;
+          i = -1;
+          break label793;
+          label886:
+          j = -1;
+          break label805;
+          label891:
+          l1 = bbzc.w;
+          break label836;
+        }
+        l1 += 0L;
+        break label349;
+        l1 += 0L;
+        break label449;
+        l1 = l2;
+        if (str4.indexOf(paramString) < 0) {
+          break label449;
+        }
+        l1 = bbzc.w + bbzc.r;
+        if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark)) && (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataFriends.name)))
+        {
+          l1 += 0L;
+          break label449;
+        }
+        l1 += 0L;
+        break label449;
+        label994:
+        l1 += 0L;
         continue;
-        if (paramBoolean2) {
-          localObject1 = paramString2;
+        label1003:
+        int i = str3.indexOf(paramString);
+        l1 = l3;
+        if (i >= 0)
+        {
+          if (i == 0) {}
+          for (l1 = bbzc.v;; l1 = bbzc.w)
+          {
+            l1 += bbzc.r;
+            if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark)) || (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataFriends.name))) {
+              break label1078;
+            }
+            l1 += 0L;
+            break;
+          }
+          l1 += 0L;
         }
       }
-      else
-      {
-        localObject2 = this.app;
-        if (paramBoolean1) {}
-        for (paramString2 = new bbyn(this);; paramString2 = new bbym(this)) {
-          return ThemeSwitcher.a((QQAppInterface)localObject2, (String)localObject1, paramString1, paramString2);
-        }
-      }
-      localObject1 = paramString2;
+      break label349;
     }
   }
   
-  public void b()
+  public int b()
   {
-    boolean bool = true;
-    long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1) {}
-    for (;;)
+    return 0;
+  }
+  
+  public String b()
+  {
+    if (this.f != null) {
+      return String.format("(%s)", new Object[] { this.f });
+    }
+    return null;
+  }
+  
+  public int c()
+  {
+    return 1;
+  }
+  
+  public String c()
+  {
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark;
+    String str1 = this.jdField_a_of_type_ComTencentMobileqqDataFriends.name;
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataFriends.alias;
+    String str2 = this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin;
+    switch (this.jdField_a_of_type_Int)
     {
-      a(bool, this.b.get(), new bbyk(this, l));
-      return;
-      bool = false;
+    default: 
+      localObject2 = null;
+    case 0: 
+    case 2: 
+      do
+      {
+        do
+        {
+          return localObject2;
+          if (((str1 != null) && (str1.length() != 0)) || ((localObject1 != null) && (((String)localObject1).length() != 0)))
+          {
+            if (TextUtils.isEmpty((CharSequence)localObject1)) {
+              localObject1 = str1;
+            }
+            for (;;)
+            {
+              localObject1 = String.format("%s", new Object[] { localObject1 });
+              this.f = e();
+              return localObject1;
+            }
+          }
+          return str2;
+          localObject2 = localObject1;
+        } while (str1 == null);
+        localObject2 = localObject1;
+      } while (str1.length() == 0);
+      localObject1 = String.format("%s", new Object[] { localObject1 });
+      this.f = str1;
+      return localObject1;
+    case 1: 
+      if ((localObject1 != null) && (((String)localObject1).length() != 0))
+      {
+        localObject1 = String.format("%s", new Object[] { localObject1 });
+        this.f = str1;
+        return localObject1;
+      }
+      localObject1 = String.format("%s", new Object[] { str1 });
+      this.f = e();
+      return localObject1;
     }
+    if (((str1 != null) && (str1.length() != 0)) || ((localObject1 != null) && (((String)localObject1).length() != 0)))
+    {
+      localObject1 = String.format("%s", new Object[] { ContactUtils.getFriendName(this.jdField_a_of_type_ComTencentMobileqqDataFriends) });
+      this.f = ((String)localObject2);
+      return localObject1;
+    }
+    return localObject2;
   }
   
-  public void c()
+  public String d()
   {
-    if (a(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger) != -2147483648) {}
-    boolean bool1 = ThemeUtil.isNowThemeIsSimple(this.app, false, null);
-    boolean bool2 = bbyp.b();
-    if (QLog.isColorLevel()) {
-      QLog.i("SimpleUILog.SimpleUIHandler", 2, String.format("onPostThemeChanged bSimpleSwitch=%b isSimpleMode=%b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) }));
-    }
-    if (bool1 != bool2) {
-      QLog.e("SimpleUILog.SimpleUIHandler", 1, String.format("onPostThemeChanged switch inconsistent [%b,%b]", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) }));
-    }
-  }
-  
-  public Class<? extends BusinessObserver> observerClass()
-  {
-    return bbyo.class;
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    bbyp.a();
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (TextUtils.equals("OidbSvc.0x5eb_SimpleUI", paramFromServiceMsg.getServiceCmd())) {
-      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-    }
-    while (!TextUtils.equals("OidbSvc.0xed1_SimpleUI", paramFromServiceMsg.getServiceCmd())) {
-      return;
-    }
-    b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    return this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin;
   }
 }
 

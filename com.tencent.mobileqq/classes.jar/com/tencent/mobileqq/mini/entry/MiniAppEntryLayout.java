@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.entry;
 
-import akhg;
+import alcz;
 import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -16,14 +16,16 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import apyt;
+import arbw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.image.DownloadParams.DecodeHandler;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
+import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.widget.PullRefreshHeader;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -68,14 +70,14 @@ public class MiniAppEntryLayout
     this.mTouchSlop = ViewConfiguration.get(paramContext).getScaledTouchSlop();
     this.mRefer = paramInt;
     this.mListView = paramARMapHongBaoListView;
-    inflate(paramContext, 2131562337, this);
-    this.mParent = ((ViewGroup)findViewById(2131371253));
-    this.mRecyclerView = ((RecyclerView)findViewById(2131370746));
+    inflate(paramContext, 2131562405, this);
+    this.mParent = ((ViewGroup)findViewById(2131371439));
+    this.mRecyclerView = ((RecyclerView)findViewById(2131370931));
     this.mRecyclerView.setItemAnimator(null);
     this.mAdapter = new MiniAppEntryAdapter((Activity)paramContext, paramInt);
-    if (apyt.h())
+    if (arbw.h())
     {
-      boolean bool = ((akhg)this.mContext.app.getManager(315)).a();
+      boolean bool = ((alcz)this.mContext.app.getManager(QQManagerFactory.APPLETS_ACCOUNT_MANAGER)).a();
       paramARMapHongBaoListView = this.mAdapter;
       if (!bool) {
         break label295;
@@ -87,12 +89,12 @@ public class MiniAppEntryLayout
       paramARMapHongBaoListView.setRedDotSwitchState(paramInt);
       this.mRecyclerView.setAdapter(this.mAdapter);
       this.mRecyclerView.addOnScrollListener(new MiniAppEntryLayout.1(this));
-      this.mThemeBackgroudView = ((ImageView)findViewById(2131371008));
-      this.mNormalStateView = ((ViewGroup)findViewById(2131371050));
-      this.mDefaultStateView = ((ViewGroup)findViewById(2131370996));
-      this.mAppStoreEntryText = ((TextView)findViewById(2131371144));
+      this.mThemeBackgroudView = ((ImageView)findViewById(2131371201));
+      this.mNormalStateView = ((ViewGroup)findViewById(2131371242));
+      this.mDefaultStateView = ((ViewGroup)findViewById(2131371181));
+      this.mAppStoreEntryText = ((TextView)findViewById(2131371340));
       this.mAppStoreEntryText.setOnClickListener(this);
-      this.mDotView = ((MiniAppDotAnimationView)findViewById(2131371251));
+      this.mDotView = ((MiniAppDotAnimationView)findViewById(2131371437));
       this.mLinearLayoutManager = new MiniAppEntryLayout.MiniAppLinearLayoutManager(paramContext, 0, false);
       this.mLinearLayoutManager.setAutoMeasureEnabled(false);
       this.mRecyclerView.setLayoutManager(this.mLinearLayoutManager);
@@ -105,7 +107,7 @@ public class MiniAppEntryLayout
     ArrayList localArrayList = new ArrayList();
     Object localObject = MiniAppUtils.getAppInterface();
     if (localObject != null) {}
-    for (localObject = (MiniAppExposureManager)((AppInterface)localObject).getManager(322);; localObject = null)
+    for (localObject = (MiniAppExposureManager)((AppInterface)localObject).getManager(QQManagerFactory.MINI_APP_EXPOSURE_MANAGER);; localObject = null)
     {
       if (localObject != null)
       {
@@ -268,7 +270,7 @@ public class MiniAppEntryLayout
     label231:
     label378:
     label383:
-    for (Object localObject1 = (MiniAppExposureManager)((AppInterface)localObject1).getManager(322);; localObject1 = null)
+    for (Object localObject1 = (MiniAppExposureManager)((AppInterface)localObject1).getManager(QQManagerFactory.MINI_APP_EXPOSURE_MANAGER);; localObject1 = null)
     {
       Map localMap = this.mAdapter.getRedDotDataMap();
       Object localObject2 = (LinearLayoutManager)this.mRecyclerView.getLayoutManager();
@@ -365,84 +367,31 @@ public class MiniAppEntryLayout
     this.mDotView.setTranslationY(paramFloat);
   }
   
-  /* Error */
   public void setThemeBackgroundDrawable()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 160	com/tencent/mobileqq/mini/entry/MiniAppEntryLayout:mThemeBackgroudView	Landroid/widget/ImageView;
-    //   4: ifnull +24 -> 28
-    //   7: invokestatic 497	com/tencent/mobileqq/theme/ThemeUtil:isDefaultTheme	()Z
-    //   10: ifne +9 -> 19
-    //   13: invokestatic 500	com/tencent/mobileqq/mini/entry/MiniAppUtils:isNightMode	()Z
-    //   16: ifeq +36 -> 52
-    //   19: aload_0
-    //   20: getfield 160	com/tencent/mobileqq/mini/entry/MiniAppEntryLayout:mThemeBackgroudView	Landroid/widget/ImageView;
-    //   23: bipush 8
-    //   25: invokevirtual 503	android/widget/ImageView:setVisibility	(I)V
-    //   28: invokestatic 497	com/tencent/mobileqq/theme/ThemeUtil:isDefaultTheme	()Z
-    //   31: ifeq +54 -> 85
-    //   34: aload_0
-    //   35: getfield 166	com/tencent/mobileqq/mini/entry/MiniAppEntryLayout:mDefaultStateView	Landroid/view/ViewGroup;
-    //   38: ldc_w 504
-    //   41: invokevirtual 507	android/view/ViewGroup:setBackgroundResource	(I)V
-    //   44: aload_0
-    //   45: getfield 119	com/tencent/mobileqq/mini/entry/MiniAppEntryLayout:mAdapter	Lcom/tencent/mobileqq/mini/entry/MiniAppEntryAdapter;
-    //   48: invokevirtual 262	com/tencent/mobileqq/mini/entry/MiniAppEntryAdapter:notifyDataSetChanged	()V
-    //   51: return
-    //   52: aload_0
-    //   53: getfield 160	com/tencent/mobileqq/mini/entry/MiniAppEntryLayout:mThemeBackgroudView	Landroid/widget/ImageView;
-    //   56: iconst_0
-    //   57: invokevirtual 503	android/widget/ImageView:setVisibility	(I)V
-    //   60: aload_0
-    //   61: getfield 160	com/tencent/mobileqq/mini/entry/MiniAppEntryLayout:mThemeBackgroudView	Landroid/widget/ImageView;
-    //   64: ldc_w 508
-    //   67: invokevirtual 511	android/widget/ImageView:setImageResource	(I)V
-    //   70: goto -42 -> 28
-    //   73: astore_1
-    //   74: ldc 17
-    //   76: iconst_1
-    //   77: ldc_w 513
-    //   80: aload_1
-    //   81: invokestatic 396	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   84: return
-    //   85: aload_0
-    //   86: getfield 166	com/tencent/mobileqq/mini/entry/MiniAppEntryLayout:mDefaultStateView	Landroid/view/ViewGroup;
-    //   89: iconst_0
-    //   90: invokevirtual 516	android/view/ViewGroup:setBackgroundColor	(I)V
-    //   93: goto -49 -> 44
-    //   96: astore_1
-    //   97: ldc 17
-    //   99: iconst_1
-    //   100: iconst_2
-    //   101: anewarray 518	java/lang/Object
-    //   104: dup
-    //   105: iconst_0
-    //   106: ldc_w 520
-    //   109: aastore
-    //   110: dup
-    //   111: iconst_1
-    //   112: aload_1
-    //   113: invokestatic 526	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   116: aastore
-    //   117: invokestatic 529	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   120: goto -76 -> 44
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	123	0	this	MiniAppEntryLayout
-    //   73	8	1	localThrowable	Throwable
-    //   96	17	1	localException	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   0	19	73	java/lang/Throwable
-    //   19	28	73	java/lang/Throwable
-    //   28	44	73	java/lang/Throwable
-    //   44	51	73	java/lang/Throwable
-    //   52	70	73	java/lang/Throwable
-    //   85	93	73	java/lang/Throwable
-    //   97	120	73	java/lang/Throwable
-    //   28	44	96	java/lang/Exception
-    //   85	93	96	java/lang/Exception
+    try
+    {
+      if (this.mThemeBackgroudView != null)
+      {
+        if ((!ThemeUtil.isDefaultTheme()) && (!MiniAppUtils.isNightMode())) {
+          break label36;
+        }
+        this.mThemeBackgroudView.setVisibility(8);
+      }
+      for (;;)
+      {
+        this.mAdapter.notifyDataSetChanged();
+        return;
+        label36:
+        this.mThemeBackgroudView.setVisibility(0);
+        this.mThemeBackgroudView.setImageResource(2130838912);
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("MicroAppEntryLayout", 1, "setThemeBackgroundDrawable error.", localThrowable);
+    }
   }
   
   public void startSwitchIconAnimation()
@@ -478,7 +427,7 @@ public class MiniAppEntryLayout
   
   public void updateMicroAppItemData()
   {
-    MiniAppUserAppInfoListManager localMiniAppUserAppInfoListManager = (MiniAppUserAppInfoListManager)this.mContext.app.getManager(309);
+    MiniAppUserAppInfoListManager localMiniAppUserAppInfoListManager = (MiniAppUserAppInfoListManager)this.mContext.app.getManager(QQManagerFactory.MINI_APP_ITEM_MANAGER);
     List localList = localMiniAppUserAppInfoListManager.getMiniAppInfoData();
     if ((localList == null) || (localList.size() == 0))
     {

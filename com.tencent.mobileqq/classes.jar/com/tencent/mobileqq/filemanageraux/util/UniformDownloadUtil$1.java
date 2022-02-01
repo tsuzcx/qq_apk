@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.filemanageraux.util;
 
-import atgn;
-import atgp;
-import atgr;
+import auku;
+import aukw;
+import auky;
 
 public final class UniformDownloadUtil$1
   implements Runnable
 {
-  public UniformDownloadUtil$1(String paramString, atgr paramatgr) {}
+  public UniformDownloadUtil$1(String paramString, auky paramauky) {}
   
   public void run()
   {
-    atgp localatgp = atgn.a(this.jdField_a_of_type_JavaLangString);
-    if ((this.jdField_a_of_type_Atgr != null) && (localatgp != null)) {
-      this.jdField_a_of_type_Atgr.a(localatgp.jdField_a_of_type_JavaLangString, localatgp.jdField_a_of_type_Long);
+    aukw localaukw = auku.a(this.jdField_a_of_type_JavaLangString);
+    if ((this.jdField_a_of_type_Auky != null) && (localaukw != null)) {
+      this.jdField_a_of_type_Auky.a(localaukw.jdField_a_of_type_JavaLangString, localaukw.jdField_a_of_type_Long);
     }
   }
 }

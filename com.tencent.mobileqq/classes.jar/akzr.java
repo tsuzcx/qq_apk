@@ -1,74 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.selectmember.FriendTabView;
-import com.tencent.mobileqq.activity.selectmember.FriendTabView.3.1;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.PhoneContact;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class akzr
-  implements View.OnClickListener
+class akzr
+  implements alat
 {
-  public akzr(FriendTabView paramFriendTabView) {}
+  akzr(akzp paramakzp, akzt paramakzt) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    QLog.d("FriendTabView", 2, "----->onBuddyListClick");
-    alan localalan = (alan)paramView.getTag();
-    String str;
-    boolean bool;
-    if ((localalan != null) && (localalan.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localalan.jdField_a_of_type_JavaLangObject != null))
-    {
-      str = "";
-      if (!(localalan.jdField_a_of_type_JavaLangObject instanceof Friends)) {
-        break label243;
-      }
-      str = ((Friends)localalan.jdField_a_of_type_JavaLangObject).getFriendNickWithAlias();
-      if (localalan.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())
-      {
-        if (!localalan.jdField_a_of_type_JavaLangString.startsWith("+")) {
-          break label269;
-        }
-        bool = this.a.a.onListViewItemClick(localalan.jdField_a_of_type_JavaLangString, str, 4, "-1", "");
-        label110:
-        if (QLog.isDevelopLevel()) {
-          QLog.d("FriendTabView", 2, "----->onBuddyListClick = " + bool);
-        }
-        localalan.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
-        if (AppSetting.c)
-        {
-          if (!localalan.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-            break label294;
-          }
-          paramView.setContentDescription(localalan.d.getText().toString() + amtj.a(2131704069));
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("DrawClassifier", 2, "TensorFlow init:" + paramBoolean);
     }
-    for (;;)
-    {
-      this.a.c();
-      if (AppSetting.c) {
-        paramView.postDelayed(new FriendTabView.3.1(this, paramView), 2000L);
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
+    if (paramBoolean) {
+      akzp.a(this.jdField_a_of_type_Akzp, akzp.a(this.jdField_a_of_type_Akzp), this.jdField_a_of_type_Akzt, akzp.b(this.jdField_a_of_type_Akzp));
+    }
+    while (this.jdField_a_of_type_Akzt == null) {
       return;
-      label243:
-      if (!(localalan.jdField_a_of_type_JavaLangObject instanceof PhoneContact)) {
-        break;
-      }
-      str = ((PhoneContact)localalan.jdField_a_of_type_JavaLangObject).name;
-      break;
-      label269:
-      bool = this.a.a.onListViewItemClick(localalan.jdField_a_of_type_JavaLangString, str, 0, "-1", "");
-      break label110;
-      label294:
-      paramView.setContentDescription(localalan.d.getText().toString() + amtj.a(2131704070));
     }
+    this.jdField_a_of_type_Akzt.a(false);
   }
 }
 

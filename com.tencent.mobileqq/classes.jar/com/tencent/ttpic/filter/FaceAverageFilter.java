@@ -15,7 +15,7 @@ import com.tencent.ttpic.openapi.util.FaceDetectUtil;
 import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.util.AlgoUtils;
 import com.tencent.ttpic.util.FaceOffUtil;
-import com.tencent.ttpic.util.FaceOffUtil.FEATURE_TYPE;
+import com.tencent.ttpic.util.FaceOffUtil.FeatureType;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +49,7 @@ public class FaceAverageFilter
     }
   }
   
-  private List<PointF> getVertexCoords(List<PointF> paramList1, List<PointF> paramList2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat, float[] paramArrayOfFloat)
+  private List<PointF> getVertexCoords(List<PointF> paramList1, List<PointF> paramList2, int paramInt1, int paramInt2, float paramFloat, float[] paramArrayOfFloat)
   {
     paramList1 = VideoMaterialUtil.copyList(paramList1);
     paramList2 = VideoMaterialUtil.copyList(paramList2);
@@ -57,16 +57,16 @@ public class FaceAverageFilter
     Object localObject = new PointF(((PointF)paramList1.get(64)).x, ((PointF)paramList1.get(64)).y);
     float f1 = (float)-Math.atan((((PointF)paramList1.get(35)).y - ((PointF)paramList1.get(45)).y) / (((PointF)paramList1.get(35)).x - ((PointF)paramList1.get(45)).x));
     f1 = paramArrayOfFloat[2] - f1;
-    paramInt3 = 0;
-    if (paramInt3 < paramList1.size())
+    int i = 0;
+    if (i < paramList1.size())
     {
-      if ((paramInt3 > 98) && (paramInt3 < 107)) {}
+      if ((i > 98) && (i < 107)) {}
       for (;;)
       {
-        paramInt3 += 1;
+        i += 1;
         break;
-        f2 = ((PointF)paramList2.get(paramInt3)).x - localPointF1.x;
-        f3 = ((PointF)paramList2.get(paramInt3)).y - localPointF1.y;
+        f2 = ((PointF)paramList2.get(i)).x - localPointF1.x;
+        f3 = ((PointF)paramList2.get(i)).y - localPointF1.y;
         double d1 = f2;
         double d2 = Math.cos(f1);
         double d3 = f3;
@@ -75,20 +75,20 @@ public class FaceAverageFilter
         double d6 = Math.sin(f1);
         double d7 = f3;
         double d8 = Math.cos(f1);
-        ((PointF)paramList2.get(paramInt3)).x = ((float)(d1 * d2 - d3 * d4) + localPointF1.x);
-        ((PointF)paramList2.get(paramInt3)).y = ((float)(d5 * d6 + d7 * d8) + localPointF1.y);
+        ((PointF)paramList2.get(i)).x = ((float)(d1 * d2 - d3 * d4) + localPointF1.x);
+        ((PointF)paramList2.get(i)).y = ((float)(d5 * d6 + d7 * d8) + localPointF1.y);
       }
     }
     f1 = localPointF1.x;
     float f2 = ((PointF)localObject).x;
     float f3 = localPointF1.y;
     float f4 = ((PointF)localObject).y;
-    paramInt3 = 0;
-    while (paramInt3 < paramList1.size())
+    i = 0;
+    while (i < paramList1.size())
     {
-      ((PointF)paramList2.get(paramInt3)).x -= f1 - f2;
-      ((PointF)paramList2.get(paramInt3)).y -= f3 - f4;
-      paramInt3 += 1;
+      ((PointF)paramList2.get(i)).x -= f1 - f2;
+      ((PointF)paramList2.get(i)).y -= f3 - f4;
+      i += 1;
     }
     localPointF1 = new PointF(((PointF)paramList2.get(43)).x, ((PointF)paramList2.get(43)).y);
     PointF localPointF2 = new PointF(((PointF)paramList2.get(53)).x, ((PointF)paramList2.get(53)).y);
@@ -102,51 +102,51 @@ public class FaceAverageFilter
     new PointF(((PointF)paramList1.get(105)).x, ((PointF)paramList1.get(105)).y);
     f1 = AlgoUtils.getDistance(localPointF3, localPointF4) / AlgoUtils.getDistance(localPointF1, localPointF2);
     f2 = AlgoUtils.getDistance(localPointF3, localPointF4) / AlgoUtils.getDistance(localPointF1, localPointF2);
-    paramInt3 = 0;
-    if (paramInt3 < paramList1.size())
+    i = 0;
+    if (i < paramList1.size())
     {
-      if ((paramInt3 >= 99) && (paramInt3 <= 106)) {}
+      if ((i >= 99) && (i <= 106)) {}
       for (;;)
       {
-        paramInt3 += 1;
+        i += 1;
         break;
-        f3 = ((PointF)paramList2.get(paramInt3)).x;
+        f3 = ((PointF)paramList2.get(i)).x;
         f4 = ((PointF)localObject).x;
-        float f5 = ((PointF)paramList2.get(paramInt3)).y;
+        float f5 = ((PointF)paramList2.get(i)).y;
         float f6 = ((PointF)localObject).y;
-        ((PointF)paramList2.get(paramInt3)).x += (f3 - f4) * (f1 - 1.0F);
-        ((PointF)paramList2.get(paramInt3)).y += (f2 - 1.0F) * (f5 - f6);
+        ((PointF)paramList2.get(i)).x += (f3 - f4) * (f1 - 1.0F);
+        ((PointF)paramList2.get(i)).y += (f2 - 1.0F) * (f5 - f6);
       }
     }
-    paramInt3 = 99;
-    while (paramInt3 < 107)
+    i = 99;
+    while (i < 107)
     {
-      ((PointF)paramList2.get(paramInt3)).x = ((PointF)paramList1.get(paramInt3)).x;
-      ((PointF)paramList2.get(paramInt3)).y = ((PointF)paramList1.get(paramInt3)).y;
-      paramInt3 += 1;
+      ((PointF)paramList2.get(i)).x = ((PointF)paramList1.get(i)).x;
+      ((PointF)paramList2.get(i)).y = ((PointF)paramList1.get(i)).y;
+      i += 1;
     }
     localObject = new ArrayList();
-    paramInt3 = 0;
-    while (paramInt3 < paramList2.size())
+    i = 0;
+    while (i < paramList2.size())
     {
-      ((List)localObject).add(new PointF(((PointF)paramList2.get(paramInt3)).x, ((PointF)paramList2.get(paramInt3)).y));
-      paramInt3 += 1;
+      ((List)localObject).add(new PointF(((PointF)paramList2.get(i)).x, ((PointF)paramList2.get(i)).y));
+      i += 1;
     }
     paramFloat *= smootherstep(0.9F, 1.0F, (float)(Math.abs(Math.cos(paramArrayOfFloat[0])) + Math.abs(Math.cos(paramArrayOfFloat[1])) + Math.abs(Math.cos(paramArrayOfFloat[2]))) / 3.0F);
-    paramInt3 = 0;
-    if (paramInt3 < paramList1.size())
+    i = 0;
+    if (i < paramList1.size())
     {
-      if ((paramInt3 >= 99) && (paramInt3 <= 106)) {}
+      if ((i >= 99) && (i <= 106)) {}
       for (;;)
       {
-        paramInt3 += 1;
+        i += 1;
         break;
-        paramArrayOfFloat = (PointF)((List)localObject).get(paramInt3);
-        f1 = ((PointF)paramList2.get(paramInt3)).x;
-        paramArrayOfFloat.x = (((PointF)paramList1.get(paramInt3)).x * paramFloat + (1.0F - paramFloat) * f1);
-        paramArrayOfFloat = (PointF)((List)localObject).get(paramInt3);
-        f1 = ((PointF)paramList2.get(paramInt3)).y;
-        paramArrayOfFloat.y = (((PointF)paramList1.get(paramInt3)).y * paramFloat + (1.0F - paramFloat) * f1);
+        paramArrayOfFloat = (PointF)((List)localObject).get(i);
+        f1 = ((PointF)paramList2.get(i)).x;
+        paramArrayOfFloat.x = (((PointF)paramList1.get(i)).x * paramFloat + (1.0F - paramFloat) * f1);
+        paramArrayOfFloat = (PointF)((List)localObject).get(i);
+        f1 = ((PointF)paramList2.get(i)).y;
+        paramArrayOfFloat.y = (((PointF)paramList1.get(i)).y * paramFloat + (1.0F - paramFloat) * f1);
       }
     }
     paramFloat = paramInt2 / this.height;
@@ -191,7 +191,7 @@ public class FaceAverageFilter
       }
     }
     label192:
-    for (localList = FaceOffUtil.getGrayCoords(FaceOffUtil.FEATURE_TYPE.CRAZY_FACE);; localList = FaceOffUtil.genPointsDouble(this.mFaceLayer.faceMaskFacePoint))
+    for (localList = FaceOffUtil.getGrayCoords(FaceOffUtil.FeatureType.CRAZY_FACE);; localList = FaceOffUtil.genPointsDouble(this.mFaceLayer.faceMaskFacePoint))
     {
       FaceDetectUtil.facePointf83to90(localList);
       localList = FaceOffUtil.getFullCoords(localList, 3.0F);
@@ -250,7 +250,7 @@ public class FaceAverageFilter
       localList2 = FaceOffUtil.getFullCoords(VideoMaterialUtil.copyList(paramObject.facePoints), 3.0F);
       addAttribParam("inputTextureCoordinate2", FaceOffUtil.initMaterialFaceTexCoordsFaceAverage(localList2, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices, this.mFaceLayer.faceTriangleID));
     } while (this.materialBitmap == null);
-    addAttribParam("position", FaceOffUtil.initFacePositionsFaceAverage(getVertexCoords(localList1, localList2, this.materialBitmap.getWidth(), this.materialBitmap.getHeight(), this.width, this.height, (float)this.mFaceLayer.distortionAlpha, paramObject.faceAngles), this.width, this.height, this.positions, this.mFaceLayer.faceTriangleID));
+    addAttribParam("position", FaceOffUtil.initFacePositionsFaceAverage(getVertexCoords(localList1, localList2, this.materialBitmap.getWidth(), this.materialBitmap.getHeight(), (float)this.mFaceLayer.distortionAlpha, paramObject.faceAngles), this.width, this.height, this.positions, this.mFaceLayer.faceTriangleID));
   }
 }
 

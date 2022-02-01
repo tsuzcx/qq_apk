@@ -1,73 +1,34 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.database.HotSortVideoEntry;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.Nullable;
 
 public class xdb
-  extends vll<QQStoryShareGroupProfileActivity, vsd>
 {
-  public xdb(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  @Nullable
+  public String a;
+  public xcy a;
+  @Nullable
+  public xcz a;
+  @Nullable
+  public String b;
+  
+  public xdb(@Nullable xcy paramxcy, @Nullable String paramString1, @Nullable String paramString2)
   {
-    super(paramQQStoryShareGroupProfileActivity);
+    this.jdField_a_of_type_Xcy = paramxcy;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull vsd paramvsd)
+  public xdb(xdb paramxdb)
   {
-    if ((paramvsd.b != 3) || (paramvsd.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem == null)) {}
-    ArrayList localArrayList;
-    label68:
-    do
-    {
-      return;
-      int i;
-      xeb localxeb;
-      HotSortVideoEntry localHotSortVideoEntry;
-      if (paramvsd.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mHadLike == 1)
-      {
-        i = 1;
-        localxeb = paramQQStoryShareGroupProfileActivity.a.a;
-        Object localObject = paramQQStoryShareGroupProfileActivity.a.a.a;
-        localArrayList = new ArrayList();
-        localObject = ((List)localObject).iterator();
-        do
-        {
-          if (!((Iterator)localObject).hasNext()) {
-            break;
-          }
-          localHotSortVideoEntry = (HotSortVideoEntry)((Iterator)localObject).next();
-        } while (!localHotSortVideoEntry.feedId.equals(paramvsd.jdField_a_of_type_JavaLangString));
-        if (i == 0) {
-          break label164;
-        }
-      }
-      for (int j = localHotSortVideoEntry.likeCount + 1;; j = localHotSortVideoEntry.likeCount - 1)
-      {
-        localHotSortVideoEntry.likeCount = j;
-        if (localHotSortVideoEntry.likeCount < 0) {
-          localHotSortVideoEntry.likeCount = 0;
-        }
-        localxeb.a(localHotSortVideoEntry);
-        localArrayList.add(localHotSortVideoEntry);
-        break label68;
-        i = 0;
-        break;
-      }
-    } while (localArrayList.size() <= 0);
-    label164:
-    ((vue)vux.a(25)).a(localArrayList);
-    paramQQStoryShareGroupProfileActivity.d = true;
+    this.jdField_a_of_type_Xcy = paramxdb.jdField_a_of_type_Xcy;
+    this.jdField_a_of_type_JavaLangString = paramxdb.jdField_a_of_type_JavaLangString;
+    this.b = paramxdb.b;
+    this.jdField_a_of_type_Xcz = paramxdb.jdField_a_of_type_Xcz;
   }
   
-  public Class acceptEventClass()
+  public String toString()
   {
-    return vsd.class;
+    return "StartInfo{mGroupId=" + this.jdField_a_of_type_Xcy + ", vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", feedId='" + this.b + '\'' + '}';
   }
-  
-  public void b(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull vsd paramvsd) {}
 }
 
 

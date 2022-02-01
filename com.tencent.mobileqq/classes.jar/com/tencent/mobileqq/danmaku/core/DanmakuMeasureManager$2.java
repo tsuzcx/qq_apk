@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.danmaku.core;
 
-import aqnx;
-import aqny;
-import aqoa;
+import arri;
+import arrj;
+import arrl;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -10,24 +10,24 @@ import java.util.List;
 public class DanmakuMeasureManager$2
   implements Runnable
 {
-  public DanmakuMeasureManager$2(aqnx paramaqnx, List paramList, aqny paramaqny) {}
+  public DanmakuMeasureManager$2(arri paramarri, List paramList, arrj paramarrj) {}
   
   public void run()
   {
     Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilList).iterator();
     while (localIterator.hasNext())
     {
-      aqoa localaqoa = (aqoa)localIterator.next();
-      aqnx.a(aqnx.a(this.this$0), localaqoa);
-      if (this.jdField_a_of_type_Aqny != null) {
-        this.jdField_a_of_type_Aqny.a(localaqoa);
+      arrl localarrl = (arrl)localIterator.next();
+      arri.a(arri.a(this.this$0), localarrl);
+      if (this.jdField_a_of_type_Arrj != null) {
+        this.jdField_a_of_type_Arrj.a(localarrl);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.core.DanmakuMeasureManager.2
  * JD-Core Version:    0.7.0.1
  */

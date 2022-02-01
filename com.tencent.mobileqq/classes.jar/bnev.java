@@ -1,198 +1,144 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.shortvideo.videotransfer.TransferConfig;
-import com.tencent.mobileqq.shortvideo.videotransfer.TransferConfig.ConfigData;
-import com.tencent.mobileqq.shortvideo.videotransfer.TransferData;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.IEventReceiver;
-import dov.com.qq.im.capture.data.TransitionCategoryItem;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.arch.lifecycle.MutableLiveData;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.ViewStub;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public class bnev
-  extends bnec
-  implements bndg, IEventReceiver
+  extends bnqb
 {
-  private int jdField_a_of_type_Int = 0;
-  private TransferData jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData = new TransferData();
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bmxa jdField_a_of_type_Bmxa;
+  private bnfd jdField_a_of_type_Bnfd;
+  private RecyclerView jdField_b_of_type_AndroidSupportV7WidgetRecyclerView;
+  private CheckBox jdField_b_of_type_AndroidWidgetCheckBox;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private bnfd jdField_b_of_type_Bnfd;
+  private RecyclerView jdField_c_of_type_AndroidSupportV7WidgetRecyclerView;
+  private CheckBox jdField_c_of_type_AndroidWidgetCheckBox;
+  private bnfd jdField_c_of_type_Bnfd;
+  private RecyclerView jdField_d_of_type_AndroidSupportV7WidgetRecyclerView;
+  private CheckBox jdField_d_of_type_AndroidWidgetCheckBox;
+  private bnfd jdField_d_of_type_Bnfd;
   
-  public bnev(@NonNull bnee parambnee)
+  public bnev(Activity paramActivity, View paramView, bnqc parambnqc)
   {
-    super(parambnee);
+    super(paramActivity, paramView, parambnqc);
+    this.jdField_a_of_type_Bmxa = ((bmxa)parambnqc.a(65537, new Object[0]));
   }
   
-  public static int a(int paramInt)
+  private void a()
   {
-    int i = 1;
-    if (paramInt == 1) {
-      i = 0;
-    }
-    while (paramInt == 2) {
-      return i;
-    }
-    return -1;
+    this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new bnex(this));
+    this.jdField_b_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new bney(this));
+    this.jdField_c_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new bnez(this));
+    this.jdField_d_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new bnfa(this));
   }
   
-  public static long a()
+  private void b()
   {
-    return -200L;
+    this.jdField_a_of_type_Bnfd = new bnfd(this.mActivity);
+    this.jdField_b_of_type_Bnfd = new bnfd(this.mActivity);
+    this.jdField_c_of_type_Bnfd = new bnfd(this.mActivity);
+    this.jdField_d_of_type_Bnfd = new bnfd(this.mActivity);
+    LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(this.mActivity, 1, false);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localLinearLayoutManager);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bnfd);
+    localLinearLayoutManager = new LinearLayoutManager(this.mActivity, 1, false);
+    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localLinearLayoutManager);
+    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_b_of_type_Bnfd);
+    localLinearLayoutManager = new LinearLayoutManager(this.mActivity, 1, false);
+    this.jdField_c_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localLinearLayoutManager);
+    this.jdField_c_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_c_of_type_Bnfd);
+    localLinearLayoutManager = new LinearLayoutManager(this.mActivity, 1, false);
+    this.jdField_d_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localLinearLayoutManager);
+    this.jdField_d_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_d_of_type_Bnfd);
   }
   
-  private void a(long paramLong)
+  private void c()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.getPositions();
-    if ((localObject == null) || (((ArrayList)localObject).size() == 0))
+    QIPCClientHelper.getInstance().callServer("AECameraGetInfoServer", "ACTION_GET_ENV_INFO", null, new bnfb(this));
+  }
+  
+  private void d()
+  {
+    bnep.a().observe(this.jdField_a_of_type_Bmxa, new bnfc(this));
+  }
+  
+  protected void initView()
+  {
+    View localView = ((ViewStub)this.mRootView.findViewById(2131362245)).inflate();
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131362250));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131362251));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)localView.findViewById(2131362248));
+    this.jdField_b_of_type_AndroidWidgetCheckBox = ((CheckBox)localView.findViewById(2131362253));
+    this.jdField_c_of_type_AndroidWidgetCheckBox = ((CheckBox)localView.findViewById(2131362256));
+    this.jdField_d_of_type_AndroidWidgetCheckBox = ((CheckBox)localView.findViewById(2131362255));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)localView.findViewById(2131362247));
+    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)localView.findViewById(2131362252));
+    this.jdField_c_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)localView.findViewById(2131362246));
+    this.jdField_d_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)localView.findViewById(2131362254));
+    a();
+    b();
+    c();
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new bnew(this));
+    d();
+  }
+  
+  public void send(int paramInt, Object... paramVarArgs)
+  {
+    Object localObject2;
+    Object localObject3;
+    if (paramInt == 720897)
     {
-      this.jdField_a_of_type_Int = 1;
-      return;
-    }
-    localObject = ((ArrayList)localObject).iterator();
-    Long localLong;
-    for (long l = 0L; ((Iterator)localObject).hasNext(); l = localLong.longValue())
-    {
-      localLong = (Long)((Iterator)localObject).next();
-      if (localLong.longValue() - l < 2000L)
+      localObject2 = (List)paramVarArgs[0];
+      localObject1 = (List)paramVarArgs[1];
+      paramVarArgs = new LinkedList();
+      localObject2 = ((List)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        this.jdField_a_of_type_Int = 2;
-        return;
+        localObject3 = (bnes)((Iterator)localObject2).next();
+        localbnff = new bnff(null);
+        localbnff.a = bnfh.a((bnes)localObject3);
+        paramVarArgs.add(localbnff);
       }
-    }
-    if (paramLong - l < 2000L)
-    {
-      this.jdField_a_of_type_Int = 2;
-      return;
-    }
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  private boolean c()
-  {
-    return (this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.mConfigData.mID != -1) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.getPositions().size() > 0);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    a(bndg.class, this);
-    if ((this.jdField_a_of_type_Bnee.a.a instanceof EditLocalPhotoSource)) {
-      this.jdField_a_of_type_Int = 3;
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Int == 0)
+      localObject2 = new LinkedList();
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject = ((bmrr)bmql.a(5)).a;
-        if (localObject != null)
-        {
-          localObject = ((bnuc)localObject).a();
-          a(Integer.parseInt(((TransitionCategoryItem)localObject).a));
-          bnub.a().a((TransitionCategoryItem)localObject);
-          localObject = (bncx)a(bncx.class);
-          if ((localObject != null) && (!(this.jdField_a_of_type_Bnee instanceof bnss))) {
-            ((bncx)localObject).b();
-          }
-        }
-        if (AudioHelper.g()) {
-          this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.setReverseShift(a());
-        }
+        localObject3 = (bner)((Iterator)localObject1).next();
+        localbnff = new bnff(null);
+        localbnff.a = ((bner)localObject3).toString();
+        ((List)localObject2).add(localbnff);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.publish.edit.EditVideoTransfer", 2, "onCreate, state:" + this.jdField_a_of_type_Int);
-      }
-      Object localObject = (bnby)a(bnby.class);
-      if (this.jdField_a_of_type_Int != 0) {
-        ((bnby)localObject).b();
-      }
-      xwa.a("video_edit_transition", "exp_transition", a(this.jdField_a_of_type_Bnee.a.a("extra_transiton_src_from", -1)), 0, new String[0]);
-      return;
-      if ((this.jdField_a_of_type_Bnee.a.a instanceof EditLocalVideoSource))
-      {
-        this.jdField_a_of_type_Int = 3;
-      }
-      else if ((this.jdField_a_of_type_Bnee.a.a instanceof EditTakeVideoSource))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.setPositions(((EditTakeVideoSource)this.jdField_a_of_type_Bnee.a.a).a.mTransferPosList);
-        if (this.jdField_a_of_type_Bnee.a.a("extra_transiton_src_from", -1) == 1) {
-          this.jdField_a_of_type_Int = 0;
-        } else {
-          a(((EditTakeVideoSource)this.jdField_a_of_type_Bnee.a.a).a.mDuration);
-        }
-      }
+      this.jdField_a_of_type_Bnfd.a(paramVarArgs);
+      this.jdField_c_of_type_Bnfd.a((List)localObject2);
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    Object localObject = TransferConfig.getConfigData(paramInt);
-    if (paramInt == 1)
+    while ((paramInt != 720898) || (this.jdField_d_of_type_Bnfd == null))
     {
-      ((TransferConfig.ConfigData)localObject).mCommonFloat1 = null;
-      ((TransferConfig.ConfigData)localObject).mCommonFloat2 = null;
-      ((TransferConfig.ConfigData)localObject).mCommonFloat3 = null;
-      ((TransferConfig.ConfigData)localObject).mCommonFloat4 = null;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.setConfigData((TransferConfig.ConfigData)localObject);
-    if (c())
-    {
-      localObject = (bnel)a(bnel.class);
-      if (localObject != null) {
-        ((bnel)localObject).a(this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData);
-      }
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, Object paramObject)
-  {
-    if (this.jdField_a_of_type_Int != 0) {}
-  }
-  
-  public void a(int paramInt, @NonNull bnot parambnot)
-  {
-    super.a(paramInt, parambnot);
-    if (!b()) {}
-    String str;
-    do
-    {
-      return;
-      str = this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.toJSONObject();
-    } while (TextUtils.isEmpty(str));
-    parambnot.a.putExtra("transfer_effect_data", str);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Int == 1) {
-      QQToast.a(a(), 2131719048, 0).a();
-    }
-    while (this.jdField_a_of_type_Int != 2) {
+      bnff localbnff;
       return;
     }
-    QQToast.a(a(), 2131719047, 0).a();
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Int == 0;
-  }
-  
-  public void g()
-  {
-    super.g();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.publish.edit.EditVideoTransfer", 2, "onDestroy");
+    Object localObject1 = bnep.a.a();
+    paramVarArgs = new LinkedList();
+    localObject1 = ((List)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (String)((Iterator)localObject1).next();
+      localObject3 = new bnff(null);
+      ((bnff)localObject3).a = ((CharSequence)localObject2);
+      paramVarArgs.add(localObject3);
     }
+    this.jdField_d_of_type_Bnfd.a(paramVarArgs);
   }
 }
 

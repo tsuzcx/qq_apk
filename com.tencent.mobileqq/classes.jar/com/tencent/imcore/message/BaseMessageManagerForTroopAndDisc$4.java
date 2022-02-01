@@ -1,7 +1,7 @@
 package com.tencent.imcore.message;
 
-import abvw;
-import abwz;
+import acmd;
+import acnh;
 import android.os.Handler;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.qphone.base.util.QLog;
@@ -11,7 +11,7 @@ import java.util.List;
 public class BaseMessageManagerForTroopAndDisc$4
   implements Runnable
 {
-  public BaseMessageManagerForTroopAndDisc$4(abvw paramabvw, QQMessageFacade.RefreshMessageContext paramRefreshMessageContext, String paramString, int paramInt, long paramLong1, long paramLong2, boolean paramBoolean) {}
+  public BaseMessageManagerForTroopAndDisc$4(acmd paramacmd, QQMessageFacade.RefreshMessageContext paramRefreshMessageContext, String paramString, int paramInt, long paramLong1, long paramLong2, boolean paramBoolean) {}
   
   public void run()
   {
@@ -33,7 +33,7 @@ public class BaseMessageManagerForTroopAndDisc$4
           break;
         }
         localChatMessage = (ChatMessage)((Iterator)localObject).next();
-      } while (abwz.a(localChatMessage));
+      } while (acnh.a(localChatMessage));
     }
     for (int i = (int)localChatMessage.shmsgseq;; i = 0)
     {
@@ -41,7 +41,7 @@ public class BaseMessageManagerForTroopAndDisc$4
       for (boolean bool = true; (j == i) || (i <= this.jdField_a_of_type_Long); bool = false)
       {
         if ((bool) && (this.jdField_a_of_type_Boolean)) {
-          abvw.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int));
+          acmd.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int));
         }
         this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext.isSuccess = bool;
         this.this$0.a.setChangeAndNotify(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext);

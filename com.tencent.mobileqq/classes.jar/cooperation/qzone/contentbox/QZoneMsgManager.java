@@ -4,7 +4,7 @@ import NS_MOBILE_OPERATION.operation_like_rsp;
 import NS_QZONE_MQMSG.QzoneMessageBoxRsp;
 import android.os.Bundle;
 import android.text.TextUtils;
-import aqru;
+import arvg;
 import com.qq.taf.jce.JceStruct;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -127,7 +127,7 @@ public class QZoneMsgManager
       i = 0;
       localObject1 = new QZoneLikeReq(Long.valueOf(l), (String)localObject1, (String)localObject2, i, paramMQLikeCell.appid);
       ((QZoneLikeReq)localObject1).setType(100);
-      localObject2 = new QzoneCommonIntent(localQQAppInterface.getApplication(), aqru.class);
+      localObject2 = new QzoneCommonIntent(localQQAppInterface.getApplication(), arvg.class);
       localBundle = new Bundle();
       if (paramMQLikeCell.liked) {
         break label194;
@@ -162,7 +162,7 @@ public class QZoneMsgManager
     }
     QZoneMsgReq localQZoneMsgReq = new QZoneMsgReq(localQQAppInterface.getLongAccountUin(), this.traceInfo, getLoadNum(2), 3);
     localQZoneMsgReq.setType(2);
-    QzoneCommonIntent localQzoneCommonIntent = new QzoneCommonIntent(localQQAppInterface.getApplication(), aqru.class);
+    QzoneCommonIntent localQzoneCommonIntent = new QzoneCommonIntent(localQQAppInterface.getApplication(), arvg.class);
     localQzoneCommonIntent.setRequest(localQZoneMsgReq);
     localQzoneCommonIntent.setObserver(this);
     localQQAppInterface.startServlet(localQzoneCommonIntent);
@@ -385,21 +385,14 @@ public class QZoneMsgManager
       QZLog.i("QZoneMsgManager", "preLoadQZoneMsg()");
     }
     QQAppInterface localQQAppInterface = getApp();
-    if (localQQAppInterface == null) {
-      QZLog.e("QZoneMsgManager", "preLoadQZoneMsg app == null");
-    }
-    do
+    if (localQQAppInterface == null)
     {
+      QZLog.e("QZoneMsgManager", "preLoadQZoneMsg app == null");
       return;
-      if (this.msgEntity == null) {
-        break;
-      }
-    } while (!QZLog.isColorLevel());
-    QZLog.i("QZoneMsgManager", "msgEntity != null, not need preLoadQZoneMsg");
-    return;
+    }
     QZoneMsgReq localQZoneMsgReq = new QZoneMsgReq(localQQAppInterface.getLongAccountUin(), "", getLoadNum(0), 1);
     localQZoneMsgReq.setType(0);
-    QzoneCommonIntent localQzoneCommonIntent = new QzoneCommonIntent(localQQAppInterface.getApplication(), aqru.class);
+    QzoneCommonIntent localQzoneCommonIntent = new QzoneCommonIntent(localQQAppInterface.getApplication(), arvg.class);
     localQzoneCommonIntent.setRequest(localQZoneMsgReq);
     localQzoneCommonIntent.setObserver(this);
     localQQAppInterface.startServlet(localQzoneCommonIntent);

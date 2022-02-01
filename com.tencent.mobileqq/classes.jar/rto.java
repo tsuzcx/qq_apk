@@ -1,18 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.model.RIJUserLevelRequestModule.UserLevelInfo;
 
-class rto
-  implements DialogInterface.OnDismissListener
+final class rto
+  implements qha
 {
-  rto(rtl paramrtl) {}
+  rto(Activity paramActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(RIJUserLevelRequestModule.UserLevelInfo paramUserLevelInfo)
   {
-    if (rtl.a(this.a) != null) {
-      rtl.a(this.a).a(rtl.a(this.a), rtl.b(this.a), false, false);
-    }
-    rtl.a(this.a, true);
-    rtl.b(this.a, false);
+    rth.b(this.a, paramUserLevelInfo);
   }
 }
 

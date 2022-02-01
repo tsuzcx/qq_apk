@@ -31,6 +31,7 @@ public class MiniAppObserver
   public static final int MINI_APP_GET_APPINFO_BY_LINK = 1003;
   public static final int MINI_APP_GET_APPINFO_BY_LINK_FOR_SDK = 1056;
   public static final int MINI_APP_GET_AUTH_LIST = 1043;
+  public static final int MINI_APP_GET_CM_SHOW_INFO = 1088;
   public static final int MINI_APP_GET_CONETNT_ACCELERATE = 1070;
   public static final int MINI_APP_GET_EXT_CONFIG_DETAIL = 1040;
   static final int MINI_APP_GET_FORM_ID = 1020;
@@ -47,6 +48,7 @@ public class MiniAppObserver
   public static final int MINI_APP_GET_PHONE_NUMBER = 1053;
   public static final int MINI_APP_GET_POTENTIAL_FRIEND_LIST = 1060;
   public static final int MINI_APP_GET_PROFILE = 1001;
+  public static final int MINI_APP_GET_REACTIVE_FRIEND_LIST = 1084;
   public static final int MINI_APP_GET_RECOMMEND_APP_LIST = 1048;
   public static final int MINI_APP_GET_REWARDED_VIDEO_AD_RESULT = 1027;
   public static final int MINI_APP_GET_ROBOT_UIN = 1045;
@@ -69,13 +71,16 @@ public class MiniAppObserver
   public static final int MINI_APP_MODIFY_FRIEND_INTERACTIVE_STORAGE_SERVLET = 1058;
   public static final int MINI_APP_OPEN_CHANNEL = 1054;
   public static final int MINI_APP_REAL_TIME_LOG_REPORT = 1075;
+  public static final int MINI_APP_REJECT_FREQUENTLY_RECOMMENDS = 1085;
   public static final int MINI_APP_REMOVE_USER_CLOUD_STORAGE = 1017;
   public static final int MINI_APP_REPORT_LOG_FILE_URL = 1035;
   public static final int MINI_APP_REPORT_SHARE = 1063;
   public static final int MINI_APP_SEARCH_APP = 1072;
+  public static final int MINI_APP_SEARCH_GUESS_YOU_LIKE = 1086;
   public static final int MINI_APP_SEND_ARK_MSG = 1061;
   public static final int MINI_APP_SET_AUTH = 1042;
   public static final int MINI_APP_SET_AVATAR = 1034;
+  public static final int MINI_APP_SET_CM_SHOW_PET_STATUS = 1087;
   public static final int MINI_APP_SET_TOP = 1007;
   public static final int MINI_APP_SET_USER_CLOUD_STORAGE = 1015;
   public static final int MINI_APP_SET_USER_SWITCH = 1050;
@@ -301,6 +306,18 @@ public class MiniAppObserver
     }
     if (1083 == paramInt) {
       return "MINI_APP_CHECK_BINDING_STATE";
+    }
+    if (1087 == paramInt) {
+      return "MINI_APP_SET_CM_SHOW_PET_STATUS";
+    }
+    if (1088 == paramInt) {
+      return "MINI_APP_GET_CM_SHOW_INFO";
+    }
+    if (1084 == paramInt) {
+      return "MINI_APP_GET_REACTIVE_FRIEND_LIST";
+    }
+    if (1086 == paramInt) {
+      return "MINI_APP_SEARCH_GUESS_YOU_LIKE";
     }
     return "default cmd";
   }
@@ -701,8 +718,33 @@ public class MiniAppObserver
         onBookShelfUpdateResult(i, paramBoolean, paramBundle);
         return;
       }
-    } while (paramInt != 1083);
-    onCheckBindingState(i, paramBoolean, paramBundle);
+      if (paramInt == 1083)
+      {
+        onCheckBindingState(i, paramBoolean, paramBundle);
+        return;
+      }
+      if (paramInt == 1087)
+      {
+        onSetCMShowPetStatus(i, paramBoolean, paramBundle);
+        return;
+      }
+      if (paramInt == 1088)
+      {
+        onGetCMShowInfo(i, paramBoolean, paramBundle);
+        return;
+      }
+      if (paramInt == 1084)
+      {
+        onGetReactiveFriendList(i, paramBoolean, paramBundle);
+        return;
+      }
+      if (paramInt == 1085)
+      {
+        onRejectFrequentlyRecommends(i, paramBoolean, paramBundle);
+        return;
+      }
+    } while (paramInt != 1086);
+    onGuessYouLike(i, paramBoolean, paramBundle);
   }
   
   protected void onAddPhoneNumber(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
@@ -747,6 +789,8 @@ public class MiniAppObserver
   
   protected void onGetAuthList(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
+  protected void onGetCMShowInfo(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
   protected void onGetContentAccelerateServlet(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onGetExtConfigDetail(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
@@ -785,6 +829,8 @@ public class MiniAppObserver
   
   protected void onGetProfileFin(int paramInt1, String paramString1, boolean paramBoolean, String paramString2, String paramString3, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11) {}
   
+  protected void onGetReactiveFriendList(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
   protected void onGetRecommendAppList(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onGetRewardedVideoAdResult(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
@@ -817,6 +863,8 @@ public class MiniAppObserver
   
   protected void onGetuserCloudStorage(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
+  protected void onGuessYouLike(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
   protected void onLocalSearchDataFin(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onModifyFriendInteractiveStorage(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
@@ -829,6 +877,8 @@ public class MiniAppObserver
   {
     ThreadManagerV2.excute(new MiniAppObserver.1(this, paramInt, paramBoolean, paramBundle), 16, null, false);
   }
+  
+  protected void onRejectFrequentlyRecommends(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onRemoveuserCloudStorage(int paramInt, boolean paramBoolean) {}
   
@@ -843,6 +893,8 @@ public class MiniAppObserver
   protected void onSetAuth(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onSetAvatar(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
+  protected void onSetCMShowPetStatus(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onSetTopMiniAppFin(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   

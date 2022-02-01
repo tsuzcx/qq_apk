@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/mhe" android:layout_width="fill_parent" android:layout_height="70.0px" android:minHeight="70.0px"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/a4f" android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.richmediabrowser.view.recyclerview.BrowserRecyclerView android:id="@id/i4l" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:id="@id/g2h" android:visibility="invisible" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_centerInParent="true" />
+    <TextView android:textSize="28.0px" android:textStyle="bold" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/mh0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/mh1" android:visibility="gone" android:layout_width="43.0px" android:layout_height="43.0px" android:scaleType="fitCenter" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/mhk" android:background="@drawable/bk9" android:padding="3.0px" android:layout_width="50.0px" android:layout_height="50.0px" android:layout_marginLeft="63.0px" android:scaleType="fitCenter" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="28.0px" android:textStyle="bold" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/mhg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignBaseline="@id/mh0" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="28.0px" android:textStyle="bold" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/mhj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="141.0px" android:layout_marginRight="10.0px" android:singleLine="true" android:layout_toLeftOf="@id/mhg" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
 </RelativeLayout>

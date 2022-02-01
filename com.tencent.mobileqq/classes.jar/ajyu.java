@@ -1,20 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.home.Conversation;
 
 public class ajyu
-  implements View.OnClickListener
+  implements Handler.Callback
 {
-  public ajyu(LingHbFragment paramLingHbFragment) {}
+  public ajyu(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a.c.clearFocus();
-    LingHbFragment.a(this.a).a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    awth.a().a(paramMessage.what);
+    if (paramMessage.what == 4)
+    {
+      this.a.a(1134013, 0L, false);
+      return true;
+    }
+    this.a.d(true);
+    return true;
   }
 }
 

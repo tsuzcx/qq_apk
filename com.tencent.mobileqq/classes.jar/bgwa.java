@@ -1,16 +1,6 @@
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
-
-public class bgwa
-  implements ThreadExcutor.IThreadListener
+public abstract interface bgwa
 {
-  public bgwa(SwiftBrowserCookieMonster paramSwiftBrowserCookieMonster) {}
-  
-  public void onAdded() {}
-  
-  public void onPostRun() {}
-  
-  public void onPreRun() {}
+  public abstract void a(int paramInt, bgvx parambgvx);
 }
 
 

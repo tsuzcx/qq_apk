@@ -1,18 +1,19 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import amsw;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.os.MqqHandler;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class BaseChatPie$80
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   BaseChatPie$80(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((amsw)this.this$0.app.getManager(51)).c();
-    this.this$0.uiHandler.sendMessage(this.this$0.uiHandler.obtainMessage(64));
+    if ((this.this$0.addFriendDialog != null) && (this.this$0.addFriendDialog.isShowing())) {
+      this.this$0.addFriendDialog.dismiss();
+    }
   }
 }
 

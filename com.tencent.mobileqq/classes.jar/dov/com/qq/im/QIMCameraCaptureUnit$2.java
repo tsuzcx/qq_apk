@@ -2,26 +2,26 @@ package dov.com.qq.im;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
-import bfvo;
-import blhu;
-import blid;
-import bnbp;
+import bheg;
+import bmul;
+import bmuu;
+import borh;
 import com.tencent.mobileqq.utils.ViewUtils;
 
 public class QIMCameraCaptureUnit$2
   implements Runnable
 {
-  public QIMCameraCaptureUnit$2(blhu paramblhu) {}
+  public QIMCameraCaptureUnit$2(bmul parambmul) {}
   
   public void run()
   {
     try
     {
-      this.this$0.jdField_a_of_type_AndroidGraphicsBitmap = blid.a(this.this$0.jdField_a_of_type_Bnbp.a(), true);
+      this.this$0.jdField_a_of_type_AndroidGraphicsBitmap = bmuu.a(this.this$0.jdField_a_of_type_Borh.a(), true);
       if ((this.this$0.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.this$0.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-        this.this$0.jdField_a_of_type_AndroidGraphicsBitmap = bfvo.b(this.this$0.jdField_a_of_type_AndroidGraphicsBitmap, ViewUtils.dip2px(3.0F), this.this$0.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.this$0.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+        this.this$0.jdField_a_of_type_AndroidGraphicsBitmap = bheg.b(this.this$0.jdField_a_of_type_AndroidGraphicsBitmap, ViewUtils.dip2px(3.0F), this.this$0.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.this$0.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
       }
-      this.this$0.jdField_a_of_type_Bnbp.a().runOnUiThread(new QIMCameraCaptureUnit.2.1(this));
+      this.this$0.jdField_a_of_type_Borh.a().runOnUiThread(new QIMCameraCaptureUnit.2.1(this));
       return;
     }
     catch (Exception localException)

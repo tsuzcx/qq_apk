@@ -1,25 +1,30 @@
+import android.content.Intent;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView.ViewHolder;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class ayfq
-  extends RecyclerView.ViewHolder
+class ayfq
+  implements View.OnClickListener
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private RedTouch jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch;
-  private ImageView b;
+  ayfq(ayek paramayek, String paramString) {}
   
-  public ayfq(@NonNull View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368368));
-    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch = new RedTouch(paramView.getContext(), this.jdField_a_of_type_AndroidWidgetImageView).a(8388661).a();
-    this.b = ((ImageView)paramView.findViewById(2131366809));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378382));
+    Intent localIntent = new Intent(this.jdField_a_of_type_Ayek.a, QQBrowserActivity.class);
+    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&from=");
+    Object localObject = this.jdField_a_of_type_Ayek.a;
+    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Ayek.a.j)) {}
+    for (localObject = "1";; localObject = "2")
+    {
+      localIntent.putExtra("url", (String)localObject);
+      bdla.b(this.jdField_a_of_type_Ayek.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_focus", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Ayek.a.startActivity(localIntent);
+      this.jdField_a_of_type_Ayek.a.l = true;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

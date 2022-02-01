@@ -1,25 +1,52 @@
-import android.opengl.GLSurfaceView;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.richmedia.capture.gesture.GL3DGesture.1;
-import com.tencent.mobileqq.shortvideo.ptvfilter.material.GameplayEngine;
-import com.tencent.ttpic.openapi.filter.GLGestureListener;
-import com.tencent.ttpic.openapi.filter.GLGestureProxy;
+import android.app.Dialog;
+import android.content.Intent;
+import android.os.Parcelable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class baba
-  implements GLGestureListener
+class baba
+  implements View.OnClickListener
 {
-  public GameplayEngine a;
+  baba(baax parambaax, Card paramCard) {}
   
-  public int onGetPriority()
+  public void onClick(View paramView)
   {
-    return 1040;
-  }
-  
-  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
-  {
-    paramMotionEvent = new bbvv(paramMotionEvent);
-    GLGestureProxy.getInstance().getGLSurfaceView().queueEvent(new GL3DGesture.1(this, paramMotionEvent));
-    return false;
+    Object localObject;
+    if (aslo.a(baax.a(this.jdField_a_of_type_Baax).getCurrentAccountUin()))
+    {
+      localObject = astl.a(baax.a(this.jdField_a_of_type_Baax));
+      int j = 1;
+      int i = j;
+      if ((baax.b(this.jdField_a_of_type_Baax) instanceof FriendProfileCardActivity))
+      {
+        i = j;
+        if (((FriendProfileCardActivity)baax.c(this.jdField_a_of_type_Baax)).e) {
+          i = 2;
+        }
+      }
+      bdla.b(null, "dc00898", "", "", "kuolie", "0X80097DB", i, 0, "", "", "", "");
+      if ((baax.d(this.jdField_a_of_type_Baax) != null) && (!baax.e(this.jdField_a_of_type_Baax).isFinishing())) {
+        ((Dialog)localObject).show();
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localObject = new ExtendFriendProfileEditFragment.ExtendFriendInfo(this.jdField_a_of_type_ComTencentMobileqqDataCard);
+      Intent localIntent = new Intent();
+      localIntent.putExtra("key_extend_friend_info", (Parcelable)localObject);
+      PublicFragmentActivity.a(baax.f(this.jdField_a_of_type_Baax), localIntent, ExtendFriendEditFragment.class, 4097);
+      bdla.b(baax.b(this.jdField_a_of_type_Baax), "dc00898", "", "", "kuolie", "0X80092DB", 0, 0, "", "", "", "");
+    }
   }
 }
 

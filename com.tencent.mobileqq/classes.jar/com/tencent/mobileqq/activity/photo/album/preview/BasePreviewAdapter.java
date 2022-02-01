@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.photo.album.preview;
 
-import ajou;
+import akki;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 public class BasePreviewAdapter
   extends BaseAdapter
-  implements ajou, AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener
+  implements akki, AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener
 {
   public static final String TAG = "BasePreviewAdapter";
   BasePreviewPresent mCurrentPreviewPresent;

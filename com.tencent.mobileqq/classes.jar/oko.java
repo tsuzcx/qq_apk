@@ -1,18 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.PublicAccountManager.1;
+import mqq.observer.BusinessObserver;
 
 public class oko
-  implements bgvx
+  implements BusinessObserver
 {
-  public oko(ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment paramReadInJoyArticleDetailFragment) {}
+  public oko(PublicAccountManager.1 param1) {}
   
-  public Object a(int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    }
-    return new okq(this.a);
+    this.a.a.a();
   }
 }
 

@@ -1,19 +1,44 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.Friends;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class afjl
-  implements View.OnClickListener
+public class afjl
+  extends CardObserver
 {
-  afjl(afiw paramafiw) {}
+  public afjl(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
   
-  public void onClick(View paramView)
+  public void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    if (!axuy.a().a(this.a.mActivity.app, this.a.mActivity, this.a.sessionInfo, paramView)) {
-      bgeg.a(this.a.mActivity, "aio");
+    if (!paramBoolean) {
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
+    {
+      if ((paramObject != null) && (!TextUtils.isEmpty(paramObject.uin)))
+      {
+        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+        afjr localafjr;
+        do
+        {
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localafjr = (afjr)localIterator.next();
+        } while ((localafjr.a == null) || (!(localafjr.a instanceof Friends)) || (!paramObject.uin.equals(((Friends)localafjr.a).uin)));
+      }
+      for (int i = 1; i != 0; i = 0)
+      {
+        UncommonlyUsedContactsActivity.a(this.a);
+        this.a.jdField_a_of_type_Afjp.notifyDataSetChanged();
+        return;
+      }
+      break;
+    }
   }
 }
 

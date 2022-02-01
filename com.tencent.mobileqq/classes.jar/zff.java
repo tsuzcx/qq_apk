@@ -1,21 +1,140 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoCommentRsp;
-import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tribe.async.dispatch.Dispatcher;
+import android.animation.ValueAnimator;
+import android.content.Context;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.immersive.ImmersiveTitleBar2;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
-class zff
-  implements VSDispatchObserver.onVSRspCallBack<CertifiedAccountWrite.StDoCommentRsp>
+public class zff
 {
-  zff(zfb paramzfb, CertifiedAccountMeta.StComment paramStComment) {}
+  float jdField_a_of_type_Float = 1.0F;
+  int jdField_a_of_type_Int = 0;
+  ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ImmersiveTitleBar2 jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2;
+  boolean jdField_a_of_type_Boolean = false;
+  TextView b;
+  TextView c;
   
-  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoCommentRsp paramStDoCommentRsp)
+  public zff(BaseActivity paramBaseActivity, int paramInt)
   {
-    if ((paramStDoCommentRsp != null) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment != null)) {
-      paramStDoCommentRsp.comment.id.set(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment.id.get());
+    if (ImmersiveUtils.isSupporImmersive() == 1) {}
+    for (;;)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        paramBaseActivity.mActNeedImmersive = false;
+        paramBaseActivity.mNeedStatusTrans = false;
+        paramBaseActivity.getWindow().addFlags(67108864);
+      }
+      this.jdField_a_of_type_Int = DisplayUtil.dip2px(paramBaseActivity, paramInt);
+      return;
+      bool = false;
     }
-    vli.a().dispatch(this.jdField_a_of_type_Zfb.a(new Object[] { Integer.valueOf(5), Long.valueOf(paramLong), paramString, paramStDoCommentRsp, Integer.valueOf(this.jdField_a_of_type_Zfb.hashCode()) }));
+  }
+  
+  private void a(float paramFloat)
+  {
+    int i = (int)(255.0F * paramFloat);
+    Drawable localDrawable = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getBackground();
+    if (localDrawable != null)
+    {
+      localDrawable.setAlpha(i);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.invalidateDrawable(localDrawable);
+    }
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setAlpha(paramFloat);
+    this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(paramFloat);
+    if (this.jdField_a_of_type_AndroidContentResColorStateList == null) {
+      this.jdField_a_of_type_AndroidContentResColorStateList = this.b.getTextColors();
+    }
+    if (paramFloat > 0.5D)
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840365);
+      this.b.setBackgroundResource(2130850724);
+      this.b.setTextColor(this.jdField_a_of_type_AndroidContentResColorStateList);
+      this.c.setTextColor(this.jdField_a_of_type_AndroidContentResColorStateList);
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840365);
+    this.b.setBackgroundResource(2130850724);
+    this.b.setTextColor(this.b.getContext().getResources().getColorStateList(2131167023));
+    this.c.setTextColor(this.c.getContext().getResources().getColorStateList(2131167023));
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131379056));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369278));
+    this.b = ((TextView)paramView.findViewById(2131369231));
+    this.c = ((TextView)paramView.findViewById(2131369262));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369245));
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)paramView.findViewById(2131379099));
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setVisibility(0);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setVisibility(8);
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((paramInt1 == 0) && (paramInt2 > 0))
+    {
+      paramInt1 = -paramAbsListView.getChildAt(0).getTop();
+      if ((paramInt1 > this.jdField_a_of_type_Int) && (!a())) {
+        a(true, true);
+      }
+    }
+    while ((paramInt1 <= 0) || (a()))
+    {
+      do
+      {
+        return;
+      } while ((paramInt1 >= this.jdField_a_of_type_Int) || (!a()));
+      a(false, true);
+      return;
+    }
+    a(true, true);
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1) {}
+    for (float f = 1.0F; this.jdField_a_of_type_Float == f; f = 0.0F) {
+      return;
+    }
+    if (paramBoolean2)
+    {
+      ValueAnimator localValueAnimator = new ValueAnimator();
+      localValueAnimator.setFloatValues(new float[] { this.jdField_a_of_type_Float, f });
+      localValueAnimator.addUpdateListener(new zfg(this));
+      localValueAnimator.setDuration(500L);
+      localValueAnimator.start();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Float = f;
+      return;
+      a(f);
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Float > 0.5D;
   }
 }
 

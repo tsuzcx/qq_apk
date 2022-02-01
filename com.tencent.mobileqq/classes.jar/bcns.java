@@ -1,19 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.studymode.KidModeAdvanceSettingFragment;
-import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
+import android.widget.TextView;
+import java.util.List;
 
-public class bcns
-  implements DialogInterface.OnClickListener
+public abstract interface bcns
+  extends bcnu
 {
-  public bcns(KidModeAdvanceSettingFragment paramKidModeAdvanceSettingFragment) {}
+  public abstract TextView a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    KidModeAdvanceSettingFragment.a(this.a).setEnabled(true);
-    KidModeAdvanceSettingFragment.a(this.a, KidModeAdvanceSettingFragment.a(this.a), false, KidModeAdvanceSettingFragment.a(this.a));
-  }
+  public abstract List<bcnt> a();
+  
+  public abstract TextView b();
 }
 
 

@@ -1,13 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-final class auep
-  implements DialogInterface.OnClickListener
+public class auep
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
 }
 
 

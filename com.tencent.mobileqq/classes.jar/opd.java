@@ -1,195 +1,56 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.math.BigInteger;
-import org.jetbrains.annotations.NotNull;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class opd
+  extends aqwt<opa>
 {
-  private int jdField_a_of_type_Int;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private int jdField_d_of_type_Int;
-  private String jdField_d_of_type_JavaLangString;
-  private int jdField_e_of_type_Int;
-  private String jdField_e_of_type_JavaLangString;
-  private int jdField_f_of_type_Int;
-  private String jdField_f_of_type_JavaLangString;
-  private String g;
-  private String h;
-  private String i;
-  
-  public int a()
+  public static opa a()
   {
-    return this.jdField_a_of_type_Int;
+    return (opa)aqxe.a().a(593);
   }
   
-  public long a()
+  @NonNull
+  public opa a(int paramInt)
   {
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      return new BigInteger(this.jdField_b_of_type_JavaLangString).longValue();
+    return new opa();
+  }
+  
+  @Nullable
+  public opa a(aqxa[] paramArrayOfaqxa)
+  {
+    if ((paramArrayOfaqxa == null) || (paramArrayOfaqxa.length == 0)) {
+      return new opa();
     }
-    return 0L;
+    return opa.a(paramArrayOfaqxa[0].a);
   }
   
-  public ArticleInfo a()
+  public void a(opa paramopa) {}
+  
+  public Class<opa> clazz()
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+    return opa.class;
   }
   
-  public String a()
+  public boolean isNeedCompressed()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return true;
   }
   
-  public void a(int paramInt)
+  public boolean isNeedStoreLargeFile()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    return false;
   }
   
-  public void a(ArticleInfo paramArticleInfo)
+  public int migrateOldVersion()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    return 0;
   }
   
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public void onReqFailed(int paramInt) {}
   
-  public void a(boolean paramBoolean)
+  public int type()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_f_of_type_JavaLangString;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public int c()
-  {
-    return this.jdField_e_of_type_Int;
-  }
-  
-  public String c()
-  {
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_e_of_type_Int = paramInt;
-  }
-  
-  public void c(String paramString)
-  {
-    this.jdField_f_of_type_JavaLangString = paramString;
-  }
-  
-  public int d()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public String d()
-  {
-    return this.g;
-  }
-  
-  public void d(int paramInt)
-  {
-    this.jdField_f_of_type_Int = paramInt;
-  }
-  
-  public void d(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-  }
-  
-  public int e()
-  {
-    return this.jdField_d_of_type_Int;
-  }
-  
-  public String e()
-  {
-    return this.i;
-  }
-  
-  public void e(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public void e(String paramString)
-  {
-    this.g = paramString;
-  }
-  
-  public String f()
-  {
-    return this.jdField_d_of_type_JavaLangString;
-  }
-  
-  public void f(int paramInt)
-  {
-    this.jdField_d_of_type_Int = paramInt;
-  }
-  
-  public void f(String paramString)
-  {
-    this.h = paramString;
-  }
-  
-  public String g()
-  {
-    return this.jdField_e_of_type_JavaLangString;
-  }
-  
-  public void g(String paramString)
-  {
-    this.i = paramString;
-  }
-  
-  public void h(String paramString)
-  {
-    this.jdField_d_of_type_JavaLangString = paramString;
-  }
-  
-  public void i(String paramString)
-  {
-    this.jdField_e_of_type_JavaLangString = paramString;
-  }
-  
-  @NotNull
-  public String toString()
-  {
-    return "RIJBiuAndCommentRespData{mResultCode=" + this.jdField_a_of_type_Int + ", mCommentId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mFeedsId='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mFeedsType=" + this.jdField_b_of_type_Int + ", mCommentString='" + this.jdField_c_of_type_JavaLangString + '\'' + ", mCommentShareUrl='" + this.jdField_f_of_type_JavaLangString + '\'' + ", mCardAvailable=" + this.jdField_c_of_type_Int + ", mCardJumpUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + ", mCommentBtnUrl='" + this.jdField_e_of_type_JavaLangString + '\'' + ", mArticleInfo=" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo + ", mContentSrc=" + this.jdField_d_of_type_Int + ", mCommentType=" + this.jdField_e_of_type_Int + ", mListShowType=" + this.jdField_f_of_type_Int + ", mIsSecondReply=" + this.jdField_a_of_type_Boolean + ", mReplyCommentId='" + this.g + '\'' + ", mReplyUin='" + this.i + '\'' + '}';
+    return 593;
   }
 }
 

@@ -1,32 +1,16 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class vqo<Request extends vqr, Respond extends vqm>
-  implements vqs<Respond>
+class vqo
+  implements View.OnClickListener
 {
-  protected final long a;
-  protected vqp<Request, Respond> a;
-  public Request a;
+  vqo(vqn paramvqn) {}
   
-  public vqo(Request paramRequest)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Vqr = paramRequest;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  private void b(int paramInt, String paramString, Respond paramRespond)
-  {
-    vqp localvqp = this.jdField_a_of_type_Vqp;
-    if (localvqp != null)
-    {
-      localvqp.a(this.jdField_a_of_type_Vqr, paramRespond, new ErrorMessage(paramInt, paramString));
-      return;
-    }
-    xvv.d("Q.qqstory.net:CmdTaskManager", "cmd callback is null");
-  }
-  
-  public void a(int paramInt, String paramString, Respond paramRespond)
-  {
-    b(paramInt, paramString, paramRespond);
+    vqn.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

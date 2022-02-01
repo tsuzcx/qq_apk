@@ -1,28 +1,33 @@
-import android.os.Bundle;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.viola.ui.dom.DomObject;
+import com.tencent.viola.ui.dom.style.FlexNode.MeasureFunction;
+import kotlin.Metadata;
 
-public class uba
-  extends zaj
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageDomObject;", "Lcom/tencent/viola/ui/dom/DomObject;", "()V", "forceHeight", "", "getForceHeight", "()F", "setForceHeight", "(F)V", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class uba
+  extends DomObject
 {
-  public uba(FolderFollowTabFragment paramFolderFollowTabFragment, Bundle paramBundle)
+  public static final ubb a;
+  private float a;
+  
+  static
   {
-    super(paramBundle);
+    jdField_a_of_type_Ubb = new ubb(null);
   }
   
-  protected BaseWidgetView a(ViewGroup paramViewGroup, yzp paramyzp)
+  public uba()
   {
-    return FolderFollowTabFragment.a(this.a);
+    this.jdField_a_of_type_Float = -1.0F;
+    setMeasureFunction((FlexNode.MeasureFunction)new ubc(this));
   }
   
-  public void a(Bundle paramBundle) {}
-  
-  public void a(yzu paramyzu) {}
+  public final void a(float paramFloat)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uba
  * JD-Core Version:    0.7.0.1
  */

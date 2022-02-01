@@ -1,11 +1,26 @@
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.ArrayList;
 
-public abstract interface wkk
+public class wkk
+  extends vzj
 {
-  public abstract void a();
+  public long a;
+  public String a;
+  public String b;
   
-  public abstract void a(ArrayList<StoryVideoItem> paramArrayList);
+  public wkk(String paramString, StoryVideoItem paramStoryVideoItem)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramStoryVideoItem.mVideoIndex;
+    this.b = paramStoryVideoItem.mVid;
+    if (this.jdField_a_of_type_Long == 0L) {
+      this.jdField_a_of_type_Long = paramStoryVideoItem.mCreateTime;
+    }
+  }
+  
+  public String toString()
+  {
+    return "ReadStoryVideoEvent{unionId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", videoIndex=" + this.jdField_a_of_type_Long + ", vid='" + this.b + '\'' + '}';
+  }
 }
 
 

@@ -1,15 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import android.content.Intent;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.launcher.shell.IActivityResultListener;
+import com.tencent.qqmini.sdk.launcher.shell.IActivityResultManager;
 
-public class bknw
-  implements DialogInterface.OnDismissListener
+class bknw
+  implements IActivityResultListener
 {
-  public bknw(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
+  bknw(bknl parambknl, IActivityResultManager paramIActivityResultManager, AsyncResult paramAsyncResult) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.a.finish();
+    boolean bool = false;
+    if (paramInt1 == 9)
+    {
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellIActivityResultManager.removeActivityResultListener(this);
+      paramIntent = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult;
+      if (paramInt2 == 0) {
+        bool = true;
+      }
+      paramIntent.onReceiveResult(bool, null);
+      return true;
+    }
+    return false;
   }
 }
 

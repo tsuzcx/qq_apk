@@ -1,22 +1,48 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.qphone.base.util.QLog;
 
-class bidd
-  implements View.OnClickListener
+public class bidd
+  extends anqs
 {
-  bidd(bicz parambicz, DialogInterface.OnClickListener paramOnClickListener, int paramInt, boolean paramBoolean) {}
+  public bidd(WebProcessManager paramWebProcessManager) {}
   
-  public void onClick(View paramView)
+  protected void b(boolean paramBoolean, Object paramObject)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bicz, this.jdField_a_of_type_Int);
+    int j = -1;
+    int i = j;
+    if (paramObject != null)
+    {
+      i = j;
+      if ((paramObject instanceof Bundle))
+      {
+        paramObject = (Bundle)paramObject;
+        i = paramObject.getInt("ad_bbq_code", -1);
+        if (i == 0)
+        {
+          paramObject = paramObject.getString("ad_bbq_message");
+          Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+          if ((localObject instanceof QQAppInterface))
+          {
+            localObject = (anqn)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.BABY_Q_HANDLER);
+            if (localObject != null) {
+              ((anqn)localObject).b(paramObject);
+            }
+          }
+        }
+      }
     }
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Bicz.dismiss();
+    paramObject = new Intent("com.tencent.mobileqq.babyq.added");
+    paramObject.setPackage(BaseApplicationImpl.getApplication().getPackageName());
+    paramObject.putExtra("result", i);
+    BaseApplicationImpl.getApplication().sendBroadcast(paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("WebProcessManager", 2, "babyq observer return result=" + i);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

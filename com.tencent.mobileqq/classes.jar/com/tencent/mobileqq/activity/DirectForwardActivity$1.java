@@ -2,7 +2,8 @@ package com.tencent.mobileqq.activity;
 
 import android.content.Intent;
 import android.text.TextUtils;
-import bcvc;
+import becb;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.ContactUtils;
 
@@ -13,7 +14,7 @@ class DirectForwardActivity$1
   
   public void run()
   {
-    String str = ((bcvc)this.this$0.app.getBusinessHandler(122)).a(this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    String str = ((becb)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_HANDLER)).a(this.jdField_a_of_type_JavaLangString, this.b, this.c);
     if (TextUtils.isEmpty(str))
     {
       this.this$0.finish();
@@ -26,7 +27,7 @@ class DirectForwardActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DirectForwardActivity.1
  * JD-Core Version:    0.7.0.1
  */

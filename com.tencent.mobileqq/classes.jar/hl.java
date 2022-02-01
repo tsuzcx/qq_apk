@@ -2,6 +2,7 @@ import android.text.TextUtils;
 import com.immersion.touchsensesdk.AsyncConnectionProxy;
 import com.immersion.touchsensesdk.IConnection;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -23,7 +24,7 @@ public class hl
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    hm localhm = (hm)((QQAppInterface)this.a.get()).getBusinessHandler(116);
+    hm localhm = (hm)((QQAppInterface)this.a.get()).getBusinessHandler(BusinessHandlerFactory.IMMERSION_HANDLER);
     localhm.a(this);
     localhm.a(paramString);
   }

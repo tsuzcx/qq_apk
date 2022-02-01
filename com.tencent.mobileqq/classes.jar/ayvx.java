@@ -1,16 +1,32 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
+import android.graphics.Matrix;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 
-class ayvx
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface ayvx
 {
-  ayvx(ayvw paramayvw, View paramView) {}
+  public abstract void a(Matrix paramMatrix);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.jdField_a_of_type_AndroidViewView.setAlpha(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-  }
+  public abstract void a(MotionEvent paramMotionEvent);
+  
+  public abstract void a(ScaleGestureDetector paramScaleGestureDetector);
+  
+  public abstract boolean a(MotionEvent paramMotionEvent);
+  
+  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
+  
+  public abstract boolean a(ScaleGestureDetector paramScaleGestureDetector);
+  
+  public abstract void b(MotionEvent paramMotionEvent);
+  
+  public abstract boolean b(MotionEvent paramMotionEvent);
+  
+  public abstract boolean b(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
+  
+  public abstract boolean b(ScaleGestureDetector paramScaleGestureDetector);
+  
+  public abstract void c(MotionEvent paramMotionEvent);
+  
+  public abstract boolean c(MotionEvent paramMotionEvent);
 }
 
 

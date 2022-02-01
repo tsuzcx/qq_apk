@@ -1,8 +1,19 @@
-import com.tencent.widget.ListView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity.1;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface otj
+public class otj
+  implements nuw
 {
-  public abstract void a(ListView paramListView);
+  public otj(ReadInJoyFeedsActivity.1 param1) {}
+  
+  public void loaded(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseActivity", 2, "load 2464 html web resource finish");
+    }
+  }
+  
+  public void progress(int paramInt) {}
 }
 
 

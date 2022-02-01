@@ -2,9 +2,10 @@ package com.tencent.mobileqq.troopinfo;
 
 import android.content.res.Resources;
 import android.text.TextUtils;
-import bftf;
+import bhbx;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.data.troop.TroopInfoExt;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -19,6 +20,7 @@ import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupExInfoOnly;
 import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupGeoInfo;
 import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupInfo;
 import tencent.im.oidb.cmd0x89a.oidb_0x89a.GroupSchoolInfo;
+import tencent.im.oidb.cmd0xef0.oidb_0xef0.GroupInfoExt;
 
 public class TroopInfoData
   implements Serializable
@@ -74,6 +76,7 @@ public class TroopInfoData
   public String mStrJoinQuestion;
   public String mTroopClassExtText;
   public long mTroopCreateTime;
+  public TroopInfoExt mTroopInfoExtObj = new TroopInfoExt();
   public float mTroopNeedPayNumber = 0.0F;
   public int mTroopPrivilegeFlag;
   public int modifyCount = 5;
@@ -102,6 +105,7 @@ public class TroopInfoData
   public String troopClass;
   public String troopCode;
   public String troopColorNick;
+  public int troopColorNickId;
   public long troopInterestId;
   public String troopInterestName;
   public String troopIntro;
@@ -194,7 +198,7 @@ public class TroopInfoData
         bool1 = true;
         this.isOnlyTroopMemberInvite = bool1;
         if ((paramGroupInfo.uint32_group_flagext3.get() & 0x20) == 0) {
-          break label1179;
+          break label1206;
         }
         bool1 = true;
         this.isQidianPrivateTroop = bool1;
@@ -205,7 +209,7 @@ public class TroopInfoData
       if (paramGroupInfo.uint32_is_conf_group.has())
       {
         if (paramGroupInfo.uint32_is_conf_group.get() != 1) {
-          break label1184;
+          break label1211;
         }
         bool1 = true;
         this.isNewTroop = bool1;
@@ -213,7 +217,7 @@ public class TroopInfoData
       if (paramGroupInfo.uint32_is_modify_conf_group_face.has())
       {
         if (paramGroupInfo.uint32_is_modify_conf_group_face.get() != 1) {
-          break label1189;
+          break label1216;
         }
         bool1 = true;
         this.hasSetNewTroopHead = bool1;
@@ -221,7 +225,7 @@ public class TroopInfoData
       if (paramGroupInfo.uint32_is_modify_conf_group_name.has())
       {
         if (paramGroupInfo.uint32_is_modify_conf_group_name.get() != 1) {
-          break label1194;
+          break label1221;
         }
         bool1 = true;
         this.hasSetNewTroopName = bool1;
@@ -271,14 +275,14 @@ public class TroopInfoData
         }
       }
       if (!paramGroupInfo.string_group_finger_memo.has()) {
-        break label1199;
+        break label1226;
       }
     }
-    label1179:
-    label1184:
-    label1189:
-    label1194:
-    label1199:
+    label1206:
+    label1211:
+    label1216:
+    label1221:
+    label1226:
     for (this.troopIntro = paramGroupInfo.string_group_finger_memo.get().toStringUtf8();; this.troopIntro = "")
     {
       if (paramGroupInfo.bytes_group_school_info.has()) {
@@ -313,11 +317,11 @@ public class TroopInfoData
         this.school = ((oidb_0x89a.GroupSchoolInfo)localObject1).bytes_school.get().toStringUtf8();
       }
       if (!paramGroupInfo.string_group_rich_finger_memo.has()) {
-        break label1218;
+        break label1245;
       }
       this.mRichFingerMemo = paramGroupInfo.string_group_rich_finger_memo.get().toStringUtf8();
       if (!TextUtils.isEmpty(this.mRichFingerMemo)) {
-        break label1227;
+        break label1254;
       }
       this.mRichFingerMemo = this.troopIntro;
       if (paramGroupInfo.uint32_group_create_time.has()) {
@@ -333,7 +337,7 @@ public class TroopInfoData
       {
         localObject1 = paramGroupInfo.string_long_group_name.get().toStringUtf8();
         if (TextUtils.isEmpty((CharSequence)localObject1)) {
-          break label1252;
+          break label1279;
         }
         this.troopName = ((String)localObject1);
         if ((this.newTroopName == null) || (!this.isNewTroop) || (this.hasSetNewTroopName)) {
@@ -361,6 +365,9 @@ public class TroopInfoData
       if (QLog.isColorLevel()) {
         QLog.i("TroopInfoData", 2, "coverFrom(), troopUin: " + this.troopUin + " groupAllianceid = " + this.groupAllianceid);
       }
+      if (paramGroupInfo.st_group_info_ext.has()) {
+        this.mTroopInfoExtObj = TroopInfoExt.parseFromGroupInfoExt((oidb_0xef0.GroupInfoExt)paramGroupInfo.st_group_info_ext.get());
+      }
       return;
       bool1 = false;
       break;
@@ -373,6 +380,14 @@ public class TroopInfoData
       bool1 = false;
       break label395;
     }
+  }
+  
+  public int getFansTroopStarId()
+  {
+    if (this.mTroopInfoExtObj != null) {
+      return this.mTroopInfoExtObj.star_id;
+    }
+    return 0;
   }
   
   public int getStatOption()
@@ -467,6 +482,11 @@ public class TroopInfoData
   public boolean hasTroopAssociation()
   {
     return this.groupAllianceid != 0L;
+  }
+  
+  public boolean isFansTroop()
+  {
+    return this.dwGroupClassExt == 27L;
   }
   
   public boolean isFetchedTroopOwnerUin()
@@ -600,7 +620,7 @@ public class TroopInfoData
   public void updateForTroopChatSetting(TroopInfo paramTroopInfo, Resources paramResources, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("TroopInfoData", 2, "updateTroopInfoData(), troopinfo = " + paramTroopInfo);
+      QLog.i("TroopInfoData", 2, "updateForTroopChatSetting(), troopinfo = " + paramTroopInfo);
     }
     long l = System.currentTimeMillis();
     int i;
@@ -647,15 +667,15 @@ public class TroopInfoData
       if ((!TroopInfo.hasPayPrivilege(paramTroopInfo.troopPrivilegeFlag, 128)) || (!TroopInfo.hasPayPrivilege(paramTroopInfo.troopPrivilegeFlag, 512))) {
         break label673;
       }
-      this.troopAuthen = paramResources.getString(2131719195);
+      this.troopAuthen = paramResources.getString(2131719615);
       i = 6;
-      if (!bftf.a(this.troopowneruin, paramTroopInfo.troopowneruin))
+      if (!bhbx.a(this.troopowneruin, paramTroopInfo.troopowneruin))
       {
         this.troopowneruin = paramTroopInfo.troopowneruin;
         this.troopOwnerNick = null;
         updateOwnerFlag(paramString);
       }
-      if (!bftf.a(this.Administrator, paramTroopInfo.Administrator))
+      if (!bhbx.a(this.Administrator, paramTroopInfo.Administrator))
       {
         this.Administrator = paramTroopInfo.Administrator;
         updateAdminFlag(paramString);
@@ -677,7 +697,7 @@ public class TroopInfoData
       if (i != 3) {
         break label831;
       }
-      this.inviteModeDescription = paramResources.getString(2131695976);
+      this.inviteModeDescription = paramResources.getString(2131696228);
       this.inviteMode = 4;
       label521:
       if (paramTroopInfo.cAlbumResult != 33) {
@@ -701,13 +721,13 @@ public class TroopInfoData
       this.mIsFreezed = paramTroopInfo.mIsFreezed;
       this.isShowInNearbyTroops = paramTroopInfo.isShowInNearbyTroops;
       if (QLog.isColorLevel()) {
-        QLog.i("TroopInfoData", 2, "updateTroopInfoData: time = " + (System.currentTimeMillis() - l));
+        QLog.i("TroopInfoData", 2, "updateForTroopChatSetting: time = " + (System.currentTimeMillis() - l));
       }
       return;
       label673:
       if (paramTroopInfo.isOnlyTroopMemberInviteOption())
       {
-        this.troopAuthen = paramResources.getString(2131719186);
+        this.troopAuthen = paramResources.getString(2131719606);
         this.dwGroupFlagExt |= 0x80;
         break;
       }
@@ -717,19 +737,19 @@ public class TroopInfoData
       default: 
         break;
       case 1: 
-        this.troopAuthen = paramResources.getString(2131719187);
+        this.troopAuthen = paramResources.getString(2131719607);
         break;
       case 2: 
-        this.troopAuthen = paramResources.getString(2131719192);
+        this.troopAuthen = paramResources.getString(2131719612);
         break;
       case 4: 
-        this.troopAuthen = paramResources.getString(2131719189);
+        this.troopAuthen = paramResources.getString(2131719609);
         break;
       case 5: 
-        this.troopAuthen = paramResources.getString(2131719188);
+        this.troopAuthen = paramResources.getString(2131719608);
         break;
       case 3: 
-        this.troopAuthen = paramResources.getString(2131719194);
+        this.troopAuthen = paramResources.getString(2131719614);
         break;
         label825:
         j = 0;
@@ -737,7 +757,7 @@ public class TroopInfoData
         label831:
         if (i == 1)
         {
-          this.inviteModeDescription = paramResources.getString(2131695973);
+          this.inviteModeDescription = paramResources.getString(2131696225);
           this.inviteMode = 5;
           break label521;
         }
@@ -745,7 +765,7 @@ public class TroopInfoData
         {
           if (i == 6)
           {
-            this.inviteModeDescription = paramResources.getString(2131695972);
+            this.inviteModeDescription = paramResources.getString(2131696224);
             this.inviteMode = 6;
             break label521;
           }
@@ -774,10 +794,10 @@ public class TroopInfoData
             break label521;
           }
           this.inviteMode = 8;
-          this.inviteModeDescription = paramResources.getString(2131695975);
+          this.inviteModeDescription = paramResources.getString(2131696227);
           break label521;
         }
-        this.inviteModeDescription = paramResources.getString(2131695977);
+        this.inviteModeDescription = paramResources.getString(2131696229);
         this.inviteMode = 1;
         break label521;
       }
@@ -820,13 +840,13 @@ public class TroopInfoData
       this.hasSetNewTroopHead = paramTroopInfo.hasSetNewTroopHead;
       this.hasSetNewTroopName = paramTroopInfo.hasSetNewTroopName;
       this.isUseClassAvatar = paramTroopInfo.isUseClassAvatar();
-      if ((!QLog.isColorLevel()) || (!bftf.a(this.troopowneruin, paramTroopInfo.troopowneruin)))
+      if ((!QLog.isColorLevel()) || (!bhbx.a(this.troopowneruin, paramTroopInfo.troopowneruin)))
       {
         this.troopowneruin = paramTroopInfo.troopowneruin;
         this.troopOwnerNick = null;
         updateOwnerFlag(paramString);
       }
-      if (!bftf.a(this.Administrator, paramTroopInfo.Administrator))
+      if (!bhbx.a(this.Administrator, paramTroopInfo.Administrator))
       {
         this.Administrator = paramTroopInfo.Administrator;
         updateAdminFlag(paramString);
@@ -865,7 +885,10 @@ public class TroopInfoData
   
   public void updateOwnerFlag(String paramString)
   {
-    this.bOwner = bftf.a(paramString, this.troopowneruin);
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopInfoData", 2, "updateOwnerFlag currentAccountUin = " + paramString);
+    }
+    this.bOwner = bhbx.a(paramString, this.troopowneruin);
   }
   
   public void updateTroopAdmMemberNum(String paramString1, int paramInt, String paramString2, Resources paramResources)

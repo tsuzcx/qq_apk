@@ -1,6 +1,15 @@
-public abstract interface bjoj
+import com.tencent.open.downloadnew.WebViewDownloadListener.1;
+import com.tencent.smtt.sdk.ValueCallback;
+
+public class bjoj
+  implements ValueCallback<String>
 {
-  public abstract void a();
+  public bjoj(WebViewDownloadListener.1 param1) {}
+  
+  public void a(String paramString)
+  {
+    bjko.a("WebViewDownloadListener", "[onReceiveValue]:" + paramString);
+  }
 }
 
 

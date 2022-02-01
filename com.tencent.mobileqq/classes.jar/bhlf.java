@@ -1,28 +1,20 @@
 import android.view.View;
-import android.view.animation.AlphaAnimation;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
 
-public class bhlf
+class bhlf
+  extends URLDrawableDownListener.Adapter
 {
-  public static void a(View paramView)
+  bhlf(bhle parambhle) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (paramView.isEnabled())
-    {
-      AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.5F);
-      localAlphaAnimation.setDuration(200L);
-      localAlphaAnimation.setFillAfter(true);
-      paramView.startAnimation(localAlphaAnimation);
-    }
+    this.a.onLoadFialed(paramURLDrawable, paramThrowable);
   }
   
-  public static void b(View paramView)
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    if (paramView.isEnabled())
-    {
-      AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.5F, 1.0F);
-      localAlphaAnimation.setDuration(200L);
-      localAlphaAnimation.setFillAfter(true);
-      paramView.startAnimation(localAlphaAnimation);
-    }
+    this.a.onLoadSuccessed(paramURLDrawable);
   }
 }
 

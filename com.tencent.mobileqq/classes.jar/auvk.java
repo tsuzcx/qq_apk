@@ -1,15 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.fragment.AppletsSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class auvk
-  implements opa
+public class auvk
+  implements View.OnClickListener
 {
-  public auvk(tiu paramtiu, String paramString1, String paramString2, String paramString3, String paramString4) {}
+  public auvk(AppletsSettingFragment paramAppletsSettingFragment) {}
   
-  public void a(opd paramopd)
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_Tiu != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      this.jdField_a_of_type_Tiu.a(this.jdField_a_of_type_JavaLangString, UiApiPlugin.a(paramopd, this.b, this.c, this.d));
+    if (AppletsSettingFragment.a(this.a))
+    {
+      this.a.a();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    AppletsSettingFragment localAppletsSettingFragment = this.a;
+    if (!AppletsSettingFragment.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      AppletsSettingFragment.a(localAppletsSettingFragment, bool);
+      AppletsSettingFragment.a(this.a, AppletsSettingFragment.a(this.a));
+      break;
     }
   }
 }

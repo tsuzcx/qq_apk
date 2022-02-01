@@ -1,44 +1,42 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.media.MediaCodec;
+import android.media.MediaFormat;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.AudioPlayback;
 
 public class xlh
-  extends QQUIEventReceiver<xlc, voc>
+  extends xli
 {
-  public xlh(xlc paramxlc)
+  private AudioPlayback a;
+  
+  public xlh(xlm paramxlm, boolean paramBoolean, int paramInt, xlk paramxlk, AudioPlayback paramAudioPlayback)
   {
-    super(paramxlc);
+    super(paramxlm, paramBoolean, paramInt, paramxlk);
+    this.a = paramAudioPlayback;
+    a();
   }
   
-  public void a(@NonNull xlc paramxlc, @NonNull voc paramvoc)
+  protected void a(MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
   {
-    if (paramvoc.a.isSuccess())
-    {
-      if (!paramvoc.a()) {
-        break label25;
-      }
-      xvv.c("Q.qqstory.memories.ProfileFeedPresenter", "ignore this upload status event, because it's a troop video.");
+    super.a(paramMediaCodec, paramMediaFormat);
+    this.a.a(paramMediaFormat);
+  }
+  
+  protected void a(MediaFormat paramMediaFormat)
+  {
+    this.a.a(paramMediaFormat);
+  }
+  
+  public void a(xlj paramxlj, long paramLong)
+  {
+    this.a.a(paramxlj.jdField_a_of_type_JavaNioByteBuffer, paramxlj.jdField_a_of_type_Long);
+    b(paramxlj);
+  }
+  
+  protected boolean a()
+  {
+    if (!c()) {
+      return this.a.a() < 200000L;
     }
-    label25:
-    do
-    {
-      do
-      {
-        return;
-        if (paramvoc.c())
-        {
-          xvv.b("Q.qqstory.memories.ProfileFeedPresenter", "receive share group video upload status change event. %s.", paramvoc.toString());
-          return;
-        }
-      } while (!paramvoc.b());
-      xvv.a("Q.qqstory.memories.ProfileFeedPresenter", "receive personal video upload status change event. %s. start to refresh year node list", paramvoc.toString());
-    } while (paramvoc.b == null);
-    xlc.a(paramxlc, true);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return voc.class;
+    return super.a();
   }
 }
 

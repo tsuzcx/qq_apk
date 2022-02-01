@@ -309,13 +309,13 @@ public class PtvTemplateManager$PtvTemplateInfo
     default: 
       return -1;
     case 1: 
-      return 2130844468;
+      return 2130844535;
     case 2: 
-      return 2130844469;
+      return 2130844536;
     case 3: 
-      return 2130844471;
+      return 2130844538;
     }
-    return 2130844470;
+    return 2130844537;
   }
   
   public String getLbsActivityType(int paramInt)

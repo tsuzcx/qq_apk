@@ -12,7 +12,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.ScaleAnimation;
-import bjwf;
+import blhq;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -34,14 +34,14 @@ public class DragRecyclerView
   private int lastDragY;
   private boolean mAutoScrollEnable;
   private boolean mCanAutoScroll;
-  private DragRecyclerView.DragDeleteListener mDeleteDragListener;
+  private DragRecyclerView.DragDeleteListenerWrapper mDeleteDragListener;
   private boolean mIsDeletePrepared;
   private DragRecyclerView.OnItemChangeListener mOnItemChangeListener;
   private Handler mainHandler = new Handler(Looper.myLooper());
   boolean oritationRight = true;
   private ScaleAnimation revertAnimation = new ScaleAnimation(1.1F, 1.0F, 1.1F, 1.0F, 1, 0.5F, 1, 0.5F);
   int startAutoScrollOffset = 0;
-  bjwf touchHelper = new DragRecyclerView.MiniItemTouchHelper(this, new DragRecyclerView.4(this));
+  blhq touchHelper = new DragRecyclerView.MiniItemTouchHelper(this, new DragRecyclerView.4(this));
   private boolean up;
   private ScaleAnimation zoomAnimation = new ScaleAnimation(1.0F, 1.1F, 1.0F, 1.1F, 1, 0.5F, 1, 0.5F);
   
@@ -155,20 +155,20 @@ public class DragRecyclerView
             if (this.mOnItemChangeListener != null) {
               this.mOnItemChangeListener.onDragMove(this.lastDragX, this.lastDragY);
             }
-            if (paramInt2 >= getHeight() - getResources().getDimensionPixelSize(2131296935))
+            if (paramInt2 >= getHeight() - getResources().getDimensionPixelSize(2131296936))
             {
               this.mCanAutoScroll = true;
               if (this.mOnItemChangeListener == null) {
-                break label209;
+                break label207;
               }
             }
             for (boolean bool = this.mOnItemChangeListener.isItemDeleteable(this.currDragViewHolder.getAdapterPosition());; bool = false)
             {
               if ((!bool) || (this.mDeleteDragListener == null)) {
-                break label212;
+                break label210;
               }
               if ((this.mOnItemChangeListener == null) || (!this.mOnItemChangeListener.isMoveToDeleteArea(paramInt1, paramInt2))) {
-                break label214;
+                break label212;
               }
               if (this.mIsDeletePrepared) {
                 break;
@@ -189,9 +189,9 @@ public class DragRecyclerView
       this.mIsDeletePrepared = false;
       this.mDeleteDragListener.onDeleteDragStart();
     } while (this.mOnItemChangeListener == null);
-    label209:
+    label207:
+    label210:
     label212:
-    label214:
     this.mOnItemChangeListener.onItemPrepared(-1);
   }
   
@@ -206,10 +206,10 @@ public class DragRecyclerView
         this.mOnItemChangeListener.onDragStart(paramViewHolder, paramViewHolder.getAdapterPosition());
       }
       if (this.mOnItemChangeListener == null) {
-        break label115;
+        break label113;
       }
     }
-    label115:
+    label113:
     for (boolean bool = this.mOnItemChangeListener.isItemDeleteable(paramViewHolder.getAdapterPosition());; bool = false)
     {
       if ((bool) && (this.mDeleteDragListener != null)) {
@@ -350,7 +350,7 @@ public class DragRecyclerView
   
   public void setDragDeleteListener(DragRecyclerView.DragDeleteListener paramDragDeleteListener)
   {
-    this.mDeleteDragListener = paramDragDeleteListener;
+    this.mDeleteDragListener = new DragRecyclerView.DragDeleteListenerWrapper(this, paramDragDeleteListener);
   }
   
   public void startAutoScrollX(boolean paramBoolean)

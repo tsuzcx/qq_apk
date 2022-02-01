@@ -1,23 +1,18 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import android.view.ViewParent;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.hiboom.RichTextPanel;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aufe
-  extends RelativeLayout
+final class aufe
+  implements View.OnClickListener
 {
-  public aufe(RichTextPanel paramRichTextPanel, Context paramContext)
-  {
-    super(paramContext);
-  }
+  aufe(aueo paramaueo) {}
   
-  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if ((paramMotionEvent.getAction() == 0) && (getParent() != null)) {
-      getParent().requestDisallowInterceptTouchEvent(true);
+    if (this.a != null) {
+      this.a.onClick(paramView);
     }
-    return super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.ScrollView;
-import bchh;
+import bdof;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.mobileqq.utils.QQCustomDialog;
@@ -27,7 +27,7 @@ public class ForwardTribeShortVideoMsgOption
   {
     super.a();
     this.i = this.jdField_a_of_type_AndroidOsBundle.getString("qqtribeVideoInfoExtra ");
-    AbsStructMsg localAbsStructMsg = bchh.a(this.jdField_a_of_type_AndroidOsBundle.getByteArray("stuctmsg_bytes"));
+    AbsStructMsg localAbsStructMsg = bdof.a(this.jdField_a_of_type_AndroidOsBundle.getByteArray("stuctmsg_bytes"));
     if ((localAbsStructMsg != null) && ((localAbsStructMsg instanceof AbsShareMsg))) {
       this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg = ((AbsShareMsg)localAbsStructMsg);
     }

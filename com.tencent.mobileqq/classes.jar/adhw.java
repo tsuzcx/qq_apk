@@ -1,17 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class adhw
-  implements View.OnClickListener
+public class adhw
+  implements CompoundButton.OnCheckedChangeListener
 {
-  adhw(adhv paramadhv) {}
+  public adhw(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    Object localObject = paramView.getTag();
-    adhv.a(this.a, (aiph)localObject);
-    EventCollector.getInstance().onViewClicked(paramView);
+    AssistantSettingActivity.a(this.a, this.a.g.a(), paramBoolean);
+    AssistantSettingActivity.a(this.a).a(paramBoolean, true);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

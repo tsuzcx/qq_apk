@@ -1,17 +1,25 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
-public class ocl
-  extends BroadcastReceiver
+class ocl
+  implements View.OnClickListener
 {
-  public ocl(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface) {}
+  ocl(obm paramobm, oji paramoji) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    this.a.a.finish();
+    Intent localIntent = new Intent((Context)this.jdField_a_of_type_Obm.a.get(), ScannerActivity.class);
+    localIntent.putExtra("from", this.jdField_a_of_type_Obm.a.getClass().getName());
+    localIntent.putExtra("finishAfterSucc", true);
+    ((BaseActivity)this.jdField_a_of_type_Obm.a.get()).startActivity(localIntent);
+    obm.a(this.jdField_a_of_type_Obm, this.jdField_a_of_type_Oji.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

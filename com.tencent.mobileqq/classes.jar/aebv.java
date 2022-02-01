@@ -1,30 +1,21 @@
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.QuickLoginActivity;
-import mqq.observer.AccountObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class aebv
-  extends AccountObserver
+  implements DialogInterface.OnClickListener
 {
-  public aebv(QuickLoginActivity paramQuickLoginActivity) {}
+  public aebv(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity, QQCustomDialog paramQQCustomDialog) {}
   
-  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Toast.makeText(this.a.getApplicationContext(), "login failure! check you qq and password!", 0).show();
-  }
-  
-  public void onLoginSuccess(String paramString1, String paramString2)
-  {
-    Toast.makeText(this.a.getApplicationContext(), "login suc", 0).show();
-  }
-  
-  public void onLoginTimeout(String paramString)
-  {
-    Toast.makeText(this.a.getApplicationContext(), "login outtime", 0).show();
-  }
-  
-  public void onUserCancel(String paramString)
-  {
-    Toast.makeText(this.a.getApplicationContext(), "login cancel", 0).show();
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.getIntent();
+    paramDialogInterface.putExtra("delHead_fileid", FriendProfilePicBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity));
+    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.setResult(-1, paramDialogInterface);
+    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.finish();
   }
 }
 

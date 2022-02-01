@@ -2,12 +2,13 @@ package com.tencent.biz.pubaccount.readinjoy.common;
 
 import android.os.Build.VERSION;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import pay;
+import prm;
 
 class ReadInJoyWebProcessManager$InitWebProcessRunnable
   implements Runnable
@@ -49,11 +50,11 @@ class ReadInJoyWebProcessManager$InitWebProcessRunnable
     for (;;)
     {
       return;
-      WebProcessManager localWebProcessManager = (WebProcessManager)this.a.getManager(13);
+      WebProcessManager localWebProcessManager = (WebProcessManager)this.a.getManager(QQManagerFactory.WEBPROCESS_MANAGER);
       if (localWebProcessManager != null)
       {
-        int i = pay.f();
-        if (pay.h()) {
+        int i = prm.a();
+        if (prm.a()) {
           a(i);
         }
         if (i == 1) {

@@ -1,14 +1,92 @@
-import android.view.View;
+import android.content.Context;
+import com.tencent.av.video.call.ClientLogReport;
+import com.tencent.av.video.call.GAClientLogReport;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 
-public abstract interface bjtx
+public class bjtx
 {
-  public abstract void a(View paramView);
+  private Context jdField_a_of_type_AndroidContentContext;
+  private bjua jdField_a_of_type_Bjua;
   
-  public abstract boolean a(View paramView);
+  public bjtx(Context paramContext, bjua parambjua)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    bjuf.a().a(this.jdField_a_of_type_AndroidContentContext, a());
+    this.jdField_a_of_type_Bjua = parambjua;
+    ClientLogReport.instance();
+    GAClientLogReport.instance();
+  }
   
-  public abstract void b(boolean paramBoolean);
+  public static int a()
+  {
+    int i;
+    if (AppNetConnInfo.isWifiConn()) {
+      i = 1;
+    }
+    for (;;)
+    {
+      bjuc.c("QavCtrl", String.format("getApn networkType=%s", new Object[] { Integer.valueOf(i) }));
+      return i;
+      if (AppNetConnInfo.isMobileConn()) {
+        switch (AppNetConnInfo.getMobileInfo())
+        {
+        default: 
+          i = 100;
+          break;
+        case 1: 
+          i = 3;
+          break;
+        case 2: 
+          i = 9;
+          break;
+        case 3: 
+          i = 11;
+          break;
+        case 4: 
+          i = 14;
+          break;
+        }
+      } else {
+        i = 0;
+      }
+    }
+  }
   
-  public abstract void d();
+  public static void a(bjtt parambjtt)
+  {
+    if (parambjtt != null) {
+      parambjtt.b();
+    }
+  }
+  
+  public static void a(bjtt parambjtt, Context paramContext, long paramLong)
+  {
+    if (parambjtt != null) {
+      parambjtt.b(llc.a(paramLong, String.valueOf(AppSetting.a()), paramContext));
+    }
+  }
+  
+  public bjty a()
+  {
+    return this.jdField_a_of_type_Bjua;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bjua != null)
+    {
+      this.jdField_a_of_type_Bjua.g();
+      this.jdField_a_of_type_Bjua = null;
+    }
+    this.jdField_a_of_type_AndroidContentContext = null;
+    bjuf.a().a();
+  }
+  
+  protected boolean a()
+  {
+    return true;
+  }
 }
 
 

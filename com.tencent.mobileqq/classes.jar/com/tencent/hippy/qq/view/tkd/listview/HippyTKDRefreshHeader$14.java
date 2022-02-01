@@ -1,6 +1,6 @@
 package com.tencent.hippy.qq.view.tkd.listview;
 
-import bfvo;
+import bheg;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
 
@@ -20,7 +20,7 @@ class HippyTKDRefreshHeader$14
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.val$listener.onRequestSuccess(bfvo.b(paramURLDrawable), this.val$url);
+    this.val$listener.onRequestSuccess(bheg.b(paramURLDrawable), this.val$url);
   }
 }
 

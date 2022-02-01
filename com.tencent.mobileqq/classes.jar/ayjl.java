@@ -1,36 +1,9 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.View;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
 
-final class ayjl
-  implements INetEngine.IBreakDownFix
+public abstract interface ayjl
 {
-  public void fixReq(NetReq paramNetReq, NetResp paramNetResp)
-  {
-    if ((paramNetReq == null) || (paramNetResp == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!(paramNetReq instanceof HttpNetReq));
-      paramNetReq = (HttpNetReq)paramNetReq;
-      paramNetReq.mStartDownOffset += paramNetResp.mWrittenBlockLen;
-      paramNetResp.mWrittenBlockLen = 0L;
-      paramNetResp = "bytes=" + paramNetReq.mStartDownOffset + "-";
-      paramNetReq.mReqProperties.put("Range", paramNetResp);
-      paramNetResp = paramNetReq.mReqUrl;
-      if (paramNetResp.contains("range="))
-      {
-        String str = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
-        paramNetReq.mReqUrl = (str + "range=" + paramNetReq.mStartDownOffset);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("PrecoverResDownloader", 2, "IBreakDownFix, " + paramNetResp);
-  }
+  public abstract void a(View paramView, int paramInt, InterestTagInfo paramInterestTagInfo);
 }
 
 

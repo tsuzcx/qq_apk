@@ -1,18 +1,57 @@
-import android.arch.lifecycle.Observer;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function1;
-import org.jetbrains.annotations.Nullable;
+import android.app.Activity;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "T", "it", "onChanged", "(Ljava/lang/Object;)V"}, k=3, mv={1, 1, 16})
-final class awhd<T>
-  implements Observer<T>
+class awhd
+  implements Application.ActivityLifecycleCallbacks
 {
-  awhd(Function1 paramFunction1) {}
+  awhd(awgx paramawgx) {}
   
-  public final void onChanged(@Nullable T paramT)
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityDestroyed(Activity paramActivity)
   {
-    if (paramT != null) {
-      this.a.invoke(paramT);
+    if (QLog.isColorLevel()) {
+      QLog.d("LyricsController", 2, "onActivityDestroyed: " + paramActivity.getClass().getName());
+    }
+  }
+  
+  public void onActivityPaused(Activity paramActivity) {}
+  
+  public void onActivityResumed(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LyricsController", 2, "onActivityResumed: " + paramActivity.getClass().getName());
+    }
+    if ((this.a.c) && (!this.a.b))
+    {
+      ThreadManager.getUIHandlerV2().removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+      ThreadManager.getUIHandlerV2().postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1000L);
+    }
+    while (!awgx.b(this.a)) {
+      return;
+    }
+    awgx.a(this.a, false);
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.a(true);
+  }
+  
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityStarted(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LyricsController", 2, "onActivityStarted: " + paramActivity.getClass().getName());
+    }
+  }
+  
+  public void onActivityStopped(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LyricsController", 2, "onActivityStopped: " + paramActivity.getClass().getName());
     }
   }
 }

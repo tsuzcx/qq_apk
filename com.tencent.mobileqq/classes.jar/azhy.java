@@ -1,86 +1,98 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.qboss.QbossReportManager;
-import java.io.File;
-import java.lang.ref.SoftReference;
+import android.content.ContentValues;
+import android.database.Cursor;
+import com.tencent.mobileqq.data.QZoneCover;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.NoColumnError;
+import com.tencent.mobileqq.persistence.NoColumnErrorHandler;
+import com.tencent.mobileqq.persistence.OGAbstractDao;
 
 public class azhy
-  implements INetEngine.INetEngineListener
+  extends OGAbstractDao
 {
-  String jdField_a_of_type_JavaLangString;
-  SoftReference<QQAppInterface> jdField_a_of_type_JavaLangRefSoftReference;
-  String b;
-  String c;
-  String d;
-  
-  public azhy(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4)
+  public azhy()
   {
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramQQAppInterface);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString3;
-    this.c = paramString2;
-    this.d = paramString4;
+    this.columnLen = 5;
   }
   
-  public void onResp(NetResp paramNetResp)
+  public Entity cursor2Entity(Entity paramEntity, Cursor paramCursor, boolean paramBoolean, NoColumnErrorHandler paramNoColumnErrorHandler)
   {
-    try
+    paramEntity = (QZoneCover)paramEntity;
+    if (paramNoColumnErrorHandler == null)
     {
-      if (paramNetResp.mResult == 0)
-      {
-        QLog.i("QbossPreDownloadManager", 1, "ResFile has download!");
-        if (TextUtils.isEmpty(this.c)) {
-          return;
-        }
-        if (FileUtil.fileExistsAndNotEmpty(this.c))
-        {
-          paramNetResp = new File(this.c);
-          File localFile = new File(this.c.substring(0, this.c.lastIndexOf(".")));
-          if (!paramNetResp.renameTo(localFile)) {
-            return;
-          }
-          long l = localFile.length();
-          paramNetResp = (QQAppInterface)this.jdField_a_of_type_JavaLangRefSoftReference.get();
-          if (paramNetResp != null)
-          {
-            paramNetResp = (PreDownloadController)paramNetResp.getManager(193);
-            if (paramNetResp.isEnable())
-            {
-              QLog.i("QbossPreDownloadManager", 1, "preDownloadSuccess");
-              paramNetResp.preDownloadSuccess(this.b, l);
-            }
-          }
-          QbossReportManager.getInstance().reportExpose(this.d, null);
-          return;
-        }
-        azhw.a(this.b, this.jdField_a_of_type_JavaLangRefSoftReference, this.jdField_a_of_type_JavaLangString, "2");
-        QLog.i("QbossPreDownloadManager", 1, "ResFile check not exist");
-        return;
+      paramEntity.uin = paramCursor.getString(paramCursor.getColumnIndex("uin"));
+      paramEntity.type = paramCursor.getString(paramCursor.getColumnIndex("type"));
+      paramEntity.jigsaw = paramCursor.getInt(paramCursor.getColumnIndex("jigsaw"));
+      paramEntity.vCoverInfo = paramCursor.getBlob(paramCursor.getColumnIndex("vCoverInfo"));
+      paramEntity.vPhotoInfo = paramCursor.getBlob(paramCursor.getColumnIndex("vPhotoInfo"));
+      return paramEntity;
+    }
+    int i = paramCursor.getColumnIndex("uin");
+    if (i == -1)
+    {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("uin", String.class));
+      i = paramCursor.getColumnIndex("type");
+      if (i != -1) {
+        break label290;
       }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("type", String.class));
+      label170:
+      i = paramCursor.getColumnIndex("jigsaw");
+      if (i != -1) {
+        break label305;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("jigsaw", Integer.TYPE));
+      label205:
+      i = paramCursor.getColumnIndex("vCoverInfo");
+      if (i != -1) {
+        break label320;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("vCoverInfo", [B.class));
     }
-    catch (Exception paramNetResp)
+    for (;;)
     {
-      QLog.e("QbossPreDownloadManager", 1, paramNetResp, new Object[0]);
-      return;
+      i = paramCursor.getColumnIndex("vPhotoInfo");
+      if (i != -1) {
+        break label335;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("vPhotoInfo", [B.class));
+      return paramEntity;
+      paramEntity.uin = paramCursor.getString(i);
+      break;
+      label290:
+      paramEntity.type = paramCursor.getString(i);
+      break label170;
+      label305:
+      paramEntity.jigsaw = paramCursor.getInt(i);
+      break label205;
+      label320:
+      paramEntity.vCoverInfo = paramCursor.getBlob(i);
     }
-    if (paramNetResp.mResult == 1)
-    {
-      azhw.a(this.b, this.jdField_a_of_type_JavaLangRefSoftReference, this.jdField_a_of_type_JavaLangString, "1");
-      QLog.i("QbossPreDownloadManager", 1, "ResFile dowload faield");
-    }
+    label335:
+    paramEntity.vPhotoInfo = paramCursor.getBlob(i);
+    return paramEntity;
   }
   
-  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
+  public void entity2ContentValues(Entity paramEntity, ContentValues paramContentValues)
+  {
+    paramEntity = (QZoneCover)paramEntity;
+    paramContentValues.put("uin", paramEntity.uin);
+    paramContentValues.put("type", paramEntity.type);
+    paramContentValues.put("jigsaw", Integer.valueOf(paramEntity.jigsaw));
+    paramContentValues.put("vCoverInfo", paramEntity.vCoverInfo);
+    paramContentValues.put("vPhotoInfo", paramEntity.vPhotoInfo);
+  }
+  
+  public String getCreateTableSql(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,uin TEXT UNIQUE ,type TEXT ,jigsaw INTEGER ,vCoverInfo BLOB ,vPhotoInfo BLOB)");
+    return localStringBuilder.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     azhy
  * JD-Core Version:    0.7.0.1
  */

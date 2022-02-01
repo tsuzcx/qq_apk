@@ -1,20 +1,8 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
 
-class aaea
-  implements View.OnClickListener
+public abstract interface aaea
 {
-  aaea(aady paramaady, DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Aady, 1);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void callback(Bundle paramBundle);
 }
 
 

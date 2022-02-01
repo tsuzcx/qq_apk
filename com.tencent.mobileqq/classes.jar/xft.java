@@ -1,31 +1,34 @@
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class xft
-  extends axku
+class xft
+  implements View.OnClickListener
 {
-  public xft(QQStoryMainController paramQQStoryMainController) {}
+  xft(xfs paramxfs) {}
   
-  protected void a(Object paramObject)
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    xue localxue;
-    do
+    Object localObject = ((StoryPlayerGroupHolder)this.a.a()).a();
+    if (localObject != null) {
+      ((VideoViewVideoHolder)localObject).d = 2;
+    }
+    this.a.a().finish();
+    String str = "";
+    localObject = str;
+    if (this.a.jdField_a_of_type_Int >= 0)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQStoryMainController", 2, "refresh red point if needed");
+      localObject = str;
+      if (this.a.jdField_a_of_type_Int < this.a.jdField_a_of_type_JavaUtilList.size()) {
+        localObject = ((xhf)this.a.jdField_a_of_type_JavaUtilList.get(this.a.jdField_a_of_type_Int)).a;
       }
-      paramObject = ((nmq)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(70)).a(52);
-      if (QLog.isColorLevel()) {
-        QLog.i("storyRedDotDebug", 2, "更新小黑条红点:" + nmq.a(paramObject));
-      }
-      localxue = (xue)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.a("MessageNotifySegment");
-    } while (localxue == null);
-    localxue.a(paramObject);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.p();
+    }
+    ykv.a("play_video", "clk_quit", 0, 0, new String[] { "", "", "", localObject });
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

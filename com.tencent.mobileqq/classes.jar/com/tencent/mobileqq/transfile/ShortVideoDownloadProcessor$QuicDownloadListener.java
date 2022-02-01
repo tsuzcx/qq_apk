@@ -28,27 +28,44 @@ public class ShortVideoDownloadProcessor$QuicDownloadListener
     if (QLog.isColorLevel()) {
       QLog.d("ShortVideoDownloadProcessor", 4, "quic download failed. use http try again. errCode: " + paramQuicNetReport.errCode + " errMsg: " + paramQuicNetReport.errMsg + " ip: " + paramQuicNetReport.ip + " port: " + paramQuicNetReport.port);
     }
-    if (this.cancel.get())
-    {
+    if (this.cancel.get()) {
       if (QLog.isColorLevel()) {
         QLog.d("ShortVideoDownloadProcessor", 4, "task canceled.");
       }
-      return;
     }
-    paramString = (ShortVideoDownloadProcessor)this.mVideoDownloadProcessor.get();
-    if ((paramString == null) || (paramString.mNetReq == null))
+    HttpNetReq localHttpNetReq;
+    do
     {
-      paramQuicNetReport = new StringBuilder().append("shortVideoDownloadProcessor or netReq is null. processor: ");
-      if (paramString == null) {}
-      for (boolean bool = true;; bool = false)
+      return;
+      paramString = (ShortVideoDownloadProcessor)this.mVideoDownloadProcessor.get();
+      if (paramString != null)
       {
-        QLog.e("ShortVideoDownloadProcessor", 4, bool);
-        return;
+        localHttpNetReq = (HttpNetReq)paramString.mNetReq;
+        if (localHttpNetReq != null) {}
       }
-    }
+      else
+      {
+        paramQuicNetReport = new StringBuilder().append("shortVideoDownloadProcessor or netReq is null. processor: ");
+        if (paramString == null) {}
+        for (boolean bool = true;; bool = false)
+        {
+          QLog.e("ShortVideoDownloadProcessor", 4, bool);
+          return;
+        }
+      }
+      if (paramQuicNetReport.failReason != 8) {
+        break;
+      }
+    } while (localHttpNetReq.mCallback == null);
+    QLog.d("ShortVideoDownloadProcessor", 4, "shortVideoDownloadProcessor failReason downloading.");
+    paramString = new NetResp(localHttpNetReq);
+    paramString.mResult = 3;
+    localHttpNetReq.mCallback.onResp(paramString);
+    return;
+    paramQuicNetReport.isHttpRetryed = true;
     paramQuicNetReport.stats = QuicDownloader.saveNetStats(paramQuicNetReport);
     paramString.mQuicNetReport = paramQuicNetReport;
-    paramString.mNetEngine.sendReq(paramString.mNetReq);
+    paramString.mNetEngine.sendReq(localHttpNetReq);
   }
   
   public void onDownloadProgress(String paramString, long paramLong1, long paramLong2)
@@ -58,13 +75,19 @@ public class ShortVideoDownloadProcessor$QuicDownloadListener
         QLog.d("ShortVideoDownloadProcessor", 4, "task canceled.");
       }
     }
+    Object localObject;
     do
     {
       return;
       paramString = (ShortVideoDownloadProcessor)this.mVideoDownloadProcessor.get();
-      if ((paramString == null) || (paramString.mNetReq == null))
+      if (paramString != null)
       {
-        StringBuilder localStringBuilder = new StringBuilder().append("shortVideoDownloadProcessor or netReq is null. processor: ");
+        localObject = (HttpNetReq)paramString.mNetReq;
+        if (localObject != null) {}
+      }
+      else
+      {
+        localObject = new StringBuilder().append("shortVideoDownloadProcessor or netReq is null. processor: ");
         if (paramString == null) {}
         for (boolean bool = true;; bool = false)
         {
@@ -72,9 +95,8 @@ public class ShortVideoDownloadProcessor$QuicDownloadListener
           return;
         }
       }
-      paramString = paramString.mNetReq;
-    } while (paramString.mCallback == null);
-    paramString.mCallback.onUpdateProgeress(paramString, paramLong2, paramLong1);
+    } while (((HttpNetReq)localObject).mCallback == null);
+    ((HttpNetReq)localObject).mCallback.onUpdateProgeress((NetReq)localObject, paramLong2, paramLong1);
   }
   
   public void onDownloadSucceed(String paramString, QuicNetReport paramQuicNetReport)
@@ -90,7 +112,13 @@ public class ShortVideoDownloadProcessor$QuicDownloadListener
       return;
     }
     paramString = (ShortVideoDownloadProcessor)this.mVideoDownloadProcessor.get();
-    if ((paramString == null) || (paramString.mNetReq == null))
+    HttpNetReq localHttpNetReq;
+    if (paramString != null)
+    {
+      localHttpNetReq = (HttpNetReq)paramString.mNetReq;
+      if (localHttpNetReq != null) {}
+    }
+    else
     {
       paramQuicNetReport = new StringBuilder().append("shortVideoDownloadProcessor or netReq is null. processor: ");
       if (paramString == null) {}
@@ -103,7 +131,7 @@ public class ShortVideoDownloadProcessor$QuicDownloadListener
     paramQuicNetReport.stats = QuicDownloader.saveNetStats(paramQuicNetReport);
     paramQuicNetReport.success = true;
     paramString.mQuicNetReport = paramQuicNetReport;
-    paramString.quicDownloadSuc(paramQuicNetReport, (HttpNetReq)paramString.mNetReq);
+    paramString.quicDownloadSuc(paramQuicNetReport, localHttpNetReq);
   }
 }
 

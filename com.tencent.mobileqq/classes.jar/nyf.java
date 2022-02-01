@@ -1,22 +1,22 @@
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager.2;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.lebasearch.LebaSearchMoreInfoActivity;
 
 public class nyf
-  implements TVK_SDKMgr.InstallListener
+  extends Handler
 {
-  public nyf(AdvertisementVideoPreloadManager.2 param2) {}
+  public nyf(LebaSearchMoreInfoActivity paramLebaSearchMoreInfoActivity) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    nyd.c("installSDK onInstalledFailed arg0=" + paramInt);
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    nyd.c("installSDK onInstalledSuccessed");
-    nyd.a(this.a.this$0);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    paramMessage = (Bundle)paramMessage.obj;
+    this.a.jdField_a_of_type_Aady.a(17, paramMessage, this.a.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver);
   }
 }
 

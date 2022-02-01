@@ -1,25 +1,21 @@
-import android.util.Property;
+import android.content.Context;
+import android.media.AudioManager;
+import com.tencent.common.app.BaseApplicationImpl;
 
-class bnqz
-  extends Property<bnqy, Float>
+public class bnqz
 {
-  bnqz(bnqy parambnqy, Class paramClass, String paramString)
+  private AudioManager a;
+  
+  public void a()
   {
-    super(paramClass, paramString);
+    this.a = ((AudioManager)BaseApplicationImpl.getContext().getSystemService("audio"));
+    this.a.requestAudioFocus(null, 3, 2);
   }
   
-  public Float a(bnqy parambnqy)
+  public void b()
   {
-    if (parambnqy != null) {
-      return Float.valueOf(bnqy.a(parambnqy));
-    }
-    return Float.valueOf(0.0F);
-  }
-  
-  public void a(bnqy parambnqy, Float paramFloat)
-  {
-    if (parambnqy != null) {
-      bnqy.a(parambnqy, paramFloat.floatValue());
+    if (this.a != null) {
+      this.a.abandonAudioFocus(null);
     }
   }
 }

@@ -1,18 +1,13 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
+import android.widget.PopupWindow.OnDismissListener;
 
 class blcv
-  implements View.OnKeyListener
+  implements PopupWindow.OnDismissListener
 {
-  blcv(blcs paramblcs) {}
+  blcv(blct paramblct) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void onDismiss()
   {
-    if ((paramKeyEvent.getAction() == 0) && (paramInt == 4)) {
-      this.a.d();
-    }
-    return false;
+    this.a.a(1.0F);
   }
 }
 

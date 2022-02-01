@@ -12,8 +12,11 @@ public class QCircleScheme
   public static final String Q_CIRCLE_ACTION_OPEN_HIPPY = "openhippy";
   public static final String Q_CIRCLE_ACTION_OPEN_MESSAGE_PAGE = "opennoticelist";
   public static final String Q_CIRCLE_ACTION_OPEN_POLYMERIZE = "openpolymerize";
+  public static final String Q_CIRCLE_ACTION_OPEN_POLYMERIZE_DETAIL = "openpolymerizedetail";
   public static final String Q_CIRCLE_ACTION_OPEN_PUBLISH_PAGE = "openpublish";
+  public static final String Q_CIRCLE_ACTION_OPEN_PYMK_PAGE = "openpymk";
   public static final String Q_CIRCLE_PROTOCOL_ROOTPATH = "qcircle";
+  public static final String Q_CIRCLR_ACTION_REWARDAD = "openRewardAd";
 }
 
 

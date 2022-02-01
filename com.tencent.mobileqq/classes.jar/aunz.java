@@ -1,45 +1,13 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.os.Bundle;
 
-class aunz
-  extends Handler
+public abstract interface aunz
 {
-  aunz(aunx paramaunx, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract Activity a();
   
-  public void handleMessage(Message paramMessage)
-  {
-    int i = paramMessage.arg1;
-    if ((i < aunx.b(this.a)) || (i > 95)) {
-      return;
-    }
-    aunx.b(this.a, i);
-    aunx.a(this.a, "STATE_Loading:" + i);
-    paramMessage = new JSONObject();
-    try
-    {
-      paramMessage.putOpt("state", Integer.valueOf(4));
-      paramMessage.putOpt("totalSize", Integer.valueOf(100));
-      paramMessage.putOpt("pro", Integer.valueOf(i));
-      this.a.callJs(this.a.a, new String[] { paramMessage.toString() });
-      paramMessage = Message.obtain();
-      paramMessage.arg1 = (i + 5);
-      sendMessageDelayed(paramMessage, 500L);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
-  }
+  public abstract Bundle a();
+  
+  public abstract Object a();
 }
 
 

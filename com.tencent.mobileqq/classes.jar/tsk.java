@@ -1,26 +1,28 @@
-import org.json.JSONObject;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton.4.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class tsk
+  extends AnimatorListenerAdapter
 {
-  public long a;
-  public String a;
-  public String b;
-  public String c;
+  public tsk(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
   
-  tsk(tsf paramtsf, JSONObject paramJSONObject)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (paramJSONObject == null) {
-      return;
-    }
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("sActivityId");
-    this.b = paramJSONObject.optString("sGiftName");
-    this.c = paramJSONObject.optString("sNeedRole");
-    this.jdField_a_of_type_Long = paramJSONObject.optInt("iGiftId");
+    this.a.a();
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    ThreadManager.getUIHandler().postDelayed(new ColorBandVideoEntranceButton.4.1(this), 500L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tsk
  * JD-Core Version:    0.7.0.1
  */

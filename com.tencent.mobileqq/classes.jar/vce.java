@@ -1,26 +1,19 @@
-class vce
-  implements upr
+public abstract class vce<T>
 {
-  vce(vcd paramvcd, String paramString1, String paramString2) {}
+  protected T a;
+  protected StringBuilder a;
   
-  public void a()
+  public T a()
   {
-    vdq.a(1000003, vcd.a(this.jdField_a_of_type_Vcd), this.jdField_a_of_type_JavaLangString, this.b);
+    return this.jdField_a_of_type_JavaLangObject;
   }
   
-  public void b()
+  public String a()
   {
-    vdq.a(1000007, vcd.a(this.jdField_a_of_type_Vcd), this.jdField_a_of_type_JavaLangString, this.b);
-  }
-  
-  public void c()
-  {
-    vdq.a(1000004, vcd.a(this.jdField_a_of_type_Vcd), this.jdField_a_of_type_JavaLangString, this.b);
-  }
-  
-  public void d()
-  {
-    vdq.a(1000002, vcd.a(this.jdField_a_of_type_Vcd), this.jdField_a_of_type_JavaLangString, this.b);
+    if (this.jdField_a_of_type_JavaLangStringBuilder == null) {
+      return "";
+    }
+    return this.jdField_a_of_type_JavaLangStringBuilder.toString();
   }
 }
 

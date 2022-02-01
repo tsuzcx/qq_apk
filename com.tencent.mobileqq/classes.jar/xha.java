@@ -1,27 +1,24 @@
-import com.tribe.async.async.JobContext;
-import com.tribe.async.parallel.ParallelJobSegment;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 
-class xha
-  extends ParallelJobSegment<String, Integer>
+public class xha
+  implements xje
 {
-  public xha(xgs paramxgs)
-  {
-    this(paramxgs, "RequestViewCountSegment");
-  }
+  public xha(StoryPlayerGroupHolder paramStoryPlayerGroupHolder) {}
   
-  public xha(xgs paramxgs, String paramString)
+  public void a(@NonNull View paramView, int paramInt)
   {
-    super(paramString);
-  }
-  
-  protected void a(JobContext paramJobContext, String paramString)
-  {
-    weg localweg = new weg();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramString);
-    localweg.a = localArrayList;
-    vqn.a().a(localweg, new xhb(this, paramJobContext, paramString));
+    if (LiuHaiUtils.a)
+    {
+      paramInt = StoryPlayerGroupHolder.a(this.a);
+      paramView = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
+      paramView.bottomMargin = paramInt;
+      this.a.a.setLayoutParams(paramView);
+    }
   }
 }
 

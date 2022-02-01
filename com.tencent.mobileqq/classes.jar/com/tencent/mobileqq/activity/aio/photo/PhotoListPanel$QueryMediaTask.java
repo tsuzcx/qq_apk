@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import ahbd;
-import ahbp;
-import ajpc;
+import ahud;
+import ahup;
+import akkq;
 import android.os.Handler;
 import android.os.SystemClock;
 import com.tencent.mobileqq.activity.photo.FlowThumbDecoder;
@@ -71,7 +71,7 @@ class PhotoListPanel$QueryMediaTask
             QLog.d("PhotoListPanel", 2, localException + "get album medias size : " + paramList.size() + "mPhotos size" + this.this$0.jdField_b_of_type_JavaUtilArrayList.size());
           }
         }
-        ajpc.a(paramList, 0, this.this$0.jdField_b_of_type_JavaUtilArrayList, this.this$0.jdField_a_of_type_JavaUtilHashMap);
+        akkq.a(paramList, 0, this.this$0.jdField_b_of_type_JavaUtilArrayList, this.this$0.jdField_a_of_type_JavaUtilHashMap);
         return;
         label358:
         if (k == 1) {
@@ -94,10 +94,10 @@ class PhotoListPanel$QueryMediaTask
     if (QLog.isColorLevel()) {
       QLog.d("PhotoListPanel", 2, "QueryMediaTask start" + l1 + "to qurey time=" + (this.this$0.jdField_a_of_type_Long - l1));
     }
-    Object localObject1 = ahbd.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    int i = ((ahbd)localObject1).jdField_a_of_type_Int;
-    int j = ((ahbd)localObject1).jdField_b_of_type_Int;
-    localObject1 = ((ahbd)localObject1).jdField_a_of_type_JavaUtilSet;
+    Object localObject1 = ahud.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    int i = ((ahud)localObject1).jdField_a_of_type_Int;
+    int j = ((ahud)localObject1).jdField_b_of_type_Int;
+    localObject1 = ((ahud)localObject1).jdField_a_of_type_JavaUtilSet;
     Object localObject3;
     if ((localObject1 != null) && (((Set)localObject1).size() > 0))
     {
@@ -139,7 +139,7 @@ class PhotoListPanel$QueryMediaTask
     if (QLog.isColorLevel()) {
       QLog.d("PhotoListPanel", 2, "QueryMediaTask,mediaList.size :" + ((List)localObject2).size());
     }
-    this.this$0.jdField_a_of_type_Ahbp.b((List)localObject2);
+    this.this$0.jdField_a_of_type_Ahup.b((List)localObject2);
   }
 }
 

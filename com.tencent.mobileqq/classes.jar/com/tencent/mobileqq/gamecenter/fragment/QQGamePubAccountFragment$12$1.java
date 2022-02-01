@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.gamecenter.fragment;
 
-import abet;
-import alvx;
-import atxp;
+import abuf;
+import amwn;
+import avct;
 
 public class QQGamePubAccountFragment$12$1
   implements Runnable
 {
-  public QQGamePubAccountFragment$12$1(atxp paramatxp) {}
+  public QQGamePubAccountFragment$12$1(avct paramavct) {}
   
   public void run()
   {
     this.a.a.a(this.a.a.getActivity());
-    abet.a(alvx.a(), "769", "205036", "", "76901", "1", "160", new String[] { "", "", "20" });
+    abuf.a(amwn.a(), "769", "205036", "", "76901", "1", "160", new String[] { "", "", "20" });
   }
 }
 

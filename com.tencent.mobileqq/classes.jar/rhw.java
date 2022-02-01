@@ -1,20 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity.3;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-
 public class rhw
-  implements DialogInterface.OnClickListener
 {
-  public rhw(ReadInJoyDeliverVideoActivity.3 param3) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    ForwardSdkShareOption.a(this.a.this$0, true, "shareToQQ", ReadInJoyDeliverVideoActivity.a(this.a.this$0));
-    this.a.this$0.moveTaskToBack(true);
-    this.a.this$0.finish();
-  }
+  public int a;
+  public long a;
+  public int b;
 }
 
 

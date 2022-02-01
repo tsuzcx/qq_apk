@@ -11,7 +11,7 @@ class TroopChatPie$8$1
   
   public void run()
   {
-    this.a.this$0.a = ChatActivityUtils.a(this.a.this$0.mActivity, this.a.this$0.mActivity.getString(2131689890));
+    this.a.this$0.a = ChatActivityUtils.a(this.a.this$0.mActivity, this.a.this$0.mActivity.getString(2131689919));
     this.a.this$0.a.show();
   }
 }

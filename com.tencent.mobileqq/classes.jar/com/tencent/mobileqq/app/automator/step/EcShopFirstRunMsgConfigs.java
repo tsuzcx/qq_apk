@@ -3,12 +3,13 @@ package com.tencent.mobileqq.app.automator.step;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anfq;
-import aqyy;
-import bgoe;
-import bgog;
-import bgoj;
+import aoig;
+import asdi;
+import bhyo;
+import bhyq;
+import bhyt;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -16,7 +17,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
-import ofx;
+import onq;
 
 public class EcShopFirstRunMsgConfigs
   extends AsyncStep
@@ -26,10 +27,10 @@ public class EcShopFirstRunMsgConfigs
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "EcShopFirstRunMsgConfigs start in addEcShopAssistToRUFirstTime...");
     }
-    ((ofx)this.a.app.getManager(88)).c();
-    anfq localanfq = new anfq(this);
+    ((onq)this.a.app.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER)).c();
+    aoig localaoig = new aoig(this);
     List localList1 = Arrays.asList(new String[] { "https://imgcache.qq.com/zzapp/qqshop/stat/qqshp_client_log_wl_conf.json", "https://imgcache.qq.com/zzapp/qqshop/stat/qqshp_client_log_jd_conf.json" });
-    List localList2 = Arrays.asList(new String[] { ofx.e, ofx.f });
+    List localList2 = Arrays.asList(new String[] { onq.e, onq.f });
     List localList3 = Arrays.asList(new String[] { "last_modified_report_json", "last_modified_behaviors_json" });
     int i = 0;
     if (i < localList1.size())
@@ -42,27 +43,27 @@ public class EcShopFirstRunMsgConfigs
       {
         i += 1;
         break;
-        bgoj localbgoj = ((bgog)this.a.app.getManager(47)).a(1);
-        if (localbgoj != null)
+        bhyt localbhyt = ((bhyq)this.a.app.getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
+        if (localbhyt != null)
         {
-          Object localObject3 = aqyy.a("VIP_shop_assit_cfg", (String)localObject2);
-          if (localbgoj.a((String)localObject3) == null)
+          Object localObject3 = asdi.a("VIP_shop_assit_cfg", (String)localObject2);
+          if (localbhyt.a((String)localObject3) == null)
           {
             localObject2 = new File(str);
-            localObject3 = new bgoe((String)localObject3, (File)localObject2);
+            localObject3 = new bhyo((String)localObject3, (File)localObject2);
             if (((File)localObject2).exists())
             {
               long l = ((File)localObject2).lastModified();
-              ((bgoe)localObject3).i = this.a.app.getApp().getSharedPreferences("ecshop_sp", 0).getLong((String)localObject1, 0L);
-              if (Long.valueOf(l).longValue() != ((bgoe)localObject3).i) {
-                ((bgoe)localObject3).m = true;
+              ((bhyo)localObject3).i = this.a.app.getApp().getSharedPreferences("ecshop_sp", 0).getLong((String)localObject1, 0L);
+              if (Long.valueOf(l).longValue() != ((bhyo)localObject3).i) {
+                ((bhyo)localObject3).m = true;
               }
             }
-            ((bgoe)localObject3).j = true;
-            ((bgoe)localObject3).p = false;
+            ((bhyo)localObject3).j = true;
+            ((bhyo)localObject3).p = false;
             localObject1 = new Bundle();
             ((Bundle)localObject1).putString("path", str);
-            localbgoj.a((bgoe)localObject3, localanfq, (Bundle)localObject1);
+            localbhyt.a((bhyo)localObject3, localaoig, (Bundle)localObject1);
           }
         }
       }

@@ -1,87 +1,15 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
 class uhm
-  implements BusinessObserver
+  implements ViewFactory.FoundClickableViewListener
 {
-  uhm(uhk paramuhk, Intent paramIntent) {}
+  uhm(uhl paramuhl, Context paramContext) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onFound(ViewBase paramViewBase)
   {
-    uhk.c(this.jdField_a_of_type_Uhk);
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        Object localObject = paramBundle.getByteArray("data");
-        if (localObject != null)
-        {
-          paramBundle = new GetAppInfoProto.GetAppinfoResponse();
-          paramBundle.mergeFrom((byte[])localObject);
-          if ((paramBundle.has()) && (paramBundle.ret.get() == 0) && (paramBundle.androidInfo != null))
-          {
-            localAndroidInfo = paramBundle.androidInfo;
-            localObject = aadf.a(paramBundle.iconsURL, 16);
-            Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
-            if (localAndroidInfo.sourceUrl != null) {
-              continue;
-            }
-            paramBundle = "";
-            localIntent.putExtra("struct_share_key_source_url", paramBundle);
-            localIntent = this.jdField_a_of_type_AndroidContentIntent;
-            paramBundle = (Bundle)localObject;
-            if (localObject == null) {
-              paramBundle = "";
-            }
-            localIntent.putExtra("struct_share_key_source_icon", paramBundle);
-            localObject = this.jdField_a_of_type_AndroidContentIntent;
-            if (localAndroidInfo.messagetail != null) {
-              continue;
-            }
-            paramBundle = "";
-            ((Intent)localObject).putExtra("struct_share_key_source_name", paramBundle);
-            localObject = this.jdField_a_of_type_AndroidContentIntent;
-            if (localAndroidInfo.packName != null) {
-              continue;
-            }
-            paramBundle = "";
-            ((Intent)localObject).putExtra("struct_share_key_source_a_action_data", paramBundle);
-          }
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        GetAppInfoProto.AndroidInfo localAndroidInfo;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("WebShareHelper", 2, paramBundle.getMessage());
-        continue;
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("stuctmsg_bytes", paramBundle.getBytes());
-        uhk.a(this.jdField_a_of_type_Uhk).startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, (byte)1);
-      }
-      paramBundle = bchh.a(this.jdField_a_of_type_AndroidContentIntent.getExtras());
-      if (paramBundle != null) {
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("WebShareHelper", 2, "build struct msg fail");
-      }
-      return;
-      paramBundle = localAndroidInfo.sourceUrl.get();
-      continue;
-      paramBundle = localAndroidInfo.messagetail.get();
-      continue;
-      paramBundle = localAndroidInfo.packName.get();
-    }
+    paramViewBase.setOnClickListener(new uhn(this));
   }
 }
 

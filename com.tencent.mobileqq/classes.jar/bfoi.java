@@ -1,27 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity;
+import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadMgr.6.1;
+import java.util.UUID;
 
 public class bfoi
-  implements DialogInterface.OnClickListener
+  implements bfol
 {
-  public bfoi(UpgradeDetailActivity paramUpgradeDetailActivity, int paramInt) {}
+  bfoi(bfoh parambfoh) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(UUID paramUUID, boolean paramBoolean, int paramInt, bfok parambfok)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      bfng.a().b(false);
-      paramDialogInterface.dismiss();
-      UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeActivityUpgradeDetailActivity, this.jdField_a_of_type_Int, 3);
-      return;
-    }
-    UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeActivityUpgradeDetailActivity, this.jdField_a_of_type_ComTencentMobileqqUpgradeActivityUpgradeDetailActivity, this.jdField_a_of_type_Int);
-    paramDialogInterface.dismiss();
-    UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeActivityUpgradeDetailActivity, this.jdField_a_of_type_Int, 2);
+    bflv.a(new TroopFileUploadMgr.6.1(this, paramUUID, paramBoolean, paramInt, parambfok), false);
   }
 }
 

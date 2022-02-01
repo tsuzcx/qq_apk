@@ -1,6 +1,19 @@
-public abstract interface bnxx
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
+
+public class bnxx
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  public bnxx(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.f();
+    this.a.j();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

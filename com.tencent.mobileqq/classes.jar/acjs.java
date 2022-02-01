@@ -1,16 +1,66 @@
+import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.ad.tangram.util.AdUriUtil;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.gdtad.views.halfScreen.GdtBaseHalfScreenFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.smtt.sdk.WebView;
+
 public class acjs
+  extends acko
 {
-  public final int a;
-  public final Class<? extends acjv> a;
-  public final String a;
-  public final int b;
-  
-  public acjs(String paramString, int paramInt1, int paramInt2, Class<? extends acjv> paramClass)
+  public acjs(GdtBaseHalfScreenFragment paramGdtBaseHalfScreenFragment, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangClass = paramClass;
+    super(paramContext, paramActivity, paramIntent, paramAppInterface);
+  }
+  
+  public void onReceivedTitle(WebView paramWebView, String paramString)
+  {
+    super.onReceivedTitle(paramWebView, paramString);
+    acho.b("AbsWebView", "GdtBaseHalfScreenFragment onReceivedTitle" + paramString);
+    if (GdtBaseHalfScreenFragment.a(this.a) != null) {
+      GdtBaseHalfScreenFragment.a(this.a).setText(paramString);
+    }
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
+    for (;;)
+    {
+      return true;
+      Object localObject = ((CustomWebView)paramWebView).getPluginEngine();
+      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
+      {
+        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
+        for (boolean bool = true;; bool = false) {
+          return bool;
+        }
+      }
+      localObject = AdUriUtil.parse(paramString);
+      if (localObject != null) {}
+      for (paramString = ((Uri)localObject).getScheme(); nro.a().a(paramWebView.getUrl(), paramString).booleanValue(); paramString = null)
+      {
+        paramWebView = new Intent("android.intent.action.VIEW", (Uri)localObject);
+        paramWebView.addFlags(268435456);
+        try
+        {
+          this.mContext.startActivity(paramWebView);
+          return true;
+        }
+        catch (ActivityNotFoundException paramWebView)
+        {
+          acho.d("AbsWebView", paramWebView.toString());
+          return true;
+        }
+      }
+    }
   }
 }
 

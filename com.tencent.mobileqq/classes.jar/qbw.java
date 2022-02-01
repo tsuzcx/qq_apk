@@ -1,32 +1,67 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.gif.GifView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicLong;
 
-class qbw
-  implements ViewBase.OnClickListener
+public class qbw
+  implements URLDrawableDownListener
 {
-  qbw(qbu paramqbu, pvc parampvc, BaseArticleInfo paramBaseArticleInfo1, BaseArticleInfo paramBaseArticleInfo2) {}
+  public qbw(GifView paramGifView, long paramLong, AtomicLong paramAtomicLong1, AtomicLong paramAtomicLong2, AtomicLong paramAtomicLong3, AtomicLong paramAtomicLong4, StringBuilder paramStringBuilder, URLDrawable paramURLDrawable) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    EventCollector.getInstance().onViewClicked(paramViewBase.getNativeView());
-    TemplateBean localTemplateBean = this.jdField_a_of_type_Pvc.a().mProteusTemplateBean;
-    if (localTemplateBean != null)
+    if (GifView.access$000(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView))
     {
-      paramViewBase = qbu.a(this.jdField_a_of_type_Qbu, localTemplateBean, paramViewBase);
-      if (twr.h(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo)) {
-        twr.a((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_Pvc.a().getContext(), this.jdField_a_of_type_Pvc.g());
+      if (!GifView.access$100(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView)) {
+        break label116;
+      }
+      GifView.access$200(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView);
+    }
+    for (;;)
+    {
+      QLog.d("gifvideo.GifView", 1, "onLoadFialed! mIsBigImg=" + GifView.access$100(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView) + " w=" + GifView.access$300(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView) + " h=" + GifView.access$400(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView) + " progress: " + this.jdField_a_of_type_JavaLangStringBuilder);
+      paramView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView;
+      paramView.mTryCounts += 1;
+      return;
+      label116:
+      this.jdField_a_of_type_ComTencentImageURLDrawable.restartDownload();
+    }
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangStringBuilder.append(System.currentTimeMillis() + " " + paramInt + " ");
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    long l1 = System.currentTimeMillis();
+    long l2 = l1 - this.jdField_a_of_type_Long;
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get() != 0L)
+    {
+      l1 -= this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get();
+      if (this.b.longValue() != 0L) {
+        break label362;
       }
     }
-    else
+    label362:
+    for (int i = 1;; i = 0)
     {
+      QLog.d("gifvideo.GifView", 2, "gif status: " + i + " file size: " + this.c + " download time: " + this.b + " load time: " + l2);
+      QLog.d("gifvideo.GifView", 2, "gif status: " + i + " file size: " + this.c + " download time2: " + this.d + " load time2: " + l1);
+      olh.a(null, "", "0X800A148", "0X800A148", 0, i, this.c + "", this.d + "", l1 + "", this.b + " " + l2, false);
+      GifView.access$500(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView);
+      QLog.d("gifvideo.GifView", 1, "onLoadSuccess! mIsBigImg=" + GifView.access$100(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView) + " w=" + GifView.access$300(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView) + " h=" + GifView.access$400(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView) + " progress: " + this.jdField_a_of_type_JavaLangStringBuilder);
       return;
+      l1 = l2;
+      break;
     }
-    this.jdField_a_of_type_Pvc.a().a(false, (ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, (ArticleInfo)this.b, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.innerUniqueID, paramViewBase);
   }
 }
 

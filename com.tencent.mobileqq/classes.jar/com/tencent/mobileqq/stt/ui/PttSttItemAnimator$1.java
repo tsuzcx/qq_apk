@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.stt.ui;
 
-import bcnc;
+import bduc;
 
 public class PttSttItemAnimator$1
   implements Runnable
 {
-  public PttSttItemAnimator$1(bcnc parambcnc) {}
+  public PttSttItemAnimator$1(bduc parambduc) {}
   
   public void run()
   {
-    bcnc.a(this.this$0);
+    bduc.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.stt.ui.PttSttItemAnimator.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.WeiShiVideoArticleInfo;
+import java.util.Comparator;
 
 class qih
-  implements pwy
+  implements Comparator<WeiShiVideoArticleInfo>
 {
-  qih(qid paramqid, RecommendFollowInfo paramRecommendFollowInfo) {}
+  qih(qif paramqif) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public int a(WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo1, WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
+    if (paramWeiShiVideoArticleInfo1.recommendSeq == paramWeiShiVideoArticleInfo2.recommendSeq) {
+      return 0;
     }
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = true;
-      qid.a(this.jdField_a_of_type_Qid, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
-      qid.a(this.jdField_a_of_type_Qid).notifyDataSetChanged();
-      return;
+    if (paramWeiShiVideoArticleInfo1.recommendSeq > paramWeiShiVideoArticleInfo2.recommendSeq) {
+      return -1;
     }
-    QQToast.a(qid.b(this.jdField_a_of_type_Qid).getContext(), 1, 2131717436, 0).a();
+    return 1;
   }
 }
 

@@ -1,11 +1,17 @@
-class noz
-  implements bjog
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.avgame.ui.AVGameRoomCenterFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class noz
+  implements View.OnClickListener
 {
-  noz(noy paramnoy) {}
+  public noz(AVGameRoomCenterFragment paramAVGameRoomCenterFragment) {}
   
-  public void onDismiss()
+  public void onClick(View paramView)
   {
-    noy.a(this.a);
+    this.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

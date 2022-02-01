@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import cooperation.qzone.contentbox.model.MQLikeCell;
 import cooperation.qzone.contentbox.model.MQMsg;
 import cooperation.qzone.contentbox.model.MQMsgInteractData;
@@ -35,12 +36,12 @@ class QZoneMsgFragment$2
       if (i < this.this$0.adapter.getCount())
       {
         paramIntent = (MQMsg)this.this$0.adapter.getItem(i);
-        if ((paramIntent.msgInteractData != null) && (paramIntent.msgInteractData.likeCell != null) && (paramIntent.msgInteractData.likeCell.likeKey.equals(paramContext)))
+        if ((paramIntent != null) && (paramIntent.msgInteractData != null) && (paramIntent.msgInteractData.likeCell != null) && (paramIntent.msgInteractData.likeCell.likeKey.equals(paramContext)))
         {
           paramIntent.msgInteractData.likeCell.totalLike = k;
           paramIntent.msgInteractData.totalComment = j;
           paramIntent.msgInteractData.likeCell.liked = bool;
-          ((QZoneMsgManager)this.this$0.app.getManager(293)).saveMsgToDB(paramIntent);
+          ((QZoneMsgManager)this.this$0.app.getManager(QQManagerFactory.QZONE_MSG_MANAGER)).saveMsgToDB(paramIntent);
         }
       }
       else

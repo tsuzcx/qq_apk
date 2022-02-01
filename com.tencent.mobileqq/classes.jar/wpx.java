@@ -1,48 +1,48 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import android.support.annotation.Nullable;
+import com.tencent.map.geolocation.TencentLocation;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class wpx
-  extends vll<wpu, vsd>
+public abstract class wpx
 {
-  public wpx(wpu paramwpu)
+  public long a;
+  protected AtomicBoolean a;
+  public boolean a;
+  public long b;
+  public boolean b;
+  
+  public wpx()
   {
-    super(paramwpu);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
   
-  public void a(@NonNull wpu paramwpu, @NonNull vsd paramvsd)
+  public void a()
   {
-    if ((paramvsd.jdField_a_of_type_Int == 2) || (!paramvsd.jdField_a_of_type_JavaLangString.equals(wpu.a(paramwpu))) || (wpu.a(paramwpu) == null) || (wpu.a(paramwpu).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem == null)) {
-      xvv.b(this.TAG, "ignore this feed info change event. %s.", paramvsd.toString());
-    }
-    wqd localwqd;
-    do
-    {
-      return;
-      xvv.a(this.TAG, "receive feed info change event. %s.", paramvsd.toString());
-      localwqd = paramwpu.a();
-      switch (paramvsd.b)
-      {
-      default: 
-        return;
-      }
-      if (paramvsd.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null)
-      {
-        wpu.a(paramwpu).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount = paramvsd.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount;
-        wpu.a(paramwpu).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount = paramvsd.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount;
-        wpu.a(paramwpu).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount = paramvsd.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount;
-      }
-      wpu.a(paramwpu).a(paramvsd.c);
-    } while (localwqd == null);
-    localwqd.a(wpu.a(paramwpu), paramvsd.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
-  public Class acceptEventClass()
+  public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
   {
-    return vsd.class;
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public void b(@NonNull wpu paramwpu, @NonNull vsd paramvsd) {}
+  public void a(String paramString)
+  {
+    long l2 = System.currentTimeMillis();
+    long l1 = this.b - this.jdField_a_of_type_Long;
+    l2 -= this.b;
+    ykq.c(paramString, "page network respond times " + l1);
+    ykq.c(paramString, "page db times " + l2);
+  }
+  
+  public void b()
+  {
+    this.b = System.currentTimeMillis();
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
 }
 
 

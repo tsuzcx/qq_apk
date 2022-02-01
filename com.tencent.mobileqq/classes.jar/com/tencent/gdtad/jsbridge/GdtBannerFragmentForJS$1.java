@@ -1,9 +1,9 @@
 package com.tencent.gdtad.jsbridge;
 
-import ablu;
-import ablv;
-import ablw;
-import absw;
+import acbk;
+import acbl;
+import acbm;
+import aciv;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
@@ -15,8 +15,8 @@ class GdtBannerFragmentForJS$1
   
   public void run()
   {
-    int i = absw.a(300.0F, this.this$0.getResources());
-    int j = ablw.a(GdtBannerFragmentForJS.a(this.this$0).a, i);
+    int i = aciv.a(300.0F, this.this$0.getResources());
+    int j = acbm.a(GdtBannerFragmentForJS.a(this.this$0).a, i);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(i, j);
     localLayoutParams.gravity = 1;
     localLayoutParams.topMargin = 100;

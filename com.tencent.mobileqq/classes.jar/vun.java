@@ -1,185 +1,123 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.ReportWatchVideoEntry;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.persistence.EntityTransaction;
-import com.tribe.async.dispatch.Dispatcher;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class vun
-  implements vuf
+  extends BaseAdapter
 {
-  private final LinkedList<vuo> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private ConcurrentHashMap<Integer, wfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  public vun(vul paramvul) {}
   
-  private void e()
+  public vuv a(int paramInt)
   {
-    Object localObject = QQStoryContext.a().a().createEntityManager().query(ReportWatchVideoEntry.class, ReportWatchVideoEntry.class.getSimpleName(), false, null, null, null, null, null, null);
-    if (localObject == null) {}
+    if (vul.a != null) {
+      return (vuv)vul.a.get(paramInt);
+    }
+    return null;
+  }
+  
+  public int getCount()
+  {
+    if (vul.a != null) {
+      return vul.a.size();
+    }
+    return 0;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    Object localObject1;
+    Object localObject2;
+    int i;
+    if (paramView == null)
+    {
+      localView = LayoutInflater.from(vul.a()).inflate(2131559632, paramViewGroup, false);
+      paramView = new vuo(this);
+      localObject1 = localView.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject1).height = ((vul.b() - AIOUtils.dp2px(110.0F, vul.a().getResources())) / 3);
+      localView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      if (QLog.isColorLevel()) {
+        QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "height of item is" + ((ViewGroup.LayoutParams)localObject1).height);
+      }
+      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131376348));
+      localObject2 = paramView.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject2).width = ((vul.c() - AIOUtils.dp2px(2.0F, vul.a().getResources())) / 2);
+      ((ViewGroup.LayoutParams)localObject2).height = (((ViewGroup.LayoutParams)localObject2).width * 9 / 16);
+      paramView.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      if (QLog.isColorLevel()) {
+        QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "height of image is" + ((ViewGroup.LayoutParams)localObject2).height);
+      }
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131376365));
+      if (((ViewGroup.LayoutParams)localObject1).height - ((ViewGroup.LayoutParams)localObject2).height - AIOUtils.dp2px(40.0F, vul.a().getResources()) > AIOUtils.dp2px(16.0F, vul.a().getResources()))
+      {
+        i = 2;
+        if (QLog.isColorLevel()) {
+          QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, " number is" + i);
+        }
+        if ((Build.MANUFACTURER.toLowerCase().contains("meizu")) && (Build.VERSION.SDK_INT <= 16))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "this is meizu");
+          }
+          localObject1 = new LinearLayout.LayoutParams(-1, -2);
+          ((LinearLayout.LayoutParams)localObject1).setMargins(12, 0, 12, 1);
+          paramView.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+          paramView.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 10.0F);
+        }
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(i);
+        localView.setTag(paramView);
+      }
+    }
     for (;;)
     {
-      return;
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      localObject1 = a(paramInt);
+      if (localObject1 != null)
       {
-        ReportWatchVideoEntry localReportWatchVideoEntry = (ReportWatchVideoEntry)((Iterator)localObject).next();
-        vuo localvuo = new vuo();
-        localvuo.a(localReportWatchVideoEntry);
-        this.jdField_a_of_type_JavaUtilLinkedList.add(localvuo);
-      }
-    }
-  }
-  
-  private void f()
-  {
-    ArrayList localArrayList = new ArrayList();
-    long l = System.currentTimeMillis();
-    Object localObject = new ArrayList(this.jdField_a_of_type_JavaUtilLinkedList.size());
-    ((ArrayList)localObject).addAll(this.jdField_a_of_type_JavaUtilLinkedList);
-    localObject = ((ArrayList)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      vuo localvuo = (vuo)((Iterator)localObject).next();
-      if (localvuo.jdField_a_of_type_Long < l - 86400000L)
-      {
-        this.jdField_a_of_type_JavaUtilLinkedList.remove(localvuo);
-        localArrayList.add(localvuo);
-      }
-    }
-    a(localArrayList);
-  }
-  
-  private void g()
-  {
-    Object localObject = new ArrayList(wdk.a);
-    int i = 0;
-    while ((this.jdField_a_of_type_JavaUtilLinkedList.size() > 0) && (i < wdk.a))
-    {
-      ((ArrayList)localObject).add(this.jdField_a_of_type_JavaUtilLinkedList.removeFirst());
-      i += 1;
-    }
-    if (((ArrayList)localObject).size() > 0)
-    {
-      localObject = new wdk().a(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet(), (ArrayList)localObject);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(((wfo)localObject).c), localObject);
-    }
-  }
-  
-  public void a() {}
-  
-  public void a(String paramString1, String paramString2, boolean paramBoolean1, long paramLong, int paramInt1, int paramInt2, boolean paramBoolean2)
-  {
-    a(new vuo(paramString1, paramString2, paramBoolean1, paramLong, paramInt1, paramInt2), paramBoolean2);
-  }
-  
-  public void a(vuo paramvuo, boolean paramBoolean)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
-    {
-      if (!this.jdField_a_of_type_JavaUtilLinkedList.contains(paramvuo))
-      {
-        this.jdField_a_of_type_JavaUtilLinkedList.add(paramvuo);
-        xvv.d("Q.qqstory:ReportWatchVideoManager", String.format("saveWatchVid vid=%s, videoUid=%s, list size=%d", new Object[] { paramvuo.jdField_a_of_type_JavaLangString, paramvuo.b, Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedList.size()) }));
-      }
-      if (paramBoolean) {
-        QQStoryContext.a().a().createEntityManager().persistOrReplace(paramvuo.a());
-      }
-      return;
-    }
-  }
-  
-  public void a(@NonNull wfo paramwfo)
-  {
-    try
-    {
-      xvv.d("Q.qqstory:ReportWatchVideoManager", "handleResponse. requestHashMap.size()=" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 0)
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramwfo.c));
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty())
-        {
-          paramwfo = new vup();
-          vli.a().dispatch(paramwfo);
+        localObject2 = ((vuv)localObject1).a;
+        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        ColorDrawable localColorDrawable = new ColorDrawable(Color.parseColor("#000000"));
+        localURLDrawableOptions.mLoadingDrawable = localColorDrawable;
+        localURLDrawableOptions.mFailedDrawable = localColorDrawable;
+        localObject2 = URLDrawable.getDrawable((String)localObject2, localURLDrawableOptions);
+        if ((localObject2 != null) && (((URLDrawable)localObject2).getStatus() == 2)) {
+          ((URLDrawable)localObject2).restartDownload();
+        }
+        paramView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject2);
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((vuv)localObject1).b);
+        if (QLog.isColorLevel()) {
+          QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "recommendInfo position = " + paramInt + "; url =" + localObject2 + "; title = " + ((vuv)localObject1).b);
         }
       }
-      return;
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      i = 1;
+      break;
+      localObject1 = (vuo)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject1;
     }
-    finally
-    {
-      paramwfo = finally;
-      throw paramwfo;
-    }
-  }
-  
-  public boolean a(List<vuo> paramList)
-  {
-    EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
-    EntityTransaction localEntityTransaction = localEntityManager.getTransaction();
-    try
-    {
-      localEntityTransaction.begin();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        vuo localvuo = (vuo)paramList.next();
-        ReportWatchVideoEntry localReportWatchVideoEntry = new ReportWatchVideoEntry();
-        localReportWatchVideoEntry.setStatus(1001);
-        localEntityManager.remove(localReportWatchVideoEntry, "vid=?", new String[] { localvuo.jdField_a_of_type_JavaLangString });
-      }
-    }
-    finally
-    {
-      localEntityTransaction.end();
-    }
-    localEntityTransaction.end();
-    return false;
-  }
-  
-  public void b()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
-    {
-      this.jdField_a_of_type_JavaUtilLinkedList.clear();
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-      return;
-    }
-  }
-  
-  public void c()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
-    {
-      if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
-      {
-        e();
-        xvv.d("Q.qqstory:ReportWatchVideoManager", String.format("init. reportWatchVideoList.size=%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedList.size()) }));
-      }
-      f();
-      xvv.d("Q.qqstory:ReportWatchVideoManager", String.format("startSendRequests. data size=%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedList.size()) }));
-      if (this.jdField_a_of_type_JavaUtilLinkedList.size() <= 0)
-      {
-        vup localvup = new vup();
-        vli.a().dispatch(localvup);
-        return;
-      }
-      if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0) {
-        g();
-      }
-    }
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
   }
 }
 

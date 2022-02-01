@@ -1,195 +1,48 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.RemoteException;
-import android.provider.Settings.Secure;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import kotlin.Metadata;
+import kotlin.text.StringsKt;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class awey
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/listentogether/ListenTogetherHeartBeatController$Data;", "", "type", "", "uin", "", "(ILjava/lang/String;)V", "sessionType", "getSessionType", "()I", "setSessionType", "(I)V", "getUin", "()Ljava/lang/String;", "setUin", "(Ljava/lang/String;)V", "equals", "", "other", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class awey
 {
-  private bjnw a;
+  private int jdField_a_of_type_Int;
+  @Nullable
+  private String jdField_a_of_type_JavaLangString;
   
-  public awey(MusicPlayerActivity paramMusicPlayerActivity) {}
-  
-  public void onClick(View paramView)
+  public awey(int paramInt, @NotNull String paramString)
   {
-    Object localObject5 = MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity);
-    switch (paramView.getId())
-    {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public final int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  @Nullable
+  public final String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public final void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public final void a(@Nullable String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if ((paramObject instanceof awey)) {
+      return (((awey)paramObject).jdField_a_of_type_Int == this.jdField_a_of_type_Int) && (StringsKt.equals$default(((awey)paramObject).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, false, 2, null));
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.finish();
-      continue;
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.app, "CliOper", "", "", "0X800682A", "0X800682A", 0, 0, "", "", "", "");
-      Object localObject4 = paramView.getTag();
-      Object localObject1 = paramView.getContext();
-      if ((!(localObject4 instanceof awfh)) || (localObject1 == null)) {
-        continue;
-      }
-      localObject4 = (awfh)localObject4;
-      localObject5 = new ArrayList();
-      int i = 0;
-      while (i <= 3)
-      {
-        ((List)localObject5).add(bjok.a(i));
-        i += 1;
-      }
-      Object localObject6 = new bjok((Context)localObject1);
-      ((bjok)localObject6).a((List)localObject5);
-      this.jdField_a_of_type_Bjnw = bjok.a((Context)localObject1, (bjok)localObject6, new awez(this, (awfh)localObject4), null, null, true);
-      this.jdField_a_of_type_Bjnw.show();
-      continue;
-      if (localObject5 == null) {
-        continue;
-      }
-      localObject1 = Settings.Secure.getString(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.getContentResolver(), "android_id");
-      try
-      {
-        localObject4 = ((awdz)localObject5).a();
-        if (localObject4 == null) {
-          continue;
-        }
-        localObject4 = MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, (SongInfo)localObject4);
-        if (!MusicPlayerActivity.a().containsKey(localObject4)) {
-          continue;
-        }
-        localObject5 = paramView.getTag();
-        if (!paramView.isSelected()) {
-          break label420;
-        }
-        bcef.b(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.app, "CliOper", "", "", "0X8006829", "0X8006829", 0, 0, "", "", "", "");
-        MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity).a((String)localObject1, this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.app.getLongAccountUin(), ((Long)MusicPlayerActivity.a().get(localObject4)).longValue(), false);
-        paramView.setSelected(false);
-        MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity).setImageResource(2130841344);
-        if (!(localObject5 instanceof Integer)) {
-          continue;
-        }
-        i = ((Integer)localObject5).intValue();
-        MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, 2130841344, i);
-      }
-      catch (RemoteException localRemoteException1)
-      {
-        QLog.e("MusicPlayerActivity", 1, "add favourite RemoteException ", localRemoteException1);
-      }
-      continue;
-      label420:
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.app, "CliOper", "", "", "0X8006828", "0X8006828", 0, 0, "", "", "", "");
-      MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity).a(localRemoteException1, this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.app.getLongAccountUin(), ((Long)MusicPlayerActivity.a().get(localObject4)).longValue(), true);
-      paramView.setSelected(true);
-      MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity).setImageResource(2130841343);
-      if (!(localObject5 instanceof Integer)) {
-        continue;
-      }
-      i = ((Integer)localObject5).intValue();
-      MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, 2130841343, i);
-      continue;
-      if (localObject5 == null) {
-        continue;
-      }
-      try
-      {
-        switch (((awdz)localObject5).a())
-        {
-        case 2: 
-          localObject4 = ((awdz)localObject5).a();
-          if ((localObject4 == null) || (localObject4.length <= 0)) {
-            continue;
-          }
-          i = ((awdz)localObject5).g();
-          if (i >= 0) {
-            if (i < localObject4.length) {}
-          }
-          break;
-        case 3: 
-        default: 
-          for (;;)
-          {
-            for (;;)
-            {
-              label568:
-              localObject6 = ((awdz)localObject5).a();
-              if (TextUtils.isEmpty((CharSequence)localObject6)) {
-                break;
-              }
-              ((awdz)localObject5).a((String)localObject6, (SongInfo[])localObject4, i);
-              if (localRemoteException1 == null) {
-                break;
-              }
-              localObject4 = MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, localRemoteException1);
-              if (!MusicPlayerActivity.b().containsKey(localObject4)) {
-                break;
-              }
-              localObject4 = (awfi)MusicPlayerActivity.b().get(localObject4);
-              Object localObject2 = MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, (awdz)localObject5, localRemoteException1, ((awfi)localObject4).a);
-              MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, (awfi)localObject4, (String)localObject2);
-              break;
-              ((awdz)localObject5).a();
-              break;
-              ((awdz)localObject5).b();
-              break;
-              bcef.b(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.app, "CliOper", "", "", "0X800682B", "0X800682B", 0, 0, "", "", "", "");
-              if (awfk.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, "com.tencent.qqmusic"))
-              {
-                localObject4 = null;
-                localObject2 = localObject4;
-                if (localObject5 != null) {}
-                try
-                {
-                  localObject2 = ((awdz)localObject5).a();
-                  if (localObject2 == null) {
-                    break;
-                  }
-                  localObject2 = MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, (SongInfo)localObject2);
-                  if (!MusicPlayerActivity.a().containsKey(localObject2)) {
-                    break;
-                  }
-                  localObject2 = new Intent("android.intent.action.VIEW", Uri.parse(String.format("androidqqmusic://form=webpage&mid=23&k1=0&k2=%s&download=1&action=download", new Object[] { String.valueOf(MusicPlayerActivity.a().get(localObject2)) })));
-                  ((Intent)localObject2).putExtra("big_brother_source_key", "biz_src_qqmusic");
-                  this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.startActivity((Intent)localObject2);
-                  bcef.b(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.app, "CliOper", "", "", "0X800682C", "0X800682C", 0, 0, "", "", "", "");
-                }
-                catch (RemoteException localRemoteException2)
-                {
-                  for (;;)
-                  {
-                    QLog.e("MusicPlayerActivity", 1, "music player activity RemoteException ", localRemoteException2);
-                    localObject3 = localObject4;
-                  }
-                }
-              }
-            }
-            Object localObject3 = (bjnw)bjon.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, null);
-            ((bjnw)localObject3).a(2131694005);
-            ((bjnw)localObject3).a(2131694007, 2);
-            ((bjnw)localObject3).c(2131694004);
-            ((bjnw)localObject3).a(new awfa(this, paramView, (bjnw)localObject3));
-            ((bjnw)localObject3).show();
-            break;
-            localObject3 = null;
-            continue;
-            break label568;
-            localObject3 = localObject4[0];
-            i = 0;
-          }
-        }
-      }
-      catch (RemoteException localRemoteException3) {}
-    }
+    return false;
   }
 }
 

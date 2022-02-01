@@ -1,32 +1,20 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment;
 
-class upa
-  implements uyv
+public class upa
+  extends BroadcastReceiver
 {
-  upa(uou paramuou) {}
+  private upa(FolderFollowTabFragment paramFolderFollowTabFragment) {}
   
-  public void a(String paramString, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    uyc.a(uou.a(this.a), "biz_src_jc_gzh_weishi", paramString);
-    uou.a(this.a, "content", uvt.c);
+    if ((paramIntent != null) && (TextUtils.equals(paramIntent.getAction(), "action_refresh_return_page")) && (FolderFollowTabFragment.a(this.a) != null)) {
+      FolderFollowTabFragment.b(this.a, FolderFollowTabFragment.a(this.a));
+    }
   }
-  
-  public void b(String paramString, int paramInt) {}
-  
-  public void c(String paramString, int paramInt)
-  {
-    WSDownloadParams localWSDownloadParams = new WSDownloadParams();
-    localWSDownloadParams.mScene = 1;
-    localWSDownloadParams.mLinkStrategyType = 0;
-    localWSDownloadParams.mEventId = 700;
-    localWSDownloadParams.mTestId = uyo.a(9);
-    localWSDownloadParams.mScheme = paramString;
-    unq.a((Activity)uou.b(this.a), localWSDownloadParams, false);
-    uou.a(this.a, "content", uvt.b);
-  }
-  
-  public void d(String paramString, int paramInt) {}
 }
 
 

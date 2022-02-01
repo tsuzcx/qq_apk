@@ -1,7 +1,4 @@
-public abstract interface ldl
-{
-  public abstract void a(int paramInt1, String paramString1, int paramInt2, int paramInt3, String paramString2);
-}
+public class ldl {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar

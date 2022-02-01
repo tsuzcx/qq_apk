@@ -1,33 +1,30 @@
-import UserGrowth.stH5OpInfo;
-import UserGrowth.stSimpleMetaFeed;
-import android.content.Context;
-import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.MobileQQ;
 
-class upo
-  implements uyv
+public class upo
+  implements nuw
 {
-  upo(upn paramupn, Context paramContext, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed) {}
+  public upo(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
-  public void a(String paramString, int paramInt)
+  public void loaded(String paramString, int paramInt)
   {
-    upn.a(this.jdField_a_of_type_Upn, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, paramString, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 501);
-    uvr.a(114, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.type, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.id);
-    WSPublicAccReport.getInstance().reportOperationCard("gzh_click", 1000003, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+    if (QLog.isColorLevel()) {
+      QLog.d("SubscriptFeedsActivity", 2, "HtmlOffline.checkUpByBusinessId businessId=2278, code=" + paramInt);
+    }
+    this.a.app.getApplication();
+    int i = NetworkUtil.getSystemNetwork(MobileQQ.getContext());
+    paramString = new HashMap();
+    paramString.put("network", "" + i);
+    paramString.put("status_code", "" + paramInt);
+    StatisticCollector.getInstance(this.a).collectPerformance(null, "subscription_htmloffline", true, 0L, 0L, paramString, "", false);
   }
   
-  public void b(String paramString, int paramInt)
-  {
-    upn.a(this.jdField_a_of_type_Upn, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
-  }
-  
-  public void c(String paramString, int paramInt)
-  {
-    upn.a(this.jdField_a_of_type_Upn, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
-    uvr.a(115, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.type, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.id);
-    WSPublicAccReport.getInstance().reportOperationCard("gzh_click", 1000002, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
-  }
-  
-  public void d(String paramString, int paramInt) {}
+  public void progress(int paramInt) {}
 }
 
 

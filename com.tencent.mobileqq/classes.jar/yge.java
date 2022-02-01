@@ -1,92 +1,56 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import java.io.File;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class yge
-  extends yfy
+public abstract class yge
+  implements ygl
 {
-  public int a;
-  public final List<String> a;
-  public boolean a;
-  public int b;
-  public String e;
-  public String f;
+  private Object jdField_a_of_type_JavaLangObject;
+  private ygm jdField_a_of_type_Ygm;
+  private ygn jdField_a_of_type_Ygn;
   
-  public yge(@NonNull String paramString)
+  public Object a()
   {
-    super(paramString);
-    this.jdField_a_of_type_Int = 100;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    return this.jdField_a_of_type_JavaLangObject;
   }
   
-  public String a()
+  public void a(Object paramObject)
   {
-    return "NormalFacePackage";
+    this.jdField_a_of_type_JavaLangObject = paramObject;
   }
   
-  public String a(int paramInt)
+  public void a(ygm paramygm)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
+    this.jdField_a_of_type_Ygm = paramygm;
+  }
+  
+  public void a(ygn paramygn)
+  {
+    this.jdField_a_of_type_Ygn = paramygn;
   }
   
   public boolean a()
   {
-    if (TextUtils.isEmpty(this.f)) {}
-    do
-    {
-      Object localObject1;
-      do
-      {
-        return false;
-        localObject1 = new File(this.f);
-      } while (!((File)localObject1).exists());
-      this.jdField_a_of_type_JavaUtilList.clear();
-      if (((File)localObject1).isDirectory())
-      {
-        localObject1 = ((File)localObject1).listFiles(new ygf(this));
-        if (localObject1 != null)
-        {
-          int j = localObject1.length;
-          int i = 0;
-          while (i < j)
-          {
-            Object localObject2 = localObject1[i];
-            this.jdField_a_of_type_JavaUtilList.add(localObject2.toURI().toString());
-            i += 1;
-          }
-          Collections.sort(this.jdField_a_of_type_JavaUtilList);
-        }
-      }
-    } while (this.jdField_a_of_type_JavaUtilList.isEmpty());
     return true;
   }
   
-  public int b()
+  protected void b(ErrorMessage paramErrorMessage)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    paramErrorMessage.extraMsg = a();
+    if (this.jdField_a_of_type_Ygm != null)
+    {
+      this.jdField_a_of_type_Ygm.a(paramErrorMessage);
+      return;
+    }
+    ykq.d("SimpleStep", a() + " errorCallBack is null.");
   }
   
-  public String toString()
+  public void d()
   {
-    StringBuffer localStringBuffer = new StringBuffer("NormalFacePackage{");
-    localStringBuffer.append("id='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append("logoUrl='").append(this.c).append('\'');
-    localStringBuffer.append("logoDrawable='").append(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).append('\'');
-    localStringBuffer.append(", zipDownloadUrl='").append(this.e).append('\'');
-    localStringBuffer.append(", facePkgPath='").append(this.f).append('\'');
-    localStringBuffer.append(", faceUriList=").append(this.jdField_a_of_type_JavaUtilList);
-    localStringBuffer.append(", isDownloading=").append(this.jdField_a_of_type_Boolean);
-    localStringBuffer.append(", maxProgress=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", currentProgress=").append(this.b);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    if (this.jdField_a_of_type_Ygn != null)
+    {
+      this.jdField_a_of_type_Ygn.a(a());
+      return;
+    }
+    ykq.d("SimpleStep", a() + " finishCallBack is null.");
   }
 }
 

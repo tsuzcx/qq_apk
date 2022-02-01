@@ -1,45 +1,45 @@
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
+import com.tencent.ad.tangram.canvas.report.AdDMPReportUtil;
+import com.tencent.ad.tangram.canvas.views.form.AdFormData;
+import com.tencent.ad.tangram.canvas.views.form.AdFormError;
+import com.tencent.ad.tangram.canvas.views.form.framework.AdFormCommitListener;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.views.form.framework.GdtFormCommitUtil.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.lang.ref.WeakReference;
 
 public class acjd
-  extends SQLiteOpenHelper
 {
-  private static acjd a;
-  
-  private acjd(Context paramContext)
+  public static void a(Context paramContext, GdtAd paramGdtAd, AdFormData paramAdFormData, WeakReference<AdFormCommitListener> paramWeakReference)
   {
-    super(paramContext, "sdk_db", null, 3);
-  }
-  
-  public static acjd a(Context paramContext)
-  {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new acjd(paramContext);
-      }
-      return a;
+    if ((paramWeakReference != null) && (paramWeakReference.get() != null)) {
+      ((AdFormCommitListener)paramWeakReference.get()).beforeCommit();
     }
-    finally {}
+    ThreadManager.post(new GdtFormCommitUtil.1(paramContext, paramGdtAd, paramAdFormData, paramWeakReference), 5, null, true);
   }
   
-  public void onCreate(SQLiteDatabase paramSQLiteDatabase)
+  private static AdFormError b(Context paramContext, GdtAd paramGdtAd, AdFormData paramAdFormData)
   {
-    paramSQLiteDatabase.execSQL("CREATE TABLE result_objects (_id INTEGER PRIMARY KEY AUTOINCREMENT,params TEXT,is_real_time TINYINT,uin BIGINT,status TINYINT,occur_time BIGINT);");
-    paramSQLiteDatabase.execSQL("CREATE TABLE upload_errors (_id INTEGER PRIMARY KEY AUTOINCREMENT,uin BIGINT,plugin SMALLINT,uploadtime BIGINT,error_code SMALLINT,error_msg TEXT,http_get TEXT,status TINYINT);");
-    paramSQLiteDatabase.execSQL("CREATE TABLE drop_frame (_id INTEGER PRIMARY KEY AUTOINCREMENT,uin BIGINT,scene TEXT,state TINYINT,drop_duration LONG,drop_count LONG,range_0 INT,range_1 INT,range_2_4 INT,range_4_8 INT,range_8_15 INT,range_over_15 INT,status TINYINT);");
-    paramSQLiteDatabase.execSQL("CREATE TABLE configs (_id INTEGER PRIMARY KEY AUTOINCREMENT,plugin SMALLINT,user_sample_ratio INT,threshold FLOAT,max_report_num INT,event_sample_ratio FLOAT,stack_depth INT);");
-  }
-  
-  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
-  {
-    paramSQLiteDatabase.execSQL("Drop table if exists result_objects");
-    paramSQLiteDatabase.execSQL("Drop table if exists upload_errors");
-    paramSQLiteDatabase.execSQL("Drop table if exists drop_frame");
-    paramSQLiteDatabase.execSQL("Drop table if exists configs");
-    onCreate(paramSQLiteDatabase);
+    Object localObject;
+    if ((paramGdtAd == null) || (!paramGdtAd.isValid()) || (paramGdtAd.actionSetId == -2147483648L) || (paramAdFormData == null) || (!paramAdFormData.isValid()))
+    {
+      acho.d("GdtFormCommitUtil", "commit error");
+      localObject = new AdFormError(4, -1, null);
+    }
+    AdFormError localAdFormError;
+    do
+    {
+      do
+      {
+        return localObject;
+        acje.a(paramContext, paramGdtAd, paramAdFormData);
+        localAdFormError = acjk.a(paramAdFormData);
+        localObject = localAdFormError;
+      } while (localAdFormError == null);
+      localObject = localAdFormError;
+    } while (localAdFormError.type != 1);
+    AdDMPReportUtil.reportUpload(paramContext, paramGdtAd, paramAdFormData);
+    return localAdFormError;
   }
 }
 

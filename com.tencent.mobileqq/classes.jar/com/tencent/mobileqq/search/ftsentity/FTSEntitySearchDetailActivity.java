@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.search.ftsentity;
 
 import Override;
-import amrb;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -16,9 +15,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import antp;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.persistence.fts.FTSEntity;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -54,7 +55,7 @@ public class FTSEntitySearchDetailActivity
       }
       return;
     }
-    int i = ((amrb)this.app.getManager(53)).a(paramString2);
+    int i = ((antp)this.app.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(paramString2);
     if (i <= 0)
     {
       paramTextView.setText(paramString1);
@@ -126,7 +127,7 @@ public class FTSEntitySearchDetailActivity
     super.doOnCreate(paramBundle);
     this.b = jdField_a_of_type_JavaUtilList;
     this.jdField_a_of_type_Int = getIntent().getIntExtra("extra_key_fts_type", 0);
-    setContentView(2131558936);
+    setContentView(2131558963);
     paramBundle = getIntent().getStringExtra("uin");
     int i = getIntent().getIntExtra("uinType", -1);
     if (i == 3000) {
@@ -137,7 +138,7 @@ public class FTSEntitySearchDetailActivity
       Object localObject = super.getSupportFragmentManager();
       paramBundle = FTSEntitySearchDetailFragment.a(getIntent().getStringExtra("original_keyword"), getIntent().getStringExtra("segment_keyword"), this.b);
       localObject = ((FragmentManager)localObject).beginTransaction();
-      ((FragmentTransaction)localObject).replace(2131365087, paramBundle);
+      ((FragmentTransaction)localObject).replace(2131365171, paramBundle);
       ((FragmentTransaction)localObject).commit();
       return true;
       super.setTitle(ContactUtils.getNick(this.app, paramBundle, i));

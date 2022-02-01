@@ -1,8 +1,8 @@
-import android.os.Bundle;
-
 public abstract interface algj
 {
-  public abstract void a(int paramInt, boolean paramBoolean, Bundle paramBundle);
+  public abstract void l();
+  
+  public abstract void m();
 }
 
 

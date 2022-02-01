@@ -2,7 +2,7 @@ package com.tencent.mobileqq.filemanager.fileviewer;
 
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
-import asox;
+import attd;
 
 class FileBrowserActivity$3
   implements Runnable
@@ -23,7 +23,7 @@ class FileBrowserActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity.3
  * JD-Core Version:    0.7.0.1
  */

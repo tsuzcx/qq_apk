@@ -1,6 +1,8 @@
+import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
+
 public abstract interface bgvz
 {
-  public abstract bgvt getComponentProvider();
+  public abstract void a(int paramInt, UpgradeDetailWrapper paramUpgradeDetailWrapper, bgvx parambgvx);
 }
 
 

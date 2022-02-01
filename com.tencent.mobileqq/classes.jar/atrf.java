@@ -1,63 +1,72 @@
-import android.content.res.Resources;
+import android.text.TextUtils.TruncateAt;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.fragment.LangSettingFragment;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
 
 public class atrf
-  extends BaseAdapter
+  implements bcnt
 {
-  public atrf(LangSettingFragment paramLangSettingFragment) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private EllipsizingTextView jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
   
-  private View.OnClickListener a(int paramInt)
+  public atrf(ViewGroup paramViewGroup)
   {
-    return new atrg(this, paramInt);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560855, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366742));
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView = ((EllipsizingTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366753));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365513));
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setMaxLines(1);
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.a();
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)this.jdField_a_of_type_AndroidViewView.findViewById(2131366755));
+    this.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
   }
   
-  private boolean a(int paramInt)
+  public View a()
   {
-    if ((paramInt >= LangSettingFragment.a().size()) || (paramInt < 0)) {
-      return false;
-    }
-    return ((Integer)LangSettingFragment.a().get(paramInt)).intValue() == 1033;
+    return this.jdField_a_of_type_AndroidViewView;
   }
   
-  public int getCount()
+  public View a(String paramString)
   {
-    return LangSettingFragment.a().size();
+    return null;
   }
   
-  public Object getItem(int paramInt)
+  public ImageView a()
   {
-    return Integer.valueOf(paramInt);
+    return null;
   }
   
-  public long getItemId(int paramInt)
+  public TextView a()
   {
-    return paramInt;
+    return this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public ImageView b()
   {
-    FormSimpleItem localFormSimpleItem = new FormSimpleItem(this.a.getActivity());
-    if (paramInt == LangSettingFragment.a(this.a)) {
-      localFormSimpleItem.setRightIcon(this.a.getResources().getDrawable(2130844603));
-    }
-    for (;;)
-    {
-      if (paramInt < LangSettingFragment.a().size()) {
-        localFormSimpleItem.setLeftText(LangSettingFragment.a(this.a, paramInt, false));
-      }
-      localFormSimpleItem.setTag(Integer.valueOf(paramInt));
-      localFormSimpleItem.setOnClickListener(a(paramInt));
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localFormSimpleItem;
-      localFormSimpleItem.setRightIcon(null);
-    }
+    return this.jdField_a_of_type_AndroidWidgetImageView;
+  }
+  
+  public TextView b()
+  {
+    return null;
+  }
+  
+  public TextView c()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  public TextView d()
+  {
+    return null;
   }
 }
 

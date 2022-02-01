@@ -1,8 +1,15 @@
-import com.tencent.ark.ark.VariantWrapper;
-
-public abstract interface aonz
+public class aonz
 {
-  public abstract boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper);
+  public int a;
+  public String a;
+  public int b;
+  
+  public aonz(String paramString, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
 }
 
 

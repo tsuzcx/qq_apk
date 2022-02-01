@@ -1,8 +1,8 @@
+import com.qq.taf.jce.JceStruct;
+
 public abstract interface uyy
 {
-  public abstract void b(int paramInt);
-  
-  public abstract void c(int paramInt);
+  public abstract void a(JceStruct paramJceStruct);
 }
 
 

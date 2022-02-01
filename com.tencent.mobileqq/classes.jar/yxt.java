@@ -1,18 +1,51 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qrcode.ipc.ScannerParams;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
 
-public final class yxt
-  implements Parcelable.Creator<ScannerParams>
+public abstract class yxt
 {
-  public ScannerParams a(Parcel paramParcel)
+  protected final int a;
+  protected Context a;
+  protected final String a;
+  protected yxu a;
+  protected boolean a;
+  protected boolean b;
+  
+  public yxt(Context paramContext, String paramString, int paramInt)
   {
-    return new ScannerParams(paramParcel);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public ScannerParams[] a(int paramInt)
+  public abstract int a();
+  
+  public abstract int a(int paramInt);
+  
+  public abstract View a(int paramInt, ViewGroup paramViewGroup);
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, View paramView);
+  
+  public void a(yxu paramyxu)
   {
-    return new ScannerParams[paramInt];
+    this.jdField_a_of_type_Yxu = paramyxu;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

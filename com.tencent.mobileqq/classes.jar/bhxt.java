@@ -1,114 +1,74 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.appcommon.now.download.js.DownloadJSApi.1;
-import com.tencent.open.appcommon.now.download.js.DownloadJSApi.2;
-import com.tencent.open.downloadnew.DownloadInfo;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import java.io.File;
+import java.util.HashSet;
 
 public class bhxt
 {
-  public static int a(Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail)
-  {
-    bhzm.a("DownloadJSApi", "doDownloadActionBySDK pParmas =" + paramBundle);
-    String str3 = paramBundle.getString(bibw.b);
-    String str4 = paramBundle.getString(bibw.j);
-    String str5 = paramBundle.getString(bibw.f);
-    int i = paramBundle.getInt(bibw.k);
-    String str6 = paramBundle.getString(bibw.i);
-    String str7 = paramBundle.getString(bibw.l);
-    paramBundle.getString(bibw.m);
-    String str2 = paramBundle.getString(bibw.D);
-    int j = paramBundle.getInt(bibw.H);
-    String str1 = paramBundle.getString(bibw.I);
-    boolean bool1 = paramBundle.getBoolean(bibw.o);
-    boolean bool2 = paramBundle.getBoolean(bibw.y, true);
-    boolean bool3 = paramBundle.getBoolean(bibw.h, true);
-    boolean bool4 = paramBundle.getBoolean(bibw.x);
-    int k = paramBundle.getInt(bibw.C, 0);
-    boolean bool5 = paramBundle.getBoolean(bibw.J, false);
-    switch (i)
-    {
-    }
-    for (;;)
-    {
-      return 0;
-      paramString = new DownloadInfo(str3, str4.trim(), str5, str7, str6, null, paramString, bool2);
-      paramString.g = i;
-      if (bool2)
-      {
-        paramString.jdField_a_of_type_Boolean = bool3;
-        paramString.jdField_b_of_type_Boolean = bool4;
-      }
-      for (;;)
-      {
-        paramString.h = k;
-        paramString.n = str2;
-        paramString.i = j;
-        paramString.o = str1;
-        paramString.jdField_d_of_type_Boolean = bool5;
-        paramString.jdField_d_of_type_Int = 0;
-        paramString.jdField_b_of_type_Int = paramBundle.getInt(bibw.e);
-        bhzm.c("DownloadJSApi", "doDownloadAction action == Downloader.ACTION_DOWNLOAD");
-        bhxo.a().a(paramString);
-        break;
-        paramString.jdField_a_of_type_Boolean = false;
-        paramString.jdField_b_of_type_Boolean = true;
-        paramString.jdField_a_of_type_Int = 2;
-      }
-      paramString = new DownloadInfo(str3, str4.trim(), str5, str7, str6, null, paramString, bool2);
-      paramString.g = i;
-      paramString.jdField_a_of_type_Boolean = bool3;
-      paramString.jdField_b_of_type_Boolean = bool4;
-      paramString.jdField_d_of_type_Int = 0;
-      paramString.jdField_b_of_type_Int = paramBundle.getInt(bibw.e);
-      paramString.o = str1;
-      if ((paramApkUpdateDetail != null) && (paramString.jdField_b_of_type_Int != paramApkUpdateDetail.versioncode) && (paramApkUpdateDetail.versioncode != 0)) {
-        paramString.jdField_b_of_type_Int = paramApkUpdateDetail.versioncode;
-      }
-      bool2 = biar.a(bhpc.a().a(), null).b("Common_QQ_Patch_Switch");
-      if (!bool1) {
-        bhxo.a().a(paramString);
-      }
-      for (;;)
-      {
-        bhzm.c("DownloadJSApi", "doDownloadAction action == Downloader.ACTION_UPDATE " + bool1);
-        break;
-        if (bool2) {
-          bhxo.a().a(paramString, paramApkUpdateDetail);
-        } else {
-          bhxo.a().a(paramString);
-        }
-      }
-      bhxo.a().a(str3);
-      continue;
-      if (bool2)
-      {
-        bias.a("305", str6, str3, str1);
-        bhxo.a().a(str3, str5);
-        continue;
-        bhxo.a().b(str3);
-        continue;
-        paramString = new DownloadInfo(str3, str4.trim(), str5, str7, str6, null, paramString, bool2);
-        paramString.g = i;
-        paramString.jdField_b_of_type_Int = paramBundle.getInt(bibw.e);
-        paramString.jdField_b_of_type_Boolean = bool4;
-        bhxo.a().a(paramString);
-      }
-    }
-  }
+  public static final HashSet<String> a;
+  public static final String[] a;
+  public static final HashSet<String> b;
   
-  public static void a(Activity paramActivity, Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail, int paramInt)
+  static
   {
-    ThreadManager.getSubThreadHandler().post(new DownloadJSApi.1(paramBundle, paramString, paramInt, paramActivity, paramApkUpdateDetail));
-  }
-  
-  private static void c(Activity paramActivity, Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail, int paramInt)
-  {
-    new Handler(Looper.getMainLooper()).post(new DownloadJSApi.2(paramBundle, paramActivity, paramString, paramApkUpdateDetail, paramInt));
+    jdField_a_of_type_JavaUtilHashSet = new HashSet();
+    b = new HashSet();
+    b.add(AppConstants.SDCARD_PATH + File.separator + "flashchat" + File.separator);
+    b.add(AppConstants.SDCARD_POKE);
+    b.add(AppConstants.SDCARD_NEW_POKE);
+    b.add(AppConstants.SDCARD_PE);
+    b.add(AppConstants.SDCARD_PATH_EMOJIS);
+    b.add(AppConstants.SDCARD_ROOT + "/tencent/MobileQQ/.troop/pic_effects/");
+    b.add(AppConstants.SDCARD_PATH + ".troop/enter_effects/");
+    b.add(AppConstants.SDCARD_PATH + ".gift/");
+    b.add(AppConstants.SDCARD_PATH + "qav/");
+    b.add(AppConstants.SDCARD_PATH + "new_ptv_template/");
+    b.add(AppConstants.SDCARD_PATH + "ptv_template/");
+    b.add(AppConstants.SDCARD_PATH + "funcall/");
+    b.add(AppConstants.SDCARD_PATH + "pddata/prd/av_redpacket/");
+    b.add(AppConstants.SDCARD_PATH + "pddata/prd/early");
+    b.add(AppConstants.SDCARD_PATH + "hotimage/");
+    b.add(AppConstants.SDCARD_PATH + "pddata/vas/");
+    b.add(AppConstants.SDCARD_PATH + ".profilecard/");
+    b.add(AppConstants.SDCARD_PATH + "head/");
+    b.add(AppConstants.SDCARD_PATH + ".hiboom_font/");
+    b.add(AppConstants.SDCARD_PATH + ".font_info/");
+    b.add(AppConstants.SDCARD_PATH + ".font_effect/");
+    b.add(AppConstants.SDCARD_PATH + ".pendant/");
+    b.add(AppConstants.SDCARD_PATH + ".vaspoke/");
+    b.add(AppConstants.SDCARD_PATH + "system_background/");
+    b.add(AppConstants.SDCARD_PATH + ".CorlorNick/");
+    b.add(AppConstants.SDCARD_PATH + "custom_background/");
+    b.add(AppConstants.SDCARD_PATH + ".starHead/");
+    b.add(AppConstants.SDCARD_PATH + "rbt/");
+    b.add(AppConstants.SDCARD_PATH + ".vipicon/");
+    b.add(AppConstants.SDCARD_PATH + "webso/offline/");
+    b.add(AppConstants.SDCARD_PATH + ".readInjoy/");
+    b.add(baol.a);
+    b.add(AppConstants.SDCARD_SHORTVIDEO_SAVE);
+    b.add(AppConstants.SDCARD_ROOT + "/Tencent/ReaderZone/style/");
+    b.add(AppConstants.SDCARD_ROOT + "/Tencent/ReaderZone/font/");
+    b.add(AppConstants.SDCARD_PATH + ".apollo/");
+    b.add(AppConstants.SDCARD_PATH + "DoutuRes" + File.separator);
+    b.add(AppConstants.SDCARD_ROOT + "/tencent/TMAssistantSDK/Download/com.tencent.mobileqq" + File.separator);
+    b.add(AppConstants.SDCARD_ROOT + "/tencent/MobileQQ/pddata/");
+    b.add(AppConstants.SDCARD_ROOT + "/tencent/MobileQQ/pddata/APP/offline/html5/");
+    b.add(AppConstants.SDCARD_ROOT + "/tencent/MobileQQ/pddata/APP/offline/tmp/");
+    b.add(AppConstants.SDCARD_ROOT + "/tencent/MobileQQ/ShareScreenShots");
+    jdField_a_of_type_JavaUtilHashSet.add(AppConstants.SDCARD_PATH + "diskcache" + File.separator);
+    jdField_a_of_type_JavaUtilHashSet.add(AbsDownloader.CHAT_IMAGE_ROOT);
+    jdField_a_of_type_JavaUtilHashSet.add(AppConstants.SDCARD_PATH + "photo/");
+    jdField_a_of_type_JavaUtilHashSet.add(AppConstants.SDCARD_PATH + "thumb/");
+    jdField_a_of_type_JavaUtilHashSet.add(AppConstants.SDCARD_PATH + "shortvideo" + File.separator);
+    jdField_a_of_type_JavaUtilHashSet.add(axcg.b);
+    jdField_a_of_type_JavaUtilHashSet.add(AppConstants.SUBSCRIBE_DRAFT);
+    jdField_a_of_type_JavaUtilHashSet.add(AppConstants.SUBSCRIBE_DRAFT_SIMPLE);
+    jdField_a_of_type_JavaUtilHashSet.add(AppConstants.SDCARD_ROOT + "/Tencent/QQfile_recv/");
+    jdField_a_of_type_JavaUtilHashSet.add(AppConstants.SDCARD_HOMEWORK_AUDIO);
+    jdField_a_of_type_JavaUtilHashSet.add(AppConstants.SDCARD_HOMEWORK_ATTACH);
+    jdField_a_of_type_JavaUtilHashSet.add(AppConstants.SDCARD_PATH + ".Rock" + File.separator);
+    jdField_a_of_type_JavaUtilHashSet.add(AppConstants.SDCARD_ROOT + "/Tencent/QQ_Collection/");
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { AppConstants.SDCARD_PATH + "keyword_emotion", AppConstants.SDCARD_PATH + ".sticker_recommended_pics", AppConstants.SDCARD_ROOT + "/Tencent/QQ_CameraEmo", AppConstants.SDCARD_PATH + ".diy", AppConstants.SDCARD_PATH + "Scribble", AppConstants.SDCARD_PATH + ".emotionsm", AppConstants.SDCARD_ROOT + "/Tencent/QQ_Favorite", AppConstants.SDCARD_PATH + "hotpic", AppConstants.SDCARD_PATH + "hugeimagecache", AppConstants.SDCARD_PATH + "ArkApp", AppConstants.SDCARD_PATH + "zhitu", AppConstants.SDCARD_PATH + "msgbackup", AppConstants.SDCARD_PATH + "qqmusic", AppConstants.SDCARD_PATH + "aio_long_shot", AppConstants.SDCARD_PATH + "tim_theme_aio", AppConstants.SDCARD_PATH + "qim_theme_aio", AppConstants.SDCARD_PATH + "nativemem", AppConstants.SDCARD_PATH + "pddata/prd/ar_promotion", AppConstants.SDCARD_PATH + "pddata/app/offline/html5", AppConstants.SDCARD_PATH + "iar", AppConstants.SDCARD_ROOT + "/AVReportCenter" };
   }
 }
 

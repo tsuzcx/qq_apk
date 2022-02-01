@@ -1,16 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.item.HeartBreakCombolEffectView;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import com.tencent.mobileqq.util.SharePreferenceUtils;
 
 public class agcl
-  implements View.OnTouchListener
+  implements aged
 {
-  public agcl(HeartBreakCombolEffectView paramHeartBreakCombolEffectView) {}
+  public agcl(DoodlePanel paramDoodlePanel) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(agec paramagec)
   {
-    return true;
+    this.a.a(paramagec);
+    paramagec = "" + paramagec.a + ";" + paramagec.b + ";" + paramagec.c;
+    SharePreferenceUtils.set(this.a.getContext(), "aio_doodle_colorpicker_select", paramagec);
   }
 }
 

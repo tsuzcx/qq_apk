@@ -1,28 +1,20 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajcy
-  implements bjoe
+class ajcy
+  implements View.OnClickListener
 {
-  public ajcy(Conversation paramConversation) {}
+  ajcy(ajcw paramajcw) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Bjnw.e();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.recent", 2, " showActionSheetForCancelMayknowRecommand recommend_item_menu hide clicked");
-      }
-      ((FriendListHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(1)).reqHideConversationMayknowRecommend();
-    }
+    RecommendTroopItem localRecommendTroopItem = (RecommendTroopItem)paramView.getTag(-1);
+    TroopUtils.openRecommendTroop(ajcw.a(this.a), localRecommendTroopItem, this.a.b(), this.a.c());
+    this.a.a(localRecommendTroopItem);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

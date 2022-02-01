@@ -1,8 +1,22 @@
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.startup.step.BroadcastReportRegister;
+import mqq.app.AppCallback;
 
-public abstract interface bdha
+public class bdha
+  implements AppCallback
 {
-  public abstract void a(String paramString, List<String> paramList, boolean paramBoolean);
+  public bdha(BroadcastReportRegister paramBroadcastReportRegister) {}
+  
+  public void onSendBroadcast(Context paramContext, Intent paramIntent)
+  {
+    try
+    {
+      aqfv.a(paramIntent);
+      return;
+    }
+    catch (Throwable paramContext) {}
+  }
 }
 
 

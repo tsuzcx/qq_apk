@@ -1,19 +1,6 @@
-import mqq.app.QQPermissionCallback;
-
-class balp
-  implements QQPermissionCallback
+public abstract interface balp
 {
-  balp(balk parambalk) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bfur.a(this.a.mContext);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    balk.c(this.a);
-  }
+  public abstract void b();
 }
 
 

@@ -1,9 +1,22 @@
-public abstract class woi
-  implements woh
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+
+public final class woi
+  extends QQUIEventReceiver<woa, wlx>
 {
-  public boolean a(woe paramwoe)
+  public woi(@NonNull woa paramwoa)
   {
-    return true;
+    super(paramwoa);
+  }
+  
+  public void a(@NonNull woa paramwoa, @NonNull wlx paramwlx)
+  {
+    paramwoa.a.a(paramwlx.a);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wlx.class;
   }
 }
 

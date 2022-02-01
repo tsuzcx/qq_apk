@@ -25,7 +25,7 @@ public class m
   public m(Context paramContext)
   {
     this.b = paramContext;
-    this.c = a.g(this.b);
+    this.c = a.h(this.b);
     this.d = a.f;
   }
   

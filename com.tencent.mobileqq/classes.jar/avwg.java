@@ -1,99 +1,35 @@
-import com.tencent.mobileqq.data.MessageForLightVideo;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import tencent.im.msg.im_msg_body.RichText;
+import android.os.Bundle;
+import java.util.concurrent.CountDownLatch;
 
-public class avwg
-  extends avwf<MessageForShortVideo>
+class avwg
+  implements avsc
 {
-  public avwg(MessageForShortVideo paramMessageForShortVideo)
-  {
-    super(paramMessageForShortVideo);
-  }
+  avwg(avwf paramavwf, avry paramavry, Bundle[] paramArrayOfBundle, CountDownLatch paramCountDownLatch) {}
   
-  protected int a()
+  public void onGetKeyComplete(String paramString, boolean paramBoolean, int paramInt)
   {
-    return 2;
-  }
-  
-  protected MsgBackupResEntity a(String paramString, int paramInt)
-  {
-    if (!a(paramString)) {
-      return null;
-    }
-    MsgBackupResEntity localMsgBackupResEntity = a();
-    localMsgBackupResEntity.msgSubType = paramInt;
-    localMsgBackupResEntity.filePath = paramString;
-    a(paramString, localMsgBackupResEntity);
-    paramString = a(paramInt);
-    paramString.put("selfuin", ((MessageForShortVideo)this.a).selfuin);
-    paramString.put("md5", ((MessageForShortVideo)this.a).md5);
-    paramString.put("thumbMd5", ((MessageForShortVideo)this.a).thumbMD5);
-    localMsgBackupResEntity.extraDataStr = a(paramString);
-    return localMsgBackupResEntity;
-  }
-  
-  public List<MsgBackupResEntity> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject2 = ShortVideoUtils.getShortVideoSavePath((MessageForShortVideo)this.a, "mp4");
-    Object localObject1 = ShortVideoUtils.getShortVideoThumbPicPath(((MessageForShortVideo)this.a).thumbMD5, "jpg");
-    int j;
-    int i;
-    if ((this.a instanceof MessageForLightVideo))
+    if (paramBoolean)
     {
-      j = 6;
-      i = 9;
+      paramString = new Bundle();
+      paramString.putString("authid", this.jdField_a_of_type_Avry.a().b);
+      paramString.putString("authKey", this.jdField_a_of_type_Avry.a().jdField_a_of_type_JavaLangString);
+      paramString.putLong("accountUpdateTime", this.jdField_a_of_type_Avry.a().jdField_a_of_type_Long);
+      paramString.putString("payToken", this.jdField_a_of_type_Avry.a().c);
+      Bundle localBundle = new Bundle();
+      localBundle.putBundle("data", paramString);
+      localBundle.putBoolean("isSuccess", true);
+      localBundle.putInt("code", paramInt);
+      this.jdField_a_of_type_ArrayOfAndroidOsBundle[0] = localBundle;
     }
     for (;;)
     {
-      localObject2 = a((String)localObject2, j);
-      if (localObject2 != null) {
-        localArrayList.add(localObject2);
-      }
-      localObject1 = a((String)localObject1, i);
-      if (localObject1 != null) {
-        localArrayList.add(localObject1);
-      }
-      return localArrayList;
-      if ((((MessageForShortVideo)this.a).busiType == 0) || (((MessageForShortVideo)this.a).busiType == 1))
-      {
-        j = 4;
-        i = 7;
-      }
-      else
-      {
-        if (((MessageForShortVideo)this.a).subBusiType != 2) {
-          break;
-        }
-        j = 5;
-        i = 8;
-      }
+      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+      return;
+      paramString = new Bundle();
+      paramString.putBoolean("isSuccess", false);
+      paramString.putInt("code", paramInt);
+      this.jdField_a_of_type_ArrayOfAndroidOsBundle[0] = paramString;
     }
-    return null;
-  }
-  
-  public void a()
-  {
-    im_msg_body.RichText localRichText = ((MessageForShortVideo)this.a).getRichText();
-    ((MessageForShortVideo)this.a).richText = localRichText;
-  }
-  
-  public void b()
-  {
-    if (((MessageForShortVideo)this.a).isSendFromLocal()) {
-      ((MessageForShortVideo)this.a).issend = 2;
-    }
-    if ((this.a instanceof MessageForLightVideo))
-    {
-      ((MessageForLightVideo)this.a).isLightVideoRead = true;
-      ((MessageForShortVideo)this.a).saveExtInfoToExtStr(bbkv.u, "1");
-    }
-    ((MessageForShortVideo)this.a).serial();
   }
 }
 

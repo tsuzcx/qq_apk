@@ -1,27 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
+import android.content.Context;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AuthorData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-public class tij
-  implements TopGestureLayout.OnGestureListener
+class tij
+  implements tir
 {
-  public tij(BridgeModule paramBridgeModule, ViolaFragment paramViolaFragment) {}
+  tij(tia paramtia) {}
   
-  public void flingLToR()
+  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
   {
-    if ((BridgeModule.access$1700(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule) != null) && (BridgeModule.access$1700(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule).b()))
+    if ((paramProteusItemData instanceof AuthorData))
     {
-      BridgeModule.access$1700(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule).a();
-      return;
+      ((AuthorData)paramProteusItemData).b(false);
+      if (thz.a(this.a.a) != null) {
+        thz.a(this.a.a).notifyDataSetChanged();
+      }
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.judgeIfNeedInterruptLToR();
   }
-  
-  public void flingRToL() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tij
  * JD-Core Version:    0.7.0.1
  */

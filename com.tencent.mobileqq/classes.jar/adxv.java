@@ -1,18 +1,23 @@
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class adxv
-  implements View.OnLongClickListener
+public class adxv
+  extends ahit
 {
-  adxv(adxu paramadxu, long paramLong) {}
-  
-  public boolean onLongClick(View paramView)
+  public adxv(FontSettingActivity paramFontSettingActivity, QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
-    bfur.a(this.jdField_a_of_type_Adxu.a, 230).setTitle(this.jdField_a_of_type_Adxu.a.getString(2131718750)).setItems(2130968613, new adxw(this)).show();
-    return true;
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
   }
+  
+  public void a(afqr paramafqr, ChatMessage paramChatMessage) {}
+  
+  public void b(View paramView) {}
 }
 
 

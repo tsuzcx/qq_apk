@@ -1,12 +1,12 @@
 package com.tencent.gamecenter.appointment;
 
-import aber;
+import abud;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.text.TextUtils;
-import blec;
+import bmqt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -20,7 +20,7 @@ public class GameCenterReceiver
   private static GameCenterReceiver jdField_a_of_type_ComTencentGamecenterAppointmentGameCenterReceiver;
   private static volatile AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  List<aber> jdField_a_of_type_JavaUtilList = null;
+  List<abud> jdField_a_of_type_JavaUtilList = null;
   
   public static GameCenterReceiver a()
   {
@@ -77,19 +77,19 @@ public class GameCenterReceiver
     finally {}
   }
   
-  public static void a(aber paramaber)
+  public static void a(abud paramabud)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("GameCenterReceiver", 2, "addListener listener=" + paramaber);
+      QLog.d("GameCenterReceiver", 2, "addListener listener=" + paramabud);
     }
-    if (paramaber == null) {
+    if (paramabud == null) {
       return;
     }
     GameCenterReceiver localGameCenterReceiver = a();
     synchronized (localGameCenterReceiver.jdField_a_of_type_JavaUtilList)
     {
-      if (!localGameCenterReceiver.jdField_a_of_type_JavaUtilList.contains(paramaber)) {
-        localGameCenterReceiver.jdField_a_of_type_JavaUtilList.add(paramaber);
+      if (!localGameCenterReceiver.jdField_a_of_type_JavaUtilList.contains(paramabud)) {
+        localGameCenterReceiver.jdField_a_of_type_JavaUtilList.add(paramabud);
       }
       return;
     }
@@ -170,19 +170,19 @@ public class GameCenterReceiver
     //   40	55	58	finally
   }
   
-  public static void b(aber paramaber)
+  public static void b(abud paramabud)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("GameCenterReceiver", 2, "removeListener listener=" + paramaber);
+      QLog.d("GameCenterReceiver", 2, "removeListener listener=" + paramabud);
     }
-    if (paramaber == null) {
+    if (paramabud == null) {
       return;
     }
     GameCenterReceiver localGameCenterReceiver = a();
     synchronized (localGameCenterReceiver.jdField_a_of_type_JavaUtilList)
     {
-      if (localGameCenterReceiver.jdField_a_of_type_JavaUtilList.contains(paramaber)) {
-        localGameCenterReceiver.jdField_a_of_type_JavaUtilList.remove(paramaber);
+      if (localGameCenterReceiver.jdField_a_of_type_JavaUtilList.contains(paramabud)) {
+        localGameCenterReceiver.jdField_a_of_type_JavaUtilList.remove(paramabud);
       }
       return;
     }
@@ -200,7 +200,7 @@ public class GameCenterReceiver
       }
       if ("android.intent.action.SCREEN_OFF".equals(paramContext))
       {
-        blec.a().a(false, -1L);
+        bmqt.a().a(false, -1L);
         return;
       }
       if (("android.intent.action.PACKAGE_ADDED".equals(paramContext)) || ("android.intent.action.PACKAGE_REMOVED".equals(paramContext)))

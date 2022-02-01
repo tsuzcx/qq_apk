@@ -1,20 +1,21 @@
-import android.content.Context;
+import android.app.Dialog;
+import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afcd
-  extends aezz
+  implements View.OnClickListener
 {
-  public afcd(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, Context paramContext, View.OnClickListener paramOnClickListener)
-  {
-    super(paramQQAppInterface, paramSessionInfo, paramContext, paramOnClickListener);
-  }
+  public afcd(TroopDisbandActivity paramTroopDisbandActivity, Dialog paramDialog) {}
   
-  protected void a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, ViewGroup paramViewGroup, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, aezf paramaezf) {}
+  public void onClick(View paramView)
+  {
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

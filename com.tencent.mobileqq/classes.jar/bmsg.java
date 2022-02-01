@@ -1,28 +1,32 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
 public class bmsg
-  extends QQUIEventReceiver<bmsd, voc>
+  implements Cloneable
 {
-  boolean a = false;
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public bmsg(@NonNull bmsd parambmsd)
+  private bmsg(bmse parambmse, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    super(parambmsd);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
   }
   
-  public void a(@NonNull bmsd parambmsd, @NonNull voc paramvoc)
+  public bmsg a()
   {
-    if (!this.a)
+    try
     {
-      parambmsd.b();
-      this.a = true;
+      bmsg localbmsg = (bmsg)super.clone();
+      return localbmsg;
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return voc.class;
+    catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    return null;
   }
 }
 

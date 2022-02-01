@@ -1,37 +1,90 @@
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import java.io.File;
+import java.util.ArrayList;
 
-public class acxh
-  implements View.OnClickListener
+public abstract class acxh
 {
-  public acxh(ChatHistory paramChatHistory) {}
+  public static String a;
+  public acxi a;
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
   
-  public void onClick(View paramView)
+  static
   {
-    if (this.a.d < this.a.c)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839138);
-      ChatHistory localChatHistory = this.a;
-      localChatHistory.d += 1;
-      if (this.a.d >= this.a.c)
-      {
-        this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(false);
-        this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130849508);
-      }
-      this.a.e = ((this.a.d - 1) * 8);
-      this.a.jdField_a_of_type_Acyf.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(this.a.d));
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
-      this.a.t();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    jdField_a_of_type_JavaLangString = File.separator;
   }
+  
+  public static ArrayList<String> a(String paramString1, String paramString2)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramString2.equals("Native"))
+    {
+      localArrayList.add(paramString1 + ".cfg");
+      localArrayList.add("lib" + paramString1 + ".so");
+      localArrayList.add(paramString1 + ".subpatch");
+      return localArrayList;
+    }
+    if (paramString2.equals("DVM"))
+    {
+      localArrayList.add(paramString1 + ".cfg");
+      localArrayList.add(paramString1 + ".jar");
+      return localArrayList;
+    }
+    return null;
+  }
+  
+  public static acxh b(String paramString, acxi paramacxi)
+  {
+    String str = paramacxi.f;
+    if (str.equals("Native"))
+    {
+      paramString = acxc.a(paramString, paramacxi);
+      if (paramString == null) {
+        return null;
+      }
+    }
+    else
+    {
+      acwx.a("KingKongPatchInfo", "Unsupported patch type : " + str);
+      return null;
+    }
+    if ((!paramString.c.equals(paramacxi.jdField_a_of_type_JavaLangString)) || (!paramString.d.equals(paramacxi.b)) || (!paramString.e.equals(paramacxi.f)) || (!paramString.e.equals("Native")))
+    {
+      acwx.a("KingKongPatchInfo", "Patch name, version or type mismatch : " + paramString.c + ", " + paramString.d + ", " + paramString.e);
+      return null;
+    }
+    paramString.jdField_a_of_type_Acxi = paramacxi;
+    return paramString;
+  }
+  
+  public static ArrayList<String> b(String paramString1, String paramString2)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramString2.equals("Native"))
+    {
+      localArrayList.add(paramString1 + ".cfg");
+      localArrayList.add("lib" + paramString1 + ".so");
+      localArrayList.add(paramString1 + ".subpatch");
+    }
+    while (!paramString2.equals("DVM")) {
+      return localArrayList;
+    }
+    localArrayList.add(paramString1 + ".cfg");
+    localArrayList.add(paramString1 + ".jar");
+    localArrayList.add(paramString1 + ".dex");
+    return localArrayList;
+  }
+  
+  public abstract int a(Context paramContext);
+  
+  public String a()
+  {
+    return this.b + jdField_a_of_type_JavaLangString + this.c + ".cfg";
+  }
+  
+  public abstract boolean a();
 }
 
 

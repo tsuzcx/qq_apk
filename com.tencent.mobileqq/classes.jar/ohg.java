@@ -1,9 +1,14 @@
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.List;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
 
-public abstract interface ohg
+public class ohg
+  implements bkzs
 {
-  public abstract void a(List<ChatMessage> paramList);
+  public ohg(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
+  
+  public void onDismiss()
+  {
+    ReadInJoyNativeAdFragment.a(this.a, false);
+  }
 }
 
 

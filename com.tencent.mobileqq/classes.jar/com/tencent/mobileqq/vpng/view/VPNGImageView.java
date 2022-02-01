@@ -12,17 +12,17 @@ import android.view.TextureView.SurfaceTextureListener;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bgrv;
-import bgrw;
-import bgry;
-import bgrz;
+import bicl;
+import bicm;
+import bico;
+import bicp;
 import com.tencent.mobileqq.app.ThreadManager;
 import cooperation.liveroom.LiveRoomGiftCallback;
 import java.io.File;
 
 public class VPNGImageView
   extends FrameLayout
-  implements TextureView.SurfaceTextureListener, bgrv
+  implements TextureView.SurfaceTextureListener, bicl
 {
   protected int mAlign = 1;
   protected LiveRoomGiftCallback mCallback;
@@ -30,7 +30,7 @@ public class VPNGImageView
   protected boolean mIsLoop;
   protected ImageView mPreImageView;
   protected TextureView mTextureView;
-  public bgrw mVPNGRenderer;
+  public bicm mVPNGRenderer;
   protected String mVideoPath;
   protected int mWidth;
   protected boolean playOnSubThread;
@@ -75,7 +75,7 @@ public class VPNGImageView
     return this.mWidth;
   }
   
-  public bgrw getVPNGRenderer()
+  public bicm getVPNGRenderer()
   {
     return this.mVPNGRenderer;
   }
@@ -85,7 +85,7 @@ public class VPNGImageView
     super.onDetachedFromWindow();
     if (this.mVPNGRenderer != null)
     {
-      bgry.a().a(this.mVPNGRenderer);
+      bico.a().a(this.mVPNGRenderer);
       this.mVPNGRenderer = null;
     }
   }
@@ -116,9 +116,9 @@ public class VPNGImageView
     }
   }
   
-  public void onSetRenderer(bgrw parambgrw)
+  public void onSetRenderer(bicm parambicm)
   {
-    this.mVPNGRenderer = parambgrw;
+    this.mVPNGRenderer = parambicm;
     if ((isActivated()) && (getVisibility() == 0))
     {
       this.mVPNGRenderer.a();
@@ -130,7 +130,7 @@ public class VPNGImageView
   {
     if (this.mVPNGRenderer == null)
     {
-      this.mVPNGRenderer = bgry.a().a(this, this.mWidth, this.mHeight);
+      this.mVPNGRenderer = bico.a().a(this, this.mWidth, this.mHeight);
       if (this.mVPNGRenderer != null)
       {
         this.mVPNGRenderer.a(this.mVideoPath, this.mAlign, this.mCallback);
@@ -168,7 +168,7 @@ public class VPNGImageView
     this.mWidth = paramOptions.getWidth();
     this.mHeight = paramOptions.getHeight();
     String str = paramString + ".vpng";
-    if ((!new File(str).exists()) && (bgrz.a(paramString, str))) {
+    if ((!new File(str).exists()) && (bicp.a(paramString, str))) {
       setVideo(str, true);
     }
     this.mPreImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -192,7 +192,7 @@ public class VPNGImageView
     for (int i = 1;; i = 0)
     {
       if (this.mVPNGRenderer == null) {
-        this.mVPNGRenderer = bgry.a().a(this, this.mWidth, this.mHeight);
+        this.mVPNGRenderer = bico.a().a(this, this.mWidth, this.mHeight);
       }
       if (this.mVPNGRenderer != null)
       {

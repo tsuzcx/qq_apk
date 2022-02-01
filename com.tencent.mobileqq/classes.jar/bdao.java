@@ -1,11 +1,14 @@
-import android.os.IInterface;
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode;
 
-public abstract interface bdao
-  extends IInterface
+public class bdao
 {
-  public abstract void onComplete(String paramString, int paramInt);
+  public int a;
+  public int b = 0;
   
-  public abstract void onProgress(String paramString, long paramLong1, long paramLong2);
+  public bdao(SVHwEncoder.HwEncode paramHwEncode)
+  {
+    this.jdField_a_of_type_Int = 0;
+  }
 }
 
 

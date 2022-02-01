@@ -1,33 +1,33 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
+import android.os.Bundle;
 
-class bcmk
-  extends bfol
+public class bcmk
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  private int c;
+  public Bundle a;
+  public String a;
+  public byte[] a;
   
-  public bcmk(bcme parambcme, int paramInt1, int paramInt2, int paramInt3)
+  public bcmk(String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public bcmk(String paramString, Bundle paramBundle)
   {
-    if (paramBitmap == null) {
-      return null;
-    }
-    int j = this.c;
-    int k = paramBitmap.getWidth();
-    if (paramBitmap.getHeight() != 0) {}
-    for (int i = paramBitmap.getHeight();; i = this.c)
-    {
-      i = k * j / i;
-      return bfvo.b(paramBitmap, this.jdField_a_of_type_Int, i, this.c);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+  }
+  
+  public bcmk(String paramString, byte[] paramArrayOfByte)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+  }
+  
+  public bcmk(String paramString, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
 }
 

@@ -1,11 +1,13 @@
-public abstract class zal<T>
+import java.io.File;
+import java.io.FilenameFilter;
+
+public final class zal
+  implements FilenameFilter
 {
-  public long a;
-  public boolean a = true;
-  
-  public abstract void a();
-  
-  public abstract void a(zar<T> paramzar);
+  public boolean accept(File paramFile, String paramString)
+  {
+    return paramString.endsWith(".mp4");
+  }
 }
 
 

@@ -4,12 +4,12 @@ import kotlin.Metadata;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
-import qzh;
+import rln;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/biz/pubaccount/readinjoy/reward/mvp/RIJRewardTaskTimingModel;", "invoke"}, k=3, mv={1, 1, 16})
 public final class RIJAidlServerRewardTaskModule$model$2
   extends Lambda
-  implements Function0<qzh>
+  implements Function0<rln>
 {
   public static final 2 INSTANCE = new 2();
   
@@ -19,9 +19,9 @@ public final class RIJAidlServerRewardTaskModule$model$2
   }
   
   @NotNull
-  public final qzh invoke()
+  public final rln invoke()
   {
-    return new qzh();
+    return new rln();
   }
 }
 

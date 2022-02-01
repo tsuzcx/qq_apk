@@ -1,7 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import anca;
+import aoep;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 
 class TroopInviteStatusFragment$2
@@ -11,8 +13,8 @@ class TroopInviteStatusFragment$2
   
   public void run()
   {
-    ((anca)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(20)).a(this.this$0.jdField_a_of_type_JavaLangString, this.this$0.c, this.this$0.jdField_a_of_type_Long);
-    TroopManager localTroopManager = (TroopManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+    ((aoep)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).a(this.this$0.jdField_a_of_type_JavaLangString, this.this$0.c, this.this$0.jdField_a_of_type_Long);
+    TroopManager localTroopManager = (TroopManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
     if (localTroopManager != null) {
       this.this$0.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo = localTroopManager.b(this.this$0.jdField_a_of_type_JavaLangString);
     }
@@ -20,7 +22,7 @@ class TroopInviteStatusFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopInviteStatusFragment.2
  * JD-Core Version:    0.7.0.1
  */

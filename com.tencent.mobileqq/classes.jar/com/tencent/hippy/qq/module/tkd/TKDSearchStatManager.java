@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import org.jetbrains.annotations.NotNull;
-import pay;
+import pqp;
 
 public class TKDSearchStatManager
 {
@@ -59,7 +59,7 @@ public class TKDSearchStatManager
     }
     HashMap localHashMap = new HashMap();
     if (!paramMap.containsKey("qua2")) {
-      localHashMap.put("qua2", pay.d());
+      localHashMap.put("qua2", pqp.c());
     }
     localHashMap.put("event_name", paramString1);
     localHashMap.put("event_details", getCommonEventDetail(paramMap));

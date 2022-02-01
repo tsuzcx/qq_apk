@@ -1,18 +1,19 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import afrc;
-import anca;
+import agin;
 import android.content.Context;
 import android.content.Intent;
-import audi;
-import bblk;
-import bdyi;
-import bdyj;
-import bezm;
+import aoep;
+import avjc;
+import bcsc;
+import bffl;
+import bffm;
+import bghs;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -24,10 +25,10 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Observable;
 import java.util.Observer;
 import mqq.os.MqqHandler;
-import nmy;
+import nty;
 
 public class TroopAddFriendTipsHelper
-  implements afrc, Observer
+  implements agin, Observer
 {
   private Context jdField_a_of_type_AndroidContentContext;
   private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
@@ -49,10 +50,10 @@ public class TroopAddFriendTipsHelper
   
   private void a(String paramString)
   {
-    Object localObject = (anca)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(20);
+    Object localObject = (aoep)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
     if (localObject != null)
     {
-      localObject = ((anca)localObject).a();
+      localObject = ((aoep)localObject).a();
       if (localObject != null) {
         ((TroopBatchAddFriendMgr)localObject).f(paramString);
       }
@@ -97,18 +98,18 @@ public class TroopAddFriendTipsHelper
       if (!str1.equalsIgnoreCase(paramMessageRecord.frienduin)) {
         continue;
       }
-      TroopBatchAddFriendMgr localTroopBatchAddFriendMgr = ((anca)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(20)).a();
+      TroopBatchAddFriendMgr localTroopBatchAddFriendMgr = ((aoep)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).a();
       String str2;
       if ((paramMessageRecord.msgtype == -1012) && (localTroopBatchAddFriendMgr.b("newMember"))) {
         str2 = paramMessageRecord.getExtInfoFromExtStr("troop_new_member_uin");
       }
       try
       {
-        QLog.d("TroopAddFriendTipsHelper", 1, "checkTipsTriggerInAio update newMemberUin = " + audi.a(str2) + " troop:" + str1);
-        if ((localTroopBatchAddFriendMgr.a(str1)) && (!bezm.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str1))) {
+        QLog.d("TroopAddFriendTipsHelper", 1, "checkTipsTriggerInAio update newMemberUin = " + avjc.a(str2) + " troop:" + str1);
+        if ((localTroopBatchAddFriendMgr.a(str1)) && (!bghs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str1))) {
           ThreadManager.getSubThreadHandler().postDelayed(new TroopAddFriendTipsHelper.2(this, str2, str1), 1000L);
         }
-        if ((!paramMessageRecord.isSendFromLocal()) && (paramMessageRecord.mMessageInfo != null) && (!nmy.a(paramMessageRecord)) && ((paramMessageRecord.mMessageInfo.a.a(24)) || (paramMessageRecord.mMessageInfo.a.a(22))) && (localTroopBatchAddFriendMgr.b("atMeOrReplyMe")) && (localTroopBatchAddFriendMgr.e(paramMessageRecord.senderuin))) {
+        if ((!paramMessageRecord.isSendFromLocal()) && (paramMessageRecord.mMessageInfo != null) && (!nty.a(paramMessageRecord)) && ((paramMessageRecord.mMessageInfo.a.a(24)) || (paramMessageRecord.mMessageInfo.a.a(22))) && (localTroopBatchAddFriendMgr.b("atMeOrReplyMe")) && (localTroopBatchAddFriendMgr.e(paramMessageRecord.senderuin))) {
           localTroopBatchAddFriendMgr.a(str1, paramMessageRecord.senderuin, paramMessageRecord.time, paramMessageRecord.shmsgseq);
         }
         if (!paramMessageRecord.isSendFromLocal()) {
@@ -143,7 +144,7 @@ public class TroopAddFriendTipsHelper
   
   public int[] a()
   {
-    return new int[] { 3, 7, 13 };
+    return new int[] { 4, 8, 14 };
   }
   
   public void update(Observable paramObservable, Object paramObject)
@@ -151,7 +152,7 @@ public class TroopAddFriendTipsHelper
     if ((paramObject instanceof ChatMessage))
     {
       paramObservable = (MessageRecord)paramObject;
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin.equals(paramObservable.frienduin)) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == paramObservable.istroop) && (!bblk.a(paramObservable.msgtype)) && (!bezm.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramObservable.senderuin)))
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin.equals(paramObservable.frienduin)) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == paramObservable.istroop) && (!bcsc.a(paramObservable.msgtype)) && (!bghs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramObservable.senderuin)))
       {
         if (this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopAddFriendTipsHelper$NewMsgRunnable == null) {
           this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopAddFriendTipsHelper$NewMsgRunnable = new TroopAddFriendTipsHelper.NewMsgRunnable(this, null);

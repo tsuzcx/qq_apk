@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.screendetect;
 
 import android.content.Context;
-import barb;
+import bbxq;
+import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 class ScreenShotDetector$1
@@ -11,7 +12,13 @@ class ScreenShotDetector$1
   
   public void run()
   {
-    barb.a((Context)ScreenShotDetector.a(this.this$0).get(), this.a, ScreenShotDetector.a(this.this$0));
+    boolean bool = ScreenShotDetector.b();
+    if (QLog.isColorLevel()) {
+      QLog.d("ScreenShotDetector", 2, "start screenshots, " + bool);
+    }
+    if (bool) {
+      bbxq.a((Context)ScreenShotDetector.a(this.this$0).get(), this.a, ScreenShotDetector.a(this.this$0));
+    }
   }
 }
 

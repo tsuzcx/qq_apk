@@ -9,14 +9,14 @@ import android.view.ViewConfiguration;
 import android.view.ViewParent;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bmpe;
+import boew;
 
 public class SliderView
   extends ImageView
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-  private bmpe jdField_a_of_type_Bmpe;
+  private boew jdField_a_of_type_Boew;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   
@@ -43,8 +43,8 @@ public class SliderView
   
   private void a(float paramFloat)
   {
-    if (this.jdField_a_of_type_Bmpe != null) {
-      this.jdField_a_of_type_Bmpe.a(paramFloat);
+    if (this.jdField_a_of_type_Boew != null) {
+      this.jdField_a_of_type_Boew.a(paramFloat);
     }
   }
   
@@ -85,15 +85,15 @@ public class SliderView
   
   private void c()
   {
-    if (this.jdField_a_of_type_Bmpe != null) {
-      this.jdField_a_of_type_Bmpe.a();
+    if (this.jdField_a_of_type_Boew != null) {
+      this.jdField_a_of_type_Boew.a();
     }
   }
   
   private void d()
   {
-    if (this.jdField_a_of_type_Bmpe != null) {
-      this.jdField_a_of_type_Bmpe.b();
+    if (this.jdField_a_of_type_Boew != null) {
+      this.jdField_a_of_type_Boew.b();
     }
   }
   
@@ -118,9 +118,9 @@ public class SliderView
     }
   }
   
-  public void setSliderListener(bmpe parambmpe)
+  public void setSliderListener(boew paramboew)
   {
-    this.jdField_a_of_type_Bmpe = parambmpe;
+    this.jdField_a_of_type_Boew = paramboew;
   }
 }
 

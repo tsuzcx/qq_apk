@@ -1,28 +1,60 @@
-import Wallet.SkinInfo;
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.mobileqq.activity.qwallet.fragment.UsualHbFragment;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
 public class ajzo
-  implements akak
+  extends ajzq
 {
-  public ajzo(UsualHbFragment paramUsualHbFragment) {}
+  protected View a;
+  protected String a;
+  protected boolean a;
   
-  public void a(akaa paramakaa)
+  public ajzo(View paramView, String paramString)
   {
-    if ((paramakaa.a.skin_id == 0) || (paramakaa.a.skin_id == -2))
+    super(null);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void onClick(View paramView)
+  {
+    super.onClick(paramView);
+    try
     {
-      paramakaa = ajzz.a(this.a.channel, this.a.a, this.a.mActivity.a(), paramakaa.a.blessing);
-      this.a.c.setHint(paramakaa);
-      return;
+      if (QSecFramework.a().a(1001).booleanValue())
+      {
+        if (!this.jdField_a_of_type_Boolean) {
+          break label106;
+        }
+        View localView = this.jdField_a_of_type_AndroidViewView;
+        QSecFramework.a().a(5, 0, 1, new Object[] { Integer.valueOf(80), localView }, null);
+        this.jdField_a_of_type_Boolean = false;
+        if (QLog.isColorLevel()) {
+          QLog.i("MainFragment", 2, "附近人机上报: lebaView onCreate, from=" + this.jdField_a_of_type_JavaLangString);
+        }
+      }
+      for (;;)
+      {
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        label106:
+        QSecFramework.a().a(5, 0, 2, new Object[] { Integer.valueOf(80), Integer.valueOf(1), Integer.valueOf(6), "lebaClick", null }, null);
+        if (QLog.isColorLevel()) {
+          QLog.i("MainFragment", 2, "附近人机上报: lebaView onClick, from=" + this.jdField_a_of_type_JavaLangString);
+        }
+      }
     }
-    if (TextUtils.isEmpty(paramakaa.a.blessing))
+    catch (Exception localException)
     {
-      this.a.c.setHint(amtj.a(2131696287));
-      return;
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("MainFragment", 2, "ABotDragClickListener onClick exp=", localException);
+        }
+      }
     }
-    this.a.c.setHint(paramakaa.a.blessing);
   }
 }
 

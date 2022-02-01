@@ -1,21 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.home.Conversation;
 
 public class ajxp
-  implements View.OnClickListener
+  extends aogc
 {
-  public ajxp(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  public ajxp(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    TroopUnAccalimedRedPacketList.a(this.a, true);
-    if (this.a.a != null) {
-      this.a.a.dismiss();
+    if (!(paramObject instanceof String)) {
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramObject = (String)paramObject;
+    this.a.a(8, paramObject, -2147483648);
   }
 }
 

@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.troop.logic;
 
-import beqx;
+import bfxz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
 import java.util.ArrayList;
@@ -11,11 +12,11 @@ import java.util.ArrayList;
 public class TroopSearchLogic
 {
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-  TroopManager jdField_a_of_type_ComTencentMobileqqAppTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+  TroopManager jdField_a_of_type_ComTencentMobileqqAppTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
   
-  public void a(ArrayList<ResultRecord> paramArrayList, beqx parambeqx)
+  public void a(ArrayList<ResultRecord> paramArrayList, bfxz parambfxz)
   {
-    ThreadManager.postImmediately(new TroopSearchLogic.TroopSearchTask(this, parambeqx, paramArrayList), null, false);
+    ThreadManager.postImmediately(new TroopSearchLogic.TroopSearchTask(this, parambfxz, paramArrayList), null, false);
   }
 }
 

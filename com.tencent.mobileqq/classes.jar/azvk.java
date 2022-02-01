@@ -1,6 +1,24 @@
-public abstract interface azvk
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.profile.view.CircularProgressBar;
+
+public class azvk
+  extends Handler
 {
-  public abstract boolean a(azvn paramazvn);
+  public azvk(CircularProgressBar paramCircularProgressBar) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.invalidate();
+    if (CircularProgressBar.a(this.a))
+    {
+      CircularProgressBar.a(this.a, CircularProgressBar.a(this.a) + CircularProgressBar.b(this.a));
+      if (CircularProgressBar.a(this.a) > 360) {
+        CircularProgressBar.a(this.a, 0);
+      }
+      CircularProgressBar.a(this.a).sendEmptyMessageDelayed(0, CircularProgressBar.c(this.a));
+    }
+  }
 }
 
 

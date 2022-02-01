@@ -1,19 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 
-public abstract interface afbz
+public class afbz
+  extends anyz
 {
-  public abstract void a(XListView paramXListView, int paramInt, View paramView, ChatMessage paramChatMessage, long paramLong, float paramFloat);
+  public afbz(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public abstract void a(XListView paramXListView, int paramInt, View paramView, ChatMessage paramChatMessage, boolean paramBoolean);
+  protected void onPushReadedNotify(boolean paramBoolean, Object paramObject) {}
   
-  public abstract boolean a(XListView paramXListView, int paramInt, View paramView, ChatMessage paramChatMessage);
+  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong)
+  {
+    this.a.c();
+  }
   
-  public abstract boolean a(XListView paramXListView, int paramInt1, View paramView, ChatMessage paramChatMessage, AudioPlayerBase paramAudioPlayerBase, int paramInt2);
-  
-  public abstract boolean b(ChatMessage paramChatMessage);
+  protected void onUpdateRecentList()
+  {
+    this.a.c();
+  }
 }
 
 

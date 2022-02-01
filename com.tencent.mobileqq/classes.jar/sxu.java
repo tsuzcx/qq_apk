@@ -1,29 +1,25 @@
-import android.view.View;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
-import org.json.JSONObject;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
+import com.tencent.qphone.base.util.QLog;
 
 class sxu
-  implements URLDrawableDownListener
+  implements Animator.AnimatorListener
 {
-  sxu(sxp paramsxp) {}
+  sxu(sxs paramsxs) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    AbstractGifImage.resumeAll();
-    sxp.a(this.a).setVisibility(0);
-    this.a.a("0X800920C", new JSONObject());
+    QLog.d("TabBarView", 4, "onAnimationEnd");
+    sxs.b(this.a);
+    this.a.b.clearAnimation();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

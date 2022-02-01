@@ -1,17 +1,29 @@
-import com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiBean;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import android.text.TextUtils;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
 class axxp
-  implements axxz
+  implements biyn
 {
-  axxp(axxo paramaxxo, LatLng paramLatLng, int paramInt, PoiBean paramPoiBean) {}
+  axxp(axxn paramaxxn) {}
   
-  public void a(PoiBean paramPoiBean)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(axxq.a, 2, "[status][poiLoader][" + this.jdField_a_of_type_Axxo.b + "] diskPut [fail already exist]. latLng: " + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + " acceptAccuracy: " + this.jdField_a_of_type_Int + " put: " + this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiBean + " cache: " + paramPoiBean);
+    if ((paramBaseResp != null) && (TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
+    {
+      WXShareHelper.a().b(this);
+      if (paramBaseResp.errCode != 0) {
+        break label59;
+      }
+      if (this.a.jdField_a_of_type_Axxq != null) {
+        this.a.jdField_a_of_type_Axxq.a(true);
+      }
     }
+    label59:
+    while (this.a.jdField_a_of_type_Axxq == null) {
+      return;
+    }
+    this.a.jdField_a_of_type_Axxq.a(false);
   }
 }
 

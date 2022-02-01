@@ -1,20 +1,34 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 class zxk
-  implements Downloader.DownloadListener
+  implements VSDispatchObserver.onVSRspCallBack<CertifiedAccountRead.StGetMainPageRsp>
 {
-  zxk(zxj paramzxj, zwr paramzwr, String paramString) {}
+  zxk(zxj paramzxj, zsx paramzsx) {}
   
-  public void onDownloadCanceled(String paramString) {}
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult) {}
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    zxj.a(this.jdField_a_of_type_Zxj, this.jdField_a_of_type_Zwr, zxg.a().b(this.jdField_a_of_type_JavaLangString));
+    boolean bool = true;
+    COMM.StCommonExt localStCommonExt;
+    if ((paramBoolean) && (paramStGetMainPageRsp != null))
+    {
+      paramVSBaseRequest = this.jdField_a_of_type_Zsx;
+      paramString = paramStGetMainPageRsp.vecFeed.get();
+      localStCommonExt = paramStGetMainPageRsp.extInfo;
+      if (paramStGetMainPageRsp.isFinish.get() != 1) {
+        break label59;
+      }
+    }
+    label59:
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      paramVSBaseRequest.b(paramString, localStCommonExt, paramBoolean);
+      return;
+    }
   }
 }
 

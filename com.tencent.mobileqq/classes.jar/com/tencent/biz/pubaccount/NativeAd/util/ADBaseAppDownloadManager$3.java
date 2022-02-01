@@ -1,25 +1,25 @@
 package com.tencent.biz.pubaccount.NativeAd.util;
 
-import oau;
-import oav;
-import tqa;
-import twp;
-import txh;
+import oil;
+import oim;
+import udt;
+import ukq;
+import ule;
 
 public class ADBaseAppDownloadManager$3
   implements Runnable
 {
-  public ADBaseAppDownloadManager$3(oau paramoau, txh paramtxh) {}
+  public ADBaseAppDownloadManager$3(oil paramoil, ule paramule) {}
   
   public void run()
   {
-    if (tqa.a(this.a))
+    if (udt.a(this.a))
     {
-      twp.a("ADBaseAppDownloadManager", "already installed." + this.a.d);
+      ukq.a("ADBaseAppDownloadManager", "already installed." + this.a.d);
       this.this$0.a(this.a, 1, 100);
       return;
     }
-    tqa.a(this.a, new oav(this));
+    udt.a(this.a, new oim(this));
   }
 }
 

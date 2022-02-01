@@ -1,22 +1,31 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.text.TextUtils;
 
-class bkud
-  extends Handler
+public class bkud
 {
-  bkud(bkub parambkub, Looper paramLooper)
+  public int a;
+  public String a;
+  public byte[] a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
+  
+  public String a()
   {
-    super(paramLooper);
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      return this.jdField_b_of_type_JavaLangString;
+    }
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return null;
+    }
+    return bkvq.a(this.jdField_a_of_type_JavaLangString);
   }
   
-  public void handleMessage(Message paramMessage)
+  public String toString()
   {
-    if (paramMessage.what == 100001)
-    {
-      bkub.b(this.a);
-      bkub.a(this.a).sendEmptyMessageDelayed(100001, 1000L);
-    }
+    return "[ft:" + this.jdField_a_of_type_Int + ",st:" + this.jdField_b_of_type_Int + ",fs:" + this.jdField_c_of_type_Int + ",fn:" + this.jdField_a_of_type_JavaLangString + ",fm:" + this.jdField_b_of_type_JavaLangString + ",a1:" + this.jdField_c_of_type_JavaLangString + ",a2:" + this.d + ",a3:" + this.e + "]";
   }
 }
 

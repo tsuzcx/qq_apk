@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.qapmsdk.base.config.DefaultPluginConfig;
 import com.tencent.qapmsdk.base.config.PluginCombination;
+import com.tencent.qapmsdk.base.listener.IBaseListener;
 import com.tencent.qapmsdk.base.listener.IMemoryCellingListener;
 import com.tencent.qapmsdk.base.listener.IMemoryDumpListener;
 import com.tencent.qapmsdk.base.listener.ListenerManager;
@@ -22,8 +23,8 @@ import com.tencent.qapmsdk.common.activty.LifecycleCallback;
 import com.tencent.qapmsdk.common.logger.Logger;
 import com.tencent.qapmsdk.common.thread.ThreadManager;
 import com.tencent.qapmsdk.common.util.AppInfo;
+import com.tencent.qapmsdk.memory.memorydump.HeapDumperFactory;
 import java.util.ArrayList;
-import org.jetbrains.annotations.NotNull;
 
 public class MemoryCeilingMonitor
   extends QAPMMonitorPlugin
@@ -44,7 +45,7 @@ public class MemoryCeilingMonitor
   private ArrayList<String> activityList = new ArrayList(20);
   private long delayTime = 5000L;
   private long heapSize;
-  @Nullable
+  @NonNull
   private Handler memoryMonitorHandler = new Handler(ThreadManager.getMonitorThreadLooper(), this);
   private long pssSize;
   @NonNull
@@ -110,16 +111,21 @@ public class MemoryCeilingMonitor
         Logger.INSTANCE.d(new String[] { "QAPM_memory_MemoryMonitor", "activityandhash report:", localObject });
         long l = PluginCombination.ceilingValuePlugin.threshold * Runtime.getRuntime().maxMemory() / 100L;
         if (localIMemoryCellingListener != null) {
-          localIMemoryCellingListener.onBeforeUploadJson();
+          localIMemoryCellingListener.onBeforeUpload();
         }
         MemoryDumpHelper.getInstance().onReport(paramLong, l, str);
         this.activityList.add(localObject);
-        if ((localIMemoryCellingListener == null) || (localIMemoryCellingListener.onCanDump(paramLong))) {
-          MemoryDumpHelper.getInstance().startDumpingMemory("LowMemory", localIMemoryCellingListener);
+        if ((localIMemoryCellingListener == null) || (localIMemoryCellingListener.onCanDump(paramLong)))
+        {
+          if (PluginController.INSTANCE.canCollect(PluginCombination.ceilingHprofPlugin.plugin)) {
+            break;
+          }
+          Logger.INSTANCE.d(new String[] { "QAPM_memory_MemoryMonitor", "startDumpingMemory abort canCollect=false" });
         }
       }
       return;
     }
+    MemoryDumpHelper.getInstance().startDumpingMemory("LowMemory", localIMemoryCellingListener);
   }
   
   public static void reportHprofFile(DumpResult paramDumpResult)
@@ -154,27 +160,40 @@ public class MemoryCeilingMonitor
     return true;
   }
   
-  public void onBackground(@NotNull Activity paramActivity)
+  public void onBackground(@NonNull Activity paramActivity)
   {
     this.delayTime = 30000L;
   }
   
-  public void onCreate(@NotNull Activity paramActivity) {}
+  public void onCreate(@NonNull Activity paramActivity) {}
   
-  public void onDestroy(@NotNull Activity paramActivity) {}
+  public void onDestroy(@NonNull Activity paramActivity) {}
   
-  public void onForeground(@NotNull Activity paramActivity)
+  public void onForeground(@NonNull Activity paramActivity)
   {
     this.delayTime = 5000L;
   }
   
-  public void onResume(@NotNull Activity paramActivity) {}
+  public void onResume(@NonNull Activity paramActivity) {}
   
-  public void onStop(@NotNull Activity paramActivity) {}
+  public void onStop(@NonNull Activity paramActivity) {}
+  
+  public void setListener(@NonNull IBaseListener paramIBaseListener)
+  {
+    try
+    {
+      ListenerManager.memoryCellingListener = (IMemoryCellingListener)paramIBaseListener;
+      return;
+    }
+    catch (Exception paramIBaseListener)
+    {
+      Logger.INSTANCE.exception("QAPM_memory_MemoryMonitor", paramIBaseListener);
+    }
+  }
   
   public void start()
   {
-    if (!canEventReport(PluginCombination.ceilingHprofPlugin.plugin))
+    if (!PluginController.INSTANCE.whetherPluginSampling(PluginCombination.ceilingHprofPlugin.plugin))
     {
       Logger.INSTANCE.d(new String[] { "QAPM_memory_MemoryMonitor", "Cannot collect memory celling." });
       return;
@@ -182,6 +201,7 @@ public class MemoryCeilingMonitor
     if (PluginCombination.ceilingValuePlugin.curReportNum < 1) {
       MemoryDumpHelper.getInstance().onReport(-1L, -1L, "-1");
     }
+    MemoryDumpHelper.getInstance().setDumper(HeapDumperFactory.produce());
     detect();
   }
   

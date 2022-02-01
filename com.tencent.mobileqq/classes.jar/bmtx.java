@@ -1,36 +1,27 @@
-import android.support.annotation.NonNull;
-import java.util.List;
+import android.content.Context;
+import java.io.File;
 
-public class bmtx
+final class bmtx
+  implements bmsx
 {
-  public static bmrm a(String paramString)
+  bmtx(String paramString1, String paramString2, bmtz parambmtz, Context paramContext, File paramFile1, File paramFile2) {}
+  
+  public void a(String paramString, long paramLong, float paramFloat)
   {
-    return new bmta(Integer.valueOf(paramString).intValue());
+    if (this.jdField_a_of_type_Bmtz != null) {
+      this.jdField_a_of_type_Bmtz.a(paramLong, paramFloat);
+    }
   }
   
-  public static bmrm a(String paramString1, @NonNull String paramString2, String paramString3, float paramFloat1, float paramFloat2, float paramFloat3)
+  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt)
   {
-    bnle localbnle = ((bmua)bmql.a(4)).a(paramString2);
-    if ((localbnle instanceof bnln)) {
-      return new bmtu((bnln)localbnle, paramString2, paramString3, paramFloat1, paramFloat2, paramFloat3);
+    if (paramBoolean) {
+      bmsl.a().a(bmtw.a(), this.jdField_a_of_type_JavaLangString, "SoHelper", new bmty(this));
     }
-    if ((localbnle instanceof bnlk)) {
-      return new bmtt((bnlk)localbnle, paramString2, paramString3, paramFloat1, paramFloat2, paramFloat3);
+    while (this.jdField_a_of_type_Bmtz == null) {
+      return;
     }
-    if ((localbnle instanceof bnlf)) {
-      return new bmtq((bnlf)localbnle, paramString1, paramString2, paramString3, paramFloat1, paramFloat2, paramFloat3);
-    }
-    return null;
-  }
-  
-  public static bmrm a(@NonNull String paramString, @NonNull List<String> paramList, float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    return new bmvh(paramString, paramList, paramFloat1, paramFloat2, paramFloat3);
-  }
-  
-  public static bmrm b(String paramString)
-  {
-    return new bmty(paramString);
+    this.jdField_a_of_type_Bmtz.a(paramString3);
   }
 }
 

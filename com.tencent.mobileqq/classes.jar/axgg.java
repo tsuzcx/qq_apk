@@ -1,11 +1,6 @@
-import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
-import java.util.List;
-
-abstract interface axgg
+public abstract interface axgg
 {
-  public abstract void a(RedTouchItem paramRedTouchItem, int paramInt);
-  
-  public abstract void a(List<RedTouchItem> paramList);
+  public abstract void a(axge paramaxge);
 }
 
 

@@ -10,15 +10,15 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
-import nns;
+import nut;
 import org.json.JSONException;
 import org.json.JSONObject;
-import vkp;
-import xvv;
+import vzk;
+import ykq;
 
 public class CommentEntry
   extends Entity
-  implements vkp
+  implements vzk
 {
   public static final int COMMENT_TYPE_CAPTURE_TOGETHER = 5;
   public static final int COMMENT_TYPE_COMMON = 0;
@@ -149,7 +149,7 @@ public class CommentEntry
     {
       for (;;)
       {
-        xvv.c("CommentEntry", "getExtraJson error", localException);
+        ykq.c("CommentEntry", "getExtraJson error", localException);
         this.extraJson = new JSONObject();
       }
     }
@@ -163,7 +163,7 @@ public class CommentEntry
   
   public boolean isReply()
   {
-    return ((!TextUtils.isEmpty(this.replierUnionId)) && (!this.replierUnionId.equals("0"))) || (nns.a(this.replyUin));
+    return ((!TextUtils.isEmpty(this.replierUnionId)) && (!this.replierUnionId.equals("0"))) || (nut.a(this.replyUin));
   }
   
   public boolean putExtra(String paramString, Object paramObject)
@@ -177,7 +177,7 @@ public class CommentEntry
     }
     catch (JSONException paramString)
     {
-      xvv.c("PublishVideoEntry", "putStringExtra error", paramString);
+      ykq.c("PublishVideoEntry", "putStringExtra error", paramString);
     }
     return false;
   }
@@ -212,7 +212,7 @@ public class CommentEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.CommentEntry
  * JD-Core Version:    0.7.0.1
  */

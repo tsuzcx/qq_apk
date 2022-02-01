@@ -1,8 +1,14 @@
-public class bmxo
+import dov.com.qq.im.ae.camera.core.AECameraManager;
+
+class bmxo
+  implements bbhc
 {
-  public int a;
-  public int b;
-  public int c;
+  bmxo(bmxa parambmxa) {}
+  
+  public void a()
+  {
+    this.a.a.refreshDarkModeTimer();
+  }
 }
 
 

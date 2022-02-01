@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import aqsk;
+import arvy;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -24,7 +24,7 @@ public class DBFixDialogActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    new aqsk(this, this.app).b();
+    new arvy(this, this.app).b();
     return true;
   }
   
@@ -42,7 +42,7 @@ public class DBFixDialogActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.database.corrupt.DBFixDialogActivity
  * JD-Core Version:    0.7.0.1
  */

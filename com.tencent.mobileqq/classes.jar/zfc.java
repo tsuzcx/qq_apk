@@ -1,16 +1,24 @@
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
-
-class zfc
-  implements VSDispatchObserver.onVSRspCallBack<CertifiedAccountRead.StGetFeedDetailRsp>
+public class zfc
 {
-  zfc(zfb paramzfb, COMM.StCommonExt paramStCommonExt) {}
-  
-  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp)
+  public static Throwable a(String paramString)
   {
-    zfb.a(this.jdField_a_of_type_Zfb, paramBoolean, paramLong, paramString, paramStGetFeedDetailRsp, this.jdField_a_of_type_NS_COMMCOMM$StCommonExt);
+    return new NullPointerException(paramString);
+  }
+  
+  public static Throwable a(String paramString, Throwable paramThrowable)
+  {
+    if (paramThrowable == null) {
+      return new IllegalStateException(paramString);
+    }
+    return new IllegalStateException(paramString, paramThrowable);
+  }
+  
+  public static Throwable b(String paramString, Throwable paramThrowable)
+  {
+    if (paramThrowable == null) {
+      return new Throwable(paramString);
+    }
+    return new Throwable(paramString, paramThrowable);
   }
 }
 

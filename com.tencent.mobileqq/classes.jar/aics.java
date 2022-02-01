@@ -1,19 +1,17 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addfriendverifi.NewFriendVerifyBlockedListFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aics
+class aics
   implements View.OnClickListener
 {
-  public aics(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
+  aics(aici paramaici) {}
   
   public void onClick(View paramView)
   {
-    aicl.a(NewFriendVerifyBlockedListFragment.a(this.a).app).c(NewFriendVerifyBlockedListFragment.a(this.a).app.getCurrentAccountUin());
-    bcef.b(null, "dc00898", "", "", "0X800A3A9", "0X800A3A9", 0, 0, "", "", "", "");
+    if (!this.a.hasDestory) {
+      aici.c(this.a);
+    }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

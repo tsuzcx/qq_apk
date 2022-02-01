@@ -1,12 +1,17 @@
-public class akdr
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class akdr
+  implements View.OnClickListener
 {
-  float jdField_a_of_type_Float;
-  String jdField_a_of_type_JavaLangString;
+  akdr(akdn paramakdn) {}
   
-  public akdr(String paramString, float paramFloat)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Float = paramFloat;
+    akdn.a(this.a).setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

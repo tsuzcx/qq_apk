@@ -1,48 +1,73 @@
-import android.widget.ProgressBar;
+import MQQ.GetRoamToastRsp;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
+import android.view.ViewGroup;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.oidb_0x5e1.RspBody;
-import tencent.im.oidb.oidb_0x5e1.UdcUinData;
 
 public class adqo
-  extends axkv
+  extends aodb
 {
-  public adqo(LoginInfoActivity paramLoginInfoActivity) {}
+  public adqo(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void getFaceStateSuccess(oidb_0x5e1.RspBody paramRspBody)
+  public void a(String paramString, int paramInt)
   {
-    LoginInfoActivity.a(this.a, paramRspBody);
-    int i = ((oidb_0x5e1.UdcUinData)paramRspBody.rpt_msg_uin_data.get(0)).user_login_guard_face.get();
-    TextView localTextView = LoginInfoActivity.c(this.a);
-    if (i == 1)
-    {
-      paramRspBody = this.a.getString(2131691998);
-      localTextView.setText(paramRspBody);
-      LoginInfoActivity.a(this.a).setVisibility(4);
-      LoginInfoActivity.c(this.a).setVisibility(0);
-      if (i != 1) {
-        break label122;
-      }
-    }
-    label122:
-    for (paramRspBody = "1";; paramRspBody = "0")
-    {
-      bcef.b(null, "dc00898", "", "", "0X800AA7A", "0X800AA7A", 0, 0, paramRspBody, "", "", "");
-      return;
-      paramRspBody = this.a.getString(2131692003);
-      break;
-    }
+    ChatSettingActivity.d(this.a);
   }
   
-  public void onFailedResponse(String paramString1, int paramInt, String paramString2)
+  public void a(boolean paramBoolean, GetRoamToastRsp paramGetRoamToastRsp)
   {
-    QQToast.a(this.a, paramString2, 0).a();
-    QLog.e("LoginInfoActivity.AccDevSec", 1, "cmd : " + paramString1 + " request failed  code : " + paramInt + " message : " + paramString2);
-    LoginInfoActivity.a(this.a).setVisibility(4);
+    if (this.a.a == null) {
+      return;
+    }
+    Object localObject1;
+    Object localObject2;
+    if ((paramBoolean) && (paramGetRoamToastRsp != null) && (!TextUtils.isEmpty(paramGetRoamToastRsp.sToast)) && (((aocy)this.a.app.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(paramGetRoamToastRsp)))
+    {
+      localObject1 = paramGetRoamToastRsp.sToast;
+      int i = ((String)localObject1).indexOf('#');
+      if (i < 0) {
+        break label307;
+      }
+      int j = ((String)localObject1).indexOf('#', i + 1);
+      if (j < 0) {
+        break label307;
+      }
+      localObject2 = new SpannableStringBuilder();
+      ((SpannableStringBuilder)localObject2).append((CharSequence)localObject1, 0, i);
+      ((SpannableStringBuilder)localObject2).append((CharSequence)localObject1, i + 1, j);
+      ((SpannableStringBuilder)localObject2).append((CharSequence)localObject1, j + 1, ((String)localObject1).length());
+      ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(-12541697), i, j - 1, 33);
+      localObject1 = localObject2;
+    }
+    label299:
+    label307:
+    for (;;)
+    {
+      this.a.d.setText((CharSequence)localObject1);
+      this.a.a.setTag(paramGetRoamToastRsp);
+      this.a.a.setVisibility(0);
+      bdla.b(this.a.app, "dc00898", "", "", "0X8009E31", "0X8009E31", 0, 0, "", "", "", "");
+      return;
+      if (QLog.isColorLevel())
+      {
+        localObject1 = ChatSettingActivity.c(this.a);
+        localObject2 = new StringBuilder().append("onGetRoamToast: ").append(paramBoolean).append(",");
+        if (paramGetRoamToastRsp != null) {
+          break label299;
+        }
+      }
+      for (paramGetRoamToastRsp = "null";; paramGetRoamToastRsp = paramGetRoamToastRsp.sToast)
+      {
+        QLog.d((String)localObject1, 2, paramGetRoamToastRsp);
+        this.a.a.setVisibility(8);
+        return;
+      }
+    }
   }
 }
 

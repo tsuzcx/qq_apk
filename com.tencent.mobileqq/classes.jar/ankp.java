@@ -1,60 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-import java.security.Key;
+import com.tencent.mobileqq.apollo.data.ApolloDress;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ankp
+final class ankp
+  implements anfg
 {
-  private anks a;
+  ankp(ankr paramankr, long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, ApolloDress paramApolloDress, int[] paramArrayOfInt) {}
   
-  public ankp(anks paramanks)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    this.a = paramanks;
-  }
-  
-  private ankq a(String paramString)
-  {
-    anko localanko = anko.a(paramString);
-    if (localanko == null)
-    {
-      QLog.e("JwtConsumer", 1, "format jwt token error");
-      return null;
+    if (this.jdField_a_of_type_Ankr != null) {
+      this.jdField_a_of_type_Ankr.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentMobileqqApolloDataApolloDress.a, this.jdField_a_of_type_ArrayOfInt, 22);
     }
-    paramString = new ankq(paramString, localanko);
-    if (a(paramString)) {}
-    for (;;)
-    {
-      return paramString;
-      paramString = null;
-    }
-  }
-  
-  private boolean a(ankq paramankq)
-  {
-    paramankq = paramankq.a();
-    Key localKey = this.a.a();
-    if (localKey == null)
-    {
-      QLog.e("JwtConsumer", 1, "verificationKeyResolver.resolveKey() is null");
-      return false;
-    }
-    paramankq.a(localKey);
-    return paramankq.a();
-  }
-  
-  public String a(String paramString)
-  {
-    paramString = a(paramString);
-    if (paramString == null)
-    {
-      QLog.e("JwtConsumer", 1, "process jwt token error, process is null");
-      return null;
-    }
-    paramString = paramString.a();
-    if (paramString == null)
-    {
-      QLog.e("JwtConsumer", 1, "process jwt token error, joseObject is null");
-      return null;
-    }
-    return paramString.a();
   }
 }
 

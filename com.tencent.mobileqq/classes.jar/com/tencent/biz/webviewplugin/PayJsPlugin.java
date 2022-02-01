@@ -9,11 +9,11 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
-import bcef;
-import bgto;
-import bgve;
-import bkkq;
-import bkkz;
+import bdla;
+import bieg;
+import bifw;
+import blvy;
+import blwh;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -31,7 +31,7 @@ import mqq.manager.TicketManager;
 import org.json.JSONObject;
 
 public class PayJsPlugin
-  extends bgto
+  extends bieg
 {
   protected long a;
   Activity jdField_a_of_type_AndroidAppActivity;
@@ -75,7 +75,7 @@ public class PayJsPlugin
           localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
           this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
           if (QWalletHelper.sFullWindowActivitySource == 1) {
-            bcef.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "index.layila.intopage", 0, 0, "", "", "", "");
+            bdla.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "index.layila.intopage", 0, 0, "", "", "", "");
           }
           if (QWalletHelper.sFullWndCurType != QWalletHelper.FULL_WND_TYPE_NORMAL) {
             break label183;
@@ -178,12 +178,12 @@ public class PayJsPlugin
     {
       localIntent.putExtra("uin", localQQAppInterface.getCurrentAccountUin());
       localIntent.putExtra("qqskey", (String)localObject);
-      localObject = new bkkz(0);
-      ((bkkz)localObject).jdField_b_of_type_JavaLangString = "qwallet_plugin.apk";
-      ((bkkz)localObject).d = "Wallet";
-      ((bkkz)localObject).e = "com.qwallet.receiver.QWallPreloadReceiver";
-      ((bkkz)localObject).a = localIntent;
-      bkkq.b(this.mRuntime.a(), (bkkz)localObject);
+      localObject = new blwh(0);
+      ((blwh)localObject).jdField_b_of_type_JavaLangString = "qwallet_plugin.apk";
+      ((blwh)localObject).d = "Wallet";
+      ((blwh)localObject).e = "com.qwallet.receiver.QWallPreloadReceiver";
+      ((blwh)localObject).a = localIntent;
+      blvy.b(this.mRuntime.a(), (blwh)localObject);
       return;
     }
   }

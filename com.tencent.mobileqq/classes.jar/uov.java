@@ -1,25 +1,21 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import java.util.Comparator;
 
-class uov
-  extends GestureDetector.SimpleOnGestureListener
+public class uov
+  implements Comparator<uon>
 {
-  uov(uou paramuou) {}
+  public uov(uot paramuot) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public int a(uon paramuon1, uon paramuon2)
   {
-    uya.b("WSFollowFeedHolder", "VideoLayout onDoubleTap");
-    uou.a(this.a, paramMotionEvent);
-    uou.a(this.a, true);
-    return super.onDoubleTap(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    uya.b("WSFollowFeedHolder", "VideoLayout onSingleTapConfirmed");
-    uou.a(this.a);
-    uou.a(this.a, false);
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    long l1 = paramuon1.a;
+    long l2 = paramuon2.a;
+    if (l2 > l1) {
+      return 1;
+    }
+    if (l2 < l1) {
+      return -1;
+    }
+    return 0;
   }
 }
 

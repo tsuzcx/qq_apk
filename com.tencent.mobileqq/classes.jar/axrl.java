@@ -1,31 +1,33 @@
-import android.animation.ObjectAnimator;
-import android.support.annotation.Nullable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.mobileqq.olympic.activity.PromotionEntry.UpdateOperateBtnStatusRunnable;
-import java.lang.ref.WeakReference;
+import android.util.SparseArray;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
 public class axrl
-  implements OnCompositionLoadedListener
+  implements bila<oidb_0x8e4.RspBody>
 {
-  public axrl(PromotionEntry.UpdateOperateBtnStatusRunnable paramUpdateOperateBtnStatusRunnable, String paramString) {}
+  public axrl(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    if (paramLottieComposition == null) {}
-    do
+    if (paramInt == 0)
     {
+      GameRoomInviteActivity localGameRoomInviteActivity = this.a;
+      String str = paramRspBody.string_invite_id.get().toStringUtf8();
+      localGameRoomInviteActivity.jdField_b_of_type_JavaLangString = str;
+      GameRoomInviteActivity.jdField_a_of_type_JavaLangString = str;
+      this.a.jdField_b_of_type_Long = paramRspBody.uint64_leader_uin.get();
+      this.a.e();
+      bhhr.a(this.a, this.a.app.getCurrentAccountUin(), true, System.currentTimeMillis());
+      if ((this.a.jdField_a_of_type_Long > 0L) && (this.a.jdField_b_of_type_Boolean)) {
+        GameRoomInviteActivity.a(this.a, "" + this.a.jdField_a_of_type_Long, 1);
+      }
       return;
-      this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = new LottieDrawable();
-      this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.setComposition(paramLottieComposition);
-      this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.setImageAssetDelegate(new axrm(this));
-      this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.loop(true);
-      paramLottieComposition = (ImageView)PromotionEntry.UpdateOperateBtnStatusRunnable.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable).get();
-    } while ((paramLottieComposition == null) || (paramLottieComposition.getVisibility() != 0) || (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable.jdField_a_of_type_AndroidAnimationObjectAnimator == null) || (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable.jdField_a_of_type_AndroidAnimationObjectAnimator.isRunning()));
-    paramLottieComposition.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
-    this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.playAnimation();
+    }
+    this.a.a(paramInt, paramRspBody, (String)GameRoomInviteActivity.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
   }
 }
 

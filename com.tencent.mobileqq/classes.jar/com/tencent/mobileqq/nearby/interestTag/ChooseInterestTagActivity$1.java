@@ -3,7 +3,7 @@ package com.tencent.mobileqq.nearby.interestTag;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Message;
-import awkr;
+import axqt;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -33,7 +33,7 @@ class ChooseInterestTagActivity$1
         if (ChooseInterestTagActivity.a(this.this$0)) {}
         for (i = 1;; i = 0)
         {
-          ((awkr)localObject1).a("", j, k, 30, 0, i);
+          ((axqt)localObject1).a("", j, k, 30, 0, i);
           return;
         }
       }
@@ -53,7 +53,7 @@ class ChooseInterestTagActivity$1
         if (ChooseInterestTagActivity.a(this.this$0)) {}
         for (i = 1;; i = 0)
         {
-          ((awkr)localObject1).a("", j, k, 30, 0, i);
+          ((axqt)localObject1).a("", j, k, 30, 0, i);
           return;
         }
       }

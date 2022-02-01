@@ -1,15 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.content.Context;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.tavcut.session.TAVCutVideoSession;
+import dov.com.qq.im.aeeditor.module.aifilter.MultiVideoAIFilterProxy.1;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class bnwh
-  implements DialogInterface.OnClickListener
+  extends bnwn
 {
-  public bnwh(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  private static final String a = bnwh.class.getSimpleName();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bnwh(TAVCutVideoSession paramTAVCutVideoSession)
   {
-    this.a.s();
+    super(paramTAVCutVideoSession);
+  }
+  
+  protected void a(Context paramContext, bnwb parambnwb)
+  {
+    List localList = a();
+    ThreadManager.getSubThreadHandler().post(new MultiVideoAIFilterProxy.1(this, localList, paramContext, parambnwb));
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

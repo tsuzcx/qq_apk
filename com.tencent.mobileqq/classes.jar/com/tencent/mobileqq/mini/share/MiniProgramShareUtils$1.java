@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.mini.share;
 
-import adxr;
+import aeow;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
-import atky;
+import aupt;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -66,7 +66,7 @@ final class MiniProgramShareUtils$1
         localObject = new Intent();
         ((Intent)localObject).putExtra("public_fragment_window_feature", 1);
         ((Intent)localObject).putExtras(paramBundle);
-        adxr.a(this.val$activity, (Intent)localObject, PublicTransFragmentActivity.class, MiniShareQuicklySendPanelFragment.class);
+        aeow.a(this.val$activity, (Intent)localObject, PublicTransFragmentActivity.class, MiniShareQuicklySendPanelFragment.class);
         return;
       }
       if (this.val$entryModel != null)
@@ -89,10 +89,10 @@ final class MiniProgramShareUtils$1
       ((Intent)localObject).putExtras(paramBundle);
       if (this.val$miniAppShareFrom == 12)
       {
-        atky.a(this.val$activity, (Intent)localObject, 100500, "applet");
+        aupt.a(this.val$activity, (Intent)localObject, 100500, "applet");
         return;
       }
-      atky.a(this.val$activity, (Intent)localObject);
+      aupt.a(this.val$activity, (Intent)localObject);
       return;
     }
     if (this.val$shareType == 5)

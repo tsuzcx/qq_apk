@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import pkp;
-import pvc;
-import qtr;
+import pvm;
+import qfw;
+import rfw;
 
 class ComponentLastRead$2
   implements Runnable
@@ -12,12 +12,12 @@ class ComponentLastRead$2
   public void run()
   {
     if (this.this$0.a.a.i()) {
-      pkp.a().a(this.this$0);
+      pvm.a().a(this.this$0);
     }
     while (this.this$0.a.a.e() != 0) {
       return;
     }
-    pkp.a().a(this.this$0);
+    pvm.a().a(this.this$0);
   }
 }
 

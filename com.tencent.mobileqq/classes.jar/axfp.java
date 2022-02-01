@@ -1,11 +1,23 @@
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
+import com.tencent.qphone.base.util.QLog;
+
 public class axfp
-  extends axfs
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
+  public axfp(TabPageIndicator paramTabPageIndicator) {}
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TabPageIndicator", 2, "onSingleTapConfirmed() called with: e = [" + paramMotionEvent + "]");
+    }
+    if (TabPageIndicator.a(this.a) != null) {
+      this.a.performClick();
+    }
+    return super.onSingleTapConfirmed(paramMotionEvent);
+  }
 }
 
 

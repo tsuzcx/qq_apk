@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.activity.qwallet.voice;
 
-import akgd;
-import akgm;
-import akgn;
-import akgo;
-import amtj;
+import albw;
+import alcf;
+import alcg;
+import alch;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
@@ -22,6 +21,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
+import anvx;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.util.DisplayUtil;
 import java.util.ArrayList;
@@ -33,13 +33,13 @@ public class KSongMicView
 {
   float jdField_a_of_type_Float = 0.0F;
   private int jdField_a_of_type_Int = 0;
-  private akgo jdField_a_of_type_Akgo;
+  private alch jdField_a_of_type_Alch;
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(5);
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
-  private List<akgn> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<alcg> jdField_a_of_type_JavaUtilList = new ArrayList();
   public boolean a;
   private float jdField_b_of_type_Float = DisplayUtil.dip2px(getContext(), 2.0F);
   private int jdField_b_of_type_Int;
@@ -61,14 +61,14 @@ public class KSongMicView
     this.f = DisplayUtil.dip2px(getContext(), 12.0F);
     this.g = DisplayUtil.dip2px(getContext(), 100.0F);
     ViewCompat.setImportantForAccessibility(this, 1);
-    setContentDescription(amtj.a(2131705092));
+    setContentDescription(anvx.a(2131705443));
     setClickable(true);
   }
   
   private void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, int paramInt1, int paramInt2)
   {
-    akgn localakgn = new akgn(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6, paramFloat7, paramFloat8, paramInt1, paramInt2);
-    this.jdField_a_of_type_JavaUtilList.add(localakgn);
+    alcg localalcg = new alcg(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6, paramFloat7, paramFloat8, paramInt1, paramInt2);
+    this.jdField_a_of_type_JavaUtilList.add(localalcg);
   }
   
   private void c()
@@ -80,7 +80,7 @@ public class KSongMicView
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(2);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(400L);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new akgm(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new alcf(this));
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
   }
   
@@ -147,20 +147,20 @@ public class KSongMicView
       localObject = this.jdField_a_of_type_JavaUtilList.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        akgn localakgn = (akgn)((Iterator)localObject).next();
+        alcg localalcg = (alcg)((Iterator)localObject).next();
         paramCanvas.save();
-        f2 = localakgn.jdField_a_of_type_Float;
-        f1 = localakgn.jdField_b_of_type_Float;
+        f2 = localalcg.jdField_a_of_type_Float;
+        f1 = localalcg.jdField_b_of_type_Float;
         f2 = (getWidth() - f2) / 2.0F;
         f1 = (getHeight() - f1) / 2.0F;
-        i = (int)(255.0F * localakgn.c);
+        i = (int)(255.0F * localalcg.c);
         this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
         this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-3405);
         this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_b_of_type_Float);
         this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(i);
         this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_b_of_type_Float * 0.5F + f2, this.jdField_b_of_type_Float * 0.5F + f1, getWidth() - this.jdField_b_of_type_Float * 0.5F - f2, getHeight() - this.jdField_b_of_type_Float * 0.5F - f1);
-        paramCanvas.scale(localakgn.d, localakgn.e, getWidth() / 2, getHeight() / 2);
-        paramCanvas.rotate(localakgn.jdField_a_of_type_Int, getWidth() / 2, getHeight() / 2);
+        paramCanvas.scale(localalcg.d, localalcg.e, getWidth() / 2, getHeight() / 2);
+        paramCanvas.rotate(localalcg.jdField_a_of_type_Int, getWidth() / 2, getHeight() / 2);
         paramCanvas.drawOval(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
         paramCanvas.restore();
       }
@@ -196,7 +196,7 @@ public class KSongMicView
       paramCanvas.drawOval(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
       if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 1))
       {
-        localObject = getResources().getDrawable(2130847222);
+        localObject = getResources().getDrawable(2130847320);
         int j = (a() - this.d) / 2;
         ((Drawable)localObject).setBounds(j, j, this.d + j, this.e + j);
         ((Drawable)localObject).setAlpha(i);
@@ -230,8 +230,8 @@ public class KSongMicView
       } while (this.jdField_a_of_type_Int != 0);
       this.jdField_a_of_type_Int = 1;
       invalidate();
-      if (this.jdField_a_of_type_Akgo != null) {
-        this.jdField_a_of_type_Akgo.l();
+      if (this.jdField_a_of_type_Alch != null) {
+        this.jdField_a_of_type_Alch.l();
       }
       this.jdField_a_of_type_Float = paramMotionEvent.getRawY();
       return true;
@@ -239,7 +239,7 @@ public class KSongMicView
     float f1 = this.jdField_a_of_type_Float;
     paramMotionEvent.getRawY();
     int i = j;
-    if (akgd.a(this, paramMotionEvent.getRawX(), paramMotionEvent.getRawY())) {
+    if (albw.a(this, paramMotionEvent.getRawX(), paramMotionEvent.getRawY())) {
       if (paramMotionEvent.getAction() != 3) {
         break label218;
       }
@@ -249,8 +249,8 @@ public class KSongMicView
     {
       if (i != 0)
       {
-        if (this.jdField_a_of_type_Akgo != null) {
-          this.jdField_a_of_type_Akgo.n();
+        if (this.jdField_a_of_type_Alch != null) {
+          this.jdField_a_of_type_Alch.n();
         }
         b();
         break;
@@ -258,17 +258,17 @@ public class KSongMicView
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
       this.jdField_a_of_type_Int = 2;
       invalidate();
-      if (this.jdField_a_of_type_Akgo == null) {
+      if (this.jdField_a_of_type_Alch == null) {
         break;
       }
-      this.jdField_a_of_type_Akgo.m();
+      this.jdField_a_of_type_Alch.m();
       break;
     }
   }
   
-  public void setStatusListener(akgo paramakgo)
+  public void setStatusListener(alch paramalch)
   {
-    this.jdField_a_of_type_Akgo = paramakgo;
+    this.jdField_a_of_type_Alch = paramalch;
   }
 }
 

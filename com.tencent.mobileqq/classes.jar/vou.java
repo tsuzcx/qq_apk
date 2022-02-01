@@ -1,66 +1,60 @@
-import android.annotation.TargetApi;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransferRequest;
+import UserGrowth.stGetPersonalFeedListRsp;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
+import java.util.ArrayList;
+import java.util.List;
 
-@TargetApi(14)
-public class vou
-  extends vow
+class vou
+  implements vfg
 {
-  public String a;
-  public voi a;
-  public String b;
+  vou(vot paramvot, long paramLong, boolean paramBoolean1, vos paramvos, boolean paramBoolean2) {}
   
-  public vou(String paramString1, String paramString2)
+  public void a(vfr paramvfr)
   {
-    this.jdField_a_of_type_Voi = new voi();
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-  }
-  
-  private void c()
-  {
-    TransferRequest localTransferRequest = new TransferRequest();
-    localTransferRequest.mUpCallBack = new vov(this);
-    localTransferRequest.mLocalPath = this.b;
-    localTransferRequest.mIsUp = true;
-    localTransferRequest.mFileType = 196609;
-    QQStoryContext.a();
-    localTransferRequest.mSelfUin = QQStoryContext.a().getCurrentUin();
-    localTransferRequest.mPeerUin = "";
-    localTransferRequest.mUniseq = (System.currentTimeMillis() + (Math.random() * 10000.0D));
-    QQStoryContext.a();
-    QQStoryContext.a().getTransFileController().transferAsync(localTransferRequest);
-  }
-  
-  protected void a()
-  {
-    if ((TextUtils.isEmpty(this.b)) || (!ypi.c(this.b)))
+    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    vmp.a("weishi-beacon", "请求播放页（推荐)耗时：" + l + "毫秒");
+    vkk.a().a(l, paramvfr.jdField_a_of_type_Vfo, "chat_page", this.jdField_a_of_type_Boolean);
+    if (!paramvfr.a())
     {
-      Object localObject = ((voj)vux.a(14)).a(this.jdField_a_of_type_JavaLangString);
-      if (((vom)localObject).a.isSuccess())
-      {
-        this.b = ((vom)localObject).b;
-        if ((TextUtils.isEmpty(this.b)) || (!ypi.c(this.b)))
-        {
-          xvv.d("Q.qqstory.publish.upload:StoryVideoFileObject  ", "end composite success but file not exist:%s", new Object[] { this.b });
-          localObject = new ErrorMessage(940006, String.format("end composite success but file not exist:%s", new Object[] { this.b }));
-          ((ErrorMessage)localObject).extraMsg = "composite";
-          super.notifyResult(localObject);
-        }
+      vmp.d("WSArkCardDataManagerLog", "[WSVerticalDataManager.java][onTaskResponse] failed code:" + paramvfr.jdField_a_of_type_Int + ", msg:" + paramvfr.jdField_a_of_type_JavaLangString);
+      if (this.jdField_a_of_type_Vos != null) {
+        this.jdField_a_of_type_Vos.a(paramvfr.jdField_a_of_type_Int, paramvfr.jdField_a_of_type_JavaLangString);
       }
-      else
+      vkk.a().a(l, paramvfr.jdField_a_of_type_Vfo, paramvfr.jdField_a_of_type_Int, paramvfr.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    if ((paramvfr.jdField_a_of_type_JavaLangObject instanceof stGetPersonalFeedListRsp))
+    {
+      stGetPersonalFeedListRsp localstGetPersonalFeedListRsp = (stGetPersonalFeedListRsp)paramvfr.jdField_a_of_type_JavaLangObject;
+      vov localvov = new vov();
+      if (this.jdField_a_of_type_Boolean)
       {
-        ((vom)localObject).a.extraMsg = "composite";
-        super.notifyResult(((vom)localObject).a);
+        vot.a(this.jdField_a_of_type_Vot, localstGetPersonalFeedListRsp, this.jdField_a_of_type_Vos);
+        vot.a(this.jdField_a_of_type_Vot, localstGetPersonalFeedListRsp, localvov);
+      }
+      vot.a(this.jdField_a_of_type_Vot, localstGetPersonalFeedListRsp.attach_info);
+      vot.a(this.jdField_a_of_type_Vot, localstGetPersonalFeedListRsp.is_finished);
+      ArrayList localArrayList = localstGetPersonalFeedListRsp.feeds;
+      List localList = WSVerticalDataManager.a().a(localArrayList);
+      StringBuilder localStringBuilder = new StringBuilder().append("[WSVerticalDataManager.java][onTaskResponse] itemDataList size:").append(localList.size()).append(", isFirst = ").append(this.jdField_a_of_type_Boolean).append(", mAttachInfo = ").append(vot.a(this.jdField_a_of_type_Vot)).append(", isFinish = ").append(localstGetPersonalFeedListRsp.is_finished).append(", size = ");
+      if (localArrayList != null) {}
+      for (int i = localArrayList.size();; i = 0)
+      {
+        vmp.e("WSArkCardDataManagerLog", i);
+        if (paramvfr.jdField_a_of_type_Vfh != null) {
+          vkc.a().a(localstGetPersonalFeedListRsp.traceId, paramvfr.jdField_a_of_type_Vfh.a);
+        }
+        if (this.jdField_a_of_type_Vos == null) {
+          break;
+        }
+        this.jdField_a_of_type_Vos.a(localList, this.b, this.jdField_a_of_type_Boolean, localvov);
         return;
       }
     }
-    voe.a().b(this.jdField_a_of_type_JavaLangString);
-    c();
+    vmp.d("WSArkCardDataManagerLog", "[WSVerticalDataManager.java][onTaskResponse] task.mResultBean instanceof stSimpleGetFeedListRsp: false!");
+    if (this.jdField_a_of_type_Vos != null) {
+      this.jdField_a_of_type_Vos.a(paramvfr.b, paramvfr.jdField_a_of_type_JavaLangString);
+    }
+    vkk.a().a(l, paramvfr.jdField_a_of_type_Vfo, -1, "数据无法解析或为空");
   }
 }
 

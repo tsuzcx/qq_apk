@@ -1,15 +1,16 @@
-class bbul
-  implements bbsm
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+
+public class bbul
+  implements ge
 {
-  bbul(bbuk parambbuk, bbup parambbup) {}
+  public bbul(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
+  public void a()
   {
-    if ((paramInt == 1) && (this.jdField_a_of_type_Bbup != null)) {
-      this.jdField_a_of_type_Bbup.onAutoFocusCallback(paramBoolean, true);
-    }
+    Message localMessage = SignatureHistoryFragment.a(this.a).obtainMessage(1);
+    SignatureHistoryFragment.a(this.a).sendMessage(localMessage);
   }
 }
 

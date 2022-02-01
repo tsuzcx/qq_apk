@@ -1,16 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import dov.com.qq.im.QIMCameraCaptureUnit.14;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 
-public class blia
-  implements DialogInterface.OnCancelListener
+public abstract class blia
+  extends blhu
 {
-  public blia(QIMCameraCaptureUnit.14 param14) {}
+  private int a;
+  private int b;
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public blia(int paramInt1, int paramInt2)
   {
-    this.a.this$0.a.setCameraPermissionResult(false);
+    this.a = paramInt2;
+    this.b = paramInt1;
+  }
+  
+  public int a(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
+  {
+    return this.a;
+  }
+  
+  public int b(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
+  {
+    return this.b;
+  }
+  
+  public int getMovementFlags(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
+  {
+    return makeMovementFlags(b(paramRecyclerView, paramViewHolder), a(paramRecyclerView, paramViewHolder));
   }
 }
 

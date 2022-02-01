@@ -1,59 +1,21 @@
-import java.io.File;
-import java.util.Arrays;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class zxm
+  implements View.OnClickListener
 {
-  public String a;
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
+  public zxm(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment, zwv paramzwv) {}
   
-  public zxm(zxj paramzxj, String paramString, JSONObject paramJSONObject)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangString = paramString;
-    try
-    {
-      this.b = paramJSONObject.getString("title");
-      this.c = paramJSONObject.getString("title_color");
-      this.d = paramJSONObject.getString("bg_color");
-      this.e = paramJSONObject.getString("bg_border_color");
-      return;
-    }
-    catch (JSONException paramzxj)
-    {
-      paramzxj.printStackTrace();
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    paramString = paramString + "/" + this.jdField_a_of_type_JavaLangString;
-    Object localObject = new File(paramString);
-    if (((File)localObject).exists())
-    {
-      localObject = Arrays.asList(((File)localObject).list());
-      if (((List)localObject).contains("take_video@2x.png"))
-      {
-        String str = paramString + "/" + "take_video@2x.png";
-        if (new File(str).exists()) {
-          this.f = str;
-        }
-      }
-      if (((List)localObject).contains("take_video_no_bg@2x.png"))
-      {
-        paramString = paramString + "/" + "take_video_no_bg@2x.png";
-        if (new File(paramString).exists()) {
-          this.g = paramString;
-        }
-      }
-    }
+    zqm.a("https://h5.qzone.qq.com/subscription/syncFeeds/{uin}?_proxy=1&_wv=3".replace("{uin}", this.jdField_a_of_type_Zwv.a.poster.id.get()));
+    aanb.b(this.jdField_a_of_type_Zwv.a.poster.id.get(), "auth_person", "sync_qzone", 0, 0, new String[0]);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

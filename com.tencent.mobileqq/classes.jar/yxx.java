@@ -1,45 +1,88 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.view.MotionEvent;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-class yxx
-  implements View.OnTouchListener
+public class yxx
+  extends blgi
 {
-  yxx(yxw paramyxw, Drawable paramDrawable, yyc paramyyc) {}
+  public static final TroopBarPOI a;
+  protected LayoutInflater a;
+  protected ArrayList<TroopBarPOI> a;
+  protected TroopBarPOI b;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  static
   {
-    switch (paramMotionEvent.getAction())
-    {
+    jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPOI = new TroopBarPOI("-1", "", anvx.a(2131710446), 0, "", 0, "");
+  }
+  
+  public yxx(Context paramContext)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+  }
+  
+  public void a(ArrayList<TroopBarPOI> paramArrayList, TroopBarPOI paramTroopBarPOI)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+    if (paramTroopBarPOI != null) {
+      this.b = new TroopBarPOI(paramTroopBarPOI);
     }
-    for (;;)
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    TroopBarPOI localTroopBarPOI;
+    if (paramView == null)
     {
-      return true;
-      if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof GradientDrawable)) {
-        if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
-        {
-          ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setColor(-15263977);
-        }
-        else
-        {
-          ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setColor(-920840);
-          continue;
-          if (yxw.a(this.jdField_a_of_type_Yxw) != null) {
-            yxw.a(this.jdField_a_of_type_Yxw).a(this.jdField_a_of_type_Yyc);
-          }
-          if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof GradientDrawable)) {
-            if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
-              ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setColor(-16777216);
-            } else {
-              ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setColor(-1);
-            }
-          }
-        }
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561767, null);
+      localObject = new yxy();
+      ((yxy)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377330));
+      ((yxy)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369960));
+      paramView.setTag(localObject);
+      localTroopBarPOI = (TroopBarPOI)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      ((yxy)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(localTroopBarPOI.c);
+      localObject = ((yxy)localObject).jdField_a_of_type_AndroidWidgetImageView;
+      if (!localTroopBarPOI.equals(this.b)) {
+        break label160;
       }
+    }
+    label160:
+    for (int i = 0;; i = 8)
+    {
+      ((ImageView)localObject).setVisibility(i);
+      paramView.setContentDescription(localTroopBarPOI.c);
+      paramView.setFocusable(true);
+      paramView.setFocusableInTouchMode(true);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+      localObject = (yxy)paramView.getTag();
+      break;
     }
   }
 }

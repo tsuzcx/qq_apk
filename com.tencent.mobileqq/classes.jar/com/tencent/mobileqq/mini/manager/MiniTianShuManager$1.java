@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.mini.manager;
 
-import blbv;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import cooperation.vip.tianshu.TianShuGetAdvCallback;
 import java.util.List;
 
 final class MiniTianShuManager$1
-  implements blbv
+  implements TianShuGetAdvCallback
 {
-  MiniTianShuManager$1(blbv paramblbv) {}
+  MiniTianShuManager$1(TianShuGetAdvCallback paramTianShuGetAdvCallback) {}
   
   public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {

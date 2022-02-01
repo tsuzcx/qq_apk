@@ -1,22 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import mqq.util.WeakReference;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 
-public class azxp
-  implements DialogInterface.OnDismissListener
+class azxp
+  implements bkzq
 {
-  WeakReference<DialogInterface.OnDismissListener> jdField_a_of_type_MqqUtilWeakReference;
+  azxp(azxh paramazxh, PhoneContactManagerImp paramPhoneContactManagerImp, boolean paramBoolean, bkzi parambkzi) {}
   
-  azxp(azxo paramazxo, DialogInterface.OnDismissListener paramOnDismissListener)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramOnDismissListener);
-  }
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    DialogInterface.OnDismissListener localOnDismissListener = (DialogInterface.OnDismissListener)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localOnDismissListener != null) {
-      localOnDismissListener.onDismiss(paramDialogInterface);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.e();
+      return;
+      azxh.c(this.jdField_a_of_type_Azxh);
+      continue;
+      azxh.a(this.jdField_a_of_type_Azxh, this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp, this.jdField_a_of_type_Boolean);
     }
   }
 }

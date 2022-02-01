@@ -6,8 +6,8 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
-import bawx;
-import bfvh;
+import bcdn;
+import bhdz;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySearchTipsContainer;
 import com.tencent.mobileqq.utils.ViewUtils;
 import java.util.Iterator;
@@ -36,7 +36,7 @@ public class HotWordForSubTipsContainer
     Button localButton = new Button(getContext());
     if (paramInt1 == 0)
     {
-      localButton.setBackgroundResource(2130849392);
+      localButton.setBackgroundResource(2130849484);
       GradientDrawable localGradientDrawable = (GradientDrawable)((android.graphics.drawable.DrawableContainer.DrawableContainerState)((android.graphics.drawable.StateListDrawable)localButton.getBackground()).getConstantState()).getChildren()[1];
       if (paramInt3 == 0) {
         break label172;
@@ -73,12 +73,12 @@ public class HotWordForSubTipsContainer
   
   public int a(int paramInt)
   {
-    int i6 = (int)bfvh.a(getContext(), 12.0F);
-    int i1 = (int)bfvh.a(getContext(), 10.0F);
-    int i7 = (int)bfvh.a(getContext(), 10.0F);
-    int i8 = (int)bfvh.a(getContext(), 10.0F);
-    int m = (int)bfvh.a(getContext(), 15.0F);
-    int i9 = (int)bfvh.a(getContext(), 15.0F);
+    int i6 = (int)bhdz.a(getContext(), 12.0F);
+    int i1 = (int)bhdz.a(getContext(), 10.0F);
+    int i7 = (int)bhdz.a(getContext(), 10.0F);
+    int i8 = (int)bhdz.a(getContext(), 10.0F);
+    int m = (int)bhdz.a(getContext(), 15.0F);
+    int i9 = (int)bhdz.a(getContext(), 15.0F);
     int i10 = getChildCount();
     int n = 0;
     int k = m;
@@ -124,22 +124,22 @@ public class HotWordForSubTipsContainer
     }
   }
   
-  public void a(List<bawx> paramList, int paramInt1, int paramInt2, int paramInt3)
+  public void a(List<bcdn> paramList, int paramInt1, int paramInt2, int paramInt3)
   {
     removeAllViews();
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
-      a(((bawx)paramList.next()).b, paramInt1, paramInt2, paramInt3, null);
+      a(((bcdn)paramList.next()).b, paramInt1, paramInt2, paramInt3, null);
     }
   }
   
   public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int i2 = (int)bfvh.a(getContext(), 12.0F);
-    int k = (int)bfvh.a(getContext(), 10.0F);
-    int i3 = (int)bfvh.a(getContext(), 10.0F);
-    paramInt4 = (int)bfvh.a(getContext(), 15.0F);
-    int i4 = (int)bfvh.a(getContext(), 15.0F);
+    int i2 = (int)bhdz.a(getContext(), 12.0F);
+    int k = (int)bhdz.a(getContext(), 10.0F);
+    int i3 = (int)bhdz.a(getContext(), 10.0F);
+    paramInt4 = (int)bhdz.a(getContext(), 15.0F);
+    int i4 = (int)bhdz.a(getContext(), 15.0F);
     int i5 = getChildCount();
     int i = 0;
     int j = 1;

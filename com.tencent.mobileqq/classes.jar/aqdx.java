@@ -1,72 +1,78 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
+import java.util.List;
 
 public class aqdx
-  extends aptq<aqdw>
+  extends aqdt
 {
-  @NonNull
-  public aqdw a(int paramInt)
-  {
-    return new aqdw();
-  }
+  private float a;
+  private float b = -1.0F;
+  private float c = -1.0F;
+  float[] d = new float[3];
+  private float[] e = new float[16];
   
-  @Nullable
-  public aqdw a(aptx[] paramArrayOfaptx)
+  public aqdx(Context paramContext, int paramInt, SensorManager paramSensorManager, aqdl paramaqdl)
   {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null))
+    super(paramContext, paramInt, paramSensorManager, paramaqdl);
+    this.jdField_a_of_type_Float = -1.0F;
+    if (paramSensorManager.getDefaultSensor(3) != null)
     {
-      aqdw localaqdw = aqdw.a(paramArrayOfaptx[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("WVStatisticsConfProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
+      this.jdField_a_of_type_JavaUtilList.add(paramSensorManager.getDefaultSensor(3));
+      return;
+    }
+    throw new OrientationProviderNotFound(String.valueOf(3));
+  }
+  
+  private void a(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    if (this.jdField_a_of_type_Aqdl == null) {
+      return;
+    }
+    if (Math.abs(paramFloat1 - this.jdField_a_of_type_Float) > 1.0F)
+    {
+      this.jdField_a_of_type_Float = paramFloat1;
+      this.jdField_a_of_type_Aqdl.updateAzimuth(paramFloat1);
+    }
+    if (Math.abs(paramFloat2 - this.b) > 1.0F)
+    {
+      this.b = paramFloat2;
+      this.jdField_a_of_type_Aqdl.updatePitch(paramFloat2);
+    }
+    if (Math.abs(paramFloat3 - this.c) > 1.0F)
+    {
+      this.c = paramFloat3;
+      this.jdField_a_of_type_Aqdl.updateRoll(paramFloat3);
+    }
+    this.jdField_a_of_type_Aqdl.updateSensor(paramFloat1, paramFloat2, paramFloat3);
+  }
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    if (paramSensorEvent.sensor.getType() == 3)
+    {
+      System.arraycopy(paramSensorEvent.values, 0, this.jdField_a_of_type_ArrayOfFloat, 0, 3);
+      if (this.jdField_a_of_type_Int != 1)
+      {
+        this.d[0] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[0]));
+        this.d[1] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[1]));
+        this.d[2] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[2]));
+        aqdn.a(aqdn.a(this.d), this.e);
+        super.a(this.e);
       }
-      return localaqdw;
     }
-    return null;
-  }
-  
-  public void a(aqdw paramaqdw)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVStatisticsConfProcessor", 2, "onUpdate " + paramaqdw.toString());
+    else
+    {
+      return;
     }
-  }
-  
-  public Class<aqdw> clazz()
-  {
-    return aqdw.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 361;
+    a(this.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_ArrayOfFloat[2]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqdx
  * JD-Core Version:    0.7.0.1
  */

@@ -315,16 +315,16 @@ public class PageWebview
   public void onResume(boolean paramBoolean)
   {
     super.onResume();
-    QMLog.d("PageWebview", "pagewebview onResume, id is " + this.mPageWebviewId);
+    QMLog.d("PageWebview", "pagewebview onResume, id is " + this.mPageWebviewId + " fromRouting:" + paramBoolean);
     if (this.mAppBrandPageContainer != null) {
       this.mAppBrandPageContainer.notifyOnPageWebViewResume();
     }
     if ((this.mBrandPageWebview != null) && (this.mAppBrandPageContainer != null) && (this.mContext != null)) {
       if (this.mContext.getMiniAppInfo() == null) {
-        break label261;
+        break label271;
       }
     }
-    label261:
+    label271:
     for (Object localObject1 = this.mContext.getMiniAppInfo().appId;; localObject1 = null)
     {
       if (this.mAppBrandPageContainer.getShowingPage() != null) {}

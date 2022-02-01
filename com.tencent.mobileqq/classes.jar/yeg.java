@@ -1,17 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
 
-final class yeg
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface yeg
 {
-  yeg(yei paramyei) {}
+  public abstract void a();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    if (this.a != null) {
-      this.a.a(paramValueAnimator);
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  
+  public abstract void a(@NonNull Activity paramActivity);
+  
+  public abstract void a(Bundle paramBundle1, Bundle paramBundle2);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

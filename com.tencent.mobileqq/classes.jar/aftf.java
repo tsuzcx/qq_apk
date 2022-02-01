@@ -1,28 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.widget.XListView;
 
-public class aftf
-  implements afrc
+public abstract interface aftf
 {
-  private BaseChatPie a;
+  public abstract void a(XListView paramXListView, int paramInt, View paramView, ChatMessage paramChatMessage, long paramLong, float paramFloat);
   
-  public aftf(BaseChatPie paramBaseChatPie)
-  {
-    this.a = paramBaseChatPie;
-  }
+  public abstract void a(XListView paramXListView, int paramInt, View paramView, ChatMessage paramChatMessage, boolean paramBoolean);
   
-  public void a(int paramInt)
-  {
-    String str = this.a.getCurTroopUin();
-    if (!TextUtils.isEmpty(str)) {
-      bgjy.a(this.a.app).a(str);
-    }
-  }
+  public abstract boolean a(XListView paramXListView, int paramInt, View paramView, ChatMessage paramChatMessage);
   
-  public int[] a()
-  {
-    return new int[7];
-  }
+  public abstract boolean a(XListView paramXListView, int paramInt1, View paramView, ChatMessage paramChatMessage, AudioPlayerBase paramAudioPlayerBase, int paramInt2);
+  
+  public abstract boolean b(ChatMessage paramChatMessage);
 }
 
 

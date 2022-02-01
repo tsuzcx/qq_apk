@@ -1,46 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
-import com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
 
 public class nxj
-  implements View.OnClickListener
 {
-  public nxj(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  public nxj(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public void onClick(View paramView)
+  @QQPermissionDenied(1)
+  public void denied()
   {
-    switch (paramView.getId())
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.TAG, 1, "CheckPermission user denied = ");
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      PublicAccountAdvertisementActivity.a(this.a);
-      PublicAccountAdvertisementActivity.c(this.a);
-      PublicAccountAdvertisementActivity.b(this.a);
-      nxz.a().a(this.a.getAppInterface(), 4, PublicAccountAdvertisementActivity.a(this.a));
-      PublicAccountAdvertisementActivity.a(this.a).setVisibility(8);
-      this.a.finish();
-      continue;
-      if ((PublicAccountAdvertisementActivity.c(this.a)) && (PublicAccountAdvertisementActivity.a(this.a) != null))
-      {
-        PublicAccountAdvertisementActivity.a(this.a).setCurrentPage(1);
-        PublicAccountAdvertisementActivity.b(this.a, 1);
-        continue;
-        this.a.b();
-        continue;
-        bcef.b(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X8009032", "0X8009032", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
-        PublicAccountAdvertisementActivity.d(this.a);
-        continue;
-        PublicAccountAdvertisementActivity.a(this.a, 2);
-        continue;
-        PublicAccountAdvertisementActivity.a(this.a, 1);
-      }
+    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "false", "{result: -10, msg: 'no permission to record'}" });
+  }
+  
+  @QQPermissionGrant(1)
+  public void grant()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.TAG, 1, "CheckPermission user grant = ");
     }
+    SensorAPIJavaScript.a(this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript, this.jdField_a_of_type_JavaLangString);
   }
 }
 

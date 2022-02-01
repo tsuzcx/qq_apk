@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qzone="http://schemas.android.com/apk/res-auto">
-    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/cos" />
-    <com.qzone.feed.ui.activity.QQSchoolExtendFeedsListView android:scrollbarThumbVertical="@drawable/axv" android:scrollbarStyle="insideOverlay" android:id="@id/ngb" android:fadingEdge="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="0.0dip" android:listSelector="@color/ajr" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" qzone:ptrCoverMode="true" />
-</FrameLayout>
+<HorizontalScrollView android:id="@id/mxm" android:paddingBottom="5.0dip" android:scrollbars="none" android:layout_width="260.0dip" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/n6h" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:gravity="center_vertical" android:id="@id/en9" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:gravity="center_vertical" android:id="@id/en_" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:gravity="center_vertical" android:id="@id/n7n" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:gravity="center_vertical" android:id="@id/n7o" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" />
+    </LinearLayout>
+</HorizontalScrollView>

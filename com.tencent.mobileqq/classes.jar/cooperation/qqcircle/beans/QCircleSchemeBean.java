@@ -9,11 +9,17 @@ public class QCircleSchemeBean
   private static final long serialVersionUID = 322069543369932762L;
   private String mAction;
   private HashMap<String, String> mAttrs;
+  private HashMap<String, byte[]> mByteAttrs;
   private long mEnterTime;
   
   public HashMap<String, String> getAttrs()
   {
     return this.mAttrs;
+  }
+  
+  public HashMap<String, byte[]> getByteAttrs()
+  {
+    return this.mByteAttrs;
   }
   
   public long getEnterTime()
@@ -29,6 +35,12 @@ public class QCircleSchemeBean
   public QCircleSchemeBean setAttrs(HashMap<String, String> paramHashMap)
   {
     this.mAttrs = paramHashMap;
+    return this;
+  }
+  
+  public QCircleSchemeBean setByteAttrs(HashMap<String, byte[]> paramHashMap)
+  {
+    this.mByteAttrs = paramHashMap;
     return this;
   }
   

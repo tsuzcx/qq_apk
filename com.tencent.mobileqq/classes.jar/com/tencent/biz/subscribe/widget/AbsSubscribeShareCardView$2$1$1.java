@@ -1,12 +1,12 @@
 package com.tencent.biz.subscribe.widget;
 
-import zlj;
-import zlk;
+import aaao;
+import aaap;
 
 public class AbsSubscribeShareCardView$2$1$1
   implements Runnable
 {
-  public AbsSubscribeShareCardView$2$1$1(zlj paramzlj) {}
+  public AbsSubscribeShareCardView$2$1$1(aaao paramaaao) {}
   
   public void run()
   {

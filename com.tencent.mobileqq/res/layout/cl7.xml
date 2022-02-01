@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:id="@id/root_layout" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/a02"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/a4f" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <RelativeLayout android:id="@id/b8q" android:background="@drawable/bkp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-        <com.tencent.biz.pubaccount.weishi_new.follow.joinGroup.MaxHeightRecyclerView android:id="@id/n23" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <View android:id="@id/bw1" android:background="#ffefeff0" android:layout_width="fill_parent" android:layout_height="5.0dip" android:layout_below="@id/n23" />
-        <TextView android:textSize="18.0dip" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center" android:id="@id/close" android:layout_width="fill_parent" android:layout_height="57.5dip" android:text="取消" android:layout_below="@id/bw1" android:layout_centerInParent="true" />
+    <RelativeLayout android:id="@id/title_container" android:paddingLeft="@dimen/a03" android:paddingRight="@dimen/a03" android:layout_width="fill_parent" android:layout_height="47.0dip">
+        <ImageView android:id="@id/joy" android:layout_width="16.0dip" android:layout_height="28.0dip" android:layout_marginRight="6.0dip" android:layout_centerVertical="true" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/nva" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_toRightOf="@id/joy" android:layout_centerVertical="true" android:layout_alignWithParentIfMissing="true">
+            <TextView android:textSize="20.0dip" android:textStyle="bold" android:textColor="@color/skin_black" android:id="@id/jq2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" />
+        </LinearLayout>
+        <RelativeLayout android:id="@id/nv7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/nv2" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/nv2" android:layout_marginLeft="5.0dip" android:layout_marginRight="0.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/bt" />
     </RelativeLayout>
-</RelativeLayout>
+    <FrameLayout android:id="@id/b9t" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/a03" android:layout_marginRight="@dimen/a03" />
+</LinearLayout>

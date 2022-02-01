@@ -1,26 +1,33 @@
+import UserGrowth.stH5OpInfo;
 import UserGrowth.stSimpleMetaFeed;
+import android.content.Context;
 import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
-import com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter;
-import com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter.Builder;
-import java.util.HashMap;
-import java.util.Map;
 
-public class vdp
+class vdp
+  implements vnn
 {
-  private static void a(WSStatisticsReporter.Builder paramBuilder, String paramString)
+  vdp(vdo paramvdo, Context paramContext, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    paramBuilder.build(paramString).report();
+    vdo.a(this.jdField_a_of_type_Vdo, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, paramString, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 501);
+    vkf.a(114, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.type, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.id);
+    WSPublicAccReport.getInstance().reportOperationCard("gzh_click", 1000003, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
   }
   
-  public static void a(String paramString, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
+  public void b(String paramString, int paramInt)
   {
-    paramstSimpleMetaFeed = new WSStatisticsReporter.Builder().setSceneFrom("QQ_official_account").setSopName("chat_page").setTestId(uyo.a(2)).setPushId("").setFlush(true).addParams(WSPublicAccReport.getInstance().getFeedsBaseParams("content", paramInt, paramstSimpleMetaFeed)).setOperationId("").setImmediatelyUpload(uyo.c());
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("qq_group_num", paramString);
-    localHashMap.put("card_type", "1");
-    paramstSimpleMetaFeed.addExtParams(localHashMap);
-    a(paramstSimpleMetaFeed, "gzh_click");
+    vdo.a(this.jdField_a_of_type_Vdo, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
   }
+  
+  public void c(String paramString, int paramInt)
+  {
+    vdo.a(this.jdField_a_of_type_Vdo, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+    vkf.a(115, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.type, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.id);
+    WSPublicAccReport.getInstance().reportOperationCard("gzh_click", 1000002, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+  }
+  
+  public void d(String paramString, int paramInt) {}
 }
 
 

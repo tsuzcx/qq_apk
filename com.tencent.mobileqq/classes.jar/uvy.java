@@ -1,20 +1,8 @@
+import android.view.View;
+
 public class uvy
-  extends uvx
 {
-  public uvy(int paramInt)
-  {
-    super(paramInt);
-  }
-  
-  String a()
-  {
-    return "officialacc_weishi";
-  }
-  
-  String b()
-  {
-    return "weishi_share_officialacc";
-  }
+  private View a;
 }
 
 

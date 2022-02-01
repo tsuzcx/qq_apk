@@ -1,30 +1,23 @@
-import android.text.TextUtils;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class aohn
+  implements ThreadFactory
 {
-  public String a;
-  public String b;
-  public String c;
+  private final AtomicInteger a = new AtomicInteger(1);
   
-  public String a()
+  public Thread newThread(Runnable paramRunnable)
   {
-    if (TextUtils.isEmpty(this.b)) {
-      return "";
+    paramRunnable = new Thread(paramRunnable, "Automator_" + this.a.getAndIncrement());
+    if (paramRunnable.getPriority() != 10) {
+      paramRunnable.setPriority(10);
     }
-    return this.b;
-  }
-  
-  public String b()
-  {
-    if (TextUtils.isEmpty(this.c)) {
-      return "";
-    }
-    return this.c;
+    return paramRunnable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aohn
  * JD-Core Version:    0.7.0.1
  */

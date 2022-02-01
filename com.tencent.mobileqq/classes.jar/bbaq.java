@@ -1,19 +1,17 @@
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import com.tencent.mobileqq.widget.QQViewPager;
+
 public class bbaq
+  implements biuc
 {
-  public static bbao a(int paramInt)
+  public bbaq(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 80000000: 
-      return new bban();
-    case 80000001: 
-      return new bbat();
-    case 80000002: 
-      return new bbar();
+    if (paramInt1 == paramInt2) {
+      return;
     }
-    return new bbal();
+    ReceiptMessageReadMemberListContainerFragment.a(this.a).setCurrentItem(paramInt2);
   }
 }
 

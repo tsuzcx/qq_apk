@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.push;
 
-import com.tencent.TMG.utils.QLog;
+import com.tencent.qphone.base.util.QLog;
 import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Lambda;
-import qol;
+import raq;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "errorCode", "", "invoke"}, k=3, mv={1, 1, 16})
 final class RIJPushNotifyManager$showPushNotifyDialogForWeb$param$1$1

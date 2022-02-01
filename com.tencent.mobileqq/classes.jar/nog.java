@@ -1,53 +1,79 @@
-import android.content.Intent;
-import com.tencent.biz.common.offline.BidDownloader;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import java.util.HashMap;
+import java.util.Map;
 
-final class nog
-  implements nnv
+public class nog
 {
-  nog(WeakReference paramWeakReference, String paramString1, int paramInt, String paramString2) {}
+  private final Map<String, nof> jdField_a_of_type_JavaUtilMap = new HashMap(3);
+  private nof jdField_a_of_type_Nof;
   
-  public void loaded(String paramString, int paramInt)
+  public nof a()
   {
-    paramString = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Object localObject;
-    if (paramString != null)
+    return this.jdField_a_of_type_Nof;
+  }
+  
+  public nof a(int paramInt, String paramString, boolean paramBoolean)
+  {
+    Object localObject = null;
+    if (!TextUtils.isEmpty(paramString))
     {
-      paramString = (PreDownloadController)paramString.getManager(193);
-      localObject = this.jdField_a_of_type_JavaLangString;
-      if (!BidDownloader.a(paramInt)) {
-        break label172;
+      nof localnof = (nof)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      localObject = localnof;
+      if (localnof == null)
+      {
+        localnof = new nof(paramInt, paramString);
+        this.jdField_a_of_type_JavaUtilMap.put(paramString, localnof);
+        if (this.jdField_a_of_type_JavaUtilMap.size() != 1)
+        {
+          localObject = localnof;
+          if (!paramBoolean) {}
+        }
+        else
+        {
+          a(paramString);
+          localObject = localnof;
+        }
       }
     }
-    label172:
-    for (long l = this.jdField_a_of_type_Int;; l = -1L)
+    return localObject;
+  }
+  
+  public nof a(String paramString)
+  {
+    nof localnof = null;
+    if (!this.jdField_a_of_type_JavaUtilMap.isEmpty()) {
+      localnof = (nof)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    }
+    return localnof;
+  }
+  
+  public void a(String paramString)
+  {
+    paramString = a(paramString);
+    if ((paramString != null) && (!paramString.a))
     {
-      paramString.preDownloadSuccess((String)localObject, l);
-      QLog.i(nof.jdField_a_of_type_JavaLangString, 1, "finish predown bid=" + this.b + ", code=" + paramInt);
-      nof.a();
-      if (nof.b() == 0)
-      {
-        paramString = new Intent("com.tencent.process.tmdownloader.exit");
-        localObject = new ArrayList();
-        ((ArrayList)localObject).add("com.tencent.mobileqq:TMAssistantDownloadSDKService");
-        paramString.putStringArrayListExtra("procNameList", (ArrayList)localObject);
-        paramString.putExtra("verify", nof.a((ArrayList)localObject, false));
-        if (QLog.isColorLevel()) {
-          QLog.d(nof.jdField_a_of_type_JavaLangString, 2, "sendBroadcast to close TMAssistant sdk process");
-        }
-        BaseApplicationImpl.getContext().sendBroadcast(paramString);
+      if (this.jdField_a_of_type_Nof != null) {
+        this.jdField_a_of_type_Nof.a = false;
       }
-      return;
+      paramString.a = true;
+      this.jdField_a_of_type_Nof = paramString;
     }
   }
   
-  public void progress(int paramInt) {}
+  public nof b(String paramString)
+  {
+    if (!this.jdField_a_of_type_JavaUtilMap.isEmpty())
+    {
+      paramString = (nof)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+      if ((paramString != null) && (paramString == this.jdField_a_of_type_Nof))
+      {
+        this.jdField_a_of_type_Nof.a = false;
+        this.jdField_a_of_type_Nof = null;
+      }
+      return paramString;
+    }
+    return null;
+  }
 }
 
 

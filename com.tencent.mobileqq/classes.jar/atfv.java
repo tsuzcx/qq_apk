@@ -1,22 +1,16 @@
-import mqq.os.MqqHandler;
-
 class atfv
-  implements asri
+  implements athg
 {
-  atfv(atft paramatft) {}
+  atfv(atfq paramatfq) {}
   
-  public void a()
+  public void a(Object[] paramArrayOfObject)
   {
-    this.a.a = System.currentTimeMillis();
-    atft.a(this.a).sendEmptyMessageDelayed(8001, atft.a(this.a));
-    atft.a(this.a).sendEmptyMessageDelayed(8002, atft.b(this.a));
+    atfq.e(this.a, paramArrayOfObject);
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atfv
  * JD-Core Version:    0.7.0.1
  */

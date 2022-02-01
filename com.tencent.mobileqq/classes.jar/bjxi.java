@@ -1,72 +1,31 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
 import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.pull2refresh.RecyclerViewCompat;
+import com.tencent.qidian.QidianProfileCardActivity;
 
-class bjxi
-  extends RecyclerView.AdapterDataObserver
+public class bjxi
+  implements bkzq
 {
-  bjxi(bjxh parambjxh) {}
+  public bjxi(QidianProfileCardActivity paramQidianProfileCardActivity, String paramString) {}
   
-  private void a(int paramInt1, int paramInt2)
+  public void OnClick(View paramView, int paramInt)
   {
-    View localView = this.a.a(bjxh.a(this.a));
-    if (localView != null) {}
-    for (int i = bjxh.a(this.a).getPosition(localView);; i = -1)
+    if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.c == 1) {
+      if (paramInt == 0) {
+        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
+      }
+    }
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PagerSnapHelper", 2, "onPagerDataChanged: positionStart=" + paramInt1 + ", itemCount=" + paramInt2 + ", centerPosition=" + bjxh.b(this.a) + ", currentPosition=" + i);
-      }
-      if ((paramInt1 <= i) && (paramInt1 + paramInt2 - 1 >= i))
-      {
-        bjxk.a(bjxh.a(this.a), true);
-        bjxh.a(this.a).addOnLayoutChangeListener(bjxh.a(this.a));
-        bjxh.a(this.a).requestLayout();
-      }
+      QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity).dismiss();
       return;
+      if (paramInt == 1)
+      {
+        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.e();
+        continue;
+        if (paramInt == 0) {
+          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
+        }
+      }
     }
-  }
-  
-  public void onChanged()
-  {
-    a(0, bjxh.a(this.a).getItemCount());
-  }
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2)
-  {
-    a(paramInt1, paramInt2);
-  }
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
-  {
-    if (paramObject == null) {
-      onItemRangeChanged(paramInt1, paramInt2);
-    }
-  }
-  
-  public void onItemRangeInserted(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 <= bjxh.b(this.a)) {
-      bjxh.b(this.a, bjxh.b(this.a) + paramInt2);
-    }
-    a(paramInt1, paramInt2);
-  }
-  
-  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (paramInt1 == bjxh.b(this.a)) {
-      bjxh.b(this.a, paramInt2);
-    }
-    a(paramInt1, paramInt3);
-  }
-  
-  public void onItemRangeRemoved(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 <= bjxh.b(this.a)) {
-      bjxh.b(this.a, bjxh.b(this.a) - paramInt2);
-    }
-    a(paramInt1, paramInt2);
   }
 }
 

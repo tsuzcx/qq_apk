@@ -1,104 +1,44 @@
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.LikeRankingListActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
-import org.json.JSONObject;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.app.AppRuntime;
 
 public class azwj
-  extends WebViewPlugin
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  
-  public azwj()
+  public static final void a(Activity paramActivity, boolean paramBoolean)
   {
-    this.mPluginNameSpace = "recallFriend";
-  }
-  
-  private Context a()
-  {
-    Activity localActivity2 = this.mRuntime.a();
-    Activity localActivity1 = localActivity2;
-    if (localActivity2 != null)
+    QLog.d("", 1, String.format("openLikeRankingList flutterPage=%b", new Object[] { Boolean.valueOf(paramBoolean) }));
+    if (paramBoolean)
     {
-      localActivity1 = localActivity2;
-      if ((localActivity2 instanceof BasePluginActivity)) {
-        localActivity1 = ((BasePluginActivity)localActivity2).getOutActivity();
-      }
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("kUin", BaseApplicationImpl.getApplication().getRuntime().getAccount());
+      auon.a(paramActivity, "ZanLeaderboardPage", localHashMap, 1024, true, false);
+      return;
     }
-    return localActivity1;
+    paramActivity.startActivity(new Intent(paramActivity, LikeRankingListActivity.class));
   }
   
-  void a(String paramString)
+  public static final void a(Context paramContext, String paramString)
   {
-    paramString = new ProfileActivity.AllInOne(paramString, 1);
-    startActivityForResult(new Intent(this.jdField_a_of_type_AndroidContentContext, MoveToGroupActivity.class).putExtra("friendUin", paramString.a), (byte)0);
-  }
-  
-  void b(String paramString)
-  {
-    EIPCClient localEIPCClient = QIPCClientHelper.getInstance().getClient();
-    Bundle localBundle = new Bundle();
-    localBundle.putString("cur_friend_uin", paramString);
-    localEIPCClient.callServer("CommonModule", "jumpToRemarkEdit", localBundle);
-  }
-  
-  void c(String paramString)
-  {
-    EIPCClient localEIPCClient = QIPCClientHelper.getInstance().getClient();
-    Bundle localBundle = new Bundle();
-    localBundle.putString("cur_friend_uin", paramString);
-    localEIPCClient.callServer("CommonModule", "jumpToCommonGroup", localBundle);
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ("recallFriend".equals(paramString2))
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((!TextUtils.isEmpty(paramString)) && (localObject != null))
     {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ClueApiPlugin", 2, String.format("handleJsRequest method=%s args=%s", new Object[] { paramString3, paramVarArgs[0] }));
-        }
-        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        paramString1 = paramJsBridgeListener.optString("opType");
-        if ("move_to_newgroup".equals(paramString1))
-        {
-          a(paramJsBridgeListener.optString("uin"));
-          return false;
-        }
-        if ("remark_edit".equals(paramString1))
-        {
-          b(paramJsBridgeListener.optString("uin"));
-          return false;
-        }
+      String str = ((AppRuntime)localObject).getAccount();
+      localObject = "2";
+      if (paramString.equals(str)) {
+        localObject = "1";
       }
-      catch (Exception paramJsBridgeListener)
-      {
-        QLog.e("ClueApiPlugin", 1, "handleJsRequest fail.", paramJsBridgeListener);
-        return false;
-      }
-      if ("common_group".equals(paramString1)) {
-        c(paramJsBridgeListener.optString("uin"));
-      }
+      bdla.b(null, "dc00898", "", "", "0X8007616", "0X8007616", 0, 0, (String)localObject, "", "", "");
+      ProfileActivity.b(paramContext, new ProfileActivity.AllInOne(paramString, 1));
     }
-    return false;
-  }
-  
-  public void onCreate()
-  {
-    super.onCreate();
-    this.jdField_a_of_type_AndroidContentContext = a();
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = this.mRuntime.a();
   }
 }
 

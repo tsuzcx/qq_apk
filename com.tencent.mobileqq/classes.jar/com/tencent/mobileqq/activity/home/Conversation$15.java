@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.home;
 
-import ajbq;
+import ajxf;
 import com.tencent.mobileqq.startup.step.SetSplash;
 
 public class Conversation$15
@@ -10,7 +10,7 @@ public class Conversation$15
   
   public void run()
   {
-    SetSplash.a(this.this$0.a(2131373809), new ajbq(this));
+    SetSplash.a(this.this$0.a(2131374027), new ajxf(this));
   }
 }
 

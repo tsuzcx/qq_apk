@@ -1,71 +1,39 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Bundle;
+import com.tencent.ark.open.delegate.IArkDelegateNetCallback;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class aqbr
-  extends aptq<aqbu>
+class aqbr
+  implements EIPCResultCallback
 {
-  @NonNull
-  public aqbu a(int paramInt)
-  {
-    return new aqbu();
-  }
+  aqbr(aqbo paramaqbo, String paramString, IArkDelegateNetCallback paramIArkDelegateNetCallback) {}
   
-  @Nullable
-  public aqbu a(aptx[] paramArrayOfaptx)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return aqbu.a(paramArrayOfaptx);
+    QLog.d("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkMultiProc.download url=", this.jdField_a_of_type_JavaLangString, ", ipc call back code=", Integer.valueOf(paramEIPCResult.code) });
+    int j = -1;
+    int i = j;
+    if (paramEIPCResult.code == 0)
+    {
+      paramEIPCResult = paramEIPCResult.data;
+      i = j;
+      if (paramEIPCResult != null)
+      {
+        i = j;
+        if (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback != null) {
+          i = paramEIPCResult.getInt("code");
+        }
+      }
     }
-    return null;
-  }
-  
-  public void a(aqbu paramaqbu)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSysAndEmojiConfProcessor", 2, "QQSysAndEmojiConfProcessor onUpdate");
+    if (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback != null) {
+      this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback.onDownload(i);
     }
-    if (paramaqbu != null) {
-      aqbu.a(paramaqbu);
-    }
-    arev.a().a();
-  }
-  
-  public Class<aqbu> clazz()
-  {
-    return aqbu.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 545;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqbr
  * JD-Core Version:    0.7.0.1
  */

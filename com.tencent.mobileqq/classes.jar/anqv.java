@@ -1,49 +1,38 @@
-import android.app.Activity;
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 public class anqv
-  extends anrh
+  implements EIPCResultCallback
 {
-  public anqv(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  public anqv(BaseActivity paramBaseActivity) {}
   
-  public boolean a()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    try
+    if (paramEIPCResult.data == null) {}
+    do
     {
-      boolean bool = a(b("gc"));
-      return bool;
-    }
-    catch (Exception localException)
+      return;
+      switch (paramEIPCResult.data.getInt("param_cmd"))
+      {
+      default: 
+        return;
+      }
+    } while (paramEIPCResult.code != 0);
+    paramEIPCResult = paramEIPCResult.data;
+    if (QLog.isDevelopLevel())
     {
-      QLog.e("HomeWorkTroopPublishAction", 1, "doAction error: " + localException.getMessage());
-      a("HomeWorkTroopPublishAction");
+      int i = paramEIPCResult.getInt("param_proc_badge_count");
+      QLog.i("MiniMsgIPCServer", 2, "doRefreshMiniBadge COUNT = " + i);
     }
-    return false;
-  }
-  
-  protected boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    if ((this.a instanceof Activity))
-    {
-      PublishHomeWorkFragment.a((Activity)this.a, null, paramString);
-      ((Activity)this.a).overridePendingTransition(2130772300, 2130771990);
-    }
-    return true;
+    this.a.doRefreshMiniBadge(paramEIPCResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anqv
  * JD-Core Version:    0.7.0.1
  */

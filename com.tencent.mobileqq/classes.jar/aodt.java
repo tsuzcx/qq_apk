@@ -1,29 +1,62 @@
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SignatureHandler;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
+
 public class aodt
+  extends MSFServlet
 {
-  public int a;
-  public long a;
-  public long[] a;
-  public long b;
-  public long c;
-  public long d;
-  public long e;
-  public long f;
-  
-  public aodt(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, double paramDouble, long[] paramArrayOfLong, int paramInt)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-    this.c = paramLong3;
-    this.d = paramLong4;
-    this.e = paramLong5;
-    this.f = ((0.9D + paramDouble));
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ArrayOfLong = paramArrayOfLong;
+    if (QLog.isColorLevel()) {
+      QLog.d("SignatureServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd"));
+    }
+    byte[] arrayOfByte;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      int i = paramFromServiceMsg.getWupBuffer().length - 4;
+      arrayOfByte = new byte[i];
+      PkgTools.copyData(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+    }
+    for (;;)
+    {
+      new Bundle().putByteArray("data", arrayOfByte);
+      SignatureHandler localSignatureHandler = (SignatureHandler)((QQAppInterface)super.getAppRuntime()).getBusinessHandler(BusinessHandlerFactory.SIGNATURE_HANDLER);
+      if (localSignatureHandler != null) {
+        localSignatureHandler.a(paramIntent, paramFromServiceMsg, arrayOfByte);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("SignatureServlet", 2, "onReceive exit");
+      }
+      return;
+      arrayOfByte = null;
+    }
   }
   
-  public String toString()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    return "70% :  " + this.c + " --------- 80% : " + this.b + " --------- 90% : " + this.jdField_a_of_type_Long + " --------- min : " + this.d + " --------- max : " + this.e + " --------- num : " + this.jdField_a_of_type_Int + "--------arr" + this.jdField_a_of_type_ArrayOfLong;
+    String str = paramIntent.getStringExtra("cmd");
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    long l = paramIntent.getLongExtra("timeout", 30000L);
+    if ((!TextUtils.isEmpty(str)) && (arrayOfByte != null))
+    {
+      paramPacket.setSSOCommand(str);
+      paramPacket.setTimeout(l);
+      paramIntent = new byte[arrayOfByte.length + 4];
+      PkgTools.DWord2Byte(paramIntent, 0, arrayOfByte.length + 4);
+      PkgTools.copyData(paramIntent, 4, arrayOfByte, arrayOfByte.length);
+      paramPacket.putSendData(paramIntent);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("SignatureServlet", 2, "onSend exit cmd=" + str);
+    }
   }
 }
 

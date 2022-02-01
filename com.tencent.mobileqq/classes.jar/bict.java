@@ -1,22 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class bict
-  implements DialogInterface.OnCancelListener
+final class bict
+  implements EIPCResultCallback
 {
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  bict(Runnable paramRunnable) {}
   
-  public bict(bicl parambicl, String paramString1, String paramString2)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.jdField_a_of_type_JavaLangString = bias.a(paramString1, "NEWYYB");
-    this.b = paramString2;
-  }
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    this.jdField_a_of_type_Bicl.a(this.b);
-    bias.a("720", this.jdField_a_of_type_JavaLangString, this.b);
+    QLog.d("OpenSdkQIPCClient", 1, "WBQIPCClient installWBSdk onCallback");
+    this.a.run();
   }
 }
 

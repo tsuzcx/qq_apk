@@ -3,9 +3,9 @@ package com.tencent.mobileqq.util;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bfrj;
-import bgoe;
-import bgog;
+import bhaa;
+import bhyo;
+import bhyq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -40,13 +40,13 @@ public final class ProfileCardUtil$4
         {
           try
           {
-            str2 = bfrj.b(this.a.getApplication());
+            str2 = bhaa.b(this.a.getApplication());
             File localFile = new File(str2 + ".tmp");
-            bgoe localbgoe = new bgoe((String)localObject, localFile);
-            localbgoe.f = "profileCardDownload";
-            localbgoe.e = "VIP_profilecard";
-            localbgoe.a = 1;
-            int j = bgog.a(localbgoe, this.a);
+            bhyo localbhyo = new bhyo((String)localObject, localFile);
+            localbhyo.f = "profileCardDownload";
+            localbhyo.e = "VIP_profilecard";
+            localbhyo.a = 1;
+            int j = bhyq.a(localbhyo, this.a);
             if (j != 0) {
               break label595;
             }
@@ -68,7 +68,7 @@ public final class ProfileCardUtil$4
               if ((localObject != null) && (localObject.length > 0) && (i < localObject.length))
               {
                 str2 = localObject[i].getName();
-                if ((str2.startsWith("qvip_profile_template.json")) && (!str2.endsWith("8.4.8")))
+                if ((str2.startsWith("qvip_profile_template.json")) && (!str2.endsWith("8.4.10")))
                 {
                   FileUtils.deleteFile(str2);
                   if (QLog.isColorLevel()) {
@@ -79,7 +79,7 @@ public final class ProfileCardUtil$4
               else
               {
                 localSharedPreferences.edit().putString("cardTemplateVersion", str1).commit();
-                bfrj.a(this.a, true);
+                bhaa.a(this.a, true);
                 if (!QLog.isColorLevel()) {
                   break;
                 }

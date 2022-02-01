@@ -1,24 +1,16 @@
-import com.tribe.async.async.ThreadOffFunction;
-import com.tribe.async.reactive.Stream;
-
-public class wos
-  implements wok
+class wos
+  extends anqj
 {
-  private final wor a;
+  wos(woo paramwoo) {}
   
-  public wos(wor paramwor)
+  protected void a(int paramInt)
   {
-    this.a = paramwor;
-  }
-  
-  public void a(wol paramwol)
-  {
-    Stream localStream2 = Stream.of(this.a.a).map(new ThreadOffFunction("Q.qqstory.player.data.MsgTabPlayPageLoader", 2)).map(new vxt("Q.qqstory.player.data.MsgTabPlayPageLoader", this.a.c, this.a.d, this.a));
-    Stream localStream1 = localStream2;
-    if (this.a.a.a == 5) {
-      localStream1 = localStream2.map(new vxq()).map(new vxg(this.a.a));
+    if (paramInt == 1)
+    {
+      ykq.b(woo.b() + ".VASH", "Friend Cache Inited!");
+      woo.h = true;
+      this.a.a.notifyDataSetChanged();
     }
-    localStream1.subscribe(new wot(this, paramwol));
   }
 }
 

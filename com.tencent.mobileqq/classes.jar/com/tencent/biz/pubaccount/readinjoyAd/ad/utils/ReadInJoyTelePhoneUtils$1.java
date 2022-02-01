@@ -7,7 +7,7 @@ import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
-import twz;
+import ula;
 
 public final class ReadInJoyTelePhoneUtils$1
   implements Runnable
@@ -34,7 +34,7 @@ public final class ReadInJoyTelePhoneUtils$1
         localObject = new JSONObject((String)localObject);
         if ((((JSONObject)localObject).optJSONObject("data") != null) && (!TextUtils.isEmpty(((JSONObject)localObject).optJSONObject("data").optString("fmcphone"))))
         {
-          twz.a(this.jdField_a_of_type_AndroidContentContext, ((JSONObject)localObject).optJSONObject("data").optString("fmcphone"), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
+          ula.a(this.jdField_a_of_type_AndroidContentContext, ((JSONObject)localObject).optJSONObject("data").optString("fmcphone"), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
           return;
         }
       }
@@ -47,7 +47,7 @@ public final class ReadInJoyTelePhoneUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyTelePhoneUtils.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,36 @@
-import com.tencent.ad.tangram.ipc.AdIPCManager.Callback;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
+import java.util.List;
 
-class abmk
-  implements AdIPCManager.Callback
+public class abmk
 {
-  abmk(abmj paramabmj) {}
+  private static int d;
+  public int a;
+  public long a;
+  public String a;
+  public List<String> a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public boolean c;
   
-  public void onCallback(AdIPCManager.Params paramParams, AdIPCManager.Result paramResult)
+  public abmk()
   {
-    if (paramResult != null) {}
-    for (boolean bool = paramResult.success;; bool = false)
-    {
-      abrl.b("GdtInterstitialAd", String.format("close.onCallback %b", new Object[] { Boolean.valueOf(bool) }));
-      return;
-    }
+    d += 1;
+    this.jdField_a_of_type_Int = d;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_b_of_type_Long = 0L;
+    this.c = 0;
+  }
+  
+  public String a()
+  {
+    return this.jdField_b_of_type_JavaLangString.replaceAll(":", "") + "0000";
   }
 }
 

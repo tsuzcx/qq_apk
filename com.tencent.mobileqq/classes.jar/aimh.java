@@ -1,19 +1,13 @@
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.Comparator;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import java.util.List;
 
-final class aimh
-  implements Comparator<structmsg.StructMsg>
+class aimh
+  implements aimv
 {
-  public int a(structmsg.StructMsg paramStructMsg1, structmsg.StructMsg paramStructMsg2)
+  aimh(aimf paramaimf, List paramList) {}
+  
+  public void a(long paramLong)
   {
-    if (paramStructMsg1.msg_time.get() < paramStructMsg2.msg_time.get()) {
-      return 1;
-    }
-    if (paramStructMsg1.msg_time.get() > paramStructMsg2.msg_time.get()) {
-      return -1;
-    }
-    return 0;
+    aimf.a(this.jdField_a_of_type_Aimf, this.jdField_a_of_type_JavaUtilList, paramLong, 1);
   }
 }
 

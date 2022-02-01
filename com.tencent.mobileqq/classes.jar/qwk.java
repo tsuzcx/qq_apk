@@ -1,25 +1,16 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.ProteusRecycleView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.SideBarView;
 
 public class qwk
-  extends ClickableSpan
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public qwk(ComponentHeaderUgc paramComponentHeaderUgc, ArticleInfo paramArticleInfo) {}
+  public qwk(ProteusRecycleView paramProteusRecycleView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    pay.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.a.a(), 4, false, 7, false);
-    pgw.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.a.e());
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-14132075);
-    paramTextPaint.setTextSize(AIOUtils.sp2TextSize(2, 14, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.getResources()));
+    this.a.setPadding(0, 0, (int)ProteusRecycleView.a(this.a).a(), 0);
   }
 }
 

@@ -1,16 +1,16 @@
 package cooperation.weiyun;
 
-import blev;
+import bmrm;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class WeiyunAIOUtils$WeiyunCallbackImpl$2
   implements Runnable
 {
-  public WeiyunAIOUtils$WeiyunCallbackImpl$2(blev paramblev, String paramString) {}
+  public WeiyunAIOUtils$WeiyunCallbackImpl$2(bmrm parambmrm, String paramString) {}
   
   public void run()
   {
-    QQToast.a(blev.a(this.this$0), 1, this.a, 1).b(blev.a(this.this$0));
+    QQToast.a(bmrm.a(this.this$0), 1, this.a, 1).b(bmrm.a(this.this$0));
   }
 }
 

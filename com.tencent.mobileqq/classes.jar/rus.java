@@ -1,35 +1,19 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnExtractFrameListener;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class rus
-  implements TVK_IMediaPlayer.OnExtractFrameListener
+  implements View.OnClickListener
 {
-  rus(run paramrun) {}
+  rus(rur paramrur) {}
   
-  public void onExtractFrame(int paramInt, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    ruu localruu = (ruu)run.a(this.a).get(Integer.valueOf(paramInt));
-    if (localruu != null) {}
-    try
-    {
-      localruu.jdField_b_of_type_Long = rui.a(paramBitmap, true);
-      localruu.jdField_b_of_type_Int = rui.a(localruu.a, localruu.jdField_b_of_type_Long);
-      if (QLog.isColorLevel()) {
-        QLog.d(run.a(), 2, "onExtractFrame frameIndex = " + paramInt + ", localHash = " + localruu.jdField_b_of_type_Long + ", hashDiff = " + localruu.jdField_b_of_type_Int);
-      }
-      return;
+    int i = ((Integer)paramView.getTag()).intValue();
+    if (rur.a(this.a) != null) {
+      rur.a(this.a).a(paramView, i);
     }
-    catch (Throwable paramBitmap)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(run.a(), 2, "VideoExtractFrameHash.dctImageHash ERROR e = " + paramBitmap.getMessage());
-        }
-      }
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

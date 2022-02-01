@@ -1,23 +1,31 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.graphics.Matrix;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
+import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
 
-final class bnaq
-  implements EIPCResultCallback
+public class bnaq
+  extends ScaleGestureDetector.SimpleOnScaleGestureListener
 {
-  bnaq(String paramString) {}
+  private bnaq(AECropperImageView paramAECropperImageView) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (paramEIPCResult != null)
-    {
-      paramEIPCResult = paramEIPCResult.data.getString("uinname");
-      if (QLog.isColorLevel()) {
-        QLog.i("PeakIpcController", 2, "getTroopMemberName success name = " + paramEIPCResult);
-      }
-      bnqa.a().a(this.a, paramEIPCResult);
+    if (!AECropperImageView.a(this.a)) {}
+    while (AECropperImageView.a(this.a) == 2) {
+      return false;
     }
+    if (AECropperImageView.b(this.a))
+    {
+      bnrh.d("AECropperImageView", "Cropping current bitmap. Can't perform this action right now.");
+      return false;
+    }
+    Matrix localMatrix = this.a.getImageMatrix();
+    AECropperImageView.a(this.a, paramScaleGestureDetector.getFocusX());
+    AECropperImageView.b(this.a, paramScaleGestureDetector.getFocusY());
+    localMatrix.postScale(paramScaleGestureDetector.getScaleFactor(), paramScaleGestureDetector.getScaleFactor(), paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
+    this.a.setImageMatrix(localMatrix);
+    this.a.invalidate();
+    return true;
   }
 }
 

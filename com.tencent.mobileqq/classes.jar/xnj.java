@@ -1,72 +1,29 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.1;
-import com.tencent.map.geolocation.TencentLocation;
-import com.tribe.async.async.Boss;
-import com.tribe.async.async.Bosses;
-import com.tribe.async.async.JobSegment;
-import com.tribe.async.reactive.Stream;
-import java.util.List;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public abstract class xnj<T extends xnk>
-  extends wbc
+public final class xnj
+  extends QQUIEventReceiver<xmx, ycp>
 {
-  private Stream<T> a;
-  public vwp a;
-  public xnl a;
-  protected xnn<T> a;
-  
-  public xnj(@NonNull xnn<T> paramxnn)
+  public xnj(@NonNull xmx paramxmx)
   {
-    this.jdField_a_of_type_Xnl = new xnl();
-    this.jdField_a_of_type_Xnn = paramxnn;
-    yos.a(this.jdField_a_of_type_Xnn);
+    super(paramxmx);
   }
   
-  private void d()
+  public void a(@NonNull xmx paramxmx, @NonNull ycp paramycp)
   {
-    a();
-    Bosses.get().postLightWeightJob(new FeedListPageLoaderBase.1(this), 0);
+    if ((paramycp.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramycp.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem != null) && (paramxmx.a != null) && (TextUtils.equals(paramycp.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId, paramxmx.a.b)))
+    {
+      ykq.a(paramxmx.b, "refresh feed item , feed id :%s", paramxmx.a.b);
+      paramxmx.i();
+    }
   }
   
-  public abstract JobSegment<xnm, T> a();
-  
-  public abstract JobSegment<Integer, xnm> a(xnl paramxnl);
-  
-  protected abstract T a();
-  
-  protected abstract T a(ErrorMessage paramErrorMessage);
-  
-  public xnl a()
+  public Class acceptEventClass()
   {
-    return this.jdField_a_of_type_Xnl;
-  }
-  
-  public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
-  {
-    super.a(paramTencentLocation, paramInt);
-    this.jdField_a_of_type_Xnl.a();
-    d();
-  }
-  
-  protected abstract void a(List<String> paramList, boolean paramBoolean);
-  
-  public void a(xnl paramxnl)
-  {
-    this.jdField_a_of_type_Xnl = paramxnl;
-    xvv.a("Q.qqstory.home.position", "restore last time cache:%s", paramxnl);
-  }
-  
-  public T b()
-  {
-    return a();
-  }
-  
-  public void c()
-  {
-    super.c();
-    d();
+    return ycp.class;
   }
 }
 

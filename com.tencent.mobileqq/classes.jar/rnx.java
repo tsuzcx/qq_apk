@@ -1,6 +1,12 @@
-public abstract interface rnx
+public class rnx
 {
-  public abstract void a();
+  public static rnw a(int paramInt)
+  {
+    if (paramInt == rnv.a) {
+      return new rnz();
+    }
+    return null;
+  }
 }
 
 

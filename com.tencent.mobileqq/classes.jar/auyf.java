@@ -1,25 +1,26 @@
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.fragment.SimpleDebugFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class auyf
-  extends GridLayoutManager.SpanSizeLookup
+  implements RadioGroup.OnCheckedChangeListener
 {
-  auxv a;
+  public auyf(SimpleDebugFragment paramSimpleDebugFragment, RadioGroup paramRadioGroup) {}
   
-  public auyf(auxv paramauxv)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    this.a = paramauxv;
-  }
-  
-  public int getSpanSize(int paramInt)
-  {
-    if (this.a == null) {
-      QLog.i("leba_sort_LebaTableMgrFragment", 1, "MyLoopUp getSpanSize mAdapter == null");
+    switch (this.jdField_a_of_type_AndroidWidgetRadioGroup.getCheckedRadioButtonId())
+    {
     }
-    while ((this.a.getItemViewType(paramInt) != 1) && (this.a.getItemViewType(paramInt) != 3)) {
-      return 1;
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
+      return;
+      bdfk.a(0);
+      continue;
+      bdfk.a(1);
     }
-    return 3;
   }
 }
 

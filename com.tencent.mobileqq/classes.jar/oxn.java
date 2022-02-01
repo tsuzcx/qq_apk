@@ -1,26 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.SimpleCommentData;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyVideoTopicTextView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SimpleCommentData$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SimpleCommentData;", "()V", "RIJ_SHANGHAI_PHP", "", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "(I)[Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SimpleCommentData;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class oxn
-  implements Parcelable.Creator<SimpleCommentData>
+class oxn
 {
-  @NotNull
-  public SimpleCommentData a(@NotNull Parcel paramParcel)
-  {
-    Intrinsics.checkParameterIsNotNull(paramParcel, "parcel");
-    return new SimpleCommentData(paramParcel);
-  }
+  ChannelCoverInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo;
+  ReadInJoyVideoTopicTextView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoTopicTextView;
   
-  @NotNull
-  public SimpleCommentData[] a(int paramInt)
-  {
-    return new SimpleCommentData[paramInt];
-  }
+  oxn(oxm paramoxm) {}
 }
 
 

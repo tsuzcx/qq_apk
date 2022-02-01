@@ -1,14 +1,18 @@
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import kotlin.Metadata;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class axze
-  implements View.OnClickListener
+public class axze
+  implements View.OnTouchListener
 {
-  public static final axze a = new axze();
+  public axze(StuffContainerView paramStuffContainerView, GestureDetector paramGestureDetector) {}
   
-  public final void onClick(View paramView) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+  }
 }
 
 

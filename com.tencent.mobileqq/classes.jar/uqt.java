@@ -1,19 +1,31 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import android.app.Activity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewStub;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
+import java.lang.ref.WeakReference;
 
 class uqt
-  implements MiniAppLauncher.MiniAppLaunchListener
+  implements Animation.AnimationListener
 {
-  uqt(uqs paramuqs) {}
+  uqt(uqm paramuqm) {}
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("launch mini program ");
-    if (paramBoolean) {}
-    for (String str = "success";; str = "fail")
-    {
-      uya.d("WSMiniAppHelper", str + ", bundle: " + paramBundle.toString());
-      return;
+    this.a.jdField_a_of_type_AndroidViewViewStub.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    ((ViewGroup)this.a.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.a.jdField_a_of_type_AndroidViewView);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if ((this.a.b > 0) && (this.a.c > 0)) {
+      ((ImageView)((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131373323)).setLayoutParams(new LinearLayout.LayoutParams(this.a.c, this.a.b));
     }
   }
 }

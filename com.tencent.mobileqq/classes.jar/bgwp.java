@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
+import com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity;
 
-class bgwp
-  implements ThreadExcutor.IThreadListener
+public class bgwp
+  implements DialogInterface.OnClickListener
 {
-  bgwp(bgwn parambgwn) {}
+  public bgwp(UpgradeActivity paramUpgradeActivity, bgvp parambgvp, int paramInt) {}
   
-  public void onAdded() {}
-  
-  public void onPostRun() {}
-  
-  public void onPreRun() {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Bgvp.d();
+    bhhj.c(true);
+    bhhj.c(this.jdField_a_of_type_Int);
+    UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeActivityUpgradeActivity, bgvx.a().a(), false, true, true);
+    this.jdField_a_of_type_ComTencentMobileqqUpgradeActivityUpgradeActivity.finish();
+  }
 }
 
 

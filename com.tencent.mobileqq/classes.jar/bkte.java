@@ -1,16 +1,20 @@
-import android.app.Activity;
-import android.content.Intent;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
 class bkte
-  implements aszj
+  implements bkub
 {
-  bkte(bktd parambktd, Activity paramActivity, Intent paramIntent) {}
+  protected long a;
   
-  public void onNo() {}
-  
-  public void onYes()
+  public bkte(bkta parambkta, long paramLong)
   {
-    atky.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentIntent, 103);
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    if (this.jdField_a_of_type_Long != 0L) {
+      QSecFramework.a(7L, this.jdField_a_of_type_Long, paramInt, 0L, paramArrayOfByte1, paramArrayOfByte2, null, null);
+    }
   }
 }
 

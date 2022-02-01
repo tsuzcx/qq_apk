@@ -242,7 +242,7 @@ public class TypefaceCompatApi26Impl
     //   9: areturn
     //   10: aload_0
     //   11: invokespecial 194	androidx/core/graphics/TypefaceCompatApi26Impl:isFontFamilyPrivateAPIAvailable	()Z
-    //   14: ifne +166 -> 180
+    //   14: ifne +164 -> 178
     //   17: aload_0
     //   18: aload_3
     //   19: iload 4
@@ -259,7 +259,7 @@ public class TypefaceCompatApi26Impl
     //   41: invokevirtual 265	android/content/ContentResolver:openFileDescriptor	(Landroid/net/Uri;Ljava/lang/String;Landroid/os/CancellationSignal;)Landroid/os/ParcelFileDescriptor;
     //   44: astore_3
     //   45: aconst_null
-    //   46: astore_2
+    //   46: astore_1
     //   47: aload_3
     //   48: ifnonnull +34 -> 82
     //   51: aconst_null
@@ -293,180 +293,178 @@ public class TypefaceCompatApi26Impl
     //   103: invokevirtual 288	androidx/core/provider/FontsContractCompat$FontInfo:isItalic	()Z
     //   106: invokevirtual 292	android/graphics/Typeface$Builder:setItalic	(Z)Landroid/graphics/Typeface$Builder;
     //   109: invokevirtual 296	android/graphics/Typeface$Builder:build	()Landroid/graphics/Typeface;
-    //   112: astore_1
-    //   113: aload_1
-    //   114: astore_2
-    //   115: aload_2
-    //   116: astore_1
-    //   117: aload_3
-    //   118: ifnull -110 -> 8
-    //   121: iconst_0
-    //   122: ifeq +18 -> 140
-    //   125: aload_3
-    //   126: invokevirtual 270	android/os/ParcelFileDescriptor:close	()V
-    //   129: aload_2
-    //   130: areturn
-    //   131: astore_1
-    //   132: new 272	java/lang/NullPointerException
-    //   135: dup
-    //   136: invokespecial 273	java/lang/NullPointerException:<init>	()V
-    //   139: athrow
-    //   140: aload_3
-    //   141: invokevirtual 270	android/os/ParcelFileDescriptor:close	()V
-    //   144: aload_2
-    //   145: areturn
-    //   146: astore_2
-    //   147: aload_2
-    //   148: athrow
-    //   149: astore_1
-    //   150: aload_3
-    //   151: ifnull +11 -> 162
-    //   154: aload_2
-    //   155: ifnull +18 -> 173
-    //   158: aload_3
-    //   159: invokevirtual 270	android/os/ParcelFileDescriptor:close	()V
-    //   162: aload_1
-    //   163: athrow
-    //   164: astore_3
-    //   165: aload_2
-    //   166: aload_3
-    //   167: invokevirtual 300	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
-    //   170: goto -8 -> 162
-    //   173: aload_3
-    //   174: invokevirtual 270	android/os/ParcelFileDescriptor:close	()V
-    //   177: goto -15 -> 162
-    //   180: aload_1
-    //   181: aload_3
-    //   182: aload_2
-    //   183: invokestatic 306	androidx/core/provider/FontsContractCompat:prepareFontData	(Landroid/content/Context;[Landroidx/core/provider/FontsContractCompat$FontInfo;Landroid/os/CancellationSignal;)Ljava/util/Map;
-    //   186: astore_2
-    //   187: aload_0
-    //   188: invokespecial 198	androidx/core/graphics/TypefaceCompatApi26Impl:newFamily	()Ljava/lang/Object;
-    //   191: astore 11
-    //   193: aload 11
-    //   195: ifnonnull +5 -> 200
-    //   198: aconst_null
-    //   199: areturn
-    //   200: aload_3
-    //   201: arraylength
-    //   202: istore 7
+    //   112: astore_2
+    //   113: aload_2
+    //   114: astore_1
+    //   115: aload_3
+    //   116: ifnull -108 -> 8
+    //   119: iconst_0
+    //   120: ifeq +18 -> 138
+    //   123: aload_3
+    //   124: invokevirtual 270	android/os/ParcelFileDescriptor:close	()V
+    //   127: aload_2
+    //   128: areturn
+    //   129: astore_1
+    //   130: new 272	java/lang/NullPointerException
+    //   133: dup
+    //   134: invokespecial 273	java/lang/NullPointerException:<init>	()V
+    //   137: athrow
+    //   138: aload_3
+    //   139: invokevirtual 270	android/os/ParcelFileDescriptor:close	()V
+    //   142: aload_2
+    //   143: areturn
+    //   144: astore_1
+    //   145: aload_1
+    //   146: athrow
+    //   147: astore_2
+    //   148: aload_3
+    //   149: ifnull +11 -> 160
+    //   152: aload_1
+    //   153: ifnull +18 -> 171
+    //   156: aload_3
+    //   157: invokevirtual 270	android/os/ParcelFileDescriptor:close	()V
+    //   160: aload_2
+    //   161: athrow
+    //   162: astore_3
+    //   163: aload_1
+    //   164: aload_3
+    //   165: invokevirtual 300	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   168: goto -8 -> 160
+    //   171: aload_3
+    //   172: invokevirtual 270	android/os/ParcelFileDescriptor:close	()V
+    //   175: goto -15 -> 160
+    //   178: aload_1
+    //   179: aload_3
+    //   180: aload_2
+    //   181: invokestatic 306	androidx/core/provider/FontsContractCompat:prepareFontData	(Landroid/content/Context;[Landroidx/core/provider/FontsContractCompat$FontInfo;Landroid/os/CancellationSignal;)Ljava/util/Map;
+    //   184: astore 10
+    //   186: aload_0
+    //   187: invokespecial 198	androidx/core/graphics/TypefaceCompatApi26Impl:newFamily	()Ljava/lang/Object;
+    //   190: astore_2
+    //   191: aload_2
+    //   192: ifnonnull +5 -> 197
+    //   195: aconst_null
+    //   196: areturn
+    //   197: aload_3
+    //   198: arraylength
+    //   199: istore 7
+    //   201: iconst_0
+    //   202: istore 5
     //   204: iconst_0
-    //   205: istore 5
-    //   207: iconst_0
-    //   208: istore 6
-    //   210: iload 5
-    //   212: iload 7
-    //   214: if_icmpge +98 -> 312
-    //   217: aload_3
-    //   218: iload 5
-    //   220: aaload
-    //   221: astore 10
-    //   223: aload_2
-    //   224: aload 10
-    //   226: invokevirtual 257	androidx/core/provider/FontsContractCompat$FontInfo:getUri	()Landroid/net/Uri;
-    //   229: invokeinterface 312 2 0
-    //   234: checkcast 314	java/nio/ByteBuffer
-    //   237: astore_1
-    //   238: aload_1
-    //   239: ifnonnull +12 -> 251
-    //   242: iload 5
-    //   244: iconst_1
-    //   245: iadd
-    //   246: istore 5
-    //   248: goto -38 -> 210
-    //   251: aload 10
-    //   253: invokevirtual 315	androidx/core/provider/FontsContractCompat$FontInfo:getTtcIndex	()I
-    //   256: istore 8
-    //   258: aload 10
-    //   260: invokevirtual 283	androidx/core/provider/FontsContractCompat$FontInfo:getWeight	()I
-    //   263: istore 9
-    //   265: aload 10
-    //   267: invokevirtual 288	androidx/core/provider/FontsContractCompat$FontInfo:isItalic	()Z
-    //   270: ifeq +30 -> 300
-    //   273: iconst_1
-    //   274: istore 6
-    //   276: aload_0
-    //   277: aload 11
-    //   279: aload_1
-    //   280: iload 8
-    //   282: iload 9
-    //   284: iload 6
-    //   286: invokespecial 317	androidx/core/graphics/TypefaceCompatApi26Impl:addFontFromBuffer	(Ljava/lang/Object;Ljava/nio/ByteBuffer;III)Z
-    //   289: ifne +17 -> 306
-    //   292: aload_0
-    //   293: aload 11
-    //   295: invokespecial 232	androidx/core/graphics/TypefaceCompatApi26Impl:abortCreation	(Ljava/lang/Object;)V
-    //   298: aconst_null
-    //   299: areturn
-    //   300: iconst_0
-    //   301: istore 6
-    //   303: goto -27 -> 276
-    //   306: iconst_1
-    //   307: istore 6
-    //   309: goto -67 -> 242
-    //   312: iload 6
-    //   314: ifne +11 -> 325
-    //   317: aload_0
-    //   318: aload 11
-    //   320: invokespecial 232	androidx/core/graphics/TypefaceCompatApi26Impl:abortCreation	(Ljava/lang/Object;)V
-    //   323: aconst_null
-    //   324: areturn
-    //   325: aload_0
-    //   326: aload 11
-    //   328: invokespecial 234	androidx/core/graphics/TypefaceCompatApi26Impl:freeze	(Ljava/lang/Object;)Z
-    //   331: ifne +5 -> 336
-    //   334: aconst_null
-    //   335: areturn
-    //   336: aload_0
-    //   337: aload 11
-    //   339: invokevirtual 236	androidx/core/graphics/TypefaceCompatApi26Impl:createFromFamiliesWithDefault	(Ljava/lang/Object;)Landroid/graphics/Typeface;
-    //   342: astore_1
-    //   343: aload_1
-    //   344: ifnonnull +5 -> 349
-    //   347: aconst_null
+    //   205: istore 6
+    //   207: iload 5
+    //   209: iload 7
+    //   211: if_icmpge +97 -> 308
+    //   214: aload_3
+    //   215: iload 5
+    //   217: aaload
+    //   218: astore 11
+    //   220: aload 10
+    //   222: aload 11
+    //   224: invokevirtual 257	androidx/core/provider/FontsContractCompat$FontInfo:getUri	()Landroid/net/Uri;
+    //   227: invokeinterface 312 2 0
+    //   232: checkcast 314	java/nio/ByteBuffer
+    //   235: astore_1
+    //   236: aload_1
+    //   237: ifnonnull +12 -> 249
+    //   240: iload 5
+    //   242: iconst_1
+    //   243: iadd
+    //   244: istore 5
+    //   246: goto -39 -> 207
+    //   249: aload 11
+    //   251: invokevirtual 315	androidx/core/provider/FontsContractCompat$FontInfo:getTtcIndex	()I
+    //   254: istore 9
+    //   256: aload 11
+    //   258: invokevirtual 283	androidx/core/provider/FontsContractCompat$FontInfo:getWeight	()I
+    //   261: istore 8
+    //   263: aload 11
+    //   265: invokevirtual 288	androidx/core/provider/FontsContractCompat$FontInfo:isItalic	()Z
+    //   268: ifeq +28 -> 296
+    //   271: iconst_1
+    //   272: istore 6
+    //   274: aload_0
+    //   275: aload_2
+    //   276: aload_1
+    //   277: iload 9
+    //   279: iload 8
+    //   281: iload 6
+    //   283: invokespecial 317	androidx/core/graphics/TypefaceCompatApi26Impl:addFontFromBuffer	(Ljava/lang/Object;Ljava/nio/ByteBuffer;III)Z
+    //   286: ifne +16 -> 302
+    //   289: aload_0
+    //   290: aload_2
+    //   291: invokespecial 232	androidx/core/graphics/TypefaceCompatApi26Impl:abortCreation	(Ljava/lang/Object;)V
+    //   294: aconst_null
+    //   295: areturn
+    //   296: iconst_0
+    //   297: istore 6
+    //   299: goto -25 -> 274
+    //   302: iconst_1
+    //   303: istore 6
+    //   305: goto -65 -> 240
+    //   308: iload 6
+    //   310: ifne +10 -> 320
+    //   313: aload_0
+    //   314: aload_2
+    //   315: invokespecial 232	androidx/core/graphics/TypefaceCompatApi26Impl:abortCreation	(Ljava/lang/Object;)V
+    //   318: aconst_null
+    //   319: areturn
+    //   320: aload_0
+    //   321: aload_2
+    //   322: invokespecial 234	androidx/core/graphics/TypefaceCompatApi26Impl:freeze	(Ljava/lang/Object;)Z
+    //   325: ifne +5 -> 330
+    //   328: aconst_null
+    //   329: areturn
+    //   330: aload_0
+    //   331: aload_2
+    //   332: invokevirtual 236	androidx/core/graphics/TypefaceCompatApi26Impl:createFromFamiliesWithDefault	(Ljava/lang/Object;)Landroid/graphics/Typeface;
+    //   335: astore_1
+    //   336: aload_1
+    //   337: ifnonnull +5 -> 342
+    //   340: aconst_null
+    //   341: areturn
+    //   342: aload_1
+    //   343: iload 4
+    //   345: invokestatic 321	android/graphics/Typeface:create	(Landroid/graphics/Typeface;I)Landroid/graphics/Typeface;
     //   348: areturn
-    //   349: aload_1
-    //   350: iload 4
-    //   352: invokestatic 321	android/graphics/Typeface:create	(Landroid/graphics/Typeface;I)Landroid/graphics/Typeface;
+    //   349: astore_2
+    //   350: goto -202 -> 148
+    //   353: astore_1
+    //   354: aconst_null
     //   355: areturn
-    //   356: astore_1
-    //   357: goto -207 -> 150
-    //   360: astore_1
-    //   361: aconst_null
-    //   362: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	363	0	this	TypefaceCompatApi26Impl
-    //   0	363	1	paramContext	Context
-    //   0	363	2	paramCancellationSignal	android.os.CancellationSignal
-    //   0	363	3	paramArrayOfFontInfo	androidx.core.provider.FontsContractCompat.FontInfo[]
-    //   0	363	4	paramInt	int
-    //   205	42	5	i	int
-    //   208	105	6	j	int
-    //   202	13	7	k	int
-    //   256	25	8	m	int
-    //   263	20	9	n	int
-    //   24	242	10	localFontInfo	androidx.core.provider.FontsContractCompat.FontInfo
-    //   191	147	11	localObject	Object
+    //   0	356	0	this	TypefaceCompatApi26Impl
+    //   0	356	1	paramContext	Context
+    //   0	356	2	paramCancellationSignal	android.os.CancellationSignal
+    //   0	356	3	paramArrayOfFontInfo	androidx.core.provider.FontsContractCompat.FontInfo[]
+    //   0	356	4	paramInt	int
+    //   202	43	5	i	int
+    //   205	104	6	j	int
+    //   199	13	7	k	int
+    //   261	19	8	m	int
+    //   254	24	9	n	int
+    //   24	197	10	localObject	Object
+    //   218	46	11	localFontInfo	androidx.core.provider.FontsContractCompat.FontInfo
     // Exception table:
     //   from	to	target	type
     //   61	65	67	java/lang/Throwable
-    //   125	129	131	java/lang/Throwable
-    //   82	113	146	java/lang/Throwable
-    //   147	149	149	finally
-    //   158	162	164	java/lang/Throwable
-    //   82	113	356	finally
-    //   31	45	360	java/io/IOException
-    //   61	65	360	java/io/IOException
-    //   68	76	360	java/io/IOException
-    //   76	80	360	java/io/IOException
-    //   125	129	360	java/io/IOException
-    //   132	140	360	java/io/IOException
-    //   140	144	360	java/io/IOException
-    //   158	162	360	java/io/IOException
-    //   162	164	360	java/io/IOException
-    //   165	170	360	java/io/IOException
-    //   173	177	360	java/io/IOException
+    //   123	127	129	java/lang/Throwable
+    //   82	113	144	java/lang/Throwable
+    //   145	147	147	finally
+    //   156	160	162	java/lang/Throwable
+    //   82	113	349	finally
+    //   31	45	353	java/io/IOException
+    //   61	65	353	java/io/IOException
+    //   68	76	353	java/io/IOException
+    //   76	80	353	java/io/IOException
+    //   123	127	353	java/io/IOException
+    //   130	138	353	java/io/IOException
+    //   138	142	353	java/io/IOException
+    //   156	160	353	java/io/IOException
+    //   160	162	353	java/io/IOException
+    //   163	168	353	java/io/IOException
+    //   171	175	353	java/io/IOException
   }
   
   @Nullable

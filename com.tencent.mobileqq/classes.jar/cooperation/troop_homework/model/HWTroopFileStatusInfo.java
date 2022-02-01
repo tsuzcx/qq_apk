@@ -1,6 +1,6 @@
 package cooperation.troop_homework.model;
 
-import becp;
+import bfjs;
 import java.io.Serializable;
 import java.util.UUID;
 
@@ -28,57 +28,57 @@ public class HWTroopFileStatusInfo
   public String sha1;
   public long uniseq;
   
-  public static HWTroopFileStatusInfo parse(becp parambecp)
+  public static HWTroopFileStatusInfo parse(bfjs parambfjs)
   {
-    if (parambecp == null) {
+    if (parambfjs == null) {
       return null;
     }
     HWTroopFileStatusInfo localHWTroopFileStatusInfo = new HWTroopFileStatusInfo();
-    localHWTroopFileStatusInfo.Id = parambecp.jdField_a_of_type_JavaUtilUUID;
-    localHWTroopFileStatusInfo.SeqId = parambecp.jdField_a_of_type_Int;
-    localHWTroopFileStatusInfo.uniseq = parambecp.jdField_a_of_type_Long;
-    localHWTroopFileStatusInfo.TroopUin = parambecp.jdField_b_of_type_Long;
-    localHWTroopFileStatusInfo.Status = parambecp.jdField_b_of_type_Int;
-    localHWTroopFileStatusInfo.IsNewStatus = parambecp.jdField_a_of_type_Boolean;
-    localHWTroopFileStatusInfo.ErrorCode = parambecp.jdField_c_of_type_Int;
-    localHWTroopFileStatusInfo.UploadTime = parambecp.jdField_d_of_type_Int;
-    localHWTroopFileStatusInfo.ProgressTotal = parambecp.jdField_c_of_type_Long;
-    localHWTroopFileStatusInfo.ProgressValue = parambecp.jdField_d_of_type_Long;
-    localHWTroopFileStatusInfo.LocalFile = parambecp.jdField_a_of_type_JavaLangString;
-    localHWTroopFileStatusInfo.ThumbnailFile_Small = parambecp.jdField_b_of_type_JavaLangString;
-    localHWTroopFileStatusInfo.ThumbnailFile_Large = parambecp.jdField_c_of_type_JavaLangString;
-    localHWTroopFileStatusInfo.FilePath = parambecp.jdField_e_of_type_JavaLangString;
-    localHWTroopFileStatusInfo.sha1 = parambecp.f;
-    localHWTroopFileStatusInfo.FileName = parambecp.g;
-    localHWTroopFileStatusInfo.BusId = parambecp.jdField_h_of_type_Int;
-    localHWTroopFileStatusInfo.entrySessionID = parambecp.jdField_e_of_type_Long;
-    localHWTroopFileStatusInfo.NickName = parambecp.jdField_h_of_type_JavaLangString;
+    localHWTroopFileStatusInfo.Id = parambfjs.jdField_a_of_type_JavaUtilUUID;
+    localHWTroopFileStatusInfo.SeqId = parambfjs.jdField_a_of_type_Int;
+    localHWTroopFileStatusInfo.uniseq = parambfjs.jdField_a_of_type_Long;
+    localHWTroopFileStatusInfo.TroopUin = parambfjs.jdField_b_of_type_Long;
+    localHWTroopFileStatusInfo.Status = parambfjs.jdField_b_of_type_Int;
+    localHWTroopFileStatusInfo.IsNewStatus = parambfjs.jdField_a_of_type_Boolean;
+    localHWTroopFileStatusInfo.ErrorCode = parambfjs.jdField_c_of_type_Int;
+    localHWTroopFileStatusInfo.UploadTime = parambfjs.jdField_d_of_type_Int;
+    localHWTroopFileStatusInfo.ProgressTotal = parambfjs.jdField_c_of_type_Long;
+    localHWTroopFileStatusInfo.ProgressValue = parambfjs.jdField_d_of_type_Long;
+    localHWTroopFileStatusInfo.LocalFile = parambfjs.jdField_a_of_type_JavaLangString;
+    localHWTroopFileStatusInfo.ThumbnailFile_Small = parambfjs.jdField_b_of_type_JavaLangString;
+    localHWTroopFileStatusInfo.ThumbnailFile_Large = parambfjs.jdField_c_of_type_JavaLangString;
+    localHWTroopFileStatusInfo.FilePath = parambfjs.jdField_e_of_type_JavaLangString;
+    localHWTroopFileStatusInfo.sha1 = parambfjs.f;
+    localHWTroopFileStatusInfo.FileName = parambfjs.g;
+    localHWTroopFileStatusInfo.BusId = parambfjs.jdField_h_of_type_Int;
+    localHWTroopFileStatusInfo.entrySessionID = parambfjs.jdField_e_of_type_Long;
+    localHWTroopFileStatusInfo.NickName = parambfjs.jdField_h_of_type_JavaLangString;
     return localHWTroopFileStatusInfo;
   }
   
-  public becp toTroopFileStatusInfo()
+  public bfjs toTroopFileStatusInfo()
   {
-    becp localbecp = new becp();
-    localbecp.jdField_a_of_type_JavaUtilUUID = this.Id;
-    localbecp.jdField_a_of_type_Int = this.SeqId;
-    localbecp.jdField_a_of_type_Long = this.uniseq;
-    localbecp.jdField_b_of_type_Long = this.TroopUin;
-    localbecp.jdField_b_of_type_Int = this.Status;
-    localbecp.jdField_a_of_type_Boolean = this.IsNewStatus;
-    localbecp.jdField_c_of_type_Int = this.ErrorCode;
-    localbecp.jdField_d_of_type_Int = this.UploadTime;
-    localbecp.jdField_c_of_type_Long = this.ProgressTotal;
-    localbecp.jdField_d_of_type_Long = this.ProgressValue;
-    localbecp.jdField_a_of_type_JavaLangString = this.LocalFile;
-    localbecp.jdField_b_of_type_JavaLangString = this.ThumbnailFile_Small;
-    localbecp.jdField_c_of_type_JavaLangString = this.ThumbnailFile_Large;
-    localbecp.jdField_e_of_type_JavaLangString = this.FilePath;
-    localbecp.f = this.sha1;
-    localbecp.g = this.FileName;
-    localbecp.jdField_h_of_type_Int = this.BusId;
-    localbecp.jdField_e_of_type_Long = this.entrySessionID;
-    localbecp.jdField_h_of_type_JavaLangString = this.NickName;
-    return localbecp;
+    bfjs localbfjs = new bfjs();
+    localbfjs.jdField_a_of_type_JavaUtilUUID = this.Id;
+    localbfjs.jdField_a_of_type_Int = this.SeqId;
+    localbfjs.jdField_a_of_type_Long = this.uniseq;
+    localbfjs.jdField_b_of_type_Long = this.TroopUin;
+    localbfjs.jdField_b_of_type_Int = this.Status;
+    localbfjs.jdField_a_of_type_Boolean = this.IsNewStatus;
+    localbfjs.jdField_c_of_type_Int = this.ErrorCode;
+    localbfjs.jdField_d_of_type_Int = this.UploadTime;
+    localbfjs.jdField_c_of_type_Long = this.ProgressTotal;
+    localbfjs.jdField_d_of_type_Long = this.ProgressValue;
+    localbfjs.jdField_a_of_type_JavaLangString = this.LocalFile;
+    localbfjs.jdField_b_of_type_JavaLangString = this.ThumbnailFile_Small;
+    localbfjs.jdField_c_of_type_JavaLangString = this.ThumbnailFile_Large;
+    localbfjs.jdField_e_of_type_JavaLangString = this.FilePath;
+    localbfjs.f = this.sha1;
+    localbfjs.g = this.FileName;
+    localbfjs.jdField_h_of_type_Int = this.BusId;
+    localbfjs.jdField_e_of_type_Long = this.entrySessionID;
+    localbfjs.jdField_h_of_type_JavaLangString = this.NickName;
+    return localbfjs;
   }
 }
 

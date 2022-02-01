@@ -1,16 +1,14 @@
-import java.util.Random;
+import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.ViewModelProvider;
 
-public class bmxp
+class bmxp
+  implements bnlm
 {
-  private static Random a = new Random();
+  bmxp(bmxa parambmxa) {}
   
-  public static bmxq a()
+  public void a(bnme parambnme)
   {
-    int i = bodx.a / 4;
-    int j = a.nextInt(bodx.a / 2);
-    int k = bodx.a / 4;
-    int m = a.nextInt(bodx.a / 2);
-    return new bmxq(i - j + bodx.a / 2, k - m + (bodx.b - bodx.a(249.0F)) / 2);
+    ((bnos)bmxz.a(this.a, boqo.a()).get(bnos.class)).a().postValue(parambnme);
   }
 }
 

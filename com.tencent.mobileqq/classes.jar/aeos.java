@@ -1,19 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class aeos
-  implements View.OnClickListener
+  implements TextWatcher
 {
-  public aeos(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aeos(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a.setResult(0, this.a.getIntent());
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramEditable = this.a.a.getText().toString().trim();
+    this.a.b(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,17 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class adgj
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public adgj(FontSettingActivity paramFontSettingActivity) {}
+  public adgj(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.c();
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramDialogInterface.dismiss();
   }
 }
 

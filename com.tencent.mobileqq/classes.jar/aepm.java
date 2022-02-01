@@ -1,29 +1,24 @@
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
 
 public class aepm
-  extends CardObserver
+  implements bbhy
 {
-  public aepm(TroopRequestActivity paramTroopRequestActivity) {}
+  public aepm(QQIdentiferActivity paramQQIdentiferActivity) {}
   
-  public void onCardDownload(boolean paramBoolean, Object paramObject)
+  public void a(float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.systemmsg.TroopRequestActivity", 2, "onCardDownload() isSuccess = " + paramBoolean + "  data:" + paramObject);
-    }
-    if (paramObject == null) {}
-    Card localCard;
-    do
+    if (paramFloat < 0.0F)
     {
-      do
-      {
-        return;
-      } while ((!paramBoolean) || (!(paramObject instanceof Card)));
-      localCard = (Card)paramObject;
-    } while ((localCard.uin == null) || (!localCard.uin.equals(this.a.b)));
-    TroopRequestActivity.a(this.a, (Card)paramObject);
+      this.a.a(this.a.getString(2131694150));
+      return;
+    }
+    if (paramFloat > 175.0F)
+    {
+      this.a.a(this.a.getString(2131694149));
+      return;
+    }
+    QQIdentiferActivity.a(this.a).setText("");
   }
 }
 

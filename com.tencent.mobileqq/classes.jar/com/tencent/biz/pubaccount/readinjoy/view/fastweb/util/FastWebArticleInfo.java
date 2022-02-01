@@ -23,29 +23,29 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import org.json.JSONObject;
-import pum;
-import puy;
-import sst;
-import ssy;
-import svo;
-import swx;
+import qfg;
+import qfs;
 import tencent.im.oidb.cmd0xad6.oidb_cmd0xad6.Article;
 import tencent.im.oidb.cmd0xad6.oidb_cmd0xad6.ArticleCommonInfo;
 import tencent.im.oidb.cmd0xad6.oidb_cmd0xad6.ArticleCover;
 import tencent.im.oidb.cmd0xad6.oidb_cmd0xad6.ArticleExtInfo;
 import tencent.im.oidb.cmd0xad6.oidb_cmd0xad6.RspArticle;
 import tencent.im.oidb.cmd0xad6.oidb_cmd0xad6.RspBody;
+import tge;
+import tgj;
+import tiz;
+import tki;
 
 public class FastWebArticleInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<FastWebArticleInfo> CREATOR = new svo();
+  public static final Parcelable.Creator<FastWebArticleInfo> CREATOR = new tiz();
   public int a;
   public long a;
-  public SparseArray<swx> a;
+  public SparseArray<tki> a;
   public RelatedSearchData a;
   public String a;
-  public List<sst> a;
+  public List<tge> a;
   private Map<String, JSONObject> a;
   public boolean a;
   public int b;
@@ -136,7 +136,7 @@ public class FastWebArticleInfo
     //   96: astore 7
     //   98: aload 7
     //   100: ldc 107
-    //   102: invokestatic 112	pay:a	()Ljava/lang/String;
+    //   102: invokestatic 112	pkh:a	()Ljava/lang/String;
     //   105: invokevirtual 116	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   108: pop
     //   109: aload 7
@@ -242,39 +242,39 @@ public class FastWebArticleInfo
     //   224	231	236	java/lang/Throwable
   }
   
-  public AuthorData a(ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, puy parampuy)
+  public AuthorData a(ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, qfs paramqfs)
   {
-    parampuy = new AuthorData(paramArticleInfo, paramFastWebArticleInfo);
+    paramqfs = new AuthorData(paramArticleInfo, paramFastWebArticleInfo);
     if (c())
     {
-      parampuy.jdField_b_of_type_JavaLangString = paramArticleInfo.mSubscribeName;
-      parampuy.jdField_c_of_type_JavaLangString = paramArticleInfo.getSubscribeUin();
-      parampuy.jdField_a_of_type_JavaLangString = "";
-      if (TextUtils.isEmpty(parampuy.jdField_b_of_type_JavaLangString))
+      paramqfs.jdField_b_of_type_JavaLangString = paramArticleInfo.mSubscribeName;
+      paramqfs.jdField_c_of_type_JavaLangString = paramArticleInfo.getSubscribeUin();
+      paramqfs.jdField_a_of_type_JavaLangString = "";
+      if (TextUtils.isEmpty(paramqfs.jdField_b_of_type_JavaLangString))
       {
         if (!TextUtils.isEmpty(this.e)) {
           break label113;
         }
         paramFastWebArticleInfo = this.h;
-        parampuy.jdField_b_of_type_JavaLangString = paramFastWebArticleInfo;
-        paramArticleInfo.mSubscribeName = parampuy.jdField_b_of_type_JavaLangString;
+        paramqfs.jdField_b_of_type_JavaLangString = paramFastWebArticleInfo;
+        paramArticleInfo.mSubscribeName = paramqfs.jdField_b_of_type_JavaLangString;
       }
     }
     for (;;)
     {
-      parampuy.jdField_d_of_type_JavaLangString = this.f;
-      parampuy.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-      parampuy.P = this.q;
-      parampuy.v = 1;
-      parampuy.jdField_b_of_type_Float = 1.0F;
-      return parampuy;
+      paramqfs.jdField_d_of_type_JavaLangString = this.f;
+      paramqfs.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+      paramqfs.T = this.q;
+      paramqfs.v = 1;
+      paramqfs.jdField_b_of_type_Float = 1.0F;
+      return paramqfs;
       label113:
       paramFastWebArticleInfo = this.e;
       break;
-      parampuy.jdField_b_of_type_JavaLangString = this.e;
-      parampuy.jdField_c_of_type_JavaLangString = paramArticleInfo.getSubscribeUin();
-      parampuy.jdField_a_of_type_JavaLangString = this.g;
-      parampuy.e = this.h;
+      paramqfs.jdField_b_of_type_JavaLangString = this.e;
+      paramqfs.jdField_c_of_type_JavaLangString = paramArticleInfo.getSubscribeUin();
+      paramqfs.jdField_a_of_type_JavaLangString = this.g;
+      paramqfs.e = this.h;
     }
   }
   
@@ -283,7 +283,7 @@ public class FastWebArticleInfo
     TitleData localTitleData = new TitleData();
     localTitleData.jdField_a_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
     localTitleData.b = paramArticleInfo;
-    localTitleData.P = this.q;
+    localTitleData.T = this.q;
     localTitleData.v = 1;
     localTitleData.u = 1;
     return localTitleData;
@@ -395,7 +395,7 @@ public class FastWebArticleInfo
           }
           else
           {
-            QLog.d(pum.jdField_a_of_type_JavaLangString, 1, "uncompress article content data error !");
+            QLog.d(qfg.jdField_a_of_type_JavaLangString, 1, "uncompress article content data error !");
             return false;
           }
         }
@@ -500,10 +500,10 @@ public class FastWebArticleInfo
       localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
-        localObject = (sst)localIterator.next();
-        paramParcel.writeString(((sst)localObject).jdField_a_of_type_JavaLangString);
-        paramParcel.writeLong(((sst)localObject).jdField_a_of_type_Long);
-        paramParcel.writeString(((sst)localObject).jdField_b_of_type_JavaLangString);
+        localObject = (tge)localIterator.next();
+        paramParcel.writeString(((tge)localObject).jdField_a_of_type_JavaLangString);
+        paramParcel.writeLong(((tge)localObject).jdField_a_of_type_Long);
+        paramParcel.writeString(((tge)localObject).jdField_b_of_type_JavaLangString);
       }
       paramInt = 0;
       break;
@@ -517,12 +517,12 @@ public class FastWebArticleInfo
         localIterator = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataRelatedSearchData.jdField_a_of_type_JavaUtilList.iterator();
         while (localIterator.hasNext())
         {
-          localObject = (ssy)localIterator.next();
-          paramParcel.writeString(((ssy)localObject).jdField_a_of_type_JavaLangString);
-          paramParcel.writeString(((ssy)localObject).jdField_b_of_type_JavaLangString);
-          paramParcel.writeFloat(((ssy)localObject).jdField_a_of_type_Float);
-          paramParcel.writeString(((ssy)localObject).jdField_c_of_type_JavaLangString);
-          paramParcel.writeInt(((ssy)localObject).jdField_a_of_type_Int);
+          localObject = (tgj)localIterator.next();
+          paramParcel.writeString(((tgj)localObject).jdField_a_of_type_JavaLangString);
+          paramParcel.writeString(((tgj)localObject).jdField_b_of_type_JavaLangString);
+          paramParcel.writeFloat(((tgj)localObject).jdField_a_of_type_Float);
+          paramParcel.writeString(((tgj)localObject).jdField_c_of_type_JavaLangString);
+          paramParcel.writeInt(((tgj)localObject).jdField_a_of_type_Int);
         }
         paramParcel.writeString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataRelatedSearchData.jdField_a_of_type_JavaLangString);
       }
@@ -540,7 +540,7 @@ public class FastWebArticleInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo
  * JD-Core Version:    0.7.0.1
  */

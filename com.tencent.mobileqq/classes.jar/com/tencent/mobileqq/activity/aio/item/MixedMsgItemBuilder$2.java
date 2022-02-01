@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agiy;
+import ahbp;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.transfile.AbsDownloader;
 
 public class MixedMsgItemBuilder$2
   implements Runnable
 {
-  public MixedMsgItemBuilder$2(agiy paramagiy, String paramString, URLDrawable paramURLDrawable) {}
+  public MixedMsgItemBuilder$2(ahbp paramahbp, String paramString, URLDrawable paramURLDrawable) {}
   
   public void run()
   {

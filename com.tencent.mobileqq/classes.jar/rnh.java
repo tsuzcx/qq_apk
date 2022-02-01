@@ -1,21 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.AppInterface;
+import mqq.app.MobileQQ;
 
-public class rnh
-  extends pxp<ColumnInfo, pxh<ColumnInfo>>
+class rnh
+  extends rmp
 {
-  public rnh(rnf paramrnf)
-  {
-    super(paramrnf);
-  }
+  rnh(rna paramrna, AppInterface paramAppInterface) {}
   
-  public void a()
+  public Drawable a()
   {
-    super.a();
-  }
-  
-  public void a(pxh<ColumnInfo> parampxh)
-  {
-    super.a(parampxh);
+    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_kandian_selected");
   }
 }
 

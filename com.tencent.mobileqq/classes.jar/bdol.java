@@ -1,14 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
-class bdol
-  implements DialogInterface.OnDismissListener
+public class bdol
+  implements View.OnTouchListener
 {
-  bdol(bdoi parambdoi) {}
+  public bdol(StructMsgForGeneralShare paramStructMsgForGeneralShare, aftk paramaftk) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    bdoi.a(this.a);
+    return this.jdField_a_of_type_Aftk.onTouch(paramView, paramMotionEvent);
   }
 }
 

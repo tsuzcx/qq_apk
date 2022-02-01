@@ -1,48 +1,38 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.mobileqq.utils.ViewUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import mqq.os.MqqHandler;
 
-public class okz
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class okz
+  extends BroadcastReceiver
 {
-  public okz(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  okz(okn paramokn, boolean paramBoolean, MqqHandler paramMqqHandler) {}
   
-  public void onGlobalLayout()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Rect localRect = new Rect();
-    this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.getWindowVisibleDisplayFrame(localRect);
-    int j = this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.getRootView().getHeight();
-    int i = j - localRect.height();
-    if (i > 100) {}
-    for (boolean bool = true;; bool = false)
+    String str = paramIntent.getStringExtra("com.tencent.biz.pubaccount.scanResultData");
+    int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.scanResultType", 0);
+    if (this.jdField_a_of_type_Boolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyBaseDeliverActivity", 2, "onGlobalLayout screenHeight:" + j + ", ExternalPanelheight:" + i + ", isShowKeybroad:" + bool);
+      this.jdField_a_of_type_Okn.a(str, i, 12, -1, null);
+      if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
+        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(19);
       }
-      if (bool != this.a.k)
+    }
+    try
+    {
+      for (;;)
       {
-        if (i > this.a.e) {
-          this.a.e = i;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInJoyBaseDeliverActivity", 2, "onGlobalLayout mMAXExternalPanelheight:" + this.a.e);
-        }
-        i = ViewUtils.dpToPx(this.a.f);
-        j = j - ImmersiveUtils.getStatusBarHeight(this.a) - this.a.getTitleBarHeight() - this.a.e;
-        int k = j - i;
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInJoyBaseDeliverActivity", 2, "onGlobalLayout contentHeight:" + j + ", fixedHeight:" + i + ", maxHeight:" + k);
-        }
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setMaxHeight(k);
+        paramContext.unregisterReceiver(this.jdField_a_of_type_Okn.a);
+        label65:
+        this.jdField_a_of_type_Okn.a = null;
+        return;
+        this.jdField_a_of_type_Okn.a(str, i, 11, -1, null);
       }
-      this.a.k = bool;
-      return;
+    }
+    catch (Exception paramContext)
+    {
+      break label65;
     }
   }
 }

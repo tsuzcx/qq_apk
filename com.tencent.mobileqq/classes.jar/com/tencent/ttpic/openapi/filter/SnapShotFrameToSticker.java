@@ -24,7 +24,7 @@ public class SnapShotFrameToSticker
   public void clear()
   {
     if (this.mCopyFilter != null) {
-      this.mCopyFilter.ClearGLSL();
+      this.mCopyFilter.clearGLSL();
     }
   }
   

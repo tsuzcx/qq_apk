@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.view;
 
-import afsn;
-import alps;
+import agkb;
+import amos;
 import android.annotation.TargetApi;
 import android.view.View;
 import android.view.View.OnLayoutChangeListener;
@@ -49,8 +49,8 @@ public class InputGlobalLayoutListener
     {
       return;
       localBaseChatPie.mApolloViewController.d(this.jdField_a_of_type_Int);
-      afsn localafsn = (afsn)localBaseChatPie.getHelper(52);
-      if ((localafsn != null) && (localafsn.b())) {}
+      agkb localagkb = (agkb)localBaseChatPie.getHelper(52);
+      if ((localagkb != null) && (localagkb.b())) {}
       for (int i = 1; i == 0; i = 0)
       {
         localBaseChatPie.mApolloViewController.e(this.jdField_a_of_type_Int);

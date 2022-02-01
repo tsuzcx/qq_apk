@@ -1,56 +1,20 @@
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
-import javax.annotation.Nullable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import java.util.Iterator;
+import kotlin.Metadata;
 
-public class bdvi
-  extends aptq<bdvh>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"}, k=3, mv={1, 1, 16})
+final class bdvi
+  implements DialogInterface.OnDismissListener
 {
-  @NonNull
-  public bdvh a(int paramInt)
-  {
-    QLog.d("TroopAssociationsEntryConfigProcessor", 2, "migrateOldOrDefaultContent, type: " + paramInt);
-    return new bdvh();
-  }
+  bdvi(bdve parambdve, int paramInt1, int paramInt2) {}
   
-  @Nullable
-  public bdvh a(aptx[] paramArrayOfaptx)
+  public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return bdvh.a(paramArrayOfaptx);
+    paramDialogInterface = ((Iterable)bdve.a(this.jdField_a_of_type_Bdve)).iterator();
+    while (paramDialogInterface.hasNext()) {
+      ((bdvf)paramDialogInterface.next()).c(this.jdField_a_of_type_Int, this.b);
     }
-    return null;
-  }
-  
-  public void a(bdvh parambdvh) {}
-  
-  public Class<bdvh> clazz()
-  {
-    return bdvh.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("TroopAssociationsEntryConfigProcessor", 1, "onReqFailed, failCode = " + paramInt);
-  }
-  
-  public int type()
-  {
-    return 686;
   }
 }
 

@@ -1,16 +1,26 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.view.View;
-import android.widget.RelativeLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.gameroom.GameQuickWordsPanel;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.ArrayList;
 
-class axqy
-  extends AnimatorListenerAdapter
+public class axqy
+  implements AdapterView.OnItemClickListener
 {
-  axqy(axqp paramaxqp, View paramView) {}
+  public axqy(GameQuickWordsPanel paramGameQuickWordsPanel) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    axqp.a(this.jdField_a_of_type_Axqp).removeView(this.jdField_a_of_type_AndroidViewView);
+    paramAdapterView = (String)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    paramView = new admo();
+    paramView.c = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
+    paramView.a = System.currentTimeMillis();
+    admh.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramAdapterView, null, paramView);
+    this.a.jdField_a_of_type_Aiav.hideAllPanels();
+    bdla.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_wolf", "", "in_game", "send_default", 0, 0, "", "", "", "");
   }
 }
 

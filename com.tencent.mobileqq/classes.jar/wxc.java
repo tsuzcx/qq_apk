@@ -1,6 +1,13 @@
-public abstract interface wxc
+class wxc
+  extends wwo
 {
-  public abstract boolean a(wwz paramwwz, int paramInt1, int paramInt2);
+  wxc(wxa paramwxa, wyh paramwyh) {}
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_Wyh.a = ((String)a("UploadImageJob_out_image_url"));
+    return true;
+  }
 }
 
 

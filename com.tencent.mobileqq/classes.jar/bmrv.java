@@ -1,85 +1,64 @@
-import android.app.Activity;
-import java.util.ArrayList;
+import com.tencent.biz.common.util.NetworkUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import cooperation.weiyun.channel.pb.WeiyunPB.MsgHead;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.AppRuntime;
 
-public class bmrv
+final class bmrv
 {
-  int jdField_a_of_type_Int;
-  public long a;
-  public bmsh a;
-  public bmsk a;
-  public bmsr a;
-  bmta jdField_a_of_type_Bmta;
-  ArrayList<bmrm> jdField_a_of_type_JavaUtilArrayList;
-  public long b;
+  private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private final WeiyunPB.MsgHead jdField_a_of_type_CooperationWeiyunChannelPbWeiyunPB$MsgHead;
+  private final byte[] jdField_a_of_type_ArrayOfByte;
   
-  public bmrv(int paramInt)
+  bmrv(int paramInt, byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_CooperationWeiyunChannelPbWeiyunPB$MsgHead = a(paramInt);
   }
   
-  public void a()
+  bmrv(WeiyunPB.MsgHead paramMsgHead, byte[] paramArrayOfByte)
   {
-    bnub.a().b(null, null, this.jdField_a_of_type_Int);
-    bnub.a().a(null, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bmsk = null;
+    this.jdField_a_of_type_CooperationWeiyunChannelPbWeiyunPB$MsgHead = paramMsgHead;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
   }
   
-  public void a(Activity paramActivity)
+  private WeiyunPB.MsgHead a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Bmsh != null) && (this.jdField_a_of_type_Bmsh.jdField_a_of_type_Int == 3))
-    {
-      this.jdField_a_of_type_Bmsh.b(paramActivity, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Bmsh.a(paramActivity, this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_a_of_type_Bmsk != null)
-    {
-      this.jdField_a_of_type_Bmsk.b(paramActivity, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Bmsk.a(paramActivity, this.jdField_a_of_type_Int);
-    }
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    WeiyunPB.MsgHead localMsgHead = new WeiyunPB.MsgHead();
+    localMsgHead.uin.set(localAppRuntime.getLongAccountUin());
+    localMsgHead.seq.set(a());
+    localMsgHead.type.set(1);
+    localMsgHead.cmd.set(paramInt);
+    localMsgHead.emulator_flag.set(0);
+    localMsgHead.appid.set(31532);
+    localMsgHead.encrypt.set(0);
+    localMsgHead.zip_flag.set(0);
+    localMsgHead.version.set(bmtu.c());
+    localMsgHead.fix_version.set(bmtu.d());
+    localMsgHead.nettype.set(NetworkUtil.getNetworkType(localAppRuntime.getApplication()));
+    localMsgHead.major_version.set(bmtu.a());
+    localMsgHead.minor_version.set(bmtu.b());
+    return localMsgHead;
   }
   
-  public void a(bmsh parambmsh)
+  public int a()
   {
-    this.jdField_a_of_type_Bmsh = parambmsh;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    return jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
   }
   
-  public void a(bmsk parambmsk)
+  public WeiyunPB.MsgHead a()
   {
-    this.jdField_a_of_type_Bmsk = parambmsk;
-    this.b = System.currentTimeMillis();
+    return this.jdField_a_of_type_CooperationWeiyunChannelPbWeiyunPB$MsgHead;
   }
   
-  public void a(bmsr parambmsr)
+  public byte[] a()
   {
-    this.jdField_a_of_type_Bmsr = parambmsr;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Bmsk == null) || (this.b <= this.jdField_a_of_type_Long);
-  }
-  
-  public void b(Activity paramActivity)
-  {
-    bnub.a().a(this.jdField_a_of_type_Int);
-    bnub.a().a(null, paramActivity, this.jdField_a_of_type_Int);
-    bmsh localbmsh = bnub.a().a[this.jdField_a_of_type_Int];
-    if (localbmsh != null) {
-      localbmsh.a(paramActivity, this.jdField_a_of_type_Int);
-    }
-    bnub.a().a(null, paramActivity, this.jdField_a_of_type_Int);
-    bnub.a().b(null, paramActivity, this.jdField_a_of_type_Int);
-  }
-  
-  public void c(Activity paramActivity)
-  {
-    b(paramActivity);
-    this.jdField_a_of_type_Bmsh = null;
-    this.jdField_a_of_type_Bmsk = null;
-    this.jdField_a_of_type_Bmta = null;
-    this.jdField_a_of_type_JavaUtilArrayList = null;
+    return this.jdField_a_of_type_ArrayOfByte;
   }
 }
 

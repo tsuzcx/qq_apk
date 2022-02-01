@@ -1,13 +1,28 @@
 package com.tencent.mobileqq.activity.aio.core;
 
+import bdla;
+import com.tencent.mobileqq.emoticonview.EmotionKeywordHorizonListView.HorizonListViewTouchListener;
+import com.tencent.widget.XEditTextEx;
+import mqq.os.MqqHandler;
+
 class BaseChatPie$52
-  implements Runnable
+  implements EmotionKeywordHorizonListView.HorizonListViewTouchListener
 {
   BaseChatPie$52(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  public void touchEventActionChanged(int paramInt)
   {
-    this.this$0.switchReceiptMode();
+    switch (paramInt)
+    {
+    case 2: 
+    default: 
+      return;
+    case 0: 
+      this.this$0.uiHandler.removeMessages(67);
+      bdla.b(this.this$0.app, "CliOper", "", "", "ep_mall", "slide", 0, 0, "", "", "", this.this$0.input.getText().toString());
+      return;
+    }
+    this.this$0.uiHandler.sendEmptyMessageDelayed(67, 6000L);
   }
 }
 

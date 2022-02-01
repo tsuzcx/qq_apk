@@ -1,20 +1,22 @@
-import android.graphics.Bitmap;
-import com.tencent.gdtad.util.GdtSmartBlur;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import java.util.List;
 
-final class bfoy
-  implements DownloadParams.DecodeHandler
+public class bfoy
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public int a;
+  public long a;
+  public String a;
+  public List<Long> a;
+  public boolean a;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public long d;
+  public String d;
+  
+  public String toString()
   {
-    paramDownloadParams = paramDownloadParams.tag;
-    if ((GdtSmartBlur.a().a) && ((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 1))
-    {
-      int i = ((int[])(int[])paramDownloadParams)[0];
-      GdtSmartBlur.a().a(paramBitmap, i);
-    }
-    return paramBitmap;
+    return "HomeworkInfo{content='" + this.jdField_b_of_type_JavaLangString + '\'' + ", group_id=" + this.jdField_a_of_type_Long + ", uin=" + this.jdField_b_of_type_Long + ", title='" + this.jdField_a_of_type_JavaLangString + '\'' + ", date='" + this.c + '\'' + ", need_feedback=" + this.jdField_a_of_type_Boolean + ", course_name=" + this.jdField_d_of_type_JavaLangString + ", syncgids=" + this.jdField_a_of_type_JavaUtilList + ", hw_id=" + this.jdField_d_of_type_Long + '}';
   }
 }
 

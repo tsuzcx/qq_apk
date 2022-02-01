@@ -1,26 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RegisterSendUpSms;
+import mqq.os.MqqHandler;
 
 public class aeuj
-  implements View.OnClickListener
+  extends MqqHandler
 {
-  public aeuj(ActivateFriendActivity paramActivateFriendActivity, bjnw parambjnw) {}
+  public aeuj(RegisterSendUpSms paramRegisterSendUpSms) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    int i = 2;
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.app;
-    if (ActivateFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity)) {}
-    for (;;)
-    {
-      aevc.a(localQQAppInterface, "remindpage_click", null, null, String.valueOf(2), String.valueOf(i));
-      this.jdField_a_of_type_Bjnw.dismiss();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      i = 1;
+    if (paramMessage.what == 107) {
+      this.a.finish();
     }
   }
 }

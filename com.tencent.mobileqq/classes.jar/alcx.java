@@ -1,15 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.recent.AnonymousEntranceView;
 
 public class alcx
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  public alcx(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public alcx(AnonymousEntranceView paramAnonymousEntranceView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a();
+    if (AnonymousEntranceView.a(this.a) != null) {
+      AnonymousEntranceView.a(this.a).setVisibility(4);
+    }
+    if (AnonymousEntranceView.b(this.a) != null)
+    {
+      AnonymousEntranceView.b(this.a).clearAnimation();
+      AnonymousEntranceView.b(this.a).startAnimation(AnonymousEntranceView.a(this.a));
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (AnonymousEntranceView.a(this.a) != null) {
+      AnonymousEntranceView.a(this.a).setVisibility(0);
+    }
   }
 }
 

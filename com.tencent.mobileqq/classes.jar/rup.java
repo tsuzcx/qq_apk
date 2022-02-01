@@ -1,21 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDraftboxFragment.1;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDraftboxFragment.1.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class rup
-  implements TVK_IMediaPlayer.OnErrorListener
+public class rup
+  implements ruq
 {
-  rup(run paramrun) {}
+  public rup(ReadInJoyDraftboxFragment.1 param1) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void a(List<ReadInJoyDraftboxItem> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(run.a(), 2, "播放器状态回调 onError model = " + paramInt1 + ", what = " + paramInt2 + ", detailInfo = " + paramString);
-    }
-    if (run.a(this.a) != null) {
-      run.a(this.a).a(3, paramInt1 + "-" + paramInt2, null, 0L);
-    }
-    return false;
+    ThreadManager.getUIHandler().post(new ReadInJoyDraftboxFragment.1.1.1(this, paramList));
   }
 }
 

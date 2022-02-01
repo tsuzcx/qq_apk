@@ -1,6 +1,17 @@
-public abstract interface pmw
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.daily.DailyTipsFoldUtils.1;
+
+public class pmw
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(boolean paramBoolean);
+  public pmw(DailyTipsFoldUtils.1 param1, View paramView) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+  }
 }
 
 

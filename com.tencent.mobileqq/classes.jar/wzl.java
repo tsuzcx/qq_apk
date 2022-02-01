@@ -1,15 +1,34 @@
-import android.app.Activity;
-import android.content.Intent;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class wzl
-  extends wrx
+final class wzl
+  implements URLDrawable.URLDrawableListener
 {
-  public wzl(wzk paramwzk) {}
+  wzl(long paramLong, wzw paramwzw) {}
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if ((paramInt1 == 66666) && (paramInt2 == -1)) {
-      this.a.a.b().finish();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.player.PlayModeUtils", 2, "urlDrawable onLoadFialed, exception: " + QLog.getStackTraceString(paramThrowable));
+    }
+    if (this.jdField_a_of_type_Wzw != null) {
+      this.jdField_a_of_type_Wzw.b();
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.player.PlayModeUtils", 2, "urlDrawable onLoadSuccessed");
+    }
+    ykv.b("storypic", "load_time", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long), 0, new String[0]);
+    if (this.jdField_a_of_type_Wzw != null) {
+      this.jdField_a_of_type_Wzw.a();
     }
   }
 }

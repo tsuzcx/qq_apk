@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.AdTagInfo;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.biz.pubaccount.Advertisement.fragment.WebpageFragment;
+import com.tencent.biz.pubaccount.CustomWebView;
 
-public final class oel
-  implements Parcelable.Creator<VideoInfo.AdTagInfo>
+public class oel
+  implements ofp
 {
-  public VideoInfo.AdTagInfo a(Parcel paramParcel)
+  public oel(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  
+  public boolean a(int paramInt)
   {
-    return new VideoInfo.AdTagInfo(paramParcel);
+    return (PublicAccountAdvertisementActivity.e(this.a)) && (PublicAccountAdvertisementActivity.c(this.a));
   }
   
-  public VideoInfo.AdTagInfo[] a(int paramInt)
+  public boolean b(int paramInt)
   {
-    return new VideoInfo.AdTagInfo[paramInt];
+    return (PublicAccountAdvertisementActivity.e(this.a)) && (!PublicAccountAdvertisementActivity.c(this.a)) && (PublicAccountAdvertisementActivity.a(this.a) != null) && (PublicAccountAdvertisementActivity.a(this.a).getWebView() != null) && (PublicAccountAdvertisementActivity.a(this.a).getWebView().getWebScrollY() == 0);
   }
 }
 

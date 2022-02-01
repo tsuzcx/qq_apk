@@ -1,17 +1,24 @@
-import android.app.Activity;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.core.FriendChatPie.6.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class agar
-  implements atah
+public class agar
+  implements View.OnClickListener
 {
-  agar(agap paramagap) {}
+  agar(agab paramagab) {}
   
   public void onClick(View paramView)
   {
-    aszt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 3);
-    aszt.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendNick);
+    if (this.a.freeTalkImg.getVisibility() == 0) {
+      ThreadManager.post(new FriendChatPie.6.1(this), 5, null, false);
+    }
+    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
+    bdla.b(this.a.app, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(0), "", "", "");
+    aftr.a(this.a.app, this.a.mActivity, this.a.sessionInfo, true, null, this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

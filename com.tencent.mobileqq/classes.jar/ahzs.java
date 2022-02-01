@@ -1,55 +1,87 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build.VERSION;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.Set;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.confess.CircleGuideView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 class ahzs
-  extends RecyclerView.ViewHolder
-  implements Animator.AnimatorListener, View.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
-  String jdField_a_of_type_JavaLangString;
+  ahzs(ahzq paramahzq, View paramView1, View paramView2) {}
   
-  public ahzs(ahzq paramahzq, View paramView)
+  public void onGlobalLayout()
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)paramView.findViewById(2131376717));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368236));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371615));
-  }
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(4);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.cancelAnimation();
-    this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
-    ahzq.a(this.jdField_a_of_type_Ahzq).add(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
+    int j;
+    Object localObject1;
+    Object localObject2;
+    aquz localaquz;
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getParent() == null))
     {
+      if (QLog.isColorLevel()) {
+        QLog.i(this.jdField_a_of_type_Ahzq.tag, 2, "show holmes guide!");
+      }
+      j = ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_Ahzq.mContext);
+      if (this.jdField_a_of_type_Ahzq.sessionInfo.curType != 1034) {
+        break label430;
+      }
+      localObject1 = (CircleGuideView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364636);
+      float f1 = this.b.getX();
+      float f2 = this.b.getWidth() / 2;
+      float f3 = j;
+      float f4 = this.b.getY();
+      float f5 = this.b.getHeight() / 2;
+      i = 24;
+      if (Build.VERSION.SDK_INT <= 18) {
+        i = 20;
+      }
+      ((CircleGuideView)localObject1).setCircle(f2 + f1, f5 + (f3 + f4), AIOUtils.dp2px(i, ahzq.a(this.jdField_a_of_type_Ahzq).getResources()));
+      localObject1 = this.jdField_a_of_type_Ahzq.mContext.getResources().getString(2131691036);
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131368248).setPadding(0, j, 0, 0);
+      localObject2 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368251);
+      localaquz = ((aqvd)this.jdField_a_of_type_Ahzq.app.getManager(QQManagerFactory.CONFESS_MANAGER)).b();
+      if (localaquz != null) {
+        break label527;
+      }
     }
-    for (;;)
+    label527:
+    for (int i = 5;; i = localaquz.k)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      ((ImageView)localObject2).setImageResource(ahzq.a(this.jdField_a_of_type_Ahzq, i));
+      ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368250)).setContentDescription(String.format((String)localObject1, new Object[] { Integer.valueOf(i) }));
+      this.jdField_a_of_type_Ahzq.a = new PopupWindow(this.jdField_a_of_type_Ahzq.mContext);
+      this.jdField_a_of_type_Ahzq.a.setWindowLayoutMode(-1, -1);
+      this.jdField_a_of_type_Ahzq.a.setFocusable(true);
+      this.jdField_a_of_type_Ahzq.a.setBackgroundDrawable(new ColorDrawable(0));
+      this.jdField_a_of_type_Ahzq.a.setContentView(this.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_Ahzq.a.setClippingEnabled(false);
+      this.jdField_a_of_type_Ahzq.a.showAtLocation(new View(this.jdField_a_of_type_Ahzq.mContext), 0, 0, 0);
+      if (Build.VERSION.SDK_INT >= 16) {
+        this.jdField_a_of_type_Ahzq.afRoot.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+      }
       return;
-      ahzq.a(this.jdField_a_of_type_Ahzq, this.jdField_a_of_type_JavaLangString);
+      label430:
+      localObject1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131373222);
+      localObject2 = (ViewGroup.MarginLayoutParams)((View)localObject1).getLayoutParams();
+      ((ViewGroup.MarginLayoutParams)localObject2).leftMargin = (this.b.getLeft() + ahzq.a(this.jdField_a_of_type_Ahzq).getLeft());
+      ((ViewGroup.MarginLayoutParams)localObject2).topMargin = (this.b.getTop() + j + ahzq.a(this.jdField_a_of_type_Ahzq).getTop());
+      ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      localObject1 = this.jdField_a_of_type_Ahzq.mContext.getResources().getString(2131691035);
+      break;
     }
   }
 }

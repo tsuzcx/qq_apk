@@ -1,6 +1,10 @@
-public abstract interface bcrw
+import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
+import java.util.ArrayList;
+
+public class bcrw
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public MessageForText.AtTroopMemberInfo a;
+  public ArrayList<Object> a = new ArrayList(2);
 }
 
 

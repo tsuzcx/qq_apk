@@ -1,21 +1,32 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class arws
-  implements aszj
+public class arws
+  implements View.OnLongClickListener, CompoundButton.OnCheckedChangeListener
 {
-  arws(arwp paramarwp, WeiYunFileInfo paramWeiYunFileInfo) {}
+  public arwk a;
   
-  public void onNo() {}
+  protected arws(DataReportSettingFragment paramDataReportSettingFragment) {}
   
-  public void onYes()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    FileManagerEntity localFileManagerEntity = aszt.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo);
-    QfileBaseCloudFileTabView.i(this.jdField_a_of_type_Arwp.a).getFileManagerEngine().b(localFileManagerEntity);
-    QfileBaseCloudFileTabView.j(this.jdField_a_of_type_Arwp.a).getFileManagerDataCenter().a(localFileManagerEntity);
-    this.jdField_a_of_type_Arwp.a.a(localFileManagerEntity);
+    if (this.jdField_a_of_type_Arwk != null)
+    {
+      this.jdField_a_of_type_Arwk.a = paramBoolean;
+      arxi.a().e();
+    }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    bhdj.a(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportSettingFragment.getActivity(), 230, null, anvx.a(2131702266), new arwt(this), new arwu(this)).show();
+    return true;
   }
 }
 

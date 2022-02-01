@@ -1,40 +1,82 @@
 import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.PublicAccountShowPictureReport;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.2;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.2.1;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
+import java.util.ArrayList;
 
-class bexi
-  implements bezd
+public class bexi
+  implements AdapterView.OnItemSelectedListener
 {
-  bexi(bexh parambexh) {}
+  public bexi(TroopAvatarWallPreviewActivity.2.1 param1) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (bexh.a(this.a).get() == null) {
+    if (paramView == null) {
       return;
     }
-    if ((paramJSONObject != null) && (paramJSONObject.has("ec")))
+    if (TroopAvatarWallPreviewActivity.a(this.a.a.this$0).isReport)
     {
-      paramInt = paramJSONObject.optInt("ec");
-      paramJSONObject = paramJSONObject.optString("em");
-      if (QLog.isColorLevel()) {
-        QLog.d("AddTroopAppCgi", 2, new Object[] { "retCode:", Integer.valueOf(paramInt) });
-      }
-      if (paramInt == 0)
-      {
-        ((bexj)bexh.a(this.a).get()).a(bexh.a(this.a));
-        return;
-      }
-      ((bexj)bexh.a(this.a).get()).a(paramInt, paramJSONObject, bexh.a(this.a));
-      return;
+      TroopAvatarWallPreviewActivity.a(this.a.a.this$0).addPicIndex(paramInt);
+      paramAdapterView = TroopAvatarWallPreviewActivity.a(this.a.a.this$0);
+      paramAdapterView.slide_number += 1;
     }
-    QLog.e("AddTroopAppCgi", 1, "add appid get result err");
-    ((bexj)bexh.a(this.a).get()).a(-1, "", bexh.a(this.a));
+    this.a.a.this$0.jdField_a_of_type_Int = paramInt;
+    paramAdapterView = this.a.a.this$0.jdField_a_of_type_Int + 1 + "/" + this.a.a.this$0.jdField_b_of_type_Int;
+    this.a.a.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(paramAdapterView);
+    boolean bool1;
+    if (this.a.a.this$0.c)
+    {
+      bdla.b(this.a.a.this$0.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.a.this$0.jdField_a_of_type_JavaLangString, "0", "", "");
+      if (this.a.a.this$0.jdField_b_of_type_Boolean) {
+        TroopAvatarWallPreviewActivity.a(this.a.a.this$0, this.a.a.this$0.jdField_a_of_type_Int);
+      }
+      boolean bool2 = this.a.a.this$0.f;
+      if ((TroopAvatarWallPreviewActivity.a(this.a.a.this$0) != null) && (TroopAvatarWallPreviewActivity.a(this.a.a.this$0).getBoolean("from_personality_label", false)))
+      {
+        paramAdapterView = this.a.a.this$0;
+        if (Long.valueOf((String)this.a.a.this$0.jdField_b_of_type_JavaUtilArrayList.get(this.a.a.this$0.jdField_a_of_type_Int)).longValue() == -1L) {
+          break label530;
+        }
+        bool1 = true;
+        label363:
+        paramAdapterView.f = bool1;
+      }
+      if (bool2 != this.a.a.this$0.f)
+      {
+        paramAdapterView = this.a.a.this$0.jdField_a_of_type_AndroidWidgetImageView;
+        if (!this.a.a.this$0.f) {
+          break label536;
+        }
+      }
+    }
+    label530:
+    label536:
+    for (paramInt = 0;; paramInt = 8)
+    {
+      paramAdapterView.setVisibility(paramInt);
+      if (this.a.a.this$0.j) {
+        TroopAvatarWallPreviewActivity.b(this.a.a.this$0);
+      }
+      TroopAvatarWallPreviewActivity.b(this.a.a.this$0, this.a.a.this$0.jdField_a_of_type_Int);
+      return;
+      bdla.b(this.a.a.this$0.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.a.this$0.jdField_a_of_type_JavaLangString, "1", "", "");
+      break;
+      bool1 = false;
+      break label363;
+    }
   }
+  
+  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bexi
  * JD-Core Version:    0.7.0.1
  */

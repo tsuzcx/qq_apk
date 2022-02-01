@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.entry;
 
 import NS_COMM.COMM.StCommonExt;
-import apys;
-import apyt;
+import arbv;
+import arbw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -79,9 +79,9 @@ public class MiniAppLocalSearchManager
       return null;
     }
     localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
-    apys localapys = apyt.a();
-    if (localapys != null) {}
-    for (boolean bool = localapys.b();; bool = false)
+    arbv localarbv = arbw.a();
+    if (localarbv != null) {}
+    for (boolean bool = localarbv.b();; bool = false)
     {
       if (!bool)
       {

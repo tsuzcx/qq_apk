@@ -1,272 +1,236 @@
-import android.text.TextUtils;
-import android.util.Pair;
-import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.image.RIJPreloadImage.1;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.util.PreloadManager;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.SubCommentData;
+import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.FirstCommentCreateData;
+import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.FirstCommentSinkData;
+import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.FirstCommentStickyData;
+import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.SimpleCommentData;
+import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.SubCommentCreateData;
+import com.tencent.biz.pubaccount.readinjoy.comment.helper.RIJCommentNetworkHelper.authorDeleteComment.1;
+import com.tencent.biz.pubaccount.readinjoy.comment.helper.RIJCommentNetworkHelper.authorDeleteComment.2;
+import com.tencent.biz.pubaccount.readinjoy.comment.helper.RIJCommentNetworkHelper.createFirstComment.1;
+import com.tencent.biz.pubaccount.readinjoy.comment.helper.RIJCommentNetworkHelper.createFirstComment.2;
+import com.tencent.biz.pubaccount.readinjoy.comment.helper.RIJCommentNetworkHelper.createFirstCommentForHippy.1;
+import com.tencent.biz.pubaccount.readinjoy.comment.helper.RIJCommentNetworkHelper.createFirstCommentForHippy.2;
+import com.tencent.biz.pubaccount.readinjoy.comment.helper.RIJCommentNetworkHelper.createSubComment.1;
+import com.tencent.biz.pubaccount.readinjoy.comment.helper.RIJCommentNetworkHelper.createSubComment.2;
+import com.tencent.biz.pubaccount.readinjoy.comment.helper.RIJCommentNetworkHelper.createSubCommentForHippy.1;
+import com.tencent.biz.pubaccount.readinjoy.comment.helper.RIJCommentNetworkHelper.createSubCommentForHippy.2;
+import com.tencent.biz.pubaccount.readinjoy.comment.helper.RIJCommentNetworkHelper.sinkComment.1;
+import com.tencent.biz.pubaccount.readinjoy.comment.helper.RIJCommentNetworkHelper.sinkComment.2;
+import com.tencent.biz.pubaccount.readinjoy.comment.helper.RIJCommentNetworkHelper.updateCommentStickyStatus.1;
+import com.tencent.biz.pubaccount.readinjoy.comment.helper.RIJCommentNetworkHelper.updateCommentStickyStatus.2;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.functions.Function1;
+import kotlin.jvm.functions.Function2;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
 
-public class pgv
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/helper/RIJCommentNetworkHelper;", "", "()V", "BUNDLE_KEY_CREATE_COMMENT_DATA", "", "BUNDLE_KEY_JS_OBJ", "TAG", "seqFactory", "Ljava/util/concurrent/atomic/AtomicLong;", "authorDeleteComment", "", "contentSrc", "", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "feedsType", "callback", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentObserver;", "checkErrorCode", "errorCode", "createFirstComment", "", "requestData", "Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/FirstCommentCreateData;", "Lcom/tencent/biz/pubaccount/readinjoy/comment/helper/RIJCommentNetworkHelper$RIJCreateCommentObserver;", "commentJsonStr", "isFeeds", "", "needBiuAfterComment", "createFirstCommentForHippy", "Lcom/tencent/biz/pubaccount/readinjoy/comment/helper/RIJCommentNetworkHelper$RIJCreateCommentForHippyObserver;", "extraParam", "createSubComment", "Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SubCommentCreateData;", "createSubCommentForHippy", "doCreateCommentReport", "consumeTime", "sendIsCopyMessageTo0xdc8", "commentContent", "rowKey", "parentCommentId", "subCommentId", "commentId", "sinkComment", "commentSinkData", "Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/FirstCommentSinkData;", "updateCommentStickyStatus", "commentStickyData", "Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/FirstCommentStickyData;", "RIJCreateCommentForHippyObserver", "RIJCreateCommentObserver", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pgv
 {
-  private static int jdField_a_of_type_Int = 10;
-  private static int b;
-  private long jdField_a_of_type_Long;
+  private static final AtomicLong a;
+  public static final pgv a;
   
   static
   {
-    jdField_b_of_type_Int = 10;
+    jdField_a_of_type_Pgv = new pgv();
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(0L);
   }
   
-  private void a(List<pgu> paramList)
+  @JvmStatic
+  public static final void a(int paramInt)
   {
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if (paramInt == -4096)
     {
-      pgu localpgu = (pgu)paramList.next();
-      if ((localpgu != null) && (localpgu.jdField_a_of_type_JavaNetURL != null))
-      {
-        if (TextUtils.equals("pubaccountimage", localpgu.jdField_a_of_type_JavaNetURL.getProtocol())) {
-          localpgu.jdField_a_of_type_JavaNetURL = pay.a(localpgu.jdField_a_of_type_JavaNetURL.getFile(), false);
-        }
-        if (localpgu.jdField_a_of_type_JavaNetURL != null)
-        {
-          syo localsyo = new syo();
-          psq.a.a(localsyo, localpgu.jdField_a_of_type_JavaNetURL.toString());
-          localsyo.jdField_a_of_type_Int = ((Integer)localpgu.jdField_a_of_type_AndroidUtilPair.first).intValue();
-          localsyo.jdField_b_of_type_Int = ((Integer)localpgu.jdField_a_of_type_AndroidUtilPair.second).intValue();
-          localsyo.jdField_b_of_type_Boolean = true;
-          syn.a().a(localsyo, null);
-        }
+      QQToast localQQToast = QQToast.a((Context)BaseApplicationImpl.sApplication, (CharSequence)anvx.a(2131717645), 1);
+      Intrinsics.checkExpressionValueIsNotNull(localQQToast, "QQToast.makeText(\n      …     QQToast.LENGTH_LONG)");
+      localQQToast.b(1);
+      localQQToast.a(QQToast.a(1));
+      localQQToast.a();
+    }
+  }
+  
+  private final void a(int paramInt, long paramLong)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    localJSONObject.put("retCode", paramInt);
+    localJSONObject.put("os", 1);
+    localJSONObject.put("consume_time", paramLong);
+    olh.a(null, "", "0X8009A35", "0X8009A35", 0, 0, "", "", "", localJSONObject.toString(), false);
+    uvs.a(paramInt, 7, paramLong, null);
+  }
+  
+  private final void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    if (pbq.a((Context)BaseApplicationImpl.getContext(), paramString1))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("RIJCommentNetworkHelper", 2, "commentSink commentContent: " + paramString1 + ", rowKey: " + paramString2 + ", parentCommentId: " + paramString3 + ", subCommentId: " + paramString4 + ", commentId: " + paramString5);
+      }
+      paramString1 = pnn.a();
+      if (paramString1 != null) {}
+      for (paramString1 = paramString1.getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER); paramString1 == null; paramString1 = null) {
+        throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicManager");
+      }
+      paramString1 = ((pvp)paramString1).a();
+      Intrinsics.checkExpressionValueIsNotNull(paramString1, "logicManager.readInJoyLogicEngine");
+      paramString1 = paramString1.a();
+      if (paramString1 != null) {
+        paramString1.a(paramString2, paramString3, paramString4, paramString5);
       }
     }
   }
   
-  private void a(List<pgu> paramList, int paramInt, BaseArticleInfo paramBaseArticleInfo, ped paramped)
+  public final long a(@NotNull FirstCommentCreateData paramFirstCommentCreateData, @NotNull pgx parampgx, @NotNull String paramString, int paramInt, boolean paramBoolean)
   {
-    paramInt = paramped.a().a().getItemViewType(paramInt);
-    if (paramInt == 4) {
-      if (paramBaseArticleInfo.mVideoCoverUrl != null)
-      {
-        paramBaseArticleInfo = paramBaseArticleInfo.mVideoCoverUrl;
-        paramList.add(pgu.a(paramBaseArticleInfo, pai.f()));
+    Intrinsics.checkParameterIsNotNull(paramFirstCommentCreateData, "requestData");
+    Intrinsics.checkParameterIsNotNull(parampgx, "callback");
+    Intrinsics.checkParameterIsNotNull(paramString, "commentJsonStr");
+    return a(paramFirstCommentCreateData, parampgx, paramString, paramInt, paramBoolean, false);
+  }
+  
+  public final long a(@NotNull FirstCommentCreateData paramFirstCommentCreateData, @NotNull pgx parampgx, @NotNull String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramFirstCommentCreateData, "requestData");
+    Intrinsics.checkParameterIsNotNull(parampgx, "callback");
+    Intrinsics.checkParameterIsNotNull(paramString, "commentJsonStr");
+    long l1 = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.getAndIncrement();
+    long l2 = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("RIJCommentNetworkHelper", 2, "firstCommentCreateData: " + paramFirstCommentCreateData);
+    }
+    pga localpga = new pga(paramFirstCommentCreateData);
+    localpga.a((Function1)new RIJCommentNetworkHelper.createFirstComment.1(paramBoolean2, parampgx, l1, paramString, paramInt, paramBoolean1, paramFirstCommentCreateData, l2));
+    localpga.a((Function2)new RIJCommentNetworkHelper.createFirstComment.2(parampgx, l1, paramString, paramInt, paramBoolean1, l2));
+    localpga.a();
+    return l1;
+  }
+  
+  public final long a(@NotNull SubCommentCreateData paramSubCommentCreateData, @NotNull pgx parampgx, @NotNull String paramString, int paramInt, boolean paramBoolean)
+  {
+    Intrinsics.checkParameterIsNotNull(paramSubCommentCreateData, "requestData");
+    Intrinsics.checkParameterIsNotNull(parampgx, "callback");
+    Intrinsics.checkParameterIsNotNull(paramString, "commentJsonStr");
+    return a(paramSubCommentCreateData, parampgx, paramString, paramInt, paramBoolean, false);
+  }
+  
+  public final long a(@NotNull SubCommentCreateData paramSubCommentCreateData, @NotNull pgx parampgx, @NotNull String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramSubCommentCreateData, "requestData");
+    Intrinsics.checkParameterIsNotNull(parampgx, "callback");
+    Intrinsics.checkParameterIsNotNull(paramString, "commentJsonStr");
+    long l1 = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.getAndIncrement();
+    long l2 = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("RIJCommentNetworkHelper", 2, "subCommentCreateData: " + paramSubCommentCreateData);
+    }
+    pge localpge = new pge(paramSubCommentCreateData);
+    localpge.a((Function1)new RIJCommentNetworkHelper.createSubComment.1(paramBoolean2, parampgx, l1, paramString, paramInt, paramBoolean1, paramSubCommentCreateData, l2));
+    localpge.a((Function2)new RIJCommentNetworkHelper.createSubComment.2(parampgx, l1, paramString, paramInt, paramBoolean1, l2));
+    localpge.a();
+    return l1;
+  }
+  
+  public final void a(int paramInt1, @NotNull pdp parampdp, int paramInt2, @NotNull pbm parampbm)
+  {
+    Intrinsics.checkParameterIsNotNull(parampdp, "commentViewItem");
+    Intrinsics.checkParameterIsNotNull(parampbm, "callback");
+    BaseCommentData localBaseCommentData = parampdp.a;
+    SimpleCommentData localSimpleCommentData;
+    Object localObject;
+    String str;
+    if (localBaseCommentData != null)
+    {
+      localSimpleCommentData = new SimpleCommentData(paramInt1, "");
+      localObject = localBaseCommentData.rowKey;
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "commentData.rowKey");
+      localSimpleCommentData.c((String)localObject);
+      localObject = "";
+      if (localBaseCommentData.getCommentLevel() != 1) {
+        break label158;
       }
+      str = localBaseCommentData.commentId;
+      Intrinsics.checkExpressionValueIsNotNull(str, "commentData.commentId");
     }
     for (;;)
     {
+      localObject = new pfx(new pgo(localSimpleCommentData, localBaseCommentData.getCommentLevel(), str, (String)localObject));
+      ((pfx)localObject).a((Function1)new RIJCommentNetworkHelper.authorDeleteComment.1(parampbm, parampdp, paramInt2));
+      ((pfx)localObject).b((Function1)new RIJCommentNetworkHelper.authorDeleteComment.2(parampbm, parampdp, paramInt2));
+      ((pfx)localObject).a();
       return;
-      if (paramBaseArticleInfo.mSinglePicture != null)
-      {
-        paramBaseArticleInfo = paramBaseArticleInfo.mSinglePicture;
-        break;
+      label158:
+      if (localBaseCommentData == null) {
+        throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.comment.data.SubCommentData");
       }
-      paramBaseArticleInfo = pay.a(paramBaseArticleInfo.mFirstPagePicUrl);
-      break;
-      if ((paramInt == 70) || (paramInt == 46))
-      {
-        if (paramBaseArticleInfo.mVideoCoverUrl != null)
-        {
-          paramped = paramBaseArticleInfo.mVideoCoverUrl;
-          paramList.add(pgu.a(paramped, pai.g()));
-          if ((paramBaseArticleInfo.mSubArtilceList == null) || (paramBaseArticleInfo.mSubArtilceList.size() <= 0)) {
-            continue;
-          }
-          paramBaseArticleInfo = (ArticleInfo)paramBaseArticleInfo.mSubArtilceList.get(0);
-          if (paramBaseArticleInfo.mVideoCoverUrl == null) {
-            break label199;
-          }
-          paramBaseArticleInfo = paramBaseArticleInfo.mVideoCoverUrl;
-        }
-        for (;;)
-        {
-          paramList.add(pgu.a(paramBaseArticleInfo, pai.g()));
-          return;
-          if (paramBaseArticleInfo.mSinglePicture != null)
-          {
-            paramped = paramBaseArticleInfo.mSinglePicture;
-            break;
-          }
-          paramped = pay.a(paramBaseArticleInfo.mFirstPagePicUrl);
-          break;
-          label199:
-          if (paramBaseArticleInfo.mSinglePicture != null) {
-            paramBaseArticleInfo = paramBaseArticleInfo.mSinglePicture;
-          } else {
-            paramBaseArticleInfo = pay.a(paramBaseArticleInfo.mFirstPagePicUrl);
-          }
-        }
-      }
-      else if ((paramInt == 3) || (paramInt == 14) || (paramInt == 105))
-      {
-        if (paramBaseArticleInfo.mPictures != null)
-        {
-          paramBaseArticleInfo = paramBaseArticleInfo.mPictures;
-          int i = paramBaseArticleInfo.length;
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            paramList.add(pgu.a(paramBaseArticleInfo[paramInt], pai.a()));
-            paramInt += 1;
-          }
-        }
-      }
-      else
-      {
-        if ((paramInt == 2) || (paramInt == 6) || (paramInt == 66) || (paramInt == 115))
-        {
-          paramList.add(pgu.a(paramBaseArticleInfo.mSinglePicture, pai.e()));
-          return;
-        }
-        if ((paramInt == 1) || (paramInt == 5) || (paramInt == 104) || (paramInt == 106))
-        {
-          paramList.add(pgu.a(paramBaseArticleInfo.mSinglePicture, pai.a()));
-          return;
-        }
-        if ((paramInt == 122) && (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) && (twr.k((AdvertisementInfo)paramBaseArticleInfo)) && (((AdvertisementInfo)paramBaseArticleInfo).mAdImgList != null))
-        {
-          paramBaseArticleInfo = ((AdvertisementInfo)paramBaseArticleInfo).mAdImgList.iterator();
-          while (paramBaseArticleInfo.hasNext()) {
-            paramList.add(pgu.a(pay.a((String)paramBaseArticleInfo.next()), pai.e()));
-          }
-        }
-      }
+      str = ((SubCommentData)localBaseCommentData).parentCommentId;
+      Intrinsics.checkExpressionValueIsNotNull(str, "(commentData as SubCommentData).parentCommentId");
+      localObject = localBaseCommentData.commentId;
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "commentData.commentId");
     }
   }
   
-  public int a()
+  public final void a(@NotNull FirstCommentCreateData paramFirstCommentCreateData, @NotNull pgw parampgw, boolean paramBoolean, @NotNull String paramString)
   {
-    return jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RIJPreloadImage", 2, "cpu:" + DeviceInfoUtil.getCpuNumber() + " mem:" + DeviceInfoUtil.getSystemTotalMemory() + " fre:" + DeviceInfoUtil.getCpuFrequency());
-    }
-    int i = DeviceInfoUtil.getCpuNumber();
-    long l = DeviceInfoUtil.getSystemTotalMemory();
-    if ((i >= 4) && (l >= 1610612736.0D))
-    {
-      jdField_a_of_type_Int = 6;
-      return;
-    }
-    jdField_a_of_type_Int = 4;
-  }
-  
-  public void a(int paramInt1, int paramInt2, ped paramped)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RIJPreloadImage", 2, "preloadImg start:" + paramInt1 + " count:" + paramInt2);
-    }
+    Intrinsics.checkParameterIsNotNull(paramFirstCommentCreateData, "requestData");
+    Intrinsics.checkParameterIsNotNull(parampgw, "callback");
+    Intrinsics.checkParameterIsNotNull(paramString, "extraParam");
     long l = System.currentTimeMillis();
-    if (!NetworkUtil.isWifiConnected(paramped.a().a())) {
-      return;
-    }
-    ArrayList localArrayList = new ArrayList(paramped.a());
-    ThreadManager.post(new RIJPreloadImage.1(this, this.jdField_a_of_type_Long, localArrayList, paramInt1, paramInt2, paramped, l), 5, null, true);
-  }
-  
-  public void a(int paramInt1, int paramInt2, slt paramslt)
-  {
-    if (!PreloadManager.a().a()) {}
-    for (;;)
-    {
-      return;
-      PreloadManager.a().e();
-      int i = paramslt.a();
-      while (paramInt1 <= paramInt2)
-      {
-        Object localObject = paramslt.getItem(paramInt1);
-        if ((localObject instanceof BaseArticleInfo))
-        {
-          localObject = (BaseArticleInfo)localObject;
-          if ((!pay.a(((BaseArticleInfo)localObject).mArticleContentUrl, ((BaseArticleInfo)localObject).mChannelID, (ArticleInfo)localObject)) && (!pay.a((BaseArticleInfo)localObject)) && (!paramslt.a(i, ((BaseArticleInfo)localObject).mArticleID)))
-          {
-            localObject = ((BaseArticleInfo)localObject).mArticleContentUrl;
-            if (aacg.a((String)localObject)) {
-              PreloadManager.a().a((String)localObject);
-            }
-          }
-        }
-        paramInt1 += 1;
-      }
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, peu parampeu, ped paramped)
-  {
-    syn.a().c();
     if (QLog.isColorLevel()) {
-      QLog.d("RIJPreloadImage", 2, "resume image onScrollStateChanged idle");
+      QLog.d("RIJCommentNetworkHelper", 2, "firstCommentCreateData: " + paramFirstCommentCreateData + ' ' + paramString);
     }
-    if (paramBoolean) {
-      a(paramInt2, jdField_a_of_type_Int, paramped);
-    }
-    for (;;)
-    {
-      if ((paramInt1 - paramInt2 < jdField_b_of_type_Int) && (parampeu != null)) {
-        parampeu.a();
-      }
-      return;
-      a(paramInt2 - jdField_a_of_type_Int, jdField_a_of_type_Int, paramped);
-    }
+    paramString = new pgc(paramFirstCommentCreateData, paramString);
+    paramString.a((Function2)new RIJCommentNetworkHelper.createFirstCommentForHippy.1(paramBoolean, parampgw, paramFirstCommentCreateData, l));
+    paramString.b((Function2)new RIJCommentNetworkHelper.createFirstCommentForHippy.2(parampgw, l));
+    paramString.a();
   }
   
-  public void b(int paramInt1, int paramInt2, slt paramslt)
+  public final void a(@NotNull FirstCommentSinkData paramFirstCommentSinkData, @NotNull pbm parampbm)
   {
-    if (!PublicAccountImageCollectionPreloadManager.a().a()) {}
-    for (;;)
-    {
-      return;
-      PublicAccountImageCollectionPreloadManager.a().c();
-      while (paramInt1 <= paramInt2)
-      {
-        Object localObject = paramslt.getItem(paramInt1);
-        if (localObject != null)
-        {
-          localObject = (BaseArticleInfo)localObject;
-          int i = paramslt.a(paramInt1);
-          if ((i == 8) || (i == 7)) {
-            PublicAccountImageCollectionPreloadManager.a().a(String.valueOf(((BaseArticleInfo)localObject).innerUniqueID));
-          }
-        }
-        paramInt1 += 1;
-      }
-    }
+    Intrinsics.checkParameterIsNotNull(paramFirstCommentSinkData, "commentSinkData");
+    Intrinsics.checkParameterIsNotNull(parampbm, "callback");
+    pgi localpgi = new pgi(paramFirstCommentSinkData);
+    localpgi.a((Function1)new RIJCommentNetworkHelper.sinkComment.1(parampbm, paramFirstCommentSinkData));
+    localpgi.a((Function0)new RIJCommentNetworkHelper.sinkComment.2(parampbm, paramFirstCommentSinkData));
+    localpgi.a();
+    QLog.d("RIJCommentNetworkHelper", 1, "sink comment, detail : " + paramFirstCommentSinkData);
   }
   
-  public void c(int paramInt1, int paramInt2, slt paramslt)
+  public final void a(@NotNull FirstCommentStickyData paramFirstCommentStickyData, @NotNull pbm parampbm)
   {
-    if ((!bkwm.C(pem.a())) || (!bkwm.D(pem.a()))) {
-      return;
+    Intrinsics.checkParameterIsNotNull(paramFirstCommentStickyData, "commentStickyData");
+    Intrinsics.checkParameterIsNotNull(parampbm, "callback");
+    pgl localpgl = new pgl(paramFirstCommentStickyData);
+    localpgl.a((Function1)new RIJCommentNetworkHelper.updateCommentStickyStatus.1(parampbm, paramFirstCommentStickyData));
+    localpgl.a((Function0)new RIJCommentNetworkHelper.updateCommentStickyStatus.2(parampbm, paramFirstCommentStickyData));
+    localpgl.a();
+    QLog.d("RIJCommentNetworkHelper", 1, "update comment setTop status, detail : " + paramFirstCommentStickyData);
+  }
+  
+  public final void a(@NotNull SubCommentCreateData paramSubCommentCreateData, @NotNull pgw parampgw, boolean paramBoolean, @NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramSubCommentCreateData, "requestData");
+    Intrinsics.checkParameterIsNotNull(parampgw, "callback");
+    Intrinsics.checkParameterIsNotNull(paramString, "extraParam");
+    long l = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("RIJCommentNetworkHelper", 2, "subCommentCreateData: " + paramSubCommentCreateData + ' ' + paramString);
     }
-    ArrayList localArrayList = new ArrayList();
-    while (paramInt1 <= paramInt2)
-    {
-      Object localObject = paramslt.getItem(paramInt1);
-      if (localObject != null)
-      {
-        localObject = (BaseArticleInfo)localObject;
-        if (!pay.a((BaseArticleInfo)localObject)) {
-          localArrayList.add((ArticleInfo)localObject);
-        }
-      }
-      paramInt1 += 1;
-    }
-    pkm.a().a().a(localArrayList);
+    paramString = new pgg(paramSubCommentCreateData, paramString);
+    paramString.a((Function2)new RIJCommentNetworkHelper.createSubCommentForHippy.1(paramBoolean, parampgw, paramSubCommentCreateData, l));
+    paramString.b((Function2)new RIJCommentNetworkHelper.createSubCommentForHippy.2(parampgw, l));
+    paramString.a();
   }
 }
 

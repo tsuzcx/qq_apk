@@ -2,7 +2,7 @@ package cooperation.qzone.util;
 
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import bibn;
+import bjmp;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.networkedmodule.QzoneModuleManager;
 import java.io.File;
@@ -52,7 +52,7 @@ public class AnimatedWebpLoaderUtil
   
   private static boolean isNeedUpdate()
   {
-    String str = bibn.a().getString("PREFERENCE_SO_MD5_KEY", null);
+    String str = bjmp.a().getString("PREFERENCE_SO_MD5_KEY", null);
     if (TextUtils.isEmpty(str)) {}
     while (!str.equalsIgnoreCase(WEBP_SO_MD5)) {
       return true;

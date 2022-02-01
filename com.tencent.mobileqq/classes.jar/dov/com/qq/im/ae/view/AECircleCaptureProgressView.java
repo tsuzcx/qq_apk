@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import bmcd;
+import bnru;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
 
@@ -48,10 +48,10 @@ public class AECircleCaptureProgressView
   
   private void a(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    LayoutInflater.from(paramContext).inflate(2131558484, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369243));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369294));
-    this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress = ((AnimationQIMCircleProgress)findViewById(2131362879));
+    LayoutInflater.from(paramContext).inflate(2131558486, this, true);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369406));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369461));
+    this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress = ((AnimationQIMCircleProgress)findViewById(2131362896));
   }
   
   public int a()
@@ -71,7 +71,7 @@ public class AECircleCaptureProgressView
     localLayoutParams.width = ((int)(this.jdField_b_of_type_Int * paramFloat));
     localLayoutParams.height = ((int)(this.jdField_b_of_type_Int * paramFloat));
     this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress.setAlpha(a(bmcd.a(paramFloat), this.jdField_b_of_type_ArrayOfFloat));
+    this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress.setAlpha(a(bnru.a(paramFloat), this.jdField_b_of_type_ArrayOfFloat));
   }
   
   public void a(int paramInt)
@@ -88,18 +88,18 @@ public class AECircleCaptureProgressView
     }
   }
   
-  public void a(boolean paramBoolean, @NonNull bmcd parambmcd)
+  public void a(boolean paramBoolean, @NonNull bnru parambnru)
   {
     if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(parambmcd.jdField_a_of_type_Int);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(parambnru.jdField_a_of_type_Int);
     }
     if (this.jdField_b_of_type_AndroidWidgetImageView != null) {
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(parambmcd.d);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(parambnru.d);
     }
-    this.jdField_b_of_type_ArrayOfFloat = parambmcd.jdField_a_of_type_ArrayOfFloat;
+    this.jdField_b_of_type_ArrayOfFloat = parambnru.jdField_a_of_type_ArrayOfFloat;
     if (this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress != null)
     {
-      this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress.a(paramBoolean, parambmcd);
+      this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress.a(paramBoolean, parambnru);
       this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress.setAlpha(this.jdField_b_of_type_ArrayOfFloat[0]);
     }
   }
@@ -114,7 +114,7 @@ public class AECircleCaptureProgressView
     localLayoutParams.width = ((int)(this.jdField_a_of_type_Int * paramFloat));
     localLayoutParams.height = ((int)(this.jdField_a_of_type_Int * paramFloat));
     this.jdField_b_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-    paramFloat = a(bmcd.b(paramFloat), this.jdField_a_of_type_ArrayOfFloat);
+    paramFloat = a(bnru.b(paramFloat), this.jdField_a_of_type_ArrayOfFloat);
     this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(paramFloat);
     this.jdField_b_of_type_AndroidWidgetImageView.setAlpha(1.0F - paramFloat);
   }

@@ -1,87 +1,54 @@
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetCommentList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoCommentInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 
 public class vrk
-  extends vta
+  extends vqh
 {
-  qqstory_service.RspGetCommentList jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList;
+  private static final int a;
   
-  public vrk(vrd paramvrd) {}
-  
-  public vrk(vrd paramvrd, qqstory_service.RspGetCommentList paramRspGetCommentList)
+  static
   {
-    super(paramRspGetCommentList.result);
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList = paramRspGetCommentList;
+    jdField_a_of_type_Int = ScreenUtil.dip2px(45.0F);
   }
   
-  public void a()
+  public vrk(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
   {
-    boolean bool = false;
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList.comment_list.get();
-    ArrayList localArrayList = new ArrayList();
-    vrd.a(this.jdField_a_of_type_Vrd, this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList.cookie.get().toStringUtf8());
-    vvj localvvj = (vvj)vux.a(2);
-    int i = 0;
-    if (i < ((List)localObject).size())
-    {
-      CommentEntry localCommentEntry = CommentEntry.convertFrom((qqstory_struct.StoryVideoCommentInfo)((List)localObject).get(i));
-      QQUserUIItem localQQUserUIItem = localvvj.c(localCommentEntry.authorUnionId);
-      if ((localQQUserUIItem == null) || (!localQQUserUIItem.isAvailable()))
-      {
-        localCommentEntry.authorName = wkp.b;
-        label114:
-        if (!TextUtils.isEmpty(localCommentEntry.replyUin))
-        {
-          localQQUserUIItem = localvvj.c(localCommentEntry.replierUnionId);
-          if ((localQQUserUIItem != null) && (localQQUserUIItem.isAvailable())) {
-            break label187;
-          }
-        }
-      }
-      label187:
-      for (localCommentEntry.replierName = wkp.b;; localCommentEntry.replierName = localQQUserUIItem.nickName)
-      {
-        localArrayList.add(localCommentEntry);
-        i += 1;
-        break;
-        localCommentEntry.authorName = localQQUserUIItem.nickName;
-        break label114;
-      }
-    }
-    localObject = this.jdField_a_of_type_Vrd;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList.is_end.get() == 1) {
-      bool = true;
-    }
-    ((vrd)localObject).jdField_a_of_type_Boolean = bool;
-    this.jdField_a_of_type_Vrd.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList.total_comment_num.get();
-    this.jdField_a_of_type_Vrd.jdField_a_of_type_Vrr.a(localArrayList);
+    super(paramViewGroup, paramInt, paramWSVerticalPageFragment);
   }
   
-  public void a(int paramInt, Bundle paramBundle)
+  public int a()
   {
-    this.jdField_a_of_type_Vrd.jdField_a_of_type_Vrr.d();
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory:FeedCommentDataProvider", 2, new Object[] { "ReqGetCommentList NetWork ErrorCode:", Integer.valueOf(paramInt) });
-    }
+    return 0;
   }
   
-  public void a(int paramInt, String paramString)
+  public vqe a(int paramInt)
   {
-    this.jdField_a_of_type_Vrd.jdField_a_of_type_Vrr.d();
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory:FeedCommentDataProvider", 2, "ReqGetCommentList fails: " + paramInt + "|" + paramString);
+    return new vrs(a(), this);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+  }
+  
+  protected boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return jdField_a_of_type_Int;
+  }
+  
+  protected boolean b()
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment != null) && (TextUtils.equals(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), "aio_home_page"))) {
+      return false;
     }
+    return super.b();
   }
 }
 

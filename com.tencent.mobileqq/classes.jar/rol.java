@@ -1,21 +1,18 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 
-public class rol
-  implements View.OnKeyListener
+public final class rol
+  implements Parcelable.Creator<AdvertisementInfo>
 {
-  public rol(ReadInJoySelectMemberFragment paramReadInJoySelectMemberFragment) {}
-  
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public AdvertisementInfo a(Parcel paramParcel)
   {
-    if ((paramInt == 67) && (paramKeyEvent.getAction() == 0) && (TextUtils.isEmpty(ReadInJoySelectMemberFragment.a(this.a).getText()))) {
-      ReadInJoySelectMemberFragment.a(this.a).a();
-    }
-    return false;
+    return new AdvertisementInfo(paramParcel);
+  }
+  
+  public AdvertisementInfo[] a(int paramInt)
+  {
+    return new AdvertisementInfo[paramInt];
   }
 }
 

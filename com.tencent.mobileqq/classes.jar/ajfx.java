@@ -1,18 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
 
-class ajfx
-  extends anwh
+public class ajfx
+  implements DialogInterface.OnClickListener
 {
-  ajfx(ajey paramajey) {}
+  public ajfx(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("SplashActivity", 4, "mainobserver onReadInJoyNotifyRedTouchUpdate, isSuccess=" + paramBoolean1 + ",isUpdate=" + paramBoolean2 + ", type=" + paramInt);
+    this.a.k();
+    this.a.q();
+    if (TroopNotifyAndRecommendView.b(this.a) != null) {
+      TroopNotifyAndRecommendView.b(this.a).setVisibility(8);
     }
-    if ((paramBoolean1) && (paramBoolean2) && ((paramInt & 0x2) != 0)) {
-      this.a.g();
-    }
+    bdla.b(this.a.a, "dc00899", "Grp_contacts_news", "", "notice", "clear_clk", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,15 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class sxq
-  extends pkt
+public class sxq
+  implements View.OnClickListener
 {
-  sxq(sxp paramsxp) {}
+  long jdField_a_of_type_Long = 0L;
   
-  public void b(boolean paramBoolean, List<ChannelCoverInfo> paramList)
+  public sxq(BaseTabbar paramBaseTabbar, int paramInt) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {
-      sxp.a(this.a, sxp.a(this.a, paramList));
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long < 300L)
+    {
+      this.jdField_a_of_type_Long = 0L;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.a != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.a.a(this.jdField_a_of_type_Int);
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_Long = l;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.setSelectedTab(this.jdField_a_of_type_Int, true);
     }
   }
 }

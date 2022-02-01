@@ -1,62 +1,48 @@
-import QQService.EVIPSPEC;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.utils.ContactUtils;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ark.ArkViewImplement.ArkViewInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aipk
-  implements Comparator<ainj>
+  implements View.OnClickListener
 {
-  public int a(ainj paramainj1, ainj paramainj2)
-  {
-    paramainj1 = (Friends)paramainj1.a;
-    paramainj2 = (Friends)paramainj2.a;
-    int i = a(paramainj1);
-    int j = a(paramainj2);
-    if (i == j) {
-      return ampx.a(paramainj1.mComparePartInt, paramainj1.mCompareSpell, paramainj2.mComparePartInt, paramainj2.mCompareSpell);
-    }
-    return i - j;
-  }
+  aipk(aipj paramaipj, int paramInt, ArkViewImplement.ArkViewInterface paramArkViewInterface) {}
   
-  public int a(Friends paramFriends)
+  public void onClick(View paramView)
   {
-    int i = 16384;
-    int k = ContactUtils.getFriendStatus(paramFriends.detalStatusFlag, paramFriends.iTermType);
-    int j;
-    if ((k != 6) && (k != 0))
-    {
-      j = 65536;
-      label32:
-      if (!bbyp.b()) {
-        break label100;
+    int i = paramView.getId();
+    if (this.jdField_a_of_type_Int == 2) {
+      if (i == 0) {
+        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(5);
       }
     }
     for (;;)
     {
-      switch (k)
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (i == 1)
       {
-      case 5: 
-      case 6: 
-      default: 
-        return j | i | (int)paramFriends.getLastLoginType();
-        j = 131072;
-        break label32;
-        label100:
-        if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_BIGCLUB)) {
-          i = 0;
-        } else if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
-          i = 4096;
-        } else if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP)) {
-          i = 8192;
-        } else if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ)) {
-          i = 12288;
+        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(4);
+      }
+      else if (i == 2)
+      {
+        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
+        continue;
+        if (this.jdField_a_of_type_Int == 1)
+        {
+          if (i == 0) {
+            this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(1);
+          } else if (i == 1) {
+            this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(2);
+          } else if (i == 2) {
+            this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
+          }
         }
-        break;
+        else {
+          this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
+        }
       }
     }
-    return j | i | 0x1;
-    return j | i | 0x2;
-    return j | i | 0x3;
   }
 }
 

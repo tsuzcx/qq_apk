@@ -1,10 +1,11 @@
 package com.tencent.device.msg.activities;
 
-import aara;
-import aaun;
-import aavk;
+import abgm;
+import abjz;
+import abkw;
 import android.text.TextUtils;
 import com.tencent.device.msg.data.MessageForDevLittleVideo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import java.util.Iterator;
@@ -15,17 +16,17 @@ import java.util.concurrent.ConcurrentHashMap;
 public class DevLittleVideoItemBuilder$7
   implements Runnable
 {
-  public DevLittleVideoItemBuilder$7(aaun paramaaun, MessageForDevLittleVideo paramMessageForDevLittleVideo) {}
+  public DevLittleVideoItemBuilder$7(abjz paramabjz, MessageForDevLittleVideo paramMessageForDevLittleVideo) {}
   
   public void run()
   {
-    aara localaara = (aara)this.this$0.a.getBusinessHandler(51);
-    aavk localaavk = (aavk)this.this$0.a.getBusinessHandler(49);
+    abgm localabgm = (abgm)this.this$0.a.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
+    abkw localabkw = (abkw)this.this$0.a.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER);
     for (;;)
     {
-      synchronized (localaavk.a)
+      synchronized (localabkw.a)
       {
-        Iterator localIterator = localaavk.a.entrySet().iterator();
+        Iterator localIterator = localabkw.a.entrySet().iterator();
         if (localIterator.hasNext())
         {
           if (((MessageRecord)((Map.Entry)localIterator.next()).getValue()).uniseq != this.a.uniseq) {
@@ -34,8 +35,8 @@ public class DevLittleVideoItemBuilder$7
           i = 1;
           if ((i == 0) && (!TextUtils.isEmpty(this.a.thumbFileKey)))
           {
-            long l = localaara.a(this.a.thumbFileKey, this.a.coverkey2, 2154);
-            localaavk.a.put(Long.valueOf(l), this.a);
+            long l = localabgm.a(this.a.thumbFileKey, this.a.coverkey2, 2154);
+            localabkw.a.put(Long.valueOf(l), this.a);
           }
           return;
         }

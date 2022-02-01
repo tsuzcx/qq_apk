@@ -3,8 +3,8 @@ package cooperation.qzone.video;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import bkkq;
-import bkkz;
+import blvy;
+import blwh;
 import com.tencent.mobileqq.pluginsdk.PluginProxyBroadcastReceiver;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.plugin.IQZonePluginManager;
@@ -46,7 +46,7 @@ public class QZoneLiveVideoPluginProxyBroadcastReceiver
     return;
     if (paramString2.equals("qzone_live_video_plugin.apk"))
     {
-      paramString2 = new bkkz(0);
+      paramString2 = new blwh(0);
       paramString2.b = "qzone_live_video_plugin.apk";
       paramString2.d = "QZoneLiveVideo";
       paramString2.jdField_a_of_type_JavaLangString = paramString1;
@@ -57,7 +57,7 @@ public class QZoneLiveVideoPluginProxyBroadcastReceiver
       if (QLog.isColorLevel()) {
         QLog.d("PluginDebug", 2, "加载原始插件");
       }
-      bkkq.b(paramContext, paramString2);
+      blvy.b(paramContext, paramString2);
       return;
     }
     QLog.e("PluginDebug", 1, "启动失败 错误的pluginid=" + paramString2);

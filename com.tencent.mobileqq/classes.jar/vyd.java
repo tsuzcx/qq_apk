@@ -1,58 +1,47 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqCheckActivity;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.List;
 
 public class vyd
-  extends vqr
 {
-  public static String a = vpl.a("StorySvc.check_activity");
+  public int a;
+  public String a;
+  public List<String> a;
+  public int b;
   public String b;
-  public final String c;
+  public int c;
   
-  public vyd(String paramString)
-  {
-    this.c = paramString;
-  }
+  public vyd() {}
   
-  public String a()
+  public vyd(vwr paramvwr)
   {
-    return a;
-  }
-  
-  public vqm a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspCheckActivity localRspCheckActivity = new qqstory_service.RspCheckActivity();
-    try
+    this.jdField_a_of_type_Int = paramvwr.jdField_e_of_type_Int;
+    if (paramvwr.g > 0) {}
+    for (int i = paramvwr.g;; i = vyc.a(this.jdField_a_of_type_Int))
     {
-      localRspCheckActivity.mergeFrom(paramArrayOfByte);
-      return new vye(localRspCheckActivity);
+      this.jdField_b_of_type_Int = i;
+      this.jdField_a_of_type_JavaLangString = paramvwr.jdField_e_of_type_JavaLangString;
+      this.jdField_b_of_type_JavaLangString = paramvwr.d;
+      this.c = paramvwr.f;
+      this.jdField_a_of_type_JavaUtilList = paramvwr.jdField_a_of_type_JavaUtilList;
+      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqCheckActivity localReqCheckActivity = new qqstory_service.ReqCheckActivity();
-    if (!TextUtils.isEmpty(this.c)) {
-      localReqCheckActivity.adcode.set(Long.valueOf(this.c).longValue());
-    }
-    xvv.a("MsgTabCheckActiveRequest", "client version=%s", "8.4.8");
-    localReqCheckActivity.version.set("8.4.8");
-    return localReqCheckActivity.toByteArray();
   }
   
   public String toString()
   {
-    return "MsgTabCheckActiveRequest{value='" + this.b + '\'' + ", adCode='" + this.c + '\'' + '}';
+    StringBuilder localStringBuilder1 = new StringBuilder("BaseSplitConfig =[");
+    localStringBuilder1.append(" type=").append(this.jdField_a_of_type_Int);
+    localStringBuilder1.append(" mTransId=").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder1.append(" mTextId=").append(this.c);
+    localStringBuilder1.append(" mAlbumMinPicCount=").append(this.jdField_b_of_type_Int);
+    localStringBuilder1.append(" mAlbumDesc=").append(this.jdField_a_of_type_JavaLangString);
+    StringBuilder localStringBuilder2 = localStringBuilder1.append(" mTransList=");
+    if (this.jdField_a_of_type_JavaUtilList == null) {}
+    for (String str = "";; str = this.jdField_a_of_type_JavaUtilList.toString())
+    {
+      localStringBuilder2.append(str);
+      localStringBuilder1.append("]");
+      return localStringBuilder1.toString();
+    }
   }
 }
 

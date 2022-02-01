@@ -1,10 +1,15 @@
-public abstract interface alxd
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+
+public class alxd
 {
-  public abstract int a();
+  public ImageView a;
+  public TextView a;
+  public String a;
+  boolean jdField_a_of_type_Boolean;
   
-  public abstract alrq a(String paramString1, String paramString2, int paramInt1, int paramInt2);
-  
-  public abstract void a();
+  alxd(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
 }
 
 

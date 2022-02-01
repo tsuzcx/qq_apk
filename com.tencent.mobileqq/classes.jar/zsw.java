@@ -1,7 +1,15 @@
-public class zsw
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import android.view.View;
+
+class zsw
+  implements ztb
 {
-  public String a;
-  public boolean a;
+  zsw(zsv paramzsv) {}
+  
+  public void a(View paramView, CertifiedAccountMeta.StFeed paramStFeed)
+  {
+    this.a.d(paramStFeed);
+  }
 }
 
 

@@ -1,16 +1,32 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface xid
+public class xid
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  public xid(VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public abstract void a(CommentEntry paramCommentEntry);
-  
-  public abstract void a(CommentEntry paramCommentEntry, int paramInt);
-  
-  public abstract void b(CommentEntry paramCommentEntry);
-  
-  public abstract void c(CommentEntry paramCommentEntry);
+  public void onClick(View paramView)
+  {
+    if (!NetworkUtil.isNetworkAvailable(this.a.jdField_a_of_type_AndroidViewView.getContext())) {
+      QQToast.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), 1, 2131694253, 0).a();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      ykq.d(this.a.jdField_a_of_type_JavaLangString, "video view error, retry, show loading view");
+      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
+      this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
+      this.a.a(10, true, "retry play");
+    }
+  }
 }
 
 

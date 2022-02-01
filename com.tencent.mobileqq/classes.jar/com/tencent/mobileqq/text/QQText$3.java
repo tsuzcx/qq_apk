@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.text;
 
-import agqd;
+import ahit;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.ClipboardManager;
 import android.view.View;
-import bcef;
-import bfrj;
-import bjnw;
-import bjoe;
+import bdla;
+import bhaa;
+import bkzi;
+import bkzq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageRecord;
 
 class QQText$3
-  implements bjoe
+  implements bkzq
 {
-  QQText$3(QQText paramQQText, Context paramContext, String paramString, QQAppInterface paramQQAppInterface, int paramInt1, MessageRecord paramMessageRecord, int paramInt2, bjnw parambjnw) {}
+  QQText$3(QQText paramQQText, Context paramContext, String paramString, QQAppInterface paramQQAppInterface, int paramInt1, MessageRecord paramMessageRecord, int paramInt2, bkzi parambkzi) {}
   
   public void OnClick(View paramView, int paramInt)
   {
@@ -30,33 +30,33 @@ class QQText$3
       this.val$actionSheet.dismiss();
       return;
       ((ClipboardManager)this.val$context.getSystemService("clipboard")).setText(this.val$numberLink);
-      bcef.b(this.val$app, "dc00898", "", "", "0X800A926", "0X800A926", this.val$reportFromType, 0, "", "", "", "");
+      bdla.b(this.val$app, "dc00898", "", "", "0X800A926", "0X800A926", this.val$reportFromType, 0, "", "", "", "");
       QQText.access$300("2", "1");
       continue;
-      agqd.a(this.val$app, (Activity)this.val$context, (ChatMessage)this.val$msg, this.val$numberLink);
-      bcef.b(this.val$app, "dc00898", "", "", "0X800A927", "0X800A927", this.val$reportFromType, 0, "", "", "", "");
+      ahit.a(this.val$app, (Activity)this.val$context, (ChatMessage)this.val$msg, this.val$numberLink);
+      bdla.b(this.val$app, "dc00898", "", "", "0X800A927", "0X800A927", this.val$reportFromType, 0, "", "", "", "");
       continue;
       if (this.val$isQQNumber == 2)
       {
-        paramView = Intent.createChooser(new Intent("android.intent.action.SENDTO", Uri.parse("mailto:" + this.val$numberLink)), this.val$context.getString(2131693561));
+        paramView = Intent.createChooser(new Intent("android.intent.action.SENDTO", Uri.parse("mailto:" + this.val$numberLink)), this.val$context.getString(2131693745));
         paramView.putExtra("big_brother_source_key", QQText.access$500(this.this$0));
         this.val$context.startActivity(paramView);
-        bcef.b(this.val$app, "dc00898", "", "", "0X800A92D", "0X800A92D", 0, 0, "", "", "", "");
+        bdla.b(this.val$app, "dc00898", "", "", "0X800A92D", "0X800A92D", 0, 0, "", "", "", "");
       }
       else
       {
         paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.val$numberLink));
         paramView.putExtra("big_brother_source_key", QQText.access$500(this.this$0));
         this.val$context.startActivity(paramView);
-        bcef.b(this.val$app, "dc00898", "", "", "0X800A92A", "0X800A92A", this.val$reportFromType, 0, "", "", "", "");
+        bdla.b(this.val$app, "dc00898", "", "", "0X800A92A", "0X800A92A", this.val$reportFromType, 0, "", "", "", "");
         QQText.access$300("1", "2");
         continue;
         QQText.showAddContactsDialog(this.val$context, this.val$numberLink);
-        bcef.b(this.val$app, "dc00898", "", "", "0X800A92B", "0X800A92B", this.val$reportFromType, 0, "", "", "", "");
+        bdla.b(this.val$app, "dc00898", "", "", "0X800A92B", "0X800A92B", this.val$reportFromType, 0, "", "", "", "");
         QQText.access$400("0X800A00A", "0X800A00A");
         continue;
-        bfrj.a((Activity)this.val$context, this.val$app.getCurrentUin(), this.val$msg.frienduin, this.val$msg.istroop, this.val$numberLink);
-        bcef.b(this.val$app, "dc00898", "", "", "0X800A92C", "0X800A92C", this.val$reportFromType, 0, "", "", "", "");
+        bhaa.a((Activity)this.val$context, this.val$app.getCurrentUin(), this.val$msg.frienduin, this.val$msg.istroop, this.val$numberLink);
+        bdla.b(this.val$app, "dc00898", "", "", "0X800A92C", "0X800A92C", this.val$reportFromType, 0, "", "", "", "");
       }
     }
   }

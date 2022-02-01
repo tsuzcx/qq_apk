@@ -1,510 +1,358 @@
-import android.arch.lifecycle.MutableLiveData;
-import android.os.Bundle;
 import android.text.TextUtils;
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.CameraConfig;
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCameraConfigRsp;
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCategoryMaterialRsp;
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetPlayShowCatMatTreeRsp;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.open.base.MD5Utils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.baseutils.log.LogUtils;
-import com.tencent.ttpic.util.GsonUtils;
+import cooperation.ilive.manager.IliveDbManager;
 import java.io.File;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.util.LinkedList;
 
 public class blul
-  extends BusinessHandler
 {
-  private static final String jdField_a_of_type_JavaLangString = blul.class.getSimpleName();
-  public static final Type a;
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  protected Map<String, Long> a;
+  private static blul jdField_a_of_type_Blul;
+  private avrq jdField_a_of_type_Avrq = new avrq("ilive");
+  private bhyq jdField_a_of_type_Bhyq = new bhyq(BaseApplicationImpl.getApplication().getRuntime());
+  private bluh jdField_a_of_type_Bluh;
+  private blun jdField_a_of_type_Blun;
+  private bluv jdField_a_of_type_Bluv;
+  private LinkedList<bhyo> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private boolean jdField_a_of_type_Boolean;
+  private bluv b;
   
-  static
+  private bhyt a()
   {
-    jdField_a_of_type_JavaLangReflectType = new blum().getType();
+    return this.jdField_a_of_type_Bhyq.a(2);
   }
   
-  public blul(AppInterface paramAppInterface)
+  public static blul a()
   {
-    super(paramAppInterface);
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    LogUtils.setEnable(false);
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramAppInterface.getEntityManagerFactory().createEntityManager();
-  }
-  
-  private boolean a(JsonObject paramJsonObject)
-  {
-    return bmbq.a(GsonUtils.optString(paramJsonObject, "verFrom"), GsonUtils.optString(paramJsonObject, "verTo"));
-  }
-  
-  private void b(FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    GetCategoryMaterialRsp localGetCategoryMaterialRsp = (GetCategoryMaterialRsp)paramObject;
-    if ((localGetCategoryMaterialRsp != null) && (localGetCategoryMaterialRsp.Code == 0) && (localGetCategoryMaterialRsp.Categories != null) && (!localGetCategoryMaterialRsp.Categories.isEmpty()))
+    if (jdField_a_of_type_Blul == null) {}
+    try
     {
-      if (blrg.a()) {
-        blrg.a().postValue(new blrk("CameraModuleSvc.GetCompressedCategoryMaterial.MqStoryCamera", "response", "succeeded with content"));
+      if (jdField_a_of_type_Blul == null) {
+        jdField_a_of_type_Blul = new blul();
       }
-      bmbk.a().a("CameraModuleSvc.GetCompressedCategoryMaterialMqStoryCamera", localGetCategoryMaterialRsp.ETag, 4);
-      paramObject = new Gson().toJson(localGetCategoryMaterialRsp);
-      FileUtils.writeFile(bluy.b(), paramObject);
-      paramObject = (bluy)bmql.a().c(18);
-      if (paramObject != null) {
-        paramObject.a(true);
-      }
-      paramObject = (bluy)bmql.a(18);
-      paramObject.b();
-      paramObject.b(bljk.jdField_a_of_type_JavaLangString);
-      if ((this.jdField_a_of_type_JavaUtilMap == null) || (!this.jdField_a_of_type_JavaUtilMap.containsKey("CameraModuleSvc.GetCompressedCategoryMaterial.MqStoryCamera"))) {
-        break label258;
-      }
+      return jdField_a_of_type_Blul;
     }
-    label258:
-    for (paramObject = "" + (System.currentTimeMillis() - ((Long)this.jdField_a_of_type_JavaUtilMap.get("CameraModuleSvc.GetCompressedCategoryMaterial.MqStoryCamera")).longValue());; paramObject = "-1")
-    {
-      bmbc.a().a(paramFromServiceMsg.getResultCode(), paramObject, "CameraModuleSvc.GetCompressedCategoryMaterial.MqStoryCamera", localGetCategoryMaterialRsp.Code);
+    finally {}
+  }
+  
+  public static String a()
+  {
+    return BaseApplicationImpl.getContext().getFilesDir() + File.separator + "pddata" + File.separator + "vas" + File.separator + "qq_ilive";
+  }
+  
+  private void a(bhyo parambhyo)
+  {
+    if (parambhyo == null) {}
+    while (this.jdField_a_of_type_Bluh == null) {
       return;
-      if (!blrg.a()) {
+    }
+    this.jdField_a_of_type_Bluh.onFail(105, "plugin download fail , type = " + parambhyo.jdField_a_of_type_JavaLangString + " , msg = " + parambhyo.b + " , code = " + parambhyo.f + " , errorCode=" + parambhyo.jdField_a_of_type_Int);
+  }
+  
+  private boolean c()
+  {
+    return (this.jdField_a_of_type_Bluv != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Bluv.c()));
+  }
+  
+  private void d()
+  {
+    if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)
+    {
+      a((bhyo)this.jdField_a_of_type_JavaUtilLinkedList.get(0), this.jdField_a_of_type_Blun);
+      return;
+    }
+    QLog.e("IlivePluginDownloadManager", 1, "runTask finish");
+  }
+  
+  private boolean d()
+  {
+    boolean bool = false;
+    File localFile = new File(c());
+    if (QLog.isColorLevel()) {
+      QLog.i("IlivePluginDownloadManager", 2, "checkPluginFileIsNeedDownload  pluginFilePath = " + localFile.getAbsolutePath());
+    }
+    if (!localFile.exists()) {
+      bool = true;
+    }
+    do
+    {
+      do
+      {
+        return bool;
+        if (this.jdField_a_of_type_Bluv != null) {
+          break;
+        }
+      } while (this.jdField_a_of_type_Bluh == null);
+      this.jdField_a_of_type_Bluh.onFail(104, "preload check config bean = null");
+      return false;
+    } while (!TextUtils.isEmpty(this.jdField_a_of_type_Bluv.b()));
+    return false;
+  }
+  
+  private String e()
+  {
+    String str2 = c();
+    String str1 = str2;
+    if (this.jdField_a_of_type_Boolean) {
+      str1 = str2 + ".tmp";
+    }
+    return str1;
+  }
+  
+  private void e()
+  {
+    if (this.jdField_a_of_type_Bluh == null) {
+      return;
+    }
+    if (e())
+    {
+      h();
+      k();
+      i();
+      g();
+      this.jdField_a_of_type_Bluh.onSuccess();
+      return;
+    }
+    f();
+    this.jdField_a_of_type_Bluh.onFail(106, "file invalid , check file md5");
+  }
+  
+  private boolean e()
+  {
+    boolean bool1 = true;
+    boolean bool2 = true;
+    if (this.jdField_a_of_type_Bluv == null) {
+      return bool2;
+    }
+    if (TextUtils.isEmpty(this.jdField_a_of_type_Bluv.b())) {}
+    for (;;)
+    {
+      bool2 = bool1;
+      if (!QLog.isColorLevel()) {
         break;
       }
-      MutableLiveData localMutableLiveData = blrg.a();
-      if (paramFromServiceMsg.isSuccess()) {}
-      for (paramObject = "succeeded without content";; paramObject = "failed")
-      {
-        localMutableLiveData.postValue(new blrk("CameraModuleSvc.GetCompressedCategoryMaterial.MqStoryCamera", "response", paramObject));
-        break;
+      QLog.i("IlivePluginDownloadManager", 2, "download success check file valid , isPluginValid = " + bool1);
+      return bool1;
+      if (!this.jdField_a_of_type_Bluv.b().equalsIgnoreCase(MD5Utils.encodeFileHexStr(e()))) {
+        bool1 = false;
       }
     }
   }
   
-  private void c(FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private void f()
   {
-    GetCategoryMaterialRsp localGetCategoryMaterialRsp = (GetCategoryMaterialRsp)paramObject;
-    Object localObject;
-    if ((localGetCategoryMaterialRsp != null) && (localGetCategoryMaterialRsp.Code == 0) && (localGetCategoryMaterialRsp.Categories != null) && (!localGetCategoryMaterialRsp.Categories.isEmpty()))
+    if (this.jdField_a_of_type_Bluv == null) {}
+    File localFile;
+    do
     {
-      if (blrg.a()) {
-        blrg.a().postValue(new blrk("CameraModuleSvc.GetCompressedCategoryMaterial.MqEmoCamera", "response", "succeeded with content"));
+      return;
+      localFile = new File(e());
+      if (QLog.isColorLevel()) {
+        QLog.i("IlivePluginDownloadManager", 2, "deleteLocalIliveFile , pluginFile = " + e());
       }
-      bmbk.a().a("CameraModuleSvc.GetCompressedCategoryMaterialMqEmoCamera", localGetCategoryMaterialRsp.ETag, 4);
-      paramObject = new Gson().toJson(localGetCategoryMaterialRsp);
-      localObject = new File(bljq.f);
-      if (!((File)localObject).exists()) {
-        ((File)localObject).mkdirs();
+    } while (!localFile.exists());
+    localFile.delete();
+  }
+  
+  private void g()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    bluo.a(BaseApplicationImpl.getContext());
+  }
+  
+  private void h()
+  {
+    try
+    {
+      if (!this.jdField_a_of_type_Boolean) {
+        return;
       }
-      FileUtils.writeFile(bljo.b, paramObject);
-      blun.a().postValue(Boolean.valueOf(true));
-      if ((this.jdField_a_of_type_JavaUtilMap == null) || (!this.jdField_a_of_type_JavaUtilMap.containsKey("CameraModuleSvc.GetCompressedCategoryMaterial.MqEmoCamera"))) {
-        break label253;
+      String str = e();
+      File localFile1 = new File(str);
+      File localFile2 = new File(c());
+      if (localFile2.exists()) {
+        localFile2.delete();
+      }
+      if (localFile1.exists()) {
+        localFile1.renameTo(localFile2);
+      }
+      if (QLog.isColorLevel())
+      {
+        QLog.i("IlivePluginDownloadManager", 2, "download success copy file , downloadFile = " + str);
+        return;
       }
     }
-    label253:
-    for (paramObject = "" + (System.currentTimeMillis() - ((Long)this.jdField_a_of_type_JavaUtilMap.get("CameraModuleSvc.GetCompressedCategoryMaterial.MqEmoCamera")).longValue());; paramObject = "-1")
+    catch (Throwable localThrowable)
     {
-      bmbc.a().a(paramFromServiceMsg.getResultCode(), paramObject, "CameraModuleSvc.GetCompressedCategoryMaterial.MqEmoCamera", localGetCategoryMaterialRsp.Code);
-      return;
-      if (!blrg.a()) {
-        break;
-      }
-      localObject = blrg.a();
-      if (paramFromServiceMsg.isSuccess()) {}
-      for (paramObject = "succeeded without content";; paramObject = "failed")
-      {
-        ((MutableLiveData)localObject).postValue(new blrk("CameraModuleSvc.GetCompressedCategoryMaterial.MqEmoCamera", "response", paramObject));
-        break;
-      }
+      localThrowable.printStackTrace();
     }
   }
   
-  private void d(FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private void i()
   {
-    if (QLog.isDebugVersion()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 4, "[handlePlayShowCategoryMaterials] start");
-    }
-    GetPlayShowCatMatTreeRsp localGetPlayShowCatMatTreeRsp = (GetPlayShowCatMatTreeRsp)paramObject;
-    Object localObject;
-    label237:
-    int j;
-    if ((localGetPlayShowCatMatTreeRsp != null) && (localGetPlayShowCatMatTreeRsp.Code == 0) && (!localGetPlayShowCatMatTreeRsp.Categories.isEmpty()))
-    {
-      if (QLog.isDebugVersion()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 4, "[handlePlayShowCategoryMaterials] response=" + localGetPlayShowCatMatTreeRsp);
-      }
-      if (blrg.a()) {
-        blrg.a().postValue(new blrk("CameraModuleSvc.GetPlayShowCatMatTree", "response", "succeeded with content"));
-      }
-      bmbk.a().a("CameraModuleSvc.GetPlayShowCatMatTree", localGetPlayShowCatMatTreeRsp.ETag, 4);
-      paramObject = GsonUtils.obj2Json(localGetPlayShowCatMatTreeRsp, jdField_a_of_type_JavaLangReflectType);
-      localObject = new File(bljt.c);
-      if (!((File)localObject).exists()) {
-        ((File)localObject).mkdirs();
-      }
-      FileUtils.writeFile(bljr.b, paramObject);
-      blun.b().postValue(Boolean.valueOf(true));
-      if ((this.jdField_a_of_type_JavaUtilMap == null) || (!this.jdField_a_of_type_JavaUtilMap.containsKey("CameraModuleSvc.GetPlayShowCatMatTree"))) {
-        break label348;
-      }
-      paramObject = "" + (System.currentTimeMillis() - ((Long)this.jdField_a_of_type_JavaUtilMap.get("CameraModuleSvc.GetPlayShowCatMatTree")).longValue());
-      localObject = bmbc.a();
-      j = paramFromServiceMsg.getResultCode();
-      if (localGetPlayShowCatMatTreeRsp != null) {
-        break label354;
-      }
-    }
-    label348:
-    label354:
-    for (int i = 0;; i = localGetPlayShowCatMatTreeRsp.Code)
-    {
-      ((bmbc)localObject).a(j, paramObject, "CameraModuleSvc.GetPlayShowCatMatTree", i);
-      if (QLog.isDebugVersion()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 4, "[handlePlayShowCategoryMaterials] end");
-      }
+    if (this.b == null) {
       return;
-      if (QLog.isDebugVersion()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 4, "[handlePlayShowCategoryMaterials] response=empty");
-      }
-      if (!blrg.a()) {
-        break;
-      }
-      localObject = blrg.a();
-      if (paramFromServiceMsg.isSuccess()) {}
-      for (paramObject = "succeeded without content";; paramObject = "failed")
-      {
-        ((MutableLiveData)localObject).postValue(new blrk("CameraModuleSvc.GetPlayShowCatMatTree", "response", paramObject));
-        break;
-      }
-      paramObject = "-1";
-      break label237;
     }
+    j();
+  }
+  
+  private void j()
+  {
+    if ((this.jdField_a_of_type_Bluv == null) || (this.b == null)) {}
+    File localFile;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (TextUtils.isEmpty(this.b.c()));
+        if (!this.b.c().equals(this.jdField_a_of_type_Bluv.c())) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.i("IlivePluginDownloadManager", 2, "stop deletePluginFile file equal ");
+      return;
+      localFile = new File(this.b.a());
+      if (QLog.isColorLevel()) {
+        QLog.i("IlivePluginDownloadManager", 2, "deletePluginFile , pluginFile = " + this.b.a());
+      }
+    } while (!localFile.exists());
+    localFile.delete();
+  }
+  
+  private void k()
+  {
+    if (this.jdField_a_of_type_Bluv == null) {
+      return;
+    }
+    QLog.i("IlivePluginDownloadManager", 2, "saveConfigBean , config = " + this.jdField_a_of_type_Bluv.toString());
+    IliveDbManager.saveIliveConfigBean(2, this.jdField_a_of_type_Bluv);
+  }
+  
+  public avrq a()
+  {
+    return this.jdField_a_of_type_Avrq;
+  }
+  
+  public bhyo a(File paramFile)
+  {
+    if (this.jdField_a_of_type_Bluv == null) {
+      return null;
+    }
+    String str = this.jdField_a_of_type_Bluv.c();
+    if (QLog.isColorLevel()) {
+      QLog.i("IlivePluginDownloadManager", 2, "createDownloadTask url = " + str + " saveFile = " + paramFile.getAbsolutePath());
+    }
+    paramFile = new bhyo(str, paramFile);
+    paramFile.e = true;
+    paramFile.p = true;
+    paramFile.r = true;
+    paramFile.q = true;
+    paramFile.j = true;
+    paramFile.n = false;
+    paramFile.s = false;
+    return paramFile;
+  }
+  
+  public bluv a()
+  {
+    return this.jdField_a_of_type_Bluv;
   }
   
   public void a()
   {
-    if (!NetworkUtil.isNetworkAvailable())
-    {
-      LogUtils.w(jdField_a_of_type_JavaLangString, "[reqCameraConfig] no network....");
-      return;
-    }
-    if (blrg.a()) {
-      blrg.a().postValue(new blrk("CameraModuleSvc.GetCameraConfig", "request", "null"));
-    }
-    bmbx.b(jdField_a_of_type_JavaLangString, "【REQUEST】reqCameraConfig");
-    this.jdField_a_of_type_JavaUtilMap.put("CameraModuleSvc.GetCameraConfig", Long.valueOf(System.currentTimeMillis()));
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("CameraModuleSvc", this.mApp.getCurrentAccountUin(), "CameraModuleSvc.GetCameraConfig");
-    localToServiceMsg.extraData.putBoolean("req_pb_protocol_flag", false);
-    send(localToServiceMsg);
+    QLog.e("IlivePluginDownloadManager", 1, "cancelDownloadFile size = " + this.jdField_a_of_type_JavaUtilLinkedList.size());
+    a().a(true, null);
   }
   
-  protected void a(FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void a(bhyo parambhyo, bhyn parambhyn)
   {
-    bmbx.b(jdField_a_of_type_JavaLangString, "【Handle】handleCameraConfig:" + paramFromServiceMsg.isSuccess());
-    if (!paramFromServiceMsg.isSuccess())
-    {
-      if (blrg.a()) {
-        blrg.a().postValue(new blrk("CameraModuleSvc.GetCameraConfig", "response", "failed"));
-      }
+    if (parambhyo == null) {
       return;
     }
-    GetCameraConfigRsp localGetCameraConfigRsp = (GetCameraConfigRsp)paramObject;
-    Object localObject1;
-    Object localObject2;
-    String str;
-    Object localObject7;
-    label184:
-    int j;
-    label268:
-    int i;
-    label383:
-    Object localObject5;
-    if (localGetCameraConfigRsp.ConfigMap != null)
-    {
-      if (blrg.a()) {
-        blrg.a().postValue(new blrk("CameraModuleSvc.GetCameraConfig", "response", "succeeded with content"));
-      }
-      paramObject = "";
-      localObject1 = "";
-      localObject2 = "";
-      Iterator localIterator = localGetCameraConfigRsp.ConfigMap.entrySet().iterator();
-      str = "";
-      if (localIterator.hasNext())
-      {
-        localObject7 = (Map.Entry)localIterator.next();
-        Object localObject3 = (CameraConfig)((Map.Entry)localObject7).getValue();
-        if (TextUtils.isEmpty(str))
-        {
-          str = ((CameraConfig)localObject3).ExpId;
-          localObject7 = (String)((Map.Entry)localObject7).getKey();
-          if (!"app_ui_playshow_ad_id".equals(localObject7)) {
-            break label268;
-          }
-          localObject3 = ((CameraConfig)localObject3).ConfigContent;
-          paramObject = localObject2;
-          localObject2 = localObject3;
-        }
-        for (;;)
-        {
-          localObject3 = localObject2;
-          localObject2 = paramObject;
-          paramObject = localObject3;
-          break;
-          str = str + "," + ((CameraConfig)localObject3).ExpId;
-          break label184;
-          if ("app_alg_aio_camera_type_id".equals(localObject7))
-          {
-            localObject3 = ((CameraConfig)localObject3).ConfigContent;
-            localObject1 = localObject2;
-            localObject2 = paramObject;
-            paramObject = localObject1;
-            localObject1 = localObject3;
-          }
-          else if ("app_alg_entrance_qzone_id_from833".equals(localObject7))
-          {
-            localObject3 = ((CameraConfig)localObject3).ConfigContent;
-            localObject2 = paramObject;
-            paramObject = localObject3;
-          }
-          else
-          {
-            Object localObject4;
-            if ("app_ui_camera_ad_id".equals(localObject7))
-            {
-              try
-              {
-                localObject3 = new JsonParser().parse(((CameraConfig)localObject3).ConfigContent).getAsJsonArray();
-                if ((localObject3 != null) && (((JsonArray)localObject3).size() > 0))
-                {
-                  j = ((JsonArray)localObject3).size();
-                  i = 0;
-                  if (i < j)
-                  {
-                    localObject7 = (JsonObject)((JsonArray)localObject3).get(i);
-                    if (!a((JsonObject)localObject7)) {
-                      break label1203;
-                    }
-                    bmbk.a().a("camera_ad_op_id", GsonUtils.optString((JsonObject)localObject7, "opID"), 4);
-                    bmbk.a().a("camera_ad_show", GsonUtils.optBoolean((JsonObject)localObject7, "showOp"), 4);
-                    bmbk.a().a("camera_ad_icon_url", GsonUtils.optString((JsonObject)localObject7, "opIcon"), 4);
-                    bmbk.a().a("camera_ad_type", GsonUtils.optString((JsonObject)localObject7, "type"), 4);
-                    bmbk.a().a("camera_ad_schema", GsonUtils.optString((JsonObject)localObject7, "schema"), 4);
-                  }
-                }
-                else
-                {
-                  bmbk.a().a("camera_ad_op_id", "", 4);
-                  bmbk.a().a("camera_ad_show", false, 4);
-                  bmbk.a().a("camera_ad_icon_url", "", 4);
-                  bmbk.a().a("camera_ad_type", "", 4);
-                  bmbk.a().a("camera_ad_schema", "", 4);
-                }
-              }
-              catch (Exception localException1)
-              {
-                bmbx.d(jdField_a_of_type_JavaLangString, "camera ad ab test inflate error.");
-                localObject4 = paramObject;
-                paramObject = localObject2;
-                localObject2 = localObject4;
-              }
-            }
-            else if ("app_alg_filter_timeout_id".equals(localObject7))
-            {
-              localObject4 = ((CameraConfig)localObject4).ConfigContent;
-              bmbk.a().a("app_alg_filter_timeout_id", (String)localObject4, 4);
-              localObject4 = paramObject;
-              paramObject = localObject2;
-              localObject2 = localObject4;
-            }
-            else
-            {
-              if (!"app_ui_camera_circle_ad_id".equals(localObject7)) {
-                break label889;
-              }
-              try
-              {
-                localObject4 = new JsonParser().parse(((CameraConfig)localObject4).ConfigContent).getAsJsonArray();
-                if ((localObject4 != null) && (((JsonArray)localObject4).size() > 0))
-                {
-                  j = ((JsonArray)localObject4).size();
-                  i = 0;
-                  label684:
-                  if (i < j)
-                  {
-                    localObject7 = (JsonObject)((JsonArray)localObject4).get(i);
-                    if (!a((JsonObject)localObject7)) {
-                      break label1223;
-                    }
-                    bmbk.a().a("circle_camera_ad_op_id", GsonUtils.optString((JsonObject)localObject7, "opID"), 4);
-                    bmbk.a().a("circle_camera_ad_icon_url", GsonUtils.optString((JsonObject)localObject7, "opIcon"), 4);
-                    bmbk.a().a("circle_camera_ad_type", GsonUtils.optString((JsonObject)localObject7, "type"), 4);
-                    bmbk.a().a("circle_camera_ad_schema", GsonUtils.optString((JsonObject)localObject7, "schema"), 4);
-                    bmbk.a().a("circle_camera_ad_show", GsonUtils.optBoolean((JsonObject)localObject7, "showOp"), 4);
-                  }
-                }
-                else
-                {
-                  bmbk.a().a("circle_camera_ad_op_id", "", 4);
-                  bmbk.a().a("circle_camera_ad_icon_url", "", 4);
-                  bmbk.a().a("circle_camera_ad_type", "", 4);
-                  bmbk.a().a("circle_camera_ad_schema", "", 4);
-                  bmbk.a().a("circle_camera_ad_show", false, 4);
-                }
-              }
-              catch (Exception localException2)
-              {
-                bmbx.d(jdField_a_of_type_JavaLangString, "camera ad ab test inflate error.");
-                localObject5 = paramObject;
-                paramObject = localObject2;
-                localObject2 = localObject5;
-              }
-            }
-          }
-        }
-        label889:
-        if (!"app_ui_camera_circle_entry_id".equals(localObject7)) {}
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        localObject5 = new JsonParser().parse(((CameraConfig)localObject5).ConfigContent).getAsJsonArray();
-        if ((localObject5 != null) && (((JsonArray)localObject5).size() > 0))
-        {
-          j = ((JsonArray)localObject5).size();
-          i = 0;
-          if (i < j)
-          {
-            localObject7 = (JsonObject)((JsonArray)localObject5).get(i);
-            if (!a((JsonObject)localObject7)) {
-              break label1243;
-            }
-            localObject5 = GsonUtils.optString((JsonObject)localObject7, "ABContent");
-            bmbk.a().a("circle_entry_type_camera", "camera".endsWith((String)localObject5), 4);
-          }
-        }
-        else
-        {
-          bmbk.a().a("circle_entry_type_camera", false, 4);
-        }
-      }
-      catch (Exception localException3)
-      {
-        bmbx.d(jdField_a_of_type_JavaLangString, "camera entry ab test inflate error.");
-      }
-      Object localObject6 = paramObject;
-      paramObject = localObject2;
-      localObject2 = localObject6;
-      break;
-      bmbk.a().a("CameraModuleSvc.GetCameraConfig", str, 4);
-      bmbk.a().a("app_ui_playshow_ad_id", paramObject, 4);
-      bmbk.a().a("app_alg_aio_camera_type_id", (String)localObject1, 4);
-      bmbk.a().a("app_alg_entrance_qzone_id_from833", (String)localObject2, 4);
-      paramObject = bmbc.a();
-      i = paramFromServiceMsg.getResultCode();
-      long l2 = System.currentTimeMillis();
-      if (this.jdField_a_of_type_JavaUtilMap.containsKey("CameraModuleSvc.GetCameraConfig")) {}
-      for (long l1 = ((Long)this.jdField_a_of_type_JavaUtilMap.get("CameraModuleSvc.GetCameraConfig")).longValue();; l1 = 0L)
-      {
-        paramObject.a(i, String.valueOf(l2 - l1), "CameraModuleSvc.GetCameraConfig", localGetCameraConfigRsp.Code);
-        return;
-        if (!blrg.a()) {
-          break;
-        }
-        blrg.a().postValue(new blrk("CameraModuleSvc.GetCameraConfig", "response", "succeeded without content"));
-        break;
-      }
-      localObject6 = paramObject;
-      paramObject = localObject2;
-      localObject2 = localObject6;
-      break;
-      label1203:
-      i += 1;
-      break label383;
-      localObject6 = paramObject;
-      paramObject = localObject2;
-      localObject2 = localObject6;
-      break;
-      label1223:
-      i += 1;
-      break label684;
-      localObject6 = paramObject;
-      paramObject = localObject2;
-      localObject2 = localObject6;
-      break;
-      label1243:
-      i += 1;
-    }
+    blvi.jdField_a_of_type_Boolean = true;
+    a().a(parambhyo, parambhyn, null);
   }
   
-  public void a(String paramString)
+  public void a(bluh parambluh)
   {
-    if (!NetworkUtil.isNetworkAvailable())
-    {
-      LogUtils.w(jdField_a_of_type_JavaLangString, "[reqCompressedMaterials] no network....");
-      return;
-    }
-    bmbx.b(jdField_a_of_type_JavaLangString, "【REQUEST】requestCompressedMaterials" + paramString);
-    if (blrg.a()) {
-      blrg.a().postValue(new blrk("CameraModuleSvc.GetCompressedCategoryMaterial." + paramString, "request", "null"));
-    }
-    this.jdField_a_of_type_JavaUtilMap.put("CameraModuleSvc.GetCompressedCategoryMaterial." + paramString, Long.valueOf(System.currentTimeMillis()));
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("CameraModuleSvc", this.mApp.getCurrentAccountUin(), "CameraModuleSvc.GetCompressedCategoryMaterial");
-    localToServiceMsg.extraData.putString("ServiceId", paramString);
-    send(localToServiceMsg);
+    this.jdField_a_of_type_Bluh = parambluh;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    c();
+  }
+  
+  public boolean a()
+  {
+    new File("/data/local/tmp/plugin-debug.zip");
+    return false;
+  }
+  
+  public bluv b()
+  {
+    return IliveDbManager.getIliveConfigBean(2);
+  }
+  
+  public String b()
+  {
+    return a() + File.separator + "ilive_plugin_v7.apk";
   }
   
   public void b()
   {
-    if (!NetworkUtil.isNetworkAvailable())
+    this.jdField_a_of_type_Bluv = bluv.a();
+    this.b = b();
+    this.b.jdField_a_of_type_Boolean = this.jdField_a_of_type_Bluv.jdField_a_of_type_Boolean;
+    if (this.jdField_a_of_type_Bluv != null) {
+      QLog.e("IlivePluginDownloadManager", 1, "readIliveConfig , current config = " + this.jdField_a_of_type_Bluv.toString());
+    }
+    if (this.b != null) {
+      QLog.e("IlivePluginDownloadManager", 1, "readIliveConfig , last config = " + this.b.toString());
+    }
+  }
+  
+  public boolean b()
+  {
+    if (a()) {}
+    for (;;)
     {
-      if (QLog.isDebugVersion())
+      return true;
+      File localFile = new File(b());
+      if (!localFile.exists())
       {
-        QLog.d(jdField_a_of_type_JavaLangString, 4, "[reqPlayShowCategoryMaterials] no network....");
-        QLog.d(jdField_a_of_type_JavaLangString, 4, "[reqPlayShowCategoryMaterials] end");
+        QLog.e("IlivePluginDownloadManager", 1, "isPluginFileExist copy apkFile");
+        acxk.a(BaseApplicationImpl.getContext(), "live_shopping_manager.apk", b());
       }
-      return;
+      boolean bool = localFile.exists();
+      if (!d()) {}
+      for (int i = 1; (!bool) || (i == 0); i = 0) {
+        return false;
+      }
     }
-    bmbx.b(jdField_a_of_type_JavaLangString, "【REQUEST】reqPlayShowCategoryMaterials");
-    if (blrg.a()) {
-      blrg.a().postValue(new blrk("CameraModuleSvc.GetPlayShowCatMatTree", "request", "null"));
-    }
-    this.jdField_a_of_type_JavaUtilMap.put("CameraModuleSvc.GetPlayShowCatMatTree", Long.valueOf(System.currentTimeMillis()));
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("CameraModuleSvc", this.mApp.getCurrentAccountUin(), "CameraModuleSvc.GetPlayShowCatMatTree");
-    localToServiceMsg.extraData.putBoolean("req_pb_protocol_flag", false);
-    send(localToServiceMsg);
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  public String c()
   {
-    return null;
+    if (this.jdField_a_of_type_Bluv != null) {
+      return this.jdField_a_of_type_Bluv.a();
+    }
+    return "";
   }
   
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void c()
   {
-    if (paramFromServiceMsg.getServiceCmd().equals("CameraModuleSvc.GetCompressedCategoryMaterial"))
-    {
-      paramToServiceMsg = paramToServiceMsg.extraData.getString("ServiceId");
-      if (paramToServiceMsg.endsWith("MqStoryCamera")) {
-        b(paramFromServiceMsg, paramObject);
+    if (!c()) {
+      if (this.jdField_a_of_type_Bluh != null) {
+        this.jdField_a_of_type_Bluh.onFail(103, "download fail , config data = null");
       }
     }
     do
@@ -512,16 +360,35 @@ public class blul
       do
       {
         return;
-      } while (!paramToServiceMsg.endsWith("MqEmoCamera"));
-      c(paramFromServiceMsg, paramObject);
+        if (!a()) {
+          break;
+        }
+      } while (this.jdField_a_of_type_Bluh == null);
+      this.jdField_a_of_type_Bluh.onSuccess();
       return;
-      if (paramFromServiceMsg.getServiceCmd().equals("CameraModuleSvc.GetCameraConfig"))
+      this.jdField_a_of_type_JavaUtilLinkedList.clear();
+      if (d())
       {
-        a(paramFromServiceMsg, paramObject);
+        bhyo localbhyo = a(new File(e()));
+        this.jdField_a_of_type_JavaUtilLinkedList.add(localbhyo);
+      }
+      QLog.e("IlivePluginDownloadManager", 1, "downloadFile count = " + this.jdField_a_of_type_JavaUtilLinkedList.size());
+      if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)
+      {
+        this.jdField_a_of_type_Blun = new blun(this, null);
+        d();
         return;
       }
-    } while (!paramToServiceMsg.getServiceCmd().equals("CameraModuleSvc.GetPlayShowCatMatTree"));
-    d(paramFromServiceMsg, paramObject);
+    } while (this.jdField_a_of_type_Bluh == null);
+    this.jdField_a_of_type_Bluh.onSuccess();
+  }
+  
+  public String d()
+  {
+    if (this.jdField_a_of_type_Bluv != null) {
+      return this.jdField_a_of_type_Bluv.b();
+    }
+    return "";
   }
 }
 

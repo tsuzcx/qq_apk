@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.nearby.now.view;
 
-import awsb;
-import awts;
+import axyd;
+import axzu;
 
 public class MagazinePlayerView$1
   implements Runnable
 {
-  public MagazinePlayerView$1(awsb paramawsb) {}
+  public MagazinePlayerView$1(axyd paramaxyd) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Awts.b();
+    this.this$0.jdField_a_of_type_Axzu.b();
     this.this$0.jdField_a_of_type_Boolean = true;
-    this.this$0.jdField_a_of_type_Awts.c();
+    this.this$0.jdField_a_of_type_Axzu.c();
   }
 }
 

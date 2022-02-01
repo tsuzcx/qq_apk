@@ -1,17 +1,29 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.Interpolator;
 
 class asxb
-  implements View.OnClickListener
+  implements Interpolator
 {
-  asxb(aswz paramaswz) {}
+  asxb(asww paramasww) {}
   
-  public void onClick(View paramView)
+  public float getInterpolation(float paramFloat)
   {
-    this.a.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramFloat == 0.0F) {
+      return 0.0F;
+    }
+    float f = paramFloat * 2.0F;
+    if (f >= 2.0F) {
+      return 1.0F;
+    }
+    paramFloat = 0.45F / 4.0F;
+    if (f < 1.0F)
+    {
+      f -= 1.0F;
+      d = Math.pow(2.0D, 10.0F * f);
+      return (float)(Math.sin((f - paramFloat) * 6.283185307179586D / 0.45F) * (-0.5D * d));
+    }
+    f -= 1.0F;
+    double d = Math.pow(2.0D, -10.0F * f);
+    return (float)(Math.sin((f - paramFloat) * 6.283185307179586D / 0.45F) * (0.5D * d)) + 1.0F;
   }
 }
 

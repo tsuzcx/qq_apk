@@ -1,36 +1,44 @@
-public class ydc
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+class ydc
+  implements wfk<wts, wtt>
 {
-  private int jdField_a_of_type_Int;
-  private ycy jdField_a_of_type_Ycy = new ycx();
-  private int b;
+  ydc(ydb paramydb, JobContext paramJobContext, AtomicBoolean paramAtomicBoolean, Integer paramInteger) {}
   
-  public yda a()
+  public void a(@NonNull wts paramwts, @Nullable wtt paramwtt, @NonNull ErrorMessage paramErrorMessage)
   {
-    return new yda(this, null);
-  }
-  
-  public ydc a(int paramInt)
-  {
-    if (paramInt > 0) {
-      this.jdField_a_of_type_Int = paramInt;
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    {
+      ykq.d("Q.qqstory.home.data.HomeFeedListPageLoader", "feedId pull segment cancel on net respond");
+      return;
     }
-    return this;
-  }
-  
-  public ydc a(ycy paramycy)
-  {
-    if (paramycy != null) {
-      this.jdField_a_of_type_Ycy = paramycy;
+    if ((paramErrorMessage.isFail()) || (paramwtt == null))
+    {
+      ykq.a("Q.qqstory.home.data.HomeFeedListPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
+      ydb.a(this.jdField_a_of_type_Ydb, paramErrorMessage);
+      return;
     }
-    return this;
-  }
-  
-  public ydc b(int paramInt)
-  {
-    if (paramInt > 0) {
-      this.b = paramInt;
+    ydb.a(this.jdField_a_of_type_Ydb);
+    ydb.a(this.jdField_a_of_type_Ydb).a(paramwtt.jdField_a_of_type_JavaUtilList, paramwtt.jdField_a_of_type_JavaLangString, paramwtt.jdField_a_of_type_Boolean);
+    ((yck)wjs.a(11)).a(paramwtt.jdField_a_of_type_JavaUtilList);
+    boolean bool = ydb.a(paramwtt, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
+    ykq.d("Q.qqstory.home.data.HomeFeedListPageLoader", "today is end:%b, loop count:%d, last date has fail:%b", new Object[] { Boolean.valueOf(paramwtt.b), Integer.valueOf(ydb.b(this.jdField_a_of_type_Ydb)), Boolean.valueOf(bool) });
+    if ((!paramwtt.jdField_a_of_type_Boolean) && (ydb.b(this.jdField_a_of_type_Ydb) < 10) && ((!paramwtt.b) || (bool)))
+    {
+      ykq.d("Q.qqstory.home.data.HomeFeedListPageLoader", "feedId list not end, pull more");
+      paramwts.b = ydb.a(this.jdField_a_of_type_Ydb).a();
+      wfi.a().a(paramwts, this);
+      return;
     }
-    return this;
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(false)) {
+      ydb.a(this.jdField_a_of_type_Ydb).c();
+    }
+    paramwts = ydb.a(this.jdField_a_of_type_Ydb).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
+    ydb.a(this.jdField_a_of_type_Ydb, paramwts);
   }
 }
 

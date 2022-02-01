@@ -1,62 +1,54 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo.MiniApp;
-import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
-import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.MiniAppExposureData;
-import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class arjh
-  extends RecyclerView.Adapter<arjg>
+class arjh
+  implements arif
 {
-  private List<MiniAppRecommInfo.MiniApp> jdField_a_of_type_JavaUtilList = new ArrayList();
+  arjh(arjd paramarjd) {}
   
-  public arjh(arjf paramarjf) {}
-  
-  public arjg a(ViewGroup paramViewGroup, int paramInt)
+  public void a(Context paramContext)
   {
-    paramViewGroup = LayoutInflater.from(arjf.a(this.jdField_a_of_type_Arjf)).inflate(2131559486, null, false);
-    return new arjg(arjf.a(this.jdField_a_of_type_Arjf), paramViewGroup);
-  }
-  
-  public void a(arjg paramarjg, int paramInt)
-  {
-    MiniAppRecommInfo.MiniApp localMiniApp = (MiniAppRecommInfo.MiniApp)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    paramarjg.a(localMiniApp);
-    paramarjg.a(paramInt);
-    if ((localMiniApp != null) && (localMiniApp.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo != null))
+    try
     {
-      MiniAppConfig localMiniAppConfig = new MiniAppConfig(localMiniApp.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo);
-      localMiniAppConfig.launchParam.scene = 2065;
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(new MiniAppExposureManager.MiniAppExposureData(localMiniAppConfig, paramInt));
-      MiniProgramLpReportDC04239.reportPageView(localArrayList, "expo");
-      arjf.a(101, paramInt, localMiniApp.jdField_a_of_type_Int);
+      Intent localIntent;
+      if (new JSONObject(arjd.a(this.a)).getInt("showlocalfile") == 1)
+      {
+        localIntent = new Intent(paramContext, LocalFileBrowserActivity.class);
+        if (localIntent != null) {}
+      }
+      else
+      {
+        return;
+      }
+      try
+      {
+        Bundle localBundle = new Bundle();
+        localBundle.putInt("category", 23);
+        localIntent.putExtra("bundle", localBundle);
+        localIntent.putExtra("localSdCardfile", 0);
+        paramContext.startActivity(localIntent);
+        return;
+      }
+      catch (Exception paramContext)
+      {
+        paramContext.printStackTrace();
+        return;
+      }
+      return;
     }
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramarjg, paramInt, getItemId(paramInt));
-  }
-  
-  public void a(List<MiniAppRecommInfo.MiniApp> paramList)
-  {
-    if (paramList != null)
+    catch (JSONException paramContext)
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      notifyDataSetChanged();
+      paramContext.printStackTrace();
     }
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arjh
  * JD-Core Version:    0.7.0.1
  */

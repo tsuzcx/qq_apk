@@ -7,8 +7,8 @@ import android.support.v4.view.PagerAdapter;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
-import bmqs;
-import bmsi;
+import bogk;
+import boia;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -27,7 +27,7 @@ public class MusicProviderPagerAdapter
   private SparseArray<GridView> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   private AdapterView.OnItemClickListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener;
   MusicProviderView jdField_a_of_type_DovComQqImCaptureViewMusicProviderView;
-  private List<bmsi> jdField_a_of_type_JavaUtilList;
+  private List<boia> jdField_a_of_type_JavaUtilList;
   
   static
   {
@@ -56,7 +56,7 @@ public class MusicProviderPagerAdapter
     this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = paramOnItemClickListener;
   }
   
-  public void a(List<bmsi> paramList)
+  public void a(List<boia> paramList)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
   }
@@ -82,7 +82,7 @@ public class MusicProviderPagerAdapter
       QLog.d("MusicProviderView", 2, "instantiateItem position = " + paramInt);
     }
     GridView localGridView = (GridView)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    bmqs localbmqs;
+    bogk localbogk;
     if (localGridView == null)
     {
       localGridView = new GridView(this.jdField_a_of_type_AndroidContentContext);
@@ -93,14 +93,14 @@ public class MusicProviderPagerAdapter
       localGridView.setVerticalScrollBarEnabled(false);
       localGridView.setPadding(jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int * 2 + AIOUtils.dp2px(36.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
       localGridView.setClipToPadding(false);
-      localbmqs = new bmqs(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView);
+      localbogk = new bogk(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView);
       localGridView.setOnItemClickListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener);
       this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localGridView);
     }
     for (;;)
     {
-      localbmqs.a(((bmsi)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaUtilList);
-      localGridView.setAdapter(localbmqs);
+      localbogk.a(((boia)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaUtilList);
+      localGridView.setAdapter(localbogk);
       if (this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.c == paramInt)
       {
         localGridView.setSelection(this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.d);
@@ -109,7 +109,7 @@ public class MusicProviderPagerAdapter
       }
       paramViewGroup.addView(localGridView, -1, -1);
       return localGridView;
-      localbmqs = (bmqs)localGridView.getAdapter();
+      localbogk = (bogk)localGridView.getAdapter();
     }
   }
   

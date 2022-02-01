@@ -1,14 +1,20 @@
-import android.text.Editable;
-import com.tencent.mobileqq.activity.qwallet.fragment.ExclusiveHbFragment;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajyn
-  extends ajzf
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public ajyn(ExclusiveHbFragment paramExclusiveHbFragment) {}
+  public ajyn(Conversation paramConversation) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    ExclusiveHbFragment.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, " gestureDetector onDoubleTap");
+    }
+    Conversation.o(this.a);
+    return super.onDoubleTap(paramMotionEvent);
   }
 }
 

@@ -1,28 +1,28 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import kotlin.Metadata;
 
-public abstract class bduz
-  implements BusinessObserver
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"DATE_FORMAT", "", "LOAD_STATUS_FALSE", "", "LOAD_STATUS_NONE", "LOAD_STATUS_TRUE", "MODE_TYPE_DEFAULT", "MODE_TYPE_INVALID", "MODE_TYPE_SIMPLE", "MODE_TYPE_STUDY", "getCurMode", "isSimple", "", "isStudy", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
+public final class bduz
 {
-  protected abstract void a(long paramLong);
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static final int a()
   {
-    if (QLog.isColorLevel())
-    {
-      String str = "success = [" + paramBoolean + "], [" + paramBundle + "]";
-      QLog.i("GroupAppsObserver", 2, " onReceive: invoked. " + str);
+    if (bdfk.b()) {
+      return 1;
     }
-    if (!paramBoolean) {
-      return;
+    if (bdvn.a()) {
+      return 2;
     }
-    switch (paramInt)
-    {
-    default: 
-      return;
+    return 0;
+  }
+  
+  public static final int a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1) {
+      return 1;
     }
-    a(paramBundle.getLong("KEY_GROUP_UIN"));
+    if (paramBoolean2) {
+      return 2;
+    }
+    return 0;
   }
 }
 

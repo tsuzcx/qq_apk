@@ -1,22 +1,29 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class auhc
-  implements Animation.AnimationListener
+public class auhc
+  implements RadioGroup.OnCheckedChangeListener
 {
-  auhc(auhb paramauhb) {}
+  public auhc(QFileDebugSettingFragment paramQFileDebugSettingFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    if (this.a.a == 3) {
-      this.a.d.setVisibility(8);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
+      return;
+      atlb.a().a(0);
+      continue;
+      atlb.a().a(1);
+      continue;
+      atlb.a().a(2);
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

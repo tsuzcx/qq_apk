@@ -1,10 +1,19 @@
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
+
 public class axgd
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
-  public int d;
+  public axgd(MultiCardCustomLayout paramMultiCardCustomLayout) {}
+  
+  public void onLongPress(MotionEvent paramMotionEvent)
+  {
+    if (MultiCardCustomLayout.a(this.a) != null) {
+      MultiCardCustomLayout.a(this.a).onLongClick(this.a);
+    }
+  }
 }
 
 

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.model;
 
-import avsq;
+import awyr;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.qphone.base.util.QLog;
 
 public class EmoticonManager$9
   implements Runnable
 {
-  public EmoticonManager$9(avsq paramavsq, Emoticon paramEmoticon) {}
+  public EmoticonManager$9(awyr paramawyr, Emoticon paramEmoticon) {}
   
   public void run()
   {
-    avsq.a(this.this$0, this.a);
-    if (!avsq.a(this.this$0, this.a)) {
+    awyr.a(this.this$0, this.a);
+    if (!awyr.a(this.this$0, this.a)) {
       QLog.e("EmoticonManager", 1, "saveEmoticon fail epId = " + this.a.epId + ", eId = " + this.a.eId);
     }
   }

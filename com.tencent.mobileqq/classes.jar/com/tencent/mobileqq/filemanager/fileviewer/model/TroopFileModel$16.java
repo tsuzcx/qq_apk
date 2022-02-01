@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
-import asqs;
-import assx;
-import astk;
+import aagu;
+import atuz;
+import atxe;
+import atxr;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 import com.tencent.qphone.base.util.QLog;
-import zrj;
 
 public class TroopFileModel$16
   implements Runnable
 {
-  public TroopFileModel$16(astk paramastk, assx paramassx) {}
+  public TroopFileModel$16(atxr paramatxr, atxe paramatxe) {}
   
   public void run()
   {
-    FileManagerEntity localFileManagerEntity = this.this$0.jdField_a_of_type_Asqs.a();
+    FileManagerEntity localFileManagerEntity = this.this$0.jdField_a_of_type_Atuz.a();
     if (localFileManagerEntity.isZipInnerFile)
     {
-      zrj.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.TroopUin, localFileManagerEntity.zipFilePath, localFileManagerEntity.busId, astk.a(this.this$0));
+      aagu.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.TroopUin, localFileManagerEntity.zipFilePath, localFileManagerEntity.busId, atxr.a(this.this$0));
       return;
     }
     TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(localFileManagerEntity.TroopUin);
@@ -28,12 +28,12 @@ public class TroopFileModel$16
       this.a.c();
       return;
     }
-    localTroopFileTransferManager.a(localFileManagerEntity.strTroopFilePath, localFileManagerEntity.fileName, localFileManagerEntity.fileSize, localFileManagerEntity.busId, astk.a(this.this$0));
+    localTroopFileTransferManager.a(localFileManagerEntity.strTroopFilePath, localFileManagerEntity.fileName, localFileManagerEntity.fileSize, localFileManagerEntity.busId, atxr.a(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel.16
  * JD-Core Version:    0.7.0.1
  */

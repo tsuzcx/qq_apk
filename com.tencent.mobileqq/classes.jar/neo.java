@@ -1,22 +1,12 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.avgame.gameroom.stage.StageView;
+import android.view.View;
 
-class neo
-  implements Animator.AnimatorListener
+public class neo
+  extends nez<nen>
 {
-  neo(nen paramnen) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public nen a(nfa paramnfa, View paramView)
   {
-    this.a.a.removeView(this.a.a.b);
+    return new nen(paramView);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

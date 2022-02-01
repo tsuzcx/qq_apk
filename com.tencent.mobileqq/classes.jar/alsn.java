@@ -1,185 +1,82 @@
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugManager.1;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugManager.2;
-import com.tencent.mobileqq.apollo.debug.page.CmGameDebugBaseFragment;
-import com.tencent.mobileqq.apollo.debug.page.CmGameDebugLogFragment;
-import com.tencent.mobileqq.apollo.debug.page.CmGameDebugToolFragment;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
-import mqq.os.MqqHandler;
-
-public class alsn
+public final class alsn
 {
-  public static final String[] a;
-  public static final String[] b;
-  public static final String[] c;
-  private WeakReference<also> jdField_a_of_type_JavaLangRefWeakReference;
-  private BlockingQueue<alsw> jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new ArrayBlockingQueue(100);
-  private boolean jdField_a_of_type_Boolean;
-  private BlockingQueue<alsw> b;
-  private BlockingQueue<alsw> c;
+  public final int a;
+  public final int b;
   
-  static
+  public alsn(int paramInt1, int paramInt2)
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "Log", "Tool" };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "All", "Log", "Info", "Error", "Game" };
-    jdField_c_of_type_ArrayOfJavaLangString = new String[] { "#000000", "#000000", "#6a59d6", "#FF0000", "#556B2F" };
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
   
-  public alsn()
+  public static alsn a(String paramString)
   {
-    this.jdField_b_of_type_JavaUtilConcurrentBlockingQueue = new ArrayBlockingQueue(50);
-    this.jdField_c_of_type_JavaUtilConcurrentBlockingQueue = new ArrayBlockingQueue(50);
-  }
-  
-  public static CmGameDebugBaseFragment a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return new CmGameDebugLogFragment();
-    case 0: 
-      return new CmGameDebugLogFragment();
+    if ((paramString == null) || (paramString.length() == 0)) {
+      return null;
     }
-    return new CmGameDebugToolFragment();
-  }
-  
-  private void a(alsw paramalsw)
-  {
-    if (paramalsw == null) {
-      return;
-    }
-    switch (paramalsw.a)
-    {
+    int i = paramString.indexOf('*');
+    if (i < 0) {
+      i = paramString.indexOf('x');
     }
     for (;;)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(paramalsw);
-      if (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.size() == 100) {
-        this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.poll();
+      if (i < 0) {
+        throw a(paramString);
       }
-      ThreadManager.getUIHandler().post(new CmGameDebugManager.1(this, paramalsw));
-      return;
-      this.jdField_c_of_type_JavaUtilConcurrentBlockingQueue.offer(paramalsw);
-      if (this.jdField_c_of_type_JavaUtilConcurrentBlockingQueue.size() == 50)
+      try
       {
-        this.jdField_c_of_type_JavaUtilConcurrentBlockingQueue.poll();
-        continue;
-        this.jdField_b_of_type_JavaUtilConcurrentBlockingQueue.offer(paramalsw);
-        if (this.jdField_b_of_type_JavaUtilConcurrentBlockingQueue.size() == 50) {
-          this.jdField_b_of_type_JavaUtilConcurrentBlockingQueue.poll();
-        }
+        alsn localalsn = new alsn(Integer.parseInt(paramString.substring(0, i)), Integer.parseInt(paramString.substring(i + 1)));
+        return localalsn;
       }
-    }
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    alyh localalyh = alvx.a();
-    if (localalyh != null) {
-      return localalyh.a(paramInt);
-    }
-    return false;
-  }
-  
-  public static boolean a(CmGameStartChecker.StartCheckParam paramStartCheckParam)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramStartCheckParam != null)
-    {
-      bool1 = bool2;
-      if (paramStartCheckParam.isWhiteUsr)
+      catch (NumberFormatException localNumberFormatException)
       {
-        bool1 = bool2;
-        if (a(paramStartCheckParam.gameId)) {
-          bool1 = BaseApplicationImpl.getApplication().getSharedPreferences("cmgame_sp", 0).getBoolean("game_debug_tool_switch", true);
-        }
+        throw a(paramString);
+      }
+      catch (IllegalArgumentException localIllegalArgumentException)
+      {
+        throw a(paramString);
       }
     }
-    return bool1;
   }
   
-  private List<alsw> b(int paramInt)
+  private static NumberFormatException a(String paramString)
   {
-    Object localObject = Arrays.asList(this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.toArray(new alsw[0]));
-    if (paramInt == 0) {
-      return localObject;
-    }
-    ArrayList localArrayList = new ArrayList();
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
+    throw new NumberFormatException("Invalid SizeF: \"" + paramString + "\"");
+  }
+  
+  public int a()
+  {
+    return this.a;
+  }
+  
+  public int b()
+  {
+    return this.b;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool = true;
+    if (paramObject == null) {}
+    do
     {
-      alsw localalsw = (alsw)((Iterator)localObject).next();
-      if (localalsw.a == paramInt) {
-        localArrayList.add(localalsw);
+      return false;
+      if (this == paramObject) {
+        return true;
       }
-    }
-    return localArrayList;
-  }
-  
-  public List<alsw> a(int paramInt)
-  {
-    ArrayList localArrayList = new ArrayList();
-    switch (paramInt)
+    } while (!(paramObject instanceof alsn));
+    paramObject = (alsn)paramObject;
+    if ((this.a == paramObject.a) && (this.b == paramObject.b)) {}
+    for (;;)
     {
-    default: 
-      return localArrayList;
-    case 0: 
-      return Arrays.asList(this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.toArray(new alsw[0]));
-    case 1: 
-      return b(1);
-    case 2: 
-      return b(2);
-    case 3: 
-      return Arrays.asList(this.jdField_b_of_type_JavaUtilConcurrentBlockingQueue.toArray(new alsw[0]));
+      return bool;
+      bool = false;
     }
-    return Arrays.asList(this.jdField_c_of_type_JavaUtilConcurrentBlockingQueue.toArray(new alsw[0]));
   }
   
-  public void a()
+  public String toString()
   {
-    this.jdField_a_of_type_Boolean = true;
-    a(false);
-  }
-  
-  public void a(also paramalso)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramalso);
-  }
-  
-  public void a(String paramString, int paramInt, Object... paramVarArgs)
-  {
-    StringBuilder localStringBuilder = new StringBuilder(paramVarArgs.length * 30);
-    localStringBuilder.append(paramString).append(" | ");
-    int i = 0;
-    while (i < paramVarArgs.length)
-    {
-      paramString = paramVarArgs[i];
-      if (paramString != null) {
-        localStringBuilder.append(paramString.toString());
-      }
-      i += 1;
-    }
-    a(new alsw(localStringBuilder.toString(), paramInt));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.clear();
-    this.jdField_c_of_type_JavaUtilConcurrentBlockingQueue.clear();
-    this.jdField_b_of_type_JavaUtilConcurrentBlockingQueue.clear();
-    if ((paramBoolean) && (!this.jdField_a_of_type_Boolean)) {
-      ThreadManager.getUIHandler().post(new CmGameDebugManager.2(this));
-    }
+    return this.a + "x" + this.b;
   }
 }
 

@@ -1,34 +1,21 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.map.lib.basemap.data.GeoPoint;
-import com.tencent.mobileqq.troop.widget.AutoLocationMapView;
-import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.model.BitmapDescriptorFactory;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import com.tencent.tencentmap.mapsdk.maps.model.MarkerOptions;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
-public class bfeo
-  extends Handler
+class bfeo
+  implements Comparator<Map.Entry<String, bfep>>
 {
-  public bfeo(AutoLocationMapView paramAutoLocationMapView) {}
+  bfeo(bfem parambfem) {}
   
-  public void handleMessage(Message paramMessage)
+  public int a(Map.Entry<String, bfep> paramEntry1, Map.Entry<String, bfep> paramEntry2)
   {
-    GeoPoint localGeoPoint = (GeoPoint)paramMessage.obj;
-    this.a.getMap().clear();
-    if (paramMessage.arg1 == 0)
-    {
-      this.a.getMap().moveCamera(CameraUpdateFactory.newLatLng(new LatLng(localGeoPoint.getLatitudeE6() / 1000000.0D, localGeoPoint.getLongitudeE6() / 1000000.0D)));
-      this.a.getMap().moveCamera(CameraUpdateFactory.zoomTo(this.a.getMap().getMaxZoomLevel()));
-      Bitmap localBitmap = bfpx.a(this.a.getContext().getResources(), 2130842507);
-      avgm.a(this.a.getMap().addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap(localBitmap)).snippet("").position(new LatLng(localGeoPoint.getLatitudeE6() / 1000000.0D, localGeoPoint.getLongitudeE6() / 1000000.0D))));
+    long l = ((bfep)paramEntry2.getValue()).a - ((bfep)paramEntry1.getValue()).a;
+    if (l > 0L) {
+      return 1;
     }
-    if (this.a.a != null) {
-      this.a.a.a(paramMessage.arg1, localGeoPoint);
+    if (l < 0L) {
+      return -1;
     }
+    return 0;
   }
 }
 

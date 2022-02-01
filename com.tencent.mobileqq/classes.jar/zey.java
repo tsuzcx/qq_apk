@@ -1,22 +1,35 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.subscribe.comment.CommentBottomBar;
-
-public class zey
-  implements Animation.AnimationListener
+class zey
+  implements zeq
 {
-  public zey(CommentBottomBar paramCommentBottomBar, boolean paramBoolean) {}
+  zey(zex paramzex) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(zev paramzev, boolean paramBoolean)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      CommentBottomBar.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar);
+    int i = 0;
+    if (paramBoolean)
+    {
+      zev[] arrayOfzev = this.a.a();
+      j = arrayOfzev.length;
+      i = 0;
+      while (i < j)
+      {
+        zev localzev = arrayOfzev[i];
+        if (localzev != paramzev) {
+          localzev.a(false);
+        }
+        i += 1;
+      }
+    }
+    paramzev = this.a.a();
+    int j = paramzev.length;
+    for (;;)
+    {
+      if ((i >= j) || (paramzev[i].a())) {
+        return;
+      }
+      i += 1;
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

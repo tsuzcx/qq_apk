@@ -1,46 +1,58 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.msg.im_msg_body.RichText;
 
-class awcf
-  implements ayeo
+public class awcf
+  implements aaea
 {
-  awcf(awce paramawce, MessageForArkApp paramMessageForArkApp, QQAppInterface paramQQAppInterface) {}
+  public awcf(UiApiPlugin paramUiApiPlugin, Integer paramInteger, String paramString) {}
   
-  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
+  public void callback(Bundle paramBundle)
   {
-    return null;
-  }
-  
-  public void onSend(ayep paramayep)
-  {
-    try
+    if (paramBundle.getBoolean("isSuccess", false))
     {
-      if (paramayep.jdField_a_of_type_Int == 0)
+      int i = paramBundle.getInt("appid");
+      Object localObject = paramBundle.getString("openId");
+      if ((i != this.jdField_a_of_type_JavaLangInteger.intValue()) || (!((String)localObject).equals(this.jdField_a_of_type_JavaLangString))) {
+        break label178;
+      }
+      str1 = paramBundle.getString("uin");
+      bool = paramBundle.getBoolean("isFriend", false);
+      localObject = paramBundle.getString("nickName");
+      str2 = paramBundle.getString("remark");
+      if (!TextUtils.isEmpty(str1))
       {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.resIDForLongMsg = paramayep.c;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().sendMessage(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, null, false);
+        if (!bool) {
+          break label163;
+        }
+        paramBundle = new ProfileActivity.AllInOne(str1, 1);
+        paramBundle.h = ((String)localObject);
+        paramBundle.i = str2;
+        localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(), FriendProfileCardActivity.class);
+        ((Intent)localObject).putExtra("AllInOne", paramBundle);
+        ((Intent)localObject).addFlags(536870912);
+        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a().startActivity((Intent)localObject);
+      }
+    }
+    label163:
+    label178:
+    while (!QLog.isColorLevel()) {
+      for (;;)
+      {
+        String str1;
+        boolean bool;
+        String str2;
         return;
+        paramBundle = new ProfileActivity.AllInOne(str1, 105);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("StructLongTextMsg", 2, "upload multi msg pack failed, result.errStr=" + paramayep.b + ",result.errStr=" + paramayep.jdField_a_of_type_JavaLangString);
-      }
-      awcg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
-      return;
     }
-    catch (Exception paramayep)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StructLongTextMsg", 2, "upload multi msg pack failed, catch exception", paramayep);
-      }
-      awcg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
-    }
+    QLog.d("UiApiPlugin", 2, "appId != appID || !openId.equals(openID)");
   }
-  
-  public void updateMsg(ayep paramayep) {}
 }
 
 

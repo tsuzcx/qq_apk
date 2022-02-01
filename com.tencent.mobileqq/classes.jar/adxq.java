@@ -1,10 +1,19 @@
-import android.content.Context;
-import android.util.AttributeSet;
+import android.app.Dialog;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface adxq
+public class adxq
+  implements View.OnClickListener
 {
-  public abstract View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet);
+  public adxq(FontSettingActivity paramFontSettingActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    FontSettingActivity.a(this.a).dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

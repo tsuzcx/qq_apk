@@ -1,143 +1,64 @@
-import android.os.Build;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.manager.Manager;
+import android.view.WindowManager.BadTokenException;
+import android.view.accessibility.AccessibilityManager;
+import android.view.accessibility.AccessibilityManager.AccessibilityStateChangeListener;
+import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
+import com.tencent.mobileqq.javahooksdk.MethodHookParam;
+import java.lang.reflect.Field;
 
-public class avyj
-  implements Manager
+final class avyj
+  implements HookMethodCallback
 {
-  private avyh jdField_a_of_type_Avyh;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Map<Integer, avyk> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  avyj(Class paramClass) {}
   
-  public avyj(QQAppInterface paramQQAppInterface)
+  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public int a(avyk paramavyk)
-  {
-    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-    try
-    {
-      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramavyk);
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOManager", 2, "addAioContext() called with: multiAioContext = [" + paramavyk + "], id = [" + i + "]");
-      }
-      return i;
+    if (paramMethodHookParam.throwable == null) {
+      return;
     }
-    finally {}
-  }
-  
-  public avyk a(int paramInt)
-  {
-    try
-    {
-      avyk localavyk = (avyk)this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOManager", 2, "removeAioContext() called with: id = [" + paramInt + "], multiAioContext = " + localavyk);
-      }
-      return localavyk;
+    Object localObject;
+    if (paramMethodHookParam.throwable.getCause() != null) {
+      localObject = paramMethodHookParam.throwable.getCause();
     }
-    finally {}
-  }
-  
-  public void a()
-  {
-    try
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-      while (localIterator.hasNext())
+    while ((localObject instanceof WindowManager.BadTokenException)) {
+      try
       {
-        avyk localavyk = (avyk)localIterator.next();
-        if (localavyk != null) {
-          localavyk.a();
-        }
+        localObject = this.a.getDeclaredField("mAccessibilityInteractionConnectionManager");
+        ((Field)localObject).setAccessible(true);
+        localObject = ((Field)localObject).get(paramMethodHookParam.thisObject);
+        Field localField = this.a.getDeclaredField("mAccessibilityManager");
+        localField.setAccessible(true);
+        ((AccessibilityManager)localField.get(paramMethodHookParam.thisObject)).removeAccessibilityStateChangeListener((AccessibilityManager.AccessibilityStateChangeListener)localObject);
+        return;
       }
-      this.jdField_a_of_type_JavaUtilMap.clear();
-    }
-    finally {}
-  }
-  
-  public void a(avyh paramavyh)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOManager", 2, "onConfUpdate : " + paramavyh);
-    }
-    this.jdField_a_of_type_Avyh = paramavyh;
-  }
-  
-  public boolean a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOManager", 2, "MultiAIOEntranceConfigData isConfigInited = " + this.b);
-    }
-    if (this.b) {
-      return this.jdField_a_of_type_Boolean;
-    }
-    this.b = true;
-    b();
-    if (!this.jdField_a_of_type_Avyh.a())
-    {
-      this.jdField_a_of_type_Boolean = false;
-      return false;
-    }
-    Object localObject = this.jdField_a_of_type_Avyh.a();
-    String str = (Build.MANUFACTURER + Build.MODEL).trim();
-    if ((localObject != null) && (((List)localObject).contains(str)))
-    {
-      this.jdField_a_of_type_Boolean = false;
-      return false;
-    }
-    localObject = this.jdField_a_of_type_Avyh.a();
-    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (bbvz.b((String)localObject) <= 0))
-    {
-      this.jdField_a_of_type_Boolean = false;
-      return false;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    return true;
-  }
-  
-  public avyk b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOManager", 2, "getAioContext() called with: id = [" + paramInt + "]");
-    }
-    try
-    {
-      avyk localavyk = (avyk)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-      return localavyk;
-    }
-    finally {}
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Avyh = ((avyh)apub.a().a(478));
-    if (this.jdField_a_of_type_Avyh == null)
-    {
-      this.jdField_a_of_type_Avyh = new avyh();
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOManager", 2, "MultiAIOEntranceConfigData =null, general new bean");
+      catch (NoSuchFieldException paramMethodHookParam)
+      {
+        paramMethodHookParam.printStackTrace();
+        return;
+        localObject = paramMethodHookParam.throwable;
+      }
+      catch (IllegalArgumentException paramMethodHookParam)
+      {
+        paramMethodHookParam.printStackTrace();
+        return;
+      }
+      catch (IllegalAccessException paramMethodHookParam)
+      {
+        paramMethodHookParam.printStackTrace();
+        return;
+      }
+      catch (Exception paramMethodHookParam)
+      {
+        paramMethodHookParam.printStackTrace();
+        return;
+      }
+      catch (Error paramMethodHookParam)
+      {
+        paramMethodHookParam.printStackTrace();
       }
     }
   }
   
-  public void onDestroy()
-  {
-    a();
-  }
+  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
 }
 
 

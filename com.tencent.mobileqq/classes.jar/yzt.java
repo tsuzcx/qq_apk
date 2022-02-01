@@ -1,12 +1,18 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class yzt
-  extends RecyclerView.ViewHolder
+class yzt
+  implements View.OnClickListener
 {
-  public yzt(yzs paramyzs, View paramView)
+  yzt(yzr paramyzr, int paramInt) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramView);
+    if (yzr.a(this.jdField_a_of_type_Yzr) != null) {
+      yzr.a(this.jdField_a_of_type_Yzr).a(this.jdField_a_of_type_Int);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

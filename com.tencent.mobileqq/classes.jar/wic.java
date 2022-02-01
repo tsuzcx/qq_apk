@@ -1,55 +1,19 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.mobileqq.utils.StringUtil;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class wic
-  extends wjc
+class wic
+  implements View.OnClickListener
 {
-  public static final String a;
-  public static final String b = jdField_a_of_type_JavaLangString + "&et=%d&time_zone=%d";
-  protected int a;
-  private final int[] a;
+  wic(wib paramwib, wia paramwia) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_JavaLangString = "https://story.now.qq.com/mobile/transfer.html?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&ptype=%d&identify=1&actionnamekey=1&storysharefrom=%s&sharefromtype=%d&one_page=0" + vpl.a(2131698833);
-  }
-  
-  public wic(ShareGroupItem paramShareGroupItem, StoryVideoItem paramStoryVideoItem, String paramString, long paramLong, int paramInt1, int paramInt2)
-  {
-    vvj localvvj = (vvj)vux.a(2);
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
-    this.h = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_e_of_type_Int = paramInt2;
-    this.f = paramStoryVideoItem.mOwnerUid;
-    this.jdField_e_of_type_JavaLangString = localvvj.a(this.f, false);
-    this.c = StringUtil.substring(paramShareGroupItem.name, 0, 16, "...");
-    this.g = paramStoryVideoItem.mDoodleText;
-    this.jdField_d_of_type_JavaLangString = a();
-    this.k = (amtj.a(2131713013) + this.c + amtj.a(2131713021) + vkm.jdField_a_of_type_JavaLangString);
-    this.l = (this.c + "\n" + paramInt2 + amtj.a(2131713017));
-    new SimpleDateFormat("M月d日").format(Long.valueOf(paramLong));
-    this.i = b();
-    this.j = ("#" + vkm.jdField_a_of_type_JavaLangString + "# " + a() + "（" + this.i + "）");
-    this.jdField_d_of_type_Int = 11;
-    this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 0, 97, 98, 99, 100, 101 };
-  }
-  
-  public static wic a(ShareGroupItem paramShareGroupItem, StoryVideoItem paramStoryVideoItem, String paramString, long paramLong, int paramInt)
-  {
-    return new wic(paramShareGroupItem, paramStoryVideoItem, paramString, paramLong, 9, paramInt);
-  }
-  
-  protected String a(int paramInt)
-  {
-    if (paramInt == 1) {
-      return String.format("mqqapi://qstory/openVideo?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&ptype=%d&identify=1&type=onedaylist&et=%d&time_zone=%d", new Object[] { this.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.f, this.h, Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime / 1000L), Integer.valueOf(UIUtils.getTimeZoneOffset()) });
+    int i = this.jdField_a_of_type_Wia.getPosition();
+    if (i >= 0) {
+      this.jdField_a_of_type_Wib.a.a(this.jdField_a_of_type_Wia.itemView, i);
     }
-    return String.format(b, new Object[] { this.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.f, this.h, Integer.valueOf(this.jdField_a_of_type_Int), b(paramInt), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[paramInt]), Long.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime / 1000L), Integer.valueOf(UIUtils.getTimeZoneOffset()) });
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

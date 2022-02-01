@@ -1,25 +1,27 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.VideoControlUI;
+import com.tencent.av.ui.RedbagToolbar;
 
 public class mjm
-  implements View.OnTouchListener
+  implements mqr
 {
-  public mjm(VideoControlUI paramVideoControlUI) {}
+  public mjm(RedbagToolbar paramRedbagToolbar, mqb parammqb) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean)
   {
-    if (this.a.a != null) {
-      return this.a.a.onTouchEvent(paramMotionEvent);
+    if (paramBoolean) {}
+    for (paramBoolean = this.jdField_a_of_type_ComTencentAvUiRedbagToolbar.startActivity_SendRedBag(true);; paramBoolean = false)
+    {
+      if (!paramBoolean)
+      {
+        this.jdField_a_of_type_Mqb.a(false);
+        this.jdField_a_of_type_ComTencentAvUiRedbagToolbar.exitCurrentToolbar();
+      }
+      return;
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mjm
  * JD-Core Version:    0.7.0.1
  */

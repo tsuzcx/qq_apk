@@ -1,54 +1,49 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
+import java.util.Iterator;
+import java.util.List;
 
 public class trr
+  implements ViewPager.OnPageChangeListener
 {
-  public long a;
-  public AdvertisementInfo a;
-  public String a;
-  public boolean a;
-  public long b;
-  public long c;
-  public long d;
+  private trr(ViewPagerCompat paramViewPagerCompat) {}
   
-  public void a(Bundle paramBundle)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    long l1;
-    long l2;
-    long l3;
-    if (paramBundle != null)
+    if (ViewPagerCompat.a(this.a) != null)
     {
-      String str = paramBundle.getString("adid", "");
-      l1 = paramBundle.getLong("navigationStart", 0L);
-      l2 = paramBundle.getLong("htmlLoaded", 0L);
-      l3 = paramBundle.getLong("domComplete", 0L);
-      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (str.equals(this.jdField_a_of_type_JavaLangString))) {
-        break label71;
+      Iterator localIterator = ViewPagerCompat.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
       }
     }
-    label71:
-    do
-    {
-      return;
-      if (l1 > 0L) {
-        this.b = l1;
-      }
-      if (l2 > 0L) {
-        this.c = l2;
-      }
-    } while (l3 <= 0L);
-    this.d = l3;
   }
   
-  public boolean a()
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    return (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Long > 0L) && ((this.b > 0L) || (this.c > 0L) || (this.d > 0L));
+    if (ViewPagerCompat.a(this.a) != null)
+    {
+      Iterator localIterator = ViewPagerCompat.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
+      }
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    if (ViewPagerCompat.a(this.a) != null)
+    {
+      Iterator localIterator = ViewPagerCompat.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     trr
  * JD-Core Version:    0.7.0.1
  */

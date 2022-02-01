@@ -1,44 +1,50 @@
-import android.util.Log;
-import java.io.Writer;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.MessageQueue.IdleHandler;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.view.CameraCover;
+import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
+import com.tencent.mobileqq.app.BaseActivity2;
+import com.tencent.qphone.base.util.QLog;
 
 public class alqs
-  extends Writer
+  implements MessageQueue.IdleHandler
 {
-  private StringBuilder a = new StringBuilder();
+  public alqs(NewFlowCameraActivity paramNewFlowCameraActivity, boolean paramBoolean, SharedPreferences paramSharedPreferences) {}
   
-  private void a()
+  public boolean queueIdle()
   {
-    if (this.a.length() > 0)
+    if (bdaw.d(bdaw.b))
     {
-      Log.v("GLTextureView", this.a.toString());
-      this.a.delete(0, this.a.length());
-    }
-  }
-  
-  public void close()
-  {
-    a();
-  }
-  
-  public void flush()
-  {
-    a();
-  }
-  
-  public void write(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    int i = 0;
-    if (i < paramInt2)
-    {
-      char c = paramArrayOfChar[(paramInt1 + i)];
-      if (c == '\n') {
-        a();
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout.jdField_a_of_type_Boolean = true;
+      if (QLog.isColorLevel()) {
+        QLog.i("PEAK_CAMERA", 2, "hit in black list! needChangeNewSurfaceView ");
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        this.a.append(c);
+    }
+    View localView = BaseActivity2.findViewById(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover, 2131366959);
+    if (localView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover.removeView(localView);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.A();
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout.c();
+    if ((!NewFlowCameraActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity)) && (!NewFlowCameraActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity))) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("PEAK_CAMERA", 2, "Added camera view.");
+      }
+      NewFlowCameraActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, false);
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("sp_is_cancel_from_music_key", true).commit();
+      NewFlowCameraActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, false);
+      return false;
+      if ((NewFlowCameraActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity)) && (!NewFlowCameraActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity)) && (this.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
+      } else {
+        QLog.d("PTV.NewFlowCameraActivity", 2, "onResume from select music and do nothing in 1");
       }
     }
   }

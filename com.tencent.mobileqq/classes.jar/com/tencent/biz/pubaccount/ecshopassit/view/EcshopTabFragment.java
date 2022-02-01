@@ -5,15 +5,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import bgtj;
+import bieb;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
-import ohm;
-import ohx;
-import ohy;
-import ohz;
+import opg;
+import opt;
+import opu;
+import opv;
 
 public class EcshopTabFragment
   extends PublicBaseFragment
@@ -22,19 +22,19 @@ public class EcshopTabFragment
   public int a;
   private EcshopWebview a;
   public String a;
-  public ohx a;
+  public opt a;
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview = ohz.a().a(paramView.getContext(), this.jdField_a_of_type_JavaLangString);
-    paramView = (FrameLayout)paramView.findViewById(2131365079);
+    this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview = opv.a().a(paramView.getContext(), this.jdField_a_of_type_JavaLangString);
+    paramView = (FrameLayout)paramView.findViewById(2131365163);
     if ((this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview.getParent() instanceof ViewGroup)) {
       ((ViewGroup)this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview.getParent()).removeView(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview);
     }
     paramView.addView(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview);
-    this.jdField_a_of_type_Ohx = new ohy(this, getActivity(), getActivity(), ohm.a(), this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Ohx.setmTimeBeforeLoadUrl(System.currentTimeMillis());
-    new bgtj(this.jdField_a_of_type_Ohx).a(null, ohm.a(), null);
+    this.jdField_a_of_type_Opt = new opu(this, getActivity(), getActivity(), opg.a(), this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Opt.setmTimeBeforeLoadUrl(System.currentTimeMillis());
+    new bieb(this.jdField_a_of_type_Opt).a(null, opg.a(), null);
     this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview.setWillNotCacheDrawing(false);
     this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview.setDrawingCacheEnabled(true);
     if ((this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview != null) && (!StringUtil.isEmpty(this.jdField_a_of_type_JavaLangString))) {
@@ -62,7 +62,7 @@ public class EcshopTabFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131561854, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131561922, paramViewGroup, false);
     a(paramLayoutInflater);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
@@ -71,8 +71,8 @@ public class EcshopTabFragment
   public void onDestroy()
   {
     super.onDestroyView();
-    if (this.jdField_a_of_type_Ohx != null) {
-      this.jdField_a_of_type_Ohx.c();
+    if (this.jdField_a_of_type_Opt != null) {
+      this.jdField_a_of_type_Opt.c();
     }
   }
 }

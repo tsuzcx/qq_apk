@@ -1,18 +1,26 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adio
-  implements ancv
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adio(FriendProfileCardActivity paramFriendProfileCardActivity, Intent paramIntent) {}
+  public adio(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void a(Object paramObject)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((paramObject instanceof String))
+    AssistantSettingActivity.a(this.a, this.a.g.a(), paramBoolean);
+    AssistantSettingActivity.a(this.a).a(paramBoolean, true);
+    if (paramBoolean) {
+      bdla.b(this.a.app, "dc00898", "", "", "0X8009C0C", "0X8009C0C", 0, 0, "", "", "", "");
+    }
+    for (;;)
     {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("troop_uin", (String)paramObject);
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("cSpecialFlag", 0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity(this.jdField_a_of_type_AndroidContentIntent);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      bdla.b(this.a.app, "dc00898", "", "", "0X8009C0D", "0X8009C0D", 0, 0, "", "", "", "");
     }
   }
 }

@@ -1,21 +1,6 @@
-import Wallet.PopDialog;
-import Wallet.SkinInfo;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-
-class akah
-  implements DialogInterface.OnClickListener
+public abstract interface akah
 {
-  akah(akag paramakag, akaa paramakaa) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface = this.jdField_a_of_type_Akaa.a.pop_dialog.left_url;
-    if (!TextUtils.isEmpty(paramDialogInterface)) {
-      bkvx.a(akad.a(this.jdField_a_of_type_Akag.a), paramDialogInterface);
-    }
-  }
+  public abstract void ae_();
 }
 
 

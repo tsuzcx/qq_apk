@@ -1,30 +1,22 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.VideoController.AnyChatReqTimeoutRunnable;
+import com.tencent.av.app.VideoAppInterface;
+
 public class lct
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public long c;
-  public int d;
-  public long d;
-  public int e;
+  public lct(VideoController.AnyChatReqTimeoutRunnable paramAnyChatReqTimeoutRunnable) {}
   
-  public boolean a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.jdField_a_of_type_Int == 3;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("VideoPacket{roomId=").append(this.jdField_a_of_type_Long).append(", bodyType=").append(this.jdField_a_of_type_Int).append(", uin=").append(this.jdField_b_of_type_Long).append(", fromuin=").append(this.jdField_c_of_type_Long).append(", subServiceType=").append(this.jdField_b_of_type_Int).append(", seq=").append(this.jdField_c_of_type_Int).append(", business_flag=").append(this.jdField_d_of_type_Int).append(", terminal_switch_flag =").append(this.jdField_a_of_type_Boolean).append(", u32AccountType =").append(this.e).append(", uint64_group_uin =").append(this.jdField_d_of_type_Long).append(", str_from_nation =").append(this.jdField_b_of_type_JavaLangString).append(", str_from_mobile =");
-    if (this.jdField_a_of_type_JavaLangString != null) {}
-    for (boolean bool = true;; bool = false) {
-      return bool + '}';
+    if (this.a.this$0.a().d == null) {
+      this.a.this$0.a().d = this.a.this$0.a().a.c;
     }
+    this.a.this$0.a(this.a.a, 2131230741, 1, this.a.this$0.b);
+    this.a.this$0.a().a("AnyChatReqTimeoutRunnable", 6);
+    this.a.this$0.a.a(new Object[] { Integer.valueOf(14), Integer.valueOf(9), this.a.this$0.a().d, Long.valueOf(this.a.a) });
   }
 }
 

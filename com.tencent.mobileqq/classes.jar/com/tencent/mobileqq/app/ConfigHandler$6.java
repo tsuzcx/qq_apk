@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import ampt;
-import baoy;
+import ansg;
+import bbvn;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
@@ -15,7 +15,7 @@ import protocol.KQQConfig.GetResourceRespInfo;
 public class ConfigHandler$6
   implements Runnable
 {
-  public ConfigHandler$6(ampt paramampt, String paramString, baoy parambaoy, GetResourceRespInfo paramGetResourceRespInfo) {}
+  public ConfigHandler$6(ansg paramansg, String paramString, bbvn parambbvn, GetResourceRespInfo paramGetResourceRespInfo) {}
   
   public void run()
   {
@@ -28,7 +28,7 @@ public class ConfigHandler$6
     }
     String str;
     if (i == 0) {
-      if (this.jdField_a_of_type_Baoy.a((File)localObject1, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.uiNewVer))
+      if (this.jdField_a_of_type_Bbvn.a((File)localObject1, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.uiNewVer))
       {
         this.this$0.notifyUI(7, true, Integer.valueOf(102));
         localObject1 = StatisticCollector.getInstance(BaseApplication.getContext());

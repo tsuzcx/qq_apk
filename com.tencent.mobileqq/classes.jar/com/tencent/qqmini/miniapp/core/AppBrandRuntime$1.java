@@ -10,7 +10,7 @@ class AppBrandRuntime$1
   
   public void onReceiveValue(Object paramObject)
   {
-    AppBrandRuntime.access$000(this.this$0).add(this.val$url);
+    AppBrandRuntime.access$000(this.this$0).add(this.val$subPkgRoot);
   }
 }
 

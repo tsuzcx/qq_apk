@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import bfyv;
+import bhhn;
 import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
@@ -12,7 +12,7 @@ public final class ShareMsgHelper$2
   
   public void run()
   {
-    bfyv.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg, this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver);
+    bhhn.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg, this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver);
   }
 }
 

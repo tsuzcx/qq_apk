@@ -1,16 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
+import Wallet.AcsMsg;
+import com.tencent.mobileqq.data.MessageRecord;
 
-final class afnm
-  implements amqq
+public class afnm
 {
-  public void onDpcPullFinished(boolean paramBoolean)
+  public long a;
+  public AcsMsg a;
+  public MessageRecord a;
+  
+  public String toString()
   {
-    if (paramBoolean) {
-      afnl.a(true);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AIODrawerDpc", 2, "onDpcPullFinished, hasChanged = " + paramBoolean);
-    }
+    return "QQReminderOrderModel{messageRecord=" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord + ", acsMsg=" + this.jdField_a_of_type_WalletAcsMsg + ", orderTime=" + this.jdField_a_of_type_Long + '}';
   }
 }
 

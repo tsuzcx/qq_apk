@@ -1,27 +1,28 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.PeakAppInterface;
-import dov.com.qq.im.capture.control.CaptureAsyncStep.BindTroopMemberClient;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.os.MqqHandler;
 
-public class bmrj
-  implements zop
+final class bmrj
+  implements audq
 {
-  public bmrj(CaptureAsyncStep.BindTroopMemberClient paramBindTroopMemberClient) {}
+  bmrj(ArrayList paramArrayList1, QQAppInterface paramQQAppInterface, ArrayList paramArrayList2, ArrayList paramArrayList3, ArrayList paramArrayList4, MqqHandler paramMqqHandler, int paramInt) {}
   
-  public void callback(Bundle paramBundle)
+  public void onNo() {}
+  
+  public void onYes()
   {
-    paramBundle = paramBundle.getString("nickName");
-    if (paramBundle == null) {
-      paramBundle = "";
-    }
-    for (;;)
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
     {
-      AppInterface localAppInterface = bmql.a();
-      if ((localAppInterface instanceof PeakAppInterface)) {
-        ((PeakAppInterface)localAppInterface).a(paramBundle);
-      }
-      this.a.a.b();
-      return;
+      MessageForFile localMessageForFile = (MessageForFile)localIterator.next();
+      auea.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForFile, BaseActivity.sTopActivity, true);
+    }
+    if (bmri.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b, this.c, this.d, this.jdField_a_of_type_MqqOsMqqHandler, this.jdField_a_of_type_Int)) {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131692595, 0).b(this.jdField_a_of_type_Int);
     }
   }
 }

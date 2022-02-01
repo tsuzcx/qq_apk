@@ -1,57 +1,14 @@
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.widget.XEditTextEx;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class afqd
-  implements afrc
 {
-  protected afqf a;
-  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private final BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  protected boolean a;
-  
-  public afqd(BaseChatPie paramBaseChatPie)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseChatPie.getActivity();
-  }
-  
-  private void a(XEditTextEx paramXEditTextEx)
-  {
-    this.jdField_a_of_type_Boolean = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, null, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131694542), "qqsetting_enter_sendmsg_key", false);
-    if (this.jdField_a_of_type_Boolean) {
-      paramXEditTextEx.setImeOptions(4);
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Afqf == null) {
-        this.jdField_a_of_type_Afqf = new afqf(this, null);
-      }
-      paramXEditTextEx.setOnEditorActionListener(this.jdField_a_of_type_Afqf);
-      paramXEditTextEx.setOnKeyListener(this.jdField_a_of_type_Afqf);
-      return;
-      paramXEditTextEx.setImeOptions(0);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 20: 
-      this.jdField_a_of_type_Boolean = false;
-      return;
-    }
-    a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.input);
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 20, 8 };
-  }
+  public int a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public ImageView b;
 }
 
 

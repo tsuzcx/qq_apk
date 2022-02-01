@@ -1,8 +1,18 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public abstract interface agyc
+class agyc
+  extends ahaa
 {
-  public abstract void a(AIOImageData paramAIOImageData, boolean paramBoolean);
+  agyc(agvm paramagvm)
+  {
+    super(paramagvm, null);
+  }
+  
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahfu(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+  }
 }
 
 

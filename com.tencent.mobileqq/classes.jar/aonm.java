@@ -1,37 +1,58 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.ar.view.QRScanEntryView;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.memory.QLogReporter.1;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class aonm
-  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public aonm(QRScanEntryView paramQRScanEntryView, String paramString1, String paramString2) {}
+  private static volatile aonm a;
+  public static final SimpleDateFormat a;
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  static
   {
-    if (paramBoolean)
+    jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yy.MM.dd");
+  }
+  
+  public static aonm a()
+  {
+    if (jdField_a_of_type_Aonm == null) {}
+    try
     {
-      paramBundle = new Intent();
-      paramBundle.putExtra("detectType", 2);
-      paramBundle.putExtra("scannerResult", this.jdField_a_of_type_JavaLangString.trim());
-      paramBundle.putExtra("filePath", this.b);
-      ((Activity)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_AndroidContentContext).setResult(13, paramBundle);
-      ((Activity)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_AndroidContentContext).finish();
-      ((Activity)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_AndroidContentContext).overridePendingTransition(0, 0);
+      if (jdField_a_of_type_Aonm == null) {
+        jdField_a_of_type_Aonm = new aonm();
+      }
+      return jdField_a_of_type_Aonm;
+    }
+    finally {}
+  }
+  
+  public void a()
+  {
+    if (new GregorianCalendar().get(11) < 2) {}
+    SharedPreferences localSharedPreferences;
+    long l1;
+    Calendar localCalendar;
+    String str;
+    do
+    {
       return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("AREngine_QRScanEntryView", 2, "onLaunchResult 2 false");
-    }
-    ((aols)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_Aolf).b(false);
+      localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qlog_reporter", 0);
+      l1 = System.currentTimeMillis();
+      long l2 = localSharedPreferences.getLong("LastLogSizeReportTime", 0L);
+      localCalendar = Calendar.getInstance();
+      localCalendar.setTimeInMillis(l2);
+      str = jdField_a_of_type_JavaTextSimpleDateFormat.format(localCalendar.getTime());
+      localCalendar.setTimeInMillis(l1);
+    } while (str.equals(jdField_a_of_type_JavaTextSimpleDateFormat.format(localCalendar.getTime())));
+    ThreadManager.executeOnSubThread(new QLogReporter.1(this, localSharedPreferences, l1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aonm
  * JD-Core Version:    0.7.0.1
  */

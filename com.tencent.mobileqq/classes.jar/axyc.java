@@ -1,31 +1,67 @@
-import androidx.annotation.NonNull;
+import android.graphics.Paint;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.now.model.MedalInfo;
+import java.util.List;
 
 public class axyc
-  extends axvj
 {
-  public axyd a;
-  public axye a;
-  public boolean a;
-  public String d;
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
+  public TextView c;
+  public ImageView d;
   
-  public axyc() {}
-  
-  public axyc(long paramLong, String paramString1, String paramString2, axyd paramaxyd, String paramString3, axye paramaxye, String paramString4, boolean paramBoolean)
+  public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.d = paramString2;
-    this.jdField_a_of_type_Axyd = paramaxyd;
-    this.b = paramString3;
-    this.jdField_a_of_type_Axye = paramaxye;
-    this.c = paramString4;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(axxr.a(1000L * paramLong));
   }
   
-  @NonNull
-  public String toString()
+  public void a(MedalInfo paramMedalInfo, int paramInt, Paint paramPaint, boolean paramBoolean)
   {
-    return "AutoStatus [id=" + this.jdField_a_of_type_Long + ", type=" + this.d + ", title=" + this.jdField_a_of_type_JavaLangString + ", category=" + this.jdField_a_of_type_Axyd + ", sensor=" + this.jdField_a_of_type_Axye + ", isHide=" + this.jdField_a_of_type_Boolean + "]";
+    paramInt = (int)(paramInt - (int)paramPaint.measureText(this.jdField_c_of_type_AndroidWidgetTextView.getText().toString()) - mvk.a(this.jdField_c_of_type_AndroidWidgetTextView.getContext(), 30.0F));
+    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+    if ((paramMedalInfo == null) || (paramMedalInfo.a == null) || (paramMedalInfo.a.size() < 0))
+    {
+      this.a.setMaxWidth(paramInt);
+      return;
+    }
+    this.a.setMaxWidth(paramInt);
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if ((paramString1 != null) && (!paramString1.equals("")))
+    {
+      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+      localSpannableStringBuilder.append("回复");
+      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(-8947849), 0, localSpannableStringBuilder.length(), 17);
+      int i = localSpannableStringBuilder.length();
+      String str = paramString1;
+      if (paramString1.length() > 6)
+      {
+        paramString1 = paramString1.substring(0, 6);
+        str = paramString1 + "...";
+      }
+      localSpannableStringBuilder.append(str);
+      localSpannableStringBuilder.append(": ");
+      localSpannableStringBuilder.append(paramString2);
+      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(-16777216), i, str.length() + i, 17);
+      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(-8947849), i + str.length(), localSpannableStringBuilder.length(), 17);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(localSpannableStringBuilder);
+      return;
+    }
+    a(paramString2);
   }
 }
 

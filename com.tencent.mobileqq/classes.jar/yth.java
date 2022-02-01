@@ -1,17 +1,8 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
-class yth
-  implements View.OnTouchListener
+public abstract interface yth
 {
-  yth(ytg paramytg) {}
+  public abstract void a();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    ytg.a(this.a);
-    return true;
-  }
+  public abstract void a(Runnable paramRunnable);
 }
 
 

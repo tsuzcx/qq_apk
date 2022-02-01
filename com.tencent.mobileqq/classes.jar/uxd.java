@@ -1,23 +1,24 @@
-import android.support.annotation.NonNull;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import com.tencent.biz.pubaccount.weishi_new.WSBaseHomeFragment;
+import com.tencent.widget.pull2refresh.XRecyclerView;
 
-final class uxd
-  extends ClickableSpan
+public class uxd
+  implements bljk
 {
-  uxd(uxb paramuxb, String paramString) {}
+  public uxd(WSBaseHomeFragment paramWSBaseHomeFragment) {}
   
-  public void onClick(@NonNull View paramView)
+  public void a()
   {
-    if (this.jdField_a_of_type_Uxb != null) {
-      this.jdField_a_of_type_Uxb.a(this.jdField_a_of_type_JavaLangString);
-    }
+    this.a.a();
   }
   
-  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  public void a(XRecyclerView paramXRecyclerView, int paramInt)
   {
-    paramTextPaint.setUnderlineText(false);
+    this.a.a(paramXRecyclerView, paramInt);
+  }
+  
+  public void a(XRecyclerView paramXRecyclerView, boolean paramBoolean)
+  {
+    this.a.a(paramXRecyclerView, paramBoolean);
   }
 }
 

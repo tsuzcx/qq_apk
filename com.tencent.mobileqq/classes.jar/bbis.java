@@ -1,53 +1,26 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 import android.widget.TextView;
+import com.tencent.mobileqq.richmedia.capture.view.CircleBarView;
 
 public class bbis
-  extends bbgv
+  extends Animation
 {
-  private View a;
-  public Button a;
+  public bbis(CircleBarView paramCircleBarView) {}
   
-  public bbis(ViewGroup paramViewGroup, int paramInt)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    super(paramViewGroup, paramInt);
-  }
-  
-  public Button a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetButton;
-  }
-  
-  protected void a()
-  {
-    this.h = ((TextView)this.b.findViewById(2131371791));
-    this.e = ((ImageView)this.b.findViewById(2131361795));
-    this.i = ((TextView)this.b.findViewById(2131376354));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.b.findViewById(2131376341));
-    this.jdField_a_of_type_AndroidWidgetButton.setText(amtj.a(2131689550));
-    this.k = ((TextView)this.b.findViewById(2131377631));
-    this.j = ((TextView)this.b.findViewById(2131376351));
-    this.jdField_a_of_type_AndroidViewView = this.b.findViewById(2131379811);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    View localView;
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    super.applyTransformation(paramFloat, paramTransformation);
+    CircleBarView.a(this.a, CircleBarView.a(this.a) * paramFloat * CircleBarView.b(this.a) / CircleBarView.c(this.a));
+    CircleBarView.b(this.a, 30.0F);
+    if (CircleBarView.a(this.a) != null)
     {
-      localView = this.jdField_a_of_type_AndroidViewView;
-      if (!paramBoolean) {
-        break label24;
+      if (CircleBarView.a(this.a) != null) {
+        CircleBarView.a(this.a).setText(CircleBarView.a(this.a).a(paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a)));
       }
+      CircleBarView.a(this.a).a(CircleBarView.a(this.a), paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a));
     }
-    label24:
-    for (int i = 0;; i = 8)
-    {
-      localView.setVisibility(i);
-      return;
-    }
+    this.a.postInvalidate();
   }
 }
 

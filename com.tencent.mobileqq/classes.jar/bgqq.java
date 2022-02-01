@@ -1,6 +1,11 @@
 public class bgqq
 {
-  public static final String a = lbe.f() + "config.json";
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
 }
 
 

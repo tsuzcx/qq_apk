@@ -1,44 +1,17 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class babs
-  extends OrientationEventListener
+class babs
+  implements View.OnClickListener
 {
-  public babs(CameraCaptureView paramCameraCaptureView, Context paramContext)
-  {
-    super(paramContext);
-  }
+  babs(babn parambabn, View paramView) {}
   
-  public void onOrientationChanged(int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.v = paramInt;
-    if (paramInt == -1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CameraCaptureView", 2, "OrientationEventListener unknown");
-      }
-      this.a.w = 90;
-    }
-    if ((paramInt > 315) || (paramInt < 45)) {
-      this.a.w = 90;
-    }
-    for (;;)
-    {
-      if (this.a.g) {
-        this.a.u = this.a.w;
-      }
-      babk.a = this.a.u;
-      return;
-      if ((paramInt > 45) && (paramInt < 135)) {
-        this.a.w = 180;
-      } else if ((paramInt > 135) && (paramInt < 225)) {
-        this.a.w = 270;
-      } else if ((paramInt > 225) && (paramInt < 315)) {
-        this.a.w = 0;
-      }
-    }
+    azru.a().c(babn.k(this.jdField_a_of_type_Babn));
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

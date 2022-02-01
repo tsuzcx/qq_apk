@@ -1,33 +1,44 @@
-import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.widget.NumberCheckBox;
 
-public abstract interface bmyx
+public class bmyx
+  extends RecyclerView.ViewHolder
 {
-  public abstract int a();
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public bmyw a;
+  public URLDrawable a;
+  public NumberCheckBox a;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
+  public ImageView d;
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, QIMFilterCategoryItem paramQIMFilterCategoryItem);
-  
-  public abstract void a(int paramInt, Object... paramVarArgs);
-  
-  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, String paramString);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c();
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void c(boolean paramBoolean);
-  
-  public abstract void d(int paramInt);
+  public bmyx(bmyq parambmyq, View paramView)
+  {
+    super(paramView);
+    this.b = ((ImageView)paramView.findViewById(2131372742));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372703));
+    this.c = ((ImageView)paramView.findViewById(2131369123));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131372744);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)paramView.findViewById(2131372745));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372748));
+    this.d = ((ImageView)paramView.findViewById(2131372673));
+    if (this.d != null) {
+      this.d.setVisibility(8);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox != null) {
+      zpz.a(this.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox, false);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      zpz.a(this.jdField_a_of_type_AndroidWidgetTextView, false);
+    }
+  }
 }
 
 

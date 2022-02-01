@@ -1,30 +1,13 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
 
 public class xtn
-  extends QQUIEventReceiver<xss, wrl>
+  implements DialogInterface.OnClickListener
 {
-  public xtn(@NonNull xss paramxss)
-  {
-    super(paramxss);
-  }
+  public xtn(StoryPickerFragment paramStoryPickerFragment) {}
   
-  public void a(@NonNull xss paramxss, @NonNull wrl paramwrl)
-  {
-    xvv.a(this.TAG, "play video groupId=%s, %s", paramwrl.jdField_a_of_type_Wod, paramwrl.b);
-    if ((xss.a(paramxss).equals(paramwrl.jdField_a_of_type_JavaLangString)) && ((paramwrl.jdField_a_of_type_Wod instanceof wns)))
-    {
-      xnh localxnh = ((wns)paramwrl.jdField_a_of_type_Wod).a;
-      if (localxnh != null) {
-        paramxss.a(localxnh.jdField_a_of_type_JavaLangString, paramwrl.b, true);
-      }
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wrl.class;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

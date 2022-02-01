@@ -1,53 +1,23 @@
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.utils.SendMessageHandler;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.widget.XEditTextEx;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 class ahld
-  extends amwl
+  implements TextWatcher
 {
-  ahld(ahkz paramahkz) {}
+  ahld(ahlc paramahlc) {}
   
-  protected void onInsertIntoBlackList(boolean paramBoolean, String paramString)
-  {
-    if ((paramString != null) && (this.a.sessionInfo.curFriendUin != null) && (this.a.sessionInfo.curFriendUin.equals(paramString)))
-    {
-      ChatActivityUtils.b();
-      if (paramBoolean) {
-        this.a.updateAddFriendAndShieldView();
-      }
-    }
-  }
+  public void afterTextChanged(Editable paramEditable) {}
   
-  protected void onRemoveFromBlackList(boolean paramBoolean, String paramString)
-  {
-    if ((paramString != null) && (this.a.sessionInfo.curFriendUin != null) && (this.a.sessionInfo.curFriendUin.equals(paramString)))
-    {
-      ChatActivityUtils.b();
-      if (paramBoolean) {
-        this.a.updateAddFriendAndShieldView();
-      }
-    }
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong)
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.a(paramBoolean, paramString, paramLong);
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    while (!paramString.equals(this.a.sessionInfo.curFriendUin)) {
-      return;
-    }
-    this.a.hasSentRecvMsg = true;
-    this.a.refresh(262144, null, paramLong);
-  }
-  
-  protected void onUpdateMsgContent(boolean paramBoolean, String paramString)
-  {
-    this.a.refresh(65536);
-  }
-  
-  protected void onUpdateSendMsgError(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
-  {
-    ahkz.a(this.a, paramString1, paramInt1, paramInt2, paramLong2, paramString2);
+    this.a.a.a.showSendWantGiftMsg.getAndSet(false);
+    this.a.a.a.input.removeTextChangedListener(this);
+    this.a.a.a.input.setTag(2131374018, null);
   }
 }
 

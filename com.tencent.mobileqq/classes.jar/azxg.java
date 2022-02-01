@@ -1,28 +1,148 @@
-import androidx.annotation.NonNull;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.widget.PullToZoomHeaderListView;
 
 public class azxg
+  extends azwn<FrameLayout>
 {
-  public String a;
-  public List<String> a;
-  public String b = "";
+  private long jdField_a_of_type_Long;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private azwp jdField_a_of_type_Azwp;
+  private azww jdField_a_of_type_Azww;
+  private birs jdField_a_of_type_Birs;
+  private PullToZoomHeaderListView jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView;
+  private long b;
   
-  public azxg()
+  public azxg(azxt paramazxt, azrb paramazrb)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    super(paramazxt, paramazrb);
   }
   
-  @NonNull
-  public String toString()
+  private void a()
   {
-    StringBuilder localStringBuilder = new StringBuilder(1024);
-    localStringBuilder.append("qzoneName").append("=").append(this.jdField_a_of_type_JavaLangString).append("|");
-    localStringBuilder.append("updateContent").append("=").append(this.b).append("|");
-    localStringBuilder.append("imgUrls").append("=").append(Arrays.toString(this.jdField_a_of_type_JavaUtilList.toArray())).append("|");
-    return localStringBuilder.toString();
+    if (this.jdField_a_of_type_Azwp != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileHeaderContainer", 0, "destroyHeaderComponent");
+      }
+      b(this.jdField_a_of_type_Azwp);
+      this.jdField_a_of_type_Azwp.h();
+      this.jdField_a_of_type_Azwp = null;
+      this.jdField_a_of_type_Long = 0L;
+      this.b = 0L;
+    }
+  }
+  
+  private void a(azrb paramazrb)
+  {
+    if (this.jdField_a_of_type_Azwp == null)
+    {
+      azwp localazwp = (azwp)azxr.a(1002, this.jdField_a_of_type_Azxt, paramazrb);
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileHeaderContainer", 0, String.format("initHeaderComponent headerComponent=%s", new Object[] { localazwp }));
+      }
+      if ((localazwp instanceof azwx)) {
+        ((azwx)localazwp).a(this.jdField_a_of_type_Birs, this.jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView);
+      }
+      localazwp.a(this.jdField_a_of_type_AndroidViewViewGroup);
+      this.jdField_a_of_type_Azwp = localazwp;
+      this.jdField_a_of_type_Azwp.a(this.jdField_a_of_type_Azww);
+      this.jdField_a_of_type_Azwp.a(this.jdField_a_of_type_JavaLangObject);
+      this.jdField_a_of_type_Azwp.g();
+      a(this.jdField_a_of_type_Azwp);
+      this.jdField_a_of_type_Long = paramazrb.jdField_a_of_type_Long;
+      this.b = paramazrb.b;
+    }
+  }
+  
+  private void b(azrb paramazrb)
+  {
+    if (paramazrb.jdField_a_of_type_Long != azri.jdField_a_of_type_Long)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileHeaderContainer", 0, "resetHeaderComponent");
+      }
+      paramazrb.jdField_a_of_type_Long = azri.jdField_a_of_type_Long;
+      paramazrb.b = 0L;
+      paramazrb.jdField_a_of_type_Azri = null;
+      a(paramazrb);
+    }
+  }
+  
+  private boolean b(azrb paramazrb)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramazrb != null) {
+      if ((this.jdField_a_of_type_Azwp != null) && (this.jdField_a_of_type_Long == paramazrb.jdField_a_of_type_Long))
+      {
+        bool1 = bool2;
+        if (this.b == paramazrb.b) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public int a()
+  {
+    return 102;
+  }
+  
+  public azwp a()
+  {
+    return this.jdField_a_of_type_Azwp;
+  }
+  
+  public String a()
+  {
+    return "ProfileHeaderContainer";
+  }
+  
+  public void a(azww paramazww)
+  {
+    this.jdField_a_of_type_Azww = paramazww;
+  }
+  
+  public void a(birs parambirs, PullToZoomHeaderListView paramPullToZoomHeaderListView, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_Birs = parambirs;
+    this.jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView = paramPullToZoomHeaderListView;
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+  }
+  
+  public boolean a(azrb paramazrb)
+  {
+    int i = 1;
+    if (b(paramazrb)) {
+      a();
+    }
+    for (;;)
+    {
+      try
+      {
+        a(paramazrb);
+        return i | super.a(paramazrb);
+      }
+      catch (Exception localException)
+      {
+        QLog.e("ProfileHeaderContainer", 1, "onDataUpdate init header component fail, reset to default.", localException);
+        a();
+        b(paramazrb);
+        continue;
+      }
+      i = 0;
+    }
+  }
+  
+  public void f()
+  {
+    a();
+    super.f();
   }
 }
 

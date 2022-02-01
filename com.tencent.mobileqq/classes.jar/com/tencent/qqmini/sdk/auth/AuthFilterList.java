@@ -139,6 +139,7 @@ public class AuthFilterList
       sEventLocalBlackList.add("queryBookshelf");
       sEventLocalBlackList.add("updateBookshelfReadTime");
       sEventLocalBlackList.add("navigateToBookshelf");
+      sEventLocalBlackList.add("addRecentColorSign");
       return;
     }
   }
@@ -298,7 +299,7 @@ public class AuthFilterList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.auth.AuthFilterList
  * JD-Core Version:    0.7.0.1
  */

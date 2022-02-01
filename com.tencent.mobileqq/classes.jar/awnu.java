@@ -1,28 +1,26 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
-import java.util.ArrayList;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-public class awnu
-  implements awol
+class awnu
+  implements INetInfoHandler
 {
-  public awnu(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  awnu(awns paramawns) {}
   
-  public void a(long paramLong)
+  public void onNetMobile2None()
   {
-    int i = 0;
-    while (i < ChooseInterestTagActivity.a(this.a).getChildCount())
-    {
-      InterestTagInfo localInterestTagInfo = (InterestTagInfo)ChooseInterestTagActivity.a(this.a).getChildAt(i).getTag();
-      if ((localInterestTagInfo != null) && (paramLong == localInterestTagInfo.tagId))
-      {
-        ChooseInterestTagActivity.a(this.a).remove(localInterestTagInfo);
-        ChooseInterestTagActivity.a(this.a, localInterestTagInfo);
-        ChooseInterestTagActivity.b(this.a, localInterestTagInfo);
-      }
-      i += 1;
-    }
+    awns.a(this.a);
+  }
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None()
+  {
+    awns.a(this.a);
   }
 }
 
